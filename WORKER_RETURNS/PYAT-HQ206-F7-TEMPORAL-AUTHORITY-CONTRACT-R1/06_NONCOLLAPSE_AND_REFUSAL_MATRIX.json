@@ -1,0 +1,160 @@
+{
+  "schema": "PYAT_HQ206_NONCOLLAPSE_AND_REFUSAL_MATRIX@1.0.0",
+  "lane": "PYAT-HQ206-F7-TEMPORAL-AUTHORITY-CONTRACT-R1",
+  "status": "CONTRACT_DERIVED__NOT_ADOPTED__AWAITING_INDEPENDENT_REVIEW",
+
+  "purpose": "Every pair below MUST be reported as distinct. Each row names a collapse that a plausible implementation would make, the correct separation, and the exact field or state that carries it.",
+
+  "noncollapse_matrix": [
+    {
+      "id": "NC-01",
+      "would_be_collapsed": "TEMPORAL_NONCOMPARABLE  ==  SOURCE_NONCOMPARABLE",
+      "why_tempting": "Both are called NONCOMPARABLE and both are refusals.",
+      "correct_separation": "They concern different objects. SOURCE_NONCOMPARABLE asks whether the underlying fact is comparable; TEMPORAL_NONCOMPARABLE asks whether the ORDERED PAIR is comparable in time under bound authority.",
+      "source_side_ref": "EMPIRICAL_FACT_NONCOMPARABLE produced at rawlsing_next/pre553_structural_admission.py:639-640,680-681 from fact.typed_state == NONCOMPARABLE; NONCOMPARABLE enumerated at rawlsing_next/pre553_empirical_objects.py:79,88",
+      "temporal_side_ref": "TEMPORAL_NONCOMPARABLE as TEMPORAL_RELATION_RECEIPT.relation_state",
+      "carrier": "relation_state vs the source-side decision list; they are never the same field",
+      "concrete_case": "A pair of anchors from two source universes with no authorized equivalence is TEMPORAL_NONCOMPARABLE, while each underlying fact may be individually comparable and usable under non-temporal rules."
+    },
+    {
+      "id": "NC-02",
+      "would_be_collapsed": "TEMPORAL_NONCOMPARABLE  ==  NO CHANGE",
+      "why_tempting": "A refused comparison produces no delta, and a naive renderer would emit zero or 'no change'.",
+      "correct_separation": "TEMPORAL_NONCOMPARABLE is a refusal, never a finding. NONCOMPARABLE != NO_CHANGE.",
+      "carrier": "non_delta_presence = DELTA_NOT_CLAIMABLE, which is explicitly not a zero",
+      "historical_support": "Conserved V553 semantics: is_limit true, temporal_effect 'blocks relation/delta use; no temporal F1', non_temporal_effect 'does not erase independent fact' (data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/advisory/PRE_S01_5_V554_ARCHITECTURE/RESULT.json)"
+    },
+    {
+      "id": "NC-03",
+      "would_be_collapsed": "TEMPORAL_NONCOMPARABLE  ==  ABSENCE OF FACT",
+      "why_tempting": "If the pair cannot be compared, a naive implementation might record that nothing is there.",
+      "correct_separation": "A temporal limit does not erase the underlying facts. does_not_negate_original_fact = true. A separate non-temporal rule may still lawfully use the original fact.",
+      "carrier": "relation_state carries is_limit and does_not_negate_original_fact as explicit contract fields",
+      "authority": "HQ206 adjudication binding: the conserved V554 law states a temporal candidate with TEMPORAL_NONCOMPARABLE has no temporal F1, while an independent non-temporal V552 rule may still create F1 ELIGIBLE"
+    },
+    {
+      "id": "NC-04",
+      "would_be_collapsed": "COMPARABLE  ==  ORDERABLE",
+      "why_tempting": "If a pair is comparable, a renderer may assume a direction is then available.",
+      "correct_separation": "A comparable pair under a partial order has NO claimable direction. Comparability and order are separate facts.",
+      "carrier": "comparability_status COMPARABLE with relation_state TEMPORAL_COMPARABLE_NO_DIRECTION",
+      "concrete_case": "Two overlapping authorized intervals are comparable but yield only a partial order, so DIRECTION_NOT_CLAIMABLE."
+    },
+    {
+      "id": "NC-05",
+      "would_be_collapsed": "AUTHORIZED  ==  INCREASE/DECREASE",
+      "why_tempting": "A positive authorization state could be rendered directly as a direction.",
+      "correct_separation": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED says a claim MAY be made. direction_claim separately says what it is. Two fields, never merged.",
+      "carrier": "relation_state vs direction_claim"
+    },
+    {
+      "id": "NC-06",
+      "would_be_collapsed": "DIRECTION_NOT_CLAIMABLE  ==  NO_AUTHORIZED_CHANGE",
+      "why_tempting": "Both indicate 'nothing to report about direction'.",
+      "correct_separation": "NO_AUTHORIZED_CHANGE is a positive finding that no change was claimable under a bound deadband. DIRECTION_NOT_CLAIMABLE is a refusal. One is evidence, the other is a limit.",
+      "carrier": "direction_claim enum, mutually exclusive values"
+    },
+    {
+      "id": "NC-07",
+      "would_be_collapsed": "DELTA  ==  TRAJECTORY",
+      "why_tempting": "A series of ordered comparisons looks like a path over time.",
+      "correct_separation": "DIFFERENCE != TRAJECTORY is a binding noncollapse rule. No trajectory object is authorized. A longer chain is a SEQUENCE of separate two-anchor receipts, not a distinct object.",
+      "carrier": "Absence of any trajectory field; anchor_refs is exactly cardinality 2",
+      "f7_must_not_revive": ["trajectory requires >=3 anchors", "DIFFERENCE => TRAJECTORY", "any rendering of a joint/diff product as a trajectory (historically forbidden)"],
+      "tension_named": "F7 must-not-revive lists 'trajectory requires >=3 anchors' as forbidden. This contract instead asserts that two anchors suffice for ONE ordered relation. The two are compatible: neither a >=3 law nor a trajectory object is adopted, and two-anchor sufficiency is about a single ordered comparison, not about trajectory composition."
+    },
+    {
+      "id": "NC-08",
+      "would_be_collapsed": "TWO ANCHORS  ==  INSUFFICIENT ANCHORS",
+      "why_tempting": "A prior record might import a >=3-anchor requirement as a sufficiency threshold.",
+      "correct_separation": "Two anchors are SUFFICIENT for one ordered relation when all comparability authority is present. TEMPORAL_INSUFFICIENT_ANCHORS exists ONLY for fewer than two. There is NO state for three-or-more.",
+      "carrier": "anchor_refs exact_cardinality 2; TEMPORAL_INSUFFICIENT_ANCHORS reason FEWER_THAN_TWO_ANCHORS",
+      "authority": "HQ206 adjudication: 'two anchors may suffice for one ordered relation when all comparability authority is present'; '>=3 anchors is not law'"
+    },
+    {
+      "id": "NC-09",
+      "would_be_collapsed": "WAVE_LABEL  ==  ORDINAL  ==  CALENDAR_YEAR",
+      "why_tempting": "A wave has a label, an ordinal and often an associated year, so a renderer may substitute them.",
+      "correct_separation": "Three distinct quantities. The label is canonical and preserved; the ordinal is derived only for range comparison without changing the label; the calendar year is separate.",
+      "carrier": "temporal_identity_contract_ref composition must preserve all three; family_wave_label never coerced",
+      "authority": "data/ddm_build_copy/ddm_survey_identity.py:123-159,204-215",
+      "mandated_by": "HQ206 commission: Preserve WAVE_LABEL != ORDINAL != CALENDAR_YEAR"
+    },
+    {
+      "id": "NC-10",
+      "would_be_collapsed": "OVERLAP  ==  MIDPOINT ORDER",
+      "why_tempting": "Overlapping intervals are awkward, so a renderer may collapse them to a midpoint to get an order.",
+      "correct_separation": "Overlap yields a partial order and a typed refusal. Midpoint coercion is forbidden.",
+      "carrier": "order_basis PARTIAL_ORDER_NO_DIRECTION; relation_state TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION",
+      "mandated_by": "HQ206 commission: Do not coerce overlap to midpoint"
+    },
+    {
+      "id": "NC-11",
+      "would_be_collapsed": "ABSENCE  ==  ZERO",
+      "why_tempting": "An absent delta or an unobserved span could be rendered as zero.",
+      "correct_separation": "Typed absence is never zero. Absent delta means DELTA_NOT_CLAIMABLE. An unobserved span means TEMPORAL_GAP_INTERVENING. OBSERVED_ZERO and ZERO_SUPPORT are already distinguished structurally upstream.",
+      "carrier": "non_delta_presence; intervening_span_state",
+      "authority": "rawlsing_next/pre553_empirical_objects.py:102-104,717-722"
+    },
+    {
+      "id": "NC-12",
+      "would_be_collapsed": "DELTA  ==  CAUSE",
+      "why_tempting": "A measured change across two times is often narrated as being caused by something.",
+      "correct_separation": "No causal relation, mechanism, mediation or explanation. The historical event-override slot is 'reserved_not_filled' and remains unfilled.",
+      "carrier": "01_TEMPORAL_COMPARABILITY_AUTHORITY.json -> exact_claim_ceiling.asserts_not[CAUSE]",
+      "authority": "data/ddm_build_copy/ddm_v553_temporal_pressure.py:900,2826,1281"
+    },
+    {
+      "id": "NC-13",
+      "would_be_collapsed": "RUPTURE CANDIDATE  ==  RUPTURE, or  RUPTURE  ==  DIRECTIONAL CLAIM",
+      "why_tempting": "A large change might be rendered as a rupture with a cause.",
+      "correct_separation": "A typed candidate only, under exact authority, with no causal attribution and no V553 threshold imported. It is not a directional claim and not an ordered relation.",
+      "carrier": "03_TEMPORAL_STATE_VOCABULARY.json -> families.RUPTURE_CANDIDATE_STATE, deliberately outside TEMPORAL_RELATION_STATE"
+    },
+    {
+      "id": "NC-14",
+      "would_be_collapsed": "THE FIVE FUNCTIONS  ==  ONE AUTHORITY KIND",
+      "why_tempting": "A single new authority kind could be made to carry identity, observation, comparison, rupture and gap.",
+      "correct_separation": "Only the comparison/order law is owned. Identity and gap reference existing forms; observation and rupture remain separate producer responsibilities.",
+      "carrier": "05_OWNER_AND_SUCCESSION_MAP.json -> ownership_summary",
+      "mandated_by": "HQ206 commission: Do not accidentally collapse five functions into TEMPORAL_COMPARABILITY if separate ownership is cleaner"
+    },
+    {
+      "id": "NC-15",
+      "would_be_collapsed": "COMPARABILITY  ==  GRAIN ADEQUACY BY FAMILY MEMBERSHIP",
+      "why_tempting": "Two anchors from the same survey family are obviously comparable.",
+      "correct_separation": "Same-family membership does not by itself prove grain adequacy. Adequacy is per-claim and per-authority, and every comparability surface must be jointly satisfied.",
+      "carrier": "comparability_requirement_results, one result per surface"
+    }
+  ],
+
+  "refusal_matrix": {
+    "note": "Every nonpositive outcome is terminal, typed, reason-carrying and replayable. No state is silent, and no nonpositive state is ever evidence of no change.",
+    "rows": [
+      {"condition": "required authority ref absent", "state": "TEMPORAL_INSUFFICIENT_AUTHORITY", "fail_closed": true, "replayable": true},
+      {"condition": "temporal identity key not jointly composed", "state": "TEMPORAL_IDENTITY_UNRESOLVED", "fail_closed": true, "replayable": true},
+      {"condition": "fewer than two anchors", "state": "TEMPORAL_INSUFFICIENT_ANCHORS", "fail_closed": true, "replayable": true},
+      {"condition": "no permitted order basis applies", "state": "TEMPORAL_ORDER_UNAUTHORIZED", "fail_closed": true, "replayable": true},
+      {"condition": "authorized intervals overlap", "state": "TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION", "fail_closed": true, "replayable": true},
+      {"condition": "comparability surface not shared (response, scale, instrument, question, geography, population, measure, order basis, time representation)", "state": "TEMPORAL_NONCOMPARABLE", "fail_closed": true, "replayable": true},
+      {"condition": "estimands differ", "state": "TEMPORAL_ESTIMAND_MISMATCH", "fail_closed": true, "replayable": true},
+      {"condition": "measure or weight design differs", "state": "TEMPORAL_MEASURE_MISMATCH", "fail_closed": true, "replayable": true},
+      {"condition": "pair crosses source universes without authorized equivalence", "state": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT", "fail_closed": true, "replayable": true},
+      {"condition": "family-scoped time mapping required but unadopted", "state": "TEMPORAL_MAPPING_MATERIAL_ABSENT", "fail_closed": true, "replayable": true},
+      {"condition": "order basis yields only a partial order and the pair is otherwise comparable", "state": "TEMPORAL_COMPARABLE_NO_DIRECTION", "fail_closed": false, "replayable": true, "note": "Comparability is positive; only direction is refused."},
+      {"condition": "authority snapshot hash or scope mismatch", "state": "AUTHORITY_HASH_MISMATCH or AUTHORITY_SCOPE_MISMATCH", "fail_closed": true, "replayable": true, "note": "Reused existing FAIL_CLOSED_STATES; no new state created."},
+      {"condition": "uncertainty method absent", "state": "UNCERTAINTY_METHOD_ABSENT", "fail_closed": true, "replayable": true},
+      {"condition": "unobserved span between anchors", "state": "TEMPORAL_GAP_INTERVENING on intervening_span_state", "fail_closed": false, "replayable": true, "note": "Preserved as typed unknown; forbids continuity, trend, rate and interpolation."}
+    ],
+    "no_silent_paths": [
+      "no midpoint substitution",
+      "no latest/default/fuzzy/nearest selection (FORBIDDEN_SELECTOR_TOKENS binding)",
+      "no ordinal-to-year coercion",
+      "no interval-to-point collapse",
+      "no interpolation across a gap",
+      "no clock, RNG or filesystem state in resolution",
+      "no inherited V553 threshold or deadband",
+      "no backfill into a noncomparable pair"
+    ]
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "schema": "PYAT_HQ206_TEMPORAL_STATE_VOCABULARY@1.0.0",
+  "lane": "PYAT-HQ206-F7-TEMPORAL-AUTHORITY-CONTRACT-R1",
+  "status": "CONTRACT_DERIVED__NOT_ADOPTED__AWAITING_INDEPENDENT_REVIEW",
+
+  "purpose": "Exact typed state families and reason codes for temporal comparison, so that every outcome is terminal, typed, reason-carrying and replayable. This is the document that closes the bare-string TEMPORAL_NONCOMPARABLE defect.",
+
+  "reuse_discipline": {
+    "new_authority_states_created": 0,
+    "statement": "This lane creates NO new authority state. AUTHORITY_STATE / FAIL_CLOSED_STATES are reused unchanged: ALLOW (positive) plus DENY, DEFER, MISSING_AUTHORITY, UNKNOWN, OUT_OF_SCOPE, SUPERSEDED_NOT_REPLAYABLE, AUTHORITY_HASH_MISMATCH, AUTHORITY_SCOPE_MISMATCH (rawlsing_next/pre553_empirical_authority.py:54-57; rawlsing_next/pre553_empirical_objects.py:82-85).",
+    "why": "The commission forbids sibling authority kinds unless necessity is proven. No new authority state was necessary either: the existing fail-closed states cover every nonpositive outcome of a temporal comparison. What was missing was the TEMPORAL-side comparison state family itself, which is distinct from AUTHORITY_STATE and is defined below."
+  },
+
+  "families": {
+
+    "TEMPORAL_RELATION_STATE": {
+      "purpose": "The overall typed state of one temporal relation receipt. This is the exact home of the promoted TEMPORAL_NONCOMPARABLE.",
+      "placement": "TEMPORAL_RELATION_RECEIPT.relation_state",
+      "producer": "The temporal comparison operation, under a bound TEMPORAL_COMPARABILITY authority.",
+      "closed": true,
+      "terminality_law": "Every state is terminal for that receipt. A receipt is never left in an indeterminate state, and no state may be upgraded by re-running without new authority.",
+      "members": [
+        {
+          "state": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED",
+          "polarity": "POSITIVE",
+          "reason_codes": [],
+          "meaning": "The pair is comparable under exact authority, the order basis yields a total order on this pair, and a direction claim is authorized.",
+          "pair_with": "relation_status ORDERED_RELATION_AUTHORIZED and direction_claim INCREASE | DECREASE | NO_AUTHORIZED_CHANGE"
+        },
+        {
+          "state": "TEMPORAL_COMPARABLE_NO_DIRECTION",
+          "polarity": "POSITIVE_COMPARABILITY_NEGATIVE_DIRECTION",
+          "reason_codes": ["ORDER_BASIS_YIELDS_NO_DIRECTION_ON_PAIR"],
+          "meaning": "The pair IS comparable under exact authority, but the bound order basis does not determine a direction for this particular pair. Comparability and direction are separate facts.",
+          "critical_noncollapse": " This state is NOT TEMPORAL_NONCOMPARABLE. A comparable pair with no claimable direction is a materially better situation than a noncomparable pair, and the two must never be merged.",
+          "pair_with": "comparability_status COMPARABLE, relation_status ORDER_RELATION_REFUSED, direction_claim DIRECTION_NOT_CLAIMABLE"
+        },
+        {
+          "state": "TEMPORAL_NONCOMPARABLE",
+          "polarity": "NEGATIVE",
+          "reason_codes": [
+            "RESPONSE_SURFACE_NOT_SHARED",
+            "SCALE_HARMONIZATION_AUTHORITY_ABSENT",
+            "INSTRUMENT_RELEASE_NOT_SHARED",
+            "QUESTION_COORDINATE_SEMANTICS_NOT_SHARED",
+            "ESTIMAND_NOT_SHARED",
+            "MEASURE_WEIGHT_DESIGN_NOT_SHARED",
+            "GEOGRAPHY_NOT_SHARED",
+            "TARGET_POPULATION_RISK_SET_NOT_SHARED",
+            "ORDER_BASIS_NOT_APPLICABLE_TO_PAIR",
+            "SOURCE_UNIVERSE_DISTINCT_WITHOUT_AUTHORIZED_EQUIVALENCE",
+            "TIME_REPRESENTATION_UNRESOLVED_UNDER_BOUND_AUTHORITY"
+          ],
+          "meaning": "The ordered pair is not comparable under any bound authority. The refusal is itself a first-class typed observation, not an error and not an absence.",
+          "was_before": "A bare string in FORBIDDEN_BACKFILL_TARGET_STATES at rawlsing_next/pre553_source_relations.py:54, with no producer, no schema and no reason code.",
+          "is_now": "A produced, reason-carrying, terminal member of TEMPORAL_RELATION_STATE, placed at TEMPORAL_RELATION_RECEIPT.relation_state.",
+          "is_limit": true,
+          "does_not_negate_original_fact": true,
+          "blocks_temporal_relation_and_delta_use": true,
+          "does_not_erase_independent_non_temporal_fact": true,
+          "conserved_semantics_ref": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/advisory/PRE_S01_5_V554_ARCHITECTURE/RESULT.json",
+          "never_evidence_of": ["NO_CHANGE", "ZERO", "ABSENCE_OF_EFFECT", "ABSENCE_OF_FACT"],
+          "still_forbidden_as_backfill_target": true
+        },
+        {
+          "state": "TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION",
+          "polarity": "NEGATIVE_FOR_DIRECTION",
+          "reason_codes": ["INTERVALS_OVERLAP", "PARTIAL_ORDER_ONLY"],
+          "meaning": "The two authorized interval refs overlap, so the order is partial and no direction is claimable for this pair. The refusal is typed and explicit, never a silent choice.",
+          "no_midpoint": "Overlap MUST NOT be resolved to a midpoint. Doing so would fabricate an order the sources do not support.",
+          "distinguished_from": "TEMPORAL_NONCOMPARABLE. Overlapping intervals are a direction refusal on an otherwise comparable pair."
+        },
+        {
+          "state": "TEMPORAL_IDENTITY_UNRESOLVED",
+          "polarity": "NEGATIVE",
+          "reason_codes": ["TEMPORAL_IDENTITY_CONTRACT_REF_ABSENT", "IDENTITY_SURFACE_NOT_JOINTLY_SATISFIED"],
+          "meaning": "The persisting comparand is not exactly composed, so it cannot be asserted that both anchors concern the same thing.",
+          "note": "No persisting object is named by any current authority. This lane does not create one; it requires that one be composed under TEMPORAL_EVIDENCE."
+        },
+        {
+          "state": "TEMPORAL_ORDER_UNAUTHORIZED",
+          "polarity": "NEGATIVE",
+          "reason_codes": ["NO_PERMITTED_ORDER_BASIS_APPLIES", "ORDER_BASIS_REF_ABSENT"],
+          "meaning": "No permitted order basis from 04_TIME_ORDER_BASIS_LAW.json applies to this pair."
+        },
+        {
+          "state": "TEMPORAL_INSUFFICIENT_ANCHORS",
+          "polarity": "NEGATIVE",
+          "reason_codes": ["FEWER_THAN_TWO_ANCHORS"],
+          "meaning": "Fewer than two anchors authorized for this pair.",
+          "critical_noncollapse": "Two anchors are SUFFICIENT for one ordered relation when all comparability authority is present. This state exists solely for fewer than two. There is NO state for three-or-more, because >=3 is NOT LAW and a longer chain is a sequence of separate two-anchor receipts."
+        },
+        {
+          "state": "TEMPORAL_ESTIMAND_MISMATCH",
+          "polarity": "NEGATIVE",
+          "reason_codes": ["ESTIMANDS_DIFFER", "ESTIMAND_AUTHORITY_REF_ABSENT"],
+          "meaning": "The two observations are not the same estimand. A difference across different estimands is not a delta."
+        },
+        {
+          "state": "TEMPORAL_MEASURE_MISMATCH",
+          "polarity": "NEGATIVE",
+          "reason_codes": ["MEASURE_OR_WEIGHT_DESIGN_DIFFERS", "MEASURE_AUTHORITY_REF_ABSENT"],
+          "meaning": "The two observations do not share a measure/weight design. A difference across incompatible measures is not a delta."
+        },
+        {
+          "state": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT",
+          "polarity": "NEGATIVE",
+          "reason_codes": ["PAIR_CROSSES_SOURCE_UNIVERSES", "SOURCE_EQUIVALENCE_REF_ABSENT"],
+          "meaning": "The pair crosses source universes but no exact SOURCE_EQUIVALENCE authority binds them. Distinct-by-default is preserved; no equivalence may be assumed."
+        },
+        {
+          "state": "TEMPORAL_MAPPING_MATERIAL_ABSENT",
+          "polarity": "NEGATIVE",
+          "reason_codes": ["RELATING_TIME_REPRESENTATIONS_REQUIRES_FAMILY_MAPPING", "NATIVE_CANONICAL_MAPPING_REF_ABSENT"],
+          "meaning": "Relating the two anchors' time representations requires family-scoped mapping material that is not adopted or not bound.",
+          "no_generalization": "Family-scoped mapping material may never be generalized into a universal grain rule. The historically hard-coded EVS_WAVE_BY_YEAR table (data/ddm_build_copy/ddm_survey_identity.py:89) is an example and may not become one."
+        },
+        {
+          "state": "TEMPORAL_INSUFFICIENT_AUTHORITY",
+          "polarity": "NEGATIVE",
+          "reason_codes": [
+            "TEMPORAL_COMPARABILITY_AUTHORITY_REF_ABSENT",
+            "TEMPORAL_EVIDENCE_AUTHORITY_REF_ABSENT_FOR_ANCHOR",
+            "TARGET_USE_PERMISSION_REF_ABSENT",
+            "UNCERTAINTY_METHOD_REF_ABSENT",
+            "REPLAY_PROTOCOL_REF_ABSENT"
+          ],
+          "meaning": "A required authority is absent. Fail-closed.",
+          "conserved_from": "The historical TEMPORAL_INSUFFICIENT_AUTHORITY state (V553, SEMANTIC_F3) carries this meaning and is conserved by name and role."
+        }
+      ]
+    },
+
+    "TEMPORAL_ORDER_BASIS_STATE": {
+      "purpose": "Which order basis governs a pair. Values mirror 04_TIME_ORDER_BASIS_LAW.json.",
+      "closed": true,
+      "members": ["CALENDAR_TOTAL_ORDER", "FAMILY_LOCAL_ORDINAL", "PARTIAL_ORDER_NO_DIRECTION", "ORDER_UNKNOWN_NONCOMPARABLE"],
+      "independent_of_relation_state": "The order basis state and the relation state are separate fields. A CALENDAR_TOTAL_ORDER basis can still yield TEMPORAL_NONCOMPARABLE if the response surface is not shared."
+    },
+
+    "DIRECTION_CLAIM_STATE": {
+      "purpose": "The reported direction, separate from authorization.",
+      "closed": true,
+      "members": ["INCREASE", "DECREASE", "NO_AUTHORIZED_CHANGE", "DIRECTION_NOT_CLAIMABLE"],
+      "critical_noncollapse": "DIRECTION_NOT_CLAIMABLE is a first-class value. It is NOT an error, NOT a null, and NOT equivalent to NO_AUTHORIZED_CHANGE. A claimable absence of change is a positive finding; an unclaimable direction is a refusal.",
+      "no_default_deadband": "No deadband is inherited. If a deadband is used it must be bound by the comparability authority."
+    },
+
+    "UNCERTAINTY_STATE_FOR_TEMPORAL_CLAIM": {
+      "purpose": "Uncertainty state of a temporal delta.",
+      "closed": true,
+      "members": ["QUANTIFIED_UNDER_BOUND_METHOD", "UNCERTAINTY_UNQUANTIFIED", "UNCERTAINTY_METHOD_ABSENT"],
+      "reuses_existing_law": "UNCERTAINTY_UNQUANTIFIED reuses the existing enumerated state at rawlsing_next/pre553_empirical_objects.py:102-104."
+    },
+
+    "INTERVENING_SPAN_STATE": {
+      "purpose": "Whether an unobserved span lies between the anchors.",
+      "closed": true,
+      "members": ["NO_INTERVENING_GAP", "TEMPORAL_GAP_INTERVENING"],
+      "law": "A gap is preserved as typed unknown. It may not be filled, interpolated, or read as continuity. ABSENCE != ZERO and no silent interpolation is authorized."
+    },
+
+    "RUPTURE_CANDIDATE_STATE": {
+      "purpose": "Typed candidate status only. NOT a temporal relation state and NOT produced by this contract.",
+      "closed": true,
+      "members": ["RUPTURE_CANDIDATE_NOT_EVALUATED", "RUPTURE_CANDIDATE_TYPED_CANDIDATE"],
+      "ceiling": "A typed candidate under exact authority only.",
+      "prohibitions": [
+        "NO_CAUSAL_ATTRIBUTION",
+        "NO_AUTOMATIC_THRESHOLD_FROM_V553",
+        "NO_SCALAR_RUPTURE_MAGNITUDE",
+        "NOT_A_DIRECTIONAL_CLAIM",
+        "NOT_AN_ORDERED_RELATION"
+      ],
+      "no_producer_authorized": "No adopted authority produces a rupture candidate. This lane defines only the ceiling and the typed candidate slot. The historical V553 thresholds are NOT adopted and may not be imported.",
+      "why_separate_from_relation_state": "A rupture candidate is a claim about a change in kind, which requires its own authority and its own calibration. Folding it into TEMPORAL_COMPARABILITY would grant causal-adjacent power the commission explicitly withholds."
+    }
+  },
+
+  "noncollapse_laws": [
+    "AUTHORIZATION != DIRECTION: TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED authorizes that a claim may be made; INCREASE/DECREASE is what it says.",
+    "COMPARABLE != ORDERABLE: TEMPORAL_COMPARABLE_NO_DIRECTION is a comparable pair.",
+    "NONCOMPARABLE != NO_CHANGE: TEMPORAL_NONCOMPARABLE is a refusal, never a finding of no change.",
+    "ABSENCE != ZERO: an absent delta, an intervening gap and an unobserved span are typed unknowns, never zeros.",
+    "DIFFERENCE != TRAJECTORY: no trajectory object is authorized.",
+    "TEMPORAL_NONCOMPARABLE != SOURCE_NONCOMPARABLE: different object, different producer, different scope.",
+    "LIMIT != NEGATION: a temporal limit does not erase an independent non-temporal fact.",
+    "WAVE_LABEL != ORDINAL != CALENDAR_YEAR",
+    "DIRECTION_NOT_CLAIMABLE != NO_AUTHORIZED_CHANGE"
+  ],
+
+  "downstream_scr553_note": "Existing M1 states NO_POSITIVE_V553_OUTPUT__MISSING_TEMPORAL_AUTHORITY, __MISSING_COMPARABILITY_AUTHORITY and INELIGIBLE_TEMPORAL_SIGNATURE (rawlsing_next/m1_temporal_v554_admission_dedup.py:50-57,83,240-247) remain binding and are NOT superseded by this vocabulary. This contract defines the authority beneath them; it does not replace the existing downstream refusal language."
+}

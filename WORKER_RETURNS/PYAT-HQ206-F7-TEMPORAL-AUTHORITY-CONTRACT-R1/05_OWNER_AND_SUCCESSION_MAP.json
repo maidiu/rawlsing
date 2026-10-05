@@ -1,0 +1,113 @@
+{
+  "schema": "PYAT_HQ206_OWNER_AND_SUCCESSION_MAP@1.0.0",
+  "lane": "PYAT-HQ206-F7-TEMPORAL-AUTHORITY-CONTRACT-R1",
+  "status": "CONTRACT_DERIVED__NOT_ADOPTED__AWAITING_INDEPENDENT_REVIEW",
+
+  "headline": "TEMPORAL_COMPARABILITY owns exactly ONE of the five conserved temporal functions: the comparison and order law. The other four retain distinct existing or separate-producer ownership. This lane deliberately does NOT collapse all five functions into the new authority kind.",
+
+  "why_noncollapse_is_the_correct_answer": "The commission warns against accidentally collapsing five functions into TEMPORAL_COMPARABILITY. Four of the five are better owned elsewhere: one is already owned by TEMPORAL_EVIDENCE, one has a general typed-absence law that already exists, one requires a producer that is not authorized, and one requires calibration authority that does not exist. Folding them in would grant the new kind causal-adjacent and observation-constituting power that HQ explicitly withholds, and would let a comparison authority masquerade as a temporalization authority.",
+
+  "conserved_five_functions": [
+    {
+      "function_index": 1,
+      "function": "persistent temporal identity / comparable temporal key",
+      "f7_classification": "HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE",
+      "what_persists_as_found": "NOT NAMED BY ANY CURRENT AUTHORITY. No current object declares itself to be 'the same thing at t1 and t2'.",
+      "this_contracts_disposition": "REFERENCES AN EXISTING AUTHORITY FORM",
+      "owner": "TEMPORAL_EVIDENCE plus the temporal_identity_contract_ref",
+      "not_owned_by_TEMPORAL_COMPARABILITY_because": "The identity key answers 'is this the same thing across time', which is a source-native scoping question. TEMPORAL_EVIDENCE already carries source-native effective/reference-time evidence. A comparison authority must consume the key, not mint it; if it minted identity it would be able to declare two different things comparable, which is the exact failure the identity requirement exists to prevent.",
+      "current_state": "Lawful home exists (rawlsing_next/pre553_empirical_authority.py:25-44,86) but no instance composes the key. Composition is a downstream authoring task, not authorized by this lane.",
+      "residual_gap": "IDENTITY_CONTRACT_INSTANCE_MISSING"
+    },
+    {
+      "function_index": 2,
+      "function": "temporal observation meaning",
+      "f7_classification": "HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE",
+      "this_contracts_disposition": "LEAVES AS A SEPARATE DOWNSTREAM / PRODUCER RESPONSIBILITY",
+      "owner": "Existing observation producers under TEMPORAL_EVIDENCE",
+      "not_owned_by_TEMPORAL_COMPARABILITY_because": "An observation is a primary measurement, not a comparison. A comparison authority that could constitute its own observations would be able to author its own evidence, destroying the independence that makes a delta meaningful.",
+      "current_state": "EmpiricalFact.REQUIRED_FIELDS contains NO time field (rawlsing_next/pre553_empirical_objects.py:696-724). Nothing current constitutes a time-indexed observation. M1 requires the instance.",
+      "residual_gap": "TIME_INDEXED_OBSERVATION_OBJECT_ABSENT__CARRIED_BY_ANCHOR_REF_INTERIM",
+      "interim_handling": "In this contract the anchor ref carries time, and observation_refs point at unindexed observations. This is recorded as a limitation, not silently repaired."
+    },
+    {
+      "function_index": 3,
+      "function": "delta / comparison",
+      "f7_classification": "HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE",
+      "this_contracts_disposition": "DIRECTLY OWNED BY TEMPORAL_COMPARABILITY",
+      "owner": "TEMPORAL_COMPARABILITY",
+      "owned_because": "This is the one function whose law had no home. Deciding that two anchors are comparable, fixing the order basis, and bounding the direction claim IS the comparison law. No existing kind covers it: TEMPORAL_EVIDENCE binds evidence without ordering observations.",
+      "f7_evidence": "EMPIRICAL_FACT_NONCOMPARABLE is an enumerated P06 decision (rawlsing_next/pre553_structural_admission.py:47,640,680-687), so the SOURCE-side refusal discipline already exists; the TEMPORAL-side comparison law is what is missing.",
+      "residual_gap": null
+    },
+    {
+      "function_index": 4,
+      "function": "rupture candidate",
+      "f7_classification": "HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE",
+      "this_contracts_disposition": "LEAVES AS A SEPARATE DOWNSTREAM / PRODUCER RESPONSIBILITY",
+      "owner": "NO AUTHORIZED PRODUCER. Typed candidate slot defined at contract grain only.",
+      "not_owned_by_TEMPORAL_COMPARABILITY_because": "A rupture candidate is a claim about change in KIND, which requires its own calibration authority and an event authority. The historical event-override slot is 'reserved_not_filled' (data/ddm_build_copy/ddm_v553_temporal_pressure.py:900) and remains unfilled. Folding rupture into the comparison kind would smuggle causal-adjacent power into a lawful, narrow authority.",
+      "typed_candidate_defined_at": "03_TEMPORAL_STATE_VOCABULARY.json -> families.RUPTURE_CANDIDATE_STATE",
+      "prohibitions": ["NO_CAUSAL_ATTRIBUTION", "NO_AUTOMATIC_THRESHOLD_FROM_V553", "NO_SCALAR_RUPTURE_MAGNITUDE"],
+      "residual_gap": "RUPTURE_CANDIDATE_PRODUCER_AND_CALIBRATION_AUTHORITY_UNCONSTITUTED"
+    },
+    {
+      "function_index": 5,
+      "function": "gap / absence as first-class observation",
+      "f7_classification": "HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE",
+      "this_contracts_disposition": "REFERENCES AN EXISTING AUTHORITY FORM",
+      "owner": "Existing general typed-absence law, plus the intervening_span_state field of this contract",
+      "existing_authority": "A general typed-absence law IS current binding law, with typed states NONCOMPARABLE, NOT_APPLICABLE, UNAVAILABLE, UNCERTAINTY_UNQUANTIFIED and the OBSERVED_ZERO vs ZERO_SUPPORT distinction enforced structurally (rawlsing_next/pre553_empirical_objects.py:102-104,717-722). A specific temporal-gap OBJECT does not exist.",
+      "not_owned_by_TEMPORAL_COMPARABILITY_because": "Typed absence is a general current law that already applies across the substrate. Re-deriving it here would fork a binding law.",
+      "correction_to_prior_record": {
+        "claim": "H08 asserts 'ABSENCE != ZERO: Binding' citing V553_TEMPORAL_GAP_AND_ABSENCE_INDEX_SCHEMA.",
+        "correction": "The general typed-absence law IS current binding law, but the cited V553 object is not the current authority for it. Citing V553 as the current authority is a mis-citation and is corrected here.",
+        "effect_on_this_lane": "None on the conservation decision; the function remains lawfully conservable, and the authority home is corrected."
+      },
+      "this_lane_contribution": "intervening_span_state = TEMPORAL_GAP_INTERVENING preserves a gap as typed unknown and forbids filling or interpolation.",
+      "residual_gap": "TEMPORAL_GAP_OBJECT_ABSENT__TYPED_SPAN_STATE_SUBSTITUTE"
+    }
+  ],
+
+  "ownership_summary": {
+    "DIRECTLY_OWNED_BY_TEMPORAL_COMPARABILITY": [3],
+    "REFERENCES_AN_EXISTING_AUTHORITY_FORM": [1, 5],
+    "LEAVES_AS_SEPARATE_DOWNSTREAM_PRODUCER_RESPONSIBILITY": [2, 4],
+    "collapsed_into_one_kind": false,
+    "collapsed_function_count": 0,
+    "assertion": "Four of five functions are deliberately kept out of the new authority kind. Only the comparison/order law is owned."
+  },
+
+  "authority_kind_ownership": {
+    "TEMPORAL_COMPARABILITY_owns": [
+      "deciding that an anchor pair is comparable under bound authority",
+      "fixing the authorized order basis for that pair",
+      "bounding the direction claim ceiling",
+      "producing the TEMPORAL_RELATION_RECEIPT and its relation_state"
+    ],
+    "TEMPORAL_COMPARABILITY_does_not_own": [
+      "constituting temporal identity",
+      "constituting observations",
+      "emitting a rupture candidate",
+      "constituting a typed absence object",
+      "constituting a trajectory",
+      "consuming the receipt downstream (that is a separate operation under its own authority, HQ204 H-D)"
+    ]
+  },
+
+  "succession": {
+    "from_V553": {
+      "historical_functional_capital_present": true,
+      "authority_class": "HISTORICAL_FUNCTIONAL_CAPITAL (provisional V553 line, schema v0.2)",
+      "adopted_as_law": false,
+      "reason": "The V553 temporal modules are provisional (V553_COMPILER_VERSION 'v553_temporal_pressure_0.2_sparse'), their positive content is a scalar pressure field HQ forbids inheriting, and their scope was one survey family in one country at point-year anchors.",
+      "jurisdiction_only": "Adopted R2 law conserves the temporalization JURISDICTION only: 'functional jurisdiction only | no required V553 node' (PYAT_R2_REGROUNDING_R1/04_FUNCTION_CONSERVATION_CROSSWALK.tsv:15).",
+      "shape_conversed_not_values": "Only the shape is conserved: named authority instance required, two eligible comparable anchors, explicit three-state outcome with typed reason, separate comparability status and interpretation permission, direction and magnitude as typed labels."
+    },
+    "from_R2_grounding": "Jurisdiction conserved; no V553 node required. Unchanged by this lane.",
+    "no_predecessor_authority_superseded": "TEMPORAL_COMPARABILITY has no predecessor to supersede. The adopted closed AUTHORITY_KINDS set grows from 18 to 19 by exactly one addition. No existing kind is modified, narrowed or reinterpreted.",
+    "existing_kinds_left_untouched": ["TEMPORAL_EVIDENCE", "WEIGHT_DESIGN_ESTIMAND", "TARGET_USE_PERMISSION", "SOURCE_EQUIVALENCE", "NATIVE_CANONICAL_MAPPING_HARMONIZATION", "UNCERTAINTY_METHOD", "REPLAY_PROTOCOL", "STRUCTURAL_ADMISSION", "SOURCE_BACKFILL", "SOURCE_UNIVERSE_RELATION"]
+  },
+
+  "upstream_state_not_superseded": "Existing downstream M1 states NO_POSITIVE_V553_OUTPUT__MISSING_TEMPORAL_AUTHORITY, __MISSING_COMPARABILITY_AUTHORITY and INELIGIBLE_TEMPORAL_SIGNATURE (rawlsing_next/m1_temporal_v554_admission_dedup.py:50-57,83,240-247) remain binding. This contract supplies the authority beneath them; it does not replace the existing refusal language."
+}

@@ -1,0 +1,231 @@
+{
+  "schema": "PYAT_HQ206_TEMPORAL_RELATION_RECEIPT_CONTRACT@1.0.0",
+  "lane": "PYAT-HQ206-F7-TEMPORAL-AUTHORITY-CONTRACT-R1",
+  "status": "CONTRACT_DERIVED__NOT_ADOPTED__AWAITING_INDEPENDENT_REVIEW",
+
+  "purpose": "This is the minimum object/receipt family sufficient to state that two temporal anchors are comparable under exact authority, that an ordered relation is authorized, what the delta is at an exact estimand/measure surface, what the uncertainty or refusal state is, and what provenance permits replay. It is the positive temporal relation form whose absence F7 established (item 3, POSITIVE_SEMANTIC_FORM_MISSING).",
+
+  "minimum_family_justification": {
+    "one_receipt_not_two": "Comparability status and the ordered relation are kept in ONE receipt because F7's conserved historical shape requires separate comparability status AND separate interpretation permission. Splitting them into two objects would permit a relation to circulate detached from its comparability authority. One receipt with separate fields preserves both separation and binding.",
+    "field_minimality": "Every field below is either required to determine the claim or required to replay it. No field is present for future convenience."
+  },
+
+  "receipt": {
+    "family_name": "TEMPORAL_RELATION_RECEIPT",
+    "version": "1.0.0",
+    "closed": true,
+    "additional_fields_forbidden": true,
+    "identity": "Content-addressed URN over the canonical JSON of all fields, using the existing canonical hashing discipline.",
+    "object_kind": "RECEIPT_RESULT_NOT_SOURCE_FACT"
+  },
+
+  "fields": [
+    {
+      "field": "receipt_id",
+      "type": "URN",
+      "required": true,
+      "meaning": "Content-addressed identity over the canonical projection."
+    },
+    {
+      "field": "temporal_identity_contract_ref",
+      "type": "ExactRef",
+      "required": true,
+      "meaning": "The exact contract naming the persisting comparand. Carried so the receipt is never readable as a claim about an unnamed thing."
+    },
+    {
+      "field": "anchor_refs",
+      "type": "tuple[ExactRef, ExactRef]",
+      "required": true,
+      "exact_cardinality": 2,
+      "meaning": "Exactly two hash-bound anchor refs for this pair. Ordered positionally: index 0 is the earlier anchor under the authorized order basis; index 1 is the later. A longer chain is a sequence of separate two-anchor receipts, not a distinct object.",
+      "ordering_discipline": "Positional earlier/later assignment MUST derive from the authorized order basis and MUST NOT be asserted by the caller. If the order basis is partial or unknown, no earlier/later position may be assigned.",
+      "three_or_more_anchors": "NOT LAW. Not produced as a single object."
+    },
+    {
+      "field": "temporal_order_basis_ref",
+      "type": "ExactRef",
+      "required": true,
+      "meaning": "Exact ref to the authorized order basis. Always present, including when the basis is one that yields no direction."
+    },
+    {
+      "field": "comparability_status",
+      "type": "enum",
+      "required": true,
+      "values": ["COMPARABLE", "NOT_COMPARABLE"],
+      "meaning": "Whether the pair is comparable under the bound authority. Distinct from whether a direction is claimable: a pair may be COMPARABLE yet have DIRECTION_NOT_CLAIMABLE under a partial order."
+    },
+    {
+      "field": "comparability_requirement_results",
+      "type": "tuple[RequirementResult, ...]",
+      "required": true,
+      "meaning": "One result per required comparability surface. Each RequirementResult names the surface, whether it is satisfied, and the exact typed refusal state if not.",
+      "why_present": "Partial satisfaction must never be readable as full comparability. A reviewer must be able to see exactly which surface failed."
+    },
+    {
+      "field": "relation_status",
+      "type": "enum",
+      "required": true,
+      "values": ["ORDERED_RELATION_AUTHORIZED", "ORDER_RELATION_REFUSED"],
+      "meaning": "Whether an ordered relation is authorized. Never inferred from comparability_status alone."
+    },
+    {
+      "field": "direction_claim",
+      "type": "enum",
+      "required": true,
+      "values": ["INCREASE", "DECREASE", "NO_AUTHORIZED_CHANGE", "DIRECTION_NOT_CLAIMABLE"],
+      "derivation_rule": "Direction is derived ONLY from the signed difference on the scoped quantity Q under the authorized order basis. DIRECTION_NOT_CLAIMABLE must be emitted whenever relation_status is ORDER_RELATION_REFUSED, and whenever the order basis yields only a partial order over this pair.",
+      "no_default_deadband": "A deadband, if used, must itself be bound by the comparability authority. No default deadband is inherited from V553 and no numeric threshold is adopted.",
+      "is_not_trajectory": "DIRECTION_NOT_CLAIMABLE is a first-class value, not an error and not a null. DIFFERENCE != TRAJECTORY."
+    },
+    {
+      "field": "quantity_surface",
+      "type": "Mapping[str, Any]",
+      "required": true,
+      "meaning": "The exact scope over which the claim is made. Must name the quantity Q, its estimand ref, and its measure/weight design ref.",
+      "why_mapping_and_not_scalar": "No scalar temporal-pressure field is authored. The delta is reported as a signed difference over an explicitly named surface, never as a scalar pressure magnitude."
+    },
+    {
+      "field": "delta",
+      "type": "Mapping[str, Any]",
+      "required": false,
+      "required_when": "relation_status is ORDERED_RELATION_AUTHORIZED and an exact difference operation is authorized",
+      "meaning": "The signed difference on Q between anchor index 0 and anchor index 1, with its uncertainty treatment.",
+      "required_absent_meaning": "Absent means no delta is claimed. Absence is a typed state, never a zero. See non_delta_presence below.",
+      "no_cause": "A delta carries no causal content whatsoever."
+    },
+    {
+      "field": "non_delta_presence",
+      "type": "enum",
+      "required": true,
+      "values": ["DELTA_PRESENT", "DELTA_NOT_CLAIMABLE"],
+      "meaning": "Disambiguates an absent delta. DELTA_NOT_CLAIMABLE means the delta was not produced under authority; it NEVER means the quantity did not change. ABSENCE != ZERO."
+    },
+    {
+      "field": "uncertainty_state",
+      "type": "enum",
+      "required": true,
+      "values": ["QUANTIFIED_UNDER_BOUND_METHOD", "UNCERTAINTY_UNQUANTIFIED", "UNCERTAINTY_METHOD_ABSENT"],
+      "lawful_home": "UNCERTAINTY_METHOD authority",
+      "meaning": "The uncertainty state of the delta. UNCERTAINTY_METHOD_ABSENT is fail-closed and is not a licence to present the delta as exact.",
+      "never_silent": "An unquantified uncertainty may never be rendered as a bare point value."
+    },
+    {
+      "field": "intervening_span_state",
+      "type": "enum",
+      "required": true,
+      "values": ["NO_INTERVENING_GAP", "TEMPORAL_GAP_INTERVENING"],
+      "meaning": "Whether an unobserved span lies between the anchors. TEMPORAL_GAP_INTERVENING is preserved as typed unknown and may never be filled, interpolated or read as continuity.",
+      "relation_to_direction": "A gap does not by itself forbid an authorized endpoint comparison, but it forbids any continuity, trend, rate or intervening-value claim."
+    },
+    {
+      "field": "relation_state",
+      "type": "enum",
+      "required": true,
+      "meaning": "The single overall typed state of the receipt. This is the EXACT PLACEMENT of the former bare string TEMPORAL_NONCOMPARABLE. See 03_TEMPORAL_STATE_VOCABULARY.json for the full enumeration and for the defect-closure argument.",
+      "values": [
+        "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED",
+        "TEMPORAL_COMPARABLE_NO_DIRECTION",
+        "TEMPORAL_NONCOMPARABLE",
+        "TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION",
+        "TEMPORAL_IDENTITY_UNRESOLVED",
+        "TEMPORAL_ORDER_UNAUTHORIZED",
+        "TEMPORAL_INSUFFICIENT_ANCHORS",
+        "TEMPORAL_ESTIMAND_MISMATCH",
+        "TEMPORAL_MEASURE_MISMATCH",
+        "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT",
+        "TEMPORAL_MAPPING_MATERIAL_ABSENT",
+        "TEMPORAL_INSUFFICIENT_AUTHORITY"
+      ]
+    },
+    {
+      "field": "relation_state_reason",
+      "type": "enum",
+      "required": true,
+      "meaning": "A reason code bound to relation_state. Reason-carrying is mandatory; a bare state with no reason is not a valid receipt.",
+      "note": "This is precisely what the former bare string lacked."
+    },
+    {
+      "field": "governed_use_id",
+      "type": "ExactRef",
+      "required": true,
+      "meaning": "The governed use this receipt is produced for. A receipt is not general-purpose and may not be consumed by another use."
+    },
+    {
+      "field": "authority_snapshot_refs",
+      "type": "tuple[ExactRef, ...]",
+      "required": true,
+      "meaning": "Exact snapshot refs for every authority the claim depends on: TEMPORAL_COMPARABILITY, TEMPORAL_EVIDENCE per anchor, WEIGHT_DESIGN_ESTIMAND, TARGET_USE_PERMISSION, UNCERTAINTY_METHOD, REPLAY_PROTOCOL, and conditionally SOURCE_EQUIVALENCE and NATIVE_CANONICAL_MAPPING_HARMONIZATION.",
+      "fail_closed_surfaces": "AUTHORITY_HASH_MISMATCH and AUTHORITY_SCOPE_MISMATCH remain binding reuse states (rawlsing_next/pre553_empirical_authority.py:54-57). This lane creates no new fail-closed state."
+    },
+    {
+      "field": "provenance",
+      "type": "Mapping[str, Any]",
+      "required": true,
+      "must_include": ["anchor refs and their resolved snapshots", "observation refs", "order basis ref", "estimand and measure refs", "comparison operation identity", "canonical projection rule"],
+      "meaning": "Determinants sufficient to reconstruct the receipt exactly. Mutable or fuzzy resolution is prohibited."
+    }
+  ],
+
+  "temporal_noncomparable_defect_closure": {
+    "defect_as_found": {
+      "state": "TEMPORAL_NONCOMPARABLE",
+      "location": "rawlsing_next/pre553_source_relations.py:54",
+      "context": "Member of FORBIDDEN_BACKFILL_TARGET_STATES",
+      "occurrences_in_current_code_exactly": 1,
+      "findings": [
+        "It existed only as a bare string. It was in no state family, had no producer, had no reason code and had no schema.",
+        "Contrast with the SOURCE-side counterpart: EMPIRICAL_FACT_NONCOMPARABLE IS a produced decision, appended at rawlsing_next/pre553_structural_admission.py:639-640 and :680-681 with reason codes EMPIRICAL_FACT_NONCOMPARABLE and ESTIMAND_NOT_ALLOWED_BY_RULE, derived from fact.typed_state == NONCOMPARABLE, and enumerated at :47 with a state mapping at :65.",
+        "NONCOMPARABLE is additionally enumerated in SOURCE_UNIVERSE_STATE and SOURCE_UNIVERSE_RELATION_STATE (rawlsing_next/pre553_empirical_objects.py:79,88). The SOURCE side therefore has a schema, a producer and a reason; the TEMPORAL side had none of the three."
+      ]
+    },
+    "closure": {
+      "method": "Promoted to a typed, produced, reason-carrying state with an exact placement.",
+      "exact_placement_in_this_return": "TEMPORAL_RELATION_RECEIPT.relation_state",
+      "also_placed_in": "03_TEMPORAL_STATE_VOCABULARY.json as a member of TEMPORAL_RELATION_STATE, and given a mandatory companion reason code in relation_state_reason.",
+      "produced_by": "The temporal comparison operation, under a bound TEMPORAL_COMPARABILITY authority, when the bound requirement set is not jointly satisfied by the anchor pair.",
+      "source_noncomparable_vs_temporal_noncomparable": {
+        "SOURCE_NONCOMPARABLE": {
+          "concerns": "whether the underlying fact itself is comparable",
+          "canonical_state": "NONCOMPARABLE in SOURCE_UNIVERSE_STATE / SOURCE_UNIVERSE_RELATION_STATE",
+          "produced_decision": "EMPIRICAL_FACT_NONCOMPARABLE",
+          "producer": "pre-V3 structural admission, from fact.typed_state == NONCOMPARABLE",
+          "scope_effect": "Limits use of the fact across its source universe relation space.",
+          "evidence": "rawlsing_next/pre553_structural_admission.py:47,65,639-640,680-681; rawlsing_next/pre553_empirical_objects.py:79,88"
+        },
+        "TEMPORAL_NONCOMPARABLE": {
+          "concerns": "whether the ORDERED PAIR is comparable in time under the bound order basis and comparability requirement set",
+          "canonical_state": "TEMPORAL_NONCOMPARABLE in TEMPORAL_RELATION_STATE",
+          "produced_decision": "relation_state on TEMPORAL_RELATION_RECEIPT",
+          "producer": "The temporal comparison operation under TEMPORAL_COMPARABILITY authority",
+          "scope_effect": "Blocks temporal relation and delta use for this pair. It does NOT erase the underlying fact.",
+          "distinct_from_source_side": "A pair may be TEMPORAL_NONCOMPARABLE while the underlying facts remain each individually comparable and usable under non-temporal rules.",
+          "evidence": "defect_as_found, plus the conserved historical semantics below"
+        },
+        "must_not_collapse": "Neither state may be derived from, substituted for, or reported as the other."
+      },
+      "conserved_historical_semantics": {
+        "source": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/advisory/PRE_S01_5_V554_ARCHITECTURE/RESULT.json (V553-origin, advisory, stable-from-accepted-upstream-law)",
+        "verbatim_state_record": {"state": "TEMPORAL_NONCOMPARABLE", "origin": "V553", "classification": "SEMANTIC_F3", "temporal_effect": "blocks relation/delta use; no temporal F1", "non_temporal_effect": "does not erase independent fact", "is_limit": true},
+        "adopted_into_this_contract": {
+          "is_limit": true,
+          "does_not_negate_original_fact": true,
+          "blocks_temporal_relation_and_delta_use": true,
+          "does_not_erase_independent_non_temporal_fact": true
+        },
+        "why_this_matters": "The limit-marker character is the whole point. A naive implementation would treat a noncomparable pair as evidence that nothing is there, which would erase lawful independent non-temporal facts. The is_limit semantics are therefore carried explicitly and are tested by the noncollapse matrix."
+      },
+      "backfill_prohibition_preserved": {
+        "retained": true,
+        "statement": "TEMPORAL_NONCOMPARABLE REMAINS a member of FORBIDDEN_BACKFILL_TARGET_STATES at rawlsing_next/pre553_source_relations.py:54. Promoting it to a real typed state MUST NOT remove it from that tuple, and MUST NOT make it a reachable backfill target.",
+        "no_repair_by_manufacturing": "The defect is closed by giving the state a schema, a producer and a reason. It is NOT closed by deleting the string, and it is NOT closed by permitting a backfill that would make a pair comparable.",
+        "explicitly_forbidden": "No interpolation, no midpoint substitution, no nearest-anchor selection and no default-time lookup may be used to convert a TEMPORAL_NONCOMPARABLE pair into a comparable pair."
+      }
+    }
+  },
+
+  "consumed_by": {
+    "may_be_consumed_by": "A governed use holding the matching TARGET_USE_PERMISSION and consuming only the authorized surface.",
+    "consumption_is_a_separate_operation": "If this receipt is to condition, select a source, or change possibility geometry downstream, that is a separate operation requiring its own authority (HQ204 node H-D).",
+    "must_not_transfer": "The receipt does not transfer to another source universe, survey family, geography, population, instrument release, estimand or order basis."
+  }
+}

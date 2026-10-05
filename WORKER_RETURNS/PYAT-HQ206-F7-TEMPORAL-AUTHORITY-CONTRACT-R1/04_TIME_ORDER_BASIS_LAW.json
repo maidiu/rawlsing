@@ -1,0 +1,150 @@
+{
+  "schema": "PYAT_HQ206_TIME_ORDER_BASIS_LAW@1.0.0",
+  "lane": "PYAT-HQ206-F7-TEMPORAL-AUTHORITY-CONTRACT-R1",
+  "status": "CONTRACT_DERIVED__NOT_ADOPTED__AWAITING_INDEPENDENT_REVIEW",
+
+  "verdict": "POLYMORPHIC_EXACT_TIME_REFS__GRAIN_IS_CLAIM_BOUND__UNIVERSAL_BINARY_NOT_ADOPTED__EXACTLY_FOUR_ORDER_BASIS_KINDS",
+
+  "withdrawn_framing_not_reinstated": {
+    "old_framing": "'For multi-source comparison, is temporal identity keyed on a POINT YEAR or on a FIELDWORK INTERVAL?' presented as a two-way universal fork with a TIME-GRAIN-FORK Astra packet.",
+    "status": "WITHDRAWN / SUPERSEDED",
+    "authority": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ203_TERMINAL_BACKWARD_RESIDUAL_RECALIBRATION_R1.md (sections 4 and Residual docket); HQ206 adjudication ('no universal point-year-vs-fieldwork-interval binary is adopted')",
+    "reinstated_by_this_lane": false,
+    "note": "The commission lists TEMPORAL_CONTRACT_REQUIRES_ASTRA as an allowed disposition. It is NOT claimed. The withdrawn fork is not revived, so no Astra referral is warranted."
+  },
+
+  "the_law": {
+    "rule_1": {
+      "name": "TIME_REF_IS_EXACT_AND_OPAQUE_AT_THE_SUBSTRATE_GRAIN",
+      "meaning": "No code below the rule layer may assume a grain. A time ref is an exact ref; the grain lives in the binding authority."
+    },
+    "rule_2": {
+      "name": "GRAIN_IS_BOUND_BY_EXACT_TEMPORAL_EVIDENCE_AUTHORITY",
+      "meaning": "A claim may use a grain only to the extent the governing rule's exact TEMPORAL_EVIDENCE authority admits it.",
+      "current_mechanism": [
+        "the rule declares which exact time refs are in scope (allowed_effective_time_or_interval_refs, rawlsing_next/pre553_structural_admission.py:218)",
+        "the target use declares which exact time refs it requires (effective_time_or_interval_refs_required_by_target_use, :369)",
+        "the rule must bind exact TEMPORAL_EVIDENCE authority for any time ref it uses (:281-282)",
+        "admission compares by exact-ref membership and emits TEMPORAL_SCOPE_MISMATCH on failure (:673-678)"
+      ],
+      "consequence": "A source could lawfully be used with a point-year ref in one operation and a bounded interval ref in another, because the bound authority differs. Different operations may lawfully carry different exact time representations. This polymorphism IS the law and is preserved deliberately."
+    },
+    "rule_3": {
+      "name": "NO_IMPLICIT_GRAIN_COERCION",
+      "meaning": "No midpoint, no year-from-ordinal, no ordinal-as-date, no interval-to-point collapse, and no interpolation as a substitute time ref.",
+      "historical_support": "data/ddm_build_copy/ddm_v553_temporal_identity.py:30-46,129-144, which accepts temporal_year / fieldwork_year / survey_year / year in 1000..3000, REFUSES to treat a wave ordinal as a year, and requires one anchor per calendar year. Fieldwork intervals are not represented there.",
+      "status": "HISTORICAL_CONSTRAINT, conservable, adopted by this contract"
+    },
+    "rule_4": {
+      "name": "WAVE_LABEL != ORDINAL != CALENDAR_YEAR",
+      "meaning": "The canonical wave is a LABEL. The ordinal is derived only for range comparison and only without changing the canonical label. The calendar year is a separate quantity. None may be substituted for another.",
+      "historical_support": "data/ddm_build_copy/ddm_survey_identity.py:123-159,204-215 - canonical_wave_key preserves the wave as a LABEL (II, W6, ROUND9, 2017); wave_ordinal is derived only 'for range-comparison' and 'without changing the canonical label'.",
+      "binding": "This must survive composition of the temporal_identity_contract_ref and must survive any order basis. A wave label MUST NOT be coerced to a calendar year, and an ordinal MUST NOT be reported as a date."
+    },
+    "rule_5": {
+      "name": "OVERLAPPING_INTERVALS_GIVE_A_PARTIAL_ORDER",
+      "meaning": "Where two authorized interval refs overlap, the order is partial and no direction is claimable for that pair.",
+      "typed_refusal": "TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION",
+      "no_midpoint": "Overlap MUST NOT be coerced to a midpoint. That would fabricate an order the sources do not support."
+    },
+    "rule_6": {
+      "name": "DIFFERENT_OPERATIONS_MAY_CARRY_DIFFERENT_GRAINS",
+      "meaning": "Polymorphism is preserved deliberately. No universal grain is adopted and none is required.",
+      "status": "This is the direct answer to the withdrawn fork: the fork was never lawful, and polymorphism replaces it."
+    },
+    "rule_7": {
+      "name": "NO_SURVEY_FAMILY_MEMBERSHIP_PROOF_OF_GRAIN_ADEQUACY",
+      "meaning": "Same-family membership does not by itself prove that a point-year ref is adequate for a comparison. Adequacy is per-claim and per-authority."
+    },
+    "rule_8": {
+      "name": "NO_SCALAR_ELIGIBILITY",
+      "meaning": "Eligibility for a temporal comparison MUST NOT depend on the presence of a scalar value. No scalar pressure field, coefficient, threshold or inherited deadband determines comparability."
+    }
+  },
+
+  "order_basis_kinds": {
+    "closed": true,
+    "exactly_four": true,
+    "note": "These four kinds are jointly exhaustive and mutually exclusive for the cases the commission names. No fifth kind is derived and no general temporal algebra is authorized.",
+    "kinds": [
+      {
+        "basis": "CALENDAR_TOTAL_ORDER",
+        "meaning": "Order is established by exact calendar position, where exact points or non-overlapping intervals permit it.",
+        "permits_direction": true,
+        "preconditions": [
+          "both anchors' time representations are exact calendar quantities under bound TEMPORAL_EVIDENCE authority",
+          "the two calendar extents are exact points, or intervals that do not overlap",
+          "the canonical calendar mapping material is adopted or bound",
+          "the pair satisfies the comparability requirement set"
+        ],
+        "explicitly_not": "This is NOT a claim that calendar time is the universal grain. It is the basis selected for THIS pair under THIS authority."
+      },
+      {
+        "basis": "FAMILY_LOCAL_ORDINAL",
+        "meaning": "Order is established by a specifically authorized family-local wave ordinal.",
+        "permits_direction": true,
+        "authorization_is_mandatory": "A family-local ordinal basis is lawful ONLY where specifically authorized for that family. It is never assumed from same-family membership (rule_7).",
+        "hard_constraint": "The canonical wave LABEL is preserved unchanged. The ordinal is used only for ordering and never replaces the label. WAVE_LABEL != ORDINAL != CALENDAR_YEAR is binding here.",
+        "must_not": [
+          "convert the ordinal to a calendar year",
+          "report the ordinal as a date",
+          "generalize a family-scoped ordinal into a cross-family or universal order",
+          "treat the ordinal as comparable with a calendar-year quantity"
+        ],
+        "historical_note": "The historically hard-coded EVS_WAVE_BY_YEAR table (data/ddm_build_copy/ddm_survey_identity.py:89) is family-specific harmonization material, not a general grain rule, and may not be generalized. Where such mapping is required and unadopted, the outcome is TEMPORAL_MAPPING_MATERIAL_ABSENT."
+      },
+      {
+        "basis": "PARTIAL_ORDER_NO_DIRECTION",
+        "meaning": "The authorized time representations determine only a partial order over this pair, so no direction is claimable.",
+        "permits_direction": false,
+        "typical_trigger": "The two authorized interval refs overlap.",
+        "refusal_state": "TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION",
+        "no_midpoint": "Partial order MUST NOT be resolved to a midpoint, a representative date, or any other single time ref.",
+        "still_comparable": "A partial-order pair may still be COMPARABLE. Comparability and direction are separate."
+      },
+      {
+        "basis": "ORDER_UNKNOWN_NONCOMPARABLE",
+        "meaning": "No permitted order basis applies, or the temporal ordering is unknown or non-comparable under bound authority.",
+        "permits_direction": false,
+        "refusal_state": "TEMPORAL_NONCOMPARABLE or TEMPORAL_ORDER_UNAUTHORIZED, as the reason code dictates",
+        "no_guess": "Unknown ordering MUST NOT be resolved by latest/default/fuzzy/nearest selection. FORBIDDEN_SELECTOR_TOKENS (rawlsing_next/pre553_empirical_authority.py:58-60) remains binding.",
+        "no_clock": "No clock or environment state may substitute for an unknown order."
+      }
+    ]
+  },
+
+  "required_distinctions_supported": {
+    "calendar_total_order_where_exact_points_or_nonoverlapping_intervals_permit_it": "CALENDAR_TOTAL_ORDER",
+    "family_local_ordinal_where_specifically_authorized": "FAMILY_LOCAL_ORDINAL",
+    "overlapping_or_partially_ordered_intervals_where_direction_may_be_refused": "PARTIAL_ORDER_NO_DIRECTION",
+    "unknown_or_noncomparable_temporal_ordering": "ORDER_UNKNOWN_NONCOMPARABLE",
+    "all_four_distinguished": true,
+    "coercions_explicitly_prohibited": [
+      "DO_NOT_COERCE_OVERLAP_TO_MIDPOINT",
+      "DO_NOT_COERCE_WAVE_ORDINAL_TO_CALENDAR_YEAR",
+      "DO_NOT_COERCE_INTERVAL_TO_POINT",
+      "DO_NOT_COERCE_LABEL_TO_ORDINAL",
+      "DO_NOT_INTERPOLATE_ACROSS_A_GAP"
+    ]
+  },
+
+  "current_adopted_time_surfaces": {
+    "finding": "The current adopted substrate does NOT validate grain. Time refs are exact and grain-free at the substrate; grain lives in bound authority.",
+    "surfaces": [
+      {"ref": "rawlsing_next/pre553_structural_admission.py:218,281-282,305", "field": "allowed_effective_time_or_interval_refs: tuple[ExactRef, ...]", "grain_asserted": false, "typed": false, "finding": "Names EITHER a point OR an interval and constrains neither. No grain enum, no grain validation, no grain assertion, no grain comparison in the module."},
+      {"ref": "rawlsing_next/pre553_structural_admission.py:358,369,674-678", "field": "effective_time_or_interval_refs_required_by_target_use: tuple[ExactRef, ...]", "grain_asserted": false, "finding": "Also exact refs, compared by membership against the rule's allowed set."},
+      {"ref": "rawlsing_next/pre553_structural_admission.py:225-226,273-274,325-326", "fields": ["effective_period: Mapping[str, Any]", "time_geography_applicability: Mapping[str, Any]"], "grain_asserted": false, "finding": "Free mappings that are only canonicalised and hashed. No grain semantics."}
+    ],
+    "recorded_as": "TIME_REFS_CURRENTLY_EXACT_AND_GRAIN_UNVALIDATED - a named residual, NOT repaired here because this lane is documentary only.",
+    "already_binding_and_unchanged": "TEMPORAL_SCOPE_MISMATCH remains an enumerated refusal decision (rawlsing_next/pre553_structural_admission.py:48,68,677-678)."
+  },
+
+  "must_stay_outside": [
+    "adopting any universal point-year vs interval binary",
+    "adopting a >=3-anchor law",
+    "adopting any grain enum at the substrate layer",
+    "generalizing family-scoped wave/year mapping into a universal rule",
+    "midpoint coercion, ordinal-to-year coercion, or any silent interpolation",
+    "any scalar temporal-pressure field"
+  ]
+}
