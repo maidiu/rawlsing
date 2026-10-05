@@ -1,0 +1,84 @@
+{
+  "schema": "PYAT_HQ208_HD_CLOSED_AND_OPEN_PRECONDITIONS@1.0.0",
+  "commission": "PYAT-HQ208-HD-F8-SERVICE-RERECONCILIATION-R1",
+  "control_tip": "26f26a56826e027f0149d12eaa1a5402dea942d9",
+  "prior_hd_return": "2bdd78582a93d334cbdab918c79f4e82c3cf679c",
+  "closed": [
+    {
+      "id": "HD-SVC-ELIGIBILITY-FORM",
+      "prior_state": "SERVICE_SOURCE_APPLICABILITY_UNBOUND",
+      "current_state": "CLOSED_AT_SOURCE_FREE_ELIGIBILITY_GRAIN",
+      "owner": "rawlsing_next/pre553_service_source_applicability.py",
+      "authority": "ADMISSIBLE_SET_ONLY__RANKING_AND_SELECTION_NOT_AUTHORIZED",
+      "exact_effect": "derive a bounded source-indexed unranked admissible set and constrain downstream query scope",
+      "does_not_close": [
+        "SOURCE_SELECTION",
+        "SOURCE_RANKING",
+        "SOURCE_PRIORITY",
+        "F8_CONDITIONING",
+        "CURRENTNESS",
+        "TARGET_USE_PERMISSION_GRANT",
+        "POOLING",
+        "GEOMETRY_OR_DISTRIBUTION_TRANSFORMATION"
+      ]
+    },
+    {
+      "id": "HD-SVC-BOUNDED-CANDIDATE-CLASS",
+      "current_state": "CLOSED_IN_FORM",
+      "exact_effect": "candidate class and exact membership are mandatory; silent broadening/narrowing is refused"
+    },
+    {
+      "id": "HD-SVC-COVERAGE-STATE",
+      "current_state": "CLOSED_IN_FORM",
+      "exact_effect": "COMPLETE and INCOMPLETE are explicit; NO_ADMITTED_SOURCE requires COMPLETE"
+    }
+  ],
+  "open": [
+    {
+      "id": "HD-F8-CONSUMER-BINDING",
+      "state": "MISSING",
+      "blocks": "final source-free service/F8 integration claim",
+      "evidence": [
+        "F8 blob unchanged from HQ203 control to current control: 62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+        "objective-consumer blob unchanged: f30fca20e7b56e00348e82765d95f974b4b6a195",
+        "no receipt-to-F8 adapter was added"
+      ],
+      "minimum_fix": "thin applicability-receipt to F8 source-scope binder with no comparative or transform power"
+    },
+    {
+      "id": "HD-C1-ANALYTICAL-LINEAGE",
+      "state": "ABSENT_FROM_CURRENT_CONTROL",
+      "blocks_only": [
+        "broader C1 analytical composition",
+        "joint/multi-arity production",
+        "C1 route/consumer claims"
+      ],
+      "does_not_block": "static scalar F8 source-eligibility binding"
+    },
+    {
+      "id": "HD-F7-TEMPORAL-COMPARABILITY",
+      "state": "NOT_ADOPTED_OR_IMPLEMENTED_ON_CURRENT_CONTROL",
+      "blocks_only": [
+        "positive comparable-wave movement",
+        "temporal F8 conditioners",
+        "cross-source temporal relations",
+        "temporal pressure/directionality"
+      ],
+      "does_not_block": "static exact-release F8 source-eligibility binding"
+    },
+    {
+      "id": "HD-REAL-APPLICABILITY-OCCUPANCY",
+      "state": "UNPOPULATED_AT_SOURCE_FREE_FORM",
+      "blocks": "live nonempty mature-world admissible sets",
+      "does_not_block": "source-free contract/seam finalization"
+    }
+  ],
+  "minimum_preconditions_for_source_free_hd_final_adoption": [
+    "downstream applicability-receipt to F8 source-scope binding seam",
+    "COMPLETE coverage required for exhaustive source-set claims",
+    "unranked/source-indexed preservation for multi-source admissible sets",
+    "exact receipt/request replay and provenance carried downstream",
+    "currentness and permission remain separate authorities",
+    "F8 algorithm and actor firewall unchanged"
+  ]
+}
