@@ -113,6 +113,13 @@ Rules:
 - never relaunch an existing lane until exact evidence shows the original lane is unavailable or invalid;
 - maximize safe orthogonal concurrency, but never allow concurrent agents to share one checked-out working directory.
 
+Concurrency check before dispatch:
+
+- do not inherit a numeric worker/reviewer slot cap from historical activation packets;
+- identify actual dependency edges and exact write terrain;
+- launch all ready orthogonal critical-path lanes that fit available host/user execution capacity;
+- serialize overlapping semantic owners or reviewer/candidate mutation, not unrelated work.
+
 Deliverable 0:
 
 A one-screen operational ledger that lets the user identify every job by **model/intelligence + branch + machine/worktree + exact tip** without hunting across tabs.
