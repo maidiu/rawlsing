@@ -12,6 +12,89 @@ Selected physical policy: `B__SOURCE_BACKED_VIRTUAL_C11`
 
 Control branch: `integration/pre-main-reconciliation-r1`
 
+## MANDATORY HQ OPERATIONS PREFLIGHT — BEFORE WORKER STATUS OR DISPATCH
+
+A fresh or resumed HQ must read and obey:
+
+- `PYAT_CONTROL_ROOM/SHARED_STORE_SPARSE_WORKTREE_EXECUTION_LAW_R1.md`;
+- the live immutable checkpoint protocol;
+- the worker-state truth law below.
+
+### Worker-state truth law
+
+**Do not infer worker state from commission records, search results, or a stale handoff.**
+
+For every active/recent worker branch, resolve the **direct remote branch HEAD on origin** before reporting status or deciding whether to rerun, resume, review, or adopt.
+
+The only permitted lifecycle labels are:
+
+1. **NEW — NEEDS LAUNCH**  
+   Commission exists; no worker has been started for that lane.
+
+2. **EXISTING — ACTIVE / NOT YET RETURNED**  
+   Worker is known to be running or resumable, but no terminal return has been established.
+
+3. **RETURNED LOCALLY — PUSH REQUIRED**  
+   Use this only when the worker/session itself explicitly reports completed local work that has not reached origin.  
+   **Remote HEAD == commission tip is NOT evidence of local completion.**
+
+4. **PUSHED — READY FOR HQ INTAKE**  
+   Direct origin branch HEAD has advanced to the worker return and the pushed tip is exact.
+
+5. **ADOPTED / CLOSED**  
+   HQ has independently adjudicated and, where required, reviewed/integrated the return. A pushed worker claim is not adoption.
+
+If a branch appears unchanged:
+- first resolve the direct origin branch endpoint;
+- check for an alternate exact return only when there is evidence one may exist;
+- otherwise classify it as **ACTIVE / NOT YET RETURNED** unless explicit local evidence proves **RETURNED LOCALLY — PUSH REQUIRED**;
+- never tell the user to rerun a lane merely because origin has not moved.
+
+### Mandatory dispatch/status identity block
+
+Every commission, launch instruction, status recap and “needs push” notice must prominently co-locate:
+
+- **STATUS**
+- **AGENT**
+- **MODEL / INTELLIGENCE**
+- **MACHINE** when assigned/known
+- **WORKTREE** when prepared/known
+- **BRANCH**
+- **EXACT COMMISSION / STARTUP TIP**, or **RETURN TIP** once returned
+
+The model/intelligence level is operational identity, not optional prose. The user runs many simultaneous tabs across multiple machines and must be able to place a job without archaeology.
+
+### Shared-store worktree default
+
+On each machine:
+
+`ONE CANONICAL CLONE / OBJECT STORE + ONE ISOLATED SPARSE WORKTREE PER CONCURRENT BRANCH`
+
+Workers:
+- do **not** create duplicate clones;
+- do **not** share one checked-out working directory concurrently;
+- do **not** recreate an existing worktree;
+- do **not** broaden sparse scope merely to inspect history;
+- do **not** fetch broadly as routine setup;
+- preserve lawful local work when resuming;
+- use exact Git-object reads for historical material outside sparse scope;
+- push only their commissioned branch;
+- re-fetch/verify the exact remote tip before declaring return.
+
+A missing worktree is an infrastructure/bootstrap issue, not permission to clone. A missing governed runtime environment is an environment/provenance issue, not permission to recreate the repository or falsely relabel a reconstruction as governed.
+
+### HQ intake law
+
+For every pushed return, HQ should immediately:
+1. resolve exact origin return tip;
+2. verify ancestry from the commission/base;
+3. compare exact changed paths;
+4. read the required return packet and decisive evidence;
+5. determine whether independent hostile review is mandatory;
+6. only then adopt, repair, review, or close.
+
+Do not wait for unrelated siblings when an orthogonal pushed return can be adjudicated independently.
+
 ## Current user-selected workflow: Space Bunny in OpenCode
 
 Start with [Space Bunny HQ — start here](SPACE_BUNNY_OPENCODE_R1/HQ_START_HERE.md) and the [complete activation packet](SPACE_BUNNY_OPENCODE_R1/README.md). This delivery supersedes Browser Economy as default routing for the user-selected OpenCode activation. Read [the current remote-machine handoff](SPACE_BUNNY_OPENCODE_R1/CURRENT_HANDOFF.md) before acting. Setup and review have progressed through HQ187; that handoff preserves completed work, records the remaining qualification limit and routes the published corrections into the next consolidated decision.
