@@ -1,0 +1,93 @@
+{
+  "schema": "PYAT_HQ210_REGISTRY_AND_REPLAY_ATTACK@1.0.0",
+  "lane": "PYAT-HQ210-V556-FINAL-INDEPENDENT-REVIEW-R1",
+  "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_IMPLEMENTATION",
+
+  "attack_5_registry_and_tranche_ceilings": {
+    "verdict": "CLOSED",
+    "frozen_family_set_enforced_at_registry": {
+      "verified": true,
+      "ref": "pre553_v556_positive_substrate.py:737-739",
+      "court": "test_registry_build_refuses_invented_semantic_family",
+      "note": "the prior review's F5/P4 publication-surface gap is closed"
+    },
+    "one_rule_per_family_is_tranche_local": {
+      "verified": true,
+      "constant": "TRANCHE_LOCAL_ONE_RULE_PER_FAMILY (:112)",
+      "note_constant": "TRANCHE_LOCAL_ONE_RULE_PER_FAMILY_NOTE (:113-117) states 'IN THIS TRANCHE only' and 'not a timeless ceiling'",
+      "surfaced_in_snapshot": true,
+      "enforced_at": "registry build :755-758",
+      "court": "test_duplicate_semantic_family_branch_uses_distinct_rule_keys uses DISTINCT rule keys before asserting the family branch"
+    },
+    "admitted_role_narrowing_documented": {
+      "verified": true,
+      "constant": "TRANCHE_LOCAL_ADMITTED_ROLE_NARROWING (:88-106)",
+      "names_what_m3_also_admits": ["OBJECTIVE_ACTOR_INDEX", "OBJECTIVE_POSITION", "OBJECTIVE_OPPORTUNITY"],
+      "claims_no_architectural_ceiling": true
+    },
+    "objective_actor_indexed_disposition": {
+      "verdict": "COHERENT - WITHDRAWN, NOT DEAD",
+      "constant": "TRANCHE_LOCAL_ACTOR_INDEXING_MODES = (\"NO_ACTOR_INDEX\",) (:122)",
+      "reason_constant": "ACTOR_INDEXED_MODE_WITHDRAWN_REASON (:123-127)",
+      "enforced_at": "author_result_contract_binding :559-562 and validate_result_contract_binding :517-520",
+      "coherence_verified": "ADMITTED_OBJECTIVE_ROLES (:89-98) excludes OBJECTIVE_ACTOR_INDEX, and M3 requires that role for OBJECTIVE_ACTOR_INDEXED (m3:727-728), so the mode was genuinely unsatisfiable"
+    },
+    "residuals": [
+      {
+        "id": "REG-RES-1",
+        "finding": "ADMITTED_OBJECTIVE_SCHEMA_CLASSES (:209-215) admits OBJECTIVE_ACTOR_POSITION and OBJECTIVE_ACTOR_OPPORTUNITY while the role narrowing excludes OBJECTIVE_POSITION and OBJECTIVE_OPPORTUNITY, and nothing links a schema class to a semantic family.",
+        "probe": "P6",
+        "probe_outcome": "a V556_TOPOLOGY rule was authored carrying an OBJECTIVE_MEASUREMENT result schema class",
+        "severity": "LOW"
+      }
+    ]
+  },
+
+  "attack_7_robustness": {
+    "verdict": "CLOSED",
+    "multiplicity_policy_vocabulary": {
+      "constant": "MULTIPLICITY_POLICIES = (EXACT_OCCURRENCE_INDEX, ROUTE_INDEXED_OCCURRENCE_SET) (:130-133)",
+      "enforced_at": ":645-649",
+      "probe": "WHATEVER_I_LIKE refused with the frozen-vocabulary message",
+      "court": "test_multiplicity_policy_is_frozen_to_a_named_vocabulary"
+    },
+    "stale_hash_and_mutation_resistance": {
+      "deep_freeze_verified": true,
+      "probe_P9_result": "every attempted in-place mutation of rule body, nested schema fields, nested refs and allowed-value lists failed closed (TypeError on MappingProxyType, AttributeError/TypeError on tuples)",
+      "registry_recomputes_both_hashes": true,
+      "refs": "binding hash at :536-540; rule hash at :747-752",
+      "courts": [
+        "test_authored_material_is_deep_frozen",
+        "test_registry_build_detects_a_stale_rule_hash",
+        "test_tampered_binding_fails_validation_rather_than_being_registered"
+      ]
+    },
+    "residuals": [
+      {
+        "id": "ROB-RES-1",
+        "finding": "GovernedRule.result_contract stores result_contract.binding (:710) without re-freezing it. A hand-built ResultContractBinding constructed from raw dicts is validated at :654 but stored unfrozen until registry build re-validates at :741.",
+        "impact": "fails closed at the registry; weaker than the absolute R7 immutability statement for that construction path",
+        "severity": "LOW"
+      }
+    ]
+  },
+
+  "valid_empty_and_seam_state": {
+    "substrate_state_empty_registry": "VALID_EMPTY_NO_GOVERNED_RULE",
+    "probe_P8": {
+      "empty_registry_state": "VALID_EMPTY_NO_GOVERNED_RULE",
+      "m3_decision": "UNKNOWN_AUTHORITY",
+      "m3_behavior": "V556_EVALUATION_FAILED",
+      "m3_reason": "rule authority is not in exact active V556 authority snapshot"
+    },
+    "assessment": "The substrate's VALID_EMPTY_NO_GOVERNED_RULE is reachable and lawful, and the empty registry emits no positive object and infers no absence. The prior review's F8 - the adopted distinction between 'no rule authorizes' and 'authority/build failure' is lost at the seam, which returns UNKNOWN_AUTHORITY for both - is unchanged, and the candidate correctly declares the seam out of scope and leaves it open for the seam owner. Not scored against this candidate."
+  },
+
+  "replay": {
+    "positive_core_replay_stability": {
+      "independently_reproduced": true,
+      "court": "test_repaired_topology_evaluation_replay_is_stable",
+      "note": "identical replay_key_hash under participant permutation, through the unmodified seam"
+    }
+  }
+}

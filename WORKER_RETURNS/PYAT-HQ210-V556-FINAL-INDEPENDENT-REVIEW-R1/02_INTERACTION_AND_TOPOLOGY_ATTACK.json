@@ -1,0 +1,101 @@
+{
+  "schema": "PYAT_HQ210_INTERACTION_AND_TOPOLOGY_ATTACK@1.0.0",
+  "lane": "PYAT-HQ210-V556-FINAL-INDEPENDENT-REVIEW-R1",
+  "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_IMPLEMENTATION",
+
+  "td_r03_source_verification": {
+    "file": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/TD_R03_V556/RESULT.md",
+    "non_inference_law": {
+      "line": 154,
+      "verified_verbatim": "No F1 may be created solely because routes coexist, have opposite signs/directions, share source/target/mediator/stratum, overlap in geography/time, derive from the same V554 affordance, have similar labels, or appear together in runtime context. These may be candidate premises a future rule examines; they are never the rule itself."
+    },
+    "section_6_verdict": {
+      "line": 181,
+      "verified_verbatim": "No complete governed V556 interaction-rule authority was found in the audited architecture. Therefore F1 is required as a family but the first implementation tranche may be valid-empty. Empty because no rule authorizes a relation is distinct from missing/corrupt input, schema failure, duplicate ID, hash failure or other construction failure."
+    },
+    "gate_G14": {"line": 509, "verified": true},
+    "gate_G02": {"line": 497, "verified": true},
+    "numeric_clause": {"line": 146, "verified_verbatim": "nullable numeric-formula ref, unset by default"},
+    "candidate_quotes_accurate": true
+  },
+
+  "attack_3_interaction_law": {
+    "forbidden_premise_removal_reasoning": {
+      "verdict": "CORRECT AND VERIFIED AT SOURCE",
+      "evidence": "The prior tranche's PERMITTED_RELATION_KINDS was exactly COEXISTING_STRUCTURAL_INCIDENCE, SHARED_UPSTREAM_STRUCTURAL_CHANNEL, PARALLEL_STRUCTURAL_OCCURRENCE - the three TD_R03 §5 forbidden premises. The load-bearing change is an un-inversion of a non-inference law, not the removal of a scalar. AUTHORIZED_INTERACTION_RELATION_KINDS = () is correct. interaction_relation_canary_rule() refusing instead of minting a replacement kind is correct."
+    },
+    "valid_empty_claim": {
+      "claim_as_written": "V556_INTERACTION_RELATION is returned lawfully VALID_EMPTY",
+      "verdict": "TRUE OF THE CANARY INSTANCE; FALSE AS A MACHINERY CEILING",
+      "mechanism": "SUPPORTED_FAMILIES = tuple(sorted(V556_SEMANTIC_FAMILIES)) (pre553_v556_positive_substrate.py:74), so the registry gate accepts all three frozen families, and author_governed_rule accepts any frozen family (:623-626). Nothing refuses V556_INTERACTION_RELATION or V556_ATTRACTOR_PREREQUISITE at the generic authoring path.",
+      "probe": "P7",
+      "probe_declaration": "V556_INTERACTION_RELATION rule whose schema is an array of UNBOUNDED strings, min_items 2",
+      "probe_outcome": {
+        "authored": true,
+        "registry_state": "GOVERNED_RULES_PRESENT",
+        "populated_families": ["V556_INTERACTION_RELATION"],
+        "m3_decision": "SUPPORTED",
+        "positive_object_payload": {"coexisting_relations": ["COEXISTING_STRUCTURAL_INCIDENCE", "PARALLEL_STRUCTURAL_OCCURRENCE"]}
+      },
+      "significance": "The literal TD_R03 §5 forbidden premise names appear inside a positively evaluated V556 object of the interaction family, while the return asserts the family is lawfully empty and no fabricated positive relation kind exists."
+    },
+    "attractor_family": {
+      "claim_as_written": "V556_ATTRACTOR_PREREQUISITE remains lawfully unfilled / no attractor population",
+      "verdict": "TRUE OF THE SHIPPED REGISTRY; authorable through the generic path by the same mechanism",
+      "court_used": "test_attractor_family_remains_unfilled asserts against source_free_canary_registry()"
+    },
+    "court_authenticity_note": "test_interaction_family_is_lawfully_valid_empty and test_no_positive_interaction_relation_is_fabricated both assert against source_free_canary_registry(), i.e. against instance material rather than the machinery - the assertion class the prior review criticised."
+  },
+
+  "attack_4_topology_truthfulness": {
+    "verdict": "CLOSED",
+    "dyadic_maximum": {
+      "constant": "TOPOLOGY_CANARY_MAX_CARDINALITY = 2 (:861)",
+      "used_at": ":912",
+      "seam_enforces": "m3:397-400 refuses a participant count above the declared maximum",
+      "independently_reproduced": "test_truthful_cardinality_is_enforced_by_the_seam_not_only_by_us passes"
+    },
+    "shared_channel_removed": {
+      "fields_now": ["endpoint_a_ref", "endpoint_b_ref", "incidence_kind"],
+      "verified": "_topology_schema (:870-884) contains no shared_structural_channel_ref"
+    },
+    "labelling": {
+      "shape_label": "HQ206_ONE_ILLUSTRATIVE_AUTHORIZED_DYADIC_INCIDENCE_SHAPE (:860)",
+      "f2_claim": "NOT_AN_F2_ATTRACTOR_PREREQUISITE_TOPOLOGY__NO_F2_GRAIN_CLAIMED (:865-867)",
+      "both_surfaced_in_snapshot": true
+    },
+    "payload_binding": {
+      "function": "validate_payload_against_participants (:812-854)",
+      "binds_payload_route_refs_to_governed_participant_identifiers": true,
+      "accepts_either_m3_identifier": "object_id (route_id) or content_hash (semantic_hash(route)) - :826-833, :850-851",
+      "cardinality_ordering_fixed": "floor and maximum at :834-841 before field binding at :843-854"
+    },
+    "no_f2_grain_materialized": true,
+    "residuals": [
+      {
+        "id": "TOPO-RES-1",
+        "finding": "TOPOLOGY_CANARY_SHAPE_LABEL and TOPOLOGY_CANARY_F2_CLAIM appear only in snapshot(); _topology_schema and topology_canary_rule carry no label, so the emitted rule/schema/contract material does not declare itself illustrative.",
+        "receipt_claim_affected": "03_TOPOLOGY_AND_INTERACTION_DISPOSITION.json 'the material declares itself ...'",
+        "severity": "LOW"
+      },
+      {
+        "id": "TOPO-RES-2",
+        "finding": "validate_payload_against_participants is not called on any production path. No module imports the substrate and the seam performs no route-binding join.",
+        "consequence": "the payload-to-participant binding is a court-exercised helper, not enforcement on the evaluation path",
+        "severity": "LOW"
+      }
+    ]
+  },
+
+  "attack_8_no_ontology_smuggling": {
+    "verdict": "PARTIAL",
+    "new_semantic_families": 0,
+    "new_state_families": 0,
+    "new_relation_kinds": 0,
+    "fabricated_positive_relation_kind": false,
+    "attractor_population_in_shipped_registry": false,
+    "value_level_smuggling_reachable": true,
+    "evidence": "probes P1 (blocked strong noun), P2/Q3 (arbitrary ref kind), P4 (numeric magnitude as string) all reach positively evaluated V556 objects with M3DecisionState.SUPPORTED; P7 authors an interaction-family rule with forbidden-premise payload values",
+    "conclusion": "no NEW ontology is declared, but the machinery still materializes FORBIDDEN ontology at value level through UNBOUNDED leaves"
+  }
+}

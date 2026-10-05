@@ -1,0 +1,154 @@
+{
+  "schema": "PYAT_HQ210_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ210-V556-FINAL-INDEPENDENT-REVIEW-R1",
+  "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_IMPLEMENTATION",
+
+  "review_tip": "bb453566e96ab11bb6f54574c2e45962ec32a9e4",
+  "commissioned_startup_base": "7cc1ce20238e06e4b785b6a804cc885cd19d641a",
+  "candidate": "agent/rabochii-pyat-hq206-v556-repair-r1 @ 3a2dcafe024b2556af1df909deb5452841e45b7c",
+  "original_repair_startup": "1be02e9505df56291f61e46a79b37e49e8afdf9b",
+  "repair_base": "87268ffaa60ebd9119aa46dc3f664e12d632b4d5",
+  "prior_hostile_review": "5f3b799736eefbde56086b82287da80e20dbe890",
+
+  "disposition": "V556_REPAIR_PARTIAL__BOUNDED_REPAIR_REQUIRED",
+  "v556_adopted": false,
+
+  "disposition_allowed_values_considered": {
+    "ACCEPT_V556_REPAIR__READY_FOR_HQ_ADOPTION": "NOT SELECTED. The commission's attack #2 (generic enum/exact-ref escape routes) is open and reproduced three ways: an UNBOUNDED leaf delivers blocked strong nouns, arbitrary ref kinds and numeric magnitudes into positively evaluated V556 objects. Two receipt claims are false at the machinery level as a result, and the interaction family's valid-empty ceiling is an instance claim, not a machinery ceiling.",
+    "V556_REPAIR_PARTIAL__BOUNDED_REPAIR_REQUIRED": "SELECTED. Seven of the prior review's ten findings are closed with verified behavioural evidence, the load-bearing reduction is correct and sourced, the seam is byte-identical, and every remaining defect is bounded and repairable without architecture change.",
+    "V556_REPAIR_AUTHORITY_OVERREACH": "NOT SELECTED. The repair introduces zero new semantic families, zero new state families, zero new relation kinds, no attractor population in the shipped registry, and no fabricated positive relation kind. It is a reduction. The defect is an incomplete gate, not an overreach.",
+    "V556_REPAIR_ARCHITECTURE_CONFLICT": "NOT SELECTED. No conflict with adopted authority was found. The adopted M3/M2 seam is byte-identical and the mismatch that the repair had to reconcile (contract_id in the hash, route_id vs content_hash) was resolved in the substrate, not in the seam.",
+    "V556_REVIEW_BLOCKED_BY_MISSING_EXACT_EVIDENCE": "NOT SELECTED. Every candidate artifact, the prior review, the original commission and the architecture of record were read at exact commits. The only unreproducible item is the full-suite regression baseline, which is reported honestly as reconstructed rather than certified."
+  },
+
+  "headline_findings": [
+    {
+      "id": "HF-1",
+      "finding": "The authoring ontology gate validates only DECLARED enum values and DECLARED exact-ref kinds. A leaf declared UNBOUNDED bypasses it entirely, and no layer validates the value: M3 accepts any string (m3:658-660) or kind (m3:667-669) and copies the payload into the positive object (m3:931).",
+      "severity": "BLOCKING",
+      "probes": ["P1", "P2/Q3", "P4"],
+      "repair_ref": "Repair 1"
+    },
+    {
+      "id": "HF-2",
+      "finding": "Two receipt claims are false at the machinery level: (a) 02_VOCABULARY_AUTHORITY_RECEIPT.json numeric_ceiling.consequence - 'no numeric ... magnitude can be authored through any positive path' (P4 disproves); (b) 01_REPAIR_MATRIX.json R2 and 00_RETURN.md R2 - the whole semantic class is blocked and strong nouns/numeric leaves are refused (true only for closed leaves; P5 shows ten accepted actor-semantic labels).",
+      "severity": "BLOCKING",
+      "repair_ref": "Repairs 3, 4"
+    },
+    {
+      "id": "HF-3",
+      "finding": "The V556_INTERACTION_RELATION family is authorable and positively evaluable through the generic path with TD_R03 §5 forbidden-premise names inside the positive object's payload (probe P7). The return asserts the family is lawfully VALID_EMPTY and no fabricated positive relation kind exists; that is true of the shipped canary registry, not of the machinery. The same mechanism leaves V556_ATTRACTOR_PREREQUISITE authorable.",
+      "severity": "BLOCKING",
+      "repair_ref": "Repair 2"
+    },
+    {
+      "id": "HF-4",
+      "finding": "The repaired court has no witness for the commission's attack #2: no UNBOUNDED payload-value test, no UNBOUNDED exact-ref-kind test, no string-riding magnitude test, no generic-path interaction/attractor authoring test. The numeric test proves only that node TYPES are refused.",
+      "severity": "HIGH",
+      "repair_ref": "Repair 5"
+    },
+    {
+      "id": "HF-5",
+      "finding": "The actor-semantic role token list is not whole-class. Of 12 further actor-semantic candidates, 10 are accepted (SELF_MODEL, IDENTITY_COMMITMENT, INNER_STATE, SUBJECTIVE_MEANING, WORLDVIEW, TEMPERAMENT, STRUCTURAL_SELF, HABITUS, DISPOSITION, ORIENTATION).",
+      "severity": "MEDIUM",
+      "repair_ref": "Repair 4"
+    },
+    {
+      "id": "HF-6",
+      "finding": "TOPOLOGY_CANARY_SHAPE_LABEL and TOPOLOGY_CANARY_F2_CLAIM exist only in snapshot(), so the emitted rule/schema/contract material does not declare itself illustrative; and validate_payload_against_participants is not called on any production path.",
+      "severity": "LOW",
+      "repair_ref": "Repair 6"
+    },
+    {
+      "id": "HF-7",
+      "finding": "author_governed_rule checks binding_ref kind and content_hash but not object_id; ADMITTED_OBJECTIVE_SCHEMA_CLASSES admits actor-named classes whose roles the tranche excludes and nothing links class to family; a hand-built ResultContractBinding is stored unfrozen.",
+      "severity": "LOW",
+      "repair_ref": "Repairs 6, 7"
+    },
+    {
+      "id": "HF-8",
+      "finding": "The full-suite regression baseline (227/2293/53, 280 IDs) could not be independently reproduced in this environment (observed 223/2263/59). Reported as reconstructed, not certified. A structural substitute is supplied: the change set is two files, no module imports the changed module, the seam is byte-identical, and the +18 passed delta reconciles to 17->35.",
+      "severity": "EVIDENCE_CLASSIFICATION"
+    }
+  ],
+
+  "what_is_sustained": [
+    "The load-bearing change is a correct un-inversion of TD_R03 §5's non-inference law, verified against the architecture of record at source (RESULT.md:154, :181, :497, :509).",
+    "Authoring-time refusal now genuinely reaches the binding author, the rule author and the registry build, with hash mirroring that matches the M3 seam exactly rather than approximately.",
+    "The five implementation-discovered defects are real and their fixes are correct at source; no substitute defect was introduced.",
+    "The false UNBOUNDED topology maximum is corrected to a truthful dyadic 2, and the seam refuses a third participant.",
+    "The mandatory shared-channel field is removed; the shape declares itself illustrative with an explicit no-F2-grain label.",
+    "The tranche-local narrowings and one-rule-per-family restriction are named data with correct 'not a timeless ceiling' notes surfaced in the snapshot.",
+    "OBJECTIVE_ACTOR_INDEXED is withdrawn rather than left as a dead accepted mode, and the withdrawal is coherent with the role narrowing.",
+    "Material is deep-frozen and multiplicity is a frozen named two-value vocabulary.",
+    "The positive core survives: SUPPORTED through the unmodified seam with stable replay, independently re-run green.",
+    "The adopted M3/M2 seam is byte-identical, and the change has zero importers and therefore zero blast radius.",
+    "The 35 + 29 + 28 = 92 court surface reproduces exactly, and the prior review's specific vacuity defects (no-op ternary, misspelled family, wrong registry branch) are genuinely fixed.",
+    "The self-referential denominator defect is corrected: no self-authored property count is asserted."
+  ],
+
+  "bounded_repair_set": [
+    {"ref": "Repair 1", "blocking": true, "target": "_node_string / _node_exact_ref / _validate_authored_schema_node", "requirement": "Close the UNBOUNDED value path: either refuse the sentinel and require closed enums/kind lists, or validate payload VALUES against a governed vocabulary on a path that actually runs before the positive object is assembled. Record that the gate is currently syntactic against the declaration."},
+    {"ref": "Repair 2", "blocking": true, "target": "author_governed_rule + V556RuleMaterialRegistry.build + 03_/07_ disposition artifacts", "requirement": "Make the interaction/attractor valid-empty claim machinery-true (refuse those families at author/registry until a governed interaction-rule registry exists) or restate every claim as 'empty in the shipped registry only'."},
+    {"ref": "Repair 3", "blocking": true, "target": "02_VOCABULARY_AUTHORITY_RECEIPT.json numeric_ceiling.consequence; 01_REPAIR_MATRIX.json R2; 00_RETURN.md R2", "requirement": "Make the numeric and strong-noun claims true or qualify them to what the declared-value gate delivers."},
+    {"ref": "Repair 4", "blocking": false, "required_before_adoption": true, "target": "_FORBIDDEN_PARTICIPANT_ROLE_TOKENS", "requirement": "Extend the role refusal to the class the receipt claims, or narrow the claim. The ten accepted labels are the evidence."},
+    {"ref": "Repair 5", "blocking": false, "required_before_adoption": true, "target": "test_pre553_v556_positive_substrate_court.py", "requirement": "Add the missing witnesses: UNBOUNDED string payload with a blocked noun; UNBOUNDED exact-ref kind with a blocked noun; numeric magnitude on a string leaf; generic-path authoring of V556_INTERACTION_RELATION and V556_ATTRACTOR_PREREQUISITE. Replace or drop the constant-assertion provenance test."},
+    {"ref": "Repair 6", "blocking": false, "required_before_adoption": true, "target": "_topology_schema / topology_canary_rule / 03_...json; validate_payload_against_participants", "requirement": "Carry the illustrative/no-F2 labels in the emitted material or restate the receipt; decide whether the payload-binding helper is enforcement (wire it in) or a court helper (stop describing it as enforcement)."},
+    {"ref": "Repair 7", "blocking": false, "target": ":655-659; ADMITTED_OBJECTIVE_SCHEMA_CLASSES; GovernedRule.result_contract", "requirement": "Check binding_ref object_id at authoring; reconcile actor-named schema classes with the role narrowing and link class to family; freeze the binding on the hand-built construction path."}
+  ],
+
+  "reviewer_answers": {
+    "authoring_validation_closed": true,
+    "ontology_gating_closed": false,
+    "generic_enum_exact_ref_escape_reachable": true,
+    "interaction_valid_empty_is_machinery_ceiling": false,
+    "topology_truthful": true,
+    "registry_and_tranche_ceilings_closed": true,
+    "court_authenticity_prior_defects_fixed": true,
+    "court_covers_attack_2": false,
+    "robustness_closed": true,
+    "no_new_ontology_declared": true,
+    "forbidden_ontology_still_materializable_at_value_level": true,
+    "m3_seam_preserved": true,
+    "court_surface_92_reproduced": true,
+    "full_suite_regression_independently_reproduced": false,
+    "architecture_conflict": false,
+    "authority_overreach": false,
+    "safe_for_hq_adoption": false
+  },
+
+  "reviewer_verification_performed": [
+    "Review tip verified against the pushed branch before any work.",
+    "Candidate change set verified by git diff --name-status against the repair base: two production files, nothing else.",
+    "Blast radius verified: repository-wide search finds zero importers of the changed module.",
+    "M3 and M2 seam files verified byte-identical against both the original repair startup and the prior review control.",
+    "All eight candidate return artifacts read and cross-checked against the code.",
+    "Prior hostile review and its ten required repairs read from the exact commit.",
+    "Original HQ206 repair commission and the HQ210 review commission read from their exact commits.",
+    "Architecture of record TD_R03 read at source; each candidate quotation verified verbatim.",
+    "The three courts independently re-run: 35/29/28 = 92 passed.",
+    "Ten read-only hostile probes executed against the candidate module from a checkout at the exact candidate SHA.",
+    "Every escape-route claim confirmed by observing M3DecisionState.SUPPORTED and inspecting the resulting positive object's semantic payload.",
+    "A negative control confirms the gate works for closed leaves, isolating the defect to the UNBOUNDED sentinel.",
+    "The full rawlsing_next suite attempted twice to test the regression baseline; the mismatch is reported rather than smoothed over.",
+    "Every numeric claim in the receipts checked against observed probe behaviour."
+  ],
+
+  "hard_holds_respected": {
+    "raw_survey_files": false,
+    "locator_discovery": false,
+    "warrant_issuance": false,
+    "live_c4": false,
+    "c7": false,
+    "actor_person_implementation": false,
+    "attractor_population": false,
+    "new_v556_semantics": false,
+    "implementation_edits": false,
+    "self_adoption": false,
+    "merge_or_candidate_repair": false
+  },
+
+  "what_this_review_does_not_do": "It does not adopt V556, repair the candidate, merge, or issue a warrant. It returns one disposition and a bounded repair set. V556 remains unadopted until this review passes.",
+
+  "terminal": "HQ210_V556_FINAL_HOSTILE_REVIEW_RETURNED__HQ_DECISION_REQUIRED"
+}

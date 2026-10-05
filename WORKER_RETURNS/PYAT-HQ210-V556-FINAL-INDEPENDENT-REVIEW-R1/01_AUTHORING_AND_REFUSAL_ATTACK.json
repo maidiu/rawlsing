@@ -1,0 +1,187 @@
+{
+  "schema": "PYAT_HQ210_AUTHORING_AND_REFUSAL_ATTACK@1.0.0",
+  "lane": "PYAT-HQ210-V556-FINAL-INDEPENDENT-REVIEW-R1",
+  "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_IMPLEMENTATION",
+
+  "review_tip": "bb453566e96ab11bb6f54574c2e45962ec32a9e4",
+  "commissioned_startup_base": "7cc1ce20238e06e4b785b6a804cc885cd19d641a",
+  "candidate": "agent/rabochii-pyat-hq206-v556-repair-r1 @ 3a2dcafe024b2556af1df909deb5452841e45b7c",
+  "original_repair_startup": "1be02e9505df56291f61e46a79b37e49e8afdf9b",
+  "repair_base": "87268ffaa60ebd9119aa46dc3f664e12d632b4d5",
+  "prior_hostile_review": "5f3b799736eefbde56086b82287da80e20dbe890",
+  "architecture_of_record": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/TD_R03_V556/RESULT.md",
+
+  "environment": {
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "venv": "/tmp/hq210venv (independent reviewer venv, outside the repository)",
+    "probe_scripts": "/tmp/hq210probe.py, /tmp/hq210probe2.py (outside the repository)",
+    "candidate_declared_env_present_in_this_checkout": false,
+    "candidate_declared_env": "LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python"
+  },
+
+  "change_set_verified": {
+    "command": "git diff --name-status 87268ffaa60ebd9119aa46dc3f664e12d632b4d5 3a2dcafe024b2556af1df909deb5452841e45b7c",
+    "production_files_modified": 2,
+    "production_files": [
+      "rawlsing_next/pre553_v556_positive_substrate.py",
+      "rawlsing_next/tests/test_pre553_v556_positive_substrate_court.py"
+    ],
+    "return_artifacts_added": 9,
+    "files_created_beyond_those": 0,
+    "candidate_claim_matches": true
+  },
+
+  "blast_radius_verified": {
+    "method": "repository-wide grep for importers of the changed module outside the module and its own court",
+    "importers_found": 0,
+    "consequence": "zero-new-regression-ID is guaranteed by construction, independently of any suite run"
+  },
+
+  "seam_preservation_verified": {
+    "files": ["rawlsing_next/m3_v556_higher_order_structural.py", "rawlsing_next/m2_v555_atomic_route.py"],
+    "diff_vs_original_repair_startup": "EMPTY",
+    "diff_vs_prior_review_control_87268ffaa": "EMPTY",
+    "candidate_claim_true": true
+  },
+
+  "r1_authoring_validation": {
+    "verdict": "CLOSED",
+    "verified_at_source": [
+      "author_closed_result_schema validates the root through _validate_authored_schema_node (pre553_v556_positive_substrate.py:432-452)",
+      "author_result_contract_binding validates the schema, recomputes schema_ref via _expected_schema_ref and requires exact equality (:543-594, equality at :574-578)",
+      "author_governed_rule re-validates the embedded contract, checks the ref kind, checks the ref content_hash commits to the binding, checks the binding names the same rule id/version (:651-663)",
+      "V556RuleMaterialRegistry.build re-validates frozen family, embedded contract, family agreement, contract-ref agreement, and recomputes rule_content_hash (:727-762)"
+    ],
+    "hash_mirroring_verified": {
+      "binding_hash": "substrate reconstructs {contract_id: M3_CONTRACT_ID, **rest} (:536-540); M3 does the same (m3_v556_higher_order_structural.py:729-745). Match.",
+      "rule_hash": "substrate excludes rule_content_hash + authority triple (:747-752); M3 _rule_body_material excludes the authority triple. Match."
+    },
+    "residuals": [
+      {
+        "id": "R1-RES-1",
+        "finding": "author_governed_rule checks binding_ref kind and content_hash but never binding_ref object_id (:655-659).",
+        "impact": "M3 validates the reconstructed object_id (m3:746-751), so this fails closed at the seam rather than at authoring.",
+        "severity": "LOW"
+      }
+    ]
+  },
+
+  "r2_ontology_gating": {
+    "verdict": "OPEN__ESCAPE_ROUTE_REPRODUCED",
+    "mechanism": "The authoring gate validates DECLARED enum values and DECLARED exact-ref kinds. When a leaf declares the documented UNBOUNDED sentinel, no layer validates the value: M3 accepts any string (m3:658-660) or any ref kind (m3:667-669) and copies the payload verbatim into the positive object (m3:931).",
+    "positive_reproductions": [
+      {
+        "probe": "P1/Q1",
+        "declaration": "_node_string(\"OBJECTIVE_STRUCTURAL_RELATION\", \"UNBOUNDED\")",
+        "payload": {"relation_kind": "DOMINATION"},
+        "m3_decision": "SUPPORTED",
+        "positive_object_created": true,
+        "positive_object_semantic_payload": {"relation_kind": "DOMINATION"},
+        "positive_object_family": "V556_TOPOLOGY",
+        "note": "a blocked strong noun reaches a positively evaluated V556 object"
+      },
+      {
+        "probe": "P2/Q3",
+        "declaration": "_node_exact_ref(\"OBJECTIVE_REFERENCE\", \"UNBOUNDED\")",
+        "payload": "endpoint_a_ref = {kind: HEGEMONY, object_id: x, content_hash: aaaa...}",
+        "m3_decision": "SUPPORTED",
+        "positive_object_created": true,
+        "positive_object_semantic_payload_contains": "kind = HEGEMONY",
+        "note": "an arbitrary und governed ref kind reaches the positive object"
+      },
+      {
+        "probe": "P4",
+        "declaration": "_node_string(\"OBJECTIVE_MEASUREMENT\", \"UNBOUNDED\")",
+        "payload": {"pressure_magnitude": "0.87"},
+        "m3_decision": "SUPPORTED",
+        "positive_object_created": true,
+        "note": "a numeric magnitude reaches the positive object as a string"
+      }
+    ],
+    "negative_control": {
+      "probe": "Q4",
+      "declaration": "_node_string(\"OBJECTIVE_STRUCTURAL_RELATION\", (\"DOMINATION\",))",
+      "outcome": "REFUSED at authoring",
+      "message": "string enum under role 'OBJECTIVE_STRUCTURAL_RELATION' names blocked strong noun 'DOMINATION'",
+      "consequence": "the gate is syntactic against the declaration, not semantic against the material"
+    },
+    "false_receipt_claims": [
+      {
+        "artifact": "01_REPAIR_MATRIX.json R2 after",
+        "claim": "string enum values and exact-ref kinds are refused on blocked strong nouns; numeric scalar leaves (number and integer) are refused outright",
+        "status": "TRUE ONLY FOR CLOSED LEAVES"
+      },
+      {
+        "artifact": "02_VOCABULARY_AUTHORITY_RECEIPT.json numeric_ceiling.consequence",
+        "claim": "no numeric pressure magnitude, scalar coupling value or aggregate strength can be authored through any positive path",
+        "status": "FALSE - reproduced by P4"
+      },
+      {
+        "artifact": "00_RETURN.md R2",
+        "claim": "the whole semantic class is blocked rather than the two labels the review happened to probe",
+        "status": "OVERSTATED - see actor role probe P5"
+      }
+    ]
+  },
+
+  "r2b_actor_semantic_role_labels": {
+    "verdict": "PARTIAL",
+    "token_list": ["ACTOR", "PERSON", "PSYCH", "BELIEF", "DESIRE", "MOTIV", "AFFECT", "TRAIT", "PREFERENCE", "IDEOLOGY", "WISH", "STRIVING", "SUBCONSCIOUS", "BIOGRAPH", "PERSONA", "PSYCHE", "APPETITE"],
+    "probe": "P5",
+    "candidates_tested": 12,
+    "accepted_by_the_authoring_gate": ["SELF_MODEL", "IDENTITY_COMMITMENT", "INNER_STATE", "SUBJECTIVE_MEANING", "WORLDVIEW", "TEMPERAMENT", "STRUCTURAL_SELF", "HABITUS", "DISPOSITION", "ORIENTATION"],
+    "refused": ["ACTOR_IDENTITY", "PERSON_STATE"],
+    "assessment": "HABITUS, DISPOSITION, ORIENTATION, TEMPERAMENT, WORLDVIEW and SELF_MODEL are actor/person-semantic and are accepted as participant roles. A 17-token substring list does not cover the class the receipt claims.",
+    "over_blocking_note": "substring matching also refuses benign text: 'FIELD' refuses 'FIELDWORK'",
+    "severity": "MEDIUM"
+  },
+
+  "r7_robustness": {
+    "verdict": "CLOSED",
+    "deep_freeze_probe": {
+      "probe": "P9",
+      "attempts": [
+        "rule.rule['participant_roles'].append(...) -> TypeError",
+        "rule.rule['allowed_typed_outcome_states'].append(...) -> TypeError",
+        "rule.result_contract['result_schema']['root']['fields'][...] = ... -> TypeError",
+        "rule.rule['result_contract_binding_ref']['content_hash'] = ... -> TypeError",
+        "rule.result_contract['result_semantic_owner_ref']['kind'] = ... -> TypeError"
+      ],
+      "outcome": "ALL FROZEN",
+      "note": "the probe's own script classified TypeError as unexpected; TypeError is the correct fail-closed result and matches the court's expectation"
+    },
+    "multiplicity_vocabulary": "MULTIPLICITY_POLICIES = (EXACT_OCCURRENCE_INDEX, ROUTE_INDEXED_OCCURRENCE_SET) enforced at :645-649; probe confirms WHATEVER_I_LIKE is refused",
+    "residuals": [
+      {
+        "id": "R7-RES-1",
+        "finding": "GovernedRule.result_contract is stored as result_contract.binding (:710) without re-freezing. A caller who hand-builds ResultContractBinding from raw dicts gets validation (:654) but an unfrozen stored binding until registry build re-validates (:741).",
+        "impact": "fails closed at the registry; immutability is weaker than the R7 claim for that construction path",
+        "severity": "LOW"
+      }
+    ]
+  },
+
+  "m3_preservation": {
+    "verdict": "VERIFIED_TRUE",
+    "method": "git diff on both seam files against both the original repair startup and the prior review control",
+    "result": "EMPTY in both comparisons"
+  },
+
+  "five_implementation_discovered_defects_verified": [
+    {"n": 1, "defect": "binding validator required contract_id; M3's exact set excludes it", "fix_verified": "_EXPECTED_BINDING_FIELDS (:493-499) equals M3 _RESULT_CONTRACT_FIELDS (m3:64-69), 13 fields, no contract_id; re-inserted only for hashing (:537)", "substitute_defect_introduced": false},
+    {"n": 2, "defect": "rule_content_hash recomputation omitted contract_id", "fix_verified": "registry rule_body re-inserts contract_id (:747) and excludes exactly the authority triple plus the hash, matching M3 _rule_body_material", "substitute_defect_introduced": false},
+    {"n": 3, "defect": "payload join preferred content_hash but the natural key is route_id/object_id", "fix_verified": "validate_payload_against_participants accepts either identifier (:826-833, :850-851)", "substitute_defect_introduced": false},
+    {"n": 4, "defect": "invented endpoint ref kind V555_ROUTE_IDENTITY", "fix_verified": "now V555_FAMILY (:877-878), the real m2_v555_atomic_route.SEMANTIC_FAMILY", "substitute_defect_introduced": false},
+    {"n": 5, "defect": "derived unbound-field defect reported before structural cardinality", "fix_verified": "cardinality at :834-841 precedes field binding at :843-854", "substitute_defect_introduced": false}
+  ],
+
+  "governing_hq_law_check": {
+    "no_new_structural_ontology": "true in the shipped registry; value-level smuggling still reachable (P1/P2/P4/P7)",
+    "no_fabricated_positive_relation_kind": "true",
+    "no_attractor_population": "true in the shipped registry; the attractor family is authorable through the generic path",
+    "no_source_access": "true",
+    "no_self_adoption": "true",
+    "no_seam_modification": "true (byte-verified)"
+  }
+}
