@@ -1,0 +1,56 @@
+{
+  "schema": "PYAT_HQ208_HD_FINAL_DISPOSITION@1.0.0",
+  "commission": "PYAT-HQ208-HD-F8-SERVICE-RERECONCILIATION-R1",
+  "branch": "agent/rabochii-pyat-hq208-hd-f8-rereconciliation-r1",
+  "commission_tip": "372552570b4c3ec19f91158abc9774e3cf21e522",
+  "startup_base": "26f26a56826e027f0149d12eaa1a5402dea942d9",
+  "adopted_service_source_fanin": "3eda3eb598cf9fe6b14df60323af52ae446b21fa",
+  "accepted_candidate": "e7d3598494472a9aea7dd2c69f6aacb11585905c",
+  "independent_review": "e3fec8be5d4c192d2d6f86059d9e1ee7a683fbd1",
+  "prior_hd_return": "2bdd78582a93d334cbdab918c79f4e82c3cf679c",
+  "disposition": "HD_PARTIAL__DOWNSTREAM_BINDING_SEAM_MISSING",
+  "decisive_findings": [
+    "SERVICE_SOURCE_APPLICABILITY is current at the source-free eligibility grain and can derive a bounded unranked source-indexed admissible set.",
+    "The adopted authority does not authorize source selection, ranking, or priority; HQ203 SOURCE_SELECTOR wording must be narrowed to eligibility/admissibility.",
+    "may_condition_F8 and may_transform_geometry_or_distribution remain false even on ADMITTED.",
+    "F8 and objective-consumer production blobs are unchanged from the HQ203 examined control; no applicability-receipt consumer was added.",
+    "C1 remains absent from current control but is not required for the narrow static scalar eligibility-to-F8 seam.",
+    "F7 temporal comparability remains not production-adopted/implemented but is not required for the narrow static exact-release eligibility-to-F8 seam.",
+    "F8_DOES_NOT_TRANSFORM_POSSIBILITY_GEOMETRY remains binding."
+  ],
+  "alternatives_rejected": [
+    {
+      "disposition": "HD_SERVICE_PRECONDITION_CLOSED__F8_BOUNDARY_FINALIZABLE_AFTER_NAMED_RESIDUALS",
+      "reason": "applicability authority is closed but consumer integration is absent"
+    },
+    {
+      "disposition": "HD_PARTIAL__C1_OR_F7_PREREQUISITE_STILL_REQUIRED",
+      "reason": "C1 and F7 gate broader analytical/temporal claims, not the exact static source-eligibility/F8 seam"
+    },
+    {
+      "disposition": "HD_AUTHORITY_OVERREACH_FOUND",
+      "reason": "the adopted applicability mechanism stays within its ratified power ceiling"
+    },
+    {
+      "disposition": "HD_REVIEW_BLOCKED_BY_MISSING_EXACT_EVIDENCE",
+      "reason": "exact current blobs, adoption lineage, prior H-D evidence and hostile review are sufficient"
+    }
+  ],
+  "new_implementation_lane": {
+    "justified": true,
+    "seam": "SERVICE_APPLICABILITY_TO_F8_SOURCE_SCOPE_BINDING",
+    "ceiling": "ELIGIBILITY_BINDING_ONLY__NO_RANKING_SELECTION_POOLING_CURRENTNESS_PERMISSION_GRANT_CONDITIONING_GEOMETRY_OR_DISTRIBUTION_TRANSFORM_OR_PERSON_INFERENCE"
+  },
+  "hard_holds_observed": {
+    "raw_source_access": false,
+    "locator_discovery": false,
+    "warrant_issuance": false,
+    "live_c4": false,
+    "c7_implementation": false,
+    "prev3_to_v3_actor_person_implementation": false,
+    "astra_referral": false,
+    "production_implementation": false,
+    "merge_or_self_adoption": false
+  },
+  "terminal": "HQ208_HD_F8_SERVICE_RERECONCILIATION_RETURNED__HQ_ADJUDICATION_REQUIRED"
+}
