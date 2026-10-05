@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261005-PYAT-HQ210-THREE-SUCCESSOR-PARALLEL-R1",
-  "handoff_commit": "bb16a6ee75c3693430d63179dfa7816a4991a634",
+  "checkpoint_id": "20261005-PYAT-HQ211-RETURNS-ADJUDICATED-NEXT-WAVE-R1",
+  "handoff_commit": "31ecc06d70974ea61914b60cc2cf54acce21e25a",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261005-PYAT-HQ210-THREE-SUCCESSOR-PARALLEL-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261005-PYAT-HQ210-THREE-SUCCESSOR-PARALLEL-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261005-PYAT-HQ210-THREE-SUCCESSOR-PARALLEL-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261005-PYAT-HQ211-RETURNS-ADJUDICATED-NEXT-WAVE-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261005-PYAT-HQ211-RETURNS-ADJUDICATED-NEXT-WAVE-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261005-PYAT-HQ211-RETURNS-ADJUDICATED-NEXT-WAVE-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -15,7 +15,7 @@
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
   "protected_execution_head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
-  "next_action": "LAUNCH_HQ210_THREE_SUCCESSORS__INTAKE_ANY_RETURN_IMMEDIATELY__CONTINUE_R9_C1",
+  "next_action": "LAUNCH_HQ211_ACTIVE_THREE__ON_FIRST_IMPLEMENTER_RETURN_WAKE_F7_QUEUE__INTAKE_ANY_RETURN_IMMEDIATELY",
   "source_split_control_head": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "split_fanin_evidence_tip": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "joined_successor_return_tip": "b4dd6d6016367110c06317abe2cef276123b4c69",
@@ -62,7 +62,7 @@
   "pyat_current_handoff": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/CURRENT_HANDOFF.md",
   "pyat_current_grok_docket": "PYAT_CONTROL_ROOM/12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md",
   "pyat_fresh_hq_protocol": "PYAT_CONTROL_ROOM/13_FRESH_HQ_FULL_GROK_PROTOCOL.md",
-  "immediate_program_refinement": "HQ210__F7_REPAIR__HD_F8_BINDING__V556_FINAL_REVIEW_ACTIVE__R9_C1_CONTINUE_INDEPENDENTLY",
+  "immediate_program_refinement": "HQ211__C1_CURRENT_DAG_AND_V556_REPAIR_ACTIVE__HD_F8_HOSTILE_REVIEW_ACTIVE__F7_IMPLEMENTATION_BOUND_QUEUED__R9_FINAL_ADOPTION_HELD",
   "legacy_pyat_bootstrap_path": "HQ_HANDOFF/PYAT_HQ_BOOTSTRAP_R1.md",
   "pyat_documentary_hygiene": "HQD-2026-09-26-114",
   "pyat_forward_program_decision": "HQD-2026-09-28-125",
@@ -1149,5 +1149,44 @@
   "hq_operating_law": "PYAT_CONTROL_ROOM/SHARED_STORE_SPARSE_WORKTREE_EXECUTION_LAW_R1.md",
   "worker_state_truth": "DIRECT_ORIGIN_BRANCH_HEAD__NO_LOCAL_COMPLETION_INFERENCE_FROM_UNCHANGED_REMOTE",
   "worker_status_identity": "AGENT__MODEL_INTELLIGENCE__MACHINE_WHEN_KNOWN__WORKTREE_WHEN_KNOWN__BRANCH__EXACT_TIP",
-  "hq_successor_dispatch_decision": "HQD-2026-10-05-210"
+  "hq_successor_dispatch_decision": "HQD-2026-10-05-211",
+  "hq211": {
+    "decision": "HQD-2026-10-05-211",
+    "decision_record": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ211_RETURN_INTAKE_AND_NEXT_WAVE_R1.md",
+    "c1": {
+      "repair_return": "0574e095c4676680e671806febb7a76b35343389",
+      "repair_status": "ACCEPTED_AT_REPAIR_GRAIN",
+      "current_dag_branch": "agent/rabochii-pyat-hq211-c1-current-dag-adoption-r1",
+      "commission_tip": "1f05964479be110345472fc5239acefa9ea4775d"
+    },
+    "f7": {
+      "contract_return": "c57a96897788108db7b194e4e51691d1ca8ab729",
+      "contract_status": "ACCEPTED_DOCUMENTARY_CONTRACT_OF_RECORD",
+      "implementation_branch": "agent/rabochii-pyat-hq211-f7-implementation-r1",
+      "implementation_commission_tip": "de9439753db60b6868fc286e56066760d59fbbc6",
+      "implementation_status": "BOUND_QUEUED__DO_NOT_LAUNCH_UNTIL_IMPLEMENTER_SLOT_FREES"
+    },
+    "hd_f8": {
+      "candidate": "8d352f7d80983cbf49e7e57511f8cf6d5b80966d",
+      "review_branch": "agent/reviewer-pyat-hq211-hd-f8-binding-r1",
+      "review_commission_tip": "b26dcf2e67407b1e42b1d08bd36d0338e9fd91e5"
+    },
+    "v556": {
+      "hostile_review": "46bf1ac246f51d7499bccf56e41add78779e00ad",
+      "disposition": "V556_REPAIR_PARTIAL__BOUNDED_REPAIR_REQUIRED",
+      "repair_branch": "agent/rabochii-pyat-hq211-v556-unbounded-gate-repair-r1",
+      "repair_commission_tip": "694b220cfbb14353c59eeec503f0ae0d9cab97bc",
+      "adopted": false
+    },
+    "r9": {
+      "return_tip": "51e7fe0fe2eb7a37c41f0b51c005458dc0cd0847",
+      "status": "R9_TECHNICAL_REPAIR_ACCEPTED__GOVERNED_QUALIFICATION_UNAVAILABLE__FINAL_ADOPTION_HELD",
+      "new_worker_launched": false
+    },
+    "active_implementers": 2,
+    "active_reviewers": 1,
+    "queued_implementers": 1,
+    "raw_live_warrant_c7_actor_holds": true,
+    "astra_referral": false
+  }
 }
