@@ -1,3 +1,59 @@
+# HQ211 active frontier — returns adjudicated, two implementers + one review — 2026-10-05
+
+Decision: `HQD-2026-10-05-211`
+
+Current control is no longer waiting on HQ210 returns.
+
+## ACTIVE IMPLEMENTER 1 — C1 current-DAG adoption
+**AGENT:** Space Bunny source-free integration worker  
+**MODEL / INTELLIGENCE:** **Space Bunny High**  
+**BRANCH:** `agent/rabochii-pyat-hq211-c1-current-dag-adoption-r1`  
+**COMMISSION TIP:** `1f05964479be110345472fc5239acefa9ea4775d`
+
+C1 prune repair `0574e095c4676680e671806febb7a76b35343389` is accepted at repair grain. This lane performs the surgical current-DAG adoption join; do not whole-merge the divergent C1 branch.
+
+## ACTIVE IMPLEMENTER 2 — V556 bounded gate repair
+**AGENT:** Space Bunny bounded implementation repair worker  
+**MODEL / INTELLIGENCE:** **Space Bunny High**  
+**BRANCH:** `agent/rabochii-pyat-hq211-v556-unbounded-gate-repair-r1`  
+**COMMISSION TIP:** `694b220cfbb14353c59eeec503f0ae0d9cab97bc`
+
+V556 remains unadopted. Repair the reproduced semantic `UNBOUNDED` escape and make interaction/attractor valid-empty a machinery ceiling at current tranche grain.
+
+## ACTIVE REVIEW — H-D/F8 source-scope binding
+**AGENT:** DeepSeek Harness independent hostile reviewer  
+**MODEL / INTELLIGENCE:** **DeepSeek V4.1 Flash**  
+**BRANCH:** `agent/reviewer-pyat-hq211-hd-f8-binding-r1`  
+**COMMISSION TIP:** `b26dcf2e67407b1e42b1d08bd36d0338e9fd91e5`
+
+Review candidate:
+`agent/rabochii-pyat-hq210-hd-f8-binding-r1 @ 8d352f7d80983cbf49e7e57511f8cf6d5b80966d`
+
+## BOUND QUEUED — F7 implementation
+**DO NOT LAUNCH UNTIL ONE IMPLEMENTER SLOT FREES.**
+
+**AGENT:** Space Bunny source-free implementation worker  
+**MODEL / INTELLIGENCE:** **Space Bunny High**  
+**BRANCH:** `agent/rabochii-pyat-hq211-f7-implementation-r1`  
+**COMMISSION TIP:** `de9439753db60b6868fc286e56066760d59fbbc6`
+
+The repaired F7 contract `c57a96897788108db7b194e4e51691d1ca8ab729` is accepted as the documentary contract of record. First implementer return wakes this queued lane unless a blocking same-lane repair must consume the freed slot.
+
+## R9
+Return `51e7fe0fe2eb7a37c41f0b51c005458dc0cd0847`.
+
+HQ status:
+`R9_TECHNICAL_REPAIR_ACCEPTED__GOVERNED_QUALIFICATION_UNAVAILABLE__FINAL_ADOPTION_HELD`
+
+Do not rerun the same repair merely because the historical governed interpreter is absent. Reconstructed-equivalent evidence is not governed certification.
+
+All source/locator/warrant/live-C4/C7/actor holds remain. HQ182 C4 hold and host live-run disk/capacity blocker remain.
+
+Full decision:
+`PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ211_RETURN_INTAKE_AND_NEXT_WAVE_R1.md`
+
+---
+
 # HQ210 ACTIVE FRONTIER — THREE SUCCESSORS RUN IN PARALLEL — 2026-10-05
 
 R9 and C1 remain active but **do not block** the three returned-lane successors.
