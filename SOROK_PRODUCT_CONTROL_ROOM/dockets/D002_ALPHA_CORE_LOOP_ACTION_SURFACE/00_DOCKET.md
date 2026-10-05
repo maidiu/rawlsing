@@ -161,3 +161,19 @@ Scenario bank now runs through `SCE-036`.
 
 Current completeness audit:
 `SOROK_PRODUCT_CONTROL_ROOM/11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md`.
+
+
+## R1 native-playability adjudication
+
+Following the bounded Astra native-gameplay necessity synthesis, D002 now contains:
+
+12. `12_SMALLEST_LAWFUL_PLAYABLE_MOMENT_ADJUDICATION_R1.md`
+   - derives the minimum causal cell in which a real user faculty actually enters the simulation;
+   - clarifies that **actual contribution is morally neutral** and is not synonymous with helping/cooperation;
+   - strengthens action decompression and control-return around the user's native semantic payload;
+   - defines sufficient phenomenal footing without narrator-supplied judgment;
+   - preserves independent actor reception/resistance without artificial difficulty;
+   - defines the auditable trace contract for the first bounded P1 experiment;
+   - does not close canonical questions or claim empirical engagement.
+
+The Astra return remains advisory evidence. This D002 adjudication is derived from the pre-game-loops Sorok authority and does not import artifacts 88–90 from the quarantined exploratory branch.
