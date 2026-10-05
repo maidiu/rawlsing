@@ -29,7 +29,9 @@ from rawlsing_next.pre553_empirical_authority import (
     AUTHORITY_KIND_CEILINGS,
     AuthorityRegistry,
 )
-from rawlsing_next.pre553_empirical_objects import AuthoritySnapshot, ExactRef, canonical_json
+from rawlsing_next.pre553_empirical_objects import (
+    AuthoritySnapshot, ExactRef, canonical_json, semantic_hash,
+)
 from rawlsing_next.pre553_temporal_comparability import (
     AUTHORIZED_COMPARISON_OPERATION,
     AUTHORIZED_ORDER_BASES,
@@ -66,7 +68,8 @@ def _ref(kind: str, object_id: str) -> ExactRef:
 
 
 def _aref(kind: str, aid: str, version: str = "1.0.0", *, ops=("COMPARE",), scope=None,
-          state: str = "ALLOW", content_hash: str | None = None):
+          state: str = "ALLOW", content_hash: str | None = None,
+          families=("TemporalComparisonProbe@1.0.0",)):
     from rawlsing_next.pre553_empirical_objects import AuthorityRef
     ch = content_hash or _h(f"authority:{aid}:{version}")
     ref = AuthorityRef(aid, version, ch)
@@ -84,7 +87,7 @@ def _aref(kind: str, aid: str, version: str = "1.0.0", *, ops=("COMPARE",), scop
         authority_kind=kind,
         decision_state=state,
         governed_operations=tuple(ops),
-        governed_object_families=("TemporalComparisonProbe@1.0.0",),
+        governed_object_families=tuple(families),
         scope_envelope=dict(scope),
         effective_time_or_interval="ALL_TIME",
         parent_authority_refs=(),
@@ -95,6 +98,31 @@ def _aref(kind: str, aid: str, version: str = "1.0.0", *, ops=("COMPARE",), scop
     )
     return ref, snapshot
 
+
+#: HQ217 productive-adequacy fixtures. Competent lawful material whose canonical hash IS
+#: the ref content_hash, so the contract refs are genuinely bound (RR-01 / RR-03).
+BOUND_REQUIREMENT_MATERIAL = {
+    "requirement_results": (
+        {"surface": "shared_response_surface_and_scale_harmonization", "satisfied": True},
+        {"surface": "shared_instrument_release_or_authorized_equivalence", "satisfied": True},
+        {"surface": "shared_question_coordinate_semantics", "satisfied": True},
+        {"surface": "shared_estimand", "satisfied": True},
+        {"surface": "shared_measure_and_weight_design", "satisfied": True},
+        {"surface": "shared_geography_and_target_population", "satisfied": True},
+        {"surface": "bound_order_basis_for_time_refs", "satisfied": True},
+    ),
+}
+BOUND_IDENTITY_MATERIAL = {
+    "identity_surface_jointly_satisfied": True,
+    "composition": ("source family key, geography, question/coordinate semantics, response "
+                    "surface, instrument release, target population / risk set, estimand, "
+                    "measure and weight design"),
+    "wave_label_ordinal_calendar_year_preserved": True,
+}
+COMPARABILITY_REQUIREMENTS_REF = ExactRef(
+    "ComparabilityRequirements", "CR1", semantic_hash(BOUND_REQUIREMENT_MATERIAL))
+TEMPORAL_IDENTITY_CONTRACT_REF = ExactRef(
+    "TemporalIdentityContract", "TIC1", semantic_hash(BOUND_IDENTITY_MATERIAL))
 
 UNIVERSE_A = _ref("SourceUniverse", "U-A")
 UNIVERSE_B = _ref("SourceUniverse", "U-B")
@@ -132,7 +160,8 @@ def _full_registry(*, drop=(), tc_ops=(AUTHORIZED_COMPARISON_OPERATION,),
 def _request(**overrides) -> TemporalComparisonRequest:
     reg, a = _full_registry()
     base = dict(
-        temporal_identity_contract_ref=_ref("TemporalIdentityContract", "TIC1"),
+        temporal_identity_contract_ref=TEMPORAL_IDENTITY_CONTRACT_REF,
+        temporal_identity_contract_material=BOUND_IDENTITY_MATERIAL,
         anchor_refs=(_ref("TimeAnchor", "A1"), _ref("TimeAnchor", "A2")),
         observation_refs=(_ref("Observation", "O1"), _ref("Observation", "O2")),
         source_universe_refs=(UNIVERSE_A, UNIVERSE_A),
@@ -147,7 +176,8 @@ def _request(**overrides) -> TemporalComparisonRequest:
         target_use_permission_refs=(a["tp"],),
         uncertainty_authority_ref=a["um"],
         replay_protocol_authority_ref=a["rp"],
-        comparability_requirements_ref=_ref("ComparabilityRequirements", "CR1"),
+        comparability_requirements_ref=COMPARABILITY_REQUIREMENTS_REF,
+        comparability_requirements_material=BOUND_REQUIREMENT_MATERIAL,
         comparison_operation=AUTHORIZED_COMPARISON_OPERATION,
         quantity_surface={
             "quantity_ref": _ref("Quantity", "Q1"),
@@ -158,6 +188,57 @@ def _request(**overrides) -> TemporalComparisonRequest:
     )
     base.update(overrides)
     return TemporalComparisonRequest(**base)
+
+
+def _lawful_equivalence_resolver(*, relation_ref: ExactRef, universe_refs):
+    """Build a REAL SourceRelationResolver over one lawful exact relation receipt.
+
+    HQ217 RR-04: the equivalence ref must resolve through the exact source-relation
+    owner path. A stub resolver would relocate the caller-trust problem into the test,
+    so this constructs genuine relation material through the accepted factory.
+    """
+    from rawlsing_next.pre553_source_relations import (
+        SourceRelationResolver, make_source_universe_relation,
+    )
+    eq_ref, eq_snapshot = _aref(
+        "SOURCE_EQUIVALENCE", "EQ1", ops=("SEMANTIC_EQUIVALENCE_ADMISSION",),
+        families=("SourceUniverseRelation@1.0.0",),
+        scope={"source_universe_refs": "EXPLICIT_UNRESTRICTED",
+               "target_use_refs": "EXPLICIT_UNRESTRICTED",
+               "predicate_or_risk_set_refs": "EXPLICIT_UNRESTRICTED"})
+    registry = AuthorityRegistry([eq_snapshot])
+    relation = make_source_universe_relation(
+        relation_kind="SOURCE_SEMANTIC_EQUIVALENCE",
+        source_universe_refs=tuple(universe_refs),
+        authority_snapshot=eq_snapshot,
+        authority_operation="SEMANTIC_EQUIVALENCE_ADMISSION",
+        operation_scope="EXACT_BOUND_UNIVERSE_PAIR",
+        target_use=relation_ref.object_id,
+        effective_scope="EXACT_BOUND_UNIVERSE_PAIR",
+        directionality_or_symmetric="SYMMETRIC",
+        operation_authority_material={
+            "relation_kind": "SOURCE_SEMANTIC_EQUIVALENCE",
+            "equivalence_scope": "EXACT_BOUND_UNIVERSE_PAIR",
+            "left_semantic_ref": _ref("SemanticFingerprint", "SEM-A"),
+            "right_semantic_ref": _ref("SemanticFingerprint", "SEM-B"),
+            "transformation_authority_refs": (_ref("SemanticTransformation", "TR-1"),),
+        },
+        producer_replay_locator_or_reference_root=_ref("REPLAY_ROOT", "equiv-root"),
+        decision="AUTHORIZED")
+    resolver = SourceRelationResolver(relations=[relation], authority_registry=registry)
+    return resolver, eq_ref, relation
+
+
+def _request_with_failed_surface(reason: str, **overrides):
+    """HQ217: a declared failing comparability surface must arrive through AUTHORIZED
+    material whose hash the contract ref names, never as a bare caller tuple."""
+    material = {"requirement_results": (
+        {"surface": "shared_geography_and_target_population", "satisfied": False,
+         "reason": reason},
+    )}
+    ref = ExactRef("ComparabilityRequirements", f"CR-FAIL-{reason}", semantic_hash(material))
+    return _request(comparability_requirements_ref=ref,
+                    comparability_requirements_material=material, **overrides)
 
 
 def _run(request=None, registry=None):
@@ -346,8 +427,7 @@ def test_witness_comparability_requirements_reaches_provenance():
 
 
 def test_witness_declared_surface_drives_state_selection():
-    receipt = _run(_request(comparability_requirement_results=(
-        {"reason": "GEOGRAPHY_NOT_SHARED"},)))
+    receipt = _run(_request_with_failed_surface("GEOGRAPHY_NOT_SHARED"))
     assert receipt.relation_state == "TEMPORAL_NONCOMPARABLE"
     assert receipt.relation_state_reason == "GEOGRAPHY_NOT_SHARED"
     assert receipt.provenance["declared_comparability_surfaces"]
@@ -507,15 +587,50 @@ def test_witness_unknown_prior_state_refuses_typed():
 # ===========================================================================
 
 def test_witness_cross_universe_is_derived_from_bound_universes():
-    """No caller boolean exists any more; the universes decide."""
+    """No caller boolean exists any more; the universes decide.
+
+    HQ217 RR-04: the equivalence ref must resolve through the exact source-relation
+    OWNER PATH. This is the productive-adequacy proof that a genuinely cross-universe
+    pair still reaches the positive receipt when the owner path resolves it.
+    """
     assert "pair_crosses_source_universes" not in _field_names()
+    probe = ExactRef("SourceEquivalenceResult", "SEQ1", _h("rel"))
+    resolver, eq_authority_ref, relation = _lawful_equivalence_resolver(
+        relation_ref=probe, universe_refs=(UNIVERSE_A, UNIVERSE_B))
     receipt = _run(_request(source_universe_refs=(UNIVERSE_A, UNIVERSE_B),
-                            source_equivalence_ref=_ref("SourceEquivalenceResult", "SEQ1"),
-                            source_equivalence_authority_ref=_aref(
-                                "SOURCE_EQUIVALENCE", "EQ1",
-                                ops=("SEMANTIC_EQUIVALENCE_ADMISSION",))[0]))
+                            source_equivalence_ref=relation.ref,
+                            source_equivalence_authority_ref=eq_authority_ref,
+                            source_relation_resolver=resolver))
     assert receipt.provenance["cross_universe"]["crosses_source_universes"] is True
     assert receipt.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+
+
+def test_hq217_rr04_arbitrary_equivalence_ref_is_refused_without_the_owner_path():
+    """RR-04: an arbitrary equivalence token is NOT caller-trusted.
+
+    Before the repair this pair reached TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED because
+    only the presence of a ref plus a scoped authority snapshot was checked.
+    """
+    probe = ExactRef("SourceEquivalenceResult", "SEQ1", _h("rel"))
+    resolver, eq_authority_ref, _ = _lawful_equivalence_resolver(
+        relation_ref=probe, universe_refs=(UNIVERSE_A, UNIVERSE_B))
+    arbitrary = _ref("SourceEquivalenceResult", "ARBITRARY-TOKEN")
+    receipt = _run(_request(source_universe_refs=(UNIVERSE_A, UNIVERSE_B),
+                            source_equivalence_ref=arbitrary,
+                            source_equivalence_authority_ref=eq_authority_ref,
+                            source_relation_resolver=resolver))
+    assert receipt.relation_state == "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"
+    assert receipt.relation_state_reason == "SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE"
+
+
+def test_hq217_rr04_equivalence_without_a_resolver_is_refused():
+    """RR-04: no owner path means no equivalence, even with a scoped authority."""
+    eq_authority_ref = _aref("SOURCE_EQUIVALENCE", "EQ1",
+                             ops=("SEMANTIC_EQUIVALENCE_ADMISSION",))[0]
+    receipt = _run(_request(source_universe_refs=(UNIVERSE_A, UNIVERSE_B),
+                            source_equivalence_ref=_ref("SourceEquivalenceResult", "SEQ1"),
+                            source_equivalence_authority_ref=eq_authority_ref))
+    assert receipt.relation_state == "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"
 
 
 def _field_names():
@@ -663,8 +778,17 @@ def test_order_vocabulary_is_three_bases_plus_one_typed_refusal():
 
 
 def test_authorized_basis_requires_a_basis_ref():
-    with pytest.raises(TemporalComparabilityIntegrityError):
-        _run(_request(temporal_order_basis_ref=None))
+    """HQ217 RR-06: a missing required basis ref is the ACCEPTED terminal state.
+
+    This court previously asserted the IntegrityError, which was the defect. The
+    accepted law is TEMPORAL_INSUFFICIENT_AUTHORITY /
+    TEMPORAL_ORDER_BASIS_AUTHORITY_REF_ABSENT.
+    """
+    receipt = _run(_request(temporal_order_basis_ref=None))
+    assert receipt.relation_state == "TEMPORAL_INSUFFICIENT_AUTHORITY"
+    assert receipt.relation_state_reason == "TEMPORAL_ORDER_BASIS_AUTHORITY_REF_ABSENT"
+    assert receipt.direction_claim == "DIRECTION_NOT_CLAIMABLE"
+    assert receipt.delta is None
 
 
 def test_no_basis_must_not_carry_a_basis_ref():
@@ -805,15 +929,13 @@ def test_backfill_guard_is_proven_live_not_self_described(monkeypatch):
     # With the literal removed from the live surface the producer must refuse
     # to mint a noncomparable receipt rather than silently proceed.
     with pytest.raises(TemporalComparabilityIntegrityError):
-        _run(_request(comparability_requirement_results=(
-            {"reason": "GEOGRAPHY_NOT_SHARED"},)))
+        _run(_request_with_failed_surface("GEOGRAPHY_NOT_SHARED"))
     monkeypatch.undo()
     assert hasattr(mod, "_frozen_backfill_targets")
 
 
 def test_noncomparable_receipt_is_still_minted_and_flagged():
-    receipt = _run(_request(comparability_requirement_results=(
-        {"reason": "GEOGRAPHY_NOT_SHARED"},)))
+    receipt = _run(_request_with_failed_surface("GEOGRAPHY_NOT_SHARED"))
     assert receipt.relation_state == "TEMPORAL_NONCOMPARABLE"
     assert temporal_backfill_refused(receipt.relation_state)
 
@@ -833,3 +955,180 @@ def test_no_broad_exception_catch_in_this_court():
     assert not re.search(r"raises\(\s*" + broad + r"\b", src)
     assert not re.search(r"except\s+" + broad + r"\b", src)
     assert not re.search(r"raises\(\([^)]*" + broad, src)
+
+# ===========================================================================
+# HQ217 bounded repair witnesses
+# ===========================================================================
+def test_hq217_rr01_unbound_comparability_requirements_ref_is_refused():
+    """RR-01: a ref token alone is not proof. The material must hash to the ref."""
+    with pytest.raises(TemporalComparabilityInputRefusal) as exc:
+        _run(_request(comparability_requirements_ref=_ref("ComparabilityRequirements", "CR-OTHER")))
+    assert "does not hash to" in str(exc.value)
+    with pytest.raises(TemporalComparabilityInputRefusal) as exc:
+        _run(_request(comparability_requirements_material=None))
+    assert "not bound" in str(exc.value)
+
+
+def test_hq217_rr01_changing_the_ref_now_changes_the_derivation():
+    """RR-01 discriminating witness.
+
+    Before the repair, swapping the ref while keeping the same caller result tuple left
+    the derivation identical, because the ref accompanied rather than governed it. Now a
+    different requirement material carries its own ref and yields its own state.
+    """
+    clean = _run()
+    assert clean.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    failing = _run(_request_with_failed_surface("GEOGRAPHY_NOT_SHARED"))
+    assert failing.relation_state == "TEMPORAL_NONCOMPARABLE"
+    assert failing.provenance["comparability_requirements_ref"]["object_id"] != \
+        clean.provenance["comparability_requirements_ref"]["object_id"]
+
+
+def test_hq217_rr01_caller_results_contradicting_bound_material_are_refused():
+    """RR-01: the caller's own result tuple cannot contradict the authorized material."""
+    with pytest.raises(TemporalComparabilityInputRefusal) as exc:
+        _run(_request(comparability_requirement_results=({"reason": "GEOGRAPHY_NOT_SHARED"},)))
+    assert "disagree with the material bound" in str(exc.value)
+
+
+def test_hq217_rr02_same_object_id_different_content_hash_does_not_pass_scope():
+    """RR-02: ExactRef identity is kind + object_id + content_hash.
+
+    The authority scope names one exact governed-use ref. A DIFFERENT exact ref that
+    shares only the object_id must not satisfy that scope.
+    """
+    scoped = _ref("TargetUsePermission", "USE-1")
+    other = ExactRef("TargetUsePermission", "USE-1", _h("DIFFERENT-MATERIAL"))
+    tp_ref, tp_snapshot = _aref(
+        "TARGET_USE_PERMISSION", "TP1",
+        scope={"source_universe_refs": "EXPLICIT_UNRESTRICTED",
+               "target_use_refs": [scoped.as_dict()]})
+    base_reg, _ = _full_registry()
+    narrow = AuthorityRegistry([tp_snapshot if s.authority_id == "TP1" else s
+                                for s in base_reg._by_key.values()])
+    good = _run(_request(governed_use_id=scoped), registry=narrow)
+    bad = _run(_request(governed_use_id=other), registry=narrow)
+    assert good.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    assert bad.relation_state == "TEMPORAL_INSUFFICIENT_AUTHORITY"
+
+
+def test_hq217_rr02_bare_object_id_scope_token_does_not_prove_exact_scope():
+    """RR-02 fail-closed half: a bare token carries no content_hash, so it is no proof."""
+    tp_ref, tp_snapshot = _aref(
+        "TARGET_USE_PERMISSION", "TP1",
+        scope={"source_universe_refs": "EXPLICIT_UNRESTRICTED",
+               "target_use_refs": ["USE-1"]})
+    base_reg, _ = _full_registry()
+    narrow = AuthorityRegistry([tp_snapshot if s.authority_id == "TP1" else s
+                                for s in base_reg._by_key.values()])
+    receipt = _run(_request(), registry=narrow)
+    assert receipt.relation_state == "TEMPORAL_INSUFFICIENT_AUTHORITY"
+
+
+def test_hq217_rr03_identity_ref_must_bind_authorized_material():
+    """RR-03: an arbitrary identity ref plus a caller true boolean no longer passes."""
+    with pytest.raises(TemporalComparabilityInputRefusal) as exc:
+        _run(_request(temporal_identity_contract_ref=_ref("TemporalIdentityContract", "NOPE")))
+    assert "does not hash to" in str(exc.value)
+    with pytest.raises(TemporalComparabilityInputRefusal):
+        _run(_request(temporal_identity_contract_material=None))
+
+
+def test_hq217_rr03_identity_satisfaction_comes_from_material_not_the_caller():
+    """RR-03: the authorized identity material governs; the boolean is cross-checked."""
+    failing = {"identity_surface_jointly_satisfied": False}
+    receipt = _run(_request(
+        temporal_identity_contract_ref=ExactRef(
+            "TemporalIdentityContract", "TIC-FAIL", semantic_hash(failing)),
+        temporal_identity_contract_material=failing))
+    assert receipt.relation_state == "TEMPORAL_IDENTITY_UNRESOLVED"
+    # material says satisfied but the caller boolean says otherwise -> refused, not trusted
+    with pytest.raises(TemporalComparabilityInputRefusal) as exc:
+        _run(_request(identity_surface_jointly_satisfied=False))
+    assert "contradicts the bound authorized" in str(exc.value)
+
+
+def test_hq217_rr05_measure_binding_is_enforced_and_serialized():
+    """RR-05: the bound measure is required, compared, and serialized on every path."""
+    receipt = _run()
+    bound = MEASURE_REF.as_dict()
+    assert receipt.quantity_surface["measure_ref"] is not None
+    assert receipt.quantity_surface["measure_ref"] == bound
+    # a quantity surface naming a DIFFERENT measure than the bound authority is refused
+    other_measure_ref, other_measure_snapshot = _aref("WEIGHT_DESIGN_ESTIMAND", "MEAS-OTHER")
+    reg_other, _ = _full_registry()
+    reg_with_other = AuthorityRegistry(
+        list(reg_other._by_key.values()) + [other_measure_snapshot])
+    with pytest.raises(TemporalComparabilityInputRefusal) as exc:
+        _run(
+            _request(quantity_surface={"quantity_ref": _ref("Quantity", "Q1"),
+                                       "measure_ref": other_measure_ref,
+                                       "earlier_value": 3, "later_value": 8}),
+            registry=reg_with_other)
+    assert "not the bound measure" in str(exc.value)
+    # and an absent measure may never mint a directional delta
+    with pytest.raises(TemporalComparabilityInputRefusal) as exc:
+        _run(_request(quantity_surface={
+            "quantity_ref": _ref("Quantity", "Q1"),
+            "earlier_value": 3, "later_value": 8}))
+    assert "may never be minted without it" in str(exc.value)
+
+
+def test_hq217_rr07_partial_order_emits_a_higher_priority_state_instead_of_raising():
+    """RR-07: accepted precedence is total; a partial order never becomes an exception."""
+    failing = {"identity_surface_jointly_satisfied": False}
+    receipt = _run(_request(
+        temporal_order_disposition="PARTIAL_ORDER_NO_DIRECTION",
+        temporal_identity_contract_ref=ExactRef(
+            "TemporalIdentityContract", "TIC-FAIL", semantic_hash(failing)),
+        temporal_identity_contract_material=failing))
+    assert receipt.relation_state == "TEMPORAL_IDENTITY_UNRESOLVED"
+    assert receipt.direction_claim == "DIRECTION_NOT_CLAIMABLE"
+    # and a clean partial order still selects between the two comparable-no-direction states
+    clean = _run(_request(temporal_order_disposition="PARTIAL_ORDER_NO_DIRECTION",
+                          intervals_overlap=True))
+    assert clean.relation_state == "TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION"
+    assert clean.relation_state in {"TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION",
+                                    "TEMPORAL_COMPARABLE_NO_DIRECTION"}
+
+
+def test_hq217_secondary_every_target_use_permission_ref_is_resolved():
+    """Secondary: element zero is no longer the only ref consumed."""
+    reg, a = _full_registry()
+    extra_ref, extra_snapshot = _aref("TARGET_USE_PERMISSION", "TP-EXTRA")
+    with_extra = AuthorityRegistry(list(reg._by_key.values()) + [extra_snapshot])
+    receipt = _run(_request(target_use_permission_refs=(a["tp"], extra_ref)),
+                   registry=with_extra)
+    assert receipt.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    slots = {r["slot"] for r in receipt.provenance["authority_resolutions"]}
+    assert "target_use_permission" in slots
+    assert "target_use_permission[1]" in slots
+    # an additional ref that is NOT positively authorized is refused, not ignored.
+    # It must be a real AuthorityRef that is simply absent from the registry.
+    unregistered = _aref("TARGET_USE_PERMISSION", "TP-NOT-REGISTERED")[0]
+    absent = _run(_request(target_use_permission_refs=(a["tp"], unregistered)),
+                  registry=with_extra)
+    assert absent.relation_state == "TEMPORAL_INSUFFICIENT_AUTHORITY"
+    assert absent.relation_state_reason == "TARGET_USE_PERMISSION_REF_ABSENT"
+    # and no permission at all is refused rather than defaulted
+    none_given = _run(_request(target_use_permission_refs=()))
+    assert none_given.relation_state == "TEMPORAL_INSUFFICIENT_AUTHORITY"
+
+
+def test_hq217_productive_adequacy_positive_path_is_reachable():
+    """Commission requirement: do not close the defects by making production unreachable."""
+    nonzero = _run()
+    assert nonzero.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    assert nonzero.direction_claim == "INCREASE"
+    assert nonzero.comparability_status == "COMPARABLE"
+    exact_zero = _run(_request(quantity_surface={
+        "quantity_ref": _ref("Quantity", "Q1"), "measure_ref": MEASURE_REF,
+        "earlier_value": 4, "later_value": 4}))
+    assert exact_zero.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    assert exact_zero.direction_claim == "NO_AUTHORIZED_CHANGE"
+    assert exact_zero.delta["zero_basis"] == "exact signed difference equals canonical zero"
+    decreasing = _run(_request(quantity_surface={
+        "quantity_ref": _ref("Quantity", "Q1"), "measure_ref": MEASURE_REF,
+        "earlier_value": 9, "later_value": 2}))
+    assert decreasing.direction_claim == "DECREASE"
+    assert decreasing.comparability_status == "COMPARABLE"

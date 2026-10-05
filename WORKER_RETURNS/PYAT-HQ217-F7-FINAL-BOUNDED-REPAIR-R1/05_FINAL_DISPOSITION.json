@@ -1,0 +1,111 @@
+{
+  "schema": "PYAT_HQ217_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ217-F7-FINAL-BOUNDED-REPAIR-R1",
+  "commission_tip": "4f7b85cc4301fe3690735e8b60fb3c0d91ff7ed4",
+  "exact_startup_tip": "684a1b202767ad393bcead671a7ad239dabcdb14",
+  "code_bearing_base": "a93352512aa9290112bff1eb680c54d43345078f",
+  "hostile_rereview": "agent/reviewer-pyat-hq215-f7-final-rereview-r1 @ be0ae0f1e3dfea27b1520e81b30c781412e30c92",
+  "accepted_contract": "c57a96897788108db7b194e4e51691d1ca8ab729",
+  "disposition": "F7_FINAL_BOUNDED_REPAIR_COMPLETE__READY_FOR_FINAL_REREVIEW",
+  "f7_adopted": false,
+  "architecture_reopen_required": false,
+  "disposition_allowed_values_considered": {
+    "F7_FINAL_BOUNDED_REPAIR_COMPLETE__READY_FOR_FINAL_REREVIEW": "SELECTED. All six blocking defects and all three secondary items are closed, each reproduced as reachable before the repair and shown refused after. The positive temporal path is proven reachable with competent lawful fixtures, so the repairs closed holes rather than closing production. Exactly 12 relation states, 19 authority kinds, the exact-zero law and the prior-F7 mapping all verified intact.",
+    "F7_FINAL_BOUNDED_REPAIR_PARTIAL__NAMED_DEFECT": "NOT SELECTED. No named defect remains open. Three residuals are recorded below, none of which is an open repair item in this tranche.",
+    "F7_FINAL_BOUNDED_REPAIR_REVEALS_ARCHITECTURE_CONFLICT": "NOT SELECTED. Every repair was representable within the existing jurisdiction. No architecture reopen was needed, and no new authority kind, relation state, reason code or public object family was introduced."
+  },
+  "blocking_repairs_closed": [
+    {
+      "id": "F7-RR-01",
+      "summary": "comparability_requirements_ref is now hash-bound to the exact material consumed, and the surfaces are derived from that material.",
+      "no_new_ontology": true
+    },
+    {
+      "id": "F7-RR-02",
+      "summary": "Governed-use scope compares the COMPLETE ExactRef identity; a bare object_id token is fail-closed no-coverage.",
+      "direction_of_change": "removes coverage, never widens"
+    },
+    {
+      "id": "F7-RR-03",
+      "summary": "The identity ref must bind authorized material, and joint satisfaction is read from that material rather than a caller boolean."
+    },
+    {
+      "id": "F7-RR-04",
+      "summary": "The equivalence ref is resolved through the exact source-relation owner path; no caller-trusted token."
+    },
+    {
+      "id": "F7-RR-05",
+      "summary": "The bound measure is required, compared on every path, and serialized exactly instead of null."
+    },
+    {
+      "id": "F7-RR-07",
+      "summary": "Accepted precedence is total: a partial-order request emits a higher-priority terminal state instead of raising."
+    }
+  ],
+  "secondary_repairs_closed": [
+    {
+      "id": "F7-RR-06",
+      "summary": "A missing required order-basis ref now yields the accepted TEMPORAL_INSUFFICIENT_AUTHORITY / TEMPORAL_ORDER_BASIS_AUTHORITY_REF_ABSENT terminal rather than a cross-field IntegrityError."
+    },
+    {
+      "id": "target_use_permission_refs",
+      "summary": "Every supplied permission ref is resolved; none is silently ignored."
+    },
+    {
+      "id": "environment_record_conflict",
+      "summary": "HQ214's internal python_version disagreement is recorded as an unresolved provenance defect; this lane's runtime provenance is stated once and truthfully."
+    }
+  ],
+  "must_remain_true": "All ten verified. See 03_PRODUCTIVE_POSITIVE_PATH_AND_NONCOLLAPSE.json.",
+  "residual_items_named_not_fixed": [
+    {
+      "id": "R-1",
+      "item": "HQ214's two return artifacts disagree on python_version (3.11.3 versus 3.12.14).",
+      "why_not_fixed": "Not resolvable from the repository, and the commission restricts writes to this lane's return directory. Harmonizing would be fabrication.",
+      "classification": "UNRESOLVED_PROVENANCE_DEFECT_IN_PRIOR_LANE_RECORD",
+      "blocking_adoption": false
+    },
+    {
+      "id": "R-2",
+      "item": "The full rawlsing_next suite is not reproduced; only the F7 module, its court, the M1 court and their import closure are materialized.",
+      "why_not_fixed": "Sparse-scope limit, consistent with the truthful environment classification.",
+      "classification": "EVIDENCE_LIMITATION",
+      "blocking_adoption": false
+    },
+    {
+      "id": "R-3",
+      "item": "The regression slice reports 82 before-failures, a figure dominated by the added required request bindings rather than by 82 independent behavioural differences.",
+      "why_not_fixed": "Disclosed so the slice is not read as 82 separate defects. The per-defect reproduction and the fail-capability audit carry the real evidence.",
+      "classification": "MEASUREMENT_CAVEAT",
+      "blocking_adoption": false
+    }
+  ],
+  "hard_holds": {
+    "raw_source": false,
+    "locator": false,
+    "warrant": false,
+    "live_c4": false,
+    "c7": false,
+    "actor_person_implementation": false,
+    "attractor_population": false,
+    "new_authority_kind": false,
+    "new_relation_state": false,
+    "new_reason_code": false,
+    "new_public_object_family": false,
+    "architecture_reopen": false,
+    "self_adoption": false,
+    "merge": false,
+    "clone": false,
+    "outside_return_dir_writes": false
+  },
+  "self_audit_disclosures": [
+    "The first exact-zero check used a substring scan and reported a false FAIL; the only matches were the docstring asserting the absence of a deadband. Re-verified by AST. Same self-referential measurement trap HQ213 raised as D-3, met in my own verification.",
+    "An initial RR-04 attempt invented a reason token present in no precedence list, so the refusal was silently dropped and the defect stayed open. Caught by re-running the reproduction probe; replaced with the accepted reason code.",
+    "An initial RR-02 reproduction fixture used a dict scope entry and therefore did not reproduce; corrected to the bare-object_id scope form that the pre-repair code actually compared against, at which point the defect reproduced.",
+    "A first fail-capability round broke one helper for five witnesses at once, proving nothing about three of them. Replaced with per-mechanism breaks, all of which failed as required.",
+    "An initial baseline showed 9 failures caused by my own incomplete sparse manifest, not by code. Disclosed and corrected rather than reported as drift."
+  ],
+  "what_this_lane_does_not_establish": "It does not adopt F7. It does not create any governed interaction or equivalence authority: a lawful cross-universe comparison now requires a real resolved relation, so cross-universe production is narrower and stricter, not wider. It does not certify a full-suite regression baseline, and it does not resolve HQ214's provenance conflict. F7 remains unadopted pending another hostile rereview.",
+  "terminal": "HQ217_F7_FINAL_BOUNDED_REPAIR_RETURNED__HOSTILE_REREVIEW_REQUIRED",
+  "terminal_provenance": "NOT COMMISSIONED. The HQ217 commission specifies no terminal string; it ends at 'Commit, push only this branch, verify remote HEAD, report exact SHA.' This value follows the lane convention established by HQ211 and HQ214 and by the HQ215 review disposition, and is recorded as a convention rather than a commissioned requirement. Disclosed so no reviewer treats it as law."
+}

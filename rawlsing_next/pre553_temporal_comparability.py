@@ -341,6 +341,57 @@ def _known_snapshots(registry: AuthorityRegistry) -> tuple[AuthoritySnapshot, ..
     return ()
 
 
+def _bind_ref_to_material(ref: ExactRef, material: Any, *, ref_slot: str,
+                          material_slot: str) -> Mapping[str, Any]:
+    """HQ217 RR-01/RR-03: a ref token alone is not proof.
+
+    The contract ref names an exact requirement/identity material set. A ref is only
+    bound when the caller supplies that material AND its canonical hash equals the
+    ref's content_hash. An unbound ref yields a typed refusal, never a silent pass and
+    never a caller-trusted boolean.
+    """
+    if material is None:
+        raise TemporalComparabilityInputRefusal(
+            f"{ref_slot} is not bound: {material_slot} is required and must hash to the "
+            f"ref's content_hash; a ref token alone is not proof")
+    try:
+        actual = semantic_hash(material)
+    except Exception as exc:  # material must be canonicalizable
+        raise TemporalComparabilityInputRefusal(
+            f"{material_slot} is not canonicalizable exact material: {exc}") from exc
+    if actual != ref.content_hash:
+        raise TemporalComparabilityInputRefusal(
+            f"{material_slot} does not hash to {ref_slot}.content_hash; the supplied "
+            "material is not the exact material the ref names")
+    return material
+
+
+def _scope_covers_governed_use(scope_value: Any, governed_use_ref: Any) -> bool:
+    """HQ217 RR-02: governed-use scope must match the COMPLETE ExactRef identity.
+
+    ExactRef identity is kind + object_id + content_hash. The previous check compared a
+    bare object_id, so two DIFFERENT exact governed-use refs that shared only an
+    object_id both satisfied the same scope. A scope entry now covers the governed use
+    only when it names the full exact identity. A bare object_id token in scope is NOT
+    sufficient evidence of governed-use scope and is treated as no coverage (fail-closed).
+    """
+    if isinstance(scope_value, str):
+        # Only the explicit unrestrict marker is accepted as a blanket grant.
+        return scope_value == "EXPLICIT_UNRESTRICTED"
+    if not isinstance(scope_value, (set, frozenset, list, tuple)):
+        return False
+    target = governed_use_ref.as_dict() if hasattr(governed_use_ref, "as_dict") else governed_use_ref
+    target = canonicalize(target)
+    for entry in scope_value:
+        if isinstance(entry, str):
+            # A bare token carries no content_hash, so it cannot evidence exact scope.
+            continue
+        candidate = entry.as_dict() if hasattr(entry, "as_dict") else entry
+        if canonicalize(candidate) == target:
+            return True
+    return False
+
+
 def _scope_covers_universe(scope_value: Any, universe: Any) -> bool:
     if isinstance(scope_value, str):
         return scope_value == "EXPLICIT_UNRESTRICTED"
@@ -439,7 +490,7 @@ def resolve_required_authority(
 
     if require_use_scope and governed_use_id is not None:
         governed = scope.get("target_use_refs")
-        if governed is not None and not _scope_covers_universe(governed, governed_use_id):
+        if governed is not None and not _scope_covers_governed_use(governed, governed_use_id):
             return AuthorityResolutionRecord(
                 slot, authority_kind, ref, SCOPE_MISMATCH,
                 "exact authority scope does not cover the governed use",
@@ -484,6 +535,16 @@ class TemporalComparisonRequest:
     comparability_requirements_ref: Any = None
     source_equivalence_ref: Any = None
     native_canonical_mapping_ref: Any = None
+
+    # HQ217 RR-01/RR-03/RR-04: the exact material each contract ref names. A ref token
+    # alone is not proof, so the material is supplied and its hash must equal the ref's
+    # content_hash. The surfaces consumed below are derived from THIS material.
+    comparability_requirements_material: Any = None
+    temporal_identity_contract_material: Any = None
+
+    # HQ217 RR-04: the exact source-relation OWNER PATH. source_equivalence_ref is
+    # resolved through this resolver, never accepted as a caller-trusted token.
+    source_relation_resolver: Any = None
 
     # bound comparison operation and quantity surface (Repair 5)
     comparison_operation: str = AUTHORIZED_COMPARISON_OPERATION
@@ -650,9 +711,14 @@ def compare_temporal_anchors(
     governed_use_id = _require_ref(request.governed_use_id, "governed_use_id")
 
     identity_ref = None
+    identity_material: Mapping[str, Any] | None = None
     if request.temporal_identity_contract_ref is not None:
         identity_ref = _require_ref(request.temporal_identity_contract_ref,
                                     "temporal_identity_contract_ref")
+        identity_material = _bind_ref_to_material(
+            identity_ref, request.temporal_identity_contract_material,
+            ref_slot="temporal_identity_contract_ref",
+            material_slot="temporal_identity_contract_material")
 
     # ---- Repair 4: comparability_requirements_ref is required and resolved ----
     if request.comparability_requirements_ref is None:
@@ -660,6 +726,16 @@ def compare_temporal_anchors(
             "comparability_requirements_ref is contract-required")
     requirements_ref = _require_ref(request.comparability_requirements_ref,
                                     "comparability_requirements_ref")
+    requirements_material = _bind_ref_to_material(
+        requirements_ref, request.comparability_requirements_material,
+        ref_slot="comparability_requirements_ref",
+        material_slot="comparability_requirements_material")
+    # The consumed surface set is DERIVED from the bound material, so the ref governs
+    # the derivation instead of accompanying it.
+    bound_requirement_results = tuple(
+        dict(r) for r in (requirements_material.get("requirement_results")
+                          if isinstance(requirements_material, Mapping)
+                          else requirements_material))
 
     mapping_ref = None
     if request.native_canonical_mapping_ref is not None:
@@ -669,6 +745,13 @@ def compare_temporal_anchors(
     if request.source_equivalence_ref is not None:
         equivalence_ref = _require_ref(request.source_equivalence_ref, "source_equivalence_ref")
     basis_ref = None
+    if (disposition in AUTHORIZED_ORDER_BASES
+            and request.temporal_order_basis_ref is None):
+        # RR-06: an authorized disposition with no basis ref is the accepted
+        # insufficient-authority terminal, not a cross-field IntegrityError.
+        missing_basis_ref = True
+    else:
+        missing_basis_ref = False
     if request.temporal_order_basis_ref is not None:
         if disposition == NO_BASIS_DISPOSITION:
             raise TemporalComparabilityIntegrityError(
@@ -690,7 +773,7 @@ def compare_temporal_anchors(
     def resolve(slot, ref, kind, *, operation=None, universe_refs=(), use_scope=False):
         record, snapshot = resolve_required_authority(
             registry, ref, slot=slot, authority_kind=kind, operation=operation,
-            governed_use_id=governed_use_id.object_id,
+            governed_use_id=governed_use_id,
             required_universe_refs=universe_refs, require_use_scope=use_scope)
         resolutions.append(record)
         if snapshot is not None:
@@ -725,14 +808,20 @@ def compare_temporal_anchors(
                 SCOPE_MISMATCH: "AUTHORITY_SCOPE_MISMATCH",
             }.get(tb.outcome, "TEMPORAL_ORDER_BASIS_AUTHORITY_REF_ABSENT"))
 
-    tp = resolve("target_use_permission",
-                 request.target_use_permission_refs and request.target_use_permission_refs[0],
-                 "TARGET_USE_PERMISSION", universe_refs=(), use_scope=True)
-    if tp.outcome != POSITIVE:
-        detected.append({
-            HASH_MISMATCH: "AUTHORITY_HASH_MISMATCH",
-            SCOPE_MISMATCH: "AUTHORITY_SCOPE_MISMATCH",
-        }.get(tp.outcome, "TARGET_USE_PERMISSION_REF_ABSENT"))
+    # Every supplied target-use permission ref is resolved, not only element zero. A
+    # silently ignored additional permission was a real gap: the receipt would claim a
+    # governed use that one bound permission did not cover.
+    tp_refs = tuple(request.target_use_permission_refs or ())
+    if not tp_refs:
+        detected.append("TARGET_USE_PERMISSION_REF_ABSENT")
+    for index, tp_ref in enumerate(tp_refs):
+        slot = "target_use_permission" if index == 0 else f"target_use_permission[{index}]"
+        tp = resolve(slot, tp_ref, "TARGET_USE_PERMISSION", universe_refs=(), use_scope=True)
+        if tp.outcome != POSITIVE:
+            detected.append({
+                HASH_MISMATCH: "AUTHORITY_HASH_MISMATCH",
+                SCOPE_MISMATCH: "AUTHORITY_SCOPE_MISMATCH",
+            }.get(tp.outcome, "TARGET_USE_PERMISSION_REF_ABSENT"))
 
     um = resolve("uncertainty_method", request.uncertainty_authority_ref, "UNCERTAINTY_METHOD")
     if um.outcome != POSITIVE:
@@ -786,11 +875,33 @@ def compare_temporal_anchors(
         if equivalence_ref is None:
             detected.append("SOURCE_EQUIVALENCE_REF_ABSENT")
         else:
+            # RR-04: resolve the relation through the exact source-relation OWNER PATH
+            # first. An arbitrary caller token must never be accepted here.
+            resolver = request.source_relation_resolver
+            if resolver is None:
+                detected.append("SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE")
+            else:
+                try:
+                    resolved_relation = resolver.resolve_exact(equivalence_ref)
+                except Exception:
+                    detected.append("SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE")
+                else:
+                    bound_rel_ref = getattr(resolved_relation, "ref", None)
+                    if bound_rel_ref is not None and \
+                            canonicalize(bound_rel_ref.as_dict()) != \
+                            canonicalize(equivalence_ref.as_dict()):
+                        detected.append("SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE")
+                    else:
+                        resolutions.append(AuthorityResolutionRecord(
+                            "source_equivalence_relation", "SOURCE_EQUIVALENCE",
+                            equivalence_ref, POSITIVE, "resolved through the exact "
+                            "source-relation owner path",
+                            SOURCE_EQUIVALENCE_RELATION_OPERATION, governed_use_id))
             eq_record, eq_snapshot = resolve_required_authority(
                 registry, request.source_equivalence_authority_ref,
                 slot="source_equivalence", authority_kind="SOURCE_EQUIVALENCE",
                 operation=SOURCE_EQUIVALENCE_RELATION_OPERATION,
-                governed_use_id=governed_use_id.object_id,
+                governed_use_id=governed_use_id,
                 required_universe_refs=(universes[0], universes[1]), require_use_scope=True)
             resolutions.append(eq_record)
             if eq_snapshot is not None:
@@ -809,14 +920,35 @@ def compare_temporal_anchors(
     # Identity and declared comparability surfaces.
     if cardinality_short:
         detected.append("FEWER_THAN_TWO_AUTHORIZED_ANCHORS")
+    if missing_basis_ref:
+        detected.append("TEMPORAL_ORDER_BASIS_AUTHORITY_REF_ABSENT")
 
     if identity_ref is None:
         detected.append("TEMPORAL_IDENTITY_CONTRACT_REF_ABSENT")
-    elif not request.identity_surface_jointly_satisfied:
-        detected.append("IDENTITY_SURFACE_NOT_JOINTLY_SATISFIED")
+    else:
+        # RR-03: the joint-satisfaction fact is read from the AUTHORIZED identity material
+        # the ref names, not from the caller boolean. A contradicting boolean is a
+        # disagreement about authorized material, so it is refused rather than trusted.
+        bound_identity_ok = bool(
+            identity_material.get("identity_surface_jointly_satisfied")) \
+            if isinstance(identity_material, Mapping) else False
+        if not bound_identity_ok:
+            detected.append("IDENTITY_SURFACE_NOT_JOINTLY_SATISFIED")
+        elif not request.identity_surface_jointly_satisfied:
+            raise TemporalComparabilityInputRefusal(
+                "caller identity_surface_jointly_satisfied contradicts the bound authorized "
+                "identity material; the authorized material governs")
 
+    # RR-01: surfaces come from the bound requirement material. A caller-supplied result
+    # tuple that disagrees with it is refused, so the ref cannot be decorative.
+    if (request.comparability_requirement_results
+            and tuple(dict(r) for r in request.comparability_requirement_results)
+            != bound_requirement_results):
+        raise TemporalComparabilityInputRefusal(
+            "caller comparability_requirement_results disagree with the material bound to "
+            "comparability_requirements_ref")
     for surface in NONCOMPARABLE_SURFACES:
-        if any(d.get("reason") == surface for d in request.comparability_requirement_results):
+        if any(d.get("reason") == surface for d in bound_requirement_results):
             detected.append(surface)
 
     # Repair 7 material: the prior-F7 refusal is a real detected surface.
@@ -853,23 +985,42 @@ def compare_temporal_anchors(
         quantity_ref = _require_ref(request.quantity_surface["quantity_ref"], "quantity_ref")
         # The quantity must be the bound measure, or the claim is not about it.
         bound_measures = {r.authority_ref.key for r in mea_snapshots if r.authority_ref}
-        if bound_measures:
+        # RR-05: the quantity surface must name the bound measure on EVERY path. The
+        # previous code parsed measure_ref as an ExactRef only, swallowed the resulting
+        # exception into None, and then skipped the comparison entirely -- so a valid
+        # AuthorityRef fixture serialized as null and a directional delta could be minted
+        # with no exact bound measure. Both exact-ref forms are now accepted and compared.
+        raw_measure = request.quantity_surface.get("measure_ref")
+        if raw_measure is None:
+            raise TemporalComparabilityInputRefusal(
+                "quantity_surface measure_ref is required and must be the bound measure "
+                "authority; a directional delta may never be minted without it")
+        measure_identity: dict[str, Any] | None = None
+        measure_key: str | None = None
+        if hasattr(raw_measure, "as_dict"):
+            measure_identity = raw_measure.as_dict()
+            measure_key = getattr(raw_measure, "key", None)
+        elif isinstance(raw_measure, Mapping):
+            measure_identity = dict(raw_measure)
             try:
-                measure_ref = _require_ref(request.quantity_surface.get("measure_ref"),
-                                           "measure_ref")
+                measure_key = _require_ref(raw_measure, "measure_ref").key
             except TemporalComparabilityIntegrityError:
-                measure_ref = None
-            if measure_ref is not None and measure_ref.key not in bound_measures:
-                raise TemporalComparabilityInputRefusal(
-                    "quantity_surface measure_ref is not the bound measure authority")
+                try:
+                    measure_key = _require_authority_ref(raw_measure, "measure_ref").key
+                except TemporalComparabilityError:
+                    measure_key = None
+        if measure_key is None:
+            raise TemporalComparabilityInputRefusal(
+                "quantity_surface measure_ref must be an exact ref or an exact authority ref")
+        if bound_measures and measure_key not in bound_measures:
+            raise TemporalComparabilityInputRefusal(
+                "quantity_surface measure_ref is not the bound measure authority")
         earlier = _exact_number(request.quantity_surface["earlier_value"], "earlier_value")
         later = _exact_number(request.quantity_surface["later_value"], "later_value")
         derived_delta = later - earlier
         quantity_surface = {
             "quantity_ref": quantity_ref.as_dict(),
-            "measure_ref": (request.quantity_surface["measure_ref"].as_dict()
-                            if isinstance(request.quantity_surface.get("measure_ref"), ExactRef)
-                            else None),
+            "measure_ref": measure_identity,
             "earlier_value": canonicalize(earlier),
             "later_value": canonicalize(later),
             "comparison_operation": request.comparison_operation,
@@ -940,7 +1091,12 @@ def compare_temporal_anchors(
         delta_payload = None
         non_delta_presence = "DELTA_NOT_CLAIMABLE"
 
-    if disposition == "PARTIAL_ORDER_NO_DIRECTION":
+    # RR-07: accepted precedence is total. A partial-order REQUEST may legitimately
+    # coincide with a higher-priority terminal failure (for example an unresolved
+    # identity). That higher-priority state is emitted; it is never converted into an
+    # exception. The partial-order disposition only SELECTS between the two
+    # comparable-no-direction states when nothing higher-priority was detected.
+    if disposition == "PARTIAL_ORDER_NO_DIRECTION" and state in COMPARABLE_STATES:
         if state not in ("TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION",
                          "TEMPORAL_COMPARABLE_NO_DIRECTION"):
             raise TemporalComparabilityIntegrityError(
@@ -1001,7 +1157,9 @@ def compare_temporal_anchors(
             "observation_binding": [dict(b) for b in bound_observation_bindings],
             "prior_f7_state": request.prior_f7_state,
             "declared_comparability_surfaces": [
-                dict(d) for d in request.comparability_requirement_results],
+                dict(d) for d in bound_requirement_results],
+            "comparability_requirements_ref": requirements_ref.as_dict(),
+            "comparability_requirements_material_hash_bound": True,
         },
     }
 
@@ -1040,6 +1198,7 @@ def _validate_receipt_cross_field_law(material: Mapping[str, Any]) -> None:
     direction = material["direction_claim"]
     delta = material["delta"]
     relation_status = material["relation_status"]
+    reason = material["relation_state_reason"]
 
     if state not in RELATION_STATES:
         raise TemporalComparabilityIntegrityError("unknown relation state")
@@ -1049,8 +1208,15 @@ def _validate_receipt_cross_field_law(material: Mapping[str, Any]) -> None:
         raise TemporalComparabilityIntegrityError(
             "ORDER_UNKNOWN_NONCOMPARABLE must carry no basis ref")
     if disposition in AUTHORIZED_ORDER_BASES and basis is None:
-        raise TemporalComparabilityIntegrityError(
-            "an authorized order basis requires an exact basis ref")
+        # RR-06: a missing required basis ref is the ACCEPTED insufficient-authority
+        # terminal (TEMPORAL_INSUFFICIENT_AUTHORITY /
+        # TEMPORAL_ORDER_BASIS_AUTHORITY_REF_ABSENT), not a cross-field integrity
+        # error. The absence is reported as a typed refusal state instead.
+        if state != "TEMPORAL_INSUFFICIENT_AUTHORITY" or \
+                reason != "TEMPORAL_ORDER_BASIS_AUTHORITY_REF_ABSENT":
+            raise TemporalComparabilityIntegrityError(
+                "an authorized order basis requires an exact basis ref, and no accepted "
+                "refusal state reported the absence")
     if disposition == NO_BASIS_DISPOSITION and state == "TEMPORAL_ORDER_UNAUTHORIZED":
         if relation_status != "ORDER_RELATION_REFUSED":
             raise TemporalComparabilityIntegrityError(

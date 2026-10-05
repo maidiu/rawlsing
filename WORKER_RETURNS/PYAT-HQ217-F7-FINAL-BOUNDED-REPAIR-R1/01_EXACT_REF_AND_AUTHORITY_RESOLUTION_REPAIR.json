@@ -1,0 +1,64 @@
+{
+  "schema": "PYAT_HQ217_EXACT_REF_AND_AUTHORITY_RESOLUTION_REPAIR@1.0.0",
+  "lane": "PYAT-HQ217-F7-FINAL-BOUNDED-REPAIR-R1",
+  "repairs": ["F7-RR-01", "F7-RR-02", "F7-RR-03", "F7-RR-04"],
+  "commission_tip": "4f7b85cc4301fe3690735e8b60fb3c0d91ff7ed4",
+  "exact_startup_tip": "684a1b202767ad393bcead671a7ad239dabcdb14",
+  "code_bearing_base": "a93352512aa9290112bff1eb680c54d43345078f",
+  "accepted_contract": "c57a96897788108db7b194e4e51691d1ca8ab729",
+
+  "base_relationship": {
+    "code_bearing_base_is_ancestor_of_startup_tip": true,
+    "code_bearing_base_is_ancestor_of_commission_tip": true,
+    "production_code_diff_base_to_startup_tip": "NONE",
+    "commits_between_base_and_startup_tip": 2,
+    "note": "The startup tip adds only the six HQ214 F7 return artifacts. Production code is identical at the code-bearing base and the startup tip, so repairing at the commission tip repairs exactly the code-bearing state."
+  },
+
+  "governing_contract_conformance": {
+    "F7-RR-02": "The accepted contract types governed_use_id as ExactRef and states a receipt is not general-purpose. Passing governed_use_id.object_id reduced that identity, so the repair restores the contract's own type.",
+    "F7-RR-01": "The accepted contract defines comparability_requirements_ref as the exact requirement set that both anchors must jointly satisfy, with one result per surface. A ref that merely accompanied caller-asserted results did not name the consumed material.",
+    "F7-RR-03": "The accepted contract requires the temporal identity contract to compose at minimum eight named surfaces and to preserve WAVE_LABEL != ORDINAL != CALENDAR_YEAR. A parsed ref plus a caller boolean constituted none of that.",
+    "F7-RR-04": "The accepted contract makes SOURCE_EQUIVALENCE conditional on cross-universe and binds semantic equivalence in an exact scope. The already-resolved exact relation result is the authorized form; a bare token is not."
+  },
+
+  "F7-RR-01": {
+    "defect": "comparability_requirements_ref was parsed and serialized but never bound to the requirement results actually consumed. Changing the ref while retaining the same caller result tuple did not change derivation.",
+    "reproduced_before": {"state_with_CR1": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED", "state_with_CR_DIFFERENT": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED", "reachable": true},
+    "repair": "Request gains comparability_requirements_material. _bind_ref_to_material refuses unless the supplied material's canonical hash equals the ref's content_hash. The consumed surfaces are DERIVED from that bound material, and provenance declares the bound surfaces. A caller-supplied comparability_requirement_results tuple that disagrees with the bound material is refused.",
+    "after": {"unbound_ref": "REFUSED", "no_material": "REFUSED", "contradicting_caller_results": "REFUSED", "surface_through_material": "TEMPORAL_NONCOMPARABLE"},
+    "no_new_ontology": "The ref, the material and the surface vocabulary are the accepted contract's own names."
+  },
+
+  "F7-RR-02": {
+    "defect": "Governed-use scope was reduced from the complete ExactRef to object_id, so two different exact governed-use refs sharing only an object_id both satisfied the same scope.",
+    "reproduced_before": {"scoped_exact_ref": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED", "same_object_id_different_hash": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED", "reachable": true},
+    "repair": "New _scope_covers_governed_use replaces the string comparison for governed-use scope. A scope entry covers the governed use only when it names the full exact identity (kind + object_id + content_hash). A bare object_id token carries no content_hash and is therefore NOT evidence of exact scope; it is treated as no coverage. The EXPLICIT_UNRESTRICTED marker is retained as the only blanket grant. Both call sites now pass the whole ExactRef.",
+    "after": {"scoped_exact_ref": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED", "same_object_id_different_hash": "TEMPORAL_INSUFFICIENT_AUTHORITY", "bare_token_scope": "TEMPORAL_INSUFFICIENT_AUTHORITY"},
+    "fail_closed_direction": "The repair removes coverage rather than adding it, so it cannot be accused of widening the gate.",
+    "positive_path_preserved": "The default fixture scope is EXPLICIT_UNRESTRICTED, so ordinary positive use is unaffected."
+  },
+
+  "F7-RR-03": {
+    "defect": "The temporal identity contract ref was only parsed, and TEMPORAL_EVIDENCE resolution was independent of it, so an arbitrary exact identity ref plus a caller true boolean passed the identity gate.",
+    "reproduced_before": {"arbitrary_ref_state": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED", "reachable": true},
+    "repair": "Request gains temporal_identity_contract_material, hash-bound to the identity ref by _bind_ref_to_material. identity_surface_jointly_satisfied is read from the AUTHORIZED material. A caller boolean that contradicts the material is refused rather than trusted.",
+    "after": {"arbitrary_unbound_ref": "REFUSED", "no_material": "REFUSED", "material_says_unsatisfied": "TEMPORAL_IDENTITY_UNRESOLVED", "boolean_contradicting_material": "REFUSED"},
+    "no_caller_trusted_boolean": "The boolean is now only a consistency cross-check against authorized material, never the source of the fact."
+  },
+
+  "F7-RR-04": {
+    "defect": "source_equivalence_ref was accepted as a bare caller token whenever a scoped SOURCE_EQUIVALENCE authority snapshot existed, bypassing the already-resolved exact relation result the contract requires.",
+    "reproduced_before": {"arbitrary_equivalence_ref": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED", "reachable": true},
+    "repair": "Request gains source_relation_resolver. For a cross-universe pair the equivalence ref is resolved through the exact source-relation OWNER PATH (SourceRelationResolver.resolve_exact) and the resolved relation's own ref must equal the supplied ref. No resolver, an unresolvable ref, or a ref that disagrees with the resolved relation all yield the accepted refusal. The existing authority resolution and relation-authority-only validation are retained.",
+    "reason_code_discipline": "The refusal reuses the ACCEPTED reason SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE. An initial attempt introduced a new reason token that was in no state's precedence list and was therefore silently dropped, leaving the defect open; that is recorded because it is exactly the failure mode an invented code creates.",
+    "after": {"arbitrary_token_with_resolver": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT", "no_resolver": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT", "competent_resolver": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"},
+    "production_path_not_a_stub": "The positive cross-universe court fixture builds a genuine SourceUniverseRelation through the accepted make_source_universe_relation factory and a real SourceRelationResolver. A stub resolver was rejected because it would relocate the caller-trust problem into the court."
+  },
+
+  "shared_helper": {
+    "name": "_bind_ref_to_material",
+    "purpose": "One place where a contract ref is proven to name the material it claims.",
+    "refusal_kind": "TemporalComparabilityInputRefusal (typed, not a raw error)"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema": "PYAT_HQ217_PRODUCTIVE_POSITIVE_PATH_AND_NONCOLLAPSE@1.0.0",
+  "lane": "PYAT-HQ217-F7-FINAL-BOUNDED-REPAIR-R1",
+  "requirement": "Do not satisfy these repairs by making positive temporal production unreachable.",
+
+  "productive_adequacy_proven": {
+    "competent_fixtures": "The court's base request now binds a seven-surface comparability requirement material and an identity material whose canonical hashes ARE the contract refs' content_hash values. The cross-universe fixture builds a genuine SourceUniverseRelation through the accepted factory and a real SourceRelationResolver.",
+    "results": [
+      {"case": "genuinely comparable pair with nonzero ordered delta", "relation_state": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED", "direction_claim": "INCREASE", "comparability_status": "COMPARABLE", "witness": "test_hq217_productive_adequacy_positive_path_is_reachable and the pre-existing A1/delta witnesses"},
+      {"case": "exact zero", "relation_state": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED", "direction_claim": "NO_AUTHORIZED_CHANGE", "zero_basis": "exact signed difference equals canonical zero", "witness": "test_hq217_productive_adequacy_positive_path_is_reachable and test_witness_exact_zero_is_derived_not_asserted"},
+      {"case": "lawful nonzero ordered comparison, decreasing", "direction_claim": "DECREASE", "comparability_status": "COMPARABLE"},
+      {"case": "cross-universe pair resolved through the owner path", "relation_state": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED", "witness": "test_witness_cross_universe_is_derived_from_bound_universes"},
+      {"case": "higher-priority failure still produces its accepted typed state", "relation_state": "TEMPORAL_IDENTITY_UNRESOLVED", "witness": "test_hq217_rr07_partial_order_emits_a_higher_priority_state_instead_of_raising"}
+    ],
+    "conclusion": "Every repair closed a hole by requiring more evidence, never by removing reachability. The positive path is proven reachable with competent lawful fixtures."
+  },
+
+  "must_remain_true_verification": [
+    {"law": "exactly 12 relation states; no 13th", "verified": true, "method": "len(RELATION_STATES)==12 and len(RELATION_STATE_PRECEDENCE)==12"},
+    {"law": "ordered basis without derivable authorized delta refuses pre-receipt", "verified": true, "method": "TemporalComparabilityInputRefusal raised"},
+    {"law": "negative/refusal receipts are NOT_COMPARABLE", "verified": true, "method": "9 negative states classified; COMPARABLE_STATES and NEGATIVE_STATES are disjoint"},
+    {"law": "exact-zero has no tolerance/deadband/epsilon", "verified": true, "method": "AST analysis: no executable isclose/round/floor/ceil/tolerance/deadband call, NO float literal anywhere in the module, and no tolerance-like identifier"},
+    {"law": "prior-F7 mapping remains live", "verified": true, "method": "PRIOR_F7_STATE_MAP has 5 entries and PRIOR_F7_NO_RECEIPT_STATES is non-empty"},
+    {"law": "3+ anchors refuse", "verified": true, "method": "TemporalComparabilityError raised for a three-anchor request"},
+    {"law": "cross-universe status derives from bound material", "verified": true, "method": "no request field named for crossing universes; it is derived from the bound per-anchor universe refs"},
+    {"law": "frozen backfill guard is live", "verified": true, "method": "temporal_backfill_refused('TEMPORAL_NONCOMPARABLE') is True"},
+    {"law": "broad F7 power ceiling unchanged", "verified": true, "method": "AUTHORITY_KIND_CEILINGS still contains 'no downstream consumer power'"},
+    {"law": "authority kinds still 19; no new kind", "verified": true},
+    {"law": "no F8 or new-family import", "verified": true}
+  ],
+
+  "noncollapse_preserved": {
+    "note": "None of the six repairs collapses a refusal into a pass or a pass into a refusal. Each adds an evidence requirement; the typed state vocabulary is unchanged and no state was merged.",
+    "identity_vs_authority": "RR-03 keeps TEMPORAL_IDENTITY_UNRESOLVED distinct from TEMPORAL_INSUFFICIENT_AUTHORITY.",
+    "refusal_vs_no_change": "The added refusals are typed terminal states, never a NO_AUTHORIZED_CHANGE finding.",
+    "scope_vs_identity": "RR-02's scope mismatch remains AUTHORITY_SCOPE_MISMATCH under insufficient authority; it is not reported as an identity failure.",
+    "equivalence_vs_authority": "RR-04 reuses the accepted SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE reason rather than collapsing it into a distinct new code."
+  },
+
+  "honest_measurement_note": "The exact-zero law was first checked by substring and appeared to FAIL. The only matches were the module docstring asserting the absence of a deadband, tolerance and epsilon, identical at the code-bearing base. Re-checked by AST, which is the correct method, and the law holds. Recorded because it is the same self-referential measurement trap HQ213 raised as D-3, encountered again in my own verification."
+}

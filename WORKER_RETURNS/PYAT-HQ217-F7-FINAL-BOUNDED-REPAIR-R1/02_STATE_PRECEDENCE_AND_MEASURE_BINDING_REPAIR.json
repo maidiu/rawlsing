@@ -1,0 +1,51 @@
+{
+  "schema": "PYAT_HQ217_STATE_PRECEDENCE_AND_MEASURE_BINDING_REPAIR@1.0.0",
+  "lane": "PYAT-HQ217-F7-FINAL-BOUNDED-REPAIR-R1",
+  "repairs": ["F7-RR-05", "F7-RR-06", "F7-RR-07"],
+
+  "F7-RR-05": {
+    "defect": "Bound-measure validation was skipped on the positive path. measure_authority_refs are AuthorityRef objects, but quantity_surface.measure_ref was parsed with _require_ref, which accepts only ExactRef; the resulting exception was caught and converted to measure_ref=None, so the bound-measure comparison never ran and the emitted receipt serialized measure_ref as null.",
+    "reproduced_before": {"quantity_surface_measure_ref": null, "bound_measure_ref": "authority_id MEAS1", "reachable": true},
+    "impact": "A directional delta could be minted with no exact bound measure on the quantity surface.",
+    "court_gap_named_by_the_review": "The mismatch witness supplied a different ExactRef while the positive fixture supplied an AuthorityRef, so no witness proved the valid-path binding.",
+    "repair": {
+      "measure_ref_required": "An absent measure_ref now refuses; a directional delta may never be minted without one.",
+      "both_exact_forms_accepted": "An AuthorityRef and an ExactRef are both accepted, each reduced to its exact identity and key.",
+      "comparison_enforced": "The identity is compared against the positively resolved bound measures on EVERY path, and a mismatch refuses.",
+      "serialization_fixed": "The exact identity is serialized into the receipt instead of null."
+    },
+    "after": {"serialized_measure_ref_is_null": false, "serialized_measure_ref": "authority_id MEAS1 with its content hash", "wrong_measure_ref": "REFUSED", "absent_measure_ref": "REFUSED"},
+    "no_tolerance_introduced": "The repair compares exact identities only. No tolerance, deadband or epsilon was added; see 04 for the AST-level verification."
+  },
+
+  "F7-RR-06": {
+    "defect": "A missing required temporal_order_basis_ref was not detected during derivation. It surfaced later as a cross-field TemporalComparabilityIntegrityError, so the accepted disposition TEMPORAL_INSUFFICIENT_AUTHORITY / TEMPORAL_ORDER_BASIS_AUTHORITY_REF_ABSENT could never be emitted.",
+    "reproduced_before": {"exception": "TemporalComparabilityIntegrityError", "message": "an authorized order basis requires an exact basis ref", "reachable": true},
+    "repair": "An authorized order disposition with no basis ref now appends the ACCEPTED reason TEMPORAL_ORDER_BASIS_AUTHORITY_REF_ABSENT during derivation, and the cross-field validator accepts a null basis ref only when the receipt reports exactly that accepted refusal state and reason.",
+    "after": {"state": "TEMPORAL_INSUFFICIENT_AUTHORITY", "reason": "TEMPORAL_ORDER_BASIS_AUTHORITY_REF_ABSENT", "raised": false},
+    "reason_code_discipline": "TEMPORAL_ORDER_BASIS_AUTHORITY_REF_ABSENT was already a member of the accepted precedence list for TEMPORAL_INSUFFICIENT_AUTHORITY. No new reason code was invented.",
+    "fail_closed_retained": "A null basis ref paired with any other state or reason still raises, so the relaxation is narrow and cannot mask a different defect.",
+    "court_updated": "test_authorized_basis_requires_a_basis_ref previously asserted the IntegrityError, which WAS the defect. It now asserts the accepted terminal, and additionally asserts DIRECTION_NOT_CLAIMABLE with no delta."
+  },
+
+  "F7-RR-07": {
+    "defect": "A partial-order request could convert a higher-priority terminal failure into an exception. PARTIAL_ORDER_NO_DIRECTION plus an unresolved identity first selected TEMPORAL_IDENTITY_UNRESOLVED and then raised, because the code required the state to be one of the two comparable-no-direction states.",
+    "reproduced_before": {"exception": "TemporalComparabilityIntegrityError", "raised": true, "reachable": true},
+    "repair": "The partial-order guard now applies only when the selected state is itself COMPARABLE. When a higher-priority terminal was detected, precedence governs and that state is emitted. The guard remains for the comparable branch, so a comparable state that is neither partial-order state still raises.",
+    "after": {"partial_order_plus_unresolved_identity": "TEMPORAL_IDENTITY_UNRESOLVED", "raised": false, "clean_partial_order_with_overlap": "TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION"},
+    "why_this_is_correct_not_merely_quiet": "The advertised relation-state precedence is total. A request may legitimately combine a partial-order disposition with an independent higher-priority failure; the failure is the truthful outcome. Emitting TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION there would have claimed comparability that the identity failure contradicts.",
+    "no_state_added": "Still exactly 12 relation states."
+  },
+
+  "secondary_target_use_permission_refs": {
+    "defect": "target_use_permission_refs consumed only element zero. Additional supplied permission refs were never validated or recorded, so a receipt could claim a governed use that one bound permission did not cover.",
+    "repair": "Every supplied permission ref is resolved. Each contributes its own resolution record, slotted target_use_permission for the first and target_use_permission[i] thereafter, preserving the historical slot name in the common single-ref case. An empty tuple yields TARGET_USE_PERMISSION_REF_ABSENT.",
+    "contract_conformance": "The accepted contract types this slot as tuple[ExactRef, ...] and required, so resolving all supplied refs follows the contract rather than inventing a cardinality-one rule.",
+    "after": {"two_valid_refs": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED with both slots recorded", "additional_ref_absent": "TEMPORAL_INSUFFICIENT_AUTHORITY / TARGET_USE_PERMISSION_REF_ABSENT", "no_refs": "TEMPORAL_INSUFFICIENT_AUTHORITY"}
+  },
+
+  "ordering_guarantees_preserved": {
+    "coherence_gate_placement": "The registry-level and material-binding gates run before any positive receipt is assembled.",
+    "measure_gate_placement": "The measure identity is resolved and compared before derived_delta is computed."
+  }
+}

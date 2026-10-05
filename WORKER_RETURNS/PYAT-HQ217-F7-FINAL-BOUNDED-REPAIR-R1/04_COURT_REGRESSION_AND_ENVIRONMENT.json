@@ -1,0 +1,84 @@
+{
+  "schema": "PYAT_HQ217_COURT_REGRESSION_AND_ENVIRONMENT@1.0.0",
+  "lane": "PYAT-HQ217-F7-FINAL-BOUNDED-REPAIR-R1",
+
+  "environment": {
+    "governed_environment_present": false,
+    "classification": "TRUTHFUL AND UNCHANGED: this is still an absent governed F7 qualification environment.",
+    "python_version": "3.11.3",
+    "pytest_version": "9.1.1",
+    "interpreter": "an isolated throwaway virtualenv at the OS temp path, installed with --break-system-packages by the HQ211 lane",
+    "determinism": "PYTHONHASHSEED=0; the two-court surface was run twice with identical results",
+    "no_governed_provenance_claimed": true,
+    "full_suite_status": "NOT reproduced and NOT claimed. Only the F7 module, its court, the M1 court and their transitive import closure are materialized under the commissioned sparse scope."
+  },
+
+  "hq214_environment_record_conflict_reconciliation": {
+    "secondary_repair_9": "Reconcile the HQ214 environment record conflict; runtime provenance must be singular and truthful.",
+    "conflict_found": {
+      "hq214_00_RETURN_md": "states CPython 3.11.3 and pytest 9.1.1",
+      "hq214_04_COURT_AND_REGRESSION_RESULTS_json": "states interpreter /tmp/c1-01-r8-release-spine-venv/bin/python, python_version 3.12.14, platform macOS-13.7.8-x86_64-i386-64bit",
+      "what_they_agree_on": "Both state that no governed F7 qualification environment provenance is claimed, and both classify the environment as a shared local qualification interpreter rather than governed certification."
+    },
+    "reconciliation": "This lane cannot determine which python_version HQ214 actually used; that is not resolvable from the repository, and inventing a harmonized value would be fabrication. The conflict is therefore RECORDED as an unresolved provenance defect in HQ214's record rather than silently harmonized. Runtime provenance for HQ217 is stated once, singularly and truthfully, in the environment block above, and covers only this lane's own runs.",
+    "authority_to_edit_hq214": "Absent. The commission restricts writes to WORKER_RETURNS/PYAT-HQ217-F7-FINAL-BOUNDED-REPAIR-R1/, so the two HQ214 artifacts were NOT edited. This reconciliation is the correction of record.",
+    "residual": "HQ214's internal python_version disagreement stands unresolved and should be corrected by HQ or by the HQ214 worker, who holds the provenance."
+  },
+
+  "courts": {
+    "f7_focused_court": {"before": 83, "after": 98, "result": "98 passed"},
+    "m1_temporal_court": {"result": "25 passed", "changed_by_this_lane": false},
+    "total_surface": {"after": 123, "result": "123 passed", "runs": 2, "second_run_identical": true},
+    "base_surface_before_repair": "110 passed once the sparse import closure was completed (83 F7 + 27 M1)"
+  },
+
+  "sparse_scope_correction_disclosed": {
+    "observation": "An initial baseline run showed 9 F7 court failures. These were NOT code defects.",
+    "cause": "pre553_c11_repository and its transitive imports were not materialized under my sparse manifest, so any test importing pre553_source_relations raised ModuleNotFoundError.",
+    "action": "The import closure was completed in the sparse manifest. The baseline then measured 110 passed.",
+    "classification": "My own scope gap, not baseline drift in the repository. Reported rather than smoothed over."
+  },
+
+  "hq215_discriminating_probes_reproduced": {
+    "all_seven_defects_reachable_before": true,
+    "details": [
+      {"probe": "F7-RR-01", "before": "AUTHORIZED with either ref", "after": "REFUSED when unbound"},
+      {"probe": "F7-RR-02", "before": "AUTHORIZED for a same-object_id different-hash ref", "after": "TEMPORAL_INSUFFICIENT_AUTHORITY"},
+      {"probe": "F7-RR-03", "before": "AUTHORIZED for an arbitrary identity ref", "after": "REFUSED; bound-but-unsatisfied yields TEMPORAL_IDENTITY_UNRESOLVED"},
+      {"probe": "F7-RR-04", "before": "AUTHORIZED for an arbitrary equivalence token", "after": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"},
+      {"probe": "F7-RR-05", "before": "measure_ref serialized as null", "after": "serialized exactly; wrong or absent measure refused"},
+      {"probe": "F7-RR-06", "before": "TemporalComparabilityIntegrityError", "after": "TEMPORAL_INSUFFICIENT_AUTHORITY / TEMPORAL_ORDER_BASIS_AUTHORITY_REF_ABSENT"},
+      {"probe": "F7-RR-07", "before": "raised", "after": "emits TEMPORAL_IDENTITY_UNRESOLVED"}
+    ]
+  },
+
+  "fail_capability_audit": {
+    "purpose": "Every claim that a new witness discriminates was verified by breaking its specific mechanism and observing the failure.",
+    "results": [
+      {"broke": "material hash binding (actual != ref.content_hash -> False)", "expected": "rr01_unbound and rr03_identity_ref_must fail", "observed": "BOTH FAILED", "verdict": "fail-capable"},
+      {"broke": "_scope_covers_governed_use accepting a bare matching token", "expected": "rr02 witnesses fail", "observed": "FAILED", "verdict": "fail-capable"},
+      {"broke": "bound-measure comparison (if False)", "expected": "rr05 fails", "observed": "FAILED", "verdict": "fail-capable"},
+      {"broke": "partial-order guard widened back to all states", "expected": "rr07 fails", "observed": "FAILED", "verdict": "fail-capable"},
+      {"broke": "surface derivation from bound material (if False)", "expected": "rr01_changing fails", "observed": "FAILED", "verdict": "fail-capable"}
+    ],
+    "an_incomplete_audit_round_was_discarded": "A first audit round broke the material-binding helper for all five witnesses at once. rr02, rr05 and rr07 correctly still passed, because they do not test that helper. That round proved nothing about those three and was replaced by targeted per-mechanism breaks, which all failed as required.",
+    "module_restoration": "Verified by sha256 after every swap."
+  },
+
+  "regression_slice": {
+    "method": "Exact failure-ID set comparison on the F7 + M1 court slice. The HQ217 court was run against the UNREPAIRED code-bearing-base module, verified by sha256 to be exactly 4571149773d5f9890d91050c89bb8a0f8c20c5d2524cd46ae7f41fc513d43bb8, then against the repaired module, with sorted ID sets compared using comm. The module was file-swapped in place with sha256-verified restoration.",
+    "before_failing_count": 82,
+    "after_failing_count": 0,
+    "new_failures_introduced_count": 0,
+    "regression": "NONE",
+    "honest_caveat_on_the_82": "The 82 is NOT 82 independent defects. The repair adds required material bindings, so the new court sends request keywords the base request does not accept and nearly every test errors at collection on the base module. The count is dominated by the contract change, not by 82 separate behavioural differences. The discriminating evidence is the per-defect reproduction table above and the fail-capability audit."
+  },
+
+  "change_set": {
+    "production_modules_changed": ["rawlsing_next/pre553_temporal_comparability.py"],
+    "tests_changed": ["rawlsing_next/tests/test_pre553_temporal_comparability.py"],
+    "other_production_modules_changed": 0,
+    "writes_confined_to_return_dir": true,
+    "seam_note": "This F7 lane touches no M3/M2 seam. The change set was verified to contain exactly one production module and its court."
+  }
+}
