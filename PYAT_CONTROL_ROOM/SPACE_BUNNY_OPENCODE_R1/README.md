@@ -18,11 +18,12 @@ Read [CURRENT_HANDOFF.md](CURRENT_HANDOFF.md) first. Activation and the independ
 ## Supporting packet read order
 
 1. [HQ start instruction](HQ_START_HERE.md).
-2. Live `HQ_HANDOFF/LATEST.json` and its immutable checkpoint/manifest under `HQ_HANDOFF/PROTOCOL.md`.
-3. [Activation runbook](ACTIVATION_RUNBOOK.md) and [first task plan](FIRST_TASKS.json).
-4. [Operating design](OPERATING_DESIGN.md), especially Git ownership, quality controls and scheduling.
-5. [C4 reconciliation docket](C4_RECONCILIATION_DOCKET.md) when ready to prepare that decision.
-6. [Forward program](FORWARD_PROGRAM.md) for the path through C9/C10.
+2. `PYAT_CONTROL_ROOM/SHARED_STORE_SPARSE_WORKTREE_EXECUTION_LAW_R1.md` and the mandatory Pass-0 worker-state truth law in `PYAT_CONTROL_ROOM/13_FRESH_HQ_FULL_GROK_PROTOCOL.md`.
+3. Live `HQ_HANDOFF/LATEST.json` and its immutable checkpoint/manifest under `HQ_HANDOFF/PROTOCOL.md`; then resolve direct origin HEADs for every worker branch named active/pending by the handoff.
+4. [Activation runbook](ACTIVATION_RUNBOOK.md) and [first task plan](FIRST_TASKS.json).
+5. [Operating design](OPERATING_DESIGN.md), especially Git ownership, quality controls and scheduling.
+6. [C4 reconciliation docket](C4_RECONCILIATION_DOCKET.md) when ready to prepare that decision.
+7. [Forward program](FORWARD_PROGRAM.md) for the path through C9/C10.
 
 Roles: [HQ](roles/hq.md), [worker](roles/worker.md), [reviewer](roles/reviewer.md), [source runner](roles/source-runner.md). These are prompt sources, not installed agents. Templates: [commission](templates/COMMISSION.md), [task](templates/TASK.json), [event](templates/EVENT.json), [return](templates/RETURN.json), [decision claims](templates/DECISION_CLAIMS.md).
 
