@@ -1,3 +1,32 @@
+# HQ215 FRONTIER — THREE FINAL HOSTILE REREVIEWS — 2026-10-05
+
+### NEW — NEEDS LAUNCH — H-D/F8 FINAL HOSTILE REREVIEW
+**AGENT:** Browser/GitHub independent hostile reviewer  
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
+**BRANCH:** `agent/reviewer-pyat-hq215-hd-f8-final-rereview-r1`  
+**COMMISSION TIP:** `72b840fc0257958a1376b98f3f2c6ce894c6189d`
+
+### NEW — NEEDS LAUNCH — V556 FINAL HOSTILE REREVIEW
+**AGENT:** Browser/GitHub independent hostile reviewer  
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
+**BRANCH:** `agent/reviewer-pyat-hq215-v556-final-rereview-r1`  
+**COMMISSION TIP:** `d8330bb98c8dafdf90b80c041bfd12de9797f6a4`
+
+### NEW — NEEDS LAUNCH — F7 FINAL HOSTILE REREVIEW
+**AGENT:** Browser/GitHub independent hostile reviewer  
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
+**BRANCH:** `agent/reviewer-pyat-hq215-f7-final-rereview-r1`  
+**COMMISSION TIP:** `4a5094e8ca32efaedc1cc9af9329393f3bc9674c`
+
+C1 remains adopted. R9 remains technically repaired but final-adoption-held for missing governed qualification.
+
+No candidate above is adopted until its final rereview passes.
+
+HQ decision:
+`HQD-2026-10-05-215`
+
+---
+
 # HQ214 FRONTIER — C1 ADOPTED; F7/V556 REPAIRS BOUND; H-D/F8 CONTINUES — 2026-10-05
 
 ### ADOPTED / CLOSED — C1 CURRENT-DAG JOIN
