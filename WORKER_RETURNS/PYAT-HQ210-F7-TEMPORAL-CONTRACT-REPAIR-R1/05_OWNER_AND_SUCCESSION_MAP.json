@@ -1,0 +1,150 @@
+{
+  "schema": "PYAT_HQ210_OWNER_AND_SUCCESSION_MAP@1.1.0",
+  "lane": "PYAT-HQ210-F7-TEMPORAL-CONTRACT-REPAIR-R1",
+  "status": "REPAIRED_CONTRACT_SUCCESSOR__NOT_ADOPTED__NO_IMPLEMENTATION",
+  "headline": "TEMPORAL_COMPARABILITY owns comparison/order only. Identity, observation, rupture and gap/absence remain separately owned or separately produced. This repair also makes the contract's local conserved-five numbering explicitly traceable to F7's full succession map.",
+  "numbering_law": {
+    "commission_conserved_five_numbering": "1..5 follows the HQ206 commission subset and is retained only as a local convenience.",
+    "f7_succession_map_numbering": "0..7 is authoritative for traceability to ac444c5a:WORKER_RETURNS/PYAT-HQ204-F7-R1/06_OWNER_SUCCESSION_MAP.json.",
+    "mappings": [
+      {
+        "commission_index": 1,
+        "f7_index": 0,
+        "function": "persistent temporal identity / comparable temporal key"
+      },
+      {
+        "commission_index": 2,
+        "f7_index": 1,
+        "function": "temporal observation meaning"
+      },
+      {
+        "commission_index": null,
+        "f7_index": 2,
+        "function": "positive temporal relation meaning",
+        "role_in_repaired_contract": "TEMPORAL_RELATION_RECEIPT is the bounded positive form; not counted as one of the conserved five because F7 classified the positive form itself as missing"
+      },
+      {
+        "commission_index": 3,
+        "f7_index": 3,
+        "function": "delta / comparison"
+      },
+      {
+        "commission_index": null,
+        "f7_index": 4,
+        "function": "trajectory",
+        "role_in_repaired_contract": "none required; terminal necessity unproved"
+      },
+      {
+        "commission_index": 4,
+        "f7_index": 5,
+        "function": "rupture candidate"
+      },
+      {
+        "commission_index": 5,
+        "f7_index": 6,
+        "function": "gap / absence as first-class observation"
+      },
+      {
+        "commission_index": null,
+        "f7_index": 7,
+        "function": "temporal directionality authority",
+        "role_in_repaired_contract": "bounded by proposed TEMPORAL_COMPARABILITY; no instance or implementation"
+      }
+    ]
+  },
+  "conserved_functions": [
+    {
+      "commission_index": 1,
+      "f7_index": 0,
+      "function": "persistent temporal identity / comparable temporal key",
+      "disposition": "REFERENCES_EXISTING_AUTHORITY_FORM",
+      "owner": "TEMPORAL_EVIDENCE + exact temporal_identity_contract_ref",
+      "residual": "IDENTITY_CONTRACT_INSTANCE_MISSING",
+      "not_owned_by_temporal_comparability": "comparison consumes identity; it may not mint the sameness relation it needs to compare"
+    },
+    {
+      "commission_index": 2,
+      "f7_index": 1,
+      "function": "temporal observation meaning",
+      "disposition": "SEPARATE_PRODUCER_RESPONSIBILITY",
+      "owner": "existing observation producers under TEMPORAL_EVIDENCE",
+      "residual": "TIME_INDEXED_OBSERVATION_OBJECT_ABSENT__ANCHOR_REF_CARRIES_TIME_INTERIM",
+      "not_owned_by_temporal_comparability": "a comparison authority may not author its own evidence"
+    },
+    {
+      "commission_index": 3,
+      "f7_index": 3,
+      "function": "delta / comparison",
+      "disposition": "DIRECTLY_OWNED_BY_TEMPORAL_COMPARABILITY",
+      "owner": "TEMPORAL_COMPARABILITY",
+      "residual": null,
+      "scope": "joint comparability, order disposition, exact signed difference claim ceiling, typed refusal/replay"
+    },
+    {
+      "commission_index": 4,
+      "f7_index": 5,
+      "function": "rupture candidate",
+      "disposition": "SEPARATE_PRODUCER_RESPONSIBILITY",
+      "owner": "NO AUTHORIZED PRODUCER",
+      "residual": "RUPTURE_CANDIDATE_PRODUCER_AND_CALIBRATION_AUTHORITY_UNCONSTITUTED",
+      "prohibitions": [
+        "NO_CAUSAL_ATTRIBUTION",
+        "NO_AUTOMATIC_V553_THRESHOLD",
+        "NO_SCALAR_RUPTURE_MAGNITUDE"
+      ]
+    },
+    {
+      "commission_index": 5,
+      "f7_index": 6,
+      "function": "gap / absence as first-class observation",
+      "disposition": "REFERENCES_EXISTING_GENERAL_TYPED_ABSENCE_LAW",
+      "owner": "existing empirical typed-absence law + receipt intervening_span_state",
+      "f7_historical_record": "H10",
+      "correction": "H10, not H08. H08 is pressure-over-time scalar temporal pressure and remains obsolete implementation detail.",
+      "current_binding_refs": [
+        "rawlsing_next/pre553_empirical_objects.py:102-104",
+        "rawlsing_next/pre553_empirical_objects.py:717-722"
+      ],
+      "residual": "TEMPORAL_GAP_OBJECT_ABSENT__TYPED_SPAN_STATE_SUBSTITUTE"
+    }
+  ],
+  "source_noncomparability_contrast": {
+    "decision": "EMPIRICAL_FACT_NONCOMPARABLE",
+    "enumeration": "rawlsing_next/pre553_structural_admission.py:47",
+    "public_state_mapping": "rawlsing_next/pre553_structural_admission.py:65",
+    "producer_sites": [
+      {
+        "ref": "rawlsing_next/pre553_structural_admission.py:639-640",
+        "reason": "EMPIRICAL_FACT_NONCOMPARABLE"
+      },
+      {
+        "ref": "rawlsing_next/pre553_structural_admission.py:680-681",
+        "reason": "ESTIMAND_NOT_ALLOWED_BY_RULE"
+      },
+      {
+        "ref": "rawlsing_next/pre553_structural_admission.py:686-687",
+        "reason": "MEASURE_WEIGHT_BASIS_NOT_ALLOWED_BY_RULE"
+      }
+    ],
+    "temporal_distinction": "TEMPORAL_NONCOMPARABLE concerns an ordered pair under temporal comparison authority. It is never an alias or overwrite of the source-side decision."
+  },
+  "ownership_summary": {
+    "temporal_comparability_owns": [
+      "pair comparability at exact governed scope",
+      "order disposition under exact basis/refusal law",
+      "bounded direction-claim authorization",
+      "TEMPORAL_RELATION_RECEIPT production"
+    ],
+    "temporal_comparability_does_not_own": [
+      "identity constitution",
+      "observation constitution",
+      "source equivalence creation",
+      "rupture production",
+      "gap-object constitution",
+      "trajectory",
+      "F8 consumption",
+      "actor/person state"
+    ],
+    "collapsed_function_count": 0
+  }
+}
