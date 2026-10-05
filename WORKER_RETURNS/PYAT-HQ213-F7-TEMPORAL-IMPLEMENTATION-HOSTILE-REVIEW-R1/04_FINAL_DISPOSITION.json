@@ -1,0 +1,110 @@
+{
+  "schema": "PYAT_HQ213_F7_TEMPORAL_IMPLEMENTATION_FINAL_DISPOSITION@1",
+  "lane": "PYAT-HQ213-F7-TEMPORAL-IMPLEMENTATION-HOSTILE-REVIEW-R1",
+  "disposition": "F7_TEMPORAL_IMPLEMENTATION_PARTIAL__BOUNDED_REPAIR_REQUIRED",
+  "terminal": "HQ213_F7_TEMPORAL_IMPLEMENTATION_REVIEW_RETURNED__HQ_DECISION_REQUIRED",
+  "review_mode": "READ_ONLY_HOSTILE_NO_REPAIR",
+  "exact_frame": {
+    "branch": "agent/reviewer-pyat-hq213-f7-temporal-implementation-r1",
+    "commission_tip": "8b03d1563753510da6cb795cc2a259a1336e7e40",
+    "candidate_base": "c3db090ff0503963e7914fee740c4b1d17e66cde",
+    "code_bearing_commit": "caf6644a6033fb27c981ff0deb8d6e1b7d3d824e",
+    "accepted_contract": "c57a96897788108db7b194e4e51691d1ca8ab729",
+    "contract_ancestry": "different branch, not an ancestor of the candidate",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq213-f7-review",
+    "self_adoption": false,
+    "repair_performed": false
+  },
+  "adoptability": false,
+  "reason_not_adoptable": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED is reachable without the contract's mandatory authority conjunction: required supporting authorities are presence-only and never resolved, the one new TEMPORAL_COMPARABILITY authority is resolved without operation or governed-use scope, and anchor cardinality 2 is not enforced.",
+  "blocking_findings": [
+    {
+      "id": "F-DIR-01",
+      "title": "Required authorities are presence-only; directional claim is fail-open"
+    },
+    {
+      "id": "F-DIR-02",
+      "title": "TEMPORAL_COMPARABILITY authority is not operation-scoped or governed-use-scoped"
+    },
+    {
+      "id": "F-CARD-01",
+      "title": "anchor_refs exact cardinality 2 not enforced; 3+ anchors mint a directional receipt"
+    }
+  ],
+  "major_findings": [
+    "F-REASON-01 AUTHORITY_HASH_MISMATCH / AUTHORITY_SCOPE_MISMATCH reasons unreachable",
+    "F-PRIOR-01 prior-F7 state map inert",
+    "F-RCPT-01 closed contract receipt fields missing / renamed",
+    "F-PROV-01 provenance omits authority resolutions, operation identity, projection rule",
+    "F-DELTA-01 delta is caller-minted and bound to no authorized difference operation",
+    "F-REQ-01 comparability_requirements_ref optional and unused"
+  ],
+  "medium_findings": [
+    "F-STATUS-01 comparability_status COMPARABLE on refusal states",
+    "F-ORDER-01 no-basis + higher-precedence failure raises instead of applying precedence",
+    "F-XU-01 cross-universe two-path law gated on a caller boolean; equivalence universe scope unchecked",
+    "F-COURT-01 vacuous public-object/state-family test",
+    "F-COURT-02 vacuous module-local receipt test",
+    "F-COURT-03 tautological prior-state mapping test",
+    "F-COURT-05 decorative authority fixture masks F-DIR-01"
+  ],
+  "low_findings": [
+    "F-BACKFILL-01 self-referential backfill guard",
+    "F-COURT-04 pytest.raises accepting any Exception",
+    "F-NONE-01 registry=None cross-universe AttributeError instead of typed refusal"
+  ],
+  "held_positives": [
+    "registry minimality: exactly one new kind and one matching ceiling, 19/19 bijective",
+    "no sibling kind, no public-object-family or state-family widening, no unrelated authority change",
+    "12 states with exact contract precedence",
+    "TEMPORAL_ORDER_UNAUTHORIZED unique no-basis derivation; missing basis authority does not collapse into it",
+    "exact-zero NO_AUTHORIZED_CHANGE; no deadband, tolerance, epsilon or inherited V553 threshold; floats and non-finite refused",
+    "partial order refuses relation and direction",
+    "cross-universe two-path independence (neither path implies the other)",
+    "no F8 import or consumption; module-local content-addressed receipt",
+    "frozen FORBIDDEN_BACKFILL_TARGET_STATES literal preserved",
+    "49 focused + 159 regression = 208 green independently reproduced; baseline 159 green; empty failure-ID delta",
+    "cross-process replay identity stable under PYTHONHASHSEED variation",
+    "typed residual ORDERED_AUTHORIZED_BASIS_WITHOUT_SUPPLIED_DELTA is truthful fail-closed escalation"
+  ],
+  "bounded_repair_list_for_separate_lane": [
+    "Resolve each contract-required authority to a positive snapshot or a typed absence; supply operation and governed-use scope to TEMPORAL_COMPARABILITY require(); enforce governed_use_id binding.",
+    "Enforce exact cardinality 2 for anchor_refs (and observation_refs one-per-anchor).",
+    "Make AUTHORITY_HASH_MISMATCH and AUTHORITY_SCOPE_MISMATCH reachable relation_state_reason values.",
+    "Apply the prior-F7 state map in derivation or remove the prior_f7_state input.",
+    "Emit the closed contract receipt: quantity_surface, delta, uncertainty_state, intervening_span_state, governed_use_id, authority_snapshot_refs, provenance; bind the delta to an authorized difference operation.",
+    "Record all authority resolution states and the comparison operation identity in provenance.",
+    "Replace the self-referential backfill guard with a live check against the frozen FORBIDDEN_BACKFILL_TARGET_STATES.",
+    "Adjudicate: (a) comparability_status for estimand/measure/mapping/identity/anchor refusals; (b) the CFI-03 vs precedence conflict for no-basis dispositions; (c) the typed residual's contract gap.",
+    "Repair the vacuous/weak court tests so the green surface is probative."
+  ],
+  "hq_decision_required": [
+    "Whether the typed residual ORDERED_AUTHORIZED_BASIS_WITHOUT_SUPPLIED_DELTA is closed by a thirteenth state, an ordered-null-delta receipt shape, or an input-invalid ruling.",
+    "Whether comparability_status must be NOT_COMPARABLE for the non-surface refusal states.",
+    "Whether the no-basis precedence interlock is accepted as fail-closed or must be restated in the contract."
+  ],
+  "court_reproduction": {
+    "focused": 49,
+    "regression_after": 159,
+    "regression_baseline": 159,
+    "combined": 208,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "failure_id_delta": [],
+    "reproduced_by_reviewer": true
+  },
+  "environment_classification": {
+    "classification": "RECONSTRUCTED_SHARED_LOCAL_QUALIFICATION_INTERPRETER__NOT_GOVERNED_CERTIFICATION",
+    "interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python",
+    "python": "3.11.3",
+    "pytest": "9.1.1"
+  },
+  "return_artifacts": [
+    "WORKER_RETURNS/PYAT-HQ213-F7-TEMPORAL-IMPLEMENTATION-HOSTILE-REVIEW-R1/00_REVIEW.md",
+    "WORKER_RETURNS/PYAT-HQ213-F7-TEMPORAL-IMPLEMENTATION-HOSTILE-REVIEW-R1/01_AUTHORITY_AND_CONTRACT_FIDELITY_ATTACK.json",
+    "WORKER_RETURNS/PYAT-HQ213-F7-TEMPORAL-IMPLEMENTATION-HOSTILE-REVIEW-R1/02_STATE_DIRECTION_AND_EXACT_ZERO_ATTACK.json",
+    "WORKER_RETURNS/PYAT-HQ213-F7-TEMPORAL-IMPLEMENTATION-HOSTILE-REVIEW-R1/03_NONCOLLAPSE_POWER_AND_COURT_ATTACK.json",
+    "WORKER_RETURNS/PYAT-HQ213-F7-TEMPORAL-IMPLEMENTATION-HOSTILE-REVIEW-R1/04_FINAL_DISPOSITION.json"
+  ]
+}

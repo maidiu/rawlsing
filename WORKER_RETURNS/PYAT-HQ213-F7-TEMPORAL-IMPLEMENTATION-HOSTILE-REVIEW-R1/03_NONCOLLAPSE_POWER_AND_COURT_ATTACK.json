@@ -1,0 +1,156 @@
+{
+  "schema": "PYAT_HQ213_F7_TEMPORAL_IMPLEMENTATION_NONCOLLAPSE_POWER_AND_COURT_ATTACK@1",
+  "lane": "PYAT-HQ213-F7-TEMPORAL-IMPLEMENTATION-HOSTILE-REVIEW-R1",
+  "candidate_base": "c3db090ff0503963e7914fee740c4b1d17e66cde",
+  "code_bearing_commit": "caf6644a6033fb27c981ff0deb8d6e1b7d3d824e",
+  "cross_universe_noncollapse": {
+    "verdict": "HELD_IN_TWO_PATH_CORE_WEAKENED_AT_EDGES",
+    "two_path_independence": {
+      "source_equivalence_positive_and_temporal_authority_absent": "TEMPORAL_INSUFFICIENT_AUTHORITY / TEMPORAL_COMPARABILITY_AUTHORITY_REF_ABSENT",
+      "temporal_authority_positive_and_source_equivalence_deny": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT / SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE",
+      "neither_implies_the_other": true
+    },
+    "module_mints_source_equivalence": false,
+    "module_constructs_authority_snapshot": false,
+    "defects": [
+      {
+        "id": "F-XU-01",
+        "severity": "MEDIUM",
+        "finding": "The entire cross-universe law is gated on the caller-supplied boolean pair_crosses_source_universes. Declaring False yields TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED with no equivalence check, and path A calls validate_relation_authority_only, which binds only kind+operation and not the two source universes.",
+        "evidence": "A14: pair_crosses_source_universes=False -> TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED.",
+        "impact": "The two-path refusal is caller-controlled and the equivalence authority's universe scope is never checked."
+      },
+      {
+        "id": "F-STATUS-01",
+        "severity": "MEDIUM",
+        "finding": "comparability_status is COMPARABLE for the refusal states TEMPORAL_ESTIMAND_MISMATCH, TEMPORAL_MEASURE_MISMATCH, TEMPORAL_MAPPING_MATERIAL_ABSENT, TEMPORAL_INSUFFICIENT_ANCHORS and TEMPORAL_IDENTITY_UNRESOLVED.",
+        "implementation_ref": "pre553_temporal_comparability.py:661-664",
+        "impact": "A failed comparability gate is reported as COMPARABLE, risking the COMPARABLE vs refusal collapse the contract's comparability_status field exists to prevent. HQ should rule whether estimand/measure/mapping/identity/anchor failures are COMPARABLE or NOT_COMPARABLE."
+      }
+    ]
+  },
+  "power_ceiling": {
+    "verdict": "HELD",
+    "module_internal_imports": [
+      "rawlsing_next.pre553_empirical_authority",
+      "rawlsing_next.pre553_empirical_objects"
+    ],
+    "f8_import_or_consumption": false,
+    "source_selection": false,
+    "interpolation_or_midpoint": false,
+    "trajectory_trend_rate_monotonicity": false,
+    "rupture_production": false,
+    "currentness_or_lifecycle": false,
+    "scalar_temporal_pressure": false,
+    "causal_or_event_semantics": false,
+    "pooling_or_estimand_composition": false,
+    "actor_or_person_inference": false,
+    "other_modules_referencing_the_new_module": [],
+    "forbidden_tokens_appear_only_in_docstring_disclaimer_and_reason_literals": true
+  },
+  "receipt_representation": {
+    "verdict": "LOCALITY_HELD_SHAPE_DEFECTIVE",
+    "is_canonical_semantic_object": false,
+    "public_object_families_member": false,
+    "relation_state_in_state_families": false,
+    "state_families_edit": false,
+    "temporal_entries_in_public_object_families": [],
+    "temporal_entries_in_state_families": {},
+    "closed_contract_shape": {
+      "verdict": "DIVERGENT",
+      "missing_contract_fields": ["quantity_surface", "delta", "uncertainty_state", "intervening_span_state", "governed_use_id", "authority_snapshot_refs", "provenance"],
+      "extra_non_contract_fields": ["authority_state_provenance", "contract_id", "provenance_and_replay_ref", "signed_delta", "source_equivalence_ref"]
+    }
+  },
+  "backfill_noncollapse": {
+    "verdict": "HELD_LITERAL_PRESERVED_GUARD_TAUTOLOGICAL",
+    "frozen_literal_preserved": {
+      "file": "rawlsing_next/pre553_source_relations.py",
+      "line": 54,
+      "set": "FORBIDDEN_BACKFILL_TARGET_STATES",
+      "contains_TEMPORAL_NONCOMPARABLE": true,
+      "guard_backfill_refuses_it": true
+    },
+    "defect": {
+      "id": "F-BACKFILL-01",
+      "severity": "LOW_MEDIUM",
+      "finding": "The module's own guard is self-referential: _require_noncollapse_refusal() and temporal_backfill_refused() consult a module-local frozenset, and the module never imports pre553_source_relations. temporal_backfill_refused is exported but never consumed.",
+      "impact": "The guard proves nothing about the frozen surface; the real protection is the untouched frozen literal plus the fact that no temporal receipt is a source-backfill input."
+    }
+  },
+  "court_authenticity": {
+    "verdict": "REAL_SURFACE_WITH_VACUOUS_AND_WEAK_TESTS",
+    "reproduced": {
+      "focused_court": "49 passed, 0 failed/error/skipped",
+      "regression_courts": [
+        "test_pre553_authority_maintenance.py",
+        "test_pre553_component_authority_vector.py",
+        "test_pre553_empirical_objects_authority.py",
+        "test_pre553_source_equivalence.py",
+        "test_pre553_source_relations.py"
+      ],
+      "regression_after": "159 passed",
+      "regression_baseline_commit": "7b2eaf6cb15433f7919af8f9ed3dd2701b8423df",
+      "regression_baseline": "159 passed",
+      "combined": "208 passed",
+      "candidate_pytest_cache_nodeids": 208,
+      "empty_failure_id_delta": true,
+      "no_regression_test_pins_authority_kind_set": true
+    },
+    "replay_determinism": {
+      "pythonhashseed_0": "76c11120226da87bf8d5147d1023fe44fc727ff5c2777f0f132401f7990c71eb",
+      "pythonhashseed_1": "76c11120226da87bf8d5147d1023fe44fc727ff5c2777f0f132401f7990c71eb",
+      "pythonhashseed_12345": "76c11120226da87bf8d5147d1023fe44fc727ff5c2777f0f132401f7990c71eb",
+      "stable": true
+    },
+    "weak_tests": [
+      {
+        "id": "F-COURT-01",
+        "test": "test_no_public_object_family_or_state_family_widening",
+        "lines": "560-564",
+        "defect": "PUBLIC_OBJECT_FAMILIES is a tuple, so the isinstance(...,(set,frozenset)) guard substitutes set() and the assertion is vacuous. The property happens to hold, but the test does not prove it.",
+        "severity": "MEDIUM"
+      },
+      {
+        "id": "F-COURT-02",
+        "test": "test_receipt_is_module_local_not_a_public_object",
+        "lines": "553-557",
+        "defect": "getattr(CanonicalSemanticObject,'STATE_FAMILIES',frozenset()) is an empty frozenset because the class has no such attribute; the membership assertion is trivially true.",
+        "severity": "MEDIUM"
+      },
+      {
+        "id": "F-COURT-03",
+        "test": "test_prior_f7_state_mapping_is_exact",
+        "lines": "489-495",
+        "defect": "Asserts the mapping table against itself and never drives compare_temporal_anchors; this is why the inert prior-state mapping (F-PRIOR-01) passes green.",
+        "severity": "MAJOR"
+      },
+      {
+        "id": "F-COURT-04",
+        "test": "test_no_deadband_tolerance_or_epsilon",
+        "lines": "423-431",
+        "defect": "pytest.raises((TemporalComparabilityIntegrityError, Exception)) accepts any exception, so an unrelated regression would also pass.",
+        "severity": "LOW_MEDIUM"
+      },
+      {
+        "id": "F-COURT-05",
+        "test": "_positive_registry fixture",
+        "lines": "118-126",
+        "defect": "Supplies UNCERTAINTY_METHOD/TARGET_USE_PERMISSION/REPLAY_PROTOCOL snapshots the module never resolves, creating a false impression that the required-authority conjunction is covered.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  "environment_classification": {
+    "classification": "RECONSTRUCTED_SHARED_LOCAL_QUALIFICATION_INTERPRETER__NOT_GOVERNED_CERTIFICATION",
+    "interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python",
+    "python_version": "3.11.3",
+    "pytest_version": "9.1.1",
+    "other_packages": ["numpy 2.4.6", "pandas 2.3.3", "pyarrow 25.0.1", "pyreadstat 1.3.6", "python-dateutil 2.9.0.post0", "pytz 2026.4", "tzdata 2026.4", "iniconfig 2.3.0", "pluggy 1.6.0", "packaging 26.3", "Pygments 2.21.0"],
+    "pyvenv_cfg_present": true,
+    "governed_provenance_proving_this_is_the_F7_qualification_environment": false,
+    "candidate_named_interpreter": false,
+    "statement": "The claimed 208-green surface is independently reproduced, but on a pre-existing shared local qualification interpreter. It is not asserted as governed certification."
+  },
+  "verdict": "NONCOLLAPSE_AND_POWER_CEILING_LARGELY_HELD__COURT_PARTLY_VACUOUS__CROSS_UNIVERSE_CALLER_CONTROLLED"
+}

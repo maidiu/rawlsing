@@ -1,0 +1,143 @@
+{
+  "schema": "PYAT_HQ213_F7_TEMPORAL_IMPLEMENTATION_AUTHORITY_AND_CONTRACT_FIDELITY_ATTACK@1",
+  "lane": "PYAT-HQ213-F7-TEMPORAL-IMPLEMENTATION-HOSTILE-REVIEW-R1",
+  "reviewer": "DeepSeek Harness independent hostile reviewer",
+  "model_intelligence": "DeepSeek V4.1 Flash",
+  "branch": "agent/reviewer-pyat-hq213-f7-temporal-implementation-r1",
+  "commission_tip": "8b03d1563753510da6cb795cc2a259a1336e7e40",
+  "candidate_base": "c3db090ff0503963e7914fee740c4b1d17e66cde",
+  "code_bearing_commit": "caf6644a6033fb27c981ff0deb8d6e1b7d3d824e",
+  "accepted_contract": "c57a96897788108db7b194e4e51691d1ca8ab729",
+  "contract_ancestry_note": "c57a9689 is NOT an ancestor of the candidate commit or of HEAD; it was read from its own branch agent/rabochii-pyat-hq210-f7-contract-repair-r1 through the shared object store.",
+  "attack_1_registry_minimality": {
+    "verdict": "HELD",
+    "authority_file_diff": "+5 lines only: 1 AUTHORITY_KINDS member, 1 AUTHORITY_KIND_CEILINGS entry",
+    "authority_kinds_count": 19,
+    "authority_kind_ceilings_count": 19,
+    "kinds_and_ceilings_bijective": true,
+    "new_temporal_authority_kinds": ["TEMPORAL_COMPARABILITY"],
+    "preexisting_temporal_authority_kinds": ["TEMPORAL_EVIDENCE"],
+    "sibling_kind_created": false,
+    "unrelated_authority_change": false,
+    "public_object_families_edit": false,
+    "state_families_edit": false,
+    "canonical_semantic_object_widening": false,
+    "production_files_touched_by_code_commit": [
+      "rawlsing_next/pre553_empirical_authority.py",
+      "rawlsing_next/pre553_temporal_comparability.py",
+      "rawlsing_next/tests/test_pre553_temporal_comparability.py"
+    ],
+    "empirical_objects_and_source_relations_unchanged": true,
+    "claimed_hashes_verified": {
+      "module_sha256": "48099042517939b0d1b5b10347e50ea916cc58b556a503620b659df61c6a1389",
+      "court_sha256": "15ad9bd2e9071677f1e5ace0939385fa7bd2157903646088adcb42ead396ace1",
+      "authority_base_blob": "ca65a7fd4d52f0c44447434559b1d09412e7aa39"
+    }
+  },
+  "attack_2_contract_fidelity": {
+    "verdict": "MULTIPLE_DEFECTS",
+    "verified_pass": [
+      "12 relation states present",
+      "precedence order matches 03_TEMPORAL_STATE_VOCABULARY exactly",
+      "state-local scalar reason precedence present and unique (no duplicate reason codes)",
+      "three authorized order bases plus typed no-basis refusal",
+      "no-basis carries null basis ref",
+      "TEMPORAL_ORDER_UNAUTHORIZED single derivation",
+      "invalid cross-field tuples refuse",
+      "partial order refuses relation and direction",
+      "exact-zero NO_AUTHORIZED_CHANGE",
+      "authority-kind ceiling pairing enforced in-module"
+    ],
+    "defects": [
+      {
+        "id": "F-DIR-01",
+        "severity": "BLOCKING",
+        "title": "Required authorities are presence-only and never resolved positively",
+        "contract_ref": "02_TEMPORAL_RELATION_RECEIPT_CONTRACT.json CFI-01; 01_TEMPORAL_COMPARABILITY_AUTHORITY.json required_inputs owners",
+        "implementation_ref": "pre553_temporal_comparability.py:527-532 (target_use/uncertainty/replay presence only); 583-590 (estimand/measure refs compared by key, never resolved); 534-537 (identity ref presence only)",
+        "evidence": "A request with fabricated refs for UncertaintyAuthority, TargetUsePermission, ReplayProtocol, EstimandAuthority and MeasureAuthority - resolving nowhere - still yields TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED / INCREASE with authority_state_provenance = ().",
+        "impact": "The mandatory conjunct 'all required authority snapshots resolve positively' is not enforced; the directional claim is fail-open."
+      },
+      {
+        "id": "F-DIR-02",
+        "severity": "BLOCKING",
+        "title": "TEMPORAL_COMPARABILITY resolved without operation or governed-use scope",
+        "contract_ref": "01 authority ceiling: 'operation-scoped comparability and ordering ... for one governed use'; 07_IMPLEMENTATION_BOUNDARY.md:35-44",
+        "implementation_ref": "pre553_temporal_comparability.py:332-352 (_resolve_positive) and 498-500 (operation=None)",
+        "evidence": "A positive TEMPORAL_COMPARABILITY snapshot whose governed_operations is only ('UNRELATED_OPERATION',) and whose scope_envelope target_use_refs names a foreign use still authorizes the directional claim. No target_use_ref, object_family, source_universe_ref or predicate/risk-set scope is ever passed to require_positive_authority.",
+        "impact": "The one new authority is not operation-scoped and not bound to one governed use; any positive snapshot of that kind authorizes any temporal comparison for any use."
+      },
+      {
+        "id": "F-CARD-01",
+        "severity": "BLOCKING",
+        "title": "anchor_refs exact cardinality 2 is not enforced",
+        "contract_ref": "02 receipt field anchor_refs exact_cardinality=2; 06 NC-07 (exactly one two-anchor receipt), NC-08",
+        "implementation_ref": "pre553_temporal_comparability.py:539-541 (only '< 2' is rejected); 695-699",
+        "evidence": "3-anchor and 4-anchor requests with a single observation ref yield TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED.",
+        "impact": "A >=3-anchor receipt is minted, silently reintroducing the multi-anchor family the contract forbids."
+      },
+      {
+        "id": "F-REASON-01",
+        "severity": "MAJOR",
+        "title": "AUTHORITY_HASH_MISMATCH and AUTHORITY_SCOPE_MISMATCH are unreachable reasons",
+        "contract_ref": "03_TEMPORAL_STATE_VOCABULARY.json TEMPORAL_INSUFFICIENT_AUTHORITY reason_precedence entries 1 and 2",
+        "implementation_ref": "pre553_temporal_comparability.py:332-352 then 502-508",
+        "evidence": "A registry raising Pre553AuthorityError('...hash mismatch...') yields relation_state_reason=TEMPORAL_COMPARABILITY_AUTHORITY_REF_ABSENT while provenance records TEMPORAL_COMPARABILITY:AUTHORITY_HASH_MISMATCH. Same for scope. The top two contract reason codes are never appended to the detected set.",
+        "impact": "Scalar reason selection diverges from the contract's state-local precedence even though provenance retains the raw state."
+      },
+      {
+        "id": "F-PRIOR-01",
+        "severity": "MAJOR",
+        "title": "PRIOR_F7_STATE_MAP is inert",
+        "contract_ref": "00_RETURN.md section 4 prior F7 candidate terminals resolved",
+        "implementation_ref": "pre553_temporal_comparability.py:163-171 (table) and 449-455 (only PROBE_ONLY is acted on)",
+        "evidence": "prior_f7_state='TEMPORAL_RESPONSE_SURFACE_MISMATCH' and 'TEMPORAL_INTERPOLATION_NOT_AUTHORIZED' still return TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED; 'TEMPORAL_OUT_OF_SCOPE' likewise, despite the table mapping them to NONCOMPARABLE / INSUFFICIENT_AUTHORITY.",
+        "impact": "Declared prior-state mappings are documentary only; the input is accepted and ignored."
+      },
+      {
+        "id": "F-RCPT-01",
+        "severity": "MAJOR",
+        "title": "Receipt is not the closed contract receipt",
+        "contract_ref": "02_TEMPORAL_RELATION_RECEIPT_CONTRACT.json receipt.fields, closed=true, additional_fields_forbidden=true",
+        "implementation_ref": "pre553_temporal_comparability.py:279-326 (TemporalRelationReceipt / as_material)",
+        "evidence": "missing contract fields = [quantity_surface, delta, uncertainty_state, intervening_span_state, governed_use_id, authority_snapshot_refs, provenance]; extra fields = [authority_state_provenance, contract_id, provenance_and_replay_ref, signed_delta, source_equivalence_ref].",
+        "impact": "No quantity surface and no governed use are carried; the delta field is renamed; the receipt cannot be validated against the closed contract field list."
+      },
+      {
+        "id": "F-PROV-01",
+        "severity": "MAJOR",
+        "title": "Provenance does not include all authority resolution states or operation identity",
+        "contract_ref": "02 provenance.must_include",
+        "implementation_ref": "pre553_temporal_comparability.py:496-508 (only the primary authority's provenance is extended); 514-517, 522-525, 578-581 (basis/evidence/mapping prov captured then discarded)",
+        "evidence": "authority_state_provenance=() on a successful positive claim; basis/evidence/mapping resolution outcomes never appear. No comparison-operation identity and no canonical projection rule exist anywhere in the receipt.",
+        "impact": "Replay/provenance closure required by the contract is incomplete."
+      },
+      {
+        "id": "F-DELTA-01",
+        "severity": "MAJOR",
+        "title": "Delta is caller-minted and bound to no authorized difference operation",
+        "contract_ref": "01 exact_claim_ceiling ('exact signed delta on one exact quantity/estimand/measure surface'); 02 quantity_surface",
+        "implementation_ref": "pre553_temporal_comparability.py:670-681, 688",
+        "evidence": "signed_delta=10**30 with no quantity surface produces INCREASE; the module never records or validates the surface or the difference operation.",
+        "impact": "Any exact number determines direction, so the direction is not bound to an authorized operation on an exact surface."
+      },
+      {
+        "id": "F-REQ-01",
+        "severity": "MAJOR",
+        "title": "comparability_requirements_ref is optional and unused",
+        "contract_ref": "01 required_inputs slot comparability_requirements_ref required=true",
+        "implementation_ref": "pre553_temporal_comparability.py:474-476 (assigned) and no further use",
+        "evidence": "Omitting the ref produces no failure and a positive directional receipt; the local variable is dead.",
+        "impact": "A required input is neither required nor consulted."
+      }
+    ]
+  },
+  "attack_10_typed_residual": {
+    "id": "ORDERED_AUTHORIZED_BASIS_WITHOUT_SUPPLIED_DELTA",
+    "verdict": "TRUTHFUL_FAIL_CLOSED_RESIDUAL",
+    "evidence": "compare_temporal_anchors raises TemporalComparabilityIntegrityError and mints nothing.",
+    "reasoning": "The closed 12-state vocabulary has no ordered-without-delta state; TEMPORAL_ORDER_UNAUTHORIZED has a unique no-basis derivation that must not be reused; absence-as-zero would violate NC-11 (ABSENCE != ZERO). Escalation is correct rather than an incomplete implementation.",
+    "hq_decision_required": "Authorize a thirteenth state, authorize an ordered-null-delta receipt, or rule the input contract-invalid."
+  },
+  "verdict": "CONTRACT_FIDELITY_FAILS_ON_AUTHORITY_CONSUMPTION_CARDINALITY_REASON_MAPPING_PRIOR_STATE_AND_RECEIPT_SHAPE"
+}

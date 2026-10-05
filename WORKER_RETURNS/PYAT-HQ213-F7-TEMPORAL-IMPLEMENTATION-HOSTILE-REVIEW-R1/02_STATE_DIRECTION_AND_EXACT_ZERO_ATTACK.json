@@ -1,0 +1,140 @@
+{
+  "schema": "PYAT_HQ213_F7_TEMPORAL_IMPLEMENTATION_STATE_DIRECTION_AND_EXACT_ZERO_ATTACK@1",
+  "lane": "PYAT-HQ213-F7-TEMPORAL-IMPLEMENTATION-HOSTILE-REVIEW-R1",
+  "candidate_base": "c3db090ff0503963e7914fee740c4b1d17e66cde",
+  "code_bearing_commit": "caf6644a6033fb27c981ff0deb8d6e1b7d3d824e",
+  "state_vocabulary": {
+    "verdict": "HELD",
+    "relation_state_count": 12,
+    "precedence_matches_contract": true,
+    "all_twelve_individually_reachable": true,
+    "scalar_reason_cardinality": "exactly one",
+    "duplicate_reason_codes_across_states": [],
+    "declared_reason_codes": 33
+  },
+  "no_basis_uniqueness": {
+    "verdict": "HELD_WITH_PRECEDENCE_INTERLOCK",
+    "clean_no_basis": {
+      "input": "temporal_order_disposition=ORDER_UNKNOWN_NONCOMPARABLE, basis_ref=None",
+      "state": "TEMPORAL_ORDER_UNAUTHORIZED",
+      "reason": "NO_PERMITTED_ORDER_BASIS_APPLIES"
+    },
+    "no_basis_with_basis_ref": {
+      "outcome": "TemporalComparabilityIntegrityError: ORDER_UNKNOWN_NONCOMPARABLE must carry no basis ref"
+    },
+    "authorized_disposition_missing_basis_authority": {
+      "state": "TEMPORAL_INSUFFICIENT_AUTHORITY",
+      "reason": "TEMPORAL_ORDER_BASIS_AUTHORITY_REF_ABSENT",
+      "proves_missing_basis_does_not_collapse_into_order_unauthorized": true
+    },
+    "authorized_disposition_missing_basis_ref": {
+      "outcome": "TemporalComparabilityIntegrityError: an authorized order basis requires an exact basis ref"
+    },
+    "second_path_to_order_unauthorized_found": false
+  },
+  "precedence_interlock": {
+    "id": "F-ORDER-01",
+    "severity": "MEDIUM",
+    "finding": "A no-basis disposition co-occurring with any higher-precedence failure raises TemporalComparabilityIntegrityError instead of applying the 12-state precedence.",
+    "reproduced": [
+      {"input": "ORDER_UNKNOWN_NONCOMPARABLE + empty registry", "expected_under_precedence": "TEMPORAL_INSUFFICIENT_AUTHORITY", "observed": "TemporalComparabilityIntegrityError: no-basis disposition maps uniquely to TEMPORAL_ORDER_UNAUTHORIZED"},
+      {"input": "ORDER_UNKNOWN_NONCOMPARABLE + 1 anchor", "expected_under_precedence": "TEMPORAL_INSUFFICIENT_ANCHORS", "observed": "TemporalComparabilityIntegrityError: no-basis disposition maps uniquely to TEMPORAL_ORDER_UNAUTHORIZED"},
+      {"input": "ORDER_UNKNOWN_NONCOMPARABLE + GEOGRAPHY_NOT_SHARED", "expected_under_precedence": "TEMPORAL_NONCOMPARABLE", "observed": "TemporalComparabilityIntegrityError: no-basis disposition maps uniquely to TEMPORAL_ORDER_UNAUTHORIZED"}
+    ],
+    "assessment": "CFI-03 and the precedence law genuinely conflict for these tuples and the contract says contradictory tuples must refuse rather than normalize, so this is defensible fail-closed behaviour. It is recorded because the advertised precedence is not total for no-basis inputs and HQ must adjudicate the conflict."
+  },
+  "directional_claim_law": {
+    "verdict": "BYPASSED",
+    "required_conjunction": [
+      "comparability_status == COMPARABLE",
+      "relation_status == ORDERED_RELATION_AUTHORIZED",
+      "direction-permitting authorized basis",
+      "exact delta present",
+      "all required authorities positive"
+    ],
+    "held_conjuncts": [
+      "COMPARABLE by construction of the positive state",
+      "ORDERED_RELATION_AUTHORIZED by construction of the positive state",
+      "direction-permitting basis enforced (PARTIAL_ORDER_NO_DIRECTION refuses relation and direction)",
+      "exact delta enforced (absent delta raises; floats/bool/str/NaN/Inf refused)"
+    ],
+    "failed_conjunct": "all required authorities positive",
+    "bypasses": [
+      {
+        "id": "A1",
+        "description": "Registry contains only positive TEMPORAL_COMPARABILITY + TEMPORAL_EVIDENCE. Request supplies fabricated ExactRefs for UncertaintyAuthority, TargetUsePermission, ReplayProtocol, EstimandAuthority, MeasureAuthority.",
+        "observed": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED / INCREASE, authority_state_provenance=()"
+      },
+      {
+        "id": "A1b",
+        "description": "Removing the court fixture's decorative UNCERTAINTY_METHOD/TARGET_USE_PERMISSION/REPLAY_PROTOCOL snapshots",
+        "observed": "identical positive result, proving those snapshots are never consulted"
+      },
+      {
+        "id": "A2",
+        "description": "TEMPORAL_COMPARABILITY snapshot with governed_operations=('UNRELATED_OPERATION',) and foreign target_use_refs",
+        "observed": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED / INCREASE"
+      },
+      {
+        "id": "A3",
+        "description": "3-anchor request",
+        "observed": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED / INCREASE, anchors=3"
+      },
+      {
+        "id": "A3b",
+        "description": "4-anchor request with a single observation ref",
+        "observed": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED / INCREASE, anchors=4, obs=1"
+      }
+    ],
+    "held_attacks": [
+      "missing basis ref refuses",
+      "missing basis authority yields TEMPORAL_INSUFFICIENT_AUTHORITY",
+      "partial order refuses direction",
+      "unknown order disposition refuses",
+      "malformed ref refuses"
+    ]
+  },
+  "exact_zero_law": {
+    "verdict": "HELD",
+    "observations": [
+      {"value": "0", "direction": "NO_AUTHORIZED_CHANGE"},
+      {"value": "Decimal('0')", "direction": "NO_AUTHORIZED_CHANGE"},
+      {"value": "Decimal('-0')", "direction": "NO_AUTHORIZED_CHANGE"},
+      {"value": "Fraction(0,5)", "direction": "NO_AUTHORIZED_CHANGE"},
+      {"value": "Decimal('1E-999')", "direction": "INCREASE"},
+      {"value": "Decimal('-1E-999')", "direction": "DECREASE"},
+      {"value": "1", "direction": "INCREASE"},
+      {"value": "-1", "direction": "DECREASE"}
+    ],
+    "refusals": [
+      {"value": "Decimal('NaN')", "error": "non-finite delta"},
+      {"value": "Decimal('Infinity')", "error": "non-finite delta"},
+      {"value": "0.0", "error": "floats forbidden"},
+      {"value": "1e-300", "error": "floats forbidden"},
+      {"value": "True", "error": "boolean is not a signed delta"},
+      {"value": "'0'", "error": "exact int/Decimal/Fraction required"},
+      {"value": "None (direction-permitting basis)", "error": "typed residual: ordered-without-delta has no state"}
+    ],
+    "deadband_or_tolerance_found": false,
+    "inherited_v553_threshold_found": false,
+    "epsilon_found": false
+  },
+  "cross_field_and_partial_order": {
+    "verdict": "HELD",
+    "partial_order_overlap": "TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION / INTERVALS_OVERLAP / DIRECTION_NOT_CLAIMABLE",
+    "partial_order_no_overlap": "TEMPORAL_COMPARABLE_NO_DIRECTION / AUTHORIZED_PARTIAL_ORDER_YIELDS_NO_DIRECTION_ON_PAIR",
+    "unordered_pair_serialization_preserved": true
+  },
+  "reason_reachability": {
+    "unreachable_declared_reasons": [
+      "AUTHORITY_HASH_MISMATCH",
+      "AUTHORITY_SCOPE_MISMATCH"
+    ],
+    "note": "Both are declared in STATE_REASON_PRECEDENCE['TEMPORAL_INSUFFICIENT_AUTHORITY'] but are never appended to the detected set; the primary-authority mapping at lines 502-508 converts them to TEMPORAL_COMPARABILITY_AUTHORITY_REF_ABSENT. Other unreachable-by-append reasons (INTERVALS_OVERLAP, NO_PERMITTED_ORDER_BASIS_APPLIES, AUTHORIZED_* ) are selected as the state's first/default reason and are correct."
+  },
+  "robustness_defect": {
+    "id": "F-NONE-01",
+    "severity": "LOW",
+    "finding": "compare_temporal_anchors(request, registry=None) is the default signature; a cross-universe request with source_equivalence_authority_ref and registry=None raises AttributeError: 'NoneType' object has no attribute 'require' instead of a typed refusal."
+  }
+}
