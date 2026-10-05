@@ -1,0 +1,66 @@
+{
+  "schema": "PYAT_HQ205_REQUEST_KEY_AND_REPLAY@1.0.0",
+  "lane": "PYAT-HQ205-SERVICE-SOURCE-APPLICABILITY-IMPLEMENTATION-R1",
+  "design_rule": "The key is EXACT and COMPLETE or the function refuses. No component may be defaulted, inferred, widened, narrowed or omitted. Every component is a governed ExactRef, never a free string.",
+  "request_key_components": [
+    {"n": 1, "component": "service_id", "required": true, "defaultable": false, "carried": true},
+    {"n": 2, "component": "service_authority_ref", "required": true, "defaultable": false, "carried": true},
+    {"n": 3, "component": "target_use_ref", "required": true, "defaultable": false, "carried": true},
+    {"n": 4, "component": "population_scope_ref", "required": true, "defaultable": false, "carried": true},
+    {"n": 5, "component": "geography_scope_ref", "required": true, "defaultable": false, "carried": true},
+    {"n": 6, "component": "effective_time_or_interval_ref", "required": true, "defaultable": false, "carried": true},
+    {"n": 7, "component": "candidate_class_ref", "required": true, "defaultable": false, "carried": true, "mandatory_by_hq": true},
+    {"n": 8, "component": "release_identity_ref", "required": true, "defaultable": false, "carried": true},
+    {"n": 9, "component": "target_use_permission_refs", "required": true, "defaultable": false, "carried": true, "semantics": "BOUND INPUT, never a permission grant"},
+    {"n": 10, "component": "candidate_source_universe_refs", "required": true, "defaultable": false, "carried": true, "semantics": "resolved FROM the positively bounded candidate class, never freely supplied"}
+  ],
+  "components_implemented": 10,
+  "components_missing": 0,
+  "candidate_class_bound_is_part_of_the_request_key": true,
+  "key_completeness_rule": {
+    "statement": "If ANY of the ten components is absent, unresolvable or ambiguous, the function returns SERVICE_REQUEST_UNDETERMINED and emits NO set.",
+    "no_partial_keys": true,
+    "no_best_effort": true,
+    "no_nearest_match": true,
+    "typed_refusal_not_python_error": "ServiceApplicabilityRequest.build raises the typed SERVICE_REQUEST_UNDETERMINED refusal when a component is absent, rather than surfacing an incidental constructor TypeError",
+    "court_proof": "test_missing_request_component_refuses_no_partial_key"
+  },
+  "what_the_key_does_NOT_carry": [
+    "any ordering, ranking or preference key",
+    "any respondent-level identifier or linkage material; applicability is decided at source-universe grain, never at person grain",
+    "any pooling, weighting or estimand-composition parameter",
+    "any internal-evidence-sufficiency field"
+  ],
+  "forbidden_request_key_names_refused": ["ranking", "rank", "score", "scores", "weight", "weights", "priority", "preference", "preferences", "selection_reason", "selected", "best", "preferred_source", "pooling", "pool", "weights_by_source", "linkage", "overlap", "backfill", "evidence", "evidence_state", "support", "sufficiency", "sample_size", "currentness", "permission_grant"],
+  "mutable_authority_selectors_refused": ["LATEST", "DEFAULT", "FUZZY", "NEAREST", "SEMVER_FALLBACK"],
+  "candidate_class_binding": {
+    "positive_bound_is_mandatory": true,
+    "why": "without a positively bounded class the admissible set degenerates to ALL sources, which is not an admission decision at all, and silent broadening is exactly what the derivation prohibits",
+    "refuses_unbounded_class": true,
+    "broader_class_refused": true,
+    "narrower_class_refused": true,
+    "authority_outside_class_refused": true,
+    "membership_must_equal_request_refs_exactly": true,
+    "court_proof": ["test_unbounded_candidate_class_is_refused", "test_silent_candidate_class_broadening_is_refused", "test_candidate_class_narrowing_is_also_refused", "test_authority_outside_the_bounded_class_is_refused", "test_candidate_class_mismatch_is_refused"]
+  },
+  "replay": {
+    "identity": "semantic_hash over the exact request key material",
+    "stable_across_repeated_resolution": true,
+    "changes_when_the_request_changes": true,
+    "invariant_under_permuted_authority_record_order": true,
+    "canonical_serialization_order": "REPLAY_ONLY_DETERMINISTIC_SERIALIZATION__ZERO_RANKING_PRIORITY_PREFERENCE_WEIGHT_OR_FALLBACK_SEMANTICS",
+    "order_grants": {"rank": false, "priority": false, "preference": false, "weight": false, "fallback": false, "tie_break": false},
+    "cardinality_is_not_a_sample_size": true,
+    "admitted_entries_remain_separate": true,
+    "court_proof": ["test_deterministic_serialization_under_permuted_input_order", "test_replay_identity_is_stable_across_repeated_resolution", "test_replay_identity_changes_when_the_request_changes", "test_complete_class_with_multiple_applicable_is_an_unranked_set"]
+  },
+  "admission_provenance": {
+    "required_for_admitted": true,
+    "carried_per_admitted_entry": ["admission_authority_ref", "candidate_class_ref", "candidate_class_binding_authority_ref"],
+    "mutable_admission_authority_refused": true,
+    "nonpositive_must_not_carry_provenance": true,
+    "no_selection_reason_record_exists": true,
+    "why_no_selection_reason": "no selection occurs; recording a reason for a choice the authority does not permit would either fabricate a selection or misrepresent a per-source independent determination as a comparative judgement. Admission provenance is the lawful substitute and is strictly weaker than a selection reason.",
+    "court_proof": ["test_admission_provenance_is_carried_per_admitted_entry", "test_no_selection_reason_record_exists", "test_admitted_without_provenance_is_refused"]
+  }
+}
