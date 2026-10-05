@@ -1,3 +1,29 @@
+# HQ216 FORWARD LAW — PRODUCTIVE ADEQUACY WITHOUT BLOCKER PROPAGATION — 2026-10-05
+
+Binding law:
+`PYAT_CONTROL_ROOM/26_HQD216_PRODUCTIVE_ADEQUACY_AND_PREV3_EMPIRICAL_GATE_LAW.md`
+
+Freeze:
+- `FAIL_CLOSED_CORRECTNESS != PRODUCTIVE_COMPLETION`
+- `UPSTREAM_BLOCKER != DOWNSTREAM_IMPLEMENTATION_DEFECT`
+
+A stage may be accepted locally when competent lawful inputs prove its intended positive transformation at the declared grain, even if a real upstream dependency is currently blocked.
+
+Track separately:
+1. local stage acceptance;
+2. integration realization;
+3. estate occupancy;
+4. PRE-V3 completion.
+
+At the eventual PRE-V3 empirical gate, expected source-supported artifacts must materialize. Unexpected refusal/missing output is a failed gate cell routed to the narrowest responsible owner.
+
+The three HQ215 final hostile rereviews continue unchanged.
+
+HQ decision:
+`HQD-2026-10-05-216`
+
+---
+
 # HQ215 FRONTIER — THREE FINAL HOSTILE REREVIEWS — 2026-10-05
 
 ### NEW — NEEDS LAUNCH — H-D/F8 FINAL HOSTILE REREVIEW
