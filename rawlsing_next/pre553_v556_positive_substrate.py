@@ -259,6 +259,28 @@ TRANCHE_LOCAL_ADMITTED_SCHEMA_CLASS_FAMILY_MAP: Mapping[str, str] = MappingProxy
 
 ADMITTED_OBJECTIVE_SCHEMA_CLASSES = tuple(sorted(TRANCHE_LOCAL_ADMITTED_SCHEMA_CLASS_FAMILY_MAP))
 
+
+def _refuse_if_class_family_mismatch(*, semantic_class: Any, family: Any, where: str) -> str:
+    """The ONE class/family coherence decision, shared by authoring and registry build.
+
+    HQ214 Repair D-1. The decision reads the semantic class from the VALIDATED result
+    contract and the family from the RULE BODY, never from a caller-side convenience, and
+    refuses a pair whose authorizing family is not the rule's own family even when every
+    hash is internally consistent.
+
+    Returns the authorizing family so callers can use it without a second lookup.
+    """
+    authorizing = TRANCHE_LOCAL_ADMITTED_SCHEMA_CLASS_FAMILY_MAP.get(semantic_class)
+    if authorizing is None:
+        raise SubstrateAuthoringError(
+            f"{where} names semantic_class {semantic_class!r}, which no governed family "
+            "authorizes; an unmapped class is never authorable")
+    if authorizing != family:
+        raise SubstrateAuthoringError(
+            f"{where} is incoherent: semantic_class {semantic_class!r} is authorized by "
+            f"{authorizing!r} but the rule declares {family!r}; class and family must agree")
+    return authorizing
+
 TRANCHE_LOCAL_SCHEMA_CLASS_WITHDRAWAL_NOTE = (
     "OBJECTIVE_ACTOR_POSITION and OBJECTIVE_ACTOR_OPPORTUNITY are withdrawn from the "
     "admitted class set: this tranche excludes OBJECTIVE_ACTOR_INDEX, OBJECTIVE_POSITION "
@@ -775,13 +797,11 @@ def author_governed_rule(*, authority_id: str, authority_version: str,
     if binding_ref.get("object_id") != f"{binding['binding_id']}@{binding['binding_version']}":
         raise SubstrateAuthoringError(
             "result_contract_ref object_id does not resolve to its binding id@version")
-    # Repair 7: every admitted schema class must name the family that authorizes it, so a
-    # class cannot be bound to a family this tranche does not author.
-    bound_class = binding["result_schema"]["semantic_class"]
-    if TRANCHE_LOCAL_ADMITTED_SCHEMA_CLASS_FAMILY_MAP.get(bound_class) != family:
-        raise SubstrateAuthoringError(
-            f"result_schema semantic_class {bound_class!r} is not the class authorized by "
-            f"family {family!r}; class and family must agree")
+    # Repair 7 / D-1: the class/family coherence decision is delegated to the shared
+    # helper, with the class read from the VALIDATED binding's result_schema.
+    _refuse_if_class_family_mismatch(
+        semantic_class=binding["result_schema"]["semantic_class"],
+        family=family, where=f"{family!r} rule {rule_id!r}")
     bound_rule_id = result_contract.binding["bound_rule_id"]
     bound_rule_version = result_contract.binding["bound_rule_version"]
     if bound_rule_id != _text(rule_id, "rule_id") or bound_rule_version != _text(rule_version, "rule_version"):
@@ -886,6 +906,15 @@ class V556RuleMaterialRegistry:
             rule_plain = _plain(r.rule)
             if rule_plain.get("semantic_family") != r.semantic_family:
                 raise SubstrateAuthoringError("registry material family disagrees with its rule body")
+            # D-1: independent class/family coherence at the registry surface. The class is
+            # read from the VALIDATED contract (not from a caller-side field) and the family
+            # from the rule body (not from the dataclass attribute, which is cross-checked
+            # one line above but is still caller-supplied). A hand-built, consistently
+            # rehashed rule cannot carry a class its family does not authorize.
+            _refuse_if_class_family_mismatch(
+                semantic_class=_plain(r.result_contract)["result_schema"]["semantic_class"],
+                family=rule_plain["semantic_family"],
+                where=f"registry material rule {rule_plain.get('rule_id')!r}")
             if dict(r.result_contract_ref) != dict(rule_plain["result_contract_binding_ref"]):
                 raise SubstrateAuthoringError("registry material contract ref disagrees with its rule body")
             rule_body = {"contract_id": M3_CONTRACT_ID}
@@ -971,22 +1000,42 @@ class V556RuleMaterialRegistry:
 
 
 # -------------------------------------------------- R4 payload-to-participant binding
+#: HQ214 Repair D-4. MACHINE-READABLE classification of the payload-participant helper.
+#: The HQ211 court proved this status by searching the helper's DOCSTRING for words, which
+#: is decorative: prose can be reworded without changing behaviour. This record makes the
+#: claim a data value the court asserts field by field, and the seam-absence half is proved
+#: behaviourally by inspecting the seam source for the helper name.
+#:
+#: The classification is TRUTHFUL, not aspirational: this helper is genuinely not wired into
+#: the adopted M3 seam or into any evaluation path. HQ211/HQ214 forbid adding a seam merely
+#: to make it "real", so it stays a court/helper utility and is declared as one.
+PAYLOAD_PARTICIPANT_HELPER_NAME = "validate_payload_against_participants"
+
+PAYLOAD_PARTICIPANT_HELPER_CLASSIFICATION: Mapping[str, Any] = MappingProxyType({
+    "helper": PAYLOAD_PARTICIPANT_HELPER_NAME,
+    "classification": "COURT_HELPER_VALIDATION_UTILITY",
+    "is_seam_enforcement": False,
+    "is_production_evaluation_path": False,
+    "invoked_by_m3_seam": False,
+    "invoked_by_evaluation_path": False,
+    "new_seam_added_to_make_it_real": False,
+    "classification_is_declared_not_aspirational": True,
+    "why": "wiring this helper into evaluation would require a new seam, which HQ211 and "
+           "HQ214 forbid; it is therefore declared a court/helper utility and no claim of "
+           "production enforcement is made anywhere",
+})
+
+
 def validate_payload_against_participants(rule: GovernedRule,
                                           payload: Mapping[str, Any],
                                           participant_bindings: Sequence[Mapping[str, Any]],
                                           payload_route_fields: Sequence[str]) -> None:
-    """COURT/HELPER VALIDATION UTILITY -- NOT wired into the M3 seam.
+    """Court/helper validation utility. NOT seam enforcement.
 
-    This function binds payload route refs to governed participant route identities. It
-    is a court-side validation utility that callers and tests invoke explicitly. It is
-    NOT called by the adopted M3 seam and is NOT part of the evaluation path; the court
-    asserts both facts so no reader can mistake it for seam enforcement.
-
-    Wiring it into evaluation would require a new seam, which HQ211 forbids. TD_R03
-    requires exact V555 route refs by reference; this helper lets a court or producer
-    check that a payload endpoint is among the governed participants'
-    ``v555_route_identity_ref`` values, so a payload cannot float free of the
-    participants the rule actually governs.
+    The machine-readable truth about this helper is
+    ``PAYLOAD_PARTICIPANT_HELPER_CLASSIFICATION``; this docstring is explanation, not
+    the authority for that classification. See that record for why the helper is not on
+    the evaluation path and why no seam was added to change that.
     """
     rule_plain = _plain(rule.rule)
     # A governed route identity carries BOTH identifiers M3 itself commits to
@@ -1148,6 +1197,8 @@ __all__ = [
     "validate_result_contract_binding",
     "author_result_contract_binding",
     "author_governed_rule",
+    "PAYLOAD_PARTICIPANT_HELPER_NAME",
+    "PAYLOAD_PARTICIPANT_HELPER_CLASSIFICATION",
     "validate_payload_against_participants",
     "topology_canary_rule",
     "interaction_relation_canary_rule",

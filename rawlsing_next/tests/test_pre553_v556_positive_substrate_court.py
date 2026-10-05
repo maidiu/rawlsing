@@ -792,38 +792,56 @@ def test_w9_semantic_ref_kind_positive_control_still_works():
         "allowed_kinds_or_unbounded_marker"]) == ["STRUCTURAL_MEDIATION_ROUTE_CANDIDATE"]
 
 
-def test_w10_court_does_not_prove_itself_from_production_vocabulary():
-    """Witness 10: the court must not consume production's refusal vocabulary.
+def test_court_imports_no_refusal_vocabulary_from_production():
+    """HQ214 Repair D-3: a structural check that CAN fail.
 
-    The prior court asserted ``noun in BLOCKED_STRONG_NOUNS`` -- production's own list
-    read back to prove production correct, which proves nothing about refusal.
+    The HQ213 rereview proved the HQ211 ``test_w10`` could never fail: it built the
+    banned names by concatenation and then scanned the source for literals, so it
+    examined a string that was never present. This replacement is a genuine tripwire.
 
-    The check is made on the parsed AST rather than on raw text, so that DISCUSSING a
-    production identifier in a docstring does not trip it while any actual reference to
-    one does. Every hostile literal in this file is written here, independently.
+    It parses this file's AST and inspects IMPORT nodes only. It never searches for a
+    literal name, so concatenating names cannot defeat it, and it references no
+    production vocabulary value. If anyone adds an import from the substrate module
+    whose name is not in the declared allowlist, the court fails and a reviewer sees
+    the new import in the failure message.
+
+    Residual, stated honestly: this is a tripwire that makes an unlisted import visible,
+    not a proof that no future witness could ever be self-referential. Self-reference
+    protection remains a review discipline; this test is a machine-checked alarm, not
+    an invariant.
     """
     import ast
     import inspect
-    banned = {"BLOCKED" + "_STRONG_NOUNS",
-              "_FORBIDDEN" + "_PARTICIPANT_ROLE_TOKENS",
-              "_FORBIDDEN" + "_PERSON_STATE_ROLES"}
     tree = ast.parse(inspect.getsource(sys.modules[__name__]))
-    referenced = set()
+    permitted = {
+        # the module alias itself (from rawlsing_next import ... as S)
+        "pre553_v556_positive_substrate",
+        "AUTHORIZED_INTERACTION_RELATION_KINDS", "MULTIPLICITY_POLICIES",
+        "TD_R03_NON_INFERABLE_F1_PREMISE_KINDS", "TOPOLOGY_CANARY_F2_CLAIM",
+        "TOPOLOGY_CANARY_MAX_CARDINALITY", "TOPOLOGY_CANARY_SHAPE_LABEL",
+        "TRANCHE_LOCAL_ACTOR_INDEXING_MODES", "VALID_EMPTY_NO_GOVERNED_RULE",
+        "GovernedRule", "ResultContractBinding", "SubstrateAuthoringError",
+        "V556RuleMaterialRegistry", "author_closed_result_schema",
+        "author_governed_rule", "author_result_contract_binding",
+        "interaction_relation_canary_rule", "source_free_canary_registry",
+        "topology_canary_rule", "validate_payload_against_participants",
+        "validate_result_contract_binding",
+    }
+    imported = set()
     for node in ast.walk(tree):
-        if isinstance(node, ast.Name):
-            referenced.add(node.id)
-        elif isinstance(node, ast.Attribute):
-            referenced.add(node.attr)
-    # attribute access via the module alias is resolved by name, so also scan text
-    # for the bare dotted forms the AST attribute scan above cannot attribute to a Name
-    assert not (referenced & banned), f"court must not consume {referenced & banned}"
-    source = inspect.getsource(sys.modules[__name__])
-    for banned_name in banned:
-        dotted = "S." + banned_name
-        assert dotted not in source, f"court must not consume {banned_name} via the module alias"
-    # the hostile literals ARE present here, independently written
-    for literal in ("DOMINATION", "HEGEMONY", "SELF_MODEL", "ORIENTATION", "0.87"):
-        assert literal in source
+        if not isinstance(node, ast.ImportFrom):
+            continue
+        module = node.module or ""
+        from_substrate = (module.endswith("pre553_v556_positive_substrate")
+                          or module == "rawlsing_next")
+        if not from_substrate:
+            continue
+        for alias in node.names:
+            if alias.name == "*":
+                raise AssertionError("court must not star-import the substrate module")
+            imported.add(alias.name)
+    unlisted = imported - permitted
+    assert not unlisted, f"court imports names outside the declared allowlist: {sorted(unlisted)}"
 
 
 # ================================================================= HQ211 Repair 6
@@ -842,15 +860,71 @@ def test_illustrative_labels_are_snapshot_only_and_this_is_asserted():
     assert snapshot["topology_canary_f2_claim"] == TOPOLOGY_CANARY_F2_CLAIM
 
 
-def test_payload_participant_helper_is_declared_a_court_helper_not_seam_enforcement():
-    """Repair 6: no claim that the helper is wired into the M3 seam, because it is not."""
+def test_payload_participant_helper_classification_is_machine_readable():
+    """D-4: the classification is asserted as DATA, field by field.
+
+    The HQ211 version proved the classification by searching the helper's docstring for
+    the word "court". That is decorative: the prose can be reworded while behaviour is
+    unchanged, and a docstring can be edited to contain or omit any word. Here the
+    classification is a frozen record and every field is asserted directly.
+    """
+    c = S.PAYLOAD_PARTICIPANT_HELPER_CLASSIFICATION
+    assert c["helper"] == "validate_payload_against_participants"
+    assert c["classification"] == "COURT_HELPER_VALIDATION_UTILITY"
+    assert c["is_seam_enforcement"] is False
+    assert c["is_production_evaluation_path"] is False
+    assert c["invoked_by_m3_seam"] is False
+    assert c["invoked_by_evaluation_path"] is False
+    assert c["new_seam_added_to_make_it_real"] is False
+    # no claim of production enforcement is made anywhere in the record
+    assert "enforcement" not in c["classification"].lower()
+    # the record is frozen, so a caller cannot relabel the helper into enforcement
+    with pytest.raises(TypeError):
+        c["is_seam_enforcement"] = True
+
+
+def test_payload_participant_helper_is_never_invoked_by_the_seam():
+    """D-4: the seam-absence half is proved behaviourally, not by docstring wording.
+
+    This inspects the real seam source for the helper name. It would fail if a future
+    change wired the helper into the seam without updating the classification.
+    """
     import inspect
-    doc = inspect.getdoc(validate_payload_against_participants)
-    assert "court" in doc.lower() and "not" in doc.lower()
-    assert not hasattr(S, "M3_PILOT_WIRED")
-    # and it is genuinely NOT referenced by the seam
     import rawlsing_next.m3_v556_higher_order_structural as seam
-    assert "validate_payload_against_participants" not in inspect.getsource(seam)
+    source = inspect.getsource(seam)
+    assert "validate_payload_against_participants" not in source
+    assert "payload_participant" not in source
+    # and the seam module surface offers no such helper at all
+    assert not hasattr(seam, "validate_payload_against_participants")
+    # nor does any evaluation entry point in this substrate invoke it implicitly
+    assert "validate_payload_against_participants" not in inspect.getsource(
+        S.V556RuleMaterialRegistry.build)
+
+
+def test_payload_participant_helper_still_works_when_a_court_calls_it():
+    """Positive control: declaring it a helper must not have broken it."""
+    registry = source_free_canary_registry()
+    rule = registry.rule_for("V556_TOPOLOGY")
+    a, b = _m2("ph1"), _m2("ph2")
+    payload = {"endpoint_a_ref": _m3_route_ref(a), "endpoint_b_ref": _m3_route_ref(b),
+               "incidence_kind": S.PERMITTED_INCIDENCE_KINDS[0]}
+    validate_payload_against_participants(rule, payload, _bindings(a, b),
+                                          ("endpoint_a_ref", "endpoint_b_ref"))
+    # and it still refuses a payload route ref that is NOT a governed participant.
+    # Swapping a and b would NOT be refused, because both are governed; an unbound third
+    # route is the real negative case.
+    c = _m2("ph3")
+    with pytest.raises(SubstrateAuthoringError) as exc:
+        validate_payload_against_participants(
+            rule, {"endpoint_a_ref": _m3_route_ref(c), "endpoint_b_ref": _m3_route_ref(b),
+                   "incidence_kind": S.PERMITTED_INCIDENCE_KINDS[0]},
+            _bindings(a, b), ("endpoint_a_ref", "endpoint_b_ref"))
+    assert "not bound to any governed participant" in str(exc.value)
+    # swapping the two governed endpoints is still accepted
+    validate_payload_against_participants(
+        rule, {"endpoint_a_ref": _m3_route_ref(b), "endpoint_b_ref": _m3_route_ref(a),
+               "incidence_kind": S.PERMITTED_INCIDENCE_KINDS[0]},
+        _bindings(a, b), ("endpoint_a_ref", "endpoint_b_ref"))
 
 
 # ================================================================= HQ211 Repair 7
@@ -875,18 +949,149 @@ def test_actor_named_schema_classes_are_withdrawn_from_the_admitted_set():
         "OBJECTIVE_STRUCTURAL_RESULT"] == "V556_TOPOLOGY"
 
 
-def test_schema_class_must_be_the_class_authorized_by_its_family():
-    """Repair 7: a class/family mismatch is refused."""
+def _coherent_rule_for_class(semantic_class):
+    """A fully lawful rule bound to an admitted schema class."""
     root = S._node_object({"k": S._node_string("OBJECTIVE_TEXT_LABEL", ("X",))}, ("k",))
-    bundle = author_closed_result_schema(schema_id="HQ211_W7C",
-                                         semantic_class="OBJECTIVE_WORLD_STATUS", root=root)
+    bundle = author_closed_result_schema(schema_id=f"HQ214_{semantic_class}",
+                                         semantic_class=semantic_class, root=root)
     contract = author_result_contract_binding(
-        binding_id="B-C", rule_id="R-C", rule_version="1.0.0",
+        binding_id=f"B-{semantic_class}", rule_id=f"R-{semantic_class}", rule_version="1.0.0",
         schema=bundle["schema"], schema_ref=bundle["schema_ref"])
-    # OBJECTIVE_WORLD_STATUS maps to V556_TOPOLOGY, so it must be refused elsewhere; the
-    # only authorable family is V556_TOPOLOGY, so this asserts the linkage is consulted.
-    assert S.TRANCHE_LOCAL_ADMITTED_SCHEMA_CLASS_FAMILY_MAP["OBJECTIVE_WORLD_STATUS"] == \
-        "V556_TOPOLOGY"
+    return author_governed_rule(
+        authority_id="A", authority_version="1.0.0", authority_content_hash=_hash(["A"]),
+        rule_id=f"R-{semantic_class}", rule_version="1.0.0", semantic_family="V556_TOPOLOGY",
+        participant_roles=("STRUCTURAL_ENDPOINT_A", "STRUCTURAL_ENDPOINT_B"),
+        minimum_cardinality=2, maximum_cardinality_or_unbounded_marker=2,
+        result_contract=contract)
+
+
+def _rehash_rule_body(rule_body):
+    """Rehash a forged rule body so every hash is internally consistent (D-1 requirement)."""
+    forged = dict(rule_body)
+    body = {"contract_id": S.M3_CONTRACT_ID}
+    body.update({k: v for k, v in forged.items()
+                 if k not in ("rule_content_hash", "authority_id",
+                              "authority_version", "authority_content_hash")})
+    forged["rule_content_hash"] = S.semantic_hash(body)
+    return forged
+
+
+#: Genuine mismatches: every class and family here is REAL. No invented class or family.
+_HQ214_GENUINE_MISMATCHES = (
+    ("OBJECTIVE_STRUCTURAL_RESULT", "V556_INTERACTION_RELATION"),
+    ("OBJECTIVE_STRUCTURAL_RESULT", "V556_ATTRACTOR_PREREQUISITE"),
+    ("OBJECTIVE_MEASUREMENT", "V556_INTERACTION_RELATION"),
+    ("OBJECTIVE_WORLD_STATUS", "V556_ATTRACTOR_PREREQUISITE"),
+)
+
+
+def test_d1_coherence_decision_refuses_genuine_mismatches():
+    """D-1: the coherence DECISION refuses, proven behaviourally on real pairs.
+
+    This replaces the HQ211 test that asserted a map entry equals itself, which proved
+    nothing. Each pair below is a real admitted class against a real adopted family that
+    the class is NOT authorized by, so this fails if the coherence logic is removed.
+    """
+    for semantic_class, family in _HQ214_GENUINE_MISMATCHES:
+        assert S.TRANCHE_LOCAL_ADMITTED_SCHEMA_CLASS_FAMILY_MAP[semantic_class] != family
+        with pytest.raises(SubstrateAuthoringError) as exc:
+            S._refuse_if_class_family_mismatch(
+                semantic_class=semantic_class, family=family, where="probe")
+        assert "incoherent" in str(exc.value)
+
+
+def test_d1_unmapped_class_is_refused_by_the_coherence_decision():
+    """D-1: an unmapped class is never authorable, distinct from a mismatch."""
+    with pytest.raises(SubstrateAuthoringError) as exc:
+        S._refuse_if_class_family_mismatch(
+            semantic_class="OBJECTIVE_NOT_IN_ANY_MAP", family="V556_TOPOLOGY", where="probe")
+    assert "no governed family authorizes" in str(exc.value)
+
+
+def test_d1_authoring_refuses_a_genuine_class_family_mismatch():
+    """D-2: authoring refuses a genuinely mismatched class/family pair."""
+    for semantic_class, family in _HQ214_GENUINE_MISMATCHES:
+        root = S._node_object({"k": S._node_string("OBJECTIVE_TEXT_LABEL", ("X",))}, ("k",))
+        bundle = author_closed_result_schema(schema_id=f"HQ214_A_{semantic_class}",
+                                             semantic_class=semantic_class, root=root)
+        contract = author_result_contract_binding(
+            binding_id="B-A", rule_id="R-A", rule_version="1.0.0",
+            schema=bundle["schema"], schema_ref=bundle["schema_ref"])
+        with pytest.raises(SubstrateAuthoringError):
+            author_governed_rule(
+                authority_id="A", authority_version="1.0.0", authority_content_hash=_hash(["A"]),
+                rule_id="R-A", rule_version="1.0.0", semantic_family=family,
+                participant_roles=("STRUCTURAL_ENDPOINT_A", "STRUCTURAL_ENDPOINT_B"),
+                minimum_cardinality=2, maximum_cardinality_or_unbounded_marker=2,
+                result_contract=contract)
+
+
+def test_d1_registry_build_refuses_a_rehashed_hand_built_mismatched_rule():
+    """D-1/D-2: DIRECT registry build of a hand-built, consistently rehashed rule refuses.
+
+    Every hash is internally consistent, so a stale-hash refusal cannot be what stops
+    this; the rule is refused on a semantic ground.
+
+    HONEST LIMITATION: this test does NOT isolate the class/family gate. In this tranche
+    every constructible mismatch also carries a non-authorable family, so the family
+    ceiling refuses it first. Verified by removing the registry coherence call: this test
+    still passed. What isolates the gate is
+    ``test_d1_coherence_decision_refuses_genuine_mismatches`` (behavioural) and
+    ``test_d1_registry_build_is_wired_to_the_coherence_decision`` (structural wiring).
+    The reason a mismatch with an AUTHORABLE family is unconstructible is stated in the
+    return: every admitted class is authorized by V556_TOPOLOGY, the only authorable
+    family, so the mismatch set is empty by construction of the authority-derived map.
+    """
+    for semantic_class, family in _HQ214_GENUINE_MISMATCHES:
+        rule = _coherent_rule_for_class(semantic_class)
+        forged = _rehash_rule_body({**S._plain(rule.rule), "semantic_family": family})
+        hand_built = GovernedRule(
+            rule=forged, rule_key=rule.rule_key, result_contract=rule.result_contract,
+            result_contract_ref=rule.result_contract_ref, semantic_family=family)
+        with pytest.raises(SubstrateAuthoringError) as exc:
+            V556RuleMaterialRegistry.build([hand_built])
+        message = str(exc.value)
+        assert ("incoherent" in message) or ("required-valid-empty" in message), message
+
+
+def test_d1_registry_build_is_wired_to_the_coherence_decision():
+    """D-1: fail-capable structural proof that the registry surface really calls the gate.
+
+    The end-to-end mismatch test below cannot isolate this gate, because in this tranche
+    every constructible mismatch is ALSO refused by the tranche-local family ceiling.
+    This test closes that gap structurally: it parses ``V556RuleMaterialRegistry.build``
+    and asserts the coherence decision is actually invoked. Deleting the call fails here
+    even though the end-to-end test would still pass.
+    """
+    import ast
+    import inspect
+    import textwrap
+    # build is a @staticmethod, so its source still carries class-body indentation
+    source = textwrap.dedent(inspect.getsource(S.V556RuleMaterialRegistry.build))
+    tree = ast.parse(source)
+    called = {node.func.id for node in ast.walk(tree)
+              if isinstance(node, ast.Call) and isinstance(node.func, ast.Name)}
+    assert "_refuse_if_class_family_mismatch" in called, (
+        "registry build must independently invoke the class/family coherence decision")
+    # and it must run AFTER the contract/binding re-validation, as the commission requires
+    assert source.index("validate_result_contract_binding") < \
+        source.index("_refuse_if_class_family_mismatch")
+    # authoring must use the SAME decision, not a private duplicate
+    author_source = inspect.getsource(S.author_governed_rule)
+    assert "_refuse_if_class_family_mismatch" in author_source
+    assert "TRANCHE_LOCAL_ADMITTED_SCHEMA_CLASS_FAMILY_MAP.get(bound_class)" not in author_source
+
+
+def test_d1_registry_build_still_accepts_a_coherent_pair():
+    """Positive control: the coherence gate is not simply refusing everything.
+
+    Without this, D-1's gate could be satisfied by blanket refusal.
+    """
+    for semantic_class in sorted(S.TRANCHE_LOCAL_ADMITTED_SCHEMA_CLASS_FAMILY_MAP):
+        rule = _coherent_rule_for_class(semantic_class)
+        registry = V556RuleMaterialRegistry.build([rule])
+        assert registry.state == "GOVERNED_RULES_PRESENT"
+        assert registry.populated_families == ("V556_TOPOLOGY",)
 
 
 def test_stored_binding_is_deep_frozen_at_rule_authoring():
