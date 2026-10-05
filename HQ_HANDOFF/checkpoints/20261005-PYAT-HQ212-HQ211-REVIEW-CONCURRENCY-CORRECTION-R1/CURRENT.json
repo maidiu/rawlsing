@@ -1,0 +1,61 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261005-PYAT-HQ212-HQ211-REVIEW-CONCURRENCY-CORRECTION-R1",
+  "status": "HQ211_SUBSTANCE_SUSTAINED__F7_IMPLEMENTATION_ACTIVE_NOW__NO_FIXED_SLOT_CAP",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "control_head_pre_checkpoint": "b7042f386c56bb378b17a885cccb124a5842fa95",
+  "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "decision": "HQD-2026-10-05-212",
+  "review_verdict": {
+    "hq211_substance": "SUSTAINED",
+    "corrected_defect": "STALE_FIXED_TWO_IMPLEMENTERS_ONE_REVIEWER_CAP",
+    "current_concurrency_law": "MAXIMIZE_SAFE_ORTHOGONAL_CONCURRENCY"
+  },
+  "active_or_launchable": [
+    {
+      "id": "C1_CURRENT_DAG",
+      "status": "NEW_OR_ACTIVE_NOT_YET_RETURNED",
+      "agent": "Space Bunny",
+      "model_intelligence": "Space Bunny High",
+      "branch": "agent/rabochii-pyat-hq211-c1-current-dag-adoption-r1",
+      "tip": "1f05964479be110345472fc5239acefa9ea4775d"
+    },
+    {
+      "id": "V556_REPAIR",
+      "status": "NEW_OR_ACTIVE_NOT_YET_RETURNED",
+      "agent": "Space Bunny",
+      "model_intelligence": "Space Bunny High",
+      "branch": "agent/rabochii-pyat-hq211-v556-unbounded-gate-repair-r1",
+      "tip": "694b220cfbb14353c59eeec503f0ae0d9cab97bc"
+    },
+    {
+      "id": "HD_F8_REVIEW",
+      "status": "NEW_OR_ACTIVE_NOT_YET_RETURNED",
+      "agent": "DeepSeek Harness",
+      "model_intelligence": "DeepSeek V4.1 Flash",
+      "branch": "agent/reviewer-pyat-hq211-hd-f8-binding-r1",
+      "tip": "b26dcf2e67407b1e42b1d08bd36d0338e9fd91e5"
+    },
+    {
+      "id": "F7_IMPLEMENTATION",
+      "status": "NEW__NEEDS_LAUNCH_NOW",
+      "agent": "Space Bunny",
+      "model_intelligence": "Space Bunny High",
+      "branch": "agent/rabochii-pyat-hq211-f7-implementation-r1",
+      "tip": "7b2eaf6cb15433f7919af8f9ed3dd2701b8423df"
+    }
+  ],
+  "r9_status": "R9_TECHNICAL_REPAIR_ACCEPTED__GOVERNED_QUALIFICATION_UNAVAILABLE__FINAL_ADOPTION_HELD",
+  "holds": [
+    "SOURCE_LOCATOR_DISCOVERY",
+    "WARRANT_ISSUANCE",
+    "RAW_SOURCE_ACCESS",
+    "LIVE_C4",
+    "C7_IMPLEMENTATION",
+    "PREV3_TO_V3_ACTOR_IMPLEMENTATION",
+    "HQ182_C4_NON_ADOPTION_HOLD",
+    "HOST_DISK_POLICY_CAPACITY_LIVE_RUN_BLOCKER"
+  ],
+  "astra_referral": false,
+  "next_action": "LAUNCH_F7_NOW__CONTINUE_C1_V556_HD__INTAKE_ANY_PUSHED_RETURN_IMMEDIATELY"
+}
