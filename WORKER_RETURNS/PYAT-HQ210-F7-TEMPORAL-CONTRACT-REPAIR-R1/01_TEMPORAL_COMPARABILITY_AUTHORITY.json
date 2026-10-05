@@ -1,0 +1,160 @@
+{
+  "schema": "PYAT_HQ210_TEMPORAL_COMPARABILITY_AUTHORITY@1.1.0",
+  "lane": "PYAT-HQ210-F7-TEMPORAL-CONTRACT-REPAIR-R1",
+  "status": "REPAIRED_CONTRACT_SUCCESSOR__NOT_ADOPTED__NO_IMPLEMENTATION",
+  "succeeds": "PYAT_HQ206_TEMPORAL_COMPARABILITY_AUTHORITY@1.0.0 @ 19fd6f6e9f3e24c716310335325cef4c75e6fa56",
+  "authority_kind": {
+    "kind": "TEMPORAL_COMPARABILITY",
+    "status": "PROPOSED_ONE_NEW_KIND",
+    "purpose": "Authorize one operation-scoped temporal comparison over exactly identified anchors: joint comparability, lawful order disposition, and the ceiling of any resulting directional claim.",
+    "minimality": {
+      "closed_set_before": 18,
+      "closed_set_after_if_accepted": 19,
+      "new_kinds": 1,
+      "sibling_kinds_created": 0,
+      "sustained_by_hostile_review": true,
+      "required_ceiling_if_implemented": "operation-scoped comparability and ordering of exactly identified temporal anchors for one governed use; may emit a bounded TEMPORAL_RELATION_RECEIPT; no F8 consumption, source selection/equivalence creation, pooling, interpolation, cause, trend, trajectory, scalar temporal pressure, or actor inference"
+    }
+  },
+  "seven_existing_reuse_targets": [
+    "TEMPORAL_EVIDENCE",
+    "WEIGHT_DESIGN_ESTIMAND",
+    "TARGET_USE_PERMISSION",
+    "SOURCE_EQUIVALENCE",
+    "NATIVE_CANONICAL_MAPPING_HARMONIZATION",
+    "UNCERTAINTY_METHOD",
+    "REPLAY_PROTOCOL"
+  ],
+  "required_inputs": [
+    {
+      "slot": "temporal_identity_contract_ref",
+      "type": "ExactRef",
+      "required": true,
+      "owner": "TEMPORAL_EVIDENCE",
+      "failure": "TEMPORAL_IDENTITY_UNRESOLVED"
+    },
+    {
+      "slot": "anchor_refs",
+      "type": "tuple[ExactRef, ExactRef]",
+      "required": true,
+      "exact_cardinality": 2,
+      "failure": "TEMPORAL_INSUFFICIENT_ANCHORS if fewer than two authorized anchors"
+    },
+    {
+      "slot": "temporal_comparability_authority_ref",
+      "type": "AuthorityRef(kind=TEMPORAL_COMPARABILITY)",
+      "required": true,
+      "failure": "TEMPORAL_INSUFFICIENT_AUTHORITY"
+    },
+    {
+      "slot": "temporal_order_disposition",
+      "type": "closed enum",
+      "required": true,
+      "values": [
+        "CALENDAR_TOTAL_ORDER",
+        "FAMILY_LOCAL_ORDINAL",
+        "PARTIAL_ORDER_NO_DIRECTION",
+        "ORDER_UNKNOWN_NONCOMPARABLE"
+      ]
+    },
+    {
+      "slot": "temporal_order_basis_ref",
+      "type": "ExactRef",
+      "required_when": "temporal_order_disposition is CALENDAR_TOTAL_ORDER, FAMILY_LOCAL_ORDINAL, or PARTIAL_ORDER_NO_DIRECTION",
+      "must_be_absent_when": "temporal_order_disposition is ORDER_UNKNOWN_NONCOMPARABLE",
+      "missing_required_ref_maps_to": "TEMPORAL_INSUFFICIENT_AUTHORITY"
+    },
+    {
+      "slot": "comparability_requirements_ref",
+      "type": "ExactRef",
+      "required": true
+    },
+    {
+      "slot": "estimand_and_measure_authority_refs",
+      "type": "tuple[ExactRef,...]",
+      "required": true,
+      "owner": "WEIGHT_DESIGN_ESTIMAND"
+    },
+    {
+      "slot": "observation_refs",
+      "type": "tuple[ExactRef,ExactRef]",
+      "required": true,
+      "note": "one observation per anchor; no observation is authored by this authority"
+    },
+    {
+      "slot": "uncertainty_authority_ref",
+      "type": "ExactRef",
+      "required": true,
+      "owner": "UNCERTAINTY_METHOD"
+    },
+    {
+      "slot": "source_equivalence_ref",
+      "type": "ExactRef",
+      "required_when": "anchors cross source universes",
+      "owner": "SOURCE_EQUIVALENCE",
+      "resolution_path": "source-relation owner path, not temporal owner"
+    },
+    {
+      "slot": "native_canonical_mapping_ref",
+      "type": "ExactRef",
+      "required_when": "family-scoped mapping is required",
+      "owner": "NATIVE_CANONICAL_MAPPING_HARMONIZATION"
+    },
+    {
+      "slot": "governed_use_id_and_target_use_permission_refs",
+      "type": "tuple[ExactRef,...]",
+      "required": true,
+      "owner": "TARGET_USE_PERMISSION"
+    },
+    {
+      "slot": "provenance_and_replay",
+      "type": "ExactRef",
+      "required": true,
+      "owner": "REPLAY_PROTOCOL"
+    }
+  ],
+  "order_refusal_coherence": {
+    "authorized_basis_classes": [
+      "CALENDAR_TOTAL_ORDER",
+      "FAMILY_LOCAL_ORDINAL",
+      "PARTIAL_ORDER_NO_DIRECTION"
+    ],
+    "refusal_class": "ORDER_UNKNOWN_NONCOMPARABLE",
+    "refusal_class_is_authorized_basis": false,
+    "temporal_order_unauthorized_unique_path": "ORDER_UNKNOWN_NONCOMPARABLE -> TEMPORAL_ORDER_UNAUTHORIZED / NO_PERMITTED_ORDER_BASIS_APPLIES",
+    "missing_required_basis_ref_path": "TEMPORAL_INSUFFICIENT_AUTHORITY / TEMPORAL_ORDER_BASIS_AUTHORITY_REF_ABSENT"
+  },
+  "no_authorized_change": {
+    "definition": "exact signed delta == 0 under the authorized difference operation",
+    "deadband_used": false,
+    "tolerance_used": false,
+    "inherited_v553_threshold": false,
+    "future_deadband_requires_separate_authority": true
+  },
+  "exact_claim_ceiling": {
+    "may_assert": "For one governed use, exactly identified comparable anchors form one authorized ordered comparison; where the authorized basis permits direction, the exact signed delta on one exact quantity/estimand/measure surface determines INCREASE, DECREASE, or exact-zero NO_AUTHORIZED_CHANGE.",
+    "asserts_not": [
+      "CAUSE",
+      "EXTERNAL_EVENT",
+      "CONTINUITY_OR_INTERPOLATION",
+      "MONOTONICITY_OR_TREND",
+      "TRAJECTORY",
+      "TRANSFER",
+      "SOURCE_EQUIVALENCE_CREATION",
+      "POOLING",
+      "BACKFILL",
+      "TEMPORAL_PRESSURE_SCALAR",
+      "GRAIN_COERCION",
+      "F8_CONSUMPTION_OR_GEOMETRY_TRANSFORM",
+      "ACTOR_OR_PERSON_STATE"
+    ]
+  },
+  "cross_universe_two_path_law": {
+    "same_universe": "temporal path only; SOURCE_EQUIVALENCE is neither required nor inferred",
+    "cross_universe": [
+      "source-relation path independently resolves an exact positive SOURCE_EQUIVALENCE authority using its existing relation-authority discipline",
+      "temporal path independently resolves exact positive TEMPORAL_COMPARABILITY and consumes the already-resolved source_equivalence_ref as a prerequisite"
+    ],
+    "noncollapse": "SOURCE_EQUIVALENCE does not imply TEMPORAL_COMPARABILITY and TEMPORAL_COMPARABILITY may not mint SOURCE_EQUIVALENCE"
+  }
+}
