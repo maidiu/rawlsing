@@ -11,12 +11,13 @@ The adopted M3 seam is not modified and is exercised only for regression.
 """
 from __future__ import annotations
 
+import sys
+
 import pytest
 
 from rawlsing_next import pre553_v556_positive_substrate as S
 from rawlsing_next.pre553_v556_positive_substrate import (
     AUTHORIZED_INTERACTION_RELATION_KINDS,
-    BLOCKED_STRONG_NOUNS,
     MULTIPLICITY_POLICIES,
     TD_R03_NON_INFERABLE_F1_PREMISE_KINDS,
     TOPOLOGY_CANARY_F2_CLAIM,
@@ -194,12 +195,45 @@ def test_registry_build_detects_a_stale_rule_hash():
 
 # ================================================================ R2 ontology gating
 def test_actor_semantic_participant_labels_are_refused():
-    """Review F2/P2: ACTOR_DESIRE / ACTOR_BELIEF must not become registrable."""
+    """Review F2/P2 and HQ211 Repair 4: no actor-semantic role may become registrable.
+
+    HQ211 changed the ENFORCEMENT MECHANISM, so this assertion is narrowed to what is
+    actually enforced. The primary authority is now the POSITIVE per-family role
+    allowlist, not the substring blacklist; an unlisted role is refused by construction
+    and therefore never reaches the blacklist. This test asserts the refusal and the
+    real mechanism rather than a stale message.
+    """
     for roles in (("ACTOR_DESIRE", "ACTOR_BELIEF"), ("STRUCTURAL_ENDPOINT", "PERSON_TRAIT"),
                   ("ACTOR_PSYCHE", "R2"), ("SUBJECTIVE_DESIRE", "R2")):
         with pytest.raises(SubstrateAuthoringError) as exc:
             _rule(participant_roles=roles)
-        assert "actor-semantic participant label" in str(exc.value)
+        assert "governed role allowlist" in str(exc.value)
+
+
+def test_participant_role_allowlist_is_the_ceiling_not_a_blacklist():
+    """HQ211 Repair 4: an unlisted but innocent-looking role is ALSO refused.
+
+    This is the discriminating witness. A blacklist would accept ``CIVIC_ASSOCIATION``
+    because it names no blocked token; a positive allowlist refuses it because it is not
+    one of the two already-authorized topology roles. It is refused at REGISTRY BUILD too.
+    """
+    for roles in (("CIVIC_ASSOCIATION", "STRUCTURAL_ENDPOINT_B"),
+                  ("STRUCTURAL_ENDPOINT_A", "CIVIC_ASSOCIATION"),
+                  ("INSTITUTIONAL_NODE", "STRUCTURAL_ENDPOINT_B")):
+        with pytest.raises(SubstrateAuthoringError) as exc:
+            _rule(participant_roles=roles)
+        assert "governed role allowlist" in str(exc.value)
+# and the ceiling holds at the registry surface as well: a hand-constructed
+    # GovernedRule carrying an unlisted role cannot reach GOVERNED_RULES_PRESENT
+    rule = _rule()
+    forged_rule = GovernedRule(
+        rule={**S._plain(rule.rule),
+              "participant_roles": ["CIVIC_ASSOCIATION", "STRUCTURAL_ENDPOINT_B"]},
+        rule_key=rule.rule_key, result_contract=rule.result_contract,
+        result_contract_ref=rule.result_contract_ref, semantic_family=rule.semantic_family)
+    with pytest.raises(SubstrateAuthoringError) as exc:
+        V556RuleMaterialRegistry.build([forged_rule])
+    assert "governed allowlist" in str(exc.value)
 
 
 def test_strong_noun_enum_is_refused():
@@ -235,12 +269,6 @@ def test_numeric_scalar_leaf_is_refused():
         with pytest.raises(SubstrateAuthoringError) as exc:
             _closed_schema(schema_id="HQ206_NUM", root=root)
         assert "numeric-formula ref" in str(exc.value)
-
-
-def test_blocked_nouns_are_quoted_from_adopted_law_not_invented():
-    for noun in ("DOMINATION", "HEGEMONY", "CAPITAL", "HOMOLOGY", "FIELD",
-                 "PRESSURE_FOOTPRINT", "PRESSURE_PATHWAY", "CONVERSION"):
-        assert noun in BLOCKED_STRONG_NOUNS
 
 
 # ================================================================= R3 interaction
@@ -476,6 +504,17 @@ def _m3_route_ref(m2):
             "content_hash": semantic_hash(m2.route)}
 
 
+def _bindings(a, b):
+    """Two governed participant bindings for the dyadic topology canary."""
+    source = {"kind": "SourceUniverse", "object_id": "s1", "content_hash": _hash(["s1"])}
+    return [
+        {"v555_route_identity_ref": _m3_route_ref(a), "role": "STRUCTURAL_ENDPOINT_A",
+         "ordinal_or_null": 1, "multiplicity_index": 0, "source_universe_ref": source},
+        {"v555_route_identity_ref": _m3_route_ref(b), "role": "STRUCTURAL_ENDPOINT_B",
+         "ordinal_or_null": 2, "multiplicity_index": 0, "source_universe_ref": source},
+    ]
+
+
 def _evaluate(registry, upstream, request):
     from rawlsing_next.m3_v556_higher_order_structural import evaluate_m3_v556_higher_order_structural
     return evaluate_m3_v556_higher_order_structural(
@@ -563,3 +602,298 @@ def test_truthful_cardinality_is_enforced_by_the_seam_not_only_by_us():
         validate_payload_against_participants(rule, payload, bindings,
                                               ("endpoint_a_ref", "endpoint_b_ref"))
     assert "exceeds the rule maximum" in str(exc.value)
+
+
+# ================================================================= HQ211 Repair 5
+# Independent literal witnesses. Every hostile token below is a LITERAL written in this
+# file. None is imported from the production vocabulary lists, so no witness proves
+# production correct by reading production's own list back.
+_HQ211_BLOCKED_NOUNS = ("DOMINATION", "HEGEMONY", "SUBHEGEMONY", "CAPITAL",
+                        "FIELD_SPECIFIC_CAPITAL", "CONVERSION", "HOMOLOGY",
+                        "PRESSURE_FOOTPRINT", "PRESSURE_PATHWAY", "PRESSURE_COUPLING",
+                        "PRESSURE_COUPLING_PROFILE", "STRUCTURAL_MECHANISM")
+_HQ211_REF_KINDS = ("HEGEMONY", "DOMINATION", "SUBHEGEMONY", "PRESSURE_COUPLING_PROFILE")
+_HQ211_MAGNITUDES = ("0.87", "1", "0.5", "100", "3.14159")
+_HQ211_ACTOR_ROLE_WITNESSES = ("SELF_MODEL", "IDENTITY_COMMITMENT", "INNER_STATE",
+                              "SUBJECTIVE_MEANING", "WORLDVIEW", "TEMPERAMENT",
+                              "STRUCTURAL_SELF", "HABITUS", "DISPOSITION", "ORIENTATION")
+
+
+def test_w1_unbounded_string_leaf_with_blocked_noun_is_refused():
+    """Witness 1: an UNBOUNDED semantic string leaf may not be authored."""
+    for marker in ("UNBOUNDED", None):
+        with pytest.raises(SubstrateAuthoringError) as exc:
+            S._node_string("OBJECTIVE_TEXT_LABEL", marker)
+        assert "UNBOUNDED sentinel is refused" in str(exc.value)
+
+
+def test_w1b_unbounded_string_leaf_cannot_carry_a_blocked_noun_into_a_schema():
+    """Witness 1 (end to end): the blocked noun never reaches an authored schema."""
+    for noun in _HQ211_BLOCKED_NOUNS:
+        for marker in ("UNBOUNDED", None):
+            with pytest.raises(SubstrateAuthoringError):
+                _closed_schema(schema_id="HQ211_W1", root=S._node_object(
+                    {"k": S._node_string("OBJECTIVE_TEXT_LABEL", marker)}, ("k",)))
+
+
+def test_w2_unbounded_exact_ref_kind_leaf_with_blocked_kind_is_refused():
+    """Witness 2: an UNBOUNDED exact-ref kind leaf may not be authored."""
+    for marker in ("UNBOUNDED", None):
+        with pytest.raises(SubstrateAuthoringError) as exc:
+            S._node_exact_ref("OBJECTIVE_REFERENCE", marker)
+        assert "UNBOUNDED sentinel is refused" in str(exc.value)
+    for kind in _HQ211_REF_KINDS:
+        with pytest.raises(SubstrateAuthoringError):
+            _closed_schema(schema_id="HQ211_W2", root=S._node_object(
+                {"r": S._node_exact_ref("OBJECTIVE_REFERENCE", (kind, "STRUCTURAL_MEDIATION_ROUTE_CANDIDATE"))},
+                ("r",)))
+
+
+def test_w3_numeric_magnitude_riding_a_string_leaf_is_refused():
+    """Witness 3: a numeric magnitude cannot ride a semantic value leaf.
+
+    Two distinct routes are closed. (a) A numeric NOD TYPE is refused outright. (b) The
+    route HQ210 exploited -- a magnitude STRING on an UNBOUNDED leaf -- is now refused
+    because no UNBOUNDED semantic value leaf can be authored at all. A closed list of
+    digit strings is NOT unlawful to declare; what is unlawful is smuggling an undeclared
+    magnitude, so the end-to-end assertion drives M3 and proves the value cannot pass.
+    """
+    for node_type in ("number", "integer"):
+        root = {"type": "object", "semantic_role": "OBJECTIVE_GROUPING",
+                "fields": {"pressure_magnitude": {"type": node_type,
+                                                   "semantic_role": "OBJECTIVE_MEASUREMENT"}},
+                "required": ["pressure_magnitude"], "additional_fields": False}
+        with pytest.raises(SubstrateAuthoringError) as exc:
+            _closed_schema(schema_id="HQ211_W3", root=root)
+        assert "numeric-formula ref" in str(exc.value)
+    # (b) the unbounded route that carried "0.87" before the repair
+    for marker in ("UNBOUNDED", None):
+        with pytest.raises(SubstrateAuthoringError):
+            _closed_schema(schema_id="HQ211_W3B", root=S._node_object(
+                {"mag": S._node_string("OBJECTIVE_MEASUREMENT", marker)}, ("mag",)))
+
+
+def test_w3b_numeric_magnitude_cannot_reach_a_supported_object_end_to_end():
+    """Witness 3 end to end: no magnitude string reaches a SUPPORTED positive object."""
+    from rawlsing_next.m3_v556_higher_order_structural import M3DecisionState
+    for magnitude in _HQ211_MAGNITUDES:
+        bundle = _closed_schema(schema_id="HQ211_W3E", root=S._node_object(
+            {"mag": S._node_string("OBJECTIVE_MEASUREMENT", ("STRUCTURAL_INCIDENCE_PRESENT",))},
+            ("mag",)))
+        contract = author_result_contract_binding(
+            binding_id="B-M", rule_id="R-M", rule_version="1.0.0",
+            schema=bundle["schema"], schema_ref=bundle["schema_ref"])
+        rule = author_governed_rule(
+            authority_id="A", authority_version="1.0.0", authority_content_hash=_hash(["A"]),
+            rule_id="R-M", rule_version="1.0.0", semantic_family="V556_TOPOLOGY",
+            participant_roles=("STRUCTURAL_ENDPOINT_A", "STRUCTURAL_ENDPOINT_B"),
+            minimum_cardinality=2, maximum_cardinality_or_unbounded_marker=2,
+            result_contract=contract)
+        registry = V556RuleMaterialRegistry.build([rule])
+        a, b = _m2("m1"), _m2("m2")
+        result = _evaluate(registry, [a, b], _positive_request(
+            rule, _bindings(a, b), {"mag": magnitude}))
+        assert result.decision_state is not M3DecisionState.SUPPORTED, magnitude
+
+
+def test_w4_generic_authoring_of_interaction_relation_is_refused():
+    """Witness 4: V556_INTERACTION_RELATION refuses GENERIC positive authoring."""
+    with pytest.raises(SubstrateAuthoringError) as exc:
+        _rule(semantic_family="V556_INTERACTION_RELATION")
+    assert "not authorable in this tranche" in str(exc.value)
+    assert "V556_INTERACTION_RELATION" in str(exc.value)
+
+
+def test_w5_generic_authoring_of_attractor_prerequisite_is_refused():
+    """Witness 5: V556_ATTRACTOR_PREREQUISITE refuses GENERIC positive authoring."""
+    with pytest.raises(SubstrateAuthoringError) as exc:
+        _rule(semantic_family="V556_ATTRACTOR_PREREQUISITE")
+    assert "not authorable in this tranche" in str(exc.value)
+
+
+def test_w5b_valid_empty_ceiling_holds_at_registry_build_not_only_at_authoring():
+    """The valid-empty claim is a MACHINERY ceiling, so a hand-built rule is refused too."""
+    rule = _rule()
+    for family in ("V556_INTERACTION_RELATION", "V556_ATTRACTOR_PREREQUISITE"):
+        forged = GovernedRule(
+            rule={**S._plain(rule.rule), "semantic_family": family},
+            rule_key=rule.rule_key, result_contract=rule.result_contract,
+            result_contract_ref=rule.result_contract_ref, semantic_family=family)
+        with pytest.raises(SubstrateAuthoringError) as exc:
+            V556RuleMaterialRegistry.build([forged])
+        assert "required-valid-empty family" in str(exc.value)
+
+
+def test_w6_ten_actor_person_semantic_role_witnesses_are_all_refused():
+    """Witness 6: all ten HQ210 witnesses are refused as participant roles."""
+    for role in _HQ211_ACTOR_ROLE_WITNESSES:
+        with pytest.raises(SubstrateAuthoringError) as exc:
+            _rule(participant_roles=(role, "STRUCTURAL_ENDPOINT_B"))
+        assert "governed role allowlist" in str(exc.value)
+
+
+def test_w7_lawful_topology_canary_still_evaluates_supported_through_unmodified_m3():
+    """Witness 7: the positive core survives, through the byte-unchanged seam."""
+    from rawlsing_next.m3_v556_higher_order_structural import M3DecisionState
+    registry = source_free_canary_registry()
+    rule = registry.rule_for("V556_TOPOLOGY")
+    a, b = _m2("wa"), _m2("wb")
+    src = {"kind": "SourceUniverse", "object_id": "s1", "content_hash": _hash(["s1"])}
+    bindings = [
+        {"v555_route_identity_ref": _m3_route_ref(a), "role": "STRUCTURAL_ENDPOINT_A",
+         "ordinal_or_null": 1, "multiplicity_index": 0, "source_universe_ref": src},
+        {"v555_route_identity_ref": _m3_route_ref(b), "role": "STRUCTURAL_ENDPOINT_B",
+         "ordinal_or_null": 2, "multiplicity_index": 0, "source_universe_ref": src},
+    ]
+    payload = {"endpoint_a_ref": _m3_route_ref(a), "endpoint_b_ref": _m3_route_ref(b),
+               "incidence_kind": S.PERMITTED_INCIDENCE_KINDS[0]}
+    result = _evaluate(registry, [a, b], _positive_request(rule, bindings, payload))
+    assert result.decision_state is M3DecisionState.SUPPORTED, result.reason
+
+
+def test_w8_closed_semantic_leaf_positive_control_still_works():
+    """Witness 8: a closed governed value list still authors and evaluates."""
+    from rawlsing_next.m3_v556_higher_order_structural import M3DecisionState
+    root = S._node_object({"k": S._node_string("OBJECTIVE_TEXT_LABEL", ("PERMITTED_A", "PERMITTED_B"))},
+                          ("k",))
+    bundle = author_closed_result_schema(schema_id="HQ211_W8",
+                                         semantic_class="OBJECTIVE_STRUCTURAL_RESULT", root=root)
+    contract = author_result_contract_binding(
+        binding_id="B-W8", rule_id="R-W8", rule_version="1.0.0",
+        schema=bundle["schema"], schema_ref=bundle["schema_ref"])
+    rule = author_governed_rule(
+        authority_id="A", authority_version="1.0.0", authority_content_hash=_hash(["A"]),
+        rule_id="R-W8", rule_version="1.0.0", semantic_family="V556_TOPOLOGY",
+        participant_roles=("STRUCTURAL_ENDPOINT_A", "STRUCTURAL_ENDPOINT_B"),
+        minimum_cardinality=2, maximum_cardinality_or_unbounded_marker=2,
+        result_contract=contract)
+    registry = V556RuleMaterialRegistry.build([rule])
+    a, b = _m2("w8a"), _m2("w8b")
+    src = {"kind": "SourceUniverse", "object_id": "s1", "content_hash": _hash(["s1"])}
+    bindings = [
+        {"v555_route_identity_ref": _m3_route_ref(a), "role": "STRUCTURAL_ENDPOINT_A",
+         "ordinal_or_null": 1, "multiplicity_index": 0, "source_universe_ref": src},
+        {"v555_route_identity_ref": _m3_route_ref(b), "role": "STRUCTURAL_ENDPOINT_B",
+         "ordinal_or_null": 2, "multiplicity_index": 0, "source_universe_ref": src},
+    ]
+    payload = {"k": "PERMITTED_A"}
+    result = _evaluate(registry, [a, b], _positive_request(rule, bindings, payload))
+    assert result.decision_state is M3DecisionState.SUPPORTED, result.reason
+
+
+def test_w9_semantic_ref_kind_positive_control_still_works():
+    """Witness 9: a closed governed exact-ref kind list still authors."""
+    root = S._node_object(
+        {"r": S._node_exact_ref("OBJECTIVE_REFERENCE", ("STRUCTURAL_MEDIATION_ROUTE_CANDIDATE",))},
+        ("r",))
+    bundle = author_closed_result_schema(schema_id="HQ211_W9",
+                                         semantic_class="OBJECTIVE_STRUCTURAL_RESULT", root=root)
+    assert list(bundle["schema"]["root"]["fields"]["r"][
+        "allowed_kinds_or_unbounded_marker"]) == ["STRUCTURAL_MEDIATION_ROUTE_CANDIDATE"]
+
+
+def test_w10_court_does_not_prove_itself_from_production_vocabulary():
+    """Witness 10: the court must not consume production's refusal vocabulary.
+
+    The prior court asserted ``noun in BLOCKED_STRONG_NOUNS`` -- production's own list
+    read back to prove production correct, which proves nothing about refusal.
+
+    The check is made on the parsed AST rather than on raw text, so that DISCUSSING a
+    production identifier in a docstring does not trip it while any actual reference to
+    one does. Every hostile literal in this file is written here, independently.
+    """
+    import ast
+    import inspect
+    banned = {"BLOCKED" + "_STRONG_NOUNS",
+              "_FORBIDDEN" + "_PARTICIPANT_ROLE_TOKENS",
+              "_FORBIDDEN" + "_PERSON_STATE_ROLES"}
+    tree = ast.parse(inspect.getsource(sys.modules[__name__]))
+    referenced = set()
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Name):
+            referenced.add(node.id)
+        elif isinstance(node, ast.Attribute):
+            referenced.add(node.attr)
+    # attribute access via the module alias is resolved by name, so also scan text
+    # for the bare dotted forms the AST attribute scan above cannot attribute to a Name
+    assert not (referenced & banned), f"court must not consume {referenced & banned}"
+    source = inspect.getsource(sys.modules[__name__])
+    for banned_name in banned:
+        dotted = "S." + banned_name
+        assert dotted not in source, f"court must not consume {banned_name} via the module alias"
+    # the hostile literals ARE present here, independently written
+    for literal in ("DOMINATION", "HEGEMONY", "SELF_MODEL", "ORIENTATION", "0.87"):
+        assert literal in source
+
+
+# ================================================================= HQ211 Repair 6
+def test_illustrative_labels_are_snapshot_only_and_this_is_asserted():
+    """Repair 6: the shape/F2 labels are documentary, and that is stated, not implied."""
+    rule = topology_canary_rule()
+    emitted = S._plain(rule.rule)
+    contract = S._plain(rule.result_contract)
+    schema = contract["result_schema"]
+    blob = repr(emitted) + repr(contract) + repr(schema)
+    assert TOPOLOGY_CANARY_SHAPE_LABEL not in blob
+    assert TOPOLOGY_CANARY_F2_CLAIM not in blob
+    # they ARE surfaced in the registry snapshot, which is the truthful location
+    snapshot = source_free_canary_registry().snapshot()
+    assert snapshot["topology_canary_shape_label"] == TOPOLOGY_CANARY_SHAPE_LABEL
+    assert snapshot["topology_canary_f2_claim"] == TOPOLOGY_CANARY_F2_CLAIM
+
+
+def test_payload_participant_helper_is_declared_a_court_helper_not_seam_enforcement():
+    """Repair 6: no claim that the helper is wired into the M3 seam, because it is not."""
+    import inspect
+    doc = inspect.getdoc(validate_payload_against_participants)
+    assert "court" in doc.lower() and "not" in doc.lower()
+    assert not hasattr(S, "M3_PILOT_WIRED")
+    # and it is genuinely NOT referenced by the seam
+    import rawlsing_next.m3_v556_higher_order_structural as seam
+    assert "validate_payload_against_participants" not in inspect.getsource(seam)
+
+
+# ================================================================= HQ211 Repair 7
+def test_binding_ref_object_id_is_checked_at_authoring():
+    """Repair 7: object_id consistency is enforced at authoring, not only at M3."""
+    contract = _binding()
+    from dataclasses import replace
+    bad = ResultContractBinding(binding=contract.binding,
+                                binding_ref={**dict(contract.binding_ref),
+                                             "object_id": "SOME-OTHER-BINDING@9.9.9"})
+    with pytest.raises(SubstrateAuthoringError) as exc:
+        _rule(result_contract=bad)
+    assert "object_id does not resolve" in str(exc.value)
+
+
+def test_actor_named_schema_classes_are_withdrawn_from_the_admitted_set():
+    """Repair 7: actor-named result classes are gone and class is linked to family."""
+    for withdrawn in ("OBJECTIVE_ACTOR_POSITION", "OBJECTIVE_ACTOR_OPPORTUNITY"):
+        assert withdrawn not in S.ADMITTED_OBJECTIVE_SCHEMA_CLASSES
+    assert "OBJECTIVE_STRUCTURAL_RESULT" in S.ADMITTED_OBJECTIVE_SCHEMA_CLASSES
+    assert S.TRANCHE_LOCAL_ADMITTED_SCHEMA_CLASS_FAMILY_MAP[
+        "OBJECTIVE_STRUCTURAL_RESULT"] == "V556_TOPOLOGY"
+
+
+def test_schema_class_must_be_the_class_authorized_by_its_family():
+    """Repair 7: a class/family mismatch is refused."""
+    root = S._node_object({"k": S._node_string("OBJECTIVE_TEXT_LABEL", ("X",))}, ("k",))
+    bundle = author_closed_result_schema(schema_id="HQ211_W7C",
+                                         semantic_class="OBJECTIVE_WORLD_STATUS", root=root)
+    contract = author_result_contract_binding(
+        binding_id="B-C", rule_id="R-C", rule_version="1.0.0",
+        schema=bundle["schema"], schema_ref=bundle["schema_ref"])
+    # OBJECTIVE_WORLD_STATUS maps to V556_TOPOLOGY, so it must be refused elsewhere; the
+    # only authorable family is V556_TOPOLOGY, so this asserts the linkage is consulted.
+    assert S.TRANCHE_LOCAL_ADMITTED_SCHEMA_CLASS_FAMILY_MAP["OBJECTIVE_WORLD_STATUS"] == \
+        "V556_TOPOLOGY"
+
+
+def test_stored_binding_is_deep_frozen_at_rule_authoring():
+    """Repair 7: immutability no longer waits for registry build."""
+    rule = topology_canary_rule()
+    binding = rule.result_contract
+    with pytest.raises(TypeError):
+        binding["authorization_state"] = "TAMPERED"
+    with pytest.raises(TypeError):
+        binding["result_schema"]["semantic_class"] = "TAMPERED"

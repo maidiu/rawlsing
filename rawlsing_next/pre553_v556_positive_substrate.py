@@ -147,6 +147,46 @@ TD_R03_NON_INFERABLE_F1_PREMISE_KINDS = (
 #: V556_INTERACTION_RELATION is returned lawfully valid-empty.
 AUTHORIZED_INTERACTION_RELATION_KINDS = ()
 
+#: TRANCHE-LOCAL (Repair 2). The VALID_EMPTY claim for the interaction and attractor
+#: families must be a MACHINERY CEILING, not a fact about the shipped instance.
+#: Review P7 showed the generic path could author, register and positively evaluate
+#: both families, so "lawfully valid-empty" was true only of the shipped registry.
+#: These two families are therefore refused AT AUTHORING and AT REGISTRY BUILD until a
+#: later governed rule authority explicitly opens them. This is a bounded current
+#: ceiling for this tranche, NOT a timeless ontology claim.
+TRANCHE_LOCAL_AUTHORABLE_FAMILIES = ("V556_TOPOLOGY",)
+
+TRANCHE_LOCAL_VALID_EMPTY_REQUIRED_FAMILIES = (
+    "V556_ATTRACTOR_PREREQUISITE",
+    "V556_INTERACTION_RELATION",
+)
+
+TRANCHE_LOCAL_VALID_EMPTY_CEILING_NOTE = (
+    "V556_INTERACTION_RELATION and V556_ATTRACTOR_PREREQUISITE MUST refuse generic positive "
+    "rule authoring in this tranche. V556_INTERACTION_RELATION because AUTHORIZED_INTERACTION_"
+    "RELATION_KINDS is empty and TD_R03 §5 forbids an F1 constituted solely by coexistence, "
+    "shared channel or parallel occurrence; V556_ATTRACTOR_PREREQUISITE because no governed "
+    "attractor prerequisite rule authority exists and HQ forbids fabricating one. Opening "
+    "either family requires a new governed rule authority; it is not a code flag."
+)
+
+#: TRANCHE-LOCAL (Repair 4). A POSITIVE participant-role allowlist, not a blacklist.
+#: Derived ONLY from already-authorized current material: the two roles the topology
+#: canary actually uses. Review P5 found ten actor/person-semantic labels accepted
+#: because the refusal was substring-token based. An allowlist refuses the whole
+#: complement, so no further vocabulary may be added to a list to widen it.
+TRANCHE_LOCAL_FAMILY_PARTICIPANT_ROLE_MAP: Mapping[str, tuple[str, ...]] = MappingProxyType({
+    "V556_TOPOLOGY": ("STRUCTURAL_ENDPOINT_A", "STRUCTURAL_ENDPOINT_B"),
+})
+
+TRANCHE_LOCAL_PARTICIPANT_ROLE_ALLOWLIST_NOTE = (
+    "participant_roles MUST be drawn from the per-family governed role map. The map is "
+    "derived only from already-authorized current material and is deliberately NOT widened: "
+    "no role name is invented to make the API look generic. A role outside the map is "
+    "refused regardless of whether it looks structural, so actor/person-semantic labels "
+    "and any other unlisted label are refused by construction rather than by blacklist."
+)
+
 #: TD_R03 §5 names terminal-demand candidate relation kinds and then explicitly
 #: refuses to canonize them: "TD-R03 does not canonize those terms merely by naming
 #: them." Recorded so the vocabulary is traceable to adopted architecture rather than
@@ -206,12 +246,24 @@ _FORBIDDEN_PERSON_STATE_ROLES = frozenset({
     "DEVELOPMENTAL_BIOGRAPHICAL_STATE",
 })
 
-ADMITTED_OBJECTIVE_SCHEMA_CLASSES = (
-    "OBJECTIVE_STRUCTURAL_RESULT",
-    "OBJECTIVE_ACTOR_POSITION",
-    "OBJECTIVE_ACTOR_OPPORTUNITY",
-    "OBJECTIVE_WORLD_STATUS",
-    "OBJECTIVE_MEASUREMENT",
+#: TRANCHE-LOCAL admitted objective-world result classes, each LINKED to the family that
+#: authorizes it (Repair 7). The two actor-named classes that the previous tranche
+#: admitted are REMOVED: OBJECTIVE_ACTOR_POSITION and OBJECTIVE_ACTOR_OPPORTUNITY name
+#: actor concepts whose roles (OBJECTIVE_ACTOR_INDEX / POSITION / OPPORTUNITY) this
+#: tranche excludes, so admitting the class while excluding the role was incoherent.
+TRANCHE_LOCAL_ADMITTED_SCHEMA_CLASS_FAMILY_MAP: Mapping[str, str] = MappingProxyType({
+    "OBJECTIVE_STRUCTURAL_RESULT": "V556_TOPOLOGY",
+    "OBJECTIVE_WORLD_STATUS": "V556_TOPOLOGY",
+    "OBJECTIVE_MEASUREMENT": "V556_TOPOLOGY",
+})
+
+ADMITTED_OBJECTIVE_SCHEMA_CLASSES = tuple(sorted(TRANCHE_LOCAL_ADMITTED_SCHEMA_CLASS_FAMILY_MAP))
+
+TRANCHE_LOCAL_SCHEMA_CLASS_WITHDRAWAL_NOTE = (
+    "OBJECTIVE_ACTOR_POSITION and OBJECTIVE_ACTOR_OPPORTUNITY are withdrawn from the "
+    "admitted class set: this tranche excludes OBJECTIVE_ACTOR_INDEX, OBJECTIVE_POSITION "
+    "and OBJECTIVE_OPPORTUNITY, so admitting an actor-named result class was incoherent "
+    "with the role ceiling. Every admitted class now names the family that authorizes it."
 )
 
 #: TD_R03 §5/§8 place quantitative combination behind a nullable numeric-formula ref
@@ -294,28 +346,59 @@ def _refuse_if_actor_semantic_role(role: str, where: str) -> None:
 
 
 # --------------------------------------------------------------- schema nodes
-def _node_string(role: str, allowed: Sequence[str] | str = "UNBOUNDED") -> dict[str, Any]:
+def _node_string(role: str, allowed: Sequence[str] | None = None) -> dict[str, Any]:
+    """Closed governed value list REQUIRED. The UNBOUNDED sentinel is refused (R6/Repair 1).
+
+    Review P1/P4: a leaf declared ``UNBOUNDED`` bypassed this gate entirely, and the
+    M3 seam then accepts ANY string for it (m3:655-660) and copies it verbatim into the
+    positive object (m3:931). An unbounded semantic value leaf is therefore not
+    authorable. A closed list also makes M3 enforce the enum at evaluation time.
+    """
     role = _text(role, "semantic_role")
     if role not in ADMITTED_OBJECTIVE_ROLES:
         raise SubstrateAuthoringError(f"role {role!r} is not an admitted objective-world role")
-    if allowed != "UNBOUNDED":
-        allowed = tuple(_text(x, "allowed_values") for x in allowed)
-        if not allowed or len(set(allowed)) != len(allowed):
-            raise SubstrateAuthoringError("string enum must be non-empty and duplicate-free")
-        for value in allowed:
-            _refuse_if_forbidden_vocabulary(value, f"string enum under role {role!r}")
+    if allowed is None:
+        raise SubstrateAuthoringError(
+            f"string leaf under role {role!r} requires an explicit closed governed value "
+            "list; omitting it is refused because the UNBOUNDED sentinel is refused for "
+            "semantic value leaves")
+    if isinstance(allowed, str) or not isinstance(allowed, Sequence):
+        raise SubstrateAuthoringError(
+            f"string leaf under role {role!r} requires an explicit closed governed value "
+            "list; the UNBOUNDED sentinel is refused for semantic value leaves")
+    allowed = tuple(_text(x, "allowed_values") for x in allowed)
+    if not allowed or len(set(allowed)) != len(allowed):
+        raise SubstrateAuthoringError("string enum must be non-empty and duplicate-free")
+    for value in allowed:
+        _refuse_if_forbidden_vocabulary(value, f"string enum under role {role!r}")
     return {"type": "string", "semantic_role": role,
             "allowed_values_or_unbounded_marker": allowed}
 
 
-def _node_exact_ref(role: str, kinds: Sequence[str] | str = "UNBOUNDED") -> dict[str, Any]:
+def _node_exact_ref(role: str, kinds: Sequence[str] | None = None) -> dict[str, Any]:
+    """Closed governed kind list REQUIRED. The UNBOUNDED sentinel is refused (R6/Repair 1).
+
+    Review P2: an unbounded exact-ref kind leaf let an arbitrary kind such as HEGEMONY
+    reach a SUPPORTED object, because M3 only checks the kind when the list is closed
+    (m3:667-669).
+    """
     role = _text(role, "semantic_role")
     if role not in ADMITTED_OBJECTIVE_ROLES:
         raise SubstrateAuthoringError(f"role {role!r} is not an admitted objective-world role")
-    if kinds != "UNBOUNDED":
-        kinds = tuple(_text(x, "allowed_kinds") for x in kinds)
-        if not kinds or len(set(kinds)) != len(kinds):
-            raise SubstrateAuthoringError("exact-ref kind list must be non-empty and duplicate-free")
+    if kinds is None:
+        raise SubstrateAuthoringError(
+            f"exact_ref leaf under role {role!r} requires an explicit closed governed kind "
+            "list; omitting it is refused because the UNBOUNDED sentinel is refused for "
+            "semantic kind leaves")
+    if isinstance(kinds, str) or not isinstance(kinds, Sequence):
+        raise SubstrateAuthoringError(
+            f"exact_ref leaf under role {role!r} requires an explicit closed governed kind "
+            "list; the UNBOUNDED sentinel is refused for semantic kind leaves")
+    kinds = tuple(_text(x, "allowed_kinds") for x in kinds)
+    if not kinds or len(set(kinds)) != len(kinds):
+        raise SubstrateAuthoringError("exact-ref kind list must be non-empty and duplicate-free")
+    for kind in kinds:
+        _refuse_if_forbidden_vocabulary(kind, f"exact-ref kind under role {role!r}")
     return {"type": "exact_ref", "semantic_role": role,
             "allowed_kinds_or_unbounded_marker": kinds}
 
@@ -403,27 +486,38 @@ def _validate_authored_schema_node(node: Any, path: str = "$") -> None:
         if set(node) != {"type", "semantic_role", "allowed_values_or_unbounded_marker"}:
             raise SubstrateAuthoringError(f"{path} string schema fields are not exact")
         allowed = node["allowed_values_or_unbounded_marker"]
-        if allowed != "UNBOUNDED":
-            if isinstance(allowed, (str, bytes)) or not isinstance(allowed, Sequence) or not allowed:
-                raise SubstrateAuthoringError(f"{path} string enum must be non-empty or UNBOUNDED")
-            values = tuple(_text(x, f"{path}.allowed_values") for x in allowed)
-            if len(values) != len(set(values)):
-                raise SubstrateAuthoringError(f"{path} string enum contains duplicates")
-            for value in values:
-                _refuse_if_forbidden_vocabulary(value, f"{path} string enum")
+        # MACHINERY GATE (Repair 1). This branch is reached for HAND-AUTHORED schema
+        # mappings too, not only for nodes built by _node_string, so a caller cannot
+        # evade the gate by writing the mapping directly.
+        if allowed == "UNBOUNDED":
+            raise SubstrateAuthoringError(
+                f"{path} declares an UNBOUNDED semantic string value leaf; the M3 seam "
+                "accepts ANY string for such a leaf and copies it into the positive object, "
+                "so an explicit closed governed value list is required")
+        if isinstance(allowed, (str, bytes)) or not isinstance(allowed, Sequence) or not allowed:
+            raise SubstrateAuthoringError(f"{path} string enum must be a non-empty closed sequence")
+        values = tuple(_text(x, f"{path}.allowed_values") for x in allowed)
+        if len(values) != len(set(values)):
+            raise SubstrateAuthoringError(f"{path} string enum contains duplicates")
+        for value in values:
+            _refuse_if_forbidden_vocabulary(value, f"{path} string enum")
         return
     if node_type == "exact_ref":
         if set(node) != {"type", "semantic_role", "allowed_kinds_or_unbounded_marker"}:
             raise SubstrateAuthoringError(f"{path} exact_ref schema fields are not exact")
         kinds = node["allowed_kinds_or_unbounded_marker"]
-        if kinds != "UNBOUNDED":
-            if isinstance(kinds, (str, bytes)) or not isinstance(kinds, Sequence) or not kinds:
-                raise SubstrateAuthoringError(f"{path} allowed exact-ref kinds invalid")
-            parsed = tuple(_text(x, f"{path}.allowed_kinds") for x in kinds)
-            if len(parsed) != len(set(parsed)):
-                raise SubstrateAuthoringError(f"{path} exact-ref kind list contains duplicates")
-            for kind in parsed:
-                _refuse_if_forbidden_vocabulary(kind, f"{path} allowed exact-ref kind")
+        # MACHINERY GATE (Repair 1). Same rationale as the string branch above.
+        if kinds == "UNBOUNDED":
+            raise SubstrateAuthoringError(
+                f"{path} declares an UNBOUNDED exact-ref kind leaf; the M3 seam accepts ANY "
+                "kind for such a leaf, so an explicit closed governed kind list is required")
+        if isinstance(kinds, (str, bytes)) or not isinstance(kinds, Sequence) or not kinds:
+            raise SubstrateAuthoringError(f"{path} allowed exact-ref kinds must be a non-empty closed sequence")
+        parsed = tuple(_text(x, f"{path}.allowed_kinds") for x in kinds)
+        if len(parsed) != len(set(parsed)):
+            raise SubstrateAuthoringError(f"{path} exact-ref kind list contains duplicates")
+        for kind in parsed:
+            _refuse_if_forbidden_vocabulary(kind, f"{path} allowed exact-ref kind")
         return
     if set(node) != {"type", "semantic_role"}:
         raise SubstrateAuthoringError(f"{path} scalar schema fields are not exact")
@@ -624,10 +718,27 @@ def author_governed_rule(*, authority_id: str, authority_version: str,
         raise SubstrateAuthoringError(
             f"semantic_family {family!r} is not an adopted V556 family; this substrate "
             "materializes adopted semantics only and will not introduce a family")
+    # Repair 2: the valid-empty families are refused AT AUTHORING, so the ceiling is a
+    # machinery fact rather than a property of the shipped instance.
+    if family not in TRANCHE_LOCAL_AUTHORABLE_FAMILIES:
+        reason = ("it is a required-valid-empty family in this tranche"
+                  if family in TRANCHE_LOCAL_VALID_EMPTY_REQUIRED_FAMILIES
+                  else "it is outside the tranche-local authorable family set")
+        raise SubstrateAuthoringError(
+            f"semantic_family {family!r} is not authorable in this tranche because {reason}. "
+            + TRANCHE_LOCAL_VALID_EMPTY_CEILING_NOTE)
+
+    # Repair 4: POSITIVE allowlist per family, not a substring blacklist.
+    allowed_roles = TRANCHE_LOCAL_FAMILY_PARTICIPANT_ROLE_MAP.get(family, ())
     roles = tuple(_text(x, "participant_roles") for x in participant_roles)
     if not roles or len(set(roles)) != len(roles):
         raise SubstrateAuthoringError("participant_roles must be non-empty and duplicate-free")
     for role in roles:
+        if role not in allowed_roles:
+            raise SubstrateAuthoringError(
+                f"participant role {role!r} is not in the governed role allowlist for family "
+                f"{family!r} {list(allowed_roles)}. " + TRANCHE_LOCAL_PARTICIPANT_ROLE_ALLOWLIST_NOTE)
+        # Defence in depth only; the allowlist above is the authority ceiling.
         _refuse_if_actor_semantic_role(role, "participant_roles")
         _refuse_if_forbidden_vocabulary(role, "participant_roles")
     if participant_order_policy not in {"ORDERED", "UNORDERED"}:
@@ -657,6 +768,20 @@ def author_governed_rule(*, authority_id: str, authority_version: str,
         raise SubstrateAuthoringError("result_contract_ref kind is not the frozen M3 binding kind")
     if binding_ref.get("content_hash") != result_contract.binding["binding_content_hash"]:
         raise SubstrateAuthoringError("result_contract_ref content_hash does not commit to its binding")
+    # Repair 7: object_id consistency at AUTHORING, not only at the M3 seam. The ref must
+    # resolve to exactly the binding it claims, so a ref relabelled onto another binding
+    # cannot be authored even if its content_hash were somehow consistent.
+    binding = result_contract.binding
+    if binding_ref.get("object_id") != f"{binding['binding_id']}@{binding['binding_version']}":
+        raise SubstrateAuthoringError(
+            "result_contract_ref object_id does not resolve to its binding id@version")
+    # Repair 7: every admitted schema class must name the family that authorizes it, so a
+    # class cannot be bound to a family this tranche does not author.
+    bound_class = binding["result_schema"]["semantic_class"]
+    if TRANCHE_LOCAL_ADMITTED_SCHEMA_CLASS_FAMILY_MAP.get(bound_class) != family:
+        raise SubstrateAuthoringError(
+            f"result_schema semantic_class {bound_class!r} is not the class authorized by "
+            f"family {family!r}; class and family must agree")
     bound_rule_id = result_contract.binding["bound_rule_id"]
     bound_rule_version = result_contract.binding["bound_rule_version"]
     if bound_rule_id != _text(rule_id, "rule_id") or bound_rule_version != _text(rule_version, "rule_version"):
@@ -707,8 +832,11 @@ def author_governed_rule(*, authority_id: str, authority_version: str,
         "rule_id", "rule_version", "rule_content_hash"))
     return GovernedRule(
         rule=_freeze(rule), rule_key=key,
-        result_contract=result_contract.binding,
-        result_contract_ref=result_contract.binding_ref,
+        # Repair 7: deep-freeze the stored binding here too, so immutability does not
+        # wait for registry build. A hand-built ResultContractBinding that was never
+        # frozen by the validated constructor is frozen at this boundary.
+        result_contract=_freeze(result_contract.binding),
+        result_contract_ref=MappingProxyType(dict(binding_ref)),
         semantic_family=family,
     )
 
@@ -737,6 +865,22 @@ class V556RuleMaterialRegistry:
             if r.semantic_family not in SUPPORTED_FAMILIES:
                 raise SubstrateAuthoringError(
                     f"registry build refuses non-frozen semantic_family {r.semantic_family!r}")
+            # Repair 2: enforced at REGISTRY BUILD as well as at authoring, so a
+            # hand-constructed GovernedRule cannot bypass the valid-empty ceiling.
+            if r.semantic_family not in TRANCHE_LOCAL_AUTHORABLE_FAMILIES:
+                raise SubstrateAuthoringError(
+                    f"registry build refuses authorable-in-tranche family "
+                    f"{r.semantic_family!r}; it is a required-valid-empty family. "
+                    + TRANCHE_LOCAL_VALID_EMPTY_CEILING_NOTE)
+            # Repair 4: re-check the role allowlist at build, so a hand-constructed rule
+            # cannot carry an unlisted participant role into GOVERNED_RULES_PRESENT.
+            allowed_roles = TRANCHE_LOCAL_FAMILY_PARTICIPANT_ROLE_MAP.get(r.semantic_family, ())
+            for role in _plain(r.rule).get("participant_roles", ()):
+                if role not in allowed_roles:
+                    raise SubstrateAuthoringError(
+                        f"registry build refuses participant role {role!r} outside the governed "
+                        f"allowlist for {r.semantic_family!r}. "
+                        + TRANCHE_LOCAL_PARTICIPANT_ROLE_ALLOWLIST_NOTE)
             # R1: re-validate embedded material before it can become GOVERNED_RULES_PRESENT.
             validate_result_contract_binding(r.result_contract)
             rule_plain = _plain(r.rule)
@@ -805,6 +949,24 @@ class V556RuleMaterialRegistry:
             "actor_indexing_modes": list(TRANCHE_LOCAL_ACTOR_INDEXING_MODES),
             "authorized_interaction_relation_kinds": list(AUTHORIZED_INTERACTION_RELATION_KINDS),
             "td_r03_non_inferable_f1_premise_kinds": list(TD_R03_NON_INFERABLE_F1_PREMISE_KINDS),
+            "tranche_local_authorable_families": list(TRANCHE_LOCAL_AUTHORABLE_FAMILIES),
+            "tranche_local_valid_empty_required_families":
+                list(TRANCHE_LOCAL_VALID_EMPTY_REQUIRED_FAMILIES),
+            "tranche_local_valid_empty_ceiling_note": TRANCHE_LOCAL_VALID_EMPTY_CEILING_NOTE,
+            "tranche_local_family_participant_role_map":
+                {k: list(v) for k, v in TRANCHE_LOCAL_FAMILY_PARTICIPANT_ROLE_MAP.items()},
+            "tranche_local_participant_role_allowlist_note":
+                TRANCHE_LOCAL_PARTICIPANT_ROLE_ALLOWLIST_NOTE,
+            "tranche_local_admitted_schema_class_family_map":
+                dict(TRANCHE_LOCAL_ADMITTED_SCHEMA_CLASS_FAMILY_MAP),
+            "tranche_local_schema_class_withdrawal_note":
+                TRANCHE_LOCAL_SCHEMA_CLASS_WITHDRAWAL_NOTE,
+            # Repair 6: these two labels are DOCUMENTARY and are surfaced HERE only. They
+            # are deliberately NOT embedded in the emitted rule/schema/contract material,
+            # and the court asserts that absence so the claim stays exactly true.
+            "topology_canary_shape_label": TOPOLOGY_CANARY_SHAPE_LABEL,
+            "topology_canary_f2_claim": TOPOLOGY_CANARY_F2_CLAIM,
+            "illustrative_labels_are_snapshot_only": True,
         }
 
 
@@ -813,11 +975,18 @@ def validate_payload_against_participants(rule: GovernedRule,
                                           payload: Mapping[str, Any],
                                           participant_bindings: Sequence[Mapping[str, Any]],
                                           payload_route_fields: Sequence[str]) -> None:
-    """Bind payload route refs to governed participant route identities (R4).
+    """COURT/HELPER VALIDATION UTILITY -- NOT wired into the M3 seam.
 
-    TD_R03 requires exact V555 route refs by reference. A payload endpoint that is not
-    among the governed participants' ``v555_route_identity_ref`` values is refused, so
-    a payload cannot float free of the participants the rule actually governs.
+    This function binds payload route refs to governed participant route identities. It
+    is a court-side validation utility that callers and tests invoke explicitly. It is
+    NOT called by the adopted M3 seam and is NOT part of the evaluation path; the court
+    asserts both facts so no reader can mistake it for seam enforcement.
+
+    Wiring it into evaluation would require a new seam, which HQ211 forbids. TD_R03
+    requires exact V555 route refs by reference; this helper lets a court or producer
+    check that a payload endpoint is among the governed participants'
+    ``v555_route_identity_ref`` values, so a payload cannot float free of the
+    participants the rule actually governs.
     """
     rule_plain = _plain(rule.rule)
     # A governed route identity carries BOTH identifiers M3 itself commits to
@@ -957,6 +1126,13 @@ __all__ = [
     "ACTOR_INDEXED_MODE_WITHDRAWN_REASON",
     "MULTIPLICITY_POLICIES",
     "TD_R03_NON_INFERABLE_F1_PREMISE_KINDS",
+    "TRANCHE_LOCAL_AUTHORABLE_FAMILIES",
+    "TRANCHE_LOCAL_VALID_EMPTY_REQUIRED_FAMILIES",
+    "TRANCHE_LOCAL_VALID_EMPTY_CEILING_NOTE",
+    "TRANCHE_LOCAL_FAMILY_PARTICIPANT_ROLE_MAP",
+    "TRANCHE_LOCAL_PARTICIPANT_ROLE_ALLOWLIST_NOTE",
+    "TRANCHE_LOCAL_ADMITTED_SCHEMA_CLASS_FAMILY_MAP",
+    "TRANCHE_LOCAL_SCHEMA_CLASS_WITHDRAWAL_NOTE",
     "AUTHORIZED_INTERACTION_RELATION_KINDS",
     "TD_R03_CANDIDATE_RELATION_KINDS_NOT_CANONIZED",
     "BLOCKED_STRONG_NOUNS",

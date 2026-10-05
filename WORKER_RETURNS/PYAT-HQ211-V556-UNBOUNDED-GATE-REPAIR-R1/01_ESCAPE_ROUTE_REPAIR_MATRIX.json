@@ -1,0 +1,158 @@
+{
+  "schema": "PYAT_HQ211_ESCAPE_ROUTE_REPAIR_MATRIX@1.0.0",
+  "lane": "PYAT-HQ211-V556-UNBOUNDED-GATE-REPAIR-R1",
+  "worker_role": "bounded_implementation_repair_worker",
+  "commission_tip": "694b220cfbb14353c59eeec503f0ae0d9cab97bc",
+  "exact_repair_base": "3a2dcafe024b2556af1df909deb5452841e45b7c",
+  "hostile_review": "agent/reviewer-pyat-hq210-v556-final-r1 @ 46bf1ac246f51d7499bccf56e41add78779e00ad",
+  "review_disposition": "V556_REPAIR_PARTIAL__BOUNDED_REPAIR_REQUIRED",
+
+  "relationship_of_repair_base_to_commission_tip": {
+    "repair_base_is_ancestor_of_commission_tip": true,
+    "commits_between": 1,
+    "only_intervening_commit": "694b220cfbb14353c59eeec503f0ae0d9cab97bc HQ211 commission bounded V556 UNBOUNDED gate repair",
+    "production_code_diff_between_base_and_tip": "NONE - verified with git diff --name-only over rawlsing_next/",
+    "consequence": "Repairing at the commissioned tip repairs exactly the repair-base code state. No code drift between the two."
+  },
+
+  "root_cause_confirmed_at_source": {
+    "finding": "The escape route is not a missing check; it is an affirmatively PERMISSIVE sentinel that M3 honours.",
+    "m3_string_leaf": {
+      "ref": "rawlsing_next/m3_v556_higher_order_structural.py:655-660",
+      "verbatim_behaviour": "if node_type == \"string\": ... allowed = node[\"allowed_values_or_unbounded_marker\"]; if allowed != \"UNBOUNDED\" and value not in set(allowed): raise",
+      "consequence": "when the declaration is UNBOUNDED, M3 imposes NO constraint on the value"
+    },
+    "m3_exact_ref_kind": {
+      "ref": "rawlsing_next/m3_v556_higher_order_structural.py:661-669",
+      "verbatim_behaviour": "if node_type == \"exact_ref\": ... kinds = node[\"allowed_kinds_or_unbounded_marker\"]; if kinds != \"UNBOUNDED\" and ref[\"kind\"] not in set(kinds): raise",
+      "consequence": "when the declaration is UNBOUNDED, M3 imposes NO constraint on the kind"
+    },
+    "m3_payload_copy": {
+      "ref": "rawlsing_next/m3_v556_higher_order_structural.py:931",
+      "verbatim_behaviour": "\"semantic_payload\": payload",
+      "consequence": "the unconstrained payload is copied verbatim into the SUPPORTED positive object"
+    },
+    "seam_is_correct_and_was_not_the_defect": "M3 behaved exactly as specified. The defect was that the substrate offered it an UNBOUNDED declaration and then claimed closed-governance in prose. The seam is byte-identical before and after this repair."
+  },
+
+  "escape_routes": [
+    {
+      "id": "ER-1",
+      "review_finding": "HF-1",
+      "repair": "Repair 1",
+      "route": "semantic STRING leaf declared UNBOUNDED carries a blocked strong noun into a SUPPORTED object",
+      "before_observed": {"decision_state": "SUPPORTED", "payload": "{\"label\": \"DOMINATION\"}"},
+      "after_observed": {"outcome": "REFUSED", "stage": "schema_authoring"},
+      "mechanism": "UNBOUNDED is no longer a legal value for a semantic string leaf. _node_string refuses both the explicit sentinel and omission, and _validate_authored_schema_node refuses the sentinel in the declaration so a hand-authored mapping cannot evade it.",
+      "machinery_level": true
+    },
+    {
+      "id": "ER-2",
+      "review_finding": "HF-1",
+      "repair": "Repair 1",
+      "route": "ExactRef-KIND leaf declared UNBOUNDED carries a blocked kind into a SUPPORTED object",
+      "before_observed": {"decision_state": "SUPPORTED", "payload_kind": "HEGEMONY"},
+      "after_observed": {"outcome": "REFUSED", "stage": "schema_authoring"},
+      "mechanism": "UNBOUNDED is no longer a legal value for a semantic exact-ref kind leaf, at both the constructor and the validating gate.",
+      "machinery_level": true
+    },
+    {
+      "id": "ER-3",
+      "review_finding": "HF-1 / HF-2",
+      "repair": "Repair 1",
+      "route": "numeric magnitude string rides a semantic leaf",
+      "before_observed": {"decision_state": "SUPPORTED", "payload": "{\"magnitude\": \"0.87\"}"},
+      "after_observed": {"outcome": "REFUSED, at both the unbounded declaration and end-to-end"},
+      "mechanism": "The only route a magnitude string had was an UNBOUNDED leaf, which is now illegal. A closed list is enforced by M3 at evaluation, so an undeclared magnitude cannot pass either.",
+      "machinery_level": true
+    },
+    {
+      "id": "ER-4",
+      "review_finding": "HF-1 (gate-evasion variant required by HQ211 Repair 1)",
+      "repair": "Repair 1",
+      "route": "caller hand-authors the schema mapping instead of calling the helper constructors",
+      "before_observed": {"decision_state": "SUPPORTED", "note": "the helper constructors defaulted the marker to UNBOUNDED, so hand-authoring and calling were equally permissive"},
+      "after_observed": {"outcome": "REFUSED at author_closed_result_schema, before any positive object can be assembled"},
+      "mechanism": "_validate_authored_schema_node is the single validating gate and it runs on the node mapping itself, not on a constructor provenance flag. The gate executes in author_closed_result_schema, author_result_contract_binding and validate_result_contract_binding, and therefore in author_governed_rule and V556RuleMaterialRegistry.build.",
+      "gate_runs_before_positive_assembly": true
+    },
+    {
+      "id": "ER-5",
+      "review_finding": "HF-3",
+      "repair": "Repair 2",
+      "route": "generic positive authoring of V556_INTERACTION_RELATION",
+      "before_observed": {"registered": true, "registry_state": "GOVERNED_RULES_PRESENT", "populated_families": ["V556_INTERACTION_RELATION"]},
+      "after_observed": {"outcome": "REFUSED at author_governed_rule AND at registry build"},
+      "mechanism": "TRANCHE_LOCAL_AUTHORABLE_FAMILIES is enforced at authoring and independently re-enforced at registry build, so the valid-empty claim is a machinery ceiling rather than a property of the shipped instance.",
+      "machinery_level": true
+    },
+    {
+      "id": "ER-6",
+      "review_finding": "HF-3",
+      "repair": "Repair 2",
+      "route": "generic positive authoring of V556_ATTRACTOR_PREREQUISITE",
+      "before_observed": {"registered": true, "registry_state": "GOVERNED_RULES_PRESENT", "populated_families": ["V556_ATTRACTOR_PREREQUISITE"]},
+      "after_observed": {"outcome": "REFUSED at author_governed_rule AND at registry build"},
+      "mechanism": "Same ceiling as ER-5. No governed attractor-prerequisite rule authority exists and none was fabricated.",
+      "machinery_level": true
+    },
+    {
+      "id": "ER-7",
+      "review_finding": "HF-5",
+      "repair": "Repair 4",
+      "route": "actor/person-semantic participant roles accepted because the refusal was substring-token based",
+      "before_observed": {"accepted": ["SELF_MODEL", "IDENTITY_COMMITMENT", "INNER_STATE", "SUBJECTIVE_MEANING", "WORLDVIEW", "TEMPERAMENT", "STRUCTURAL_SELF", "HABITUS", "DISPOSITION", "ORIENTATION"], "accepted_count": 10, "refused_count": 0},
+      "after_observed": {"accepted_count": 0, "refused_count": 10},
+      "mechanism": "Replaced by a POSITIVE per-family participant-role allowlist derived only from already-authorized current material (the two roles the topology canary uses). An allowlist refuses the whole complement, so no further vocabulary can widen it. The substring blacklist is retained as defence in depth and is no longer the ceiling.",
+      "machinery_level": true,
+      "vocabulary_invented": "NONE - no role name was added to make the API look generic"
+    },
+    {
+      "id": "ER-8",
+      "review_finding": "HF-7",
+      "repair": "Repair 7",
+      "route": "result_contract_ref object_id could disagree with the binding it claims",
+      "before_observed": {"checked_at_authoring": "kind and content_hash only"},
+      "after_observed": {"outcome": "REFUSED at author_governed_rule"},
+      "mechanism": "object_id must equal binding_id@binding_version, checked at authoring rather than only at the seam."
+    },
+    {
+      "id": "ER-9",
+      "review_finding": "HF-7",
+      "repair": "Repair 7",
+      "route": "actor-named result classes admitted while the corresponding roles are excluded",
+      "before_observed": {"admitted": ["OBJECTIVE_ACTOR_POSITION", "OBJECTIVE_ACTOR_OPPORTUNITY"], "problem": "the tranche excludes OBJECTIVE_ACTOR_INDEX / POSITION / OPPORTUNITY, so the admitted class was incoherent with the role ceiling and nothing linked a class to a family"},
+      "after_observed": {"withdrawn": ["OBJECTIVE_ACTOR_POSITION", "OBJECTIVE_ACTOR_OPPORTUNITY"], "linked": "every admitted class now names the family that authorizes it, and a mismatch is refused"},
+      "mechanism": "TRANCHE_LOCAL_ADMITTED_SCHEMA_CLASS_FAMILY_MAP plus an authoring-time class/family agreement check."
+    },
+    {
+      "id": "ER-10",
+      "review_finding": "HF-7",
+      "repair": "Repair 7",
+      "route": "a hand-built ResultContractBinding was stored unfrozen, so immutability waited for registry build",
+      "before_observed": {"stored_as": "result_contract.binding, unfrozen on the hand-built path"},
+      "after_observed": {"stored_as": "_freeze(result_contract.binding)", "verified": "assignment into the stored binding and into its nested schema both raise TypeError"},
+      "mechanism": "deep-freeze applied at the GovernedRule construction boundary as well as in the validated constructor."
+    }
+  ],
+
+  "escape_routes_closed_count": 10,
+  "escape_routes_remaining": 0,
+
+  "explicitly_not_changed": {
+    "structural_cardinality_unbounded": "The UNBOUNDED prohibition is scoped to semantic VALUE and KIND leaves, exactly as HQ211 Repair 1 specifies. Structural cardinality UNBOUNDED remains lawful where otherwise lawful: _node_array max_items and author_governed_rule maximum_cardinality_or_unbounded_marker both still accept it. The truthful dyadic topology maximum of 2 is unchanged.",
+    "m3_seam": "byte-identical",
+    "m2_seam": "byte-identical",
+    "adopted_interaction_relation_kinds": "still ()",
+    "attractor_population": "none",
+    "new_semantic_families": "none",
+    "new_state_families": "none",
+    "fabricated_relation_kind": "none",
+    "attractor_prerequisite": "still unfilled",
+    "multiplicity_vocabulary": "unchanged frozen two-value vocabulary",
+    "m3_hash_mirroring": "unchanged"
+  },
+
+  "architecture_reopen": "NOT REQUIRED and not performed. No conflict with adopted authority was found; the repair is confined to the substrate module and its court.",
+  "seam_edits": "NONE. m3_v556_higher_order_structural.py and m2_v555_atomic_route.py verified byte-identical by sha256 before and after, and unmodified in git against the commissioned tip."
+}
