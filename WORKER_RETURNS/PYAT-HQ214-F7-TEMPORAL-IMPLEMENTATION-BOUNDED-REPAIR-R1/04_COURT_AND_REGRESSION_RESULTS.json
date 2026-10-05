@@ -1,0 +1,80 @@
+{
+  "schema": "PYAT_HQ214_F7_COURT_REGRESSION_RECEIPT@1",
+  "code_bearing_commit": "a93352512aa9290112bff1eb680c54d43345078f",
+  "focused_court": {
+    "file": "rawlsing_next/tests/test_pre553_temporal_comparability.py",
+    "before": 49,
+    "after": 83,
+    "passed": 83,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "run_twice": true
+  },
+  "blocking_finding_witnesses": {
+    "A1_required_authorities_fail_closed": "test_witness_a1_every_missing_authority_fails_closed (7 parameters, one per required authority)",
+    "A1b_not_silent": "test_witness_a1_removing_uncertainties_is_not_silent",
+    "A2_operation_and_use_scope": "test_witness_a2_unrelated_operation_authority_refuses, test_witness_a2_foreign_governed_use_scope_refuses",
+    "hash_mismatch_reachable": "test_witness_hash_mismatch_is_a_reachable_reason",
+    "scope_mismatch_reachable": "test_witness_a2_unrelated_operation_authority_refuses",
+    "cardinality": "test_witness_three_or_more_anchors_refuse_pre_receipt, test_witness_each_anchor_binds_one_observation, test_witness_fewer_than_two_anchors_is_the_contract_refusal_state"
+  },
+  "major_finding_witnesses": {
+    "F_DELTA_01": "test_witness_delta_is_derived_from_the_bound_quantity_surface, test_witness_caller_cannot_mint_a_delta, test_witness_quantity_surface_must_match_the_bound_measure",
+    "F_REQ_01": "test_witness_comparability_requirements_ref_is_required, test_witness_comparability_requirements_reaches_provenance",
+    "F_RCPT_01": "test_witness_receipt_carries_every_accepted_contract_field, test_witness_receipt_field_set_is_closed",
+    "F_PROV_01": "test_witness_provenance_carries_operation_and_projection_rule",
+    "F_PRIOR_01": "test_witness_prior_f7_state_drives_the_terminal_state (5 parameters), test_witness_prior_map_is_not_asserted_against_itself",
+    "F_XU_01": "test_witness_cross_universe_is_derived_from_bound_universes, test_witness_equivalence_authority_must_cover_the_actual_pair",
+    "F_BACKFILL_01": "test_backfill_guard_is_proven_live_not_self_described (mutates the frozen surface)",
+    "F_NONE_01": "test_resolve_required_authority_never_raises_without_registry, test_cross_universe_request_without_registry_is_typed"
+  },
+  "vacuous_court_defects_repaired": {
+    "no_broad_exception_catch": "test_no_broad_exception_catch_in_this_court (regex-built pattern so it cannot match its own prose)",
+    "public_object_check_not_vacuous": "test_no_public_object_family_registration_really_absent (asserts the registry is non-empty first)",
+    "state_families_check_not_vacuous": "test_no_state_families_widening_really_absent (asserts the registry is non-empty first)",
+    "prior_map_not_self_referential": "test_witness_prior_map_is_not_asserted_against_itself (drives derivation and requires each mapped value to be observed)",
+    "no_decorative_authority_fixtures": "_full_registry supplies every required authority and tests assert absence changes the outcome"
+  },
+  "regression_slice": {
+    "files": [
+      "test_pre553_empirical_objects_authority.py",
+      "test_pre553_authority_maintenance.py",
+      "test_pre553_source_relations.py",
+      "test_pre553_source_equivalence.py",
+      "test_pre553_component_authority_vector.py"
+    ],
+    "baseline_commit": "c3db090ff (HQ211 head)",
+    "baseline_passed": 159,
+    "after_passed": 159,
+    "failure_id_set_baseline": 0,
+    "failure_id_set_after": 0,
+    "failure_id_delta": [],
+    "regression_introduced": false
+  },
+  "combined": {
+    "focused_plus_regression": 242,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0
+  },
+  "cross_process_replay_stability": {
+    "seeds": [
+      0,
+      1,
+      12345
+    ],
+    "receipt_hash_prefix_stable": "d3d7f1d8d323635b23d45616",
+    "stable": true
+  },
+  "environment": {
+    "interpreter": "/tmp/c1-01-r8-release-spine-venv/bin/python",
+    "python_version": "3.12.14",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit",
+    "classification": "independently reproduced on a shared local qualification interpreter - NOT governed certification",
+    "governed_f7_qualification_environment_proven": false,
+    "claim": "exact and truthful; no governed-environment provenance is claimed"
+  }
+}
