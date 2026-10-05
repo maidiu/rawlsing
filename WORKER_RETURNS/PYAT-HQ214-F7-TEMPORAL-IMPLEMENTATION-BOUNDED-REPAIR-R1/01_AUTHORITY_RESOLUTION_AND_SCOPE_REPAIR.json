@@ -1,0 +1,72 @@
+{
+  "schema": "PYAT_HQ214_F7_AUTHORITY_RESOLUTION_SCOPE_REPAIR@1",
+  "code_bearing_commit": "a93352512aa9290112bff1eb680c54d43345078f",
+  "repair_base": "c3db090ff0503963e7914fee740c4b1d17e66cde",
+  "hostile_review": "4478e949eb92ec411c5dec9878bb4f23b5cb2c01",
+  "accepted_contract": "c57a96897788108db7b194e4e51691d1ca8ab729",
+  "pre_repair_bypass_replay": {
+    "method": "isolated copy of the caf6644a module driven with its own declared field shape",
+    "A1_partial_registry": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED / INCREASE, authority_state_provenance=()",
+    "A1b_full_registry": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED / INCREASE, provenance identical",
+    "A2_unrelated_operation_authority": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED / INCREASE",
+    "CARD_three_anchors": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED / INCREASE",
+    "REQ_requirements_absent": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED / INCREASE",
+    "conclusion": "the HQ213 fail-open findings are objectively confirmed; all five bypasses minted a directional claim with empty provenance"
+  },
+  "post_repair": {
+    "A1_partial_registry": "TEMPORAL_INSUFFICIENT_AUTHORITY (typed ABSENT per authority)",
+    "A2_unrelated_operation": "AUTHORITY_SCOPE_MISMATCH reachable",
+    "CARD_three_anchors": "TemporalComparabilityInputRefusal before any receipt",
+    "REQ_requirements_absent": "TemporalComparabilityInputRefusal"
+  },
+  "repair_1_every_required_authority_resolved": {
+    "authorities": [
+      "TEMPORAL_COMPARABILITY",
+      "TEMPORAL_EVIDENCE + order basis",
+      "WEIGHT_DESIGN_ESTIMAND (estimand)",
+      "WEIGHT_DESIGN_ESTIMAND (measure)",
+      "TARGET_USE_PERMISSION",
+      "UNCERTAINTY_METHOD",
+      "REPLAY_PROTOCOL",
+      "NATIVE_CANONICAL_MAPPING_HARMONIZATION when required",
+      "SOURCE_EQUIVALENCE when cross-universe"
+    ],
+    "ref_string_presence_is_sufficient": false,
+    "outcomes": [
+      "POSITIVE",
+      "ABSENT",
+      "CONFLICT",
+      "AUTHORITY_HASH_MISMATCH",
+      "AUTHORITY_SCOPE_MISMATCH",
+      "OUT_OF_SCOPE"
+    ],
+    "every_resolution_recorded_in_provenance": true
+  },
+  "repair_2_scope": {
+    "operation_scoped": true,
+    "governed_use_scoped": true,
+    "authorized_comparison_operation": "TEMPORAL_BOUND_QUANTITY_DIFFERENCE",
+    "AUTHORITY_HASH_MISMATCH_reachable": true,
+    "AUTHORITY_SCOPE_MISMATCH_reachable": true,
+    "hash_diagnostic": "same authority id/version with a different content hash is an immutable-integrity violation, not mere absence"
+  },
+  "repair_3_cardinality": {
+    "anchors": 2,
+    "observations": 2,
+    "universes": 2,
+    "observation_bound_to_each_anchor": true,
+    "three_or_more": "pre-receipt typed refusal",
+    "fewer_than_two": "contract refusal state TEMPORAL_INSUFFICIENT_ANCHORS, not a raise"
+  },
+  "repair_4_requirements": {
+    "comparability_requirements_ref_required": true,
+    "resolved": true,
+    "surfaces_enter_state_selection": true
+  },
+  "repair_8_cross_universe": {
+    "caller_boolean_removed": "pair_crosses_source_universes no longer exists",
+    "derivation": "material-derived from bound per-anchor source_universe_refs",
+    "equivalence_must_cover_the_actual_pair": true,
+    "temporal_module_mints_equivalence": false
+  }
+}

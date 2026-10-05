@@ -1,0 +1,82 @@
+{
+  "schema": "PYAT_HQ214_F7_RECEIPT_STATE_DELTA_REPAIR@1",
+  "code_bearing_commit": "a93352512aa9290112bff1eb680c54d43345078f",
+  "repair_5_delta": {
+    "caller_minted_delta_input_removed": "signed_delta no longer exists as an input",
+    "derivation": "exact signed difference later_value - earlier_value over the bound quantity surface",
+    "quantity_must_match_bound_measure": true,
+    "exact_numeric_types": [
+      "int",
+      "Decimal",
+      "Fraction"
+    ],
+    "floats_refused": true,
+    "no_deadband_tolerance_epsilon": true,
+    "tiny_exact_delta_is_not_zero": true
+  },
+  "repair_6_receipt_fields": {
+    "count": 18,
+    "closed": true,
+    "additional_fields_forbidden": true,
+    "fields": [
+      "receipt_id",
+      "temporal_identity_contract_ref",
+      "anchor_refs",
+      "temporal_order_disposition",
+      "temporal_order_basis_ref",
+      "comparability_status",
+      "comparability_requirement_results",
+      "relation_status",
+      "direction_claim",
+      "quantity_surface",
+      "delta",
+      "non_delta_presence",
+      "uncertainty_state",
+      "intervening_span_state",
+      "relation_state",
+      "relation_state_reason",
+      "governed_use_id",
+      "authority_snapshot_refs",
+      "provenance"
+    ],
+    "contract_field_name_delta_restored": "the contract names it delta, not signed_delta",
+    "provenance_includes": [
+      "comparability_requirements_ref",
+      "comparison_operation",
+      "canonical_projection_rule",
+      "cross_universe derivation and bound universes",
+      "authority_resolutions",
+      "observation_binding",
+      "prior_f7_state",
+      "declared_comparability_surfaces"
+    ]
+  },
+  "repair_7_prior_f7": {
+    "inert_mapping_removed": true,
+    "participates_in_derivation": true,
+    "mapped_to_observed_reasons": true,
+    "probe_only_yields_no_receipt": true
+  },
+  "hq214_adjudication_A": {
+    "thirteenth_state_added": false,
+    "ordered_basis_without_lawful_delta": "typed pre-receipt refusal, no receipt minted",
+    "vocabulary_still_closed_at": 12
+  },
+  "hq214_adjudication_B": {
+    "NOT_COMPARABLE_states": 9,
+    "COMPARABLE_states": 3,
+    "comparable_states": [
+      "TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION",
+      "TEMPORAL_COMPARABLE_NO_DIRECTION",
+      "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    ]
+  },
+  "hq214_adjudication_C": {
+    "no_basis_isolated": "TEMPORAL_ORDER_UNAUTHORIZED / NO_PERMITTED_ORDER_BASIS_APPLIES",
+    "no_basis_with_higher_failure": "higher-precedence state emitted; no-basis observation retained in provenance",
+    "raises_on_that_combination": false
+  },
+  "F_NONE_01": {
+    "missing_registry": "typed ABSENT resolution record, never AttributeError"
+  }
+}
