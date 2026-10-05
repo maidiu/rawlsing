@@ -1,3 +1,43 @@
+# HQ208 active frontier — 2026-10-05
+
+Current checkpoint:
+`HQ_HANDOFF/checkpoints/20261005-PYAT-HQ208-SERVICE-ADOPTED-F7-HD-FRONTIER-R1/`
+
+Semantic HQ208 decision:
+`1f47063c3205a45888b3c55e81e7485943ed1390`
+
+Service-source applicability is now adopted on current control at the source-free authority grain:
+- implementation `e7d3598494472a9aea7dd2c69f6aacb11585905c`
+- independent hostile review `e3fec8be5d4c192d2d6f86059d9e1ee7a683fbd1`
+- authority ceiling: `ADMISSIBLE_SET_ONLY__RANKING_AND_SELECTION_NOT_AUTHORIZED`
+- no ranking, selection, pooling, backfill, currentness, target-use grant, F8 transform, raw/live/warrant or actor authority.
+
+F7 documentary contract has returned but is NOT adopted:
+`agent/rabochii-pyat-hq206-f7-contract-r1 @ 19fd6f6e9f3e24c716310335325cef4c75e6fa56`
+
+Active parallel successors:
+- F7 independent hostile review:
+  `agent/reviewer-pyat-hq208-f7-temporal-contract-r1 @ 0c74e4beeb29967b4ea9a0599057a1d658f33b16`
+- H-D/F8 service-source rereconciliation:
+  `agent/rabochii-pyat-hq208-hd-f8-rereconciliation-r1 @ 372552570b4c3ec19f91158abc9774e3cf21e522`
+
+Still completed locally but NOT visible on origin; do not rerun:
+- R9 repair `agent/rabochii-pyat-hq207-r9-repair-r1 @ 70ca48345d97f26ac1d7061df2138ab3f14c474c`
+- C1 prune repair `agent/rabochii-pyat-hq206-c1-prune-r1 @ 32d86985b8af3f2ee175f5a170ee21c7101785b6`
+- V556 repair `agent/rabochii-pyat-hq206-v556-repair-r1 @ 1be02e9505df56291f61e46a79b37e49e8afdf9b`
+
+Existing workers should push their substantive local returns, re-fetch, and report exact remote tips.
+
+Binding F8 law remains:
+`F8_DOES_NOT_TRANSFORM_POSSIBILITY_GEOMETRY`
+
+Current completeness wording:
+`NO_BROAD_MISSING_ONTOLOGY_CURRENTLY_INDICATED__BOUNDED_AUTHORITY_IMPLEMENTATION_QUALIFICATION_RESIDUALS_REMAIN`
+
+No Astra referral. All locator/warrant/raw/live/C7/actor holds remain.
+
+---
+
 # HQ203 residual reconciliation — 2026-10-04
 
 Terminal-backward audit:
