@@ -1,181 +1,408 @@
 {
-  "schema": "PYAT_HQ204_ACCEPTED_GRAIN_RECONSTRUCTION@1.0.0",
-  "lane": "PYAT-HQ204-LINEAGE-R1",
-  "sub_lane": "C1 accepted-lineage surgical reconciliation (HQ204 authorized frontier lane 2)",
-  "startup_sha": "50fdc737deeb21c88f6f07a326e76680481dc753",
-  "current_control_base": "ff4f06954824a3a5699bc5c1c9bd68cb3c5b4146",
-  "hq168_accepted_integration": "149c3d2636160d8de9b5a8be0c8b87195158077d",
-  "hq168_accepted_result": "063ee8b77fc4e05c37456ff0168e946247f919ef",
-  "hq168_tested_code_ref": "933a3d31aa961719c73e6ce7eebcfe40bc8cd45e",
-  "final_independent_review": "c8ce0ea81a2165f37d566f37de788fecedf85051",
-  "method": {
-    "acceptance_inferred_from_side_branch_presence": false,
-    "acceptance_source": "exact production owner blob SHAs declared in the HQ168 adoption document, independently re-confirmed by the final integration review section2_blob_conservation",
-    "note": "Every accepted blob was verified against git ls-tree at the accepted result BEFORE classification. Two independent authorities (HQ168 adoption and the final review) name the identical 5-blob set.",
-    "divergence_measured": {
-      "merge_base": "87029d349c8a7385cb673060a8e5decd4eb528ff",
-      "merge_base_subject": "HQ163 advance LATEST to Astra identity-succession escalation",
-      "c1_only_commits": 183,
-      "control_only_commits": 256,
-      "c1_is_ancestor_of_control": false,
-      "control_is_ancestor_of_c1": false
-    }
-  },
-  "production_owner_set": [
-    {
-      "path": "rawlsing_next/pre553_analytical_composition.py",
-      "hq168_declared_blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
-      "verified_at_accepted_result": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
-      "control_blob_before": null,
-      "classification": "ABSENT__MUST_IMPORT",
-      "integrated_blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
-      "byte_identical_to_accepted": true
-    },
-    {
-      "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
-      "hq168_declared_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
-      "verified_at_accepted_result": "23167aa25291fb148b1e3cf210ac33fe7769b783",
-      "control_blob_before": null,
-      "classification": "ABSENT__MUST_IMPORT",
-      "integrated_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
-      "byte_identical_to_accepted": true
-    },
-    {
-      "path": "rawlsing_next/pre553_analytical_state_and_route.py",
-      "hq168_declared_blob": "3a5e3db8a0897900d0b2606813bda7c3f586d46e",
-      "verified_at_accepted_result": "3a5e3db8a0897900d0b2606813bda7c3f586d46e",
-      "control_blob_before": null,
-      "classification": "ABSENT__MUST_IMPORT",
-      "integrated_blob": "3a5e3db8a0897900d0b2606813bda7c3f586d46e",
-      "byte_identical_to_accepted": true
-    },
-    {
-      "path": "rawlsing_next/pre553_analytical_replay_dependency.py",
-      "hq168_declared_blob": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
-      "verified_at_accepted_result": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
-      "control_blob_before": null,
-      "classification": "ABSENT__MUST_IMPORT",
-      "integrated_blob": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
-      "byte_identical_to_accepted": true
-    },
-    {
-      "path": "rawlsing_next/pre553_authority_maintenance.py",
-      "hq168_declared_blob": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
-      "verified_at_accepted_result": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
-      "control_blob_before": "ac7f3a013129bc148debf8f011597971a2c99442",
-      "classification": "COMPATIBLE_CURRENT_SUCCESSOR",
-      "integrated_blob": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
-      "byte_identical_to_accepted": true,
-      "classification_basis": {
-        "shared_ancestry": "both descend from blob-publication commit 215932d08; the accepted side then applied three coherent C1-03R commits (eb02332c9 generic noncurrent lifecycle owner outcome, 7f6449375 four reviewed boundaries, c690bb0b1 zero-release NOT_GOVERNED), while control took a different path (dc2654291, f5673a55)",
-        "line_delta": "control -> accepted is 437 added lines and 9 removed lines",
-        "the_9_removed_lines_are_relocated_not_lost": "8 of 9 are the same guard statements relocated into the new outcome-based receipt constructor; verified by exact string presence in both versions",
-        "the_one_substantive_difference_is_a_generalization_not_a_conflict": "control enforces 'set(recompilation_pairs) == affected_keys', forcing EVERY affected dependent to carry a recompilation pair. The accepted version replaces this with a strictly stronger outcome-based invariant: every affected dependent requires exactly one OUTCOME (line ~776 'every affected dependent requires exactly one outcome'), an affected dependent may not receive both a replacement and a noncurrent disposition, and an outcome naming a dependent outside the affected set is refused. Exact coverage of the affected set is therefore still enforced, and the disjointness guard is preserved (line ~787).",
-        "why_this_is_not_an_owner_collision": "the accepted version is a functional SUPERSET of the control version. Control is a strictly weaker earlier state of the SAME owner, not a competing owner. There is no semantic conflict to adjudicate, so the STOP condition was not triggered.",
-        "restored_capability_absent_from_control": [
-          "NONCURRENT_DISPOSITION_NO_LAWFUL_REPLACEMENT and NONCURRENT_DISPOSITIONS",
-          "DEPENDENT_LIFECYCLE_CURRENT / EXPLICIT_NONCURRENT / NOT_GOVERNED",
-          "INVALIDATION_RECEIPT_NONCURRENT_SCHEMA (PRE553_AUTH40_SEMANTIC_AUTHORITY_INVALIDATION_NONCURRENT@1.0.0)",
-          "NoncurrentDependentOutcome dataclass"
-        ]
-      }
-    }
-  ],
-  "dependency_closure": [
-    {"path": "rawlsing_next/pre553_c11_repository.py", "classification": "SAME_BLOB_ALREADY_PRESENT"},
-    {"path": "rawlsing_next/pre553_discovery_adaptive.py", "classification": "SAME_BLOB_ALREADY_PRESENT"},
-    {"path": "rawlsing_next/pre553_discovery_exact.py", "classification": "SAME_BLOB_ALREADY_PRESENT"},
-    {"path": "rawlsing_next/pre553_empirical_authority.py", "classification": "SAME_BLOB_ALREADY_PRESENT"},
-    {"path": "rawlsing_next/pre553_empirical_objects.py", "classification": "SAME_BLOB_ALREADY_PRESENT"},
-    {"path": "rawlsing_next/pre553_empirical_query.py", "classification": "SAME_BLOB_ALREADY_PRESENT"},
-    {"path": "rawlsing_next/pre553_recursive_handoff.py", "classification": "SAME_BLOB_ALREADY_PRESENT"},
-    {"path": "rawlsing_next/pre553_structural_admission.py", "classification": "SAME_BLOB_ALREADY_PRESENT"},
-    {"path": "rawlsing_next/source_backed_positioned_subject_possibility.py", "classification": "SAME_BLOB_ALREADY_PRESENT",
-     "collision_note": "This module is the highest-risk collision candidate because it also concerns positioned-subject possibility. It is NOT a competitor. The accepted provider's own ownership law names it as the accepted PUBLIC POSSIBILITY CONSUMER: 'accepted analytical producer rawlsing_next.pre553_analytical_composition.compose_positioned_subject_possibility; accepted public possibility consumer rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility'. The provider imports it directly. Producer-upstream, consumer-downstream: complementary, same owner family."},
-    {"path": "rawlsing_next/pre553_analytical_composition.py", "classification": "ABSENT__MUST_IMPORT", "note": "also an accepted owner"},
-    {"path": "rawlsing_next/pre553_authority_maintenance.py", "classification": "COMPATIBLE_CURRENT_SUCCESSOR", "note": "also an accepted owner"}
-  ],
-  "authority_material": [
-    {"path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/", "files": 42, "control_state": "ABSENT", "classification": "ABSENT__MUST_IMPORT", "required_by": "rawlsing_next/tests/n10e_at17_successor_requal.py", "identity_crosscheck": "carries the AT07 forward 01c381d3f3c386cfc22fd2f57b8e2c244771ddf1529d4f8ab8c7b1cf41bd50dd and reverse a3bd7e85ae14babb5ac5a12b0bcc57a8cdf3eccf8f43394895903dc43aca40ca, matching the HQ168 adoption exactly, plus the immutable historical R8 identities"},
-    {"path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/", "files": 7, "control_state": "ABSENT", "classification": "ABSENT__MUST_IMPORT", "required_files": ["02_VALUE_RELATION_ORACLE.json", "03_SYNTHETIC_AUTHORITY_FREEZE.json", "04_SLICE_PROJECTION.json"]},
-    {"path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/", "files": 7, "control_state": "ABSENT", "classification": "ABSENT__MUST_IMPORT", "required_files": ["02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json"]},
-    {"path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/", "files": 7, "control_state": "ABSENT", "classification": "ABSENT__MUST_IMPORT", "required_files": ["04_CURRENT_AT07_IDENTITY_SPINE.json"]}
-  ],
-  "historical_only": [
-    {"item": "historical R8 analytical spine", "classification": "HISTORICAL_ONLY__NOT_PART_OF_ACCEPTED_GRAIN", "evidence": "HQ168 adoption: 'historical R8 preserved as historical-only evidence' and 'Historical R8 identities remain immutable historical C1-01 evidence'. The accepted-result test tree confirms no historical-R8 production module or test file is absent from current control, so nothing from the historical R8 grain needed importing. Its identities are asserted only as conservation checks."},
-    {"item": "historical failed court (434 passed / 1 failed)", "classification": "HISTORICAL_ONLY__NOT_PART_OF_ACCEPTED_GRAIN", "evidence": "HQ168 adoption: 'remains historical failed evidence and is not relabelled'. Not re-run and not imported."},
-    {"item": "9 test-support files (c1_*/n10e_* fixtures and fresh-process runners)", "classification": "HISTORICAL_ONLY_NOT_A_PRODUCTION_OWNER_BUT_REQUIRED_SUPPORT", "evidence": "these are accepted-grain TEST SUPPORT, imported at exact accepted blobs; they collect 0 tests when passed explicitly and are imported by the six analytical courts", "note": "not a production owner; listed here only to record that they were not treated as owners"}
-  ],
-  "accepted_court_reconstruction": {
-    "hq168_declared_total": 454,
-    "hq168_declared_per_file_multiset": [92, 35, 32, 17, 14, 13, 13, 8, 3, 2, 43, 57, 54, 43, 28],
-    "hq168_declared_file_count": 15,
-    "hq168_disposition": "454 passed / 0 failed / 0 errors / 0 skipped / exit 0",
-    "final_review_independent_execution": "454 passed, 0 failed, 0 errors, 0 skipped, exit 0, 77.35s",
-    "final_review_file_count_statement": "15 files, 'list built from filesystem'",
-    "exact_list_recoverable_from_documentary_record": false,
-    "why_not_directly_recoverable": "neither the HQ168 adoption nor the final review records the 15 file NAMES; only per-file counts survive, and the review states the list was built from the filesystem",
-    "reconstruction_method": "the six analytical courts were identified by exact per-file count match against HQ168's declared multiset, and the residual was resolved by identifying that the accepted dependency closure's control-resident tests sum EXACTLY to the residual",
-    "reconstructed_court": [
-      {"file": "rawlsing_next/tests/test_pre553_analytical_state_and_route.py", "collected": 92, "origin": "imported ABSENT__MUST_IMPORT"},
-      {"file": "rawlsing_next/tests/test_pre553_authority_maintenance.py", "collected": 57, "origin": "diverged shared test file; restored to accepted blob 5f9151d43ddf9da22d9ef9fb1b0c721344d8d27e"},
-      {"file": "rawlsing_next/tests/test_pre553_replay_audit.py", "collected": 54, "origin": "control-resident dependency-closure test, SAME_BLOB, untouched"},
-      {"file": "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py", "collected": 43, "origin": "imported ABSENT__MUST_IMPORT"},
-      {"file": "rawlsing_next/tests/test_pre553_empirical_possibility_provider.py", "collected": 43, "origin": "imported ABSENT__MUST_IMPORT"},
-      {"file": "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py", "collected": 35, "origin": "imported ABSENT__MUST_IMPORT"},
-      {"file": "rawlsing_next/tests/test_pre553_empirical_query.py", "collected": 32, "origin": "control-resident dependency-closure test, SAME_BLOB, untouched"},
-      {"file": "rawlsing_next/tests/test_pre553_c1_03_join.py", "collected": 28, "origin": "imported ABSENT__MUST_IMPORT"},
-      {"file": "rawlsing_next/tests/test_pre553_structural_admission.py", "collected": 17, "origin": "control-resident dependency-closure test, SAME_BLOB, untouched"},
-      {"file": "rawlsing_next/tests/test_pre553_discovery_exact.py", "collected": 14, "origin": "control-resident dependency-closure test, SAME_BLOB, untouched"},
-      {"file": "rawlsing_next/tests/test_pre553_analytical_composition.py", "collected": 13, "origin": "imported ABSENT__MUST_IMPORT"},
-      {"file": "rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py", "collected": 13, "origin": "control-resident dependency-closure test, SAME_BLOB, untouched"},
-      {"file": "rawlsing_next/tests/test_pre553_discovery_adaptive.py", "collected": 8, "origin": "control-resident dependency-closure test, SAME_BLOB, untouched"},
-      {"file": "rawlsing_next/tests/test_pre553_discovery_adaptive_admission.py", "collected": 3, "origin": "control-resident dependency-closure test, SAME_BLOB, untouched"},
-      {"file": "rawlsing_next/tests/test_pre553_recursive_handoff.py", "collected": 2, "origin": "control-resident dependency-closure test, SAME_BLOB, untouched"}
-    ],
-    "residual_arithmetic": "dependency-closure tests 32+17+14+13+8+54+3+2 = 143; accepted-grain tests 92+57+43+43+35+28+13 = 311; 143+311 = 454",
-    "multiset_match": "EXACT",
-    "reproduced_total": 454,
-    "reproduced_result": "454 passed, 0 failed, 0 errors, 0 skipped",
-    "runs": 2,
-    "deterministic": true
-  },
-  "accepted_grain_properties_proved": [
-    {"id": "P1_direct_exact_analytical_route", "proved": true, "evidence": "pre553_analytical_composition.compose_positioned_subject_possibility and .evaluate_positioned_subject_possibility; pre553_analytical_state_and_route.build_state_route_result with assert_route_not_laundered"},
-    {"id": "P2_I05_discovery_route", "proved": true, "evidence": "pre553_analytical_state_and_route.classify_discovery_receipt_state, .classify_adaptive_coverage; court test_pre553_discovery_exact (14) and test_pre553_discovery_adaptive (8) and test_pre553_discovery_adaptive_admission (3) green"},
-    {"id": "P3_higher_order_recursive_route", "proved": true, "evidence": "court test_pre553_analytical_composition_higher_order (35) green; pre553_recursive_handoff SAME_BLOB on control with test_pre553_recursive_handoff (2) green"},
-    {"id": "P4_ordered_joint_targets", "proved": true, "evidence": "test_source_backed_positioned_subject_possibility (13) green with joint_component_count 1 and joint_order_semantics SEMANTIC_ORDERED in the accepted AT17 successor law"},
-    {"id": "P5_complete_cell_geometry", "proved": true, "evidence": "pre553_analytical_state_and_route.classify_empirical_cells; court test_pre553_analytical_state_and_route (92) includes geometry-cell-identity hostile cases (r7_geometry_cell_identity_hostile_reidentifies_evidence)"},
-    {"id": "P6_negative_refusal_state_preservation", "proved": true, "evidence": "source_backed_positioned_subject_possibility.RESULT_STATES = EXACT_SUPPORTED, EXACT_UNRESOLVED_PROXY_AVAILABLE, UNRESOLVED, VALID_EMPTY, NONCOMPARABLE, FAIL_CLOSED; pre553_analytical_state_and_route.capture_empirical_integrity_refusal and capture_required_authority_refusal; restored authority_maintenance adds NOT_GOVERNED lifecycle state and the noncurrent receipt schema; court includes fail-closed mutation cases (r6_witness_mutation_reidentifies_and_stale_ref_fails_closed)"},
-    {"id": "P7_replay_dependency_currentness", "proved": true, "evidence": "pre553_analytical_replay_dependency.assert_replay_claim, .assert_closure_covers_registered_products, .assert_runner_input_carries_no_answer, .resolve_current_analytical_product; court test_pre553_analytical_replay_dependency (43) and test_pre553_c1_03_join (28) green; restored authority_maintenance lifecycle states CURRENT / EXPLICIT_NONCURRENT / NOT_GOVERNED"},
-    {"id": "P8_positioned_subject_consumer_linkage", "proved": true, "evidence": "pre553_empirical_possibility_provider imports and delegates to the control-resident consumer rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility, exactly as its ownership law states; court test_pre553_empirical_possibility_provider (43) and test_source_backed_positioned_subject_possibility (13) green"}
-  ],
-  "regression": {
-    "baseline_method": "a manifest-identical detached worktree at the startup SHA was created and the full rawlsing_next suite run before and after the integration",
-    "before": {"failed": 227, "passed": 2276, "skipped": 1, "errors": 53, "subtests_passed": 28, "failure_error_ids": 280, "duration_s": 71.23},
-    "after": {"failed": 227, "passed": 2566, "skipped": 1, "errors": 53, "subtests_passed": 28, "failure_error_ids": 280, "duration_s": 145.26},
-    "new_failure_ids": 0,
-    "fixed_failure_ids": 0,
-    "failure_set_byte_identical": true,
-    "passed_delta": 290,
-    "passed_delta_reconciliation": "254 from the six newly imported analytical courts (13+35+92+43+43+28) plus 36 from test_pre553_authority_maintenance growing 21 -> 57 on the accepted blob = 290",
-    "blast_radius_proof": "the only modified production module is pre553_authority_maintenance.py; it is imported by exactly one production module (pre553_analytical_replay_dependency.py, inside the accepted set) and by zero control-resident tests outside the accepted grain. Every other change is a pure addition, so no pre-existing passing path can be altered."
-  },
-  "integrated_paths_summary": {
-    "production_owners_modified_or_added": 5,
-    "test_files_added": 6,
-    "test_files_modified": 1,
-    "test_support_files_added": 9,
-    "authority_material_files_added": 63,
-    "total_staged_paths": 84,
-    "added": 82,
-    "modified": 2
-  },
-  "ancestry_preservation": {
-    "wholesale_merge_of_149c3d26_performed": false,
-    "current_control_ancestry_preserved": true,
-    "integration_method": "git checkout <accepted-result-sha> -- <exact paths>, which writes byte-identical blobs from the accepted tree into this branch without importing any side-branch history",
-    "branch_parent": "50fdc737deeb21c88f6f07a326e76680481dc753",
-    "side_branch_commits_imported": 0
+ "schema": "PYAT_HQ204_ACCEPTED_GRAIN_RECONSTRUCTION@1.0.0",
+ "lane": "PYAT-HQ204-LINEAGE-R1",
+ "sub_lane": "C1 accepted-lineage surgical reconciliation (HQ204 authorized frontier lane 2)",
+ "startup_sha": "50fdc737deeb21c88f6f07a326e76680481dc753",
+ "current_control_base": "ff4f06954824a3a5699bc5c1c9bd68cb3c5b4146",
+ "hq168_accepted_integration": "149c3d2636160d8de9b5a8be0c8b87195158077d",
+ "hq168_accepted_result": "063ee8b77fc4e05c37456ff0168e946247f919ef",
+ "hq168_tested_code_ref": "933a3d31aa961719c73e6ce7eebcfe40bc8cd45e",
+ "final_independent_review": "c8ce0ea81a2165f37d566f37de788fecedf85051",
+ "method": {
+  "acceptance_inferred_from_side_branch_presence": false,
+  "acceptance_source": "exact production owner blob SHAs declared in the HQ168 adoption document, independently re-confirmed by the final integration review section2_blob_conservation",
+  "note": "Every accepted blob was verified against git ls-tree at the accepted result BEFORE classification. Two independent authorities (HQ168 adoption and the final review) name the identical 5-blob set.",
+  "divergence_measured": {
+   "merge_base": "87029d349c8a7385cb673060a8e5decd4eb528ff",
+   "merge_base_subject": "HQ163 advance LATEST to Astra identity-succession escalation",
+   "c1_only_commits": 183,
+   "control_only_commits": 256,
+   "c1_is_ancestor_of_control": false,
+   "control_is_ancestor_of_c1": false
   }
+ },
+ "production_owner_set": [
+  {
+   "path": "rawlsing_next/pre553_analytical_composition.py",
+   "hq168_declared_blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+   "verified_at_accepted_result": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+   "control_blob_before": null,
+   "classification": "ABSENT__MUST_IMPORT",
+   "integrated_blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+   "byte_identical_to_accepted": true
+  },
+  {
+   "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+   "hq168_declared_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+   "verified_at_accepted_result": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+   "control_blob_before": null,
+   "classification": "ABSENT__MUST_IMPORT",
+   "integrated_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+   "byte_identical_to_accepted": true
+  },
+  {
+   "path": "rawlsing_next/pre553_analytical_state_and_route.py",
+   "hq168_declared_blob": "3a5e3db8a0897900d0b2606813bda7c3f586d46e",
+   "verified_at_accepted_result": "3a5e3db8a0897900d0b2606813bda7c3f586d46e",
+   "control_blob_before": null,
+   "classification": "ABSENT__MUST_IMPORT",
+   "integrated_blob": "3a5e3db8a0897900d0b2606813bda7c3f586d46e",
+   "byte_identical_to_accepted": true
+  },
+  {
+   "path": "rawlsing_next/pre553_analytical_replay_dependency.py",
+   "hq168_declared_blob": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+   "verified_at_accepted_result": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+   "control_blob_before": null,
+   "classification": "ABSENT__MUST_IMPORT",
+   "integrated_blob": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+   "byte_identical_to_accepted": true
+  },
+  {
+   "path": "rawlsing_next/pre553_authority_maintenance.py",
+   "hq168_declared_blob": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+   "verified_at_accepted_result": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+   "control_blob_before": "ac7f3a013129bc148debf8f011597971a2c99442",
+   "classification": "COMPATIBLE_CURRENT_SUCCESSOR",
+   "integrated_blob": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+   "byte_identical_to_accepted": true,
+   "classification_basis": {
+    "shared_ancestry": "both descend from blob-publication commit 215932d08; the accepted side then applied three coherent C1-03R commits (eb02332c9 generic noncurrent lifecycle owner outcome, 7f6449375 four reviewed boundaries, c690bb0b1 zero-release NOT_GOVERNED), while control took a different path (dc2654291, f5673a55)",
+    "line_delta": "control -> accepted is 437 added lines and 9 removed lines",
+    "the_9_removed_lines_are_relocated_not_lost": "8 of 9 are the same guard statements relocated into the new outcome-based receipt constructor; verified by exact string presence in both versions",
+    "the_one_substantive_difference_is_a_generalization_not_a_conflict": "control enforces 'set(recompilation_pairs) == affected_keys', forcing EVERY affected dependent to carry a recompilation pair. The accepted version replaces this with a strictly stronger outcome-based invariant: every affected dependent requires exactly one OUTCOME (line ~776 'every affected dependent requires exactly one outcome'), an affected dependent may not receive both a replacement and a noncurrent disposition, and an outcome naming a dependent outside the affected set is refused. Exact coverage of the affected set is therefore still enforced, and the disjointness guard is preserved (line ~787).",
+    "why_this_is_not_an_owner_collision": "the accepted version is a functional SUPERSET of the control version. Control is a strictly weaker earlier state of the SAME owner, not a competing owner. There is no semantic conflict to adjudicate, so the STOP condition was not triggered.",
+    "restored_capability_absent_from_control": [
+     "NONCURRENT_DISPOSITION_NO_LAWFUL_REPLACEMENT and NONCURRENT_DISPOSITIONS",
+     "DEPENDENT_LIFECYCLE_CURRENT / EXPLICIT_NONCURRENT / NOT_GOVERNED",
+     "INVALIDATION_RECEIPT_NONCURRENT_SCHEMA (PRE553_AUTH40_SEMANTIC_AUTHORITY_INVALIDATION_NONCURRENT@1.0.0)",
+     "NoncurrentDependentOutcome dataclass"
+    ]
+   }
+  }
+ ],
+ "dependency_closure": [
+  {
+   "path": "rawlsing_next/pre553_c11_repository.py",
+   "classification": "SAME_BLOB_ALREADY_PRESENT"
+  },
+  {
+   "path": "rawlsing_next/pre553_discovery_adaptive.py",
+   "classification": "SAME_BLOB_ALREADY_PRESENT"
+  },
+  {
+   "path": "rawlsing_next/pre553_discovery_exact.py",
+   "classification": "SAME_BLOB_ALREADY_PRESENT"
+  },
+  {
+   "path": "rawlsing_next/pre553_empirical_authority.py",
+   "classification": "SAME_BLOB_ALREADY_PRESENT"
+  },
+  {
+   "path": "rawlsing_next/pre553_empirical_objects.py",
+   "classification": "SAME_BLOB_ALREADY_PRESENT"
+  },
+  {
+   "path": "rawlsing_next/pre553_empirical_query.py",
+   "classification": "SAME_BLOB_ALREADY_PRESENT"
+  },
+  {
+   "path": "rawlsing_next/pre553_recursive_handoff.py",
+   "classification": "SAME_BLOB_ALREADY_PRESENT"
+  },
+  {
+   "path": "rawlsing_next/pre553_structural_admission.py",
+   "classification": "SAME_BLOB_ALREADY_PRESENT"
+  },
+  {
+   "path": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+   "classification": "SAME_BLOB_ALREADY_PRESENT",
+   "collision_note": "This module is the highest-risk collision candidate because it also concerns positioned-subject possibility. It is NOT a competitor. The accepted provider's own ownership law names it as the accepted PUBLIC POSSIBILITY CONSUMER: 'accepted analytical producer rawlsing_next.pre553_analytical_composition.compose_positioned_subject_possibility; accepted public possibility consumer rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility'. The provider imports it directly. Producer-upstream, consumer-downstream: complementary, same owner family."
+  },
+  {
+   "path": "rawlsing_next/pre553_analytical_composition.py",
+   "classification": "ABSENT__MUST_IMPORT",
+   "note": "also an accepted owner"
+  },
+  {
+   "path": "rawlsing_next/pre553_authority_maintenance.py",
+   "classification": "COMPATIBLE_CURRENT_SUCCESSOR",
+   "note": "also an accepted owner"
+  }
+ ],
+ "authority_material": [
+  {
+   "path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/",
+   "files": 42,
+   "control_state": "ABSENT",
+   "classification": "ABSENT__MUST_IMPORT",
+   "required_by": "rawlsing_next/tests/n10e_at17_successor_requal.py",
+   "identity_crosscheck": "carries the AT07 forward 01c381d3f3c386cfc22fd2f57b8e2c244771ddf1529d4f8ab8c7b1cf41bd50dd and reverse a3bd7e85ae14babb5ac5a12b0bcc57a8cdf3eccf8f43394895903dc43aca40ca, matching the HQ168 adoption exactly, plus the immutable historical R8 identities"
+  },
+  {
+   "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/",
+   "files": 7,
+   "control_state": "ABSENT",
+   "classification": "ABSENT__MUST_IMPORT",
+   "required_files": [
+    "02_VALUE_RELATION_ORACLE.json",
+    "03_SYNTHETIC_AUTHORITY_FREEZE.json",
+    "04_SLICE_PROJECTION.json"
+   ]
+  },
+  {
+   "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/",
+   "files": 7,
+   "control_state": "ABSENT",
+   "classification": "ABSENT__MUST_IMPORT",
+   "required_files": [
+    "02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json"
+   ]
+  },
+  {
+   "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/",
+   "files": 7,
+   "control_state": "ABSENT",
+   "classification": "ABSENT__MUST_IMPORT",
+   "required_files": [
+    "04_CURRENT_AT07_IDENTITY_SPINE.json"
+   ]
+  }
+ ],
+ "historical_only": [
+  {
+   "item": "historical R8 analytical spine",
+   "classification": "HISTORICAL_ONLY__NOT_PART_OF_ACCEPTED_GRAIN",
+   "evidence": "HQ168 adoption: 'historical R8 preserved as historical-only evidence' and 'Historical R8 identities remain immutable historical C1-01 evidence'. The accepted-result test tree confirms no historical-R8 production module or test file is absent from current control, so nothing from the historical R8 grain needed importing. Its identities are asserted only as conservation checks."
+  },
+  {
+   "item": "historical failed court (434 passed / 1 failed)",
+   "classification": "HISTORICAL_ONLY__NOT_PART_OF_ACCEPTED_GRAIN",
+   "evidence": "HQ168 adoption: 'remains historical failed evidence and is not relabelled'. Not re-run and not imported."
+  },
+  {
+   "item": "9 test-support files (c1_*/n10e_* fixtures and fresh-process runners)",
+   "classification": "HISTORICAL_ONLY_NOT_A_PRODUCTION_OWNER_BUT_REQUIRED_SUPPORT",
+   "evidence": "these are accepted-grain TEST SUPPORT, imported at exact accepted blobs; they collect 0 tests when passed explicitly and are imported by the six analytical courts",
+   "note": "not a production owner; listed here only to record that they were not treated as owners"
+  }
+ ],
+ "accepted_court_reconstruction": {
+  "hq168_declared_total": 454,
+  "hq168_declared_per_file_multiset": [
+   92,
+   35,
+   32,
+   17,
+   14,
+   13,
+   13,
+   8,
+   3,
+   2,
+   43,
+   57,
+   54,
+   43,
+   28
+  ],
+  "hq168_declared_file_count": 15,
+  "hq168_disposition": "454 passed / 0 failed / 0 errors / 0 skipped / exit 0",
+  "final_review_independent_execution": "454 passed, 0 failed, 0 errors, 0 skipped, exit 0, 77.35s",
+  "final_review_file_count_statement": "15 files, 'list built from filesystem'",
+  "exact_list_recoverable_from_documentary_record": true,
+  "why_not_directly_recoverable": "SUPERSEDED BY HQ206 - the names ARE recoverable; see hq206_correction and authoritative_per_file_maps. The earlier claim overlooked these two maps.",
+  "reconstruction_method": "READ from the historical record via the two per-file maps cited in hq206_correction. The multiset match below is retained only as corroboration; the earlier residual-arithmetic method is superseded and is not needed to establish the court set.",
+  "reconstructed_court": [
+   {
+    "file": "rawlsing_next/tests/test_pre553_analytical_state_and_route.py",
+    "collected": 92,
+    "origin": "imported ABSENT__MUST_IMPORT"
+   },
+   {
+    "file": "rawlsing_next/tests/test_pre553_authority_maintenance.py",
+    "collected": 57,
+    "origin": "diverged shared test file; restored to accepted blob 5f9151d43ddf9da22d9ef9fb1b0c721344d8d27e"
+   },
+   {
+    "file": "rawlsing_next/tests/test_pre553_replay_audit.py",
+    "collected": 54,
+    "origin": "control-resident dependency-closure test, SAME_BLOB, untouched"
+   },
+   {
+    "file": "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py",
+    "collected": 43,
+    "origin": "imported ABSENT__MUST_IMPORT"
+   },
+   {
+    "file": "rawlsing_next/tests/test_pre553_empirical_possibility_provider.py",
+    "collected": 43,
+    "origin": "imported ABSENT__MUST_IMPORT"
+   },
+   {
+    "file": "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py",
+    "collected": 35,
+    "origin": "imported ABSENT__MUST_IMPORT"
+   },
+   {
+    "file": "rawlsing_next/tests/test_pre553_empirical_query.py",
+    "collected": 32,
+    "origin": "control-resident dependency-closure test, SAME_BLOB, untouched"
+   },
+   {
+    "file": "rawlsing_next/tests/test_pre553_c1_03_join.py",
+    "collected": 28,
+    "origin": "imported ABSENT__MUST_IMPORT"
+   },
+   {
+    "file": "rawlsing_next/tests/test_pre553_structural_admission.py",
+    "collected": 17,
+    "origin": "control-resident dependency-closure test, SAME_BLOB, untouched"
+   },
+   {
+    "file": "rawlsing_next/tests/test_pre553_discovery_exact.py",
+    "collected": 14,
+    "origin": "control-resident dependency-closure test, SAME_BLOB, untouched"
+   },
+   {
+    "file": "rawlsing_next/tests/test_pre553_analytical_composition.py",
+    "collected": 13,
+    "origin": "imported ABSENT__MUST_IMPORT"
+   },
+   {
+    "file": "rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py",
+    "collected": 13,
+    "origin": "control-resident dependency-closure test, SAME_BLOB, untouched"
+   },
+   {
+    "file": "rawlsing_next/tests/test_pre553_discovery_adaptive.py",
+    "collected": 8,
+    "origin": "control-resident dependency-closure test, SAME_BLOB, untouched"
+   },
+   {
+    "file": "rawlsing_next/tests/test_pre553_discovery_adaptive_admission.py",
+    "collected": 3,
+    "origin": "control-resident dependency-closure test, SAME_BLOB, untouched"
+   },
+   {
+    "file": "rawlsing_next/tests/test_pre553_recursive_handoff.py",
+    "collected": 2,
+    "origin": "control-resident dependency-closure test, SAME_BLOB, untouched"
+   }
+  ],
+  "residual_arithmetic": "dependency-closure tests 32+17+14+13+8+54+3+2 = 143; accepted-grain tests 92+57+43+43+35+28+13 = 311; 143+311 = 454",
+  "multiset_match": "EXACT",
+  "reproduced_total": 454,
+  "reproduced_result": "454 passed, 0 failed, 0 errors, 0 skipped",
+  "runs": 2,
+  "deterministic": true,
+  "hq206_correction": "HQ206 CORRECTION: this field was FALSE. Two independent authorities DO record the exact 15 file names in machine-readable per-file maps: 063ee8b7:WORKER_RETURNS/PYAT-AT17-SUCCESSOR-REQUAL-C1-03-JOIN-RERUN-R1/08_EXECUTION_RECEIPT.json field per_file, and c8ce0ea8:WORKER_RETURNS/PYAT-C1-03-SUCCESSOR-JOIN-FINAL-INTEGRATION-REVIEW-R1/05_TEST_AND_REPLAY_REVIEW.json field section8_count_audit.per_file_independently_collected. The reconstructed_court list below matches both maps file-for-file and count-for-count, so the set was READ from the record rather than inferred.",
+  "authoritative_per_file_maps": [
+   {
+    "commit": "063ee8b77fc4e05c37456ff0168e946247f919ef",
+    "file": "WORKER_RETURNS/PYAT-AT17-SUCCESSOR-REQUAL-C1-03-JOIN-RERUN-R1/08_EXECUTION_RECEIPT.json",
+    "field": "per_file",
+    "entries": 15
+   },
+   {
+    "commit": "c8ce0ea81a2165f37d566f37de788fecedf85051",
+    "file": "WORKER_RETURNS/PYAT-C1-03-SUCCESSOR-JOIN-FINAL-INTEGRATION-REVIEW-R1/05_TEST_AND_REPLAY_REVIEW.json",
+    "field": "section8_count_audit.per_file_independently_collected",
+    "entries": 15
+   }
+  ]
+ },
+ "accepted_grain_properties_proved": [
+  {
+   "id": "P1_direct_exact_analytical_route",
+   "proved": true,
+   "evidence": "pre553_analytical_composition.compose_positioned_subject_possibility and .evaluate_positioned_subject_possibility; pre553_analytical_state_and_route.build_state_route_result with assert_route_not_laundered"
+  },
+  {
+   "id": "P2_I05_discovery_route",
+   "proved": true,
+   "evidence": "pre553_analytical_state_and_route.classify_discovery_receipt_state, .classify_adaptive_coverage; court test_pre553_discovery_exact (14) and test_pre553_discovery_adaptive (8) and test_pre553_discovery_adaptive_admission (3) green"
+  },
+  {
+   "id": "P3_higher_order_recursive_route",
+   "proved": true,
+   "evidence": "court test_pre553_analytical_composition_higher_order (35) green; pre553_recursive_handoff SAME_BLOB on control with test_pre553_recursive_handoff (2) green"
+  },
+  {
+   "id": "P4_ordered_joint_targets",
+   "proved": true,
+   "evidence": "test_source_backed_positioned_subject_possibility (13) green with joint_component_count 1 and joint_order_semantics SEMANTIC_ORDERED in the accepted AT17 successor law"
+  },
+  {
+   "id": "P5_complete_cell_geometry",
+   "proved": true,
+   "evidence": "pre553_analytical_state_and_route.classify_empirical_cells; court test_pre553_analytical_state_and_route (92) includes geometry-cell-identity hostile cases (r7_geometry_cell_identity_hostile_reidentifies_evidence)"
+  },
+  {
+   "id": "P6_negative_refusal_state_preservation",
+   "proved": true,
+   "evidence": "source_backed_positioned_subject_possibility.RESULT_STATES = EXACT_SUPPORTED, EXACT_UNRESOLVED_PROXY_AVAILABLE, UNRESOLVED, VALID_EMPTY, NONCOMPARABLE, FAIL_CLOSED; pre553_analytical_state_and_route.capture_empirical_integrity_refusal and capture_required_authority_refusal; restored authority_maintenance adds NOT_GOVERNED lifecycle state and the noncurrent receipt schema; court includes fail-closed mutation cases (r6_witness_mutation_reidentifies_and_stale_ref_fails_closed)"
+  },
+  {
+   "id": "P7_replay_dependency_currentness",
+   "proved": true,
+   "evidence": "pre553_analytical_replay_dependency.assert_replay_claim, .assert_closure_covers_registered_products, .assert_runner_input_carries_no_answer, .resolve_current_analytical_product; court test_pre553_analytical_replay_dependency (43) and test_pre553_c1_03_join (28) green; restored authority_maintenance lifecycle states CURRENT / EXPLICIT_NONCURRENT / NOT_GOVERNED"
+  },
+  {
+   "id": "P8_positioned_subject_consumer_linkage",
+   "proved": true,
+   "evidence": "pre553_empirical_possibility_provider imports and delegates to the control-resident consumer rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility, exactly as its ownership law states; court test_pre553_empirical_possibility_provider (43) and test_source_backed_positioned_subject_possibility (13) green"
+  }
+ ],
+ "regression": {
+  "baseline_method": "a manifest-identical detached worktree at the startup SHA was created and the full rawlsing_next suite run before and after the integration",
+  "before": {
+   "failed": 227,
+   "passed": 2276,
+   "skipped": 1,
+   "errors": 53,
+   "subtests_passed": 28,
+   "failure_error_ids": 280,
+   "duration_s": 71.23
+  },
+  "after": {
+   "failed": 227,
+   "passed": 2566,
+   "skipped": 1,
+   "errors": 53,
+   "subtests_passed": 28,
+   "failure_error_ids": 280,
+   "duration_s": 145.26
+  },
+  "new_failure_ids": 0,
+  "fixed_failure_ids": 0,
+  "failure_set_byte_identical": true,
+  "passed_delta": 290,
+  "passed_delta_reconciliation": "254 from the six newly imported analytical courts (13+35+92+43+43+28) plus 36 from test_pre553_authority_maintenance growing 21 -> 57 on the accepted blob = 290",
+  "blast_radius_proof": "the only modified production module is pre553_authority_maintenance.py; it is imported by exactly one production module (pre553_analytical_replay_dependency.py, inside the accepted set) and by zero control-resident tests outside the accepted grain. Every other change is a pure addition, so no pre-existing passing path can be altered."
+ },
+ "integrated_paths_summary": {
+  "production_owners_modified_or_added": 5,
+  "test_files_added": 6,
+  "test_files_modified": 1,
+  "test_support_files_added": 9,
+  "authority_material_files_added": 63,
+  "total_staged_paths": 84,
+  "added": 82,
+  "modified": 2
+ },
+ "ancestry_preservation": {
+  "wholesale_merge_of_149c3d26_performed": false,
+  "current_control_ancestry_preserved": true,
+  "integration_method": "git checkout <accepted-result-sha> -- <exact paths>, which writes byte-identical blobs from the accepted tree into this branch without importing any side-branch history",
+  "branch_parent": "50fdc737deeb21c88f6f07a326e76680481dc753",
+  "side_branch_commits_imported": 0
+ },
+ "dependency_necessity_grain": {
+  "correct_grain": "FILE",
+  "incorrect_prior_grain": "DIRECTORY",
+  "hq206_correction": "necessity is a per-file property. Exactly 9 named authority files are opened by the 454 court; the other 54 imported authority-material files are never opened and have been pruned.",
+  "required_file_count": 9,
+  "pruned_file_count": 54
+ }
 }

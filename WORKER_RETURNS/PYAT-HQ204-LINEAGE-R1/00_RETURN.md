@@ -104,22 +104,44 @@ commits imported; current-control ancestry preserved.
 
 Three `PYAT-C1-00-CONTRACT-CORRECTION-R{2,3,8}` directories and the
 `PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1` freeze were absent from control.
-Without them the courts fail closed. The AT07 forward/reverse identities inside the
-imported fixture match the HQ168 adoption exactly — an independent cross-check.
+**Corrected by HQ206 (C1 prune repair):** necessity is a **per-file** property, not
+a per-directory one. Exactly **9 named files** across those four directories are
+opened and required by the courts; the other **54** files in the same directories are
+never opened and have been pruned. See "Dependency necessity is stated at FILE
+grain" below for the file-grain statement. The AT07 forward/reverse identities inside
+the imported fixture match the HQ168 adoption exactly — an independent cross-check.
 
 ## Court: exact reproduction
 
-The exact 15 court **file names** were not recorded by either authority — only
-per-file counts. The court was reconstructed to an **exact multiset match** and
-**exact total**:
+> **Corrected by HQ206 (C1 prune repair).** An earlier draft of this section
+> claimed the exact 15 court **file names** were never recorded and that the set had
+> been reconstructed from a count multiset plus a residual sum. **That claim was
+> false.** Two independent authorities do record all 15 names in machine-readable
+> per-file maps:
+
+> - `063ee8b77fc4e05c37456ff0168e946247f919ef` —
+>   `WORKER_RETURNS/PYAT-AT17-SUCCESSOR-REQUAL-C1-03-JOIN-RERUN-R1/08_EXECUTION_RECEIPT.json`,
+>   field `per_file` (15 entries)
+> - `c8ce0ea81a2165f37d566f37de788fecedf85051` —
+>   `WORKER_RETURNS/PYAT-C1-03-SUCCESSOR-JOIN-FINAL-INTEGRATION-REVIEW-R1/05_TEST_AND_REPLAY_REVIEW.json`,
+>   field `section8_count_audit.per_file_independently_collected` (15 entries)
+
+The court used here matches **both** recorded maps file-for-file and count-for-count:
 
 ```
 declared : 92 57 54 43 43 35 32 28 17 14 13 13 8 3 2   = 454
 rebuilt  : 92 57 54 43 43 35 32 28 17 14 13 13 8 3 2   = 454
 ```
 
+The count multiset agrees as corroboration, but the **file identities are read from
+the record, not inferred**. No residual arithmetic is needed to establish the set.
+
+<details><summary>Superseded reasoning, retained for audit only</summary>
+
 The residual `143` resolved because the accepted dependency closure's control-resident
 tests sum to exactly `32+17+14+13+8+54+3+2 = 143`.
+
+</details>
 
 **Result: 454 collected, 454 passed, 0 failed, 0 errors, 0 skipped — twice**
 (69.76s, 68.00s). This matches HQ168's accepted court exactly. Execution was
@@ -189,12 +211,52 @@ tree, not the large non-Git directory the law warns about. I created **no new cl
 performed no initialization, overwrite, move or absorption, and placed the sparse
 worktree in the designated `Rawlsing_Worktrees`.
 
-## Unreconstructed record
+## Court record — read, not reconstructed
 
-The exact 15 court file *names* were never recorded. The total, the multiset, and the
-accepted-grain-vs-dependency-closure classification of all 15 files are exact; the
-identity of the 8 dependency-closure files is inferred from an exact residual sum of
-143 and is corroborated by each being the direct test of a SAME_BLOB dependency.
+**Corrected by HQ206 (C1 prune repair).** This section previously read "Unreconstructed
+record" and asserted the exact 15 court file names were never recorded. **That
+assertion was false and is withdrawn.**
+
+The exact 15 file names are recorded by two independent authorities, in
+machine-readable per-file maps:
+
+- `063ee8b77fc4e05c37456ff0168e946247f919ef` —
+  `WORKER_RETURNS/PYAT-AT17-SUCCESSOR-REQUAL-C1-03-JOIN-RERUN-R1/08_EXECUTION_RECEIPT.json`,
+  field `per_file`
+- `c8ce0ea81a2165f37d566f37de788fecedf85051` —
+  `WORKER_RETURNS/PYAT-C1-03-SUCCESSOR-JOIN-FINAL-INTEGRATION-REVIEW-R1/05_TEST_AND_REPLAY_REVIEW.json`,
+  field `section8_count_audit.per_file_independently_collected`
+
+The executed court matches both maps **file-for-file and count-for-count**. The
+accepted-grain-vs-dependency-closure classification of all 15 files is exact and
+recorded. No part of the court identity rests on inference.
+
+## Dependency necessity is stated at FILE grain
+
+**Corrected by HQ206 (C1 prune repair).** An earlier draft asserted necessity at
+*directory* grain. Necessity is a property of **individual files**, and the directory
+wording was both too strong and, as measured, false for 54 of the 63 imported
+authority-material files.
+
+Measured by instrumented open-audit of the 454-test court, necessity is exactly
+these **9 files**:
+
+| # | Authority file |
+|---|---|
+| 1 | `PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_HISTORICAL_CANONICAL.json` |
+| 2 | `PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_SUCCESSOR_CANONICAL.json` |
+| 3 | `PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_HISTORICAL_CANONICAL.json` |
+| 4 | `PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_SUCCESSOR_CANONICAL.json` |
+| 5 | `PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json` |
+| 6 | `PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json` |
+| 7 | `PYAT-C1-00-CONTRACT-CORRECTION-R2/04_SLICE_PROJECTION.json` |
+| 8 | `PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json` |
+| 9 | `PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json` |
+
+Correct statement of necessity: **without these 9 named files the courts fail
+closed.** It is *not* true that the courts require the `R2`/`R3`/`R8` directories or
+the AT07 freeze as wholes; the other 54 files in those same directories are never
+opened by the court and were pruned by HQ206 without qualification loss.
 
 ## Terminal
 

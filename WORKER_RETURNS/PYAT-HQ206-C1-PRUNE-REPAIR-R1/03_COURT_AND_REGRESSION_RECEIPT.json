@@ -1,0 +1,122 @@
+{
+ "schema": "PYAT_HQ206_COURT_AND_REGRESSION_RECEIPT@1.0.0",
+ "lane": "PYAT-HQ206-C1-PRUNE-REPAIR-R1",
+ "repair_base": "88f262b94bbe94cd3e2a8113c8b17d0872c5089c",
+ "environment_disclosure": {
+  "classification": "RECONSTRUCTED MATCHING-ENVIRONMENT EVIDENCE - NOT GOVERNED-ENVIRONMENT CERTIFICATION",
+  "governed_r7_interpreter_expected": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python",
+  "governed_r7_interpreter_present": false,
+  "governed_environment_absence_did_not_prevent_commissioned_qualification": true,
+  "reused_existing_disclosed_reconstruction": true,
+  "new_environment_created_for_this_lane": false,
+  "interpreter_path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/hq204-r9-env/bin/python",
+  "python_version": "3.11.3",
+  "python_version_matches_disclosed_governed_base": true,
+  "pip_freeze": [
+   "Pygments==2.21.0",
+   "iniconfig==2.3.0",
+   "narwhals==2.26.0",
+   "numpy==2.4.6",
+   "packaging==26.3",
+   "pandas==2.3.3",
+   "pluggy==1.6.0",
+   "pyarrow==25.0.1",
+   "pyreadstat==1.3.6",
+   "pytest==9.1.1",
+   "python-dateutil==2.9.0.post0",
+   "pytz==2026.4",
+   "six==1.17.0",
+   "tzdata==2026.4"
+  ],
+  "freeze_package_count": 13,
+  "freeze_matches_disclosed_governed_lock_exactly": true,
+  "env_vars": {
+   "PYTHONHASHSEED": "0",
+   "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+   "PYTHONPATH": "<sparse worktree root>"
+  },
+  "pytest_flags": [
+   "-p no:cacheprovider"
+  ]
+ },
+ "accepted_court_definition": {
+  "file_count": 15,
+  "required_total": 454,
+  "identity_source": "READ from two historical machine-readable per-file maps, not inferred",
+  "per_file_maps": [
+   {
+    "commit": "063ee8b77fc4e05c37456ff0168e946247f919ef",
+    "file": "WORKER_RETURNS/PYAT-AT17-SUCCESSOR-REQUAL-C1-03-JOIN-RERUN-R1/08_EXECUTION_RECEIPT.json",
+    "field": "per_file"
+   },
+   {
+    "commit": "c8ce0ea81a2165f37d566f37de788fecedf85051",
+    "file": "WORKER_RETURNS/PYAT-C1-03-SUCCESSOR-JOIN-FINAL-INTEGRATION-REVIEW-R1/05_TEST_AND_REPLAY_REVIEW.json",
+    "field": "section8_count_audit.per_file_independently_collected"
+   }
+  ],
+  "matches_both_maps_file_for_file_and_count_for_count": true
+ },
+ "pre_prune_baseline": {
+  "collected": 454,
+  "passed": 454,
+  "failed": 0,
+  "errors": 0,
+  "skipped": 0,
+  "exit": 0,
+  "duration_seconds": 142.28
+ },
+ "post_prune_qualification": {
+  "collect_only": {
+   "collected": 454
+  },
+  "run_1": {
+   "passed": 454,
+   "failed": 0,
+   "errors": 0,
+   "skipped": 0,
+   "exit": 0,
+   "duration_seconds": 143.56
+  },
+  "run_2": {
+   "passed": 454,
+   "failed": 0,
+   "errors": 0,
+   "skipped": 0,
+   "exit": 0,
+   "duration_seconds": 150.26
+  },
+  "gate_met": true,
+  "deterministic_across_runs": true
+ },
+ "regression_exact_id_check": {
+  "method": "identical full rawlsing_next/tests suite run before and after the prune in the same worktree and same interpreter; failure/error IDs extracted with 'grep -E \"^(FAILED|ERROR) \"' and compared as sorted unique sets",
+  "invocation": "pytest -p no:cacheprovider -q --tb=no -rfE --continue-on-collection-errors rawlsing_next/tests",
+  "before": {
+   "failed": 178,
+   "passed": 2652,
+   "skipped": 1,
+   "errors": 50,
+   "unique_ids": 228,
+   "exit": 1,
+   "duration_seconds": 1716.02
+  },
+  "after": {
+   "failed": 178,
+   "passed": 2652,
+   "skipped": 1,
+   "errors": 50,
+   "unique_ids": 228,
+   "exit": 1,
+   "duration_seconds": 1699.22
+  },
+  "new_failure_ids": 0,
+  "fixed_failure_ids": 0,
+  "id_sets_byte_identical": true,
+  "verdict": "PRUNE INTRODUCES ZERO NEW FAILURES AND ZERO FIXES; ID SETS IDENTICAL",
+  "failures_hidden_behind_aborted_collection": false,
+  "continue_on_collection_errors_used_in_both_arms": true,
+  "failures_hidden_or_retried": false
+ },
+ "note_on_pre_existing_failures": "178 failures and 50 errors pre-exist at the repair base in this environment; they are identical in both arms and are not caused by this lane"
+}

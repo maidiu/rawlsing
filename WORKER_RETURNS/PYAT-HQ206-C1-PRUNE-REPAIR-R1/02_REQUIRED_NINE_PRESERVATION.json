@@ -1,0 +1,94 @@
+{
+ "schema": "PYAT_HQ206_REQUIRED_NINE_PRESERVATION@1.0.0",
+ "lane": "PYAT-HQ206-C1-PRUNE-REPAIR-R1",
+ "principle": "necessity is a FILE-grain property. These 9 files are the exact authority material the accepted 454-test court actually opens.",
+ "required_count": 9,
+ "open_audit_method": {
+  "instrument": "builtins.open and io.open patched via sitecustomize on PYTHONPATH; pathlib.Path.open/read_text both route through io.open, so both are covered",
+  "log_env": "HQ206_AUDIT_LOG",
+  "filter": "absolute paths containing WORKER_RETURNS",
+  "court": "the exact accepted 15-file court",
+  "note": "the first attempt produced a zero-length log because the shim never loaded; the instrument was verified against a probe target before the recorded runs, and the recorded runs reproduce the review's required.txt exactly"
+ },
+ "open_audit_result": {
+  "pre_prune": {
+   "court_result": "454 passed",
+   "opened_unique_workER_returns_files": 9,
+   "matches_review_required_txt": true
+  },
+  "post_prune": {
+   "court_result": "454 passed",
+   "opened_unique_workER_returns_files": 9,
+   "matches_review_required_txt": true,
+   "equals_preserved_nine": true
+  },
+  "any_of_the_54_ever_opened": 0,
+  "any_opened_file_outside_the_nine": 0
+ },
+ "files": [
+  {
+   "path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_HISTORICAL_CANONICAL.json",
+   "blob": "2d725dc592291ac7e8da4e4b0fb90f96dbeacec4",
+   "preserved": true,
+   "opened_by_court": true
+  },
+  {
+   "path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_SUCCESSOR_CANONICAL.json",
+   "blob": "8143c96ed8ebdf3b87632d193a30e9924cbd1ced",
+   "preserved": true,
+   "opened_by_court": true
+  },
+  {
+   "path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_HISTORICAL_CANONICAL.json",
+   "blob": "634d4dd6c6c90e6c02220b17071795e9b7bdbd3e",
+   "preserved": true,
+   "opened_by_court": true
+  },
+  {
+   "path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_SUCCESSOR_CANONICAL.json",
+   "blob": "712455f3b84a0685d0876dc5218421edf7dae724",
+   "preserved": true,
+   "opened_by_court": true
+  },
+  {
+   "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json",
+   "blob": "c6acafae820c065215fdbe7a703480a8b19fbc57",
+   "preserved": true,
+   "opened_by_court": true
+  },
+  {
+   "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json",
+   "blob": "333989fa7b57c221d6aa5ebfc25d9d76e0acad32",
+   "preserved": true,
+   "opened_by_court": true
+  },
+  {
+   "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/04_SLICE_PROJECTION.json",
+   "blob": "8e5bd3d23db1e39aebee0a55d49934a0d400dd48",
+   "preserved": true,
+   "opened_by_court": true
+  },
+  {
+   "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json",
+   "blob": "5d1583dc31c837282ea40448285109a31bb1db41",
+   "preserved": true,
+   "opened_by_court": true
+  },
+  {
+   "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json",
+   "blob": "462bb282ddc2cc9667f1890f2d65f2fae9a3a72c",
+   "preserved": true,
+   "opened_by_court": true
+  }
+ ],
+ "sensitivity_check": {
+  "commission_requirement": "removing any preserved required file must cause the expected fail-closed qualification break; one representative suffices given the review proves all nine collectively",
+  "representative_removed": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_SUCCESSOR_CANONICAL.json",
+  "result": "3 failed, 451 passed, exit 1",
+  "fails_closed_as_expected": true,
+  "restored_afterwards": true,
+  "restore_verification": "working-tree hash-object == index blob 8143c96ed8ebdf3b87632d193a30e9924cbd1ced",
+  "review_collective_evidence": "all nine removed: 108 failed, 336 passed, 10 errors",
+  "repository_left_dirty": false
+ }
+}

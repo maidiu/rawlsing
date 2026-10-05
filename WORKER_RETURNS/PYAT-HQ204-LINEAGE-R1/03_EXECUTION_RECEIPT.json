@@ -1,89 +1,131 @@
 {
-  "schema": "PYAT_HQ204_EXECUTION_RECEIPT@1.0.0",
-  "lane": "PYAT-HQ204-LINEAGE-R1",
-  "branch": "agent/rabochii-pyat-hq204-c1-r1",
-  "startup_sha": "50fdc737deeb21c88f6f07a326e76680481dc753",
-  "sub_lane": "C1 accepted-lineage surgical reconciliation",
-  "startup_verification": {
-    "resolved": "50fdc737deeb21c88f6f07a326e76680481dc753",
-    "expected": "50fdc737deeb21c88f6f07a326e76680481dc753",
-    "exact": true,
-    "fetched_only_the_governed_branch_ref": "refs/heads/agent/rabochii-pyat-hq204-c1-r1",
-    "all_commissioned_reference_shas_present": true
+ "schema": "PYAT_HQ204_EXECUTION_RECEIPT@1.0.0",
+ "lane": "PYAT-HQ204-LINEAGE-R1",
+ "branch": "agent/rabochii-pyat-hq204-c1-r1",
+ "startup_sha": "50fdc737deeb21c88f6f07a326e76680481dc753",
+ "sub_lane": "C1 accepted-lineage surgical reconciliation",
+ "startup_verification": {
+  "resolved": "50fdc737deeb21c88f6f07a326e76680481dc753",
+  "expected": "50fdc737deeb21c88f6f07a326e76680481dc753",
+  "exact": true,
+  "fetched_only_the_governed_branch_ref": "refs/heads/agent/rabochii-pyat-hq204-c1-r1",
+  "all_commissioned_reference_shas_present": true
+ },
+ "environment": {
+  "second_mac_store_law": {
+   "authorized_shared_store": "/Users/matthewsmith/Desktop/as2b-lits1-DiSDJn/repository",
+   "authorized_shared_store_present_on_this_machine": false,
+   "large_non_git_rawlsing_present": false,
+   "observed_state_of_home_rawlsing": "a valid git working tree with a .git directory, not the large non-Git directory the store law warns about",
+   "resolution": "used the already-existing canonical git object store at /Users/matthewsmith/Desktop/Rawlsing; created NO new clone; created NO full checkout; placed the sparse worktree in the designated /Users/matthewsmith/Desktop/Rawlsing_Worktrees",
+   "divergence_from_literal_instruction": "the instruction assumed the authorized shared store exists on this machine. It does not. The law's operative constraints (do not create another clone while an authorized store remains valid; do not initialize/overwrite/move/absorb the large non-Git directory; keep the worktree in Rawlsing_Worktrees) were all satisfied, because no authorized store exists to preserve and no large non-Git directory exists to protect.",
+   "worktree_created": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq204-c1-reconcile",
+   "clones_created": 0,
+   "full_checkouts_created": 0
   },
-  "environment": {
-    "second_mac_store_law": {
-      "authorized_shared_store": "/Users/matthewsmith/Desktop/as2b-lits1-DiSDJn/repository",
-      "authorized_shared_store_present_on_this_machine": false,
-      "large_non_git_rawlsing_present": false,
-      "observed_state_of_home_rawlsing": "a valid git working tree with a .git directory, not the large non-Git directory the store law warns about",
-      "resolution": "used the already-existing canonical git object store at /Users/matthewsmith/Desktop/Rawlsing; created NO new clone; created NO full checkout; placed the sparse worktree in the designated /Users/matthewsmith/Desktop/Rawlsing_Worktrees",
-      "divergence_from_literal_instruction": "the instruction assumed the authorized shared store exists on this machine. It does not. The law's operative constraints (do not create another clone while an authorized store remains valid; do not initialize/overwrite/move/absorb the large non-Git directory; keep the worktree in Rawlsing_Worktrees) were all satisfied, because no authorized store exists to preserve and no large non-Git directory exists to protect.",
-      "worktree_created": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq204-c1-reconcile",
-      "clones_created": 0,
-      "full_checkouts_created": 0
-    },
-    "sparse_manifest": [
-      "/WORKER_COMMISSIONS/PYAT-HQ204-LINEAGE-R1/",
-      "/WORKER_RETURNS/PYAT-HQ204-LINEAGE-R1/",
-      "/rawlsing_next/",
-      "/PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ204_SIX_LANE_FANIN_AND_NEXT_FRONTIER_R1.md",
-      "/WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/",
-      "/WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/",
-      "/WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/",
-      "/WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/"
-    ],
-    "manifest_extension_justification": "the last four paths were added only after the accepted courts proved the dependency empirically: a FileNotFoundError surfaced WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json, and an exhaustive AST scan of the imported accepted set recovered the exact directories R2, R3 and R8 plus the AT07 successor-spine freeze referenced by n10e_at17_successor_requal.py. Each was then imported at byte-exact accepted blobs.",
-    "python": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python",
-    "pytest_flags": ["-p no:cacheprovider"],
-    "env": {"PYTHONHASHSEED": "0", "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1", "PYTHONPATH": "<sparse worktree root>"}
-  },
-  "classification_summary": {
-    "SAME_BLOB_ALREADY_PRESENT": 9,
-    "COMPATIBLE_CURRENT_SUCCESSOR": 1,
-    "ABSENT__MUST_IMPORT": 4,
-    "DIVERGED_OWNER__HQ_ADJUDICATION_REQUIRED": 0,
-    "HISTORICAL_ONLY__NOT_PART_OF_ACCEPTED_GRAIN": 3,
-    "stop_condition_triggered": false,
-    "stop_condition_name": "ACCEPTED_OWNER_COLLISION__HQ_ADJUDICATION_REQUIRED",
-    "stop_condition_note": "no accepted analytical owner conflicts semantically with a current accepted owner. The single shared owner, pre553_authority_maintenance.py, is a strictly weaker earlier variant of the same owner, not a competitor. The highest-risk collision candidate, source_backed_positioned_subject_possibility.py, is named by the accepted provider itself as the accepted public consumer, so producer and consumer are complementary."
-  },
-  "execution": {
-    "accepted_court_files": 15,
-    "accepted_court_collected": 454,
-    "hq168_declared_total": 454,
-    "per_file_multiset_match": "EXACT",
-    "run_1": {"result": "454 passed, 0 failed, 0 errors, 0 skipped", "exit": 0, "seconds": 69.76},
-    "run_2": {"result": "454 passed, 0 failed, 0 errors, 0 skipped", "exit": 0, "seconds": 68.00},
-    "deterministic": true,
-    "environment_note": "the final independent review re-executed the court because execution was available to it; execution was likewise available here, so the committed court was re-run rather than accepted documentarily"
-  },
-  "regression": {
-    "baseline": "manifest-identical detached worktree at the startup SHA",
-    "before": {"failed": 227, "passed": 2276, "skipped": 1, "errors": 53, "failure_error_ids": 280},
-    "after": {"failed": 227, "passed": 2566, "skipped": 1, "errors": 53, "failure_error_ids": 280},
-    "new_failure_ids": 0,
-    "fixed_failure_ids": 0,
-    "passed_delta": 290,
-    "passed_delta_reconciliation": "254 from six newly imported analytical courts + 36 from test_pre553_authority_maintenance 21 -> 57",
-    "baseline_worktree_cleaned_up": true
-  },
-  "holds": {
-    "wholesale_merge_of_the_accepted_branch": false,
-    "side_branch_commits_imported": 0,
-    "current_control_ancestry_preserved": true,
-    "byte_exact_blob_conservation": "all 5 production owners and all 15 test/support files verified byte-identical to the HQ168-accepted blobs",
-    "raw_source_access": false,
-    "live_c4": false,
-    "c7": false,
-    "actor_person_implementation": false,
-    "self_adoption": false,
-    "warrant_issuance": false
-  },
-  "unreconstructed_record": {
-    "item": "the exact 15 court FILE NAMES recorded by HQ168 and the final review",
-    "reason": "neither authority records file names; only per-file counts survive, and the review states the list was built from the filesystem",
-    "mitigation": "the court was reconstructed to an EXACT per-file count multiset match and an exact 454 total, and the reconstruction basis for each of the 15 files is recorded in 01_ACCEPTED_GRAIN_RECONSTRUCTION.json",
-    "confidence": "the total, the multiset and the classification of all 15 files as either accepted-grain or dependency-closure are exact; the identity of the 8 dependency-closure files is inferred from an exact residual sum of 143 and is corroborated by each being the direct test of a SAME_BLOB dependency of the accepted owners"
+  "sparse_manifest": [
+   "/WORKER_COMMISSIONS/PYAT-HQ204-LINEAGE-R1/",
+   "/WORKER_RETURNS/PYAT-HQ204-LINEAGE-R1/",
+   "/rawlsing_next/",
+   "/PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ204_SIX_LANE_FANIN_AND_NEXT_FRONTIER_R1.md",
+   "/WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/",
+   "/WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/",
+   "/WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/",
+   "/WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/"
+  ],
+  "manifest_extension_justification": "the last four paths were added only after the accepted courts proved the dependency empirically: a FileNotFoundError surfaced WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json, and an exhaustive AST scan of the imported accepted set recovered the exact directories R2, R3 and R8 plus the AT07 successor-spine freeze referenced by n10e_at17_successor_requal.py. Each was then imported at byte-exact accepted blobs.",
+  "python": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python",
+  "pytest_flags": [
+   "-p no:cacheprovider"
+  ],
+  "env": {
+   "PYTHONHASHSEED": "0",
+   "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+   "PYTHONPATH": "<sparse worktree root>"
   }
+ },
+ "classification_summary": {
+  "SAME_BLOB_ALREADY_PRESENT": 9,
+  "COMPATIBLE_CURRENT_SUCCESSOR": 1,
+  "ABSENT__MUST_IMPORT": 4,
+  "DIVERGED_OWNER__HQ_ADJUDICATION_REQUIRED": 0,
+  "HISTORICAL_ONLY__NOT_PART_OF_ACCEPTED_GRAIN": 3,
+  "stop_condition_triggered": false,
+  "stop_condition_name": "ACCEPTED_OWNER_COLLISION__HQ_ADJUDICATION_REQUIRED",
+  "stop_condition_note": "no accepted analytical owner conflicts semantically with a current accepted owner. The single shared owner, pre553_authority_maintenance.py, is a strictly weaker earlier variant of the same owner, not a competitor. The highest-risk collision candidate, source_backed_positioned_subject_possibility.py, is named by the accepted provider itself as the accepted public consumer, so producer and consumer are complementary."
+ },
+ "execution": {
+  "accepted_court_files": 15,
+  "accepted_court_collected": 454,
+  "hq168_declared_total": 454,
+  "per_file_multiset_match": "EXACT",
+  "run_1": {
+   "result": "454 passed, 0 failed, 0 errors, 0 skipped",
+   "exit": 0,
+   "seconds": 69.76
+  },
+  "run_2": {
+   "result": "454 passed, 0 failed, 0 errors, 0 skipped",
+   "exit": 0,
+   "seconds": 68.0
+  },
+  "deterministic": true,
+  "environment_note": "the final independent review re-executed the court because execution was available to it; execution was likewise available here, so the committed court was re-run rather than accepted documentarily"
+ },
+ "regression": {
+  "baseline": "manifest-identical detached worktree at the startup SHA",
+  "before": {
+   "failed": 227,
+   "passed": 2276,
+   "skipped": 1,
+   "errors": 53,
+   "failure_error_ids": 280
+  },
+  "after": {
+   "failed": 227,
+   "passed": 2566,
+   "skipped": 1,
+   "errors": 53,
+   "failure_error_ids": 280
+  },
+  "new_failure_ids": 0,
+  "fixed_failure_ids": 0,
+  "passed_delta": 290,
+  "passed_delta_reconciliation": "254 from six newly imported analytical courts + 36 from test_pre553_authority_maintenance 21 -> 57",
+  "baseline_worktree_cleaned_up": true
+ },
+ "holds": {
+  "wholesale_merge_of_the_accepted_branch": false,
+  "side_branch_commits_imported": 0,
+  "current_control_ancestry_preserved": true,
+  "byte_exact_blob_conservation": "all 5 production owners and all 15 test/support files verified byte-identical to the HQ168-accepted blobs",
+  "raw_source_access": false,
+  "live_c4": false,
+  "c7": false,
+  "actor_person_implementation": false,
+  "self_adoption": false,
+  "warrant_issuance": false
+ },
+ "unreconstructed_record": {
+  "status": "WITHDRAWN_BY_HQ206__CLAIM_WAS_FALSE",
+  "original_claim": "the exact 15 court FILE NAMES were not recorded by either authority; only per-file counts survived, and the list was built from a count multiset plus a residual sum of 143",
+  "why_false": "two independent authorities DO record all 15 file names in machine-readable per-file maps; the earlier draft overlooked them",
+  "corrected_position": "the exact 15 court file names are READ from the historical record, not reconstructed. The executed court matches both recorded maps file-for-file and count-for-count.",
+  "authoritative_per_file_maps": [
+   {
+    "commit": "063ee8b77fc4e05c37456ff0168e946247f919ef",
+    "file": "WORKER_RETURNS/PYAT-AT17-SUCCESSOR-REQUAL-C1-03-JOIN-RERUN-R1/08_EXECUTION_RECEIPT.json",
+    "field": "per_file",
+    "entries": 15
+   },
+   {
+    "commit": "c8ce0ea81a2165f37d566f37de788fecedf85051",
+    "file": "WORKER_RETURNS/PYAT-C1-03-SUCCESSOR-JOIN-FINAL-INTEGRATION-REVIEW-R1/05_TEST_AND_REPLAY_REVIEW.json",
+    "field": "section8_count_audit.per_file_independently_collected",
+    "entries": 15
+   }
+  ],
+  "residual_arithmetic_status": "SUPERSEDED__not_needed_to_establish_the_court_set",
+  "corrected_by": "PYAT-HQ206-C1-PRUNE-REPAIR-R1"
+ }
 }

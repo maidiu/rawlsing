@@ -1,0 +1,59 @@
+{
+ "schema": "PYAT_HQ206_DOCUMENTATION_CORRECTIONS@1.0.0",
+ "lane": "PYAT-HQ206-C1-PRUNE-REPAIR-R1",
+ "authority": "HQ205 independent review 7f33fdd7 required_repairs COURT-RECORD-01 and NECESSITY-WORDING-01",
+ "scope": "only the commissioned documentation corrections; no production code and no analytical semantics touched",
+ "documents_corrected": [
+  {
+   "path": "WORKER_RETURNS/PYAT-HQ204-LINEAGE-R1/00_RETURN.md",
+   "corrections": [
+    "COURT-RECORD-01: withdrew the false claim that the exact 15 court file names were never recorded; replaced with citation of the two historical machine-readable per-file maps",
+    "COURT-RECORD-01: replaced the residual-arithmetic justification as the basis of court identity; superseded reasoning retained inside a collapsed details block for audit only",
+    "NECESSITY-WORDING-01: replaced the directory-level 'Without them the courts fail closed' with a FILE-grain statement and an explicit 9-file table",
+    "renamed the 'Unreconstructed record' section to 'Court record - read, not reconstructed'"
+   ]
+  },
+  {
+   "path": "WORKER_RETURNS/PYAT-HQ204-LINEAGE-R1/01_ACCEPTED_GRAIN_RECONSTRUCTION.json",
+   "corrections": [
+    "COURT-RECORD-01: exact_list_recoverable_from_documentary_record false -> true",
+    "COURT-RECORD-01: added hq206_correction and authoritative_per_file_maps; marked why_not_directly_recoverable SUPERSEDED and reconstruction_method READ-from-record",
+    "NECESSITY-WORDING-01: added dependency_necessity_grain with correct_grain FILE and incorrect_prior_grain DIRECTORY"
+   ]
+  },
+  {
+   "path": "WORKER_RETURNS/PYAT-HQ204-LINEAGE-R1/03_EXECUTION_RECEIPT.json",
+   "corrections": [
+    "COURT-RECORD-01: unreconstructed_record replaced with status WITHDRAWN_BY_HQ206__CLAIM_WAS_FALSE, the original claim recorded verbatim, why_false, corrected_position, authoritative_per_file_maps, residual_arithmetic_status SUPERSEDED"
+   ]
+  },
+  {
+   "path": "WORKER_RETURNS/PYAT-HQ204-LINEAGE-R1/04_FINAL_DISPOSITION.json",
+   "corrections": [
+    "COURT-RECORD-01: decisive_findings[5] annotated with the withdrawal and the two map citations",
+    "NECESSITY-WORDING-01: decisive_findings[7] annotated with the FILE-grain correction and the 9/54 split",
+    "added documentation_corrections_applied_by"
+   ]
+  }
+ ],
+ "documents_reviewed_no_change_needed": [
+  "WORKER_RETURNS/PYAT-HQ204-LINEAGE-R1/02_HD_RECEIPT.json"
+ ],
+ "per_file_maps_cited": [
+  {
+   "commit": "063ee8b77fc4e05c37456ff0168e946247f919ef",
+   "file": "WORKER_RETURNS/PYAT-AT17-SUCCESSOR-REQUAL-C1-03-JOIN-RERUN-R1/08_EXECUTION_RECEIPT.json",
+   "field": "per_file",
+   "entries": 15
+  },
+  {
+   "commit": "c8ce0ea81a2165f37d566f37de788fecedf85051",
+   "file": "WORKER_RETURNS/PYAT-C1-03-SUCCESSOR-JOIN-FINAL-INTEGRATION-REVIEW-R1/05_TEST_AND_REPLAY_REVIEW.json",
+   "field": "section8_count_audit.per_file_independently_collected",
+   "entries": 15
+  }
+ ],
+ "file_grain_necessity_statement": "without these 9 named files the courts fail closed: 4 AT07 canonical files, 3 R2 files, 1 R3 file, 1 R8 file. It is NOT true that the courts require the R2/R3/R8 directories or the AT07 freeze as wholes.",
+ "all_patched_documents_still_parse_as_json": true,
+ "markdown_structure_valid": true
+}

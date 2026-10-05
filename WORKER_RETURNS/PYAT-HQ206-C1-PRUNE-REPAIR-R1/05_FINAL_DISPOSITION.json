@@ -1,0 +1,56 @@
+{
+ "schema": "PYAT_HQ206_FINAL_DISPOSITION@1.0.0",
+ "lane": "PYAT-HQ206-C1-PRUNE-REPAIR-R1",
+ "role": "BOUNDED REPAIR WORKER - SPACE BUNNY HIGH",
+ "branch": "agent/rabochii-pyat-hq206-c1-prune-r1",
+ "original_commission_tip": "32d86985b8af3f2ee175f5a170ee21c7101785b6",
+ "repair_base": "88f262b94bbe94cd3e2a8113c8b17d0872c5089c",
+ "disposition": "C1_PRUNE_REPAIR_COMPLETE__READY_FOR_FINAL_ACCEPTANCE",
+ "disposition_is_an_allowed_value": true,
+ "terminal": "HQ206_C1_PRUNE_REPAIR_RETURNED__HQ_FINAL_REVIEW_REQUIRED",
+ "required_repairs_addressed": [
+  {
+   "id": "OVERIMPORT-01",
+   "severity": "blocking-for-acceptance",
+   "status": "COMPLETE",
+   "evidence": "exactly 54 UNNECESSARY_OVERIMPORT files removed; open-audit measured 0 of the 54 opened by the 454 court both before and after; 454 collected and 454/454 twice after the prune"
+  },
+  {
+   "id": "COURT-RECORD-01",
+   "severity": "documentation",
+   "status": "COMPLETE",
+   "evidence": "false 'unreconstructed record' claim withdrawn in 00_RETURN.md, 01, 03 and 04; both historical per-file maps at 063ee8b7 and c8ce0ea8 cited; residual arithmetic marked superseded"
+  },
+  {
+   "id": "NECESSITY-WORDING-01",
+   "severity": "documentation",
+   "status": "COMPLETE",
+   "evidence": "necessity restated at FILE grain with the explicit 9-file table; directory-level wording superseded in 00_RETURN.md and 04"
+  }
+ ],
+ "not_done_because_not_commissioned": [
+  "no production code or analytical semantics were changed",
+  "the five accepted production owner blobs were not modified",
+  "nothing outside the 54 files and the four documentation corrections was imported or removed",
+  "no whole-branch merge"
+ ],
+ "qualification_summary": {
+  "pre_prune_baseline": "454 collected, 454 passed, exit 0",
+  "post_prune": "454 collected, 454 passed twice, exit 0",
+  "gate_met": true,
+  "regression": "0 new failure IDs, 0 fixed, 228-ID sets byte-identical before and after",
+  "open_audit": "exactly 9 opened, matching the review required.txt exactly, before and after",
+  "sensitivity": "removing one preserved required file breaks the court (3 failed, 451 passed), then restored byte-exact"
+ },
+ "environment": "reconstructed matching-environment evidence on the already-disclosed HQ204 CPython 3.11.3 / exact 13-package freeze; not governed-environment certification; no new environment created and no clone or worktree made",
+ "holds": {
+  "no_source_access": true,
+  "no_locator_discovery": true,
+  "no_warrant_issued": true,
+  "no_self_adoption": true,
+  "no_analytical_semantics_redesign": true,
+  "production_owners_unmodified": true
+ },
+ "self_adopted": false,
+ "candidate_is_for_hq_final_review": true
+}
