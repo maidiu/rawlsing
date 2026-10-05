@@ -119,6 +119,42 @@ A green court that proves only refusal correctness is insufficient when the comm
 
 ---
 
+## 4A. Upstream-blocker non-propagation law
+
+Productive adequacy is judged at the **declared grain of the component under review**.
+
+A downstream stage is not defective merely because an upstream prerequisite is currently unavailable, unqualified, unpopulated, or held.
+
+Freeze:
+
+`UPSTREAM_BLOCKER != DOWNSTREAM_IMPLEMENTATION_DEFECT`
+
+`CONDITIONAL_POSITIVE_CAPABILITY_PROVED != END_TO_END_OCCUPANCY_PROVED`
+
+A stage may be accepted when all of the following are true:
+
+- its required input contract is explicit;
+- a competent fixture or already-accepted upstream product can exercise the positive path;
+- given such competent input, the stage produces the intended output correctly;
+- it preserves required information and authority;
+- it fails closed when its own local preconditions are violated;
+- no defect in the stage itself prevents intended output.
+
+If the real upstream input is unavailable for reasons outside that stage's ownership, classify the missing end-to-end evidence as an **UPSTREAM_DEPENDENCY_BLOCKER** or **INTEGRATION_OCCUPANCY_GAP**, not as a defect in the downstream stage.
+
+Conversely, a stage must not use an upstream blocker as an excuse for never proving its own positive behavior. Source-free fixtures, accepted retained products, or exact synthetic authority may establish local productive capability where lawful.
+
+Completion accounting therefore separates:
+
+1. **LOCAL_STAGE_ACCEPTANCE** — this stage correctly transforms competent inputs at its declared grain;
+2. **INTEGRATION_REALIZATION** — accepted stages compose end to end;
+3. **ESTATE_OCCUPANCY** — governed real sources actually populate the composed system;
+4. **PREV3_COMPLETION** — the intended empirical-social world is productively realized at declared scope.
+
+Do not collapse one level into another.
+
+---
+
 ## 5. Review law
 
 Independent reviewers must attack productive adequacy, not merely contract conformance.
