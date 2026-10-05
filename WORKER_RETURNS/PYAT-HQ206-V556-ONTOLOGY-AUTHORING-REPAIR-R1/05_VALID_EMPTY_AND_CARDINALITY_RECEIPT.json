@@ -1,0 +1,63 @@
+{
+  "schema": "PYAT_HQ206_VALID_EMPTY_AND_CARDINALITY_RECEIPT@1.0.0",
+  "lane": "PYAT-HQ206-V556-ONTOLOGY-AUTHORING-REPAIR-R1",
+  "td_r03_section_12_law": "Collection-level publication must distinguish VALID_EMPTY_NO_GOVERNED_RULE, VALID_EMPTY_NO_ELIGIBLE_AUTHORIZED_BASIS, valid nonempty publication, and integrity/build failure. Empty because no rule authorizes a relation is distinct from missing/corrupt input, schema failure, duplicate ID, hash failure or other construction failure.",
+  "valid_empty_states": {
+    "VALID_EMPTY_NO_GOVERNED_RULE": {
+      "reachable": true,
+      "how": "V556RuleMaterialRegistry.build([])",
+      "state": "VALID_EMPTY_NO_GOVERNED_RULE",
+      "registered_rule_count": 0,
+      "active_rule_keys": [],
+      "populated_families": [],
+      "unfilled_families": "all three supported families",
+      "emits_positive_object": false,
+      "infers_absence": false,
+      "court": "test_valid_empty_registry_emits_no_positive_object_and_infers_nothing"
+    },
+    "V556_INTERACTION_RELATION_family_valid_empty": {
+      "reachable": true,
+      "how": "interaction_relation_canary_rule() refuses; the family is reported in unfilled_families",
+      "reason": "TD_R03 §6 records that no complete governed interaction-rule authority exists",
+      "reason_is_not_a_construction_failure": "this is the explicitly authorised valid-empty outcome for the family, not a schema, hash, duplicate-ID or integrity failure",
+      "court": ["test_interaction_family_is_lawfully_valid_empty", "test_no_positive_interaction_relation_is_fabricated"]
+    },
+    "V556_ATTRACTOR_PREREQUISITE_family_valid_empty": {
+      "reachable": true,
+      "how": "no canary is authored for the family",
+      "reason": "TD_R03 §8 records that no complete governed attractor-prerequisite rule authority was found",
+      "court": "test_attractor_family_remains_unfilled"
+    },
+    "integrity_or_build_failure_is_distinct": {
+      "reachable": true,
+      "how": "V556RuleMaterialRegistry.build([object()]) and stale/forged material raise SubstrateAuthoringError rather than yielding a valid-empty registry",
+      "meaning": "construction failure never degrades into a lawful empty registry",
+      "court": "test_registry_distinguishes_valid_empty_from_integrity_failure"
+    }
+  },
+  "cardinality_truthfulness": {
+    "before": {
+      "declared_maximum": "UNBOUNDED",
+      "realizable_maximum": 2,
+      "review_probe": "P6b returned INVALID_PARTICIPANT_SET for a three-participant request despite the UNBOUNDED declaration"
+    },
+    "after": {
+      "declared_maximum": 2,
+      "minimum": 2,
+      "unbounded_claimed": false,
+      "seam_enforces_it": "a three-participant request is refused by the unmodified M3 seam",
+      "substrate_enforces_it": "validate_payload_against_participants refuses a participant count above the rule maximum",
+      "court": ["test_topology_canary_declares_a_truthful_dyadic_maximum", "test_truthful_cardinality_is_enforced_by_the_seam_not_only_by_us"]
+    },
+    "why_unbounded_was_false_metadata": "the rule declares two participant roles under an ORDERED pattern, so M3 admits exactly two participants; declaring UNBOUNDED asserted a generality the rule cannot realize"
+  },
+  "td_r03_section_6_cardinality_semantics": {
+    "law": "Cardinality is semantic. A genuinely n-ary relation must remain n-ary unless authority separately licenses dyadic decomposition; a set of dyads does not imply one n-ary relation.",
+    "observed": "no n-ary relation is claimed anywhere; the retained canary declares an honest dyad and the interaction family is empty, so no dyadic set is presented as one n-ary relation"
+  },
+  "positive_core_preserved": {
+    "topology_canary_supported_through_unmodified_seam": true,
+    "replay_stable": true,
+    "court": ["test_repaired_topology_canary_still_evaluates_supported_through_the_unmodified_seam", "test_repaired_topology_evaluation_replay_is_stable"]
+  }
+}
