@@ -615,13 +615,19 @@ def test_F8_owner_module_is_byte_unchanged_from_the_HQ208_recorded_blob():
     import subprocess
 
     repo = Path(MODULE_PATH).resolve().parents[1]
+    # Repair 5: fail loudly rather than skip, for the same reason as the owners guard.
+    assert Path(F8.__file__).resolve().exists(), (
+        "REQUIRED ADOPTED F8 OWNER ABSENT: the byte-identity guard could not run, so this "
+        "qualification is NOT certified.")
     try:
         out = subprocess.run(["git", "-C", str(repo), "hash-object", str(Path(F8.__file__).resolve())],
                              capture_output=True, text=True, timeout=60)
-    except Exception:  # pragma: no cover
-        pytest.skip("git unavailable")
-    if out.returncode != 0:
-        pytest.skip("git hash-object unavailable")
+    except Exception as exc:  # pragma: no cover
+        pytest.fail(f"REQUIRED GIT FACILITY UNAVAILABLE: git hash-object raised {exc!r}; "
+                    f"the F8 byte-identity guard could not run.")
+    assert out.returncode == 0, (
+        f"REQUIRED GIT FACILITY UNAVAILABLE: git hash-object exited {out.returncode} "
+        f"({out.stderr.strip()!r}); the F8 byte-identity guard could not run.")
     assert out.stdout.strip() == HQ208_F8_BLOB, (
         f"the F8 owner was modified: {out.stdout.strip()} != HQ208-recorded {HQ208_F8_BLOB}")
 
@@ -652,18 +658,67 @@ def test_binding_passes_query_rule_evidence_to_F8_by_identity_and_changes_no_geo
     assert ex.evidence_ref in out.replay_determinants
 
 
-def test_binding_never_touches_conditioners():
-    """A static guarantee: the binding module reads no conditioner attribute."""
+#: Repair 4. The previous scan asserted "reads no conditioner/geometry attribute" while
+#: checking only 8 hardcoded names, which is narrower than the claim. This court now
+#: pins the COMPLETE inventory of attributes the binder reads, as LITERALS in this file
+#: (never read from the production module). The proof is therefore stronger AND
+#: honest: any NEW attribute read -- a conditioner, a geometry, or anything else --
+#: fails this test. No conditioner or geometry attribute appears in the inventory.
+PINNED_BINDING_ATTRIBUTE_INVENTORY = frozenset({
+    "__init__", "__setattr__", "_provenance_for", "_refuse_if_forbidden_purpose",
+    "_require_single_source_binding", "admissible_source_universe_refs",
+    "admission_authority_ref", "admission_provenance", "admission_provenance_refs",
+    "admitted_source_universe_refs", "algorithm_id", "append", "applicability_decision",
+    "applicability_receipt_id", "applicability_receipt_replay_identity", "as_dict",
+    "assert_query_source_admitted", "authorised_authority", "binding_mode", "binding_ref",
+    "binding_request_id", "binding_request_ref", "binding_statement",
+    "bound_target_use_permission_refs", "candidate_class_coverage", "candidate_class_ref",
+    "currentness_result", "decisions", "f8_algorithm_id", "f8_model_rule_refs",
+    "f8_rule_hash", "get", "key", "material", "model_rule_id", "no_applicable_source",
+    "non_admitted_source_states", "object_id", "public_typed_state", "reason_code",
+    "receipt_id", "ref", "release_identity_ref", "release_ref", "replay_identity",
+    "request_key", "requested_currentness_claim", "requested_purpose",
+    "requested_source_universe_ref", "rule_hash", "service_id",
+    "service_request_set_identity", "source_universe_ref", "source_universe_refs", "strip",
+    "target_use_ref", "upper",
+})
+
+#: Pinned as literals: the conditioner/geometry attribute NAMES that must never appear.
+PINNED_FORBIDDEN_CONDITIONER_GEOMETRY_ATTRS = frozenset({
+    "conditioner_bindings", "retained_conditioner_ids", "effective_time_or_interval",
+    "geometry", "exact_geometry", "uncertainty_state", "raw_support", "walkback_steps",
+    "positive_proxy_authority_refs", "slice_possibility", "possibility_geometry",
+    "conditional_lookup_table", "projection", "point_masses", "density", "estimand",
+    "distribution", "bandwidth", "variance", "posterior", "likelihood",
+})
+
+
+def test_binding_reads_exactly_the_pinned_attribute_inventory_and_no_conditioner():
+    """Repair 4: the scan now covers the FULL attribute set, not a chosen subset.
+
+    Two independent checks, both non-self-referential (the expected values are literals
+    in this file, never read from the production module):
+      1. the binder's complete read-attribute inventory equals the pinned inventory, so
+         adding any attribute read fails; and
+      2. no pinned conditioner/geometry/estimation attribute is read at all.
+    """
     tree = ast.parse(MODULE_PATH.read_text())
-    forbidden_attrs = {"conditioner_bindings", "retained_conditioner_ids", "effective_time_or_interval",
-                       "geometry", "uncertainty_state", "raw_support", "walkback_steps",
-                       "positive_proxy_authority_refs"}
-    touched: set[str] = set()
-    for node in ast.walk(tree):
-        if isinstance(node, ast.Attribute) and node.attr in forbidden_attrs:
-            # allow only the module docstring / type annotations we do not read
-            touched.add(node.attr)
-    assert touched == set(), f"the binding reads F8 conditioning/geometry attributes: {sorted(touched)}"
+    read: set[str] = {n.attr for n in ast.walk(tree) if isinstance(n, ast.Attribute)}
+    assert read == set(PINNED_BINDING_ATTRIBUTE_INVENTORY), (
+        "the binder's attribute-read inventory changed. Newly read: "
+        f"{sorted(read - set(PINNED_BINDING_ATTRIBUTE_INVENTORY))}; no longer read: "
+        f"{sorted(set(PINNED_BINDING_ATTRIBUTE_INVENTORY) - read)}. A new attribute read must "
+        f"be reviewed as a possible conditioning or geometry read.")
+    forbidden = read & PINNED_FORBIDDEN_CONDITIONER_GEOMETRY_ATTRS
+    assert forbidden == set(), (
+        f"the binding reads conditioner/geometry/estimation attributes: {sorted(forbidden)}")
+
+
+def test_no_conditioner_attribute_is_among_those_the_binding_reads():
+    """The same no-conditioner claim, stated directly against the live inventory."""
+    tree = ast.parse(MODULE_PATH.read_text())
+    read = {n.attr for n in ast.walk(tree) if isinstance(n, ast.Attribute)}
+    assert not (read & PINNED_FORBIDDEN_CONDITIONER_GEOMETRY_ATTRS)
 
 
 def test_narrowing_eligibility_changes_which_slice_is_selected_not_the_geometry():
@@ -738,15 +793,22 @@ def test_binding_does_not_modify_the_adopted_owners():
         ("rawlsing_next/objective_consumer_bounded_evidence.py", "f30fca20e7b56e00348e82765d95f974b4b6a195"),
     ):
         path = repo / rel
-        if not path.exists():
-            pytest.skip(f"{rel} not present in this checkout")
+        # Repair 5: a write-terrain guard must FAIL, not skip. A skip here would make
+        # an all-green run indistinguishable from a run in which no owner was ever
+        # checked, so an absent owner or absent git facility is now an explicit FAIL.
+        assert path.exists(), (
+            f"REQUIRED ADOPTED OWNER ABSENT: {rel} is not present at {path}. The byte-identity "
+            f"guard could not run, so this qualification is NOT certified. Fail loudly instead "
+            f"of skipping.")
         try:
             out = subprocess.run(["git", "-C", str(repo), "hash-object", str(path)],
                                  capture_output=True, text=True, timeout=60)
-        except Exception:  # pragma: no cover
-            pytest.skip("git unavailable")
-        if out.returncode != 0:
-            pytest.skip("git hash-object unavailable")
+        except Exception as exc:  # pragma: no cover
+            pytest.fail(f"REQUIRED GIT FACILITY UNAVAILABLE: git hash-object raised {exc!r}. "
+                        f"The write-terrain guard could not run for {rel}; fail loudly.")
+        assert out.returncode == 0, (
+            f"REQUIRED GIT FACILITY UNAVAILABLE: git hash-object exited {out.returncode} "
+            f"({out.stderr.strip()!r}) for {rel}. The write-terrain guard could not run.")
         assert out.stdout.strip() == expected, f"{rel} was modified: {out.stdout.strip()} != {expected}"
 
 

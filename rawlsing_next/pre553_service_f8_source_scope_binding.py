@@ -46,9 +46,26 @@ The two positive powers, exactly
 2. ``expose_unranked_admitted_source_set`` - expose the COMPLETE UNRANKED admitted
    ``source_universe_refs`` set for independent source-indexed F8 evaluation.
 
-There is no third. In particular there is no way to obtain a first, best, latest,
-local, preferred, ranked or weighted source from this object, because no such method
-exists and the three that are attempted-against refuse loudly.
+**Truthful accounting of the public surface (Repair 2).** The declared public
+callables are EIGHT, and FIVE of them return a value. They are NOT two:
+
+* the TWO source-touching positive powers -- ``assert_query_source_admitted`` and
+  ``expose_unranked_admitted_source_set``;
+* plus a binding CONSTRUCTOR ``bind_service_applicability_to_f8_scope``;
+* plus a DELEGATING evaluator ``evaluate_bound_positioned_subject_possibility``;
+* plus a REPLAY VERIFIER ``verify_service_f8_scope_binding_replay``;
+* plus a COVERAGE GUARD ``assert_complete_coverage_from_binding``, which returns
+  nothing and only raises.
+
+``evaluate_bound_positioned_subject_possibility`` is NOT a third power over sources:
+it invokes the adopted F8 evaluator UNCHANGED after source-scope validation and
+grants no selection, transformation, pooling, currentness, permission or actor
+semantics of its own. That is why it is a non-power despite returning a full result.
+
+What remains exactly true: there is no THIRD POWER OVER SOURCES. There is no way to
+obtain a first, best, latest, local, preferred, ranked or weighted source from this
+object, because no such method exists, and all SEVEN selection/permission-shaped
+methods refuse loudly when attempted.
 """
 from __future__ import annotations
 
@@ -61,6 +78,9 @@ from rawlsing_next.pre553_empirical_objects import (
     Pre553IntegrityError,
     exact_ref,
     semantic_hash,
+)
+from rawlsing_next.objective_non_event_currentness_contract import (
+    STATES as ADOPTED_CURRENTNESS_STATES,
 )
 from rawlsing_next.pre553_service_source_applicability import (
     AUTHORISED_AUTHORITY,
@@ -153,7 +173,56 @@ MODE_SINGLE_SOURCE_VALIDATION = "SINGLE_SOURCE_VALIDATION"
 MODE_EXHAUSTIVE_UNRANKED_SET = "EXHAUSTIVE_UNRANKED_SET"
 BINDING_MODES: tuple[str, ...] = (MODE_SINGLE_SOURCE_VALIDATION, MODE_EXHAUSTIVE_UNRANKED_SET)
 
+#: Repair 2: the exact public surface, counted truthfully.
+#: The TWO source-touching positive powers.
+TWO_SOURCE_TOUCHING_POWERS: tuple[str, ...] = (
+    "assert_query_source_admitted",
+    "expose_unranked_admitted_source_set",
+)
+#: Public callables that return a value but grant NO power over sources.
+NON_POWER_RETURNING_CALLABLES: tuple[str, ...] = (
+    "bind_service_applicability_to_f8_scope",
+    "evaluate_bound_positioned_subject_possibility",
+    "verify_service_f8_scope_binding_replay",
+)
+#: Public callables that return nothing and only raise on a violation.
+GUARD_ONLY_CALLABLES: tuple[str, ...] = (
+    "assert_complete_coverage_from_binding",
+)
+#: Why the delegating evaluator is not a new power.
+DELEGATING_EVALUATOR_IS_NOT_A_POWER_BECAUSE = (
+    "evaluate_bound_positioned_subject_possibility invokes the adopted F8 evaluator UNCHANGED "
+    "after source-scope validation and grants no selection, ranking, transformation, pooling, "
+    "currentness, permission or actor semantics of its own"
+)
+#: The substantive claim that IS exact.
+NO_THIRD_POWER_OVER_SOURCES = (
+    "there is no THIRD POWER OVER SOURCES: no first/best/latest/local/preferred/ranked/"
+    "weighted source is obtainable, because no such method exists and all seven "
+    "selection-shaped methods refuse loudly when attempted"
+)
+
 CURRENTNESS_UNREQUESTED = "CURRENTNESS_NOT_REQUESTED"
+
+#: Repair 4: the accepted currentness vocabulary is now a CLOSED set, taken from the
+#: adopted currentness contract's own STATES rather than left open to any caller
+#: string. Of the adopted states, only CURRENT is a currency result this binder will
+#: record; the adopted non-currency states are refused exactly as the legacy negative
+#: tokens are. This binder records a caller-supplied currentness result and never
+#: decides currency -- pinning the vocabulary does not make it a currentness authority.
+ACCEPTED_CURRENTNESS_RESULTS: frozenset[str] = frozenset({"CURRENT"})
+REFUSED_CURRENTNESS_RESULTS: frozenset[str] = frozenset(
+    {"CONFLICTING", "UNKNOWN", "MISSING", "UNRESOLVED"}
+) | (set(ADOPTED_CURRENTNESS_STATES) - ACCEPTED_CURRENTNESS_RESULTS)
+#: Every accepted result must appear in the adopted contract's states.
+ACCEPTED_CURRENTNESS_RESULTS_ARE_ADOPTED = ACCEPTED_CURRENTNESS_RESULTS <= set(
+    ADOPTED_CURRENTNESS_STATES
+)
+if not ACCEPTED_CURRENTNESS_RESULTS_ARE_ADOPTED:  # pragma: no cover - defensive
+    raise ServiceF8ScopeBindingError(
+        "CURRENTNESS_VOCABULARY_NOT_ADOPTED",
+        "the accepted currentness vocabulary must be a subset of the adopted contract states",
+    )
 
 
 class ServiceF8ScopeBindingError(Pre553IntegrityError):
@@ -313,14 +382,47 @@ class ServiceApplicabilityF8SourceScopeBinding:
     f8_rule_hash: str
     f8_algorithm_id: str
     binding_mode: str
+    # Repair 1: the requested source is CARRIED on the binding, not discarded.
+    # Without this the single-source refinement was inert at evaluation time.
+    requested_source_universe_ref: ExactRef | None
     currentness_result: str
     binding_statement: str = BINDING_STATEMENT
 
-    # -- the two positive powers -------------------------------------------
+    def _require_single_source_binding(self) -> ExactRef:
+        """Repair 1: SINGLE_SOURCE_VALIDATION must be semantically binding.
+
+        The requested source is carried on the binding and enforced on EVERY
+        validation and evaluation. A binding made for one exact source cannot be
+        used to evaluate a different admitted source.
+        """
+        if self.binding_mode != MODE_SINGLE_SOURCE_VALIDATION:
+            raise ServiceF8ScopeBindingError(
+                "BINDING_MODE_MISMATCH",
+                "single-source enforcement is only defined for SINGLE_SOURCE_VALIDATION bindings",
+            )
+        if self.requested_source_universe_ref is None:
+            raise ServiceF8ScopeBindingError(
+                "SINGLE_SOURCE_BINDING_MISSING_REQUESTED_SOURCE",
+                "this SINGLE_SOURCE_VALIDATION binding carries no requested source universe ref",
+            )
+        return self.requested_source_universe_ref
+
+    # -- the two source-touching positive powers ----------------------------
     def assert_query_source_admitted(self, query: PositionedSubjectPossibilityQuery) -> Mapping[str, Any]:
         """Power 1. Validate ONE exact F8 query source as admitted. Never selects."""
         _require_f8_query(query)
         src = _ref(query.source_universe_ref, "query.source_universe_ref")
+        # Repair 1: in single-source mode the query source MUST be the requested
+        # source. Membership in the admitted set is not sufficient.
+        if self.binding_mode == MODE_SINGLE_SOURCE_VALIDATION:
+            want = self._require_single_source_binding()
+            if src.key != want.key:
+                raise _refusal(
+                    "F8_QUERY_SOURCE_NOT_THE_REQUESTED_SOURCE",
+                    f"this binding is SINGLE_SOURCE_VALIDATION for source "
+                    f"{want.object_id!r}; F8 query source {src.object_id!r} is a different "
+                    f"admitted source and may not be evaluated through this binding",
+                )
         if src not in set(self.admitted_source_universe_refs):
             raise _refusal(
                 "F8_QUERY_SOURCE_NOT_ADMITTED",
@@ -456,6 +558,12 @@ class ServiceApplicabilityF8SourceScopeBinding:
             "f8_algorithm_id": self.f8_algorithm_id,
             "f8_does_not_transform_possibility_geometry": True,
             "binding_mode": self.binding_mode,
+            # Repair 1: the ENFORCED single-source refinement is part of the binding
+            # material, so it is part of the replay identity. Without this a
+            # single-source binding for A could not be distinguished from one for B.
+            "requested_source_universe_ref": (self.requested_source_universe_ref.as_dict()
+                                              if self.requested_source_universe_ref else None),
+            "single_source_refinement_is_enforced_at_validation": True,
             "currentness_result": self.currentness_result,
             "binding_statement": self.binding_statement,
             "ordering_semantics": ORDERING_SEMANTICS,
@@ -593,18 +701,21 @@ def bind_service_applicability_to_f8_scope(
             if src.key not in admitted_keys:
                 raise _refusal("BINDING_INTEGRITY_FAILURE",
                                "a positive decision is absent from the admissible set")
+            # Repair 3: the off-release positive branch is REMOVED and made
+            # FAIL CLOSED. It was dead only because the adopted owner stamps every
+            # decision with the request release; if that owner ever became
+            # per-decision-release, the old code would have admitted an off-release
+            # source into the admitted set. An off-release positive decision now
+            # refuses instead of being admitted.
             if d.release_identity_ref.get("object_id") != request.release_identity_ref.object_id:
-                provenance.append({
-                    "source_universe_ref": src.as_dict(),
-                    "release_identity_ref": dict(d.release_identity_ref),
-                    "admitted": True,
-                    "bound_to_requested_release": False,
-                    "admission_authority_ref": (dict(d.admission_authority_ref)
-                                                if d.admission_authority_ref else None),
-                    "admission_provenance_refs": [dict(r) for r in d.admission_provenance_refs],
-                    "public_typed_state": d.public_typed_state,
-                })
-                continue
+                raise _refusal(
+                    "BINDING_OFF_RELEASE_POSITIVE_DECISION",
+                    f"applicability decision for source {src.object_id!r} carries release "
+                    f"{d.release_identity_ref.get('object_id')!r} but the binding requests release "
+                    f"{request.release_identity_ref.object_id!r}; an off-release positive decision "
+                    f"is refused rather than admitted, and the adopted owner is expected to stamp "
+                    f"every decision with the request release",
+                )
             provenance.append({
                 "source_universe_ref": src.as_dict(),
                 "release_identity_ref": dict(d.release_identity_ref),
@@ -641,6 +752,21 @@ def bind_service_applicability_to_f8_scope(
                 "REQUESTED_SOURCE_NOT_ADMITTED",
                 f"requested source {want.object_id!r} is not a positively admitted source universe; "
                 f"a nonpositive applicability result is never treated as an admission",
+            )
+
+    # Repair 1: the requested source must also be INSIDE the bound F8 rule's source
+    # scope. Previously a single-source binding could name a source the rule does not
+    # even span, so the refinement was unrelated to the rule it was bound to.
+    if request.binding_mode == MODE_SINGLE_SOURCE_VALIDATION:
+        want = request.requested_source_universe_ref
+        assert want is not None
+        if want not in set(rule.source_universe_refs):
+            raise _refusal(
+                "REQUESTED_SOURCE_NOT_IN_F8_RULE_SOURCE_SCOPE",
+                f"requested source {want.object_id!r} is not among the bound F8 model rule's "
+                f"source_universe_refs "
+                f"{[s.object_id for s in rule.source_universe_refs]!r}; a single-source binding "
+                f"must name a source the bound rule actually spans",
             )
 
     # -- the F8 rule's source scope must lie inside the admitted set ---------
@@ -680,13 +806,20 @@ def bind_service_applicability_to_f8_scope(
             )
         claim = request.requested_currentness_claim.strip().upper()
         observed = currentness_result.strip().upper()
-        if claim in {"CONFLICTING", "UNKNOWN", "MISSING", "UNRESOLVED"} or observed in {
-            "CONFLICTING", "UNKNOWN", "MISSING", "UNRESOLVED"
-        }:
+        if claim in REFUSED_CURRENTNESS_RESULTS or observed in REFUSED_CURRENTNESS_RESULTS:
             raise _refusal(
                 "CURRENTNESS_MISSING_OR_CONFLICTING",
                 f"currentness claim {claim!r} against result {observed!r} is missing or conflicting; "
                 f"the binding refuses rather than asserting currency",
+            )
+        # Repair 4: closed vocabulary. Anything outside the adopted contract's current
+        # states is refused rather than recorded.
+        if claim not in ADOPTED_CURRENTNESS_STATES or observed not in ACCEPTED_CURRENTNESS_RESULTS:
+            raise _refusal(
+                "CURRENTNESS_RESULT_OUTSIDE_ADOPTED_VOCABULARY",
+                f"currentness claim {claim!r} and result {observed!r} are not both adopted "
+                f"currentness states from the currentness compatibility contract; this binder "
+                f"records only an accepted adopted vocabulary and never invents one",
             )
         currentness = observed
 
@@ -723,6 +856,7 @@ def bind_service_applicability_to_f8_scope(
         f8_rule_hash=rule.rule_hash,
         f8_algorithm_id=rule.algorithm_id,
         binding_mode=request.binding_mode,
+        requested_source_universe_ref=request.requested_source_universe_ref,
         currentness_result=currentness,
     )
 
@@ -816,6 +950,10 @@ __all__ = [
     "BINDING_STATEMENT", "EXPECTED_F8_ALGORITHM_ID", "EXPECTED_F8_MODEL_RULE_ID",
     "FORBIDDEN_BINDING_PURPOSES", "NON_COLLAPSE_LAWS", "BINDING_MODES",
     "MODE_SINGLE_SOURCE_VALIDATION", "MODE_EXHAUSTIVE_UNRANKED_SET", "CURRENTNESS_UNREQUESTED",
+    "TWO_SOURCE_TOUCHING_POWERS", "NON_POWER_RETURNING_CALLABLES", "GUARD_ONLY_CALLABLES",
+    "DELEGATING_EVALUATOR_IS_NOT_A_POWER_BECAUSE", "NO_THIRD_POWER_OVER_SOURCES",
+    "ACCEPTED_CURRENTNESS_RESULTS", "REFUSED_CURRENTNESS_RESULTS",
+    "ACCEPTED_CURRENTNESS_RESULTS_ARE_ADOPTED",
     "ServiceF8ScopeBindingError", "ServiceApplicabilityF8ScopeBindingRequest",
     "ServiceApplicabilityF8SourceScopeBinding", "bind_service_applicability_to_f8_scope",
     "evaluate_bound_positioned_subject_possibility", "verify_service_f8_scope_binding_replay",
