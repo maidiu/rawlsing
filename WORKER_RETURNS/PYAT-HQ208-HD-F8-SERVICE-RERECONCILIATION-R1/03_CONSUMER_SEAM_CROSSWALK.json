@@ -1,0 +1,88 @@
+{
+  "schema": "PYAT_HQ208_HD_CONSUMER_SEAM_CROSSWALK@1.0.0",
+  "commission": "PYAT-HQ208-HD-F8-SERVICE-RERECONCILIATION-R1",
+  "current_state": {
+    "applicability_authority_exists": true,
+    "applicability_consumer_in_F8_exists": false,
+    "evidence": [
+      {
+        "item": "service applicability owner",
+        "state": "CURRENT",
+        "module": "rawlsing_next/pre553_service_source_applicability.py",
+        "blob": "3e40caca29e8c96ee1f412f919cfc7dba63f96c4"
+      },
+      {
+        "item": "F8 owner",
+        "state": "CURRENT_BUT_UNCHANGED_SINCE_HQ203",
+        "module": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+        "blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7"
+      },
+      {
+        "item": "objective consumer owner",
+        "state": "CURRENT_BUT_UNCHANGED_SINCE_HQ203",
+        "module": "rawlsing_next/objective_consumer_bounded_evidence.py",
+        "blob": "f30fca20e7b56e00348e82765d95f974b4b6a195"
+      }
+    ],
+    "exact_gap": "no binding from CandidateClassApplicabilityReceipt/replay identity to PositionedSubjectPossibilityModelRule.source_universe_refs or exact query-source validation"
+  },
+  "proposed_lane": {
+    "justified": true,
+    "owner_seam": "SERVICE_APPLICABILITY_TO_F8_SOURCE_SCOPE_BINDING",
+    "kind": "THIN_SAME_GRAIN_ADAPTER_OR_BINDER__NOT_NEW_WORLD_ONTOLOGY",
+    "inputs": [
+      "exact ServiceApplicabilityRequest or request_ref",
+      "exact CandidateClassApplicabilityReceipt and replay identity",
+      "per-source admission provenance",
+      "exact service/target/use/population/geography/time/release grain",
+      "separate lifecycle/currentness result only if currentness is claimed",
+      "already-bound target-use permission refs"
+    ],
+    "outputs": [
+      "validate an exact F8 query source as admitted",
+      "or expose the full unranked admitted source_universe_refs set for independent source-indexed F8 evaluation"
+    ],
+    "exhaustive_rule": "a binding that claims the complete admissible set requires COMPLETE applicability coverage",
+    "multi_source_rule": "preserve every admitted source independently; never choose first/best/latest/local/preferred absent a separate exact source-identity authority",
+    "replay_rule": "carry exact applicability request/receipt identity and admission provenance into binding material"
+  },
+  "forbidden_powers": [
+    "source ranking",
+    "source selection",
+    "source priority",
+    "pooling",
+    "source semantic equivalence",
+    "respondent linkage",
+    "overlap/nonduplication authority",
+    "estimand composition",
+    "backfill",
+    "currentness authority",
+    "target-use permission grant",
+    "F8 conditioning",
+    "geometry/distribution transformation",
+    "individual or actor/person inference"
+  ],
+  "mandatory_refusals": [
+    "request/receipt grain mismatch",
+    "candidate-class mismatch",
+    "exhaustive use under INCOMPLETE coverage",
+    "query source absent from admitted set",
+    "nonpositive applicability presented as admission",
+    "attempted ranking/selection/priority",
+    "attempted pooling or cross-source composition",
+    "missing/conflicting currentness when a current claim is requested",
+    "receipt replay/provenance mismatch"
+  ],
+  "dependencies": {
+    "c1": {
+      "present_on_current_control": false,
+      "required_for_this_seam": false,
+      "required_for": "broader analytical/joint/multi-arity claims"
+    },
+    "f7": {
+      "production_temporal_comparability_current": false,
+      "required_for_this_seam": false,
+      "required_for": "positive temporal comparison/pressure/temporal-conditioning claims"
+    }
+  }
+}
