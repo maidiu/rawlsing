@@ -215,13 +215,14 @@ def bind_one_admitted():
 # ============================================================ 1. the positive path
 def test_single_admitted_source_binds_and_F8_evaluates_exactly():
     rec, rule = bind_one_admitted()
-    b = B.bind_service_applicability_to_f8_scope(
-        request=binding_request(identity=rec.service_request_set_identity), receipt=rec, rule=rule)
+    req_b = binding_request(identity=rec.service_request_set_identity)
+    b = B.bind_service_applicability_to_f8_scope(request=req_b, receipt=rec, rule=rule)
     assert b.binding_mode == B.MODE_EXHAUSTIVE_UNRANKED_SET
     assert b.candidate_class_coverage == COVERAGE_COMPLETE
     assert [s.key for s in b.admitted_source_universe_refs] == [A.key]
     out = B.evaluate_bound_positioned_subject_possibility(
-        binding=b, query=f8_query(A), rule=rule, evidence=(evidence(A),), receipt=rec)
+        binding=b, request=req_b, receipt=rec, query=f8_query(A), rule=rule,
+        evidence=(evidence(A),))
     assert out.result_state == "EXACT_SUPPORTED"
     assert out.exact_disposition == "SUPPORTED"
     assert out.exact_reason == "EXACT_POSITIONED_STRATUM_SUPPORTED"
@@ -229,8 +230,8 @@ def test_single_admitted_source_binds_and_F8_evaluates_exactly():
 
 def test_binding_carries_exact_receipt_replay_identity_and_admission_provenance():
     rec, rule = bind_one_admitted()
-    b = B.bind_service_applicability_to_f8_scope(
-        request=binding_request(identity=rec.service_request_set_identity), receipt=rec, rule=rule)
+    req_b = binding_request(identity=rec.service_request_set_identity)
+    b = B.bind_service_applicability_to_f8_scope(request=req_b, receipt=rec, rule=rule)
     assert b.applicability_receipt_replay_identity == rec.replay_identity()
     assert b.applicability_receipt_id == rec.receipt_id
     row = b.admission_provenance[0]
@@ -243,8 +244,8 @@ def test_binding_carries_exact_receipt_replay_identity_and_admission_provenance(
 
 def test_binding_carries_service_target_class_release_and_permission_grain():
     rec, rule = bind_one_admitted()
-    b = B.bind_service_applicability_to_f8_scope(
-        request=binding_request(identity=rec.service_request_set_identity), receipt=rec, rule=rule)
+    req_b = binding_request(identity=rec.service_request_set_identity)
+    b = B.bind_service_applicability_to_f8_scope(request=req_b, receipt=rec, rule=rule)
     assert b.service_id == SERVICE
     assert b.service_request_set_identity == rec.service_request_set_identity
     assert b.candidate_class_ref.as_dict() == rec.candidate_class_ref
@@ -264,10 +265,12 @@ def test_admitted_set_is_unranked_by_permutation_invariance_of_replay_identity()
     for perm in itertools.permutations(members):
         rec = resolve(list(perm), [admitted(A), admitted(BB), negative(C)])
         rule = f8_rule((A, BB))
-        b = B.bind_service_applicability_to_f8_scope(
-            request=binding_request(identity=rec.service_request_set_identity), receipt=rec, rule=rule)
+        req_b = binding_request(identity=rec.service_request_set_identity)
+        b = B.bind_service_applicability_to_f8_scope(request=req_b, receipt=rec, rule=rule)
         identities.add(b.replay_identity())
-        admitted_orders.add(tuple(s.key for s in b.expose_unranked_admitted_source_set()))
+        admitted_orders.add(tuple(
+            s.key for s in b.expose_unranked_admitted_source_set(
+                request=req_b, receipt=rec, rule=rule)))
     assert len(identities) == 1, "binding identity changed under candidate reordering => an order is being consumed"
     assert len(admitted_orders) == 1, "admitted set order changed under reordering => the order is derived from input order"
 
@@ -275,8 +278,8 @@ def test_admitted_set_is_unranked_by_permutation_invariance_of_replay_identity()
 def test_binding_material_contains_no_rank_score_priority_preference_or_weight_field():
     """GAP-2/GAP-3 closed: value inspection of the DATA, not of the function."""
     rec, rule = bind_one_admitted()
-    b = B.bind_service_applicability_to_f8_scope(
-        request=binding_request(identity=rec.service_request_set_identity), receipt=rec, rule=rule)
+    req_b = binding_request(identity=rec.service_request_set_identity)
+    b = B.bind_service_applicability_to_f8_scope(request=req_b, receipt=rec, rule=rule)
     material = b.material()
     banned = ("rank", "score", "priority", "preference", "preferred", "weight", "best", "first", "latest", "local")
     def walk(node, path=""):
@@ -319,9 +322,9 @@ def test_binding_exposes_no_ordered_or_preferring_surface():
         f"unexpected source-touching surface: {sorted(yielding)}")
     # power 1 returns a per-source validation, never a chosen source
     rec, rule = bind_one_admitted()
-    b = B.bind_service_applicability_to_f8_scope(
-        request=binding_request(identity=rec.service_request_set_identity), receipt=rec, rule=rule)
-    one = b.assert_query_source_admitted(f8_query(A))
+    req_b = binding_request(identity=rec.service_request_set_identity)
+    b = B.bind_service_applicability_to_f8_scope(request=req_b, receipt=rec, rule=rule)
+    one = b.assert_query_source_admitted(f8_query(A), request=req_b, receipt=rec, rule=rule)
     assert one["admitted"] is True
     assert one["not_a_selection_among_sources"] is True
     assert one["not_conditioning"] is True
@@ -334,8 +337,8 @@ def test_binding_exposes_no_ordered_or_preferring_surface():
 def test_every_pinned_forbidden_purpose_is_refused(purpose):
     """Pinned literals, so a truncated production tuple fails this court."""
     rec, rule = bind_one_admitted()
-    b = B.bind_service_applicability_to_f8_scope(
-        request=binding_request(identity=rec.service_request_set_identity), receipt=rec, rule=rule)
+    req_b = binding_request(identity=rec.service_request_set_identity)
+    b = B.bind_service_applicability_to_f8_scope(request=req_b, receipt=rec, rule=rule)
     with pytest.raises(B.ServiceF8ScopeBindingError) as ei:
         b.assert_binding_does_not_authorize(purpose)
     assert ei.value.reason_code == "BINDING_POWER_NONCOLLAPSE_VIOLATION"
@@ -352,8 +355,8 @@ def test_every_pinned_forbidden_purpose_is_refused(purpose):
 ])
 def test_binding_has_no_grant_path_for_any_forbidden_power(method, expected):
     rec, rule = bind_one_admitted()
-    b = B.bind_service_applicability_to_f8_scope(
-        request=binding_request(identity=rec.service_request_set_identity), receipt=rec, rule=rule)
+    req_b = binding_request(identity=rec.service_request_set_identity)
+    b = B.bind_service_applicability_to_f8_scope(request=req_b, receipt=rec, rule=rule)
     with pytest.raises(B.ServiceF8ScopeBindingError) as ei:
         getattr(b, method)()
     assert ei.value.reason_code == expected
@@ -400,18 +403,18 @@ def test_release_grain_mismatch_refuses_and_admission_is_not_inherited_across_re
 
 def test_query_source_absent_from_admitted_set_refuses():
     rec, rule = bind_one_admitted()
-    b = B.bind_service_applicability_to_f8_scope(
-        request=binding_request(identity=rec.service_request_set_identity), receipt=rec, rule=rule)
+    req_b = binding_request(identity=rec.service_request_set_identity)
+    b = B.bind_service_applicability_to_f8_scope(request=req_b, receipt=rec, rule=rule)
     with pytest.raises(B.ServiceF8ScopeBindingError) as ei:
         B.evaluate_bound_positioned_subject_possibility(
-            binding=b, query=f8_query(BB), rule=rule, evidence=(), receipt=rec)
+            binding=b, request=req_b, receipt=rec, query=f8_query(BB), rule=rule, evidence=())
     assert ei.value.reason_code == "F8_QUERY_SOURCE_NOT_ADMITTED"
 
 
 def test_query_release_mismatch_refuses_even_for_an_admitted_source():
     rec, rule = bind_one_admitted()
-    b = B.bind_service_applicability_to_f8_scope(
-        request=binding_request(identity=rec.service_request_set_identity), receipt=rec, rule=rule)
+    req_b = binding_request(identity=rec.service_request_set_identity)
+    b = B.bind_service_applicability_to_f8_scope(request=req_b, receipt=rec, rule=rule)
     q = F8.PositionedSubjectPossibilityQuery(
         query_id="q-other-rel", subject_ref=ref("GENERATED_SUBJECT", "s"), target_ref=TGT,
         source_universe_ref=A, release_ref=OTHER_REL,
@@ -421,7 +424,8 @@ def test_query_release_mismatch_refuses_even_for_an_admitted_source():
                                                      A, OTHER_REL, "2026-R1"),),
         requested_projection={"kind": "JOINT_DISTRIBUTION"})
     with pytest.raises(B.ServiceF8ScopeBindingError) as ei:
-        B.evaluate_bound_positioned_subject_possibility(binding=b, query=q, rule=rule, evidence=(), receipt=rec)
+        B.evaluate_bound_positioned_subject_possibility(
+            binding=b, request=req_b, receipt=rec, query=q, rule=rule, evidence=())
     assert ei.value.reason_code == "F8_QUERY_RELEASE_GRAIN_MISMATCH"
 
 
@@ -491,13 +495,13 @@ def test_incomplete_coverage_still_validates_one_known_admitted_source():
     rec = resolve([A, BB, C], [admitted(A), negative(BB)])
     assert rec.candidate_class_coverage == COVERAGE_INCOMPLETE
     rule = f8_rule((A,))
-    b = B.bind_service_applicability_to_f8_scope(
-        request=binding_request(mode=B.MODE_SINGLE_SOURCE_VALIDATION, single=A,
-                                identity=rec.service_request_set_identity),
-        receipt=rec, rule=rule)
-    assert b.assert_query_source_admitted(f8_query(A))["admitted"] is True
+    req_b = binding_request(mode=B.MODE_SINGLE_SOURCE_VALIDATION, single=A,
+                                identity=rec.service_request_set_identity)
+    b = B.bind_service_applicability_to_f8_scope(request=req_b, receipt=rec, rule=rule)
+    assert b.assert_query_source_admitted(
+        f8_query(A), request=req_b, receipt=rec, rule=rule)["admitted"] is True
     with pytest.raises(B.ServiceF8ScopeBindingError) as ei:
-        b.expose_unranked_admitted_source_set()
+        b.expose_unranked_admitted_source_set(request=req_b, receipt=rec, rule=rule)
     assert ei.value.reason_code == "APPLICABILITY_COVERAGE_INCOMPLETE"
 
 
@@ -541,8 +545,8 @@ def test_currentness_supplied_without_a_claim_refuses():
 
 def test_currentness_absent_by_default_and_is_not_inferred_from_applicability():
     rec, rule = bind_one_admitted()
-    b = B.bind_service_applicability_to_f8_scope(
-        request=binding_request(identity=rec.service_request_set_identity), receipt=rec, rule=rule)
+    req_b = binding_request(identity=rec.service_request_set_identity)
+    b = B.bind_service_applicability_to_f8_scope(request=req_b, receipt=rec, rule=rule)
     assert b.currentness_result == B.CURRENTNESS_UNREQUESTED
     with pytest.raises(B.ServiceF8ScopeBindingError):
         b.currentness_authority()
@@ -550,29 +554,45 @@ def test_currentness_absent_by_default_and_is_not_inferred_from_applicability():
 
 def test_receipt_mutated_after_binding_is_detected_at_evaluation():
     rec, rule = bind_one_admitted()
-    b = B.bind_service_applicability_to_f8_scope(
-        request=binding_request(identity=rec.service_request_set_identity), receipt=rec, rule=rule)
-    other = resolve([A, BB, C], [admitted(A), admitted(BB), negative(C)])
-    assert other.replay_identity() != rec.replay_identity()
+    req_b = binding_request(identity=rec.service_request_set_identity)
+    b = B.bind_service_applicability_to_f8_scope(request=req_b, receipt=rec, rule=rule)
+    # HQ217: mutate a NON-ADMITTED row only, so the admitted set and the rule's coverage
+    # stay valid. That isolates the receipt-mismatch signal from an incidental
+    # F8_RULE_SOURCE_SET_NOT_EXHAUSTIVE refusal, so this test measures what it claims.
+    import dataclasses as _dc
+    mutated_decisions = []
+    for d in rec.decisions:
+        if d.source_universe_ref["object_id"] == C.object_id:
+            d = _dc.replace(d, reason_code="A_MUTATED_NONADMITTED_REASON")
+        mutated_decisions.append(d)
+    other = _dc.replace(rec, decisions=tuple(mutated_decisions))
+    assert other.replay_identity() != rec.replay_identity(), "the mutation must actually change it"
+    assert set(other.admissible_source_universe_refs()) == set(rec.admissible_source_universe_refs()), (
+        "the admitted set must be unchanged, so only the receipt identity differs")
     with pytest.raises(B.ServiceF8ScopeBindingError) as ei:
         B.evaluate_bound_positioned_subject_possibility(
-            binding=b, query=f8_query(A), rule=rule, evidence=(), receipt=other)
-    assert ei.value.reason_code in {"BINDING_REPLAY_MISMATCH", "BINDING_RECEIPT_IDENTITY_MISMATCH"}
+            binding=b, request=req_b, receipt=other, query=f8_query(A), rule=rule, evidence=())
+    assert ei.value.reason_code == "BINDING_REPLAY_MISMATCH", (
+        f"a receipt mutated after binding must fail authentication, got {ei.value.reason_code!r}")
 
 
 def test_different_f8_rule_at_evaluation_refuses():
     rec, _ = bind_one_admitted()
     bound_rule = f8_rule((A,))
-    b = B.bind_service_applicability_to_f8_scope(
-        request=binding_request(identity=rec.service_request_set_identity), receipt=rec, rule=bound_rule)
+    req_b = binding_request(identity=rec.service_request_set_identity)
+    b = B.bind_service_applicability_to_f8_scope(request=req_b, receipt=rec, rule=bound_rule)
     tampered = F8.PositionedSubjectPossibilityModelRule(
         model_authority_ref=auth("different-model"), walkback_authority_ref=auth("walkback"),
         source_universe_refs=(A,), walkback_steps=(), positive_proxy_authority_refs=())
     assert tampered.rule_hash != b.f8_rule_hash, "the tampered rule must actually differ"
     with pytest.raises(B.ServiceF8ScopeBindingError) as ei:
         B.evaluate_bound_positioned_subject_possibility(
-            binding=b, query=f8_query(A), rule=tampered, evidence=(), receipt=rec)
-    assert ei.value.reason_code == "BINDING_RULE_REPLAY_MISMATCH"
+            binding=b, request=req_b, receipt=rec, query=f8_query(A), rule=tampered, evidence=())
+    # HQ217: rule binding is now enforced by AUTHENTICATION. A tampered rule cannot
+    # re-derive the binding, so it refuses there. There is deliberately no second
+    # rule-hash comparison in the evaluator; see the evaluator docstring.
+    assert ei.value.reason_code == "BINDING_REPLAY_MISMATCH", (
+        f"a tampered F8 rule must fail authentication, got {ei.value.reason_code!r}")
 
 
 def test_binding_replay_is_stable_and_re_derivation_must_match():
@@ -641,13 +661,13 @@ def test_F8_algorithm_law_is_still_exact_conditional_lookup():
 def test_binding_passes_query_rule_evidence_to_F8_by_identity_and_changes_no_geometry():
     """ELIGIBILITY IS NOT CONDITIONING, and output selection is not transformation."""
     rec, rule = bind_one_admitted()
-    b = B.bind_service_applicability_to_f8_scope(
-        request=binding_request(identity=rec.service_request_set_identity), receipt=rec, rule=rule)
+    req_b = binding_request(identity=rec.service_request_set_identity)
+    b = B.bind_service_applicability_to_f8_scope(request=req_b, receipt=rec, rule=rule)
     q = f8_query(A)
     ex = evidence(A)
     before_geometry = dict(ex.geometry)
-    out = B.evaluate_bound_positioned_subject_possibility(binding=b, query=q, rule=rule,
-                                                          evidence=(ex,), receipt=rec)
+    out = B.evaluate_bound_positioned_subject_possibility(binding=b, request=req_b, receipt=rec,
+                                                          query=q, rule=rule, evidence=(ex,))
     assert out.exact_geometry == before_geometry, "binding altered the pre-materialized geometry"
     assert out.model_rule_hash == rule.rule_hash, "binding altered or replaced the F8 rule"
     assert q.source_universe_ref is A and q.release_ref is REL, "binding mutated the query"
@@ -729,29 +749,31 @@ def test_narrowing_eligibility_changes_which_slice_is_selected_not_the_geometry(
     ev_a = evidence(A, geometry=geo_a, tag="ev-a")
     q_a = f8_query(A)
     rule_both = f8_rule((A, BB))
-    b_both = B.bind_service_applicability_to_f8_scope(
-        request=binding_request(identity=rec_both.service_request_set_identity), receipt=rec_both, rule=rule_both)
-    out_both = B.evaluate_bound_positioned_subject_possibility(binding=b_both, query=q_a, rule=rule_both,
-                                                              evidence=(ev_a,), receipt=rec_both)
+    req_b_both = binding_request(identity=rec_both.service_request_set_identity)
+    b_both = B.bind_service_applicability_to_f8_scope(request=req_b_both, receipt=rec_both, rule=rule_both)
+    out_both = B.evaluate_bound_positioned_subject_possibility(
+        binding=b_both, request=req_b_both, receipt=rec_both, query=q_a, rule=rule_both,
+        evidence=(ev_a,))
     # Now narrow: B is no longer admitted, so the F8 rule may only span A.
     rec_a_only = resolve(members, [admitted(A), negative(BB)])
     rule_a = f8_rule((A,))
-    b_a = B.bind_service_applicability_to_f8_scope(
-        request=binding_request(identity=rec_a_only.service_request_set_identity), receipt=rec_a_only, rule=rule_a)
-    out_a = B.evaluate_bound_positioned_subject_possibility(binding=b_a, query=q_a, rule=rule_a,
-                                                           evidence=(ev_a,), receipt=rec_a_only)
+    req_b_a = binding_request(identity=rec_a_only.service_request_set_identity)
+    b_a = B.bind_service_applicability_to_f8_scope(request=req_b_a, receipt=rec_a_only, rule=rule_a)
+    out_a = B.evaluate_bound_positioned_subject_possibility(
+        binding=b_a, request=req_b_a, receipt=rec_a_only, query=q_a, rule=rule_a, evidence=(ev_a,))
     assert out_both.exact_geometry == out_a.exact_geometry == geo_a
     assert out_both.result_state == out_a.result_state == "EXACT_SUPPORTED"
-    assert [s.key for s in b_a.expose_unranked_admitted_source_set()] == [A.key]
+    assert [s.key for s in b_a.expose_unranked_admitted_source_set(
+        request=req_b_a, receipt=rec_a_only, rule=rule_a)] == [A.key]
 
 
 def test_applicability_NONCOMPARABLE_stays_distinct_from_F8_evidence_NONCOMPARABLE():
     rec, rule = bind_one_admitted()
-    b = B.bind_service_applicability_to_f8_scope(
-        request=binding_request(identity=rec.service_request_set_identity), receipt=rec, rule=rule)
+    req_b = binding_request(identity=rec.service_request_set_identity)
+    b = B.bind_service_applicability_to_f8_scope(request=req_b, receipt=rec, rule=rule)
     out = B.evaluate_bound_positioned_subject_possibility(
-        binding=b, query=f8_query(A), rule=rule,
-        evidence=(evidence(A, state="NONCOMPARABLE", tag="nc"),), receipt=rec)
+        binding=b, request=req_b, receipt=rec, query=f8_query(A), rule=rule,
+        evidence=(evidence(A, state="NONCOMPARABLE", tag="nc"),))
     assert out.result_state == "NONCOMPARABLE"
     assert out.exact_reason == "EXACT_POSITIONED_STRATUM_NONCOMPARABLE"
     # the applicability-side refusals are still reported separately
@@ -764,9 +786,10 @@ def test_applicability_NONCOMPARABLE_stays_distinct_from_F8_evidence_NONCOMPARAB
 def test_multiple_admitted_sources_remain_separate_source_indexed_entries():
     rec = resolve([A, BB, C], [admitted(A), admitted(BB), negative(C)])
     rule = f8_rule((A, BB))
-    b = B.bind_service_applicability_to_f8_scope(
-        request=binding_request(identity=rec.service_request_set_identity), receipt=rec, rule=rule)
-    admitted_set = b.expose_unranked_admitted_source_set()
+    req_b = binding_request(identity=rec.service_request_set_identity)
+    b = B.bind_service_applicability_to_f8_scope(request=req_b, receipt=rec, rule=rule)
+    admitted_set = b.expose_unranked_admitted_source_set(
+        request=req_b, receipt=rec, rule=rule)
     assert len(admitted_set) == 2
     assert b.material()["admitted_entries_remain_separate_source_indexed"] is True
     assert b.material()["admitted_set_cardinality_is_not_a_sample_size"] is True
@@ -775,8 +798,8 @@ def test_multiple_admitted_sources_remain_separate_source_indexed_entries():
     # each source evaluates independently through F8
     for u in (A, BB):
         o = B.evaluate_bound_positioned_subject_possibility(
-            binding=b, query=f8_query(u), rule=rule, evidence=(evidence(u, tag=f"ev-{u.object_id[-1]}"),),
-            receipt=rec)
+            binding=b, request=req_b, receipt=rec, query=f8_query(u), rule=rule,
+            evidence=(evidence(u, tag=f"ev-{u.object_id[-1]}"),))
         assert o.result_state == "EXACT_SUPPORTED"
         assert o.source_universe_ref is u
 
@@ -814,8 +837,8 @@ def test_binding_does_not_modify_the_adopted_owners():
 
 def test_binder_grants_no_authority_and_declares_its_own_ceiling():
     rec, rule = bind_one_admitted()
-    b = B.bind_service_applicability_to_f8_scope(
-        request=binding_request(identity=rec.service_request_set_identity), receipt=rec, rule=rule)
+    req_b = binding_request(identity=rec.service_request_set_identity)
+    b = B.bind_service_applicability_to_f8_scope(request=req_b, receipt=rec, rule=rule)
     m = b.material()
     assert m["grants_no_authority"] is True
     assert m["applicability_authorised_authority"] == AUTHORISED_AUTHORITY

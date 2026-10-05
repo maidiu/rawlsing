@@ -206,17 +206,25 @@ def two_admitted_receipt():
     return rec, f8_rule((A, BB))
 
 
-def bind_single_for(rec, rule, src):
-    return B.bind_service_applicability_to_f8_scope(
-        request=binding_request(mode=B.MODE_SINGLE_SOURCE_VALIDATION, single=src,
-                                identity=rec.service_request_set_identity),
-        receipt=rec, rule=rule)
+def bind_single_for(rec, rule, src, *, with_request=False):
+    req = binding_request(mode=B.MODE_SINGLE_SOURCE_VALIDATION, single=src,
+                          identity=rec.service_request_set_identity)
+    b = B.bind_service_applicability_to_f8_scope(request=req, receipt=rec, rule=rule)
+    return (b, req) if with_request else b
 
 
-def bind_exhaustive(rec, rule):
-    return B.bind_service_applicability_to_f8_scope(
-        request=binding_request(identity=rec.service_request_set_identity),
-        receipt=rec, rule=rule)
+def bind_exhaustive(rec, rule, *, with_request=False):
+    req = binding_request(identity=rec.service_request_set_identity)
+    b = B.bind_service_applicability_to_f8_scope(request=req, receipt=rec, rule=rule)
+    return (b, req) if with_request else b
+
+
+def authz(req, rec, rule):
+    """The authoritative triple every eligibility-revealing call now requires.
+
+    Named ``authz`` because this court already has an ``auth(tag)`` AuthorityRef helper.
+    """
+    return {"request": req, "receipt": rec, "rule": rule}
 
 
 # ===========================================================================
@@ -233,14 +241,14 @@ def test_single_source_binding_for_a_REFUSES_evaluation_on_admitted_b():
         single_mode_evaluation_on_B:    ALLOWED state=EXACT_SUPPORTED   <-- the defect
     """
     rec, rule = two_admitted_receipt()
-    b = bind_single_for(rec, rule, A)
+    b, req = bind_single_for(rec, rule, A, with_request=True)
 
     # B is genuinely admitted, so nothing about the fixture is refusing by accident.
     assert BB in set(b.admitted_source_universe_refs), "B must be admitted for this witness"
     assert A in set(b.admitted_source_universe_refs), "A must be admitted for this witness"
 
     with pytest.raises(B.ServiceF8ScopeBindingError) as ei:
-        b.assert_query_source_admitted(f8_query(BB))
+        b.assert_query_source_admitted(f8_query(BB), **authz(req, rec, rule))
     assert ei.value.reason_code == "F8_QUERY_SOURCE_NOT_THE_REQUESTED_SOURCE", (
         f"expected the single-source refinement to refuse B, got {ei.value.reason_code!r}")
 
@@ -248,8 +256,8 @@ def test_single_source_binding_for_a_REFUSES_evaluation_on_admitted_b():
 def test_single_source_binding_evaluates_the_requested_source_exactly():
     """Positive control: the refinement still admits the source it was made for."""
     rec, rule = two_admitted_receipt()
-    b = bind_single_for(rec, rule, A)
-    got = b.assert_query_source_admitted(f8_query(A))
+    b, req = bind_single_for(rec, rule, A, with_request=True)
+    got = b.assert_query_source_admitted(f8_query(A), **authz(req, rec, rule))
     assert got["admitted"] is True
     assert got["source_universe_ref"] == A.as_dict()
 
@@ -258,16 +266,17 @@ def test_the_two_modes_are_no_longer_equivalent_on_a_different_admitted_source()
     """Repair 1 is real: the modes must now DIFFER, where the review showed
     `same_result_hash (single vs exhaustive): True`."""
     rec, rule = two_admitted_receipt()
-    single = bind_single_for(rec, rule, A)
-    exhaustive = bind_exhaustive(rec, rule)
+    single, sreq = bind_single_for(rec, rule, A, with_request=True)
+    exhaustive, ereq = bind_exhaustive(rec, rule, with_request=True)
 
     with pytest.raises(B.ServiceF8ScopeBindingError) as ei:
-        single.assert_query_source_admitted(f8_query(BB))
+        single.assert_query_source_admitted(f8_query(BB), **authz(sreq, rec, rule))
     assert ei.value.reason_code == "F8_QUERY_SOURCE_NOT_THE_REQUESTED_SOURCE"
 
     # the exhaustive binding over the same receipt and rule still validates B, so the
     # refusal above is attributable to the mode, not to the fixture.
-    assert exhaustive.assert_query_source_admitted(f8_query(BB))["admitted"] is True
+    assert exhaustive.assert_query_source_admitted(
+        f8_query(BB), **authz(ereq, rec, rule))["admitted"] is True
 
 
 def test_the_binding_carries_the_requested_source_it_is_enforcing():
@@ -346,11 +355,12 @@ def test_single_source_still_refuses_a_requested_source_that_is_not_admitted():
 def test_exhaustive_mode_is_unaffected_by_the_single_source_repair():
     """The repair must not narrow the exhaustive mode."""
     rec, rule = two_admitted_receipt()
-    b = bind_exhaustive(rec, rule)
+    b, req = bind_exhaustive(rec, rule, with_request=True)
     for u in (A, BB):
-        assert b.assert_query_source_admitted(f8_query(u))["admitted"] is True
+        assert b.assert_query_source_admitted(
+            f8_query(u), **authz(req, rec, rule))["admitted"] is True
     with pytest.raises(B.ServiceF8ScopeBindingError) as ei:
-        b.assert_query_source_admitted(f8_query(C))
+        b.assert_query_source_admitted(f8_query(C), **authz(req, rec, rule))
     assert ei.value.reason_code == "F8_QUERY_SOURCE_NOT_ADMITTED"
 
 
@@ -418,7 +428,7 @@ def test_the_module_production_constants_agree_with_the_pinned_surface():
 def test_the_coverage_guard_returns_nothing_and_only_raises():
     """The one callable that is NOT a returning power."""
     rec, rule = two_admitted_receipt()
-    b = bind_exhaustive(rec, rule)
+    b, _req = bind_exhaustive(rec, rule, with_request=True)
     assert B.assert_complete_coverage_from_binding(b) is None
 
 
@@ -676,7 +686,7 @@ def test_the_repair_added_no_rank_leaf_to_the_emitted_binding_material():
     emitted material is searched recursively for any rank-like leaf.
     """
     rec, rule = two_admitted_receipt()
-    b = bind_single_for(rec, rule, A)
+    b, _req = bind_single_for(rec, rule, A, with_request=True)
     keys: set[str] = set()
     _walk_values(b.material(), keys)
     # Negative disclaimer keys legitimately CONTAIN rank words while asserting their
@@ -690,7 +700,7 @@ def test_the_repair_added_no_rank_leaf_to_the_emitted_binding_material():
                    if any(t in k for k in substantive))
     assert found == [], f"binding material carries rank-like leaves: {found}"
     # the unranked set must be exactly the admitted sources, with no ordering value
-    exposed = b.expose_unranked_admitted_source_set()
+    exposed = b.expose_unranked_admitted_source_set(**authz(_req, rec, rule))
     assert set(exposed) == set(b.admitted_source_universe_refs)
 
 
@@ -700,10 +710,10 @@ def test_expose_unranked_set_still_refuses_under_incomplete_coverage():
     from rawlsing_next.pre553_service_source_applicability import COVERAGE_INCOMPLETE
     rec = dataclasses_replace_coverage_incomplete(rec)
     rule = f8_rule((A,))
-    b = bind_single_for(rec, rule, A)
+    b, req = bind_single_for(rec, rule, A, with_request=True)
     assert b.candidate_class_coverage == COVERAGE_INCOMPLETE
     with pytest.raises(B.ServiceF8ScopeBindingError):
-        b.expose_unranked_admitted_source_set()
+        b.expose_unranked_admitted_source_set(**authz(req, rec, rule))
 
 
 def dataclasses_replace_coverage_incomplete(rec):

@@ -408,14 +408,29 @@ class ServiceApplicabilityF8SourceScopeBinding:
         return self.requested_source_universe_ref
 
     # -- the two source-touching positive powers ----------------------------
-    def assert_query_source_admitted(self, query: PositionedSubjectPossibilityQuery) -> Mapping[str, Any]:
-        """Power 1. Validate ONE exact F8 query source as admitted. Never selects."""
+    def assert_query_source_admitted(
+        self,
+        query: PositionedSubjectPossibilityQuery,
+        *,
+        request: "ServiceApplicabilityF8ScopeBindingRequest",
+        receipt: CandidateClassApplicabilityReceipt,
+        rule: PositionedSubjectPossibilityModelRule,
+    ) -> Mapping[str, Any]:
+        """Power 1. Validate ONE exact F8 query source as admitted. Never selects.
+
+        HQ217: the authoritative request, receipt and rule are REQUIRED. This power
+        reports an eligibility claim, so it must not report eligibility derived from
+        caller-controlled binding fields. The admitted set is re-derived from the
+        receipt and the assertion is made against the RE-DERIVED binding.
+        """
+        authenticated = _authenticate_binding_against_authority(
+            self, request=request, receipt=receipt, rule=rule)
         _require_f8_query(query)
         src = _ref(query.source_universe_ref, "query.source_universe_ref")
         # Repair 1: in single-source mode the query source MUST be the requested
         # source. Membership in the admitted set is not sufficient.
-        if self.binding_mode == MODE_SINGLE_SOURCE_VALIDATION:
-            want = self._require_single_source_binding()
+        if authenticated.binding_mode == MODE_SINGLE_SOURCE_VALIDATION:
+            want = authenticated._require_single_source_binding()
             if src.key != want.key:
                 raise _refusal(
                     "F8_QUERY_SOURCE_NOT_THE_REQUESTED_SOURCE",
@@ -423,25 +438,28 @@ class ServiceApplicabilityF8SourceScopeBinding:
                     f"{want.object_id!r}; F8 query source {src.object_id!r} is a different "
                     f"admitted source and may not be evaluated through this binding",
                 )
-        if src not in set(self.admitted_source_universe_refs):
+        if src not in set(authenticated.admitted_source_universe_refs):
             raise _refusal(
                 "F8_QUERY_SOURCE_NOT_ADMITTED",
                 f"F8 query source {src.object_id!r} is not a positively admitted source universe "
-                f"under applicability receipt {self.applicability_receipt_id!r}; this binder "
-                f"validates admission and never chooses a substitute",
+                f"under applicability receipt {authenticated.applicability_receipt_id!r} as "
+                f"re-derived from the authoritative receipt; this binder validates admission "
+                f"and never chooses a substitute",
             )
-        if query.release_ref != self.release_identity_ref:
+        if query.release_ref != authenticated.release_identity_ref:
             raise _refusal(
                 "F8_QUERY_RELEASE_GRAIN_MISMATCH",
                 f"F8 query release {query.release_ref.object_id!r} does not equal the bound "
-                f"applicability release {self.release_identity_ref.object_id!r}; admission is "
-                f"decided per release identity and may not be inherited across releases",
+                f"applicability release {authenticated.release_identity_ref.object_id!r}; "
+                f"admission is decided per release identity and may not be inherited across "
+                f"releases",
             )
-        prov = self._provenance_for(src)
+        prov = authenticated._provenance_for(src)
         return {
             "source_universe_ref": src.as_dict(),
-            "release_identity_ref": self.release_identity_ref.as_dict(),
+            "release_identity_ref": authenticated.release_identity_ref.as_dict(),
             "admitted": True,
+            "admission_re_derived_from_authoritative_receipt": True,
             "applicability_public_typed_state": POSITIVE_PUBLIC_STATE,
             "admission_provenance": prov,
             "f8_query_ref": query.ref.as_dict(),
@@ -451,7 +469,13 @@ class ServiceApplicabilityF8SourceScopeBinding:
             "no_ranking_or_priority_implied": True,
         }
 
-    def expose_unranked_admitted_source_set(self) -> tuple[ExactRef, ...]:
+    def expose_unranked_admitted_source_set(
+        self,
+        *,
+        request: "ServiceApplicabilityF8ScopeBindingRequest",
+        receipt: CandidateClassApplicabilityReceipt,
+        rule: PositionedSubjectPossibilityModelRule,
+    ) -> tuple[ExactRef, ...]:
         """Power 2. The COMPLETE UNRANKED admitted set, for source-indexed F8 use.
 
         Exposing the SET is itself an exhaustive claim, so this method requires
@@ -459,9 +483,15 @@ class ServiceApplicabilityF8SourceScopeBinding:
         exhaustive mode. An INCOMPLETE class may still validate a single
         known-admitted source (power 1), but it may never be presented as the
         complete admissible set however the binding was created.
+
+        HQ217: the authoritative request, receipt and rule are REQUIRED, and the set
+        returned is the RE-DERIVED admitted set. A forged binding's own admitted tuple
+        is never returned, because that tuple is caller-controlled.
         """
-        assert_complete_coverage_from_binding(self)
-        return tuple(self.admitted_source_universe_refs)
+        authenticated = _authenticate_binding_against_authority(
+            self, request=request, receipt=receipt, rule=rule)
+        assert_complete_coverage_from_binding(authenticated)
+        return tuple(authenticated.admitted_source_universe_refs)
 
     # -- refusals that are deliberately loud, not silent --------------------
     def first_admitted_source(self) -> "Any":
@@ -864,64 +894,140 @@ def bind_service_applicability_to_f8_scope(
 def evaluate_bound_positioned_subject_possibility(
     *,
     binding: ServiceApplicabilityF8SourceScopeBinding,
+    request: ServiceApplicabilityF8ScopeBindingRequest,
+    receipt: CandidateClassApplicabilityReceipt,
     query: PositionedSubjectPossibilityQuery,
     rule: PositionedSubjectPossibilityModelRule,
     evidence: Iterable[PossibilitySliceEvidence],
-    receipt: CandidateClassApplicabilityReceipt | None = None,
 ) -> PositionedSubjectPossibilityResult:
-    """Validate the binding, then hand query/rule/evidence to F8 UNCHANGED.
+    """AUTHENTICATE the binding against the exact authority, then hand query/rule/
+    evidence to F8 UNCHANGED.
 
-    This is the whole seam. It:
-      - re-verifies the applicability receipt replay identity, when the receipt is
-        supplied, against the identity the binding was made from;
-      - confirms the caller's F8 rule is byte-identical to the one bound (same rule_hash);
-      - confirms the F8 algorithm is still the exact-conditional-lookup law;
-      - validates this exact query source is admitted at this exact release;
-      - then calls the ADOPTED, UNMODIFIED F8 evaluator with the caller's own objects.
+    HQ217. The authority-consuming path no longer trusts the presented binding.
 
-    Supplying ``receipt`` is what makes the provenance check bite: a receipt mutated
-    after binding is detected. Omitting it does not weaken the binding, it only means
-    this call re-validates the binding's own recorded identity rather than
-    re-deriving it from a receipt.
+        ``request`` and ``receipt`` are now REQUIRED. They were optional before, and an
+        optional receipt meant the only receipt checks could be skipped entirely.
+
+    The order is the whole point:
+
+      1. AUTHENTICATE. The binding is re-derived from the authoritative request, the
+         authoritative applicability receipt and the exact bound F8 rule, and the
+         RE-DERIVED binding is what this function uses from here on. A forged binding --
+         whether built by direct construction, by ``dataclasses.replace``, or by copying
+         a genuine receipt's id and replay identity -- cannot match the re-derivation and
+         refuses here. Supplying a genuine receipt does NOT rescue it, because nothing on
+         the presented binding is trusted: the admitted set and provenance come from the
+         re-derivation.
+      2. Rule binding is enforced BY authentication itself: a rule that was not the bound
+         rule cannot re-derive the binding, so it refuses at step 1. There is no second
+         comparison here, because none can fail.
+      3. Confirm the F8 algorithm is still the exact-conditional-lookup law.
+      4. Validate this exact query source is admitted AT THIS EXACT RELEASE, against the
+         re-derived admitted set.
+      5. Call the ADOPTED, UNMODIFIED F8 evaluator with the caller's own objects.
+
+    A ``__post_init__`` shape check or a self-hash would NOT be sufficient here: a caller
+    can fabricate a self-consistent binding, so only re-derivation from the authoritative
+    receipt can prove an admission.
 
     It does not edit, reorder, widen, narrow, reweight or retarget anything, and it
     never inspects or alters conditioners. Narrowing eligibility may change WHICH
     pre-materialized slice F8 selects; the geometry is untouched either way.
     """
-    if not isinstance(binding, ServiceApplicabilityF8SourceScopeBinding):
-        raise _refusal("BINDING_INTEGRITY_FAILURE", "binding must be a ServiceApplicabilityF8SourceScopeBinding")
+    # 1. AUTHENTICATE. Everything below reads `authenticated`, never `binding`.
+    authenticated = _authenticate_binding_against_authority(
+        binding, request=request, receipt=receipt, rule=rule)
     _require_f8_query(query)
     bound_rule = _require_f8_rule(rule)
 
-    if bound_rule.rule_hash != binding.f8_rule_hash:
-        raise _refusal(
-            "BINDING_RULE_REPLAY_MISMATCH",
-            f"the F8 model rule presented at evaluation (hash {bound_rule.rule_hash}) is not the rule "
-            f"this binding was made against (hash {binding.f8_rule_hash}); the binder validates one "
-            f"exact rule and never re-points it",
-        )
-    if receipt is not None:
-        if not isinstance(receipt, CandidateClassApplicabilityReceipt):
-            raise _refusal("BINDING_INTEGRITY_FAILURE",
-                           "receipt must be an adopted CandidateClassApplicabilityReceipt")
-        if receipt.replay_identity() != binding.applicability_receipt_replay_identity:
-            raise _refusal(
-                "BINDING_REPLAY_MISMATCH",
-                f"the applicability receipt presented at evaluation does not hash to the replay "
-                f"identity this binding was made from ({binding.applicability_receipt_replay_identity}); "
-                f"the receipt changed after binding, so the provenance no longer holds",
-            )
-        if receipt.receipt_id != binding.applicability_receipt_id:
-            raise _refusal(
-                "BINDING_RECEIPT_IDENTITY_MISMATCH",
-                f"receipt id {receipt.receipt_id!r} is not the receipt this binding was made from "
-                f"({binding.applicability_receipt_id!r})",
-            )
+    # 2. RULE BINDING IS ENFORCED BY AUTHENTICATION, not by a second comparison here.
+    #    The old explicit `bound_rule.rule_hash != binding.f8_rule_hash` check became
+    #    UNREACHABLE once authentication was added: the authenticated binding derives its
+    #    f8_rule_hash from this very rule object, so the comparison can never be false.
+    #    Leaving unreachable code with a comment overstating its role is precisely the
+    #    dead-branch defect class the HQ211 review raised as F3, so it is removed rather
+    #    than retained as decoration. A tampered rule now refuses during authentication,
+    #    because re-deriving from it cannot reproduce the binding.
+    assert bound_rule.rule_hash == authenticated.f8_rule_hash, (
+        "authentication must derive the binding from the presented rule; a mismatch here "
+        "would mean the authentication path is broken"
+    )
 
-    # Power 1: this exact query source must be admitted at this exact release.
-    binding.assert_query_source_admitted(query)
+    # 4. this exact query source must be admitted, per the RE-DERIVED authority
+    authenticated.assert_query_source_admitted(
+        query, request=request, receipt=receipt, rule=rule)
 
+    # 5. delegate to the adopted F8 evaluator, unchanged
     return evaluate_positioned_subject_possibility(query=query, rule=rule, evidence=evidence)
+
+
+def _authenticate_binding_against_authority(
+    binding: "ServiceApplicabilityF8SourceScopeBinding",
+    *,
+    request: "ServiceApplicabilityF8ScopeBindingRequest",
+    receipt: CandidateClassApplicabilityReceipt,
+    rule: PositionedSubjectPossibilityModelRule,
+) -> "ServiceApplicabilityF8SourceScopeBinding":
+    """AUTHENTICATE a binding against the exact authoritative material, or refuse.
+
+    HQ217. Every authority-consuming path in this module calls this FIRST. The binding
+    dataclass is a PUBLIC, directly constructible, ``dataclasses.replace``-able value, so
+    its fields -- including ``admitted_source_universe_refs``, ``admission_provenance``,
+    ``binding_mode``, ``requested_source_universe_ref``, ``f8_rule_hash``,
+    ``binding_ref`` and the copied receipt identity fields -- are ATTACKER CONTROLLED.
+    A self-consistent hash or a ``__post_init__`` shape check proves nothing, because a
+    caller can fabricate a self-consistent binding.
+
+    The only thing that cannot be fabricated is the binding that the AUTHORITATIVE
+    receipt and request and rule actually derive. So this function RE-DERIVES the
+    binding from those exact inputs and returns the RE-DERIVED object. Callers must use
+    the returned object, never the one they were handed: that is what stops forged
+    material from reaching F8 or being reported as an admission.
+
+    Returns the authenticated, re-derived binding.
+    """
+    if not isinstance(binding, ServiceApplicabilityF8SourceScopeBinding):
+        raise _refusal("BINDING_INTEGRITY_FAILURE",
+                       "binding must be a ServiceApplicabilityF8SourceScopeBinding")
+    if not isinstance(request, ServiceApplicabilityF8ScopeBindingRequest):
+        raise _refusal(
+            "BINDING_AUTHORITY_INPUTS_REQUIRED",
+            "the exact binding request is REQUIRED to authenticate a binding; a binding "
+            "cannot be authenticated from its own fields, because every field on it is "
+            "caller-controlled",
+        )
+    if not isinstance(receipt, CandidateClassApplicabilityReceipt):
+        raise _refusal(
+            "BINDING_AUTHORITY_INPUTS_REQUIRED",
+            "the authoritative applicability receipt is REQUIRED to authenticate a binding; "
+            "the admitted set is re-derived from it and never trusted from the binding",
+        )
+    bound_rule = _require_f8_rule(rule)
+
+    # The currentness result is part of the binding material, so it must be recovered to
+    # re-derive exactly. Recovery is safe: re-derivation re-validates it against the
+    # request, so a fabricated currentness result refuses rather than being accepted.
+    recovered_currentness = (
+        None if binding.currentness_result == CURRENTNESS_UNREQUESTED
+        else binding.currentness_result
+    )
+
+    authenticated = verify_service_f8_scope_binding_replay(
+        binding,
+        request=request,
+        receipt=receipt,
+        rule=bound_rule,
+        currentness_result=recovered_currentness,
+    )
+    if authenticated.material() != binding.material():
+        # Defensive: the replay verifier already compares material. Kept as an explicit
+        # second gate so a future weakening of the verifier cannot silently reopen this.
+        raise _refusal(
+            "BINDING_NOT_AUTHENTICATED_AGAINST_AUTHORITY",
+            "the presented binding material does not equal the material re-derived from the "
+            "authoritative request, applicability receipt and bound F8 rule",
+        )
+    return authenticated
 
 
 def verify_service_f8_scope_binding_replay(
