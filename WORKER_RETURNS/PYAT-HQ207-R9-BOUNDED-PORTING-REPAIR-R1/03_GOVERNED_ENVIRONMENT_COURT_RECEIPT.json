@@ -1,0 +1,142 @@
+{
+  "schema": "PYAT_HQ207_GOVERNED_ENVIRONMENT_COURT_RECEIPT@1.0.0",
+  "lane": "PYAT-HQ207-R9-BOUNDED-PORTING-REPAIR-R1",
+  "startup_sha": "70ca48345d97f26ac1d7061df2138ab3f14c474c",
+  "repair_number": 3,
+  "status": "R9_GOVERNED_ENVIRONMENT_QUALIFICATION_FAILURE__COURTS_RUN_IN_A_DISCLOSED_PACKAGE_IDENTICAL_SUBSTITUTE",
+
+  "the_commissioned_interpreter_does_not_exist_on_this_host": {
+    "commissioned_path": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python",
+    "present": false,
+    "error": "No such file or directory",
+    "depth_search": "find /Users/matthewsmith/Desktop -maxdepth 8 -name 'r7-c4-source-free-venv' returned nothing",
+    "host_wide_search": "find /Users/matthewsmith -maxdepth 7 -name 'r7-c4-source-free-venv' returned nothing",
+    "parent_directories_also_absent": [
+      "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification",
+      "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling",
+      "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11"
+    ],
+    "second_governed_environment_also_absent": {
+      "path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c4c3-env",
+      "note": "this is the exact environment_location recorded in the governed lock PYAT-C4C3-DARWIN-ANCHOR-RUNTIME-R1/01_ENVIRONMENT_LOCK.json at deea4054. It is also gone."
+    },
+    "note": "LOCAL_COURTS does exist and contains 10 subdirectories, but neither 'qualification' nor 'tooling' is among them. The governed qualification subtree is simply not present."
+  },
+
+  "I_did_not_reconstitute": {
+    "reconstitution_performed": false,
+    "reason": "explicitly prohibited by the commission",
+    "no_packages_installed": true,
+    "no_venv_created": true,
+    "no_duckdb_installed": true,
+    "the_pin_was_not_relaxed": true,
+    "what_I_did_instead": "I used an ALREADY-EXISTING environment on this host whose package freeze is set-identical to the governed lock, disclosed it as a substitute in every receipt, and reported the governed qualification as FAILED rather than satisfied."
+  },
+
+  "substitute_environment_disclosed_in_full": {
+    "interpreter_path_used": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/hq204-r9-env/bin/python",
+    "python_version": "3.11.3",
+    "matches_governed_base_cpython": "3.11.3",
+    "package_freeze_set_identical_to_governed_lock": true,
+    "lock_compared_against": "PYAT-C4C3-DARWIN-ANCHOR-RUNTIME-R1/01_ENVIRONMENT_LOCK.json -> pip_freeze.sorted_output at deea40541cda0627d129dcb7d30e06e0682e0fed",
+    "lock_entry_count": 14,
+    "observed_entry_count": 14,
+    "in_lock_not_observed": [],
+    "in_observed_not_lock": [],
+    "freeze": [
+      "Pygments==2.21.0",
+      "iniconfig==2.3.0",
+      "narwhals==2.26.0",
+      "numpy==2.4.6",
+      "packaging==26.3",
+      "pandas==2.3.3",
+      "pluggy==1.6.0",
+      "pyarrow==25.0.1",
+      "pyreadstat==1.3.6",
+      "pytest==9.1.1",
+      "python-dateutil==2.9.0.post0",
+      "pytz==2026.4",
+      "six==1.17.0",
+      "tzdata==2026.4"
+    ],
+    "pyreadstat_pin": "1.3.6 - HELD EXACTLY. Not relaxed, not bypassed, and no accepted code was altered to accommodate any other reader.",
+    "duckdb": "ABSENT from the substitute AND absent from the governed 14-package lock. The 2 duckdb test failures are therefore expected under the governed freeze and are NOT a substitute-environment artifact.",
+    "outside_the_repository": true,
+    "durability": "this environment EXISTS and was used directly. Unlike the environment the fan-in lane used, it is re-runnable from this receipt.",
+    "classification": "SUBSTITUTE, NOT GOVERNED. Every result below is STRONG EVIDENCE, NOT a governed-environment certification."
+  },
+
+  "execution_discipline": {
+    "env_vars": {"PYTHONHASHSEED": "0", "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1"},
+    "pytest_flags": ["-p no:cacheprovider"],
+    "cwd": "the isolated sparse worktree root",
+    "collection_errors_on_the_whole_tests_tree": "2, in files unrelated to this repair (test_subv_e_obl059_* review-correction files). They are pre-existing on this lineage and were not touched. The courts below are unaffected because they collect cleanly in isolation."
+  },
+
+  "court_results": [
+    {
+      "court": "rawlsing_next/tests/test_pre553_execution_binding_court.py",
+      "expected": 34,
+      "collected": 34,
+      "passed": 34,
+      "failed": 0,
+      "matches_commission_expectation": true
+    },
+    {
+      "court": "rawlsing_next/tests/test_pre553_source_session_court.py",
+      "expected": 15,
+      "collected": 15,
+      "passed": 15,
+      "failed": 0,
+      "matches_commission_expectation": true
+    },
+    {
+      "court": "rawlsing_next/tests/test_pre553_source_access_broker_court.py",
+      "expected": 20,
+      "collected": 20,
+      "passed": 20,
+      "failed": 0,
+      "matches_commission_expectation": true
+    },
+    {
+      "aggregate_r9": "69/69 passed",
+      "court_blobs_verified_byte_identical_to_accepted_0deb6478": true,
+      "court_blob_evidence": {
+        "test_pre553_execution_binding_court.py": "67492110a1485eed44c88d1bb9cd0ac27ecebd2a",
+        "test_pre553_source_session_court.py": "8b45e3f9ac144077b1f3c7c057dd33f0c96aafae",
+        "test_pre553_source_access_broker_court.py": "c1bc827329846ab8ded9ee0a4307cd1680bbdf08"
+      }
+    },
+    {
+      "court": "current-control reachable R7 subset",
+      "expected": 25,
+      "collected": 25,
+      "passed": 25,
+      "failed": 0,
+      "duration_seconds": 79.42,
+      "per_file": {
+        "test_fiabc_lm2_r1j_sav_representation_authority.py": 9,
+        "test_r35_i01_physical_metadata.py": 6,
+        "test_pre553_source_backed_c11_facade.py": 10
+      },
+      "matches_commission_expectation": true
+    },
+    {
+      "court": "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py (ported)",
+      "collected": 17,
+      "passed": 14,
+      "failed": 2,
+      "skipped": 1,
+      "the_2_failures": ["test_parquet_roundtrip_atomicity_corruption_and_direct_duckdb", "test_direct_session_skips_full_reopen_and_supports_multiple_queries"],
+      "failure_cause": "ModuleNotFoundError: No module named 'duckdb' - an optional-dependency gap present identically in the pre-port baseline and absent from the governed lock",
+      "the_2_commissioned_target_tests": "2 passed",
+      "matches_commission_expectation": "the port is proven; the 2 residual failures are not SR06 regressions and were not present in the accepted lineage's own environment either, since duckdb is not in the governed freeze"
+    }
+  ],
+
+  "what_this_receipt_does_and_does_not_establish": {
+    "establishes": "The R9 courts are 69/69 and the reachable R7 subset is 25/25 on a package-set-identical CPython 3.11.3 with the pyreadstat 1.3.6 pin held. The R7 reachable subset is independently reproduced. The SR06 port is verified.",
+    "does_not_establish": "It does NOT establish a governed-environment qualification, because the governed interpreter named by the commission does not exist on this host and reconstitution is prohibited. HQ must either restore the governed environment or re-authorise this substitute explicitly.",
+    "explicitly_not_claimed": "I am not claiming the governed environment was used. I am not claiming the qualification is satisfied. I am reporting the numbers and labelling them."
+  }
+}

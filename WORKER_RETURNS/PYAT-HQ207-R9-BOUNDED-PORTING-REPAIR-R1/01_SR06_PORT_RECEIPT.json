@@ -1,0 +1,95 @@
+{
+  "schema": "PYAT_HQ207_SR06_PORT_RECEIPT@1.0.0",
+  "lane": "PYAT-HQ207-R9-BOUNDED-PORTING-REPAIR-R1",
+  "startup_sha": "70ca48345d97f26ac1d7061df2138ab3f14c474c",
+  "repair_base": "dfdf5659fd78e9bc996b07383349094059a5553d",
+  "repair_number": 1,
+  "status": "COMPLETE__BYTE_EXACT_ADOPTION__NO_RETIREMENT__NO_DECODER_CHANGE",
+
+  "action": {
+    "path": "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py",
+    "kind": "TEST_PORT (co-evolved test adoption)",
+    "from_blob": "b2c279e6ad85d69566b858abec0c90159481fb99",
+    "to_blob": "dfd063227e4a0897f86e637b03499ff0288235f7",
+    "adopted_from_commit": "0deb64784829661780ee3957f8070ccc2c241722 (also identical at deea40541cda0627d129dcb7d30e06e0682e0fed)",
+    "worktree_hash_after_write": "dfd063227e4a0897f86e637b03499ff0288235f7",
+    "byte_exact_to_commissioned_blob": true,
+    "mechanism": "git cat-file blob of the accepted blob written over the control file; no hand-editing, no reformatting, no partial application",
+    "files_changed_in_this_repair": 1,
+    "files_changed_total_in_this_lane": 1
+  },
+
+  "pairing_correctness": {
+    "decoder_before_and_after": "b406d45fae419c0249b3e5c4955838542de88037",
+    "decoder_unchanged": true,
+    "decoder_is_the_accepted_blob": true,
+    "accepted_decoder_at_0deb6478": "b406d45fae419c0249b3e5c4955838542de88037",
+    "co_evolution_now_correct": "decoder b406d45f is now paired with its co-evolved accepted test dfd06322, exactly as on the accepted lineage. Before the repair it was paired with the stale control test b2c279e6.",
+    "control_decoder_never_introduced": "d2a074a41fb556a1 was NOT restored at any point"
+  },
+
+  "root_cause_confirmed_independently": {
+    "finding": "PORTING GAP, not a decoder regression",
+    "how_i_verified_it": "Read both blobs directly and diffed them. The old test's failures are both OBSERVATION-SEAM failures caused by the decoder's legitimate move to a broker-governed hash and an explicit row_offset/row_limit chunk loop.",
+    "divergences_and_why_each_is_stale": [
+      {
+        "test": "test_expected_source_identity_is_hashed_once_before_reader_decode",
+        "old_assertion": "monkeypatch decoder._sha (the path-opening helper) and require hash_calls == [path]",
+        "accepted_assertion": "monkeypatch decoder._governed_source_sha and require the same hash_calls == [path] before reader access",
+        "what_changed": "ONLY THE SEAM NAME. The invariant under test is byte-for-byte the same invariant.",
+        "seam_exists_in_the_accepted_decoder": "pre553_physical_decoder.py:271 defines _governed_source_sha(broker), docstring: 'Observable seam for the governed whole-file hash pass ... This seam exists so the identity gate stays externally observable and auditable.'",
+        "ordering_independently_verified_by_me": "in _decode: line 615 source_sha = _governed_source_sha(broker) -> line 623 metadata = broker.metadata_read(...) -> line 643 broker.selected_read(...) / line 652 broker.full_read(...). The hash precedes EVERY reader decode.",
+        "invariant_preserved": true
+      },
+      {
+        "test": "test_normal_decode_uses_chunk_path_and_compatibility_uses_full_read",
+        "old_assertion": "pyreadstat.read_file_in_chunks was called and chunk_calls[0]['chunksize'] == 2",
+        "accepted_assertion": "accounts['chunk_reads'] >= 1 AND accounts['path_opens'] == 1 AND the exact emitted cell tuples are (1,'a',1),(2,'a',2),(3,'a',3)",
+        "why_the_helper_assertion_is_stale": "the accepted decoder deliberately abandons read_file_in_chunks for an explicit row_offset/row_limit loop over the broker's governed view, keeping the physical open count at one",
+        "independent_corroboration_of_the_abandonment": "the fan-in/HQ205 record establishes that read_file_in_chunks reuses one file object across parses and ReadStat rejects that reuse for DTA; path_opens == 1 is the stronger governed property actually asserted in its place",
+        "compatibility_half_STRENGTHENED_not_weakened": "the accepted revision keeps reader_calls[:2] == [(True, None), (False, None)] and ADDS compat_accounts['full_reads'] == 1 and compat_accounts['selected_reads'] == 0, which the old test did not assert",
+        "binding_halves_preserved": ["normal decode uses the CHUNK path", "compatibility decode means metadata read THEN full read, with no column selection"]
+      }
+    ]
+  },
+
+  "not_a_retirement": {
+    "test_function_count_before": 17,
+    "test_function_count_after": 17,
+    "test_name_set_identical": true,
+    "verified_by": "diff of the sorted 'def test_' name lists before and after: empty diff",
+    "no_test_skipped_xfailed_or_deleted": true,
+    "no_decoder_change": true,
+    "no_production_path_touched": true
+  },
+
+  "honest_coverage_weakening_recorded": {
+    "what_was_lost": "The accepted revision no longer asserts a requested chunksize. On a 3-row carrier everything fits in one read, so a chunk-size regression would not be caught by this test.",
+    "is_it_a_behaviour_defect": false,
+    "basis": "the underlying chunk-sizing behaviour was independently verified correct in HQ197 on a 1000-row carrier (chunk_rows=7 -> 143 chunks all <=7; =100 -> 10 chunks; =333 -> 4 chunks; path_opens=1 throughout)",
+    "classification": "TEST-COVERAGE WEAKNESS, non-blocking",
+    "advisory_follow_on_NOT_performed": "Restoring an explicit chunk-size assertion on a carrier larger than one chunk would recover that coverage. This lane did NOT do so: the commission authorises adopting the accepted revision dfd06322, and inventing a new chunk-size assertion would be an unauthorised test-authoring act beyond the bounded repair. Recorded as an open item for HQ."
+  },
+
+  "post_port_result_on_the_two_target_tests": {
+    "test_expected_source_identity_is_hashed_once_before_reader_decode": "PASSED",
+    "test_normal_decode_uses_chunk_path_and_compatibility_uses_full_read": "PASSED",
+    "combined": "2 passed",
+    "full_ported_file_result": "17 tests: 14 passed, 2 failed, 1 skipped",
+    "the_2_remaining_failures_are": "test_parquet_roundtrip_atomicity_corruption_and_direct_duckdb and test_direct_session_skips_full_reopen_and_supports_multiple_queries, both ModuleNotFoundError: No module named 'duckdb'",
+    "those_2_are_unrelated_to_this_port": "They are present IDENTICALLY in the pre-port baseline (16 failures = these 2 + the 2 SR06 targets). They are an environment/optional-dependency matter, not a code matter, and duckdb is absent from the governed 14-package lock as well."
+  },
+
+  "holds_respected": {
+    "no_decoder_change": true,
+    "no_production_C3_backport": true,
+    "no_test_retirement": true,
+    "no_environment_reconstitution": true,
+    "no_raw_source_access": true,
+    "no_warrant": true,
+    "no_live_C4": true,
+    "no_C7": true,
+    "no_actor_or_person_work": true,
+    "no_self_adoption": true
+  }
+}

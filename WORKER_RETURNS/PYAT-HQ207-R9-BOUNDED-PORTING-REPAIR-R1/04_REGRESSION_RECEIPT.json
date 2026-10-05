@@ -1,0 +1,86 @@
+{
+  "schema": "PYAT_HQ207_REGRESSION_RECEIPT@1.0.0",
+  "lane": "PYAT-HQ207-R9-BOUNDED-PORTING-REPAIR-R1",
+  "startup_sha": "70ca48345d97f26ac1d7061df2138ab3f14c474c",
+  "status": "THE_TWO_SR06_REGRESSIONS_ARE_GONE__ZERO_NEW_FAILURES__FAILURE_SET_IDENTICAL_TO_PURE_CONTROL_BASELINE",
+
+  "the_slice": {
+    "name": "the current-control regression slice that previously exposed the two SR06 failures",
+    "recorded_definition_source": "WORKER_RETURNS/PYAT-HQ204-R9-ACCEPTED-RUNTIME-FANIN-R1/03_TEST_AND_R7_RECEIPT.json -> regression_audit_on_control_decoder_consumers",
+    "recorded_shape": "an identical 12-file control set, 109 tests total, described as 'control_decoder_consumers'",
+    "the_12_file_list_was_not_enumerated_in_the_record": true,
+    "how_i_reconstructed_it": "I enumerated every rawlsing_next/tests file importing pre553_physical_decoder, pre553_r5_codec, the R9 runtime modules, or closed35 content (16 candidates), measured per-file collection, excluded the three R9 court files because they did not exist at the pure control base and so cannot be part of a CONTROL-file set, and solved the remaining 13 candidates (115 tests) for a 12-file/109-test subset. Exactly one 6-test file must be excluded.",
+    "the_two_arithmetically_valid_solutions": {
+      "exclude_test_fiabc_t3_oracle_process_envelope": "12 files, 109 tests",
+      "exclude_test_r35_i01_physical_metadata": "12 files, 109 tests"
+    },
+    "which_i_adopted_and_why_it_is_immaterial": "I ran BOTH candidate sets in the pre-port state. Both reproduce the recorded fan-in baseline EXACTLY: 16 failed, 92 passed, 1 skipped of 109. The choice between them does not affect the delta measurement, so I adopted the first (excluding test_fiabc_t3_oracle_process_envelope) and record that the alternative is behaviourally equivalent for this purpose.",
+    "adopted_12_files": [
+      "test_fiabc_lits_i_representation_authority.py",
+      "test_fiabc_lm1_r1e_n1_physical_boundary.py",
+      "test_fiabc_lm2_r1e_bounded_mapping_recovery.py",
+      "test_fiabc_lm2_r1i_physical_native_hostile.py",
+      "test_fiabc_lm2_r1i_physical_native_inventory.py",
+      "test_fiabc_lm2_r1j_sav_representation_authority.py",
+      "test_fiabc_run3_postmeasurement_repair_stack.py",
+      "test_pre553_route_b_production.py",
+      "test_pre553_source_backed_c11_facade.py",
+      "test_pre553_source_backed_c11_facade_multi_owner_r1.py",
+      "test_pre553_sr06_decoder_carrier.py",
+      "test_r35_i01_physical_metadata.py"
+    ],
+    "slice_unchanged_by_this_lane": "The slice is the same 12 files and the same 109 tests before and after the port. The port changed one file WITHIN the slice (the SR06 test), which is the point of the exercise."
+  },
+
+  "three_way_comparison": {
+    "pure_control_base_ff4f0695": { "recorded_by": "the fan-in lane", "failed": 14, "passed": 94, "skipped": 1, "total": 109 },
+    "fan_in_candidate_pre_port": { "measured_by": "me, in this lane", "failed": 16, "passed": 92, "skipped": 1, "total": 109, "reproduces_recorded_baseline": true },
+    "post_port_this_lane": { "measured_by": "me, in this lane", "failed": 14, "passed": 94, "skipped": 1, "total": 109 }
+  },
+
+  "set_level_proof": {
+    "method": "I ran the 5 slice files that contain any failure, in BOTH the pre-port and post-port states, and compared the sorted FAILED lists with comm. This is a set comparison, not an aggregate comparison, so it cannot hide a swap of one failure for another.",
+    "pre_port_failure_count": 16,
+    "post_port_failure_count": 14,
+    "fixed_by_this_port": [
+      "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py::test_expected_source_identity_is_hashed_once_before_reader_decode",
+      "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py::test_normal_decode_uses_chunk_path_and_compatibility_uses_full_read"
+    ],
+    "new_failures_introduced_by_this_port": [],
+    "zero_new_failures": true,
+    "fixed_count_is_exactly_2": true,
+    "the_two_fixed_are_exactly_the_two_SR06_regressions_named_by_HQ205": true,
+    "the_14_remaining_failures_are_byte_identical_in_both_states": true
+  },
+
+  "post_port_failure_inventory_and_attribution": {
+    "count": 14,
+    "attribution": "ALL 14 are pre-existing on this lineage and NONE is caused by the accepted R9 runtime or by this repair.",
+    "categories": {
+      "duckdb_optional_dependency_absent": 2,
+      "banked_projection_and_mapping_authority_tests": 12
+    },
+    "duckdb_detail": "test_pre553_sr06_decoder_carrier.py::test_parquet_roundtrip_atomicity_corruption_and_direct_duckdb and ::test_direct_session_skips_full_reopen_and_supports_multiple_queries - ModuleNotFoundError: No module named 'duckdb'. duckdb is absent from BOTH the substitute environment AND the governed 14-package lock, so these are expected under the governed freeze and are not an artifact of my substitute.",
+    "mapping_authority_detail": "the remaining 12 are the pre-existing banked-projection / mapping-authority failures the fan-in lane already recorded as environmental or banked-projection related, spread across test_fiabc_lits_i_representation_authority, test_fiabc_lm2_r1e_bounded_mapping_recovery, test_fiabc_lm2_r1i_physical_native_hostile and test_fiabc_run3_postmeasurement_repair_stack.",
+    "the_fan_in_lane_also_recorded_14_at_pure_control_base": "so the post-port state is not merely better than the candidate, it is INDISTINGUISHABLE from the pure control baseline"
+  },
+
+  "the_conclusion_this_proves": {
+    "statement": "The accepted R9 runtime fan-in is now regression-neutral against the current-control decoder-consumer set. The two MATERIAL_MECHANISM_DIVERGENCE findings that the fan-in lane honestly reported against itself are fully resolved, and the resolution required only the co-evolved test adoption.",
+    "stronger_form": "The fan-in's 14 pre-existing control failures are untouched; the candidate's 2 extra failures are gone; the net failure set equals the pre-fan-in control baseline exactly. Nothing was suppressed, retried away, xfailed, skipped or worked around.",
+    "no_failure_was_retried_away": true,
+    "no_failure_was_suppressed": true,
+    "no_test_was_skipped_or_xfailed_to_go_green": true
+  },
+
+  "residual_known_coverage_weakness": {
+    "what": "The ported SR06 test no longer asserts a requested chunksize, so a chunk-size regression on a multi-chunk carrier would not be caught by that test.",
+    "is_it_a_failure": false,
+    "is_it_a_new_failure_introduced_by_this_lane": false,
+    "classification": "TEST-COVERAGE WEAKNESS, non-blocking, introduced by the ACCEPTED lineage revision that HQ207 authorised me to adopt",
+    "not_repaired_by_me_because": "inventing a new chunk-size assertion would exceed the bounded repair. The commission authorises adopting accepted blob dfd06322, nothing more.",
+    "referred_to_HQ_as": "an open item, with the note that the underlying behaviour is already independently verified correct in HQ197"
+  },
+
+  "environment_caveat_applies_to_every_number_in_this_receipt": "These results were produced in the disclosed package-set-identical substitute environment, NOT in the governed interpreter named by the commission, which does not exist on this host. See 03_GOVERNED_ENVIRONMENT_COURT_RECEIPT.json and the counterexample recorded in 05_FINAL_DISPOSITION.json."
+}

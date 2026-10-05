@@ -1,0 +1,141 @@
+{
+  "schema": "PYAT_HQ207_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ207-R9-BOUNDED-PORTING-REPAIR-R1",
+  "status": "FINAL",
+  "disposition": "R9_GOVERNED_ENVIRONMENT_QUALIFICATION_FAILURE",
+  "disposition_is_allowed_value": true,
+  "startup_sha": "70ca48345d97f26ac1d7061df2138ab3f14c474c",
+  "exact_repair_base": "dfdf5659fd78e9bc996b07383349094059a5553d",
+  "independent_adjudication_read": "7a5cf25ab3fb98fe5311e0a394b4432a498f6546",
+  "hq207_adjudication_applied": "cfe648bd462ddf6fc1252182c5e784ec43bf4405",
+  "checkout_mode": "SPARSE_REQUIRED",
+  "terminal_token": "HQ207_R9_BOUNDED_PORTING_REPAIR_RETURNED__HQ_FINAL_REVIEW_REQUIRED",
+
+  "why_this_disposition_and_not_READY_FOR_FINAL_ACCEPTANCE": "Repairs 1 and 2 are complete and verified. Repair 3 cannot be performed as commissioned because the governed interpreter named by the commission does not exist on this host, and the commission simultaneously prohibits environment reconstitution. Choosing R9_BOUNDED_PORTING_REPAIR_COMPLETE__READY_FOR_FINAL_ACCEPTANCE would require asserting a governed-environment qualification that did not happen. The honest disposition names the failure that actually occurred, and records the two completed repairs inside it so neither is understated.",
+
+  "repair_status": [
+    {
+      "repair": 1,
+      "title": "SR06 test port",
+      "status": "COMPLETE",
+      "evidence": "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py moved from b2c279e6ad85d695 to dfd063227e4a0897, byte-exact. Decoder untouched at b406d45fae419c02. 17 tests before and after with an identical name set, so nothing was retired. Both target invariants now pass.",
+      "artifact": "01_SR06_PORT_RECEIPT.json"
+    },
+    {
+      "repair": 2,
+      "title": "R7 gate attribution",
+      "status": "COMPLETE",
+      "evidence": "The 55-test six-file denominator is recorded as an ACCEPTED-C4C3-LINEAGE qualification and explicitly NOT a current-control obligation. The current-control criterion is restated as control sanctioned court set + reachable 25-test R7 subset + accepted R9 focused courts. No C3 production module or court was imported.",
+      "artifacts": ["02_R7_GATE_ATTRIBUTION.json", "WORKER_RETURNS/PYAT-HQ204-R9-ACCEPTED-RUNTIME-FANIN-R1/06_HQ207_GATE_ATTRIBUTION_CORRECTION_NOTICE.json"],
+      "method_choice": "The correction is ADDITIVE. The fan-in lane's signed receipt 03_TEST_AND_R7_RECEIPT.json is preserved byte-for-byte at blob ddc1f39f7d3023ba2471c51fda556bc0b1371b49 and a clearly-marked correction notice was placed beside it. That lane's measurements were accurate; only the attribution was wrong. Overwriting a prior lane's receipt would have destroyed the audit trail."
+    },
+    {
+      "repair": 3,
+      "title": "Governed environment rerun",
+      "status": "FAILED",
+      "evidence": "The commissioned interpreter /Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python does not exist, nor do its parent directories qualification/ or tooling/, and a host-wide bounded find returns nothing. Reconstitution is prohibited, so the governed qualification could not be performed.",
+      "what_was_done_instead": "All five commissioned court runs were executed in an already-existing, disclosed, package-set-identical substitute (14/14 set-identical to the governed lock, pyreadstat 1.3.6 pin held). Results: execution-binding 34/34, source-session 15/15, broker 20/20, aggregate 69/69; reachable R7 subset 25/25; ported SR06 file 14 passed / 2 failed (duckdb, absent from the governed freeze too) / 1 skipped, with both target tests passing.",
+      "artifact": "03_GOVERNED_ENVIRONMENT_COURT_RECEIPT.json"
+    }
+  ],
+
+  "regression_proof": {
+    "requirement": "rerun the same current-control regression slice that previously exposed the two SR06 failures and prove the two regressions are gone without new failures",
+    "satisfied": true,
+    "slice": "12 files / 109 tests, reconstructed and validated against the recorded baseline",
+    "pre_port": "16 failed, 92 passed, 1 skipped",
+    "post_port": "14 failed, 94 passed, 1 skipped",
+    "pure_control_base_recorded_by_the_fan_in_lane": "14 failed, 94 passed, 1 skipped",
+    "fixed": "exactly the 2 SR06 tests, by set comparison",
+    "new_failures": 0,
+    "strongest_available_statement": "The post-port failure set is IDENTICAL to the pre-fan-in pure control baseline. The accepted R9 runtime fan-in is now regression-neutral on this slice.",
+    "artifact": "04_REGRESSION_RECEIPT.json"
+  },
+
+  "MATERIAL_NEW_COUNTEREXAMPLE": {
+    "severity": "HIGH - this materially affects a repair instruction HQ207 issued on the strength of the independent adjudication",
+    "what": "Four checkable factual claims in the independent adjudication 7a5cf25a, artifact 03_ENVIRONMENT_QUALIFICATION.json, are FALSE on this host as of startup SHA 70ca48345. All four are about the existence of local environments, and all four are directly checkable.",
+    "contradicted_claims": [
+      {
+        "claim": "governed_r7_venv: present true, interpreter_runs true, observed python 3.11.3 / pyreadstat 1.3.6 / pandas 2.3.3 / numpy 2.4.6 / pyarrow 25.0.1",
+        "actual": "ABSENT. The path does not exist, its parent qualification/ does not exist, tooling/ does not exist, and find over /Users/matthewsmith to depth 7 returns nothing.",
+        "consequence": "The adjudication's central Section C conclusion, that no reconstitution is required because the governed environment already exists, is not executable on this host. Its Repair 3 requirement is therefore unsatisfiable as written."
+      },
+      {
+        "claim": "governed_c4c3_base_interpreter: present true, runs true, python 3.11.3",
+        "actual": "ABSENT at /Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+        "consequence": "Same."
+      },
+      {
+        "claim": "governed_c4c3_env at /var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c4c3-env: present true",
+        "actual": "ABSENT. This is the exact environment_location recorded in the governed lock 01_ENVIRONMENT_LOCK.json at deea4054.",
+        "consequence": "Both governed environments are gone, not one."
+      },
+      {
+        "claim": "the_reconstructed_environment_is_also_gone: /var/folders/.../hq204-r9-env present_now false, described as a DURABILITY defect because the candidate's results are not re-runnable from its own receipt",
+        "actual": "PRESENT and functional (Python 3.11.3, 14 packages, pyreadstat 1.3.6).",
+        "consequence": "This one is inverted. The durability defect HQ205 attributed to the fan-in lane does not exist; the fan-in lane's declared environment is re-runnable and I used it."
+      }
+    ],
+    "the_most_serious_single_item": "The adjudication states 'proof_i_used_it: I ran pytest --collect-only on the candidate tree with the governed interpreter and obtained clean, deterministic results (25 tests collected across the three present R7 files: 9 + 6 + 10)'. I reproduced that exact 25-test collection and 25/25 result - but only in a different interpreter. The governed interpreter cannot run on this host, so that stated proof cannot have been produced as described here.",
+    "what_I_am_NOT_claiming": "I am not claiming the reviewer acted in bad faith, and I am not claiming their host state was wrong when they observed it. Environments in TMPDIR and in LOCAL_COURTS are volatile; a genuine difference in host state is entirely possible. I am recording only what is checkable here and now, and flagging that HQ207's Repair 3 was authorised on a premise that does not hold on this host.",
+    "corroborating_detail": "The fan-in lane's own receipt 03_TEST_AND_R7_RECEIPT.json already recorded governed_r7_interpreter_present false and governed_environment_reproducible_from_this_machine false, with a search 'find over /Users/matthewsmith/Desktop to depth 6'. My independent search to depth 7 and depth 8 agrees with the fan-in lane and disagrees with the adjudication. HQ205's proposed explanation for the candidate's 'absent' claim - a too-shallow search - does not hold: a deeper search finds nothing.",
+    "not_used_as_the_disposition_because": "The primary disposition is the environment qualification failure, which is the operative blocker. The counterexample is recorded inside it at HIGH severity rather than being used to claim a different headline, because HQ may legitimately judge that a volatile-environment fact does not overturn the adjudication's SR06 and R7 findings, which I independently confirmed and which are the substance of this repair."
+  },
+
+  "findings_i_independently_confirmed_from_HQ205": [
+    "The R7 55-test denominator is a property of the accepted C4C3 lineage, not a current-control obligation. The three unreachable files are tests for accepted-C3 production modules, and one production module is wholly absent from control. Confirmed: all three files ABSENT, and a restore cannot be a court-file-only act.",
+    "The SR06 failures were a PORTING GAP. Confirmed by direct blob diff: the old test's two failures are observation-seam failures against the accepted decoder's broker-governed hash and explicit row_offset chunk loop.",
+    "Test 1's invariant is still binding and is preserved. Confirmed by reading the accepted decoder myself: _governed_source_sha at line 615 precedes metadata_read at 623 and selected_read/full_read at 643/652.",
+    "Test 2's binding halves are preserved and its compatibility half is actually STRENGTHENED by the accepted revision, which adds full_reads == 1 and selected_reads == 0.",
+    "The pyreadstat 1.3.6 pin is not weakened. Held exactly in every run.",
+    "The 14-package freeze claim is vindicated. I compared set-wise against the governed lock myself: 14 vs 14, set-identical, no difference.",
+    "The accepted runtime placement and the three R9 courts are sound: the three court blobs are byte-identical to 0deb6478 and all three pass at their exact accepted counts."
+  ],
+
+  "open_items_for_HQ": [
+    "The governed environment must be restored, or the substitute explicitly re-authorised, before any governed-environment qualification can be claimed. This is the blocking item.",
+    "HQ205 artifact 03_ENVIRONMENT_QUALIFICATION.json should be corrected or annotated; four of its environment claims are false on this host, and HQ207's Repair 3 rests on them.",
+    "The chunk-size assertion coverage in the ported SR06 test is weaker than before. Recovering it requires a new assertion on a multi-chunk carrier, which is outside this bounded repair. Not performed.",
+    "Part 1 of the restated current-control acceptance criterion - the control sanctioned court set at .rabochii/court_spec.json - was NOT run by this lane, because it is outside the bounded R9 porting repair. It must be run by the final-acceptance lane.",
+    "The service-source applicability implementation candidate e7d3598494472a9aea7dd2c69f6aacb11585905c still requires the independent hostile review HQ207 mandated. Out of this lane's scope; not touched."
+  ],
+
+  "other_dispositions_considered": {
+    "R9_BOUNDED_PORTING_REPAIR_COMPLETE__READY_FOR_FINAL_ACCEPTANCE": "REJECTED. Repairs 1 and 2 are complete, but the commission's Repair 3 cannot be satisfied and the porting repair was never the blocker for the environment. Selecting this would assert a governed qualification that did not occur, and would also hide the environment counterexample.",
+    "R9_BOUNDED_REPAIR_INCOMPLETE__NAMED_DEFECT": "REJECTED as the headline. The porting repair itself is complete; nothing is defective in it. The incomplete part is the governed-environment qualification, which is precisely what the other allowed value names. Using this value would misattribute the blocker to the repair.",
+    "MATERIAL_NEW_COUNTEREXAMPLE": "NOT selected as the headline, but recorded at HIGH severity inside this disposition. The substance of the repair is sound and verified; the counterexample concerns a volatile-environment fact about a prior adjudication. HQ should see both, and the environment failure is the harder blocker."
+  },
+
+  "holds_respected": {
+    "no_decoder_change": true,
+    "no_production_C3_backport": true,
+    "no_test_retirement": true,
+    "no_environment_reconstitution": true,
+    "no_raw_source_access": true,
+    "no_warrant": true,
+    "no_live_C4": true,
+    "no_C7": true,
+    "no_actor_or_person_work": true,
+    "no_self_adoption": true,
+    "no_fabrication_of_55_collected_on_control": true,
+    "no_suppression_or_retry_of_any_failure": true,
+    "no_relaxation_of_the_pyreadstat_pin": true,
+    "prior_lane_receipts_preserved_byte_for_byte": true
+  },
+
+  "files_changed_by_this_lane": [
+    "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py (b2c279e6 -> dfd06322, the authorised port)",
+    "WORKER_RETURNS/PYAT-HQ204-R9-ACCEPTED-RUNTIME-FANIN-R1/06_HQ207_GATE_ATTRIBUTION_CORRECTION_NOTICE.json (new, additive)",
+    "WORKER_RETURNS/PYAT-HQ207-R9-BOUNDED-PORTING-REPAIR-R1/ (new, this return)"
+  ],
+
+  "artifacts": [
+    "00_RETURN.md",
+    "01_SR06_PORT_RECEIPT.json",
+    "02_R7_GATE_ATTRIBUTION.json",
+    "03_GOVERNED_ENVIRONMENT_COURT_RECEIPT.json",
+    "04_REGRESSION_RECEIPT.json",
+    "05_FINAL_DISPOSITION.json"
+  ]
+}

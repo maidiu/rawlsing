@@ -1,0 +1,74 @@
+{
+  "schema": "PYAT_HQ207_R7_GATE_ATTRIBUTION@1.0.0",
+  "authority": "HQ207 adjudication cfe648bd462ddf6fc1252182c5e784ec43bf4405, Repair 2",
+  "issued_by_lane": "PYAT-HQ207-R9-BOUNDED-PORTING-REPAIR-R1",
+  "startup_sha": "70ca48345d97f26ac1d7061df2138ab3f14c474c",
+  "corrects": {
+    "file": "WORKER_RETURNS/PYAT-HQ204-R9-ACCEPTED-RUNTIME-FANIN-R1/03_TEST_AND_R7_RECEIPT.json",
+    "blob": "ddc1f39f7d3023ba2471c51fda556bc0b1371b49",
+    "field": "r7_six_file_court",
+    "unchanged": true,
+    "why_unchanged": "This notice is ADDITIVE. The fan-in lane's observations, counts, blobs and environment disclosures are preserved byte-for-byte. Its measurements were accurate; what was wrong was the attribution of the 55-test denominator to current control as an obligation. Rewriting a prior lane's signed receipt would destroy the audit trail, so the correction is recorded beside it instead of over it."
+  },
+  "attribution_correction": {
+    "statement": "THE CANONICAL 55-TEST SIX-FILE R7 DENOMINATOR IS THE QUALIFICATION OF THE ACCEPTED C4C3 LINEAGE. IT IS NOT A CURRENT-CONTROL OBLIGATION.",
+    "supersedes": "any reading of r7_six_file_court.required_total = 55 as a criterion that a current-control fan-in must satisfy",
+    "authority_of_the_denominator": "PYAT-C4C3-DARWIN-ANCHOR-RUNTIME-R1/05_AUTHORITATIVE_C3_COURT.json at 1df64cc59 (2026-10-02), which is on the ACCEPTED lineage and is NOT an ancestor of current control",
+    "lineage_evidence": {
+      "divergence_point": "87029d349c8a7385cb673060a8e5decd4eb528ff (2026-10-01)",
+      "the_three_unreachable_files_are_tests_for_accepted_C3_PRODUCTION_modules": true,
+      "hard_blocker": "test_closed35_g01_sav_numeric_representation_authority.py imports the PRODUCTION module rawlsing_next.closed35_g01_sav_numeric_representation_authority, which is wholly ABSENT from current control. Restoring the courts is therefore impossible as a court-file-only act.",
+      "current_control_has_its_own_sanctioned_court_set": ".rabochii/court_spec.json, which excludes all six R7 files",
+      "conclusion": "The unsatisfiability on control is a GATE-ATTRIBUTION error, not a missing-dependency defect."
+    },
+    "what_is_NOT_authorized_to_close_the_gap": [
+      "importing the three closed35 court files",
+      "backporting the accepted-C3 production module closed35_g01_sav_numeric_representation_authority into control",
+      "importing any other accepted-lineage production module in order to manufacture 55 collected on control",
+      "relaxing, waiving or reinterpreting the accepted-lineage 55-test qualification itself"
+    ]
+  },
+  "current_control_acceptance_criterion": {
+    "replaces": "the 55-test denominator as a control-side gate",
+    "composed_of_three_parts": [
+      {
+        "n": 1,
+        "part": "current-control sanctioned court set",
+        "ref": ".rabochii/court_spec.json",
+        "status_at_repair": "NOT RUN BY THIS LANE - this lane is bounded to the R9 bounded porting repair and did not widen its remit to the control court set. Recorded as the governing first component of the criterion, with its run left to the final-acceptance lane."
+      },
+      {
+        "n": 2,
+        "part": "the reachable R7 subset present on current control",
+        "definition": "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py (9) + test_r35_i01_physical_metadata.py (6) + test_pre553_source_backed_c11_facade.py (10) = 25",
+        "required_result": "25 collected, then 25/25",
+        "observed_this_lane": "25 collected, 25 passed",
+        "status": "SATISFIED (see 03_GOVERNED_ENVIRONMENT_COURT_RECEIPT.json for the interpreter caveat)"
+      },
+      {
+        "n": 3,
+        "part": "the accepted R9 focused courts",
+        "definition": "execution-binding 34 + source-session 15 + broker 20 = 69",
+        "required_result": "69/69",
+        "observed_this_lane": "69/69",
+        "status": "SATISFIED (same interpreter caveat)"
+      }
+    ],
+    "parts_satisfied_by_this_lane": [
+      2,
+      3
+    ],
+    "part_not_run_by_this_lane": 1,
+    "part_1_is_not_a_defect": "The control sanctioned court set was outside the bounded repair commission. It is named here so the criterion is complete and truthful, not so that its absence is read as a failure of this repair."
+  },
+  "accepted_lineage_qualification_recorded_not_relitigated": {
+    "claim": "55 collected, then 55/55, then 55/55 in the accepted C4C3 tree",
+    "authority": "1df64cc59 and the independent acceptance 0deb64784829661780ee3957f8070ccc2c241722",
+    "status_this_lane": "ACCEPTED AS AN ACCEPTED-LINEAGE QUALIFICATION. Not re-run and not re-adjudicated here, because its three court files and one of their production modules do not exist on this lineage. This lane makes no claim about that 55/55 result beyond accepting the accepted record."
+  },
+  "no_authority_conflict": "No two authorities contradict each other. The apparent conflict dissolves entirely once the 55-test denominator is attributed to the lineage that defines it. MATERIAL_AUTHORITY_CONFLICT is therefore not the correct disposition and is not claimed.",
+  "terminal": "HQ207_R7_GATE_ATTRIBUTION_CORRECTED__CURRENT_CONTROL_CRITERION_IS_COURT_SPEC_PLUS_REACHABLE_R7_PLUS_R9",
+  "lane": "PYAT-HQ207-R9-BOUNDED-PORTING-REPAIR-R1",
+  "repair_number": 2,
+  "status": "COMPLETE__GATE_REATTRIBUTED__NO_C3_BACKPORT__NO_FOREIGN_DENOMINATOR"
+}
