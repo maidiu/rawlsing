@@ -1,0 +1,34 @@
+{
+  "schema": "PYAT_HQ211_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ211-C1-CURRENT-DAG-ADOPTION-R1",
+  "branch": "agent/rabochii-pyat-hq211-c1-current-dag-adoption-r1",
+  "commission_tip": "1f05964479be110345472fc5239acefa9ea4775d",
+  "disposition": "C1_CURRENT_DAG_ADOPTION_JOIN_READY__HQ_REVIEW_REQUIRED",
+  "terminal": "HQ211_C1_CURRENT_DAG_ADOPTION_RETURNED__HQ_DECISION_REQUIRED",
+  "self_adopted": false,
+  "source_access": false,
+  "locator_discovery": false,
+  "warrant_issued": false,
+  "live_c4": false,
+  "c7": false,
+  "actor_person_implementation": false,
+  "f7_import": false,
+  "v556_import": false,
+  "hd_f8_pending_branch_import": false,
+  "summary": "The HQ168/HQ206-accepted C1 analytical capability is now grafted onto the CURRENT control DAG at b722f2e7 with all fourteen adopted blobs byte-exact, zero merges, zero side-branch commits, and an exactly reproduced 454-test accepted court. The one replaced owner was proven a strict semantic superset rather than chosen by recency, and the exact failure-ID set is unchanged.",
+  "decisive_findings": [
+    "The decisive fact for the authority-maintenance reconciliation is that current control's blob is IDENTICAL to the merge-base blob. Current control made zero semantic changes to that owner after the divergence, so there were no later control changes to reconcile and conservation reduced to a superset proof rather than a three-way merge.",
+    "The accepted blob is a strict semantic superset: zero of 122 control public symbols lost, 118 of 121 control refusal messages verbatim, one preserved and strengthened, one preserved and generalized, and exactly one subsumed by an invariant that is at least as strict in every case and strictly stricter in two.",
+    "The paired test file was a real trap. Current control's test_pre553_authority_maintenance exercises NONE of the 11 symbols the accepted owner adds, so adopting the owner without its paired accepted test would have shipped the entire negative-lifecycle layer untested and could not have collected 454. Owner and test were adopted as one unit.",
+    "The exact court identity was recovered from the two machine-readable maps the commission named, not by residual arithmetic. Both maps independently agree on all 15 files and 454 tests, and the measured per-file counts match exactly.",
+    "The four authority directories at the pruned accepted state contain exactly 9 files, so directory-level sparse import is provably identical to importing only the required nine. The open-audit then proved empirically that the court opens exactly those nine and zero of the 54 pruned over-imports.",
+    "Blast radius is provably confined: the only production importer of the replaced owner is pre553_analytical_replay_dependency, inside the adopted set, and no current-control test outside the adopted set touches that owner."
+  ],
+  "limits_and_open_items": [
+    "This lane adopts accepted capability onto current control. It does not adopt into control: the branch is a join candidate for HQ review and self-adoption is forbidden.",
+    "The accepted C1 nonblocking limitation is unchanged and still open: there is no accepted single owner contract carrying provider recomputation -> named consumer -> lifecycle restore inside one fresh process.",
+    "Whether the now-present analytical capability discharges the H-A/H-D residuals is an HQ question, not a finding of this lane.",
+    "The 227 pre-existing suite failures and 53 errors are unrelated fixture/environment artifacts and were neither fixed nor in scope."
+  ],
+  "artifacts": ["00_RETURN.md", "01_CURRENT_DAG_RECONCILIATION.json", "02_OWNER_BLOB_AND_CONFLICT_MATRIX.json", "03_REQUIRED_NINE_AND_COURT_MANIFEST.json", "04_QUALIFICATION_AND_REGRESSION_RECEIPT.json", "05_FINAL_DISPOSITION.json"]
+}
