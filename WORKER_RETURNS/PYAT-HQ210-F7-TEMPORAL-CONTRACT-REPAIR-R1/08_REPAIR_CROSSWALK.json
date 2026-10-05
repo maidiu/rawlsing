@@ -1,0 +1,93 @@
+{
+  "schema": "PYAT_HQ210_F7_REPAIR_CROSSWALK@1.0.0",
+  "lane": "PYAT-HQ210-F7-TEMPORAL-CONTRACT-REPAIR-R1",
+  "hostile_review": "f1a0dbbc8491e0d23df9005abd55b83e0261424e",
+  "contract_repaired": "19fd6f6e9f3e24c716310335325cef4c75e6fa56",
+  "repairs": [
+    {
+      "repair": 1,
+      "defect": "ORDER_UNKNOWN_NONCOMPARABLE simultaneously treated as an authorized basis and absence of basis; TEMPORAL_ORDER_UNAUTHORIZED multi-reachable",
+      "status": "CLOSED",
+      "corrected_surfaces": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "06"
+      ],
+      "correction": "Three authorized bases only; ORDER_UNKNOWN_NONCOMPARABLE is a typed no-basis refusal with null basis ref; missing required basis authority maps to TEMPORAL_INSUFFICIENT_AUTHORITY; TEMPORAL_ORDER_UNAUTHORIZED has one unique path."
+    },
+    {
+      "repair": 2,
+      "defect": "relation_state/status/basis/direction unconstrained",
+      "status": "CLOSED",
+      "corrected_surfaces": [
+        "02",
+        "03",
+        "04",
+        "06"
+      ],
+      "correction": "Cross-field invariants make positive direction legal only under COMPARABLE + ORDERED_RELATION_AUTHORIZED + direction-permitting authorized basis + claimable direction + delta. Contradictory tuples refuse."
+    },
+    {
+      "repair": 3,
+      "defect": "NO_AUTHORIZED_CHANGE depended on an unbound deadband",
+      "status": "CLOSED",
+      "corrected_surfaces": [
+        "00",
+        "01",
+        "02",
+        "03",
+        "06"
+      ],
+      "correction": "NO_AUTHORIZED_CHANGE is exact signed delta == 0. Deadband/tolerance removed entirely; future deadband requires separate authority."
+    },
+    {
+      "repair": 4,
+      "defect": "relation_state derivation underdetermined; reason cardinality conflict; positive reason empty; authority states leak; F7 terminals dropped",
+      "status": "CLOSED",
+      "corrected_surfaces": [
+        "02",
+        "03",
+        "06"
+      ],
+      "correction": "Total 12-state precedence plus state-local scalar reason precedence; positive reason added; authority failures map to TEMPORAL_INSUFFICIENT_AUTHORITY with provenance preservation; five prior F7 terminals mapped/fenced explicitly."
+    },
+    {
+      "repair": 5,
+      "defect": "implementation ceiling unstated",
+      "status": "CLOSED",
+      "corrected_surfaces": [
+        "01",
+        "07"
+      ],
+      "correction": "Future implementation limited to one kind + matching ceiling + bounded comparison module/court. Receipt explicitly module-local, not PUBLIC_OBJECT_FAMILIES/typed_state. Cross-universe two-path resolution and all non-surfaces frozen."
+    },
+    {
+      "repair": 6,
+      "defect": "12-vs-11 count, H08/H10 error, numbering drift, third source-side producer omitted",
+      "status": "CLOSED",
+      "corrected_surfaces": [
+        "00",
+        "05",
+        "09"
+      ],
+      "correction": "12 relation states; H10 is gap/absence and H08 scalar pressure; dual index map provided; :686-687 added alongside :639-640 and :680-681."
+    },
+    {
+      "repair": 7,
+      "defect": "backfill noncollapse direction unstated after TEMPORAL_NONCOMPARABLE promotion",
+      "status": "CLOSED",
+      "corrected_surfaces": [
+        "02",
+        "03",
+        "06",
+        "07"
+      ],
+      "correction": "Literal forbidden-backfill membership preserved; receipt cannot be a backfill target; a TEMPORAL_NONCOMPARABLE pair cannot be backfilled into positivity; source backfill cannot manufacture temporal comparability."
+    }
+  ],
+  "architecture_reopened": false,
+  "new_authority_kind_count_changed": false,
+  "production_implementation": false
+}
