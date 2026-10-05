@@ -1,0 +1,100 @@
+{
+  "schema": "PYAT_HQ215_F8_NONTRANSFORMATION_AND_CURRENTNESS_ATTACK@1.0.0",
+  "lane": "PYAT-HQ215-HD-F8-FINAL-HOSTILE-REREVIEW-R1",
+  "candidate_tip": "09e4dc0d9e8dba21eadab0b5dd55821af7f4811c",
+  "f8_nontransformation": {
+    "normal_path_verdict": "PASS",
+    "evaluator_call": "evaluate_positioned_subject_possibility(query=query, rule=rule, evidence=evidence)",
+    "passes_caller_objects_directly": true,
+    "binder_reads_exact_geometry": false,
+    "binder_reads_retained_conditioner_ids": false,
+    "binder_reads_probability_distribution_estimation_fields": false,
+    "adopted_f8_rule_checks": [
+      "EXPECTED_F8_ALGORITHM_ID",
+      "EXPECTED_F8_MODEL_RULE_ID",
+      "binding.f8_rule_hash == caller rule.rule_hash"
+    ],
+    "geometry_or_distribution_transformation_added": false,
+    "conditioning_added": false,
+    "evidence_weighting_added": false,
+    "blocking_qualification": "the unchanged F8 evaluator can nevertheless be reached for an unauthorized source through a forged binding result; the overreach is source-eligibility authority, not F8 transformation"
+  },
+  "adopted_owner_integrity": {
+    "rawlsing_next/pre553_service_source_applicability.py": "3e40caca29e8c96ee1f412f919cfc7dba63f96c4",
+    "rawlsing_next/source_backed_positioned_subject_possibility.py": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+    "rawlsing_next/objective_consumer_bounded_evidence.py": "f30fca20e7b56e00348e82765d95f974b4b6a195",
+    "all_three_exact": true
+  },
+  "release_handling": {
+    "verdict": "PASS_ON_LAWFUL_CONSTRUCTION_PATH",
+    "adopted_owner_invariant": "pre553_service_source_applicability stamps every ServiceSourceApplicabilityDecision.release_identity_ref from request.release_identity_ref",
+    "binder_off_release_positive_behavior": "raises BINDING_OFF_RELEASE_POSITIVE_DECISION",
+    "old_bound_to_requested_release_false_positive_branch_present": false,
+    "forged_receipt_witness_present_in_repair_court": true
+  },
+  "currentness_vocabulary": {
+    "imported_module": "rawlsing_next/objective_non_event_currentness_contract.py",
+    "imported_symbol_only": "STATES",
+    "exact_states": [
+      "CURRENT",
+      "INVALID",
+      "REFRESH_REQUIRED",
+      "STALE"
+    ],
+    "accepted_positive_carried_results": [
+      "CURRENT"
+    ],
+    "refused_adopted_noncurrency": [
+      "STALE",
+      "REFRESH_REQUIRED",
+      "INVALID"
+    ],
+    "legacy_negative_tokens": [
+      "CONFLICTING",
+      "UNKNOWN",
+      "MISSING",
+      "UNRESOLVED"
+    ],
+    "ungoverned_arbitrary_positive_strings_refused": true,
+    "currentness_authority_method_refuses": true,
+    "result_without_claim_refuses": true,
+    "missing_result_for_claim_refuses": true,
+    "binder_infers_currentness_from_applicability": false,
+    "assessment": "Vocabulary pin is exact and does not by itself become a currentness decision. The binder records caller-supplied CURRENT rather than deriving it."
+  },
+  "currentness_dependency_edge": {
+    "binder_imports": "objective_non_event_currentness_contract.STATES",
+    "currentness_contract_imports": "m4_v557_v558_publication_repository AuthorityRef/ExactRef/semantic_hash",
+    "m4_imports": [
+      "m1_temporal_v554_admission_dedup",
+      "m2_v555_atomic_route",
+      "m3_v556_higher_order_structural"
+    ],
+    "m1_m2_m3_import_binder": false,
+    "m1_m2_m3_import_currentness_contract": false,
+    "python_import_cycle_found": false,
+    "currentness_receipt_or_authority_object_consumed_by_binder": false,
+    "semantic_use": "closed vocabulary only",
+    "authority_dependency_cycle_found": false,
+    "note": "This is still a downstream-heavy read-only import edge; it is not an authority cycle at current code grain."
+  },
+  "currentness_defensive_path_note": {
+    "severity": "LOW_NONBLOCKING",
+    "finding": "ACCEPTED_CURRENTNESS_RESULTS_ARE_ADOPTED is evaluated before ServiceF8ScopeBindingError is defined. If CURRENT ever drops out of the adopted states, the intended import-time typed refusal would instead raise NameError.",
+    "fail_closed": true,
+    "semantic_authority_leak": false
+  },
+  "forbidden_power_attack": {
+    "selection_or_ranking_added": false,
+    "priority_or_preference_added": false,
+    "weighting_added": false,
+    "pooling_or_composition_added": false,
+    "target_use_permission_grant_added": false,
+    "source_equivalence_creation_added": false,
+    "backfill_added": false,
+    "f8_conditioning_added": false,
+    "actor_person_inference_added": false,
+    "caveat": "forged binding can manufacture eligibility scope itself; this is the blocking authority-overreach finding recorded in 01."
+  },
+  "conclusion": "F8_NONTRANSFORMATION_AND_RELEASE_CURRENTNESS_REPAIRS_PASS_ON_LAWFUL_PATH__NO_CURRENTNESS_IMPORT_CYCLE__SOURCE_AUTHORITY_FORGE_REMAINS_BLOCKING"
+}
