@@ -1,0 +1,61 @@
+{
+  "schema": "PYAT_HQ215_F7_RECEIPT_STATE_DELTA_PRECEDENCE_ATTACK@1",
+  "lane": "PYAT-HQ215-F7-FINAL-HOSTILE-REREVIEW-R1",
+  "verdict": "FAIL__DELTA_BINDING_AND_TERMINAL_PATH_DEFECTS",
+  "held": {
+    "relation_state_count": 12,
+    "thirteenth_state_added": false,
+    "ordered_without_derivable_delta": "typed pre-receipt refusal",
+    "negative_states_not_comparable_when_emitted": true,
+    "exact_zero_only": true,
+    "deadband_tolerance_epsilon": false,
+    "prior_f7_mapping_live": true,
+    "no_basis_higher_precedence_behavior": "PASS",
+    "live_backfill_surface_consulted": true,
+    "closed_top_level_receipt_field_names_present": true
+  },
+  "defects": [
+    {
+      "id": "F7-RR-05",
+      "severity": "BLOCKING",
+      "title": "bound-measure validation is skipped on the positive court path",
+      "implementation": [
+        "measure_authority_refs are AuthorityRef objects",
+        "pre553_temporal_comparability.py:858 parses quantity_surface.measure_ref with _require_ref, which accepts ExactRef",
+        "the resulting integrity exception is caught and converted to measure_ref=None",
+        "pre553_temporal_comparability.py:862-864 compares only when parsed measure_ref is non-null",
+        "pre553_temporal_comparability.py:868-873 serializes the valid AuthorityRef fixture as measure_ref=null"
+      ],
+      "court_gap": "The mismatch witness supplies a different ExactRef, while the positive fixture supplies an AuthorityRef, so the witness does not prove the valid-path binding.",
+      "impact": "A directional delta can be minted without an exact bound measure on the quantity surface.",
+      "mandatory_attack": 5
+    },
+    {
+      "id": "F7-RR-06",
+      "severity": "MAJOR",
+      "title": "missing required temporal_order_basis_ref does not map to the accepted insufficient-authority terminal",
+      "accepted_law": "authorized disposition + missing basis ref -> TEMPORAL_INSUFFICIENT_AUTHORITY / TEMPORAL_ORDER_BASIS_AUTHORITY_REF_ABSENT",
+      "observed_control_flow": "basis absence is not detected; _validate_receipt_cross_field_law later raises TemporalComparabilityIntegrityError",
+      "court": "test_authorized_basis_requires_a_basis_ref expects the divergent exception"
+    },
+    {
+      "id": "F7-RR-07",
+      "severity": "BLOCKING",
+      "title": "partial-order disposition overrides higher-priority terminal states with an exception",
+      "implementation": "pre553_temporal_comparability.py:943-948 raises unless any PARTIAL_ORDER_NO_DIRECTION request ends in one of the two comparable-no-direction states",
+      "counterexample": "PARTIAL_ORDER_NO_DIRECTION + unresolved identity first selects TEMPORAL_IDENTITY_UNRESOLVED, then raises",
+      "impact": "The advertised total relation-state precedence is not total for partial-order requests; mandatory terminal comparability semantics cannot be emitted.",
+      "mandatory_attack": 11
+    }
+  ],
+  "no_basis_precedence": {
+    "clean": "TEMPORAL_ORDER_UNAUTHORIZED / NO_PERMITTED_ORDER_BASIS_APPLIES",
+    "with_higher_failure": "higher-priority state emitted and no_basis_observation retained",
+    "verdict": "PASS"
+  },
+  "exact_zero": {
+    "verdict": "PASS",
+    "law": "exact signed difference == canonical numeric zero only",
+    "floating_tolerance_or_deadband": false
+  }
+}

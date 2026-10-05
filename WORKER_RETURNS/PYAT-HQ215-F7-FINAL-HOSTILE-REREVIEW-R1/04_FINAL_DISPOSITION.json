@@ -1,0 +1,42 @@
+{
+  "schema": "PYAT_HQ215_F7_FINAL_DISPOSITION@1",
+  "lane": "PYAT-HQ215-F7-FINAL-HOSTILE-REREVIEW-R1",
+  "branch": "agent/reviewer-pyat-hq215-f7-final-rereview-r1",
+  "commission_tip": "4a5094e8ca32efaedc1cc9af9329393f3bc9674c",
+  "candidate_base": "684a1b202767ad393bcead671a7ad239dabcdb14",
+  "code_bearing_commit": "a93352512aa9290112bff1eb680c54d43345078f",
+  "accepted_contract": "c57a96897788108db7b194e4e51691d1ca8ab729",
+  "prior_hostile_review": "4478e949eb92ec411c5dec9878bb4f23b5cb2c01",
+  "disposition": "F7_FINAL_REPAIR_PARTIAL__NAMED_DEFECT",
+  "blocking_defects": [
+    "F7-RR-01 comparability_requirements_ref is not bound to the consumed requirement material",
+    "F7-RR-02 TEMPORAL_COMPARABILITY governed-use scope is reduced to object_id rather than the complete ExactRef",
+    "F7-RR-03 temporal identity contract ref is not resolved against authorized identity material",
+    "F7-RR-04 source_equivalence_ref is not resolved through the exact source-relation owner path",
+    "F7-RR-05 quantity-surface measure binding is skipped on the positive AuthorityRef path",
+    "F7-RR-07 partial-order requests can convert higher-priority terminal failures into exceptions"
+  ],
+  "major_nonblocking_or_secondary_defects": [
+    "F7-RR-06 missing required order-basis ref follows IntegrityError rather than the accepted insufficient-authority state/reason",
+    "target_use_permission_refs consumes only element zero and ignores additional supplied refs",
+    "HQ214 exact environment record conflicts between 00_RETURN.md and 04_COURT_AND_REGRESSION_RESULTS.json"
+  ],
+  "held": [
+    "no thirteenth relation state",
+    "ordered basis without derivable delta refuses pre-receipt",
+    "negative/refusal receipts report NOT_COMPARABLE",
+    "no-basis higher-precedence adjudication C is implemented",
+    "exact-zero law has no tolerance/deadband/epsilon",
+    "prior-F7 mapping is live",
+    "3+ anchors refuse pre-receipt",
+    "cross-universe status is derived from bound universe refs rather than a caller boolean",
+    "live frozen backfill guard is consulted",
+    "broad F7 power ceiling remains intact"
+  ],
+  "hq_adoption_ready": false,
+  "architecture_reopen_required": false,
+  "bounded_repair_required": true,
+  "self_adoption": false,
+  "implementation_modified_by_reviewer": false,
+  "terminal": "HQ215_F7_FINAL_REREVIEW_RETURNED__HQ_DECISION_REQUIRED"
+}

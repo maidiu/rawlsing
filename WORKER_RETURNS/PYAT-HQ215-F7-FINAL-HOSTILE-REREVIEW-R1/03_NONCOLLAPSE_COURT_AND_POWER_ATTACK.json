@@ -1,0 +1,78 @@
+{
+  "schema": "PYAT_HQ215_F7_NONCOLLAPSE_COURT_POWER_ATTACK@1",
+  "lane": "PYAT-HQ215-F7-FINAL-HOSTILE-REREVIEW-R1",
+  "verdict": "POWER_CEILING_HELD__COURT_NOT_PROBATIVE_ENOUGH_FOR_ADOPTION",
+  "power_ceiling": {
+    "f8_import_or_consumption": false,
+    "source_selection": false,
+    "interpolation_midpoint": false,
+    "trajectory_trend_rate": false,
+    "cause_or_event_inference": false,
+    "currentness": false,
+    "scalar_temporal_pressure": false,
+    "pooling_or_linkage_creation": false,
+    "source_equivalence_creation": false,
+    "actor_person_inference": false,
+    "public_object_or_state_family_widening": false,
+    "note": "The SOURCE_EQUIVALENCE defect is an exact-result resolution/ownership-path bypass, not equivalence creation."
+  },
+  "court_claim": {
+    "focused_passed": 83,
+    "regression_passed": 159,
+    "combined": 242,
+    "failure_id_delta_claimed": [],
+    "replay_seed_claims": [0, 1, 12345],
+    "static_focused_test_functions": 66,
+    "github_commit_statuses": {
+      "a93352512aa9290112bff1eb680c54d43345078f": [],
+      "684a1b202767ad393bcead671a7ad239dabcdb14": []
+    },
+    "classification": "worker-local/documentary result; no GitHub status check independently certifies the claimed run"
+  },
+  "court_strengths": [
+    "no broad pytest.raises(Exception) witness remains",
+    "prior-F7 mapping is driven through the producer",
+    "backfill guard is tested against the live frozen surface",
+    "3+ anchor refusal is directly exercised",
+    "operation mismatch and foreign governed-use object_id are exercised",
+    "negative-state comparability-status coverage exists"
+  ],
+  "court_gaps": [
+    {
+      "id": "COURT-RR-01",
+      "finding": "requirements-ref tests prove presence/provenance, not exact material binding"
+    },
+    {
+      "id": "COURT-RR-02",
+      "finding": "governed-use scope test attacks a foreign object_id, not same-object-id/different exact ref"
+    },
+    {
+      "id": "COURT-RR-03",
+      "finding": "identity tests do not resolve temporal_identity_contract_ref against authorized identity material"
+    },
+    {
+      "id": "COURT-RR-04",
+      "finding": "cross-universe tests validate authority scope but never resolve source_equivalence_ref as an exact SourceUniverseRelation result"
+    },
+    {
+      "id": "COURT-RR-05",
+      "finding": "measure-binding positive fixture uses AuthorityRef while checker parses ExactRef; mismatch witness therefore misses the valid-path skip"
+    },
+    {
+      "id": "COURT-RR-06",
+      "finding": "no partial-order + higher-precedence-failure witness"
+    },
+    {
+      "id": "COURT-RR-07",
+      "finding": "missing-basis-ref test codifies an IntegrityError contrary to the accepted terminal mapping"
+    }
+  ],
+  "environment_classification": {
+    "category": "INDEPENDENTLY_REPRODUCED__NOT_GOVERNED_CERTIFICATION",
+    "category_is_honest": true,
+    "exact_record_is_internally_inconsistent": true,
+    "00_RETURN_claim": "CPython 3.11.3 / pytest 9.1.1",
+    "04_COURT_JSON_claim": "Python 3.12.14; /tmp/c1-01-r8-release-spine-venv/bin/python; macOS-13.7.8-x86_64-i386-64bit",
+    "required_action": "reconcile exact interpreter provenance before adoption"
+  }
+}

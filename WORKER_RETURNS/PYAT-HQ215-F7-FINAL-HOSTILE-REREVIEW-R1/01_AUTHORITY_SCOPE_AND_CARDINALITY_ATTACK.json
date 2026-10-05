@@ -1,0 +1,80 @@
+{
+  "schema": "PYAT_HQ215_F7_AUTHORITY_SCOPE_CARDINALITY_ATTACK@1",
+  "lane": "PYAT-HQ215-F7-FINAL-HOSTILE-REREVIEW-R1",
+  "candidate_base": "684a1b202767ad393bcead671a7ad239dabcdb14",
+  "code_bearing_commit": "a93352512aa9290112bff1eb680c54d43345078f",
+  "accepted_contract": "c57a96897788108db7b194e4e51691d1ca8ab729",
+  "verdict": "FAIL__NAMED_AUTHORITY_AND_BINDING_DEFECTS",
+  "held": {
+    "temporal_comparability_operation_scoped": true,
+    "authority_hash_mismatch_reachable": true,
+    "authority_scope_mismatch_reachable": true,
+    "three_plus_anchors_pre_receipt_refusal": true,
+    "two_observations_required": true,
+    "two_universe_refs_required": true,
+    "positive_authority_resolution_records_present": true
+  },
+  "defects": [
+    {
+      "id": "F7-RR-01",
+      "severity": "BLOCKING",
+      "title": "comparability_requirements_ref is unbound to consumed requirement results",
+      "implementation": [
+        "pre553_temporal_comparability.py:658-662 requires/parses the ExactRef",
+        "pre553_temporal_comparability.py:813-816 consumes independent caller comparability_requirement_results",
+        "pre553_temporal_comparability.py:987 serializes the ref into provenance"
+      ],
+      "impact": "Changing the ref while retaining the same caller result tuple does not change derivation; the exact requirement set is not resolved or authenticated.",
+      "mandatory_attack": 4
+    },
+    {
+      "id": "F7-RR-02",
+      "severity": "BLOCKING",
+      "title": "governed-use scope is reduced from ExactRef to object_id",
+      "implementation": [
+        "pre553_temporal_comparability.py:693 passes governed_use_id.object_id",
+        "resolve_required_authority accepts governed_use_id as str and scope-checks that reduced value"
+      ],
+      "exact_ref_law": "ExactRef identity is kind + object_id + content_hash.",
+      "impact": "Same object_id with different exact material can pass the same target-use scope.",
+      "mandatory_attack": 2
+    },
+    {
+      "id": "F7-RR-03",
+      "severity": "BLOCKING",
+      "title": "temporal identity contract is not resolved against TEMPORAL_EVIDENCE",
+      "implementation": [
+        "pre553_temporal_comparability.py:652-655 only parses temporal_identity_contract_ref",
+        "pre553_temporal_comparability.py:818-820 trusts caller identity_surface_jointly_satisfied",
+        "TEMPORAL_EVIDENCE resolution is independent of the identity ref"
+      ],
+      "impact": "Arbitrary exact identity ref plus a true caller boolean can pass the identity gate.",
+      "mandatory_attack": 1
+    },
+    {
+      "id": "F7-RR-04",
+      "severity": "BLOCKING",
+      "title": "SOURCE_EQUIVALENCE relation result is not resolved through the source-relation owner path",
+      "implementation": [
+        "pre553_temporal_comparability.py:785-807 checks ref presence plus an authority snapshot",
+        "pre553_source_relations.py:432-575 defines exact SourceRelationResolver resolution",
+        "pre553_source_relations.py:173-190 defines an authorized RelationDecision carrying relation_ref"
+      ],
+      "impact": "An arbitrary source_equivalence_ref can be accepted when a scoped authority snapshot exists; the already-resolved exact relation result required by the contract is bypassed.",
+      "mandatory_attack": 8
+    },
+    {
+      "id": "F7-RR-TP-01",
+      "severity": "MAJOR",
+      "title": "target_use_permission_refs consumes only element zero",
+      "implementation": "pre553_temporal_comparability.py:728-730 indexes only target_use_permission_refs[0] and never validates/records additional supplied refs",
+      "impact": "Additional bound permission refs can be silently ignored."
+    }
+  ],
+  "cardinality": {
+    "three_plus_anchors": "PASS__typed pre-receipt refusal",
+    "two_observations": "PASS",
+    "one_observation_per_anchor_positive_path": "PASS",
+    "fewer_than_two": "TEMPORAL_INSUFFICIENT_ANCHORS receipt retained by HQ214; conflicts with the closed receipt field's exact_cardinality=2 and is recorded as a contract tension, not an additional blocker"
+  }
+}
