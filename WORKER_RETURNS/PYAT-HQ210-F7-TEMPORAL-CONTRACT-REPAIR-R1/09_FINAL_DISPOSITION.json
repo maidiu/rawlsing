@@ -1,0 +1,55 @@
+{
+  "schema": "PYAT_HQ210_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ210-F7-TEMPORAL-CONTRACT-REPAIR-R1",
+  "branch": "agent/rabochii-pyat-hq210-f7-contract-repair-r1",
+  "commission_tip": "7a6ecae8002088630c5ffb2eea286efda1b3316b",
+  "startup_base": "7cc1ce20238e06e4b785b6a804cc885cd19d641a",
+  "contract_under_repair": "19fd6f6e9f3e24c716310335325cef4c75e6fa56",
+  "hostile_review": "f1a0dbbc8491e0d23df9005abd55b83e0261424e",
+  "disposition": "F7_TEMPORAL_CONTRACT_REPAIR_COMPLETE__READY_FOR_HQ_FINAL_ACCEPTANCE",
+  "decisive_findings": [
+    "All seven hostile-review defects are repaired at documentary contract grain.",
+    "Exactly one new authority kind TEMPORAL_COMPARABILITY remains the minimal conclusion; no sibling kind is introduced.",
+    "ORDER_UNKNOWN_NONCOMPARABLE is a typed no-basis refusal, not an authorized basis; TEMPORAL_ORDER_UNAUTHORIZED now has one deterministic derivation.",
+    "Positive direction is cross-bound to COMPARABLE + ORDERED_RELATION_AUTHORIZED + a direction-permitting authorized basis + an exact claimable delta.",
+    "NO_AUTHORIZED_CHANGE is exact-zero only; deadband/tolerance semantics are absent.",
+    "relation_state has a total 12-state precedence and scalar state-local reason selection, restoring deterministic replay.",
+    "Prior F7 missing/conflicting/out-of-scope authority terminals map to TEMPORAL_INSUFFICIENT_AUTHORITY; interpolation maps to TEMPORAL_NONCOMPARABLE; probe-only emits no receipt.",
+    "Future implementation ceiling is explicitly bounded and does not include public-object registration, F8 consumption, causal/trajectory/interpolation/source-equivalence/pooling/scalar-pressure/actor power.",
+    "Gap/absence historical identifier corrected to H10; dual function-index traceability established; all three source-side EMPIRICAL_FACT_NONCOMPARABLE producer sites recorded.",
+    "TEMPORAL_NONCOMPARABLE remains literally forbidden for backfill and cannot be backfilled into positivity."
+  ],
+  "alternatives_rejected": [
+    {
+      "disposition": "F7_TEMPORAL_CONTRACT_REPAIR_PARTIAL__NAMED_DEFECT",
+      "reason": "No bounded hostile-review defect remains unresolved in the corrected successor packet."
+    },
+    {
+      "disposition": "F7_TEMPORAL_CONTRACT_REPAIR_REVEALS_AUTHORITY_CONFLICT",
+      "reason": "No adopted authority conflict was found; the repair remains additive and bounded at the previously accepted grain."
+    }
+  ],
+  "implementation_status": "NOT_AUTHORIZED_BY_THIS_LANE__HQ_FINAL_ACCEPTANCE_REQUIRED_BEFORE_ANY_IMPLEMENTATION_COMMISSION",
+  "preserved_findings": [
+    "one new authority kind minimal",
+    "seven reuse targets existing",
+    "five-function noncollapse",
+    "TEMPORAL_NONCOMPARABLE distinct from source-side noncomparability",
+    "time grain polymorphic/fail-closed",
+    "two anchors may suffice for one relation",
+    "no >=3 trajectory rule",
+    "no direction from difference alone",
+    "no temporal coincidence to cause",
+    "no V553 scalar resurrection"
+  ],
+  "hard_holds": {
+    "production_code_changed": false,
+    "raw_source_access": false,
+    "source_access": false,
+    "astra_referral": false,
+    "self_adoption": false,
+    "f8_consumption_authorized": false,
+    "actor_person_work": false
+  },
+  "terminal": "HQ210_F7_TEMPORAL_CONTRACT_REPAIR_RETURNED__HQ_FINAL_DECISION_REQUIRED"
+}
