@@ -1,0 +1,114 @@
+{
+  "schema": "PYAT_HQ215_SINGLE_SOURCE_AND_POWER_ATTACK@1.0.0",
+  "lane": "PYAT-HQ215-HD-F8-FINAL-HOSTILE-REREVIEW-R1",
+  "reviewer_role": "BROWSER_GITHUB_INDEPENDENT_HOSTILE_REREVIEW__NO_IMPLEMENTATION",
+  "commission_tip": "72b840fc0257958a1376b98f3f2c6ce894c6189d",
+  "candidate_tip": "09e4dc0d9e8dba21eadab0b5dd55821af7f4811c",
+  "code_bearing_repair_commit": "17737c09194bffd7f8f2f7d135f79d5f8ebfa7fc",
+  "repair_base": "8d352f7d80983cbf49e7e57511f8cf6d5b80966d",
+  "prior_review": "33062ccfcca5c121bd699a98af11460440cd15ba",
+  "mandatory_attack_1_original_A_bound_B_query": {
+    "verdict": "CLOSED_ON_CONSTRUCTOR_PRODUCED_BINDINGS",
+    "evidence": [
+      "binding now carries requested_source_universe_ref",
+      "assert_query_source_admitted checks query source == requested source in SINGLE_SOURCE_VALIDATION before admission/release succeeds",
+      "reason code F8_QUERY_SOURCE_NOT_THE_REQUESTED_SOURCE is explicit",
+      "repair court contains exact A-bound/B-query witness with B genuinely in the admitted set"
+    ],
+    "pre_repair_static_counterfactual": "pre-repair binding result had no requested-source field and assert_query_source_admitted checked only membership in admitted_source_universe_refs"
+  },
+  "mandatory_attack_2_requested_source": {
+    "equals_bound_requested_source": true,
+    "positively_admitted_required_at_bind": true,
+    "present_in_f8_rule_source_universe_refs_required_at_bind": true,
+    "relevant_reason_codes": [
+      "F8_QUERY_SOURCE_NOT_THE_REQUESTED_SOURCE",
+      "REQUESTED_SOURCE_NOT_ADMITTED",
+      "REQUESTED_SOURCE_NOT_IN_F8_RULE_SOURCE_SCOPE"
+    ]
+  },
+  "mandatory_attack_3_replay_identity": {
+    "request_material_contains_requested_source": true,
+    "binding_material_contains_requested_source": true,
+    "replay_identity_changes_by_requested_source": true,
+    "replay_verifier_rederives_binding": true,
+    "blocking_limit": "replay verification is separate and optional; evaluate_bound_positioned_subject_possibility never requires or invokes it"
+  },
+  "mandatory_attack_4_power_accounting": {
+    "old_false_exactly_two_returning_functions_claim_removed": true,
+    "declared_source_touching_powers": [
+      "assert_query_source_admitted",
+      "expose_unranked_admitted_source_set"
+    ],
+    "returning_non_power_functions": [
+      "bind_service_applicability_to_f8_scope",
+      "evaluate_bound_positioned_subject_possibility",
+      "verify_service_f8_scope_binding_replay"
+    ],
+    "guard_only": [
+      "assert_complete_coverage_from_binding"
+    ],
+    "blocking_unaccounted_path": {
+      "id": "F6_DIRECT_BINDING_FORGE",
+      "binding_class": "ServiceApplicabilityF8SourceScopeBinding",
+      "publicly_exported": true,
+      "dataclass_frozen": true,
+      "binding_result_post_init_validation": false,
+      "module_post_init_count": 1,
+      "sole_post_init_owner": "ServiceApplicabilityF8ScopeBindingRequest",
+      "finding": "The exported result dataclass is directly constructible and can be dataclasses.replace'd. The evaluator trusts its authority-bearing admitted set/provenance fields without mandatory re-derivation from applicability authority.",
+      "severity": "BLOCKING_AUTHORITY_OVERREACH"
+    },
+    "court_blind_spot": {
+      "direct_binding_constructor_witnesses": 0,
+      "module_callable_helper_explicitly_skips_exported_data_classes": true,
+      "binding_method_helper_iterates_only_pre_pinned_two_method_names": true,
+      "implication": "the purported exact public callable/power surface court cannot discover the result-dataclass constructor bypass or an unexpected public binding method"
+    },
+    "documentary_count_mismatch": "production docstring says declared public callables are EIGHT while the operative repair court says six public callables after deliberately excluding exported data classes and the exception type"
+  },
+  "forged_binding_static_counterexample": {
+    "prerequisites": [
+      "a structurally valid adopted F8 rule/evidence for source B",
+      "a real applicability receipt that does not positively admit B"
+    ],
+    "forged_fields": [
+      "admitted_source_universe_refs=(B,)",
+      "admission_provenance contains a fabricated B row",
+      "release_identity_ref equals query release",
+      "f8_rule_hash equals the real B rule hash",
+      "binding_mode=SINGLE_SOURCE_VALIDATION",
+      "requested_source_universe_ref=B",
+      "applicability_receipt_id and applicability_receipt_replay_identity copied from the real receipt"
+    ],
+    "evaluator_checks_that_still_pass": [
+      "binding is an instance of the public binding dataclass",
+      "rule is a recognized F8 rule and its hash equals the forged binding field",
+      "optional supplied receipt id/replay identity equal the copied binding fields",
+      "query source B appears in the forged admitted tuple",
+      "forged provenance row exists",
+      "query release equals forged bound release"
+    ],
+    "checks_missing_from_evaluator": [
+      "rederive binding from receipt",
+      "require original binding request",
+      "invoke verify_service_f8_scope_binding_replay",
+      "recompute admitted_source_universe_refs from receipt",
+      "recompute admission_provenance from receipt",
+      "verify binding_ref against authorized receipt/request derivation",
+      "verify binding_request_ref against an exact request"
+    ],
+    "receipt_supplied_closes_bypass": false,
+    "reason": "receipt path compares only receipt.replay_identity()/receipt_id with attacker-controlled copies stored on the binding; it never compares the forged admitted set/provenance to the receipt",
+    "authority_effect": "source B can reach adopted F8 despite not being positively admitted by service applicability"
+  },
+  "complete_incomplete_attack": {
+    "lawful_constructor_path": "PASS",
+    "exhaustive_bind_requires_complete": true,
+    "expose_unranked_set_rechecks_complete": true,
+    "known_admitted_single_source_under_incomplete_remains_allowed": true,
+    "forged_result_path": "BYPASSABLE",
+    "reason": "candidate_class_coverage is itself an unvalidated public binding field and may be forged as COMPLETE"
+  },
+  "conclusion": "COMMISSIONED_SINGLE_SOURCE_REPAIR_CLOSED__DEEPER_PUBLIC_RESULT_CONSTRUCTOR_AUTHORITY_BYPASS_BLOCKS_ADOPTION"
+}
