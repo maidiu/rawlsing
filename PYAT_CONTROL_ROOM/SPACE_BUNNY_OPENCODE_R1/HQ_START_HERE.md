@@ -1,5 +1,29 @@
 # Space Bunny HQ — start here
 
+## Mandatory control-plane preflight
+
+Before interpreting `CURRENT_HANDOFF.md`, polling workers, dispatching replacements, or creating any local checkout:
+
+1. Read `PYAT_CONTROL_ROOM/SHARED_STORE_SPARSE_WORKTREE_EXECUTION_LAW_R1.md`.
+2. Resolve live control and `HQ_HANDOFF/LATEST.json`.
+3. Resolve the **direct origin branch HEAD** for every active/recent worker named by the handoff.
+4. Classify workers only as:
+   - **NEW — NEEDS LAUNCH**
+   - **EXISTING — ACTIVE / NOT YET RETURNED**
+   - **RETURNED LOCALLY — PUSH REQUIRED**
+   - **PUSHED — READY FOR HQ INTAKE**
+   - **ADOPTED / CLOSED**
+5. Never infer “finished locally” from an unchanged remote branch. Use **RETURNED LOCALLY — PUSH REQUIRED** only from explicit worker/session evidence.
+6. Every status/dispatch shown to the user must co-locate **AGENT + MODEL / INTELLIGENCE + MACHINE + WORKTREE + BRANCH + exact startup/return tip** when those are known.
+
+Local execution default:
+
+**one canonical Rawlsing clone/object store per machine; one isolated sparse worktree per concurrent branch.**
+
+Do not clone per worker. Do not let concurrent workers share one checked-out working directory. Do not recreate an already-prepared worktree. Do not broaden sparse scope or fetch broadly as routine startup.
+
+`CURRENT_HANDOFF.md` is durable succession memory, not a substitute for direct remote branch resolution.
+
 ## Independent publication/runtime audit — current priority
 
 Read [the HQ181–HQ187 review](REVIEWS/HQ181_187_AUDIT_20261003/REVIEW.md) and its [bounded repair plan](REVIEWS/HQ181_187_AUDIT_20261003/REPAIR_PLAN.md). Project Git state is preserved, but the dispatcher has reproduced fail-open/recovery defects and its helper-test PASS is insufficient for unattended operation. Use supervised source-free work while HQ binds a focused runtime repair and separate acceptance. The review also resolves the static 30-versus-32 test-count concern and scopes SRC27's accounting gap. Do not treat the earlier recommendation to use the “qualified dispatcher” as current acceptance.
