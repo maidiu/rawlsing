@@ -1,0 +1,32 @@
+{
+  "schema": "PYAT_HQ217_V556_FINAL_DISPOSITION@1",
+  "disposition": "V556_INDEPENDENT_RUNTIME_EVIDENCE_COMPLETE__READY_FOR_HQ215_ACCEPTANCE_CLOSURE",
+  "branch": "agent/qualifier-pyat-hq217-v556-independent-runtime-evidence-r1",
+  "startup_tip": "cdfa47b0b040a18bfd1c0d3049c8dfc24fb3613a",
+  "candidate": "9129bd54adbe73fdc09f8a3c02e4b91902d56661",
+  "blocked_rereview": "747271cc1726c8fc7e40f2de21f5047a32abeaeb",
+  "blocked_disposition_addressed": "V556_FINAL_REREVIEW_BLOCKED_BY_MISSING_EXACT_EVIDENCE",
+  "evidence_supplied": {
+    "118_surface_executed": true,
+    "118_passed_on_two_interpreters": true,
+    "defect_sensitive_4_to_0_verified": true,
+    "zero_new_failures_verified": true,
+    "dynamic_coherence_decision_reachable_at_runtime": true,
+    "lawful_positive_path_executable": true,
+    "ordinary_mismatch_honestly_classified_shadowed": true,
+    "stale_import_ruled_out": true
+  },
+  "environment_limitation": {
+    "governed_project_environment": false,
+    "classification_used": "qualification interpreter with pinned documented provenance (3.11.3), plus a reconstructed-equivalent 3.12.14 cross-check",
+    "no_relabelling_as_governed": true,
+    "blocks_hq215_acceptance": false,
+    "reason": "HQ215 required independent execution, not a governed-project-environment grade; the qualification interpreter supplies independent execution with documented provenance"
+  },
+  "implementation_defect_revealed": false,
+  "semantic_code_edits": 0,
+  "mutated_ontology_committed": false,
+  "self_adoption": false,
+  "source_access": false,
+  "terminal": "PYAT_HQ217_V556_INDEPENDENT_RUNTIME_EVIDENCE_RETURNED__HQ215_ACCEPTANCE_CLOSURE_AVAILABLE"
+}
