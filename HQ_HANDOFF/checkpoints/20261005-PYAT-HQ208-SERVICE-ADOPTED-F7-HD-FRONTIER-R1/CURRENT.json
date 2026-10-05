@@ -1,0 +1,55 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261005-PYAT-HQ208-SERVICE-ADOPTED-F7-HD-FRONTIER-R1",
+  "status": "SERVICE_SOURCE_APPLICABILITY_ADOPTED_SOURCE_FREE__F7_HOSTILE_REVIEW_ACTIVE__HD_RERECONCILIATION_ACTIVE__THREE_EXISTING_RETURNS_STILL_UNPUSHED",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "control_head": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "adopted": {
+    "service_source_impl": "e7d3598494472a9aea7dd2c69f6aacb11585905c",
+    "service_source_review": "e3fec8be5d4c192d2d6f86059d9e1ee7a683fbd1",
+    "service_source_impl_fanin": "3eda3eb598cf9fe6b14df60323af52ae446b21fa",
+    "service_source_review_fanin": "26f26a56826e027f0149d12eaa1a5402dea942d9",
+    "authority_ceiling": "ADMISSIBLE_SET_ONLY__RANKING_AND_SELECTION_NOT_AUTHORIZED"
+  },
+  "returned_pending_review": {
+    "f7_contract": "19fd6f6e9f3e24c716310335325cef4c75e6fa56"
+  },
+  "active": {
+    "f7_review": {
+      "branch": "agent/reviewer-pyat-hq208-f7-temporal-contract-r1",
+      "commission_tip": "0c74e4beeb29967b4ea9a0599057a1d658f33b16"
+    },
+    "hd_rereconciliation": {
+      "branch": "agent/rabochii-pyat-hq208-hd-f8-rereconciliation-r1",
+      "commission_tip": "372552570b4c3ec19f91158abc9774e3cf21e522"
+    }
+  },
+  "pending_pushes": [
+    {
+      "branch": "agent/rabochii-pyat-hq207-r9-repair-r1",
+      "commission_tip": "70ca48345d97f26ac1d7061df2138ab3f14c474c"
+    },
+    {
+      "branch": "agent/rabochii-pyat-hq206-c1-prune-r1",
+      "commission_tip": "32d86985b8af3f2ee175f5a170ee21c7101785b6"
+    },
+    {
+      "branch": "agent/rabochii-pyat-hq206-v556-repair-r1",
+      "commission_tip": "1be02e9505df56291f61e46a79b37e49e8afdf9b"
+    }
+  ],
+  "holds": [
+    "SOURCE_LOCATOR_DISCOVERY",
+    "WARRANT_ISSUANCE",
+    "RAW_SOURCE_ACCESS",
+    "LIVE_C4",
+    "C7_IMPLEMENTATION",
+    "PREV3_TO_V3_ACTOR_IMPLEMENTATION",
+    "HQ182_C4_NON_ADOPTION_HOLD",
+    "HOST_DISK_POLICY_CAPACITY_LIVE_RUN_BLOCKER"
+  ],
+  "f8_law": "F8_DOES_NOT_TRANSFORM_POSSIBILITY_GEOMETRY",
+  "conceptual_status": "NO_BROAD_MISSING_ONTOLOGY_CURRENTLY_INDICATED__BOUNDED_AUTHORITY_IMPLEMENTATION_QUALIFICATION_RESIDUALS_REMAIN",
+  "astra_referral": false,
+  "next_action": "RUN_F7_REVIEW_AND_HD_RERECONCILIATION_IN_PARALLEL__PUSH_EXISTING_R9_C1_V556_RETURNS"
+}
