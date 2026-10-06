@@ -404,15 +404,15 @@ def _stage_transition(
 ) -> dict[str, Any]:
     """Stage one governed model-authority revision around the provider product.
 
-    The determinant graph binds exactly the one authority the provider product
-    consumed. The revised successor is minted and adjudicated through the accepted
-    owner's own candidate -> APPROVED -> seal ceremony; no successor is invented here.
+    The determinant graph is the same complete classified registry used by the
+    provider path. This transition changes only the model authority, so the product is
+    affected while the separately rooted exact determinants remain unaffected. The
+    successor is minted by the accepted candidate -> APPROVED -> seal ceremony.
     """
 
     from rawlsing_next.pre553_authority_maintenance import (
         AuthorityEvidenceReceipt,
         AuthorityMaintenanceExecutor,
-        SemanticDeterminantGraph,
     )
 
     direction = case["direction"]
