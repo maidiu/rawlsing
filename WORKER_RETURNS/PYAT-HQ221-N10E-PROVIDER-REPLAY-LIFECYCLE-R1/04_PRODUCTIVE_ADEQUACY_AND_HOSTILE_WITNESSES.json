@@ -1,0 +1,269 @@
+{
+  "binding_rule": "REFUSAL_CORRECTNESS != N10E_COMPLETION",
+  "hostile_discrimination_note": "Fail-closed witnesses and re-identifying witnesses are BOTH discriminating. H03/H06/H07/H08/H09/H10/H11/H12 fail closed with a typed error; H01 is unrepresentable by contract; H04/H05 discriminate by genuinely moving the product identity. No witness passes vacuously.",
+  "hostile_witnesses": [
+    {
+      "attack": "handwritten/precomputed slice geometry supplied to the provider",
+      "court": "test_h01 PASSED",
+      "discriminating": true,
+      "discriminating_mode": "WITNESS_REFUSED__NO_AUTHORITATIVE_GEOMETRY_CHANNEL",
+      "fail_capable": true,
+      "id": "H01",
+      "observed": {
+        "outcome": "WITNESS_REFUSED__NO_AUTHORITATIVE_GEOMETRY_CHANNEL"
+      },
+      "why_this_is_a_pass_not_a_vacuity": "the provider public API exposes no handwritten/precomputed slice channel; the guard is live, so the attack is unrepresentable rather than merely unexercised"
+    },
+    {
+      "attack": "answer fields embedded in fresh-runner input",
+      "court": "test_h02 PASSED",
+      "discriminating": true,
+      "discriminating_mode": "WITNESS_FAILED_CLOSED",
+      "fail_capable": true,
+      "id": "H02",
+      "observed": {
+        "fresh_process_exit": 0,
+        "fresh_process_exit_code": 1,
+        "fresh_process_stderr_marker": "RUNNER_INPUT_CARRIES_ANSWER",
+        "nested_rejected": true,
+        "rejected_field_names": [
+          "cell_numerators",
+          "complete_cell_geometry",
+          "composed_result_identity_hash",
+          "consumer_result_hash",
+          "consumer_result_hash_or_null",
+          "evidence_ref",
+          "evidence_ref_or_null",
+          "exact_fraction",
+          "expected_composed_result_identity_hash",
+          "expected_output_identity",
+          "geometry",
+          "oracle",
+          "producer_fact_ref",
+          "raw_denominator_support"
+        ]
+      },
+      "why_this_is_a_pass_not_a_vacuity": "the attack raised the owner's or adapter's own typed error rather than producing a product, a currentness, or a currentness-restoring replay"
+    },
+    {
+      "attack": "stale release ref",
+      "court": "test_h03 PASSED",
+      "discriminating": true,
+      "discriminating_mode": "WITNESS_FAILED_CLOSED",
+      "fail_capable": true,
+      "id": "H03",
+      "observed": {
+        "discriminating": true,
+        "error_code_or_prefix": "SOURCE_RELEASE_MISMATCH",
+        "error_type": "AnalyticalCompositionError",
+        "fail_capable": true,
+        "outcome": "FAILED_CLOSED"
+      },
+      "why_this_is_a_pass_not_a_vacuity": "the attack raised the owner's or adapter's own typed error rather than producing a product, a currentness, or a currentness-restoring replay"
+    },
+    {
+      "attack": "changed predicate/query determinant",
+      "court": "test_h04 PASSED",
+      "discriminating": true,
+      "discriminating_mode": "WITNESS_REIDENTIFIED__DETERMINANT_MUTATION_MOVES_IDENTITY",
+      "fail_capable": true,
+      "id": "H04",
+      "observed": {
+        "outcome": "WITNESS_REIDENTIFIED__DETERMINANT_MUTATION_MOVES_IDENTITY"
+      },
+      "why_this_is_a_pass_not_a_vacuity": "a changed producer query/conditioner determinant moves the product identity; and an unrebuilt custody witness fails closed with CONDITION_VALUE_RELATION_MISMATCH"
+    },
+    {
+      "attack": "changed model authority",
+      "court": "test_h05 PASSED",
+      "discriminating": true,
+      "discriminating_mode": "WITNESS_REIDENTIFIED__AUTHORITY_CHANGE_MOVES_IDENTITY",
+      "fail_capable": true,
+      "id": "H05",
+      "observed": {
+        "outcome": "WITNESS_REIDENTIFIED__AUTHORITY_CHANGE_MOVES_IDENTITY"
+      },
+      "why_this_is_a_pass_not_a_vacuity": "a changed model authority moves both the provider product identity and the consumer result identity"
+    },
+    {
+      "attack": "changed conditioner-binding witness",
+      "court": "test_h06 PASSED",
+      "discriminating": true,
+      "discriminating_mode": "WITNESS_FAILED_CLOSED",
+      "fail_capable": true,
+      "id": "H06",
+      "observed": {
+        "discriminating": true,
+        "error_code_or_prefix": "CONDITION_VALUE_RELATION_MISMATCH",
+        "error_type": "ConditionValueRelationMismatch",
+        "fail_capable": true,
+        "outcome": "FAILED_CLOSED"
+      },
+      "why_this_is_a_pass_not_a_vacuity": "the attack raised the owner's or adapter's own typed error rather than producing a product, a currentness, or a currentness-restoring replay"
+    },
+    {
+      "attack": "missing dependency edge",
+      "court": "test_h07 PASSED",
+      "discriminating": true,
+      "discriminating_mode": "WITNESS_FAILED_CLOSED",
+      "fail_capable": true,
+      "id": "H07",
+      "observed": {
+        "discriminating": true,
+        "error_code_or_prefix": "MISSING_CROSS_OWNER_EDGE",
+        "error_type": "MissingCrossOwnerEdge",
+        "fail_capable": true,
+        "outcome": "FAILED_CLOSED"
+      },
+      "why_this_is_a_pass_not_a_vacuity": "the attack raised the owner's or adapter's own typed error rather than producing a product, a currentness, or a currentness-restoring replay"
+    },
+    {
+      "attack": "unknown dependent",
+      "court": "test_h08 PASSED",
+      "discriminating": true,
+      "discriminating_mode": "WITNESS_FAILED_CLOSED",
+      "fail_capable": true,
+      "id": "H08",
+      "observed": {
+        "discriminating": true,
+        "error_code_or_prefix": "the lifecycle owner does not know this dependent",
+        "error_type": "OwnerUnknownDependent",
+        "fail_capable": true,
+        "outcome": "FAILED_CLOSED"
+      },
+      "why_this_is_a_pass_not_a_vacuity": "the attack raised the owner's or adapter's own typed error rather than producing a product, a currentness, or a currentness-restoring replay"
+    },
+    {
+      "attack": "explicitly noncurrent dependent",
+      "court": "test_h09 PASSED",
+      "discriminating": true,
+      "discriminating_mode": "WITNESS_FAILED_CLOSED",
+      "fail_capable": true,
+      "id": "H09",
+      "observed": {
+        "discriminating": true,
+        "error_code_or_prefix": "the lifecycle owner recorded an explicit noncurrent outcome for N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1|urn",
+        "error_type": "ExplicitNoncurrentDependent",
+        "fail_capable": true,
+        "outcome": "FAILED_CLOSED"
+      },
+      "why_this_is_a_pass_not_a_vacuity": "the attack raised the owner's or adapter's own typed error rather than producing a product, a currentness, or a currentness-restoring replay"
+    },
+    {
+      "attack": "stale stored receipt offered as proof of fresh recomputation",
+      "court": "test_h10 + test_12 PASSED",
+      "discriminating": true,
+      "discriminating_mode": "WITNESS_FAILED_CLOSED",
+      "fail_capable": true,
+      "id": "H10",
+      "observed": {
+        "discriminating": true,
+        "error_code_or_prefix": "REPLAY_GRADE_OVERCLAIM",
+        "error_type": "ReplayGradeOverclaim",
+        "fail_capable": true,
+        "outcome": "FAILED_CLOSED"
+      },
+      "why_this_is_a_pass_not_a_vacuity": "the attack raised the owner's or adapter's own typed error rather than producing a product, a currentness, or a currentness-restoring replay"
+    },
+    {
+      "attack": "mismatched consumer result identity",
+      "court": "test_h11 PASSED",
+      "discriminating": true,
+      "discriminating_mode": "WITNESS_FAILED_CLOSED",
+      "fail_capable": true,
+      "id": "H11",
+      "observed": {
+        "discriminating": true,
+        "error_code_or_prefix": "PROVIDER_REQUEST_SHAPE_ERROR",
+        "error_type": "ProviderRequestShapeError",
+        "fail_capable": true,
+        "outcome": "FAILED_CLOSED"
+      },
+      "why_this_is_a_pass_not_a_vacuity": "the attack raised the owner's or adapter's own typed error rather than producing a product, a currentness, or a currentness-restoring replay"
+    },
+    {
+      "attack": "lifecycle/cache presence attempting to restore currentness",
+      "court": "test_h12 + test_09b PASSED",
+      "discriminating": true,
+      "discriminating_mode": "WITNESS_FAILED_CLOSED",
+      "fail_capable": true,
+      "id": "H12",
+      "observed": {
+        "discriminating": true,
+        "error_code_or_prefix": "stale product was served as current",
+        "error_type": "AssertionError",
+        "fail_capable": true,
+        "outcome": "FAILED_CLOSED"
+      },
+      "why_this_is_a_pass_not_a_vacuity": "the attack raised the owner's or adapter's own typed error rather than producing a product, a currentness, or a currentness-restoring replay"
+    }
+  ],
+  "positive_path_occupancy": {
+    "competent_source_free_retained_fixture_sufficient_for_local_stage_acceptance": true,
+    "court": "test_productive_adequacy_the_positive_path_is_actually_occupied PASSED",
+    "empirical_product_substantive": {
+      "cell_numerators": {
+        "no": 6,
+        "yes": 54
+      },
+      "exact_not_degenerate": true,
+      "raw_denominator_support": 60
+    },
+    "fresh_process_consumer_state": "EXACT_SUPPORTED",
+    "fresh_process_lifecycle_state": "CURRENT",
+    "fresh_process_provider_state": "EXACT_SUPPORTED_SLICE_PRODUCED",
+    "product_genuinely_moved_under_governed_revision": true,
+    "refusal_reached_on_positive_path": false,
+    "required": true,
+    "upstream_real_estate_occupancy_required": false
+  },
+  "preservation_law_respected": {
+    "current_historical_distinction_preserved": true,
+    "exact_minority_counterpattern_geometry_preserved": true,
+    "exact_uncertainty_support_semantics_preserved": true,
+    "no_actor_or_person_state": true,
+    "no_caller_authored_probability_geometry": true,
+    "no_independent_trait_sampling": true,
+    "no_live_c4_c7": true,
+    "no_new_source_authority": true,
+    "no_raw_source_access": true,
+    "no_self_adoption": true,
+    "no_smoothing_or_interpolation": true,
+    "no_structural_world_claim": true,
+    "no_widening_of_possibility_model_authority": true,
+    "truthful_replay_grade_preserved": true
+  },
+  "productive_adequacy_law": "HQD-216 @ e0e7ce0e596e4e5ea7ec96c265ec949b9fe801a2",
+  "regression_check": {
+    "baseline_failures_and_errors": 54,
+    "court_isolated": "32 passed",
+    "diff": "IDENTICAL",
+    "method": "full rawlsing_next/tests collection compared with and without this lane",
+    "regression_introduced": false,
+    "with_lane_failures_and_errors": 54
+  },
+  "safety_vs_productive_separation": {
+    "actual_consumer_reachability": "PROVEN (named consumer invoked, identity bound)",
+    "information_discarded": "none in this lane; no smoothing, no proxy geometry, no sampling",
+    "information_preserved": "exact joint/conditional slice geometry, support, evidence identity",
+    "positive_productive_capability": "PROVEN (fresh process, exact EXACT_SUPPORTED)",
+    "refusal_paths_indicating_unfinished_work": "none observed on the competent fixture",
+    "safety_fail_closed_correctness": "PROVEN (hostile suite)",
+    "source_intrinsic_nonapplicability": "not applicable; source-free local-stage acceptance"
+  },
+  "schema": "PYAT_HQ221_04_PRODUCTIVE_ADEQUACY_AND_HOSTILE_WITNESSES@1",
+  "write_terrain_respected": {
+    "forbidden_owners_untouched": [
+      "rawlsing_next/pre553_learned_product_lifecycle.py",
+      "rawlsing_next/pre553_learned_product_release.py",
+      "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "rawlsing_next/pre553_analytical_composition.py"
+    ],
+    "new_files": [
+      "rawlsing_next/tests/test_pre553_n10e_provider_replay_lifecycle_court.py",
+      "rawlsing_next/tests/n10e_provider_replay_lifecycle_runner.py"
+    ],
+    "new_public_semantic_owner_invented": false,
+    "production_files_mutated": []
+  }
+}

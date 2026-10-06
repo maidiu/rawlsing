@@ -1,0 +1,169 @@
+{
+  "adapter_is_not_a_lifecycle_owner": {
+    "adapter_computes_affected_set": false,
+    "adapter_constructs_invalidation_receipt": false,
+    "adapter_delegates_to_promote_current": true,
+    "lifecycle_performed_by_field": "AuthorityMaintenanceExecutor.promote_current"
+  },
+  "dependency_registration": {
+    "consumed_authority_determinants": [
+      {
+        "authority_content_hash": "4d565f1b40adb2bd3c9c3c2965226a4f9be9222338323ed6b649b8a68a973dab",
+        "authority_id": "C1-AT07-MODEL-FORWARD",
+        "authority_version": "1.0.0"
+      }
+    ],
+    "consumed_exact_determinants": [
+      {
+        "content_hash": "ebef7e841e4b6bcbde599118a9c993fa9a96a3b4c84bd743c862c1790548f371",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:ebef7e841e4b6bcbde599118a9c993fa9a96a3b4c84bd743c862c1790548f371"
+      },
+      {
+        "content_hash": "8fe1a7e827ee09d8ab8121fe76fc1b219c1518b74e743098adba1a754dd7a3ac",
+        "kind": "EmpiricalPredicate@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:8fe1a7e827ee09d8ab8121fe76fc1b219c1518b74e743098adba1a754dd7a3ac"
+      },
+      {
+        "content_hash": "0e966cca9805e4fedce532812cfd6587cd7f7cf6cd858ac982c531abd6f61330",
+        "kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+        "object_id": "urn:rawlsing:learned-world:positioned-subject-query:sha256:0e966cca9805e4fedce532812cfd6587cd7f7cf6cd858ac982c531abd6f61330"
+      },
+      {
+        "content_hash": "fb3a3b566e2a65a522344ddf5145ec5754d02959237c75a0287fc57bd6c84db5",
+        "kind": "C1_CONDITION_VALUE_BINDING_WITNESS@2",
+        "object_id": "urn:test:c1:at07:condition-value-witness:r6-forward-p1"
+      }
+    ],
+    "future_authority_prebound": false,
+    "graph_edges_are_consumed_determinants_only": true,
+    "registered_product_identity_hash": "3aa5d7e0ace0a9998816cbe2316a03470d02f98b46d98edcc5cd2f7f1a49fe8f",
+    "registered_product_ref": {
+      "content_hash": "3aa5d7e0ace0a9998816cbe2316a03470d02f98b46d98edcc5cd2f7f1a49fe8f",
+      "kind": "N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1",
+      "object_id": "urn:test:hq221:n10e:provider-product:forward"
+    }
+  },
+  "identity_cannot_be_replayed_stale": {
+    "changed_model_authority_reidentifies_consumer_result": true,
+    "changed_model_authority_reidentifies_product": true,
+    "empirical_substance_unchanged_by_authority_revision": true,
+    "identity_returning_recompiler_refused": "AuthorityMaintenanceError: must produce a new exact ref",
+    "unregistered_affected_dependent_refused": true
+  },
+  "lifecycle_owner": "AuthorityMaintenanceExecutor.promote_current (accepted owner)",
+  "lifecycle_three_state_distinction_at19": {
+    "current": {
+      "current_replacement_ref": {
+        "content_hash": "4c80b7012a385a33d381c699b9cf23a8d8001de222962a58ee29f0fa39fc2e82",
+        "kind": "N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1",
+        "object_id": "urn:test:hq221:n10e:provider-product:forward"
+      },
+      "dependent": {
+        "content_hash": "3aa5d7e0ace0a9998816cbe2316a03470d02f98b46d98edcc5cd2f7f1a49fe8f",
+        "kind": "N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1",
+        "object_id": "urn:test:hq221:n10e:provider-product:forward"
+      },
+      "governing_release": {
+        "content_hash": "70403b2ffb7b61cd8073155dd6a4e640d94b4eba762561155882f303ad83fe41",
+        "kind": "Maintenance:RELEASE",
+        "object_id": "urn:rawlsing:pre553:maintenance:release:sha256:70403b2ffb7b61cd8073155dd6a4e640d94b4eba762561155882f303ad83fe41"
+      },
+      "lifecycle_state": "CURRENT"
+    },
+    "explicitly_noncurrent": {
+      "dependent": {
+        "content_hash": "3aa5d7e0ace0a9998816cbe2316a03470d02f98b46d98edcc5cd2f7f1a49fe8f",
+        "kind": "N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1",
+        "object_id": "urn:test:hq221:n10e:provider-product:forward"
+      },
+      "disposition": "NO_CURRENT_NO_LAWFUL_REPLACEMENT",
+      "historical_artifact_still_addressable": true,
+      "lifecycle_state": "EXPLICIT_NONCURRENT",
+      "reason_code": "NO_LAWFUL_REPLACEMENT_SOURCE",
+      "replacement_invented": false,
+      "resolution": "ExplicitNoncurrentDependent (may not be served as current)"
+    },
+    "unknown_dependent": {
+      "dependent": {
+        "content_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+        "kind": "N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1",
+        "object_id": "urn:test:hq221:n10e:provider-product:reverse"
+      },
+      "laundered_into_current": false,
+      "lifecycle_state": "NOT_GOVERNED",
+      "resolution": "OwnerUnknownDependent"
+    }
+  },
+  "no_cache_laundering": {
+    "current_replacement_differs_from_old": true,
+    "known_but_untransitioned_product_is_not_current": true,
+    "old_product_recomputable_but_not_current": true,
+    "resident_object_presence_does_not_restore_currentness": true
+  },
+  "owner_gap_carried_forward": {
+    "no_lawful_replacement_with_no_declaration": "NoLawfulReplacementRepresentable (declared noncurrent outcome is the lawful representation)",
+    "note": "accepted owners represent this lane completely; no owner contract gap was required to close it"
+  },
+  "replay_grade_at18": {
+    "claim_replay_grade_contract": "C1_03R_ANALYTICAL_REPLAY_GRADE@1",
+    "grade": "FRESH_EMPIRICAL_RECOMPUTATION",
+    "grade_is_honest": true,
+    "historical_only_grade_refused_for_fresh_mechanism": true,
+    "identity_reproduced": true,
+    "mechanism": "FRESH_PROCESS_ACCEPTED_PRODUCER",
+    "stale_stored_receipt_cannot_claim_fresh_grade": true
+  },
+  "schema": "PYAT_HQ221_03_DEPENDENCY_LIFECYCLE_REPLAY_COURT@1",
+  "selective_invalidation_at19": {
+    "affected_dependent_refs": [
+      {
+        "content_hash": "3aa5d7e0ace0a9998816cbe2316a03470d02f98b46d98edcc5cd2f7f1a49fe8f",
+        "kind": "N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1",
+        "object_id": "urn:test:hq221:n10e:provider-product:forward"
+      }
+    ],
+    "all_and_only_affected_reached": true,
+    "changed_authority_refs": [
+      {
+        "authority_content_hash": "4d565f1b40adb2bd3c9c3c2965226a4f9be9222338323ed6b649b8a68a973dab",
+        "authority_id": "C1-AT07-MODEL-FORWARD",
+        "authority_version": "1.0.0"
+      },
+      {
+        "authority_content_hash": "9b65145f75e90f995dd105946109dbc82e3ed07426961b1d1d7045f7a983dc3b",
+        "authority_id": "C1-AT07-MODEL-FORWARD",
+        "authority_version": "2.0.0"
+      }
+    ],
+    "closure_witness_passes": true,
+    "noncurrent_dependents": [],
+    "recompilation_pairs": [
+      {
+        "new_ref": {
+          "content_hash": "4c80b7012a385a33d381c699b9cf23a8d8001de222962a58ee29f0fa39fc2e82",
+          "kind": "N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1",
+          "object_id": "urn:test:hq221:n10e:provider-product:forward"
+        },
+        "old_ref": {
+          "content_hash": "3aa5d7e0ace0a9998816cbe2316a03470d02f98b46d98edcc5cd2f7f1a49fe8f",
+          "kind": "N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1",
+          "object_id": "urn:test:hq221:n10e:provider-product:forward"
+        }
+      }
+    ],
+    "successor_is_owner_sealed_revision": true,
+    "successor_is_unsealed_decoy": false,
+    "unaffected_dependent_refs": []
+  },
+  "unaffected_sibling": {
+    "identity_stable": true,
+    "lifecycle_state": "CURRENT",
+    "sibling_ref": {
+      "content_hash": "767a96eb8cebbb21b59bd4810be688bc2babf3563e9753dec3c02b43cdfbdc2e",
+      "kind": "N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1",
+      "object_id": "urn:test:hq221:n10e:provider-product:reverse"
+    },
+    "unaffected_by_revision": true
+  }
+}
