@@ -1,0 +1,120 @@
+{
+  "schema": "PYAT_HQ213_COURT_AND_REGRESSION_RESULTS@1.0.0",
+  "lane": "PYAT-HQ213-HD-F8-BINDING-BOUNDED-REPAIR-R1",
+  "pushed_sha": "17737c09194bffd7f8f2f7d135f79d5f8ebfa7fc",
+  "environment_disclosed_truthfully": {
+    "governed_environment_status": "reconstructed-equivalent on this host",
+    "classification_unchanged_as_commission_required": true,
+    "interpreter_actually_used": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python",
+    "python_version": "3.11.3",
+    "invocation_controls": {
+      "PYTHONHASHSEED": "0 (and 12345 for the seed-independence run)",
+      "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+      "PYTHONPATH": "the HQ213 worktree root",
+      "pytest plugin": "-p no:cacheprovider"
+    },
+    "not_relabelled": "this is NOT governed certification. It is the same reconstructed-equivalent class the prior lane disclosed and the review declined to relabel."
+  },
+  "commissioned_surface_reproduced_and_extended": {
+    "aggregate": "190 collected, 190 passed, 0 failed, 0 skipped",
+    "note": "the HQ210 commissioned aggregate of 148 reproduces, plus the new repair court of 41, plus 1 because the widened AST scan split one test into two",
+    "per_file": [
+      { "court": "rawlsing_next/tests/test_pre553_service_f8_source_scope_binding_court.py", "role": "existing binding court, extended for Repairs 4 and 5", "collected": 74, "passed": 74, "skipped": 0 },
+      { "court": "rawlsing_next/tests/test_pre553_service_f8_source_scope_binding_repair_court.py", "role": "NEW hostile repair court for all five repairs", "collected": 41, "passed": 41, "skipped": 0 },
+      { "court": "rawlsing_next/tests/test_pre553_service_source_applicability_court.py", "role": "adopted applicability owner court (unmodified)", "collected": 60, "passed": 60, "skipped": 0 },
+      { "court": "rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py", "role": "adopted F8 owner court (unmodified)", "collected": 13, "passed": 13, "skipped": 0 },
+      { "court": "rawlsing_next/tests/test_a05_z08_positioned_admission.py", "role": "positioned-admission court (unmodified)", "collected": 3, "passed": 3, "skipped": 0 }
+    ],
+    "hq210_commissioned_aggregate_still_holds": "72 + 60 + 13 + 3 = 148, and the binding court now collects 74 because one AST test became two"
+  },
+  "determinism": {
+    "runs": [
+      { "run": 1, "pythonhashseed": "0", "result": "190 passed" },
+      { "run": 2, "pythonhashseed": "0", "result": "190 passed" },
+      { "run": 3, "pythonhashseed": "12345", "result": "190 passed" }
+    ],
+    "conclusion": "deterministic and hash-seed independent; the third run exists so determinism is not an artifact of a single fixed seed"
+  },
+  "negative_control": {
+    "purpose": "prove the new court is genuine evidence and not a tautology that re-runs identical inputs",
+    "method": "the PRE-REPAIR binder, extracted from the exact repair base 8d352f7d80983cbf49e7e57511f8cf6d5b80966d, was swapped into a shadow tree outside the repository and the identical repair court run against it",
+    "pre_repair": "19 failed, 22 passed",
+    "pre_repair_binder_court": "additionally restored, exposing 5 pytest.skip calls, which made test_no_write_terrain_guard_in_the_binder_court_skips fail as intended",
+    "repaired": "41 passed",
+    "per_repair_witness_coverage": {
+      "repair_1": "4 witnesses fail pre-repair: the A-bound/B-query refusal, the two-modes-differ proof, the binding-carries-the-requested-source proof, and the requested-source-in-rule-scope refusal",
+      "repair_2": "2 witnesses fail pre-repair: the production-constant enumeration and the declared non-power reason; the docstring witness also fails",
+      "repair_3": "2 witnesses fail pre-repair: the off-release refusal and the absence of the bound_to_requested_release False branch",
+      "repair_4": "11 witnesses fail pre-repair: the closed vocabulary, the three adopted non-currency states, and six ungoverned caller-defined vocabularies; the docstring witness also fails",
+      "repair_5": "1 witness fails pre-repair when the original court is restored"
+    }
+  },
+  "regression_slice": {
+    "definition": "every rawlsing_next/tests file importing the binder or any module transitively reachable from it, computed by parsing imports rather than by hand",
+    "transitively_reachable_modules": 9,
+    "test_files_in_slice": 74,
+    "pre_existing_files_compared": 73,
+    "new_file_excluded_from_both_sides": "rawlsing_next/tests/test_pre553_service_f8_source_scope_binding_repair_court.py -- it has no pre-existing baseline, so it was excluded from both runs",
+    "method": "controlled before/after on the SAME 73 pre-existing files. The two modified files were reverted to their committed state and the new court moved out of the tree to establish the baseline, __pycache__ purged, and the identical file list re-run. Failure and error identity was compared as SORTED SETS, not by aggregate count.",
+    "baseline": { "failed": 91, "passed": 1406, "skipped": 1, "errors": 48, "distinct_failing_error_ids": 139 },
+    "repaired": { "failed": 91, "passed": 1407, "skipped": 1, "errors": 48, "distinct_failing_error_ids": 139 },
+    "passed_difference_explained": "1406 -> 1407 is the widened AST scan splitting one test into two",
+    "new_failures_introduced": 0,
+    "failures_removed_or_changed": 0,
+    "identity_delta_in_both_directions": "empty",
+    "do_any_pre_existing_failures_touch_the_binder_or_its_owners": false,
+    "pre_existing_failures_spread_over_files": 16,
+    "conclusion": "The repair introduced zero new failures and changed zero existing failures. Every one of the 139 pre-existing failing/error identities is unrelated to the binder, its courts, or the three adopted owners, and is unchanged."
+  },
+  "write_terrain_verification": {
+    "adopted_owners_blob_verified_independently_of_the_court": "by git hash-object in the shell as well as inside both courts",
+    "adopted_owners": {
+      "rawlsing_next/pre553_service_source_applicability.py": "3e40caca29e8c96ee1f412f919cfc7dba63f96c4",
+      "rawlsing_next/source_backed_positioned_subject_possibility.py": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "rawlsing_next/objective_consumer_bounded_evidence.py": "f30fca20e7b56e00348e82765d95f974b4b6a195"
+    },
+    "all_three_unchanged": true,
+    "files_changed_by_this_lane": {
+      "rawlsing_next/pre553_service_f8_source_scope_binding.py": "fada8e4d22c8814581146b4ff2fdbe6819b91c01",
+      "rawlsing_next/tests/test_pre553_service_f8_source_scope_binding_court.py": "3c798176fdad2e05a23a5bfc2b5bc799764c133b",
+      "rawlsing_next/tests/test_pre553_service_f8_source_scope_binding_repair_court.py": "28287d668ee5debfb2fb19d9346b7d7eb4a04595"
+    },
+    "diff_stat": "239 insertions, 39 deletions across the two modified files; the third file is newly added",
+    "sparse_checkout_note": "WORKER_RETURNS/EE-P2R6S was added to the sparse checkout because one slice test imports a materializer script from it. This surfaced a pre-existing collection error rather than being caused by the repair; adding the path made the slice complete instead of truncated."
+  },
+  "self_referential_court_avoidance": {
+    "measures": [
+      "every expected public callable name, forbidden purpose, rank-like token, currentness token and attribute name is PINNED AS A LITERAL in the repair court and never read from the production module, so truncating or renaming a production constant makes the court FAIL rather than pass",
+      "non-authorization is proven by recursive VALUE INSPECTION of the emitted binding material for rank/score/priority/preference/weight leaves, with the negative disclaimer keys pinned and excluded so the scan targets real rank leaves",
+      "the single-source enforcement is proven by an A-bound/B-query refusal over a fixture where B is genuinely admitted, so nothing refuses by accident",
+      "the two modes are proven to DIFFER on that same fixture, where the review had measured same_result_hash(single vs exhaustive) = True",
+      "the AST inventory test asserts EQUALITY with a pinned 57-name inventory, so any added attribute read fails, rather than only asserting that a chosen subset is absent",
+      "the Repair 3 witness uses a forged receipt that deliberately BYPASSES the adopted owner, so the witness does not inherit the invariant it is testing",
+      "every repair was negative-controlled against the pre-repair binder extracted from the exact repair base"
+    ]
+  },
+  "self_identified_defects_in_this_lane_and_how_they_were_caught": [
+    {
+      "defect": "the new rule-scope check for the requested source was first inserted BEFORE the existing admission check, which changed the refusal reason for a non-admitted requested source and broke a pre-existing court test",
+      "detected_by": "the existing court run immediately after the edit",
+      "fix": "relocated the check to run after the admission check, preserving REQUESTED_SOURCE_NOT_ADMITTED as the primary and more specific refusal",
+      "class": "ordering regression introduced by this lane and caught by the preserved court"
+    },
+    {
+      "defect": "the repair court initially treated the two source-touching powers as module-level functions, but they are METHODS on the binding class",
+      "detected_by": "the exact-exported-surface test",
+      "fix": "split the enumeration into module-level callables and binding methods, each pinned separately"
+    },
+    {
+      "defect": "the first draft of the rank-leaf scan flagged the module's own negative disclaimer keys, which legitimately contain rank words while asserting their absence",
+      "detected_by": "the rank-leaf value-inspection test",
+      "fix": "pinned and excluded the disclaimer keys so the scan targets substantive rank leaves"
+    },
+    {
+      "defect": "the binding material initially did not include the enforced requested source, so the refinement was enforced at validation time but absent from the replay identity",
+      "detected_by": "test_the_binding_carries_the_requested_source_it_is_enforcing and the replay-identity test",
+      "fix": "emitted requested_source_universe_ref and an enforcement marker in the binding material, so the enforced refinement is part of the replay identity and cannot be re-derived away",
+      "class": "a real residual gap in Repair 1, caught by the repair court rather than by the existing court"
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "schema": "PYAT_HQ210_REFUSAL_AND_POWER_CEILING@1.0.0",
+  "lane": "PYAT-HQ210-HD-F8-SOURCE-SCOPE-BINDING-R1",
+  "startup_tip": "904895d8ad072824f38464f579904e5193d55667",
+
+  "power_ceiling": {
+    "granted": ["validate one exact F8 query source as admitted", "expose the complete unranked admitted source set"],
+    "everything_else": "REFUSED by raising, with an exact reason code",
+    "single_refusal_type": "ServiceF8ScopeBindingError, always carrying .reason_code",
+    "no_grant_path_exists": "there is no API that returns an authorisation. assert_binding_does_not_authorize(purpose) raises for every forbidden purpose and never returns a grant."
+  },
+
+  "mandatory_refusals_implemented": [
+    { "refusal": "request/receipt grain mismatch", "reason_code": "BINDING_REQUEST_RECEIPT_GRAIN_MISMATCH", "where": "bind", "commission_mandated": true },
+    { "refusal": "service grain mismatch", "reason_code": "BINDING_SERVICE_GRAIN_MISMATCH", "where": "bind", "commission_mandated": true },
+    { "refusal": "target-use grain mismatch", "reason_code": "BINDING_TARGET_USE_GRAIN_MISMATCH", "where": "bind", "commission_mandated": false, "note": "added for completeness of the exact-grain check" },
+    { "refusal": "candidate-class mismatch", "reason_code": "BINDING_CANDIDATE_CLASS_MISMATCH", "where": "bind", "commission_mandated": true },
+    { "refusal": "release grain mismatch", "reason_code": "BINDING_RELEASE_GRAIN_MISMATCH", "where": "bind", "commission_mandated": false, "note": "admission is per release identity and is never inherited across releases" },
+    { "refusal": "exhaustive use under INCOMPLETE coverage", "reason_code": "APPLICABILITY_COVERAGE_INCOMPLETE", "where": "bind and on every call to expose_unranked_admitted_source_set", "commission_mandated": true, "hardening": "the set-exposure power requires COMPLETE in EVERY binding mode, not only in EXHAUSTIVE_UNRANKED_SET, because exposing the set is itself an exhaustive claim" },
+    { "refusal": "query source absent from admitted set", "reason_code": "F8_QUERY_SOURCE_NOT_ADMITTED", "where": "evaluate", "commission_mandated": true },
+    { "refusal": "query release does not match the bound release", "reason_code": "F8_QUERY_RELEASE_GRAIN_MISMATCH", "where": "evaluate", "commission_mandated": false, "note": "an admitted source at the wrong release is still out of scope" },
+    { "refusal": "nonpositive applicability treated as admission", "reason_code": "REQUESTED_SOURCE_NOT_ADMITTED or F8_RULE_SOURCE_OUTSIDE_ADMITTED_SET", "where": "bind", "commission_mandated": true },
+    { "refusal": "attempted ranking/selection/priority", "reason_code": "BINDING_REFUSES_RANKING or BINDING_REFUSES_SOURCE_CHOICE or BINDING_POWER_NONCOLLAPSE_VIOLATION", "where": "binding methods and request purpose", "commission_mandated": true },
+    { "refusal": "attempted first/best/latest/local/preferred choice", "reason_code": "BINDING_REFUSES_SOURCE_CHOICE", "where": "first_admitted_source()", "commission_mandated": true, "additionally": "no method named best/latest/local/preferred exists at all; and EXHAUSTIVE mode refuses a single requested source as an implicit selection" },
+    { "refusal": "attempted pooling or cross-source composition", "reason_code": "BINDING_REFUSES_POOLING", "where": "pooled_source_set()", "commission_mandated": true },
+    { "refusal": "attempted semantic equivalence / respondent linkage / overlap inference", "reason_code": "BINDING_POWER_NONCOLLAPSE_VIOLATION", "where": "assert_binding_does_not_authorize", "commission_mandated": true },
+    { "refusal": "missing/conflicting currentness when a current claim is requested", "reason_code": "CURRENTNESS_MISSING_WHEN_CLAIMED or CURRENTNESS_MISSING_OR_CONFLICTING", "where": "bind", "commission_mandated": true },
+    { "refusal": "currentness result supplied WITHOUT a claim", "reason_code": "CURRENTNESS_RESULT_WITHOUT_CLAIM", "where": "bind", "commission_mandated": false, "note": "currentness may not be smuggled in unrequested" },
+    { "refusal": "target-use permission treated as granted rather than pre-bound", "reason_code": "BINDING_REFUSES_PERMISSION_GRANT or TARGET_USE_PERMISSION_BOUND_REFS_REQUIRED", "where": "binding method and request construction", "commission_mandated": true },
+    { "refusal": "replay/provenance mismatch", "reason_code": "BINDING_RULE_REPLAY_MISMATCH, BINDING_REPLAY_MISMATCH, BINDING_RECEIPT_IDENTITY_MISMATCH", "where": "evaluate and verify", "commission_mandated": true },
+    { "refusal": "any request to condition F8, transform geometry/distribution, backfill, or infer actor/person state", "reason_code": "BINDING_REFUSES_F8_CONDITIONING or BINDING_REFUSES_ACTOR_INFERENCE or BINDING_POWER_NONCOLLAPSE_VIOLATION", "where": "binding methods and request purpose", "commission_mandated": true },
+    { "refusal": "F8 algorithm is not the exact-conditional-lookup law", "reason_code": "F8_ALGORITHM_NOT_EXACT_CONDITIONAL_LOOKUP or F8_MODEL_RULE_NOT_RECOGNISED", "where": "bind and evaluate", "commission_mandated": false, "note": "law-drift guard; if F8 gains a transformation operation the binder refuses rather than binding against a changed law" },
+    { "refusal": "F8 rule declares a source outside the admitted set", "reason_code": "F8_RULE_SOURCE_OUTSIDE_ADMITTED_SET", "where": "bind", "commission_mandated": false, "note": "the binder narrows eligibility and never widens the F8 source scope" },
+    { "refusal": "exhaustive mode where the F8 rule does not span every admitted source", "reason_code": "F8_RULE_SOURCE_SET_NOT_EXHAUSTIVE", "where": "bind", "commission_mandated": false, "note": "the binder never adds a source to the F8 rule on the caller's behalf" },
+    { "refusal": "receipt authority label is not the ratified form", "reason_code": "BINDING_AUTHORITY_LABEL_MISMATCH", "where": "bind", "commission_mandated": false, "defence_in_depth": "the adopted receipt owner already refuses to CONSTRUCT a mislabelled receipt, so this path is unreachable in practice; retained as a second gate" },
+    { "refusal": "admitted entry with no admission provenance", "reason_code": "ADMISSION_PROVENANCE_MISSING", "where": "assert_query_source_admitted", "commission_mandated": false },
+    { "refusal": "empty admitted set without the first-class NO_ADMITTED_SOURCE outcome", "reason_code": "BINDING_NO_ADMITTED_SOURCE_AND_NO_TERMINAL_OUTCOME", "where": "bind", "commission_mandated": false, "note": "an empty set may only be bound when the receipt truthfully states NO_ADMITTED_SOURCE_IN_CANDIDATE_CLASS" }
+  ],
+
+  "forbidden_purposes_refused": [
+    "SOURCE_SELECTION", "SOURCE_RANKING", "SOURCE_PRIORITY", "SOURCE_PREFERENCE",
+    "FIRST_SOURCE_CHOICE", "BEST_SOURCE_CHOICE", "LATEST_SOURCE_CHOICE", "LOCAL_SOURCE_CHOICE",
+    "PREFERRED_SOURCE_CHOICE", "POOLING", "CROSS_SOURCE_COMPOSITION", "ESTIMAND_COMPOSITION",
+    "OVERLAP_OR_NONDUPLICATION_AUTHORITY", "RESPONDENT_LINKAGE", "SOURCE_SEMANTIC_EQUIVALENCE",
+    "BACKFILL_AUTHORITY", "CURRENTNESS_AUTHORITY", "TARGET_USE_PERMISSION_GRANT",
+    "F8_CONDITIONING", "F8_GEOMETRY_OR_DISTRIBUTION_TRANSFORM", "PROBABILITY_OR_DISTRIBUTION_TRANSFORM",
+    "TEMPORAL_COMPARABILITY_OR_PRESSURE", "INDIVIDUAL_INFERENCE", "ACTOR_OR_PERSON_STATE",
+    "PREV3_TO_V3_ACTOR_WORK"
+  ],
+
+  "non_collapse_laws": [
+    "ELIGIBILITY != CONDITIONING",
+    "ELIGIBILITY_NARROWING != POSSIBILITY_GEOMETRY_TRANSFORMATION",
+    "ELIGIBILITY_NARROWING != DISTRIBUTION_TRANSFORMATION",
+    "BINDING != SOURCE_SELECTION",
+    "BINDING != SOURCE_RANKING",
+    "BINDING != SOURCE_PRIORITY",
+    "BINDING != SOURCE_EQUIVALENCE",
+    "BINDING != POOLING_OR_COMPOSITION",
+    "BINDING != CURRENTNESS",
+    "BINDING != TARGET_USE_PERMISSION_GRANT",
+    "BOUND_PERMISSION_REFS != GRANTED_PERMISSION",
+    "APPLICABILITY_NONCOMPARABLE != F8_EVIDENCE_NONCOMPARABLE",
+    "ADMITTED_SOURCE_SET != POOLED_SAMPLE",
+    "ADMITTED_SET_CARDINALITY != SAMPLE_SIZE",
+    "CANONICAL_REPLAY_ORDER != RANK_OR_PRIORITY",
+    "SOURCE_INDEXED_ENTRY != CROSS_SOURCE_AGGREGATE",
+    "EMPIRICAL_POSSIBILITY != INDIVIDUAL_OR_ACTOR_STATE"
+  ],
+
+  "preserved_distinctions": [
+    {
+      "distinction": "NO_ADMITTED_SOURCE_IN_CANDIDATE_CLASS only under COMPLETE coverage",
+      "how": "the binding refuses to construct over an empty admitted set unless the receipt carries the truthful first-class outcome, and the adopted receipt owner already pins NO_ADMITTED_SOURCE to COMPLETE coverage. The court exercises both the COMPLETE-no-admitted case and the INCOMPLETE case and pins the refusal codes.",
+      "not_collapsed_into": "an error, an empty list, or a zero-length success"
+    },
+    {
+      "distinction": "applicability NONCOMPARABLE distinct from F8 evidence NONCOMPARABLE",
+      "how": "non-admitted sources are reported in non_admitted_source_states with their applicability public state and an explicit applicability_noncomparable_is_not_f8_evidence_noncomparable marker, while the F8 result carries its own NONCOMPARABLE / EXACT_POSITIONED_STRATUM_NONCOMPARABLE. The court pins both simultaneously and separately.",
+      "not_collapsed_into": "each other"
+    },
+    {
+      "distinction": "multiple admitted sources remain separate source-indexed entries",
+      "how": "admitted entries keep one provenance row each, cardinality is flagged as not a sample size, and each source evaluates through F8 independently. The court pins two admitted sources, two provenance rows, and two independent EXACT_SUPPORTED evaluations.",
+      "not_collapsed_into": "a pooled sample, a composite estimand, or a cross-source aggregate"
+    },
+    {
+      "distinction": "F8 exact conditional lookup / strictly-decreasing walkback algorithm byte-unchanged",
+      "how": "the F8 owner blob is verified by git hash-object inside the court against the HQ208-recorded blob, and evaluate_bound_positioned_subject_possibility calls the adopted evaluator with the caller's own objects",
+      "not_collapsed_into": "a re-implementation, a wrapper that rewrites inputs, or a re-binding that alters geometry"
+    }
+  ],
+
+  "self_referential_court_avoidance": {
+    "why": "the HQ207 independent review (03/08 artifacts, GAP-3) found that a court parametrised over the SAME constant the production code checks cannot detect a narrowing of that constant, and proves only that the FUNCTION refuses its own list rather than that the DATA carries no authority.",
+    "measures_taken_here": [
+      "every forbidden purpose is PINNED AS AN EXPLICIT LITERAL in the court file and never read from the production tuple, so truncating B.FORBIDDEN_BINDING_PURPOSES makes the court FAIL rather than silently collect fewer cases",
+      "the non-authorization property is ADDITIONALLY proven by value inspection of the binding material: a recursive walk asserts that no rank/score/priority/preference/weight/best/first/latest/local leaf or value exists anywhere in the emitted data",
+      "'unranked' is proven by PERMUTATION INVARIANCE of the binding replay identity across all 6 orderings of a 3-member candidate class, plus a check that the admitted set order is not derived from input order, rather than by asserting a self-declared boolean",
+      "the public surface is pinned against __all__ rather than bare dir(), and separately the set of RETURNING source-touching methods is pinned apart from the RAISING refusal methods"
+    ]
+  },
+
+  "residuals_and_open_items": [
+    "The binding validates a STATIC exact-release source scope. It makes no comparative, joint, multi-arity, temporal or structural-field claim, and those remain gated on C1 and F7 respectively.",
+    "The applicability owner's own court gaps GAP-1, GAP-2, GAP-3 and GAP-4, and its arithmetic error in 04_COURT_RESULTS.json (additional_courts_written claimed 45, actually 32), were found by the adopted review and are NOT repaired by this lane. This lane does not touch that owner. Referred to HQ.",
+    "The currentness result is carried as an opaque validated string. This lane does not adjudicate WHICH lifecycle authority may issue one; it only refuses to assert currency it was not given."
+  ]
+}
