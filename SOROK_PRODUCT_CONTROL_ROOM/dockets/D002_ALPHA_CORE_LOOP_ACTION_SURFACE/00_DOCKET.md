@@ -177,3 +177,11 @@ Following the bounded Astra native-gameplay necessity synthesis, D002 now contai
    - does not close canonical questions or claim empirical engagement.
 
 The Astra return remains advisory evidence. This D002 adjudication is derived from the pre-game-loops Sorok authority and does not import artifacts 88–90 from the quarantined exploratory branch.
+
+13. `13_COUNTERFACTUAL_HINGE_CAUSAL_NEIGHBORHOOD_AND_DECISION_OWNERSHIP_R1.md`
+   - replaces “describe it more” with a counterfactual hinge test: can anything causally matter in how this proceeds?;
+   - broad intent may enter a causal neighborhood rather than author completion;
+   - DO/PARTICIPATE may trigger hidden causal materialization independently of user perception;
+   - distinguishes user-owned, world/body/chance-owned, actor-owned and interface-owned uncertainty;
+   - hardens parser-ambiguity != worldly resistance;
+   - preserves compression whenever plausible procedural variants are causally equivalent.
