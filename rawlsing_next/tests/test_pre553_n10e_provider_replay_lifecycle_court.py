@@ -1953,31 +1953,34 @@ def test_r02_unowned_determinant_cannot_be_claimed_lifecycle_covered():
 
 
 def test_r03_query_authority_revision_reaches_and_recomposes_the_product():
-    """AT19 beyond model authority: a governed query-grammar revision propagates."""
+    """A real sealed PREDICATE_GRAMMAR revision reidentifies each affected family."""
 
     case = _case(DIRECTION)
     staged = _query_authority_revision(case)
-    successor = staged["successor"]
-    rebuilt = _rebuild_under_query_authority(case, successor)
+    rebuilt = _rebuild_under_query_authority(case, staged["sealed_snapshot"])
     product_ref = staged["product_ref"]
+    old_fact = _producer_fact(_provide(case))
 
-    # The query determinant genuinely re-identifies under the revised grammar.
+    assert rebuilt["authority_snapshot"] is staged["sealed_snapshot"]
+    assert rebuilt["authority_snapshot"].authority_ref == staged["successor"]
     assert rebuilt["query"].ref != case["empirical_query"].ref
-    # And the product genuinely re-identifies through a real recomputation.
+    assert rebuilt["predicate"].ref != case["predicate"].ref
+    assert rebuilt["fact"].ref != old_fact.ref
     assert rebuilt["result"].provider_state == "EXACT_SUPPORTED_SLICE_PRODUCED"
     assert rebuilt["result"].result_identity_hash != product_ref.content_hash
-    # The positive path survives the revision: no refusal, exact support preserved.
     assert rebuilt["result"].consumer_result_or_null.result_state == "EXACT_SUPPORTED"
     assert rebuilt["result"].composition_result.raw_denominator_support == 60
-
-    def recompile_determinant(_affected: ExactRef, _successor: Any) -> ExactRef:
-        return rebuilt["query"].ref
 
     def recompile_product(affected: ExactRef, _successor: Any) -> ExactRef:
         return ExactRef(
             affected.kind, affected.object_id, rebuilt["result"].result_identity_hash
         )
 
+    determinant_recompose = {
+        case["empirical_query"].ref.key: lambda _old, _auth: rebuilt["query"].ref,
+        case["predicate"].ref.key: lambda _old, _auth: rebuilt["predicate"].ref,
+        old_fact.ref.key: lambda _old, _auth: rebuilt["fact"].ref,
+    }
     outcome = transition_analytical_dependencies(
         executor=staged["executor"],
         registry=staged["registry"],
@@ -1985,23 +1988,21 @@ def test_r03_query_authority_revision_reaches_and_recomposes_the_product():
         selection_rule_ref=staged["selection_rule_ref"],
         selection_attestation_ref=staged["selection_attestation_ref"],
         recompose={product_ref.key: recompile_product},
-        determinant_recompose={
-            case["empirical_query"].ref.key: recompile_determinant,
-            case["predicate"].ref.key: recompile_determinant,
-        },
+        determinant_recompose=determinant_recompose,
     )
     receipt = outcome.invalidation_receipt
+    pairs = {old.key: new for old, new in receipt.recompilation_pairs}
 
-    # The owner recorded the query determinant AND the product as affected.
+    for old_ref, new_ref in (
+        (case["empirical_query"].ref, rebuilt["query"].ref),
+        (case["predicate"].ref, rebuilt["predicate"].ref),
+        (old_fact.ref, rebuilt["fact"].ref),
+    ):
+        assert old_ref in receipt.affected_dependent_refs
+        assert pairs[old_ref.key] == new_ref
+        assert pairs[old_ref.key].kind == old_ref.kind
     assert product_ref in receipt.affected_dependent_refs
-    assert case["empirical_query"].ref in receipt.affected_dependent_refs
-    # Both received a genuine new exact ref from real recomputation.
-    pairs = dict((old.key, new) for old, new in receipt.recompilation_pairs)
-    assert pairs[product_ref.key].content_hash == (
-        rebuilt["result"].result_identity_hash
-    )
-    assert pairs[case["empirical_query"].ref.key] == rebuilt["query"].ref
-    # The lifecycle owner, not the adapter, performed the transition.
+    assert pairs[product_ref.key].content_hash == rebuilt["result"].result_identity_hash
     assert outcome.material()["lifecycle_performed_by"] == (
         "AuthorityMaintenanceExecutor.promote_current"
     )
