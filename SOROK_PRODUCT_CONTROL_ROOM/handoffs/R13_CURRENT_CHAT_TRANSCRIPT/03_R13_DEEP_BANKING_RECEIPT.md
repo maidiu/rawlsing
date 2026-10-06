@@ -9,8 +9,10 @@ agent/sorok-r13-deep-banking-user-lens-capability-r1
 Parent banking head:
 bb81c1cb3a59c1861770135939c6cc145a888710
 
-Current verified head:
+Verified content head before receipt commit:
 cc06146fd42e6635bc3649868b243219b1b8413b
+
+Note: the receipt itself is committed afterward, so the branch tip must be reported externally rather than self-embedded here.
 
 ## Banked conceptual surfaces
 
