@@ -1,0 +1,60 @@
+{
+  "schema": "PYAT_HQ226_01_TOTAL_CENSUS_AND_OWNER_AUTHENTICATION_ATTACK@1",
+  "disposition": "FAIL__MODEL_RULE_IDENTITY_NOT_LIFECYCLE_BOUND",
+  "candidate_commit": "b5ba9ebfc7bc8e6c07aa8799ce9c76d64d5ca03d",
+  "exact_ref_classification": {
+    "build_graph_refuses_unclassified_exact_refs": true,
+    "actual_runner_uses_classified_census": true,
+    "hq224_001_repaired": true
+  },
+  "independently_confirmed_registered_exact_classes": [
+    "empirical_query.ref",
+    "predicate.ref",
+    "consumer_query.ref",
+    "condition_binding_witness.ref",
+    "source_universe.ref",
+    "producer EmpiricalFact.ref",
+    "C11LogicalRelease ref",
+    "consumer subject/target refs",
+    "conditioner subject-fact/coordinate refs",
+    "risk-set ref",
+    "measure-basis ref",
+    "response-state semantics ref",
+    "target-domain replay refs",
+    "operator-semantics refs",
+    "witness subject/predicate/pairing custody refs",
+    "query replay-root ref",
+    "predicate replay-root ref"
+  ],
+  "direct_authorities_registered": [
+    "model_rule.model_authority_ref",
+    "model_rule.walkback_authority_ref",
+    "positive proxy authority refs when present",
+    "walkback-step proxy authority refs when present"
+  ],
+  "determinant_specific_owner_evidence": {
+    "exact_body_hash_must_match_ref": true,
+    "relation_path_allowlisted_by_family": true,
+    "declared_owners_must_equal_refs_at_that_path": true,
+    "global_union_not_sufficient": true,
+    "foreign_authority_hostile_materially_repairs_hq224_005_for_exact_determinants": true
+  },
+  "blocking_census_defect": {
+    "consumed_identity": "model_rule_hash",
+    "provider_identity_bindings_include_it": true,
+    "positioned_subject_result_identity_includes_it": true,
+    "model_rule_hash_definition": "semantic_hash(full PositionedSubjectPossibilityModelRule.material())",
+    "exact_lifecycle_node_exists": false,
+    "determinant_owner_evidence_exists": false,
+    "direct_authority_refs_cryptographically_determine_full_rule_material": false,
+    "consequence": "rule semantic material can change product identity without a changed graph determinant"
+  },
+  "direct_authority_authentication_gap": {
+    "determinant_authority_refs_are_bare_AuthorityRefs": true,
+    "production_registration_proves_they_bind_model_rule_content": false,
+    "build_graph_emits_direct_authority_to_product_edges": true,
+    "interpretation": "the exact-determinant owner repair does not authenticate the direct model-rule authority relation"
+  },
+  "hq224_002_status": "PARTIAL__SOURCE_UNIVERSE_AND_FACT_FIXED__MODEL_RULE_SEMANTIC_DETERMINANT_STILL_MISSING",
+  "hq224_005_status": "PARTIAL__EXACT_DETERMINANT_OWNER_EVIDENCE_FIXED__DIRECT_RULE_AUTHORITY_BINDING_UNAUTHENTICATED"
+}

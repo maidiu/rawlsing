@@ -1,0 +1,58 @@
+{
+  "schema": "PYAT_HQ226_04_FINAL_DISPOSITION@1",
+  "disposition": "N10E_OWNER_AUTHENTIC_LIFECYCLE_AUTHORITY_OVERREACH",
+  "branch": "agent/reviewer-pyat-hq226-n10e-owner-authentic-lifecycle-final-rereview-r1",
+  "commission_tip": "46a66533b26f37c6ee261ddb0c35e9099df1bacf",
+  "candidate_commit": "b5ba9ebfc7bc8e6c07aa8799ce9c76d64d5ca03d",
+  "prior_review": "1dc665a67d20fac2960a113a7fb3dcaa415f1dc6",
+  "hq224_defect_status": {
+    "001_ownership_coverage_optional": "REPAIRED",
+    "002_consumed_determinant_census_incomplete": "PARTIAL__MODEL_RULE_HASH_AND_RULE_SEMANTIC_IDENTITY_NOT_LIFECYCLE_BOUND",
+    "003_sealed_successor_authority_impersonated": "PARTIAL__QUERY_WITNESS_REPAIRED__ACTUAL_RUNNER_MODEL_AUTHORITY_PATH_STILL_UNAUTHENTIC",
+    "004_predicate_replaced_by_query_ref": "REPAIRED",
+    "005_owner_binding_caller_asserted": "PARTIAL__EXACT_DETERMINANT_EVIDENCE_REPAIRED__DIRECT_MODEL_RULE_AUTHORITY_BINDING_REMAINS_BARE"
+  },
+  "decisive_defects": [
+    {
+      "id": "HQ226-N10E-DEFECT-001__MODEL_AUTHORITY_BASELINE_BODY_REF_MISMATCH",
+      "class": "AUTHORITY_OVERREACH",
+      "summary": "actual runner seeds AuthorityMaintenanceExecutor with a model AuthoritySnapshot that reuses a base authority_content_hash after changing constitutive authority body fields; current validator does not recompute the hash"
+    },
+    {
+      "id": "HQ226-N10E-DEFECT-002__MODEL_RULE_SEMANTIC_IDENTITY_NOT_GRAPH_BOUND",
+      "class": "SELECTIVE_INVALIDATION_CLOSURE_DEFECT",
+      "summary": "provider/result consume model_rule_hash, but dependency registry has no exact rule determinant or proof that full rule material is cryptographically fixed by the direct authority refs"
+    },
+    {
+      "id": "HQ226-N10E-DEFECT-003__ACTUAL_RUNNER_DOES_NOT_CONSUME_SEALED_MODEL_SNAPSHOT",
+      "class": "AUTHORITY_AUTHENTICITY_DEFECT",
+      "summary": "actual model lifecycle recomposition receives a bare proposed successor AuthorityRef rather than resolving and consuming the exact sealed successor snapshot"
+    }
+  ],
+  "runtime": {
+    "exact_n10e_run_observed": false,
+    "candidate_branch_actions_runs": 0,
+    "available_pr_court_targets_unrelated_fiabc_spec": true,
+    "pass_count_claimed": false,
+    "note": "runtime absence independently prevents adoption; source defects make AUTHORITY_OVERREACH the controlling terminal"
+  },
+  "preserved_repairs": [
+    "fail-closed total classification for registered exact refs",
+    "actual runner now uses classified exact-ref census",
+    "source-universe and upstream EmpiricalFact graph paths",
+    "determinant-specific hashed owner evidence for rooted exact refs",
+    "real sealed query-successor snapshot in query court",
+    "family-safe replacement guard",
+    "meaningful query selective-invalidation edge hostiles",
+    "positive provider/composition/consumer source path remains present"
+  ],
+  "required_next_repair": [
+    "authenticate or refuse the baseline model authority snapshot used by the actual runner",
+    "resolve and consume the exact sealed model successor snapshot in actual recomposition",
+    "represent model-rule semantic identity as an exact lifecycle determinant or prove full rule material is cryptographically owner-bound",
+    "hostile-test rule-material mutation with unchanged authority refs",
+    "execute targeted N10E and directly dependent owner/provider courts on a lawful runtime surface"
+  ],
+  "adoption_effect": "NONE__HQ225_NOT_READY_FOR_HQ_ADOPTION",
+  "terminal": "N10E_OWNER_AUTHENTIC_LIFECYCLE_AUTHORITY_OVERREACH"
+}
