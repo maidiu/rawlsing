@@ -177,3 +177,11 @@ Following the bounded Astra native-gameplay necessity synthesis, D002 now contai
    - does not close canonical questions or claim empirical engagement.
 
 The Astra return remains advisory evidence. This D002 adjudication is derived from the pre-game-loops Sorok authority and does not import artifacts 88–90 from the quarantined exploratory branch.
+
+
+13. `13_COUNTERFACTUAL_HINGE_ACTION_ENTRY_AND_UNCERTAINTY_OWNERSHIP_R1.md`
+   - replaces "describe it more" with a counterfactual-hinge test;
+   - classifies meaningful uncertainty by user/world-body/actor/parser owner;
+   - allows broad intent to enter reality without authorizing task completion;
+   - makes DO/PARTICIPATE a lawful causal-materialization trigger;
+   - preserves ordinary compression where plausible realizations converge.
