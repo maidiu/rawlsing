@@ -1906,3 +1906,40 @@ Only closer lawful inspection may expose visible lettering, and brand/model labe
 
 `SPD-0248` governs this; `RISK-204` covers canonical-identity lexical leakage.
 
+## 2026-10-06 — R13 deep banking continuation
+
+Post-Astra Sorok work has now been re-serialized into dedicated current surfaces rather than left in chat.
+
+### D002 interaction refinement
+- smallest lawful playable causal cell banked;
+- actual contribution explicitly decoupled from helping/goodness;
+- UI must preserve the locus of human work;
+- counterfactual hinge test replaces “describe everything”;
+- broad intent may enter a causal neighborhood rather than author completion;
+- DO/PARTICIPATE may trigger hidden causal materialization;
+- decision ownership split across user / world-body-chance / actor / interface.
+
+### D008 adaptive phenomenal lens
+- user-specific rendering may weakly condition finite sampling and supportable lexicalization/characterization;
+- canonical world and actor truth remain independent;
+- MORE PERSONALIZED PERCEPTION != GREATER ADEQUACY TO THE OTHER;
+- the user should eventually be made aware that the phenomenal surface is partly conditioned by their own demonstrated history;
+- system user-lens, user's model of persona and persona's model of user remain separate;
+- social signaling/lexical familiarity do not prove expertise or class origin.
+
+### D009 human faculty/capability authority
+- medium-native faculty, measurable-but-confounded external performance, portaled embodied/procedural capability, homologized structural position and actor impression are separate;
+- homologous-peer structural power remains bounded by Courts 7/8;
+- self-report is not external-human certification;
+- optional audio/reaction/motor modalities remain open design space, not a presumed core skill economy.
+
+### Source preservation
+Current visible design transcript continuation:
+`handoffs/R13_CURRENT_CHAT_TRANSCRIPT/`
+
+The transcript is evidence, not authority.
+
+New machine-readable IDs:
+- SPD-0260–0268;
+- RISK-210–219;
+- Q-LENS-001 / Q-USERSIGNAL-001 / Q-CAPTRANS-001 / Q-MODALITY-001 / Q-HINGE-001.
