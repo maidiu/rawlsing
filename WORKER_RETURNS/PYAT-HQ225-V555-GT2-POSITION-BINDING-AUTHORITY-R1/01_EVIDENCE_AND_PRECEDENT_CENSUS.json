@@ -1,0 +1,128 @@
+{
+  "schema": "PYAT_HQ225_GT2_POSITION_BINDING_EVIDENCE_AND_PRECEDENT_CENSUS@1.0.0",
+  "commission_tip": "2c4a3e66afe1182b7b06ad0745948065117507cf",
+  "exact_startup_tip": "fd49f5eb5affd2d24ba5fd1ffa702ef4f2f86fe1",
+  "docket": "PYAT_HQ225_V555_GT2_SIG004_POSITION_BINDING_DOCKET_R1",
+  "exact_scope": {
+    "source_family": "Afrobarometer",
+    "source_wave": "R5",
+    "relation_ref": {
+      "kind": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+      "object_id": "urn:rawlsing:field-forge:conditional-support:sha256:1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19",
+      "content_hash": "1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19"
+    },
+    "admission_ref": {
+      "kind": "PREV3_FIELD_FORGE_RELATION_ADMISSION",
+      "object_id": "PREV3_FIELD_FORGE_RELATION_ADMISSION@1.0.0",
+      "content_hash": "a445e43da99405e0f8181f7ab6c428d9b0dd14fefc7fc5091f21f2d21f00b08d"
+    },
+    "signature_id": "V554-SIG-004-NONTEMPORAL-ADMITTED-RELATION-EXACT",
+    "target_use": "STRUCTURAL_MEDIATION_INPUT",
+    "risk_set_ref": {
+      "kind": "RISK_SET",
+      "object_id": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1",
+      "content_hash": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b"
+    },
+    "current_f1_ref": {
+      "kind": "F1",
+      "object_id": "urn:rawlsing:v554:f1:sha256:3530f08f43e704ad67e0fb74984b03b7ad0f068ea1de4bcf658f3b2d591bd56d",
+      "content_hash": "a008553dc94af138de44e73ade8ddbcc1e2bb3a5c40cec575aad694aae104cbb"
+    }
+  },
+  "participants": {
+    "source_candidate": {
+      "native_variable": "Q86B",
+      "relation_role": "CONDITIONER",
+      "question_impl_id": "question_impl.phase0.2fb3a62609dad4c1306d",
+      "exact_identity_sha256": "2fb3a62609dad4c1306d8cfa14f997eab4d6e65ada56083279386a202544a506",
+      "source_semantics": "Respondent opinion whether a person born in-country to two non-national parents has a right to citizenship."
+    },
+    "receiver_candidate": {
+      "native_variable": "Q86A",
+      "relation_role": "TARGET",
+      "question_impl_id": "question_impl.phase0.67f036c0efb7fb98ff4a",
+      "exact_identity_sha256": "67f036c0efb7fb98ff4a93dc811bf59cfc095608eda374f6534b006a62241bd3",
+      "source_semantics": "Respondent opinion whether a person born in-country to one national and one non-national parent has a right to citizenship."
+    }
+  },
+  "authority_and_precedent": {
+    "obl005": {
+      "adoption_blob": "5d7ad06fd2442d2ac6dcacadd4a557d3e1d89783",
+      "laws": [
+        "SOURCE_SEMANTICS != CLAIM_BOUNDED_ANALYTIC_ROLE",
+        "DOWNSTREAM_NEED != POSITION_ROLE_EVIDENCE",
+        "PRIOR_PRA != CURRENT_ROLE_AUTHORITY_FOR_NEW_DOCKET",
+        "PRA_FOR_CLAIM_A != PRA_FOR_CLAIM_B",
+        "UNRESOLVED != NOT_POSITION != POSITION_ROLE_AUTHORIZED",
+        "CORRELATION_OR_FIT != ROLE_EVIDENCE"
+      ]
+    },
+    "first_canary": {
+      "return_blob": "77a436e7e621737ac635b6c8c754e29d1319693e",
+      "receipt_blob": "76d67a60a9e52bc448d4678f17d29b0d7ef8404e",
+      "q86a_role": "ACTIVE_DISPOSITION",
+      "q86b_role": "ACTIVE_DISPOSITION",
+      "semantic_ceiling": "ATTITUDE_OR_DISPOSITION_ONLY",
+      "negative": "The social position named inside any hypothetical Q86 proposition is not the respondent's social position; no ACTIVE_POSITION promotion."
+    },
+    "second_canary": {
+      "commit": "77624c24a2125545ee1005c7bb876c4528caf80d",
+      "return_blob": "c932de0b06aecd4b164cdc12f0cf9ae37fe09132",
+      "receipt_blob": "5675fa02be3e61b6b11c13d87cb01fde05063c4e",
+      "q86a_role": "ACTIVE_DISPOSITION__ATTITUDE_OR_DISPOSITION_ONLY__AUTHORIZED_FOR_SECOND_CANARY_DESTINATION_USE",
+      "negative": "Destination use does not make Q86A a respondent position or transform the hypothetical subject into a respondent attribute."
+    },
+    "gt2_relation": {
+      "evidence_blob": "71236dc0a882d287a380be9f33413603dce17626",
+      "participant_role_order": [
+        "CONDITIONER",
+        "TARGET"
+      ],
+      "semantics": "EXACT_CONDITIONAL_SUPPORT_COUNT_PROFILE_WITHIN_SCOPE",
+      "semantic_ceiling_not_established": [
+        "causality",
+        "temporal direction",
+        "mechanism",
+        "mediation strength",
+        "scalar pressure",
+        "person/actor state",
+        "route activation in a realized person"
+      ]
+    },
+    "admission": {
+      "evidence_blob": "94693f0f151528eb5384634329090009bbb6e92b",
+      "decision": "ADMITTED",
+      "reason_code": "EXACT_GT2_RELATION_ADMITTED_FOR_STRUCTURAL_MEDIATION_INPUT",
+      "note": "Target-use admission does not adjudicate either participant as a structural position."
+    },
+    "current_f1": {
+      "evidence_blob": "1f5daf66e314e79311be4c47938c6fca74b26e5c",
+      "contains_source_position_ref": false,
+      "contains_receiver_position_ref": false,
+      "structural_authority_inferred_by_custody_worker": false
+    },
+    "hq224": {
+      "return_blob": "72df3c736038c557246e665d036e915e1c669037",
+      "successor_docket_blob": "9353dd756ba166c91bdfbbc55b7d2e896dfa244b",
+      "final_disposition_blob": "6107a7ac40baf9a0369fb8c74b4048cd996ab558"
+    }
+  },
+  "independent_position_evidence_census": {
+    "exact_gt2_source_position_receipt_found": false,
+    "exact_gt2_receiver_position_receipt_found": false,
+    "hypothetical_subject_position_object_or_authority_found": false,
+    "alternative_prior_position_operands": [
+      "Q70B",
+      "Q70C",
+      "Q73A",
+      "Q84"
+    ],
+    "alternative_operands_admissible_as_gt2_route_endpoints": false,
+    "reason": "Other PRA positions are claim-bounded, not GT2 relation participants, and not bound by the GT2 relation/admission/F1 as endpoints."
+  },
+  "result_independence": {
+    "target_result_dependence": "NONE",
+    "basis": "Role decisions use exact source/qimpl semantics, current relation/admission/F1 identity, OBL005 law and prior role-authority precedent; no magnitude, sign, fit, prevalence or geometry is dispositive."
+  },
+  "census_verdict": "NO_INDEPENDENT_GT2_STRUCTURAL_POSITION_EVIDENCE_SUPPORTS_EITHER_ENDPOINT"
+}
