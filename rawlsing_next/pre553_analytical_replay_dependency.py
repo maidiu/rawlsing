@@ -141,19 +141,33 @@ class NoLawfulReplacementRepresentable(AnalyticalReplayDependencyError):
 
 
 class UnownedDeterminantRefused(AnalyticalReplayDependencyError):
-    """A determinant was claimed lifecycle-covered without a recorded owning authority.
-
-    The analytical graph is seeded by *governed changed authority refs*
-    (``SemanticDeterminantGraph.affected``). An exact determinant that no recorded
-    authority owns therefore has no lawful change root: a ``determinant -> product``
-    edge from it would be decorative, because nothing could ever seed it.
-
-    This adapter refuses such a claim rather than emitting an unreachable edge. It
-    does not invent an owner, does not promote an ``ExactRef`` into an ``AuthorityRef``,
-    and does not infer ownership from a ref name, kind or position.
-    """
+    """A determinant was claimed lifecycle-covered without a recorded owning authority."""
 
     code = "UNOWNED_DETERMINANT_REFUSED"
+
+
+class UnclassifiedDeterminantRefused(AnalyticalReplayDependencyError):
+    """Lifecycle closure was requested while a consumed exact determinant was unclassified."""
+
+    code = "UNCLASSIFIED_DETERMINANT_REFUSED"
+
+
+class DeterminantOwnershipAuthenticationError(AnalyticalReplayDependencyError):
+    """Asserted determinant ownership is not proved by that determinant's material."""
+
+    code = "DETERMINANT_OWNERSHIP_AUTHENTICATION_ERROR"
+
+
+class ReplacementFamilyMismatch(AnalyticalReplayDependencyError):
+    """A recomposition callback attempted to replace a dependent with another family."""
+
+    code = "REPLACEMENT_FAMILY_MISMATCH"
+
+
+class AuthoritySnapshotIdentityMismatch(AnalyticalReplayDependencyError):
+    """An AuthoritySnapshot body does not hash to the AuthorityRef identity it exposes."""
+
+    code = "AUTHORITY_SNAPSHOT_IDENTITY_MISMATCH"
 
 
 class ExplicitNoncurrentDependent(AnalyticalReplayDependencyError):
