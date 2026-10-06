@@ -131,6 +131,21 @@ def provide(case: dict[str, Any], rule: Any) -> Any:
     )
 
 
+def _direct_model_authorities(case: dict[str, Any]) -> tuple[AuthorityRef, ...]:
+    """Every direct AuthorityRef consumed by the positioned-subject model rule."""
+
+    rule = case["model_rule"]
+    refs = {
+        rule.model_authority_ref.key: rule.model_authority_ref,
+        rule.walkback_authority_ref.key: rule.walkback_authority_ref,
+    }
+    for ref in rule.positive_proxy_authority_refs:
+        refs[ref.key] = ref
+    for step in rule.walkback_steps:
+        refs[step.proxy_authority_ref.key] = step.proxy_authority_ref
+    return tuple(refs[key] for key in sorted(refs))
+
+
 def _producer_fact(produced: Any) -> Any:
     composition = produced.composition_result
     facts = tuple(composition.producer_result.facts)
@@ -285,7 +300,7 @@ def run(determinants: dict[str, Any]) -> dict[str, Any]:
         AnalyticalProductRegistration(
             product_ref=product_ref,
             product_identity_hash=produced.result_identity_hash,
-            determinant_authority_refs=(old_model,),
+            determinant_authority_refs=_direct_model_authorities(case),
             determinant_exact_refs=exact_refs,
             determinant_ownerships=ownerships,
         )
@@ -353,7 +368,7 @@ def run(determinants: dict[str, Any]) -> dict[str, Any]:
         "provider_path": PROVIDER_PATH,
         "product_ref": product_ref.as_dict(),
         "registered_determinant_authority_refs": [
-            a.as_dict() for a in (old_model,)
+            a.as_dict() for a in _direct_model_authorities(case)
         ],
         "registered_determinant_exact_refs": [x.as_dict() for x in exact_refs],
         "registered_determinant_classifications": [
