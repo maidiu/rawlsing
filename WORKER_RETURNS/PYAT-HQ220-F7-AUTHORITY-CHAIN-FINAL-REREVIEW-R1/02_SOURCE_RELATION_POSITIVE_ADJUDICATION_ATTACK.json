@@ -1,0 +1,53 @@
+{
+  "schema": "PYAT_HQ220_SOURCE_RELATION_POSITIVE_ADJUDICATION_ATTACK@1.0.0",
+  "lane": "PYAT-HQ220-F7-AUTHORITY-CHAIN-FINAL-REREVIEW-R1",
+  "candidate": "9adc8cc9ba0942db974dddf809206de2a2fd231b",
+  "accepted_contract": "c57a96897788108db7b194e4e51691d1ca8ab729",
+  "verdict": "PARTIAL__REAL_OWNER_REQUIRE_IS_CALLED_BUT_AUTHORITY_DECISION_IS_NOT_CONSERVED",
+  "rr04_original_bypass": {
+    "verdict": "SUSTAINED_CLOSED_AT_THE_ORIGINAL_DEFECT",
+    "real_source_relation_resolver_required": true,
+    "owner_require_called": true,
+    "denied_relation_refused": true,
+    "wrong_relation_kind_refused": true,
+    "wrong_universe_pair_refused": true,
+    "wrong_effective_scope_refused": true,
+    "wrong_target_use_refused_at_owner_key_grain": true,
+    "duck_typed_non_owner_stub_refused": true,
+    "sites": [
+      "rawlsing_next/pre553_temporal_comparability.py:973-990",
+      "rawlsing_next/pre553_source_relations.py:610-708"
+    ]
+  },
+  "rr04b_decision_authority_cross_binding": {
+    "verdict": "FAIL__BLOCKING_AUTHORITY_CHAIN_DEFECT",
+    "severity": "BLOCKING",
+    "finding": "F7 calls resolver.require(...) but discards the returned RelationDecision. It therefore never binds the decision.relation_ref or decision.authority_ref to the F7 authority closure.",
+    "candidate_trace": [
+      "rawlsing_next/pre553_temporal_comparability.py:977-988 calls resolver.require(...) without assigning its return",
+      "rawlsing_next/pre553_temporal_comparability.py:991-997 fabricates a local positive AuthorityResolutionRecord from the requested equivalence_ref rather than from the returned RelationDecision",
+      "rawlsing_next/pre553_temporal_comparability.py:998-1016 independently resolves request.source_equivalence_authority_ref",
+      "receipt authority_snapshot_refs are derived from positive_snapshots, which contain the independently supplied snapshot but not the actual source-relation owner's authority snapshot"
+    ],
+    "owner_contract_fact": "SourceRelationResolver.require returns a RelationDecision whose authorized positive form carries both relation_ref and authority_ref (pre553_source_relations.py:640-660, 687-708).",
+    "reachable_split": "A genuine positive relation decision authorized by SOURCE_EQUIVALENCE authority A can coexist with an unrelated positive request.source_equivalence_authority_ref B. F7 accepts both independently, emits the positive temporal result, and records B in its authority snapshot closure without proving B is the authority that authorized the relation.",
+    "subclass_manifestation": "Because isinstance(resolver, SourceRelationResolver) accepts subclasses and F7 treats any non-raising require() call as success, an overriding subclass can return arbitrary material without F7 checking decision.authorized, relation_ref, authority_ref, pair, scope or use. The adopted concrete implementation is sound; the F7 boundary does not conserve its returned proof.",
+    "why_independent_snapshot_does_not_cure_it": "The separate positive SOURCE_EQUIVALENCE snapshot cannot prove that it authorized the exact relation decision. Positive-plus-positive is not identity.",
+    "bounded_repair": [
+      "Capture the returned RelationDecision.",
+      "Require decision.authorized and exact equality of decision.relation_ref to source_equivalence_ref.",
+      "Bind the decision's exact authority_ref into F7 provenance/authority closure and either require it to equal request.source_equivalence_authority_ref or eliminate the redundant independent authority half under the accepted two-path law.",
+      "Do not synthesize a positive source_equivalence_relation resolution record from the request token."
+    ]
+  },
+  "governed_use_contract_change": {
+    "verdict": "SEMANTIC_CORRECTION_SUSTAINED_WITH_INTEGRATION_GRAIN_CAVEAT",
+    "finding": "Adjudicating source equivalence for the governed use is semantically stronger and correct; a relation authorized only for its own ref must not authorize an unrelated downstream use.",
+    "candidate_projection": "F7 passes governed_use_id.object_id because the adopted SourceRelationResolver target_use API is a non-empty string.",
+    "caveat": "This projection is not complete ExactRef identity. The source-relation owner contract is string-grained at target_use, while F7's governed-use contract is ExactRef-grained.",
+    "classification": "Producer/API integration grain gap to be adjudicated upstream; not, by itself, a reason to reopen F7 architecture.",
+    "current_producer_compatibility": "No dedicated production producer of an F7-specific exact-use semantic-equivalence relation is established by the candidate. The candidate updates its lawful fixture. Under HQD-216 that missing estate occupancy is an integration dependency, not automatically a local F7 defect."
+  },
+  "no_equivalence_creation": true,
+  "authority_overreach_found": false
+}
