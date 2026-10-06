@@ -1,0 +1,29 @@
+{
+  "schema": "HQ226_F7_RESOLVER_AUTHENTICITY_FINAL_REREVIEW_DISPOSITION@1.0.0",
+  "branch": "agent/reviewer-pyat-hq226-f7-resolver-authenticity-final-rereview-r1",
+  "commission_tip": "2768e28eb12834884e7cd1b8108a5a7d2ef029e5",
+  "candidate_return": "45b721ee13209b9c0d9ecce3023cd1902de21302",
+  "code_head": "cb57b0a9c75ec0a01e78d2142afae757c131e5fb",
+  "disposition": "F7_RESOLVER_AUTHENTICITY_REPAIR_PARTIAL__NAMED_DEFECT",
+  "adoption_ready": false,
+  "authority_overreach": false,
+  "runtime_blocked_only": false,
+  "new_blocker": {
+    "id": "F7-RR-04D__EXACT_RESOLVER_INSTANCE_CAN_SHADOW_INTERNAL_OWNER_DISPATCH",
+    "class": "LOCAL_F7_AUTHORITY_AUTHENTICITY_DEFECT",
+    "summary": "HQ225 binds the outer call to SourceRelationResolver.decide non-virtually, but that base method dynamically dispatches through instance-resolved owner helpers such as resolve_exact and _validate_positive. The full owner path is therefore not yet fixed to adopted implementations.",
+    "architecture_reopen_required": false,
+    "closure_requirement": "Bind the complete owner lookup/validation path so caller-side exact-instance method replacement cannot alter adjudication, then execute F7 and M1 runtime courts including an internal-subdispatch witness."
+  },
+  "sustained": [
+    "exact concrete type rejects subclasses and duck objects",
+    "non-virtual outer decide bypasses direct instance-side decide replacement",
+    "concrete unmodified resolver refusal/positive logic remains coherent",
+    "HQ222 A/B cross-binding remains present",
+    "HQD-216 positive service shapes remain source-reachable",
+    "12 states / 19 authority kinds and prior F7 ceilings unchanged"
+  ],
+  "self_adoption": "FORBIDDEN__NOT_PERFORMED",
+  "terminal": "HQ226_F7_RESOLVER_AUTHENTICITY_FINAL_REREVIEW_RETURNED__INTERNAL_OWNER_DISPATCH_AUTHENTICITY_REPAIR_REQUIRED",
+  "return_commit": "REPORT_OUT_OF_BAND_AFTER_PUSH__NO_SELF_REFERENTIAL_SHA"
+}

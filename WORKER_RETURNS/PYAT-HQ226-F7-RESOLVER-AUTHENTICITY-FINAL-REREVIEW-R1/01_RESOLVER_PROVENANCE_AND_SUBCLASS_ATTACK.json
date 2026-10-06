@@ -1,0 +1,38 @@
+{
+  "schema": "HQ226_RESOLVER_PROVENANCE_AND_SUBCLASS_ATTACK@1.0.0",
+  "commission": "2768e28eb12834884e7cd1b8108a5a7d2ef029e5",
+  "candidate_return": "45b721ee13209b9c0d9ecce3023cd1902de21302",
+  "code_head": "cb57b0a9c75ec0a01e78d2142afae757c131e5fb",
+  "outer_boundary": {
+    "exact_type_gate": "type(resolver) is SourceRelationResolver",
+    "nonvirtual_entry": "SourceRelationResolver.decide(resolver, ...)",
+    "disposition": "CLOSES_SUBCLASS_DUCK_AND_TOP_LEVEL_DECIDE_SUBSTITUTION"
+  },
+  "production_census": {
+    "legitimate_production_subclass_found": false,
+    "legitimate_production_adapter_found": false,
+    "exact_type_overreach_found": false
+  },
+  "residual_defect": {
+    "id": "F7-RR-04D__EXACT_RESOLVER_INSTANCE_CAN_SHADOW_INTERNAL_OWNER_DISPATCH",
+    "class": "LOCAL_F7_AUTHORITY_AUTHENTICITY_DEFECT",
+    "source_chain": [
+      "Base decide uses self.resolve_exact(relation_ref).",
+      "Base decide uses self._relation_object_key(candidate).",
+      "Base decide uses self._validate_positive(...).",
+      "_validate_positive itself consults instance-resolved owner helpers/state."
+    ],
+    "reason_blocking": "An exact concrete resolver instance can still replace an internally consulted method while passing the exact-type gate. The HQ225 exact-instance witness only replaces decide and therefore does not cover this internal dynamic dispatch.",
+    "threat_model_fit": "HQ225 already treats caller-side replacement of a method on an exact resolver instance as in-scope, so internal exact-instance method substitution cannot be excluded without an explicit new trust rule."
+  },
+  "mandatory_attack_results": {
+    "subclass_require": "CLOSED_BY_EXACT_TYPE",
+    "subclass_decide": "CLOSED_BY_EXACT_TYPE",
+    "subclass_base_then_swap": "CLOSED_BY_EXACT_TYPE",
+    "duck_object": "CLOSED_BY_EXACT_TYPE",
+    "concrete_absent_unmodified": "REFUSES",
+    "concrete_denied_wrong_pair_wrong_kind_wrong_use": "SOURCE_LEVEL_REFUSAL_PATHS_SUSTAINED",
+    "subclass_descriptor": "OUTER_FORM_CLOSED",
+    "exact_instance_internal_dispatch": "FAIL__BLOCKING"
+  }
+}
