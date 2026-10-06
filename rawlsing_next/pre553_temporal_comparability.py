@@ -85,6 +85,12 @@ AUTHORIZED_COMPARISON_OPERATION = "TEMPORAL_BOUND_QUANTITY_DIFFERENCE"
 #: The relation operation used on the source-relation path for equivalence.
 SOURCE_EQUIVALENCE_RELATION_OPERATION = "SEMANTIC_EQUIVALENCE_ADMISSION"
 
+#: HQ219 RR-04: the exact relation kind and exact scope F7 requires when it asks the
+#: adopted source-relation owner to admit a cross-universe pair. These are requirements
+#: F7 imposes, not authorities it creates: the owner still decides.
+SOURCE_EQUIVALENCE_REQUIRED_RELATION_KIND = "SOURCE_SEMANTIC_EQUIVALENCE"
+SOURCE_EQUIVALENCE_REQUIRED_SCOPE = "EXACT_BOUND_UNIVERSE_PAIR"
+
 ORDER_DISPOSITIONS = frozenset({
     "CALENDAR_TOTAL_ORDER",
     "FAMILY_LOCAL_ORDINAL",
@@ -150,6 +156,12 @@ STATE_REASON_PRECEDENCE: Mapping[str, tuple[str, ...]] = {
     "TEMPORAL_IDENTITY_UNRESOLVED": (
         "TEMPORAL_IDENTITY_CONTRACT_REF_ABSENT",
         "IDENTITY_SURFACE_NOT_JOINTLY_SATISFIED",
+        # HQ219 RR-03: identity must be OWNER-RESOLVED. An identity the
+        # TEMPORAL_EVIDENCE authority does not bind, and an identity the owner cannot be
+        # consulted about, are identity refusals rather than soft signals. Both reuse the
+        # EXISTING state; no new relation state is introduced.
+        "TEMPORAL_IDENTITY_NOT_BOUND_BY_TEMPORAL_EVIDENCE_AUTHORITY",
+        "TEMPORAL_IDENTITY_OWNER_RESOLUTION_UNAVAILABLE",
     ),
     "TEMPORAL_INSUFFICIENT_ANCHORS": ("FEWER_THAN_TWO_AUTHORIZED_ANCHORS",),
     "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT": (
@@ -218,6 +230,18 @@ class TemporalComparabilityIntegrityError(TemporalComparabilityError):
 # ---------------------------------------------------------------------------
 # exact numeric law
 # ---------------------------------------------------------------------------
+
+#: HQ219 RR-04: the ADOPTED source-relation owner type. F7 requires the real
+#: resolver, so a duck-typed stub cannot stand in for the owner decision path.
+#: FORBIDDEN_BACKFILL_TARGET_STATES is imported here too so this module imports the
+#: adopted relation owner exactly once.
+import rawlsing_next.pre553_source_relations as _adopted_source_relations
+
+#: The adopted owner type. Read as an ATTRIBUTE of the adopted module rather than a
+#: from-import, so the module is imported exactly once AND ``FORBIDDEN_BACKFILL_TARGET_STATES``
+#: keeps being read LIVE off the frozen surface, which the backfill guard's liveness
+#: test depends on.
+SourceRelationResolver = _adopted_source_relations.SourceRelationResolver
 
 def _exact_number(value: Any, name: str) -> int | Decimal | Fraction:
     if isinstance(value, bool):
@@ -366,6 +390,30 @@ def _bind_ref_to_material(ref: ExactRef, material: Any, *, ref_slot: str,
     return material
 
 
+def _scope_covers_exact_ref_set(scope_value: Any, target_ref: Any) -> bool:
+    """HQ219 RR-03: does this scope value cover the exact target ref by FULL identity?
+
+    Complete ExactRef identity (kind + object_id + content_hash) is required. A bare
+    object_id token is not coverage, and absence is not coverage. This mirrors
+    ``_scope_covers_governed_use`` deliberately, so identity coverage and governed-use
+    coverage are judged by one rule.
+    """
+    if isinstance(scope_value, str):
+        # Only the explicit unrestrict marker is accepted as a blanket grant.
+        return scope_value == "EXPLICIT_UNRESTRICTED"
+    if not isinstance(scope_value, (set, frozenset, list, tuple)):
+        return False
+    target = target_ref.as_dict() if hasattr(target_ref, "as_dict") else target_ref
+    target = canonicalize(target)
+    for entry in scope_value:
+        if isinstance(entry, str):
+            continue  # a bare object_id token is not exact coverage
+        candidate = canonicalize(entry)
+        if candidate == target:
+            return True
+    return False
+
+
 def _scope_covers_governed_use(scope_value: Any, governed_use_ref: Any) -> bool:
     """HQ217 RR-02: governed-use scope must match the COMPLETE ExactRef identity.
 
@@ -488,9 +536,28 @@ def resolve_required_authority(
                 "exact authority scope does not cover a bound source universe",
                 operation, governed_use_id), None
 
+    # HQ219 RR-02B: a use-scoped authority must carry EXPLICIT governed-use coverage.
+    #
+    # Previously the coverage check ran only when ``target_use_refs`` happened to be
+    # present, so a positive snapshot whose scope envelope OMITTED it still resolved
+    # POSITIVE. Absence is not coverage: omitting the key asserted nothing, and reading
+    # that silence as unrestricted would let an authority authorize a governed use it
+    # never named.
+    #
+    # An EXPLICIT unrestricted marker is still honoured -- that is a positive, deliberately
+    # authored representation recognised by ``_scope_covers_governed_use``, which is a
+    # different thing from omitting the key. Only the omission fails closed. This single
+    # site governs every F7 path that declares use scope required, which includes both
+    # TEMPORAL_COMPARABILITY and TARGET_USE_PERMISSION.
     if require_use_scope and governed_use_id is not None:
         governed = scope.get("target_use_refs")
-        if governed is not None and not _scope_covers_governed_use(governed, governed_use_id):
+        if governed is None:
+            return AuthorityResolutionRecord(
+                slot, authority_kind, ref, SCOPE_MISMATCH,
+                "use-scoped authority declares no governed-use coverage: its scope envelope "
+                "omits target_use_refs, and absence is not coverage",
+                operation, governed_use_id), None
+        if not _scope_covers_governed_use(governed, governed_use_id):
             return AuthorityResolutionRecord(
                 slot, authority_kind, ref, SCOPE_MISMATCH,
                 "exact authority scope does not cover the governed use",
@@ -646,8 +713,7 @@ def _validate_kind_ceiling_pairing() -> None:
 
 #: The live frozen surface, consulted rather than copied (Repair 9).
 def _frozen_backfill_targets() -> frozenset[str]:
-    from rawlsing_next.pre553_source_relations import FORBIDDEN_BACKFILL_TARGET_STATES
-    return frozenset(FORBIDDEN_BACKFILL_TARGET_STATES)
+    return frozenset(_adopted_source_relations.FORBIDDEN_BACKFILL_TARGET_STATES)
 
 
 def temporal_backfill_refused(relation_state: str) -> bool:
@@ -769,6 +835,11 @@ def compare_temporal_anchors(
     detected: list[str] = []
     resolutions: list[AuthorityResolutionRecord] = []
     positive_snapshots: list[AuthoritySnapshot] = []
+    #: HQ219 RR-03: the POSITIVE snapshot resolved for each slot, keyed by slot name.
+    #: The identity gate reads the TEMPORAL_EVIDENCE snapshot from here, so the
+    #: joint-satisfaction fact comes from the adopted authority that owns identity
+    #: material rather than from caller-supplied material.
+    slot_snapshots: dict[str, AuthoritySnapshot] = {}
 
     def resolve(slot, ref, kind, *, operation=None, universe_refs=(), use_scope=False):
         record, snapshot = resolve_required_authority(
@@ -778,6 +849,7 @@ def compare_temporal_anchors(
         resolutions.append(record)
         if snapshot is not None:
             positive_snapshots.append(snapshot)
+            slot_snapshots[slot] = snapshot
         return record
 
     # ---- Repair 1 + 2: every required authority resolved to a typed outcome ----
@@ -881,21 +953,47 @@ def compare_temporal_anchors(
             if resolver is None:
                 detected.append("SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE")
             else:
-                try:
-                    resolved_relation = resolver.resolve_exact(equivalence_ref)
-                except Exception:
+                # HQ219 RR-04: exact object lookup is NOT adjudication.
+                #
+                # ``resolve_exact`` returns whatever relation carries the requested ref.
+                # It does not require the relation to be AUTHORIZED, does not check the
+                # relation KIND, does not check that the relation binds the exact
+                # universe PAIR, and does not check scope, use, or authority. A
+                # duck-typed stub, a DENIED relation, a relation of another kind, and a
+                # relation for a different pair all satisfied it, while an independent
+                # positive SOURCE_EQUIVALENCE snapshot satisfied the authority half. That
+                # split brain is the defect.
+                #
+                # The adopted owner exposes exactly the adjudication this needs:
+                # ``require`` runs ``decide`` and refuses unless the decision is
+                # AUTHORIZED, and the owner itself validates relation kind, the exact
+                # source pair, operation scope, effective scope, target use, and the
+                # authority that authorizes the relation. F7 therefore consumes the real
+                # owner decision and creates no equivalence authority of its own.
+                if not isinstance(resolver, SourceRelationResolver):
+                    # A stub that merely mimics ``resolve_exact`` is not the owner path.
                     detected.append("SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE")
                 else:
-                    bound_rel_ref = getattr(resolved_relation, "ref", None)
-                    if bound_rel_ref is not None and \
-                            canonicalize(bound_rel_ref.as_dict()) != \
-                            canonicalize(equivalence_ref.as_dict()):
+                    try:
+                        resolver.require(
+                            relation_kind=SOURCE_EQUIVALENCE_REQUIRED_RELATION_KIND,
+                            source_universe_refs=(universes[0], universes[1]),
+                            operation_scope=SOURCE_EQUIVALENCE_REQUIRED_SCOPE,
+                            target_use=(governed_use_id.object_id
+                                        if governed_use_id is not None else ""),
+                            effective_scope=SOURCE_EQUIVALENCE_REQUIRED_SCOPE,
+                            relation_ref=equivalence_ref,
+                            expected_authority_operation=(
+                                SOURCE_EQUIVALENCE_RELATION_OPERATION),
+                        )
+                    except Exception:
                         detected.append("SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE")
                     else:
                         resolutions.append(AuthorityResolutionRecord(
                             "source_equivalence_relation", "SOURCE_EQUIVALENCE",
-                            equivalence_ref, POSITIVE, "resolved through the exact "
-                            "source-relation owner path",
+                            equivalence_ref, POSITIVE,
+                            "positively adjudicated by the adopted source-relation owner "
+                            "for the exact relation kind, universe pair, scope and use",
                             SOURCE_EQUIVALENCE_RELATION_OPERATION, governed_use_id))
             eq_record, eq_snapshot = resolve_required_authority(
                 registry, request.source_equivalence_authority_ref,
@@ -926,18 +1024,51 @@ def compare_temporal_anchors(
     if identity_ref is None:
         detected.append("TEMPORAL_IDENTITY_CONTRACT_REF_ABSENT")
     else:
-        # RR-03: the joint-satisfaction fact is read from the AUTHORIZED identity material
-        # the ref names, not from the caller boolean. A contradicting boolean is a
-        # disagreement about authorized material, so it is refused rather than trusted.
-        bound_identity_ok = bool(
-            identity_material.get("identity_surface_jointly_satisfied")) \
-            if isinstance(identity_material, Mapping) else False
-        if not bound_identity_ok:
-            detected.append("IDENTITY_SURFACE_NOT_JOINTLY_SATISFIED")
-        elif not request.identity_surface_jointly_satisfied:
-            raise TemporalComparabilityInputRefusal(
-                "caller identity_surface_jointly_satisfied contradicts the bound authorized "
-                "identity material; the authorized material governs")
+        # ------------------------------------------------------------------
+        # HQ219 RR-03: temporal identity must be OWNER-RESOLVED.
+        #
+        # The previous gate read ``identity_surface_jointly_satisfied`` out of
+        # ``temporal_identity_contract_material`` -- material the CALLER supplied and
+        # merely hashed. A caller could therefore mint any mapping, hash it, present the
+        # matching ExactRef, and satisfy the identity gate with an unrelated positive
+        # TEMPORAL_EVIDENCE snapshot sitting in the registry. Hash binding proved only
+        # that the caller was self-consistent, never that identity was authorized.
+        #
+        # The joint-satisfaction fact now comes from the ADOPTED TEMPORAL_EVIDENCE
+        # authority -- the owner path that owns identity material. The caller's ref may
+        # IDENTIFY which identity contract is requested; it may not itself constitute
+        # authorization. No new identity owner, registry, or authority kind is created:
+        # this reads the existing TEMPORAL_EVIDENCE snapshot's scope envelope.
+        # ------------------------------------------------------------------
+        te_snapshot = slot_snapshots.get("temporal_evidence")
+        owner_identity_ok = False
+        owner_binds_identity = False
+
+        if te_snapshot is None:
+            detected.append("TEMPORAL_IDENTITY_OWNER_RESOLUTION_UNAVAILABLE")
+        else:
+            owner_scope = dict(getattr(te_snapshot, "scope_envelope", {}) or {})
+            owner_refs = owner_scope.get("temporal_identity_contract_refs")
+            owner_binds_identity = _scope_covers_exact_ref_set(owner_refs, identity_ref)
+            if not owner_binds_identity:
+                detected.append("TEMPORAL_IDENTITY_NOT_BOUND_BY_TEMPORAL_EVIDENCE_AUTHORITY")
+            else:
+                owner_identity_ok = bool(
+                    owner_scope.get("identity_surface_jointly_satisfied"))
+
+        if owner_binds_identity:
+            if not owner_identity_ok:
+                detected.append("IDENTITY_SURFACE_NOT_JOINTLY_SATISFIED")
+            elif isinstance(identity_material, Mapping) and not bool(
+                    identity_material.get("identity_surface_jointly_satisfied")):
+                raise TemporalComparabilityInputRefusal(
+                    "caller temporal_identity_contract_material claims the identity surface "
+                    "is not jointly satisfied, but the TEMPORAL_EVIDENCE authority governs it "
+                    "as satisfied; the adopted owner governs")
+            elif not request.identity_surface_jointly_satisfied:
+                raise TemporalComparabilityInputRefusal(
+                    "caller identity_surface_jointly_satisfied contradicts the "
+                    "TEMPORAL_EVIDENCE-authorised identity material; the adopted owner governs")
 
     # RR-01: surfaces come from the bound requirement material. A caller-supplied result
     # tuple that disagrees with it is refused, so the ref cannot be decorative.

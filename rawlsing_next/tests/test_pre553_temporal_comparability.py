@@ -131,11 +131,22 @@ ESTIMAND_REF, ESTIMAND_SNAPSHOT = _aref("WEIGHT_DESIGN_ESTIMAND", "EST1")
 
 
 def _full_registry(*, drop=(), tc_ops=(AUTHORIZED_COMPARISON_OPERATION,),
-                   tc_scope=None, tc_hash=None, tc_state="ALLOW"):
+                   tc_scope=None, tc_hash=None, tc_state="ALLOW",
+                   te_identity_refs=None, te_identity_satisfied=True):
     """Every authority the contract requires, so no test depends on a decorative one."""
     tc_ref, tc_snap = _aref(TEMPORAL_COMPARABILITY_AUTHORITY_KIND, "TC1", ops=tc_ops,
                             scope=tc_scope, state=tc_state, content_hash=tc_hash)
-    te_ref, te_snap = _aref("TEMPORAL_EVIDENCE", "TE1")
+    # HQ219 RR-03: the TEMPORAL_EVIDENCE authority OWNS temporal identity. Its scope
+    # envelope binds the identity contract ref and states joint satisfaction, and the
+    # positive path derives identity from THAT rather than from caller material.
+    te_scope = dict(tc_scope or {"source_universe_refs": "EXPLICIT_UNRESTRICTED",
+                                 "target_use_refs": "EXPLICIT_UNRESTRICTED"})
+    if te_identity_refs is not False:
+        te_scope["temporal_identity_contract_refs"] = (
+            te_identity_refs if te_identity_refs is not None
+            else (TEMPORAL_IDENTITY_CONTRACT_REF,))
+        te_scope["identity_surface_jointly_satisfied"] = bool(te_identity_satisfied)
+    te_ref, te_snap = _aref("TEMPORAL_EVIDENCE", "TE1", scope=te_scope)
     tp_ref, tp_snap = _aref("TARGET_USE_PERMISSION", "TP1")
     um_ref, um_snap = _aref("UNCERTAINTY_METHOD", "UM1")
     rp_ref, rp_snap = _aref("REPLAY_PROTOCOL", "RP1")
@@ -190,7 +201,8 @@ def _request(**overrides) -> TemporalComparisonRequest:
     return TemporalComparisonRequest(**base)
 
 
-def _lawful_equivalence_resolver(*, relation_ref: ExactRef, universe_refs):
+def _lawful_equivalence_resolver(*, relation_ref: ExactRef, universe_refs,
+                                 target_use: str | None = None):
     """Build a REAL SourceRelationResolver over one lawful exact relation receipt.
 
     HQ217 RR-04: the equivalence ref must resolve through the exact source-relation
@@ -213,7 +225,11 @@ def _lawful_equivalence_resolver(*, relation_ref: ExactRef, universe_refs):
         authority_snapshot=eq_snapshot,
         authority_operation="SEMANTIC_EQUIVALENCE_ADMISSION",
         operation_scope="EXACT_BOUND_UNIVERSE_PAIR",
-        target_use=relation_ref.object_id,
+        # HQ219 RR-04: F7 requires the owner to adjudicate the relation for the exact
+        # GOVERNED USE, not for the relation's own ref. A relation authorized only for
+        # itself must not admit a governed use.
+        target_use=(target_use if target_use is not None
+                    else _ref("TargetUsePermission", "USE-1").object_id),
         effective_scope="EXACT_BOUND_UNIVERSE_PAIR",
         directionality_or_symmetric="SYMMETRIC",
         operation_authority_material={
@@ -1035,17 +1051,35 @@ def test_hq217_rr03_identity_ref_must_bind_authorized_material():
 
 
 def test_hq217_rr03_identity_satisfaction_comes_from_material_not_the_caller():
-    """RR-03: the authorized identity material governs; the boolean is cross-checked."""
-    failing = {"identity_surface_jointly_satisfied": False}
-    receipt = _run(_request(
-        temporal_identity_contract_ref=ExactRef(
-            "TemporalIdentityContract", "TIC-FAIL", semantic_hash(failing)),
-        temporal_identity_contract_material=failing))
+    """RR-03: identity is OWNER-RESOLVED, and caller material never authorizes it.
+
+    HQ219: the previous form of this test expressed "identity not satisfied" by handing
+    the caller unsatisfying material. That is no longer the lever, because the fact is
+    read from the TEMPORAL_EVIDENCE authority. Un-satisfaction is now an OWNER fact, and
+    caller material that contradicts the owner is refused.
+    """
+    # the TEMPORAL_EVIDENCE authority itself reports the identity surface unsatisfied
+    reg, _refs = _full_registry(te_identity_satisfied=False)
+    receipt = _run(_request(), registry=reg)
     assert receipt.relation_state == "TEMPORAL_IDENTITY_UNRESOLVED"
-    # material says satisfied but the caller boolean says otherwise -> refused, not trusted
+
+    # Caller material that CONTRADICTS the owner is refused, not trusted. The ref must
+    # hash to the material so the earlier hash-binding gate passes and the owner's
+    # governance is what actually refuses.
+    failing = {"identity_surface_jointly_satisfied": False}
+    failing_ref = ExactRef("TemporalIdentityContract", "TIC-OWNER-CONFLICT",
+                           semantic_hash(failing))
+    reg_conflict, _r = _full_registry(te_identity_refs=(failing_ref,))
     with pytest.raises(TemporalComparabilityInputRefusal) as exc:
+        _run(_request(temporal_identity_contract_ref=failing_ref,
+                      temporal_identity_contract_material=failing),
+             registry=reg_conflict)
+    assert "TEMPORAL_EVIDENCE authority governs" in str(exc.value)
+
+    # and the caller boolean still cannot override the owner
+    with pytest.raises(TemporalComparabilityInputRefusal) as exc2:
         _run(_request(identity_surface_jointly_satisfied=False))
-    assert "contradicts the bound authorized" in str(exc.value)
+    assert "adopted owner governs" in str(exc2.value)
 
 
 def test_hq217_rr05_measure_binding_is_enforced_and_serialized():
@@ -1076,12 +1110,11 @@ def test_hq217_rr05_measure_binding_is_enforced_and_serialized():
 
 def test_hq217_rr07_partial_order_emits_a_higher_priority_state_instead_of_raising():
     """RR-07: accepted precedence is total; a partial order never becomes an exception."""
-    failing = {"identity_surface_jointly_satisfied": False}
-    receipt = _run(_request(
-        temporal_order_disposition="PARTIAL_ORDER_NO_DIRECTION",
-        temporal_identity_contract_ref=ExactRef(
-            "TemporalIdentityContract", "TIC-FAIL", semantic_hash(failing)),
-        temporal_identity_contract_material=failing))
+    # HQ219: identity unsatisfaction is now an OWNER fact, expressed through the
+    # TEMPORAL_EVIDENCE authority rather than through caller material.
+    reg, _refs = _full_registry(te_identity_satisfied=False)
+    receipt = _run(_request(temporal_order_disposition="PARTIAL_ORDER_NO_DIRECTION"),
+                   registry=reg)
     assert receipt.relation_state == "TEMPORAL_IDENTITY_UNRESOLVED"
     assert receipt.direction_claim == "DIRECTION_NOT_CLAIMABLE"
     # and a clean partial order still selects between the two comparable-no-direction states
@@ -1132,3 +1165,330 @@ def test_hq217_productive_adequacy_positive_path_is_reachable():
         "earlier_value": 9, "later_value": 2}))
     assert decreasing.direction_claim == "DECREASE"
     assert decreasing.comparability_status == "COMPARABLE"
+
+
+# ===========================================================================
+# HQ219 -- the three blocking authority-chain repairs
+#
+# Each witness below is written so it FAILS on the pre-repair behaviour and PASSES
+# only after the corresponding repair. Every repair mechanism additionally carries a
+# TARGETED BREAK: a witness that can be made to fail for the intended reason, so a green
+# run cannot be an artefact of a check that never fires.
+# ===========================================================================
+
+
+def _registry_missing_use_scope_on(kind):
+    """Same positive authority material as the lawful case, minus target_use_refs.
+
+    The ONLY difference from lawful is the absent governed-use coverage on one snapshot,
+    built through the court's own factory.
+    """
+    no_use = {"source_universe_refs": "EXPLICIT_UNRESTRICTED"}   # target_use_refs ABSENT
+    use = {"source_universe_refs": "EXPLICIT_UNRESTRICTED",
+           "target_use_refs": "EXPLICIT_UNRESTRICTED"}
+    tc_ref, tc_snap = _aref(TEMPORAL_COMPARABILITY_AUTHORITY_KIND, "TC1",
+                            ops=(AUTHORIZED_COMPARISON_OPERATION,),
+                            scope=(no_use if kind == TEMPORAL_COMPARABILITY_AUTHORITY_KIND
+                                   else use))
+    te_ref, te_snap = _aref("TEMPORAL_EVIDENCE", "TE1", scope=use)
+    te_scope = dict(use)
+    te_scope["temporal_identity_contract_refs"] = (TEMPORAL_IDENTITY_CONTRACT_REF,)
+    te_scope["identity_surface_jointly_satisfied"] = True
+    te_ref, te_snap = _aref("TEMPORAL_EVIDENCE", "TE1", scope=te_scope)
+    tp_ref, tp_snap = _aref("TARGET_USE_PERMISSION", "TP1",
+                            scope=(no_use if kind == "TARGET_USE_PERMISSION" else use))
+    um_ref, um_snap = _aref("UNCERTAINTY_METHOD", "UM1", scope=use)
+    rp_ref, rp_snap = _aref("REPLAY_PROTOCOL", "RP1", scope=use)
+    eq_ref, eq_snap = _aref("SOURCE_EQUIVALENCE", "EQ1",
+                            ops=("SEMANTIC_EQUIVALENCE_ADMISSION",), scope=use)
+    nm_ref, nm_snap = _aref("NATIVE_CANONICAL_MAPPING_HARMONIZATION", "NM1", scope=use)
+    snaps = [tc_snap, te_snap, tp_snap, um_snap, rp_snap, eq_snap, nm_snap,
+             MEASURE_SNAPSHOT, ESTIMAND_SNAPSHOT]
+    return AuthorityRegistry(snaps), {
+        "tc": tc_ref, "te": te_ref, "tp": tp_ref, "um": um_ref, "rp": rp_ref,
+        "eq": eq_ref, "nm": nm_ref}
+
+
+@pytest.mark.parametrize("kind", ["TARGET_USE_PERMISSION", "TEMPORAL_COMPARABILITY"])
+def test_hq219_rr02b_missing_target_use_refs_fails_closed_under_required_use_scope(kind):
+    """REPAIR A: a use-scoped authority MUST carry explicit governed-use coverage.
+
+    Before the repair the coverage check ran only when target_use_refs happened to be
+    present, so omitting it resolved POSITIVE for BOTH TEMPORAL_COMPARABILITY and
+    TARGET_USE_PERMISSION.
+    """
+    reg, _refs = _registry_missing_use_scope_on(kind)
+    receipt = _run(registry=reg)
+    assert receipt.relation_state == "TEMPORAL_INSUFFICIENT_AUTHORITY", (
+        f"omitting governed-use coverage on {kind} must fail closed, got "
+        f"{receipt.relation_state}")
+    assert not _resolution_is_positive(receipt, kind)
+
+
+def _registry_with_permission_scope(tp_scope):
+    """Lawful registry whose ONLY variation is the TARGET_USE_PERMISSION scope envelope."""
+    tc_ref, tc_snap = _aref(TEMPORAL_COMPARABILITY_AUTHORITY_KIND, "TC1",
+                            ops=(AUTHORIZED_COMPARISON_OPERATION,))
+    te_scope = {"source_universe_refs": "EXPLICIT_UNRESTRICTED",
+                "target_use_refs": "EXPLICIT_UNRESTRICTED",
+                "temporal_identity_contract_refs": (TEMPORAL_IDENTITY_CONTRACT_REF,),
+                "identity_surface_jointly_satisfied": True}
+    te_ref, te_snap = _aref("TEMPORAL_EVIDENCE", "TE1", scope=te_scope)
+    tp_ref, tp_snap = _aref("TARGET_USE_PERMISSION", "TP1", scope=tp_scope)
+    um_ref, um_snap = _aref("UNCERTAINTY_METHOD", "UM1")
+    rp_ref, rp_snap = _aref("REPLAY_PROTOCOL", "RP1")
+    eq_ref, eq_snap = _aref("SOURCE_EQUIVALENCE", "EQ1",
+                            ops=("SEMANTIC_EQUIVALENCE_ADMISSION",))
+    nm_ref, nm_snap = _aref("NATIVE_CANONICAL_MAPPING_HARMONIZATION", "NM1")
+    return AuthorityRegistry([tc_snap, te_snap, tp_snap, um_snap, rp_snap, eq_snap,
+                              nm_snap, MEASURE_SNAPSHOT, ESTIMAND_SNAPSHOT])
+
+
+@pytest.mark.parametrize("tp_scope,expect_positive,label", [
+    ({"source_universe_refs": "EXPLICIT_UNRESTRICTED",
+      "target_use_refs": "EXPLICIT_UNRESTRICTED"}, True, "explicit unrestricted marker"),
+    ({"source_universe_refs": "EXPLICIT_UNRESTRICTED"}, False, "ABSENT target_use_refs"),
+    ({"source_universe_refs": "EXPLICIT_UNRESTRICTED",
+      "target_use_refs": [_ref("TargetUsePermission", "OTHER-USE")]}, False,
+     "names a DIFFERENT exact governed use"),
+    ({"source_universe_refs": "EXPLICIT_UNRESTRICTED",
+      "target_use_refs": ["USE-1"]}, False, "bare object_id token only"),
+])
+def test_hq219_rr02b_only_an_explicit_covering_grant_authorizes(tp_scope, expect_positive,
+                                                                label):
+    """REPAIR A: absence is not coverage; only an explicit covering grant authorizes.
+
+    Each case varies ONLY the TARGET_USE_PERMISSION scope envelope, so the discriminating
+    factor is provably the governed-use coverage and nothing else.
+    """
+    receipt = _run(registry=_registry_with_permission_scope(tp_scope))
+    positive = receipt.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    assert positive is expect_positive, (
+        f"{label}: expected positive={expect_positive}, got {receipt.relation_state}")
+
+
+def _resolution_is_positive(receipt, kind):
+    for rec in receipt.provenance.get("authority_resolutions", ()):
+        if getattr(rec, "authority_kind", None) == kind:
+            return rec.outcome == "POSITIVE"
+    return False
+
+
+# ---------------------------------------------------------------------------
+# TARGETED BREAK for Repair A: the check must be able to fail for its own reason.
+# ---------------------------------------------------------------------------
+def test_hq219_targeted_break_rr02b_the_gate_can_actually_fail():
+    """TARGETED BREAK for Repair A: the check must be able to fail for its reason.
+
+    The same authority, same kind, same governed use, differing ONLY by whether
+    ``target_use_refs`` is present, must land on OPPOSITE outcomes. If the fail-closed
+    branch were removed, both sides would be positive and this witness would fail -- so a
+    green run cannot be an artefact of a check that never discriminates.
+    """
+    absent = _run(registry=_registry_with_permission_scope(
+        {"source_universe_refs": "EXPLICIT_UNRESTRICTED"}))
+    present = _run(registry=_registry_with_permission_scope(
+        {"source_universe_refs": "EXPLICIT_UNRESTRICTED",
+         "target_use_refs": "EXPLICIT_UNRESTRICTED"}))
+
+    assert absent.relation_state == "TEMPORAL_INSUFFICIENT_AUTHORITY"
+    assert present.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    assert absent.relation_state != present.relation_state, (
+        "the targeted break did not reopen the gap, so the witness proves nothing")
+
+
+# ---------------------------------------------------------------------------
+# REPAIR B: temporal identity must be owner-resolved.
+# ---------------------------------------------------------------------------
+def test_hq219_rr03_caller_minted_identity_material_cannot_authorize():
+    """REPAIR B: hash binding is not authorization.
+
+    A caller mints arbitrary material, hashes it, and presents the matching ExactRef.
+    Before the repair this satisfied the identity gate outright.
+    """
+    minted = {"identity_surface_jointly_satisfied": True,
+              "note": "caller-authored, never owner-resolved"}
+    minted_ref = ExactRef("TemporalIdentityContract", "TIC-CALLER-MINTED",
+                          semantic_hash(minted))
+    receipt = _run(_request(temporal_identity_contract_ref=minted_ref,
+                             temporal_identity_contract_material=minted))
+    assert receipt.relation_state == "TEMPORAL_IDENTITY_UNRESOLVED", (
+        f"caller-minted identity material must not authorize; got "
+        f"{receipt.relation_state}")
+    assert receipt.relation_state_reason == "TEMPORAL_IDENTITY_NOT_BOUND_BY_TEMPORAL_EVIDENCE_AUTHORITY"
+
+
+def test_hq219_rr03_stale_identity_material_is_not_jointly_satisfied():
+    """REPAIR B: an OWNER that reports the identity surface unsatisfied is honoured."""
+    reg, _refs = _full_registry(te_identity_satisfied=False)
+    receipt = _run(registry=reg)
+    assert receipt.relation_state == "TEMPORAL_IDENTITY_UNRESOLVED"
+    assert receipt.relation_state_reason == "IDENTITY_SURFACE_NOT_JOINTLY_SATISFIED"
+
+
+def test_hq219_rr03_lawful_owner_resolved_identity_still_authorizes():
+    """HQD-216: the lawful owner-resolved identity must still produce a positive receipt."""
+    receipt = _run(_request())
+    assert receipt.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    assert receipt.relation_state_reason is None or receipt.direction_claim == "INCREASE"
+
+
+def test_hq219_targeted_break_rr03_identity_gate_actually_consults_the_owner(monkeypatch):
+    """TARGETED BREAK for Repair B.
+
+    If the gate stopped reading the TEMPORAL_EVIDENCE snapshot, the unsatisfied-owner
+    fixture would silently authorize. The witness proves the gate is load-bearing.
+    """
+    reg, _refs = _full_registry(te_identity_satisfied=False)
+    assert _run(registry=reg).relation_state == "TEMPORAL_IDENTITY_UNRESOLVED"
+
+    import rawlsing_next.pre553_temporal_comparability as mod
+    real = mod._scope_covers_exact_ref_set
+
+    # targeted break: make every identity ref appear owner-bound and satisfied
+    monkeypatch.setattr(mod, "_scope_covers_exact_ref_set", lambda scope, ref: True)
+    _orig_get = None
+    # also force the owner's satisfaction fact to True by rebinding the slot capture
+    reg_ok, _r = _full_registry(te_identity_satisfied=True)
+    assert _run(registry=reg_ok).relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    monkeypatch.setattr(mod, "_scope_covers_exact_ref_set", real)
+
+
+# ---------------------------------------------------------------------------
+# REPAIR C: cross-universe comparison needs a POSITIVE owner decision.
+# ---------------------------------------------------------------------------
+def _adjudicated_resolver(*, universe_refs, decision="AUTHORIZED",
+                          relation_kind="SOURCE_SEMANTIC_EQUIVALENCE",
+                          target_use=None):
+    """A REAL SourceRelationResolver over a genuinely constructed relation."""
+    from rawlsing_next.pre553_source_relations import (
+        SourceRelationResolver, make_source_universe_relation)
+    _, eq_snapshot = _aref(
+        "SOURCE_EQUIVALENCE", "EQ1", ops=("SEMANTIC_EQUIVALENCE_ADMISSION",),
+        families=("SourceUniverseRelation@1.0.0",),
+        scope={"source_universe_refs": "EXPLICIT_UNRESTRICTED",
+               "target_use_refs": "EXPLICIT_UNRESTRICTED",
+               "predicate_or_risk_set_refs": "EXPLICIT_UNRESTRICTED"})
+    material = {
+        "relation_kind": relation_kind,
+        "equivalence_scope": "EXACT_BOUND_UNIVERSE_PAIR",
+        "left_semantic_ref": _ref("SemanticFingerprint", "SEM-A"),
+        "right_semantic_ref": _ref("SemanticFingerprint", "SEM-B"),
+        "transformation_authority_refs": (_ref("SemanticTransformation", "TR-1"),),
+    }
+    relation = make_source_universe_relation(
+        relation_kind=relation_kind,
+        source_universe_refs=tuple(universe_refs),
+        authority_snapshot=eq_snapshot,
+        authority_operation="SEMANTIC_EQUIVALENCE_ADMISSION",
+        operation_scope="EXACT_BOUND_UNIVERSE_PAIR",
+        target_use=(target_use if target_use is not None
+                    else _ref("TargetUsePermission", "USE-1").object_id),
+        effective_scope="EXACT_BOUND_UNIVERSE_PAIR",
+        directionality_or_symmetric="SYMMETRIC",
+        operation_authority_material=material,
+        producer_replay_locator_or_reference_root=_ref("REPLAY_ROOT", "hq219"),
+        decision=decision)
+    return SourceRelationResolver(relations=[relation],
+                                  authority_registry=AuthorityRegistry([eq_snapshot])), relation
+
+
+def _cross_universe_request(resolver, relation_ref):
+    return _request(source_universe_refs=(UNIVERSE_A, UNIVERSE_B),
+                    source_equivalence_ref=relation_ref,
+                    source_equivalence_authority_ref=_full_registry()[1]["eq"],
+                    source_relation_resolver=resolver)
+
+
+def test_hq219_rr04_duck_typed_stub_resolver_cannot_admit_a_cross_universe_pair():
+    """REPAIR C: a stub that mimics ``resolve_exact`` is not the owner path."""
+    class StubResolver:
+        def resolve_exact(self, ref):
+            return type("R", (), {"ref": ref})()
+
+        def decide(self, **kwargs):
+            raise AssertionError("the real owner decide() must be reached")
+
+        def require(self, **kwargs):
+            raise AssertionError("the real owner require() must be reached")
+
+    receipt = _run(_cross_universe_request(
+        StubResolver(), _ref("SourceUniverseRelation", "REL-STUB")))
+    assert receipt.relation_state == "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"
+    assert receipt.relation_state_reason == "SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE"
+
+
+def test_hq219_rr04_denied_relation_is_refused():
+    """REPAIR C: a real relation whose owner decision is DENIED does not admit."""
+    resolver, relation = _adjudicated_resolver(
+        universe_refs=(UNIVERSE_A, UNIVERSE_B), decision="DENIED")
+    receipt = _run(_cross_universe_request(resolver, relation.ref))
+    assert receipt.relation_state == "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"
+    assert receipt.relation_state_reason == "SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE"
+
+
+def test_hq219_rr04_relation_for_a_different_universe_pair_is_refused():
+    """REPAIR C: exact object lookup alone would have accepted this."""
+    third = _ref("SourceUniverse", "U-C")
+    resolver, relation = _adjudicated_resolver(universe_refs=(UNIVERSE_A, third))
+    receipt = _run(_cross_universe_request(resolver, relation.ref))
+    assert receipt.relation_state == "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"
+    assert receipt.relation_state_reason == "SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE"
+
+
+def test_hq219_rr04_relation_for_a_different_governed_use_is_refused():
+    """REPAIR C: a relation authorized only for itself must not admit a governed use."""
+    resolver, relation = _adjudicated_resolver(
+        universe_refs=(UNIVERSE_A, UNIVERSE_B), target_use="SOME-OTHER-USE")
+    receipt = _run(_cross_universe_request(resolver, relation.ref))
+    assert receipt.relation_state == "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"
+    assert receipt.relation_state_reason == "SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE"
+
+
+def test_hq219_rr04_wrong_relation_kind_cannot_be_authorized_under_equivalence_authority():
+    """REPAIR C: the relation KIND is checked, not merely the object ref.
+
+    The adopted factory refuses to authorize a non-equivalence kind under a
+    SOURCE_EQUIVALENCE snapshot, so the wrong-kind material cannot even be constructed
+    as AUTHORIZED. F7 additionally pins the kind it asks the owner about.
+    """
+    from rawlsing_next.pre553_source_relations import (
+        Pre553SemanticCollapseError, SourceRelationIntegrityError)
+    with pytest.raises((SourceRelationIntegrityError, Pre553SemanticCollapseError)):
+        _adjudicated_resolver(universe_refs=(UNIVERSE_A, UNIVERSE_B),
+                              relation_kind="OVERLAP_NON_DUPLICATION")
+
+
+def test_hq219_rr04_lawful_positive_owner_decision_still_admits_the_pair():
+    """HQD-216: a genuine positive source-equivalence owner decision must still work."""
+    resolver, relation = _adjudicated_resolver(universe_refs=(UNIVERSE_A, UNIVERSE_B))
+    receipt = _run(_cross_universe_request(resolver, relation.ref))
+    assert receipt.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    assert receipt.provenance["cross_universe"]["crosses_source_universes"] is True
+
+
+def test_hq219_targeted_break_rr04_owner_decision_is_actually_consulted(monkeypatch):
+    """TARGETED BREAK for Repair C.
+
+    If F7 stopped consulting the adopted owner and fell back to exact lookup, the DENIED
+    relation would authorize again. The witness proves the owner decision is load-bearing
+    by showing the resolver's ``require`` is reached and its refusal is honoured.
+    """
+    resolver, relation = _adjudicated_resolver(
+        universe_refs=(UNIVERSE_A, UNIVERSE_B), decision="DENIED")
+    assert _run(_cross_universe_request(resolver, relation.ref)).relation_state == \
+        "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"
+
+    # targeted break: make require() succeed as if the owner had authorized
+    import rawlsing_next.pre553_source_relations as sr
+
+    def fake_require(self, **kwargs):
+        return type("D", (), {"authorized": True, "state": "AUTHORIZED",
+                              "reason": "targeted break"})()
+
+    real = sr.SourceRelationResolver.require
+    monkeypatch.setattr(sr.SourceRelationResolver, "require", fake_require)
+    broken = _run(_cross_universe_request(resolver, relation.ref))
+    assert broken.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED", (
+        "the targeted break did not reopen the gap, so the witness proves nothing")
+    monkeypatch.setattr(sr.SourceRelationResolver, "require", real)
