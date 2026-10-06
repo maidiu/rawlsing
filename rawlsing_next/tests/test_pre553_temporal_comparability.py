@@ -1773,3 +1773,209 @@ def test_hq222_rr04b_unrelated_positive_equivalence_snapshot_cannot_ride_the_rel
                           source_relation_resolver=resolver)
     assert compare_temporal_anchors(
         request_ok, registry).relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+
+
+# ===========================================================================
+# HQ225 F7-RR-04C: non-forgeable source-relation owner boundary.
+# ===========================================================================
+def _hq225_cross_request(*, resolver, relation_ref, authority_ref):
+    return _request(
+        source_universe_refs=(UNIVERSE_A, UNIVERSE_B),
+        source_equivalence_ref=relation_ref,
+        source_equivalence_authority_ref=authority_ref,
+        source_relation_resolver=resolver,
+    )
+
+
+def _hq225_full_decision(*, relation_ref, authority_ref, tag):
+    from rawlsing_next.pre553_source_relations import RelationDecision
+
+    return RelationDecision(
+        "SOURCE_SEMANTIC_EQUIVALENCE",
+        (UNIVERSE_A, UNIVERSE_B),
+        "EXACT_BOUND_UNIVERSE_PAIR",
+        _ref("TargetUsePermission", "USE-1").object_id,
+        "EXACT_BOUND_UNIVERSE_PAIR",
+        "SYMMETRIC",
+        "AUTHORIZED",
+        relation_ref,
+        authority_ref,
+        "SEMANTIC_EQUIVALENCE_ADMISSION",
+        f"hostile-{tag}",
+        _h(f"hq225-hostile-decision:{tag}"),
+    )
+
+
+def _assert_hq225_owner_impostor_refused(receipt):
+    assert receipt.relation_state == "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"
+    assert receipt.relation_state_reason == "SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE"
+    assert receipt.comparability_status == "NOT_COMPARABLE"
+
+
+def test_hq225_rr04c_subclass_full_shaped_authorized_decision_with_real_b_refuses():
+    """A subclass cannot mint a full-shaped AUTHORIZED decision using genuine B."""
+    from rawlsing_next.pre553_source_relations import SourceRelationResolver
+
+    registry, auths = _full_registry()
+    relation_ref = _ref("SourceUniverseRelation", "HQ225-FORGED-FULL")
+
+    class HostileResolver(SourceRelationResolver):
+        called = False
+
+        def require(self, **kwargs):
+            type(self).called = True
+            return _hq225_full_decision(
+                relation_ref=kwargs["relation_ref"],
+                authority_ref=auths["eq"],
+                tag="full-shaped-b",
+            )
+
+    hostile = HostileResolver(relations=(), authority_registry=registry)
+    receipt = compare_temporal_anchors(
+        _hq225_cross_request(
+            resolver=hostile, relation_ref=relation_ref, authority_ref=auths["eq"]),
+        registry,
+    )
+    _assert_hq225_owner_impostor_refused(receipt)
+    assert HostileResolver.called is False, (
+        "F7 must refuse the subclass at the owner boundary before virtual require() executes")
+
+
+def test_hq225_rr04c_subclass_right_shape_but_relation_absent_from_base_refuses():
+    """Right pair/kind/use fields do not matter when the base owner has no relation."""
+    from rawlsing_next.pre553_source_relations import SourceRelationResolver
+
+    registry, auths = _full_registry()
+    relation_ref = _ref("SourceUniverseRelation", "HQ225-ABSENT-BASE-RELATION")
+
+    class MissingRelationForger(SourceRelationResolver):
+        called = False
+
+        def decide(self, **kwargs):
+            type(self).called = True
+            return _hq225_full_decision(
+                relation_ref=kwargs["relation_ref"],
+                authority_ref=auths["eq"],
+                tag="absent-base-relation",
+            )
+
+    hostile = MissingRelationForger(relations=(), authority_registry=registry)
+    receipt = compare_temporal_anchors(
+        _hq225_cross_request(
+            resolver=hostile, relation_ref=relation_ref, authority_ref=auths["eq"]),
+        registry,
+    )
+    _assert_hq225_owner_impostor_refused(receipt)
+    assert MissingRelationForger.called is False
+
+
+def test_hq225_rr04c_subclass_base_then_swaps_authority_cannot_execute():
+    """Even a subclass that delegates to the base owner then swaps A->B is refused."""
+    from dataclasses import replace as _replace
+    from rawlsing_next.pre553_source_relations import SourceRelationResolver
+
+    concrete, relation = _adjudicated_resolver(
+        universe_refs=(UNIVERSE_A, UNIVERSE_B))
+
+    unrelated_ref, unrelated_snapshot = _aref(
+        "SOURCE_EQUIVALENCE", "HQ225-EQ-B",
+        ops=("SEMANTIC_EQUIVALENCE_ADMISSION",),
+        scope={"source_universe_refs": "EXPLICIT_UNRESTRICTED",
+               "target_use_refs": "EXPLICIT_UNRESTRICTED"})
+    registry, _auths = _full_registry(extra_snapshots=(unrelated_snapshot,))
+
+    class SwapAfterBaseResolver(SourceRelationResolver):
+        called = False
+
+        def decide(self, **kwargs):
+            type(self).called = True
+            genuine = super().decide(**kwargs)
+            return _replace(
+                genuine,
+                relation_ref=kwargs["relation_ref"],
+                authority_ref=unrelated_ref,
+                authority_operation="SEMANTIC_EQUIVALENCE_ADMISSION",
+                state="AUTHORIZED",
+            )
+
+    hostile = SwapAfterBaseResolver(
+        relations=[relation], authority_registry=concrete._registry)
+    receipt = compare_temporal_anchors(
+        _hq225_cross_request(
+            resolver=hostile,
+            relation_ref=relation.ref,
+            authority_ref=unrelated_ref,
+        ),
+        registry,
+    )
+    _assert_hq225_owner_impostor_refused(receipt)
+    assert SwapAfterBaseResolver.called is False
+
+
+def test_hq225_rr04c_duck_object_with_owner_api_cannot_impersonate_owner():
+    """Method-name parity is not owner provenance."""
+    registry, auths = _full_registry()
+    relation_ref = _ref("SourceUniverseRelation", "HQ225-DUCK")
+
+    class DuckOwner:
+        called = False
+
+        def resolve_exact(self, ref):
+            type(self).called = True
+            return type("R", (), {"ref": ref})()
+
+        def decide(self, **kwargs):
+            type(self).called = True
+            return _hq225_full_decision(
+                relation_ref=kwargs["relation_ref"],
+                authority_ref=auths["eq"],
+                tag="duck",
+            )
+
+        def require(self, **kwargs):
+            type(self).called = True
+            return self.decide(**kwargs)
+
+    receipt = compare_temporal_anchors(
+        _hq225_cross_request(
+            resolver=DuckOwner(), relation_ref=relation_ref, authority_ref=auths["eq"]),
+        registry,
+    )
+    _assert_hq225_owner_impostor_refused(receipt)
+    assert DuckOwner.called is False
+
+
+def test_hq225_rr04c_exact_owner_instance_shadow_cannot_replace_base_decide():
+    """Exact type alone is not the proof: F7 must bypass caller-side method shadowing."""
+    concrete, relation = _adjudicated_resolver(
+        universe_refs=(UNIVERSE_A, UNIVERSE_B))
+    registry, auths = _full_registry()
+    called = {"value": False}
+
+    def forged_decide(**kwargs):
+        called["value"] = True
+        return _hq225_full_decision(
+            relation_ref=kwargs["relation_ref"],
+            authority_ref=auths["eq"],
+            tag="instance-shadow",
+        )
+
+    concrete.decide = forged_decide
+    receipt = compare_temporal_anchors(
+        _hq225_cross_request(
+            resolver=concrete, relation_ref=relation.ref, authority_ref=auths["eq"]),
+        registry,
+    )
+    assert receipt.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    assert called["value"] is False, (
+        "F7 must invoke the adopted class adjudicator non-virtually, not instance lookup")
+
+
+def test_hq225_rr04c_concrete_owner_positive_path_remains_productive():
+    """HQD-216 control: the genuine concrete owner path remains positive."""
+    resolver, relation = _adjudicated_resolver(
+        universe_refs=(UNIVERSE_A, UNIVERSE_B))
+    receipt = _run(_cross_universe_request(resolver, relation.ref))
+    assert type(resolver).__name__ == "SourceRelationResolver"
+    assert receipt.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    assert receipt.direction_claim == "INCREASE"
