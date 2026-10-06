@@ -1,0 +1,70 @@
+{
+  "finding_C": {
+    "defect_closed": "the adopted general authority law (pre553_empirical_authority._scope_contains) recognizes BOTH EXPLICIT_UNRESTRICTED and UNRESTRICTED_BY_THIS_AUTHORITY as positive blanket scope. F7's three local scope helpers recognized only EXPLICIT_UNRESTRICTED, so a competent authority expressed with the other adopted representation was silently reinterpreted as non-authority. This was fail-closed rather than fail-open, but it could reject a competent authority representation existing law explicitly accepts.",
+    "finding": "F7-RR-02C",
+    "inspection_result": "Both tokens ARE valid current representations in the adopted general law, so per the commission F7 must honour both exactly.",
+    "repair": {
+      "constant_value": [
+        "EXPLICIT_UNRESTRICTED",
+        "UNRESTRICTED_BY_THIS_AUTHORITY"
+      ],
+      "file": "rawlsing_next/pre553_temporal_comparability.py",
+      "helpers_updated": [
+        "_scope_covers_exact_ref_set",
+        "_scope_covers_governed_use",
+        "_scope_covers_universe"
+      ],
+      "new_constant": "ADOPTED_UNRESTRICTED_SCOPE_REPRESENTATIONS",
+      "new_helper": "_scope_is_adopted_unrestricted",
+      "omission_proof": "the helpers still return False for None, empty collections, empty string, and any other literal; only the two exact adopted literals grant a blanket",
+      "omission_treated_as_unrestricted": false,
+      "third_token_invented": false
+    },
+    "witnesses": [
+      {
+        "name": "test_hq222_rr02c_both_adopted_unrestricted_tokens_are_honoured",
+        "parametrized": [
+          "EXPLICIT_UNRESTRICTED",
+          "UNRESTRICTED_BY_THIS_AUTHORITY"
+        ],
+        "result": "each token authorizes in all three helpers and end-to-end"
+      },
+      {
+        "name": "test_hq222_rr02c_no_third_token_and_omission_is_not_unrestricted",
+        "parametrized": [
+          "None",
+          "'UNRESTRICTED'",
+          "'EXPLICIT_UNLIMITED'",
+          "'UNRESTRICTED_BY_OTHER_AUTHORITY'",
+          "'explicit_unrestricted'",
+          "'UNRESTRICTED_BY_THIS_AUTHORITY_V2'",
+          "True",
+          "0"
+        ],
+        "result": "none grants a blanket; the constant is exactly the two adopted literals"
+      },
+      {
+        "name": "test_hq222_rr02c_f7_scope_helpers_agree_with_the_adopted_authority_law",
+        "result": "F7's blanket set cannot drift from the adopted law: the law's source names both literals and _scope_contains grants a blanket for exactly those and nothing else"
+      }
+    ]
+  },
+  "finding_D": {
+    "defect_closed": "HQ219's RR-03 targeted break was not a targeted break. It observed an unsatisfied-owner refusal, monkeypatched only exact-ref coverage, and then constructed a SEPARATE satisfied owner registry. It never disabled owner-satisfaction consultation on the same fixture, so it could not demonstrate fail capability.",
+    "disclosure": "The RR-03 witness cannot execute against pre-repair production because the seam it breaks does not exist there (monkeypatch raises AttributeError). Its pre-repair discriminating power is instead carried by the three RR-03B scope witnesses in artifact 02, all of which DO fail pre-repair. Disclosed rather than hidden.",
+    "finding": "COURT-HQ220-01",
+    "repair": {
+      "fails_for_the_intended_reason": true,
+      "mechanism": "ONE fixture: _full_registry(te_identity_satisfied=False), where the adopted owner says the identity surface is NOT satisfied. The break falsifies only the owner's satisfaction verdict on that same fixture.",
+      "production_seam_added": "_temporal_evidence_identity_scope(snapshot) - the single point through which F7 reads the adopted TEMPORAL_EVIDENCE authority about temporal identity. It performs no new adjudication; it only makes the owner consultation breakable on ONE fixed fixture.",
+      "result": "flips to TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED; restoring the real consultation restores TEMPORAL_IDENTITY_UNRESOLVED with reason IDENTITY_SURFACE_NOT_JOINTLY_SATISFIED",
+      "witness_replaced": "test_hq219_targeted_break_rr03_identity_gate_actually_consults_the_owner"
+    },
+    "rr04_targeted_break_also_rewritten": {
+      "new_mechanism": "falsify the owner's REAL returned verdict on the same DENIED fixture using dataclasses.replace on the genuine RelationDecision, changing only state/authority. The forged-impostor case is split into its own hardening witness.",
+      "reason": "HQ219's RR-04 break patched require() with a NON-RETURNING fake. Post-repair F7 validates the returned proof, so that fake is now refused - the old assertion (the break must reopen the gap) had come to assert the very vulnerability the repair closes.",
+      "result": "reopens, then restores"
+    }
+  },
+  "schema": "HQ222_UNRESTRICTED_REPRESENTATION_AND_FAIL_CAPABILITY@1.0.0"
+}

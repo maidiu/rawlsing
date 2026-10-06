@@ -390,6 +390,81 @@ def _bind_ref_to_material(ref: ExactRef, material: Any, *, ref_slot: str,
     return material
 
 
+#: HQ222 F7-RR-02C: the exact set of adopted explicit-unrestricted scope
+#: representations. This mirrors ``pre553_empirical_authority._scope_contains``,
+#: which already treats both literals as positive. F7 previously recognized only
+#: ``EXPLICIT_UNRESTRICTED``, so a competent authority expressed with the other
+#: adopted representation was silently reinterpreted as non-authority.
+#:
+#: This constant adds NO third token, and OMISSION is never unrestricted: the
+#: helpers below still return False for None, for an empty collection, and for
+#: any other literal. Only these two exact adopted literals grant a blanket.
+ADOPTED_UNRESTRICTED_SCOPE_REPRESENTATIONS = frozenset({
+    "EXPLICIT_UNRESTRICTED",
+    "UNRESTRICTED_BY_THIS_AUTHORITY",
+})
+
+
+def _scope_is_adopted_unrestricted(scope_value: Any) -> bool:
+    """True only for one of the two adopted explicit-unrestricted literals."""
+    return (isinstance(scope_value, str)
+            and scope_value in ADOPTED_UNRESTRICTED_SCOPE_REPRESENTATIONS)
+
+
+def _temporal_evidence_identity_scope(snapshot: Any) -> Mapping[str, Any]:
+    """HQ222 COURT-HQ220-01: read the identity-owning authority's scope envelope.
+
+    This is the single seam through which F7 consults the adopted TEMPORAL_EVIDENCE
+    authority about temporal identity. It exists so the court can break owner
+    satisfaction consultation on ONE fixed fixture and prove the gate is genuinely
+    load-bearing, instead of swapping in a different, satisfied registry.
+    """
+    return dict(getattr(snapshot, "scope_envelope", {}) or {})
+
+
+def _relation_decision_defect(
+    decision: Any,
+    *,
+    relation_kind: str,
+    relation_ref: ExactRef | None,
+    source_universe_refs: Sequence[ExactRef],
+    target_use: str,
+    operation_scope: Any,
+) -> str | None:
+    """HQ222 F7-RR-04B: does the returned owner decision prove what F7 asked for?
+
+    ``require`` already refuses a non-authorized decision, but it does not promise
+    that a non-raising return describes the exact request F7 made. This re-checks
+    the returned proof against the request so a permissive owner cannot smuggle an
+    unrelated positive relation past F7. Returns a reason string, or None when the
+    decision is an exact proof of the request.
+    """
+    if decision is None:
+        return "no owner decision was returned"
+    if not getattr(decision, "authorized", False):
+        return "returned owner decision is not an authorized decision"
+    if getattr(decision, "relation_kind", None) != relation_kind:
+        return "returned owner decision carries a different relation kind"
+    returned_ref = getattr(decision, "relation_ref", None)
+    if returned_ref is None:
+        return "returned owner decision carries no authorized relation ref"
+    expected_ref = exact_ref(relation_ref, "equivalence_ref") if relation_ref is not None else None
+    if expected_ref is not None and returned_ref.key != expected_ref.key:
+        return "returned owner decision authorized a different relation ref"
+    if getattr(decision, "authority_ref", None) is None:
+        return "returned owner decision names no relation-authorizing authority"
+    returned_sources = tuple(getattr(decision, "source_universe_refs", ()) or ())
+    if len(returned_sources) != len(source_universe_refs) or {
+            ref.key for ref in returned_sources} != {ref.key for ref in source_universe_refs}:
+        return "returned owner decision covers a different source universe pair"
+    if canonicalize(getattr(decision, "target_use", None)) != canonicalize(target_use):
+        return "returned owner decision was adjudicated for a different target use"
+    if canonicalize(getattr(decision, "operation_scope", None)) != canonicalize(
+            operation_scope):
+        return "returned owner decision was adjudicated for a different operation scope"
+    return None
+
+
 def _scope_covers_exact_ref_set(scope_value: Any, target_ref: Any) -> bool:
     """HQ219 RR-03: does this scope value cover the exact target ref by FULL identity?
 
@@ -399,8 +474,9 @@ def _scope_covers_exact_ref_set(scope_value: Any, target_ref: Any) -> bool:
     coverage are judged by one rule.
     """
     if isinstance(scope_value, str):
-        # Only the explicit unrestrict marker is accepted as a blanket grant.
-        return scope_value == "EXPLICIT_UNRESTRICTED"
+        # HQ222 F7-RR-02C: BOTH adopted explicit-unrestricted literals count.
+        # Nothing else does, and omission is not unrestricted.
+        return _scope_is_adopted_unrestricted(scope_value)
     if not isinstance(scope_value, (set, frozenset, list, tuple)):
         return False
     target = target_ref.as_dict() if hasattr(target_ref, "as_dict") else target_ref
@@ -424,8 +500,8 @@ def _scope_covers_governed_use(scope_value: Any, governed_use_ref: Any) -> bool:
     sufficient evidence of governed-use scope and is treated as no coverage (fail-closed).
     """
     if isinstance(scope_value, str):
-        # Only the explicit unrestrict marker is accepted as a blanket grant.
-        return scope_value == "EXPLICIT_UNRESTRICTED"
+        # HQ222 F7-RR-02C: both adopted explicit-unrestricted literals count.
+        return _scope_is_adopted_unrestricted(scope_value)
     if not isinstance(scope_value, (set, frozenset, list, tuple)):
         return False
     target = governed_use_ref.as_dict() if hasattr(governed_use_ref, "as_dict") else governed_use_ref
@@ -441,8 +517,10 @@ def _scope_covers_governed_use(scope_value: Any, governed_use_ref: Any) -> bool:
 
 
 def _scope_covers_universe(scope_value: Any, universe: Any) -> bool:
+    # HQ222 F7-RR-02C: both adopted explicit-unrestricted literals count; omission
+    # does not, and a bare string token still is not exact universe coverage.
     if isinstance(scope_value, str):
-        return scope_value == "EXPLICIT_UNRESTRICTED"
+        return _scope_is_adopted_unrestricted(scope_value)
     if isinstance(scope_value, (set, frozenset, list, tuple)):
         target = canonicalize(universe)
         return any(canonicalize(v) == target for v in scope_value)
@@ -864,7 +942,15 @@ def compare_temporal_anchors(
             SCOPE_MISMATCH: "AUTHORITY_SCOPE_MISMATCH",
         }.get(tc.outcome, "TEMPORAL_COMPARABILITY_AUTHORITY_REF_ABSENT"))
 
-    te = resolve("temporal_evidence", request.temporal_evidence_authority_ref, "TEMPORAL_EVIDENCE")
+    # HQ222 F7-RR-03B: the identity-owning TEMPORAL_EVIDENCE authority must cover the
+    # exact compared source scope. It was previously resolved with no required
+    # universes, so an actual but out-of-scope TEMPORAL_EVIDENCE snapshot could own
+    # identity for this comparison purely because it carried the identity scope keys.
+    # Accepted owner archaeology treats temporal identity as source-native scoping
+    # material, so the owner must be in-scope for the pair being compared.
+    te = resolve("temporal_evidence", request.temporal_evidence_authority_ref,
+                 "TEMPORAL_EVIDENCE",
+                 universe_refs=(universes[0], universes[1]))
     if te.outcome != POSITIVE:
         detected.append({
             HASH_MISMATCH: "AUTHORITY_HASH_MISMATCH",
@@ -950,6 +1036,10 @@ def compare_temporal_anchors(
             # RR-04: resolve the relation through the exact source-relation OWNER PATH
             # first. An arbitrary caller token must never be accepted here.
             resolver = request.source_relation_resolver
+            #: HQ222 F7-RR-04B: the exact owner decision, once captured. Stays None
+            #: unless the adopted owner returned a real AUTHORIZED decision, so a
+            #: later cross-bind can never read an unproven authority.
+            relation_decision = None
             if resolver is None:
                 detected.append("SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE")
             else:
@@ -974,8 +1064,27 @@ def compare_temporal_anchors(
                     # A stub that merely mimics ``resolve_exact`` is not the owner path.
                     detected.append("SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE")
                 else:
+                    # ------------------------------------------------------
+                    # HQ222 F7-RR-04B: CONSERVE THE OWNER'S ACTUAL DECISION.
+                    #
+                    # HQ219 called the adopted owner and then discarded the
+                    # returned RelationDecision, manufacturing a local POSITIVE
+                    # record from the requested ref instead. The adopted owner
+                    # returns the exact authorized ``relation_ref`` AND the exact
+                    # relation-authorizing ``authority_ref``. Discarding it proved
+                    # only "some owner decision is positive", while the separately
+                    # supplied SOURCE_EQUIVALENCE snapshot B proved only "some
+                    # caller-supplied snapshot is positive". Positive + positive is
+                    # not identity: a genuine relation authorized by A could ride
+                    # alongside an unrelated positive B, and the receipt then
+                    # misstated its authority ancestry.
+                    #
+                    # The returned decision is now captured, its exact identity is
+                    # validated against what F7 actually asked for, and its exact
+                    # relation-authorizing authority is what F7 records.
+                    # ------------------------------------------------------
                     try:
-                        resolver.require(
+                        relation_decision = resolver.require(
                             relation_kind=SOURCE_EQUIVALENCE_REQUIRED_RELATION_KIND,
                             source_universe_refs=(universes[0], universes[1]),
                             operation_scope=SOURCE_EQUIVALENCE_REQUIRED_SCOPE,
@@ -987,14 +1096,28 @@ def compare_temporal_anchors(
                                 SOURCE_EQUIVALENCE_RELATION_OPERATION),
                         )
                     except Exception:
+                        relation_decision = None
                         detected.append("SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE")
                     else:
-                        resolutions.append(AuthorityResolutionRecord(
-                            "source_equivalence_relation", "SOURCE_EQUIVALENCE",
-                            equivalence_ref, POSITIVE,
-                            "positively adjudicated by the adopted source-relation owner "
-                            "for the exact relation kind, universe pair, scope and use",
-                            SOURCE_EQUIVALENCE_RELATION_OPERATION, governed_use_id))
+                        defect = _relation_decision_defect(
+                            relation_decision,
+                            relation_kind=SOURCE_EQUIVALENCE_REQUIRED_RELATION_KIND,
+                            relation_ref=equivalence_ref,
+                            source_universe_refs=(universes[0], universes[1]),
+                            target_use=(governed_use_id.object_id
+                                        if governed_use_id is not None else ""),
+                            operation_scope=SOURCE_EQUIVALENCE_REQUIRED_SCOPE,
+                        )
+                        if defect is not None:
+                            detected.append("SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE")
+                        else:
+                            resolutions.append(AuthorityResolutionRecord(
+                                "source_equivalence_relation", "SOURCE_EQUIVALENCE",
+                                relation_decision.authority_ref, POSITIVE,
+                                "exact relation-authorizing authority returned by the "
+                                "adopted source-relation owner for the exact relation "
+                                "ref, kind, universe pair, scope and use",
+                                relation_decision.authority_operation, governed_use_id))
             eq_record, eq_snapshot = resolve_required_authority(
                 registry, request.source_equivalence_authority_ref,
                 slot="source_equivalence", authority_kind="SOURCE_EQUIVALENCE",
@@ -1014,6 +1137,17 @@ def compare_temporal_anchors(
                         exact_relation_operation=SOURCE_EQUIVALENCE_RELATION_OPERATION)
                 except Pre553AuthorityError:
                     detected.append("SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE")
+                else:
+                    # ------------------------------------------------------
+                    # HQ222 F7-RR-04B, no A/B split: the supplied SOURCE_EQUIVALENCE
+                    # snapshot must BE the authority that authorized the returned
+                    # relation decision. Two independent positive snapshots that
+                    # are not each other are no proof of anything.
+                    # ------------------------------------------------------
+                    authorized_by = getattr(relation_decision, "authority_ref", None)
+                    if authorized_by is not None and (
+                            eq_snapshot.authority_ref.key != authorized_by.key):
+                        detected.append("SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE")
 
     # Identity and declared comparability surfaces.
     if cardinality_short:
@@ -1047,7 +1181,7 @@ def compare_temporal_anchors(
         if te_snapshot is None:
             detected.append("TEMPORAL_IDENTITY_OWNER_RESOLUTION_UNAVAILABLE")
         else:
-            owner_scope = dict(getattr(te_snapshot, "scope_envelope", {}) or {})
+            owner_scope = _temporal_evidence_identity_scope(te_snapshot)
             owner_refs = owner_scope.get("temporal_identity_contract_refs")
             owner_binds_identity = _scope_covers_exact_ref_set(owner_refs, identity_ref)
             if not owner_binds_identity:

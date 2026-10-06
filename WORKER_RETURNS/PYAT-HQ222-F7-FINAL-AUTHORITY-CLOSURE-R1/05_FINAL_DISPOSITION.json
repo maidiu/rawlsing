@@ -1,0 +1,71 @@
+{
+  "architecture_reopened": false,
+  "branch": "agent/rabochii-pyat-hq222-f7-final-authority-closure-r1",
+  "commission_tip_requested_by_commission": "9adc8cc9ba0942db974dddf809206de2a2fd231b",
+  "commission_tip_used_by_launch": "e88cfeb10c8e2099093125fb31b497906341c0cc",
+  "disposition": "F7_FINAL_AUTHORITY_CLOSURE_COMPLETE__READY_FOR_FINAL_REREVIEW",
+  "evidence_paths": [
+    "WORKER_RETURNS/PYAT-HQ222-F7-FINAL-AUTHORITY-CLOSURE-R1/00_RETURN.md",
+    "WORKER_RETURNS/PYAT-HQ222-F7-FINAL-AUTHORITY-CLOSURE-R1/01_RELATION_DECISION_AUTHORITY_CROSSBIND.json",
+    "WORKER_RETURNS/PYAT-HQ222-F7-FINAL-AUTHORITY-CLOSURE-R1/02_TEMPORAL_EVIDENCE_SOURCE_SCOPE_BINDING.json",
+    "WORKER_RETURNS/PYAT-HQ222-F7-FINAL-AUTHORITY-CLOSURE-R1/03_UNRESTRICTED_REPRESENTATION_AND_FAIL_CAPABILITY.json",
+    "WORKER_RETURNS/PYAT-HQ222-F7-FINAL-AUTHORITY-CLOSURE-R1/04_PRODUCTIVE_PATH_AND_REGRESSION.json"
+  ],
+  "findings_closed": [
+    {
+      "finding": "F7-RR-04B",
+      "status": "CLOSED",
+      "summary": "returned RelationDecision captured, its exact identity validated, its exact relation-authorizing authority recorded, and the supplied SOURCE_EQUIVALENCE snapshot cross-bound to it (no A/B split)"
+    },
+    {
+      "finding": "F7-RR-03B",
+      "status": "CLOSED",
+      "summary": "identity-owning TEMPORAL_EVIDENCE authority now resolved against the exact compared source universe pair"
+    },
+    {
+      "finding": "F7-RR-02C",
+      "status": "CLOSED",
+      "summary": "both adopted explicit-unrestricted representations honored in all three scope helpers; no third token; omission still not unrestricted"
+    },
+    {
+      "finding": "COURT-HQ220-01",
+      "status": "CLOSED",
+      "summary": "RR-03 witness replaced with a same-fixture mechanism break that falsifies only owner satisfaction consultation and reopens the authorization path; RR-04 witness rewritten because its old assertion had come to assert the vulnerability the repair closes"
+    }
+  ],
+  "findings_not_closed": [],
+  "prior_disposition": "F7_AUTHORITY_CHAIN_REPAIR_PARTIAL__NAMED_DEFECT",
+  "prior_review": "agent/reviewer-pyat-hq220-f7-authority-chain-final-rereview-r1 @ acb8602e3968bc2e9fcde63223294aa92e0ddce2",
+  "residual_risks_for_rereview": [
+    "isinstance(resolver, SourceRelationResolver) still accepts subclasses, and F7 now trusts the returned decision's content. A hostile SUBCLASS of the real resolver could still return a fabricated AUTHORIZED RelationDecision. HQ220 raised this as a related boundary weakness; it was not one of the four commissioned findings and was not repaired, so it is flagged rather than silently widened.",
+    "The governed-use contract mismatch HQ220 identified is unchanged: F7's governed use is an ExactRef while the adopted source-relation owner keys target_use as a non-empty string, so F7 projects governed_use_id.object_id. That remains an integration/producer occupancy gap, not an F7 defect, and HQ should keep it visible.",
+    "IDENTITY_CONTRACT_INSTANCE_MISSING remains an upstream estate-occupancy gap. HQ222 consumes competent owner-backed fixtures; it does not create a real production identity instance.",
+    "The RR-03 targeted-break witness requires the new production seam and therefore cannot execute against pre-repair production; its pre-repair discriminating power is carried by the three RR-03B scope witnesses, which do fail pre-repair."
+  ],
+  "schema": "HQ222_FINAL_DISPOSITION@1.0.0",
+  "tip_note": "As with HQ221, the commission text names its own parent as the exact startup tip; the launch tip is the commit that adds 00_COMMISSION.md. The launch tip was used so the commission document is present in the worktree.",
+  "verification": {
+    "F7_court_failed": 0,
+    "F7_court_passed": 135,
+    "M1_court_passed": 27,
+    "baseline_before": 114,
+    "negative_control_new_tests_failing_pre_repair": "20 of 21 HQ222 tests",
+    "regression_diff_method": "identical 62-entry failure set before and after",
+    "regression_introduced": 0
+  },
+  "write_terrain_compliance": {
+    "court_mutated": [
+      "rawlsing_next/tests/test_pre553_temporal_comparability.py"
+    ],
+    "diff_stat": {
+      "court": "+343 lines",
+      "production": "+162 lines"
+    },
+    "files_changed_total": 2,
+    "other_production_mutation": false,
+    "production_mutated": [
+      "rawlsing_next/pre553_temporal_comparability.py"
+    ],
+    "self_adoption": "FORBIDDEN__NOT_PERFORMED"
+  }
+}

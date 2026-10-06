@@ -1,0 +1,43 @@
+{
+  "defect_closed": "The identity-owning TEMPORAL_EVIDENCE authority was resolved with no required_universe_refs and no identity-specific operation. Once positive by kind/state, the custom scope keys temporal_identity_contract_refs and identity_surface_jointly_satisfied alone decided the identity gate, so an actual but out-of-scope TEMPORAL_EVIDENCE snapshot could own identity for a comparison merely by carrying those keys. Accepted owner archaeology treats temporal identity as source-native scoping material.",
+  "finding": "F7-RR-03B",
+  "pre_repair_discrimination": {
+    "method": "production file reverted to e88cfeb10, new court tests executed",
+    "only_one_of_two_universes": "FAIL pre-repair (out-of-scope owner authorized identity)",
+    "stale_universe_ref": "FAIL pre-repair (out-of-scope owner authorized identity)",
+    "unrelated_universe": "FAIL pre-repair (out-of-scope owner authorized identity)"
+  },
+  "precedence_note": "An out-of-scope identity owner fails the temporal_evidence slot and therefore surfaces in the higher-precedence TEMPORAL_INSUFFICIENT_AUTHORITY state rather than TEMPORAL_IDENTITY_UNRESOLVED. Both are lawful refusals. Witnesses discriminate the intended mechanism by asserting on the temporal_evidence resolution record (AUTHORITY_SCOPE_MISMATCH) and comparability_status (NOT_COMPARABLE) rather than on one arbitrary state label. Total precedence is unchanged.",
+  "repair": {
+    "applies_to_slot": "temporal_evidence (the identity-owning snapshot only)",
+    "change": "the temporal_evidence slot now resolves with required_universe_refs=(universes[0], universes[1]), reusing the existing resolve_required_authority universe-scope machinery. No new authority kind, identity registry, or ontology is created; the existing owner path is simply asked whether it covers the compared scope.",
+    "file": "rawlsing_next/pre553_temporal_comparability.py",
+    "temporal_order_basis_slot_unchanged": true
+  },
+  "schema": "HQ222_TEMPORAL_EVIDENCE_SOURCE_SCOPE_BINDING@1.0.0",
+  "witnesses": [
+    {
+      "kind": "PRODUCTIVE CONTROL",
+      "name": "test_hq222_rr03b_identity_owner_must_cover_the_compared_universe_pair",
+      "result": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    },
+    {
+      "attack": "positive identity authority for an unrelated source universe",
+      "kind": "HOSTILE",
+      "name": "test_hq222_rr03b_identity_owner_for_an_unrelated_universe_is_refused",
+      "result": "refused; temporal_evidence resolution outcome AUTHORITY_SCOPE_MISMATCH"
+    },
+    {
+      "attack": "owner covers only one of the two compared universes",
+      "kind": "HOSTILE",
+      "name": "test_hq222_rr03b_identity_owner_covering_only_one_compared_universe_is_refused",
+      "result": "refused; the cross-universe path is given a GENUINE positive owner decision so nothing higher-precedence masks the identity defect, and a control with a both-universes owner stays positive"
+    },
+    {
+      "attack": "stale/wrong source universe ref with exact scope shape",
+      "kind": "HOSTILE",
+      "name": "test_hq222_rr03b_stale_source_universe_ref_in_identity_owner_scope_is_refused",
+      "result": "refused; AUTHORITY_SCOPE_MISMATCH"
+    }
+  ]
+}

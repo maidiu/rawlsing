@@ -132,14 +132,15 @@ ESTIMAND_REF, ESTIMAND_SNAPSHOT = _aref("WEIGHT_DESIGN_ESTIMAND", "EST1")
 
 def _full_registry(*, drop=(), tc_ops=(AUTHORIZED_COMPARISON_OPERATION,),
                    tc_scope=None, tc_hash=None, tc_state="ALLOW",
-                   te_identity_refs=None, te_identity_satisfied=True):
+                   te_identity_refs=None, te_identity_satisfied=True,
+                   te_scope=None, extra_snapshots=()):
     """Every authority the contract requires, so no test depends on a decorative one."""
     tc_ref, tc_snap = _aref(TEMPORAL_COMPARABILITY_AUTHORITY_KIND, "TC1", ops=tc_ops,
                             scope=tc_scope, state=tc_state, content_hash=tc_hash)
     # HQ219 RR-03: the TEMPORAL_EVIDENCE authority OWNS temporal identity. Its scope
     # envelope binds the identity contract ref and states joint satisfaction, and the
     # positive path derives identity from THAT rather than from caller material.
-    te_scope = dict(tc_scope or {"source_universe_refs": "EXPLICIT_UNRESTRICTED",
+    te_scope = dict(te_scope or tc_scope or {"source_universe_refs": "EXPLICIT_UNRESTRICTED",
                                  "target_use_refs": "EXPLICIT_UNRESTRICTED"})
     if te_identity_refs is not False:
         te_scope["temporal_identity_contract_refs"] = (
@@ -165,7 +166,7 @@ def _full_registry(*, drop=(), tc_ops=(AUTHORIZED_COMPARISON_OPERATION,),
         "eq": eq_ref, "nm": nm_ref,
     }
     kept = [(a, b) for k, (a, b) in named.items() if k not in drop]
-    return AuthorityRegistry([b for _, b in kept]), authority_refs
+    return AuthorityRegistry([b for _, b in kept] + list(extra_snapshots)), authority_refs
 
 
 def _request(**overrides) -> TemporalComparisonRequest:
@@ -1334,24 +1335,196 @@ def test_hq219_rr03_lawful_owner_resolved_identity_still_authorizes():
 
 
 def test_hq219_targeted_break_rr03_identity_gate_actually_consults_the_owner(monkeypatch):
-    """TARGETED BREAK for Repair B.
+    """HQ222 COURT-HQ220-01 TARGETED BREAK: same fixture, broken mechanism.
 
-    If the gate stopped reading the TEMPORAL_EVIDENCE snapshot, the unsatisfied-owner
-    fixture would silently authorize. The witness proves the gate is load-bearing.
+    HQ219's version of this witness did NOT satisfy the fail-capability requirement. It
+    monkeypatched one exact-ref helper and then swapped in a *different, satisfied*
+    registry, so it never demonstrated that the mechanism disabling anything -- it only
+    showed two different fixtures give two different answers.
+
+    This version keeps ONE fixture, the unsatisfied-owner registry, and falsifies only
+    the owner-satisfaction consultation that F7 uses to read that owner's verdict. If
+    the outcome flips on that single fixture, the owner's verdict is provably what the
+    identity gate consumes, and pre-repair -- when the gate read caller-minted material
+    instead -- the same break is exactly the self-authorization path.
     """
+    import rawlsing_next.pre553_temporal_comparability as mod
+
+    # ONE fixture: the adopted owner says the identity surface is NOT satisfied.
     reg, _refs = _full_registry(te_identity_satisfied=False)
     assert _run(registry=reg).relation_state == "TEMPORAL_IDENTITY_UNRESOLVED"
 
-    import rawlsing_next.pre553_temporal_comparability as mod
-    real = mod._scope_covers_exact_ref_set
+    # targeted break: falsify the owner's satisfaction verdict on this same fixture
+    def falsified_owner_scope(snapshot):
+        scope = dict(getattr(snapshot, "scope_envelope", {}) or {})
+        scope["identity_surface_jointly_satisfied"] = True
+        return scope
 
-    # targeted break: make every identity ref appear owner-bound and satisfied
-    monkeypatch.setattr(mod, "_scope_covers_exact_ref_set", lambda scope, ref: True)
-    _orig_get = None
-    # also force the owner's satisfaction fact to True by rebinding the slot capture
-    reg_ok, _r = _full_registry(te_identity_satisfied=True)
-    assert _run(registry=reg_ok).relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
-    monkeypatch.setattr(mod, "_scope_covers_exact_ref_set", real)
+    monkeypatch.setattr(mod, "_temporal_evidence_identity_scope", falsified_owner_scope)
+    reopened = _run(registry=reg)
+    assert reopened.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED", (
+        "the targeted break did not reopen the gap, so the witness proves nothing")
+    monkeypatch.undo()
+
+    # restoring the real consultation restores the refusal on the same fixture
+    assert _run(registry=reg).relation_state == "TEMPORAL_IDENTITY_UNRESOLVED"
+    assert _run(registry=reg).relation_state_reason == (
+        "IDENTITY_SURFACE_NOT_JOINTLY_SATISFIED")
+
+
+# ===========================================================================
+# HQ222 F7-RR-03B: the identity owner must cover the compared source scope.
+# ===========================================================================
+def _te_scoped_registry(*, scope_universes, satisfied=True):
+    """A TEMPORAL_EVIDENCE identity owner with an EXPLICIT universe scope.
+
+    Only the TEMPORAL_EVIDENCE snapshot is narrowed. TEMPORAL_COMPARABILITY keeps its
+    default unrestricted scope, so an out-of-scope identity owner produces an IDENTITY
+    outcome rather than being masked by the higher-precedence insufficient-authority
+    state. The witness therefore tests the intended mechanism and nothing else.
+    """
+    te_scope = {
+        "source_universe_refs": scope_universes,
+        "target_use_refs": "EXPLICIT_UNRESTRICTED",
+        "temporal_identity_contract_refs": (TEMPORAL_IDENTITY_CONTRACT_REF,),
+        "identity_surface_jointly_satisfied": bool(satisfied),
+    }
+    return _full_registry(te_scope=te_scope, te_identity_satisfied=satisfied)
+
+
+def _identity_owner_scope_outcome(receipt):
+    """The observed refusal state plus the TEMPORAL_EVIDENCE resolution outcome.
+
+    An out-of-scope identity owner fails the ``temporal_evidence`` slot, which lands in
+    the higher-precedence insufficient-authority state rather than the identity state.
+    Both are lawful refusals; the resolution record is what discriminates the intended
+    mechanism, so witnesses assert on that instead of on one arbitrary state label.
+    """
+    resolutions = receipt.provenance["authority_resolutions"]
+    te = next(r for r in resolutions if r["slot"] == "temporal_evidence")
+    return receipt.relation_state, receipt.relation_state_reason, te["outcome"]
+
+
+def _assert_identity_owner_refused_for_scope(receipt):
+    state, reason, te_outcome = _identity_owner_scope_outcome(receipt)
+    assert state != "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    assert state in ("TEMPORAL_INSUFFICIENT_AUTHORITY", "TEMPORAL_IDENTITY_UNRESOLVED")
+    assert reason in ("AUTHORITY_SCOPE_MISMATCH",
+                      "TEMPORAL_EVIDENCE_AUTHORITY_REF_ABSENT_FOR_ANCHOR",
+                      "TEMPORAL_IDENTITY_OWNER_RESOLUTION_UNAVAILABLE")
+    # the intended mechanism: the identity owner itself failed SOURCE SCOPE
+    assert te_outcome == "AUTHORITY_SCOPE_MISMATCH"
+    assert receipt.comparability_status == "NOT_COMPARABLE"
+
+
+def test_hq222_rr03b_identity_owner_must_cover_the_compared_universe_pair():
+    """The lawful same-universe comparison still authorizes."""
+    registry, _refs = _te_scoped_registry(
+        scope_universes=[UNIVERSE_A.as_dict()])
+    assert _run(registry=registry).relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+
+
+def test_hq222_rr03b_identity_owner_for_an_unrelated_universe_is_refused():
+    """A positive identity owner OUTSIDE the compared scope may not authorize identity."""
+    other = _ref("SourceUniverse", "U-UNRELATED")
+    registry, _refs = _te_scoped_registry(scope_universes=[other.as_dict()])
+    _assert_identity_owner_refused_for_scope(_run(registry=registry))
+
+
+def test_hq222_rr03b_identity_owner_covering_only_one_compared_universe_is_refused():
+    """Covering only half the compared pair is not covering the comparison.
+
+    The cross-universe path is given a GENUINE positive owner decision, so the identity
+    scope is the only defect and nothing higher-precedence can mask it.
+    """
+    third = _ref("SourceUniverse", "U-C")
+    resolver, relation = _adjudicated_resolver(universe_refs=(UNIVERSE_A, third))
+    registry, auths = _te_scoped_registry(
+        scope_universes=[UNIVERSE_A.as_dict()])  # covers U-A only, not U-C
+    request = _request(source_universe_refs=(UNIVERSE_A, third),
+                       source_equivalence_ref=relation.ref,
+                       source_equivalence_authority_ref=auths["eq"],
+                       source_relation_resolver=resolver)
+    receipt = compare_temporal_anchors(request, registry)
+    _assert_identity_owner_refused_for_scope(receipt)
+
+    # Control: the same cross-universe request authorizes once the owner covers both.
+    registry_ok, _refs_ok = _te_scoped_registry(
+        scope_universes=[UNIVERSE_A.as_dict(), third.as_dict()])
+    assert compare_temporal_anchors(request, registry_ok).relation_state == \
+        "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+
+
+def test_hq222_rr03b_stale_source_universe_ref_in_identity_owner_scope_is_refused():
+    """A stale/wrong universe ref is not coverage, even with exact scope shape."""
+    stale = ExactRef("SourceUniverse", "U-STALE", _h("stale-universe-content-hash"))
+    registry, _refs = _te_scoped_registry(scope_universes=[stale.as_dict()])
+    _assert_identity_owner_refused_for_scope(_run(registry=registry))
+
+
+# ===========================================================================
+# HQ222 F7-RR-02C: adopted unrestricted representations.
+# ===========================================================================
+@pytest.mark.parametrize("token", ["EXPLICIT_UNRESTRICTED",
+                                   "UNRESTRICTED_BY_THIS_AUTHORITY"])
+def test_hq222_rr02c_both_adopted_unrestricted_tokens_are_honoured(token):
+    """Both adopted blanket representations authorize, in all three scope helpers."""
+    import rawlsing_next.pre553_temporal_comparability as mod
+
+    assert token in mod.ADOPTED_UNRESTRICTED_SCOPE_REPRESENTATIONS
+    assert mod._scope_covers_universe(token, UNIVERSE_A.as_dict())
+    assert mod._scope_covers_governed_use(token, _ref("TargetUsePermission", "USE-1"))
+    assert mod._scope_covers_exact_ref_set(token, TEMPORAL_IDENTITY_CONTRACT_REF)
+
+    # and end-to-end: an identity owner using that token still authorizes
+    te_scope = {
+        "source_universe_refs": token,
+        "target_use_refs": token,
+        "temporal_identity_contract_refs": (TEMPORAL_IDENTITY_CONTRACT_REF,),
+        "identity_surface_jointly_satisfied": True,
+    }
+    registry, _refs = _full_registry(tc_scope=te_scope)
+    assert _run(registry=registry).relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+
+
+@pytest.mark.parametrize("bad", [
+    None, "", [], set(), {},
+    "UNRESTRICTED", "EXPLICIT_UNLIMITED", "UNRESTRICTED_BY_OTHER_AUTHORITY",
+    "explicit_unrestricted", "UNRESTRICTED_BY_THIS_AUTHORITY_V2", True, 0,
+])
+def test_hq222_rr02c_no_third_token_and_omission_is_not_unrestricted(bad):
+    """Only the two adopted literals grant a blanket; omission is never unrestricted."""
+    import rawlsing_next.pre553_temporal_comparability as mod
+
+    assert mod.ADOPTED_UNRESTRICTED_SCOPE_REPRESENTATIONS == frozenset({
+        "EXPLICIT_UNRESTRICTED", "UNRESTRICTED_BY_THIS_AUTHORITY"})
+    # only a string can ever be one of the two adopted literals
+    assert not (isinstance(bad, str)
+                and bad in mod.ADOPTED_UNRESTRICTED_SCOPE_REPRESENTATIONS)
+    assert mod._scope_covers_universe(bad, UNIVERSE_A.as_dict()) is False
+    assert mod._scope_covers_governed_use(
+        bad, _ref("TargetUsePermission", "USE-1")) is False
+    assert mod._scope_covers_exact_ref_set(bad, TEMPORAL_IDENTITY_CONTRACT_REF) is False
+
+
+def test_hq222_rr02c_f7_scope_helpers_agree_with_the_adopted_authority_law():
+    """F7's blanket representations must not drift from the adopted general law."""
+    import inspect
+
+    from rawlsing_next import pre553_empirical_authority as law
+    from rawlsing_next.pre553_temporal_comparability import (
+        ADOPTED_UNRESTRICTED_SCOPE_REPRESENTATIONS,
+    )
+
+    source = inspect.getsource(law._scope_contains)
+    for token in ("UNRESTRICTED_BY_THIS_AUTHORITY", "EXPLICIT_UNRESTRICTED"):
+        assert f'"{token}"' in source
+        assert token in ADOPTED_UNRESTRICTED_SCOPE_REPRESENTATIONS
+    # the law grants a blanket for exactly those literals and nothing else
+    for probe in ("UNRESTRICTED", "", "ANY", "SOME_OTHER_TOKEN", None, 0, []):
+        expected = (isinstance(probe, str)
+                    and probe in ADOPTED_UNRESTRICTED_SCOPE_REPRESENTATIONS)
+        assert law._scope_contains(probe, "anything") is expected, probe
 
 
 # ---------------------------------------------------------------------------
@@ -1468,27 +1641,135 @@ def test_hq219_rr04_lawful_positive_owner_decision_still_admits_the_pair():
 
 
 def test_hq219_targeted_break_rr04_owner_decision_is_actually_consulted(monkeypatch):
-    """TARGETED BREAK for Repair C.
+    """HQ222 F7-RR-04B TARGETED BREAK: the owner's returned PROOF is load-bearing.
 
-    If F7 stopped consulting the adopted owner and fell back to exact lookup, the DENIED
-    relation would authorize again. The witness proves the owner decision is load-bearing
-    by showing the resolver's ``require`` is reached and its refusal is honoured.
+    HQ219's version of this witness patched ``require`` with a NON-RETURNING fake
+    object. Post-repair F7 validates the returned proof, so that fake is now refused --
+    which made the old assertion (the break must reopen the gap) assert the very
+    vulnerability the repair closes.
+
+    This version falsifies the owner's actual verdict on ONE fixed fixture: it takes the
+    REAL ``RelationDecision`` the adopted owner returns for the DENIED relation and
+    flips only that verdict. Nothing else about the fixture changes, so if the outcome
+    flips, the owner's returned proof -- not some unrelated resolution -- is what F7
+    consumes. Pre-repair this reopen is exactly the RR-04B split-brain: F7 discarded
+    the decision and would have authorized on the unrelated positive B snapshot alone.
     """
-    resolver, relation = _adjudicated_resolver(
-        universe_refs=(UNIVERSE_A, UNIVERSE_B), decision="DENIED")
-    assert _run(_cross_universe_request(resolver, relation.ref)).relation_state == \
-        "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"
+    from dataclasses import replace as _replace
 
-    # targeted break: make require() succeed as if the owner had authorized
     import rawlsing_next.pre553_source_relations as sr
 
-    def fake_require(self, **kwargs):
-        return type("D", (), {"authorized": True, "state": "AUTHORIZED",
-                              "reason": "targeted break"})()
+    resolver, relation = _adjudicated_resolver(
+        universe_refs=(UNIVERSE_A, UNIVERSE_B), decision="DENIED")
+    request = _cross_universe_request(resolver, relation.ref)
+    assert _run(request).relation_state == "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"
 
-    real = sr.SourceRelationResolver.require
-    monkeypatch.setattr(sr.SourceRelationResolver, "require", fake_require)
-    broken = _run(_cross_universe_request(resolver, relation.ref))
-    assert broken.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED", (
+    # The REAL owner decision for this exact request, before it is falsified.
+    denied_decision = resolver.decide(
+        relation_kind="SOURCE_SEMANTIC_EQUIVALENCE",
+        source_universe_refs=(UNIVERSE_A, UNIVERSE_B),
+        operation_scope="EXACT_BOUND_UNIVERSE_PAIR",
+        target_use=_ref("TargetUsePermission", "USE-1").object_id,
+        effective_scope="EXACT_BOUND_UNIVERSE_PAIR",
+        relation_ref=relation.ref,
+        expected_authority_operation="SEMANTIC_EQUIVALENCE_ADMISSION")
+    assert denied_decision.authorized is False
+
+    # targeted break: falsify ONLY the owner's verdict, on this same fixture
+    _, eq_snapshot = _aref(
+        "SOURCE_EQUIVALENCE", "EQ1", ops=("SEMANTIC_EQUIVALENCE_ADMISSION",),
+        families=("SourceUniverseRelation@1.0.0",),
+        scope={"source_universe_refs": "EXPLICIT_UNRESTRICTED",
+               "target_use_refs": "EXPLICIT_UNRESTRICTED",
+               "predicate_or_risk_set_refs": "EXPLICIT_UNRESTRICTED"})
+    falsified = _replace(
+        denied_decision, state="AUTHORIZED", relation_ref=relation.ref,
+        authority_ref=eq_snapshot.authority_ref,
+        authority_operation="SEMANTIC_EQUIVALENCE_ADMISSION")
+
+    monkeypatch.setattr(sr.SourceRelationResolver, "require",
+                        lambda self, **kwargs: falsified)
+    reopened = _run(request)
+    assert reopened.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED", (
         "the targeted break did not reopen the gap, so the witness proves nothing")
-    monkeypatch.setattr(sr.SourceRelationResolver, "require", real)
+    monkeypatch.undo()
+    assert _run(request).relation_state == "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"
+
+
+def test_hq222_rr04b_a_forged_owner_proof_is_refused(monkeypatch):
+    """HQ222 F7-RR-04B: a non-decision return cannot buy a positive relation.
+
+    This is the hardening the old targeted break accidentally demanded. A permissive
+    stand-in whose object merely claims ``authorized`` proves nothing, so F7 now
+    requires the adopted owner's real contentful proof.
+    """
+    import rawlsing_next.pre553_source_relations as sr
+
+    resolver, relation = _adjudicated_resolver(
+        universe_refs=(UNIVERSE_A, UNIVERSE_B), decision="DENIED")
+    request = _cross_universe_request(resolver, relation.ref)
+
+    def forged(self, **kwargs):
+        return type("D", (), {"authorized": True, "state": "AUTHORIZED",
+                              "reason": "forged"})()
+
+    monkeypatch.setattr(sr.SourceRelationResolver, "require", forged)
+    receipt = _run(request)
+    assert receipt.relation_state == "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"
+    assert receipt.relation_state_reason == "SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE"
+    monkeypatch.undo()
+    assert _run(request).relation_state == "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"
+
+
+def test_hq222_rr04b_unrelated_positive_equivalence_snapshot_cannot_ride_the_relation(
+        monkeypatch):
+    """HQ222 F7-RR-04B: positive A plus positive B is not identity.
+
+    The relation is genuinely AUTHORIZED by its own exact SOURCE_EQUIVALENCE
+    authority. A second, genuinely positive SOURCE_EQUIVALENCE snapshot that did NOT
+    authorize it is supplied instead. Both halves are positive on their own terms; only
+    cross-binding them can tell that B never authorized this relation.
+    """
+    import rawlsing_next.pre553_source_relations as sr
+    from dataclasses import replace as _replace
+
+    resolver, relation = _adjudicated_resolver(
+        universe_refs=(UNIVERSE_A, UNIVERSE_B))
+    assert _run(_cross_universe_request(resolver, relation.ref)).relation_state == \
+        "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+
+    genuine = resolver.decide(
+        relation_kind="SOURCE_SEMANTIC_EQUIVALENCE",
+        source_universe_refs=(UNIVERSE_A, UNIVERSE_B),
+        operation_scope="EXACT_BOUND_UNIVERSE_PAIR",
+        target_use=_ref("TargetUsePermission", "USE-1").object_id,
+        effective_scope="EXACT_BOUND_UNIVERSE_PAIR",
+        relation_ref=relation.ref,
+        expected_authority_operation="SEMANTIC_EQUIVALENCE_ADMISSION")
+    assert genuine.authorized is True
+
+    # B: a DIFFERENT, genuinely positive SOURCE_EQUIVALENCE authority snapshot.
+    unrelated_ref, unrelated_snapshot = _aref(
+        "SOURCE_EQUIVALENCE", "EQ-UNRELATED", ops=("SEMANTIC_EQUIVALENCE_ADMISSION",),
+        scope={"source_universe_refs": "EXPLICIT_UNRESTRICTED",
+               "target_use_refs": "EXPLICIT_UNRESTRICTED"})
+    assert unrelated_snapshot.authority_ref.key != genuine.authority_ref.key
+    assert unrelated_snapshot.decision_state == "ALLOW"
+
+    registry, auths = _full_registry(extra_snapshots=(unrelated_snapshot,))
+    request = _request(source_universe_refs=(UNIVERSE_A, UNIVERSE_B),
+                       source_equivalence_ref=relation.ref,
+                       source_equivalence_authority_ref=unrelated_ref,
+                       source_relation_resolver=resolver)
+    receipt = compare_temporal_anchors(request, registry)
+    assert receipt.relation_state == "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"
+    assert receipt.relation_state_reason == "SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE"
+
+    # Control, on the SAME registry: pointing F7 at the authority that actually
+    # authorized the relation (auths["eq"]) stays positive. Only B's identity mattered.
+    request_ok = _request(source_universe_refs=(UNIVERSE_A, UNIVERSE_B),
+                          source_equivalence_ref=relation.ref,
+                          source_equivalence_authority_ref=auths["eq"],
+                          source_relation_resolver=resolver)
+    assert compare_temporal_anchors(
+        request_ok, registry).relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"

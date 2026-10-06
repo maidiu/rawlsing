@@ -1,0 +1,50 @@
+{
+  "defect_closed": "F7 called the adopted SourceRelationResolver.require(...) and assigned the returned RelationDecision to nothing, then fabricated a local POSITIVE AuthorityResolutionRecord from the requested equivalence_ref. The owner's exact relation_ref and its exact relation-authorizing authority_ref were discarded, so a genuine relation authorized by authority A could ride alongside an unrelated positive SOURCE_EQUIVALENCE snapshot B and F7 recorded B without proving B authorized the relation. Positive plus positive is not identity.",
+  "finding": "F7-RR-04B",
+  "pre_repair_discrimination": {
+    "method": "production file reverted to e88cfeb10, new court tests executed",
+    "test_hq222_rr04b_a_forged_owner_proof_is_refused": "FAIL pre-repair (forged proof accepted)",
+    "test_hq222_rr04b_unrelated_positive_equivalence_snapshot_cannot_ride_the_relation": "FAIL pre-repair (A/B split accepted)"
+  },
+  "preserved_refusals": [
+    "relation decision DENIED",
+    "wrong relation kind",
+    "wrong universe pair",
+    "wrong governed use",
+    "duck-typed non-owner stub",
+    "wrong effective/operation scope",
+    "unrelated positive equivalence snapshot"
+  ],
+  "repair": {
+    "change_1": "capture the returned RelationDecision and validate it against the exact request via new helper _relation_decision_defect (authorized; relation kind; relation_ref identity; non-null authority_ref; exact source universe PAIR; target use; operation scope). Any mismatch refuses.",
+    "change_2": "the AuthorityResolutionRecord now carries the owner's own decision.authority_ref and decision.authority_operation instead of the caller's equivalence_ref. This also fixes a latent type violation: equivalence_ref is an ExactRef of the relation, not an AuthorityRef.",
+    "change_3": "no A/B split: after the separately supplied SOURCE_EQUIVALENCE snapshot resolves positive and passes validate_relation_authority_only, its authority_ref must equal the returned decision's authority_ref. An unrelated positive snapshot refuses with SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE.",
+    "file": "rawlsing_next/pre553_temporal_comparability.py",
+    "new_authority_kind_created": false,
+    "new_reason_family_created": false,
+    "new_relation_state_created": false,
+    "redundant_input_removal_justification": "The duplicate SOURCE_EQUIVALENCE authority input was retained rather than removed. Removing it would change the accepted request contract; cross-binding it preserves the contract while removing the split-brain, which is what the commission's 'no A/B split' requirement demands.",
+    "redundant_input_removed": false
+  },
+  "schema": "HQ222_RELATION_DECISION_AUTHORITY_CROSSBIND@1.0.0",
+  "witnesses": [
+    {
+      "kind": "TARGETED BREAK (same fixture, mechanism falsified)",
+      "mechanism": "takes the REAL RelationDecision the adopted owner returns for the DENIED relation and flips only that verdict; nothing else about the fixture changes. If the outcome flips, the owner's returned proof is what F7 consumes.",
+      "name": "test_hq219_targeted_break_rr04_owner_decision_is_actually_consulted",
+      "result": "reopens to TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED, then restores"
+    },
+    {
+      "kind": "HARDENING",
+      "mechanism": "a permissive stand-in whose object merely claims authorized=True",
+      "name": "test_hq222_rr04b_a_forged_owner_proof_is_refused",
+      "result": "refused; TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"
+    },
+    {
+      "kind": "HOSTILE (the A/B split itself)",
+      "mechanism": "relation genuinely AUTHORIZED by its own exact authority, but F7 is handed a DIFFERENT genuinely positive SOURCE_EQUIVALENCE snapshot",
+      "name": "test_hq222_rr04b_unrelated_positive_equivalence_snapshot_cannot_ride_the_relation",
+      "result": "refused; control on the same registry with the authorizing ref stays positive"
+    }
+  ]
+}

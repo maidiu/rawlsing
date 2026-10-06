@@ -1,0 +1,83 @@
+{
+  "court_results": {
+    "F7_court": {
+      "after": 135,
+      "before": 114,
+      "failed": 0
+    },
+    "M1_court": {
+      "failed": 0,
+      "file": "test_m1_temporal_v554_admission_dedup.py",
+      "passed": 27
+    },
+    "aggregate_F7_plus_M1": {
+      "after": 162,
+      "before": 141,
+      "failed": 0
+    }
+  },
+  "environment_provenance": {
+    "governed_certification_environment": false,
+    "interpreter": "Python 3.11.3 (/Library/Frameworks/Python.framework/Versions/3.11)",
+    "note": "No governed environment was named by this commission. F7 and its court are pure standard library. Pre-existing collection errors are dependency-driven (pyarrow absent) and are unrelated to F7.",
+    "pytest_runner": "/private/tmp/hq210venv/bin/python -m pytest (pre-existing local venv, pytest 9.1.1, stdlib only)"
+  },
+  "hqd216_productive_adequacy": {
+    "law": "e0e7ce0e596e4e5ea7ec96c265ec949b9fe801a2:PYAT_CONTROL_ROOM/26_HQD216_PRODUCTIVE_ADEQUACY_AND_PREV3_EMPIRICAL_GATE_LAW.md",
+    "no_refuse_everything_repair": true,
+    "statement": "All five commissioned productive paths remain positive. The repair tightened authority proof without closing production."
+  },
+  "productive_paths_observed": [
+    {
+      "observed_state": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED",
+      "path": "same-universe comparable"
+    },
+    {
+      "direction_claim": "NO_AUTHORIZED_CHANGE",
+      "observed_state": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED",
+      "path": "exact zero"
+    },
+    {
+      "direction_claim": "INCREASE",
+      "observed_state": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED",
+      "path": "increase"
+    },
+    {
+      "direction_claim": "DECREASE",
+      "observed_state": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED",
+      "path": "decrease"
+    },
+    {
+      "direction_claim": "INCREASE",
+      "observed_state": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED",
+      "path": "genuine positive cross-universe relation"
+    }
+  ],
+  "regression_evidence": {
+    "implicated_failure_set_size": 62,
+    "introduced_by_hq222": 0,
+    "method": "full rawlsing_next/tests/ sweep at post-repair, then the identical sweep over the 26 implicated files with the production file reverted to e88cfeb10, and the two failure sets diffed",
+    "post_repair_full_sweep": {
+      "collection_errors": 9,
+      "errors": 16,
+      "failed": 45,
+      "passed": 2663,
+      "subtests_passed": 28
+    },
+    "pre_repair_vs_post_repair_diff": "IDENTICAL (byte-for-byte, 62 entries both sides)",
+    "root_cause_of_pre_existing": "missing optional third-party dependencies (pyarrow, pyreadstat) and unrelated lanes; HQ219 reported the same class of pre-existing failures and HQ220 declined to charge them to F7",
+    "touches_f7_or_temporal_comparability": false
+  },
+  "schema": "HQ222_PRODUCTIVE_PATH_AND_REGRESSION@1.0.0",
+  "sustained_ceilings_verified": {
+    "authority_kinds": 19,
+    "complete_exactref_use_scope": "preserved (HQ217 RR-02B behaviour unchanged)",
+    "exact_measure_binding": "preserved",
+    "exact_zero_no_tolerance": "verified; no deadband, rounding, or tolerance introduced",
+    "identity_owner_resolution": "preserved and now additionally source-scope bound",
+    "no_f8_ranking_selection_interpolation_trajectory_causation_currentness_pooling_equivalence_creation_actor_power": "preserved; no such capability added",
+    "relation_states": 12,
+    "three_or_more_anchor_refusal": "preserved (court unchanged on this axis)",
+    "total_precedence": "preserved; unchanged RELATION_STATE_PRECEDENCE"
+  }
+}
