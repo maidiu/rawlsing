@@ -1637,58 +1637,126 @@ def test_productive_adequacy_runner_source_has_no_answer_channel():
 #
 # A determinant with no recorded owning authority is classified explicitly and is
 # refused lifecycle coverage rather than given a decorative edge.
+def _producer_fact(result: Any) -> Any:
+    composition = result.composition_result
+    matches = tuple(
+        fact
+        for fact in composition.producer_result.facts
+        if fact.ref == composition.producer_fact_ref
+    )
+    assert len(matches) == 1
+    return matches[0]
+
+
+def _owned(
+    ref: ExactRef,
+    root_class: str,
+    owners: tuple[AuthorityRef, ...],
+    material: Any,
+    paths: tuple[str, ...],
+    *,
+    reason: str = "",
+) -> ExactDeterminantOwnership:
+    return ExactDeterminantOwnership(
+        determinant_ref=ref,
+        root_class=root_class,
+        owning_authority_refs=owners,
+        owner_evidence=DeterminantOwnerEvidence(ref, material, paths, owners),
+        reason=reason,
+    )
+
+
 def _census(case: dict[str, Any], result: Any) -> tuple[ExactDeterminantOwnership, ...]:
-    """Classify every consumed determinant from recorded fields only."""
+    """Immediate N10E consumed boundary, with owner evidence tied to each exact ref."""
 
     query = case["empirical_query"]
     predicate = case["predicate"]
     consumer_query = case["consumer_query"]
     binding = case["conditioner_binding"]
     witness = case["condition_binding_witness"]
-    return (
-        ExactDeterminantOwnership(
-            determinant_ref=query.ref,
-            root_class=DETERMINANT_ROOT_AUTHORITY,
-            owning_authority_refs=tuple(query.authority_snapshot_refs),
+    universe = case["source"]["universe"]
+    fact = _producer_fact(result)
+
+    rows = (
+        _owned(
+            query.ref,
+            DETERMINANT_ROOT_AUTHORITY,
+            tuple(query.authority_snapshot_refs),
+            query.semantic_projection(),
+            ("authority_snapshot_refs",),
         ),
-        ExactDeterminantOwnership(
-            determinant_ref=predicate.ref,
-            root_class=DETERMINANT_ROOT_AUTHORITY,
-            owning_authority_refs=tuple(predicate.authority_snapshot_refs),
+        _owned(
+            predicate.ref,
+            DETERMINANT_ROOT_AUTHORITY,
+            tuple(predicate.authority_snapshot_refs),
+            predicate.semantic_projection(),
+            ("authority_snapshot_refs",),
         ),
-        ExactDeterminantOwnership(
-            determinant_ref=consumer_query.ref,
-            root_class=DETERMINANT_ROOT_AUTHORITY,
-            owning_authority_refs=(binding.comparability_authority_ref,),
+        _owned(
+            consumer_query.ref,
+            DETERMINANT_ROOT_AUTHORITY,
+            (binding.comparability_authority_ref,),
+            consumer_query.material(),
+            ("conditioner_bindings.0.comparability_authority_ref",),
         ),
-        ExactDeterminantOwnership(
-            determinant_ref=witness.witness_ref,
-            root_class=DETERMINANT_ROOT_AUTHORITY,
-            owning_authority_refs=(witness.pairing_authority_ref,),
+        _owned(
+            witness.witness_ref,
+            DETERMINANT_ROOT_AUTHORITY,
+            tuple(witness.pairing_authority_refs),
+            witness.identity_material,
+            ("pairing_authority_ref",),
+        ),
+        _owned(
+            universe.ref,
+            DETERMINANT_ROOT_AUTHORITY,
+            tuple(universe.authority_snapshot_refs),
+            universe.semantic_projection(),
+            ("authority_snapshot_refs",),
+            reason="source-universe exact product is governed by its recorded source authority",
+        ),
+        _owned(
+            fact.ref,
+            DETERMINANT_DEPENDENT_PRODUCT,
+            tuple(fact.authority_snapshot_refs),
+            fact.semantic_projection(),
+            ("authority_snapshot_refs",),
+            reason="upstream EmpiricalFact is an exact governed product consumed by composition",
         ),
         ExactDeterminantOwnership(
             determinant_ref=case["release_refs"][0],
             root_class=DETERMINANT_UNOWNED,
             lifecycle_relevant=False,
-            reason=(
-                "C11LogicalRelease ref is content-addressed repository identity; no "
-                "recorded authority owns it, so no governed change can reach it"
-            ),
+            reason="C11LogicalRelease has no current AuthorityRef lifecycle owner",
         ),
         ExactDeterminantOwnership(
             determinant_ref=consumer_query.target_ref,
-            root_class=DETERMINANT_UNOWNED,
+            root_class=DETERMINANT_IMMUTABLE_IDENTITY,
             lifecycle_relevant=False,
-            reason="QUESTION_NATIVE target ref carries no recorded owning authority",
+            reason="QUESTION_NATIVE target is immutable request identity at this grain",
+        ),
+        ExactDeterminantOwnership(
+            determinant_ref=binding.subject_fact_ref,
+            root_class=DETERMINANT_IMMUTABLE_IDENTITY,
+            lifecycle_relevant=False,
+            reason="subject-condition preimage is immutable exact binding identity",
+        ),
+        ExactDeterminantOwnership(
+            determinant_ref=binding.empirical_coordinate_ref,
+            root_class=DETERMINANT_IMMUTABLE_IDENTITY,
+            lifecycle_relevant=False,
+            reason="empirical coordinate is immutable exact binding identity at this grain",
         ),
     )
+    by_key = {row.determinant_ref.key: row for row in rows}
+    return tuple(by_key[key] for key in sorted(by_key))
 
 
 def _census_registry(
     case: dict[str, Any], result: Any
 ) -> tuple[AnalyticalDependencyRegistry, ExactRef]:
-    """Register the provider product with a full classified determinant census."""
+    """Register the provider product with every immediate consumed exact determinant."""
 
+    ownerships = _census(case, result)
     registry = AnalyticalDependencyRegistry()
     product_ref = _product_ref(result.result_identity_hash, case["direction"])
     registry.register(
@@ -1696,15 +1764,8 @@ def _census_registry(
             product_ref=product_ref,
             product_identity_hash=result.result_identity_hash,
             determinant_authority_refs=(case["model_rule"].model_authority_ref,),
-            determinant_exact_refs=(
-                case["empirical_query"].ref,
-                case["predicate"].ref,
-                case["consumer_query"].ref,
-                case["condition_binding_witness"].witness_ref,
-                case["release_refs"][0],
-                case["consumer_query"].target_ref,
-            ),
-            determinant_ownerships=_census(case, result),
+            determinant_exact_refs=tuple(row.determinant_ref for row in ownerships),
+            determinant_ownerships=ownerships,
         )
     )
     return registry, product_ref
