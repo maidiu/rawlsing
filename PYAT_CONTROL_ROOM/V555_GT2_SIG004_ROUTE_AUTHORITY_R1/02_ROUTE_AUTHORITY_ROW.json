@@ -1,0 +1,104 @@
+{
+  "schema": "V555_GT2_SIG004_ROUTE_AUTHORITY_CANDIDATE_ROW@1.0.0",
+  "canonical_material_sha256": "b52910b3f078b506cb2b925d602dfaa7bf6ad0174c2a01129793fae813c5c629",
+  "hash_preimage_note": "canonical_material_sha256 is SHA-256 of the same object with this hash field absent, canonical JSON sort_keys=true separators=(',',':')",
+  "status": "PARTIAL_MISSING_EXACT_PREMISE__NOT_SELECTABLE__NOT_ADOPTED",
+  "candidate_registry_extension": {
+    "authority_id": "V555_MEDIATION_ROUTE_RULE_REGISTRY",
+    "base_current_version": "1.0.0",
+    "candidate_extension_version": "1.1.0-CANDIDATE-GT2-SIG004-R1",
+    "legacy_rows_unchanged": true
+  },
+  "candidate_route_rule": {
+    "route_rule_id": "V555-RR-002-GT2-SIG004-EXACT-GOVERNED-UPSTREAM-CHANNEL",
+    "route_rule_version": "1.0.0-CANDIDATE",
+    "route_shape_id": "V555-RS-001-SOURCE-EXACT-CHANNEL-EXACT-RECEIVER",
+    "route_shape_version": "1.0.0",
+    "semantic_family": "STRUCTURAL_MEDIATION_ROUTE_CANDIDATE",
+    "epistemic_class": "ACTOR_INDEPENDENT_STRUCTURAL_PRIOR",
+    "authorized_effects": [],
+    "effect_state": "VALID_EMPTY"
+  },
+  "exact_input_match": {
+    "source_family": "Afrobarometer",
+    "source_wave": "R5",
+    "relation_m1_contract": "M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0",
+    "basis_kind": "ADMITTED_FIELD_FORGE_RELATION",
+    "relation_family": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+    "signature_id": "V554-SIG-004-NONTEMPORAL-ADMITTED-RELATION-EXACT",
+    "target_use": "STRUCTURAL_MEDIATION_INPUT",
+    "required_states": {
+      "relation": "SUPPORTED",
+      "admission": "ADMITTED",
+      "v554": "ELIGIBLE"
+    },
+    "current_v554_rule_ref": {
+      "id": "GT12_V554_SIG004_ADMITTED_RELATION_CONTEXT_PUBLICATION_RULE",
+      "version": "1.0.0",
+      "hash": "da431544e57ed4b418cd746be3f0a9aa486cd3c2fb2007a022005821b25e194b"
+    },
+    "current_v554_selection": {
+      "bundle_id": "GT12_E2B_R3_CURRENT_V554_V557_PUBLICATION_GOVERNANCE_BINDING",
+      "bundle_version": "1.0.0",
+      "bundle_content_hash": "f7d4d2313bcc70faf104cff205b0eb7aaa7d88556c895c8ea123a3725105cf14",
+      "adoption_content_hash": "ff3c0db1ee346b176f240523f36048d88beb6216722988ea087040b4840cd492",
+      "decision": "ADOPTED_CURRENT"
+    }
+  },
+  "exact_lineage": {
+    "relation_ref": {
+      "kind": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+      "object_id": "urn:rawlsing:field-forge:conditional-support:sha256:1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19",
+      "content_hash": "1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19"
+    },
+    "relation_rule_ref": {
+      "kind": "FIELD_FORGE_RELATION_RULE",
+      "object_id": "urn:rawlsing:gt12:c-to-d:conditional-support-rule:sha256:cddf66e255e6cb780111f120a32ebdc6820fd4b483565b0e1388124e6830f2f9",
+      "content_hash": "cddf66e255e6cb780111f120a32ebdc6820fd4b483565b0e1388124e6830f2f9"
+    },
+    "admission_ref": {
+      "kind": "PREV3_FIELD_FORGE_RELATION_ADMISSION",
+      "object_id": "PREV3_FIELD_FORGE_RELATION_ADMISSION@1.0.0",
+      "content_hash": "a445e43da99405e0f8181f7ab6c428d9b0dd14fefc7fc5091f21f2d21f00b08d"
+    },
+    "admission_authority_ref": {
+      "authority_id": "GT2_FF_PREV3_RELATION_ADMISSION_AUTHORITY",
+      "authority_version": "R1",
+      "authority_content_hash": "c22347920bcbd02fb90bbb96478a3cac8c2562c723d292b95164d0532138f3fd"
+    },
+    "admission_current_selection_ref": {
+      "kind": "RELATION_ADMISSION_CURRENT_SELECTION",
+      "object_id": "urn:rawlsing:prev3:gt2-relation-admission-current-selection",
+      "content_hash": "d90a05d5a3519c36c252a6d1bb1c67187f752d7e240b28ef5b22c78ce28e2b98"
+    },
+    "target_use_authority_ref": {
+      "authority_id": "GT12-A3-GT2-TARGET-USE",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "8be1db868deb8b1d613495a2120d2092df2fe55aa5f8884830d7a7e85e221a0e"
+    },
+    "current_exact_f1_ref": null,
+    "current_exact_b1_ref": null
+  },
+  "route_static_authority_closure": {
+    "source_structural_position_ref": null,
+    "producer_governed_structural_channel_ref": null,
+    "receiving_structural_position_ref": null,
+    "closure_authority_ref": null,
+    "closure_content_hash": null
+  },
+  "semantic_ceiling": {
+    "conditioner_is_cause": false,
+    "target_is_effect": false,
+    "support_count_is_route_strength": false,
+    "conditional_support_is_mechanism": false,
+    "conditional_support_is_pressure": false,
+    "association_is_structural_channel": false,
+    "observed_relation_is_actor_route_activation": false
+  },
+  "selection_law": {
+    "candidate_is_current": false,
+    "candidate_may_be_consumed_by_production": false,
+    "adoption_required_before_implementation": true,
+    "missing_route_static_authority_blocks_positive_row": true
+  }
+}
