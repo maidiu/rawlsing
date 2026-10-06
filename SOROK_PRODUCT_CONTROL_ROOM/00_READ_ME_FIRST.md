@@ -446,3 +446,33 @@ Read:
 
 Do not narrate from canonical object identity. Description specificity is epistemically gated: generic class/visible morphology first, readable markings only when actually perceptible, brand/model/domain labels only when user recognition warrants them. Apply SPD-0166/0246/0248.
 
+## R13 post-Astra deep banking — user lens, capability authority and causal hinge
+
+Current continuation bank after the pre-game-loops checkpoint and Astra diagnostic synthesis:
+
+- `dockets/D002_ALPHA_CORE_LOOP_ACTION_SURFACE/12_SMALLEST_LAWFUL_PLAYABLE_MOMENT_ADJUDICATION_R1.md`
+- `dockets/D002_ALPHA_CORE_LOOP_ACTION_SURFACE/13_COUNTERFACTUAL_HINGE_CAUSAL_NEIGHBORHOOD_AND_DECISION_OWNERSHIP_R1.md`
+- `dockets/D008_ADAPTIVE_PHENOMENAL_LENS_AND_USER_MODEL/00_DOCKET.md`
+- `dockets/D009_HUMAN_FACULTY_CAPABILITY_AUTHORITY_AND_TRANSPOSITION/00_DOCKET.md`
+
+Visible source conversation continuation:
+
+- `handoffs/R13_CURRENT_CHAT_TRANSCRIPT/00_READ_ME.md`
+- `handoffs/R13_CURRENT_CHAT_TRANSCRIPT/01_POST_ASTRA_DESIGN_TRANSCRIPT_PART_A.md`
+- `handoffs/R13_CURRENT_CHAT_TRANSCRIPT/02_POST_ASTRA_DESIGN_TRANSCRIPT_PART_B.md`
+
+Important current laws from this wave:
+- actual user contribution is morally neutral;
+- preserve the locus of human work where the medium can genuinely carry it;
+- use counterfactual hinge / decision ownership rather than maximal procedural description;
+- action may force hidden causal materialization without conferring user knowledge;
+- adaptive phenomenal rendering may learn the user's way of seeing but may not alter world truth or Nadia;
+- more personalized perception does not imply greater adequacy to the other;
+- user signaling, competence, actor belief and structural origin remain noncollapsed;
+- medium-native faculty, portaled embodiment and homologized structural power remain distinct.
+
+Machine-readable decisions: SPD-0260–SPD-0268.
+New risks: RISK-210–RISK-219.
+New questions: Q-LENS-001, Q-USERSIGNAL-001, Q-CAPTRANS-001, Q-MODALITY-001, Q-HINGE-001.
+
+The R13 transcript is nonauthoritative source evidence. The docket/decision surfaces above are the provisional product bank.
