@@ -99,6 +99,7 @@ from rawlsing_next.pre553_empirical_objects import (
     AuthoritySnapshot,
     EmpiricalQuerySpec,
     ExactRef,
+    exact_ref,
     semantic_hash,
 )
 from rawlsing_next.pre553_empirical_possibility_provider import (
@@ -1655,6 +1656,15 @@ def _direct_model_authorities(case: dict[str, Any]) -> tuple[AuthorityRef, ...]:
     return tuple(refs[key] for key in sorted(refs))
 
 
+def _immutable_identity(value: Any, reason: str) -> ExactDeterminantOwnership:
+    return ExactDeterminantOwnership(
+        determinant_ref=exact_ref(value, "immutable_determinant"),
+        root_class=DETERMINANT_IMMUTABLE_IDENTITY,
+        lifecycle_relevant=False,
+        reason=reason,
+    )
+
+
 def _producer_fact(result: Any) -> Any:
     composition = result.composition_result
     matches = tuple(
@@ -1746,23 +1756,76 @@ def _census(case: dict[str, Any], result: Any) -> tuple[ExactDeterminantOwnershi
             lifecycle_relevant=False,
             reason="C11LogicalRelease has no current AuthorityRef lifecycle owner",
         ),
-        ExactDeterminantOwnership(
-            determinant_ref=consumer_query.target_ref,
-            root_class=DETERMINANT_IMMUTABLE_IDENTITY,
-            lifecycle_relevant=False,
-            reason="QUESTION_NATIVE target is immutable request identity at this grain",
+        _immutable_identity(
+            consumer_query.subject_ref,
+            "positioned-subject identity is immutable request identity at this grain",
         ),
-        ExactDeterminantOwnership(
-            determinant_ref=binding.subject_fact_ref,
-            root_class=DETERMINANT_IMMUTABLE_IDENTITY,
-            lifecycle_relevant=False,
-            reason="subject-condition preimage is immutable exact binding identity",
+        _immutable_identity(
+            consumer_query.target_ref,
+            "QUESTION_NATIVE target is immutable request identity at this grain",
         ),
-        ExactDeterminantOwnership(
-            determinant_ref=binding.empirical_coordinate_ref,
-            root_class=DETERMINANT_IMMUTABLE_IDENTITY,
-            lifecycle_relevant=False,
-            reason="empirical coordinate is immutable exact binding identity at this grain",
+        _immutable_identity(
+            binding.subject_fact_ref,
+            "subject-condition preimage is immutable exact binding identity",
+        ),
+        _immutable_identity(
+            binding.empirical_coordinate_ref,
+            "empirical coordinate is immutable exact binding identity at this grain",
+        ),
+        _immutable_identity(
+            query.risk_set_ref,
+            "risk-set ref is exact request identity; a different ref is a different query",
+        ),
+        _immutable_identity(
+            query.measure_basis_ref,
+            "measure-basis ref is exact request identity at this grain",
+        ),
+        _immutable_identity(
+            query.requested_output_grain["response_state_semantics_ref"],
+            "response-state semantics ref is immutable exact query identity material",
+        ),
+        *tuple(
+            _immutable_identity(
+                component["target_domain_replay_ref"],
+                "target-domain replay ref is immutable exact query identity material",
+            )
+            for component in query.target_arity_and_topology["components"]
+        ),
+        *tuple(
+            _immutable_identity(
+                ref,
+                "operator-semantics ref is immutable exact predicate identity material",
+            )
+            for ref in predicate.operator_semantics_refs
+        ),
+        *tuple(
+            _immutable_identity(
+                ref,
+                "subject-condition preimage ref is immutable witness custody material",
+            )
+            for ref in witness.subject_condition_preimage_refs
+        ),
+        *tuple(
+            _immutable_identity(
+                ref,
+                "predicate-leaf preimage ref is immutable witness custody material",
+            )
+            for ref in witness.producer_predicate_leaf_refs
+        ),
+        *tuple(
+            _immutable_identity(
+                ref,
+                "pairing ground-truth ref is immutable witness custody material",
+            )
+            for ref in witness.pairing_ground_truth_refs
+        ),
+        _immutable_identity(
+            query.producer_replay_locator_or_reference_root,
+            "query replay-root ref is immutable exact replay identity material",
+        ),
+        _immutable_identity(
+            predicate.producer_replay_locator_or_reference_root,
+            "predicate replay-root ref is immutable exact replay identity material",
         ),
     )
     by_key = {row.determinant_ref.key: row for row in rows}
