@@ -1686,14 +1686,14 @@ def _census(case: dict[str, Any], result: Any) -> tuple[ExactDeterminantOwnershi
             DETERMINANT_ROOT_AUTHORITY,
             tuple(query.authority_snapshot_refs),
             query.semantic_projection(),
-            ("authority_snapshot_refs",),
+            ("semantic_fields.query_authority_refs",),
         ),
         _owned(
             predicate.ref,
             DETERMINANT_ROOT_AUTHORITY,
             tuple(predicate.authority_snapshot_refs),
             predicate.semantic_projection(),
-            ("authority_snapshot_refs",),
+            ("semantic_fields.grammar_authority_ref",),
         ),
         _owned(
             consumer_query.ref,
@@ -2349,7 +2349,7 @@ def test_r12_census_ownership_is_determinant_specific_and_authenticated():
         DeterminantOwnerEvidence(
             query.ref,
             query.semantic_projection(),
-            ("authority_snapshot_refs",),
+            ("semantic_fields.query_authority_refs",),
             (foreign,),
         )
 
