@@ -566,3 +566,8 @@ And:
 And:
 
 > **The simulation should maintain enough latent causal depth ahead of attention that inspection feels like discovery rather than co-authorship.**
+
+
+## Currentness note — 2026-10-06
+
+Read this artifact through `91_ADAPTIVE_PHENOMENAL_RENDERING_PROJECTION_TENSION_AND_REFLEXIVE_LENS_R1.md` and SPD-0252/0253. The user-specific attention regime may now condition not only which low-salience particulars enter finite phenomenal narration, but also bounded user-specific lexical/evaluative rendering where supported by visible evidence and demonstrated user construal history. This refinement does not authorize user-conditioned canonical reality, hidden-significance curation or Nadia-model leakage. Adaptive narration may project with the user; it may not confirm the user.
