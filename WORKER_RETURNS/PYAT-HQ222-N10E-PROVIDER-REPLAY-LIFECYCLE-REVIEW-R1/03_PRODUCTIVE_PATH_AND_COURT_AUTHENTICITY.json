@@ -1,0 +1,114 @@
+{
+  "schema": "PYAT_HQ222_N10E_PRODUCTIVE_PATH_AND_COURT_AUTHENTICITY@1",
+  "commission": "PYAT-HQ222-N10E-PROVIDER-REPLAY-LIFECYCLE-REVIEW-R1",
+  "candidate_commit": "2fd0b720b86a2dcfc132308610d09e8ae3e0d451",
+  "productive_path": {
+    "competent_positive_fixture": true,
+    "provider_positive_state": "EXACT_SUPPORTED_SLICE_PRODUCED",
+    "empirical_support": {
+      "denominator": 60,
+      "cells": {
+        "yes": 54,
+        "no": 6
+      }
+    },
+    "producer_derived_evidence": true,
+    "named_consumer_positive_state": "EXACT_SUPPORTED",
+    "refusal_only_proof": false,
+    "hqd216_productive_adequacy_at_local_stage": "PASS",
+    "live_estate_occupancy": false,
+    "n10w_world_conditioned_possibility": false
+  },
+  "hostile_classes": {
+    "H01": {
+      "attack": "handwritten/precomputed geometry",
+      "status": "PASS",
+      "mode": "API_UNREPRESENTABLE_AND_RESULT_GUARDS"
+    },
+    "H02": {
+      "attack": "answer fields in runner input",
+      "status": "PASS",
+      "mode": "FAIL_CLOSED",
+      "documentary_issue": "Return JSON simultaneously records fresh_process_exit=0 and fresh_process_exit_code=1."
+    },
+    "H03": {
+      "attack": "stale release ref",
+      "status": "PASS",
+      "mode": "SOURCE_RELEASE_MISMATCH"
+    },
+    "H04": {
+      "attack": "changed predicate/query determinant",
+      "status": "PARTIAL",
+      "mode": "REIDENTIFIES_OUTPUT",
+      "limit": "Does not prove lifecycle graph reachability for that changed exact determinant."
+    },
+    "H05": {
+      "attack": "changed model authority",
+      "status": "PASS",
+      "mode": "REIDENTIFIES_PRODUCT_AND_CONSUMER"
+    },
+    "H06": {
+      "attack": "changed conditioner witness",
+      "status": "PASS",
+      "mode": "CONDITION_VALUE_RELATION_MISMATCH"
+    },
+    "H07": {
+      "attack": "missing dependency edge",
+      "status": "PASS_AT_MODEL_AUTHORITY_GRAIN",
+      "mode": "COURT_SIDE_MISSING_CROSS_OWNER_EDGE_CHECK"
+    },
+    "H08": {
+      "attack": "unknown dependent",
+      "status": "PASS",
+      "mode": "OWNER_UNKNOWN_DEPENDENT"
+    },
+    "H09": {
+      "attack": "explicitly noncurrent dependent",
+      "status": "PASS",
+      "mode": "EXPLICIT_NONCURRENT"
+    },
+    "H10": {
+      "attack": "stale stored receipt as fresh proof",
+      "status": "PASS",
+      "mode": "REPLAY_GRADE_OVERCLAIM_PLUS_FRESH_ORACLE_DISAGREEMENT"
+    },
+    "H11": {
+      "attack": "mismatched consumer identity",
+      "status": "PASS",
+      "mode": "PROVIDER_RESULT_CONSTRUCTOR_REFUSAL"
+    },
+    "H12": {
+      "attack": "cache/object presence restores currentness",
+      "status": "PASS",
+      "mode": "OWNER_CURRENTNESS_WINS_OVER_OBJECT_PRESENCE",
+      "documentary_issue": "Return JSON labels an AssertionError as observed although the passing test is assertion-based and records no caught AssertionError."
+    }
+  },
+  "court": {
+    "declared_result": "32 passed",
+    "test_function_count_inspected": 32,
+    "independent_runtime_rerun_performed": false,
+    "review_mode": "BROWSER_GITHUB_SOURCE_AND_RETURN_EVIDENCE_ONLY",
+    "circularity_findings": [
+      "Fresh-process identity comparisons reuse the same accepted producer implementation, which is appropriate for replay determinism but is not independent semantic validation.",
+      "The substantive 54/6 check is grounded in the separately materialized synthetic respondent-row law, so the positive capability witness is not merely refusal/self-equality.",
+      "The AT19 closure court is self-bounded to the model-authority edge and should not be generalized to the unrepresented exact determinant refs."
+    ]
+  },
+  "mutation_scope": {
+    "compare_base": "c0dd265e3bd590050fc0283bccaf62ba5454a7fa",
+    "compare_head": "2fd0b720b86a2dcfc132308610d09e8ae3e0d451",
+    "production_files_changed": [],
+    "court_files_added": [
+      "rawlsing_next/tests/n10e_provider_replay_lifecycle_runner.py",
+      "rawlsing_next/tests/test_pre553_n10e_provider_replay_lifecycle_court.py"
+    ],
+    "return_files_added": 6,
+    "new_public_semantic_owner": false
+  },
+  "forbidden_activity": {
+    "raw_source_access_evidenced": false,
+    "live_c4_c7_evidenced": false,
+    "self_adoption_evidenced": false
+  }
+}
