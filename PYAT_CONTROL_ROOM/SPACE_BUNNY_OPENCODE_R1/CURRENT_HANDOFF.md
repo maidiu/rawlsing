@@ -1,3 +1,23 @@
+# HQ220 FRONTIER — F7 FINAL HOSTILE REREVIEW ONLY — 2026-10-06
+
+### NEW — NEEDS LAUNCH — F7 AUTHORITY-CHAIN FINAL HOSTILE REREVIEW
+**AGENT:** Browser/GitHub independent hostile reviewer  
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
+**BRANCH:** `agent/reviewer-pyat-hq220-f7-authority-chain-final-rereview-r1`  
+**COMMISSION TIP:** `c1d64e74b71043258653a8d1796d0097f0ce549e`
+
+Repair return under review:
+`agent/rabochii-pyat-hq219-f7-authority-chain-repair-r1 @ 9adc8cc9ba0942db974dddf809206de2a2fd231b`
+
+C1, V556 and H-D/F8 remain adopted/closed.
+
+If HQ220 accepts F7, adopt directly and close this cluster.
+
+HQ decision:
+`HQD-2026-10-06-220`
+
+---
+
 # HQ219 FRONTIER — H-D/F8 ADOPTED; F7 LAST AUTHORITY-CHAIN REPAIR — 2026-10-05
 
 ### ADOPTED / CLOSED — H-D/F8
