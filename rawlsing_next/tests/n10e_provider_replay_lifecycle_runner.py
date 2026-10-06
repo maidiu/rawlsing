@@ -36,8 +36,14 @@ from pathlib import Path
 from typing import Any
 
 from rawlsing_next.pre553_analytical_replay_dependency import (
+    DETERMINANT_DEPENDENT_PRODUCT,
+    DETERMINANT_IMMUTABLE_IDENTITY,
+    DETERMINANT_ROOT_AUTHORITY,
+    DETERMINANT_UNOWNED,
     AnalyticalDependencyRegistry,
     AnalyticalProductRegistration,
+    DeterminantOwnerEvidence,
+    ExactDeterminantOwnership,
     assert_runner_input_carries_no_answer,
     resolve_current_analytical_product,
     transition_analytical_dependencies,
