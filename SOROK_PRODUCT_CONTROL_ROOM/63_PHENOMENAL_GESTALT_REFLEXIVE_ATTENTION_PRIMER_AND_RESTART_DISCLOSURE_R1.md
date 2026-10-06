@@ -227,3 +227,8 @@ Compact:
 
 See SPD-0241 / RISK-197 / artifact 81.
 
+
+
+## Currentness note — 2026-10-06
+
+Artifact 91 strengthens the reflexive-disclosure theorem. The learned phenomenal surface may carry not only attention-selection history but bounded lexical/evaluative construal learned from demonstrated user behavior. Because this can deepen projection as well as knowledge, eventual disclosure and lawful lens-perturbation are part of the product's reflexive purpose. Preserve: MORE PERSONALIZED PERCEPTION != GREATER ADEQUACY TO THE OTHER.
