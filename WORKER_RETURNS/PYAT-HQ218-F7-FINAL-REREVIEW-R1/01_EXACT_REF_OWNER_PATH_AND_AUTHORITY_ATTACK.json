@@ -1,0 +1,83 @@
+{
+  "schema": "PYAT_HQ218_EXACT_REF_OWNER_PATH_AND_AUTHORITY_ATTACK@1.0.0",
+  "lane": "PYAT-HQ218-F7-FINAL-REREVIEW-R1",
+  "candidate": "136223506eaaf8d7c031a2822f2bfb6ac5bd420e",
+  "accepted_contract": "c57a96897788108db7b194e4e51691d1ca8ab729",
+  "verdict": "FAIL__THREE_REACHABLE_AUTHORITY_CHAIN_DEFECTS",
+  "rr01": {
+    "verdict": "SUSTAINED_AT_COMMISSIONED_GRAIN",
+    "ref_required": true,
+    "canonical_hash_binding": true,
+    "consumed_results_derived_from_bound_material": true,
+    "contradictory_caller_duplicate_refused": true,
+    "stale_ref_or_ref_only_token_refused": true,
+    "note": "No additional authority owner for comparability_requirements_ref is invented by this review."
+  },
+  "rr02": {
+    "verdict": "PARTIAL__MISSING_SCOPE_FAIL_OPEN",
+    "full_exact_ref_comparison_when_scope_present": true,
+    "same_object_id_different_hash_inherits_coverage": false,
+    "bare_object_id_scope_token_passes": false,
+    "defect": {
+      "id": "F7-RR-02B",
+      "severity": "BLOCKING",
+      "source_lines": "pre553_temporal_comparability.py:491-494",
+      "mechanism": "When require_use_scope=True, target_use_refs is checked only if scope.get('target_use_refs') is non-null. Missing scope therefore passes.",
+      "impact": [
+        "TEMPORAL_COMPARABILITY can resolve positive without proving the governed use is covered.",
+        "TARGET_USE_PERMISSION can resolve positive without proving the governed use is covered."
+      ]
+    }
+  },
+  "rr03": {
+    "verdict": "FAIL__CALLER_MATERIAL_IS_NOT_OWNER_RESOLVED",
+    "severity": "BLOCKING",
+    "accepted_owner": "TEMPORAL_EVIDENCE",
+    "source_trace": [
+      "pre553_temporal_comparability.py:718 binds identity ref only by semantic_hash(caller material)",
+      "pre553_temporal_comparability.py:795 resolves TEMPORAL_EVIDENCE independently with no identity-ref/material scope",
+      "pre553_temporal_comparability.py:932 reads identity_surface_jointly_satisfied from the caller material"
+    ],
+    "exact_counterexample": [
+      "caller creates arbitrary mapping {'identity_surface_jointly_satisfied': true}",
+      "caller hashes it and supplies a matching arbitrary ExactRef",
+      "an unrelated positive TEMPORAL_EVIDENCE snapshot is present",
+      "hash binding passes and identity gate treats the self-authored material as satisfied"
+    ],
+    "required_eight_surface_identity_composition_validated": false,
+    "owner_link_between_temporal_evidence_and_identity_material": false,
+    "accepted_residual_silently_retired": "IDENTITY_CONTRACT_INSTANCE_MISSING"
+  },
+  "rr04": {
+    "verdict": "FAIL__EXACT_LOOKUP_IS_NOT_POSITIVE_OWNER_ADJUDICATION",
+    "severity": "BLOCKING",
+    "production_request_resolver_type": "Any",
+    "real_resolver_type_enforced": false,
+    "method_used": "resolve_exact",
+    "owner_positive_decision_method_available": "SourceRelationResolver.decide",
+    "source_relation_owner_facts": {
+      "resolve_exact": "Returns the exact SourceUniverseRelation object by ref; it does not require AUTHORIZED.",
+      "decide": "Binds requested relation kind/source refs/scope/use/effective scope and runs positive relation-authority adjudication.",
+      "validate_positive": "Requires decision AUTHORIZED, replay identity, expected operation, and exact authority kind/scope."
+    },
+    "checks_missing_in_f7": [
+      "resolved relation decision == AUTHORIZED",
+      "relation_kind == SOURCE_SEMANTIC_EQUIVALENCE",
+      "relation source_universe_refs equal the temporal pair",
+      "relation operation_scope/effective_scope are the required exact scope",
+      "relation target_use is the required use",
+      "relation authority is the authority actually authorizing the relation"
+    ],
+    "exact_bypass_classes": [
+      "duck-typed stub resolver returning an object whose ref equals source_equivalence_ref",
+      "exact DENIED SourceUniverseRelation",
+      "exact relation of another relation_kind",
+      "exact semantic-equivalence relation for a different source pair/scope/use"
+    ],
+    "separate_positive_source_equivalence_snapshot_does_not_close_split_brain": true,
+    "lawful_fixture_uses_genuine_content_addressed_relation": true,
+    "production_requires_genuine_positive_relation": false
+  },
+  "authority_overreach_found": false,
+  "architecture_reopen_required": false
+}

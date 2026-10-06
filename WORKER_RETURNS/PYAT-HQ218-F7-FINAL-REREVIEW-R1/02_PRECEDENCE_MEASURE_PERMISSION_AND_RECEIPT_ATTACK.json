@@ -1,0 +1,60 @@
+{
+  "schema": "PYAT_HQ218_PRECEDENCE_MEASURE_PERMISSION_RECEIPT_ATTACK@1.0.0",
+  "lane": "PYAT-HQ218-F7-FINAL-REREVIEW-R1",
+  "candidate": "136223506eaaf8d7c031a2822f2bfb6ac5bd420e",
+  "rr05_measure": {
+    "verdict": "SUSTAINED",
+    "measure_required_on_quantity_surface": true,
+    "wrong_measure_refuses": true,
+    "absent_measure_refuses": true,
+    "comparison_occurs_before_delta": true,
+    "exact_measure_serialized": true,
+    "positive_receipt_blocked_if_measure_authority_nonpositive": true
+  },
+  "rr06_missing_order_basis": {
+    "verdict": "SUSTAINED",
+    "accepted_state": "TEMPORAL_INSUFFICIENT_AUTHORITY",
+    "accepted_reason": "TEMPORAL_ORDER_BASIS_AUTHORITY_REF_ABSENT",
+    "generic_exception_replaced": true,
+    "cross_field_relaxation_narrow": true
+  },
+  "rr07_total_precedence": {
+    "verdict": "SUSTAINED_AT_NAMED_DEFECT_GRAIN",
+    "partial_order_higher_failure_emitted": true,
+    "higher_failure_converted_to_exception": false,
+    "overlap_or_comparable_state_emitted_over_higher_negative": false,
+    "guard_location": "pre553_temporal_comparability.py:1099 applies only when selected state is comparable"
+  },
+  "permission_refs": {
+    "all_supplied_elements_iterated": true,
+    "extra_unresolved_ref_ignored": false,
+    "empty_tuple_yields_insufficient_authority": true,
+    "defect": "Each permission resolution inherits RR-02B: absent target_use_refs scope is treated as positive rather than SCOPE_MISMATCH.",
+    "verdict": "PARTIAL__BLOCKED_BY_RR02B"
+  },
+  "receipt_noncollapse": {
+    "relation_state_count": 12,
+    "comparable_state_count": 3,
+    "negative_state_count": 9,
+    "negative_receipts_not_comparable": true,
+    "prior_f7_mapping_live": true,
+    "three_plus_anchors_pre_receipt_refusal": true,
+    "live_frozen_backfill_guard": true
+  },
+  "exact_zero": {
+    "verdict": "SUSTAINED_BY_EXECUTABLE_SOURCE_FLOW",
+    "accepted_numeric_types": [
+      "int",
+      "Decimal",
+      "Fraction"
+    ],
+    "floats_forbidden": true,
+    "exact_difference": true,
+    "zero_test": "_exact_sign(value) == 0",
+    "deadband": false,
+    "tolerance": false,
+    "epsilon": false,
+    "rounding": false,
+    "note": "Browser/GitHub lane did not execute a local AST parser; the executable numeric functions were read directly, avoiding substring-only evidence."
+  }
+}

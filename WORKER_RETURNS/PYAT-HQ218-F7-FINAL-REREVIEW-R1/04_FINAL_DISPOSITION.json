@@ -1,0 +1,98 @@
+{
+  "schema": "PYAT_HQ218_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ218-F7-FINAL-REREVIEW-R1",
+  "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_REPAIR",
+  "commission_tip": "7867a777b1b26024ec620b0e82ea9ffdb9fb6ddc",
+  "candidate": "agent/rabochii-pyat-hq217-f7-final-bounded-repair-r1 @ 136223506eaaf8d7c031a2822f2bfb6ac5bd420e",
+  "prior_hostile_rereview": "be0ae0f1e3dfea27b1520e81b30c781412e30c92",
+  "accepted_contract": "c57a96897788108db7b194e4e51691d1ca8ab729",
+  "disposition": "F7_FINAL_BOUNDED_REPAIR_PARTIAL__NAMED_DEFECT",
+  "ready_for_hq_adoption": false,
+  "f7_adopted": false,
+  "architecture_reopen_required": false,
+  "blocking_defects": [
+    {
+      "id": "F7-RR-02B",
+      "finding": "require_use_scope=True silently accepts an authority whose scope omits target_use_refs; complete ExactRef matching is enforced only when the scope entry exists.",
+      "impact": "TEMPORAL_COMPARABILITY and TARGET_USE_PERMISSION can be positive without governed-use coverage."
+    },
+    {
+      "id": "F7-RR-03",
+      "finding": "temporal_identity_contract_ref is bound only to caller-authored material and is not resolved against TEMPORAL_EVIDENCE-owned identity material.",
+      "impact": "Caller can self-mint satisfied identity material/ref and reach the positive path."
+    },
+    {
+      "id": "F7-RR-04",
+      "finding": "F7 performs source_relation_resolver.resolve_exact only, accepts Any resolver, and never requires the source-relation owner's positive adjudication.",
+      "impact": "Stub, DENIED, wrong-kind, or wrong-pair relation material can satisfy the relation-object half while a separate positive SOURCE_EQUIVALENCE snapshot satisfies the authority half."
+    }
+  ],
+  "secondary_defects": [
+    {
+      "id": "COURT-HQ218-01",
+      "finding": "HQ217 reports F7 98 / M1 25, while exact committed collection reconstructs as F7 96 / M1 27. Aggregate 123 remains the same."
+    },
+    {
+      "id": "COURT-HQ218-02",
+      "finding": "The fail-capability report says all mechanisms were verified but lists no targeted RR-04, RR-06, permission-resolution, or missing-use-scope break."
+    }
+  ],
+  "sustained_repairs": [
+    "RR-01 content binding and derivation from bound comparability material",
+    "RR-02 complete ExactRef comparison when target-use scope is present",
+    "RR-05 measure requirement/comparison/serialization",
+    "RR-06 accepted missing-order-basis terminal",
+    "RR-07 higher-priority precedence over partial-order comparable states",
+    "iteration/resolution of every supplied target-use permission ref",
+    "12-state ceiling",
+    "19-authority-kind ceiling",
+    "exact-zero arithmetic without tolerance/deadband",
+    "3+ anchor refusal",
+    "prior-F7 mapping",
+    "negative receipt NOT_COMPARABLE law",
+    "live frozen backfill guard",
+    "broad F7 power ceiling"
+  ],
+  "productive_adequacy": {
+    "positive_computation_shape_reachable": true,
+    "lawful_positive_authority_chain_proven": false,
+    "upstream_occupancy_gap_misclassified_as_f7_defect": false,
+    "hqd216_satisfied": false
+  },
+  "court_and_environment": {
+    "worker_82_id_slice_not_treated_as_82_semantic_defects": true,
+    "candidate_environment_version_record_internally_consistent": true,
+    "governed_environment_claimed": false,
+    "full_suite_claimed": false,
+    "github_workflow_run_at_candidate": false,
+    "reviewer_runtime_reproduction_performed": false,
+    "note": "Runtime absence is not the selected disposition because exact source inspection already proves reachable blocking defects."
+  },
+  "bounded_repair_required": [
+    "Fail closed when a use-scoped authority omits target_use_refs; exact complete-ref coverage must be present or explicit unrestricted.",
+    "Resolve temporal identity against actual TEMPORAL_EVIDENCE-owned identity material; do not treat caller-minted hash-bound material as authorization.",
+    "Require an actual positive SOURCE_SEMANTIC_EQUIVALENCE owner decision, not a duck-typed resolve_exact lookup.",
+    "Add discriminating witnesses for the three defects and correct per-file court accounting."
+  ],
+  "allowed_dispositions_considered": {
+    "ACCEPT_F7_FINAL_BOUNDED_REPAIR__READY_FOR_HQ_ADOPTION": "NOT SELECTED — three reachable authority-chain defects remain.",
+    "F7_FINAL_BOUNDED_REPAIR_PARTIAL__NAMED_DEFECT": "SELECTED — defects are exact, bounded, implementation-level, and repairable without architecture widening.",
+    "F7_FINAL_BOUNDED_REPAIR_AUTHORITY_OVERREACH": "NOT SELECTED — the failure is under-validation/self-authorization, not a new authority kind/state/ontology expansion.",
+    "F7_FINAL_REREVIEW_BLOCKED_BY_MISSING_EXACT_EVIDENCE": "NOT SELECTED — runtime evidence is limited, but exact source is sufficient to prove the blocking defects."
+  },
+  "hard_holds_respected": {
+    "raw_source": false,
+    "locator_discovery": false,
+    "warrant_issuance": false,
+    "live_c4": false,
+    "c7": false,
+    "actor_person_implementation": false,
+    "attractor_population": false,
+    "implementation_edits": false,
+    "repair": false,
+    "merge": false,
+    "self_adoption": false,
+    "clone": false
+  },
+  "terminal": "HQ218_F7_FINAL_REREVIEW_RETURNED__HQ_DECISION_REQUIRED"
+}
