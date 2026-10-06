@@ -1,0 +1,85 @@
+{
+  "schema": "PYAT_HQ222_V555_FIELD_FORGE_BASIS_CURRENT_CENSUS@1.0.0",
+  "commission_tip": "590b7a8f95cc385695e67977189bbd72b2a9a4ac",
+  "evidence_commit": "e2ccdb5f5127ea539cb4117a898f37871c6c9c24",
+  "files": {
+    "m1_temporal_v554_admission_dedup": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+    "m2_v555_atomic_route": "deef8a60613635a10faf7d89cd8cdf0c3b8a0710",
+    "m1_admitted_field_forge_relation_v554_ingress": "0aeacd9e66c7e4340b36e1b622bb5c9bf2865fd5",
+    "m4_m1_evaluation_binding": "dfc91d93d7d23d9d6cfe6d601d7d5734e7d5042f",
+    "field_forge_conditional_support": "a70decb20747d84cbcbe27d1280babc6de88ef33",
+    "wave1_ff_prev3_relation_admission": "c5fb675fd6f95cb7dc9e0ad505224803839cc645",
+    "gt12_permission_translation_authority": "2eb1441e0ee5be3eef2567f8ffb57819fc47f0d6",
+    "gt12_e2b_actual_object_consumer_harness": "f86a2a368cfd427ec465fd84eb93e7736f0c51f5",
+    "hq221_positive_realization_court": "8302d72df54b09153dfda17f48916732cb61bd58",
+    "adp001_v554_affordance_authority": "41715b9136845d979179d2b221e9dfbeaf234c20",
+    "adp002_v555_route_authority": "f027c6519d27c6ef2ec123a8924e24d588ad3d49",
+    "si_r01_v554_v555": "515df08dcbb8a317253ea4b276942bf0982b015f",
+    "td_r02_v555": "2ddf06f5479265c4b48fa8cc7eae435fa3c70b43",
+    "m3_v556_higher_order_structural": "9a4b26b214686364a43d108dabf0d57dac0ed3b2",
+    "m4_v557_v558_publication_repository": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360"
+  },
+  "current_m2": {
+    "contract_id": "M2_V554_V555_ATOMIC_ROUTE_EXACT_SEAM_CONTRACT@1.0.0",
+    "accepted_m1_contract_ids": [
+      "M1_TEMPORAL_V554_INGRESS_SEAM@1.0.0"
+    ],
+    "effective_upstream_basis_kinds": [
+      "DIRECT_STRUCTURAL_EMPIRICAL_ADMISSION",
+      "V553_TEMPORAL_OBJECT"
+    ],
+    "target_use": "STRUCTURAL_MEDIATION_INPUT",
+    "route_authority": "V555_MEDIATION_ROUTE_RULE_REGISTRY@1.0.0",
+    "route_rule": "V555-RR-001-EXACT-UPSTREAM-STRUCTURAL-CHANNEL@1.0.0",
+    "route_shape": "V555-RS-001-SOURCE-EXACT-CHANNEL-EXACT-RECEIVER@1.0.0",
+    "accepted_v554_signatures": [
+      "V554-SIG-001-NONTEMPORAL-EXACT",
+      "V554-SIG-002-TEMPORAL-POINT-EXACT",
+      "V554-SIG-003-TEMPORAL-RELATIONAL-EXACT"
+    ],
+    "binding_v554_rule": "V554-AR-001-EXACT-GOVERNED-STRUCTURAL-MEDIATION-INPUT@1.0.0",
+    "implementation_observations": {
+      "contract_id_is_hard_gate": true,
+      "checks_required_basis_kind": false,
+      "checks_v554_signature_id": false,
+      "checks_v554_rule_identity": false,
+      "checks_positive_f1_b1_closure": true,
+      "checks_route_rule_shape_identifiers": true,
+      "implication": "Adding the relation contract to the accepted ingress without adding authority-profile validation would create a route-authority bypass."
+    }
+  },
+  "relation_lane": {
+    "m1_contract_id": "M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0",
+    "basis_kind": "ADMITTED_FIELD_FORGE_RELATION",
+    "v554_signature": "V554-SIG-004-NONTEMPORAL-ADMITTED-RELATION-EXACT",
+    "relation_family": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+    "target_use": "STRUCTURAL_MEDIATION_INPUT",
+    "relation_positive_state": "SUPPORTED",
+    "admission_positive_state": "ADMITTED",
+    "v554_positive_state": "ELIGIBLE",
+    "relation_m1_b1_allowed_v555_structural_use_on_positive": true,
+    "temporal_disposition": "NO_NEW_V553_TEMPORAL_MEANING_REQUIRED",
+    "information_loss": "NONE__REFERENCE_PRESERVING",
+    "forbidden_coercions": [
+      "structural_empirical_admission identity",
+      "V553 temporal object identity",
+      "SCR553 request/decision identity"
+    ],
+    "current_realized_downstream": {
+      "producer_family": "V554",
+      "source_stage": "M1_RELATION_V554_TO_V557",
+      "allowed_uses": [
+        "CONTEXT"
+      ],
+      "v557_state": "ALLOW_CONTEXT_ONLY",
+      "v558_result": "RESOLUTION_COMPLETE"
+    }
+  },
+  "binding_authority_gap": {
+    "adp002_covers_sig004": false,
+    "adp002_covers_relation_m1_contract": false,
+    "adp002_covers_gt2_v554_rule": false,
+    "adp002_silent_future_signature_fallback_forbidden": true,
+    "conclusion": "CURRENT_ACCEPTED_V555_ROUTE_AUTHORITY_DOES_NOT_COVER_RELATION_SIG004"
+  }
+}
