@@ -1,32 +1,55 @@
 {
-  "schema": "HQ226_RUNTIME_COURT_AND_REGRESSION@1.0.0",
+  "schema": "HQ226_RUNTIME_COURT_AND_REGRESSION@1.1.0",
   "exact_runtime_obtained": false,
-  "disposition": "NO_RUNTIME_PASS_CLAIM",
+  "disposition": "NO_RUNTIME_PASS_CLAIM__SOURCE_LEVEL_COURT_DEFECT_PROVED",
   "environment_provenance": {
-    "review_mode": "Browser/GitHub independent hostile reviewer",
+    "review_mode": "Browser/GitHub independent hostile reviewer with isolated container only",
     "repository_visibility": "private",
     "local_checkout_available": false,
-    "github_actions_run_for_candidate": false,
-    "interpreter": null,
-    "pytest_runner": null
+    "github_actions_run_for_candidate_code_head": 0,
+    "reviewer_container_python": "3.13.5",
+    "reviewer_container_pytest": "9.0.2",
+    "repository_network_probe": "git ls-remote https://github.com/maidiu/rawlsing.git HEAD",
+    "repository_network_probe_result": "FAILED__Could not resolve host: github.com"
   },
-  "requested_selection": [
-    "rawlsing_next/tests/test_pre553_temporal_comparability.py",
-    "relevant M1 temporal regression court"
+  "intended_exact_selection": [
+    "pytest -q rawlsing_next/tests/test_pre553_temporal_comparability.py",
+    "pytest -q rawlsing_next/tests/test_m1_temporal_v554_admission_dedup.py"
   ],
   "execution_results": {
     "collected": null,
     "passed": null,
     "failed": null,
     "skipped": null,
-    "hostile_subclass_witnesses_executed": false
+    "hostile_subclass_witnesses_executed": false,
+    "exact_instance_internal_dispatch_witness_executed": false,
+    "note": "No repository checkout was executable; no test-count result is fabricated."
   },
   "candidate_static_accounting": {
     "prior_f7_collection_reported": 135,
     "hq225_new_scalar_test_functions": 6,
-    "expected_f7_collection_if_other_collection_unchanged": 141,
+    "candidate_expected_f7_collection_if_other_collection_unchanged": 141,
     "prior_m1_collection_reported": 27
   },
-  "why_not_blocked_disposition": "The commission permits a named defect when source-level proof is sufficient. The remaining internal owner-dispatch defect follows directly from the committed implementation.",
-  "runtime_successor_requirement": "After repair, execute targeted F7 plus M1 and include an exact-instance internal-subdispatch witness."
+  "source_level_court_defect": {
+    "id": "COURT-HQ226-01__STALE_REQUIRE_TARGETED_BREAK_AFTER_DECIDE_SWITCH",
+    "test": "test_hq219_targeted_break_rr04_owner_decision_is_actually_consulted",
+    "committed_test_behavior": [
+      "Build a DENIED owner relation.",
+      "Monkeypatch sr.SourceRelationResolver.require to return a falsified AUTHORIZED decision.",
+      "Assert compare_temporal_anchors reopens to TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED."
+    ],
+    "committed_candidate_behavior": "F7 no longer calls require at this boundary; it calls SourceRelationResolver.decide(resolver, ...) directly.",
+    "proof": "The monkeypatch cannot affect the candidate path. The asserted reopened authorization therefore contradicts the committed production source.",
+    "candidate_test_diff_fact": "HQ225 test delta is additions only (+206/-0), so this inherited witness was not repaired or removed.",
+    "runtime_count_claimed": false,
+    "disposition": "FAIL_CAPABILITY_COURT_NOT_SOURCE_CONSISTENT"
+  },
+  "required_successor_runtime": [
+    "Repair the stale targeted-break witness so it falsifies the actual adopted decide path or a genuinely load-bearing internal owner seam.",
+    "Add an exact concrete resolver internal-dispatch/state-poisoning witness.",
+    "Add a nested AuthorityRegistry provenance witness or bind that dependency nonvirtually/exactly.",
+    "Run the full F7 court and M1 regression on the exact repaired code head."
+  ],
+  "why_not_blocked_only": "The commission permits source-level proof of a named defect. The internal dispatch defect and stale committed court witness are established directly from committed source, so lack of runtime does not erase them."
 }
