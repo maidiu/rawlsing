@@ -2513,3 +2513,37 @@ def test_r18_fresh_runner_registers_complete_classified_census():
         for row in rows
         if row["lifecycle_relevant"]
     )
+    direct = {
+        row["authority_id"] for row in observed["registered_determinant_authority_refs"]
+    }
+    assert case_model_ids := {
+        _case(DIRECTION)["model_rule"].model_authority_ref.authority_id,
+        _case(DIRECTION)["model_rule"].walkback_authority_ref.authority_id,
+    }
+    assert case_model_ids <= direct
+
+
+def test_r19_walkback_authority_is_registered_but_not_stageable_from_fixture_material():
+    """The exact-supported result consumes walkback authority even with zero steps."""
+
+    from rawlsing_next.pre553_empirical_authority import AUTHORITY_KINDS
+
+    case = _case(DIRECTION)
+    result = _provide(case)
+    registry, product_ref = _census_registry(case, result)
+    graph = registry.build_graph()
+    walkback = case["model_rule"].walkback_authority_ref
+
+    assert (walkback, product_ref) in graph.authority_edges
+    assert product_ref in graph.affected((walkback,))
+
+    entry = fx._authority_entry("FIXTURE_ONLY_WALKBACK_POLICY")
+    material = dict(entry["canonical_material"])
+    for required in (
+        "authority_kind",
+        "scope_envelope",
+        "governed_object_families",
+        "replay_protocol_ref",
+    ):
+        assert required not in material
+    assert not any("WALKBACK" in kind for kind in AUTHORITY_KINDS)
