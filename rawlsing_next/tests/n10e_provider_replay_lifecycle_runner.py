@@ -48,7 +48,7 @@ from rawlsing_next.pre553_analytical_replay_dependency import (
     resolve_current_analytical_product,
     transition_analytical_dependencies,
 )
-from rawlsing_next.pre553_empirical_objects import exact_ref
+from rawlsing_next.pre553_empirical_objects import AuthorityRef, exact_ref
 from rawlsing_next.pre553_empirical_possibility_provider import (
     provide_empirical_possibility_slice,
 )
