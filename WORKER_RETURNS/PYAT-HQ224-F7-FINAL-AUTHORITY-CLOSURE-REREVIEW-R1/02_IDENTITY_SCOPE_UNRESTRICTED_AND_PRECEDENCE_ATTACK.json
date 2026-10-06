@@ -1,0 +1,65 @@
+{
+  "schema": "HQ224_IDENTITY_SCOPE_UNRESTRICTED_AND_PRECEDENCE_ATTACK@1.0.0",
+  "candidate": "a190988b58ae1fe5d6a714e0691b19f84eb4e00e",
+  "temporal_evidence_source_scope": {
+    "finding": "F7-RR-03B",
+    "disposition": "CLOSED",
+    "evidence": "temporal_evidence is resolved with required universe refs equal to the exact compared pair; the positive snapshot used by the identity gate comes from that resolution",
+    "attacks": {
+      "unrelated_universe": "REFUSES via AUTHORITY_SCOPE_MISMATCH",
+      "one_of_two_universes": "REFUSES; positive cross-universe owner control prevents masking",
+      "stale_wrong_universe_ref": "REFUSES via AUTHORITY_SCOPE_MISMATCH",
+      "caller_identity_material_bypass": "NOT FOUND; identity joint-satisfaction is read from resolved TEMPORAL_EVIDENCE owner scope"
+    }
+  },
+  "unrestricted_representation": {
+    "finding": "F7-RR-02C",
+    "disposition": "CLOSED",
+    "exact_tokens": [
+      "EXPLICIT_UNRESTRICTED",
+      "UNRESTRICTED_BY_THIS_AUTHORITY"
+    ],
+    "constant": "ADOPTED_UNRESTRICTED_SCOPE_REPRESENTATIONS",
+    "helpers": [
+      "_scope_covers_exact_ref_set",
+      "_scope_covers_governed_use",
+      "_scope_covers_universe"
+    ],
+    "omission_is_unrestricted": false,
+    "third_token_found": false
+  },
+  "precedence_and_ceiling": {
+    "disposition": "SUSTAINED",
+    "relation_states": 12,
+    "authority_kinds": 19,
+    "identity_scope_failure_precedence": "lawful higher-precedence TEMPORAL_INSUFFICIENT_AUTHORITY may surface before TEMPORAL_IDENTITY_UNRESOLVED; comparability remains NOT_COMPARABLE",
+    "exact_zero": "canonical exact zero only; no tolerance/deadband/rounding",
+    "three_plus_anchors": "refusal preserved",
+    "total_precedence": "RELATION_STATE_PRECEDENCE unchanged",
+    "prohibited_power": [
+      "F8 consumption",
+      "source ranking",
+      "source selection",
+      "interpolation",
+      "trajectory",
+      "causation",
+      "currentness authority",
+      "scalar pressure",
+      "pooling",
+      "equivalence creation",
+      "actor/person power"
+    ]
+  },
+  "integration_classification": {
+    "governed_use_projection": {
+      "issue": "F7 governed use is an ExactRef; source-relation owner target_use is a non-empty string; F7 projects governed_use_id.object_id",
+      "classification_under_HQD216": "INTEGRATION_PRODUCER_OCCUPANCY_GAP__NOT_LOCAL_F7_DEFECT",
+      "reason": "local competent owner-backed fixture is reachable and the mismatch concerns real producer occupancy/contract composition outside this local stage"
+    },
+    "identity_contract_instance": {
+      "issue": "no real estate identity-contract instance is established here",
+      "classification_under_HQD216": "UPSTREAM_ESTATE_OCCUPANCY_GAP__NOT_LOCAL_F7_DEFECT",
+      "reason": "F7 consumes competent owner-backed identity material and does not own production of the real identity instance"
+    }
+  }
+}

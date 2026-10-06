@@ -1,0 +1,41 @@
+{
+  "schema": "HQ224_F7_FINAL_AUTHORITY_CLOSURE_REREVIEW_DISPOSITION@1.0.0",
+  "branch": "agent/reviewer-pyat-hq224-f7-final-authority-closure-r1",
+  "commission_tip": "83ff750647dcd3e5a91218cca232ef894f1359ef",
+  "candidate": "a190988b58ae1fe5d6a714e0691b19f84eb4e00e",
+  "prior_review": "acb8602e3968bc2e9fcde63223294aa92e0ddce2",
+  "disposition": "F7_FINAL_AUTHORITY_CLOSURE_PARTIAL__NAMED_DEFECT",
+  "adoption_ready": false,
+  "hq220_findings": {
+    "F7-RR-04B": "DIRECT_DEFECT_CLOSED_FOR_CONCRETE_OWNER__FINAL_BOUNDARY_STILL_BLOCKED_BY_F7-RR-04C",
+    "F7-RR-03B": "CLOSED",
+    "F7-RR-02C": "CLOSED",
+    "COURT-HQ220-01": "CLOSED"
+  },
+  "new_blocker": {
+    "id": "F7-RR-04C__HOSTILE_SOURCE_RELATION_RESOLVER_SUBCLASS_CAN_FORGE_OWNER_DECISION",
+    "class": "LOCAL_F7_AUTHORITY_AUTHENTICITY_DEFECT",
+    "architecture_reopen_required": false,
+    "authority_overreach_classification": false,
+    "summary": "isinstance accepts SourceRelationResolver subclasses; a subclass can override require and return a full request-shaped AUTHORIZED RelationDecision naming the caller's genuine positive B authority, causing F7's field validation and A/B cross-bind to accept a relation that the base resolver never adjudicated and need not contain.",
+    "closure_required": "prove a non-overridable adopted-owner adjudication/constructor-provenance boundary and add a hostile full-shape subclass witness that must refuse while the concrete positive owner path remains productive"
+  },
+  "sustained": [
+    "TEMPORAL_EVIDENCE exact source-scope binding",
+    "exact two-token unrestricted law",
+    "same-fixture RR-03 fail-capability witness",
+    "positive same-universe/zero/increase/decrease/concrete-owner cross-universe paths",
+    "12 states / 19 authority kinds",
+    "exact-zero/no tolerance",
+    "3+ anchor refusal and total precedence",
+    "measure/use-scope binding",
+    "power ceilings"
+  ],
+  "upstream_or_integration_not_local": [
+    "governed-use ExactRef to source-relation string target_use projection",
+    "missing real identity-contract instance"
+  ],
+  "write_scope": "Only WORKER_RETURNS/PYAT-HQ224-F7-FINAL-AUTHORITY-CLOSURE-REREVIEW-R1/ reviewer return artifacts; no production/court mutation; no merge; no self-adoption.",
+  "terminal": "HQ224_F7_FINAL_AUTHORITY_CLOSURE_REREVIEW_RETURNED__BOUNDED_RESOLVER_TRUST_REPAIR_REQUIRED",
+  "return_commit": "REPORT_OUT_OF_BAND_AFTER_PUSH__NO_SELF_REFERENTIAL_SHA"
+}

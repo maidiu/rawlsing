@@ -1,0 +1,54 @@
+{
+  "schema": "HQ224_RELATION_AUTHORITY_AND_RESOLVER_ATTACK@1.0.0",
+  "commission": "83ff750647dcd3e5a91218cca232ef894f1359ef",
+  "candidate": "a190988b58ae1fe5d6a714e0691b19f84eb4e00e",
+  "direct_hq220_crossbind": {
+    "finding": "F7-RR-04B",
+    "disposition": "CLOSED_FOR_CONCRETE_ADOPTED_RESOLVER",
+    "evidence": [
+      "returned RelationDecision is captured",
+      "decision.relation_ref is checked against requested relation ref",
+      "decision.authority_ref is recorded in positive resolution provenance",
+      "separately supplied SOURCE_EQUIVALENCE snapshot must resolve positive",
+      "snapshot authority_ref must equal returned decision.authority_ref",
+      "DENIED/wrong-kind/wrong-pair/wrong-use paths remain refusal paths"
+    ]
+  },
+  "hostile_subclass_attack": {
+    "finding": "F7-RR-04C",
+    "disposition": "FAIL__LOCAL_ADOPTION_BLOCKER",
+    "entry_boundary": "isinstance(resolver, SourceRelationResolver)",
+    "request_type_surface": "TemporalComparisonRequest.source_relation_resolver: Any",
+    "exact_construction": [
+      "Define HostileResolver(SourceRelationResolver).",
+      "Invoke the real base constructor with relations=() and a valid (even empty) AuthorityRegistry; no source relation need exist.",
+      "Override require(**kwargs) to return a real RelationDecision with state=AUTHORIZED, relation_ref equal to kwargs.relation_ref, exact requested relation_kind/source pair/target_use/operation_scope/effective_scope, authority_ref equal to the caller's genuine positive SOURCE_EQUIVALENCE authority B, and the required authority operation.",
+      "Supply B independently through request.source_equivalence_authority_ref with otherwise lawful F7 authority fixtures.",
+      "isinstance(hostile, SourceRelationResolver) is true.",
+      "_relation_decision_defect accepts the counterfeit because every field it inspects is request-shaped.",
+      "resolve_required_authority independently accepts B; the A/B equality check now compares forged B to genuine B and succeeds.",
+      "Because F7 never establishes that base SourceRelationResolver.decide produced the decision or that the base resolver contains the relation, cross-universe positivity is reachable without owner adjudication."
+    ],
+    "why_existing_hardening_does_not_cover_it": "test_hq222_rr04b_a_forged_owner_proof_is_refused returns an intentionally incomplete stand-in object. The hostile subclass can return the full real RelationDecision shape and therefore satisfies the field validator.",
+    "owner_law_boundary": "SourceRelationResolver.require delegates to self.decide; base decide derives a replay-bound decision from the resolver's registered exact relation material and AuthorityRegistry. Subclass override bypasses that law. No adopted source-relation court found authorizes subclass-provided adjudication semantics.",
+    "severity": "BLOCKING_POSITIVE_AUTHORITY_AUTHENTICITY",
+    "repair_ceiling": "Bound F7 to non-overridable adopted-owner adjudication/constructor provenance. No new authority kind, relation state, relation ontology or architecture reopen is required."
+  },
+  "decision_field_validator_gaps_relevant_to_attack": {
+    "checked": [
+      "authorized",
+      "relation_kind",
+      "relation_ref",
+      "authority_ref non-null",
+      "source_universe_refs",
+      "target_use",
+      "operation_scope"
+    ],
+    "not_proved_by_validator": [
+      "decision originated from concrete base owner adjudication",
+      "requested relation exists in resolver's registered relation set",
+      "decision replay_identity was produced by the base owner",
+      "base resolver registry is the authority source that yielded decision.authority_ref"
+    ]
+  }
+}
