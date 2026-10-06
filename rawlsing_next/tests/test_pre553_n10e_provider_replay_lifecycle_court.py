@@ -187,24 +187,9 @@ def _product_ref(
 def _register(case: dict[str, Any], result: Any) -> tuple[
     AnalyticalDependencyRegistry, ExactRef
 ]:
-    """Register the provider product with exactly the determinants it consumed."""
+    """Use the same complete owner-authentic census as the HQ225 lifecycle court."""
 
-    registry = AnalyticalDependencyRegistry()
-    product_ref = _product_ref(result.result_identity_hash, case["direction"])
-    registry.register(
-        AnalyticalProductRegistration(
-            product_ref=product_ref,
-            product_identity_hash=result.result_identity_hash,
-            determinant_authority_refs=(case["model_rule"].model_authority_ref,),
-            determinant_exact_refs=(
-                case["empirical_query"].ref,
-                case["predicate"].ref,
-                case["consumer_query"].ref,
-                case["condition_binding_witness"].witness_ref,
-            ),
-        )
-    )
-    return registry, product_ref
+    return _census_registry(case, result)
 
 
 def _recomposer(case: dict[str, Any]):
