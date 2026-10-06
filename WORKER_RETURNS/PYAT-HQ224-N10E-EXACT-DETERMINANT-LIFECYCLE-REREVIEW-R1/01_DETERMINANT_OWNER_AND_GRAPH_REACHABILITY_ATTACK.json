@@ -1,0 +1,126 @@
+{
+  "schema": "PYAT_HQ224_01_DETERMINANT_OWNER_AND_GRAPH_REACHABILITY_ATTACK@1",
+  "disposition": "FAIL__CENSUS_INCOMPLETE_AND_GRAPH_COVERAGE_OPTIONAL",
+  "candidate_commit": "22a868cede42b9c92dc78ef746f89ba85d6d8189",
+  "production_adapter": {
+    "path": "rawlsing_next/pre553_analytical_replay_dependency.py",
+    "blob": "e868aa27466ca0a47ecdaf8b6e749c4853438710"
+  },
+  "graph_mechanics_that_survive_review": {
+    "two_hop_owner_determinant_product_edges": true,
+    "affected_traversal_reachable_when_edges_present": true,
+    "removing_owner_to_determinant_breaks_seed": true,
+    "removing_determinant_to_product_breaks_product_reachability": true,
+    "empty_change_set_reaches_nothing": true
+  },
+  "blocking_registration_gap": {
+    "determinant_ownerships_default_empty": true,
+    "completeness_check_exists": false,
+    "exact_refs_without_ownership_remain_legal": true,
+    "build_graph_ignores_unclassified_exact_refs": true,
+    "candidate_return_says_existing_registration_works_without_ownerships": true,
+    "actual_fresh_runner_supplies_determinant_ownerships": false,
+    "effect": "The HQ222 serialized-but-unreachable defect remains the actual fresh-runner registration shape; the repair is opt-in through a private court helper."
+  },
+  "independently_reconstructed_consumed_classes": [
+    {
+      "determinant_class": "empirical_query.ref",
+      "status": "AUTHORITY_ROOTED",
+      "root": "C1-AT07-QUERY / PREDICATE_GRAMMAR",
+      "candidate_graph": "PRESENT_IN_TEST_CENSUS"
+    },
+    {
+      "determinant_class": "predicate.ref",
+      "status": "AUTHORITY_ROOTED",
+      "root": "C1-AT07-QUERY / PREDICATE_GRAMMAR",
+      "candidate_graph": "PRESENT_IN_TEST_CENSUS"
+    },
+    {
+      "determinant_class": "consumer_query.ref",
+      "status": "AUTHORITY_ROOTED_BUT_OWNER_CEREMONY_UNSTAGEABLE",
+      "root": "C1-AT07-COMPARABILITY",
+      "candidate_graph": "PRESENT_IN_TEST_CENSUS"
+    },
+    {
+      "determinant_class": "condition_binding_witness.ref",
+      "status": "AUTHORITY_ROOTED_BUT_OWNER_CEREMONY_UNSTAGEABLE",
+      "root": "C1-AT07-COMPARABILITY",
+      "candidate_graph": "PRESENT_IN_TEST_CENSUS"
+    },
+    {
+      "determinant_class": "model_rule.model_authority_ref",
+      "status": "DIRECT_AUTHORITY_ROOTED",
+      "root": "C1-AT07-MODEL-FORWARD",
+      "candidate_graph": "PRESENT_AS_DIRECT_AUTHORITY_EDGE"
+    },
+    {
+      "determinant_class": "release_ref",
+      "status": "UNOWNED_OR_UNREACHABLE",
+      "root": null,
+      "candidate_graph": "REPORTED_BLOCKER_NO_GRAPH_EDGE"
+    },
+    {
+      "determinant_class": "source_universe.ref",
+      "status": "AUTHORITY_ROOTED_AND_STAGEABLE_PER_CANDIDATE_OWN_CENSUS",
+      "root": "C1-AT07-SOURCE",
+      "candidate_graph": "MISSING"
+    },
+    {
+      "determinant_class": "producer_fact_ref",
+      "status": "DEPENDENT_PRODUCT_DETERMINANT",
+      "root": "upstream empirical product lifecycle/authority closure",
+      "candidate_graph": "MISSING_AND_UNCLASSIFIED"
+    },
+    {
+      "determinant_class": "consumer_query.target_ref",
+      "status": "IMMUTABLE_REQUEST_IDENTITY_AT_THIS_GRAIN",
+      "root": null,
+      "candidate_graph": "CODE_LABELS_UNOWNED_WHILE_RETURN_LABELS_IMMUTABLE"
+    },
+    {
+      "determinant_class": "conditioner_binding.empirical_coordinate_ref",
+      "status": "IMMUTABLE_REQUEST_IDENTITY_OR_REQUIRES_EXACT_UPSTREAM_OWNER_DECISION",
+      "root": null,
+      "candidate_graph": "MISSING"
+    },
+    {
+      "determinant_class": "conditioner_binding.subject_fact_ref",
+      "status": "EXACT_CONSUMED_BINDING_MATERIAL_REQUIRES_CLASSIFICATION",
+      "root": null,
+      "candidate_graph": "MISSING"
+    },
+    {
+      "determinant_class": "provider/consumer contract and rule hashes",
+      "status": "IMMUTABLE_OWNER_CODE_IDENTITY_AT_THIS_GRAIN",
+      "root": null,
+      "candidate_graph": "NOT_A_LIFECYCLE_EDGE"
+    }
+  ],
+  "source_universe_cross_owner_failure": {
+    "provider_identity_bindings_explicitly_include_source_universe_ref": true,
+    "composition_validates_source_universe": true,
+    "provider_receipt_carries_source_universe_refs": true,
+    "candidate_says_source_universe_change_root_stageable": true,
+    "registered_in_census_graph": false,
+    "at19_interpretation": "MISSING_CROSS_OWNER_DEPENDENCY"
+  },
+  "producer_fact_failure": {
+    "composition_consumes_empirical_fact": true,
+    "provider_receipt_carries_producer_fact_ref": true,
+    "dependent_product_enum_added_by_candidate": true,
+    "dependent_product_class_used_in_n10e_census": false,
+    "at19_interpretation": "MISSING_DEPENDENT_PRODUCT_EDGE"
+  },
+  "documentary_census_conflict": {
+    "executable_target_class": "UNOWNED",
+    "return_target_class": "IMMUTABLE_IDENTITY_MATERIAL",
+    "conditioner_coordinate_mentioned_in_return_but_not_registered": true
+  },
+  "ownership_authenticity": {
+    "exactref_directly_coerced_to_authorityref": false,
+    "production_ownership_binding_verified_against_determinant_fields": false,
+    "court_r12_per_determinant_binding": false,
+    "court_r12_method": "global union of owner refs recorded anywhere across query/predicate/binding/witness",
+    "risk": "caller can attach an arbitrary existing AuthorityRef to the wrong determinant and manufacture a root edge"
+  }
+}

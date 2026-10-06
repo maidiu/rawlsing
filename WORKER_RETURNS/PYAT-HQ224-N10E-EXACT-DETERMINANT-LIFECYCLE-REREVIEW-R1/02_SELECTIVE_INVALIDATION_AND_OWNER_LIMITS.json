@@ -1,0 +1,82 @@
+{
+  "schema": "PYAT_HQ224_02_SELECTIVE_INVALIDATION_AND_OWNER_LIMITS@1",
+  "disposition": "FAIL__QUERY_PREDICATE_LIFECYCLE_WITNESS_NOT_GOVERNED",
+  "candidate_commit": "22a868cede42b9c92dc78ef746f89ba85d6d8189",
+  "query_revision_ceremony": {
+    "prior_authority": "C1-AT07-QUERY@1.0.0",
+    "successor_authority": "C1-AT07-QUERY@2.0.0",
+    "maintenance_owner": "AuthorityMaintenanceExecutor",
+    "candidate_seal_path_exists": true,
+    "owner_seal_constructs_snapshot_from_candidate_material": true
+  },
+  "authority_impersonation": {
+    "sealed_snapshot_consumed_by_rebuild": false,
+    "rebuild_source": "case['query_authority'] old fixture AuthoritySnapshot",
+    "fields_replaced_by_rebuild": [
+      "authority_version",
+      "interpretation_semantics_fingerprint",
+      "authority_content_hash"
+    ],
+    "material_not_replaced": [
+      "scope_envelope",
+      "effective_time_or_interval",
+      "parent_authority_refs",
+      "supersession_refs",
+      "replay_protocol_ref",
+      "dependency_refs",
+      "producer_replay_locator_or_reference_root"
+    ],
+    "sealed_candidate_material_differs_from_cloned_fixture_body": true,
+    "empirical_authority_snapshot_recomputes_authority_content_hash_from_body": false,
+    "validate_authority_snapshot_recomputes_hash_from_body": false,
+    "authority_registry_keys_by_exposed_authority_ref": true,
+    "effect": "A different fixture snapshot body is accepted under the sealed successor exact key. The recomputation is not a clean consumer of the sealed governed successor snapshot.",
+    "classification": "AUTHORITY_IDENTITY_LAUNDERING / FIXTURE_SELF_AUTHORIZATION"
+  },
+  "malformed_predicate_replacement": {
+    "callback_registered_for_query_and_predicate_is_same": true,
+    "callback_return": "rebuilt['query'].ref",
+    "predicate_expected_replacement": "rebuilt['predicate'].ref",
+    "predicate_actual_replacement_kind": "EmpiricalQuerySpec@1.0.0",
+    "predicate_old_kind": "EmpiricalPredicate@1.0.0",
+    "candidate_return_exposes_cross_kind_pair": true,
+    "owner_recompiler_enforces_new_ref_differs": true,
+    "owner_recompiler_enforces_kind_family_continuity": false,
+    "result": "PREDICATE_AT19_REPLACEMENT_NOT_PROVED"
+  },
+  "selective_invalidation_graph_fixture": {
+    "owner_to_determinant_delete_hostile": "MECHANICALLY_VALID",
+    "determinant_to_product_delete_hostile": "MECHANICALLY_VALID",
+    "nonconsumer_unaffected_hostile": "MECHANICALLY_VALID",
+    "all_and_only_end_to_end_claim": "NOT_ESTABLISHED",
+    "reasons": [
+      "actual runner does not use determinant ownership census",
+      "consumed determinant census is incomplete",
+      "query/predicate revision authority witness is invalid",
+      "predicate replacement is wrong family"
+    ]
+  },
+  "named_limitations": {
+    "C11LogicalRelease": {
+      "classification": "UPSTREAM_OWNER_CONTRACT_BLOCKER",
+      "current_owner_exists": false,
+      "local_n10e_graph_algorithm_defect": false,
+      "acceptable_to_name_without_inventing_owner": true,
+      "prevents_universal_release_change_lifecycle_closure": true
+    },
+    "comparability": {
+      "classification": "UPSTREAM_AUTHORITY_MATERIAL_BLOCKER",
+      "recorded_authority_ref_exists": true,
+      "full_installed_AuthoritySnapshot_exists": false,
+      "current_AUTHORITY_KINDS_has_comparability": false,
+      "graph_reachability_shape_proved": true,
+      "governed_revision_proved": false
+    },
+    "affected_but_identical": {
+      "classification": "ACCEPTED_OWNER_CONTRACT_LIMITATION",
+      "owner_rejects_unchanged_ref": true,
+      "candidate_truthfully_states_limitation": true,
+      "blocking_for_this_rereview": false
+    }
+  }
+}
