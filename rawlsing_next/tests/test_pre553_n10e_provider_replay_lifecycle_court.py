@@ -548,11 +548,17 @@ def test_07_exact_product_and_determinants_register_through_current_machinery():
         case["model_rule"].model_authority_ref,
     )
     assert set(registration.determinant_exact_refs) == {
-        case["empirical_query"].ref,
-        case["predicate"].ref,
-        case["consumer_query"].ref,
-        case["condition_binding_witness"].witness_ref,
+        row.determinant_ref for row in _census(case, result)
     }
+    assert not registration.unclassified_determinants()
+    assert any(
+        row.determinant_ref.kind == "EmpiricalFact@1.0.0"
+        for row in registration.determinant_ownerships
+    )
+    assert any(
+        row.determinant_ref.kind == "EmpiricalUniverse@1.0.0"
+        for row in registration.determinant_ownerships
+    )
     # The graph reaches the product through exactly those determinant edges.
     graph = registry.build_graph()
     assert graph.affected(
@@ -878,22 +884,8 @@ def test_11b_unaffected_product_is_reached_by_neither_revision():
 
     sibling_case = _case("reverse")
     sibling_result = _provide(sibling_case)
-    sibling_ref = _product_ref(sibling_result.result_identity_hash, "reverse")
-    sibling_registry = AnalyticalDependencyRegistry()
-    sibling_registry.register(
-        AnalyticalProductRegistration(
-            product_ref=sibling_ref,
-            product_identity_hash=sibling_result.result_identity_hash,
-            determinant_authority_refs=(
-                sibling_case["model_rule"].model_authority_ref,
-            ),
-            determinant_exact_refs=(
-                sibling_case["empirical_query"].ref,
-                sibling_case["predicate"].ref,
-                sibling_case["consumer_query"].ref,
-                sibling_case["condition_binding_witness"].witness_ref,
-            ),
-        )
+    sibling_registry, sibling_ref = _census_registry(
+        sibling_case, sibling_result
     )
     # Two genuinely distinct model authorities, so the graph can discriminate.
     assert (
