@@ -1,29 +1,52 @@
 {
-  "schema": "HQ226_F7_RESOLVER_AUTHENTICITY_FINAL_REREVIEW_DISPOSITION@1.0.0",
+  "schema": "HQ226_F7_RESOLVER_AUTHENTICITY_FINAL_REREVIEW_DISPOSITION@1.1.0",
   "branch": "agent/reviewer-pyat-hq226-f7-resolver-authenticity-final-rereview-r1",
   "commission_tip": "2768e28eb12834884e7cd1b8108a5a7d2ef029e5",
   "candidate_return": "45b721ee13209b9c0d9ecce3023cd1902de21302",
   "code_head": "cb57b0a9c75ec0a01e78d2142afae757c131e5fb",
+  "prior_review": "1b3648bb8a0ecfaafe05ca5d812236f068499b84",
   "disposition": "F7_RESOLVER_AUTHENTICITY_REPAIR_PARTIAL__NAMED_DEFECT",
   "adoption_ready": false,
   "authority_overreach": false,
   "runtime_blocked_only": false,
-  "new_blocker": {
-    "id": "F7-RR-04D__EXACT_RESOLVER_INSTANCE_CAN_SHADOW_INTERNAL_OWNER_DISPATCH",
-    "class": "LOCAL_F7_AUTHORITY_AUTHENTICITY_DEFECT",
-    "summary": "HQ225 binds the outer call to SourceRelationResolver.decide non-virtually, but that base method dynamically dispatches through instance-resolved owner helpers such as resolve_exact and _validate_positive. The full owner path is therefore not yet fixed to adopted implementations.",
-    "architecture_reopen_required": false,
-    "closure_requirement": "Bind the complete owner lookup/validation path so caller-side exact-instance method replacement cannot alter adjudication, then execute F7 and M1 runtime courts including an internal-subdispatch witness."
+  "blockers": [
+    {
+      "id": "F7-RR-04D__EXACT_RESOLVER_INSTANCE_CAN_SHADOW_INTERNAL_OWNER_DISPATCH",
+      "class": "LOCAL_F7_AUTHORITY_AUTHENTICITY_DEFECT",
+      "summary": "HQ225 binds only the outer entry to SourceRelationResolver.decide non-virtually. The adopted base method still dynamically resolves owner-critical helpers/state through the caller-supplied exact instance, so exact-type identity does not prove constructor-validated relation custody or full adopted-owner provenance.",
+      "architecture_reopen_required": false,
+      "closure_requirement": "Bind/freeze the complete owner lookup and validation path, including exact relation custody and nested authority-registry provenance, against caller-side exact-instance replacement."
+    },
+    {
+      "id": "COURT-HQ226-01__STALE_REQUIRE_TARGETED_BREAK_AFTER_DECIDE_SWITCH",
+      "class": "HOSTILE_COURT_FAIL_CAPABILITY_DEFECT",
+      "summary": "The inherited targeted-break court still monkeypatches SourceRelationResolver.require and asserts reopening, but the repaired F7 boundary calls SourceRelationResolver.decide directly. The witness therefore no longer attacks a load-bearing seam and contradicts the candidate source.",
+      "architecture_reopen_required": false,
+      "closure_requirement": "Repair the witness against the actual decide/internal-owner seam and execute the exact F7 plus M1 courts."
+    }
+  ],
+  "reinforcing_finding": {
+    "id": "F7-RR-04E__NESTED_AUTHORITY_REGISTRY_PROVENANCE_NOT_EXACT",
+    "summary": "SourceRelationResolver accepts AuthorityRegistry subclasses via isinstance and later calls self._registry.resolve_exact virtually; F7 cross-binds AuthorityRef identity but does not prove identical internal snapshot semantics at the full relation scope."
   },
   "sustained": [
-    "exact concrete type rejects subclasses and duck objects",
-    "non-virtual outer decide bypasses direct instance-side decide replacement",
-    "concrete unmodified resolver refusal/positive logic remains coherent",
-    "HQ222 A/B cross-binding remains present",
+    "exact concrete type rejects subclasses and duck objects at the F7 outer boundary",
+    "non-virtual outer decide bypasses direct exact-instance decide replacement",
+    "known unmodified concrete resolver negative and positive paths remain source-coherent",
+    "HQ222 relation-decision/outer-authority ref cross-binding remains present",
     "HQD-216 positive service shapes remain source-reachable",
-    "12 states / 19 authority kinds and prior F7 ceilings unchanged"
+    "12 states / 19 authority kinds and prior F7 semantic ceilings remain unchanged",
+    "no legitimate production resolver subclass/adapter was recovered, so exact top-level type is not shown to overreach current production consumers"
   ],
+  "runtime": {
+    "exact_candidate_runtime_obtained": false,
+    "actions_runs_on_code_head": 0,
+    "reviewer_container_python": "3.13.5",
+    "reviewer_container_pytest": "9.0.2",
+    "repo_checkout_available": false,
+    "runtime_pass_claimed": false
+  },
   "self_adoption": "FORBIDDEN__NOT_PERFORMED",
-  "terminal": "HQ226_F7_RESOLVER_AUTHENTICITY_FINAL_REREVIEW_RETURNED__INTERNAL_OWNER_DISPATCH_AUTHENTICITY_REPAIR_REQUIRED",
+  "terminal": "HQ226_F7_RESOLVER_AUTHENTICITY_FINAL_REREVIEW_RETURNED__FULL_OWNER_PATH_AND_COURT_REPAIR_REQUIRED",
   "return_commit": "REPORT_OUT_OF_BAND_AFTER_PUSH__NO_SELF_REFERENTIAL_SHA"
 }
