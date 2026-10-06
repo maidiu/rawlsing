@@ -2516,9 +2516,10 @@ def test_r18_fresh_runner_registers_complete_classified_census():
     direct = {
         row["authority_id"] for row in observed["registered_determinant_authority_refs"]
     }
-    assert case_model_ids := {
-        _case(DIRECTION)["model_rule"].model_authority_ref.authority_id,
-        _case(DIRECTION)["model_rule"].walkback_authority_ref.authority_id,
+    model_case = _case(DIRECTION)
+    case_model_ids = {
+        model_case["model_rule"].model_authority_ref.authority_id,
+        model_case["model_rule"].walkback_authority_ref.authority_id,
     }
     assert case_model_ids <= direct
 
