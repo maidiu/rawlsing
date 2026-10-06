@@ -131,6 +131,127 @@ def provide(case: dict[str, Any], rule: Any) -> Any:
     )
 
 
+def _producer_fact(produced: Any) -> Any:
+    composition = produced.composition_result
+    facts = tuple(composition.producer_result.facts)
+    matches = tuple(fact for fact in facts if fact.ref == composition.producer_fact_ref)
+    if len(matches) != 1:
+        raise AssertionError("provider composition did not resolve exactly one producer EmpiricalFact")
+    return matches[0]
+
+
+def _complete_determinant_census(
+    case: dict[str, Any], produced: Any
+) -> tuple[tuple[Any, ...], tuple[ExactDeterminantOwnership, ...], Any]:
+    """Immediate consumed boundary plus authenticated owner evidence for every exact ref."""
+
+    query = case["empirical_query"]
+    predicate = case["predicate"]
+    consumer_query = case["consumer_query"]
+    witness = case["condition_binding_witness"]
+    binding = case["conditioner_binding"]
+    universe = case["source"]["universe"]
+    fact = _producer_fact(produced)
+
+    owned = (
+        ExactDeterminantOwnership(
+            determinant_ref=query.ref,
+            root_class=DETERMINANT_ROOT_AUTHORITY,
+            owning_authority_refs=tuple(query.authority_snapshot_refs),
+            owner_evidence=DeterminantOwnerEvidence(
+                query.ref,
+                query.semantic_projection(),
+                ("authority_snapshot_refs",),
+                tuple(query.authority_snapshot_refs),
+            ),
+        ),
+        ExactDeterminantOwnership(
+            determinant_ref=predicate.ref,
+            root_class=DETERMINANT_ROOT_AUTHORITY,
+            owning_authority_refs=tuple(predicate.authority_snapshot_refs),
+            owner_evidence=DeterminantOwnerEvidence(
+                predicate.ref,
+                predicate.semantic_projection(),
+                ("authority_snapshot_refs",),
+                tuple(predicate.authority_snapshot_refs),
+            ),
+        ),
+        ExactDeterminantOwnership(
+            determinant_ref=consumer_query.ref,
+            root_class=DETERMINANT_ROOT_AUTHORITY,
+            owning_authority_refs=(binding.comparability_authority_ref,),
+            owner_evidence=DeterminantOwnerEvidence(
+                consumer_query.ref,
+                consumer_query.material(),
+                ("conditioner_bindings.0.comparability_authority_ref",),
+                (binding.comparability_authority_ref,),
+            ),
+        ),
+        ExactDeterminantOwnership(
+            determinant_ref=witness.witness_ref,
+            root_class=DETERMINANT_ROOT_AUTHORITY,
+            owning_authority_refs=tuple(witness.pairing_authority_refs),
+            owner_evidence=DeterminantOwnerEvidence(
+                witness.witness_ref,
+                witness.identity_material,
+                ("pairing_authority_ref",),
+                tuple(witness.pairing_authority_refs),
+            ),
+        ),
+        ExactDeterminantOwnership(
+            determinant_ref=universe.ref,
+            root_class=DETERMINANT_ROOT_AUTHORITY,
+            owning_authority_refs=tuple(universe.authority_snapshot_refs),
+            owner_evidence=DeterminantOwnerEvidence(
+                universe.ref,
+                universe.semantic_projection(),
+                ("authority_snapshot_refs",),
+                tuple(universe.authority_snapshot_refs),
+            ),
+        ),
+        ExactDeterminantOwnership(
+            determinant_ref=fact.ref,
+            root_class=DETERMINANT_DEPENDENT_PRODUCT,
+            owning_authority_refs=tuple(fact.authority_snapshot_refs),
+            owner_evidence=DeterminantOwnerEvidence(
+                fact.ref,
+                fact.semantic_projection(),
+                ("authority_snapshot_refs",),
+                tuple(fact.authority_snapshot_refs),
+            ),
+            reason="upstream EmpiricalFact is a governed exact product",
+        ),
+        ExactDeterminantOwnership(
+            determinant_ref=case["release_refs"][0],
+            root_class=DETERMINANT_UNOWNED,
+            lifecycle_relevant=False,
+            reason="C11LogicalRelease has no current lifecycle AuthorityRef owner",
+        ),
+        ExactDeterminantOwnership(
+            determinant_ref=consumer_query.target_ref,
+            root_class=DETERMINANT_IMMUTABLE_IDENTITY,
+            lifecycle_relevant=False,
+            reason="QUESTION_NATIVE target is immutable request identity at this grain",
+        ),
+        ExactDeterminantOwnership(
+            determinant_ref=binding.subject_fact_ref,
+            root_class=DETERMINANT_IMMUTABLE_IDENTITY,
+            lifecycle_relevant=False,
+            reason="subject-condition preimage is immutable exact binding identity",
+        ),
+        ExactDeterminantOwnership(
+            determinant_ref=binding.empirical_coordinate_ref,
+            root_class=DETERMINANT_IMMUTABLE_IDENTITY,
+            lifecycle_relevant=False,
+            reason="empirical coordinate is immutable exact binding identity at this grain",
+        ),
+    )
+    by_key = {row.determinant_ref.key: row for row in owned}
+    refs = tuple(sorted((row.determinant_ref for row in by_key.values()), key=lambda ref: ref.key))
+    ownerships = tuple(by_key[ref.key] for ref in refs)
+    return refs, ownerships, fact
+
+
 def run(determinants: dict[str, Any]) -> dict[str, Any]:
     """Execute the whole provider -> consumer -> dependency/lifecycle/replay chain."""
 
