@@ -1,0 +1,94 @@
+{
+  "schema": "PYAT_HQ220_PRODUCTIVE_PATH_PRECEDENCE_NONCOLLAPSE@1.0.0",
+  "lane": "PYAT-HQ220-F7-AUTHORITY-CHAIN-FINAL-REREVIEW-R1",
+  "candidate": "9adc8cc9ba0942db974dddf809206de2a2fd231b",
+  "hqd216_productive_adequacy": {
+    "source_level_verdict": "LOCAL_POSITIVE_PATHS_REMAIN_REACHABLE",
+    "same_universe_positive_shape": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED",
+    "exact_zero_shape": "NO_AUTHORIZED_CHANGE",
+    "positive_nonzero_shape": "INCREASE",
+    "negative_nonzero_shape": "DECREASE",
+    "cross_universe_genuine_owner_shape": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED",
+    "refuse_everything_collapse": false,
+    "qualification": "These shapes are sustained by exact source/court inspection, but final local acceptance is still blocked by the authority-chain defects in 01 and 02."
+  },
+  "precedence": {
+    "verdict": "SUSTAINED",
+    "relation_states": 12,
+    "authority_kinds": 19,
+    "identity_codes_map_to_existing_state": true,
+    "higher_priority_authority_failure_can_dominate_identity": true,
+    "identity_cannot_fall_through_to_positive": true,
+    "identity_outranks_lower_negative_or_comparable_states": true,
+    "no_new_reason_family": true
+  },
+  "court_collection_reconstruction": {
+    "reviewer_execution_performed": false,
+    "method": "Static reconstruction from the exact committed test files in the Browser/GitHub-only lane.",
+    "f7_test_functions": 93,
+    "f7_prior_collected": 96,
+    "hq219_added_test_functions": 14,
+    "hq219_added_parametrization_extra_items": 4,
+    "f7_reconstructed_collected": 114,
+    "m1_test_functions": 24,
+    "m1_four_case_parametrization_extra_items": 3,
+    "m1_reconstructed_collected": 27,
+    "aggregate_reconstructed_collected": 141,
+    "candidate_report_matches_reconstruction": true
+  },
+  "negative_control_attack": {
+    "candidate_claim": "new 114-item court against pre-repair binder: 14 failed / 100 passed",
+    "independently_executed_by_reviewer": false,
+    "source_level_consistency": "The named failure classes are consistent with the committed test delta and cover RR-02B, RR-03 and RR-04. No source contradiction to the 14 count was found.",
+    "two_new_witnesses_that_pass_pre_repair": [
+      "lawful positive cross-universe owner case",
+      "wrong-kind construction guard"
+    ],
+    "misrepresented_as_defect_detection": false
+  },
+  "targeted_fail_capability": {
+    "repair_A_use_scope": {
+      "verdict": "DISCRIMINATING",
+      "reason": "same authority/use with target_use_refs absent versus explicitly present reaches opposite outcomes"
+    },
+    "repair_B_identity_owner": {
+      "verdict": "FAIL__TARGETED_BREAK_IS_NOT_ACTUALLY_A_BREAK",
+      "finding": "test_hq219_targeted_break_rr03_identity_gate_actually_consults_the_owner first observes an unsatisfied-owner refusal, then monkeypatches only _scope_covers_exact_ref_set and constructs a separate satisfied-owner registry. It never disables owner satisfaction consultation on the same fixture, so the green result does not prove the owner-consultation mechanism itself is fail-capable.",
+      "impact": "The commission required a targeted break for each repair mechanism. RR-03 does not meet that requirement."
+    },
+    "repair_C_source_relation_owner": {
+      "verdict": "LOAD_BEARING_CALL_PROVED__BUT_EXPOSES_RETURN_VALIDATION_GAP",
+      "finding": "Monkeypatching SourceRelationResolver.require to return without raising makes a DENIED relation reach the positive F7 state. This proves the call is load-bearing, but also demonstrates that F7 accepts any non-raising return and does not inspect the returned RelationDecision."
+    }
+  },
+  "regression_slice": {
+    "candidate_reported_pre_existing_failure_or_error_identities": 146,
+    "candidate_reports_identity_delta": "empty",
+    "reviewer_found_exact_tie_to_f7_or_m1_courts": false,
+    "charged_as_f7_defect": false
+  },
+  "sustained_noncollapse_invariants": [
+    "RR-01 exact comparability-requirement content binding",
+    "RR-02 complete ExactRef comparison when an exact use scope collection is present",
+    "RR-05 measure binding and exact serialization",
+    "RR-06 accepted missing-order-basis terminal",
+    "RR-07 total precedence",
+    "every supplied target-use permission ref is iterated",
+    "exactly 12 temporal relation states",
+    "exactly 19 authority kinds",
+    "exact-zero uses exact int/Decimal/Fraction arithmetic with no tolerance/deadband/rounding",
+    "3+ anchors refuse",
+    "prior-F7 mapping remains live",
+    "negative/refusal receipt implies NOT_COMPARABLE",
+    "live frozen backfill guard remains live",
+    "no F8 consumption",
+    "no source selection or ranking",
+    "no interpolation or trajectory",
+    "no causation/currentness authority",
+    "no scalar temporal pressure",
+    "no pooling",
+    "no equivalence creation",
+    "no actor/person power"
+  ],
+  "candidate_environment_provenance": "HQ219 reports a reconstructed-equivalent local environment using CPython 3.11.3 with controlled pytest settings, explicitly not a governed certification; the historical HQ214 3.11.3/3.12.14 conflict is left unresolved. No GitHub workflow run is associated with candidate commit 9adc8cc9ba0942db974dddf809206de2a2fd231b."
+}
