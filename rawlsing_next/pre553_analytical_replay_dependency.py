@@ -545,22 +545,12 @@ class DeterminantOwnerEvidence:
 
 @dataclass(frozen=True)
 class ExactDeterminantOwnership:
-    """One consumed exact determinant and how it can lawfully reach invalidation.
-
-    ``owning_authority_refs`` must be authorities **recorded** on the determinant
-    itself (for example an ``authority_snapshot_refs`` entry, a recorded
-    ``comparability_authority_ref``/``pairing_authority_ref``, or a recorded model
-    authority). The adapter never infers ownership from a ref name, kind or tuple
-    position, and never promotes an ``ExactRef`` into an ``AuthorityRef``.
-
-    A determinant classified :data:`DETERMINANT_IMMUTABLE_IDENTITY` or
-    :data:`DETERMINANT_UNOWNED` carries no owning authority by construction: emitting a
-    root edge for it would be decorative, because nothing could seed the traversal.
-    """
+    """One consumed exact determinant and its owner-authenticated lifecycle class."""
 
     determinant_ref: ExactRef
     root_class: str
     owning_authority_refs: tuple[AuthorityRef, ...] = ()
+    owner_evidence: DeterminantOwnerEvidence | None = None
     lifecycle_relevant: bool = True
     reason: str = ""
 
@@ -576,36 +566,43 @@ class ExactDeterminantOwnership:
             raise AnalyticalReplayDependencyError(
                 f"unknown determinant root_class {self.root_class!r}"
             )
-        object.__setattr__(
-            self, "owning_authority_refs", _auths(self.owning_authority_refs)
-        )
+        owners = _auths(self.owning_authority_refs)
+        object.__setattr__(self, "owning_authority_refs", owners)
         if self.root_class in DETERMINANT_ROOT_CLASSES:
-            if not self.owning_authority_refs:
+            if not owners:
                 raise UnownedDeterminantRefused(
-                    "UNOWNED_DETERMINANT_REFUSED: determinant "
-                    f"{self.determinant_ref.key} is classified "
-                    f"{self.root_class!r} but names no owning authority, so no governed "
-                    "change could ever seed its reachability. Refusing to emit an "
-                    "unreachable root edge."
+                    "UNOWNED_DETERMINANT_REFUSED: lifecycle-relevant determinant "
+                    f"{self.determinant_ref.key} names no governing authority"
                 )
-        elif self.owning_authority_refs:
-            raise AnalyticalReplayDependencyError(
-                f"determinant {self.determinant_ref.key} is classified "
-                f"{self.root_class!r} and may not also declare owning authorities"
-            )
+            if not isinstance(self.owner_evidence, DeterminantOwnerEvidence):
+                raise DeterminantOwnershipAuthenticationError(
+                    "DETERMINANT_OWNERSHIP_AUTHENTICATION_ERROR: rooted determinant "
+                    "requires determinant-specific recorded owner evidence"
+                )
+            if self.owner_evidence.determinant_ref != self.determinant_ref:
+                raise DeterminantOwnershipAuthenticationError(
+                    "DETERMINANT_OWNERSHIP_AUTHENTICATION_ERROR: evidence names a "
+                    "different determinant"
+                )
+            if self.owner_evidence.owning_authority_refs != owners:
+                raise DeterminantOwnershipAuthenticationError(
+                    "DETERMINANT_OWNERSHIP_AUTHENTICATION_ERROR: ownership refs do not "
+                    "match authenticated determinant evidence"
+                )
+        else:
+            if owners or self.owner_evidence is not None:
+                raise AnalyticalReplayDependencyError(
+                    f"determinant {self.determinant_ref.key} is classified "
+                    f"{self.root_class!r} and may not declare owner evidence"
+                )
         if self.lifecycle_relevant and self.root_class not in DETERMINANT_ROOT_CLASSES:
             raise UnownedDeterminantRefused(
-                "UNOWNED_DETERMINANT_REFUSED: determinant "
-                f"{self.determinant_ref.key} may not be marked lifecycle_relevant while "
-                f"classified {self.root_class!r} with no owning authority, because no "
-                "governed change could seed its reachability. Either give it its "
-                "recorded owning authority or classify it as immutable identity material."
+                "UNOWNED_DETERMINANT_REFUSED: immutable/unowned determinant "
+                f"{self.determinant_ref.key} must explicitly set lifecycle_relevant=False"
             )
 
     @property
     def is_reachable(self) -> bool:
-        """Whether a governed change can actually seed this determinant."""
-
         return self.root_class in DETERMINANT_ROOT_CLASSES
 
 
