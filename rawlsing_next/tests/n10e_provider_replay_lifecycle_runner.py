@@ -279,23 +279,22 @@ def run(determinants: dict[str, Any]) -> dict[str, Any]:
     )
 
     # ---- 2. dependency registration over the determinants actually consumed --
+    exact_refs, ownerships, producer_fact = _complete_determinant_census(case, produced)
     registry = AnalyticalDependencyRegistry()
     registry.register(
         AnalyticalProductRegistration(
             product_ref=product_ref,
             product_identity_hash=produced.result_identity_hash,
             determinant_authority_refs=(old_model,),
-            determinant_exact_refs=(
-                case["empirical_query"].ref,
-                case["predicate"].ref,
-                case["consumer_query"].ref,
-                case["condition_binding_witness"].witness_ref,
-            ),
+            determinant_exact_refs=exact_refs,
+            determinant_ownerships=ownerships,
         )
     )
+    # Lifecycle closure is requested here, so any omitted classification fails now.
+    graph = registry.build_graph()
 
     # ---- 3. accepted lifecycle owner performs the dependency transition -----
-    transition = _stage_transition(case, product_ref, old_model)
+    transition = _stage_transition(case, registry, product_ref, old_model)
     successor = transition["successor"]
 
     def recompose(affected_ref, authority):
@@ -356,15 +355,19 @@ def run(determinants: dict[str, Any]) -> dict[str, Any]:
         "registered_determinant_authority_refs": [
             a.as_dict() for a in (old_model,)
         ],
-        "registered_determinant_exact_refs": [
-            x.as_dict()
-            for x in (
-                case["empirical_query"].ref,
-                case["predicate"].ref,
-                case["consumer_query"].ref,
-                case["condition_binding_witness"].witness_ref,
-            )
+        "registered_determinant_exact_refs": [x.as_dict() for x in exact_refs],
+        "registered_determinant_classifications": [
+            {
+                "ref": row.determinant_ref.as_dict(),
+                "root_class": row.root_class,
+                "lifecycle_relevant": row.lifecycle_relevant,
+                "owning_authority_refs": [
+                    authority.as_dict() for authority in row.owning_authority_refs
+                ],
+            }
+            for row in ownerships
         ],
+        "producer_fact_ref": producer_fact.ref.as_dict(),
         "graph_affected": [x.as_dict() for x in receipt.affected_dependent_refs],
         "graph_unaffected": [
             x.as_dict() for x in receipt.unaffected_dependent_refs
@@ -394,7 +397,10 @@ def run(determinants: dict[str, Any]) -> dict[str, Any]:
 
 
 def _stage_transition(
-    case: dict[str, Any], product_ref: Any, old_model: Any
+    case: dict[str, Any],
+    registry: AnalyticalDependencyRegistry,
+    product_ref: Any,
+    old_model: Any,
 ) -> dict[str, Any]:
     """Stage one governed model-authority revision around the provider product.
 
@@ -410,11 +416,7 @@ def _stage_transition(
     )
 
     direction = case["direction"]
-    graph = SemanticDeterminantGraph(
-        authority_edges=((old_model, product_ref),),
-        dependency_edges=(),
-        known_dependent_refs=(product_ref,),
-    )
+    graph = registry.build_graph()
     executor = AuthorityMaintenanceExecutor(
         initial_snapshots=(fx.model_authority_snapshot(direction),),
         initial_current_selection={old_model.authority_id: old_model},
