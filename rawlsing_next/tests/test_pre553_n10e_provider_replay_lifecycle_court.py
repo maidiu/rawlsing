@@ -2259,11 +2259,13 @@ def test_r10_fresh_process_replays_retained_determinants_while_revision_is_deter
     assert observed["product_identity_hash"] == baseline
 
     # The revised identity is deterministic across two independent ceremonies.
+    first_stage = _query_authority_revision(case)
+    second_stage = _query_authority_revision(case)
     first = _rebuild_under_query_authority(
-        case, _query_authority_revision(case)["successor"]
+        case, first_stage["sealed_snapshot"]
     )["result"].result_identity_hash
     second = _rebuild_under_query_authority(
-        case, _query_authority_revision(case)["successor"]
+        case, second_stage["sealed_snapshot"]
     )["result"].result_identity_hash
     assert first == second
     # ...and it genuinely differs from the unrevised one.
