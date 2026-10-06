@@ -1,0 +1,101 @@
+{
+  "schema": "PYAT_HQ220_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ220-F7-AUTHORITY-CHAIN-FINAL-REREVIEW-R1",
+  "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_REPAIR",
+  "commission_tip": "c1d64e74b71043258653a8d1796d0097f0ce549e",
+  "candidate": "agent/rabochii-pyat-hq219-f7-authority-chain-repair-r1 @ 9adc8cc9ba0942db974dddf809206de2a2fd231b",
+  "prior_final_rereview": "1c8b8ce186682d212ceec460b7b707421b6f0d27",
+  "accepted_contract": "c57a96897788108db7b194e4e51691d1ca8ab729",
+  "disposition": "F7_AUTHORITY_CHAIN_REPAIR_PARTIAL__NAMED_DEFECT",
+  "ready_for_hq_adoption": false,
+  "f7_adopted": false,
+  "architecture_reopen_required": false,
+  "authority_overreach_found": false,
+  "blocking_defects": [
+    {
+      "id": "F7-RR-04B",
+      "finding": "The real SourceRelationResolver.require path is called, but its returned RelationDecision is discarded. The exact relation-authorizing authority_ref is not cross-bound to F7's separately supplied SOURCE_EQUIVALENCE authority snapshot and is absent from F7's positive authority closure.",
+      "impact": "F7 can emit a positive cross-universe receipt with genuine relation authority A while recording unrelated positive authority B as the SOURCE_EQUIVALENCE snapshot. The authority chain is therefore not exact or auditable."
+    },
+    {
+      "id": "F7-RR-03B",
+      "finding": "The TEMPORAL_EVIDENCE snapshot used to authorize temporal identity is not required to cover the exact compared source universes when it is resolved.",
+      "impact": "A positive TEMPORAL_EVIDENCE snapshot outside the compared source scope can still authorize identity if it carries the custom identity keys."
+    }
+  ],
+  "secondary_named_defects": [
+    {
+      "id": "F7-RR-02C",
+      "finding": "F7 recognizes only EXPLICIT_UNRESTRICTED while adopted general authority law also recognizes UNRESTRICTED_BY_THIS_AUTHORITY.",
+      "impact": "A lawfully explicit unrestricted authority can be falsely refused, weakening local productive compatibility."
+    },
+    {
+      "id": "COURT-HQ220-01",
+      "finding": "The RR-03 targeted-break witness does not actually break owner satisfaction consultation on the same fixture; the commission's fail-capability requirement is therefore not satisfied for Repair B."
+    }
+  ],
+  "sustained_repairs": [
+    "RR-02B omission of target_use_refs now fails closed",
+    "complete ExactRef governed-use comparison for explicit exact collections",
+    "caller-minted temporal identity material no longer authorizes by itself",
+    "missing/wrong owner identity ref and false/missing owner satisfaction refuse",
+    "identity detected codes map into existing TEMPORAL_IDENTITY_UNRESOLVED without a thirteenth state",
+    "real source-relation require() is called for cross-universe comparison",
+    "DENIED/wrong-kind/wrong-pair/wrong-use source relations are refused under the concrete adopted owner",
+    "lawful positive arithmetic/service paths remain reachable",
+    "12-state and 19-authority-kind ceilings",
+    "exact-zero/no-deadband law",
+    "broad noncollapse/power ceiling"
+  ],
+  "identity_shape_adjudication": {
+    "shape_is_uncommissioned_new_owner": false,
+    "shape_is_lawful_reuse_of_accepted_owner": true,
+    "real_identity_instance_occupancy_proven": false,
+    "classification": "IDENTITY_CONTRACT_INSTANCE_MISSING remains an upstream dependency / estate occupancy gap under HQD-216, not a reason to call the local shape authority overreach."
+  },
+  "governed_use_adjudication": {
+    "requiring_source_relation_for_governed_use_is_correct": true,
+    "current_source_relation_api_is_exactref_grained": false,
+    "candidate_projection": "governed_use_id.object_id",
+    "producer_compatibility_proven": false,
+    "classification": "integration/producer contract-grain gap to resolve upstream; not a reason to revert to relation-self authorization"
+  },
+  "court_authenticity": {
+    "f7_reconstructed_collected": 114,
+    "m1_reconstructed_collected": 27,
+    "aggregate_reconstructed_collected": 141,
+    "candidate_collection_accounting_supported": true,
+    "negative_control_14_failures_independently_executed": false,
+    "two_nondiscriminating_new_witnesses_disclosed": true,
+    "rr03_targeted_break_valid": false,
+    "pre_existing_146_failure_identities_tied_to_f7": false
+  },
+  "bounded_repair_required": [
+    "Capture and validate the returned SourceRelationResolver.require RelationDecision; conserve its exact relation_ref and authority_ref in F7 provenance/authority closure and eliminate the A/B split.",
+    "Bind the identity-owning TEMPORAL_EVIDENCE authority to the exact source-universe scope required by the comparison.",
+    "Honor the complete already-adopted explicit-unrestricted representation set or explicitly adjudicate one representation obsolete before refusing it.",
+    "Replace the RR-03 targeted-break test with a same-fixture break that disables or falsifies owner satisfaction consultation and demonstrably reopens the caller/self-authorization path."
+  ],
+  "allowed_dispositions_considered": {
+    "ACCEPT_F7_AUTHORITY_CHAIN_REPAIR__READY_FOR_HQ_ADOPTION": "NOT SELECTED — exact authority-chain defects remain.",
+    "F7_AUTHORITY_CHAIN_REPAIR_PARTIAL__NAMED_DEFECT": "SELECTED — defects are bounded, implementation-level and repairable without architecture widening.",
+    "F7_AUTHORITY_CHAIN_REPAIR_AUTHORITY_OVERREACH": "NOT SELECTED — the TEMPORAL_EVIDENCE identity shape is consistent with the accepted owner map; the defects are incomplete binding, not invention of a new owner or authority family.",
+    "F7_AUTHORITY_CHAIN_REREVIEW_BLOCKED_BY_MISSING_EXACT_EVIDENCE": "NOT SELECTED — exact committed source is sufficient to establish the named defects."
+  },
+  "hard_holds_respected": {
+    "raw_source_access": false,
+    "locator_discovery": false,
+    "warrant_issuance": false,
+    "live_c4": false,
+    "c7": false,
+    "actor_person_implementation": false,
+    "architecture_reopen": false,
+    "implementation_edit": false,
+    "repair": false,
+    "merge": false,
+    "rebase": false,
+    "self_adoption": false,
+    "clone": false
+  },
+  "terminal": "HQ220_F7_AUTHORITY_CHAIN_FINAL_REREVIEW_RETURNED__HQ_DECISION_REQUIRED"
+}
