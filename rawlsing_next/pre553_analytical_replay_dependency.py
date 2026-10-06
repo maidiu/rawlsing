@@ -434,6 +434,115 @@ DETERMINANT_ROOT_CLASSES = frozenset(
 )
 
 
+def _material_path(value: Any, path: str) -> Any:
+    current = value
+    for token in path.split("."):
+        if isinstance(current, Mapping):
+            if token not in current:
+                raise DeterminantOwnershipAuthenticationError(
+                    f"DETERMINANT_OWNERSHIP_AUTHENTICATION_ERROR: missing {path!r}"
+                )
+            current = current[token]
+        elif isinstance(current, (list, tuple)):
+            try:
+                current = current[int(token)]
+            except (ValueError, IndexError) as exc:
+                raise DeterminantOwnershipAuthenticationError(
+                    f"DETERMINANT_OWNERSHIP_AUTHENTICATION_ERROR: invalid path {path!r}"
+                ) from exc
+        else:
+            raise DeterminantOwnershipAuthenticationError(
+                f"DETERMINANT_OWNERSHIP_AUTHENTICATION_ERROR: invalid path {path!r}"
+            )
+    return current
+
+
+def _authority_refs_at_path(material: Mapping[str, Any], path: str) -> tuple[AuthorityRef, ...]:
+    raw = _material_path(material, path)
+    if isinstance(raw, AuthorityRef):
+        return (raw,)
+    if isinstance(raw, Mapping):
+        return (authority_ref(raw, path),)
+    if isinstance(raw, (list, tuple)):
+        return tuple(authority_ref(item, path) for item in raw)
+    raise DeterminantOwnershipAuthenticationError(
+        f"DETERMINANT_OWNERSHIP_AUTHENTICATION_ERROR: {path!r} is not authority material"
+    )
+
+
+def _owner_relation_path_allowed(kind: str, path: str) -> bool:
+    exact = {
+        "EmpiricalQuerySpec@1.0.0": {
+            "authority_snapshot_refs",
+            "semantic_fields.query_authority_refs",
+        },
+        "EmpiricalPredicate@1.0.0": {
+            "authority_snapshot_refs",
+            "semantic_fields.grammar_authority_ref",
+        },
+        "EmpiricalUniverse@1.0.0": {"authority_snapshot_refs"},
+        "EmpiricalFact@1.0.0": {"authority_snapshot_refs"},
+        "C1_CONDITION_VALUE_BINDING_WITNESS@2": {"pairing_authority_ref"},
+    }
+    if path in exact.get(kind, set()):
+        return True
+    return (
+        kind == "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1"
+        and path.startswith("conditioner_bindings.")
+        and path.endswith(".comparability_authority_ref")
+    )
+
+
+@dataclass(frozen=True)
+class DeterminantOwnerEvidence:
+    """Exact determinant material plus the exact field relation recording its owner."""
+
+    determinant_ref: ExactRef
+    determinant_material: Mapping[str, Any]
+    owner_relation_paths: tuple[str, ...]
+    owning_authority_refs: tuple[AuthorityRef, ...]
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.determinant_ref, ExactRef):
+            raise DeterminantOwnershipAuthenticationError(
+                "DETERMINANT_OWNERSHIP_AUTHENTICATION_ERROR: determinant_ref must be exact"
+            )
+        material = canonicalize(dict(self.determinant_material))
+        object.__setattr__(self, "determinant_material", material)
+        paths = tuple(str(path) for path in self.owner_relation_paths)
+        if not paths:
+            raise DeterminantOwnershipAuthenticationError(
+                "DETERMINANT_OWNERSHIP_AUTHENTICATION_ERROR: owner relation path required"
+            )
+        for path in paths:
+            if not _owner_relation_path_allowed(self.determinant_ref.kind, path):
+                raise DeterminantOwnershipAuthenticationError(
+                    "DETERMINANT_OWNERSHIP_AUTHENTICATION_ERROR: relation path "
+                    f"{path!r} is not competent for {self.determinant_ref.kind!r}"
+                )
+        object.__setattr__(self, "owner_relation_paths", paths)
+        owners = _auths(self.owning_authority_refs)
+        object.__setattr__(self, "owning_authority_refs", owners)
+        if not owners:
+            raise DeterminantOwnershipAuthenticationError(
+                "DETERMINANT_OWNERSHIP_AUTHENTICATION_ERROR: owner refs required"
+            )
+        if semantic_hash(material) != self.determinant_ref.content_hash:
+            raise DeterminantOwnershipAuthenticationError(
+                "DETERMINANT_OWNERSHIP_AUTHENTICATION_ERROR: evidence body does not "
+                "hash to determinant ref"
+            )
+        recorded: dict[str, AuthorityRef] = {}
+        for path in paths:
+            for ref in _authority_refs_at_path(material, path):
+                recorded[ref.key] = ref
+        if {ref.key for ref in owners} != set(recorded):
+            raise DeterminantOwnershipAuthenticationError(
+                "DETERMINANT_OWNERSHIP_AUTHENTICATION_ERROR: asserted owner does not "
+                "equal determinant-specific recorded owner"
+            )
+
+
 @dataclass(frozen=True)
 class ExactDeterminantOwnership:
     """One consumed exact determinant and how it can lawfully reach invalidation.
