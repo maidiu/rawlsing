@@ -161,7 +161,7 @@ def _complete_determinant_census(
             owner_evidence=DeterminantOwnerEvidence(
                 query.ref,
                 query.semantic_projection(),
-                ("authority_snapshot_refs",),
+                ("semantic_fields.query_authority_refs",),
                 tuple(query.authority_snapshot_refs),
             ),
         ),
@@ -172,7 +172,7 @@ def _complete_determinant_census(
             owner_evidence=DeterminantOwnerEvidence(
                 predicate.ref,
                 predicate.semantic_projection(),
-                ("authority_snapshot_refs",),
+                ("semantic_fields.grammar_authority_ref",),
                 tuple(predicate.authority_snapshot_refs),
             ),
         ),
