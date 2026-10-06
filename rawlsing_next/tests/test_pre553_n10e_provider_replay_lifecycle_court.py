@@ -2168,15 +2168,14 @@ def test_r07_affected_but_identical_recomputation_is_not_representable():
 
     # Supplying NO determinant recomposition at all is equally refused: the adapter will
     # not silently skip a determinant that the owner reported affected.
+    missing = _query_authority_revision(case)
     with pytest.raises(NoLawfulReplacementRepresentable):
         transition_analytical_dependencies(
-            executor=_query_authority_revision(case)["executor"],
-            registry=_query_authority_revision(case)["registry"],
-            seal_ref=_query_authority_revision(case)["seal_ref"],
-            selection_rule_ref=_query_authority_revision(case)["selection_rule_ref"],
-            selection_attestation_ref=_query_authority_revision(case)[
-                "selection_attestation_ref"
-            ],
+            executor=missing["executor"],
+            registry=missing["registry"],
+            seal_ref=missing["seal_ref"],
+            selection_rule_ref=missing["selection_rule_ref"],
+            selection_attestation_ref=missing["selection_attestation_ref"],
             recompose={product_ref.key: identity_product},
             determinant_recompose={},
         )
