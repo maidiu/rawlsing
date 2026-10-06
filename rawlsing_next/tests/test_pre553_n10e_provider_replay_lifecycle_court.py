@@ -1640,6 +1640,21 @@ def test_productive_adequacy_runner_source_has_no_answer_channel():
 #
 # A determinant with no recorded owning authority is classified explicitly and is
 # refused lifecycle coverage rather than given a decorative edge.
+def _direct_model_authorities(case: dict[str, Any]) -> tuple[AuthorityRef, ...]:
+    """Every direct AuthorityRef consumed by the positioned-subject model rule."""
+
+    rule = case["model_rule"]
+    refs = {
+        rule.model_authority_ref.key: rule.model_authority_ref,
+        rule.walkback_authority_ref.key: rule.walkback_authority_ref,
+    }
+    for ref in rule.positive_proxy_authority_refs:
+        refs[ref.key] = ref
+    for step in rule.walkback_steps:
+        refs[step.proxy_authority_ref.key] = step.proxy_authority_ref
+    return tuple(refs[key] for key in sorted(refs))
+
+
 def _producer_fact(result: Any) -> Any:
     composition = result.composition_result
     matches = tuple(
@@ -1766,7 +1781,7 @@ def _census_registry(
         AnalyticalProductRegistration(
             product_ref=product_ref,
             product_identity_hash=result.result_identity_hash,
-            determinant_authority_refs=(case["model_rule"].model_authority_ref,),
+            determinant_authority_refs=_direct_model_authorities(case),
             determinant_exact_refs=tuple(row.determinant_ref for row in ownerships),
             determinant_ownerships=ownerships,
         )
@@ -1925,7 +1940,7 @@ def test_r02_unowned_determinant_cannot_be_claimed_lifecycle_covered():
         AnalyticalProductRegistration(
             product_ref=product_ref,
             product_identity_hash=result.result_identity_hash,
-            determinant_authority_refs=(case["model_rule"].model_authority_ref,),
+            determinant_authority_refs=_direct_model_authorities(case),
             determinant_exact_refs=(release_ref,),
             determinant_ownerships=(
                 ExactDeterminantOwnership(
@@ -2033,7 +2048,7 @@ def test_r04_query_revision_reaches_all_and_only_the_consumers_of_that_determina
         AnalyticalProductRegistration(
             product_ref=non_consumer_ref,
             product_identity_hash="9" * 64,
-            determinant_authority_refs=(case["model_rule"].model_authority_ref,),
+            determinant_authority_refs=_direct_model_authorities(case),
             determinant_exact_refs=(case["consumer_query"].ref,),
             determinant_ownerships=(
                 _owned(
@@ -2384,7 +2399,7 @@ def test_r14_unclassified_consumed_ref_cannot_claim_lifecycle_closure():
         AnalyticalProductRegistration(
             product_ref=product_ref,
             product_identity_hash=result.result_identity_hash,
-            determinant_authority_refs=(case["model_rule"].model_authority_ref,),
+            determinant_authority_refs=_direct_model_authorities(case),
             determinant_exact_refs=(case["empirical_query"].ref, case["predicate"].ref),
             determinant_ownerships=(
                 _owned(
