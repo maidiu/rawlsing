@@ -15,12 +15,13 @@ Current continuation:
 1. 01_POST_ASTRA_DESIGN_TRANSCRIPT_PART_A.md
 2. 02_POST_ASTRA_DESIGN_TRANSCRIPT_PART_B.md
 
-Normalization note:
-- contains only user-visible conversation;
+Capture/normalization note:
+- the platform did not expose a byte-for-byte raw export of this still-live chat through the available file surfaces;
+- these files are therefore a normalized reconstruction of the user-visible conversation, using direct wording where preserved and explicit turn summaries where exact raw-message bytes were not retrievable;
 - no hidden chain-of-thought or private scratch reasoning is included;
-- markdown/layout is normalized for repository readability;
-- this transcript is evidence/source material, not product authority;
-- product authority comes only from separately banked Sorok artifacts/register decisions.
+- this source reconstruction is evidence/context, not product authority;
+- product authority comes only from separately banked Sorok artifacts/register decisions;
+- if an exact platform transcript/export later becomes available, it should be stored alongside this reconstruction rather than silently replacing it.
 
 This continuation covers:
 - interpretation of Astra prototypes;
