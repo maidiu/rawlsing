@@ -632,6 +632,11 @@ def test_08b_fresh_process_claim_is_bounded_at_the_fresh_recomputation_grade(
             case["predicate"].ref,
             case["consumer_query"].ref,
             case["condition_binding_witness"].witness_ref,
+            case["release_refs"][0],
+            case["source"]["universe"].ref,
+            case["consumer_query"].target_ref,
+            case["conditioner_binding"].subject_fact_ref,
+            case["conditioner_binding"].empirical_coordinate_ref,
         ),
         producer_route=result.provider_receipt.provider_route,
         producer_path=PROVIDER_PATH,
@@ -660,12 +665,18 @@ def test_08b_fresh_process_claim_is_bounded_at_the_fresh_recomputation_grade(
     assert receipt.semantic_fields["actual_replay_mechanism"] == (
         MECHANISM_FRESH_PROCESS_ACCEPTED_PRODUCER
     )
-    # The claim binds the exact consumed determinants and nothing else.
+    # The replay claim binds every retained input determinant. The producer
+    # EmpiricalFact is intentionally absent here because it is freshly recomputed.
     assert set(claim.retained_determinant_refs) == {
         case["empirical_query"].ref,
         case["predicate"].ref,
         case["consumer_query"].ref,
         case["condition_binding_witness"].witness_ref,
+        case["release_refs"][0],
+        case["source"]["universe"].ref,
+        case["consumer_query"].target_ref,
+        case["conditioner_binding"].subject_fact_ref,
+        case["conditioner_binding"].empirical_coordinate_ref,
     }
 
 
