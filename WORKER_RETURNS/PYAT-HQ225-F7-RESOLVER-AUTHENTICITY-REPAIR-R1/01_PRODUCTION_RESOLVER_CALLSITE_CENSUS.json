@@ -1,0 +1,35 @@
+{
+  "schema": "HQ225_PRODUCTION_RESOLVER_CALLSITE_CENSUS@1.0.0",
+  "commission": "cfc023818ccf3a954db0e116a7e045c467375891",
+  "code_head": "cb57b0a9c75ec0a01e78d2142afae757c131e5fb",
+  "census_result": {
+    "exact_concrete_owner_boundary_supported": true,
+    "legitimate_production_subclass_found": false,
+    "legitimate_production_adapter_found": false,
+    "owner_module": {
+      "path": "rawlsing_next/pre553_source_relations.py",
+      "roles": [
+        "defines SourceRelationResolver",
+        "constructor validates AuthorityRegistry and exact relation objects",
+        "decide performs exact-key owner adjudication and returns RelationDecision",
+        "require is a thin positive-only wrapper around decide",
+        "typed sample-pooling / estimand-composition / backfill / I03 guards consume SourceRelationResolver",
+        "execute_i03_composite_query_guarded forwards a typed relation_resolver within the owner module"
+      ]
+    },
+    "f7_consumer": {
+      "path": "rawlsing_next/pre553_temporal_comparability.py",
+      "roles": [
+        "aliases _adopted_source_relations.SourceRelationResolver",
+        "TemporalComparisonRequest carries source_relation_resolver as the F7 input surface",
+        "F7 consumes owner adjudication only for cross-universe source equivalence"
+      ]
+    },
+    "repository_search": {
+      "production_subclass_or_factory_outside_owner": "NONE FOUND",
+      "test_construction": "tests construct concrete SourceRelationResolver directly",
+      "caveat": "Repository code search plus exact candidate source inspection; no branch-local production subclass/adapter was identified."
+    }
+  },
+  "adjudication": "Exact concrete type is the current lawful F7 owner boundary. No owner-module change is necessary."
+}

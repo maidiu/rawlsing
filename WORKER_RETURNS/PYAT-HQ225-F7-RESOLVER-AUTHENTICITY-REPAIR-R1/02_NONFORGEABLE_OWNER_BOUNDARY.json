@@ -1,0 +1,30 @@
+{
+  "schema": "HQ225_NONFORGEABLE_OWNER_BOUNDARY@1.0.0",
+  "blocker": "F7-RR-04C__HOSTILE_SOURCE_RELATION_RESOLVER_SUBCLASS_CAN_FORGE_OWNER_DECISION",
+  "before": {
+    "type_gate": "isinstance(resolver, SourceRelationResolver)",
+    "dispatch": "resolver.require(...)",
+    "defect": "subclass passes isinstance and can replace virtual require/decide with a forged request-shaped AUTHORIZED RelationDecision"
+  },
+  "after": {
+    "type_gate": "type(resolver) is SourceRelationResolver",
+    "dispatch": "SourceRelationResolver.decide(resolver, ...)",
+    "decision_origin": "adopted concrete class implementation, invoked non-virtually",
+    "decision_validation": "existing _relation_decision_defect retained",
+    "authority_cross_binding": "existing HQ222 exact decision.authority_ref == resolved SOURCE_EQUIVALENCE snapshot authority_ref retained",
+    "denied_decision_behavior": "base decide returns non-authorized decision; existing validator converts it to SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE",
+    "source_relations_module_modified": false
+  },
+  "why_two_part_boundary_is_required": {
+    "exact_type_only_insufficient": "a normal exact instance can shadow decide/require via instance attributes",
+    "nonvirtual_call_only_insufficient": "without exact type, a subclass carries caller-selected object identity and mutable inherited internals beyond the declared owner boundary",
+    "combined_result": "subclass/duck objects refuse before dispatch; exact instances are adjudicated by the adopted class implementation rather than caller-side virtual lookup"
+  },
+  "architecture_effect": {
+    "new_authority_kind": false,
+    "new_relation_state": false,
+    "new_reason_family": false,
+    "new_source_ontology": false,
+    "architecture_reopen": false
+  }
+}

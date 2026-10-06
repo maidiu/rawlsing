@@ -1,0 +1,60 @@
+{
+  "schema": "HQ225_HOSTILE_SUBCLASS_AND_DUCK_COURT@1.0.0",
+  "code_head": "cb57b0a9c75ec0a01e78d2142afae757c131e5fb",
+  "new_witnesses": [
+    {
+      "name": "test_hq225_rr04c_subclass_full_shaped_authorized_decision_with_real_b_refuses",
+      "attack": "subclass overrides require and returns a complete real RelationDecision shape with genuine positive B authority",
+      "expected": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT / SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE; override never executes"
+    },
+    {
+      "name": "test_hq225_rr04c_subclass_right_shape_but_relation_absent_from_base_refuses",
+      "attack": "subclass overrides decide; right pair/kind/use/ref/authority are returned although base resolver contains zero relations",
+      "expected": "refused before override executes"
+    },
+    {
+      "name": "test_hq225_rr04c_subclass_base_then_swaps_authority_cannot_execute",
+      "attack": "subclass would call base owner then replace returned authority A with independently positive B",
+      "expected": "refused before override executes"
+    },
+    {
+      "name": "test_hq225_rr04c_duck_object_with_owner_api_cannot_impersonate_owner",
+      "attack": "non-owner object exposes resolve_exact/decide/require with correct-shaped output",
+      "expected": "refused before any duck method executes"
+    },
+    {
+      "name": "test_hq225_rr04c_exact_owner_instance_shadow_cannot_replace_base_decide",
+      "attack": "exact concrete owner instance has a caller-side fake decide attribute attached",
+      "expected": "fake instance method is never called; non-virtual base adjudication remains authoritative"
+    },
+    {
+      "name": "test_hq225_rr04c_concrete_owner_positive_path_remains_productive",
+      "attack": "positive control",
+      "expected": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED / INCREASE"
+    }
+  ],
+  "inherited_mandatory_controls": [
+    "test_hq219_rr04_duck_typed_stub_resolver_cannot_admit_a_cross_universe_pair",
+    "test_hq219_rr04_denied_relation_is_refused",
+    "test_hq219_rr04_relation_for_a_different_universe_pair_is_refused",
+    "test_hq219_rr04_relation_for_a_different_governed_use_is_refused",
+    "test_hq219_rr04_wrong_relation_kind_cannot_be_authorized_under_equivalence_authority",
+    "test_hq219_rr04_lawful_positive_owner_decision_still_admits_the_pair",
+    "test_hq222_rr04b_a_forged_owner_proof_is_refused",
+    "test_hq222_rr04b_unrelated_positive_equivalence_snapshot_cannot_ride_the_relation"
+  ],
+  "mandatory_attack_coverage": {
+    "1_full_shaped_subclass_genuine_B": "NEW witness 1",
+    "2_right_pair_kind_use_relation_absent": "NEW witness 2",
+    "3_base_then_swap_authority_ref": "NEW witness 3",
+    "4_duck_same_API": "NEW witness 4 plus inherited HQ219 duck witness",
+    "5_concrete_DENIED": "inherited HQ219 denied witness",
+    "6_concrete_wrong_pair_kind_use": "inherited HQ219 wrong-pair, wrong-kind, wrong-use witnesses"
+  },
+  "execution": {
+    "local_runtime_available": false,
+    "github_actions_for_code_head": [],
+    "pass_counts_claimed": false,
+    "expected_new_scalar_cases": 6
+  }
+}

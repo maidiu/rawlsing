@@ -1,0 +1,28 @@
+{
+  "schema": "HQ225_F7_RESOLVER_AUTHENTICITY_REPAIR_FINAL_DISPOSITION@1.0.0",
+  "branch": "agent/rabochii-pyat-hq225-f7-resolver-authenticity-repair-r1",
+  "commission_tip": "cfc023818ccf3a954db0e116a7e045c467375891",
+  "startup_base": "a190988b58ae1fe5d6a714e0691b19f84eb4e00e",
+  "code_bearing_head": "cb57b0a9c75ec0a01e78d2142afae757c131e5fb",
+  "prior_review": "1b3648bb8a0ecfaafe05ca5d812236f068499b84",
+  "prior_disposition": "F7_FINAL_AUTHORITY_CLOSURE_PARTIAL__NAMED_DEFECT",
+  "blocker": {
+    "id": "F7-RR-04C__HOSTILE_SOURCE_RELATION_RESOLVER_SUBCLASS_CAN_FORGE_OWNER_DECISION",
+    "status": "IMPLEMENTATION_CLOSED__FINAL_REREVIEW_AND_RUNTIME_QUALIFICATION_REQUIRED",
+    "mechanism": "exact concrete SourceRelationResolver type + non-virtual SourceRelationResolver.decide invocation"
+  },
+  "disposition": "F7_RESOLVER_AUTHENTICITY_REPAIR_COMPLETE__READY_FOR_FINAL_REREVIEW",
+  "owner_contract_gap_revealed": false,
+  "architecture_reopened": false,
+  "source_relations_owner_modified": false,
+  "production_files_modified": [
+    "rawlsing_next/pre553_temporal_comparability.py"
+  ],
+  "court_files_modified": [
+    "rawlsing_next/tests/test_pre553_temporal_comparability.py"
+  ],
+  "return_execution_caveat": "No runtime pass claim: no repository checkout/runtime or Actions run was available to this session. Final rereview must execute courts.",
+  "self_adoption": "FORBIDDEN__NOT_PERFORMED",
+  "terminal": "HQ225_F7_RESOLVER_AUTHENTICITY_REPAIR_RETURNED__FINAL_REREVIEW_REQUIRED",
+  "return_commit": "REPORT_OUT_OF_BAND_AFTER_PUSH__NO_SELF_REFERENTIAL_SHA"
+}
