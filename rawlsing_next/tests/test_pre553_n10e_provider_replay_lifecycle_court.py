@@ -1772,13 +1772,7 @@ def _census_registry(
 
 
 def _query_authority_revision(case: dict[str, Any]) -> dict[str, Any]:
-    """Stage one governed revision of the PREDICATE_GRAMMAR query authority.
-
-    The successor is minted and sealed through the accepted owner's own
-    candidate -> APPROVED -> seal ceremony. Nothing is invented: the executor is seeded
-    only with the exact snapshot the product consumed, and the determinant graph is the
-    one the registry built from recorded ownership.
-    """
+    """Seal one real query-authority successor and retain the exact sealed snapshot."""
 
     from rawlsing_next.pre553_authority_maintenance import AuthorityCandidate
 
@@ -1790,10 +1784,10 @@ def _query_authority_revision(case: dict[str, Any]) -> dict[str, Any]:
         initial_current_selection={prior.authority_id: prior},
         determinant_graph=registry.build_graph(),
     )
-    evidence = _evidence_receipt("hq223-query-revision")
+    evidence = _evidence_receipt("hq225-query-revision")
     executor.intake_evidence(evidence)
     candidate = AuthorityCandidate(
-        candidate_id="CAND-C1-AT07-QUERY-v2",
+        candidate_id="CAND-C1-AT07-QUERY-v2-HQ225",
         candidate_revision=1,
         authority_id=prior.authority_id,
         authority_version="2.0.0",
@@ -1801,69 +1795,55 @@ def _query_authority_revision(case: dict[str, Any]) -> dict[str, Any]:
         proposed_decision_state="ALLOW",
         governed_operations=snapshot.governed_operations,
         governed_object_families=snapshot.governed_object_families,
-        scope_envelope={"source_universe_refs": (), "target_use_refs": ("ANALYTICAL_PRODUCT",)},
-        effective_time_or_interval="ALL_TIME",
+        scope_envelope=dict(snapshot.scope_envelope),
+        effective_time_or_interval=snapshot.effective_time_or_interval,
         evidence_receipt_refs=(evidence.ref,),
         proposed_parent_authority_refs=(prior,),
-        proposed_negative_limit_refs=(),
+        proposed_negative_limit_refs=tuple(snapshot.negative_limit_refs),
         proposed_supersession_refs=(prior,),
-        interpretation_semantics={"predicate_grammar": "hq223-v2"},
-        replay_protocol_ref=fx._ref_for("REPLAY_PROTOCOL", "hq223-query-v2"),
+        interpretation_semantics={"predicate_grammar": "hq225-v2"},
+        replay_protocol_ref=snapshot.replay_protocol_ref,
     )
     executor.intake_candidate(candidate)
     adjudication = executor.adjudicate_candidate(
         candidate.ref,
         decision="APPROVED",
-        adjudicator_ref=fx._ref_for("ADJUDICATOR", "hq223-query-v2"),
-        adjudication_authority_ref=fx._ref_for("GOVERNING_AUTHORITY", "HQ223"),
-        findings_ref=fx._ref_for("FINDINGS", "hq223-query-v2"),
+        adjudicator_ref=fx._ref_for("ADJUDICATOR", "hq225-query-v2"),
+        adjudication_authority_ref=fx._ref_for("GOVERNING_AUTHORITY", "HQ225"),
+        findings_ref=fx._ref_for("FINDINGS", "hq225-query-v2"),
     )
     seal = executor.seal_revision(
         candidate.ref,
         adjudication.ref,
-        seal_attestation_ref=fx._ref_for("SEAL_ATTESTATION", "hq223-query-v2"),
+        seal_attestation_ref=fx._ref_for("SEAL_ATTESTATION", "hq225-query-v2"),
     )
     successor = candidate.proposed_authority_ref
+    sealed_snapshot = executor._snapshots[successor.key]
+    assert seal.authority_snapshot_ref == sealed_snapshot.ref
+    assert_authority_snapshot_body_matches_ref(sealed_snapshot, successor)
     assert successor.authority_content_hash != prior.authority_content_hash
     return {
         "executor": executor,
         "seal_ref": seal.ref,
         "successor": successor,
+        "sealed_snapshot": sealed_snapshot,
+        "candidate": candidate,
         "prior": prior,
         "registry": registry,
         "product_ref": product_ref,
-        "selection_rule_ref": fx._ref_for("SELECTION_RULE", "hq223-query-v2"),
-        "selection_attestation_ref": fx._ref_for("SELECTION_ATTESTATION", "hq223-query-v2"),
+        "selection_rule_ref": fx._ref_for("SELECTION_RULE", "hq225-query-v2"),
+        "selection_attestation_ref": fx._ref_for("SELECTION_ATTESTATION", "hq225-query-v2"),
     }
 
 
 def _rebuild_under_query_authority(
-    case: dict[str, Any], successor: Any
+    case: dict[str, Any], sealed_snapshot: Any
 ) -> dict[str, Any]:
-    """Rebuild the query determinant and the N10E product under a successor grammar.
-
-    This is a real recomposition through the accepted producer, not an identity oracle:
-    the query, its witness and the provider result are all recomputed here.
-    """
+    """Recompute under the exact AuthoritySnapshot sealed by the accepted owner."""
 
     from rawlsing_next.pre553_empirical_authority import AuthorityRegistry
-    from rawlsing_next.pre553_empirical_objects import AuthoritySnapshot
 
-    base = case["query_authority"]
-    material = dict(base.semantic_fields)
-    material["typed_state"] = base.typed_state
-    material["producer_replay_locator_or_reference_root"] = (
-        base.producer_replay_locator_or_reference_root
-    )
-    material["authority_snapshot_refs"] = tuple(base.authority_snapshot_refs)
-    material["dependency_refs"] = tuple(base.dependency_refs)
-    material["authority_version"] = successor.authority_version
-    material["interpretation_semantics_fingerprint"] = semantic_hash(
-        {"predicate_grammar": "hq223-v2"}
-    )
-    material["authority_content_hash"] = successor.authority_content_hash
-    snapshot_v2 = AuthoritySnapshot(**material)
-
+    snapshot_v2 = assert_authority_snapshot_body_matches_ref(sealed_snapshot)
     source = case["source"]
     predicate_v2, query_v2 = fx.build_producer(source, snapshot_v2, case["direction"])
     consumer_query_v2, binding_v2 = fx.build_consumer(source, case["direction"])
@@ -1885,10 +1865,12 @@ def _rebuild_under_query_authority(
         condition_binding_witness=witness_v2,
     )
     return {
+        "authority_snapshot": snapshot_v2,
         "query": query_v2,
         "predicate": predicate_v2,
         "consumer_query": consumer_query_v2,
         "witness": witness_v2,
+        "fact": _producer_fact(result_v2),
         "result": result_v2,
     }
 
