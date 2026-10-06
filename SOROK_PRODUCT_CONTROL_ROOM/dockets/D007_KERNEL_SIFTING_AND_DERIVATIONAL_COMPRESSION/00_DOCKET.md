@@ -96,3 +96,5 @@ Do not close Q-KERNEL-001 until at least one candidate:
 Until then:
 
 `KERNEL = OPEN_DISCOVERY`.
+
+- `04_ADAPTIVE_PHENOMENAL_LENS_PLAYABLE_VEIL_KERNEL_CANDIDATE_R1.md` — research-only candidate connecting adaptive phenomenal rendering, homologous-peer habitus friction and nested non-exhaustion; hostile derivation required before any kernel promotion.
