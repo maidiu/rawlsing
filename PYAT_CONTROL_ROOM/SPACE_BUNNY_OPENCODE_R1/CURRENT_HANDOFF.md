@@ -1,3 +1,36 @@
+# HQ222 FRONTIER — FOUR PARALLEL SUCCESSORS — 2026-10-06
+
+### NEW — NEEDS LAUNCH — F7 FINAL AUTHORITY CLOSURE
+**AGENT:** bounded authority-sensitive implementation worker  
+**MODEL / INTELLIGENCE:** **LongCat 2.5 Preview Free — High**  
+**BRANCH:** `agent/rabochii-pyat-hq222-f7-final-authority-closure-r1`  
+**COMMISSION TIP:** `e88cfeb10c8e2099093125fb31b497906341c0cc`
+
+### NEW — NEEDS LAUNCH — N10E HOSTILE REVIEW
+**AGENT:** Browser/GitHub independent hostile reviewer  
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
+**BRANCH:** `agent/reviewer-pyat-hq222-n10e-provider-replay-lifecycle-r1`  
+**COMMISSION TIP:** `49becbe6671bc99c835bd3cd09f43c20b9056933`
+
+### NEW — NEEDS LAUNCH — C5 GT2 POSITIVE-REALIZATION HOSTILE REVIEW
+**AGENT:** Browser/GitHub independent hostile reviewer  
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
+**BRANCH:** `agent/reviewer-pyat-hq222-c5-gt2-structural-positive-realization-r1`  
+**COMMISSION TIP:** `c128cf7f6550265f1edf4f5ad79a5d7661946b06`
+
+### NEW — NEEDS LAUNCH — V555 FIELD-FORGE BASIS AUTHORITY ADJUDICATION
+**AGENT:** Browser/GitHub documentary authority adjudication worker  
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
+**BRANCH:** `agent/rabochii-pyat-hq222-v555-field-forge-basis-authority-adjudication-r1`  
+**COMMISSION TIP:** `590b7a8f95cc385695e67977189bbd72b2a9a4ac`
+
+Run all four in parallel.
+
+HQ decision:
+`HQD-2026-10-06-222`
+
+---
+
 # HQ221 FRONTIER — THREE ORTHOGONAL LANES — 2026-10-06
 
 ### NEW — NEEDS LAUNCH — F7 AUTHORITY-CHAIN FINAL HOSTILE REREVIEW
