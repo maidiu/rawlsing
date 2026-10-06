@@ -2317,29 +2317,36 @@ def test_r11_comparability_class_is_rooted_but_not_stageable_from_installed_mate
     assert not any("COMPARAB" in kind for kind in AUTHORITY_KINDS)
 
 
-def test_r12_census_ownership_is_read_from_recorded_fields_not_names():
-    """Ownership is conserved from recorded fields; never inferred from a ref name."""
+def test_r12_census_ownership_is_determinant_specific_and_authenticated():
+    """An authority recorded elsewhere cannot be laundered into this determinant."""
 
     case = _case(DIRECTION)
     result = _provide(case)
-    query = case["empirical_query"]
-    predicate = case["predicate"]
-    binding = case["conditioner_binding"]
-    witness = case["condition_binding_witness"]
-
     for ownership in _census(case, result):
-        if ownership.root_class != DETERMINANT_ROOT_AUTHORITY:
+        if not ownership.lifecycle_relevant:
             continue
-        # Each declared owner is literally present in a recorded field.
-        recorded: set[str] = set()
-        recorded.update(a.key for a in query.authority_snapshot_refs)
-        recorded.update(a.key for a in predicate.authority_snapshot_refs)
-        recorded.add(binding.comparability_authority_ref.key)
-        recorded.add(witness.pairing_authority_ref.key)
-        for owner in ownership.owning_authority_refs:
-            assert owner.key in recorded, owner.key
-            # An owner is always a real AuthorityRef, never a coerced ExactRef.
-            assert isinstance(owner, AuthorityRef)
+        assert ownership.owner_evidence is not None
+        assert ownership.owner_evidence.determinant_ref == ownership.determinant_ref
+        assert ownership.owner_evidence.owning_authority_refs == (
+            ownership.owning_authority_refs
+        )
+        assert all(isinstance(owner, AuthorityRef) for owner in ownership.owning_authority_refs)
+
+    # The comparability authority is real and recorded elsewhere in the case, but it
+    # is NOT recorded as the empirical query's owner. A global-union check would pass;
+    # determinant-specific evidence must fail.
+    query = case["empirical_query"]
+    foreign = case["conditioner_binding"].comparability_authority_ref
+    with pytest.raises(
+        DeterminantOwnershipAuthenticationError,
+        match="DETERMINANT_OWNERSHIP_AUTHENTICATION_ERROR",
+    ):
+        DeterminantOwnerEvidence(
+            query.ref,
+            query.semantic_projection(),
+            ("authority_snapshot_refs",),
+            (foreign,),
+        )
 
 
 def test_r13_provider_semantics_unchanged_by_the_repair():
@@ -2361,3 +2368,128 @@ def test_r13_provider_semantics_unchanged_by_the_repair():
     assert observed["evidence_identity_is_producer_derived"] is True
     assert observed["consumer_result_state_or_null"] == "EXACT_SUPPORTED"
     assert observed["lifecycle_state"] == "CURRENT"
+
+
+def test_r14_unclassified_consumed_ref_cannot_claim_lifecycle_closure():
+    case = _case(DIRECTION)
+    result = _provide(case)
+    product_ref = _product_ref(result.result_identity_hash)
+    registry = AnalyticalDependencyRegistry()
+    registry.register(
+        AnalyticalProductRegistration(
+            product_ref=product_ref,
+            product_identity_hash=result.result_identity_hash,
+            determinant_authority_refs=(case["model_rule"].model_authority_ref,),
+            determinant_exact_refs=(case["empirical_query"].ref, case["predicate"].ref),
+            determinant_ownerships=(
+                _owned(
+                    case["empirical_query"].ref,
+                    DETERMINANT_ROOT_AUTHORITY,
+                    tuple(case["empirical_query"].authority_snapshot_refs),
+                    case["empirical_query"].semantic_projection(),
+                    ("authority_snapshot_refs",),
+                ),
+            ),
+        )
+    )
+    with pytest.raises(
+        UnclassifiedDeterminantRefused, match="UNCLASSIFIED_DETERMINANT_REFUSED"
+    ):
+        registry.build_graph()
+
+
+def test_r15_source_universe_and_empirical_fact_have_real_owner_paths():
+    case = _case(DIRECTION)
+    result = _provide(case)
+    registry, product_ref = _census_registry(case, result)
+    graph = registry.build_graph()
+    universe = case["source"]["universe"]
+    source_authority = case["source"]["source_auth"].authority_ref
+    fact = _producer_fact(result)
+
+    assert (source_authority, universe.ref) in graph.authority_edges
+    assert (universe.ref, product_ref) in graph.dependency_edges
+    assert (source_authority, fact.ref) in graph.authority_edges
+    assert (fact.ref, product_ref) in graph.dependency_edges
+    reached = graph.affected((source_authority,))
+    assert universe.ref in reached
+    assert fact.ref in reached
+    assert product_ref in reached
+
+
+def test_r16_query_revision_uses_real_sealed_snapshot_and_rejects_impersonation():
+    case = _case(DIRECTION)
+    staged = _query_authority_revision(case)
+    sealed = staged["sealed_snapshot"]
+    assert assert_authority_snapshot_body_matches_ref(sealed, staged["successor"]) is sealed
+
+    # Recreate the HQ223 failure shape: old snapshot body, successor version/hash.
+    base = case["query_authority"]
+    material = dict(base.semantic_fields)
+    material["typed_state"] = base.typed_state
+    material["producer_replay_locator_or_reference_root"] = (
+        base.producer_replay_locator_or_reference_root
+    )
+    material["authority_snapshot_refs"] = tuple(base.authority_snapshot_refs)
+    material["dependency_refs"] = tuple(base.dependency_refs)
+    material["authority_version"] = staged["successor"].authority_version
+    material["interpretation_semantics_fingerprint"] = (
+        sealed.interpretation_semantics_fingerprint
+    )
+    material["authority_content_hash"] = staged["successor"].authority_content_hash
+    forged = AuthoritySnapshot(**material)
+    assert forged.authority_ref == staged["successor"]
+    with pytest.raises(
+        AuthoritySnapshotIdentityMismatch,
+        match="AUTHORITY_SNAPSHOT_IDENTITY_MISMATCH",
+    ):
+        assert_authority_snapshot_body_matches_ref(forged, staged["successor"])
+
+
+def test_r17_predicate_to_query_replacement_fails_before_receipt():
+    case = _case(DIRECTION)
+    staged = _query_authority_revision(case)
+    rebuilt = _rebuild_under_query_authority(case, staged["sealed_snapshot"])
+    product_ref = staged["product_ref"]
+    old_fact = _producer_fact(_provide(case))
+
+    with pytest.raises(
+        ReplacementFamilyMismatch, match="REPLACEMENT_FAMILY_MISMATCH"
+    ):
+        transition_analytical_dependencies(
+            executor=staged["executor"],
+            registry=staged["registry"],
+            seal_ref=staged["seal_ref"],
+            selection_rule_ref=staged["selection_rule_ref"],
+            selection_attestation_ref=staged["selection_attestation_ref"],
+            recompose={
+                product_ref.key: lambda old, _auth: ExactRef(
+                    old.kind, old.object_id, rebuilt["result"].result_identity_hash
+                )
+            },
+            determinant_recompose={
+                case["empirical_query"].ref.key: lambda _old, _auth: rebuilt["query"].ref,
+                case["predicate"].ref.key: lambda _old, _auth: rebuilt["query"].ref,
+                old_fact.ref.key: lambda _old, _auth: rebuilt["fact"].ref,
+            },
+        )
+
+
+def test_r18_fresh_runner_registers_complete_classified_census():
+    observed = _run_fresh(_runner_input(_tmp_path_factory()))
+    exact_refs = observed["registered_determinant_exact_refs"]
+    rows = observed["registered_determinant_classifications"]
+    assert len(rows) == len(exact_refs)
+    assert {json.dumps(row["ref"], sort_keys=True) for row in rows} == {
+        json.dumps(ref, sort_keys=True) for ref in exact_refs
+    }
+    kinds = {row["ref"]["kind"] for row in rows}
+    assert "EmpiricalUniverse@1.0.0" in kinds
+    assert "EmpiricalFact@1.0.0" in kinds
+    assert "C11LogicalRelease" in kinds
+    assert any(row["root_class"] == DETERMINANT_DEPENDENT_PRODUCT for row in rows)
+    assert all(
+        row["owning_authority_refs"]
+        for row in rows
+        if row["lifecycle_relevant"]
+    )
