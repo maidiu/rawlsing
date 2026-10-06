@@ -1,3 +1,29 @@
+# HQ219 FRONTIER — H-D/F8 ADOPTED; F7 LAST AUTHORITY-CHAIN REPAIR — 2026-10-05
+
+### ADOPTED / CLOSED — H-D/F8
+Candidate: `cff8449e1752f816ad82d1b18626e2290913f8b9`  
+Final hostile rereview: `d9b631ac35b28d04e0d0655ae67571226c52cede`  
+Implementation merge: `36966fe28cecb508cad12eeb4faa0ca1cf634d98`  
+Review merge: `68a9bcfe51034b4a9a3f6de7fb01f4e95379ef3a`
+
+### NEW — NEEDS LAUNCH — F7 AUTHORITY-CHAIN FINAL REPAIR
+**AGENT:** Space Bunny authority-sensitive bounded implementation repair worker  
+**MODEL / INTELLIGENCE:** **Space Bunny Max**  
+**BRANCH:** `agent/rabochii-pyat-hq219-f7-authority-chain-repair-r1`  
+**COMMISSION TIP:** `5be1544e377533068118478feb5db83ff37dee60`
+
+Open F7 defects are exactly:
+- missing required use-scope coverage can authorize;
+- temporal identity can self-authorize without TEMPORAL_EVIDENCE owner resolution;
+- source-relation lookup does not require positive owner adjudication.
+
+C1, V556 and H-D/F8 are adopted/closed at their reviewed grains.
+
+HQ decision:
+`HQD-2026-10-05-219`
+
+---
+
 # HQ218 FRONTIER — V556 ADOPTED; TWO FINAL REREVIEWS — 2026-10-05
 
 ### ADOPTED / CLOSED — V556
