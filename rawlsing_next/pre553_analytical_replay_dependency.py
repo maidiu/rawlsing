@@ -668,9 +668,25 @@ class AnalyticalProductRegistration:
                 "classification names determinants the registration does not record as "
                 f"consumed: {unconsumed!r}"
             )
-        # An unowned/unimmutable consumed determinant may not be silently promoted into
-        # a lifecycle-covered position: it must be carried as an explicit blocker.
+        # Construction can preserve an incomplete historical registration for
+        # inspection, but graph/lifecycle closure refuses until EVERY consumed exact
+        # determinant has one explicit classification.
         self.assert_no_unowned_determinant_claimed_covered()
+
+    def unclassified_determinants(self) -> tuple[ExactRef, ...]:
+        classified = {o.determinant_ref.key for o in self.determinant_ownerships}
+        return tuple(
+            ref for ref in self.determinant_exact_refs if ref.key not in classified
+        )
+
+    def assert_complete_determinant_classification(self) -> None:
+        missing = self.unclassified_determinants()
+        if missing:
+            raise UnclassifiedDeterminantRefused(
+                "UNCLASSIFIED_DETERMINANT_REFUSED: lifecycle closure requires every "
+                "consumed determinant_exact_ref to have exactly one explicit "
+                f"classification; missing={[ref.key for ref in missing]!r}"
+            )
 
     def assert_no_unowned_determinant_claimed_covered(self) -> None:
         """Fail closed if an unreachable determinant is claimed lifecycle-covered."""
@@ -721,6 +737,7 @@ class AnalyticalDependencyRegistry:
         """
 
         for registration in self.registrations:
+            registration.assert_complete_determinant_classification()
             registration.assert_no_unowned_determinant_claimed_covered()
 
     def build_graph(
