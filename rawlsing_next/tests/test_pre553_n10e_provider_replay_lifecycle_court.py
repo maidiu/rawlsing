@@ -58,14 +58,20 @@ from rawlsing_next.pre553_analytical_replay_dependency import (
     MECHANISM_STORED_RECEIPT_DESERIALIZATION,
     REPLAY_GRADE_FRESH_EMPIRICAL_RECOMPUTATION,
     REPLAY_GRADE_SERIALIZATION_REPLAY,
+    DETERMINANT_IMMUTABLE_IDENTITY,
+    DETERMINANT_ROOT_AUTHORITY,
+    DETERMINANT_UNOWNED,
     AnalyticalDependencyRegistry,
     AnalyticalProductRegistration,
     AnalyticalReplayClaim,
+    ExactDeterminantOwnership,
     ExplicitNoncurrentDependent,
     MissingCrossOwnerEdge,
+    NoLawfulReplacementRepresentable,
     OwnerUnknownDependent,
     ReplayGradeOverclaim,
     RunnerInputCarriesAnswer,
+    UnownedDeterminantRefused,
     assert_closure_covers_registered_products,
     assert_replay_claim,
     assert_runner_input_carries_no_answer,
@@ -82,6 +88,7 @@ from rawlsing_next.pre553_authority_maintenance import (
     NONCURRENT_DISPOSITION_NO_LAWFUL_REPLACEMENT,
 )
 from rawlsing_next.pre553_empirical_objects import (
+    AuthorityRef,
     EmpiricalQuerySpec,
     ExactRef,
     semantic_hash,
@@ -592,8 +599,12 @@ def test_08_fresh_process_recomputes_provider_consumer_and_lifecycle(tmp_path):
         result.consumer_result_or_null.result_hash
     )
 
-    # The declared public paths are the accepted owners'.
-    assert observed["producer_path"] == PROVIDER_PATH
+    # The declared public paths are the accepted owners'. HQ223 documentary
+    # correction 1: the producer is the analytical composition owner, NOT the N10E
+    # provider seam; the two are distinct callables and are named separately.
+    assert observed["producer_path"] == PRODUCER_PATH
+    assert observed["provider_path"] == PROVIDER_PATH
+    assert observed["producer_path"] != observed["provider_path"]
     assert observed["consumer_path"] == CONSUMER_PATH
 
     # The fresh process registered the product and drove the lifecycle owner.
@@ -1100,7 +1111,9 @@ def test_h02_answer_fields_embedded_in_runner_input_are_rejected(tmp_path):
     with pytest.raises(RunnerInputCarriesAnswer):
         assert_runner_input_carries_no_answer(nested)
 
-    # And the fresh runner refuses such an artifact outright.
+    # And the fresh runner refuses such an artifact outright. HQ223 documentary
+    # correction 2: assert ONE consistent observed exit code. A non-zero code is the
+    # contract; the exact value is observed, not assumed.
     poisoned = dict(clean)
     poisoned["expected_output_identity"] = {"composed_result_identity_hash": "0" * 64}
     path = tmp_path / "poisoned.json"
@@ -1115,8 +1128,11 @@ def test_h02_answer_fields_embedded_in_runner_input_are_rejected(tmp_path):
         text=True,
         timeout=900,
     )
-    assert completed.returncode != 0
+    observed_exit = completed.returncode
+    assert observed_exit != 0, "an answer-bearing input must not succeed"
     assert "RUNNER_INPUT_CARRIES_ANSWER" in completed.stderr
+    # The observable is a single integer; it is never reported as anything else.
+    assert isinstance(observed_exit, int)
 
 
 def test_h03_stale_release_ref_fails_closed():
@@ -1466,6 +1482,11 @@ def test_h12_lifecycle_and_cache_presence_cannot_restore_currentness():
     After a governed transition replaces the provider product, the OLD ref must not be
     resolvable as the current product even though its exact bytes/objects remain
     perfectly present and recomputable.
+
+    HQ223 documentary correction 3: this is a POSITIVE assertion of owner currentness.
+    It does not catch or record any exception, and no "observed AssertionError" is
+    claimed. The discriminating evidence is the owner-derived ``current_replacement_ref``
+    differing from the still-present old ref.
     """
 
     case = _case()
@@ -1493,6 +1514,7 @@ def test_h12_lifecycle_and_cache_presence_cannot_restore_currentness():
     assert status["current_replacement_ref"].content_hash != old.content_hash
     # The historical exact artifact is still addressable, just not current.
     assert staged["executor"].resolve_historical_exact(staged["successor"])
+    # No exception is raised anywhere on this path; that is the point.
 
 
 def test_h12b_owner_recompiler_refuses_an_unregistered_affected_dependent():
@@ -1606,3 +1628,691 @@ def test_productive_adequacy_runner_source_has_no_answer_channel():
     # file it compares against strictly after recomputing.
     assert source.count('argv.index("--expect")') == 1
     assert "assert_runner_input_carries_no_answer" in source
+
+# ==========================================================================
+# HQ223 - exact-determinant lifecycle reachability repair (AT19)
+# ==========================================================================
+# Determinant ownership is read from RECORDED fields on the determinants themselves.
+# Nothing here infers an owner from a ref name, kind or tuple position, and nothing
+# promotes an ExactRef into an AuthorityRef.
+#
+#   empirical_query.ref   -> empirical_query.authority_snapshot_refs   (C1-AT07-QUERY)
+#   predicate.ref         -> predicate.authority_snapshot_refs         (C1-AT07-QUERY)
+#   consumer_query.ref    -> conditioner_binding.comparability_authority_ref
+#   witness ref           -> witness.pairing_authority_ref
+#   model rule            -> model_rule.model_authority_ref
+#
+# A determinant with no recorded owning authority is classified explicitly and is
+# refused lifecycle coverage rather than given a decorative edge.
+def _census(case: dict[str, Any], result: Any) -> tuple[ExactDeterminantOwnership, ...]:
+    """Classify every consumed determinant from recorded fields only."""
+
+    query = case["empirical_query"]
+    predicate = case["predicate"]
+    consumer_query = case["consumer_query"]
+    binding = case["conditioner_binding"]
+    witness = case["condition_binding_witness"]
+    return (
+        ExactDeterminantOwnership(
+            determinant_ref=query.ref,
+            root_class=DETERMINANT_ROOT_AUTHORITY,
+            owning_authority_refs=tuple(query.authority_snapshot_refs),
+        ),
+        ExactDeterminantOwnership(
+            determinant_ref=predicate.ref,
+            root_class=DETERMINANT_ROOT_AUTHORITY,
+            owning_authority_refs=tuple(predicate.authority_snapshot_refs),
+        ),
+        ExactDeterminantOwnership(
+            determinant_ref=consumer_query.ref,
+            root_class=DETERMINANT_ROOT_AUTHORITY,
+            owning_authority_refs=(binding.comparability_authority_ref,),
+        ),
+        ExactDeterminantOwnership(
+            determinant_ref=witness.witness_ref,
+            root_class=DETERMINANT_ROOT_AUTHORITY,
+            owning_authority_refs=(witness.pairing_authority_ref,),
+        ),
+        ExactDeterminantOwnership(
+            determinant_ref=case["release_refs"][0],
+            root_class=DETERMINANT_UNOWNED,
+            lifecycle_relevant=False,
+            reason=(
+                "C11LogicalRelease ref is content-addressed repository identity; no "
+                "recorded authority owns it, so no governed change can reach it"
+            ),
+        ),
+        ExactDeterminantOwnership(
+            determinant_ref=consumer_query.target_ref,
+            root_class=DETERMINANT_UNOWNED,
+            lifecycle_relevant=False,
+            reason="QUESTION_NATIVE target ref carries no recorded owning authority",
+        ),
+    )
+
+
+def _census_registry(
+    case: dict[str, Any], result: Any
+) -> tuple[AnalyticalDependencyRegistry, ExactRef]:
+    """Register the provider product with a full classified determinant census."""
+
+    registry = AnalyticalDependencyRegistry()
+    product_ref = _product_ref(result.result_identity_hash, case["direction"])
+    registry.register(
+        AnalyticalProductRegistration(
+            product_ref=product_ref,
+            product_identity_hash=result.result_identity_hash,
+            determinant_authority_refs=(case["model_rule"].model_authority_ref,),
+            determinant_exact_refs=(
+                case["empirical_query"].ref,
+                case["predicate"].ref,
+                case["consumer_query"].ref,
+                case["condition_binding_witness"].witness_ref,
+                case["release_refs"][0],
+                case["consumer_query"].target_ref,
+            ),
+            determinant_ownerships=_census(case, result),
+        )
+    )
+    return registry, product_ref
+
+
+def _query_authority_revision(case: dict[str, Any]) -> dict[str, Any]:
+    """Stage one governed revision of the PREDICATE_GRAMMAR query authority.
+
+    The successor is minted and sealed through the accepted owner's own
+    candidate -> APPROVED -> seal ceremony. Nothing is invented: the executor is seeded
+    only with the exact snapshot the product consumed, and the determinant graph is the
+    one the registry built from recorded ownership.
+    """
+
+    from rawlsing_next.pre553_authority_maintenance import AuthorityCandidate
+
+    snapshot = case["query_authority"]
+    prior = case["empirical_query"].authority_snapshot_refs[0]
+    registry, product_ref = _census_registry(case, _provide(case))
+    executor = AuthorityMaintenanceExecutor(
+        initial_snapshots=(snapshot,),
+        initial_current_selection={prior.authority_id: prior},
+        determinant_graph=registry.build_graph(),
+    )
+    evidence = _evidence_receipt("hq223-query-revision")
+    executor.intake_evidence(evidence)
+    candidate = AuthorityCandidate(
+        candidate_id="CAND-C1-AT07-QUERY-v2",
+        candidate_revision=1,
+        authority_id=prior.authority_id,
+        authority_version="2.0.0",
+        authority_kind=snapshot.authority_kind,
+        proposed_decision_state="ALLOW",
+        governed_operations=snapshot.governed_operations,
+        governed_object_families=snapshot.governed_object_families,
+        scope_envelope={"source_universe_refs": (), "target_use_refs": ("ANALYTICAL_PRODUCT",)},
+        effective_time_or_interval="ALL_TIME",
+        evidence_receipt_refs=(evidence.ref,),
+        proposed_parent_authority_refs=(prior,),
+        proposed_negative_limit_refs=(),
+        proposed_supersession_refs=(prior,),
+        interpretation_semantics={"predicate_grammar": "hq223-v2"},
+        replay_protocol_ref=fx._ref_for("REPLAY_PROTOCOL", "hq223-query-v2"),
+    )
+    executor.intake_candidate(candidate)
+    adjudication = executor.adjudicate_candidate(
+        candidate.ref,
+        decision="APPROVED",
+        adjudicator_ref=fx._ref_for("ADJUDICATOR", "hq223-query-v2"),
+        adjudication_authority_ref=fx._ref_for("GOVERNING_AUTHORITY", "HQ223"),
+        findings_ref=fx._ref_for("FINDINGS", "hq223-query-v2"),
+    )
+    seal = executor.seal_revision(
+        candidate.ref,
+        adjudication.ref,
+        seal_attestation_ref=fx._ref_for("SEAL_ATTESTATION", "hq223-query-v2"),
+    )
+    successor = candidate.proposed_authority_ref
+    assert successor.authority_content_hash != prior.authority_content_hash
+    return {
+        "executor": executor,
+        "seal_ref": seal.ref,
+        "successor": successor,
+        "prior": prior,
+        "registry": registry,
+        "product_ref": product_ref,
+        "selection_rule_ref": fx._ref_for("SELECTION_RULE", "hq223-query-v2"),
+        "selection_attestation_ref": fx._ref_for("SELECTION_ATTESTATION", "hq223-query-v2"),
+    }
+
+
+def _rebuild_under_query_authority(
+    case: dict[str, Any], successor: Any
+) -> dict[str, Any]:
+    """Rebuild the query determinant and the N10E product under a successor grammar.
+
+    This is a real recomposition through the accepted producer, not an identity oracle:
+    the query, its witness and the provider result are all recomputed here.
+    """
+
+    from rawlsing_next.pre553_empirical_authority import AuthorityRegistry
+    from rawlsing_next.pre553_empirical_objects import AuthoritySnapshot
+
+    base = case["query_authority"]
+    material = dict(base.semantic_fields)
+    material["typed_state"] = base.typed_state
+    material["producer_replay_locator_or_reference_root"] = (
+        base.producer_replay_locator_or_reference_root
+    )
+    material["authority_snapshot_refs"] = tuple(base.authority_snapshot_refs)
+    material["dependency_refs"] = tuple(base.dependency_refs)
+    material["authority_version"] = successor.authority_version
+    material["interpretation_semantics_fingerprint"] = semantic_hash(
+        {"predicate_grammar": "hq223-v2"}
+    )
+    material["authority_content_hash"] = successor.authority_content_hash
+    snapshot_v2 = AuthoritySnapshot(**material)
+
+    source = case["source"]
+    predicate_v2, query_v2 = fx.build_producer(source, snapshot_v2, case["direction"])
+    consumer_query_v2, binding_v2 = fx.build_consumer(source, case["direction"])
+    witness_v2 = fx.build_witness(
+        source,
+        case["direction"],
+        consumer_query_v2,
+        binding_v2,
+        query_v2,
+        predicate_v2,
+    )
+    registry_v2 = AuthorityRegistry((*source["authorities"], snapshot_v2))
+    result_v2 = _provide(
+        case,
+        empirical_query=query_v2,
+        predicate=predicate_v2,
+        authority_registry=registry_v2,
+        consumer_query=consumer_query_v2,
+        condition_binding_witness=witness_v2,
+    )
+    return {
+        "query": query_v2,
+        "predicate": predicate_v2,
+        "consumer_query": consumer_query_v2,
+        "witness": witness_v2,
+        "result": result_v2,
+    }
+
+
+def test_r01_graph_emits_reachable_two_hop_edges_for_every_owned_determinant():
+    """The repair's core: owned determinants become genuinely reachable."""
+
+    case = _case(DIRECTION)
+    result = _provide(case)
+    registry, product_ref = _census_registry(case, result)
+    graph = registry.build_graph()
+    query = case["empirical_query"]
+    query_authority = query.authority_snapshot_refs[0]
+
+    # The query determinant is rooted by its RECORDED owning authority, and the
+    # product is reachable through it. This is the edge HQ221 never emitted.
+    assert (query_authority, query.ref) in graph.authority_edges
+    assert (query.ref, product_ref) in graph.dependency_edges
+
+    # A governed revision of that authority therefore reaches the product.
+    reached = graph.affected((query_authority,))
+    assert product_ref in reached
+    assert query.ref in reached
+
+    # ...and it is genuinely reachable, not merely serialised.
+    assert graph.affected(()) == ()
+
+    # Every lifecycle-relevant determinant has a recorded owner, by construction.
+    for registration in registry.registrations:
+        for ownership in registration.determinant_ownerships:
+            if ownership.lifecycle_relevant:
+                assert ownership.is_reachable
+                assert ownership.owning_authority_refs
+
+
+def test_r02_unowned_determinant_cannot_be_claimed_lifecycle_covered():
+    """An unowned determinant may not be falsely claimed lifecycle-covered."""
+
+    case = _case(DIRECTION)
+    result = _provide(case)
+    product_ref = _product_ref(result.result_identity_hash, DIRECTION)
+    release_ref = case["release_refs"][0]
+
+    # Claiming coverage without a recorded owner is refused at construction.
+    with pytest.raises(
+        UnownedDeterminantRefused, match="UNOWNED_DETERMINANT_REFUSED"
+    ):
+        AnalyticalProductRegistration(
+            product_ref=product_ref,
+            product_identity_hash=result.result_identity_hash,
+            determinant_authority_refs=(case["model_rule"].model_authority_ref,),
+            determinant_exact_refs=(release_ref,),
+            determinant_ownerships=(
+                ExactDeterminantOwnership(
+                    determinant_ref=release_ref,
+                    root_class=DETERMINANT_UNOWNED,
+                    lifecycle_relevant=True,
+                ),
+            ),
+        )
+
+    # A root class without an owning authority is equally refused.
+    with pytest.raises(UnownedDeterminantRefused):
+        ExactDeterminantOwnership(
+            determinant_ref=release_ref,
+            root_class=DETERMINANT_ROOT_AUTHORITY,
+        )
+
+    # An unowned determinant that correctly declares lifecycle_relevant=False is
+    # accepted and reported as an exact blocker rather than given a fake edge.
+    registry, _ = _census_registry(case, result)
+    blockers = registry.unreachable_determinants()
+    assert blockers
+    blocked_kinds = {
+        ownership.determinant_ref.kind
+        for rows in blockers.values()
+        for ownership in rows
+    }
+    assert "C11LogicalRelease" in blocked_kinds
+
+
+def test_r03_query_authority_revision_reaches_and_recomposes_the_product():
+    """AT19 beyond model authority: a governed query-grammar revision propagates."""
+
+    case = _case(DIRECTION)
+    staged = _query_authority_revision(case)
+    successor = staged["successor"]
+    rebuilt = _rebuild_under_query_authority(case, successor)
+    product_ref = staged["product_ref"]
+
+    # The query determinant genuinely re-identifies under the revised grammar.
+    assert rebuilt["query"].ref != case["empirical_query"].ref
+    # And the product genuinely re-identifies through a real recomputation.
+    assert rebuilt["result"].provider_state == "EXACT_SUPPORTED_SLICE_PRODUCED"
+    assert rebuilt["result"].result_identity_hash != product_ref.content_hash
+    # The positive path survives the revision: no refusal, exact support preserved.
+    assert rebuilt["result"].consumer_result_or_null.result_state == "EXACT_SUPPORTED"
+    assert rebuilt["result"].composition_result.raw_denominator_support == 60
+
+    def recompile_determinant(_affected: ExactRef, _successor: Any) -> ExactRef:
+        return rebuilt["query"].ref
+
+    def recompile_product(affected: ExactRef, _successor: Any) -> ExactRef:
+        return ExactRef(
+            affected.kind, affected.object_id, rebuilt["result"].result_identity_hash
+        )
+
+    outcome = transition_analytical_dependencies(
+        executor=staged["executor"],
+        registry=staged["registry"],
+        seal_ref=staged["seal_ref"],
+        selection_rule_ref=staged["selection_rule_ref"],
+        selection_attestation_ref=staged["selection_attestation_ref"],
+        recompose={product_ref.key: recompile_product},
+        determinant_recompose={
+            case["empirical_query"].ref.key: recompile_determinant,
+            case["predicate"].ref.key: recompile_determinant,
+        },
+    )
+    receipt = outcome.invalidation_receipt
+
+    # The owner recorded the query determinant AND the product as affected.
+    assert product_ref in receipt.affected_dependent_refs
+    assert case["empirical_query"].ref in receipt.affected_dependent_refs
+    # Both received a genuine new exact ref from real recomputation.
+    pairs = dict((old.key, new) for old, new in receipt.recompilation_pairs)
+    assert pairs[product_ref.key].content_hash == (
+        rebuilt["result"].result_identity_hash
+    )
+    assert pairs[case["empirical_query"].ref.key] == rebuilt["query"].ref
+    # The lifecycle owner, not the adapter, performed the transition.
+    assert outcome.material()["lifecycle_performed_by"] == (
+        "AuthorityMaintenanceExecutor.promote_current"
+    )
+
+
+def test_r04_query_revision_reaches_all_and_only_the_consumers_of_that_determinant():
+    """Selective invalidation: a product that consumed no such determinant is untouched.
+
+    Truthful caveat recorded here deliberately: in this fixture the query grammar
+    authority is NOT direction-scoped, so forward and reverse queries share one
+    ``C1-AT07-QUERY`` identity and an authority revision legitimately reaches both. The
+    discriminating witness is therefore a product that did not consume the determinant at
+    all, not a direction sibling.
+    """
+
+    case = _case(DIRECTION)
+    staged = _query_authority_revision(case)
+    registry = staged["registry"]
+    product_ref = staged["product_ref"]
+
+    # A product registered WITHOUT the query determinant as a consumed determinant.
+    non_consumer_ref = _product_ref("9" * 64, "non-consumer")
+    registry.register(
+        AnalyticalProductRegistration(
+            product_ref=non_consumer_ref,
+            product_identity_hash="9" * 64,
+            determinant_authority_refs=(case["model_rule"].model_authority_ref,),
+            determinant_exact_refs=(case["consumer_query"].ref,),
+            determinant_ownerships=(
+                ExactDeterminantOwnership(
+                    determinant_ref=case["consumer_query"].ref,
+                    root_class=DETERMINANT_ROOT_AUTHORITY,
+                    owning_authority_refs=(
+                        case["conditioner_binding"].comparability_authority_ref,
+                    ),
+                ),
+            ),
+        )
+    )
+
+    graph = registry.build_graph()
+    reached = graph.affected((staged["prior"], staged["successor"]))
+
+    # The consumer is reached; the product that never consumed it is not.
+    assert product_ref in reached
+    assert non_consumer_ref not in reached
+    assert non_consumer_ref in graph.unaffected(reached)
+
+    # And the same authority change genuinely does not seed it, even though the ref is
+    # known and present: object presence never manufactures a dependency edge.
+    assert non_consumer_ref.key in {
+        ref.key for ref in graph.known_dependent_refs
+    }
+
+
+def test_r05_deleting_the_owner_to_determinant_edge_makes_the_product_unreachable():
+    """Hostile: remove the required owner->determinant edge; the product is orphaned."""
+
+    case = _case(DIRECTION)
+    result = _provide(case)
+    registry, product_ref = _census_registry(case, result)
+    query = case["empirical_query"]
+    query_authority = query.authority_snapshot_refs[0]
+
+    complete = registry.build_graph()
+    assert product_ref in complete.affected((query_authority,))
+
+    # Delete every root edge from that authority to the determinants it owns.
+    predicate_authority_edges = tuple(
+        (auth, det)
+        for auth, det in complete.authority_edges
+        if auth.key == query_authority.key
+    )
+    assert len(predicate_authority_edges) == 2
+    orphaned = registry.build_graph(omit_authority_edges=predicate_authority_edges)
+    assert orphaned.affected((query_authority,)) == ()
+    # The determinant -> product edge still exists, but nothing can seed it. This is
+    # precisely the "decorative orphan edge" HQ223 forbids accepting as closure.
+    assert (query.ref, product_ref) in orphaned.dependency_edges
+    assert product_ref in orphaned.known_dependent_refs
+
+
+def test_r06_deleting_the_determinant_to_product_edge_also_orphans_the_product():
+    """Hostile: remove determinant->product; the change reaches nothing downstream."""
+
+    case = _case(DIRECTION)
+    result = _provide(case)
+    registry, product_ref = _census_registry(case, result)
+    query = case["empirical_query"]
+    predicate = case["predicate"]
+    query_authority = query.authority_snapshot_refs[0]
+
+    # Cut every determinant->product edge the query authority owns.
+    severed = registry.build_graph(
+        omit_dependency_edges=(
+            (query.ref, product_ref),
+            (predicate.ref, product_ref),
+        )
+    )
+    reached = severed.affected((query_authority,))
+    assert query.ref in reached          # the determinant is still rooted
+    assert predicate.ref in reached
+    assert product_ref not in reached    # but the product is cut off
+    # Nothing was deleted from the registry: only the emitted graph changed.
+    assert len(registry.registrations) == 1
+
+
+def test_r07_affected_but_identical_recomputation_is_not_representable():
+    """HQ222 defect-002: state the exact accepted-owner limitation.
+
+    The accepted lifecycle owner requires every affected dependent to move to a NEW
+    exact ref and rejects an unchanged ref categorically, BEFORE any
+    semantic-equivalence adjudication. An affected dependent whose actual recomputation
+    lawfully yields the same exact identity therefore has no lawful representation: the
+    owner cannot express "affected, recomputed, identical".
+
+    This court does not fake that branch with an identity-returning lambda, and does
+    not claim the AT19 grade is false: for every lifecycle-relevant determinant class
+    proved here, a governed revision genuinely re-identifies the product.
+    """
+
+    case = _case(DIRECTION)
+    staged = _query_authority_revision(case)
+    product_ref = staged["product_ref"]
+    query_ref = case["empirical_query"].ref
+    predicate_ref = case["predicate"].ref
+
+    # Every affected dependent moves; the last one is the product, which returns its
+    # OWN identity. The owner rejects that categorically.
+    def identity_determinant(old_ref, _authority):
+        return old_ref
+
+    def identity_product(old_ref, _authority):
+        return old_ref
+
+    with pytest.raises(
+        AuthorityMaintenanceError, match="must produce a new exact ref"
+    ):
+        transition_analytical_dependencies(
+            executor=staged["executor"],
+            registry=staged["registry"],
+            seal_ref=staged["seal_ref"],
+            selection_rule_ref=staged["selection_rule_ref"],
+            selection_attestation_ref=staged["selection_attestation_ref"],
+            recompose={product_ref.key: identity_product},
+            determinant_recompose={
+                query_ref.key: identity_determinant,
+                predicate_ref.key: identity_determinant,
+            },
+        )
+
+    # Supplying NO determinant recomposition at all is equally refused: the adapter will
+    # not silently skip a determinant that the owner reported affected.
+    with pytest.raises(NoLawfulReplacementRepresentable):
+        transition_analytical_dependencies(
+            executor=_query_authority_revision(case)["executor"],
+            registry=_query_authority_revision(case)["registry"],
+            seal_ref=_query_authority_revision(case)["seal_ref"],
+            selection_rule_ref=_query_authority_revision(case)["selection_rule_ref"],
+            selection_attestation_ref=_query_authority_revision(case)[
+                "selection_attestation_ref"
+            ],
+            recompose={product_ref.key: identity_product},
+            determinant_recompose={},
+        )
+
+    # The refusal is the OWNER's categorical law, verified in the owner's own source
+    # rather than asserted here.
+    import inspect
+
+    from rawlsing_next import pre553_authority_maintenance as owner
+
+    source = inspect.getsource(owner.AuthorityMaintenanceExecutor._recompile)
+    assert "must produce a new exact ref" in source
+    # The check happens before any noncurrent/semantic adjudication branch.
+    assert source.index("must produce a new exact ref") < source.index(
+        "receipt = AuthorityInvalidationReceipt("
+    )
+
+
+def test_r08_adapter_remains_not_a_lifecycle_owner_after_the_repair():
+    import inspect
+
+    from rawlsing_next import pre553_analytical_replay_dependency as adapter
+
+    source = inspect.getsource(adapter)
+    assert "promote_current(" in source
+    assert "AuthorityInvalidationReceipt(" not in source
+    for forbidden in (
+        "def promote_current",
+        "def rollback_current",
+        "def adjudicate_candidate",
+        "def seal_revision",
+        "def _recompile",
+    ):
+        assert forbidden not in source, forbidden
+    # The repair did not invent an authority kind or coerce an ExactRef.
+    assert "AUTHORITY_KINDS" not in source
+    assert "authority_ref(self.determinant_ref" not in source
+
+
+def test_r09_fresh_runner_names_the_producer_truthfully():
+    """Documentary correction 1: producer_path must name analytical composition."""
+
+    observed = _run_fresh(_runner_input(_tmp_path_factory()))
+    assert observed["producer_path"] == PRODUCER_PATH
+    assert observed["provider_path"] == PROVIDER_PATH
+    # They are distinct callables and must not be conflated.
+    assert observed["producer_path"] != observed["provider_path"]
+    assert observed["consumer_path"] == CONSUMER_PATH
+    assert "pre553_analytical_composition" in observed["producer_path"]
+    assert "pre553_empirical_possibility_provider" in observed["provider_path"]
+
+
+def _tmp_path_factory() -> Any:
+    import tempfile
+    from pathlib import Path
+
+    return Path(tempfile.mkdtemp(prefix="hq223-truthful-producer-"))
+
+
+def test_r10_fresh_process_replays_retained_determinants_while_revision_is_deterministic(
+    tmp_path,
+):
+    """AT18/AT19: fresh replay of retained determinants, plus revision determinism.
+
+    Stated precisely, because the two halves prove different things:
+
+    * The fresh interpreter replays the **retained** determinants, so it reproduces the
+      UNREVISED (v1) product identity. It is not given the revised authority, and it must
+      not silently claim the revised identity.
+    * The **revised** identity is proved deterministic in this process by rebuilding it
+      twice from two independent governed revision ceremonies.
+
+    Claiming the fresh runner reproduced the revised identity would be false: it never
+    receives the successor authority.
+    """
+
+    case = _case(DIRECTION)
+    baseline = _provide(case).result_identity_hash
+
+    # Fresh interpreter, retained-determinant artifact on disk.
+    observed = _run_fresh(_runner_input(tmp_path, case))
+    assert observed["provider_state"] == "EXACT_SUPPORTED_SLICE_PRODUCED"
+    assert observed["consumer_result_state_or_null"] == "EXACT_SUPPORTED"
+    assert observed["raw_denominator_support"] == 60
+    # It faithfully replays the retained (unrevised) determinants.
+    assert observed["product_identity_hash"] == baseline
+
+    # The revised identity is deterministic across two independent ceremonies.
+    first = _rebuild_under_query_authority(
+        case, _query_authority_revision(case)["successor"]
+    )["result"].result_identity_hash
+    second = _rebuild_under_query_authority(
+        case, _query_authority_revision(case)["successor"]
+    )["result"].result_identity_hash
+    assert first == second
+    # ...and it genuinely differs from the unrevised one.
+    assert first != baseline
+
+
+def test_r11_comparability_class_is_rooted_but_not_stageable_from_installed_material():
+    """Honest classification of the conditioner/comparability determinant class.
+
+    ``C1-AT07-COMPARABILITY`` genuinely owns the consumer query and the witness through
+    RECORDED fields, so the class is AUTHORITY_ROOTED and the adapter emits a real root
+    edge for it. But the installed fixture material for that authority is a
+    fixture-only entry, not a full ``AuthoritySnapshot``: it carries no
+    ``authority_kind``, ``scope_envelope``, ``governed_object_families`` or
+    ``replay_protocol_ref``, and no lawful authority kind in ``AUTHORITY_KINDS`` names
+    comparability. This lane therefore CANNOT stage a governed revision ceremony for it,
+    and must not invent one.
+
+    The court asserts the absence rather than manufacturing authority content.
+    """
+
+    from rawlsing_next.pre553_empirical_authority import AUTHORITY_KINDS
+
+    case = _case(DIRECTION)
+    result = _provide(case)
+    registry, product_ref = _census_registry(case, result)
+    comparability = case["conditioner_binding"].comparability_authority_ref
+
+    # It IS rooted, from a recorded field, and the edge is real.
+    graph = registry.build_graph()
+    assert (comparability, case["consumer_query"].ref) in graph.authority_edges
+    assert (case["consumer_query"].ref, product_ref) in graph.dependency_edges
+    assert product_ref in graph.affected((comparability,))
+
+    # But the installed authority material cannot back a governed revision ceremony.
+    entry = fx._authority_entry("FIXTURE_ONLY_CONDITION_VALUE_PAIRING")
+    material = dict(entry["canonical_material"])
+    for required in (
+        "authority_kind",
+        "scope_envelope",
+        "governed_object_families",
+        "replay_protocol_ref",
+    ):
+        assert required not in material, (
+            f"fixture comparability material unexpectedly carries {required!r}; "
+            "re-run the census classification"
+        )
+    # And no existing authority kind names comparability; inventing one is forbidden.
+    assert not any("COMPARAB" in kind for kind in AUTHORITY_KINDS)
+
+
+def test_r12_census_ownership_is_read_from_recorded_fields_not_names():
+    """Ownership is conserved from recorded fields; never inferred from a ref name."""
+
+    case = _case(DIRECTION)
+    result = _provide(case)
+    query = case["empirical_query"]
+    predicate = case["predicate"]
+    binding = case["conditioner_binding"]
+    witness = case["condition_binding_witness"]
+
+    for ownership in _census(case, result):
+        if ownership.root_class != DETERMINANT_ROOT_AUTHORITY:
+            continue
+        # Each declared owner is literally present in a recorded field.
+        recorded: set[str] = set()
+        recorded.update(a.key for a in query.authority_snapshot_refs)
+        recorded.update(a.key for a in predicate.authority_snapshot_refs)
+        recorded.add(binding.comparability_authority_ref.key)
+        recorded.add(witness.pairing_authority_ref.key)
+        for owner in ownership.owning_authority_refs:
+            assert owner.key in recorded, owner.key
+            # An owner is always a real AuthorityRef, never a coerced ExactRef.
+            assert isinstance(owner, AuthorityRef)
+
+
+def test_r13_provider_semantics_unchanged_by_the_repair():
+    """The repair is dependency-side only; the positive provider path is untouched."""
+
+    import inspect
+
+    from rawlsing_next import pre553_empirical_possibility_provider as provider
+
+    source = inspect.getsource(provider)
+    assert "compose_positioned_subject_possibility(" in source
+    # The repair introduced no geometry/probability into the provider.
+    for forbidden in ("DETERMINANT_ROOT", "ExactDeterminantOwnership", "build_graph"):
+        assert forbidden not in source, forbidden
+
+    # And the fresh positive path still runs end to end.
+    observed = _run_fresh(_runner_input(_tmp_path_factory()))
+    assert observed["provider_state"] == "EXACT_SUPPORTED_SLICE_PRODUCED"
+    assert observed["evidence_identity_is_producer_derived"] is True
+    assert observed["consumer_result_state_or_null"] == "EXACT_SUPPORTED"
+    assert observed["lifecycle_state"] == "CURRENT"

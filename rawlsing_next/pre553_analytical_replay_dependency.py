@@ -134,6 +134,24 @@ class MissingCrossOwnerEdge(AnalyticalReplayDependencyError):
 class NoLawfulReplacementRepresentable(AnalyticalReplayDependencyError):
     """No recomposition path is registered and no explicit absence was declared."""
 
+    code = "NO_LAWFUL_REPLACEMENT_REPRESENTABLE"
+
+
+class UnownedDeterminantRefused(AnalyticalReplayDependencyError):
+    """A determinant was claimed lifecycle-covered without a recorded owning authority.
+
+    The analytical graph is seeded by *governed changed authority refs*
+    (``SemanticDeterminantGraph.affected``). An exact determinant that no recorded
+    authority owns therefore has no lawful change root: a ``determinant -> product``
+    edge from it would be decorative, because nothing could ever seed it.
+
+    This adapter refuses such a claim rather than emitting an unreachable edge. It
+    does not invent an owner, does not promote an ``ExactRef`` into an ``AuthorityRef``,
+    and does not infer ownership from a ref name, kind or position.
+    """
+
+    code = "UNOWNED_DETERMINANT_REFUSED"
+
 
 class ExplicitNoncurrentDependent(AnalyticalReplayDependencyError):
     """The lifecycle owner recorded this dependent as noncurrent.
@@ -379,6 +397,92 @@ def assert_runner_input_carries_no_answer(determinants: Mapping[str, Any]) -> No
 # --------------------------------------------------------------------------
 # AT19 - analytical dependency registration (consumed determinants only)
 # --------------------------------------------------------------------------
+#: How a consumed exact determinant can lawfully reach lifecycle invalidation.
+#:
+#: ``AUTHORITY_ROOTED`` -- a recorded owning authority can be revised by a governed
+#: owner transition, and the determinant sits on a real path from that root.
+#: ``DEPENDENT_PRODUCT`` -- the determinant is itself a governed dependent whose own
+#: transition propagates downstream.
+#: ``IMMUTABLE_IDENTITY`` -- the ref is content-addressed identity material; it cannot
+#: change in place, so a different ref is a different request, not a lifecycle change.
+#: ``UNOWNED`` -- no recorded owner exists, so no governed change can reach it. This is
+#: an exact blocker and is refused loudly rather than papered over with a fake edge.
+DETERMINANT_ROOT_AUTHORITY = "AUTHORITY_ROOTED"
+DETERMINANT_DEPENDENT_PRODUCT = "DEPENDENT_PRODUCT"
+DETERMINANT_IMMUTABLE_IDENTITY = "IMMUTABLE_IDENTITY"
+DETERMINANT_UNOWNED = "UNOWNED"
+
+DETERMINANT_ROOT_CLASSES = frozenset(
+    {DETERMINANT_ROOT_AUTHORITY, DETERMINANT_DEPENDENT_PRODUCT}
+)
+
+
+@dataclass(frozen=True)
+class ExactDeterminantOwnership:
+    """One consumed exact determinant and how it can lawfully reach invalidation.
+
+    ``owning_authority_refs`` must be authorities **recorded** on the determinant
+    itself (for example an ``authority_snapshot_refs`` entry, a recorded
+    ``comparability_authority_ref``/``pairing_authority_ref``, or a recorded model
+    authority). The adapter never infers ownership from a ref name, kind or tuple
+    position, and never promotes an ``ExactRef`` into an ``AuthorityRef``.
+
+    A determinant classified :data:`DETERMINANT_IMMUTABLE_IDENTITY` or
+    :data:`DETERMINANT_UNOWNED` carries no owning authority by construction: emitting a
+    root edge for it would be decorative, because nothing could seed the traversal.
+    """
+
+    determinant_ref: ExactRef
+    root_class: str
+    owning_authority_refs: tuple[AuthorityRef, ...] = ()
+    lifecycle_relevant: bool = True
+    reason: str = ""
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.determinant_ref, ExactRef):
+            raise AnalyticalReplayDependencyError("determinant_ref must be ExactRef")
+        if self.root_class not in {
+            DETERMINANT_ROOT_AUTHORITY,
+            DETERMINANT_DEPENDENT_PRODUCT,
+            DETERMINANT_IMMUTABLE_IDENTITY,
+            DETERMINANT_UNOWNED,
+        }:
+            raise AnalyticalReplayDependencyError(
+                f"unknown determinant root_class {self.root_class!r}"
+            )
+        object.__setattr__(
+            self, "owning_authority_refs", _auths(self.owning_authority_refs)
+        )
+        if self.root_class in DETERMINANT_ROOT_CLASSES:
+            if not self.owning_authority_refs:
+                raise UnownedDeterminantRefused(
+                    "UNOWNED_DETERMINANT_REFUSED: determinant "
+                    f"{self.determinant_ref.key} is classified "
+                    f"{self.root_class!r} but names no owning authority, so no governed "
+                    "change could ever seed its reachability. Refusing to emit an "
+                    "unreachable root edge."
+                )
+        elif self.owning_authority_refs:
+            raise AnalyticalReplayDependencyError(
+                f"determinant {self.determinant_ref.key} is classified "
+                f"{self.root_class!r} and may not also declare owning authorities"
+            )
+        if self.lifecycle_relevant and self.root_class not in DETERMINANT_ROOT_CLASSES:
+            raise UnownedDeterminantRefused(
+                "UNOWNED_DETERMINANT_REFUSED: determinant "
+                f"{self.determinant_ref.key} may not be marked lifecycle_relevant while "
+                f"classified {self.root_class!r} with no owning authority, because no "
+                "governed change could seed its reachability. Either give it its "
+                "recorded owning authority or classify it as immutable identity material."
+            )
+
+    @property
+    def is_reachable(self) -> bool:
+        """Whether a governed change can actually seed this determinant."""
+
+        return self.root_class in DETERMINANT_ROOT_CLASSES
+
+
 @dataclass(frozen=True)
 class AnalyticalProductRegistration:
     """One exact analytical product registered with the determinants it consumed.
@@ -386,6 +490,10 @@ class AnalyticalProductRegistration:
     ``determinant_authority_refs`` must be authorities the product genuinely consumed at
     production time. A future/revised authority must never appear here; it enters only
     through the owner's governed promotion transition.
+
+    ``determinant_exact_refs`` records the exact non-authority determinants consumed.
+    ``determinant_ownerships`` classifies each of them so the graph can emit *reachable*
+    edges rather than merely serialised ones.
     """
 
     product_ref: ExactRef
@@ -393,6 +501,7 @@ class AnalyticalProductRegistration:
     determinant_authority_refs: tuple[AuthorityRef, ...]
     determinant_exact_refs: tuple[ExactRef, ...] = ()
     dependency_edges_from: tuple[ExactRef, ...] = ()
+    determinant_ownerships: tuple[ExactDeterminantOwnership, ...] = ()
 
     def __post_init__(self) -> None:
         if not isinstance(self.product_ref, ExactRef):
@@ -409,6 +518,56 @@ class AnalyticalProductRegistration:
                 "MISSING_EXACT_DETERMINANT: a registration requires at least one exact "
                 "consumed determinant authority ref"
             )
+        seen: dict[str, ExactDeterminantOwnership] = {}
+        for ownership in self.determinant_ownerships:
+            if not isinstance(ownership, ExactDeterminantOwnership):
+                raise AnalyticalReplayDependencyError(
+                    "determinant_ownerships must be ExactDeterminantOwnership"
+                )
+            key = ownership.determinant_ref.key
+            if key in seen:
+                raise AnalyticalReplayDependencyError(
+                    f"determinant {key} classified more than once"
+                )
+            seen[key] = ownership
+        object.__setattr__(
+            self,
+            "determinant_ownerships",
+            tuple(seen[key] for key in sorted(seen)),
+        )
+        # An ownership classification for a ref the product does not consume is a
+        # custody error: it would claim coverage of something never read.
+        unconsumed = sorted(
+            key for key in seen if key not in {r.key for r in self.determinant_exact_refs}
+        )
+        if unconsumed:
+            raise AnalyticalReplayDependencyError(
+                "classification names determinants the registration does not record as "
+                f"consumed: {unconsumed!r}"
+            )
+        # An unowned/unimmutable consumed determinant may not be silently promoted into
+        # a lifecycle-covered position: it must be carried as an explicit blocker.
+        self.assert_no_unowned_determinant_claimed_covered()
+
+    def assert_no_unowned_determinant_claimed_covered(self) -> None:
+        """Fail closed if an unreachable determinant is claimed lifecycle-covered."""
+
+        for ownership in self.determinant_ownerships:
+            if ownership.lifecycle_relevant and not ownership.is_reachable:
+                raise UnownedDeterminantRefused(
+                    "UNOWNED_DETERMINANT_REFUSED: determinant "
+                    f"{ownership.determinant_ref.key} is consumed and marked "
+                    "lifecycle_relevant but is classified "
+                    f"{ownership.root_class!r} with no owning authority, so a governed "
+                    "change cannot reach it. Either classify it as immutable identity "
+                    "material or give it its recorded owning authority; do not emit an "
+                    "unreachable edge."
+                )
+
+    def unreachable_determinants(self) -> tuple[ExactDeterminantOwnership, ...]:
+        """Consumed determinants that no governed change can reach."""
+
+        return tuple(o for o in self.determinant_ownerships if not o.is_reachable)
 
 
 class AnalyticalDependencyRegistry:
@@ -429,37 +588,99 @@ class AnalyticalDependencyRegistry:
             )
         self._registrations[key] = registration
 
+    def assert_lifecycle_coverage_is_owned(self) -> None:
+        """Fail closed if any registration claims coverage it cannot reach.
+
+        This is the adapter's anti-decorative-edge guard. It refuses a registry in which
+        a consumed determinant is marked lifecycle-relevant without a recorded owning
+        authority, because the owner's traversal is seeded by governed changed
+        authority refs and could never reach such a determinant.
+        """
+
+        for registration in self.registrations:
+            registration.assert_no_unowned_determinant_claimed_covered()
+
     def build_graph(
-        self, *, omit_authority_edges: Iterable[tuple[Any, Any]] = ()
+        self,
+        *,
+        omit_authority_edges: Iterable[tuple[Any, Any]] = (),
+        omit_dependency_edges: Iterable[tuple[Any, Any]] = (),
     ) -> SemanticDeterminantGraph:
         """Build the owner's graph from consumed determinants only.
 
-        ``omit_authority_edges`` exists solely to construct the deliberately incomplete
-        cross-owner graph for the mandatory missing-edge hostile.
+        The emitted graph is deliberately **reachable**, not merely serialised. For each
+        registered product it emits, per consumed exact determinant:
+
+        * ``owning_authority -> determinant`` authority edges, for determinants whose
+          owner is recorded (so a governed revision of that authority seeds them); and
+        * ``determinant -> product`` dependency edges, so the change propagates into the
+          analytical product.
+
+        A determinant with no recorded owning authority emits **no** root edge: it would
+        be unreachable and therefore decorative. Such determinants are reachable only
+        through an explicit ``dependency_edges_from`` parent that some other governed
+        root already covers, and are otherwise reported by
+        :meth:`unreachable_determinants`.
+
+        ``omit_authority_edges`` / ``omit_dependency_edges`` exist solely to construct
+        deliberately incomplete cross-owner graphs for the mandatory missing-edge
+        hostiles.
         """
 
         from rawlsing_next.pre553_empirical_objects import authority_ref, exact_ref
 
-        omitted = {
+        self.assert_lifecycle_coverage_is_owned()
+
+        omitted_authority = {
             (authority_ref(a, "authority_ref").key, exact_ref(d, "ref").key)
             for a, d in omit_authority_edges
+        }
+        omitted_dependency = {
+            (exact_ref(p, "ref").key, exact_ref(c, "ref").key)
+            for p, c in omit_dependency_edges
         }
         authority_edges: list[tuple[AuthorityRef, ExactRef]] = []
         dependency_edges: list[tuple[ExactRef, ExactRef]] = []
         known: list[ExactRef] = []
         for registration in self.registrations:
-            known.append(registration.product_ref)
+            product = registration.product_ref
+            known.append(product)
             for authority in registration.determinant_authority_refs:
-                if (authority.key, registration.product_ref.key) in omitted:
+                if (authority.key, product.key) in omitted_authority:
                     continue
-                authority_edges.append((authority, registration.product_ref))
+                authority_edges.append((authority, product))
             for parent in registration.dependency_edges_from:
-                dependency_edges.append((parent, registration.product_ref))
+                if (parent.key, product.key) in omitted_dependency:
+                    continue
+                dependency_edges.append((parent, product))
+            for ownership in registration.determinant_ownerships:
+                determinant = ownership.determinant_ref
+                # Root the determinant only from authorities actually recorded on it.
+                for owner in ownership.owning_authority_refs:
+                    if (owner.key, determinant.key) in omitted_authority:
+                        continue
+                    authority_edges.append((owner, determinant))
+                if not ownership.is_reachable:
+                    # No lawful change root exists; emitting an edge here would be
+                    # decorative. The determinant is reported as an exact blocker.
+                    continue
+                if (determinant.key, product.key) in omitted_dependency:
+                    continue
+                dependency_edges.append((determinant, product))
         return SemanticDeterminantGraph(
             authority_edges=tuple(authority_edges),
             dependency_edges=tuple(dependency_edges),
             known_dependent_refs=tuple(known),
         )
+
+    def unreachable_determinants(self) -> Mapping[str, tuple[ExactDeterminantOwnership, ...]]:
+        """Per-product consumed determinants that no governed change can reach."""
+
+        return {
+            registration.product_ref.key: registration.unreachable_determinants()
+            for registration in self.registrations
+            if registration.unreachable_determinants()
+        }
 
 
 @dataclass(frozen=True)
@@ -532,61 +753,83 @@ def build_owner_recompiler(
     executor: Any,
     registry: AnalyticalDependencyRegistry,
     recompose: Mapping[str, Callable[[ExactRef, AuthorityRef], ExactRef]],
+    determinant_recompose: (
+        Mapping[str, Callable[[ExactRef, AuthorityRef], ExactRef]] | None
+    ) = None,
 ) -> Recompiler:
     """Build the ``Recompiler`` the accepted lifecycle owner invokes.
 
-    The owner calls ``recompiler(affected_product_ref, changed_authority_refs)``. For
-    each affected *product*, the adapter resolves the lawful successor of exactly the
-    determinants that product consumed and that the owner reports as changed. It never
-    guesses a successor from tuple position, and it never treats an unaffected authority
-    as if it had been replaced.
+    The owner calls ``recompiler(affected_dependent_ref, changed_authority_refs)``. The
+    affected dependent may be either:
+
+    * a registered analytical **product**, resolved as before against that product's
+      consumed determinant authorities; or
+    * a consumed exact **determinant** (for example the empirical query ref), which is
+      itself an affected dependent of the owning authority that changed. Its successor is
+      resolved from the authority **recorded on that determinant**, and handed to
+      ``determinant_recompose``.
+
+    The two-hop case is what makes exact-determinant reachability real: a governed
+    revision of the query grammar authority reaches the query ref, and the query ref's
+    replacement then propagates into the analytical product.
+
+    In both cases the adapter never guesses a successor from tuple position, never treats
+    an unaffected authority as replaced, and never resolves an owner by ref name.
     """
 
     registrations = {r.product_ref.key: r for r in registry.registrations}
+    determinant_recompose = dict(determinant_recompose or {})
 
-    def recompiler(
-        affected_ref: ExactRef, changed: tuple[AuthorityRef, ...]
-    ) -> ExactRef:
-        registration = registrations.get(affected_ref.key)
-        if registration is None:
-            raise AuthorityMaintenanceError(
-                "the owner reports an affected dependent that is not a registered "
-                f"analytical product: {affected_ref.key}"
-            )
-        recomposer = recompose.get(affected_ref.key)
-        if recomposer is None:
-            raise NoLawfulReplacementRepresentable(
-                "NO_LAWFUL_REPLACEMENT_REPRESENTABLE: the accepted lifecycle owner's "
-                "receipt requires a replacement for every affected dependent, but no "
-                "analytical recomposition path is registered for affected product "
-                f"{affected_ref.key}. The current owner contract has no representation "
-                "for an affected product with no lawful replacement, and this adapter "
-                "will not fabricate one."
-            )
-        # Which EXACT consumed prior authority ref did the owner actually change?
-        #
-        # Astra's defect was selecting by the consumed ``(authority_id,
-        # authority_version)`` tuple. In a v1 -> v2 promotion the owner reports
-        # ``changed = (prior_v1, selected_v2)``, so that filter matched the PRIOR
-        # ref and handed it to recomposition as though it were the successor.
-        #
-        # The correct resolution is by exact identity, in two steps:
-        #   1. find the consumed ref that is itself present in the owner's changed
-        #      set -- that is the exact prior determinant that moved;
-        #   2. resolve the one OTHER changed ref sharing that authority identity --
-        #      that is the governed successor the same transition selected.
-        # Never by tuple position, never by version label alone.
+    # Every recorded determinant, with the authorities recorded as owning it.
+    determinant_owners: dict[str, tuple[AuthorityRef, ...]] = {}
+    for registration in registry.registrations:
+        for ownership in registration.determinant_ownerships:
+            if ownership.owning_authority_refs:
+                determinant_owners[ownership.determinant_ref.key] = (
+                    ownership.owning_authority_refs
+                )
+
+    def _product_consumed_authorities(
+        registration: AnalyticalProductRegistration,
+    ) -> tuple[AuthorityRef, ...]:
+        """Every authority the product genuinely consumed, directly or via a determinant.
+
+        A product may be reached either directly (its own ``determinant_authority_refs``,
+        e.g. the model authority) or transitively through a consumed exact determinant
+        whose recorded owning authority changed. In the transitive case the successor the
+        product must be recomposed under is the successor of that owning authority, so
+        both sets participate in successor resolution. Neither set is guessed: every ref
+        here is recorded on the registration or on one of its consumed determinants.
+        """
+
+        authorities = list(registration.determinant_authority_refs)
+        for ownership in registration.determinant_ownerships:
+            for owner in ownership.owning_authority_refs:
+                if owner.key not in {a.key for a in authorities}:
+                    authorities.append(owner)
+        return tuple(sorted(authorities, key=lambda ref: ref.key))
+
+    def _resolve_successor(
+        consumed: tuple[AuthorityRef, ...], changed: tuple[AuthorityRef, ...], label: str
+    ) -> AuthorityRef:
+        """Resolve the one lawful successor among the owner's changed refs.
+
+        Resolution is by exact identity, in two steps:
+
+        1. find the consumed ref that is itself present in the owner's changed set --
+           that is the exact prior determinant that moved;
+        2. resolve the one OTHER changed ref sharing that authority identity -- that is
+           the governed successor the same transition selected.
+
+        Never by tuple position, never by version label alone.
+        """
+
         changed_keys = {ref.key for ref in changed}
-        consumed_prior = [
-            ref
-            for ref in registration.determinant_authority_refs
-            if ref.key in changed_keys
-        ]
+        consumed_prior = [ref for ref in consumed if ref.key in changed_keys]
         if len(consumed_prior) != 1:
             raise AuthorityMaintenanceError(
-                "an affected analytical product must have exactly one of its consumed "
-                "determinant refs present in the owner's changed set, found "
-                f"{len(consumed_prior)} for {affected_ref.key}"
+                f"an affected {label} must have exactly one of its consumed determinant "
+                f"refs present in the owner's changed set, found {len(consumed_prior)}"
             )
         prior = consumed_prior[0]
         successors = [
@@ -598,7 +841,7 @@ def build_owner_recompiler(
             raise AuthorityMaintenanceError(
                 "the governed transition must resolve exactly one successor authority "
                 f"ref for identity {prior.authority_id!r} besides the consumed prior ref, "
-                f"found {len(successors)} for {affected_ref.key}"
+                f"found {len(successors)} for {label}"
             )
         successor = successors[0]
         if successor == prior:
@@ -612,9 +855,57 @@ def build_owner_recompiler(
         ):
             raise AuthorityMaintenanceError(
                 "the resolved successor authority ref is not a registered owner "
-                f"authority; future or unknown authority pre-binding is forbidden "
+                "authority; future or unknown authority pre-binding is forbidden "
                 f"({successor.key})"
             )
+        return successor
+
+    def recompiler(
+        affected_ref: ExactRef, changed: tuple[AuthorityRef, ...]
+    ) -> ExactRef:
+        registration = registrations.get(affected_ref.key)
+        if registration is None:
+            # Second hop: the affected dependent is a consumed exact determinant.
+            owners = determinant_owners.get(affected_ref.key)
+            if owners is None:
+                raise AuthorityMaintenanceError(
+                    "the owner reports an affected dependent that is not a registered "
+                    "analytical product and is not a recorded owned determinant: "
+                    f"{affected_ref.key}"
+                )
+            det_recomposer = determinant_recompose.get(affected_ref.key)
+            if det_recomposer is None:
+                raise NoLawfulReplacementRepresentable(
+                    "NO_LAWFUL_REPLACEMENT_REPRESENTABLE: the accepted lifecycle owner "
+                    "requires a replacement for every affected dependent, and this "
+                    f"exact determinant {affected_ref.key} is an affected dependent of a "
+                    "governed authority revision, but no determinant recomposition path "
+                    "is registered for it. This adapter will not fabricate one."
+                )
+            successor = _resolve_successor(
+                owners, changed, f"exact determinant {affected_ref.key}"
+            )
+            new_ref = det_recomposer(affected_ref, successor)
+            if new_ref == affected_ref:
+                raise AuthorityMaintenanceError(
+                    "affected dependent recompilation must produce a new exact ref"
+                )
+            return new_ref
+        recomposer = recompose.get(affected_ref.key)
+        if recomposer is None:
+            raise NoLawfulReplacementRepresentable(
+                "NO_LAWFUL_REPLACEMENT_REPRESENTABLE: the accepted lifecycle owner's "
+                "receipt requires a replacement for every affected dependent, but no "
+                "analytical recomposition path is registered for affected product "
+                f"{affected_ref.key}. The current owner contract has no representation "
+                "for an affected product with no lawful replacement, and this adapter "
+                "will not fabricate one."
+            )
+        successor = _resolve_successor(
+            _product_consumed_authorities(registration),
+            changed,
+            f"analytical product {affected_ref.key}",
+        )
         # The recomposition path owns the new exact identity; it is handed the
         # affected product ref and the exact sealed/released successor authority ref.
         new_ref = recomposer(affected_ref, successor)
@@ -636,6 +927,9 @@ def transition_analytical_dependencies(
     selection_attestation_ref: ExactRef,
     recompose: Mapping[str, Callable[[ExactRef, AuthorityRef], ExactRef]],
     noncurrent_dependents: Mapping[str, Any] | None = None,
+    determinant_recompose: (
+        Mapping[str, Callable[[ExactRef, AuthorityRef], ExactRef]] | None
+    ) = None,
 ) -> OwnerDependencyInvalidationOutcome:
     """Let the accepted lifecycle owner perform the analytical dependency transition.
 
@@ -652,6 +946,11 @@ def transition_analytical_dependencies(
     nor an explicit grounded row still raises
     :class:`NoLawfulReplacementRepresentable`. A missing callback, a callback
     exception, and an unchanged-ref return all remain errors.
+
+    ``determinant_recompose`` supplies the second hop: when a governed authority revision
+    reaches a consumed exact determinant that the owner records as an affected dependent
+    of that authority, this supplies the determinant's lawful successor. Without it, such
+    a transition fails closed rather than silently skipping the determinant.
     """
 
     from rawlsing_next.pre553_empirical_objects import exact_ref
@@ -660,6 +959,7 @@ def transition_analytical_dependencies(
         executor=executor,
         registry=registry,
         recompose=recompose,
+        determinant_recompose=determinant_recompose,
     )
     declared = {
         (value if isinstance(value, str) else exact_ref(value).key): row
@@ -743,6 +1043,13 @@ __all__ = [
     "RunnerInputCarriesAnswer",
     "MissingCrossOwnerEdge",
     "NoLawfulReplacementRepresentable",
+    "UnownedDeterminantRefused",
+    "DETERMINANT_ROOT_AUTHORITY",
+    "DETERMINANT_DEPENDENT_PRODUCT",
+    "DETERMINANT_IMMUTABLE_IDENTITY",
+    "DETERMINANT_UNOWNED",
+    "DETERMINANT_ROOT_CLASSES",
+    "ExactDeterminantOwnership",
     "AnalyticalReplayClaim",
     "ReplayGradeAssertion",
     "assert_replay_claim",

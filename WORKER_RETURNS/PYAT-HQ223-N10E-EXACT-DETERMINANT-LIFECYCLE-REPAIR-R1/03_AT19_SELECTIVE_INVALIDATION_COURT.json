@@ -1,0 +1,167 @@
+{
+  "acceptance_case": "AT19 - one exact determinant mutation reaches all and only registered affected products",
+  "determinant_classes_rooted_but_not_stageable": [
+    {
+      "authority": "C1-AT07-COMPARABILITY",
+      "class": "consumer query ref / conditioner witness ref",
+      "court": "test_r11",
+      "exact_reason": "installed fixture authority entry is not a full AuthoritySnapshot and no kind in AUTHORITY_KINDS names comparability; staging a ceremony would require inventing authority content, which the commission forbids",
+      "governed_revision_staged": false,
+      "reachability_proved": true,
+      "root_edge_emitted": true
+    }
+  ],
+  "determinant_classes_with_governed_change_witnesses": [
+    {
+      "authority": "C1-AT07-MODEL-FORWARD",
+      "class": "model authority (SOURCE_SEMANTICS_TOPOLOGY kind used as model law)",
+      "court": "test_10 / test_11 (HQ221 lineage, re-proved green)",
+      "product_reidentified": true,
+      "recomputes_product": true,
+      "staged_governed_revision": true
+    },
+    {
+      "authority": "C1-AT07-QUERY",
+      "class": "empirical query ref + predicate ref (PREDICATE_GRAMMAR)",
+      "court": "test_r03",
+      "note": "this is the NEW beyond-model-authority witness HQ222 required",
+      "product_reidentified": true,
+      "recomputes_product": true,
+      "staged_governed_revision": true
+    }
+  ],
+  "immutable_classes_got_no_manufactured_witness": {
+    "classes": [
+      "QUESTION_NATIVE target/coordinate refs",
+      "C11LogicalRelease release ref",
+      "provider/consumer contract ids"
+    ],
+    "classification_proved_instead": true,
+    "witnesses_manufactured": 0
+  },
+  "required_court_conditions": {
+    "all_and_only_products_that_consumed_D_are_affected": true,
+    "deleting_determinant_to_product_edge_makes_product_unreachable": true,
+    "deleting_owner_to_determinant_edge_makes_product_unreachable": true,
+    "object_cache_presence_does_not_restore_a_noncurrent_product": true,
+    "products_that_did_not_consume_D_remain_unaffected": true
+  },
+  "schema": "PYAT_HQ223_03_AT19_SELECTIVE_INVALIDATION_COURT@1",
+  "selective_invalidation_evidence": {
+    "affected_dependent_refs": [
+      {
+        "content_hash": "8fe1a7e827ee09d8ab8121fe76fc1b219c1518b74e743098adba1a754dd7a3ac",
+        "kind": "EmpiricalPredicate@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:8fe1a7e827ee09d8ab8121fe76fc1b219c1518b74e743098adba1a754dd7a3ac"
+      },
+      {
+        "content_hash": "ebef7e841e4b6bcbde599118a9c993fa9a96a3b4c84bd743c862c1790548f371",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:ebef7e841e4b6bcbde599118a9c993fa9a96a3b4c84bd743c862c1790548f371"
+      },
+      {
+        "content_hash": "3aa5d7e0ace0a9998816cbe2316a03470d02f98b46d98edcc5cd2f7f1a49fe8f",
+        "kind": "N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1",
+        "object_id": "urn:test:hq221:n10e:provider-product:forward"
+      }
+    ],
+    "all_and_only": {
+      "consumer_of_the_determinant_reached": true,
+      "interpretation": "a known, resident product that never consumed the determinant is still not reached; object/cache presence never manufactures a dependency edge",
+      "non_consumer_in_unaffected": true,
+      "non_consumer_present_in_known_refs": true,
+      "non_consumer_ref_in_affected": false
+    },
+    "currentness_after_transition": {
+      "current_replacement_ref": {
+        "content_hash": "a0cfd1d049fe18d62797189d0e9ff580c88090371949ee9641ac4298bc582e08",
+        "kind": "N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1",
+        "object_id": "urn:test:hq221:n10e:provider-product:forward"
+      },
+      "lifecycle_state": "CURRENT",
+      "old_product_not_current": true
+    },
+    "every_affected_has_exactly_one_outcome": true,
+    "governed_change": "sealed v1->v2 revision of the PREDICATE_GRAMMAR query authority",
+    "lifecycle_performed_by": "AuthorityMaintenanceExecutor.promote_current",
+    "noncurrent_dependents": [],
+    "recompilation_pairs": [
+      {
+        "new": {
+          "content_hash": "7264381cee25f072d363cb8f7b81795efc1e03b6d2dbdb185caabe047e59a288",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:7264381cee25f072d363cb8f7b81795efc1e03b6d2dbdb185caabe047e59a288"
+        },
+        "old": {
+          "content_hash": "8fe1a7e827ee09d8ab8121fe76fc1b219c1518b74e743098adba1a754dd7a3ac",
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:8fe1a7e827ee09d8ab8121fe76fc1b219c1518b74e743098adba1a754dd7a3ac"
+        }
+      },
+      {
+        "new": {
+          "content_hash": "7264381cee25f072d363cb8f7b81795efc1e03b6d2dbdb185caabe047e59a288",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:7264381cee25f072d363cb8f7b81795efc1e03b6d2dbdb185caabe047e59a288"
+        },
+        "old": {
+          "content_hash": "ebef7e841e4b6bcbde599118a9c993fa9a96a3b4c84bd743c862c1790548f371",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:ebef7e841e4b6bcbde599118a9c993fa9a96a3b4c84bd743c862c1790548f371"
+        }
+      },
+      {
+        "new": {
+          "content_hash": "a0cfd1d049fe18d62797189d0e9ff580c88090371949ee9641ac4298bc582e08",
+          "kind": "N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1",
+          "object_id": "urn:test:hq221:n10e:provider-product:forward"
+        },
+        "old": {
+          "content_hash": "3aa5d7e0ace0a9998816cbe2316a03470d02f98b46d98edcc5cd2f7f1a49fe8f",
+          "kind": "N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1",
+          "object_id": "urn:test:hq221:n10e:provider-product:forward"
+        }
+      }
+    ],
+    "recomposition_is_real": {
+      "no_identity_oracle_used": true,
+      "positive_path_preserved_under_revision": {
+        "consumer_state": "EXACT_SUPPORTED",
+        "provider_state": "EXACT_SUPPORTED_SLICE_PRODUCED",
+        "raw_denominator_support": 60,
+        "refusal_reached": false
+      },
+      "product_identity_after": "a0cfd1d049fe18d62797189d0e9ff580c88090371949ee9641ac4298bc582e08",
+      "product_identity_before": {
+        "content_hash": "3aa5d7e0ace0a9998816cbe2316a03470d02f98b46d98edcc5cd2f7f1a49fe8f",
+        "kind": "N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1",
+        "object_id": "urn:test:hq221:n10e:provider-product:forward"
+      },
+      "product_reidentified": true,
+      "query_ref_after": {
+        "content_hash": "7264381cee25f072d363cb8f7b81795efc1e03b6d2dbdb185caabe047e59a288",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:7264381cee25f072d363cb8f7b81795efc1e03b6d2dbdb185caabe047e59a288"
+      },
+      "query_ref_before": {
+        "content_hash": "ebef7e841e4b6bcbde599118a9c993fa9a96a3b4c84bd743c862c1790548f371",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:ebef7e841e4b6bcbde599118a9c993fa9a96a3b4c84bd743c862c1790548f371"
+      },
+      "query_reidentified": true,
+      "recomputed_through_accepted_producer": true
+    },
+    "unaffected_dependent_refs": [
+      {
+        "content_hash": "fb3a3b566e2a65a522344ddf5145ec5754d02959237c75a0287fc57bd6c84db5",
+        "kind": "C1_CONDITION_VALUE_BINDING_WITNESS@2",
+        "object_id": "urn:test:c1:at07:condition-value-witness:r6-forward-p1"
+      },
+      {
+        "content_hash": "0e966cca9805e4fedce532812cfd6587cd7f7cf6cd858ac982c531abd6f61330",
+        "kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+        "object_id": "urn:rawlsing:learned-world:positioned-subject-query:sha256:0e966cca9805e4fedce532812cfd6587cd7f7cf6cd858ac982c531abd6f61330"
+      }
+    ]
+  }
+}

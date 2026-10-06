@@ -1,0 +1,118 @@
+{
+  "after": {
+    "affected_by_comparability_authority": [
+      "C1_CONDITION_VALUE_BINDING_WITNESS@2",
+      "N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1",
+      "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1"
+    ],
+    "affected_by_model_authority": [
+      "N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1"
+    ],
+    "affected_by_query_grammar_authority": [
+      "EmpiricalPredicate@1.0.0",
+      "EmpiricalQuerySpec@1.0.0",
+      "N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1"
+    ],
+    "authority_edges": [
+      "C1-AT07-COMPARABILITY@1.0.0 -> C1_CONDITION_VALUE_BINDING_WITNESS@2",
+      "C1-AT07-COMPARABILITY@1.0.0 -> POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+      "C1-AT07-MODEL-FORWARD@1.0.0 -> N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1",
+      "C1-AT07-QUERY@1.0.0 -> EmpiricalPredicate@1.0.0",
+      "C1-AT07-QUERY@1.0.0 -> EmpiricalQuerySpec@1.0.0"
+    ],
+    "dependency_edges": [
+      "C1_CONDITION_VALUE_BINDING_WITNESS@2 -> N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1",
+      "EmpiricalPredicate@1.0.0 -> N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1",
+      "EmpiricalQuerySpec@1.0.0 -> N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1",
+      "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1 -> N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1"
+    ],
+    "empty_change_set_affected": []
+  },
+  "backward_compatible": {
+    "count": 188,
+    "existing_courts_green": [
+      "test_pre553_analytical_replay_dependency.py",
+      "test_pre553_n10e_provider_replay_lifecycle_court.py",
+      "test_pre553_authority_maintenance.py"
+    ],
+    "existing_registration_still_works_without_ownerships": true
+  },
+  "before": {
+    "authority_edges_from_exact_determinants": 0,
+    "dependency_edges_from_exact_determinants": 0,
+    "note": "HQ221 serialized determinant_exact_refs but build_graph() ignored them entirely",
+    "reachable_determinant_classes": [
+      "model authority only"
+    ]
+  },
+  "defect_status": "CLOSED_FOR_OWNED_DETERMINANTS__NAMED_BLOCKERS_REMAIN_FOR_UNOWNED",
+  "falsely_claimed_coverage_refused": {
+    "court": "test_r02 PASSED",
+    "enforced_at": [
+      "ExactDeterminantOwnership.__post_init__",
+      "AnalyticalProductRegistration.assert_no_unowned_determinant_claimed_covered",
+      "AnalyticalDependencyRegistry.assert_lifecycle_coverage_is_owned (called by build_graph)"
+    ],
+    "error": "UnownedDeterminantRefused / UNOWNED_DETERMINANT_REFUSED"
+  },
+  "named_defect": "HQ222-N10E-DEFECT-001__EXACT_DETERMINANT_LIFECYCLE_REACHABILITY_NOT_PROVED",
+  "production_file_mutated": [
+    "rawlsing_next/pre553_analytical_replay_dependency.py"
+  ],
+  "reachability_is_real_not_decorative": {
+    "det_determinant_ref_is_productive": true,
+    "det_not_reached_by_empty_change": true,
+    "hostile_delete_determinant_to_product": {
+      "affected_after_deletion": [
+        "EmpiricalPredicate@1.0.0",
+        "EmpiricalQuerySpec@1.0.0"
+      ],
+      "determinant_still_rooted": true,
+      "product_reachable_after_deletion": false
+    },
+    "hostile_delete_owner_to_determinant": {
+      "affected_after_deletion": [],
+      "deleted_edges": [
+        "C1-AT07-QUERY -> EmpiricalPredicate@1.0.0",
+        "C1-AT07-QUERY -> EmpiricalQuerySpec@1.0.0"
+      ],
+      "det_to_product_edge_still_present": true,
+      "interpretation": "an orphan dependency edge with no lawful change root is exactly the decorative edge HQ223 forbids; deleting the root makes the product unreachable while the orphan edge remains",
+      "product_reachable_after_deletion": false
+    }
+  },
+  "repair_did_not_do": [
+    "create a new authority kind",
+    "promote an ExactRef into an AuthorityRef",
+    "infer ownership from a ref name, kind or tuple position",
+    "modify pre553_authority_maintenance.py",
+    "modify any learned lifecycle/release owner",
+    "modify provider, composition or positioned-subject consumer semantics"
+  ],
+  "repair_summary": [
+    "ExactDeterminantOwnership: records how each consumed exact determinant can lawfully reach invalidation",
+    "AnalyticalProductRegistration.determinant_ownerships: carries that classification",
+    "build_graph(): emits owning_authority->determinant AND determinant->product edges, so a governed revision actually reaches the product",
+    "build_graph(): emits NO root edge for an unowned determinant (an unreachable edge would be decorative)",
+    "assert_lifecycle_coverage_is_owned(): fail-closed guard refusing a falsely-claimed lifecycle-covered unowned determinant",
+    "UnownedDeterminantRefused: new typed error for that refusal",
+    "build_owner_recompiler(determinant_recompose=...): second hop, so a determinant the owner reports affected can be recompiled rather than skipped",
+    "_product_consumed_authorities(): a product reached transitively through a determinant resolves its successor from that determinant's recorded owner",
+    "build_graph(omit_dependency_edges=...): lets the mandatory orphan-edge hostile delete determinant->product specifically"
+  ],
+  "schema": "PYAT_HQ223_02_REACHABLE_DEPENDENCY_GRAPH_REPAIR@1",
+  "unreachable_determinants_reported_not_hidden": {
+    "N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1|urn:test:hq221:n10e:provider-product:forward|3aa5d7e0ace0a9998816cbe2316a03470d02f98b46d98edcc5cd2f7f1a49fe8f": [
+      {
+        "class": "UNOWNED",
+        "kind": "C11LogicalRelease",
+        "reason": "C11LogicalRelease ref is content-addressed repository identity; no recorded authority owns it, so no governed change can reach it"
+      },
+      {
+        "class": "UNOWNED",
+        "kind": "QUESTION_NATIVE",
+        "reason": "QUESTION_NATIVE target ref carries no recorded owning authority"
+      }
+    ]
+  }
+}

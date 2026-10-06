@@ -53,9 +53,17 @@ from rawlsing_next.tests import c1_at18_at19_fixture as fx
 
 PRODUCT_KIND = "N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1"
 PRODUCT_OBJECT_ID = "urn:test:hq221:n10e:provider-product:forward"
-PRODUCER_PATH = (
+#: The N10E provider seam that this runner invokes.
+PROVIDER_PATH = (
     "rawlsing_next.pre553_empirical_possibility_provider."
     "provide_empirical_possibility_slice"
+)
+#: The ACCEPTED ANALYTICAL PRODUCER that actually computes the slice. This is a
+#: distinct callable from the provider seam and is named separately so the transcript
+#: never mislabels the provider as the producer (HQ223 documentary correction 1).
+PRODUCER_PATH = (
+    "rawlsing_next.pre553_analytical_composition."
+    "compose_positioned_subject_possibility"
 )
 CONSUMER_PATH = (
     "rawlsing_next.source_backed_positioned_subject_possibility."
@@ -216,6 +224,7 @@ def run(determinants: dict[str, Any]) -> dict[str, Any]:
         "consumer_result_state_or_null": consumer.result_state,
         "consumer_path": CONSUMER_PATH,
         "producer_path": PRODUCER_PATH,
+        "provider_path": PROVIDER_PATH,
         "product_ref": product_ref.as_dict(),
         "registered_determinant_authority_refs": [
             a.as_dict() for a in (old_model,)
