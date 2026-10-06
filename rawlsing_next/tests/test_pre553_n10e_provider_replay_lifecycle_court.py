@@ -2076,7 +2076,10 @@ def test_r05_deleting_the_owner_to_determinant_edge_makes_the_product_unreachabl
         for auth, det in complete.authority_edges
         if auth.key == query_authority.key
     )
-    assert len(predicate_authority_edges) == 2
+    owned_targets = {det.key for _, det in predicate_authority_edges}
+    assert query.ref.key in owned_targets
+    assert case["predicate"].ref.key in owned_targets
+    assert _producer_fact(result).ref.key in owned_targets
     orphaned = registry.build_graph(omit_authority_edges=predicate_authority_edges)
     assert orphaned.affected((query_authority,)) == ()
     # The determinant -> product edge still exists, but nothing can seed it. This is
@@ -2095,11 +2098,14 @@ def test_r06_deleting_the_determinant_to_product_edge_also_orphans_the_product()
     predicate = case["predicate"]
     query_authority = query.authority_snapshot_refs[0]
 
-    # Cut every determinant->product edge the query authority owns.
+    # Cut every query-authority-rooted determinant -> product edge, including
+    # the upstream EmpiricalFact that also consumed the query authority.
+    fact = _producer_fact(result)
     severed = registry.build_graph(
         omit_dependency_edges=(
             (query.ref, product_ref),
             (predicate.ref, product_ref),
+            (fact.ref, product_ref),
         )
     )
     reached = severed.affected((query_authority,))
