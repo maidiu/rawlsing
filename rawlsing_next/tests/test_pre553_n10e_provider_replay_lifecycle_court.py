@@ -2032,12 +2032,12 @@ def test_r04_query_revision_reaches_all_and_only_the_consumers_of_that_determina
             determinant_authority_refs=(case["model_rule"].model_authority_ref,),
             determinant_exact_refs=(case["consumer_query"].ref,),
             determinant_ownerships=(
-                ExactDeterminantOwnership(
-                    determinant_ref=case["consumer_query"].ref,
-                    root_class=DETERMINANT_ROOT_AUTHORITY,
-                    owning_authority_refs=(
-                        case["conditioner_binding"].comparability_authority_ref,
-                    ),
+                _owned(
+                    case["consumer_query"].ref,
+                    DETERMINANT_ROOT_AUTHORITY,
+                    (case["conditioner_binding"].comparability_authority_ref,),
+                    case["consumer_query"].material(),
+                    ("conditioner_bindings.0.comparability_authority_ref",),
                 ),
             ),
         )
