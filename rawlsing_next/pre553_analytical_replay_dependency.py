@@ -45,6 +45,9 @@ from rawlsing_next.pre553_empirical_objects import (
     ExactRef,
     Pre553IntegrityError,
     ReplayReceipt,
+    authority_ref,
+    canonicalize,
+    exact_ref,
     semantic_hash,
 )
 
