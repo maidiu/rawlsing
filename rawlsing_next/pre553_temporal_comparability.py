@@ -1060,31 +1060,27 @@ def compare_temporal_anchors(
                 # source pair, operation scope, effective scope, target use, and the
                 # authority that authorizes the relation. F7 therefore consumes the real
                 # owner decision and creates no equivalence authority of its own.
-                if not isinstance(resolver, SourceRelationResolver):
-                    # A stub that merely mimics ``resolve_exact`` is not the owner path.
+                # HQ225 F7-RR-04C: owner authenticity is a concrete-type +
+                # non-virtual adjudication boundary.  A subclass is not the adopted
+                # owner: it can override require()/decide() and fabricate a request-shaped
+                # AUTHORIZED RelationDecision.  Exact type therefore matters here.
+                #
+                # The call is deliberately made through the adopted class implementation,
+                # not through resolver.require/resolver.decide attribute lookup.  That
+                # prevents both subclass overrides and caller-side instance shadowing from
+                # replacing the owner's adjudication machinery while preserving the exact
+                # RelationDecision returned by the real owner implementation.
+                if type(resolver) is not SourceRelationResolver:
                     detected.append("SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE")
                 else:
                     # ------------------------------------------------------
-                    # HQ222 F7-RR-04B: CONSERVE THE OWNER'S ACTUAL DECISION.
-                    #
-                    # HQ219 called the adopted owner and then discarded the
-                    # returned RelationDecision, manufacturing a local POSITIVE
-                    # record from the requested ref instead. The adopted owner
-                    # returns the exact authorized ``relation_ref`` AND the exact
-                    # relation-authorizing ``authority_ref``. Discarding it proved
-                    # only "some owner decision is positive", while the separately
-                    # supplied SOURCE_EQUIVALENCE snapshot B proved only "some
-                    # caller-supplied snapshot is positive". Positive + positive is
-                    # not identity: a genuine relation authorized by A could ride
-                    # alongside an unrelated positive B, and the receipt then
-                    # misstated its authority ancestry.
-                    #
-                    # The returned decision is now captured, its exact identity is
-                    # validated against what F7 actually asked for, and its exact
-                    # relation-authorizing authority is what F7 records.
+                    # HQ222 F7-RR-04B + HQ225 F7-RR-04C:
+                    # conserve the owner's actual decision and prove it came from the
+                    # adopted concrete owner adjudication path.
                     # ------------------------------------------------------
                     try:
-                        relation_decision = resolver.require(
+                        relation_decision = SourceRelationResolver.decide(
+                            resolver,
                             relation_kind=SOURCE_EQUIVALENCE_REQUIRED_RELATION_KIND,
                             source_universe_refs=(universes[0], universes[1]),
                             operation_scope=SOURCE_EQUIVALENCE_REQUIRED_SCOPE,
@@ -1115,8 +1111,8 @@ def compare_temporal_anchors(
                                 "source_equivalence_relation", "SOURCE_EQUIVALENCE",
                                 relation_decision.authority_ref, POSITIVE,
                                 "exact relation-authorizing authority returned by the "
-                                "adopted source-relation owner for the exact relation "
-                                "ref, kind, universe pair, scope and use",
+                                "adopted concrete source-relation owner adjudication "
+                                "for the exact relation ref, kind, universe pair, scope and use",
                                 relation_decision.authority_operation, governed_use_id))
             eq_record, eq_snapshot = resolve_required_authority(
                 registry, request.source_equivalence_authority_ref,
