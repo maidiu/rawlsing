@@ -1,0 +1,150 @@
+{
+  "schema": "PYAT_HQ225_01_COMPLETE_DETERMINANT_CENSUS_AND_CLASSIFICATION@1",
+  "commission": "PYAT-HQ225-N10E-OWNER-AUTHENTIC-LIFECYCLE-REPAIR-R1",
+  "implementation_head": "5be967b5e9eb393032726924496368606ebce82c",
+  "census_boundary": "IMMEDIATE_EXACT_INPUTS_ACTUALLY_CONSUMED_BY_PROVIDER_COMPOSITION_CONSUMER_PLUS_DIRECT_MODEL_RULE_AUTHORITIES",
+  "exact_determinant_classes": [
+    {
+      "determinant": "empirical_query.ref",
+      "classification": "AUTHORITY_ROOTED",
+      "owner_relation": "semantic_fields.query_authority_refs",
+      "lifecycle_relevant": true
+    },
+    {
+      "determinant": "predicate.ref",
+      "classification": "AUTHORITY_ROOTED",
+      "owner_relation": "semantic_fields.grammar_authority_ref",
+      "lifecycle_relevant": true
+    },
+    {
+      "determinant": "consumer_query.ref",
+      "classification": "AUTHORITY_ROOTED",
+      "owner_relation": "conditioner_bindings.0.comparability_authority_ref",
+      "lifecycle_relevant": true
+    },
+    {
+      "determinant": "condition_binding_witness.ref",
+      "classification": "AUTHORITY_ROOTED",
+      "owner_relation": "pairing_authority_ref",
+      "lifecycle_relevant": true
+    },
+    {
+      "determinant": "source_universe.ref",
+      "classification": "AUTHORITY_ROOTED",
+      "owner_relation": "authority_snapshot_refs",
+      "lifecycle_relevant": true
+    },
+    {
+      "determinant": "producer EmpiricalFact.ref",
+      "classification": "DEPENDENT_PRODUCT",
+      "owner_relation": "authority_snapshot_refs",
+      "lifecycle_relevant": true
+    },
+    {
+      "determinant": "C11LogicalRelease ref",
+      "classification": "UNOWNED",
+      "lifecycle_relevant": false,
+      "reason": "no current AuthorityRef lifecycle owner"
+    },
+    {
+      "determinant": "consumer_query.subject_ref",
+      "classification": "IMMUTABLE_IDENTITY",
+      "lifecycle_relevant": false
+    },
+    {
+      "determinant": "consumer_query.target_ref",
+      "classification": "IMMUTABLE_IDENTITY",
+      "lifecycle_relevant": false
+    },
+    {
+      "determinant": "conditioner_binding.subject_fact_ref",
+      "classification": "IMMUTABLE_IDENTITY",
+      "lifecycle_relevant": false
+    },
+    {
+      "determinant": "conditioner_binding.empirical_coordinate_ref",
+      "classification": "IMMUTABLE_IDENTITY",
+      "lifecycle_relevant": false
+    },
+    {
+      "determinant": "query.risk_set_ref",
+      "classification": "IMMUTABLE_IDENTITY",
+      "lifecycle_relevant": false
+    },
+    {
+      "determinant": "query.measure_basis_ref",
+      "classification": "IMMUTABLE_IDENTITY",
+      "lifecycle_relevant": false
+    },
+    {
+      "determinant": "query.requested_output_grain.response_state_semantics_ref",
+      "classification": "IMMUTABLE_IDENTITY",
+      "lifecycle_relevant": false
+    },
+    {
+      "determinant": "query target-domain replay refs",
+      "classification": "IMMUTABLE_IDENTITY",
+      "lifecycle_relevant": false
+    },
+    {
+      "determinant": "predicate operator-semantics refs",
+      "classification": "IMMUTABLE_IDENTITY",
+      "lifecycle_relevant": false
+    },
+    {
+      "determinant": "witness subject-condition preimage refs",
+      "classification": "IMMUTABLE_IDENTITY",
+      "lifecycle_relevant": false
+    },
+    {
+      "determinant": "witness producer-predicate-leaf refs",
+      "classification": "IMMUTABLE_IDENTITY",
+      "lifecycle_relevant": false
+    },
+    {
+      "determinant": "witness pairing-ground-truth refs",
+      "classification": "IMMUTABLE_IDENTITY",
+      "lifecycle_relevant": false
+    },
+    {
+      "determinant": "query replay-root ref",
+      "classification": "IMMUTABLE_IDENTITY",
+      "lifecycle_relevant": false
+    },
+    {
+      "determinant": "predicate replay-root ref",
+      "classification": "IMMUTABLE_IDENTITY",
+      "lifecycle_relevant": false
+    }
+  ],
+  "direct_authority_determinants": [
+    {
+      "authority": "model_rule.model_authority_ref",
+      "registered": true
+    },
+    {
+      "authority": "model_rule.walkback_authority_ref",
+      "registered": true
+    },
+    {
+      "authority": "model_rule.positive_proxy_authority_refs",
+      "registered": "ALL_IF_PRESENT"
+    },
+    {
+      "authority": "model_rule.walkback_steps[*].proxy_authority_ref",
+      "registered": "ALL_IF_PRESENT"
+    }
+  ],
+  "lifecycle_closure_rule": {
+    "incomplete_historical_registration_constructible": true,
+    "incomplete_registration_may_build_lifecycle_graph": false,
+    "refusal": "UNCLASSIFIED_DETERMINANT_REFUSED",
+    "duplicate_classification_refused": true,
+    "classification_for_unconsumed_ref_refused": true,
+    "unreachable_ref_may_be_explicitly_classified_without_fake_root": true
+  },
+  "actual_runner_uses_same_census": true,
+  "source_universe_path": "source authority -> EmpiricalUniverse -> N10E product",
+  "producer_fact_path": "each authenticated fact authority -> EmpiricalFact -> N10E product",
+  "no_arbitrary_exactref_to_authorityref_coercion": true
+}

@@ -1,0 +1,34 @@
+{
+  "schema": "PYAT_HQ225_03_FAMILY_SAFE_SELECTIVE_INVALIDATION_COURT@1",
+  "implementation_head": "5be967b5e9eb393032726924496368606ebce82c",
+  "family_guard": {
+    "production_function": "_assert_replacement_family",
+    "determinant_recomposition_guarded": true,
+    "product_recomposition_guarded": true,
+    "law": "replacement ExactRef.kind must equal affected ExactRef.kind",
+    "hostile": "test_r17_predicate_to_query_replacement_fails_before_receipt",
+    "forbidden_example": "EmpiricalPredicate@1.0.0 -> EmpiricalQuerySpec@1.0.0"
+  },
+  "governed_query_revision": {
+    "court": "test_r03_query_authority_revision_reaches_and_recomposes_the_product",
+    "affected_replacements": [
+      "EmpiricalQuerySpec -> recomputed EmpiricalQuerySpec",
+      "EmpiricalPredicate -> recomputed EmpiricalPredicate",
+      "EmpiricalFact -> recomputed EmpiricalFact",
+      "N10E product -> recomputed N10E product"
+    ],
+    "one_governed_ceremony": true,
+    "accepted_owner_issues_receipt": true
+  },
+  "selective_invalidation": {
+    "nonconsumer_unaffected": "test_r04_query_revision_reaches_all_and_only_the_consumers_of_that_determinant",
+    "owner_edge_deletion": "test_r05_deleting_the_owner_to_determinant_edge_makes_the_product_unreachable",
+    "determinant_edge_deletion": "test_r06_deleting_the_determinant_to_product_edge_also_orphans_the_product",
+    "source_universe_and_fact_paths": "test_r15_source_universe_and_empirical_fact_have_real_owner_paths",
+    "incomplete_classification_refusal": "test_r14_unclassified_consumed_ref_cannot_claim_lifecycle_closure",
+    "actual_runner_census": "test_r18_fresh_runner_registers_complete_classified_census",
+    "walkback_direct_authority": "test_r19_walkback_authority_is_registered_but_not_stageable_from_fixture_material"
+  },
+  "execution_status": "COURTS_AUTHORED_AND_SOURCE_AUDITED__NOT_EXECUTED_IN_THIS_BROWSER_GITHUB_LANE",
+  "no_pass_count_claimed": true
+}
