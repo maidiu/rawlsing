@@ -1,0 +1,60 @@
+{
+  "schema": "PYAT_HQ222_N10E_DEPENDENCY_LIFECYCLE_REPLAY_ATTACK@1",
+  "commission": "PYAT-HQ222-N10E-PROVIDER-REPLAY-LIFECYCLE-REVIEW-R1",
+  "candidate_commit": "2fd0b720b86a2dcfc132308610d09e8ae3e0d451",
+  "disposition": "PARTIAL__NAMED_DEFECT",
+  "primary_defect": {
+    "id": "HQ222-N10E-DEFECT-001__EXACT_DETERMINANT_LIFECYCLE_REACHABILITY_NOT_PROVED",
+    "severity": "BLOCKS_FULL_RESIDUAL_CLOSURE",
+    "observed_registration": {
+      "determinant_authority_refs": [
+        "model_rule.model_authority_ref"
+      ],
+      "determinant_exact_refs": [
+        "empirical_query.ref",
+        "predicate.ref",
+        "consumer_query.ref",
+        "condition_binding_witness.witness_ref"
+      ],
+      "release_refs_registered_as_graph_determinants": false,
+      "dependency_edges_from_in_hq221_registration": []
+    },
+    "graph_construction": {
+      "authority_edges_from": "determinant_authority_refs",
+      "dependency_edges_from": "dependency_edges_from",
+      "determinant_exact_refs_used_to_build_edges": false
+    },
+    "court_coverage": {
+      "test_10_revision_kind": "MODEL_AUTHORITY_PROMOTION_ONLY",
+      "test_h04_proves_query_or_conditioner_change_reidentifies_product": true,
+      "test_h04_drives_that_exact_change_through_lifecycle_graph": false,
+      "test_h07_missing_edge_attack_kind": "MODEL_AUTHORITY_EDGE_OMISSION",
+      "all_consumed_determinant_change_classes_reachability_proved": false
+    },
+    "consequence": "AT19/local lifecycle closure is proved for the model-authority revision grain only. Full exact-determinant lifecycle restoration is not established."
+  },
+  "secondary_defect": {
+    "id": "HQ222-N10E-DEFECT-002__UNCHANGED_IDENTITY_AFTER_ACTUAL_RECOMPUTATION_BRANCH_NOT_PROVED",
+    "severity": "COURT_COVERAGE_GAP",
+    "facts": [
+      "The tested model-authority revision preserves empirical 54/6 geometry but changes exact product identity because model_rule_hash is identity-bearing.",
+      "The court's identity-preservation hostile uses lambda old_ref: old_ref, not an actual recomputation.",
+      "AuthorityMaintenanceExecutor rejects unchanged affected refs categorically.",
+      "No adopted-law proof is supplied that every lifecycle-relevant changed determinant must always reidentify exact product identity."
+    ],
+    "required_resolution": "Either prove exact identity movement is mandatory for every lifecycle-relevant determinant class, or exercise an actual recomputation that lawfully yields unchanged identity and bind its owner treatment."
+  },
+  "lifecycle_state_attack": {
+    "current_owner_derived": true,
+    "explicitly_noncurrent_owner_derived": true,
+    "unknown_is_not_current": true,
+    "cache_presence_restores_currentness": false,
+    "verdict": "PASS_AT_DEMONSTRATED_GRAIN"
+  },
+  "replay_grade_attack": {
+    "stale_receipt_may_claim_fresh_grade": false,
+    "fresh_process_accepted_producer_used": true,
+    "verdict": "PASS_FOR_SOURCE_FREE_PROVIDER_RECOMPUTATION"
+  },
+  "exact_hq_action": "Bind the intended invalidation grain and named owner for query/predicate/witness/release changes, or extend lawful dependency registration. Do not adopt full residual closure before this is explicit."
+}
