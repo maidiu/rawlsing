@@ -1,0 +1,75 @@
+{
+  "schema": "PYAT_HQ219_SOURCE_RELATION_POSITIVE_ADJUDICATION@1.0.0",
+  "lane": "PYAT-HQ219-F7-AUTHORITY-CHAIN-REPAIR-R1",
+  "defect": {
+    "id": "F7-RR-04",
+    "severity": "BLOCKING",
+    "site": "the cross-universe branch called resolver.resolve_exact(equivalence_ref) on a parameter typed Any and accepted the returned object's ref",
+    "why_exact_lookup_is_not_adjudication": [
+      "resolve_exact returns whatever relation carries the requested ref",
+      "it does not require the relation decision to be AUTHORIZED",
+      "it does not check the relation KIND",
+      "it does not check that the relation binds the requested universe PAIR",
+      "it does not check operation scope, effective scope, target use, or authority",
+      "the comparison afterwards only compared the returned object's ref to the requested ref, which a stub can satisfy trivially"
+    ],
+    "reproduced_before_any_change": {
+      "duck_typed_stub_resolver": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED (defect: a stub mimicking resolve_exact admitted the pair)",
+      "comparison_of_interest": "the same fixture with a GENUINE owner-adjudicated relation did NOT produce the positive state, while the stub did -- the split brain HQ218 described"
+    }
+  },
+  "repair": {
+    "principle": "F7 consumes a real positive source-relation OWNER decision from the existing adopted owner path. It creates no equivalence authority.",
+    "mechanism": "F7 calls SourceRelationResolver.require(...) with the exact relation kind, the exact universe pair, the exact operation and effective scope, the exact governed-use target_use, the presented relation ref, and the expected authority operation. require() runs the owner's decide() and raises unless the decision is AUTHORIZED.",
+    "owner_side_validation_obtained_for_free": [
+      "decision state must be AUTHORIZED",
+      "relation kind must match",
+      "the relation's source_universe_refs must equal the requested pair",
+      "operation_scope and effective_scope must match",
+      "target_use must match the governed use F7 requires",
+      "the authority must actually authorize the relation, with the expected operation"
+    ],
+    "resolver_type_enforced": "the resolver must be an actual pre553_source_relations.SourceRelationResolver. A duck-typed object that merely mimics resolve_exact can no longer stand in for the owner decision path. This is why isinstance is checked before require is called.",
+    "new_constants": {
+      "SOURCE_EQUIVALENCE_REQUIRED_RELATION_KIND": "SOURCE_SEMANTIC_EQUIVALENCE",
+      "SOURCE_EQUIVALENCE_REQUIRED_SCOPE": "EXACT_BOUND_UNIVERSE_PAIR"
+    },
+    "constant_note": "these are requirements F7 imposes when it asks the owner, not authorities F7 creates; the owner still decides and may refuse",
+    "important_semantic_correction": "F7 requires the relation to be adjudicated for the GOVERNED USE, not for the relation's own ref. The prior lawful fixture built the relation with target_use=relation_ref.object_id, so under the corrected contract it correctly refused. The fixture was updated to adjudicate for the governed use. A relation authorized only for itself must not admit a governed use, and this is now enforced.",
+    "adopted_owner_unmodified": "rawlsing_next/pre553_source_relations.py was NOT modified; its blob is unchanged and no production or court file outside the two commissioned files was touched",
+    "import_posture": "F7 imports the adopted owner as a MODULE and reads SourceRelationResolver and FORBIDDEN_BACKFILL_TARGET_STATES as attributes. A from-import of the constant was tried first and reverted: it broke the backfill guard's live-surface liveness proof, which monkeypatches the owner module and requires F7 to observe the change. Module import keeps the module imported exactly once AND keeps the frozen surface read live.",
+    "consequence_for_the_import_census": "test_module_imports_no_f8_and_no_new_family pins the exact internal import set. Because pre553_source_relations was already in that set and the function-local backfill import already existed, a second import of the same module would have produced a duplicate entry and failed the census. The module import posture resolves this without widening the pinned set."
+  },
+  "outcome_after_repair": {
+    "duck_typed_stub_resolver": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT / SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE",
+    "relation_decision_DENIED": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT",
+    "relation_for_a_different_universe_pair": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT",
+    "relation_for_a_different_governed_use": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT",
+    "genuine_positive_owner_decision_for_the_exact_pair_and_use": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED (productive adequacy preserved)"
+  },
+  "wrong_relation_kind": {
+    "handling": "the adopted factory refuses to authorize OVERLAP_NON_DUPLICATION under a SOURCE_EQUIVALENCE snapshot, so wrong-kind material cannot even be constructed as AUTHORIZED. F7 additionally pins the relation kind it asks the owner about, so a wrong-kind relation admitted by some other authority path is still refused.",
+    "witness": "test_hq219_rr04_wrong_relation_kind_cannot_be_authorized_under_equivalence_authority"
+  },
+  "discriminating_witnesses": [
+    "test_hq219_rr04_duck_typed_stub_resolver_cannot_admit_a_cross_universe_pair",
+    "test_hq219_rr04_denied_relation_is_refused",
+    "test_hq219_rr04_relation_for_a_different_universe_pair_is_refused",
+    "test_hq219_rr04_relation_for_a_different_governed_use_is_refused",
+    "test_hq219_rr04_wrong_relation_kind_cannot_be_authorized_under_equivalence_authority",
+    "test_hq219_rr04_lawful_positive_owner_decision_still_admits_the_pair",
+    "test_hq219_targeted_break_rr04_owner_decision_is_actually_consulted"
+  ],
+  "targeted_break": {
+    "test": "test_hq219_targeted_break_rr04_owner_decision_is_actually_consulted",
+    "method": "with a genuinely DENIED relation the pair is refused; monkeypatching the owner's require() to report AUTHORIZED makes the SAME fixture produce the positive receipt",
+    "proves": "the owner's decision is load-bearing. If F7 fell back to exact object lookup, patching require() would change nothing and this witness would fail.",
+    "note": "this is the strongest of the three targeted breaks because the only variable is the owner decision itself"
+  },
+  "no_equivalence_creation": "F7 asks; it never grants. No equivalence authority, relation state, relation kind, or authority kind was added.",
+  "hq217_tests_preserved": [
+    "test_witness_cross_universe_is_derived_from_bound_universes -- still produces the positive receipt, now through real owner adjudication",
+    "test_hq217_rr04_arbitrary_equivalence_ref_is_refused_without_the_owner_path",
+    "test_hq217_rr04_equivalence_without_a_resolver_is_refused"
+  ]
+}

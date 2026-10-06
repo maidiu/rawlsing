@@ -1,0 +1,52 @@
+{
+  "schema": "PYAT_HQ219_USE_SCOPE_EXACT_COVERAGE_REPAIR@1.0.0",
+  "lane": "PYAT-HQ219-F7-AUTHORITY-CHAIN-REPAIR-R1",
+  "defect": {
+    "id": "F7-RR-02B",
+    "severity": "BLOCKING",
+    "site": "rawlsing_next/pre553_temporal_comparability.py resolve_required_authority, the require_use_scope branch",
+    "mechanism": "the governed-use coverage check ran only when scope.get('target_use_refs') was non-null, so an ABSENT key was never judged and a positive snapshot with no governed-use coverage resolved POSITIVE",
+    "reproduced_before_any_change": {
+      "fixture": "the court's own _aref factory, positive authority material identical to the lawful case except target_use_refs removed from ONE snapshot",
+      "strip_target_use_refs_from_TARGET_USE_PERMISSION": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED (defect)",
+      "strip_target_use_refs_from_TEMPORAL_COMPARABILITY": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED (defect)",
+      "impact_confirmed": "both TEMPORAL_COMPARABILITY and TARGET_USE_PERMISSION could resolve positive without proving the governed use is covered"
+    }
+  },
+  "repair": {
+    "rule": "a use-scoped authority must carry EXPLICIT governed-use coverage for the exact complete target-use ExactRef(s) the operation requires; ABSENCE of target_use_refs fails closed",
+    "single_site": "resolve_required_authority, which is the shared resolver behind every F7 authority path that declares use scope required, so one change covers both named paths",
+    "no_wildcard_inference": "an omission is never read as unrestricted. An EXPLICIT unrestricted marker IS still honoured, because that is a positive, deliberately authored representation recognised by _scope_covers_governed_use -- a different thing from omitting the key. This satisfies the commission's clause permitting an explicit unrestricted representation to be recognised, while refusing silence",
+    "exact_ref_identity_preserved": "RR-02's complete-ExactRef comparison is untouched; the new check runs BEFORE it and cannot weaken it",
+    "scope_value_accepted": {
+      "explicit_unrestricted_marker": "honoured (positive authored grant)",
+      "collection naming the exact governed use": "honoured",
+      "bare object_id token": "not coverage (pre-existing RR-02 behaviour, retained)",
+      "absent key": "NOW REFUSED (this repair)"
+    }
+  },
+  "outcome_after_repair": {
+    "strip_target_use_refs_from_TARGET_USE_PERMISSION": "TEMPORAL_INSUFFICIENT_AUTHORITY",
+    "strip_target_use_refs_from_TEMPORAL_COMPARABILITY": "TEMPORAL_INSUFFICIENT_AUTHORITY",
+    "lawful_explicit_unrestricted": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED (fail-closed did not over-refuse)"
+  },
+  "discriminating_witnesses": [
+    "test_hq219_rr02b_missing_target_use_refs_fails_closed_under_required_use_scope[TARGET_USE_PERMISSION]",
+    "test_hq219_rr02b_missing_target_use_refs_fails_closed_under_required_use_scope[TEMPORAL_COMPARABILITY]",
+    "test_hq219_rr02b_only_an_explicit_covering_grant_authorizes[4 cases: explicit unrestricted, absent, different exact use, bare object_id]",
+    "test_hq219_targeted_break_rr02b_the_gate_can_actually_fail"
+  ],
+  "targeted_break": {
+    "test": "test_hq219_targeted_break_rr02b_the_gate_can_actually_fail",
+    "method": "the same authority, kind and governed use, differing ONLY by whether target_use_refs is present, must land on OPPOSITE outcomes",
+    "proves": "if the fail-closed branch were removed both sides would be positive and this witness would fail, so a green run cannot be an artefact of a check that never discriminates",
+    "verified_to_reopen_the_gap": "an earlier monkeypatch-based version of this break did NOT reopen the gap, because the absence branch runs before the coverage helper; it was rewritten to the presence/absence discrimination above, which does"
+  },
+  "sustained_invariants_untouched": [
+    "RR-01 exact comparability-requirement content binding",
+    "RR-02 complete ExactRef comparison where use scope is present",
+    "exactly 19 authority kinds",
+    "resolution of every supplied target-use permission ref"
+  ],
+  "no_new_ontology": "no relation state, authority kind, relation kind, source ontology or actor semantics was added"
+}

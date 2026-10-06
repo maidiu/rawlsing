@@ -1,0 +1,57 @@
+{
+  "schema": "PYAT_HQ219_TEMPORAL_IDENTITY_OWNER_RESOLUTION@1.0.0",
+  "lane": "PYAT-HQ219-F7-AUTHORITY-CHAIN-REPAIR-R1",
+  "defect": {
+    "id": "F7-RR-03",
+    "severity": "BLOCKING",
+    "accepted_owner": "TEMPORAL_EVIDENCE",
+    "sites": [
+      "the identity gate read identity_surface_jointly_satisfied from temporal_identity_contract_material, which the CALLER supplied and merely hashed",
+      "temporal_identity_contract_ref was bound only by semantic_hash(caller material)",
+      "the TEMPORAL_EVIDENCE snapshot was resolved independently, with no link to the identity material at all"
+    ],
+    "reproduced_before_any_change": {
+      "caller_minted_material": "{'identity_surface_jointly_satisfied': True, 'note': 'caller-authored, never owner-resolved'}",
+      "caller_minted_ref": "ExactRef('TemporalIdentityContract','TIC-CALLER-MINTED', semantic_hash(that material))",
+      "authority_half": "a completely unrelated positive TEMPORAL_EVIDENCE snapshot present in the registry",
+      "result": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED -- the self-authored material authorized the comparison"
+    },
+    "why_hash_binding_is_insufficient": "the ref hashed the caller's own material, so the binding proved only that the caller was self-consistent. Nothing connected the identity contract to the authority that owns identity material."
+  },
+  "repair": {
+    "principle": "the joint-satisfaction fact is read from the ADOPTED TEMPORAL_EVIDENCE authority, which owns identity material. Caller material may IDENTIFY what is requested; it may not AUTHORIZE.",
+    "mechanism": "TEMPORAL_EVIDENCE's resolved positive snapshot is captured by slot, and its scope_envelope is consulted for two facts: temporal_identity_contract_refs (which identity contracts this authority governs, matched by COMPLETE ExactRef identity) and identity_surface_jointly_satisfied",
+    "exact_identity_matching": "_scope_covers_exact_ref_set compares COMPLETE ExactRef identity (kind + object_id + content_hash) and deliberately mirrors _scope_covers_governed_use, so identity coverage and governed-use coverage are judged by one rule. A bare object_id token is not coverage and absence is not coverage.",
+    "no_new_owner": "no new identity owner, registry, or authority kind was invented. This reads the existing TEMPORAL_EVIDENCE snapshot that F7 already resolves and already requires to be positive.",
+    "caller_material_role_after_repair": "cross-check only. If caller material contradicts the owner, the comparison is refused; it can never supply the fact.",
+    "new_detected_codes": [
+      "TEMPORAL_IDENTITY_NOT_BOUND_BY_TEMPORAL_EVIDENCE_AUTHORITY",
+      "TEMPORAL_IDENTITY_OWNER_RESOLUTION_UNAVAILABLE"
+    ],
+    "state_mapping": "both new codes map onto the EXISTING TEMPORAL_IDENTITY_UNRESOLVED state. No new relation state was added; RELATION_STATES remains exactly 12.",
+    "why_that_mapping_was_necessary": "the new codes initially did not appear in STATE_REASON_PRECEDENCE, so the identity failure was recorded in `detected` yet the receipt still resolved positive. The court caught this: the caller-minted witness still saw TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED. Mapping the codes into the existing state closed it."
+  },
+  "discriminating_witnesses": [
+    "test_hq219_rr03_caller_minted_identity_material_cannot_authorize",
+    "test_hq219_rr03_stale_identity_material_is_not_jointly_satisfied",
+    "test_hq219_rr03_lawful_owner_resolved_identity_still_authorizes",
+    "test_hq219_targeted_break_rr03_identity_gate_actually_consults_the_owner"
+  ],
+  "targeted_break": {
+    "test": "test_hq219_targeted_break_rr03_identity_gate_actually_consults_the_owner",
+    "proves": "an owner reporting the identity surface unsatisfied yields TEMPORAL_IDENTITY_UNRESOLVED while the same fixture with the owner satisfied yields the positive receipt, so the owner's answer -- not caller material -- decides the outcome"
+  },
+  "hq217_tests_updated_not_weakened": [
+    {
+      "test": "test_hq217_rr03_identity_satisfaction_comes_from_material_not_the_caller",
+      "change": "un-satisfaction is now expressed as an OWNER fact via _full_registry(te_identity_satisfied=False) rather than by handing the caller unsatisfying material, because caller material is no longer the lever",
+      "note": "the contradiction branch is reached honestly: a first attempt failed because the earlier hash-binding gate refused first, which is stricter, so a ref whose hash DOES match unsatisfying material is used and bound by the owner"
+    },
+    {
+      "test": "test_hq217_rr07_partial_order_emits_a_higher_priority_state_instead_of_raising",
+      "change": "same lever change; the precedence assertion and direction claim are unchanged"
+    }
+  ],
+  "fixture_change": "_full_registry now places temporal_identity_contract_refs and identity_surface_jointly_satisfied on the TEMPORAL_EVIDENCE scope envelope, with switches (te_identity_refs, te_identity_satisfied) so the court can also build the hostile variants",
+  "no_new_authority": "identity is read from an authority F7 already requires to be positive; no identity-granting authority was created"
+}

@@ -1,0 +1,96 @@
+{
+  "schema": "PYAT_HQ219_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ219-F7-AUTHORITY-CHAIN-REPAIR-R1",
+  "branch": "agent/rabochii-pyat-hq219-f7-authority-chain-repair-r1",
+  "commission_tip": "5be1544e377533068118478feb5db83ff37dee60",
+  "exact_startup_tip": "136223506eaaf8d7c031a2822f2bfb6ac5bd420e",
+  "prior_final_rereview": "1c8b8ce186682d212ceec460b7b707421b6f0d27",
+  "accepted_contract": "c57a96897788108db7b194e4e51691d1ca8ab729",
+  "inherited_disposition": "F7_FINAL_BOUNDED_REPAIR_PARTIAL__NAMED_DEFECT",
+  "final_disposition": "F7_AUTHORITY_CHAIN_REPAIR_COMPLETE__READY_FOR_FINAL_REREVIEW",
+  "all_three_blocking_defects_closed": {
+    "F7-RR-02B": "CLOSED -- absence of target_use_refs now fails closed for every F7 path declaring use scope required, covering TEMPORAL_COMPARABILITY and TARGET_USE_PERMISSION; an explicit unrestricted marker is still honoured and absence is never read as wildcard",
+    "F7-RR-03": "CLOSED -- the joint-satisfaction fact is read from the adopted TEMPORAL_EVIDENCE authority's scope envelope and matched by complete ExactRef identity. Caller material may identify but never authorize, and it cannot even contradict the owner without refusing the comparison. No new identity owner, registry or authority kind.",
+    "F7-RR-04": "CLOSED -- F7 consumes the adopted owner's real positive adjudication via require(), which validates decision state, relation kind, exact universe pair, operation scope, effective scope, target use and authority. The resolver must be a real SourceRelationResolver, so a duck-typed stub cannot stand in. F7 creates no equivalence authority."
+  },
+  "evidence": {
+    "reproduced_before_any_change": "all three defects were reproduced with a probe outside the repository using the court's own lawful fixtures, each producing a positive receipt that should not have been positive",
+    "collection_accounting_actual": { "f7_court": 114, "m1_court": 27, "aggregate": 141 },
+    "aggregate_result": "141 collected, 141 passed, 0 failed, 0 skipped",
+    "determinism": "141 passed at PYTHONHASHSEED 0, 0 and 12345",
+    "negative_control": "the new 114-test court fails 14 witnesses against the pre-repair binder, covering all three defect classes",
+    "regression_slice": {
+      "files": 65,
+      "method": "controlled before/after on the same 65 pre-existing files, the two mutated files reverted to their committed state to establish the baseline, failure and error identity compared as SORTED SETS",
+      "baseline": { "failed": 98, "passed": 1192, "skipped": 1, "errors": 48, "distinct_ids": 146 },
+      "repaired": { "failed": 98, "passed": 1210, "skipped": 1, "errors": 48, "distinct_ids": 146 },
+      "new_failures_introduced": 0,
+      "failures_removed_or_changed": 0,
+      "identity_delta_in_both_directions": "empty",
+      "passed_difference_explained": "1192 -> 1210 is exactly the 18 witnesses this lane added",
+      "do_any_pre_existing_failures_touch_the_f7_or_m1_courts": false,
+      "the_146_pre_existing_identities_remain_in_the_tree": true,
+      "why_not_repaired": "out of this lane's commissioned scope; repairing them would exceed the bounded repair set"
+    },
+    "write_terrain": {
+      "files_changed": 2,
+      "files": ["rawlsing_next/pre553_temporal_comparability.py", "rawlsing_next/tests/test_pre553_temporal_comparability.py"],
+      "diff_stat": "533 insertions, 42 deletions",
+      "production_blob": "87391cc583ea29615194c029535a134eb316e4e2",
+      "court_blob": "d6e8ab3915ae1beffadd2a3a23ac846f3611aefd",
+      "adopted_source_relations_owner_modified": false,
+      "nothing_written_outside_the_return_directory": true
+    }
+  },
+  "lawful_positive_service_preserved": {
+    "same_universe_comparable_pair": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED / INCREASE",
+    "exact_zero": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED / NO_AUTHORIZED_CHANGE",
+    "positive_nonzero": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED / INCREASE",
+    "negative_nonzero": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED / DECREASE",
+    "cross_universe_with_genuine_positive_owner_decision": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED",
+    "not_a_refuse_everything_change": true,
+    "level_claimed": "LOCAL_STAGE_ACCEPTANCE only; integration realization and estate occupancy are not claimed"
+  },
+  "no_new_ontology": {
+    "relation_states": 12,
+    "authority_kinds": 19,
+    "relation_kinds_added": 0,
+    "reason_code_families_added": 0,
+    "source_ontology_added": 0,
+    "actor_semantics_added": 0,
+    "note": "the two new identity detected codes reuse the EXISTING TEMPORAL_IDENTITY_UNRESOLVED state rather than introducing a state"
+  },
+  "bounds_observed": {
+    "raw_source_access": false,
+    "locator_discovery": false,
+    "warrant_issuance": false,
+    "live_C4": false,
+    "C7": false,
+    "actor_person_implementation": false,
+    "architecture_reopen": false,
+    "merge": false,
+    "rebase": false,
+    "self_adoption": false,
+    "production_mutation_beyond_the_commissioned_file": false,
+    "court_mutation_beyond_the_commissioned_file": false
+  },
+  "honest_caveats_for_the_rereviewer": [
+    "This lane's disposition is COMPLETE and READY FOR REREVIEW, not accepted. Acceptance requires the independent final rerereview the commission mandates.",
+    "TEMPORAL_EVIDENCE's scope envelope now carries two additional facts: temporal_identity_contract_refs and identity_surface_jointly_satisfied. This reuses an existing adopted authority and its existing scope envelope and creates no new owner or authority kind, but it IS a contract shape change to how identity is expressed. A reviewer should judge whether that is the right place for it, or whether identity belongs on a different already-adopted surface.",
+    "F7 now requires the source relation to be adjudicated for the GOVERNED USE, not for the relation's own ref. This is stricter than the prior lawful fixture, which built relations with target_use=relation_ref.object_id. Any existing producer of F7-compatible equivalence relations must therefore adjudicate for the governed use. That is a producer-visible contract change and is the single most likely place for downstream breakage.",
+    "The two new identity detected codes had to be mapped into the existing STATE_REASON_PRECEDENCE entry for TEMPORAL_IDENTITY_UNRESOLVED. Without that mapping the identity failure was recorded in `detected` while the receipt still resolved positive. A reviewer should confirm the precedence position is correct and that identity cannot be outranked by a higher-precedence state in a way that masks it.",
+    "The adopted source-relations module is imported as a module rather than by name specifically to preserve the backfill guard's live-surface liveness proof. A reviewer should confirm the import posture satisfies the import census for the right reason and is not merely convenient.",
+    "Two new witnesses pass against the pre-repair binder (the lawful positive cross-universe case and the wrong-kind case). They are productive-adequacy and kind-check guards rather than defect-detection witnesses, and this is disclosed in 04 rather than presented as detection.",
+    "The 146 pre-existing failing/error identities remain in the tree, untouched and untriaged by design.",
+    "HQ214's historical 3.11.3/3.12.14 environment provenance conflict was deliberately not re-adjudicated, as the commission directed.",
+    "The negative control used a shadow tree outside the repository. It proves witness sensitivity; it does not replace independent reproduction."
+  ],
+  "what_the_rereviewer_should_attack_first": [
+    "Whether ANY remaining F7 path can reach a positive comparable receipt without the TEMPORAL_EVIDENCE owner resolving identity, in particular whether a positive snapshot whose scope envelope omits the identity keys is handled fail-closed everywhere it is resolved.",
+    "Whether requiring the relation to be adjudicated for the governed use is correct, and what existing producers would have to change.",
+    "Whether the precedence position of the two new identity codes can be masked by a higher-precedence state.",
+    "Whether there is any way to satisfy the new require() call with material that is not a genuine positive relation authority.",
+    "Whether the identity contract shape on the TEMPORAL_EVIDENCE scope envelope is the correct adopted surface, given the commission forbids inventing a new identity owner."
+  ],
+  "terminal": "HQ219_F7_AUTHORITY_CHAIN_REPAIR_RETURNED__FINAL_REREVIEW_REQUIRED"
+}

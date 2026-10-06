@@ -1,0 +1,120 @@
+{
+  "schema": "PYAT_HQ219_PRODUCTIVE_PATH_AND_DISCRIMINATING_COURTS@1.0.0",
+  "lane": "PYAT-HQ219-F7-AUTHORITY-CHAIN-REPAIR-R1",
+  "collection_accounting": {
+    "hq218_reconstructed": { "f7_court": 96, "m1_court": 27, "aggregate": 123 },
+    "hq219_actual_final": { "f7_court": 114, "m1_court": 27, "aggregate": 141 },
+    "why_the_aggregate_changed": "this lane adds 18 witnesses to the F7 court. The commission forbids reporting 98/25 unless the actual final committed collection changes and exact commands prove it; the collection did change, so the actual figures are reported from --collect-only runs rather than estimated.",
+    "hq218_numbers_not_restated_as_current": true,
+    "proof_commands": [
+      "PYTHONHASHSEED=0 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=<worktree> <py> -m pytest rawlsing_next/tests/test_pre553_temporal_comparability.py --collect-only -q -p no:cacheprovider   ->  114 tests collected",
+      "PYTHONHASHSEED=0 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=<worktree> <py> -m pytest rawlsing_next/tests/test_m1_temporal_v554_admission_dedup.py --collect-only -q -p no:cacheprovider   ->  27 tests collected",
+      "both files together --collect-only   ->  141 tests collected"
+    ]
+  },
+  "courts": {
+    "f7_court": { "file": "rawlsing_next/tests/test_pre553_temporal_comparability.py", "collected": 114, "passed": 114, "skipped": 0 },
+    "m1_court": { "file": "rawlsing_next/tests/test_m1_temporal_v554_admission_dedup.py", "collected": 27, "passed": 27, "skipped": 0, "mutated_by_this_lane": false },
+    "aggregate": { "collected": 141, "passed": 141, "failed": 0, "skipped": 0 },
+    "determinism": [
+      { "pythonhashseed": "0", "result": "141 passed" },
+      { "pythonhashseed": "0", "result": "141 passed" },
+      { "pythonhashseed": "12345", "result": "141 passed" }
+    ]
+  },
+  "required_witness_coverage": {
+    "missing target_use_refs under required use scope": [
+      "test_hq219_rr02b_missing_target_use_refs_fails_closed_under_required_use_scope[TARGET_USE_PERMISSION]",
+      "test_hq219_rr02b_missing_target_use_refs_fails_closed_under_required_use_scope[TEMPORAL_COMPARABILITY]",
+      "test_hq219_rr02b_only_an_explicit_covering_grant_authorizes[absent]"
+    ],
+    "caller-minted temporal identity": ["test_hq219_rr03_caller_minted_identity_material_cannot_authorize"],
+    "source relation resolved without positive owner adjudication": [
+      "test_hq219_rr04_duck_typed_stub_resolver_cannot_admit_a_cross_universe_pair",
+      "test_hq219_rr04_relation_for_a_different_universe_pair_is_refused"
+    ],
+    "DENIED relation": ["test_hq219_rr04_denied_relation_is_refused"],
+    "wrong-kind relation": ["test_hq219_rr04_wrong_relation_kind_cannot_be_authorized_under_equivalence_authority"],
+    "wrong-pair relation": ["test_hq219_rr04_relation_for_a_different_universe_pair_is_refused"],
+    "wrong-use relation": ["test_hq219_rr04_relation_for_a_different_governed_use_is_refused"],
+    "lawful owner-resolved identity": [
+      "test_hq219_rr03_lawful_owner_resolved_identity_still_authorizes",
+      "test_hq219_rr03_stale_identity_material_is_not_jointly_satisfied"
+    ],
+    "lawful positive source-equivalence owner decision": ["test_hq219_rr04_lawful_positive_owner_decision_still_admits_the_pair"]
+  },
+  "targeted_breaks": {
+    "requirement": "each new repair mechanism must have a targeted break proving the witness can fail for the intended reason",
+    "breaks": [
+      {
+        "repair": "A -- use-scope coverage",
+        "test": "test_hq219_targeted_break_rr02b_the_gate_can_actually_fail",
+        "form": "same authority, kind and governed use differing only by presence of target_use_refs must give opposite outcomes"
+      },
+      {
+        "repair": "B -- owner-resolved identity",
+        "test": "test_hq219_targeted_break_rr03_identity_gate_actually_consults_the_owner",
+        "form": "owner unsatisfied refuses while owner satisfied authorizes, so the owner decides"
+      },
+      {
+        "repair": "C -- positive relation adjudication",
+        "test": "test_hq219_targeted_break_rr04_owner_decision_is_actually_consulted",
+        "form": "monkeypatching the owner's require() to AUTHORIZED makes a DENIED relation admit, proving the owner decision is load-bearing"
+      }
+    ]
+  },
+  "negative_control": {
+    "method": "the pre-repair implementation was extracted from the commission tip and swapped into a shadow tree outside the repository; the NEW 114-test court was run against it",
+    "sanity_check_first": "the pre-repair court against the pre-repair implementation collected and passed 96, confirming the shadow tree reproduced the startup state exactly",
+    "new_court_against_pre_repair_binder": { "failed": 14, "passed": 100 },
+    "failing_witnesses_cover_all_three_defect_classes": true,
+    "rr02b": ["missing target_use_refs (TP)", "missing target_use_refs (TC)", "explicit-covering-grant [absent]", "targeted break", "hq217 rr03 updated", "hq217 rr07 updated"],
+    "rr03": ["caller-minted identity", "stale identity", "owner-consulted targeted break"],
+    "rr04": ["duck-typed stub", "DENIED", "wrong pair", "wrong use", "owner-decision targeted break"],
+    "honest_caveat": "two new witnesses PASS against the pre-repair binder: the lawful positive cross-universe case and the wrong-kind case. Both are honest rather than defect-detection witnesses -- the lawful case reached a positive state pre-repair only by accident of the split brain, and the wrong-kind material is refused at construction by the adopted factory independently of F7. They are retained because they guard productive adequacy and the kind check respectively, and they are disclosed here rather than presented as defect detection."
+  },
+  "hqd_216_productive_adequacy": {
+    "law": "read from the exact control object e0e7ce0e596e4e5ea7ec96c265ec949b9fe801a2:PYAT_CONTROL_ROOM/26_HQD216_PRODUCTIVE_ADEQUACY_AND_PREV3_EMPIRICAL_GATE_LAW.md",
+    "law_note": "the commission says the F7 candidate lineage predates HQD-216 and directs reading the exact Git object if the file is absent locally. It is absent at the commission tip but present at the control object, where it was read in full. This resolves the missing-law gap that HQ217 had to disclose.",
+    "same_grain_requirement": "prove at the declared grain of the F7 component that competent lawful owner-backed input produces the intended artifact",
+    "lawful_positive_paths_verified_after_the_repair": {
+      "same_universe_comparable_pair": { "relation_state": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED", "direction_claim": "INCREASE" },
+      "exact_zero": { "relation_state": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED", "direction_claim": "NO_AUTHORIZED_CHANGE" },
+      "positive_nonzero": { "relation_state": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED", "direction_claim": "INCREASE" },
+      "negative_nonzero": { "relation_state": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED", "direction_claim": "DECREASE" },
+      "cross_universe_with_genuine_positive_owner_adjudication": { "relation_state": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED", "crosses_source_universes": true }
+    },
+    "the_repair_is_not_a_refuse_everything_change": "every mandatory positive product is still produced. Fail-closed correctness and positive productive capability are both demonstrated, as HQD-216 section 4 requires.",
+    "not_claimed": "LOCAL_STAGE_ACCEPTANCE only. Integration realization and estate occupancy are not claimed; a missing real estate input elsewhere is not a defect in this local F7 stage, per the commission."
+  },
+  "sustained_invariants_reconfirmed": [
+    "RR-01 exact comparability-requirement content binding",
+    "RR-02 complete ExactRef comparison where use scope is present",
+    "RR-05 measure binding and exact serialization",
+    "RR-06 accepted missing-order-basis typed terminal",
+    "RR-07 total precedence",
+    "exactly 12 relation states",
+    "exactly 19 authority kinds",
+    "exact-zero arithmetic with no tolerance, deadband or rounding",
+    "3+ anchor refusal",
+    "prior-F7 mapping",
+    "negative receipt implies NOT_COMPARABLE",
+    "live frozen backfill guard",
+    "no F8",
+    "no source selection or ranking",
+    "no interpolation, trajectory or causation",
+    "no currentness authority",
+    "no scalar pressure",
+    "no pooling",
+    "no equivalence creation",
+    "no actor or person power"
+  ],
+  "environment_provenance": {
+    "governed_environment_status": "reconstructed-equivalent on this host",
+    "interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python, Python 3.11.3",
+    "controls": "PYTHONHASHSEED=0 (and 12345), PYTEST_DISABLE_PLUGIN_AUTOLOAD=1, PYTHONPATH=<worktree>, -p no:cacheprovider",
+    "stated_exactly_once_as_required": true,
+    "hq214_provenance_conflict_not_repaired_or_rewritten": "the historical 3.11.3 / 3.12.14 provenance conflict in HQ214's artifacts was left exactly as found and was not re-adjudicated by this lane",
+    "not_relabelled_as_governed_certification": true
+  }
+}
