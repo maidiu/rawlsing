@@ -1,0 +1,80 @@
+{
+  "schema": "PYAT_HQ220_USE_SCOPE_AND_IDENTITY_OWNER_ATTACK@1.0.0",
+  "lane": "PYAT-HQ220-F7-AUTHORITY-CHAIN-FINAL-REREVIEW-R1",
+  "candidate": "9adc8cc9ba0942db974dddf809206de2a2fd231b",
+  "accepted_contract": "c57a96897788108db7b194e4e51691d1ca8ab729",
+  "verdict": "PARTIAL__CORE_REPAIRS_CLOSE_BUT_NAMED_AUTHORITY_SCOPE_DEFECTS_REMAIN",
+  "rr02b_missing_use_scope": {
+    "verdict": "SUSTAINED_CLOSED_AT_THE_ORIGINAL_DEFECT",
+    "absence_of_target_use_refs_fails_closed": true,
+    "complete_exact_ref_identity_required": true,
+    "bare_object_id_is_not_coverage": true,
+    "explicit_unrestricted_is_not_inferred_from_omission": true,
+    "sites": [
+      "rawlsing_next/pre553_temporal_comparability.py:417-440",
+      "rawlsing_next/pre553_temporal_comparability.py:535-553"
+    ],
+    "coverage": [
+      "TEMPORAL_COMPARABILITY",
+      "TARGET_USE_PERMISSION"
+    ]
+  },
+  "rr02c_adopted_unrestricted_representation_compatibility": {
+    "verdict": "FAIL__LOCAL_POSITIVE_COMPATIBILITY_DEFECT",
+    "severity": "NAMED_DEFECT",
+    "finding": "F7's local exact-scope helpers accept only EXPLICIT_UNRESTRICTED, while the adopted general authority law recognizes both EXPLICIT_UNRESTRICTED and UNRESTRICTED_BY_THIS_AUTHORITY as explicit unrestricted representations.",
+    "candidate_sites": [
+      "rawlsing_next/pre553_temporal_comparability.py:401-403",
+      "rawlsing_next/pre553_temporal_comparability.py:426-428",
+      "rawlsing_next/pre553_temporal_comparability.py:443-445"
+    ],
+    "adopted_owner_law": "rawlsing_next/pre553_empirical_authority.py:145-164",
+    "impact": "A positive authority snapshot that is explicitly unrestricted under already-adopted authority law can be refused by F7. This is fail-closed rather than fail-open, but it is still a local productive-adequacy incompatibility.",
+    "architecture_reopen_required": false
+  },
+  "rr03_caller_minted_identity": {
+    "verdict": "SUSTAINED_CLOSED_AT_THE_ORIGINAL_DEFECT",
+    "caller_material_can_authorize": false,
+    "owner_exact_ref_binding_required": true,
+    "owner_joint_satisfaction_required": true,
+    "owner_missing_identity_keys_refuses": true,
+    "owner_false_or_missing_joint_satisfaction_refuses": true,
+    "caller_owner_contradiction_refuses": true,
+    "sites": [
+      "rawlsing_next/pre553_temporal_comparability.py:1024-1068"
+    ]
+  },
+  "identity_contract_shape": {
+    "verdict": "LAWFUL_REUSE_SHAPE__NOT_AUTHORITY_OVERREACH",
+    "finding": "Placing temporal_identity_contract_refs and identity_surface_jointly_satisfied on the TEMPORAL_EVIDENCE scope envelope is consistent with the accepted owner map, which assigns persistent temporal identity to TEMPORAL_EVIDENCE plus the exact temporal_identity_contract_ref.",
+    "accepted_owner_evidence": [
+      "WORKER_RETURNS/PYAT-HQ210-F7-TEMPORAL-CONTRACT-REPAIR-R1/01_TEMPORAL_COMPARABILITY_AUTHORITY.json",
+      "WORKER_RETURNS/PYAT-HQ210-F7-TEMPORAL-CONTRACT-REPAIR-R1/05_OWNER_AND_SUCCESSION_MAP.json"
+    ],
+    "new_authority_kind_added": false,
+    "new_identity_owner_added": false,
+    "production_identity_instance_created": false,
+    "residual_preserved_as_upstream_dependency": "IDENTITY_CONTRACT_INSTANCE_MISSING",
+    "hqd216_classification": "UPSTREAM_DEPENDENCY_BLOCKER / ESTATE_OCCUPANCY_GAP, not by itself a local F7 implementation defect"
+  },
+  "rr03b_owner_scope_binding": {
+    "verdict": "FAIL__OWNER_KIND_IS_CHECKED_BUT_OWNER_SCOPE_IS_NOT_BOUND_TO_THE_COMPARISON",
+    "severity": "BLOCKING",
+    "finding": "The TEMPORAL_EVIDENCE snapshot used as the identity owner is resolved only by exact ref, authority kind and ALLOW state. F7 supplies no identity operation and no required source-universe refs when resolving that snapshot, then trusts the custom identity keys on its scope envelope.",
+    "site": "rawlsing_next/pre553_temporal_comparability.py:867-872",
+    "contrast": "resolve_required_authority already supports required_universe_refs, but the temporal_evidence call leaves universe_refs empty.",
+    "why_it_matters": "The accepted owner archaeology describes temporal identity as a source-native scoping question. A TEMPORAL_EVIDENCE snapshot whose ordinary source_universe_refs do not cover the compared anchors can still authorize identity if it carries the identity keys. That is an owner-scope bypass, not a missing upstream instance.",
+    "bounded_repair": "Bind the identity-owning TEMPORAL_EVIDENCE resolution to the exact source universes/identity scope required by the comparison, without inventing a new authority kind or owner."
+  },
+  "identity_precedence": {
+    "verdict": "SUSTAINED",
+    "relation_state_count": 12,
+    "identity_state": "TEMPORAL_IDENTITY_UNRESOLVED",
+    "new_identity_detected_codes_reuse_existing_state": true,
+    "new_reason_family_added": false,
+    "identity_failure_can_resolve_positive": false,
+    "higher_precedence_authority_failure_dominates_identity": true,
+    "identity_dominates_lower_precedence_states": true
+  },
+  "authority_overreach_found": false
+}
