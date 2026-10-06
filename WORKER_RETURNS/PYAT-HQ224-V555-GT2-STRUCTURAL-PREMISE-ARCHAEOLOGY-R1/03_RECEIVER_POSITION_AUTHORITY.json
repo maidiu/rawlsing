@@ -1,0 +1,45 @@
+{
+  "schema": "PYAT_HQ224_GT2_RECEIVER_STRUCTURAL_POSITION_AUTHORITY@1.0.0",
+  "premise": "receiving_structural_position_authority",
+  "status": "CURRENT_OWNER_EXISTS__INSTANCE_NOT_MATERIALIZED",
+  "exact_current_ref": null,
+  "exact_current_authority_ref": null,
+  "current_owner_contract": {
+    "id": "FIELD_FORGE_OBL005_CLAIM_BOUNDED_POSITION_ROLE_AUTHORITY_AND_EVIDENCE_CONTRACT",
+    "version": "1.0.0",
+    "adoption_blob": "5d7ad06fd2442d2ac6dcacadd4a557d3e1d89783",
+    "reissuance_required_for_new_docket": true
+  },
+  "gt2_instance_search": {
+    "exact_variable": "Q86A",
+    "exact_question_impl_id": "question_impl.phase0.67f036c0efb7fb98ff4a",
+    "exact_identity_sha256": "67f036c0efb7fb98ff4a93dc811bf59cfc095608eda374f6534b006a62241bd3",
+    "exact_gt2_pra_receipt_found": false,
+    "exact_receiving_structural_position_ref_found": false,
+    "current_repo_search_findings": [
+      "no Q86A POSITION_ROLE_AUTHORITY/PRA row found for the GT2 SIG-004 V555 docket",
+      "no STRUCTURAL_POSITION + Q86A match found",
+      "no exact Q86A identity + position search produced a current V555 receiver binding"
+    ]
+  },
+  "historical_precedent": {
+    "first_canary": {
+      "commit": "04c604be2ee4e32367f2074fdad380c7c563b740",
+      "receipt_blob": "76d67a60a9e52bc448d4678f17d29b0d7ef8404e",
+      "ruling": "ACTIVE_DISPOSITION",
+      "semantic_ceiling": "ATTITUDE_OR_DISPOSITION_ONLY",
+      "explicit_negative": "Hypothetical parentage/citizenship/identity is not respondent position; no ACTIVE_POSITION/RELATIONAL_IDENTITY_POSITION/ORIGIN_BACKGROUND_POSITION promotion."
+    },
+    "second_canary": {
+      "commit": "77624c24a2125545ee1005c7bb876c4528caf80d",
+      "ruling": "ACTIVE_DISPOSITION__ATTITUDE_OR_DISPOSITION_ONLY__AUTHORIZED_FOR_SECOND_CANARY_DESTINATION_USE",
+      "explicit_negative": "Q86A destination use does not make Q86A a respondent position."
+    },
+    "currentness_law": "These are exact semantic precedents, not current authority for GT2. OBL005 forbids automatic prior-PRA carry-forward."
+  },
+  "v555_requirement": {
+    "adp002_requirement": "RECEIVER must bind an exact TARGET_RECEIVING_POSITION_REF_WHEN_REQUIRED under exact-reference equality.",
+    "q86a_or_target_label_sufficient": false
+  },
+  "conclusion": "The claim-bounded position-role authority owner exists, but no GT2 receiver-position instance exists. Existing exact PRA precedent is actively hostile to treating Q86A itself as that position."
+}
