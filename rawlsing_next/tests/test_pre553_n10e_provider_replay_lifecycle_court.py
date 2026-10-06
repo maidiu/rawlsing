@@ -1809,8 +1809,9 @@ def _query_authority_revision(case: dict[str, Any]) -> dict[str, Any]:
         adjudication.ref,
         seal_attestation_ref=fx._ref_for("SEAL_ATTESTATION", "hq225-query-v2"),
     )
-    successor = candidate.proposed_authority_ref
-    sealed_snapshot = executor._snapshots[successor.key]
+    successor = seal.authority_ref
+    assert successor == candidate.proposed_authority_ref
+    sealed_snapshot = executor.resolve_historical_exact(successor)
     assert seal.authority_snapshot_ref == sealed_snapshot.ref
     assert_authority_snapshot_body_matches_ref(sealed_snapshot, successor)
     assert successor.authority_content_hash != prior.authority_content_hash
@@ -2127,6 +2128,7 @@ def test_r07_affected_but_identical_recomputation_is_not_representable():
     product_ref = staged["product_ref"]
     query_ref = case["empirical_query"].ref
     predicate_ref = case["predicate"].ref
+    fact_ref = _producer_fact(_provide(case)).ref
 
     # Every affected dependent moves; the last one is the product, which returns its
     # OWN identity. The owner rejects that categorically.
@@ -2149,6 +2151,7 @@ def test_r07_affected_but_identical_recomputation_is_not_representable():
             determinant_recompose={
                 query_ref.key: identity_determinant,
                 predicate_ref.key: identity_determinant,
+                fact_ref.key: identity_determinant,
             },
         )
 
