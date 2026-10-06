@@ -888,6 +888,63 @@ def resolve_current_analytical_product(
     return status
 
 
+def _authority_snapshot_identity_material(snapshot: Any) -> Mapping[str, Any]:
+    """Reconstruct exactly the material AuthorityCandidate hashes for its AuthorityRef."""
+
+    return {
+        "authority_id": snapshot.authority_id,
+        "authority_version": snapshot.authority_version,
+        "authority_kind": snapshot.authority_kind,
+        "decision_state": snapshot.decision_state,
+        "governed_operations": list(snapshot.governed_operations),
+        "governed_object_families": list(snapshot.governed_object_families),
+        "scope_envelope": canonicalize(snapshot.scope_envelope),
+        "effective_time_or_interval": canonicalize(snapshot.effective_time_or_interval),
+        "parent_authority_refs": [
+            authority_ref(ref).as_dict() for ref in snapshot.parent_authority_refs
+        ],
+        "negative_limit_refs": [
+            authority_ref(ref).as_dict() for ref in snapshot.negative_limit_refs
+        ],
+        "supersession_refs": [
+            authority_ref(ref).as_dict() for ref in snapshot.supersession_refs
+        ],
+        "interpretation_semantics_fingerprint": snapshot.interpretation_semantics_fingerprint,
+        "replay_protocol_ref": exact_ref(snapshot.replay_protocol_ref).as_dict(),
+    }
+
+
+def assert_authority_snapshot_body_matches_ref(
+    snapshot: Any,
+    expected_ref: AuthorityRef | Mapping[str, Any] | None = None,
+) -> Any:
+    """Refuse old-body/new-hash authority impersonation before recomputation."""
+
+    actual_ref = authority_ref(snapshot.authority_ref)
+    if expected_ref is not None and actual_ref != authority_ref(expected_ref):
+        raise AuthoritySnapshotIdentityMismatch(
+            "AUTHORITY_SNAPSHOT_IDENTITY_MISMATCH: snapshot does not expose the "
+            "governed successor AuthorityRef"
+        )
+    computed = semantic_hash(_authority_snapshot_identity_material(snapshot))
+    if computed != actual_ref.authority_content_hash:
+        raise AuthoritySnapshotIdentityMismatch(
+            "AUTHORITY_SNAPSHOT_IDENTITY_MISMATCH: snapshot semantic body does not "
+            "hash to its exposed AuthorityRef"
+        )
+    return snapshot
+
+
+def _assert_replacement_family(old_ref: ExactRef, new_ref: ExactRef) -> ExactRef:
+    new_ref = exact_ref(new_ref, "replacement_ref")
+    if new_ref.kind != old_ref.kind:
+        raise ReplacementFamilyMismatch(
+            "REPLACEMENT_FAMILY_MISMATCH: affected dependent changed object family; "
+            f"old={old_ref.kind!r}, new={new_ref.kind!r}"
+        )
+    return new_ref
+
+
 def build_owner_recompiler(
     *,
     executor: Any,
@@ -1025,7 +1082,9 @@ def build_owner_recompiler(
             successor = _resolve_successor(
                 owners, changed, f"exact determinant {affected_ref.key}"
             )
-            new_ref = det_recomposer(affected_ref, successor)
+            new_ref = _assert_replacement_family(
+                affected_ref, det_recomposer(affected_ref, successor)
+            )
             if new_ref == affected_ref:
                 raise AuthorityMaintenanceError(
                     "affected dependent recompilation must produce a new exact ref"
@@ -1048,7 +1107,9 @@ def build_owner_recompiler(
         )
         # The recomposition path owns the new exact identity; it is handed the
         # affected product ref and the exact sealed/released successor authority ref.
-        new_ref = recomposer(affected_ref, successor)
+        new_ref = _assert_replacement_family(
+            affected_ref, recomposer(affected_ref, successor)
+        )
         if new_ref == affected_ref:
             raise AuthorityMaintenanceError(
                 "affected dependent recompilation must produce a new exact ref"
