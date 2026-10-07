@@ -1,3 +1,30 @@
+# HQ238 — INDEPENDENT F7 NARROWER 04G PROOF; TWO-LANE FRONTIER — 2026-10-07
+
+### RETURNED / RATIFIED OPEN DEFECT — F7
+**BRANCH:** `agent/reviewer-pyat-hq236-f7-coordinated-hostile-evidence-r1`  
+**EXACT RETURN SHA:** `ae5e140a378406888c94d099b7dd8e98dfeb1459`  
+**DISPOSITION:** `F7_COORDINATED_CUSTODY_SUBSTITUTION_INDEPENDENTLY_REPRODUCED__ARCHITECTURE_DECISION_REQUIRED`  
+**NEW MATERIAL FINDING:** A ledger-cell-only rebind with victim's own untouched container anchors still forges. HQ235's "every single primitive closed" assertion is FALSE. F7-RR-04G OPEN. No F7 adoption.
+
+### NEW — NEEDS LAUNCH — F7 END-TO-END TRUSTED DECISION-BOUNDARY DESIGN
+**AGENT:** Browser/GitHub documentary architecture/semantic-authority worker  
+**MODEL:** **GPT-5.6 Sol High**  
+**BRANCH:** `agent/rabochii-pyat-hq238-f7-end-to-end-trusted-decision-boundary-r1`  
+**COMMISSION TIP:** `16ee0054622077c84f815c71c04468bc39411d61`  
+**COMMISSION:** `WORKER_COMMISSIONS/PYAT-HQ238-F7-END-TO-END-TRUSTED-DECISION-BOUNDARY-R1/00_COMMISSION.md`  
+**SCOPE:** T0/T1/T2 exact TCB, actual P07/F7/consumer trusted decision boundary, four hostile variants, concrete design/acceptance courts; NO architecture adoption or implementation.
+
+### EXISTING ACTIVE — N10E/C1 R3 HOSTILE REVIEW — DO NOT RELAUNCH
+**AGENT:** Browser/GitHub independent semantic-authority hostile reviewer  
+**MODEL:** **GPT-5.6 Sol High**  
+**BRANCH:** `agent/reviewer-pyat-hq237-n10e-c1-model-authority-r3-r1`  
+**COMMISSION TIP / LAST VERIFIED HEAD:** `3b3ffafc245dceaf2edee84c4ccc59b508da69a5`  
+**STATUS:** Not returned at HQ238 census. Continue unchanged.
+
+**HQ DECISION:** `HQD-2026-10-07-238`. Run F7 design + existing N10E review independently. No Space Bunny implementation presently authorized.
+
+---
+
 # HQ237 FRONTIER — TWO RETURNED, ONE STILL OUT; N10E R3 REVIEW DISPATCHED — 2026-10-07
 
 ### BANKED DECISION INPUT — F7 OWNER-BOUNDARY ARCHITECTURE
