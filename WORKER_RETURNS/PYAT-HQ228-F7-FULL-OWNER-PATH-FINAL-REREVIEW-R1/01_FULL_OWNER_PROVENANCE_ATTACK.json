@@ -1,0 +1,42 @@
+{
+  "schema": "PYAT_HQ228_FULL_OWNER_PROVENANCE_ATTACK@1.0.0",
+  "candidate_code_head": "61acee605d618ed4a0db11d893f6139593ae5780",
+  "blocking_finding": {
+    "id": "F7-RR-04F__LIVE_AUTHENTICATED_OWNER_STATE_IS_EXPOSED_AND_POSTCONSTRUCTION_REPLACEABLE",
+    "severity": "BLOCKING",
+    "source": "rawlsing_next/pre553_source_relations.py",
+    "mechanism": "_make_owner_state_store returns load(); _load_owner_state is module-visible and returns the live _AuthenticatedResolverState object; object.__setattr__ can replace its frozen dataclass fields after construction.",
+    "why_decisive": "The authenticated entrypoint's captured loader retrieves the same mutated object. Relation/snapshot/replay checks then authenticate transplanted material, not the fact that this resolver's constructor admitted it.",
+    "minimal_attack": [
+      "source = exact SourceRelationResolver containing a genuine authorized relation",
+      "victim = exact SourceRelationResolver with relations=()",
+      "source_state = pre553_source_relations._load_owner_state(source)",
+      "victim_state = pre553_source_relations._load_owner_state(victim)",
+      "object.__setattr__(victim_state, 'by_ref', source_state.by_ref)",
+      "object.__setattr__(victim_state, 'by_key', source_state.by_key)",
+      "object.__setattr__(victim_state, 'authority_snapshots', source_state.authority_snapshots)",
+      "object.__setattr__(victim_state, 'relation_semantic_hashes', source_state.relation_semantic_hashes)",
+      "object.__setattr__(victim_state, 'authority_semantic_hashes', source_state.authority_semantic_hashes)",
+      "object.__setattr__(victim_state, 'custody_hash', source_state.custody_hash)",
+      "normal F7 authenticated adjudication now consumes transplanted custody"
+    ],
+    "court_symmetry": "HQ227 itself uses object.__setattr__ to corrupt private _semantic_fields and monkeypatches private owner helpers, so underscore naming/frozen=True cannot be treated as an excluded hostile surface here."
+  },
+  "mandatory_attacks": {
+    "1_postconstruction_relation_custody_mutation_or_replacement": "FAIL: caller-visible _by_ref is dead, but live authenticated custody remains postconstruction replaceable through _load_owner_state.",
+    "2_replaced_or_mutated_registry": "PASS on the intended _registry surface: construction-time snapshot is pinned and later _registry replacement cannot redirect adjudication. Global authenticity still fails because sealed authority_snapshots can be transplanted through the state defect.",
+    "3_AuthorityRegistry_subclass_override": "PASS SOURCE REVIEW: exact concrete registry required and captured base resolve_exact is used.",
+    "4_stale_or_corrupt_relation_replay": "PASS SOURCE REVIEW: custodied relation content hash and replay are revalidated at positive use.",
+    "5_wrong_snapshot_under_correct_outer_AuthorityRef": "PASS SOURCE REVIEW: nested snapshot content hash is bound into decision and cross-bound to outer F7 snapshot content_hash.",
+    "6_decide_require_nested_lookup_validation_monkeypatch": "PASS SOURCE REVIEW for postconstruction symbol/instance patching covered by captured function references; does not cure direct live-state replacement.",
+    "7_injected_relation_never_constructor_validated": "FAIL BLOCKING: transplant into victim's live _AuthenticatedResolverState bypasses victim constructor custody.",
+    "8_legitimate_positive_path": "PRESENT IN SOURCE, NOT RUNTIME-QUALIFIED: test_hq227_full_owner_path_positive_cross_universe_service_remains_productive.",
+    "9_repaired_hostile_witness_load_bearing": "PASS SOURCE REVIEW: test_hq227_targeted_break_authenticated_owner_entrypoint_is_load_bearing patches tc._authenticated_source_relation_decide, the actual F7 callsite alias.",
+    "10_prior_ceilings_and_positive_paths": "PASS STATIC REVIEW; runtime not executed."
+  },
+  "prior_findings": {
+    "F7-RR-04D": "PARTIALLY CLOSED: outer exact-instance method/map shadowing fixed; deeper live owner-state provenance remains mutable.",
+    "F7-RR-04E": "CLOSED at nested registry/snapshot identity layer subject to the new state-provenance blocker.",
+    "COURT-HQ226-01": "CLOSED: stale require witness replaced with actual authenticated-entrypoint targeted break."
+  }
+}
