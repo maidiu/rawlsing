@@ -16,7 +16,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from types import MappingProxyType
 from typing import Any, Iterable, Mapping, NamedTuple, Sequence
-from weakref import WeakKeyDictionary, ref as weakref_ref
+from weakref import ref as weakref_ref
 
 from rawlsing_next.pre553_c11_repository import C11Repository
 from rawlsing_next.pre553_empirical_authority import (
@@ -861,29 +861,43 @@ def _make_sealed_source_relation_owner(
 ):
     """Build the adopted P07 owner with constructor custody kept lexical.
 
-    HQ231: the WeakKeyDictionary and its live _AuthenticatedResolverState values
-    never leave this factory's lexical owner boundary. Module-visible diagnostics
+    HQ231: the lexical custody ledger and its _AuthenticatedResolverState values
+    never leave this factory's owner boundary. Module-visible diagnostics
     return canonical detached text only; no callable inspection helper returns the
     state object later trusted by authenticated adjudication.
     """
-    states = WeakKeyDictionary()
+    # Persistent immutable lexical ledger. Construction is the only mutation point:
+    # _seal rebinds the tuple; no caller can mutate a retrieved ledger object in place.
+    entries: tuple[tuple[Any, _AuthenticatedResolverState], ...] = ()
 
     def _seal(resolver: Any, state: _AuthenticatedResolverState) -> None:
-        if resolver in states:
-            raise SourceRelationIntegrityError("resolver owner custody already sealed")
-        states[resolver] = state
-
-    def _state_or_refuse(resolver: Any) -> _AuthenticatedResolverState:
-        state = states.get(resolver)
-        if state is None:
-            raise SourceRelationIntegrityError(
-                "resolver lacks authenticated construction-time owner custody"
-            )
+        nonlocal entries
         if state.owner_ref() is not resolver:
             raise SourceRelationIntegrityError(
-                "resolver owner custody is not bound to this constructor instance"
+                "resolver owner custody capsule is not bound to constructor instance"
             )
-        return state
+        live: list[tuple[Any, _AuthenticatedResolverState]] = []
+        for owner_ref, existing in entries:
+            owner = owner_ref()
+            if owner is None:
+                continue
+            if owner is resolver:
+                raise SourceRelationIntegrityError("resolver owner custody already sealed")
+            live.append((owner_ref, existing))
+        entries = tuple(live) + ((weakref_ref(resolver), state),)
+
+    def _state_or_refuse(resolver: Any) -> _AuthenticatedResolverState:
+        for owner_ref, state in entries:
+            if owner_ref() is not resolver:
+                continue
+            if state.owner_ref() is not resolver:
+                raise SourceRelationIntegrityError(
+                    "resolver owner custody is not bound to this constructor instance"
+                )
+            return state
+        raise SourceRelationIntegrityError(
+            "resolver lacks authenticated construction-time owner custody"
+        )
 
     def _resolve_for_resolver(
         resolver: Any, ref: ExactRef | Mapping[str, Any]
