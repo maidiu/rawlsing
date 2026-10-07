@@ -1,0 +1,101 @@
+{
+  "schema": "PYAT_HQ236_02_EXACT_ATTACK_AND_CONTROL_RECEIPTS@1",
+  "reproduction_scripts": [
+    {"path": "reproduction/hq236_independent_attack.py", "sha256": "4b7f7898510c0f21eeaf6a547d60900d04125b576964a7f7025d21cac7e85fdc", "purpose": "control A/B, exact HQ234 single-cell attack, candidate coordinated attack, narrower attacks 3/4, restore"},
+    {"path": "reproduction/hq236_attack3_focus.py", "sha256": "ed255684c656a140765550e875ba6074bbfeb6c0d54bb21d3ca164f814f19c5a", "purpose": "narrowest-path focus with live-container identity instrumentation"},
+    {"path": "reproduction/attack_matrix_output.json", "sha256": "17c7192a6f14aedbc7c96eaca8ff8e678a42c53e4d73a72114059e718d6d2966"},
+    {"path": "reproduction/attack3_focus_output.json", "sha256": "dab83ed36ce9c840d63d1e460c1994d3f908649009ee6c46c9216ed72d8b565c"}
+  ],
+  "fixture_setup": {
+    "source_resolver": "rawlsing_next.pre553_source_relations.SourceRelationResolver(relations=[one AUTHORIZED SOURCE_SEMANTIC_EQUIVALENCE relation for (U-A,U-B), target_use USE-1]) with a genuine SOURCE_EQUIVALENCE authority snapshot",
+    "victim_resolver": "SourceRelationResolver(relations=(), authority_registry=source._registry) -- an empty resolver sharing the source registry but holding ZERO relation material and an EMPTY custody state",
+    "independent_seam_recovery": "walk sr.authenticated_source_relation_decision.__closure__ to the _state_or_refuse function, then walk its __closure__ to the tuple cell holding (weakref(owner), state) entries; pure reflection, no monkeypatching",
+    "attacker_fixture_privilege": "in-process Python with import access to rawlsing_next.pre553_source_relations, a live reference to the victim resolver object, the ability to read __closure__ and assign cell.cell_contents, and the ability to construct the public NamedTuple _AuthenticatedResolverState. It does NOT need any authority material for the victim, any registry write, or any production callable replacement."
+  },
+  "attack_mechanics_attestation": {
+    "production_callables_monkeypatched": false,
+    "accepted_code_rewritten": false,
+    "normal_positive_authority_smuggled_for_victim": false,
+    "victim_own_custody_state_is_empty": true,
+    "operations_used_by_attacker": [
+      "instance attribute assignment (or not, per variant)",
+      "closure cell .cell_contents assignment",
+      "direct construction of _AuthenticatedResolverState"
+    ],
+    "no_fixture_provides_positive_authority_to_victim": true
+  },
+  "control_A_source_positive": {
+    "p07": "AUTHORIZED",
+    "p07_reason": "exact operation-specific relation authority established from authenticated owner custody",
+    "p07_owner_custody_hash": "d31cd8ddd97f0dc11c0a299cfeb24ea8f54853a392dbd73eaebfe23579c72bc8",
+    "p07_authority_snapshot_content_hash": "60f9544b6024636fe875c1ba5d379e885efff26f444ad60571a41df55c181cb0",
+    "p07_relation_ref_object_id": "urn:rawlsing:pre553:SourceUniverseRelation:sha256:33e5a745121730fe62628206d47b486a1b7acfc3d6347f85ee877027f34ca4e8",
+    "f7_relation_state": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED",
+    "f7_reason": "AUTHORIZED_ORDERED_PAIR_UNDER_BOUND_COMPARABILITY",
+    "f7_comparability": "COMPARABLE",
+    "f7_direction": "INCREASE",
+    "f7_receipt_hash": "92d052ff15e9e3f42bd715a338ff44a5e7d7fd96d2cf4cb790b53f31348b7c3a"
+  },
+  "control_B_victim_negative": {
+    "p07": "REFUSED",
+    "p07_exception": "SourceRelationIntegrityError: exact SourceUniverseRelation unavailable from authenticated owner custody; no label/ID/latest/default inference",
+    "f7_relation_state": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT",
+    "f7_reason": "SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE",
+    "f7_comparability": "NOT_COMPARABLE",
+    "f7_direction": "DIRECTION_NOT_CLAIMABLE",
+    "f7_receipt_hash": "d419303edd5f4d98d3cc5ece24883a85af8a64c369507a5e68d54770e112df62"
+  },
+  "attack_1_exact_hq234_single_cell_rebind": {
+    "shape": "forged state with victim owner_ref and SOURCE payload AND source sealed anchor fields; ledger cell rebound",
+    "result": "REFUSED",
+    "p07_exception": "SourceRelationIntegrityError: owner custody by_ref container identity is not anchored to this resolver",
+    "f7_relation_state": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT",
+    "f7_reason": "SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE",
+    "hq235_claim_that_this_exact_attack_is_now_refused": "CONFIRMED"
+  },
+  "attack_2_candidate_coordinated_container_replacement": {
+    "shape": "replace victim._by_ref and victim._by_key with source copies, then rebind ledger cell to a state re-anchored to those substituted containers",
+    "result": "FORGED_POSITIVE",
+    "victim_f7_relation_state": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED",
+    "victim_f7_reason": "AUTHORIZED_ORDERED_PAIR_UNDER_BOUND_COMPARABILITY",
+    "victim_f7_direction": "INCREASE",
+    "victim_p07": "AUTHORIZED",
+    "victim_p07_owner_custody_hash": "d31cd8ddd97f0dc11c0a299cfeb24ea8f54853a392dbd73eaebfe23579c72bc8",
+    "victim_p07_relation_ref_object_id": "urn:rawlsing:pre553:SourceUniverseRelation:sha256:33e5a745121730fe62628206d47b486a1b7acfc3d6347f85ee877027f34ca4e8",
+    "hq235_claim_that_coordinated_substitution_still_forges": "REPRODUCED",
+    "honest_note": "A test asserting this forgery is evidence of an OPEN DEFECT, not an acceptance PASS."
+  },
+  "attack_3_narrower_no_live_container_replacement": {
+    "shape": "NO live container replaced. Attacker constructs the state with the SOURCE payload (by_ref/authority_snapshots/hashes/custody_hash) but sets sealed_by_ref_owner = victim._by_ref and sealed_by_key_owner = victim._by_key (the victim's OWN untouched live containers) and sealed_relations_fingerprint = _custody_relations_fingerprint(live_by_ref=victim._by_ref) (the victim's live empty container). Then rebinds only the ledger cell.",
+    "result": "FORGED_POSITIVE",
+    "victim_f7_relation_state": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED",
+    "victim_f7_reason": "AUTHORIZED_ORDERED_PAIR_UNDER_BOUND_COMPARABILITY",
+    "victim_f7_direction": "INCREASE",
+    "victim_p07": "AUTHORIZED",
+    "live_container_identity_unchanged": true,
+    "live_by_ref_keys_before_and_after": [],
+    "live_by_key_keys_before_and_after": [],
+    "live_by_ref_object_id_unchanged": true,
+    "live_by_key_object_id_unchanged": true,
+    "live_fingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "finding": "The repair does NOT bind the payload (state.by_ref / state.by_key / state.authority_snapshots / state.custody_hash) to the live containers. It only compares attacker-supplied anchor FIELDS against the victim's live containers. Because the attacker can set those fields to the victim's own live containers and compute the public fingerprint, the named blocker F7-RR-04G (lexical ledger cell rebind) is defeated WITHOUT any coordinated live-anchor replacement. HQ235's sub-claim that 'every single admitted reflection primitive is closed' is therefore FALSIFIED."
+  },
+  "attack_4_narrowest_payload_by_ref_only": {
+    "shape": "same as attack 3 but the state also keeps the victim's empty by_key payload; only by_ref payload comes from the source",
+    "result": "FORGED_POSITIVE",
+    "victim_f7_relation_state": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED",
+    "victim_f7_direction": "INCREASE"
+  },
+  "restored_positive_control": {
+    "ledger_cell_restored_byte_identical": true,
+    "source_f7_relation_state": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED",
+    "source_f7_receipt_hash": "92d052ff15e9e3f42bd715a338ff44a5e7d7fd96d2cf4cb790b53f31348b7c3a",
+    "victim_f7_relation_state": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"
+  },
+  "verdict": {
+    "coordinated_substitution_reproduced": true,
+    "exact_single_cell_attack_refused": true,
+    "narrower_path_falsifies_single_primitive_closure_claim": true,
+    "blocker_F7_RR_04G_status": "OPEN_STRONGER_THAN_REPORTED"
+  }
+}

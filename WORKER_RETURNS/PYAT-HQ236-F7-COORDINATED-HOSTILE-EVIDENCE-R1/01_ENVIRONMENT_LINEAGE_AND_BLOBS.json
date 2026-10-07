@@ -1,0 +1,76 @@
+{
+  "schema": "PYAT_HQ236_01_ENVIRONMENT_LINEAGE_AND_BLOBS@1",
+  "commission": "PYAT-HQ236-F7-COORDINATED-HOSTILE-EVIDENCE-R1",
+  "review_lane": "agent/reviewer-pyat-hq236-f7-coordinated-hostile-evidence-r1",
+  "review_head": "ea734f1d4418a2356620627d16dbcd17b39819c9",
+  "review_head_equals_commission_tip": true,
+  "worktree": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq236-f7-coordinated-hostile",
+    "shared_object_store": "/Users/matthewsmith/Desktop/Rawlsing/.git",
+    "clone_performed": false,
+    "other_worker_directory_used": false,
+    "existing_worktree_recreated": false,
+    "bootstrap_note": "No worktree dedicated to this commissioned branch existed at launch (checked git worktree list and .git/worktrees admin). One branch-dedicated isolated worktree was bootstrapped from the existing shared object store via `git worktree add -b <branch> <path> origin/<branch>`. The HQ235 lane's directory hq235-f7 was NOT touched.",
+    "git_status_short_at_audit_start": "",
+    "git_status_short_after_audit": ""
+  },
+  "governed_interpreter": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+    "present": true,
+    "sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "python_version": "Python 3.11.3",
+    "pytest_version": "pytest 9.1.1",
+    "sys_executable": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+    "substitution_performed": false
+  },
+  "machine": {
+    "uname_s": "Darwin",
+    "uname_m": "x86_64",
+    "os_product_version": "13.7.8",
+    "os_build": "22H730"
+  },
+  "lineage": {
+    "candidate_base": "c86ae335eaf70e82b5764c46754b16ca7e1587ce",
+    "candidate_base_is_ancestor_of_review_head": true,
+    "pre_repair_tip": "326262ee45d0cef440eb60b2c1639e63c068061c",
+    "pre_repair_tip_is_ancestor_of_candidate_base": true,
+    "diff_pre_repair_tip_to_candidate_base_name_status": [
+      "A WORKER_COMMISSIONS/PYAT-HQ235-F7-NONFORGEABLE-CUSTODY-BINDING-REPAIR-R1/00_COMMISSION.md",
+      "A WORKER_RETURNS/PYAT-HQ235-F7-NONFORGEABLE-CUSTODY-BINDING-REPAIR-R1/00_RETURN.md",
+      "A WORKER_RETURNS/PYAT-HQ235-F7-NONFORGEABLE-CUSTODY-BINDING-REPAIR-R1/01_REPAIR_DESIGN_AND_INVARIANT.json",
+      "A WORKER_RETURNS/PYAT-HQ235-F7-NONFORGEABLE-CUSTODY-BINDING-REPAIR-R1/02_RR04G_HOSTILE_REPRODUCTION_AND_CLOSURE.json",
+      "A WORKER_RETURNS/PYAT-HQ235-F7-NONFORGEABLE-CUSTODY-BINDING-REPAIR-R1/03_REFLECTION_SURFACE_AUDIT.json",
+      "A WORKER_RETURNS/PYAT-HQ235-F7-NONFORGEABLE-CUSTODY-BINDING-REPAIR-R1/04_PRODUCTIVE_PATH_AND_SEMANTIC_CONSERVATION.json",
+      "A WORKER_RETURNS/PYAT-HQ235-F7-NONFORGEABLE-CUSTODY-BINDING-REPAIR-R1/05_RUNTIME_AND_REGRESSION.json",
+      "A WORKER_RETURNS/PYAT-HQ235-F7-NONFORGEABLE-CUSTODY-BINDING-REPAIR-R1/06_FINAL_DISPOSITION.json",
+      "M rawlsing_next/pre553_source_relations.py",
+      "M rawlsing_next/tests/test_pre553_temporal_comparability.py"
+    ],
+    "code_bearing_changes": [
+      {
+        "path": "rawlsing_next/pre553_source_relations.py",
+        "blob_pre_repair": "d9fb2c48ff6f2b68b2b8b06a47402c65cf6b7737",
+        "blob_candidate": "8053d30d306a3654ebf563043088311ff390bb2b",
+        "blob_size_bytes": 75322,
+        "numstat": "94 added, 5 removed",
+        "classification": "PRODUCTION custody anchoring only (adds _custody_relations_fingerprint, _authenticate_owner_custody_anchor, three NamedTuple fields, and swaps the owner_ref check in _state_or_refuse)"
+      },
+      {
+        "path": "rawlsing_next/tests/test_pre553_temporal_comparability.py",
+        "blob_pre_repair": "a0136d80d6d04b55bede74febfc524ff91097c4d",
+        "blob_candidate": "8a82bd5905d266c1d500b1bf2bdcb01ea948efd6",
+        "blob_size_bytes": 127419,
+        "numstat": "309 added, 0 removed",
+        "classification": "COURT additive only (8 new HQ235 witness tests); zero removed lines means every pre-existing fixture/test body is byte-unchanged"
+      }
+    ],
+    "accepted_tests_edited_to_pass": false,
+    "pre_existing_fixtures_unchanged": true,
+    "fixture_reuse_note": "The independent attack script reuses only the pre-existing lawful fixtures _adjudicated_resolver / _cross_universe_request / _run. The 309-added/0-removed numstat proves those fixture bodies were not touched by HQ235."
+  },
+  "verdict": {
+    "lineage_locked": true,
+    "exact_changed_blobs_locked": true,
+    "governed_interpreter_no_substitution": true
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "schema": "PYAT_HQ236_03_ANCHOR_IMPLEMENTATION_AND_REGRESSION_AUDIT@1",
+  "candidate_base": "c86ae335eaf70e82b5764c46754b16ca7e1587ce",
+  "anchor_implementation_audit": {
+    "production_file": "rawlsing_next/pre553_source_relations.py",
+    "what_it_changes": {
+      "new_namedtuple_fields": ["sealed_by_ref_owner", "sealed_by_key_owner", "sealed_relations_fingerprint"],
+      "new_helper": "_custody_relations_fingerprint(live_by_ref, _semantic_hash_impl=semantic_hash) -> str",
+      "new_gate": "_authenticate_owner_custody_anchor(resolver, state) invoked from _state_or_refuse on every lookup",
+      "replaced_check": "the previous bare `state.owner_ref() is not resolver` check is replaced by the gate call"
+    },
+    "gate_conditions_observed": [
+      "state is an exact _AuthenticatedResolverState",
+      "state.owner_ref() is resolver",
+      "state.sealed_by_ref_owner is resolver._by_ref",
+      "state.sealed_by_key_owner is resolver._by_key",
+      "_custody_relations_fingerprint(live_by_ref=resolver._by_ref) == state.sealed_relations_fingerprint"
+    ],
+    "what_it_conserves": {
+      "p07_relation_states_and_precedence": true,
+      "relation_semantic_content_hash_and_replay_identity": true,
+      "authority_kinds_and_snapshot_pinning": true,
+      "source_composition_law": true,
+      "temporal_comparability_semantics": true,
+      "v554_v557_v558_semantics": true,
+      "registry_replacement_immunity": "CONSERVED, by deliberately NOT anchoring _registry",
+      "accepted_court_body_unchanged": true
+    },
+    "logic_gap_found": {
+      "statement": "The gate authenticates the state's ANCHOR FIELDS against the resolver's live containers, but the decision path consumes state.by_ref / state.by_key / state.authority_snapshots / state.custody_hash, and NONE of those payload fields is ever compared to the live containers or re-derived from them at decision time. The docstring claim that 'custody_hash is additionally re-derived from those live containers at every decision' is not implemented: no call site recomputes custody_hash in the gate or in _decide_from_owner_state.",
+      "consequence": "An attacker who rebinds the ledger cell with a state that carries the SOURCE payload but sets the three anchor fields to the victim's OWN untouched live containers, and the fingerprint to the public fingerprint of that untouched container, is authenticated. Custody is then minted from the transplanted payload.",
+      "is_the_fingerprint_load_bearing": false,
+      "fingerprint_proof": "the attacker computes the same public function _custody_relations_fingerprint(live_by_ref=victim._by_ref) before and after; for an empty victim container this is the constant 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "is_the_sealed_by_ref_owner_anchor_load_bearing": false,
+      "anchor_proof": "the attacker simply assigns the victim's live container object as the anchor field; identity comparison against that same object trivially holds"
+    },
+    "why_anchoring_registry_would_break_accepted_immunity": {
+      "accepted_test": "test_hq227_exact_instance_registry_replacement_cannot_change_pinned_owner_snapshot",
+      "accepted_law": "replacing resolver._registry with a registry holding a same-ref/different-semantics shadow snapshot must leave adjudication UNCHANGED (decision.authorized is True and the pinned genuine snapshot hash is used)",
+      "mechanism": "an identity anchor `state.sealed_registry_owner is resolver._registry` would fail immediately after the lawful replacement, converting an authorized decision into a SourceRelationIntegrityError refusal and breaking the accepted test's `assert decision.authorized is True` -- i.e. a semantic mutation",
+      "hq235_decision_to_exclude_registry": "CONSISTENT and independently endorsed; the registry must not become custody-load-bearing",
+      "independently_verified": "the accepted immunity test passes at the candidate tip (see regression section)"
+    }
+  },
+  "regression_evidence": {
+    "governed_interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+    "targeted_courts": {
+      "command": "<governed python3.11> -m pytest rawlsing_next/tests/test_pre553_temporal_comparability.py rawlsing_next/tests/test_pre553_source_relations.py rawlsing_next/tests/test_m1_admitted_field_forge_relation_v554_ingress.py rawlsing_next/tests/test_m1_temporal_v554_admission_dedup.py -v",
+      "collected_node_counts": {
+        "rawlsing_next/tests/test_pre553_temporal_comparability.py": 163,
+        "rawlsing_next/tests/test_pre553_source_relations.py": 24,
+        "rawlsing_next/tests/test_m1_admitted_field_forge_relation_v554_ingress.py": 14,
+        "rawlsing_next/tests/test_m1_temporal_v554_admission_dedup.py": 27,
+        "total_collected": 228
+      },
+      "observed": "228 passed, 0 failed, 0 errors, exit 0",
+      "matches_hq235_claim_228_passed": true,
+      "f7_plus_source_relations_subtotal": "187 passed (163 + 24), matches HQ235"
+    },
+    "hq235_witness_subset": {
+      "command": "<governed python3.11> -m pytest rawlsing_next/tests/test_pre553_temporal_comparability.py -k hq235 -v",
+      "collected": 8,
+      "observed": "8 passed",
+      "interpretation": "HQ235 witness 7 (test_hq235_coordinated_multi_anchor_substitution_still_mints_custody) PASSES because it asserts the forgery as TRUE. This green result is EVIDENCE OF AN OPEN DEFECT, not an acceptance PASS."
+    },
+    "productive_positive_paths": {
+      "test_witness_same_universe_needs_no_equivalence": "PASSED",
+      "test_witness_exact_zero_is_derived_not_asserted": "PASSED",
+      "test_witness_decrease_direction_is_derived": "PASSED",
+      "test_witness_cross_universe_is_derived_from_bound_universes": "PASSED",
+      "test_hq227_full_owner_path_positive_cross_universe_service_remains_productive": "PASSED"
+    },
+    "registry_immunity_test": {
+      "test_hq227_exact_instance_registry_replacement_cannot_change_pinned_owner_snapshot": "PASSED"
+    },
+    "broad_regression": {
+      "status": "INDEPENDENTLY_RERUN",
+      "command": "<governed python3.11> -m pytest rawlsing_next/tests/ -q <same 9 --ignore exclusions as HQ230/HQ235>",
+      "summary_line_observed": "45 failed, 2691 passed, 55 warnings, 7 errors, 28 subtests passed in 1201.40s (0:20:01)",
+      "exit_code": 1,
+      "passed_observed": 2691,
+      "failed_observed": 45,
+      "errors_observed": 7,
+      "normalized_failed_error_count_observed": 54,
+      "normalized_set_sha256_observed": "278854ee94fadfd57284a572441522fb56105081f89af431b17ec2e556ace6a9",
+      "identical_to_accepted_hq230_baseline": true,
+      "hq235_claim_repaired_passed_2691": "CONFIRMED",
+      "hq235_claim_no_regression_identical_sha256": "CONFIRMED",
+      "note": "the 54-item normalized set has the same documented composition as HQ230/HQ232 (52 unique parent node ids plus 2 deterministic nested-subprocess lines echoed by two unrelated failing tests); it is unchanged from the accepted baseline, so the HQ235 custody-anchoring change introduced zero regression in this suite."
+    }
+  }
+}

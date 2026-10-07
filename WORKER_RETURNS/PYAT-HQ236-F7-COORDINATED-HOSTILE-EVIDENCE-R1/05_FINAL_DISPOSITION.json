@@ -1,0 +1,62 @@
+{
+  "schema": "PYAT_HQ236_05_FINAL_DISPOSITION@1",
+  "commission": "PYAT-HQ236-F7-COORDINATED-HOSTILE-EVIDENCE-R1",
+  "lane": "agent/reviewer-pyat-hq236-f7-coordinated-hostile-evidence-r1",
+  "review_head": "ea734f1d4418a2356620627d16dbcd17b39819c9",
+  "candidate_base": "c86ae335eaf70e82b5764c46754b16ca7e1587ce",
+  "disposition": "F7_COORDINATED_CUSTODY_SUBSTITUTION_INDEPENDENTLY_REPRODUCED__ARCHITECTURE_DECISION_REQUIRED",
+  "blocker": "F7-RR-04G__LEXICAL_CUSTODY_LEDGER_CELL_IS_CALLER_REBINDABLE",
+  "blocker_status": "OPEN__AND_WEAKER_REPAIR_THAN_REPORTED",
+  "independent_results": {
+    "control_A_source_positive": "REPRODUCED (TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED)",
+    "control_B_victim_negative": "REPRODUCED (TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT)",
+    "original_hq234_single_cell_attack": "REFUSED (confirmed)",
+    "hq235_coordinated_attack": "FORGED_POSITIVE (reproduced)",
+    "narrower_attack_no_live_container_replacement": "FORGED_POSITIVE (new finding; falsifies HQ235's single-primitive-closure sub-claim)",
+    "restored_controls": "source POSITIVE, victim NEGATIVE"
+  },
+  "attack_honesty": {
+    "forgery_witness_passing_is_evidence_of_open_defect": true,
+    "not_an_acceptance_pass": true,
+    "production_callables_monkeypatched": false,
+    "accepted_code_rewritten": false,
+    "positive_authority_smuggled_to_victim": false
+  },
+  "regression": {
+    "targeted_228_passed": true,
+    "targeted_failed": 0,
+    "targeted_errors": 0,
+    "broad_passed": 2691,
+    "broad_normalized_54_sha256": "278854ee94fadfd57284a572441522fb56105081f89af431b17ec2e556ace6a9",
+    "broad_identical_to_accepted_baseline": true,
+    "zero_regression": true
+  },
+  "root_cause_one_line": "The HQ235 gate compares attacker-supplied anchor FIELDS to the resolver's live containers but never binds the decision PAYLOAD (by_ref/by_key/authority_snapshots/custody_hash) to those containers, so a caller can set the anchor fields to the victim's own untouched live containers and compute the public fingerprint, then rebind the lexical ledger cell and mint custody.",
+  "proof_limits": {
+    "universal_pure_python_impossibility_proven": false,
+    "specific_implementation_invariant_established": false,
+    "native_ipc_os_designs_evaluated": false,
+    "narrowest_justified_statement": "Against candidate c86ae335e the required non-forgeability invariant is NOT established; the lexical ledger-cell rebind alone still mints custody for an empty resolver without coordinated live-anchor replacement; HQ235's all-single-primitives-closed sub-claim is falsified; universal impossibility remains unproven."
+  },
+  "what_was_NOT_done": [
+    "no production mutation",
+    "no accepted-court mutation",
+    "no architecture adoption",
+    "no self-adoption",
+    "no repair",
+    "no new native extension, runtime or IPC boundary built"
+  ],
+  "return_artifacts": [
+    "00_RETURN.md",
+    "01_ENVIRONMENT_LINEAGE_AND_BLOBS.json",
+    "02_EXACT_ATTACK_AND_CONTROL_RECEIPTS.json",
+    "03_ANCHOR_IMPLEMENTATION_AND_REGRESSION_AUDIT.json",
+    "04_THREAT_MODEL_AND_PROOF_LIMITS.json",
+    "05_FINAL_DISPOSITION.json",
+    "reproduction/hq236_independent_attack.py",
+    "reproduction/hq236_attack3_focus.py",
+    "reproduction/attack_matrix_output.json",
+    "reproduction/attack3_focus_output.json"
+  ],
+  "one_line": "The HQ235 coordinated F7 custody substitution is independently reproduced, and a strictly narrower ledger-cell rebind also forges without replacing any live anchor container, so the required non-forgeability invariant is not established and the owner-boundary architecture decision stands."
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "PYAT_HQ236_04_THREAT_MODEL_AND_PROOF_LIMITS@1",
+  "threat_model": {
+    "admitted_caller": "In-process Python code executing in the same interpreter as the owner, with import access to rawlsing_next.pre553_source_relations and a live reference to a resolver instance. This is the model the F7/P07 custody invariant is written against.",
+    "capabilities_demonstrated_sufficient": [
+      "read function __closure__ tuples and identify the _state_or_refuse function and the ledger tuple cell (pure reflection)",
+      "assign cell.cell_contents (CPython 3.11 permits this)",
+      "construct the public NamedTuple _AuthenticatedResolverState with arbitrary field values",
+      "call the public helper _custody_relations_fingerprint",
+      "optionally assign instance attributes on the resolver it holds"
+    ],
+    "capabilities_NOT_needed": [
+      "monkeypatching any production callable, module attribute, class attribute or method",
+      "rewriting accepted code or tests",
+      "obtaining or forging any authority snapshot or registry entry for the victim",
+      "replacing the victim's live _by_ref / _by_key containers (for the narrower path)",
+      "any native/OS-level primitive"
+    ],
+    "victim_privilege_note": "The victim resolver shares the source's AuthorityRegistry but holds zero relation material; its own custody state is empty and it is correctly refused by the unmodified path (control B). The forgery supplies the source's relation payload through the rebound ledger state, not through any authority the fixture hands the victim."
+  },
+  "what_the_evidence_establishes": {
+    "specific_implementation": "For the exact candidate c86ae335e, the commission's required invariant is NOT established. A caller can mint custody for an empty victim with a single lexical ledger-cell rebind, and the demonstrated forgery does not even require the 'coordinated' replacement of live anchor containers that HQ235 reported as the residual limit.",
+    "hq235_subclaim_falsified": "HQ235's statement that 'every single admitted reflection primitive is closed' is false: the exact HQ234 single-cell rebind is refused only because that witness copies the SOURCE anchor fields. Setting the anchor fields to the victim's own live containers makes the same single-cell rebind authenticate.",
+    "defect_is_open": "The witness test_hq235_coordinated_multi_anchor_substitution_still_mints_custody passing is evidence of an open blocker (F7-RR-04G), not an acceptance PASS.",
+    "architecture_decision_remains_required": true
+  },
+  "what_the_evidence_does_NOT_establish": {
+    "universal_impossibility": "The claim that NO pure-Python owner design can satisfy the custody invariant is NOT proven by replaying this exploit. It remains a reasoned reachability argument: every Python-level container the owner can reach appears to be caller-reachable and re-assignable, and any value the owner can re-derive at decision time the caller can recompute. That argument is plausible and consistent with this evidence, but it is not a proof and this lane does not adopt it as one.",
+    "native_boundary_behaviour": "No native C-extension, IPC boundary, or OS-backed opaque handle was built, imported or executed. The proposed native/IPC/OS designs are NOT evaluated here; their adequacy is design-level uncertainty outside this lane.",
+    "other_lanes": "No claim is made about F7 maturity, P07 positive productivity beyond the preserved paths, or any other commission's terrain."
+  },
+  "narrowest_justified_statement": "Against the exact F7/P07 custody implementation at candidate c86ae335e, the required non-forgeability invariant is NOT established: a caller with ordinary in-process reflection can rebind the lexical custody ledger cell and mint an authorized P07 decision (and therefore a TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED F7 decision) for a resolver that owns no relation material, without monkeypatching production, without any authority of its own, and without even replacing the resolver's live _by_ref/_by_key containers. HQ235's narrower sub-claim that all single admitted reflection primitives are closed is falsified. Whether any pure-Python owner design could satisfy the invariant is NOT decided by this evidence.",
+  "recommended_decision_inputs": {
+    "note": "This lane makes no architecture adoption (FORBIDDEN). It only reports the input HQ needs.",
+    "options_unchanged_from_hq235": [
+      "authorize a native (C-extension) opaque capability boundary for P07 custody",
+      "isolate the owner behind a process/IPC boundary",
+      "explicitly accept the residual risk and downgrade the F7 custody claim from 'non-forgeable' to 'adversarial-single-primitive'"
+    ],
+    "added_observation": "The third option must now be worded more weakly than HQ235 proposed: even 'adversarial-single-primitive' overstates the current implementation, because the single lexical ledger-cell primitive still forges. The honest interim wording is 'adversarial-coordinated-substitution NOT required; lexical ledger-cell rebind is sufficient'."
+  },
+  "self_adoption": "NOT_PERFORMED",
+  "repair_performed": false
+}
