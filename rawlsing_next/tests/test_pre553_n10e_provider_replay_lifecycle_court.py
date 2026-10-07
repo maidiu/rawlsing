@@ -2154,6 +2154,11 @@ def test_r04_query_revision_reaches_all_and_only_the_consumers_of_that_determina
 
     # A product registered WITHOUT the query determinant as a consumed determinant.
     non_consumer_ref = _product_ref("9" * 64, "non-consumer")
+    non_consumer_binding = ModelRuleAuthorityBindingEvidence(
+        model_rule_hash=case["model_rule"].rule_hash,
+        model_rule_material=case["model_rule"].material(),
+        model_authority_snapshot=case["model_authority_snapshot"],
+    )
     registry.register(
         AnalyticalProductRegistration(
             product_ref=non_consumer_ref,
@@ -2169,6 +2174,8 @@ def test_r04_query_revision_reaches_all_and_only_the_consumers_of_that_determina
                     ("conditioner_bindings.0.comparability_authority_ref",),
                 ),
             ),
+            model_rule_hash=case["model_rule"].rule_hash,
+            model_rule_authority_binding=non_consumer_binding,
         )
     )
 
@@ -2505,6 +2512,11 @@ def test_r14_unclassified_consumed_ref_cannot_claim_lifecycle_closure():
     result = _provide(case)
     product_ref = _product_ref(result.result_identity_hash)
     registry = AnalyticalDependencyRegistry()
+    binding = ModelRuleAuthorityBindingEvidence(
+        model_rule_hash=result.provider_receipt.model_rule_hash,
+        model_rule_material=case["model_rule"].material(),
+        model_authority_snapshot=case["model_authority_snapshot"],
+    )
     registry.register(
         AnalyticalProductRegistration(
             product_ref=product_ref,
@@ -2520,6 +2532,8 @@ def test_r14_unclassified_consumed_ref_cannot_claim_lifecycle_closure():
                     ("authority_snapshot_refs",),
                 ),
             ),
+            model_rule_hash=result.provider_receipt.model_rule_hash,
+            model_rule_authority_binding=binding,
         )
     )
     with pytest.raises(
