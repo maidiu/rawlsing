@@ -1,0 +1,89 @@
+{
+  "schema": "PYAT_HQ236_F7_OPTIONS_PRODUCTIVITY_AND_COSTS@1",
+  "productive_law": [
+    "same-universe positive",
+    "exact-zero NO_AUTHORIZED_CHANGE",
+    "positive INCREASE",
+    "negative DECREASE",
+    "lawful positive cross-universe SOURCE_EQUIVALENCE"
+  ],
+  "must_preserve": [
+    "registry replacement immunity",
+    "constructor pinned exact authority snapshots",
+    "P07 relation/authority kind and decision semantics",
+    "12 F7 states / prior 19 source authority kinds",
+    "source/target/use/operation/scope exact binding",
+    "3+ anchors refuse",
+    "no tolerance/interpolation/trajectory/causation/currentness/pooling/equivalence creation/actor"
+  ],
+  "options": [
+    {
+      "id": "P1",
+      "name": "bounded pure Python hardening and narrowed claim",
+      "security_property": "resist named data/transplant attacks up to explicitly agreed boundary with trusted Python code/callsite",
+      "attacker_still_can": "arbitrary coordinated mutation of trusted Python computation and output; present coordinated witness forges",
+      "interface": "minimal; strengthened owner checks and tests, explicit limited threat contract",
+      "build_burden": "LOW",
+      "portability": "HIGH",
+      "provenance": "existing interpreter; new hostile court/independent rerun",
+      "architecture_warrant": "HQ threat/claim authority decision if accepted nonforgeability ceiling changes",
+      "F7_effect": "potential quick limited qualification only; not full commissioned claim"
+    },
+    {
+      "id": "N1",
+      "name": "opaque native C custody-only capability",
+      "security_property": "uninspectable/unreplaceable native owner ledger under Python-reflection-only attacker",
+      "attacker_still_can": "replace Python entrypoints and F7 receipt processing; native process memory under stronger native attacker",
+      "interface": "native owner handle and native exact decision; Python adapter remains vulnerable unless reliance moves",
+      "build_burden": "MEDIUM_HIGH ABI/toolchain/extension signing/distribution",
+      "portability": "CROSS_PLATFORM_BUILDS_REQUIRED",
+      "provenance": "native binary hashes plus Python ABI and tests",
+      "architecture_warrant": "YES",
+      "F7_effect": "P07 custody hardening, NOT end-to-end full nonforgeability"
+    },
+    {
+      "id": "N2",
+      "name": "native atomic owner decision and trusted consumption",
+      "security_property": "end-to-end decision integrity under Python reflection only IF no trusted Python-callable seam can override result and consumer relies on native verifier",
+      "attacker_still_can": "rewrite Python-visible UI/outputs outside trusted consumer; native compromise if permitted",
+      "interface": "P07+F7 decision/verification trust boundary expanded, opaque authenticated receipt",
+      "build_burden": "HIGH",
+      "portability": "NATIVE_MATRIX",
+      "provenance": "new native ABI/test/custody replay and independent hostile system court",
+      "architecture_warrant": "YES",
+      "F7_effect": "can close stronger model only with proven consumer trust boundary"
+    },
+    {
+      "id": "I1",
+      "name": "isolated trusted service / IPC",
+      "security_property": "P07/F7 custody and decision insulated from untrusted Python in separate process; authenticity only at trusted verifier",
+      "attacker_still_can": "fake client-side Python return or bypass Python verifier; OS peer compromise if unprotected",
+      "interface": "serialized exact request/receipt, IPC authentication, replay binding, external trusted consumer",
+      "build_burden": "HIGH service lifecycle/security/IPC",
+      "portability": "OS process/IPC availability required",
+      "provenance": "server binary, protocol, identity, environment, transport replay and end-to-end court",
+      "architecture_warrant": "YES",
+      "F7_effect": "strongest feasible trust partition for arbitrary Python client, not automatic without trusted consumption"
+    },
+    {
+      "id": "T1",
+      "name": "trusted interpreter/code TCB restriction",
+      "security_property": "protect ordinary adversarial inputs by excluding attacker ability to run or mutate trusted Python code",
+      "attacker_still_can": "caller data manipulation tested by owner checks; arbitrary code disallowed by assumption",
+      "interface": "unchanged or bounded Python owner; deployment controls/explicit threat statement",
+      "build_burden": "LOW_CODE_MEDIUM_DEPLOYMENT",
+      "portability": "HIGH with trusted runtime controls",
+      "provenance": "trusted startup modules/environment plus tests",
+      "architecture_warrant": "HQ explicit restriction/claim ruling required",
+      "F7_effect": "conserves contract semantically, cannot claim resistance to hostile code execution"
+    }
+  ],
+  "decision_tree": [
+    "HQ first fixes exact adversary powers and trusted computing base (named reflection vs arbitrary Python code vs native/OS compromise).",
+    "If arbitrary Python can mutate final F7 consumer/output, custody-only C is NOT sufficient; commission end-to-end trust boundary (N2 or I1) under architecture warrant.",
+    "If trusted Python callsite/consumer are excluded from attacker power, choose minimal P1/N1 after proving coordinated attack refusal and five positives, or explicitly narrow claim with an HQ decision.",
+    "Do not adopt any remedy until independent adversarial and productive courts, runtime qualification, and HQ explicit adoption."
+  ],
+  "recommendation": "NO_AUTOMATIC_C_EXTENSION_ADOPTION__EXPLICIT_THREAT_TCB_RULING_FIRST__IF_FULL_UNTRUSTED_PYTHON_THEN_TRUSTED_END_TO_END_DECISION_AND_CONSUMPTION_ARCHITECTURE",
+  "independent_runtime_executed": false
+}
