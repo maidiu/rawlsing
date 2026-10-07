@@ -1,0 +1,41 @@
+{
+  "schema": "HQ227_NESTED_REGISTRY_AND_RELATION_CUSTODY@1.0.0",
+  "code_bearing_head": "506291b6e08f4e94791c4fb1cf7020691466e167",
+  "reinforcing_finding": "F7-RR-04E__NESTED_AUTHORITY_REGISTRY_PROVENANCE_NOT_EXACT",
+  "relation_custody": {
+    "constructor_validation": [
+      "semantic_projection hash equals relation.content_hash",
+      "relation kind is in adopted P07 relation algebra",
+      "exact authority ref is extracted from relation",
+      "AUTHORIZED relation carries exact positive typed_state",
+      "operation authority material is present",
+      "relation replay identity and deterministic relation_id are validated"
+    ],
+    "postconstruction_map_injection": "cannot enter authenticated owner state",
+    "per_positive_decision_reauthentication": [
+      "custodied exact ref matches request",
+      "custodied relation content_hash matches pinned hash",
+      "semantic_projection rehash matches pinned hash",
+      "replay identity revalidates"
+    ]
+  },
+  "nested_registry": {
+    "construction_requirement": "type(authority_registry) is AuthorityRegistry",
+    "resolution": "captured AuthorityRegistry.resolve_exact implementation",
+    "snapshot_requirement": "exact AuthoritySnapshot",
+    "snapshot_authentication": [
+      "resolution.ref equals requested AuthorityRef",
+      "validate_authority_snapshot passes",
+      "semantic_projection hash equals snapshot.content_hash",
+      "snapshot.authority_ref equals requested AuthorityRef"
+    ],
+    "postconstruction_registry_replacement": "ignored by authenticated owner adjudication",
+    "postconstruction_resolve_exact_shadow": "ignored by authenticated owner adjudication"
+  },
+  "f7_cross_binding": {
+    "outer_authority_ref_must_equal_owner_authority_ref": true,
+    "outer_snapshot_content_hash_must_equal_owner_nested_snapshot_content_hash": true,
+    "same_outer_AuthorityRef_with_different_snapshot_semantics": "SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE"
+  },
+  "known_scope_note": "A conservative exactness tightening remains in SourceRelationResolver.from_c11; it is not required by F7 and is called out for rereview compatibility inspection."
+}
