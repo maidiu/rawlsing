@@ -1,0 +1,52 @@
+{
+  "after_repair": {
+    "A1_exact_hq234_04g_ledger_cell_rebind": {
+      "court": "test_hq235_rr04g_ledger_cell_rebind_cannot_make_victim_positive",
+      "source_still_productive": true,
+      "victim": "refused"
+    },
+    "A2_caller_constructed_state_with_victim_owner_ref": {
+      "court": "test_hq235_rr04g_caller_constructed_state_with_victim_owner_ref_cannot_authorize",
+      "victim": "refused"
+    },
+    "A3_visible_by_ref_replacement": {
+      "court": "test_hq235_rr04g_visible_container_replacement_cannot_mint_custody[_by_ref]",
+      "victim": "refused"
+    },
+    "A4_visible_by_key_replacement": {
+      "court": "test_hq235_rr04g_visible_container_replacement_cannot_mint_custody[_by_key]",
+      "victim": "refused"
+    },
+    "A5_recovered_sealer_transplant": {
+      "court": "test_hq235_rr04g_recovered_sealer_cannot_transplant_custody",
+      "victim": "refused"
+    },
+    "A6_victim_refused_before_and_after_each_mutation": {
+      "court": "test_hq235_rr04g_victim_refused_before_and_after_every_hostile_mutation",
+      "victim": "refused"
+    },
+    "A7_COORDINATED_multi_anchor_substitution": {
+      "court": "test_hq235_coordinated_multi_anchor_substitution_still_mints_custody",
+      "honesty_note": "asserted as TRUE on purpose. This witness is the evidentiary basis for the architecture-boundary disposition and is NOT a green closure claim.",
+      "victim": "FORGED_POSITIVE"
+    },
+    "A8_fail_capability_on_new_invariant": {
+      "court": "test_hq235_fail_capability_targets_the_new_load_bearing_invariant",
+      "honesty_note": "breaking the container-identity anchor alone cannot reopen the victim because an attacker with no source relation has nothing to authenticate; the honest outcome is 'still refused'. The load-bearing nature of the anchor is therefore established by A1/A3/A4 refusal, not by this test.",
+      "result": "recorded"
+    }
+  },
+  "blocker_status": "CLOSED_FOR_SINGLE_PRIMITIVE_ATTACK__NOT_ESTABLISHED_UNDER_COORDINATED_SUBSTITUTION",
+  "no_answer_smuggling": true,
+  "reproduced_before_repair": {
+    "blocker_reproduced": true,
+    "confirms_hq232_reproduction": "independently reproduced at startup tip 326262ee",
+    "monkeypatching_of_production": false,
+    "steps": 8,
+    "transplant_shape": "SOURCE custody material + VICTIM owner_ref, injected by rebinding the ledger cell",
+    "victim_after": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED",
+    "victim_before": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"
+  },
+  "schema": "PYAT_HQ235_02_RR04G_HOSTILE_REPRODUCTION_AND_CLOSURE@1",
+  "source_free": true
+}

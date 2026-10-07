@@ -1,0 +1,52 @@
+{
+  "fail_closed_correctness_alone_was_not_accepted_as_sufficiency": true,
+  "hqd216_binding": true,
+  "lawful_positive_paths_preserved": {
+    "decrease": {
+      "status": "PRESERVED",
+      "tests": [
+        "test_witness_decrease_direction_is_derived"
+      ]
+    },
+    "exact_zero": {
+      "status": "PRESERVED",
+      "tests": [
+        "test_witness_exact_zero_is_derived_not_asserted"
+      ]
+    },
+    "increase": {
+      "status": "PRESERVED",
+      "tests": [
+        "test_witness_cross_universe_is_derived_from_bound_universes"
+      ]
+    },
+    "lawful_positive_cross_universe": {
+      "status": "PRESERVED",
+      "tests": [
+        "test_hq227_full_owner_path_positive_cross_universe_service_remains_productive"
+      ]
+    },
+    "same_universe": {
+      "status": "PRESERVED",
+      "tests": [
+        "test_witness_same_universe_needs_no_equivalence"
+      ]
+    }
+  },
+  "no_semantic_mutation": "VERIFIED",
+  "positive_capability_preserved_after_hostile_attempts": true,
+  "productive_path_subset_result": "10 passed, 153 deselected",
+  "schema": "PYAT_HQ235_04_PRODUCTIVE_PATH_AND_SEMANTIC_CONSERVATION@1",
+  "semantic_conservation": {
+    "accepted_p07_relation_semantics_changed": false,
+    "accepted_test_broken_and_relaxed": false,
+    "authority_kinds_changed": false,
+    "evidence": "git diff is confined to pre553_source_relations.py custody anchoring plus the F7 court",
+    "note": "the only production change is custody anchoring; the registry-anchor iteration was REVERTED because exact proof showed it converted an accepted HQ227 immunity into a refusal",
+    "relation_states_or_precedence_changed": false,
+    "source_composition_law_changed": false,
+    "temporal_comparability_semantics_changed": false,
+    "unrelated_owner_modules_changed": false,
+    "v554_v557_v558_semantics_changed": false
+  }
+}

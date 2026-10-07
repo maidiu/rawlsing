@@ -1,0 +1,40 @@
+{
+  "blocker": "F7-RR-04G__LEXICAL_CUSTODY_LEDGER_CELL_IS_CALLER_REBINDABLE",
+  "invariant_established": false,
+  "invariant_partially_established": "Single-primitive attacks are closed; coordinated multi-anchor substitution is NOT.",
+  "pattern_repaired_not_renamed": true,
+  "repair_design": {
+    "anchors_added": [
+      {
+        "anchor": "sealed_by_ref_owner",
+        "defeats": "transplanted state carrying another owner's by_ref material",
+        "rule": "must be (identity) the resolver's live _by_ref container"
+      },
+      {
+        "anchor": "sealed_by_key_owner",
+        "defeats": "by_key substitution",
+        "rule": "must be (identity) the resolver's live _by_key container"
+      },
+      {
+        "anchor": "sealed_relations_fingerprint",
+        "defeats": "in-place mutation of the live relation material (HQ232 W3 re-derivation)",
+        "rule": "must re-derive from the live _by_ref container"
+      }
+    ],
+    "deliberately_not_an_anchor": "_registry",
+    "explicitly_not_done": [
+      "rename entries",
+      "wrap in another closure",
+      "replace tuple with another caller-reachable mutable container",
+      "add another self-declared owner field",
+      "new authority kinds"
+    ],
+    "gate": "_state_or_refuse now calls _authenticate_owner_custody_anchor on every lookup",
+    "principle": "A self-declared owner_ref is no longer treated as proof of custody. Custody must be anchored to the resolver's OWN LIVE containers and re-derived at decision time.",
+    "why_registry_is_not_an_anchor": "HQ227 accepted law requires that replacing the caller-visible _registry leaves adjudication UNCHANGED because construction-time authority snapshots are pinned. Making registry identity load-bearing converted that accepted immunity into a hard refusal and broke test_hq227_exact_instance_registry_replacement_cannot_change_pinned_owner_snapshot. Because SEMANTIC MUTATION is FORBIDDEN, the registry anchor was removed and custody re-derivation was narrowed to relation semantic content only. This is a real constraint discovered by exact proof, not an assumption."
+  },
+  "required_invariant": "The positive owner decision must depend on a custody binding the admitted caller cannot manufacture by reflection, by reconstructing caller-visible state, by rebinding a reachable seam, or by setting an owner reference to the victim.",
+  "root_cause": "Custody was proven only by (a) a self-declared owner_ref field and (b) a sealed tuple. Neither proves the state belongs to this resolver: any caller could rebuild the state type carrying another owner's material plus a chosen owner_ref, and rebind the lexical ledger cell so the victim maps to it. HQ232 named these as invariants W2 and W3.",
+  "schema": "PYAT_HQ235_01_REPAIR_DESIGN_AND_INVARIANT@1",
+  "why_not_fully_established": "Every anchor is itself reachable and re-assignable by the same admitted caller, so a caller who replaces all live anchors and rebinds the ledger in one coordinated step still authenticates. See 03_REFLECTION_SURFACE_AUDIT.json and 06_FINAL_DISPOSITION.json."
+}

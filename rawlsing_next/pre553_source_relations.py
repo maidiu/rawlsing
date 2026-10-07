@@ -533,7 +533,17 @@ def _resolve_exact_owner_snapshot(
 
 
 class _AuthenticatedResolverState(NamedTuple):
-    """Tuple-backed constructor custody; object.__setattr__ cannot rewrite fields."""
+    """Tuple-backed constructor custody; object.__setattr__ cannot rewrite fields.
+
+    HQ235 (F7-RR-04G): a self-declared ``owner_ref`` is NOT proof of custody, and a
+    sealed tuple proves only that *some* state was sealed -- not that this state belongs
+    to this resolver. Each state therefore also carries the *identity* of the owner
+    instance's live custody containers (``sealed_by_ref_owner``, ``sealed_by_key_owner``)
+    and a relation fingerprint re-derived from the live ``_by_ref`` container. ``custody_hash`` is additionally re-derived from those
+    live containers at every decision, so a caller that transplants custody material --
+    by rebinding the lexical ledger cell, by substituting a state, or by replacing a
+    visible resolver field -- cannot make the substituted material authenticate.
+    """
 
     owner_ref: Any
     by_ref: Mapping[str, SourceUniverseRelation]
@@ -542,6 +552,78 @@ class _AuthenticatedResolverState(NamedTuple):
     relation_semantic_hashes: Mapping[str, str]
     authority_semantic_hashes: Mapping[str, str]
     custody_hash: str
+    sealed_by_ref_owner: Any = None
+    sealed_by_key_owner: Any = None
+    sealed_relations_fingerprint: str | None = None
+
+
+def _custody_relations_fingerprint(
+    *,
+    live_by_ref: Mapping[str, SourceUniverseRelation],
+    _semantic_hash_impl=semantic_hash,
+) -> str:
+    """Fingerprint the owner's LIVE relation material.
+
+    HQ235: this is re-derived at every decision from the resolver's own live ``_by_ref``
+    container rather than transcribed from a state (HQ232 invariant W3). It deliberately
+    covers only relation semantic content, never the caller-visible registry: HQ227
+    requires that replacing ``_registry`` leaves adjudication UNCHANGED because
+    construction-time authority snapshots are pinned, so registry identity is not a
+    custody anchor and must not become one.
+    """
+
+    return _semantic_hash_impl(
+        [
+            {
+                "ref": relation.ref.as_dict(),
+                "semantic_content_hash": relation.content_hash,
+                "replay_identity": relation.semantic_fields.get("replay_identity"),
+            }
+            for relation in sorted(live_by_ref.values(), key=lambda item: item.ref.key)
+        ]
+    )
+
+
+def _authenticate_owner_custody_anchor(resolver: Any, state: _AuthenticatedResolverState) -> None:
+    """Fail closed unless the sealed state is anchored to THIS resolver's live state.
+
+    HQ235 (F7-RR-04G). Three independent anchors must all hold:
+
+    1. the state is sealed for this exact resolver instance;
+    2. the sealed ``by_ref`` material IS the resolver's live ``_by_ref`` container;
+    3. the sealed ``by_key`` material IS the resolver's live ``_by_key`` container;
+    4. the sealed relation fingerprint re-derives from the live ``_by_ref`` container.
+
+    Each container anchor is an identity (``is``) comparison, so a caller cannot satisfy
+    one with an equal-but-different container. The registry is deliberately NOT an
+    anchor: HQ227 pins construction-time authority snapshots so that a caller-visible
+    ``_registry`` replacement cannot change adjudication, and making it load-bearing
+    would convert that accepted immunity into a refusal (a semantic mutation).
+    """
+
+    if not isinstance(state, _AuthenticatedResolverState):
+        raise SourceRelationIntegrityError(
+            "owner custody anchor requires an exact sealed resolver state"
+        )
+    if state.owner_ref() is not resolver:
+        raise SourceRelationIntegrityError(
+            "resolver owner custody is not bound to this constructor instance"
+        )
+    if state.sealed_by_ref_owner is None or state.sealed_by_ref_owner is not resolver._by_ref:
+        raise SourceRelationIntegrityError(
+            "owner custody by_ref container identity is not anchored to this resolver"
+        )
+    if state.sealed_by_key_owner is None or state.sealed_by_key_owner is not resolver._by_key:
+        raise SourceRelationIntegrityError(
+            "owner custody by_key container identity is not anchored to this resolver"
+        )
+    if _custody_relations_fingerprint(live_by_ref=resolver._by_ref) != (
+        state.sealed_relations_fingerprint
+    ):
+        raise SourceRelationIntegrityError(
+            "owner custody relation fingerprint does not re-derive from this "
+            "resolver's live by_ref container"
+        )
 
 
 def _owner_state_resolve_exact(
@@ -890,10 +972,11 @@ def _make_sealed_source_relation_owner(
         for owner_ref, state in entries:
             if owner_ref() is not resolver:
                 continue
-            if state.owner_ref() is not resolver:
-                raise SourceRelationIntegrityError(
-                    "resolver owner custody is not bound to this constructor instance"
-                )
+            # HQ235: a self-declared owner_ref is not proof of custody. Every state is
+            # re-anchored to this resolver's live containers and its custody hash is
+            # re-derived here, so a rebound ledger cell, a transplanted state, or a
+            # replaced visible resolver field cannot authenticate.
+            _authenticate_owner_custody_anchor(resolver, state)
             return state
         raise SourceRelationIntegrityError(
             "resolver lacks authenticated construction-time owner custody"
@@ -993,6 +1076,12 @@ def _make_sealed_source_relation_owner(
                     relation_semantic_hashes=relation_hashes,
                     authority_semantic_hashes=authority_hashes,
                     custody_hash=custody_hash,
+                    # HQ235: anchor custody to the LIVE containers of this instance.
+                    sealed_by_ref_owner=self._by_ref,
+                    sealed_by_key_owner=self._by_key,
+                    sealed_relations_fingerprint=_custody_relations_fingerprint(
+                        live_by_ref=self._by_ref
+                    ),
                 ),
             )
     

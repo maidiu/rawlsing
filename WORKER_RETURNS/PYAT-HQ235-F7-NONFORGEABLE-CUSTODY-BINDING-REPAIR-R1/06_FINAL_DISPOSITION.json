@@ -1,0 +1,72 @@
+{
+  "blocker": "F7-RR-04G__LEXICAL_CUSTODY_LEDGER_CELL_IS_CALLER_REBINDABLE",
+  "branch": "agent/rabochii-pyat-hq235-f7-nonforgeable-custody-binding-repair-r1",
+  "commission": "PYAT-HQ235-F7-NONFORGEABLE-CUSTODY-BINDING-REPAIR-R1",
+  "commission_tip": "dcbbe0788f980136ab908b04f896311b7c54bf74",
+  "disposition": "F7_NONFORGEABLE_CUSTODY_REPAIR_BLOCKED__OWNER_BOUNDARY_ARCHITECTURE_DECISION_REQUIRED",
+  "evidence_class": "WORKER_LOCAL_DEVELOPMENT_EVIDENCE__NOT_FINAL_INDEPENDENT_ACCEPTANCE",
+  "exact_startup_tip": "326262ee45d0cef440eb60b2c1639e63c068061c",
+  "impossibility_argument": [
+    "Only C-level VALUES resist the admitted caller (tuple items, int attributes).",
+    "Custody is an owner->material MAPPING, so it must live in a container.",
+    "Every Python-level container the owner can reach is also caller-reachable and re-assignable: closure cell cell_contents, module global, class attribute, instance attribute (object.__setattr__ succeeds even on frozen dataclasses and __slots__), function __defaults__, function __code__, property, and WeakKeyDictionary (attacker-controlled __eq__/__hash__).",
+    "Therefore any secret the owner holds is READABLE by the caller.",
+    "Any value derived from it, including semantic_hash which is public, is RECOMPUTABLE.",
+    "Hence no custody binding built from Python-visible state can be non-forgeable against the admitted model.",
+    "Anchoring N independent containers only raises the attack from 1 primitive to N coordinated primitives; it does not establish non-forgeability."
+  ],
+  "mandatory_witnesses_delivered": {
+    "1_exact_04g_attack_refused": "PASS",
+    "2_caller_constructed_state_refused": "PASS",
+    "3_source_remains_productive": "PASS",
+    "4_victim_refused_before_and_after": "PASS",
+    "5_visible_container_replacement_refused": "PASS",
+    "6_recovered_sealer_cannot_transplant": "PASS",
+    "7_replacement_primitive_attacked_honestly": "PASS (asserted TRUE)"
+  },
+  "merged_into_control": false,
+  "one_line": "The exact HQ234 04G attack is reproduced and now refused, and custody is genuinely anchored to the resolver's live containers with decision-time re-derivation, so every single admitted reflection primitive is closed. But a caller who substitutes all live anchors and rebinds the ledger in one coordinated step still mints custody, because no Python-visible anchor is unforgeable. The commission's required invariant is therefore NOT establishable inside the current pure-Python owner boundary.",
+  "productive_adequacy": "all five lawful positive paths preserved; fail-closed correctness was not accepted as sufficiency",
+  "runtime": {
+    "broad_regression": "54 == 54, identical SHA-256, zero regression",
+    "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "substitution": false,
+    "targeted": "228 passed"
+  },
+  "schema": "PYAT_HQ235_06_FINAL_DISPOSITION@1",
+  "self_adopted": false,
+  "smallest_architecture_change_required": {
+    "alternatives": [
+      "process isolation: run the P07 owner in a separate process and hold custody behind a narrow IPC surface",
+      "OS-backed opaque handle: sealed file descriptor or keychain-backed token held opaquely by the owner",
+      "accept the residual risk explicitly and downgrade the F7 custody claim to 'adversarial-single-primitive'"
+    ],
+    "cheapest_acceptable_if_native_is_deferred": "the third alternative: state the residual coordinated-substitution risk as a known, accepted limitation rather than claiming non-forgeability",
+    "mechanism": "a native opaque capability handle created once per resolver, holding the custody material in C memory with no Python-visible accessor, and exposing only 'is this handle the one sealed for resolver X' plus a resolve operation. The caller can then rebind every Python-level object and still cannot read, replace or forge the handle.",
+    "recommended": "move the P07 owner custody ledger behind a small native (C-extension) boundary"
+  },
+  "terminal": "HQ235_F7_NONFORGEABLE_CUSTODY_REPAIR_BLOCKED__OWNER_BOUNDARY_ARCHITECTURE_DECISION_REQUIRED",
+  "what_was_NOT_achieved": {
+    "closure_faked": false,
+    "commission_required_invariant_established": false,
+    "coordinated_multi_anchor_substitution_still_forges": true,
+    "why_not_a_court_greenwashing": "A green court claiming closure would have been available by simply omitting the coordinated witness. It is included and asserted as the basis for this disposition instead.",
+    "witness_asserted_as_TRUE_deliberately": "test_hq235_coordinated_multi_anchor_substitution_still_mints_custody"
+  },
+  "what_was_repaired": {
+    "blocker_reproduced_at_startup_tip": true,
+    "exact_04g_attack_now_refused": true,
+    "production_change": "custody anchoring only, confined to pre553_source_relations.py",
+    "semantic_mutation": "NONE",
+    "single_primitive_attacks_closed": [
+      "ledger cell rebind",
+      "caller-constructed state with victim owner_ref",
+      "visible _by_ref replacement",
+      "visible _by_key replacement",
+      "recovered sealer transplant",
+      "victim refusal before/after each mutation"
+    ],
+    "source_stays_positive_after_attack": true
+  },
+  "witness_8_fail_capability": "recorded with honest outcome; load-bearing status of the new anchor is established by witnesses 1/3/5 rather than by this test"
+}

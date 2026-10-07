@@ -1,0 +1,68 @@
+{
+  "admitted_primitives_probed": [
+    {
+      "detail": "c.cell_contents = 999 is accepted",
+      "primitive": "closure cell.cell_contents assignment",
+      "result": "SUCCEEDS"
+    },
+    {
+      "detail": "bypasses frozen",
+      "primitive": "object.__setattr__ on frozen dataclass",
+      "result": "SUCCEEDS"
+    },
+    {
+      "primitive": "object.__setattr__ on __slots__ instance",
+      "result": "SUCCEEDS"
+    },
+    {
+      "primitive": "function.__defaults__ assignment",
+      "result": "SUCCEEDS"
+    },
+    {
+      "primitive": "function.__code__ assignment",
+      "result": "SUCCEEDS"
+    },
+    {
+      "primitive": "module attribute rebinding",
+      "result": "SUCCEEDS"
+    },
+    {
+      "primitive": "class attribute rebinding",
+      "result": "SUCCEEDS"
+    },
+    {
+      "primitive": "instance/class method replacement",
+      "result": "SUCCEEDS"
+    },
+    {
+      "primitive": "property/getter replacement",
+      "result": "SUCCEEDS"
+    },
+    {
+      "detail": "C-immutable items -- but the CONTAINER is rebindable",
+      "primitive": "tuple item assignment",
+      "result": "RESISTS"
+    },
+    {
+      "detail": "C-immutable value -- but any holder is rebindable",
+      "primitive": "int object attribute",
+      "result": "RESISTS"
+    }
+  ],
+  "interpreter": "CPython 3.11.3 (governed R7 interpreter, sha256 11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6)",
+  "schema": "PYAT_HQ235_03_REFLECTION_SURFACE_AUDIT@1",
+  "strongest_candidate_design_tested": "Anchor sealed state to the identity of the resolver's live _by_ref / _by_key containers AND re-derive a relation fingerprint from live _by_ref at decision time. This was implemented and tested.",
+  "strongest_candidate_result": {
+    "conclusion": "The commission's required invariant is NOT establishable inside the current pure-Python owner boundary.",
+    "coordinated_attack": "STILL FORGES",
+    "coordinated_attack_description": "replace victim._by_ref and victim._by_key with substituted containers and rebind the ledger cell to a state re-anchored to those containers in one step; the victim then returns TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED using the source's genuine relation and custody material",
+    "single_primitive_attacks": "ALL REFUSED"
+  },
+  "what_would_be_required": [
+    "custody material held outside the Python object graph, or",
+    "an unforgeable native/extension-level capability object, or",
+    "process isolation with an IPC boundary, or",
+    "an immutable, kernel/OS-backed handle (e.g. a sealed file descriptor or keychain-backed token) that the owner holds opaquely"
+  ],
+  "why_no_pure_python_anchor_survives": "Only C-level VALUES resist (tuple items, int attributes). But custody is a mapping from owner to material, so custody must live in some CONTAINER. Every Python-level container the owner can reach is also reachable by the admitted caller, and every one of them is re-assignable: closure cell (cell_contents), module global, class attribute, instance attribute (even on frozen dataclasses and __slots__), function defaults, function __code__, property, or WeakKeyDictionary (whose keys are attacker-controlled through __eq__/__hash__). Therefore any secret the owner holds is READABLE by the caller, and any value derived from it (including semantic_hash, which is public) is RECOMPUTABLE. Consequently no custody binding built from Python-visible state can be non-forgeable."
+}

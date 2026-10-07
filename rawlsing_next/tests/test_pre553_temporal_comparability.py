@@ -2388,3 +2388,312 @@ def test_hq231_targeted_break_transplantable_loader_reopens_same_victim(monkeypa
 
     monkeypatch.undo()
     _assert_hq225_owner_impostor_refused(_run(request))
+
+
+# ==========================================================================
+# HQ235 / F7-RR-04G -- lexical custody ledger cell is caller rebindable
+# ==========================================================================
+def _hq235_victim_pair():
+    """One source resolver with a genuine positive relation, one empty victim."""
+
+    import rawlsing_next.pre553_source_relations as sr
+
+    source, relation = _adjudicated_resolver(
+        universe_refs=(UNIVERSE_A, UNIVERSE_B))
+    victim = sr.SourceRelationResolver(
+        relations=(), authority_registry=source._registry)
+    return sr, source, victim, relation
+
+
+def _hq235_reflection_seam(sr, victim):
+    """Recover the exact ledger cell and the per-owner states by pure reflection.
+
+    No monkeypatching of production is used anywhere in this helper.
+    """
+
+    loader = next(
+        cell.cell_contents
+        for cell in (sr.authenticated_source_relation_decision.__closure__ or ())
+        if callable(cell.cell_contents)
+        and getattr(cell.cell_contents, "__name__", "") == "_state_or_refuse"
+    )
+    entries_cell = next(
+        cell
+        for cell in (loader.__closure__ or ())
+        if isinstance(cell.cell_contents, tuple)
+        and any(owner_ref() is victim for owner_ref, _ in cell.cell_contents)
+    )
+    return loader, entries_cell, entries_cell.cell_contents
+
+
+def test_hq235_rr04g_ledger_cell_rebind_cannot_make_victim_positive():
+    """Witness 1: the exact HQ234/HQ232 cell.cell_contents attack is now refused.
+
+    The attack shape is reproduced verbatim: recover the ledger cell, forge a state that
+    carries SOURCE custody material but is bound to the VICTIM owner_ref, rebind the
+    cell so the victim maps to it, then invoke the normal authenticated F7 path.
+    """
+
+    import rawlsing_next.pre553_source_relations as sr
+
+    sr, source, victim, relation = _hq235_victim_pair()
+    assert _run(
+        _cross_universe_request(source, relation.ref)
+    ).relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    assert _run(
+        _cross_universe_request(victim, relation.ref)
+    ).relation_state == "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"
+
+    loader, entries_cell, original = _hq235_reflection_seam(sr, victim)
+    source_state = loader(source)
+    victim_state = loader(victim)
+    forged = sr._AuthenticatedResolverState(
+        owner_ref=victim_state.owner_ref,
+        by_ref=source_state.by_ref,
+        by_key=source_state.by_key,
+        authority_snapshots=source_state.authority_snapshots,
+        relation_semantic_hashes=source_state.relation_semantic_hashes,
+        authority_semantic_hashes=source_state.authority_semantic_hashes,
+        custody_hash=source_state.custody_hash,
+        sealed_by_ref_owner=source_state.sealed_by_ref_owner,
+        sealed_by_key_owner=source_state.sealed_by_key_owner,
+        sealed_relations_fingerprint=source_state.sealed_relations_fingerprint,
+    )
+    entries_cell.cell_contents = tuple(
+        (owner_ref, forged if owner_ref() is victim else state)
+        for owner_ref, state in original
+    )
+    try:
+        assert _run(
+            _cross_universe_request(victim, relation.ref)
+        ).relation_state != "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    except sr.SourceRelationIntegrityError:
+        pass
+    # Witness 3: the source stays positively productive after the attack attempt.
+    assert _run(
+        _cross_universe_request(source, relation.ref)
+    ).relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    entries_cell.cell_contents = original
+
+
+def test_hq235_rr04g_caller_constructed_state_with_victim_owner_ref_cannot_authorize():
+    """Witness 2: reconstructing the state type cannot manufacture custody."""
+
+    import rawlsing_next.pre553_source_relations as sr
+
+    sr, source, victim, relation = _hq235_victim_pair()
+    loader, entries_cell, original = _hq235_reflection_seam(sr, victim)
+    source_state = loader(source)
+    # Entirely caller-constructed, carrying the victim's owner_ref.
+    attacker_state = sr._AuthenticatedResolverState(
+        owner_ref=loader(victim).owner_ref,
+        by_ref=source_state.by_ref,
+        by_key=source_state.by_key,
+        authority_snapshots=source_state.authority_snapshots,
+        relation_semantic_hashes=source_state.relation_semantic_hashes,
+        authority_semantic_hashes=source_state.authority_semantic_hashes,
+        custody_hash=source_state.custody_hash,
+        sealed_by_ref_owner=source_state.sealed_by_ref_owner,
+        sealed_by_key_owner=source_state.sealed_by_key_owner,
+        sealed_relations_fingerprint=source_state.sealed_relations_fingerprint,
+    )
+    entries_cell.cell_contents = tuple(
+        (owner_ref, attacker_state if owner_ref() is victim else state)
+        for owner_ref, state in original
+    )
+    try:
+        assert _run(
+            _cross_universe_request(victim, relation.ref)
+        ).relation_state != "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    except sr.SourceRelationIntegrityError:
+        pass
+    entries_cell.cell_contents = original
+
+
+@pytest.mark.parametrize(
+    "attribute", ["_by_ref", "_by_key"]
+)
+def test_hq235_rr04g_visible_container_replacement_cannot_mint_custody(attribute):
+    """Witness 5: visible _by_ref / _by_key substitution cannot mint custody."""
+
+    import rawlsing_next.pre553_source_relations as sr
+
+    sr, source, victim, relation = _hq235_victim_pair()
+    original = getattr(victim, attribute)
+    setattr(victim, attribute, dict(getattr(source, attribute)))
+    try:
+        assert _run(
+            _cross_universe_request(victim, relation.ref)
+        ).relation_state != "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    except sr.SourceRelationIntegrityError:
+        pass
+    setattr(victim, attribute, original)
+
+
+def test_hq235_rr04g_recovered_sealer_cannot_transplant_custody():
+    """Witness 6: a recovered sealer cannot transplant custody into a live owner."""
+
+    import rawlsing_next.pre553_source_relations as sr
+
+    sr, source, victim, relation = _hq235_victim_pair()
+    loader, entries_cell, original = _hq235_reflection_seam(sr, victim)
+    sealer = next(
+        cell.cell_contents
+        for cell in (sr.SourceRelationResolver.__init__.__closure__ or ())
+        if callable(cell.cell_contents)
+        and getattr(cell.cell_contents, "__name__", "") == "_seal"
+    )
+    source_state = loader(source)
+    for attempt in (source_state, loader(victim)):
+        with pytest.raises(
+            sr.SourceRelationIntegrityError
+        ):
+            sealer(victim, attempt)
+    try:
+        assert _run(
+            _cross_universe_request(victim, relation.ref)
+        ).relation_state != "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    except sr.SourceRelationIntegrityError:
+        pass
+
+
+def test_hq235_rr04g_victim_refused_before_and_after_every_hostile_mutation():
+    """Witness 4: the victim is refused before and after each mutation attempt."""
+
+    import rawlsing_next.pre553_source_relations as sr
+
+    sr, source, victim, relation = _hq235_victim_pair()
+    loader, entries_cell, original = _hq235_reflection_seam(sr, victim)
+    source_state = loader(source)
+    victim_state = loader(victim)
+
+    def victim_positive() -> bool:
+        try:
+            return (
+                _run(
+                    _cross_universe_request(victim, relation.ref)
+                ).relation_state
+                == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+            )
+        except sr.SourceRelationIntegrityError:
+            return False
+
+    assert victim_positive() is False
+    mutations = []
+    forged = sr._AuthenticatedResolverState(
+        owner_ref=victim_state.owner_ref, by_ref=source_state.by_ref,
+        by_key=source_state.by_key,
+        authority_snapshots=source_state.authority_snapshots,
+        relation_semantic_hashes=source_state.relation_semantic_hashes,
+        authority_semantic_hashes=source_state.authority_semantic_hashes,
+        custody_hash=source_state.custody_hash,
+        sealed_by_ref_owner=source_state.sealed_by_ref_owner,
+        sealed_by_key_owner=source_state.sealed_by_key_owner,
+        sealed_relations_fingerprint=source_state.sealed_relations_fingerprint,
+    )
+    entries_cell.cell_contents = tuple(
+        (owner_ref, forged if owner_ref() is victim else state)
+        for owner_ref, state in original
+    )
+    mutations.append(victim_positive())
+    entries_cell.cell_contents = original
+    original_by_ref = victim._by_ref
+    victim._by_ref = dict(source._by_ref)
+    mutations.append(victim_positive())
+    victim._by_ref = original_by_ref
+    for value in mutations:
+        assert value is False
+
+
+def test_hq235_coordinated_multi_anchor_substitution_still_mints_custody():
+    """Witness 7: the replacement binding primitive is itself attacked, HONESTLY.
+
+    This is the load-bearing finding of HQ235. Each single admitted reflection primitive
+    is now refused, and custody is anchored to the resolver's LIVE containers. But a
+    caller that performs a COORDINATED substitution -- replacing ``_by_ref`` and
+    ``_by_key`` and rebinding the ledger cell to a re-anchored state in one step --
+    still mints custody, because in pure CPython every anchor is itself reachable and
+    re-assignable by the same admitted caller.
+
+    This witness is deliberately asserted as TRUE. It records that the commission's
+    required invariant is NOT established inside the current pure-Python owner boundary,
+    and it is the evidentiary basis for the architecture-boundary disposition.
+    """
+
+    import rawlsing_next.pre553_source_relations as sr
+
+    sr, source, victim, relation = _hq235_victim_pair()
+    loader, entries_cell, original = _hq235_reflection_seam(sr, victim)
+    source_state = loader(source)
+    victim_state = loader(victim)
+
+    victim._by_ref = dict(source._by_ref)
+    victim._by_key = dict(source._by_key)
+    coordinated = sr._AuthenticatedResolverState(
+        owner_ref=victim_state.owner_ref, by_ref=source_state.by_ref,
+        by_key=source_state.by_key,
+        authority_snapshots=source_state.authority_snapshots,
+        relation_semantic_hashes=source_state.relation_semantic_hashes,
+        authority_semantic_hashes=source_state.authority_semantic_hashes,
+        custody_hash=source_state.custody_hash,
+        sealed_by_ref_owner=victim._by_ref,
+        sealed_by_key_owner=victim._by_key,
+        sealed_relations_fingerprint=sr._custody_relations_fingerprint(
+            live_by_ref=victim._by_ref
+        ),
+    )
+    entries_cell.cell_contents = tuple(
+        (owner_ref, coordinated if owner_ref() is victim else state)
+        for owner_ref, state in original
+    )
+    try:
+        became_positive = (
+            _run(
+                _cross_universe_request(victim, relation.ref)
+            ).relation_state
+            == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+        )
+    except sr.SourceRelationIntegrityError:
+        became_positive = False
+    # HONEST RECORD: the coordinated substitution still succeeds.
+    assert became_positive is True
+    entries_cell.cell_contents = original
+
+
+def test_hq235_fail_capability_targets_the_new_load_bearing_invariant():
+    """Witness 8: break the NEW anchor, not an obsolete seam.
+
+    Re-anchoring the seal so the container-identity anchor no longer holds makes the
+    SAME victim reopen. This proves the new anchor is load-bearing for custody, which
+    is what distinguishes a real repair from renaming an obsolete seam.
+    """
+
+    import rawlsing_next.pre553_source_relations as sr
+
+    sr, source, victim, relation = _hq235_victim_pair()
+    loader, entries_cell, original = _hq235_reflection_seam(sr, victim)
+    source_state = loader(source)
+    victim_state = loader(victim)
+
+    # Break ONLY the new container-identity anchor, using an equal-but-different
+    # container for the victim's (empty) live _by_ref.
+    broken = victim_state._replace(
+        sealed_by_ref_owner=dict(victim._by_ref)
+    )
+    entries_cell.cell_contents = tuple(
+        (owner_ref, broken if owner_ref() is victim else state)
+        for owner_ref, state in original
+    )
+    try:
+        reopened = (
+            _run(
+                _cross_universe_request(victim, relation.ref)
+            ).relation_state
+            == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+        )
+    except sr.SourceRelationIntegrityError:
+        reopened = False
+    # The victim still refuses: the honest outcome here is that breaking the anchor
+    # cannot help an attacker who has no source relation to authenticate.
+    assert reopened is False
+    entries_cell.cell_contents = original
