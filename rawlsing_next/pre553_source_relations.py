@@ -15,8 +15,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from types import MappingProxyType
-from typing import Any, Iterable, Mapping, Sequence
-from weakref import WeakKeyDictionary
+from typing import Any, Iterable, Mapping, NamedTuple, Sequence
+from weakref import WeakKeyDictionary, ref as weakref_ref
 
 from rawlsing_next.pre553_c11_repository import C11Repository
 from rawlsing_next.pre553_empirical_authority import (
@@ -532,8 +532,10 @@ def _resolve_exact_owner_snapshot(
     return snapshot
 
 
-@dataclass(frozen=True)
-class _AuthenticatedResolverState:
+class _AuthenticatedResolverState(NamedTuple):
+    """Tuple-backed constructor custody; object.__setattr__ cannot rewrite fields."""
+
+    owner_ref: Any
     by_ref: Mapping[str, SourceUniverseRelation]
     by_key: Mapping[str, tuple[SourceUniverseRelation, ...]]
     authority_snapshots: Mapping[str, AuthoritySnapshot]
@@ -877,6 +879,10 @@ def _make_sealed_source_relation_owner(
             raise SourceRelationIntegrityError(
                 "resolver lacks authenticated construction-time owner custody"
             )
+        if state.owner_ref() is not resolver:
+            raise SourceRelationIntegrityError(
+                "resolver owner custody is not bound to this constructor instance"
+            )
         return state
 
     def _resolve_for_resolver(
@@ -966,6 +972,7 @@ def _make_sealed_source_relation_owner(
             _seal(
                 self,
                 _AuthenticatedResolverState(
+                    owner_ref=weakref_ref(self),
                     by_ref=owner_by_ref,
                     by_key=owner_by_key,
                     authority_snapshots=owner_authorities,
