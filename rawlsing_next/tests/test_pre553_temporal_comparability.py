@@ -2132,6 +2132,9 @@ def test_hq227_owner_method_and_nested_validation_monkeypatches_cannot_redirect_
     monkeypatch.setattr(sr.SourceRelationResolver, "resolve_exact", explode)
     monkeypatch.setattr(sr.SourceRelationResolver, "_validate_positive", explode)
     monkeypatch.setattr(sr.SourceRelationResolver, "_validate_replay_identity", explode)
+    monkeypatch.setattr(sr, "_owner_state_resolve_exact", explode)
+    monkeypatch.setattr(sr, "_validate_positive_from_owner_state", explode)
+    monkeypatch.setattr(sr, "_validate_relation_replay_identity", explode)
 
     receipt = _run(_cross_universe_request(resolver, relation.ref))
     assert receipt.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
