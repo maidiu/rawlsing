@@ -1,10 +1,11 @@
 # PYAT HQ232 — N6 GT2 LOCAL-CONTEXT FINAL REVIEW RESOLUTION — R1
 
 **STATUS:** NEW — NEEDS LAUNCH  
-**AGENT:** Browser/GitHub independent hostile evidence reviewer  
-**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
-**MACHINE:** unknown  
-**WORKTREE:** not established  
+**AGENT:** DeepSeek-Harness / OpenCode independent hostile evidence reviewer  
+**MODEL / INTELLIGENCE:** **DeepSeek V4.1 Flash**  
+**MACHINE:** user's Mac / local disk / isolated sparse worktree  
+**CHECKOUT:** **SPARSE_REQUIRED**  
+**WORKTREE:** use the HQ-authorized isolated sparse worktree for this branch; if absent, report bootstrap required rather than cloning  
 **BRANCH:** `agent/reviewer-pyat-hq232-n6-gt2-context-final-resolution-r1`  
 **EXACT STARTUP TIP:** `f36f0ed11d1ad807202be6f47f774a169dc5b6ef`  
 **ORIGINAL CANDIDATE RETURN:** `agent/rabochii-pyat-hq227-n6-gt2-objective-context-realization-r1 @ 5ed0667ed7bc6180789114429cc4c1b59c0732d1`  
@@ -24,6 +25,8 @@ Read:
 Resolve exactly the evidence-only hold imposed by HQ229 and determine whether the HQ227 N6 result may now be accepted at its declared **local CONTEXT realization grain**.
 
 Do not upgrade the maturity claim.
+
+This lane is intentionally assigned to **DeepSeek-Harness in OpenCode** because the review closes execution-provenance evidence and may independently inspect the governed local worktree/runtime receipts rather than merely trusting committed prose. It is a review lane only: no production or semantic repair is authorized.
 
 Freeze:
 
@@ -120,3 +123,12 @@ Required:
 - `05_FINAL_DISPOSITION.json`
 
 No production mutation. No repair. Commit/push only this branch and report exact remote SHA.
+
+
+SHARED_STORE_WORKTREE_REQUIRED:
+- use the HQ-authorized sparse worktree for this branch;
+- do not clone;
+- do not recreate an existing worktree;
+- do not broaden sparse scope;
+- do not share a writable working directory with another branch;
+- push only this commissioned branch.
