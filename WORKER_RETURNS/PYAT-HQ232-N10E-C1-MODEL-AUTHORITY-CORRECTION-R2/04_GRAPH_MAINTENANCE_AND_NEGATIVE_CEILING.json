@@ -1,0 +1,66 @@
+{
+  "schema": "PYAT_HQ232_R2_GRAPH_MAINTENANCE_NEGATIVE_RETURN@1",
+  "option_B_acyclic": true,
+  "scope_validator_design": "A__KIND_SPECIFIC",
+  "graph": {
+    "identity_order": [
+      "complete stable rule basis -> interpretation/replay",
+      "scope validation contract -> interpretation/replay",
+      "interpretation fingerprint + replay ref -> owner-native authority identity",
+      "owner-native authority -> stable rule object/ref",
+      "stable rule object -> every consuming product"
+    ],
+    "no_cycle": "final stable rule ref never feeds back into authority_content_hash",
+    "product_edges": [
+      "stable model-rule ref -> every consuming N10E/C1 product",
+      "invocation-specific conditioner/query/evidence/source refs -> consuming product",
+      "walkback/proxy authority -> consuming product where used",
+      "query/comparability/producer authority -> consuming product where used"
+    ],
+    "sealed_successor": "accepted owner-authority change requires actual sealed successor snapshot before successor stable rule and dependent products are recomposed",
+    "historical_products_rewritten": false,
+    "historical_fixture_rewritten": false
+  },
+  "maintenance": {
+    "candidate_record_ref": {
+      "kind": "Maintenance:CANDIDATE",
+      "object_id": "urn:rawlsing:pre553:maintenance:candidate:sha256:6fa5efe5dd0209d003bb10d9d4c260b6556a88e927f49034977cb15ce068f69b",
+      "content_hash": "6fa5efe5dd0209d003bb10d9d4c260b6556a88e927f49034977cb15ce068f69b"
+    },
+    "current_constructibility": "EXPECTED_PREIMPLEMENTATION_FAILURE",
+    "reasons": [
+      "AUTHORITY_KINDS does not yet include POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_MODEL_RULE",
+      "PositionedSubjectModelRule@1.0.0 family/state/class is not yet implemented",
+      "kind-specific R2 scope validator is documentary only and not yet implemented"
+    ],
+    "executor_bypass_after_implementation": false,
+    "authority_adopted": false
+  },
+  "negative_ceiling": {
+    "source_free_only": true,
+    "real_source_effect": false,
+    "fixture_only": true,
+    "separate_walkback_authority": true,
+    "no_source_semantics": true,
+    "no_comparability_authority": true,
+    "no_source_composition": true,
+    "no_support_threshold": true,
+    "no_structural_admission": true,
+    "no_actor_or_v3_authority": true,
+    "no_prediction_authority": true,
+    "no_normative_authority": true,
+    "no_historical_receipt_rewrite": true,
+    "no_new_architecture_warrant": true
+  },
+  "preserved_HQ230_passes": [
+    "distinct owner-native authority identity",
+    "fixture predecessor fixture-only",
+    "no false authority genealogy",
+    "bounded new authority kind/family",
+    "separate walkback authority",
+    "source-free-only real_source_effect=false",
+    "sealed-successor re-freeze",
+    "historical products not rewritten",
+    "maintenance executor non-bypass after implementation"
+  ]
+}
