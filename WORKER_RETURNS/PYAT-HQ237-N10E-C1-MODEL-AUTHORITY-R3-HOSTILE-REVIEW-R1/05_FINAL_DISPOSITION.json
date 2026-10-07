@@ -1,0 +1,36 @@
+{
+  "schema": "PYAT_HQ237_R3_FINAL_DISPOSITION@1",
+  "disposition": "C1_OWNER_NATIVE_MODEL_AUTHORITY_R3_PARTIAL__NAMED_DEFECT",
+  "candidate": "agent/rabochii-pyat-hq236-n10e-c1-model-authority-correction-r3",
+  "candidate_tip": "d8b970651070895d1c745fdae021023e535a07d8",
+  "review_branch": "agent/reviewer-pyat-hq237-n10e-c1-model-authority-r3-r1",
+  "commission_tip": "3b3ffafc245dceaf2edee84c4ccc59b508da69a5",
+  "blocking_defects": [
+    "HQ237-DEFECT-FIXTURE-CONTEXT-ISSUER-AUTHORITY-001",
+    "HQ237-DEFECT-C1-N10E-CONTEXT-ENTRYPOINT-CUSTODY-002"
+  ],
+  "passing": {
+    "six_state_mapping": true,
+    "all_11_hashes": true,
+    "eight_path_provenance_blobs": true,
+    "site_token_documentary_mapping": true,
+    "R8_source_release_hashes": true,
+    "static_actual_effective_context_distinction": true,
+    "negative_ceiling": true
+  },
+  "failing": {
+    "trusted_fixture_issuer_authority": false,
+    "bound_runtime_registration_provenance": false,
+    "build_instance_attestation": false,
+    "C1_preconstruction_accepted_owner_binding": false,
+    "implementation_without_semantic_invention": false
+  },
+  "identity_recompute": "PASS_11_OF_11",
+  "independent_runtime_test_executed": false,
+  "authority_adopted": false,
+  "production_mutation": false,
+  "lifecycle_refreeze": false,
+  "self_adopted": false,
+  "next": "HQ_RULE_COMPETENT_FIXTURE_CONTEXT_ISSUER_AND_C1_N10E_TRUSTED_ENTRYPOINT; CORRECT_REHASH; FRESH_HOSTILE_REVIEW; HQ_EXPLICIT_ADOPTION_BEFORE_SPACE_BUNNY",
+  "final_remote_sha": "REPORT_VERIFIED_GIT_HEAD_AFTER_FINAL_COMMIT"
+}
