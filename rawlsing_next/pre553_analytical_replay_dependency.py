@@ -170,6 +170,91 @@ class AuthoritySnapshotIdentityMismatch(AnalyticalReplayDependencyError):
     code = "AUTHORITY_SNAPSHOT_IDENTITY_MISMATCH"
 
 
+class ModelRuleAuthorityBindingMismatch(AnalyticalReplayDependencyError):
+    """The consumed model-rule body is not cryptographically owned by its model authority."""
+
+    code = "MODEL_RULE_AUTHORITY_BINDING_MISMATCH"
+
+
+MODEL_RULE_AUTHORITY_BINDING_CONTRACT_ID = "C1_03R_MODEL_RULE_AUTHORITY_BINDING@1"
+
+
+def model_rule_authority_basis(model_rule_material: Mapping[str, Any]) -> Mapping[str, Any]:
+    """Return the complete rule semantics except the self-referential model AuthorityRef."""
+
+    if not isinstance(model_rule_material, Mapping):
+        raise ModelRuleAuthorityBindingMismatch(
+            "MODEL_RULE_AUTHORITY_BINDING_MISMATCH: model rule material must be a mapping"
+        )
+    material = canonicalize(dict(model_rule_material))
+    if "model_authority_ref" not in material:
+        raise ModelRuleAuthorityBindingMismatch(
+            "MODEL_RULE_AUTHORITY_BINDING_MISMATCH: model rule material lacks "
+            "model_authority_ref"
+        )
+    basis = dict(material)
+    basis.pop("model_authority_ref", None)
+    return canonicalize(basis)
+
+
+def model_rule_authority_interpretation_semantics(
+    model_rule_material: Mapping[str, Any],
+) -> Mapping[str, Any]:
+    """Exact interpretation semantics whose fingerprint owns the rule basis."""
+
+    return canonicalize(
+        {
+            "binding_contract": MODEL_RULE_AUTHORITY_BINDING_CONTRACT_ID,
+            "model_rule_basis": model_rule_authority_basis(model_rule_material),
+        }
+    )
+
+
+def assert_model_rule_material_bound_to_authority_snapshot(
+    model_rule_material: Mapping[str, Any],
+    snapshot: Any,
+    *,
+    expected_rule_hash: str | None = None,
+) -> Any:
+    """Prove the full consumed model rule is cryptographically bound to snapshot."""
+
+    material = canonicalize(dict(model_rule_material))
+    rule_hash = semantic_hash(material)
+    if expected_rule_hash is not None:
+        if not isinstance(expected_rule_hash, str) or len(expected_rule_hash) != 64:
+            raise ModelRuleAuthorityBindingMismatch(
+                "MODEL_RULE_AUTHORITY_BINDING_MISMATCH: expected model_rule_hash "
+                "must be sha256"
+            )
+        if rule_hash != expected_rule_hash:
+            raise ModelRuleAuthorityBindingMismatch(
+                "MODEL_RULE_AUTHORITY_BINDING_MISMATCH: consumed model_rule_hash "
+                "does not hash the supplied full rule material"
+            )
+    try:
+        model_ref = authority_ref(material["model_authority_ref"], "model_authority_ref")
+    except Exception as exc:
+        raise ModelRuleAuthorityBindingMismatch(
+            "MODEL_RULE_AUTHORITY_BINDING_MISMATCH: invalid model_authority_ref"
+        ) from exc
+    try:
+        assert_authority_snapshot_body_matches_ref(snapshot, model_ref)
+    except AuthoritySnapshotIdentityMismatch as exc:
+        raise ModelRuleAuthorityBindingMismatch(
+            "MODEL_RULE_AUTHORITY_BINDING_MISMATCH: model authority snapshot is not "
+            "body/ref authentic"
+        ) from exc
+    expected_fingerprint = semantic_hash(
+        model_rule_authority_interpretation_semantics(material)
+    )
+    if snapshot.interpretation_semantics_fingerprint != expected_fingerprint:
+        raise ModelRuleAuthorityBindingMismatch(
+            "MODEL_RULE_AUTHORITY_BINDING_MISMATCH: model authority does not "
+            "cryptographically commit the complete non-self-referential model-rule basis"
+        )
+    return snapshot
+
+
 class ExplicitNoncurrentDependent(AnalyticalReplayDependencyError):
     """The lifecycle owner recorded this dependent as noncurrent.
 
@@ -607,6 +692,34 @@ class ExactDeterminantOwnership:
 
 
 @dataclass(frozen=True)
+class ModelRuleAuthorityBindingEvidence:
+    """Authenticated proof for the exact model_rule_hash a product consumed."""
+
+    model_rule_hash: str
+    model_rule_material: Mapping[str, Any]
+    model_authority_snapshot: Any
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.model_rule_hash, str) or len(self.model_rule_hash) != 64:
+            raise ModelRuleAuthorityBindingMismatch(
+                "MODEL_RULE_AUTHORITY_BINDING_MISMATCH: model_rule_hash must be sha256"
+            )
+        material = canonicalize(dict(self.model_rule_material))
+        object.__setattr__(self, "model_rule_material", material)
+        assert_model_rule_material_bound_to_authority_snapshot(
+            material,
+            self.model_authority_snapshot,
+            expected_rule_hash=self.model_rule_hash,
+        )
+
+    @property
+    def model_authority_ref(self) -> AuthorityRef:
+        return authority_ref(
+            self.model_rule_material["model_authority_ref"], "model_authority_ref"
+        )
+
+
+@dataclass(frozen=True)
 class AnalyticalProductRegistration:
     """One exact analytical product registered with the determinants it consumed.
 
@@ -625,6 +738,8 @@ class AnalyticalProductRegistration:
     determinant_exact_refs: tuple[ExactRef, ...] = ()
     dependency_edges_from: tuple[ExactRef, ...] = ()
     determinant_ownerships: tuple[ExactDeterminantOwnership, ...] = ()
+    model_rule_hash: str | None = None
+    model_rule_authority_binding: ModelRuleAuthorityBindingEvidence | None = None
 
     def __post_init__(self) -> None:
         if not isinstance(self.product_ref, ExactRef):
@@ -641,6 +756,36 @@ class AnalyticalProductRegistration:
                 "MISSING_EXACT_DETERMINANT: a registration requires at least one exact "
                 "consumed determinant authority ref"
             )
+        if self.model_rule_hash is None:
+            if self.model_rule_authority_binding is not None:
+                raise ModelRuleAuthorityBindingMismatch(
+                    "MODEL_RULE_AUTHORITY_BINDING_MISMATCH: binding evidence cannot "
+                    "exist without the exact consumed model_rule_hash"
+                )
+        else:
+            if not isinstance(self.model_rule_hash, str) or len(self.model_rule_hash) != 64:
+                raise ModelRuleAuthorityBindingMismatch(
+                    "MODEL_RULE_AUTHORITY_BINDING_MISMATCH: model_rule_hash must be sha256"
+                )
+            binding = self.model_rule_authority_binding
+            if not isinstance(binding, ModelRuleAuthorityBindingEvidence):
+                raise ModelRuleAuthorityBindingMismatch(
+                    "MODEL_RULE_AUTHORITY_BINDING_MISMATCH: a consumed model_rule_hash "
+                    "requires authenticated model-authority binding evidence"
+                )
+            if binding.model_rule_hash != self.model_rule_hash:
+                raise ModelRuleAuthorityBindingMismatch(
+                    "MODEL_RULE_AUTHORITY_BINDING_MISMATCH: registration hash and "
+                    "binding-evidence hash differ"
+                )
+            if binding.model_authority_ref.key not in {
+                ref.key for ref in self.determinant_authority_refs
+            }:
+                raise ModelRuleAuthorityBindingMismatch(
+                    "MODEL_RULE_AUTHORITY_BINDING_MISMATCH: the authority that "
+                    "cryptographically owns the model rule is not a consumed "
+                    "determinant authority of the product"
+                )
         seen: dict[str, ExactDeterminantOwnership] = {}
         for ownership in self.determinant_ownerships:
             if not isinstance(ownership, ExactDeterminantOwnership):
@@ -1055,6 +1200,8 @@ def build_owner_recompiler(
                 "authority; future or unknown authority pre-binding is forbidden "
                 f"({successor.key})"
             )
+        sealed_snapshot = executor.resolve_historical_exact(successor)
+        assert_authority_snapshot_body_matches_ref(sealed_snapshot, successor)
         return successor
 
     def recompiler(
@@ -1245,6 +1392,13 @@ __all__ = [
     "MissingCrossOwnerEdge",
     "NoLawfulReplacementRepresentable",
     "UnownedDeterminantRefused",
+    "AuthoritySnapshotIdentityMismatch",
+    "ModelRuleAuthorityBindingMismatch",
+    "MODEL_RULE_AUTHORITY_BINDING_CONTRACT_ID",
+    "model_rule_authority_basis",
+    "model_rule_authority_interpretation_semantics",
+    "assert_model_rule_material_bound_to_authority_snapshot",
+    "ModelRuleAuthorityBindingEvidence",
     "DETERMINANT_ROOT_AUTHORITY",
     "DETERMINANT_DEPENDENT_PRODUCT",
     "DETERMINANT_IMMUTABLE_IDENTITY",

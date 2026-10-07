@@ -44,11 +44,20 @@ from rawlsing_next.pre553_analytical_replay_dependency import (
     AnalyticalProductRegistration,
     DeterminantOwnerEvidence,
     ExactDeterminantOwnership,
+    ModelRuleAuthorityBindingEvidence,
+    assert_authority_snapshot_body_matches_ref,
+    assert_model_rule_material_bound_to_authority_snapshot,
+    model_rule_authority_interpretation_semantics,
     assert_runner_input_carries_no_answer,
     resolve_current_analytical_product,
     transition_analytical_dependencies,
 )
-from rawlsing_next.pre553_empirical_objects import AuthorityRef, exact_ref
+from rawlsing_next.pre553_empirical_objects import (
+    AuthorityRef,
+    AuthoritySnapshot,
+    exact_ref,
+    semantic_hash,
+)
 from rawlsing_next.pre553_empirical_possibility_provider import (
     provide_empirical_possibility_slice,
 )
@@ -77,6 +86,84 @@ CONSUMER_PATH = (
 )
 
 
+def _owner_authentic_model_authority_snapshot(
+    direction: str, template_rule: PositionedSubjectPossibilityModelRule
+) -> AuthoritySnapshot:
+    """Build the source-free court's truthful v1 model authority."""
+
+    replay_ref = fx._ref_for("REPLAY_PROTOCOL", f"model-{direction}-hq227-v1")
+    scope = {
+        "source_universe_refs": [
+            ref.as_dict() for ref in template_rule.source_universe_refs
+        ],
+        "target_use_refs": ("ANALYTICAL_PRODUCT",),
+    }
+    interpretation_semantics = model_rule_authority_interpretation_semantics(
+        template_rule.material()
+    )
+    identity_material = {
+        "authority_id": f"C1-AT07-MODEL-{direction.upper()}",
+        "authority_version": "1.0.0",
+        "authority_kind": fx.MODEL_AUTHORITY_KIND,
+        "decision_state": "ALLOW",
+        "governed_operations": ["MODEL_LAW"],
+        "governed_object_families": ["ReplayReceipt@1.0.0"],
+        "scope_envelope": scope,
+        "effective_time_or_interval": "ALL_TIME",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": semantic_hash(
+            interpretation_semantics
+        ),
+        "replay_protocol_ref": replay_ref.as_dict(),
+    }
+    snapshot = AuthoritySnapshot(
+        typed_state="ALLOW",
+        authority_snapshot_refs=(),
+        dependency_refs=(replay_ref,),
+        producer_replay_locator_or_reference_root=replay_ref,
+        authority_id=identity_material["authority_id"],
+        authority_version=identity_material["authority_version"],
+        authority_content_hash=semantic_hash(identity_material),
+        authority_kind=identity_material["authority_kind"],
+        decision_state="ALLOW",
+        governed_operations=("MODEL_LAW",),
+        governed_object_families=("ReplayReceipt@1.0.0",),
+        scope_envelope=scope,
+        effective_time_or_interval="ALL_TIME",
+        parent_authority_refs=(),
+        negative_limit_refs=(),
+        supersession_refs=(),
+        interpretation_semantics_fingerprint=identity_material[
+            "interpretation_semantics_fingerprint"
+        ],
+        replay_protocol_ref=replay_ref,
+    )
+    return assert_authority_snapshot_body_matches_ref(snapshot)
+
+
+def build_owner_authentic_case(direction: str) -> dict[str, Any]:
+    """Rebuild the fixture with an exact body/hash-authentic model authority."""
+
+    case = dict(fx.build_case(direction))
+    template = case["model_rule"]
+    snapshot = _owner_authentic_model_authority_snapshot(direction, template)
+    rule = PositionedSubjectPossibilityModelRule(
+        snapshot.authority_ref,
+        template.walkback_authority_ref,
+        template.source_universe_refs,
+        template.walkback_steps,
+        template.positive_proxy_authority_refs,
+    )
+    assert_model_rule_material_bound_to_authority_snapshot(
+        rule.material(), snapshot, expected_rule_hash=rule.rule_hash
+    )
+    case["model_rule"] = rule
+    case["model_authority_snapshot"] = snapshot
+    return case
+
+
 def rebuild_case(determinants: dict[str, Any]) -> dict[str, Any]:
     """Rebuild the accepted provider case and verify it matches the retained refs.
 
@@ -87,7 +174,7 @@ def rebuild_case(determinants: dict[str, Any]) -> dict[str, Any]:
     """
 
     direction = determinants["direction"]
-    case = fx.build_case(direction)
+    case = build_owner_authentic_case(direction)
 
     checks = {
         "empirical_query_ref": case["empirical_query"].ref,
@@ -358,6 +445,11 @@ def run(determinants: dict[str, Any]) -> dict[str, Any]:
     # ---- 2. dependency registration over the determinants actually consumed --
     exact_refs, ownerships, producer_fact = _complete_determinant_census(case, produced)
     registry = AnalyticalDependencyRegistry()
+    model_rule_binding = ModelRuleAuthorityBindingEvidence(
+        model_rule_hash=produced.provider_receipt.model_rule_hash,
+        model_rule_material=base_rule.material(),
+        model_authority_snapshot=case["model_authority_snapshot"],
+    )
     registry.register(
         AnalyticalProductRegistration(
             product_ref=product_ref,
@@ -365,6 +457,8 @@ def run(determinants: dict[str, Any]) -> dict[str, Any]:
             determinant_authority_refs=_direct_model_authorities(case),
             determinant_exact_refs=exact_refs,
             determinant_ownerships=ownerships,
+            model_rule_hash=produced.provider_receipt.model_rule_hash,
+            model_rule_authority_binding=model_rule_binding,
         )
     )
     # Lifecycle closure is requested here, so any omitted classification fails now.
@@ -373,15 +467,31 @@ def run(determinants: dict[str, Any]) -> dict[str, Any]:
     # ---- 3. accepted lifecycle owner performs the dependency transition -----
     transition = _stage_transition(case, registry, product_ref, old_model)
     successor = transition["successor"]
+    sealed_successor_snapshot = transition["sealed_successor_snapshot"]
+    recomposition_audit: dict[str, Any] = {}
 
     def recompose(affected_ref, authority):
+        if authority != sealed_successor_snapshot.authority_ref:
+            raise AssertionError(
+                "owner recompiler did not supply the exact sealed successor authority"
+            )
+        snapshot = assert_authority_snapshot_body_matches_ref(
+            transition["executor"].resolve_historical_exact(authority), authority
+        )
+        if snapshot.ref != sealed_successor_snapshot.ref:
+            raise AssertionError("recomposition did not consume the sealed snapshot")
         rule = PositionedSubjectPossibilityModelRule(
-            authority,
+            snapshot.authority_ref,
             base_rule.walkback_authority_ref,
             base_rule.source_universe_refs,
             base_rule.walkback_steps,
             base_rule.positive_proxy_authority_refs,
         )
+        assert_model_rule_material_bound_to_authority_snapshot(
+            rule.material(), snapshot, expected_rule_hash=rule.rule_hash
+        )
+        recomposition_audit["successor_model_rule_hash"] = rule.rule_hash
+        recomposition_audit["successor_snapshot_ref"] = snapshot.ref.as_dict()
         recomposed = provide(case, rule)
         if recomposed.provider_state != "EXACT_SUPPORTED_SLICE_PRODUCED":
             raise AssertionError(
@@ -433,6 +543,18 @@ def run(determinants: dict[str, Any]) -> dict[str, Any]:
             a.as_dict() for a in _direct_model_authorities(case)
         ],
         "registered_determinant_exact_refs": [x.as_dict() for x in exact_refs],
+        "model_rule_authority_binding": {
+            "binding_contract": "C1_03R_MODEL_RULE_AUTHORITY_BINDING@1",
+            "model_rule_hash": model_rule_binding.model_rule_hash,
+            "model_authority_ref": model_rule_binding.model_authority_ref.as_dict(),
+            "baseline_snapshot_ref": case["model_authority_snapshot"].ref.as_dict(),
+            "baseline_snapshot_body_ref_authenticated": True,
+            "successor_snapshot_ref": recomposition_audit["successor_snapshot_ref"],
+            "successor_model_rule_hash": recomposition_audit[
+                "successor_model_rule_hash"
+            ],
+            "successor_snapshot_body_ref_authenticated": True,
+        },
         "registered_determinant_classifications": [
             {
                 "ref": row.determinant_ref.as_dict(),
@@ -463,6 +585,7 @@ def run(determinants: dict[str, Any]) -> dict[str, Any]:
             else status["current_replacement_ref"].as_dict()
         ),
         "successor_authority_ref": successor.as_dict(),
+        "successor_authority_snapshot_ref": sealed_successor_snapshot.ref.as_dict(),
         "raw_denominator_support": (
             produced.composition_result.raw_denominator_support
         ),
@@ -492,42 +615,78 @@ def _stage_transition(
         AuthorityMaintenanceExecutor,
     )
 
+    from rawlsing_next.pre553_authority_maintenance import AuthorityCandidate
+
     direction = case["direction"]
     graph = registry.build_graph()
+    baseline_snapshot = assert_authority_snapshot_body_matches_ref(
+        case["model_authority_snapshot"], old_model
+    )
     executor = AuthorityMaintenanceExecutor(
-        initial_snapshots=(fx.model_authority_snapshot(direction),),
+        initial_snapshots=(baseline_snapshot,),
         initial_current_selection={old_model.authority_id: old_model},
         determinant_graph=graph,
     )
     evidence = AuthorityEvidenceReceipt(
         evidence_role="SEMANTIC_AUTHORITY_EVIDENCE",
-        evidence_refs=(fx._ref_for("EVIDENCE", f"hq221-{direction}-model"),),
-        provenance_refs=(fx._ref_for("PROVENANCE", f"hq221-{direction}-model"),),
+        evidence_refs=(fx._ref_for("EVIDENCE", f"hq227-{direction}-model"),),
+        provenance_refs=(fx._ref_for("PROVENANCE", f"hq227-{direction}-model"),),
         source_release_refs=(),
     )
     executor.intake_evidence(evidence)
-    revision = fx._model_candidate(
-        fx.revised_model_authority(direction),
-        version="2.0.0",
-        evidence_ref=evidence.ref,
-        parent=(old_model,),
-        supersession=(old_model,),
-        semantics=f"{direction}-hq221-v2",
+    revision = AuthorityCandidate(
+        candidate_id=f"CAND-{old_model.authority_id}-2.0.0-hq227",
+        candidate_revision=1,
+        authority_id=old_model.authority_id,
+        authority_version="2.0.0",
+        authority_kind=baseline_snapshot.authority_kind,
+        proposed_decision_state="ALLOW",
+        governed_operations=tuple(baseline_snapshot.governed_operations),
+        governed_object_families=tuple(baseline_snapshot.governed_object_families),
+        scope_envelope=dict(baseline_snapshot.scope_envelope),
+        effective_time_or_interval=baseline_snapshot.effective_time_or_interval,
+        evidence_receipt_refs=(evidence.ref,),
+        proposed_parent_authority_refs=(old_model,),
+        proposed_negative_limit_refs=tuple(baseline_snapshot.negative_limit_refs),
+        proposed_supersession_refs=(old_model,),
+        interpretation_semantics=model_rule_authority_interpretation_semantics(
+            case["model_rule"].material()
+        ),
+        replay_protocol_ref=fx._ref_for(
+            "REPLAY_PROTOCOL", f"model-{direction}-hq227-v2"
+        ),
     )
     executor.intake_candidate(revision)
     adjudication = executor.adjudicate_candidate(
         revision.ref,
         decision="APPROVED",
-        adjudicator_ref=fx._ref_for("ADJUDICATOR", f"hq221-{direction}-v2"),
-        adjudication_authority_ref=fx._ref_for("GOVERNING_AUTHORITY", "HQ221"),
-        findings_ref=fx._ref_for("FINDINGS", f"hq221-{direction}-v2"),
+        adjudicator_ref=fx._ref_for("ADJUDICATOR", f"hq227-{direction}-v2"),
+        adjudication_authority_ref=fx._ref_for("GOVERNING_AUTHORITY", "HQ227"),
+        findings_ref=fx._ref_for("FINDINGS", f"hq227-{direction}-v2"),
     )
     seal = executor.seal_revision(
         revision.ref,
         adjudication.ref,
-        seal_attestation_ref=fx._ref_for("SEAL_ATTESTATION", f"hq221-{direction}-v2"),
+        seal_attestation_ref=fx._ref_for("SEAL_ATTESTATION", f"hq227-{direction}-v2"),
     )
-    successor = revision.proposed_authority_ref
+    successor = seal.authority_ref
+    if successor != revision.proposed_authority_ref:
+        raise AssertionError("seal did not expose the adjudicated successor AuthorityRef")
+    sealed_successor_snapshot = assert_authority_snapshot_body_matches_ref(
+        executor.resolve_historical_exact(successor), successor
+    )
+    successor_rule = PositionedSubjectPossibilityModelRule(
+        sealed_successor_snapshot.authority_ref,
+        case["model_rule"].walkback_authority_ref,
+        case["model_rule"].source_universe_refs,
+        case["model_rule"].walkback_steps,
+        case["model_rule"].positive_proxy_authority_refs,
+    )
+    assert_model_rule_material_bound_to_authority_snapshot(
+        successor_rule.material(),
+        sealed_successor_snapshot,
+        expected_rule_hash=successor_rule.rule_hash,
+    )
     if successor.authority_content_hash == old_model.authority_content_hash:
         raise AssertionError(
             "the sealed successor must differ in content hash from the consumed prior"
@@ -536,9 +695,10 @@ def _stage_transition(
         "executor": executor,
         "seal_ref": seal.ref,
         "successor": successor,
-        "selection_rule_ref": fx._ref_for("SELECTION_RULE", f"hq221-{direction}-v2"),
+        "sealed_successor_snapshot": sealed_successor_snapshot,
+        "selection_rule_ref": fx._ref_for("SELECTION_RULE", f"hq227-{direction}-v2"),
         "selection_attestation_ref": fx._ref_for(
-            "SELECTION_ATTESTATION", f"hq221-{direction}-v2"
+            "SELECTION_ATTESTATION", f"hq227-{direction}-v2"
         ),
     }
 
