@@ -70,3 +70,16 @@ The R13 transcript is source/context only.
 The docket artifacts and SPD entries are provisional Sorok product law/direction. They do not mutate governed Pyat/PRE-MAIN/V3/PFF execution authority.
 
 No merge or self-adoption performed.
+
+
+## 2026-10-07 source and authority addendum
+
+Additional source:
+- `04_USER_SUPPLIED_FULL_CHAT_TRANSCRIPT_2026-10-07.txt` — preferred user-supplied textual transcript copy.
+
+Additional authority-boundary receipt:
+- `05_ORIGINAL_GAME_LOOP_EXPLORATION_QUARANTINE_R1.md`.
+
+The original "game loops" brainstorming interval is explicitly **not canonical**. Artifacts 88–90 are absent from this clean lineage. No bounded-undertaking, commission, cross-persona Question/Thesis/Theory, noninterchangeability objective, relational-vacancy objective, or similar exploratory superstructure is adopted by this R13 banking wave.
+
+R13's D002/D008/D009 banks are fresh post-Astra derivations/adjudications on the clean lineage, not resurrection of the abandoned game-loop package.
