@@ -1,0 +1,70 @@
+{
+  "schema": "PYAT_HQ231_LIVE_STATE_EXPOSURE_AND_TRANSPLANT_ATTACK@1.0.0",
+  "code_bearing_head": "62394d7ff817252d6d406c1e0ada96529697f5f2",
+  "hq228_attack": {
+    "pre_repair": "_load_owner_state(source/victim) returned mutable-by-object.__setattr__ frozen dataclass capsules; source custody fields could be transplanted into victim capsule.",
+    "post_repair": "no module live loader exists; capsule is tuple-backed; lexical ledger is immutable; exact constructor owner binding is checked before adjudication."
+  },
+  "hq231_witnesses": [
+    {
+      "test": "test_hq231_source_to_victim_custody_transplant_surface_is_sealed",
+      "attacks": [
+        "absence of old live loader/sealer/store names",
+        "source and victim detached diagnostics",
+        "victim _by_ref injection",
+        "victim _by_key replacement",
+        "victim _registry replacement"
+      ],
+      "expected": "victim remains TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT; source remains positive"
+    },
+    {
+      "test": "test_hq231_diagnostic_is_detached_and_object_setattr_cannot_touch_custody",
+      "attacks": [
+        "object.__setattr__ on returned diagnostic"
+      ],
+      "expected": "diagnostic is immutable string and authenticated source/victim results are unchanged"
+    },
+    {
+      "test": "test_hq231_custody_capsule_is_tuple_immutable_and_constructor_bound",
+      "attacks": [
+        "reflect authenticated closure to recover lexical loader",
+        "recover source and victim trusted capsules",
+        "object.__setattr__ capsule field transplant",
+        "reflect lexical ledger snapshot",
+        "tuple item replacement",
+        "reflect constructor sealer",
+        "source capsule -> victim reseal",
+        "victim capsule -> victim reseal"
+      ],
+      "expected": "capsule mutation refused; ledger item replacement refused; source capsule owner mismatch refused; already-sealed victim refused"
+    },
+    {
+      "test": "test_hq231_existing_nested_owner_and_registry_attacks_remain_closed",
+      "attacks": [
+        "registry instance resolve_exact shadow",
+        "SourceRelationResolver decide/require/resolve_exact monkeypatch",
+        "positive validator monkeypatch",
+        "module owner-state resolve/validation/replay helper monkeypatch"
+      ],
+      "expected": "genuine constructor-admitted service remains positive through captured authenticated owner path"
+    },
+    {
+      "test": "test_hq231_targeted_break_transplantable_loader_reopens_same_victim",
+      "attacks": [
+        "same empty victim under repaired path",
+        "replace actual F7 authenticated alias with explicit transplantable pre-repair-style custody path"
+      ],
+      "expected": "repaired path refuses; targeted break makes same fixture positive; undo restores refusal",
+      "fail_capability": true,
+      "load_bearing_seam": "pre553_temporal_comparability._authenticated_source_relation_decide"
+    }
+  ],
+  "inherited_mandatory_coverage": {
+    "AuthorityRegistry_subclass_override": "test_hq227_authority_registry_subclass_cannot_enter_p07_owner_custody",
+    "stale_corrupt_relation_replay": "test_hq227_corrupt_custodied_relation_replay_identity_refuses_before_f7_positive",
+    "same_outer_AuthorityRef_wrong_snapshot_body": "test_hq227_same_outer_authority_ref_with_wrong_snapshot_semantics_is_refused",
+    "nested_registry_instance_shadow": "test_hq227_nested_registry_instance_dispatch_shadow_cannot_redirect_f7",
+    "decision_provenance": "test_hq227_authenticated_decision_carries_exact_custody_snapshot_and_replay_provenance",
+    "lawful_positive_cross_universe": "test_hq227_full_owner_path_positive_cross_universe_service_remains_productive"
+  }
+}
