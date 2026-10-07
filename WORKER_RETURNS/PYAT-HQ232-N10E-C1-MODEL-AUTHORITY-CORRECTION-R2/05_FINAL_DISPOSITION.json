@@ -1,0 +1,48 @@
+{
+  "schema": "PYAT_HQ232_R2_FINAL_DISPOSITION@1",
+  "disposition": "C1_OWNER_NATIVE_MODEL_AUTHORITY_R2_CANDIDATE_COMPLETE__READY_FOR_HOSTILE_REVIEW",
+  "branch": "agent/rabochii-pyat-hq232-n10e-c1-model-authority-correction-r2",
+  "commission_tip": "58419c7c4d90e89853828babac9fd5248531c7f6",
+  "startup_tip": "c64e73f71e1578dacb1c5d8f6b95887f4c87bdec",
+  "defects_closed": [
+    "HQ231-DEFECT-STABLE-RULE-BASIS-001",
+    "HQ231-DEFECT-SCOPE-ENFORCEMENT-001"
+  ],
+  "production_mutation": false,
+  "authority_adopted": false,
+  "architecture_warrant_required": false,
+  "implementation_sequence": [
+    "independent hostile review",
+    "explicit HQ authority adoption",
+    "separate Space Bunny production implementation/re-freeze/lifecycle commission"
+  ],
+  "exact_refs": {
+    "authority_ref": {
+      "authority_id": "C1-AT07-POSITIONED-SUBJECT-MODEL-RULE",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "e8215547c90ddf2b88dc5338e08de290f5c97e7db7741e9394c8dd6328631d85"
+    },
+    "stable_rule_ref": {
+      "kind": "PositionedSubjectModelRule@1.0.0",
+      "object_id": "urn:rawlsing:pre553:PositionedSubjectModelRule:sha256:a7bcf8a4ab84859cfcac1f2505e2eefccd58d9ea193936a8ff1b85bc0e29064a",
+      "content_hash": "a7bcf8a4ab84859cfcac1f2505e2eefccd58d9ea193936a8ff1b85bc0e29064a"
+    },
+    "scope_validation_contract_ref": {
+      "kind": "PositionedSubjectModelRuleScopeValidationContract@1",
+      "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-scope-validation:sha256:a0223ead6cadd09f40d29cced20e4655deee8dc4e2ebdd2c8062ee317a5a7211",
+      "content_hash": "a0223ead6cadd09f40d29cced20e4655deee8dc4e2ebdd2c8062ee317a5a7211"
+    },
+    "replay_protocol_ref": {
+      "kind": "PositionedSubjectModelRuleReplayProtocol@2",
+      "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-replay:sha256:9a250d5a00f519b0f00126fcbc85f344e095f0932574f1d44994f380c48640e4",
+      "content_hash": "9a250d5a00f519b0f00126fcbc85f344e095f0932574f1d44994f380c48640e4"
+    },
+    "candidate_record_ref": {
+      "kind": "Maintenance:CANDIDATE",
+      "object_id": "urn:rawlsing:pre553:maintenance:candidate:sha256:6fa5efe5dd0209d003bb10d9d4c260b6556a88e927f49034977cb15ce068f69b",
+      "content_hash": "6fa5efe5dd0209d003bb10d9d4c260b6556a88e927f49034977cb15ce068f69b"
+    }
+  },
+  "old_candidate_identities_status": "REJECTED_HISTORICAL_CANDIDATES__NEVER_ADOPTED__MUST_NOT_BE_IMPLEMENTED",
+  "terminal": "C1_OWNER_NATIVE_MODEL_AUTHORITY_R2_CANDIDATE_COMPLETE__READY_FOR_HOSTILE_REVIEW"
+}
