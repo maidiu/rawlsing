@@ -476,3 +476,29 @@ New risks: RISK-210–RISK-219.
 New questions: Q-LENS-001, Q-USERSIGNAL-001, Q-CAPTRANS-001, Q-MODALITY-001, Q-HINGE-001.
 
 The R13 transcript is nonauthoritative source evidence. The docket/decision surfaces above are the provisional product bank.
+
+
+## R13 authority warning — original game-loop exploration is quarantined
+
+Before using the current chat transcript as design evidence, read:
+
+`handoffs/R13_CURRENT_CHAT_TRANSCRIPT/05_ORIGINAL_GAME_LOOP_EXPLORATION_QUARANTINE_R1.md`
+
+Clean pre-game-loop semantic checkpoint:
+
+`a4211c3ec77e8269097601fe9a3dce2745395ac0`
+
+The original "game loops" brainstorming interval after that checkpoint is **source history / negative design evidence**, not current product law.
+
+Artifacts 88–90 and their abandoned superstructures are absent from the current clean lineage.
+
+Do not infer currentness from transcript presence.
+
+Hard reading rule:
+
+`BRAINSTORMED != AFFIRMED != BANKED != CURRENT`.
+
+A quarantined idea may return only through fresh independent derivation / explicit design-candidate status / new adjudication.
+
+Preferred current transcript source:
+`handoffs/R13_CURRENT_CHAT_TRANSCRIPT/04_USER_SUPPLIED_FULL_CHAT_TRANSCRIPT_2026-10-07.txt`.
