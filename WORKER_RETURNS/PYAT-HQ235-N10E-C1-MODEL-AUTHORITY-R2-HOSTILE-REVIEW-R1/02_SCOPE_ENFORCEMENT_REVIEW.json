@@ -1,0 +1,35 @@
+{
+  "schema": "PYAT_HQ235_R2_SCOPE_ENFORCEMENT_REVIEW@1",
+  "disposition": "C1_OWNER_NATIVE_MODEL_AUTHORITY_R2_PARTIAL__NAMED_DEFECT",
+  "selected_design": "A__KIND_SPECIFIC_EXACT_SCOPE_VALIDATOR",
+  "recomputed_scope_contract_hash": "a0223ead6cadd09f40d29cced20e4655deee8dc4e2ebdd2c8062ee317a5a7211",
+  "hash_match": true,
+  "frozen_checks": {
+    "positive_authority_state": "PASS",
+    "exact_authority_kind": "PASS",
+    "exact_operation": "PASS",
+    "exact_family": "PASS",
+    "exact_source_universe": "PASS",
+    "exact_release_membership": "PASS",
+    "exact_fixture_membership": "PASS_AS_MEMBERSHIP_TEST",
+    "exact_permitted_use_membership": "PASS_AS_MEMBERSHIP_TEST",
+    "real_source_effect_false": "PASS",
+    "AT07_FIXTURE_ONLY_snapshot_interval": "PASS",
+    "omission_fail_closed": "PASS",
+    "preconstruction_and_preprovider_validator_requirement": "PASS"
+  },
+  "named_defect": {
+    "id": "HQ235-DEFECT-SCOPE-CONTEXT-BINDING-001",
+    "severity": "BLOCKS_ADOPTION__BOUNDED_REPAIR",
+    "problem": [
+      "fixture_id and permitted_use are caller-supplied strings with no frozen trusted-context derivation law",
+      "the authority permits both SOURCE_FREE_C1_01_COMPATIBILITY and SOURCE_FREE_N10E_LIFECYCLE but the contract does not map each load-bearing call site to exactly one required token",
+      "AT07_FIXTURE_ONLY is checked as a static snapshot value; no exact invocation fixture/effective-context witness is required",
+      "the current N10E provider request carries release/source/query/model-rule determinants but no fixture_id, permitted_use or fixture-effective-context determinant"
+    ],
+    "bypass_shape": "A later implementation can satisfy the validator by passing an allowed literal without proving that the actual invocation belongs to that allowed fixture/use context.",
+    "split_review": "Generic require_positive_authority plus a kind-specific validator is architecturally sufficient in principle, but the R2 kind-specific contract is not yet sufficient because its additional dimensions are not bound to trusted use-site context.",
+    "required_correction": "Freeze exact context provenance and exact call-site-to-permitted-use mapping, then require the kind-specific validator to compare authority scope to that bound context before construction/provider use."
+  },
+  "architecture_warrant_required": false
+}
