@@ -1,0 +1,146 @@
+{
+  "admitted_structural_object": {
+    "f1_content_hash": null,
+    "f1_id": "urn:rawlsing:v554:f1:sha256:3530f08f43e704ad67e0fb74984b03b7ad0f068ea1de4bcf658f3b2d591bd56d",
+    "producer_allowed_uses": [
+      "CONTEXT"
+    ],
+    "producer_family": "V554",
+    "semantic_class": "F1",
+    "source_stage": "M1_RELATION_V554_TO_V557",
+    "typed_state": "ELIGIBLE",
+    "v557_decision_state": "ALLOW_CONTEXT_ONLY"
+  },
+  "current_consumer_contract_census": {
+    "OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1": {
+      "applicable": true,
+      "positive_completion": true,
+      "probe_outcome": "SUPPORTED_OBJECTIVE_RESULT",
+      "seam": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+      "state": "APPLICABLE_CURRENT"
+    },
+    "OC02_LEARNED_STRUCTURAL_ADMISSION_R1": {
+      "applicable": true,
+      "positive_completion": true,
+      "probe_outcome": "SUPPORTED_OBJECTIVE_RESULT",
+      "seam": "rawlsing_next.pre553_structural_admission",
+      "state": "APPLICABLE_CURRENT"
+    },
+    "OC03_SDTF_OBJECTIVE_CONSEQUENCE_R1": {
+      "applicable": false,
+      "error": "OC03_SDTF_OBJECTIVE_CONSEQUENCE_R1: NOT_YET_APPLICABLE: P1-P5 remain CANDIDATE_NOT_CURRENT pending W2-D04 and later admission",
+      "positive_completion": false,
+      "probe_outcome": "NOT_APPLICABLE",
+      "seam": null,
+      "state": "NOT_YET_APPLICABLE"
+    },
+    "OC04_OCCURRENCE_NONEVENT_WORLD_FACT_R1": {
+      "applicable": false,
+      "error": "OC04_OCCURRENCE_NONEVENT_WORLD_FACT_R1: NOT_YET_APPLICABLE: generic non-event adapter is W2-D05; real world rooting is W2-D01",
+      "positive_completion": false,
+      "probe_outcome": "NOT_APPLICABLE",
+      "seam": null,
+      "state": "NOT_YET_APPLICABLE"
+    },
+    "OC05_TERMINAL_OBJECTIVE_WORLD_RESOLUTION_R1": {
+      "applicable": false,
+      "error": "OC05_TERMINAL_OBJECTIVE_WORLD_RESOLUTION_R1: NOT_YET_APPLICABLE: terminal objective-world root/resolver is not current; no universal terminal may be invented",
+      "positive_completion": false,
+      "probe_outcome": "NOT_APPLICABLE",
+      "seam": null,
+      "state": "NOT_YET_APPLICABLE"
+    }
+  },
+  "demand_matrix": [
+    {
+      "competent_inputs_exist": true,
+      "court": "test_n6_04, test_n6_06, test_n6_09",
+      "current_machinery_exists": true,
+      "demand_source": "adopted current publication authority GT12_RELATION_V554_TO_V557_F1_CONTEXT_PUBLICATION_AUTHORITY naming governed_use GT12_GT2_Q86B_CONDITIONAL_SUPPORT_Q86A_F1_CONTEXT_PUBLICATION@1, plus the current V557 binding GT12_CAN003_V557_F1_CONTEXT_ONLY_CURRENT_BINDING",
+      "demanded": true,
+      "objective_function": "CONTEXT publication / repository / resolution",
+      "status": "PROVED_POSITIVE"
+    },
+    {
+      "authority": "adopted HQ227 GT2 V555 position terminality: NOT_POSITION_AT_EXACT_CLAIM_GRAIN",
+      "demand_source": "none current",
+      "demanded": false,
+      "note": "this court does not reopen V555",
+      "objective_function": "structural position (source/receiver)",
+      "status": "NOT_APPLICABLE_TO_GT2_SIG004"
+    },
+    {
+      "authority": "no lawful structural positions exist, so route closure has no endpoint basis",
+      "demand_source": "none current",
+      "demanded": false,
+      "objective_function": "mediation route / channel",
+      "status": "NOT_APPLICABLE_TO_GT2_SIG004"
+    },
+    {
+      "authority": "current rule forbidden list includes ACTIVE_CAUSAL; mechanism consumer OC03 is NOT_YET_APPLICABLE",
+      "court": "test_n6_10, test_n6_11",
+      "demand_source": "none current",
+      "demanded": false,
+      "objective_function": "causal mechanism",
+      "status": "NOT_AUTHORIZED"
+    },
+    {
+      "authority": "OC03 SDTF objective consequence consumer is NOT_YET_APPLICABLE (P1-P5 CANDIDATE_NOT_CURRENT)",
+      "demand_source": "none current",
+      "demanded": false,
+      "objective_function": "objective consequence (SDTF redrive)",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "authority": "OC04 generic non-event adapter is W2-D05; real world rooting is W2-D01",
+      "demand_source": "none current",
+      "demanded": false,
+      "objective_function": "occurrence / non-event world fact",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "authority": "OC05 terminal objective-world root/resolver is not current; 'no universal terminal may be invented'",
+      "court": "test_n6_14",
+      "demand_source": "none current",
+      "demanded": false,
+      "objective_function": "terminal objective-world root/resolver",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "authority": "this slice is nontemporal SIG-004; no temporal producer invoked",
+      "court": "test_n6_12",
+      "demand_source": "none at this grain",
+      "demanded": false,
+      "objective_function": "temporal production",
+      "status": "NOT_APPLICABLE_AT_THIS_GRAIN"
+    }
+  ],
+  "derivation": "built from the actual admitted structural object + ACTUAL current consumer contracts, probed at runtime (not from constants or prose)",
+  "lane": "N6 first demanded-objective slice for GT2 Q86B->Q86A SIG-004",
+  "machinery_presence_is_not_demand": {
+    "court": "test_n6_11",
+    "non_event_serving_adapter_present": true,
+    "sdtf_mechanism_binding_module_present": true,
+    "sdtf_redrive_module_present": true,
+    "yet_none_populated_because": "their consumer contracts are not current; AT25 forbids treating machinery presence as occupancy"
+  },
+  "populated_functions": [
+    "CONTEXT publication / repository / resolution"
+  ],
+  "positive_capability_vs_refusal": {
+    "demanded_function_produced_positively": true,
+    "hqd216_note": "lawful NOT_APPLICABLE for undemanded functions is correct, not a defect",
+    "typed_refusal_substituted_for_demanded_product": false,
+    "undemanded_functions_correctly_not_applicable": true
+  },
+  "schema": "PYAT_HQ227_01_OBJECTIVE_DEMAND_MATRIX@1",
+  "unwoken_functions": [
+    "structural position",
+    "mediation route/channel",
+    "causal mechanism",
+    "objective consequence",
+    "occurrence/non-event world fact",
+    "terminal objective-world resolver",
+    "temporal production"
+  ]
+}

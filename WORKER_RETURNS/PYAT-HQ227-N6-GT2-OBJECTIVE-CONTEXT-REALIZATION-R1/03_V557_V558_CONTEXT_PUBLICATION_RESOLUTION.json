@@ -1,0 +1,98 @@
+{
+  "absent_v555_positions_do_not_block": {
+    "context_publication_resolution_complete": true,
+    "court": "test_n6_08 PASSED",
+    "forbidden_producer_families_present": false
+  },
+  "contract_id_used": "M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0",
+  "legacy_or_synthetic_m1_fixture_used": false,
+  "no_adapter_required": true,
+  "no_b1_publication": {
+    "authority_level_forbid": "B1_PUBLICATION is in the adopted publication authority authority_exclusions",
+    "b1_published": false,
+    "court": "test_n6_05 PASSED",
+    "handoff_families": [
+      "F1"
+    ],
+    "published_families": [
+      "F1"
+    ]
+  },
+  "required_chain_steps_2_to_4": [
+    "admitted to the existing V557/V558 CONTEXT publication path under current authority",
+    "published into an immutable repository object without B1 publication",
+    "resolved by the actual context resolver/public path"
+  ],
+  "resolver_does_not_fabricate_context": {
+    "court": "test_n6_07 PASSED",
+    "explanation": "resolve_v558 resolves exact immutable candidates and issues a receipt; it deliberately does not fabricate a ResolvedStructuralContext. This is owner behaviour, not a missing N6 product.",
+    "resolved_structural_context": null
+  },
+  "schema": "PYAT_HQ227_03_V557_V558_CONTEXT_PUBLICATION_RESOLUTION@1",
+  "v557_publication": {
+    "governance_authority_ref": {
+      "content_hash": "b071d9b34825b2c73fefa47cdef0ba23003d79cf5a2fa78cab802e02ee0cd6f4",
+      "id": "GT12_CAN003_V557_F1_CONTEXT_ONLY_CURRENT_BINDING",
+      "version": "1.0.0"
+    },
+    "locator_ref": {
+      "content_hash": "1f9fa8be7001471541e5ded063ecf96a90fb0d22ae30c02b2fb3c9a40d2922b8",
+      "kind": "V558_LOCATOR",
+      "object_id": "V558LOC:1f9fa8be7001471541e5ded063ecf96a90fb0d22ae30c02b2fb3c9a40d2922b8"
+    },
+    "object_ref": {
+      "content_hash": "a008553dc94af138de44e73ade8ddbcc1e2bb3a5c40cec575aad694aae104cbb",
+      "kind": "F1",
+      "object_id": "urn:rawlsing:v554:f1:sha256:3530f08f43e704ad67e0fb74984b03b7ad0f068ea1de4bcf658f3b2d591bd56d"
+    },
+    "producer_allowed_uses": [
+      "CONTEXT"
+    ],
+    "producer_family": "V554",
+    "published_entries": 1,
+    "record_hash": "845522a7101f2632ac37d4fa1bbe15515ad29a0551a31570e4138796eaab48b6",
+    "semantic_class": "F1",
+    "source_stage": "M1_RELATION_V554_TO_V557",
+    "v557_allowed_uses": [
+      "CONTEXT"
+    ],
+    "v557_decision_state": "ALLOW_CONTEXT_ONLY"
+  },
+  "v558_repository": {
+    "checksum_validated_by_owner": true,
+    "entries": 1,
+    "immutable": true
+  },
+  "v558_resolution": {
+    "all_selections_SELECTED": true,
+    "court": "test_n6_06 PASSED",
+    "no_fuzzy_or_latest_repair": true,
+    "receipt_hash": "730dbe577966b34587c5cb9ef3931ae83219cb62b945fdea6675a0cd53520b34",
+    "receipt_id": "V558REC:730dbe577966b34587c5cb9ef3931ae83219cb62b945fdea6675a0cd53520b34",
+    "receipt_result_state": "RESOLUTION_COMPLETE",
+    "replay_input_digest": "f55c9bc8baa2f3d5b771cba0d2cce9bfe23fbe19b88146c43eeac2b463415b77",
+    "resolved_entries": 1,
+    "resolved_entry_refs": [
+      {
+        "content_hash": "a008553dc94af138de44e73ade8ddbcc1e2bb3a5c40cec575aad694aae104cbb",
+        "kind": "F1",
+        "object_id": "urn:rawlsing:v554:f1:sha256:3530f08f43e704ad67e0fb74984b03b7ad0f068ea1de4bcf658f3b2d591bd56d"
+      }
+    ],
+    "resolved_producer_family": "V554",
+    "resolved_uses": [
+      "CONTEXT"
+    ],
+    "resolver": "rawlsing_next.m4_v557_v558_publication_repository.resolve_v558 (real owner path)",
+    "selection_records": [
+      {
+        "closure_digest": "a5306250ac546625880a9cc77099723f8a3de811ff65fe8937a5bd6a9236f3fe",
+        "decision": "SELECTED",
+        "producer_object_id": "urn:rawlsing:v554:f1:sha256:3530f08f43e704ad67e0fb74984b03b7ad0f068ea1de4bcf658f3b2d591bd56d",
+        "reason": "exact identity/hash/closure and item-wise permission subsets verified",
+        "resolution_key": "205f5049be54eb226a35fad1561554c52f830d858bbf9a642167b3f96c281fda"
+      }
+    ],
+    "unresolved_keys": []
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "adopted_current_authority_binding": {
+    "caller_selectable": false,
+    "fuzzy_or_latest_selection_used": false,
+    "publication_authority": {
+      "allowed_object_families": [
+        "F1"
+      ],
+      "authority_hash": "1b2c1238139287e30acaa418e28967585a34a7fae9c937a9322b7c9e9a76322a",
+      "authority_id": "GT12_RELATION_V554_TO_V557_F1_CONTEXT_PUBLICATION_AUTHORITY",
+      "governed_use_id": "GT12_GT2_Q86B_CONDITIONAL_SUPPORT_Q86A_F1_CONTEXT_PUBLICATION@1"
+    },
+    "selector_bundle": {
+      "adoption_content_hash": "ff3c0db1ee346b176f240523f36048d88beb6216722988ea087040b4840cd492",
+      "bundle_content_hash": "f7d4d2313bcc70faf104cff205b0eb7aaa7d88556c895c8ea123a3725105cf14",
+      "bundle_id": "GT12_E2B_R3_CURRENT_V554_V557_PUBLICATION_GOVERNANCE_BINDING",
+      "bundle_version": "1.0.0",
+      "revalidated_by_owner_hash_law_on_load": true
+    },
+    "v557_current_binding": {
+      "authority_hash": "b071d9b34825b2c73fefa47cdef0ba23003d79cf5a2fa78cab802e02ee0cd6f4",
+      "authority_id": "GT12_CAN003_V557_F1_CONTEXT_ONLY_CURRENT_BINDING",
+      "version": "1.0.0"
+    }
+  },
+  "court": "test_n6_03, test_n6_16 PASSED",
+  "current_sig004_rule_binding": {
+    "rule_hash": "da431544e57ed4b418cd746be3f0a9aa486cd3c2fb2007a022005821b25e194b",
+    "rule_id": "GT12_V554_SIG004_ADMITTED_RELATION_CONTEXT_PUBLICATION_RULE",
+    "rule_is_current_adopted": true,
+    "rule_is_inside_f1_preimage": true,
+    "signature_id": "V554-SIG-004-NONTEMPORAL-ADMITTED-RELATION-EXACT",
+    "target_use": "STRUCTURAL_MEDIATION_INPUT"
+  },
+  "f1_recovered_identity": {
+    "authority_bundle_fingerprint": "abf3b25805a44904d647a3c92dc1759901b63ca3da554c1dd92812c3d7c46968",
+    "canonical_basis_semantic_id": "urn:rawlsing:v554:basis:sha256:06f95c1e58baaf3454c315340f7d13e16d44c28c5b88b48259fd411a745d78ef",
+    "f1_id": "urn:rawlsing:v554:f1:sha256:3530f08f43e704ad67e0fb74984b03b7ad0f068ea1de4bcf658f3b2d591bd56d",
+    "f1_id_matches_HQ224_banked_custody": true,
+    "lineage_closure_fingerprint": "732ddd91c168e8645d62fc7025de1a6ecf3d4cc9f3aac2433e4fbd2c83629172"
+  },
+  "limitations": [
+    "source-free retained R1C empirical product; no live survey-source occupancy",
+    "GT2 slice is nontemporal SIG-004",
+    "no structural positions, so no V555 route continuation",
+    "no world terminal consumer is current, so this stops at demanded CONTEXT"
+  ],
+  "relation_and_admission": {
+    "admission_decision": "ADMITTED",
+    "field_forge_relation_ref": {
+      "content_hash": "1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19",
+      "kind": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+      "object_id": "urn:rawlsing:field-forge:conditional-support:sha256:1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19"
+    },
+    "relation_admission_ref": {
+      "content_hash": "a445e43da99405e0f8181f7ab6c428d9b0dd14fefc7fc5091f21f2d21f00b08d",
+      "kind": "PREV3_FIELD_FORGE_RELATION_ADMISSION",
+      "object_id": "PREV3_FIELD_FORGE_RELATION_ADMISSION@1.0.0"
+    },
+    "relation_typed_state": "SUPPORTED"
+  },
+  "required_chain_step_1": "reconstructed/resolved from accepted retained determinants and current SIG-004 rule",
+  "retained_empirical_input": {
+    "conditioner_ref": {
+      "content_hash": "2fb3a62609dad4c1306d8cfa14f997eab4d6e65ada56083279386a202544a506",
+      "kind": "QUESTION_IMPLEMENTATION",
+      "object_id": "question_impl.phase0.2fb3a62609dad4c1306d"
+    },
+    "producer_fact_hash": "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46",
+    "producer_predicate_hash": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+    "producer_query_hash": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+    "producer_replay_hash": "c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f",
+    "raw_source_access": "FORBIDDEN_AND_NOT_USED",
+    "recovered_source_free": true,
+    "risk_set_ref": {
+      "content_hash": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+      "kind": "RISK_SET",
+      "object_id": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1"
+    },
+    "target_ref": {
+      "content_hash": "67f036c0efb7fb98ff4a93dc811bf59cfc095608eda374f6534b006a62241bd3",
+      "kind": "QUESTION_IMPLEMENTATION",
+      "object_id": "question_impl.phase0.67f036c0efb7fb98ff4a"
+    }
+  },
+  "schema": "PYAT_HQ227_02_CURRENT_GT2_F1_INPUT_AND_AUTHORITY_BINDING@1"
+}
