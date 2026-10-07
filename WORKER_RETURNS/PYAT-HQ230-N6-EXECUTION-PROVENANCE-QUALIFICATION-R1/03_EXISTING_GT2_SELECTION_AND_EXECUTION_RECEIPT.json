@@ -1,0 +1,47 @@
+{
+  "claim_verified": true,
+  "collected_count": 83,
+  "count_forced": false,
+  "count_note": "the reconstructed selection reproduces 83 exactly and was confirmed by execution, not adjusted to hit it. Several other candidate combinations (84, 90, 92) were enumerated and rejected before this one matched.",
+  "counts": {
+    "errors": 0,
+    "failed": 0,
+    "passed": 83,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0
+  },
+  "exact_command": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11 -m pytest rawlsing_next/tests/test_pre553_gt2_structural_positive_realization_court.py rawlsing_next/tests/test_gt12_e2b_actual_object_consumer_harness.py rawlsing_next/tests/test_gt12_e2b_publication_governance_binding.py -v",
+  "excludes_new_n6_court": {
+    "n6_node_ids_in_manifest": 0,
+    "proved": true
+  },
+  "exit_code": 0,
+  "expected_candidate_claim": "83 passed",
+  "files_considered_and_their_collected_counts": {
+    "rawlsing_next/tests/test_gt12_closure_b_c_to_d_bridge.py": 14,
+    "rawlsing_next/tests/test_gt12_d_to_m4_typed_bridge.py": 50,
+    "rawlsing_next/tests/test_gt12_e2b_actual_object_consumer_harness.py": 14,
+    "rawlsing_next/tests/test_gt12_e2b_publication_governance_binding.py": 29,
+    "rawlsing_next/tests/test_gt12_e2b_real_current_authority_blocker.py": 1,
+    "rawlsing_next/tests/test_gt12_e2b_real_current_load_checkpoint.py": 1,
+    "rawlsing_next/tests/test_pre553_gt2_structural_positive_realization_court.py": 40,
+    "rawlsing_next/tests/test_wave1_gt12_a2_real_gt1.py": 2,
+    "rawlsing_next/tests/test_wave1_gt12_i03_positive_facts.py": 8,
+    "rawlsing_next/tests/test_wave1_gt1_gt2_positive_prev3_integration.py": 9
+  },
+  "node_id_manifest": "manifest_B_existing_gt2_node_ids.txt",
+  "node_id_manifest_sha256": "5ffd6189b16a27fd9568f83c2fe484e60672cc46f688968e6678810386c7ffd1",
+  "problem_addressed": "HQ229 found the exact selection behind the candidate's '83 passed' claim was NOT committed, so it could not be reconstructed.",
+  "qualification_set": "B -- existing GT2 regression set",
+  "reconstruction_method": "enumerated every GT2/GT12-named test file in the tree, collected each independently to get its true post-parametrization node count, and identified the unique combination summing to the claimed 83 that also excludes the new N6 court.",
+  "schema": "PYAT_HQ230_03_EXISTING_GT2_SELECTION_AND_EXECUTION_RECEIPT@1",
+  "selected_files_with_node_counts": {
+    "rawlsing_next/tests/test_gt12_e2b_actual_object_consumer_harness.py": 14,
+    "rawlsing_next/tests/test_gt12_e2b_publication_governance_binding.py": 29,
+    "rawlsing_next/tests/test_pre553_gt2_structural_positive_realization_court.py": 40
+  },
+  "selection_sum": 83,
+  "stdout_transcript_sha256": "411168c27285060726859381a4b7fb74efb9992102fb5dbacef158288ca761ce",
+  "summary_line": "======================== 83 passed in 132.19s (0:02:12) ========================"
+}

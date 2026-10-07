@@ -1,0 +1,89 @@
+{
+  "blocking_disposition": "N6_GT2_OBJECTIVE_CONTEXT_REVIEW_BLOCKED_BY_MISSING_EXACT_EVIDENCE",
+  "blocking_review": "agent/reviewer-pyat-hq229-n6-gt2-objective-context-realization-r1 @ 01237ee7560e3ec6611e32f8e0ef4ffb7a656b8d",
+  "branch": "agent/rabochii-pyat-hq230-n6-execution-provenance-qualification-r1",
+  "commission": "PYAT-HQ230-N6-EXECUTION-PROVENANCE-QUALIFICATION-R1",
+  "commission_tip": "f7d162bee8d6fa8b06bb5bd393f42ebbb39fd639",
+  "disposition": "N6_EXECUTION_PROVENANCE_QUALIFIED__READY_FOR_FINAL_REVIEW_RESOLUTION",
+  "exact_startup_tip": "5ed0667ed7bc6180789114429cc4c1b59c0732d1",
+  "exclusion_audit": {
+    "all_environmental_or_absent_artifact": true,
+    "any_touches_flagged_gt2_m1_m4_n6_machinery": false,
+    "exclusions": 9,
+    "used_to_evade_interaction_failures": false
+  },
+  "governed_runtime": {
+    "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "matches_commission_mandated_path": true,
+    "substituted": false,
+    "used": true
+  },
+  "honest_limits": [
+    "Set C is labelled RECONSTRUCTED QUALIFICATION, not a recovered historical receipt: the candidate never committed its exact broad command, so this is a fresh equivalent run.",
+    "The 54 pre-existing failures/errors are unchanged by this lane and were neither fixed nor masked; they remain open and outside this commission's terrain.",
+    "Qualifying execution provenance does not upgrade the N6 maturity boundary: local CONTEXT realization is still not terminal world consumption, and OC05 remains noncurrent.",
+    "Execution evidence is machine-local under the governed interpreter on this Mac; it is not a CI/workflow attestation."
+  ],
+  "one_line": "Every HQ229 execution-provenance gap is closed by exact replay under the SHA-verified governed interpreter: Set A 17 passed (exit 0), Set B 83 passed (exit 0) with the previously-uncommitted selection now committed and proven to exclude the N6 court, and Set C identical 54-item normalized failure/error sets with SHA-256 278854ee.. on both sides and a passed-delta of exactly 17.",
+  "production_mutation": "NONE",
+  "qualification_results": {
+    "set_A_n6_court": {
+      "claimed": "17 passed",
+      "court_blob_matches_hq229": "7a23508b6283fb6fe720555f6f83dd74ecd1c32f",
+      "court_rewritten": false,
+      "exit_code": 0,
+      "observed": "17 passed",
+      "verified": true
+    },
+    "set_B_existing_gt2": {
+      "claimed": "83 passed",
+      "count_forced": false,
+      "excludes_n6_court_proved": true,
+      "exit_code": 0,
+      "node_counts": {
+        "test_gt12_e2b_actual_object_consumer_harness.py": 14,
+        "test_gt12_e2b_publication_governance_binding.py": 29,
+        "test_pre553_gt2_structural_positive_realization_court.py": 40
+      },
+      "observed": "83 passed",
+      "selection": [
+        "rawlsing_next/tests/test_pre553_gt2_structural_positive_realization_court.py",
+        "rawlsing_next/tests/test_gt12_e2b_actual_object_consumer_harness.py",
+        "rawlsing_next/tests/test_gt12_e2b_publication_governance_binding.py"
+      ],
+      "selection_recovered_and_committed": true,
+      "verified": true
+    },
+    "set_C_broad_comparison": {
+      "claimed": "baseline 54 / with-court 54 / diff identical",
+      "labelled": "RECONSTRUCTED_QUALIFICATION__NOT_HISTORICAL_RECEIPT",
+      "normalized_set_sha256_both": "278854ee94fadfd57284a572441522fb56105081f89af431b17ec2e556ace6a9",
+      "normalized_sets_identical": true,
+      "observed_baseline": 54,
+      "observed_with_court": 54,
+      "passed_delta": 17,
+      "passed_delta_equals_n6_court_size": true
+    }
+  },
+  "return_artifacts": [
+    "01_ENVIRONMENT_AND_INTERPRETER.json",
+    "02_N6_17_TEST_EXECUTION_RECEIPT.json",
+    "03_EXISTING_GT2_SELECTION_AND_EXECUTION_RECEIPT.json",
+    "04_BROAD_WITH_COURT_EXECUTION_RECEIPT.json",
+    "05_BROAD_WITHOUT_COURT_EXECUTION_RECEIPT.json",
+    "06_NORMALIZED_FAILURE_ERROR_SET_DIFF.json",
+    "07_EXCLUSION_AUDIT_AND_ZERO_MUTATION.json",
+    "manifest_A_n6_court_node_ids.txt",
+    "manifest_B_existing_gt2_node_ids.txt",
+    "normalized_failures_with_court.txt",
+    "normalized_failures_without_court.txt"
+  ],
+  "schema": "PYAT_HQ230_08_FINAL_DISPOSITION@1",
+  "self_adoption": "NOT_PERFORMED",
+  "semantic_mutation": "NONE",
+  "zero_mutation": {
+    "accepted_tests_edited": false,
+    "production_mutation": false,
+    "semantic_mutation": false
+  }
+}

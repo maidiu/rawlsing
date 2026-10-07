@@ -1,0 +1,32 @@
+{
+  "counts": {
+    "summary_line": "45 failed, 3058 passed, 55 warnings, 7 errors, 28 subtests passed in 1476.51s (0:24:36)"
+  },
+  "exact_command": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11 -m pytest rawlsing_next/tests/ -q --ignore=rawlsing_next/tests/test_fiabc_lm1_r1e_n1_physical_boundary.py --ignore=rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py --ignore=rawlsing_next/tests/test_fiabc_run3_postmeasurement_repair_stack.py --ignore=rawlsing_next/tests/test_objective_consumer_bounded_evidence_d07.py --ignore=rawlsing_next/tests/test_pre553_candidate_c_production_binding.py --ignore=rawlsing_next/tests/test_pre553_r4_compaction.py --ignore=rawlsing_next/tests/test_pre553_source_backed_c11_facade.py --ignore=rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py --ignore=rawlsing_next/tests/test_subv_e_obl059_positive_applicability_r13_independent_review_r1_corrected.py --ignore=rawlsing_next/tests/test_pre553_n6_gt2_objective_context_court.py",
+  "exclusion_count": 10,
+  "exclusion_manifest": [
+    "--ignore=rawlsing_next/tests/test_fiabc_lm1_r1e_n1_physical_boundary.py",
+    "--ignore=rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py",
+    "--ignore=rawlsing_next/tests/test_fiabc_run3_postmeasurement_repair_stack.py",
+    "--ignore=rawlsing_next/tests/test_objective_consumer_bounded_evidence_d07.py",
+    "--ignore=rawlsing_next/tests/test_pre553_candidate_c_production_binding.py",
+    "--ignore=rawlsing_next/tests/test_pre553_r4_compaction.py",
+    "--ignore=rawlsing_next/tests/test_pre553_source_backed_c11_facade.py",
+    "--ignore=rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py",
+    "--ignore=rawlsing_next/tests/test_subv_e_obl059_positive_applicability_r13_independent_review_r1_corrected.py",
+    "--ignore=rawlsing_next/tests/test_pre553_n6_gt2_objective_context_court.py"
+  ],
+  "exit_code": 1,
+  "labelled_as": "RECONSTRUCTED_QUALIFICATION__NOT_HISTORICAL_RECEIPT",
+  "n6_court_present_in_run": false,
+  "n6_court_removal_method": "exact pytest --ignore of the N6 court file only (reversible, nonsemantic); no file moved, no production file altered",
+  "normalized_failure_error_count": 54,
+  "normalized_failure_error_sha256": "278854ee94fadfd57284a572441522fb56105081f89af431b17ec2e556ace6a9",
+  "normalized_set_artifact": "normalized_failures_without_court.txt",
+  "pytest_pycache_cleared_before_run": true,
+  "qualification_set": "C -- broad regression (without-court)",
+  "schema": "PYAT_HQ230_05_BROAD_WITHOUT_COURT_EXECUTION_RECEIPT@1",
+  "stdout_transcript_sha256": "bb745522e35133bc3eeb28406bbf4ecd0234e82ec49b99f7aa62696d3f8dfd04",
+  "summary_line": "45 failed, 3058 passed, 55 warnings, 7 errors, 28 subtests passed in 1476.51s (0:24:36)",
+  "why_reconstructed": "the candidate's local transcript history was not committed as a replayable artifact; this run is a fresh, exactly specified equivalent, not a recovered historical receipt."
+}

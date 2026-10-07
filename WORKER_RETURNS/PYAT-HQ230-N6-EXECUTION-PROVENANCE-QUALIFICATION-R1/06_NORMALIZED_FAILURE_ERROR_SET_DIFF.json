@@ -1,0 +1,37 @@
+{
+  "claim_verified": true,
+  "diff_is_empty": true,
+  "divergence_smoothed": false,
+  "expected_candidate_claim": {
+    "baseline": 54,
+    "normalized_diff": "identical",
+    "with_court": 54
+  },
+  "expected_vs_observed": {
+    "baseline_expected": 54,
+    "baseline_observed": 54,
+    "identical_expected": true,
+    "identical_observed": true,
+    "with_court_expected": 54,
+    "with_court_observed": 54
+  },
+  "independent_confirmation": "the ONLY difference between the two broad runs is exactly 17 additional passing tests, which is precisely the N6 court node count recovered in Qualification Set A. The 54-item pre-existing failure/error set is byte-identical.",
+  "line_diff_byte_count": 0,
+  "passed_count_with": 3075,
+  "passed_count_without": 3058,
+  "passed_delta": 17,
+  "passed_delta_equals_n6_court_size": true,
+  "schema": "PYAT_HQ230_06_NORMALIZED_FAILURE_ERROR_SET_DIFF@1",
+  "sets_identical": true,
+  "sha256_identical": true,
+  "with_court": {
+    "artifact": "normalized_failures_with_court.txt",
+    "count": 54,
+    "sha256": "278854ee94fadfd57284a572441522fb56105081f89af431b17ec2e556ace6a9"
+  },
+  "without_court": {
+    "artifact": "normalized_failures_without_court.txt",
+    "count": 54,
+    "sha256": "278854ee94fadfd57284a572441522fb56105081f89af431b17ec2e556ace6a9"
+  }
+}
