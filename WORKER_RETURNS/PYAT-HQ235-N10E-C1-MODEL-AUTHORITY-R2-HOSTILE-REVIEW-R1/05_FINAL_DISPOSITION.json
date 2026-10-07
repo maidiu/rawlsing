@@ -1,0 +1,28 @@
+{
+  "schema": "PYAT_HQ235_R2_FINAL_DISPOSITION@1",
+  "disposition": "C1_OWNER_NATIVE_MODEL_AUTHORITY_R2_PARTIAL__NAMED_DEFECT",
+  "branch": "agent/reviewer-pyat-hq235-n10e-c1-model-authority-r2-r1",
+  "commission_tip": "8d4a138f0972d2407ce70483a6b36d55427b06bd",
+  "candidate_commit": "d042fd69f8536bb5e2a58ce59806419d3c3bd3a4",
+  "review_mode": "INDEPENDENT_HOSTILE__NO_IMPLEMENTATION__NO_ADOPTION",
+  "production_mutation": false,
+  "authority_adopted": false,
+  "identity_recomputation": "PASS_10_OF_10",
+  "negative_ceiling": "PASS",
+  "architecture_warrant_required": false,
+  "named_defects": [
+    {
+      "id": "HQ235-DEFECT-STABLE-TYPED-RESULT-MAPPING-001",
+      "summary": "The R2 stable basis does not freeze the complete Z08/A05 public typed result-state mapping, so model behavior can still drift without changing stable identity.",
+      "blocks_adoption": true
+    },
+    {
+      "id": "HQ235-DEFECT-SCOPE-CONTEXT-BINDING-001",
+      "summary": "The kind-specific validator checks caller-supplied fixture/use labels for membership but does not freeze trusted context derivation or exact use-token binding by load-bearing call site.",
+      "blocks_adoption": true
+    }
+  ],
+  "required_next_action": "Issue a bounded authority-candidate correction; do not adopt e8215547/a7bcf8a4 or begin Space Bunny implementation.",
+  "final_remote_sha": "REPORT_AFTER_COMMIT",
+  "terminal": "C1_OWNER_NATIVE_MODEL_AUTHORITY_R2_PARTIAL__NAMED_DEFECT"
+}
