@@ -502,3 +502,20 @@ A quarantined idea may return only through fresh independent derivation / explic
 
 Preferred current transcript source:
 `handoffs/R13_CURRENT_CHAT_TRANSCRIPT/04_USER_SUPPLIED_FULL_CHAT_TRANSCRIPT_2026-10-07.txt`.
+
+
+## R14 post-course-correct forensic reconciliation
+
+For the 2026-10-07 conversation after the explicit rejection of the original game-loop exploration, read:
+
+- `96_POST_COURSE_CORRECT_TRANSCRIPT_FORENSIC_RECONCILIATION_R1.md`;
+- D007 `04_INDEPENDENT_ACTUALITY_RESISTANCE_OPEN_CAUSATION_AND_DEVELOPMENT_CANDIDATE_R1.md`;
+- D007 `05_ADAPTIVE_PHENOMENAL_LENS_PLAYABLE_VEIL_KERNEL_CANDIDATE_R1.md`.
+
+Authority rule:
+- artifacts 88–90 remain quarantined;
+- the R14 D007 files are research/kernel-gameplay candidates, not adopted product law;
+- D002/D008/D009 remain the current provisional homes for the post-Astra causal-hinge, adaptive-lens/user-model, and human-faculty/capability work;
+- `Q-KERNEL-001` remains open.
+
+The R14 audit found two stronger-form residuals and recovered them without merging the divergent R13 register history or mutating Pyat/PRE-MAIN semantics.
