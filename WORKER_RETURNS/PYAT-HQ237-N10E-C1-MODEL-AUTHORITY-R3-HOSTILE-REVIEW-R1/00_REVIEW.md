@@ -1,0 +1,65 @@
+# PYAT HQ237 — N10E/C1 owner-native model-authority R3 independent hostile review — R1
+
+**DISPOSITION: `C1_OWNER_NATIVE_MODEL_AUTHORITY_R3_PARTIAL__NAMED_DEFECT`**
+
+**Candidate:** `agent/rabochii-pyat-hq236-n10e-c1-model-authority-correction-r3 @ d8b970651070895d1c745fdae021023e535a07d8`  
+**Review commission:** `3b3ffafc245dceaf2edee84c4ccc59b508da69a5`  
+**Reviewer scope:** documentary GitHub/code archaeology; NO authority adoption, production mutation, N10E execution, real-source material, actor/V3, refreeze or self-adoption.
+
+## Dispositive finding
+
+The R3 correction fixes the **typed-state identity omission** from HQ235: the stable-rule preimage includes all six exact Z08/A05 public result states with exact-disposition, exact-reason, proxy-selection/exhaustion and returned-versus-thrown semantics. Independent direct reconstruction from admitted blob `62e5eced47b64512f47b004e3e13a6ef3fe21de7`, original Z08 contract blob `e553bdf6476d459070963d30e55213bfbb53199e`, and A05 admission blob `e6cf6f477306c9066cb54c554291c475307a0dfc` confirms the seven principal branches. This part **PASSES**.
+
+The 11 immutable canonical preimages all independently recompute to the claimed SHA-256 identities (11/11); all eight path-based immutable provenance blob SHA identifiers examined match the actual candidate Git tree (8/8). The original Z08 contract blob was fetched directly, and the A05 admission was separately read. There is no observed hash or dependency-graph drift. **Identity PASS does not constitute authority-origin PASS.**
+
+**Adoption blocker `HQ237-DEFECT-FIXTURE-CONTEXT-ISSUER-AUTHORITY-001`:** R3's `SOURCE_FREE_C1_OWNER_FIXTURE_REGISTRY` is a newly proposed trusted **issuer/registrar and runtime resolver**, not an accepted existing owner. The packet describes the owner's powers but does not establish which already-adopted actor, authority/ref, trusted assembly transition or issuer capability is competent to create a registered `fixture_use_context_ref`, how that issuer's authority is independently authenticated, or which immutable *build-instance* receipt proves a runtime invocation was assembled under that authority rather than recreated by a caller. Frozen R8 refs and a source-manifest hash prove exact **content identity**, not provenance of registration or a trusted real_source_effect assertion. The current C1 builder is a test fixture (`test_pre553_analytical_composition.py:105-145,299-325`); N10E's source-free builder is another imported test fixture (`n10e_empirical_slice_fixture.py:229-286,420-482`), not an independently constituted registrar. Their ability to reproduce immutable fixture material does not itself authorize a new credential issuer. Accepted C1-01 adoption `5fafb499d53dddadaf8a7b4fd46506e91a09d270` expressly accepted only a source-free producer/consumer vertical slice, 16-key witness and identity spine, **not** model/fixture-context authority. This is exactly the self-attestation channel the commission ordered us to attack. The contract's sentence “only admitted fixture owner assembly registers” is a claimed prerequisite, not evidence that such a competence edge already exists.
+
+**Adoption blocker `HQ237-DEFECT-C1-N10E-CONTEXT-ENTRYPOINT-CUSTODY-002`:** The proposed “one required additive `fixture_use_context_ref: ExactRef`” is a useful **N10E request locator** but not a sufficient frozen owner-interface contract by itself. Current `EmpiricalPossibilityProviderRequest` takes eight supplied fields (`pre553_empirical_possibility_provider.py:140-215`) and `provide_empirical_possibility_slice` / `replay_empirical_possibility_slice` do not accept that ref (:531-659). More importantly the C1 compatibility constructor `_model(source)` builds a `PositionedSubjectPossibilityModelRule` from fixture AuthorityRefs and a source ref alone (`test_pre553_analytical_composition.py:298-325`); no accepted registrar handle or verified context can be resolved **before** that construction. The R3 sequence says to validate before C1 construction as well as N10E provider/replay, but does not freeze the callable owner construction/resolution boundary that connects the original fixture/build instance, trusted issuer, exact site token and received context to these independently reachable entrypoints. A later implementer must create those semantics/interface relationships, not merely add one field. The N10E route name can determine which **site token is expected**, but the expected token is not evidence of source-free provenance or an authority to issue the token.
+
+These are bounded trust-origin/owner-interface defects, not a finding that Z08 semantics are wrong or that an inherently unavoidable architecture conflict has been proved. No new “trusted fixture registry” may silently acquire semantic authority by being listed as a hash-stable proposed dependency.
+
+## A. Six-state Z08/A05 semantic audit — PASS
+
+The original Z08 contract distinguishes `EXACT_SUPPORTED`, `EXACT_UNRESOLVED_PROXY_AVAILABLE`, `UNRESOLVED`, `VALID_EMPTY`, `NONCOMPARABLE`, `FAIL_CLOSED`. The exact candidate branch table at `PYAT_CONTROL_ROOM/C1_AT07_OWNER_NATIVE_MODEL_AUTHORITY_HQ236_R3/01_STABLE_RULE_BASIS.json` now freezes: query source outside rule scope ⇒ returned FAIL_CLOSED/UNRESOLVED/MODEL_SOURCE_UNIVERSE_OUT_OF_SCOPE; supported exact ⇒ immediate EXACT_SUPPORTED/SUPPORTED; empty exact ⇒ terminal VALID_EMPTY; noncomparable exact ⇒ terminal NONCOMPARABLE; unresolved exact with unauthorized cross-source/release step ⇒ returned FAIL_CLOSED, exact disposition/reason unchanged, attempted FAIL_CLOSED_UNAUTHORIZED_PROXY_SOURCE; first satisfying authorized strictly decreasing same-source/release step ⇒ EXACT_UNRESOLVED_PROXY_AVAILABLE with UNRESOLVED exact lane; exhausted/no supported proxy ⇒ UNRESOLVED with exact lane unchanged. These match actual evaluator `rawlsing_next/source_backed_positioned_subject_possibility.py:408-457`.
+
+`ABSENT` yields `EXACT_POSITIONED_STRATUM_ABSENT`; UNDERPOWERED/UNAVAILABLE/UNRESOLVED map to `EXACT_<state>`; the prior exact reason is not rewritten by successful or failed proxy. Proxies only consume `SUPPORTED` upstream evidence; non-SUPPORTED evidence and missing slices are recorded and the finite ladder continues. The first satisfying step ends the walk; no smoothing, proxy-as-exact, cross-source/release inference or extra threshold. `_find` duplicate exact grain and constructors/ladder invalidity throw, instead of fabricating returned `FAIL_CLOSED` state. “proxy_exhausted” is the candidate's descriptive derivation of end-of-ladder, not a separate code field; its semantics are aligned.
+
+Exact original/previous strict-subset law remains, and unused evidence remains outside the recorded replay determinant. The R3 mapping is included **inside** hashed `stable_rule_basis`, so behaviorally material mapping changes now break identity.
+
+## B. Context scope — SPECIFIED BUT TRUST ORIGIN NOT CONSTITUTED
+
+**Frozen extents correctly copied:** R8 fixture `AT07_BIDIRECTIONAL_100`; exact universe hash `ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2`; exact `REL-c1-at07` release hash `dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3` (NOT obsolete R3 `8afa807c...`); manifest hash `01ee5fa6db95efad3ce0acecd656f51beb6c2f2e21bc30e49bd358633f9ad6a1`. The changed-source `AT07_BIDIRECTIONAL_110_CHANGED_SOURCE_LAW` fixture does not share the admitted release/source.
+
+**Site distinctions are frozen as intentions:** `C1_STABLE_RULE_COMPATIBILITY_CONSTRUCTION` must use `SOURCE_FREE_C1_01_COMPATIBILITY`; `N10E_PROVIDER_AND_LIFECYCLE` must use `SOURCE_FREE_N10E_LIFECYCLE`. The authority allows both but R3 forbids exchanging them. This repairs the R2 *plain membership* omission **on paper**; enforced site authenticity still depends on the missing issuer/owner path above.
+
+**Effective-context distinction correctly frozen:** Snapshot's `AT07_FIXTURE_ONLY` is a static authority restriction. The AT07 conditioner and 16-key witness carry actual canonical `null`; that `null` is a specific checked value, not wildcard. Missing context, null↔non-null change, wrong source/release, false-to-true real-source effect, unregistered/forged ref or wrong site must fail before owner rule/provider. These are correct documentary rejection requirements. But their **trusted derivation and issuer authentication** cannot be satisfied by a self-created matching mapping or an unauthenticated Boolean. The proposed registry and required witness validation must obtain independent competence first.
+
+**No current enforcement claim:** In `pre553_empirical_possibility_provider.py`, the eight-field request and provider/replay signatures lack `fixture_use_context_ref`; present C1 fixture model construction lacks an owner context check; no `SOURCE_FREE_C1_OWNER_FIXTURE_REGISTRY` is present as an accepted source-free owner. R3 itself acknowledges it is not implemented. The future kind-specific validator, registry semantics, identity binding and preconstruction gate are proposed, not current runtime law.
+
+## C. All 11 identity recomputations — PASS
+
+Fresh independent JS SHA-256 implementation (self-test `sha256("abc")=ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad`) computed SHA256 of recursive-sorted, array-order-preserving, compact UTF-8 canonical JSON over each full `09_CANONICAL_RECOMPUTATION_MANIFEST.json.preimages[key]`. All 11 match reported values; exact list in `03_ALL_11_IDENTITY_RECOMPUTATION.json`.
+
+Identity dependency order is acyclic at candidate grain: trusted context/stable basis → scope/interpretation/replay → owner authority → stable rule → crosswalk/evidence → evidence receipt → maintenance candidate. The context hash is reachable transitively from owner authority via interpretation/replay and directly from rule dependencies and evidence. Historical HQ230 rejected and HQ232 R2 unadopted hashes are historical tombstone annotations only; no parents, supersessions, or positive authority dependencies arise from them. Historical fixture-only `C1-AT07-MODEL@1.0.0` hash `2876572d...` stays nongenealogical.
+
+**Hash identities are candidate-material identities; hashing “trusted registry” words does not establish their operational authority.** No rehash is warranted unless HQ changes the missing trust-origin/owner-interface semantics and their frozen preimages.
+
+## D. Scope and negative ceilings — PASS WITH BLOCKER
+
+No actor/person/V3, real source, source semantic/ontology, comparability, source composition/pooling, structural admission, threshold invention, prediction, normative recommendation, or walkback policy ownership was detected in the R3 semantic proposal. `SOURCE_FREE` remains an exact ceiling and the legacy fixture-only predecessor is not promoted. Real-source use is forbidden; successful owner binding and positive Z08 exact/proxy paths must remain productive.
+
+One precision note for HQ: the current `rawlsing_next/pre553_empirical_authority.py:25-44` `AUTHORITY_KINDS` set at the reviewed code blob contains **18** literal members; the proposed new model-rule kind is not present. Some candidate/supporting prose calls it an existing “19-kind” boundary; that should not be mistaken for an already adopted nineteenth kind. `require_positive_authority` currently checks only its existing scope dimensions and public-family admission (:162-208). Future model-rule kind/family admission remains separately authorized implementation after correct authority adoption, never automatic. This census discrepancy does not by itself invalidate the eleven candidate hashes.
+
+## E. Decision and bounded required correction
+
+**Semantic identity:** PASS.  
+**Trusted fixture owner/context origin:** FAIL — named issuer/registrar authority and exact build-instance provenance not demonstrated.  
+**Exact use-token string assignment:** PASS as frozen site law, NOT independently enforceable before the trusted owner boundary is constituted.  
+**N10E one-field request locator:** bounded necessary addition, NOT sufficient by itself for both C1 construction and N10E lifecycle trust.  
+**Implementation without semantic-authority invention:** FAIL.
+
+HQ must either (i) point to an existing **competently accepted fixture-owner issuer and registration/resolution law** with immutable build-instance receipt and trusted route binding and freeze exact bindings, or (ii) explicitly commission/adopt that narrowly scoped context-owner authority before revising R3. Then require both C1 compatibility and N10E provider/replay/lifecycle interfaces to fail closed unless resolved owner-issued context and exact use-site token are verified **before** construction or consumption. No broad authority redesign follows merely from this limited finding.
+
+Do not adopt the R3 candidate, do not dispatch Space Bunny implementation, and do not re-freeze lifecycle yet. A corrected candidate must recompute all affected hashes, receive a fresh independent hostile review, then be **explicitly HQ adopted**.
+
+**TERMINAL:** `C1_OWNER_NATIVE_MODEL_AUTHORITY_R3_PARTIAL__NAMED_DEFECT`
