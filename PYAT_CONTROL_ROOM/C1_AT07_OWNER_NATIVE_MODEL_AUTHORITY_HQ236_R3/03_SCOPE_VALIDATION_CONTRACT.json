@@ -1,0 +1,96 @@
+{
+  "schema": "HQ236_R3_SCOPE_VALIDATOR_PREIMAGE@1",
+  "material": {
+    "schema": "POSITIONED_SUBJECT_MODEL_RULE_SCOPE_VALIDATION_CONTRACT@2",
+    "selected_design": "A__KIND_SPECIFIC_EXACT_SCOPE_VALIDATOR",
+    "future_validator_name": "validate_positioned_subject_model_rule_authority_use",
+    "authority_kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_MODEL_RULE",
+    "operation": "AUTHORIZE_POSITIONED_SUBJECT_EXACT_CONDITIONAL_MODEL_RULE",
+    "object_family": "PositionedSubjectModelRule@1.0.0",
+    "required_inputs": {
+      "snapshot": "exact positively resolved AuthoritySnapshot",
+      "source_universe_ref": "derived from actual source-free C11 owner repository and consumer",
+      "release_ref": "derived from actual owner repository and frozen R8 spine; compared to producer/consumer/witness",
+      "fixture_use_context_ref": "required ExactRef looked up in trusted owner fixture registry; not self-validating",
+      "authenticated_use_site": "derived at C1 compatibility versus N10E provider/lifecycle entrypoints, not a caller literal",
+      "actual_effective_context": "derived from conditioner and independently verified 16-key binding witness",
+      "real_source_effect": "independently verified false; no real source"
+    },
+    "mandatory_snapshot_checks": {
+      "generic_positive_check": [
+        "decision_state == ALLOW",
+        "exact authority_kind",
+        "exact operation named",
+        "exact object family named",
+        "exact source_universe_ref contained"
+      ],
+      "scope_envelope_must_be_mapping": true,
+      "release_ref_must_be_exactly_contained_in_release_refs": true,
+      "fixture_id_must_be_exactly_contained_in_fixture_ids": true,
+      "permitted_use_must_be_exactly_contained_in_permitted_uses": true,
+      "scope_real_source_effect_must_equal_false": true,
+      "invocation_real_source_effect_must_equal_false": true,
+      "effective_time_or_interval_must_equal": "AT07_FIXTURE_ONLY",
+      "owner_fixture_provenance_verified": true,
+      "authenticated_site_selects_exact_use_token": true,
+      "actual_invocation_effective_context_verified_against_owner_fixture": true,
+      "actual_repository_release_verified_against_R8_spine": true,
+      "static_AT07_interval_not_confused_with_invocation_effective_time": true,
+      "caller_string_membership_never_sufficient": true
+    },
+    "exact_match_semantics": {
+      "refs": "canonical PRE553 exact material equality over full kind/object_id/content_hash; no object-id-only, label, alias, hierarchy, latest, nearest, or wildcard match",
+      "strings": "exact canonical string equality after existing nonempty-string validation; no prefix, case-fold, label, or alias matching",
+      "booleans": "identity equality; only false is admissible for real_source_effect",
+      "collections": "required item must be an exact member of the frozen authority collection; omission is not unrestricted",
+      "unrestricted_tokens": "forbidden for release_refs, fixture_ids, permitted_uses, and real_source_effect in this authority family"
+    },
+    "failure_contract": {
+      "classification": "AUTHORITY_SCOPE_MISMATCH__PRECONSTRUCTION_OR_PREPROVIDER_EXCEPTION",
+      "exception_family": "Pre553AuthorityError",
+      "reason_tokens": [
+        "MODEL_RULE_SCOPE_ENVELOPE_MALFORMED",
+        "MODEL_RULE_SOURCE_UNIVERSE_SCOPE_MISMATCH",
+        "MODEL_RULE_RELEASE_SCOPE_MISMATCH",
+        "MODEL_RULE_FIXTURE_SCOPE_MISMATCH",
+        "MODEL_RULE_PERMITTED_USE_SCOPE_MISMATCH",
+        "MODEL_RULE_REAL_SOURCE_EFFECT_FORBIDDEN",
+        "MODEL_RULE_EFFECTIVE_INTERVAL_MISMATCH",
+        "MODEL_RULE_CONTEXT_REF_MISSING",
+        "MODEL_RULE_OWNER_FIXTURE_REGISTRY_UNAVAILABLE",
+        "MODEL_RULE_CONTEXT_PROVENANCE_MISMATCH",
+        "MODEL_RULE_USE_SITE_TOKEN_MISMATCH",
+        "MODEL_RULE_ACTUAL_EFFECTIVE_CONTEXT_MISMATCH"
+      ],
+      "no_positive_rule_object_or_provider_use_after_failure": true,
+      "no_new_authority_snapshot_decision_state": true
+    },
+    "load_bearing_owner_path": {
+      "when": "before stable rule construction, compatibility product, N10E request acceptance, provider execution and replay",
+      "required_sequence": [
+        "Resolve exact AuthoritySnapshot and authenticated C1 or N10E call site",
+        "look up required fixture_use_context_ref ONLY in trusted C1 fixture owner registry; authenticate issuer/build instance/manifest/R8 spine",
+        "derive actual repository source/release, query/conditioner and 16-key custody witness effective material; cross-check all against resolved owner context",
+        "require_positive_authority exact kind/operation/family/source universe",
+        "run kind-specific exact release/fixture/derived use-token/static interval/actual effective context/real-source=false validator",
+        "only after all passes construct and verify stable rule; assemble separate walkback authority then invoke provider",
+        "bind verified context ref into invocation/receipt/replay identities; fail closed if any field/resolver absent"
+      ],
+      "bypass_forbidden": true,
+      "no_caller_literal_bypass": true
+    },
+    "why_kind_specific_not_generic_extension": "Only this new authority family carries fixture_ids/permitted_uses/real_source_effect as constitutive restrictive scope. Extending the generic API would broaden shared I01 behavior without evidence that other authority families require those dimensions.",
+    "real_source_effect_law": "false is a ceiling, not a requested capability; true can never be authorized by this R2 candidate",
+    "trusted_use_context_contract_ref": {
+      "kind": "PositionedSubjectModelRuleTrustedUseContextContract@1",
+      "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-trusted-use-context:sha256:cd97205edfe60bdba42b3cb3e867f127372be9b24b1d019abc98603c41a92afa",
+      "content_hash": "cd97205edfe60bdba42b3cb3e867f127372be9b24b1d019abc98603c41a92afa"
+    }
+  },
+  "hash": "e7291224c09db63e8f9e74630449a44576a1b274a9b5b50e9fb570d367b7c069",
+  "ref": {
+    "kind": "PositionedSubjectModelRuleScopeValidationContract@1",
+    "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-scope-validation:sha256:e7291224c09db63e8f9e74630449a44576a1b274a9b5b50e9fb570d367b7c069",
+    "content_hash": "e7291224c09db63e8f9e74630449a44576a1b274a9b5b50e9fb570d367b7c069"
+  }
+}

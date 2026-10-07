@@ -1,0 +1,175 @@
+{
+  "schema": "HQ236_R3_OWNER_NATIVE_AUTHORITY@1",
+  "status": "CANDIDATE_NOT_ADOPTED",
+  "authority_material": {
+    "authority_id": "C1-AT07-POSITIONED-SUBJECT-MODEL-RULE",
+    "authority_version": "1.0.0",
+    "authority_kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_MODEL_RULE",
+    "decision_state": "ALLOW",
+    "governed_operations": [
+      "AUTHORIZE_POSITIONED_SUBJECT_EXACT_CONDITIONAL_MODEL_RULE"
+    ],
+    "governed_object_families": [
+      "PositionedSubjectModelRule@1.0.0"
+    ],
+    "scope_envelope": {
+      "fixture_ids": [
+        "AT07_BIDIRECTIONAL_100"
+      ],
+      "source_universe_refs": [
+        {
+          "kind": "EmpiricalUniverse@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+          "content_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2"
+        }
+      ],
+      "release_refs": [
+        {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-c1-at07",
+          "content_hash": "dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3"
+        }
+      ],
+      "permitted_uses": [
+        "SOURCE_FREE_C1_01_COMPATIBILITY",
+        "SOURCE_FREE_N10E_LIFECYCLE"
+      ],
+      "real_source_effect": false
+    },
+    "effective_time_or_interval": "AT07_FIXTURE_ONLY",
+    "parent_authority_refs": [],
+    "negative_limit_refs": [],
+    "supersession_refs": [],
+    "interpretation_semantics_fingerprint": "ef7323657ac17dd957554d3df33c9628742032d857df8aa04d87f10cab6a11cf",
+    "replay_protocol_ref": {
+      "kind": "PositionedSubjectModelRuleReplayProtocol@2",
+      "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-replay:sha256:27d0b56fc97d2d14e77c2549891f97eac300df5fb6110c9fa3fc55e37cd264f4",
+      "content_hash": "27d0b56fc97d2d14e77c2549891f97eac300df5fb6110c9fa3fc55e37cd264f4"
+    }
+  },
+  "proposed_authority_ref": {
+    "authority_id": "C1-AT07-POSITIONED-SUBJECT-MODEL-RULE",
+    "authority_version": "1.0.0",
+    "authority_content_hash": "6332be49ae8261ee57d9f045b43011c20569752c880bcf7bba85e1e9770f8a64"
+  },
+  "interpretation_semantics": {
+    "material": {
+      "schema": "POSITIONED_SUBJECT_MODEL_AUTHORITY_INTERPRETATION@3",
+      "jurisdiction": "AUTHORIZE_ONE_BOUNDED_POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_MODEL_RULE_FAMILY",
+      "governed_rule_family": "PositionedSubjectModelRule@1.0.0",
+      "stable_rule_basis_hash": "53f883588273804c20821ab54f0b34de4dd2f00e7862ad872701efe6f39c2f38",
+      "scope_validation_contract_ref": {
+        "kind": "PositionedSubjectModelRuleScopeValidationContract@1",
+        "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-scope-validation:sha256:e7291224c09db63e8f9e74630449a44576a1b274a9b5b50e9fb570d367b7c069",
+        "content_hash": "e7291224c09db63e8f9e74630449a44576a1b274a9b5b50e9fb570d367b7c069"
+      },
+      "fixture_predecessor_ref": {
+        "authority_id": "C1-AT07-MODEL",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "2876572dcb4eba80b52361853047d409323fff0c63228d7e6a361c972e1b38bb"
+      },
+      "fixture_predecessor_relation": "HISTORICAL_FIXTURE_ONLY_EVIDENCE__NOT_AUTHORITY_PARENT_OR_SUPERSESSION",
+      "source_free_only": true,
+      "real_source_effect": false,
+      "walkback_ownership": "SEPARATE_EXACT_AUTHORITY_REQUIRED_PER_INVOCATION",
+      "source_universe_composition_authority": "NOT_GRANTED",
+      "comparability_authority": "NOT_GRANTED",
+      "actor_or_v3_authority": "NOT_GRANTED",
+      "structural_admission_authority": "NOT_GRANTED",
+      "uncertainty_threshold_authority": "NOT_GRANTED_BEYOND_GOVERNED_UPSTREAM_STATES",
+      "scope_enforcement": "EXACT_OWNER_DERIVED_FIXTURE_USE_AND_ACTUAL_EFFECTIVE_CONTEXT_REQUIRED_BEFORE_C1_N10E",
+      "negative_ceiling": [
+        "NO_SMOOTHING",
+        "NO_INTERPOLATION",
+        "NO_EXTRAPOLATION",
+        "NO_NEAREST_NEIGHBOR",
+        "NO_CROSS_SOURCE_PROXY_V1",
+        "NO_CROSS_RELEASE_PROXY_V1",
+        "NO_ACTOR_INFERENCE",
+        "NO_NORMATIVE_RECOMMENDATION",
+        "NO_REAL_SOURCE_EFFECT",
+        "NO_WALKBACK_POLICY_OWNERSHIP",
+        "NO_SOURCE_SEMANTICS_AUTHORITY",
+        "NO_SOURCE_COMPOSITION_AUTHORITY",
+        "NO_STRUCTURAL_ADMISSION_AUTHORITY"
+      ],
+      "trusted_use_context_contract_ref": {
+        "kind": "PositionedSubjectModelRuleTrustedUseContextContract@1",
+        "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-trusted-use-context:sha256:cd97205edfe60bdba42b3cb3e867f127372be9b24b1d019abc98603c41a92afa",
+        "content_hash": "cd97205edfe60bdba42b3cb3e867f127372be9b24b1d019abc98603c41a92afa"
+      },
+      "typed_result_mapping": "SIX_STATE_Z08_A05_MAPPING_IDENTITY_BEARING_IN_STABLE_BASIS"
+    },
+    "fingerprint": "ef7323657ac17dd957554d3df33c9628742032d857df8aa04d87f10cab6a11cf"
+  },
+  "replay_protocol": {
+    "material": {
+      "schema": "POSITIONED_SUBJECT_MODEL_RULE_REPLAY_PROTOCOL@3",
+      "protocol_id": "C1_AT07_OWNER_NATIVE_MODEL_RULE_REPLAY_R3",
+      "canonicalization": "PRE553_CANONICAL_JSON_THEN_SHA256",
+      "model_rule_family": "PositionedSubjectModelRule@1.0.0",
+      "stable_rule_basis_hash": "53f883588273804c20821ab54f0b34de4dd2f00e7862ad872701efe6f39c2f38",
+      "scope_validation_contract_ref": {
+        "kind": "PositionedSubjectModelRuleScopeValidationContract@1",
+        "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-scope-validation:sha256:e7291224c09db63e8f9e74630449a44576a1b274a9b5b50e9fb570d367b7c069",
+        "content_hash": "e7291224c09db63e8f9e74630449a44576a1b274a9b5b50e9fb570d367b7c069"
+      },
+      "replay_steps": [
+        "resolve exact owner AuthoritySnapshot and authenticated C1 compatibility vs N10E call site",
+        "resolve trusted fixture_use_context_ref from source-free AT07 owner registry, verify fixture source manifest/R8 spine/actual repository release/witness and invocation-effective material",
+        "require_positive_authority exact kind/operation/family/source universe",
+        "kind-specific derived fixture/release/use/real-source=false/static interval and actual effective-context checks before rule construction/provider",
+        "construct and verify stable rule with complete six-state typed result mapping",
+        "assemble per-invocation separate walkback authority and positive proxy refs; finite strictly decreasing ladder",
+        "execute admitted Z08/A05 evaluator; distinguish returned FAIL_CLOSED from thrown preconstruction exception",
+        "bind result state, exact disposition, selected/exhausted/failed proxy path, specificity loss, used evidence and trusted context to result/receipt/product identity",
+        "replay exact determinant set and byte-equivalent semantic material; exclude unused evidence",
+        "for accepted sealed successor resolve actual successor snapshot/context/rule; reconstruct products or owner-lawful noncurrent outcome"
+      ],
+      "forbidden": [
+        "latest_or_default_authority_resolution",
+        "reuse_fixture_only_authority_hash_as_owner_native",
+        "smoothing_or_interpolation_or_extrapolation",
+        "implicit_walkback_authority",
+        "proxy_after_exact_SUPPORTED_VALID_EMPTY_or_NONCOMPARABLE",
+        "unlisted_proxy_authority",
+        "non_SUPPORTED_proxy_satisfaction",
+        "sibling_or_rewidened_conditioner_walkback",
+        "release_fixture_or_permitted_use_scope_bypass",
+        "real_source_effect_true",
+        "cache_presence_as_currentness",
+        "caller_literal_fixture_or_permitted_use_as_proof",
+        "forged_owner_fixture_context",
+        "missing_trusted_registry_fallback",
+        "collapse_six_public_result_states",
+        "relabel_preconstruction_exception_as_returned_FAIL_CLOSED",
+        "confuse_static_AT07_interval_with_actual_null_invocation"
+      ],
+      "trusted_use_context_contract_ref": {
+        "kind": "PositionedSubjectModelRuleTrustedUseContextContract@1",
+        "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-trusted-use-context:sha256:cd97205edfe60bdba42b3cb3e867f127372be9b24b1d019abc98603c41a92afa",
+        "content_hash": "cd97205edfe60bdba42b3cb3e867f127372be9b24b1d019abc98603c41a92afa"
+      }
+    },
+    "ref": {
+      "kind": "PositionedSubjectModelRuleReplayProtocol@2",
+      "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-replay:sha256:27d0b56fc97d2d14e77c2549891f97eac300df5fb6110c9fa3fc55e37cd264f4",
+      "content_hash": "27d0b56fc97d2d14e77c2549891f97eac300df5fb6110c9fa3fc55e37cd264f4"
+    }
+  },
+  "trusted_use_context_ref": {
+    "kind": "PositionedSubjectModelRuleTrustedUseContextContract@1",
+    "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-trusted-use-context:sha256:cd97205edfe60bdba42b3cb3e867f127372be9b24b1d019abc98603c41a92afa",
+    "content_hash": "cd97205edfe60bdba42b3cb3e867f127372be9b24b1d019abc98603c41a92afa"
+  },
+  "scope_validation_contract_ref": {
+    "kind": "PositionedSubjectModelRuleScopeValidationContract@1",
+    "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-scope-validation:sha256:e7291224c09db63e8f9e74630449a44576a1b274a9b5b50e9fb570d367b7c069",
+    "content_hash": "e7291224c09db63e8f9e74630449a44576a1b274a9b5b50e9fb570d367b7c069"
+  },
+  "genealogy": {
+    "parent_authority_refs": [],
+    "supersession_refs": [],
+    "fixture_predecessor_is_evidence_only": true
+  }
+}

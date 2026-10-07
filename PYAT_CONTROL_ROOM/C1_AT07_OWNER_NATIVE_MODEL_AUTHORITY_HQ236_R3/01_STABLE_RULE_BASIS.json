@@ -1,0 +1,267 @@
+{
+  "schema": "HQ236_R3_STABLE_RULE_BASIS_PREIMAGE@1",
+  "material": {
+    "schema": "POSITIONED_SUBJECT_MODEL_RULE_BASIS@3",
+    "semantic_contract": "SOURCE_BACKED_POSITIONED_SUBJECT_POSSIBILITY@1.0.0",
+    "query_contract": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+    "field_contract": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_FIELD@1",
+    "model_rule_id": "POSITIONED_SUBJECT_EXACT_CONDITIONAL_WITH_GOVERNED_WALKBACK@1.0.0",
+    "algorithm_id": "EXACT_CONDITIONAL_LOOKUP__NO_SMOOTHING_INTERPOLATION_OR_EXTRAPOLATION",
+    "exact_query_grain": {
+      "purpose_must_equal": "EMPIRICAL_POSSIBILITY_ONLY",
+      "exact_subject_ref_required": true,
+      "exact_target_ref_required": true,
+      "exact_source_universe_ref_required": true,
+      "exact_release_ref_required": true,
+      "at_least_one_conditioner_required": true,
+      "conditioner_binding_ids_unique": true,
+      "each_conditioner_binds_exact_subject_fact_ref": true,
+      "each_conditioner_binds_exact_empirical_coordinate_ref": true,
+      "each_conditioner_binds_exact_positive_comparability_authority_ref": true,
+      "each_conditioner_binds_exact_source_universe_ref": true,
+      "each_conditioner_binds_exact_release_ref": true,
+      "each_conditioner_binds_exact_effective_time_material": true,
+      "conditioner_source_universe_and_release_must_equal_query": true,
+      "requested_projection_is_identity_bearing_exact_material": true
+    },
+    "exact_lane": {
+      "exact_requested_grain_never_broadens": true,
+      "evidence_match_keys": [
+        "source_universe_ref",
+        "release_ref",
+        "target_ref",
+        "retained_conditioner_ids"
+      ],
+      "supported_exact_state": "EXACT_SUPPORTED",
+      "supported_exact_returns_immediately": true,
+      "supported_exact_proxy_walkback_forbidden": true,
+      "unresolved_exact_inputs": [
+        "ABSENT",
+        "UNDERPOWERED",
+        "UNAVAILABLE",
+        "UNRESOLVED"
+      ],
+      "unresolved_exact_disposition": "UNRESOLVED",
+      "underpowered_maps_to_unresolved": true,
+      "terminal_exact_states": [
+        "NONCOMPARABLE",
+        "VALID_EMPTY"
+      ],
+      "terminal_exact_states_do_not_enter_proxy_walkback": true,
+      "later_proxy_never_rewrites_exact_disposition": true,
+      "malformed_preconstruction_scope_does_not_emit_public_result": true
+    },
+    "proxy_lane": {
+      "entered_only_when_exact_lane_is_unresolved": true,
+      "requires_separate_positive_versioned_walkback_authority": true,
+      "finite_authority_supplied_ladder_only": true,
+      "search_heuristic_or_dynamic_surrogate_selection_forbidden": true,
+      "each_step_requires_stable_step_id": true,
+      "each_step_requires_exact_retained_conditioner_set": true,
+      "each_step_requires_exact_positive_proxy_authority_ref": true,
+      "each_step_requires_exact_source_universe_ref": true,
+      "each_step_requires_exact_release_ref": true,
+      "each_step_requires_nonempty_rationale": true,
+      "every_step_proxy_authority_must_be_present_in_positive_proxy_authority_refs": true,
+      "strict_subset_of_original_requested_conditioners_each_step": true,
+      "strict_subset_of_immediately_preceding_retained_conditioners_each_step": true,
+      "sibling_substitution_forbidden": true,
+      "rewidening_forbidden": true,
+      "surrogate_conditioner_set_forbidden": true,
+      "same_source_universe_required_v1": true,
+      "same_release_required_v1": true,
+      "cross_source_or_release_step_fails_closed_without_proxy": true,
+      "only_SUPPORTED_proxy_evidence_can_satisfy_proxy": true,
+      "non_SUPPORTED_proxy_evidence_is_recorded_and_non_satisfying": true,
+      "missing_proxy_evidence_is_recorded_and_walkback_continues": true,
+      "first_supported_authorized_step_in_supplied_ladder_is_selected": true,
+      "proxy_projection_kind": "EXPLICIT_LOWER_SPECIFICITY_PROXY",
+      "proxy_can_satisfy_exact_request": false,
+      "proxy_is_exact_fact": false,
+      "proxy_is_actor_belief": false,
+      "exact_lane_remains_unresolved_when_proxy_selected": true
+    },
+    "specificity_loss_receipt": {
+      "every_attempt_is_recorded": true,
+      "requested_conditioner_ids_recorded": true,
+      "retained_conditioner_ids_recorded": true,
+      "dropped_conditioner_ids_equal_requested_minus_retained": true,
+      "loss_count_equals_number_dropped": true,
+      "loss_fraction_is_exact_dropped_over_requested": true,
+      "loss_fraction_is_not_confidence_or_actor_probability": true,
+      "proxy_authority_ref_recorded": true,
+      "evidence_ref_recorded_when_present": true,
+      "attempt_state_and_detail_recorded": true
+    },
+    "upstream_evidence_law": {
+      "accepted_typed_states": [
+        "SUPPORTED",
+        "UNDERPOWERED",
+        "VALID_EMPTY",
+        "UNRESOLVED",
+        "NONCOMPARABLE",
+        "UNAVAILABLE"
+      ],
+      "SUPPORTED_requires_governed_geometry": true,
+      "consume_governed_support_uncertainty_states_without_new_threshold": true,
+      "new_numeric_support_threshold_authorized": false,
+      "positioned_subject_layer_does_not_reown_empirical_fact": true
+    },
+    "replay_law": {
+      "result_identity_binds_exact_query_ref": true,
+      "result_identity_binds_model_rule_hash": true,
+      "result_identity_binds_model_and_walkback_authority_refs": true,
+      "result_identity_binds_exact_and_proxy_dispositions": true,
+      "result_identity_binds_consumed_exact_and_proxy_evidence_refs": true,
+      "result_identity_binds_every_attempted_walkback_step_and_specificity_loss": true,
+      "result_identity_binds_source_release_target_identity": true,
+      "result_identity_binds_epistemic_ceiling": true,
+      "unused_uninspected_evidence_is_not_a_replay_determinant": true,
+      "verification_reexecutes_rule_and_requires_byte_equivalent_semantic_material_and_hash": true,
+      "result_identity_binds_public_typed_state": true,
+      "result_identity_binds_verified_fixture_use_context_ref_per_invocation": true
+    },
+    "forbidden_methods": [
+      "AUTOMATIC_DEMOGRAPHIC_REGROUPING",
+      "CROSS_SOURCE_BORROWING",
+      "EMBEDDING_SIMILARITY_SURROGATE",
+      "EXTRAPOLATION",
+      "HIDDEN_THRESHOLD_INVENTION",
+      "INTERPOLATION",
+      "LLM_SELECTED_SURROGATE",
+      "NEAREST_NEIGHBOR",
+      "NORMATIVE_RECOMMENDATION",
+      "SMOOTHING",
+      "TOP_K_OR_RELEVANCE_SELECTED_FALLBACK"
+    ],
+    "epistemic_and_jurisdiction_ceiling": [
+      "PROXY != EXACT FACT != ACTOR BELIEF",
+      "EMPIRICAL_POSSIBILITY != INDIVIDUAL_PREDICTION",
+      "EMPIRICAL_POSSIBILITY != NORMATIVE_RECOMMENDATION",
+      "GENERATED_SUBJECT_FACT_IS_QUERY_CRITERION_NOT_UPSTREAM_OWNED_FACT",
+      "NO_ACTOR_BELIEF_AUTHORITY",
+      "NO_ACTOR_RESPONSE_AUTHORITY",
+      "NO_ACTOR_DISPOSITION_AUTHORITY",
+      "NO_ACTOR_PREFERENCE_AUTHORITY",
+      "NO_ACTOR_CHOICE_AUTHORITY",
+      "NO_ACTOR_BIOGRAPHY_OR_HISTORY_AUTHORITY",
+      "NO_STRUCTURAL_POSITION_AUTHORITY",
+      "NO_CAUSAL_PATHWAY_AUTHORITY",
+      "NO_NORMATIVE_RECOMMENDATION_AUTHORITY"
+    ],
+    "per_invocation_determinants_not_global_rule_semantics": [
+      "conditioner_bindings",
+      "consumer_query_ref",
+      "evidence_refs",
+      "positive_proxy_authority_refs",
+      "source_universe_refs",
+      "walkback_authority_ref",
+      "walkback_steps"
+    ],
+    "public_typed_result_mapping": {
+      "schema": "Z08_A05_COMPLETE_TYPED_STATE_MAPPING@1",
+      "admitted_code_blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "exact_unresolved_evidence_states": [
+        "ABSENT",
+        "UNDERPOWERED",
+        "UNAVAILABLE",
+        "UNRESOLVED"
+      ],
+      "exact_reason_law": "ABSENT => EXACT_POSITIONED_STRATUM_ABSENT; otherwise EXACT_<UPSTREAM_STATE>; never revised by proxy",
+      "precedence": "scope fail -> exact supported/valid-empty/noncomparable terminal -> unresolved exact -> strict authorized proxy ladder -> selected/fail-closed/exhausted",
+      "branches": [
+        {
+          "condition": "query source universe outside model_rule.source_universe_refs",
+          "result_state": "FAIL_CLOSED",
+          "exact_disposition": "UNRESOLVED",
+          "exact_reason": "MODEL_SOURCE_UNIVERSE_OUT_OF_SCOPE",
+          "proxy_eligible": false,
+          "proxy_selected": false,
+          "proxy_exhausted": false,
+          "proxy": null,
+          "termination": "IMMEDIATE_TYPED_RESULT_BEFORE_EXACT"
+        },
+        {
+          "condition": "exact matching source/release/target/retained-conditioner slice SUPPORTED",
+          "result_state": "EXACT_SUPPORTED",
+          "exact_disposition": "SUPPORTED",
+          "exact_reason": "EXACT_POSITIONED_STRATUM_SUPPORTED",
+          "proxy_eligible": false,
+          "proxy_selected": false,
+          "proxy_exhausted": false,
+          "proxy": null,
+          "termination": "IMMEDIATE_EXACT"
+        },
+        {
+          "condition": "exact matching slice VALID_EMPTY",
+          "result_state": "VALID_EMPTY",
+          "exact_disposition": "VALID_EMPTY",
+          "exact_reason": "EXACT_POSITIONED_STRATUM_VALID_EMPTY",
+          "proxy_eligible": false,
+          "proxy_selected": false,
+          "proxy_exhausted": false,
+          "proxy": null,
+          "termination": "TERMINAL_NO_PROXY"
+        },
+        {
+          "condition": "exact matching slice NONCOMPARABLE",
+          "result_state": "NONCOMPARABLE",
+          "exact_disposition": "NONCOMPARABLE",
+          "exact_reason": "EXACT_POSITIONED_STRATUM_NONCOMPARABLE",
+          "proxy_eligible": false,
+          "proxy_selected": false,
+          "proxy_exhausted": false,
+          "proxy": null,
+          "termination": "TERMINAL_NO_PROXY"
+        },
+        {
+          "condition": "exact absent/UNDERPOWERED/UNAVAILABLE/UNRESOLVED; strict walkback step mismatches query source or release",
+          "result_state": "FAIL_CLOSED",
+          "exact_disposition": "UNRESOLVED",
+          "exact_reason": "UNCHANGED_EXACT_REASON",
+          "proxy_eligible": true,
+          "proxy_selected": false,
+          "proxy_exhausted": false,
+          "proxy": null,
+          "attempt_state": "FAIL_CLOSED_UNAUTHORIZED_PROXY_SOURCE",
+          "termination": "IMMEDIATE_ABORT_NO_NEXT_STEP"
+        },
+        {
+          "condition": "exact unresolved; first authorized same-source/release strictly decreasing step with SUPPORTED proxy evidence",
+          "result_state": "EXACT_UNRESOLVED_PROXY_AVAILABLE",
+          "exact_disposition": "UNRESOLVED",
+          "exact_reason": "UNCHANGED_EXACT_REASON",
+          "proxy_eligible": true,
+          "proxy_selected": true,
+          "proxy_exhausted": false,
+          "proxy_kind": "EXPLICIT_LOWER_SPECIFICITY_PROXY",
+          "attempt_state": "AUTHORIZED_PROXY_SELECTED",
+          "termination": "FIRST_SUPPORTED_STEP"
+        },
+        {
+          "condition": "exact unresolved; no walkback steps or finite ladder exhausted without SUPPORTED proxy evidence",
+          "result_state": "UNRESOLVED",
+          "exact_disposition": "UNRESOLVED",
+          "exact_reason": "UNCHANGED_EXACT_REASON",
+          "proxy_eligible": true,
+          "proxy_selected": false,
+          "proxy_exhausted": true,
+          "proxy": null,
+          "attempt_states": [
+            "NO_EVIDENCE_AT_AUTHORIZED_PROXY_GRAIN",
+            "PROXY_EVIDENCE_<UPSTREAM_TYPED_STATE>"
+          ],
+          "termination": "NO_SELECTED_PROXY"
+        }
+      ],
+      "exceptions_not_emitted_states": {
+        "condition": "constructor/validator failure, malformed ref, duplicate exact grain, nonmonotone/sibling ladder or unlisted proxy authority",
+        "behavior": "THROW PositionedSubjectPossibilityError OR OWNED Pre553AuthorityError/ProviderRequestShapeError; NO public result object emitted",
+        "must_not_alias_to": "FAIL_CLOSED returned state"
+      },
+      "proxy_ceiling": "PROXY != EXACT FACT != ACTOR BELIEF; exact disposition UNRESOLVED survives proxy; only SUPPORTED upstream proxy evidence may satisfy; attempted steps and loss are replay determinant; unused evidence is excluded",
+      "identity_change_law": "Any change to mapping/result_state/exact_disposition/exact_reason/proxy selected vs exhausted/fail-closed versus thrown exception changes stable basis hash and all dependent identities."
+    }
+  },
+  "hash": "53f883588273804c20821ab54f0b34de4dd2f00e7862ad872701efe6f39c2f38"
+}
