@@ -1,0 +1,85 @@
+{
+  "schema": "PYAT_HQ237_TYPED_STATE_MAPPING_Z08_A05_AUDIT@1",
+  "disposition": "PASS__SIX_STATE_MAPPING_EXACT_AND_IDENTITY_BEARING",
+  "admitted_contract_blob": "e553bdf6476d459070963d30e55213bfbb53199e",
+  "A05_admission_blob": "e6cf6f477306c9066cb54c554291c475307a0dfc",
+  "code_blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+  "code": "rawlsing_next/source_backed_positioned_subject_possibility.py:408-457",
+  "mapping": [
+    {
+      "condition": "query source not in rule's exact source refs",
+      "result_state": "FAIL_CLOSED",
+      "exact_disposition": "UNRESOLVED",
+      "exact_reason": "MODEL_SOURCE_UNIVERSE_OUT_OF_SCOPE",
+      "proxy": "NONE",
+      "returned_not_exception": true
+    },
+    {
+      "condition": "exact SUPPORTED",
+      "result_state": "EXACT_SUPPORTED",
+      "exact_disposition": "SUPPORTED",
+      "exact_reason": "EXACT_POSITIONED_STRATUM_SUPPORTED",
+      "proxy": "FORBIDDEN",
+      "terminal": true
+    },
+    {
+      "condition": "exact VALID_EMPTY",
+      "result_state": "VALID_EMPTY",
+      "exact_disposition": "VALID_EMPTY",
+      "exact_reason": "EXACT_POSITIONED_STRATUM_VALID_EMPTY",
+      "proxy": "FORBIDDEN",
+      "terminal": true
+    },
+    {
+      "condition": "exact NONCOMPARABLE",
+      "result_state": "NONCOMPARABLE",
+      "exact_disposition": "NONCOMPARABLE",
+      "exact_reason": "EXACT_POSITIONED_STRATUM_NONCOMPARABLE",
+      "proxy": "FORBIDDEN",
+      "terminal": true
+    },
+    {
+      "condition": "exact unresolved, authorized step but cross-source/release",
+      "result_state": "FAIL_CLOSED",
+      "exact_disposition": "UNRESOLVED",
+      "exact_reason": "unchanged: absent=>EXACT_POSITIONED_STRATUM_ABSENT; otherwise EXACT_<upstream state>",
+      "proxy": "NONE",
+      "attempt_state": "FAIL_CLOSED_UNAUTHORIZED_PROXY_SOURCE",
+      "returned_not_exception": true
+    },
+    {
+      "condition": "exact unresolved, authorized strict-decreasing step with SUPPORTED proxy slice",
+      "result_state": "EXACT_UNRESOLVED_PROXY_AVAILABLE",
+      "exact_disposition": "UNRESOLVED",
+      "exact_reason": "UNCHANGED",
+      "proxy": "SELECTED_EXPLICIT_LOWER_SPECIFICITY_PROXY",
+      "attempt_state": "AUTHORIZED_PROXY_SELECTED",
+      "terminal": true
+    },
+    {
+      "condition": "exact unresolved, no steps or finite ladder no SUPPORTED proxy",
+      "result_state": "UNRESOLVED",
+      "exact_disposition": "UNRESOLVED",
+      "exact_reason": "UNCHANGED",
+      "proxy": "NONE_EXHAUSTED",
+      "attempt_states": [
+        "NO_EVIDENCE_AT_AUTHORIZED_PROXY_GRAIN",
+        "PROXY_EVIDENCE_<UPSTREAM_STATE>"
+      ]
+    }
+  ],
+  "exceptions_not_result_states": [
+    "constructor invalid/ref malformed",
+    "duplicate evidence at exact grain",
+    "non-strict/sibling/widened ladder",
+    "unlisted proxy authority"
+  ],
+  "replay": [
+    "used exact/proxy evidence bound",
+    "every attempted step/loss recorded",
+    "unused evidence excluded",
+    "proxy never makes exact supported"
+  ],
+  "negative_ceiling": "no inferred thresholds/smoothing/actor prediction",
+  "old_HQ235_mapping_defect": "CORRECTED_IN_HASHED_STABLE_BASIS"
+}
