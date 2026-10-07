@@ -242,6 +242,14 @@ import rawlsing_next.pre553_source_relations as _adopted_source_relations
 #: keeps being read LIVE off the frozen surface, which the backfill guard's liveness
 #: test depends on.
 SourceRelationResolver = _adopted_source_relations.SourceRelationResolver
+# HQ227: capture the adopted P07 owner entrypoints once. F7 does not redispatch
+# through caller-owned resolver attributes or later class monkeypatches.
+_authenticated_source_relation_decide = (
+    _adopted_source_relations.authenticated_source_relation_decision
+)
+_validate_source_relation_decision_replay = (
+    _adopted_source_relations.validate_relation_decision_replay_identity
+)
 
 def _exact_number(value: Any, name: str) -> int | Decimal | Fraction:
     if isinstance(value, bool):
@@ -425,22 +433,34 @@ def _temporal_evidence_identity_scope(snapshot: Any) -> Mapping[str, Any]:
 def _relation_decision_defect(
     decision: Any,
     *,
+    resolver: Any,
     relation_kind: str,
     relation_ref: ExactRef | None,
     source_universe_refs: Sequence[ExactRef],
     target_use: str,
     operation_scope: Any,
+    effective_scope: Any,
+    directionality_or_symmetric: Any,
+    expected_authority_operation: str,
 ) -> str | None:
-    """HQ222 F7-RR-04B: does the returned owner decision prove what F7 asked for?
+    """Does the authenticated P07 decision prove the exact F7 request?
 
-    ``require`` already refuses a non-authorized decision, but it does not promise
-    that a non-raising return describes the exact request F7 made. This re-checks
-    the returned proof against the request so a permissive owner cannot smuggle an
-    unrelated positive relation past F7. Returns a reason string, or None when the
-    decision is an exact proof of the request.
+    HQ227 extends HQ222's request cross-check through the complete adopted owner
+    provenance: exact decision type, owner-custody identity, replay identity, exact
+    authority snapshot semantic identity, relation identity, pair/scope/use and
+    operation.  F7 still does not reimplement P07 adjudication; it verifies the
+    proof returned by the adopted owner entrypoint.
     """
     if decision is None:
         return "no owner decision was returned"
+    if type(resolver) is not SourceRelationResolver:
+        return "source-relation resolver is not the adopted concrete owner"
+    if type(decision) is not _adopted_source_relations.RelationDecision:
+        return "returned owner decision is not exact RelationDecision"
+    try:
+        _validate_source_relation_decision_replay(decision)
+    except Exception:
+        return "returned owner decision replay/custody identity is invalid"
     if not getattr(decision, "authorized", False):
         return "returned owner decision is not an authorized decision"
     if getattr(decision, "relation_kind", None) != relation_kind:
@@ -453,6 +473,12 @@ def _relation_decision_defect(
         return "returned owner decision authorized a different relation ref"
     if getattr(decision, "authority_ref", None) is None:
         return "returned owner decision names no relation-authorizing authority"
+    snapshot_hash = getattr(decision, "authority_snapshot_content_hash", None)
+    if not isinstance(snapshot_hash, str) or len(snapshot_hash) != 64:
+        return "returned owner decision lacks exact nested authority snapshot semantics"
+    custody_hash = getattr(decision, "owner_custody_hash", None)
+    if not isinstance(custody_hash, str) or len(custody_hash) != 64:
+        return "returned owner decision lacks exact resolver custody provenance"
     returned_sources = tuple(getattr(decision, "source_universe_refs", ()) or ())
     if len(returned_sources) != len(source_universe_refs) or {
             ref.key for ref in returned_sources} != {ref.key for ref in source_universe_refs}:
@@ -462,6 +488,14 @@ def _relation_decision_defect(
     if canonicalize(getattr(decision, "operation_scope", None)) != canonicalize(
             operation_scope):
         return "returned owner decision was adjudicated for a different operation scope"
+    if canonicalize(getattr(decision, "effective_scope", None)) != canonicalize(
+            effective_scope):
+        return "returned owner decision carries a different effective scope"
+    if canonicalize(getattr(decision, "directionality_or_symmetric", None)) != canonicalize(
+            directionality_or_symmetric):
+        return "returned owner decision carries different relation directionality"
+    if getattr(decision, "authority_operation", None) != expected_authority_operation:
+        return "returned owner decision carries a different authority operation"
     return None
 
 
@@ -1060,16 +1094,10 @@ def compare_temporal_anchors(
                 # source pair, operation scope, effective scope, target use, and the
                 # authority that authorizes the relation. F7 therefore consumes the real
                 # owner decision and creates no equivalence authority of its own.
-                # HQ225 F7-RR-04C: owner authenticity is a concrete-type +
-                # non-virtual adjudication boundary.  A subclass is not the adopted
-                # owner: it can override require()/decide() and fabricate a request-shaped
-                # AUTHORIZED RelationDecision.  Exact type therefore matters here.
-                #
-                # The call is deliberately made through the adopted class implementation,
-                # not through resolver.require/resolver.decide attribute lookup.  That
-                # prevents both subclass overrides and caller-side instance shadowing from
-                # replacing the owner's adjudication machinery while preserving the exact
-                # RelationDecision returned by the real owner implementation.
+                # HQ225 closed subclass/outer-method forgery. HQ227 closes the deeper
+                # exact-instance path: F7 calls the captured authenticated P07 entrypoint,
+                # whose construction-time custody is external to caller-owned resolver
+                # fields and whose nested authority snapshot semantics are pinned.
                 if type(resolver) is not SourceRelationResolver:
                     detected.append("SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE")
                 else:
@@ -1079,7 +1107,7 @@ def compare_temporal_anchors(
                     # adopted concrete owner adjudication path.
                     # ------------------------------------------------------
                     try:
-                        relation_decision = SourceRelationResolver.decide(
+                        relation_decision = _authenticated_source_relation_decide(
                             resolver,
                             relation_kind=SOURCE_EQUIVALENCE_REQUIRED_RELATION_KIND,
                             source_universe_refs=(universes[0], universes[1]),
@@ -1097,12 +1125,17 @@ def compare_temporal_anchors(
                     else:
                         defect = _relation_decision_defect(
                             relation_decision,
+                            resolver=resolver,
                             relation_kind=SOURCE_EQUIVALENCE_REQUIRED_RELATION_KIND,
                             relation_ref=equivalence_ref,
                             source_universe_refs=(universes[0], universes[1]),
                             target_use=(governed_use_id.object_id
                                         if governed_use_id is not None else ""),
                             operation_scope=SOURCE_EQUIVALENCE_REQUIRED_SCOPE,
+                            effective_scope=SOURCE_EQUIVALENCE_REQUIRED_SCOPE,
+                            directionality_or_symmetric="SYMMETRIC",
+                            expected_authority_operation=(
+                                SOURCE_EQUIVALENCE_RELATION_OPERATION),
                         )
                         if defect is not None:
                             detected.append("SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE")
@@ -1141,8 +1174,16 @@ def compare_temporal_anchors(
                     # are not each other are no proof of anything.
                     # ------------------------------------------------------
                     authorized_by = getattr(relation_decision, "authority_ref", None)
+                    authorized_snapshot_hash = getattr(
+                        relation_decision, "authority_snapshot_content_hash", None)
                     if authorized_by is not None and (
                             eq_snapshot.authority_ref.key != authorized_by.key):
+                        detected.append("SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE")
+                    elif authorized_by is not None and (
+                            authorized_snapshot_hash != eq_snapshot.content_hash):
+                        # HQ227 F7-RR-04E: matching AuthorityRef shape is not enough.
+                        # The nested P07 owner and F7's outer authority closure must
+                        # name the exact same immutable AuthoritySnapshot semantics.
                         detected.append("SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE")
 
     # Identity and declared comparability surfaces.
