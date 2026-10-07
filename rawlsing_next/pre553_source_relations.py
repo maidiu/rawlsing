@@ -16,6 +16,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from types import MappingProxyType
 from typing import Any, Iterable, Mapping, Sequence
+from weakref import WeakKeyDictionary
 
 from rawlsing_next.pre553_c11_repository import C11Repository
 from rawlsing_next.pre553_empirical_authority import (
@@ -41,6 +42,12 @@ from rawlsing_next.pre553_empirical_objects import (
     exact_ref,
     semantic_hash,
 )
+
+# Bind the already-adopted I01 implementations once.  Resolver custody may not be
+# redirected later by caller-side method/class shadowing on a supplied registry.
+_ADOPTED_AUTHORITY_REGISTRY_RESOLVE_EXACT = AuthorityRegistry.resolve_exact
+_ADOPTED_REQUIRE_POSITIVE_AUTHORITY = require_positive_authority
+_ADOPTED_VALIDATE_AUTHORITY_SNAPSHOT = validate_authority_snapshot
 
 I07_CONTRACT_ID = "PRE553_I07_SOURCE_PLURALITY_COMPOSITION@1.0.0"
 DEFAULT_RELATION_STATE = "DISTINCT_BY_DEFAULT"
@@ -183,6 +190,8 @@ class RelationDecision:
     authority_operation: str | None
     reason: str
     replay_identity: str
+    owner_custody_hash: str | None = None
+    authority_snapshot_content_hash: str | None = None
 
     @property
     def authorized(self) -> bool:
@@ -429,6 +438,117 @@ def _relation_key(**kwargs: Any) -> str:
     return semantic_hash(_relation_key_material(**kwargs))
 
 
+
+def _relation_object_key_from_relation(relation: SourceUniverseRelation) -> str:
+    sources = _canonical_refs(relation.source_universe_refs, "relation.source_universe_refs")
+    return _relation_key(
+        relation_kind=relation.relation_kind,
+        source_universe_refs=sources,
+        operation_scope=relation.operation_scope,
+        target_use=_text(relation.target_use, "relation.target_use"),
+        effective_scope=relation.effective_scope,
+        directionality_or_symmetric=relation.directionality_or_symmetric,
+    )
+
+
+def _validate_relation_replay_identity(relation: SourceUniverseRelation) -> None:
+    authority = _authority_from_relation(relation)
+    operation = _text(relation.authority_operation, "relation.authority_operation")
+    material = _operation_material(relation)
+    expected = _relation_replay_identity(
+        relation_kind=relation.relation_kind,
+        source_universe_refs=_canonical_refs(
+            relation.source_universe_refs, "relation.source_universe_refs"
+        ),
+        operation_scope=relation.operation_scope,
+        target_use=_text(relation.target_use, "relation.target_use"),
+        effective_scope=relation.effective_scope,
+        directionality_or_symmetric=relation.directionality_or_symmetric,
+        authority_ref_value=authority,
+        authority_operation=operation,
+        operation_authority_material=material,
+        decision=relation.semantic_fields.get("decision", "UNKNOWN_AUTHORITY"),
+    )
+    if relation.replay_identity != expected or relation.relation_id != f"P07REL:{expected}":
+        raise SourceRelationIntegrityError("relation replay identity is stale or corrupt")
+
+
+def _resolve_exact_owner_snapshot(
+    registry: AuthorityRegistry,
+    ref: AuthorityRef,
+) -> AuthoritySnapshot:
+    """Resolve and authenticate one nested I01 snapshot at resolver construction.
+
+    The returned snapshot is pinned into owner custody.  Later replacement of the
+    caller-visible registry, its methods, or its internal map cannot change what P07
+    adjudicates.
+    """
+    if type(registry) is not AuthorityRegistry:
+        raise SourceRelationIntegrityError(
+            "authority_registry must be exact concrete I01 AuthorityRegistry"
+        )
+    try:
+        resolution = _ADOPTED_AUTHORITY_REGISTRY_RESOLVE_EXACT(registry, ref)
+    except Pre553AuthorityError as exc:
+        raise SourceRelationIntegrityError(
+            "relation authority snapshot unavailable by exact ID/version/hash"
+        ) from exc
+    if resolution.ref != ref:
+        raise SourceRelationIntegrityError(
+            "nested AuthorityRegistry returned a different exact authority ref"
+        )
+    snapshot = resolution.snapshot
+    if type(snapshot) is not AuthoritySnapshot:
+        raise SourceRelationIntegrityError(
+            "nested authority snapshot must be exact AuthoritySnapshot@1.0.0"
+        )
+    try:
+        _ADOPTED_VALIDATE_AUTHORITY_SNAPSHOT(snapshot)
+    except Pre553AuthorityError as exc:
+        raise SourceRelationIntegrityError(str(exc)) from exc
+    if semantic_hash(snapshot.semantic_projection()) != snapshot.content_hash:
+        raise SourceRelationIntegrityError("nested authority snapshot semantic hash mismatch")
+    if snapshot.authority_ref != ref:
+        raise SourceRelationIntegrityError(
+            "nested authority snapshot semantics do not bind the requested AuthorityRef"
+        )
+    return snapshot
+
+
+@dataclass(frozen=True)
+class _AuthenticatedResolverState:
+    by_ref: Mapping[str, SourceUniverseRelation]
+    by_key: Mapping[str, tuple[SourceUniverseRelation, ...]]
+    authority_snapshots: Mapping[str, AuthoritySnapshot]
+    relation_semantic_hashes: Mapping[str, str]
+    authority_semantic_hashes: Mapping[str, str]
+    custody_hash: str
+
+
+def _make_owner_state_store():
+    # Closure-owned construction ledger: not stored on the caller-owned resolver
+    # instance, so replacing instance attributes cannot replace owner custody.
+    states = WeakKeyDictionary()
+
+    def seal(resolver: Any, state: _AuthenticatedResolverState) -> None:
+        if resolver in states:
+            raise SourceRelationIntegrityError("resolver owner custody already sealed")
+        states[resolver] = state
+
+    def load(resolver: Any) -> _AuthenticatedResolverState:
+        state = states.get(resolver)
+        if state is None:
+            raise SourceRelationIntegrityError(
+                "resolver lacks authenticated construction-time owner custody"
+            )
+        return state
+
+    return seal, load
+
+
+_seal_owner_state, _load_owner_state = _make_owner_state_store()
+
+
 class SourceRelationResolver:
     """Exact-key P07 relation resolver; absence always means distinct by default."""
 
@@ -438,24 +558,73 @@ class SourceRelationResolver:
         relations: Iterable[SourceUniverseRelation],
         authority_registry: AuthorityRegistry,
     ) -> None:
-        if not isinstance(authority_registry, AuthorityRegistry):
-            raise SourceRelationIntegrityError("authority_registry must be exact I01 AuthorityRegistry")
+        if type(authority_registry) is not AuthorityRegistry:
+            raise SourceRelationIntegrityError(
+                "authority_registry must be exact concrete I01 AuthorityRegistry"
+            )
         self._registry = authority_registry
         self._by_ref: dict[str, SourceUniverseRelation] = {}
         self._by_key: dict[str, list[SourceUniverseRelation]] = {}
+        owner_snapshots: dict[str, AuthoritySnapshot] = {}
         for relation in relations:
-            self._validate_relation_object(relation)
+            authority, snapshot = SourceRelationResolver._validate_relation_object(
+                self, relation
+            )
             prior = self._by_ref.get(relation.ref.key)
             if prior is not None and prior != relation:
                 raise SourceRelationIntegrityError("same exact relation ref has conflicting material")
             self._by_ref[relation.ref.key] = relation
-            if self._has_i07_use_shape(relation):
-                key = self._relation_object_key(relation)
+            owner_snapshots[authority.key] = snapshot
+            if SourceRelationResolver._has_i07_use_shape(relation):
+                key = _relation_object_key_from_relation(relation)
                 bucket = self._by_key.setdefault(key, [])
                 if relation not in bucket:
                     bucket.append(relation)
         for bucket in self._by_key.values():
             bucket.sort(key=lambda relation: relation.ref.key)
+
+        owner_by_ref = MappingProxyType(dict(self._by_ref))
+        owner_by_key = MappingProxyType(
+            {key: tuple(bucket) for key, bucket in self._by_key.items()}
+        )
+        owner_authorities = MappingProxyType(dict(owner_snapshots))
+        relation_hashes = MappingProxyType(
+            {key: relation.content_hash for key, relation in owner_by_ref.items()}
+        )
+        authority_hashes = MappingProxyType(
+            {key: snapshot.content_hash for key, snapshot in owner_authorities.items()}
+        )
+        custody_hash = semantic_hash({
+            "contract": I07_CONTRACT_ID,
+            "relations": [
+                {
+                    "ref": relation.ref.as_dict(),
+                    "semantic_content_hash": relation.content_hash,
+                    "replay_identity": relation.semantic_fields.get("replay_identity"),
+                }
+                for relation in sorted(owner_by_ref.values(), key=lambda item: item.ref.key)
+            ],
+            "authority_snapshots": [
+                {
+                    "authority_ref": snapshot.authority_ref.as_dict(),
+                    "snapshot_semantic_content_hash": snapshot.content_hash,
+                }
+                for snapshot in sorted(
+                    owner_authorities.values(), key=lambda item: item.authority_ref.key
+                )
+            ],
+        })
+        _seal_owner_state(
+            self,
+            _AuthenticatedResolverState(
+                by_ref=owner_by_ref,
+                by_key=owner_by_key,
+                authority_snapshots=owner_authorities,
+                relation_semantic_hashes=relation_hashes,
+                authority_semantic_hashes=authority_hashes,
+                custody_hash=custody_hash,
+            ),
+        )
 
     @classmethod
     def from_c11(
@@ -465,8 +634,10 @@ class SourceRelationResolver:
         relation_refs: Iterable[ExactRef | Mapping[str, Any]],
         authority_registry: AuthorityRegistry,
     ) -> "SourceRelationResolver":
-        if not isinstance(repository, C11Repository):
-            raise SourceRelationIntegrityError("repository must be accepted I02 C11Repository")
+        if cls is not SourceRelationResolver:
+            raise SourceRelationIntegrityError("resolver construction must use the adopted concrete owner")
+        if type(repository) is not C11Repository:
+            raise SourceRelationIntegrityError("repository must be exact accepted I02 C11Repository")
         relations: list[SourceUniverseRelation] = []
         for raw in relation_refs:
             ref = exact_ref(raw, "relation_ref")
@@ -476,26 +647,23 @@ class SourceRelationResolver:
                 raise SourceRelationIntegrityError(
                     "exact SourceUniverseRelation unavailable; no latest/default/fuzzy fallback"
                 ) from exc
-            if not isinstance(obj, SourceUniverseRelation):
+            if type(obj) is not SourceUniverseRelation:
                 raise SourceRelationIntegrityError("exact relation ref resolves to a different object family")
             relations.append(obj)
-        return cls(relations=relations, authority_registry=authority_registry)
+        return SourceRelationResolver(relations=relations, authority_registry=authority_registry)
 
-    def _validate_relation_object(self, relation: SourceUniverseRelation) -> None:
-        if not isinstance(relation, SourceUniverseRelation):
-            raise SourceRelationIntegrityError("I07 resolver accepts SourceUniverseRelation@1.0.0 only")
+    def _validate_relation_object(
+        self, relation: SourceUniverseRelation
+    ) -> tuple[AuthorityRef, AuthoritySnapshot]:
+        if type(relation) is not SourceUniverseRelation:
+            raise SourceRelationIntegrityError("I07 resolver accepts exact SourceUniverseRelation@1.0.0 only")
         if semantic_hash(relation.semantic_projection()) != relation.content_hash:
             raise SourceRelationIntegrityError("SourceUniverseRelation semantic hash mismatch")
         if relation.relation_kind not in P07_RELATION_KINDS:
             raise SourceRelationIntegrityError("unknown relation kind")
         _canonical_refs(relation.source_universe_refs, "relation.source_universe_refs")
         ref = _authority_from_relation(relation)
-        try:
-            self._registry.resolve_exact(ref)
-        except Pre553AuthorityError as exc:
-            raise SourceRelationIntegrityError(
-                "relation authority snapshot unavailable by exact ID/version/hash"
-            ) from exc
+        snapshot = _resolve_exact_owner_snapshot(self._registry, ref)
         decision = relation.semantic_fields.get("decision")
         if decision is not None and decision not in P07_RELATION_DECISIONS:
             raise SourceRelationIntegrityError("relation decision is outside P07 state algebra")
@@ -507,7 +675,8 @@ class SourceRelationResolver:
             if relation.typed_state != "RELATION_AUTHORIZED_FOR_EXACT_KIND_AND_SCOPE":
                 raise SourceRelationIntegrityError("AUTHORIZED relation must carry exact positive typed state")
             _operation_material(relation)
-            self._validate_replay_identity(relation)
+            _validate_relation_replay_identity(relation)
+        return ref, snapshot
 
     @staticmethod
     def _has_i07_use_shape(relation: SourceUniverseRelation) -> bool:
@@ -519,46 +688,15 @@ class SourceRelationResolver:
 
     @staticmethod
     def _relation_object_key(relation: SourceUniverseRelation) -> str:
-        sources = _canonical_refs(relation.source_universe_refs, "relation.source_universe_refs")
-        return _relation_key(
-            relation_kind=relation.relation_kind,
-            source_universe_refs=sources,
-            operation_scope=relation.operation_scope,
-            target_use=_text(relation.target_use, "relation.target_use"),
-            effective_scope=relation.effective_scope,
-            directionality_or_symmetric=relation.directionality_or_symmetric,
-        )
+        return _relation_object_key_from_relation(relation)
 
     @staticmethod
     def _validate_replay_identity(relation: SourceUniverseRelation) -> None:
-        authority = _authority_from_relation(relation)
-        operation = _text(relation.authority_operation, "relation.authority_operation")
-        material = _operation_material(relation)
-        expected = _relation_replay_identity(
-            relation_kind=relation.relation_kind,
-            source_universe_refs=_canonical_refs(
-                relation.source_universe_refs, "relation.source_universe_refs"
-            ),
-            operation_scope=relation.operation_scope,
-            target_use=_text(relation.target_use, "relation.target_use"),
-            effective_scope=relation.effective_scope,
-            directionality_or_symmetric=relation.directionality_or_symmetric,
-            authority_ref_value=authority,
-            authority_operation=operation,
-            operation_authority_material=material,
-            decision=relation.semantic_fields.get("decision", "UNKNOWN_AUTHORITY"),
-        )
-        if relation.replay_identity != expected or relation.relation_id != f"P07REL:{expected}":
-            raise SourceRelationIntegrityError("relation replay identity is stale or corrupt")
+        _validate_relation_replay_identity(relation)
 
     def resolve_exact(self, ref: ExactRef | Mapping[str, Any]) -> SourceUniverseRelation:
-        exact = exact_ref(ref, "relation_ref")
-        relation = self._by_ref.get(exact.key)
-        if relation is None:
-            raise SourceRelationIntegrityError(
-                "exact SourceUniverseRelation unavailable; no label/ID/latest/default inference"
-            )
-        return relation
+        state = _load_owner_state(self)
+        return _owner_state_resolve_exact(state, ref)
 
     def _validate_positive(
         self,
@@ -566,45 +704,11 @@ class SourceRelationResolver:
         *,
         expected_authority_operation: str | None,
     ) -> tuple[AuthorityRef, str]:
-        if relation.relation_kind in NONAUTHORIZING_RELATION_KINDS:
-            raise SourceRelationAuthorizationError(
-                DEFAULT_RELATION_STATE,
-                f"{relation.relation_kind} is descriptive and has zero composition effect",
-            )
-        if relation.semantic_fields.get("decision") != "AUTHORIZED":
-            raise SourceRelationAuthorizationError(
-                str(relation.semantic_fields.get("decision", DEFAULT_RELATION_STATE)),
-                "relation receipt is not a positive exact authority",
-            )
-        self._validate_replay_identity(relation)
-        authority = _authority_from_relation(relation)
-        operation = _text(relation.authority_operation, "relation.authority_operation")
-        if expected_authority_operation is not None and operation != _text(
-            expected_authority_operation, "expected_authority_operation"
-        ):
-            raise SourceRelationAuthorizationError(
-                "OUT_OF_SCOPE", "exact relation authority operation does not match requested operation"
-            )
-        snapshot = self._registry.resolve_exact(authority).snapshot
-        expected_kind = RELATION_AUTHORITY_KIND[relation.relation_kind]
-        if expected_kind is None:
-            raise SourceRelationAuthorizationError(
-                DEFAULT_RELATION_STATE, "descriptive relation cannot authorize an operation"
-            )
-        sources = _canonical_refs(relation.source_universe_refs, "relation.source_universe_refs")
-        try:
-            for source in sources:
-                require_positive_authority(
-                    snapshot,
-                    authority_kind=expected_kind,
-                    operation=operation,
-                    object_family="SourceUniverseRelation",
-                    source_universe_ref=source.as_dict(),
-                    target_use_ref=relation.target_use,
-                    predicate_or_risk_set_ref=relation.operation_scope,
-                )
-        except Pre553AuthorityError as exc:
-            raise SourceRelationAuthorizationError("UNKNOWN_AUTHORITY", str(exc)) from exc
+        authority, operation, _snapshot_hash = _validate_positive_from_owner_state(
+            _load_owner_state(self),
+            relation,
+            expected_authority_operation=expected_authority_operation,
+        )
         return authority, operation
 
     def decide(
@@ -619,93 +723,340 @@ class SourceRelationResolver:
         relation_ref: ExactRef | Mapping[str, Any] | None = None,
         expected_authority_operation: str | None = None,
     ) -> RelationDecision:
-        if relation_kind not in P07_RELATION_KINDS:
-            raise SourceRelationIntegrityError("unknown P07 relation kind")
-        sources = _canonical_refs(source_universe_refs, "source_universe_ref")
-        use = _text(target_use, "target_use")
-        key = _relation_key(
+        return authenticated_source_relation_decision(
+            self,
             relation_kind=relation_kind,
-            source_universe_refs=sources,
+            source_universe_refs=source_universe_refs,
             operation_scope=operation_scope,
-            target_use=use,
+            target_use=target_use,
             effective_scope=effective_scope,
             directionality_or_symmetric=directionality_or_symmetric,
+            relation_ref=relation_ref,
+            expected_authority_operation=expected_authority_operation,
         )
-        if relation_ref is None:
-            candidates = tuple(self._by_key.get(key, ()))
-        else:
-            candidate = self.resolve_exact(relation_ref)
-            candidates = (candidate,) if self._relation_object_key(candidate) == key else ()
-
-        def result(
-            state: str, reason: str, relation: SourceUniverseRelation | None = None,
-            authority: AuthorityRef | None = None, operation: str | None = None,
-        ) -> RelationDecision:
-            replay = semantic_hash({
-                "contract": I07_CONTRACT_ID,
-                "request": _relation_key_material(
-                    relation_kind=relation_kind, source_universe_refs=sources,
-                    operation_scope=operation_scope, target_use=use,
-                    effective_scope=effective_scope,
-                    directionality_or_symmetric=directionality_or_symmetric,
-                ),
-                "state": state,
-                "relation_ref": relation.ref.as_dict() if relation else None,
-                "authority_ref": authority.as_dict() if authority else None,
-                "authority_operation": operation,
-            })
-            return RelationDecision(
-                relation_kind, sources, canonicalize(operation_scope), use,
-                canonicalize(effective_scope), canonicalize(directionality_or_symmetric),
-                state, relation.ref if relation else None, authority, operation, reason, replay,
-            )
-
-        if relation_kind in NONAUTHORIZING_RELATION_KINDS:
-            return result(
-                RELATION_DECISION_MATRIX[relation_kind]["default"],
-                f"{relation_kind} is descriptive only and never grants adjacent relation semantics",
-            )
-        if not candidates:
-            return result(DEFAULT_RELATION_STATE, "no exact positive relation receipt for this kind/scope/use")
-
-        positives: list[tuple[SourceUniverseRelation, AuthorityRef, str]] = []
-        negative_states: list[str] = []
-        for relation in candidates:
-            decision = str(relation.semantic_fields.get("decision", "UNKNOWN_AUTHORITY"))
-            if decision == "AUTHORIZED":
-                try:
-                    authority, operation = self._validate_positive(
-                        relation, expected_authority_operation=expected_authority_operation
-                    )
-                except SourceRelationAuthorizationError as exc:
-                    negative_states.append(exc.state)
-                else:
-                    positives.append((relation, authority, operation))
-            else:
-                negative_states.append(decision)
-
-        if len(positives) == 1 and not negative_states:
-            relation, authority, operation = positives[0]
-            return result("AUTHORIZED", "exact operation-specific relation authority established", relation, authority, operation)
-        if len(positives) > 1 or (positives and negative_states):
-            return result("CONFLICTING_AUTHORITY", "multiple or conflicting exact relation dispositions exist")
-        precedence = (
-            "CONFLICTING_AUTHORITY", "EXPIRED_OR_STALE", "DENIED", "NOT_APPLICABLE",
-            "UNKNOWN_AUTHORITY", "OUT_OF_SCOPE",
-        )
-        for state in precedence:
-            if state in negative_states:
-                return result(state, "exact relation receipt is nonpositive or unavailable")
-        return result(DEFAULT_RELATION_STATE, "no positive exact relation authority established")
 
     def require(self, **kwargs: Any) -> RelationDecision:
-        decision = self.decide(**kwargs)
+        decision = authenticated_source_relation_decision(self, **kwargs)
         if not decision.authorized:
             raise SourceRelationAuthorizationError(
                 decision.state,
                 f"{decision.relation_kind} required but decision is {decision.state}: {decision.reason}",
             )
         return decision
+
+
+def _owner_state_resolve_exact(
+    state: _AuthenticatedResolverState,
+    ref: ExactRef | Mapping[str, Any],
+) -> SourceUniverseRelation:
+    exact = exact_ref(ref, "relation_ref")
+    relation = state.by_ref.get(exact.key)
+    if relation is None:
+        raise SourceRelationIntegrityError(
+            "exact SourceUniverseRelation unavailable from authenticated owner custody; "
+            "no label/ID/latest/default inference"
+        )
+    if relation.ref.key != exact.key:
+        raise SourceRelationIntegrityError("owner custody relation ref drift")
+    expected_hash = state.relation_semantic_hashes.get(exact.key)
+    if expected_hash is None or relation.content_hash != expected_hash:
+        raise SourceRelationIntegrityError("owner custody relation semantic identity drift")
+    if semantic_hash(relation.semantic_projection()) != expected_hash:
+        raise SourceRelationIntegrityError("owner custody relation semantic hash mismatch")
+    _validate_relation_replay_identity(relation)
+    return relation
+
+
+def _validate_positive_from_owner_state(
+    state: _AuthenticatedResolverState,
+    relation: SourceUniverseRelation,
+    *,
+    expected_authority_operation: str | None,
+) -> tuple[AuthorityRef, str, str]:
+    if relation.relation_kind in NONAUTHORIZING_RELATION_KINDS:
+        raise SourceRelationAuthorizationError(
+            DEFAULT_RELATION_STATE,
+            f"{relation.relation_kind} is descriptive and has zero composition effect",
+        )
+    if relation.semantic_fields.get("decision") != "AUTHORIZED":
+        raise SourceRelationAuthorizationError(
+            str(relation.semantic_fields.get("decision", DEFAULT_RELATION_STATE)),
+            "relation receipt is not a positive exact authority",
+        )
+
+    # Re-authenticate the exact custodied relation before every positive decision.
+    relation = _owner_state_resolve_exact(state, relation.ref)
+    authority = _authority_from_relation(relation)
+    operation = _text(relation.authority_operation, "relation.authority_operation")
+    if expected_authority_operation is not None and operation != _text(
+        expected_authority_operation, "expected_authority_operation"
+    ):
+        raise SourceRelationAuthorizationError(
+            "OUT_OF_SCOPE", "exact relation authority operation does not match requested operation"
+        )
+
+    snapshot = state.authority_snapshots.get(authority.key)
+    expected_snapshot_hash = state.authority_semantic_hashes.get(authority.key)
+    if snapshot is None or expected_snapshot_hash is None:
+        raise SourceRelationAuthorizationError(
+            "UNKNOWN_AUTHORITY", "relation authority snapshot is absent from authenticated owner custody"
+        )
+    if type(snapshot) is not AuthoritySnapshot:
+        raise SourceRelationAuthorizationError(
+            "UNKNOWN_AUTHORITY", "custodied relation authority is not exact AuthoritySnapshot"
+        )
+    if snapshot.authority_ref != authority:
+        raise SourceRelationAuthorizationError(
+            "UNKNOWN_AUTHORITY", "custodied authority snapshot ref drift"
+        )
+    if snapshot.content_hash != expected_snapshot_hash or (
+        semantic_hash(snapshot.semantic_projection()) != expected_snapshot_hash
+    ):
+        raise SourceRelationAuthorizationError(
+            "UNKNOWN_AUTHORITY", "custodied authority snapshot semantic identity drift"
+        )
+
+    expected_kind = RELATION_AUTHORITY_KIND[relation.relation_kind]
+    if expected_kind is None:
+        raise SourceRelationAuthorizationError(
+            DEFAULT_RELATION_STATE, "descriptive relation cannot authorize an operation"
+        )
+    sources = _canonical_refs(relation.source_universe_refs, "relation.source_universe_refs")
+    try:
+        for source in sources:
+            _ADOPTED_REQUIRE_POSITIVE_AUTHORITY(
+                snapshot,
+                authority_kind=expected_kind,
+                operation=operation,
+                object_family="SourceUniverseRelation",
+                source_universe_ref=source.as_dict(),
+                target_use_ref=relation.target_use,
+                predicate_or_risk_set_ref=relation.operation_scope,
+            )
+    except Pre553AuthorityError as exc:
+        raise SourceRelationAuthorizationError("UNKNOWN_AUTHORITY", str(exc)) from exc
+    return authority, operation, expected_snapshot_hash
+
+
+def _relation_decision_replay_identity(
+    *,
+    relation_kind: str,
+    source_universe_refs: Sequence[ExactRef],
+    operation_scope: Any,
+    target_use: str,
+    effective_scope: Any,
+    directionality_or_symmetric: Any,
+    state: str,
+    relation_ref: ExactRef | None,
+    authority_ref_value: AuthorityRef | None,
+    authority_operation: str | None,
+    owner_custody_hash: str,
+    authority_snapshot_content_hash: str | None,
+) -> str:
+    return semantic_hash({
+        "contract": I07_CONTRACT_ID,
+        "request": _relation_key_material(
+            relation_kind=relation_kind,
+            source_universe_refs=source_universe_refs,
+            operation_scope=operation_scope,
+            target_use=target_use,
+            effective_scope=effective_scope,
+            directionality_or_symmetric=directionality_or_symmetric,
+        ),
+        "state": state,
+        "relation_ref": relation_ref.as_dict() if relation_ref else None,
+        "authority_ref": authority_ref_value.as_dict() if authority_ref_value else None,
+        "authority_operation": authority_operation,
+        "owner_custody_hash": owner_custody_hash,
+        "authority_snapshot_content_hash": authority_snapshot_content_hash,
+    })
+
+
+def validate_relation_decision_replay_identity(
+    decision: RelationDecision,
+) -> RelationDecision:
+    """Authenticate the returned P07 decision's complete construction provenance."""
+    if type(decision) is not RelationDecision:
+        raise SourceRelationIntegrityError("owner decision must be exact RelationDecision")
+    custody_hash = decision.owner_custody_hash
+    if not isinstance(custody_hash, str) or len(custody_hash) != 64 or any(
+        ch not in "0123456789abcdef" for ch in custody_hash
+    ):
+        raise SourceRelationIntegrityError("owner decision lacks exact custody identity")
+    snapshot_hash = decision.authority_snapshot_content_hash
+    if snapshot_hash is not None and (
+        not isinstance(snapshot_hash, str)
+        or len(snapshot_hash) != 64
+        or any(ch not in "0123456789abcdef" for ch in snapshot_hash)
+    ):
+        raise SourceRelationIntegrityError(
+            "owner decision authority snapshot semantic identity is malformed"
+        )
+    expected = _relation_decision_replay_identity(
+        relation_kind=decision.relation_kind,
+        source_universe_refs=decision.source_universe_refs,
+        operation_scope=decision.operation_scope,
+        target_use=decision.target_use,
+        effective_scope=decision.effective_scope,
+        directionality_or_symmetric=decision.directionality_or_symmetric,
+        state=decision.state,
+        relation_ref=decision.relation_ref,
+        authority_ref_value=decision.authority_ref,
+        authority_operation=decision.authority_operation,
+        owner_custody_hash=custody_hash,
+        authority_snapshot_content_hash=snapshot_hash,
+    )
+    if decision.replay_identity != expected:
+        raise SourceRelationIntegrityError("owner decision replay identity is stale or corrupt")
+    if decision.authorized and snapshot_hash is None:
+        raise SourceRelationIntegrityError(
+            "authorized owner decision lacks exact authority snapshot semantic identity"
+        )
+    return decision
+
+
+def _decide_from_owner_state(
+    state: _AuthenticatedResolverState,
+    *,
+    relation_kind: str,
+    source_universe_refs: Iterable[ExactRef | Mapping[str, Any]],
+    operation_scope: Any,
+    target_use: str,
+    effective_scope: Any,
+    directionality_or_symmetric: Any = "SYMMETRIC",
+    relation_ref: ExactRef | Mapping[str, Any] | None = None,
+    expected_authority_operation: str | None = None,
+) -> RelationDecision:
+    if relation_kind not in P07_RELATION_KINDS:
+        raise SourceRelationIntegrityError("unknown P07 relation kind")
+    sources = _canonical_refs(source_universe_refs, "source_universe_ref")
+    use = _text(target_use, "target_use")
+    key = _relation_key(
+        relation_kind=relation_kind,
+        source_universe_refs=sources,
+        operation_scope=operation_scope,
+        target_use=use,
+        effective_scope=effective_scope,
+        directionality_or_symmetric=directionality_or_symmetric,
+    )
+    if relation_ref is None:
+        candidates = tuple(state.by_key.get(key, ()))
+    else:
+        candidate = _owner_state_resolve_exact(state, relation_ref)
+        candidates = (candidate,) if _relation_object_key_from_relation(candidate) == key else ()
+
+    def result(
+        state_value: str,
+        reason: str,
+        relation: SourceUniverseRelation | None = None,
+        authority: AuthorityRef | None = None,
+        operation: str | None = None,
+        snapshot_content_hash: str | None = None,
+    ) -> RelationDecision:
+        replay = _relation_decision_replay_identity(
+            relation_kind=relation_kind,
+            source_universe_refs=sources,
+            operation_scope=operation_scope,
+            target_use=use,
+            effective_scope=effective_scope,
+            directionality_or_symmetric=directionality_or_symmetric,
+            state=state_value,
+            relation_ref=relation.ref if relation else None,
+            authority_ref_value=authority,
+            authority_operation=operation,
+            owner_custody_hash=state.custody_hash,
+            authority_snapshot_content_hash=snapshot_content_hash,
+        )
+        return RelationDecision(
+            relation_kind,
+            sources,
+            canonicalize(operation_scope),
+            use,
+            canonicalize(effective_scope),
+            canonicalize(directionality_or_symmetric),
+            state_value,
+            relation.ref if relation else None,
+            authority,
+            operation,
+            reason,
+            replay,
+            owner_custody_hash=state.custody_hash,
+            authority_snapshot_content_hash=snapshot_content_hash,
+        )
+
+    if relation_kind in NONAUTHORIZING_RELATION_KINDS:
+        return result(
+            RELATION_DECISION_MATRIX[relation_kind]["default"],
+            f"{relation_kind} is descriptive only and never grants adjacent relation semantics",
+        )
+    if not candidates:
+        return result(DEFAULT_RELATION_STATE, "no exact positive relation receipt for this kind/scope/use")
+
+    positives: list[tuple[SourceUniverseRelation, AuthorityRef, str, str]] = []
+    negative_states: list[str] = []
+    for relation in candidates:
+        decision_value = str(relation.semantic_fields.get("decision", "UNKNOWN_AUTHORITY"))
+        if decision_value == "AUTHORIZED":
+            try:
+                authority, operation, snapshot_hash = _validate_positive_from_owner_state(
+                    state,
+                    relation,
+                    expected_authority_operation=expected_authority_operation,
+                )
+            except SourceRelationAuthorizationError as exc:
+                negative_states.append(exc.state)
+            else:
+                positives.append((relation, authority, operation, snapshot_hash))
+        else:
+            negative_states.append(decision_value)
+
+    if len(positives) == 1 and not negative_states:
+        relation, authority, operation, snapshot_hash = positives[0]
+        return result(
+            "AUTHORIZED",
+            "exact operation-specific relation authority established from authenticated owner custody",
+            relation,
+            authority,
+            operation,
+            snapshot_hash,
+        )
+    if len(positives) > 1 or (positives and negative_states):
+        return result(
+            "CONFLICTING_AUTHORITY",
+            "multiple or conflicting exact relation dispositions exist",
+        )
+    precedence = (
+        "CONFLICTING_AUTHORITY", "EXPIRED_OR_STALE", "DENIED", "NOT_APPLICABLE",
+        "UNKNOWN_AUTHORITY", "OUT_OF_SCOPE",
+    )
+    for state_value in precedence:
+        if state_value in negative_states:
+            return result(state_value, "exact relation receipt is nonpositive or unavailable")
+    return result(DEFAULT_RELATION_STATE, "no positive exact relation authority established")
+
+
+def _make_authenticated_decision_entrypoint(load_state, decide_impl, validate_impl):
+    # Freeze the load/decide/decision-validation implementations into closure cells.
+    # Patching caller-visible resolver methods or nested validation attributes later
+    # cannot redirect this adopted entrypoint.
+    def authenticated(resolver: Any, **kwargs: Any) -> RelationDecision:
+        if type(resolver) is not SourceRelationResolver:
+            raise SourceRelationIntegrityError(
+                "authenticated source-relation adjudication requires exact adopted resolver"
+            )
+        state = load_state(resolver)
+        decision = decide_impl(state, **kwargs)
+        return validate_impl(decision)
+
+    return authenticated
+
+
+authenticated_source_relation_decision = _make_authenticated_decision_entrypoint(
+    _load_owner_state,
+    _decide_from_owner_state,
+    validate_relation_decision_replay_identity,
+)
+
 
 
 def _exact_relation_ref_in_material(material: Mapping[str, Any], key: str) -> ExactRef:
@@ -1080,6 +1431,7 @@ __all__ = [
     "FORBIDDEN_BACKFILL_TARGET_STATES", "SourceRelationError", "SourceRelationIntegrityError",
     "SourceRelationAuthorizationError", "RelationDecision", "OperationGuardReceipt",
     "I03CompositeGuardReceipt", "make_source_universe_relation", "SourceRelationResolver",
+    "authenticated_source_relation_decision", "validate_relation_decision_replay_identity",
     "guard_sample_pooling", "guard_estimand_composition", "guard_backfill",
     "guard_i03_authorized_composite_query", "execute_i03_composite_query_guarded",
 ]
