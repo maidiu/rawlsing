@@ -1,3 +1,35 @@
+# HQ227 FRONTIER — GT2 V555 TERMINALITY ADOPTED; F7/N10E/N6 PARALLEL — 2026-10-07
+
+### ADOPTED — GT2 V555 NOT APPLICABLE
+Candidate: `3373c6345153af15e63544efe4b49b4a5aa1189b`  
+Review: `b7863f4d6924484993f01998c4f8d4f800c78261`  
+Terminal: `NOT_APPLICABLE_TO_GT2_SIG004`
+
+### NEW — NEEDS LAUNCH — F7 FULL OWNER-PATH AUTHENTICITY REPAIR
+**AGENT:** bounded authority-sensitive implementation worker  
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
+**BRANCH:** `agent/rabochii-pyat-hq227-f7-full-owner-path-authenticity-r1`  
+**COMMISSION TIP:** `c609dbfe4c60bbc4fb8886692343bab3878805f3`
+
+### NEW — NEEDS LAUNCH — N10E MODEL-AUTHORITY / MODEL-RULE LIFECYCLE REPAIR
+**AGENT:** authority-sensitive replay/dependency implementation worker  
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
+**BRANCH:** `agent/rabochii-pyat-hq227-n10e-model-authority-rule-lifecycle-r1`  
+**COMMISSION TIP:** `18a14e8a36942975b0083e92eea01b4e799c9cf4`
+
+### NEW — NEEDS LAUNCH — N6 GT2 DEMANDED OBJECTIVE-CONTEXT REALIZATION
+**AGENT:** source-free objective-world integration worker  
+**MODEL / INTELLIGENCE:** **LongCat 2.5 Preview Free — High**  
+**BRANCH:** `agent/rabochii-pyat-hq227-n6-gt2-objective-context-realization-r1`  
+**COMMISSION TIP:** `86ff46c2ea85d336e67718cb84075228df0aa48e`
+
+Run all three in parallel.
+
+HQ decision:
+`HQD-2026-10-07-227`
+
+---
+
 # HQ226 FRONTIER — FOUR FINAL REVIEWS — 2026-10-06
 
 ### NEW — NEEDS LAUNCH — F7 RESOLVER AUTHENTICITY FINAL HOSTILE REREVIEW
