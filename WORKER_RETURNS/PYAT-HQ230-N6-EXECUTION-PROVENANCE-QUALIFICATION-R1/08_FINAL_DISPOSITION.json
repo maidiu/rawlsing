@@ -2,6 +2,7 @@
   "blocking_disposition": "N6_GT2_OBJECTIVE_CONTEXT_REVIEW_BLOCKED_BY_MISSING_EXACT_EVIDENCE",
   "blocking_review": "agent/reviewer-pyat-hq229-n6-gt2-objective-context-realization-r1 @ 01237ee7560e3ec6611e32f8e0ef4ffb7a656b8d",
   "branch": "agent/rabochii-pyat-hq230-n6-execution-provenance-qualification-r1",
+  "branch_tip_after_rebase": "dde5ae9a3a9a0c1feb1399b6ece8fc3bf741d11b",
   "commission": "PYAT-HQ230-N6-EXECUTION-PROVENANCE-QUALIFICATION-R1",
   "commission_tip": "f7d162bee8d6fa8b06bb5bd393f42ebbb39fd639",
   "disposition": "N6_EXECUTION_PROVENANCE_QUALIFIED__READY_FOR_FINAL_REVIEW_RESOLUTION",
@@ -26,6 +27,7 @@
   ],
   "one_line": "Every HQ229 execution-provenance gap is closed by exact replay under the SHA-verified governed interpreter: Set A 17 passed (exit 0), Set B 83 passed (exit 0) with the previously-uncommitted selection now committed and proven to exclude the N6 court, and Set C identical 54-item normalized failure/error sets with SHA-256 278854ee.. on both sides and a passed-delta of exactly 17.",
   "production_mutation": "NONE",
+  "push_note": "The remote branch already carried the HQ commission commit f7d162bee, which is a descendant of this lane's startup tip. My single additive evidence commit was rebased onto it so the push was a clean fast-forward. No force push; no published history was rewritten.",
   "qualification_results": {
     "set_A_n6_court": {
       "claimed": "17 passed",
@@ -83,6 +85,7 @@
   "semantic_mutation": "NONE",
   "zero_mutation": {
     "accepted_tests_edited": false,
+    "note": "differences from the startup tip are only the HQ commission file and this lane's evidence artifacts",
     "production_mutation": false,
     "semantic_mutation": false
   }
