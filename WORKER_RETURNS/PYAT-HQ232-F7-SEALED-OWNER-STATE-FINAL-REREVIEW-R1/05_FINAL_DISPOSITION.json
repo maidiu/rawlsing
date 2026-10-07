@@ -1,0 +1,75 @@
+{
+  "schema": "PYAT_HQ232_F7_SEALED_OWNER_STATE_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ232-F7-SEALED-OWNER-STATE-FINAL-REREVIEW-R1",
+  "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_REPAIR",
+
+  "review_tip": "b030d870abdacf20d689d17ef6828d4e26dfedd6",
+  "candidate_code_bearing_head": "62394d7ff817252d6d406c1e0ada96529697f5f2",
+  "candidate_return_head": "d6734e0150e91a60965e7db244ed2ef519ec831c",
+  "repair_startup_base": "5d8794dff64e69d44e0605294a2672459ac8c70a",
+  "hq234_supplemental_lead_commit": "282089225ebf1854736a16b4204599d26fc62528",
+
+  "disposition": "F7_SEALED_CUSTODY_PARTIAL__NAMED_DEFECT",
+  "blocker": "F7-RR-04G__LEXICAL_CUSTODY_LEDGER_CELL_IS_CALLER_REBINDABLE",
+  "blocker_status": "REPRODUCED",
+  "classification": "BOUNDED_PROVENANCE_CUSTODY_IMPLEMENTATION_DEFECT",
+  "full_f7_adoption": "FORBIDDEN_PENDING_REPAIR_AND_REREVIEW",
+  "repair_performed_in_this_lane": false,
+  "production_mutated": false,
+  "self_adopted": false,
+  "merged_into_control": false,
+
+  "section_verdicts": {
+    "A_exact_lineage_and_write_terrain": "PASS",
+    "B_live_state_exposure_attack": "FAIL__ONE_LIVE_REBINDABLE_PATH_FOUND",
+    "C_source_to_victim_transplant_hostile": "FAIL_TO_REFUSE__VICTIM_BECOMES_POSITIVE",
+    "D_registry_and_snapshot_provenance_conservation": "PASS",
+    "E_semantic_non_duplication": "PASS",
+    "F_hqd216_productive_adequacy": "PASS",
+    "G_fail_capability": "INSUFFICIENT__NOT_LOAD_BEARING_FOR_THIS_DEFECT"
+  },
+
+  "reproduction_summary": {
+    "target": "the actual closure cell holding the lexical custody ledger",
+    "primitive": "cell.cell_contents assignment on CPython 3.11.3",
+    "tuple_immutability_retested": false,
+    "tuple_immutability_confirmed_orthogonal": true,
+    "monkeypatching_of_production": false,
+    "steps_completed": 8,
+    "victim_before": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT / SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE",
+    "victim_after": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED / AUTHORIZED_ORDERED_PAIR_UNDER_BOUND_COMPARABILITY",
+    "victim_owner_decision_after": "AUTHORIZED carrying the SOURCE custody hash d31cd8ddd97f0dc11c0a299cfeb24ea8f54853a392dbd73eaebfe23579c72bc8",
+    "victim_decision_binds_source_relation": true,
+    "transplant_shape": "SOURCE custody material + VICTIM owner_ref, injected by rebinding the ledger cell"
+  },
+
+  "load_bearing_invariants_identified": [
+    {"id": "W1", "invariant": "the lexical custody ledger is held in a closure cell that CPython permits callers to rebind", "defeats": "the ledger-keyed owner lookup"},
+    {"id": "W2", "invariant": "_AuthenticatedResolverState is caller-constructible and its owner_ref field is self-declared rather than evidence of custody", "defeats": "the owner_ref identity check in _state_or_refuse"},
+    {"id": "W3", "invariant": "custody_hash is transcribed into decisions but never re-derived from the owning resolver", "defeats": "any hope that the hash would detect a mis-bound state"}
+  ],
+
+  "invariants_that_would_defeat_closure_cell_rebinding": [
+    "non-forgeable custody binding via a secret per-instance token the caller cannot set (preferred)",
+    "remove _AuthenticatedResolverState from the caller-constructible surface (preferred)",
+    "re-derive custody_hash at decision time from the owning resolver (necessary but not sufficient alone, since semantic_hash is public)"
+  ],
+
+  "what_remains_sound": [
+    "exact lineage and write terrain (production limited to pre553_source_relations.py, court limited to test_pre553_temporal_comparability.py)",
+    "pre553_temporal_comparability.py blob-identical to the repair base",
+    "registry and snapshot provenance conservation, including registry replacement immunity and subclass/override redirection refusal",
+    "relation-decision replay identity re-derivation",
+    "outer/nested authority cross-binding",
+    "semantic conservation: 12 relation states, 19 authority kinds, exact-zero, total precedence, 3+ anchor refusal, exact measure/use binding, TEMPORAL_EVIDENCE source-scope identity, unrestricted-token law",
+    "no ranking/selection/interpolation/trajectory/causation/currentness/pooling/equivalence-creation/actor authority",
+    "HQD-216 productive adequacy on all five lawful paths",
+    "F7 court 155 passed and source-relations court 24 passed"
+  ],
+
+  "why_partial_not_more_severe": "The victim receives the SOURCE's genuinely valid, genuinely registry-pinned custody material. Nothing is forged in content, no snapshot is faked, no registry is substituted, and no new authority is created. The failure is that a non-owner can be made to appear as the owner of valid custody. That is a custody-binding implementation defect with a bounded fix, not an architecture or owner-contract conflict.",
+
+  "residual_risk_note": "The same closure-cell primitive applies to every callable the factory exports and to any future lexical custody in this module. The repair should therefore be a pattern-level invariant (non-forgeable owner binding), not a single cell patch.",
+
+  "terminal": "HQ232_F7_SEALED_OWNER_STATE_FINAL_HOSTILE_REREVIEW_RETURNED__HQ_DECISION_REQUIRED"
+}

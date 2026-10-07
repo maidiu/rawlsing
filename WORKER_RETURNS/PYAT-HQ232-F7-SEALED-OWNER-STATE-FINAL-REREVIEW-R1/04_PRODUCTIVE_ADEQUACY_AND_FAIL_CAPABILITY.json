@@ -1,0 +1,77 @@
+{
+  "schema": "PYAT_HQ232_F7_PRODUCTIVE_ADEQUACY_AND_FAIL_CAPABILITY@1.0.0",
+  "lane": "PYAT-HQ232-F7-SEALED-OWNER-STATE-FINAL-REREVIEW-R1",
+  "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_REPAIR",
+
+  "court_results_at_candidate_head": {
+    "f7_court": {"suite": "rawlsing_next/tests/test_pre553_temporal_comparability.py", "collected": 155, "passed": 155, "failed": 0},
+    "source_relations_court": {"suite": "rawlsing_next/tests/test_pre553_source_relations.py", "collected": 24, "passed": 24, "failed": 0},
+    "productive_adequacy_subset": {"selector": "witness_exact_zero or witness_decrease or witness_cross_universe or witness_same_universe or hq227_full_owner_path_positive", "result": "6 passed, 149 deselected"},
+    "significance": "the existing courts are fully green and completely blind to F7-RR-04G, which is why the blocker is a NEW named defect rather than a regression"
+  },
+
+  "F_productive_adequacy_detail": {
+    "same_universe": {"witness": "test_witness_same_universe_needs_no_equivalence", "status": "PASS"},
+    "exact_zero": {"witness": "test_witness_exact_zero_is_derived_not_asserted", "status": "PASS"},
+    "increase": {"witness": "test_witness_decrease_direction_is_derived + cross-universe increase via _adjudicated_resolver", "status": "PASS"},
+    "decrease": {"witness": "test_witness_decrease_direction_is_derived", "status": "PASS"},
+    "lawful_cross_universe_relation": {"witness": "test_hq227_full_owner_path_positive_cross_universe_service_remains_productive", "status": "PASS"},
+    "verdict": "PASS - lawful constructor-admitted positive service remains possible on all five commissioned paths"
+  },
+
+  "G_fail_capability_detail": {
+    "verdict": "INSUFFICIENT__NOT_LOAD_BEARING_FOR_THIS_DEFECT",
+    "candidate_witness_location": "rawlsing_next/tests/test_pre553_temporal_comparability.py:2343-2390",
+    "candidate_mechanism": "monkeypatch tc._authenticated_source_relation_decide to call sr._decide_from_owner_state(transplanted, ...) directly, bypassing the constructor-bound loader",
+    "proves": "dependency on the authenticated entrypoint",
+    "does_not_prove": "that the actual lexical custody cell used by that entrypoint is protected from a reflection primitive already admitted by the HQ231 hostile court",
+    "commission_requirement": "it must break the ACTUAL repaired custody seam and cause the same discriminating hostile to fail for the intended reason. Reject stale or non-load-bearing monkeypatches.",
+    "assessment": "the monkeypatch is non-load-bearing with respect to F7-RR-04G; it targets a different seam. It is not stale in the file-drift sense - the patched name still exists and the test passes - but it cannot discriminate the closure-cell defect.",
+    "stronger_reproduction_substituted": {
+      "drives_real_entrypoint": true,
+      "drives_real_loader": true,
+      "touches_real_live_ledger": true,
+      "uses_monkeypatching": false,
+      "result": "victim reaches TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    }
+  },
+
+  "disposition_derivation": {
+    "blocker": "F7-RR-04G__LEXICAL_CUSTODY_LEDGER_CELL_IS_CALLER_REBINDABLE",
+    "classification": "BOUNDED_PROVENANCE_CUSTODY_IMPLEMENTATION_DEFECT",
+    "not_classified_as": [
+      "architecture conflict - the semantic layer, the registry provenance conservation layer and all productive paths are intact",
+      "owner contract change - the defect is in how custody is held, not in what the owner is permitted to do",
+      "semantic defect - no relation semantics changed or were duplicated"
+    ],
+    "why_not_a_more_severe_classification": "the victim receives the SOURCE's genuinely valid, genuinely registry-pinned custody material; nothing is forged in content, no snapshot is faked, no registry is substituted, and no new authority is created. The failure is that a non-owner can be made to appear as the owner of valid custody.",
+    "requires_in_process_python_reflection": true,
+    "disposition": "F7_SEALED_CUSTODY_PARTIAL__NAMED_DEFECT",
+    "full_f7_adoption": "FORBIDDEN until repaired and re-reviewed",
+    "repair_performed_in_this_lane": false
+  },
+
+  "allowed_disposition_check": {
+    "F7_SEALED_CUSTODY_SOURCE_REVIEW_ACCEPT__RUNTIME_QUALIFICATION_PENDING": "NOT SELECTED - a live blocking defect was reproduced",
+    "F7_SEALED_CUSTODY_FINAL_ACCEPT__RUNTIME_QUALIFIED": "NOT SELECTED - the blocker is reproduced and no runtime qualification can dispose of it",
+    "F7_SEALED_CUSTODY_PARTIAL__NAMED_DEFECT": "SELECTED",
+    "F7_SEALED_CUSTODY_REQUIRES_OWNER_CONTRACT_CHANGE": "NOT SELECTED - no owner contract change is required; the fix is internal to how custody is bound to its owner",
+    "F7_SEALED_CUSTODY_REVEALS_ARCHITECTURE_CONFLICT": "NOT SELECTED - no architectural conflict"
+  },
+
+  "reviewer_verification_performed": [
+    "Reviewed at the exact commission tip with the review branch verified equal to origin before work.",
+    "Read the HQ234 supplemental hostile lead in full from its banking commit 282089225.",
+    "Verified write terrain and lineage from the repair startup base through both candidate heads.",
+    "Confirmed pre553_temporal_comparability.py is blob-identical to the repair base.",
+    "Ran the full F7 court (155 passed) and the source-relations court (24 passed) at the candidate head.",
+    "Read the candidate's custody implementation in full: the factory, _seal, _state_or_refuse, _AuthenticatedResolverState, _owner_state_resolve_exact, _validate_positive_from_owner_state, _decide_from_owner_state, the replay validator and the diagnostic.",
+    "Confirmed cell.cell_contents writability directly on CPython 3.11.3 before attempting the attack.",
+    "Executed the exact eight-step HQ234 reproduction against the exact candidate with no monkeypatching.",
+    "Ran five controls isolating the load-bearing step, the minimal rebind, tuple immutability orthogonality, the custody-hash non-binding and sealer irrelevance.",
+    "Captured owner-decision-level proof that the victim's decision carries the source's custody hash and relation ref.",
+    "Read the candidate's fail-capability witness and classified it against the commission's 'break the actual repaired custody seam' requirement.",
+    "Verified the registry provenance conservation witnesses, the semantic conservation counts and all five productive adequacy paths.",
+    "Confirmed the existing court's only ledger assertion is the tuple item assignment and therefore cannot see this defect."
+  ]
+}

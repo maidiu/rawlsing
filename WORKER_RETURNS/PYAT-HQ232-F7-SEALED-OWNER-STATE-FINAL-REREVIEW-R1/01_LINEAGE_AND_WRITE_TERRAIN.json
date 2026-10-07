@@ -1,0 +1,68 @@
+{
+ "schema": "PYAT_HQ232_F7_SEALED_LINEAGE_AND_WRITE_TERRAIN@1.0.0",
+ "lane": "PYAT-HQ232-F7-SEALED-OWNER-STATE-FINAL-REREVIEW-R1",
+ "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_REPAIR",
+ "review_tip": "b030d870abdacf20d689d17ef6828d4e26dfedd6",
+ "candidate_code_bearing_head": "62394d7ff817252d6d406c1e0ada96529697f5f2",
+ "candidate_return_head": "d6734e0150e91a60965e7db244ed2ef519ec831c",
+ "candidate_disposition_under_review": "F7_SEALED_OWNER_STATE_CUSTODY_COMPLETE__READY_FOR_FINAL_REREVIEW",
+ "blocker_under_review": "F7-RR-04F__LIVE_AUTHENTICATED_OWNER_STATE_IS_EXPOSED_AND_POSTCONSTRUCTION_REPLACEABLE",
+ "hq234_supplemental_lead_commit": "282089225ebf1854736a16b4204599d26fc62528",
+ "hq234_supplemental_lead_read_in_full": true,
+ "repair_startup_base": "5d8794dff64e69d44e0605294a2672459ac8c70a",
+ "A_exact_lineage_and_write_terrain": {
+  "verdict": "PASS",
+  "ancestry_preserving": true,
+  "candidate_is_ancestor_of_return_head": true,
+  "commit_graph_linear": true,
+  "production_mutation_files": [
+   "rawlsing_next/pre553_source_relations.py"
+  ],
+  "production_mutation_commits": [
+   "fbb735f695ec0753085f11d2d4b7c521a4749874  HQ231: seal source-relation owner custody lexically",
+   "52976c7785a681eaeafd528670941a5cc121949a  HQ231: bind sealed custody capsule to constructor instance",
+   "d5e6d6baa67ddf25a9864be6bb2564b535e0868f  HQ231: make lexical custody ledger persistently immutable"
+  ],
+  "court_mutation_files": [
+   "rawlsing_next/tests/test_pre553_temporal_comparability.py"
+  ],
+  "court_mutation_commit": "62394d7ff817252d6d406c1e0ada96529697f5f2 (+5/-1)",
+  "pre553_temporal_comparability_unchanged": true,
+  "pre553_temporal_comparability_blob_base": "6f6b462b1cdef54d7989f15452473383c1661594",
+  "pre553_temporal_comparability_blob_candidate": "6f6b462b1cdef54d7989f15452473383c1661594",
+  "full_write_terrain_vs_repair_startup": [
+   "A WORKER_RETURNS/PYAT-HQ231-F7-SEALED-OWNER-STATE-CUSTODY-R1/00_RETURN.md",
+   "A WORKER_RETURNS/PYAT-HQ231-F7-SEALED-OWNER-STATE-CUSTODY-R1/01_SEALED_CUSTODY_DESIGN.json",
+   "A WORKER_RETURNS/PYAT-HQ231-F7-SEALED-OWNER-STATE-CUSTODY-R1/02_LIVE_STATE_EXPOSURE_AND_TRANSPLANT_ATTACK.json",
+   "A WORKER_RETURNS/PYAT-HQ231-F7-SEALED-OWNER-STATE-CUSTODY-R1/03_REGISTRY_PROVENANCE_AND_OWNER_PATH.json",
+   "A WORKER_RETURNS/PYAT-HQ231-F7-SEALED-OWNER-STATE-CUSTODY-R1/04_RUNTIME_PRODUCTIVE_PATH_AND_REGRESSION.json",
+   "A WORKER_RETURNS/PYAT-HQ231-F7-SEALED-OWNER-STATE-CUSTODY-R1/05_FINAL_DISPOSITION.json",
+   "M rawlsing_next/pre553_source_relations.py",
+   "M rawlsing_next/tests/test_pre553_temporal_comparability.py"
+  ],
+  "unrelated_accepted_owner_or_authority_material_changed": false,
+  "all_five_section_A_requirements_met": true,
+  "attacked_blob_identity_verified": {
+   "file": "rawlsing_next/pre553_source_relations.py",
+   "blob_at_candidate_code_bearing_head_62394d7ff": "d9fb2c48ff6f2b68b2b8b06a47402c65cf6b7737",
+   "blob_at_review_tip_b030d870a": "d9fb2c48ff6f2b68b2b8b06a47402c65cf6b7737",
+   "blobs_equal": true,
+   "significance": "the exact source I attacked is the candidate code-bearing version; the commits after the code head add only the return packet and court documentation, so there is no drift between the reviewed candidate and the attacked artifact"
+  }
+ },
+ "hostile_reproduction_recorded_here_for_provenance": {
+  "attack_script_committed": "artifacts/hq232_rr04g_attack.py",
+  "controls_script_committed": "artifacts/hq232_rr04g_controls.py",
+  "custody_proof_script_committed": "artifacts/hq232_rr04g_custody_proof.py",
+  "interpreter": "CPython 3.11.3",
+  "monkeypatching_of_production_used": false,
+  "outcome": "REPRODUCED",
+  "verdict": "F7-RR-04G__LEXICAL_CUSTODY_LEDGER_CELL_IS_CALLER_REBINDABLE"
+ },
+ "environment": {
+  "reviewer_python": "3.11.3",
+  "reviewer_venv": "/tmp/hq210venv (independent, outside the repository)",
+  "probe_scripts_location": "/tmp and the return packet artifacts/ directory",
+  "repository_mutation_by_review": "none; the attack mutates only in-process closure state, which is the attack itself"
+ }
+}

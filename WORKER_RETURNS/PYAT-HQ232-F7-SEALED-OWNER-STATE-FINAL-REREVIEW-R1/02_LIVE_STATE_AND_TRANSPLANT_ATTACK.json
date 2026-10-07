@@ -1,0 +1,112 @@
+{
+  "schema": "PYAT_HQ232_F7_LIVE_STATE_AND_TRANSPLANT_ATTACK@1.0.0",
+  "lane": "PYAT-HQ232-F7-SEALED-OWNER-STATE-FINAL-REREVIEW-R1",
+  "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_REPAIR",
+
+  "VERDICT": "REPRODUCED__F7-RR-04G__LEXICAL_CUSTODY_LEDGER_CELL_IS_CALLER_REBINDABLE",
+
+  "B_live_state_exposure_attack": {
+    "verdict": "FAIL__ONE_LIVE_REBINDABLE_PATH_FOUND",
+    "claim_under_attack": "no caller-visible path exposes the exact authenticated custody state",
+    "surfaces_inspected": [
+      {"surface": "module globals and callable helpers", "finding": "_make_sealed_source_relation_owner is del-ed after use at :1177; the factory is NOT reachable. The three exported names are SourceRelationResolver, authenticated_source_relation_decision, source_relation_owner_custody_diagnostic.", "live_path": false},
+      {"surface": "closures reachable from public/module-visible authenticated entrypoints", "finding": "authenticated_source_relation_decision.__closure__ yields _state_or_refuse; loader.__closure__ yields the entries CELL itself. This is the admitted reflection surface and the defect locus.", "live_path": true},
+      {"surface": "diagnostic / inspection surfaces", "finding": "source_relation_owner_custody_diagnostic returns canonical_json TEXT only; verified type(...) is str; never returns the state object. Correct.", "live_path": false},
+      {"surface": "returned tuple / NamedTuple material", "finding": "the diagnostic returns str; the decision is a RelationDecision carrying a custody HASH only, not the state", "live_path": false},
+      {"surface": "weak-owner references and the lexical ledger", "finding": "the ledger is weakref-keyed and dies with the owner (fine). The defect is not the weakref; it is that the CELL holding the ledger tuple is writable.", "live_path": true},
+      {"surface": "constructor sealer and loader reachability through reflection", "finding": "_seal is reachable via SourceRelationResolver.__init__.__closure__ but is NOT on the attack path; the loader is reachable and load-bearing", "live_path": true},
+      {"surface": "ordinary resolver-visible fields and registry objects", "finding": "_registry is shared by design and is not the leak; _by_ref/_by_key are MappingProxyType and are not the leak", "live_path": false}
+    ],
+    "exposure_conclusion": "the CLAIM IS FALSE. The state is not returned directly, but it is obtainable via loader(source)/loader(victim), and decisively the ledger that decides which state a resolver receives is caller-rebindable.",
+    "underscore_naming_accepted_as_guarantee": false,
+    "frozen_dataclass_accepted_as_guarantee": false,
+    "namedtuple_shape_accepted_as_guarantee": false,
+    "lexical_closure_accepted_as_guarantee": false
+  },
+
+  "C_source_to_victim_transplant_hostile": {
+    "verdict": "FAIL_TO_REFUSE__VICTIM_BECOMES_POSITIVE",
+    "fixture_reconstruction": "HQ228 shape rebuilt from the court's own fixtures: source A via _adjudicated_resolver(universe_refs=(UNIVERSE_A, UNIVERSE_B)); victim B via SourceRelationResolver(relations=(), authority_registry=source._registry)",
+    "same_registry_verified": true,
+    "steps": [
+      {"step": 1, "instruction": "source resolver A with genuine positive authorized relation", "observed": "constructed; relation ref urn:rawlsing:pre553:SourceUniverseRelation:sha256:33e5a745121730fe62628206d47b486a1b7acfc3d6347f85ee877027f34ca4e8"},
+      {"step": 2, "instruction": "victim resolver B without that relation, same registry", "observed": "victim._registry is source._registry == True"},
+      {"step": 3, "instruction": "recover _state_or_refuse via authenticated_source_relation_decision.__closure__", "observed": "recovered by __name__ == '_state_or_refuse'"},
+      {"step": 4, "instruction": "recover the closure cell whose cell_contents is the lexical entries tuple", "observed": "recovered; ledger_len_before=2, ledger_has_source=True, ledger_has_victim=True"},
+      {"step": 5, "instruction": "obtain source_state and victim_state", "observed": "source_state.owner_ref() is source == True; victim_state.owner_ref() is victim == True; source by_ref entries=1, victim=0"},
+      {"step": 6, "instruction": "forge a state carrying source custody bound to victim_state.owner_ref", "observed": "owner_ref() is victim == True; by_ref is source_state.by_ref == True; custody_hash == source custody hash == True"},
+      {"step": 7, "instruction": "rebind entries_cell.cell_contents so victim maps to the forged state", "observed": "ASSIGNMENT SUCCEEDED; loader(victim) is forged_state == True"},
+      {"step": 8, "instruction": "invoke the normal authenticated F7 path for victim", "observed": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED / AUTHORIZED_ORDERED_PAIR_UNDER_BOUND_COMPARABILITY / COMPARABLE / INCREASE"}
+    ],
+    "baseline_before_rebind": {
+      "source": {"relation_state": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED", "reason": "AUTHORIZED_ORDERED_PAIR_UNDER_BOUND_COMPARABILITY", "comparability_status": "COMPARABLE"},
+      "victim": {"relation_state": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT", "reason": "SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE", "comparability_status": "NOT_COMPARABLE"}
+    },
+    "after_rebind": {
+      "victim_relation_state": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED",
+      "victim_reason": "AUTHORIZED_ORDERED_PAIR_UNDER_BOUND_COMPARABILITY",
+      "victim_comparability_status": "COMPARABLE",
+      "victim_direction_claim": "INCREASE",
+      "victim_became_positive": true
+    },
+    "owner_decision_level_proof": {
+      "before": {"source_decision": "AUTHORIZED custody d31cd8ddd97f0dc11c0a299cfeb24ea8f54853a392dbd73eaebfe23579c72bc8", "victim_decision": "REFUSED exact SourceUniverseRelation unavailable from authenticated owner custody"},
+      "after": {"source_decision": "AUTHORIZED custody d31cd8dd...", "victim_decision": "AUTHORIZED custody d31cd8dd...", "victim_decision_carries_source_custody_hash": true, "victim_decision_binds_source_relation": true},
+      "significance": "the VICTIM's own P07 owner decision carries the SOURCE's custody hash and the SOURCE's relation ref"
+    },
+    "surfaces_attempted": {
+      "object_setattr_on_state": "refused (AttributeError/TypeError) - INSUFFICIENT, the state is reconstructible so in-place mutation is unnecessary",
+      "container_mutation_of_ledger_tuple": "refused (TypeError) - INSUFFICIENT, the containing CELL does not refuse",
+      "closure_cell_reachable_objects": "BREAK - cell.cell_contents assignment succeeds",
+      "resolver_visible_field_replacement": "blocked by MappingProxyType and irrelevant given W2",
+      "registry_substitution": "refused (section D)",
+      "minimal_local_rebind_control_C2": "ALSO SUCCEEDS - replacing only the victim's own entry state is sufficient"
+    },
+    "weakref_and_gc_hazard_review": {
+      "aliasing_hazard_found": false,
+      "gc_reuse_hazard_found": false,
+      "note": "the weakref correctly dies with the owner and identity checks use `is`; the defect is independent of GC behaviour"
+    },
+    "impossible_threat_model": false,
+    "threat_model_justification": "uses only primitives the F7 hostile court already admitted: function.__closure__, callable recovery by __name__, and _AuthenticatedResolverState construction. The court's own file performs all three at :2265-2298 and :2362. The single extension is one ordinary cell assignment on CPython 3.11.3."
+  },
+
+  "three_load_bearing_weaknesses": {
+    "W1_ledger_lives_in_a_rebindable_closure_cell": {
+      "code": "entries: tuple[tuple[Any, _AuthenticatedResolverState], ...] = ()",
+      "why": "entries is a nonlocal binding mutated by _seal; Python exposes it as a cell reachable via loader.__closure__, and CPython 3.11.3 permits cell.cell_contents assignment",
+      "module_comment_is_true_of_object_false_of_cell": "construction is the only mutation point: _seal rebinds the tuple; no caller can mutate a retrieved ledger object in place - the retrieved OBJECT cannot, the CELL can",
+      "court_assertion_tests_the_property_never_at_risk": "ledger[0] = ledger[-1] -> TypeError"
+    },
+    "W2_authenticated_state_is_caller_constructible_and_self_declaring": {
+      "why": "_AuthenticatedResolverState is a module-level NamedTuple, so any caller may construct one; the guard `if state.owner_ref() is not resolver` reads the FIRST FIELD OF THE STATE ITSELF, so it is a self-declared field the forger sets, not evidence of custody",
+      "candidate_concedes_constructibility": "the candidate's own fail-capability constructs one at test_pre553_temporal_comparability.py:2362"
+    },
+    "W3_custody_hash_is_a_transcription_not_an_owner_binding": {
+      "computed_once": "constructor :966-985",
+      "thereafter_only": ["copied into each RelationDecision (:784, :800)", "format-checked (:694-697)", "folded into the replay identity (:718)"],
+      "never_re_derived_from_the_owning_resolver": true,
+      "consequence": "a forged state carrying the SOURCE's custody_hash while bound to the VICTIM is undetectable; the genuine custody content is self-consistent so _validate_positive_from_owner_state runs clean"
+    },
+    "sealer_guard_not_on_the_reachable_path": {
+      "why": "step 7 rebinds the cell directly and never calls _seal, so the 'resolver owner custody already sealed' single-assignment guard never fires",
+      "confirmed_by_control": "C5"
+    }
+  },
+
+  "controls_run": {
+    "C1_direct_construction_alone_insufficient": {"result": "victim remains TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT until the ledger binding changes", "significance": "isolates the rebinding step as necessary"},
+    "C2_minimal_local_rebind": {"result": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED", "significance": "attack does not depend on rebuilding the whole tuple"},
+    "C3_tuple_item_assignment_still_refused": {"result": "TypeError", "significance": "confirms the candidate's tuple assertion is true and orthogonal"},
+    "C4_custody_hash_not_owner_bound": {"result": "victim receipt reaches AUTHORIZED with source custody hash", "significance": "W3 confirmed"},
+    "C5_sealer_irrelevant_to_this_route": {"result": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED", "significance": "the reseal guard is not load-bearing"}
+  },
+
+  "invariants_that_would_defeat_cell_rebinding": [
+    "Non-forgeable custody binding: derive the owner binding from something the caller cannot set (e.g. a secret per-instance token written by the constructor and compared by the guard), rather than a self-declared owner_ref field.",
+    "Re-derive custody_hash at decision time from the owning resolver and compare against the state's recorded hash.",
+    "Remove _AuthenticatedResolverState from the caller-constructible surface so a forged state cannot be built even given a rebindable cell.",
+    "Make the ledger owner-addressed and immutable at import time rather than a mutable cell binding."
+  ],
+  "note_on_invariant_2_alone": "insufficient on its own if the forger can recompute the hash, which they can since semantic_hash is public and the source custody material is available. The durable fix is invariant 1 or 3."
+}

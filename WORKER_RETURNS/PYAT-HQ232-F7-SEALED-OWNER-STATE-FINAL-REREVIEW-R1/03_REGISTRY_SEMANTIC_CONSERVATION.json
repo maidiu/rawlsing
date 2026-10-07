@@ -1,0 +1,92 @@
+{
+  "schema": "PYAT_HQ232_F7_REGISTRY_SEMANTIC_CONSERVATION@1.0.0",
+  "lane": "PYAT-HQ232-F7-SEALED-OWNER-STATE-FINAL-REREVIEW-R1",
+  "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_REPAIR",
+
+  "D_registry_and_snapshot_provenance_conservation": {
+    "verdict": "PASS",
+    "note": "AND UNAFFECTED BY THE DEFECT - see classification_insight below",
+    "invariants": [
+      {"invariant": "exact concrete AuthorityRegistry pinned", "status": "PASS", "mechanism": "type(authority_registry) is not AuthorityRegistry refuses"},
+      {"invariant": "constructor-admitted snapshots", "status": "PASS"},
+      {"invariant": "exact snapshot semantic/hash validation", "status": "PASS", "mechanism": "_semantic_hash_impl(snapshot.semantic_projection()) != snapshot.content_hash refuses; also snapshot.authority_ref != authority refuses"},
+      {"invariant": "registry replacement immunity", "status": "PASS", "witness": "test_hq227_exact_instance_registry_replacement_cannot_change_pinned_owner_snapshot"},
+      {"invariant": "subclass/override redirection refusal", "status": "PASS", "witnesses": ["test_hq225_rr04c_subclass_full_shaped_authorized_decision_with_real_b_refuses", "test_hq225_rr04c_subclass_right_shape_but_relation_absent_from_base_refuses", "test_hq225_rr04c_subclass_base_then_swaps_authority_cannot_execute", "test_hq227_authority_registry_subclass_cannot_enter_p07_owner_custody"]},
+      {"invariant": "relation-decision replay identity", "status": "PASS", "mechanism": "validate_relation_decision_replay_identity re-derives and refuses stale/corrupt; malformed custody hash refused at :694-697"},
+      {"invariant": "outer/nested authority cross-binding", "status": "PASS", "witness": "test_hq227_nested_registry_instance_dispatch_shadow_cannot_redirect_f7"}
+    ],
+    "classification_insight": "The attack does NOT corrupt custody CONTENT, forge snapshots, or substitute a registry. It reuses the source's genuinely valid, genuinely registry-pinned custody material and attacks only the OWNER-to-CUSTODY BINDING. That is why every invariant in this section still passes while the victim nevertheless opens. This is a custody-binding defect, not a provenance-conservation defect - and it is why the disposition is PARTIAL with a bounded defect rather than an architecture conflict."
+  },
+
+  "E_semantic_non_duplication": {
+    "verdict": "PASS",
+    "comparison_scope": "accepted P07/source-relation owner logic at fbb735f69^ vs candidate head",
+    "runtime_counts_at_candidate_head": {
+      "RELATION_STATES": 12,
+      "AUTHORITY_KINDS": 19,
+      "AUTHORIZED_ORDER_BASES": 3,
+      "NEGATIVE_STATES": 9
+    },
+    "conserved": [
+      {"property": "12 relation states", "status": "CONSERVED"},
+      {"property": "19 authority kinds", "status": "CONSERVED"},
+      {"property": "exact-zero / no tolerance", "status": "CONSERVED", "witness": "test_witness_exact_zero_is_derived_not_asserted"},
+      {"property": "total precedence", "status": "CONSERVED"},
+      {"property": "3+ anchor refusal", "status": "CONSERVED"},
+      {"property": "exact measure/use binding", "status": "CONSERVED"},
+      {"property": "TEMPORAL_EVIDENCE source-scope identity", "status": "CONSERVED"},
+      {"property": "explicit unrestricted-token law", "status": "CONSERVED"}
+    ],
+    "forbidden_authorities_not_introduced": [
+      "ranking", "selection", "interpolation", "trajectory", "causation",
+      "currentness", "pooling", "equivalence-creation", "actor authority"
+    ],
+    "f7_module_reimplements_or_forks_relation_semantics": false,
+    "evidence": "pre553_temporal_comparability.py is blob-identical to the repair base (6f6b462b1cdef54d7989f15452473383c1661594 at both). The repair is a custody-boundary change inside pre553_source_relations.py only.",
+    "full_f7_court": {"suite": "rawlsing_next/tests/test_pre553_temporal_comparability.py", "result": "155 passed"},
+    "source_relations_court": {"suite": "rawlsing_next/tests/test_pre553_source_relations.py", "result": "24 passed"}
+  },
+
+  "F_hqd216_productive_adequacy": {
+    "verdict": "PASS",
+    "principle": "a security/provenance fix that refuses everything is not acceptable",
+    "lawful_productive_paths": [
+      {"path": "same-universe", "available": true, "witness": "test_witness_same_universe_needs_no_equivalence", "result": "PASS"},
+      {"path": "exact-zero", "available": true, "witness": "test_witness_exact_zero_is_derived_not_asserted", "result": "PASS"},
+      {"path": "increase", "available": true, "witness": "test_witness_decrease_direction_is_derived / cross-universe increase", "result": "PASS"},
+      {"path": "decrease", "available": true, "witness": "test_witness_decrease_direction_is_derived", "result": "PASS"},
+      {"path": "lawful cross-universe relation", "available": true, "witness": "test_hq227_full_owner_path_positive_cross_universe_service_remains_productive", "result": "PASS"}
+    ],
+    "all_five_paths_green": true,
+    "productive_regression": false,
+    "note": "the candidate's own baseline confirms the source resolver A remains legitimately positive throughout the attack (TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED), so the defect is not a false-negative/over-refusal problem"
+  },
+
+  "G_fail_capability": {
+    "verdict": "INSUFFICIENT__NOT_LOAD_BEARING_FOR_THIS_DEFECT",
+    "candidate_witness": "test_hq231_targeted_break_transplantable_loader_reopens_same_victim (test_pre553_temporal_comparability.py:2343-2390)",
+    "mechanism": "constructs a transplanted _AuthenticatedResolverState and monkeypatches tc._authenticated_source_relation_decide to a deliberately broken function calling sr._decide_from_owner_state(transplanted, ...) directly",
+    "what_it_proves": "dependency on the authenticated entrypoint",
+    "what_it_does_not_prove": [
+      "that the ACTUAL lexical custody cell used by that entrypoint is protected from reflection",
+      "that the live ledger cannot be rebound"
+    ],
+    "why_insufficient": [
+      "it REPLACES the entrypoint rather than driving the real one",
+      "it supplies its own transplanted state rather than reaching the live one through reflection",
+      "it never touches the ledger cell"
+    ],
+    "stale_in_the_sense_of_broken_file_drift": false,
+    "non_load_bearing_for_F7_RR_04G": true,
+    "strictly_stronger_reproduction_available": "the committed attack drives the REAL unmodified authenticated_source_relation_decision through the REAL _state_or_refuse against the REAL live ledger, and defeats it with one cell assignment",
+    "existing_court_cannot_see_this": true,
+    "existing_court_ledger_assertion": "ledger[0] = ledger[-1] -> TypeError (the only ledger assertion in the court)"
+  },
+
+  "runtime_qualification_relationship": {
+    "parallel_lane": "agent/rabochii-pyat-hq232-f7-runtime-qualification-r1",
+    "read_or_mutated_by_this_review": false,
+    "dependency": false,
+    "commission_boundary_respected": "a green execution of the existing F7 court cannot dispose of F7-RR-04G because the existing court does not exercise cell.cell_contents rebinding - confirmed by reading the court"
+  }
+}
