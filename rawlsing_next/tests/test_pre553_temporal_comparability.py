@@ -1958,3 +1958,235 @@ def test_hq225_rr04c_concrete_owner_positive_path_remains_productive():
     assert type(resolver).__name__ == "SourceRelationResolver"
     assert receipt.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
     assert receipt.direction_claim == "INCREASE"
+
+
+# ===========================================================================
+# HQ227 F7-RR-04D / 04E: full adopted owner-path authenticity.
+# ===========================================================================
+def _hq227_relation_with_snapshot(snapshot):
+    """Build one exact P07 relation under the supplied exact authority snapshot."""
+    from rawlsing_next.pre553_source_relations import (
+        SourceRelationResolver, make_source_universe_relation,
+    )
+
+    material = {
+        "relation_kind": "SOURCE_SEMANTIC_EQUIVALENCE",
+        "equivalence_scope": "EXACT_BOUND_UNIVERSE_PAIR",
+        "left_semantic_ref": _ref("SemanticFingerprint", "SEM-A"),
+        "right_semantic_ref": _ref("SemanticFingerprint", "SEM-B"),
+        "transformation_authority_refs": (_ref("SemanticTransformation", "TR-1"),),
+    }
+    relation = make_source_universe_relation(
+        relation_kind="SOURCE_SEMANTIC_EQUIVALENCE",
+        source_universe_refs=(UNIVERSE_A, UNIVERSE_B),
+        authority_snapshot=snapshot,
+        authority_operation="SEMANTIC_EQUIVALENCE_ADMISSION",
+        operation_scope="EXACT_BOUND_UNIVERSE_PAIR",
+        target_use=_ref("TargetUsePermission", "USE-1").object_id,
+        effective_scope="EXACT_BOUND_UNIVERSE_PAIR",
+        directionality_or_symmetric="SYMMETRIC",
+        operation_authority_material=material,
+        producer_replay_locator_or_reference_root=_ref("REPLAY_ROOT", "hq219"),
+        decision="AUTHORIZED",
+    )
+    resolver = SourceRelationResolver(
+        relations=(relation,), authority_registry=AuthorityRegistry((snapshot,)))
+    return resolver, relation
+
+
+def test_hq227_exact_instance_postconstruction_relation_map_injection_cannot_mint_custody():
+    """RR-04D: caller mutation of _by_ref cannot create an adopted relation."""
+    from rawlsing_next.pre553_source_relations import SourceRelationResolver
+
+    source, relation = _adjudicated_resolver(
+        universe_refs=(UNIVERSE_A, UNIVERSE_B))
+    victim = SourceRelationResolver(
+        relations=(), authority_registry=source._registry)
+
+    # This is the pre-repair exploit: relation_ref lookup read this caller-owned map.
+    victim._by_ref[relation.ref.key] = relation
+
+    receipt = _run(_cross_universe_request(victim, relation.ref))
+    _assert_hq225_owner_impostor_refused(receipt)
+
+
+def test_hq227_exact_instance_registry_replacement_cannot_change_pinned_owner_snapshot():
+    """RR-04E: replacing _registry cannot replace construction-time authority semantics."""
+    import rawlsing_next.pre553_source_relations as sr
+
+    resolver, relation = _adjudicated_resolver(
+        universe_refs=(UNIVERSE_A, UNIVERSE_B))
+    genuine = resolver._registry.resolve_exact(
+        relation.relation_authority_ref).snapshot
+
+    _, shadow = _aref(
+        "SOURCE_EQUIVALENCE", "EQ1",
+        ops=("SEMANTIC_EQUIVALENCE_ADMISSION",),
+        content_hash=genuine.authority_ref.authority_content_hash,
+        families=("SourceUniverseRelation@1.0.0",),
+        scope={"source_universe_refs": "EXPLICIT_UNRESTRICTED",
+               "target_use_refs": "EXPLICIT_UNRESTRICTED",
+               "predicate_or_risk_set_refs": "EXPLICIT_UNRESTRICTED",
+               "hostile_shadow_semantics": "DIFFERENT"})
+    assert shadow.authority_ref == genuine.authority_ref
+    assert shadow.content_hash != genuine.content_hash
+
+    resolver._registry = AuthorityRegistry((shadow,))
+    decision = sr.authenticated_source_relation_decision(
+        resolver,
+        relation_kind="SOURCE_SEMANTIC_EQUIVALENCE",
+        source_universe_refs=(UNIVERSE_A, UNIVERSE_B),
+        operation_scope="EXACT_BOUND_UNIVERSE_PAIR",
+        target_use=_ref("TargetUsePermission", "USE-1").object_id,
+        effective_scope="EXACT_BOUND_UNIVERSE_PAIR",
+        relation_ref=relation.ref,
+        expected_authority_operation="SEMANTIC_EQUIVALENCE_ADMISSION",
+    )
+    assert decision.authorized is True
+    assert decision.authority_snapshot_content_hash == genuine.content_hash
+    assert decision.authority_snapshot_content_hash != shadow.content_hash
+
+    assert _run(_cross_universe_request(
+        resolver, relation.ref)).relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+
+
+def test_hq227_authority_registry_subclass_cannot_enter_p07_owner_custody():
+    """RR-04E: hostile nested registry subclass is not construction provenance."""
+    import rawlsing_next.pre553_source_relations as sr
+
+    source, relation = _adjudicated_resolver(
+        universe_refs=(UNIVERSE_A, UNIVERSE_B))
+    genuine = source._registry.resolve_exact(
+        relation.relation_authority_ref).snapshot
+
+    class HostileRegistry(AuthorityRegistry):
+        called = False
+
+        def resolve_exact(self, ref):
+            type(self).called = True
+            return super().resolve_exact(ref)
+
+    hostile = HostileRegistry((genuine,))
+    with pytest.raises(
+            sr.SourceRelationIntegrityError,
+            match="exact concrete I01 AuthorityRegistry"):
+        sr.SourceRelationResolver(
+            relations=(relation,), authority_registry=hostile)
+    assert HostileRegistry.called is False
+
+
+def test_hq227_corrupt_custodied_relation_replay_identity_refuses_before_f7_positive():
+    """Exact relation custody is re-authenticated; stale replay material cannot ride it."""
+    from types import MappingProxyType
+
+    resolver, relation = _adjudicated_resolver(
+        universe_refs=(UNIVERSE_A, UNIVERSE_B))
+    fields = dict(relation.semantic_fields)
+    fields["replay_identity"] = "0" * 64
+    object.__setattr__(relation, "_semantic_fields", MappingProxyType(fields))
+
+    receipt = _run(_cross_universe_request(resolver, relation.ref))
+    _assert_hq225_owner_impostor_refused(receipt)
+
+
+def test_hq227_same_outer_authority_ref_with_wrong_snapshot_semantics_is_refused():
+    """RR-04E: AuthorityRef identity cannot hide a different AuthoritySnapshot."""
+    registry, auths = _full_registry()
+    genuine = registry.resolve_exact(auths["eq"]).snapshot
+
+    _, wrong = _aref(
+        "SOURCE_EQUIVALENCE", "EQ1",
+        ops=("SEMANTIC_EQUIVALENCE_ADMISSION",),
+        content_hash=auths["eq"].authority_content_hash,
+        families=("SourceUniverseRelation@1.0.0",),
+        scope={"source_universe_refs": "EXPLICIT_UNRESTRICTED",
+               "target_use_refs": "EXPLICIT_UNRESTRICTED",
+               "predicate_or_risk_set_refs": "EXPLICIT_UNRESTRICTED",
+               "hostile_shadow_semantics": "WRONG-INNER-SNAPSHOT"})
+    assert wrong.authority_ref == auths["eq"]
+    assert wrong.content_hash != genuine.content_hash
+
+    resolver, relation = _hq227_relation_with_snapshot(wrong)
+    receipt = compare_temporal_anchors(
+        _hq225_cross_request(
+            resolver=resolver,
+            relation_ref=relation.ref,
+            authority_ref=auths["eq"]),
+        registry,
+    )
+    _assert_hq225_owner_impostor_refused(receipt)
+
+
+def test_hq227_owner_method_and_nested_validation_monkeypatches_cannot_redirect_f7(monkeypatch):
+    """RR-04D: decide/require/resolve/validator seams are not F7 custody."""
+    import rawlsing_next.pre553_source_relations as sr
+
+    resolver, relation = _adjudicated_resolver(
+        universe_refs=(UNIVERSE_A, UNIVERSE_B))
+
+    def explode(*args, **kwargs):
+        raise AssertionError("caller-visible owner seam was dispatched")
+
+    monkeypatch.setattr(sr.SourceRelationResolver, "decide", explode)
+    monkeypatch.setattr(sr.SourceRelationResolver, "require", explode)
+    monkeypatch.setattr(sr.SourceRelationResolver, "resolve_exact", explode)
+    monkeypatch.setattr(sr.SourceRelationResolver, "_validate_positive", explode)
+    monkeypatch.setattr(sr.SourceRelationResolver, "_validate_replay_identity", explode)
+
+    receipt = _run(_cross_universe_request(resolver, relation.ref))
+    assert receipt.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    assert receipt.direction_claim == "INCREASE"
+
+
+def test_hq227_nested_registry_instance_dispatch_shadow_cannot_redirect_f7():
+    """RR-04E: post-construction nested resolve_exact instance shadow is dead."""
+    resolver, relation = _adjudicated_resolver(
+        universe_refs=(UNIVERSE_A, UNIVERSE_B))
+    called = {"value": False}
+
+    def hostile_resolve(ref):
+        called["value"] = True
+        raise AssertionError("nested caller registry dispatch executed")
+
+    resolver._registry.resolve_exact = hostile_resolve
+
+    receipt = _run(_cross_universe_request(resolver, relation.ref))
+    assert receipt.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    assert called["value"] is False
+
+
+def test_hq227_authenticated_decision_carries_exact_custody_snapshot_and_replay_provenance():
+    """Positive P07 proof carries the complete owner provenance F7 consumes."""
+    import rawlsing_next.pre553_source_relations as sr
+
+    resolver, relation = _adjudicated_resolver(
+        universe_refs=(UNIVERSE_A, UNIVERSE_B))
+    snapshot = resolver._registry.resolve_exact(
+        relation.relation_authority_ref).snapshot
+    decision = sr.authenticated_source_relation_decision(
+        resolver,
+        relation_kind="SOURCE_SEMANTIC_EQUIVALENCE",
+        source_universe_refs=(UNIVERSE_A, UNIVERSE_B),
+        operation_scope="EXACT_BOUND_UNIVERSE_PAIR",
+        target_use=_ref("TargetUsePermission", "USE-1").object_id,
+        effective_scope="EXACT_BOUND_UNIVERSE_PAIR",
+        relation_ref=relation.ref,
+        expected_authority_operation="SEMANTIC_EQUIVALENCE_ADMISSION",
+    )
+    assert decision.authorized is True
+    assert decision.relation_ref == relation.ref
+    assert decision.authority_ref == snapshot.authority_ref
+    assert decision.authority_snapshot_content_hash == snapshot.content_hash
+    assert isinstance(decision.owner_custody_hash, str)
+    assert len(decision.owner_custody_hash) == 64
+    assert sr.validate_relation_decision_replay_identity(decision) is decision
+
+
+def test_hq227_full_owner_path_positive_cross_universe_service_remains_productive():
+    """HQD-216: full authenticity does not solve the defect by refusing production."""
+    resolver, relation = _adjudicated_resolver(
+        universe_refs=(UNIVERSE_A, UNIVERSE_B))
+    receipt = _run(_cross_universe_request(resolver, relation.ref))
+    assert receipt.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    assert receipt.comparability_status == "COMPARABLE"
+    assert receipt.direction_claim == "INCREASE"
