@@ -1,0 +1,70 @@
+{
+  "schema": "PYAT_HQ236_F7_PYTHON_NATIVE_BOUNDARY_HOSTILE_ANALYSIS@1",
+  "proof_status": "COORDINATED_ATTACK_CONFIRMED_BY_STATIC_CAUSAL_TRACE__UNIVERSAL_PURE_PYTHON_CONTAINER_THEOREM_NOT_PROVED",
+  "quantifier_attack": {
+    "worker_claim": "every Python-level container owner can reach is caller-reachable/re-assignable",
+    "ruling": "OVERBROAD_UNPROVED_AS_UNIVERSAL_QUANTIFIER",
+    "grounded_subset": [
+      "closure cell.cell_contents mutation",
+      "module/class/instance rebinding",
+      "function.__code__/__defaults__ mutation",
+      "object.__setattr__ on frozen dataclass/slots when supported",
+      "caller-constructible NamedTuple",
+      "replacement of live relation maps"
+    ],
+    "sufficient_to_reject_current_design": true,
+    "why_not_required": "arbitrary same-interpreter code mutation defeats Python-observable decision authenticity even without universal proof about each container"
+  },
+  "property_split": {
+    "custody_secret": "native opaque capsule can protect owner ledger from ordinary Python reflection under restricted native/OS attacker",
+    "decision_entrypoint": "must ensure trusted native decision is actually invoked and not replaced by Python wrapper/callsite",
+    "result_acceptance": "must ensure consuming verifier is independent of attacker-controlled Python; cryptographic proof only meaningful if its verifier cannot be bypassed"
+  },
+  "concrete_python_seams": [
+    {
+      "file": "rawlsing_next/pre553_temporal_comparability.py",
+      "lines": "247-251,1110",
+      "surface": "module-global _authenticated_source_relation_decide alias",
+      "bypass": "hostile Python can replace callable independent of native ledger"
+    },
+    {
+      "file": "rawlsing_next/pre553_temporal_comparability.py",
+      "lines": "440-500",
+      "surface": "Python _relation_decision_defect validation",
+      "bypass": "hostile Python can replace validation flow or result"
+    },
+    {
+      "file": "rawlsing_next/pre553_temporal_comparability.py",
+      "lines": "836+",
+      "surface": "Python compare_temporal_anchors producer",
+      "bypass": "hostile Python can replace producer/return"
+    }
+  ],
+  "native_C": {
+    "conditional_gain": "opaque C owner state and native-only operation/capability check reduce state-transplant risk",
+    "fails_to_establish": "arbitrary hostile same-interpreter Python cannot mint positive F7 receipt",
+    "remaining_attacks": [
+      "replace Python import alias to native check",
+      "rewrite Python compare/verifier callable",
+      "forge Python receipt downstream of a legitimate or skipped native call",
+      "native memory access if attacker tier expands to ctypes/OS"
+    ],
+    "mandatory_requirement": "trusted decision AND trusted result consumption must not pass through attacker-writable Python validation seams"
+  },
+  "IPC": {
+    "conditional_gain": "hostile Python cannot by reflection mutate custody in separate protected process",
+    "remaining_attacks": [
+      "client-side forged response",
+      "client-side bypass of verifier",
+      "transport identity/cross-request replay if protocol underspecified",
+      "same-user OS/process compromise outside trusted isolation model"
+    ],
+    "mandatory_requirement": "authenticated request/response channel, request binding, replay resistance and independently trusted verifier/consumer"
+  },
+  "pure_python": {
+    "sufficient_for": "explicitly bounded public-data/trusted-code threat model subject to targeted hostile witnesses",
+    "insufficient_for": "unrestricted hostile same-interpreter code capable of replacing callsites/results",
+    "current_design": "coordinated attack forges"
+  },
+  "alternative": "Keep the whole Python interpreter and application code in the TCB, constrain adversary to caller-owned data or enumerated untrusted inputs; do not call that arbitrary-code-resistant nonforgeability."
+}
