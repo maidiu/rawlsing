@@ -236,49 +236,84 @@ def _stage_transition(
     retained for the hostile suite and must never be used as a successor.
     """
 
+    from rawlsing_next.pre553_authority_maintenance import AuthorityCandidate
+
     direction = case["direction"]
     if registry is None:
         registry, _ = _register(case, _provide(case))
     graph = registry.build_graph()
+    baseline_snapshot = assert_authority_snapshot_body_matches_ref(
+        case["model_authority_snapshot"], old_model
+    )
     executor = AuthorityMaintenanceExecutor(
-        initial_snapshots=(fx.model_authority_snapshot(direction),),
+        initial_snapshots=(baseline_snapshot,),
         initial_current_selection={old_model.authority_id: old_model},
         determinant_graph=graph,
     )
     evidence = _evidence_receipt(direction)
     executor.intake_evidence(evidence)
-    revision = fx._model_candidate(
-        fx.revised_model_authority(direction),
-        version="2.0.0",
-        evidence_ref=evidence.ref,
-        parent=(old_model,),
-        supersession=(old_model,),
-        semantics=f"{direction}-hq221-v2",
+    revision = AuthorityCandidate(
+        candidate_id=f"CAND-{old_model.authority_id}-2.0.0-hq227-court",
+        candidate_revision=1,
+        authority_id=old_model.authority_id,
+        authority_version="2.0.0",
+        authority_kind=baseline_snapshot.authority_kind,
+        proposed_decision_state="ALLOW",
+        governed_operations=tuple(baseline_snapshot.governed_operations),
+        governed_object_families=tuple(baseline_snapshot.governed_object_families),
+        scope_envelope=dict(baseline_snapshot.scope_envelope),
+        effective_time_or_interval=baseline_snapshot.effective_time_or_interval,
+        evidence_receipt_refs=(evidence.ref,),
+        proposed_parent_authority_refs=(old_model,),
+        proposed_negative_limit_refs=tuple(baseline_snapshot.negative_limit_refs),
+        proposed_supersession_refs=(old_model,),
+        interpretation_semantics=model_rule_authority_interpretation_semantics(
+            case["model_rule"].material()
+        ),
+        replay_protocol_ref=fx._ref_for(
+            "REPLAY_PROTOCOL", f"model-{direction}-hq227-court-v2"
+        ),
     )
     executor.intake_candidate(revision)
     adjudication = executor.adjudicate_candidate(
         revision.ref,
         decision="APPROVED",
-        adjudicator_ref=fx._ref_for("ADJUDICATOR", f"hq221-{direction}-v2"),
-        adjudication_authority_ref=fx._ref_for("GOVERNING_AUTHORITY", "HQ221"),
-        findings_ref=fx._ref_for("FINDINGS", f"hq221-{direction}-v2"),
+        adjudicator_ref=fx._ref_for("ADJUDICATOR", f"hq227-{direction}-v2"),
+        adjudication_authority_ref=fx._ref_for("GOVERNING_AUTHORITY", "HQ227"),
+        findings_ref=fx._ref_for("FINDINGS", f"hq227-{direction}-v2"),
     )
     seal = executor.seal_revision(
         revision.ref,
         adjudication.ref,
-        seal_attestation_ref=fx._ref_for("SEAL_ATTESTATION", f"hq221-{direction}-v2"),
+        seal_attestation_ref=fx._ref_for("SEAL_ATTESTATION", f"hq227-{direction}-v2"),
     )
-    successor = revision.proposed_authority_ref
-    # The governed successor must be a genuinely different authority.
+    successor = seal.authority_ref
+    assert successor == revision.proposed_authority_ref
+    sealed_successor_snapshot = assert_authority_snapshot_body_matches_ref(
+        executor.resolve_historical_exact(successor), successor
+    )
+    successor_rule = PositionedSubjectPossibilityModelRule(
+        sealed_successor_snapshot.authority_ref,
+        case["model_rule"].walkback_authority_ref,
+        case["model_rule"].source_universe_refs,
+        case["model_rule"].walkback_steps,
+        case["model_rule"].positive_proxy_authority_refs,
+    )
+    assert_model_rule_material_bound_to_authority_snapshot(
+        successor_rule.material(),
+        sealed_successor_snapshot,
+        expected_rule_hash=successor_rule.rule_hash,
+    )
     assert successor.authority_content_hash != old_model.authority_content_hash
     return {
         "executor": executor,
         "seal_ref": seal.ref,
         "successor": successor,
+        "sealed_successor_snapshot": sealed_successor_snapshot,
         "decoy": fx.revised_model_authority(direction),
-        "selection_rule_ref": fx._ref_for("SELECTION_RULE", f"hq221-{direction}-v2"),
+        "selection_rule_ref": fx._ref_for("SELECTION_RULE", f"hq227-{direction}-v2"),
         "selection_attestation_ref": fx._ref_for(
-            "SELECTION_ATTESTATION", f"hq221-{direction}-v2"
+            "SELECTION_ATTESTATION", f"hq227-{direction}-v2"
         ),
     }
 
