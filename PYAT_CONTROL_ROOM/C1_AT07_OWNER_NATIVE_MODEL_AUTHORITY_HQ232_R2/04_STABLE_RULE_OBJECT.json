@@ -1,0 +1,232 @@
+{
+  "schema": "PYAT_HQ232_R2_STABLE_MODEL_RULE_OBJECT@1",
+  "status": "CANDIDATE_NOT_ADOPTED",
+  "semantic_projection": {
+    "schema_id": "PositionedSubjectModelRule",
+    "schema_version": "1.0.0",
+    "typed_state": "MODEL_RULE_AUTHORIZED",
+    "authority_snapshot_refs": [
+      {
+        "authority_id": "C1-AT07-POSITIONED-SUBJECT-MODEL-RULE",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "e8215547c90ddf2b88dc5338e08de290f5c97e7db7741e9394c8dd6328631d85"
+      }
+    ],
+    "dependency_refs": [
+      {
+        "kind": "PositionedSubjectModelRuleScopeValidationContract@1",
+        "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-scope-validation:sha256:a0223ead6cadd09f40d29cced20e4655deee8dc4e2ebdd2c8062ee317a5a7211",
+        "content_hash": "a0223ead6cadd09f40d29cced20e4655deee8dc4e2ebdd2c8062ee317a5a7211"
+      },
+      {
+        "kind": "PositionedSubjectModelRuleReplayProtocol@2",
+        "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-replay:sha256:9a250d5a00f519b0f00126fcbc85f344e095f0932574f1d44994f380c48640e4",
+        "content_hash": "9a250d5a00f519b0f00126fcbc85f344e095f0932574f1d44994f380c48640e4"
+      }
+    ],
+    "producer_replay_locator_or_reference_root": {
+      "kind": "PositionedSubjectModelRuleReplayProtocol@2",
+      "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-replay:sha256:9a250d5a00f519b0f00126fcbc85f344e095f0932574f1d44994f380c48640e4",
+      "content_hash": "9a250d5a00f519b0f00126fcbc85f344e095f0932574f1d44994f380c48640e4"
+    },
+    "semantic_fields": {
+      "model_rule_id": "POSITIONED_SUBJECT_EXACT_CONDITIONAL_WITH_GOVERNED_WALKBACK@1.0.0",
+      "algorithm_id": "EXACT_CONDITIONAL_LOOKUP__NO_SMOOTHING_INTERPOLATION_OR_EXTRAPOLATION",
+      "stable_rule_basis": {
+        "schema": "POSITIONED_SUBJECT_MODEL_RULE_BASIS@2",
+        "semantic_contract": "SOURCE_BACKED_POSITIONED_SUBJECT_POSSIBILITY@1.0.0",
+        "query_contract": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+        "field_contract": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_FIELD@1",
+        "model_rule_id": "POSITIONED_SUBJECT_EXACT_CONDITIONAL_WITH_GOVERNED_WALKBACK@1.0.0",
+        "algorithm_id": "EXACT_CONDITIONAL_LOOKUP__NO_SMOOTHING_INTERPOLATION_OR_EXTRAPOLATION",
+        "exact_query_grain": {
+          "purpose_must_equal": "EMPIRICAL_POSSIBILITY_ONLY",
+          "exact_subject_ref_required": true,
+          "exact_target_ref_required": true,
+          "exact_source_universe_ref_required": true,
+          "exact_release_ref_required": true,
+          "at_least_one_conditioner_required": true,
+          "conditioner_binding_ids_unique": true,
+          "each_conditioner_binds_exact_subject_fact_ref": true,
+          "each_conditioner_binds_exact_empirical_coordinate_ref": true,
+          "each_conditioner_binds_exact_positive_comparability_authority_ref": true,
+          "each_conditioner_binds_exact_source_universe_ref": true,
+          "each_conditioner_binds_exact_release_ref": true,
+          "each_conditioner_binds_exact_effective_time_material": true,
+          "conditioner_source_universe_and_release_must_equal_query": true,
+          "requested_projection_is_identity_bearing_exact_material": true
+        },
+        "exact_lane": {
+          "exact_requested_grain_never_broadens": true,
+          "evidence_match_keys": [
+            "source_universe_ref",
+            "release_ref",
+            "target_ref",
+            "retained_conditioner_ids"
+          ],
+          "supported_exact_state": "EXACT_SUPPORTED",
+          "supported_exact_returns_immediately": true,
+          "supported_exact_proxy_walkback_forbidden": true,
+          "unresolved_exact_inputs": [
+            "ABSENT",
+            "UNDERPOWERED",
+            "UNAVAILABLE",
+            "UNRESOLVED"
+          ],
+          "unresolved_exact_disposition": "UNRESOLVED",
+          "underpowered_maps_to_unresolved": true,
+          "terminal_exact_states": [
+            "NONCOMPARABLE",
+            "VALID_EMPTY"
+          ],
+          "terminal_exact_states_do_not_enter_proxy_walkback": true,
+          "later_proxy_never_rewrites_exact_disposition": true
+        },
+        "proxy_lane": {
+          "entered_only_when_exact_lane_is_unresolved": true,
+          "requires_separate_positive_versioned_walkback_authority": true,
+          "finite_authority_supplied_ladder_only": true,
+          "search_heuristic_or_dynamic_surrogate_selection_forbidden": true,
+          "each_step_requires_stable_step_id": true,
+          "each_step_requires_exact_retained_conditioner_set": true,
+          "each_step_requires_exact_positive_proxy_authority_ref": true,
+          "each_step_requires_exact_source_universe_ref": true,
+          "each_step_requires_exact_release_ref": true,
+          "each_step_requires_nonempty_rationale": true,
+          "every_step_proxy_authority_must_be_present_in_positive_proxy_authority_refs": true,
+          "strict_subset_of_original_requested_conditioners_each_step": true,
+          "strict_subset_of_immediately_preceding_retained_conditioners_each_step": true,
+          "sibling_substitution_forbidden": true,
+          "rewidening_forbidden": true,
+          "surrogate_conditioner_set_forbidden": true,
+          "same_source_universe_required_v1": true,
+          "same_release_required_v1": true,
+          "cross_source_or_release_step_fails_closed_without_proxy": true,
+          "only_SUPPORTED_proxy_evidence_can_satisfy_proxy": true,
+          "non_SUPPORTED_proxy_evidence_is_recorded_and_non_satisfying": true,
+          "missing_proxy_evidence_is_recorded_and_walkback_continues": true,
+          "first_supported_authorized_step_in_supplied_ladder_is_selected": true,
+          "proxy_projection_kind": "EXPLICIT_LOWER_SPECIFICITY_PROXY",
+          "proxy_can_satisfy_exact_request": false,
+          "proxy_is_exact_fact": false,
+          "proxy_is_actor_belief": false,
+          "exact_lane_remains_unresolved_when_proxy_selected": true
+        },
+        "specificity_loss_receipt": {
+          "every_attempt_is_recorded": true,
+          "requested_conditioner_ids_recorded": true,
+          "retained_conditioner_ids_recorded": true,
+          "dropped_conditioner_ids_equal_requested_minus_retained": true,
+          "loss_count_equals_number_dropped": true,
+          "loss_fraction_is_exact_dropped_over_requested": true,
+          "loss_fraction_is_not_confidence_or_actor_probability": true,
+          "proxy_authority_ref_recorded": true,
+          "evidence_ref_recorded_when_present": true,
+          "attempt_state_and_detail_recorded": true
+        },
+        "upstream_evidence_law": {
+          "accepted_typed_states": [
+            "SUPPORTED",
+            "UNDERPOWERED",
+            "VALID_EMPTY",
+            "UNRESOLVED",
+            "NONCOMPARABLE",
+            "UNAVAILABLE"
+          ],
+          "SUPPORTED_requires_governed_geometry": true,
+          "consume_governed_support_uncertainty_states_without_new_threshold": true,
+          "new_numeric_support_threshold_authorized": false,
+          "positioned_subject_layer_does_not_reown_empirical_fact": true
+        },
+        "replay_law": {
+          "result_identity_binds_exact_query_ref": true,
+          "result_identity_binds_model_rule_hash": true,
+          "result_identity_binds_model_and_walkback_authority_refs": true,
+          "result_identity_binds_exact_and_proxy_dispositions": true,
+          "result_identity_binds_consumed_exact_and_proxy_evidence_refs": true,
+          "result_identity_binds_every_attempted_walkback_step_and_specificity_loss": true,
+          "result_identity_binds_source_release_target_identity": true,
+          "result_identity_binds_epistemic_ceiling": true,
+          "unused_uninspected_evidence_is_not_a_replay_determinant": true,
+          "verification_reexecutes_rule_and_requires_byte_equivalent_semantic_material_and_hash": true
+        },
+        "forbidden_methods": [
+          "AUTOMATIC_DEMOGRAPHIC_REGROUPING",
+          "CROSS_SOURCE_BORROWING",
+          "EMBEDDING_SIMILARITY_SURROGATE",
+          "EXTRAPOLATION",
+          "HIDDEN_THRESHOLD_INVENTION",
+          "INTERPOLATION",
+          "LLM_SELECTED_SURROGATE",
+          "NEAREST_NEIGHBOR",
+          "NORMATIVE_RECOMMENDATION",
+          "SMOOTHING",
+          "TOP_K_OR_RELEVANCE_SELECTED_FALLBACK"
+        ],
+        "epistemic_and_jurisdiction_ceiling": [
+          "PROXY != EXACT FACT != ACTOR BELIEF",
+          "EMPIRICAL_POSSIBILITY != INDIVIDUAL_PREDICTION",
+          "EMPIRICAL_POSSIBILITY != NORMATIVE_RECOMMENDATION",
+          "GENERATED_SUBJECT_FACT_IS_QUERY_CRITERION_NOT_UPSTREAM_OWNED_FACT",
+          "NO_ACTOR_BELIEF_AUTHORITY",
+          "NO_ACTOR_RESPONSE_AUTHORITY",
+          "NO_ACTOR_DISPOSITION_AUTHORITY",
+          "NO_ACTOR_PREFERENCE_AUTHORITY",
+          "NO_ACTOR_CHOICE_AUTHORITY",
+          "NO_ACTOR_BIOGRAPHY_OR_HISTORY_AUTHORITY",
+          "NO_STRUCTURAL_POSITION_AUTHORITY",
+          "NO_CAUSAL_PATHWAY_AUTHORITY",
+          "NO_NORMATIVE_RECOMMENDATION_AUTHORITY"
+        ],
+        "per_invocation_determinants_not_global_rule_semantics": [
+          "conditioner_bindings",
+          "consumer_query_ref",
+          "evidence_refs",
+          "positive_proxy_authority_refs",
+          "source_universe_refs",
+          "walkback_authority_ref",
+          "walkback_steps"
+        ]
+      },
+      "stable_rule_basis_hash": "409b3968455be046c58d996de47d04261fd27925d2636cfb7b2dfbdc022d0c79",
+      "scope_validation_contract_ref": {
+        "kind": "PositionedSubjectModelRuleScopeValidationContract@1",
+        "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-scope-validation:sha256:a0223ead6cadd09f40d29cced20e4655deee8dc4e2ebdd2c8062ee317a5a7211",
+        "content_hash": "a0223ead6cadd09f40d29cced20e4655deee8dc4e2ebdd2c8062ee317a5a7211"
+      },
+      "walkback_authority_mode": "SEPARATE_EXACT_AUTHORITY_PER_INVOCATION",
+      "per_invocation_determinants_excluded_from_stable_rule_identity": [
+        "conditioner_bindings",
+        "consumer_query_ref",
+        "evidence_refs",
+        "positive_proxy_authority_refs",
+        "source_universe_refs",
+        "walkback_authority_ref",
+        "walkback_steps"
+      ]
+    }
+  },
+  "ref": {
+    "kind": "PositionedSubjectModelRule@1.0.0",
+    "object_id": "urn:rawlsing:pre553:PositionedSubjectModelRule:sha256:a7bcf8a4ab84859cfcac1f2505e2eefccd58d9ea193936a8ff1b85bc0e29064a",
+    "content_hash": "a7bcf8a4ab84859cfcac1f2505e2eefccd58d9ea193936a8ff1b85bc0e29064a"
+  },
+  "identity_law": "PRE553 CanonicalSemanticObject semantic_projection -> semantic_hash -> content-addressed ref",
+  "graph_role": {
+    "authority_edge": {
+      "authority_ref": {
+        "authority_id": "C1-AT07-POSITIONED-SUBJECT-MODEL-RULE",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "e8215547c90ddf2b88dc5338e08de290f5c97e7db7741e9394c8dd6328631d85"
+      },
+      "dependent_ref": {
+        "kind": "PositionedSubjectModelRule@1.0.0",
+        "object_id": "urn:rawlsing:pre553:PositionedSubjectModelRule:sha256:a7bcf8a4ab84859cfcac1f2505e2eefccd58d9ea193936a8ff1b85bc0e29064a",
+        "content_hash": "a7bcf8a4ab84859cfcac1f2505e2eefccd58d9ea193936a8ff1b85bc0e29064a"
+      }
+    },
+    "rule_to_products": "every consuming N10E/C1 product must register this exact stable rule ref",
+    "invocation_material_remains_outside_global_rule_identity": true,
+    "no_final_rule_ref_in_authority_hash": true
+  }
+}
