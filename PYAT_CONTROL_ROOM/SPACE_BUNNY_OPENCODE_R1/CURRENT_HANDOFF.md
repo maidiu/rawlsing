@@ -1,3 +1,38 @@
+# HQ235 FRONTIER — FOUR RETURNS INTAKEN; TWO SUCCESSORS — 2026-10-07
+
+### ACCEPTED / CLOSED AT EXACT GRAIN — N6 GT2 LOCAL CONTEXT
+**RETURN:** `790068a5891f90fb1c258dea736ebeeaf94efe0c`  
+**DISPOSITION:** `N6_GT2_LOCAL_CONTEXT_REALIZATION_ACCEPTED__EVIDENCE_HOLD_CLOSED`  
+**CEILING:** local CONTEXT only; OC05 remains noncurrent; no full N6/world/PREV3/V3 claim.
+
+### RATIFIED DEFECT — F7
+**REVIEW RETURN:** `326262ee45d0cef440eb60b2c1639e63c068061c`  
+**BLOCKER:** `F7-RR-04G__LEXICAL_CUSTODY_LEDGER_CELL_IS_CALLER_REBINDABLE`  
+**RUNTIME RETURN:** `36d64c72af46f7c87f993d5bbc4976935d1ae3c0` — green for pre-repair candidate only.
+
+### NEW — NEEDS LAUNCH — F7 NON-FORGEABLE CUSTODY-BINDING REPAIR
+**AGENT:** Space Bunny authority-sensitive bounded implementation repair worker  
+**MODEL / INTELLIGENCE:** **Space Bunny Max**  
+**MACHINE:** user's Mac / OpenCode / local disk / governed runtime  
+**CHECKOUT:** SPARSE_REQUIRED  
+**BRANCH:** `agent/rabochii-pyat-hq235-f7-nonforgeable-custody-binding-repair-r1`  
+**COMMISSION TIP:** `dcbbe0788f980136ab908b04f896311b7c54bf74`  
+**COMMISSION:** `WORKER_COMMISSIONS/PYAT-HQ235-F7-NONFORGEABLE-CUSTODY-BINDING-REPAIR-R1/00_COMMISSION.md`
+
+### NEW — NEEDS LAUNCH — N10E/C1 R2 AUTHORITY HOSTILE REVIEW
+**AGENT:** Browser/GitHub independent semantic-authority hostile reviewer  
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
+**BRANCH:** `agent/reviewer-pyat-hq235-n10e-c1-model-authority-r2-r1`  
+**COMMISSION TIP:** `8d4a138f0972d2407ce70483a6b36d55427b06bd`  
+**COMMISSION:** `WORKER_COMMISSIONS/PYAT-HQ235-N10E-C1-MODEL-AUTHORITY-R2-HOSTILE-REVIEW-R1/00_COMMISSION.md`
+
+Run both in parallel.
+
+HQ decision:
+`HQD-2026-10-07-235`
+
+---
+
 # HQ234 SUPPLEMENT — F7 CLOSURE-CELL HOSTILE LEAD — 2026-10-07
 
 **ACTIVE F7 REVIEWER:** `agent/reviewer-pyat-hq232-f7-sealed-owner-state-final-rereview-r1 @ b030d870abdacf20d689d17ef6828d4e26dfedd6`
