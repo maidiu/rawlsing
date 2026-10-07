@@ -1,0 +1,51 @@
+{
+  "schema": "PYAT_HQ235_R2_STABLE_BASIS_COMPLETENESS_REVIEW@1",
+  "disposition": "C1_OWNER_NATIVE_MODEL_AUTHORITY_R2_PARTIAL__NAMED_DEFECT",
+  "candidate_commit": "d042fd69f8536bb5e2a58ce59806419d3c3bd3a4",
+  "recomputed_stable_basis_hash": "409b3968455be046c58d996de47d04261fd27925d2636cfb7b2dfbdc022d0c79",
+  "hash_match": true,
+  "checks": {
+    "proxy_only_after_exact_unresolved": "PASS",
+    "exact_supported_returns_immediately": "PASS",
+    "valid_empty_terminal": "PASS",
+    "noncomparable_terminal": "PASS",
+    "every_step_proxy_authority_positively_listed": "PASS",
+    "supported_only_proxy_satisfaction": "PASS",
+    "strict_subset_original_and_previous": "PASS",
+    "sibling_substitution_and_rewidening_forbidden": "PASS",
+    "exact_query_grain": "PASS",
+    "same_source_release_fail_closed": "PASS",
+    "finite_authority_declared_ladder": "PASS",
+    "first_supported_selection": "PASS",
+    "specificity_loss_receipt": "PASS",
+    "replay_determinant_law_and_unused_evidence_exclusion": "PASS",
+    "epistemic_and_jurisdiction_ceiling": "PASS",
+    "exact_typed_result_state_mapping": "FAIL"
+  },
+  "named_defect": {
+    "id": "HQ235-DEFECT-STABLE-TYPED-RESULT-MAPPING-001",
+    "severity": "BLOCKS_ADOPTION__BOUNDED_REPAIR",
+    "admitted_result_states": [
+      "EXACT_SUPPORTED",
+      "EXACT_UNRESOLVED_PROXY_AVAILABLE",
+      "UNRESOLVED",
+      "VALID_EMPTY",
+      "NONCOMPARABLE",
+      "FAIL_CLOSED"
+    ],
+    "missing_from_stable_basis": [
+      "complete result_state mapping",
+      "EXACT_UNRESOLVED_PROXY_AVAILABLE result-state identity",
+      "FAIL_CLOSED result-state identity",
+      "exact condition -> result_state/exact_disposition mapping"
+    ],
+    "evidence": [
+      "Z08 contract freezes six V1 result-state meanings.",
+      "A05 admits the Z08 production blob without semantic modification.",
+      "Current admitted evaluate_positioned_subject_possibility returns exact typed states for supported, terminal, proxy-selected, exhausted and fail-closed paths.",
+      "R2 stable basis contains no result_state law and does not name EXACT_UNRESOLVED_PROXY_AVAILABLE or FAIL_CLOSED."
+    ],
+    "consequence": "Public model behavior can change while the stable basis, owner authority and stable rule identity remain unchanged.",
+    "required_correction": "Freeze the exact condition-to-result_state/exact_disposition/proxy/fail-closed mapping in the stable basis and transitively recompute identities."
+  }
+}
