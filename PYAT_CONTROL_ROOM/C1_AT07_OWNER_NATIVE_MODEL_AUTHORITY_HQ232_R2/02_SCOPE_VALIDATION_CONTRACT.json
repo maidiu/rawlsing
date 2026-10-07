@@ -1,0 +1,76 @@
+{
+  "schema": "PYAT_HQ232_R2_SCOPE_VALIDATION_PREIMAGE@1",
+  "material": {
+    "schema": "POSITIONED_SUBJECT_MODEL_RULE_SCOPE_VALIDATION_CONTRACT@1",
+    "selected_design": "A__KIND_SPECIFIC_EXACT_SCOPE_VALIDATOR",
+    "future_validator_name": "validate_positioned_subject_model_rule_authority_use",
+    "authority_kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_MODEL_RULE",
+    "operation": "AUTHORIZE_POSITIONED_SUBJECT_EXACT_CONDITIONAL_MODEL_RULE",
+    "object_family": "PositionedSubjectModelRule@1.0.0",
+    "required_inputs": {
+      "snapshot": "exact AuthoritySnapshot resolved by exact AuthorityRef; no latest/default/fuzzy fallback",
+      "source_universe_ref": "exact ExactRef for the invocation",
+      "release_ref": "exact C11LogicalRelease ExactRef for the invocation",
+      "fixture_id": "exact nonempty fixture identity string",
+      "permitted_use": "exact nonempty permitted-use string",
+      "real_source_effect": "exact bool and MUST be false"
+    },
+    "mandatory_snapshot_checks": {
+      "generic_positive_check": [
+        "decision_state == ALLOW",
+        "exact authority_kind",
+        "exact operation named",
+        "exact object family named",
+        "exact source_universe_ref contained"
+      ],
+      "scope_envelope_must_be_mapping": true,
+      "release_ref_must_be_exactly_contained_in_release_refs": true,
+      "fixture_id_must_be_exactly_contained_in_fixture_ids": true,
+      "permitted_use_must_be_exactly_contained_in_permitted_uses": true,
+      "scope_real_source_effect_must_equal_false": true,
+      "invocation_real_source_effect_must_equal_false": true,
+      "effective_time_or_interval_must_equal": "AT07_FIXTURE_ONLY"
+    },
+    "exact_match_semantics": {
+      "refs": "canonical PRE553 exact material equality over full kind/object_id/content_hash; no object-id-only, label, alias, hierarchy, latest, nearest, or wildcard match",
+      "strings": "exact canonical string equality after existing nonempty-string validation; no prefix, case-fold, label, or alias matching",
+      "booleans": "identity equality; only false is admissible for real_source_effect",
+      "collections": "required item must be an exact member of the frozen authority collection; omission is not unrestricted",
+      "unrestricted_tokens": "forbidden for release_refs, fixture_ids, permitted_uses, and real_source_effect in this authority family"
+    },
+    "failure_contract": {
+      "classification": "AUTHORITY_SCOPE_MISMATCH",
+      "exception_family": "Pre553AuthorityError",
+      "reason_tokens": [
+        "MODEL_RULE_SCOPE_ENVELOPE_MALFORMED",
+        "MODEL_RULE_SOURCE_UNIVERSE_SCOPE_MISMATCH",
+        "MODEL_RULE_RELEASE_SCOPE_MISMATCH",
+        "MODEL_RULE_FIXTURE_SCOPE_MISMATCH",
+        "MODEL_RULE_PERMITTED_USE_SCOPE_MISMATCH",
+        "MODEL_RULE_REAL_SOURCE_EFFECT_FORBIDDEN",
+        "MODEL_RULE_EFFECTIVE_INTERVAL_MISMATCH"
+      ],
+      "no_positive_rule_object_or_provider_use_after_failure": true,
+      "no_new_authority_snapshot_decision_state": true
+    },
+    "load_bearing_owner_path": {
+      "when": "before a stable PositionedSubjectModelRule is constructed/admitted for use and before an invocation-specific PositionedSubjectPossibilityModelRule is assembled or passed into N10E provider execution",
+      "required_sequence": [
+        "resolve exact owner-native authority snapshot from exact AuthorityRef",
+        "run existing require_positive_authority for kind/operation/family/source-universe",
+        "run this kind-specific validator for release/fixture/permitted-use/real-source/effective-interval",
+        "verify stable-rule ref/basis under the validated authority",
+        "only then assemble invocation rule with separate walkback authority and determinants"
+      ],
+      "bypass_forbidden": true
+    },
+    "why_kind_specific_not_generic_extension": "Only this new authority family carries fixture_ids/permitted_uses/real_source_effect as constitutive restrictive scope. Extending the generic API would broaden shared I01 behavior without evidence that other authority families require those dimensions.",
+    "real_source_effect_law": "false is a ceiling, not a requested capability; true can never be authorized by this R2 candidate"
+  },
+  "hash": "a0223ead6cadd09f40d29cced20e4655deee8dc4e2ebdd2c8062ee317a5a7211",
+  "ref": {
+    "kind": "PositionedSubjectModelRuleScopeValidationContract@1",
+    "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-scope-validation:sha256:a0223ead6cadd09f40d29cced20e4655deee8dc4e2ebdd2c8062ee317a5a7211",
+    "content_hash": "a0223ead6cadd09f40d29cced20e4655deee8dc4e2ebdd2c8062ee317a5a7211"
+  }
+}
