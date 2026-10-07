@@ -2757,3 +2757,31 @@ def test_r23_registration_refuses_free_floating_model_rule_hash():
             determinant_ownerships=ownerships,
             model_rule_hash=result.provider_receipt.model_rule_hash,
         )
+
+
+def test_r24_direct_authority_census_is_derived_from_bound_rule_material():
+    case = _case(DIRECTION)
+    result = _provide(case)
+    ownerships = _census(case, result)
+    binding = ModelRuleAuthorityBindingEvidence(
+        model_rule_hash=result.provider_receipt.model_rule_hash,
+        model_rule_material=case["model_rule"].material(),
+        model_authority_snapshot=case["model_authority_snapshot"],
+    )
+
+    # Omitting the walkback authority would recreate the caller-asserted direct-edge
+    # defect: the registration must derive the whole independently governed authority
+    # set from the authenticated rule body, not trust a hand-written subset.
+    with pytest.raises(
+        ModelRuleAuthorityBindingMismatch,
+        match="MODEL_RULE_AUTHORITY_BINDING_MISMATCH",
+    ):
+        AnalyticalProductRegistration(
+            product_ref=_product_ref(result.result_identity_hash),
+            product_identity_hash=result.result_identity_hash,
+            determinant_authority_refs=(case["model_rule"].model_authority_ref,),
+            determinant_exact_refs=tuple(row.determinant_ref for row in ownerships),
+            determinant_ownerships=ownerships,
+            model_rule_hash=result.provider_receipt.model_rule_hash,
+            model_rule_authority_binding=binding,
+        )
