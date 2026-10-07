@@ -96,3 +96,25 @@ Do not close Q-KERNEL-001 until at least one candidate:
 Until then:
 
 `KERNEL = OPEN_DISCOVERY`.
+
+
+## R14 post-course-correct candidate recovery
+
+The 2026-10-07 post-course-correct transcript reconciliation adds two bounded research candidates:
+
+- `04_INDEPENDENT_ACTUALITY_RESISTANCE_OPEN_CAUSATION_AND_DEVELOPMENT_CANDIDATE_R1.md`
+  - asks whether PLAYER POSSIBILITY × INDEPENDENT ACTUALITY × PARTIAL ACCESS × IRREVERSIBLE CONSEQUENCE × OPEN FUTURE compresses a major source of native gameplay tension;
+  - preserves resistance as causal independence, not difficulty;
+  - distinguishes development from relationship ascent, deepening from intimacy, and discovery from becoming.
+
+- `05_ADAPTIVE_PHENOMENAL_LENS_PLAYABLE_VEIL_KERNEL_CANDIDATE_R1.md`
+  - recovers the stronger playable-veil / elephant candidate from divergent R13 evidence onto the clean lineage;
+  - asks whether the adaptive phenomenal lens makes the user's own historically produced partiality playable while an independent other remains irreducible to it.
+
+Both are `RESEARCH_ONLY__NOT_ADOPTED`.
+
+Neither closes `Q-KERNEL-001`.
+Neither resurrects artifacts 88–90 or declares a Rawlsing master game loop.
+
+Read with:
+- `96_POST_COURSE_CORRECT_TRANSCRIPT_FORENSIC_RECONCILIATION_R1.md`.
