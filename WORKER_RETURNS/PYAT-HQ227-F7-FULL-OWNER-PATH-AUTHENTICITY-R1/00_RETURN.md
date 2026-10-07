@@ -5,7 +5,7 @@
 **COMMISSION TIP:** `c609dbfe4c60bbc4fb8886692343bab3878805f3`  
 **STARTUP BASE:** `45b721ee13209b9c0d9ecce3023cd1902de21302`  
 **PRIOR REVIEW:** `2b8946bfef1506bae34b46a55833bad83bfb9d16`  
-**CODE-BEARING HEAD:** `506291b6e08f4e94791c4fb1cf7020691466e167`
+**CODE-BEARING HEAD:** `61acee605d618ed4a0db11d893f6139593ae5780`
 
 ## Blockers closed in implementation
 
@@ -56,7 +56,7 @@ The pre-HQ227 implementation would accept the relation-map injection path becaus
 
 The lawful cross-universe path remains source-reachable and has an explicit positive control requiring `TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED / COMPARABLE / INCREASE`. Existing same-universe, exact-zero, increase, decrease, 3+ anchor refusal, exact-use, exact-measure, temporal identity, total-precedence, two-token unrestricted law, 12-state ceiling, and 19-authority-kind ceiling are not intentionally widened.
 
-One conservative incidental hardening remains in `SourceRelationResolver.from_c11`: exact resolver/repository/object family checks were tightened while establishing owner provenance. It is not relied on by the F7 repair and should be inspected in rereview for compatibility; no known F7 semantic requirement depends on it.
+`SourceRelationResolver.from_c11` repository/class construction flexibility was restored before return so the repair does not redefine that unrelated API. Exact relation-object custody remains enforced because the authenticated owner path must not accept a relation subclass as equivalent construction provenance.
 
 ## Execution truth
 
