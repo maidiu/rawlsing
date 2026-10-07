@@ -2299,8 +2299,12 @@ def test_hq231_custody_capsule_is_tuple_immutable_and_constructor_bound():
     )
     with pytest.raises(
             sr.SourceRelationIntegrityError,
-            match="owner custody already sealed"):
+            match="capsule is not bound to constructor instance"):
         sealer(victim, source_state)
+    with pytest.raises(
+            sr.SourceRelationIntegrityError,
+            match="owner custody already sealed"):
+        sealer(victim, victim_state)
 
     _assert_hq225_owner_impostor_refused(
         _run(_cross_universe_request(victim, relation.ref)))
