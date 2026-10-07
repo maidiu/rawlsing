@@ -1,3 +1,24 @@
+# HQ234 SUPPLEMENT — F7 CLOSURE-CELL HOSTILE LEAD — 2026-10-07
+
+**ACTIVE F7 REVIEWER:** `agent/reviewer-pyat-hq232-f7-sealed-owner-state-final-rereview-r1 @ b030d870abdacf20d689d17ef6828d4e26dfedd6`
+
+Before final F7 disposition, read:
+
+`PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ234_F7_CLOSURE_CELL_HOSTILE_LEAD_R1.md`
+
+Mandatory new hostile lead:
+
+`F7-RR-04G__LEXICAL_CUSTODY_LEDGER_CELL_IS_CALLER_REBINDABLE`
+
+The existing court attacks tuple mutability but not `cell.cell_contents` rebinding. Reproduce or falsify the exact closure-cell transplant attack locally. Do not repair in the review lane.
+
+The superseded browser reviewer correctly did not push after branch ownership changed.
+
+HQ decision:
+`HQD-2026-10-07-234`
+
+---
+
 # HQ233 FRONTIER — LOCAL ROUTING CORRECTION — 2026-10-07
 
 ### NEW — NEEDS LAUNCH — F7 SEALED OWNER-STATE FINAL HOSTILE REREVIEW
