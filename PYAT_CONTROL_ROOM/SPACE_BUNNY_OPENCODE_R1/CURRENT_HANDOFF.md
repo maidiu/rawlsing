@@ -1,3 +1,31 @@
+# HQ237 FRONTIER — TWO RETURNED, ONE STILL OUT; N10E R3 REVIEW DISPATCHED — 2026-10-07
+
+### BANKED DECISION INPUT — F7 OWNER-BOUNDARY ARCHITECTURE
+**RETURN:** `7a9a0a5917b888c15b3ead051fb116b7549b37c9`  
+**DISPOSITION:** `F7_OWNER_BOUNDARY_ARCHITECTURE_DECISION_READY__EXACT_CONTRACT_AND_OPTION_RULING`  
+**HQ:** neither native-C nor IPC nor narrowed threat model adopted. The universal impossibility claim is overbroad; C custody alone does not guarantee end-to-end F7 authenticity.
+
+### EXISTING ACTIVE — F7 LOCAL COORDINATED HOSTILE EVIDENCE — DO NOT RELAUNCH
+**AGENT:** DeepSeek-Harness / OpenCode independent governed-runtime hostile reviewer  
+**MODEL:** **DeepSeek V4.1 Flash**  
+**MACHINE:** user's Mac / governed local runtime  
+**BRANCH:** `agent/reviewer-pyat-hq236-f7-coordinated-hostile-evidence-r1`  
+**COMMISSION / LAST VERIFIED HEAD:** `ea734f1d4418a2356620627d16dbcd17b39819c9`  
+**STATUS:** NOT RETURNED; remain active unchanged.
+
+### NEW — NEEDS LAUNCH — N10E/C1 R3 AUTHORITY HOSTILE REVIEW
+**AGENT:** Browser/GitHub independent semantic-authority hostile reviewer  
+**MODEL:** **GPT-5.6 Sol High**  
+**BRANCH:** `agent/reviewer-pyat-hq237-n10e-c1-model-authority-r3-r1`  
+**COMMISSION TIP:** `3b3ffafc245dceaf2edee84c4ccc59b508da69a5`  
+**COMMISSION:** `WORKER_COMMISSIONS/PYAT-HQ237-N10E-C1-MODEL-AUTHORITY-R3-HOSTILE-REVIEW-R1/00_COMMISSION.md`  
+**CANDIDATE:** `agent/rabochii-pyat-hq236-n10e-c1-model-authority-correction-r3 @ d8b970651070895d1c745fdae021023e535a07d8`
+
+**HQ DECISION:** `HQD-2026-10-07-237`  
+**NEXT:** N10E R3 review and existing F7 local evidence proceed independently. F7 architecture decision waits for final independent evidence; N10E production blocked pending green review and explicit adoption.
+
+---
+
 # HQ236 FRONTIER — TWO RETURNS INTAKEN; THREE ORTHOGONAL SUCCESSORS — 2026-10-07
 
 ### RETURNED / ARCHITECTURE QUESTION HELD — F7
