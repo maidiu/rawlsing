@@ -2193,3 +2193,169 @@ def test_hq227_full_owner_path_positive_cross_universe_service_remains_productiv
     assert receipt.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
     assert receipt.comparability_status == "COMPARABLE"
     assert receipt.direction_claim == "INCREASE"
+
+
+# ===========================================================================
+# HQ231 F7-RR-04F: sealed constructor-bound owner-state custody.
+# ===========================================================================
+def test_hq231_source_to_victim_custody_transplant_surface_is_sealed():
+    """HQ228 attack has no resolver->live-state callable surface left."""
+    import json
+    import rawlsing_next.pre553_source_relations as sr
+
+    source, relation = _adjudicated_resolver(
+        universe_refs=(UNIVERSE_A, UNIVERSE_B))
+    victim = sr.SourceRelationResolver(
+        relations=(), authority_registry=source._registry)
+
+    # The exact HQ228 live accessor/sealer names are gone, not merely renamed aliases.
+    assert not hasattr(sr, "_load_owner_state")
+    assert not hasattr(sr, "_seal_owner_state")
+    assert not hasattr(sr, "_make_owner_state_store")
+
+    source_diag = json.loads(sr.source_relation_owner_custody_diagnostic(source))
+    victim_diag = json.loads(sr.source_relation_owner_custody_diagnostic(victim))
+    assert relation.ref.as_dict() in source_diag["relation_refs"]
+    assert victim_diag["relation_refs"] == []
+
+    # Caller-visible legacy fields are not constructor custody.
+    victim._by_ref[relation.ref.key] = relation
+    victim._by_key.update(source._by_key)
+    victim._registry = source._registry
+
+    receipt = _run(_cross_universe_request(victim, relation.ref))
+    _assert_hq225_owner_impostor_refused(receipt)
+    assert _run(_cross_universe_request(
+        source, relation.ref)).relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+
+
+def test_hq231_diagnostic_is_detached_and_object_setattr_cannot_touch_custody():
+    """Any supported custody inspection result is detached canonical text."""
+    import rawlsing_next.pre553_source_relations as sr
+
+    source, relation = _adjudicated_resolver(
+        universe_refs=(UNIVERSE_A, UNIVERSE_B))
+    victim = sr.SourceRelationResolver(
+        relations=(), authority_registry=source._registry)
+
+    source_diag = sr.source_relation_owner_custody_diagnostic(source)
+    victim_diag = sr.source_relation_owner_custody_diagnostic(victim)
+    assert type(source_diag) is str
+    assert type(victim_diag) is str
+
+    with pytest.raises((AttributeError, TypeError)):
+        object.__setattr__(victim_diag, "by_ref", source_diag)
+
+    # Detached diagnostic handling cannot alter either resolver's authenticated state.
+    _assert_hq225_owner_impostor_refused(
+        _run(_cross_universe_request(victim, relation.ref)))
+    assert _run(_cross_universe_request(
+        source, relation.ref)).relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+
+
+def test_hq231_custody_capsule_is_tuple_immutable_and_constructor_bound():
+    """The trusted capsule itself resists HQ228 object.__setattr__ transplantation."""
+    import weakref
+    import rawlsing_next.pre553_source_relations as sr
+
+    source, relation = _adjudicated_resolver(
+        universe_refs=(UNIVERSE_A, UNIVERSE_B))
+    snapshot = source._registry.resolve_exact(
+        relation.relation_authority_ref).snapshot
+
+    # A capsule with source ownership cannot be field-rewritten into victim ownership.
+    capsule = sr._AuthenticatedResolverState(
+        owner_ref=weakref.ref(source),
+        by_ref={relation.ref.key: relation},
+        by_key={sr._relation_object_key_from_relation(relation): (relation,)},
+        authority_snapshots={snapshot.authority_ref.key: snapshot},
+        relation_semantic_hashes={relation.ref.key: relation.content_hash},
+        authority_semantic_hashes={snapshot.authority_ref.key: snapshot.content_hash},
+        custody_hash=_h("hq231-capsule"),
+    )
+    with pytest.raises((AttributeError, TypeError)):
+        object.__setattr__(capsule, "by_ref", {})
+    with pytest.raises((AttributeError, TypeError)):
+        object.__setattr__(capsule, "owner_ref", lambda: None)
+    assert capsule.owner_ref() is source
+
+
+def test_hq231_existing_nested_owner_and_registry_attacks_remain_closed(monkeypatch):
+    """HQ227 nested dispatch hardening survives the sealed-custody refactor."""
+    import rawlsing_next.pre553_source_relations as sr
+
+    resolver, relation = _adjudicated_resolver(
+        universe_refs=(UNIVERSE_A, UNIVERSE_B))
+    called = {"registry": False}
+
+    def explode(*args, **kwargs):
+        raise AssertionError("caller-visible owner seam was dispatched")
+
+    def hostile_registry_resolve(ref):
+        called["registry"] = True
+        raise AssertionError("caller-visible registry dispatch executed")
+
+    resolver._registry.resolve_exact = hostile_registry_resolve
+    monkeypatch.setattr(sr.SourceRelationResolver, "decide", explode)
+    monkeypatch.setattr(sr.SourceRelationResolver, "require", explode)
+    monkeypatch.setattr(sr.SourceRelationResolver, "resolve_exact", explode)
+    monkeypatch.setattr(sr.SourceRelationResolver, "_validate_positive", explode)
+    monkeypatch.setattr(sr.SourceRelationResolver, "_validate_replay_identity", explode)
+    monkeypatch.setattr(sr, "_owner_state_resolve_exact", explode)
+    monkeypatch.setattr(sr, "_validate_positive_from_owner_state", explode)
+    monkeypatch.setattr(sr, "_validate_relation_replay_identity", explode)
+
+    receipt = _run(_cross_universe_request(resolver, relation.ref))
+    assert receipt.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    assert receipt.direction_claim == "INCREASE"
+    assert called["registry"] is False
+
+
+def test_hq231_targeted_break_transplantable_loader_reopens_same_victim(monkeypatch):
+    """Fail-capability: restore a transplantable custody path and the SAME victim opens."""
+    import weakref
+    from types import MappingProxyType
+    import rawlsing_next.pre553_source_relations as sr
+    import rawlsing_next.pre553_temporal_comparability as tc
+
+    source, relation = _adjudicated_resolver(
+        universe_refs=(UNIVERSE_A, UNIVERSE_B))
+    victim = sr.SourceRelationResolver(
+        relations=(), authority_registry=source._registry)
+    request = _cross_universe_request(victim, relation.ref)
+
+    # Repaired production refuses this exact victim.
+    _assert_hq225_owner_impostor_refused(_run(request))
+
+    snapshot = source._registry.resolve_exact(
+        relation.relation_authority_ref).snapshot
+    key = sr._relation_object_key_from_relation(relation)
+    transplanted = sr._AuthenticatedResolverState(
+        owner_ref=weakref.ref(source),
+        by_ref=MappingProxyType({relation.ref.key: relation}),
+        by_key=MappingProxyType({key: (relation,)}),
+        authority_snapshots=MappingProxyType({snapshot.authority_ref.key: snapshot}),
+        relation_semantic_hashes=MappingProxyType(
+            {relation.ref.key: relation.content_hash}),
+        authority_semantic_hashes=MappingProxyType(
+            {snapshot.authority_ref.key: snapshot.content_hash}),
+        custody_hash=_h("hq231-pre-repair-transplanted-custody"),
+    )
+
+    def broken_transplantable_owner(resolver, **kwargs):
+        assert resolver is victim
+        # Targeted pre-repair break: bypass constructor-bound load and feed another
+        # resolver's live-shaped custody directly into the adopted decision algorithm.
+        decision = sr._decide_from_owner_state(transplanted, **kwargs)
+        return sr.validate_relation_decision_replay_identity(decision)
+
+    monkeypatch.setattr(
+        tc, "_authenticated_source_relation_decide",
+        broken_transplantable_owner, raising=False)
+    broken = _run(request)
+    assert broken.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    assert broken.comparability_status == "COMPARABLE"
+    assert broken.direction_claim == "INCREASE"
+
+    monkeypatch.undo()
+    _assert_hq225_owner_impostor_refused(_run(request))
