@@ -1,0 +1,48 @@
+{
+  "schema": "HQ227_OWNER_PROVENANCE_AND_STATE_AUTHENTICATION@1.0.0",
+  "code_bearing_head": "506291b6e08f4e94791c4fb1cf7020691466e167",
+  "blocker": "F7-RR-04D__EXACT_RESOLVER_INSTANCE_CAN_SHADOW_INTERNAL_OWNER_DISPATCH",
+  "owner_entrypoint": "rawlsing_next.pre553_source_relations.authenticated_source_relation_decision",
+  "construction_authentication": {
+    "resolver_type": "exact SourceRelationResolver required by authenticated entrypoint",
+    "registry_type": "exact AuthorityRegistry required at SourceRelationResolver construction",
+    "relation_type": "exact SourceUniverseRelation required during constructor validation",
+    "state_location": "closure-owned WeakKeyDictionary keyed by constructed resolver",
+    "caller_replaceable_fields_not_authoritative": [
+      "_by_ref",
+      "_by_key",
+      "_registry"
+    ]
+  },
+  "sealed_owner_state": [
+    "exact relation ref -> SourceUniverseRelation",
+    "exact request key -> immutable relation tuple",
+    "exact relation-authority ref -> AuthoritySnapshot",
+    "relation canonical semantic content hash",
+    "authority snapshot canonical semantic content hash",
+    "deterministic owner_custody_hash"
+  ],
+  "decision_provenance": {
+    "exact_type": "RelationDecision",
+    "bound_fields": [
+      "relation_kind",
+      "source_universe_refs",
+      "operation_scope",
+      "target_use",
+      "effective_scope",
+      "directionality_or_symmetric",
+      "relation_ref",
+      "authority_ref",
+      "authority_operation",
+      "owner_custody_hash",
+      "authority_snapshot_content_hash"
+    ],
+    "replay_identity": "recomputed over exact request, result state, relation/authority refs, owner custody hash, and authority snapshot semantic hash"
+  },
+  "dispatch_freezing": [
+    "F7 captures authenticated_source_relation_decision once",
+    "authenticated entrypoint captures owner-state loader, decider and returned-decision validator",
+    "nested relation resolution/replay/positive-authority validation implementations are frozen into adopted defaults"
+  ],
+  "semantic_widening": false
+}
