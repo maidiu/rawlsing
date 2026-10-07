@@ -1,0 +1,53 @@
+{
+  "schema": "HQ232_F7_FINAL_DISPOSITION@1",
+  "commission": "PYAT-HQ232-F7-RUNTIME-QUALIFICATION-R1",
+  "branch": "agent/rabochii-pyat-hq232-f7-runtime-qualification-r1",
+  "commission_tip": "77d68f552f0871ffe109241017778d08c3ab0601",
+  "disposition": "F7_RUNTIME_QUALIFIED__READY_FOR_FINAL_HQ_ADJUDICATION",
+  "governed_interpreter_used": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+  "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+  "courts": {
+    "rawlsing_next/tests/test_pre553_temporal_comparability.py": {
+      "collected": 155,
+      "passed": 155,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "rawlsing_next/tests/test_pre553_source_relations.py": {
+      "collected": 24,
+      "passed": 24,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "rawlsing_next/tests/test_m1_temporal_v554_admission_dedup.py": {
+      "collected": 27,
+      "passed": 27,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "combined": {
+      "collected": 206,
+      "passed": 206,
+      "failed": 0,
+      "exit_code": 0
+    }
+  },
+  "truthful_collection_note": "155 was collected, not assumed; it matches the candidate's static estimate exactly.",
+  "runtime_divergence": "NONE_OBSERVED",
+  "production_mutation": "NONE",
+  "semantic_mutation": "NONE",
+  "accepted_test_mutation": "NONE",
+  "self_adoption": "NONE",
+  "hq234_boundary_respected": true,
+  "hq234_note": "The existing court does not exercise cell.cell_contents rebinding; HQ234's closure-cell attack remains unadjudicated by this lane and is owned by the independent F7 review lane.",
+  "named_observations_not_repaired": [
+    "commission_doc_internal_startup_tip_differs_from_delivered_tip",
+    "return_beacon_manifest_not_updated",
+    "sparse_worktree_bootstrapped_locally_no_clone"
+  ],
+  "evidence_gaps": [
+    "cell_contents_rebinding_not_exercised_by_existing_court"
+  ],
+  "terminal": "F7_RUNTIME_QUALIFIED__READY_FOR_FINAL_HQ_ADJUDICATION__RETURN_TO_HQ",
+  "phase": "CLOSURE_ONLY"
+}

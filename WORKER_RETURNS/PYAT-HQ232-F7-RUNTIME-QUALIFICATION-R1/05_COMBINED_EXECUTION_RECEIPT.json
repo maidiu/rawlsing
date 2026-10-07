@@ -1,0 +1,28 @@
+{
+  "surface": "combined commanded surface",
+  "exact_command": "PYTHONHASHSEED=0 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=. /Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11 -m pytest -q -p no:cacheprovider rawlsing_next/tests/test_pre553_temporal_comparability.py rawlsing_next/tests/test_pre553_source_relations.py rawlsing_next/tests/test_m1_temporal_v554_admission_dedup.py",
+  "exact_cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq232-f7-runtime-qual",
+  "environment_variables": {
+    "PYTHONHASHSEED": "0",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+    "PYTHONPATH": "."
+  },
+  "aggregate_counts": {
+    "collected": 206,
+    "passed": 206,
+    "failed": 0,
+    "skipped": 0,
+    "errors": 0
+  },
+  "component_counts": {
+    "rawlsing_next/tests/test_pre553_temporal_comparability.py": 155,
+    "rawlsing_next/tests/test_pre553_source_relations.py": 24,
+    "rawlsing_next/tests/test_m1_temporal_v554_admission_dedup.py": 27
+  },
+  "arithmetic_check": "155 + 24 + 27 = 206",
+  "exit_code": 0,
+  "result_summary_line": "206 passed in 1.74s",
+  "digest": {
+    "run_log_sha256": "426f08c319d36dd8b4e5f3fbb2e2c9935d22d0752cd7016c72b496cb9231b3a0"
+  }
+}

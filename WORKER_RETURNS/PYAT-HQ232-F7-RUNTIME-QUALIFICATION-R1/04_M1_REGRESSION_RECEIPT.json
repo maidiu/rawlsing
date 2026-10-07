@@ -1,0 +1,56 @@
+{
+  "court": "rawlsing_next/tests/test_m1_temporal_v554_admission_dedup.py",
+  "role": "F7 historical M1 regression court",
+  "exact_command": "PYTHONHASHSEED=0 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=. /Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11 -m pytest -q -p no:cacheprovider rawlsing_next/tests/test_m1_temporal_v554_admission_dedup.py",
+  "exact_cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq232-f7-runtime-qual",
+  "environment_variables": {
+    "PYTHONHASHSEED": "0",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+    "PYTHONPATH": "."
+  },
+  "collected_count": 27,
+  "collection_summary_line": "27 tests collected in 0.13s",
+  "collected_node_manifest": [
+    "test_sig001_direct_basis_emits_exactly_one_eligible_f1",
+    "test_same_admission_can_be_direct_for_u1_and_temporal_for_u2",
+    "test_v553_temporal_negative_cannot_be_downgraded_to_direct_positive",
+    "test_hard_nonpositive_precedence_emits_no_f1[K05-INELIGIBLE_EXPLICIT_DENIAL]",
+    "test_hard_nonpositive_precedence_emits_no_f1[K06-INELIGIBLE_MISSING_REQUIRED_AUTHORITY]",
+    "test_hard_nonpositive_precedence_emits_no_f1[K07-INELIGIBLE_UNKNOWN_OR_CONFLICTING_REQUIRED_AUTHORITY]",
+    "test_hard_nonpositive_precedence_emits_no_f1[K09-INELIGIBLE_NEGATIVE_TEMPORAL_AUTHORITY]",
+    "test_deferred_k01_to_k03_remain_f2_without_blocking_f1",
+    "test_exact_same_kind_duplicates_collapse_to_one_support_and_aliases",
+    "test_noop_v553_duplicate_does_not_add_sig001_support",
+    "test_near_duplicate_source_universe_difference_is_not_collapsed_or_winner_selected",
+    "test_equivalence_unknown_fails_closed",
+    "test_sig002_requires_exact_v553_key_and_observation",
+    "test_sig003_requires_relation_and_all_required_support_limit_refs",
+    "test_direct_basis_cannot_satisfy_temporal_signature",
+    "test_bad_projection_hash_is_presemantic_integrity_failure",
+    "test_input_order_and_alias_enumeration_do_not_change_f1_identity",
+    "test_runtime_ignores_wall_clock_random_and_filesystem_because_they_are_not_inputs",
+    "test_direct_v554_v557_handoff_requires_independent_exact_positive_authority",
+    "test_wrong_publication_binding_does_not_publish_or_change_f1",
+    "test_v553_not_required_is_not_enough_without_independent_direct_temporal_completeness",
+    "test_sig001_cannot_run_when_scr553_says_this_exact_use_requires_temporal_meaning",
+    "test_valid_empty_does_not_fabricate_b1_or_publication",
+    "test_coherent_zero_candidates_is_valid_empty_no_filler",
+    "test_noop_v553_route_presence_does_not_change_sig001_f1_identity",
+    "test_hard_negative_direct_publication_preserves_only_nonpositive_context",
+    "test_material_source_change_changes_canonical_f1_identity"
+  ],
+  "counts": {
+    "passed": 27,
+    "failed": 0,
+    "skipped": 0,
+    "errors": 0,
+    "xfailed": 0,
+    "xpassed": 0
+  },
+  "exit_code": 0,
+  "result_summary_line": "27 passed in 0.26s",
+  "digest": {
+    "collect_log_sha256": "c0daf5fdfdf056f977be17bf334b73f4c406df94796cf45edb933e82a9f61b34",
+    "run_log_sha256": "556b40af8f325cbb6453f2d36ac673c9805e81fd015411f036a8692776431246"
+  }
+}

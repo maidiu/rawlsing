@@ -1,0 +1,102 @@
+{
+  "schema": "HQ232_F7_ZERO_MUTATION_AND_WITNESS_AUDIT@1",
+  "zero_mutation_proof": {
+    "baseline_startup_tip": "77d68f552f0871ffe109241017778d08c3ab0601",
+    "head_at_audit": "77d68f552f0871ffe109241017778d08c3ab0601",
+    "tracked_diff_vs_startup_tip": "EMPTY",
+    "git_diff_exit_code": 0,
+    "production_files_differing": 0,
+    "accepted_test_files_differing": 0,
+    "git_status_short_at_start": [],
+    "transient_execution_byproducts": [
+      "rawlsing_next/__pycache__/",
+      "rawlsing_next/tests/__pycache__/"
+    ],
+    "byproduct_handling": "UTF-8 bytecode caches produced by the governed interpreter; untracked, removed before the return commit; never committed",
+    "candidate_code_head_to_tip_delta": {
+      "from": "62394d7ff817252d6d406c1e0ada96529697f5f2",
+      "to": "77d68f552f0871ffe109241017778d08c3ab0601",
+      "files_changed": 7,
+      "insertions": 487,
+      "deletions": 0,
+      "all_changes_are": "commission and HQ231 return documentation only; no production or accepted-test change"
+    },
+    "production_test_blob_sha256_at_tip": {
+      "rawlsing_next/pre553_temporal_comparability.py": "6f6b462b1cdef54d7989f15452473383c1661594",
+      "rawlsing_next/pre553_source_relations.py": "d9fb2c48ff6f2b68b2b8b06a47402c65cf6b7737",
+      "rawlsing_next/tests/test_pre553_temporal_comparability.py": "a0136d80d6d04b55bede74febfc524ff91097c4d",
+      "rawlsing_next/tests/test_pre553_source_relations.py": "2487ed757c0254e7227cf43664abc6ae08f1dfb3",
+      "rawlsing_next/tests/test_m1_temporal_v554_admission_dedup.py": "e6471ace122466988bb17019f70816a59a04f1f7"
+    },
+    "semantic_mutation": "NONE",
+    "production_mutation": "NONE",
+    "accepted_test_mutation": "NONE",
+    "self_adoption": "NONE"
+  },
+  "hostile_witness_audit": [
+    {
+      "requirement": "source->empty-victim transplant",
+      "node": "test_hq231_source_to_victim_custody_transplant_surface_is_sealed",
+      "collected": true,
+      "result": "PASSED"
+    },
+    {
+      "requirement": "object.__setattr__ attack on returned diagnostic/custody-like state",
+      "node": "test_hq231_diagnostic_is_detached_and_object_setattr_cannot_touch_custody",
+      "collected": true,
+      "result": "PASSED"
+    },
+    {
+      "requirement": "reflection-level recovered loader/ledger/sealer attack",
+      "node": "test_hq231_custody_capsule_is_tuple_immutable_and_constructor_bound",
+      "collected": true,
+      "result": "PASSED",
+      "reflection_note": "recovers cell.cell_contents by read; does NOT rebind cell.cell_contents"
+    },
+    {
+      "requirement": "visible _by_ref / _by_key / _registry replacement immunity",
+      "node": "test_hq231_source_to_victim_custody_transplant_surface_is_sealed + test_hq227_exact_instance_postconstruction_relation_map_injection_cannot_mint_custody + test_hq227_exact_instance_registry_replacement_cannot_change_pinned_owner_snapshot",
+      "collected": true,
+      "result": "PASSED"
+    },
+    {
+      "requirement": "lawful positive cross-universe service",
+      "node": "test_hq227_full_owner_path_positive_cross_universe_service_remains_productive + test_hq219_rr04_lawful_positive_owner_decision_still_admits_the_pair (plus in-test positive asserts)",
+      "collected": true,
+      "result": "PASSED"
+    },
+    {
+      "requirement": "fail-capability against the actual authenticated custody seam",
+      "node": "test_hq231_targeted_break_transplantable_loader_reopens_same_victim",
+      "collected": true,
+      "result": "PASSED"
+    }
+  ],
+  "evidence_gaps": [
+    {
+      "gap": "cell.cell_contents REBINDING is not exercised by the existing court",
+      "detail": "The F7 court reads cell.cell_contents to recover the loader, ledger, and sealer but never assigns cell.cell_contents. The HQ234 closure-cell attack F7-RR-04G__LEXICAL_CUSTODY_LEDGER_CELL_IS_CALLER_REBINDABLE is therefore NOT dispatched by this execution.",
+      "owned_by": "independent F7 review lane (HQ234); not adjudicated or repaired here",
+      "effect_on_this_qualification": "NONE; this lane qualifies execution of the EXISTING candidate only"
+    }
+  ],
+  "training_authority_observations": [
+    {
+      "observation": "commission document internal EXACT STARTUP TIP differs from delivered branch tip",
+      "commission_doc_says": "d6734e0150e91a60965e7db244ed2ef519ec831c",
+      "delivered_branch_tip": "77d68f552f0871ffe109241017778d08c3ab0601",
+      "resolution": "d6734e01 is an ancestor of 77d68f55; the delta commits (ca63a72a7, 77d68f55) add only the HQ232 commission document and its DeepSeek-Harness routing section. No production or test change.",
+      "repaired": false
+    },
+    {
+      "observation": "return beacon manifest not updated",
+      "detail": ".rabochii/return_manifest.json was not rewritten. The commission directs 'Write only: WORKER_RETURNS/PYAT-HQ232-F7-RUNTIME-QUALIFICATION-R1/' and the zero-mutation proof forbids modifying control/production files. Recorded as a named observation rather than repaired.",
+      "repaired": false
+    },
+    {
+      "observation": "sparse worktree bootstrapped locally",
+      "detail": "No HQ-prepared worktree for this branch existed; one was created with git worktree add against the shared object store. No clone.",
+      "repaired": false
+    }
+  ]
+}

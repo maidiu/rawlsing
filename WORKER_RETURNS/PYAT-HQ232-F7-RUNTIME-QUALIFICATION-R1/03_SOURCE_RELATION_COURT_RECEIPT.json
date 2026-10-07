@@ -1,0 +1,53 @@
+{
+  "court": "rawlsing_next/tests/test_pre553_source_relations.py",
+  "role": "source-relation owner court",
+  "exact_command": "PYTHONHASHSEED=0 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=. /Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11 -m pytest -q -p no:cacheprovider rawlsing_next/tests/test_pre553_source_relations.py",
+  "exact_cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq232-f7-runtime-qual",
+  "environment_variables": {
+    "PYTHONHASHSEED": "0",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+    "PYTHONPATH": "."
+  },
+  "collected_count": 24,
+  "collection_summary_line": "24 tests collected in 0.10s",
+  "collected_node_manifest": [
+    "test_relation_decision_matrix_contains_all_eight_noncollapsed_domains",
+    "test_no_relation_and_shared_labels_or_ids_remain_distinct_by_default",
+    "test_provenance_and_alias_can_never_be_positive_relation_authority",
+    "test_semantic_equivalence_is_exact_scope_use_and_source_bounded",
+    "test_equivalence_does_not_grant_respondent_linkage",
+    "test_respondent_linkage_does_not_grant_pooling",
+    "test_nonduplication_does_not_grant_estimand_composition",
+    "test_pooling_does_not_grant_backfill",
+    "test_sample_pooling_requires_semantic_equivalence_nonduplication_and_own_authority",
+    "test_pooling_must_bind_the_exact_semantic_and_overlap_receipts",
+    "test_estimand_composition_requires_its_own_exact_relation_even_when_pooling_exists",
+    "test_backfill_is_directional_and_only_explicit_missingness_is_eligible",
+    "test_backfill_never_launders_zero_or_negative_states[OBSERVED_ZERO]",
+    "test_backfill_never_launders_zero_or_negative_states[ZERO_SUPPORT]",
+    "test_backfill_never_launders_zero_or_negative_states[NONCOMPARABLE]",
+    "test_backfill_never_launders_zero_or_negative_states[NOT_APPLICABLE]",
+    "test_backfill_never_launders_zero_or_negative_states[SOURCE_NOT_APPLICABLE]",
+    "test_conflicting_positive_and_denied_relation_receipts_fail_closed",
+    "test_relation_authority_must_be_available_by_exact_historical_ref",
+    "test_same_exact_relation_inputs_replay_identically_independent_of_registration_order",
+    "test_i03_authorized_composite_guard_binds_exact_p07_relations_without_changing_i03_bundle",
+    "test_i03_guard_rejects_missing_relation_kind_even_when_i03_authority_bundle_is_present",
+    "test_i03_guard_rejects_relation_authority_that_does_not_equal_exact_i03_role_authority",
+    "test_i03_guard_rejects_alias_or_provenance_substitution_for_semantic_equivalence"
+  ],
+  "counts": {
+    "passed": 24,
+    "failed": 0,
+    "skipped": 0,
+    "errors": 0,
+    "xfailed": 0,
+    "xpassed": 0
+  },
+  "exit_code": 0,
+  "result_summary_line": "24 passed in 0.37s",
+  "digest": {
+    "collect_log_sha256": "e07b50e38dfef25b0c25f2d7233c0ea69a822bea53c68cc2b77a1048720d387d",
+    "run_log_sha256": "0535835bd51ce6952729e01b706f1ce75773c2effe2c69303418e6c74be6212d"
+  }
+}
