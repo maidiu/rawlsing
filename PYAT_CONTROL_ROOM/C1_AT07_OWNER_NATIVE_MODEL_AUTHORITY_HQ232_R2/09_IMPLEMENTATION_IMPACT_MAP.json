@@ -1,0 +1,42 @@
+{
+  "schema": "PYAT_HQ232_R2_IMPLEMENTATION_IMPACT_MAP@1",
+  "status": "DOCUMENTARY_ONLY__FUTURE_IMPLEMENTATION_AFTER_HOSTILE_REVIEW_AND_HQ_ADOPTION",
+  "required_future_changes": [
+    {
+      "surface": "rawlsing_next.pre553_empirical_authority.AUTHORITY_KINDS",
+      "change": "add bounded authority kind"
+    },
+    {
+      "surface": "rawlsing_next.pre553_empirical_authority.AUTHORITY_KIND_CEILINGS",
+      "change": "add exact negative ceiling"
+    },
+    {
+      "surface": "rawlsing_next.pre553_empirical_authority",
+      "change": "implement kind-specific validate_positioned_subject_model_rule_authority_use exactly from 02_SCOPE_VALIDATION_CONTRACT.json; do not broaden generic require_positive_authority unless separately warranted"
+    },
+    {
+      "surface": "rawlsing_next.pre553_empirical_objects",
+      "change": "implement PositionedSubjectModelRule@1.0.0 public family/state/class"
+    },
+    {
+      "surface": "owner/provider construction path",
+      "change": "make R2 scope validator load-bearing before stable rule construction and before N10E invocation rule/provider use"
+    },
+    {
+      "surface": "determinant graph",
+      "change": "register authority -> stable rule; stable rule -> products; invocation determinants and separate walkback authorities -> products"
+    },
+    {
+      "surface": "N10E lifecycle",
+      "change": "after adoption only, re-freeze identities under exact R2 authority/rule and sealed-successor maintenance law"
+    }
+  ],
+  "forbidden_in_this_lane": [
+    "production implementation",
+    "authority adoption",
+    "N10E re-freeze",
+    "historical receipt mutation",
+    "real-source execution"
+  ],
+  "no_architecture_reopen": true
+}
