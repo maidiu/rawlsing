@@ -1,3 +1,41 @@
+# HQ229 FRONTIER — N6 RETURN INTAKEN; THREE LANES ACTIVE — 2026-10-07
+
+### PUSHED — READY FOR HOSTILE REVIEW — N6 GT2 DEMANDED OBJECTIVE-CONTEXT REALIZATION
+**AGENT:** source-free objective-world integration worker  
+**MODEL / INTELLIGENCE:** **LongCat 2.5 Preview Free — High**  
+**BRANCH:** `agent/rabochii-pyat-hq227-n6-gt2-objective-context-realization-r1`  
+**RETURN TIP:** `5ed0667ed7bc6180789114429cc4c1b59c0732d1`  
+**DISPOSITION:** `N6_GT2_OBJECTIVE_CONTEXT_REALIZATION_COMPLETE__READY_FOR_HOSTILE_REVIEW`
+
+### NEW — NEEDS LAUNCH — N6 GT2 OBJECTIVE-CONTEXT REALIZATION HOSTILE REVIEW
+**AGENT:** Browser/GitHub independent hostile reviewer  
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
+**MACHINE:** unknown  
+**WORKTREE:** not established  
+**BRANCH:** `agent/reviewer-pyat-hq229-n6-gt2-objective-context-realization-r1`  
+**COMMISSION TIP:** `249dfa2eada6d02255baa7acbb913258e3e32f2f`
+
+### EXISTING — ACTIVE / NOT YET RETURNED — F7 FULL OWNER-PATH FINAL HOSTILE REREVIEW
+**AGENT:** Browser/GitHub independent hostile reviewer  
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
+**MACHINE:** unknown  
+**WORKTREE:** not established  
+**BRANCH:** `agent/reviewer-pyat-hq228-f7-full-owner-path-final-rereview-r1`  
+**COMMISSION TIP / REMOTE HEAD:** `b4698896ae345af2984164cef775bb2bb25e875c`
+
+### EXISTING — ACTIVE / NOT YET RETURNED — C1 / N10E MODEL-AUTHORITY MATERIAL RECOVERY
+**AGENT:** Browser/GitHub documentary authority archaeology and bounded authority derivation worker  
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
+**MACHINE:** unknown  
+**WORKTREE:** not established  
+**BRANCH:** `agent/rabochii-pyat-hq228-n10e-c1-model-authority-material-r1`  
+**COMMISSION TIP / REMOTE HEAD:** `c44d40bce98a26f1057263045ea3fb3be67ff01f`
+
+HQ decision:
+`HQD-2026-10-07-229`
+
+---
+
 # HQ227 FRONTIER — GT2 V555 TERMINALITY ADOPTED; F7/N10E/N6 PARALLEL — 2026-10-07
 
 ### ADOPTED — GT2 V555 NOT APPLICABLE
