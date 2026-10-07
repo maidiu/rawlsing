@@ -1,3 +1,34 @@
+# HQ231 FRONTIER — THREE PARALLEL LANES — 2026-10-07
+
+### NEW — NEEDS LAUNCH — F7 SEALED OWNER-STATE CUSTODY REPAIR
+**AGENT:** bounded authority-sensitive implementation worker  
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
+**MACHINE:** unknown  
+**WORKTREE:** not established  
+**BRANCH:** `agent/rabochii-pyat-hq231-f7-sealed-owner-state-custody-r1`  
+**COMMISSION TIP:** `5d8794dff64e69d44e0605294a2672459ac8c70a`
+
+### NEW — NEEDS LAUNCH — C1 / N10E OWNER-NATIVE MODEL-AUTHORITY HOSTILE REVIEW
+**AGENT:** Browser/GitHub independent semantic-authority reviewer  
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
+**MACHINE:** unknown  
+**WORKTREE:** not established  
+**BRANCH:** `agent/reviewer-pyat-hq231-n10e-c1-owner-native-model-authority-r1`  
+**COMMISSION TIP:** `4860d2716d9d20d137a70c9881b4960c8c4cdf35`
+
+### EXISTING — ACTIVE / NOT YET RETURNED — N6 GT2 EXECUTION-PROVENANCE QUALIFICATION
+**AGENT:** local governed-runtime evidence qualification worker  
+**MODEL / INTELLIGENCE:** **LongCat 2.5 Preview Free — High**  
+**MACHINE:** user's Mac / governed local Rawlsing runtime  
+**WORKTREE:** not established  
+**BRANCH:** `agent/rabochii-pyat-hq230-n6-execution-provenance-qualification-r1`  
+**COMMISSION TIP / REMOTE HEAD:** `f7d162bee8d6fa8b06bb5bd393f42ebbb39fd639`
+
+HQ decision:
+`HQD-2026-10-07-231`
+
+---
+
 # HQ230 FRONTIER — N6 EVIDENCE QUALIFICATION + N10E AUTHORITY ADJUDICATION + F7 ACTIVE — 2026-10-07
 
 ### NEW — NEEDS LAUNCH — N6 GT2 EXECUTION-PROVENANCE QUALIFICATION
