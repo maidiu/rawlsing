@@ -35,3 +35,25 @@ This continuation covers:
 - homologous-peer structural constraints;
 - user-lens reflexivity and neighbor-making tension;
 - the user's request for deep banking.
+
+
+## 2026-10-07 user-supplied full transcript
+
+The user subsequently supplied a fuller chat transcript file directly.
+
+Preferred current source:
+`04_USER_SUPPLIED_FULL_CHAT_TRANSCRIPT_2026-10-07.txt`
+
+This GitHub copy was written from the conversation-file text extraction of the user-supplied source. Treat it as the preferred textual source for this conversation, but do not claim byte-for-byte identity with the original uploaded file.
+
+Original uploaded local source metadata observed at receipt:
+- filename: `2026.10.07 Sorok chat.txt`
+- bytes: 261896
+- local SHA-256: `b55dec375f933bfa472d1d08108c6be477bf9537016a4902dd1fcb18076566de`
+
+The earlier Part A / Part B reconstructions remain preserved for provenance but are secondary where the user-supplied transcript overlaps them.
+
+Also read:
+`05_ORIGINAL_GAME_LOOP_EXPLORATION_QUARANTINE_R1.md`
+
+That receipt is mandatory when mining this transcript for design conclusions. Conversation presence does not establish current Sorok authority.
