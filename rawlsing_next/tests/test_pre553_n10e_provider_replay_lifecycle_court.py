@@ -69,6 +69,8 @@ from rawlsing_next.pre553_analytical_replay_dependency import (
     DeterminantOwnerEvidence,
     DeterminantOwnershipAuthenticationError,
     ExactDeterminantOwnership,
+    ModelRuleAuthorityBindingEvidence,
+    ModelRuleAuthorityBindingMismatch,
     ExplicitNoncurrentDependent,
     MissingCrossOwnerEdge,
     NoLawfulReplacementRepresentable,
@@ -79,6 +81,8 @@ from rawlsing_next.pre553_analytical_replay_dependency import (
     UnclassifiedDeterminantRefused,
     UnownedDeterminantRefused,
     assert_authority_snapshot_body_matches_ref,
+    assert_model_rule_material_bound_to_authority_snapshot,
+    model_rule_authority_interpretation_semantics,
     assert_closure_covers_registered_products,
     assert_replay_claim,
     assert_runner_input_carries_no_answer,
@@ -161,7 +165,10 @@ FORBIDDEN_INPUT_SUBSTRINGS = (
 # helpers
 # ==========================================================================
 def _case(direction: str = DIRECTION) -> dict[str, Any]:
-    return fx.build_case(direction)
+    from rawlsing_next.tests.n10e_provider_replay_lifecycle_runner import (
+        build_owner_authentic_case,
+    )
+    return build_owner_authentic_case(direction)
 
 
 def _provide(case: dict[str, Any], **overrides: Any) -> Any:
@@ -545,9 +552,7 @@ def test_07_exact_product_and_determinants_register_through_current_machinery():
     assert registration.product_ref == product_ref
     assert registration.product_identity_hash == result.result_identity_hash
     # Only determinants the product ACTUALLY consumed are registered.
-    assert registration.determinant_authority_refs == (
-        case["model_rule"].model_authority_ref,
-    )
+    assert registration.determinant_authority_refs == _direct_model_authorities(case)
     assert set(registration.determinant_exact_refs) == {
         row.determinant_ref for row in _census(case, result)
     }
@@ -1840,6 +1845,11 @@ def _census_registry(
     ownerships = _census(case, result)
     registry = AnalyticalDependencyRegistry()
     product_ref = _product_ref(result.result_identity_hash, case["direction"])
+    model_rule_binding = ModelRuleAuthorityBindingEvidence(
+        model_rule_hash=result.provider_receipt.model_rule_hash,
+        model_rule_material=case["model_rule"].material(),
+        model_authority_snapshot=case["model_authority_snapshot"],
+    )
     registry.register(
         AnalyticalProductRegistration(
             product_ref=product_ref,
@@ -1847,6 +1857,8 @@ def _census_registry(
             determinant_authority_refs=_direct_model_authorities(case),
             determinant_exact_refs=tuple(row.determinant_ref for row in ownerships),
             determinant_ownerships=ownerships,
+            model_rule_hash=result.provider_receipt.model_rule_hash,
+            model_rule_authority_binding=model_rule_binding,
         )
     )
     return registry, product_ref
