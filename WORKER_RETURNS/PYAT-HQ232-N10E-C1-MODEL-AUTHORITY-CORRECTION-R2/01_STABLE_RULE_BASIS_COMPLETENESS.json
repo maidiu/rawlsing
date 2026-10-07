@@ -1,0 +1,40 @@
+{
+  "schema": "PYAT_HQ232_R2_STABLE_RULE_BASIS_COMPLETENESS@1",
+  "disposition": "COMPLETE_AT_DOCUMENTARY_CANDIDATE_GRAIN",
+  "stable_rule_basis_hash": "409b3968455be046c58d996de47d04261fd27925d2636cfb7b2dfbdc022d0c79",
+  "HQ231_minimum_invariants": {
+    "PROXY_LANE_ONLY_WHEN_EXACT_LANE_UNRESOLVED": "FROZEN",
+    "EVERY_STEP_PROXY_AUTHORITY_MUST_BE_POSITIVELY_LISTED": "FROZEN",
+    "ONLY_SUPPORTED_PROXY_EVIDENCE_CAN_SATISFY_PROXY": "FROZEN",
+    "EXACT_STRICT_SUBSET_LADDER": "FROZEN"
+  },
+  "additional_adopted_invariants_frozen": [
+    "exact request grain and conditioner source/release binding",
+    "SUPPORTED exact immediate return",
+    "ABSENT/UNDERPOWERED/UNAVAILABLE/UNRESOLVED -> exact UNRESOLVED",
+    "VALID_EMPTY/NONCOMPARABLE terminal noncollapse",
+    "same-source and same-release V1 proxy boundary",
+    "finite authority-supplied ladder; first supported authorized step selected in declared order",
+    "specificity-loss exact receipt and descriptive-only fraction",
+    "typed upstream states with no invented support threshold",
+    "replay binds consumed evidence and every attempted step/loss",
+    "unused uninspected evidence excluded from replay determinants",
+    "proxy/exact/actor and prediction/normative jurisdiction ceiling",
+    "automatic regrouping/top-k/relevance surrogate routes forbidden"
+  ],
+  "per_invocation_material_kept_outside_global_basis": [
+    "conditioner_bindings",
+    "consumer_query_ref",
+    "evidence_refs",
+    "positive_proxy_authority_refs",
+    "source_universe_refs",
+    "walkback_authority_ref",
+    "walkback_steps"
+  ],
+  "authority_sources": {
+    "Z08_contract_blob": "e553bdf6476d459070963d30e55213bfbb53199e",
+    "Z08_result_blob": "a236581d0b097d3d6e285c313bd67d4af57b3f5f",
+    "A05_admission_blob": "e6cf6f477306c9066cb54c554291c475307a0dfc",
+    "current_implementation_witness_blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7"
+  }
+}
