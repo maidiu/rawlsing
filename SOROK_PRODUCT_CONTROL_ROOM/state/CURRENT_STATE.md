@@ -1956,3 +1956,35 @@ Mandatory authority-boundary receipt:
 The abandoned original game-loop brainstorming is not canonical. Artifacts 88–90 are absent from the clean R13 lineage and may not be silently mined as law.
 
 Current R13 D002/D008/D009 results are separately re-derived provisional product laws/directions and do not adopt the abandoned bounded-undertaking / commission / universal Question-Theory-Thesis / noninterchangeability / relational-vacancy superstructures.
+
+
+## R14 post-course-correct transcript reconciliation — 2026-10-07
+
+Grounded HQ reconciliation:
+`96_POST_COURSE_CORRECT_TRANSCRIPT_FORENSIC_RECONCILIATION_R1.md`.
+
+Result:
+- original game-loop exploration remains quarantined; artifacts 88–90 are not current law;
+- post-course-correct D002/D008/D009 capital is already durably owned on the clean R13 lineage;
+- two stronger-form residuals were recovered into D007 as research-only candidates:
+  1. independent actuality / resistance / open causation / development;
+  2. adaptive phenomenal lens as playable veil / kernel candidate;
+- divergent R13 register histories were not merged;
+- no new SPD/RISK/question IDs were required because `Q-KERNEL-001` already competently owns both unresolved candidates;
+- no Pyat/PRE-MAIN/V3/PFF execution semantics were changed.
+
+Current compact distinctions added to the kernel research frontier:
+
+`RESISTANCE != DIFFICULTY`
+
+`HARD SUBSTRATE != FIXED TRAJECTORY`
+
+`DEVELOPMENT != RELATIONSHIP IMPROVEMENT`
+
+`DEEPENING != INTIMACY`
+
+`DISCOVERY != BECOMING`
+
+`MORE PERSONALIZED PERCEPTION != GREATER ADEQUACY TO THE OTHER`
+
+`KERNEL = OPEN_DISCOVERY`.
