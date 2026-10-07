@@ -1,0 +1,117 @@
+{
+  "schema": "PYAT_HQ232_R2_MAINTENANCE_CANDIDATE_RECORD@1",
+  "status": "CANDIDATE_NOT_ADOPTED",
+  "projection": {
+    "contract_id": "PRE553_AUTH40_SEMANTIC_AUTHORITY_MAINTENANCE@1.0.0",
+    "record_type": "AuthorityCandidate",
+    "candidate_id": "HQ232-C1-AT07-OWNER-NATIVE-MODEL-RULE-R2",
+    "candidate_revision": 1,
+    "candidate_state": "PROPOSED",
+    "authority_material": {
+      "authority_id": "C1-AT07-POSITIONED-SUBJECT-MODEL-RULE",
+      "authority_version": "1.0.0",
+      "authority_kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_MODEL_RULE",
+      "decision_state": "ALLOW",
+      "governed_operations": [
+        "AUTHORIZE_POSITIONED_SUBJECT_EXACT_CONDITIONAL_MODEL_RULE"
+      ],
+      "governed_object_families": [
+        "PositionedSubjectModelRule@1.0.0"
+      ],
+      "scope_envelope": {
+        "fixture_ids": [
+          "AT07_BIDIRECTIONAL_100"
+        ],
+        "source_universe_refs": [
+          {
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+            "content_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2"
+          }
+        ],
+        "release_refs": [
+          {
+            "kind": "C11LogicalRelease",
+            "object_id": "REL-c1-at07",
+            "content_hash": "dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3"
+          }
+        ],
+        "permitted_uses": [
+          "SOURCE_FREE_C1_01_COMPATIBILITY",
+          "SOURCE_FREE_N10E_LIFECYCLE"
+        ],
+        "real_source_effect": false
+      },
+      "effective_time_or_interval": "AT07_FIXTURE_ONLY",
+      "parent_authority_refs": [],
+      "negative_limit_refs": [],
+      "supersession_refs": [],
+      "interpretation_semantics_fingerprint": "3ed241a8d97bd7c14da86ce09775757da6d48e06ae92ad4151ddcec4f4d2c857",
+      "replay_protocol_ref": {
+        "kind": "PositionedSubjectModelRuleReplayProtocol@2",
+        "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-replay:sha256:9a250d5a00f519b0f00126fcbc85f344e095f0932574f1d44994f380c48640e4",
+        "content_hash": "9a250d5a00f519b0f00126fcbc85f344e095f0932574f1d44994f380c48640e4"
+      }
+    },
+    "evidence_receipt_refs": [
+      {
+        "kind": "Maintenance:EVIDENCE",
+        "object_id": "urn:rawlsing:pre553:maintenance:evidence:sha256:e042d3d321c0cb894eeca63c0570aae4608ce87fe6368cbafe0db7ca1fcc2abb",
+        "content_hash": "e042d3d321c0cb894eeca63c0570aae4608ce87fe6368cbafe0db7ca1fcc2abb"
+      }
+    ],
+    "interpretation_semantics": {
+      "schema": "POSITIONED_SUBJECT_MODEL_AUTHORITY_INTERPRETATION@2",
+      "jurisdiction": "AUTHORIZE_ONE_BOUNDED_POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_MODEL_RULE_FAMILY",
+      "governed_rule_family": "PositionedSubjectModelRule@1.0.0",
+      "stable_rule_basis_hash": "409b3968455be046c58d996de47d04261fd27925d2636cfb7b2dfbdc022d0c79",
+      "scope_validation_contract_ref": {
+        "kind": "PositionedSubjectModelRuleScopeValidationContract@1",
+        "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-scope-validation:sha256:a0223ead6cadd09f40d29cced20e4655deee8dc4e2ebdd2c8062ee317a5a7211",
+        "content_hash": "a0223ead6cadd09f40d29cced20e4655deee8dc4e2ebdd2c8062ee317a5a7211"
+      },
+      "fixture_predecessor_ref": {
+        "authority_id": "C1-AT07-MODEL",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "2876572dcb4eba80b52361853047d409323fff0c63228d7e6a361c972e1b38bb"
+      },
+      "fixture_predecessor_relation": "HISTORICAL_FIXTURE_ONLY_EVIDENCE__NOT_AUTHORITY_PARENT_OR_SUPERSESSION",
+      "source_free_only": true,
+      "real_source_effect": false,
+      "walkback_ownership": "SEPARATE_EXACT_AUTHORITY_REQUIRED_PER_INVOCATION",
+      "source_universe_composition_authority": "NOT_GRANTED",
+      "comparability_authority": "NOT_GRANTED",
+      "actor_or_v3_authority": "NOT_GRANTED",
+      "structural_admission_authority": "NOT_GRANTED",
+      "uncertainty_threshold_authority": "NOT_GRANTED_BEYOND_GOVERNED_UPSTREAM_STATES",
+      "scope_enforcement": "KIND_SPECIFIC_VALIDATOR_REQUIRED_BEFORE_RULE_CONSTRUCTION_OR_PROVIDER_USE",
+      "negative_ceiling": [
+        "NO_SMOOTHING",
+        "NO_INTERPOLATION",
+        "NO_EXTRAPOLATION",
+        "NO_NEAREST_NEIGHBOR",
+        "NO_CROSS_SOURCE_PROXY_V1",
+        "NO_CROSS_RELEASE_PROXY_V1",
+        "NO_ACTOR_INFERENCE",
+        "NO_NORMATIVE_RECOMMENDATION",
+        "NO_REAL_SOURCE_EFFECT",
+        "NO_WALKBACK_POLICY_OWNERSHIP",
+        "NO_SOURCE_SEMANTICS_AUTHORITY",
+        "NO_SOURCE_COMPOSITION_AUTHORITY",
+        "NO_STRUCTURAL_ADMISSION_AUTHORITY"
+      ]
+    },
+    "correction_kind": "NONE",
+    "correction_target_refs": [],
+    "correction_scope_ref": null,
+    "source_onboarding_refs": [],
+    "parent_candidate_ref": null
+  },
+  "ref": {
+    "kind": "Maintenance:CANDIDATE",
+    "object_id": "urn:rawlsing:pre553:maintenance:candidate:sha256:6fa5efe5dd0209d003bb10d9d4c260b6556a88e927f49034977cb15ce068f69b",
+    "content_hash": "6fa5efe5dd0209d003bb10d9d4c260b6556a88e927f49034977cb15ce068f69b"
+  },
+  "current_constructibility": "EXPECTED_PREIMPLEMENTATION_FAILURE",
+  "note": "R2 is a new documentary candidate, not an adopted authority revision. The rejected HQ230 candidate is preserved in evidence but is not made an authority parent/supersession edge."
+}
