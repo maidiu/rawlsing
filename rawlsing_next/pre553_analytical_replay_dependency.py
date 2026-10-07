@@ -718,6 +718,25 @@ class ModelRuleAuthorityBindingEvidence:
             self.model_rule_material["model_authority_ref"], "model_authority_ref"
         )
 
+    @property
+    def consumed_rule_authority_refs(self) -> tuple[AuthorityRef, ...]:
+        """Every independently governed AuthorityRef named by the bound rule body."""
+
+        material = self.model_rule_material
+        refs: list[AuthorityRef | Mapping[str, Any]] = [
+            material["model_authority_ref"],
+            material["walkback_authority_ref"],
+        ]
+        refs.extend(material.get("positive_proxy_authority_refs", ()))
+        for step in material.get("walkback_steps", ()):
+            if not isinstance(step, Mapping) or "proxy_authority_ref" not in step:
+                raise ModelRuleAuthorityBindingMismatch(
+                    "MODEL_RULE_AUTHORITY_BINDING_MISMATCH: walkback step lacks "
+                    "proxy_authority_ref"
+                )
+            refs.append(step["proxy_authority_ref"])
+        return _auths(refs)
+
 
 @dataclass(frozen=True)
 class AnalyticalProductRegistration:
@@ -785,6 +804,12 @@ class AnalyticalProductRegistration:
                     "MODEL_RULE_AUTHORITY_BINDING_MISMATCH: the authority that "
                     "cryptographically owns the model rule is not a consumed "
                     "determinant authority of the product"
+                )
+            if binding.consumed_rule_authority_refs != self.determinant_authority_refs:
+                raise ModelRuleAuthorityBindingMismatch(
+                    "MODEL_RULE_AUTHORITY_BINDING_MISMATCH: direct determinant "
+                    "authority refs must exactly equal the independently governed "
+                    "authority refs named by the authenticated model-rule material"
                 )
         seen: dict[str, ExactDeterminantOwnership] = {}
         for ownership in self.determinant_ownerships:
