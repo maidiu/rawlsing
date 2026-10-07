@@ -1,3 +1,34 @@
+# HQ230 FRONTIER — N6 EVIDENCE QUALIFICATION + N10E AUTHORITY ADJUDICATION + F7 ACTIVE — 2026-10-07
+
+### NEW — NEEDS LAUNCH — N6 GT2 EXECUTION-PROVENANCE QUALIFICATION
+**AGENT:** local governed-runtime evidence qualification worker  
+**MODEL / INTELLIGENCE:** **LongCat 2.5 Preview Free — High**  
+**MACHINE:** user's Mac / governed local Rawlsing runtime  
+**WORKTREE:** not established  
+**BRANCH:** `agent/rabochii-pyat-hq230-n6-execution-provenance-qualification-r1`  
+**COMMISSION TIP:** `f7d162bee8d6fa8b06bb5bd393f42ebbb39fd639`
+
+### NEW — NEEDS LAUNCH — C1 / N10E OWNER-NATIVE MODEL-AUTHORITY HQ ADJUDICATION
+**AGENT:** Browser/GitHub bounded semantic-authority adjudication worker  
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
+**MACHINE:** unknown  
+**WORKTREE:** not established  
+**BRANCH:** `agent/rabochii-pyat-hq230-n10e-c1-model-authority-hq-adjudication-r1`  
+**COMMISSION TIP:** `d773d321f7c2cc55858408401684a8b5110d9c1a`
+
+### EXISTING — ACTIVE / NOT YET RETURNED — F7 FULL OWNER-PATH FINAL HOSTILE REREVIEW
+**AGENT:** Browser/GitHub independent hostile reviewer  
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
+**MACHINE:** unknown  
+**WORKTREE:** not established  
+**BRANCH:** `agent/reviewer-pyat-hq228-f7-full-owner-path-final-rereview-r1`  
+**COMMISSION TIP / REMOTE HEAD:** `b4698896ae345af2984164cef775bb2bb25e875c`
+
+HQ decision:
+`HQD-2026-10-07-230`
+
+---
+
 # HQ229 FRONTIER — N6 RETURN INTAKEN; THREE LANES ACTIVE — 2026-10-07
 
 ### PUSHED — READY FOR HOSTILE REVIEW — N6 GT2 DEMANDED OBJECTIVE-CONTEXT REALIZATION
