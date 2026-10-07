@@ -2254,31 +2254,60 @@ def test_hq231_diagnostic_is_detached_and_object_setattr_cannot_touch_custody():
 
 
 def test_hq231_custody_capsule_is_tuple_immutable_and_constructor_bound():
-    """The trusted capsule itself resists HQ228 object.__setattr__ transplantation."""
-    import weakref
+    """Even reflection-level whole-capsule transplant fails owner binding."""
+    from weakref import WeakKeyDictionary
     import rawlsing_next.pre553_source_relations as sr
 
     source, relation = _adjudicated_resolver(
         universe_refs=(UNIVERSE_A, UNIVERSE_B))
-    snapshot = source._registry.resolve_exact(
-        relation.relation_authority_ref).snapshot
+    victim = sr.SourceRelationResolver(
+        relations=(), authority_registry=source._registry)
 
-    # A capsule with source ownership cannot be field-rewritten into victim ownership.
-    capsule = sr._AuthenticatedResolverState(
-        owner_ref=weakref.ref(source),
-        by_ref={relation.ref.key: relation},
-        by_key={sr._relation_object_key_from_relation(relation): (relation,)},
-        authority_snapshots={snapshot.authority_ref.key: snapshot},
-        relation_semantic_hashes={relation.ref.key: relation.content_hash},
-        authority_semantic_hashes={snapshot.authority_ref.key: snapshot.content_hash},
-        custody_hash=_h("hq231-capsule"),
+    # Hostile reflection can discover lexical functions, but the returned capsule
+    # is tuple-backed and the loader verifies constructor ownership.
+    loader = next(
+        cell.cell_contents
+        for cell in (sr.authenticated_source_relation_decision.__closure__ or ())
+        if callable(cell.cell_contents)
+        and getattr(cell.cell_contents, "__name__", "") == "_state_or_refuse"
     )
-    with pytest.raises((AttributeError, TypeError)):
-        object.__setattr__(capsule, "by_ref", {})
-    with pytest.raises((AttributeError, TypeError)):
-        object.__setattr__(capsule, "owner_ref", lambda: None)
-    assert capsule.owner_ref() is source
+    source_state = loader(source)
+    victim_state = loader(victim)
+    assert source_state.owner_ref() is source
+    assert victim_state.owner_ref() is victim
 
+    with pytest.raises((AttributeError, TypeError)):
+        object.__setattr__(victim_state, "by_ref", source_state.by_ref)
+    with pytest.raises((AttributeError, TypeError)):
+        object.__setattr__(victim_state, "owner_ref", source_state.owner_ref)
+
+    # Go one level deeper: even replacing the victim's lexical-store value with the
+    # source capsule is caught by the constructor-instance binding before adjudication.
+    store = next(
+        cell.cell_contents
+        for cell in (loader.__closure__ or ())
+        if isinstance(cell.cell_contents, WeakKeyDictionary)
+    )
+    store[victim] = source_state
+    try:
+        with pytest.raises(
+                sr.SourceRelationIntegrityError,
+                match="not bound to this constructor instance"):
+            sr.authenticated_source_relation_decision(
+                victim,
+                relation_kind="SOURCE_SEMANTIC_EQUIVALENCE",
+                source_universe_refs=(UNIVERSE_A, UNIVERSE_B),
+                operation_scope="EXACT_BOUND_UNIVERSE_PAIR",
+                target_use=_ref("TargetUsePermission", "USE-1").object_id,
+                effective_scope="EXACT_BOUND_UNIVERSE_PAIR",
+                relation_ref=relation.ref,
+                expected_authority_operation="SEMANTIC_EQUIVALENCE_ADMISSION",
+            )
+    finally:
+        store[victim] = victim_state
+
+    _assert_hq225_owner_impostor_refused(
+        _run(_cross_universe_request(victim, relation.ref)))
 
 def test_hq231_existing_nested_owner_and_registry_attacks_remain_closed(monkeypatch):
     """HQ227 nested dispatch hardening survives the sealed-custody refactor."""
