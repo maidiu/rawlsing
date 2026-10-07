@@ -1,0 +1,34 @@
+{
+  "schema": "PYAT_HQ228_RUNTIME_COURT_AND_REGRESSION@1.0.0",
+  "code_bearing_head": "61acee605d618ed4a0db11d893f6139593ae5780",
+  "runtime_executed": false,
+  "runtime_pass_claimed": false,
+  "environment_observed": {
+    "machine": "auxiliary isolated container; user machine not used",
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "git": "2.47.3",
+    "repository_worktree_present": false
+  },
+  "runtime_attempts": [
+    {"attempt": "HTTPS clone exact repository into auxiliary container", "result": "UNAVAILABLE", "detail": "git could not resolve github.com"},
+    {"attempt": "existing GitHub Actions evidence for exact code-bearing head", "result": "NONE", "workflow_runs": 0, "commit_statuses": 0}
+  ],
+  "required_exact_selections_if_runtime_becomes_available": [
+    "rawlsing_next/tests/test_pre553_temporal_comparability.py",
+    "rawlsing_next/tests/test_pre553_source_relations.py",
+    "directly relevant M1 regression slice used by the inherited F7 chain"
+  ],
+  "static_collection_accounting_from_candidate": {
+    "expected_f7": 150,
+    "candidate_reported_inherited_source_relation_or_m1": 27,
+    "candidate_expected_targeted_aggregate": 177
+  },
+  "hostile_witness_execution": {
+    "hq227_new_witnesses_executed_here": false,
+    "new_hq228_live_state_transplant_executed_in_repo": false,
+    "language_semantics_check": "A standalone Python 3.13.5 check confirmed object.__setattr__ mutates a @dataclass(frozen=True) instance after normal assignment raises FrozenInstanceError.",
+    "source_decisive_without_repo_runtime": true
+  },
+  "disposition_effect": "Runtime absence does not become the controlling disposition because a decisive source-level authenticity defect was independently identified, as expressly allowed by the HQ228 commission."
+}
