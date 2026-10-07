@@ -1,0 +1,41 @@
+{
+  "schema": "PYAT_HQ231_FINAL_DISPOSITION@1",
+  "disposition": "C1_OWNER_NATIVE_MODEL_AUTHORITY_PARTIAL__NAMED_DEFECT",
+  "branch": "agent/reviewer-pyat-hq231-n10e-c1-owner-native-model-authority-r1",
+  "commission_tip": "4860d2716d9d20d137a70c9881b4960c8c4cdf35",
+  "candidate_commit": "bd980fb30fc9f2cc6b4fa99b5f75baca5c0a22ec",
+  "review_mode": "READ_ONLY_NO_REPAIR_NO_ADOPTION",
+  "production_mutation": false,
+  "authority_adopted": false,
+  "architecture_warrant_required": false,
+  "passes": [
+    "D1 identity and fixture preservation",
+    "D2 bounded new authority kind",
+    "D3 narrow stable rule family",
+    "all 9 canonical hash recomputations",
+    "new interpretation is not guessed old fixture fingerprint preimage",
+    "Option B acyclic identity graph",
+    "authority -> stable rule -> product lifecycle shape",
+    "sealed successor snapshot requirement",
+    "re-freeze versus historical non-rewrite distinction",
+    "preimplementation maintenance constructibility classification",
+    "negative actor/V3/real-source/walkback nonpropagation intent"
+  ],
+  "named_defects": [
+    {
+      "id": "HQ231-DEFECT-STABLE-RULE-BASIS-001",
+      "summary": "Stable rule basis omits adopted behaviorally material Z08 invariants, so semantic drift can occur without changing stable rule identity.",
+      "blocks_adoption": true,
+      "architecture_warrant": false
+    },
+    {
+      "id": "HQ231-DEFECT-SCOPE-ENFORCEMENT-001",
+      "summary": "Release/use/fixture restrictions are frozen in authority scope but the candidate does not freeze a validation path that current require_positive_authority can actually enforce.",
+      "blocks_adoption": true,
+      "architecture_warrant": false
+    }
+  ],
+  "required_next_action": "Issue a bounded HQ230-R2 authority-candidate correction. Do not implement or adopt the current db0060af/de15a0fb/59e82a51 identity set.",
+  "final_remote_sha": "REPORT_AFTER_COMMIT",
+  "terminal": "C1_OWNER_NATIVE_MODEL_AUTHORITY_PARTIAL__NAMED_DEFECT"
+}

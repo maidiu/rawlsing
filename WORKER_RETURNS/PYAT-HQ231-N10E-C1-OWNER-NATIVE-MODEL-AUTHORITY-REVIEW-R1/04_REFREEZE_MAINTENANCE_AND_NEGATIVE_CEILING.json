@@ -1,0 +1,52 @@
+{
+  "schema": "PYAT_HQ231_REFREEZE_MAINTENANCE_NEGATIVE_CEILING@1",
+  "disposition": "C1_OWNER_NATIVE_MODEL_AUTHORITY_PARTIAL__NAMED_DEFECT",
+  "re_freeze_review": {
+    "result": "PASS_CONCEPTUALLY__CURRENT_IDENTITIES_INVALIDATED_BY_NAMED_DEFECTS",
+    "candidate_correctly_says_must_refreeze": [
+      "active owner-native model rule",
+      "N10E request and receipt identities",
+      "composition/result/evidence identities that bind model rule",
+      "dependency registrations",
+      "transitively derived downstream refs"
+    ],
+    "candidate_correctly_says_must_not_rewrite": [
+      "historical C1-01 receipts",
+      "fixture-only C1-AT07-MODEL material",
+      "historical source-free court results"
+    ],
+    "silent_historical_upgrade_forbidden": true
+  },
+  "maintenance_candidate": {
+    "record_ref": "dd8bdcb2181282d264793293c592a7b401c268a774faf7b15a08d89f3287c10e",
+    "hash_recomputed": true,
+    "evidence_receipt_ref": "1315ddecf70cfd7897e63bcc9c00c31d8eb172d1aedf143d544121e33946c0c0",
+    "evidence_receipt_hash_recomputed": true,
+    "current_constructibility": "EXPECTED_PREIMPLEMENTATION_FAILURE",
+    "reason": "Current AuthorityCandidate rejects the proposed kind because AUTHORITY_KINDS has not yet been explicitly extended; CanonicalSemanticObject likewise cannot instantiate the proposed rule family/state until public-family/state/class support is added.",
+    "bypass_AuthorityMaintenanceExecutor_allowed": false
+  },
+  "negative_ceiling": {
+    "source_free_fixture_scope": "PASS_IN_MATERIAL__FAIL_ENFORCEMENT_CLOSURE_PER_SCOPE_DEFECT",
+    "real_source_effect": false,
+    "v3_actor_authority": false,
+    "walkback_absorbed": false,
+    "accepted_model_semantics_reopened": false,
+    "broad_pre553_ontology_change": false
+  },
+  "architecture_threshold": {
+    "architecture_warrant_required": false,
+    "reason": "Both defects are bounded to the exact new model-rule authority jurisdiction: complete the stable semantic basis and exact scope-validation contract. No change to person/V3 boundary, walkback owner, generic cross-node lifecycle law, or accepted model semantics is required."
+  },
+  "correction_refreeze_required": [
+    "stable rule basis hash",
+    "replay protocol ref if scope-validation law is added there",
+    "interpretation semantics fingerprint",
+    "owner-native authority content hash",
+    "stable model-rule ref",
+    "fixture crosswalk ref",
+    "authority evidence object/ref",
+    "authority evidence receipt ref",
+    "maintenance candidate record ref"
+  ]
+}

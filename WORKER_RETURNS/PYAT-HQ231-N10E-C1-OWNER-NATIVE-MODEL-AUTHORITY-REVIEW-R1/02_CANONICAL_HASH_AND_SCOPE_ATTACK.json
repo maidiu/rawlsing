@@ -1,0 +1,99 @@
+{
+  "schema": "PYAT_HQ231_CANONICAL_HASH_AND_SCOPE_ATTACK@1",
+  "disposition": "C1_OWNER_NATIVE_MODEL_AUTHORITY_PARTIAL__NAMED_DEFECT",
+  "canonical_hash_recomputation": {
+    "interpretation_fingerprint": {
+      "expected": "bcf2f374f8e56f765f01367fc6092983949ffb79759738802f6f47baada4b708",
+      "actual": "bcf2f374f8e56f765f01367fc6092983949ffb79759738802f6f47baada4b708",
+      "match": true
+    },
+    "replay_protocol": {
+      "expected": "4ea14ebe4f724e05a0d2560ae7f19b3f4d48522a1bd9750b0544ed976248a08e",
+      "actual": "4ea14ebe4f724e05a0d2560ae7f19b3f4d48522a1bd9750b0544ed976248a08e",
+      "match": true
+    },
+    "authority_content": {
+      "expected": "db0060afb25dfcf7f77b35864c2dd2499e974057aca73a252a208fb93ed2fc65",
+      "actual": "db0060afb25dfcf7f77b35864c2dd2499e974057aca73a252a208fb93ed2fc65",
+      "match": true
+    },
+    "stable_rule_basis": {
+      "expected": "de15a0fbf77eb71f5b405d9d42cba4eeb8844e3803868295ada41b18afd5372b",
+      "actual": "de15a0fbf77eb71f5b405d9d42cba4eeb8844e3803868295ada41b18afd5372b",
+      "match": true
+    },
+    "stable_rule_object": {
+      "expected": "59e82a51b26cca26aff84e42878c1c8f1c0c52e4ad4e26a5b23244999454add2",
+      "actual": "59e82a51b26cca26aff84e42878c1c8f1c0c52e4ad4e26a5b23244999454add2",
+      "match": true
+    },
+    "crosswalk": {
+      "expected": "4eb8aaaaef078cc7c3da32c5232aa62b45692ec0ffb7867a0376e9a7c47071f0",
+      "actual": "4eb8aaaaef078cc7c3da32c5232aa62b45692ec0ffb7867a0376e9a7c47071f0",
+      "match": true
+    },
+    "evidence": {
+      "expected": "36b26e090aac64fc736c2ac6362b83011382815af8d09d4939d131eb08a0ea10",
+      "actual": "36b26e090aac64fc736c2ac6362b83011382815af8d09d4939d131eb08a0ea10",
+      "match": true
+    },
+    "evidence_receipt": {
+      "expected": "1315ddecf70cfd7897e63bcc9c00c31d8eb172d1aedf143d544121e33946c0c0",
+      "actual": "1315ddecf70cfd7897e63bcc9c00c31d8eb172d1aedf143d544121e33946c0c0",
+      "match": true
+    },
+    "candidate_record": {
+      "expected": "dd8bdcb2181282d264793293c592a7b401c268a774faf7b15a08d89f3287c10e",
+      "actual": "dd8bdcb2181282d264793293c592a7b401c268a774faf7b15a08d89f3287c10e",
+      "match": true
+    }
+  },
+  "body_field_attack": {
+    "identity_fields": "PASS",
+    "decision_and_kind": "PASS",
+    "operation_and_family": "PASS",
+    "source_universe_ref": "PASS",
+    "release_ref_present_in_scope": "PASS",
+    "permitted_uses_present_in_scope": "PASS",
+    "real_source_effect_false": "PASS",
+    "interval": "PASS",
+    "parent_negative_supersession_empty": "PASS",
+    "interpretation_fingerprint": "PASS",
+    "replay_protocol_ref": "PASS"
+  },
+  "interpretation_semantics": {
+    "result": "PASS_WITH_DEPENDENT_DEFECT",
+    "old_fixture_fingerprint_preimage_guessed": false,
+    "new_interpretation_is_new_hash": true,
+    "source_free_only": true,
+    "real_source_effect": false,
+    "separate_walkback_ownership": true,
+    "no_composition_comparability_actor_structural_authority": true,
+    "finding": "Interpretation content is substantively within adopted Z08/A05/C1 ceilings, but its stable_rule_basis_hash points to an incomplete stable semantic basis identified in the graph attack."
+  },
+  "named_scope_defect": {
+    "id": "HQ231-DEFECT-SCOPE-ENFORCEMENT-001",
+    "severity": "BLOCKS_ADOPTION__BOUNDED_REPAIR",
+    "frozen_scope_keys": [
+      "fixture_ids",
+      "source_universe_refs",
+      "release_refs",
+      "permitted_uses",
+      "real_source_effect"
+    ],
+    "current_generic_validator_enforces": [
+      "source_universe_refs",
+      "target_use_refs",
+      "predicate_or_risk_set_refs"
+    ],
+    "candidate_replay_step": "require_positive_exact_kind_operation_family_and_AT07_source_universe_scope",
+    "missing_frozen_validation_obligations": [
+      "exact release_ref scope",
+      "exact permitted-use scope",
+      "fixture-only-use boundary or equivalent exact proof",
+      "explicit real_source_effect ceiling or an exact invariant that makes violation impossible"
+    ],
+    "consequence": "A future implementation can conform to the written replay/wake packet while checking kind/operation/family/source universe but not the candidate's release/use restrictions. Identity-bearing scope would then exceed enforcement-bearing scope.",
+    "required_correction": "Freeze the exact scope validation contract and identify the bounded helper/API change required to enforce all restrictive keys before authority use."
+  }
+}

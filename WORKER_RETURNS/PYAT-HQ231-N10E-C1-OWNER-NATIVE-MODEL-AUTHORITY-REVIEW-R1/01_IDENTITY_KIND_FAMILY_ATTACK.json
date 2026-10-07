@@ -1,0 +1,51 @@
+{
+  "schema": "PYAT_HQ231_IDENTITY_KIND_FAMILY_ATTACK@1",
+  "disposition": "C1_OWNER_NATIVE_MODEL_AUTHORITY_PARTIAL__NAMED_DEFECT",
+  "candidate_ref": "bd980fb30fc9f2cc6b4fa99b5f75baca5c0a22ec",
+  "attacks": {
+    "D1_identity": {
+      "result": "PASS",
+      "fixture_ref": {
+        "authority_id": "C1-AT07-MODEL",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "2876572dcb4eba80b52361853047d409323fff0c63228d7e6a361c972e1b38bb"
+      },
+      "owner_native_ref": {
+        "authority_id": "C1-AT07-POSITIONED-SUBJECT-MODEL-RULE",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "db0060afb25dfcf7f77b35864c2dd2499e974057aca73a252a208fb93ed2fc65"
+      },
+      "findings": [
+        "fixture identity remains byte-for-byte historical fixture-only material",
+        "new owner-native id/version/hash is distinct",
+        "parent_authority_refs and supersession_refs are empty rather than laundering fixture evidence into PRE553 genealogy",
+        "crosswalk declares authority_parent_edge=false, authority_supersession_edge=false and same_hash_reinterpretation=false",
+        "crosswalk carries real_source_effect=false and historical C1 receipts are declared historical/non-rewritten"
+      ],
+      "crosswalk_hash_recomputed": "4eb8aaaaef078cc7c3da32c5232aa62b45692ec0ffb7867a0376e9a7c47071f0",
+      "crosswalk_hash_match": true
+    },
+    "D2_kind": {
+      "result": "PASS",
+      "proposed_kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_MODEL_RULE",
+      "existing_kind_suffices": false,
+      "reasons": [
+        "SOURCE_SEMANTICS_TOPOLOGY owns native source/question/response meaning, not learned-world model rule law",
+        "PREDICATE_GRAMMAR owns empirical predicate/query grammar, not positioned-subject evaluation model semantics",
+        "UNCERTAINTY_METHOD would incorrectly recast the whole model as uncertainty methodology",
+        "TARGET_USE_PERMISSION owns permission to a target use rather than the stable model rule itself",
+        "REPLAY_PROTOCOL owns replay procedure, not semantic model rule authorization"
+      ],
+      "negative_ceiling_preserved": true,
+      "architecture_classification": "BOUNDED_AUTHORITY_EXTENSION__NO_ARCHITECTURE_WARRANT"
+    },
+    "D3_family": {
+      "result": "PASS",
+      "proposed_family": "PositionedSubjectModelRule@1.0.0",
+      "possibility_field_remains_deferred": true,
+      "replay_receipt_rejected_as_owner": true,
+      "actor_person_v3_family_admitted": false,
+      "finding": "A narrow stable rule family is the smallest public family compatible with current require_positive_authority family-scope law; promoting the full possibility-field family would be wider than necessary."
+    }
+  }
+}

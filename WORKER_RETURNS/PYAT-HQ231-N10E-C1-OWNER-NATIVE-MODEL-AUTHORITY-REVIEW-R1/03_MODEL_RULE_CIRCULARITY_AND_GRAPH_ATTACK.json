@@ -1,0 +1,81 @@
+{
+  "schema": "PYAT_HQ231_MODEL_RULE_CIRCULARITY_AND_GRAPH_ATTACK@1",
+  "disposition": "C1_OWNER_NATIVE_MODEL_AUTHORITY_PARTIAL__NAMED_DEFECT",
+  "option_B": {
+    "structural_choice": "PASS",
+    "selected": "B__SEPARATE_EXACT_MODEL_RULE_DETERMINANT",
+    "circularity": {
+      "result": "PASS",
+      "dependency_order": [
+        "stable rule basis",
+        "interpretation fingerprint + replay protocol",
+        "owner-native authority material/hash",
+        "stable rule object/ref",
+        "crosswalk",
+        "evidence/evidence receipt",
+        "maintenance candidate record"
+      ],
+      "hidden_self_reference_found": false,
+      "explanation": "The authority commits stable_rule_basis_hash but not the final stable rule ref. The stable rule object then contains the authority ref. No rule ref feeds back into authority_content_hash."
+    },
+    "graph_shape": {
+      "result": "PASS_AT_DESIGN_SHAPE",
+      "required_edges": [
+        "owner-native model authority -> stable rule object",
+        "stable rule object -> every consuming product",
+        "walkback/proxy authority -> each consuming product where consumed",
+        "query/comparability/producer authority -> consuming product where consumed",
+        "source/query/evidence exact determinant -> consuming product"
+      ],
+      "note": "Current AnalyticalDependencyRegistry does not yet turn determinant_exact_refs into dependency edges; HQ230 correctly identifies later implementation wiring as required."
+    },
+    "sealed_successor_requirement": "PASS",
+    "invocation_model_rule_hash_role": "PASS__INVOCATION_IDENTITY_ONLY__NOT_OWNER_RULE_SUBSTITUTE"
+  },
+  "stable_rule_basis_attack": {
+    "result": "FAIL",
+    "defect_id": "HQ231-DEFECT-STABLE-RULE-BASIS-001",
+    "current_basis_hash": "de15a0fbf77eb71f5b405d9d42cba4eeb8844e3803868295ada41b18afd5372b",
+    "current_stable_rule_ref": {
+      "kind": "PositionedSubjectModelRule@1.0.0",
+      "object_id": "urn:rawlsing:pre553:PositionedSubjectModelRule:sha256:59e82a51b26cca26aff84e42878c1c8f1c0c52e4ad4e26a5b23244999454add2",
+      "content_hash": "59e82a51b26cca26aff84e42878c1c8f1c0c52e4ad4e26a5b23244999454add2"
+    },
+    "omitted_stable_invariants": [
+      {
+        "invariant": "PROXY_LANE_ONLY_WHEN_EXACT_LANE_UNRESOLVED",
+        "adopted_basis": "Z08 two-lane law; exact SUPPORTED returns immediately, VALID_EMPTY/NONCOMPARABLE are terminal, Lane P may run only when Lane E is unresolved.",
+        "current_implementation_witness": "evaluate_positioned_subject_possibility returns immediately for SUPPORTED/VALID_EMPTY/NONCOMPARABLE before iterating walkback_steps.",
+        "why_identity_bearing": "Allowing walkback after an exact terminal result changes model behavior without changing HQ230 basis."
+      },
+      {
+        "invariant": "EVERY_STEP_PROXY_AUTHORITY_MUST_BE_POSITIVELY_LISTED",
+        "adopted_basis": "Z08 requires each step's exact proxy authority ref also appear in positive_proxy_authority_refs; arbitrary AuthorityRef is insufficient.",
+        "current_implementation_witness": "PositionedSubjectPossibilityModelRule.__post_init__ rejects any walkback step proxy_authority_ref absent from positive_proxy_authority_refs.",
+        "why_identity_bearing": "Removing the membership check would broaden authorized proxy behavior while HQ230 stable basis remains unchanged."
+      },
+      {
+        "invariant": "ONLY_SUPPORTED_PROXY_EVIDENCE_CAN_SATISFY_PROXY",
+        "adopted_basis": "Z08 consumes typed upstream states; unsupported proxy evidence is recorded but cannot satisfy proxy support.",
+        "current_implementation_witness": "candidate.evidence_state != 'SUPPORTED' records PROXY_EVIDENCE_<state> and continues rather than selecting proxy.",
+        "why_identity_bearing": "Permitting UNDERPOWERED/UNRESOLVED/VALID_EMPTY/NONCOMPARABLE/UNAVAILABLE proxy evidence to satisfy a proxy would change the model law without changing HQ230 basis."
+      },
+      {
+        "invariant": "EXACT_STRICT_SUBSET_LADDER",
+        "adopted_basis": "Each retained conditioner set is a strict subset of both the original requested set and the immediately preceding retained set; sibling surrogate/re-widening is forbidden.",
+        "current_implementation_witness": "evaluation checks retained < requested and retained < previous; SpecificityLoss.build also requires retained < requested.",
+        "why_identity_bearing": "The generic phrase walkback_steps_strictly_decrease_specificity does not freeze the exact set-theoretic relation and can admit a different notion of specificity."
+      }
+    ],
+    "other_boundaries_checked": {
+      "same_source_same_release_v1": "PASS",
+      "no_smoothing_interpolation_extrapolation_nearest_neighbor": "PASS",
+      "no_new_support_threshold": "PASS",
+      "no_actor_inference_or_normative_recommendation": "PASS",
+      "walkback_separate_authority": "PASS",
+      "per_invocation_source_universe_and_walkback_material_excluded_from_global_rule": "PASS"
+    },
+    "consequence": "The proposed owner rule can remain at the same de15... / 59e... identity across behaviorally material drift. This is exactly the lifecycle failure Option B was intended to prevent.",
+    "required_correction": "Re-freeze a complete stable semantic basis including the omitted invariants; then transitively recompute interpretation, authority, rule, crosswalk, evidence and candidate identities."
+  }
+}
