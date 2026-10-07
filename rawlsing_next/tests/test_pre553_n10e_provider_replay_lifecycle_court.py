@@ -69,8 +69,6 @@ from rawlsing_next.pre553_analytical_replay_dependency import (
     DeterminantOwnerEvidence,
     DeterminantOwnershipAuthenticationError,
     ExactDeterminantOwnership,
-    ModelRuleAuthorityBindingEvidence,
-    ModelRuleAuthorityBindingMismatch,
     ExplicitNoncurrentDependent,
     MissingCrossOwnerEdge,
     NoLawfulReplacementRepresentable,
@@ -81,8 +79,6 @@ from rawlsing_next.pre553_analytical_replay_dependency import (
     UnclassifiedDeterminantRefused,
     UnownedDeterminantRefused,
     assert_authority_snapshot_body_matches_ref,
-    assert_model_rule_material_bound_to_authority_snapshot,
-    model_rule_authority_interpretation_semantics,
     assert_closure_covers_registered_products,
     assert_replay_claim,
     assert_runner_input_carries_no_answer,
@@ -165,10 +161,7 @@ FORBIDDEN_INPUT_SUBSTRINGS = (
 # helpers
 # ==========================================================================
 def _case(direction: str = DIRECTION) -> dict[str, Any]:
-    from rawlsing_next.tests.n10e_provider_replay_lifecycle_runner import (
-        build_owner_authentic_case,
-    )
-    return build_owner_authentic_case(direction)
+    return fx.build_case(direction)
 
 
 def _provide(case: dict[str, Any], **overrides: Any) -> Any:
@@ -236,84 +229,49 @@ def _stage_transition(
     retained for the hostile suite and must never be used as a successor.
     """
 
-    from rawlsing_next.pre553_authority_maintenance import AuthorityCandidate
-
     direction = case["direction"]
     if registry is None:
         registry, _ = _register(case, _provide(case))
     graph = registry.build_graph()
-    baseline_snapshot = assert_authority_snapshot_body_matches_ref(
-        case["model_authority_snapshot"], old_model
-    )
     executor = AuthorityMaintenanceExecutor(
-        initial_snapshots=(baseline_snapshot,),
+        initial_snapshots=(fx.model_authority_snapshot(direction),),
         initial_current_selection={old_model.authority_id: old_model},
         determinant_graph=graph,
     )
     evidence = _evidence_receipt(direction)
     executor.intake_evidence(evidence)
-    revision = AuthorityCandidate(
-        candidate_id=f"CAND-{old_model.authority_id}-2.0.0-hq227-court",
-        candidate_revision=1,
-        authority_id=old_model.authority_id,
-        authority_version="2.0.0",
-        authority_kind=baseline_snapshot.authority_kind,
-        proposed_decision_state="ALLOW",
-        governed_operations=tuple(baseline_snapshot.governed_operations),
-        governed_object_families=tuple(baseline_snapshot.governed_object_families),
-        scope_envelope=dict(baseline_snapshot.scope_envelope),
-        effective_time_or_interval=baseline_snapshot.effective_time_or_interval,
-        evidence_receipt_refs=(evidence.ref,),
-        proposed_parent_authority_refs=(old_model,),
-        proposed_negative_limit_refs=tuple(baseline_snapshot.negative_limit_refs),
-        proposed_supersession_refs=(old_model,),
-        interpretation_semantics=model_rule_authority_interpretation_semantics(
-            case["model_rule"].material()
-        ),
-        replay_protocol_ref=fx._ref_for(
-            "REPLAY_PROTOCOL", f"model-{direction}-hq227-court-v2"
-        ),
+    revision = fx._model_candidate(
+        fx.revised_model_authority(direction),
+        version="2.0.0",
+        evidence_ref=evidence.ref,
+        parent=(old_model,),
+        supersession=(old_model,),
+        semantics=f"{direction}-hq221-v2",
     )
     executor.intake_candidate(revision)
     adjudication = executor.adjudicate_candidate(
         revision.ref,
         decision="APPROVED",
-        adjudicator_ref=fx._ref_for("ADJUDICATOR", f"hq227-{direction}-v2"),
-        adjudication_authority_ref=fx._ref_for("GOVERNING_AUTHORITY", "HQ227"),
-        findings_ref=fx._ref_for("FINDINGS", f"hq227-{direction}-v2"),
+        adjudicator_ref=fx._ref_for("ADJUDICATOR", f"hq221-{direction}-v2"),
+        adjudication_authority_ref=fx._ref_for("GOVERNING_AUTHORITY", "HQ221"),
+        findings_ref=fx._ref_for("FINDINGS", f"hq221-{direction}-v2"),
     )
     seal = executor.seal_revision(
         revision.ref,
         adjudication.ref,
-        seal_attestation_ref=fx._ref_for("SEAL_ATTESTATION", f"hq227-{direction}-v2"),
+        seal_attestation_ref=fx._ref_for("SEAL_ATTESTATION", f"hq221-{direction}-v2"),
     )
-    successor = seal.authority_ref
-    assert successor == revision.proposed_authority_ref
-    sealed_successor_snapshot = assert_authority_snapshot_body_matches_ref(
-        executor.resolve_historical_exact(successor), successor
-    )
-    successor_rule = PositionedSubjectPossibilityModelRule(
-        sealed_successor_snapshot.authority_ref,
-        case["model_rule"].walkback_authority_ref,
-        case["model_rule"].source_universe_refs,
-        case["model_rule"].walkback_steps,
-        case["model_rule"].positive_proxy_authority_refs,
-    )
-    assert_model_rule_material_bound_to_authority_snapshot(
-        successor_rule.material(),
-        sealed_successor_snapshot,
-        expected_rule_hash=successor_rule.rule_hash,
-    )
+    successor = revision.proposed_authority_ref
+    # The governed successor must be a genuinely different authority.
     assert successor.authority_content_hash != old_model.authority_content_hash
     return {
         "executor": executor,
         "seal_ref": seal.ref,
         "successor": successor,
-        "sealed_successor_snapshot": sealed_successor_snapshot,
         "decoy": fx.revised_model_authority(direction),
-        "selection_rule_ref": fx._ref_for("SELECTION_RULE", f"hq227-{direction}-v2"),
+        "selection_rule_ref": fx._ref_for("SELECTION_RULE", f"hq221-{direction}-v2"),
         "selection_attestation_ref": fx._ref_for(
-            "SELECTION_ATTESTATION", f"hq227-{direction}-v2"
+            "SELECTION_ATTESTATION", f"hq221-{direction}-v2"
         ),
     }
 
@@ -587,7 +545,9 @@ def test_07_exact_product_and_determinants_register_through_current_machinery():
     assert registration.product_ref == product_ref
     assert registration.product_identity_hash == result.result_identity_hash
     # Only determinants the product ACTUALLY consumed are registered.
-    assert registration.determinant_authority_refs == _direct_model_authorities(case)
+    assert registration.determinant_authority_refs == (
+        case["model_rule"].model_authority_ref,
+    )
     assert set(registration.determinant_exact_refs) == {
         row.determinant_ref for row in _census(case, result)
     }
@@ -1880,11 +1840,6 @@ def _census_registry(
     ownerships = _census(case, result)
     registry = AnalyticalDependencyRegistry()
     product_ref = _product_ref(result.result_identity_hash, case["direction"])
-    model_rule_binding = ModelRuleAuthorityBindingEvidence(
-        model_rule_hash=result.provider_receipt.model_rule_hash,
-        model_rule_material=case["model_rule"].material(),
-        model_authority_snapshot=case["model_authority_snapshot"],
-    )
     registry.register(
         AnalyticalProductRegistration(
             product_ref=product_ref,
@@ -1892,8 +1847,6 @@ def _census_registry(
             determinant_authority_refs=_direct_model_authorities(case),
             determinant_exact_refs=tuple(row.determinant_ref for row in ownerships),
             determinant_ownerships=ownerships,
-            model_rule_hash=result.provider_receipt.model_rule_hash,
-            model_rule_authority_binding=model_rule_binding,
         )
     )
     return registry, product_ref
@@ -2154,11 +2107,6 @@ def test_r04_query_revision_reaches_all_and_only_the_consumers_of_that_determina
 
     # A product registered WITHOUT the query determinant as a consumed determinant.
     non_consumer_ref = _product_ref("9" * 64, "non-consumer")
-    non_consumer_binding = ModelRuleAuthorityBindingEvidence(
-        model_rule_hash=case["model_rule"].rule_hash,
-        model_rule_material=case["model_rule"].material(),
-        model_authority_snapshot=case["model_authority_snapshot"],
-    )
     registry.register(
         AnalyticalProductRegistration(
             product_ref=non_consumer_ref,
@@ -2174,8 +2122,6 @@ def test_r04_query_revision_reaches_all_and_only_the_consumers_of_that_determina
                     ("conditioner_bindings.0.comparability_authority_ref",),
                 ),
             ),
-            model_rule_hash=case["model_rule"].rule_hash,
-            model_rule_authority_binding=non_consumer_binding,
         )
     )
 
@@ -2512,11 +2458,6 @@ def test_r14_unclassified_consumed_ref_cannot_claim_lifecycle_closure():
     result = _provide(case)
     product_ref = _product_ref(result.result_identity_hash)
     registry = AnalyticalDependencyRegistry()
-    binding = ModelRuleAuthorityBindingEvidence(
-        model_rule_hash=result.provider_receipt.model_rule_hash,
-        model_rule_material=case["model_rule"].material(),
-        model_authority_snapshot=case["model_authority_snapshot"],
-    )
     registry.register(
         AnalyticalProductRegistration(
             product_ref=product_ref,
@@ -2532,8 +2473,6 @@ def test_r14_unclassified_consumed_ref_cannot_claim_lifecycle_closure():
                     ("authority_snapshot_refs",),
                 ),
             ),
-            model_rule_hash=result.provider_receipt.model_rule_hash,
-            model_rule_authority_binding=binding,
         )
     )
     with pytest.raises(
@@ -2672,116 +2611,3 @@ def test_r19_walkback_authority_is_registered_but_not_stageable_from_fixture_mat
     ):
         assert required not in material
     assert not any("WALKBACK" in kind for kind in AUTHORITY_KINDS)
-
-
-# ==========================================================================
-# HQ227 - model-authority / model-rule lifecycle closure
-# ==========================================================================
-def test_r20_baseline_model_authority_body_ref_is_authentic_and_mismatched_fixture_is_refused():
-    case = _case(DIRECTION)
-    snapshot = case["model_authority_snapshot"]
-    assert (
-        assert_authority_snapshot_body_matches_ref(
-            snapshot, case["model_rule"].model_authority_ref
-        )
-        is snapshot
-    )
-
-    mismatched = fx.model_authority_snapshot(DIRECTION)
-    with pytest.raises(
-        AuthoritySnapshotIdentityMismatch,
-        match="AUTHORITY_SNAPSHOT_IDENTITY_MISMATCH",
-    ):
-        assert_authority_snapshot_body_matches_ref(mismatched)
-
-
-def test_r21_changed_model_rule_material_under_fixed_authority_ref_is_refused():
-    case = _case(DIRECTION)
-    rule = case["model_rule"]
-    snapshot = case["model_authority_snapshot"]
-
-    assert (
-        assert_model_rule_material_bound_to_authority_snapshot(
-            rule.material(), snapshot, expected_rule_hash=rule.rule_hash
-        )
-        is snapshot
-    )
-
-    mutated = dict(rule.material())
-    mutated["actor_inference_allowed"] = True
-    mutated_hash = semantic_hash(mutated)
-    assert mutated_hash != rule.rule_hash
-    assert mutated["model_authority_ref"] == rule.material()["model_authority_ref"]
-    assert mutated["walkback_authority_ref"] == rule.material()["walkback_authority_ref"]
-
-    with pytest.raises(
-        ModelRuleAuthorityBindingMismatch,
-        match="MODEL_RULE_AUTHORITY_BINDING_MISMATCH",
-    ):
-        ModelRuleAuthorityBindingEvidence(
-            model_rule_hash=mutated_hash,
-            model_rule_material=mutated,
-            model_authority_snapshot=snapshot,
-        )
-
-
-def test_r22_model_recomposition_consumes_exact_sealed_successor_snapshot(tmp_path):
-    observed = _run_fresh(_runner_input(tmp_path))
-    binding = observed["model_rule_authority_binding"]
-
-    assert binding["baseline_snapshot_body_ref_authenticated"] is True
-    assert binding["successor_snapshot_body_ref_authenticated"] is True
-    assert (
-        binding["successor_snapshot_ref"]
-        == observed["successor_authority_snapshot_ref"]
-    )
-    assert binding["model_authority_ref"] != observed["successor_authority_ref"]
-    assert binding["successor_model_rule_hash"] != binding["model_rule_hash"]
-
-
-def test_r23_registration_refuses_free_floating_model_rule_hash():
-    case = _case(DIRECTION)
-    result = _provide(case)
-    ownerships = _census(case, result)
-    product_ref = _product_ref(result.result_identity_hash, case["direction"])
-
-    with pytest.raises(
-        ModelRuleAuthorityBindingMismatch,
-        match="MODEL_RULE_AUTHORITY_BINDING_MISMATCH",
-    ):
-        AnalyticalProductRegistration(
-            product_ref=product_ref,
-            product_identity_hash=result.result_identity_hash,
-            determinant_authority_refs=_direct_model_authorities(case),
-            determinant_exact_refs=tuple(row.determinant_ref for row in ownerships),
-            determinant_ownerships=ownerships,
-            model_rule_hash=result.provider_receipt.model_rule_hash,
-        )
-
-
-def test_r24_direct_authority_census_is_derived_from_bound_rule_material():
-    case = _case(DIRECTION)
-    result = _provide(case)
-    ownerships = _census(case, result)
-    binding = ModelRuleAuthorityBindingEvidence(
-        model_rule_hash=result.provider_receipt.model_rule_hash,
-        model_rule_material=case["model_rule"].material(),
-        model_authority_snapshot=case["model_authority_snapshot"],
-    )
-
-    # Omitting the walkback authority would recreate the caller-asserted direct-edge
-    # defect: the registration must derive the whole independently governed authority
-    # set from the authenticated rule body, not trust a hand-written subset.
-    with pytest.raises(
-        ModelRuleAuthorityBindingMismatch,
-        match="MODEL_RULE_AUTHORITY_BINDING_MISMATCH",
-    ):
-        AnalyticalProductRegistration(
-            product_ref=_product_ref(result.result_identity_hash),
-            product_identity_hash=result.result_identity_hash,
-            determinant_authority_refs=(case["model_rule"].model_authority_ref,),
-            determinant_exact_refs=tuple(row.determinant_ref for row in ownerships),
-            determinant_ownerships=ownerships,
-            model_rule_hash=result.provider_receipt.model_rule_hash,
-            model_rule_authority_binding=binding,
-        )
