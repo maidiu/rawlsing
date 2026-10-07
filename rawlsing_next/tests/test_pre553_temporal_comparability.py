@@ -2254,8 +2254,7 @@ def test_hq231_diagnostic_is_detached_and_object_setattr_cannot_touch_custody():
 
 
 def test_hq231_custody_capsule_is_tuple_immutable_and_constructor_bound():
-    """Even reflection-level whole-capsule transplant fails owner binding."""
-    from weakref import WeakKeyDictionary
+    """Reflection recovers immutable custody only; resealing the victim is refused."""
     import rawlsing_next.pre553_source_relations as sr
 
     source, relation = _adjudicated_resolver(
@@ -2263,8 +2262,6 @@ def test_hq231_custody_capsule_is_tuple_immutable_and_constructor_bound():
     victim = sr.SourceRelationResolver(
         relations=(), authority_registry=source._registry)
 
-    # Hostile reflection can discover lexical functions, but the returned capsule
-    # is tuple-backed and the loader verifies constructor ownership.
     loader = next(
         cell.cell_contents
         for cell in (sr.authenticated_source_relation_decision.__closure__ or ())
@@ -2281,30 +2278,29 @@ def test_hq231_custody_capsule_is_tuple_immutable_and_constructor_bound():
     with pytest.raises((AttributeError, TypeError)):
         object.__setattr__(victim_state, "owner_ref", source_state.owner_ref)
 
-    # Go one level deeper: even replacing the victim's lexical-store value with the
-    # source capsule is caught by the constructor-instance binding before adjudication.
-    store = next(
+    # The lexical ledger visible through reflection is a persistent tuple snapshot,
+    # not a mutable mapping that can be assigned victim -> source state.
+    ledger = next(
         cell.cell_contents
         for cell in (loader.__closure__ or ())
-        if isinstance(cell.cell_contents, WeakKeyDictionary)
+        if isinstance(cell.cell_contents, tuple)
+        and any(owner_ref() is victim for owner_ref, _ in cell.cell_contents)
     )
-    store[victim] = source_state
-    try:
-        with pytest.raises(
-                sr.SourceRelationIntegrityError,
-                match="not bound to this constructor instance"):
-            sr.authenticated_source_relation_decision(
-                victim,
-                relation_kind="SOURCE_SEMANTIC_EQUIVALENCE",
-                source_universe_refs=(UNIVERSE_A, UNIVERSE_B),
-                operation_scope="EXACT_BOUND_UNIVERSE_PAIR",
-                target_use=_ref("TargetUsePermission", "USE-1").object_id,
-                effective_scope="EXACT_BOUND_UNIVERSE_PAIR",
-                relation_ref=relation.ref,
-                expected_authority_operation="SEMANTIC_EQUIVALENCE_ADMISSION",
-            )
-    finally:
-        store[victim] = victim_state
+    with pytest.raises(TypeError):
+        ledger[0] = ledger[-1]
+
+    # Even recovering the constructor sealer cannot transplant into an already
+    # constructed victim: constructor custody is single-assignment.
+    sealer = next(
+        cell.cell_contents
+        for cell in (sr.SourceRelationResolver.__init__.__closure__ or ())
+        if callable(cell.cell_contents)
+        and getattr(cell.cell_contents, "__name__", "") == "_seal"
+    )
+    with pytest.raises(
+            sr.SourceRelationIntegrityError,
+            match="owner custody already sealed"):
+        sealer(victim, source_state)
 
     _assert_hq225_owner_impostor_refused(
         _run(_cross_universe_request(victim, relation.ref)))
