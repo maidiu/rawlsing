@@ -1,0 +1,35 @@
+{
+  "schema": "PYAT_HQ231_REGISTRY_PROVENANCE_AND_OWNER_PATH@1.0.0",
+  "code_bearing_head": "62394d7ff817252d6d406c1e0ada96529697f5f2",
+  "owner_path": [
+    "SourceRelationResolver constructor receives exact relations + exact concrete AuthorityRegistry",
+    "constructor validates each exact SourceUniverseRelation",
+    "constructor resolves nested authority via captured adopted AuthorityRegistry.resolve_exact",
+    "constructor validates exact AuthoritySnapshot semantic body/hash/ref",
+    "constructor builds mapping-proxy relation/authority custody",
+    "constructor seals tuple-backed custody capsule into immutable lexical ledger",
+    "authenticated_source_relation_decision verifies exact resolver type and constructor owner binding",
+    "_decide_from_owner_state performs unchanged P07 adjudication",
+    "positive relation and authority semantic identities are revalidated at use",
+    "RelationDecision replay binds request + relation + authority + custody hash + nested snapshot hash",
+    "F7 validates returned decision and cross-binds nested snapshot hash to independently resolved outer SOURCE_EQUIVALENCE snapshot"
+  ],
+  "hq227_registry_closure_preserved": {
+    "exact_concrete_AuthorityRegistry": true,
+    "captured_base_resolve_exact": true,
+    "constructor_pinned_snapshot": true,
+    "postconstruction_resolver_registry_replacement_ignored": true,
+    "registry_subclass_override_refused": true,
+    "snapshot_semantic_rehash_at_positive_use": true
+  },
+  "f7_consumer": {
+    "production_file_changed": false,
+    "continues_to_consume": "adopted source-relations authenticated_source_relation_decision",
+    "duplicates_P07_semantics": false
+  },
+  "static_blob_evidence": {
+    "pre553_temporal_comparability": "6f6b462b1cdef54d7989f15452473383c1661594",
+    "pre553_source_relations_test": "2487ed757c0254e7227cf43664abc6ae08f1dfb3",
+    "m1_temporal_v554_admission_dedup_test": "e6471ace122466988bb17019f70816a59a04f1f7"
+  }
+}
