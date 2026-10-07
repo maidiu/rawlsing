@@ -1,0 +1,158 @@
+{
+  "schema": "PYAT_HQ232_R2_CANONICAL_OWNER_NATIVE_AUTHORITY@1",
+  "status": "CANDIDATE_NOT_ADOPTED",
+  "constitutive_identity_law": "authority_content_hash = semantic_hash(AuthorityCandidate.authority_material()) under PRE553 canonical_json",
+  "authority_material": {
+    "authority_id": "C1-AT07-POSITIONED-SUBJECT-MODEL-RULE",
+    "authority_version": "1.0.0",
+    "authority_kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_MODEL_RULE",
+    "decision_state": "ALLOW",
+    "governed_operations": [
+      "AUTHORIZE_POSITIONED_SUBJECT_EXACT_CONDITIONAL_MODEL_RULE"
+    ],
+    "governed_object_families": [
+      "PositionedSubjectModelRule@1.0.0"
+    ],
+    "scope_envelope": {
+      "fixture_ids": [
+        "AT07_BIDIRECTIONAL_100"
+      ],
+      "source_universe_refs": [
+        {
+          "kind": "EmpiricalUniverse@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+          "content_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2"
+        }
+      ],
+      "release_refs": [
+        {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-c1-at07",
+          "content_hash": "dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3"
+        }
+      ],
+      "permitted_uses": [
+        "SOURCE_FREE_C1_01_COMPATIBILITY",
+        "SOURCE_FREE_N10E_LIFECYCLE"
+      ],
+      "real_source_effect": false
+    },
+    "effective_time_or_interval": "AT07_FIXTURE_ONLY",
+    "parent_authority_refs": [],
+    "negative_limit_refs": [],
+    "supersession_refs": [],
+    "interpretation_semantics_fingerprint": "3ed241a8d97bd7c14da86ce09775757da6d48e06ae92ad4151ddcec4f4d2c857",
+    "replay_protocol_ref": {
+      "kind": "PositionedSubjectModelRuleReplayProtocol@2",
+      "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-replay:sha256:9a250d5a00f519b0f00126fcbc85f344e095f0932574f1d44994f380c48640e4",
+      "content_hash": "9a250d5a00f519b0f00126fcbc85f344e095f0932574f1d44994f380c48640e4"
+    }
+  },
+  "proposed_authority_ref": {
+    "authority_id": "C1-AT07-POSITIONED-SUBJECT-MODEL-RULE",
+    "authority_version": "1.0.0",
+    "authority_content_hash": "e8215547c90ddf2b88dc5338e08de290f5c97e7db7741e9394c8dd6328631d85"
+  },
+  "interpretation_semantics": {
+    "material": {
+      "schema": "POSITIONED_SUBJECT_MODEL_AUTHORITY_INTERPRETATION@2",
+      "jurisdiction": "AUTHORIZE_ONE_BOUNDED_POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_MODEL_RULE_FAMILY",
+      "governed_rule_family": "PositionedSubjectModelRule@1.0.0",
+      "stable_rule_basis_hash": "409b3968455be046c58d996de47d04261fd27925d2636cfb7b2dfbdc022d0c79",
+      "scope_validation_contract_ref": {
+        "kind": "PositionedSubjectModelRuleScopeValidationContract@1",
+        "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-scope-validation:sha256:a0223ead6cadd09f40d29cced20e4655deee8dc4e2ebdd2c8062ee317a5a7211",
+        "content_hash": "a0223ead6cadd09f40d29cced20e4655deee8dc4e2ebdd2c8062ee317a5a7211"
+      },
+      "fixture_predecessor_ref": {
+        "authority_id": "C1-AT07-MODEL",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "2876572dcb4eba80b52361853047d409323fff0c63228d7e6a361c972e1b38bb"
+      },
+      "fixture_predecessor_relation": "HISTORICAL_FIXTURE_ONLY_EVIDENCE__NOT_AUTHORITY_PARENT_OR_SUPERSESSION",
+      "source_free_only": true,
+      "real_source_effect": false,
+      "walkback_ownership": "SEPARATE_EXACT_AUTHORITY_REQUIRED_PER_INVOCATION",
+      "source_universe_composition_authority": "NOT_GRANTED",
+      "comparability_authority": "NOT_GRANTED",
+      "actor_or_v3_authority": "NOT_GRANTED",
+      "structural_admission_authority": "NOT_GRANTED",
+      "uncertainty_threshold_authority": "NOT_GRANTED_BEYOND_GOVERNED_UPSTREAM_STATES",
+      "scope_enforcement": "KIND_SPECIFIC_VALIDATOR_REQUIRED_BEFORE_RULE_CONSTRUCTION_OR_PROVIDER_USE",
+      "negative_ceiling": [
+        "NO_SMOOTHING",
+        "NO_INTERPOLATION",
+        "NO_EXTRAPOLATION",
+        "NO_NEAREST_NEIGHBOR",
+        "NO_CROSS_SOURCE_PROXY_V1",
+        "NO_CROSS_RELEASE_PROXY_V1",
+        "NO_ACTOR_INFERENCE",
+        "NO_NORMATIVE_RECOMMENDATION",
+        "NO_REAL_SOURCE_EFFECT",
+        "NO_WALKBACK_POLICY_OWNERSHIP",
+        "NO_SOURCE_SEMANTICS_AUTHORITY",
+        "NO_SOURCE_COMPOSITION_AUTHORITY",
+        "NO_STRUCTURAL_ADMISSION_AUTHORITY"
+      ]
+    },
+    "fingerprint": "3ed241a8d97bd7c14da86ce09775757da6d48e06ae92ad4151ddcec4f4d2c857",
+    "old_fixture_fingerprint_reused": false
+  },
+  "replay_protocol": {
+    "material": {
+      "schema": "POSITIONED_SUBJECT_MODEL_RULE_REPLAY_PROTOCOL@2",
+      "protocol_id": "C1_AT07_OWNER_NATIVE_MODEL_RULE_REPLAY_R2",
+      "canonicalization": "PRE553_CANONICAL_JSON_THEN_SHA256",
+      "model_rule_family": "PositionedSubjectModelRule@1.0.0",
+      "stable_rule_basis_hash": "409b3968455be046c58d996de47d04261fd27925d2636cfb7b2dfbdc022d0c79",
+      "scope_validation_contract_ref": {
+        "kind": "PositionedSubjectModelRuleScopeValidationContract@1",
+        "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-scope-validation:sha256:a0223ead6cadd09f40d29cced20e4655deee8dc4e2ebdd2c8062ee317a5a7211",
+        "content_hash": "a0223ead6cadd09f40d29cced20e4655deee8dc4e2ebdd2c8062ee317a5a7211"
+      },
+      "replay_steps": [
+        "resolve_exact_owner_model_authority_snapshot",
+        "require_positive_exact_kind_operation_family_and_source_universe_scope",
+        "require_R2_kind_specific_exact_release_fixture_permitted_use_real_source_false_and_effective_interval_scope",
+        "construct_stable_model_rule_object_from_exact_owner_authority_and_complete_frozen_rule_basis",
+        "verify_stable_model_rule_exact_ref",
+        "assemble_per_invocation_rule_with_separate_walkback_authority_positive_proxy_authority_refs_source_universe_and_walkback_steps",
+        "verify_proxy_lane_entry_only_after_exact_unresolved_and_strict_subset_ladder_membership",
+        "run_provider_and_composition_without_handwritten_slice_or_answer_input",
+        "verify_only_SUPPORTED_proxy_evidence_can_satisfy_walkback_and_unused_evidence_is_not_replay_determinant",
+        "on_model_authority_transition_resolve_actual_sealed_successor_snapshot",
+        "reconstruct_successor_stable_model_rule_object_under_successor_scope_validation_contract",
+        "recompose_every_affected_registered_product_or_emit_owner_lawful_noncurrent_outcome"
+      ],
+      "forbidden": [
+        "latest_or_default_authority_resolution",
+        "reuse_fixture_only_authority_hash_as_owner_native",
+        "smoothing_or_interpolation_or_extrapolation",
+        "implicit_walkback_authority",
+        "proxy_after_exact_SUPPORTED_VALID_EMPTY_or_NONCOMPARABLE",
+        "unlisted_proxy_authority",
+        "non_SUPPORTED_proxy_satisfaction",
+        "sibling_or_rewidened_conditioner_walkback",
+        "release_fixture_or_permitted_use_scope_bypass",
+        "real_source_effect_true",
+        "cache_presence_as_currentness"
+      ]
+    },
+    "ref": {
+      "kind": "PositionedSubjectModelRuleReplayProtocol@2",
+      "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-replay:sha256:9a250d5a00f519b0f00126fcbc85f344e095f0932574f1d44994f380c48640e4",
+      "content_hash": "9a250d5a00f519b0f00126fcbc85f344e095f0932574f1d44994f380c48640e4"
+    }
+  },
+  "scope_validation_contract_ref": {
+    "kind": "PositionedSubjectModelRuleScopeValidationContract@1",
+    "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-scope-validation:sha256:a0223ead6cadd09f40d29cced20e4655deee8dc4e2ebdd2c8062ee317a5a7211",
+    "content_hash": "a0223ead6cadd09f40d29cced20e4655deee8dc4e2ebdd2c8062ee317a5a7211"
+  },
+  "genealogy": {
+    "parent_authority_refs": [],
+    "supersession_refs": [],
+    "fixture_predecessor_is_not_authority_genealogy": true
+  },
+  "constructibility": "EXPECTED_PREIMPLEMENTATION_FAILURE_UNTIL_KIND_FAMILY_AND_VALIDATOR_EXIST"
+}
