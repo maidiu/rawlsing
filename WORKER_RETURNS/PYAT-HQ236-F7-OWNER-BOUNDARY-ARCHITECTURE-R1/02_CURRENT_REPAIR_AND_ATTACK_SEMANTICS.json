@@ -1,0 +1,51 @@
+{
+  "schema": "PYAT_HQ236_F7_CURRENT_REPAIR_ATTACK_SEMANTICS@1",
+  "post_HQ235_tip": "c86ae335eaf70e82b5764c46754b16ca7e1587ce",
+  "exact_files": {
+    "owner": "rawlsing_next/pre553_source_relations.py",
+    "court": "rawlsing_next/tests/test_pre553_temporal_comparability.py",
+    "F7": "rawlsing_next/pre553_temporal_comparability.py"
+  },
+  "attack_court": "test_hq235_coordinated_multi_anchor_substitution_still_mints_custody",
+  "witness_lines": "rawlsing_next/tests/test_pre553_temporal_comparability.py:2608-2659",
+  "fixture": {
+    "source": "constructor-admitted genuine positive SOURCE_SEMANTIC_EQUIVALENCE relation with pinned positive snapshot",
+    "victim": "exact SourceRelationResolver constructed with relations=()",
+    "registry": "shared exact concrete registry",
+    "no_fake_positive_authority_content": true,
+    "no_production_monkeypatching_for_this_witness": true
+  },
+  "attack_sequence": [
+    "recover live ledger cell and source/victim states through authenticated callable closures",
+    "set victim._by_ref and victim._by_key to copies of source live relation maps",
+    "construct state with victim owner_ref, source by_ref/by_key/snapshots/semantic hashes/custody_hash, and anchors to victim replaced fields",
+    "recompute relation-only fingerprint over victim._by_ref",
+    "rebind entries_cell.cell_contents with forged state for victim",
+    "invoke standard F7 cross-universe comparison with victim and source relation exact ref"
+  ],
+  "expected_before": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT",
+  "source_positive": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED",
+  "observed_worker_test_after": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED",
+  "asserted_test_expectation": "became_positive is True",
+  "independent_desk_verification": "SOURCE_MATCHES_CODE_PATH_AND_GUARDS; NOT_A_NEW_RUNTIME_REPRODUCTION",
+  "load_bearing_failures": [
+    "ledger cell rebindable",
+    "live anchor containers caller-replaceable together",
+    "valid source state material can be rebound to victim owner ref",
+    "relation fingerprint rederives from attacker-changed live container",
+    "custody hash transcribed, not independently rederived against immutable owner-specific register at decision"
+  ],
+  "preserved_invariants": [
+    "original source relation/snapshot semantic hashes valid",
+    "authority operation/use/pair matching",
+    "registry pinned to original source relation admission",
+    "source positive path remains productive in single-primitive witnesses"
+  ],
+  "boundary_broken": "OWNER_TO_CONSTRUCTOR_ADMITTED_CUSTODY_AUTHENTICITY",
+  "worker_runtime_claims": {
+    "targeted": "228 passed",
+    "broad_normalized_fail_errors": "54 baseline / 54 worker candidate, identical normalized failure SHA-256",
+    "status": "WORKER_LOCAL_ONLY_UNREEXECUTED_IN_HQ236"
+  },
+  "separate_deepseek_lane": "NOT_CONSUMED_NOT_CLAIMED"
+}
