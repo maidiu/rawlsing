@@ -1,0 +1,45 @@
+{
+  "schema": "PYAT_HQ227_01_BASELINE_MODEL_AUTHORITY_AUTHENTICATION@1",
+  "disposition": "BLOCKED_BY_AUTHORITY_MATERIAL",
+  "evidence": {
+    "fixture_blob": "cc0015ce9c7e05224ec499f66e893a7ffda1bbe3",
+    "r2_authority_freeze_blob": "333989fa7b57c221d6aa5ebfc25d9d76e0acad32",
+    "r3_scope_freeze_blob": "5d1583dc31c837282ea40448285109a31bb1db41"
+  },
+  "installed_model_authority": {
+    "authority_class": "FIXTURE_ONLY_POSITIONED_SUBJECT_MODEL",
+    "authority_ref": {
+      "authority_id": "C1-AT07-MODEL",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "2876572dcb4eba80b52361853047d409323fff0c63228d7e6a361c972e1b38bb"
+    },
+    "decision_state": "ALLOW",
+    "governed_operations": [
+      "EVALUATE_EXISTING_EXACT_CONDITIONAL_NO_SMOOTHING"
+    ],
+    "interpretation_semantics_fingerprint": "2483a24da6904ec89d4ec4220443cee91cfc8dad4343214876ca33dbed6b33c3",
+    "model_rule_id": "POSITIONED_SUBJECT_EXACT_CONDITIONAL_WITH_GOVERNED_WALKBACK@1.0.0",
+    "algorithm_id": "EXACT_CONDITIONAL_LOOKUP__NO_SMOOTHING_INTERPOLATION_OR_EXTRAPOLATION",
+    "r3_classification": "existing consumer fixture-only AuthorityRef; not PRE553 AuthoritySnapshot"
+  },
+  "current_fixture_helper_defect": {
+    "function": "model_authority_snapshot(direction)",
+    "lines": "365-390",
+    "behavior": [
+      "starts from PRE553_AUTHORITY_SNAPSHOT::SOURCE_SEMANTICS_TOPOLOGY",
+      "retains base.authority_content_hash",
+      "changes authority_id/kind/governed_operations/governed_object_families",
+      "therefore changed body is exposed under a reused SOURCE authority hash"
+    ]
+  },
+  "missing_owner_native_snapshot_material": [
+    "authority_kind",
+    "governed_object_families",
+    "scope_envelope",
+    "replay_protocol_ref",
+    "typed_state and canonical outer snapshot custody fields",
+    "producer_replay_locator_or_reference_root",
+    "authority_content_hash computed from the final constitutive snapshot body"
+  ],
+  "local_synthesis_permitted": false
+}

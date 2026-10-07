@@ -1,0 +1,22 @@
+{
+  "schema": "PYAT_HQ227_03_SEALED_SUCCESSOR_RECOMPOSITION@1",
+  "disposition": "BLOCKED_BEFORE_LAWFUL_MODEL_SUCCESSOR_CEREMONY",
+  "current_defect": {
+    "baseline_executor_seed": "fixture model_authority_snapshot(direction)",
+    "baseline_body_ref_authentic": false,
+    "runner_successor_source": "revision.proposed_authority_ref",
+    "runner_resolves_sealed_successor_snapshot": false,
+    "recomposition_input": "bare successor AuthorityRef"
+  },
+  "lawful_required_sequence": [
+    "authenticate baseline model AuthoritySnapshot body/ref/hash",
+    "initialize accepted owner from that snapshot",
+    "candidate -> APPROVED adjudication -> seal_revision",
+    "take successor from seal",
+    "resolve_historical_exact(successor)",
+    "verify resolved snapshot body/ref/hash",
+    "consume snapshot-owned model-rule semantics during recomposition"
+  ],
+  "blocker": "The first step cannot be satisfied from installed C1 model authority material without fabricating missing AuthoritySnapshot fields.",
+  "query_path_preserved": true
+}
