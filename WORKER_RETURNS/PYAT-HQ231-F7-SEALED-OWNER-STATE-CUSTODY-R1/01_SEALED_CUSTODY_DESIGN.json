@@ -1,0 +1,57 @@
+{
+  "schema": "PYAT_HQ231_SEALED_CUSTODY_DESIGN@1.0.0",
+  "code_bearing_head": "62394d7ff817252d6d406c1e0ada96529697f5f2",
+  "blocker": "F7-RR-04F__LIVE_AUTHENTICATED_OWNER_STATE_IS_EXPOSED_AND_POSTCONSTRUCTION_REPLACEABLE",
+  "old_live_surfaces_removed": [
+    "_load_owner_state",
+    "_seal_owner_state",
+    "_make_owner_state_store"
+  ],
+  "trusted_state": {
+    "type": "_AuthenticatedResolverState",
+    "representation": "typing.NamedTuple",
+    "object_setattr_field_replacement": "REFUSED_BY_TUPLE_STORAGE",
+    "owner_binding": "weak reference to exact constructing resolver",
+    "relation_maps": "MappingProxyType snapshots",
+    "authority_maps": "MappingProxyType snapshots",
+    "semantic_hashes": "construction-pinned and revalidated at positive use",
+    "custody_hash": "same deterministic semantic custody hash as HQ227"
+  },
+  "lexical_ledger": {
+    "representation": "persistent tuple of (weak_owner_ref, custody_capsule)",
+    "mutable_mapping": false,
+    "construction_mutation": "lexical _seal rebinds the tuple only",
+    "dead_owner_handling": "dead weak-owner entries are pruned on later construction",
+    "single_assignment": true,
+    "load_checks": [
+      "ledger weak owner is exact resolver",
+      "capsule owner_ref resolves to exact resolver"
+    ]
+  },
+  "diagnostic": {
+    "name": "source_relation_owner_custody_diagnostic",
+    "return_type": "canonical JSON string",
+    "returns_live_state": false,
+    "contains": [
+      "contract",
+      "custody_hash",
+      "detached relation refs",
+      "detached relation semantic hashes",
+      "detached authority refs",
+      "detached authority semantic hashes"
+    ]
+  },
+  "semantic_conservation": {
+    "_owner_state_resolve_exact": "BYTE_IDENTICAL_TO_STARTUP",
+    "_validate_positive_from_owner_state": "BYTE_IDENTICAL_TO_STARTUP",
+    "_relation_decision_replay_identity": "BYTE_IDENTICAL_TO_STARTUP",
+    "validate_relation_decision_replay_identity": "BYTE_IDENTICAL_TO_STARTUP",
+    "_decide_from_owner_state": "BYTE_IDENTICAL_TO_STARTUP",
+    "pre553_temporal_comparability.py": "UNCHANGED_BLOB"
+  },
+  "new_relation_semantics": false,
+  "new_authority_kind": false,
+  "new_operation": false,
+  "owner_contract_change_required": false,
+  "architecture_reopen_required": false
+}
