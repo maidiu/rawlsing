@@ -1,0 +1,117 @@
+{
+  "schema": "PYAT_HQ236_F7_ACCEPTED_THREAT_MODEL_CENSUS@1",
+  "disposition": "F7_OWNER_BOUNDARY_ARCHITECTURE_DECISION_READY__EXACT_CONTRACT_AND_OPTION_RULING",
+  "evidence": [
+    {
+      "kind": "original_semantic_contract",
+      "commit": "c57a96897788108db7b194e4e51691d1ca8ab729",
+      "path": "WORKER_RETURNS/PYAT-HQ210-F7-TEMPORAL-CONTRACT-REPAIR-R1/00_RETURN.md",
+      "obligations": [
+        "exact authorized source equivalence",
+        "12-state precedence",
+        "exact-zero and two-anchor law",
+        "no actor/F8/trajectory/source-equivalence creation"
+      ],
+      "arbitrary_python_mutation_explicit": false
+    },
+    {
+      "kind": "P07 owner semantic implementation",
+      "commit": "c86ae335eaf70e82b5764c46754b16ca7e1587ce",
+      "path": "rawlsing_next/pre553_source_relations.py",
+      "obligations": [
+        "real admitted relation and positive exact snapshot",
+        "distinct by default",
+        "scope/use/kind/operation/source checks"
+      ]
+    },
+    {
+      "kind": "HQ219 repair commission",
+      "path": "WORKER_COMMISSIONS/PYAT-HQ219-F7-AUTHORITY-CHAIN-REPAIR-R1/00_COMMISSION.md",
+      "explicit_attacks": [
+        "duck-typed resolver",
+        "DENIED relation",
+        "wrong-kind/wrong-pair relation",
+        "caller-authored identity material"
+      ],
+      "arbitrary_python_mutation_explicit": false
+    },
+    {
+      "kind": "HQ227 repair commission",
+      "path": "WORKER_COMMISSIONS/PYAT-HQ227-F7-FULL-OWNER-PATH-AUTHENTICITY-R1/00_COMMISSION.md",
+      "explicit_attacks": [
+        "exact instance relation map injection",
+        "nested registry substitution",
+        "registry subclass override",
+        "decide/require/resolve_exact/validator monkeypatch"
+      ],
+      "claim": "non-forgeable owner path under named hostile court"
+    },
+    {
+      "kind": "HQ231 repair commission",
+      "path": "WORKER_COMMISSIONS/PYAT-HQ231-F7-SEALED-OWNER-STATE-CUSTODY-R1/00_COMMISSION.md",
+      "explicit_attacks": [
+        "object.__setattr__",
+        "live owner-state transplant",
+        "module-visible helper",
+        "closure/lexical store inspection",
+        "field replacement"
+      ]
+    },
+    {
+      "kind": "HQ234 hostile lead",
+      "commit": "282089225ebf1854736a16b4204599d26fc62528",
+      "path": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ234_F7_CLOSURE_CELL_HOSTILE_LEAD_R1.md",
+      "explicit_attacks": [
+        "function.__closure__",
+        "cell.cell_contents rebind",
+        "source→victim transplant"
+      ]
+    },
+    {
+      "kind": "HQ235 repair commission",
+      "path": "WORKER_COMMISSIONS/PYAT-HQ235-F7-NONFORGEABLE-CUSTODY-BINDING-REPAIR-R1/00_COMMISSION.md",
+      "explicit_attacks": [
+        "closure cell mutation",
+        "construct module-visible state",
+        "object.__setattr__",
+        "method replacement",
+        "resolver field/registry replacement",
+        "recovered helper/sealer",
+        "source→victim custody transfer"
+      ]
+    },
+    {
+      "kind": "HQ235 worker-local exploration",
+      "path": "WORKER_RETURNS/PYAT-HQ235-F7-NONFORGEABLE-CUSTODY-BINDING-REPAIR-R1/03_REFLECTION_SURFACE_AUDIT.json",
+      "probed_extra": [
+        "function.__code__",
+        "function.__defaults__",
+        "module/class/property replacements"
+      ],
+      "caution": "worker-local empirical probe does not alone constitute a globally adopted unlimited adversary model"
+    }
+  ],
+  "threat_tiers": [
+    {
+      "tier": "DATA_AND_PUBLIC_API",
+      "powers": "ordinary caller-owned refs, relation materials, registry/instance data",
+      "scope": "original exact-authority problem"
+    },
+    {
+      "tier": "NAMED_IN_PROCESS_REFLECTION",
+      "powers": "specific commissioned closure/cell/object/monkeypatch/state reconstruction attacks",
+      "scope": "current F7 hostile closure demand"
+    },
+    {
+      "tier": "ARBITRARY_SAME_INTERPRETER_CODE",
+      "powers": "rewrite trusted Python functions/callsites/verifiers/returns",
+      "scope": "stronger adversary; not explicitly constituted by original F7 semantic contract as universal sandbox guarantee"
+    },
+    {
+      "tier": "NATIVE_OR_OS_COMPROMISE",
+      "powers": "native memory read/write, OS process compromise",
+      "scope": "not established as accepted adversary"
+    }
+  ],
+  "conclusion": "Do not silently collapse named reflection attacks into unrestricted arbitrary-code threat or downgrade the named reflection commission to data-only."
+}
