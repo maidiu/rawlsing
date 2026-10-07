@@ -1,3 +1,41 @@
+# HQ236 FRONTIER — TWO RETURNS INTAKEN; THREE ORTHOGONAL SUCCESSORS — 2026-10-07
+
+### RETURNED / ARCHITECTURE QUESTION HELD — F7
+**RETURN:** `c86ae335eaf70e82b5764c46754b16ca7e1587ce`
+**STATUS:** `F7_NONFORGEABLE_CUSTODY_REPAIR_BLOCKED__OWNER_BOUNDARY_ARCHITECTURE_DECISION_REQUIRED`
+**HQ:** ratifies NON-GREEN status, NOT universal impossibility/native solution.
+
+### RETURNED / TWO DEFECTS RATIFIED — N10E/C1 R2
+**RETURN:** `4dcd4bd3221f1858af2a57718ad94d1d68808a53`
+**STATUS:** `C1_OWNER_NATIVE_MODEL_AUTHORITY_R2_PARTIAL__NAMED_DEFECT`
+**DEFECTS:** `HQ235-DEFECT-STABLE-TYPED-RESULT-MAPPING-001`; `HQ235-DEFECT-SCOPE-CONTEXT-BINDING-001`
+
+### NEW — NEEDS LAUNCH — F7 OWNER-BOUNDARY ARCHITECTURE HOSTILE ADJUDICATION
+**AGENT:** Browser/GitHub independent architecture hostile reviewer
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**
+**BRANCH:** `agent/reviewer-pyat-hq236-f7-owner-boundary-architecture-r1`
+**COMMISSION TIP:** `44581009b053147fc4e1498b247735fa463717d4`
+
+### NEW — NEEDS LAUNCH — F7 COORDINATED HOSTILE RUNTIME EVIDENCE
+**AGENT:** DeepSeek-Harness / OpenCode independent local hostile reviewer
+**MODEL / INTELLIGENCE:** **DeepSeek V4.1 Flash**
+**MACHINE:** user's Mac / governed CPython
+**CHECKOUT:** SPARSE_REQUIRED
+**BRANCH:** `agent/reviewer-pyat-hq236-f7-coordinated-hostile-evidence-r1`
+**COMMISSION TIP:** `ea734f1d4418a2356620627d16dbcd17b39819c9`
+
+### NEW — NEEDS LAUNCH — N10E/C1 OWNER-NATIVE MODEL-AUTHORITY R3
+**AGENT:** Browser/GitHub documentary authority correction
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**
+**BRANCH:** `agent/rabochii-pyat-hq236-n10e-c1-model-authority-correction-r3`
+**COMMISSION TIP:** `7f96793db1b7ae34595f661624d262c4e3f2ee7c`
+
+Run all three concurrently. No Space Bunny implementation lane until competent next authority.
+
+HQ decision: `HQD-2026-10-07-236`
+
+---
+
 # HQ235 FRONTIER — FOUR RETURNS INTAKEN; TWO SUCCESSORS — 2026-10-07
 
 ### ACCEPTED / CLOSED AT EXACT GRAIN — N6 GT2 LOCAL CONTEXT
