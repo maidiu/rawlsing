@@ -1,0 +1,62 @@
+{
+  "schema": "HQ227_HOSTILE_FULL_PATH_COURT@1.0.0",
+  "code_bearing_head": "61acee605d618ed4a0db11d893f6139593ae5780",
+  "court_repair": {
+    "stale_witness_removed": "test_hq219_targeted_break_rr04_owner_decision_is_actually_consulted",
+    "replacement": "test_hq227_targeted_break_authenticated_owner_entrypoint_is_load_bearing",
+    "load_bearing_seam": "pre553_temporal_comparability._authenticated_source_relation_decide",
+    "pre_repair_discrimination": "pre-HQ227 F7 called SourceRelationResolver.decide directly, so breaking the new captured authenticated entrypoint would not affect that implementation"
+  },
+  "mandatory_attacks": [
+    {
+      "attack": "exact resolver with post-construction relation-map injection",
+      "witness": "test_hq227_exact_instance_postconstruction_relation_map_injection_cannot_mint_custody",
+      "expected": "typed F7 equivalence refusal"
+    },
+    {
+      "attack": "exact resolver with post-construction registry replacement",
+      "witness": "test_hq227_exact_instance_registry_replacement_cannot_change_pinned_owner_snapshot",
+      "expected": "decision remains bound to construction-time snapshot semantics"
+    },
+    {
+      "attack": "AuthorityRegistry subclass overriding resolve_exact",
+      "witness": "test_hq227_authority_registry_subclass_cannot_enter_p07_owner_custody",
+      "expected": "constructor refusal before hostile dispatch"
+    },
+    {
+      "attack": "stale/corrupt relation replay identity",
+      "witness": "test_hq227_corrupt_custodied_relation_replay_identity_refuses_before_f7_positive",
+      "expected": "typed F7 equivalence refusal"
+    },
+    {
+      "attack": "wrong positive AuthoritySnapshot with same outer AuthorityRef",
+      "witness": "test_hq227_same_outer_authority_ref_with_wrong_snapshot_semantics_is_refused",
+      "expected": "typed F7 equivalence refusal"
+    },
+    {
+      "attack": "monkeypatch decide/require/resolve_exact and nested validation seams",
+      "witness": "test_hq227_owner_method_and_nested_validation_monkeypatches_cannot_redirect_f7",
+      "expected": "lawful positive path remains positive; patched seams are not dispatched"
+    },
+    {
+      "attack": "post-construction nested registry instance resolve_exact shadow",
+      "witness": "test_hq227_nested_registry_instance_dispatch_shadow_cannot_redirect_f7",
+      "expected": "lawful positive path remains positive; hostile dispatch is not executed"
+    },
+    {
+      "attack": "returned decision provenance",
+      "witness": "test_hq227_authenticated_decision_carries_exact_custody_snapshot_and_replay_provenance",
+      "expected": "decision carries exact custody hash, snapshot semantic hash, and replay-valid identity"
+    },
+    {
+      "attack": "productive lawful cross-universe path",
+      "witness": "test_hq227_full_owner_path_positive_cross_universe_service_remains_productive",
+      "expected": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED / COMPARABLE / INCREASE"
+    }
+  ],
+  "execution": {
+    "runtime_executed": false,
+    "pytest_pass_claimed": false,
+    "reason": "no lawful private-repository checkout/runtime or workflow-dispatch surface was available in-session"
+  }
+}
