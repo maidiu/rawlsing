@@ -1,10 +1,11 @@
 # PYAT HQ232 — F7 SEALED OWNER-STATE CUSTODY FINAL HOSTILE REREVIEW — R1
 
 **STATUS:** NEW — NEEDS LAUNCH  
-**AGENT:** Browser/GitHub independent hostile reviewer  
-**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
-**MACHINE:** unknown  
-**WORKTREE:** not established  
+**AGENT:** DeepSeek-Harness / OpenCode independent hostile reviewer  
+**MODEL / INTELLIGENCE:** **DeepSeek V4.1 Flash**  
+**MACHINE:** user's Mac / local disk / isolated sparse worktree  
+**CHECKOUT:** **SPARSE_REQUIRED**  
+**WORKTREE:** use the HQ-authorized isolated sparse worktree for this branch; if absent, report bootstrap required rather than cloning  
 **BRANCH:** `agent/reviewer-pyat-hq232-f7-sealed-owner-state-final-rereview-r1`  
 **EXACT STARTUP TIP:** `d6734e0150e91a60965e7db244ed2ef519ec831c`  
 **CANDIDATE CODE-BEARING HEAD:** `62394d7ff817252d6d406c1e0ada96529697f5f2`  
@@ -25,6 +26,8 @@ Read:
 Independently determine whether HQ231 actually closes the final F7 authenticated-owner custody defect without changing relation semantics, weakening provenance, hiding the live state behind cosmetic indirection, or breaking positive productive service.
 
 This is a hostile rereview. Do not trust the candidate narrative or its static accounting. Reconstruct the load-bearing path from current code and attack it.
+
+This lane is intentionally assigned to **DeepSeek-Harness in OpenCode** because final F7 closure is provenance/capability-sensitive and benefits from direct local code/worktree inspection. It remains independent of the separate F7 runtime-qualification lane. Do not mutate production or repair defects here; return a named defect to HQ if one is found.
 
 ## Required adjudication
 
@@ -141,3 +144,12 @@ Required:
 No production mutation. No repair. No authority adoption.
 
 Commit/push only this branch and report exact remote SHA.
+
+
+SHARED_STORE_WORKTREE_REQUIRED:
+- use the HQ-authorized sparse worktree for this branch;
+- do not clone;
+- do not recreate an existing worktree;
+- do not broaden sparse scope;
+- do not share a writable working directory with another branch;
+- push only this commissioned branch.
