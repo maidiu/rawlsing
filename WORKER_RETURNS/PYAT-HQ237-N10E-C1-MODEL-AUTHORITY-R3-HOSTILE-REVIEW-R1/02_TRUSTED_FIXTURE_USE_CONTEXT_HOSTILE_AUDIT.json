@@ -1,0 +1,57 @@
+{
+  "schema": "PYAT_HQ237_TRUSTED_FIXTURE_USE_CONTEXT_HOSTILE_AUDIT@1",
+  "status": "FAIL__NAMED_ISSUER_AND_OWNER_ENTRYPOINT_DEFECT",
+  "blockers": [
+    {
+      "id": "HQ237-DEFECT-FIXTURE-CONTEXT-ISSUER-AUTHORITY-001",
+      "issue": "SOURCE_FREE_C1_OWNER_FIXTURE_REGISTRY introduced as prospective trusted registrar/resolver; accepted C1-01 adoption and current test builder do not establish issuer authority, independently verifiable registrar identity, or authoritative build-instance receipt",
+      "adversarial_case": "caller can author identical syntactic context ref/fixture material and claim false real_source_effect; contract says such evidence is inadmissible but supplies no already competent registration mechanism to distinguish it",
+      "runtime_proof": "DOCUMENTARY_GAP__NO_NEW_EXECUTION"
+    },
+    {
+      "id": "HQ237-DEFECT-C1-N10E-CONTEXT-ENTRYPOINT-CUSTODY-002",
+      "issue": "one provider ExactRef field is necessary but not sufficient to bind C1 stable-rule constructor and N10E request/provider/replay/lifecycle to trusted issuer/actual immutable build instance before each entrypoint",
+      "affected_paths": [
+        "rawlsing_next/tests/test_pre553_analytical_composition.py:298-325",
+        "rawlsing_next/pre553_empirical_possibility_provider.py:140-215,531-659"
+      ],
+      "runtime_proof": "CURRENT_API_ABSENT_AND_FUTURE_PROPOSED_LINK_INCOMPLETE"
+    }
+  ],
+  "correct_frozen_documentary_constraints": {
+    "fixture_id": "AT07_BIDIRECTIONAL_100",
+    "source_universe_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+    "release": {
+      "id": "REL-c1-at07",
+      "content_hash": "dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3"
+    },
+    "source_manifest_hash": "01ee5fa6db95efad3ce0acecd656f51beb6c2f2e21bc30e49bd358633f9ad6a1",
+    "excluded_stale_release_hash": "8afa807cc06a3a10e660d13bbd831f4f758ae829e835a454c62831bfd8f4d939",
+    "excluded_changed_source_fixture": "AT07_BIDIRECTIONAL_110_CHANGED_SOURCE_LAW",
+    "snapshot_static_interval": "AT07_FIXTURE_ONLY",
+    "actual_conditioner_effective_context": null,
+    "actual_16_key_witness_effective_context": null,
+    "null_is_wildcard": false,
+    "real_source_effect": false,
+    "site_use_tokens": {
+      "C1_STABLE_RULE_COMPATIBILITY_CONSTRUCTION": "SOURCE_FREE_C1_01_COMPATIBILITY",
+      "N10E_PROVIDER_AND_LIFECYCLE": "SOURCE_FREE_N10E_LIFECYCLE"
+    },
+    "wrong_site_token": "FAIL_CLOSED_PRECONSTRUCTION",
+    "missing_or_untrusted_context": "FAIL_CLOSED_PRECONSTRUCTION"
+  },
+  "existing_adopted_authority": {
+    "C1_01_commit": "5fafb499d53dddadaf8a7b4fd46506e91a09d270",
+    "scope": "source-free producer/consumer C1-01, frozen R8 identity, closed witness, NOT fixture-context issuance or full model rule authority",
+    "source_free_fixture_builders_are_test_code": true,
+    "general_AuthorityRegistry_only_resolves_AuthoritySnapshot": true,
+    "owner_fixture_registry_implemented": false
+  },
+  "future_additive_interface": {
+    "N10E_required_field": "fixture_use_context_ref: ExactRef",
+    "adequacy": "INSUFFICIENT_WITHOUT_TRUSTED_ISSUER_AND_C1_PRECONSTRUCTION_BINDING",
+    "caller_supplied_use_or_context_is_not_authentication": true,
+    "mandatory_registration_and_all_entrypoint_check": "STATED_BUT_OWNER_AUTHORITY_EDGE_UNFROZEN"
+  },
+  "classification": "CANDIDATE_DOCUMENTARY_PRECISION_INSUFFICIENT_FOR_SEPARATE_IMPLEMENTER__NO_HQ_ADOPTION"
+}
