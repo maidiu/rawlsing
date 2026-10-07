@@ -1,0 +1,24 @@
+{
+  "schema": "PYAT_HQ228_F7_FULL_OWNER_PATH_FINAL_REREVIEW@1.0.0",
+  "branch": "agent/reviewer-pyat-hq228-f7-full-owner-path-final-rereview-r1",
+  "commission_tip": "b4698896ae345af2984164cef775bb2bb25e875c",
+  "candidate_return": "d8a03fcdf77ca791d7f66ce58e2ed3b3d894bbb1",
+  "code_bearing_head": "61acee605d618ed4a0db11d893f6139593ae5780",
+  "prior_review": "2b8946bfef1506bae34b46a55833bad83bfb9d16",
+  "disposition": "F7_FULL_OWNER_PATH_PARTIAL__NAMED_DEFECT",
+  "adoption_ready": false,
+  "source_defect_found": true,
+  "blocking_finding": {
+    "id": "F7-RR-04F__LIVE_AUTHENTICATED_OWNER_STATE_IS_EXPOSED_AND_POSTCONSTRUCTION_REPLACEABLE",
+    "summary": "_load_owner_state returns the live _AuthenticatedResolverState. A hostile caller can use object.__setattr__ to transplant valid custody from one exact resolver into another exact resolver after construction, so the victim's constructor provenance is not non-forgeably bound.",
+    "mandatory_attack_defeated": 7,
+    "runtime_required_for_this_nonadoption_disposition": false
+  },
+  "runtime_pass_claimed": false,
+  "authority_overreach_found": false,
+  "architecture_reopen_required": false,
+  "new_semantics_required_by_finding": false,
+  "repair_scope": "owner-state custody/provenance boundary plus a discriminating sealed-state injection court",
+  "self_adoption": "FORBIDDEN__NOT_PERFORMED",
+  "terminal": "HQ228_F7_FULL_OWNER_PATH_FINAL_REREVIEW_RETURNED__NAMED_DEFECT_REPAIR_REQUIRED"
+}
