@@ -1,10 +1,11 @@
 # PYAT HQ232 — F7 SEALED OWNER-STATE GOVERNED RUNTIME QUALIFICATION — R1
 
 **STATUS:** NEW — NEEDS LAUNCH  
-**AGENT:** local governed-runtime evidence qualification worker  
-**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
-**MACHINE:** user's Mac / governed local Rawlsing runtime  
-**WORKTREE:** not established  
+**AGENT:** DeepSeek-Harness / OpenCode local governed-runtime evidence qualification executor  
+**MODEL / INTELLIGENCE:** **DeepSeek V4.1 Flash**  
+**MACHINE:** user's Mac / local disk / governed Rawlsing runtime  
+**CHECKOUT:** **SPARSE_REQUIRED**  
+**WORKTREE:** use the HQ-authorized isolated sparse worktree for this branch; if no prepared worktree is present, report bootstrap required rather than cloning  
 **BRANCH:** `agent/rabochii-pyat-hq232-f7-runtime-qualification-r1`  
 **EXACT STARTUP TIP:** `d6734e0150e91a60965e7db244ed2ef519ec831c`  
 **CANDIDATE CODE-BEARING HEAD:** `62394d7ff817252d6d406c1e0ada96529697f5f2`  
@@ -44,6 +45,16 @@ Record:
 - `git status --short`.
 
 Use the shared-store law: one canonical object store on the machine and one isolated sparse worktree for this branch. No broad fetch, no branch switching in a shared directory, no uncommissioned merge/rebase.
+
+## OpenCode / DeepSeek-Harness routing law
+
+This lane is intentionally assigned to **DeepSeek-Harness in OpenCode** because its load-bearing evidence is local worktree/runtime truth, not documentary GitHub-only reasoning.
+
+- Do not migrate the job back to a browser-only worker merely because the commands are simple.
+- Do not use Space Bunny as the qualification authority for this lane unless HQ explicitly reassigns it; Space Bunny remains the preferred local implementation/repair surface when a repair is actually authorized.
+- DeepSeek-Harness may inspect the commissioned sparse worktree, execute the governed interpreter, collect exact node manifests/results, and write only the evidence return packet.
+- No semantic or production repair is authorized here.
+- If execution exposes a real F7 defect, stop with a named divergence; HQ will decide whether the next repair belongs to Space Bunny.
 
 ## Qualification A — exact F7 court
 
@@ -130,3 +141,13 @@ Required:
 Compact node-id manifests are allowed. No caches, binaries, pyc files, or opaque large logs.
 
 Commit/push only this branch and report exact remote SHA.
+
+
+SHARED_STORE_WORKTREE_REQUIRED:
+- use the HQ-authorized sparse worktree for this branch;
+- do not clone;
+- do not recreate an existing worktree;
+- do not broaden sparse scope;
+- do not use the same working directory concurrently with another branch;
+- share the canonical repository object store;
+- push only this commissioned branch.
