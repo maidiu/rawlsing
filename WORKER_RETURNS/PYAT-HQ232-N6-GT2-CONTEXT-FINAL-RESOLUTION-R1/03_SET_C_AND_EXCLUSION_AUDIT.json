@@ -1,0 +1,88 @@
+{
+  "schema": "PYAT_HQ232_03_SET_C_AND_EXCLUSION_AUDIT@1",
+  "independent_reproduction": true,
+  "set_C_broad_with_without_court_comparison": {
+    "labelled_as": "RECONSTRUCTED_QUALIFICATION__NOT_HISTORICAL_RECEIPT",
+    "label_preserved_and_correct": true,
+    "historical_receipt_claimed": false,
+    "exact_command_with_court": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11 -m pytest rawlsing_next/tests/ -q --ignore=rawlsing_next/tests/test_fiabc_lm1_r1e_n1_physical_boundary.py --ignore=rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py --ignore=rawlsing_next/tests/test_fiabc_run3_postmeasurement_repair_stack.py --ignore=rawlsing_next/tests/test_objective_consumer_bounded_evidence_d07.py --ignore=rawlsing_next/tests/test_pre553_candidate_c_production_binding.py --ignore=rawlsing_next/tests/test_pre553_r4_compaction.py --ignore=rawlsing_next/tests/test_pre553_source_backed_c11_facade.py --ignore=rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py --ignore=rawlsing_next/tests/test_subv_e_obl059_positive_applicability_r13_independent_review_r1_corrected.py",
+    "exact_command_without_court": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11 -m pytest rawlsing_next/tests/ -q --ignore=rawlsing_next/tests/test_fiabc_lm1_r1e_n1_physical_boundary.py --ignore=rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py --ignore=rawlsing_next/tests/test_fiabc_run3_postmeasurement_repair_stack.py --ignore=rawlsing_next/tests/test_objective_consumer_bounded_evidence_d07.py --ignore=rawlsing_next/tests/test_pre553_candidate_c_production_binding.py --ignore=rawlsing_next/tests/test_pre553_r4_compaction.py --ignore=rawlsing_next/tests/test_pre553_source_backed_c11_facade.py --ignore=rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py --ignore=rawlsing_next/tests/test_subv_e_obl059_positive_applicability_r13_independent_review_r1_corrected.py --ignore=rawlsing_next/tests/test_pre553_n6_gt2_objective_context_court.py",
+    "with_court": {
+      "exit_code_observed": 1,
+      "summary_line_observed": "45 failed, 3075 passed, 55 warnings, 7 errors, 28 subtests passed in 1470.88s (0:24:30)",
+      "passed_observed": 3075,
+      "failed_observed": 45,
+      "errors_observed": 7,
+      "normalized_failed_error_count_observed": 54,
+      "normalized_set_sha256_observed": "278854ee94fadfd57284a572441522fb56105081f89af431b17ec2e556ace6a9",
+      "normalized_set_matches_committed_artifact": "BYTE-IDENTICAL"
+    },
+    "without_court": {
+      "exit_code_observed": 1,
+      "summary_line_observed": "45 failed, 3058 passed, 55 warnings, 7 errors, 28 subtests passed in 1377.86s (0:22:57)",
+      "passed_observed": 3058,
+      "failed_observed": 45,
+      "errors_observed": 7,
+      "normalized_failed_error_count_observed": 54,
+      "normalized_set_sha256_observed": "278854ee94fadfd57284a572441522fb56105081f89af431b17ec2e556ace6a9",
+      "normalized_set_matches_committed_artifact": "BYTE-IDENTICAL"
+    },
+    "expected_candidate_claim": {"baseline": 54, "with_court": 54, "normalized_diff": "identical"},
+    "claim_verified": true,
+    "normalized_sets_identical": true,
+    "line_diff_byte_count": 0,
+    "sha256_identical_both_sides": true,
+    "sha256_reproduces": "278854ee94fadfd57284a572441522fb56105081f89af431b17ec2e556ace6a9",
+    "passed_count_delta": 17,
+    "passed_delta_equals_n6_court_size": true,
+    "only_test_discovery_difference_is_n6_court": true,
+    "test_discovery_difference_proof": "the two exact commands differ by exactly one token: the trailing --ignore of rawlsing_next/tests/test_pre553_n6_gt2_objective_context_court.py; no other file was moved, renamed, copied or altered",
+    "honest_composition_note": {
+      "committed_normalized_line_total": 54,
+      "parent_run_unique_node_ids": 52,
+      "parent_summary_failed_plus_errors": "45 + 7 = 52",
+      "leaked_nested_child_lines": 2,
+      "detail": "The 54-line normalized set is not a pure 1:1 node-id set: it contains 52 unique parent-run node ids plus 2 lines leaked from nested pytest subprocesses that two failing tests invoke and echo to stdout (test_gt34_obl056_r3_current_entry_provenance_hostile_court.py leaks a duplicate FAILED line; test_gt34_obl056_r3_h2_hostile_compatibility.py leaks 'ERROR: file or directory not found: rawlsing_next/tests/test_gt34_obl056_repaired_input_authority_acceptance_hostile_audit.py'). Both leaked lines are deterministic and identical in the with-court and without-court runs, so the comparison and the 17-test delta are unaffected. This is a documentation nuance, not a divergence and not N6-related."
+    }
+  },
+  "exclusion_audit": {
+    "exclusion_count": 9,
+    "exclusions_identical_in_both_runs": true,
+    "all_exclusions_presemantic_environmental": true,
+    "exclusions_used_to_evade_interaction_failures": false,
+    "independently_reproduced_import_failures": [
+      {"excluded_file": "test_fiabc_lm1_r1e_n1_physical_boundary.py", "reason_observed": "ModuleNotFoundError: No module named 'pandas'", "semantic_class": "ENVIRONMENTAL_OR_ABSENT_ARTIFACT"},
+      {"excluded_file": "test_fiabc_lm2_r1e_bounded_mapping_recovery.py", "reason_observed": "ModuleNotFoundError: No module named 'pandas'", "semantic_class": "ENVIRONMENTAL_OR_ABSENT_ARTIFACT"},
+      {"excluded_file": "test_fiabc_run3_postmeasurement_repair_stack.py", "reason_observed": "ModuleNotFoundError: No module named 'pandas'", "semantic_class": "ENVIRONMENTAL_OR_ABSENT_ARTIFACT"},
+      {"excluded_file": "test_objective_consumer_bounded_evidence_d07.py", "reason_observed": "ModuleNotFoundError: No module named 'rawlsing_next.tests.d07_bounded_loss_harness'", "semantic_class": "ENVIRONMENTAL_OR_ABSENT_ARTIFACT"},
+      {"excluded_file": "test_pre553_candidate_c_production_binding.py", "reason_observed": "ModuleNotFoundError: No module named 'pandas'", "semantic_class": "ENVIRONMENTAL_OR_ABSENT_ARTIFACT"},
+      {"excluded_file": "test_pre553_r4_compaction.py", "reason_observed": "ModuleNotFoundError: No module named 'pyarrow'", "semantic_class": "ENVIRONMENTAL_OR_ABSENT_ARTIFACT"},
+      {"excluded_file": "test_pre553_source_backed_c11_facade.py", "reason_observed": "ModuleNotFoundError: No module named 'pandas'", "semantic_class": "ENVIRONMENTAL_OR_ABSENT_ARTIFACT"},
+      {"excluded_file": "test_pre553_sr06_decoder_carrier.py", "reason_observed": "ModuleNotFoundError: No module named 'pandas'", "semantic_class": "ENVIRONMENTAL_OR_ABSENT_ARTIFACT"},
+      {"excluded_file": "test_subv_e_obl059_positive_applicability_r13_independent_review_r1_corrected.py", "reason_observed": "FileNotFoundError: sibling rawlsing_next/tests/test_subv_e_obl059_positive_applicability_r13_independent_review_r1.py absent", "semantic_class": "ENVIRONMENTAL_OR_ABSENT_ARTIFACT"}
+    ],
+    "flagged_machinery_token_scan": {
+      "patterns": "SIG-?004 | V55[478] | GT2 | Q86 | field_forge | n6_gt2 | m1_temporal | m4_v557",
+      "hits_per_excluded_file": 0,
+      "any_exclusion_references_flagged_machinery": false
+    },
+    "machinery_classes_checked": [
+      "current M1 SIG-004 relation code",
+      "V557/V558 publication/resolution",
+      "current GT2 retained-product machinery",
+      "the N6 court itself"
+    ],
+    "none_touch_relevant_gt2_m1_m4_n6_machinery": true,
+    "hostile_nuance": {
+      "observation": "test_objective_consumer_bounded_evidence_d07.py imports the shared module rawlsing_next.objective_consumer_bounded_evidence, which is the module the N6 court reads for its POLICY_BINDINGS demand matrix. The exclusion is nonetheless harmless as a hiding vector because (a) the file cannot be imported at all under the governed runtime (missing d07 harness) so it executes in neither run, (b) N6 made zero production mutation so the shared module is unchanged, and (c) the N6 court's own Set A execution directly exercises those exact policy bindings and passed 17/17.",
+      "could_plausibly_hide_an_n6_caused_regression": false
+    },
+    "n6_court_removal_method": "exact pytest --ignore of the N6 court file only; reversible, nonsemantic; no file moved, no production file altered, no other test altered",
+    "could_exclusions_hide_a_regression_caused_by_this_zero_production_mutation_n6_court": false
+  },
+  "verdict": {
+    "set_C_reconstructed_status_preserved": true,
+    "set_C_54_54_identical_sha256_reproduced": true,
+    "nine_exclusions_are_environmental_and_do_not_touch_gt2_m1_m4_n6_machinery": true
+  }
+}

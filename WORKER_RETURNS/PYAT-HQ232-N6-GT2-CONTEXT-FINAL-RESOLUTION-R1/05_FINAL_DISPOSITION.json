@@ -1,0 +1,49 @@
+{
+  "schema": "PYAT_HQ232_05_FINAL_DISPOSITION@1",
+  "commission": "PYAT-HQ232-N6-GT2-CONTEXT-FINAL-RESOLUTION-R1",
+  "lane": "agent/reviewer-pyat-hq232-n6-gt2-context-final-resolution-r1",
+  "review_head": "75c21f94465d84de4e2f147e2747dc23c4d78014",
+  "qualified_return": "agent/rabochii-pyat-hq230-n6-execution-provenance-qualification-r1 @ f36f0ed11d1ad807202be6f47f774a169dc5b6ef",
+  "blocking_review": "agent/reviewer-pyat-hq229-n6-gt2-objective-context-realization-r1 @ 01237ee7560e3ec6611e32f8e0ef4ffb7a656b8d",
+  "disposition": "N6_GT2_LOCAL_CONTEXT_REALIZATION_ACCEPTED__EVIDENCE_HOLD_CLOSED",
+  "maximum_authorized_grain": "N6_GT2_LOCAL_CONTEXT_REALIZATION_ACCEPTED__EVIDENCE_HOLD_CLOSED",
+  "grain_not_inflated": true,
+  "review_mode": "READ_ONLY / NO REPAIR / NO SEMANTIC ALTERATION / NO SELF-ADOPTION",
+  "independent_reproduction_summary": {
+    "lineage_and_zero_mutation": "VERIFIED",
+    "governed_interpreter_environment_identity": "VERIFIED",
+    "set_A_n6_court": "17 passed / exit 0 (reproduced)",
+    "set_B_exact_gt2_selection": "83 passed / exit 0 (reproduced, manifest reproduced from independent collection)",
+    "set_C_reconstructed_comparison": "54 / 54 normalized entries, sha256 278854ee94fadfd57284a572441522fb56105081f89af431b17ec2e556ace6a9 both sides, byte-identical, passed delta 17 (reproduced)",
+    "nine_environmental_exclusions": "VERIFIED environmental; zero flagged GT2/M1/M4/N6 machinery references",
+    "evidence_hold_closure_scope": "closes only the prior HQ229 execution-provenance hold"
+  },
+  "gate_results": {
+    "A_lineage_and_mutation": {"pass": true},
+    "B_governed_environment_identity": {"pass": true, "silent_substitution": false},
+    "C_set_A_n6_court": {"pass": true},
+    "D_set_B_existing_gt2_selection": {"pass": true, "reconstruction_status": "exact current qualification, not a historical receipt"},
+    "E_set_C_broad_comparison": {"pass": true, "labelled": "RECONSTRUCTED_QUALIFICATION__NOT_HISTORICAL_RECEIPT"},
+    "F_exclusion_audit": {"pass": true},
+    "G_substantive_grain_boundary": {"pass": true}
+  },
+  "does_not_establish": [
+    "full N6 completion",
+    "objective-world completion",
+    "causal mechanism realization",
+    "temporal-production realization",
+    "OC05 currency",
+    "PRE-V3 completion",
+    "V3 actor readiness"
+  ],
+  "production_mutation": "NONE",
+  "semantic_mutation": "NONE",
+  "self_adoption": "NOT_PERFORMED",
+  "repair_performed": false,
+  "honest_notes": [
+    "The 54-item normalized FAILED/ERROR set comprises 52 unique parent-run node ids plus 2 deterministic nested-subprocess lines echoed by two unrelated failing tests; both runs contain the same 2 lines, so the comparison and the 17-test delta are unaffected.",
+    "Set C is explicitly a RECONSTRUCTED QUALIFICATION, not a recovered historical receipt; the candidate's original broad command was never committed.",
+    "The HQ230 '83' selection is a reconstructed current selection that was independently recollected to exactly 83 nodes (40 + 14 + 29) and proved to exclude the N6 court."
+  ],
+  "one_line": "Every HQ229 execution-provenance hold is independently closed by exact replay under the SHA-verified governed interpreter; the declared local CONTEXT grain is accepted, and nothing beyond it is claimed."
+}

@@ -1,0 +1,94 @@
+{
+  "schema": "PYAT_HQ232_01_LINEAGE_ENVIRONMENT_AUDIT@1",
+  "commission": "PYAT-HQ232-N6-GT2-CONTEXT-FINAL-RESOLUTION-R1",
+  "review_lane": "agent/reviewer-pyat-hq232-n6-gt2-context-final-resolution-r1",
+  "review_head": "75c21f94465d84de4e2f147e2747dc23c4d78014",
+  "review_head_equals_commission_tip": true,
+  "worktree": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq232-n6-gt2-context-final-resolution-r1",
+    "shared_object_store": "/Users/matthewsmith/Desktop/Rawlsing/.git",
+    "clone_performed": false,
+    "existing_worktree_recreated": false,
+    "bootstrap_note": "No worktree dedicated to this commissioned branch existed at launch (verified against `git worktree list` and .git/worktrees admin entries). The branch-dedicated isolated worktree was bootstrapped once from the existing shared object store via `git worktree add -b <branch> <path> origin/<branch>`; no clone, no existing worktree recreated.",
+    "sparse_scope_narrowed_below_precedent": false,
+    "git_status_short_at_audit_start": "",
+    "git_status_short_after_reproduction": ""
+  },
+  "lineage": {
+    "candidate_return_branch": "agent/rabochii-pyat-hq227-n6-gt2-objective-context-realization-r1",
+    "candidate_tip": "5ed0667ed7bc6180789114429cc4c1b59c0732d1",
+    "qualification_return_branch": "agent/rabochii-pyat-hq230-n6-execution-provenance-qualification-r1",
+    "qualification_tip": "f36f0ed11d1ad807202be6f47f774a169dc5b6ef",
+    "qualification_is_lawful_descendant_of_candidate": true,
+    "merge_base_candidate_qualification": "5ed0667ed7bc6180789114429cc4c1b59c0732d1",
+    "qualification_tip_is_ancestor_of_review_head": true,
+    "diff_candidate_tip_to_qualification_tip_name_status": [
+      "A WORKER_COMMISSIONS/PYAT-HQ230-N6-EXECUTION-PROVENANCE-QUALIFICATION-R1/00_COMMISSION.md",
+      "A WORKER_RETURNS/PYAT-HQ230-N6-EXECUTION-PROVENANCE-QUALIFICATION-R1/00_RETURN.md",
+      "A WORKER_RETURNS/PYAT-HQ230-N6-EXECUTION-PROVENANCE-QUALIFICATION-R1/01_ENVIRONMENT_AND_INTERPRETER.json",
+      "A WORKER_RETURNS/PYAT-HQ230-N6-EXECUTION-PROVENANCE-QUALIFICATION-R1/02_N6_17_TEST_EXECUTION_RECEIPT.json",
+      "A WORKER_RETURNS/PYAT-HQ230-N6-EXECUTION-PROVENANCE-QUALIFICATION-R1/03_EXISTING_GT2_SELECTION_AND_EXECUTION_RECEIPT.json",
+      "A WORKER_RETURNS/PYAT-HQ230-N6-EXECUTION-PROVENANCE-QUALIFICATION-R1/04_BROAD_WITH_COURT_EXECUTION_RECEIPT.json",
+      "A WORKER_RETURNS/PYAT-HQ230-N6-EXECUTION-PROVENANCE-QUALIFICATION-R1/05_BROAD_WITHOUT_COURT_EXECUTION_RECEIPT.json",
+      "A WORKER_RETURNS/PYAT-HQ230-N6-EXECUTION-PROVENANCE-QUALIFICATION-R1/06_NORMALIZED_FAILURE_ERROR_SET_DIFF.json",
+      "A WORKER_RETURNS/PYAT-HQ230-N6-EXECUTION-PROVENANCE-QUALIFICATION-R1/07_EXCLUSION_AUDIT_AND_ZERO_MUTATION.json",
+      "A WORKER_RETURNS/PYAT-HQ230-N6-EXECUTION-PROVENANCE-QUALIFICATION-R1/08_FINAL_DISPOSITION.json",
+      "A WORKER_RETURNS/PYAT-HQ230-N6-EXECUTION-PROVENANCE-QUALIFICATION-R1/manifest_A_n6_court_node_ids.txt",
+      "A WORKER_RETURNS/PYAT-HQ230-N6-EXECUTION-PROVENANCE-QUALIFICATION-R1/manifest_B_existing_gt2_node_ids.txt",
+      "A WORKER_RETURNS/PYAT-HQ230-N6-EXECUTION-PROVENANCE-QUALIFICATION-R1/normalized_failures_with_court.txt",
+      "A WORKER_RETURNS/PYAT-HQ230-N6-EXECUTION-PROVENANCE-QUALIFICATION-R1/normalized_failures_without_court.txt"
+    ],
+    "diff_contains_only_additions": true,
+    "modified_or_deleted_paths": [],
+    "diff_qualification_tip_to_review_head_name_status": [
+      "A WORKER_COMMISSIONS/PYAT-HQ232-N6-GT2-CONTEXT-FINAL-RESOLUTION-R1/00_COMMISSION.md"
+    ],
+    "production_files_differing": [],
+    "production_mutation": false,
+    "semantic_mutation": false,
+    "accepted_tests_rewritten_to_make_evidence_green": false,
+    "hq227_commit_scope": {
+      "commit": "5ed0667ed7bc6180789114429cc4c1b59c0732d1",
+      "files": 8,
+      "file_kinds": "1 court test file + 7 return artifacts; no production file",
+      "production_files": 0
+    },
+    "n6_court_integrity": {
+      "path": "rawlsing_next/tests/test_pre553_n6_gt2_objective_context_court.py",
+      "blob_at_candidate_tip_5ed0667ed": "7a23508b6283fb6fe720555f6f83dd74ecd1c32f",
+      "blob_at_qualification_tip_f36f0ed11": "7a23508b6283fb6fe720555f6f83dd74ecd1c32f",
+      "blob_at_review_head_75c21f944": "7a23508b6283fb6fe720555f6f83dd74ecd1c32f",
+      "blob_working_tree": "7a23508b6283fb6fe720555f6f83dd74ecd1c32f",
+      "hq229_recorded_blob": "7a23508b6283fb6fe720555f6f83dd74ecd1c32f",
+      "unchanged_from_hq229_reviewed_blob": true,
+      "commits_touching_court": ["5ed0667ed7bc6180789114429cc4c1b59c0732d1"],
+      "rewritten": false
+    }
+  },
+  "environment": {
+    "governed_interpreter_path_mandated": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+    "governed_interpreter_path_used": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+    "path_present": true,
+    "interpreter_sha256_observed": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "interpreter_sha256_claimed_by_hq230": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "interpreter_sha256_matches": true,
+    "python_version": "Python 3.11.3",
+    "python_3_11_3_identity": true,
+    "pytest_version": "pytest 9.1.1",
+    "sys_executable_equals_mandated_path": true,
+    "silent_interpreter_substitution": false,
+    "os": {
+      "uname_s": "Darwin",
+      "uname_m": "x86_64",
+      "uname_a": "Darwin Matthews-MBP.lan 22.6.0 Darwin Kernel Version 22.6.0: Tue Jul 15 08:22:28 PDT 2025; root:xnu-8796.141.3.713.2~2/RELEASE_X86_64 x86_64",
+      "product_version": "13.7.8",
+      "build_version": "22H730"
+    },
+    "machine_identity_note": "same machine/worktree family as the HQ230 qualification return; interpreter path, sha256 and versions reproduce exactly"
+  },
+  "verdict": {
+    "lineage_lawful": true,
+    "zero_semantic_or_production_mutation": true,
+    "governed_environment_identity_reproduced": true
+  }
+}
