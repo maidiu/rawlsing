@@ -817,6 +817,15 @@ class AnalyticalProductRegistration:
         # inspection, but graph/lifecycle closure refuses until EVERY consumed exact
         # determinant has one explicit classification.
         self.assert_no_unowned_determinant_claimed_covered()
+        if (
+            self.product_ref.kind == "N10E_EMPIRICAL_POSSIBILITY_SLICE_PRODUCT@1"
+            and self.model_rule_hash is None
+        ):
+            raise ModelRuleAuthorityBindingMismatch(
+                "MODEL_RULE_AUTHORITY_BINDING_MISMATCH: an N10E possibility-slice "
+                "registration consumes model_rule_hash and may not omit its exact "
+                "authenticated model-rule authority binding"
+            )
 
     def unclassified_determinants(self) -> tuple[ExactRef, ...]:
         classified = {o.determinant_ref.key for o in self.determinant_ownerships}
