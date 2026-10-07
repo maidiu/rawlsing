@@ -1,0 +1,91 @@
+{
+  "schema": "PYAT_HQ229_01_DEMAND_MATRIX_AND_CURRENT_CONSUMER_ATTACK@1.0.0",
+  "candidate_commit": "5ed0667ed7bc6180789114429cc4c1b59c0732d1",
+  "verdict": "PASS_SUBSTANTIVELY__CANDIDATE_RUNTIME_PROBE_WORDING_OVERSTATED",
+  "independent_current_contract_census": {
+    "OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1": {
+      "state": "APPLICABLE_CURRENT",
+      "seam": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+      "role": "producer_side_current_policy_seam"
+    },
+    "OC02_LEARNED_STRUCTURAL_ADMISSION_R1": {
+      "state": "APPLICABLE_CURRENT",
+      "seam": "rawlsing_next.pre553_structural_admission",
+      "role": "producer_side_current_policy_seam"
+    },
+    "OC03_SDTF_OBJECTIVE_CONSEQUENCE_R1": {
+      "state": "NOT_YET_APPLICABLE",
+      "reason": "P1-P5 remain CANDIDATE_NOT_CURRENT pending W2-D04 and later admission"
+    },
+    "OC04_OCCURRENCE_NONEVENT_WORLD_FACT_R1": {
+      "state": "NOT_YET_APPLICABLE",
+      "reason": "generic non-event adapter is W2-D05; real world rooting is W2-D01"
+    },
+    "OC05_TERMINAL_OBJECTIVE_WORLD_RESOLUTION_R1": {
+      "state": "NOT_YET_APPLICABLE",
+      "reason": "terminal objective-world root/resolver is not current; no universal terminal may be invented"
+    }
+  },
+  "demand": {
+    "context_publication_repository_resolution": {
+      "demanded": true,
+      "basis": {
+        "governed_use_id": "GT12_GT2_Q86B_CONDITIONAL_SUPPORT_Q86A_F1_CONTEXT_PUBLICATION@1",
+        "publication_authority_id": "GT12_RELATION_V554_TO_V557_F1_CONTEXT_PUBLICATION_AUTHORITY",
+        "v557_current_binding": "GT12_CAN003_V557_F1_CONTEXT_ONLY_CURRENT_BINDING",
+        "publication_families": [
+          "F1"
+        ],
+        "inherited_downstream_use": [
+          "CONTEXT"
+        ]
+      },
+      "status": "POSITIVE_LOCAL_REALIZATION_SUPPORTED"
+    },
+    "structural_position": {
+      "demanded": false,
+      "status": "NOT_APPLICABLE_TO_GT2_SIG004",
+      "basis": "adopted exact-grain V555 position terminality"
+    },
+    "mediation_route_channel": {
+      "demanded": false,
+      "status": "NOT_APPLICABLE_TO_GT2_SIG004",
+      "basis": "no lawful endpoint position basis at this exact grain"
+    },
+    "causal_mechanism": {
+      "demanded": false,
+      "status": "NOT_AUTHORIZED",
+      "basis": "ACTIVE_CAUSAL excluded; OC03 noncurrent"
+    },
+    "objective_consequence": {
+      "demanded": false,
+      "status": "NOT_APPLICABLE",
+      "basis": "OC03 noncurrent"
+    },
+    "occurrence_nonevent_world_fact": {
+      "demanded": false,
+      "status": "NOT_APPLICABLE",
+      "basis": "OC04 noncurrent"
+    },
+    "terminal_objective_world_resolution": {
+      "demanded": false,
+      "status": "NOT_APPLICABLE_CURRENTLY",
+      "basis": "OC05 noncurrent"
+    },
+    "temporal_production": {
+      "demanded": false,
+      "status": "NOT_APPLICABLE_AT_THIS_GRAIN",
+      "basis": "SIG-004 nontemporal; no current temporal producer invoked"
+    }
+  },
+  "candidate_derivation_attack": {
+    "reads_current_owner_registry_directly": true,
+    "registry": "rawlsing_next.objective_consumer_bounded_evidence.POLICY_BINDINGS",
+    "evaluator_probes_present": true,
+    "candidate_phrase_probed_live_contract_state_not_read_constants": "OVERSTATED",
+    "corrected_description": "derived from the current owner registry plus evaluator probes and the adopted current publication binding; not from a manually authored expectation table",
+    "material_defect": false
+  },
+  "machinery_presence_is_not_demand": true,
+  "local_context_demand_survives": true
+}

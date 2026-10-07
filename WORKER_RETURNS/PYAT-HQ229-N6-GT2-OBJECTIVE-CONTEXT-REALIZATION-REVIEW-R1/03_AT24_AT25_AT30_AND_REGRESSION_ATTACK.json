@@ -1,0 +1,78 @@
+{
+  "schema": "PYAT_HQ229_03_AT24_AT25_AT30_AND_REGRESSION_ATTACK@1.0.0",
+  "candidate_commit": "5ed0667ed7bc6180789114429cc4c1b59c0732d1",
+  "at24": {
+    "verdict": "PASS_AT_DECLARED_LOCAL_GRAIN",
+    "positive_context_realization": true,
+    "absent_v555_positions_block_context": false,
+    "unrelated_objective_functions_woken": false,
+    "atlas_status_note": "AT24 remains a proposed acceptance case in the atlas; this is scoped local evidence, not whole-gate adoption"
+  },
+  "at25": {
+    "verdict": "PASS_NO_MECHANISM_MANUFACTURE",
+    "mechanism_product_minted": false,
+    "consequence_product_minted": false,
+    "conditional_support_relabelled_as_mechanism": false,
+    "machinery_presence_treated_as_occupancy": false,
+    "oc03_current": false
+  },
+  "at30": {
+    "verdict": "NOT_APPLICABLE_AT_THIS_GRAIN",
+    "sig004_nontemporal": true,
+    "temporal_producer_invoked": false,
+    "f2_branches": 0,
+    "temporal_product_published": false
+  },
+  "zero_production_mutation": {
+    "independently_verified_by_commit_compare": true,
+    "base": "86ff46c2ea85d336e67718cb84075228df0aa48e",
+    "candidate": "5ed0667ed7bc6180789114429cc4c1b59c0732d1",
+    "candidate_delta": "seven WORKER_RETURNS artifacts plus one new N6 test court only",
+    "production_files_modified": 0
+  },
+  "n6_court_static_inspection": {
+    "file": "rawlsing_next/tests/test_pre553_n6_gt2_objective_context_court.py",
+    "blob": "7a23508b6283fb6fe720555f6f83dd74ecd1c32f",
+    "statically_declared_test_functions": 17,
+    "obvious_runner_or_filesystem_mutation_found": false,
+    "candidate_execution_claim": "17 passed",
+    "independent_execution_receipt_present": false
+  },
+  "existing_gt2_court": {
+    "candidate_execution_claim": "83 passed",
+    "exact_command_committed": false,
+    "exact_test_file_or_node_selection_committed": false,
+    "independent_execution_receipt_present": false,
+    "static_reconstruction_note": "explicit GT2-named pre-existing files include test_pre553_gt2_structural_positive_realization_court.py (40 declared test functions) and test_wave1_gt1_gt2_positive_prev3_integration.py (9 declared test functions); parametrization/other selections may change execution count, so this does not reconstruct the claimed 83"
+  },
+  "broad_regression": {
+    "candidate_claim": {
+      "baseline_failures_and_errors": 54,
+      "with_n6_court_failures_and_errors": 54,
+      "diff": "IDENTICAL",
+      "prose_method": "full rawlsing_next/tests with and without this court"
+    },
+    "exact_baseline_command_committed": false,
+    "exact_with_court_command_committed": false,
+    "exact_exclusions_or_filters_committed": false,
+    "baseline_failure_error_nodeids_committed": false,
+    "with_court_failure_error_nodeids_committed": false,
+    "raw_or_normalized_diff_receipt_committed": false,
+    "github_workflow_runs_for_candidate": 0,
+    "github_commit_statuses_for_candidate": 0,
+    "independently_verifiable_same_suite_comparison": false,
+    "blocking": true,
+    "reason": "HQ229 mandatory attacks 27-28 require verification of the same suite and exact exclusions; candidate assertions alone do not establish execution authenticity"
+  },
+  "startup_tip_discrepancy": {
+    "internal_startup_tip": "636a6eb96c0ff69a37fc677e95e4751213dd13c8",
+    "launched_commission_tip": "86ff46c2ea85d336e67718cb84075228df0aa48e",
+    "ancestor_verified": true,
+    "compare_status": "ahead",
+    "ahead_by": 1,
+    "merge_base": "636a6eb96c0ff69a37fc677e95e4751213dd13c8",
+    "only_delta": "WORKER_COMMISSIONS/PYAT-HQ227-N6-GT2-OBJECTIVE-CONTEXT-REALIZATION-R1/00_COMMISSION.md",
+    "verdict": "BENIGN"
+  },
+  "final_regression_attack_verdict": "BLOCKED_BY_MISSING_EXACT_EXECUTION_EVIDENCE"
+}

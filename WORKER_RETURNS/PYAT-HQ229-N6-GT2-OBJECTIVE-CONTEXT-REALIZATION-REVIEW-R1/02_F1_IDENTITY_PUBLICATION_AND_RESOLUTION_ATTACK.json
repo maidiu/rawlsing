@@ -1,0 +1,72 @@
+{
+  "schema": "PYAT_HQ229_02_F1_IDENTITY_PUBLICATION_AND_RESOLUTION_ATTACK@1.0.0",
+  "candidate_commit": "5ed0667ed7bc6180789114429cc4c1b59c0732d1",
+  "verdict": "PASS",
+  "exact_lineage": {
+    "field_forge_relation_content_hash": "1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19",
+    "relation_admission_content_hash": "a445e43da99405e0f8181f7ab6c428d9b0dd14fefc7fc5091f21f2d21f00b08d",
+    "current_rule_id": "GT12_V554_SIG004_ADMITTED_RELATION_CONTEXT_PUBLICATION_RULE",
+    "current_rule_hash": "da431544e57ed4b418cd746be3f0a9aa486cd3c2fb2007a022005821b25e194b",
+    "signature_id": "V554-SIG-004-NONTEMPORAL-ADMITTED-RELATION-EXACT",
+    "target_use": "STRUCTURAL_MEDIATION_INPUT"
+  },
+  "f1_identity_layers": {
+    "semantic_object_id": "urn:rawlsing:v554:f1:sha256:3530f08f43e704ad67e0fb74984b03b7ad0f068ea1de4bcf658f3b2d591bd56d",
+    "semantic_object_id_law": "suffix is semantic_hash(f1_material)",
+    "whole_f1_payload_content_hash": "a008553dc94af138de44e73ade8ddbcc1e2bb3a5c40cec575aad694aae104cbb",
+    "producer_handoff_content_hash": "a008553dc94af138de44e73ade8ddbcc1e2bb3a5c40cec575aad694aae104cbb",
+    "published_v557_object_content_hash": "a008553dc94af138de44e73ade8ddbcc1e2bb3a5c40cec575aad694aae104cbb",
+    "layering_conclusion": "lawful two-layer identity: semantic id hashes F1 material; whole-object/published content hash hashes the complete F1 payload",
+    "demand_matrix_f1_content_hash_null": {
+      "result": "NONCUSTODIAL_SUMMARY_OMISSION__NOT_IDENTITY_DEFECT",
+      "reason": "exact a008... hash is carried by current owner handoff, HQ224 custody, candidate publication artifact and V558 resolved entry",
+      "limitation": "01_OBJECTIVE_DEMAND_MATRIX.json alone is not an exact F1 custody receipt"
+    }
+  },
+  "current_publication_authority": {
+    "publication_authority_id": "GT12_RELATION_V554_TO_V557_F1_CONTEXT_PUBLICATION_AUTHORITY",
+    "publication_authority_hash": "1b2c1238139287e30acaa418e28967585a34a7fae9c937a9322b7c9e9a76322a",
+    "v557_authority_id": "GT12_CAN003_V557_F1_CONTEXT_ONLY_CURRENT_BINDING",
+    "v557_authority_hash": "b071d9b34825b2c73fefa47cdef0ba23003d79cf5a2fa78cab802e02ee0cd6f4",
+    "families": [
+      "F1"
+    ],
+    "excluded": [
+      "B1_PUBLICATION",
+      "F2_PUBLICATION",
+      "ACTIVE_CAUSAL",
+      "V555",
+      "V556",
+      "ACTOR_INFERENCE"
+    ],
+    "v557_state": "ALLOW_CONTEXT_ONLY",
+    "uses": [
+      "CONTEXT"
+    ],
+    "caller_selectable": false,
+    "fuzzy_latest_selection": false
+  },
+  "publication_resolution": {
+    "publication_contains_f1_only": true,
+    "b1_published": false,
+    "immutable_v558_repository": true,
+    "resolution_receipt_id": "V558REC:730dbe577966b34587c5cb9ef3931ae83219cb62b945fdea6675a0cd53520b34",
+    "resolution_receipt_hash": "730dbe577966b34587c5cb9ef3931ae83219cb62b945fdea6675a0cd53520b34",
+    "resolution_state": "RESOLUTION_COMPLETE",
+    "replay_input_digest": "f55c9bc8baa2f3d5b771cba0d2cce9bfe23fbe19b88146c43eeac2b463415b77",
+    "unresolved_keys": [],
+    "resolved_structural_context": null,
+    "resolved_structural_context_adjudication": "OWNER_DISCIPLINE__resolve_v558 explicitly resolves exact immutable candidates without fabricating ResolvedStructuralContext"
+  },
+  "legacy_fixture_attack": {
+    "hq221_fixture_used": false,
+    "current_f1_matches_hq224_custody": true,
+    "manually_relabelled_m1_contract_used": false
+  },
+  "sibling_b1_context_review": {
+    "branch_head": "206c71da265b81c1ff22b0649916499bcb458e98",
+    "ancestry_bearing_on_candidate_line": false,
+    "relied_on_as_authority": false,
+    "note": "current adopted E2B/V557 binding independently establishes F1-only/B1-forbidden law"
+  }
+}
