@@ -651,10 +651,8 @@ class SourceRelationResolver:
         relation_refs: Iterable[ExactRef | Mapping[str, Any]],
         authority_registry: AuthorityRegistry,
     ) -> "SourceRelationResolver":
-        if cls is not SourceRelationResolver:
-            raise SourceRelationIntegrityError("resolver construction must use the adopted concrete owner")
-        if type(repository) is not C11Repository:
-            raise SourceRelationIntegrityError("repository must be exact accepted I02 C11Repository")
+        if not isinstance(repository, C11Repository):
+            raise SourceRelationIntegrityError("repository must be accepted I02 C11Repository")
         relations: list[SourceUniverseRelation] = []
         for raw in relation_refs:
             ref = exact_ref(raw, "relation_ref")
@@ -667,7 +665,7 @@ class SourceRelationResolver:
             if type(obj) is not SourceUniverseRelation:
                 raise SourceRelationIntegrityError("exact relation ref resolves to a different object family")
             relations.append(obj)
-        return SourceRelationResolver(relations=relations, authority_registry=authority_registry)
+        return cls(relations=relations, authority_registry=authority_registry)
 
     def _validate_relation_object(
         self, relation: SourceUniverseRelation
