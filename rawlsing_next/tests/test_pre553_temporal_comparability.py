@@ -151,8 +151,13 @@ def _full_registry(*, drop=(), tc_ops=(AUTHORIZED_COMPARISON_OPERATION,),
     tp_ref, tp_snap = _aref("TARGET_USE_PERMISSION", "TP1")
     um_ref, um_snap = _aref("UNCERTAINTY_METHOD", "UM1")
     rp_ref, rp_snap = _aref("REPLAY_PROTOCOL", "RP1")
-    eq_ref, eq_snap = _aref("SOURCE_EQUIVALENCE", "EQ1",
-                            ops=("SEMANTIC_EQUIVALENCE_ADMISSION",))
+    eq_ref, eq_snap = _aref(
+        "SOURCE_EQUIVALENCE", "EQ1",
+        ops=("SEMANTIC_EQUIVALENCE_ADMISSION",),
+        families=("SourceUniverseRelation@1.0.0",),
+        scope={"source_universe_refs": "EXPLICIT_UNRESTRICTED",
+               "target_use_refs": "EXPLICIT_UNRESTRICTED",
+               "predicate_or_risk_set_refs": "EXPLICIT_UNRESTRICTED"})
     nm_ref, nm_snap = _aref("NATIVE_CANONICAL_MAPPING_HARMONIZATION", "NM1")
     named = {
         "tc": (tc_ref, tc_snap), "te": (te_ref, te_snap), "tp": (tp_ref, tp_snap),
@@ -1640,60 +1645,34 @@ def test_hq219_rr04_lawful_positive_owner_decision_still_admits_the_pair():
     assert receipt.provenance["cross_universe"]["crosses_source_universes"] is True
 
 
-def test_hq219_targeted_break_rr04_owner_decision_is_actually_consulted(monkeypatch):
-    """HQ222 F7-RR-04B TARGETED BREAK: the owner's returned PROOF is load-bearing.
+def test_hq227_targeted_break_authenticated_owner_entrypoint_is_load_bearing(monkeypatch):
+    """COURT-HQ226-01: break the seam F7 actually consumes, on one fixed fixture.
 
-    HQ219's version of this witness patched ``require`` with a NON-RETURNING fake
-    object. Post-repair F7 validates the returned proof, so that fake is now refused --
-    which made the old assertion (the break must reopen the gap) assert the very
-    vulnerability the repair closes.
-
-    This version falsifies the owner's actual verdict on ONE fixed fixture: it takes the
-    REAL ``RelationDecision`` the adopted owner returns for the DENIED relation and
-    flips only that verdict. Nothing else about the fixture changes, so if the outcome
-    flips, the owner's returned proof -- not some unrelated resolution -- is what F7
-    consumes. Pre-repair this reopen is exactly the RR-04B split-brain: F7 discarded
-    the decision and would have authorized on the unrelated positive B snapshot alone.
+    The lawful cross-universe fixture is positive. Replacing only F7's captured
+    authenticated P07 entrypoint with a non-returning break must turn that SAME
+    fixture into the typed equivalence refusal. With pre-HQ227 production this
+    monkeypatch is ignored because that code calls SourceRelationResolver.decide
+    directly, so this witness discriminates the repair rather than patching dead code.
     """
-    from dataclasses import replace as _replace
-
-    import rawlsing_next.pre553_source_relations as sr
+    import rawlsing_next.pre553_temporal_comparability as tc
 
     resolver, relation = _adjudicated_resolver(
-        universe_refs=(UNIVERSE_A, UNIVERSE_B), decision="DENIED")
+        universe_refs=(UNIVERSE_A, UNIVERSE_B))
     request = _cross_universe_request(resolver, relation.ref)
-    assert _run(request).relation_state == "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"
+    assert _run(request).relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
 
-    # The REAL owner decision for this exact request, before it is falsified.
-    denied_decision = resolver.decide(
-        relation_kind="SOURCE_SEMANTIC_EQUIVALENCE",
-        source_universe_refs=(UNIVERSE_A, UNIVERSE_B),
-        operation_scope="EXACT_BOUND_UNIVERSE_PAIR",
-        target_use=_ref("TargetUsePermission", "USE-1").object_id,
-        effective_scope="EXACT_BOUND_UNIVERSE_PAIR",
-        relation_ref=relation.ref,
-        expected_authority_operation="SEMANTIC_EQUIVALENCE_ADMISSION")
-    assert denied_decision.authorized is False
+    def broken_owner_entrypoint(*args, **kwargs):
+        raise RuntimeError("targeted break of authenticated P07 owner entrypoint")
 
-    # targeted break: falsify ONLY the owner's verdict, on this same fixture
-    _, eq_snapshot = _aref(
-        "SOURCE_EQUIVALENCE", "EQ1", ops=("SEMANTIC_EQUIVALENCE_ADMISSION",),
-        families=("SourceUniverseRelation@1.0.0",),
-        scope={"source_universe_refs": "EXPLICIT_UNRESTRICTED",
-               "target_use_refs": "EXPLICIT_UNRESTRICTED",
-               "predicate_or_risk_set_refs": "EXPLICIT_UNRESTRICTED"})
-    falsified = _replace(
-        denied_decision, state="AUTHORIZED", relation_ref=relation.ref,
-        authority_ref=eq_snapshot.authority_ref,
-        authority_operation="SEMANTIC_EQUIVALENCE_ADMISSION")
+    monkeypatch.setattr(
+        tc, "_authenticated_source_relation_decide",
+        broken_owner_entrypoint, raising=False)
+    broken = _run(request)
+    assert broken.relation_state == "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"
+    assert broken.relation_state_reason == "SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE"
 
-    monkeypatch.setattr(sr.SourceRelationResolver, "require",
-                        lambda self, **kwargs: falsified)
-    reopened = _run(request)
-    assert reopened.relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED", (
-        "the targeted break did not reopen the gap, so the witness proves nothing")
     monkeypatch.undo()
-    assert _run(request).relation_state == "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"
+    assert _run(request).relation_state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
 
 
 def test_hq222_rr04b_a_forged_owner_proof_is_refused(monkeypatch):
