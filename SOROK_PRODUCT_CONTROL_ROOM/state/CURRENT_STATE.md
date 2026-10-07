@@ -1943,3 +1943,16 @@ New machine-readable IDs:
 - SPD-0260–0268;
 - RISK-210–219;
 - Q-LENS-001 / Q-USERSIGNAL-001 / Q-CAPTRANS-001 / Q-MODALITY-001 / Q-HINGE-001.
+
+
+## 2026-10-07 — R13 transcript source and game-loop quarantine
+
+Preferred current visible conversation source:
+`handoffs/R13_CURRENT_CHAT_TRANSCRIPT/04_USER_SUPPLIED_FULL_CHAT_TRANSCRIPT_2026-10-07.txt`.
+
+Mandatory authority-boundary receipt:
+`handoffs/R13_CURRENT_CHAT_TRANSCRIPT/05_ORIGINAL_GAME_LOOP_EXPLORATION_QUARANTINE_R1.md`.
+
+The abandoned original game-loop brainstorming is not canonical. Artifacts 88–90 are absent from the clean R13 lineage and may not be silently mined as law.
+
+Current R13 D002/D008/D009 results are separately re-derived provisional product laws/directions and do not adopt the abandoned bounded-undertaking / commission / universal Question-Theory-Thesis / noninterchangeability / relational-vacancy superstructures.
