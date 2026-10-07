@@ -2658,3 +2658,88 @@ def test_r19_walkback_authority_is_registered_but_not_stageable_from_fixture_mat
     ):
         assert required not in material
     assert not any("WALKBACK" in kind for kind in AUTHORITY_KINDS)
+
+
+# ==========================================================================
+# HQ227 - model-authority / model-rule lifecycle closure
+# ==========================================================================
+def test_r20_baseline_model_authority_body_ref_is_authentic_and_mismatched_fixture_is_refused():
+    case = _case(DIRECTION)
+    snapshot = case["model_authority_snapshot"]
+    assert (
+        assert_authority_snapshot_body_matches_ref(
+            snapshot, case["model_rule"].model_authority_ref
+        )
+        is snapshot
+    )
+
+    mismatched = fx.model_authority_snapshot(DIRECTION)
+    with pytest.raises(
+        AuthoritySnapshotIdentityMismatch,
+        match="AUTHORITY_SNAPSHOT_IDENTITY_MISMATCH",
+    ):
+        assert_authority_snapshot_body_matches_ref(mismatched)
+
+
+def test_r21_changed_model_rule_material_under_fixed_authority_ref_is_refused():
+    case = _case(DIRECTION)
+    rule = case["model_rule"]
+    snapshot = case["model_authority_snapshot"]
+
+    assert (
+        assert_model_rule_material_bound_to_authority_snapshot(
+            rule.material(), snapshot, expected_rule_hash=rule.rule_hash
+        )
+        is snapshot
+    )
+
+    mutated = dict(rule.material())
+    mutated["actor_inference_allowed"] = True
+    mutated_hash = semantic_hash(mutated)
+    assert mutated_hash != rule.rule_hash
+    assert mutated["model_authority_ref"] == rule.material()["model_authority_ref"]
+    assert mutated["walkback_authority_ref"] == rule.material()["walkback_authority_ref"]
+
+    with pytest.raises(
+        ModelRuleAuthorityBindingMismatch,
+        match="MODEL_RULE_AUTHORITY_BINDING_MISMATCH",
+    ):
+        ModelRuleAuthorityBindingEvidence(
+            model_rule_hash=mutated_hash,
+            model_rule_material=mutated,
+            model_authority_snapshot=snapshot,
+        )
+
+
+def test_r22_model_recomposition_consumes_exact_sealed_successor_snapshot(tmp_path):
+    observed = _run_fresh(_runner_input(tmp_path))
+    binding = observed["model_rule_authority_binding"]
+
+    assert binding["baseline_snapshot_body_ref_authenticated"] is True
+    assert binding["successor_snapshot_body_ref_authenticated"] is True
+    assert (
+        binding["successor_snapshot_ref"]
+        == observed["successor_authority_snapshot_ref"]
+    )
+    assert binding["model_authority_ref"] != observed["successor_authority_ref"]
+    assert binding["successor_model_rule_hash"] != binding["model_rule_hash"]
+
+
+def test_r23_registration_refuses_free_floating_model_rule_hash():
+    case = _case(DIRECTION)
+    result = _provide(case)
+    ownerships = _census(case, result)
+    product_ref = _product_ref(result.result_identity_hash, case["direction"])
+
+    with pytest.raises(
+        ModelRuleAuthorityBindingMismatch,
+        match="MODEL_RULE_AUTHORITY_BINDING_MISMATCH",
+    ):
+        AnalyticalProductRegistration(
+            product_ref=product_ref,
+            product_identity_hash=result.result_identity_hash,
+            determinant_authority_refs=_direct_model_authorities(case),
+            determinant_exact_refs=tuple(row.determinant_ref for row in ownerships),
+            determinant_ownerships=ownerships,
+            model_rule_hash=result.provider_receipt.model_rule_hash,
+        )
