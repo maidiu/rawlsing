@@ -1,0 +1,51 @@
+{
+  "schema": "PYAT_HQ245_R3_INDEPENDENT_READINESS_CROSSREF_VERIFICATION@1",
+  "status": "PRE_PUSH_DOCUMENTARY_VALIDATION__MUST_RECHECK_AT_FINAL_REMOTE_SHA",
+  "checks": [
+    {
+      "id": "R3_REF_A_BOOTSTRAP",
+      "path": "WORKER_RETURNS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/01_EXACT_BOOTSTRAP_ROOT_AUTHORITY_AND_ROTATION_CONTRACT.json",
+      "expected_git_blob_sha1": "f0e05df99cc7ec8c3445b37e461fad86948f140e",
+      "verified_at_commission_tip": "e23c372757504909543a40500c5f0d2213a86b68",
+      "result": "PASS_EXISTING_GIT_BLOB_MATCH"
+    },
+    {
+      "id": "R3_REF_B_HANDOFF",
+      "path": "WORKER_RETURNS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/02_IMMUTABLE_C1_N10E_OWNER_HANDOFF_TRANSITION.json",
+      "expected_git_blob_sha1": "a8c31625fcfb7bd65007e30ee2dda579d3b85e3e",
+      "verified_at_commission_tip": "e23c372757504909543a40500c5f0d2213a86b68",
+      "result": "PASS_EXISTING_GIT_BLOB_MATCH"
+    },
+    {
+      "id": "R3_WARRANT_MIRROR",
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/06_REVISED_WARRANT_AND_IDENTITY_PREIMAGES.json",
+      "result": "PASS_STRUCTURAL_EQUALITY_IN_AUTHORING__REMOTE_RECHECK_REQUIRED"
+    },
+    {
+      "id": "R3_ADOPTION_SUBJECT",
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/04_HQ_DECISION_ADOPTION_GATES.json",
+      "result": "PASS_EXACT_HQ240_HQ241_HQ242_HQ244_HQ245_CHAIN__REMOTE_RECHECK_REQUIRED"
+    },
+    {
+      "id": "R2_SUBSTANTIVE_LOCK",
+      "result": "PASS_UNMODIFIED_ISSUER_ENTRYPOINT_COURT_GIT_BLOBS_AND_WARRANT_UNCHANGED_FIELDS"
+    },
+    {
+      "id": "R3_HASH_BOUNDARY",
+      "result": "PASS_DOCUMENTARY_GIT_BLOB_IDENTITY_ONLY__NO_R4_HASH_OR_ISSUER_MINT"
+    },
+    {
+      "id": "R3_REVIEW_ORDER",
+      "result": "PASS_ONLY_FRESH_INDEPENDENT_R3_REVIEW_CAN_PRECEDE_HQ_ADOPTION"
+    },
+    {
+      "id": "NO_SILENT_FALLBACK",
+      "result": "PASS_R2_BROKEN_PATHS_RELEGATED_TO_FROZEN_HISTORICAL_EVIDENCE"
+    }
+  ],
+  "author_cannot_be_independent_reviewer": true,
+  "reviewer_must_pin_final_remote_sha": true,
+  "post_push_remote_recheck_required": true,
+  "no_claim_of_runtime_test": true,
+  "no_authority_created": true
+}

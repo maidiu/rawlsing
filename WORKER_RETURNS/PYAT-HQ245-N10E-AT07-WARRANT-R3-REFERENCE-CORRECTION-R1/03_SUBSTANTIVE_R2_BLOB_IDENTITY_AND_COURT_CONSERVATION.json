@@ -1,0 +1,94 @@
+{
+  "schema": "PYAT_HQ245_R3_SUBSTANTIVE_R2_BLOB_IDENTITY_AND_COURT_CONSERVATION@1",
+  "status": "DOCUMENTARY_PROPOSAL_NOT_ADOPTED",
+  "frozen_R2_control": {
+    "issuer": {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ242_R2/02_ISSUER_CREDENTIAL_AND_VERIFIER_PREIMAGES.json",
+      "git_blob_sha1": "68e9f72ce11d4e5651346867295d84b1fd3eb667",
+      "R3_git_blob_sha1": "68e9f72ce11d4e5651346867295d84b1fd3eb667",
+      "byte_identical": true
+    },
+    "entrypoint": {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ242_R2/03_C1_N10E_ENTRYPOINT_CONTRACT.json",
+      "git_blob_sha1": "4086c36e8981210277ffda165ff123bf54e0feb9",
+      "R3_git_blob_sha1": "4086c36e8981210277ffda165ff123bf54e0feb9",
+      "byte_identical": true
+    },
+    "courts": {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ242_R2/05_PROPOSED_HOSTILE_COURTS_AND_PRODUCTIVE_PATHS.json",
+      "git_blob_sha1": "2ff140954ac91daa79fbbb0c3a953b481c6ffa18",
+      "R3_git_blob_sha1": "2ff140954ac91daa79fbbb0c3a953b481c6ffa18",
+      "byte_identical": true
+    }
+  },
+  "frozen_R2_return": {
+    "bootstrap": {
+      "path": "WORKER_RETURNS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/01_EXACT_BOOTSTRAP_ROOT_AUTHORITY_AND_ROTATION_CONTRACT.json",
+      "git_blob_sha1": "f0e05df99cc7ec8c3445b37e461fad86948f140e",
+      "unchanged": true
+    },
+    "handoff": {
+      "path": "WORKER_RETURNS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/02_IMMUTABLE_C1_N10E_OWNER_HANDOFF_TRANSITION.json",
+      "git_blob_sha1": "a8c31625fcfb7bd65007e30ee2dda579d3b85e3e",
+      "unchanged": true
+    }
+  },
+  "R2_warrant_original": {
+    "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ242_R2/01_BOUNDED_WARRANT_CANDIDATE_PREIMAGE.json",
+    "git_blob_sha1": "adfb2586e6ece056f6eac8eaba12190abcd5e7fe"
+  },
+  "R3_warrant": {
+    "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/01_BOUNDED_WARRANT_CANDIDATE_PREIMAGE.json",
+    "git_blob_sha1": "d1c835119a08bb27124c87b15485d6b83b91659f"
+  },
+  "warrant_only_modified_fields": [
+    "schema",
+    "candidate_warrant_version",
+    "review_and_activation",
+    "correction_evidence",
+    "root_and_handoff_dependencies",
+    "r3_provenance_policy"
+  ],
+  "warrant_all_other_fields_identical_R2": true,
+  "R2_full_warrant_identical_to_R2_return_03_pre_repair": true,
+  "R3_full_warrant_identical_to_R3_control_06_corrected_mirror": true,
+  "court_counts": {
+    "inherited_hostile": 30,
+    "added_R2_hostile": 13,
+    "total_hostile": 43,
+    "inherited_positive": 6,
+    "added_R2_positive": 4,
+    "total_positive": 10,
+    "executed": 0
+  },
+  "R2_court_negative_ceiling_exactly_conserved": true,
+  "Z08_A05_six_states_preserved": true,
+  "R8_source_free_preserved": true,
+  "I01_18_current_kinds_preserved": true,
+  "synthetic_release": "AT07_BIDIRECTIONAL_100",
+  "release_hash": "dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3",
+  "universe_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+  "manifest_hash": "01ee5fa6db95efad3ce0acecd656f51beb6c2f2e21bc30e49bd358633f9ad6a1",
+  "negative_ceilings": [
+    "NO_GENERIC_ISSUER_AUTHORITY",
+    "NO_NEW_I01_KIND_AUTO_ADMISSION",
+    "NO_NEW_PUBLIC_FIELD_FAMILY",
+    "NO_ACTOR_OR_V3",
+    "NO_REAL_SOURCE",
+    "NO_SOURCES_ADDED_OR_CROSS_SOURCE_INFERENCE",
+    "NO_COMPARABILITY",
+    "NO_POOLING",
+    "NO_STRUCTURAL_ADMISSION",
+    "NO_THRESHOLD",
+    "NO_SMOOTHING",
+    "NO_PREDICTION",
+    "NO_NORMATIVE_OUTPUT",
+    "NO_WALKBACK_POLICY_TRANSFER",
+    "NO_MODEL_RULE_R4_FREEZE",
+    "NO_HISTORICAL_REJECTED_GENEALOGY",
+    "NO_PRODUCTION_OR_TEST_MUTATION"
+  ],
+  "no_root_activation": true,
+  "no_model_R4_hash_freeze": true,
+  "no_implementation": true
+}

@@ -1,0 +1,105 @@
+{
+  "schema": "PYAT_HQ245_R3_CORRECTED_EXACT_ADOPTION_SEQUENCE_AND_SUBJECT@1",
+  "status": "PROPOSED_NOT_ADOPTED",
+  "adoption_order": [
+    {
+      "order": 1,
+      "artifact": "HQ240 R1 original issuer-warrant documentary proposal",
+      "subject_commit": "3c6cfa0d29e10c1e2654e5fe22b0b62a0db891b9",
+      "status": "HISTORICAL_SUPERSEDED_NOT_ADOPTED",
+      "gate": "No issuer or warrant authority issued; not a current adoption subject"
+    },
+    {
+      "order": 2,
+      "artifact": "HQ241 R1 independent hostile review of HQ240",
+      "subject_commit": "7c7937ff68ddd6209858cc23194b9f292b299e66",
+      "status": "COMPLETE_PARTIAL_TWO_SUBSTANTIVE_DEFECTS",
+      "gate": "Trust-root bootstrap and mandatory C1→N10E owner handoff defects required R2 correction; not a PASS"
+    },
+    {
+      "order": 3,
+      "artifact": "HQ242 R2 corrected issuer-root and handoff documentary warrant",
+      "subject_commit": "cdef72ddc805e3ed943bac9f9241467454df8030",
+      "status": "HISTORICAL_R2_CANDIDATE_NOT_ADOPTED",
+      "gate": "Substantive contracts corrected as proposals; R2 may not be adopted following HQ244 partial review"
+    },
+    {
+      "order": 4,
+      "artifact": "HQ244 R2 independent hostile review",
+      "subject_commit": "beb5a845b4f737effed030832a374dae98308980",
+      "status": "COMPLETE_PARTIAL_TWO_DOCUMENTARY_DEFECTS",
+      "gate": "HQ244-DEFECT-R2-NORMATIVE-CONTRACT-PATH-RESOLUTION-001 and HQ244-DEFECT-R2-ADOPTION-SUBJECT-AND-REVIEW-SEQUENCE-002"
+    },
+    {
+      "order": 5,
+      "artifact": "HQ245 R3 exact-reference/adoption-sequence corrected documentary warrant",
+      "subject_branch": "agent/rabochii-pyat-hq245-n10e-at07-warrant-r3-reference-correction-r1",
+      "subject_commit": null,
+      "subject_warrant_path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/01_BOUNDED_WARRANT_CANDIDATE_PREIMAGE.json",
+      "subject_warrant_git_blob_sha1": "d1c835119a08bb27124c87b15485d6b83b91659f",
+      "status": "CURRENT_PROPOSED_NOT_ADOPTED__AUTHOR_RETURN_PENDING_INDEPENDENT_REVIEW",
+      "gate": "No adoption, issuer, root, credential, model R4 rule or self-approval; final exact remote commit SHA reported OUTSIDE self-referential documents"
+    },
+    {
+      "order": 6,
+      "artifact": "Fresh independent hostile review of exact HQ245 R3 remote candidate",
+      "subject_commit": null,
+      "reviewed_candidate_commit": null,
+      "status": "PENDING_NEW_INDEPENDENT_REVIEW",
+      "gate": "Reviewer must independently fetch FINAL R3 remote SHA, validate every normative resolved file and Git blob, complete adoption lineage and R2 substance/court conservation. HQ245 author review is not sufficient"
+    },
+    {
+      "order": 7,
+      "artifact": "Distinct explicit HQ adoption of independently GREEN exact R3 warrant",
+      "subject_commit": null,
+      "adopted_warrant_exact_ref": null,
+      "status": "PENDING_ONLY_IF_R3_REVIEW_GREEN",
+      "gate": "Adopt ONLY the exact separately reviewed HQ245 R3 warrant identity at reviewed remote SHA; never HQ240 or HQ242 R2, never auto-adopt from document hash"
+    },
+    {
+      "order": 8,
+      "artifact": "Future HQ-governed issuer root lifecycle",
+      "status": "BLOCKED_UNTIL_DISTINCT_WARRANT_ADOPTION",
+      "gate": "Separate HQ root APPROVE → C1 owner INSTALL → independent verifier ACK → HQ ACTIVATE; no registrar/caller self-certification, no key/epoch/journal here"
+    },
+    {
+      "order": 9,
+      "artifact": "Separately commissioned R4 model-rule authority preimages/identity correction",
+      "status": "PENDING_AFTER_ADOPTED_WARRANT",
+      "gate": "Use only actually ADOPTED warrant/root prerequisites; no N10E/C1 R4 hashes or nineteenth I01 kind here"
+    },
+    {
+      "order": 10,
+      "artifact": "Fresh independent R4 model-authority hostile review",
+      "status": "PENDING",
+      "gate": "No self-review or hash-only authority"
+    },
+    {
+      "order": 11,
+      "artifact": "Distinct explicit HQ R4 model-authority adoption",
+      "status": "PENDING_IF_GREEN",
+      "gate": "Preserve current I01 18 kinds until separate explicit competent authorization"
+    },
+    {
+      "order": 12,
+      "artifact": "Separately commissioned C1/N10E implementation and governed runtime courts",
+      "status": "PENDING_POST_AUTHORITY",
+      "gate": "No automatic code wake or executable positive path from this documentary R3"
+    }
+  ],
+  "canonical_current_proposed_subject": {
+    "branch": "agent/rabochii-pyat-hq245-n10e-at07-warrant-r3-reference-correction-r1",
+    "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/01_BOUNDED_WARRANT_CANDIDATE_PREIMAGE.json",
+    "git_blob_sha1": "d1c835119a08bb27124c87b15485d6b83b91659f",
+    "remote_commit_sha": null,
+    "adopted_ref": null
+  },
+  "required_reviewer_action": "Independently resolve final pushed HQ245 candidate commit SHA, read all R3 control and worker return objects and normative R2 root+handoff pinned SHA targets; report GREEN or named blocking defect; never review HQ240 or R2 as CURRENT.",
+  "only_future_adoption": "Separate, explicit HQ approval after independent GREEN R3 review, exact reviewed R3 warrant identity only",
+  "review_status": null,
+  "hq_adoption_commit": null,
+  "root_approval_ref": null,
+  "issuer_epoch_ref": null,
+  "credential_ref": null,
+  "R4_model_rule_hashes": null
+}

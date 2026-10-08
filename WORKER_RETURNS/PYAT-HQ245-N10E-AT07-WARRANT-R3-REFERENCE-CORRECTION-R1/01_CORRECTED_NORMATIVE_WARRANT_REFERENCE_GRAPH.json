@@ -1,0 +1,67 @@
+{
+  "schema": "PYAT_HQ245_R3_CORRECTED_EXACT_NORMATIVE_WARRANT_REFERENCE_GRAPH@1",
+  "status": "PROPOSED_NOT_ADOPTED",
+  "subject_branch": "agent/rabochii-pyat-hq245-n10e-at07-warrant-r3-reference-correction-r1",
+  "subject_commit": null,
+  "canonical_warrant": {
+    "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/01_BOUNDED_WARRANT_CANDIDATE_PREIMAGE.json",
+    "git_blob_sha1": "d1c835119a08bb27124c87b15485d6b83b91659f",
+    "role": "ONLY_R3_CANONICAL_WARRANT_PROPOSAL"
+  },
+  "normative_contracts": {
+    "R2_return_root_full_normative": {
+      "path": "WORKER_RETURNS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/01_EXACT_BOOTSTRAP_ROOT_AUTHORITY_AND_ROTATION_CONTRACT.json",
+      "git_blob_sha1": "f0e05df99cc7ec8c3445b37e461fad86948f140e",
+      "pinned_author_commit": "cdef72ddc805e3ed943bac9f9241467454df8030",
+      "role": "SOLE_ROOT_NORMATIVE_CONTRACT"
+    },
+    "R2_return_handoff_full_normative": {
+      "path": "WORKER_RETURNS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/02_IMMUTABLE_C1_N10E_OWNER_HANDOFF_TRANSITION.json",
+      "git_blob_sha1": "a8c31625fcfb7bd65007e30ee2dda579d3b85e3e",
+      "pinned_author_commit": "cdef72ddc805e3ed943bac9f9241467454df8030",
+      "role": "SOLE_HANDOFF_NORMATIVE_CONTRACT"
+    }
+  },
+  "supplemental_immutable_control_preimages": [
+    {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/02_ISSUER_CREDENTIAL_AND_VERIFIER_PREIMAGES.json",
+      "git_blob_sha1": "68e9f72ce11d4e5651346867295d84b1fd3eb667"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/03_C1_N10E_ENTRYPOINT_CONTRACT.json",
+      "git_blob_sha1": "4086c36e8981210277ffda165ff123bf54e0feb9"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/05_PROPOSED_HOSTILE_COURTS_AND_PRODUCTIVE_PATHS.json",
+      "git_blob_sha1": "2ff140954ac91daa79fbbb0c3a953b481c6ffa18"
+    }
+  ],
+  "corrected_mirror": {
+    "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/06_REVISED_WARRANT_AND_IDENTITY_PREIMAGES.json",
+    "git_blob_sha1": "78f51add48f5e20ae2c110adc5c38e84ca2d5f1b",
+    "identical_full_revised_warrant_candidate_to_canonical": true,
+    "not_second_normative_warrant": true
+  },
+  "adoption_manifest": {
+    "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/04_HQ_DECISION_ADOPTION_GATES.json",
+    "git_blob_sha1": "af777fe3a6fda08d0b96a31d20ca91443fcb61d4"
+  },
+  "readme": {
+    "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/00_READ_ME.md",
+    "git_blob_sha1": "4dfe10ec2335250eb049356063c52a0889cac94f"
+  },
+  "superseded_historical_broken_targets": [
+    "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ242_R2/02_EXACT_BOOTSTRAP_AND_ROTATION_PREIMAGES.json",
+    "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ242_R2/03_MANDATORY_C1_TO_N10E_HANDOFF_PREIMAGES.json"
+  ],
+  "old_return_mirror": {
+    "path": "WORKER_RETURNS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/03_REVISED_WARRANT_AND_IDENTITY_PREIMAGES.json",
+    "git_blob_sha1": "ec00caf2a4a60d75c5118cc1a79cb407fd388b91",
+    "status": "FROZEN_HISTORICAL_BROKEN_POINTER_NOT_NORMATIVE"
+  },
+  "documentary_hash_policy": "SHA-1 Git blob IDs recomputed for new candidate objects, not R4 canonical model-rule hashes, adopted warrant identity or root credentials; remote commit SHA emitted out-of-band, not embedded recursively",
+  "resolved_normative_targets_expected": 2,
+  "missing_local_normative_targets_expected": 0,
+  "accepted_warrant_exact_ref": null,
+  "accepted_issuer_exact_ref": null
+}

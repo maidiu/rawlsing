@@ -1,0 +1,667 @@
+{
+  "schema": "PYAT_HQ245_R3_EXACT_REFERENCE_CORRECTED_WARRANT_AND_IDENTITY_MIRROR@3",
+  "status": "PROPOSED_NOT_ADOPTED",
+  "revision_of": "WORKER_RETURNS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/03_REVISED_WARRANT_AND_IDENTITY_PREIMAGES.json @ ec00caf2a4a60d75c5118cc1a79cb407fd388b91",
+  "closes_exactly": [
+    "HQ241-DEFECT-TRUST-ROOT-BOOTSTRAP-AUTHORITY-001",
+    "HQ241-DEFECT-N10E-HANDOFF-SITE-EVENT-CUSTODY-002"
+  ],
+  "full_revised_warrant_candidate": {
+    "schema": "PYAT_HQ245_C1_AT07_FIXTURE_ISSUER_WARRANT_R3_REFERENCE_CORRECTED_CANDIDATE_PREIMAGE@3",
+    "status": "PROPOSED_NOT_ADOPTED",
+    "document_type": "HQ_BOUNDED_COMPETENCE_DELEGATION_PROPOSAL_NOT_AUTHORITY_SNAPSHOT",
+    "candidate_warrant_id": "C1_AT07_SOURCE_FREE_FIXTURE_USE_CONTEXT_ISSUER_WARRANT",
+    "candidate_warrant_version": "3.0.0-DOCUMENTARY-REFERENCE-CORRECTION-CANDIDATE",
+    "exact_warrant_ref": null,
+    "exact_issuer_authority_ref": null,
+    "identity_ref_status": "NOT_MINTED__HQ_ADOPTION_AND_CANONICAL_IDENTITY_REQUIRED",
+    "decision_authority": {
+      "body": "PYAT_HQ",
+      "type": "FUTURE_EXPLICIT_GOVERNANCE_ADOPTION_ONLY",
+      "approval_event_required": true,
+      "commission_or_worker_is_approval": false,
+      "competence_claim": "HQ may grant a new bounded fixture-context registration jurisdiction prospectively; no prior issuer competence is inferred from its documentary evidence",
+      "conflicting_external_competence_found": false,
+      "negative_caveat": "Proposal is within HQ governance commission as stated; independent review must confirm competence before HQ approves. If a separate competent owner must authorize delegation, STOP with Warrant Jurisdiction Conflict, not an invented grant.",
+      "bootstrapping_authority": "HQ alone explicitly approves and activates exact immutable initial/rotated registrar writer + verifier read root via HQ_AT07_ISSUER_ROOT_APPROVAL_RECEIPT@2 and HQ_AT07_ISSUER_EPOCH_ACTIVATION_RECEIPT@2. C1 owner prepares/installs exact approved bytes but cannot approve its own authority.",
+      "root_provisioning_source": "HQ-governed, independently installed approved deployment artifact; registrar/test/caller data never supplies verifier trust anchor."
+    },
+    "delegated_operational_role": {
+      "symbolic_issuer_id": "C1_AT07_SOURCE_FREE_FIXTURE_OWNER_ISSUER",
+      "exact_issuer_ref": null,
+      "owner_boundary": "FUTURE_HQ_ACCEPTED_C1_01_SOURCE_FREE_FIXTURE_OWNER_ASSEMBLY",
+      "registrar_id": "C1_AT07_OWNER_BUILD_INSTANCE_REGISTRAR",
+      "verifier_id": "C1_AT07_OWNER_CONTEXT_VERIFIER",
+      "registration_role": "One specifically named owner-controlled registrar, not the current pytest at07 fixture or N10E test builder",
+      "verifier_role": "Separately pinned owner-side trust root and exact immutable registration journal resolver, not caller-provided AuthorityRegistry/locator",
+      "delegation_limit": "Issuer can attest source-free registered build provenance and per-use caller-bound entrypoint custody; may NOT grant semantic permission itself",
+      "root_placement": "C1 owner deployment function named in future HQ bootstrap receipt; verifier configured only with exact HQ-approved immutable pin independently of registrar output",
+      "issuer_activation": "No registrable writer/use before HQ root approval + independent installer acknowledgment + explicit HQ activation event"
+    },
+    "grounded_authority_chain": [
+      {
+        "edge": "C1_01_ACCEPTED_SOURCE_FREE",
+        "source_ref": "5fafb499d53dddadaf8a7b4fd46506e91a09d270",
+        "status": "ACCEPTED_EVIDENCE_AND_OWNER_INPUT_GRAIN_ONLY"
+      },
+      {
+        "edge": "HQ240_CANDIDATE_WARRANT",
+        "source_ref": null,
+        "status": "PROPOSED_NOT_ADOPTED",
+        "adds": "Previously missing issuance, journal registration, independent context resolution and site custody"
+      },
+      {
+        "edge": "FUTURE_HQ_ADOPTED_WARRANT",
+        "source_ref": null,
+        "status": "NOT_YET_DECIDED",
+        "adds": "Only upon explicit HQ adoption after independent review, exact adopted warrant and issuer bootstrap"
+      },
+      {
+        "edge": "FUTURE_OWNER_REGISTRAR_AND_VERIFIER",
+        "source_ref": null,
+        "status": "NOT_IMPLEMENTED",
+        "adds": "Operational role only after separate implementation and reviewed trust root"
+      }
+    ],
+    "allowed_operations": [
+      {
+        "operation": "HQ_APPROVE_AND_ACTIVATE_AT07_BOOTSTRAP",
+        "HQ_only": true,
+        "requires": "separate adopted warrant, exact C1 owner and root proposal, immutable approval record and independently checked placement ack",
+        "produces": "future approved active issuer epoch after HQ decision; never by HQ242 worker"
+      },
+      {
+        "operation": "HQ_AUTHORIZE_AT07_ROOT_ROTATION_OR_REVOCATION",
+        "HQ_only": true,
+        "requires": "exact active predecessor and separate immutable HQ event, successor approval + exact placement",
+        "produces": "explicit scoped cutover/negative currentness; archived audit only"
+      },
+      {
+        "operation": "REGISTER_C1_COMPATIBILITY_SITE_USE",
+        "issuer_only": true,
+        "requires": "active registered build/invocation, trusted C1 ingress",
+        "produces": "journal C1 compatibility event with no cross-site handoff parent"
+      },
+      {
+        "operation": "REGISTER_C1_TO_N10E_SITE_HANDOFF",
+        "issuer_only": true,
+        "requires": "existing active C1 compatibility journal parent, exact same build/invocation/witness, authenticated N10E destination; issued ONLY at privileged C1 owner boundary",
+        "produces": "owner-issued immutable handoff event/ref"
+      },
+      {
+        "operation": "REGISTER_N10E_LIFECYCLE_SITE_USE",
+        "issuer_only": true,
+        "requires": "NON_NULL verified owner-issued handoff ref and all active exact C1/build/invocation ancestor refs; separately authenticated N10E receiver",
+        "produces": "N10E use credential distinct from C1, no direct invocation->N10E grant"
+      },
+      {
+        "operation": "REGISTER_SOURCE_FREE_AT07_BUILD",
+        "issuer_only": true,
+        "preconditions": [
+          "HQ warrant adopted",
+          "immutable I02-sealed R8 C11 release, full source manifest and synthetic fixture provenance verified",
+          "fresh atomic build instance sequence recorded"
+        ],
+        "produces": "registered immutable source-free build receipt; NO use grant from this operation alone"
+      },
+      {
+        "operation": "SEAL_AT07_EXACT_INVOCATION_CONTEXT",
+        "issuer_only": true,
+        "preconditions": [
+          "Registered build instance active",
+          "producer/query/consumer/predicate/16-key witness and actual null effective context independently verified",
+          "source-free flag established by owner-controlled fixture provenance"
+        ],
+        "produces": "immutable bound invocation-context record; NO site grant from this operation alone"
+      },
+      {
+        "operation": "RESOLVE_AND_VALIDATE_AT07_SITE_USE",
+        "verifier_only": true,
+        "preconditions": [
+          "Verifier initialized from trusted HQ-adopted root and immutable issuer journal, never caller input",
+          "exact issuer epoch, registration event, active currentness and site scope established",
+          "actual API materials cross-checked"
+        ],
+        "produces": "verified context projection consumed by owner gate, not new model authority"
+      },
+      {
+        "operation": "REVOKE_OR_EXPIRE_AT07_REGISTRATION",
+        "issuer_governed": true,
+        "preconditions": [
+          "explicit permitted issuer lifecycle event and sequenced reason",
+          "append-only retained history"
+        ],
+        "produces": "negative CURRENT-use status, preserving exact historical audit; no rewriting old receipt"
+      },
+      {
+        "operation": "REISSUE_AT07_BUILD_CONTEXT",
+        "issuer_only": true,
+        "preconditions": [
+          "new registered build instance or separately recorded new context/use transition",
+          "no reuse of revoked/ref-issued object_id",
+          "new unique owner event and ref"
+        ],
+        "produces": "distinct exact identity; never silent latest fallback"
+      }
+    ],
+    "fixed_scope": {
+      "fixture_id": "AT07_BIDIRECTIONAL_100",
+      "source_free_only": true,
+      "source_family": "SYNTHETIC_SURVEY",
+      "source_manifest_hash": "01ee5fa6db95efad3ce0acecd656f51beb6c2f2e21bc30e49bd358633f9ad6a1",
+      "source_universe_ref": {
+        "kind": "EmpiricalUniverse@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+        "content_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2"
+      },
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-c1-at07",
+        "content_hash": "dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3"
+      },
+      "authority_snapshot_static_interval": "AT07_FIXTURE_ONLY",
+      "actual_conditioner_effective_time_or_interval": null,
+      "actual_16_key_witness_effective_time_or_interval": null,
+      "real_source_effect": false,
+      "site_tokens": {
+        "C1_STABLE_RULE_COMPATIBILITY_CONSTRUCTION": "SOURCE_FREE_C1_01_COMPATIBILITY",
+        "N10E_PROVIDER_AND_LIFECYCLE": "SOURCE_FREE_N10E_LIFECYCLE"
+      },
+      "excluded_fixtures": [
+        "AT07_BIDIRECTIONAL_110_CHANGED_SOURCE_LAW"
+      ],
+      "excluded_stale_release_hash": "8afa807cc06a3a10e660d13bbd831f4f758ae829e835a454c62831bfd8f4d939",
+      "fixture_predecessor_authority": {
+        "authority_id": "C1-AT07-MODEL",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "2876572dcb4eba80b52361853047d409323fff0c63228d7e6a361c972e1b38bb",
+        "status": "FIXTURE_ONLY_NONGENEALOGICAL"
+      }
+    },
+    "forbidden_operations": [
+      "ACTIVATE_MODEL_RULE_OR_ADOPT_R3",
+      "ADD_I01_KIND",
+      "ISSUE_SEMANTIC_AUTHORITY_SNAPSHOT",
+      "RECLASSIFY_REAL_SOURCE",
+      "INFER_SOURCE_TOPOLOGY",
+      "CONFER_COMPARABILITY",
+      "ENABLE_SOURCE_COMPOSITION_OR_POOLING",
+      "ISSUE_PREDICTION",
+      "ADMIT_STRUCTURAL_FACT",
+      "THRESHOLD_OR_SMOOTHING_INVENTION",
+      "AUTHORIZE_V3_OR_ACTOR",
+      "ALLOW_OTHER_FIXTURE_VARIANTS",
+      "ALLOW_UNNAMED_CALLSITES",
+      "ACTIVATE_N10E_BEFORE_OWNER_MODEL_RULE_ADOPTION"
+    ],
+    "existing_owner_jurisdiction": {
+      "I01": "Exact existing AuthoritySnapshot resolver, not fixture issuer; 18 literal authority kinds remain untouched in this proposal; proposed model kind POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_MODEL_RULE is not adopted",
+      "I02": "Validated C11 release seals immutable content, not use credentials",
+      "Z06": "Governs accepted semantic-authority revision/currentness and consumed-dependent invalidation, not registration of fixture credentials; new issuer revocation cannot rewrite Z06 semantic revision law",
+      "C1_03R": "Registers genuinely consumed downstream product determinants, not credential issuance",
+      "C1_01": "Accepted source-free fixture content and composition; future authorized owner boundary would house registrar, but current test helper has no such power",
+      "N10E": "Public provider/replay consumer, cannot independently issue C1-owned context"
+    },
+    "attack_assumption": {
+      "attacker": "Ordinary untrusted caller, request arguments, raw mappings, fixture rows, copied or syntactically valid ExactRef/receipt, and caller-controlled test helper outputs",
+      "trusted": "HQ-adopted exact warrant bootstrap, owner-controlled registrar journal, verifier independently provisioned from governance-approved trusted deployment root; no authority from user-provided payload",
+      "not_defended": "Arbitrary hostile Python code execution with write access to registrar/verifier process memory, monkeypatching privileged modules, malicious deployment maintainer or compromised HQ governance. Python-private state alone is not a cryptographic security boundary against hostile code.",
+      "fork_if_required": "If code-compromise/F7-style adversary is in scope, separate service/signed attestation and independently verified key custody need distinct HQ warrant; this bounded proposal does not claim it",
+      "guarantee": "Owner/data authority provenance against caller self-attestation, not general adversarial process-security"
+    },
+    "review_and_activation": [
+      "R3 is a bounded DOCUMENTARY CANDIDATE ONLY, not an adopted warrant; no issuer authority, root or credential",
+      "Fresh INDEPENDENT hostile R3 review must pin the final HQ245 remote commit SHA and the exact control 01 warrant blob plus all R3 control/return documents; HQ244 R2 PARTIAL is not green",
+      "Only after independent R3 GREEN may HQ separately and explicitly adopt this exact corrected R3 warrant; accepted warrant exact ref stays NULL until that decision",
+      "Only after explicit HQ adoption may a separate HQ-governed root placement APPROVE, designated C1 owner INSTALL, independent verifier ACK, and distinct HQ ACTIVATE occur; no activation here",
+      "Separately commission R4 owner-native model-rule canonical preimages using only a future ADOPTED warrant, with no R4 model-rule hashes or authority created in HQ245",
+      "Fresh independent R4 hostile review, then distinct explicit HQ model-rule adoption, followed by separately commissioned owner code and governed runtime courts/lifecycle refreeze"
+    ],
+    "no_adoption": true,
+    "no_credentials_issued": true,
+    "no_r4_identity_freeze": true,
+    "evidence": [
+      {
+        "path": "WORKER_RETURNS/PYAT-HQ239-N10E-C1-FIXTURE-CONTEXT-ISSUER-OWNER-ARCHAEOLOGY-R1/00_RETURN.md",
+        "blob": "968c3b46535dae98da43940494ce21068152344b",
+        "disposition": "MISSING_COMPETENT_ISSUER__NEW_BOUNDED_AUTHORITY_WARRANT_REQUIRED"
+      },
+      {
+        "path": "WORKER_RETURNS/PYAT-HQ237-N10E-C1-MODEL-AUTHORITY-R3-HOSTILE-REVIEW-R1/00_REVIEW.md",
+        "blob": "183d2d2c63368373946384162f6c1c3b0b2c743a",
+        "blocking": [
+          "HQ237-DEFECT-FIXTURE-CONTEXT-ISSUER-AUTHORITY-001",
+          "HQ237-DEFECT-C1-N10E-CONTEXT-ENTRYPOINT-CUSTODY-002"
+        ]
+      },
+      {
+        "commit": "5fafb499d53dddadaf8a7b4fd46506e91a09d270",
+        "scope": "C1-01 source-free producer/consumer, closed witness and R8 spine; NOT issuer or model authority"
+      },
+      {
+        "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json",
+        "blob": "462bb282ddc2cc9667f1890f2d65f2fae9a3a72c"
+      },
+      {
+        "path": "rawlsing_next/pre553_empirical_authority.py",
+        "blob": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+        "ranges": [
+          "25-44",
+          "155-275"
+        ]
+      },
+      {
+        "path": "rawlsing_next/pre553_c11_repository.py",
+        "blob": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3"
+      },
+      {
+        "path": "rawlsing_next/pre553_authority_maintenance.py",
+        "blob": "547e6bf20354f38179a0e2600de64c7cb2260ea0"
+      },
+      {
+        "path": "rawlsing_next/pre553_analytical_composition.py",
+        "blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+        "ranges": [
+          "1008-1095"
+        ]
+      }
+    ],
+    "proposed_bootstrap_contract_ref": null,
+    "proposed_handoff_contract_ref": null,
+    "root_and_handoff_dependencies": {
+      "HQ_root_approval_cannot_preexist_adopted_warrant": true,
+      "activation_requires_independent_verifier_placement_ack": true,
+      "N10E_requires_owner_issued_C1_predecessor": true,
+      "no_N10E_direct_registration": true,
+      "bootstrap_contract_path": "WORKER_RETURNS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/01_EXACT_BOOTSTRAP_ROOT_AUTHORITY_AND_ROTATION_CONTRACT.json",
+      "handoff_contract_path": "WORKER_RETURNS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/02_IMMUTABLE_C1_N10E_OWNER_HANDOFF_TRANSITION.json",
+      "bootstrap_contract_git_blob_sha1": "f0e05df99cc7ec8c3445b37e461fad86948f140e",
+      "bootstrap_contract_source_commit": "cdef72ddc805e3ed943bac9f9241467454df8030",
+      "handoff_contract_git_blob_sha1": "a8c31625fcfb7bd65007e30ee2dda579d3b85e3e",
+      "handoff_contract_source_commit": "cdef72ddc805e3ed943bac9f9241467454df8030"
+    },
+    "correction_evidence": {
+      "review_tip": "7c7937ff68ddd6209858cc23194b9f292b299e66",
+      "commission_tip": "1cac84eac8846130bd12e9bf591ff3010c9c4b62",
+      "original_proposal": "3c6cfa0d29e10c1e2654e5fe22b0b62a0db891b9",
+      "adopted_C1_01": "5fafb499d53dddadaf8a7b4fd46506e91a09d270",
+      "HQ241_report_blob": "09b5a3a7be08d4f2b6207417a9232ef2774170d0",
+      "HQ241_bootstrap_defect_blob": "8884e2e62a2b75ddc1a9617f60001a50a9434b87",
+      "HQ241_handoff_defect_blob": "e2d20201db00c8fc65804c27979d61785c43131c",
+      "old_warrant_blob": "c56be790ad523e33bd212ba99edb368af41f75d0",
+      "old_credential_blob": "58144e78b714de56dbb700020e7f3e5ab4706150",
+      "old_entrypoint_blob": "bb72089678f43dccbf16c0cf90d498bcef5f02b0",
+      "old_adoption_blob": "9415ae2ee8895dbd662b4fceb5ae3895b9adbf92",
+      "old_courts_blob": "27b2308001fc49723921a401005764f2e69c5f20",
+      "R8_spine_blob": "462bb282ddc2cc9667f1890f2d65f2fae9a3a72c",
+      "C1_test_builder_blob": "2210fc1b4cb99552aafc8797c12d780a78e7983b",
+      "N10E_test_builder_blob": "0e384f72fa615dc72a0dcb08a36472a64b7b1e4a",
+      "C1_composition_blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "N10E_provider_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "I01_18_kinds_blob": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+      "I02_repo_blob": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+      "Z06_blob": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+      "C1_03R_blob": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+      "Z08_code_blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "R3_identity_manifest_blob": "72f316d9d2b0ac65a9a3abafd39388c7fc12660b",
+      "HQ242_R2_candidate_commit": "cdef72ddc805e3ed943bac9f9241467454df8030",
+      "HQ244_R2_independent_partial_commit": "beb5a845b4f737effed030832a374dae98308980",
+      "HQ244_named_defects": [
+        "HQ244-DEFECT-R2-NORMATIVE-CONTRACT-PATH-RESOLUTION-001",
+        "HQ244-DEFECT-R2-ADOPTION-SUBJECT-AND-REVIEW-SEQUENCE-002"
+      ],
+      "HQ245_commission_tip": "e23c372757504909543a40500c5f0d2213a86b68",
+      "HQ245_candidate_commit": null
+    },
+    "r3_provenance_policy": {
+      "canonical_normative_warrant": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/01_BOUNDED_WARRANT_CANDIDATE_PREIMAGE.json",
+      "root_and_handoff_normative_owner": "Pinned R2 HQ242 worker return contract files ONLY, by exact Git blob SHA; R3 control 02/03 embedded subcontracts are immutable supplementary views, not alternative normative targets",
+      "corrected_mirror": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/06_REVISED_WARRANT_AND_IDENTITY_PREIMAGES.json",
+      "old_R2_return_mirror": "HISTORICAL_ONLY__CONTAINS_HQ244_IDENTIFIED_BROKEN_DEPENDENCY_PATHS",
+      "legacy_HQ240_warrant": "SUPERSEDED_NOT_ADOPTED__NO_FALLBACK",
+      "exact_R3_candidate_commit": null,
+      "require_independent_review": true,
+      "adopted_warrant_ref": null,
+      "approved_root_ref": null,
+      "active_issuer_epoch_ref": null
+    }
+  },
+  "root_bootstrap_and_rotation_identity_templates": {
+    "owner_root_proposal": {
+      "record_kind": "C1_AT07_OWNER_ROOT_PLACEMENT_PROPOSAL@2",
+      "status": "TEMPLATE_ONLY_NOT_COMMITTED",
+      "adopted_warrant_ref": null,
+      "approved_c1_owner_assembly_ref": null,
+      "proposed_epoch_ref": null,
+      "unique_epoch_allocation_claim": "Owner proposed unique unconsumed epoch_id; HQ independently checks uniqueness before approving; cannot reset even after revocation",
+      "approved_deployment_build_manifest_ref": null,
+      "owner_deployment_identity_ref": null,
+      "journal_genesis_manifest_ref": null,
+      "owner_journal_id": null,
+      "owner_journal_root_content_hash": null,
+      "register_writer_principal_ref": null,
+      "registrar_writer_capability_id": null,
+      "verifier_reader_principal_ref": null,
+      "independently_provisioned_verifier_read_root_id": null,
+      "C1_ingress_identity_ref": null,
+      "N10E_receiving_ingress_identity_ref": null,
+      "approval_status": "NOT_APPROVED"
+    },
+    "HQ_root_approval": {
+      "record_kind": "HQ_AT07_ISSUER_ROOT_APPROVAL_RECEIPT@2",
+      "status": "TEMPLATE_ONLY_NOT_APPROVED",
+      "approval_event_ref": null,
+      "HQ_approver_exact_identity_ref": null,
+      "HQ_governance_decision_commit_ref": null,
+      "accepted_warrant_ref": null,
+      "delegated_issuer_exact_ref": null,
+      "issuer_epoch_ref": null,
+      "unique_epoch_allocation_id": null,
+      "exact_owner_assembly_ref": null,
+      "approved_deployment_build_manifest_ref": null,
+      "owner_deployment_identity_ref": null,
+      "owner_journal_root_content_hash": null,
+      "journal_genesis_manifest_ref": null,
+      "owner_journal_id": null,
+      "registrar_writer_principal_ref": null,
+      "registrar_writer_capability_id": null,
+      "verifier_reader_principal_ref": null,
+      "independently_provisioned_verifier_read_root_id": null,
+      "C1_ingress_identity_ref": null,
+      "N10E_receiving_ingress_identity_ref": null,
+      "validity_not_before": null,
+      "validity_not_after_or_null": null,
+      "prior_epoch_ref_for_initial": null,
+      "approved_manifest_digest": null,
+      "governed_approval_state": "PENDING_FUTURE_EXPLICIT_HQ_APPROVAL"
+    },
+    "placement_and_activation": {
+      "record_kind": "HQ_AT07_ISSUER_EPOCH_ACTIVATION_RECEIPT@2",
+      "status": "TEMPLATE_ONLY_NOT_ACTIVATED",
+      "accepted_root_approval_ref": null,
+      "owner_installation_receipt_ref": null,
+      "verifier_independent_installation_receipt_ref": null,
+      "installed_root_digest": null,
+      "installed_owner_journal_genesis_digest": null,
+      "issuer_epoch_ref": null,
+      "HQ_activation_event_ref": null,
+      "HQ_activation_governance_commit_ref": null,
+      "active_at_governed_checkpoint_ref": null,
+      "previous_active_epoch_ref_or_null": null,
+      "activation_state": "NOT_ACTIVE"
+    }
+  },
+  "root_rotation_identity_contract": {
+    "rotate_authorizer": "HQ only via HQ_APPROVE_AT07_ISSUER_ROOT_ROTATION followed by explicit HQ_ACTIVATE_AT07_ISSUER_EPOCH; C1 owner can propose but not approve/activate",
+    "rotate_record_kind": "HQ_AT07_ISSUER_ROOT_ROTATION_APPROVAL@2",
+    "required_exact_fields": [
+      "accepted_warrant_ref",
+      "HQ_approval_event_ref",
+      "issuer_epoch_ref",
+      "exact_active_root_approval_ref",
+      "prior_activation_event_ref",
+      "negative_effective_checkpoint",
+      "reason",
+      "successor_epoch_ref_or_null",
+      "historical_audit_root_retained"
+    ],
+    "rotate_preconditions": "Must point to exactly active prior epoch and exact HQ-approved successor, reserve distinct successor epoch and new root, avoid concurrent unfenced writers; no key/latest rewrite. HQ activation only after independent installed verifier acknowledgment.",
+    "rotate_activation": "Explicit HQ governance commit atomically specifies exact replacement active epoch and old epoch current-use termination checkpoint. Verifier MUST independently reload approved active epoch/currentness and require exact authorized credential epoch. No silent migration of old credentials.",
+    "revoke_authorizer": "HQ explicit issuer-epoch revocation; for context/build site-specific revocation only separately authorized C1 registrar within still-active epoch under proposed role, append immutable reason/event",
+    "revoke_record_kind": "HQ_AT07_ISSUER_EPOCH_REVOCATION@2",
+    "negative_propagation": "Fail closed if currentness cannot be checked; epoch revocation cascades to current use of build, C1 site, handoff and N10E site. Historical provenance can be verified against exact archived approved root for AUDIT_ONLY with no new/current output.",
+    "refusal_cases": [
+      "missing activation/approval",
+      "root fork with two self-consistent manifests",
+      "caller-selected root",
+      "writer principal change without HQ approval",
+      "stale verifier placement after rotation",
+      "same epoch and duplicate sequence after restart",
+      "old epoch accepted as latest",
+      "root tamper with matching caller hash but mismatched HQ pin",
+      "revoked epoch current replay"
+    ]
+  },
+  "registered_build_preimage": {
+    "schema": "C1_AT07_FIXTURE_BUILD_INSTANCE_REGISTRATION@1",
+    "record_status": "PROPOSED_TEMPLATE__NOT_AN_ACTUAL_BUILD",
+    "issuer_warrant_ref": null,
+    "issuer_authority_ref": null,
+    "issuer_epoch_ref": null,
+    "owner_build_instance_event_ref": null,
+    "registrar_atomic_sequence": null,
+    "build_instance_ref": null,
+    "fixture_id": "AT07_BIDIRECTIONAL_100",
+    "source_family": "SYNTHETIC_SURVEY",
+    "real_source_effect": false,
+    "source_manifest_hash": "01ee5fa6db95efad3ce0acecd656f51beb6c2f2e21bc30e49bd358633f9ad6a1",
+    "source_universe_ref": {
+      "kind": "EmpiricalUniverse@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+      "content_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2"
+    },
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-c1-at07",
+      "content_hash": "dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3"
+    },
+    "i02_sealed_release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-c1-at07",
+      "content_hash": "dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3"
+    },
+    "actual_c11_repository_snapshot_identity": "VERIFY_OWNER_ACTUAL_REPOSITORY_INSTEAD_OF_CALLER_STRING",
+    "synthetic_source_rows_content_check": "AT07_CLOSED_100_ROWS_54_6_8_32_EXACT_LAYOUT_AND_QUESTION_ROUTING",
+    "source_free_origin_evidence": "TRUSTED_OWNER_ASSEMBLY_SEALED_FIXTURE_NOT_CALLER_LABEL",
+    "registration_commit_proof": "AUTHENTICATED_JOURNAL_EVENT_WITH_OWNER_CAPABILITY",
+    "state_after_commit": "BUILD_REGISTERED"
+  },
+  "registered_invocation_preimage": {
+    "schema": "C1_AT07_EXACT_INVOCATION_SEAL@1",
+    "record_status": "PROPOSED_TEMPLATE__NO_INVOCATION_SEALED",
+    "issuer_warrant_ref": null,
+    "build_instance_ref": null,
+    "producer_query_ref": null,
+    "producer_predicate_ref": null,
+    "producer_predicate_hash": null,
+    "consumer_query_ref": null,
+    "conditioner_binding_fingerprint": null,
+    "condition_value_binding_witness_ref": null,
+    "closed_16_key_witness_custody": "COMPLETE_EXACT_KEY_SET_AND_VALUE_MATCH_TO_OWNER_SOURCE_AND_BOTH_QUERY_REFS",
+    "witness_identity_material_effective_time_or_interval": null,
+    "conditioner_effective_time_or_interval": null,
+    "snapshot_static_effective_time_or_interval": "AT07_FIXTURE_ONLY",
+    "fixture_id": "AT07_BIDIRECTIONAL_100",
+    "source_manifest_hash": "01ee5fa6db95efad3ce0acecd656f51beb6c2f2e21bc30e49bd358633f9ad6a1",
+    "source_universe_ref": {
+      "kind": "EmpiricalUniverse@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+      "content_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2"
+    },
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-c1-at07",
+      "content_hash": "dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3"
+    },
+    "real_source_effect": false,
+    "binding_receipt_ref": null,
+    "seal_transition": "EXACT_REGISTERED_BUILD_AND_COMPLETE_CUSTODY_VERIFICATION_NO_MODEL_RULE_YET"
+  },
+  "C1_site_preimage": {
+    "record_kind": "C1_AT07_C1_COMPATIBILITY_SITE_USE@2",
+    "status": "PROPOSED_TEMPLATE_NOT_ISSUED",
+    "warrant_ref": null,
+    "issuer_epoch_ref": null,
+    "build_registration_receipt_ref": null,
+    "unique_build_instance_ref": null,
+    "invocation_seal_ref": null,
+    "C1_authenticated_callsite_ref": null,
+    "exact_use_token": "SOURCE_FREE_C1_01_COMPATIBILITY",
+    "cross_site_handoff_ref": null,
+    "producer_query_ref": null,
+    "producer_predicate_ref": null,
+    "producer_predicate_hash": null,
+    "consumer_query_ref": null,
+    "conditioner_binding_fingerprint": null,
+    "closed_16_key_witness_ref": null,
+    "source_universe_ref": {
+      "kind": "EmpiricalUniverse@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+      "content_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2"
+    },
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-c1-at07",
+      "content_hash": "dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3"
+    },
+    "conditioner_actual_effective_time_or_interval": null,
+    "witness_actual_effective_time_or_interval": null,
+    "journal_event_ref": null,
+    "atomic_event_sequence": null,
+    "currentness": "REQUIRED_AT_USE"
+  },
+  "C1_owner_issued_handoff_preimage": {
+    "record_kind": "C1_TO_N10E_SITE_HANDOFF_REGISTERED@2",
+    "status": "PROPOSED_TEMPLATE_NOT_ISSUED",
+    "adopted_warrant_ref": null,
+    "issuer_exact_ref": null,
+    "issuer_epoch_ref": null,
+    "HQ_root_activation_ref": null,
+    "original_C1_site_use_ref": null,
+    "original_C1_site_registration_receipt_ref": null,
+    "original_build_instance_ref": null,
+    "original_build_registration_receipt_ref": null,
+    "original_invocation_seal_ref": null,
+    "original_C1_authenticated_callsite_ref": null,
+    "authorized_N10E_receiving_ingress_ref": null,
+    "N10E_receiver_route_ref": null,
+    "producer_query_ref": null,
+    "producer_predicate_ref": null,
+    "producer_predicate_hash": null,
+    "consumer_query_ref": null,
+    "conditioner_binding_fingerprint": null,
+    "closed_16_key_witness_ref": null,
+    "fixture_id": "AT07_BIDIRECTIONAL_100",
+    "source_manifest_hash": "01ee5fa6db95efad3ce0acecd656f51beb6c2f2e21bc30e49bd358633f9ad6a1",
+    "source_universe_ref": {
+      "kind": "EmpiricalUniverse@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+      "content_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2"
+    },
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-c1-at07",
+      "content_hash": "dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3"
+    },
+    "conditioner_actual_effective_time_or_interval": null,
+    "witness_actual_effective_time_or_interval": null,
+    "snapshot_static_interval": "AT07_FIXTURE_ONLY",
+    "real_source_effect": false,
+    "issuer_journal_event_ref": null,
+    "atomic_event_sequence": null,
+    "handoff_ref": null,
+    "predecessor_currentness_at_issuance": "REQUIRE_ACTIVE_OR_REFUSE",
+    "handoff_status": "NOT_REGISTERED"
+  },
+  "N10E_mandatory_site_preimage": {
+    "record_kind": "C1_AT07_N10E_LIFECYCLE_SITE_USE@2",
+    "status": "PROPOSED_TEMPLATE_NOT_ISSUED",
+    "adopted_warrant_ref": null,
+    "issuer_epoch_ref": null,
+    "original_build_instance_ref": null,
+    "original_build_registration_receipt_ref": null,
+    "original_invocation_seal_ref": null,
+    "original_C1_site_use_ref": null,
+    "cross_site_handoff_ref": {
+      "expected_type": "ExactRef",
+      "expected_kind": "C1_TO_N10E_SITE_HANDOFF_REGISTERED@2",
+      "value": "REQUIRED_NON_NULL_JOURNAL_ISSUED_REF__NO_VALUE_MINTED",
+      "nullable_in_issued_record": false
+    },
+    "authorized_N10E_receiving_ingress_ref": null,
+    "N10E_site_use_event_ref": null,
+    "atomic_event_sequence": null,
+    "site_token": "SOURCE_FREE_N10E_LIFECYCLE",
+    "source_universe_ref": {
+      "kind": "EmpiricalUniverse@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+      "content_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2"
+    },
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-c1-at07",
+      "content_hash": "dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3"
+    },
+    "source_manifest_hash": "01ee5fa6db95efad3ce0acecd656f51beb6c2f2e21bc30e49bd358633f9ad6a1",
+    "conditioner_actual_effective_time_or_interval": null,
+    "witness_actual_effective_time_or_interval": null,
+    "real_source_effect": false,
+    "issuer_state": "REQUIRES_ACTIVE_APPROVED_ROOT_AND_C1_PARENT"
+  },
+  "candidate_epoch_record": {
+    "issuer_epoch_identity": "HQ-adopted issuer exact identity + one immutable provisioned deployment epoch ref, allocated and approved only after HQ adoption",
+    "issuer_epoch_ref": null,
+    "root_bootstrap": "Only the future HQ-approved exact HQ_AT07_ISSUER_ROOT_APPROVAL_RECEIPT@2 plus separately installed verifier read root and explicit HQ activation authorize epoch. Never caller/registrar root, latest branch, unsigned-looking unapproved map or hash alone.",
+    "registrar_write_capability": "Exact C1 owner writer identity in HQ approved and activated bootstrap record, privileged and not public, cannot approve itself.",
+    "verifier_read_capability": "Trusted deployment pin independently rooted in HQ-approved exact commit + root-placement digest and independent verifier acknowledgment, not the untrusted registry being checked.",
+    "attestation_choice": "OWNER_JOURNAL_MEMBERSHIP_WITH_TRUSTED_BOOTSTRAP, not a claim of a cryptographic signature. Signed credentials permitted only under separately approved key custody; no key generated by this proposal.",
+    "rotation": "HQ-approved explicit prior→successor record and HQ activation; no overlap/fork without explicit HQ law; exact historical audit only for revoked epochs"
+  },
+  "identity_rules": {
+    "future_references": "All exact refs are kind+object_id+content_hash under admitted PRE553 canonical JSON SHA256; no authority by hash alone; runtime registry membership and provenance required",
+    "build_identity": "Candidate kind C1_AT07_FIXTURE_BUILD_INSTANCE@1; proposed object_id from unique (issuer epoch, persistent atomic sequence, source build provenance); preimage retains owner event + fixture content hashes; one content-identical but separately built source consumes a DIFFERENT persistent event sequence and DIFFERENT build ref",
+    "build_sequence": "Owner-allocated persisted monotone sequence within unique issuer epoch, atomic reservation/commit, no reset/reuse after restart/revocation, no reliance on process-local nonce alone; collision is refusal not overwriting",
+    "credential_identity": "Candidate kind C1_AT07_FIXTURE_USE_CONTEXT@1; digest over issued use-event material including build_ref, full invocation refs, use-site, original registered issuer epoch/warrant, exact source/release and witness, status_at_issuance; never hash a payload that includes its own digest",
+    "registry_membership": "Verifier must match exact original journal record by full ref and content, issuer epoch and deployment root, and must read current negative lifecycle state independently; no latest/default/fallback",
+    "collision": "Duplicate event_id or (issuer epoch, sequence) with different preimage => integrity conflict. Duplicate context_id with different scope => refuse. Distinct sequence for identical fixture content => distinct identity; cannot equate or exchange",
+    "metadata_is_not_semantic_time": "registration event sequence, issued_at and optional expiry are credential lifecycle data; never substitute snapshot static AT07_FIXTURE_ONLY or conditioner actual null effective context",
+    "kind": "ExactRef(kind,object_id,content_hash)",
+    "canonicalization": "PRE553 stable recursive sorted-object-key compact UTF-8 JSON; array order preserved; hash excludes enclosing self-ref, mutable CURRENT index and signatures/placement assertions",
+    "identity": "SHA256 of full immutable preimage including unique authorized issuer epoch and owner event sequence; hash/content equality is not registry membership",
+    "actual_refs": "ALL NULL/UNISSUED IN THIS DOCUMENTARY PACKET; no fabricated digest or minted credential",
+    "journal": "Append-only unique (issuer_epoch_ref,event_sequence) namespace with atomic persistence across restarts; monotone event_sequence never recycled, collision means hard failure; immutable prior event and activated root checks required",
+    "authority_positive_dependency": "Only a LATER HQ-adopted warrant and exact root can be positive; all current proposal refs null/placeholder. HQ236 R3 11 hashes remain UNADOPTED; not used as genealogy.",
+    "historical_no_inheritance": [
+      "HQ230_REJECTED",
+      "HQ232_R2_UNADOPTED",
+      "HQ236_R3_UNADOPTED_HASH_PASS",
+      "C1-AT07-MODEL@1.0.0_FIXTURE_ONLY"
+    ]
+  },
+  "no_operational_refs_minted": true,
+  "no_adopted_hashes_recomputed": true,
+  "no_R4_hash_freeze": true,
+  "evidence": {
+    "review_tip": "7c7937ff68ddd6209858cc23194b9f292b299e66",
+    "commission_tip": "1cac84eac8846130bd12e9bf591ff3010c9c4b62",
+    "original_proposal": "3c6cfa0d29e10c1e2654e5fe22b0b62a0db891b9",
+    "adopted_C1_01": "5fafb499d53dddadaf8a7b4fd46506e91a09d270",
+    "HQ241_report_blob": "09b5a3a7be08d4f2b6207417a9232ef2774170d0",
+    "HQ241_bootstrap_defect_blob": "8884e2e62a2b75ddc1a9617f60001a50a9434b87",
+    "HQ241_handoff_defect_blob": "e2d20201db00c8fc65804c27979d61785c43131c",
+    "old_warrant_blob": "c56be790ad523e33bd212ba99edb368af41f75d0",
+    "old_credential_blob": "58144e78b714de56dbb700020e7f3e5ab4706150",
+    "old_entrypoint_blob": "bb72089678f43dccbf16c0cf90d498bcef5f02b0",
+    "old_adoption_blob": "9415ae2ee8895dbd662b4fceb5ae3895b9adbf92",
+    "old_courts_blob": "27b2308001fc49723921a401005764f2e69c5f20",
+    "R8_spine_blob": "462bb282ddc2cc9667f1890f2d65f2fae9a3a72c",
+    "C1_test_builder_blob": "2210fc1b4cb99552aafc8797c12d780a78e7983b",
+    "N10E_test_builder_blob": "0e384f72fa615dc72a0dcb08a36472a64b7b1e4a",
+    "C1_composition_blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+    "N10E_provider_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+    "I01_18_kinds_blob": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+    "I02_repo_blob": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+    "Z06_blob": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+    "C1_03R_blob": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+    "Z08_code_blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+    "R3_identity_manifest_blob": "72f316d9d2b0ac65a9a3abafd39388c7fc12660b"
+  },
+  "r3_mirror_custody": {
+    "role": "REPAIRED_DERIVATIVE_MIRROR_NOT_SECOND_NORMATIVE_WARRANT",
+    "canonical_warrant_path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/01_BOUNDED_WARRANT_CANDIDATE_PREIMAGE.json",
+    "canonical_warrant_git_blob_sha1": "d1c835119a08bb27124c87b15485d6b83b91659f",
+    "old_R2_broken_mirror_sha1": "ec00caf2a4a60d75c5118cc1a79cb407fd388b91",
+    "r2_substantive_identity_preimages": "PRESERVED_UNCHANGED",
+    "warrant_and_root_ref": null
+  }
+}
