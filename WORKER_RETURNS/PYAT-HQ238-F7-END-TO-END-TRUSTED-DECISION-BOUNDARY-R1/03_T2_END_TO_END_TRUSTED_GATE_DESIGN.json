@@ -1,0 +1,189 @@
+{
+  "schema": "PYAT_HQ238_F7_T2_END_TO_END_TRUSTED_GATE_DESIGN@1",
+  "status": "PROPOSED_NOT_AUTHORIZED",
+  "assurance": "T2_UNTRUSTED_PYTHON_CANNOT_CREATE_TRUSTED_POSITIVE_F7_COMMIT",
+  "minimal_boundary": "Protected server owns the authorized P07 source-relation decision, F7 temporal comparison, canonical receipt re-execution, and the only positive reliance/commit journal. A Python client receipt is informational and cannot authorize.",
+  "trust_root": {
+    "owner": "HQ-authorized protected F7 gate service, immutable accepted exact P07/F7 semantic code blobs and exact authority bootstrap corpus; trusted job provisioner and consumer inside server protection domain",
+    "upstream": "Accepted source universe, relation refs, authority snapshots, governed release/context identity and trusted job association from independently authorized upstream owner; client-provided purported registry entries never treated as authority",
+    "code": "Server starts from pinned audited package/tree/image hash and pinned CPython/OS service binary, verifying startup manifest; no executable dependency writable by attacker",
+    "OS": "Separate protected service account/sandbox from the untrusted caller, restrictive executable/credential/file permissions; AF_UNIX peers authenticated by OS credential APIs (macOS implementation to be independently qualified); per-connection ACL and permission checks",
+    "failure_if_same_user": "Do not claim T2 if arbitrary same-user process can ptrace/debug, signal, modify service binaries, read service secrets or invoke privileged provisioning; OS boundary must actually block these.",
+    "excluded_adversary": "kernel/native/service-account/accepted-authority bootstrap/remote trusted consumer compromise"
+  },
+  "format": {
+    "schema": "F7_TRUSTED_EVALUATION_PROTOCOL@1 (PROPOSED)",
+    "encoding": "Canonical sorted-key compact UTF-8 JSON using existing PRE553 canonicalize for all semantic material; length-prefixed transport with strict byte and structure limits and rejection of duplicate JSON member names/unknown schema fields; no pickle or eval",
+    "request": {
+      "required": [
+        "protocol_version",
+        "rule_version",
+        "job_ref",
+        "request_id",
+        "request_nonce",
+        "resolver_owner_id",
+        "f7_request_projection",
+        "authority_request_refs",
+        "producer_release_refs",
+        "source_universe_refs",
+        "source_equivalence_ref_or_null",
+        "comparability_requirements_ref_and_material",
+        "temporal_identity_contract_ref_and_material",
+        "quantity_surface",
+        "expected_effective_use_and_scope_ref",
+        "replay_mode"
+      ],
+      "protocol_version": "F7_TRUSTED_EVALUATION_PROTOCOL@1",
+      "rule_version": "PYAT_HQ211_F7_TEMPORAL_COMPARABILITY@1.1.0 plus pinned P07 I07 contract and exact accepted binaries",
+      "resolver_owner_id": "Opaque identifier provisioned and bound server-side to registered job/owner at trusted creation, never accepted as freely substitutable proof merely because caller presents its string",
+      "job_ref": "Exact trusted job identity; caller may locate but not create authoritatively",
+      "request_id": "Unique per job; prevents reuse; domain-separated from F7 semantic receipt identity",
+      "request_nonce": "Challenge or monotonically checked transport nonce; used for reply correlation and anti-replay, not interpreted as new F7 semantic field",
+      "f7_request_projection": "Full exact TemporalComparisonRequest field projection (see pre553_temporal_comparability.py:686-739) excluding live Python source_relation_resolver object, replaced by trusted server owner lookup; no defaulting of missing authority refs or source/material identity",
+      "authority_request_refs": "Full accepted AuthorityRefs needed by F7 (TEMPORAL_COMPARABILITY, temporal evidence/order, estimand/measure, target use, uncertainty/replay/native mapping/source equivalence as required)",
+      "source_universe_refs": "Exactly two full kind/object_id/content_hash refs in accepted anchor order; exact source pair derived at server",
+      "no_implicit_authority": "No source-equivalence, target use, temporal currentness, pooling or actor authority is produced by this protocol"
+    },
+    "response": {
+      "required": [
+        "protocol_version",
+        "service_build_id",
+        "job_ref",
+        "request_id",
+        "request_nonce",
+        "server_sequence",
+        "trusted_owner_provenance_ref",
+        "gate_status",
+        "F7_receipt_or_null",
+        "F7_receipt_hash_or_null",
+        "P07_decision_digest_or_null",
+        "accepted_effect_record_ref_or_null",
+        "transport_envelope_digest",
+        "replay_proof"
+      ],
+      "server_sequence": "Trusted server monotone job-scoped sequence and durable anti-replay journal",
+      "gate_status": [
+        "ACCEPTED_POSITIVE_F7",
+        "ACCEPTED_NONPOSITIVE_F7",
+        "REFUSED_INPUT",
+        "REFUSED_AUTHORITY",
+        "REFUSED_OWNER_BINDING",
+        "REFUSED_PROTOCOL",
+        "REFUSED_REPLAY",
+        "GATE_UNAVAILABLE"
+      ],
+      "semantic_state": "If F7 receipt exists, exactly one existing F7 relation_state; protocol-level refusal statuses are not new F7 states",
+      "identity": "The existing receipt_hash remains SHA256(existing canonical F7 as_material()) unchanged; transport uses separate domain-separated envelope commitment to exact request/job/owner/nonce/version/sequence/receipt_hash",
+      "optional_MAC": "If result traverses an untrusted relay to a separately trusted consumer, service authenticates envelope with key unavailable to untrusted Python (or recipient independently fetches trusted journal); verification MUST be outside compromised Python. MAC/signature optional when trusted consumer reads same protected internal journal directly.",
+      "no_positive_on_transport_failure": true
+    },
+    "versioning": "Pinned exact P07/F7 semantic contract ids and binary/package hashes in service startup; protocol major mismatch fails closed; accepted semantic version changes require independent authority and replay migration, never latest/default",
+    "size_limits": "Explicit bounded JSON payload, bounded canonical material nesting and ref count; exact limits to be fixed in separate implementation commission, not used as new empirical/semantic thresholds"
+  },
+  "provision_and_bootstrap": [
+    "Trusted provisioner imports accepted exact AuthoritySnapshot and SourceUniverseRelation material from governed source/release record; verifies immutable ref/hash/replay and exact authoritative scope independently of untrusted client",
+    "Trusted provisioner issues service-private job_ref, source/release/owner mapping and resolver_owner_id; seals P07 by-ref/by-key and pinned snapshots inside service-owned process; absence stays DISTINCT_BY_DEFAULT",
+    "Untrusted client cannot invoke bootstrap/owner registration with an arbitrary 'positive' snapshot or transfer one job's registered source resolver to a different victim job by supplying an id string",
+    "Server computes P07 owner decision using protected accepted implementation, cross-binds relation kind SOURCE_SEMANTIC_EQUIVALENCE, exact universe pair, SEMANTIC_EQUIVALENCE_ADMISSION, EXACT_BOUND_UNIVERSE_PAIR, governed_use_id.object_id and pinned snapshot/hash",
+    "Server computes F7 using the accepted compare_temporal_anchors and all independently resolved temporal authorities/order/identity/quantity/effective-time material; no client-side pre-computed state is trusted",
+    "Server independently reruns F7 deterministic replay/cross-field receipt validation, verifies exact result identity, then atomically appends one trusted acceptance record (positive/nonpositive/refusal) for this exact job/request to protected journal",
+    "Trusted consumer inside service or separately isolated attested recipient reads the authenticated journal/response for the right job/request/owner. It alone may rely on the F7 result. Client UI bytes are nonauthoritative."
+  ],
+  "old_and_new_call_graph": {
+    "old": "untrusted/caller Python -> Python SourceRelationResolver/lexical ledger -> Python authenticated_source_relation_decision -> F7 Python compare_temporal_anchors -> caller-observed TemporalRelationReceipt (no protected relying consumer)",
+    "new": "trusted upstream provisioning -> isolated owner service seal(job,real exact owner) -> untrusted Python submits candidate request -> protected server P07 decision -> protected server F7 compare -> protected replay/cross-field verify -> protected accept/reject journal -> trusted consumer inside/at trusted port; client receives display-only report",
+    "critical_reliance": "Do not permit untrusted Python to call a bare 'verify' or 'record accepted' method with a supplied positive receipt and have the final caller result trusted; recipient verification must be non-bypassable within trusted endpoint",
+    "same_interpreter_shadows": "Replacing _authenticated_source_relation_decide, compare_temporal_anchors.__code__, result.material(), replay verifier or client-side receipt does not change protected journal"
+  },
+  "exact_binding": {
+    "P07_scope": {
+      "relation_kind": "SOURCE_SEMANTIC_EQUIVALENCE",
+      "authority_kind": "SOURCE_EQUIVALENCE",
+      "operation": "SEMANTIC_EQUIVALENCE_ADMISSION",
+      "operation_scope": "EXACT_BOUND_UNIVERSE_PAIR",
+      "effective_scope": "EXACT_BOUND_UNIVERSE_PAIR",
+      "target_use": "server reconstructed governed_use_id.object_id",
+      "pairs": "full exact source_universe_refs and exact relation_ref, not claimant names"
+    },
+    "temporal": {
+      "anchor_cardinality": 2,
+      "observations_per_anchor": 1,
+      "source_universes": 2,
+      "identity_contract": "exact ref plus owner-resolved comparison evidence with hash",
+      "order": "CALENDAR_TOTAL_ORDER or FAMILY_LOCAL_ORDINAL may authorize direction; PARTIAL_ORDER_NO_DIRECTION no direction; ORDER_UNKNOWN_NONCOMPARABLE terminal",
+      "delta": "exact signed only, exact zero = NO_AUTHORIZED_CHANGE, no epsilon"
+    },
+    "replay": "full trusted job and request identity + P07 custody/snapshot semantics + F7 exact receipt identity + server sequence; no cross-job/source/release replay",
+    "provenance": "retain existing F7 receipt schema (18 accepted material fields plus hash); put job/nonce/transport identity in OUTER attestation envelope, not new F7 semantic relation fields",
+    "negatives": "Preserve existing nine F7 negative states and typed no-receipt exceptions, separate transport/service envelope refusals"
+  },
+  "threats_and_countermeasures": [
+    {
+      "attack": "copy legitimate source resolver_owner_id into empty victim's request",
+      "response": "server binds job_ref and owner id from trusted provisioned job mapping; mismatch refused independently of provided id"
+    },
+    {
+      "attack": "submit source genuine authority snapshot into victim's client payload",
+      "response": "server ignores client-issued authority as custody; compares only server-registered trusted snapshots and relation set for victim"
+    },
+    {
+      "attack": "modify Python __code__ or module-global P07/F7 aliases",
+      "response": "server runs separate pinned trusted executable; protected journal unchanged"
+    },
+    {
+      "attack": "replace/fabricate Python receipt_hash or positive state",
+      "response": "client report cannot write protected acceptance ledger; verifier inside server independently computes and commits"
+    },
+    {
+      "attack": "replay a previously positive signed/MACed server packet for a new job/target/use",
+      "response": "job_ref+owner_id+request_id+nonce+source/release/target/use/operation/scope in attested envelope; monotone one-time seq replay gate at trusted consumer"
+    },
+    {
+      "attack": "valid IPC response returned but final Python consumer patched to accept forged receipt",
+      "response": "that Python consumer is NOT a trusted relying consumer under T2; positive reliance only in server/trusted recipient; otherwise model fails"
+    },
+    {
+      "attack": "OS peer spoof or service binary tampering",
+      "response": "service separate trust domain with protected bootstrap, OS ACL, credentials and image hash; if no such separation available, T2 claim blocked rather than green"
+    }
+  ],
+  "production_transition": {
+    "old_P07": "rawlsing_next/pre553_source_relations.py:535-1266",
+    "old_F7": "rawlsing_next/pre553_temporal_comparability.py:686-795,836-1495",
+    "existing_receipt": "TemporalRelationReceipt module-local, not a public object family; not already independently authenticated",
+    "service": "NEW protected F7 service executable and trusted journal/acceptance gate; relocate existing owner code as one authoritative server implementation; avoid duplicating P07/F7 semantic authority in client",
+    "client": "NEW non-authoritative typed adapter, cannot call old Python local compare for trusted effect; old local API may remain diagnostic/test-only if explicit",
+    "downstream": "No production F8/V3 actor consumer adopted. Any discovered consumers must be inventoried and re-gated or declared non-authoritative; do not silently authorise new V3/F8 effect."
+  },
+  "governed_runtime_and_portability": {
+    "python": "Governed CPython 3.11.3 macOS x86_64 interpreter sha256 11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6 for retained P07/F7 semantics qualification; separate server package/image hash also mandatory",
+    "IPC": "macOS AF_UNIX or protected local socket with real peer process credential/OS ACL verification; actual macOS implementation and separate-user permissions must be tested (not asserted as already proven); linux cross-port optional and requires distinct OS credential implementation",
+    "permissions": "If the same attacker UID can load arbitrary code into protected server or modify service runtime/files/credentials, service is NOT T2 isolated; confirm OS security design explicitly",
+    "CI": "source-free contract-canonical replay and protocol tests wherever available; governed macOS qualification and service isolation/adversarial process tests separately required; exact CI runner capability not yet verified",
+    "build": "No native C extension required if P07/F7 Python executes only inside separately protected process; retained accepted semantic code blobs and env provenance must be checked",
+    "deployment_cost": "trusted service lifecycle, initial seed/owner issuance, protected binary/artifact custody, IPC and journal, independent trusted consumer, packaging and monitoring are NEW architecture"
+  },
+  "acceptance": {
+    "security": [
+      "all four F7-RR-04G variants fail to create trusted server-side positive for empty victim",
+      "T2 deliberate client replacement of __code__, aliases, verifier, returned TemporalRelationReceipt cannot create accepted journal record",
+      "cross-job/nonce/owner substitution and stale/replayed packet rejected by trusted consumer",
+      "independently trusted source and victim provenance cannot be client-self-issued"
+    ],
+    "productivity": [
+      "same-universe",
+      "exact zero",
+      "increase",
+      "decrease",
+      "lawful positive cross-universe"
+    ],
+    "parity": "12 F7 states and precedence, accepted P07 states, exact authority refs and snapshot/replay, no new source semantic/composition/actor or F8 authority",
+    "fail_capability": "in an isolated test service with deliberate unsafe job-owner binding and exact per-job case, red security witness must detect false positive; no production backdoor",
+    "refusal_consumer": "transport refused statuses cannot be accepted as semantic negative success for a mandatory positive gate"
+  },
+  "actor_split": {
+    "Space_Bunny_if_HQ_commissions": "implement protected service, accepted P07/F7 code migration, versioned exact request/response and trusted accept/journal with no new domain semantics; source-free fixtures first",
+    "DeepSeek_Harness_independent": "run multi-process T2 attacker changing client code/results, native/OS provenance checks, protocol replay and source-to-victim attacks, positive-five parity and governed runtime qualification",
+    "HQ": "must first authorize separate process trust domain, precise job provisioning and trusted consumer role; no consumer/authority silently inferred by worker"
+  }
+}
