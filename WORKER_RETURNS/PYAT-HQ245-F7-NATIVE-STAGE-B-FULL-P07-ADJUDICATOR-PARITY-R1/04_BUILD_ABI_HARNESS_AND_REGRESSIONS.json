@@ -1,0 +1,110 @@
+{
+  "commission": "PYAT-HQ245-F7-NATIVE-STAGE-B-FULL-P07-ADJUDICATOR-PARITY-R1",
+
+  "environment": {
+    "governed_interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+    "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "interpreter_sha256_required": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "match": true,
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq245-stageb",
+    "hq242_or_hq244_worktree_reused": false,
+    "independent_clone": false,
+    "shared_object_store": true
+  },
+
+  "git": {
+    "commission_tip_verified_remote": "380d55443431756efa87f87c7c52412b79f6ac2b",
+    "commission_base_declared": "85144216e9ceb58f306d5624620ee42df34d1718",
+    "base_is_ancestor_of_tip": true,
+    "tip_is_base_plus_single_commission_commit": true,
+    "branch": "agent/space-bunny-pyat-hq245-f7-native-stage-b-full-p07-parity-r1",
+    "forced_or_rebased": false,
+    "blind_pull": false,
+    "review_branch_merged": false
+  },
+
+  "base_blob_verification": {
+    "P07_pre553_source_relations": {"observed": "8053d30d306a3654ebf563043088311ff390bb2b", "required": "8053d30d306a3654ebf563043088311ff390bb2b", "match": true},
+    "F7_pre553_temporal_comparability": {"observed": "6f6b462b1cdef54d7989f15452473383c1661594", "required": "6f6b462b1cdef54d7989f15452473383c1661594", "match": true}
+  },
+
+  "build": {
+    "compiler": "Apple clang version 14.0.3 (clang-1403.0.22.14.1)",
+    "required_flag": "-undefined dynamic_lookup",
+    "recipe": "clang -shared -fPIC -O2 -Wall -Wextra -Wno-unused-parameter -undefined dynamic_lookup -I<sysconfig include> -o rawlsing_next/_p07_native_owner_stage_b.cpython-311-darwin.so rawlsing_next/_p07_native_owner_stage_b.c",
+    "warnings": "clean build, no -Wall/-Wextra warnings",
+    "deterministic": "rebuild from committed source reproduced the recorded binary SHA exactly",
+    "defects_encountered_and_fixed_during_build": [
+      "PyErr_NoMemory() is not usable as an int-return value",
+      "type() macro unavailable in the public C-API; replaced with Py_TYPE()",
+      "PyObject_GetItemString does not exist in the public C-API; a dget() helper was added",
+      "several Py_ssize_t redeclarations",
+      "canonicalize returns a canonical STRUCTURE, not a string - the initial str assumption was wrong"
+    ]
+  },
+
+  "abi": {
+    "python": "3.11.3", "implementation": "CPython", "soabi": "cpython-311-darwin",
+    "ext_suffix": ".cpython-311-darwin.so", "machine": "x86_64", "macos": "13.7.8",
+    "pointer_size": 8, "limited_api": false
+  },
+
+  "binary": {
+    "path": "rawlsing_next/_p07_native_owner_stage_b.cpython-311-darwin.so",
+    "sha256": "e7454992bd888ce05411ef0717257905c81486f8306fb392c6182bddbd3688e7",
+    "bytes": 87824,
+    "committed_to_repo": false,
+    "normal_build_contains_fault_inject_symbols": false
+  },
+
+  "source": {
+    "path": "rawlsing_next/_p07_native_owner_stage_b.c",
+    "sha256": "5563a753d222a497fe53d94893ead925d62aa183f2256fb5fde91ae64a30dae0",
+    "lines": 1802
+  },
+
+  "court": {
+    "path": "rawlsing_next/tests/test_p07_native_stage_b_parity.py",
+    "sha256": "ac357152be97dbb52a9bc2a6772656db30b75c38ddd59231a6af7da346c5e0af",
+    "stage_b_tests": 41,
+    "stage_b_result": "41 passed",
+    "stage_a_tests_still_green": "39 passed",
+    "combined": "80 passed"
+  },
+
+  "production_regression": {
+    "P07_court": "24 passed",
+    "F7_court": "163 passed",
+    "combined_production": "187 passed",
+    "production_files_mutated": "none",
+    "git_diff_vs_commission_tip_for_P07_F7_and_accepted_tests": "empty",
+    "no_stage_a_test_adaptation_required": "the 39 Stage A cases pass unmodified against the unchanged Stage A module"
+  },
+
+  "broad_regression": {
+    "command": "pytest rawlsing_next/tests -q -p no:randomly --continue-on-collection-errors --ignore=rawlsing_next/tests/test_p07_native_stage_a_custody.py --ignore=rawlsing_next/tests/test_p07_native_stage_b_parity.py",
+    "result": "45 failed, 2691 passed, 55 warnings, 16 errors, 28 subtests passed",
+    "normalized_items": 61,
+    "normalized_digest": "72d0a5ca347d71f207a77bca3609dfa5931a3c6f29224a2f3f860ebc3ab09ffe",
+    "hq244_recorded_digest": "72d0a5ca347d71f207a77bca3609dfa5931a3c6f29224a2f3f860ebc3ab09ffe",
+    "digest_match_with_hq244": true,
+    "hq242_digest": "278854ee94fadfd57284a572441522fb56105081f89af431b17ec2e556ace6a9",
+    "digest_match_with_hq242": false,
+    "digest_discrepancy_explanation": "HQ244 already established and recorded that the 9 extra collection errors come from genuinely absent optional dependencies (pandas ABSENT, pyarrow ABSENT, rawlsing_next.tests.d07_bounded_loss_harness). The HQ242 run did not reach those collection errors. Stage B reproduces the HQ244 invocation EXACTLY, including its digest, and makes NO invented HQ242 digest pass claim.",
+    "exclusions_declared": ["test_p07_native_stage_a_custody.py", "test_p07_native_stage_b_parity.py"],
+    "collection_comparison_same_invocation": {
+      "with_stage_b_files": "2823 collected, 9 errors",
+      "without_stage_b_files": "2782 collected, 9 errors",
+      "delta": "+41 tests, +0 errors - exactly the Stage B court and nothing else"
+    },
+    "stage_a_or_stage_b_module_in_any_failure_or_error": false
+  },
+
+  "fault_injection": {
+    "macro": "-DSTAGE_B_FAULT_INJECT_RESOLVE",
+    "effect": "resolve_exact returns before the semantic_projection() re-hash",
+    "good": "41 passed",
+    "broken": "1 failed, 40 passed",
+    "shipped_build_excludes": true
+  }
+}

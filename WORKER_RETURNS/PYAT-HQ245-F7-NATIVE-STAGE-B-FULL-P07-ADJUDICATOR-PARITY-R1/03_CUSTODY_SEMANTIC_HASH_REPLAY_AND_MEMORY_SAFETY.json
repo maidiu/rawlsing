@@ -1,0 +1,87 @@
+{
+  "commission": "PYAT-HQ245-F7-NATIVE-STAGE-B-FULL-P07-ADJUDICATOR-PARITY-R1",
+
+  "custody_hash": {
+    "stage_a_placeholder_removed": true,
+    "stage_a_placeholder_was": "deterministic native FNV-1a walk over sealed keys, explicitly provenance-only",
+    "stage_b_implements": "the accepted P07 canonical semantic custody hash: semantic_hash over {contract: I07_CONTRACT_ID, relations: [{ref, semantic_content_hash, replay_identity}] sorted by ref.key, authority_snapshots: [{authority_ref, snapshot_semantic_content_hash}] sorted by authority_ref.key}",
+    "byte_exact_with_production": true,
+    "observed_value": "d31cd8ddd97f0dc11c0a299cfeb24ea8f54853a392dbd73eaebfe23579c72bc8",
+    "order_insensitive_by_key": true,
+    "changes_with_material": true,
+    "validated_on_every_decision": "validate_decision_replay requires exact equality against the LIVE native owner custody hash, so a decision carrying a foreign or stale custody identity is refused"
+  },
+
+  "semantic_hash_and_projection": {
+    "sealed_at_admission": "the trusted semantic_hash of each relation's and each snapshot's semantic_projection()",
+    "reverified_at_resolve": "the projection is re-hashed on EVERY resolve_exact and compared to the sealed content_hash; a mismatch raises 'owner custody relation semantic hash mismatch'",
+    "snapshot_reverification": "authority snapshots re-hash their projection on every positive validation and refuse 'custodied authority snapshot semantic identity drift'",
+    "replay_identity_verification": "replay_identity is re-read and compared to the sealed value on every resolve",
+    "proved_live_by_fault_injection": true
+  },
+
+  "replay_identity": {
+    "canonical_preimage_ported": "contract + request(_relation_key_material) + state + relation_ref + authority_ref + authority_operation + owner_custody_hash + authority_snapshot_content_hash",
+    "byte_exact_with_python": "the request sub-mapping is byte-identical because canonical_json sorts keys",
+    "tamper_detection": ["state rewrite", "foreign custody hash", "stale replay_identity"]
+  },
+
+  "memory_safety": {
+    "defects_found_and_fixed": [
+      {
+        "id": "HQ245-MEM-001",
+        "severity": "crash / memory corruption",
+        "title": "trusted canonicalize can return its INPUT object unchanged, and the result was treated as an owned reference",
+        "detail": "canonicalize({}) is {} and canonicalize('e') is 'e'. trusted_canon returned that value and every caller DECREFed it at cleanup, stealing a reference from a live caller object. Symptom: EXC_BAD_ACCESS inside object_recursive_isinstance on a later call.",
+        "fix": "trusted_canon now Py_INCREFs the result unconditionally, so ownership is real regardless of whether canonicalize allocated.",
+        "found_by": "invalid-input stress sweep"
+      },
+      {
+        "id": "HQ245-MEM-002",
+        "severity": "crash / memory corruption",
+        "title": "caller-supplied directionality_or_symmetric arrived BORROWED and was DECREFed at cleanup",
+        "detail": "PyArg_ParseTupleAndKeywords yields borrowed references for supplied arguments. The cleanup path unconditionally DECREFs directionality, freeing the caller's object. Symptom: EXC_BAD_ACCESS inside _PyObject_Malloc on a later call.",
+        "fix": "an explicit Py_INCREF is taken when the caller supplies directionality.",
+        "found_by": "invalid-input stress sweep"
+      },
+      {
+        "id": "HQ245-MEM-003",
+        "severity": "memory corruption",
+        "title": "double free of the source-ref fast sequence on nested error paths",
+        "detail": "PySequence_Fast result was DECREFed after the copy loop and then DECREFed again on error paths inside the following block.",
+        "fix": "replaced with Py_CLEAR at the single release point.",
+        "found_by": "differential parity harness (bus error during repeated decide calls)"
+      }
+    ],
+    "verified_absent_in_normal_build": {
+      "STAGE_A_FAULT_INJECT": "present in the Stage A source but only under #ifdef; the Stage A normal recipe never defines it",
+      "STAGE_B_FAULT_INJECT_RESOLVE": "strings on the shipped binary returns 0 matches for this symbol family, confirming the diagnostic is compiled out"
+    },
+    "fail_capability": {
+      "method": "rebuild with -DSTAGE_B_FAULT_INJECT_RESOLVE, which returns from resolve_exact before the semantic_projection() re-hash",
+      "good_build": "41 passed",
+      "broken_build": "1 failed, 40 passed (test_native_resolve_exact_rehash_catches_post_seal_projection_mutation)",
+      "restored": "41 passed",
+      "interpretation": "the court depends on the re-hash control rather than passing vacuously"
+    },
+    "stress_evidence": {
+      "decide_invalid_input_calls": 93600,
+      "decide_exceptions_absorbed": 89760,
+      "resolve_exact_invalid_input_calls": 16000,
+      "resolve_exact_exceptions_absorbed": 14400,
+      "owner_build_decide_teardown_cycles": 300,
+      "simultaneous_owner_constructions": 80,
+      "result": "no crash, no abort, no corruption; owner remained self-consistent (custody hash stable) after the whole sweep",
+      "persisted_as_regression": "test_bounded_decide_stress_no_memory_corruption, test_bounded_resolve_exact_stress, test_repeated_owner_construction_and_teardown"
+    },
+    "other_path_hygiene": [
+      "exact-type admission on relations and snapshots (Py_TYPE equality)",
+      "exact list/tuple admission so no hostile __iter__/__len__/__getattribute__ drives admission",
+      "two-phase admission: nothing is sealed unless every member validates",
+      "two-phase source-ref ordering: sorted by exact ref key, never by comparing dicts",
+      ">= 2 exact source universes enforced natively",
+      "all C allocations freed in StageBOwner_dealloc via stb_free_contents",
+      "ref/key/hash re-verification on every resolve, never trust of a sealed object"
+    ]
+  }
+}

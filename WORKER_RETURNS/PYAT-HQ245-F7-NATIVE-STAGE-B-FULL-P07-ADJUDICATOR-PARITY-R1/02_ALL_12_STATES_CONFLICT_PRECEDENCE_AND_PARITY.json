@@ -1,0 +1,57 @@
+{
+  "commission": "PYAT-HQ245-F7-NATIVE-STAGE-B-FULL-P07-ADJUDICATOR-PARITY-R1",
+  "harness": "rawlsing_next/tests/test_p07_native_stage_b_parity.py",
+  "oracle": "the frozen production Python P07 SourceRelationResolver, untouched",
+  "comparison_strictness": "byte-exact on decision state, reason text, relation_kind, target_use, replay_identity, owner_custody_hash, authority_snapshot_content_hash, authority_operation, relation_ref dict, authority_ref dict and the ordered source_universe_refs; no tolerance, no approximate hash, no sampling",
+
+  "state_model": {
+    "precedence_ladder_exact_order": [
+      "CONFLICTING_AUTHORITY", "EXPIRED_OR_STALE", "DENIED",
+      "NOT_APPLICABLE", "UNKNOWN_AUTHORITY", "OUT_OF_SCOPE"
+    ],
+    "matrix_defaults": {
+      "SOURCE_SEMANTIC_EQUIVALENCE": "DISTINCT_BY_DEFAULT",
+      "RESPONDENT_LINKAGE": "DISTINCT_BY_DEFAULT",
+      "OVERLAP_NON_DUPLICATION": "UNKNOWN_OVERLAP",
+      "SAMPLE_POOLING": "DISTINCT_BY_DEFAULT",
+      "ESTIMAND_COMPOSITION": "DISTINCT_BY_DEFAULT",
+      "BACKFILL": "DISTINCT_BY_DEFAULT",
+      "PROVENANCE_ORIGIN": "PROVENANCE_ONLY",
+      "HARMONIZATION_ALIAS": "ALIAS_ONLY"
+    },
+    "reachable_state_union_size": 17,
+    "note_on_the_commission_12": "the commission says '12 states'. The ACTUAL reachable union in the accepted P07 is 17 strings: the 6 P07_RELATION_DECISIONS, DISTINCT_BY_DEFAULT, OUT_OF_SCOPE, the 7 FORBIDDEN_BACKFILL_TARGET_STATES, and the 3 non-default MATRIX defaults UNKNOWN_OVERLAP / PROVENANCE_ONLY / ALIAS_ONLY. The precedence LADDER itself is exactly 6 states. This is reported as measured, not forced to 12."
+  },
+
+  "parity_results": {
+    "custody_hash_byte_exact_with_python": "PASS - native == python.owner_custody_hash (d31cd8ddd97f0dc11c0a299cfeb24ea8f54853a392dbd73eaebfe23579c72bc8 for the HQ245 corpus)",
+    "custody_hash_order_insensitive_by_key": "PASS - reversing both admission lists yields the identical hash",
+    "custody_hash_changes_with_material": "PASS - removing the pinned authority snapshot changes the hash",
+    "all_8_relation_kinds_byte_exact": "PASS - parametrised over every key in RELATION_AUTHORITY_KIND",
+    "unknown_kind_identical_negative": "PASS - both raise 'unknown P07 relation kind'",
+    "single_source_universe_identical_negative": "PASS - both refuse with the >= 2 exact source universes requirement",
+    "exact_relation_ref_parity": "PASS",
+    "expected_authority_operation_mismatch_parity": "PASS (OUT_OF_SCOPE)",
+    "descriptive_kind_defaults": "PASS - PROVENANCE_ONLY and ALIAS_ONLY reproduce exactly",
+    "resolve_exact_parity": "PASS - identical relation object identity",
+    "resolve_exact_mapping_shape": "PASS",
+    "empty_victim_negative": "PASS - identical no-inference message",
+    "replay_round_trip": "PASS",
+    "replay_tamper_detected": "PASS",
+    "replay_foreign_custody_hash_rejected": "PASS",
+    "require_refuses_non_positive": "PASS"
+  },
+
+  "divergences_found_by_the_harness_and_fixed": [
+    "descriptive kinds were hardcoded to DISTINCT_BY_DEFAULT instead of their MATRIX defaults (PROVENANCE_ONLY / ALIAS_ONLY) - caught by parity, fixed in C",
+    "the unknown-relation-kind hard negative was missing entirely - the native path returned ok where Python raised - caught by parity, fixed in C",
+    "source refs were sorted by comparing dicts, which is impossible in C; now sorted by exact ref key - caught as a TypeError, fixed"
+  ],
+
+  "not_yet_covered_by_this_harness": [
+    "HQD216 five lawful F7 positive paths end-to-end (Stage D gate, and F7 is not wired to the native owner)",
+    "the four HQ234-HQ236 hostile forgery variants against the native adjudicator (Stage C/D with the production F7 call path)",
+    "C11 from_c11 construction interface (Stage C)",
+    "conflict-tie ordering between two simultaneously AUTHORIZED candidates: the synthetic corpus available in this repo admits a single relation, so the multi-positive CONFLICTING_AUTHORITY branch is implemented and precedence-ordered but not yet exercised by a two-candidate corpus. This is a named coverage gap, not a claimed pass."
+  ]
+}

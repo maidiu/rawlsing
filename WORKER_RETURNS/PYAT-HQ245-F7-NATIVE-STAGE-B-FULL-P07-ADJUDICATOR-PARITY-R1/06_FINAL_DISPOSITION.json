@@ -1,0 +1,83 @@
+{
+  "commission": "PYAT-HQ245-F7-NATIVE-STAGE-B-FULL-P07-ADJUDICATOR-PARITY-R1",
+  "branch": "agent/space-bunny-pyat-hq245-f7-native-stage-b-full-p07-parity-r1",
+  "commission_tip": "380d55443431756efa87f87c7c52412b79f6ac2b",
+  "agent": "Space Bunny / OpenCode",
+  "model": "Space Bunny Max (space-bunny-free)",
+  "disposition": "F7_NATIVE_STAGE_B_FULL_P07_ADJUDICATOR_PARITY_READY__QUARANTINED_FOR_INDEPENDENT_REVIEW",
+
+  "what_was_actually_built": {
+    "real_compiled_native_full_adjudicator": true,
+    "source_lines": 1802,
+    "stage_a_provisional_custody_hash_replaced_with_accepted_p07_hash": true,
+    "stage_a_ref_derived_by_key_replaced_with_real_relation_object_key": true,
+    "resolve_exact_full_with_projection_rehash_and_replay": true,
+    "validate_positive_full_guard_chain_ported": true,
+    "decide_full_ladder_ported": true,
+    "relation_decision_replay_identity_ported": true,
+    "validate_relation_decision_replay_identity_ported": true,
+    "require_ported": true,
+    "precedence_ladder_order_exact": true,
+    "parity_oracle": "frozen production Python P07 owner, byte-exact comparison on state, reason, replay hash, custody hash, relation/authority refs and ordered sources",
+    "trusted_seam": "three callables pinned into C memory at construction; native remains the final adjudicator; no positive delegated to the live registry or the Python owner",
+    "stage_b_court": "41 passed",
+    "stage_a_court_still_green": "39 passed",
+    "production_p07_and_f7": "24 + 163 = 187 passed, zero production mutation",
+    "fail_capability_proven": "-DSTAGE_B_FAULT_INJECT_RESOLVE turns the re-hash test red (1 failed); shipped binary contains no such symbol",
+    "stress_clean": "93600 decide + 16000 resolve invalid-input calls, 300 build/teardown cycles, no crash"
+  },
+
+  "environment_blocker": false,
+  "abi_memory_or_owner_contract_conflict": false,
+  "named_blockers": [],
+
+  "honest_caveats": [
+    "The commission's '12 states' framing does not match the accepted P07. The measured reachable union is 17 strings (6 P07 decisions + DISTINCT_BY_DEFAULT + OUT_OF_SCOPE + 7 forbidden backfill target states + UNKNOWN_OVERLAP/PROVENANCE_ONLY/ALIAS_ONLY matrix defaults). The precedence LADDER is exactly 6. Reported as measured, not forced to 12.",
+    "The differential harness CAUGHT three real native defects that I then fixed: descriptive kinds returning the wrong MATRIX default, a completely missing unknown-kind hard negative, and a dict-comparison sort that is impossible in C.",
+    "The invalid-input stress sweep CAUGHT two memory-safety defects: the trusted canonicalize can return its input unchanged (so treating the result as owned stole a caller reference), and a caller-supplied directionality_or_symmetric arrived borrowed yet was DECREFed at cleanup. Both produced EXC_BAD_ACCESS on a later call. A third defect (double free of the source-ref fast sequence) produced a bus error. All are fixed, documented, and now regression-tested.",
+    "The multi-positive CONFLICTING_AUTHORITY branch and precedence TIES are implemented and precedence-ordered but are NOT yet exercised by a two-candidate corpus, because the synthetic corpus in this repository admits only one relation and forging a second valid relation requires constructor material this harness does not build. This is a named coverage gap, not a claimed pass.",
+    "The multi-candidate conflict ordering and the two-candidate conflict ordering remain unproven; only the single-candidate ladder is proven against the oracle.",
+    "The broad-regression digest 72d0a5ca... reproduces the HQ244 invocation EXACTLY. It does NOT match the HQ242 digest 278854ee..., and no invented HQ242 digest pass is claimed. The delta is 9 collection errors from genuinely absent optional dependencies (pandas, pyarrow, d07 harness), already documented by HQ244.",
+    "from_c11 direct construction is NOT implemented; it is recorded as Stage C work.",
+    "The native owner may return AUTHORIZED inside the quarantined harness purely as an implementation comparison. It is not adopted runtime authority and is not wired into production P07/F7.",
+    "Parity is exact for the corpus exercised. It is not proof of parity over all possible inputs; that remains Stage C/D work."
+  ],
+
+  "baseline_preservation": {
+    "production_P07_blob": "8053d30d306a3654ebf563043088311ff390bb2b (unchanged)",
+    "production_F7_blob": "6f6b462b1cdef54d7989f15452473383c1661594 (unchanged)",
+    "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6 (matches required)",
+    "P07_court": "24 passed",
+    "F7_court": "163 passed",
+    "broad_passed": 2691,
+    "broad_failed": 45,
+    "broad_errors": 16,
+    "broad_normalized_items": 61,
+    "broad_digest": "72d0a5ca347d71f207a77bca3609dfa5931a3c6f29224a2f3f860ebc3ab09ffe",
+    "differences_caused_by_stage_b": "none; collection adds exactly +41 tests (the Stage B court) and +0 errors; the native module appears in zero failures and zero errors"
+  },
+
+  "mutation_record": {
+    "new_files": [
+      "rawlsing_next/_p07_native_owner_stage_b.c",
+      "rawlsing_next/tests/test_p07_native_stage_b_parity.py",
+      "WORKER_RETURNS/PYAT-HQ245-F7-NATIVE-STAGE-B-FULL-P07-ADJUDICATOR-PARITY-R1/00_RETURN.md",
+      "WORKER_RETURNS/PYAT-HQ245-F7-NATIVE-STAGE-B-FULL-P07-ADJUDICATOR-PARITY-R1/01_NATIVE_OWNER_FULL_ADJUDICATION_INTERFACE_AND_TRUSTED_SEAMS.json",
+      "WORKER_RETURNS/PYAT-HQ245-F7-NATIVE-STAGE-B-FULL-P07-ADJUDICATOR-PARITY-R1/02_ALL_12_STATES_CONFLICT_PRECEDENCE_AND_PARITY.json",
+      "WORKER_RETURNS/PYAT-HQ245-F7-NATIVE-STAGE-B-FULL-P07-ADJUDICATOR-PARITY-R1/03_CUSTODY_SEMANTIC_HASH_REPLAY_AND_MEMORY_SAFETY.json",
+      "WORKER_RETURNS/PYAT-HQ245-F7-NATIVE-STAGE-B-FULL-P07-ADJUDICATOR-PARITY-R1/04_BUILD_ABI_HARNESS_AND_REGRESSIONS.json",
+      "WORKER_RETURNS/PYAT-HQ245-F7-NATIVE-STAGE-B-FULL-P07-ADJUDICATOR-PARITY-R1/05_FOUR_ATTACKS_FIVE_POSITIVES_FUTURE_CUTOVER_GATES.json",
+      "WORKER_RETURNS/PYAT-HQ245-F7-NATIVE-STAGE-B-FULL-P07-ADJUDICATOR-PARITY-R1/06_FINAL_DISPOSITION.json"
+    ],
+    "modified_production_files": [],
+    "modified_accepted_tests": [],
+    "committed_binaries": [],
+    "control_merge": false,
+    "semantic_authority_change": false,
+    "self_adoption": false,
+    "review_branch_merged": false,
+    "dependencies_installed": false
+  },
+
+  "f7_rr_04g": "OPEN"
+}

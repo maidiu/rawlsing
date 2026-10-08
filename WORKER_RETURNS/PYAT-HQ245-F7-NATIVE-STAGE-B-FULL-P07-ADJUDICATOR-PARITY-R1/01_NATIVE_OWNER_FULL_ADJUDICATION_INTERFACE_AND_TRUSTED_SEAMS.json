@@ -1,0 +1,76 @@
+{
+  "commission": "PYAT-HQ245-F7-NATIVE-STAGE-B-FULL-P07-ADJUDICATOR-PARITY-R1",
+  "stage": "B",
+  "module": "rawlsing_next._p07_native_owner_stage_b",
+  "type": "StageBOwner",
+  "quarantined": true,
+  "production_integrated": false,
+  "self_certifies_stage_a": false,
+  "stage_a_review_status": "an independent DeepSeek/OpenCode Stage A runtime review runs in parallel at agent/reviewer-pyat-hq245-f7-native-stage-a-independent-runtime-r1; Stage B does NOT treat Stage A as qualified and did not merge or read that branch",
+
+  "interface": {
+    "resolve_exact": "full: exact key lookup + ref.key re-verification + content_hash re-verification + FULL semantic_projection() re-hash via the pinned trusted semantic_hash + replay-identity verification",
+    "decide": "full native port of _decide_from_owner_state: complete state ladder, candidate selection by exact by_key object key OR exact ref resolution with object-key equality, positive collection, conflict detection, and the exact precedence order",
+    "require": "native positive-authority gate; refuses any non-AUTHORIZED state",
+    "validate_decision_replay": "native port of validate_relation_decision_replay_identity: exact custody-hash equality against the LIVE native owner, snapshot-hash well-formedness, replay preimage re-hash, and the authorized-requires-snapshot rule",
+    "custody_hash": "the ACCEPTED P07 canonical semantic custody hash, byte-exact with the production Python factory",
+    "attributes": "custody_hash, sealed, counts are read-only; __setattr__ refuses every name"
+  },
+
+  "trusted_seam": {
+    "design": "Option A from the Stage A Stage-B plan, implemented as commissioned",
+    "pinned_callables": ["semantic_hash", "canonicalize", "require_positive_authority"],
+    "pinning": "captured into C memory at construction by object identity, stored as PyObject* on the owner; NEVER re-read from any caller-visible attribute at decide/resolve time",
+    "exact_class_pinning": "SourceUniverseRelation and AuthoritySnapshot classes are pinned at construction and admission is an EXACT type check (Py_TYPE equality), so a duck-typed or substituted relation is refused before any trusted call",
+    "deep_validation_before_trusted_use": "all caller data is deep validated and deep copied during admission, before any trusted call is made",
+    "native_is_final_adjudicator": true,
+    "no_positive_delegated_to_python_owner": "the live caller AuthorityRegistry and the production Python SourceRelationResolver are never consulted for a positive outcome; only the three pinned pure functions are called, and they only canonicalise, hash, and evaluate authority positivity",
+    "no_silent_python_fallback": true,
+    "unsafe_callback_required": false,
+    "why_parity_is_byte_exact": "canonical_json sorts keys (sort_keys=True), so the native dict construction order is irrelevant; hashing is delegated to the SAME accepted semantic_hash, which removes any possibility of a divergent C reimplementation",
+    "deferred_alternative": "a full C canonical-JSON + semantic_hash port remains available as later hardening, but it would require its own strict parity oracle and is NOT claimed here"
+  },
+
+  "custody": {
+    "one_shot": "sealed flag refuses every re-__init__/reseal/re-admission",
+    "deep_copies_at_admission": [
+      "relation ref key and ref dict",
+      "relation content_hash",
+      "relation semantic projection identity hash",
+      "relation relation_kind, decision value, authority_operation, target_use",
+      "relation authority key",
+      "relation replay identity",
+      "canonicalised operation_scope",
+      "canonical ordered source ref dicts (sorted by exact ref key, deduped, >= 2 enforced)",
+      "authority snapshot key, content_hash, projection identity hash, authority ref dict"
+    ],
+    "real_object_key": "Stage A's ref-derived by_key placeholder is GONE. The object key is the real P07 _relation_key material: semantic_hash over {relation_kind, source_universe_refs, operation_scope, target_use, effective_scope, directionality_or_symmetric}, computed natively and hashed by the trusted seam.",
+    "registry_replacement_immunity": "no live registry object is retained; all material is C-owned copies",
+    "refuses_reentry_and_transplant": "exact-type admission plus one-shot sealing plus per-lookup identity re-verification"
+  },
+
+  "p07_functions_ported": [
+    {"python": "_owner_state_resolve_exact", "stage_b": "FULLY PORTED including semantic_projection re-hash and replay verification"},
+    {"python": "_validate_positive_from_owner_state", "stage_b": "FULLY PORTED: descriptive-kind guard, positive-decision guard, operation text, expected_authority_operation OUT_OF_SCOPE guard, snapshot presence/identity/real type/ref-drift guards, snapshot content_hash AND projection re-hash, RELATION_AUTHORITY_KIND mapping with descriptive->DISTINCT_BY_DEFAULT, and the per-source trusted require_positive_authority loop with Pre553AuthorityError mapped to UNKNOWN_AUTHORITY"},
+    {"python": "_decide_from_owner_state", "stage_b": "FULLY PORTED: unknown-kind hard negative, canonical ordered sources with >=2 enforcement, key computation, candidate selection, descriptive-kind MATRIX default, empty-candidate default, positive/negative collection, AUTHORIZED, CONFLICTING_AUTHORITY, precedence ladder, final default"},
+    {"python": "_relation_decision_replay_identity", "stage_b": "FULLY PORTED via the native canonical decision preimage"},
+    {"python": "validate_relation_decision_replay_identity", "stage_b": "FULLY PORTED"},
+    {"python": "decide / require", "stage_b": "FULLY PORTED"},
+    {"python": "_relation_object_key_from_relation", "stage_b": "real key material implemented natively"}
+  ],
+
+  "preserved_p07_semantics": [
+    "SOURCE_SEMANTIC_EQUIVALENCE / SEMANTIC_EQUIVALENCE_ADMISSION distinction via the accepted RELATION_AUTHORITY_KIND mapping",
+    "exact ordered universe pair and >= 2 exact source universe requirement",
+    "EXACT_BOUND_UNIVERSE_PAIR scope semantics via the exact operation_scope key material",
+    "governed target governed_use_id.object_id carried as relation.target_use in the key material",
+    "constructor-pinned positive authority and pinned authority snapshots",
+    "replay identity over the full canonical decision preimage",
+    "direct P07 guard intents; from_c11 interface plan recorded as Stage C work, NOT implemented here"
+  ],
+
+  "not_implemented": [
+    "from_c11 direct construction interface (recorded as a Stage C item, not claimed)",
+    "independent Stage A hostile assumption review (belongs to the parallel reviewer)"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "commission": "PYAT-HQ245-F7-NATIVE-STAGE-B-FULL-P07-ADJUDICATOR-PARITY-R1",
+  "headline": "Stage B implements the full actual P07 adjudicator and is byte-exact against the frozen production Python oracle on every case exercised. It is NOT adopted authority, NOT production-integrated, and does NOT close F7-RR-04G.",
+
+  "authorizing_claims": {
+    "native_may_return_AUTHORIZED": true,
+    "only_inside": "the quarantined differential parity harness, purely as an implementation comparison",
+    "issues_adopted_runtime_credentials": false,
+    "wired_into_production_p07_or_f7": false,
+    "closes_f7_rr_04g": false
+  },
+
+  "quarantine": {
+    "namespace": "rawlsing_next._p07_native_owner_stage_b",
+    "module_constant_PRODUCTION_INTEGRATED": 0,
+    "production_p07_unchanged": true,
+    "production_f7_unchanged": true,
+    "production_imports_of_native_stage_b": 0,
+    "verified_by": "git diff against commission tip 380d55443431756efa87f87c7c52412b79f6ac2b is empty for every production and accepted-test path, and the court greps both production modules for any reference to the native module or its type",
+    "parallel_positive_python_owner_still_exists": "YES - the production Python owner is untouched and remains the only authority. This is expected at Stage B and is the thing Stage C cutover must eliminate."
+  },
+
+  "four_hostile_attacks_status": {
+    "requirement": "HQ234-HQ236 custody attacks remain mandatory",
+    "stage_b_position": "the four attacks are NOT re-run against the native adjudicator here, because F7 does not import the native owner and no native call path exists yet in production. Running them now would test nothing real.",
+    "what_stage_b_did_do": [
+      "empty-victim negative is reproduced natively with the identical no-inference message",
+      "registry replacement immunity: no live registry is retained; all custody is C-owned",
+      "post-seal projection mutation is caught by the full re-hash (proved live by fault injection)",
+      "post-seal content_hash mutation and ref swap are caught by identity re-verification",
+      "copy / deepcopy / pickle / reduce / reduce_ex / reinit / attribute assignment all refused",
+      "non-subclassable type",
+      "hostile duck-typed and generator admission refused",
+      "partial-batch admission seals nothing"
+    ],
+    "deferred_to": "Stage C/D with the production F7 call path and the independent reviewer"
+  },
+
+  "five_lawful_positives_status": {
+    "HQD216_five_paths": "NOT run at Stage B",
+    "reason": "they are F7 consumer paths and F7 does not import the native owner; a Stage B run would be theatre. This remains a Stage D gate."
+  },
+
+  "future_cutover_gates": [
+    "Stage C: test adaptation to the native owner, retiring the introspection-coupled Python seam; implement the from_c11 direct construction interface",
+    "Stage C: build a two-candidate synthetic corpus so the multi-positive CONFLICTING_AUTHORITY branch and precedence ties are exercised, not merely implemented",
+    "Stage D: independent hostile validation of the four HQ234-HQ236 attacks against the real native call path",
+    "Stage D: the five lawful positives end-to-end",
+    "independent inspection of the native source and binary, including the trusted-seam TCB argument",
+    "reconciliation of any Stage A blocking defect raised by the parallel independent Stage A review, in a FRESH commission before adoption",
+    "ONLY THEN: consider eliminating the duplicate positive Python owner at cutover"
+  ],
+
+  "explicit_not_claimed": [
+    "not an adopted or security-qualified native P07 owner",
+    "not a completed F7-RR-04G",
+    "not production-ready",
+    "not a Stage A qualification (the independent Stage A review owns that)",
+    "no claim that the 12-state framing is exhaustive - the measured reachable union is 17 strings",
+    "no claim of full four-attack or five-positive qualification"
+  ],
+
+  "independent_reviewer_note": "Stage B implemented on a separate branch/worktree from the same immutable candidate. The parallel reviewer branch was NOT merged, read, or used. Stage B explicitly does not self-certify Stage A."
+}
