@@ -1,0 +1,56 @@
+{
+  "commission": "PYAT-HQ247-F7-NATIVE-B1-B4-PARITY-TRUST-REPAIR-R2",
+  "branch": "agent/space-bunny-pyat-hq247-f7-native-b1-b4-parity-trust-repair-r2",
+  "commission_tip": "6f5cc1d7d5278a833a46afcf09f82150f387dba1",
+  "immutable_base": "f09bc827c1a4d77dd2b51834cd5eeeb8969f5b96",
+  "agent": "Space Bunny / OpenCode",
+  "model": "Space Bunny Max (space-bunny-free)",
+  "disposition": "F7_NATIVE_HQ247_R2_REPAIR_PARTIAL__NAMED_BLOCKER",
+
+  "why_partial_not_ready": "B1, B2, B3, B4 and P1 are all repaired and demonstrated, and the multi-positive CONFLICTING_AUTHORITY gap is CLOSED. The single reason this is not READY is HQ247-OPEN-001: decide() still leaks roughly 12 to 15 allocated blocks per call. The commission's READY status is not conditioned on the leak being closed in so many words, but returning READY over an open native memory defect I could not isolate would be the same dishonest green refused in every prior stage. The leak is precisely measured, not worse than base, and demonstrably does not affect decision correctness, replay identity, custody hash or parity.",
+
+  "repaired": {
+    "B1": "preserved and further stressed: 12 lie variants across list and tuple subclasses, on relations AND authority snapshots for Stage B; all refused by exact-type admission, no OOB, no silent truncation, no ownership violation. Standalone reproducer exits 0.",
+    "B2": "PyObject_Call was passed the snapshot as the ARGS argument instead of a 1-tuple. Repaired with PyTuple_Pack(1, snapshot). This was the defect that made the genuine positive path unreachable.",
+    "B3": "both PyErr_Fetch sites now fetch all three slots, NormalizeException all three, obtain the message via PyObject_Str with a defensive PyErr_Clear, and release pt, pv AND tb.",
+    "B4": "non-str relation_kind and target_use are rejected with an exact typed integrity error before any PyUnicode_AsUTF8, in both decide and validate_decision_replay. 108 malformed inputs exercised standalone with no crash.",
+    "P1": "effective_scope and directionality_or_symmetric are taken from the ADMITTED relation instead of being hardcoded to DISTINCT_BY_DEFAULT/SYMMETRIC. The by_key object key is now correct, which is what makes genuine AUTHORIZED reachable at all.",
+    "duplicate_suppression": "the by_key adjacent-duplicate check now uses an owned C copy of the previous key instead of a borrowed pointer",
+    "source_ordering_block": "the three parallel lists and the PyList_AsTuple handoff were rewritten as a single sorted pass with one explicitly-consumed tuple conversion. Honest note: this did NOT change the measured leak, which is itself part of the evidence that the parallel lists were not the cause."
+  },
+
+  "closed_coverage_gap": {
+    "id": "HQ245/HQ246 multi-positive CONFLICTING_AUTHORITY",
+    "status": "CLOSED",
+    "how": "a sibling relation is derived from the ACCEPTED fixture with its own relation_id, replay_identity and recomputed content_hash, so it is an individually valid independent receipt authorising the same exact relation key on its own. No authority forged, no decision function monkeypatched, trusted guard never bypassed.",
+    "branches_exercised": ["two independent positives", "positive plus negative", "precedence first entry dominating three lower negatives", "four negative ladder outcomes"]
+  },
+
+  "named_blockers": [
+    {"id": "HQ247-OPEN-001", "title": "decide() leaks ~12 (positive) / ~15 (negative) allocated blocks per call", "measurement": "sys.getallocatedblocks after 3000-call warmup, 5 repetitions, medians with full spread; resolve_exact 0.002 and validate_decision_replay 0.0005 are clean", "localisation": "outside the sort and outside the append loop; bracketing probes placed the residual in the region that materialises the ordered sources tuple and its per-call ref-dict copies. Probe readings that returned before PyList_AsTuple were identified as probe artefacts and NOT used as evidence.", "impact": "bounded leak only; parity, replay, custody hash and all decision outcomes remain byte-exact", "must_fix_before": "adoption"},
+    {"id": "HQ247-OPEN-002", "title": "T1 production-owned sealed trusted constructor is SPECIFIED, not BUILT", "reason": "building it requires production P07 mutation, which this commission's permitted write terrain forbids. Recording assumed test TCB as security acceptance is explicitly prohibited.", "must_fix_before": "any authority use"},
+    {"id": "HQ246-OPEN-003", "title": "module-init OOM injection still not performed", "status": "carried forward rather than silently dropped", "must_fix_before": "adoption, at reviewer discretion"}
+  ],
+
+  "baseline": {
+    "script": "identical nine-exclusion invocation used in HQ246, plus the four quarantined native synthetic courts",
+    "result": "45 failed, 2691 passed, 55 warnings, 7 errors, 28 subtests passed",
+    "normalized_items": 52,
+    "normalized_digest": "ab74b05dabc5b99376b2d3ed8c1de6e5845f870fd4c68dd49dc81f488bb2a44e",
+    "hq246_same_script_digest": "ab74b05dabc5b99376b2d3ed8c1de6e5845f870fd4c68dd49dc81f488bb2a44e",
+    "identical_to_immediately_preceding_lane": true,
+    "conclusion": "these Stage B repairs introduced ZERO regressions, proven by digest identity with the frozen-base lane under the identical script",
+    "hq242_54_item_convention": "NOT claimed. HQ242 implies 54 items and digest 278854ee...; this and HQ246 both measure 52 and ab74b05d.... The underlying failure set is identical in count and kind and the headline counts match HQ242 exactly; the residual two-item difference is a normalisation CONVENTION difference that was not resolved and was not papered over.",
+    "no_manufactured_equality": true,
+    "dependencies_installed": false
+  },
+
+  "tests": {"hq247_new": 71, "hq246_repair": 59, "stage_a_original": 39, "stage_b_original": 41, "production_p07": 24, "production_f7": 163, "total": 397, "collection_delta": "exactly +71 tests and +0 errors", "accepted_tests_weakened": false},
+
+  "fail_capability": {"macro": "STAGE_B_FAULT_INJECT_RESOLVE", "normal_binary_matches": 0, "fault_injected": "1 failed, 111 passed", "clean": "112 passed"},
+
+  "holds": {"production_mutation": false, "native_imports_in_production": 0, "binaries_committed": false, "control_merge": false, "self_adoption": false, "other_branches_modified": false, "from_c11": "not implemented"},
+
+  "f7_rr_04g": "OPEN",
+  "downstream_receiver_claimed": false
+}

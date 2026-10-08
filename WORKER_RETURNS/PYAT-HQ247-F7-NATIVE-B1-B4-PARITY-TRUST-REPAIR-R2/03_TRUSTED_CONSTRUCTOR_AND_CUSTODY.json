@@ -1,0 +1,30 @@
+{
+  "commission": "PYAT-HQ247-F7-NATIVE-B1-B4-PARITY-TRUST-REPAIR-R2",
+
+  "T1_status": {
+    "decision": "NOT CONVERTED INTO SECURITY ACCEPTANCE. This stage ships NO production-owned sealed constructor entrypoint.",
+    "why": "HQ247-T1 permits EITHER building a production-owned sealed entrypoint under HQ242 T1 OR rigorously specifying it. Building one would require production P07 mutation and a production callsite, which this commission's permitted write terrain forbids ('No accepted production P07/F7'). Fabricating a 'sealed' entrypoint inside the quarantined module and calling it trusted provenance would be exactly the 'assumed test TCB converted into security acceptance' the commission prohibits.",
+    "what_is_actually_honoured": "the caller-selected callables remain ASSUMED TRUSTED. The native owner pins their identities in C at construction, never re-reads them from a caller-visible attribute, deep validates and deep copies all caller data before any trusted call, and never consults the live registry or the Python owner for a positive. That is TCB ASSUMPTION, recorded as such, not TCB PROOF.",
+    "fake_callback_attack_tested": "test_b2_positive_authority_callback_receives_a_positional_tuple substitutes a SPY for require_positive_authority and shows the native owner calls exactly the pinned object with exactly the documented convention. This demonstrates the seam is honoured, NOT that the pinned object is trustworthy.",
+    "rebind_resistance_retained": "test_d7_rebinding_the_p07_module_attribute_does_not_change_pinned_seam (HQ246 court) still holds: rebinding rawlsing_next.pre553_empirical_objects.semantic_hash after construction cannot change the replay identity or custody hash the native owner produces.",
+    "arbitrary_trusted_executable_replacement": "T2, explicitly OUT OF SCOPE and not attempted",
+    "handover": "a rigorous specification for the production-owned sealed constructor is the correct deliverable of a FUTURE commission that is allowed to touch production. It is recorded here as required-by-specification, not implemented.",
+    "spec_sketch": "a production module would own module-private sealed constants for semantic_hash, canonicalize and require_positive_authority, expose exactly one construction entrypoint that pins those private constants and refuses any caller-supplied callable, and be imported only by production P07. Until then no native owner may be treated as an authority."
+  },
+
+  "custody_after_repair": {
+    "relations": "deep-copied at admission: ref key and ref dict, content_hash, projection identity hash, relation_kind, decision value, authority_operation, target_use, authority key, replay identity, canonicalised operation_scope, TRUE effective_scope, TRUE directionality, canonical ordered source ref dicts",
+    "authority_snapshots": "exact AuthoritySnapshot type check; key, content_hash, projection identity hash and authority ref dict deep-copied and pinned",
+    "one_shot": "sealed flag refuses every re-init, reseal and re-admission",
+    "no_live_registry": "the live caller registry and the production Python owner are never consulted for a positive outcome",
+    "bounded_by": "no native owner on this branch is adopted, integrated or self-certified"
+  },
+
+  "D2_D3_D4_D5_reassessment": {
+    "D2_refcount": "Stage A diagnostic leak remains fixed (<0.01 blocks/call). Stage B still carries the OPEN-001 decide() leak; resolve_exact and validate_decision_replay measured clean at 0.002 and 0.0005 blocks/call.",
+    "D3_lifecycle": "transactional fail_init retained; 20,000 failing constructions keep trusted-callable refcounts bounded (HQ246 court still green).",
+    "D4_module_init": "every PyModule_AddObject return still checked on both modules. Reliable OOM injection is STILL not performed and remains an explicit open item carried forward from HQ246 rather than silently dropped.",
+    "D5_gc_cycles": "Py_TPFLAGS_HAVE_GC plus tp_traverse/tp_clear retained and EXTENDED to visit the two new sealed references (effective_scope, directionality) so the P1 addition cannot silently reintroduce an uncollectable cycle.",
+    "replay_and_canonical_hash": "replay identity and the accepted canonical custody hash remain byte-exact with production; asserted in test_p1_native_and_production_authorized_agree_completely and test_stage_b_custody_hash_and_parity_preserved_after_repair."
+  }
+}

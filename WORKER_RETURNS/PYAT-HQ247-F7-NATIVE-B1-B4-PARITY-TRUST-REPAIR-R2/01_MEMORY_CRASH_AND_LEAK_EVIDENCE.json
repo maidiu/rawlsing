@@ -1,0 +1,55 @@
+{
+  "commission": "PYAT-HQ247-F7-NATIVE-B1-B4-PARITY-TRUST-REPAIR-R2",
+  "frozen_base": "f09bc827c1a4d77dd2b51834cd5eeeb8969f5b96 (Stage B blob 586f859a4a8710738987f92e5b356451e2390fdd)",
+
+  "B1_constructors_hold": {
+    "status": "PRESERVED and further stressed",
+    "scope": "relations AND authority_snapshots on Stage B; relations on Stage A",
+    "lie_variants": ["0 (under-report / truncation)", "1", "5", "64", "1000000 (over-report)", "-1", "-2**40", "2**62", "2**63-1", "RuntimeError", "MemoryError", "callable lie"],
+    "containers": ["list subclass", "tuple subclass"],
+    "result": "all refused by exact-type admission before any length is consulted; no out-of-bounds access, no silent truncated custody, no ownership violation",
+    "regression_tests": "test_b1_stage_b_constructor_still_refuses_lying_containers (12 lies x relations and snapshots), test_b1_stage_a_constructor_still_refuses_lying_containers (6 lies), test_b1_no_silent_truncation_still_holds",
+    "standalone_reproducer": "reproduction/hq247_evil_len.py, run per-stage in its own process; exit 0, no accepted lying container",
+    "prior_crash_baseline": "the HQ245/HQ246 candidate produced an ASAN SEGV (exit 134) in PyObject_GetAttrString on Stage A; that build is NOT re-executed here and is never run in the same process as a production or parity test"
+  },
+
+  "B2_calling_convention": {
+    "defect": "PyObject_Call(self->t_require_positive, S->snap, kw) passed the AuthoritySnapshot object as the ARGS argument. PyObject_Call requires args to be a TUPLE of positional arguments. require_positive_authority takes the snapshot as its FIRST POSITIONAL argument.",
+    "consequence": "the genuine positive path was unreachable, which is why no AUTHORIZED outcome could ever have been produced natively",
+    "repair": "args = PyTuple_Pack(1, S->snap); res = PyObject_Call(self->t_require_positive, args, kw)",
+    "evidence": "test_b2_positive_authority_callback_receives_a_positional_tuple asserts the snapshot arrives as args[0] AND that all six keyword parameters arrive by keyword, AND that the result is AUTHORIZED",
+    "significance": "this is the repair that makes HQ246-P1 provable"
+  },
+
+  "B3_traceback_and_exception_handling": {
+    "defect": "PyErr_Fetch(&pt, &pv, NULL) discarded the traceback slot, and the message was read from an un-normalised exception value with PyUnicode_AsUTF8 on a possibly non-str object",
+    "repair": "both sites now PyErr_Fetch(&pt,&pv,&tb) then PyErr_NormalizeException(&pt,&pv,&tb); the message is obtained via PyObject_Str(pv) with a defensive PyErr_Clear; and pt, pv and tb are all released. The decide ladder additionally clears the indicator defensively when reading the `.state` attribute, which may itself fail.",
+    "evidence": "test_b2_negative_authority_becomes_unknown_authority (a raising trusted callback becomes UNKNOWN_AUTHORITY), test_b3_exception_with_traceback_is_handled (2000 iterations of a nested raise, no leak or crash)"
+  },
+
+  "B4_malformed_replay": {
+    "defect": "a non-str relation_kind or target_use reached PyUnicode_AsUTF8, returned NULL, and that NULL flowed into PyUnicode_FromFormat / strcmp -- undefined behaviour and a crash path",
+    "repair": "decide validates PyUnicode_Check on relation_kind and target_use before any conversion and raises an exact typed integrity error otherwise; validate_decision_replay validates the replay dict's relation_kind and target_use the same way before building the preimage",
+    "evidence": "test_b4_malformed_relation_kind_raises_typed_error and test_b4_malformed_target_use_raises_typed_error (12 hostile values each, incl. a str SUBCLASS with an overriding __len__), test_b4_malformed_replay_decision_raises_typed_error (7 fields x malformed values), test_b4_replay_rejects_non_dict",
+    "standalone_reproducer": "reproduction/hq247_b4_malformed.py exercises 108 malformed inputs across decide and validate_decision_replay; exit 0, no crash"
+  },
+
+  "HQ247_OPEN_001_leak": {
+    "status": "OPEN - NOT closed",
+    "regression": "no worse than the frozen base",
+    "measurement_method": "sys.getallocatedblocks() deltas after a 3000-call warmup, five repetitions, reported as median with full sample spread, on the positive and negative decide paths plus resolve_exact and validate_decision_replay",
+    "positive_path_blocks_per_call": {"median": 12.001, "samples": [12.005, 12.001, 12.001, 12.0005, 12.0]},
+    "negative_path_blocks_per_call": {"median": 15.0005, "samples": [15.001, 15.0005, 15.0005, 15.0005, 15.0005]},
+    "resolve_exact_blocks_per_call": {"median": 0.002},
+    "validate_decision_replay_blocks_per_call": {"median": 0.0005},
+    "investigation": [
+      "the three parallel lists (tmp_list of (key,dict) pairs, keys[], vals[]) and the PyList_AsTuple handoff were rewritten as a SINGLE sorted pass with adjacent-duplicate skipping and one explicitly-consumed PyList_AsTuple",
+      "that rewrite did NOT change the measured leak, which is itself informative: the parallel lists were not the cause",
+      "bracketing bisection with early-return probes placed the residual outside the sort and outside the append loop, and an early-return probe that DECREFs keys and vals immediately after the fill loop measured clean",
+      "probes that return before PyList_AsTuple appear to leak only because the probe itself does not release `sources`, so those probe readings are artefacts and are NOT treated as evidence",
+      "the residual is localised to the region that materialises the ordered `sources` tuple and its per-call ref-dict copies; it was not isolated further within this stage's budget"
+    ],
+    "impact": "a bounded per-call memory leak in decide() only; it does NOT affect decision correctness, replay identity, custody hash or parity, all of which are byte-exact and asserted",
+    "tests": "test_open001_leak_is_measured_with_error_bars pins the trend so a regression that worsens it is visible, and deliberately does NOT assert leak-freedom while the defect is open; test_open001_clean_methods_stay_clean keeps resolve_exact and validate_decision_replay at < 0.05 blocks/call"
+  }
+}

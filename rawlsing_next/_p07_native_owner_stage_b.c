@@ -54,6 +54,12 @@ typedef struct {
     PyObject *ref_dict;          /* owned frozen dict copy of relation.ref.as_dict() */
     PyObject *sources;           /* owned tuple of ref dicts, sorted by ref key   */
     PyObject *operation_scope;   /* owned canonicalised copy                      */
+    /* HQ246-P1: the TRUE effective_scope and directionality, taken from the admitted
+     * object at admission. Stage B previously hardcoded DISTINCT_BY_DEFAULT/"SYMMETRIC"
+     * here, which produced a WRONG object key and made by_key candidate selection
+     * incapable of ever matching a genuine relation. */
+    PyObject *effective_scope;
+    PyObject *directionality;
 } SealedRelation;
 
 /* One sealed authority snapshot. */
@@ -394,6 +400,8 @@ static void free_rels(StageBOwner *self)
             Py_XDECREF(self->rels[i].ref_dict);
             Py_XDECREF(self->rels[i].sources);
             Py_XDECREF(self->rels[i].operation_scope);
+            Py_XDECREF(self->rels[i].effective_scope);
+            Py_XDECREF(self->rels[i].directionality);
         }
         PyMem_Free(self->rels);
         self->rels = NULL;
@@ -454,6 +462,8 @@ StageBOwner_traverse(StageBOwner *self, visitproc visit, void *arg)
         if (self->rels[i].ref_dict)   Py_VISIT(self->rels[i].ref_dict);
         if (self->rels[i].sources)    Py_VISIT(self->rels[i].sources);
         if (self->rels[i].operation_scope) Py_VISIT(self->rels[i].operation_scope);
+        if (self->rels[i].effective_scope)  Py_VISIT(self->rels[i].effective_scope);
+        if (self->rels[i].directionality)   Py_VISIT(self->rels[i].directionality);
     }
     for (i = 0; i < self->n_snaps; i++) {
         if (self->snaps[i].snap)          Py_VISIT(self->snaps[i].snap);
@@ -491,6 +501,7 @@ static int admit_relation(StageBOwner *self, PyObject *rel, SealedRelation *out,
     PyObject *refobj = NULL, *refdict = NULL, *srcs = NULL, *scope = NULL;
     PyObject *sf = NULL, *proj = NULL, *item;
     PyObject *arel = NULL, *authkey = NULL, *tup = NULL;
+    PyObject *eff = NULL, *dir = NULL;
     Py_ssize_t i, n;
 
     if (!obj_is_exact(rel, self->relation_cls)) {
@@ -658,16 +669,28 @@ static int admit_relation(StageBOwner *self, PyObject *rel, SealedRelation *out,
         if (!srcs) goto fail;
     }
 
-    /* REAL relation object key via the pinned trusted hash over native key material. */
+    /* HQ246-P1: derive the true effective_scope and directionality_or_symmetric from the
+     * AUTHENTICATED admitted object, exactly as _relation_object_key_from_relation does.
+     * Never a default and never an assumed "SYMMETRIC". */
     {
-        PyObject *eff = PyUnicode_FromString(DEFAULT_RELATION_STATE);
-        PyObject *dir = PyUnicode_FromString("SYMMETRIC");
-        if (!eff || !dir) { Py_XDECREF(eff); Py_XDECREF(dir); goto fail; }
-        if (compute_relation_key(self, kind, srcs, scope, tuse, eff, dir, &okey) < 0) {
-            Py_DECREF(eff); Py_DECREF(dir); goto fail;
+        PyObject *ev = PyObject_GetAttrString(rel, "effective_scope");
+        PyObject *dv = PyObject_GetAttrString(rel, "directionality_or_symmetric");
+        if (!ev || !dv) {
+            Py_XDECREF(ev); Py_XDECREF(dv);
+            stb_integrity("relation must expose effective_scope and "
+                          "directionality_or_symmetric for an exact object key");
+            goto fail;
         }
-        Py_DECREF(eff); Py_DECREF(dir);
+        eff = trusted_canon(self, ev);
+        Py_DECREF(ev);
+        dir = trusted_canon(self, dv);
+        Py_DECREF(dv);
+        if (!eff || !dir) goto fail;
     }
+
+    /* REAL relation object key via the pinned trusted hash over native key material. */
+    if (compute_relation_key(self, kind, srcs, scope, tuse, eff, dir, &okey) < 0)
+        goto fail;
 
     out->rel = rel;            Py_INCREF(rel);
     out->ref_key = rk;         rk = NULL;
@@ -683,6 +706,8 @@ static int admit_relation(StageBOwner *self, PyObject *rel, SealedRelation *out,
     out->ref_dict = refdict;   refdict = NULL;
     out->sources = srcs;       srcs = NULL;
     out->operation_scope = scope; scope = NULL;
+    out->effective_scope = eff; eff = NULL;
+    out->directionality = dir; dir = NULL;
     return 0;
 
 fail:
@@ -690,6 +715,7 @@ fail:
     PyMem_Free(aop); PyMem_Free(tuse); PyMem_Free(akey); PyMem_Free(repl);
     PyMem_Free(okey); PyMem_Free(pjson);
     Py_XDECREF(refdict); Py_XDECREF(srcs); Py_XDECREF(scope);
+    Py_XDECREF(eff); Py_XDECREF(dir);
     return -1;
 }
 
@@ -1201,21 +1227,38 @@ static int validate_positive(StageBOwner *self, SealedRelation *R,
                     "source_universe_ref", src,
                     "target_use_ref", tuse,
                     "predicate_or_risk_set_ref", osc);
-                PyObject *res;
+                PyObject *args, *res;
                 if (!kw) { Py_DECREF(osc); Py_DECREF(tuse); PyMem_Free(op); return -1; }
-                res = PyObject_Call(self->t_require_positive, S->snap, kw);
+                /* HQ246-B2 REPAIR: PyObject_Call(callable, args, kwargs) requires `args`
+                 * to be a TUPLE of positional arguments and `kwargs` to be a DICT.
+                 * require_positive_authority takes the snapshot as its FIRST POSITIONAL
+                 * argument, so args must be the 1-tuple (snapshot,). The previous code
+                 * passed the snapshot object itself as `args`, which is malformed. */
+                args = PyTuple_Pack(1, S->snap);
+                if (!args) { Py_DECREF(kw); Py_DECREF(osc); Py_DECREF(tuse);
+                             PyMem_Free(op); return -1; }
+                res = PyObject_Call(self->t_require_positive, args, kw);
+                Py_DECREF(args);
                 Py_DECREF(kw);
                 if (!res) {
-                    PyObject *pt, *pv;
-                    PyErr_Fetch(&pt, &pv, NULL);
-                    Py_XDECREF(pt);
-                    /* authority negative becomes UNKNOWN_AUTHORITY with its message */
-                    {
-                        PyObject *m = pv;
-                        const char *ms = m ? PyUnicode_AsUTF8(m) : NULL;
-                        stb_authz(STATE_UNKNOWN, ms ? ms : "positive authority requirement failed");
+                    /* HQ246-B3 REPAIR: fetch the full 3-slot exception, NORMALISE it,
+                     * read the message from the NORMALISED value, and release every
+                     * owned reference including the traceback. */
+                    PyObject *pt = NULL, *pv = NULL, *tb = NULL, *msg = NULL;
+                    const char *ms;
+                    PyErr_Fetch(&pt, &pv, &tb);
+                    PyErr_NormalizeException(&pt, &pv, &tb);
+                    if (pv) {
+                        msg = PyObject_Str(pv);
+                        if (!msg) PyErr_Clear();
                     }
+                    ms = msg ? PyUnicode_AsUTF8(msg) : NULL;
+                    (void)stb_authz(STATE_UNKNOWN,
+                        ms ? ms : "positive authority requirement failed");
+                    Py_XDECREF(msg);
+                    Py_XDECREF(pt);
                     Py_XDECREF(pv);
+                    Py_XDECREF(tb);
                     Py_DECREF(osc); Py_DECREF(tuse); PyMem_Free(op);
                     return -1;
                 }
@@ -1432,9 +1475,28 @@ stb_decide(StageBOwner *self, PyObject *args, PyObject *kwds)
         expected_op = NULL;
     } else Py_INCREF(expected_op);
 
+    /* HQ246-B4 REPAIR: the exact-key request fields must be REAL unicode before any
+     * PyUnicode_AsUTF8 call. Previously a non-str relation_kind or target_use reached
+     * PyUnicode_AsUTF8 and produced NULL, which was then passed to PyUnicode_FromFormat /
+     * strcmp -- undefined behaviour and a crash path. A malformed replay request now
+     * raises an exact typed integrity error instead. */
+    if (!PyUnicode_Check(relation_kind)) {
+        PyErr_SetString(STBIntegrityError,
+            "stage B relation_kind must be an exact str for an exact relation key");
+        goto fail;
+    }
+    if (!PyUnicode_Check(target_use)) {
+        PyErr_SetString(STBIntegrityError,
+            "stage B target_use must be an exact str for an exact relation key");
+        goto fail;
+    }
     rk_s = PyUnicode_AsUTF8(relation_kind);
     tu_s = PyUnicode_AsUTF8(target_use);
-    if (!rk_s || !tu_s) goto fail;
+    if (!rk_s || !tu_s) {
+        PyErr_SetString(STBIntegrityError,
+            "stage B relation_kind and target_use must be encodable unicode");
+        goto fail;
+    }
 
     /* canonical ordered source refs (>= 2), reused from an admitted relation when the
      * request refs match exactly one sealed relation's ordered source set */
@@ -1480,41 +1542,51 @@ stb_decide(StageBOwner *self, PyObject *args, PyObject *kwds)
                 goto fail;
             }
             if (PyList_Sort(tmp_list) < 0) goto fail;
+            /* HQ247-OPEN-001 REPAIR: the previous implementation materialised THREE
+             * parallel lists (tmp_list of (key,dict) pairs, then keys[] and vals[]) and
+             * then handed the ordered dicts to PyList_AsTuple. That double bookkeeping
+             * leaked ~15 pymalloc blocks per decide() call. There is now a single sorted
+             * pass that appends each ordered ref dict exactly once, skipping adjacent
+             * duplicate keys, and PyList_AsTuple receives the list that owns exactly one
+             * reference per element and is consumed exactly once. */
             {
-                PyObject *keys = PyList_New(0), *vals = PyList_New(0);
-                if (!keys || !vals) { Py_XDECREF(keys); Py_XDECREF(vals); goto fail; }
+                PyObject *ordered = PyList_New(0);
+                char *prev_key = NULL;      /* owned copy, never a borrowed pointer */
+                if (!ordered) goto fail;
                 for (i = 0; i < PyList_Size(tmp_list); i++) {
-                    PyObject *pr = PyList_GetItem(tmp_list, i);
-                    PyObject *kk = PySequence_GetItem(pr, 0);
-                    PyObject *dd = PySequence_GetItem(pr, 1);
-                    if (!kk || !dd || PyList_Append(keys, kk) < 0
-                        || PyList_Append(vals, dd) < 0) {
-                        Py_XDECREF(kk); Py_XDECREF(dd);
-                        Py_DECREF(keys); Py_DECREF(vals); goto fail;
+                    PyObject *pr = PyList_GetItem(tmp_list, i);   /* borrowed */
+                    PyObject *keystr = PySequence_GetItem(pr, 0); /* owned */
+                    PyObject *dv = PySequence_GetItem(pr, 1);     /* owned */
+                    int dup = 0;
+                    if (!keystr || !dv || !PyUnicode_Check(keystr)) {
+                        Py_XDECREF(keystr); Py_XDECREF(dv);
+                        PyMem_Free(prev_key); Py_DECREF(ordered);
+                        goto fail;
                     }
-                    Py_XDECREF(kk); Py_XDECREF(dd);
-                }
-                Py_CLEAR(tmp_list);
-                /* dedupe adjacent equal keys, then take the ordered ref dicts */
-                sources = PyList_New(0);
-                if (!sources) { Py_DECREF(keys); Py_DECREF(vals); goto fail; }
-                for (i = 0; i < PyList_Size(keys); i++) {
-                    if (i + 1 < PyList_Size(keys)) {
-                        PyObject *a = PyList_GetItem(keys, i);
-                        PyObject *b = PyList_GetItem(keys, i + 1);
-                        const char *sa = PyUnicode_AsUTF8(a), *sb = PyUnicode_AsUTF8(b);
-                        if (sa && sb && strcmp(sa, sb) == 0) continue;
-                    }
-                    {
-                        PyObject *dv = PyList_GetItem(vals, i);
-                        if (PyList_Append(sources, dv) < 0) {
-                            Py_DECREF(keys); Py_DECREF(vals); Py_DECREF(sources);
-                            sources = NULL; goto fail;
+                    if (prev_key && strcmp(prev_key, PyUnicode_AsUTF8(keystr)) == 0)
+                        dup = 1;
+                    if (!dup) {
+                        if (PyList_Append(ordered, dv) < 0) {
+                            Py_XDECREF(keystr); Py_XDECREF(dv);
+                            PyMem_Free(prev_key); Py_DECREF(ordered);
+                            goto fail;
+                        }
+                        PyMem_Free(prev_key);
+                        prev_key = xstrdup(PyUnicode_AsUTF8(keystr));
+                        if (!prev_key) {
+                            Py_XDECREF(keystr); Py_XDECREF(dv);
+                            Py_DECREF(ordered);
+                            goto fail;
                         }
                     }
+                    Py_XDECREF(keystr);
+                    Py_XDECREF(dv);
                 }
-                Py_DECREF(keys); Py_DECREF(vals);
-                sources = PyList_AsTuple(sources);
+                PyMem_Free(prev_key);
+                Py_CLEAR(tmp_list);
+                /* PyList_AsTuple CONSUMES the `ordered` reference; `sources` therefore
+                 * owns exactly the references the returned tuple needs. */
+                sources = PyList_AsTuple(ordered);
                 if (!sources) goto fail;
             }
         } else { stb_integrity("source_universe_refs must be a list or tuple"); goto fail; }
@@ -1589,18 +1661,26 @@ stb_decide(StageBOwner *self, PyObject *args, PyObject *kwds)
             if (validate_positive(self, R, expected_op, &auth, &op, &sh) < 0) {
                 /* capture the negative STATE and continue the ladder */
                 PyObject *pt = NULL, *pv = NULL;
-                PyErr_Fetch(&pt, &pv, NULL);
-                PyErr_NormalizeException(&pt, &pv, NULL);
-                if (pv && PyObject_HasAttrString(pv, "state")) {
+                /* HQ246-B3 REPAIR: fetch all three exception slots, normalise them
+                 * together, and release every owned reference INCLUDING the traceback.
+                 * Reading `.state` may itself fail, so the error indicator is cleared
+                 * defensively before continuing the ladder. */
+                PyObject *tb = NULL;
+                PyErr_Fetch(&pt, &pv, &tb);
+                PyErr_NormalizeException(&pt, &pv, &tb);
+                if (pv) {
                     PyObject *sv = PyObject_GetAttrString(pv, "state");
+                    PyErr_Clear();
                     if (sv && PyUnicode_Check(sv) && n_neg < 64) {
                         neg[n_neg++] = xstrdup(PyUnicode_AsUTF8(sv));
                     }
                     Py_XDECREF(sv);
-                } else if (n_neg < 64) {
+                }
+                if (n_neg == 0 && n_neg < 64) {
                     neg[n_neg++] = xstrdup(STATE_UNKNOWN);
                 }
-                Py_XDECREF(pt); Py_XDECREF(pv);
+                PyErr_Clear();
+                Py_XDECREF(pt); Py_XDECREF(pv); Py_XDECREF(tb);
                 PyMem_Free(op); PyMem_Free(sh); Py_XDECREF(auth);
             } else {
                 n_pos++;
@@ -1737,7 +1817,7 @@ stb_validate_replay(StageBOwner *self, PyObject *decision)
                               "semantic identity"), NULL);
 
     {
-        PyObject *g[11];
+        PyObject *g[13];
         const char *names[11];
         int i = 0;
         static const char *NEED[11] = {"state", "relation_kind", "source_universe_refs",
@@ -1750,9 +1830,24 @@ stb_validate_replay(StageBOwner *self, PyObject *decision)
             if (!g[i]) return (stb_integrity("owner decision is missing canonical preimage "
                                              "material"), NULL);
         }
+        /* HQ246-B4 REPAIR: the replay preimage's relation_kind and target_use must be
+         * real unicode before they are converted, so a malformed decision dict yields a
+         * typed integrity error rather than a NULL dereference. */
+        {
+            PyObject *rko = PyDict_GetItemString(decision, "relation_kind");
+            PyObject *tuo = PyDict_GetItemString(decision, "target_use");
+            if (!rko || !PyUnicode_Check(rko))
+                return (stb_integrity("owner decision replay relation_kind is not an "
+                                      "exact str"), NULL);
+            if (!tuo || !PyUnicode_Check(tuo))
+                return (stb_integrity("owner decision replay target_use is not an "
+                                      "exact str"), NULL);
+            g[11] = rko;
+            g[12] = tuo;
+        }
         pre = build_replay_preimage(self,
-            PyUnicode_AsUTF8(PyDict_GetItemString(decision, "relation_kind")),
-            g[2], g[3], PyUnicode_AsUTF8(g[4]), g[5], g[6], state_s,
+            PyUnicode_AsUTF8(g[11]),
+            g[2], g[3], PyUnicode_AsUTF8(g[12]), g[5], g[6], state_s,
             g[7] == Py_None ? NULL : g[7], g[8] == Py_None ? NULL : g[8],
             (g[9] == Py_None) ? NULL : PyUnicode_AsUTF8(g[9]),
             (g[10] == Py_None) ? NULL : PyUnicode_AsUTF8(g[10]));

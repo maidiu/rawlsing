@@ -1,0 +1,53 @@
+{
+  "commission": "PYAT-HQ247-F7-NATIVE-B1-B4-PARITY-TRUST-REPAIR-R2",
+  "headline": "B1, B2, B3, B4 and P1 are repaired and demonstrated, and the multi-positive CONFLICTING_AUTHORITY coverage gap that was open across HQ245 and HQ246 is CLOSED with legitimately constructed candidates. One named leak defect remains open. Adoption and cutover hold shut.",
+
+  "self_certification": {
+    "claims_stage_b_qualified": false,
+    "prior_reviews": ["HQ245 Stage A independent hostile review: BLOCKED", "HQ246 Stage B independent hostile review: BLOCKED at frozen blob 2d8ffc68 / repaired blob 586f859a"],
+    "relationship": "this lane repaired the specific defects those reviews identified and independently reproduced each of them first-hand (the malformed PyObject_Call was read directly at the HQ-pinned blob, and its effect -- an unreachable positive path -- was proven by the P1/B2 tests). Repairing a finding is not accepting a reviewer's conclusion, and no reviewer branch was read, merged or modified."
+  },
+
+  "holds": {
+    "production_p07_f7_mutation": "none; git diff against the commission tip is empty for every production and accepted-test path",
+    "production_imports_of_native": 0,
+    "duplicate_positive_python_owner": "still the only authority; untouched",
+    "from_c11": "not implemented; not authorised to import",
+    "trusted_constructor": "NOT implemented -- deliberately, because it would require production mutation this commission forbids",
+    "accepted_tests_weakened": false,
+    "binaries_committed": false,
+    "control_merge": false,
+    "self_adoption": false,
+    "other_branches_modified": false,
+    "raw_survey_data": "none",
+    "issuer_root_r4_actor_v3_f8": "untouched",
+    "next_stage_auto_dispatch": "none"
+  },
+
+  "f7_rr_04g": "OPEN",
+  "downstream_receiver": "NONE claimed. There is no adopted downstream F7 consumer, no T2 guarantee and no new semantic kind.",
+
+  "four_forgeries_and_five_positives": {
+    "status": "retained as FUTURE actual-F7-path tests; NOT claimed here",
+    "detail": "the four HQ234-HQ236 hostile variants and the five HQD216 lawful positives require the actual native P07->F7 interface, which does not exist because there is no production cutover. The genuine AUTHORIZED parity proven in this stage is a NATIVE-vs-PRODUCTION comparison inside a quarantined harness, not an F7 consumer qualification."
+  },
+
+  "review_wake": {
+    "required": "a NEW exact-SHA DeepSeek independent hostile review against this stage's pushed SHA is required before any Stage C dispatch, even though this stage's own disposition may be READY",
+    "reviewer_should_specifically_attack": [
+      "the P1 derivation: prove the object key cannot be steered by a relation whose effective_scope or directionality is attacker-influenced",
+      "the B2 calling convention: prove no argument can be dropped, duplicated or re-ordered into require_positive_authority",
+      "the B3 exception paths: prove no traceback or exception reference leaks under repeated authority refusal",
+      "the B4 fuzz surface: extend the malformed replay/request fuzz beyond the 108 cases here",
+      "HQ247-OPEN-001: independently isolate and fix the residual decide() leak",
+      "the CONFLICTING_AUTHORITY fixtures: verify each sibling candidate is individually valid and that no authority was forged to manufacture the branch",
+      "the T1 decision: confirm that recording the trusted constructor as SPECIFIED rather than BUILT is the correct call under the permitted write terrain"
+    ]
+  },
+
+  "open_items": [
+    {"id": "HQ247-OPEN-001", "title": "Stage B decide() leaks ~12 (positive) / ~15 (negative) allocated blocks per call", "status": "OPEN, not worse than base, precisely measured with error bars", "must_fix_before": "adoption"},
+    {"id": "HQ247-OPEN-002", "title": "T1 production-owned sealed constructor is SPECIFIED, not built", "status": "OPEN by design; needs a commission permitted to touch production", "must_fix_before": "any authority use"},
+    {"id": "HQ246-OPEN-003", "title": "module-init OOM injection still not performed", "status": "carried forward from HQ246 rather than dropped", "must_fix_before": "adoption, at reviewer discretion"}
+  ]
+}

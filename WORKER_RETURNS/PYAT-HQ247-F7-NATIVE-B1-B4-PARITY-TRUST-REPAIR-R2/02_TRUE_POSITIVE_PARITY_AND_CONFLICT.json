@@ -1,0 +1,44 @@
+{
+  "commission": "PYAT-HQ247-F7-NATIVE-B1-B4-PARITY-TRUST-REPAIR-R2",
+
+  "P1_hardcoded_key_material": {
+    "defect": "the relation object key was computed with effective_scope hardcoded to DEFAULT_RELATION_STATE ('DISTINCT_BY_DEFAULT') and directionality hardcoded to 'SYMMETRIC'",
+    "actual_production_value": "effective_scope = 'EXACT_BOUND_UNIVERSE_PAIR', directionality_or_symmetric = 'SYMMETRIC'",
+    "consequence": "the by_key candidate index was keyed on material that no real relation carries, so by_key selection could NEVER match a genuine relation; every earlier native positive attempt was unreachable by construction",
+    "repair": "effective_scope and directionality_or_symmetric are read from the ADMITTED relation at admission, canonicalised through the pinned trusted seam, sealed as owned objects on the record, and used for the object key exactly as _relation_object_key_from_relation does. A relation missing either attribute is refused.",
+    "also_repaired": "the by_key duplicate-suppression no longer compares a borrowed key pointer; prev_key is an owned C copy released explicitly",
+    "evidence": "test_p1_object_key_matches_production (native reaches AUTHORIZED), test_p1_by_key_path_needs_no_relation_ref (object-key selection alone, no relation_ref), test_p1_effective_scope_is_not_hardcoded (the OLD hardcoded value now FAILS to match, proving the true value is used)"
+  },
+
+  "genuine_positive_parity": {
+    "fixture": "the accepted source-free _adjudicated_resolver corpus; both candidates and all snapshots come from the accepted production P07 material",
+    "forgery": "NONE. No authority was forged, no decision function was monkeypatched, and the trusted authority guard was never bypassed.",
+    "native": "AUTHORIZED, authorized=True",
+    "production": "AUTHORIZED, authorized=True",
+    "byte_exact_agreement_on": ["state", "authorized", "reason", "owner_custody_hash", "replay_identity", "authority_snapshot_content_hash", "authority_operation", "relation_kind", "target_use", "ordered source_universe_refs"],
+    "tests": ["test_p1_native_and_production_authorized_agree_completely", "test_p1_require_returns_the_genuine_positive", "test_p1_replay_validates_the_genuine_positive"]
+  },
+
+  "multi_positive_CONFLICTING_AUTHORITY": {
+    "status": "COVERAGE GAP CLOSED",
+    "prior_state": "open in HQ245 and still open in HQ246, because no second independently valid candidate was obtainable",
+    "fixture_construction": "a sibling relation is built by copying the ACCEPTED relation and giving it its own relation_id, replay_identity, recomputed content_hash and any overridden semantic fields. It is an honest independent receipt: it is individually valid and individually authorises the same exact relation key on its own. Nothing is forged.",
+    "same_object_key_proven": true,
+    "branches_now_exercised": {
+      "two_independent_positives": "CONFLICTING_AUTHORITY, authorized=False, reason 'multiple or conflicting exact relation dispositions exist'",
+      "positive_plus_negative": "CONFLICTING_AUTHORITY via the `positives and negative_states` branch",
+      "precedence_first_entry_dominates": "a corpus containing DENIED + NOT_APPLICABLE + EXPIRED_OR_STALE alongside one positive still resolves to CONFLICTING_AUTHORITY"
+    },
+    "negative_ladder_covered": ["DENIED", "EXPIRED_OR_STALE", "NOT_APPLICABLE", "CONFLICTING_AUTHORITY"],
+    "tests": ["test_conflict_two_independent_positive_candidates", "test_conflict_positive_plus_negative_candidate", "test_conflict_precedence_prefers_conflicting_over_all_others", "test_conflict_negative_ladder_order (4 params)", "test_conflict_no_candidate_is_distinct_by_default"]
+  },
+
+  "typed_outcome_space": {
+    "reachable_union": 17,
+    "precedence_ladder_steps": 6,
+    "precedence_ladder_exact": ["CONFLICTING_AUTHORITY", "EXPIRED_OR_STALE", "DENIED", "NOT_APPLICABLE", "UNKNOWN_AUTHORITY", "OUT_OF_SCOPE"],
+    "note": "the earlier commission's '12 states' framing remains inaccurate; the measured union is 17 strings and the ladder is 6. Reported as measured."
+  },
+
+  "from_c11": "NOT implemented and NOT authorised to import; explicit later Stage C gate"
+}

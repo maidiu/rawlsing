@@ -1,0 +1,49 @@
+{
+  "commission": "PYAT-HQ247-F7-NATIVE-B1-B4-PARITY-TRUST-REPAIR-R2",
+  "authority": "HQD-2026-10-08-247; native F7 adoption remains BLOCKED",
+
+  "environment": {
+    "governed_interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+    "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "match_required": true,
+    "compiler": "Apple clang version 14.0.3 (clang-1403.0.22.14.1)",
+    "required_flag": "-undefined dynamic_lookup",
+    "recipe": "clang -shared -fPIC -O2 -Wall -Wextra -Wno-unused-parameter -undefined dynamic_lookup -I<sysconfig include> -o rawlsing_next/_p07_native_owner_stage_{a,b}.cpython-311-darwin.so rawlsing_next/_p07_native_owner_stage_{a,b}.c",
+    "warnings": "clean build",
+    "abi": {"python": "3.11.3", "soabi": "cpython-311-darwin", "ext_suffix": ".cpython-311-darwin.so", "machine": "x86_64", "limited_api": false}
+  },
+
+  "provenance": {
+    "stage_a_source": {"sha256": "12a03d0633661cb2fb57202a6fb0351a18e252cb6fcf2d85439ac9a8b0a23f71", "lines": 853, "changed_this_stage": false},
+    "stage_b_source": {"sha256": "129f05600cbb644d84c923932f868dab2da7aae4aa8aa206b1e0cee3975d06c4", "lines": 2001, "was_lines": 1906, "was_blob": "586f859a4a8710738987f92e5b356451e2390fdd"},
+    "new_court": {"path": "rawlsing_next/tests/test_p07_native_stage_b_hq247_repair.py", "sha256": "8c75414fa2c57e805f0bd323be47f1a37d77bcdb150647e4d0195a093e5e6875", "tests": 71},
+    "reproduction_scripts": ["reproduction/hq247_evil_len.py", "reproduction/hq247_b4_malformed.py"],
+    "local_only_binaries": {"stage_a_so_sha256": "1712abb6b60b78c7a3202ae882b974e07a44058afd49a13c5300a684e17c4faf", "stage_b_so_sha256": "ed47f1969c79ef6974cd3f1c5b5076c20f80b47552443bd4bf350bfae73e8249", "committed": false}
+  },
+
+  "fail_capability": {
+    "macro": "STAGE_B_FAULT_INJECT_RESOLVE",
+    "normal_binary_string_matches": 0,
+    "fault_injected_courts": "1 failed, 111 passed (vs 112 passed on the clean build)",
+    "interpretation": "the re-hash control is genuinely load-bearing and the diagnostic is compiled out of the shipped binary"
+  },
+
+  "tests": {
+    "hq247_new_court": "71 passed",
+    "hq246_repair_court": "59 passed",
+    "stage_a_original": "39 passed, unmodified",
+    "stage_b_original": "41 passed (2 mutable-stand-in tests extended with the two P1 attributes; no assertion weakened)",
+    "production_p07": "24 passed",
+    "production_f7": "163 passed",
+    "total": "397 passed",
+    "collection": "2953 tests collected, 9 pre-existing collection errors (unchanged); this stage adds exactly its 71 tests and 0 errors",
+    "accepted_tests_changed": false,
+    "production_files_changed": false
+  },
+
+  "baseline": {
+    "convention": "the SAME historical nine-exclusion command used in HQ246, re-run identically; the four quarantined native synthetic courts excluded as well",
+    "result": "PENDING - recorded in 06_FINAL_DISPOSITION.json",
+    "no_manufactured_equality": "the 54-item convention is NOT claimed. HQ246 measured the same script as 52 items with digest ab74b05d...; if this stage's run differs, the difference is reported rather than reconciled by changing the normalisation."
+  }
+}
