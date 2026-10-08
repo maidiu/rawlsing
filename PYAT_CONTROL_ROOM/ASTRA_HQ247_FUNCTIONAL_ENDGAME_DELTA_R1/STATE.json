@@ -2,15 +2,15 @@
   "schema": "ASTRA_PYAT_HQ247_AUDIT_STATE@1",
   "commission": "ASTRA-PYAT-HQ247-FUNCTIONAL-ENDGAME-DELTA-AUDIT-R1",
   "lane": "agent/astra-pyat-hq247-functional-endgame-delta-audit-r1",
-  "status": "NEW_NEEDS_LAUNCH",
-  "phase": "P0_NOT_STARTED",
+  "status": "P0_IN_PROGRESS",
+  "phase": "P0",
   "required_next_model": "GPT-5.6 Sol High or nearest economical high-capability available model",
   "pending_model_switch": "NONE_UNTIL_P0_COMPLETE",
   "control_origin_head_observed": "675b0793fd2a2b75463fc00d2b884eefdc95e9f9",
   "control_latest_checkpoint_observed": "20261008-PYAT-HQ248-F7-R2-REFCOUNT-N10E-PLACEMENT-HOLD-R1",
   "handoff_commit_observed": "91595263d2888091e1f28af1ed38429b7c02966f",
   "semantic_pre_main_observed": "1f47063c3205a45888b3c55e81e7485943ed1390",
-  "branch_remote_head_at_issuance": "TO_BE_FILLED_FROM_EXACT_LAUNCH_BLOCK_AND_DIRECT_ORIGIN_READBACK",
+  "branch_remote_head_at_issuance": "152bb3c3afd78d5b6a629eda158c56d5084bf86e",
   "other_remote_heads_observed": [
     {
       "name": "HQ247 F7 R2 author return",
@@ -36,17 +36,19 @@
   ],
   "prior_astra_atlas": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/README.md",
   "previous_phase_completion": "NONE",
-  "latest_verified_audit_remote_head": "NOT_YET_CHECKED_AT_LAUNCH",
-  "checkpoint_status": "SCAFFOLD_AMENDED_FOR_HQ248__P0_NOT_STARTED",
-  "completed_investigations": [],
+  "latest_verified_audit_remote_head": "152bb3c3afd78d5b6a629eda158c56d5084bf86e",
+  "checkpoint_status": "BASELINE_VERIFIED_READY_TO_BANK",
+  "completed_investigations": [
+    "Direct origin control/audit/three successor heads; checkpoint manifest IDs, semantic identity, ancestry and CURRENT blob bindings verified"
+  ],
   "open_questions": [
     "Are current F7 and N10E blockers on the global minimum functional PRE-V3 critical path?",
-    "Which F1–F8 producer/consumer edges are missing vs unoccupied?",
+    "Which F1\u2013F8 producer/consumer edges are missing vs unoccupied?",
     "Which prior Astra Atlas proposed lanes are now realized, held, superseded or misprioritized?",
     "At cutoff, has HQ249-or-later independently intaken the three HQ248 successor lanes, and is any explicit outstanding lane recorded?",
     "Distinguish native-security F7-RR-04G from HQD125 empirical-temporal gate F7; do not infer direct critical path."
   ],
-  "first_next_action": "Read 04_HQ248_HQ249_ACTIVATION_GATE.md, verify fresh control LATEST and three HQ248 successor HEADs, perform economical P0; BANK and STOP before expensive P1 until HQ249 intake seals or human explicitly overrides.",
+  "first_next_action": "Read both pushed HQ248 return packets and prior Atlas changed-grain evidence; finish P0 and STOP.",
   "last_stage_files": [
     "00_COMMISSION.md",
     "01_PHASES_AND_SWITCHES.md",
@@ -78,5 +80,63 @@
       "classification": "POST_HQ248_CHECKPOINT_PENDING_RETURN_NOT_HQ_ADOPTED",
       "author_claim": "BLOCKED_REAL_INDEPENDENT_VERIFIER_PLACEMENT"
     }
-  ]
+  ],
+  "baseline_control_head": "675b0793fd2a2b75463fc00d2b884eefdc95e9f9",
+  "latest_pinned_checkpoint": "20261008-PYAT-HQ248-F7-R2-REFCOUNT-N10E-PLACEMENT-HOLD-R1",
+  "most_recent_verified_remote_heads": [
+    {
+      "id": "HQ248_F7_R3_REFCOUNT_REPAIR",
+      "branch": "agent/space-bunny-pyat-hq248-f7-decide-refcount-repair-r3",
+      "commission_tip": "8902013902ffcc8a6f936fb184a11320a57011ed",
+      "head": "8902013902ffcc8a6f936fb184a11320a57011ed",
+      "commission_is_ancestor": true,
+      "ahead_behind": "0\t0",
+      "changed_paths": [],
+      "git_classification": "UNCHANGED_REMOTE_NO_RETURN_VISIBLE",
+      "agent": "Space Bunny / OpenCode",
+      "model": "Space Bunny Max",
+      "machine": "governed Mac"
+    },
+    {
+      "id": "HQ248_F7_T1_DOCUMENTARY_DESIGN",
+      "branch": "agent/reviewer-pyat-hq248-f7-trusted-constructor-ingress-design-r1",
+      "commission_tip": "ad320e05bf3f7ed75bca51e62e3b044da5d8c535",
+      "head": "58934231d6e5bc895f937b069433237f7edce594",
+      "commission_is_ancestor": true,
+      "ahead_behind": "0\t1",
+      "changed_paths": [
+        "A\tWORKER_RETURNS/PYAT-HQ248-F7-T1-PRODUCTION-TRUST-INGRESS-DESIGN-R1/00_DESIGN.md",
+        "A\tWORKER_RETURNS/PYAT-HQ248-F7-T1-PRODUCTION-TRUST-INGRESS-DESIGN-R1/01_OWNER_PROVENANCE_AND_CALLSITE.json",
+        "A\tWORKER_RETURNS/PYAT-HQ248-F7-T1-PRODUCTION-TRUST-INGRESS-DESIGN-R1/02_THREAT_AND_POSITIVE_TEST_MATRIX.json",
+        "A\tWORKER_RETURNS/PYAT-HQ248-F7-T1-PRODUCTION-TRUST-INGRESS-DESIGN-R1/03_FUTURE_IMPLEMENTATION_COMMISSION.md",
+        "A\tWORKER_RETURNS/PYAT-HQ248-F7-T1-PRODUCTION-TRUST-INGRESS-DESIGN-R1/FINAL_DISPOSITION.json"
+      ],
+      "git_classification": "ADVANCED_DESCENDANT_REQUIRES_RETURN_CONTENT_REVIEW",
+      "agent": "Browser/GitHub documentary forensic reviewer",
+      "model": "GPT-5.6 Sol High",
+      "machine": "Browser GitHub only"
+    },
+    {
+      "id": "HQ248_N10E_REAL_OWNER_PLACEMENT_FEASIBILITY",
+      "branch": "agent/space-bunny-pyat-hq248-n10e-at07-deployment-placement-evidence-r1",
+      "commission_tip": "9716656ee47fb04bf8bd6e842982d78b6490cca8",
+      "head": "e64379e542b931df1e7df47f1b37955a1cb9a3a9",
+      "commission_is_ancestor": true,
+      "ahead_behind": "0\t1",
+      "changed_paths": [
+        "A\tWORKER_RETURNS/PYAT-HQ248-N10E-AT07-C1-LOCAL-PLACEMENT-FEASIBILITY-R1/00_FEASIBILITY.md",
+        "A\tWORKER_RETURNS/PYAT-HQ248-N10E-AT07-C1-LOCAL-PLACEMENT-FEASIBILITY-R1/01_LOCAL_OWNER_AND_VERIFIER_EVIDENCE.json",
+        "A\tWORKER_RETURNS/PYAT-HQ248-N10E-AT07-C1-LOCAL-PLACEMENT-FEASIBILITY-R1/02_DEPLOYMENT_AND_JOURNAL_FEASIBILITY.json",
+        "A\tWORKER_RETURNS/PYAT-HQ248-N10E-AT07-C1-LOCAL-PLACEMENT-FEASIBILITY-R1/03_HQ_DESIGNATION_REQUIRED.md",
+        "A\tWORKER_RETURNS/PYAT-HQ248-N10E-AT07-C1-LOCAL-PLACEMENT-FEASIBILITY-R1/FINAL_DISPOSITION.json"
+      ],
+      "git_classification": "ADVANCED_DESCENDANT_REQUIRES_RETURN_CONTENT_REVIEW",
+      "agent": "Space Bunny / OpenCode",
+      "model": "Space Bunny Max or equivalent capable local model",
+      "machine": "governed Mac"
+    }
+  ],
+  "selected_model": "GPT-6 family Codex session; no model switch performed; exact serving model label not exposed by a tool",
+  "model_scope": "P0 only; human must select Astra highest reasoning for P1",
+  "gate_status": "P1_BLOCKED_BY_UNSEALED_HQ248_SUCCESSOR_INTAKE_AND_HUMAN_MODEL_SWITCH"
 }

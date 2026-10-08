@@ -1,17 +1,10 @@
-# ASTRA HQ247 — evidence ledger (append only during audit)
+# P0 evidence ledger — baseline bank
 
-Initial issuance observations (not conclusions of Astra's independent audit):
+Audit evidence only; no HQ adoption. Entry Git census and its read-only reproducer are in `phases/`.
 
-| ID | Observation | Exact evidence | Grade | HQ action |
-|---|---|---|---|---|
-| SETUP-001 | Control latest checkpoint is HQ247 at pinned handoff commit | control HEAD `4246cea7657b6bfb1e405a27f3dff952c4d157df`, pointer blob `f30c5e803191affb294f0bdcea3b8b843d2eb4a8` | control read | none |
-| SETUP-002 | F7 R2 worker pushed partial repair, claims B1–B4/P1 fixed; leak and T1 remain | `c2c0ab7335a3bcfeabb4297139378e3e657cd432`, `WORKER_RETURNS/PYAT-HQ247-F7-NATIVE-B1-B4-PARITY-TRUST-REPAIR-R2/06_FINAL_DISPOSITION.json` | author return, NOT independent R2 review | HQ intake pending |
-| SETUP-003 | Frozen f09 independent reviewer still blocks f09, not later R2 | `fa3c69b832d4649e046d84e4dde89897585aa4e3`, `WORKER_RETURNS/PYAT-HQ247-F7-F09-REPAIR-INDEPENDENT-RUNTIME-REVIEW-R1/05_FINAL_DISPOSITION.json` | independent Mac reviewer claim scoped only to f09 | HQ intake pending |
-| SETUP-004 | N10E C1 issuer/root-placement competence not yet provisioned | `80023846b13b9d2cea93f6a3d4f7cd36601b7ccd`, `WORKER_RETURNS/PYAT-HQ247-N10E-AT07-OWNER-ROOT-PLACEMENT-PREFLIGHT-R1/FINAL_DISPOSITION.json` | documentary return, NOT root | HQ intake pending |
-| SETUP-005 | Full F1–F8 PRE-V3 functional realization not established by prior Astra Atlas or HQD125/216 | `PYAT_CONTROL_ROOM/25_HQD125_DDM_FUNCTIONAL_CONSERVATION_CROSSWALK.md`, `26_HQD216_PRODUCTIVE_ADEQUACY_AND_PREV3_EMPIRICAL_GATE_LAW.md` | binding law and prior summary, not new proof | audit mandate |
+- **P0-E01 / CONFIRMED:** Direct control `675b0793fd2a2b75463fc00d2b884eefdc95e9f9` selects HQ248 packet `91595263d2888091e1f28af1ed38429b7c02966f`. All packet checks passed. Exact bindings and observation interval: `phases/P0_GIT_CENSUS_ENTRY.json`. Disproof: newer direct control ref or mismatched manifest/blob.
+- **P0-E02 / CONFIRMED at Git grain:** R3 refcount branch unchanged; T1 `58934231d6e5bc895f937b069433237f7edce594` and N10E `e64379e542b931df1e7df47f1b37955a1cb9a3a9` descend from commissioned tips, modifying only their respective return directories. Content review pending in this bank. No local worker status inferred.
+- **P0-E03 / CONFIRMED:** HQ248 has adjudicated the prior three HQ247 returns. Exact decision record and immutable CURRENT read; f09 review covers frozen f09 only, R2 remains partial, N10E prospective documentary warrant is not issuer activation. Disproof: superseding sealed HQ record.
+- **P0-E04 / CONFIRMED:** Pointer legacy `last_hq_decision` says HQ247 while manifest/CURRENT and explicit `hq248_decision` agree on HQ248. Read operative packet rather than using the legacy scalar alone. No pointer mutation authorized.
 
-## New evidence entry format
-
-`[ID] [date/phase] claim | exact commit/blob/path(+line/test) | [DIRECT_BLOB / EXECUTED / INHERITED_PROOF / RETURN_UNADOPTED / PROPOSAL / INFERENCE / UNKNOWN] | challenger/counterevidence | effect on F1–F8 / critical path | falsifier | disposition`
-
-No vague "passed" without named test, execution environment and exact candidate. No inheritance of reviewer independence between different candidate SHA values.
+Next: inspect full return artifacts, inherited Atlas, and governing functional laws; seed F1–F8 without mistaking inherited status for fresh runtime proof.
