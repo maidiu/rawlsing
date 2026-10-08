@@ -2,7 +2,7 @@
 
 **STATUS:** NEW — NEEDS LAUNCH
 **AGENT:** Space Bunny / governed local engineering implementation worker (isolated shared-store sparse worktree)
-**MODEL / INTELLIGENCE:** GPT-5.6 Sol High (or HQ-selected code-capable high-intelligence equivalent)
+**MODEL / INTELLIGENCE:** Space Bunny in OpenCode — use the user's selected and installed Space Bunny model/variant (Space Bunny Max preferred for native C implementation). Resolve actual provider/model ID and effective variant at launch; do NOT relabel this as GPT-5.6 Sol High or silently substitute a browser/Sol worker.
 **REPOSITORY:** `maidiu/rawlsing`
 **BRANCH:** `agent/space-bunny-pyat-hq242-f7-t1-native-p07-owner-implementation-r1`
 **EXACT COMMISSION BASE:** `907063499fb0860c1632c01a4d0be557741094e8`
