@@ -1,3 +1,30 @@
+# HQ242 — BOUNDED F7 T1 PRODUCER WARRANT; N10E R2 ISSUER CORRECTION — 2026-10-07
+
+**HQ DECISION:** `HQD-2026-10-07-242`
+
+**F7 RETURN:** `907063499fb0860c1632c01a4d0be557741094e8` — `F7_ALIAS_TCB_AND_RELIANCE_CENSUS_COMPLETE__READY_FOR_HQ_BOUNDARY_RULING`. HQ expressly classifies trusted F7 alias sabotage as test-only diagnostic outside T1 runtime, while EVERY owner/custody closure/method/registry/field attack remains inside. No separately accepted production F7 reliance sink found in 136 inspected `rawlsing_next` Python production modules. This is a **producer-grain T1 architecture warrant for implementation candidacy**, NOT a full security PASS.
+
+### NEW — NEEDS LAUNCH — F7 T1 NATIVE ACTUAL P07 OWNER IMPLEMENTATION
+**AGENT:** Space Bunny governed local engineering, sparse shared-store worktree  
+**MODEL / INTELLIGENCE:** GPT-5.6 Sol High / HQ-selected high code model  
+**BRANCH:** `agent/space-bunny-pyat-hq242-f7-t1-native-p07-owner-implementation-r1`  
+**COMMISSION TIP:** `08f4c0a10a6095c81f40836a6426dd34bee55883`  
+**COMMISSION:** `WORKER_COMMISSIONS/PYAT-HQ242-F7-T1-NATIVE-P07-OWNER-IMPLEMENTATION-R1/00_COMMISSION.md`  
+**HOLD:** no control or source semantic authority mutation; must preserve four attacks red-forgery refusal, five lawful positives and actual C binary/ABI provenance. Full F7-RR-04G NOT YET CLOSED.
+
+**N10E REVIEW RETURN:** `7c7937ff68ddd6209858cc23194b9f292b299e66` — `C1_AT07_FIXTURE_ISSUER_WARRANT_PARTIAL__NAMED_DEFECT`. Two named defects: HQ-root bootstrap/rotation authority missing, N10E site may lack mandatory owner-journal C1 parent. Issuer remains UNADOPTED.
+
+### NEW — NEEDS LAUNCH — N10E/C1 ISSUER WARRANT ROOT+HANDOFF R2
+**AGENT:** Browser/GitHub documentary authority correction  
+**MODEL / INTELLIGENCE:** GPT-5.6 Sol High  
+**BRANCH:** `agent/rabochii-pyat-hq242-n10e-at07-issuer-warrant-correction-r2`  
+**COMMISSION TIP:** `1cac84eac8846130bd12e9bf591ff3010c9c4b62`  
+**COMMISSION:** `WORKER_COMMISSIONS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/00_COMMISSION.md`
+
+Run both in parallel. No Space Bunny production adoption, no fixture issuer adoption, no R4 model-rule authority.
+
+---
+
 # HQ241 FRONTIER — TWO RETURNS INTAKEN; TWO NEW DOCUMENTARY LANES — 2026-10-07
 
 ### RETURNED — F7 T1 NATIVE P07 OWNER HOSTILE REVIEW
