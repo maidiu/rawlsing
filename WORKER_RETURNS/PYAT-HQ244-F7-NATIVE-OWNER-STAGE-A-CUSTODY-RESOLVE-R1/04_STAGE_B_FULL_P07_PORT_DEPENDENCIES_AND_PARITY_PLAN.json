@@ -1,0 +1,106 @@
+{
+  "commission": "PYAT-HQ244-F7-NATIVE-OWNER-STAGE-A-CUSTODY-RESOLVE-R1",
+  "purpose": "explicit Stage B decomposition of the full native P07 adjudicator port. Stage A implements NONE of this. Every item is a named dependency for Stage B.",
+  "authorizing_now": false,
+  "source_of_truth": "rawlsing_next/pre553_source_relations.py @ 8053d30d306a3654ebf563043088311ff390bb2b",
+
+  "functions_to_port": [
+    {
+      "python": "_owner_state_resolve_exact (line 629)",
+      "stage_a_status": "PARTIALLY PORTED",
+      "stage_a_gap": "Stage A ports the exact-key lookup and the ref.key/content_hash identity re-verification. It does NOT port the semantic_projection() re-hash, nor _validate_relation_replay_identity.",
+      "stage_b_actions": [
+        "call trusted canonical semantic_hash on relation.semantic_projection() and compare against the sealed per-key semantic hash",
+        "call the trusted replay-identity validator on every resolve",
+        "preserve the four distinct SourceRelationIntegrityError messages verbatim so parity is observable"
+      ]
+    },
+    {
+      "python": "_validate_positive_from_owner_state (line 654)",
+      "stage_a_status": "NOT PORTED",
+      "stage_b_actions": [
+        "port every positive guard, including typed-state positivity (_positive_typed_state, line 306)",
+        "port DEFAULT_RELATION_STATE = DISTINCT_BY_DEFAULT handling",
+        "port FORBIDDEN_BACKFILL_TARGET_STATES (line 60) as a native set",
+        "port require_positive_authority via the trusted seam"
+      ]
+    },
+    {
+      "python": "_decide_from_owner_state (line 812)",
+      "stage_a_status": "NOT PORTED",
+      "stage_b_actions": [
+        "port the complete 12-state decision ladder in identical evaluation order",
+        "port the CONFLICTING_AUTHORITY precedence rules exactly, including ordering ties",
+        "port every negative state with byte-identical error text",
+        "fail closed on any state not explicitly implemented"
+      ]
+    },
+    {
+      "python": "_relation_decision_replay_identity (line 731) / validate_relation_decision_replay_identity (line 767)",
+      "stage_a_status": "NOT PORTED",
+      "stage_b_actions": [
+        "port replay identity derivation for decisions",
+        "port _relation_replay_identity (line 278) and _validate_relation_replay_identity (line 459)",
+        "preserve the replay locator/reference root semantics"
+      ]
+    },
+    {
+      "python": "_authenticate_owner_custody_anchor (line 587)",
+      "stage_a_status": "NOT PORTED",
+      "stage_b_actions": [
+        "port custody anchor authentication",
+        "replace the Stage A FNV-1a provenance custody_hash with the real accepted P07 custody hash",
+        "this is a hard Stage B blocker item: Stage A's custody_hash is provenance only and must never be compared against the accepted value"
+      ]
+    },
+    {
+      "python": "_canonical_refs (line 234)",
+      "stage_a_status": "NOT PORTED",
+      "stage_b_actions": [
+        "port canonical ref normalisation",
+        "replace the Stage A by_key index key (derived from ref.key) with the true _relation_object_key_from_relation material"
+      ]
+    }
+  ],
+
+  "trusted_seam_decision": {
+    "problem": "P07 depends on canonical JSON serialisation plus semantic_hash. Reimplementing canonical JSON and the hash in C risks silent byte-level divergence from the accepted Python definitions.",
+    "two_options": [
+      {
+        "option": "A: trusted Python seam",
+        "shape": "native owner holds validated sealed copies; canonicalise/semantic_hash/require_positive_authority are module-level trusted callables supplied at construction, never attacker-replaceable",
+        "guarantees": "byte-exact parity by construction with the accepted Python definitions",
+        "risk": "the hash step becomes a dynamic Python callback; the callback set itself must be sealed and the transition to it must not admit attacker input"
+      },
+      {
+        "option": "B: full C reimplementation of canonicalise + semantic_hash",
+        "shape": "native canonical serialiser and hash",
+        "guarantees": "no Python callback on the decision path",
+        "risk": "requires a byte-exact parity oracle across unicode, number, ordering and nested-structure edge cases before ANY authority can be trusted"
+      }
+    ],
+    "recommendation": "Option A for Stage B parity first, with Option B as an explicitly deferred hardening step. Do not mix them silently.",
+    "required_hygiene": "every trusted callable must be captured into C at construction, deep-validated for exact identity/closure, and never re-read from a Python-visible attribute at decision time"
+  },
+
+  "parity_oracle_requirements": [
+    "a differential harness comparing native decide/require against the accepted Python resolver over a shared corpus",
+    "agreement required on: decision state, exact error type, exact error message, resolved relation identity, replay identity and custody hash",
+    "any single divergence is a Stage B red; no tolerance, no sampling",
+    "the corpus must include all 12 states, all CONFLICTING_AUTHORITY orderings, and every forbidden backfill target state"
+  ],
+
+  "dynamic_callback_risk_map": [
+    {"site": "semantic_projection()", "risk": "returns attacker-shaped data if the relation is a substitute", "mitigation": "identity re-verification BEFORE calling, plus deep copy at admission"},
+    {"site": "canonicalise / semantic_hash", "risk": "attacker replacement", "mitigation": "seal the callable in C at construction; never look it up from Python"},
+    {"site": "require_positive_authority", "risk": "authority escalation if reachable with attacker authority material", "mitigation": "deep-validate and deep-copy authority snapshots before any call"},
+    {"site": "registry require/resolve_exact", "risk": "second live authority path reachable from Python", "mitigation": "seal a deep-copied snapshot natively; do not retain the live registry object"},
+    {"site": "ExactRef.as_dict / getattr", "risk": "hostile __getattribute__ during resolve", "mitigation": "accept only exact types and mappings; never invoke user code to derive the key"}
+  ],
+
+  "cutover_requirements": [
+    "Stage B must ELIMINATE the duplicate positive Python owner at migration cutover; a custody-only capsule is not an acceptable end state",
+    "the accepted end state is ONE exact native owner with the FULL actual P07 adjudicator",
+    "no production import change before the parity oracle is green and independently inspected"
+  ]
+}

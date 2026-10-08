@@ -1,0 +1,51 @@
+{
+  "commission": "PYAT-HQ244-F7-NATIVE-OWNER-STAGE-A-CUSTODY-RESOLVE-R1",
+  "quarantine": {
+    "designated_namespace": "rawlsing_next._p07_native_owner_stage_a",
+    "namespace_is_experimental": true,
+    "production_p07_unchanged": "rawlsing_next/pre553_source_relations.py is byte-identical to the commission tip and still defines the accepted Python SourceRelationResolver",
+    "production_f7_unchanged": "rawlsing_next/pre553_temporal_comparability.py is byte-identical to the commission tip",
+    "no_production_import_change": true,
+    "no_p07_semantic_change": true,
+    "no_accepted_published_test_changed": true,
+    "verified_by": "git diff against commission tip e7822b37f22370b83d921baab1b31bc6aa405b41 for all production and accepted test paths is empty; the court also greps both production modules for any reference to the native module",
+    "coexistence_status": "TEMPORARY coexistence permitted ONLY as a non-authorizing prototype. Production Python P07/F7 remain operative solely as PREEXISTING BASELINE."
+  },
+  "what_stage_a_is_not": [
+    "not a completed native P07 owner",
+    "not a compliance artifact",
+    "not a security pass",
+    "not production-adoptable",
+    "not a substitute for the full adjudicator",
+    "not a capsule-only solution"
+  ],
+  "deliberate_non_shipping": {
+    "binary_committed": false,
+    "why": "the .so is build output; only C source, the Stage A court and these return files are committed",
+    "reproduction": "the exact build recipe is recorded in 02_NATIVE_BUILD_ABI_BINARY_PROVENANCE_AND_RESOLVE_COURTS.json and the fault-injection variant is one added macro"
+  },
+  "negative_ceiling": {
+    "authorizing": false,
+    "positive_authority": "impossible by construction - decide/require are unconditional failures carrying NOT_IMPLEMENTED_NONAUTHORIZING_STAGE_A, and no AUTHORIZED or RelationDecision symbol exists on the native surface",
+    "adjudication": "absent",
+    "precedence": "absent",
+    "replay_decision": "absent",
+    "semantic_hash_parity": "absent - the exposed custody_hash is a native FNV-1a provenance walk and is NOT the accepted P07 custody hash",
+    "by_key_authority_index": "absent - Stage A deliberately has no by_key secondary index, which is both why transplantation has no surface here and why Stage B must add real object-key material"
+  },
+  "explicitly_not_claimed": [
+    "the F7-RR-04G gate is NOT closed",
+    "the four-forgery F7 court is NOT passed",
+    "the five lawful positives are NOT qualified at Stage A (Stage D gate)",
+    "V2-V4 hostile forgeries are NOT re-measured",
+    "HQ231 alias corruption is NOT re-measured",
+    "no new semantic kind and no T2 guarantee"
+  ],
+  "next_gates": [
+    {"stage": "B", "goal": "full native P07 adjudicator: decide/require, 12 states, CONFLICTING_AUTHORITY precedence, replay identity, real custody hash, canonical/semantic_hash trusted seam, exact parity oracle", "blocking_before": "any authority claim"},
+    {"stage": "C", "goal": "test adaptation to the native owner, retiring introspection-coupled Python-seam coupling"},
+    {"stage": "D", "goal": "independent hostile validation plus the real five lawful positives and the four-forgery court"},
+    {"review": "independent inspection of native source and binary before Stage B adoption is accepted"}
+  ],
+  "successor_decision": "Stage A is READY to hand to Stage B. It is NOT ready for adoption, integration, control merge or F7-RR-04G closure."
+}

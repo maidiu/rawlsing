@@ -1,0 +1,69 @@
+{
+  "commission": "PYAT-HQ244-F7-NATIVE-OWNER-STAGE-A-CUSTODY-RESOLVE-R1",
+  "scope": "Stage A constructor custody and exact resolve ONLY. No P07 adjudicator exists in Stage A, so none of the results below may be read as a P07/F7 security pass.",
+  "source_vs_empty_victim": {
+    "setup": "a genuinely adjudicated source relation admitted to native custody, with a genuinely independent, genuinely empty native victim sharing the same registry",
+    "victim_registry_shared": true,
+    "source_resolves": true,
+    "victim_absent_before_during_after_hostile_edits": true,
+    "hostile_edits_applied": [
+      "append attacker objects to the caller-visible relations list",
+      "clear and repopulate an unrelated visible container",
+      "remove and re-append the source relation in the visible list",
+      "clear resolver._by_ref and resolver._by_key",
+      "rebind AuthorityRegistry._by_key and _by_ref to empty dicts"
+    ],
+    "custody_hash_unchanged_across_edits": true,
+    "result": "PASS for the Stage A custody/resolve contract only"
+  },
+  "ownership_transfer_attempts": {
+    "copy": "refused (TypeError)",
+    "deepcopy": "refused (TypeError)",
+    "pickle": "refused",
+    "reduce": "refused",
+    "reduce_ex": "refused",
+    "reinit": "refused with one-shot error",
+    "attribute_assignment": "refused with AttributeError",
+    "instance_wrapper_replacement": "type is non-subclassable; no wrapper type can inherit the custody contract"
+  },
+  "post_seal_mutation": {
+    "production_relation_is_frozen": true,
+    "note": "the accepted SourceUniverseRelation raises AttributeError on mutation, so native identity re-verification is a defence-in-depth backstop rather than the primary control",
+    "mutable_substitute_object_detected": true,
+    "mutable_substitute_ref_swap_detected": true,
+    "input_mutation_after_seal_cannot_change_resolve_exact": true
+  },
+  "hq234_hq236_transplantation_shapes_applicable_to_stage_a": {
+    "source_by_ref_only_no_victim_by_key_replacement": {
+      "result": "REFUSED",
+      "mechanism": "resolve_exact performs an exact key lookup against sealed C copies only; there is no by_key or any other secondary index consulted at Stage A, so there is no empty victim by_key cell to transplant into",
+      "limitation": "this is a Stage A structural argument (the substitution surface does not exist yet), NOT a recovery of the full F7 forgery court"
+    },
+    "caller_visible_container_replacement": "REFUSED - custody is C-owned and unreachable from Python",
+    "relation_substitution": "REFUSED - identity re-verification against sealed copies",
+    "not_claimed": [
+      "full F7 four-forgery qualification",
+      "HQ231 executable alias corruption (RED diagnostic, outside live T1 runtime)",
+      "any adjudicator-level attack, because no adjudicator exists at Stage A"
+    ]
+  },
+  "fail_capability_proof": {
+    "method": "compile a deliberately broken build with -DSTAGE_A_FAULT_INJECT, which returns early from resolve_exact and skips all identity re-verification",
+    "good_build": "39 passed",
+    "broken_build": "2 failed, 37 passed",
+    "tests_that_turned_red": [
+      "test_native_custody_detects_post_seal_substitute_object",
+      "test_native_custody_detects_post_seal_ref_swap"
+    ],
+    "restored_good_build": "39 passed",
+    "interpretation": "the Stage A court genuinely depends on the identity re-verification control rather than passing vacuously",
+    "shipped_build_excludes_diagnostic": true,
+    "how_excluded": "the fault hook sits inside #ifdef STAGE_A_FAULT_INJECT; the normal build recipe never defines that macro, and the shipped source/binary are built without it"
+  },
+  "negative_ceiling": {
+    "authorizing": false,
+    "issues_positive_authority": false,
+    "closes_f7_rr_04g": false,
+    "reason": "Stage A has no decide/require implementation, no precedence ladder, no replay decision and no canonical semantic-hash parity. A custody-and-resolve prototype is architecturally not the accepted final shape."
+  }
+}

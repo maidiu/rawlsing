@@ -1,0 +1,71 @@
+{
+  "commission": "PYAT-HQ244-F7-NATIVE-OWNER-STAGE-A-CUSTODY-RESOLVE-R1",
+  "stage": "A",
+  "contract": "P07_NATIVE_STAGE_A_CUSTODY_AND_RESOLVE@1",
+  "authorizing": false,
+  "status": "READY_FOR_STAGE_B_NONAUTHORIZING",
+  "native_module": "rawlsing_next._p07_native_owner_stage_a",
+  "native_type": "StageAOwner",
+  "type_properties": {
+    "compiled_extension": true,
+    "subclassable": false,
+    "non_subclassable_mechanism": "Py_TPFLAGS_BASETYPE intentionally absent from tp_flags",
+    "static_type": true,
+    "instance_lifetime": "PyType_GenericNew + tp_dealloc; every sealed C allocation freed in StageAOwner_dealloc via seal_owner_free_contents",
+    "error_paths_free_custody": true
+  },
+  "custody_model": {
+    "one_shot": true,
+    "seal_flag": "int sealed; 0 before admission, 1 after; re-__init__ raises SourceRelationIntegrityError('...one-shot...')",
+    "no_resealer": true,
+    "no_state_loader": true,
+    "no_copy": "__copy__ and __deepcopy__ both raise TypeError",
+    "no_pickle": "no __reduce__ / __reduce_ex__; both raise TypeError",
+    "no_reinit": true,
+    "no_reconstruction": true,
+    "no_python_visible_mutable_handle": "identity material lives only in C-owned char* copies; no capsule, no exposed dict, no loader",
+    "attributes_immutable": "__setattr__ raises AttributeError for every name",
+    "deep_copies_taken_at_admission": ["relation.ref.key", "relation.content_hash", "relation object key"],
+    "validated_before_seal": true,
+    "two_phase_admission": "identity copies for ALL members are taken first; __init__ failure leaves self unsealed and yields no partially sealed owner"
+  },
+  "admission_guards": {
+    "requires_exact_list_or_tuple": "PyList_Check / PyTuple_Check; generators, sets, mappings and duck-typed iterables refused so no hostile __iter__/__len__/__getattribute__ drives admission",
+    "requires_explicit_registry": "authority_registry=None refused",
+    "requires_trusted_semantic_hash": "must be callable; None refused",
+    "relation_field_types_checked": "ref.key and content_hash must be str",
+    "reentrant_owner_input_rejected": "an already-sealed owner presented as input is refused by the one-shot check"
+  },
+  "resolve_exact_interface": {
+    "method": "resolve_exact(ref) -> SourceUniverseRelation",
+    "read_only": true,
+    "exact_key_only": true,
+    "no_inference": "no label / ID / latest / default matching; miss raises SourceRelationIntegrityError('...no label/ID/latest/default inference')",
+    "accepted_input_shapes": [
+      "object exposing .key (the accepted ExactRef)",
+      "mapping with kind/object_id/content_hash",
+      "object exposing .as_dict()"
+    ],
+    "normalisation": "all shapes folded to the single canonical key string kind|object_id|content_hash",
+    "returns": "a NEW reference to the admitted relation object",
+    "identity_reverification": "on every lookup the live object's ref.key AND content_hash are re-read and compared against the sealed C copies; any post-seal substitute, ref swap or hash mutation raises"
+  },
+  "native_error_types": {
+    "SourceRelationIntegrityError": "rawlsing_next._p07_native_owner_stage_a.SourceRelationIntegrityError (native, NOT the production Python class)",
+    "StageAExactKeyError": "raised when the argument is not an exact ref or ref mapping",
+    "type_separation_asserted": "test_native_error_type_is_distinct_from_production"
+  },
+  "non_authorizing_surface": {
+    "decide": "raises SourceRelationIntegrityError carrying NOT_IMPLEMENTED_NONAUTHORIZING_STAGE_A",
+    "require": "raises SourceRelationIntegrityError carrying NOT_IMPLEMENTED_NONAUTHORIZING_STAGE_A",
+    "no_silent_python_delegation": true,
+    "no_positive_authority_symbol": "module and type expose no AUTHORIZED, RelationDecision, authorize or issue symbol",
+    "cannot_issue": ["P07 AUTHORIZED", "positive RelationDecision", "F7 receipt"],
+    "cannot_close": "F7-RR-04G"
+  },
+  "tcb_seam": {
+    "trusted_semantic_hash": "module-level canonical hash supplied by the embedding application at construction; stored natively, never replaceable from Python at resolve time",
+    "by_key_index_key": "Stage A derives the index key natively from the already-validated exact ref key, deliberately avoiding any Python callback in the admission path; Stage B MUST replace this with true relation object key material"
+  },
+  "custody_hash_caveat": "the exposed custody_hash is a deterministic native FNV-1a walk over sealed keys and is PROVENANCE ONLY. It is explicitly NOT the accepted P07 custody hash and must not be presented as one."
+}

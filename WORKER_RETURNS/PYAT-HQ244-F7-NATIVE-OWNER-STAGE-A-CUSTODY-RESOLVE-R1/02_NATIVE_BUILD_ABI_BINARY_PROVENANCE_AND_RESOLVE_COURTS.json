@@ -1,0 +1,119 @@
+{
+  "commission": "PYAT-HQ244-F7-NATIVE-OWNER-STAGE-A-CUSTODY-RESOLVE-R1",
+  "environment": {
+    "governed_interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+    "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "interpreter_sha256_required": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "interpreter_sha256_match": true,
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq244-stagea",
+    "hq242_worktree_reused": false,
+    "independent_clone": false,
+    "shared_object_store": true
+  },
+  "git": {
+    "commission_tip_verified_remote": "e7822b37f22370b83d921baab1b31bc6aa405b41",
+    "commission_base_declared": "d6ce7101c76c85bd358b7c59568935ec69dfa912",
+    "commission_base_is_ancestor_of_tip": true,
+    "tip_is_base_plus_single_commission_commit": true,
+    "branch": "agent/space-bunny-pyat-hq244-f7-native-owner-stage-a-custody-resolve-r1",
+    "forced_or_rebased": false,
+    "blind_pull": false
+  },
+  "base_blob_verification": {
+    "P07_pre553_source_relations": {
+      "observed": "8053d30d306a3654ebf563043088311ff390bb2b",
+      "required": "8053d30d306a3654ebf563043088311ff390bb2b",
+      "match": true
+    },
+    "F7_pre553_temporal_comparability": {
+      "observed": "6f6b462b1cdef54d7989f15452473383c1661594",
+      "required": "6f6b462b1cdef54d7989f15452473383c1661594",
+      "match": true
+    }
+  },
+  "build": {
+    "compiler": "Apple clang version 14.0.3 (clang-1403.0.22.14.1)",
+    "required_flag": "-undefined dynamic_lookup",
+    "required_flag_reason": "macOS requires dynamic resolution of CPython symbols; a naive -shared link FAILS with Undefined symbols for architecture x86_64 (this reproduces the HQ242 finding)",
+    "recipe": "clang -shared -fPIC -O2 -Wall -Wextra -Wno-unused-parameter -undefined dynamic_lookup -I<sysconfig include> -o rawlsing_next/_p07_native_owner_stage_a.cpython-311-darwin.so rawlsing_next/_p07_native_owner_stage_a.c",
+    "include_dir": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/include/python3.11",
+    "warnings": "clean build (no -Wall/-Wextra warnings) after fixes",
+    "build_failures_encountered_and_fixed": [
+      "PyErr_NoMemory() returns PyObject* and was returned from int-returning functions",
+      "type() macro is not available in the public C-API; replaced with Py_TYPE()",
+      "Py_BuildValue format had 7 keys but only 6 value specs, causing a SEGFAULT on the diagnostic path",
+      "resolve_exact read the key from an uninitialised pointer on the direct-ref path, causing a SEGFAULT",
+      "raw dict ref mappings had no as_dict() method and were rejected"
+    ]
+  },
+  "abi": {
+    "python": "3.11.3",
+    "implementation": "CPython",
+    "soabi": "cpython-311-darwin",
+    "ext_suffix": ".cpython-311-darwin.so",
+    "machine": "x86_64",
+    "macos": "13.7.8",
+    "pointer_size": 8,
+    "limited_api": false
+  },
+  "binary": {
+    "path": "rawlsing_next/_p07_native_owner_stage_a.cpython-311-darwin.so",
+    "sha256": "94683dd76cfa9c4d76958ef14f006f97616e0b082b4510cbea38768a8047fd04",
+    "bytes": 53048,
+    "file_type": "Mach-O 64-bit dynamically linked shared library x86_64",
+    "committed_to_repo": false,
+    "import_location": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq244-stagea/rawlsing_next/_p07_native_owner_stage_a.cpython-311-darwin.so",
+    "import_verified": true
+  },
+  "source": {
+    "path": "rawlsing_next/_p07_native_owner_stage_a.c",
+    "sha256": "9acd1e9ae2b21bb67703f1b8cd3c9c5ab08873981a7a696d124498c68fbdedf2",
+    "lines": 719
+  },
+  "court": {
+    "path": "rawlsing_next/tests/test_p07_native_stage_a_custody.py",
+    "sha256": "8230bdfb7697b41727744f1b55fa414f6666612ca3e3091a8329f3ac82385d7f",
+    "stage_a_tests": 39,
+    "stage_a_result": "39 passed",
+    "covers": [
+      "real compiled extension import and declared non-authorizing markers",
+      "non-subclassability",
+      "native error type distinct from production",
+      "one-shot custody, re-init refusal",
+      "copy / deepcopy / pickle / reduce / reduce_ex refusal",
+      "immutable attributes",
+      "hostile duck-typed iterable and generator refused at admission",
+      "trusted_semantic_hash and registry required",
+      "non-relation members and partial batches refused without sealing",
+      "exact resolve returns source, matches PRODUCTION baseline, accepts all three ref shapes",
+      "empty victim, wrong object_id, wrong kind, wrong content_hash, near-miss/truncated/empty keys all refused",
+      "post-seal substitute object, content_hash mutation and ref swap all detected",
+      "registry replacement immunity and hostile visible-container churn",
+      "decide/require fail closed with NOT_IMPLEMENTED_NONAUTHORIZING_STAGE_A",
+      "no positive authority symbol exists on the native surface",
+      "production P07/F7 modules contain no reference to the native Stage A module"
+    ]
+  },
+  "production_regression": {
+    "P07_court": "24 passed",
+    "F7_court": "163 passed",
+    "production_files_mutated": "none",
+    "git_diff_vs_commission_tip_for_P07_F7_and_accepted_tests": "empty"
+  },
+  "broad_regression": {
+    "command": "pytest rawlsing_next/tests -q -p no:randomly --continue-on-collection-errors --ignore=rawlsing_next/tests/test_p07_native_stage_a_custody.py",
+    "result": "45 failed, 2691 passed, 55 warnings, 16 errors, 28 subtests passed",
+    "hq242_baseline_passed_count": 2691,
+    "passed_count_matches_hq242_baseline": true,
+    "hq242_baseline_failed_count": 45,
+    "failed_count_matches_hq242_baseline": true,
+    "error_count_vs_hq242_baseline": "16 here vs 7 in the HQ242 baseline; NOT claimed as a digest match",
+    "extra_error_cause": "9 collection-time errors from genuinely absent optional dependencies (pandas ABSENT, pyarrow ABSENT, rawlsing_next.tests.d07_bounded_loss_harness) plus 7 pre-existing runtime errors",
+    "collection_error_proof": "collection yields 9 errors BOTH with and without the Stage A files present; test count rises exactly 2743 -> 2782 (+39). Stage A therefore adds ZERO collection errors and exactly its own 39 tests.",
+    "stage_a_module_appears_in_any_failure_or_error": false,
+    "normalized_digest_computed_by_me": "72d0a5ca347d71f207a77bca3609dfa5931a3c6f29224a2f3f860ebc3ab09ffe",
+    "hq242_required_digest": "278854ee94fadfd57284a572441522fb56105081f89af431b17ec2e556ace6a9",
+    "digest_match_claimed": false,
+    "digest_discrepancy_honesty": "my normalisation/ordering differs from the HQ242 procedure and my invocation reaches optional-dependency collection errors HQ242's run did not. The passed and failed counts match exactly; the digest does not, and is reported as NOT matched rather than forced."
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "commission": "PYAT-HQ244-F7-NATIVE-OWNER-STAGE-A-CUSTODY-RESOLVE-R1",
+  "branch": "agent/space-bunny-pyat-hq244-f7-native-owner-stage-a-custody-resolve-r1",
+  "commission_tip": "e7822b37f22370b83d921baab1b31bc6aa405b41",
+  "agent": "Space Bunny / OpenCode",
+  "model": "Space Bunny Max (space-bunny-free)",
+  "disposition": "F7_NATIVE_STAGE_A_CUSTODY_AND_RESOLVE_READY__NONAUTHORIZING_FOR_STAGE_B",
+
+  "what_was_actually_built": {
+    "real_compiled_native_type": true,
+    "non_subclassable": true,
+    "one_shot_constructor_custody": true,
+    "deep_immutable_owner_local_custody": true,
+    "exact_key_only_resolve": true,
+    "post_seal_identity_reverification": true,
+    "identity_reverification_covers": ["relation.ref.key", "relation.content_hash"],
+    "stage_a_court": "39 passed",
+    "fail_capability_proven": "deliberately broken build turns the court red (2 failed); shipped build excludes the diagnostic",
+    "production_untouched": "P07 24 passed, F7 163 passed, zero production or accepted-test mutation",
+    "non_authorizing_by_construction": true
+  },
+
+  "explicitly_not_done": [
+    "no P07 adjudicator (decide/require are unconditional NOT_IMPLEMENTED failures)",
+    "no positive authority, no P07 AUTHORIZED, no RelationDecision, no F7 receipt",
+    "no CONFLICTING_AUTHORITY precedence",
+    "no 12-state ladder",
+    "no replay identity decision",
+    "no canonicalise/semantic_hash parity; custody_hash is provenance only",
+    "no real relation object key / by_key authority index",
+    "no production integration and none attempted",
+    "no four-forgery court pass, no five lawful positives, no V2-V4 re-measurement",
+    "F7-RR-04G REMAINS OPEN"
+  ],
+
+  "environment_blocker": false,
+  "build_capability_defect": false,
+  "named_blockers": [],
+
+  "honest_caveats": [
+    "The broad-regression passed (2691) and failed (45) counts match the HQ242 baseline exactly, but the error count differs (16 vs 7) and my normalized digest 72d0a5ca... does NOT match the HQ242 required digest 278854ee.... The extra errors are collection-time failures from genuinely absent optional dependencies (pandas, pyarrow, d07 harness). No digest match is claimed.",
+    "Stage A's resolve_exact does not re-hash semantic_projection(); it re-verifies ref.key and content_hash only. Full parity re-hashing is an explicit Stage B item.",
+    "Stage A's by_key index key is derived from the exact ref key rather than the true relation object key. That removes a Python callback from admission, but it is a deliberate simplification that Stage B must replace with real object-key material.",
+    "The identity re-verification is defence in depth: the accepted production relation is already frozen, so the substitute-object tests use a purpose-built mutable stand-in.",
+    "Two real memory-safety defects (a NULL key read and a malformed Py_BuildValue format) were found and fixed during Stage A; both manifested as segfaults before the fix. They are recorded rather than hidden."
+  ],
+
+  "baseline_preservation": {
+    "production_P07_blob": "8053d30d306a3654ebf563043088311ff390bb2b (unchanged)",
+    "production_F7_blob": "6f6b462b1cdef54d7989f15452473383c1661594 (unchanged)",
+    "P07_court": "24 passed",
+    "F7_court": "163 passed",
+    "broad_passed": 2691,
+    "broad_failed": 45,
+    "differences_caused_by_stage_a": "none; the native module appears in zero failures and zero errors, and adds exactly its own 39 tests"
+  },
+
+  "mutation_record": {
+    "new_files": [
+      "rawlsing_next/_p07_native_owner_stage_a.c",
+      "rawlsing_next/tests/test_p07_native_stage_a_custody.py",
+      "WORKER_RETURNS/PYAT-HQ244-F7-NATIVE-OWNER-STAGE-A-CUSTODY-RESOLVE-R1/00_RETURN.md",
+      "WORKER_RETURNS/PYAT-HQ244-F7-NATIVE-OWNER-STAGE-A-CUSTODY-RESOLVE-R1/01_EXACT_NATIVE_TYPE_CONSTRUCTOR_CUSTODY_INTERFACE.json",
+      "WORKER_RETURNS/PYAT-HQ244-F7-NATIVE-OWNER-STAGE-A-CUSTODY-RESOLVE-R1/02_NATIVE_BUILD_ABI_BINARY_PROVENANCE_AND_RESOLVE_COURTS.json",
+      "WORKER_RETURNS/PYAT-HQ244-F7-NATIVE-OWNER-STAGE-A-CUSTODY-RESOLVE-R1/03_SOURCE_VICTIM_ATTACK_AND_FAIL_CAPABILITY_PROOF.json",
+      "WORKER_RETURNS/PYAT-HQ244-F7-NATIVE-OWNER-STAGE-A-CUSTODY-RESOLVE-R1/04_STAGE_B_FULL_P07_PORT_DEPENDENCIES_AND_PARITY_PLAN.json",
+      "WORKER_RETURNS/PYAT-HQ244-F7-NATIVE-OWNER-STAGE-A-CUSTODY-RESOLVE-R1/05_SCOPE_QUARANTINE_NEGATIVE_CEILING_AND_NEXT_GATES.json",
+      "WORKER_RETURNS/PYAT-HQ244-F7-NATIVE-OWNER-STAGE-A-CUSTODY-RESOLVE-R1/06_FINAL_DISPOSITION.json"
+    ],
+    "modified_production_files": [],
+    "committed_binaries": [],
+    "control_merge": false,
+    "semantic_authority_change": false,
+    "self_adoption": false
+  }
+}
