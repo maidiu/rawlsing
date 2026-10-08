@@ -1,0 +1,74 @@
+{
+  "schema": "PYAT_HQ247_OWNER_ROOT_PLACEMENT_SEQUENCE_AND_DOWNSTREAM_NONPROPAGATION@1",
+  "status": "DOCUMENTARY_DEPENDENCY_MAP_NO_EXECUTION",
+  "state_on_receipt": {
+    "R3_warrant": "HQ247_DOCUMENTARY_ADOPTED",
+    "C1_owner_designation": "NOT_SHOWN_APPROVED",
+    "owner_proposal": "NOT_PREPARED",
+    "HQ_root_approval": "UNISSUED",
+    "owner_root_installation": "UNISSUED",
+    "independently_pinned_verifier_ack": "UNISSUED",
+    "HQ_issuer_epoch_activation": "UNISSUED",
+    "registered_C1_build_invocation_site_handoff_N10E_site": "NONE",
+    "model_R4": "NONE",
+    "i01_authority_kinds": 18,
+    "hostile_courts_proposed_unexecuted": 43,
+    "productive_courts_proposed_unexecuted": 10
+  },
+  "exact_future_order": [
+    "0 HQ247 ADOPT exact narrow R3 documentary warrant [COMPLETED]",
+    "1 HQ separately DESIGNATE one competent C1-01 source-free owner assembly and a governed placement operator, documenting real deployment identity and separately provisioned verifier",
+    "2 Authorized owner PREPARE candidate unique initial epoch, journal genesis, exact root/placement manifest and separate writer/verifier principals [proposal only; no installation]",
+    "3 HQ independently APPROVE exact proposal bytes, nonreused epoch and owner/root pair [installation permission only]",
+    "4 Designated C1 owner INSTALL only HQ-approved fixed material into controlled writer path; independent installer PIN verifier read root from HQ-controlled approval, not from registrar output",
+    "5 Independent verifier ACK exact installed digest, HQ approval and journal genesis through separate trusted read placement",
+    "6 HQ independently ACTIVATE the exact epoch after both installation acknowledgments and competing-root/fork/currentness checks",
+    "7 Owner-issued BUILD then INVOCATION then authenticated C1 COMPATIBILITY SITE; only after current C1 site owner issues distinct HANDOFF; after non-null handoff authenticate/register N10E SITE; provider/replay reverify all ancestors CURRENT"
+  ],
+  "transition_requirements": {
+    "root_to_journal": "Unique (epoch, sequence) atomically durable across build, invocation, C1 site, handoff, N10E site, rotation/negative events; equal content != equal build; fork or duplicate => refusal",
+    "c1_compatibility": {
+      "token": "SOURCE_FREE_C1_01_COMPATIBILITY",
+      "cross_site_handoff_ref": null,
+      "site_authentication": "C1 ingress identity from adopted owner deployment, not caller label"
+    },
+    "c1_to_n10e": {
+      "issuer": "C1 trusted owner registrar ONLY",
+      "requires": "live C1 compatibility journal parent, same unique registered build and sealed invocation, same directional producer/predicate/consumer/16-key witness and authenticated N10E receiving ingress",
+      "journal_handoff_ref": "REQUIRED_EVENT_NOT_CREATED"
+    },
+    "n10e_lifecycle": {
+      "token": "SOURCE_FREE_N10E_LIFECYCLE",
+      "cross_site_handoff_ref": "MANDATORY_NON_NULL_OWNER_ISSUED_JOURNAL_MEMBER",
+      "direct_from_invocation_forbidden": true,
+      "independent_currentness": "epoch/build/invocation/C1 site/handoff/N10E site rechecked before provider and replay"
+    }
+  },
+  "future_R4_dependent_only": [
+    "Model authority R4 preimages after operational trusted context/issuer prerequisites; do NOT treat documentary warrant as R4 model-rule identity",
+    "Independent hostile review of exact R4 candidate, distinct HQ R4 approval, existing I01 kind extension only by separate authorization",
+    "Separate production C1/N10E owner-native implementation commission and runtime qualification; historical six Z08/A05 states retained",
+    "Execute 43 hostile and 10 productive courts under future authorized runtime (both forward 54/60 and reverse 54/62 positive evidence), not assumed by documentary review"
+  ],
+  "hard_ceiling": [
+    "No new root, epoch, credential, trust pin, issuer journal or installation in HQ247 preflight",
+    "No changed-source 110, real-source effect, 19th I01 kind, AuthoritySnapshot, R4 canonical hashes",
+    "No prediction, geometry invention, thresholds, smoothing, comparison, pooling, causal/normative inference, actor/V3 or F7 adversarial process security",
+    "No C1/N10E direct registration, caller-supplied trusted root, self-approving or self-activating owner",
+    "No production code mutation, source execution, Mac access, tests, or control-branch writes"
+  ],
+  "next_owner_native_commission": {
+    "owner_designation_required_first": true,
+    "type": "SEPARATE_HQ_DESIGNATED_OWNER_NATIVE_LOCAL_ENGINEERING_WORK_ORDER",
+    "scoped_mission": "Inventory real C1-01 deployment/execution assembly and independently controlled verifier deployment, identify deployable owner operator and trusted writer/read principals, design unique epoch and durable journal genesis, prepare verifiable root placement PROPOSAL only; report exact local binding and independent installer access to HQ before any root approval. Post-approval installation and ACK require distinct subsequently authorized phase.",
+    "evidence_to_return": [
+      "deployment identity and owner function provenance",
+      "writer capability and storage/journal concurrency model",
+      "independent verifier read placement and installer competence",
+      "unique epoch collision/fork prevention",
+      "proposed exact root manifest bytes and genesis digest only if expressly HQ-authorized under next commission",
+      "no current epoch claim"
+    ],
+    "forbidden_in_next_pre_approval": "No self-granted authority, no active root, no credential issuance, no simulated independent verifier signoff, no R4 work, no raw survey access"
+  }
+}

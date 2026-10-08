@@ -1,0 +1,159 @@
+{
+  "schema": "PYAT_HQ247_C1_AT07_OWNER_ROOT_PLACEMENT_DOCUMENTARY_EVIDENCE_CENSUS@1",
+  "inspection_mode": "BROWSER_GITHUB_ONLY__NO_LOCAL_EXECUTION",
+  "exact_commission_tip": "4ccae64c8999efe69934262e2ce0487d345de5a4",
+  "immutable_candidate_base": "338aa789dd20d04c83175a6593172fee4b61c078",
+  "adoption": {
+    "decision": "HQD-2026-10-08-247",
+    "control_commit": "b5de9ef902abfecba2d1631212810b55bde46a2e",
+    "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ247_ADOPTED/00_EXPLICIT_GOVERNANCE_ADOPTION.json",
+    "blob": "4a66b58aa704fa525b62d7cb16fac88b73b9026f",
+    "scope": "ADOPTED_PROSPECTIVE_DOCUMENTARY_WARRANT_ONLY",
+    "operational_root_authorized": false
+  },
+  "canonical_warrant": {
+    "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/01_BOUNDED_WARRANT_CANDIDATE_PREIMAGE.json",
+    "blob": "d1c835119a08bb27124c87b15485d6b83b91659f",
+    "reviewed_candidate_commit": "338aa789dd20d04c83175a6593172fee4b61c078",
+    "normative_root_blob": "f0e05df99cc7ec8c3445b37e461fad86948f140e",
+    "normative_handoff_blob": "a8c31625fcfb7bd65007e30ee2dda579d3b85e3e",
+    "independent_review_commit": "d659b5462c25be347d67f5a4f9873f5f1f645fc9",
+    "independent_review_path": "WORKER_RETURNS/PYAT-HQ246-N10E-AT07-WARRANT-R3-INDEPENDENT-HOSTILE-REVIEW-R1/00_REVIEW.md",
+    "independent_review_blob": "a0bc829a23793dd223cb5b31273bb11da35f7160"
+  },
+  "normative": [
+    {
+      "role": "SOLE_ROOT_CONTRACT",
+      "path": "WORKER_RETURNS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/01_EXACT_BOOTSTRAP_ROOT_AUTHORITY_AND_ROTATION_CONTRACT.json",
+      "blob": "f0e05df99cc7ec8c3445b37e461fad86948f140e",
+      "source_commit": "cdef72ddc805e3ed943bac9f9241467454df8030",
+      "provisioning_rule": "HQ root approval distinct from owner placement, verifier independent pin, HQ activation distinct from acknowledgment"
+    },
+    {
+      "role": "SOLE_C1_N10E_HANDOFF_CONTRACT",
+      "path": "WORKER_RETURNS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/02_IMMUTABLE_C1_N10E_OWNER_HANDOFF_TRANSITION.json",
+      "blob": "a8c31625fcfb7bd65007e30ee2dda579d3b85e3e",
+      "source_commit": "cdef72ddc805e3ed943bac9f9241467454df8030",
+      "provisioning_rule": "owner-journal-issued C1 parent -> nonnull handoff -> separately registered N10E use"
+    }
+  ],
+  "accepted_current": [
+    {
+      "role": "ACCEPTED_C1_01_SOURCE_FREE_VERTICAL_SLICE",
+      "commit": "5fafb499d53dddadaf8a7b4fd46506e91a09d270",
+      "path": "WORKER_RETURNS/PYAT-C1-01-SOURCE-FREE-INTEGRATION-R1/00_INTEGRATION_RECEIPT.md",
+      "blob": "34a0c52b78d7f8b4f58d8bddbb092cae341ef50b",
+      "right": "synthetic source/free producer->consumer plus 16-key value witness and exact R8 identities",
+      "not_right": "fixture registrar deployment authority"
+    },
+    {
+      "role": "C1_SYNTHETIC_TEST_ASSEMBLY",
+      "path": "rawlsing_next/tests/test_pre553_analytical_composition.py",
+      "blob": "2210fc1b4cb99552aafc8797c12d780a78e7983b",
+      "ranges": [
+        "90-145",
+        "285-325"
+      ],
+      "right": "pytest at07 creates _rows + AuthorityRegistry; _model(source) builds fixture-only rule",
+      "not_right": "independently approved owner build-instance registrar or trusted root installer"
+    },
+    {
+      "role": "C1_COMPOSITION_OWNER",
+      "path": "rawlsing_next/pre553_analytical_composition.py",
+      "blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "ranges": [
+        "1008-1095"
+      ],
+      "right": "direct I03 composition, witness validation and public consumer route",
+      "not_right": "issuer bootstrap or verifier trusted pin"
+    },
+    {
+      "role": "N10E_TEST_CASE",
+      "path": "rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+      "blob": "0e384f72fa615dc72a0dcb08a36472a64b7b1e4a",
+      "ranges": [
+        "485-527"
+      ],
+      "right": "separate synthetic source construction and model build",
+      "not_right": "same owner-journal-issued C1 registered build and handoff"
+    },
+    {
+      "role": "N10E_PROVIDER",
+      "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+      "blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "ranges": [
+        "140-215",
+        "531-659"
+      ],
+      "right": "eight-request-field provider and replay",
+      "not_right": "C1 origin credential, handoff issuance, independent context resolver"
+    },
+    {
+      "role": "R8_CONTENT_IDENTITY_SPINE",
+      "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json",
+      "blob": "462bb282ddc2cc9667f1890f2d65f2fae9a3a72c",
+      "right": "immutable synthetic source and directional witnesses",
+      "not_right": "unique runtime build instance / writer or verifier identity"
+    },
+    {
+      "role": "I01_AUTHORITY_RESOLVER",
+      "path": "rawlsing_next/pre553_empirical_authority.py",
+      "blob": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+      "right": "existing 18 authority kinds",
+      "not_right": "nineteenth model kind, fixture credentials or deployment pin"
+    },
+    {
+      "role": "I02_C11_SEAL",
+      "path": "rawlsing_next/pre553_c11_repository.py",
+      "blob": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+      "right": "exact C11 release validation",
+      "not_right": "authenticated caller site use"
+    },
+    {
+      "role": "Z06_AUTHORITY_LIFECYCLE",
+      "path": "rawlsing_next/pre553_authority_maintenance.py",
+      "blob": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+      "right": "semantic authority revision and negative currentness",
+      "not_right": "new AT07 build registrar"
+    },
+    {
+      "role": "C1_03R_DEPENDENCY",
+      "path": "rawlsing_next/pre553_analytical_replay_dependency.py",
+      "blob": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+      "right": "actually consumed dependent product determinants",
+      "not_right": "original fixture credential issuance"
+    },
+    {
+      "role": "RUNTIME_BINDER",
+      "path": "rawlsing_next/pre553_runtime_context.py",
+      "blob": "4fc50793871e176f164442c04ef2501eba9d5dfa",
+      "right": "caller-carried runtime authority selection",
+      "not_right": "independently provisioned issuer"
+    },
+    {
+      "role": "EARLIER_DOCUMENTARY_ARCHAEOLOGY",
+      "path": "WORKER_RETURNS/PYAT-HQ239-N10E-C1-FIXTURE-CONTEXT-ISSUER-OWNER-ARCHAEOLOGY-R1/00_RETURN.md",
+      "blob": "968c3b46535dae98da43940494ce21068152344b",
+      "right": "bounded negative issuer census",
+      "not_right": "proof no possible future owner"
+    }
+  ],
+  "verified_at_cited_tree": {
+    "commit": "338aa789dd20d04c83175a6593172fee4b61c078",
+    "tree_truncated": false,
+    "files_in_tree": 8748
+  },
+  "conclusion": {
+    "accepted_code_owner_boundary": "rawlsing_next/pre553_analytical_composition.py / C1-01 source-free producer-consumer composition; fixture setup in test module",
+    "future_delegated_role": "SINGLE later HQ-designated C1-01 source-free fixture-owner assembly",
+    "actual_deployment_owner_identity": null,
+    "actual_owner_assembly_ref": null,
+    "actual_trusted_writer_principal": null,
+    "actual_independent_verifier_principal": null,
+    "actual_verifier_installation_pin": null,
+    "actual_journal_genesis": null,
+    "actual_epoch": null,
+    "competence_not_inferred_from_files": true,
+    "absence_claim_scope": "These inspected accepted C1, N10E, I01/I02/Z06, test, R8, HQ239/HQ246 and HQ247 documentary paths; not an omniscient absence proof over unrelated repository paths."
+  }
+}

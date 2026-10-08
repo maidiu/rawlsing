@@ -1,0 +1,70 @@
+{
+  "schema": "PYAT_HQ247_CANDIDATE_NEUTRAL_PRE_APPROVAL_C1_OWNER_ROOT_PROPOSAL_SKELETON@1",
+  "status": "PREFLIGHT_TEMPLATE_ONLY__NOT_OWNER_PROPOSAL__NOT_AN_INSTALLER",
+  "authority": "HQD-2026-10-08-247 documentary R3 adoption is necessary but insufficient",
+  "future_record_kind": "C1_AT07_OWNER_ROOT_PLACEMENT_PROPOSAL@2",
+  "owner_designation_gate": {
+    "designating_body": "PYAT_HQ",
+    "explicit_designation_decision_ref": null,
+    "designated_owner_assembly_ref": null,
+    "designated_local_owner_native_operator_ref": null,
+    "bound_c1_01_release_assembly_function": null,
+    "deployment_environment_identity_ref": null,
+    "authority_scope": "ONE source-free AT07 C1-01 build registrar and distinct C1/N10E site custody; not real sources or model authority"
+  },
+  "owner_proposal_only_after_designation": {
+    "adopted_warrant_exact_decision": "HQD-2026-10-08-247",
+    "adopted_warrant_documentary_subject": {
+      "candidate_commit": "338aa789dd20d04c83175a6593172fee4b61c078",
+      "warrant_git_blob": "d1c835119a08bb27124c87b15485d6b83b91659f"
+    },
+    "adopted_warrant_operational_ref": null,
+    "approved_c1_owner_assembly_ref": null,
+    "owner_deployment_identity_ref": null,
+    "proposed_unique_initial_epoch_ref": null,
+    "uniqueness_nonreuse_registry_and_adjudicator": null,
+    "proposed_owner_journal_id": null,
+    "proposed_journal_genesis_manifest_ref": null,
+    "proposed_journal_root_content_hash": null,
+    "journal_single_writer_atomic_monotone_sequence_design": null,
+    "approved_deployment_build_manifest_ref": null,
+    "registrar_writer_principal_ref": null,
+    "registrar_writer_capability_id": null,
+    "separate_verifier_reader_principal_ref": null,
+    "independently_provisioned_verifier_read_root_id": null,
+    "independent_verifier_install_channel_or_artifact_ref": null,
+    "exact_root_pin_manifest_digest": null,
+    "owner_C1_authenticated_ingress_identity_ref": null,
+    "independent_N10E_receiving_ingress_identity_ref": null,
+    "owner_installation_receipt_ref": null,
+    "independent_verifier_ack_ref": null,
+    "HQ_root_approval_event_ref": null,
+    "HQ_activation_event_ref": null
+  },
+  "future_HQ_root_approval_conditions": [
+    "Explicit named owner deployment identity and owner assembly; no symbolic C1 owner name alone",
+    "Concretely separate registrar writer and verifier root-pin installer/read principals, verifiable non-caller configuration",
+    "Unique unused initial epoch plus append-only genesis and single durable sequence; no reset, latest or branch-head trust",
+    "Freeze exact immutable root/placement manifest and journal-genesis digest; HQ approves particular bytes before installer",
+    "HQ approval references adopted narrow R3 warrant; independent verifier installation acknowledgment after exact bytes installed",
+    "HQ alone activates AFTER separate owner installation and verifier ACK, with no competing current epoch"
+  ],
+  "source_free_fixed_context": {
+    "fixture_id": "AT07_BIDIRECTIONAL_100",
+    "release_object_id": "REL-c1-at07",
+    "release_sha256": "dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3",
+    "universe_sha256": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+    "manifest_sha256": "01ee5fa6db95efad3ce0acecd656f51beb6c2f2e21bc30e49bd358633f9ad6a1",
+    "static_snapshot_interval": "AT07_FIXTURE_ONLY",
+    "actual_conditioner_effective_time_or_interval": null,
+    "actual_16_key_witness_effective_time_or_interval": null,
+    "real_source_effect": false
+  },
+  "credentials_minted": false,
+  "epoch_reserved": false,
+  "root_approved": false,
+  "root_installed": false,
+  "verifier_ack": false,
+  "epoch_activated": false,
+  "contract_only": true
+}
