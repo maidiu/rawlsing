@@ -1,0 +1,177 @@
+{
+  "schema": "PYAT_HQ241_C1_N10E_TWO_SITE_ENTRYPOINT_REPLAY_AUDIT@1",
+  "disposition": "C1_AT07_FIXTURE_ISSUER_WARRANT_PARTIAL__NAMED_DEFECT",
+  "positive_properties": [
+    {
+      "id": "E01",
+      "result": "PASS_AS_FUTURE_INTERFACE_PROPOSAL",
+      "detail": "C1 at07/_model direct fixture construction and C1 compose ingress independently gated before newly owner-native stable rule or producer use"
+    },
+    {
+      "id": "E02",
+      "result": "PASS_AS_FUTURE_INTERFACE_PROPOSAL",
+      "detail": "Eight existing N10E request fields correctly enumerated, future required fixture_use_context_ref is only a locator; independent verifier also required"
+    },
+    {
+      "id": "E03",
+      "result": "PASS_AS_FUTURE_INTERFACE_PROPOSAL",
+      "detail": "Correct C1 and N10E site tokens are distinct and intended for individually issuer-recorded use, not caller text"
+    },
+    {
+      "id": "E04",
+      "result": "PASS_AS_FUTURE_INTERFACE_PROPOSAL",
+      "detail": "Positive and refused N10E provider receipts bind issuer/build/context provenance; no response geometry supplied by caller"
+    },
+    {
+      "id": "E05",
+      "result": "PASS_AS_FUTURE_INTERFACE_PROPOSAL",
+      "detail": "Replay expected result equality cannot substitute for issuer/build/site identity checks; revocation separates current and historical audit"
+    },
+    {
+      "id": "E06",
+      "result": "PASS_AS_FUTURE_INTERFACE_PROPOSAL",
+      "detail": "C1-03R only registers consumed dependency edges; Z06 maintains actual governed semantic lifecycle, not issuer registration"
+    }
+  ],
+  "blocking_defect": {
+    "id": "HQ241-DEFECT-N10E-HANDOFF-SITE-EVENT-CUSTODY-002",
+    "finding": "The proposed registration state-machine allows INVOCATION_SEALED → SITE_USE_ACTIVE for either authenticated C1 OR N10E route. The candidate N10E site-use preimage deliberately retains 'cross_site_handoff_ref_or_null: null' with no N10E-specific non-null/provenance invariant. The future 'owner.authorize_N10E_site_handoff' interface takes an 'exact C1→N10E handoff event' as INPUT rather than specifying its competent origin/issuance/verification. Consequently the exact registry transition that distinguishes a genuine C1-issued predecessor handoff from a separately assembled (even identical-R8) N10E site call remains not frozen.",
+    "direct_candidate_evidence": [
+      {
+        "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ240_R1/01_BOUNDED_WARRANT_CANDIDATE_PREIMAGE.json",
+        "field": "allowed_operations.REGISTER_AT07_SITE_USE",
+        "text": "authenticated C1 or N10E callsite from owner-controlled ingress"
+      },
+      {
+        "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ240_R1/02_ISSUER_CREDENTIAL_AND_VERIFIER_PREIMAGES.json",
+        "field": "candidate_site_use_record_preimage.cross_site_handoff_ref_or_null",
+        "text": "null with no N10E non-null invariant or exact C1 site parent"
+      },
+      {
+        "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ240_R1/02_ISSUER_CREDENTIAL_AND_VERIFIER_PREIMAGES.json",
+        "field": "transitions INVOCATION_SEALED→SITE_USE_ACTIVE",
+        "text": "general site transition; no C1-site predecessor precondition for N10E"
+      },
+      {
+        "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ240_R1/03_C1_N10E_ENTRYPOINT_CONTRACT.json",
+        "field": "owner.authorize_N10E_site_handoff.inputs",
+        "text": "Original build instance/receipt, invocation seal, exact C1→N10E handoff event, N10E authenticated route"
+      }
+    ],
+    "hostile_witness": "A future registrar could lawfully claim N10E SITE_USE_ACTIVE directly from a registered INVOCATION_SEALED build by deriving the N10E route token; the candidate does not require a positive already-journaled C1 site-use ancestor in that transition. Alternatively it can accept caller-carried 'exact handoff event' without an owner-issuance law. Both paths allow a site grant without proof of C1→N10E custody, even when all R8 static content matches.",
+    "do_not_overclaim": "The candidate repeatedly states 'same originating registered build' and 'distinct authenticated transition'; that intention is correct and present. The missing specific N10E state-machine guard/predecessor proof is the defect, not mere failure to mention handoff.",
+    "minimal_correction": [
+      "Define a separately governed owner-ISSUED C1→N10E handoff event, not a caller-supplied precondition or free-floating exact ref. Name the operation authorized to mint it and the exact owner boundary invoked.",
+      "Identity-bind registered C1 site-use ref, C1 invocation-seal ref, original immutable build instance/registration receipt, exact source/release/query/predicate/witness, authenticated originating C1 callsite, N10E receiving callsite and route, approved issuer/warrant/epoch, original event sequence and handoff ref.",
+      "Make N10E site registration a distinct transition requiring positive non-null valid handoff_ref with exact C1 parent and SAME build-instance; no C1 site can be minted by merely supplying route string and no N10E context can be minted directly from INVOCATION_SEALED with null handoff.",
+      "Require independently provisioned verifier to check full parent chain (build → invocation → C1 site → handoff → N10E site) against its own journal, plus unrevoked/current issuer and both use records, before C1/N10E provider/replay and lifecycle.",
+      "Preserve old/other lawful C1 paths; use future model-rule-specific gating and do not mistake legacy test _model(source) for new owner-native factory."
+    ],
+    "severity": "ADOPTION_BLOCKER__OWNER_ENTRYPOINT_CUSTODY_UNFROZEN",
+    "status": "FAIL"
+  },
+  "actual_code_anchors": {
+    "c1_fixture": "test_pre553_analytical_composition.py:105-145,298-325: no issuer gate before fixture model constructor",
+    "c1_owner": "pre553_analytical_composition.py:1008-1095: no fixture-use context ingress",
+    "n10e_request": "pre553_empirical_possibility_provider.py:140-215: eight determinants and no fixture_use_context_ref",
+    "n10e_provider_replay": "pre553_empirical_possibility_provider.py:531-659: no context validation before composition/replay",
+    "provider_receipt": "pre553_empirical_possibility_provider.py:218-366,490-529: no current issuer/build/site determinants",
+    "owner_dependency": "pre553_analytical_replay_dependency.py:370-452; maintenance executor untouched"
+  },
+  "hostile_cases": [
+    {
+      "case": "C1 token as N10E token",
+      "result": "REJECT_NAMED_SITE_WRONG__SPECIFIED"
+    },
+    {
+      "case": "N10E route label correct without accepted owner event",
+      "result": "REJECT_INTENDED"
+    },
+    {
+      "case": "two same-content builds distinct registered refs",
+      "result": "REJECT_WRONG_BUILD__SPECIFIED"
+    },
+    {
+      "case": "N10E registration directly from invocation seal with no C1 use",
+      "result": "GAP: N10E nonnull C1 predecessor NOT REQUIRED in frozen general transition"
+    },
+    {
+      "case": "caller-supplied exact handoff event syntactically matches",
+      "result": "GAP: competent origin of handoff event NOT FROZEN"
+    },
+    {
+      "case": "direct _model(source) hand-written fixture rule",
+      "result": "REJECT_NEW_MODEL_AUTHORITY_PATH__SPECIFIED"
+    },
+    {
+      "case": "replay same output wrong build",
+      "result": "REJECT_AFTER_EXACT_BUILD_PROOF__SPECIFIED"
+    },
+    {
+      "case": "refused provider output without context or illicit geometry",
+      "result": "REJECT_RECEIPT_OR_REFUSAL__SPECIFIED"
+    },
+    {
+      "case": "revoked issuer current replay exact same old context",
+      "result": "REJECT_CURRENT_POSITIVE__SPECIFIED"
+    },
+    {
+      "case": "historical archived issuer audit",
+      "result": "ALLOW_EXPLANATION_ONLY_NOT_CURRENT__SPECIFIED"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ240_R1/03_C1_N10E_ENTRYPOINT_CONTRACT.json",
+      "blob": "bb72089678f43dccbf16c0cf90d498bcef5f02b0"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ240_R1/02_ISSUER_CREDENTIAL_AND_VERIFIER_PREIMAGES.json",
+      "blob": "58144e78b714de56dbb700020e7f3e5ab4706150"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ240_R1/01_BOUNDED_WARRANT_CANDIDATE_PREIMAGE.json",
+      "blob": "c56be790ad523e33bd212ba99edb368af41f75d0"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_analytical_composition.py",
+      "blob": "2210fc1b4cb99552aafc8797c12d780a78e7983b",
+      "ranges": [
+        "105-145",
+        "270-325"
+      ]
+    },
+    {
+      "path": "rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+      "blob": "0e384f72fa615dc72a0dcb08a36472a64b7b1e4a",
+      "ranges": [
+        "229-286",
+        "420-527"
+      ]
+    },
+    {
+      "path": "rawlsing_next/pre553_analytical_composition.py",
+      "blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "ranges": [
+        "1008-1095"
+      ]
+    },
+    {
+      "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+      "blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "ranges": [
+        "140-215",
+        "218-366",
+        "490-659"
+      ]
+    },
+    {
+      "path": "rawlsing_next/pre553_analytical_replay_dependency.py",
+      "blob": "47e65aad5e0a8df7af6fda72fc8807a002e556ce"
+    },
+    {
+      "path": "rawlsing_next/pre553_authority_maintenance.py",
+      "blob": "547e6bf20354f38179a0e2600de64c7cb2260ea0"
+    }
+  ]
+}

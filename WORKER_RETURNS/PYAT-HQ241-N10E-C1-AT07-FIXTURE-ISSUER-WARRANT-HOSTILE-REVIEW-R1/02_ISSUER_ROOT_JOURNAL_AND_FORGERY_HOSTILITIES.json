@@ -1,0 +1,141 @@
+{
+  "schema": "PYAT_HQ241_ISSUER_ROOT_JOURNAL_AND_FORGERY_HOSTILITIES@1",
+  "disposition": "C1_AT07_FIXTURE_ISSUER_WARRANT_PARTIAL__NAMED_DEFECT",
+  "positive_properties": [
+    {
+      "id": "R01",
+      "result": "PASS_AS_FUTURE_DESIGN",
+      "detail": "Candidate treats R8 content hashes as evidence, not issuer permission; owner-journal membership is independently checked"
+    },
+    {
+      "id": "R02",
+      "result": "PASS_AS_FUTURE_DESIGN",
+      "detail": "Requires persisted (issuer epoch, atomic sequence) unique across identical AT07 content and restarts, collision/integrity refusal"
+    },
+    {
+      "id": "R03",
+      "result": "PASS_AS_FUTURE_DESIGN",
+      "detail": "Proposes BUILD_REGISTER → INVOCATION_SEAL → SITE_USE_REGISTER before first owner-native rule construction"
+    },
+    {
+      "id": "R04",
+      "result": "PASS_AS_FUTURE_DESIGN",
+      "detail": "Binds actual conditioner and 16-key witness canonical null separately from static AT07_FIXTURE_ONLY"
+    },
+    {
+      "id": "R05",
+      "result": "PASS_AS_FUTURE_DESIGN",
+      "detail": "Proposes owner journal resolution, revocation/expiry/rotation/reissuance and historical audit-only vs current positive replay"
+    },
+    {
+      "id": "R06",
+      "result": "PASS_AS_FUTURE_DESIGN",
+      "detail": "Explicit threat model ordinary untrusted caller/mapping/fixture, not hostile arbitrary same-interpreter code; does not import F7 guarantees"
+    }
+  ],
+  "blocking_defect": {
+    "id": "HQ241-DEFECT-TRUST-ROOT-BOOTSTRAP-AUTHORITY-001",
+    "finding": "Root bootstrap/provisioning is circularly deferred to an unspecified 'authorized bootstrap' and an 'owner deployment trust-root manifest'. The candidate says the issuer epoch is 'allocated and approved only after HQ adoption', but freezes neither an identity-bearing governed bootstrap authorization/record nor the exact competent operation and custody transition by which the verifier independently receives its initial trust root and revocation/rotation roots.",
+    "direct_candidate_evidence": [
+      {
+        "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ240_R1/02_ISSUER_CREDENTIAL_AND_VERIFIER_PREIMAGES.json",
+        "field": "candidate_issuer_epoch.root_bootstrap",
+        "text": "HQ-adopted warrant exact ref plus owner deployment trust-root manifest pinned by authorized bootstrap; approve root rotation by explicit governed event"
+      },
+      {
+        "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ240_R1/01_BOUNDED_WARRANT_CANDIDATE_PREIMAGE.json",
+        "field": "delegated_operational_role.verifier_role",
+        "text": "Separately pinned owner-side trust root and exact immutable registration journal resolver"
+      },
+      {
+        "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ240_R1/03_C1_N10E_ENTRYPOINT_CONTRACT.json",
+        "field": "future_owner_interfaces",
+        "text": "No owner.bootstrap_verifier_root or authority-verified deployment event included"
+      },
+      {
+        "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ240_R1/04_HQ_DECISION_ADOPTION_GATES.json",
+        "field": "adoption_order[2]",
+        "text": "Adoption stated to authorize trust bootstrap, but no exact root-registration proof contract"
+      }
+    ],
+    "hostile_witness": "Two noncaller-independent deployment/journal roots can each claim to be 'pinned by authorized bootstrap' under the same eventually adopted warrant. Without an exact HQ-approved bootstrap event tuple or registry record and verification rule, a later implementer has to invent which one owns issuance; a syntactically correct same-content receipt and an untrusted root cannot be distinguished by existing law.",
+    "do_not_overclaim": "Candidate openly has null actual exact issuer/ref/root and no operational registrar, correctly because proposal is unadopted. That alone is NOT the defect. Missing is the normative delegation + identity-bearing bootstrap and rotation authority protocol necessary BEFORE implementer can instantiate one.",
+    "minimal_correction": [
+      "Define precisely which HQ authorized action/record provisions initial registrar writer and verifier reader roots following adoption, rather than using the undefined phrase 'authorized bootstrap'.",
+      "Freeze a proposed immutable bootstrap receipt projection: adopted warrant ref, delegated issuer exact identity, epoch ref and unique epoch allocation, registrar writer authority, independently provisioned verifier trust-root identity/owner-journal anchor, authority of approver, exact approval event/commit, and verification/activation state. Candidate placeholder identities allowed null until adoption, but field law cannot be unspecified.",
+      "Fix who may append, attest or rotate root and how independent verifier obtains authoritative root across processes/restarts, what exact adopted/approved parent event each rotation binds, negative revocation and historical root lookup.",
+      "Specify registration power cannot originate in the same caller-provided registry, fixture, test helper, token, material hash or claim from provider request; fail closed for missing/unbootstrapped epoch or forked roots.",
+      "Retain ordinary caller threat model and explicitly require stronger separate authority if hostile privileged Python code is within threat set."
+    ],
+    "not_a_cryptographic_requirement": "Candidate may validly choose trusted append-only journal membership instead of public-key signing for the stated ordinary-caller threat model. It must nevertheless fix who creates/provisions the independent trust anchor and exact governing approval trail.",
+    "severity": "ADOPTION_BLOCKER__AUTHORITY_COMPETENCE_NOT_FROZEN",
+    "status": "FAIL"
+  },
+  "hostile_cases": [
+    {
+      "case": "forged preapproval root",
+      "status": "CANDIDATE_STATES_REFUSE_BUT_PROVENANCE_BOOTSTRAP_UNSPECIFIED"
+    },
+    {
+      "case": "forged issuer map/AuthoritySnapshot alias",
+      "status": "SPECIFIED_REFUSAL_PASS"
+    },
+    {
+      "case": "copied correct journal receipt with caller-supplied registry",
+      "status": "SPECIFIED_REFUSAL_PASS"
+    },
+    {
+      "case": "identical-content builds distinct issuer sequences",
+      "status": "DISTINCT_INSTANCE_REQUIRED_PASS_AS_CONTRACT"
+    },
+    {
+      "case": "sequence collision/restart reuse",
+      "status": "ATOMIC_PERSISTENT_NONREUSE_REQUIRED_PASS_AS_CONTRACT"
+    },
+    {
+      "case": "unsanctioned verifier root fork under same warrant",
+      "status": "MISSING_BOOTSTRAP_APPROVAL_RECEIPT__FAIL"
+    },
+    {
+      "case": "registrar/writer identity changes without attested rotation",
+      "status": "MISSING_IMMUTABLE_GOVERNED_ROOT_CHANGE_RECORD__FAIL"
+    },
+    {
+      "case": "issuer revoked; exact receipt remains serialized",
+      "status": "REJECT_CURRENT_USE_AND_ALLOW_HISTORICAL_AUDIT_PASS"
+    },
+    {
+      "case": "arbitrary hostile code in trusted Python process",
+      "status": "OUT_OF_SCOPE_EXPLICIT; NO_F7_SECURITY_CLAIM"
+    },
+    {
+      "case": "missing issuer journal",
+      "status": "REJECT_NO_ROOT_OR_RECORD_REQUIRED_BUT_BOOTSTRAP_STILL_GAPPED"
+    }
+  ],
+  "attack_scope": "Static documentary review, no actual registrar or adversarial execution, no credentials",
+  "evidence": [
+    {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ240_R1/02_ISSUER_CREDENTIAL_AND_VERIFIER_PREIMAGES.json",
+      "blob": "58144e78b714de56dbb700020e7f3e5ab4706150"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ240-N10E-C1-AT07-FIXTURE-ISSUER-AUTHORITY-WARRANT-R1/02_ISSUER_CREDENTIAL_REGISTRATION_AND_VERIFIER_CONTRACT.json",
+      "blob": "da2d9199e5574a740e41a359141ac3c0b61f95ac"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ240_R1/01_BOUNDED_WARRANT_CANDIDATE_PREIMAGE.json",
+      "blob": "c56be790ad523e33bd212ba99edb368af41f75d0"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ239-N10E-C1-FIXTURE-CONTEXT-ISSUER-OWNER-ARCHAEOLOGY-R1/00_RETURN.md",
+      "blob": "968c3b46535dae98da43940494ce21068152344b",
+      "disposition": "MISSING_COMPETENT_ISSUER__NEW_BOUNDED_AUTHORITY_WARRANT_REQUIRED"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ237-N10E-C1-MODEL-AUTHORITY-R3-HOSTILE-REVIEW-R1/00_REVIEW.md",
+      "blob": "183d2d2c63368373946384162f6c1c3b0b2c743a",
+      "disposition": "C1_OWNER_NATIVE_MODEL_AUTHORITY_R3_PARTIAL__NAMED_DEFECT"
+    }
+  ]
+}
