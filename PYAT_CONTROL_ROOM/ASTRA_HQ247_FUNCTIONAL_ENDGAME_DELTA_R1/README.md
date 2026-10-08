@@ -9,3 +9,7 @@ Branch: `agent/astra-pyat-hq247-functional-endgame-delta-audit-r1`.
 Read `01_PHASES_AND_SWITCHES.md`, `02_CHECKPOINT_AND_COST_LAW.md`, `03_RETURN_CONTRACT.md`, then perform Phase 0. Maintain `STATE.json`, `EVIDENCE_LEDGER.md`, `F1_F8_MATRIX.md`, `CRITICAL_PATH.md`, and `NEXT_OPERATOR.md`. Phased findings belong under `phases/`; final proposals under `final/`.
 
 Prior Astra Atlas: `PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/`. Reuse rather than reconstruct. Separate adopted HQ authority from pending post-checkpoint returns.
+
+## CURRENT CUTOVER AMENDMENT — HQ248 / HQ249
+
+Before beginning, read `04_HQ248_HQ249_ACTIVATION_GATE.md`. The original HQ247 observations are historical. HQ248 is sealed; its three successor branches form the one bounded wave whose intake (normally HQ249) is the default gate before expensive Astra P1. P0 can start early in an economical model, with an explicit STOP/push before P1. Do not launch another serial F7/N10E engineering loop by default. Distinguish native security F7-RR-04G from functional temporal gate HQD125-F7.
