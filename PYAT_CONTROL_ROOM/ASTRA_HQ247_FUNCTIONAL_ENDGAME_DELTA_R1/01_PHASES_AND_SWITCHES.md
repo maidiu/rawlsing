@@ -1,5 +1,7 @@
 # ASTRA HQ247 — PHASES / INTELLIGENCE SWITCHES (binding)
 
+> **CURRENT RUN STATUS (HQ249 continuation):** P0 COMPLETE AND GIT-BANKED; P1 not yet started. Existing human-selected Astra High is the P1 model, HQ249 one-wave intake is SEALED, and the sole blocker from the prior P1 entry was removed. Follow `06_HQ249_RESUME_P1_AFTER_COMPLETED_P0.md` for non-destructive fast-forward/currentness check, then **BEGIN P1 DIRECTLY**. The P0 execution instructions below apply only to a historical/restart-from-zero scenario and do not authorize repeating completed work. Required P1 exit `STOP_MODEL_SWITCH_TO_SOL_FOR_P2` remains unchanged.
+
 **HQ249 SEALED GATE ALREADY SATISFIED:** Read `05_HQ249_ACTIVATION_UNBLOCKED.md` first. P0 may start; the only P1 requirements are P0 banked/verified and operator manual model switch. Old conditional HQ249-wait paragraphs below are historical and superseded by this explicit status.
 
 No automatic model/account switching. At each STOP, commit+push+readback and return control to human. Check model actually selected before next phase. A newly authenticated machine/account may start a fresh Codex session from Git's successor packet.
