@@ -1,3 +1,36 @@
+# HQ245 — F7 STAGE A VERIFIED RETURN, N10E R2 PARTIAL; THREE NEW PARALLEL LANES — 2026-10-07
+
+**DECISION:** `HQD-2026-10-07-245`. Both returns intaken. NO F7 security certification / N10E issuer adoption.
+
+**RETURNED F7 Space Bunny Max:** `agent/space-bunny-pyat-hq244-f7-native-owner-stage-a-custody-resolve-r1 @ 85144216e9ceb58f306d5624620ee42df34d1718` — `F7_NATIVE_STAGE_A_CUSTODY_AND_RESOLVE_READY__NONAUTHORIZING_FOR_STAGE_B`. Native owner Stage A + 39 passing tests, red fail-capability. Production P07/F7 unchanged. No native adjudicator, F7-RR-04G **OPEN**. Broad regression digest mismatches prior baseline; nine new-to-invocation collection errors were present both with/without Stage A; independent review pending.
+
+### NEW — SPACE BUNNY/OPENCODE MAC — F7 STAGE B FULL NATIVE P07 ADJUDICATOR & PARITY
+**AGENT / MODEL:** Space Bunny / Space Bunny Max preferred; verify installed variant.
+**BRANCH:** `agent/space-bunny-pyat-hq245-f7-native-stage-b-full-p07-parity-r1`
+**EXACT COMMISSION TIP:** `380d55443431756efa87f87c7c52412b79f6ac2b`
+**COMMISSION:** `WORKER_COMMISSIONS/PYAT-HQ245-F7-NATIVE-STAGE-B-FULL-P07-ADJUDICATOR-PARITY-R1/00_COMMISSION.md`
+**HOLD:** quarantined only, no production F7/P07 import cutover; must solve full 12-state parity and seal trusted hash seam; independent Stage A reviewer may block later adoption.
+
+### NEW — DEEPSEEK-HARNESS/OPENCODE MAC — F7 STAGE A INDEPENDENT NATIVE RUNTIME REVIEW
+**MODEL:** DeepSeek V4.1 Flash (verify provider).
+**BRANCH:** `agent/reviewer-pyat-hq245-f7-native-stage-a-independent-runtime-r1`
+**EXACT COMMISSION TIP:** `11d7114ca695cf2d2cbd1444cb4a5a4a6a405cc0`
+**COMMISSION:** `WORKER_COMMISSIONS/PYAT-HQ245-F7-NATIVE-STAGE-A-INDEPENDENT-HOSTILE-RUNTIME-REVIEW-R1/00_COMMISSION.md`
+**HOLD:** immutable Stage A reviewed, independent Mac build/hostile memory safety; no author self-review.
+
+**RETURNED N10E HQ244 Browser/Sol:** `agent/reviewer-pyat-hq244-n10e-at07-issuer-warrant-r2-r1 @ beb5a845b4f737effed030832a374dae98308980` — `C1_AT07_FIXTURE_ISSUER_WARRANT_R2_PARTIAL__NAMED_DEFECT`. Root & handoff substance corrected AS PROPOSAL; two remaining exact reference / stale adoption-order defects, no issuer adoption.
+
+### NEW — BROWSER/GITHUB SOL HIGH — N10E AT07 WARRANT R3 DOCUMENTARY REFERENCE FIX
+**AGENT / MODEL:** Browser/GitHub documentary worker / GPT-5.6 Sol High.
+**BRANCH:** `agent/rabochii-pyat-hq245-n10e-at07-warrant-r3-reference-correction-r1`
+**EXACT COMMISSION TIP:** `e23c372757504909543a40500c5f0d2213a86b68`
+**COMMISSION:** `WORKER_COMMISSIONS/PYAT-HQ245-N10E-AT07-WARRANT-R3-EXACT-REFERENCE-AND-ADOPTION-SEQUENCE-CORRECTION-R1/00_COMMISSION.md`
+**HOLD:** no live root, issuer, credential, R4 model-rule authority or implementation; fresh R3 hostile review next.
+
+Run all three on separate branches/worktrees; do not merge. Distinct Space Bunny/DeepSeek local and Browser Sol routing. F7-RR-04G OPEN.
+
+---
+
 # HQ244 — SPACE BUNNY F7 NATIVE PARTIAL / N10E R2 PROPOSED WARRANT — 2026-10-07
 
 **HQ DECISION:** `HQD-2026-10-07-244`; return intake ratified. No security or issuer authority adoption.
