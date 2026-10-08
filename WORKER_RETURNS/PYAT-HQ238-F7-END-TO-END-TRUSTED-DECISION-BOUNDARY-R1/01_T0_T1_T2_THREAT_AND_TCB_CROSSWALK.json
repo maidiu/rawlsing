@@ -1,0 +1,112 @@
+{
+  "schema": "PYAT_HQ238_F7_T0_T1_T2_TCB_CROSSWALK@1",
+  "status": "PROPOSED_NOT_ADOPTED",
+  "repository": "maidiu/rawlsing",
+  "base": "ae5e140a378406888c94d099b7dd8e98dfeb1459",
+  "semantic_contract": "c57a96897788108db7b194e4e51691d1ca8ab729",
+  "local_evidence": "WORKER_RETURNS/PYAT-HQ236-F7-COORDINATED-HOSTILE-EVIDENCE-R1/02_EXACT_ATTACK_AND_CONTROL_RECEIPTS.json",
+  "tiers": [
+    {
+      "id": "T0",
+      "name": "ORDINARY_INPUT_HOSTILITY",
+      "admission": [
+        "original F7 positive P07 owner/source-closure semantics",
+        "HQ219 positive exact owner path",
+        "HQ225 exact type and HQ227 registry/snapshot adversarial tests"
+      ],
+      "attacker_can": [
+        "provide contradictory, absent, denied, wrong kind, wrong pair, wrong use/scope/release relation material",
+        "mutate or replace ordinary caller-held ref/visible field/registry data",
+        "invoke public legitimate API"
+      ],
+      "attacker_cannot": [
+        "rewrite trusted owner/F7 executable path",
+        "replace trusted consumer",
+        "mutate protected constructor custody"
+      ],
+      "TCB": [
+        "accepted P07 and F7 executable implementation",
+        "immutable accepted AuthoritySnapshots/authority rules and constructor revalidation",
+        "trusted admitted source material and terminal consumer"
+      ],
+      "auth_meaning": "positive P07 is determined by exact lawful constructor-admitted relation + pinned snapshot with exact kind/ref/scope/use/operation; F7 positivity independently requires all temporal authorities",
+      "forgery": "empty resolver or wrong positive relation produces authorized P07 + comparable/directional F7 despite absent bound custody",
+      "security_goal": "no illicit positive and all five lawful positives productive"
+    },
+    {
+      "id": "T1",
+      "name": "COMMISSIONED_REFLECTION_PROVENANCE",
+      "admission": [
+        "HQ227 F7-RR-04D/E: exact-instance map/registry, nested method/validator shadowing",
+        "HQ231 F7-RR-04F: object.__setattr__, live-state/helper recoverability",
+        "HQ234/HQ232 F7-RR-04G: __closure__ and writable cell.cell_contents",
+        "HQ235: state NamedTuple construction, recovered sealer, ledger/field substitution",
+        "governed HQ236 proof: attacks 1–4"
+      ],
+      "attacker_can": [
+        "all T0 operations",
+        "inspect __closure__ and recover callable helpers",
+        "write closure cell.cell_contents",
+        "construct module-visible NamedTuple state and self-declared anchor fields",
+        "mutate visible _by_ref/_by_key/_registry",
+        "use object.__setattr__ where CPython admits",
+        "shadow named instance/class dispatch and previously probed module-visible fallbacks"
+      ],
+      "attacker_cannot": [
+        "replace the final trusted F7 executable or pinned native-call alias/terminal consumer",
+        "rewrite trusted __code__ or the committed production code path",
+        "alter private native owner memory or invoke absent private native registration API"
+      ],
+      "TCB": [
+        "exact native P07 constructor/adjudicator binary and private per-object storage",
+        "accepted P07 rule semantics preserved in native port",
+        "pinned trusted F7 Python computation including global native entrypoint alias",
+        "trusted F7 receipt relying consumer",
+        "authoritative prevalidated snapshots and semantic hashes"
+      ],
+      "auth_meaning": "the exact P07 owner instance's constructor-sealed relation/snapshot payload is consumed by a non-bypassable trusted P07 decision, then the trusted F7 producer/consumer consumes that result",
+      "forgery": "the very same empty victim owner produces positive P07/F7 via any of four established reflection transplants (including one-cell only)",
+      "boundary_note": "HQ227's *named* monkeypatch probes must be defeated by native type/entrypoint and tested; arbitrary rewrite of F7 global alias, F7 function, verifier or terminal Python result is explicitly T2. If HQ regards those as already T1, T1 design is insufficient without moving trusted consumer.",
+      "proof_limit": "NO universal theorem that pure Python is inherently impossible; exact current implementation is independently broken"
+    },
+    {
+      "id": "T2",
+      "name": "ARBITRARY_SAME_INTERPRETER_EXECUTABLE_RESULT_SUBSTITUTION",
+      "admission": [
+        "HQ236 owner-boundary architectural hostile review explicitly analyzes this stronger class; not granted as universal sandbox requirement by original F7 semantic contract",
+        "HQ235 reflection audit probed function __code__/__defaults__ but this does not alone extend original semantic authority to a general T2 guarantee"
+      ],
+      "attacker_can": [
+        "all T0/T1",
+        "replace trusted Python __code__, module globals including _authenticated_source_relation_decide, verifier and compare_temporal_anchors",
+        "fabricate Python RelationDecision/TemporalRelationReceipt and Python final consumer output",
+        "substitute observed IPC return bytes in untrusted caller"
+      ],
+      "attacker_cannot": [
+        "alter a separately protected server's accepted authority root, binary, memory, private IPC endpoint, trusted output acceptance sink or OS protections"
+      ],
+      "TCB": [
+        "separate-process P07/F7 owner and accepted snapshots",
+        "trusted service executable and versioned protocol",
+        "separate privileged/safe job registration and exact owner binding",
+        "trusted consumer/effect commit inside or outside attacker-owned process with independent verification",
+        "OS isolation and authenticated transport"
+      ],
+      "auth_meaning": "a matching server-validated request produces an accepted internal F7 result/commit scoped to immutable job+owner context; untrusted Python-visible receipts are not authority",
+      "forgery": "untrusted Python creates an effect recognized as positive by protected consuming sink without server-authorized P07/F7 decision",
+      "impossibility": "No C-held capsule plus arbitrary Python post-check can assure T2 end-to-end integrity; IPC bytes alone similarly cannot",
+      "outside_scope": [
+        "same-uid/process memory compromise of server",
+        "native C memory or kernel/OS compromise",
+        "trusted sink compromise",
+        "trusted source bootstrap compromise"
+      ]
+    }
+  ],
+  "universal_notes": [
+    "T1 named hostile capabilities cannot be dismissed as T0",
+    "T1 exclude rewrite of final trusted executable and consumer by explicit HQ ruling only",
+    "T2 requires a trusted observer outside untrusted Python",
+    "no architecture choice or threat-model narrowing adopted by this worker"
+  ]
+}
