@@ -1,0 +1,116 @@
+{
+  "schema": "PYAT_HQ240_F7_BOUNDED_ARCHITECTURE_WARRANT_READINESS@1",
+  "status": "PROPOSED_NONADOPTED_REVIEW_ONLY",
+  "disposition": "F7_T1_TCB_NATIVE_OWNER_ARCHITECTURE_PARTIAL__NAMED_DEFECT",
+  "recommendation": "HOLD_DESIGN_I_ADOPTION_PENDING_EXPLICIT_HQ_T1_ALIAS_AND_TERMINAL_RELIANCE_RULING",
+  "reasons": [
+    {
+      "id": "HQ240-DEFECT-F7-P07-ALIAS-TCB-001",
+      "severity": "ADOPTION_BLOCKING",
+      "fact": "HQ231 trusted F7 P07 module-global alias substitute yielded positive original empty-victim F7 result in an intentionally broken control; HQ238 design excludes alias patch as trusted T1 code by declaration without express new HQ authority."
+    },
+    {
+      "id": "HQ240-DEFECT-F7-TERMINAL-RELIANCE-002",
+      "severity": "ADOPTION_BLOCKING",
+      "fact": "No independent proof of exact real downstream trusted recipient, and receipt_hash alone does not authenticate issuer; no invented F8/actor/V3 consumer."
+    },
+    {
+      "id": "HQ240-DEFECT-NATIVE-P07-INSTALLATION-AND-CALLBACK-003",
+      "severity": "IMPLEMENTATION_QUALIFICATION_GATE",
+      "fact": "Native source/binary/toolchain/ABI/macOS test and no-Python-callback native actual adjudication unproven."
+    },
+    {
+      "id": "HQ240-DEFECT-OLD-API-AND-ALIASES-004",
+      "severity": "INTEGRATION_SCOPE_GATE",
+      "fact": "Exact production caller and current aliases census, from_c11/direct P07 compatibility and independent native type transition unqualified."
+    }
+  ],
+  "candidate_HQ_T1_warrant": {
+    "status": "NOT_ISSUED; DRAFT CONDITIONS ONLY",
+    "precondition": "HQ explicitly identifies which historically exercised module-global alias writes are fault-injection only versus T1 in-scope attacks and freezes final trusted F7 code/alias/receiver; no retroactive silent exclusion of named class/method/closure attacks.",
+    "name": "F7 T1 EXACT NATIVE ACTUAL P07 OWNER / PINNED PYTHON F7 EXECUTION TCB",
+    "positive_assurance": "Original exact empty P07 resolver never authorizes by source→victim custody/ledger/visible field/module class/method attacks that remain within adopted T1; whole genuine P07 relation+snapshot adjudication occurs in native exact instance, then truthful F7 and trusted reliance path.",
+    "in_scope_attacker": [
+      "arbitrary caller data and visible resolver mutation",
+      "all four HQ234/HQ235/HQ236 attacks",
+      "closure cell writes, helper recovery, state forgery, object.__setattr__",
+      "named class/instance decide/require/resolve_exact/nested methods and registry monkeypatch attacks",
+      "native instance wrapper/clone/reinit/sealer handle-transplant probes"
+    ],
+    "TCB": [
+      "exact audited CPython native module and constructor/private state",
+      "entire real P07 adjudication with constructor-sealed snapshots",
+      "F7 trusted Python comparator and module global P07 alias pinned by enforceable application trust assumption",
+      "actual terminal trusted reliance consumer at named integration grain",
+      "accepted source/snapshot authority inputs and canonical/replay functions"
+    ],
+    "out_of_scope_only_if_expressly_adopted": [
+      "arbitrary rewrite of F7 trusted module global native entrypoint alias",
+      "arbitrary rewrite of compare_temporal_anchors.__code__, replay verifier or final accepting consumer",
+      "native memory corruption via ctypes/cffi/debug/ptrace/injection",
+      "tampering accepted source/authority roots or binary provenance"
+    ],
+    "native_integrity_requirements": [
+      "exact native object with private per-object immutable payload; cannot rebind from Python",
+      "real entire P07 adjudicator in that object, no Python parallel positive",
+      "C-to-Python callbacks minimized and evaluated under explicit TCB",
+      "strict same-instance relation, snapshot, scope, use, operation, time and replay binding",
+      "compatible existing public P07 exceptions, decision material, registry replacement immunity, C11 from_c11",
+      "real native F7 callsite uses owner type check and pinned trusted entrypoint"
+    ],
+    "court_conditions": [
+      "four independent 04G negative tests plus source still positive and empty victim before/during/after",
+      "one test-only deliberate broken *new* native provenance check reopens the SAME empty victim, turning security court red",
+      "five lawful HQD216 positives plus all twelve F7 states and precedent negative cases",
+      "actual trusted F7 receipt producer and terminal reliance gate evaluated; no signing-to-untrusted-Python security fiction",
+      "governed macOS 13.7.8 x86_64 CPython 3.11.3, native binary ABI/toolchain digest; independent local qualification and targeted/broad normalized regression"
+    ],
+    "not_granted": [
+      "no architecture or TCB adoption by reviewer",
+      "no production/native implementation commission",
+      "no semantic/new authority kind",
+      "no F8/V3/actor/source-composition/pooling/causation/currentness powers",
+      "no self-adoption or merge"
+    ]
+  },
+  "HQ_choice_tree": [
+    {
+      "choice": "T1_BOUNDARY_WITH_ALIAS_AND_CONSUMER_TRUST_EXCLUSION",
+      "condition": "HQ **consciously and explicitly** establishes alias/code/final consumer protected from attack and not in runtime T1 adversary, without deleting named reflect/method/registry attacks",
+      "review_result": "CONDITIONALLY_IMPLEMENTABLE; issue separate native owner implementation commission then independent governed source/binary/security/productivity courts; no automatic adoption"
+    },
+    {
+      "choice": "T1_INCLUDES_MODULE_GLOBAL_ALIAS_REPLACEMENT",
+      "condition": "Existing fail-capability operation or equivalent actual F7 alias mutation is binding attacker power",
+      "review_result": "DESIGN_I_FAILS, a C owner cannot enforce the Python caller's native use; require trusted F7/consumer gate or formally revise threat claim"
+    },
+    {
+      "choice": "T2_ARBITRARY_PYTHON_REWRITE",
+      "condition": "attacker controls Python code, verifier, IPC reply and final result/receipt",
+      "review_result": "separate protected owner/job-provisioned P07+F7 execution and real trusted accepting journal/consumer (HQ238 Design II); not an authorized implementation"
+    },
+    {
+      "choice": "NO_REAL_PROTECTED_TERMINAL_OBSERVER",
+      "condition": "not possible to identify any actual trusted positive reliance effect or a trustworthy Python F7 TCB",
+      "review_result": "HOLD full nonforgeability adoption. No invented downstream consuming authority. P07 custody-only narrower claim may be separately warranted."
+    }
+  ],
+  "adoption_levels": {
+    "proposal_ready_for_explicit_HQ_warrant": "PARTIAL_PENDING_NAMED_DEFECT_RULING",
+    "architecture_adopted": false,
+    "threat_model_changed": false,
+    "native_implementation_exists": false,
+    "native_runtime_qualified": false,
+    "production_code_mutated": false,
+    "branch_self_adopted": false,
+    "merge_performed": false
+  },
+  "evidence_boundaries": {
+    "crossbranch": "HQ236 architecture reviewer 7a9a0a5917b888c15b3ead051fb116b7549b37c9 read as evidence only",
+    "historical": "HQ236/HQ238 archaeology corroborated by current accepted specific tests; original HQ219/HQ225/HQ227/HQ231/HQ232/HQ234/HQ235 commission texts not exhaustively fetched",
+    "live_consumer_census": "NOT_EXHAUSTIVE",
+    "new_test_executions": "NONE",
+    "native_compilation": "NONE"
+  },
+  "next_HQ_action": "Issue separate explicit threat-model and terminal reliance warrant, or retain OPEN F7-RR-04G. Only after that assign native implementation and independent hostile qualification."
+}
