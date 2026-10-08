@@ -1,0 +1,96 @@
+{
+  "schema": "PYAT_HQ241_P07_F7_OWNER_API_ALIAS_AND_NATIVE_DELTA@1",
+  "base": "0255781f24b670dd3365e3ce7a1820276c8ad376",
+  "status": "DOCUMENTARY_NO_NATIVE_IMPLEMENTATION",
+  "production_p07": {
+    "file": "rawlsing_next/pre553_source_relations.py",
+    "blob": "8053d30d306a3654ebf563043088311ff390bb2b",
+    "owner": [
+      "factory _make_sealed_source_relation_owner :937-1266",
+      "nested Python SourceRelationResolver class :1004-1257",
+      "constructor __init__ :1004-1086, accepts relations and exact AuthorityRegistry, pins snapshots",
+      "from_c11 classmethod :1089-1110",
+      "resolve_exact :1154",
+      "decide :1170-1201",
+      "require near :1195-1202",
+      "_authenticated factory entrypoint near :1203-1226",
+      "module exports authenticated_source_relation_decision and SourceRelationResolver :1262-1265",
+      "validate_relation_decision_replay_identity :767-810"
+    ],
+    "API_consumers_same_module": [
+      {
+        "fn": "guard_sample_pooling",
+        "line": "1309",
+        "calls": "resolver.require SOURCE_SEMANTIC_EQUIVALENCE and sample-overlap/pool-admission; resolve_exact on pool relation for exact operation material",
+        "status": "actual function, no external runtime occupancy demonstrated"
+      },
+      {
+        "fn": "guard_estimand_composition",
+        "line": "1352",
+        "calls": "resolver.require positive semantic/overlap/estimand relations, resolve_exact to inspect admitted relation material",
+        "status": "actual function, no external runtime occupancy demonstrated"
+      },
+      {
+        "fn": "guard_backfill",
+        "line": "1395",
+        "calls": "resolver.require on operation-specific closure",
+        "status": "actual function, no external runtime occupancy demonstrated"
+      },
+      {
+        "fn": "guard_i03_authorized_composite_query",
+        "line": "1479",
+        "calls": "four resolver.require checks and two resolve_exact for exact I03 admissibility",
+        "status": "actual function, no external runtime occupancy demonstrated"
+      },
+      {
+        "fn": "execute_i03_composite_query_guarded",
+        "line": "1610",
+        "calls": "forwards typed resolver to guard_i03_authorized_composite_query",
+        "status": "actual function, no external runtime occupancy demonstrated"
+      }
+    ]
+  },
+  "production_f7": {
+    "file": "rawlsing_next/pre553_temporal_comparability.py",
+    "blob": "6f6b462b1cdef54d7989f15452473383c1661594",
+    "P07_type_alias": "SourceRelationResolver = _adopted_source_relations.SourceRelationResolver :244",
+    "P07_callable_alias": "_authenticated_source_relation_decide = _adopted_source_relations.authenticated_source_relation_decision :247-249",
+    "P07_replay_alias": "_validate_source_relation_decision_replay :250-252",
+    "F7_decision_verification": "_relation_decision_defect :433-499",
+    "request": "TemporalComparisonRequest :686-739, source_relation_resolver field :726",
+    "producer": "compare_temporal_anchors :836-1493",
+    "actual_native_future_dependency": "cross-universe only, :1072 and :1101-1145",
+    "receipt": "TemporalRelationReceipt :742-795 and producer return :1470",
+    "no_other_production_exact_symbol_importers_in_136": true
+  },
+  "tests": {
+    "F7": "rawlsing_next/tests/test_pre553_temporal_comparability.py @ 8a82bd5905d266c1d500b1bf2bdcb01ea948efd6",
+    "P07": "rawlsing_next/tests/test_pre553_source_relations.py @ 2487ed757c0254e7227cf43664abc6ae08f1dfb3",
+    "HQ227_hostile_class_patch": "F7 tests :2122-2140",
+    "HQ231_fake_alias_red_test": "F7 tests :2345-2389",
+    "subclass_forgeries": "F7 tests :1790-1900",
+    "no_legitimate_subclass_in_package": "HQ225 P07 callsite census blob e12e4fab046880548492b53c8ffd6a53f3a65ac3"
+  },
+  "Design_I_requirements": [
+    "Exact one-shot non-subclassable CPython native resolver with independent C-private per-object canonical relation/snapshot copies, no externally assignable capsule/handle, no Python positive shadow path.",
+    "Actual full P07 adjudication inside native object, preserving relation kinds and decision states, exact authority snapshots, source universe pair, operation, scope, target use and effective time, replay/semantic identities.",
+    "Preserve SourceRelationResolver constructor, from_c11, decide, require, resolve_exact and the direct P07 guards; preserve exceptions and canonical decision/receipt equivalence; do not skip hostile subclass tests, replace with native-type forgery equivalents.",
+    "F7 trusted module-global alias and full Python F7 producer/receipt path remain in TCB only after explicit HQ exclusion of their arbitrary adversarial rewrite, while owner class/instance/nested-method/provenance probes survive.",
+    "Demonstrate registry replacement immunity with pinned constructor snapshots, no effect from visible _by_ref/_by_key, no native sealer/loader/owner-map exposure.",
+    "Native constructor/adjudication must not trust Python callbacks/reentrant iterators, dynamic descriptors, nested mutable references, debug handles or ctypes/cffi raw pointer writes without explicit scope/TCB choices.",
+    "No invented positive final sink, F8/actor consumer, P07 authority kind or source pooling via this native port."
+  ],
+  "native_delta": {
+    "future_owner_native_module": "rawlsing_next/_p07_native_owner (HQ238 proposed only)",
+    "files_to_change": "NOT_AUTHORIZED",
+    "no_native_binary": true,
+    "no_native_runtime_test": true,
+    "no_qualified_build_toolchain": true,
+    "governed_environment": "macOS 13.7.8 x86_64 CPython 3.11.3",
+    "governed_interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "native_binary_sha256": null,
+    "CI_qualification": null
+  },
+  "security_conclusion": "P07 constructor custody and actual P07 decision authenticity may be secured natively; F7 executable/alias and hypothetical consumer are separate TCB premises; public hashes are replay/integrity evidence, not self-authenticating issuer proof.",
+  "authority_adopted": false
+}
