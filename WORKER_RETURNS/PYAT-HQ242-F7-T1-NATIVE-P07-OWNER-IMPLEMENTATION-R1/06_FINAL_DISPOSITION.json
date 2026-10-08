@@ -1,0 +1,52 @@
+{
+  "branch": "agent/space-bunny-pyat-hq242-f7-t1-native-p07-owner-implementation-r1",
+  "commission": "PYAT-HQ242-F7-T1-NATIVE-P07-OWNER-IMPLEMENTATION-R1",
+  "commission_tip_given": "08f4c0a10a6095c81f40836a6426dd34bee55883",
+  "disposition": "F7_T1_NATIVE_P07_OWNER_PARTIAL__NAMED_API_OR_NATIVE_BLOCKER",
+  "honest_limit": "V2-V4 hostile variants were not re-measured in this lane, and no native-path coverage exists. Reporting a native success would be exactly the no-coverage green the commission forbids.",
+  "merged_into_control": false,
+  "named_blocker": {
+    "class": "ENGINEERING_SCOPE_AND_PARITY_RISK__NOT_AN_ENVIRONMENT_BLOCKER",
+    "id": "HQ242-NATIVE-BLOCKER-001__FULL_P07_ADJUDICATOR_NATIVE_PORT_NOT_COMPLETED_OR_PARITY_VERIFIED",
+    "statement": "A non-subclassable C owner with one-shot sealed custody is buildable here, but a faithful port of the P07 adjudicator (12 decision states, the CONFLICTING_AUTHORITY precedence ladder, exact-key relation key derivation, authority positivity adjudication, custody hash and replay identity) must either reimplement canonical-JSON and semantic_hash in C with byte-exact parity, or call trusted Python canonicalize/semantic_hash from native code at decision time. Neither route was completed and verified here.",
+    "what_a_full_completion_requires": [
+      "non-subclassable heap type with one-shot C-memory custody sealed at construction",
+      "deep copy + validation of all relation and authority-snapshot material into C-owned canonical bytes",
+      "native by_ref/by_key maps with exact-key-only lookup",
+      "faithful native port of _decide_from_owner_state, _validate_positive_from_owner_state, _owner_state_resolve_exact and the replay-identity chain",
+      "documented trusted-Python TCB calls (canonicalize/semantic_hash/require_positive_authority) OR byte-exact C reimplementation",
+      "adaptation of 3577 lines of introspection-coupled P07/F7 tests that reach __closure__, cell.cell_contents and resolver method monkeypatching, preserving adversarial intent without deleting hard tests",
+      "byte-exact parity proof against the accepted Python owner on all 12 states and all five productive paths",
+      "the four hostile variants re-run on the ACTUAL native path",
+      "a non-shippable native owner binding fail-capability with a separate build manifest proving test mode cannot ship"
+    ],
+    "why_not_ship_a_partial_native_module": "A custody-only native capsule is explicitly forbidden, and retaining the Python owner as the positive decider would violate 'no duplicate Python owner capable of positive decisions'. A partial artifact would therefore be architecturally non-compliant rather than merely incomplete."
+  },
+  "not_claimed": [
+    "any native owner exists",
+    "any forgery fails on an actual native path",
+    "any fail-capability",
+    "production adoption",
+    "runtime authority promotion",
+    "T2 security",
+    "F7 full maturity",
+    "any downstream F7 terminal positive sink"
+  ],
+  "one_line": "The commission's explicit environment gate is answered definitively in the affirmative: a governed CPython 3.11.3 native extension CAN be compiled and imported on this Mac, so an environment blocker would be dishonest. The actual blocker is scope/parity: the mandate requires the FULL P07 adjudicator ported natively with byte-exact semantic parity, and every partial shape the commission permits me to ship is either forbidden (storage-only capsule, duplicate Python positive owner) or unverifiable. I shipped no native module.",
+  "recommendation": "Re-dispatch the native owner implementation with the adjudication-parity work broken into explicit sequenced sub-lanes: (a) native custody + exact resolve, (b) native decision port with parity harness, (c) test adaptation, (d) hostile re-run and fail-capability. The environment is proven capable and is not the obstacle.",
+  "schema": "PYAT_HQ242_06_FINAL_DISPOSITION@1",
+  "self_adopted": false,
+  "terminal": "HQ242_F7_T1_NATIVE_P07_OWNER_PARTIAL__NAMED_API_OR_NATIVE_BLOCKER",
+  "what_was_actually_established": {
+    "base_code_witness_blobs": "both match the commission exactly (F7 6f6b462b, P07 8053d30d)",
+    "commission_baseline_digest": "verified exactly: 278854ee94fadfd57284a572441522fb56105081f89af431b17ec2e556ace6a9",
+    "control_branch_mutation": "NONE",
+    "governed_native_build_capability": "VERIFIED (real C extension compiled and imported under the governed interpreter)",
+    "macos_link_requirement": "-undefined dynamic_lookup required; verified",
+    "production_mutation": "NONE",
+    "semantic_mutation": "NONE",
+    "targeted_courts": "228 passed at the pinned base",
+    "v1_lexical_cell_forgery": "measured and already refused at this tip"
+  },
+  "worked_from": "c4d46de7535359f0ebddc50ae5cad109124a4300"
+}

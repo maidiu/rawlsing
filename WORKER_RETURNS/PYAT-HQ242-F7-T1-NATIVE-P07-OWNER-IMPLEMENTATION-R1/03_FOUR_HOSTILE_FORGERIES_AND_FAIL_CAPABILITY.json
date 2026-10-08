@@ -1,0 +1,39 @@
+{
+  "fail_capability_item_7": "not delivered: a native owner binding fail-capability requires an implemented native constructor owner->payload check to bypass",
+  "honest_summary": "V0 and V1 were measured and V1 is refused at this tip. V2-V4 were not re-measured here. Nothing in this lane demonstrates any forgery failing on an ACTUAL NATIVE P07 path, because no such path was built. This section is a measured baseline only.",
+  "measured_at_commission_pinned_base": true,
+  "native_path_coverage": "NONE__NO_NATIVE_OWNER_BUILT",
+  "schema": "PYAT_HQ242_03_FOUR_HOSTILE_FORGERIES_AND_FAIL_CAPABILITY@1",
+  "scope_note": "Status of the four documented forgery variants against the CURRENT tip owner. No native owner exists in this lane, so these are measured baselines, NOT native-path results. Reporting them as native successes would be the exact no-coverage green the commission forbids.",
+  "variants": [
+    {
+      "id": "V0_baseline",
+      "mints_positive": false,
+      "observed": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT",
+      "shape": "genuinely empty victim, same legitimate registry"
+    },
+    {
+      "id": "V1_hq234_one_cell",
+      "mints_positive": false,
+      "note": "the narrowest lexical-cell-only forgery is already refused at this tip by the prior repair; the ledger cell seam was recovered and exercised, so this is not a green from a missing helper",
+      "observed": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT",
+      "shape": "rebind the lexical ledger cell to a state carrying source custody + victim owner_ref"
+    },
+    {
+      "id": "V2_hq235_coordinated",
+      "observed": "not re-measured in this lane",
+      "prior_lane_evidence": "HQ235 measured this variant as STILL FORGING on the pure-Python owner, which is the finding that motivated the T1 native warrant",
+      "shape": "replace visible _by_ref/_by_key AND rebind the ledger re-anchored to them"
+    },
+    {
+      "id": "V3_hq236_ledger_only_victim_containers_unchanged",
+      "observed": "not re-measured in this lane",
+      "shape": "ledger rebind only, victim containers untouched"
+    },
+    {
+      "id": "V4_hq236_by_ref_only_victim_empty_by_key",
+      "observed": "not re-measured in this lane",
+      "shape": "by_ref replacement only, victim by_key left empty"
+    }
+  ]
+}

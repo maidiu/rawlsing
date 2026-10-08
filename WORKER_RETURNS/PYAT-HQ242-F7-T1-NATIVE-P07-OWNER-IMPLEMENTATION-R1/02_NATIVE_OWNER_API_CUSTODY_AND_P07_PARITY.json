@@ -1,0 +1,70 @@
+{
+  "api_surface_preserved": "NO PRODUCTION MUTATION PERFORMED",
+  "commission_forbids_partial_shapes": [
+    {
+      "commission_text": "It must not be a Python wrapper holding a caller-replaceable capsule/handle",
+      "forbidden": "storage-only capsule / Python wrapper holding a caller-replaceable handle"
+    },
+    {
+      "commission_text": "no duplicate Python owner capable of positive decisions",
+      "forbidden": "duplicate Python owner capable of positive decisions"
+    },
+    {
+      "commission_text": "No Python authenticated_source_relation_decision fallback that can authorize an empty resolver",
+      "forbidden": "Python authenticated_source_relation_decision fallback able to authorize"
+    }
+  ],
+  "consequence_for_partial_delivery": "A native module that owns custody but delegates adjudication to the existing Python owner would leave a duplicate Python positive owner and is therefore architecturally NON-COMPLIANT, not merely incomplete. Delivering only the custody core would produce exactly the forbidden storage-only-capsule shape. I therefore did not ship that artifact.",
+  "measured_porting_scope": {
+    "decision_states_and_precedence_to_reproduce": "12 states plus CONFLICTING_AUTHORITY precedence ladder",
+    "f7_court_lines": 2699,
+    "f7_module_lines": 1588,
+    "p07_court_lines": 878,
+    "p07_module_lines": 1644,
+    "python_functions_that_must_be_ported_faithfully": [
+      {
+        "fn": "_decide_from_owner_state",
+        "lines": 123
+      },
+      {
+        "fn": "_validate_positive_from_owner_state",
+        "lines": 75
+      },
+      {
+        "fn": "validate_relation_decision_replay_identity",
+        "lines": 43
+      },
+      {
+        "fn": "_relation_decision_replay_identity",
+        "lines": 34
+      },
+      {
+        "fn": "_owner_state_resolve_exact",
+        "lines": 23
+      },
+      {
+        "fn": "_relation_key",
+        "lines": 2
+      }
+    ],
+    "test_introspection_coupling": "high: the existing courts reach __closure__, cell.cell_contents, _state_or_refuse, _AuthenticatedResolverState, and monkeypatch resolver.decide/require/resolve_exact",
+    "total_python_lines_to_port": "~300"
+  },
+  "native_owner_implemented": false,
+  "parity_proved": false,
+  "schema": "PYAT_HQ242_02_NATIVE_OWNER_API_CUSTODY_AND_P07_PARITY@1",
+  "status": "NOT_IMPLEMENTED_IN_THIS_LANE__SEE_06_FOR_NAMED_BLOCKER",
+  "trusted_python_tcb_delegation_census": {
+    "design_consequence": "faithful parity requires either reimplementing canonical-JSON + semantic_hash in C with byte-exact agreement, OR calling the trusted Python canonicalize/semantic_hash from native code at decision time. Both routes were scoped; neither was completed or verified here.",
+    "functions_the_adjudicator_calls": [
+      "canonicalize (canonicalizes CALLER-SUPPLIED operation_scope/effective_scope/directionality at decision time)",
+      "semantic_hash (relation key derivation and custody hash)",
+      "require_positive_authority (authority positivity adjudication)",
+      "validate_authority_snapshot",
+      "AuthorityRegistry.resolve_exact",
+      "ExactRef construction/validation"
+    ],
+    "permission_text": "Preserve only explicitly trusted canonical semantic hash functions if necessary and document code/TCB provenance.",
+    "permitted_by_commission": true
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "base_code_witness_verification": {
+    "conclusion": "the working tree is the exact commission-pinned base; no drift",
+    "f7_blob_commission": "6f6b462b1cdef54d7989f15452473383c1661594",
+    "f7_blob_observed": "6f6b462b1cdef54d7989f15452473383c1661594",
+    "f7_match": true,
+    "p07_blob_commission": "8053d30d306a3654ebf563043088311ff390bb2b",
+    "p07_blob_observed": "8053d30d306a3654ebf563043088311ff390bb2b",
+    "p07_match": true
+  },
+  "branch_tip_actual": "c4d46de7535359f0ebddc50ae5cad109124a4300",
+  "commission_gate_answered": "If native build cannot be governed, RETURN BLOCKED. IT CAN BE GOVERNED, so an environment blocker would be dishonest.",
+  "commission_tip_given": "08f4c0a10a6095c81f40836a6426dd34bee55883",
+  "governed_runtime": {
+    "ext_suffix": ".cpython-311-darwin.so",
+    "platform": "macOS 13.7.8 (22H730), Darwin 22.6.0 x86_64",
+    "pytest": "9.1.1",
+    "python_executable": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+    "python_executable_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "setuptools": "67.7.2",
+    "version": "CPython 3.11.3 (main, May 7 2023, 19:01:25) [Clang 16.0.3]"
+  },
+  "native_build_capability": {
+    "cc_available": "/usr/bin/cc",
+    "compiler": "Apple clang 14.0.3 (x86_64-apple-darwin22.6.0)",
+    "gcc_available": "/usr/bin/gcc",
+    "governed_native_extension_build": "VERIFIED_FEASIBLE",
+    "headers_present": true,
+    "import_result": "native-ok",
+    "include_dir": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/include/python3.11",
+    "note": "a naive link without -undefined dynamic_lookup fails with undefined CPython symbols; that flag is required on macOS",
+    "probe_binary_bytes": 49536,
+    "probe_binary_sha256": "4a4437065cc65e9fde137ce050223caf561679062f352eb526c9e5f68fcce117",
+    "probe_source_sha256": "217e3f31a50040f37d726f6b7b8f58ff412c450dc3c7977bd7c5355af43e75b3",
+    "python_h_present": true,
+    "required_macos_link_flag": "-undefined dynamic_lookup",
+    "verification": "a real CPython C extension was compiled and imported successfully under the governed interpreter"
+  },
+  "no_binary_shipped_into_repo": true,
+  "no_raw_survey_sources": true,
+  "no_secrets": true,
+  "schema": "PYAT_HQ242_01_WORKTREE_ENVIRONMENT_NATIVE_SOURCE_AND_BINARY_PROVENANCE@1",
+  "tip_discrepancy_detail": "The commissioned tip 08f4c0a1 IS an ancestor of the branch tip. One commit (c4d46de7, HQ243 routing correction) sits above it and changes exactly one line of the commission: it redirects the model/agent identity to Space Bunny in OpenCode and forbids relabelling as GPT-5.6 Sol High. The launch header's 'GPT-5.6 Sol High' is therefore superseded by HQ243. I am Space Bunny Max and did not relabel. I worked from the branch tip, which is the commission plus that correction.",
+  "tip_discrepancy_disclosed": true,
+  "worktree": {
+    "branch": "agent/space-bunny-pyat-hq242-f7-t1-native-p07-owner-implementation-r1",
+    "clean_at_start": true,
+    "head": "c4d46de7535359f0ebddc50ae5cad109124a4300",
+    "independent_clone": false,
+    "isolated_shared_store_sparse_worktree": true,
+    "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq242-native"
+  }
+}

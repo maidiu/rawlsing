@@ -1,0 +1,36 @@
+{
+  "broad_regression": {
+    "baseline_digest_verified": true,
+    "baseline_note": "pre-existing failures are unchanged and were neither hidden nor masked",
+    "exclusions_all_environmental": [
+      "pandas x5",
+      "pyarrow",
+      "absent d07 harness",
+      "absent sibling file"
+    ],
+    "exclusions_used": 9,
+    "exit_code": 1,
+    "normalized_fail_error_count": 54,
+    "normalized_fail_error_digest": "278854ee94fadfd57284a572441522fb56105081f89af431b17ec2e556ace6a9",
+    "required_digest": "278854ee94fadfd57284a572441522fb56105081f89af431b17ec2e556ace6a9",
+    "summary": "45 failed, 2691 passed, 55 warnings, 7 errors, 28 subtests passed"
+  },
+  "evidence_class": "WORKER_LOCAL_DEVELOPMENT_EVIDENCE__NOT_FINAL_INDEPENDENT_ACCEPTANCE",
+  "governed_runtime_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+  "native_build_and_import_determinism": {
+    "note": "a single probe build was performed to prove governability; determinism across repeated builds was not measured because no production native module was produced",
+    "repeated_build_byte_identical": null
+  },
+  "no_no_coverage_green": true,
+  "schema": "PYAT_HQ242_05_TARGETED_BROAD_REGRESSION_AND_KNOWN_BASELINE@1",
+  "startup_tip": "c4d46de7535359f0ebddc50ae5cad109124a4300 (commission tip 08f4c0a1 + HQ243 routing correction)",
+  "targeted_courts": {
+    "command": "pytest test_pre553_temporal_comparability.py test_pre553_source_relations.py test_m1_admitted_field_forge_relation_v554_ingress.py test_m1_temporal_v554_admission_dedup.py -q",
+    "exit_code": 0,
+    "f7_court": 163,
+    "m1": 41,
+    "note": "matches the commission's mandated targeted shape (F7 163 / P07 24 / M1 14+27)",
+    "p07_court": 24,
+    "result": "228 passed"
+  }
+}
