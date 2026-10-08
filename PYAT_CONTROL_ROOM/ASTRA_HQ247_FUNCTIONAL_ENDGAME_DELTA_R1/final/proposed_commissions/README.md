@@ -1,3 +1,9 @@
+# Current final prescription
+
+P3 is complete in [../03_EXACT_PROPOSED_COMMISSIONS.md](../03_EXACT_PROPOSED_COMMISSIONS.md). It supersedes the P2 drafts below on null semantics, D1/D3 productive exits/concurrency, single-owner replay assumptions and D4a independent review priority. All proposals remain unissued and unassigned. Use the final P3 prescription before copying a draft into any future commission.
+
+## Preserved P2 draft catalog
+
 # P2 proposed commission envelopes
 
 Not dispatched, not adopted, not P3 final priority prescription. All five freeze known evidence but leave future assignees/branches/startup tips/machines/worktrees explicitly unknown. Exact authority and code terrain require separate HQ issuance.

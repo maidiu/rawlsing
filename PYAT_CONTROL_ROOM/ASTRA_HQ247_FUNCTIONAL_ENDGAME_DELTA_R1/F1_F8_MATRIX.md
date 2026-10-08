@@ -1,3 +1,22 @@
+# F1–F8 final P3 assessment
+
+P3 retains P2 local credits and four-level ceilings. No full gate is promoted. Final corrections and commissioning implications below supersede P2 wording where stated; detailed P2 owner/producer/proof/consumer dimensions remain below and in JSON.
+
+| Gate | Final P3 refinement |
+|---|---|
+| F1 (A5/A6/A7) | Resolve selected source/claim/use cells first; preserve all-35 accountability. Full matrix support and pair/composition edges remain unbound. |
+| F2 (A2/A4) | Prefer existing explicit multi-binding route. Qualify the selected consumer edge before authorizing any change to accepted C1/scalar AT17. |
+| F3 (A2/A4) | Preserve accepted minority/recursive machinery; prove declared final-service information and selective replay contract without universal single-owner topology. |
+| F4 (A2/A4/A7) | Retain same-respondent joint/co-travel evidence. Verify exact ordered geometry/member identity at selected consumer; no cross-survey pooled respondent claim. |
+| F5 (A1/A6/A7) | GT2 local CONTEXT is real scoped capital. Additional declared structural contributions and world meaning/use remain required; no full-pressure gate promotion. |
+| F6 (A1/A5/A6) | Bind exact source-indexed coexistence or separately authorized composite; both intended contributions must be consumed. Universal container/pooling law not imposed. |
+| F7 (A6/A8) | Competent pair/use binding and functional temporal proof remain missing. Recommend frozen-R3 review in parallel now; actual protected use still requires distinct final integrated security adoption. |
+| F8 (A1/A2/A3/A4/A9) | Bind actual progressive/world use and replay. NONCOMPARABLE requires competent evidence; missing permission remains blocked. Registered AT07 prerequisites remain conditional mandatory at narrow fixture scope. |
+
+See [final empirical gate](final/02_F1_F8_AND_EMPIRICAL_GATE.md) and [arbitration](phases/P3_ARBITRATION.md). The 35/280 scaffold requires source/claim/use refinement and explicit interaction edges; unknown support is not N/A. Zero project/native/source tests executed.
+
+## Preserved P2 detailed dimensions
+
 # F1–F8 functional capability matrix — P2
 
 P2 dimensions below supersede the historical P0/P1 assessments for this phase. JSON preserves those historical fields. No gate receives full closure. Implemented ability, accepted local positive proof, actual integration, real retained source occupancy and PRE-V3 completion are separate. Exact immutable paths/blobs/spans appear in phases/P2_VERIFICATION.md, P2_SOURCE_CATALOG.md and the identity receipts.
