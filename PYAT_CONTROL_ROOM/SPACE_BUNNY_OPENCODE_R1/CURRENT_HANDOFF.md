@@ -1,3 +1,20 @@
+# HQ243 — CORRECTED F7 WORKER ROUTING — 2026-10-07
+
+**F7 — LAUNCH IN SPACE BUNNY / OPENCODE ON THE MAC, NOT A BROWSER GPT-5.6 SOL WORKER.**  
+**MODEL / INTELLIGENCE:** user's configured Space Bunny model/variant (Max preferred for native C); resolve actual provider/model ID and variant on host.  
+**BRANCH:** `agent/space-bunny-pyat-hq242-f7-t1-native-p07-owner-implementation-r1`  
+**CORRECTED EXACT COMMISSION TIP:** `c4d46de7535359f0ebddc50ae5cad109124a4300`  
+**COMMISSION:** `WORKER_COMMISSIONS/PYAT-HQ242-F7-T1-NATIVE-P07-OWNER-IMPLEMENTATION-R1/00_COMMISSION.md`.
+
+**N10E — LAUNCH IN SEPARATE BROWSER/GITHUB GPT-5.6 SOL HIGH SESSION.**  
+**BRANCH:** `agent/rabochii-pyat-hq242-n10e-at07-issuer-warrant-correction-r2`  
+**TIP:** `1cac84eac8846130bd12e9bf591ff3010c9c4b62`  
+**COMMISSION:** `WORKER_COMMISSIONS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/00_COMMISSION.md`.
+
+Prior F7 GPT-5.6 Sol label and `08f4c0a...` dispatch tip are superseded. No other HQ242 authorization change.
+
+---
+
 # HQ242 — BOUNDED F7 T1 PRODUCER WARRANT; N10E R2 ISSUER CORRECTION — 2026-10-07
 
 **HQ DECISION:** `HQD-2026-10-07-242`
