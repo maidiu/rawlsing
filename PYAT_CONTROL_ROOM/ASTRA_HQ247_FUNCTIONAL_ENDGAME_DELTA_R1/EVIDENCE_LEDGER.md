@@ -130,3 +130,7 @@ P0 entries remain historical. HQ249 supersedes P0-E01/E02 currentness, not their
 | P1-E07 | World source admission/context/release do not alone establish world-conditioned service; SUPPORTED BOUNDED INFERENCE | HQ203 21c3fd…; HQ235 802877…; binder 4ba00b…; applicability 3e40ca…; I4 4a8e27…. H7. No global absence claim. | Existing exact current world-operation positive receipt with relevant authority. |
 | P1-E08 | Minimum empirical and 35-wave acceptance must remain separate; AUTHORITY CONFIRMED / MINIMUM DESIGN PROPOSED | HQ125 393af1…289–347; HQ216 e67401…122–209. H8. No survey values or N/A cells fabricated. | Omitted mandatory function, unsupported minimum source selection or failed required estate cell. |
 | P1-E09 | Global infrastructure-first serialization is unproved; SCHEDULING INFERENCE | Three reverse slices, H3/H5/H6/H9, HQ249 cutoff. Not quantified speedup or control retirement. | Exact demanded consumer has mandatory global dependency and no independent productive work. |
+
+## P2 V1–V3 bank
+
+See phases/P2_VERIFICATION.md and P2_SOURCE_INDEX.json. I4 release assembly and adopted rich C1/C1-03 are retained contrary evidence. Selected N9→N10W assembly remains unbound. Genuine ZERO_SUPPORT, VALID_EMPTY and authority blockers are distinct; C1-03A conserves states, while inspected provider does not serve null slices. No project/native/source test execution.
