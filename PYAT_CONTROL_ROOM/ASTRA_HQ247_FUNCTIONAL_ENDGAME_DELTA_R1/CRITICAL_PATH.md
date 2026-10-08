@@ -1,3 +1,20 @@
+# P2 verified refinements — proposed path pending P3
+
+V1–V8 are complete at documentary/static grain; the inherited P1 dependency model below is historical/provisional where these refinements apply. P3 must choose the final prescription after a human model switch. No future commission is dispatched.
+
+| Verified P2 result | Implication for future commissioning |
+|---|---|
+| V1: selected N9→N10W assembly and demanded response receipt remain unbound; real I4 release assembly exists | D1 first pins exact demand/assembly. Do not infer a missing implementation or commission a new container from bounded search absence. |
+| V2/V5: rich C1 and HQ168/HQ214 local joins are adopted; scalar wrapper remains restricted; selected service/replay bridge unbound | Reuse accepted machinery. D2 tests the exact rich/null consumer bridge only after D1 names it; preserve AT17 and selective owner-driven invalidation. |
+| V3: C1-03A conserves null/refusal states, but inspected provider does not serve null products | Freeze demanded state semantics and authentic provenance. ZERO_SUPPORT is not VALID_EMPTY; lawful typed non-invocation is not blanket world-service completion. |
+| V4/V7: EVS1990/2008 are physical candidates only; competent pair products/authority missing; most of 280 source/function expectations unknown | D3 binds exact support, operation and authority before selecting the minimum empirical set. Retained SRC02 GT2 contributes local context only. |
+| V6: AT07 is unissued and scoped to source-free AT07_BIDIRECTIONAL_100; this Mac lacks independent verifier control | D5 is conditional topology/designation work. No universal issuer gate or second-account independence inferred. |
+| V8: exact R3 leak and unimplemented T1/TCB remain, with no independent runtime qualification | D4 distinguishes narrow exact-R3 memory evidence from future integrated production security qualification. Native security is mandatory wherever selected protected operations consume it. |
+
+All five envelopes under final/proposed_commissions are proposals, including exact review/stop boundaries and A–G qualitative priorities. Local accepted proof, selected-service integration, source occupancy and full PRE-V3 completion remain distinct. P2 does not establish a complete competent empirical minimum, a shortest measured schedule, a universal three-anchor law or 35-wave readiness.
+
+## Preserved P1 dependency hypothesis
+
 # Critical path — P1 hypothesis for falsification
 
 **Baseline:** HQ249, control `a3d44f554e4e4fa01223679035599019ae2de527`, packet `feff06d43428efa767ce6823f693ca5361767332`. **Status:** P1 prescription hypothesis, not HQ adoption, dispatch or P3 final verdict. P0 historical seed remains in Git at `fe7493ca61c058cbccb30c02425ed1032f986c4f`.

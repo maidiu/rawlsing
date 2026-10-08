@@ -138,3 +138,9 @@ See phases/P2_VERIFICATION.md and P2_SOURCE_INDEX.json. I4 release assembly and 
 ## P2 V4–V6 bank
 
 Adopted C7 readiness binds only EVS1990/2008 physical candidates; competent products and exact comparability remain missing. Five accepted C1 owner blobs conserved at current control; HQ214 retains single-owner fresh-process bridge limitation. AT07 operational sequence remains narrow/unissued and local verifier placement blocked. Exact receipt and normative contract references in P2_VERIFICATION and source index.
+
+## P2 V7–V8 and functional matrix bank
+
+The pinned C2 source-identity/role records yield 35 declared canonical identities and 280 accountable F1–F8 cells. Eight physical-preparation roles do not establish three-service empirical competence. Retained SRC02 GT2 supports its exact risk/joint/structural CONTEXT grain; unknown capabilities and unbound consumers remain explicit. No intrinsic N/A or empirical outcome is fabricated. See final/P2_EXPECTED_CAPABILITIES and the nine-dimension/four-tier P2 functional matrix.
+
+Exact R3 Stage B bytes independently match author SHA256; this is byte identity, not executed native qualification. HQ248-OPEN-001 admission leak, unbuilt T1, unexecuted module-init OOM and transitive TCB fork survive. Five bounded proposed envelopes separate exact assembly, rich/null service bridge, source/operation binding, conditional native qualification and conditional AT07 topology. They are not dispatches or authority. All V1–V8 findings retain contrary evidence, missing owner/stage, priority and falsifier; exact commit/path/blob/read scopes are indexed.
