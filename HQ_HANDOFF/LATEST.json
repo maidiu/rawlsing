@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261008-PYAT-HQ247-N10E-R3-ADOPTED-F7-HOSTILE-BLOCKED-R1",
-  "handoff_commit": "3f8f1caa545ffc4d95383f31605e8a17a894a7f3",
+  "checkpoint_id": "20261008-PYAT-HQ248-F7-R2-REFCOUNT-N10E-PLACEMENT-HOLD-R1",
+  "handoff_commit": "91595263d2888091e1f28af1ed38429b7c02966f",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261008-PYAT-HQ247-N10E-R3-ADOPTED-F7-HOSTILE-BLOCKED-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261008-PYAT-HQ247-N10E-R3-ADOPTED-F7-HOSTILE-BLOCKED-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261008-PYAT-HQ247-N10E-R3-ADOPTED-F7-HOSTILE-BLOCKED-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261008-PYAT-HQ248-F7-R2-REFCOUNT-N10E-PLACEMENT-HOLD-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261008-PYAT-HQ248-F7-R2-REFCOUNT-N10E-PLACEMENT-HOLD-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261008-PYAT-HQ248-F7-R2-REFCOUNT-N10E-PLACEMENT-HOLD-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -15,7 +15,7 @@
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
   "protected_execution_head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
-  "next_action": "RUN_HQ247_THREE_PARALLEL_SUCCESSORS__INTAKE_ANY_RETURN__NO_F7_NATIVE_OR_N10E_ROOT_ACTIVATION",
+  "next_action": "RUN_HQ248_THREE_ORTHOGONAL_SUCCESSORS__INTAKE_RETURNS__NO_NATIVE_F7_OR_ISSUER_ACTIVATION",
   "source_split_control_head": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "split_fanin_evidence_tip": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "joined_successor_return_tip": "b4dd6d6016367110c06317abe2cef276123b4c69",
@@ -62,7 +62,7 @@
   "pyat_current_handoff": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/CURRENT_HANDOFF.md",
   "pyat_current_grok_docket": "PYAT_CONTROL_ROOM/12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md",
   "pyat_fresh_hq_protocol": "PYAT_CONTROL_ROOM/13_FRESH_HQ_FULL_GROK_PROTOCOL.md",
-  "immediate_program_refinement": "HQ246__F7_STAGE_A_INDEPENDENT_BLOCK_SIGSEGV__B_UNSAFE_CODE_PATTERN_NO_ADOPTION__AB_REPAIR_PLUS_FROZEN_B_REVIEW__N10E_R3_REVIEW_NO_ISSUER",
+  "immediate_program_refinement": "HQ248__F7_R2_PARTIAL_DIRECT_REFCOUNT_001__F09_FROZEN_HOSTILE_BLOCKED__N10E_REAL_PLACEMENT_PARTIAL__ASTRA_PARKED",
   "legacy_pyat_bootstrap_path": "HQ_HANDOFF/PYAT_HQ_BOOTSTRAP_R1.md",
   "pyat_documentary_hygiene": "HQD-2026-09-26-114",
   "pyat_forward_program_decision": "HQD-2026-09-28-125",
@@ -1195,5 +1195,25 @@
   "c1_review_merge": "15550c8f7c026c8446546bf8845e4dfba2642baf",
   "last_hq_decision": "HQD-2026-10-08-247",
   "n10e_r3_documentary_warrant_status": "DISTINCT_HQ247_ADOPTED_PROSPECTIVE_ONLY__NO_ROOT_OR_ISSUER",
-  "f7_native_current_status": "FROZEN_B_HOSTILE_BLOCKED__AB_F09_PARTIAL__NO_PRODUCTION_CUTOVER"
+  "f7_native_current_status": "FROZEN_B_HOSTILE_BLOCKED__AB_F09_PARTIAL__NO_PRODUCTION_CUTOVER",
+  "hq248_decision": "HQD-2026-10-08-248",
+  "hq248_f7_r2_return": "c2c0ab7335a3bcfeabb4297139378e3e657cd432",
+  "hq248_f7_direct_defect": "HQ248-F7-REFCOUNT-001",
+  "hq248_f09_hostile_return": "fa3c69b832d4649e046d84e4dde89897585aa4e3",
+  "hq248_n10e_placement_return": "80023846b13b9d2cea93f6a3d4f7cd36601b7ccd",
+  "hq248_astra_audit": "PARKED__NEEDS_LAUNCH",
+  "hq248_active_branches": [
+    {
+      "branch": "agent/space-bunny-pyat-hq248-f7-decide-refcount-repair-r3",
+      "commission_tip": "8902013902ffcc8a6f936fb184a11320a57011ed"
+    },
+    {
+      "branch": "agent/reviewer-pyat-hq248-f7-trusted-constructor-ingress-design-r1",
+      "commission_tip": "ad320e05bf3f7ed75bca51e62e3b044da5d8c535"
+    },
+    {
+      "branch": "agent/space-bunny-pyat-hq248-n10e-at07-deployment-placement-evidence-r1",
+      "commission_tip": "9716656ee47fb04bf8bd6e842982d78b6490cca8"
+    }
+  ]
 }
