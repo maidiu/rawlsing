@@ -526,6 +526,8 @@ def test_d8_stage_b_detects_mutated_payload_with_unchanged_identity_strings():
             self.target_use = template.target_use
             self.authority_operation = template.authority_operation
             self.relation_authority_ref = template.relation_authority_ref
+            self.effective_scope = template.effective_scope
+            self.directionality_or_symmetric = template.directionality_or_symmetric
 
         def semantic_projection(self):
             return {"projection": dict(self.semantic_fields)}

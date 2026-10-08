@@ -190,6 +190,10 @@ class _MutableRelationStandIn:
         self.target_use = template.target_use
         self.authority_operation = template.authority_operation
         self.relation_authority_ref = template.relation_authority_ref
+        # HQ246-P1: the object key now requires the TRUE effective_scope and
+        # directionality_or_symmetric, so a stand-in must carry them.
+        self.effective_scope = template.effective_scope
+        self.directionality_or_symmetric = template.directionality_or_symmetric
 
     def semantic_projection(self):
         return {"projection": dict(self.semantic_fields)}
