@@ -1,0 +1,223 @@
+{
+  "schema": "PYAT_HQ250_S03_EXACT_TWO_WAVE_LINEAGE@1",
+  "qualification": "COMPETENT_DOCUMENTARY_CANDIDATE__NOT_EMPIRICAL_PAIR_AUTHORITY",
+  "terminal": "HQ250_S03_EVS_PAIR_FEASIBILITY_RETURNED_FOR_REVIEW__NOT_ADOPTED",
+  "construct": {
+    "GESIS_dataset": "EVS Trend File 1981-2017",
+    "GESIS_study": "ZA7503",
+    "version": "3.0.0",
+    "release": "2022-12-14",
+    "doi": "10.4232/1.14021",
+    "variable": "A048",
+    "label": "Abortion when woman not married",
+    "question": "Do you approve or disapprove of abortion under the following circumstances? Where the woman is not married.",
+    "scientific_interpretation": "Adult respondent's approval/disapproval under stipulated unmarried condition; neither abortion occurrence nor individual causal/longitudinal change",
+    "harmonized_values": {
+      "0": "Disapprove",
+      "1": "Approve",
+      "-1": "Don't know",
+      "-2": "No answer",
+      "-3": "Not applicable",
+      "-4": "Not asked",
+      "-5": "Missing other"
+    }
+  },
+  "selected_country": {
+    "name": "Austria",
+    "trend_ISO_alpha2": "AT",
+    "trend_ISO_numeric": "040",
+    "native_country_codes_may_differ": true,
+    "restriction": "COUNTRY-SPECIFIC; NO UNION_OF_ALL_EVS_COUNTRIES"
+  },
+  "original_wave_lineages": [
+    {
+      "source_id": "SRC12",
+      "file": "EVS 1990.sav",
+      "sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+      "bytes": 24341244,
+      "physical_reported_rows": 38213,
+      "physical_reported_columns": 390,
+      "official_integrated_id": "ZA4460",
+      "official_reference_version": "3.0.0",
+      "official_reference_release": "2011-11-20",
+      "DOI": "10.4232/1.10790",
+      "original_integrated_variable": "q467c",
+      "original_master_item": "Q465C / Q467C; Q465 block in trend report",
+      "original_master_value_map": {
+        "1": "Approve",
+        "2": "Disapprove"
+      },
+      "integrated_and_trend_value_map": {
+        "0": "Disapprove",
+        "1": "Approve"
+      },
+      "show_card": "Z",
+      "country": "Austria",
+      "country_code": "AT",
+      "country_mentioned_ISO_numeric": "040",
+      "fieldwork": "1990-04-09 to 1990-06-01",
+      "official_national_wave_sample_n": 1460,
+      "qualifying_population": "Representative adult 18+, specific Austrian random/quota sampling design not yet independently qualified",
+      "references": [
+        {
+          "url": "https://access.gesis.org/dbk/71051",
+          "printed_page": 95,
+          "PDF_zero_index": 149,
+          "role": "A048 1990 ZA4460 Q465"
+        },
+        {
+          "url": "https://access.gesis.org/dbk/50678",
+          "printed_page": 498,
+          "PDF_zero_index": 549,
+          "role": "q467c Q465C, original question/values"
+        },
+        {
+          "url": "https://access.gesis.org/dbk/11635",
+          "PDF_zero_index": 14,
+          "role": "Q467C questionnaire / show card"
+        },
+        {
+          "url": "https://www.gesis.org/en/european-values-study/data-and-documentation/2nd-wave-1990",
+          "html_lines": "13-39",
+          "role": "source version, population, Austrian field dates and size"
+        }
+      ],
+      "raw_SHA_correspondence_to_official_version": "UNPROVED"
+    },
+    {
+      "source_id": "SRC14",
+      "file": "EVS 2008.sav",
+      "sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+      "bytes": 63832833,
+      "physical_reported_rows": 66280,
+      "physical_reported_columns": 477,
+      "official_integrated_id": "ZA4800",
+      "official_reference_version": "5.0.0",
+      "official_reference_release": "2022-06-08",
+      "DOI": "10.4232/1.13841",
+      "original_integrated_variable": "v184",
+      "original_master_item": "Q53A; Q53 block in trend report",
+      "original_master_value_map": {
+        "1": "Approve",
+        "2": "Disapprove"
+      },
+      "integrated_and_trend_value_map": {
+        "0": "Disapprove",
+        "1": "Approve"
+      },
+      "show_card": "53; read out and code one answer per line",
+      "master_extra_missing_codes": {
+        "8": "Don't know",
+        "9": "No answer"
+      },
+      "country": "Austria",
+      "country_code": "AT",
+      "country_mentioned_ISO_numeric": "040",
+      "Austria_country_study": "ZA4754",
+      "fieldwork": "2008-07-21 to 2008-10-22",
+      "official_national_wave_sample_n": 1510,
+      "qualifying_population": "Representative adult 18+, specific Austrian sampling details need national method report",
+      "questionnaire_warning": "GESIS v184 report says modified trend/interviewer instruction when discussing EVS1999 and 2008; NOT formal 1990-to-2008 invariance certification",
+      "references": [
+        {
+          "url": "https://access.gesis.org/dbk/71051",
+          "printed_page": 95,
+          "PDF_zero_index": 149,
+          "role": "A048 2008 ZA4800 Q53"
+        },
+        {
+          "url": "https://access.gesis.org/dbk/17681",
+          "printed_page": 422,
+          "PDF_zero_index": 500,
+          "role": "v184 Q53A, values, modified interviewer-instruction warning"
+        },
+        {
+          "url": "https://access.gesis.org/dbk/17683",
+          "PDF_zero_index": 14,
+          "role": "Q53A native master values and show card"
+        },
+        {
+          "url": "https://access.gesis.org/dbk/17772",
+          "PDF_zero_index": 0,
+          "role": "Austria bilingual ZA4754 original German vs English master, check v184 item before adoption"
+        },
+        {
+          "url": "https://www.gesis.org/en/european-values-study/data-and-documentation/4th-wave-2008",
+          "html_lines": "13-67",
+          "role": "source version, Austria ZA4754, field dates and n"
+        }
+      ],
+      "raw_SHA_correspondence_to_official_version": "UNPROVED"
+    }
+  ],
+  "proposed_only_estimand": "Each wave separately: Austria nationally representative adults 18+ who were eligible and asked A048, proportion approving among verified valid (0,1) responses under correct wave-specific design/weight and respondent risk denominator. Temporal comparison of two population snapshots ONLY IF positive pair authority is later adopted.",
+  "required_population_difference": "Repeated cross-sections, not panel, same-respondent or individual transition.",
+  "weights": {
+    "trend_national_weight": "S017 (weight_g) for original EVS waves; 1990 supplied country national weight, 2008 derived national age/sex calibration as GESIS described",
+    "within_country_variance": "Bind exact per-wave design (inclusion/PSU/strata, eligibility, nonresponse) before inference; S017 alone does not define variance estimator",
+    "forbidden_automatic": "S018 equal-country / pwght population aggregate / pooling respondents / unweighted sign"
+  },
+  "missingness": "Physical question/master codes differ from harmonized trend values. Enforce valid 0/1 response, preserve -1..-5 distinct, do not use total national n as item denominator.",
+  "competence": {
+    "original_question_and_construct_mapping": "DOC_PRIMARY_PASS",
+    "primary_language_item_semantics_for_Austria": "PENDING_INDEPENDENT_COUNTRY_INSTRUMENT_REVIEW",
+    "Austrian_population_overlap": "COUNTRY_OVERLAP_PASS__FRAME_DESIGN_EQUIVALENCE_UNPROVEN",
+    "physical_SHAs": "RETAINED_CENSUS_CONFIRMED",
+    "physical_to_official_release_version_match": "UNPROVED",
+    "source_item_semantic_product": "NOT_CURRENT",
+    "positive_pair_specific_comparability": "ABSENT",
+    "temporal_product_and_world_consumer": "ABSENT"
+  },
+  "relevant_repo_evidence": [
+    {
+      "ref": "a3d44f554e4e4fa01223679035599019ae2de527",
+      "path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_BYTE_INVENTORY.csv",
+      "blob": "2a87ed920606be95003684e3775227ff8e94639c"
+    },
+    {
+      "ref": "a3d44f554e4e4fa01223679035599019ae2de527",
+      "path": "data/ddm_build_copy/manifests/file_accounting_manifest.csv",
+      "blob": "41a30206e5b158bbd19010f10a0d7fc3d7eb7db8"
+    },
+    {
+      "ref": "a3d44f554e4e4fa01223679035599019ae2de527",
+      "path": "data/ddm_build_copy/manifests/question_wave_itinerary.csv",
+      "blob": "1ee8a6dec8b9e48aaeb48f03d6c16dc01365b206",
+      "manual_designation_required": true
+    },
+    {
+      "ref": "dbff6acdb9557ab65dda0bd564295cec5fc55062",
+      "path": "WORKER_RETURNS/PYAT-D02-RETAINED-LOCATOR-INDEPENDENT-REVIEW-R1/00_REVIEW.md",
+      "blob": "4290e53237c41f197d09280f58cb04309bf56a3",
+      "not_this_construct": "v372 date sentinel, physical-only; selected v184 not validated"
+    },
+    {
+      "ref": "d966d4ec97839b09a3040fd2ad23a3d63677bba9",
+      "path": "WORKER_RETURNS/PYAT-C5-C7E-NEXT-SCOPE-READINESS-R1/02_C7_N8E_READINESS.json",
+      "blob": "d3f77c0c89a72af9dad44335828f0d4cc1d042e5",
+      "blocker": "C7-BLOCK-CURRENT-COMPARABLE-WAVE-PAIR-001"
+    }
+  ],
+  "primary_links": {
+    "trend": "https://access.gesis.org/dbk/71051",
+    "trend_home": "https://www.gesis.org/en/european-values-study/data-and-documentation/evs-trend-file-1981-2017",
+    "evs1990": "https://access.gesis.org/dbk/50678",
+    "master1990": "https://access.gesis.org/dbk/11635",
+    "country1990": "https://access.gesis.org/dbk/11623",
+    "wave1990": "https://www.gesis.org/en/european-values-study/data-and-documentation/2nd-wave-1990",
+    "evs2008": "https://access.gesis.org/dbk/17681",
+    "master2008": "https://access.gesis.org/dbk/17683",
+    "country2008": "https://access.gesis.org/dbk/17772",
+    "wave2008": "https://www.gesis.org/en/european-values-study/data-and-documentation/4th-wave-2008"
+  },
+  "authority_and_execution": {
+    "survey_data_read": false,
+    "raw_sources_processed": false,
+    "observed_wave_values_produced": false,
+    "comparison_sign_observed": false,
+    "semantic_source_authority_issued": false,
+    "pair_authority_adopted": false,
+    "P07_bypass": false,
+    "world_consumer_emitted": false
+  }
+}
