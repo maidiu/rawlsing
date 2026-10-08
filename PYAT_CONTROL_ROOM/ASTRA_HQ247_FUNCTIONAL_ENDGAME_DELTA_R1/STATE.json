@@ -6,9 +6,9 @@
   "phase": "P0_NOT_STARTED",
   "required_next_model": "GPT-5.6 Sol High or nearest economical high-capability available model",
   "pending_model_switch": "NONE_UNTIL_P0_COMPLETE",
-  "control_origin_head_observed": "4246cea7657b6bfb1e405a27f3dff952c4d157df",
-  "control_latest_checkpoint_observed": "20261008-PYAT-HQ247-N10E-R3-ADOPTED-F7-HOSTILE-BLOCKED-R1",
-  "handoff_commit_observed": "3f8f1caa545ffc4d95383f31605e8a17a894a7f3",
+  "control_origin_head_observed": "675b0793fd2a2b75463fc00d2b884eefdc95e9f9",
+  "control_latest_checkpoint_observed": "20261008-PYAT-HQ248-F7-R2-REFCOUNT-N10E-PLACEMENT-HOLD-R1",
+  "handoff_commit_observed": "91595263d2888091e1f28af1ed38429b7c02966f",
   "semantic_pre_main_observed": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "branch_remote_head_at_issuance": "TO_BE_FILLED_FROM_EXACT_LAUNCH_BLOCK_AND_DIRECT_ORIGIN_READBACK",
   "other_remote_heads_observed": [
@@ -16,39 +16,67 @@
       "name": "HQ247 F7 R2 author return",
       "branch": "agent/space-bunny-pyat-hq247-f7-native-b1-b4-parity-trust-repair-r2",
       "observed_head": "c2c0ab7335a3bcfeabb4297139378e3e657cd432",
-      "adoption": "NOT_ESTABLISHED",
-      "scope": "PARTIAL_PENDING_HQ_INTAKE"
+      "adoption": "ADJUDICATED_HQ248",
+      "scope": "PARTIAL_PENDING_HQ_INTAKE__SEE_HQD248_FOR_EXACT_DISPOSITION"
     },
     {
       "name": "HQ247 frozen f09 hostile review return",
       "branch": "agent/reviewer-pyat-hq247-f7-f09-repair-independent-runtime-r1",
       "observed_head": "fa3c69b832d4649e046d84e4dde89897585aa4e3",
-      "adoption": "NOT_ESTABLISHED",
-      "scope": "F09_ONLY_NOT_R2"
+      "adoption": "ADJUDICATED_HQ248",
+      "scope": "F09_ONLY_NOT_R2__SEE_HQD248_FOR_EXACT_DISPOSITION"
     },
     {
       "name": "HQ247 N10E root placement preflight return",
       "branch": "agent/rabochii-pyat-hq247-n10e-at07-owner-root-placement-preflight-r1",
       "observed_head": "80023846b13b9d2cea93f6a3d4f7cd36601b7ccd",
-      "adoption": "NOT_ESTABLISHED",
-      "scope": "DOCUMENTARY_PARTIAL_NO_ROOT"
+      "adoption": "ADJUDICATED_HQ248",
+      "scope": "DOCUMENTARY_PARTIAL_NO_ROOT__SEE_HQD248_FOR_EXACT_DISPOSITION"
     }
   ],
   "prior_astra_atlas": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/README.md",
   "previous_phase_completion": "NONE",
   "latest_verified_audit_remote_head": "NOT_YET_CHECKED_AT_LAUNCH",
-  "checkpoint_status": "SCAFFOLD_ONLY_NOT_AUDIT_FINDINGS",
+  "checkpoint_status": "SCAFFOLD_AMENDED_FOR_HQ248__P0_NOT_STARTED",
   "completed_investigations": [],
   "open_questions": [
     "Are current F7 and N10E blockers on the global minimum functional PRE-V3 critical path?",
     "Which F1–F8 producer/consumer edges are missing vs unoccupied?",
-    "Which prior Astra Atlas proposed lanes are now realized, held, superseded or misprioritized?"
+    "Which prior Astra Atlas proposed lanes are now realized, held, superseded or misprioritized?",
+    "At cutoff, has HQ249-or-later independently intaken the three HQ248 successor lanes, and is any explicit outstanding lane recorded?",
+    "Distinguish native-security F7-RR-04G from HQD125 empirical-temporal gate F7; do not infer direct critical path."
   ],
-  "first_next_action": "Verify actual audit branch HEAD and current control LATEST; read exact checkpoint and prior Astra Atlas; perform P0 without repeating full history.",
+  "first_next_action": "Read 04_HQ248_HQ249_ACTIVATION_GATE.md, verify fresh control LATEST and three HQ248 successor HEADs, perform economical P0; BANK and STOP before expensive P1 until HQ249 intake seals or human explicitly overrides.",
   "last_stage_files": [
     "00_COMMISSION.md",
     "01_PHASES_AND_SWITCHES.md",
     "02_CHECKPOINT_AND_COST_LAW.md",
-    "03_RETURN_CONTRACT.md"
+    "03_RETURN_CONTRACT.md",
+    "04_HQ248_HQ249_ACTIVATION_GATE.md"
+  ],
+  "original_commission_issuance_control_head": "4246cea7657b6bfb1e405a27f3dff952c4d157df",
+  "original_commission_issuance_checkpoint": "20261008-PYAT-HQ247-N10E-R3-ADOPTED-F7-HOSTILE-BLOCKED-R1",
+  "pending_astra_P1_gate": "REQUIRE_SEALED_HQ249_OR_LATER_POST_HQ248_INTAKE_OR_EXPLICIT_HUMAN_OVERRIDE",
+  "prior_HQ247_returns_classification": "ADJUDICATED_AT_HQD_2026_10_08_248__HISTORICAL_NOT_PENDING",
+  "hq248_workers_at_amendment": [
+    {
+      "branch": "agent/space-bunny-pyat-hq248-f7-decide-refcount-repair-r3",
+      "commission_tip": "8902013902ffcc8a6f936fb184a11320a57011ed",
+      "observed_head": "8902013902ffcc8a6f936fb184a11320a57011ed",
+      "classification": "UNCHANGED_REMOTE__NO_RETURN_VISIBLE"
+    },
+    {
+      "branch": "agent/reviewer-pyat-hq248-f7-trusted-constructor-ingress-design-r1",
+      "commission_tip": "ad320e05bf3f7ed75bca51e62e3b044da5d8c535",
+      "observed_head": "ad320e05bf3f7ed75bca51e62e3b044da5d8c535",
+      "classification": "UNCHANGED_REMOTE__NO_RETURN_VISIBLE"
+    },
+    {
+      "branch": "agent/space-bunny-pyat-hq248-n10e-at07-deployment-placement-evidence-r1",
+      "commission_tip": "9716656ee47fb04bf8bd6e842982d78b6490cca8",
+      "observed_head": "e64379e542b931df1e7df47f1b37955a1cb9a3a9",
+      "classification": "POST_HQ248_CHECKPOINT_PENDING_RETURN_NOT_HQ_ADOPTED",
+      "author_claim": "BLOCKED_REAL_INDEPENDENT_VERIFIER_PLACEMENT"
+    }
   ]
 }
