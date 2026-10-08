@@ -2,9 +2,9 @@
   "schema": "ASTRA_PYAT_HQ247_AUDIT_STATE@1",
   "commission": "ASTRA-PYAT-HQ247-FUNCTIONAL-ENDGAME-DELTA-AUDIT-R1",
   "lane": "agent/astra-pyat-hq247-functional-endgame-delta-audit-r1",
-  "status": "P0_COMPLETE__P1_MODEL_SELECTED__HQ_INTAKE_DECISION_PENDING",
-  "phase": "P0_COMPLETE",
-  "required_next_model": "Human-selected Astra Pro / highest available reasoning",
+  "status": "P0_COMPLETE_AND_BANKED__P1_HUMAN_ASTRA_HIGH_SELECTED__HQ249_GATE_SATISFIED__READY_FOR_P1",
+  "phase": "P0_COMPLETE__P1_NOT_STARTED",
+  "required_next_model": "Continue existing human-selected Astra High session for P1; select only if changed",
   "pending_model_switch": null,
   "control_origin_head_observed": "a3d44f554e4e4fa01223679035599019ae2de527",
   "control_latest_checkpoint_observed": "20261008-PYAT-HQ249-THREE-HQ248-RETURNS-ASTRA-AUDIT-WAKE-R1",
@@ -36,8 +36,8 @@
   ],
   "prior_astra_atlas": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/README.md",
   "previous_phase_completion": "P0",
-  "latest_verified_audit_remote_head": "ddb88d654ae2e257a6401bf8c5421329c48249b9",
-  "checkpoint_status": "ENTRY_SCAFFOLD_CURRENT_HQ249__P0_NOT_STARTED__ASTRA_P1_HQ_GATE_SATISFIED",
+  "latest_verified_audit_remote_head": "fe7493ca61c058cbccb30c02425ed1032f986c4f (Astra's own last verified evidence bank; newer commission-only commits must be separately remote-verified)",
+  "checkpoint_status": "P0_BANKED_ON_REMOTE_AND_VERIFIED__P1_ENTRY_REFRESH_BANKED_AT_fe7493ca61c058cbccb30c02425ed1032f986c4f__HQ249_INTAKE_COMPLETE",
   "completed_investigations": [
     "Verified direct origin control/audit/three worker refs and immutable checkpoint bindings at entry and stop",
     "Verified ancestry and return-only terrain for two pushed returns; read all ten artifacts",
@@ -58,7 +58,7 @@
     "Q9",
     "Q10"
   ],
-  "first_next_action": "Read 05_HQ249_ACTIVATION_UNBLOCKED.md and actual current LATEST; perform P0 economical delta census; commit/push/readback and STOP for operator to switch to Astra P1.",
+  "first_next_action": "Sync same audit worktree by safe fast-forward from P0 bank if clean; read 06_HQ249_RESUME_P1_AFTER_COMPLETED_P0.md and sealed HQ249, then CONTINUE P1 hostile systemic audit without repeating P0 or seeking intake override.",
   "last_stage_files": [
     "phases/P0_DELTA_CENSUS.md",
     "phases/P0_GIT_CENSUS_ENTRY.json",
@@ -70,11 +70,14 @@
     "F1_F8_MATRIX.md",
     "CRITICAL_PATH.md",
     "NEXT_OPERATOR.md",
-    "05_HQ249_ACTIVATION_UNBLOCKED.md"
+    "05_HQ249_ACTIVATION_UNBLOCKED.md",
+    "phases/P1_ENTRY_REFRESH.md",
+    "phases/P1_ENTRY_REFRESH_SOURCE_INDEX.json",
+    "06_HQ249_RESUME_P1_AFTER_COMPLETED_P0.md"
   ],
   "original_commission_issuance_control_head": "4246cea7657b6bfb1e405a27f3dff952c4d157df",
   "original_commission_issuance_checkpoint": "20261008-PYAT-HQ247-N10E-R3-ADOPTED-F7-HOSTILE-BLOCKED-R1",
-  "pending_astra_P1_gate": "SATISFIED_BY_SEALED_HQ249__STILL_REQUIRES_P0_COMPLETION_PUSH_VERIFICATION_AND_MANUAL_ASTRA_SWITCH",
+  "pending_astra_P1_gate": "NONE__SEALED_HQ249_AND_HUMAN_ASTRA_HIGH_SELECTION_BOTH_CONFIRMED_AS_OF_USER_TRANSCRIPT",
   "prior_HQ247_returns_classification": "ADJUDICATED_AT_HQD_2026_10_08_248__HISTORICAL_NOT_PENDING",
   "hq248_workers_at_amendment": [
     {
@@ -164,9 +167,9 @@
       "machine": "governed Mac"
     }
   ],
-  "selected_model": "Astra High, explicitly selected by human in chat",
-  "model_scope": "P1 authorized on human-selected Astra High; no automatic switch",
-  "gate_status": "P1_NOT_STARTED__MODEL_SELECTION_CONFIRMED__INTAKE_OVERRIDE_QUESTION_PENDING",
+  "selected_model": "Astra High, human selected in existing Codex session (as evidenced in P1_ENTRY_REFRESH.md); reverify actual current active model on resumption",
+  "model_scope": "P1 Astra hostile synthesis permitted now; P2 Sol after human switch",
+  "gate_status": "P1_READY__SEALED_HQ249_ADJUDICATED_THREE_HQ248_RETURNS__USER_ASTRA_HIGH_ALREADY_SELECTED",
   "next_model": "Astra Pro / highest available reasoning",
   "hq248_workers_at_p0_stop": [
     {
@@ -246,5 +249,12 @@
     "F7_T1_TRUSTED_PRODUCTION_INGRESS_UNIMPLEMENTED__TRANSITIVE_GLOBALS_UNRESOLVED",
     "N10E_THIS_MAC_NO_INDEPENDENT_VERIFIER_CONTROL",
     "GLOBAL_F1_F8_PRODUCTIVE_INTEGRATION_AND_ESTATE_UNPROVED"
-  ]
+  ],
+  "p0_final_evidence_bank": "fe7493ca61c058cbccb30c02425ed1032f986c4f",
+  "p0_phase_report": "PYAT_CONTROL_ROOM/ASTRA_HQ247_FUNCTIONAL_ENDGAME_DELTA_R1/phases/P0_DELTA_CENSUS.md",
+  "p1_entry_refresh": "PYAT_CONTROL_ROOM/ASTRA_HQ247_FUNCTIONAL_ENDGAME_DELTA_R1/phases/P1_ENTRY_REFRESH.md",
+  "hq249_activation_status": "VERIFIED_OPEN__ALL_HQ248_RETURNS_ADJUDICATED__NO_MORE_HQ_INTAKE_REQUIRED",
+  "historical_p0_control": "675b0793fd2a2b75463fc00d2b884eefdc95e9f9",
+  "historical_p0_checkpoint": "20261008-PYAT-HQ248-F7-R2-REFCOUNT-N10E-PLACEMENT-HOLD-R1",
+  "active_at_current_checkpoint_workers": []
 }
