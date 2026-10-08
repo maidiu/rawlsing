@@ -1,3 +1,21 @@
+# HQ247 — EXPLICIT N10E R3 DOCUMENTARY ADOPTION; F7 B BLOCKED / A-B REPAIR PARTIAL — 2026-10-08
+
+**DECISION:** HQD-2026-10-08-247. Independent R3 reviewer GREEN @ d659b5462c25be347d67f5a4f9873f5f1f645fc9; HQ separately adopts prospective bounded source-free R3 document only: author 338aa789dd20d04c83175a6593172fee4b61c078, warrant blob d1c835119a08bb27124c87b15485d6b83b91659f, adoption record PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ247_ADOPTED/00_EXPLICIT_GOVERNANCE_ADOPTION.json. **NO approved owner, root, epoch, registrar, credential, active R4 model authority or nineteenth I01 kind.** Owner designation/proposal → distinct HQ root APPROVE → owner INSTALL → independent verifier ACK → HQ ACTIVATE remain future stages.
+
+**F7 frozen B hostile review** @ 38d0c011c951f17f7754e45a8bc280101332a1b3: BLOCKED, B1–B4 native crashes, P1 parity failure, T1 callback origin untrusted. **F7 partial repair** @ f09bc827c1a4d77dd2b51834cd5eeeb8969f5b96: D1–D8 improvements and reported 326 passing tests, but Stage B B2/B3/P1 still visible in C; decide leak and conflict coverage unresolved. F7-RR-04G OPEN. No Stage C, F7 security adoption, production native cutover or downstream receiver.
+
+**ACTIVE NEW — Space Bunny Max / OpenCode, governed Mac isolated shared-store worktree:** agent/space-bunny-pyat-hq247-f7-native-b1-b4-parity-trust-repair-r2 @ 6f5cc1d7d5278a833a46afcf09f82150f387dba1. WORKER_COMMISSIONS/PYAT-HQ247-F7-NATIVE-B1-B4-PARITY-TRUST-REPAIR-R2/00_COMMISSION.md.
+
+**ACTIVE NEW — DeepSeek V4.1 Flash / OpenCode, independent governed Mac isolated shared-store worktree:** agent/reviewer-pyat-hq247-f7-f09-repair-independent-runtime-r1 @ 37932e02a3cc2fabba012defb5315ac7cfed5ad6. WORKER_COMMISSIONS/PYAT-HQ247-F7-F09-REPAIR-INDEPENDENT-RUNTIME-REVIEW-R1/00_COMMISSION.md. Frozen f09 review only; NOT concurrent new repair.
+
+**ACTIVE NEW — Browser/GitHub GPT-5.6 Sol High or successor equivalent, no Mac:** agent/rabochii-pyat-hq247-n10e-at07-owner-root-placement-preflight-r1 @ 4ccae64c8999efe69934262e2ce0487d345de5a4. WORKER_COMMISSIONS/PYAT-HQ247-N10E-AT07-OWNER-ROOT-PLACEMENT-PREFLIGHT-R1/00_COMMISSION.md. No root/issuer installation.
+
+**Authority record:** PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ247_POST_HQ246_RETURN_ADJUDICATION_AND_R3_WARRANT_ADOPTION_R1.md.
+
+**NEXT:** RUN_HQ247_THREE_PARALLEL_SUCCESSORS__INTAKE_ALL_RETURNS__F7_AND_ISSUER_ACTIVATION_HELD.
+
+---
+
 # HQ246 — F7 STAGE A REVIEW BLOCKED; STAGE B NATIVE UNSAFE; N10E R3 CANDIDATE — 2026-10-08
 
 **DECISION:** `HQD-2026-10-08-246`. Three HQ245 returns verified. No F7 security/issuer/model adoption.
