@@ -1,0 +1,224 @@
+{
+  "schema": "PYAT_HQ242_EXACT_BOOTSTRAP_ROOT_AUTHORITY_AND_ROTATION_CONTRACT@2",
+  "status": "PROPOSED_NOT_ADOPTED",
+  "disposition": "C1_AT07_FIXTURE_ISSUER_WARRANT_R2_CANDIDATE_COMPLETE__READY_FOR_HOSTILE_REVIEW",
+  "closes": "HQ241-DEFECT-TRUST-ROOT-BOOTSTRAP-AUTHORITY-001",
+  "competent_roles": {
+    "HQ_DECISION_OWNER": {
+      "identity": "PYAT HQ explicit governance-adoption and deployment-root adjudicator",
+      "authority_scope": "MAY prospectively adopt this narrow warrant and authorize exactly one initially active issuer epoch/bootstrap record or future explicit rotation/revocation by immutable HQ approval; NOT a power delegated by R8 hashes",
+      "operations": [
+        "HQ_ADOPT_AT07_ISSUER_WARRANT",
+        "HQ_APPROVE_AT07_ISSUER_ROOT_PLACEMENT",
+        "HQ_ACTIVATE_AT07_ISSUER_EPOCH",
+        "HQ_APPROVE_AT07_ISSUER_ROOT_ROTATION",
+        "HQ_REVOKE_AT07_ISSUER_EPOCH"
+      ],
+      "proof": "Exact HQ-approved immutable governance record/commit bound to adopted warrant, epoch, candidate owner and deployment-root manifest. No worker proposal is an HQ decision."
+    },
+    "C1_OWNER_ASSEMBLY": {
+      "identity": "SINGLE later HQ-designated C1-01 source-free fixture-owner assembly, exact owner_assembly_ref is issued in HQ bootstrap approval",
+      "authority_scope": "Prepare sealed root proposal/empty owner journal genesis, provision authorized registrar writer and route-bound C1 ingress only AFTER HQ permission; cannot approve its own root",
+      "operations": [
+        "C1_PREPARE_OWNER_ROOT_PLACEMENT_PROPOSAL",
+        "C1_INSTALL_ONLY_EXACT_HQ_APPROVED_ROOT",
+        "C1_COMMIT_OWNER_BOOTSTRAP_ACTIVATION_EVIDENCE"
+      ],
+      "proof": "Owner-controlled deployment identity and journal genesis must match HQ-approved digest and subsequent active epoch; pytest and N10E helpers are not this assembly."
+    },
+    "ROOT_PLACEMENT_OPERATOR": {
+      "identity": "Approved deployment/placement function OF THE NAMED C1 owner assembly, not an independently self-appointing authority",
+      "authority_scope": "Copy exactly HQ-approved immutable root bytes and pinned metadata into verifier trusted deployment artifact. No ability to alter approved root or select issuer by latest.",
+      "proof": "Exact placement receipt with approved manifest ref, installed digest, owner deployment ref and independent verifier acknowledgement. Requires HQ activation; not a new positive semantic role."
+    },
+    "VERIFIER": {
+      "identity": "One separately provisioned AT07 verifier read role pinned to HQ-approved root placement",
+      "authority_scope": "Read trusted HQ placement and immutable owner journal, check current epoch and complete registered event chain; cannot mint/bootstrap/rotate/authorize itself",
+      "proof": "Verifier obtains immutable root pin from adopted HQ-governed deployment/installation manifest supplied through its trusted installation channel independent of request, registrar response or caller mapping."
+    },
+    "REGISTRAR": {
+      "identity": "One C1-owned writer role bound to exact approved epoch and registrar_write_capability_id",
+      "authority_scope": "After HQ activation, atomically register BUILD, INVOCATION, C1 SITE, HANDOFF and N10E SITE events only at authenticated owner callsite; never self-approve root or epoch",
+      "proof": "Writer capability is sealed to approved deployment identity and epoch; no public request path grants writer privilege."
+    }
+  },
+  "exact_authority_and_provisioning_sequence": [
+    {
+      "step": 0,
+      "operation": "HQ_ADOPT_AT07_ISSUER_WARRANT",
+      "prerequisite": "Separate HQ explicit adoption after R2 independent hostile review",
+      "effect": "Creates accepted immutable warrant exact ref. Absent it every subsequent root action is forbidden."
+    },
+    {
+      "step": 1,
+      "operation": "C1_PREPARE_OWNER_ROOT_PLACEMENT_PROPOSAL",
+      "prerequisite": "HQ-approved C1 owner designation and adopted warrant, owner preparation under trusted deployment identity",
+      "effect": "Produce proposed unique epoch identity, genesis owner journal hash and exact immutable placement manifest including writer/read principal IDs; NO issuer activation, NO journal writes."
+    },
+    {
+      "step": 2,
+      "operation": "HQ_APPROVE_AT07_ISSUER_ROOT_PLACEMENT",
+      "prerequisite": "Explicit HQ review of exact immutable proposal; independently confirm owner boundary, source-free ceiling, journal genesis hash and unique non-reused epoch ID",
+      "effect": "HQ commits approval_event_ref and exact complete approved root placement receipt/preimage. Only this authorizes INSTALL of those fixed bytes, not issuance."
+    },
+    {
+      "step": 3,
+      "operation": "C1_INSTALL_ONLY_EXACT_HQ_APPROVED_ROOT",
+      "prerequisite": "Exact HQ approval record and HQ-controlled separately distributed pinned placement manifest; verify digest and owner deployment identity",
+      "effect": "Registrar writer capability and independent verifier read root installed as separately authorized roles. Each creates immutable installation acknowledgment linked to HQ approval, with proof of exact approved digest; no alternative root permitted."
+    },
+    {
+      "step": 4,
+      "operation": "HQ_ACTIVATE_AT07_ISSUER_EPOCH",
+      "prerequisite": "HQ reads both exact owner placement and independent verifier acknowledgment, matches expected root/journal genesis/epoch/approved writer and read root; confirms no competing current approved epoch",
+      "effect": "Issues immutable activation_event_ref and exact active epoch state at a governed checkpoint. Only then first build journal registration may occur."
+    }
+  ],
+  "full_immutable_record_templates": {
+    "owner_root_proposal": {
+      "record_kind": "C1_AT07_OWNER_ROOT_PLACEMENT_PROPOSAL@2",
+      "status": "TEMPLATE_ONLY_NOT_COMMITTED",
+      "adopted_warrant_ref": null,
+      "approved_c1_owner_assembly_ref": null,
+      "proposed_epoch_ref": null,
+      "unique_epoch_allocation_claim": "Owner proposed unique unconsumed epoch_id; HQ independently checks uniqueness before approving; cannot reset even after revocation",
+      "approved_deployment_build_manifest_ref": null,
+      "owner_deployment_identity_ref": null,
+      "journal_genesis_manifest_ref": null,
+      "owner_journal_id": null,
+      "owner_journal_root_content_hash": null,
+      "register_writer_principal_ref": null,
+      "registrar_writer_capability_id": null,
+      "verifier_reader_principal_ref": null,
+      "independently_provisioned_verifier_read_root_id": null,
+      "C1_ingress_identity_ref": null,
+      "N10E_receiving_ingress_identity_ref": null,
+      "approval_status": "NOT_APPROVED"
+    },
+    "HQ_root_approval": {
+      "record_kind": "HQ_AT07_ISSUER_ROOT_APPROVAL_RECEIPT@2",
+      "status": "TEMPLATE_ONLY_NOT_APPROVED",
+      "approval_event_ref": null,
+      "HQ_approver_exact_identity_ref": null,
+      "HQ_governance_decision_commit_ref": null,
+      "accepted_warrant_ref": null,
+      "delegated_issuer_exact_ref": null,
+      "issuer_epoch_ref": null,
+      "unique_epoch_allocation_id": null,
+      "exact_owner_assembly_ref": null,
+      "approved_deployment_build_manifest_ref": null,
+      "owner_deployment_identity_ref": null,
+      "owner_journal_root_content_hash": null,
+      "journal_genesis_manifest_ref": null,
+      "owner_journal_id": null,
+      "registrar_writer_principal_ref": null,
+      "registrar_writer_capability_id": null,
+      "verifier_reader_principal_ref": null,
+      "independently_provisioned_verifier_read_root_id": null,
+      "C1_ingress_identity_ref": null,
+      "N10E_receiving_ingress_identity_ref": null,
+      "validity_not_before": null,
+      "validity_not_after_or_null": null,
+      "prior_epoch_ref_for_initial": null,
+      "approved_manifest_digest": null,
+      "governed_approval_state": "PENDING_FUTURE_EXPLICIT_HQ_APPROVAL"
+    },
+    "placement_and_activation": {
+      "record_kind": "HQ_AT07_ISSUER_EPOCH_ACTIVATION_RECEIPT@2",
+      "status": "TEMPLATE_ONLY_NOT_ACTIVATED",
+      "accepted_root_approval_ref": null,
+      "owner_installation_receipt_ref": null,
+      "verifier_independent_installation_receipt_ref": null,
+      "installed_root_digest": null,
+      "installed_owner_journal_genesis_digest": null,
+      "issuer_epoch_ref": null,
+      "HQ_activation_event_ref": null,
+      "HQ_activation_governance_commit_ref": null,
+      "active_at_governed_checkpoint_ref": null,
+      "previous_active_epoch_ref_or_null": null,
+      "activation_state": "NOT_ACTIVE"
+    }
+  },
+  "trusted_provisioning_and_verifier": {
+    "approval_to_pin": "The verifier's *deployment image/config* is independently pinned to exact HQ root approval/activation records by the governed HQ-approved artifact placement. It never learns its root from a request credential, provider, test helper, registrar's response, mutable latest-branch head or self-presented registry.",
+    "verification_sequence": [
+      "Check trusted deployment-embedded HQ immutable approval/activation refs against independently authenticated HQ governance installation record and digest, not a caller-supplied URL/ref alone.",
+      "Resolve exact approved warrant, designated C1 owner assembly, issuer epoch, root/journal genesis, expected writer/read principals and placement manifest; require matching immutable HQ authority event(s) and explicit ACTIVE approval.",
+      "Read root material from independently provisioned verifier read placement; bytes and journal genesis hash must exactly match HQ approved and activated content.",
+      "Reject absent, stale, revoked, unactivated, forked or competing roots; no 'choose one that validates', latest/default or self-signed content acceptance.",
+      "Validate owner-journal events by membership in this exact activated journal plus unique event sequence and issuer capability provenance, never by SHA256 alone.",
+      "Resolve issuer/caller currentness against exact governed activation and revocation checkpoint independently of a cached request body."
+    ],
+    "independence_boundary": "HQ-governed placement is part of trusted deployment provenance within the ordinary-untrusted-caller threat model. It is NOT a claim that arbitrary hostile privileged Python code cannot replace local modules/bytes; that stronger capability requires a separate authority/court. Root installer is a constrained C1 owner operational function, not a free actor empowered by caller."
+  },
+  "rotation_revocation": {
+    "rotate_authorizer": "HQ only via HQ_APPROVE_AT07_ISSUER_ROOT_ROTATION followed by explicit HQ_ACTIVATE_AT07_ISSUER_EPOCH; C1 owner can propose but not approve/activate",
+    "rotate_record_kind": "HQ_AT07_ISSUER_ROOT_ROTATION_APPROVAL@2",
+    "required_exact_fields": [
+      "accepted_warrant_ref",
+      "HQ_approval_event_ref",
+      "issuer_epoch_ref",
+      "exact_active_root_approval_ref",
+      "prior_activation_event_ref",
+      "negative_effective_checkpoint",
+      "reason",
+      "successor_epoch_ref_or_null",
+      "historical_audit_root_retained"
+    ],
+    "rotate_preconditions": "Must point to exactly active prior epoch and exact HQ-approved successor, reserve distinct successor epoch and new root, avoid concurrent unfenced writers; no key/latest rewrite. HQ activation only after independent installed verifier acknowledgment.",
+    "rotate_activation": "Explicit HQ governance commit atomically specifies exact replacement active epoch and old epoch current-use termination checkpoint. Verifier MUST independently reload approved active epoch/currentness and require exact authorized credential epoch. No silent migration of old credentials.",
+    "revoke_authorizer": "HQ explicit issuer-epoch revocation; for context/build site-specific revocation only separately authorized C1 registrar within still-active epoch under proposed role, append immutable reason/event",
+    "revoke_record_kind": "HQ_AT07_ISSUER_EPOCH_REVOCATION@2",
+    "negative_propagation": "Fail closed if currentness cannot be checked; epoch revocation cascades to current use of build, C1 site, handoff and N10E site. Historical provenance can be verified against exact archived approved root for AUDIT_ONLY with no new/current output.",
+    "refusal_cases": [
+      "missing activation/approval",
+      "root fork with two self-consistent manifests",
+      "caller-selected root",
+      "writer principal change without HQ approval",
+      "stale verifier placement after rotation",
+      "same epoch and duplicate sequence after restart",
+      "old epoch accepted as latest",
+      "root tamper with matching caller hash but mismatched HQ pin",
+      "revoked epoch current replay"
+    ]
+  },
+  "unique_epoch_journal_collision": {
+    "scope": "For each ACTIVE unique epoch, owner journal enforces a single durable atomically allocated monotone event sequence across all kinds: BUILD, INVOCATION, C1 SITE, HANDOFF, N10E SITE and negative events. Restart may not reset allocation or change genesis; reused (epoch,seq) different preimage or duplicated event id => integrity refusal, quarantine/no overwrite.",
+    "equal_fixture_rows": "Equal R8 content across two owner-approved builds still gets separately allocated BUILD event/ref; build instance not recoverable from content hash alone.",
+    "fork_rule": "Two independently self-consistent roots with same warrant/epoch but divergent genesis or event history are an AUTHORITY_CONFLICT and CURRENT use refuses until HQ exact adjudication, never picks last-written or first-valid."
+  },
+  "threat_boundary": {
+    "attacker": "Ordinary untrusted caller, request arguments, raw mappings, fixture rows, copied or syntactically valid ExactRef/receipt, and caller-controlled test helper outputs",
+    "trusted": "HQ-adopted exact warrant bootstrap, owner-controlled registrar journal, verifier independently provisioned from governance-approved trusted deployment root; no authority from user-provided payload",
+    "not_defended": "Arbitrary hostile Python code execution with write access to registrar/verifier process memory, monkeypatching privileged modules, malicious deployment maintainer or compromised HQ governance. Python-private state alone is not a cryptographic security boundary against hostile code.",
+    "fork_if_required": "If code-compromise/F7-style adversary is in scope, separate service/signed attestation and independently verified key custody need distinct HQ warrant; this bounded proposal does not claim it",
+    "guarantee": "Owner/data authority provenance against caller self-attestation, not general adversarial process-security"
+  },
+  "warrant_not_adopted": true,
+  "root_not_deployed": true,
+  "evidence": {
+    "review_tip": "7c7937ff68ddd6209858cc23194b9f292b299e66",
+    "commission_tip": "1cac84eac8846130bd12e9bf591ff3010c9c4b62",
+    "original_proposal": "3c6cfa0d29e10c1e2654e5fe22b0b62a0db891b9",
+    "adopted_C1_01": "5fafb499d53dddadaf8a7b4fd46506e91a09d270",
+    "HQ241_report_blob": "09b5a3a7be08d4f2b6207417a9232ef2774170d0",
+    "HQ241_bootstrap_defect_blob": "8884e2e62a2b75ddc1a9617f60001a50a9434b87",
+    "HQ241_handoff_defect_blob": "e2d20201db00c8fc65804c27979d61785c43131c",
+    "old_warrant_blob": "c56be790ad523e33bd212ba99edb368af41f75d0",
+    "old_credential_blob": "58144e78b714de56dbb700020e7f3e5ab4706150",
+    "old_entrypoint_blob": "bb72089678f43dccbf16c0cf90d498bcef5f02b0",
+    "old_adoption_blob": "9415ae2ee8895dbd662b4fceb5ae3895b9adbf92",
+    "old_courts_blob": "27b2308001fc49723921a401005764f2e69c5f20",
+    "R8_spine_blob": "462bb282ddc2cc9667f1890f2d65f2fae9a3a72c",
+    "C1_test_builder_blob": "2210fc1b4cb99552aafc8797c12d780a78e7983b",
+    "N10E_test_builder_blob": "0e384f72fa615dc72a0dcb08a36472a64b7b1e4a",
+    "C1_composition_blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+    "N10E_provider_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+    "I01_18_kinds_blob": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+    "I02_repo_blob": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+    "Z06_blob": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+    "C1_03R_blob": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+    "Z08_code_blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+    "R3_identity_manifest_blob": "72f316d9d2b0ac65a9a3abafd39388c7fc12660b"
+  }
+}

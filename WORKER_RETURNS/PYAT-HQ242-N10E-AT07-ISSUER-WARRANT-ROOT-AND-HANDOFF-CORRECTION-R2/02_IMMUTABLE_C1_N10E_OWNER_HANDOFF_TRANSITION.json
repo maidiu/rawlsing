@@ -1,0 +1,278 @@
+{
+  "schema": "PYAT_HQ242_IMMUTABLE_C1_N10E_OWNER_HANDOFF_TRANSITION@2",
+  "status": "PROPOSED_NOT_ADOPTED",
+  "disposition": "C1_AT07_FIXTURE_ISSUER_WARRANT_R2_CANDIDATE_COMPLETE__READY_FOR_HOSTILE_REVIEW",
+  "closes": "HQ241-DEFECT-N10E-HANDOFF-SITE-EVENT-CUSTODY-002",
+  "owner_issuer_operations": {
+    "REGISTER_SOURCE_FREE_AT07_BUILD": {
+      "requires": [
+        "HQ-activated root",
+        "owner-certified R8 synthetic source origin and I02 sealed release",
+        "persistent new unique (issuer epoch, seq) journal event"
+      ],
+      "result": "build_instance_ref; not inferred from 100 equal rows"
+    },
+    "SEAL_AT07_EXACT_INVOCATION_CONTEXT": {
+      "requires": [
+        "active exact build",
+        "producer query/predicate, consumer query, conditioner, 16-key value witness and canonical nulls"
+      ],
+      "result": "invocation_seal_ref before rule construction"
+    },
+    "REGISTER_C1_COMPATIBILITY_SITE_USE": {
+      "requires": [
+        "active source-free build",
+        "sealed exact invocation",
+        "C1 authenticated owner construction/compatibility ingress identity pinned in HQ bootstrap",
+        "issuer-derived SOURCE_FREE_C1_01_COMPATIBILITY"
+      ],
+      "result": "C1 site event committed in journal with cross_site_handoff_ref = null (only C1 can have null)"
+    },
+    "REGISTER_C1_TO_N10E_SITE_HANDOFF": {
+      "requires": [
+        "journal-resolved existing ACTIVE C1 site event",
+        "same active build and invocation refs",
+        "owner-authenticated original C1 producer/consumer/witness",
+        "N10E authorized receiver identity pinned in HQ bootstrap",
+        "no revoked parent or stale issuer epoch"
+      ],
+      "result": "distinct immutable C1_TO_N10E_SITE_HANDOFF_REGISTERED journal event/ExactRef; registrar issues it. Input is parent C1 site ref and authorized N10E destination; NEVER a caller-generated handoff event."
+    },
+    "REGISTER_N10E_LIFECYCLE_SITE_USE": {
+      "requires": [
+        "NON_NULL exact C1_TO_N10E_SITE_HANDOFF_REGISTERED ref journal-resolved under same ACTIVE trusted epoch",
+        "handoff's C1 parent ACTIVE at registration and at current-positive consumption",
+        "same immutable unique build/receipt, invocation and 16-key witness",
+        "receiver ingress independently authenticated from HQ-pinned owner deployment capability",
+        "separately derived SOURCE_FREE_N10E_LIFECYCLE"
+      ],
+      "result": "N10E separate site-use journal event; NEVER direct from INVOCATION_SEALED and NEVER with null/syntactically valid caller handoff"
+    },
+    "RESOLVE_N10E_CURRENT_USE": {
+      "requires": [
+        "HQ-activated current root",
+        "journal-verified complete ancestor chain",
+        "all ancestor/source refs exact and still current",
+        "correct authenticated N10E entrypoint"
+      ],
+      "result": "owner-internal verified projection for N10E request, provider, refused receipt, replay and dependent object currentness"
+    }
+  },
+  "proposed_state_machine": {
+    "allowed": [
+      {
+        "from": "UNREGISTERED",
+        "to": "BUILD_REGISTERED",
+        "operation": "REGISTER_SOURCE_FREE_AT07_BUILD"
+      },
+      {
+        "from": "BUILD_REGISTERED",
+        "to": "INVOCATION_SEALED",
+        "operation": "SEAL_AT07_EXACT_INVOCATION_CONTEXT"
+      },
+      {
+        "from": "INVOCATION_SEALED",
+        "to": "C1_COMPATIBILITY_SITE_USE_ACTIVE",
+        "operation": "REGISTER_C1_COMPATIBILITY_SITE_USE",
+        "requires": "C1 owned ingress, no handoff ref"
+      },
+      {
+        "from": "C1_COMPATIBILITY_SITE_USE_ACTIVE",
+        "to": "C1_TO_N10E_SITE_HANDOFF_REGISTERED",
+        "operation": "REGISTER_C1_TO_N10E_SITE_HANDOFF",
+        "requires": "exact ACTIVE C1 parent, unique original build and witness, authenticated N10E recipient"
+      },
+      {
+        "from": "C1_TO_N10E_SITE_HANDOFF_REGISTERED",
+        "to": "N10E_SITE_USE_ACTIVE",
+        "operation": "REGISTER_N10E_LIFECYCLE_SITE_USE",
+        "requires": "REQUIRED_NON_NULL_ISSUER_JOURNAL_HANDOFF_REF and same exact ancestor build/invocation; registered receiver use"
+      },
+      {
+        "from": "N10E_SITE_USE_ACTIVE",
+        "to": "CURRENT_POSITIVE_N10E_PROVIDER_OR_REPLAY",
+        "operation": "RESOLVE_N10E_CURRENT_USE",
+        "requires": "full active ancestry revalidated, no cached currentness"
+      }
+    ],
+    "forbidden": [
+      "INVOCATION_SEALED -> N10E_SITE_USE_ACTIVE (even exact N10E string)",
+      "BUILD_REGISTERED -> N10E_SITE_USE_ACTIVE",
+      "C1_COMPATIBILITY_SITE_USE_ACTIVE -> N10E_SITE_USE_ACTIVE without separate owner-issued HANDOFF event",
+      "null/optional C1->N10E handoff on N10E-issued site use",
+      "N10E site use via caller-produced handoff or non-journal member ref",
+      "same-content reassembly used as same registered build",
+      "CURRENT N10E use under revoked/expired ancestor even if final receipt or probability geometry identical"
+    ],
+    "independent_dimensions": "State is per registered build + exact invocation + issuer epoch, not one global fixture-wide state. Forward and reverse invocations require their own exact invocation/witness and site ancestry."
+  },
+  "exact_required_provenance_chain": [
+    "IMMUTABLE_HQ_ACTIVATED_ISSUER_EPOCH",
+    "BUILD_REGISTERED",
+    "INVOCATION_SEALED",
+    "C1_COMPATIBILITY_SITE_USE_ACTIVE",
+    "C1_TO_N10E_SITE_HANDOFF_REGISTERED",
+    "N10E_SITE_USE_ACTIVE",
+    "N10E_REQUEST_PROVIDER_REPLAY_CURRENT"
+  ],
+  "full_event_preimage_templates": {
+    "C1_site_event": {
+      "record_kind": "C1_AT07_C1_COMPATIBILITY_SITE_USE@2",
+      "status": "PROPOSED_TEMPLATE_NOT_ISSUED",
+      "warrant_ref": null,
+      "issuer_epoch_ref": null,
+      "build_registration_receipt_ref": null,
+      "unique_build_instance_ref": null,
+      "invocation_seal_ref": null,
+      "C1_authenticated_callsite_ref": null,
+      "exact_use_token": "SOURCE_FREE_C1_01_COMPATIBILITY",
+      "cross_site_handoff_ref": null,
+      "producer_query_ref": null,
+      "producer_predicate_ref": null,
+      "producer_predicate_hash": null,
+      "consumer_query_ref": null,
+      "conditioner_binding_fingerprint": null,
+      "closed_16_key_witness_ref": null,
+      "source_universe_ref": {
+        "kind": "EmpiricalUniverse@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+        "content_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2"
+      },
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-c1-at07",
+        "content_hash": "dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3"
+      },
+      "conditioner_actual_effective_time_or_interval": null,
+      "witness_actual_effective_time_or_interval": null,
+      "journal_event_ref": null,
+      "atomic_event_sequence": null,
+      "currentness": "REQUIRED_AT_USE"
+    },
+    "handoff_event": {
+      "record_kind": "C1_TO_N10E_SITE_HANDOFF_REGISTERED@2",
+      "status": "PROPOSED_TEMPLATE_NOT_ISSUED",
+      "adopted_warrant_ref": null,
+      "issuer_exact_ref": null,
+      "issuer_epoch_ref": null,
+      "HQ_root_activation_ref": null,
+      "original_C1_site_use_ref": null,
+      "original_C1_site_registration_receipt_ref": null,
+      "original_build_instance_ref": null,
+      "original_build_registration_receipt_ref": null,
+      "original_invocation_seal_ref": null,
+      "original_C1_authenticated_callsite_ref": null,
+      "authorized_N10E_receiving_ingress_ref": null,
+      "N10E_receiver_route_ref": null,
+      "producer_query_ref": null,
+      "producer_predicate_ref": null,
+      "producer_predicate_hash": null,
+      "consumer_query_ref": null,
+      "conditioner_binding_fingerprint": null,
+      "closed_16_key_witness_ref": null,
+      "fixture_id": "AT07_BIDIRECTIONAL_100",
+      "source_manifest_hash": "01ee5fa6db95efad3ce0acecd656f51beb6c2f2e21bc30e49bd358633f9ad6a1",
+      "source_universe_ref": {
+        "kind": "EmpiricalUniverse@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+        "content_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2"
+      },
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-c1-at07",
+        "content_hash": "dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3"
+      },
+      "conditioner_actual_effective_time_or_interval": null,
+      "witness_actual_effective_time_or_interval": null,
+      "snapshot_static_interval": "AT07_FIXTURE_ONLY",
+      "real_source_effect": false,
+      "issuer_journal_event_ref": null,
+      "atomic_event_sequence": null,
+      "handoff_ref": null,
+      "predecessor_currentness_at_issuance": "REQUIRE_ACTIVE_OR_REFUSE",
+      "handoff_status": "NOT_REGISTERED"
+    },
+    "N10E_site_event": {
+      "record_kind": "C1_AT07_N10E_LIFECYCLE_SITE_USE@2",
+      "status": "PROPOSED_TEMPLATE_NOT_ISSUED",
+      "adopted_warrant_ref": null,
+      "issuer_epoch_ref": null,
+      "original_build_instance_ref": null,
+      "original_build_registration_receipt_ref": null,
+      "original_invocation_seal_ref": null,
+      "original_C1_site_use_ref": null,
+      "cross_site_handoff_ref": {
+        "expected_type": "ExactRef",
+        "expected_kind": "C1_TO_N10E_SITE_HANDOFF_REGISTERED@2",
+        "value": "REQUIRED_NON_NULL_JOURNAL_ISSUED_REF__NO_VALUE_MINTED",
+        "nullable_in_issued_record": false
+      },
+      "authorized_N10E_receiving_ingress_ref": null,
+      "N10E_site_use_event_ref": null,
+      "atomic_event_sequence": null,
+      "site_token": "SOURCE_FREE_N10E_LIFECYCLE",
+      "source_universe_ref": {
+        "kind": "EmpiricalUniverse@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+        "content_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2"
+      },
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-c1-at07",
+        "content_hash": "dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3"
+      },
+      "source_manifest_hash": "01ee5fa6db95efad3ce0acecd656f51beb6c2f2e21bc30e49bd358633f9ad6a1",
+      "conditioner_actual_effective_time_or_interval": null,
+      "witness_actual_effective_time_or_interval": null,
+      "real_source_effect": false,
+      "issuer_state": "REQUIRES_ACTIVE_APPROVED_ROOT_AND_C1_PARENT"
+    },
+    "identity_semantics": "ExactRef digests over complete immutable issued event preimage including issuer epoch, unique seq and actual full ancestor refs; no self hash or mutable currentness state in immutable event hash. Presence of a ref or same R8 content is never proof of an issued event."
+  },
+  "entrypoint_verifier_rules": [
+    "Trusted verifier root independently provisioned and ACTIVE under exact HQ approval; never supplied by request",
+    "Resolve all five required journal ancestors: build → invocation → C1 site → owner-issued handoff → N10E site, plus root activation",
+    "Compare full exact issuer/warrant/epoch, original build/ref receipt, direction-specific producer query/predicate hash, consumer query, conditioner fingerprint and entire 16-key witness identity across every parent and live request",
+    "Check R8 release, universe, manifest, synthetic owner provenance and actual canonical-null conditioner/witness against their own exact refs",
+    "Check C1 site token and N10E site token separately; derive N10E receiver ingress from approved deployment callsite, not supplied label",
+    "Require handoff ref non-null, exact kind, current owner-journal membership, owner-issued producer transition and active parent; refuse a copied syntactic ExactRef",
+    "Check independent currentness of HQ issuer epoch, C1 site event, handoff event and N10E event; revoked/expired/stale parent refuses positive current use",
+    "Before provider request acceptance and before composition/replay, verify exact same build_instance_ref and all parent refs, not merely equal R8 rows/output hashes",
+    "Record issuer activation, original build, C1 site, handoff, N10E use and witness as genuinely consumed context determinants on BOTH provider EXACT and REFUSED receipts, result/replay identities and C1-03R dependency registration (Z06 retains semantic authority revision jurisdiction)"
+  ],
+  "C1_N10E_future_interface": {
+    "C1_owner_factory": "New owner-native rule factory must receive verified C1 registered site context BEFORE construction; preexisting _model(source) test fixture is NOT competent issuer or adopted rule",
+    "C1_compose": "Owner-native AT07 branch of compose_positioned_subject_possibility must check verified C1 site ingress before producer invocation; preserve unrelated existing legacy routes",
+    "N10E_request": "Existing request 8 fields plus mandatory fixture_use_context_ref: ExactRef, independent verifier returns required handoff-origin build projection; a field/route token alone is never proof",
+    "N10E_provider": "Verify active C1→N10E journal ancestry and site before composition; positive and typed REFUSED both bind full origin references in receipt",
+    "N10E_replay": "Require expected original exact issuer/root epoch, build, C1 site, handoff and N10E use; independent CURRENT status check before provider invocation and equality. Historical AUDIT_ONLY never grants current replay",
+    "lifecycle": "Only genuinely consumed issuer/context refs in C1-03R; Z06 semantic authority workflow not registrar. Revoke parent invalidates dependent current positive uses without rewriting past immutable receipts."
+  },
+  "historical_audit": "Archived exact issued records under prior HQ-approved root may explain past execution as HISTORICAL_AUDIT_ONLY even if ancestor revoked. Audit cannot mint missing handoff, fill a null predecessor, or classify revoked N10E site CURRENT.",
+  "no_event_issued": true,
+  "evidence": {
+    "review_tip": "7c7937ff68ddd6209858cc23194b9f292b299e66",
+    "commission_tip": "1cac84eac8846130bd12e9bf591ff3010c9c4b62",
+    "original_proposal": "3c6cfa0d29e10c1e2654e5fe22b0b62a0db891b9",
+    "adopted_C1_01": "5fafb499d53dddadaf8a7b4fd46506e91a09d270",
+    "HQ241_report_blob": "09b5a3a7be08d4f2b6207417a9232ef2774170d0",
+    "HQ241_bootstrap_defect_blob": "8884e2e62a2b75ddc1a9617f60001a50a9434b87",
+    "HQ241_handoff_defect_blob": "e2d20201db00c8fc65804c27979d61785c43131c",
+    "old_warrant_blob": "c56be790ad523e33bd212ba99edb368af41f75d0",
+    "old_credential_blob": "58144e78b714de56dbb700020e7f3e5ab4706150",
+    "old_entrypoint_blob": "bb72089678f43dccbf16c0cf90d498bcef5f02b0",
+    "old_adoption_blob": "9415ae2ee8895dbd662b4fceb5ae3895b9adbf92",
+    "old_courts_blob": "27b2308001fc49723921a401005764f2e69c5f20",
+    "R8_spine_blob": "462bb282ddc2cc9667f1890f2d65f2fae9a3a72c",
+    "C1_test_builder_blob": "2210fc1b4cb99552aafc8797c12d780a78e7983b",
+    "N10E_test_builder_blob": "0e384f72fa615dc72a0dcb08a36472a64b7b1e4a",
+    "C1_composition_blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+    "N10E_provider_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+    "I01_18_kinds_blob": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+    "I02_repo_blob": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+    "Z06_blob": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+    "C1_03R_blob": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+    "Z08_code_blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+    "R3_identity_manifest_blob": "72f316d9d2b0ac65a9a3abafd39388c7fc12660b"
+  }
+}

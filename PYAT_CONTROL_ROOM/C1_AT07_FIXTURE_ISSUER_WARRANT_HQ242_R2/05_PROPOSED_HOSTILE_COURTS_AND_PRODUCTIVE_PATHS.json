@@ -1,0 +1,440 @@
+{
+  "schema": "PYAT_HQ242_PROPOSED_HOSTILE_AND_PRODUCTIVE_COURT_EXTENSION@2",
+  "status": "PROPOSED_NOT_ADOPTED",
+  "inherited_HQ240_hostile_courts": [
+    {
+      "id": "H01",
+      "attack": "ordinary caller manufactures valid-looking issuer/warrant/context map without HQ-adopted root",
+      "expected": "REJECT_BEFORE_MODEL_CONSTRUCTION",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H02",
+      "attack": "caller replaces issuer ref with self-issued AuthoritySnapshot or TARGET_USE_PERMISSION kind",
+      "expected": "REJECT_ISSUER_ROOT__NO_KIND_ALIAS",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H03",
+      "attack": "registrar journal response supplied in request rather than retrieved from pinned owner registry",
+      "expected": "REJECT_UNTRUSTED_RESOLVER",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H04",
+      "attack": "caller supplies arbitrary syntactically valid fixture_use_context_ref absent from journal",
+      "expected": "REJECT_CONTEXT_NOT_REGISTERED",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H05",
+      "attack": "caller copies real registered context ref but with different source/consumer/witness",
+      "expected": "REJECT_BUILD_OR_INVOCATION_MISMATCH",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H06",
+      "attack": "two separately registered builds have identical rows and same R8 source hash",
+      "expected": "DIFFERENT_INSTANCE_REFS; EACH_PERMITTED_ONLY_WITH_OWN_CREDENTIAL",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H07",
+      "attack": "caller builds same fixture rows outside registered C1 owner to claim same instance",
+      "expected": "REJECT_NO_VALID_BUILD_EVENT",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H08",
+      "attack": "registrar event sequence reused after restart, collision, or different scope",
+      "expected": "INTEGRITY_CONFLICT; NO_OVERWRITE_OR_REUSE",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H09",
+      "attack": "copied immutable registration receipt but issuer epoch/root not trusted",
+      "expected": "REJECT_UNAUTHENTICATED_RECEIPT",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H10",
+      "attack": "compromised, revoked, expired or reissued registrar epoch presented as current",
+      "expected": "REJECT_FOR_NEW_OR_CURRENT_USE; AUDIT_HISTORICAL_ONLY",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H11",
+      "attack": "C1 context token used at N10E provider/replay or inverse",
+      "expected": "REJECT_WRONG_SITE_BEFORE_USE",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H12",
+      "attack": "N10E route is correctly named but owner-recorded N10E use grant absent",
+      "expected": "REJECT_ROUTE_NAME_NOT_SITE_AUTHENTICATION",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H13",
+      "attack": "source universe ref mutated while fixture ID and row law same",
+      "expected": "REJECT_R8_UNIVERSE_MISMATCH",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H14",
+      "attack": "R8 release swapped with R3 obsolete 8afa... or another same-id ref",
+      "expected": "REJECT_FULL_RELEASE_REF_MISMATCH",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H15",
+      "attack": "changed-source 110-row variant presented under canonical AT07 scope",
+      "expected": "REJECT_FIXTURE_AND_RELEASE_MISMATCH",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H16",
+      "attack": "conditioner actual effective time null changed to value",
+      "expected": "REJECT_ACTUAL_EFFECTIVE_CONTEXT_MISMATCH",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H17",
+      "attack": "witness effective-time null changed to value or witness field set tampered",
+      "expected": "REJECT_16_KEY_WITNESS_CUSTODY",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H18",
+      "attack": "caller replaces static AT07_FIXTURE_ONLY snapshot interval with canonical null",
+      "expected": "REJECT_STATIC_SCOPE_MISMATCH",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H19",
+      "attack": "caller asserts real_source_effect=false while providing real source or no owner provenance",
+      "expected": "REJECT_CANNOT_PROVE_SOURCE_FREE",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H20",
+      "attack": "direct C1 _model(source) legacy fixture object bypasses verified owner-native factory",
+      "expected": "REJECT_AS_NEW_OWNER_NATIVE_RULE",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H21",
+      "attack": "C1 compose invoked directly with hand-built would-be owner-native rule, no verified gate",
+      "expected": "REJECT_BEFORE_PRODUCER_COMPOSITION",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H22",
+      "attack": "provider request has context locator but no owner-authenticated issuer/build projection",
+      "expected": "REJECT_REQUEST_BEFORE_COMPOSITION",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H23",
+      "attack": "N10E replay uses different registered build with numerically same output",
+      "expected": "REJECT_REPLAY_BUILD_INSTANCE_MISMATCH",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H24",
+      "attack": "N10E replay carries expired/revoked original use and exact output equality",
+      "expected": "REJECT_CURRENT_REPLAY_NOT_VALID; HISTORICAL_AUDIT_SEPARATE",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H25",
+      "attack": "provider REFUSED receipt drops issuer/use context or silently adds evidence/geometry",
+      "expected": "REJECT_RECEIPT_CUSTODY_OR_REFUSAL_INVARIANT",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H26",
+      "attack": "currentness read from cached object or absent Z06 dependent register",
+      "expected": "REJECT_NO_POSITIVE_CURRENTNESS_FROM_CACHED_PRESENCE",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H27",
+      "attack": "model-rule proposal adds new I01 authority kind as if current 19th",
+      "expected": "REJECT_UNADOPTED_KIND",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H28",
+      "attack": "attacker tries two site-use grants on one build by copying C1 use-event for N10E without owner transition",
+      "expected": "REJECT_NO_SEPARATE_N10E_SITE_EVENT",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H29",
+      "attack": "registrar creates context before original sealed build or before complete 16-key witness",
+      "expected": "REJECT_ILLEGAL_STATE_TRANSITION",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H30",
+      "attack": "attempted replay under newly rotated issuer via latest/default alias instead of exact archived root",
+      "expected": "REJECT_MUTABLE_ISSUER_SELECTOR",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    }
+  ],
+  "inherited_HQ240_productive_courts": [
+    {
+      "id": "P01",
+      "scenario": "Approved owner registers canonical source-free 100-row AT07 build, seals forward C1 invocation and C1 site; authorized owner-native model authority yields exact supported 54/60 and 9/10",
+      "expected": "ACCEPT_C1_COMPATIBILITY__EXACT_SUPPORTED",
+      "status": "FUTURE_AFTER_ADOPTION_IMPLEMENTATION_ONLY"
+    },
+    {
+      "id": "P02",
+      "scenario": "Same registered build and forward witness cross verified C1→N10E handoff; separately registered N10E site; provider generates exact forward geometry and receipt; current replay reproduces exact provenance",
+      "expected": "ACCEPT_N10E_FORWARD_PROVIDER_AND_REPLAY",
+      "status": "FUTURE_AFTER_ADOPTION_IMPLEMENTATION_ONLY"
+    },
+    {
+      "id": "P03",
+      "scenario": "Same allowed fixture and genuine reverse 54/62 27/31 witness, with independently registered site credentials",
+      "expected": "ACCEPT_REVERSE_C1_AND_N10E_PROVIDER_REPLAY",
+      "status": "FUTURE_AFTER_ADOPTION_IMPLEMENTATION_ONLY"
+    },
+    {
+      "id": "P04",
+      "scenario": "N10E producer returns supported or appropriate non-supported owner-native state; receipt includes context on exact and refused branches, latter has no evidence/geometry",
+      "expected": "PRESERVE_SUCCESS_AND_GOVERNED_REFUSAL",
+      "status": "FUTURE_AFTER_ADOPTION_IMPLEMENTATION_ONLY"
+    },
+    {
+      "id": "P05",
+      "scenario": "Original Z08/A05 exact supported, valid empty, noncomparable, unresolved and separately declared proxy remain semantically unchanged; returned FAIL_CLOSED only original typed scope/proxy reasons",
+      "expected": "ALL_SIX_PUBLIC_RESULT_STATES_PRESERVED_AND_POSITIVE_LANES_PRODUCTIVE",
+      "status": "FUTURE_AFTER_ADOPTION_IMPLEMENTATION_ONLY"
+    },
+    {
+      "id": "P06",
+      "scenario": "Revoked credential can be inspected as immutable historical audit record with exact old issuer root but not reactivated for current output",
+      "expected": "HISTORICAL_AUDIT_ONLY__NO_CURRENT_PASS",
+      "status": "FUTURE_AFTER_ADOPTION_IMPLEMENTATION_ONLY"
+    }
+  ],
+  "new_R2_hostile_courts": [
+    {
+      "id": "H31_BOOTSTRAP_FORK",
+      "attack": "Two mutually self-consistent journal roots with same warrant/epoch but divergent genesis; verifier given one by caller",
+      "expected": "REFUSE_UNLESS EXACT HQ approved + independently pinned single root; forked approval needs HQ adjudication",
+      "status": "PROPOSED_NOT_EXECUTED",
+      "proof_grade": "FUTURE_INDEPENDENT_RUNTIME_HOSTILE_REQUIRED"
+    },
+    {
+      "id": "H32_WRONG_PROVISIONER",
+      "attack": "C1 deployment writer or N10E caller claims HQ authority and issues approval record",
+      "expected": "REFUSE: only HQ governance exact approval and activation record permits root",
+      "status": "PROPOSED_NOT_EXECUTED",
+      "proof_grade": "FUTURE_INDEPENDENT_RUNTIME_HOSTILE_REQUIRED"
+    },
+    {
+      "id": "H33_MISSING_HQ_RECEIPT",
+      "attack": "Root genuinely stored and journal append-only but HQ immutable approval/activation record missing",
+      "expected": "REFUSE: operational presence is not jurisdiction",
+      "status": "PROPOSED_NOT_EXECUTED",
+      "proof_grade": "FUTURE_INDEPENDENT_RUNTIME_HOSTILE_REQUIRED"
+    },
+    {
+      "id": "H34_STALE_ROTATED_ROOT",
+      "attack": "Verifier holds old epoch root and positive current request after HQ cutover",
+      "expected": "REFUSE CURRENT, allow exact old-root HISTORICAL_AUDIT_ONLY",
+      "status": "PROPOSED_NOT_EXECUTED",
+      "proof_grade": "FUTURE_INDEPENDENT_RUNTIME_HOSTILE_REQUIRED"
+    },
+    {
+      "id": "H35_ADVERSARIAL_ROTATION",
+      "attack": "Registrar requests root rotation with matching new digest but no prior active epoch/HQ-approved successor event",
+      "expected": "REFUSE, no automatic latest or caller revision",
+      "status": "PROPOSED_NOT_EXECUTED",
+      "proof_grade": "FUTURE_INDEPENDENT_RUNTIME_HOSTILE_REQUIRED"
+    },
+    {
+      "id": "H36_DUPLICATE_EPOCH_SEQUENCE",
+      "attack": "After process restart next atomic sequence reused for different build/event preimage",
+      "expected": "INTEGRITY_CONFLICT and refusal, no overwrite or identity alias",
+      "status": "PROPOSED_NOT_EXECUTED",
+      "proof_grade": "FUTURE_INDEPENDENT_RUNTIME_HOSTILE_REQUIRED"
+    },
+    {
+      "id": "H37_N10E_NO_C1_PARENT",
+      "attack": "N10E route and token are correct, build/invocation registered but no journaled C1 site event",
+      "expected": "REFUSE N10E site before provider",
+      "status": "PROPOSED_NOT_EXECUTED",
+      "proof_grade": "FUTURE_INDEPENDENT_RUNTIME_HOSTILE_REQUIRED"
+    },
+    {
+      "id": "H38_N10E_FAKE_HANDOFF",
+      "attack": "N10E cross_site_handoff_ref is non-null and syntactically valid but not journal-issued by C1 owner",
+      "expected": "REFUSE preconstruction and provider/replay",
+      "status": "PROPOSED_NOT_EXECUTED",
+      "proof_grade": "FUTURE_INDEPENDENT_RUNTIME_HOSTILE_REQUIRED"
+    },
+    {
+      "id": "H39_N10E_WRONG_PARENT",
+      "attack": "Handoff journal event exists but cites another build, invoc/predicate/witness or unauthorized receiving ingress",
+      "expected": "REFUSE same-build/parent chain mismatch",
+      "status": "PROPOSED_NOT_EXECUTED",
+      "proof_grade": "FUTURE_INDEPENDENT_RUNTIME_HOSTILE_REQUIRED"
+    },
+    {
+      "id": "H40_EQUAL_ROWS_DIFFERENT_BUILD",
+      "attack": "N10E fixture has same R8 universe/release/rows but its build_instance_ref differs from C1 site's unique registered build",
+      "expected": "REFUSE transfer; separate C1 parent registration required",
+      "status": "PROPOSED_NOT_EXECUTED",
+      "proof_grade": "FUTURE_INDEPENDENT_RUNTIME_HOSTILE_REQUIRED"
+    },
+    {
+      "id": "H41_REVOKED_C1_PARENT",
+      "attack": "Handoff and N10E event previously valid and geometry matches, but exact C1 predecessor revoked",
+      "expected": "REFUSE current N10E use; preserved historical audit only",
+      "status": "PROPOSED_NOT_EXECUTED",
+      "proof_grade": "FUTURE_INDEPENDENT_RUNTIME_HOSTILE_REQUIRED"
+    },
+    {
+      "id": "H42_NO_VERIFIER_ACK",
+      "attack": "HQ proposed root approved but independent verifier root placement/ack never recorded or hash mismatches",
+      "expected": "REFUSE bootstrap activation and registration",
+      "status": "PROPOSED_NOT_EXECUTED",
+      "proof_grade": "FUTURE_INDEPENDENT_RUNTIME_HOSTILE_REQUIRED"
+    },
+    {
+      "id": "H43_ISSUER_REVOCATION_REPLAY",
+      "attack": "N10E attempts replay under a revoked issuer epoch even if old result identity matches",
+      "expected": "THROW before composition, not returned Z08 FAIL_CLOSED",
+      "status": "PROPOSED_NOT_EXECUTED",
+      "proof_grade": "FUTURE_INDEPENDENT_RUNTIME_HOSTILE_REQUIRED"
+    }
+  ],
+  "new_R2_productive_courts": [
+    {
+      "id": "P07_HQ_ROOT_BOOTSTRAP",
+      "scenario": "Explicit HQ approved source-free owner root, independent verifier placement acknowledgment and HQ activation; genuine AT07 registers correctly",
+      "expected": "ACCEPT only with exact adopted warrant, approved pinned root, atomic unique issuer epoch/event",
+      "status": "PROPOSED_NOT_EXECUTED",
+      "proof_grade": "FUTURE_INDEPENDENT_RUNTIME_POSITIVE_REQUIRED"
+    },
+    {
+      "id": "P08_GENUINE_HANDOFF_N10E",
+      "scenario": "C1 accepted 100-row AT07 build+exact forward witness+C1 site; owner issues separate exact handoff; N10E receiver independently registered at same build/handed-off invocation",
+      "expected": "ACCEPT genuine N10E provider/replay under N10E token and full journal parent chain",
+      "status": "PROPOSED_NOT_EXECUTED",
+      "proof_grade": "FUTURE_INDEPENDENT_RUNTIME_POSITIVE_REQUIRED"
+    },
+    {
+      "id": "P09_ROOT_ROTATION_CURRENTNESS",
+      "scenario": "HQ expressly approves new issuer root and epoch, independent verifier pin updated, exact old-root archive retained; newly registered build under new epoch current",
+      "expected": "ACCEPT successor new current use; REFUSE revoked old current; allow old HISTORICAL_AUDIT_ONLY",
+      "status": "PROPOSED_NOT_EXECUTED",
+      "proof_grade": "FUTURE_INDEPENDENT_RUNTIME_POSITIVE_REQUIRED"
+    },
+    {
+      "id": "P10_REVERSE_SAME_BUILD",
+      "scenario": "Reverse 54/62 AT07 invocation registers separate exact witness and C1 site, owner-issued handoff, N10E event under same unique build",
+      "expected": "ACCEPT reverse C1 and N10E replay while all ancestor events active, no fixture content reissuance",
+      "status": "PROPOSED_NOT_EXECUTED",
+      "proof_grade": "FUTURE_INDEPENDENT_RUNTIME_POSITIVE_REQUIRED"
+    }
+  ],
+  "hostile_count_old": 30,
+  "productive_count_old": 6,
+  "hostile_count_additional": 13,
+  "productive_count_additional": 4,
+  "total_hostiles": 43,
+  "total_productives": 10,
+  "all_unexecuted": true,
+  "no_runtime_evidence_claimed": true,
+  "success_requires_both_denial_and_genuine_success": "Any refusal-only implementation fails; P01-P06 and P07-P10 productive paths must work under exact future HQ-adopted issuer with positive C1/N10E provenance.",
+  "Z08_A05_six_states": [
+    "EXACT_SUPPORTED",
+    "EXACT_UNRESOLVED_PROXY_AVAILABLE",
+    "UNRESOLVED",
+    "VALID_EMPTY",
+    "NONCOMPARABLE",
+    "FAIL_CLOSED"
+  ],
+  "Z08_failure_boundary": "Issuer/scope/handoff/trust failures THROW before rule construction or provider computation; do NOT fabricate returned Z08 FAIL_CLOSED, whose existing returned branches remain the original evaluator law.",
+  "negative_ceiling": [
+    "NO_GENERIC_ISSUER_AUTHORITY",
+    "NO_NEW_I01_KIND_AUTO_ADMISSION",
+    "NO_NEW_PUBLIC_FIELD_FAMILY",
+    "NO_ACTOR_OR_V3",
+    "NO_REAL_SOURCE",
+    "NO_SOURCES_ADDED_OR_CROSS_SOURCE_INFERENCE",
+    "NO_COMPARABILITY",
+    "NO_POOLING",
+    "NO_STRUCTURAL_ADMISSION",
+    "NO_THRESHOLD",
+    "NO_SMOOTHING",
+    "NO_PREDICTION",
+    "NO_NORMATIVE_OUTPUT",
+    "NO_WALKBACK_POLICY_TRANSFER",
+    "NO_MODEL_RULE_R4_FREEZE",
+    "NO_HISTORICAL_REJECTED_GENEALOGY",
+    "NO_PRODUCTION_OR_TEST_MUTATION"
+  ],
+  "preserve_original_courts_unchanged": true,
+  "evidence": {
+    "review_tip": "7c7937ff68ddd6209858cc23194b9f292b299e66",
+    "commission_tip": "1cac84eac8846130bd12e9bf591ff3010c9c4b62",
+    "original_proposal": "3c6cfa0d29e10c1e2654e5fe22b0b62a0db891b9",
+    "adopted_C1_01": "5fafb499d53dddadaf8a7b4fd46506e91a09d270",
+    "HQ241_report_blob": "09b5a3a7be08d4f2b6207417a9232ef2774170d0",
+    "HQ241_bootstrap_defect_blob": "8884e2e62a2b75ddc1a9617f60001a50a9434b87",
+    "HQ241_handoff_defect_blob": "e2d20201db00c8fc65804c27979d61785c43131c",
+    "old_warrant_blob": "c56be790ad523e33bd212ba99edb368af41f75d0",
+    "old_credential_blob": "58144e78b714de56dbb700020e7f3e5ab4706150",
+    "old_entrypoint_blob": "bb72089678f43dccbf16c0cf90d498bcef5f02b0",
+    "old_adoption_blob": "9415ae2ee8895dbd662b4fceb5ae3895b9adbf92",
+    "old_courts_blob": "27b2308001fc49723921a401005764f2e69c5f20",
+    "R8_spine_blob": "462bb282ddc2cc9667f1890f2d65f2fae9a3a72c",
+    "C1_test_builder_blob": "2210fc1b4cb99552aafc8797c12d780a78e7983b",
+    "N10E_test_builder_blob": "0e384f72fa615dc72a0dcb08a36472a64b7b1e4a",
+    "C1_composition_blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+    "N10E_provider_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+    "I01_18_kinds_blob": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+    "I02_repo_blob": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+    "Z06_blob": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+    "C1_03R_blob": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+    "Z08_code_blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+    "R3_identity_manifest_blob": "72f316d9d2b0ac65a9a3abafd39388c7fc12660b"
+  }
+}
