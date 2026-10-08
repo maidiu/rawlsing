@@ -2,8 +2,8 @@
   "schema": "ASTRA_PYAT_HQ247_AUDIT_STATE@1",
   "commission": "ASTRA-PYAT-HQ247-FUNCTIONAL-ENDGAME-DELTA-AUDIT-R1",
   "lane": "agent/astra-pyat-hq247-functional-endgame-delta-audit-r1",
-  "status": "P0_COMPLETE_AND_BANKED__P1_HUMAN_ASTRA_HIGH_SELECTED__HQ249_GATE_SATISFIED__READY_FOR_P1",
-  "phase": "P0_COMPLETE__P1_NOT_STARTED",
+  "status": "P1_HOSTILE_SYSTEMIC_ANALYSIS",
+  "phase": "P1_IN_PROGRESS",
   "required_next_model": "Continue existing human-selected Astra High session for P1; select only if changed",
   "pending_model_switch": null,
   "control_origin_head_observed": "a3d44f554e4e4fa01223679035599019ae2de527",
@@ -36,7 +36,7 @@
   ],
   "prior_astra_atlas": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/README.md",
   "previous_phase_completion": "P0",
-  "latest_verified_audit_remote_head": "fe7493ca61c058cbccb30c02425ed1032f986c4f (Astra's own last verified evidence bank; newer commission-only commits must be separately remote-verified)",
+  "latest_verified_audit_remote_head": "e3eb3c31fa4761a1d7de8b15d3cfe67a67980049",
   "checkpoint_status": "P0_BANKED_ON_REMOTE_AND_VERIFIED__P1_ENTRY_REFRESH_BANKED_AT_fe7493ca61c058cbccb30c02425ed1032f986c4f__HQ249_INTAKE_COMPLETE",
   "completed_investigations": [
     "Verified direct origin control/audit/three worker refs and immutable checkpoint bindings at entry and stop",
@@ -58,7 +58,7 @@
     "Q9",
     "Q10"
   ],
-  "first_next_action": "Sync same audit worktree by safe fast-forward from P0 bank if clean; read 06_HQ249_RESUME_P1_AFTER_COMPLETED_P0.md and sealed HQ249, then CONTINUE P1 hostile systemic audit without repeating P0 or seeking intake override.",
+  "first_next_action": "Complete three reverse service slices and falsify conditional infrastructure dependencies; bank P1 findings then stop for Sol P2.",
   "last_stage_files": [
     "phases/P0_DELTA_CENSUS.md",
     "phases/P0_GIT_CENSUS_ENTRY.json",
@@ -77,7 +77,7 @@
   ],
   "original_commission_issuance_control_head": "4246cea7657b6bfb1e405a27f3dff952c4d157df",
   "original_commission_issuance_checkpoint": "20261008-PYAT-HQ247-N10E-R3-ADOPTED-F7-HOSTILE-BLOCKED-R1",
-  "pending_astra_P1_gate": "NONE__SEALED_HQ249_AND_HUMAN_ASTRA_HIGH_SELECTION_BOTH_CONFIRMED_AS_OF_USER_TRANSCRIPT",
+  "pending_astra_P1_gate": null,
   "prior_HQ247_returns_classification": "ADJUDICATED_AT_HQD_2026_10_08_248__HISTORICAL_NOT_PENDING",
   "hq248_workers_at_amendment": [
     {
@@ -103,8 +103,8 @@
       "adjudicated_return_head": "e64379e542b931df1e7df47f1b37955a1cb9a3a9"
     }
   ],
-  "baseline_control_head": "675b0793fd2a2b75463fc00d2b884eefdc95e9f9",
-  "latest_pinned_checkpoint": "20261008-PYAT-HQ248-F7-R2-REFCOUNT-N10E-PLACEMENT-HOLD-R1",
+  "baseline_control_head": "a3d44f554e4e4fa01223679035599019ae2de527",
+  "latest_pinned_checkpoint": "20261008-PYAT-HQ249-THREE-HQ248-RETURNS-ASTRA-AUDIT-WAKE-R1",
   "most_recent_verified_remote_heads": [
     {
       "id": "HQ248_F7_R3_REFCOUNT_REPAIR",
@@ -169,8 +169,8 @@
   ],
   "selected_model": "Astra High, human selected in existing Codex session (as evidenced in P1_ENTRY_REFRESH.md); reverify actual current active model on resumption",
   "model_scope": "P1 Astra hostile synthesis permitted now; P2 Sol after human switch",
-  "gate_status": "P1_READY__SEALED_HQ249_ADJUDICATED_THREE_HQ248_RETURNS__USER_ASTRA_HIGH_ALREADY_SELECTED",
-  "next_model": "Astra Pro / highest available reasoning",
+  "gate_status": "HQ249_VERIFIED__P0_BANKED__HUMAN_ASTRA_HIGH_SELECTED",
+  "next_model": "Sol High, human switch required after P1",
   "hq248_workers_at_p0_stop": [
     {
       "id": "HQ248_F7_R3_REFCOUNT_REPAIR",
@@ -227,8 +227,8 @@
       "classification": "POST_CHECKPOINT_PENDING_RETURN"
     }
   ],
-  "last_observed_remote_utc": "2026-10-08T18:29:20.149801+00:00",
-  "open_questions_source": "phases/P0_DELTA_CENSUS.md §5",
+  "last_observed_remote_utc": "2026-10-08T19:09:18.654029+00:00",
+  "open_questions_source": "phases/P0_DELTA_CENSUS.md \u00a75",
   "evidence_grades": [
     "DIRECT_GIT_PACKET_VERIFIED",
     "INHERITED_HQ_ADOPTION_AT_DECLARED_GRAIN",
@@ -237,7 +237,7 @@
     "RUNTIME_AND_ESTATE_NOT_EXECUTED"
   ],
   "pipeline_tests_executed": 0,
-  "p1_started": false,
+  "p1_started": true,
   "p2_started": false,
   "p3_started": false,
   "worktree_bootstrap": "Existing supplied clean detached shared-store Codex worktree sparsified and local commissioned branch created at exact startup tip; not HQ-preprepared certification",
@@ -256,5 +256,6 @@
   "hq249_activation_status": "VERIFIED_OPEN__ALL_HQ248_RETURNS_ADJUDICATED__NO_MORE_HQ_INTAKE_REQUIRED",
   "historical_p0_control": "675b0793fd2a2b75463fc00d2b884eefdc95e9f9",
   "historical_p0_checkpoint": "20261008-PYAT-HQ248-F7-R2-REFCOUNT-N10E-PLACEMENT-HOLD-R1",
-  "active_at_current_checkpoint_workers": []
+  "active_at_current_checkpoint_workers": [],
+  "hq248_return_status": "ALL_THREE_ADJUDICATED_HQ249_AT_RESTRICTED_GRAINS"
 }
