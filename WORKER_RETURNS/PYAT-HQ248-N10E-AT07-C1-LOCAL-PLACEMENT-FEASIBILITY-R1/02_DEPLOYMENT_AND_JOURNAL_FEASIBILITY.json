@@ -1,0 +1,83 @@
+{
+  "finding_2_journal_feasibility": {
+    "durability_caveats": [
+      "APFS guarantees atomicity and ordering; it does NOT by itself provide append-only immutability against a writer who owns the containing directory. Nonreuse must be enforced by the owner application, not assumed from the filesystem.",
+      "No at-rest encryption (FileVault OFF) means journal confidentiality and tamper evidence depend entirely on the owner principal, not on a storage boundary.",
+      "The repo working tree is NOT a journal substrate: it is version-controlled, unsigned (commit.gpgsign not configured), has no active git hooks, and is rewritable by the same principal."
+    ],
+    "filesystem_facts": {
+      "data_volume": "apfs, local, journaled, nobrowse",
+      "repo_and_home_filesystem": "apfs on the Data volume (writable)",
+      "root_volume": "apfs, sealed, local, read-only, journaled",
+      "tmp_filesystem": "apfs but volatile; unsuitable for durable custody"
+    },
+    "question": "Can a single-writer durable journal with atomic sequence and nonreuse capability exist at this chosen deployment?",
+    "verdict_at_filesystem_grain": "FEASIBLE. APFS provides exclusive create, atomic rename, advisory whole-file locking and durable file AND directory fsync. A single-writer durable journal with an atomic monotonic sequence and nonreuse guarantee is constructible on the Data volume.",
+    "verified_primitives": {
+      "O_CREAT|O_EXCL_exclusive_create": true,
+      "O_DIRECTORY": true,
+      "directory_fsync": true,
+      "fcntl_flock": true,
+      "fcntl_lockf": true,
+      "os_fsync": true,
+      "os_replace_atomic_rename": true
+    },
+    "what_governs_actual_physical_writer_identity": {
+      "consequence": "Physical writer identity is governed by exactly one human being. Any journal under that principal is, in custody terms, writer and verifier reachable by the same actor.",
+      "governing_principal": "ONE human principal (uid 501) who is simultaneously the console user, the admin-group member, and the current shell principal",
+      "root_owned_not_writable_without_sudo": [
+        {
+          "owner_uid": 0,
+          "path_shape": "/Library/Application Support",
+          "perms": "drwxr-xr-x"
+        },
+        {
+          "owner_uid": 0,
+          "path_shape": "/var/root",
+          "perms": "drwxr-x---"
+        }
+      ],
+      "sudo_gate": "password required, held by the same single human principal",
+      "writable_by_that_principal": [
+        {
+          "owner_uid": 501,
+          "path_shape": "repo root",
+          "perms": "drwxr-xr-x"
+        },
+        {
+          "owner_uid": 501,
+          "path_shape": "~/Library/Application Support",
+          "perms": "drwx------"
+        }
+      ]
+    }
+  },
+  "finding_4_design_level_boundaries": {
+    "bootstrap_collision_rollback_fork": "UNDESIGNED. No bootstrap, collision, rollback or fork-boundary handling exists for a C1 AT07 build registry. These remain design-level questions, deliberately unallocated by this commission.",
+    "design_level_observations_for_the_future_owner_proposal": [
+      "Advisory locking plus exclusive create is sufficient for a single-writer design, but the owner application must additionally enforce sequence monotonicity and nonreuse, because APFS will not.",
+      "A journal inside the git working tree is unsuitable: unsigned, rewritable, and version-controlled rather than append-only.",
+      "Any fork or collision defence ultimately rests on the owner principal's exclusivity, which on this host is a single human being.",
+      "Rollback semantics must be defined so that a rolled-back sequence number can never be reissued; nothing currently prevents that."
+    ],
+    "epoch": "NO epoch space exists. No epoch machinery appears anywhere in the C1/N10E/AT07 lane. The only epoch symbols in the tree are in V3 contact-witness lanes, which are out of scope here and forbidden. NO epoch number was allocated.",
+    "genesis": "NOT CONCEIVED, NOT ALLOCATED, NOT WRITTEN",
+    "immutable_pinned_roots": "NO pinned root exists. No trust_root or issuer_root symbol exists in any code surface. The single OWNER_ROOT constant found is a frozen GT34 literal and is NOT a root.",
+    "registry_or_registrar": "NO REGISTRAR symbol exists in any code surface. There is no active registrar to consult.",
+    "sequence_monotonicity_nonreuse": "NO nonreuse, non_reuse or C1-lane monotonicity guard exists. pre553_c11_repository.py does contain collision logic, but that belongs to the C11 repository lane, not the AT07 owner lane, and must not be borrowed as owner authority."
+  },
+  "finding_6_handoff_discipline": {
+    "actual_effective_context": "null (both conditioner and 16-key witness intervals remain null); NOT the static AT07_FIXTURE_ONLY snapshot",
+    "direct_registration_path_exists_in_code": false,
+    "evidence": "build_provider_case has zero product-path callers and no registration surface exists, so no direct invocation-to-registration shortcut is present that could be accidentally exercised.",
+    "mandatory_path": "owner-issued C1 -> N10E REGISTERED HANDOFF (non-null), not direct invocation -> N10E registration",
+    "null_handoff_legal_only_post_activation": true,
+    "raw_survey_accessed": false,
+    "real_source_opened": false,
+    "source_free": true,
+    "static_fixture_retained": "AT07_BIDIRECTIONAL_100 with forward 54/60 and reverse 54/62, unchanged",
+    "tests_representing_real_activation_written_or_run": false
+  },
+  "schema": "HQ248_DEPLOYMENT_AND_JOURNAL_FEASIBILITY@1.0.0",
+  "status": "DESIGN_LEVEL_ONLY__NOTHING_ALLOCATED_OR_WRITTEN"
+}

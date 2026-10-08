@@ -1,0 +1,110 @@
+{
+  "artifacts": [
+    "00_FEASIBILITY.md",
+    "01_LOCAL_OWNER_AND_VERIFIER_EVIDENCE.json",
+    "02_DEPLOYMENT_AND_JOURNAL_FEASIBILITY.json",
+    "03_HQ_DESIGNATION_REQUIRED.md",
+    "FINAL_DISPOSITION.json"
+  ],
+  "branch": "agent/space-bunny-pyat-hq248-n10e-at07-deployment-placement-evidence-r1",
+  "disclosures": [
+    {
+      "charged_as_lawful": false,
+      "detail": "While probing POSIX ACL support on the Data volume I issued chmod +a \"everyone deny list\" against the repository root directory. That command WROTE an ACL rather than merely testing support. It was detected immediately and reverted with chmod -a. Verification confirms the ACL entry is removed, the source tree is clean, and HEAD is unchanged at 9716656ee47fb04bf8bd6e842982d78b6490cca8. No production or source content was modified; the effect was filesystem metadata only and is entirely reverted.",
+      "item": "inadvertent filesystem ACL mutation, fully reverted",
+      "self_reported": true
+    },
+    {
+      "detail": "Artifacts report only structural facts: account counts, uid classes, ownership classes and permission shapes. No password, key, token or environment secret was accessed or emitted. sudo was probed for password-requirement only and never used to execute anything.",
+      "item": "human identity redaction"
+    },
+    {
+      "detail": "This commission named the launch tip exactly, unlike HQ221/HQ222 where the commission text named its own parent. No tip discrepancy arose.",
+      "item": "commission tip vs launch tip"
+    },
+    {
+      "detail": "Read-only shell inventory plus a pre-existing local stdlib-only Python 3.11.3 venv for artifact emission. No governed environment was named by this commission. This is reproduced inventory evidence, not governed certification.",
+      "item": "environment provenance"
+    }
+  ],
+  "disposition": "BLOCKED",
+  "disposition_reason": "The commission instructs: if genuine independent principal separation cannot be established on the Mac, return BLOCKED, propose physical/human separation, and do not fake independence. It cannot: exactly one human principal administers this machine (sole uid>=500 account, sole admin, console user, holder of the sudo credential), FileVault is OFF so there is no at-rest confidentiality boundary, and no verifier service, installer or root distribution channel exists at any privilege level. A root LaunchDaemon would give a distinct RUNTIME principal but the same single human would install it, so independent CONTROL is not established.",
+  "handoff_discipline": {
+    "direct_invocation_to_n10e_registration": "not present and not created",
+    "mandatory_path": "owner-issued C1->N10E registered handoff retained",
+    "tests_representing_real_activation": 0
+  },
+  "immutable_freeze_respected": {
+    "active_registrar_created": false,
+    "actual_effective_context": "null",
+    "credentials_created": false,
+    "externally_deployed_installation_written": false,
+    "forward_directional": "54/60",
+    "hq_or_control_modified": false,
+    "new_i01_kind": false,
+    "r4_hashes_created": false,
+    "raw_survey_accessed": false,
+    "real_source_invoked": false,
+    "reverse_directional": "54/62",
+    "static_fixture": "AT07_BIDIRECTIONAL_100 retained, unchanged",
+    "static_snapshot_interval_is_not_actual_effective_context": true,
+    "trust_root_created": false
+  },
+  "minimal_recommended_next_decision": {
+    "blocking_prerequisite": "physical/human separation: a second independently administered host or principal for the verifier side, with root material distributed out-of-band; or at minimum enable FileVault, provision a dedicated non-human service account, and place the verifier on different hardware under a different administrator",
+    "self_approval_permitted_at_any_step": false,
+    "then": [
+      "HQ designates one competent C1-01 owner candidate (distinct decision)",
+      "HQ separately designates the verifier installation authority (distinct decision)",
+      "designated owner proposes exact placement, genesis and epoch",
+      "HQ approves exact immutable bytes",
+      "owner installs writer and separately distributed verifier root",
+      "independent verifier ACKs",
+      "HQ activates the epoch"
+    ]
+  },
+  "non_authorizing": true,
+  "required_order_preserved": {
+    "designated_owner_proposal": "NOT_PERFORMED",
+    "distinct_hq_designation": "NOT_PERFORMED",
+    "independent_verifier_ack": "NOT_PERFORMED",
+    "install": "NOT_PERFORMED",
+    "owner_candidate_identification": "THIS COMMISSION (inventory only, non-authorizing)",
+    "prospective_root_manifest_generated_under_fictional_designation": false,
+    "separate_hq_activate": "NOT_PERFORMED",
+    "separate_hq_exact_root_approval": "NOT_PERFORMED"
+  },
+  "schema": "HQ248_FINAL_DISPOSITION@1.0.0",
+  "self_approval": "NOT_PERFORMED",
+  "status_vocabulary_used": [
+    "BLOCKED"
+  ],
+  "terminal": "HQ248_C1_AT07_LOCAL_PLACEMENT_FEASIBILITY_RETURNED__HQ_DESIGNATION_DECISION_REQUIRED",
+  "what_was_established": {
+    "assembly_and_consumer_blobs_match_hq247": true,
+    "assembly_is_in_memory_test_module": true,
+    "assembly_performs_no_writes": true,
+    "bootstrap_collision_rollback_fork_designed": false,
+    "c1_01_assembly_located": true,
+    "epoch_allocated": false,
+    "genesis_written": false,
+    "independent_verifier_channel_established": false,
+    "n10e_product_path_callers": 0,
+    "physical_writer_identity_governed_by": "one human principal (uid 501)",
+    "pinned_root_exists": false,
+    "product_deployment_exists": false,
+    "rawlsing_owned_service_exists": false,
+    "registrar_exists": false,
+    "root_generated": false,
+    "single_writer_durable_journal_feasible_at_filesystem_grain": true,
+    "test_helper_to_product_boundary_exists": false,
+    "verified_primitives": [
+      "O_EXCL",
+      "atomic_rename",
+      "flock",
+      "lockf",
+      "fsync",
+      "directory_fsync"
+    ]
+  }
+}

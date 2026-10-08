@@ -1,0 +1,79 @@
+{
+  "authority": "HQD-2026-10-08-248 \u2014 NON-AUTHORIZING INVENTORY AND PRE-APPROVAL FEASIBILITY",
+  "finding_1_c1_01_assembly_and_hosting": {
+    "assembly_blob": "2210fc1b4cb99552aafc8797c12d780a78e7983b",
+    "assembly_blob_matches_hq247_citation": true,
+    "assembly_material_location": "assembled IN PROCESS MEMORY (rows = [] at line 92); the module's only filesystem access is read_text of already-committed JSON",
+    "assembly_module": "rawlsing_next/tests/test_pre553_analytical_composition.py",
+    "assembly_performs_writes": false,
+    "conclusion": "No deployed C1-01 owner exists. There is nothing deployed, nothing hosted as a service, and no principal to designate at this site.",
+    "consumer_blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+    "consumer_blob_matches_hq247_citation": true,
+    "consumer_module": "rawlsing_next/pre553_analytical_composition.py",
+    "fresh_process_runner": "rawlsing_next/tests/n10e_empirical_slice_fresh_process_runner.py spawns sys.executable and prints JSON to stdout; still test support, not a deployment",
+    "invocation": "python -m pytest with PYTHONPATH=. ; no conftest.py, pytest.ini, setup.cfg, pyproject.toml or tox.ini at repo root",
+    "n10e_all_callers_under_tests": true,
+    "n10e_product_path_callers": 0,
+    "n10e_provider_surface": "rawlsing_next/tests/n10e_empirical_slice_fixture.py::build_provider_case",
+    "owner_process_or_service_deployment_identity": null,
+    "package_installed": false,
+    "test_helper_to_product_deployment_boundary": "DOES NOT EXIST \u2014 there is no product deployment on this machine to bound against. The assembly is a test module and the consumer is an imported library in the same interpreter."
+  },
+  "finding_3_independent_verifier_channel": {
+    "could_a_distinct_runtime_principal_exist": "POSSIBLY \u2014 a root-owned LaunchDaemon would run as a distinct runtime principal, but no such daemon exists and installing one requires the same single human's sudo credential.",
+    "could_install_be_independently_controlled_here": false,
+    "independence_faked": false,
+    "reasoning": [
+      "Exactly one human account exists (uid >= 500); the other three accounts are system/service.",
+      "That human is the admin, the console user, and the current principal, and holds the sudo credential.",
+      "FileVault is OFF, so there is NO at-rest encryption boundary: any independent verifier reading on this host shares the owner's confidentiality boundary.",
+      "No Rawlsing service, installer, or root distribution channel exists at any privilege level.",
+      "Runtime principal separation is technically constructible; INDEPENDENTLY CONTROLLED provisioning is not, because a single human administers both sides."
+    ],
+    "trust_root_distribution_channel_present": false,
+    "verdict": "GENUINE INDEPENDENT PRINCIPAL SEPARATION CANNOT BE ESTABLISHED ON THIS MACHINE",
+    "verifier_installer_present": false,
+    "verifier_read_channel_present": false
+  },
+  "incidental_code_census": {
+    "INSTALL_symbol_files": 0,
+    "ISSUER_ROOT_symbol_files": 0,
+    "JOURNAL_note": "The only JOURNAL occurrence is an unrelated FIABC T4 live accounting journal schema, not a C1 AT07 build journal.",
+    "OWNER_ROOT_note": "The only OWNER_ROOT occurrence is CURRENT_ACCEPTED_OWNER_ROOT, a frozen in-module constant in rawlsing_next/gt34_u2_v3p1_authenticated_subject_materializer.py. It is a static literal, NOT a deployed owner root and NOT a principal. It must not be mistaken for placement authority.",
+    "REGISTRAR_symbol_files": 0,
+    "TRUST_ROOT_symbol_files": 0,
+    "c1_n10e_at07_lane_writer_epoch_root_machinery": "NONE",
+    "epoch_files": 4,
+    "epoch_files_all_in_v3_contact_witness_lanes_out_of_scope": true
+  },
+  "lane": {
+    "branch": "agent/space-bunny-pyat-hq248-n10e-at07-deployment-placement-evidence-r1",
+    "commission_tip": "9716656ee47fb04bf8bd6e842982d78b6490cca8",
+    "immutable_base": "80023846b13b9d2cea93f6a3d4f7cd36601b7ccd"
+  },
+  "machine_profile": {
+    "class": "single-user consumer Mac laptop",
+    "console_user_is_current_principal": true,
+    "current_principal_is_admin": true,
+    "filevault": "OFF",
+    "human_account_count_uid_ge_500": 1,
+    "identity_note": "All human identities are REDACTED. Only structural facts are reported: counts, uid classes, ownership classes and permission shapes. No password, key, token or environment secret was accessed.",
+    "os": "macOS 13.7.8 (Darwin 22.6.0, x86_64)",
+    "per_user_launch_agents": 7,
+    "rawlsing_owned_service_present": false,
+    "root_owned_launch_daemons_non_apple": 18,
+    "root_owned_launch_daemons_total": 20,
+    "sip": "enabled",
+    "sudo_requires_password": true,
+    "system_service_account_count": 3,
+    "third_party_kext_count": 10
+  },
+  "not_an": [
+    "approved C1 issuer",
+    "owner identity proposal",
+    "root proposal",
+    "installation",
+    "activation"
+  ],
+  "schema": "HQ248_LOCAL_OWNER_AND_VERIFIER_EVIDENCE@1.0.0"
+}
