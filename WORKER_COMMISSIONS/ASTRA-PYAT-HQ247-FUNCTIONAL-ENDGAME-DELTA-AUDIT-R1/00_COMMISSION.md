@@ -1,5 +1,8 @@
 # COMMISSION — ASTRA PYAT HQ247 FUNCTIONAL ENDGAME DELTA / HOSTILE PRESCRIPTION AUDIT R1
 
+> **CURRENT ACTIVATION UPDATE — HQ248 / HQ249 gate (2026-10-08).** The initial HQ247 observations below are HISTORICAL AS-OF-ISSUANCE, not current operative state. HQ248 is now sealed at control `675b0793fd2a2b75463fc00d2b884eefdc95e9f9`, packet `91595263d2888091e1f28af1ed38429b7c02966f`. Read `PYAT_CONTROL_ROOM/ASTRA_HQ247_FUNCTIONAL_ENDGAME_DELTA_R1/04_HQ248_HQ249_ACTIVATION_GATE.md` FIRST. Three HQ247 returns have been adjudicated under HQD-248 and HQ248 successors are in progress/pending; N10E feasibility has an as-yet-unadjudicated pushed return at `e64379e542b931df1e7df47f1b37955a1cb9a3a9`. **P0 may run now, but DO NOT enter costly Astra P1 until a new HQ249-or-later checkpoint seals the one-wave return adjudication, or the human explicitly overrides the gate.** Do not wait for global F7 security / issuer activation, and do not trigger an indefinite next wave. The numbered HQD125 **functional F7 temporal gate is NOT F7-RR-04G native runtime security**. Historical as-of-issuance refs remain below solely for audit provenance.
+
+
 **STATUS:** NEW — NEEDS LAUNCH. Commissioned documentary/forensic audit, NOT an HQ adoption or implementation commission.
 **AGENT:** Astra forensic auditor and adversarial PRE-V3 program architect, continuing the prior Astra audit lineage.
 **MODEL / INTELLIGENCE AT LAUNCH:** GPT-5.6 Sol High (or nearest available economical high-capability equivalent) for Phase 0. **Astra Pro / highest available reasoning** is REQUIRED for Phases 1 and 3. Mandatory human-controlled model switches and STOP instructions in 01_PHASES_AND_SWITCHES.md.
@@ -28,9 +31,9 @@ Audit the program's engineering priorities and current DAG, not merely individua
 3. Read PYAT_CONTROL_ROOM/00_READ_ME_FIRST.md, 13_FRESH_HQ_FULL_GROK_PROTOCOL.md, SHARED_STORE_SPARSE_WORKTREE_EXECUTION_LAW_R1.md. Succession requires changed-grain grok, NOT a full repeat.
 4. Read binding HQD124, **24_HQD125_DDM_FUNCTIONAL_CONSERVATION_AND_PREV3_ACCEPTANCE_LAW.md**, **25_HQD125_DDM_FUNCTIONAL_CONSERVATION_CROSSWALK.md**, **26_HQD216_PRODUCTIVE_ADEQUACY_AND_PREV3_EMPIRICAL_GATE_LAW.md**.
 5. Reuse PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/ (README, PROGRAM, ACCEPTANCE, CLAIMS, EVIDENCE_INDEX, IMPLEMENTATION_MAP, DEPENDENCY_DAG, RISKS, records/PASS1–PASS4, report/W_STOP_DOING_LIST, report/X_CONTROL_ROOM_SELF_AUDIT). Older proposed commissions are NOT current authority; delta-check every proposal against post-H125 decisions and work.
-6. Read current HQ247 return evidence at exact Git identities, then inspect specific code/authority surfaces needed to challenge substantive claims. Do not infer active worker status from commission or pointer alone.
+6. Read the current HQ248→HQ249 activation addendum FIRST, then live current sealed checkpoint and its specifically named post-checkpoint pending returns. Reuse the pinned historical HQ247 observations only for delta genealogy; inspect code/authority surfaces needed to challenge substantive claims. Do not infer active worker status from commission or pointer alone.
 
-### Initial live evidence discovered by commissioning HQ — OBSERVED, NOT ADOPTED
+### HISTORICAL initial evidence at original HQ247 commission issuance — SUPERSEDED FOR OPERATIVE STATUS BY HQ248 ADDENDUM
 
 Control origin at issuance: 4246cea7657b6bfb1e405a27f3dff952c4d157df; LATEST selects HQ247 checkpoint at handoff commit 3f8f1caa545ffc4d95383f31605e8a17a894a7f3; semantic PRE-MAIN 1f47063c3205a45888b3c55e81e7485943ed1390.
 
