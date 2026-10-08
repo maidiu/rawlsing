@@ -1,0 +1,128 @@
+{
+  "schema": "PYAT_HQ244_MANDATORY_C1_N10E_HANDOFF_HOSTILE_REVIEW@1",
+  "disposition": "C1_AT07_FIXTURE_ISSUER_WARRANT_R2_PARTIAL__NAMED_DEFECT",
+  "subject_commit": "cdef72ddc805e3ed943bac9f9241467454df8030",
+  "old_defect": "HQ241-DEFECT-N10E-HANDOFF-SITE-EVENT-CUSTODY-002",
+  "old_defect_semantic_ruling": "CLOSED_AS_PROSPECTIVE_CONTRACT_NOT_IMPLEMENTED",
+  "frozen_positive_ancestry": [
+    "HQ_ACTIVATED_ISSUER_EPOCH",
+    "BUILD_REGISTERED",
+    "INVOCATION_SEALED",
+    "C1_COMPATIBILITY_SITE_USE_ACTIVE",
+    "C1_TO_N10E_SITE_HANDOFF_REGISTERED",
+    "N10E_SITE_USE_ACTIVE",
+    "CURRENT_N10E_PROVIDER_REPLAY"
+  ],
+  "owner_issued_handoff": {
+    "operation": "REGISTER_C1_TO_N10E_SITE_HANDOFF",
+    "only_issuer": "C1_PRIVILEGED_OWNER_REGISTRAR",
+    "requires": "CURRENT journal-committed exact original C1 compatibility parent and approved N10E ingress",
+    "nonnull_for_N10E": true,
+    "nullable_for_C1": true
+  },
+  "exact_identity_dimensions": [
+    "unique registered build instance and registration receipt",
+    "original C1 site event/receipt and authenticated C1 ingress",
+    "invocation seal",
+    "producer query and predicate ref/hash",
+    "consumer query",
+    "conditioner fingerprint and closed full 16-key witness",
+    "actual conditioner/witness effective_time canonical null",
+    "fixture source manifest, R8 universe/release and owner-proven false real_source_effect",
+    "issuer/warrant epoch and activation",
+    "approved N10E receiver ingress and route",
+    "distinct N10E use site and time-sensitive currentness"
+  ],
+  "hosts": [
+    {
+      "id": "B01",
+      "attack": "Direct INVOCATION_SEALED -> N10E_SITE_USE_ACTIVE",
+      "result": "CONTRACT_PASS_REFUSE",
+      "rationale": "Forbidden by R2 state machine; C1 current parent and journal-issued handoff required"
+    },
+    {
+      "id": "B02",
+      "attack": "C1 site missing/non-current",
+      "result": "CONTRACT_PASS_REFUSE",
+      "rationale": "REGISTER_C1_TO_N10E requires journal-resolved ACTIVE C1 site; N10E present/current verifies full ancestry"
+    },
+    {
+      "id": "B03",
+      "attack": "non-null caller-looking ExactRef handoff",
+      "result": "CONTRACT_PASS_REFUSE",
+      "rationale": "Syntactic ExactRef cannot establish journal event membership or privileged C1 registrar issuance"
+    },
+    {
+      "id": "B04",
+      "attack": "handoff copied across original unique build instances with equal 100 rows",
+      "result": "CONTRACT_PASS_REFUSE",
+      "rationale": "Unique build/receipt identity not interchangeable with content hashes"
+    },
+    {
+      "id": "B05",
+      "attack": "direction-specific producer/predicate/consumer/witness mismatch",
+      "result": "CONTRACT_PASS_REFUSE",
+      "rationale": "Exact full invocation chain including predicate hash, conditioner fingerprint and closed 16-key witness crosschecked"
+    },
+    {
+      "id": "B06",
+      "attack": "wrong authorized N10E destination and swapped receiver site token",
+      "result": "CONTRACT_PASS_REFUSE",
+      "rationale": "Receiver ingress derived from approved deployment, not caller token; C1/N10E issued as separate sites"
+    },
+    {
+      "id": "B07",
+      "attack": "canonical null actual time replaced with AT07_FIXTURE_ONLY",
+      "result": "CONTRACT_PASS_REFUSE",
+      "rationale": "Static snapshot interval not actual effective time for conditioner and witness"
+    },
+    {
+      "id": "B08",
+      "attack": "revoked C1 parent or stale issuer at replay",
+      "result": "CONTRACT_PASS_REFUSE_CURRENT",
+      "rationale": "Full independently rechecked ancestor currentness before provider/replay, historical audit only"
+    },
+    {
+      "id": "B09",
+      "attack": "equal geometry or swapped replay context/ref",
+      "result": "CONTRACT_PASS_REFUSE",
+      "rationale": "Replay binds original build, issuer, C1 use, handoff, N10E use, and expected material before computation"
+    },
+    {
+      "id": "B10",
+      "attack": "genuine single build forward and reverse, C1->N10E",
+      "result": "CONTRACT_POSITIVE_REQUIRED_UNEXECUTED",
+      "rationale": "Different exact direction invocation/witness/site records, genuine registered parent chain and positive provider/replay; refuses-only implementation is invalid"
+    },
+    {
+      "id": "B11",
+      "attack": "wrong documented normative handoff contract path",
+      "result": "DOCUMENTARY_FAIL",
+      "rationale": "Control warrant's handoff_contract_path names absent PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ242_R2/03_MANDATORY_C1_TO_N10E_HANDOFF_PREIMAGES.json; R2 handoff contract is actually WORKER_RETURNS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/02_IMMUTABLE_C1_N10E_OWNER_HANDOFF_TRANSITION.json or embedded PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ242_R2/03_C1_N10E_ENTRYPOINT_CONTRACT.json"
+    }
+  ],
+  "no_implemented_producer_or_replay": true,
+  "new_blocking_reference_defect": "HQ244-DEFECT-R2-NORMATIVE-CONTRACT-PATH-RESOLUTION-001",
+  "evidence": [
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/02_IMMUTABLE_C1_N10E_OWNER_HANDOFF_TRANSITION.json",
+      "commit": "cdef72ddc805e3ed943bac9f9241467454df8030",
+      "blob": "a8c31625fcfb7bd65007e30ee2dda579d3b85e3e"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ242_R2/01_BOUNDED_WARRANT_CANDIDATE_PREIMAGE.json",
+      "commit": "cdef72ddc805e3ed943bac9f9241467454df8030",
+      "blob": "adfb2586e6ece056f6eac8eaba12190abcd5e7fe"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ242_R2/03_C1_N10E_ENTRYPOINT_CONTRACT.json",
+      "commit": "cdef72ddc805e3ed943bac9f9241467454df8030",
+      "blob": "4086c36e8981210277ffda165ff123bf54e0feb9"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ241-N10E-C1-AT07-FIXTURE-ISSUER-WARRANT-HOSTILE-REVIEW-R1/03_C1_N10E_TWO_SITE_ENTRYPOINT_REPLAY_AUDIT.json",
+      "commit": "7c7937ff68ddd6209858cc23194b9f292b299e66",
+      "blob": "e2d20201db00c8fc65804c27979d61785c43131c"
+    }
+  ]
+}

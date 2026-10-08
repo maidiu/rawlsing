@@ -1,0 +1,125 @@
+{
+  "schema": "PYAT_HQ244_ROOT_BOOTSTRAP_ROTATION_HOSTILE_REVIEW@1",
+  "disposition": "C1_AT07_FIXTURE_ISSUER_WARRANT_R2_PARTIAL__NAMED_DEFECT",
+  "subject_commit": "cdef72ddc805e3ed943bac9f9241467454df8030",
+  "mode": "INDEPENDENT_DOCUMENTARY_HOSTILE_REVIEW_NO_EXECUTION",
+  "old_defect": "HQ241-DEFECT-TRUST-ROOT-BOOTSTRAP-AUTHORITY-001",
+  "old_defect_semantic_ruling": "CLOSED_AS_PROSPECTIVE_CONTRACT_NOT_INSTALLED",
+  "competent_roles": {
+    "HQ": "sole future warrant adopter, bootstrap approver/activator, rotation/revocation authority",
+    "C1_owner": "HQ-designated sole source-free fixture owner proposes and installs only HQ-approved material, registrar writes on activated epoch",
+    "verifier": "independent read role with HQ-governed placed trusted pin; may only verify, never issue",
+    "placement_operator": "restricted function of named owner assembly, no separate semantic permission"
+  },
+  "ordered_approval": [
+    "HQ_ADOPT_AT07_ISSUER_WARRANT",
+    "C1_PREPARE_OWNER_ROOT_PLACEMENT_PROPOSAL",
+    "HQ_APPROVE_AT07_ISSUER_ROOT_PLACEMENT",
+    "C1_INSTALL_ONLY_EXACT_HQ_APPROVED_ROOT",
+    "HQ_ACTIVATE_AT07_ISSUER_EPOCH"
+  ],
+  "formal_absence_of_live_root_is_not_a_defect": true,
+  "root_proof_caveat": "The governance commit, manifest, install acknowledgments and verifier pin are not issued; documentary contract is sufficient only under trusted separate HQ deployment channel and ordinary caller threat model.",
+  "hosts": [
+    {
+      "id": "A01",
+      "attack": "HQ-only initial owner/root/epoch approval",
+      "result": "CONTRACT_PASS",
+      "rationale": "Approval and activation templates enumerate HQ governance commit and exact owner, epoch, writer/read principals, journal genesis, deployment digest; no worker/registrar approval"
+    },
+    {
+      "id": "A02",
+      "attack": "self-consistent fake HQ-looking root in request",
+      "result": "CONTRACT_PASS",
+      "rationale": "Verifier may only use trusted independently placed HQ-approved activation pin, not request/caller/registrar root"
+    },
+    {
+      "id": "A03",
+      "attack": "provisioner-supplied substituted root with equal digest and wrong identity",
+      "result": "CONTRACT_PASS_CONDITIONAL_TCB",
+      "rationale": "Trusted placement must bind identical HQ-approved digest, approved owner deployment identity and independently acknowledged verifier root; compromised trusted deployment is expressly out of scope"
+    },
+    {
+      "id": "A04",
+      "attack": "unactivated proposed root",
+      "result": "CONTRACT_PASS",
+      "rationale": "No build-registration positive before separate owner/reader installation receipt and HQ_ACTIVATE_AT07_ISSUER_EPOCH"
+    },
+    {
+      "id": "A05",
+      "attack": "missing trusted HQ approval record",
+      "result": "CONTRACT_PASS",
+      "rationale": "No fallback to HQ-looking JSON or self-signed-looking hashes"
+    },
+    {
+      "id": "A06",
+      "attack": "same epoch two divergent genesis/journals",
+      "result": "CONTRACT_PASS",
+      "rationale": "Fork/competing root = authority conflict, refuse CURRENT, do not choose latest"
+    },
+    {
+      "id": "A07",
+      "attack": "restart sequence reuse or same-content build replay",
+      "result": "CONTRACT_PASS",
+      "rationale": "Per active epoch persist atomic increasing event sequence, collision refusal, unique build events despite equal R8 content"
+    },
+    {
+      "id": "A08",
+      "attack": "HQ-authorized rotation and revocation",
+      "result": "CONTRACT_PASS",
+      "rationale": "HQ approves successor, install independent read pin, HQ atomically activates successor and terminates current old epoch; retained archived audit is not current use"
+    },
+    {
+      "id": "A09",
+      "attack": "stale reader root after rotation",
+      "result": "CONTRACT_PASS",
+      "rationale": "Current verification requires activation/revocation checkpoint, no silently accepted old epoch"
+    },
+    {
+      "id": "A10",
+      "attack": "fake HQ approval delivered solely through caller mapping",
+      "result": "CONTRACT_PASS_AS_SPECIFIED",
+      "rationale": "Verifier independent governance installation channel, rather than request field, is source of trust; actual secure channel not implemented or tested"
+    },
+    {
+      "id": "A11",
+      "attack": "exact referenced root contract path resolves",
+      "result": "DOCUMENTARY_FAIL",
+      "rationale": "Control warrant's bootstrap_contract_path points to missing PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ242_R2/02_EXACT_BOOTSTRAP_AND_ROTATION_PREIMAGES.json; actual contract WORKER_RETURNS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/01_EXACT_BOOTSTRAP_ROOT_AUTHORITY_AND_ROTATION_CONTRACT.json and embedded PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ242_R2/02_ISSUER_CREDENTIAL_AND_VERIFIER_PREIMAGES.json"
+    },
+    {
+      "id": "A12",
+      "attack": "adoption gate select exact corrected R2 proposal",
+      "result": "DOCUMENTARY_FAIL",
+      "rationale": "Control adoption_order still labels HQ240 candidate current and HQ240 review pending; HQ241 review already PARTIAL, corrected subject is HQ242 R2 @ cdef72ddc805e3ed943bac9f9241467454df8030"
+    }
+  ],
+  "blocking_new_defects": [
+    "HQ244-DEFECT-R2-NORMATIVE-CONTRACT-PATH-RESOLUTION-001",
+    "HQ244-DEFECT-R2-ADOPTION-SUBJECT-AND-REVIEW-SEQUENCE-002"
+  ],
+  "evidence": [
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/01_EXACT_BOOTSTRAP_ROOT_AUTHORITY_AND_ROTATION_CONTRACT.json",
+      "commit": "cdef72ddc805e3ed943bac9f9241467454df8030",
+      "blob": "f0e05df99cc7ec8c3445b37e461fad86948f140e"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ242_R2/01_BOUNDED_WARRANT_CANDIDATE_PREIMAGE.json",
+      "commit": "cdef72ddc805e3ed943bac9f9241467454df8030",
+      "blob": "adfb2586e6ece056f6eac8eaba12190abcd5e7fe"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ242_R2/04_HQ_DECISION_ADOPTION_GATES.json",
+      "commit": "cdef72ddc805e3ed943bac9f9241467454df8030",
+      "blob": "76faf8511ad69036ed6241967e57a5f0be48ae6c"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ241-N10E-C1-AT07-FIXTURE-ISSUER-WARRANT-HOSTILE-REVIEW-R1/02_ISSUER_ROOT_JOURNAL_AND_FORGERY_HOSTILITIES.json",
+      "commit": "7c7937ff68ddd6209858cc23194b9f292b299e66",
+      "blob": "8884e2e62a2b75ddc1a9617f60001a50a9434b87"
+    }
+  ],
+  "root_not_installed": true,
+  "actual_hostile_tests_executed": 0
+}

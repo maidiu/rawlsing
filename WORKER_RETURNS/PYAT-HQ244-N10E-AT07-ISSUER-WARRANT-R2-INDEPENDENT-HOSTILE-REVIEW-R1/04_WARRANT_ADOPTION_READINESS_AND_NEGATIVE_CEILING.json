@@ -1,0 +1,69 @@
+{
+  "schema": "PYAT_HQ244_WARRANT_ADOPTION_READINESS_CEILING@1",
+  "disposition": "C1_AT07_FIXTURE_ISSUER_WARRANT_R2_PARTIAL__NAMED_DEFECT",
+  "subject_commit": "cdef72ddc805e3ed943bac9f9241467454df8030",
+  "acceptable_now": false,
+  "substantive_HQ241_defects_prospectively_closed": true,
+  "blockers": [
+    {
+      "id": "HQ244-DEFECT-R2-NORMATIVE-CONTRACT-PATH-RESOLUTION-001",
+      "severity": "ADOPTION_BLOCKER__UNRESOLVED_NORMATIVE_PREIMAGE_REFERENCES",
+      "witness": "Two exact contract_path fields in R2 full bounded warrant and return revised-warrant object resolve 404 at pinned candidate; no deterministic authoritative interpretation from path",
+      "not_missing_semantics": "root and handoff material exists in separate return + embedded control subcontracts",
+      "minimal_correction": "Retarget to exact existing paths with blob IDs, or create those exact files; synchronize both mirrored warrant copies and verify recursive referential integrity; pin adoption to complete corrected bundle"
+    },
+    {
+      "id": "HQ244-DEFECT-R2-ADOPTION-SUBJECT-AND-REVIEW-SEQUENCE-002",
+      "severity": "ADOPTION_BLOCKER__WRONG_REVIEW_SUBJECT_GATE",
+      "witness": "R2 control 04_HQ_DECISION_ADOPTION_GATES adoption_order[0,1] still HQ240-current/HQ240-review-pending, omitting completed adverse HQ241 review and corrected R2/HQ244 review",
+      "minimal_correction": "Replace stale historical sequence with exact HQ240 R1 -> HQ241 partial -> HQ242 R2 corrected @ pinned SHA -> HQ244 independent gate -> separate HQ adoption of exact corrected warrant only; repair mirrored order fields; do not fabricate issued refs"
+    }
+  ],
+  "bounded_R3": "DOCUMENTARY_REFERENCE_AND_ADOPTION_SEQUENCE_RECONCILIATION_ONLY",
+  "otherwise_valid_candidate_scope": "prospective HQ-governed source-free AT07 issuer-root and C1->N10E handoff warrant, not executable grant",
+  "future_after_green": [
+    "fresh independent exact-reference/adoption-lineage check",
+    "separate HQ explicit bounded warrant adoption with adopted exact warrant ref",
+    "future exact C1 owner designation and HQ proposal/approval/independent install acknowledgment/activation of epoch",
+    "independent R3->R4 model rule preimage hash correction and hostile review",
+    "separate HQ R4 adoption",
+    "separately commissioned owner-native production implementation and governed execution courts"
+  ],
+  "negative_ceiling": [
+    "No issuer capability or credential by this review",
+    "No live root approval/activation or self-signed acceptance",
+    "No model-rule R4 authority, 19th I01 kind, production mutation or merge",
+    "No current C1/N10E authenticated implementation",
+    "No real-source effect or actor/V3 authority",
+    "No attribution of prospective courts as executed"
+  ],
+  "no_external_trust_provisioner_required_by_this_bounded_caller_threat_model": true,
+  "stronger_arbitrary_privileged_code_threat_requires_new_HQ_warrant": true,
+  "evidence": [
+    {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ242_R2/01_BOUNDED_WARRANT_CANDIDATE_PREIMAGE.json",
+      "commit": "cdef72ddc805e3ed943bac9f9241467454df8030",
+      "blob": "adfb2586e6ece056f6eac8eaba12190abcd5e7fe"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ242_R2/04_HQ_DECISION_ADOPTION_GATES.json",
+      "commit": "cdef72ddc805e3ed943bac9f9241467454df8030",
+      "blob": "76faf8511ad69036ed6241967e57a5f0be48ae6c"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/01_EXACT_BOOTSTRAP_ROOT_AUTHORITY_AND_ROTATION_CONTRACT.json",
+      "commit": "cdef72ddc805e3ed943bac9f9241467454df8030",
+      "blob": "f0e05df99cc7ec8c3445b37e461fad86948f140e"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/02_IMMUTABLE_C1_N10E_OWNER_HANDOFF_TRANSITION.json",
+      "commit": "cdef72ddc805e3ed943bac9f9241467454df8030",
+      "blob": "a8c31625fcfb7bd65007e30ee2dda579d3b85e3e"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/03_REVISED_WARRANT_AND_IDENTITY_PREIMAGES.json",
+      "commit": "cdef72ddc805e3ed943bac9f9241467454df8030",
+      "blob": "ec00caf2a4a60d75c5118cc1a79cb407fd388b91"
+    }
+  ]
+}
