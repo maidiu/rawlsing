@@ -1,0 +1,127 @@
+{
+  "schema": "PYAT_HQ238_F7_T1_OWNER_PROVENANCE_IMPLEMENTABLE_DESIGN@1",
+  "status": "PROPOSED_NOT_AUTHORIZED",
+  "assurance": "T1_EXACT_INSTANCE_CONSTRUCTOR_CUSTODY_AND_TRUSTED_P07_DECISION__TRUSTED_PYTHON_F7_AND_CONSUMER",
+  "exact_base": "ae5e140a378406888c94d099b7dd8e98dfeb1459",
+  "source_blobs": {
+    "P07": "8053d30d306a3654ebf563043088311ff390bb2b",
+    "F7": "6f6b462b1cdef54d7989f15452473383c1661594",
+    "court": "8a82bd5905d266c1d500b1bf2bdcb01ea948efd6"
+  },
+  "trust_root": {
+    "production": "HQ-adopted exact P07 semantics + authoritative I01 snapshots; native extension binary built from audited source under governed CPython 3.11.3; no standalone 'trusted registry' label",
+    "identity": "exact static non-subclassable native SourceRelationResolver instance, private C-side per-instance state, initialized atomically once",
+    "custody": "C private object arena or extension-managed map keyed by protected exact PyObject identity; no Python-visible C payload accessor and no caller-visible owner-state assignment or sealing function",
+    "native_requirement": "C object itself owns state; do NOT accept an independently attachable Python PyCapsule or resolver._handle field as the sole owner proof",
+    "accepted_semantics_source": "rawlsing_next/pre553_source_relations.py:180-201,278-305,459-530,629-936,937-1266",
+    "not_in_scope": "arbitrary corruption of native process memory, native C API/ctypes arbitrary memory access, rewrite of final F7 trusted code/alias/consumer"
+  },
+  "public_api": {
+    "module_candidate": "rawlsing_next/_p07_native_owner (NEW; not yet present)",
+    "class_candidate": "SourceRelationResolver (non-subclassable native extension static type, exact identity)",
+    "constructor": "SourceRelationResolver(*, relations: Iterable[SourceUniverseRelation], authority_registry: exact AuthorityRegistry)",
+    "from_c11": "SourceRelationResolver.from_c11(*, repository: C11Repository, relation_refs: Iterable[ExactRef], authority_registry: AuthorityRegistry)",
+    "decide": "resolver.decide(*, relation_kind: str, source_universe_refs: tuple[ExactRef,...], operation_scope: canonical material, target_use: str, effective_scope: canonical material, directionality_or_symmetric: canonical material, relation_ref: ExactRef|None, expected_authority_operation: str|None) -> RelationDecision",
+    "exact_authenticated_entrypoint": "authenticated_source_relation_decision(resolver: exact native SourceRelationResolver, **current adopted request kwargs) -> exact RelationDecision",
+    "require": "resolver.require(**exact kwargs) -> authorized RelationDecision or existing SourceRelationAuthorizationError",
+    "resolve_exact": "resolver.resolve_exact(ref: ExactRef) -> detached exact SourceUniverseRelation for read-only compatibility; this API by itself cannot authorize",
+    "diagnostics": "source_relation_owner_custody_diagnostic(resolver) -> detached canonical string with identifiers/hashes only; no raw state/secret/handle",
+    "lifecycle": "No exported reseal/adopt/transplant/set_state/register_owner/replace_custody/reinitialize API; reject pickling/restore/copy that would bypass native constructor; failure before seal destroys object",
+    "mandatory_class_layout": [
+      "native tp_new+tp_init combined one-shot init guard; second __init__ call refuses even with valid new source relation",
+      "no writable native owner payload attributes",
+      "non-subclassable/immutable type, method dispatch independent of instance-shadowed .decide/.require",
+      "optional compatibility shadow _by_ref/_by_key/_registry allowed only as detached non-authoritative diagnostics; never native owner input after seal",
+      "deallocation removes private owner state; identity cannot be reused to resurrect prior custody; generation/nonce within C if registry-map used"
+    ]
+  },
+  "constructor_sequence": [
+    "trusted native constructor accepts arbitrary caller-supplied relation/snapshot objects solely as untrusted input",
+    "require exact concrete I01 AuthorityRegistry and existing constructor-valid relation object; resolve exact snapshots nonvirtually, validate exact hashes and semantic/replay identities",
+    "canonicalize and deep-copy admitted relation, by-ref/by-key exact key index, pinned authority snapshots and hash maps into native-owned independent immutable storage; reject nested mutable shared aliases",
+    "derive custody_hash over accepted I07 constructor content; bind it to THIS native object inside C private state (not solely to public digest or caller-supplied weakref)",
+    "set initialized/registered flag atomically once only after all validation; on failure no reachable positive half-initialized owner",
+    "construct second owner with empty relations independently; it contains no relation even when sharing the exact AuthorityRegistry"
+  ],
+  "decision_path": [
+    "F7 compare_temporal_anchors(request,registry) receives exact native resolver; old Python SourceRelationResolver wrappers are not silently accepted as positive owner",
+    "trusted captured C entrypoint validates exact resolver native type and initialized private state, using same object pointer identity; does not consult Python ledger, exported source state or a transplantable handle",
+    "C implementation owns P07 adjudication of requested relation from private by_ref/by_key with positive pinned snapshot and exact relation hash/replay, sources, scope, target use, effective scope, operation; one nonduplicated successor of accepted Python P07 algorithm",
+    "C returns public exact RelationDecision; T1 trusted F7 calls _relation_decision_defect to crossbind its content/replay to request, and independently resolves TEMPORAL_COMPARABILITY and remaining F7 authorities",
+    "trusted F7 computes exact order/delta/state precedence and TemporalRelationReceipt; trusted terminal consumer rechecks receipt_hash and accepted cross-field contract before relying on it",
+    "no source-equivalence ref, detached diagnostic, Python self-declared token or alternate shadow method can grant a positive"
+  ],
+  "payload_anchor_integrity": {
+    "invariant": "For all native objects o, native_decide(o,R) resolves relation/snapshot payload solely from C state sealed at the successful constructor of exact same o; never from Python-visible sealed_by_ref_owner/by_key/fingerprint or a Python-supplied state object; a C-side owner mismatch is fatal.",
+    "required_independent_negative_proof": "source+empty victim sharing registry; transplant source.by_ref/snapshots/hash into every caller-visible victim field and attempt all four ledger variants; compare C private owner digest and its exact relation count BEFORE/AFTER, victim native P07 must remain unconditionally non-AUTHORIZED and F7 cross-universe must remain TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT",
+    "more_discriminating": "explicitly set source payload while retaining victim live anchor fields, public relation fingerprint, and empty victim by_key; a gate that checks only anchors fails this witness",
+    "prevents": "source payload transplant under victim identity; one-cell fake state; live dictionary substitution; postconstruction visible registry override",
+    "not_sufficient": "public SHA-256 digest, weakref owner_ref, equality of a self-declared anchor with resolver._by_ref, self issued object id, Python state copied out of native memory"
+  },
+  "same_source_release_and_scope": {
+    "relation_kind": "SOURCE_SEMANTIC_EQUIVALENCE",
+    "operation": "SEMANTIC_EQUIVALENCE_ADMISSION",
+    "exact_scope_and_effective_scope": "EXACT_BOUND_UNIVERSE_PAIR",
+    "target_use": "governed_use_id.object_id of exact F7 request; cannot be a generic fallback",
+    "source_universes": "same ordered/canonical pair of exact full kind/object_id/content_hash refs as actual request; wrong pair is nonpositive",
+    "snapshots": "exact immutable pinned constructor AuthoritySnapshot semantic/hashes; later visible _registry replacement must leave result unchanged",
+    "temporal_authorities": "F7 independently resolves TEMPORAL_COMPARABILITY, TEMPORAL_EVIDENCE, target-use, uncertainty/order/measure/estimand/replay/mapping where required",
+    "effective_time": "existing F7 exact temporal identity, reference/effective-time evidence and bound material, not newly inferred or defaulted by native owner",
+    "no_implied_authorities": [
+      "no source pooling",
+      "no temporal cross-universe inference without SOURCE_EQUIVALENCE",
+      "no actor/V3/F8",
+      "no source composition"
+    ]
+  },
+  "failure_contract": {
+    "P07_errors": [
+      "SourceRelationIntegrityError for wrong exact native owner, uninitialized/reinitialized owner, missing relation or invalid seal",
+      "SourceRelationAuthorizationError with existing states DISTINCT_BY_DEFAULT, UNKNOWN_AUTHORITY, OUT_OF_SCOPE, DENIED, CONFLICTING_AUTHORITY, EXPIRED_OR_STALE as appropriate",
+      "existing P07 exact replay-integrity error for hash/ref/snapshot/replay drift"
+    ],
+    "F7_negative": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT with SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE for missing genuine bound equivalence; no positive direction; other nine negative F7 states remain determined by existing precedence",
+    "F7_input_error": "retain TemporalComparabilityInputRefusal/TemporalComparabilityIntegrityError no-receipt paths",
+    "no_new_accepted_state": "native initialization/internal failure must raise typed owner error and cannot fabricate a new F7 relation_state",
+    "replay": "P07 decision's deterministic replay identity and custodied snapshot identity still rederived against private native storage, F7 receipt_hash rederived by existing canonical semantic projection; hash alone never authenticates issuer against T2"
+  },
+  "concrete_source_transition": {
+    "existing_P07": "rawlsing_next/pre553_source_relations.py:535-1266",
+    "migrated_P07": "one native P07 implementation with Python module exporting stable same-named adapter; no second Python positive adjudicator retained in parallel",
+    "existing_F7": "rawlsing_next/pre553_temporal_comparability.py:247-251,433-499,686-795,836-1495",
+    "intended_F7_change": "only exact native SourceRelationResolver bind + captured owner-native entrypoint wiring and trusted replay/terminal consumer gate, preserving 12 states and receipt field set",
+    "callers": "source relation guards and F7 tests must continue using exact native type; no arbitrarily shape-compatible stubs accepted",
+    "potential_compatibility_risk": [
+      "existing tests monkeypatch Python class-level decide or assume mutable instance fields; test meaning must be conserved, not merely skipped",
+      "C11 from_c11 constructor and existing direct P07 guards should preserve API/semantics",
+      "native class identity, pickling/deepcopy, deallocation, weakrefs and exceptions are behaviorally observable",
+      "CPython C ABI/endianness/canonical JSON parity risks",
+      "public diagnostics must remain detached but may change internal representation; any observable contract change requires HQ adjudication"
+    ]
+  },
+  "governed_build": {
+    "current_interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+    "sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "target": "CPython 3.11.3 macOS x86_64 native extension built with audited C source, compiler/toolchain/version recorded, ABI matched to governed interpreter; runtime binary SHA and loaded module path attested",
+    "CI": "Run source-free Python pure semantic differential court everywhere; execute native CPython 3.11.3 macOS x86_64 court on genuinely matching qualified runner/worktree. Runner availability and native toolchain currently unverified; no platform pass claim.",
+    "fallback": "If native port or ABI cannot preserve exact P07 semantics, return named implementation blocker; do NOT call a Python-held capsule security closure"
+  },
+  "actor_split": {
+    "Space_Bunny_after_HQ_authorization": "Implement static native object, authoritative one-shot constructor/private C custody, exact P07 decision parity, F7 interface adapter and source-free courts on isolated governed Mac worktree; no semantic redesign or uncommissioned T2",
+    "DeepSeek_Harness_after_implementation": "Independent four-variant attack reproduction and payload-vs-anchor targeted fail-capability on governed runtime; test snapshot/registry immunity, positive five, compare result/canonical replay, binary provenance and broad regression",
+    "reviewer": "Independent source/API/ABI audit for no exportable resealer and no Python shadow owner path; report explicit threat boundary",
+    "HQ": "First adopt specific T1 claim and native architecture warrant; later independently adjudicate implementation and qualify, no self-adoption"
+  },
+  "acceptance_test_ids": [
+    "F7-T1-04G-ORIGINAL",
+    "F7-T1-04G-COORDINATED",
+    "F7-T1-04G-ONE-CELL-VICTIM-ANCHORS",
+    "F7-T1-04G-BY_REF_ONLY",
+    "F7-T1-PAYLOAD-ANCHOR-FORENSIC",
+    "F7-T1-POSITIVE-FIVE",
+    "F7-T1-REGISTRY-IMMUNITY",
+    "F7-T1-DIFFERENTIAL-CANONICAL-REPLAY",
+    "F7-T1-ONE-SHOT-CONSTRUCTION",
+    "F7-T1-SHADOW-MONKEYPATCH"
+  ]
+}
