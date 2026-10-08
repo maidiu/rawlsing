@@ -1,0 +1,150 @@
+{
+  "schema": "PYAT_HQ248_F7_T1_THREAT_AND_POSITIVE_TEST_MATRIX@1",
+  "status": "SPECIFIED_NOT_EXECUTED",
+  "threats": {
+    "T0": "untrusted request/material/registry",
+    "T1": "T0+historically commissioned reflection, owner-cell, helper/method, closure, container, registry mutation under trusted executable",
+    "T2": "trusted F7 executable/alias/terminal corruption, native memory/binary compromise (not claimed)"
+  },
+  "hostile": [
+    {
+      "id": "H01",
+      "attack": "fake semantic_hash callable supplied through ctor",
+      "expected": "no public callback parameter; refuse/no forged victim positive",
+      "executed": false
+    },
+    {
+      "id": "H02",
+      "attack": "fake canonicalize callable or arbitrary relation_class/authority_snapshot_class",
+      "expected": "reject externally selected executable/class",
+      "executed": false
+    },
+    {
+      "id": "H03",
+      "attack": "fake require_positive_authority always accepts or fake AuthoritySnapshot class",
+      "expected": "reject and preserve genuinely empty victim nonpositive",
+      "executed": false
+    },
+    {
+      "id": "H04",
+      "attack": "post-construction module attribute rebinding of hash/canonicalizer/validator",
+      "expected": "pinned internal trust unaffected or typed refusal; source positive, victim negative",
+      "executed": false
+    },
+    {
+      "id": "H05",
+      "attack": "transitive helper globals in semantic_hash.__globals__/require_positive_authority.__globals__",
+      "expected": "if T1 attack: native/closed graph unaffected; else HQ explicit constitutional limitation required (no silent green)",
+      "executed": false
+    },
+    {
+      "id": "H06",
+      "attack": "direct StageBOwner constructor with fake callbacks then pass to F7",
+      "expected": "not exact production native SourceRelationResolver; refuse",
+      "executed": false
+    },
+    {
+      "id": "H07",
+      "attack": "four original HQ234/235/236 source→empty victim transplants under actual native P07→F7",
+      "expected": "genuine source positive, empty victim negative before/during/after",
+      "executed": false
+    },
+    {
+      "id": "H08",
+      "attack": "visible by_ref/by_key/registry and nested method shadow",
+      "expected": "no effect on private C owner; source stays positive, victim negative",
+      "executed": false
+    },
+    {
+      "id": "H09",
+      "attack": "re-init/copy/pickle/subclass/duck/capsule/handle or sealer recovery",
+      "expected": "no new positive owner or rescoped real payload",
+      "executed": false
+    },
+    {
+      "id": "H10",
+      "attack": "mutate relation ref/projection/content hash/replay after seal",
+      "expected": "integrity refusal/replay negative",
+      "executed": false
+    },
+    {
+      "id": "H11",
+      "attack": "visible registry replacement after seal, shared I01 snapshots",
+      "expected": "source constructor-pinned valid positive, victim remains negative",
+      "executed": false
+    },
+    {
+      "id": "H12",
+      "attack": "malformed exact containers, hostile len/iter/attribute, nested construction",
+      "expected": "no OOB, partial seal or positive reentry",
+      "executed": false
+    },
+    {
+      "id": "H13",
+      "attack": "long decide loops, GC cycles/refcount and injected module-init OOM",
+      "expected": "fix HQ247-OPEN-001 and HQ246-OPEN-003 before qualification",
+      "executed": false
+    },
+    {
+      "id": "H14",
+      "attack": "nonshippable disable actual native owner→payload check",
+      "expected": "same victim court turns red only in fault binary, binary digest distinct",
+      "executed": false
+    }
+  ],
+  "productive": [
+    {
+      "id": "P01",
+      "setup": "same-universe valid original F7 fixture",
+      "expected": "lawful signed directional result",
+      "executed": false
+    },
+    {
+      "id": "P02",
+      "setup": "exact-zero positive fixture",
+      "expected": "NO_AUTHORIZED_CHANGE",
+      "executed": false
+    },
+    {
+      "id": "P03",
+      "setup": "nonzero increase",
+      "expected": "INCREASE",
+      "executed": false
+    },
+    {
+      "id": "P04",
+      "setup": "nonzero decrease",
+      "expected": "DECREASE",
+      "executed": false
+    },
+    {
+      "id": "P05",
+      "setup": "actual cross-universe accepted P07 positive",
+      "expected": "native AUTHORIZED then genuine F7 authorized state/replay",
+      "executed": false
+    },
+    {
+      "id": "P06",
+      "setup": "accepted _adjudicated_resolver with true production ingress",
+      "expected": "native AUTHORIZED equals accepted Python P07 canonical state, custody and replay",
+      "executed": false
+    },
+    {
+      "id": "P07",
+      "setup": "two genuinely independently factory-constructed positive relation receipts same exact object key",
+      "expected": "each one AUTHORIZED, combined CONFLICTING_AUTHORITY and precedence",
+      "executed": false
+    },
+    {
+      "id": "P08",
+      "setup": "direct P07 guards, from_c11, negative state ladder, F7 12 states",
+      "expected": "all existing exact APIs, exception and replay semantics preserved",
+      "executed": false
+    }
+  ],
+  "anchors": {
+    "F7_accepted": "rawlsing_next/tests/test_pre553_temporal_comparability.py @ 8a82bd5905d266c1d500b1bf2bdcb01ea948efd6 :1538-1573",
+    "native_R2": "rawlsing_next/tests/test_p07_native_stage_b_hq247_repair.py @ 27db04c3b4142d31452e654a06a06939ff8f03cf :39-205"
+  },
+  "qualification": "independent fresh-process exact-SHA security review; production actual native path, not harness-only; no leak/GC/OOM; no false green from RED trusted alias fail-capability"
+}

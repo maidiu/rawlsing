@@ -1,0 +1,208 @@
+{
+  "schema": "PYAT_HQ248_F7_T1_OWNER_PROVENANCE_AND_CALLSITE@1",
+  "basis": {
+    "commission_tip": "ad320e05bf3f7ed75bca51e62e3b044da5d8c535",
+    "immutable_base": "c2c0ab7335a3bcfeabb4297139378e3e657cd432",
+    "head_R2_verified": "c2c0ab7335a3bcfeabb4297139378e3e657cd432",
+    "mode": "GITHUB_DOCUMENTARY_ONLY"
+  },
+  "inputs": [
+    {
+      "role": "HQ248_commission",
+      "path": "WORKER_COMMISSIONS/PYAT-HQ248-F7-T1-PRODUCTION-TRUST-INGRESS-DESIGN-R1/00_COMMISSION.md",
+      "blob": "3ea28d2bb8fdccf49fcc5e8a85d7e5567d44cb35"
+    },
+    {
+      "role": "HQ247_R2_return",
+      "path": "WORKER_RETURNS/PYAT-HQ247-F7-NATIVE-B1-B4-PARITY-TRUST-REPAIR-R2/00_RETURN.md",
+      "blob": "6a942ce2aaf838e33d9eb59d8e1b36e05e75b069"
+    },
+    {
+      "role": "HQ247_R2_trust",
+      "path": "WORKER_RETURNS/PYAT-HQ247-F7-NATIVE-B1-B4-PARITY-TRUST-REPAIR-R2/03_TRUSTED_CONSTRUCTOR_AND_CUSTODY.json",
+      "blob": "726b1603432a028671fe16c1e80a746eced9ec0a"
+    },
+    {
+      "role": "HQ247_R2_positive",
+      "path": "WORKER_RETURNS/PYAT-HQ247-F7-NATIVE-B1-B4-PARITY-TRUST-REPAIR-R2/02_TRUE_POSITIVE_PARITY_AND_CONFLICT.json",
+      "blob": "f48489cc4641aee48a3839e9163e43bce1178b8c"
+    },
+    {
+      "role": "HQ247_R2_final",
+      "path": "WORKER_RETURNS/PYAT-HQ247-F7-NATIVE-B1-B4-PARITY-TRUST-REPAIR-R2/06_FINAL_DISPOSITION.json",
+      "blob": "bd42c2277285c829d844e5544016e202fd9a9422"
+    },
+    {
+      "role": "HQ238_T1_design",
+      "path": "WORKER_RETURNS/PYAT-HQ238-F7-END-TO-END-TRUSTED-DECISION-BOUNDARY-R1/02_T1_OWNER_PROVENANCE_IMPLEMENTABLE_DESIGN.json",
+      "blob": "cb7c07d44864c1277a7ca1ad879e40410ae458b5"
+    },
+    {
+      "role": "HQ241_P07_F7_census",
+      "path": "WORKER_RETURNS/PYAT-HQ241-F7-ALIAS-TCB-TERMINAL-RELIANCE-CENSUS-R1/03_P07_F7_OWNER_API_ALIAS_AND_NATIVE_DELTA.json",
+      "blob": "e23404b4be0e4188ee77fa0d64c7712d46fdbdc2"
+    },
+    {
+      "role": "HQ242_T1_authority",
+      "path": "WORKER_COMMISSIONS/PYAT-HQ242-F7-T1-NATIVE-P07-OWNER-IMPLEMENTATION-R1/00_COMMISSION.md",
+      "blob": "9cf873262c1deecc6758c9274871b04ec591464f"
+    }
+  ],
+  "code": [
+    {
+      "role": "accepted_P07_owner",
+      "path": "rawlsing_next/pre553_source_relations.py",
+      "blob": "8053d30d306a3654ebf563043088311ff390bb2b",
+      "ranges": "937-1266 factory/constructor,exports; 767-810 replay; 1309-1610 P07 guards"
+    },
+    {
+      "role": "accepted_F7_producer",
+      "path": "rawlsing_next/pre553_temporal_comparability.py",
+      "blob": "6f6b462b1cdef54d7989f15452473383c1661594",
+      "ranges": "238-251 aliases; 433-499 defect; 836-1495 producer; 1101-1145 P07 gate"
+    },
+    {
+      "role": "quarantined_Stage_B",
+      "path": "rawlsing_next/_p07_native_owner_stage_b.c",
+      "blob": "fb5ed13af78672b9d9870b3132787a29d44b928a",
+      "ranges": "874-~982 7-argument constructor; 1895-~1906 callback getter"
+    },
+    {
+      "role": "quarantined_Stage_A",
+      "path": "rawlsing_next/_p07_native_owner_stage_a.c",
+      "blob": "a1d70d3c21b3433ccb1ab98710ca7adac48408de",
+      "ranges": "nonauthorizing Stage A"
+    },
+    {
+      "role": "canonical_helper_production",
+      "path": "rawlsing_next/pre553_empirical_objects.py",
+      "blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "ranges": "181-220 global-dependent canonical/hash; 576-630 classes"
+    },
+    {
+      "role": "authority_guard_I01",
+      "path": "rawlsing_next/pre553_empirical_authority.py",
+      "blob": "e2ea931cb357d785a687179e4d1b5c9566420cc7",
+      "ranges": "119-210 scope guard; 217-270 registry"
+    },
+    {
+      "role": "accepted_P07_tests",
+      "path": "rawlsing_next/tests/test_pre553_source_relations.py",
+      "blob": "2487ed757c0254e7227cf43664abc6ae08f1dfb3",
+      "ranges": "24 accepted tests"
+    },
+    {
+      "role": "accepted_F7_tests",
+      "path": "rawlsing_next/tests/test_pre553_temporal_comparability.py",
+      "blob": "8a82bd5905d266c1d500b1bf2bdcb01ea948efd6",
+      "ranges": "1538-1573 genuine _adjudicated_resolver; F7 163 tests"
+    },
+    {
+      "role": "HQ247_native_positive",
+      "path": "rawlsing_next/tests/test_p07_native_stage_b_hq247_repair.py",
+      "blob": "27db04c3b4142d31452e654a06a06939ff8f03cf",
+      "ranges": "39-205 source fixture, genuine AUTHORIZED + CONFLICTING"
+    }
+  ],
+  "insertion": [
+    {
+      "owner": "single native P07",
+      "new_proposed": "rawlsing_next/_p07_native_owner.c",
+      "status": "NOT_CREATED",
+      "public_type": "SourceRelationResolver exact static, non-subclassable"
+    },
+    {
+      "owner": "P07 accepted adapter",
+      "path": "rawlsing_next/pre553_source_relations.py",
+      "insertion": "replace legacy positive factory/export :937-1266, preserve all API/guards"
+    },
+    {
+      "owner": "F7 trusted producer",
+      "path": "rawlsing_next/pre553_temporal_comparability.py",
+      "insertion": "aliases :238-251 and verified native P07 route :1101-1145 only"
+    }
+  ],
+  "ABI": "proposed governed CPython 3.11.3 macOS x86_64, interpreter SHA256 11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6, full compiler/extension ABI and actual loaded .so SHA to be future attested, not tested here",
+  "constructor_present": {
+    "arguments": [
+      "relations",
+      "authority_snapshots",
+      "trusted_semantic_hash",
+      "trusted_canonicalize",
+      "trusted_require_positive_authority",
+      "relation_class",
+      "authority_snapshot_class"
+    ],
+    "trusted_args_caller_selected": true,
+    "authentic_provenance": false
+  },
+  "constructor_proposed": {
+    "public_data_only": [
+      "relations",
+      "authority_registry"
+    ],
+    "c11_constructor": "from_c11 maintained",
+    "internal_c_owned": [
+      "semantic_hash and dependency graph",
+      "canonicalize",
+      "require_positive_authority and dependency graph",
+      "validate_authority_snapshot",
+      "exact I01 registry resolution",
+      "SourceUniverseRelation exact type",
+      "AuthoritySnapshot exact type"
+    ],
+    "no_test_trust_label": true,
+    "no_caller_callback": true,
+    "atomic_one_shot": true,
+    "private_C_owned_immutable_snapshots": true,
+    "always_native_decide": true
+  },
+  "whitelisted_new_symbols": {
+    "public_native": [
+      "SourceRelationResolver static native type, approved only after cutover"
+    ],
+    "existing_P07_to_preserve": [
+      "SourceRelationResolver",
+      "from_c11",
+      "resolve_exact",
+      "decide",
+      "require",
+      "authenticated_source_relation_decision",
+      "validate_relation_decision_replay_identity",
+      "source_relation_owner_custody_diagnostic",
+      "P07 direct guards",
+      "RelationDecision/errors"
+    ],
+    "private_C_only": [
+      "native protected constructor",
+      "owned relation/snapshot store",
+      "full native decision and replay",
+      "fixed trusted import module state"
+    ],
+    "test_only": [
+      "separate non-shippable fail capability"
+    ],
+    "forbidden": [
+      "public StageBOwner positive alternate",
+      "caller-input trusted callable/class args",
+      "public trusted_seam callback getter",
+      "capsule/reseal/registry setter",
+      "Python fallback positive",
+      "19th I01 kind"
+    ]
+  },
+  "distinct_TCB": {
+    "T1": "accepted native P07 and trusted F7 executable/aliases within TCB; hostile caller, closure, owner-custody/nested helper and registry mutation within test",
+    "T2": "trusted F7 alias/code or final-consumer sabotage, native memory compromise excluded",
+    "unresolved": "transitive mutable helper globals used by pinned Python functions must be adversarially classified/closed, no assumed automatic protection"
+  },
+  "holds": {
+    "production_native_import": false,
+    "from_c11_native": false,
+    "existing_P07_positive_python_only": true,
+    "F7_RR_04G": "OPEN",
+    "HQ247_open_001": "decide allocation leak",
+    "HQ247_open_002": "trusted ingress not implemented",
+    "HQ246_open_003": "OOM test pending"
+  }
+}
