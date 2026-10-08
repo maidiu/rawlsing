@@ -1,0 +1,134 @@
+{
+  "schema": "PYAT_HQ240_F7_FOUR_ATTACKS_PRODUCTIVE_PATH_AND_RUNTIME_GATE@1",
+  "status": "REQUIRED_FUTURE_COURT_NOT_EXECUTED",
+  "governed_Python_evidence": {
+    "candidate": "c86ae335eaf70e82b5764c46754b16ca7e1587ce",
+    "return_head": "ae5e140a378406888c94d099b7dd8e98dfeb1459",
+    "source": "WORKER_RETURNS/PYAT-HQ236-F7-COORDINATED-HOSTILE-EVIDENCE-R1/02_EXACT_ATTACK_AND_CONTROL_RECEIPTS.json",
+    "source_scripts": [
+      "reproduction/hq236_independent_attack.py",
+      "reproduction/hq236_attack3_focus.py"
+    ],
+    "targeted": "228 passed",
+    "broad": "2691 passed 45 failed 7 errors; normalized fail/error baseline digest 278854ee94fadfd57284a572441522fb56105081f89af431b17ec2e556ace6a9",
+    "caveat": "Existing pass tally includes intentionally successful forgery witness and is not authenticity acceptance."
+  },
+  "setup": {
+    "source": "exact genuine AUTHORIZED SOURCE_SEMANTIC_EQUIVALENCE P07 resolver with one relation and pinned source equivalence snapshot",
+    "victim": "second exact original EMPTY SourceRelationResolver(relations=(), authority_registry=source._registry)",
+    "require": "original source P07 AUTHORIZED and F7 TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED/COMPARABLE/INCREASE; original victim P07 non-AUTHORIZED and F7 TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT/NOT_COMPARABLE/DIRECTION_NOT_CLAIMABLE before/during/after; original victim never replaced"
+  },
+  "four": [
+    {
+      "id": "HQ234_1_SOURCE_ANCHOR_ONE_CELL",
+      "attacker": "source payload and SOURCE sealed anchor fields, ledger cell rebound for victim",
+      "old_result": "REFUSED",
+      "new_gate": "REFUSED against exact native original empty victim; source stays positive; no false PASS from missing closure alone"
+    },
+    {
+      "id": "HQ235_2_COORDINATED_LIVE_CONTAINERS",
+      "attacker": "replace victim._by_ref/_by_key visible fields with source copies, reanchor forged state, rebind ledger",
+      "old_result": "FORGED_P07_AND_F7_POSITIVE",
+      "new_gate": "REFUSED despite matching visible materials, because native private victim remains empty"
+    },
+    {
+      "id": "HQ236_3_LEDGER_ONLY_VICTIM_ANCHORS",
+      "attacker": "keep victim._by_ref/_by_key completely untouched/empty; insert source by_ref/by_key/snapshots/hashes/custody_hash with victim owner_ref, victim sealed anchor fields and recomputed fingerprint; write only ledger cell",
+      "old_result": "FORGED_P07_AND_F7_POSITIVE",
+      "new_gate": "REFUSED; direct native owner decision still empty; independently record live field IDs and private native owner count/digest pre/post using non-production diagnostic"
+    },
+    {
+      "id": "HQ236_4_BY_REF_ONLY",
+      "attacker": "like #3 but source by_ref only; victim by_key stays empty; victim live anchors untouched",
+      "old_result": "FORGED_P07_AND_F7_POSITIVE",
+      "new_gate": "REFUSED; native decision never consults forged by_ref without same-instance admitted canonical by_key and snapshot"
+    }
+  ],
+  "assertions": {
+    "before": "source P07 authorized & source F7 directional; victim P07 nonpositive & victim F7 cross-universe equivalence absent",
+    "during": "same original victim must never P07 AUTHORIZE or F7 directional; check actual normal native F7 entrypoint and trusted consumer if one is asserted",
+    "after": "ledger/visible fields restore, source positive and victim empty-negative with equal canonical identities",
+    "bad_green": "assert forgery_succeeded is a red security gate; not successful native acceptance",
+    "zero_victim": "query actual private C admission count or equivalent safe test-only diagnostic and show zero before/during/after; never expose sealer/loader"
+  },
+  "additional_hostile_cases": [
+    "native exact type vs fake C-object/proxy/duck subclass and tc.SourceRelationResolver alias swap",
+    "pickling, __reduce__, copy, deepcopy, tp_init reentry, constructor partial failure and identity reuse",
+    "reflected class/instance method patch, recovered helpers, sealer, nested registry method and snapshots",
+    "native method lookup and exported native module symbol patch; separately court tc._authenticated_source_relation_decide substitution to make the TCB controversy empirically visible",
+    "valid source relation/snapshot replay to wrong victim, target-use, ordered pair, operation, effective scope, time, source release",
+    "source registry replacement after constructor must leave source decision positive and pinned original snapshot",
+    "untrusted callback reentrancy from input iterator/property/descriptors during constructor and decision",
+    "wrong kind, wrong pair, denied, exact ref wrong hash, stale authority and detached diagnostics never authorize"
+  ],
+  "mandatory_negative_control": {
+    "test_build": "independently built isolated UNSAFE native binary with a deliberately disabled *actual per-object P07 native admission/provenance check*, not obsolete Python field check",
+    "require": "the same original empty victim becomes P07/F7 positive in this deliberately disabled version, so security court must FAIL; production native binary must differ by SHA and omit fault switch entirely",
+    "if_not_fail": "security assertion lacks sensitivity and is unacceptable"
+  },
+  "five_productive_paths": [
+    {
+      "id": "SAME_UNIVERSE",
+      "current_court": "test_witness_same_universe_needs_no_equivalence",
+      "result": "COMPARABLE with no invented source-equivalence condition"
+    },
+    {
+      "id": "EXACT_ZERO",
+      "current_court": "test_witness_exact_zero_is_derived_not_asserted",
+      "result": "NO_AUTHORIZED_CHANGE exact signed zero; no epsilon/deadband"
+    },
+    {
+      "id": "INCREASE",
+      "current_court": "test_witness_a1_full_authority_set_yields_directional_claim",
+      "result": "positive signed delta; actual comparison evidence and P07 when cross-universe"
+    },
+    {
+      "id": "DECREASE",
+      "current_court": "test_witness_decrease_direction_is_derived",
+      "result": "negative signed delta; exact ordering"
+    },
+    {
+      "id": "ADMITTED_CROSS_UNIVERSE",
+      "current_court": "test_hq227_full_owner_path_positive_cross_universe_service_remains_productive",
+      "result": "actual admitted P07 equivalence; F7 directional auth, cannot get from source-only hash"
+    }
+  ],
+  "semantics": {
+    "F7_state_precedence": [
+      "TEMPORAL_INSUFFICIENT_AUTHORITY",
+      "TEMPORAL_IDENTITY_UNRESOLVED",
+      "TEMPORAL_INSUFFICIENT_ANCHORS",
+      "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT",
+      "TEMPORAL_MAPPING_MATERIAL_ABSENT",
+      "TEMPORAL_ESTIMAND_MISMATCH",
+      "TEMPORAL_MEASURE_MISMATCH",
+      "TEMPORAL_NONCOMPARABLE",
+      "TEMPORAL_ORDER_UNAUTHORIZED",
+      "TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION",
+      "TEMPORAL_COMPARABLE_NO_DIRECTION",
+      "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    ],
+    "preserve": "P07 relation kinds, decision states and authority/snapshot/semantic/replay refs; F7 12 states and precedence, exact-zero/increase/decrease, 3+ anchors no-receipt input refusal; no interpolation/currentness/pooling/causation/actor/V3/F8",
+    "HQD216": "Typed negative is not a substitute for productive lawful five or source-supported products."
+  },
+  "runtime_gate": {
+    "environment": "governed macOS 13.7.8 x86_64 CPython 3.11.3",
+    "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "require": [
+      "exact candidate/tree/native-source and compiled binary SHA",
+      "compiler ABI target/link path/load location architecture and codesigning/toolchain",
+      "full P07+F7 native-semantic parity and 12 states",
+      "independently written HQ236 four attack scripts, test-only red fail-capability",
+      "five positives under source-free competent fixtures",
+      "F7 163/P07 24/M1 14+27 targeted and normalized broad baseline",
+      "matching macOS qualified local runner; nonmatching CI must not falsely certify native runtime"
+    ],
+    "current_native_qualified": false,
+    "execution_in_this_lane": false
+  },
+  "T1_vs_T2": {
+    "T1": "if HQ explicitly excludes arbitrary rewrite of trusted F7 alias/executable and terminal observer, native owner actual P07 may close all four custody variants",
+    "T2": "if attacker may rewrite those, assert server-side protected journal/accepting effect unchanged by client code, alias and receipt replacement; owner-only C is insufficient"
+  },
+  "acceptance_ready": false
+}
