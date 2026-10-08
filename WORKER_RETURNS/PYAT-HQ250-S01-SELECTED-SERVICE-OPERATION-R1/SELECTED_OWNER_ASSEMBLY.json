@@ -1,0 +1,265 @@
+{
+  "document_role": "SELECTED_EXISTING_API_MAP__NO_NEW_SCHEMA_OR_ADOPTION",
+  "control_base": "a3d44f554e4e4fa01223679035599019ae2de527",
+  "primary_chain": [
+    {
+      "step": 1,
+      "owner": "EE04/I03 empirical query owner",
+      "entry": "pre553_empirical_query.execute_empirical_query",
+      "product": "EmpiricalFact with exact denominator/cell topology",
+      "status": "IMPLEMENTED",
+      "evidence": {
+        "path": "rawlsing_next/pre553_analytical_composition.py",
+        "blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+        "lines": "335-454,570-675,757-791,906-990,1008-1214",
+        "decision": "HQ168/HQ214 accepted C1 only at local grain"
+      }
+    },
+    {
+      "step": 2,
+      "owner": "C1 analytical composition owner",
+      "entry": "pre553_analytical_composition.compose_positioned_subject_possibility",
+      "product": "AnalyticalCompositionResult + PossibilitySliceEvidence (SUPPORTED only) + direct PositionedSubjectPossibilityResult",
+      "status": "IMPLEMENTED_ACCEPTED_LOCAL",
+      "evidence": {
+        "path": "rawlsing_next/pre553_analytical_composition.py",
+        "blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+        "lines": "335-454,570-675,757-791,906-990,1008-1214",
+        "decision": "HQ168/HQ214 accepted C1 only at local grain"
+      }
+    },
+    {
+      "step": 3,
+      "owner": "EE14 service source applicability owner",
+      "entry": "pre553_service_source_applicability.resolve_service_source_applicability",
+      "product": "CandidateClassApplicabilityReceipt",
+      "status": "IMPLEMENTED_SEPARATE_OWNER; exact selected T1 use not bound",
+      "evidence": {
+        "path": "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+        "blob": "4ba00b8ecf73f70ad0f6481e255fd0117744418a",
+        "lines": "263-363,644-894,894-1062",
+        "decision": "HQ210/HQ217 adopted scoped binding only; source eligibility not evidence-production authentication"
+      }
+    },
+    {
+      "step": 4,
+      "owner": "EE14/F8 source-scope binder owner",
+      "entry": "pre553_service_f8_source_scope_binding.bind_service_applicability_to_f8_scope",
+      "product": "ServiceApplicabilityF8SourceScopeBinding",
+      "status": "IMPLEMENTED; target use/permission inputs require competent authority",
+      "evidence": {
+        "path": "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+        "blob": "4ba00b8ecf73f70ad0f6481e255fd0117744418a",
+        "lines": "263-363,644-894,894-1062",
+        "decision": "HQ210/HQ217 adopted scoped binding only; source eligibility not evidence-production authentication"
+      }
+    },
+    {
+      "step": 5,
+      "owner": "EE14 authenticated possibility-consumer owner",
+      "entry": "pre553_service_f8_source_scope_binding.evaluate_bound_positioned_subject_possibility",
+      "product": "PositionedSubjectPossibilityResult",
+      "status": "IMPLEMENTED_FOR_CALLER_SUPPLIED_EVIDENCE; NO_ACCEPTED_RICH_C1_BRIDGE_RECEIPT",
+      "evidence": {
+        "path": "rawlsing_next/tests/test_pre553_service_f8_binding_authentication_court.py",
+        "blob": "d1f43084271e70b03d3186c187d2437ba6721488",
+        "lines": "260-334,339-528",
+        "decision": "authenticator positive/forgery courts with independently supplied evidence; no asserted C1→binder court"
+      }
+    },
+    {
+      "step": 6,
+      "owner": "B5 learned-product lifecycle owner",
+      "entry": "pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor.resolve_current_as_of",
+      "product": "SelectionResolution",
+      "status": "IMPLEMENTED_PER_PRODUCT; T1 consumer identity and selected release unresolved",
+      "evidence": {
+        "path": "rawlsing_next/pre553_learned_product_lifecycle.py",
+        "blob": "a11c9eb73abab9be118ef4f0b6e325e676059f27",
+        "lines": "1416-1455,1760-1913,2574-2628,2691-2831",
+        "decision": "B5 per-product register/select/as-of/checkpoint, not integrated world service"
+      }
+    },
+    {
+      "step": 7,
+      "owner": "C1-03R analytical dependency owner",
+      "entry": "pre553_analytical_replay_dependency.resolve_current_analytical_product / transition_analytical_dependencies",
+      "product": "owner-validated lifecycle status and OwnerDependencyInvalidationOutcome",
+      "status": "IMPLEMENTED; full selected consumer replay not shown",
+      "evidence": {
+        "path": "rawlsing_next/pre553_analytical_replay_dependency.py",
+        "blob": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+        "lines": "51-95,491-527,630-681",
+        "decision": "C1-03R owner-driven selective currentness/invalidation"
+      }
+    }
+  ],
+  "separate_context_chain": [
+    {
+      "step": 1,
+      "owner": "Field Forge/GT12 relation owner",
+      "entry": "field_forge_conditional_support.produce_exact_conditional_support_profile",
+      "status": "ACCEPTED_REAL_RETAINED_GT2_AT_NARROW_GRAIN",
+      "evidence": {
+        "path": "WORKER_RETURNS/PYAT-HQ222-C5-GT2-STRUCTURAL-POSITIVE-REALIZATION-REVIEW-R1/00_REVIEW.md",
+        "blob": "8b51f0c0ff21994a893744e8809744c7ca49d441",
+        "lines": "§§3-5,8",
+        "decision": "HQ223 adopted narrowed GT2 context"
+      }
+    },
+    {
+      "step": 2,
+      "owner": "GT12 V554/V557/V558 structural publication owner",
+      "entry": "gt12_e2b_publication_governance_binding.load_current_gt12_e2b_publication_governance_binding and gt12_d_to_m4_typed_bridge.publish_and_resolve_relation_v554_at_current_m4",
+      "status": "ACCEPTED CONTEXT only; V555 not generally authorized",
+      "evidence": {
+        "path": "rawlsing_next/gt12_e2b_publication_governance_binding.py",
+        "blob": "5c0e730972ca7f31c3be92564c299822c431ccc5",
+        "lines": "245-368",
+        "decision": "adopted current GT2 V554 SIG004 context publication binding"
+      }
+    },
+    {
+      "step": 3,
+      "owner": "GT12 test/integration harness owner",
+      "entry": "tests/gt12_e2b_actual_object_consumer_harness.run_current_r1c_e2b_actual_objects",
+      "product": "GT12E2BHarnessTerminal.v558_terminal.resolution.receipt: RESOLUTION_COMPLETE, CONTEXT only",
+      "status": "TEST_HARNESS_RETAINED_R1C_ONLY_NOT_N9",
+      "evidence": {
+        "path": "rawlsing_next/tests/gt12_e2b_actual_object_consumer_harness.py",
+        "blob": "f86a2a368cfd427ec465fd84eb93e7736f0c51f5",
+        "lines": "1-10,50-82,124-224,262-349",
+        "decision": "test/integration harness; exact current retained GT2 CONTEXT; not N9 and not a currentness service receipt"
+      }
+    },
+    {
+      "step": 4,
+      "owner": "M5 structural-currentness owner",
+      "entry": "m5_runtime_rsc_peer_prior.make_structural_currentness_receipt / validate_resolved_structural_context",
+      "product": "currentness receipt + RSC validation if actual authority provided",
+      "status": "CAPABLE_NOT_GT2_SPECIFIC_PROVED_CURRENT_OR_ASOF",
+      "evidence": {
+        "path": "rawlsing_next/m5_runtime_rsc_peer_prior.py",
+        "blob": "18735bdb31a220aed032aa722574d685e2bdddf5",
+        "lines": "190-280,977-1103",
+        "decision": "M5 RSC requires actual structurally authorized currentness and exact resolution; no GT2-specific bound currentness receipt established"
+      }
+    }
+  ],
+  "exact_first_authority_edge": {
+    "key": "U1_SELECTED_T1_USE",
+    "owner": "EE14 positioned-subject/model-use owner",
+    "decision": "Bind an exact fixture-scoped service target_use_ref/permission and approved source applicability receipt; declare whether selected GT2 CONTEXT is only independently co-presented, and the release/currentness grade. Existing binder only checks source eligibility; presence of permission refs does not grant permission.",
+    "counterevidence": "C1 direct rich route, authenticated binder and GT2 CONTEXT consumer all exist; no generic owner rewrite required."
+  },
+  "exact_first_engineering_or_proof_edge": {
+    "key": "U2_C1_AUTHENTICATED_INGRESS",
+    "owner": "EE14 service integration owner",
+    "location": "rawlsing_next/pre553_analytical_composition.py:1115-1135 invokes UNBOUND evaluator; rawlsing_next/pre553_service_f8_source_scope_binding.py:894-961 takes caller-supplied evidence and authenticates only applicability; no exact C1-result-to-binder use receipt demonstrated",
+    "remedy": "First execute a single bounded new test/orchestration with actual C1-produced evidence and authenticated authoritative request/receipt/rule; check F8 result hash/material equals C1 result, conserve separate C1 envelope for ancestry. Implement a service-owned bridge ONLY if the court proves a missing API integration not expressible through existing public APIs.",
+    "classification": "INTEGRATION_PROOF_OR_BOUNDED_ADAPTER_AFTER_USE_DECISION"
+  },
+  "critical_caveats": [
+    "Source-scope binder is not producer-evidence provenance authority; caller fabricated evidence can match F8 query and be accepted unless selected service constrains ingress to genuine C1 owner-produced result.",
+    "PositionedSubjectPossibilityResult alone does not include full C1 recursive_lineage_refs/complete_cell_geometry envelope; selected consumer must retain C1 product ref/closure alongside it.",
+    "F8 source binding’s CURRENT string is not a B5/M5 currentness proof; selected owner must supply actual lawful currentness evidence.",
+    "Existing GT2 V558 RESOLUTION_COMPLETE is CONTEXT only. No independently verified CURRENT/as-of context answer; no probability transformation.",
+    "Source-free fixture uses adopted local/source-free authority only at permitted court grain; GT2 context belongs to a separate source/universe.",
+    "No 'N10E R1 scalar provider' path for two-conditioner request; `_single_binding` rejects it.",
+    "No full OC05 operation; objective_consumer_bounded_evidence POLICY_BINDINGS says NOT_YET_APPLICABLE."
+  ],
+  "unbound": [
+    {
+      "id": "U1_SELECTED_T1_USE",
+      "owner": "EE14 positioned-subject/model-use owner",
+      "falsifier": "Adopted exact use/consumer contract and accepted named rich-C1-produced evidence→authenticated F8 receipt",
+      "classification": "CONTRACT_AND_USE_AUTHORITY"
+    },
+    {
+      "id": "U2_C1_AUTHENTICATED_INGRESS",
+      "owner": "EE14 service integration owner",
+      "falsifier": "Exact adopted callsite/test and result identity equality using owner-produced C1 evidence and hostile substituted-evidence refusal",
+      "classification": "INTEGRATION_OR_MISSING_PROOF"
+    },
+    {
+      "id": "U3_GT2_CONTEXT_COPRESENTATION",
+      "owner": "V557/V558 structural publication/use owner",
+      "falsifier": "Adopted exact dual-product co-presentation use/receipt, with CONTEXT-only closure and unrelated-universe nonconditioning proof",
+      "classification": "USE_AUTHORITY_AND_INTEGRATION"
+    },
+    {
+      "id": "U4_GT2_CURRENT_ASOF",
+      "owner": "M5 structural-currentness owner",
+      "falsifier": "Authenticated currentness/as-of receipt for exact GT2 resolver and stale/unknown fail-closed court",
+      "classification": "AUTHORITY_AND_PROOF"
+    },
+    {
+      "id": "U5_PRODUCT_RELEASE_REPLAY",
+      "owner": "B5 learned-product lifecycle owner",
+      "falsifier": "Exact final accepted selection/as-of and affected/unaffected, fresh-process recomputation/consumer preservation receipt at chosen grade",
+      "classification": "INTEGRATION_AND_QUALIFICATION"
+    },
+    {
+      "id": "U6_NEGATIVE_TO_F8",
+      "owner": "C1-03A analytical state/route owner",
+      "falsifier": "An accepted source-derived negative→named F8 consumer trace or precise owner-legitimate non-invocation with state preserved",
+      "classification": "CONTRACT_BOUNDARY"
+    },
+    {
+      "id": "U7_S02_TRIPLE_REAL",
+      "owner": "EE01-EE04 source/measurement authority owner",
+      "falsifier": "S02 respondent-backed qualified triple and operation permission, or exact rejected capability",
+      "classification": "SOURCE_INPUT_CONDITIONAL"
+    },
+    {
+      "id": "U8_S03_TEMPORAL_REAL",
+      "owner": "EE12 temporal comparability owner",
+      "falsifier": "S03 accepted matched construct, pair-specific positive authority and intended consumer, or exact impossibility",
+      "classification": "TEMPORAL_INPUT_CONDITIONAL"
+    }
+  ],
+  "evidence": {
+    "i4": {
+      "path": "rawlsing_next/pre553_learned_world_composition.py",
+      "blob": "4a8e27a226a9c06606f5ba493d2cc7356d491a7b",
+      "lines": "1101-1289,1330-1395",
+      "decision": "I4 exact M1/M2/B5 lifecycle assembly, not N9"
+    },
+    "contextReview": {
+      "path": "WORKER_RETURNS/PYAT-HQ222-C5-GT2-STRUCTURAL-POSITIVE-REALIZATION-REVIEW-R1/00_REVIEW.md",
+      "blob": "8b51f0c0ff21994a893744e8809744c7ca49d441",
+      "lines": "§§3-5,8",
+      "decision": "HQ223 adopted narrowed GT2 context"
+    },
+    "context": {
+      "path": "rawlsing_next/tests/gt12_e2b_actual_object_consumer_harness.py",
+      "blob": "f86a2a368cfd427ec465fd84eb93e7736f0c51f5",
+      "lines": "1-10,50-82,124-224,262-349",
+      "decision": "test/integration harness; exact current retained GT2 CONTEXT; not N9 and not a currentness service receipt"
+    },
+    "replay": {
+      "path": "rawlsing_next/pre553_analytical_replay_dependency.py",
+      "blob": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+      "lines": "51-95,491-527,630-681",
+      "decision": "C1-03R owner-driven selective currentness/invalidation"
+    },
+    "policy": {
+      "path": "rawlsing_next/objective_consumer_bounded_evidence.py",
+      "blob": "f30fca20e7b56e00348e82765d95f974b4b6a195",
+      "lines": "67-72,118-154",
+      "decision": "OC01/OC02 current, OC05 not yet applicable"
+    },
+    "scalar": {
+      "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+      "blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "lines": "479-487,531-609",
+      "decision": "one-conditioner provider; not rich C1 replacement"
+    },
+    "auth": {
+      "path": "rawlsing_next/tests/test_pre553_service_f8_binding_authentication_court.py",
+      "blob": "d1f43084271e70b03d3186c187d2437ba6721488",
+      "lines": "260-334,339-528",
+      "decision": "authenticator positive/forgery courts with independently supplied evidence; no asserted C1→binder court"
+    }
+  }
+}
