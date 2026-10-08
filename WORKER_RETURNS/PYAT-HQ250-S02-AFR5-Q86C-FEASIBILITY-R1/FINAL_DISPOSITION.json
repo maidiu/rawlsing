@@ -1,0 +1,103 @@
+{
+  "schema": "PYAT_HQ250_S02_FINAL_DISPOSITION@1.0.0",
+  "terminal": "HQ250_S02_Q86C_FEASIBILITY_RETURNED_FOR_REVIEW__NOT_ADOPTED",
+  "feasibility_choice": "UNVERIFIED",
+  "reason": "Q86C is a plausible distinct citizenship-right attitude question in official Round 5 documentation and shares documented Q86 response-state vocabulary/excluded countries, but the inspected adopted Q86A/B C11 path explicitly excludes Q86C; no separately admitted respondent-backed triple or same-person intersection, release-use or empirical counts were established.",
+  "scientific_feasibility": "PLAUSIBLE__SOURCE_DOCUMENTED",
+  "empirical_triple_feasibility": "UNVERIFIED__NO_ACCEPTED_TRIPLE_PRODUCT",
+  "selected_positive_c1_implementation": "EXPLICIT_MULTI_BINDING_C1_F8_EXISTS_SOURCE_FREE__NO_Q86C_SOURCE_OCCUPANCY_CLAIM",
+  "missing_first_evidence": "Exact frozen-source Q86C qimpl/response mapping, independent respondent exposure/routing and jointly valid triple risk-member identity to be produced or recovered under separately authorized use.",
+  "adopted_pair_kept": {
+    "raw_source_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+    "risk_member_count": 19210,
+    "risk_member_sha256": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+    "empirical_fact_sha256": "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46",
+    "target": "Q86A",
+    "conditioner": "Q86B",
+    "adopted_downstream": "V554_SIG004_TO_V557_V558_CONTEXT_ONLY",
+    "v555": "NOT_APPLICABLE_TO_GT2_SIG004"
+  },
+  "proposed_additional_conditioner": "Q86C",
+  "no_new_triple_count_predicted": true,
+  "pair_risk_set_inherited_as_triple": false,
+  "new_weighting_authorized": false,
+  "new_source_warrant_issued": false,
+  "no_source_intrinsic_na_or_empirical_null_asserted": true,
+  "exact_authority_disposition": "DEVELOPMENT_BLOCKER__SOURCE_AND_OPERATION_AUTHORITY_NEEDED",
+  "source_evidence": [
+    {
+      "kind": "OFFICIAL_PUBLIC_CODEBOOK",
+      "url": "https://www.afrobarometer.org/wp-content/uploads/2022/02/merged_r5_codebook_2.pdf",
+      "scope": "Q86A/Q86B/Q86C printed p53; admin states; five not-asked countries; public version not frozen SHA certification"
+    },
+    {
+      "kind": "EXACT_GIT_Q86_AB_PROJECTION",
+      "commit": "1f70126ebdd62a44bc54f47e0ae32231a41b2a54",
+      "path": "rawlsing_next/wave1_r5_q86_c11_projection.py",
+      "blob_sha": "d96933180d310b4078f23127bb5a97a3677728d1",
+      "scope": "Q86A/B-only; 51,587 source rows; 19,210 two-way; 11 countries; no Q86C constructor"
+    },
+    {
+      "kind": "ACCEPTED_PAIR_BINDING",
+      "commit": "1f70126ebdd62a44bc54f47e0ae32231a41b2a54",
+      "path": "WORKER_RETURNS/PYAT-HQ221-C5-GT2-STRUCTURAL-POSITIVE-REALIZATION-R1/01_RETAINED_EMPIRICAL_INPUT_BINDING.json",
+      "blob_sha": "b6829d672fbc72b3f7a04ec12781e643031665b0",
+      "scope": "exact pair fact query predicate replay permission and common risk"
+    },
+    {
+      "kind": "ACCEPTED_C1_MULTI_BINDING",
+      "commit": "1f70126ebdd62a44bc54f47e0ae32231a41b2a54",
+      "path": "rawlsing_next/pre553_analytical_composition.py",
+      "blob_sha": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "scope": "accepted explicit multi-binding route; not triple source execution"
+    },
+    {
+      "kind": "N10E_SINGLE_BINDING_LIMIT",
+      "commit": "1f70126ebdd62a44bc54f47e0ae32231a41b2a54",
+      "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+      "blob_sha": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "scope": "one-binding scalar path cannot replace explicit multi-binding"
+    },
+    {
+      "kind": "HQ250_AUTHORITY",
+      "control_tip": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59",
+      "path": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ250_ASTRA_FINAL_D1_D3_INTAKE_AND_SCOPED_SERVICE_FRONTIER_R1.md",
+      "blob_sha": "e5ec4898018fcd9bd1ce5c1a3181c992a9ded408",
+      "scope": "documentary-only, Library NO, no source warrant/actor/HQ change"
+    }
+  ],
+  "review_required": [
+    "Confirm public Q86C meaning/state/country exclusion and codebook frozen-release mismatch risk.",
+    "Attack 11-country accepted R_AB vs public five-country question exclusion and absence of independently certified R_ABC.",
+    "Verify source-only A/B adapter excludes C and current retained triple positive not established; challenge with exact retained qimpl/risk if any.",
+    "Verify C1 explicit multibinding versus scalar N10E, no new service use or V555 positive.",
+    "Check no legal source-warrant overreach and no negative-to-N/A/null laundering.",
+    "Verify four files are only branch diff; re-resolve exact pushed HEAD/ancestry."
+  ],
+  "candidate_disproof": [
+    "Exact authorized Q86C respondent/routing triple fact/use found in immutable source/release custody.",
+    "Fixed source SHA and controlled metadata document Q86C absent or materially different, or no common triple-exposed respondents at proposed grain.",
+    "Independent tests show two-binding compatible C1 cannot preserve a competent positive triple under stated contract."
+  ],
+  "output_files": [
+    "WORKER_RETURNS/PYAT-HQ250-S02-AFR5-Q86C-FEASIBILITY-R1/SCIENTIFIC_SOURCE_BINDING.md",
+    "WORKER_RETURNS/PYAT-HQ250-S02-AFR5-Q86C-FEASIBILITY-R1/PRODUCT_AUTHORITY_AND_RISK_MATRIX.json",
+    "WORKER_RETURNS/PYAT-HQ250-S02-AFR5-Q86C-FEASIBILITY-R1/NEXT_EXACT_SOURCE_PRODUCT_WARRANT.md",
+    "WORKER_RETURNS/PYAT-HQ250-S02-AFR5-Q86C-FEASIBILITY-R1/FINAL_DISPOSITION.json"
+  ],
+  "boundaries": {
+    "library": "NO",
+    "raw_sav_dta_opened": false,
+    "source_execution": false,
+    "code_edit": false,
+    "semantic_authority_issued": false,
+    "hq_mutation": false,
+    "worker_dispatch": false,
+    "actor_work": false,
+    "review_adoption": false
+  },
+  "authored_role": "independent documentary worker",
+  "hq_next": "Separate independent review/adjudication first, then if justified an exact source and operation warrant; S01 owns selected consumer/use.",
+  "final_commit": "TO_BE_REPORTED_EXTERNALLY_AFTER_PUSH_AND_DIRECT_ORIGIN_VERIFICATION",
+  "stop": true
+}

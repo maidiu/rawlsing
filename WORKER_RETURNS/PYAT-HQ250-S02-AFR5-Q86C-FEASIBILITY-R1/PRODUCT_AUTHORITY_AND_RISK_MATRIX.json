@@ -1,0 +1,259 @@
+{
+  "schema": "PYAT_HQ250_S02_PRODUCT_AUTHORITY_AND_RISK_MATRIX@1.0.0",
+  "status": "DOCUMENTARY_FEASIBILITY_ONLY__NO_SOURCE_EXECUTION_OR_ADOPTION",
+  "branch": "agent/rabochii-pyat-hq250-s02-afr5-q86c-bounded-feasibility-r1",
+  "commission_tip": "1f70126ebdd62a44bc54f47e0ae32231a41b2a54",
+  "hq250_decision": "HQD-2026-10-08-250",
+  "source": {
+    "id": "SRC02",
+    "family": "Afrobarometer",
+    "wave": "R5",
+    "artifact": "Data/Afro Barometer Round 5.sav",
+    "source_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+    "source_row_count_frozen": 51587,
+    "adopted_pair": {
+      "conditioner": "Q86B",
+      "target": "Q86A",
+      "risk_set_id": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1",
+      "risk_set_members": 19210,
+      "member_sha256": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+      "countries": [
+        "BFO",
+        "BOT",
+        "CVE",
+        "KEN",
+        "LES",
+        "MAU",
+        "MLW",
+        "MOZ",
+        "NAM",
+        "SAF",
+        "UGA"
+      ],
+      "measure": "RAW",
+      "weighted": false,
+      "fact_sha256": "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46",
+      "query_sha256": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+      "predicate_sha256": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+      "replay_sha256": "c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f"
+    },
+    "candidate": {
+      "additional_conditioner": "Q86C",
+      "qimpl": null,
+      "source_specific_authority": null,
+      "measured_triple_count": null,
+      "measured_triple_geometry": null,
+      "triple_member_hash": null,
+      "weight_authority": null,
+      "three_way_query_or_fact": null,
+      "world_consumer": null
+    }
+  },
+  "references": {
+    "official_merged_codebook": "https://www.afrobarometer.org/wp-content/uploads/2022/02/merged_r5_codebook_2.pdf",
+    "official_merged_codebook_question": "Q86A/B/C, printed page 53, PDF page index 52",
+    "projection_git_blob": "d96933180d310b4078f23127bb5a97a3677728d1",
+    "projection_path": "rawlsing_next/wave1_r5_q86_c11_projection.py",
+    "projection_url": "https://github.com/maidiu/rawlsing/blob/1f70126ebdd62a44bc54f47e0ae32231a41b2a54/rawlsing_next/wave1_r5_q86_c11_projection.py",
+    "projection_test_blob": "3ba4cc1202d08f56cb714c9d3ed0124df2bb46ed",
+    "retained_gt2_blob": "b6829d672fbc72b3f7a04ec12781e643031665b0",
+    "retained_gt2_url": "https://github.com/maidiu/rawlsing/blob/1f70126ebdd62a44bc54f47e0ae32231a41b2a54/WORKER_RETURNS/PYAT-HQ221-C5-GT2-STRUCTURAL-POSITIVE-REALIZATION-R1/01_RETAINED_EMPIRICAL_INPUT_BINDING.json",
+    "c1_multibinding_blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+    "c1_path": "rawlsing_next/pre553_analytical_composition.py",
+    "scalar_provider_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+    "f8_authentication_blob": "4ba00b8ecf73f70ad0f6481e255fd0117744418a",
+    "hq250_decision_blob": "e5ec4898018fcd9bd1ce5c1a3181c992a9ded408",
+    "hq225_v555_position_disposition_blob": "27fd7b03c27947fd2c95e011913de61275705b29"
+  },
+  "matrix": [
+    {
+      "dimension": "scientific_proposition",
+      "pair_state": "source-native Q86A/B meanings and exact qimpls admitted",
+      "candidate_evidence": "Q86C wife's citizenship-right opinion; distinct hypothetical gendered proposition",
+      "triple_state": "SCIENTIFICALLY_PLAUSIBLE__NOT_AN_EQUIVALENT_INDICATOR",
+      "required": "Retain exact wording and context per source variant; forbid respondent-gender inference",
+      "owner": "EE02/source semantic adjudicator",
+      "falsifier": "Published frozen-release Q86C wording conflicts materially with proposed merged-codebook meaning",
+      "confidence": "HIGH_DOCUMENTARY"
+    },
+    {
+      "dimension": "physical_source_identity",
+      "pair_state": "fixed source SHA and 51,587 source rows",
+      "candidate_evidence": "same general Round 5 merged codebook",
+      "triple_state": "EXACT_SOURCE_Q86C_FIELD_UNVERIFIED",
+      "required": "SHA-bound source-local Q86C variable/occurrence mapping and transport identity",
+      "owner": "EE01 source fidelity",
+      "falsifier": "Frozen SHA's actual governed metadata lacks the represented Q86C implementation",
+      "confidence": "HIGH_PAIR__UNKNOWN_TRIPLE"
+    },
+    {
+      "dimension": "qimpl_and_measurement",
+      "pair_state": "A/B qimpl hash and exact native response state authority",
+      "candidate_evidence": "public codebook lists 0/1/9/997/998/-1",
+      "triple_state": "UNAUTHORIZED_Q86C_QIMPL",
+      "required": "Exact qimpl/response-domain source warrant and source variant linkage",
+      "owner": "EE02/source semantic",
+      "falsifier": "Missing/conflicting C variable label or unadjudicated code/value drift",
+      "confidence": "HIGH_PAIR__MEDIUM_DOCUMENTARY_C"
+    },
+    {
+      "dimension": "country_eligibility",
+      "pair_state": "11 frozen countries for pair",
+      "candidate_evidence": "Q86A/B/C official exclusions ALG EGY MRC SUD TUN",
+      "triple_state": "TRIPLE_COUNTRY_SCOPE_UNKNOWN",
+      "required": "Q86C country-specific local variant/exposure crosswalk in frozen 11-country pair ceiling",
+      "owner": "EE03 routing",
+      "falsifier": "A claimed triple includes country/variant where C is not administered",
+      "confidence": "HIGH_DOCUMENTARY_GENERAL__UNKNOWN_TRIPLE"
+    },
+    {
+      "dimension": "respondent_linkage",
+      "pair_state": "(country_native,respno), row ordinals, respondent-local ref & pair risk hash",
+      "candidate_evidence": "same questionnaire battery, not same-member proof",
+      "triple_state": "NO_AUTHORIZED_THREE_FIELD_RESPONDENT_JOIN",
+      "required": "Same source/respondent identity and no duplication for A/B/C; closure to exact member hashes",
+      "owner": "EE03/EE05 and source producer",
+      "falsifier": "Triple cells assembled from marginals, person-overlap is forged, or source identities mismatch",
+      "confidence": "HIGH_PAIR__UNKNOWN_TRIPLE"
+    },
+    {
+      "dimension": "independent_exposure",
+      "pair_state": "A/B EXPOSED__PROVED mandatory even where a response exists",
+      "candidate_evidence": "codebook broad five-country not-asked notes",
+      "triple_state": "Q86C_EXPOSURE_NOT_PROVED",
+      "required": "Row-level independent C exposure facts and route/skip authority",
+      "owner": "EE03",
+      "falsifier": "Response presence substituted for independent C exposure / administrative state",
+      "confidence": "HIGH_PAIR__UNKNOWN_TRIPLE"
+    },
+    {
+      "dimension": "risk_set_denominator",
+      "pair_state": "19,210 accepted A/B common coexposure, member hash frozen",
+      "candidate_evidence": "no C common risk membership count available",
+      "triple_state": "NEW_R_ABC_N_AND_HASH_UNKNOWN",
+      "required": "Separate exact R_ABC intersection; if constrained to pair, n<=19210; report excluded members and new denominator",
+      "owner": "EE03/I03",
+      "falsifier": "Triple declared n=19210 without independent intersection proof; denominators drift between q(A) and q(A,B)",
+      "confidence": "HIGH_PAIR__UNKNOWN_TRIPLE"
+    },
+    {
+      "dimension": "raw_joint_counts",
+      "pair_state": "36 exact observed A/B cells preserved",
+      "candidate_evidence": "scientific six-state Q86C codebook candidate",
+      "triple_state": "NO_ACCEPTED_216_CELL_FACT",
+      "required": "Exact 6x6x6 complete native topology if C domain is certified, including zero/missing states",
+      "owner": "EE04/EE05 actual producer",
+      "falsifier": "Pseudo-joint made by multiplying marginals or omits uncommon/zero/administrative branches",
+      "confidence": "HIGH_PAIR__UNKNOWN_TRIPLE"
+    },
+    {
+      "dimension": "claim_query_operation",
+      "pair_state": "exact Q86B->Q86A GT2 query, predicate and replay refs",
+      "candidate_evidence": "symbolic q(Y|A) vs q(Y|A,B)",
+      "triple_state": "NO_Q86C_CONJUNCTIVE_USE_WARRANT",
+      "required": "New distinct governing query/predicate/target-use/operation and consistent pair projection on R_ABC",
+      "owner": "EE04/HQ claim authority",
+      "falsifier": "Only existing GT2 predicate reused without C; mismatched fact/query source/release",
+      "confidence": "HIGH_PAIR__UNKNOWN_TRIPLE"
+    },
+    {
+      "dimension": "sampling_design_and_weights",
+      "pair_state": "RAW, SINGLE_UNIVERSE, unweighted",
+      "candidate_evidence": "official codebook names withinwt and combinwt; different estimands",
+      "triple_state": "NO_TRIPLE_WEIGHT_DESIGN_AUTHORITY",
+      "required": "Stay RAW if approved; weighted estimate requires exact sampling, weight, design and estimand authority",
+      "owner": "EE03/measurement owner",
+      "falsifier": "Unapproved weights silently applied or country weights confused",
+      "confidence": "HIGH_RAW_CEILING"
+    },
+    {
+      "dimension": "uncertainty_and_minority",
+      "pair_state": "rare B/A DK and missing cells retained",
+      "candidate_evidence": "new triple may show other branches; no values predicted",
+      "triple_state": "UNPROVED_AT_TRIPLE",
+      "required": "Nonmodal, mixed, DK, REFUSAL, NOT_ASKED, MISSING, typed underpower and ancestry preserved",
+      "owner": "EE06/EE07/EE11/C1",
+      "falsifier": "Modal-only projection, minority or typed-negative suppression",
+      "confidence": "HIGH_REQUIREMENT__UNKNOWN_RESULT"
+    },
+    {
+      "dimension": "explicit_c1_multi_binding",
+      "pair_state": "accepted generic _all_bindings, exact identity checks and conditional F8 consumption",
+      "candidate_evidence": "C1 component exists without Q86C input",
+      "triple_state": "CAPABLE_AT_SOURCE_FREE_GRAIN__SOURCE_OCCUPANCY_NOT_PROVED",
+      "required": "Use explicit compose_positioned_subject_possibility with source-accepted multi-bindings",
+      "owner": "C1/EE14",
+      "falsifier": "Actual supported triple cannot enter C1 with witnessed two bindings despite correct source producer",
+      "confidence": "HIGH_CODE__NO_CURRENT_TRIPLE_RUN"
+    },
+    {
+      "dimension": "n10e_scalar_wrapper",
+      "pair_state": "_single_binding strictly requires exactly one binding",
+      "candidate_evidence": "no authorization to pass 2 conditioners via scalar wrapper",
+      "triple_state": "WRONG_PATH_FOR_TRIPLE",
+      "required": "Do not relabel or flatten into N10E scalar; S01 selects rich consumer",
+      "owner": "S01/HQ",
+      "falsifier": "Repackaging into one pseudo-conditioner loses constituent binding identities",
+      "confidence": "HIGH_CODE"
+    },
+    {
+      "dimension": "F8_scope_authentication",
+      "pair_state": "re-derives source scope and passes slices unchanged",
+      "candidate_evidence": "no Q86C-specific approved F8 applicability receipt",
+      "triple_state": "ADMITTED_TRIPLE_CONSUMER_SCOPE_UNVERIFIED",
+      "required": "Bind exact new product, release, use and F8 source-scope authority",
+      "owner": "EE14 source-scope/HQ",
+      "falsifier": "Caller-forged source binding passes when release/authority absent",
+      "confidence": "HIGH_CODE__UNKNOWN_TRIPLE"
+    },
+    {
+      "dimension": "Field_Forge_and_V555",
+      "pair_state": "bounded GT2 Field Forge relation and V554->V558 CONTEXT; V555 NOT_APPLICABLE_TO_GT2_SIG004",
+      "candidate_evidence": "third attitude adds no structural position credentials",
+      "triple_state": "NO_TRIPLE_STRUCTURAL_OR_MEDIATION_USE",
+      "required": "If later use demanded, adjudicate new claim separately; do not widen inherited GT2 CONТEXT to temporal/causal",
+      "owner": "Field Forge and HQ",
+      "falsifier": "A/B/C counts presented as structural pressure, causal route or actor state",
+      "confidence": "HIGH_CURRENT_CEILING"
+    },
+    {
+      "dimension": "release_current_asof_replay",
+      "pair_state": "bounded retained GT2 replay/ref integrity",
+      "candidate_evidence": "no retained triple release or rehydration identified in inspected current Q86 transport",
+      "triple_state": "TRIPLE_RELEASE_AND_REPLAY_UNPROVED",
+      "required": "Content-addressed triple fact, source lineage, fresh-process reconstruct/revoke at selected contract grade",
+      "owner": "EE16/I4/B5/selected consumer",
+      "falsifier": "Unversioned cached counts accepted as current or loss of dependency on C",
+      "confidence": "HIGH_PAIR__UNKNOWN_TRIPLE"
+    },
+    {
+      "dimension": "asof_world_or_parent_prior",
+      "pair_state": "GT2 only CONTEXT",
+      "candidate_evidence": "S01 requested separate T1 rich service selection",
+      "triple_state": "NO_N9_OC05_N10W_OR_T2_CLAIM",
+      "required": "S01/HQ exact consumer and operation/use; no V3 actor ingress",
+      "owner": "S01/HQ",
+      "falsifier": "Local context called whole-world probabilistic serving or numeric pressure",
+      "confidence": "HIGH_BOUNDARY"
+    }
+  ],
+  "next_first_missing_edge": "Exact source/SHA-bound Q86C respondent response + independent exposure/routing + same-person R_ABC membership, semantics, permission and I03 triple operation; no accepted positive triple found.",
+  "disposition": "UNVERIFIED__SCIENTIFICALLY_PLAUSIBLE__DEVELOPMENT_BLOCKER_NOT_SOURCE_INTRINSIC_NA",
+  "negative_states": {
+    "missing_q86c_authority": "DEVELOPMENT_BLOCKER",
+    "no_Q86C_joint": "NOT_YET_PRODUCED_OR_RETRIEVED_AT_AUDITED_GRAIN",
+    "source_intrinsic_not_applicable": "NOT_ESTABLISHED",
+    "empirical_null": "NOT_MEASURED",
+    "valid_empty": "NOT_MEASURED",
+    "noncomparable": "NOT_EVALUATED"
+  },
+  "boundaries": {
+    "library_access": false,
+    "raw_survey_read": false,
+    "source_warrant_issued": false,
+    "code_or_semantic_mutation": false,
+    "hq_mutation": false,
+    "actors_created": false,
+    "self_adoption": false
+  }
+}
