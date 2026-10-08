@@ -1,0 +1,177 @@
+{
+  "schema": "PYAT_HQ240_F7_ACCEPTED_T0_T1_T2_ATTACKER_TCB_CENSUS@1",
+  "disposition": "F7_T1_TCB_NATIVE_OWNER_ARCHITECTURE_PARTIAL__NAMED_DEFECT",
+  "basis": {
+    "commission_tip": "90aa164278fc889968997c194381da5d2f18e570",
+    "commission_base": "0bb7cd0e4243c17e4b028b30e16fb73fa42653b8",
+    "hq238_design_status": "PROPOSED_NOT_ADOPTED",
+    "hq236_candidate": "c86ae335eaf70e82b5764c46754b16ca7e1587ce",
+    "hq236_local_return": "ae5e140a378406888c94d099b7dd8e98dfeb1459",
+    "independent_crossbranch_review": "7a9a0a5917b888c15b3ead051fb116b7549b37c9",
+    "blobs": {
+      "P07": "8053d30d306a3654ebf563043088311ff390bb2b",
+      "F7": "6f6b462b1cdef54d7989f15452473383c1661594",
+      "F7_court": "8a82bd5905d266c1d500b1bf2bdcb01ea948efd6",
+      "P07_court": "2487ed757c0254e7227cf43664abc6ae08f1dfb3"
+    }
+  },
+  "tiers": [
+    {
+      "id": "T0",
+      "scope": "hostile inputs to lawful APIs and caller-controlled visible material",
+      "attacker_can": [
+        "wrong-kind, wrong-pair, denied, stale or absent relations/snapshots/refs/use/scope",
+        "mutate visible resolver or supplied registry after owner construction",
+        "construct an independent new resolver with candidate material but NOT retroactively place such material in the original empty owner's custody"
+      ],
+      "attacker_cannot": [
+        "modify trusted constructor state or trusted executable/acceptance consumer"
+      ],
+      "TCB": [
+        "actual P07 constructor and typed adjudication",
+        "accepted pinned I01 snapshots/source relation schema",
+        "actual F7 comparator and actual relying consumer"
+      ],
+      "must_survive": true,
+      "forgery": "same original empty victim gains P07/F7 positive without constructor-admitted relation"
+    },
+    {
+      "id": "T1",
+      "scope": "T0 plus exact historically admitted same-process reflection/state and selected monkeypatch attack probes",
+      "attacker_can": [
+        "read Python __closure__",
+        "rebind cell.cell_contents",
+        "construct _AuthenticatedResolverState with victim owner_ref and source payload",
+        "replace resolver._by_ref/_by_key/_registry",
+        "use object.__setattr__ where runtime permits",
+        "invoke recovered sealer/loader/helpers",
+        "monkeypatch class/instance decide/require/resolve_exact/nested validator and registry methods",
+        "try hostile wrapper, type, native object resurrection and nested registry bypass"
+      ],
+      "must_survive": true,
+      "claimed_TCB": [
+        "native exact one-shot P07 resolver owner, private C state and entire native P07 adjudicator",
+        "trusted F7 Python comparator and _relation_decision_defect",
+        "module-global F7 P07 alias IF constitutionally warranted immune to T1 mutation",
+        "actual terminal consumer and no Python-only parallel positive owner"
+      ],
+      "unresolved_scope": [
+        "Current accepted HQ227 and HQ231 fail-capability tests monkeypatch the actual F7 module global _authenticated_source_relation_decide; this is known executable bypass, but the tests are explicitly fault injections rather than an unconditional statement that arbitrary code-alias substitution is an attack T1 must resist",
+        "HQ must formally adjudicate whether such module-global alias mutation belongs to T1 or may be excluded as trusted-code modification; defining it as T2 by design convenience is not authority",
+        "Trusted terminal reliance receiver is not inventoried at repo-wide production grain"
+      ],
+      "forgery": "P07 AUTHORIZED and F7 authorized direction for same original empty victim under admitted T1 powers"
+    },
+    {
+      "id": "T2",
+      "scope": "arbitrary attacker control of Python executable, module aliases, replay check, returned result, final consumer",
+      "attacker_can": [
+        "replace _authenticated_source_relation_decide with any callable",
+        "replace compare_temporal_anchors.__code__/Python validators",
+        "fabricate RelationDecision, TemporalRelationReceipt and hashes",
+        "replace IPC bytes / client final getter / Python accepting effect"
+      ],
+      "must_survive_under_Design_I": false,
+      "TCB_needed": [
+        "separately protected P07 and F7 actual execution",
+        "trusted independently provisioned source/authority/owner/job identity",
+        "protected verifier and accepting effect/consumer, not compromised Python result"
+      ],
+      "forgery": "unauthorized positive written to protected relying journal despite no trusted P07/F7 authorization",
+      "note": "A native storage capsule or even correct native P07 with attacker-overridden Python F7 caller cannot give T2 end-to-end guarantee"
+    }
+  ],
+  "historical_attack_witnesses": [
+    {
+      "id": "HQ219_RR04",
+      "attack": "duck-typed resolver and denied/wrong-kind/wrong-pair relation paired with independent positive equivalence authority",
+      "observed_repair": "F7 consumes genuine AUTHORIZED owner decision rather than resolve_exact",
+      "T1_required": true,
+      "source": "F7.py:1080-1145 and HQ236 00_REVIEW.md"
+    },
+    {
+      "id": "HQ225_RR04C",
+      "attack": "outer subclass, forged require/decide, shape-compatible stub",
+      "T1_required": true,
+      "source": "F7 tests at 1680-2120, HQ236 review"
+    },
+    {
+      "id": "HQ227_RR04D_E",
+      "attack": "exact-instance methods, class decide/require/resolve_exact/_validate_positive/_validate_replay_identity, nested _owner_state_resolve_exact/_validate_positive_from_owner_state, registry monkeypatch",
+      "T1_required": true,
+      "source": "F7 test_pre553_temporal_comparability.py:2122-2140 and 2314-2342"
+    },
+    {
+      "id": "HQ227_FAILCAPABILITY_ALIAS",
+      "attack": "monkeypatch tc._authenticated_source_relation_decide to raising callable; genuine source positive becomes typed equivalence refusal",
+      "historical_actual": true,
+      "attack_or_fault_injection": "EXPLICIT_FAULT_INJECTION",
+      "source": "F7 tests:1650-1676",
+      "scope_ruling": "must be classified explicitly before T1 warranty; do not allege normal T1 guarantee already covered arbitrary alias writes"
+    },
+    {
+      "id": "HQ231_RR04F",
+      "attack": "object.__setattr__, introspect live/closure state, recovered sealer/loader, visible mutation and constructor-custody checks",
+      "T1_required": true,
+      "source": "P07.py:937-1266 and F7 tests:2240-2390"
+    },
+    {
+      "id": "HQ231_FAILCAPABILITY_ALIAS_POSITIVE",
+      "attack": "substitute tc._authenticated_source_relation_decide with broken_transplantable_owner; return source payload decision for empty victim",
+      "observed": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED for original empty victim",
+      "historical_actual": true,
+      "attack_or_fault_injection": "EXPLICIT_FAULT_INJECTION",
+      "source": "F7 tests:2345-2389",
+      "scope_ruling": "If T1 adversary may perform this operation, native-P07/trusted-Python-F7 Design I fails. New explicit HQ exclusion needed; do not silently erase successful bypass."
+    },
+    {
+      "id": "HQ234_RR04G",
+      "attack": "source state anchors and payload in victim bound closure ledger; cell.cell_contents one-cell rebind",
+      "at_candidate": "REFUSED",
+      "T1_required": true,
+      "source": "HQ236 02 receipts attack_1"
+    },
+    {
+      "id": "HQ235_RR04G",
+      "attack": "coordinated replacement victim visible live containers and closure ledger",
+      "at_candidate": "FORGED_POSITIVE",
+      "T1_required": true,
+      "source": "HQ236 02 receipts attack_2"
+    },
+    {
+      "id": "HQ236_RR04G_ONE_CELL",
+      "attack": "victim live containers untouched, owner anchor fields victim-consistent, source state payload, only ledger-cell rebind",
+      "at_candidate": "FORGED_POSITIVE",
+      "T1_required": true,
+      "source": "HQ236 02 receipts attack_3"
+    },
+    {
+      "id": "HQ236_RR04G_BY_REF",
+      "attack": "source by_ref payload, victim by_key empty and victim untouched live anchors, only ledger-cell rebind",
+      "at_candidate": "FORGED_POSITIVE",
+      "T1_required": true,
+      "source": "HQ236 02 receipts attack_4"
+    }
+  ],
+  "physical_exclusions_require_explicit_HQ_warrant": [
+    "C/native owner memory tampering",
+    "ctypes/cffi raw native address writes or unrestricted Python C API invocation",
+    "debugger/ptrace/process injection into trusted binary",
+    "mutable native binary/toolchain/ABI",
+    "arbitrary Python F7 comparator/global alias/terminal consumer rewriting (DISPUTED due accepted alias fail-capabilities)"
+  ],
+  "consumer_grain": {
+    "actual_F7_producer": "rawlsing_next/pre553_temporal_comparability.py:836-1493 / compare_temporal_anchors",
+    "P07_entrypoint": "_authenticated_source_relation_decide at :247-251, call :1110",
+    "actual_trusted_reliance_consumer": "NOT_ESTABLISHED_AT_REPO_WIDE_PRODUCTION_GRAIN",
+    "receipt": "module-local content-addressed TemporalRelationReceipt, no issuer authentication",
+    "F8_consumption": "NOT_AUTHORIZED"
+  },
+  "claims": {
+    "current_pure_python_owner_passes": false,
+    "current_false_positives_after_HQ235": 3,
+    "all_pure_python_impossible": "NOT_PROVEN",
+    "T1_design_automatically_secure": false,
+    "T2_automatically_authorized": false
+  }
+}
