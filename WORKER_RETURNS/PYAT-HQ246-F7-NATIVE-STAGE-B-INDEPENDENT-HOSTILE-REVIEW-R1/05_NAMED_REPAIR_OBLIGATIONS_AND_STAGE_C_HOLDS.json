@@ -1,0 +1,74 @@
+{
+  "schema": "PYAT_HQ246_05_NAMED_REPAIR_OBLIGATIONS_AND_STAGE_C_HOLDS@1",
+  "frozen_candidate": "0dd0a503882ef777141092d7678285462214a600",
+  "note": "This lane performs NO repair. The obligations below are named so a fresh independent review of any repaired SHA has a minimum checklist. The concurrent repair branch was NOT read and is NOT certified by this document.",
+  "blocking_repair_obligations": [
+    {
+      "id": "HQ246-B1",
+      "title": "constructor sequence bounds (inherited HQ245-D1)",
+      "minimum_fix": "use PyList_CheckExact/PyTuple_CheckExact for the guard (or accept subclasses but derive the loop bound from PySequence_Fast_GET_SIZE(fast/fasts)), and never trust an overridable PySequence_Size for indexing",
+      "applies_to": ["relations", "authority_snapshots", "any other PySequence_Size + PySequence_Fast_GET_ITEM pair (also audit line 550)"],
+      "required_regression": "list subclass over-report (crash), under-report (truncation), raise, negative, huge, tuple subclass"
+    },
+    {
+      "id": "HQ246-B2",
+      "title": "malformed PyObject_Call on the trusted authority callable",
+      "site": "validate_positive:1141",
+      "minimum_fix": "call the pinned callable correctly, e.g. PyObject_CallFunctionObjArgs(self->t_require_positive, S->snap, NULL) with kwargs built as a dict passed through PyObject_Call, or use PyObject_Call with a proper positional tuple"
+    },
+    {
+      "id": "HQ246-B3",
+      "title": "PyErr_Fetch with NULL p_traceback",
+      "sites": ["validate_positive:1145", "stb_decide:1521"],
+      "minimum_fix": "pass a real PyObject* triple; do not pass NULL for p_traceback on CPython 3.11"
+    },
+    {
+      "id": "HQ246-B4",
+      "title": "validate_decision_replay NULL strlen",
+      "site": "stb_validate_replay:1682-1687 -> build_replay_preimage:1184",
+      "minimum_fix": "type-check every preimage field and refuse non-str material before calling PyUnicode_AsUTF8/PyUnicode_FromString"
+    },
+    {
+      "id": "HQ246-P1",
+      "title": "hardcoded relation object key material",
+      "site": "admit_relation:618-627",
+      "minimum_fix": "seal the object key from the relation's ACTUAL effective_scope and directionality_or_symmetric through the trusted canonicalise/hash seam, not from hardcoded 'DISTINCT_BY_DEFAULT'/'SYMMETRIC'",
+      "required_evidence": "a positive AUTHORIZED decision reproduced natively for a genuine relation and compared byte-for-byte against the Python owner"
+    },
+    {
+      "id": "HQ246-P4",
+      "title": "unknown-kind check ordering",
+      "minimum_fix": "perform the P07 kind check before any candidate resolution, matching the accepted Python order"
+    },
+    {
+      "id": "HQ246-P5",
+      "title": "require exception shape",
+      "minimum_fix": "raise SourceRelationAuthorizationError carrying the decision.state attribute and the accepted message form"
+    }
+  ],
+  "named_refcount_and_leak_obligations": [
+    {"id": "HQ246-L1", "title": "repeated failing __init__ leaks the five pinned refs and rels/snaps arrays", "evidence": "callable refcount +2000 over 2000 failing inits"},
+    {"id": "HQ246-L2", "title": "validate_positive leaks the strdup'd op on three early returns (1080, 1090, 1093)"},
+    {"id": "HQ246-L3", "title": "admit_relation leaks proj when trusted_hash fails (line 485)"},
+    {"id": "HQ246-L4", "title": "compute_custody_hash Py_XDECREF on a PyMem_Calloc array (line 762) is a type-confused operation and leaks the array (OOM-only)"},
+    {"id": "HQ246-L5", "title": "no GC tracking / tp_traverse / tp_clear while holding strong PyObject references"},
+    {"id": "HQ246-L6", "title": "ref_dict_copy calls as_dict() twice per ref"}
+  ],
+  "stage_c_holds": [
+    "from_c11 direct construction is NOT implemented and must not be treated as present",
+    "the trusted seam must be replaced by a production-owned sealed construction gate before any adoption; the current caller-selected callables/classes are a TCB-assumed test seam only",
+    "Stage B may not be rated green on the strength of 41 passing tests; the court does not reach the positive path, the multi-positive conflict branch, or any of the four crash sites",
+    "the duplicate positive Python owner still exists and must be eliminated at cutover (custody-only capsule is not an acceptable end state)",
+    "no production import, no control merge, no accepted-test mutation, no binary commit"
+  ],
+  "minimum_fresh_review_of_any_repaired_sha": [
+    "re-run both constructor dimensions with measured subprocess receipts (this lane's reproduction scripts are reusable)",
+    "force and exercise the genuine positive AUTHORIZED path end to end and diff it against the Python owner",
+    "exercise a two-candidate corpus to actually produce CONFLICTING_AUTHORITY and every precedence tie",
+    "re-run the four crash sites under ASAN and show no report",
+    "re-run the leak measurements and show flat refcounts",
+    "re-run the nine-exclusion baseline and compare the normalized set to 278854ee with a stated normalization"
+  ],
+  "self_adoption": "NOT_PERFORMED",
+  "repair_performed": false
+}

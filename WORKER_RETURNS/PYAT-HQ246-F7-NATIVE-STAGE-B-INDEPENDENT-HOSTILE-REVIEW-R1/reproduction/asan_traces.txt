@@ -1,0 +1,22 @@
+### ASAN: B1 relations OOB (real=8 rep=9)
+==64825==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000009 (pc 0x000105c7d467 bp 0x7ff7bc103390 sp 0x7ff7bc103200 T0)
+    #0 0x105c7d467 in admit_relation _p07_native_owner_stage_b.c:453
+    #1 0x105c73e3c in StageBOwner_init _p07_native_owner_stage_b.c:866
+    #2 0x106467e6b in wrap_init+0xb (libpython3.11.dylib:x86_64+0x66ae6b) (BuildId: 4c60722e05a53fffb4eb0987c1513d31240000001000000000090a0000010b00)
+SUMMARY: AddressSanitizer: SEGV _p07_native_owner_stage_b.c:453 in admit_relation
+
+### ASAN: B4 validate_decision_replay non-str relation_kind
+==64828==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7ff808cf9f12 bp 0x7ff7bb376930 sp 0x7ff7bb376930 T0)
+    #0 0x7ff808cf9f12 in _platform_strlen+0x12 (libsystem_platform.dylib:x86_64+0xf12) (BuildId: 9ae2c3dcb88b3c82a0bd918275fe7661240000001000000000070d0000070d00)
+    #1 0x104f334c7 in wrap_strlen+0x37 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x194c7) (BuildId: 756bb7515781379f84412f22c4274ffd2400000010000000000a0a0000030d00)
+    #2 0x10722c738 in PyUnicode_FromString+0x18 (libpython3.11.dylib:x86_64+0x6a3738) (BuildId: 4c60722e05a53fffb4eb0987c1513d31240000001000000000090a0000010b00)
+    #3 0x106a3a53f in build_replay_preimage _p07_native_owner_stage_b.c:1184
+SUMMARY: AddressSanitizer: SEGV (libsystem_platform.dylib:x86_64+0xf12) (BuildId: 9ae2c3dcb88b3c82a0bd918275fe7661240000001000000000070d0000070d00) in _platform_strlen+0x12
+
+### ASAN: B2 positive path (native_hardcoded_key_params)
+==64831==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x00011243d8dc bp 0x7ff7b009bd30 sp 0x7ff7b009bce0 T0)
+    #0 0x11243d8dc in PyObject_Call+0x5ac (libpython3.11.dylib:x86_64+0x5d98dc) (BuildId: 4c60722e05a53fffb4eb0987c1513d31240000001000000000090a0000010b00)
+    #1 0x111e39e18 in validate_positive _p07_native_owner_stage_b.c:1141
+    #2 0x111e3523b in stb_decide _p07_native_owner_stage_b.c:1518
+    #3 0x11249ec27 in cfunction_call+0x37 (libpython3.11.dylib:x86_64+0x63ac27) (BuildId: 4c60722e05a53fffb4eb0987c1513d31240000001000000000090a0000010b00)
+SUMMARY: AddressSanitizer: SEGV (libpython3.11.dylib:x86_64+0x5d98dc) (BuildId: 4c60722e05a53fffb4eb0987c1513d31240000001000000000090a0000010b00) in PyObject_Call+0x5ac

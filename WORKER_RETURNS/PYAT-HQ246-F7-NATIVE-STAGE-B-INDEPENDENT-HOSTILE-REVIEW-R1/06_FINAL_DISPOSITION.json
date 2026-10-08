@@ -1,0 +1,56 @@
+{
+  "schema": "PYAT_HQ246_06_FINAL_DISPOSITION@1",
+  "commission": "PYAT-HQ246-F7-NATIVE-STAGE-B-INDEPENDENT-HOSTILE-REVIEW-R1",
+  "lane": "agent/reviewer-pyat-hq246-f7-native-stage-b-independent-hostile-r1",
+  "review_head": "aca358d62e657c6d55369b86aadf85884b2402b6",
+  "frozen_candidate": "agent/space-bunny-pyat-hq245-f7-native-stage-b-full-p07-parity-r1 @ 0dd0a503882ef777141092d7678285462214a600",
+  "candidate_disposition_reviewed": "F7_NATIVE_STAGE_B_FULL_P07_ADJUDICATOR_PARITY_READY__QUARANTINED_FOR_INDEPENDENT_REVIEW",
+  "disposition": "F7_NATIVE_STAGE_B_FROZEN_HOSTILE_BLOCKED__NAMED_MEMORY_OR_TRUST_DEFECT",
+  "concurrent_repair_not_reviewed": "agent/space-bunny-pyat-hq246-f7-native-ab-memory-boundary-repair-r1 was never read, merged or certified by this lane",
+  "blocking_defects": [
+    {"id": "HQ246-B1", "title": "inherited constructor OOB (HQ245-D1) reproduced in Stage B", "measured": "SIGSEGV exit 139 in both the relations (4/4 runs) and authority-snapshots dimensions; ASAN admit_relation:453 <- StageBOwner_init:866"},
+    {"id": "HQ246-B2", "title": "malformed PyObject_Call on the trusted authority callable at validate_positive:1141", "measured": "SIGSEGV exit 139 on the genuine positive path; ASAN PyObject_Call <- validate_positive:1141"},
+    {"id": "HQ246-B3", "title": "PyErr_Fetch with NULL p_traceback at validate_positive:1145 and stb_decide:1521", "measured": "ASAN SEGV 0x0 (WRITE) in PyErr_Fetch"},
+    {"id": "HQ246-B4", "title": "validate_decision_replay non-str field -> PyUnicode_FromString(NULL) at build_replay_preimage:1184", "measured": "SIGSEGV exit 139; ASAN strlen <- PyUnicode_FromString <- build_replay_preimage:1184"},
+    {"id": "HQ246-P1", "title": "positive-decision parity failure: hardcoded object-key effective_scope/directionality", "measured": "Python AUTHORIZED vs native DISTINCT_BY_DEFAULT on the same genuine request"},
+    {"id": "HQ246-T1", "title": "trusted-callback/class provenance is caller-selected with no authentication", "measured": "an owner built entirely from attacker classes and callables seals and returns the attacker relation from resolve_exact"}
+  ],
+  "named_non_blocking_defects": [
+    "repeated failing __init__ leaks the five pinned refs and the rels/snaps arrays (callable refcount +2000 over 2000 iterations)",
+    "validate_positive leaks the strdup'd op on three early returns",
+    "admit_relation leaks proj when the trusted hash fails",
+    "compute_custody_hash applies Py_XDECREF to a PyMem_Calloc array",
+    "no GC tracking / tp_traverse / tp_clear",
+    "unknown-kind check is ordered after candidate resolution, diverging from the accepted Python negative",
+    "require() does not carry the decision state attribute on its exception"
+  ],
+  "verified_positives": {
+    "build_reproduced_from_committed_source": true,
+    "binary_sha256": "e7454992bd888ce05411ef0717257905c81486f8306fb392c6182bddbd3688e7",
+    "matches_author": true,
+    "courts": "Stage B 41, Stage A 39, P07 24, F7 163 (267 total)",
+    "fail_capability_red_control": "1 failed / 40 passed with -DSTAGE_B_FAULT_INJECT_RESOLVE; restore 41 passed",
+    "quarantine": "no production import; production P07/F7 blobs unchanged; no binary committed; PRODUCTION_INTEGRATED=0",
+    "custody_hash_byte_exact_with_python": "not falsified by this lane (the author's claim was not re-derived here beyond observing a 64-hex value)",
+    "semantic_projection_rehash_in_resolve_exact": "genuine improvement over Stage A and covered by the court",
+    "regression": "zero new failures/errors; the nine-exclusion baseline reproduces 278854ee exactly and the author-exact command reproduces 72d0a5ca exactly (deduped node ids)"
+  },
+  "not_claimed": [
+    "no native T2 guarantee",
+    "no F7 four-forgery pass",
+    "no five lawful positives qualification",
+    "F7-RR-04G remains OPEN",
+    "empty-victim checks are not F7-RR-04G closure",
+    "no production or Stage C adoption"
+  ],
+  "what_this_lane_did_not_do": [
+    "no production, court, semantic or owner-authority mutation",
+    "no repair of the native source",
+    "no reading, merging or certification of the concurrent repair branch",
+    "no self-adoption",
+    "no binary commit",
+    "no optional dependency installed and no test silently excluded"
+  ],
+  "successor_effect": "Stage B may not build further on this frozen type. A fresh independent review of any repaired SHA must at minimum: fix and re-measure HQ246-B1..B4 under ASAN; reproduce a genuine AUTHORIZED decision and diff it against the Python owner; actually produce multi-positive CONFLICTING_AUTHORITY and precedence ties; show flat refcounts on the failing-init path; and replace the caller-selected trusted seam with a production-owned sealed construction gate before any adoption.",
+  "one_line": "The frozen Stage B candidate's build, quarantine and fail-capability are real, but it inherits the Stage A constructor out-of-bounds segfault, adds three new reachable native crashes and a caller-selected TCB, and fails positive-decision parity outright, so it is blocked on named memory and trust defects."
+}

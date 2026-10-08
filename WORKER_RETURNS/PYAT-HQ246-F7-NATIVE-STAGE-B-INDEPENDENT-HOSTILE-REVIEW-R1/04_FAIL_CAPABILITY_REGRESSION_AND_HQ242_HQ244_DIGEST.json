@@ -1,0 +1,62 @@
+{
+  "schema": "PYAT_HQ246_04_FAIL_CAPABILITY_REGRESSION_AND_HQ242_HQ244_DIGEST@1",
+  "courts": {
+    "stage_b_court": "41 passed",
+    "stage_a_court": "39 passed (unmodified Stage A module rebuilt from its committed source, sha256 94683dd7...)",
+    "production_P07": "24 passed",
+    "production_F7": "163 passed",
+    "combined_observed": "267 passed"
+  },
+  "fail_capability": {
+    "macro": "-DSTAGE_B_FAULT_INJECT_RESOLVE",
+    "fault_binary_sha256_prefix": "ff6e13182c722057",
+    "fault_result": "1 failed, 40 passed",
+    "test_turned_red": "test_native_resolve_exact_rehash_catches_post_seal_projection_mutation",
+    "restored_sha256": "e7454992bd888ce05411ef0717257905c81486f8306fb392c6182bddbd3688e7",
+    "restored_result": "41 passed",
+    "normal_binary_fault_symbols": 0,
+    "verdict": "the author's fail-capability claim is independently confirmed"
+  },
+  "broad_regression": {
+    "run1_author_exact": {
+      "command": "<governed python3.11> -m pytest rawlsing_next/tests -q -p no:randomly --continue-on-collection-errors --ignore=rawlsing_next/tests/test_p07_native_stage_a_custody.py --ignore=rawlsing_next/tests/test_p07_native_stage_b_parity.py",
+      "summary_line": "45 failed, 2691 passed, 55 warnings, 16 errors, 28 subtests passed in 1489.82s (0:24:49)",
+      "raw_line_tally": {"ERROR node lines": 16, "leaked 'ERROR:' line": 1, "FAILED lines": 46},
+      "normalization_A_raw_strip_sorted": {"items": 63, "sha256": "52e07035328490042217e196fe4f4f7c9b349baccd2437ce01c1cb68162091eb"},
+      "normalization_B_deduped_node_ids_sorted": {"items": 61, "sha256": "72d0a5ca347d71f207a77bca3609dfa5931a3c6f29224a2f3f860ebc3ab09ffe"},
+      "author_claimed_digest": "72d0a5ca347d71f207a77bca3609dfa5931a3c6f29224a2f3f860ebc3ab09ffe",
+      "author_digest_reproduced": true,
+      "author_digest_reproduction_rule": "grep -E '^(FAILED|ERROR) ' | sed 's/ - .*$//' | LC_ALL=C sort -u  -> 61 unique node ids -> 72d0a5ca..."
+    },
+    "run2_accepted_9_exclusion_baseline": {
+      "command": "<governed python3.11> -m pytest rawlsing_next/tests/ -q <the same 9 environmental --ignore flags used by HQ230/HQ242/HQ245>",
+      "summary_line": "45 failed, 2771 passed, 55 warnings, 7 errors, 28 subtests passed in 1201.47s (0:20:01)",
+      "normalization_A_raw_strip_sorted": {"items": 54, "sha256": "278854ee94fadfd57284a572441522fb56105081f89af431b17ec2e556ace6a9"},
+      "matches_hq242_accepted_baseline": true,
+      "normalization_B_deduped_node_ids_sorted": {"items": 52, "sha256": "ab74b05dabc5b99376b2d3ed8c1de6e5845f870fd4c68dd49dc81f488bb2a44e"}
+    },
+    "reconciliation": {
+      "deduped_set_diff_between_the_two_commands": "exactly the nine collection ERROR entries for the absent optional-dependency files (pandas x6 families, pyarrow, d07 harness)",
+      "stage_a_or_stage_b_module_in_any_failure_or_error": 0,
+      "stage_b_adds_new_failures": false,
+      "stage_b_adds_new_errors": false,
+      "passed_delta_9exclusion_vs_author_exact": 80,
+      "passed_delta_equals_stage_a_39_plus_stage_b_41": true,
+      "collection_with_native_files": "2823 collected, 9 errors",
+      "collection_without_native_files": "2743 collected, 9 errors",
+      "collection_delta": "+80 tests, +0 errors"
+    },
+    "correction_to_the_prior_stage_a_review": {
+      "prior_statement": "the author's 72d0a5ca digest was reported as NOT reproducible",
+      "corrected_statement": "72d0a5ca IS reproducible once the normalization DEDUPES the node ids (sort -u); the prior review used a non-deduped normalization. Both the author's 72d0a5ca (deduped, no exclusions) and the accepted 278854ee (raw stripped lines, nine exclusions) are internally consistent; they are different normalizations over different commands, and the set difference is exactly the nine collection errors.",
+      "made_by_this_lane": true
+    },
+    "true_evidence_ceiling": "machine-local governed-interpreter evidence. No optional dependency was installed and no test was silently excluded to force a match. The nine optional-dependency collection errors are real and remain unexcluded only under the author-exact command shape."
+  },
+  "verdict": {
+    "fail_capability_confirmed": true,
+    "regression_zero": true,
+    "author_digest_reproduced": true,
+    "accepted_baseline_digest_reproduced": true
+  }
+}

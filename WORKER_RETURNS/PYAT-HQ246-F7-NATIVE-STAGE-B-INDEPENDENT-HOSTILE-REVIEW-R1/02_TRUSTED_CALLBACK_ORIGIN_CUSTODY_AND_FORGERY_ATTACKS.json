@@ -1,0 +1,44 @@
+{
+  "schema": "PYAT_HQ246_02_TRUSTED_CALLBACK_ORIGIN_CUSTODY_AND_FORGERY_ATTACKS@1",
+  "trusted_callback_origin_audit": {
+    "constructor_signature": "StageBOwner(relations, authority_snapshots, trusted_semantic_hash, trusted_canonicalize, trusted_require_positive_authority, relation_class, authority_snapshot_class)",
+    "callables_are_caller_supplied": true,
+    "classes_are_caller_supplied": true,
+    "provenance_or_authentication_of_the_caller_supplied_TCB": "NONE",
+    "validation_performed": "PyCallable_Check on the three callables and PyType_Check on the two classes only",
+    "pinning": "the five references are INCREF'd into C at construction and are not re-read from Python afterwards -- correct anti-swap hygiene, but it pins whatever the caller chose",
+    "finding": "Pinning caller-supplied callables proves only that they cannot be SWAPPED afterwards; it does not establish that they are trusted code. Any Python caller can construct a StageBOwner with its own semantic_hash, canonicalize, require_positive_authority, relation class and snapshot class.",
+    "demonstrated": "reproduction/hq246_parity_probe.py attacker_custody_owner: an owner built entirely from attacker classes and callables seals (sealed=True, counts=(1,1)), reports a 64-hex custody_hash, and resolve_exact returns the attacker's own relation object",
+    "qualification": "This is acceptable ONLY as a TCB-assumed test seam inside a quarantined harness that supplies the production functions. It is NOT admissible for production adoption without a production-owned, sealed construction gate that fixes the callable and class identities (e.g. a native factory owning exactly the accepted functions, or a signed/sealed capsule created outside caller reach).",
+    "named_future_gate": "STAGE_C_PRODUCTION_OWNED_SEALED_CONSTRUCTION_GATE"
+  },
+  "custody_authenticity_probes": {
+    "attacker_classes_accepted": true,
+    "attacker_callables_accepted": true,
+    "resolve_exact_returned_attacker_relation": true,
+    "different_owner_same_key_empty_victim": "the candidate performs exact ref-key lookup against its own sealed C copies, so an independent empty owner refuses the source ref (consistent with Stage A)",
+    "post_seal_substitute_object_and_ref_swap": "detected by the ref.key/content_hash/projection re-hash -- the Stage B court covers these and they were not falsified here",
+    "malicious_changed_projection_with_fixed_ref_key_and_content_hash": "the FULL semantic_projection re-hash (resolve_exact step c) does catch a changed projection because the sealed reference is the trusted hash of the projection; this is a genuine improvement over Stage A",
+    "registry_replacement_immunity": "no live registry object is retained; custody is C-owned copies -- consistent with the receipts",
+    "counterfeit_exact_ref_with_equal_payload": "accepted iff kind|object_id|content_hash match a sealed ref key; the payload (the relation object) is returned by owned reference and re-verified",
+    "enumerable_dynamic_python_instances": "relevant only to the caller-supplied classes; any exact instance of the caller-named class is admissible, which follows from the provenance finding above"
+  },
+  "forgery_attacks": {
+    "author_class_callable_forgery": {
+      "result": "ADMISSIBLE_BY_CONSTRUCTION",
+      "detail": "a forger who can call the type constructor supplies an always-positive require_positive_authority and self-chosen hashes/classes; the native owner treats them as the TCB",
+      "observed_after_the_fact": "the forged configuration did reach validate_positive; it then crashed on B2/B3 before returning AUTHORIZED, so a clean 'forged AUTHORIZED decision' could NOT be produced in this frozen candidate",
+      "interpretation": "the trust defect is real but currently masked by the memory-safety crash on the positive path"
+    },
+    "by_ref_only_transplantation_shape": {
+      "result": "no Stage B surface demonstrated here",
+      "reason": "candidate selection matches the real P07 object key and the ref-key resolve path re-verifies; this lane does not claim the four-forgery court"
+    },
+    "f7_rr_04g": "REMAINS OPEN; this lane does not close it and does not claim native T2"
+  },
+  "verdict": {
+    "trusted_seam_is_a_TCB_assumed_test_seam_only": true,
+    "production_adoption_requires_sealed_construction_gate": true,
+    "custody_is_real_for_the_production_callables_but_not_self_authenticating": true
+  }
+}

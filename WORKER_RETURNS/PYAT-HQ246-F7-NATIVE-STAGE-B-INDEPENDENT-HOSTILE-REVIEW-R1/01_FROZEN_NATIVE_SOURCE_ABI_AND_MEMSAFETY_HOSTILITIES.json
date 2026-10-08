@@ -1,0 +1,124 @@
+{
+  "schema": "PYAT_HQ246_01_FROZEN_NATIVE_SOURCE_ABI_AND_MEMSAFETY_HOSTILITIES@1",
+  "commission": "PYAT-HQ246-F7-NATIVE-STAGE-B-INDEPENDENT-HOSTILE-REVIEW-R1",
+  "lane": "agent/reviewer-pyat-hq246-f7-native-stage-b-independent-hostile-r1",
+  "review_head": "aca358d62e657c6d55369b86aadf85884b2402b6",
+  "frozen_candidate": "agent/space-bunny-pyat-hq245-f7-native-stage-b-full-p07-parity-r1 @ 0dd0a503882ef777141092d7678285462214a600",
+  "reviewed_source_only_concurrent_repair_not_reviewed": "agent/space-bunny-pyat-hq246-f7-native-ab-memory-boundary-repair-r1 was NOT read, merged or certified",
+  "worktree": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq246-stageb-review",
+    "shared_object_store": "/Users/matthewsmith/Desktop/Rawlsing/.git",
+    "clone_performed": false,
+    "other_worker_worktrees_used": false,
+    "bootstrap_note": "No worktree for this review branch existed; one was bootstrapped once from the shared object store. The concurrent repair worktree was never touched."
+  },
+  "blobs": {
+    "native_source": {
+      "path": "rawlsing_next/_p07_native_owner_stage_b.c",
+      "sha256": "5563a753d222a497fe53d94893ead925d62aa183f2256fb5fde91ae64a30dae0",
+      "git_blob": "2d8ffc686fcdb3f7108f0c8bafe7f60273fcf304",
+      "blob_matches_commission": true,
+      "lines": 1802
+    },
+    "stage_b_court": {"path": "rawlsing_next/tests/test_p07_native_stage_b_parity.py"},
+    "production_P07": "8053d30d306a3654ebf563043088311ff390bb2b (unchanged)",
+    "production_F7": "6f6b462b1cdef54d7989f15452473383c1661594 (unchanged)",
+    "committed_binaries": "none"
+  },
+  "environment": {
+    "governed_interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "python": "3.11.3", "pytest": "9.1.1",
+    "compiler": "Apple clang version 14.0.3 (clang-1403.0.22.14.1)",
+    "machine": "x86_64 macOS 13.7.8"
+  },
+  "independent_build": {
+    "recipe": "clang -shared -fPIC -O2 -Wall -Wextra -Wno-unused-parameter -undefined dynamic_lookup -I<include/python3.11> -o rawlsing_next/_p07_native_owner_stage_b.cpython-311-darwin.so rawlsing_next/_p07_native_owner_stage_b.c",
+    "author_so_used": false,
+    "pre_existing_so": "ABSENT",
+    "exit": 0,
+    "warnings": "none under -Wall -Wextra",
+    "sha256": "e7454992bd888ce05411ef0717257905c81486f8306fb392c6182bddbd3688e7",
+    "matches_author": true,
+    "bytes": 87824,
+    "fault_symbols_in_normal_binary": 0,
+    "stage_a_rebuilt_sha256": "94683dd76cfa9c4d76958ef14f006f97616e0b082b4510cbea38768a8047fd04 (matches HQ245)"
+  },
+  "blocking_memory_safety_findings": {
+    "HQ246-B1_inherited_constructor_oob": {
+      "severity": "BLOCKING_MEMORY_SAFETY",
+      "status": "REPRODUCED (not assumed)",
+      "static_site": "StageBOwner_init lines 827-829 accept list/tuple SUBCLASSES (PyList_Check/PyTuple_Check, not CheckExact); lines 850-851 take n/m from the overridable PySequence_Size; lines 863-876 index PySequence_Fast_GET_ITEM(fast/fasts, i) up to n/m without GET_SIZE",
+      "measured_relations_dimension": {
+        "shape": "list subclass over a genuine 8-element relation list with __len__ returning 9, constructed via StageBOwner.__new__ + __init__ with attacker classes/callables",
+        "observed": "SIGSEGV, shell exit 139, 4/4 consecutive runs",
+        "asan": "SEGV on unknown address 0x9 (READ) in admit_relation _p07_native_owner_stage_b.c:453 (obj_is_exact -> Py_TYPE(o) == cls), called from StageBOwner_init _p07_native_owner_stage_b.c:866"
+      },
+      "measured_authority_snapshots_dimension": {
+        "shape": "list subclass over authority snapshots with __len__ over-reporting",
+        "observed": "SIGSEGV exit 139 at real=8/rep=9 and real=16/rep=17"
+      },
+      "non_crashing_over_reports": "real=1/rep=2, real=1/rep=8, real=64/rep=65, real=256/rep=257 read out of bounds and then raised TypeError 'relation[N] must be exact SourceUniverseRelation' -- still UB, heap-layout dependent",
+      "under_report": "list subclass with __len__=1 over a 3-element relation list admitted only 1 relation: counts [1,1]; SILENT TRUNCATION of custody material",
+      "raise_in_len": "RuntimeError propagates cleanly (PySequence_Size returns -1)",
+      "negative_len": "ValueError '__len__() should return >= 0' propagates cleanly",
+      "tuple_subclass": "also performs the out-of-bounds index (raised from past-the-end memory)",
+      "author_court_coverage": "the Stage B court does not exercise list/tuple subclasses; its hostile-input stress never lies about __len__",
+      "inherited_from": "HQ245-D1 (Stage A) -- the same pattern was ASAN-proven to segfault in Stage A; the Stage B author's receipt 03 claims 'exact list/tuple admission so no hostile __iter__/__len__/__getattribute__ drives admission', which is FALSE at the type __init__ level"
+    },
+    "HQ246-B2_positive_path_PyObject_Call_misuse": {
+      "severity": "BLOCKING_MEMORY_SAFETY_AND_PARITY",
+      "static_site": "validate_positive line 1141: `res = PyObject_Call(self->t_require_positive, S->snap, kw);`",
+      "defect": "PyObject_Call's second argument must be a tuple (or NULL); S->snap is an AuthoritySnapshot object, not a tuple. The call is malformed.",
+      "observed": "with a GENUINE production relation and production callables, forcing candidate selection (effective_scope='DISTINCT_BY_DEFAULT') crashes: exit 139",
+      "asan": "SEGV (WRITE) inside PyObject_Call, called from validate_positive _p07_native_owner_stage_b.c:1141, from stb_decide:1518",
+      "consequence": "the native positive/authority path can never complete; AUTHORIZED and the validate_positive-derived ladder states are unreachable"
+    },
+    "HQ246-B3_PyErr_Fetch_null_traceback": {
+      "severity": "BLOCKING_MEMORY_SAFETY",
+      "static_sites": ["validate_positive line 1145", "stb_decide line 1521"],
+      "defect": "PyErr_Fetch(&pt, &pv, NULL) passes NULL for p_traceback; CPython 3.11 writes through p_traceback unconditionally, so this is a NULL-pointer write",
+      "asan": "SEGV on unknown address 0x0 (WRITE) in PyErr_Fetch+0x1d, from validate_positive:1145 and from stb_decide:1521",
+      "reachability": "any validate_positive failure, and any negative-to-ladder transition after a failed positive validation"
+    },
+    "HQ246-B4_validate_decision_replay_null_strlen": {
+      "severity": "BLOCKING_MEMORY_SAFETY",
+      "static_site": "stb_validate_replay lines 1682-1687 passes PyUnicode_AsUTF8(...)'s result (NULL for a non-str field) into build_replay_preimage, which calls PyUnicode_FromString at line 1184",
+      "repro": "owner.validate_decision_replay(d) with d['relation_kind'] = 123 (or d['target_use'] = 123)",
+      "observed": "SIGSEGV exit 139; ASAN: SEGV (READ) in strlen <- PyUnicode_FromString, from build_replay_preimage _p07_native_owner_stage_b.c:1184",
+      "public_method": true
+    }
+  },
+  "named_non_blocking_memory_and_refcount_defects": {
+    "repeated_failing_init_leak": {
+      "measured": "2000 failing __init__ calls -> sys.getrefcount(trusted_semantic_hash) grows by exactly 2000",
+      "mechanism": "StageBOwner_init INCREFs the five pinned references at line 840 before validation; a failure leaves the object unsealed and a repeat __init__ overwrites t_semantic_hash/t_canonicalize/t_require_positive/relation_cls/snapshot_cls and rels/snaps without DECREF/free"
+    },
+    "validate_positive_op_leak": {
+      "sites": ["line 1080 (snapshot absent)", "line 1090 (snapshot projection call failed)", "line 1093 (trusted_hash failed)"],
+      "detail": "the strdup'd `op` is not freed on these returns; masked in practice by the B3 crash that follows"
+    },
+    "admit_relation_proj_leak": {
+      "detail": "line 481 proj = semantic_projection(); if trusted_hash at line 485 fails, `goto fail` without Py_DECREF(proj)"
+    },
+    "compute_custody_hash_wrong_decref": {
+      "site": "line 762",
+      "detail": "`Py_XDECREF(order)` is applied to a PyMem_Calloc'd Py_ssize_t array (not a PyObject*); decrements the first array slot and leaks the array. OOM-only branch."
+    },
+    "no_gc_tracking": "Py_TPFLAGS_DEFAULT without Py_TPFLAGS_HAVE_GC and without tp_traverse/tp_clear while holding strong PyObject* references (relations, snapshots, five pinned objects)",
+    "ref_dict_copy_calls_as_dict_twice": "lines 223-229; invokes caller code twice and computes a `which` that the following loop immediately overwrites"
+  },
+  "audited_clean_paths": {
+    "resolve_exact_identity_reverification": "ref.key, content_hash, semantic_projection re-hash via trusted seam, and replay identity are all re-checked",
+    "underreport_truncation_is_the_only_length_defect_consequence_beyond_oob": true,
+    "stress": "the author's own stress numbers were not re-run in full here; the reviewer's targeted malformed/over-report probes are the evidence",
+    "non_subclassable": true,
+    "one_shot": true,
+    "no_capsule_or_resealer": true
+  },
+  "verdict": {
+    "frozen_candidate_memory_safety_acceptable": false,
+    "inherited_hq245_d1_reproduced_in_stage_b": true,
+    "new_stage_b_memory_safety_defects": ["B2", "B3", "B4"],
+    "disposition_basis": "BLOCKED__NAMED_MEMORY_OR_TRUST_DEFECT"
+  }
+}

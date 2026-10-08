@@ -1,0 +1,58 @@
+{
+  "schema": "PYAT_HQ246_03_PARITY_CONFLICT_CASES_AND_POSITIVE_CEILING@1",
+  "method": "reviewer-written probes against a GENUINE production relation built by the pre-existing lawful F7 fixture; the native owner is built with the production semantic_hash/canonicalize/require_positive_authority and the exact production classes",
+  "parity_findings": {
+    "HQ246-P1_positive_decision_parity_failure": {
+      "severity": "BLOCKING_PARITY",
+      "observation": {
+        "python_resolver_decide_same_request": "AUTHORIZED (authorized=True)",
+        "native_owner_decide_same_request": "DISTINCT_BY_DEFAULT (authorized=False), reason 'no exact positive relation receipt for this kind/scope/use'"
+      },
+      "root_cause": "admit_relation computes the sealed relation object key at lines 618-627 using HARDCODED effective_scope = the string DEFAULT_RELATION_STATE ('DISTINCT_BY_DEFAULT') and directionality = 'SYMMETRIC'. The relation's actual effective_scope ('EXACT_BOUND_UNIVERSE_PAIR') and directionality are never used for the object key. stb_decide computes the request key from the caller's real effective_scope, so the two keys differ and the genuine candidate is never selected.",
+      "consequence": "native decide cannot reproduce Python's positive AUTHORIZED decision for any relation whose effective_scope is not the literal 'DISTINCT_BY_DEFAULT' -- i.e. for the real corpus. The 'byte-exact parity' claim does not hold for positive decisions.",
+      "why_the_author_court_missed_it": "the court's require test is conditional (`if d['state'] != 'AUTHORIZED': assert require raises`), so a permanently non-AUTHORIZED native result passes; and the parity test compares only states both sides produce with effective_scope={}, which never matches the hardcoded key and therefore never reaches the candidate loop"
+    },
+    "HQ246-P2_positive_path_crash_when_candidate_forced": {
+      "severity": "BLOCKING",
+      "observation": "calling native decide with effective_scope='DISTINCT_BY_DEFAULT' (the exact value used to seal the object key) DOES select the candidate and then crashes: exit 139; ASAN SEGV (WRITE) in PyObject_Call from validate_positive:1141",
+      "consequence": "the only way to reach the native positive path crashes before any decision is returned"
+    },
+    "HQ246-P3_multi_positive_CONFLICTING_AUTHORITY": {
+      "author_disclosure": "implemented and precedence-ordered but NOT exercised; the author names it a coverage gap",
+      "independent_result": "UNEXERCISABLE_AND_CRASHING in the frozen candidate: reaching validate_positive (required to classify a candidate as a positive) crashes at B2/B3, so the conflict branch cannot be produced",
+      "verdict": "must not be counted as PASS; not proven"
+    },
+    "HQ246-P4_negative_path_error_identity_divergence": {
+      "case": "unknown relation kind + a relation_ref that is not in custody",
+      "python": "SourceRelationIntegrityError: unknown P07 relation kind",
+      "native": "SourceRelationIntegrityError: exact SourceUniverseRelation unavailable from authenticated owner custody; no label/ID/latest/default inference",
+      "root_cause": "native checks is_p07_kind AFTER candidate selection/resolution (line 1493), whereas the accepted Python checks the kind first",
+      "consequence": "wrong negative type/message for a reachable input; violates the 'exact negative type/message' parity requirement"
+    },
+    "HQ246-P5_require_error_shape": {
+      "detail": "native stb_require raises SourceRelationAuthorizationError with the decision reason as the message and does NOT set the .state attribute; the accepted Python require raises SourceRelationAuthorizationError(decision.state, ...) carrying the state",
+      "consequence": "a caller inspecting exc.state gets AttributeError/None on the native path"
+    },
+    "HQ246-P6_descriptive_kind_message": {
+      "detail": "the descriptive-kind branch in stb_decide (lines 1497-1504) matches the Python message using the actual kind, so the reachable descriptive path is correct; validate_positive's descriptive guard hardcodes 'PROVENANCE_ORIGIN' but is unreachable because stb_decide handles descriptive kinds first",
+      "verdict": "no reachable divergence observed"
+    },
+    "HQ246-P7_state_vocabulary": {
+      "author_claim": "measured reachable union is 17 strings while the commission says 12 states; the precedence ladder is 6",
+      "independent_position": "the string-set argument is reproducible in principle, but the POSITIVE and validate_positive-derived strings are unreachable in the frozen candidate because of P1/P2/B2/B3. Counting them as 'reachable' overstates the exercised set.",
+      "states_actually_reachable_without_crashing": ["DISTINCT_BY_DEFAULT", "UNKNOWN_OVERLAP", "PROVENANCE_ONLY", "ALIAS_ONLY", "DENIED/EXPIRED_OR_STALE/NOT_APPLICABLE/UNKNOWN_AUTHORITY/OUT_OF_SCOPE via non-AUTHORIZED candidate decision values", "CONFLICTING_AUTHORITY only if >1 candidate without validate_positive, which the corpus does not build"],
+      "states_NOT_established": ["AUTHORIZED", "the validate_positive-derived UNKNOWN_AUTHORITY / OUT_OF_SCOPE outcomes for AUTHORIZED-but-nonpositive candidates"]
+    }
+  },
+  "positive_ceiling": {
+    "native_positive_authority_issued": false,
+    "native_authorized_decision_produced_outside_quarantine": false,
+    "trusted_require_positive_authority_actually_called_successfully": false,
+    "note": "the native owner is never imported by production P07/F7; PRODUCTION_INTEGRATED=0; this lane claims no T2 and no F7 four-forgery pass"
+  },
+  "verdict": {
+    "parity_byte_exact_claim_holds": false,
+    "positive_path_functional": false,
+    "conflict_precedence_proven": false
+  }
+}
