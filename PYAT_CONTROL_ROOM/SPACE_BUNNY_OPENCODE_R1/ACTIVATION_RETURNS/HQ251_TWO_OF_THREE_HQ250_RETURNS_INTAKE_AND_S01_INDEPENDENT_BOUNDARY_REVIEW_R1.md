@@ -1,0 +1,41 @@
+# VOZHD PYAT — HQ251 two-of-three HQ250 returns intake and independent service-boundary review — R1
+
+**DECISION:** `HQD-2026-10-08-251`  
+**STATUS:** `RATIFIED_DOCUMENTARY_EVIDENCE_INTAKE__S01/S02_BOUNDED__S03_OUTSTANDING__NEW_INDEPENDENT_S01_REVIEW_ISSUED`  
+**CONTROL PARENT:** `f56bfa9afe3373126ceaef4fabf0ec81f09dbc59`; immutable HQ250 packet `fbd261a21e9dc6c3177f6e9a8a11b8a3f862d208`.  
+**SEMANTIC PRE-MAIN:** `1f47063c3205a45888b3c55e81e7485943ed1390` unchanged.
+
+## Return lineage and exact adopted grain
+
+**S01**: `agent/rabochii-pyat-hq250-s01-selected-service-operation-r1 @ b3f28aad418150f4cadd54bcf6a6c2ab34a35898` is one commit ahead/zero behind commission `9df4fdc05242f628ebcd7318cc9052f1860cf882`. Four exact commissioned artifacts, all ADDED within `WORKER_RETURNS/PYAT-HQ250-S01-SELECTED-SERVICE-OPERATION-R1/`; no code or HQ write. HQ accepts **bounded documentary source code location and concrete next discrimination**, not a new target-use permission, adopted service bridge or executed receipt. The report identifies:
+- `U1_SELECTED_T1_USE`, EE14/model-use authority: exact adopted fixture-purpose target-use, permissible rich service consumer and release/replay claim **unbound**.
+- `U2_C1_AUTHENTICATED_INGRESS`, EE14 service/product-custody boundary: accepted `compose_positioned_subject_possibility` produces legitimate `PossibilitySliceEvidence` and calls ordinary F8; adopted `evaluate_bound_positioned_subject_possibility` authenticates supplied applicability/rule then delegates **caller-supplied** evidence unchanged. A positive rich producer→authenticated serving use/receipt has not been independently demonstrated; independent challenge is required before issuing a service-owned adapter. Preserve separate rich C1 lineage because standalone F8 result alone cannot hold full ancestry/geometry.
+- `U3–U6`: GT2 V558 `CONTEXT` co-presentation, GT2-specific M5 `CURRENT`/as-of (not synonymous with `RESOLUTION_COMPLETE`), B5/C1 product release/invalidation/replay and authentic negative→F8 vs lawful non-invocation remain independent exact owner questions. **Do not make optional context co-presentation a required prerequisite for the first local rich C1→F8 fixture receipt** if the selected target only asserts empirical conditional possibility.
+
+Direct HQ check: `rawlsing_next/pre553_analytical_composition.py` blob `604c8d591d4cc2b646e9b149cdb233fc9d69cf6b` lines 1115–1135, `rawlsing_next/pre553_service_f8_source_scope_binding.py` blob `4ba00b8ecf73f70ad0f6481e255fd0117744418a` lines 644–760/894–961, and `rawlsing_next/pre553_service_source_applicability.py` blob `3e40caca29e8c96ee1f412f919cfc7dba63f96c4` docs confirm applicability is not model/use permission or internal-evidence sufficiency. **Implementation absence is not proved** by a missing accepted integrated receipt. Need actual discriminatory court.
+
+**S02**: `agent/rabochii-pyat-hq250-s02-afr5-q86c-bounded-feasibility-r1 @ 0b43f0ef30940e1ffb39886dfdc28acef20aeff9` one ahead/zero behind commission `1f70126ebdd62a44bc54f47e0ae32231a41b2a54`. Four exact artifacts, all ADDED within `WORKER_RETURNS/PYAT-HQ250-S02-AFR5-Q86C-FEASIBILITY-R1/`, no code/HQ/raw writes. HQ accepts **scientific documentary plausibility with an exact missing source binding**, not new Rawlsing source semantics or an actual triple:
+- Q86A Y born in country with one citizen and one noncitizen parent; Q86B A born with two noncitizen parents; Q86C B wife of national man born outside. All are **respondent attitudes about hypothetical citizenship**, not respondent demographic positions. Public R5 codebook gives candidate codes 0/1/9/997/998/-1 and five not-asked countries ALG/EGY/MRC/SUD/TUN; public document does not bind the exact frozen file/version to source-carrier.
+- Existing frozen `rawlsing_next/wave1_r5_q86_c11_projection.py` blob `d96933180d310b4078f23127bb5a97a3677728d1` explicitly supports **only Q86A/B**. Existing accepted pair `R_AB` has 19,210 members and member digest `0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b` in **11 eligible source-specific countries**. Public five-country exclusion is not the complete accepted `R_AB` risk authority. Exact independently exposed Q86C/source-release qimpl/respondent identity/routing and triple `R_ABC` are absent from the accepted current projection; no SOURCE_INTRINSIC_NA or genuine empirical null is inferred.
+- **If** Q86C is source verified as a six-state separately exposed measure and the operation uses the exact `R_AB ∩ R_C` membership, 216 typed triple cells are a *shape hypothesis*, **not counts or permission**. New 3-way risk set need not equal 19,210, and new pair marginal must be recomputed on the triple-common risk, not silently equated to old A/B. Never construct triple from pair-marginal multiplication, broaden GT2/V555 or treat raw integer counts as weighted population inferences. Any actual source operation/warrant is separate and not issued.
+
+**S03**: `agent/rabochii-pyat-hq250-s03-evs-one-construct-comparability-r1` remote HEAD `59c5435e3dc36c4966f8a7147db6715c25d91af2` **identical** to commission tip at independent checks. Therefore classification: `UNCHANGED_REMOTE__NO_RETURN_BANKED__LOCAL_SESSION_STATUS_UNKNOWN`. It remains an active authorized documentary lane, **not failed, cancelled, nor completed**. Do not pollute HQ source assertions with an imagined matched pair/construct. No attempt to relaunch or replace this unchanged lane here.
+
+## Independent exact next step, separately issued
+
+**R01** — independent S01 source-EE14/model-use and rich C1→authenticated F8 seam discriminator. Branch `agent/reviewer-pyat-hq251-s01-t1-use-and-c1-f8-ingress-r1`, exact commission tip `ccb035404ab5a553ab35d6202b03dc5aeda758e7`; commission `WORKER_COMMISSIONS/PYAT-HQ251-S01-T1-USE-AND-C1-F8-INGRESS-INDEPENDENT-REVIEW-R1/00_COMMISSION.md`. Browser/GitHub Sol High, Library NO, no user Mac/native/source runtime. This is a **narrow** reviewer: find an actually adopted fixture-purpose use or exact missing authority, distinguish intentional caller-evidence interface from safe genuine producer custody, propose one discriminating fixture-based first positive/hostile court and exact test terrain. It may refute S01's missing-bridge premise if accepted receipt exists. **No adapter implementation**, no self-minted use permission or claims of runtime exploitation.
+
+**S02 follow-on:** no new source warrant, qimpl/operation adoption, Library/raw access or product claims until a separately grounded source-representation/measurement/routing authority and independent review. A documentary source product warrant docket is available for future HQ/EE01–EE04 owner decision, not yet issued. Its useful raw-execution prerequisites are named; do not reflexively order broad C4 or new canary.
+**S03:** continue as originally issued; independent intake when actual pushed return exists.
+
+## Program sequencing
+
+1. R01 can execute independently of pending S03/source input; source-free local T1 discrimination is not automatically gated on Q86C or EVS.
+2. Exact EE14 use/admissibility decision and genuine C1→authenticated F8 provenance check precede narrow local T1 test engineering/qualification. If accepted existing APIs suffice, do not invent adapter.
+3. Real S1/S2 SRC02 triple source production only under an exact separate survey/measurement/routing/warrant, source host, current output and candidate-neutral oracle, followed by independent qualification; no raw survey now.
+4. S03 competent EVS matched construct and second independent structural source family remain required T2 inputs; no early E1/E2 execution, temporal P07 bypass, AT07 issuer/root, new OCI/OCO5 world, or V3 actors.
+5. D4a independent exact-R3 quarantine review remains optional parallel **once reviewer and governed native runtime are bound**, not automatically launched on this web surface. F7 construction leak/T1 transitive helper trust and security adoption still blocked.
+
+**NEXT:** `LAUNCH_HQ251_R01_NARROW_SERVICE_USE_INGRESS_REVIEW__AWAIT_S03_BANK_AND_RECONCILE_WHEN_PUSHED__NO_PRODUCTION_SURVEY_NATIVE_OR_ISSUER`.
+
+**TERMINAL:** `HQ251_S01_S02_DOCUMENTARY_RETURNS_INTAKEN__S03_UNCHANGED_ACTIVE__R01_INDEPENDENT_ISSUED__SOURCE_FREE_T1_AND_EMPIRICAL_T2_NOT_YET_APPROVED`.
