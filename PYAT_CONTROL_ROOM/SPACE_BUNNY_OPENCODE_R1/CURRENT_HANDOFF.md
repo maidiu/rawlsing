@@ -1,3 +1,30 @@
+# HQ244 — SPACE BUNNY F7 NATIVE PARTIAL / N10E R2 PROPOSED WARRANT — 2026-10-07
+
+**HQ DECISION:** `HQD-2026-10-07-244`; return intake ratified. No security or issuer authority adoption.
+
+**F7 RETURN:** `agent/space-bunny-pyat-hq242-f7-t1-native-p07-owner-implementation-r1 @ d6ce7101c76c85bd358b7c59568935ec69dfa912` — `F7_T1_NATIVE_P07_OWNER_PARTIAL__NAMED_API_OR_NATIVE_BLOCKER`. Governed C-extension build/import probe worked; NO native P07 owner/complete adjudicator/parity/04G closure exists.
+
+### NEW — SPACE BUNNY OPENCODE ON MAC — F7 STAGE A NATIVE NONAUTHORIZING CUSTODY + EXACT RESOLVE
+**AGENT / MODEL:** Space Bunny in OpenCode; Space Bunny Max preferred (verify installed model/variant locally)  
+**MACHINE:** governed Mac, isolated shared-store sparse worktree  
+**BRANCH:** `agent/space-bunny-pyat-hq244-f7-native-owner-stage-a-custody-resolve-r1`  
+**EXACT COMMISSION TIP:** `e7822b37f22370b83d921baab1b31bc6aa405b41`  
+**COMMISSION:** `WORKER_COMMISSIONS/PYAT-HQ244-F7-NATIVE-OWNER-STAGE-A-CUSTODY-RESOLVE-R1/00_COMMISSION.md`  
+**HOLD:** nonauthorizing quarantined prototype; NO production P07/F7 substitution or owner claim; F7-RR-04G OPEN; later actual native adjudicator+parity+hostile court mandatory.
+
+**N10E RETURN:** `agent/rabochii-pyat-hq242-n10e-at07-issuer-warrant-correction-r2 @ cdef72ddc805e3ed943bac9f9241467454df8030` — `C1_AT07_FIXTURE_ISSUER_WARRANT_R2_CANDIDATE_COMPLETE__READY_FOR_HOSTILE_REVIEW`. HQ-root bootstrap and mandatory C1→N10E handoff corrected AS PROPOSED CONTRACT, no adoption.
+
+### NEW — BROWSER/GITHUB GPT-5.6 SOL HIGH — N10E AT07 ISSUER WARRANT R2 INDEPENDENT HOSTILE REVIEW
+**AGENT / MODEL:** Browser/GitHub independent authority hostile reviewer, GPT-5.6 Sol High  
+**BRANCH:** `agent/reviewer-pyat-hq244-n10e-at07-issuer-warrant-r2-r1`  
+**EXACT COMMISSION TIP:** `eca9de918c31a4fffeda10ffd7b9acb36f1b29b4`  
+**COMMISSION:** `WORKER_COMMISSIONS/PYAT-HQ244-N10E-AT07-ISSUER-WARRANT-R2-INDEPENDENT-HOSTILE-REVIEW-R1/00_COMMISSION.md`  
+**HOLD:** warrant remains proposed, no active issuer/root/credential or R4.
+
+Run both in parallel; preserve distinct host, model and source-free scope.
+
+---
+
 # HQ243 — CORRECTED F7 WORKER ROUTING — 2026-10-07
 
 **F7 — LAUNCH IN SPACE BUNNY / OPENCODE ON THE MAC, NOT A BROWSER GPT-5.6 SOL WORKER.**  
