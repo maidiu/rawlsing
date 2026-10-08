@@ -1,0 +1,308 @@
+{
+  "schema": "PYAT_HQ239_C1_N10E_EXACT_ENTRYPOINT_CUSTODY_CROSSWALK@1",
+  "status": "DOCUMENTARY_PROSPECTIVE_DELTA__NO_CURRENT_CREDENTIAL_GATE",
+  "exact_site_tokens": {
+    "C1_STABLE_RULE_COMPATIBILITY_CONSTRUCTION": "SOURCE_FREE_C1_01_COMPATIBILITY",
+    "N10E_PROVIDER_AND_LIFECYCLE": "SOURCE_FREE_N10E_LIFECYCLE"
+  },
+  "actual_edges": [
+    {
+      "edge": "AT07_SOURCE_FREE_TEST_FIXTURE",
+      "entry": "pytest at07(monkeypatch), lines 105-145",
+      "current": "Construct _rows() 54/6/8/32; replace i03._auth during i03._build_source; seal C11 source; assert R8 refs; AuthorityRegistry((*source[authorities],query_auth)); returns (source,query_auth,registry)",
+      "evidence": {
+        "path": "rawlsing_next/tests/test_pre553_analytical_composition.py",
+        "blob": "2210fc1b4cb99552aafc8797c12d780a78e7983b",
+        "ranges": [
+          "105-145",
+          "194-241",
+          "298-325"
+        ]
+      },
+      "credential_gate": "NONE",
+      "prospective": "Approved C1 fixture owner must issue once for immutable new build and return an issuer-verified instance handle before _model; NOT issue from test or caller"
+    },
+    {
+      "edge": "C1_PRODUCER_CONSUMER_AND_WITNESS",
+      "entry": "_producer/_consumer/_witness; source-free direct branch",
+      "current": "_consumer binds ConditionerBinding(..., null); 16-key witness hashes query,predicate,subject/pair/source/release,null effective time; identities follow R8",
+      "evidence": {
+        "path": "rawlsing_next/tests/test_pre553_analytical_composition.py",
+        "blob": "2210fc1b4cb99552aafc8797c12d780a78e7983b",
+        "ranges": [
+          "105-145",
+          "194-241",
+          "298-325"
+        ]
+      },
+      "credential_gate": "NONE",
+      "prospective": "Independent registrar must compare actual query, source release, conditioner and witness to build receipt; ref-only matching without origin insufficient"
+    },
+    {
+      "edge": "C1_MODEL_CONSTRUCTION",
+      "entry": "_model(source), lines 298-304; also N10E build_model_rule(source), lines 475-483",
+      "current": "Construct PositionedSubjectPossibilityModelRule(_fixture_authority(FIXTURE_ONLY_POSITIONED_SUBJECT_MODEL),_fixture_authority(FIXTURE_ONLY_WALKBACK_POLICY),(source[universe].ref,),(),()); no issuer credential or preconstruction validation",
+      "evidence": [
+        {
+          "path": "rawlsing_next/tests/test_pre553_analytical_composition.py",
+          "blob": "2210fc1b4cb99552aafc8797c12d780a78e7983b",
+          "ranges": [
+            "105-145",
+            "194-241",
+            "298-325"
+          ]
+        },
+        {
+          "path": "rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+          "blob": "0e384f72fa615dc72a0dcb08a36472a64b7b1e4a",
+          "ranges": [
+            "229-286",
+            "420-482",
+            "485-527"
+          ]
+        },
+        {
+          "path": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+          "blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+          "ranges": [
+            "390-465"
+          ]
+        }
+      ],
+      "credential_gate": "NONE",
+      "prospective": "Provide separate verified owner-bound factory/gate for exact owner-native stable rule, required context locator and authenticated C1 use-site; issue/resolve before stable-rule creation; this cannot be achieved by adding a N10E request field alone"
+    },
+    {
+      "edge": "C1_COMPATIBILITY_CONSUMPTION",
+      "entry": "_execute -> compose_positioned_subject_possibility, production at lines 1008-1095",
+      "current": "Pass repository,empirical_query,predicate,authority_registry,release_refs,consumer_query,model_rule,condition_binding_witness; direct I03 production then accepted witness verification and public consumer; no context gate",
+      "evidence": {
+        "path": "rawlsing_next/pre553_analytical_composition.py",
+        "blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+        "ranges": [
+          "160-280",
+          "1008-1095"
+        ]
+      },
+      "credential_gate": "NONE",
+      "prospective": "At owner composition ingress, require already owner-authenticated SOURCE_FREE_C1_01_COMPATIBILITY context and bound stable rule; reject bypass from hand-constructed rule; restrict only newly authorized AT07 model-rule path without silently breaking unrelated accepted routes"
+    },
+    {
+      "edge": "N10E_SOURCE_FREE_PROVIDER_CASE",
+      "entry": "build_provider_case(direction,variant=None), lines 485-527",
+      "current": "frozen_at07_source builds separate synthetic instance; build producer/consumer/witness; build_model_rule(source); returns eight effective provider input components; changed-source variant available",
+      "evidence": {
+        "path": "rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+        "blob": "0e384f72fa615dc72a0dcb08a36472a64b7b1e4a",
+        "ranges": [
+          "229-286",
+          "420-482",
+          "485-527"
+        ]
+      },
+      "credential_gate": "NONE",
+      "prospective": "Future accepted owner should forward exact independently issued fixture build instance and N10E-specific use ref across case assembler; never infer registration from frozen oracle or synthetic rows"
+    },
+    {
+      "edge": "N10E_PUBLIC_REQUEST",
+      "entry": "EmpiricalPossibilityProviderRequest, lines 140-215",
+      "current_fields": [
+        "repository",
+        "empirical_query",
+        "predicate",
+        "authority_registry",
+        "release_refs",
+        "consumer_query",
+        "model_rule",
+        "condition_binding_witness"
+      ],
+      "current": "identity_bindings() has producer/consumer/witness/model/query/release but not context/issuer/receipt",
+      "evidence": {
+        "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+        "blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+        "ranges": [
+          "140-215",
+          "220-367",
+          "473-659"
+        ]
+      },
+      "credential_gate": "NONE",
+      "prospective": "Add mandatory fixture_use_context_ref: ExactRef and owner-side verified context locator; bind issuer receipt/build-instance/site projection in request identity and validate BEFORE accepting an authoritative request; route token is derived from authenticated call boundary"
+    },
+    {
+      "edge": "N10E_PROVIDER",
+      "entry": "provide_empirical_possibility_slice, lines 531-631",
+      "current": "Eight keyword-only args -> request -> C1 compose -> receipt exact/refusal; no context field and no external registrar",
+      "evidence": {
+        "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+        "blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+        "ranges": [
+          "140-215",
+          "220-367",
+          "473-659"
+        ]
+      },
+      "credential_gate": "NONE",
+      "prospective": "Require verified N10E SOURCE_FREE_N10E_LIFECYCLE site, same registered C1 build instance and exact source/release/query/witness; validate before compose and prevent caller substitution; bind checked context to both exact and refused receipts; do not invent geometry"
+    },
+    {
+      "edge": "N10E_REPLAY",
+      "entry": "replay_empirical_possibility_slice, lines 634-659",
+      "current": "Eight args; reinvokes provider and matches result_identity_hash+material; absence of context allows same-output independently built instance to pass",
+      "evidence": {
+        "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+        "blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+        "ranges": [
+          "140-215",
+          "220-367",
+          "473-659"
+        ]
+      },
+      "credential_gate": "NONE",
+      "prospective": "Add mandatory context ref and owner resolution to replay; verify historical issuer/instance/site and receipt determinants, not only equal numerical result/geometry; independent context mismatch refuses before provider recomputation"
+    },
+    {
+      "edge": "N10E_RECEIPT",
+      "entry": "EmpiricalPossibilitySliceProviderReceipt, lines 220-367, _build_receipt 473-529",
+      "current": "Receipt names producer inputs, source/release, consumer witness, model_rule_hash, evidence, result/refusal; no build receipt/context issuer",
+      "evidence": {
+        "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+        "blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+        "ranges": [
+          "140-215",
+          "220-367",
+          "473-659"
+        ]
+      },
+      "credential_gate": "NONE",
+      "prospective": "Add exact verified context ref, issuer warrant ref, immutable registration receipt, build-instance ref and use-site proof into receipt identity; wire to provider result and refusal lineage"
+    },
+    {
+      "edge": "C1_03R_DEPENDENCY_AND_LIFECYCLE",
+      "entry": "AnalyticalDependencyRegistry.register/build_graph lines 376-462; Z06 SemanticDeterminantGraph, promote_current/rollback_current",
+      "current": "Registers genuine consumed determinant authority/exact refs and owner governed lifecycle; no right to mint fixture-use credentials",
+      "evidence": [
+        {
+          "path": "rawlsing_next/pre553_analytical_replay_dependency.py",
+          "blob": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+          "ranges": [
+            "1-47",
+            "376-462"
+          ]
+        },
+        {
+          "path": "rawlsing_next/pre553_authority_maintenance.py",
+          "blob": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+          "ranges": [
+            "1-65",
+            "145-235",
+            "527-625",
+            "1819-1880"
+          ]
+        }
+      ],
+      "credential_gate": "NONE",
+      "prospective": "Register verified fixture authority/context/build-instance determinant edges actually consumed, and preserve noncurrent outcomes under existing Z06; any issuer revision or invalidation requires explicit governed lifecycle, not ad hoc currentness inference"
+    },
+    {
+      "edge": "I01_AUTHORITY_REGISTRY",
+      "entry": "AuthorityRegistry.resolve_exact and require_positive_authority, lines 162-280",
+      "current": "Validates existing snapshots and exact scopes, current AUTHORITY_KINDS 18; no new model-rule kind, no fixture-use registration or issuer authenticator",
+      "evidence": {
+        "path": "rawlsing_next/pre553_empirical_authority.py",
+        "blob": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+        "ranges": [
+          "25-44",
+          "96-208",
+          "212-280"
+        ]
+      },
+      "credential_gate": "NOT_COMPETENT",
+      "prospective": "After separate HQ warrant/adoption, have kind-specific validator resolve model snapshot AND independently trusted fixture context; generic I01 resolution alone cannot certify a fixture registrar"
+    },
+    {
+      "edge": "RUNTIME_BINDING",
+      "entry": "pre553_runtime_context.bind_runtime",
+      "current": "Binds caller-given Pre553RuntimeAuthoritySet, optional repo and catalog identity for synchronous evaluation",
+      "evidence": {
+        "path": "rawlsing_next/pre553_runtime_context.py",
+        "blob": "4fc50793871e176f164442c04ef2501eba9d5dfa",
+        "ranges": [
+          "1-76"
+        ]
+      },
+      "credential_gate": "NOT_COMPETENT",
+      "prospective": "No reuse as authority without separate explicit competence; passing a RuntimeBinding is still caller-origin without registrar proof"
+    }
+  ],
+  "minimum_complete_delta": [
+    "1. HQ-authorized exact fixture-context issuer, its immutable registration transition, trusted independent registry/verifier and build-instance receipt first; no current owner holds these powers",
+    "2. Source-free C1 assembly has owner-controlled registration before construction and returns a non-self-attesting build-instance credential plus bound C1 use-site reference",
+    "3. Stable rule owner factory and C1 direct compatibility ingress must require independent resolution before creation/use, with actual query/witness effective context cross-checks",
+    "4. N10E fixture handoff and request must retain the SAME registered build-instance provenance with a distinct N10E site use; required fixture_use_context_ref alone is necessary but insufficient",
+    "5. N10E provider and replay must independently validate before producer/consumer work and include trusted context/issuer/build receipt in request, receipt, result and replay identities",
+    "6. Z06/C1-03R dependent lifecycle must retain genuine context/authority determinant edges where consumed; no invented issuer grant by registering a product"
+  ],
+  "no_prod_code_changed": true,
+  "evidence": [
+    {
+      "path": "rawlsing_next/tests/test_pre553_analytical_composition.py",
+      "blob": "2210fc1b4cb99552aafc8797c12d780a78e7983b",
+      "ranges": [
+        "105-145",
+        "194-241",
+        "298-325"
+      ]
+    },
+    {
+      "path": "rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+      "blob": "0e384f72fa615dc72a0dcb08a36472a64b7b1e4a",
+      "ranges": [
+        "229-286",
+        "420-482",
+        "485-527"
+      ]
+    },
+    {
+      "path": "rawlsing_next/pre553_analytical_composition.py",
+      "blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "ranges": [
+        "160-280",
+        "1008-1095"
+      ]
+    },
+    {
+      "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+      "blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "ranges": [
+        "140-215",
+        "220-367",
+        "473-659"
+      ]
+    },
+    {
+      "path": "rawlsing_next/pre553_analytical_replay_dependency.py",
+      "blob": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+      "ranges": [
+        "1-47",
+        "376-462"
+      ]
+    },
+    {
+      "path": "rawlsing_next/pre553_empirical_authority.py",
+      "blob": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+      "ranges": [
+        "25-44",
+        "96-208",
+        "212-280"
+      ]
+    },
+    {
+      "path": "rawlsing_next/pre553_runtime_context.py",
+      "blob": "4fc50793871e176f164442c04ef2501eba9d5dfa",
+      "ranges": [
+        "1-76"
+      ]
+    }
+  ]
+}
