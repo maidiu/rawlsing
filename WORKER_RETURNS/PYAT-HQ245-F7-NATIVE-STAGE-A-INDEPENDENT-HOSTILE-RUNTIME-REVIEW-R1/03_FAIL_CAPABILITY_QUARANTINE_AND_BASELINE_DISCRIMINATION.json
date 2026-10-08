@@ -1,0 +1,112 @@
+{
+  "schema": "PYAT_HQ245_03_FAIL_CAPABILITY_QUARANTINE_AND_BASELINE_DISCRIMINATION@1",
+  "fail_capability": {
+    "standard_build_sha256": "94683dd76cfa9c4d76958ef14f006f97616e0b082b4510cbea38768a8047fd04",
+    "standard_build_court": "39 passed",
+    "fault_inject_build": {
+      "flag": "-DSTAGE_A_FAULT_INJECT",
+      "sha256": "11fde8249901029a12bba496576b4f0fca388a54790b680b2825c205c1eb6419",
+      "court_result": "2 failed, 37 passed",
+      "tests_flipped_red": [
+        "test_native_custody_detects_post_seal_substitute_object",
+        "test_native_custody_detects_post_seal_ref_swap"
+      ]
+    },
+    "restore": {
+      "recipe_rerun_without_macro": true,
+      "restored_sha256": "94683dd76cfa9c4d76958ef14f006f97616e0b082b4510cbea38768a8047fd04",
+      "court_after_restore": "39 passed"
+    },
+    "fault_macro_reachability": {
+      "occurrences_outside_workers": "only rawlsing_next/_p07_native_owner_stage_a.c line 410 inside #ifdef STAGE_A_FAULT_INJECT",
+      "any_committed_recipe_defines_it": false,
+      "binary_committed": false,
+      "fault_injection_binary_left_in_import_position": "no; the standard build was rebuilt in place and re-verified"
+    },
+    "court_is_non_vacuous": true
+  },
+  "quarantine_audit": {
+    "namespace": "rawlsing_next._p07_native_owner_stage_a",
+    "production_P07_blob": "8053d30d306a3654ebf563043088311ff390bb2b (unchanged)",
+    "production_F7_blob": "6f6b462b1cdef54d7989f15452473383c1661594 (unchanged)",
+    "production_modules_reference_native_module": false,
+    "native_module_imports_production": false,
+    "git_diff_vs_stage_a_base_for_production_and_accepted_tests": "empty",
+    "committed_binaries": "none",
+    "non_authorizing_ceiling_held": true,
+    "custody_only_capsule_acceptable_end_state": false,
+    "f7_rr_04g_preserved_open": true
+  },
+  "baseline_discrimination": {
+    "provenance": "HQ242 baseline normalized digest 278854ee94fadfd57284a572441522fb56105081f89af431b17ec2e556ace6a9; HQ244 reported its own digest 72d0a5ca347d71f207a77bca3609dfa5931a3c6f29224a2f3f860ebc3ab09ffe with 16 errors vs 7",
+    "independent_runs": [
+      {
+        "id": "RUN1_HQ244_exact_without_stageA",
+        "command": "<governed python3.11> -m pytest rawlsing_next/tests -q -p no:randomly --continue-on-collection-errors --ignore=rawlsing_next/tests/test_p07_native_stage_a_custody.py",
+        "summary_line": "45 failed, 2691 passed, 55 warnings, 16 errors, 28 subtests passed in 1535.89s (0:25:35)",
+        "normalized_lines_strip": 63,
+        "normalized_sha256_strip": "52e07035328490042217e196fe4f4f7c9b349baccd2437ce01c1cb68162091eb",
+        "counts_match_hq244_claim": true
+      },
+      {
+        "id": "RUN2_HQ244_exact_with_stageA",
+        "command": "<governed python3.11> -m pytest rawlsing_next/tests -q -p no:randomly --continue-on-collection-errors",
+        "summary_line": "45 failed, 2730 passed, 55 warnings, 16 errors, 28 subtests passed in 1341.17s (0:22:21)",
+        "passed_delta_vs_run1": 39,
+        "normalized_sets_identical_to_run1": true,
+        "stage_a_in_failures_or_errors": 0
+      },
+      {
+        "id": "RUN3_accepted_9_exclusion_baseline_at_stageA_tip",
+        "command": "<governed python3.11> -m pytest rawlsing_next/tests/ -q <the same 9 environmental --ignore flags used by HQ230/HQ242>",
+        "summary_line": "45 failed, 2730 passed, 55 warnings, 7 errors, 28 subtests passed in 1256.86s (0:20:56)",
+        "normalized_lines_strip": 54,
+        "normalized_sha256_strip": "278854ee94fadfd57284a572441522fb56105081f89af431b17ec2e556ace6a9",
+        "matches_hq242_accepted_baseline": true
+      }
+    ],
+    "collection_inventory": {
+      "without_stageA_file": "2743 tests collected, 9 errors",
+      "with_stageA_file": "2782 tests collected, 9 errors",
+      "delta": "+39 tests, +0 errors",
+      "nine_error_files": [
+        "test_fiabc_lm1_r1e_n1_physical_boundary.py (pandas absent)",
+        "test_fiabc_lm2_r1e_bounded_mapping_recovery.py (pandas absent)",
+        "test_fiabc_run3_postmeasurement_repair_stack.py (pandas absent)",
+        "test_objective_consumer_bounded_evidence_d07.py (d07_bounded_loss_harness absent)",
+        "test_pre553_candidate_c_production_binding.py (pandas absent)",
+        "test_pre553_r4_compaction.py (pyarrow absent)",
+        "test_pre553_source_backed_c11_facade.py (pandas absent)",
+        "test_pre553_sr06_decoder_carrier.py (pandas absent)",
+        "test_subv_e_obl059_positive_applicability_r13_independent_review_r1_corrected.py (sibling file absent)"
+      ]
+    },
+    "explanation": {
+      "why_hq244_saw_16_errors": "HQ244's command omitted the 9 environmental --ignore flags and added --continue-on-collection-errors, so the 9 unimportable files surface as 9 collection ERROR entries on top of the 7 pre-existing runtime errors (9 + 7 = 16).",
+      "why_the_digest_differed": "the normalized set therefore contains 9 extra ERROR node entries; it is a different set from the accepted baseline, not a regression.",
+      "does_stage_a_add_new_errors": false,
+      "does_stage_a_add_new_failures": false,
+      "stage_a_adds_exactly_its_own_39_passing_tests": true
+    },
+    "author_digest_reproducibility": {
+      "author_claimed_digest": "72d0a5ca347d71f207a77bca3609dfa5931a3c6f29224a2f3f860ebc3ab09ffe",
+      "independent_digest_over_the_same_command_and_normalization_strip_sort": "52e07035328490042217e196fe4f4f7c9b349baccd2437ce01c1cb68162091eb",
+      "alternative_normalizations_tried": {
+        "no_strip_sorted": "52e07035328490042217e196fe4f4f7c9b349baccd2437ce01c1cb68162091eb",
+        "node_ids_unique_sorted": "9804511e34c85724f650ad80849ea13d216051bd55b922e922d2fdaaab2a9136",
+        "strip_unique_sorted": "fa45ff1392ea5aee6e3039db5d8eac56848ff11b9b3b53d6debac6f952e95e8a",
+        "drop_leaked_ERROR_colon_line": "11257a7263ecc08eb3a25b5341c1a6dd9a23d849c9b066d51e1767ac4ae10249"
+      },
+      "match": false,
+      "verdict": "the author's normalized digest is NOT reproducible from the committed procedure under four natural normalizations. The counts and the collection inventory ARE reproducible. This is an evidence-documentation defect in HQ244's artifact, not evidence of a hidden regression; it is named rather than smoothed."
+    },
+    "true_evidence_ceiling": "This is machine-local governed-interpreter evidence. No optional dependency was installed and no test was silently excluded to manufacture a match. The accepted 278854ee baseline reproduces exactly only under the same 9 environmental exclusions used to define it."
+  },
+  "verdict": {
+    "fail_capability_demonstrated": true,
+    "quarantine_held": true,
+    "accepted_baseline_reproduced_with_same_exclusions": true,
+    "stage_a_adds_zero_new_errors_or_failures": true,
+    "author_digest_reproduced": false
+  }
+}

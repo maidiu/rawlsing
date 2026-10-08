@@ -1,0 +1,79 @@
+{
+  "schema": "PYAT_HQ245_02_INDEPENDENT_HOSTILE_CUSTODY_AND_CRASH_REPRODUCTIONS@1",
+  "independence_statement": "All probes below were written by the HQ245 reviewer. They do not import or reuse the author's Stage A test module or any of its helpers. Author's tests were run separately only as a baseline.",
+  "reproduction_scripts": [
+    {"path": "reproduction/hq245_crash_evil_list_len.py", "purpose": "deterministic segfault via list-subclass __len__ lie"},
+    {"path": "reproduction/hq245_len_lie_characterization.py", "purpose": "under/over length lie, tuple subclass, factory refusal"},
+    {"path": "reproduction/hq245_hostile_probes.py", "purpose": "P1-P9 custody/invariant probes and leak measurements"},
+    {"path": "reproduction/hq245_stress_and_malformed.py", "purpose": "randomized/malformed constructor and resolve stress"},
+    {"path": "reproduction/hq245_resolve_leak_differential.py", "purpose": "resolve-path memory differential"},
+    {"path": "reproduction/hq245_asan_probe.py", "purpose": "ASAN reproduction of the OOB read"}
+  ],
+  "blocking_crash_reproduction": {
+    "script": "reproduction/hq245_crash_evil_list_len.py",
+    "input": "class EvilList(list): def __len__(self): return 5  -- constructed over a 1-element list",
+    "call": "StageAOwner.__new__(StageAOwner).__init__(relations=EvilList([Rel()]), authority_registry=object(), trusted_semantic_hash=lambda x: 'f'*64)",
+    "observed": "SIGSEGV, shell exit 139, three consecutive runs 139/139/139",
+    "asan_observed": "AddressSanitizer: SEGV on unknown address 0x8 (READ); PyObject_GetAttrString+0xe <- StageAOwner_init _p07_native_owner_stage_a.c:265; rdi=0x0",
+    "verdict": "native memory-safety defect reachable from ordinary Python"
+  },
+  "length_lie_characterization": {
+    "list_subclass_len_over_report": "SIGSEGV (exit 139)",
+    "list_subclass_len_under_report": "no crash; n_relations admitted = 1 for a 3-element subclass (silent truncation)",
+    "tuple_subclass_len_over_report": "no segfault in this run, but the loop still indexed past the true end and raised 'relation[1] must expose ref' from garbage memory -- an out-of-bounds read either way",
+    "exact_list_control": "n_relations=1, no crash",
+    "module_factory_build_stage_a_owner_with_subclass": "REFUSED with TypeError ('requires an exact list/tuple of relations') because the factory uses Py_TYPE(relations) == &PyList_Type",
+    "conclusion": "the bounds bug lives in the class __init__ path, not the convenience factory; the type is public and __new__ + __init__ is normal Python"
+  },
+  "custody_and_invariant_probes": {
+    "P1_registry_is_decorative": {
+      "observed": "authority_registry=42 accepted; owner seals",
+      "mechanism": "the only check is `registry == Py_None`; registry content is never read; registry_key stores Py_TYPE(registry)->tp_name",
+      "impact": "the claimed 'requires explicit registry' binding is nominal at Stage A"
+    },
+    "P2_custody_diagnostic_leak": {
+      "observed": "20000 calls -> +20000 surviving GC-tracked lists (164 -> 20164)",
+      "verdict": "unbounded refcount leak on a public method"
+    },
+    "P3_repeated_failing_init_leak": {
+      "observed": "2000 failing __init__ calls -> sys.getrefcount(trusted_semantic_hash) 9 -> 2009",
+      "verdict": "unbounded refcount/memory leak on the partial-failure/reinit path"
+    },
+    "P4_trusted_semantic_hash_never_invoked": {
+      "observed": "0 calls during construction and two resolve_exact calls",
+      "impact": "the advertised TCB seam is dead code at Stage A; it cannot re-verify any projection because it is never used"
+    },
+    "P5_identity_reverification_is_string_only": {
+      "observed": "a mutable stand-in admitted with fixed ref.key and content_hash, then its semantic_payload flipped from DENIED to AUTHORIZED_AFTER_SEAL, is still returned by resolve_exact as trusted (got is s)",
+      "impact": "re-verification detects only ref.key/content_hash string changes; it does not re-derive semantic_projection, consistent with the author's own caveat, and confirms a material edge case Stage B must close"
+    },
+    "P6_unsealed_new": {"observed": "resolve_exact on __new__-only object refused: 'stage A owner is not sealed'"},
+    "P7_ownership_transfer": {"copy": "refused", "deepcopy": "refused", "pickle": "refused", "subclass": "refused (not an acceptable base type)"},
+    "P8_non_authorizing": {
+      "decide": "raises NOT_IMPLEMENTED_NONAUTHORIZING_STAGE_A",
+      "require": "raises NOT_IMPLEMENTED_NONAUTHORIZING_STAGE_A",
+      "positive_symbols_present": [],
+      "module_AUTHORIZING": 0
+    },
+    "P9_source_vs_empty_victim": {
+      "source_resolves": true,
+      "empty_victim_resolve": "refused: 'exact SourceUniverseRelation unavailable from native owner custody; no label/ID/latest/default inference'",
+      "owner_presented_as_relation_input": "refused (TypeError)"
+    }
+  },
+  "stress": {
+    "script": "reproduction/hq245_stress_and_malformed.py",
+    "resolve_loop": "300000 valid resolves, no crash",
+    "malformed_resolve_loop": "200000 randomized malformed inputs (None, int, float, str, bytes, list, dict, partial mappings, non-unicode components, callables), no crash",
+    "malformed_constructor_loop": "50000 randomized malformed constructor inputs, no crash",
+    "reinit_on_sealed": "1000 attempts refused, sealed stays True, custody unchanged",
+    "resolve_path_memory_differential": "50000 vs 500000 resolves in fresh processes: maxrss 9961472 vs 9883648 bytes -> no leak attributable to resolve_exact",
+    "caveat": "the randomized fuzzer deliberately did not include a list/tuple subclass with a lying __len__; that case is the separate blocking crash reproduction above"
+  },
+  "verdict": {
+    "custody_invariants_hold_for_claimed_stage_a_scope_under_benign_inputs": true,
+    "native_crash_reachable": true,
+    "unbounded_leaks_present": true,
+    "author_tests_insufficient_as_independent_proof": true
+  }
+}

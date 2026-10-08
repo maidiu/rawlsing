@@ -1,0 +1,77 @@
+{
+  "schema": "PYAT_HQ245_05_FINAL_DISPOSITION@1",
+  "commission": "PYAT-HQ245-F7-NATIVE-STAGE-A-INDEPENDENT-HOSTILE-RUNTIME-REVIEW-R1",
+  "lane": "agent/reviewer-pyat-hq245-f7-native-stage-a-independent-runtime-r1",
+  "review_head": "11d7114ca695cf2d2cbd1444cb4a5a4a6a405cc0",
+  "reviewed_candidate": "agent/space-bunny-pyat-hq244-f7-native-owner-stage-a-custody-resolve-r1 @ 85144216e9ceb58f306d5624620ee42df34d1718",
+  "disposition": "F7_NATIVE_STAGE_A_INDEPENDENT_HOSTILE_RUNTIME_BLOCKED__MEMORY_SAFETY_OR_CUSTODY_INVALID",
+  "candidate_disposition_reviewed": "F7_NATIVE_STAGE_A_CUSTODY_AND_RESOLVE_READY__NONAUTHORIZING_FOR_STAGE_B",
+  "blocking_finding": {
+    "id": "HQ245-D1",
+    "title": "constructor out-of-bounds read -> deterministic CPython segfault",
+    "reproduction": "class EvilList(list): def __len__(self): return 5 ; StageAOwner.__new__(StageAOwner).__init__(relations=EvilList([Rel()]), authority_registry=object(), trusted_semantic_hash=lambda x: 'f'*64)",
+    "observed": "SIGSEGV, exit 139, 3/3 runs",
+    "asan": "SEGV READ at unknown address 0x8 in PyObject_GetAttrString <- StageAOwner_init _p07_native_owner_stage_a.c:265 (rdi=0x0)",
+    "root_cause": "PyList_Check/PyTuple_Check admit subclasses (line 236); n comes from the overridable PySequence_Size (line 241); PySequence_Fast builds the true-length sequence (line 259); the loop indexes it to n (lines 263-265)",
+    "author_test_gap": "the hostile-__len__ test uses a non-list duck type, so PyList_Check rejects it before PySequence_Size is reached; no list/tuple-subclass case exists in the 39-test court"
+  },
+  "named_defects": [
+    {"id": "HQ245-D2", "title": "custody_diagnostic leaks one list per call (missing Py_DECREF(rows))", "measured": "20000 calls -> +20000 surviving GC-tracked lists"},
+    {"id": "HQ245-D3", "title": "repeated failing __init__ leaks trusted_semantic_hash refs and the rels array", "measured": "2000 failing calls -> callable refcount +2000"},
+    {"id": "HQ245-D4", "title": "module-init second-AddObject failure double-decref / dangling static exception", "severity": "OOM-only, source-inspected"},
+    {"id": "HQ245-D5", "title": "no GC tracking/tp_traverse/tp_clear while holding strong PyObject refs", "severity": "latent cycle leak"},
+    {"id": "HQ245-D6", "title": "registry binding nominal: authority_registry=42 accepted; only tp_name stored"},
+    {"id": "HQ245-D7", "title": "trusted_semantic_hash stored but never invoked (0 calls): the advertised TCB seam is dead code"},
+    {"id": "HQ245-D8", "title": "identity re-verification is string-only; semantic payload mutation with unchanged ref.key/content_hash is returned as trusted"},
+    {"id": "HQ245-D9", "title": "author's broad normalized digest 72d0a5ca is not reproducible; independent digest over the same command is 52e07035"}
+  ],
+  "verified_positives": {
+    "build_reproduced_from_scratch": true,
+    "rebuilt_sha256": "94683dd76cfa9c4d76958ef14f006f97616e0b082b4510cbea38768a8047fd04",
+    "matches_author": true,
+    "deterministic": true,
+    "abi": "CPython 3.11.3 cpython-311-darwin x86_64",
+    "source_and_court_blobs_match_author": true,
+    "stage_a_court_39_passed": true,
+    "production_P07_24_and_F7_163_passed": true,
+    "non_subclassable": true,
+    "copy_deepcopy_pickle_refused": true,
+    "one_shot_reinit_refused": true,
+    "unsealed_refuses_resolve": true,
+    "empty_victim_refused": true,
+    "non_authorizing_stubs_raise_NOT_IMPLEMENTED_NONAUTHORIZING_STAGE_A": true,
+    "no_positive_authority_symbol": true,
+    "quarantine_held": true,
+    "fail_capability": "fault-inject build 2 failed / 37 passed; restore 39 passed",
+    "stress": "300000 valid + 200000 malformed resolves and 50000 malformed constructor calls with no crash; resolve path shows no memory growth"
+  },
+  "baseline_discrimination": {
+    "accepted_digest_278854ee_reproduced": true,
+    "reproduced_under": "same 9 environmental exclusions as HQ230/HQ242",
+    "stage_a_adds_new_errors": false,
+    "stage_a_adds_new_failures": false,
+    "stage_a_adds_exactly_39_passing_tests": true,
+    "hq244_16_errors_explained": "9 unexcluded environmental collection errors + 7 pre-existing runtime errors",
+    "author_digest_reproduced": false
+  },
+  "not_claimed": [
+    "no native adjudicator exists; decide/require are unconditional failures",
+    "no native T2 guarantee",
+    "the F7 four-forgery court is NOT passed",
+    "the five lawful positives are NOT qualified at Stage A",
+    "F7-RR-04G remains OPEN",
+    "empty-victim checks are not F7-RR-04G closure",
+    "no Stage B approval; Stage B candidacy is BLOCKED pending repair"
+  ],
+  "what_this_lane_did_not_do": [
+    "no production, court, semantic or owner-authority mutation",
+    "no repair of the native source",
+    "no architecture adoption",
+    "no self-adoption",
+    "no merge",
+    "no binary committed",
+    "no optional dependency installed and no test silently excluded"
+  ],
+  "successor_effect": "Stage B may not build on this type until HQ245-D1 is fixed and the two unbounded leaks (D2, D3) are fixed and re-reviewed; the non-authorizing ceiling must be preserved until the full adjudicator and parity oracle exist.",
+  "one_line": "Stage A's build, ABI, source blobs, non-authorizing quarantine and fail-capability are independently reproduced, but a reachable out-of-bounds read in the type's own __init__ deterministically segfaults the governed interpreter, so the candidate is blocked on memory safety."
+}

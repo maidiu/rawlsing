@@ -1,0 +1,87 @@
+{
+  "schema": "PYAT_HQ245_04_STAGE_B_SCOPE_DEFECTS_AND_BOUNDED_READINESS@1",
+  "stage_a_declared_scope": "constructor custody + exact-key resolve only; explicitly non-authorizing",
+  "candidate_disposition_reviewed": "F7_NATIVE_STAGE_A_CUSTODY_AND_RESOLVE_READY__NONAUTHORIZING_FOR_STAGE_B",
+  "stage_b_parity_gaps_confirmed": [
+    {
+      "gap": "no semantic_projection() re-hash",
+      "independently_confirmed": true,
+      "evidence": "probe P5: a stand-in whose ref.key and content_hash strings are unchanged but whose semantic payload flipped DENIED -> AUTHORIZED_AFTER_SEAL is still returned as trusted; the C path only strcmp's ref.key and content_hash",
+      "stage_a_self_disclosed": true,
+      "blocks_stage_a_adoption_now": false,
+      "blocks_stage_b_if_unfixed": true
+    },
+    {
+      "gap": "custody_hash is a native FNV-1a provenance walk, not the accepted P07 custody hash",
+      "independently_confirmed": true,
+      "evidence": "source lines 280-301; value is 16 hex chars derived only from sealed ref keys; not comparable to the accepted 64-hex semantic custody hash",
+      "stage_a_self_disclosed": true
+    },
+    {
+      "gap": "by_key index key derived from the exact ref key, not the true relation object key",
+      "independently_confirmed": true,
+      "evidence": "source lines 172-181 and the recorded admission note; no by_key secondary authority index exists at Stage A",
+      "consequence": "the HQ234-HQ236 by_ref-only transplantation shape has no Stage A surface, but that is a structural absence, NOT a closure of F7-RR-04G"
+    },
+    {
+      "gap": "trusted_semantic_hash is stored but never invoked",
+      "independently_confirmed": true,
+      "evidence": "probe P4: 0 calls during construction and two resolves; no call site in resolve_exact",
+      "consequence": "the advertised trusted-callback TCB seam is dead code at Stage A; Stage B must actually wire it"
+    },
+    {
+      "gap": "authority_registry is not validated or deep-copied",
+      "independently_confirmed": true,
+      "evidence": "probe P1: authority_registry=42 is accepted; only 'is not None' is checked and only tp_name is stored",
+      "consequence": "no authority material is held natively at Stage A; Stage B must seal deep-copied authority snapshots"
+    },
+    {
+      "gap": "no adjudicator, no 12-state ladder, no CONFLICTING_AUTHORITY precedence, no replay decision",
+      "independently_confirmed": true,
+      "evidence": "decide/require unconditionally raise NOT_IMPLEMENTED_NONAUTHORIZING_STAGE_A (probe P8); no positive symbols on the module or type"
+    }
+  ],
+  "new_defects_found_by_this_review": [
+    {
+      "id": "HQ245-D1",
+      "severity": "BLOCKING",
+      "title": "constructor OOB read / deterministic segfault via list-subclass __len__",
+      "fix_direction_not_applied": "in Stage AOwner_init use PyList_CheckExact/PyTuple_CheckExact for the guard, or derive n from PySequence_Fast_GET_SIZE(fast) instead of PySequence_Size(relations), and never trust an overridable __len__. This lane performs no repair.",
+      "must_fix_before_stage_b_adoption": true
+    },
+    {
+      "id": "HQ245-D2",
+      "severity": "NAMED_DEFECT",
+      "title": "custody_diagnostic unbounded refcount leak (missing Py_DECREF(rows))",
+      "must_fix_before_stage_b_adoption": true
+    },
+    {
+      "id": "HQ245-D3",
+      "severity": "NAMED_DEFECT",
+      "title": "repeated failing __init__ leaks trusted_semantic_hash refs and the rels array",
+      "must_fix_before_stage_b_adoption": true
+    },
+    {
+      "id": "HQ245-D4",
+      "severity": "LATENT_OOM_ONLY",
+      "title": "module-init second-AddObject failure path double-decrefs the static exception and can leave a dangling global"
+    },
+    {
+      "id": "HQ245-D5",
+      "severity": "LATENT",
+      "title": "type holds strong PyObject references with no GC tracking / tp_traverse / tp_clear"
+    }
+  ],
+  "bounded_readiness_assessment": {
+    "stage_a_core_contract_genuinely_demonstrated": true,
+    "stage_a_core_contract": "a real compiled, deterministic, non-subclassable native type with one-shot sealing, exact-key resolve, exact-ref-shape normalisation, and post-seal string identity re-verification",
+    "stage_b_candidacy": "BLOCKED pending repair of the blocking memory-safety defect and the two named leaks; the parity gaps are correctly self-disclosed as Stage B work, and none of them invalidate the Stage A contract as stated",
+    "can_stage_a_be_adopted_as_final_storage_only_capsule": false,
+    "f7_rr_04g_status": "OPEN (Stage A has no adjudicator and cannot close it)",
+    "native_t2_or_four_forgery_qualified": false,
+    "empty_victim_checks_are_not_f7_rr_04g_closure": true,
+    "do_not_let_too_weak_stage_a_into_stage_b_as_silently_good": "the bounds defect and leaks must be fixed and re-reviewed before Stage B builds on this type; the non-authorizing ceiling must be preserved until the full adjudicator and parity oracle exist"
+  },
+  "no_repair_performed": true,
+  "self_adoption": "NOT_PERFORMED"
+}

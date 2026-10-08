@@ -1,0 +1,153 @@
+{
+  "schema": "PYAT_HQ245_01_NATIVE_BUILD_ABI_SOURCE_BLOB_AND_MEMORY_SAFETY_AUDIT@1",
+  "commission": "PYAT-HQ245-F7-NATIVE-STAGE-A-INDEPENDENT-HOSTILE-RUNTIME-REVIEW-R1",
+  "lane": "agent/reviewer-pyat-hq245-f7-native-stage-a-independent-runtime-r1",
+  "review_head": "11d7114ca695cf2d2cbd1444cb4a5a4a6a405cc0",
+  "reviewed_candidate": "85144216e9ceb58f306d5624620ee42df34d1718",
+  "worktree": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq245-stagea-review",
+    "shared_object_store": "/Users/matthewsmith/Desktop/Rawlsing/.git",
+    "clone_performed": false,
+    "concurrent_space_bunny_stage_b_worktree_touched": false,
+    "stage_a_worktree_hq244_touched": false,
+    "bootstrap_note": "No worktree dedicated to this review branch existed; one was bootstrapped once from the shared object store. A compiled .so is built only in this disposable worktree and is NOT committed."
+  },
+  "lineage": {
+    "review_head_is_candidate_plus_one_commission_commit": true,
+    "candidate_is_ancestor_of_review_head": true,
+    "candidate_commit_stat": "9 files: C source + Stage A court + 7 return artifacts; no production mutation",
+    "production_files_changed_by_candidate": []
+  },
+  "blobs": {
+    "native_source": {
+      "path": "rawlsing_next/_p07_native_owner_stage_a.c",
+      "sha256_working_tree": "9acd1e9ae2b21bb67703f1b8cd3c9c5ab08873981a7a696d124498c68fbdedf2",
+      "sha256_claimed_by_author": "9acd1e9ae2b21bb67703f1b8cd3c9c5ab08873981a7a696d124498c68fbdedf2",
+      "match": true,
+      "git_blob": "c749fb4d6c5c8f1e625c7bed27ede59f7ba80079",
+      "lines": "720 lines (719 newlines); author's 719-line count is a trailing-newline convention, not a discrepancy"
+    },
+    "stage_a_court": {
+      "path": "rawlsing_next/tests/test_p07_native_stage_a_custody.py",
+      "sha256_working_tree": "8230bdfb7697b41727744f1b55fa414f6666612ca3e3091a8329f3ac82385d7f",
+      "sha256_claimed_by_author": "8230bdfb7697b41727744f1b55fa414f6666612ca3e3091a8329f3ac82385d7f",
+      "match": true,
+      "git_blob": "9e6559286b4892b696ec7b2c48cb394399d82fc5",
+      "lines": 452
+    },
+    "production_P07": {
+      "path": "rawlsing_next/pre553_source_relations.py",
+      "git_blob_working_tree": "8053d30d306a3654ebf563043088311ff390bb2b",
+      "required": "8053d30d306a3654ebf563043088311ff390bb2b",
+      "match": true
+    },
+    "production_F7": {
+      "path": "rawlsing_next/pre553_temporal_comparability.py",
+      "git_blob_working_tree": "6f6b462b1cdef54d7989f15452473383c1661594",
+      "required": "6f6b462b1cdef54d7989f15452473383c1661594",
+      "match": true
+    },
+    "committed_binaries": "NONE (git ls-files shows no .so/.dylib/.o)"
+  },
+  "environment": {
+    "governed_interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+    "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "interpreter_sha256_required": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "match": true,
+    "python_version": "Python 3.11.3",
+    "pytest_version": "pytest 9.1.1",
+    "headers_present": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/include/python3.11/Python.h",
+    "compiler": "Apple clang version 14.0.3 (clang-1403.0.22.14.1), target x86_64-apple-darwin22.6.0",
+    "machine": "x86_64, macOS 13.7.8 (22H730), pointer size 8"
+  },
+  "independent_build": {
+    "recipe": "clang -shared -fPIC -O2 -Wall -Wextra -Wno-unused-parameter -undefined dynamic_lookup -I<include/python3.11> -o rawlsing_next/_p07_native_owner_stage_a.cpython-311-darwin.so rawlsing_next/_p07_native_owner_stage_a.c",
+    "author_locally_retained_so_used": false,
+    "pre_existing_so_at_start": "ABSENT (built from scratch)",
+    "build_exit": 0,
+    "warnings": "none observed under -Wall -Wextra",
+    "sha256_rebuilt": "94683dd76cfa9c4d76958ef14f006f97616e0b082b4510cbea38768a8047fd04",
+    "sha256_claimed_by_author": "94683dd76cfa9c4d76958ef14f006f97616e0b082b4510cbea38768a8047fd04",
+    "match": true,
+    "bytes": 53048,
+    "file_type": "Mach-O 64-bit dynamically linked shared library x86_64",
+    "determinism": "built twice; second build byte-identical (cmp clean) to the first",
+    "abi": "CPython 3.11.3, SOABI cpython-311-darwin, EXT_SUFFIX .cpython-311-darwin.so, limited_api false",
+    "required_flag_undefined_dynamic_lookup": "present in the recipe; build fails without it on macOS, reproducing the HQ242 finding"
+  },
+  "source_structure_audit": {
+    "type": "single static PyTypeObject StageAOwner, tp_flags = Py_TPFLAGS_DEFAULT, Py_TPFLAGS_BASETYPE intentionally absent -> non-subclassable (independently verified)",
+    "sealed_state": "int sealed, one-shot guard at StageAOwner_init line 214",
+    "custody_struct": "SealedRelation {owned PyObject *rel; char *key; char *content_hash; char *object_key}",
+    "allocations": "PyMem_Malloc/PyMem_Calloc for C strings and the rels array; freed in seal_owner_free_contents from tp_dealloc",
+    "accepted_inputs": "PyArg_ParseTupleAndKeywords 'OOO' (relations, authority_registry, trusted_semantic_hash)",
+    "admission_guard": "PyList_Check / PyTuple_Check (NOT CheckExact at the type __init__ level), then PySequence_Size + PySequence_Fast",
+    "resolve": "StageAOwner_resolve_exact: shape 1 .key, shape 2 mapping kind/object_id/content_hash, shape 3 .as_dict(); exact strcmp over sealed keys; then identity re-verification of live ref.key and content_hash",
+    "fault_hook": "lines 410-417 inside #ifdef STAGE_A_FAULT_INJECT",
+    "typed_errors": "native SourceRelationIntegrityError and StageAExactKeyError, distinct from production"
+  },
+  "memory_safety_findings": {
+    "BLOCKING_oob_read_segfault": {
+      "severity": "BLOCKING_MEMORY_SAFETY",
+      "reproduced": true,
+      "deterministic": "3/3 runs, exit 139 (SIGSEGV)",
+      "trigger": "construct StageAOwner via __new__ + __init__ with an exact-subclass of list whose __len__ over-reports the true element count",
+      "mechanism": "StageAOwner_init line 236 accepts list/tuple subclasses (PyList_Check/PyTuple_Check, not CheckExact); line 241 takes n from PySequence_Size(relations), which invokes the attacker-overridable __len__; line 259 PySequence_Fast builds a sequence of the TRUE length; lines 263-265 loop i in [0,n) and call PySequence_Fast_GET_ITEM(fast, i), reading past the real end of the sequence",
+      "consequence": "out-of-bounds PyObject* read; the value is handed to admit_one -> PyObject_GetAttrString on a NULL/garbage pointer; deterministic segfault in the CPython 3.11.3 governed interpreter",
+      "asan_report": "AddressSanitizer: SEGV on unknown address 0x000000000008 (READ); #0 PyObject_GetAttrString+0xe; #1 StageAOwner_init _p07_native_owner_stage_a.c:265; rdi=0x0 (NULL item pointer)",
+      "author_coverage_gap": "the Stage A court's hostile-__len__ test (test_admission_requires_exact_sequence, line 150) uses a NON-list duck-typed class, which PyList_Check rejects before PySequence_Size is ever reached; no test exercises a list/tuple SUBCLASS, so the defect is uncovered",
+      "factory_partial_mitigation": "module factory build_stage_a_owner uses Py_TYPE(relations) == &PyList_Type (exact, line 638) and refuses subclasses; the defect is reachable only through the class's own __init__, which is ordinary public Python (StageAOwner.__new__ then .__init__)",
+      "secondary_effect": "with __len__ under-reporting, admission silently truncates the relations batch (observed n_relations=1 for a 3-element subclass), also a custody-integrity hazard"
+    },
+    "custody_diagnostic_refcount_leak": {
+      "severity": "NAMED_DEFECT",
+      "reproduced": true,
+      "mechanism": "StageAOwner_custody_diagnostic builds `rows` (PyList_New), embeds it in the result via Py_BuildValue 's:O' (which INCREFs rows), then returns without Py_DECREF(rows) -> one leaked reference per call",
+      "measurement": "20000 calls -> 20000 additional GC-tracked list objects survive gc.collect() (tracked lists 164 -> 20164)",
+      "bounded": false
+    },
+    "partial_failure_reinit_refcount_leak": {
+      "severity": "NAMED_DEFECT",
+      "reproduced": true,
+      "mechanism": "StageAOwner_init INCREFs trusted_semantic_hash (line 247-248) before validation completes; if admission later fails the object stays unsealed, so __init__ can be called again and overwrites self->trusted_semhash and self->rels without DECREF/free",
+      "measurement": "2000 repeated failing __init__ calls -> sys.getrefcount(trusted_semantic_hash) grows by exactly 2000; the previously allocated rels array is also leaked per iteration",
+      "bounded": false
+    },
+    "module_init_double_decref_on_second_addobject_failure": {
+      "severity": "LATENT_OOM_ONLY",
+      "mechanism": "PyInit__p07_native_owner_stage_a: after the first PyModule_AddObject success steals its reference, the second AddObject failure path Py_DECREFs StageAIntegrityError again and then Py_DECREF(m), which frees the module and its stored exception, leaving the static global StageAIntegrityError dangling",
+      "reachability": "only under OOM during module init",
+      "note": "not reproduced; reported from source inspection"
+    },
+    "no_gc_tracking": {
+      "severity": "LATENT_LEAK",
+      "detail": "the type is not Py_TPFLAGS_HAVE_GC and defines neither tp_traverse nor tp_clear while holding strong references to Python objects (admitted relation, trusted_semantic_hash). A cycle through an admitted relation back to the owner cannot be collected. Not demonstrated to matter for the frozen accepted relation, but it is a real omission for arbitrary admitted objects."
+    },
+    "dead_reentrancy_check": {
+      "severity": "COSMETIC",
+      "detail": "StageAOwner_init line 221 `if (Py_TYPE(self) == NULL)` can never be true for a live object; the comment claims reentrancy rejection that this check does not implement. Reentrancy is refused incidentally because a StageAOwner presented as a relation fails the ref/content_hash attribute read."
+    },
+    "non_blocking_correctness": {
+      "PyErr_NoMemory_comma_expression": "line 439 uses `return PyErr_NoMemory(), NULL;` which works but overwrites any prior error with MemoryError; cosmetic",
+      "dangling_have_pointer": "line 448 frees `have` without nulling; line 450 passes &have to get_str_attr, which only writes on success, so the dangling value is never read; benign but fragile"
+    },
+    "resolve_path_leak_check": {
+      "method": "differential maxrss across 50000 vs 500000 resolve_exact calls in fresh processes",
+      "result": "9961472 vs 9883648 bytes -> no growth attributable to the resolve path"
+    }
+  },
+  "crash_and_tooling": {
+    "governed_interpreter_crash_reproduced": true,
+    "valgrind_available": false,
+    "asan_available": true,
+    "asan_build": "clang -shared -fPIC -O1 -g -fsanitize=address -undefined dynamic_lookup; loads @rpath/libclang_rt.asan_osx_dynamic.dylib",
+    "asan_result": "SEGV READ at PyObject_GetAttrString called from StageAOwner_init:265"
+  },
+  "verdict": {
+    "build_reproduced_and_deterministic": true,
+    "source_blobs_match_author": true,
+    "abi_correct": true,
+    "memory_safety_clean": false,
+    "blocking_defect": "OOB read / deterministic interpreter segfault from a list-subclass __len__ lie in the type's own __init__"
+  }
+}
