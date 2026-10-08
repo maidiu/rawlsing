@@ -1,0 +1,118 @@
+{
+  "schema": "PYAT_HQ246_R3_PROSPECTIVE_ISSUER_COMPETENCE_HOSTILE_AND_NEGATIVE_CEILING@1",
+  "disposition": "PASS_PROSPECTIVE_HQ_JURISDICTION_ONLY",
+  "R2_root_contract": {
+    "path": "WORKER_RETURNS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/01_EXACT_BOOTSTRAP_ROOT_AUTHORITY_AND_ROTATION_CONTRACT.json",
+    "sha": "f0e05df99cc7ec8c3445b37e461fad86948f140e",
+    "material": "HQ only can adopt warranty, approve/install progression, activate/rotate/revoke; owner cannot approve its own root; verifier separately installs HQ-pinned trusted material; no arbitrary caller-provided root accepted"
+  },
+  "R2_handoff_contract": {
+    "path": "WORKER_RETURNS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/02_IMMUTABLE_C1_N10E_OWNER_HANDOFF_TRANSITION.json",
+    "sha": "a8c31625fcfb7bd65007e30ee2dda579d3b85e3e",
+    "material": "only authorized C1 owner registrar may issue distinct handoff after journal-resolved ACTIVE C1 site; N10E exact receiver independently authenticated; no caller-supplied event/journal"
+  },
+  "competent_future_decider": "PYAT HQ separate explicit governance decision",
+  "delegated_future_operational_issuer": "ONE named HQ-designated C1-01 source-free fixture-owner assembly, not test builder/N10E provider/caller",
+  "authority_law": {
+    "I01": "18 current AUTHORITY_KINDS; no 19th; model-rule kind not adopted",
+    "I02": "Seals C11 content but no use credentials",
+    "Z06": "Semantic authority lifecycle, not issuer root",
+    "C1_03R": "Dependent material registration, not issuance",
+    "C1_01": "Accepted R8 content/witness, not already issuer jurisdiction",
+    "N10E": "Provider/replay receiver cannot issue original C1 handoff"
+  },
+  "legacy_provenance": "HQ239 NO_ISSUER -> HQ240 PROPOSAL -> HQ241 PARTIAL -> HQ242 R2 CONTRACT -> HQ244 PARTIAL -> HQ245 R3 REVIEWABLE; no accepted issuer ancestor",
+  "scope_limitation": "Administrative source-free AT07 build/use journal only. Not a new general semantic authority owner or crypto guarantee against hostile privileged code.",
+  "root_attack_cases": [
+    {
+      "id": "FAKE_REQUEST_ROOT",
+      "expected": "REFUSE"
+    },
+    {
+      "id": "ISSUER_SELF_APPROVAL",
+      "expected": "REFUSE"
+    },
+    {
+      "id": "UNACTIVATED_ROOT",
+      "expected": "REFUSE"
+    },
+    {
+      "id": "FORKED_EPOCH_OR_DUPLICATE_SEQUENCE",
+      "expected": "REFUSE_CURRENT"
+    },
+    {
+      "id": "STALE_ROTATION_PIN",
+      "expected": "REFUSE_CURRENT"
+    },
+    {
+      "id": "REVOKED_PARENT_REPLAY",
+      "expected": "REFUSE_CURRENT"
+    },
+    {
+      "id": "OWNER_HQ_VERIFIER_INSTALL_ACK",
+      "expected": "FUTURE_POSITIVE_REQUIRED"
+    }
+  ],
+  "handoff_attack_cases": [
+    {
+      "id": "N10E_WITHOUT_C1_PARENT",
+      "expected": "REFUSE"
+    },
+    {
+      "id": "FAKE_NON_NULL_HANDOFF_REF",
+      "expected": "REFUSE"
+    },
+    {
+      "id": "EQUAL_ROWS_DIFFERENT_BUILD",
+      "expected": "REFUSE"
+    },
+    {
+      "id": "C1_PARENT_REVOKED",
+      "expected": "REFUSE_CURRENT"
+    },
+    {
+      "id": "WRONG_RECEIVER_INGRESS",
+      "expected": "REFUSE"
+    },
+    {
+      "id": "GENUINE_FORWARD_AND_REVERSE_TWO_SITE_HANDOFF",
+      "expected": "FUTURE_POSITIVE_REQUIRED"
+    }
+  ],
+  "threat_boundary": {
+    "attacker": "Ordinary untrusted caller inputs, fake mappings/refs/fixture rows and caller-owned helpers",
+    "trusted": "HQ-approved placement and independent verifier trust distribution",
+    "not_claimed": "Arbitrary hostile privileged Python/root-writing process or compromised governance",
+    "actual_trust_installation_done": false
+  },
+  "no_live_root": true,
+  "no_issuer_credentials": true,
+  "no_r4_authority": true,
+  "no_real_data": true,
+  "no_actor_v3_f7": true,
+  "no_prediction": true,
+  "no_causal_or_normative_power": true,
+  "no_comparability_smoothing_proxy_transfer": true,
+  "source_ceiling": [
+    "NO_GENERIC_ISSUER_AUTHORITY",
+    "NO_NEW_I01_KIND_AUTO_ADMISSION",
+    "NO_NEW_PUBLIC_FIELD_FAMILY",
+    "NO_ACTOR_OR_V3",
+    "NO_REAL_SOURCE",
+    "NO_SOURCES_ADDED_OR_CROSS_SOURCE_INFERENCE",
+    "NO_COMPARABILITY",
+    "NO_POOLING",
+    "NO_STRUCTURAL_ADMISSION",
+    "NO_THRESHOLD",
+    "NO_SMOOTHING",
+    "NO_PREDICTION",
+    "NO_NORMATIVE_OUTPUT",
+    "NO_WALKBACK_POLICY_TRANSFER",
+    "NO_MODEL_RULE_R4_FREEZE",
+    "NO_HISTORICAL_REJECTED_GENEALOGY",
+    "NO_PRODUCTION_OR_TEST_MUTATION"
+  ],
+  "scope_conflict_demonstrated": false,
+  "blockers": [],
+  "adoption_readiness": "Yes: distinct HQ is competent to CONSIDER adopting the narrow proposed issuer warrant after this independent documentary GREEN. No positive issuer/root rights exist until a later exact HQ decision and installation/activation."
+}

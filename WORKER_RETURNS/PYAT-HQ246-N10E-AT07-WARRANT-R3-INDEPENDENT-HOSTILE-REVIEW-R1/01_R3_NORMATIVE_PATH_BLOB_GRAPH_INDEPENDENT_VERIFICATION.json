@@ -1,0 +1,96 @@
+{
+  "schema": "PYAT_HQ246_INDEPENDENT_R3_NORMATIVE_PATH_AND_GIT_BLOB_GRAPH@1",
+  "review_status": "INDEPENDENT_DOCUMENTARY_HOSTILE_PASS",
+  "immutable_candidate_commit": "338aa789dd20d04c83175a6593172fee4b61c078",
+  "candidate_branch": "agent/rabochii-pyat-hq245-n10e-at07-warrant-r3-reference-correction-r1",
+  "canonical_warrant": {
+    "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/01_BOUNDED_WARRANT_CANDIDATE_PREIMAGE.json",
+    "sha": "d1c835119a08bb27124c87b15485d6b83b91659f",
+    "read_at_candidate": true,
+    "single_normative_warrant": true
+  },
+  "canonical_path_targets": [
+    {
+      "kind": "SOLE_ROOT_NORMATIVE",
+      "path": "WORKER_RETURNS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/01_EXACT_BOOTSTRAP_ROOT_AUTHORITY_AND_ROTATION_CONTRACT.json",
+      "sha": "f0e05df99cc7ec8c3445b37e461fad86948f140e",
+      "author_commit": "cdef72ddc805e3ed943bac9f9241467454df8030",
+      "author_commit_sha_match": true,
+      "reviewed_candidate_blob_match": true
+    },
+    {
+      "kind": "SOLE_C1_N10E_HANDOFF_NORMATIVE",
+      "path": "WORKER_RETURNS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/02_IMMUTABLE_C1_N10E_OWNER_HANDOFF_TRANSITION.json",
+      "sha": "a8c31625fcfb7bd65007e30ee2dda579d3b85e3e",
+      "author_commit": "cdef72ddc805e3ed943bac9f9241467454df8030",
+      "author_commit_sha_match": true,
+      "reviewed_candidate_blob_match": true
+    }
+  ],
+  "control_objects": [
+    {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/00_READ_ME.md",
+      "sha": "4dfe10ec2335250eb049356063c52a0889cac94f"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/01_BOUNDED_WARRANT_CANDIDATE_PREIMAGE.json",
+      "sha": "d1c835119a08bb27124c87b15485d6b83b91659f"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/02_ISSUER_CREDENTIAL_AND_VERIFIER_PREIMAGES.json",
+      "sha": "68e9f72ce11d4e5651346867295d84b1fd3eb667",
+      "byte_identical_to_R2": true
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/03_C1_N10E_ENTRYPOINT_CONTRACT.json",
+      "sha": "4086c36e8981210277ffda165ff123bf54e0feb9",
+      "byte_identical_to_R2": true
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/04_HQ_DECISION_ADOPTION_GATES.json",
+      "sha": "af777fe3a6fda08d0b96a31d20ca91443fcb61d4"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/05_PROPOSED_HOSTILE_COURTS_AND_PRODUCTIVE_PATHS.json",
+      "sha": "2ff140954ac91daa79fbbb0c3a953b481c6ffa18",
+      "byte_identical_to_R2": true
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/06_REVISED_WARRANT_AND_IDENTITY_PREIMAGES.json",
+      "sha": "78f51add48f5e20ae2c110adc5c38e84ca2d5f1b",
+      "derivative_only": true
+    }
+  ],
+  "verification": {
+    "graph_targets_fetch_and_git_sha_matches": "PASS_9_OF_9",
+    "R3_adoption_manifest_pinned_transitive_file_blob_matches": "PASS_19_OF_19",
+    "canonical_warrant_matches_mirror_embedded_object": "PASS_DEEP_STRUCTURAL_EQUALITY",
+    "active_root_and_handoff_references_match_author_immutable_R2_and_current_R3": "PASS_2_OF_2",
+    "mirror_dependency_fields_match_canonical_warrant": "PASS",
+    "candidate_remote_branch_verified_at_review": "338aa789dd20d04c83175a6593172fee4b61c078",
+    "R3_author_files_only_commissioned_dirs": "PASS_13_OF_13_ADDED",
+    "old_dead_path_resolution": "KNOWN_HISTORICAL_404_NOT_OPERATIVE",
+    "no_other_normative_root_or_handoff_selection": "PASS_SINGLE_R2_RETURN_PAIR",
+    "no_model_rule_or_warrant_identity_minted_by_sha": "PASS_PROPOSAL_GIT_BLOBS_NOT_SEMANTIC_AUTHORITY"
+  },
+  "historical_non_targets": [
+    {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ242_R2/02_EXACT_BOOTSTRAP_AND_ROTATION_PREIMAGES.json",
+      "status": "KNOWN_MISSING_HISTORICAL_ONLY"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ242_R2/03_MANDATORY_C1_TO_N10E_HANDOFF_PREIMAGES.json",
+      "status": "KNOWN_MISSING_HISTORICAL_ONLY"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ242-N10E-AT07-ISSUER-WARRANT-ROOT-AND-HANDOFF-CORRECTION-R2/03_REVISED_WARRANT_AND_IDENTITY_PREIMAGES.json",
+      "sha": "ec00caf2a4a60d75c5118cc1a79cb407fd388b91",
+      "status": "FROZEN_HISTORICAL_INCORRECT_PTR_NOT_R3_NORMATIVE"
+    }
+  ],
+  "hash_boundary": "Git blob SHA-1 proves committed documentary bytes, not an adopted PRE553 ref or R4 canonical SHA256. R3 proposed exact issuer, adopted warrant, root and epoch refs remain null.",
+  "named_HQ244_reference_defect": "HQ244-DEFECT-R2-NORMATIVE-CONTRACT-PATH-RESOLUTION-001",
+  "named_defect_closed": true,
+  "blockers": [],
+  "verdict": "PASS_AT_DOCUMENTARY_REFERENCE_IDENTITY_GRAIN"
+}

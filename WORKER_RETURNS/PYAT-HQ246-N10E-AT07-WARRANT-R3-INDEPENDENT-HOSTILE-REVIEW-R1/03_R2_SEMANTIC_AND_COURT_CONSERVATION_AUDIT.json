@@ -1,0 +1,119 @@
+{
+  "schema": "PYAT_HQ246_R3_INDEPENDENT_R2_SUBSTANTIVE_AND_COURT_CONSERVATION@1",
+  "status": "DOCUMENTARY_SEMANTIC_CONSERVATION_PASS",
+  "source_comparison": {
+    "R2_control_issuer_sha": "68e9f72ce11d4e5651346867295d84b1fd3eb667",
+    "R3_control_issuer_sha": "68e9f72ce11d4e5651346867295d84b1fd3eb667",
+    "issuer_byte_identical": true,
+    "R2_control_C1_N10E_sha": "4086c36e8981210277ffda165ff123bf54e0feb9",
+    "R3_control_C1_N10E_sha": "4086c36e8981210277ffda165ff123bf54e0feb9",
+    "entrypoint_byte_identical": true,
+    "R2_control_courts_sha": "2ff140954ac91daa79fbbb0c3a953b481c6ffa18",
+    "R3_control_courts_sha": "2ff140954ac91daa79fbbb0c3a953b481c6ffa18",
+    "courts_byte_identical": true,
+    "R2_root_full_normative_sha": "f0e05df99cc7ec8c3445b37e461fad86948f140e",
+    "R2_handoff_full_normative_sha": "a8c31625fcfb7bd65007e30ee2dda579d3b85e3e",
+    "R2_warrant_other_than_documentary_schema_version_review_order_paths_and_provenance_unchanged": true,
+    "R3_corrected_warrant_matches_embedded_mirror": true
+  },
+  "source_free_AT07": {
+    "fixture_id": "AT07_BIDIRECTIONAL_100",
+    "source": "SYNTHETIC_SURVEY_ONLY",
+    "R8_release_object_id": "REL-c1-at07",
+    "release_sha256": "dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3",
+    "universe_sha256": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+    "manifest_sha256": "01ee5fa6db95efad3ce0acecd656f51beb6c2f2e21bc30e49bd358633f9ad6a1",
+    "static_snapshot_interval": "AT07_FIXTURE_ONLY",
+    "actual_conditioner_effective_time": null,
+    "actual_16_key_witness_effective_time": null,
+    "real_source_effect": false,
+    "changed_source_110_excluded": true,
+    "old_R3_release_excluded": true
+  },
+  "root_and_handoff": {
+    "root_sequence": [
+      "FUTURE_HQ_ADOPT_WARRANT",
+      "HQ_APPROVE_ROOT",
+      "C1_OWNER_INSTALL_EXACT_APPROVED_BYTES",
+      "INDEPENDENT_VERIFIER_ACK",
+      "HQ_ACTIVATE_EPOCH"
+    ],
+    "trusted_not_caller_furnished": true,
+    "C1_to_N10E_parent_chain": [
+      "ACTIVE_APPROVED_EPOCH",
+      "BUILD_REGISTERED",
+      "INVOCATION_SEALED",
+      "C1_SITE_CURRENT",
+      "OWNER_JOURNAL_HANDOFF_NON_NULL",
+      "N10E_SITE_CURRENT",
+      "N10E_PROVIDER_REPLAY_CURRENT"
+    ],
+    "N10E_no_direct_from_invocation": true,
+    "N10E_receiver_independently_authenticated": true,
+    "C1_site_handoff_ref_may_be_null": true,
+    "N10E_site_handoff_ref_required_non_null": true,
+    "build_unique_epoch_and_durable_sequence": true,
+    "equal_fixture_content_cannot_reissue_same_build": true,
+    "full_16_key_and_direction_specific_witness_exact": true,
+    "negative_currentness_cascades_on_revocation": true,
+    "historical_audit_not_currentness": true
+  },
+  "court_conservation": {
+    "original_HQ240_H01_H30_array_identity": "PASS_FULL_OBJECT_EQUALITY",
+    "original_HQ240_P01_P06_array_identity": "PASS_FULL_OBJECT_EQUALITY",
+    "HQ242_R2_H31_H43_array_identity": "PASS_FULL_OBJECT_EQUALITY",
+    "HQ242_R2_P07_P10_array_identity": "PASS_FULL_OBJECT_EQUALITY",
+    "counts": {
+      "hostile_total": 43,
+      "hostile_HQ240": 30,
+      "hostile_R2": 13,
+      "productive_total": 10,
+      "productive_HQ240": 6,
+      "productive_R2": 4
+    },
+    "all_proposed_unexecuted": true,
+    "positive_forward": "54/60 = 9/10",
+    "positive_reverse": "54/62 = 27/31",
+    "must_demonstrate_real_positive_paths_after_future_adoption": true,
+    "refusal_only_not_sufficient": true
+  },
+  "Z08_A05": {
+    "public_states": [
+      "EXACT_SUPPORTED",
+      "EXACT_UNRESOLVED_PROXY_AVAILABLE",
+      "UNRESOLVED",
+      "VALID_EMPTY",
+      "NONCOMPARABLE",
+      "FAIL_CLOSED"
+    ],
+    "matches_HQ240_exact_public_states": true,
+    "preconstruction_issuer_or_handoff_failures": "THROW_BEFORE_MODEL_CONSTRUCTION",
+    "returned_FAIL_CLOSED": "ONLY_EXISTING_Z08_TYPED_CASES; NO_NEW_CONTEXT_REFUSAL_REBRANDING"
+  },
+  "negative_ceiling_identical_HQ240_and_R2": true,
+  "negative_ceiling": [
+    "NO_GENERIC_ISSUER_AUTHORITY",
+    "NO_NEW_I01_KIND_AUTO_ADMISSION",
+    "NO_NEW_PUBLIC_FIELD_FAMILY",
+    "NO_ACTOR_OR_V3",
+    "NO_REAL_SOURCE",
+    "NO_SOURCES_ADDED_OR_CROSS_SOURCE_INFERENCE",
+    "NO_COMPARABILITY",
+    "NO_POOLING",
+    "NO_STRUCTURAL_ADMISSION",
+    "NO_THRESHOLD",
+    "NO_SMOOTHING",
+    "NO_PREDICTION",
+    "NO_NORMATIVE_OUTPUT",
+    "NO_WALKBACK_POLICY_TRANSFER",
+    "NO_MODEL_RULE_R4_FREEZE",
+    "NO_HISTORICAL_REJECTED_GENEALOGY",
+    "NO_PRODUCTION_OR_TEST_MUTATION"
+  ],
+  "runtime_tests_executed": 0,
+  "R4_model_rule_hashes_computed": 0,
+  "live_issuer_not_proven": true,
+  "blocked_reuse_as_adopted_authority": true,
+  "blockers": [],
+  "verdict": "PASS_SUBSTANTIVE_AND_COURT_DOCUMENTARY_CONSERVATION"
+}

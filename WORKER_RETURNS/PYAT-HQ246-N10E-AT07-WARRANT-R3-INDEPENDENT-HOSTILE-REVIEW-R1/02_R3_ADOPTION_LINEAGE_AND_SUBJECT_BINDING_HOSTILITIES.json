@@ -1,0 +1,107 @@
+{
+  "schema": "PYAT_HQ246_R3_INDEPENDENT_ADOPTION_LINEAGE_AND_SUBJECT_BINDING@1",
+  "status": "DOCUMENTARY_PASS_ONLY",
+  "immutable_review_subject_commit": "338aa789dd20d04c83175a6593172fee4b61c078",
+  "reviewed_warrant_path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ245_R3/01_BOUNDED_WARRANT_CANDIDATE_PREIMAGE.json",
+  "reviewed_warrant_sha": "d1c835119a08bb27124c87b15485d6b83b91659f",
+  "candidate_revision_has_null_embedded_own_commit": true,
+  "out_of_band_candidate_commit_exactly_pinned_here": true,
+  "exact_sequence_verified": [
+    {
+      "order": 1,
+      "name": "HQ240 original R1 proposed warrant",
+      "commit": "3c6cfa0d29e10c1e2654e5fe22b0b62a0db891b9",
+      "state": "HISTORICAL_SUPERSEDED_NOT_ADOPTED"
+    },
+    {
+      "order": 2,
+      "name": "HQ241 independent hostile R1",
+      "commit": "7c7937ff68ddd6209858cc23194b9f292b299e66",
+      "state": "COMPLETE_PARTIAL_TRUST_ROOT_AND_HANDOFF"
+    },
+    {
+      "order": 3,
+      "name": "HQ242 substantive R2 correction",
+      "commit": "cdef72ddc805e3ed943bac9f9241467454df8030",
+      "state": "PROPOSED_NEVER_ADOPTED"
+    },
+    {
+      "order": 4,
+      "name": "HQ244 independent R2 hostile review",
+      "commit": "beb5a845b4f737effed030832a374dae98308980",
+      "state": "COMPLETE_PARTIAL_TWO_DOCUMENTARY_DEFECTS"
+    },
+    {
+      "order": 5,
+      "name": "HQ245 R3 exact documentary correction",
+      "commit": "338aa789dd20d04c83175a6593172fee4b61c078",
+      "canonical_warrant_sha": "d1c835119a08bb27124c87b15485d6b83b91659f",
+      "state": "PROPOSED_UNADOPTED_REVIEW_SUBJECT"
+    },
+    {
+      "order": 6,
+      "name": "HQ246 independent R3 hostile review",
+      "commit": null,
+      "reviewer_branch": "agent/reviewer-pyat-hq246-n10e-at07-warrant-r3-r1",
+      "status": "THIS_SEPARATE_REVIEW_RETURN_PENDING_REMOTE_COMMIT_OUT_OF_BAND",
+      "state": "POSITIVE_DOCUMENTARY_REVIEW_NOT_HQ_ADOPTION"
+    },
+    {
+      "order": 7,
+      "name": "Distinct HQ warrant adoption decision",
+      "commit": null,
+      "accepted_warrant_ref": null,
+      "state": "PENDING_SEPARATE_EXPLICIT_HQ_DECISION_ONLY_AFTER_GREEN_REVIEW"
+    },
+    {
+      "order": 8,
+      "name": "Separate issuer trust-root cycle",
+      "state": "PENDING_POST_WARRANT",
+      "sequence": "HQ_APPROVE_PLACEMENT → C1_OWNER_INSTALL → INDEPENDENT_VERIFIER_ACK → HQ_ACTIVATE; separate rotate/revoke governance"
+    },
+    {
+      "order": 9,
+      "name": "Separately commissioned R4 model rule canonical correction",
+      "state": "PENDING_POST_ACTUAL_ADOPTED_WARRANT"
+    },
+    {
+      "order": 10,
+      "name": "Independent R4 hostile review",
+      "state": "PENDING"
+    },
+    {
+      "order": 11,
+      "name": "Explicit HQ R4 authority adoption",
+      "state": "PENDING_ONLY_AFTER_R4_GREEN"
+    },
+    {
+      "order": 12,
+      "name": "C1/N10E owner-native implementation, measured courts and lifecycle refreeze",
+      "state": "PENDING_SEPARATE_COMMISSION"
+    }
+  ],
+  "two_HQ244_defects": {
+    "normative_reference": "CLOSED_AS_CORRECTED_R3_DOCUMENTARY_CANDIDATE",
+    "adoption_sequence": "CLOSED_AS_CORRECTED_R3_DOCUMENTARY_CANDIDATE"
+  },
+  "operative_manifest_blob": "af777fe3a6fda08d0b96a31d20ca91443fcb61d4",
+  "adoption_order_mirror_equality": "PASS_CONTROL_04_EQUALS_AUTHOR_RETURN_02",
+  "forbidden_adoption_targets": [
+    "HQ240 R1 candidate",
+    "HQ242 R2 candidate",
+    "HQ241 PARTIAL review",
+    "HQ244 PARTIAL review",
+    "unreviewed later R3 branch head",
+    "R4 model-rule candidate",
+    "SHA-only synthetic-looking warrant"
+  ],
+  "separate_HQ_adoption_gate": "Only HQ, AFTER separate independent GREEN, can adopt exactly reviewed candidate and create unforgeable accepted_warrant_ref; this review does not perform that action.",
+  "accepted_warrant_ref": null,
+  "issuer_ref": null,
+  "root_approval_ref": null,
+  "activated_epoch_ref": null,
+  "no_self_adoption": true,
+  "no_implicit_R4_wake": true,
+  "blockers": [],
+  "verdict": "PASS_CURRENT_SUBJECT_IS_HQ245_R3_NOT_HQ240_OR_R2"
+}
