@@ -1,5 +1,7 @@
 # ASTRA HQ247 — functional endgame delta audit
 
+> **CURRENT OPERATOR INSTRUCTION — READ `06_HQ249_RESUME_P1_AFTER_COMPLETED_P0.md`.** P0 COMPLETE and banked; R3 entry evidence refreshed; human already selected Astra High. HQ249 is sealed, intake gate SATISFIED. **CONTINUE P1 NOW** after non-destructive local Git sync. Earlier README "run P0" and "HQ248 pending" paragraphs below are historical snapshots of the prior audit state, not fresh work orders. Do not erase them, repeat P0, or wait for another approval.
+
 > **Entry refresh, 2026-10-08:** Human selected Astra High and authorized proceeding on that setting. P1 has not begun: direct packet remains HQ248 and the explicit intake-override question is pending. R3 now has a partial return at `8df99878f7947ac7966f0182ddb2c18424c1c9ae`. See [entry refresh](phases/P1_ENTRY_REFRESH.md) and STATE.json; the earlier model-pending status below is historical.
 
 Status: P0 COMPLETE / BANKED FOR HUMAN MODEL TRANSITION. P1–P3 not started; audit remains incomplete. This document is not HQ adoption.
