@@ -1,0 +1,272 @@
+{
+  "commit": "a3d44f554e4e4fa01223679035599019ae2de527",
+  "path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
+  "blob": "8dfb45039564105580508f5c52fad0dd1b86a1c0",
+  "scope": "Exact selected ledger records only; not a renewed whole-ledger adjudication",
+  "records": [
+    {
+      "line": 151,
+      "record": {
+        "decision_id": "HQD-2026-10-01-145",
+        "date": "2026-10-01",
+        "status": "ADOPTED__C1_02_SOURCE_FREE_GRAIN_ACCEPTED__N10E_CORRECTION_PATCH_READY_FOR_NARROW_REREVIEW",
+        "subject": "Adopt corrected C1-02 after narrow rereview; advance N10E proof/provenance correction to narrow rereview",
+        "holding": "HQ adopts C1-02 at the declared source-free AT08-AT13 grain. Independent narrow rereview 59d69ba31b8de2d028bd44048e8d7b75f2d82538 returns APPROVE_AT_DECLARED_GRAIN and closes C1-02-REVIEW-BLOCK-WITNESS-PAIR-001. The accepted implementation is banked at integration/pyat-hq145-c1-02-source-free-accepted-r1 @ bc661188b51e995d9f5d74e55c4e37d2ba358a17. Live control has no rawlsing_next implementation drift from the verified implementation snapshot, so no mechanical rebase is required. HQ records the rereview's nonblocking correction: the repair packet's historical pre-repair exact-value row was not a valid DID-NOT-RAISE reproduction because the supplied value equaled truth; code acceptance is unaffected because the false-semantic-ref and sentinel-ordering reproductions independently establish the pre-repair defect. Separately, N10E correction 52e41a41e8bc3b77390016a049095b5aea1721d0 is accepted as PASS_PROOF_AND_PROVENANCE_CORRECTED__NARROW_INDEPENDENT_REREVIEW_REQUIRED. Provider implementation remains byte-identical; the changed-source P6 proof is now genuinely source-changing, the final 88-test execution record is internally consistent at 15.14s, and stale provenance language is recast as historical context. N10E remains unadopted pending narrow rereview. C1-03 is no longer blocked by C1-02, but dispatch is held until N10E AT17 provider-core acceptance so C1-03 can consume the accepted AT17 seam rather than duplicate it.",
+        "c1_02": {
+          "repair_return": "bc661188b51e995d9f5d74e55c4e37d2ba358a17",
+          "rereview_return": "59d69ba31b8de2d028bd44048e8d7b75f2d82538",
+          "rereview_disposition": "APPROVE_AT_DECLARED_GRAIN",
+          "adopted": true,
+          "adopted_grain": "SOURCE_FREE_AT08_AT13",
+          "integration_branch": "integration/pyat-hq145-c1-02-source-free-accepted-r1",
+          "integration_head": "bc661188b51e995d9f5d74e55c4e37d2ba358a17",
+          "commissioned_court": {
+            "passed": 109,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "nonblocking_documentary_correction": "REREVIEW-DOC-CORRECTION-PRE-REPAIR-EXACT-VALUE-001"
+        },
+        "n10e": {
+          "correction_return": "52e41a41e8bc3b77390016a049095b5aea1721d0",
+          "correction_disposition": "PASS_PROOF_AND_PROVENANCE_CORRECTED__NARROW_INDEPENDENT_REREVIEW_REQUIRED",
+          "provider_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+          "provider_modified": false,
+          "final_court": {
+            "passed": 88,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0,
+            "duration_seconds": 15.14
+          },
+          "rereview_branch": "agent/reviewer-pyat-hq145-n10e-proof-provenance-rereview-r1",
+          "rereview_commission_tip": "80eb275f40ffb2d096433c218fecb009063a0bd1",
+          "rereview_launch_surface": "BROWSER__GPT_5_6_SOL_HIGH",
+          "adopted": false
+        },
+        "c1_03": {
+          "c1_02_dependency": "SATISFIED",
+          "at17_dependency": "PENDING_N10E_NARROW_REREVIEW_AND_HQ_ADOPTION",
+          "state": "READY_EXCEPT_AT17_PROVIDER_ACCEPTANCE__DO_NOT_DUPLICATE_N10E",
+          "intended_scope": "AT14_AT19_LIFECYCLE_NEGATIVE_STATES_LEGITIMATE_CONSUMPTION"
+        },
+        "next_action": "RUN_N10E_NARROW_REREVIEW__THEN_BIND_C1_03_USING_ACCEPTED_C1_02_AND_N10E_AT17",
+        "prohibitions": [
+          "NO_RAW_SOURCE_EXECUTION",
+          "NO_C4_EXECUTION",
+          "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+        ]
+      }
+    },
+    {
+      "line": 155,
+      "record": {
+        "decision_id": "HQD-2026-10-01-149",
+        "date": "2026-10-01",
+        "status": "ADOPTED__HQ148_POST_CHECKPOINT_RECONCILIATION__C1_03A_REVIEW_BOUND__C1_03R_CORRECTION_BOUND__C5_IMPLEMENTATION_BOUND__C7_BLOCKED_ON_CURRENT_PAIR",
+        "subject": "Reconcile all three post-HQ148 returns; reject C1-03R at HQ intake; advance C1-03A to independent review; adopt C5/C7E readiness findings and bind C5 implementation",
+        "holding": "HQ preserves HQ148 as the sealed predecessor and reconciles three valid post-checkpoint returns. C1-03A return a3c07426b0ad547287cc729b23cd8428c9fc0018 is intake-clean enough for independent Browser GPT-5.6 Sol High review but is not adopted. C1-03R return 1c2c0e4ba7f0f9a273b0387a887ed74871e981e9 is NOT advanced to review: HQ intake finds substantive owner-law defects requiring correction, including adapter-local invalidation lifecycle logic outside AuthorityMaintenanceExecutor, false pre-registration of a future revised model authority as a determinant of the old product, invented C1_03R_NONCURRENT_PRODUCT/NO_CURRENT sentinel semantics absent from the accepted maintenance owner, and a retained-determinant runner artifact that contains expected output identity/support despite claiming not to contain the answer; a stale 20.45s count-verification sentence is also recorded. A bounded DeepSeek correction is bound from the defective return and must return an exact owner gap rather than patch around one if the accepted lifecycle owner cannot represent the required transition. The C5/C7E readiness return d966d4ec97839b09a3040fd2ad23a3d63677bba9 is adopted at readiness grain after targeted HQ verification of the named current owners/APIs/blobs: C5/N5 is READY_TO_COMMISSION_NOW for the frozen current GT2 structural-context canary without C4 or LiTS D2, while C7/N8E is C4_CURRENT_PRODUCTION_REQUIRED because no retained current competent two-wave product pair plus positive pair-specific comparison authority is presently bound. C5 implementation is bound to Space Bunny Free. C7 implementation is not dispatched. Live control has zero rawlsing_next drift from HQ148 sealed handoff and from the verified implementation baseline, so no mechanical implementation rebase is required.",
+        "grounding": {
+          "predecessor_checkpoint": "20261001-PYAT-HQ148-C1-03-OVERNIGHT-PLUS-NEXT-SCOPE-BINDER-R1",
+          "sealed_handoff_commit": "ed1f76d0971ed29dc8a110eac8d6da3b1d9f0bff",
+          "live_control_before_decision": "f69ad91f594219cb3ab0fadc9694af86dee188f7",
+          "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
+          "rawlsing_next_drift_from_hq148": 0,
+          "rawlsing_next_drift_from_verified_baseline": 0,
+          "grounding_disposition": "CURRENT_IMPLEMENTATION_SNAPSHOT_CONFIRMED__NO_MECHANICAL_REBASE_REQUIRED"
+        },
+        "c1_03a": {
+          "worker_return": "a3c07426b0ad547287cc729b23cd8428c9fc0018",
+          "worker_disposition": "PASS_C1_03A_SOURCE_FREE_PATCH_READY__INDEPENDENT_REVIEW_REQUIRED",
+          "hq_intake": "CLEAN_ENOUGH_FOR_INDEPENDENT_REVIEW__NOT_ADOPTED",
+          "review_branch": "agent/reviewer-pyat-hq149-c1-03a-r1",
+          "review_commission_tip": "0b3c8ae01b1a33cc71ddb759cca65949a9e25a3f",
+          "review_launch_surface": "BROWSER__GPT_5_6_SOL_HIGH",
+          "review_focus": "AT14_OWNER_PRODUCED_NEGATIVE_ESTATE__AT15_ROUTE_OBLIGATION_NOT_CALLER_LAUNDERED__AT16_REAL_PRODUCER_COMPOSITION_CONSUMER_CUSTODY"
+        },
+        "c1_03r": {
+          "worker_return": "1c2c0e4ba7f0f9a273b0387a887ed74871e981e9",
+          "worker_disposition": "PASS_C1_03R_SOURCE_FREE_PATCH_READY__INDEPENDENT_REVIEW_REQUIRED",
+          "hq_intake": "CHANGES_REQUIRED__DO_NOT_BIND_INDEPENDENT_REVIEW_YET",
+          "blockers": [
+            "C1-03R-HQ-BLOCK-LIFECYCLE-OWNER-001",
+            "C1-03R-HQ-BLOCK-FUTURE-DETERMINANT-EDGE-002",
+            "C1-03R-HQ-BLOCK-NONCURRENT-INVENTION-003",
+            "C1-03R-HQ-BLOCK-RETAINED-ANSWER-004"
+          ],
+          "documentary_correction": "C1-03R-HQ-DOC-COUNT-005",
+          "correction_branch": "agent/deepseek-pyat-hq149-c1-03r-owner-closure-correction-r1",
+          "correction_commission_tip": "f3a4e8e8a85967a9a0571f48c9aaf61fa3bbb391",
+          "correction_launch_surface": "DEEPSEEK_HARNESS__V4_1_FLASH__STANDARD",
+          "correction_rule": "USE_ACCEPTED_LIFECYCLE_OWNER_OR_RETURN_EXISTING_LIFECYCLE_OWNER_CHANGE_REQUIRED"
+        },
+        "readiness": {
+          "return_head": "d966d4ec97839b09a3040fd2ad23a3d63677bba9",
+          "adopted_grain": "NEXT_SCOPE_READINESS_BINDING",
+          "c5_n5": {
+            "status": "READY_TO_COMMISSION_NOW",
+            "scope": "CURRENT_GT12_GT2_AFROBAROMETER_R5_Q86B_TO_Q86A_STRUCTURAL_CONTEXT",
+            "c4_required": false,
+            "n13_d2_required": false,
+            "implementation_branch": "agent/opencode-pyat-hq149-c5-n5-current-structural-context-r1",
+            "implementation_commission_tip": "71cd049bed3fe921e639af9c3e5921d6e0ebcb51",
+            "launch_surface": "OPENCODE__SPACE_BUNNY_FREE"
+          },
+          "c7_n8e": {
+            "status": "C4_CURRENT_PRODUCTION_REQUIRED",
+            "blocker": "C7-BLOCK-CURRENT-COMPARABLE-WAVE-PAIR-001",
+            "c4_sufficient": false,
+            "subsequent_gate": "PAIR_SPECIFIC_POSITIVE_COMPARISON_COMPARABILITY_AUTHORITY",
+            "implementation_dispatched": false
+          }
+        },
+        "join_rule": "C1_03_JOIN_STILL_WAITS_FOR_HQ_ADOPTED_C1_03A_AND_HQ_ADOPTED_C1_03R__AT17_ALREADY_SATISFIED",
+        "next_action": "LAUNCH_C1_03A_BROWSER_REVIEW__C1_03R_DEEPSEEK_CORRECTION__C5_SPACE_BUNNY_IMPLEMENTATION_IN_PARALLEL__DO_NOT_LAUNCH_C7",
+        "prohibitions": [
+          "NO_RAW_SOURCE_EXECUTION",
+          "NO_C4_EXECUTION_WITHOUT_EXACT_LATER_WARRANT",
+          "NO_C7_IMPLEMENTATION_BEFORE_CURRENT_PAIR_AND_POSITIVE_AUTHORITY_BINDING",
+          "NO_C1_03_JOIN_BEFORE_BOTH_SUBTRANCHES_INDEPENDENTLY_ACCEPTED",
+          "NO_C1_R_BEFORE_C1_03_JOIN",
+          "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+        ]
+      }
+    },
+    {
+      "line": 174,
+      "record": {
+        "decision_id": "HQD-2026-10-01-168",
+        "date": "2026-10-01",
+        "status": "ADOPTED__C1_03_SUCCESSOR_JOIN_ACCEPTED__AT17_CURRENT_BINDING_REQUALIFIED__PLANNED_OMEGA_1_BOUND__C4_EXECUTION_HELD",
+        "subject": "Adopt terminally reviewed successor-qualified C1-03 join and bind planned Omega-1 production-readiness Astra consultation",
+        "holding": "HQ independently verifies final integration review c8ce0ea81a2165f37d566f37de788fecedf85051 with disposition APPROVE_AT_DECLARED_GRAIN. The reviewer re-executed the full 15-file court at 454 passed / 0 failed / 0 errors / 0 skipped, independently re-derived historical and successor digests, compared both complete 44-field production identity preimages against the adopted oracle, recomputed per-file counts, re-hashed all five accepted production owner blobs, and confirmed the full oracle package is a true ancestor of the joined tree. HQ therefore adopts the whole successor-qualified C1-03 source-free join on integration/pyat-hq168-c1-03-successor-join-accepted-r1 @ 149c3d2636160d8de9b5a8be0c8b87195158077d, based on result 063ee8b77fc4e05c37456ff0168e946247f919ef and tested code 933a3d31aa961719c73e6ce7eebcfe40bc8cd45e. AT17/N10E current C1-02 identity binding is requalified in both directions; historical R8 remains historical-only evidence; the known no-single-fresh-process-bridge limitation remains explicit and nonblocking at this grain. This satisfies the planned Omega-1 trigger. HQ binds Astra High production-readiness decision at agent/astra-pyat-hq168-omega1-production-readiness-r1 @ 3551bfaf4b7c57f019a3d0beddcc13b2e8b5691b. The exact decision is whether the already-reviewed eight-source C4 proving workload (SRC02,06,08,12,14,26,27,35) is ready to freeze under the accepted C1-03 join, accepted C3 physical path, closed D02 locator, typed C2 epistemic-origin residual and all-35 accounting. HQ recommends GO_WITH_EXACT_C4_CONDITIONS, but raw-source execution remains separately held pending Omega-1 adjudication and a separate exact source-execution warrant. C1-R is not started before Omega-1. No C4, C7, raw-source or actor/person execution is authorized by this decision.",
+        "c1_03": {
+          "accepted_result": "063ee8b77fc4e05c37456ff0168e946247f919ef",
+          "tested_code": "933a3d31aa961719c73e6ce7eebcfe40bc8cd45e",
+          "final_review": "c8ce0ea81a2165f37d566f37de788fecedf85051",
+          "review_disposition": "APPROVE_AT_DECLARED_GRAIN",
+          "accepted_branch": "integration/pyat-hq168-c1-03-successor-join-accepted-r1",
+          "accepted_tip": "149c3d2636160d8de9b5a8be0c8b87195158077d",
+          "court": {
+            "passed": 454,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0,
+            "xfailed": 0
+          },
+          "at17_current_binding_requalified": true,
+          "known_nonblocking_residual": "NO_SINGLE_FRESH_PROCESS_OWNER_CONTRACT_PROVIDER_TO_CONSUMER_TO_LIFECYCLE_RESTORE"
+        },
+        "omega_1": {
+          "trigger": "PLANNED_OMEGA_1__E04_SOURCE_FREE_PROOF_TO_NEW_LIVE_OR_STRUCTURAL_WORKLOAD",
+          "branch": "agent/astra-pyat-hq168-omega1-production-readiness-r1",
+          "commission_tip": "3551bfaf4b7c57f019a3d0beddcc13b2e8b5691b",
+          "launch_surface": "ASTRA__HIGH",
+          "decision_question": "Is the reviewed eight-source C4 workload ready to freeze as the next current-production/horizontal-proof scope, subject to a separate exact raw-source execution warrant?",
+          "hq_recommendation": "A_GO_WITH_EXACT_C4_CONDITIONS",
+          "c4_selected_sources": [
+            "SRC02",
+            "SRC06",
+            "SRC08",
+            "SRC12",
+            "SRC14",
+            "SRC26",
+            "SRC27",
+            "SRC35"
+          ],
+          "raw_source_execution_authorized": false,
+          "status": "BOUND_NOT_LAUNCHED"
+        },
+        "c2": {
+          "state": "COMPLETE_AT_DECLARED_C4_PREPARATION_GRAIN",
+          "selected_sources": [
+            "SRC02",
+            "SRC06",
+            "SRC08",
+            "SRC12",
+            "SRC14",
+            "SRC26",
+            "SRC27",
+            "SRC35"
+          ],
+          "d02_blocker": "CLOSED_AT_DECLARED_GRAIN",
+          "residual": "C2-EPCLASS-PAYLOAD-001__UNRESOLVED_NOT_MISSING_PROVED"
+        },
+        "c3": {
+          "accepted_branch": "integration/pyat-hq130-c3-source-free-accepted-r1",
+          "accepted_tip": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+          "state": "ADOPTED_AT_DECLARED_SOURCE_FREE_GRAIN"
+        },
+        "c5": {
+          "accepted_canary": "integration/pyat-hq151-c5-n5-source-free-accepted-r1 @ 151d39260a803635f622323b14e42d96c7976d25",
+          "effect": "RETAINED_INPUT_CANARY_ONLY__NOT_C4_SUBSTITUTE"
+        },
+        "c7": {
+          "blocker": "C7-BLOCK-CURRENT-COMPARABLE-WAVE-PAIR-001",
+          "subsequent_gate": "PAIR_SPECIFIC_POSITIVE_COMPARISON_COMPARABILITY_AUTHORITY",
+          "state": "HELD"
+        },
+        "held": [
+          "C1_R",
+          "C4_LIVE_PRODUCTION",
+          "RAW_SOURCE_EXECUTION",
+          "C7_IMPLEMENTATION",
+          "PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+        ],
+        "next_action": "USER_LAUNCH_PLANNED_OMEGA_1_ASTRA_HIGH__HQ_ADJUDICATES_DECISION_BEFORE_ANY_C4_EXECUTION_FREEZE_OR_SOURCE_WARRANT"
+      }
+    },
+    {
+      "line": 217,
+      "record": {
+        "decision_id": "HQD-2026-10-05-214",
+        "date": "2026-10-05",
+        "authority": "VOZHD_PYAT_HQ",
+        "status": "RATIFIED",
+        "decision": "C1_ADOPTED__V556_FINAL_BOUNDED_REPAIR_BOUND__F7_TEMPORAL_REPAIR_BOUND__HD_F8_REPAIR_CONTINUES",
+        "decision_record": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ214_C1_ADOPTION_AND_F7_V556_REPAIR_ROUTING_R1.md",
+        "decision_commit": "939b93511bd2a3e000517a1e94d62d99bf56f143",
+        "c1": {
+          "candidate": "09ed64d642bc600521c6097715a7444383178029",
+          "review": "927d85041391c48611cbc86be9fe7b46228f4b68",
+          "disposition": "ACCEPT_C1_CURRENT_DAG_JOIN__READY_FOR_HQ_ADOPTION",
+          "implementation_merge": "396aeff9205a9d648fb44e6fdd6d3e9e27afe3f9",
+          "review_merge": "15550c8f7c026c8446546bf8845e4dfba2642baf",
+          "adopted": true
+        },
+        "v556": {
+          "rereview": "4bfbeb499883d52940131a087374b8087bf503ea",
+          "disposition": "V556_BOUNDED_REPAIR_PARTIAL__NAMED_DEFECT",
+          "successor_branch": "agent/rabochii-pyat-hq214-v556-final-bounded-repair-r1",
+          "commission_tip": "0c75551ece03ec23b77043bf967fbd0112e9d1c2",
+          "model_intelligence": "Space Bunny Max",
+          "adopted": false
+        },
+        "f7": {
+          "review": "4478e949eb92ec411c5dec9878bb4f23b5cb2c01",
+          "disposition": "F7_TEMPORAL_IMPLEMENTATION_PARTIAL__BOUNDED_REPAIR_REQUIRED",
+          "adjudications": {
+            "ordered_basis_without_delta": "TYPED_PRE_RECEIPT_REFUSAL__NO_THIRTEENTH_STATE",
+            "comparability_status": "NEGATIVE_REFUSAL_STATES_NOT_COMPARABLE__ONLY_THREE_POSITIVE_OR_COMPARABLE_NO_DIRECTION_STATES_COMPARABLE",
+            "no_basis_precedence": "STATE_PRECEDENCE_DOMINATES_CFI03"
+          },
+          "successor_branch": "agent/rabochii-pyat-hq214-f7-temporal-implementation-repair-r1",
+          "commission_tip": "50c3a66ca27b30ee2718cf9965cbaafd24a230df",
+          "model_intelligence": "Space Bunny Max",
+          "adopted": false
+        },
+        "hd_f8": {
+          "branch": "agent/rabochii-pyat-hq213-hd-f8-binding-repair-r1",
+          "observed_head": "a946d431f84dfe263c3508089b5c78422683fd03",
+          "status": "EXISTING__ACTIVE_NOT_YET_RETURNED",
+          "model_intelligence": "Space Bunny Max"
+        },
+        "r9_status": "R9_TECHNICAL_REPAIR_ACCEPTED__GOVERNED_QUALIFICATION_UNAVAILABLE__FINAL_ADOPTION_HELD",
+        "concurrency_law": "MAXIMIZE_SAFE_ORTHOGONAL_CONCURRENCY",
+        "holds_unchanged": true,
+        "astra_referral": false
+      }
+    }
+  ]
+}

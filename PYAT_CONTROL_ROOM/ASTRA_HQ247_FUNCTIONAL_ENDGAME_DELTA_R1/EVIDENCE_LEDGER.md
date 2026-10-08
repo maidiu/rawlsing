@@ -134,3 +134,7 @@ P0 entries remain historical. HQ249 supersedes P0-E01/E02 currentness, not their
 ## P2 V1–V3 bank
 
 See phases/P2_VERIFICATION.md and P2_SOURCE_INDEX.json. I4 release assembly and adopted rich C1/C1-03 are retained contrary evidence. Selected N9→N10W assembly remains unbound. Genuine ZERO_SUPPORT, VALID_EMPTY and authority blockers are distinct; C1-03A conserves states, while inspected provider does not serve null slices. No project/native/source test execution.
+
+## P2 V4–V6 bank
+
+Adopted C7 readiness binds only EVS1990/2008 physical candidates; competent products and exact comparability remain missing. Five accepted C1 owner blobs conserved at current control; HQ214 retains single-owner fresh-process bridge limitation. AT07 operational sequence remains narrow/unissued and local verifier placement blocked. Exact receipt and normative contract references in P2_VERIFICATION and source index.
