@@ -1,3 +1,20 @@
+# HQ249 — THREE HQ248 RETURNS ADJUDICATED; ASTRA PRE-V3 SYSTEM AUDIT NOW NEXT — 2026-10-08
+
+**DECISION:** HQD-2026-10-08-249. Exact returns and permitted terrain verified. No new native security, issuer/root or actor adoption. Previous HQ248 operative handoff retained below as historical.
+
+**F7 R3 Space Bunny Max** `agent/space-bunny-pyat-hq248-f7-decide-refcount-repair-r3 @ 8df99878f7947ac7966f0182ddb2c18424c1c9ae`: **PARTIAL.** `decide()` per-call leak reportedly cleaned (~12/15 → near-zero allocated blocks/call), confirmed repaired no-steal input list DECREF in C at blob `253fbafeb5b6596a5afec0354b76b5ca9444baee`. Still ~10 blocks per admitted relation + ~1 block per authority snapshot when owner is constructed. 397 author targeted tests; fresh independent R3 qualification not done. No production native cutover; `F7-RR-04G` OPEN.
+
+**F7 T1 Browser Sol High** `agent/reviewer-pyat-hq248-f7-trusted-constructor-ingress-design-r1 @ 58934231d6e5bc895f937b069433237f7edce594`: **DOCUMENTARY DESIGN READY ONLY.** One native P07 owner ingress proposal; pinning Python function objects insufficient if transitive `__globals__` remain mutable. No production ingress implementation, native security adoption or four hostile/five lawful positive actual F7 path court.
+
+**N10E placement Space Bunny Max** `agent/space-bunny-pyat-hq248-n10e-at07-deployment-placement-evidence-r1 @ e64379e542b931df1e7df47f1b37955a1cb9a3a9`: **BLOCKED at local independently controlled verifier trust boundary**. C1 assembly/test helper not product deployment; local single-writer filesystem primitives available, but no separate independent verifier principal/installer/root, no registrar/journal or actual issuer. ACL metadata probe was inadvertently written/reverted by worker; user system rollback is self-reported, not independently verified by HQ. No root, epoch, credential, R4 or new I01 kind.
+
+**ASTRA IS THE NEXT PROGRAM ACTION — NO AUTOMATIC ENGINEERING COMMISSIONS.** `agent/astra-pyat-hq247-functional-endgame-delta-audit-r1`, existing prepared audit commission `WORKER_COMMISSIONS/ASTRA-PYAT-HQ247-FUNCTIONAL-ENDGAME-DELTA-AUDIT-R1/00_COMMISSION.md`. Start cheap P0 with current HQ249 sealed packet, stop/remote push, manually switch Astra highest reasoning P1, then cheap P2, then Astra P3. Continuous Git banking; no model switches without human, no actual source or production mutation. HQD125 functional F7 temporal gate != native F7-RR-04G.
+
+**AUTHORITATIVE HQ DECISION:** `PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ249_THREE_HQ248_RETURNS_AND_ASTRA_SYSTEM_AUDIT_WAKE_R1.md`.
+**NEXT:** `LAUNCH_ASTRA_FUNCTIONAL_AUDIT_P0__PRESERVE_HQ249_CUT__NO_RECURSIVE_F7_N10E_DISPATCH`.
+
+---
+
 # HQ248 — F7 R2 REPAIR PARTIAL + CONCRETE REFCOUNT LEAK; F09 HOSTILE BLOCKED; N10E C1 PLACEMENT PARTIAL — 2026-10-08
 
 **DECISION:** HQD-2026-10-08-248. All three HQ247 returns independently checked against exact commission tips and allowed terrain, then adjudicated. **No F7 native security adoption, no operational issuer/root.** Astra HQ247 endgame audit is **PARKED — NOT LAUNCHED** pending operator choice after adjudication.
