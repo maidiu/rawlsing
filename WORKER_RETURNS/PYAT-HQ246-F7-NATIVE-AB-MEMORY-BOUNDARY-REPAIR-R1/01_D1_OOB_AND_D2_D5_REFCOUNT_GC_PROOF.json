@@ -1,0 +1,91 @@
+{
+  "commission": "PYAT-HQ246-F7-NATIVE-AB-MEMORY-BOUNDARY-REPAIR-R1",
+  "independent_review_led": "agent/reviewer-pyat-hq245-f7-native-stage-a-independent-runtime-r1 @ 14432c2b21eaf87a8e92ecb75a6765cf3763ddc1 (F7_NATIVE_STAGE_A_INDEPENDENT_HOSTILE_RUNTIME_BLOCKED__MEMORY_SAFETY_OR_CUSTODY_INVALID)",
+  "self_certification": false,
+
+  "D1_oob": {
+    "defect_confirmed_independently_by_reproduction": true,
+    "root_cause": "PyList_Check/PyTuple_Check accept SUBCLASSES. PySequence_Size() then dispatches to an attacker-overridden __len__ whose return value does not describe the real storage. That value sized the C arrays AND bounded PySequence_Fast_GET_ITEM(), which is an out-of-bounds array read when __len__ over-reports and a SILENT CUSTODY TRUNCATION when it under-reports.",
+    "stage_b_blob_verified_against_hq": "2d8ffc686fcdb3f7108f0c8bafe7f60273fcf304",
+    "before_evidence": {
+      "stage_a_asan": "ASAN SEGV, process exit 134, crash inside PyObject_GetAttrString on an out-of-bounds pointer, from a 1-element list whose __len__ claimed 5",
+      "stage_a_plain_oob_read": "error message 'stage A admission: relation[1] must expose ref' proves index 1 was read from a 1-element list",
+      "stage_b_oob_read": "error message 'stage B admission: relation[1] must be exact SourceUniverseRelation' proves index 1 was read from a 1-element container",
+      "stage_a_silent_truncation": "3 relations supplied, __len__ claimed 0, result: sealed=True with n_relations=0",
+      "stage_b_silent_truncation": "1 relation supplied, __len__ claimed 0, result: sealed with n_relations=0 and a custody_hash"
+    },
+    "repair": "accept ONLY PyList_CheckExact / PyTuple_CheckExact, then convert with PySequence_Fast and derive EVERY allocation and iteration bound from PySequence_Fast_GET_SIZE of the converted sequence. Applied to relations AND authority_snapshots on both A and B. The decide() request container check was tightened to exact types as well.",
+    "after_evidence": {
+      "stage_a_asan": "exit 1, NO AddressSanitizer report; clean typed refusal",
+      "stage_a_plain": "TypeError: stage A admission requires an EXACT list or tuple (not a subclass) of relations",
+      "stage_b_plain": "SourceRelationIntegrityError: stage B admission requires an EXACT list or tuple (not a subclass) of relations",
+      "truncation": "no longer reachable; subclass containers are refused by type before any length is consulted",
+      "reentrant_len": "a __len__ that would record being called is never invoked; test_d1_reentrant_len_subclass_is_refused_without_side_effect asserts the call list stays empty"
+    },
+    "tests": "12 lie variants x list/tuple on Stage A, 8 lie variants x relations/snapshots on Stage B, plus a reentrant case and a positive anti-truncation control"
+  },
+
+  "D2_refcount": {
+    "defect_confirmed": true,
+    "stage_a_measurement_before": "20,000 custody_diagnostic() calls produced +19,999 tracked gc lists (one leaked Py_BuildValue 'rows' list per call)",
+    "stage_a_root_cause": "Py_BuildValue's 'O' format does NOT steal a reference, so the owned rows list was never released",
+    "stage_a_measurement_after": "20,000 calls create 1 gc-tracked object total after warmup; sys.getallocatedblocks delta < 0.01 blocks/call",
+    "stage_b_findings": {
+      "leak_1": "ref_dict_copy() discarded the owned probe returned by dget(ad,'kind') - one object leaked per call",
+      "leak_2": "exact_key_of() assigned dget(ref,'kind') to k2 and then never released it when the probe succeeded - one object leaked per call",
+      "leak_3": "mk_decision() unconditionally Py_XDECREF'd relation_ref/authority_ref, which are BORROWED parameters, releasing a caller-owned reference (an over-DECREF, not a leak)",
+      "residual_unresolved": "a residual ~15 allocated blocks per decide() call remains, localised by systematic bisection to the post-loop source-ref ORDERING block (PyList_Sort + keys/vals lists + dedupe + PyList_AsTuple). exact_key_of() and ref_dict_copy() were each exonerated by isolated bisection (0.001 and 0.024 blocks/call). NOT isolated further; carried as a named blocker."
+    },
+    "measurement_method": "sys.getallocatedblocks() deltas after a 1000-5000 call warmup with gc disabled, plus gc.get_objects() id-set deltas as a cross-check. The naive len(gc.get_objects()) comparison used earlier is NOT trusted: it produced a false positive from interpreter lazy state.",
+    "clean_methods_after_repair": "resolve_exact 0.000 blocks/call; validate_decision_replay 0.000 blocks/call"
+  },
+
+  "D3_lifecycle": {
+    "defect": "a failed __init__ left the pinned trusted_semantic_hash, the pinned exception refs, the relations array and partially admitted relations in place",
+    "repair": "transactional initialisation. Every fallible step after pinning (PySequence_Fast, admit_relation, admit_snapshot, compute_custody_hash, custody hash allocation) now branches to fail_init, which calls the full release and returns -1. Nothing is left pinned and nothing is left partially sealed.",
+    "evidence": {
+      "stage_b_20k_failed_inits": "trusted semantic_hash, canonicalize and require_positive_authority refcounts each grow by at most 2 after 20,000 failing constructions",
+      "stage_b_2k_failed_inits": "the admitted relation's refcount grows by at most 2 after 2,000 failing constructions - no partial custody accumulates",
+      "stage_a_20k_failed_inits": "module remains coherent after 20,000 retries"
+    }
+  },
+
+  "D4_module_init": {
+    "defect": "Stage B ignored three PyModule_AddObject return values; Stage A double-released a statically-held error reference on failure",
+    "repair": "every AddObject return is checked on both modules. On failure the module is discarded and only references this function still owns are released; the failing AddObject's partially-added object is never released twice.",
+    "oom_injection": "reliable OOM injection was not performed. This is recorded as source-justified rather than tested: the repaired paths use the standard CPython idiom of releasing only locally owned references and discarding the module, and every AddObject return is now checked. A reviewer wanting OOM injection should treat this as an explicit open item."
+  },
+
+  "D5_gc_cycles": {
+    "defect": "both owner types held strong PyObject references with no tp_traverse/tp_clear, so any object graph referring back to the owner was uncollectable",
+    "repair": "Py_TPFLAGS_HAVE_GC added, with tp_traverse visiting every held reference (trusted callables, pinned classes, exception refs, admitted relations, relation ref dicts, canonicalised scopes, admitted snapshots, authority ref dicts) and tp_clear releasing them all. Stage A additionally visits and clears its pinned registry object.",
+    "evidence": "test_d5_owner_participates_in_cyclic_gc builds 500 owners each embedded in a cycle that refers back to the owner, then asserts the allocated-block growth stays bounded rather than linear.",
+    "no_impossible_claim": "cycles were NOT declared impossible; a discriminating construction-and-refcount test was written instead, as the commission required."
+  },
+
+  "preserved": {
+    "stage_a_original_tests": "39 passed, unmodified",
+    "stage_b_original_tests": "41 passed, unmodified",
+    "production_p07_court": "24 passed",
+    "production_f7_court": "163 passed",
+    "combined": "326 passed",
+    "stage_b_custody_hash_byte_exact": "preserved - still equals the production Python owner_custody_hash",
+    "accepted_tests_modified": false,
+    "production_files_modified": false
+  },
+
+  "new_repair_court": {
+    "path": "rawlsing_next/tests/test_p07_native_repair_hostile_court.py",
+    "tests": 59,
+    "covers": ["D1 OOB and truncation on A and B, list and tuple, 12 lie variants",
+               "reentrant __len__ refusal", "anti-truncation positive control",
+               "D2 leak bound on A", "D3 bounded refcounts after 20k failing inits",
+               "D5 cycle collectability", "D6 scalar registry refusal and real registry pinning",
+               "D6 exact snapshot pinning and non-exact snapshot refusal",
+               "D7 Stage A trusted seam is invoked at admission AND at resolve",
+               "D7 Stage B seam identity is observable and unrebindable",
+               "D7 module-attribute rebinding does not change pinned custody",
+               "D8 payload drift detection on A and on B with unchanged identity strings",
+               "quarantine and production-oracle liveness"]
+  }
+}

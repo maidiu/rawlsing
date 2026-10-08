@@ -1,0 +1,51 @@
+{
+  "commission": "PYAT-HQ246-F7-NATIVE-AB-MEMORY-BOUNDARY-REPAIR-R1",
+
+  "preserved_after_repair": {
+    "accepted_custody_hash": "still byte-equal to the production Python owner_custody_hash (test_stage_b_custody_hash_and_parity_preserved_after_repair)",
+    "true_object_key_not_ref_key": "preserved - the object key remains the real _relation_key material, NOT the Stage A ref-derived placeholder",
+    "semantic_projection_rehash": "preserved and re-verified by D8",
+    "replay_identity": "preserved; validate_decision_replay remains 0.000 allocated blocks per call",
+    "whole_decision_ladder": "preserved",
+    "authority_positive_guards": "preserved",
+    "exact_exception_types": "preserved - native SourceRelationIntegrityError and SourceRelationAuthorizationError remain distinct from the production classes",
+    "canonical_preimage": "preserved byte-exactly",
+    "original_41_stage_b_tests": "41 passed, unmodified",
+    "original_39_stage_a_tests": "39 passed, unmodified"
+  },
+
+  "states": {
+    "reachable_union_measured": 17,
+    "categories": {
+      "P07_RELATION_DECISIONS": ["DENIED", "CONFLICTING_AUTHORITY", "UNKNOWN_AUTHORITY", "EXPIRED_OR_STALE", "AUTHORIZED", "NOT_APPLICABLE"],
+      "generic": ["DISTINCT_BY_DEFAULT", "OUT_OF_SCOPE"],
+      "forbidden_backfill_targets": ["DECLARED_NONE", "SOURCE_NOT_APPLICABLE", "TEMPORAL_NONCOMPARABLE", "OBSERVED_ZERO", "ZERO_SUPPORT", "NONCOMPARABLE", "NOT_APPLICABLE"],
+      "non_default_matrix_defaults": ["UNKNOWN_OVERLAP", "PROVENANCE_ONLY", "ALIAS_ONLY"]
+    },
+    "precedence_ladder_exact": ["CONFLICTING_AUTHORITY", "EXPIRED_OR_STALE", "DENIED", "NOT_APPLICABLE", "UNKNOWN_AUTHORITY", "OUT_OF_SCOPE"],
+    "note": "the commission's '12 states' framing remains inaccurate; the measured union is 17 and the ladder is 6. Reported as measured."
+  },
+
+  "two_candidate_conflict_coverage": {
+    "status": "STILL NOT COVERED - unchanged from the HQ245 return",
+    "reason": "generating a CONFLICTING_AUTHORITY outcome requires TWO independently valid relation candidates that share one relation object key. The synthetic corpus available in this repository admits a single relation, and the commission forbids forging positive authority to manufacture the condition. Constructing a second valid SourceUniverseRelation through the production constructor requires the full RELATION_REQUIRED_MATERIAL_KEYS semantic_fields projection for its kind, which the available fixtures do not supply.",
+    "what_was_done_instead": "permitted source-free constructor material was NOT sufficient to close this, so it is reported as a named independent positive-coverage blocker rather than claimed as a pass. The multi-positive branch and precedence ties remain implemented and precedence-ordered but unexercised.",
+    "no_forgery": "no fabricated positive authority, no monkeypatched decision function, and no bypass of the trusted authority guard was used to force the branch."
+  },
+
+  "hqd216_five_positives_and_four_attacks": {
+    "status": "NOT re-run and NOT claimed",
+    "reason": "they remain Stage D gates against the actual native P07->F7 interface, which does not exist because there is no production cutover. Running them now would test nothing real."
+  },
+
+  "quarantine": {
+    "namespace_b": "rawlsing_next._p07_native_owner_stage_b",
+    "namespace_a": "rawlsing_next._p07_native_owner_stage_a",
+    "production_integrated": false,
+    "production_imports_of_native": 0,
+    "verified_by": "test_repair_did_not_integrate_into_production greps both production modules for the native module and type names and asserts the production resolver class is unchanged; git diff against the commission tip is empty for every production and accepted-test path",
+    "may_authorize_within_harness_only": true,
+    "from_c11": "NOT implemented - explicit Stage C gate",
+    "duplicate_positive_python_owner": "still present as PREEXISTING BASELINE, to be eliminated only at a separately governed cutover"
+  }
+}

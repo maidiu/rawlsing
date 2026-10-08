@@ -1,0 +1,67 @@
+{
+  "commission": "PYAT-HQ246-F7-NATIVE-AB-MEMORY-BOUNDARY-REPAIR-R1",
+
+  "build": {
+    "compiler": "Apple clang version 14.0.3 (clang-1403.0.22.14.1)",
+    "governed_interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6 (matches required)",
+    "required_flag": "-undefined dynamic_lookup",
+    "recipe": "clang -shared -fPIC -O2 -Wall -Wextra -Wno-unused-parameter -undefined dynamic_lookup -I<sysconfig include> -o rawlsing_next/_p07_native_owner_stage_{a,b}.cpython-311-darwin.so rawlsing_next/_p07_native_owner_stage_{a,b}.c",
+    "warnings": "clean build, no -Wall/-Wextra warnings",
+    "abi": {"python": "3.11.3", "soabi": "cpython-311-darwin", "ext_suffix": ".cpython-311-darwin.so", "machine": "x86_64", "macos": "13.7.8", "limited_api": false}
+  },
+
+  "source_and_binary_provenance": {
+    "stage_a_source": {"path": "rawlsing_next/_p07_native_owner_stage_a.c", "sha256": "12a03d0633661cb2fb57202a6fb0351a18e252cb6fcf2d85439ac9a8b0a23f71", "lines": 853, "was_lines": 719},
+    "stage_b_source": {"path": "rawlsing_next/_p07_native_owner_stage_b.c", "sha256": "66f9ad9f0be9a5eaeb83da774f1839818627bec54b3cc5625aa6fd238aed2b4a", "lines": 1906, "was_lines": 1802, "was_blob": "2d8ffc686fcdb3f7108f0c8bafe7f60273fcf304"},
+    "repair_court": {"path": "rawlsing_next/tests/test_p07_native_repair_hostile_court.py", "sha256": "933cc41d7cd8e960098b01b8fa54272f4f5aa56ded43a9de0a8090ccff778bac", "tests": 59},
+    "local_only_binaries": {
+      "stage_a_so_sha256": "1712abb6b60b78c7a3202ae882b974e07a44058afd49a13c5300a684e17c4faf",
+      "stage_b_so_sha256": "44b4e329a5879d71d867f08a2221023aaef391aedd9ded1a38cf75cbb7beccfc",
+      "committed_to_git": false
+    }
+  },
+
+  "independent_reproducers": {
+    "used": "the independent reviewer's original evil-list __len__ lie shape was reproduced verbatim in shape (a list/tuple subclass whose __len__ over-reports), on BOTH Stage A and Stage B, plus low-reporting truncation and a reentrant/side-effecting __len__",
+    "sigsegv_before": {
+      "stage_a_asan": {"exit_code": 134, "report": "AddressSanitizer: SEGV on unknown address 0x000000000008 in PyObject_GetAttrString"},
+      "note": "Stage B's out-of-bounds read was proven structurally (an error naming index 1 of a 1-element container) but did not produce a hard crash under either the plain or the ASAN build, because CPython's pymalloc hides the list storage redzone from ASAN and the garbage read happened to fail the exact-type check. This is reported as an out-of-bounds READ proven, not as a Stage B crash reproduced."
+    },
+    "clean_after": {
+      "stage_a_asan": {"exit_code": 1, "address_sanitizer_reports": 0, "result": "typed refusal: requires an EXACT list or tuple (not a subclass)"},
+      "stage_b": {"exit_code": 1, "result": "typed refusal, no out-of-bounds access"}
+    },
+    "baseline_isolation": "no deliberately known-crashing baseline was ever executed in the same process as a production or parity test; every crash probe ran in its own interpreter process, and the known-crashing builds are long gone"
+  },
+
+  "fail_capability": {
+    "stage_a_macro": "STAGE_A_FAULT_INJECT",
+    "stage_b_macro": "STAGE_B_FAULT_INJECT_RESOLVE",
+    "absent_from_normal_binaries": {"stage_a_so_FAULT_INJECT_string_matches": 0, "stage_b_so_FAULT_INJECT_string_matches": 0},
+    "interpretation": "the diagnostic hooks are compiled out of the shipped binaries by #ifdef and are absent from the emitted strings"
+  },
+
+  "memory_invariants_sustained_under_hostile_input": {
+    "adversarial_cases": "12 lie variants (over-report, under-report, negative, huge, 2**62, 2**63-1, raising, MemoryError, callable) across list and tuple on Stage A and relations/snapshots on Stage B, plus reentrant, hostile iterator, non-exact relation, non-exact snapshot, scalar registry, and 20,000-iteration failing-construction sweeps",
+    "result": "no crash, no abort, no out-of-bounds access, no partial custody, bounded refcounts"
+  },
+
+  "test_and_file_accounting": {
+    "stage_a_original": 39,
+    "stage_b_original": 41,
+    "new_repair_court": 59,
+    "production_p07": 24,
+    "production_f7": 163,
+    "total": 326,
+    "collection_delta_from_this_stage": "2823 -> 2882, exactly +59 tests and +0 collection errors",
+    "accepted_tests_changed": false,
+    "production_files_changed": false
+  },
+
+  "negative_ceiling": {
+    "authorizing": false,
+    "closes_f7_rr_04g": false,
+    "adoptable": false,
+    "reason": "this stage is a bounded pre-adoption memory-boundary and trusted-seam repair. It does not add the missing two-candidate CONFLICTING_AUTHORITY positive coverage, does not implement from_c11, and one named Stage B decide() refcount leak remains open."
+  }
+}

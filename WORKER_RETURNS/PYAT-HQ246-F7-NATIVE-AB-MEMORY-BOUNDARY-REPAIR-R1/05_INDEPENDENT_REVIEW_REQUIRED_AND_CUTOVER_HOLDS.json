@@ -1,0 +1,48 @@
+{
+  "commission": "PYAT-HQ246-F7-NATIVE-AB-MEMORY-BOUNDARY-REPAIR-R1",
+  "headline": "The memory-boundary and trusted-seam repairs are real, demonstrated and regression-locked. This lane does NOT self-certify, does NOT adopt, and does NOT close F7-RR-04G. Cutover still holds shut.",
+
+  "self_certification": {
+    "claims_stage_a_qualified": false,
+    "claims_stage_b_qualified": false,
+    "prior_stage_a_hostile_review_outcome": "BLOCKED (F7_NATIVE_STAGE_A_INDEPENDENT_HOSTILE_RUNTIME_BLOCKED__MEMORY_SAFETY_OR_CUSTODY_INVALID)",
+    "relationship_to_that_review": "this lane REPAIRS the concrete defects it identified and independently reproduced them first-hand (D1 out-of-bounds read and silent truncation on BOTH A and B; D2 leak measured at +19,999 lists per 20,000 calls). Repairing a finding is not the same as accepting the reviewer's conclusion, and the independent reviewer has NOT re-run against this branch."
+  },
+
+  "what_a_reviewer_must_still_do": [
+    "independently re-run the evil-list/tuple __len__ reproducers against both rebuilt modules and confirm refusal with no out-of-bounds access",
+    "independently re-run the leak bounds and, critically, independently isolate the residual ~15 blocks/call Stage B decide() leak that this lane could not localise further than the source-ref ordering block",
+    "review the transactional fail_init paths for completeness across every fallible step",
+    "review the tp_traverse/tp_clear pairs for completeness, since a missed strong reference would re-introduce an uncollectable cycle",
+    "review the trusted-seam TCB argument and decide whether ASSUMED TRUSTED callables are acceptable for any future authority path",
+    "attempt reliable OOM injection for the module-init paths, which this lane justified by source inspection rather than by test",
+    "confirm that Stage A's newly load-bearing trusted_semantic_hash seam does not widen any future authority path"
+  ],
+
+  "cutover_holds": {
+    "production_p07_f7_mutation": "none",
+    "production_imports_of_native": 0,
+    "duplicate_positive_python_owner": "still the only authority; untouched",
+    "from_c11": "not implemented",
+    "accepted_tests_weakened": false,
+    "binaries_committed": false,
+    "control_merge": false,
+    "self_adoption": false,
+    "reviewer_or_author_branches_modified": false,
+    "dependencies_installed": false,
+    "next_stage_dispatch": "NOT auto-dispatched. Stage C must be separately commissioned, and only after the residual leak is closed and an independent review has re-run against this branch."
+  },
+
+  "four_attacks_and_five_positives": {
+    "status": "explicitly NOT re-claimed",
+    "detail": "the four HQ234-HQ236 hostile variants and the five HQD216 lawful positives remain Stage D gates against the actual native P07->F7 interface. No production cutover exists, so no real native F7 call path exists to attack. This repair neither satisfies nor weakens them."
+  },
+
+  "residual_open_items": [
+    {"id": "HQ246-OPEN-001", "severity": "must fix before adoption", "title": "Stage B decide() leaks ~15 allocated blocks per call", "localisation": "systematically bisected to the post-loop source-ref ordering block (PyList_Sort + keys/vals lists + dedupe + PyList_AsTuple); exact_key_of() and ref_dict_copy() exonerated by isolated measurement", "impact": "a bounded memory leak, NOT corruption and NOT an out-of-bounds access; it does not affect decision correctness, replay identity or custody hash, all of which remain byte-exact"},
+    {"id": "HQ246-OPEN-002", "severity": "coverage gap", "title": "two-candidate CONFLICTING_AUTHORITY and precedence ties remain unexercised", "reason": "no second independently valid relation candidate is available from a permitted source-free fixture, and forging positive authority is forbidden"},
+    {"id": "HQ246-OPEN-003", "severity": "untested by choice", "title": "module-init OOM injection not performed", "reason": "justified by source inspection; flagged for an independent reviewer"}
+  ],
+
+  "f7_rr_04g": "OPEN"
+}

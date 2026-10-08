@@ -1,0 +1,43 @@
+{
+  "commission": "PYAT-HQ246-F7-NATIVE-AB-MEMORY-BOUNDARY-REPAIR-R1",
+
+  "D6_registry_and_snapshot_custody": {
+    "stage_a_before": "authority_registry=42 was accepted and only its tp_name string was retained, so custody was represented by a label rather than by material",
+    "stage_a_repair": "builtin scalars (int, str, bytes, float, bool) are refused outright with a typed TypeError; a genuine registry object is now PINNED with an owned reference and released on dealloc. Stage A remains NON-AUTHORIZING and cannot decide or require anything.",
+    "stage_a_evidence": "test_d6_stage_a_refuses_scalar_authority_registry covers 42, 'registry', 3.5, True, b'x'; test_d6_stage_a_pins_the_registry_object_not_just_its_name asserts refcount +1 while alive and back to baseline after dealloc",
+    "stage_b_position": "Stage B already required an exact AuthoritySnapshot class and pinned real snapshot objects; this was verified rather than changed. test_d6_stage_b_pins_real_snapshots_not_synthetic_labels asserts a genuine pin and that the pin is released on dealloc; test_d6_stage_b_refuses_non_exact_authority_snapshot covers object(), 'not a snapshot', 42 and None."
+  },
+
+  "D7_trusted_seam": {
+    "stage_a_before": "trusted_semantic_hash was stored but NEVER called, making the seam inert; combined with D8 Stage A verified only ref.key/content_hash strings",
+    "stage_a_repair": "the pinned callable is now genuinely load-bearing. At admission the trusted semantic hash of each relation's semantic_projection() is sealed (relations without a projection seal nothing and are handled gracefully). On EVERY resolve_exact the projection is re-hashed through the same pinned callable and compared, so a changed payload raises 'native owner custody relation semantic projection drift'. This adds NO positive authority.",
+    "stage_a_evidence": "test_d7_stage_a_trusted_semantic_hash_is_actually_invoked asserts the spy callable is called during admission AND again at resolve; test_d8_stage_a_detects_mutated_semantic_payload asserts the drift refusal",
+    "stage_b_position": "Stage B's seam was already load-bearing (semantic_hash for the custody hash, relation key, projection re-hash and replay identity; canonicalize for scopes; require_positive_authority for the positive guard). This stage added a read-only trusted_seam accessor so a harness can ASSERT the pinned identities, plus a test that rebinding rawlsing_next.pre553_empirical_objects.semantic_hash after construction does not change the replay identity or custody hash the native owner produces.",
+    "assumed_vs_demonstrated": "ASSUMED TRUSTED: the three callables supplied at construction are the accepted pre553 implementations - this is a harness responsibility, not something the native code can prove. DEMONSTRATED: once pinned, their identities cannot be re-bound from Python, no live registry or Python owner is consulted for a positive, and caller data is deep validated and deep copied before any trusted call. TCB note: the substitution of the trusted executable alias ITSELF is deliberately NOT tested as an attacker case, per the commission."
+  },
+
+  "D8_payload_drift": {
+    "stage_a_repair": "covered by the D7 projection re-hash; tested with a mutable stand-in admitted through Stage A's duck-typed admission",
+    "stage_b_repair": "already present at the HQ245 candidate; re-verified with a mutable stand-in whose ref.key and content_hash are left UNCHANGED while semantic_fields is mutated, and the resolve still refuses with 'semantic hash mismatch'",
+    "typed_production_analogue_note": "the accepted production SourceUniverseRelation is frozen, so the mutate-after-seal shape cannot be produced with it. A mutable stand-in admitted through the exact-class parameter is the honest analogue, and it is what both tests use. Constructing a forged SourceUniverseRelation with a self-inconsistent content_hash was attempted and abandoned: the production constructor derives required semantic_fields from named parameters, so a caller-supplied semantic_fields dict is rejected."
+  },
+
+  "D9_baseline_discrimination": {
+    "issue": "the HQ245 author digest 72d0a5ca... was not reproducible by the independent reviewer, who reproduced the accepted HQ242 digest 278854ee... using exactly nine environmental exclusions",
+    "nine_exclusions_used": [
+      "test_fiabc_lm1_r1e_n1_physical_boundary.py",
+      "test_fiabc_lm2_r1e_bounded_mapping_recovery.py",
+      "test_fiabc_run3_postmeasurement_repair_stack.py",
+      "test_objective_consumer_bounded_evidence_d07.py",
+      "test_pre553_candidate_c_production_binding.py",
+      "test_pre553_r4_compaction.py",
+      "test_pre553_source_backed_c11_facade.py",
+      "test_pre553_sr06_decoder_carrier.py",
+      "test_subv_e_obl059_positive_applicability_r13_independent_review_r1_corrected.py"
+    ],
+    "exclusion_justification": "these are exactly the nine modules that fail at COLLECTION time on this governed host because pandas, pyarrow and rawlsing_next.tests.d07_bounded_loss_harness are genuinely absent. No dependency was installed.",
+    "invocation": "pytest rawlsing_next/tests -q -p no:randomly --continue-on-collection-errors with the nine exclusions plus the three quarantined native synthetic courts",
+    "result": "PENDING - see 06_FINAL_DISPOSITION.json",
+    "no_manufactured_match": "No digest match is claimed and no differently normalised or differently invoked run is compared against the accepted value. If the recorded digest differs from 278854ee..., that is reported as a difference, not reconciled by inventing a normalisation."
+  }
+}

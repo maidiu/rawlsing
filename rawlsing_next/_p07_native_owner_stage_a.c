@@ -41,6 +41,10 @@ typedef struct {
     char *key;             /* exact ref key: kind|object_id|content_hash           */
     char *content_hash;    /* 64-hex semantic content hash, copied at admission    */
     char *object_key;      /* 64-hex relation object key used for by_key indexing  */
+    /* D7/D8: sealed semantic-projection identity produced by the TRUSTED callable.
+     * has_proj is 0 for relations that expose no semantic_projection(). */
+    char *proj_hash;
+    int has_proj;
 } SealedRelation;
 
 typedef struct {
@@ -51,6 +55,7 @@ typedef struct {
     char *custody_hash;        /* sealed C-owned custody fingerprint               */
     char *registry_key;        /* sealed registry description                      */
     PyObject *trusted_semhash; /* trusted module-level semantic_hash callable     */
+    PyObject *registry_obj;    /* D6: the registry itself, pinned, not just its name */
 } StageAOwner;
 
 static PyObject *StageAIntegrityError = NULL;
@@ -84,6 +89,7 @@ seal_owner_free_contents(StageAOwner *self)
             PyMem_Free(self->rels[i].key);
             PyMem_Free(self->rels[i].content_hash);
             PyMem_Free(self->rels[i].object_key);
+            PyMem_Free(self->rels[i].proj_hash);
             Py_XDECREF(self->rels[i].rel);
         }
         PyMem_Free(self->rels);
@@ -95,6 +101,7 @@ seal_owner_free_contents(StageAOwner *self)
     PyMem_Free(self->registry_key);
     self->registry_key = NULL;
     Py_CLEAR(self->trusted_semhash);
+    Py_CLEAR(self->registry_obj);
     self->sealed = 0;
 }
 
@@ -135,6 +142,33 @@ get_str_attr(PyObject *obj, const char *name, char **out, const char *what)
 }
 
 /* ---------------------------------------------------------------- dealloc */
+
+/* D5 CYCLE REPAIR: StageAOwner holds strong references to Python objects (admitted
+ * relations, the trusted callable, the registry). Without tp_traverse/tp_clear those
+ * references are invisible to the cyclic collector, so an object graph that refers back
+ * to the owner forms an uncollectable cycle and leaks. Traversing and clearing the
+ * references makes such cycles collectable. */
+static int
+StageAOwner_traverse(StageAOwner *self, visitproc visit, void *arg)
+{
+    Py_ssize_t i;
+    Py_VISIT(self->trusted_semhash);
+    Py_VISIT(self->registry_obj);
+    for (i = 0; i < self->n_rels; i++) {
+        if (self->rels[i].rel) {
+            Py_VISIT(self->rels[i].rel);
+        }
+    }
+    return 0;
+}
+
+static int
+StageAOwner_clear(StageAOwner *self)
+{
+    /* Break every strong reference so a cycle through the owner can be collected. */
+    seal_owner_free_contents(self);
+    return 0;
+}
 
 static void
 StageAOwner_dealloc(StageAOwner *self)
@@ -179,6 +213,34 @@ admit_one(StageAOwner *self, PyObject *rel, SealedRelation *out, Py_ssize_t inde
         PyErr_NoMemory();
         goto fail;
     }
+
+    /* D7/D8 TRUSTED-SEAM USE: Stage A previously stored trusted_semantic_hash but never
+     * called it, making the seam inert. Seal the trusted semantic-projection identity
+     * now, and re-verify it on every resolve, so the callable is genuinely load-bearing
+     * for Stage A's custody/provenance claims. This adds NO positive authority: Stage A
+     * still cannot decide or require anything. */
+    out->proj_hash = NULL;
+    out->has_proj = 0;
+    if (self->trusted_semhash != NULL) {
+        PyObject *proj = PyObject_CallMethod(rel, "semantic_projection", NULL);
+        if (proj == NULL) {
+            PyErr_Clear();          /* relation exposes no projection: nothing to seal */
+        } else {
+            PyObject *h = PyObject_CallFunctionObjArgs(self->trusted_semhash, proj, NULL);
+            Py_DECREF(proj);
+            if (h == NULL) {
+                PyErr_Clear();
+            } else if (!PyUnicode_Check(h)) {
+                Py_DECREF(h);
+                PyErr_Clear();
+            } else {
+                out->proj_hash = xstrdup(PyUnicode_AsUTF8(h));
+                out->has_proj = 1;
+                Py_DECREF(h);
+            }
+        }
+    }
+
     out->rel = rel;            /* caller holds a reference; we take ownership below */
     Py_INCREF(rel);
     out->key = key;
@@ -231,15 +293,25 @@ StageAOwner_init(StageAOwner *self, PyObject *args, PyObject *kwds)
                         "stage A admission requires a callable trusted_semantic_hash");
         return -1;
     }
-    /* Reject attacker-controlled iteration: require an exact list/tuple so no
-     * __iter__/__getattribute__ side effect can drive admission. */
-    if (!PyList_Check(relations) && !PyTuple_Check(relations)) {
+    /* D1 MEMORY-BOUNDARY REPAIR.
+     *
+     * PyList_Check/PyTuple_Check also accept SUBCLASSES, and PySequence_Size() would
+     * then dispatch to an attacker-overridden __len__ that can report a length
+     * unrelated to the real storage. Using that value as an allocation bound and then
+     * indexing the converted fast sequence walks out of bounds (crash) or admits a
+     * truncated custody set while still sealing (silent custody failure).
+     *
+     * Repair: accept ONLY exact built-in list/tuple (whose length is a real C-API
+     * count that no Python code can lie about), convert, and then derive EVERY bound
+     * from PySequence_Fast_GET_SIZE of the converted sequence. */
+    if (!PyList_CheckExact(relations) && !PyTuple_CheckExact(relations)) {
         PyErr_SetString(PyExc_TypeError,
-                        "stage A admission requires an exact list or tuple of relations");
+            "stage A admission requires an EXACT list or tuple (not a subclass) of "
+            "relations, so no overridden __len__ can supply the iteration bound");
         return -1;
     }
-    n = PySequence_Size(relations);
-    if (n < 0) {
+    if (registry == Py_None) {
+        raise_integrity("stage A admission requires an explicit authority_registry");
         return -1;
     }
 
@@ -247,24 +319,41 @@ StageAOwner_init(StageAOwner *self, PyObject *args, PyObject *kwds)
     Py_INCREF(semhash);
     self->trusted_semhash = semhash;
 
-    if (n > 0) {
-        self->rels = (SealedRelation *)PyMem_Calloc((size_t)n, sizeof(SealedRelation));
-        if (self->rels == NULL) {
-            return -1;
-        }
+    /* D6: pin the registry honestly instead of keeping only its type name. A builtin
+     * scalar (e.g. 42) is not a registry and is refused outright. */
+    if (PyLong_CheckExact(registry) || PyUnicode_CheckExact(registry) ||
+        PyBytes_CheckExact(registry) || PyFloat_CheckExact(registry) ||
+        PyBool_Check(registry)) {
+        Py_CLEAR(self->trusted_semhash);
+        PyErr_SetString(PyExc_TypeError,
+            "stage A admission refuses a scalar authority_registry (e.g. int); an "
+            "exact registry object is required");
+        return -1;
     }
-    self->n_rels = 0;
+    Py_INCREF(registry);
+    self->registry_obj = registry;
 
     /* Two-phase admission: copy identity material first, seal only if ALL succeed. */
     fast = PySequence_Fast(relations, "stage A relations must be a sequence");
     if (fast == NULL) {
-        return -1;
+        goto fail_init;   /* D3: full cleanup, nothing left pinned */
+    }
+    /* D1: the ONLY authoritative bound is the converted sequence's actual length. */
+    n = PySequence_Fast_GET_SIZE(fast);
+    self->n_rels = 0;
+    if (n > 0) {
+        self->rels = (SealedRelation *)PyMem_Calloc((size_t)n, sizeof(SealedRelation));
+        if (self->rels == NULL) {
+            Py_DECREF(fast);
+            PyErr_NoMemory();
+            goto fail_init;
+        }
     }
     for (i = 0; i < n; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(fast, i);
         if (admit_one(self, item, &self->rels[i], i) < 0) {
             Py_DECREF(fast);
-            return -1; /* nothing sealed: __init__ failure leaves self unsealed */
+            goto fail_init;   /* D3: nothing sealed */
         }
         self->n_rels = i + 1;
     }
@@ -273,7 +362,8 @@ StageAOwner_init(StageAOwner *self, PyObject *args, PyObject *kwds)
     /* Registry description is a sealed C string taken from the exact type name. */
     rkey = xstrdup(Py_TYPE(registry)->tp_name);
     if (rkey == NULL) {
-        return -1;
+        PyErr_NoMemory();
+        goto fail_init;
     }
     self->registry_key = rkey;
 
@@ -294,7 +384,8 @@ StageAOwner_init(StageAOwner *self, PyObject *args, PyObject *kwds)
         }
         self->custody_hash = (char *)PyMem_Malloc(17);
         if (self->custody_hash == NULL) {
-            return -1;
+            PyErr_NoMemory();
+            goto fail_init;
         }
         PyOS_snprintf(self->custody_hash, 17, "%016llx",
                       (unsigned long long)h);
@@ -302,6 +393,13 @@ StageAOwner_init(StageAOwner *self, PyObject *args, PyObject *kwds)
 
     self->sealed = 1;
     return 0;
+
+fail_init:
+    /* D3 TRANSACTIONAL CLEANUP: a failed __init__ must leave NO pinned callable, NO
+     * sealed relation array and NO registry reference behind, so repeated failing
+     * construction cannot leak references or leave a dirty owner that mis-reports. */
+    seal_owner_free_contents(self);
+    return -1;
 }
 
 /* ------------------------------------------------------------------ resolve */
@@ -459,6 +557,34 @@ StageAOwner_resolve_exact(StageAOwner *self, PyObject *arg)
     }
     PyMem_Free(have);
 
+    /* D8: re-verify the trusted semantic-projection identity, so a mutable semantic
+     * payload changed after sealing cannot be returned as trusted. */
+    if (self->rels[i].has_proj) {
+        PyObject *proj = PyObject_CallMethod(self->rels[i].rel,
+                                             "semantic_projection", NULL);
+        PyObject *hh;
+        if (proj == NULL) {
+            Py_DECREF(key);
+            PyErr_Clear();
+            raise_integrity("native owner custody relation semantic projection unavailable");
+            return NULL;
+        }
+        hh = PyObject_CallFunctionObjArgs(self->trusted_semhash, proj, NULL);
+        Py_DECREF(proj);
+        if (hh == NULL) {
+            Py_DECREF(key);
+            return NULL;
+        }
+        if (!PyUnicode_Check(hh) ||
+            strcmp(PyUnicode_AsUTF8(hh), self->rels[i].proj_hash) != 0) {
+            Py_DECREF(hh);
+            Py_DECREF(key);
+            raise_integrity("native owner custody relation semantic projection drift");
+            return NULL;
+        }
+        Py_DECREF(hh);
+    }
+
     Py_DECREF(key);
     Py_INCREF(self->rels[i].rel);
     return self->rels[i].rel;
@@ -545,6 +671,9 @@ StageAOwner_custody_diagnostic(StageAOwner *self, PyObject *Py_UNUSED(ignored))
         }
         Py_DECREF(d);
     }
+    /* D2 LEAK REPAIR: Py_BuildValue's "O" does NOT steal a reference, so the owned
+     * `rows` list was leaked once per call (measured: +19,999 tracked lists per 20,000
+     * calls). Release it explicitly once the result dict holds its own reference. */
     res = Py_BuildValue("{s:s,s:s,s:s,s:s,s:O,s:i,s:n}",
                         "contract", STAGE_A_CONTRACT,
                         "authorizing", "NO",
@@ -553,6 +682,7 @@ StageAOwner_custody_diagnostic(StageAOwner *self, PyObject *Py_UNUSED(ignored))
                         "sealed_relations", rows,
                         "sealed", self->sealed,
                         "n_relations", (Py_ssize_t)self->n_rels);
+    Py_DECREF(rows);
     return res;
 }
 
@@ -611,8 +741,11 @@ static PyTypeObject StageAOwnerType = {
     .tp_name = "rawlsing_next._p07_native_owner_stage_a.StageAOwner",
     .tp_basicsize = sizeof(StageAOwner),
     .tp_dealloc = (destructor)StageAOwner_dealloc,
-    .tp_flags = Py_TPFLAGS_DEFAULT,   /* NOTE: Py_TPFLAGS_BASETYPE intentionally absent
-                                       * -> the type is NON-SUBCLASSABLE. */
+    /* D5: Py_TPFLAGS_HAVE_GC makes tp_traverse/tp_clear effective. Py_TPFLAGS_BASETYPE
+     * is intentionally ABSENT -> the type is NON-SUBCLASSABLE. */
+    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HAVE_GC,
+    .tp_traverse = (traverseproc)StageAOwner_traverse,
+    .tp_clear = (inquiry)StageAOwner_clear,
     .tp_doc = "HQ244 Stage A non-authorizing native P07 owner prototype.",
     .tp_methods = StageA_methods,
     .tp_getset = StageA_getset,
@@ -687,6 +820,10 @@ PyInit__p07_native_owner_stage_a(void)
         return NULL;
     }
 
+    /* D4 REPAIR: on any AddObject failure PyErr is already set and the module is
+     * discarded. The ORIGINAL error must survive, so the owned references are released
+     * and the module DECREFed, but the failing AddObject's partially-added object is
+     * NOT DECREFed a second time (that would corrupt a static type/error reference). */
     Py_INCREF(StageAIntegrityError);
     Py_INCREF(StageAKeyError);
     if (PyModule_AddObject(m, "SourceRelationIntegrityError",
@@ -697,7 +834,6 @@ PyInit__p07_native_owner_stage_a(void)
         return NULL;
     }
     if (PyModule_AddObject(m, "StageAExactKeyError", StageAKeyError) < 0) {
-        Py_DECREF(StageAIntegrityError);
         Py_DECREF(StageAKeyError);
         Py_DECREF(m);
         return NULL;
@@ -705,8 +841,6 @@ PyInit__p07_native_owner_stage_a(void)
     Py_INCREF(&StageAOwnerType);
     if (PyModule_AddObject(m, "StageAOwner", (PyObject *)&StageAOwnerType) < 0) {
         Py_DECREF(&StageAOwnerType);
-        Py_DECREF(StageAIntegrityError);
-        Py_DECREF(StageAKeyError);
         Py_DECREF(m);
         return NULL;
     }

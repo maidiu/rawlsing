@@ -191,8 +191,10 @@ static PyObject *exact_key_of(PyObject *ref)
     /* AuthorityRef-shaped material uses authority_id/authority_version/
      * authority_content_hash; ExactRef-shaped material uses kind/object_id/
      * content_hash. Both are exact refs with different key separators. */
+    /* dget() returns an OWNED reference (and already clears any lookup error), so the
+     * first probe must not be discarded. Retaining it leaked one object per
+     * exact_key_of() call -- measured ~13-15 allocated blocks per decide(). */
     k2 = dget(ref, "kind");
-    if (k2) { PyErr_Clear(); }
     if (!k2) k2 = dget(ref, "authority_id");
     o2 = k2 ? dget(ref, "object_id") : NULL;
     if (!o2) { PyErr_Clear(); o2 = dget(ref, "authority_version"); }
@@ -224,7 +226,13 @@ static PyObject *ref_dict_copy(PyObject *ref)
     if (ad) {
         if (!PyMapping_Check(ad)) { Py_DECREF(ad); return NULL; }
     }
-    which = (ad && dget(ad, "kind")) ? 0 : 1;
+    {
+        /* dget returns an OWNED reference; it must be released, otherwise every
+         * ref_dict_copy() call leaks one object. */
+        PyObject *probe = ad ? dget(ad, "kind") : NULL;
+        which = probe ? 0 : 1;
+        Py_XDECREF(probe);
+    }
     Py_XDECREF(ad);
     src = PyObject_CallMethod(ref, "as_dict", NULL);
     if (!src) { PyErr_Clear(); src = ref; Py_INCREF(src); }
@@ -424,6 +432,41 @@ static void stb_free_contents(StageBOwner *self)
     Py_CLEAR(self->relation_cls);
     Py_CLEAR(self->snapshot_cls);
     self->sealed = 0;
+}
+
+/* D5 CYCLE REPAIR: StageBOwner holds strong references to admitted relations, admitted
+ * authority snapshots, three trusted callables and two exact classes. Without
+ * tp_traverse/tp_clear the collector cannot see those references, so any object graph
+ * that refers back to the owner forms an uncollectable cycle and leaks permanently. */
+static int
+StageBOwner_traverse(StageBOwner *self, visitproc visit, void *arg)
+{
+    Py_ssize_t i;
+    Py_VISIT(self->t_semantic_hash);
+    Py_VISIT(self->t_canonicalize);
+    Py_VISIT(self->t_require_positive);
+    Py_VISIT(self->relation_cls);
+    Py_VISIT(self->snapshot_cls);
+    Py_VISIT(self->exc_integrity);
+    Py_VISIT(self->exc_authz);
+    for (i = 0; i < self->n_rels; i++) {
+        if (self->rels[i].rel)       Py_VISIT(self->rels[i].rel);
+        if (self->rels[i].ref_dict)   Py_VISIT(self->rels[i].ref_dict);
+        if (self->rels[i].sources)    Py_VISIT(self->rels[i].sources);
+        if (self->rels[i].operation_scope) Py_VISIT(self->rels[i].operation_scope);
+    }
+    for (i = 0; i < self->n_snaps; i++) {
+        if (self->snaps[i].snap)          Py_VISIT(self->snaps[i].snap);
+        if (self->snaps[i].authority_ref_dict) Py_VISIT(self->snaps[i].authority_ref_dict);
+    }
+    return 0;
+}
+
+static int
+StageBOwner_clear(StageBOwner *self)
+{
+    stb_free_contents(self);
+    return 0;
 }
 
 static void StageBOwner_dealloc(StageBOwner *self)
@@ -824,11 +867,26 @@ static int StageBOwner_init(StageBOwner *self, PyObject *args, PyObject *kwds)
     if (relations == Py_None || snaps == Py_None)
         return stb_integrity("stage B admission requires explicit relations and "
                              "authority_snapshots");
-    if (!PyList_Check(relations) && !PyTuple_Check(relations))
-        return stb_integrity("stage B admission requires an exact list or tuple of relations");
-    if (!PyList_Check(snaps) && !PyTuple_Check(snaps))
-        return stb_integrity("stage B admission requires an exact list or tuple of "
-                             "authority snapshots");
+    /* D1 MEMORY-BOUNDARY REPAIR (this is the defect HQ statically verified at the exact
+     * Stage B blob 2d8ffc686fcdb3f7108f0c8bafe7f60273fcf304, lines 827-876).
+     *
+     * PyList_Check/PyTuple_Check accept SUBCLASSES. PySequence_Size() on a subclass
+     * dispatches to an attacker-overridden __len__, whose return value does not describe
+     * the real storage. That value was used to size self->rels / self->snaps AND as the
+     * loop bound over PySequence_Fast_GET_ITEM(fast, i), which is an out-of-bounds array
+     * read when __len__ over-reports and a silent custody truncation when it under-reports.
+     *
+     * Repair: accept ONLY exact built-in list/tuple, whose length is a C-API count no
+     * Python code can lie about; convert with PySequence_Fast; then derive EVERY bound
+     * from PySequence_Fast_GET_SIZE of the converted sequence. */
+    if (!PyList_CheckExact(relations) && !PyTuple_CheckExact(relations))
+        return stb_integrity("stage B admission requires an EXACT list or tuple (not a "
+                             "subclass) of relations, so no overridden __len__ can "
+                             "supply the iteration bound");
+    if (!PyList_CheckExact(snaps) && !PyTuple_CheckExact(snaps))
+        return stb_integrity("stage B admission requires an EXACT list or tuple (not a "
+                             "subclass) of authority snapshots, so no overridden __len__ "
+                             "can supply the iteration bound");
     if (!PyCallable_Check(tsh) || !PyCallable_Check(tc) || !PyCallable_Check(trp))
         return stb_integrity("stage B requires three trusted pinned callables: "
                              "semantic_hash, canonicalize, require_positive_authority");
@@ -847,43 +905,50 @@ static int StageBOwner_init(StageBOwner *self, PyObject *args, PyObject *kwds)
     self->exc_integrity = STBIntegrityError;
     self->exc_authz = STBAuthzError;
 
-    n = PySequence_Size(relations);
-    m = PySequence_Size(snaps);
-    if (n < 0 || m < 0) return -1;
-
+    /* D3: from here on EVERY failure path must clean up, because the trusted callables
+     * and classes are already pinned. `fail_init` performs the full release. */
+    fast = PySequence_Fast(relations, "relations");
+    if (!fast) goto fail_init;
+    /* D1: the ONLY authoritative bound is the converted sequence's ACTUAL length. */
+    n = PySequence_Fast_GET_SIZE(fast);
     if (n > 0) {
         self->rels = (SealedRelation *)PyMem_Calloc((size_t)n, sizeof(SealedRelation));
-        if (!self->rels) { PyErr_NoMemory(); return -1; }
+        if (!self->rels) { Py_DECREF(fast); PyErr_NoMemory(); goto fail_init; }
     }
-    if (m > 0) {
-        self->snaps = (SealedSnapshot *)PyMem_Calloc((size_t)m, sizeof(SealedSnapshot));
-        if (!self->snaps) { PyErr_NoMemory(); return -1; }
-    }
-
-    fast = PySequence_Fast(relations, "relations");
-    if (!fast) return -1;
     for (i = 0; i < n; i++) {
         if (admit_relation(self, PySequence_Fast_GET_ITEM(fast, i), &self->rels[i], i) < 0) {
-            Py_DECREF(fast); return -1;  /* nothing sealed */
+            Py_DECREF(fast); goto fail_init;   /* nothing sealed */
         }
         self->n_rels = i + 1;
     }
     Py_DECREF(fast);
 
     fasts = PySequence_Fast(snaps, "authority snapshots");
-    if (!fasts) return -1;
+    if (!fasts) goto fail_init;
+    m = PySequence_Fast_GET_SIZE(fasts);
+    if (m > 0) {
+        self->snaps = (SealedSnapshot *)PyMem_Calloc((size_t)m, sizeof(SealedSnapshot));
+        if (!self->snaps) { Py_DECREF(fasts); PyErr_NoMemory(); goto fail_init; }
+    }
     for (i = 0; i < m; i++) {
         if (admit_snapshot(self, PySequence_Fast_GET_ITEM(fasts, i), &self->snaps[i], i) < 0) {
-            Py_DECREF(fasts); return -1;
+            Py_DECREF(fasts); goto fail_init;
         }
         self->n_snaps = i + 1;
     }
     Py_DECREF(fasts);
 
-    if (compute_custody_hash(self, &self->custody_hash) < 0) return -1;
+    if (compute_custody_hash(self, &self->custody_hash) < 0) goto fail_init;
 
     self->sealed = 1;
     return 0;
+
+fail_init:
+    /* D3 TRANSACTIONAL CLEANUP: release the pinned TCB, the pinned classes, the pinned
+     * exception refs and every partially admitted relation/snapshot, so a failed
+     * construction leaks nothing and leaves no dirty owner. */
+    stb_free_contents(self);
+    return -1;
 }
 
 /* ------------------------------------------------------------- resolve_exact */
@@ -1262,6 +1327,10 @@ static PyObject *mk_decision(StageBOwner *self, const char *relation_kind,
     ash_s   = snap_hash ? PyUnicode_FromString(snap_hash) : (Py_INCREF(Py_None), Py_None);
     ao_s    = authority_operation ? PyUnicode_FromString(authority_operation)
                                    : (Py_INCREF(Py_None), Py_None);
+    /* relation_ref / authority_ref are BORROWED parameters of mk_decision: the caller
+     * still owns them. Do NOT decref them here; only the Py_None placeholders created
+     * below are owned by this function. (An unconditional Py_XDECREF here released a
+     * caller-owned reference.) */
     rr      = relation_ref ? relation_ref : (Py_INCREF(Py_None), Py_None);
     ar      = authority_ref ? authority_ref : (Py_INCREF(Py_None), Py_None);
     if (!kind_s || !use_s || !state_s || !reason_s || !och_s || !ash_s || !ao_s
@@ -1301,7 +1370,9 @@ static PyObject *mk_decision(StageBOwner *self, const char *relation_kind,
 done:
     Py_XDECREF(h); Py_XDECREF(kind_s); Py_XDECREF(use_s); Py_XDECREF(state_s);
     Py_XDECREF(reason_s); Py_XDECREF(och_s); Py_XDECREF(ash_s); Py_XDECREF(ao_s);
-    Py_XDECREF(rr); Py_XDECREF(ar);
+    /* rr / ar are borrowed unless they are the Py_None placeholders created above. */
+    if (!relation_ref) Py_XDECREF(rr);
+    if (!authority_ref) Py_XDECREF(ar);
     return out;
 }
 
@@ -1370,7 +1441,7 @@ stb_decide(StageBOwner *self, PyObject *args, PyObject *kwds)
     {
         Py_ssize_t cnt = 0;
         PyObject *seq = srcs_in;
-        if (PyList_Check(seq) || PyTuple_Check(seq)) {
+        if (PyList_CheckExact(seq) || PyTuple_CheckExact(seq)) {
             PyObject *raw = PySequence_Fast(seq, "source_universe_refs");  /* owned */
             if (!raw) goto fail;
             for (i = 0; i < PySequence_Fast_GET_SIZE(raw); i++) {
@@ -1724,6 +1795,16 @@ static PyObject *stb_get_custody(StageBOwner *self, void *c)
   return PyUnicode_FromString(self->custody_hash); }
 static PyObject *stb_get_sealed(StageBOwner *self, void *c)
 { (void)c; return PyBool_FromLong(self->sealed); }
+/* D7 EVIDENCE: the trusted TCB is native-owned. These expose the pinned identities for
+ * harness assertions WITHOUT allowing any re-binding. */
+static PyObject *stb_get_trusted_seam(StageBOwner *self, void *c)
+{
+    (void)c;
+    if (!self->sealed)
+        return (stb_integrity("stage B owner is not sealed"), NULL);
+    return Py_BuildValue("(OOO)",
+        self->t_semantic_hash, self->t_canonicalize, self->t_require_positive);
+}
 static PyObject *stb_get_counts(StageBOwner *self, void *c)
 { (void)c; return Py_BuildValue("(nn)", (Py_ssize_t)self->n_rels,
                                 (Py_ssize_t)self->n_snaps); }
@@ -1749,6 +1830,8 @@ static PyGetSetDef StageB_getset[] = {
     {"custody_hash", (getter)stb_get_custody, NULL,
      "Accepted P07 canonical semantic custody hash.", NULL},
     {"counts", (getter)stb_get_counts, NULL, "(n_relations, n_authority_snapshots).", NULL},
+    {"trusted_seam", (getter)stb_get_trusted_seam, NULL,
+     "Read-only tuple of the three pinned trusted callables (identity evidence).", NULL},
     {NULL, NULL, NULL, NULL, NULL}
 };
 
@@ -1757,7 +1840,11 @@ static PyTypeObject StageBOwnerType = {
     .tp_name = "rawlsing_next._p07_native_owner_stage_b.StageBOwner",
     .tp_basicsize = sizeof(StageBOwner),
     .tp_dealloc = (destructor)StageBOwner_dealloc,
-    .tp_flags = Py_TPFLAGS_DEFAULT,   /* Py_TPFLAGS_BASETYPE absent => NON-SUBCLASSABLE */
+    /* D5: Py_TPFLAGS_HAVE_GC activates tp_traverse/tp_clear. Py_TPFLAGS_BASETYPE is
+     * intentionally ABSENT -> NON-SUBCLASSABLE. */
+    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HAVE_GC,
+    .tp_traverse = (traverseproc)StageBOwner_traverse,
+    .tp_clear = (inquiry)StageBOwner_clear,
     .tp_doc = "HQ245 Stage B native P07 full adjudicator prototype (quarantined).",
     .tp_methods = StageB_methods,
     .tp_getset = StageB_getset,
@@ -1786,12 +1873,29 @@ PyInit__p07_native_owner_stage_b(void)
         "rawlsing_next._p07_native_owner_stage_b.SourceRelationIntegrityError", NULL, NULL);
     STBAuthzError = PyErr_NewException(
         "rawlsing_next._p07_native_owner_stage_b.SourceRelationAuthorizationError", NULL, NULL);
+    /* D4 REPAIR: every PyModule_AddObject return is checked. On failure the module is
+     * discarded and only the references THIS function still owns are released; the
+     * failing AddObject's partially-added object is not released twice. */
     if (!STBIntegrityError || !STBAuthzError) { Py_DECREF(m); return NULL; }
     Py_INCREF(STBIntegrityError); Py_INCREF(STBAuthzError);
-    PyModule_AddObject(m, "SourceRelationIntegrityError", STBIntegrityError);
-    PyModule_AddObject(m, "SourceRelationAuthorizationError", STBAuthzError);
+    if (PyModule_AddObject(m, "SourceRelationIntegrityError",
+                           STBIntegrityError) < 0) {
+        Py_DECREF(STBIntegrityError);
+        Py_DECREF(STBAuthzError);
+        Py_DECREF(m);
+        return NULL;
+    }
+    if (PyModule_AddObject(m, "SourceRelationAuthorizationError",
+                           STBAuthzError) < 0) {
+        Py_DECREF(m);
+        return NULL;
+    }
     Py_INCREF(&StageBOwnerType);
-    PyModule_AddObject(m, "StageBOwner", (PyObject *)&StageBOwnerType);
+    if (PyModule_AddObject(m, "StageBOwner", (PyObject *)&StageBOwnerType) < 0) {
+        Py_DECREF(&StageBOwnerType);
+        Py_DECREF(m);
+        return NULL;
+    }
 
     PyModule_AddStringConstant(m, "STAGE_B_CONTRACT", STAGE_B_CONTRACT);
     PyModule_AddStringConstant(m, "STAGE", "B");

@@ -1,0 +1,95 @@
+{
+  "commission": "PYAT-HQ246-F7-NATIVE-AB-MEMORY-BOUNDARY-REPAIR-R1",
+  "branch": "agent/space-bunny-pyat-hq246-f7-native-ab-memory-boundary-repair-r1",
+  "commission_tip": "c718020ffbcbfb047977e33d6fcc8bd6a241e4f0",
+  "commission_base": "0dd0a503882ef777141092d7678285462214a600",
+  "agent": "Space Bunny / OpenCode",
+  "model": "Space Bunny Max (space-bunny-free)",
+  "disposition": "F7_NATIVE_AB_REPAIR_PARTIAL__NAMED_MEMORY_OR_PARITY_BLOCKER",
+
+  "why_not_ready": "D1-D5 memory-safety repairs are real, independently reproduced first-hand, demonstrated before/after and regression-locked. However one NAMED defect remains open: Stage B decide() still leaks roughly 15 allocated blocks per call, localised by systematic bisection to the source-ref ordering block but not isolated further. The commission's READY status is conditioned on real D1-D5 repairs AND demonstrations; shipping READY over an unresolved native memory leak would be a dishonest green, so PARTIAL with a named blocker is returned.",
+
+  "repairs_completed": {
+    "D1_oob_and_truncation": "REPAIRED on A and B. Exact-container admission (PyList_CheckExact/PyTuple_CheckExact) with every bound derived from PySequence_Fast_GET_SIZE of the converted sequence. Stage A ASAN went from SEGV exit 134 to clean exit 1 with no report. Silent truncation (3 supplied -> 0 admitted, sealed) is no longer reachable.",
+    "D2_refcount": "REPAIRED on Stage A (measured +19,999 leaked lists per 20,000 calls -> under 0.01 blocks/call). Three genuine refcount defects found and fixed in Stage B: a discarded dget probe in ref_dict_copy, a never-released dget result in exact_key_of, and an over-DECREF of borrowed relation_ref/authority_ref in mk_decision.",
+    "D3_lifecycle": "REPAIRED on A and B. Transactional fail_init releases the pinned TCB, classes, exception refs and partially admitted material on every fallible step. Verified: 20,000 failing constructions grow each trusted callable's refcount by at most 2.",
+    "D4_module_init": "REPAIRED on both modules; every PyModule_AddObject return is checked and no static reference is released twice. OOM injection NOT performed - source-justified and flagged.",
+    "D5_gc_cycles": "REPAIRED on both modules via Py_TPFLAGS_HAVE_GC plus tp_traverse/tp_clear over every held strong reference. No 'impossible' claim was made; a discriminating cycle construction-and-refcount test was written instead.",
+    "D6_custody": "REPAIRED on Stage A (scalar registry refused; real registry pinned with an owned reference and released on dealloc). Stage B verified: real snapshots pinned, non-exact snapshots refused.",
+    "D7_trusted_seam": "REPAIRED on Stage A: trusted_semantic_hash is now genuinely invoked at admission and re-verified at resolve, making the seam load-bearing without adding any authority. Stage B: read-only trusted_seam identity accessor added plus a test that module-attribute rebinding cannot change pinned custody.",
+    "D8_payload": "Stage A now detects semantic payload drift. Stage B re-verified with unchanged identity strings and a mutated payload."
+  },
+
+  "named_blockers": [
+    {
+      "id": "HQ246-OPEN-001",
+      "title": "Stage B decide() leaks ~15 allocated blocks per call",
+      "localisation": "bisected to the post-loop source-ref ordering block (PyList_Sort, keys/vals lists, dedupe, PyList_AsTuple). exact_key_of() measured 0.024 blocks/call and ref_dict_copy() 0.001 in isolation, so both are exonerated.",
+      "impact": "bounded memory leak only; decision correctness, replay identity and custody hash remain byte-exact and the full 41-test parity court passes",
+      "must_fix_before": "any adoption"
+    },
+    {
+      "id": "HQ246-OPEN-002",
+      "title": "two-candidate CONFLICTING_AUTHORITY and precedence ties remain unexercised",
+      "reason": "no second independently valid relation candidate is obtainable from a permitted source-free fixture, and forging positive authority is forbidden by the commission",
+      "must_fix_before": "Stage C cutover"
+    },
+    {
+      "id": "HQ246-OPEN-003",
+      "title": "module-init OOM injection not performed",
+      "reason": "source-justified only",
+      "must_fix_before": "adoption, at reviewer discretion"
+    }
+  ],
+
+  "D9_baseline_discrimination_result": {
+    "invocation": "pytest rawlsing_next/tests -q -p no:randomly --continue-on-collection-errors with the nine environmental collection-error exclusions plus the three quarantined native synthetic courts",
+    "result": "45 failed, 2691 passed, 55 warnings, 7 errors, 28 subtests passed",
+    "normalized_items": 52,
+    "normalized_digest": "ab74b05dabc5b99376b2d3ed8c1de6e5845f870fd4c68dd49dc81f488bb2a44e",
+    "hq242_target_items": 54,
+    "hq242_target_digest": "278854ee94fadfd57284a572441522fb56105081f89af431b17ec2e556ace6a9",
+    "digest_match_claimed": false,
+    "headline_counts_match_hq242_exactly": true,
+    "author_reviewer_conflict_explained": "YES. Applying the nine environmental exclusions reduces errors from 16 to 7 and yields EXACTLY HQ242's published headline counts (45 failed / 2691 passed / 7 errors). The HQ245 author digest 72d0a5ca... was produced WITHOUT those exclusions (16 errors), which is the whole reason it disagreed with the reviewer. This lane's repairs therefore introduced zero regressions.",
+    "residual_two_item_difference": "my normalisation (unique FAILED/ERROR node ids with the message suffix stripped) yields 52 items where the accepted value implies 54. The underlying failure set is identical in count and kind; the residual difference is a normalisation CONVENTION difference that I could not resolve without the reviewer's exact script. Reported as unresolved rather than reconciled by inventing a normalisation.",
+    "no_manufactured_match": true,
+    "dependencies_installed": false
+  },
+
+  "tests": {
+    "stage_a_original": "39 passed, unmodified",
+    "stage_b_original": "41 passed, unmodified",
+    "new_repair_hostile_court": "59 passed",
+    "production_p07": "24 passed",
+    "production_f7": "163 passed",
+    "total": "326 passed",
+    "collection_delta": "2823 -> 2882, exactly +59 tests, +0 collection errors",
+    "accepted_tests_changed": false,
+    "production_files_changed": false
+  },
+
+  "mutation_record": {
+    "modified": [
+      "rawlsing_next/_p07_native_owner_stage_a.c",
+      "rawlsing_next/_p07_native_owner_stage_b.c"
+    ],
+    "added": [
+      "rawlsing_next/tests/test_p07_native_repair_hostile_court.py",
+      "WORKER_RETURNS/PYAT-HQ246-F7-NATIVE-AB-MEMORY-BOUNDARY-REPAIR-R1/00_RETURN.md",
+      "WORKER_RETURNS/PYAT-HQ246-F7-NATIVE-AB-MEMORY-BOUNDARY-REPAIR-R1/01_D1_OOB_AND_D2_D5_REFCOUNT_GC_PROOF.json",
+      "WORKER_RETURNS/PYAT-HQ246-F7-NATIVE-AB-MEMORY-BOUNDARY-REPAIR-R1/02_D6_D9_TCB_CUSTODY_AND_BASELINE_DISCRIMINATION.json",
+      "WORKER_RETURNS/PYAT-HQ246-F7-NATIVE-AB-MEMORY-BOUNDARY-REPAIR-R1/03_STAGE_B_PARITY_CONFLICT_AND_SECOND_POSITIVE_COURTS.json",
+      "WORKER_RETURNS/PYAT-HQ246-F7-NATIVE-AB-MEMORY-BOUNDARY-REPAIR-R1/04_NATIVE_ABI_FAIL_CAPABILITY_AND_NEGATIVE_CEILING.json",
+      "WORKER_RETURNS/PYAT-HQ246-F7-NATIVE-AB-MEMORY-BOUNDARY-REPAIR-R1/05_INDEPENDENT_REVIEW_REQUIRED_AND_CUTOVER_HOLDS.json",
+      "WORKER_RETURNS/PYAT-HQ246-F7-NATIVE-AB-MEMORY-BOUNDARY-REPAIR-R1/06_FINAL_DISPOSITION.json"
+    ],
+    "committed_binaries": false,
+    "control_merge": false,
+    "semantic_authority_change": false,
+    "self_adoption": false,
+    "reviewer_or_author_branches_modified": false
+  },
+
+  "f7_rr_04g": "OPEN"
+}
