@@ -1,3 +1,37 @@
+# HQ246 — F7 STAGE A REVIEW BLOCKED; STAGE B NATIVE UNSAFE; N10E R3 CANDIDATE — 2026-10-08
+
+**DECISION:** `HQD-2026-10-08-246`. Three HQ245 returns verified. No F7 security/issuer/model adoption.
+
+**F7 B SPACE BUNNY RETURN:** `agent/space-bunny-pyat-hq245-f7-native-stage-b-full-p07-parity-r1 @ 0dd0a503882ef777141092d7678285462214a600` — `F7_NATIVE_STAGE_B_FULL_P07_ADJUDICATOR_PARITY_READY__QUARANTINED_FOR_INDEPENDENT_REVIEW`. Full real native decision candidate, parity tested corpus; NO production cutover.
+
+**F7 STAGE A INDEPENDENT DEEPSEEK RETURN — BLOCK:** `agent/reviewer-pyat-hq245-f7-native-stage-a-independent-runtime-r1 @ 14432c2b21eaf87a8e92ecb75a6765cf3763ddc1` — `F7_NATIVE_STAGE_A_INDEPENDENT_HOSTILE_RUNTIME_BLOCKED__MEMORY_SAFETY_OR_CUSTODY_INVALID`. `HQ245-D1` native constructor OOB/SIGSEGV 3/3 plus D2/D3 memory leaks. Independent HQ source inspection shows exact vulnerable check/len/fast-get index pattern also present in Stage B at lines 827–876. **NO claim Stage B runtime crash independently tested yet; B is BLOCKED for adoption pending repair and court.**
+
+**N10E R3 BROWSER/SOL RETURN:** `agent/rabochii-pyat-hq245-n10e-at07-warrant-r3-reference-correction-r1 @ 338aa789dd20d04c83175a6593172fee4b61c078` — `C1_AT07_ISSUER_WARRANT_R3_DOCUMENTARY_CANDIDATE_COMPLETE__READY_FOR_INDEPENDENT_REVIEW`. Exact normative contract refs and adoption chronology repaired as proposal; NO issuer warrant adoption.
+
+### NEW — SPACE BUNNY / OPENCODE (MAC) — F7 A/B NATIVE MEMORY BOUNDARY REPAIR
+**MODEL:** Space Bunny Max preferred; verify installed model/variant.  
+**BRANCH:** `agent/space-bunny-pyat-hq246-f7-native-ab-memory-boundary-repair-r1`  
+**EXACT COMMISSION TIP:** `c718020ffbcbfb047977e33d6fcc8bd6a241e4f0`  
+**COMMISSION:** `WORKER_COMMISSIONS/PYAT-HQ246-F7-NATIVE-AB-MEMORY-BOUNDARY-REPAIR-R1/00_COMMISSION.md`  
+Fix A/B OOB/segfault, leaks D2–D5, callback trust/projection/GC/typing and valid multi-positive parity. NO production cutover, independent final review required.
+
+### NEW — DEEPSEEK-HARNESS / OPENCODE (SEPARATE MAC WORKTREE) — F7 FROZEN B HOSTILE REVIEW
+**MODEL:** DeepSeek V4.1 Flash; verify provider/variant.  
+**BRANCH:** `agent/reviewer-pyat-hq246-f7-native-stage-b-independent-hostile-r1`  
+**EXACT COMMISSION TIP:** `aca358d62e657c6d55369b86aadf85884b2402b6`  
+**COMMISSION:** `WORKER_COMMISSIONS/PYAT-HQ246-F7-NATIVE-STAGE-B-INDEPENDENT-HOSTILE-REVIEW-R1/00_COMMISSION.md`  
+Review original frozen B at `0dd0a503...`, not parallel repaired branch. No code mutation or adoption.
+
+### NEW — BROWSER/GITHUB SOL HIGH — N10E AT07 R3 EXACT WARRANT INDEPENDENT HOSTILE REVIEW
+**BRANCH:** `agent/reviewer-pyat-hq246-n10e-at07-warrant-r3-r1`  
+**EXACT COMMISSION TIP:** `35c3cb14fe807fd0a21c41c859dfc252952ca9fc`  
+**COMMISSION:** `WORKER_COMMISSIONS/PYAT-HQ246-N10E-AT07-WARRANT-R3-INDEPENDENT-HOSTILE-REVIEW-R1/00_COMMISSION.md`  
+No issuer/root/credential/R4 adoption; fresh independent verdict before separate HQ decision.
+
+**HOLDS:** F7-RR-04G OPEN; Stage A BLOCKED; B unsafe for integration, parity limited; no source/actor/F8/V3 advancement or extra I01 authority. Parallel distinct worktrees, no merge.
+
+---
+
 # HQ245 — F7 STAGE A VERIFIED RETURN, N10E R2 PARTIAL; THREE NEW PARALLEL LANES — 2026-10-07
 
 **DECISION:** `HQD-2026-10-07-245`. Both returns intaken. NO F7 security certification / N10E issuer adoption.
