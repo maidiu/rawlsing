@@ -2,10 +2,10 @@
   "schema": "ASTRA_PYAT_HQ247_AUDIT_STATE@1",
   "commission": "ASTRA-PYAT-HQ247-FUNCTIONAL-ENDGAME-DELTA-AUDIT-R1",
   "lane": "agent/astra-pyat-hq247-functional-endgame-delta-audit-r1",
-  "status": "P0_COMPLETE__HUMAN_MODEL_AND_HQ_INTAKE_GATE",
+  "status": "P0_COMPLETE__P1_MODEL_SELECTED__HQ_INTAKE_DECISION_PENDING",
   "phase": "P0_COMPLETE",
   "required_next_model": "Human-selected Astra Pro / highest available reasoning",
-  "pending_model_switch": "STOP_MODEL_SWITCH_TO_ASTRA_FOR_P1",
+  "pending_model_switch": null,
   "control_origin_head_observed": "675b0793fd2a2b75463fc00d2b884eefdc95e9f9",
   "control_latest_checkpoint_observed": "20261008-PYAT-HQ248-F7-R2-REFCOUNT-N10E-PLACEMENT-HOLD-R1",
   "handoff_commit_observed": "91595263d2888091e1f28af1ed38429b7c02966f",
@@ -36,7 +36,7 @@
   ],
   "prior_astra_atlas": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/README.md",
   "previous_phase_completion": "P0",
-  "latest_verified_audit_remote_head": "ac6c15c5c529485b00355594508c7444ee95126e",
+  "latest_verified_audit_remote_head": "ddb88d654ae2e257a6401bf8c5421329c48249b9",
   "checkpoint_status": "P0_HARD_STOP_PACKET__VERIFY_CONTAINING_COMMIT_ON_ORIGIN",
   "completed_investigations": [
     "Verified direct origin control/audit/three worker refs and immutable checkpoint bindings at entry and stop",
@@ -58,7 +58,7 @@
     "Q9",
     "Q10"
   ],
-  "first_next_action": "Human selects Astra highest reasoning; verify new sealed HQ249-or-later intake or explicit human override; reconcile only material deltas, then begin P1 question 1.",
+  "first_next_action": "Resolve pending explicit intake choice; if override, freeze HQ248 plus three pending returns and begin P1. Otherwise require sealed HQ249+ intake.",
   "last_stage_files": [
     "phases/P0_DELTA_CENSUS.md",
     "phases/P0_GIT_CENSUS_ENTRY.json",
@@ -73,7 +73,7 @@
   ],
   "original_commission_issuance_control_head": "4246cea7657b6bfb1e405a27f3dff952c4d157df",
   "original_commission_issuance_checkpoint": "20261008-PYAT-HQ247-N10E-R3-ADOPTED-F7-HOSTILE-BLOCKED-R1",
-  "pending_astra_P1_gate": "REQUIRE_SEALED_HQ249_OR_LATER_POST_HQ248_INTAKE_OR_EXPLICIT_HUMAN_OVERRIDE",
+  "pending_astra_P1_gate": "SEALED_HQ249_OR_LATER_OR_EXPLICIT_HUMAN_INTAKE_OVERRIDE_PENDING",
   "prior_HQ247_returns_classification": "ADJUDICATED_AT_HQD_2026_10_08_248__HISTORICAL_NOT_PENDING",
   "hq248_workers_at_amendment": [
     {
@@ -103,15 +103,23 @@
       "id": "HQ248_F7_R3_REFCOUNT_REPAIR",
       "branch": "agent/space-bunny-pyat-hq248-f7-decide-refcount-repair-r3",
       "commission_tip": "8902013902ffcc8a6f936fb184a11320a57011ed",
-      "head": "8902013902ffcc8a6f936fb184a11320a57011ed",
+      "head": "8df99878f7947ac7966f0182ddb2c18424c1c9ae",
       "commission_is_ancestor": true,
-      "ahead_behind": "0\t0",
-      "changed_paths": [],
-      "git_classification": "UNCHANGED_REMOTE_NO_RETURN_VISIBLE",
+      "ahead_behind": "0\t1",
+      "changed_paths": [
+        "A\tWORKER_RETURNS/PYAT-HQ248-F7-DECIDE-REFERENCE-OWNERSHIP-REPAIR-R3/00_RETURN.md",
+        "A\tWORKER_RETURNS/PYAT-HQ248-F7-DECIDE-REFERENCE-OWNERSHIP-REPAIR-R3/01_OWNERSHIP_TABLE_AND_PATCH.json",
+        "A\tWORKER_RETURNS/PYAT-HQ248-F7-DECIDE-REFERENCE-OWNERSHIP-REPAIR-R3/02_POSITIVE_NEGATIVE_LEAK_MEASUREMENTS.json",
+        "A\tWORKER_RETURNS/PYAT-HQ248-F7-DECIDE-REFERENCE-OWNERSHIP-REPAIR-R3/03_PARITY_REPLAY_REGRESSION.json",
+        "A\tWORKER_RETURNS/PYAT-HQ248-F7-DECIDE-REFERENCE-OWNERSHIP-REPAIR-R3/04_FINAL_DISPOSITION.json",
+        "A\tWORKER_RETURNS/PYAT-HQ248-F7-DECIDE-REFERENCE-OWNERSHIP-REPAIR-R3/reproduction/hq248_leak_trend.py",
+        "A\tWORKER_RETURNS/PYAT-HQ248-F7-DECIDE-REFERENCE-OWNERSHIP-REPAIR-R3/reproduction/hq248_pylist_astuple_ownership.py",
+        "M\trawlsing_next/_p07_native_owner_stage_b.c"
+      ],
+      "git_classification": "ADVANCED_DESCENDANT_REQUIRES_RETURN_CONTENT_REVIEW",
       "agent": "Space Bunny / OpenCode",
       "model": "Space Bunny Max",
-      "machine": "governed Mac",
-      "classification": "UNCHANGED_REMOTE_NO_RETURN_VISIBLE__LOCAL_SESSION_STATE_UNKNOWN"
+      "machine": "governed Mac"
     },
     {
       "id": "HQ248_F7_T1_DOCUMENTARY_DESIGN",
@@ -130,8 +138,7 @@
       "git_classification": "ADVANCED_DESCENDANT_REQUIRES_RETURN_CONTENT_REVIEW",
       "agent": "Browser/GitHub documentary forensic reviewer",
       "model": "GPT-5.6 Sol High",
-      "machine": "Browser GitHub only",
-      "classification": "POST_CHECKPOINT_PENDING_RETURN"
+      "machine": "Browser GitHub only"
     },
     {
       "id": "HQ248_N10E_REAL_OWNER_PLACEMENT_FEASIBILITY",
@@ -150,13 +157,12 @@
       "git_classification": "ADVANCED_DESCENDANT_REQUIRES_RETURN_CONTENT_REVIEW",
       "agent": "Space Bunny / OpenCode",
       "model": "Space Bunny Max or equivalent capable local model",
-      "machine": "governed Mac",
-      "classification": "POST_CHECKPOINT_PENDING_RETURN"
+      "machine": "governed Mac"
     }
   ],
-  "selected_model": "GPT-6 family Codex session; no model switch performed; exact serving model label not exposed by a tool",
-  "model_scope": "P0 only; human must select Astra highest reasoning for P1",
-  "gate_status": "P1_NOT_STARTED__HQ249_OR_LATER_SEALED_INTAKE_OR_HUMAN_OVERRIDE_AND_MODEL_SWITCH_REQUIRED",
+  "selected_model": "Astra High, explicitly selected by human in chat",
+  "model_scope": "P1 authorized on human-selected Astra High; no automatic switch",
+  "gate_status": "P1_NOT_STARTED__MODEL_SELECTION_CONFIRMED__INTAKE_OVERRIDE_QUESTION_PENDING",
   "next_model": "Astra Pro / highest available reasoning",
   "hq248_workers_at_p0_stop": [
     {
@@ -214,7 +220,7 @@
       "classification": "POST_CHECKPOINT_PENDING_RETURN"
     }
   ],
-  "last_observed_remote_utc": "2026-10-08T18:10:15.049328+00:00",
+  "last_observed_remote_utc": "2026-10-08T18:29:20.149801+00:00",
   "open_questions_source": "phases/P0_DELTA_CENSUS.md \u00a75",
   "evidence_grades": [
     "DIRECT_GIT_PACKET_VERIFIED",
@@ -227,5 +233,6 @@
   "p1_started": false,
   "p2_started": false,
   "p3_started": false,
-  "worktree_bootstrap": "Existing supplied clean detached shared-store Codex worktree sparsified and local commissioned branch created at exact startup tip; not HQ-preprepared certification"
+  "worktree_bootstrap": "Existing supplied clean detached shared-store Codex worktree sparsified and local commissioned branch created at exact startup tip; not HQ-preprepared certification",
+  "entry_refresh": "phases/P1_ENTRY_REFRESH.md"
 }

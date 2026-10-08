@@ -1,5 +1,7 @@
 # Next operator — P0 bank / mandatory human transition
 
+> **Entry refresh, 2026-10-08:** Human selected Astra High and authorized proceeding on that setting. P1 has not begun: direct packet remains HQ248 and the explicit intake-override question is pending. R3 now has a partial return at `8df99878f7947ac7966f0182ddb2c18424c1c9ae`. See [entry refresh](phases/P1_ENTRY_REFRESH.md) and STATE.json; the earlier model-pending status below is historical.
+
 **STATUS:** P0 COMPLETE; AUDIT INCOMPLETE; `STOP_MODEL_SWITCH_TO_ASTRA_FOR_P1`.
 **AGENT:** documentary delta auditor in Codex.
 **MODEL:** P0 used the supplied GPT-6-family session; exact serving label/effort not tool-verifiable. Next: human-selected Astra Pro / highest available reasoning.

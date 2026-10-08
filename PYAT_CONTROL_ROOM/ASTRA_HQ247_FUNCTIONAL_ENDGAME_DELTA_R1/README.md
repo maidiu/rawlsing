@@ -1,5 +1,7 @@
 # ASTRA HQ247 — functional endgame delta audit
 
+> **Entry refresh, 2026-10-08:** Human selected Astra High and authorized proceeding on that setting. P1 has not begun: direct packet remains HQ248 and the explicit intake-override question is pending. R3 now has a partial return at `8df99878f7947ac7966f0182ddb2c18424c1c9ae`. See [entry refresh](phases/P1_ENTRY_REFRESH.md) and STATE.json; the earlier model-pending status below is historical.
+
 Status: P0 COMPLETE / BANKED FOR HUMAN MODEL TRANSITION. P1–P3 not started; audit remains incomplete. This document is not HQ adoption.
 
 Read `phases/P0_DELTA_CENSUS.md`, `STATE.json` and `NEXT_OPERATOR.md`. Required stop: `STOP_MODEL_SWITCH_TO_ASTRA_FOR_P1`. At the P0 cutoff HQ248 remains sealed, two successors have pushed pending returns, and R3 has no pushed return visible. P1 requires new sealed HQ249-or-later one-wave intake (or explicit human override) and the human-selected Astra highest-reasoning model. Exact observations and read limits are saved under `phases/`.
