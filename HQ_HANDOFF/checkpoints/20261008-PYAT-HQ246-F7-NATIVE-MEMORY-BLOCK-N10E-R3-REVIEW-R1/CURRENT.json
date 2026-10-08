@@ -1,0 +1,62 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261008-PYAT-HQ246-F7-NATIVE-MEMORY-BLOCK-N10E-R3-REVIEW-R1",
+  "decision": "HQD-2026-10-08-246",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "inherited_checkpoint": "20261007-PYAT-HQ245-F7-STAGE-B-STAGE-A-REVIEW-N10E-R3-R1",
+  "returns": [
+    {
+      "lane": "f7_stage_b",
+      "head": "0dd0a503882ef777141092d7678285462214a600",
+      "disposition": "F7_NATIVE_STAGE_B_FULL_P07_ADJUDICATOR_PARITY_READY__QUARANTINED_FOR_INDEPENDENT_REVIEW",
+      "hq_status": "BLOCKED_FOR_ADOPTION_UNSAFE_STATIC_CONSTRUCTOR_PATTERN"
+    },
+    {
+      "lane": "f7_stage_a_independent_review",
+      "head": "14432c2b21eaf87a8e92ecb75a6765cf3763ddc1",
+      "disposition": "F7_NATIVE_STAGE_A_INDEPENDENT_HOSTILE_RUNTIME_BLOCKED__MEMORY_SAFETY_OR_CUSTODY_INVALID",
+      "hq_status": "BLOCKED_HQ245_D1_SIGSEGV_D2_D3_LEAKS_D4_D9"
+    },
+    {
+      "lane": "n10e_r3",
+      "head": "338aa789dd20d04c83175a6593172fee4b61c078",
+      "disposition": "C1_AT07_ISSUER_WARRANT_R3_DOCUMENTARY_CANDIDATE_COMPLETE__READY_FOR_INDEPENDENT_REVIEW",
+      "hq_status": "PROPOSED_NOT_ADOPTED"
+    }
+  ],
+  "active_lanes": [
+    {
+      "agent": "Space Bunny / OpenCode",
+      "model": "Space Bunny Max",
+      "machine": "Mac isolated shared-store worktree",
+      "branch": "agent/space-bunny-pyat-hq246-f7-native-ab-memory-boundary-repair-r1",
+      "commission_tip": "c718020ffbcbfb047977e33d6fcc8bd6a241e4f0",
+      "commission": "WORKER_COMMISSIONS/PYAT-HQ246-F7-NATIVE-AB-MEMORY-BOUNDARY-REPAIR-R1/00_COMMISSION.md",
+      "status": "NEW__NEEDS_LAUNCH"
+    },
+    {
+      "agent": "DeepSeek-Harness / OpenCode",
+      "model": "DeepSeek V4.1 Flash",
+      "machine": "Mac separate isolated shared-store worktree",
+      "branch": "agent/reviewer-pyat-hq246-f7-native-stage-b-independent-hostile-r1",
+      "commission_tip": "aca358d62e657c6d55369b86aadf85884b2402b6",
+      "commission": "WORKER_COMMISSIONS/PYAT-HQ246-F7-NATIVE-STAGE-B-INDEPENDENT-HOSTILE-REVIEW-R1/00_COMMISSION.md",
+      "status": "NEW__NEEDS_LAUNCH"
+    },
+    {
+      "agent": "Browser/GitHub",
+      "model": "GPT-5.6 Sol High",
+      "branch": "agent/reviewer-pyat-hq246-n10e-at07-warrant-r3-r1",
+      "commission_tip": "35c3cb14fe807fd0a21c41c859dfc252952ca9fc",
+      "commission": "WORKER_COMMISSIONS/PYAT-HQ246-N10E-AT07-WARRANT-R3-INDEPENDENT-HOSTILE-REVIEW-R1/00_COMMISSION.md",
+      "status": "NEW__NEEDS_LAUNCH"
+    }
+  ],
+  "holds": {
+    "f7": "F7_RR_04G_OPEN_NATIVE_A_BLOCKED_NATIVE_B_UNSAFE_NO_PRODUCTION_ADOPTION",
+    "n10e": "R3_DOCUMENTARY_ONLY_NO_ISSUER_ROOT_CREDENTIAL_R4_I01_KIND",
+    "other": "NO_REAL_SURVEY_ACTOR_V3_F8"
+  },
+  "next_action": "RUN_HQ246_F7_NATIVE_AB_REPAIR_AND_FROZEN_B_INDEPENDENT_HOSTILE_REVIEW_AND_N10E_R3_INDEPENDENT_REVIEW_IN_PARALLEL__INTAKE_ANY_RETURN"
+}
