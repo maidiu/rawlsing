@@ -1,0 +1,214 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.1.0",
+  "checkpoint_id": "20261008-PYAT-HQ248-F7-R2-REFCOUNT-N10E-PLACEMENT-HOLD-R1",
+  "decision": "HQD-2026-10-08-248",
+  "date": "2026-10-08",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "inherited_checkpoint": "20261008-PYAT-HQ247-N10E-R3-ADOPTED-F7-HOSTILE-BLOCKED-R1",
+  "inherited_handoff_commit": "3f8f1caa545ffc4d95383f31605e8a17a894a7f3",
+  "returns": [
+    {
+      "lane": "HQ247_F7_R2_REPAIR",
+      "commission_tip": "6f5cc1d7d5278a833a46afcf09f82150f387dba1",
+      "head": "c2c0ab7335a3bcfeabb4297139378e3e657cd432",
+      "disposition": "F7_NATIVE_HQ247_R2_REPAIR_PARTIAL__NAMED_BLOCKER",
+      "hq_adjudication": "PARTIAL_ENGINEERING_EVIDENCE_NOT_SECURITY_ADOPTION",
+      "new_direct_defect": "HQ248-F7-REFCOUNT-001",
+      "source_blob": "fb5ed13af78672b9d9870b3132787a29d44b928a"
+    },
+    {
+      "lane": "HQ247_F09_FROZEN_INDEPENDENT_REVIEW",
+      "commission_tip": "37932e02a3cc2fabba012defb5315ac7cfed5ad6",
+      "head": "fa3c69b832d4649e046d84e4dde89897585aa4e3",
+      "disposition": "F7_F09_FROZEN_INDEPENDENT_HOSTILE_BLOCKED__NAMED_DEFECT",
+      "hq_adjudication": "ACCEPT_F09_NEGATIVE_ONLY__NO_TRANSFER_TO_R2"
+    },
+    {
+      "lane": "HQ247_N10E_C1_OWNER_ROOT_PREFLIGHT",
+      "commission_tip": "4ccae64c8999efe69934262e2ce0487d345de5a4",
+      "head": "80023846b13b9d2cea93f6a3d4f7cd36601b7ccd",
+      "disposition": "AT07_OWNER_ROOT_PLACEMENT_PREFLIGHT_PARTIAL__NAMED_COMPETENCE_OR_DEPLOYMENT_BLOCKER",
+      "hq_adjudication": "DOCUMENTARY_PARTIAL_ADOPTED_AS_NEGATIVE_SCOPE__NO_DESIGNATION_OR_ROOT"
+    }
+  ],
+  "adopted_warrant": {
+    "status": "ADOPTED_PROSPECTIVE_DOCUMENTARY_ONLY",
+    "decision_record": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ247_ADOPTED/00_EXPLICIT_GOVERNANCE_ADOPTION.json",
+    "control_adoption_commit": "b5de9ef902abfecba2d1631212810b55bde46a2e",
+    "candidate_author_commit": "338aa789dd20d04c83175a6593172fee4b61c078",
+    "warrant_blob": "d1c835119a08bb27124c87b15485d6b83b91659f",
+    "independent_review": "d659b5462c25be347d67f5a4f9873f5f1f645fc9",
+    "operational_issuer_active": false,
+    "root_approved": false,
+    "verifier_installed": false,
+    "registrar_credential_issued": false,
+    "model_R4_adopted": false,
+    "i01_current_kinds": 18
+  },
+  "active_workers": [
+    {
+      "id": "HQ248_F7_R3_REFCOUNT_REPAIR",
+      "agent": "Space Bunny / OpenCode",
+      "model": "Space Bunny Max",
+      "machine": "governed Mac",
+      "worktree": "isolated shared-store sparse worktree; not provisioned by HQ",
+      "branch": "agent/space-bunny-pyat-hq248-f7-decide-refcount-repair-r3",
+      "commission_tip": "8902013902ffcc8a6f936fb184a11320a57011ed",
+      "observed_head_at_checkpoint": "8902013902ffcc8a6f936fb184a11320a57011ed",
+      "commission": "WORKER_COMMISSIONS/PYAT-HQ248-F7-DECIDE-REFERENCE-OWNERSHIP-REPAIR-R3/00_COMMISSION.md",
+      "status": "NEW — NEEDS LAUNCH",
+      "grain": "QUARANTINED_F7_DECIDE_REFCOUNT_REPAIR",
+      "library_access": "NO",
+      "pass_wake": "INDEPENDENT_EXACT_R3_SHA_RUNTIME_HOSTILE_REVIEW_IF_REPAIR_READY",
+      "blocker_effect": "F7_LEAK_AND_T1_OPEN",
+      "hard_forbidden": [
+        "PRODUCTION_F7_P07",
+        "SELF_ADOPTION",
+        "COMPILED_BINARY_COMMIT",
+        "RAW_SOURCE",
+        "STAGE_C",
+        "ACTOR"
+      ]
+    },
+    {
+      "id": "HQ248_F7_T1_DOCUMENTARY_DESIGN",
+      "agent": "Browser/GitHub documentary forensic reviewer",
+      "model": "GPT-5.6 Sol High",
+      "machine": "Browser GitHub only",
+      "worktree": "none",
+      "branch": "agent/reviewer-pyat-hq248-f7-trusted-constructor-ingress-design-r1",
+      "commission_tip": "ad320e05bf3f7ed75bca51e62e3b044da5d8c535",
+      "observed_head_at_checkpoint": "ad320e05bf3f7ed75bca51e62e3b044da5d8c535",
+      "commission": "WORKER_COMMISSIONS/PYAT-HQ248-F7-T1-PRODUCTION-TRUST-INGRESS-DESIGN-R1/00_COMMISSION.md",
+      "status": "NEW — NEEDS LAUNCH",
+      "grain": "F7_T1_TRUSTED_INGRESS_DOCUMENTARY_DESIGN",
+      "library_access": "NO",
+      "pass_wake": "DISTINCT_HQ_BOUNDED_PRODUCTION_T1_IMPLEMENTATION_DECISION",
+      "blocker_effect": "NO_TRUSTED_PRODUCTION_NATIVE_ENTRYPOINT",
+      "hard_forbidden": [
+        "PRODUCTION_CODE_MUTATION",
+        "NATIVE_SECURITY_ADOPTION",
+        "STAGE_C",
+        "RAW_SOURCE",
+        "ACTOR"
+      ]
+    },
+    {
+      "id": "HQ248_N10E_REAL_OWNER_PLACEMENT_FEASIBILITY",
+      "agent": "Space Bunny / OpenCode",
+      "model": "Space Bunny Max or equivalent capable local model",
+      "machine": "governed Mac",
+      "worktree": "isolated shared-store sparse worktree; not provisioned by HQ",
+      "branch": "agent/space-bunny-pyat-hq248-n10e-at07-deployment-placement-evidence-r1",
+      "commission_tip": "9716656ee47fb04bf8bd6e842982d78b6490cca8",
+      "observed_head_at_checkpoint": "9716656ee47fb04bf8bd6e842982d78b6490cca8",
+      "commission": "WORKER_COMMISSIONS/PYAT-HQ248-N10E-AT07-C1-LOCAL-PLACEMENT-FEASIBILITY-R1/00_COMMISSION.md",
+      "status": "NEW — NEEDS LAUNCH",
+      "grain": "NONAUTHORIZING_C1_OWNER_PRINCIPAL_DEPLOYMENT_INVENTORY",
+      "library_access": "NO",
+      "pass_wake": "HQ_COMPETENT_C1_OWNER_DESIGNATION_DECISION",
+      "blocker_effect": "NO_REAL_ISSUER_PRINCIPAL_OR_VERIFIER_ROOT",
+      "hard_forbidden": [
+        "ROOT_OR_KEY_CREATION",
+        "OWNER_SELF_DESIGNATION",
+        "EPOCH_REGISTRATION",
+        "INSTALL_OR_ACTIVATE",
+        "PRODUCTION_MUTATION",
+        "RAW_SOURCE",
+        "ACTOR"
+      ]
+    }
+  ],
+  "dependency_graph": [
+    {
+      "id": "F7_R3_REPAIR",
+      "status": "NEW_COMMISSION_NOT_LAUNCHED",
+      "prerequisites": [
+        "R2_PARTIAL",
+        "HQ248_F7_REFCOUNT_001"
+      ],
+      "pass_wake": "INDEPENDENT_EXACT_R3_SHA_RUNTIME_REVIEW",
+      "prohibited_early": [
+        "STAGE_C",
+        "F7_RR_04G_CLOSURE",
+        "PRODUCTION_NATIVE_IMPORT"
+      ]
+    },
+    {
+      "id": "F7_T1_TRUSTED_INGRESS",
+      "status": "NEW_DOCUMENTARY_COMMISSION",
+      "prerequisites": [
+        "R2_T1_ASSUMED_ONLY"
+      ],
+      "pass_wake": "FUTURE_SEPARATE_HQ_PRODUCTION_IMPLEMENTATION_AUTHORIZATION",
+      "prohibited_early": [
+        "TRUST_ROOT_FROM_CALLER_CALLBACK",
+        "SECURITY_ADOPTION",
+        "PRODUCTION_CODE_MUTATION"
+      ]
+    },
+    {
+      "id": "N10E_REAL_PLACEMENT_FEASIBILITY",
+      "status": "NEW_NONAUTHORIZING_LOCAL_COMMISSION",
+      "prerequisites": [
+        "HQ247_R3_WARRANT_DOCUMENTARY_ONLY",
+        "HQ247_OWNER_PREFLIGHT_PARTIAL"
+      ],
+      "pass_wake": "HQ_DISTINCT_OWNER_DESIGNATION",
+      "prohibited_early": [
+        "ROOT_APPROVE",
+        "OWNER_INSTALL",
+        "EPOCH_ACTIVATE"
+      ]
+    },
+    {
+      "id": "N10E_OWNER_ROOT_ACTIVATION",
+      "status": "BLOCKED",
+      "prerequisites": [
+        "HQ_DESIGNATED_C1_OWNER",
+        "OWNER_EXACT_PROPOSAL",
+        "HQ_ROOT_APPROVE",
+        "OWNER_INSTALL_RECEIPT",
+        "INDEPENDENT_VERIFIER_ACK"
+      ],
+      "pass_wake": "SEPARATE_HQ_EPOCH_ACTIVATION",
+      "prohibited_early": [
+        "CREDENTIAL",
+        "N10E_CROSS_SITE_HANDOFF",
+        "R4_MODEL_AUTHORITY"
+      ]
+    },
+    {
+      "id": "F7_PRODUCTION_ACTUAL_HOSTILE_POSITIVE",
+      "status": "BLOCKED",
+      "prerequisites": [
+        "R3_REPAIR_INDEPENDENT_GREEN",
+        "T1_REAL_PRODUCTION_SEALED_CONSTRUCTOR_APPROVED",
+        "FOUR_HQ234_HQ236_FORGERY_CASES",
+        "FIVE_HQD216_POSITIVE_CASES"
+      ],
+      "pass_wake": "BOUNDED_STAGED_C_INTEGRATION_REVIEW",
+      "prohibited_early": [
+        "PRODUCTION_NATIVE_CUTOVER",
+        "F7_RR_04G_CLOSURE",
+        "F8_ACTOR"
+      ]
+    }
+  ],
+  "holds": {
+    "f7": "F7_RR_04G_OPEN__R2_REPAIR_PARTIAL_REFCOUNT_LEAK_AND_UNTRUSTED_T1__F09_REVIEW_NEGATIVE_ONLY",
+    "n10e": "R3_DOCUMENTARY_WARRANT_ADOPTED__NO_ACTUAL_OWNER_ROOT_EPOCH_CREDENTIAL_R4_OR_CROSS_SITE_HANDOFF",
+    "other": "NO_NEW_I01_KIND__NO_REAL_SURVEY_ESTATE_35_WAVE_WORLD_OR_ACTOR_V3"
+  },
+  "next_action": "RUN_HQ248_THREE_ORTHOGONAL_SUCCESSORS__INTAKE_RETURNS__NO_NATIVE_F7_OR_ISSUER_ACTIVATION",
+  "parked_lanes": [
+    {
+      "id": "ASTRA_FUNCTIONAL_ENDGAME_DELTA_AUDIT",
+      "status": "PARKED — NEEDS LAUNCH",
+      "branch": "agent/astra-pyat-hq247-functional-endgame-delta-audit-r1",
+      "observed_head": "69c2c8c49089a28a74eb74ff740071889b21edcd",
+      "reason": "USER_CHOSE_HQ248_RETURN_ADJUDICATION_FIRST"
+    }
+  ]
+}
