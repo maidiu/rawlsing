@@ -1,0 +1,203 @@
+{
+  "schema": "PYAT_HQ240_C1_N10E_OWNER_ENTRYPOINT_BINDING@1",
+  "status": "PROPOSED_NOT_ADOPTED",
+  "disposition": "C1_AT07_FIXTURE_ISSUER_WARRANT_CANDIDATE_COMPLETE__READY_FOR_HOSTILE_REVIEW",
+  "preimage_path": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ240_R1/03_C1_N10E_ENTRYPOINT_CONTRACT.json",
+  "current_vs_future": [
+    {
+      "name": "owner.register_at07_source_free_build",
+      "owner": "Future HQ-warranted C1 fixture owner registrar",
+      "earliest": "AFTER I02 VALIDATED SEAL AND R8 MANIFEST CHECK",
+      "inputs": "Owner-held sealed C11 repository/release and trusted source-free fixture provenance (not caller-origin label); trusted adopted issuer capability",
+      "outputs": "Registered build_instance_ref and immutable build_receipt_ref; no model rule yet",
+      "currently_implemented": false
+    },
+    {
+      "name": "owner.seal_at07_invocation",
+      "owner": "Future warrant-controlled C1 registrar",
+      "earliest": "AFTER producer+consumer+conditioner+witness assembly, BEFORE _model / stable rule factory",
+      "inputs": "Authenticated registered build instance and actual exact producer query/predicate/hash, consumer query, conditioner, 16-key witness",
+      "outputs": "Immutable invocation_seal_ref; rejects null drift or wrong release",
+      "currently_implemented": false
+    },
+    {
+      "name": "owner.register_c1_compatibility_site",
+      "owner": "Future warrant-controlled C1 ingress",
+      "earliest": "BEFORE owner-native model-rule creation",
+      "inputs": "Owner-authenticated C1_STABLE_RULE_COMPATIBILITY_CONSTRUCTION ingress proof and sealed invocation ref",
+      "outputs": "Exact C1 fixture_use_context_ref bound to SOURCE_FREE_C1_01_COMPATIBILITY",
+      "currently_implemented": false
+    },
+    {
+      "name": "owner.construct_verified_positioned_subject_model_rule",
+      "owner": "Separate FUTURE C1 stable rule authority owner under R4 adoption plus warrant verifier",
+      "earliest": "BEFORE PositionedSubjectPossibilityModelRule construction for new owner-native model authority",
+      "inputs": "Trusted verifier-resolved C1 context and exact adopted model-rule authority; source/walkback separate authority refs",
+      "outputs": "Verified rule only after issuer and model authority green; hand-built C1-AT07-MODEL fixture legacy rule cannot bypass new pathway",
+      "currently_implemented": false
+    },
+    {
+      "name": "compose_positioned_subject_possibility: owner-native AT07 ingress guard",
+      "owner": "C1 analytical composition",
+      "earliest": "BEFORE producer execute_empirical_query / possibility consumer",
+      "inputs": "Required verified C1 context bound to rule/query/witness; independently derived C1 site; no generic scope broadening",
+      "outputs": "Positive C1 exact composition under correctly adopted authorities; fail closed before computation if context absent/mismatched",
+      "currently_implemented": false
+    },
+    {
+      "name": "owner.authorize_N10E_site_handoff",
+      "owner": "Future issuer + owner-controlled N10E route",
+      "earliest": "AFTER C1 build seal and context verification, BEFORE N10E build_model_rule/provider_case",
+      "inputs": "Original build instance/receipt, invocation seal, exact C1→N10E handoff event, N10E authenticated route",
+      "outputs": "New N10E site_context_ref for SAME build and invocation; not a copy of C1's site credential",
+      "currently_implemented": false
+    },
+    {
+      "name": "EmpiricalPossibilityProviderRequest",
+      "owner": "N10E provider",
+      "earliest": "BEFORE request acceptance",
+      "current_fields": [
+        "repository",
+        "empirical_query",
+        "predicate",
+        "authority_registry",
+        "release_refs",
+        "consumer_query",
+        "model_rule",
+        "condition_binding_witness"
+      ],
+      "future_required_field": {
+        "name": "fixture_use_context_ref",
+        "type": "ExactRef",
+        "purpose": "Locator, not trust root; resolve against independently pinned owner verifier"
+      },
+      "verified_owner_material": "Exact issuer/warrant/epoch, registered build/receipt, invocation/witness and site projection verified against request fields; no extra caller-written authority flags",
+      "currently_implemented": false
+    },
+    {
+      "name": "provide_empirical_possibility_slice",
+      "owner": "N10E provider",
+      "earliest": "BEFORE compose_positioned_subject_possibility",
+      "inputs": "Eight existing fields + required fixture_use_context_ref (verified by independently provisioned resolver)",
+      "outputs": "Positive exact or governed refused result; request and receipt include registered use provenance; no geometry supplied",
+      "currently_implemented": false
+    },
+    {
+      "name": "replay_empirical_possibility_slice",
+      "owner": "N10E provider/replay",
+      "earliest": "BEFORE replay computation and BEFORE result material equality check",
+      "inputs": "Expected receipt + same exact validated warrant/issuer/build/site/context as historical expected; eight fields + ref",
+      "outputs": "Current replay only if trusted context still current and provenance matches, then deterministic result and material comparison; audit-only history classified separately",
+      "currently_implemented": false
+    },
+    {
+      "name": "EmpiricalPossibilitySliceProviderReceipt._build_receipt + result",
+      "owner": "N10E receipt identity",
+      "earliest": "For BOTH exact success and refusal",
+      "inputs": "Verified issuer warrant ref, epoch, build receipt/ref, invocation seal, N10E site context ref/token/custody projection",
+      "outputs": "Ref/hash identity change under separately commissioned implementation; preserved producer-derived evidence and refusal no-geometry rules",
+      "currently_implemented": false
+    },
+    {
+      "name": "C1-03R + Z06 lifecycle determinant edges",
+      "owner": "C1-03R registration and Z06 actual maintenance",
+      "earliest": "AT product/dependency registration and replay",
+      "inputs": "Only genuinely consumed authority and credential refs, no future revised authorities as historical determinants",
+      "outputs": "Dependency reachability for actual issuer/model/context changes; Z06 owner controls governed invalidation; no fixture credential power assigned to these owners",
+      "currently_implemented": false
+    }
+  ],
+  "site_gates": {
+    "C1": {
+      "site": "C1_STABLE_RULE_COMPATIBILITY_CONSTRUCTION",
+      "token": "SOURCE_FREE_C1_01_COMPATIBILITY",
+      "proof": "Owner-controlled C1 construction/compatibility entrypoint + issuer-recorded event for exact build and invocation",
+      "must_guard": [
+        "C1 verified stable rule factory",
+        "C1 composition ingress"
+      ],
+      "legacy_note": "Current _model(source) returns fixture-only rule without verification. New path may not treat that as adopted model authority. Do not break unrelated existing C1 routes or treat current tests as registration."
+    },
+    "N10E": {
+      "site": "N10E_PROVIDER_AND_LIFECYCLE",
+      "token": "SOURCE_FREE_N10E_LIFECYCLE",
+      "proof": "Owner-controlled provider/replay/lifecycle ingress + separate issuer-recorded N10E site use for same originating build instance and exact witness",
+      "must_guard": [
+        "N10E request acceptance",
+        "N10E provider precompose",
+        "N10E replay precompute",
+        "governed dependent currentness"
+      ],
+      "legacy_note": "Current provider has eight args, no context ref. A runtime route name alone says what token SHOULD be, not that a valid issuer granted it."
+    }
+  },
+  "identity_spread": {
+    "request_identity_bindings": [
+      "fixture_use_context_ref",
+      "issuer_warrant_ref",
+      "issuer_epoch_ref",
+      "build_instance_ref",
+      "build_registration_receipt_ref",
+      "invocation_seal_ref",
+      "site_use_event_ref",
+      "authenticated_site_token",
+      "conditioner_effective_context",
+      "witness_effective_context"
+    ],
+    "C1_composition_consumer": "Record verified context ref as genuinely consumed new owner-native authority determinant without changing Z08/A05 returned typed state vocabulary",
+    "provider_receipt_identity": [
+      "same verified context and build identifiers for EXACT and REFUSED",
+      "producer query/fact/consumer refs remain exact",
+      "source-free false real-source effect remains restriction, not caller selection"
+    ],
+    "N10E_replay": "Compare expected issuer/build/context/site identities and historical authorized status before deterministic replay; don't treat same probability geometry as proof",
+    "lifecycle": "AT19 determinant refs from actual consumption, not future authority or unaccepted proposal",
+    "R4_candidate_future_only": "Correct canonical preimages/transitive hashes with adopted warrant as positive dependency, separate hostile review. HQ240 does not compute them."
+  },
+  "positive_and_fail_closed": "Once warrant, R4 owner authority and owner code separately adopted and installed, accepted forward 54/60 and reverse 54/62 remain permitted under genuine registered build/context. This proposal neither supplies any executed positive result nor changes arithmetic.",
+  "registry_and_provider_ref_is_not_trust_root": "Use context ref is never a bearer authorization by itself; owner verifier binds site by trusted entrypoint and journal event. Caller can transport locator but cannot mint issuer, create use event, choose site proof or replace signed/sealed record.",
+  "no_direct_constructor_bypass": "All entrances that create or consume newly owner-native AT07 model authority must invoke verifier. A direct public construction of legacy fixture rule or C1 `compose` with hand-constructed rule may not be treated as verified owner-native R4 product.",
+  "preserve_legacy_current_product": true,
+  "no_code_edits": true,
+  "evidence": [
+    {
+      "path": "rawlsing_next/pre553_analytical_composition.py",
+      "blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "ranges": [
+        "1008-1095"
+      ]
+    },
+    {
+      "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+      "blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "ranges": [
+        "140-215",
+        "218-366",
+        "490-659"
+      ]
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_analytical_composition.py",
+      "blob": "2210fc1b4cb99552aafc8797c12d780a78e7983b",
+      "ranges": [
+        "105-145",
+        "270-325"
+      ]
+    },
+    {
+      "path": "rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+      "blob": "0e384f72fa615dc72a0dcb08a36472a64b7b1e4a",
+      "ranges": [
+        "229-286",
+        "420-527"
+      ]
+    },
+    {
+      "path": "rawlsing_next/pre553_analytical_replay_dependency.py",
+      "blob": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+      "ranges": [
+        "370-452"
+      ]
+    }
+  ]
+}

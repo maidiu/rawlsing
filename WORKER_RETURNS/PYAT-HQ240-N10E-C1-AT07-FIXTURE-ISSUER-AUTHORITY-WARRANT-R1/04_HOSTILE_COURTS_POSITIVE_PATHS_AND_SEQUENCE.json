@@ -1,0 +1,370 @@
+{
+  "schema": "PYAT_HQ240_HOSTILE_COURTS_POSITIVE_PATHS_AND_SEQUENCE@1",
+  "status": "PROPOSED_NOT_ADOPTED",
+  "disposition": "C1_AT07_FIXTURE_ISSUER_WARRANT_CANDIDATE_COMPLETE__READY_FOR_HOSTILE_REVIEW",
+  "hostile_courts": [
+    {
+      "id": "H01",
+      "attack": "ordinary caller manufactures valid-looking issuer/warrant/context map without HQ-adopted root",
+      "expected": "REJECT_BEFORE_MODEL_CONSTRUCTION",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H02",
+      "attack": "caller replaces issuer ref with self-issued AuthoritySnapshot or TARGET_USE_PERMISSION kind",
+      "expected": "REJECT_ISSUER_ROOT__NO_KIND_ALIAS",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H03",
+      "attack": "registrar journal response supplied in request rather than retrieved from pinned owner registry",
+      "expected": "REJECT_UNTRUSTED_RESOLVER",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H04",
+      "attack": "caller supplies arbitrary syntactically valid fixture_use_context_ref absent from journal",
+      "expected": "REJECT_CONTEXT_NOT_REGISTERED",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H05",
+      "attack": "caller copies real registered context ref but with different source/consumer/witness",
+      "expected": "REJECT_BUILD_OR_INVOCATION_MISMATCH",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H06",
+      "attack": "two separately registered builds have identical rows and same R8 source hash",
+      "expected": "DIFFERENT_INSTANCE_REFS; EACH_PERMITTED_ONLY_WITH_OWN_CREDENTIAL",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H07",
+      "attack": "caller builds same fixture rows outside registered C1 owner to claim same instance",
+      "expected": "REJECT_NO_VALID_BUILD_EVENT",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H08",
+      "attack": "registrar event sequence reused after restart, collision, or different scope",
+      "expected": "INTEGRITY_CONFLICT; NO_OVERWRITE_OR_REUSE",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H09",
+      "attack": "copied immutable registration receipt but issuer epoch/root not trusted",
+      "expected": "REJECT_UNAUTHENTICATED_RECEIPT",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H10",
+      "attack": "compromised, revoked, expired or reissued registrar epoch presented as current",
+      "expected": "REJECT_FOR_NEW_OR_CURRENT_USE; AUDIT_HISTORICAL_ONLY",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H11",
+      "attack": "C1 context token used at N10E provider/replay or inverse",
+      "expected": "REJECT_WRONG_SITE_BEFORE_USE",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H12",
+      "attack": "N10E route is correctly named but owner-recorded N10E use grant absent",
+      "expected": "REJECT_ROUTE_NAME_NOT_SITE_AUTHENTICATION",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H13",
+      "attack": "source universe ref mutated while fixture ID and row law same",
+      "expected": "REJECT_R8_UNIVERSE_MISMATCH",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H14",
+      "attack": "R8 release swapped with R3 obsolete 8afa... or another same-id ref",
+      "expected": "REJECT_FULL_RELEASE_REF_MISMATCH",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H15",
+      "attack": "changed-source 110-row variant presented under canonical AT07 scope",
+      "expected": "REJECT_FIXTURE_AND_RELEASE_MISMATCH",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H16",
+      "attack": "conditioner actual effective time null changed to value",
+      "expected": "REJECT_ACTUAL_EFFECTIVE_CONTEXT_MISMATCH",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H17",
+      "attack": "witness effective-time null changed to value or witness field set tampered",
+      "expected": "REJECT_16_KEY_WITNESS_CUSTODY",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H18",
+      "attack": "caller replaces static AT07_FIXTURE_ONLY snapshot interval with canonical null",
+      "expected": "REJECT_STATIC_SCOPE_MISMATCH",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H19",
+      "attack": "caller asserts real_source_effect=false while providing real source or no owner provenance",
+      "expected": "REJECT_CANNOT_PROVE_SOURCE_FREE",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H20",
+      "attack": "direct C1 _model(source) legacy fixture object bypasses verified owner-native factory",
+      "expected": "REJECT_AS_NEW_OWNER_NATIVE_RULE",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H21",
+      "attack": "C1 compose invoked directly with hand-built would-be owner-native rule, no verified gate",
+      "expected": "REJECT_BEFORE_PRODUCER_COMPOSITION",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H22",
+      "attack": "provider request has context locator but no owner-authenticated issuer/build projection",
+      "expected": "REJECT_REQUEST_BEFORE_COMPOSITION",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H23",
+      "attack": "N10E replay uses different registered build with numerically same output",
+      "expected": "REJECT_REPLAY_BUILD_INSTANCE_MISMATCH",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H24",
+      "attack": "N10E replay carries expired/revoked original use and exact output equality",
+      "expected": "REJECT_CURRENT_REPLAY_NOT_VALID; HISTORICAL_AUDIT_SEPARATE",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H25",
+      "attack": "provider REFUSED receipt drops issuer/use context or silently adds evidence/geometry",
+      "expected": "REJECT_RECEIPT_CUSTODY_OR_REFUSAL_INVARIANT",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H26",
+      "attack": "currentness read from cached object or absent Z06 dependent register",
+      "expected": "REJECT_NO_POSITIVE_CURRENTNESS_FROM_CACHED_PRESENCE",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H27",
+      "attack": "model-rule proposal adds new I01 authority kind as if current 19th",
+      "expected": "REJECT_UNADOPTED_KIND",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H28",
+      "attack": "attacker tries two site-use grants on one build by copying C1 use-event for N10E without owner transition",
+      "expected": "REJECT_NO_SEPARATE_N10E_SITE_EVENT",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H29",
+      "attack": "registrar creates context before original sealed build or before complete 16-key witness",
+      "expected": "REJECT_ILLEGAL_STATE_TRANSITION",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    },
+    {
+      "id": "H30",
+      "attack": "attempted replay under newly rotated issuer via latest/default alias instead of exact archived root",
+      "expected": "REJECT_MUTABLE_ISSUER_SELECTOR",
+      "proof_grade": "FUTURE_HOSTILE_RUNTIME_PLUS_DOCUMENTARY_PROOF_REQUIRED",
+      "status": "PROPOSED_NOT_EXECUTED"
+    }
+  ],
+  "positive_courts": [
+    {
+      "id": "P01",
+      "scenario": "Approved owner registers canonical source-free 100-row AT07 build, seals forward C1 invocation and C1 site; authorized owner-native model authority yields exact supported 54/60 and 9/10",
+      "expected": "ACCEPT_C1_COMPATIBILITY__EXACT_SUPPORTED",
+      "status": "FUTURE_AFTER_ADOPTION_IMPLEMENTATION_ONLY"
+    },
+    {
+      "id": "P02",
+      "scenario": "Same registered build and forward witness cross verified C1→N10E handoff; separately registered N10E site; provider generates exact forward geometry and receipt; current replay reproduces exact provenance",
+      "expected": "ACCEPT_N10E_FORWARD_PROVIDER_AND_REPLAY",
+      "status": "FUTURE_AFTER_ADOPTION_IMPLEMENTATION_ONLY"
+    },
+    {
+      "id": "P03",
+      "scenario": "Same allowed fixture and genuine reverse 54/62 27/31 witness, with independently registered site credentials",
+      "expected": "ACCEPT_REVERSE_C1_AND_N10E_PROVIDER_REPLAY",
+      "status": "FUTURE_AFTER_ADOPTION_IMPLEMENTATION_ONLY"
+    },
+    {
+      "id": "P04",
+      "scenario": "N10E producer returns supported or appropriate non-supported owner-native state; receipt includes context on exact and refused branches, latter has no evidence/geometry",
+      "expected": "PRESERVE_SUCCESS_AND_GOVERNED_REFUSAL",
+      "status": "FUTURE_AFTER_ADOPTION_IMPLEMENTATION_ONLY"
+    },
+    {
+      "id": "P05",
+      "scenario": "Original Z08/A05 exact supported, valid empty, noncomparable, unresolved and separately declared proxy remain semantically unchanged; returned FAIL_CLOSED only original typed scope/proxy reasons",
+      "expected": "ALL_SIX_PUBLIC_RESULT_STATES_PRESERVED_AND_POSITIVE_LANES_PRODUCTIVE",
+      "status": "FUTURE_AFTER_ADOPTION_IMPLEMENTATION_ONLY"
+    },
+    {
+      "id": "P06",
+      "scenario": "Revoked credential can be inspected as immutable historical audit record with exact old issuer root but not reactivated for current output",
+      "expected": "HISTORICAL_AUDIT_ONLY__NO_CURRENT_PASS",
+      "status": "FUTURE_AFTER_ADOPTION_IMPLEMENTATION_ONLY"
+    }
+  ],
+  "hostile_total": 30,
+  "positive_total": 6,
+  "all_prospective_no_executed_tests": true,
+  "six_state_mapping": {
+    "exact_public_states": [
+      "EXACT_SUPPORTED",
+      "EXACT_UNRESOLVED_PROXY_AVAILABLE",
+      "UNRESOLVED",
+      "VALID_EMPTY",
+      "NONCOMPARABLE",
+      "FAIL_CLOSED"
+    ],
+    "precise_role": "Only two Z08 returned FAIL_CLOSED conditions are source-universe outside rule and forbidden cross-source/release walkback. Context/trust failures are pre-construction/preprovider owned exceptions, not new returned Z08 states.",
+    "proxy": "strictly lower-specificity authorized same-universe/release, only supported evidence, exact remains unresolved, separate walkback policy owner; no borrowing/smoothing/threshold",
+    "R3_mapping_status": "PASS_BY_HQ237; HASH_VALID_11_OF_11_BUT_UNADOPTED"
+  },
+  "negative_ceiling": [
+    "NO_GENERIC_ISSUER_AUTHORITY",
+    "NO_NEW_I01_KIND_AUTO_ADMISSION",
+    "NO_NEW_PUBLIC_FIELD_FAMILY",
+    "NO_ACTOR_OR_V3",
+    "NO_REAL_SOURCE",
+    "NO_SOURCES_ADDED_OR_CROSS_SOURCE_INFERENCE",
+    "NO_COMPARABILITY",
+    "NO_POOLING",
+    "NO_STRUCTURAL_ADMISSION",
+    "NO_THRESHOLD",
+    "NO_SMOOTHING",
+    "NO_PREDICTION",
+    "NO_NORMATIVE_OUTPUT",
+    "NO_WALKBACK_POLICY_TRANSFER",
+    "NO_MODEL_RULE_R4_FREEZE",
+    "NO_HISTORICAL_REJECTED_GENEALOGY",
+    "NO_PRODUCTION_OR_TEST_MUTATION"
+  ],
+  "sequence": [
+    {
+      "order": 1,
+      "artifact": "HQ240 warrant candidate",
+      "status": "CURRENT_DOCUMENTARY_PROPOSAL_ONLY",
+      "gate": "NO ISSUER AUTHORITY, NO CREDENTIALS, NO MODEL RULE"
+    },
+    {
+      "order": 2,
+      "artifact": "Independent HQ240 hostile warrant review",
+      "status": "PENDING",
+      "gate": "MUST TEST TRUST ROOT, REGISTRAR/VERIFIER INDEPENDENCE, TWO STAGES, REPLAY, BOTH SITES"
+    },
+    {
+      "order": 3,
+      "artifact": "Explicit HQ bounded issuer-warrant adoption",
+      "status": "PENDING_IF_GREEN",
+      "gate": "ONLY HERE MAY EXACT HQ WARRANT/ISSUER IDENTITY AND TRUST BOOTSTRAP BE AUTHORIZED"
+    },
+    {
+      "order": 4,
+      "artifact": "Separately commissioned R3→R4 owner-native model-authority correction",
+      "status": "PENDING_POST_WARRANT",
+      "gate": "ADOPTED WARRANT BECOMES EXACT POSITIVE DEPENDENCY; CORRECT ALL TRANSITIVELY AFFECTED PREIMAGES/HASHES"
+    },
+    {
+      "order": 5,
+      "artifact": "Fresh independent hostile R4 authority review",
+      "status": "PENDING",
+      "gate": "NO SELF_REVIEW OR HASH_ONLY_APPROVAL"
+    },
+    {
+      "order": 6,
+      "artifact": "Explicit HQ R4 model-authority adoption",
+      "status": "PENDING_IF_GREEN",
+      "gate": "NEW I01 AUTHORITY_KIND/FAMILY ADMISSION REQUIRES SEPARATE EXPLICIT AUTHORIZATION; 18 CURRENT LITERALS"
+    },
+    {
+      "order": 7,
+      "artifact": "Separately commissioned Space Bunny implementation + governed runtime courts/lifecycle refreeze",
+      "status": "PENDING_POST_ADOPTION",
+      "gate": "C1/N10E INTERFACES THEN IMPLEMENTED; NO AUTOMATIC WAKE"
+    }
+  ],
+  "adoption_gates": {
+    "warrant_adoption": "Not conferring model-rule authority, not simultaneously adding a 19th kind to existing I01",
+    "registrar_activation": "Requires separately reviewed code/deployment root and exact capability, no runtime claims in candidate",
+    "R4": "Existing unadopted R3 preimages cannot become adopted by dependency hash rewrite without hostile review",
+    "lifecycle": "Z06 keeps authority revision/currentness law; fixture revocation adds narrowly scoped use-currentness guard only",
+    "F7": "No claim to defend against arbitrary hostile same-process code or to solve separate F7 security"
+  },
+  "evidence": [
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ237-N10E-C1-MODEL-AUTHORITY-R3-HOSTILE-REVIEW-R1/00_REVIEW.md",
+      "blob": "183d2d2c63368373946384162f6c1c3b0b2c743a",
+      "blocking": [
+        "HQ237-DEFECT-FIXTURE-CONTEXT-ISSUER-AUTHORITY-001",
+        "HQ237-DEFECT-C1-N10E-CONTEXT-ENTRYPOINT-CUSTODY-002"
+      ]
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ239-N10E-C1-FIXTURE-CONTEXT-ISSUER-OWNER-ARCHAEOLOGY-R1/00_RETURN.md",
+      "blob": "968c3b46535dae98da43940494ce21068152344b",
+      "disposition": "MISSING_COMPETENT_ISSUER__NEW_BOUNDED_AUTHORITY_WARRANT_REQUIRED"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_OWNER_NATIVE_MODEL_AUTHORITY_HQ236_R3/09_CANONICAL_RECOMPUTATION_MANIFEST.json",
+      "blob": "72f316d9d2b0ac65a9a3abafd39388c7fc12660b",
+      "status": "11/11 HASH_PASS_NOT_AUTHORITY_PASS"
+    },
+    {
+      "path": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "ranges": [
+        "408-457"
+      ],
+      "z08_original_contract_blob": "e553bdf6476d459070963d30e55213bfbb53199e",
+      "a05_admission_blob": "e6cf6f477306c9066cb54c554291c475307a0dfc"
+    }
+  ]
+}
