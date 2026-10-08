@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261008-PYAT-HQ248-F7-R2-REFCOUNT-N10E-PLACEMENT-HOLD-R1",
-  "handoff_commit": "91595263d2888091e1f28af1ed38429b7c02966f",
+  "checkpoint_id": "20261008-PYAT-HQ249-THREE-HQ248-RETURNS-ASTRA-AUDIT-WAKE-R1",
+  "handoff_commit": "feff06d43428efa767ce6823f693ca5361767332",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261008-PYAT-HQ248-F7-R2-REFCOUNT-N10E-PLACEMENT-HOLD-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261008-PYAT-HQ248-F7-R2-REFCOUNT-N10E-PLACEMENT-HOLD-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261008-PYAT-HQ248-F7-R2-REFCOUNT-N10E-PLACEMENT-HOLD-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261008-PYAT-HQ249-THREE-HQ248-RETURNS-ASTRA-AUDIT-WAKE-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261008-PYAT-HQ249-THREE-HQ248-RETURNS-ASTRA-AUDIT-WAKE-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261008-PYAT-HQ249-THREE-HQ248-RETURNS-ASTRA-AUDIT-WAKE-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -15,7 +15,7 @@
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
   "protected_execution_head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
-  "next_action": "RUN_HQ248_THREE_ORTHOGONAL_SUCCESSORS__INTAKE_RETURNS__NO_NATIVE_F7_OR_ISSUER_ACTIVATION",
+  "next_action": "LAUNCH_ASTRA_P0_FROM_HQ249__NO_MORE_DEFAULT_F7_N10E_ENGINEERING_WAVE",
   "source_split_control_head": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "split_fanin_evidence_tip": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "joined_successor_return_tip": "b4dd6d6016367110c06317abe2cef276123b4c69",
@@ -62,7 +62,7 @@
   "pyat_current_handoff": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/CURRENT_HANDOFF.md",
   "pyat_current_grok_docket": "PYAT_CONTROL_ROOM/12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md",
   "pyat_fresh_hq_protocol": "PYAT_CONTROL_ROOM/13_FRESH_HQ_FULL_GROK_PROTOCOL.md",
-  "immediate_program_refinement": "HQ248__F7_R2_PARTIAL_DIRECT_REFCOUNT_001__F09_FROZEN_HOSTILE_BLOCKED__N10E_REAL_PLACEMENT_PARTIAL__ASTRA_PARKED",
+  "immediate_program_refinement": "HQ249__THREE_HQ248_RETURNS_INTAKEN__F7_R3_ADMISSION_LEAK_OPEN_T1_DESIGN_ONLY_N10E_LOCAL_VERIFIER_BLOCKED__ASTRA_AUDIT_WAKE",
   "legacy_pyat_bootstrap_path": "HQ_HANDOFF/PYAT_HQ_BOOTSTRAP_R1.md",
   "pyat_documentary_hygiene": "HQD-2026-09-26-114",
   "pyat_forward_program_decision": "HQD-2026-09-28-125",
@@ -1202,18 +1202,11 @@
   "hq248_f09_hostile_return": "fa3c69b832d4649e046d84e4dde89897585aa4e3",
   "hq248_n10e_placement_return": "80023846b13b9d2cea93f6a3d4f7cd36601b7ccd",
   "hq248_astra_audit": "PARKED__NEEDS_LAUNCH",
-  "hq248_active_branches": [
-    {
-      "branch": "agent/space-bunny-pyat-hq248-f7-decide-refcount-repair-r3",
-      "commission_tip": "8902013902ffcc8a6f936fb184a11320a57011ed"
-    },
-    {
-      "branch": "agent/reviewer-pyat-hq248-f7-trusted-constructor-ingress-design-r1",
-      "commission_tip": "ad320e05bf3f7ed75bca51e62e3b044da5d8c535"
-    },
-    {
-      "branch": "agent/space-bunny-pyat-hq248-n10e-at07-deployment-placement-evidence-r1",
-      "commission_tip": "9716656ee47fb04bf8bd6e842982d78b6490cca8"
-    }
-  ]
+  "hq248_active_branches": [],
+  "hq249_decision": "HQD-2026-10-08-249",
+  "hq249_f7_r3_return": "8df99878f7947ac7966f0182ddb2c18424c1c9ae",
+  "hq249_f7_t1_return": "58934231d6e5bc895f937b069433237f7edce594",
+  "hq249_n10e_local_return": "e64379e542b931df1e7df47f1b37955a1cb9a3a9",
+  "hq249_astra_audit": "HQ249_GATE_OPEN__P0_SOL_HIGH__P1_ASTRA_AFTER_BANK__P2_SOL_HIGH__P3_ASTRA",
+  "hq249_active_branches": []
 }
