@@ -1,0 +1,221 @@
+{
+  "schema": "PYAT_HQ238_F7_ACCEPTANCE_COURTS_PRODUCTIVITY_TRANSITION@1",
+  "status": "PROPOSED_NOT_AUTHORIZED_NOT_EXECUTED",
+  "exact_candidate_base": "ae5e140a378406888c94d099b7dd8e98dfeb1459",
+  "attested_local_proof": {
+    "branch": "agent/reviewer-pyat-hq236-f7-coordinated-hostile-evidence-r1",
+    "candidate": "c86ae335eaf70e82b5764c46754b16ca7e1587ce",
+    "interpreter": "CPython 3.11.3 macOS x86_64 governed",
+    "sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "old_matrix": "WORKER_RETURNS/PYAT-HQ236-F7-COORDINATED-HOSTILE-EVIDENCE-R1/reproduction/attack_matrix_output.json",
+    "observed": [
+      "REFUSED",
+      "FORGED_POSITIVE",
+      "FORGED_POSITIVE",
+      "FORGED_POSITIVE"
+    ],
+    "targeted": "228 passed",
+    "broad": "45 failed, 2691 passed, 7 errors, normalized 54-item SHA256 278854ee94fadfd57284a572441522fb56105081f89af431b17ec2e556ace6a9"
+  },
+  "test_principle": "Each new hostile test ASSERTS victim remains negative AND source remains positive. The legacy assert forged_positive is True is evidence, NOT an acceptance assertion. Run old vulnerable implementation as a negative control; prospective secure path must falsify that old positive.",
+  "exact_case_builder": {
+    "source": "one admitted AUTHORIZED SOURCE_SEMANTIC_EQUIVALENCE for (UNIVERSE_A,UNIVERSE_B), target use USE-1, real exact positive SOURCE_EQUIVALENCE snapshot",
+    "victim": "exact SourceRelationResolver(relations=(), authority_registry=source._registry) with zero constructor relations",
+    "source_expected": {
+      "P07": "AUTHORIZED",
+      "F7": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED",
+      "direction": "INCREASE"
+    },
+    "victim_expected": {
+      "P07": "not AUTHORIZED, exact relation absent",
+      "F7": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT",
+      "comparability": "NOT_COMPARABLE",
+      "direction": "DIRECTION_NOT_CLAIMABLE"
+    },
+    "assert_same_exact_owner_instance": "The *original empty victim*, not a newly constructed valid source resolver, remains the tested receiver"
+  },
+  "four_attacks": [
+    {
+      "id": "F7-RR-04G-1-ORIGINAL-HQ234",
+      "setup": "construct victim-bound NamedTuple from source payload AND source anchor fields, rebind ledger cell only",
+      "old_candidate": "REFUSED",
+      "future_required": "REFUSED_NO_TRUSTED_POSITIVE",
+      "proof": "Do not use a test that passes merely because a mismatched anchor triggers one exception; require source control remains positive and post-restoration victim still nonpositive"
+    },
+    {
+      "id": "F7-RR-04G-2-HQ235-COORDINATED",
+      "setup": "replace victim._by_ref and victim._by_key with source copies; construct victim-bound state carrying source payload and matching newly replaced visible anchor fields; rebind ledger",
+      "old_candidate": "FORGED_POSITIVE",
+      "future_required": "REFUSED_NO_TRUSTED_POSITIVE",
+      "proof": "Native private custody remains original empty despite changed visible fields; F7 cannot turn positive"
+    },
+    {
+      "id": "F7-RR-04G-3-HQ236-ONE-CELL-ONLY",
+      "setup": "DO NOT replace victim._by_ref/_by_key. Use source by_ref/by_key, source authority snapshots/hash/custody_hash but victim owner_ref and victim's untouched live container anchor fields/public fingerprint; only write entries_cell.cell_contents",
+      "old_candidate": "FORGED_POSITIVE",
+      "future_required": "REFUSED_NO_TRUSTED_POSITIVE",
+      "proof": "Record pre/post live container identity and zero keys and demonstrate private constructor custody stays empty; tests that rely only on anchor identity are fail-capable here"
+    },
+    {
+      "id": "F7-RR-04G-4-HQ236-BY_REF-ONLY",
+      "setup": "same as 3 but retain victim's empty by_key payload while source by_ref/snapshots/hash/custody_hash are transplanted, victim anchors remain untouched",
+      "old_candidate": "FORGED_POSITIVE",
+      "future_required": "REFUSED_NO_TRUSTED_POSITIVE",
+      "proof": "Forbid decision from resolving from foreign state.by_ref even when by_key appears victim-consistent"
+    }
+  ],
+  "mandatory_assertion_template": {
+    "each_attack_before": "assert source P07 AUTHORIZED; assert source F7 DIRECTIONAL_CLAIM_AUTHORIZED; assert victim P07 not AUTHORIZED; assert victim F7 CROSS_UNIVERSE_EQUIVALENCE_ABSENT",
+    "after": "assert victim P07 not AUTHORIZED; assert victim F7 != TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED; assert comparability NOT_COMPARABLE; assert direction DIRECTION_NOT_CLAIMABLE; assert source remains AUTHORIZED/directional",
+    "postrestore": "assert original victim state/owner record still empty; assert restored source and victim baseline identities equal exact preattack canonical identities where generated",
+    "native_expected": "These Python ledger attacks must be inapplicable to an accepted native owner (no writable ledger export); inability to locate ledger is evidence only when paired with normal native API victim-negative observation, not a vacuous pass",
+    "T2_expected": "Untrusted Python may fabricate a local positive display, but trusted acceptance journal must contain zero positive entry for victim; assert exact journal query, not just Python return string"
+  },
+  "payload_anchor_independent_courts": [
+    {
+      "id": "F7-PAYLOAD-CUSTODY-PRIVATE-COMMITMENT",
+      "attack": "read public diagnostics/hash/visible fields, reassemble source payload and victim anchors. Query native/private owner digest and admitted relation count through a **test-only trusted diagnostic** before and after attack (never release raw state or registration API).",
+      "expected": "victim admitted relation count remains 0, original pinned constructor digest unchanged; source count stays 1; C-side decision cannot use source payload for victim"
+    },
+    {
+      "id": "F7-PAYLOAD-CUSTODY-BY_REF-WITHOUT-BY_KEY",
+      "attack": "transplant only source by_ref and source snapshot/hash/custody evidence to victim while preserving victim by_key and all live anchors",
+      "expected": "victim remains nonpositive; old implementation red negative control proves sensitivity"
+    },
+    {
+      "id": "F7-PAYLOAD-CUSTODY-FAIL-CAPABILITY",
+      "attack": "in isolated **test-only** native build deliberately swap the C-side per-owner state mapping or disable owner identity binding; run same source/victim test",
+      "expected": "SECURITY COURT FAILS because victim becomes positive (only in deliberate unsafe test build); no debug mutation exported in production artifact; assert different binary digests and forbid production shipping of test mode"
+    },
+    {
+      "id": "F7-PAYLOAD-CUSTODY-REINIT",
+      "attack": "call __init__ again on existing empty exact owner, request new source relation; clone/pickle/copy/restore native object then try attaching genuine positive source custody",
+      "expected": "no upgrade/reseal/pickled clone of victim; source lawful construction still positive"
+    },
+    {
+      "id": "F7-PAYLOAD-CUSTODY-REGISTRY-IMMUNITY",
+      "attack": "replace resolver._registry or registry-visible diagnostics after construction with wrong same-ref snapshot or subclass dispatch",
+      "expected": "existing genuine source positive decision remains positive and carries pinned original exact authority_snapshot_content_hash; an empty victim remains negative"
+    },
+    {
+      "id": "F7-PAYLOAD-CUSTODY-HELPER-SHADOW",
+      "attack": "monkeypatch precisely HQ227 accepted instance/class decide, require, resolve_exact, nested validator and recovered sealer callables",
+      "expected": "protected P07-native authenticated F7 path is not redirected; test can still detect real path by deliberate break of native call in isolated test variant"
+    }
+  ],
+  "productive_five": [
+    {
+      "id": "F7-POS-01-SAME-UNIVERSE",
+      "current_court": "test_witness_same_universe_needs_no_equivalence",
+      "expected": "lawful COMPARABLE result without manufactured source-equivalence requirement for same exact source"
+    },
+    {
+      "id": "F7-POS-02-ZERO",
+      "current_court": "test_witness_exact_zero_is_derived_not_asserted",
+      "expected": "exact signed delta=0 => NO_AUTHORIZED_CHANGE; no invented deadband"
+    },
+    {
+      "id": "F7-POS-03-INCREASE",
+      "current_court": "test_witness_a1_full_authority_set_yields_directional_claim / test_hq227_full_owner_path_positive_cross_universe_service_remains_productive",
+      "expected": "INCREASE authorized only with exact ordered compare and independently positive source equivalence when crossing"
+    },
+    {
+      "id": "F7-POS-04-DECREASE",
+      "current_court": "test_witness_decrease_direction_is_derived",
+      "expected": "DECREASE with exact negative delta, no threshold"
+    },
+    {
+      "id": "F7-POS-05-XU-POSITIVE",
+      "current_court": "test_hq227_full_owner_path_positive_cross_universe_service_remains_productive / test_hq219_rr04_lawful_positive_owner_decision_still_admits_the_pair",
+      "expected": "genuine P07 owner decision and positive F7 receipt, not refusal-only"
+    }
+  ],
+  "T0_regression_cases": [
+    {
+      "id": "P07-T0-DENIED",
+      "expected": "NO POSITIVE"
+    },
+    {
+      "id": "P07-T0-WRONG_KIND_PAIR_USE_SCOPE",
+      "expected": "NO POSITIVE"
+    },
+    {
+      "id": "P07-T0-DUCK_STUB_OR_SUBCLASS",
+      "expected": "NO POSITIVE"
+    },
+    {
+      "id": "P07-T0-SAME_REF_WRONG_SNAPSHOT_SEMANTICS",
+      "expected": "NO POSITIVE"
+    },
+    {
+      "id": "P07-T0-REPLAY_DRIFT",
+      "expected": "NO POSITIVE"
+    },
+    {
+      "id": "F7-T0-THREE_ANCHORS",
+      "expected": "TemporalComparabilityInputRefusal, no receipt"
+    },
+    {
+      "id": "F7-T0-MISSING_EXACT_ORDER_BASIS",
+      "expected": "TEMPORAL_INSUFFICIENT_AUTHORITY where governed"
+    },
+    {
+      "id": "F7-T0-BACKFILL_NONCOMPARABLE",
+      "expected": "backfill refused"
+    }
+  ],
+  "T2_additional_security_courts": [
+    {
+      "id": "F7-T2-CODE-SWAP",
+      "attack": "client rewrites _authenticated_source_relation_decide alias, compare_temporal_anchors.__code__, replay verifier and final Python result getter to report authorized for empty victim",
+      "expected": "protected journal has NO trusted positive for victim; client report is untrusted"
+    },
+    {
+      "id": "F7-T2-CLIENT-RECEIPT-FORGE",
+      "attack": "fabricate matching-looking 18-field TemporalRelationReceipt with genuine source hash but victim/job metadata; replace IPC response bytes",
+      "expected": "no trusted positive accepted for victim"
+    },
+    {
+      "id": "F7-T2-SOURCE-OWNER-ID-TRANSPLANT",
+      "attack": "take valid source resolver_owner_id/capability and put into victim job request, keeping source authority bits",
+      "expected": "trusted job->owner binding refuses; victim journal remains negative"
+    },
+    {
+      "id": "F7-T2-REPLAY-OTHER-JOB",
+      "attack": "replay legitimate source positive IPC envelope against another request nonce/job/governed use/source release or older protocol version",
+      "expected": "trusted consumer independently refuses/refers to original job only"
+    },
+    {
+      "id": "F7-T2-UNTRUSTED-BOOTSTRAP",
+      "attack": "client submits syntactically valid positive registry/snapshot/relationship and an apparent trusted builder label",
+      "expected": "service cannot register as accepted owner; no positive trusted event"
+    },
+    {
+      "id": "F7-T2-SERVICE-DOWN",
+      "attack": "kill/disconnect untrusted client transport or make service unavailable without compromising protected service",
+      "expected": "GATE_UNAVAILABLE outer refusal; no positive effect, but counted as DEVELOPMENT_BLOCKER for mandatory productive output"
+    }
+  ],
+  "replay_parity": {
+    "P07": "exact RelationDecision.replay_identity and owner_custody_hash, nested authority snapshot semantic hash, source/kind/use/scope/operation canonical equivalence; do not claim replay digest authenticates issuer by itself",
+    "F7": "TemporalRelationReceipt.replay_identity()/receipt_hash derived from existing as_material(); replay same exact inputs and compare byte-equivalent semantic material/hash; no new public state or F8 use",
+    "T2": "outer trusted service envelope binds job, exact owner, target/use/scope, source/release, nonce, protocol/semantics version, replay hash and trusted journal seq; separate from F7 receipt",
+    "old_vs_new": "differential/property tests over source-free accepted fixtures across all 12 F7 states and P07 matrix; accepted negative precedence/reasons retained; no replacement of old tests with a vacuously green refusal-only suite"
+  },
+  "runtime_qualification": {
+    "current_baseline": "228 targeted passed, broad 45 failed/2691 passed/7 errors, normalized failed/error set 54 SHA256 278854ee94fadfd57284a572441522fb56105081f89af431b17ec2e556ace6a9",
+    "minimum": "re-run exact F7 163, P07 24, M1 14+27 source-free tests (plus new tests), compare old baseline normalized failures and new extra tests; verify binaries/paths/commits before execution",
+    "environment": "Governed CPython 3.11.3 macOS x86_64 sha256 11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6; no silent interpreter substitution",
+    "provenance": "record exact tree SHA, source/blob hashes, native extension/service binary SHA, compiler/codesign/toolchain/ABI, env hash, commands, all pass/fail/skip/error counts",
+    "no_execution_in_this_lane": true
+  },
+  "qualification_gates": [
+    "HQ formally chooses T1 or T2 TCB; do not mix claim powers",
+    "future implementation source-only work under explicitly assigned branch and permitted terrain",
+    "independent negative-control exploit and fail-capability must FAIL on vulnerability and refuse on fix",
+    "all four real attack variants refused as unauthorized positive, and all five lawful positives productive",
+    "exact replay and code/ABI/IPC provenance checked",
+    "targeted/broad baseline and no semantic drift independently reviewed",
+    "HQ explicit adoption, no worker self-adoption or automatic F8/actor consumer"
+  ]
+}
