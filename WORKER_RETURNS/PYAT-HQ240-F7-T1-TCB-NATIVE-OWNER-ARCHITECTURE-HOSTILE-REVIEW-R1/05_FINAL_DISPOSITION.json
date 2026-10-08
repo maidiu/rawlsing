@@ -1,0 +1,69 @@
+{
+  "schema": "PYAT_HQ240_F7_T1_TCB_NATIVE_OWNER_ARCHITECTURE_HOSTILE_REVIEW_FINAL@1",
+  "disposition": "F7_T1_TCB_NATIVE_OWNER_ARCHITECTURE_PARTIAL__NAMED_DEFECT",
+  "review_branch": "agent/reviewer-pyat-hq240-f7-t1-tcb-native-owner-architecture-r1",
+  "commission_tip": "90aa164278fc889968997c194381da5d2f18e570",
+  "commission_base": "0bb7cd0e4243c17e4b028b30e16fb73fa42653b8",
+  "candidate": "HQ238 DESIGN_I_T1_PROPOSED_NOT_ADOPTED",
+  "evidence_code_blobs": {
+    "P07": "8053d30d306a3654ebf563043088311ff390bb2b",
+    "F7": "6f6b462b1cdef54d7989f15452473383c1661594",
+    "F7_court": "8a82bd5905d266c1d500b1bf2bdcb01ea948efd6",
+    "P07_court": "2487ed757c0254e7227cf43664abc6ae08f1dfb3"
+  },
+  "historical_governed_attack_evidence": {
+    "candidate": "c86ae335eaf70e82b5764c46754b16ca7e1587ce",
+    "return_head": "ae5e140a378406888c94d099b7dd8e98dfeb1459",
+    "four_attack_results": [
+      "REFUSED",
+      "FORGED_P07_F7_POSITIVE",
+      "FORGED_P07_F7_POSITIVE",
+      "FORGED_P07_F7_POSITIVE"
+    ],
+    "current_security_blocker": "F7-RR-04G_OPEN",
+    "actual_native_tests": "NOT_EXECUTED"
+  },
+  "principal_finding": "Native exact owner + full actual P07 adjudicator can address four source-to-empty-victim custody forgeries under a genuinely bounded T1, but cannot itself secure trusted Python F7 module-global alias/output. HQ231's accepted targeted break directly substituted this alias and reopened victim as positive; though explicitly a fail-capability, its T1/T2 status requires conscious HQ threat warrant. Terminal F7 reliance receiver also not completely inventoried.",
+  "named_defects": [
+    "HQ240-DEFECT-F7-P07-ALIAS-TCB-001",
+    "HQ240-DEFECT-F7-TERMINAL-RELIANCE-002",
+    "HQ240-DEFECT-NATIVE-P07-INSTALLATION-AND-CALLBACK-003",
+    "HQ240-DEFECT-OLD-API-AND-ALIASES-004"
+  ],
+  "proposal_ready_for_unqualified_warrant": false,
+  "conditionally_coherent_T1": true,
+  "condition": "HQ must formally exclude arbitrary F7 trusted alias/executable/terminal consumer rewrite while expressly retaining all accepted T1 reflection/class/instance/helper/registry attacks; if alias rewrite must be withstood, Design I fails and separately protected P07-F7-reliance gate is required.",
+  "five_productive_paths": [
+    "same-universe",
+    "exact-zero",
+    "increase",
+    "decrease",
+    "genuinely admitted cross-universe"
+  ],
+  "semantics": "P07 exact kind/ref/ordered pair/scope/use/operation/snapshot/replay and F7 twelve-state precedence, 3+ anchor refusal, no interpolation/currentness/pooling/causation/actor/V3/F8",
+  "required_independent_courts": "all four 04G attacks refused for same original empty victim; genuine source still positive; native payload fail-capability turns court red in test-only unsafe build; five lawful positives; ABI/toolchain/binary attestation and governed CPython macOS tests; exact consumer test",
+  "readiness": {
+    "TCB_adopted": false,
+    "threat_model_adopted": false,
+    "architecture_adopted": false,
+    "production_implementation": false,
+    "native_compiled_binary": false,
+    "native_runtime_qualification": false,
+    "local_execution": false,
+    "tests_newly_executed": false,
+    "semantic_authority_changed": false,
+    "merged_into_control": false,
+    "self_adopted": false
+  },
+  "returns": [
+    "00_REVIEW.md",
+    "01_ACCEPTED_T0_T1_T2_ATTACKER_TCB_CENSUS.json",
+    "02_NATIVE_OWNER_AND_PYTHON_GATE_ATTACK_REVIEW.json",
+    "03_FOUR_ATTACKS_PRODUCTIVE_PATH_AND_RUNTIME_GATE.json",
+    "04_BOUNDED_ARCHITECTURE_WARRANT_READINESS.json",
+    "05_FINAL_DISPOSITION.json"
+  ],
+  "HQ_next": "Resolve alias and terminal-consumer TCB authority at exact integration grain; if warranted, separately commission native implementation and independent qualification. No silent class of hostile power deletion.",
+  "remote_commit_source": "Verified from branch after write; see worker report, not this precommitted document.",
+  "terminal": "PYAT_HQ240_F7_T1_TCB_REVIEW_RETURNED__NAMED_DEFECTS__HQ_WARRANT_REQUIRED"
+}
