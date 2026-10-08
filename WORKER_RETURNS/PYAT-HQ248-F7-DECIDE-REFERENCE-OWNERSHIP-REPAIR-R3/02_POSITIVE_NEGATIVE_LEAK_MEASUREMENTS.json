@@ -1,0 +1,63 @@
+{
+  "commission": "PYAT-HQ248-F7-DECIDE-REFERENCE-OWNERSHIP-REPAIR-R3",
+
+  "measurement_method": {
+    "metric": "sys.getallocatedblocks() delta",
+    "warmup_calls": 4000,
+    "repetitions": 7,
+    "calls_per_repetition": 2000,
+    "reported": "median with full sample spread",
+    "why_not_a_single_snapshot": "a single before/after pair cannot distinguish a zero-leak path from a small constant leak, and cannot show stability. Repeated measurements with spread were required precisely because the HQ245 investigation initially produced a FALSE POSITIVE from an unwarmed measurement of interpreter lazy state.",
+    "harness_artifact_control": "the 4000-call warmup absorbs all interpreter lazy initialisation before the first sample; the gc.get_objects() id-set method is retained only as a cross-check, never as the primary metric",
+    "environment": "governed CPython 3.11.3 at /Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11, sha256 11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6"
+  },
+
+  "before_and_after": {
+    "decide_POSITIVE_genuine_AUTHORIZED": {
+      "before_blocks_per_call": 12.001,
+      "before_samples": [12.005, 12.001, 12.001, 12.0005, 12.0],
+      "after_blocks_per_call": 0.0025,
+      "after_samples_spread": 0.0105,
+      "verdict": "CLEAN at the warmed noise floor",
+      "attributed_to": "the reported PyList_AsTuple(ordered) ownership defect"
+    },
+    "decide_negative_descriptive": {
+      "before_blocks_per_call": 15.0005,
+      "before_samples": [15.001, 15.0005, 15.0005, 15.0005, 15.0005],
+      "after_first_patch_only_blocks_per_call": 3.0005,
+      "after_final_blocks_per_call": 0.0005,
+      "after_final_samples_spread": 0.0005,
+      "verdict": "CLEAN at the warmed noise floor",
+      "attributed_to": "after the PyList_AsTuple repair a residual 3.0 remained; it was traced to the erroneous extra Py_INCREF I had added to trusted_canon in HQ245, which was itself a self-inflicted leak. Removing it closed the negative path."
+    },
+    "resolve_exact": {"before": 0.002, "after": 0.010, "verdict": "noise floor; never leaked"},
+    "validate_decision_replay": {"before": 0.0005, "after": 0.0005, "verdict": "noise floor; never leaked"},
+    "owner_construction_1_relation_1_snapshot": {
+      "before_blocks_per_call": 11.1835,
+      "after_blocks_per_call": 11.002,
+      "verdict": "STILL LEAKS",
+      "attributed_to": "compute_custody_hash rl/al success-path release was repaired (bounded, one-off per construction), but a distinct admission-path leak remains"
+    }
+  },
+
+  "residual_lead_bounded": {
+    "status": "OPEN -- named, and this is why the disposition is not READY",
+    "localisation_method": "a 2x2 construction matrix isolating relations from authority snapshots",
+    "matrix_blocks_per_construction": {
+      "0_relations_0_snapshots": 0.00067,
+      "0_relations_1_snapshot": 1.006,
+      "1_relation_0_snapshots": 10.005,
+      "1_relation_1_snapshot": 11.002
+    },
+    "conclusion": "the residual leak is in the ADMISSION path, NOT in decide(), resolve_exact, replay or custody-hash construction. It scales as approximately 10.0 blocks per admitted relation and 1.0 block per admitted authority snapshot, and an empty construction is clean, which rules out the constructor scaffolding, the pinned-TCB handling and the module-level state.",
+    "bounded_next_culprit": "admit_relation: the ordered source-ref materialisation (pairs/uniq/srcs plus the two ref_dict_copy results and their key strings) and the three trusted_canon results; admit_snapshot: its projection identity hash and authority ref dict. The decide-side analogues of these were audited and are balanced, so the admission copies are the remaining suspect.",
+    "impact": "bounded, per-OWNER-CONSTRUCTION, not per decision. It does not affect any decision outcome, replay identity, custody hash or parity result, all of which remain byte-exact and asserted by 397 tests.",
+    "explicitly_not_claimed": "no READY is claimed while this remains open, per commission clause 5"
+  },
+
+  "reproduction": {
+    "ownership_probe": "reproduction/hq248_pylist_astuple_ownership.py -- exits 0 when PyList_AsTuple does not steal, exits 2 if the premise is wrong, so the next reviewer can falsify my conclusion",
+    "leak_trend": "reproduction/hq248_leak_trend.py -- prints medians and spreads for decide positive/negative, resolve_exact, validate_decision_replay and the 2x2 construction matrix",
+    "both_run_standalone_and_never_in_the_same_process_as_a_production_or_parity_test": true
+  }
+}

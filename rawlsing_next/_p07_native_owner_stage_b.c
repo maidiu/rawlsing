@@ -375,7 +375,6 @@ static PyObject *trusted_canon(StageBOwner *self, PyObject *v)
      * INCREF would make the caller steal a reference from the live input and eventually
      * free an object still in use -- observed as EXC_BAD_ACCESS inside
      * object_recursive_isinstance. Take a real owned reference unconditionally. */
-    Py_INCREF(r);
     return r;
 }
 
@@ -851,17 +850,23 @@ static int compute_custody_hash(StageBOwner *self, char **out)
         PyMem_Free(order);
     }
 
+    /* HQ248 ADJACENT-TEMPORARY REPAIR: Py_BuildValue's "O" does NOT steal a reference,
+     * so the owned `rl` and `al` lists must be released explicitly on the SUCCESS path
+     * too, exactly as the failure path already did. Previously each owner construction
+     * leaked two lists (and everything they referenced). */
     mat = Py_BuildValue("{s:s,s:O,s:O}",
         "contract", STAGE_B_CONTRACT,
         "relations", rl,
         "authority_snapshots", al);
+    Py_XDECREF(rl); rl = NULL;
+    Py_XDECREF(al); al = NULL;
     if (!mat) goto fail;
     h = trusted_hash(self, mat);
+    Py_DECREF(mat); mat = NULL;
     if (!h) goto fail;
     *out = xstrdup(PyUnicode_AsUTF8(h));
     Py_DECREF(h);
     if (!*out) { PyErr_NoMemory(); goto fail; }
-    Py_DECREF(mat);
     return 0;
 
 fail:
@@ -1584,9 +1589,21 @@ stb_decide(StageBOwner *self, PyObject *args, PyObject *kwds)
                 }
                 PyMem_Free(prev_key);
                 Py_CLEAR(tmp_list);
-                /* PyList_AsTuple CONSUMES the `ordered` reference; `sources` therefore
-                 * owns exactly the references the returned tuple needs. */
+                /* HQ248 REFERENCE-OWNERSHIP REPAIR.
+                 *
+                 * PyList_AsTuple RETURNS a new tuple reference and does NOT steal the
+                 * caller's reference to its input list. Verified independently on this
+                 * governed CPython 3.11.3: calling PyList_AsTuple through ctypes leaves
+                 * the input list's refcount delta at exactly 0. (PySequence_Tuple likewise
+                 * does not steal.) The previous comment here asserted the opposite, and
+                 * `ordered` was never released, leaking one list -- and through it its
+                 * element references -- on BOTH the success and the failure path.
+                 *
+                 * The owned input reference is therefore released explicitly, after the
+                 * conversion, on both outcomes. */
                 sources = PyList_AsTuple(ordered);
+                Py_DECREF(ordered);
+                ordered = NULL;
                 if (!sources) goto fail;
             }
         } else { stb_integrity("source_universe_refs must be a list or tuple"); goto fail; }

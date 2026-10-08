@@ -1,0 +1,71 @@
+{
+  "commission": "PYAT-HQ248-F7-DECIDE-REFERENCE-OWNERSHIP-REPAIR-R3",
+  "immutable_subject_base": "c2c0ab7335a3bcfeabb4297139378e3e657cd432",
+  "subject_blob_inspected": "fb5ed13af78672b9d9870b3132787a29d44b928a (matches the HQ-pinned R2 blob)",
+
+  "independent_confirmation_of_the_reported_defect": {
+    "hq_claim": "the comment 'PyList_AsTuple CONSUMES the ordered reference' is false; PyList_AsTuple returns a new tuple reference and does NOT steal the input list, so `ordered` leaks on both the success and failure paths",
+    "hq_claim_verdict": "CONFIRMED",
+    "how_confirmed": "not from memory or from a comment, but empirically on this governed CPython 3.11.3 by calling the C API through ctypes with explicit argtypes and measuring the input list's refcount delta",
+    "measurements": [
+      {"api": "PyList_AsTuple", "input": "[1,2,3]", "refcount_delta": 0, "steals": false},
+      {"api": "PySequence_Tuple", "input": "[1,2,3]", "refcount_delta": 0, "steals": false},
+      {"api": "PyList_AsTuple", "input": "[] (empty)", "refcount_delta": 0, "steals": false}
+    ],
+    "header": "include/python3.11/listobject.h:41 declares PyAPI_FUNC(PyObject *) PyList_AsTuple(PyObject *); with no steal annotation",
+    "correct_pattern_used_elsewhere_in_this_file": "admit_relation already did it correctly: tup = PyList_AsTuple(srcs); Py_DECREF(srcs); srcs = tup;",
+    "note_on_my_own_prior_work": "this false comment was introduced by ME in HQ247. I asserted a steal semantic that the API does not have, and asserted it without verifying. The reproduction script for this commission exists so the next reviewer does not have to trust my word for it."
+  },
+
+  "patch": {
+    "location": "stb_decide, ordered source-ref materialisation",
+    "before": "sources = PyList_AsTuple(ordered);\n                if (!sources) goto fail;",
+    "after": "sources = PyList_AsTuple(ordered);\n                Py_DECREF(ordered);\n                ordered = NULL;\n                if (!sources) goto fail;",
+    "success_path_release": "explicit Py_DECREF immediately after the conversion",
+    "failure_path_release": "the same explicit Py_DECREF runs before the NULL test, so the conversion-failure path is covered by one release rather than two divergent ones",
+    "adjacent_temporary_repair": {
+      "location": "compute_custody_hash",
+      "defect": "rl and al were released ONLY on the fail: path; the success path returned without releasing them, because Py_BuildValue's 'O' format does not steal",
+      "repair": "rl and al are released immediately after Py_BuildValue on both paths, and mat is released before trusted_hash is consumed",
+      "scope": "one leak per owner CONSTRUCTION, not per decide()"
+    },
+    "self_inflicted_defect_removed": {
+      "location": "trusted_canon",
+      "history": "in HQ245 I added an unconditional Py_INCREF to the result of trusted canonicalize, believing the trusted seam could return its input unchanged and that the result was therefore not owned. That belief was wrong: PyObject_CallFunctionObjArgs already returns a NEW owned reference.",
+      "consequence": "that INCREF leaked one reference per trusted_canon call forever",
+      "why_it_was_invisible": "on the positive decide path the canonicalised values are interned strings, so an extra reference cost ZERO pymalloc blocks and was invisible; on the negative path the freshly allocated operation_scope/effective_scope dicts cost real blocks, which is why only the negative path showed the symptom",
+      "repair": "the extra INCREF is removed; the call's own returned reference is the ownership",
+      "verification": "all 397 existing tests still pass with it removed, so it was never load-bearing -- the HQ245 EXC_BAD_ACCESS was caused by the separate borrowed-argument over-DECREF (MEM-002), not by this"
+    }
+  },
+
+  "ownership_table": {
+    "legend": "OWNED-by-caller means the C function hands back a NEW reference the caller must release",
+    "rows": [
+      {"site": "admit_relation ordered source refs", "object": "pairs (PyList_New)", "ownership": "owned", "release": "Py_DECREF(pairs) after the sort/dedupe", "status": "balanced"},
+      {"site": "admit_relation ordered source refs", "object": "uniq -> srcs", "ownership": "owned", "release": "Py_DECREF(srcs) after PyList_AsTuple, which does NOT steal", "status": "balanced (this call site was already correct)"},
+      {"site": "admit_relation per source ref", "object": "d2 = ref_dict_copy(one)", "ownership": "owned", "release": "Py_DECREF(d2) after the Py_BuildValue pair", "status": "balanced"},
+      {"site": "admit_relation pair tuple", "object": "pr = Py_BuildValue(\"(sO)\", ...)", "ownership": "owned", "release": "Py_DECREF(pr) after PyList_Append", "status": "balanced"},
+      {"site": "admit_relation projection identity", "object": "trusted_hash(projection)", "ownership": "owned", "release": "Py_DECREF(h) after xstrdup", "status": "balanced"},
+      {"site": "admit_relation canonicalised scopes", "object": "trusted_canon(...) x3", "ownership": "owned (call's own reference)", "release": "stored on the record and released in free_rels", "status": "balanced after removal of the erroneous INCREF"},
+      {"site": "admit_relation key material", "object": "vals[0], vals[3] (PyUnicode_FromString)", "ownership": "owned", "release": "Py_DECREF after mkdict", "status": "balanced"},
+      {"site": "compute_custody_hash", "object": "rl, al (PyList_New)", "ownership": "owned", "release": "Py_XDECREF immediately after Py_BuildValue, both paths", "status": "REPAIRED this stage (success path previously leaked)"},
+      {"site": "compute_custody_hash", "object": "mat (Py_BuildValue)", "ownership": "owned", "release": "Py_DECREF before returning", "status": "balanced"},
+      {"site": "compute_custody_hash", "object": "h (trusted_hash)", "ownership": "owned", "release": "Py_DECREF(h)", "status": "balanced"},
+      {"site": "validate_positive authority call", "object": "args = PyTuple_Pack(1, snap)", "ownership": "owned", "release": "Py_DECREF(args) immediately after PyObject_Call", "status": "balanced"},
+      {"site": "validate_positive authority call", "object": "kw (Py_BuildValue dict)", "ownership": "owned", "release": "Py_DECREF(kw) immediately after PyObject_Call", "status": "balanced"},
+      {"site": "validate_positive exception path", "object": "pt, pv, tb from PyErr_Fetch/Normalize", "ownership": "owned", "release": "Py_XDECREF on all three, plus msg", "status": "balanced"},
+      {"site": "decide ordered source refs", "object": "tmp_list (PyList_New)", "ownership": "owned", "release": "Py_CLEAR(tmp_list)", "status": "balanced"},
+      {"site": "decide ordered source refs", "object": "prev_key (xstrdup)", "ownership": "owned C string", "release": "PyMem_Free(prev_key)", "status": "balanced (owned copy, never a borrowed pointer)"},
+      {"site": "decide ordered source refs", "object": "ordered (PyList_New)", "ownership": "owned", "release": "Py_DECREF(ordered) after PyList_AsTuple, both paths", "status": "REPAIRED this stage -- the reported defect"},
+      {"site": "decide candidate list", "object": "cands (PyList_New)", "ownership": "owned", "release": "Py_XDECREF(cands) on cleanup: and fail:", "status": "balanced"},
+      {"site": "build_replay_preimage", "object": "rk, tu, st, ar, ao, och, ash, req", "ownership": "owned", "release": "Py_XDECREF of each on done:/fail:", "status": "balanced"},
+      {"site": "mk_decision", "object": "kind_s, use_s, state_s, reason_s, och_s, ash_s, ao_s", "ownership": "owned", "release": "Py_XDECREF at done:", "status": "balanced"},
+      {"site": "mk_decision", "object": "rr, ar (borrowed params vs owned None placeholders)", "ownership": "borrowed when supplied, owned when a Py_None placeholder", "release": "Py_XDECREF only in the placeholder case", "status": "balanced"},
+      {"site": "module init", "object": "STBIntegrityError, STBAuthzError, StageBOwnerType", "ownership": "owned by the module", "release": "every PyModule_AddObject return checked; no double release", "status": "balanced"},
+      {"site": "dealloc", "object": "all record fields, sealed C strings, pinned TCB", "ownership": "owned by the owner", "release": "stb_free_contents from tp_clear and tp_dealloc; visited by tp_traverse", "status": "balanced"}
+    ]
+  },
+
+  "module_state_audit": "the two module-level exception objects and the static type are owned solely by the module dict; StageBOwnerType is PyType_Ready'd once at import and carries no per-call state. No module-level scratch object is created during decide(), so decide() cannot leak module state."
+}

@@ -1,0 +1,93 @@
+{
+  "commission": "PYAT-HQ248-F7-DECIDE-REFERENCE-OWNERSHIP-REPAIR-R3",
+  "branch": "agent/space-bunny-pyat-hq248-f7-decide-refcount-repair-r3",
+  "commission_tip": "8902013902ffcc8a6f936fb184a11320a57011ed",
+  "immutable_subject_base": "c2c0ab7335a3bcfeabb4297139378e3e657cd432",
+  "subject_blob": "fb5ed13af78672b9d9870b3132787a29d44b928a",
+  "agent": "Space Bunny / governed OpenCode native engineering",
+  "model": "Space Bunny Max (space-bunny-free)",
+  "disposition": "F7_R3_MEMORY_REPAIR_PARTIAL__NAMED_DEFECT",
+
+  "hq_report_verdict": "HQ's independently identified defect is CONFIRMED, not merely accepted. The R2 comment asserting that PyList_AsTuple consumes its input reference is false, and was introduced by me. Verified empirically on the governed interpreter: PyList_AsTuple leaves the input list's refcount delta at exactly 0, as does PySequence_Tuple, including for the empty list.",
+
+  "repaired": {
+    "reported_defect": "decide(): `ordered` was never released after PyList_AsTuple, leaking one list and, through it, its element references, on BOTH the success and the failure path. Repaired with an explicit Py_DECREF immediately after the conversion, before the NULL test, so one release covers both outcomes.",
+    "adjacent_temporary": "compute_custody_hash released its owned rl and al lists only on the failure path, because Py_BuildValue's 'O' does not steal. Repaired to release on both paths.",
+    "self_inflicted_defect_removed": "the unconditional Py_INCREF I added to trusted_canon in HQ245 was itself a permanent one-reference-per-call leak. PyObject_CallFunctionObjArgs already returns a NEW owned reference, so the extra INCREF was incorrect. It was invisible on the positive decide path because the canonicalised values there are interned strings costing zero pymalloc blocks, and visible only on the negative path where freshly allocated dicts cost real blocks. Removed. All 397 existing tests pass with it removed, so it was never load-bearing: the HQ245 EXC_BAD_ACCESS was caused by the separate borrowed-argument over-DECREF (MEM-002), not by this."
+  },
+
+  "measured_result": {
+    "decide_POSITIVE_genuine_AUTHORIZED": {"before": 12.001, "after": 0.0025, "unit": "allocated blocks per call", "verdict": "CLEAN at the warmed noise floor"},
+    "decide_negative_descriptive": {"before": 15.0005, "after_after_pylist_patch_only": 3.0005, "after": 0.0005, "verdict": "CLEAN at the warmed noise floor"},
+    "resolve_exact": {"before": 0.002, "after": 0.010, "verdict": "noise floor, never leaked"},
+    "validate_decision_replay": {"before": 0.0005, "after": 0.0005, "verdict": "noise floor, never leaked"},
+    "method": "sys.getallocatedblocks deltas after a 4000-call warmup, 7 repetitions of 2000 calls, median plus full spread"
+  },
+
+  "named_defect_still_open": {
+    "id": "HQ248-OPEN-001",
+    "title": "the ADMISSION path still leaks on every owner construction",
+    "localisation": "a 2x2 construction matrix: 0 relations/0 snapshots 0.0007 clean; 0 relations/1 snapshot 1.006; 1 relation/0 snapshots 10.005; 1 relation/1 snapshot 11.002. The leak therefore scales as roughly 10.0 blocks per admitted relation and 1.0 per admitted authority snapshot, and an empty construction is clean -- which rules out the constructor scaffolding, the pinned-TCB handling and all module-level state.",
+    "bounded_next_culprit": "admit_relation's ordered source-ref materialisation (the pairs/uniq/srcs list chain, the two ref_dict_copy results and their key strings) and its three trusted_canon results; admit_snapshot's projection identity hash and authority ref dict. The decide-side analogues of every one of these were audited and are balanced, so the admission copies are the remaining suspect.",
+    "impact": "bounded per OWNER CONSTRUCTION, not per decision. It does not affect any decision outcome, replay identity, custody hash or parity result, all of which remain byte-exact and asserted.",
+    "why_not_READY": "commission clause 5 requires that a remaining leak be reported as PARTIAL with a bounded next culprit rather than a false READY. This stage does exactly that."
+  },
+
+  "carried_open_items": [
+    {"id": "HQ247-OPEN-002", "title": "T1 production-owned sealed trusted constructor is SPECIFIED, not BUILT", "status": "unchanged; this commission forbids solving it by accepting test-supplied callbacks and forbids editing production", "note": "the trusted assumption remains explicitly ASSUMED and is NOT an authentic sealed production TCB"},
+    {"id": "HQ246-OPEN-003", "title": "module-init OOM injection not performed", "status": "feasibility assessed this stage as FEASIBLE (a -DSTAGE_B_MODULE_INIT_OOM=<n> macro forcing the nth AddObject to fail), deliberately DEFERRED because adding a second fault macro would widen the surface under review in a commission confined to the ownership defect", "must_fix_before": "adoption, at reviewer discretion"}
+  ],
+
+  "tests": {
+    "total": 397,
+    "unchanged_from_before_this_stage": true,
+    "assertions_weakened": false,
+    "tests_modified_this_stage": false,
+    "hq247": 71, "hq246": 59, "stage_a_original": 39, "stage_b_original": 41,
+    "production_p07": 24, "production_f7": 163,
+    "collection": "2953 tests, 9 pre-existing collection errors, unchanged; this stage adds 0 tests and 0 errors",
+    "fail_capability": {"macro": "STAGE_B_FAULT_INJECT_RESOLVE", "clean": "112 passed", "fault_injected": "1 failed, 111 passed", "normal_binary_symbol_matches": 0}
+  },
+
+  "provenance": {
+    "compiler": "Apple clang 14.0.3",
+    "required_flag": "-undefined dynamic_lookup",
+    "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "stage_b_source_sha256": "9a104634eb128ec0c272e917d0fbe4c5ed69caff1b990533e9d06e11d6e3ff12",
+    "stage_b_source_lines": 2018,
+    "stage_a_source_sha256": "12a03d0633661cb2fb57202a6fb0351a18e252cb6fcf2d85439ac9a8b0a23f71",
+    "stage_a_modified_this_stage": false,
+    "local_only_binaries": {"stage_a_so": "1712abb6b60b78c7a3202ae882b974e07a44058afd49a13c5300a684e17c4faf", "stage_b_so": "792e5d9ef89c26d458e3615fcdbf67dca407f5fa2a90e7016ff39c7d3ba0ab3f"},
+    "binaries_committed": false
+  },
+
+  "baseline": {
+    "script": "identical nine-exclusion invocation as HQ246 and HQ247",
+    "result": "45 failed, 2691 passed, 55 warnings, 7 errors, 28 subtests passed",
+    "normalized_items": 52,
+    "normalized_digest": "ab74b05dabc5b99376b2d3ed8c1de6e5845f870fd4c68dd49dc81f488bb2a44e",
+    "identical_to_immutable_subject_base_under_same_script": true,
+    "conclusion": "zero regressions from the ownership repair",
+    "hq242_54_item_convention": "NOT claimed; unchanged across HQ246, HQ247 and HQ248 at 52 items / ab74b05d...; no equality was manufactured",
+    "dependencies_installed": false
+  },
+
+  "holds": {
+    "production_p07_f7_mutation": false,
+    "native_authority_adoption": false,
+    "stage_c": "not started",
+    "f7_rr_04g": "OPEN",
+    "self_adoption": false,
+    "binaries_committed": false,
+    "other_branches_modified": false,
+    "source_access": "none",
+    "four_forgeries_and_five_positives": "retained as future separate-reviewer items against the actual integrated F7 path; NOT claimed here"
+  },
+
+  "next_reviewer_must_examine": [
+    "this exact R3 SHA, not the R2 SHA",
+    "falsify the PyList_AsTuple conclusion by running reproduction/hq248_pylist_astuple_ownership.py, which exits 2 if the premise is wrong",
+    "isolate and fix HQ248-OPEN-001 in the admission path",
+    "re-audit every PyObject_Call / Py_BuildValue / PyList_AsTuple / PyTuple_Pack call site for steal semantics, since the R2 source carried one confident and false ownership comment"
+  ]
+}

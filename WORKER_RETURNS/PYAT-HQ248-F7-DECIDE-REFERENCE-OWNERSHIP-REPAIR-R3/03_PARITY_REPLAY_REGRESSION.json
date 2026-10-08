@@ -1,0 +1,48 @@
+{
+  "commission": "PYAT-HQ248-F7-DECIDE-REFERENCE-OWNERSHIP-REPAIR-R3",
+  "headline": "The ownership repair changed only reference bookkeeping. Every prior approved result is asserted unchanged by the existing suites, with no assertion weakened.",
+
+  "verified_intact": {
+    "B1_constructors": "test_b1_stage_b_constructor_still_refuses_lying_containers (12 lie variants on relations AND authority snapshots), test_b1_stage_a_constructor_still_refuses_lying_containers, test_b1_no_silent_truncation_still_holds",
+    "B2_calling_convention": "test_b2_positive_authority_callback_receives_a_positional_tuple still asserts args[0] is the snapshot with all six keywords by keyword, and that the result is AUTHORIZED",
+    "B3_traceback_handling": "test_b2_negative_authority_becomes_unknown_authority, test_b3_exception_with_traceback_is_handled (2000 nested raises)",
+    "B4_malformed_replay": "12 hostile values x relation_kind and target_use, a str subclass with an overriding __len__, 7 replay fields, and non-dict replay inputs",
+    "P1_true_key_material": "test_p1_object_key_matches_production, test_p1_by_key_path_needs_no_relation_ref, test_p1_effective_scope_is_not_hardcoded (asserts the OLD hardcoded value now FAILS to match)",
+    "genuine_P07_vs_native_AUTHORIZED": "test_p1_native_and_production_authorized_agree_completely compares state, authorized, reason, owner_custody_hash, replay_identity, authority_snapshot_content_hash, authority_operation, relation_kind, target_use and the ordered source_universe_refs",
+    "CONFLICTING_AUTHORITY": "test_conflict_two_independent_positive_candidates, test_conflict_positive_plus_negative_candidate, test_conflict_precedence_prefers_conflicting_over_all_others, test_conflict_negative_ladder_order (4 params)",
+    "six_precedence_steps": "CONFLICTING_AUTHORITY, EXPIRED_OR_STALE, DENIED, NOT_APPLICABLE, UNKNOWN_AUTHORITY, OUT_OF_SCOPE -- unchanged, asserted by the ladder-order and precedence tests",
+    "seventeen_state_union": "unchanged; reachable union remains 17 strings across the four categories",
+    "custody_hash": "unchanged and byte-exact with production; test_stage_b_custody_hash_and_parity_preserved_after_repair and test_p1_native_and_production_authorized_agree_completely",
+    "replay": "test_p1_replay_validates_the_genuine_positive and the B4 tamper tests",
+    "trusted_assumption": "explicitly still ASSUMED, still NOT an authentic sealed production TCB. No production-owned sealed constructor was built and none was simulated. test_d7_rebinding_the_p07_module_attribute_does_not_change_pinned_seam retains."
+  },
+
+  "tests": {
+    "hq247_court": 71,
+    "hq246_repair_court": 59,
+    "stage_a_original": 39,
+    "stage_b_original": 41,
+    "production_p07": 24,
+    "production_f7": 163,
+    "total_before": 397,
+    "total_after_this_stage": 397,
+    "assertions_weakened": false,
+    "tests_modified_this_stage": false,
+    "production_files_modified": false,
+    "production_diff_vs_commission_tip": "empty"
+  },
+
+  "fail_capability": {
+    "macro": "STAGE_B_FAULT_INJECT_RESOLVE",
+    "clean_build": "112 passed",
+    "fault_injected_build": "1 failed, 111 passed",
+    "normal_binary_string_matches_for_FAULT_INJECT": 0
+  },
+
+  "module_init_OOM_feasibility": {
+    "verdict": "FEASIBLE but deferred with justification",
+    "detail": "PyModule_AddObject is not reachable from Python. A real injection needs a compiled fault macro, a malloc interposer, or a static argument. This commission confines writes to the ownership defect, so a second fault macro was deliberately NOT added rather than silently widening the reviewed surface. Recorded as an explicit open item, consistent with HQ246-OPEN-003."
+  },
+
+  "bounded_work_statement": "This stage modified exactly one quarantined C file (_p07_native_owner_stage_b.c). _p07_native_owner_stage_a.c was inspected for the same ownership pattern and is NOT changed: its single PyList_AsTuple call site already performs the correct Py_DECREF, so the demonstrable-same-bug condition set by the commission is not met."
+}
