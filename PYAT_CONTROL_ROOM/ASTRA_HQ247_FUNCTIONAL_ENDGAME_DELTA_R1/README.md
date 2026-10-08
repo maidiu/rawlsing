@@ -1,19 +1,19 @@
-# ASTRA functional endgame audit — P1 complete
+# ASTRA functional endgame audit — P2 complete
 
-**STOP_MODEL_SWITCH_TO_SOL_FOR_P2.** Human-selected Astra High completed P1 on verified HQ249. P0 is preserved; P2/P3 have not started. Audit findings are not HQ adoption.
+**STOP_MODEL_SWITCH_TO_ASTRA_FOR_P3.** P2 V1–V8 targeted documentary/code verification is complete. P0/P1 are preserved; P3 has not started. The human must select Astra for final hostile arbitration. Findings are not HQ adoption.
 
-- [P1 findings and falsifiers](phases/P1_ASTRA_HOSTILE_FINDINGS.md)
-- [Three reverse service slices](phases/P1_REVERSE_SERVICE_SLICES.md)
-- [Conditional critical path](CRITICAL_PATH.md)
-- [F1–F8 matrix](F1_F8_MATRIX.md)
-- [Ranked P2 verification queue](phases/P1_P2_VERIFICATION_QUEUE.md)
+- [P2 verification findings](phases/P2_VERIFICATION.md) and [exact source catalog](phases/P2_SOURCE_CATALOG.md)
+- [Updated F1–F8 functional matrix](F1_F8_MATRIX.md)
+- [Source-supported expected-capability analysis](final/P2_EXPECTED_CAPABILITIES.md) and all-35 / 280-cell [JSON](final/P2_EXPECTED_CAPABILITIES.json)
+- [Five bounded proposed commissions](final/proposed_commissions/README.md) — unissued / not dispatched
+- [P2 refined critical path](CRITICAL_PATH.md), [validation](phases/P2_VALIDATION.md), [phase return](final/P2_PHASE_RETURN.md)
 - [Successor instructions](NEXT_OPERATOR.md) and [state](STATE.json)
 
-Key conclusion: accepted rich analytical and retained structural capabilities should be reused. The scalar provider, typed-null transport and world-service operation/consumer joins need exact verification; finishing native or issuer infrastructure alone does not prove those joins. Security and authority remain mandatory wherever the selected empirical operations consume them.
+Accepted rich C1, I4, H-D and retained GT2 capabilities survive scrutiny. The selected N9→N10W consumer receipt and service/replay bridge remain unbound; EVS temporal inputs lack competent products/authority. Native and AT07 edges remain conditional but mandatory where consumed. No complete competent empirical minimum or broad PRE-V3 readiness is established.
 
-Control `a3d44f554e4e4fa01223679035599019ae2de527`; HQ249 packet `feff06d43428efa767ce6823f693ca5361767332`; semantic PRE-MAIN unchanged. Scope is documentary/static analysis; no project/native/source tests executed. Latest final commit is externally verified, not embedded in itself.
+Control `a3d44f554e4e4fa01223679035599019ae2de527`; HQ249 packet `feff06d43428efa767ce6823f693ca5361767332`; semantic PRE-MAIN unchanged. Zero project/native/source tests executed. Containing commit and direct origin tip are verified externally.
 
-## Historical operator text — preserved, superseded by P1 completion above
+## Historical operator text — preserved, superseded by P2 completion above
 
 # ASTRA HQ247 — functional endgame delta audit
 

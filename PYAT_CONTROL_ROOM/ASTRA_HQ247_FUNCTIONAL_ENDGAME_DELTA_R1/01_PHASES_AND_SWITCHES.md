@@ -1,8 +1,10 @@
 # ASTRA HQ247 — PHASES / INTELLIGENCE SWITCHES (binding)
 
-> **CURRENT BANKED PHASE: P1 COMPLETE.** Human-selected Astra High completed the HQ249 continuation; P0 remains preserved. See STATE.json, NEXT_OPERATOR.md and phases/P1_ASTRA_HOSTILE_FINDINGS.md. **STOP_MODEL_SWITCH_TO_SOL_FOR_P2.** The older entry-status paragraph immediately below is historical; the phase laws and later manual switches remain binding.
+> **CURRENT BANKED PHASE: P2 COMPLETE.** V1–V8 targeted verification, capability matrices and bounded proposals are banked. P0/P1 are preserved; P3 has not started. **STOP_MODEL_SWITCH_TO_ASTRA_FOR_P3.** Human selects Astra before final arbitration. Older phase-status paragraphs below are historical; phase laws remain binding.
 
-> **CURRENT RUN STATUS (HQ249 continuation):** P0 COMPLETE AND GIT-BANKED; P1 not yet started. Existing human-selected Astra High is the P1 model, HQ249 one-wave intake is SEALED, and the sole blocker from the prior P1 entry was removed. Follow `06_HQ249_RESUME_P1_AFTER_COMPLETED_P0.md` for non-destructive fast-forward/currentness check, then **BEGIN P1 DIRECTLY**. The P0 execution instructions below apply only to a historical/restart-from-zero scenario and do not authorize repeating completed work. Required P1 exit `STOP_MODEL_SWITCH_TO_SOL_FOR_P2` remains unchanged.
+> **HISTORICAL P1 BANK: P1 COMPLETE.** Human-selected Astra High completed the HQ249 continuation; P0 remains preserved. See STATE.json, NEXT_OPERATOR.md and phases/P1_ASTRA_HOSTILE_FINDINGS.md. **STOP_MODEL_SWITCH_TO_SOL_FOR_P2.** The older entry-status paragraph immediately below is historical; the phase laws and later manual switches remain binding.
+
+> **HISTORICAL RUN STATUS (HQ249 continuation):** P0 COMPLETE AND GIT-BANKED; P1 not yet started. Existing human-selected Astra High is the P1 model, HQ249 one-wave intake is SEALED, and the sole blocker from the prior P1 entry was removed. Follow `06_HQ249_RESUME_P1_AFTER_COMPLETED_P0.md` for non-destructive fast-forward/currentness check, then **BEGIN P1 DIRECTLY**. The P0 execution instructions below apply only to a historical/restart-from-zero scenario and do not authorize repeating completed work. Required P1 exit `STOP_MODEL_SWITCH_TO_SOL_FOR_P2` remains unchanged.
 
 **HQ249 SEALED GATE ALREADY SATISFIED:** Read `05_HQ249_ACTIVATION_UNBLOCKED.md` first. P0 may start; the only P1 requirements are P0 banked/verified and operator manual model switch. Old conditional HQ249-wait paragraphs below are historical and superseded by this explicit status.
 

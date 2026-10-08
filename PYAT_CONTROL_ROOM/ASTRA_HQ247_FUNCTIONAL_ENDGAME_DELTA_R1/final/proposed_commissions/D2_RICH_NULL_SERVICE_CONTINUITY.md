@@ -2,6 +2,8 @@
 
 **PROPOSED ONLY — NOT DISPATCHED / NOT HQ AUTHORITY.** P3 and then HQ must decide whether to commission this envelope. No branch, startup tip, machine, worktree, selected runtime or deployment is invented. Agent role and model tier below are proposed. Actual assignee: unassigned. Branch/startup tip/worktree: unknown until HQ issues and prepares them. Shared-store sparse worktree required; no duplicate clone, overwrite, reset/rebase, broad fetch or shared live checkout.
 
+**CHECKOUT: SPARSE_REQUIRED.** Use the future explicitly authorized shared-store worktree; historical evidence outside checkout is read with exact Git object APIs.
+
 Evidence baseline C=`a3d44f554e4e4fa01223679035599019ae2de527`, HQ249 packet H=`feff06d43428efa767ce6823f693ca5361767332`, semantic S=`1f47063c3205a45888b3c55e81e7485943ed1390`. Evidence baseline is not a future commissioned code base: HQ must recheck material deltas and freeze the actual exact startup/candidate SHA.
 
 **Agent / intelligence:** capable Sol High integration engineer, with separately commissioned independent reviewer. Machine: authorized source-free runtime host with explicitly pinned dependencies; actual host/worktree unknown.
@@ -12,7 +14,7 @@ Evidence baseline C=`a3d44f554e4e4fa01223679035599019ae2de527`, HQ249 packet H=`
 
 **Exact evidence/base:** current five owner blobs equal adopted HQ168 join (P2_C1_BLOB_CONTINUITY); current-DAG adoption HQ214 candidate `09ed64d642bc600521c6097715a7444383178029`, review `927d85041391c48611cbc86be9fe7b46228f4b68`; rich composition `604c8d591d4cc2b646e9b149cdb233fc9d69cf6b`; provider `23167aa25291fb148b1e3cf210ac33fe7769b783`; evaluator `62e5eced47b64512f47b004e3e13a6ef3fe21de7`; state owner `3a5e3db8a0897900d0b2606813bda7c3f586d46e`; replay owner `47e65aad5e0a8df7af6fda72fc8807a002e556ce`.
 
-**Proposed permitted write terrain:** HQ must select the necessary subset of these existing five exact owner files, dedicated `rawlsing_next/tests/test_pre553_positioned_possibility_service_continuity.py`, and `WORKER_RETURNS/PYAT-PROPOSED-RICH-NULL-SERVICE-CONTINUITY-R1/`. Any new service adapter or world-owned production file must be named by D1/HQ before mutation; it is not authorized by this draft. No I01 law, broad authority, native P07, issuer, structural meaning or raw source writes.
+**Proposed permitted write terrain:** HQ must select the necessary subset of these existing five exact owner files (`rawlsing_next/pre553_analytical_composition.py`, `rawlsing_next/pre553_empirical_possibility_provider.py`, `rawlsing_next/source_backed_positioned_subject_possibility.py`, `rawlsing_next/pre553_analytical_state_and_route.py`, `rawlsing_next/pre553_analytical_replay_dependency.py`), dedicated `rawlsing_next/tests/test_pre553_positioned_possibility_service_continuity.py`, and `WORKER_RETURNS/PYAT-PROPOSED-RICH-NULL-SERVICE-CONTINUITY-R1/`. Any new service adapter or world-owned production file must be named by D1/HQ before mutation; it is not authorized by this draft. No I01 law, broad authority, native P07, issuer, structural meaning or raw source writes.
 
 **Prerequisites:** D1 freezes selected operation/assembly, receipt and promised replay grade; HQ explicitly authorizes any new owner contract. Competent fixtures permit local productive proof under HQ216 without real-source occupancy. D3 supplies later empirical readiness. Preserve accepted AT17 scalar default/identity; richer service extension must be separately explicit/versioned. Registered AT07 use waits for its own D5 operational prerequisite, not bypass.
 

@@ -1,30 +1,37 @@
-# Next operator — P1 bank / mandatory human transition
+# Next operator — P2 complete / mandatory human transition
 
-**P1 COMPLETE. STOP_MODEL_SWITCH_TO_SOL_FOR_P2.** Overall audit incomplete; P2/P3 unstarted. No self-adoption.
+**P2 COMPLETE. STOP_MODEL_SWITCH_TO_ASTRA_FOR_P3.** Overall audit remains incomplete. P3 has not started; findings/proposals are not HQ adoption.
 
-- Agent: existing Astra forensic audit worker; P1 model Astra High selected by human.
-- Machine/worktree: existing user Mac, `/Users/matthewsmith/.codex/worktrees/05e4/Rawlsing`, same sparse shared-store checkout.
+- Repository: `maidiu/rawlsing`.
 - Branch: `agent/astra-pyat-hq247-functional-endgame-delta-audit-r1`.
-- Updated commission: `e3eb3c31fa4761a1d7de8b15d3cfe67a67980049`, safely fast-forwarded from P0 refresh `fe7493ca61c058cbccb30c02425ed1032f986c4f`.
-- Prior verified P1 banks: `ae98e100ed0cde47f94c2af19e0866a851d5db9b`, `07f475315839d8a82f310697b0cefbec0d45e480`. Final containing commit is verified/reported externally.
-- Frozen control: `a3d44f554e4e4fa01223679035599019ae2de527`; HQ249 packet `feff06d43428efa767ce6823f693ca5361767332`; semantic PRE-MAIN `1f47063c3205a45888b3c55e81e7485943ed1390`.
+- Exact inherited P1 handoff verified at entry: `b5ec127a763a7f041604b0c96ddb2a906fc3a0e1`.
+- Last substantive P2 bank verified before this containing handoff commit: `3ce53d23e67a813d042795e08d3b0506c2681a6c`. Final containing SHA is verified/reported externally; do not reset a successor to this earlier bank.
+- Earlier verified P2 banks: `2eb296265ca11b95c8c870757f8b68b56c5161a3`, `a033a8b2dc01dc56fdc8b04e17ae27dc3a2addf9`, `877d377f6e0e41d9c1c860b0f90febd6ce939ea0`.
+- Frozen control: `a3d44f554e4e4fa01223679035599019ae2de527`; HQ249 packet: `feff06d43428efa767ce6823f693ca5361767332`; semantic PRE-MAIN: `1f47063c3205a45888b3c55e81e7485943ed1390`.
+- P2 machine-local isolated sparse worktree: `/Users/matthewsmith/Desktop/Rawlsing_Worktrees/astra-hq247-p2`; shared canonical store: `/Users/matthewsmith/Desktop/as2b-lits1-DiSDJn/repository`. Historical 05e4 checkout was absent here.
 
-## Resume only after human model switch
+## Resume only after human selects Astra
 
-1. Human selects Sol High or explicitly chosen economical equivalent. Do not auto-switch or perform P2 on Astra.
-2. Check branch/HEAD/status and direct origin. Preserve all local changes. Do not reset/rebase/force-push/create another worktree. If remote instruction updates require synchronization, use clean proven fast-forward only under the user's continuation authority.
-3. Read STATE.json, phases/P1_ASTRA_HOSTILE_FINDINGS.md, phases/P1_REVERSE_SERVICE_SLICES.md, CRITICAL_PATH.md and phases/P1_P2_VERIFICATION_QUEUE.md. Reuse source indexes and inherited P0; no archaeology restart.
-4. Recheck live control/immutable packet for material later changes. HQ249 already adjudicated all three HQ248 returns; do not request another intake override. No worker wave is currently listed.
-5. Begin **V1**: identify the exact current runtime assembly and consumer/adoption receipt for the demanded N9→N10W service. Try to falsify the P1 missing-join hypothesis before drafting implementation. Then V2/V3 rich provider and typed-null routes; V4 actual wave identities/native dependency; remaining checks as ranked.
+1. Human selects Astra with the highest available reasoning setting for P3. No automatic switch and no P3 on the P2 model.
+2. Verify branch/HEAD/status and direct origin; preserve local changes and unpushed work. On this machine reuse the lawful attached checkout. On another machine use that machine's authorized shared object store and isolated sparse worktree under `PYAT_CONTROL_ROOM/SHARED_STORE_SPARSE_WORKTREE_EXECUTION_LAW_R1.md`. No clone, overwrite, reset/rebase or credentials transfer. Do not use this machine's paths on another host.
+3. Read STATE.json, phases/P2_VERIFICATION.md, F1_F8_MATRIX, final/P2_EXPECTED_CAPABILITIES, CRITICAL_PATH.md, final/proposed_commissions/README.md and final/P2_PHASE_RETURN.md. Use P2_SOURCE_CATALOG/INDEX for exact contrary evidence. P0/P1 are banked and must not be repeated.
+4. Compare current direct control/LATEST against P2_STOP_CURRENTNESS.json; reconcile only material later deltas. Six packet checks passed and no active workers were listed at the P2 cutoff. HQ249 already adjudicated all three HQ248 returns.
+5. Begin P3 hostile arbitration of these P2 results: retract overclaims, select lawful dependencies and concurrency, distinguish minimum empirical functionality from 35-wave acceptance, and produce the five final P3 artifacts specified by 01_PHASES_AND_SWITCHES.md.
 
-## P1 conclusions to attack
+## Consequential P2 corrections and retained holds
 
-C1 already has real rich producer-to-consumer test paths. R1 provider explicitly restricts conditioners, and inspected composition invokes F8 only for SUPPORTED. Source-scope binding is neither conditioning nor world composition. Existing GT2 context is a valuable local positive, not an objective-world terminal. P07 dependency is conditional on differing exact universe identities in the inspected temporal candidate; actual real waves must be checked. AT07 issuer warrant is fixture-specific and unissued operationally. No global security/authority bypass inferred.
+- Actual N9→N10W selected assembly/consumer receipt is still unbound. This is bounded missing proof, not a global implementation-absence theorem. I4 is a real release/lifecycle assembly. Human-relayed lookup on the original machine identified no uncommitted receipt.
+- Rich C1 multi-binding, minority/joint/recursive conservation, HQ168 join and HQ214 current-DAG acceptance are real. Scalar wrapper limitations do not justify rebuilding those engines. Selected world/rich service and single-owner fresh-process consumer/lifecycle bridge remain unproved.
+- Genuine ZERO_SUPPORT/ZERO_OVERLAP, VALID_EMPTY and unresolved authority are distinct; C1-03A conserves them. Inspected provider/composition do not prove served null products. No blanket ZERO_SUPPORT→VALID_EMPTY mapping.
+- Actual EVS1990/2008 candidates are physical-only; competent product pair and comparison/use authority remain missing. Freeze exact operational universe keys before choosing native criticality.
+- AT07 warrant remains prospective/unissued and source-free 100-row fixture scoped. This Mac lacks independent verifier control; another account/Codex machine does not itself prove independence.
+- R3 bytes match author identity, but HQ248-OPEN-001 admission leak, unbuilt T1 and transitive __globals__ TCB fork persist. Exact-R3 memory review and later integrated production security court are distinct. P3/HQ must adjudicate TCB jurisdiction.
+- All 35 declared identities / 280 function cells are accounted for; most intrinsic service support is UNKNOWN. Retained SRC02 GT2 supports local context, not whole source/world/parent/temporal readiness. No broad source N/A or guessed empirical values.
 
-P1 hypotheses could be overturned by an existing adopted service route, real null-product path, exact source dependency or current world consumer elsewhere. Preserve contrary evidence. Keep minimum empirical functionality separate from a source-free demonstration and full 35-wave estate acceptance.
+## Evidence and boundaries
 
-## Boundaries and outputs
+P2 is documentary/static verification plus artifact identity/accounting validation. Zero project/native/source tests, native builds or raw source reads. Inherited accepted tests/author reports are labeled. Source retrieval spans and truncated batches are not full-review certification. Bootstrap helper performed one broad origin fetch; this law deviation is disclosed in P2_ENTRY.md and was not repeated. Successor must use narrow fetches.
 
-Write only this audit workspace and its commissioned return directory. No production/source/authority/native/issuer/host mutation, raw survey execution, dispatch or actor/V3. P1 executed no project/native/source tests. P2 must distinguish inspected test code, inherited runs and personally executed checks.
+Write only commissioned audit/return terrain. No implementation, production/HQ authority, issuer/root/host settings, raw survey execution, actor/V3, deployment or dispatch. Five D1–D5 envelopes are proposed, unassigned and unissued; actual future branch/tip/worktree/principals remain unknown. Conditional security/authority edges stay mandatory wherever selected operations consume them.
 
-P2 outputs: phases/P2_VERIFICATION.md, exact F1–F8 evidence refinements, source-grounded expected-capability matrix and proposed commission envelopes under final/proposed_commissions/. These are not dispatched. Finish P2 by commit/push/readback and STOP_MODEL_SWITCH_TO_ASTRA_FOR_P3. Final prescription belongs to P3 after the next human switch.
+P3 exit: bank commit/push/direct-origin readback, then `ASTRA_HQ247_DELTA_AUDIT_RETURNED_FOR_HQ_REVIEW__NOT_ADOPTED`. P2 successor must not self-adopt or manufacture completion of unresolved source/runtime obligations.

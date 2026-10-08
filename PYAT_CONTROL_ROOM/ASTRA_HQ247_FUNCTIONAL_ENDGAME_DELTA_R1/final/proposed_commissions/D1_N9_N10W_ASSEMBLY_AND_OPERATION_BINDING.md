@@ -2,6 +2,8 @@
 
 **PROPOSED ONLY — NOT DISPATCHED / NOT HQ AUTHORITY.** P3 and then HQ must decide whether to commission this envelope. No branch, startup tip, machine, worktree, selected runtime or deployment is invented. Agent role and model tier below are proposed. Actual assignee: unassigned. Branch/startup tip/worktree: unknown until HQ issues and prepares them. Shared-store sparse worktree required; no duplicate clone, overwrite, reset/rebase, broad fetch or shared live checkout.
 
+**CHECKOUT: SPARSE_REQUIRED.** Use the future explicitly authorized shared-store worktree; historical evidence outside checkout is read with exact Git object APIs.
+
 Evidence baseline C=`a3d44f554e4e4fa01223679035599019ae2de527`, HQ249 packet H=`feff06d43428efa767ce6823f693ca5361767332`, semantic S=`1f47063c3205a45888b3c55e81e7485943ed1390`. Evidence baseline is not a future commissioned code base: HQ must recheck material deltas and freeze the actual exact startup/candidate SHA.
 
 **Agent / intelligence:** economical capable Sol High documentary/code verifier. Machine: any authorized evidence-reading surface; no runtime deployment required.
