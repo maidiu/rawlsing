@@ -148,3 +148,7 @@ Exact R3 Stage B bytes independently match author SHA256; this is byte identity,
 ## P2 completion/currentness and procedural limits
 
 P2_STOP_CURRENTNESS.json records unchanged direct HQ249 control, immutable packet/semantic bindings and all six checks passing, no active workers. P2_VALIDATION records actual artifact accounting, byte/lineage checks, P0/P1 preservation and audit-only terrain. These are documentary validations, not project/native/source runtime runs. P2_ENTRY discloses a single broad bootstrap fetch by the existing local helper beyond the narrow-fetch law; later evidence fetches were narrow. NEXT_OPERATOR names the manual Astra switch; P3 is unstarted. The prior substantive bank is `3ce53d23e67a813d042795e08d3b0506c2681a6c`; final containing commit is verified externally.
+
+## P3 arbitration A1–A9
+
+See phases/P3_ARBITRATION.md and P3_SOURCE_CATALOG.md. Fresh primary checks correct P2 NONCOMPARABLE wording and premature input/consumer serialization, make independent frozen-R3 review a parallel recommendation, and recommend preserved-threat transitive closure for T1. The 280 cells remain an accountability scaffold; explicit pair/composition edges and source-grounded expectations are still required. Local accepted machinery and exact prior limits are preserved. These are audit judgments for separate HQ review, with no project/native/source runtime qualification.
