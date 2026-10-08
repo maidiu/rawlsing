@@ -1,3 +1,9 @@
+# Current phase — P3 final arbitration in progress
+
+Human selected Astra Ultra after the P2 stop. Exact entry `7d2de5499bd28134723181389f19e0417380c63b`; HQ249 control unchanged. See STATE.json, phases/P3_ENTRY.md and NEXT_OPERATOR.md. P0/P1/P2 complete; final review underway.
+
+## Preserved P2 bank
+
 # ASTRA functional endgame audit — P2 complete
 
 **STOP_MODEL_SWITCH_TO_ASTRA_FOR_P3.** P2 V1–V8 targeted documentary/code verification is complete. P0/P1 are preserved; P3 has not started. The human must select Astra for final hostile arbitration. Findings are not HQ adoption.

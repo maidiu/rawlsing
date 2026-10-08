@@ -1,3 +1,9 @@
+# Current operator — P3 in progress
+
+Human selected Astra Ultra. P3 entry at `7d2de5499bd28134723181389f19e0417380c63b` is verified, existing worktree reused and HQ249 control unchanged. Read STATE.json and phases/P3_ENTRY.md. Continue targeted final arbitration; P0/P1/P2 remain complete. No implementation or dispatch. The preserved P2 handoff below records the completed switch and must not trigger another switch or repeated P2 work.
+
+## Preserved P2 handoff
+
 # Next operator — P2 complete / mandatory human transition
 
 **P2 COMPLETE. STOP_MODEL_SWITCH_TO_ASTRA_FOR_P3.** Overall audit remains incomplete. P3 has not started; findings/proposals are not HQ adoption.

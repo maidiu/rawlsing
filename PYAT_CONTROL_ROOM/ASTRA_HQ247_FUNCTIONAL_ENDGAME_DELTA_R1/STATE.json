@@ -2,10 +2,10 @@
   "schema": "ASTRA_PYAT_HQ247_AUDIT_STATE@1",
   "commission": "ASTRA-PYAT-HQ247-FUNCTIONAL-ENDGAME-DELTA-AUDIT-R1",
   "lane": "agent/astra-pyat-hq247-functional-endgame-delta-audit-r1",
-  "status": "P2_COMPLETE__HARD_STOP_FOR_HUMAN_ASTRA_SWITCH",
-  "phase": "P2_COMPLETE",
-  "required_next_model": "Astra highest available intelligence, selected by human before P3",
-  "pending_model_switch": "STOP_MODEL_SWITCH_TO_ASTRA_FOR_P3",
+  "status": "P3_ENTRY_VERIFIED__ARBITRATION_IN_PROGRESS",
+  "phase": "P3_IN_PROGRESS",
+  "required_next_model": null,
+  "pending_model_switch": null,
   "control_origin_head_observed": "a3d44f554e4e4fa01223679035599019ae2de527",
   "control_latest_checkpoint_observed": "20261008-PYAT-HQ249-THREE-HQ248-RETURNS-ASTRA-AUDIT-WAKE-R1",
   "handoff_commit_observed": "feff06d43428efa767ce6823f693ca5361767332",
@@ -36,7 +36,7 @@
   ],
   "prior_astra_atlas": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/README.md",
   "previous_phase_completion": "P2",
-  "latest_verified_audit_remote_head": "3ce53d23e67a813d042795e08d3b0506c2681a6c",
+  "latest_verified_audit_remote_head": "7d2de5499bd28134723181389f19e0417380c63b",
   "checkpoint_status": "P2_COMPLETE_PACKET__VERIFY_CONTAINING_COMMIT_ON_ORIGIN",
   "completed_investigations": [
     "Verified direct origin control/audit/three worker refs and immutable checkpoint bindings at entry and stop",
@@ -46,8 +46,12 @@
     "Seeded eight functional gates, three reverse-service traces and ten ranked P1 questions",
     "Performed bounded static trust-helper/producer-consumer/code-localization checks; no runtime qualification"
   ],
-  "open_questions": [],
-  "first_next_action": "After human Astra selection, verify branch/local/direct-origin tip and reconcile only material control deltas; begin P3 hostile arbitration of P2, not another P2 audit.",
+  "open_questions": [
+    "P3 service/consumer and null contract arbitration",
+    "P3 source/minimum/full-estate program",
+    "P3 native TCB/issuer conditionality and productive commissioning"
+  ],
+  "first_next_action": "Arbitrate targeted P2 disconfirmations and completion/commission dependencies; produce five final P3 artifacts.",
   "last_stage_files": [
     "phases/P2_VERIFICATION.md",
     "phases/P2_SOURCE_INDEX.json",
@@ -99,18 +103,18 @@
   "latest_pinned_checkpoint": "20261008-PYAT-HQ249-THREE-HQ248-RETURNS-ASTRA-AUDIT-WAKE-R1",
   "most_recent_verified_remote_heads": [
     {
-      "branch": "integration/pre-main-reconciliation-r1",
-      "head": "a3d44f554e4e4fa01223679035599019ae2de527"
+      "branch": "agent/astra-pyat-hq247-functional-endgame-delta-audit-r1",
+      "head": "7d2de5499bd28134723181389f19e0417380c63b"
     },
     {
-      "branch": "agent/astra-pyat-hq247-functional-endgame-delta-audit-r1",
-      "head": "3ce53d23e67a813d042795e08d3b0506c2681a6c"
+      "branch": "integration/pre-main-reconciliation-r1",
+      "head": "a3d44f554e4e4fa01223679035599019ae2de527"
     }
   ],
-  "selected_model": "Human-authorized Sol High or equivalent economical high-capability model for P2; no automatic model switch",
-  "model_scope": "P2 only",
-  "gate_status": "P2_COMPLETE__HARD_STOP_FOR_HUMAN_ASTRA_SWITCH",
-  "next_model": "Astra, human switch required before P3",
+  "selected_model": "Astra Ultra selected by human in current chat; P3 final arbitration",
+  "model_scope": "P3 only",
+  "gate_status": "HUMAN_ASTRA_ULTRA_SWITCH_CONFIRMED__P3_AUTHORIZED",
+  "next_model": null,
   "hq248_workers_at_p0_stop": [
     {
       "id": "HQ248_F7_R3_REFCOUNT_REPAIR",
@@ -167,7 +171,7 @@
       "classification": "POST_CHECKPOINT_PENDING_RETURN"
     }
   ],
-  "last_observed_remote_utc": "2026-10-08T20:02:00.543757+00:00",
+  "last_observed_remote_utc": "2026-10-08T20:13:49.181562+00:00",
   "open_questions_source": "phases/P1_P2_VERIFICATION_QUEUE.md",
   "evidence_grades": [
     "DIRECT_GIT_PACKET_AND_BLOB_IDENTITY_VERIFIED",
@@ -180,7 +184,7 @@
   "pipeline_tests_executed": 0,
   "p1_started": true,
   "p2_started": true,
-  "p3_started": false,
+  "p3_started": true,
   "worktree_bootstrap": "Machine-local shared-store isolated sparse worktree prepared at exact b5ec127 handoff; P2_ENTRY.md records path and bootstrap limits.",
   "entry_refresh": "phases/P1_ENTRY_REFRESH.md",
   "hq249_decision": "HQD-2026-10-08-249",
@@ -239,7 +243,8 @@
     "2eb296265ca11b95c8c870757f8b68b56c5161a3",
     "a033a8b2dc01dc56fdc8b04e17ae27dc3a2addf9",
     "877d377f6e0e41d9c1c860b0f90febd6ce939ea0",
-    "3ce53d23e67a813d042795e08d3b0506c2681a6c"
+    "3ce53d23e67a813d042795e08d3b0506c2681a6c",
+    "7d2de5499bd28134723181389f19e0417380c63b"
   ],
   "completed_investigations_scope": "The inherited completed_investigations list is historical P1; p2_verified_questions and the P2 report define this phase.",
   "p2_completed_investigations": [
@@ -257,5 +262,7 @@
   "proposed_commissions_dispatched": false,
   "production_or_hq_authority_mutated": false,
   "p2_completed_utc": "2026-10-08T20:02:00.543757+00:00",
-  "p2_completed_utc_meaning": "Targeted verification complete; final validation/containing commit bank occurs afterward."
+  "p2_completed_utc_meaning": "Targeted verification complete; final validation/containing commit bank occurs afterward.",
+  "p3_entry_handoff": "7d2de5499bd28134723181389f19e0417380c63b",
+  "p3_entry_currentness": "phases/P3_ENTRY_CURRENTNESS.json"
 }

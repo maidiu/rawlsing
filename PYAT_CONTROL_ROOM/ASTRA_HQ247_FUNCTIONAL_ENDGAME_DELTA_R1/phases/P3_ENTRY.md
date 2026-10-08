@@ -1,0 +1,9 @@
+# P3 entry — final hostile arbitration
+
+Human selected Ultra for Astra in the current chat after the verified P2 stop. P3 entry branch/HEAD/direct origin are exactly `agent/astra-pyat-hq247-functional-endgame-delta-audit-r1` / `7d2de5499bd28134723181389f19e0417380c63b`; worktree was clean. Existing isolated sparse shared-store checkout reused. Direct control remains `a3d44f554e4e4fa01223679035599019ae2de527`; immutable HQ249 packet and no-active-worker state therefore reuse P2's verified bindings. No bootstrap, broad fetch, model/account switch or previous-phase repetition.
+
+Scope: final adversarial adjudication, dependency/priority prescription, two completion programs, five final artifacts and commissioned short return. P0/P1/P2 reports remain preserved. Two bounded read-only argument challenges cover (1) native/issuer scope and TCB and (2) source/completion/commission circularity. They are advisory audit checks, not separately qualified runtime/security reviews or engineering dispatch. Main P3 operator owns all decisions and writes.
+
+Initial arbitration targets: prevent a second audit masquerading as D1/D3; distinguish required service result from a particular wrapper or universal release bridge; decide null representation without altering state law; make source/temporal readiness concrete; preserve protected security while avoiding unsupported global serialization. Evidence inventory: P3_INPUT_MANIFEST.json; exact new spans: P3_SOURCE_INDEX.json as needed.
+
+Zero project/native/source execution. Write terrain remains the audit workspace plus the final return directory explicitly required by 03_RETURN_CONTRACT.md. If that return needs checkout materialization, add only its exact authorized sparse directory. No production, HQ authority, issuer, host/security, raw source or other worker branch mutation. Final disposition remains separate HQ review, not self-adoption.
