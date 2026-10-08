@@ -1,4 +1,4 @@
-# P1 hostile systemic findings — in progress
+# P1 hostile systemic findings — complete for P2 verification
 
 Astra High, explicitly selected by the human. P0 remains banked and has not been repeated. Existing clean branch fast-forwarded from `fe7493ca61c058cbccb30c02425ed1032f986c4f` to authorized continuation `e3eb3c31fa4761a1d7de8b15d3cfe67a67980049`. No reset/rebase/new worktree.
 
@@ -6,7 +6,21 @@ Astra High, explicitly selected by the human. P0 remains banked and has not been
 
 Control `a3d44f554e4e4fa01223679035599019ae2de527`; immutable HQ249 packet `feff06d43428efa767ce6823f693ca5361767332`; semantic PRE-MAIN `1f47063c3205a45888b3c55e81e7485943ed1390`. All six census bindings pass. Read CURRENT.md/JSON and MANIFEST fully. All three HQ248 returns are adjudicated; no active workers in packet. Continuation 06 supersedes the packet’s stale P0-launch text for this already-running audit. Technical ceilings remain unchanged: R3 partial, T1 design only, local verifier deployment blocked.
 
-## First substantive findings
+## Findings
+
+| ID | Exact hypothesis adjudicated | Verdict | Priority / confidence |
+|---|---|---|---|
+| H1 | R1 alone establishes the demanded rich progressive service | PARTIAL: explicit scalar limitation confirmed; alternate route remains unverified | High; high static confidence, provisional service completeness |
+| H2 | Inspected producer route carries empirical empty/noncomparable evidence to F8 | REFUTED for the inspected guarded route; wider null coverage UNVERIFIED | High; high static confidence, exact state mapping still needed |
+| H3 | Held native/issuer work is a demonstrated prerequisite for all productive work | UNVERIFIED; independent local capabilities provide counterevidence | High; conditional scheduling inference |
+| H4 | Rich F2–F4 work is only representation/refusal | REFUTED at inspected test-source and inherited acceptance grain | High; no fresh execution claim |
+| H5 | Temporal candidate has an operation-specific P07 dependency | CONFIRMED at static branch/call grain | High; actual selected wave dependency remains unverified |
+| H6 | Current AT07 issuance warrant is estate-wide authority | REFUTED by exact allowed scope and unissued fields | High; documentary confidence |
+| H7 | Source eligibility, local context or I4 naming proves world-conditioned serving | REFUTED as a sufficient proof; missing full-world implementation remains UNVERIFIED globally | High; bounded code/authority plus explicit OC05 ceiling |
+| H8 | A canary/synthetic demonstration can close all 35-wave obligations | REFUTED by HQ125/216 | High; minimum empirical design remains proposed |
+| H9 | All recent work is bureaucracy, or all controls are dispensable | REFUTED; narrower over-serialization diagnosis PARTIAL | Medium-high; no quantified efficiency claim |
+
+Each section supplies exact evidence, inference limit, counterevidence and a disconfirming test. These verdicts adjudicate hypotheses, not program acceptance.
 
 ### H1 — The existing provider cannot by itself deliver the demanded progressive service
 
@@ -89,3 +103,14 @@ This is a P1 hypothesis for P2 falsification and P3 arbitration, not an implemen
 ## Evidence limits
 
 All new findings are documentary/static reasoning. No project/runtime/source/native tests executed; author and inherited adoption results are not independently reproduced. Exact read spans and blobs are in P1_SOURCE_INDEX.json. P2 remains unstarted.
+
+
+## Completion and confidence
+
+**P1 COMPLETE. STOP_MODEL_SWITCH_TO_SOL_FOR_P2.** P2 and P3 have not begun. The entry/stop census both verify HQ249 and unchanged control/semantic identities, with no active workers listed. Two substantive interim banks were pushed and read back: `ae98e100ed0cde47f94c2af19e0866a851d5db9b` and `07f475315839d8a82f310697b0cefbec0d45e480`. Final containing bank is reported externally to avoid self-referential commit identity.
+
+High confidence at documentary/static grain: explicit provider shape restriction; guarded consumer invocation; nontrivial rich test assertions; conditional P07 call; bounded issuer warrant; source-scope binder power limits; HQ249 adjudication and retained GT2 acceptance ceilings.
+
+Provisional: the world/service join is the highest-value program bottleneck and the proposed ordering reduces avoidable serialization. This follows from traced missing proofs and explicit independent requirements, not complete runtime profiling or cost estimates. Whether a current alternate adopted route closes the gap, whether the minimum real waves require native custody, and which source set is competent are explicitly left to P2. No source-intrinsic N/A or empirical outcomes are guessed.
+
+All F1–F8 rows, three reverse traces, conditional critical path, minimum-vs-estate distinction, nine findings with counterevidence/falsifiers, eight ranked P2 checks and the human-switch successor packet are present. Overall audit remains incomplete until P2 and P3 and separate HQ review.

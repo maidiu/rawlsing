@@ -2,10 +2,10 @@
   "schema": "ASTRA_PYAT_HQ247_AUDIT_STATE@1",
   "commission": "ASTRA-PYAT-HQ247-FUNCTIONAL-ENDGAME-DELTA-AUDIT-R1",
   "lane": "agent/astra-pyat-hq247-functional-endgame-delta-audit-r1",
-  "status": "P1_HOSTILE_SYSTEMIC_ANALYSIS",
-  "phase": "P1_IN_PROGRESS",
-  "required_next_model": "Continue existing human-selected Astra High session for P1; select only if changed",
-  "pending_model_switch": null,
+  "status": "P1_COMPLETE__HARD_STOP_FOR_HUMAN_SOL_SWITCH",
+  "phase": "P1_COMPLETE",
+  "required_next_model": "Sol High or explicitly human-selected economical equivalent for P2",
+  "pending_model_switch": "STOP_MODEL_SWITCH_TO_SOL_FOR_P2",
   "control_origin_head_observed": "a3d44f554e4e4fa01223679035599019ae2de527",
   "control_latest_checkpoint_observed": "20261008-PYAT-HQ249-THREE-HQ248-RETURNS-ASTRA-AUDIT-WAKE-R1",
   "handoff_commit_observed": "feff06d43428efa767ce6823f693ca5361767332",
@@ -35,9 +35,9 @@
     }
   ],
   "prior_astra_atlas": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/README.md",
-  "previous_phase_completion": "P0",
-  "latest_verified_audit_remote_head": "ae98e100ed0cde47f94c2af19e0866a851d5db9b",
-  "checkpoint_status": "P0_BANKED_ON_REMOTE_AND_VERIFIED__P1_ENTRY_REFRESH_BANKED_AT_fe7493ca61c058cbccb30c02425ed1032f986c4f__HQ249_INTAKE_COMPLETE",
+  "previous_phase_completion": "P1",
+  "latest_verified_audit_remote_head": "07f475315839d8a82f310697b0cefbec0d45e480",
+  "checkpoint_status": "P1_COMPLETE_PACKET__VERIFY_CONTAINING_COMMIT_ON_ORIGIN",
   "completed_investigations": [
     "Verified direct origin control/audit/three worker refs and immutable checkpoint bindings at entry and stop",
     "Verified ancestry and return-only terrain for two pushed returns; read all ten artifacts",
@@ -47,33 +47,28 @@
     "Performed bounded static trust-helper/producer-consumer/code-localization checks; no runtime qualification"
   ],
   "open_questions": [
-    "Q1",
-    "Q2",
-    "Q3",
-    "Q4",
-    "Q5",
-    "Q6",
-    "Q7",
-    "Q8",
-    "Q9",
-    "Q10"
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6",
+    "V7",
+    "V8"
   ],
-  "first_next_action": "Finalize critical-path branches and ranked P2 falsifiers; validate P1 packet and bank hard stop.",
+  "first_next_action": "After human Sol switch, verify branch/remote and material control deltas, read P1 report/reverse slices/queue, then perform V1 exact runtime and consumer assembly verification. Do not repeat P0 or redo HQ249 intake.",
   "last_stage_files": [
-    "phases/P0_DELTA_CENSUS.md",
-    "phases/P0_GIT_CENSUS_ENTRY.json",
-    "phases/P0_GIT_CENSUS_STOP.json",
-    "phases/P0_SOURCE_INDEX.json",
-    "phases/P0_DECISION_INDEX.json",
-    "phases/P0_CODE_LOCALIZATION.json",
-    "EVIDENCE_LEDGER.md",
+    "phases/P1_ASTRA_HOSTILE_FINDINGS.md",
+    "phases/P1_REVERSE_SERVICE_SLICES.md",
+    "phases/P1_P2_VERIFICATION_QUEUE.md",
+    "phases/P1_SOURCE_INDEX.json",
+    "phases/P1_HQ249_ENTRY_CENSUS.json",
+    "phases/P1_HQ249_STOP_CENSUS.json",
     "F1_F8_MATRIX.md",
+    "F1_F8_MATRIX.json",
+    "EVIDENCE_LEDGER.md",
     "CRITICAL_PATH.md",
-    "NEXT_OPERATOR.md",
-    "05_HQ249_ACTIVATION_UNBLOCKED.md",
-    "phases/P1_ENTRY_REFRESH.md",
-    "phases/P1_ENTRY_REFRESH_SOURCE_INDEX.json",
-    "06_HQ249_RESUME_P1_AFTER_COMPLETED_P0.md"
+    "NEXT_OPERATOR.md"
   ],
   "original_commission_issuance_control_head": "4246cea7657b6bfb1e405a27f3dff952c4d157df",
   "original_commission_issuance_checkpoint": "20261008-PYAT-HQ247-N10E-R3-ADOPTED-F7-HOSTILE-BLOCKED-R1",
@@ -105,71 +100,10 @@
   ],
   "baseline_control_head": "a3d44f554e4e4fa01223679035599019ae2de527",
   "latest_pinned_checkpoint": "20261008-PYAT-HQ249-THREE-HQ248-RETURNS-ASTRA-AUDIT-WAKE-R1",
-  "most_recent_verified_remote_heads": [
-    {
-      "id": "HQ248_F7_R3_REFCOUNT_REPAIR",
-      "branch": "agent/space-bunny-pyat-hq248-f7-decide-refcount-repair-r3",
-      "commission_tip": "8902013902ffcc8a6f936fb184a11320a57011ed",
-      "head": "8df99878f7947ac7966f0182ddb2c18424c1c9ae",
-      "commission_is_ancestor": true,
-      "ahead_behind": "0\t1",
-      "changed_paths": [
-        "A\tWORKER_RETURNS/PYAT-HQ248-F7-DECIDE-REFERENCE-OWNERSHIP-REPAIR-R3/00_RETURN.md",
-        "A\tWORKER_RETURNS/PYAT-HQ248-F7-DECIDE-REFERENCE-OWNERSHIP-REPAIR-R3/01_OWNERSHIP_TABLE_AND_PATCH.json",
-        "A\tWORKER_RETURNS/PYAT-HQ248-F7-DECIDE-REFERENCE-OWNERSHIP-REPAIR-R3/02_POSITIVE_NEGATIVE_LEAK_MEASUREMENTS.json",
-        "A\tWORKER_RETURNS/PYAT-HQ248-F7-DECIDE-REFERENCE-OWNERSHIP-REPAIR-R3/03_PARITY_REPLAY_REGRESSION.json",
-        "A\tWORKER_RETURNS/PYAT-HQ248-F7-DECIDE-REFERENCE-OWNERSHIP-REPAIR-R3/04_FINAL_DISPOSITION.json",
-        "A\tWORKER_RETURNS/PYAT-HQ248-F7-DECIDE-REFERENCE-OWNERSHIP-REPAIR-R3/reproduction/hq248_leak_trend.py",
-        "A\tWORKER_RETURNS/PYAT-HQ248-F7-DECIDE-REFERENCE-OWNERSHIP-REPAIR-R3/reproduction/hq248_pylist_astuple_ownership.py",
-        "M\trawlsing_next/_p07_native_owner_stage_b.c"
-      ],
-      "git_classification": "ADVANCED_DESCENDANT_REQUIRES_RETURN_CONTENT_REVIEW",
-      "agent": "Space Bunny / OpenCode",
-      "model": "Space Bunny Max",
-      "machine": "governed Mac"
-    },
-    {
-      "id": "HQ248_F7_T1_DOCUMENTARY_DESIGN",
-      "branch": "agent/reviewer-pyat-hq248-f7-trusted-constructor-ingress-design-r1",
-      "commission_tip": "ad320e05bf3f7ed75bca51e62e3b044da5d8c535",
-      "head": "58934231d6e5bc895f937b069433237f7edce594",
-      "commission_is_ancestor": true,
-      "ahead_behind": "0\t1",
-      "changed_paths": [
-        "A\tWORKER_RETURNS/PYAT-HQ248-F7-T1-PRODUCTION-TRUST-INGRESS-DESIGN-R1/00_DESIGN.md",
-        "A\tWORKER_RETURNS/PYAT-HQ248-F7-T1-PRODUCTION-TRUST-INGRESS-DESIGN-R1/01_OWNER_PROVENANCE_AND_CALLSITE.json",
-        "A\tWORKER_RETURNS/PYAT-HQ248-F7-T1-PRODUCTION-TRUST-INGRESS-DESIGN-R1/02_THREAT_AND_POSITIVE_TEST_MATRIX.json",
-        "A\tWORKER_RETURNS/PYAT-HQ248-F7-T1-PRODUCTION-TRUST-INGRESS-DESIGN-R1/03_FUTURE_IMPLEMENTATION_COMMISSION.md",
-        "A\tWORKER_RETURNS/PYAT-HQ248-F7-T1-PRODUCTION-TRUST-INGRESS-DESIGN-R1/FINAL_DISPOSITION.json"
-      ],
-      "git_classification": "ADVANCED_DESCENDANT_REQUIRES_RETURN_CONTENT_REVIEW",
-      "agent": "Browser/GitHub documentary forensic reviewer",
-      "model": "GPT-5.6 Sol High",
-      "machine": "Browser GitHub only"
-    },
-    {
-      "id": "HQ248_N10E_REAL_OWNER_PLACEMENT_FEASIBILITY",
-      "branch": "agent/space-bunny-pyat-hq248-n10e-at07-deployment-placement-evidence-r1",
-      "commission_tip": "9716656ee47fb04bf8bd6e842982d78b6490cca8",
-      "head": "e64379e542b931df1e7df47f1b37955a1cb9a3a9",
-      "commission_is_ancestor": true,
-      "ahead_behind": "0\t1",
-      "changed_paths": [
-        "A\tWORKER_RETURNS/PYAT-HQ248-N10E-AT07-C1-LOCAL-PLACEMENT-FEASIBILITY-R1/00_FEASIBILITY.md",
-        "A\tWORKER_RETURNS/PYAT-HQ248-N10E-AT07-C1-LOCAL-PLACEMENT-FEASIBILITY-R1/01_LOCAL_OWNER_AND_VERIFIER_EVIDENCE.json",
-        "A\tWORKER_RETURNS/PYAT-HQ248-N10E-AT07-C1-LOCAL-PLACEMENT-FEASIBILITY-R1/02_DEPLOYMENT_AND_JOURNAL_FEASIBILITY.json",
-        "A\tWORKER_RETURNS/PYAT-HQ248-N10E-AT07-C1-LOCAL-PLACEMENT-FEASIBILITY-R1/03_HQ_DESIGNATION_REQUIRED.md",
-        "A\tWORKER_RETURNS/PYAT-HQ248-N10E-AT07-C1-LOCAL-PLACEMENT-FEASIBILITY-R1/FINAL_DISPOSITION.json"
-      ],
-      "git_classification": "ADVANCED_DESCENDANT_REQUIRES_RETURN_CONTENT_REVIEW",
-      "agent": "Space Bunny / OpenCode",
-      "model": "Space Bunny Max or equivalent capable local model",
-      "machine": "governed Mac"
-    }
-  ],
-  "selected_model": "Astra High, human selected in existing Codex session (as evidenced in P1_ENTRY_REFRESH.md); reverify actual current active model on resumption",
-  "model_scope": "P1 Astra hostile synthesis permitted now; P2 Sol after human switch",
-  "gate_status": "HQ249_VERIFIED__P0_BANKED__HUMAN_ASTRA_HIGH_SELECTED",
+  "most_recent_verified_remote_heads": [],
+  "selected_model": "Astra High, explicitly human-selected for completed P1",
+  "model_scope": "P1 complete on Astra High; P2 requires manual switch to Sol",
+  "gate_status": "P1_COMPLETE__P2_NOT_STARTED__MANUAL_MODEL_SWITCH_REQUIRED",
   "next_model": "Sol High, human switch required after P1",
   "hq248_workers_at_p0_stop": [
     {
@@ -227,14 +161,15 @@
       "classification": "POST_CHECKPOINT_PENDING_RETURN"
     }
   ],
-  "last_observed_remote_utc": "2026-10-08T19:09:18.654029+00:00",
-  "open_questions_source": "phases/P0_DELTA_CENSUS.md \u00a75",
+  "last_observed_remote_utc": "2026-10-08T19:21:21.317720+00:00",
+  "open_questions_source": "phases/P1_P2_VERIFICATION_QUEUE.md",
   "evidence_grades": [
     "DIRECT_GIT_PACKET_VERIFIED",
     "INHERITED_HQ_ADOPTION_AT_DECLARED_GRAIN",
-    "SUBMITTED_RETURN_NOT_ADOPTED",
-    "STATIC_CODE_EXCERPT_ONLY",
-    "RUNTIME_AND_ESTATE_NOT_EXECUTED"
+    "AUTHOR_RUNTIME_CLAIMS_NOT_INDEPENDENTLY_REPRODUCED",
+    "STATIC_CODE_AND_TEST_SOURCE_SPANS",
+    "P1_DEPENDENCY_HYPOTHESES_PENDING_P2",
+    "NO_RUNTIME_OR_ESTATE_EXECUTION"
   ],
   "pipeline_tests_executed": 0,
   "p1_started": true,
@@ -273,5 +208,6 @@
     "A",
     "B",
     "C"
-  ]
+  ],
+  "p1_completed": true
 }
