@@ -152,3 +152,7 @@ P2_STOP_CURRENTNESS.json records unchanged direct HQ249 control, immutable packe
 ## P3 arbitration A1–A9
 
 See phases/P3_ARBITRATION.md and P3_SOURCE_CATALOG.md. Fresh primary checks correct P2 NONCOMPARABLE wording and premature input/consumer serialization, make independent frozen-R3 review a parallel recommendation, and recommend preserved-threat transitive closure for T1. The 280 cells remain an accountability scaffold; explicit pair/composition edges and source-grounded expectations are still required. Local accepted machinery and exact prior limits are preserved. These are audit judgments for separate HQ review, with no project/native/source runtime qualification.
+
+## P3 final prescription and publication
+
+Five final artifacts and the commissioned short return banked at `30361e4c2e86c106e5685e7964ae0175a2f510cc` and direct origin verified. Final currentness remains unchanged HQ249. Final artifact/lineage/terrain validation is in P3_FINAL_VALIDATION.json. P0–P2 evidence is preserved; final P3 corrections supersede identified wording/scheduling overclaims. Two bounded advisory challenges completed; an optional follow-up drafting check failed on agent usage limit, so no additional review is claimed. Zero project/native/source execution and no engineering dispatch. Final containing metadata SHA is externally verified after push.

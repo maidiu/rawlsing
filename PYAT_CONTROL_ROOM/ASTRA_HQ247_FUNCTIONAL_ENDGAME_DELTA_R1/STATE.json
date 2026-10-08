@@ -2,8 +2,8 @@
   "schema": "ASTRA_PYAT_HQ247_AUDIT_STATE@1",
   "commission": "ASTRA-PYAT-HQ247-FUNCTIONAL-ENDGAME-DELTA-AUDIT-R1",
   "lane": "agent/astra-pyat-hq247-functional-endgame-delta-audit-r1",
-  "status": "P3_FINAL_ARTIFACTS_DRAFTED__VALIDATION_AND_PUBLICATION_NEXT",
-  "phase": "P3_IN_PROGRESS",
+  "status": "READY_FOR_SEPARATE_HQ_REVIEW__NOT_ADOPTED",
+  "phase": "P3_COMPLETE",
   "required_next_model": null,
   "pending_model_switch": null,
   "control_origin_head_observed": "a3d44f554e4e4fa01223679035599019ae2de527",
@@ -35,9 +35,9 @@
     }
   ],
   "prior_astra_atlas": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/README.md",
-  "previous_phase_completion": "P2",
-  "latest_verified_audit_remote_head": "d83524af9f2b11e8e834d245d9c440822518a2f2",
-  "checkpoint_status": "P2_COMPLETE_PACKET__VERIFY_CONTAINING_COMMIT_ON_ORIGIN",
+  "previous_phase_completion": "P3",
+  "latest_verified_audit_remote_head": "30361e4c2e86c106e5685e7964ae0175a2f510cc",
+  "checkpoint_status": "FINAL_AUDIT_RETURN__VERIFY_CONTAINING_COMMIT_EXTERNALLY",
   "completed_investigations": [
     "Verified direct origin control/audit/three worker refs and immutable checkpoint bindings at entry and stop",
     "Verified ancestry and return-only terrain for two pushed returns; read all ten artifacts",
@@ -46,28 +46,22 @@
     "Seeded eight functional gates, three reverse-service traces and ten ranked P1 questions",
     "Performed bounded static trust-helper/producer-consumer/code-localization checks; no runtime qualification"
   ],
-  "open_questions": [
-    "Final artifact/terrain/currentness verification and publication"
-  ],
-  "first_next_action": "Validate final artifacts, immutable prior phase preservation and exact authorized write terrain; push and verify final remote; stop for separate HQ review.",
+  "open_questions": [],
+  "first_next_action": "Separate HQ reviews this final audit return and decides adoption/commissioning. No automatic engineering, execution, dispatch or further audit phase.",
   "last_stage_files": [
-    "phases/P2_VERIFICATION.md",
-    "phases/P2_SOURCE_INDEX.json",
-    "phases/P2_SOURCE_CATALOG.md",
-    "phases/P2_C1_BLOB_CONTINUITY.json",
-    "phases/P2_NATIVE_IDENTITY.json",
-    "phases/P2_ENTRY_CURRENTNESS.json",
-    "phases/P2_STOP_CURRENTNESS.json",
-    "phases/P2_VALIDATION.json",
-    "F1_F8_MATRIX.md",
+    "phases/P3_ARBITRATION.md",
+    "phases/P3_SOURCE_CATALOG.md",
+    "phases/P3_FINAL_CURRENTNESS.json",
+    "phases/P3_FINAL_VALIDATION.json",
+    "final/00_EXECUTIVE_VERDICT.md",
+    "final/01_CRITICAL_PATH_AND_PARALLEL_WORK.md",
+    "final/02_F1_F8_AND_EMPIRICAL_GATE.md",
+    "final/03_EXACT_PROPOSED_COMMISSIONS.md",
+    "final/04_STOP_DOING_AND_DISCONFIRMATION.md",
     "F1_F8_MATRIX.json",
-    "final/P2_EXPECTED_CAPABILITIES.json",
-    "final/P2_EXPECTED_CAPABILITIES.md",
-    "final/proposed_commissions/README.md",
-    "final/P2_PHASE_RETURN.md",
-    "EVIDENCE_LEDGER.md",
     "CRITICAL_PATH.md",
-    "NEXT_OPERATOR.md"
+    "NEXT_OPERATOR.md",
+    "WORKER_RETURNS/ASTRA-PYAT-HQ247-FUNCTIONAL-ENDGAME-DELTA-AUDIT-R1/00_RETURN.md"
   ],
   "original_commission_issuance_control_head": "4246cea7657b6bfb1e405a27f3dff952c4d157df",
   "original_commission_issuance_checkpoint": "20261008-PYAT-HQ247-N10E-R3-ADOPTED-F7-HOSTILE-BLOCKED-R1",
@@ -102,7 +96,7 @@
   "most_recent_verified_remote_heads": [
     {
       "branch": "agent/astra-pyat-hq247-functional-endgame-delta-audit-r1",
-      "head": "7d2de5499bd28134723181389f19e0417380c63b"
+      "head": "30361e4c2e86c106e5685e7964ae0175a2f510cc"
     },
     {
       "branch": "integration/pre-main-reconciliation-r1",
@@ -110,8 +104,8 @@
     }
   ],
   "selected_model": "Astra Ultra selected by human in current chat; P3 final arbitration",
-  "model_scope": "P3 only",
-  "gate_status": "HUMAN_ASTRA_ULTRA_SWITCH_CONFIRMED__P3_AUTHORIZED",
+  "model_scope": "P3 complete; stopped for separate HQ review",
+  "gate_status": "ASTRA_HQ247_DELTA_AUDIT_RETURNED_FOR_HQ_REVIEW__NOT_ADOPTED",
   "next_model": null,
   "hq248_workers_at_p0_stop": [
     {
@@ -169,7 +163,7 @@
       "classification": "POST_CHECKPOINT_PENDING_RETURN"
     }
   ],
-  "last_observed_remote_utc": "2026-10-08T20:13:49.181562+00:00",
+  "last_observed_remote_utc": "2026-10-08T23:26:29.082139+00:00",
   "open_questions_source": "phases/P1_P2_VERIFICATION_QUEUE.md",
   "evidence_grades": [
     "DIRECT_GIT_PACKET_AND_BLOB_IDENTITY_VERIFIED",
@@ -188,10 +182,12 @@
   "hq249_decision": "HQD-2026-10-08-249",
   "hq249_decision_record": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ249_THREE_HQ248_RETURNS_AND_ASTRA_SYSTEM_AUDIT_WAKE_R1.md",
   "current_open_blockers": [
-    "F7_R3_OWNER_ADMISSION_CONSTRUCTION_LEAK_HQ248_OPEN_001",
-    "F7_T1_TRUSTED_PRODUCTION_INGRESS_UNIMPLEMENTED__TRANSITIVE_GLOBALS_UNRESOLVED",
-    "N10E_THIS_MAC_NO_INDEPENDENT_VERIFIER_CONTROL",
-    "GLOBAL_F1_F8_PRODUCTIVE_INTEGRATION_AND_ESTATE_UNPROVED"
+    "SELECTED_N9_N10W_ASSEMBLY_OPERATION_CONSUMER_RECEIPT_UNBOUND",
+    "C7_COMPETENT_CURRENT_COMPARABLE_PAIR_AND_USE_AUTHORITY_UNBOUND",
+    "SELECTED_RICH_NULL_SERVICE_REPLAY_AND_REAL_SOURCE_OCCUPANCY_UNPROVED",
+    "F7_R3_HQ248_OPEN_001_AND_PRODUCTION_T1_INDEPENDENT_QUALIFICATION_OPEN",
+    "CONDITIONAL_AT07_INDEPENDENT_TOPOLOGY_AND_ACTIVATION_UNISSUED",
+    "FULL35_SOURCE_EXPECTATIONS_AND_INTERACTION_GATE_OCCUPANCY_UNPROVED"
   ],
   "p0_final_evidence_bank": "fe7493ca61c058cbccb30c02425ed1032f986c4f",
   "p0_phase_report": "PYAT_CONTROL_ROOM/ASTRA_HQ247_FUNCTIONAL_ENDGAME_DELTA_R1/phases/P0_DELTA_CENSUS.md",
@@ -256,7 +252,7 @@
     "V8 exact R3 native byte identity, residual admission leak and independent production qualification burden"
   ],
   "p2_procedural_limit": "Existing machine helper performed one broad origin fetch during bootstrap, beyond law minimum-fetch default; disclosed in phases/P2_ENTRY.md, not repeated. Sparse scope and write terrain remain audit-only.",
-  "overall_audit_complete": false,
+  "overall_audit_complete": true,
   "proposed_commissions_dispatched": false,
   "production_or_hq_authority_mutated": false,
   "p2_completed_utc": "2026-10-08T20:02:00.543757+00:00",
@@ -280,5 +276,15 @@
     "final/02_F1_F8_AND_EMPIRICAL_GATE.md",
     "final/03_EXACT_PROPOSED_COMMISSIONS.md",
     "final/04_STOP_DOING_AND_DISCONFIRMATION.md"
-  ]
+  ],
+  "p3_completed": true,
+  "p3_completed_utc": "2026-10-08T23:26:29.082139+00:00",
+  "program_prev3_complete": false,
+  "minimum_empirical_run_ready": false,
+  "p3_banks_verified": [
+    "d42c8fb5ae4be7f05ed20955822eac059e3310a1",
+    "d83524af9f2b11e8e834d245d9c440822518a2f2",
+    "30361e4c2e86c106e5685e7964ae0175a2f510cc"
+  ],
+  "post_audit_obligations": "These are program/HQ/runtime/source obligations, not unfinished audit phases; see final prescription and final return."
 }

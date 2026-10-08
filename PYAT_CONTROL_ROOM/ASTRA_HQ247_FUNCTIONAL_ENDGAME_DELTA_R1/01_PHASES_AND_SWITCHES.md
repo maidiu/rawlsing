@@ -1,6 +1,8 @@
 # ASTRA HQ247 — PHASES / INTELLIGENCE SWITCHES (binding)
 
-> **CURRENT BANKED PHASE: P2 COMPLETE.** V1–V8 targeted verification, capability matrices and bounded proposals are banked. P0/P1 are preserved; P3 has not started. **STOP_MODEL_SWITCH_TO_ASTRA_FOR_P3.** Human selects Astra before final arbitration. Older phase-status paragraphs below are historical; phase laws remain binding.
+> **CURRENT PHASE: P3 COMPLETE / FINAL AUDIT RETURNED.** All manual phase boundaries are banked. Human selected Astra Ultra for P3. **ASTRA_HQ247_DELTA_AUDIT_RETURNED_FOR_HQ_REVIEW__NOT_ADOPTED.** Later action requires separate HQ adjudication/commissioning; earlier status paragraphs are historical.
+
+> **HISTORICAL P2 BANK: P2 COMPLETE.** V1–V8 targeted verification, capability matrices and bounded proposals are banked. P0/P1 are preserved; P3 has not started. **STOP_MODEL_SWITCH_TO_ASTRA_FOR_P3.** Human selects Astra before final arbitration. Older phase-status paragraphs below are historical; phase laws remain binding.
 
 > **HISTORICAL P1 BANK: P1 COMPLETE.** Human-selected Astra High completed the HQ249 continuation; P0 remains preserved. See STATE.json, NEXT_OPERATOR.md and phases/P1_ASTRA_HOSTILE_FINDINGS.md. **STOP_MODEL_SWITCH_TO_SOL_FOR_P2.** The older entry-status paragraph immediately below is historical; the phase laws and later manual switches remain binding.
 
