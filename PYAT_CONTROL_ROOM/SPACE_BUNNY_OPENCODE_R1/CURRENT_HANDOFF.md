@@ -1,3 +1,33 @@
+# HQ240 — TWO RETURNS INTAKEN; TWO NEW DOCUMENTARY LANES — 2026-10-07
+
+### RETURNED — F7 TRUSTED DECISION DESIGN
+**RETURN HEAD:** `0bb7cd0e4243c17e4b028b30e16fb73fa42653b8`  
+**DISPOSITION:** `F7_TRUSTED_DECISION_BOUNDARY_DESIGN_COMPLETE__READY_FOR_HQ_ARCHITECTURE_ADJUDICATION`  
+**HQ:** Design I T1 native exact P07 owner/adjudicator and Design II T2 protected end-to-end owner/consumer remain proposals. No architecture/TCB adoption. F7-RR-04G OPEN.
+
+### RETURNED — N10E/C1 ISSUER ARCHAEOLOGY
+**RETURN HEAD:** `641f7d796ec5d8fd82bd4c3bf7f0b9f2402bd205`  
+**DISPOSITION:** `MISSING_COMPETENT_ISSUER__NEW_BOUNDED_AUTHORITY_WARRANT_REQUIRED`  
+**HQ:** no existing accepted C1-AT07 use-context issuer found; R3 unadopted. New bounded issuer right requires separate warrant.
+
+### NEW — NEEDS LAUNCH — F7 T1 NATIVE P07 OWNER / TCB HOSTILE REVIEW
+**AGENT:** Browser/GitHub independent architecture/authority hostile reviewer  
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
+**BRANCH:** `agent/reviewer-pyat-hq240-f7-t1-tcb-native-owner-architecture-r1`  
+**COMMISSION TIP:** `90aa164278fc889968997c194381da5d2f18e570`  
+**COMMISSION:** `WORKER_COMMISSIONS/PYAT-HQ240-F7-T1-TCB-NATIVE-OWNER-ARCHITECTURE-HOSTILE-REVIEW-R1/00_COMMISSION.md`
+
+### NEW — NEEDS LAUNCH — C1-AT07 FIXTURE ISSUER AUTHORITY WARRANT CANDIDATE
+**AGENT:** Browser/GitHub documentary bounded authority-warrant worker  
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
+**BRANCH:** `agent/rabochii-pyat-hq240-n10e-c1-at07-fixture-issuer-authority-warrant-r1`  
+**COMMISSION TIP:** `e7622caa9f0169995c1850adcb172189cb2085ef`  
+**COMMISSION:** `WORKER_COMMISSIONS/PYAT-HQ240-N10E-C1-AT07-FIXTURE-ISSUER-AUTHORITY-WARRANT-R1/00_COMMISSION.md`
+
+**HQ DECISION:** `HQD-2026-10-07-240`. Both may run concurrently. No Space Bunny/native/issuer/R4 implementation yet.
+
+---
+
 # HQ239 — N10E R3 REVIEW RETURNED; TWO LIVE DOCUMENTARY LANES — 2026-10-07
 
 **N10E/C1 HQ237 REVIEW RETURN:** `71d6f77cae4d77caefe22fad4d379c5c840e3f03`. **DISPOSITION:** `C1_OWNER_NATIVE_MODEL_AUTHORITY_R3_PARTIAL__NAMED_DEFECT`. Typed mapping 6/6 and hashes 11/11 pass, but issuer authority and trusted C1/N10E context entrypoint custody are missing. No R3 adoption.
