@@ -1,0 +1,84 @@
+{
+  "schema": "PYAT_HQ247_01_INDEPENDENT_REPAIR_PROOF@1",
+  "commission": "PYAT-HQ247-F7-F09-REPAIR-INDEPENDENT-RUNTIME-REVIEW-R1",
+  "lane": "agent/reviewer-pyat-hq247-f7-f09-repair-independent-runtime-r1",
+  "review_head": "37932e02a3cc2fabba012defb5315ac7cfed5ad6",
+  "frozen_subject": "agent/space-bunny-pyat-hq246-f7-native-ab-memory-boundary-repair-r1 @ f09bc827c1a4d77dd2b51834cd5eeeb8969f5b96",
+  "concurrent_r2_repair": "NOT READ, NOT MERGED, NOT CERTIFIED",
+  "independence": "All probes and measurements below were written and executed by this reviewer. Only the pre-existing lawful F7 fixture _adjudicated_resolver was reused, to build a genuine production relation.",
+  "frozen_blobs": {
+    "stage_a_source": {"path": "rawlsing_next/_p07_native_owner_stage_a.c", "sha256": "12a03d0633661cb2fb57202a6fb0351a18e252cb6fcf2d85439ac9a8b0a23f71", "git_blob": "a1d70d3c21b3433ccb1ab98710ca7adac48408de", "lines": 853},
+    "stage_b_source": {"path": "rawlsing_next/_p07_native_owner_stage_b.c", "sha256": "66f9ad9f0be9a5eaeb83da774f1839818627bec54b3cc5625aa6fd238aed2b4a", "git_blob": "586f859a4a8710738987f92e5b356451e2390fdd", "lines": 1906, "commission_watched_blob_matches": true},
+    "repair_court": {"path": "rawlsing_next/tests/test_p07_native_repair_hostile_court.py", "sha256": "933cc41d7cd8e960098b01b8fa54272f4f5aa56ded43a9de0a8090ccff778bac", "git_blob": "b5e1f01c652811d69f92203ae06f7d60dd93d600"},
+    "committed_binaries": "none"
+  },
+  "independent_build": {
+    "recipe": "clang -shared -fPIC -O2 -Wall -Wextra -Wno-unused-parameter -undefined dynamic_lookup -I<include/python3.11> -o rawlsing_next/_p07_native_owner_stage_<a|b>.cpython-311-darwin.so rawlsing_next/_p07_native_owner_stage_<a|b>.c",
+    "compiler": "Apple clang version 14.0.3 (clang-1403.0.22.14.1)",
+    "governed_interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "python": "3.11.3", "pytest": "9.1.1", "machine": "x86_64 macOS 13.7.8",
+    "warnings": "none under -Wall -Wextra",
+    "stage_a_so_sha256": "1712abb6b60b78c7a3202ae882b974e07a44058afd49a13c5300a684e17c4faf",
+    "stage_b_so_sha256": "44b4e329a5879d71d867f08a2221023aaef391aedd9ded1a38cf75cbb7beccfc",
+    "matches_author": true,
+    "fault_macro_strings_in_normal_binaries": {"stage_a": 0, "stage_b": 0}
+  },
+  "courts": {
+    "stage_a_original": "39 passed",
+    "stage_b_original": "41 passed",
+    "repair_hostile_court": "59 passed",
+    "production_P07": "24 passed",
+    "production_F7": "163 passed",
+    "total": "326 passed",
+    "matches_author_claim": true
+  },
+  "D1_constructor_bounds": {
+    "verdict": "GENUINELY REPAIRED AND INDEPENDENTLY CONFIRMED",
+    "static_confirmation": "StageBOwner_init lines 882/886 use PyList_CheckExact/PyTuple_CheckExact and lines 913/928 take n/m from PySequence_Fast_GET_SIZE of the converted sequence; Stage A lines 307/342 likewise",
+    "independent_reproducer": "reproduction/hq247_d1_oob_probe.py -- reviewer-written list/tuple subclasses with over-reporting, under-reporting, raising and negative __len__, on both owner dimensions",
+    "before_by_author": "Stage A ASAN SEGV exit 134; Stage B out-of-bounds read proven",
+    "after_measured": "every variant (A over/under/tuple/raise/neg; B relations over/under/tuple/raise/neg and authority-snapshots over) is refused with a typed exception and process exit 0; ASAN reports 0",
+    "silent_truncation": "no longer reachable: subclass containers are refused by type before any length is consulted"
+  },
+  "D2_refcount": {
+    "verdict": "CONFIRMED FIXED FOR THE CITED SITES",
+    "stage_a_custody_diagnostic_blocks_per_call": 0.0003,
+    "author_claim": "<0.01 blocks/call",
+    "independent_method": "warm 2000, gc.collect(), gc.disable(), sys.getallocatedblocks() delta over 20000 calls"
+  },
+  "D3_lifecycle": {
+    "verdict": "CONFIRMED FIXED",
+    "stage_a_failed_init_refcount_growth_20k": 0,
+    "stage_b_failed_init_refcount_growth_20k": [0, 0, 0],
+    "note": "the pinned semantic_hash/canonicalize/require_positive refcounts do not grow across 20 000 failing constructions on either module"
+  },
+  "D4_module_init": {
+    "verdict": "SOURCE-INSPECTED, NOT OOM-INJECTED",
+    "source_state": "every PyModule_AddObject return on both modules is now checked",
+    "independent_position": "no reliable OOM injection was performed by this lane either; carried as an unresolved (low-priority) obligation rather than a defect"
+  },
+  "D5_gc_cycles": {
+    "verdict": "CONFIRMED FIXED",
+    "static": "StageBOwnerType.tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HAVE_GC with StageBOwner_traverse/StageBOwner_clear",
+    "independent_probe": "owner and admitted relation are gc-tracked; 300 owner->relation->holder->owner cycles were all collected (0 live owners after gc.collect())"
+  },
+  "D6_registry_and_snapshot_custody": {
+    "verdict": "CONFIRMED FIXED",
+    "stage_a_scalar_registry_42": "REFUSED (TypeError)"
+  },
+  "D7_trusted_seam": {
+    "verdict": "CONFIRMED LOAD-BEARING ON STAGE A",
+    "independent_probe": "a spy trusted_semantic_hash is called once at admission (calls=1) and again at resolve_exact (calls=2)",
+    "stage_b": "a read-only trusted_seam accessor exposes the three pinned identities; the identities are the caller-supplied objects"
+  },
+  "D8_payload_drift": {
+    "verdict": "CONFIRMED (Stage B resolve re-hashes the live projection)",
+    "independent_probe": "an attacker-built stand-in whose projection hash does not match its content_hash is refused at resolve_exact with 'owner custody relation semantic hash mismatch'"
+  },
+  "not_established": {
+    "B2_B3_B4": "still present and still crashing (see 02_...)",
+    "P1": "positive parity still fails (see 02_...)",
+    "T1": "trusted callables/classes are still caller-chosen (see 03_...)",
+    "HQ246_OPEN_001": "Stage B decide() still leaks, measured at 17.0 blocks/call (see 03_...)"
+  }
+}

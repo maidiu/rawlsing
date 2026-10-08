@@ -1,0 +1,55 @@
+{
+  "schema": "PYAT_HQ247_05_FINAL_DISPOSITION@1",
+  "commission": "PYAT-HQ247-F7-F09-REPAIR-INDEPENDENT-RUNTIME-REVIEW-R1",
+  "lane": "agent/reviewer-pyat-hq247-f7-f09-repair-independent-runtime-r1",
+  "review_head": "37932e02a3cc2fabba012defb5315ac7cfed5ad6",
+  "frozen_subject": "agent/space-bunny-pyat-hq246-f7-native-ab-memory-boundary-repair-r1 @ f09bc827c1a4d77dd2b51834cd5eeeb8969f5b96",
+  "concurrent_r2_repair": "NOT READ / NOT MERGED / NOT CERTIFIED",
+  "candidate_reported_disposition": "F7_NATIVE_AB_REPAIR_PARTIAL__NAMED_MEMORY_OR_PARITY_BLOCKER",
+  "disposition": "F7_F09_FROZEN_INDEPENDENT_HOSTILE_BLOCKED__NAMED_DEFECT",
+  "why_blocked": "Reachable native crashes remain on the positive and replay paths (B2/B3/B4), positive decision parity still fails (P1), the trusted callables/classes remain caller-chosen with no provenance (T1), and the named decide() leak is confirmed at ~17 blocks/call.",
+  "independently_confirmed_repairs": {
+    "D1": "exact-container admission + PySequence_Fast_GET_SIZE bounds on both modules and both dimensions; every lie variant refused, exit 0, zero ASAN reports; silent truncation unreachable",
+    "D2": "Stage A custody_diagnostic 0.0003 blocks/call",
+    "D3": "0 refcount growth over 20000 failing inits (A); [0,0,0] (B)",
+    "D5": "owner GC-tracked; 300/300 cycles collected",
+    "D6": "Stage A refuses scalar registry (TypeError)",
+    "D7": "Stage A trusted seam invoked at admission and resolve",
+    "D8": "Stage B projection re-hash refuses an inconsistent stand-in"
+  },
+  "still_open_defects": [
+    {"id": "B2", "site": "stage_b.c:1206", "status": "SIGSEGV exit 139 on the genuine positive path; ASAN PyObject_Call <- validate_positive <- stb_decide"},
+    {"id": "B3", "site": "stage_b.c:1210, :1592", "status": "PyErr_Fetch(NULL) unchanged"},
+    {"id": "B4", "site": "stb_validate_replay -> build_replay_preimage:1249", "status": "SIGSEGV exit 139; ASAN strlen <- PyUnicode_FromString"},
+    {"id": "P1", "site": "admit_relation:663-666", "status": "Python AUTHORIZED vs native DISTINCT_BY_DEFAULT"},
+    {"id": "T1", "site": "StageBOwner constructor", "status": "caller-chosen callables/classes accepted and pinned without provenance"},
+    {"id": "HQ246-OPEN-001", "site": "stage_b.c:1517", "status": "sources = PyList_AsTuple(sources) leaks the list; measured 17.0 blocks/call"}
+  ],
+  "measured_evidence": {
+    "stage_a_courts": "39 passed",
+    "stage_b_parity_courts": "41 passed",
+    "repair_hostile_court": "59 passed",
+    "production": "P07 24, F7 163",
+    "total": "326 passed",
+    "rebuilt_binaries": {"stage_a": "1712abb6b60b78c7a3202ae882b974e07a44058afd49a13c5300a684e17c4faf", "stage_b": "44b4e329a5879d71d867f08a2221023aaef391aedd9ded1a38cf75cbb7beccfc"},
+    "asan": "zero reports on all D1 variants; SEGV on B2/B3/B4"
+  },
+  "proof_limits": {
+    "this_review_is_f09_only": true,
+    "does_not_transfer_to_a_later_repaired_sha": true,
+    "authorizes_production_cutover": false,
+    "closes_f7_rr_04g": false,
+    "four_forgery_or_five_positive_qualified": false,
+    "stage_c_authorized": false,
+    "module_init_oom_injection_performed": false
+  },
+  "what_this_lane_did_not_do": [
+    "no repair of any native source or test",
+    "no reading, cherry-picking, rebasing or merging of the concurrent HQ247 R2 branch",
+    "no production, control or other-worktree mutation",
+    "no binary commit",
+    "no raw survey access",
+    "no self-adoption"
+  ],
+  "one_line": "f09 genuinely repairs the constructor out-of-bounds boundary and several leaks, but the frozen candidate still crashes on the positive and replay paths, still fails positive parity, still trusts caller-chosen callbacks and still leaks ~17 blocks per decide() call, so it is blocked on named defects."
+}

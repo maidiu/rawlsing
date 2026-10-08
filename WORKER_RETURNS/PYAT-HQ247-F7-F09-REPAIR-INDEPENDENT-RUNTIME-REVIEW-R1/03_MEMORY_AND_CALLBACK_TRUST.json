@@ -1,0 +1,53 @@
+{
+  "schema": "PYAT_HQ247_03_MEMORY_AND_CALLBACK_TRUST@1",
+  "decide_leak_HQ246_OPEN_001": {
+    "status": "INDEPENDENTLY CONFIRMED AND SHARPENED",
+    "author_claim": "~15 allocated blocks per decide() call, localized to the post-loop source-ref ordering block but not isolated further",
+    "independent_measurement": {
+      "method": "warm 3000 calls, gc.collect(), gc.disable(), sys.getallocatedblocks() delta per call; non-constant trusted hash so the request never enters the crashing positive path",
+      "two_sources_U_A_U_B": 17.0006,
+      "two_sources_second_run": 17.0006,
+      "two_sources_100k_run": 17.00012,
+      "one_source_ordering_block_not_reached": 0.0008,
+      "two_identical_sources_dedupe_path": 12.00065,
+      "linear": true,
+      "conclusion": "the leak is exactly ~17.0 blocks per call and is fully confined to the source-ref ordering block; the author's ~15 is confirmed in kind and slightly understated in magnitude"
+    },
+    "concrete_defect_identified": {
+      "site": "rawlsing_next/_p07_native_owner_stage_b.c line 1517",
+      "code": "sources = PyList_AsTuple(sources);",
+      "defect": "PyList_AsTuple returns a NEW reference; the previous list referenced by `sources` is overwritten without Py_DECREF, so the list (and its ob_item array) leaks once per decide() call that reaches the ordering block",
+      "why_this_is_the_site": "the one-source path fails at cnt<2 BEFORE the ordering block and measures 0.0008 blocks/call, while the two-source path measures 17.0; the dedupe path (one surviving unique source) measures 12.0",
+      "correct_pattern_already_used_elsewhere": "admit_relation lines 655-657 do it correctly: tup = PyList_AsTuple(srcs); Py_DECREF(srcs); srcs = tup;",
+      "this_lane_performed_no_repair": true
+    }
+  },
+  "other_memory_measurements": {
+    "stage_a_custody_diagnostic": {"blocks_per_call": 0.0003, "verdict": "author D2 fix confirmed"},
+    "stage_a_failed_init_refcount_growth_20k": 0,
+    "stage_b_failed_init_refcount_growth_20k": [0, 0, 0],
+    "stage_b_resolve_exact_segments": [0.10805, 0.12645, 0.02106, 0.02182],
+    "stage_b_resolve_exact_verdict": "sub-linear residual that decays with N (0.13 -> 0.02 blocks/call) = interpreter lazy state, NOT a sustained leak; the author's 0.000 claim is not falsified as a leak",
+    "gc": {"owner_gc_tracked": true, "cycles_collected": "300/300", "verdict": "author D5 fix confirmed"}
+  },
+  "callback_and_construction_trust": {
+    "T1_status": "STILL OPEN (structural)",
+    "independent_probe": "reproduction/hq247_positive_and_tcb_probe.py t1_attacker_tcb",
+    "observed": "an owner constructed with entirely attacker-chosen relation class, snapshot class, semantic_hash, canonicalize and require_positive_authority seals successfully (sealed=True, counts=(1,1), 64-hex custody_hash) and exposes its pinned identities through the new read-only trusted_seam accessor",
+    "improvement_since_the_frozen_stage_b": "resolve_exact now refuses the inconsistent attacker stand-in with 'owner custody relation semantic hash mismatch' because the D8 projection re-hash is genuinely enforced",
+    "what_is_ASSUMED": "the three callables supplied at construction are the accepted pre553 implementations -- a harness responsibility",
+    "what_is_DEMONSTRATED": "once pinned, the identities cannot be re-bound from Python, and no live registry or Python owner is consulted for a positive",
+    "what_is_NOT_provided": "any provenance or authentication of the caller-chosen callables/classes. A production-owned sealed construction ingress is still required before adoption.",
+    "verdict": "acceptable ONLY as a TCB-assumed test seam inside the quarantined harness"
+  },
+  "ownership_of_post_loop_sorting": {
+    "inspected": "the source-ref ordering block copies each ref key and ref dict, sorts by key, dedupes adjacent equal keys and converts to a tuple",
+    "ownership_defect": "the final PyList_AsTuple reassignment loses the list reference (see concrete_defect_identified)",
+    "no_corruption_observed": "decision correctness, replay identity and the byte-exact custody hash are unaffected; the leak is bounded and per-call"
+  },
+  "verdict": {
+    "named_leak_confirmed": true,
+    "named_leak_root_cause_identified": true,
+    "callback_trust_gate_still_required": true
+  }
+}

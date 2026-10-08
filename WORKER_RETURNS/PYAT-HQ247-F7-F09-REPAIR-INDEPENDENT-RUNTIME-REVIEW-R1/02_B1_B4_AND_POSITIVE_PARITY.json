@@ -1,0 +1,49 @@
+{
+  "schema": "PYAT_HQ247_02_B1_B4_AND_POSITIVE_PARITY@1",
+  "note": "The commission labels the constructor bounds defect B1 and the positive/replay defects B2/B3/B4/P1. This artifact records the independent probes against the frozen f09 candidate.",
+  "B1_constructor_oob": {
+    "status": "REPAIRED (see 01_INDEPENDENT_REPAIR_PROOF.json)",
+    "measured": "all list/tuple-subclass lie variants refused with exit 0 and zero ASAN reports on both modules and both owner dimensions"
+  },
+  "B2_trusted_authority_call_arguments": {
+    "status": "STILL PRESENT -- BLOCKING",
+    "static_site": "rawlsing_next/_p07_native_owner_stage_b.c line 1206: res = PyObject_Call(self->t_require_positive, S->snap, kw); (unchanged from the frozen Stage B base)",
+    "defect": "PyObject_Call's second argument must be a tuple (or NULL); S->snap is an AuthoritySnapshot object",
+    "reproducer": "reproduction/hq247_positive_and_tcb_probe.py p1_parity_exact_key -- a GENUINE production relation with the production callables, decide() called with effective_scope='DISTINCT_BY_DEFAULT' (the value the sealed object key was built from)",
+    "observed": "SIGSEGV, process exit 139",
+    "asan": "SEGV (WRITE) in PyObject_Call+0x5ac, called from validate_positive (validate_positive+0x848 in the .so) <- stb_decide+0x1fa8 <- cfunction_call"
+  },
+  "B3_PyErr_Fetch_null_traceback": {
+    "status": "STILL PRESENT -- BLOCKING",
+    "static_sites": ["line 1210 inside validate_positive", "line 1592 inside stb_decide"],
+    "defect": "PyErr_Fetch(&pt, &pv, NULL) writes through p_traceback unconditionally on CPython 3.11",
+    "reachability": "any validate_positive failure and the subsequent negative-ladder capture",
+    "observed": "part of the same forced-positive crash; the two sites remain textually identical to the frozen Stage B base"
+  },
+  "B4_validate_decision_replay_null_strlen": {
+    "status": "STILL PRESENT -- BLOCKING",
+    "static_sites": ["stb_validate_replay lines 1752-1755 pass PyUnicode_AsUTF8(...) results (NULL for a non-str field) into build_replay_preimage", "build_replay_preimage line 1249 PyUnicode_FromString(relation_kind)"],
+    "reproducer": "reproduction/hq247_positive_and_tcb_probe.py b4_replay_nonstr -- obtain a plain (no-candidate) decision dict, set d['relation_kind'] = 123, call owner.validate_decision_replay(d)",
+    "observed": "SIGSEGV, process exit 139",
+    "asan": "SEGV (READ) in strlen <- PyUnicode_FromString <- build_replay_preimage+0xff"
+  },
+  "P1_positive_decision_parity": {
+    "status": "STILL FAILS -- BLOCKING",
+    "reproducer": "reproduction/hq247_positive_and_tcb_probe.py p1_parity -- genuine production relation and production callables",
+    "python_owner_decide": "AUTHORIZED (authorized=True)",
+    "native_owner_decide": "DISTINCT_BY_DEFAULT (authorized=False), reason 'no exact positive relation receipt for this kind/scope/use'",
+    "parity_holds": false,
+    "root_cause_unchanged": "admit_relation lines 663-666 still seal the relation object key from hardcoded effective_scope = DEFAULT_RELATION_STATE ('DISTINCT_BY_DEFAULT') and directionality = 'SYMMETRIC', ignoring the relation's real effective_scope ('EXACT_BOUND_UNIVERSE_PAIR') and directionality",
+    "consequence": "native decide cannot select the genuine candidate for the real corpus; forcing the sealed parameters reaches the B2/B3 crash instead of a decision"
+  },
+  "positive_path_reachability_summary": {
+    "AUTHORIZED": "unreachable",
+    "validate_positive_derived_states (UNKNOWN_AUTHORITY/OUT_OF_SCOPE for an AUTHORIZED-but-nonpositive candidate)": "unreachable (crash)",
+    "multi_positive_CONFLICTING_AUTHORITY": "unreachable and unexercised",
+    "actually_reachable_without_crashing": ["DISTINCT_BY_DEFAULT", "UNKNOWN_OVERLAP", "PROVENANCE_ONLY", "ALIAS_ONLY", "the non-AUTHORIZED candidate decision values (DENIED/EXPIRED_OR_STALE/NOT_APPLICABLE/UNKNOWN_AUTHORITY/OUT_OF_SCOPE)"]
+  },
+  "verdict": {
+    "B2_open": true, "B3_open": true, "B4_open": true, "P1_open": true,
+    "frozen_f09_is_blocked_on_named_memory_and_parity_defects": true
+  }
+}

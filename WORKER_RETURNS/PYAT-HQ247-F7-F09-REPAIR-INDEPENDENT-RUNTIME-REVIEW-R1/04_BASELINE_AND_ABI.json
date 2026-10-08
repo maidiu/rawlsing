@@ -1,0 +1,64 @@
+{
+  "schema": "PYAT_HQ247_04_BASELINE_AND_ABI@1",
+  "abi_and_source_provenance": {
+    "frozen_stage_b_blob": "586f859a4a8710738987f92e5b356451e2390fdd (matches HQ-observed blob)",
+    "frozen_stage_a_blob": "a1d70d3c21b3433ccb1ab98710ca7adac48408de",
+    "stage_a_source_sha256": "12a03d0633661cb2fb57202a6fb0351a18e252cb6fcf2d85439ac9a8b0a23f71",
+    "stage_b_source_sha256": "66f9ad9f0be9a5eaeb83da774f1839818627bec54b3cc5625aa6fd238aed2b4a",
+    "repair_court_sha256": "933cc41d7cd8e960098b01b8fa54272f4f5aa56ded43a9de0a8090ccff778bac",
+    "rebuilt_so": {
+      "stage_a": "1712abb6b60b78c7a3202ae882b974e07a44058afd49a13c5300a684e17c4faf",
+      "stage_b": "44b4e329a5879d71d867f08a2221023aaef391aedd9ded1a38cf75cbb7beccfc"
+    },
+    "matches_author": true,
+    "committed_binaries": "none",
+    "governed_interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "abi": "CPython 3.11.3, cpython-311-darwin, x86_64 macOS 13.7.8"
+  },
+  "test_accounting": {
+    "stage_a_original": 39,
+    "stage_b_original": 41,
+    "repair_hostile_court": 59,
+    "production_p07": 24,
+    "production_f7": 163,
+    "total_passed": 326,
+    "collection_with_native_files": "2882 collected, 9 errors",
+    "collection_without_native_files": "2743 collected, 9 errors",
+    "collection_delta": "+139 tests (39+41+59), +0 errors"
+  },
+  "baseline_discrimination": {
+    "run_A_author_exact": {
+      "command": "<governed python3.11> -m pytest rawlsing_next/tests -q -p no:randomly --continue-on-collection-errors <nine environmental exclusions> --ignore=<stage_a court> --ignore=<stage_b court> --ignore=<repair court>",
+      "summary_line": "45 failed, 2691 passed, 55 warnings, 7 errors, 28 subtests passed in 1395.23s (0:23:15)",
+      "matches_hq242_headline_counts": true,
+      "normalization_raw_stripped_sorted": {"items": 54, "sha256": "278854ee94fadfd57284a572441522fb56105081f89af431b17ec2e556ace6a9"},
+      "normalization_deduped_node_ids_sorted": {"items": 52, "sha256": "ab74b05dabc5b99376b2d3ed8c1de6e5845f870fd4c68dd49dc81f488bb2a44e"},
+      "author_claimed_digest": "ab74b05dabc5b99376b2d3ed8c1de6e5845f870fd4c68dd49dc81f488bb2a44e",
+      "author_digest_reproduced": true
+    },
+    "run_B_nine_exclusion_native_tests_included": {
+      "command": "<governed python3.11> -m pytest rawlsing_next/tests -q <nine environmental exclusions>",
+      "summary_line": "45 failed, 2830 passed, 55 warnings, 7 errors, 28 subtests passed in 1359.24s (0:22:39)",
+      "passed_delta_vs_run_A": 139,
+      "passed_delta_equals_stage_a_39_plus_stage_b_41_plus_repair_59": true,
+      "normalization_raw_stripped_sorted": {"items": 54, "sha256": "278854ee94fadfd57284a572441522fb56105081f89af431b17ec2e556ace6a9"},
+      "normalization_deduped_node_ids_sorted": {"items": 52, "sha256": "ab74b05dabc5b99376b2d3ed8c1de6e5845f870fd4c68dd49dc81f488bb2a44e"}
+    },
+    "reconciliation": {
+      "finding": "The two apparently conflicting digests are the SAME run under two normalisations. The raw stripped-line set has 54 items and hashes to 278854ee...; the deduped node-id set has 52 items and hashes to ab74b05d....",
+      "the_two_extra_items": "exactly the two lines leaked from nested subprocess pytest runs echoed by two unrelated failing tests: a duplicate 'FAILED ...test_29_exact_relevant_blobs_are_frozen_and_w2_untouched' line and an 'ERROR: file or directory not found: ...test_gt34_obl056_repaired_input_authority_acceptance_hostile_audit.py' line",
+      "accepted_278854ee_reproduced": true,
+      "author_ab74b05d_reproduced": true,
+      "author_residual_two_item_mystery": "RESOLVED -- it is a normalisation-convention difference, not a six-item or two-item failure-set difference",
+      "native_modules_in_failures_or_errors": 0,
+      "repairs_introduced_regression": false
+    },
+    "true_evidence_ceiling": "machine-local governed-interpreter evidence; no optional dependency was installed; the nine optional-dependency collection errors remain real and were excluded per the accepted convention"
+  },
+  "fail_capability": {
+    "macros": ["STAGE_A_FAULT_INJECT", "STAGE_B_FAULT_INJECT_RESOLVE"],
+    "present_in_normal_binaries": false,
+    "author_claim": "Stage A diagnostic compiled out; Stage B rehash red control available",
+    "independent_position": "macro strings are absent from both normal binaries (checked with strings); this lane did not additionally rebuild the fault variants because the D1/D2/D3/D5 repairs were verified directly rather than through the fault hook"
+  }
+}

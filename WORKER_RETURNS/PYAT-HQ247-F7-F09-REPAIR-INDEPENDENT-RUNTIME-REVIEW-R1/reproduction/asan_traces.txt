@@ -1,0 +1,24 @@
+### ASAN D1 A_rel_over (expect no report)
+HQ247JSON {"exc": "TypeError: stage A admission requires an EXACT list or tuple (not a subclass) of relations, so no overridden __len__ can ", "exc_module": "builtins", "mode": "A_rel_over", "result": "REFUSED"}
+
+### ASAN D1 B_rel_over (expect no report)
+HQ247JSON {"exc": "SourceRelationIntegrityError: stage B admission requires an EXACT list or tuple (not a subclass) of relations, so no overridden __len__ can ", "exc_module": "rawlsing_next._p07_native_owner_stage_b", "mode": "B_rel_over", "result": "REFUSED"}
+
+### ASAN D1 B_snap_over (expect no report)
+HQ247JSON {"exc": "SourceRelationIntegrityError: stage B admission requires an EXACT list or tuple (not a subclass) of authority snapshots, so no overridden __", "exc_module": "rawlsing_next._p07_native_owner_stage_b", "mode": "B_snap_over", "result": "REFUSED"}
+
+### ASAN P1 forced positive key (B2/B3)
+==74496==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x000104e228dc bp 0x7ff7bd6b6d30 sp 0x7ff7bd6b6ce0 T0)
+    #0 0x104e228dc in PyObject_Call+0x5ac (libpython3.11.dylib:x86_64+0x5d98dc) (BuildId: 4c60722e05a53fffb4eb0987c1513d31240000001000000000090a0000010b00)
+    #1 0x10480d768 in validate_positive+0x848 (_p07_native_owner_stage_b.cpython-311-darwin.so:x86_64+0xd768) (BuildId: 3f330188479c386890e70d91088d0b3732000000200000000100000000000d00)
+    #2 0x104808918 in stb_decide+0x1fa8 (_p07_native_owner_stage_b.cpython-311-darwin.so:x86_64+0x8918) (BuildId: 3f330188479c386890e70d91088d0b3732000000200000000100000000000d00)
+    #3 0x104e83c27 in cfunction_call+0x37 (libpython3.11.dylib:x86_64+0x63ac27) (BuildId: 4c60722e05a53fffb4eb0987c1513d31240000001000000000090a0000010b00)
+SUMMARY: AddressSanitizer: SEGV (libpython3.11.dylib:x86_64+0x5d98dc) (BuildId: 4c60722e05a53fffb4eb0987c1513d31240000001000000000090a0000010b00) in PyObject_Call+0x5ac
+
+### ASAN B4 validate_decision_replay non-str
+==74501==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7ff808cf9f12 bp 0x7ff7b94f0910 sp 0x7ff7b94f0910 T0)
+    #0 0x7ff808cf9f12 in _platform_strlen+0x12 (libsystem_platform.dylib:x86_64+0xf12) (BuildId: 9ae2c3dcb88b3c82a0bd918275fe7661240000001000000000070d0000070d00)
+    #1 0x106db94c7 in wrap_strlen+0x37 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x194c7) (BuildId: 756bb7515781379f84412f22c4274ffd2400000010000000000a0a0000030d00)
+    #2 0x1090b2738 in PyUnicode_FromString+0x18 (libpython3.11.dylib:x86_64+0x6a3738) (BuildId: 4c60722e05a53fffb4eb0987c1513d31240000001000000000090a0000010b00)
+    #3 0x10af52e8f in build_replay_preimage+0xff (_p07_native_owner_stage_b.cpython-311-darwin.so:x86_64+0xde8f) (BuildId: 3f330188479c386890e70d91088d0b3732000000200000000100000000000d00)
+SUMMARY: AddressSanitizer: SEGV (libsystem_platform.dylib:x86_64+0xf12) (BuildId: 9ae2c3dcb88b3c82a0bd918275fe7661240000001000000000070d0000070d00) in _platform_strlen+0x12
