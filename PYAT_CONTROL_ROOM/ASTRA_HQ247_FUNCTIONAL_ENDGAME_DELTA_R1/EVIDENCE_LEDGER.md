@@ -1,4 +1,4 @@
-# Evidence ledger — P0 bank
+# Evidence ledger — P0 bank plus P1 findings
 
 **Grades:** Git binding/lineage, inherited HQ adoption, submitted worker claim, bounded independent static inspection, and UNVERIFIED runtime/estate are distinct. No new runtime qualification. All findings are documentary audit evidence, not HQ adoption.
 
@@ -113,3 +113,20 @@
 - **Disconfirmation:** New integrated exact tree, valid selected-runtime assembly receipt, or contrary tree read.
 
 Exact source paths/blobs and reading limits: `phases/P0_SOURCE_INDEX.json`. Full P1 findings/final prescriptions not yet produced.
+
+
+## P1 evidence and currentness
+
+P0 entries remain historical. HQ249 supersedes P0-E01/E02 currentness, not their as-of observations. All three returns are now adjudicated at restricted grain. P1_SOURCE_INDEX.json binds exact new sources and read spans. H1–H9 refer to phases/P1_ASTRA_HOSTILE_FINDINGS.md, which records counterevidence and falsifiers.
+
+| ID | Claim / verdict | Evidence and limit | Disconfirmation / next proof |
+|---|---|---|---|
+| P1-E01 | HQ249 gate satisfied; CONFIRMED | Six packet checks; CURRENT/manifest read; human continuation 06. Technical holds retained. | New conflicting sealed checkpoint or failed binding. |
+| P1-E02 | R1 provider has explicit scalar boundary; STATIC CONFIRMED | provider 23167aa…479–487/574–583; richer composition 604c8d…1008–1065. H1. Not a local AT17 regression. | Adopted alternate rich route or lossless lawful compound binding with demanded output. |
+| P1-E03 | Non-SUPPORTED facts do not reach F8 through inspected composition; STATIC CONFIRMED | composition 1119–1135; evaluator 62e5ec…422–429 supports typed empty/noncomparable; provider test f776cc…639–680 is substituted refusal. H2. | Existing actual null-product consumer route; exact ZERO_SUPPORT classification before any mapping. |
+| P1-E04 | F2–F4 have substantive positive test paths; CONFIRMED AT TEST-SOURCE/INHERITED GRAIN | c8a83d…1205–1224,1325–1350,1519–1622,1728–1802. H4; not newly run. | Exact runtime or downstream release loses required information. |
+| P1-E05 | Native protected edge is conditionally selected by differing universe keys; STATIC CONFIRMED | R3 temporal 6f6b46…945/1066–1149. H5. Not an authority bypass or same-wave theorem. | Actual selected source/operation closure establishes or eliminates this dependency. |
+| P1-E06 | AT07 issuer warrant is source-free and bounded; DOCUMENTARY CONFIRMED | HQ247 adoption allowed_scope and unissued fields; HQ249 holds. H6. Local topology conclusion not universalized. | New broader adopted authority or demonstrated universal required consumer dependency. |
+| P1-E07 | World source admission/context/release do not alone establish world-conditioned service; SUPPORTED BOUNDED INFERENCE | HQ203 21c3fd…; HQ235 802877…; binder 4ba00b…; applicability 3e40ca…; I4 4a8e27…. H7. No global absence claim. | Existing exact current world-operation positive receipt with relevant authority. |
+| P1-E08 | Minimum empirical and 35-wave acceptance must remain separate; AUTHORITY CONFIRMED / MINIMUM DESIGN PROPOSED | HQ125 393af1…289–347; HQ216 e67401…122–209. H8. No survey values or N/A cells fabricated. | Omitted mandatory function, unsupported minimum source selection or failed required estate cell. |
+| P1-E09 | Global infrastructure-first serialization is unproved; SCHEDULING INFERENCE | Three reverse slices, H3/H5/H6/H9, HQ249 cutoff. Not quantified speedup or control retirement. | Exact demanded consumer has mandatory global dependency and no independent productive work. |

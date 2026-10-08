@@ -1,4 +1,21 @@
-# F1–F8 capability matrix — P0 seed
+# F1–F8 capability matrix — P1 assessment
+
+Current baseline: HQ249 at `a3d44f554e4e4fa01223679035599019ae2de527`. P1 adds bounded static/hostile assessment; no runtime execution or full gate adoption. Historical P0 dimensions below remain explicitly P0 evidence. JSON contains both. Detailed three-route proofs are in phases/P1_REVERSE_SERVICE_SLICES.md.
+
+| Gate | P1 assessment | First remaining proof obligation | Evidence |
+|---|---|---|---|
+| F1 | Scoped accepted substrate and retained GT2 evidence; no 35-wave qualification. | Bind the selected real-source capability/authority cells and exact runtime assembly; do not count fixture occupancy as estate. | H8; reverse slices A–C; P0-E06/E10 |
+| F2 | Real C1 producer-to-consumer path and nontrivial positive tests exist. | Verify requested position/attitude directions through chosen release/service route; preserve denominators and uncertainty. | H1/H4; composition 1008–1135; higher-order 1205–1224 |
+| F3 | Inspected tests preserve 10/8/2 minority branches and depth-two lineage to consumer. | Verify whole demanded rich release/replay route and selective invalidation; scalar wrapper is not broad fork coverage. | H1/H4; higher-order 1325–1350,1519–1622 |
+| F4 | Same-respondent co-travel and XOR joint signal are actual test obligations; S14 absence does not erase empirical product. | Verify component order/full joint morphology and rich final consumer; no semantic interpretation inferred. | H4; higher-order 1205–1224,1728–1802 |
+| F5 | HQ235 adopts one GT2 local CONTEXT; full N6/world remains unproved. | Reuse accepted local witness, bind demanded additional structural meaning and consumer only; no default V555 reopen. | H7/H9; HQ235 43–64; P0-E10 |
+| F6 | Source-indexed coexistence is distinct from pooling; applicability/binder do not compose structural fields. | Prove at least the demanded lawful distinct-source contributions in coherent served response; no universal container assumption. | H7/H8; HQ203 31–41,92–100; applicability 684–692 |
+| F7 | Functional temporal and native security labels differ. Candidate P07 dependency occurs for differing exact universe keys. | Bind actual selected waves, authority, candidate assembly and structural temporal consumer; never relabel waves to avoid security hold. | H5; R3 temporal 945,1066–1149; slice C |
+| F8 | Exact empirical consumer and source-scope binder exist. R1 scalar provider and absent operational issuer do not prove progressive world service. | Verify cumulative conditioning, null-product route, actual world operation/current consumer and exact authority; issuer alone is insufficient. | H1/H2/H6/H7; slices A/B |
+
+No row is declared fully complete. Local acceptance, integrated realization, estate occupancy and PRE-V3 completion remain separate.
+
+## Preserved P0 seed
 
 **Status:** documentary seed for P1 challenge, not a completion verdict. Current control and exact source identities are in `phases/P0_SOURCE_INDEX.json`. P0 ran no pipeline/native/source tests. Every reported test result is inherited HQ or worker evidence.
 
