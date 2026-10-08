@@ -1,3 +1,33 @@
+# HQ241 FRONTIER — TWO RETURNS INTAKEN; TWO NEW DOCUMENTARY LANES — 2026-10-07
+
+### RETURNED — F7 T1 NATIVE P07 OWNER HOSTILE REVIEW
+**HEAD:** `0255781f24b670dd3365e3ce7a1820276c8ad376`
+**DISPOSITION:** `F7_T1_TCB_NATIVE_OWNER_ARCHITECTURE_PARTIAL__NAMED_DEFECT`
+**BLOCK:** actual `_authenticated_source_relation_decide` alias mutation and authentic final consumer not adjudicated; no T1/T2 or native warrant adoption.
+
+### NEW — NEEDS LAUNCH — F7 ALIAS TCB / TERMINAL RELIANCE CENSUS
+**AGENT:** Browser/GitHub documentary code and authority archaeologist
+**MODEL:** **GPT-5.6 Sol High**
+**BRANCH:** `agent/rabochii-pyat-hq241-f7-alias-tcb-reliance-census-r1`
+**COMMISSION TIP:** `2862dbffb9ee78c5572e7894424d4de459e7c28e`
+**COMMISSION:** `WORKER_COMMISSIONS/PYAT-HQ241-F7-ALIAS-TCB-TERMINAL-RELIANCE-CENSUS-R1/00_COMMISSION.md`
+
+### RETURNED — N10E/C1 AT07 ISSUER WARRANT CANDIDATE
+**HEAD:** `3c6cfa0d29e10c1e2654e5fe22b0b62a0db891b9`
+**DISPOSITION:** `C1_AT07_FIXTURE_ISSUER_WARRANT_CANDIDATE_COMPLETE__READY_FOR_HOSTILE_REVIEW`
+**STATUS:** PROPOSED_NOT_ADOPTED; no issuer credential, root, positive warrant, R4 model authority or implementation.
+
+### NEW — NEEDS LAUNCH — N10E/C1 AT07 ISSUER WARRANT HOSTILE REVIEW
+**AGENT:** Browser/GitHub independent authority hostile reviewer
+**MODEL:** **GPT-5.6 Sol High**
+**BRANCH:** `agent/reviewer-pyat-hq241-n10e-c1-at07-fixture-issuer-warrant-r1`
+**COMMISSION TIP:** `09f7a2a6c9c89791e8ec9639fa69c319fcef914c`
+**COMMISSION:** `WORKER_COMMISSIONS/PYAT-HQ241-N10E-C1-AT07-FIXTURE-ISSUER-WARRANT-HOSTILE-REVIEW-R1/00_COMMISSION.md`
+
+**HQ DECISION:** `HQD-2026-10-07-241`. Run both independently. No production, TCB, issuer or model-rule authority adopted.
+
+---
+
 # HQ240 — TWO RETURNS INTAKEN; TWO NEW DOCUMENTARY LANES — 2026-10-07
 
 ### RETURNED — F7 TRUSTED DECISION DESIGN
