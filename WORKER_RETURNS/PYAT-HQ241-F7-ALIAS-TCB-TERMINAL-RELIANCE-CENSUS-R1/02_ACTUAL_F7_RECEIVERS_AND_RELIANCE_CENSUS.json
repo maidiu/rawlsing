@@ -1,0 +1,114 @@
+{
+  "schema": "PYAT_HQ241_ACTUAL_F7_RECEIVERS_AND_RELIANCE_CENSUS@1",
+  "status": "COMPLETE_BOUNDED_PINNED_STATIC_PYTHON_PACKAGE_CENSUS",
+  "base": "0255781f24b670dd3365e3ce7a1820276c8ad376",
+  "tree": {
+    "url": "https://api.github.com/repos/maidiu/rawlsing/git/trees/0255781f24b670dd3365e3ce7a1820276c8ad376?recursive=1",
+    "truncated": false,
+    "entries": 8393,
+    "non_test_rawlsing_next_python_files_scanned": 136,
+    "tests_in_package": 164,
+    "selected_test_files_scanned": 8
+  },
+  "search_procedure": {
+    "selection": "tree blobs under rawlsing_next/ with .py suffix, excluding /tests/; exact pinned fetch of each, split lines, word-boundary regex",
+    "patterns": [
+      "pre553_temporal_comparability",
+      "TemporalRelationReceipt",
+      "compare_temporal_anchors",
+      "_authenticated_source_relation_decide",
+      "SourceRelationResolver",
+      "authenticated_source_relation_decision",
+      "source_relation_resolver",
+      "validate_relation_decision_replay_identity"
+    ],
+    "fetch_failures": 0
+  },
+  "production_symbol_matches": [
+    {
+      "path": "rawlsing_next/pre553_source_relations.py",
+      "blob": "8053d30d306a3654ebf563043088311ff390bb2b",
+      "role": "P07 owner and direct internal operation guards; not an F7 receipt receiver",
+      "locations": [
+        "nested SourceRelationResolver class :1004-1266",
+        "authenticated_source_relation_decision :1262",
+        "guard_sample_pooling :1309",
+        "guard_estimand_composition :1352",
+        "guard_backfill :1395",
+        "guard_i03_authorized_composite_query :1479",
+        "execute_i03_composite_query_guarded :1610"
+      ]
+    },
+    {
+      "path": "rawlsing_next/pre553_temporal_comparability.py",
+      "blob": "6f6b462b1cdef54d7989f15452473383c1661594",
+      "role": "F7 receipt producer and actual P07 caller",
+      "locations": [
+        "P07 class/callable/replay aliases :244-252",
+        "TemporalRelationReceipt :742-795",
+        "compare_temporal_anchors :836-1493",
+        "cross universe P07 alias call :1110",
+        "receipt return :1470",
+        "__all__ :1585-1586"
+      ]
+    }
+  ],
+  "production_nonmatch_count": 134,
+  "example_nonmatching_production": [
+    "rawlsing_next/m1_admitted_field_forge_relation_v554_ingress.py",
+    "rawlsing_next/m1_temporal_v554_admission_dedup.py",
+    "rawlsing_next/m2_v555_atomic_route.py",
+    "rawlsing_next/m3_v556_higher_order_structural.py",
+    "rawlsing_next/m4_m1_evaluation_binding.py",
+    "rawlsing_next/m4_v557_v558_publication_repository.py",
+    "rawlsing_next/m5_runtime_rsc_peer_prior.py",
+    "rawlsing_next/m6_actor_safe_expression.py",
+    "rawlsing_next/objective_consumer_bounded_evidence.py",
+    "rawlsing_next/field_forge_conditional_support.py",
+    "rawlsing_next/prev3_objective_position_v557_v558_publication.py",
+    "rawlsing_next/v3_adp010_oee_executor.py"
+  ],
+  "test_only": [
+    {
+      "path": "rawlsing_next/tests/test_pre553_temporal_comparability.py",
+      "blob": "8a82bd5905d266c1d500b1bf2bdcb01ea948efd6",
+      "role": "imports F7 at :35-54 and invokes compare_temporal_anchors directly in test fixtures and positive/negative courts"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_source_relations.py",
+      "blob": "2487ed757c0254e7227cf43664abc6ae08f1dfb3",
+      "role": "P07 resolver constructors and direct guard courts"
+    },
+    {
+      "paths": [
+        "rawlsing_next/tests/test_m1_admitted_field_forge_relation_v554_ingress.py",
+        "rawlsing_next/tests/test_m1_temporal_v554_admission_dedup.py",
+        "rawlsing_next/tests/test_pre553_source_equivalence.py",
+        "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py",
+        "rawlsing_next/tests/test_pre553_structural_admission.py",
+        "rawlsing_next/tests/test_pre553_empirical_objects_authority.py"
+      ],
+      "exact_symbol_matches": 0
+    }
+  ],
+  "earlier_independent_census": {
+    "path": "WORKER_RETURNS/PYAT-HQ225-F7-RESOLVER-AUTHENTICITY-REPAIR-R1/01_PRODUCTION_RESOLVER_CALLSITE_CENSUS.json",
+    "blob": "e12e4fab046880548492b53c8ffd6a53f3a65ac3",
+    "conclusion": "P07 owner module + F7 consumer; no legitimate production subclass or wrapper"
+  },
+  "actual_reliance": {
+    "separate_production_F7_importer_found": false,
+    "positive_acceptance_sink_found": false,
+    "observed_F7_terminal": "module-local TemporalRelationReceipt returned from compare_temporal_anchors; not separately issuer-authenticated",
+    "actual_trusted_final_consumer": "NOT_IDENTIFIED_AT_PINNED_PRODUCTION_PACKAGE_GRAIN",
+    "HQ210": "no public family registration or F8/actor consumption authorized",
+    "no_new_sinks_invented": true
+  },
+  "negative_limitations": [
+    "This is exhaustive only for exact eight direct symbols in 136 pinned non-test rawlsing_next .py files.",
+    "Not an exhaustive content search of 164 tests or ~403 outside-package Python scripts, old data/ddm code copies or cross-branch files.",
+    "Dynamic importlib/getattr, generated code, external plugin consumers and runtime reflection cannot be excluded by static word-boundary search.",
+    "No module/runtime execution was performed; no claim of absolutely no possible receiver."
+  ],
+  "security_statement": "Present T1 claim can only end at authentic P07 owner decision and trustworthy module-local F7 evaluation, not hypothetical end-to-end downstream reliance."
+}
