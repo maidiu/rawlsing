@@ -1,3 +1,23 @@
+# HQ248 — F7 R2 REPAIR PARTIAL + CONCRETE REFCOUNT LEAK; F09 HOSTILE BLOCKED; N10E C1 PLACEMENT PARTIAL — 2026-10-08
+
+**DECISION:** HQD-2026-10-08-248. All three HQ247 returns independently checked against exact commission tips and allowed terrain, then adjudicated. **No F7 native security adoption, no operational issuer/root.** Astra HQ247 endgame audit is **PARKED — NOT LAUNCHED** pending operator choice after adjudication.
+
+**F7 R2 partial**, Space Bunny Max return `c2c0ab7335a3bcfeabb4297139378e3e657cd432`: reported genuine native `AUTHORIZED` parity and multi-positive conflict; B1–B4/P1 repairs, 397 local tests, but unqualified independent R2, ~12–15 blocks/decide() leak and unbuilt T1 production-owned sealed constructor. HQ directly identified `HQ248-F7-REFCOUNT-001` in Stage B C blob `fb5ed13af78672b9d9870b3132787a29d44b928a`: `PyList_AsTuple(ordered)` **does not consume** owned ordered list and code fails to DECREF it. Likely leak cause, NOT runtime repaired or proven sole cause. **F7-RR-04G OPEN**.
+
+**INDEPENDENT F09 FROZEN REVIEW BLOCKED**, return `fa3c69b832d4649e046d84e4dde89897585aa4e3`: independently reproducible old B2/B3/B4/P1/T1 issues; no certification of R2 changed blob; reconciles 54-vs-52 digest convention.
+
+**N10E C1 owner/root preflight PARTIAL**, return `80023846b13b9d2cea93f6a3d4f7cd36601b7ccd`: accepted source-free C1 content assembly, but no demonstrated real owner/registrar deployment identity, independent verifier pin/installer, root/journal genesis or epoch. R3 prospective documentary warrant HQ247 adoption remains unchanged. Owner/principal feasibility first; separate HQ designation → owner proposal → HQ root APPROVE → owner INSTALL → verifier ACK → HQ ACTIVATE. None has occurred.
+
+**NEW — SPACE BUNNY MAX / MAC — F7 DECIDE REFCOUNT R3 REPAIR:** branch `agent/space-bunny-pyat-hq248-f7-decide-refcount-repair-r3` @ `8902013902ffcc8a6f936fb184a11320a57011ed`. `WORKER_COMMISSIONS/PYAT-HQ248-F7-DECIDE-REFERENCE-OWNERSHIP-REPAIR-R3/00_COMMISSION.md`. New authorized sparse worktree required if not already provisioned.
+
+**NEW — BROWSER SOL HIGH — F7 T1 SEALED PRODUCTION INGRESS DOCUMENTARY DESIGN:** branch `agent/reviewer-pyat-hq248-f7-trusted-constructor-ingress-design-r1` @ `ad320e05bf3f7ed75bca51e62e3b044da5d8c535`. `WORKER_COMMISSIONS/PYAT-HQ248-F7-T1-PRODUCTION-TRUST-INGRESS-DESIGN-R1/00_COMMISSION.md`. No code modification or security adoption.
+
+**NEW — SPACE BUNNY MAX / MAC — N10E REAL DEPLOYMENT PLACEMENT FEASIBILITY:** branch `agent/space-bunny-pyat-hq248-n10e-at07-deployment-placement-evidence-r1` @ `9716656ee47fb04bf8bd6e842982d78b6490cca8`. `WORKER_COMMISSIONS/PYAT-HQ248-N10E-AT07-C1-LOCAL-PLACEMENT-FEASIBILITY-R1/00_COMMISSION.md`. Non-authorizing local topology inspection only; no keys/roots/epochs.
+
+**AUTHORITATIVE RECORD:** `PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ248_F7_R2_F09_N10E_THREE_RETURN_ADJUDICATION_R1.md`. No semantic PRE-MAIN movement, no F7 Stage C, no R4, no 19th I01 kind, no real 35-wave/source/actor/V3 authority. All three commissions need explicit launch.
+
+---
+
 # HQ247 — EXPLICIT N10E R3 DOCUMENTARY ADOPTION; F7 B BLOCKED / A-B REPAIR PARTIAL — 2026-10-08
 
 **DECISION:** HQD-2026-10-08-247. Independent R3 reviewer GREEN @ d659b5462c25be347d67f5a4f9873f5f1f645fc9; HQ separately adopts prospective bounded source-free R3 document only: author 338aa789dd20d04c83175a6593172fee4b61c078, warrant blob d1c835119a08bb27124c87b15485d6b83b91659f, adoption record PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ247_ADOPTED/00_EXPLICIT_GOVERNANCE_ADOPTION.json. **NO approved owner, root, epoch, registrar, credential, active R4 model authority or nineteenth I01 kind.** Owner designation/proposal → distinct HQ root APPROVE → owner INSTALL → independent verifier ACK → HQ ACTIVATE remain future stages.
