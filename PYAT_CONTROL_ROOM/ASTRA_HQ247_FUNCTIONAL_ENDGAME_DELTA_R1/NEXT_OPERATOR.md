@@ -1,16 +1,32 @@
-# NEXT OPERATOR — portable audit restart (HQ248 amendment)
+# Next operator — P0 bank / mandatory human transition
 
-**STATUS:** NEW / NEEDS LAUNCH. No audit phase performed, no finding adjudicated, no requested model already changed.
-**REPO:** `maidiu/rawlsing`
-**BRANCH:** `agent/astra-pyat-hq247-functional-endgame-delta-audit-r1`
-**COMMISSION:** `WORKER_COMMISSIONS/ASTRA-PYAT-HQ247-FUNCTIONAL-ENDGAME-DELTA-AUDIT-R1/00_COMMISSION.md`
-**CRITICAL UPDATE:** `PYAT_CONTROL_ROOM/ASTRA_HQ247_FUNCTIONAL_ENDGAME_DELTA_R1/04_HQ248_HQ249_ACTIVATION_GATE.md` overrides historical operative HQ247 starting-state text, not the audit's mission.
-**NEXT PHASE:** P0 at GPT-5.6 Sol High / economical competent equivalent. P0 may run concurrently with HQ248 commissions.
-**FIRST ACTION:** Verify own worktree/HEAD/clean status and direct origin audit ref; read README, STATE.json, 01_PHASES_AND_SWITCHES.md, 04_HQ248_HQ249_ACTIVATION_GATE.md, then CURRENT `HQ_HANDOFF/LATEST.json` and its manifest-pinned immutable checkpoint. Confirm exact three HQ248 worker remote HEADs, inspect only newly returned evidence, distinguish pending worker from adopted HQ.
-**LAST SEALED HQ AT AMENDMENT:** HQ248 control `675b0793fd2a2b75463fc00d2b884eefdc95e9f9`, immutable packet `91595263d2888091e1f28af1ed38429b7c02966f`.
-**LATER RETURN OBSERVED:** N10E/C1 local feasibility `e64379e542b931df1e7df47f1b37955a1cb9a3a9` on its exact separate branch. Pushed/awaiting HQ adjudication; its author reports independent verifier placement BLOCKED. No automatic HQ adoption.
-**P0 OUTPUT:** Delta census from prior Astra Atlas through HQ248 and material subsequent returns; <=12 priority questions, three reverse slices, source/authority grades. Bank and verify remote SHA.
-**MANDATORY P0→P1 GATE:** STOP `STOP_MODEL_SWITCH_TO_ASTRA_FOR_P1`. Do not start expensive P1 until HQ249-or-later checkpoint seals HQ248 returns or human explicitly authorizes early frozen-frontier audit; if lanes remain stalled, HQ may seal an honest checkpoint with stated pending lanes. Do not wait for F7 security / N10E root to close, nor reflexively commission another engineering wave.
-**MODEL CHANGE:** Human manually selects Astra Pro/highest available for P1. Sol cannot silently continue.
-**F7 NAMESPACE:** HQD125 F7 means empirical comparable-wave temporal pressure, not F7-RR-04G native security. Do not conflate F8 positioned-subject service with permission for V3 actors.
-**TRANSFER:** machine B opens new Codex conversation from Git-pushed STATE + NEXT_OPERATOR + latest phase, retaining own auth. No Codex auth/session copying needed. Preserve worktree; never reset.
+**STATUS:** P0 COMPLETE; AUDIT INCOMPLETE; `STOP_MODEL_SWITCH_TO_ASTRA_FOR_P1`.
+**AGENT:** documentary delta auditor in Codex.
+**MODEL:** P0 used the supplied GPT-6-family session; exact serving label/effort not tool-verifiable. Next: human-selected Astra Pro / highest available reasoning.
+**MACHINE:** user Mac, shared canonical object store.
+**WORKTREE:** `/Users/matthewsmith/.codex/worktrees/05e4/Rawlsing`; sparse audit/own-return terrain only. Bootstrapped existing clean detached worktree; not claimed preprepared HQ certification.
+**BRANCH:** `agent/astra-pyat-hq247-functional-endgame-delta-audit-r1`.
+**STARTUP TIP:** `152bb3c3afd78d5b6a629eda158c56d5084bf86e`.
+**PREVIOUS VERIFIED BANK:** `ac6c15c5c529485b00355594508c7444ee95126e`. Final containing commit is reported externally; do not embed its own hash here.
+
+## Before P1
+
+1. Verify branch/HEAD/clean status, preserve local work, and resolve own direct origin head.
+2. Verify the actual human-selected Astra model and highest reasoning. Do not silently substitute or auto-switch.
+3. Run `python3 PYAT_CONTROL_ROOM/ASTRA_HQ247_FUNCTIONAL_ENDGAME_DELTA_R1/phases/verify_frontier.py --output P1_ENTRY_GIT_CENSUS.json` only when beginning the authorized next phase. This reads remote refs and fetches only missing exact objects.
+4. Read direct control LATEST and immutable packet. Require a new sealed HQ249-or-later checkpoint adjudicating the bounded three HQ248 successor lanes, or an explicit recorded human override. A checkpoint may honestly retain a stalled lane pending; security closure/issuer activation are not prerequisites to P1.
+5. At P0 cutoff HQ248 remains sealed: R3 refcount `8902013902ffcc8a6f936fb184a11320a57011ed` unchanged, T1 design `58934231d6e5bc895f937b069433237f7edce594` and N10E local feasibility `e64379e542b931df1e7df47f1b37955a1cb9a3a9` pending HQ intake. Reconcile only material new deltas; no relaunch inferred from unchanged remote.
+6. Read README, STATE, `phases/P0_DELTA_CENSUS.md`, EVIDENCE_LEDGER, F1_F8_MATRIX, CRITICAL_PATH, and the current activation amendment. Begin the first ranked P1 inquiry. Do not repeat the whole Atlas.
+
+## Evidence and phase boundary
+
+`phases/P0_GIT_CENSUS_ENTRY.json` and `P0_GIT_CENSUS_STOP.json`: direct remote, lineage/terrain and manifest checks.
+`P0_SOURCE_INDEX.json`: exact inspected source blobs, full versus excerpted reading.
+`P0_DECISION_INDEX.json`: post-H125 documentary chronology index; not wholesale independent adjudication.
+`P0_CODE_LOCALIZATION.json`: precise control/candidate tree membership and test-helper references.
+
+F7 in HQD125 means functional temporal realization. `F7-RR-04G` means native security defect. Neither label alone proves a global prerequisite.
+
+P1 writes hostile findings and ranked P2 checks; BANK/push/readback and STOP `STOP_MODEL_SWITCH_TO_SOL_FOR_P2`. P2 and P3 retain their own required human switches. No implementation, source/semantic authority, native cutover, issuer/root/epoch, actor/V3 or worker dispatch authorized by this audit.
+
+If HQ249 intake or the human model switch is absent, remain at this stop. Do not wait indefinitely, silently proceed, mark the full goal complete, or auto-launch another F7/N10E engineering wave.

@@ -1,6 +1,8 @@
 # ASTRA HQ247 — functional endgame delta audit
 
-Status: NEW / NEEDS LAUNCH. Audit branch only; this document is not HQ adoption.
+Status: P0 COMPLETE / BANKED FOR HUMAN MODEL TRANSITION. P1–P3 not started; audit remains incomplete. This document is not HQ adoption.
+
+Read `phases/P0_DELTA_CENSUS.md`, `STATE.json` and `NEXT_OPERATOR.md`. Required stop: `STOP_MODEL_SWITCH_TO_ASTRA_FOR_P1`. At the P0 cutoff HQ248 remains sealed, two successors have pushed pending returns, and R3 has no pushed return visible. P1 requires new sealed HQ249-or-later one-wave intake (or explicit human override) and the human-selected Astra highest-reasoning model. Exact observations and read limits are saved under `phases/`.
 
 Commission: `WORKER_COMMISSIONS/ASTRA-PYAT-HQ247-FUNCTIONAL-ENDGAME-DELTA-AUDIT-R1/00_COMMISSION.md`.
 

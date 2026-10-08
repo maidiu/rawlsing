@@ -1,0 +1,89 @@
+{
+  "schema": "ASTRA_P0_GIT_CENSUS@1",
+  "started_utc": "2026-10-08T18:10:12.980880+00:00",
+  "finished_utc": "2026-10-08T18:10:15.049328+00:00",
+  "audit_remote_head": "ac6c15c5c529485b00355594508c7444ee95126e",
+  "control_head": "675b0793fd2a2b75463fc00d2b884eefdc95e9f9",
+  "pointer_blob": "41aa5924ae575c25004e9b73cdb87af1a82fe661",
+  "pointer_sha256": "db87dc051e82ad8082df7e77c79d92256ae3b9a37c069da4e9ee0c48f89db585",
+  "checkpoint_id": "20261008-PYAT-HQ248-F7-R2-REFCOUNT-N10E-PLACEMENT-HOLD-R1",
+  "handoff_commit": "91595263d2888091e1f28af1ed38429b7c02966f",
+  "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "operational_decision": "HQD-2026-10-08-248",
+  "pointer_legacy_last_hq_decision": "HQD-2026-10-08-247",
+  "manifest_blob": "e4a83fd72cb81592a7dd7c08eb726c1eb1af6ad9",
+  "bindings": [
+    {
+      "path": "HQ_HANDOFF/checkpoints/20261008-PYAT-HQ248-F7-R2-REFCOUNT-N10E-PLACEMENT-HOLD-R1/CURRENT.md",
+      "blob": "cbee9e5bca7627369362003513fa5934f624a905",
+      "sha256": "b4caeb6275c59ec7944b344021c66d5d9c2ca581bc4f7c9457e0e0c13e2b20be"
+    },
+    {
+      "path": "HQ_HANDOFF/checkpoints/20261008-PYAT-HQ248-F7-R2-REFCOUNT-N10E-PLACEMENT-HOLD-R1/CURRENT.json",
+      "blob": "9d1e2ce67a73edc4bbe8dbe038079d0de25fd242",
+      "sha256": "64e10b0c8176434c793e48ca5306804fad23423cc5e527099e3d310139fdc909"
+    }
+  ],
+  "checks": {
+    "checkpoint_ids": true,
+    "semantic_tips": true,
+    "packet_is_control_ancestor": true,
+    "decision_agrees": true,
+    "current_md_binding": true,
+    "current_json_binding": true
+  },
+  "workers": [
+    {
+      "id": "HQ248_F7_R3_REFCOUNT_REPAIR",
+      "branch": "agent/space-bunny-pyat-hq248-f7-decide-refcount-repair-r3",
+      "commission_tip": "8902013902ffcc8a6f936fb184a11320a57011ed",
+      "head": "8902013902ffcc8a6f936fb184a11320a57011ed",
+      "commission_is_ancestor": true,
+      "ahead_behind": "0\t0",
+      "changed_paths": [],
+      "git_classification": "UNCHANGED_REMOTE_NO_RETURN_VISIBLE",
+      "agent": "Space Bunny / OpenCode",
+      "model": "Space Bunny Max",
+      "machine": "governed Mac"
+    },
+    {
+      "id": "HQ248_F7_T1_DOCUMENTARY_DESIGN",
+      "branch": "agent/reviewer-pyat-hq248-f7-trusted-constructor-ingress-design-r1",
+      "commission_tip": "ad320e05bf3f7ed75bca51e62e3b044da5d8c535",
+      "head": "58934231d6e5bc895f937b069433237f7edce594",
+      "commission_is_ancestor": true,
+      "ahead_behind": "0\t1",
+      "changed_paths": [
+        "A\tWORKER_RETURNS/PYAT-HQ248-F7-T1-PRODUCTION-TRUST-INGRESS-DESIGN-R1/00_DESIGN.md",
+        "A\tWORKER_RETURNS/PYAT-HQ248-F7-T1-PRODUCTION-TRUST-INGRESS-DESIGN-R1/01_OWNER_PROVENANCE_AND_CALLSITE.json",
+        "A\tWORKER_RETURNS/PYAT-HQ248-F7-T1-PRODUCTION-TRUST-INGRESS-DESIGN-R1/02_THREAT_AND_POSITIVE_TEST_MATRIX.json",
+        "A\tWORKER_RETURNS/PYAT-HQ248-F7-T1-PRODUCTION-TRUST-INGRESS-DESIGN-R1/03_FUTURE_IMPLEMENTATION_COMMISSION.md",
+        "A\tWORKER_RETURNS/PYAT-HQ248-F7-T1-PRODUCTION-TRUST-INGRESS-DESIGN-R1/FINAL_DISPOSITION.json"
+      ],
+      "git_classification": "ADVANCED_DESCENDANT_REQUIRES_RETURN_CONTENT_REVIEW",
+      "agent": "Browser/GitHub documentary forensic reviewer",
+      "model": "GPT-5.6 Sol High",
+      "machine": "Browser GitHub only"
+    },
+    {
+      "id": "HQ248_N10E_REAL_OWNER_PLACEMENT_FEASIBILITY",
+      "branch": "agent/space-bunny-pyat-hq248-n10e-at07-deployment-placement-evidence-r1",
+      "commission_tip": "9716656ee47fb04bf8bd6e842982d78b6490cca8",
+      "head": "e64379e542b931df1e7df47f1b37955a1cb9a3a9",
+      "commission_is_ancestor": true,
+      "ahead_behind": "0\t1",
+      "changed_paths": [
+        "A\tWORKER_RETURNS/PYAT-HQ248-N10E-AT07-C1-LOCAL-PLACEMENT-FEASIBILITY-R1/00_FEASIBILITY.md",
+        "A\tWORKER_RETURNS/PYAT-HQ248-N10E-AT07-C1-LOCAL-PLACEMENT-FEASIBILITY-R1/01_LOCAL_OWNER_AND_VERIFIER_EVIDENCE.json",
+        "A\tWORKER_RETURNS/PYAT-HQ248-N10E-AT07-C1-LOCAL-PLACEMENT-FEASIBILITY-R1/02_DEPLOYMENT_AND_JOURNAL_FEASIBILITY.json",
+        "A\tWORKER_RETURNS/PYAT-HQ248-N10E-AT07-C1-LOCAL-PLACEMENT-FEASIBILITY-R1/03_HQ_DESIGNATION_REQUIRED.md",
+        "A\tWORKER_RETURNS/PYAT-HQ248-N10E-AT07-C1-LOCAL-PLACEMENT-FEASIBILITY-R1/FINAL_DISPOSITION.json"
+      ],
+      "git_classification": "ADVANCED_DESCENDANT_REQUIRES_RETURN_CONTENT_REVIEW",
+      "agent": "Space Bunny / OpenCode",
+      "model": "Space Bunny Max or equivalent capable local model",
+      "machine": "governed Mac"
+    }
+  ],
+  "scope": "Git documentary verification only; no runtime or estate qualification"
+}

@@ -1,16 +1,117 @@
-# F1–F8 PRODUCTIVE CAPABILITY MATRIX — P0 UNASSESSED
+# F1–F8 capability matrix — P0 seed
 
-Binding authority: HQD125 F1–F8 and HQD216 positive-product obligations. This is a working template, NOT proof of completion. At each gate supply exact current owner/contract, code identity, lawful positive witness, downstream consumer, integrated replay, real estate source occupancy, first missing edge, disconfirming evidence and required next proof. State local stage acceptance separately from integrated realization separately from estate completion.
+**Status:** documentary seed for P1 challenge, not a completion verdict. Current control and exact source identities are in `phases/P0_SOURCE_INDEX.json`. P0 ran no pipeline/native/source tests. Every reported test result is inherited HQ or worker evidence.
 
-| Gate | Productive target | Owner/contract | Positive producer witness | Consumer/replay | Real-source occupancy | Exact gap / evidence |
-|---|---|---|---|---|---|---|
-| F1 | source semantics + governed empirical substrate | TO VERIFY | TO VERIFY | TO VERIFY | TO VERIFY | UNASSESSED |
-| F2 | demographic/material and bidirectional attitudinal predictors | TO VERIFY | TO VERIFY | TO VERIFY | TO VERIFY | UNASSESSED |
-| F3 | majority/minority/outlier, secondary/recursive forks | TO VERIFY | TO VERIFY | TO VERIFY | TO VERIFY | UNASSESSED |
-| F4 | response co-travel, attitude clouds, same-respondent joint configuration | TO VERIFY | TO VERIFY | TO VERIFY | TO VERIFY | UNASSESSED |
-| F5 | source-backed structural-world pressure without actor conflation | TO VERIFY | TO VERIFY | TO VERIFY | TO VERIFY | UNASSESSED |
-| F6 | multiple survey fields without pooling/respondent fiction | TO VERIFY | TO VERIFY | TO VERIFY | TO VERIFY | UNASSESSED |
-| F7 | comparable same-survey waves / temporal movement and fields | TO VERIFY | TO VERIFY | TO VERIFY | TO VERIFY | UNASSESSED |
-| F8 | positioned-subject and progressive parent/coparent possibility service | TO VERIFY | TO VERIFY | TO VERIFY | TO VERIFY | UNASSESSED |
+Four distinct levels: **LOCAL_STAGE_ACCEPTANCE → INTEGRATION_REALIZATION → ESTATE_OCCUPANCY → PREV3_COMPLETION**. None of the eight broad gates is self-certified by this census. Unknown cells are evidence gaps, not proved owner defects.
 
-No cell passes because an existing owner can represent an output, a refusal is typed, or one canary worked. Also do not blame downstream implementation for missing upstream inputs when conditional positive tests are sound (HQD216 §4A).
+## F1 — Governed empirical substrate
+
+| Dimension | P0 evidence / limit |
+|---|---|
+| Current owner | EE01–04, Route B/C11/I03, source/measurement/routing/replay authority owners. |
+| Contract | HQD125 §12 F1; retained HQD124 theorem; HQD216 positive-product and four-level accounting. |
+| Implemented producer | Inherited decoder/facade/exact query; current C1 composition explicitly consumes repository, query, predicate, registry and release refs (control composition lines 1008–1044). No raw source opened in P0. |
+| Actual positive witness | Inherited source-free C1-01 AT07 100-row fixture; retained GT2 19,210-row evidence accepted HQ223. Neither is a new P0 source execution. |
+| Actual consumer | execute_empirical_query → analytical composition; GT2 fact/query → Field Forge/structural consumer. |
+| Integrated replay | Inherited qualified lanes and C1 replay adapter exist; full current cross-owner coverage not requalified by P0. |
+| Source occupancy | Scoped retained canary evidence; current 35-wave productive coverage UNVERIFIED. Historical representation census is not estate completion. |
+| Needs work / evidence grade | Expected-capability and exact-source authority/integration census; source-intrinsic N/A requires independent source grounding. Grade: inherited adoption plus bounded static inspection; broad realization unverified. |
+| Exact evidence | P0-E03/E06/E10; P0_SOURCE_INDEX; Atlas EV088–126; HQ223 record at frozen control. |
+
+## F2 — Predictor / determinicity
+
+| Dimension | P0 evidence / limit |
+|---|---|
+| Current owner | EE04/07/08 and current C1 analytical producer. |
+| Contract | HQD125 F2 and bidirectional possibility law; C1-01/AT07 accepted grain. |
+| Implemented producer | compose_positioned_subject_possibility, blob 604c8d591d4cc2b646e9b149cdb233fc9d69cf6b at control; direct/query branches and generated-evidence consumer at 1008–1135. |
+| Actual positive witness | HQ139 adopted C1-01; test fixture cells 54/6/8/32 yield forward 54/60 and inverse 54/62. Arithmetic and proof are inherited, not rerun. |
+| Actual consumer | evaluate_positioned_subject_possibility; N10E provider delegates to C1. |
+| Integrated replay | Provider replay re-invokes generation (provider lines 634–665); actual wider replay qualification remains scoped. |
+| Source occupancy | Synthetic bounded evidence; real estate predictor breadth unverified. |
+| Needs work / evidence grade | Audit demanded output directions and source coverage, without generic absence claim. Grade: adopted local grain + static path located, broad completion unverified. |
+| Exact evidence | P0-E06/E08; ledger line 145; fixture blob 2210fc1b4cb99552aafc8797c12d780a78e7983b lines 91–103. |
+
+## F3 — Majority / minority / recursive forks
+
+| Dimension | P0 evidence / limit |
+|---|---|
+| Current owner | EE06/07/08/16, discovery/recursive handoff and C1-02 consumers. |
+| Contract | HQD125 F3; adopted AT08–13 and scoped C1 continuation. |
+| Implemented producer | C1 composition distinguishes I05 discovery and MX01R2 recursion at 1025–1065; transports ancestry/frontier/recursive refs at 1185–1205. |
+| Actual positive witness | HQ145 source-free C1-02 adopted; specific current rich positive tests not independently rerun or reviewed fully in P0. |
+| Actual consumer | Generated-evidence possibility consumer; exact rich-fork consumption across requested service family still to challenge. |
+| Integrated replay | C1-03R adapter declares exact determinants/replay-grade ownership; broad invalidation graph not requalified here. |
+| Source occupancy | Broad source-supported minority/fork occupancy unverified. |
+| Needs work / evidence grade | Prove preserved remainder/negatives/ancestry and rich route into demanded final consumer; separate scalar N10E wrapper coverage. Grade: inherited local acceptance, static branch/transport evidence, wider proof unverified. |
+| Exact evidence | P0-E06/E08; ledger line 151; composition exact blob and lines. |
+
+## F4 — Cloud / same-respondent joint
+
+| Dimension | P0 evidence / limit |
+|---|---|
+| Current owner | EE05/06/07/08; component authority/J rules at applicable claim grain; C1 analytical producer. |
+| Contract | HQD125 F4 and S14 absence ≠ co-travel absence; HQD124 seven J information-loss functions remain inherited. |
+| Implemented producer | C1 joint component count/order and cell geometry preserved in inspected composition; historical exact/co-travel primitives located in Atlas. |
+| Actual positive witness | Inherited C1-02 AT08–13; HQ223 complete retained 36-cell geometry is a scoped structural witness. No estate cloud proof generated here. |
+| Actual consumer | C1 possibility evaluator; retained GT2 structural chain. Do not substitute special semantic relation eligibility for empirical co-travel. |
+| Integrated replay | Component/release/measurement dependencies are explicit in composition; full cloud/joint final-consumer replay requires targeted P2 checks. |
+| Source occupancy | Scoped retained evidence; source-wide family-role/applicability occupancy unverified. |
+| Needs work / evidence grade | Check S14-absent positives, same-respondent/risk-set identity, non-scalar preservation, actual cloud consumer and necessary release route. Grade: inherited theorem/local grain plus static transport; broad realization unverified. |
+| Exact evidence | P0-E06/E10; HQ124/125 laws; HQ223 accepted 36-cell geometry; Atlas EV096/102–106. |
+
+## F5 — Actor-independent structural pressure
+
+| Dimension | P0 evidence / limit |
+|---|---|
+| Current owner | Field Forge and exact relation/admission/objective context owners. |
+| Contract | HQD125 F5; exact structural interpretation law; no person/causality promotion. |
+| Implemented producer | Retained GT2 field_forge_conditional_support → relation admission → relation-specific V554 → V557/V558; current court header locates code paths. |
+| Actual positive witness | HQ223 accepted Afrobarometer R5 Q86B→Q86A, 19,210 rows and 36-cell geometry; HQ235 accepted one local CONTEXT. This is substantial positive counterevidence. |
+| Actual consumer | Current V557/V558 CONTEXT consumer; not V3 actor. GT2 V555 nonapplicability later adopted HQ227. |
+| Integrated replay | Accepted scoped provenance/retained evidence; no fresh broad pressure/world replay performed here. |
+| Source occupancy | One retained canary at exact GT2 grain; no universal structural or temporal occupancy. |
+| Needs work / evidence grade | Identify demanded additional positive structural fields and N9 use; do not reopen closed GT2 V555 path or count local context as full world. Grade: adopted scoped positive, independent P0 runtime absent. |
+| Exact evidence | P0-E10; HQ223 and HQ235 exact records; ledger lines 226, 230, 238. |
+
+## F6 — Multi-source composition
+
+| Dimension | P0 evidence / limit |
+|---|---|
+| Current owner | EE12/13, service-source applicability and objective field composition jurisdictions. |
+| Contract | HQD125 F6; multiple fields ≠ synthetic respondent pool; HQ203 corrected source-indexed versus authorized composite distinction. |
+| Implemented producer | Service-source applicability and authenticated F8 source-scope binder present; binder is not an F6 composition producer. No exhaustive current multi-field producer check in P0. |
+| Actual positive witness | P0 did not establish an adopted multi-source structural-world positive. Single-source GT2 and source eligibility positives cannot close F6. |
+| Actual consumer | Objective world/serving and scoped F8 service, as demanded; exact composed consumer route remains unverified. |
+| Integrated replay | Cross-source world dependency/replay proof unverified. |
+| Source occupancy | No estate-wide composed multi-source witness verified. |
+| Needs work / evidence grade | Locate current actual field composer and positive consumer; independently distinguish source-indexed contributions, comparisons and pooling permission. Grade: authority/jurisdiction located; productive composition unverified, not declared nonexistent. |
+| Exact evidence | P0-E06/E10; HQ203 ledger line 210; Atlas N7 conditional DAG; HQ219 binder record. |
+
+## F7 — Functional comparable-wave temporal realization
+
+| Dimension | P0 evidence / limit |
+|---|---|
+| Current owner | EE12/16, temporal identity/comparability, empirical temporal and structural temporal producer owners. |
+| Contract | HQD125 F7; no directionality from two waves alone; HQ248 native security lane is separately labelled F7-RR-04G. |
+| Implemented producer | Candidate temporal module blob 6f6b462b1cdef54d7989f15452473383c1661594 at c2c0ab7335a3bcfeabb4297139378e3e657cd432; P07 exact-type/authenticated route located at 1101–1149. Absent at frozen control and semantic PRE-MAIN trees. |
+| Actual positive witness | Inherited pre-04G same-source/zero/increase/decrease/cross-universe runtime reports; R2 synthetic native AUTHORIZED/conflict author evidence. Exact real-wave product/structural temporal occupancy not verified by P0. |
+| Actual consumer | Candidate temporal producer consumes actual P07 relation adjudication for applicable cross-universe route. Later external receiver/served temporal world unverified. |
+| Integrated replay | Candidate includes relation replay checks; production native qualification/cutover absent. |
+| Source occupancy | No broad comparable-wave temporal world proof established. |
+| Needs work / evidence grade | Prove which demanded routes require native 04G; independently qualify repaired exact native SHA before cutover; identify structural temporal producer and integration assembly. Grade: adopted negative security boundary, author candidate positives, bounded static path, functional estate gate unverified. |
+| Exact evidence | P0-E03/E07/E11; HQ248 packet; P0_CODE_LOCALIZATION; T1 design and candidate source excerpts. |
+
+## F8 — Positioned-subject / parent-prior usability
+
+| Dimension | P0 evidence / limit |
+|---|---|
+| Current owner | EE14, N10E producer seam, positioned-subject evaluator, authenticated H-D source-scope binder; N9/N10W for full world-conditioned use. |
+| Contract | HQD125 F8 and actor firewall; exact rule/use/source scope; HQ216 local positive ≠ integration occupancy. |
+| Implemented producer | Current provider core 23167aa25291fb148b1e3cf210ac33fe7769b783 calls C1; current evaluator 62e5eced47b64512f47b004e3e13a6ef3fe21de7; source-scope binder 4ba00b8ecf73f70ad0f6481e255fd0117744418a re-authenticates then delegates unchanged. |
+| Actual positive witness | HQ147 AT17 core acceptance; HQ219 reviewed binder lawful single-source/exhaustive F8 paths; operational AT07 issuer and world-conditioned progressive full service remain distinct. |
+| Actual consumer | evaluate_positioned_subject_possibility and bound evaluator; no person-generation or actor operation executed. |
+| Integrated replay | Provider generation replay and evaluator material/hash replay exist; operational issuer/current model and complete N9/N10W closure not established. |
+| Source occupancy | Local synthetic/provider and retained inputs only at inspected grains; full parent/coparent service estate coverage unverified. |
+| Needs work / evidence grade | Active registered C1 handoff/model authority and exact progressive world consumer; do not count binder authentication as computed world-conditioned output. Grade: inherited local adoption/static chain; operating/full-world proof incomplete. |
+| Exact evidence | P0-E05/E06/E08/E09; HQ219 record; provider 531–665; evaluator 417–462; binder 894–961. |

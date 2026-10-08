@@ -2,10 +2,10 @@
   "schema": "ASTRA_PYAT_HQ247_AUDIT_STATE@1",
   "commission": "ASTRA-PYAT-HQ247-FUNCTIONAL-ENDGAME-DELTA-AUDIT-R1",
   "lane": "agent/astra-pyat-hq247-functional-endgame-delta-audit-r1",
-  "status": "P0_IN_PROGRESS",
-  "phase": "P0",
-  "required_next_model": "GPT-5.6 Sol High or nearest economical high-capability available model",
-  "pending_model_switch": "NONE_UNTIL_P0_COMPLETE",
+  "status": "P0_COMPLETE__HUMAN_MODEL_AND_HQ_INTAKE_GATE",
+  "phase": "P0_COMPLETE",
+  "required_next_model": "Human-selected Astra Pro / highest available reasoning",
+  "pending_model_switch": "STOP_MODEL_SWITCH_TO_ASTRA_FOR_P1",
   "control_origin_head_observed": "675b0793fd2a2b75463fc00d2b884eefdc95e9f9",
   "control_latest_checkpoint_observed": "20261008-PYAT-HQ248-F7-R2-REFCOUNT-N10E-PLACEMENT-HOLD-R1",
   "handoff_commit_observed": "91595263d2888091e1f28af1ed38429b7c02966f",
@@ -17,7 +17,7 @@
       "branch": "agent/space-bunny-pyat-hq247-f7-native-b1-b4-parity-trust-repair-r2",
       "observed_head": "c2c0ab7335a3bcfeabb4297139378e3e657cd432",
       "adoption": "ADJUDICATED_HQ248",
-      "scope": "PARTIAL_PENDING_HQ_INTAKE__SEE_HQD248_FOR_EXACT_DISPOSITION"
+      "scope": "HQ248_PARTIAL_ENGINEERING_EVIDENCE__NOT_NATIVE_SECURITY_ADOPTION"
     },
     {
       "name": "HQ247 frozen f09 hostile review return",
@@ -35,26 +35,41 @@
     }
   ],
   "prior_astra_atlas": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/README.md",
-  "previous_phase_completion": "NONE",
-  "latest_verified_audit_remote_head": "152bb3c3afd78d5b6a629eda158c56d5084bf86e",
-  "checkpoint_status": "BASELINE_VERIFIED_READY_TO_BANK",
+  "previous_phase_completion": "P0",
+  "latest_verified_audit_remote_head": "ac6c15c5c529485b00355594508c7444ee95126e",
+  "checkpoint_status": "P0_HARD_STOP_PACKET__VERIFY_CONTAINING_COMMIT_ON_ORIGIN",
   "completed_investigations": [
-    "Direct origin control/audit/three successor heads; checkpoint manifest IDs, semantic identity, ancestry and CURRENT blob bindings verified"
+    "Verified direct origin control/audit/three worker refs and immutable checkpoint bindings at entry and stop",
+    "Verified ancestry and return-only terrain for two pushed returns; read all ten artifacts",
+    "Read governing HQ124/125/216, commission phase/cost/activation laws and core inherited Atlas; catalogued excerpt limits",
+    "Indexed post-H125 chronology, credited scoped positives, distinguished pending/adopted/candidate evidence",
+    "Seeded eight functional gates, three reverse-service traces and ten ranked P1 questions",
+    "Performed bounded static trust-helper/producer-consumer/code-localization checks; no runtime qualification"
   ],
   "open_questions": [
-    "Are current F7 and N10E blockers on the global minimum functional PRE-V3 critical path?",
-    "Which F1\u2013F8 producer/consumer edges are missing vs unoccupied?",
-    "Which prior Astra Atlas proposed lanes are now realized, held, superseded or misprioritized?",
-    "At cutoff, has HQ249-or-later independently intaken the three HQ248 successor lanes, and is any explicit outstanding lane recorded?",
-    "Distinguish native-security F7-RR-04G from HQD125 empirical-temporal gate F7; do not infer direct critical path."
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5",
+    "Q6",
+    "Q7",
+    "Q8",
+    "Q9",
+    "Q10"
   ],
-  "first_next_action": "Read both pushed HQ248 return packets and prior Atlas changed-grain evidence; finish P0 and STOP.",
+  "first_next_action": "Human selects Astra highest reasoning; verify new sealed HQ249-or-later intake or explicit human override; reconcile only material deltas, then begin P1 question 1.",
   "last_stage_files": [
-    "00_COMMISSION.md",
-    "01_PHASES_AND_SWITCHES.md",
-    "02_CHECKPOINT_AND_COST_LAW.md",
-    "03_RETURN_CONTRACT.md",
-    "04_HQ248_HQ249_ACTIVATION_GATE.md"
+    "phases/P0_DELTA_CENSUS.md",
+    "phases/P0_GIT_CENSUS_ENTRY.json",
+    "phases/P0_GIT_CENSUS_STOP.json",
+    "phases/P0_SOURCE_INDEX.json",
+    "phases/P0_DECISION_INDEX.json",
+    "phases/P0_CODE_LOCALIZATION.json",
+    "EVIDENCE_LEDGER.md",
+    "F1_F8_MATRIX.md",
+    "CRITICAL_PATH.md",
+    "NEXT_OPERATOR.md"
   ],
   "original_commission_issuance_control_head": "4246cea7657b6bfb1e405a27f3dff952c4d157df",
   "original_commission_issuance_checkpoint": "20261008-PYAT-HQ247-N10E-R3-ADOPTED-F7-HOSTILE-BLOCKED-R1",
@@ -95,7 +110,8 @@
       "git_classification": "UNCHANGED_REMOTE_NO_RETURN_VISIBLE",
       "agent": "Space Bunny / OpenCode",
       "model": "Space Bunny Max",
-      "machine": "governed Mac"
+      "machine": "governed Mac",
+      "classification": "UNCHANGED_REMOTE_NO_RETURN_VISIBLE__LOCAL_SESSION_STATE_UNKNOWN"
     },
     {
       "id": "HQ248_F7_T1_DOCUMENTARY_DESIGN",
@@ -114,7 +130,8 @@
       "git_classification": "ADVANCED_DESCENDANT_REQUIRES_RETURN_CONTENT_REVIEW",
       "agent": "Browser/GitHub documentary forensic reviewer",
       "model": "GPT-5.6 Sol High",
-      "machine": "Browser GitHub only"
+      "machine": "Browser GitHub only",
+      "classification": "POST_CHECKPOINT_PENDING_RETURN"
     },
     {
       "id": "HQ248_N10E_REAL_OWNER_PLACEMENT_FEASIBILITY",
@@ -133,10 +150,82 @@
       "git_classification": "ADVANCED_DESCENDANT_REQUIRES_RETURN_CONTENT_REVIEW",
       "agent": "Space Bunny / OpenCode",
       "model": "Space Bunny Max or equivalent capable local model",
-      "machine": "governed Mac"
+      "machine": "governed Mac",
+      "classification": "POST_CHECKPOINT_PENDING_RETURN"
     }
   ],
   "selected_model": "GPT-6 family Codex session; no model switch performed; exact serving model label not exposed by a tool",
   "model_scope": "P0 only; human must select Astra highest reasoning for P1",
-  "gate_status": "P1_BLOCKED_BY_UNSEALED_HQ248_SUCCESSOR_INTAKE_AND_HUMAN_MODEL_SWITCH"
+  "gate_status": "P1_NOT_STARTED__HQ249_OR_LATER_SEALED_INTAKE_OR_HUMAN_OVERRIDE_AND_MODEL_SWITCH_REQUIRED",
+  "next_model": "Astra Pro / highest available reasoning",
+  "hq248_workers_at_p0_stop": [
+    {
+      "id": "HQ248_F7_R3_REFCOUNT_REPAIR",
+      "branch": "agent/space-bunny-pyat-hq248-f7-decide-refcount-repair-r3",
+      "commission_tip": "8902013902ffcc8a6f936fb184a11320a57011ed",
+      "head": "8902013902ffcc8a6f936fb184a11320a57011ed",
+      "commission_is_ancestor": true,
+      "ahead_behind": "0\t0",
+      "changed_paths": [],
+      "git_classification": "UNCHANGED_REMOTE_NO_RETURN_VISIBLE",
+      "agent": "Space Bunny / OpenCode",
+      "model": "Space Bunny Max",
+      "machine": "governed Mac",
+      "classification": "UNCHANGED_REMOTE_NO_RETURN_VISIBLE__LOCAL_SESSION_STATE_UNKNOWN"
+    },
+    {
+      "id": "HQ248_F7_T1_DOCUMENTARY_DESIGN",
+      "branch": "agent/reviewer-pyat-hq248-f7-trusted-constructor-ingress-design-r1",
+      "commission_tip": "ad320e05bf3f7ed75bca51e62e3b044da5d8c535",
+      "head": "58934231d6e5bc895f937b069433237f7edce594",
+      "commission_is_ancestor": true,
+      "ahead_behind": "0\t1",
+      "changed_paths": [
+        "A\tWORKER_RETURNS/PYAT-HQ248-F7-T1-PRODUCTION-TRUST-INGRESS-DESIGN-R1/00_DESIGN.md",
+        "A\tWORKER_RETURNS/PYAT-HQ248-F7-T1-PRODUCTION-TRUST-INGRESS-DESIGN-R1/01_OWNER_PROVENANCE_AND_CALLSITE.json",
+        "A\tWORKER_RETURNS/PYAT-HQ248-F7-T1-PRODUCTION-TRUST-INGRESS-DESIGN-R1/02_THREAT_AND_POSITIVE_TEST_MATRIX.json",
+        "A\tWORKER_RETURNS/PYAT-HQ248-F7-T1-PRODUCTION-TRUST-INGRESS-DESIGN-R1/03_FUTURE_IMPLEMENTATION_COMMISSION.md",
+        "A\tWORKER_RETURNS/PYAT-HQ248-F7-T1-PRODUCTION-TRUST-INGRESS-DESIGN-R1/FINAL_DISPOSITION.json"
+      ],
+      "git_classification": "ADVANCED_DESCENDANT_REQUIRES_RETURN_CONTENT_REVIEW",
+      "agent": "Browser/GitHub documentary forensic reviewer",
+      "model": "GPT-5.6 Sol High",
+      "machine": "Browser GitHub only",
+      "classification": "POST_CHECKPOINT_PENDING_RETURN"
+    },
+    {
+      "id": "HQ248_N10E_REAL_OWNER_PLACEMENT_FEASIBILITY",
+      "branch": "agent/space-bunny-pyat-hq248-n10e-at07-deployment-placement-evidence-r1",
+      "commission_tip": "9716656ee47fb04bf8bd6e842982d78b6490cca8",
+      "head": "e64379e542b931df1e7df47f1b37955a1cb9a3a9",
+      "commission_is_ancestor": true,
+      "ahead_behind": "0\t1",
+      "changed_paths": [
+        "A\tWORKER_RETURNS/PYAT-HQ248-N10E-AT07-C1-LOCAL-PLACEMENT-FEASIBILITY-R1/00_FEASIBILITY.md",
+        "A\tWORKER_RETURNS/PYAT-HQ248-N10E-AT07-C1-LOCAL-PLACEMENT-FEASIBILITY-R1/01_LOCAL_OWNER_AND_VERIFIER_EVIDENCE.json",
+        "A\tWORKER_RETURNS/PYAT-HQ248-N10E-AT07-C1-LOCAL-PLACEMENT-FEASIBILITY-R1/02_DEPLOYMENT_AND_JOURNAL_FEASIBILITY.json",
+        "A\tWORKER_RETURNS/PYAT-HQ248-N10E-AT07-C1-LOCAL-PLACEMENT-FEASIBILITY-R1/03_HQ_DESIGNATION_REQUIRED.md",
+        "A\tWORKER_RETURNS/PYAT-HQ248-N10E-AT07-C1-LOCAL-PLACEMENT-FEASIBILITY-R1/FINAL_DISPOSITION.json"
+      ],
+      "git_classification": "ADVANCED_DESCENDANT_REQUIRES_RETURN_CONTENT_REVIEW",
+      "agent": "Space Bunny / OpenCode",
+      "model": "Space Bunny Max or equivalent capable local model",
+      "machine": "governed Mac",
+      "classification": "POST_CHECKPOINT_PENDING_RETURN"
+    }
+  ],
+  "last_observed_remote_utc": "2026-10-08T18:10:15.049328+00:00",
+  "open_questions_source": "phases/P0_DELTA_CENSUS.md \u00a75",
+  "evidence_grades": [
+    "DIRECT_GIT_PACKET_VERIFIED",
+    "INHERITED_HQ_ADOPTION_AT_DECLARED_GRAIN",
+    "SUBMITTED_RETURN_NOT_ADOPTED",
+    "STATIC_CODE_EXCERPT_ONLY",
+    "RUNTIME_AND_ESTATE_NOT_EXECUTED"
+  ],
+  "pipeline_tests_executed": 0,
+  "p1_started": false,
+  "p2_started": false,
+  "p3_started": false,
+  "worktree_bootstrap": "Existing supplied clean detached shared-store Codex worktree sparsified and local commissioned branch created at exact startup tip; not HQ-preprepared certification"
 }
