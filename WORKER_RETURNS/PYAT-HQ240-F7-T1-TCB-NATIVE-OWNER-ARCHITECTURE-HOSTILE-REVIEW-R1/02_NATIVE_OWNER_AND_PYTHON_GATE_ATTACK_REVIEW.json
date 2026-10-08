@@ -1,0 +1,96 @@
+{
+  "schema": "PYAT_HQ240_F7_NATIVE_OWNER_AND_PYTHON_GATE_ATTACK_REVIEW@1",
+  "status": "DOCUMENTARY_ONLY_PROPOSED_NOT_AUTHORIZED",
+  "candidate": "HQ238 DESIGN_I: exact native P07 owner and actual adjudicator, trusted Python F7 and trusted final consumer",
+  "base": "0bb7cd0e4243c17e4b028b30e16fb73fa42653b8",
+  "findings": [
+    {
+      "ID": "HQ240-DEFECT-F7-P07-ALIAS-TCB-001",
+      "type": "TCB_ADMISSION_UNRESOLVED",
+      "finding": "Current _authenticated_source_relation_decide at F7 module :247-251 is writable and load-bearing at :1110. HQ231 test :2345-2389 deliberately substitutes it to authorize the original empty victim. Explicit fault-injection history does not automatically expand original T1 semantic attacker, but a new T1 cannot silently declare this named working substitute out of scope."
+    },
+    {
+      "ID": "HQ240-DEFECT-F7-TERMINAL-RELIANCE-002",
+      "type": "TCB_RELIANCE_UNLOCATED",
+      "finding": "TemporalRelationReceipt is module-local, content-addressed, not issuer-authenticated. Test callers observed, no exhaustive real production consumer census; HQ210 does not authorize F8."
+    },
+    {
+      "ID": "HQ240-DEFECT-NATIVE-P07-INSTALLATION-AND-CALLBACK-003",
+      "type": "DESIGN_RUNTIME_PROOF_ABSENT",
+      "finding": "No actual native extension, binary hashes, CPython ABI/toolchain or governed macOS native runtime proof. C-to-Python callbacks, reentrant constructors, native type and owner state cannot be inferred from design only."
+    },
+    {
+      "ID": "HQ240-DEFECT-OLD-API-AND-ALIASES-004",
+      "type": "API_INTEGRATION_PENDING",
+      "finding": "C11 from_c11, decide/require/resolve_exact, direct guards and registry replacement immunity require explicit differential compatibility and alias/consumer census."
+    }
+  ],
+  "required_native_interface": {
+    "module": "rawlsing_next._p07_native_owner (proposed only)",
+    "type": "exact non-subclassable native SourceRelationResolver, one-shot atomic constructor, no pickled/copied/resurrected shortcut",
+    "constructor": "SourceRelationResolver(*, relations, authority_registry: exact AuthorityRegistry)",
+    "from_c11": "SourceRelationResolver.from_c11(repository, relation_refs, authority_registry)",
+    "methods": [
+      "decide",
+      "require",
+      "resolve_exact detached read only"
+    ],
+    "native_entrypoint": "authenticated_source_relation_decision(exact_native_resolver, actual P07 request kwargs) -> exact RelationDecision",
+    "private_state": [
+      "exact per-object pointer/generation identity",
+      "private immutable deep copies by_ref, by_key, SourceUniverseRelation and pinned authority snapshots",
+      "constructor custody identity and exact replay semantics",
+      "no exported register/reseal/load/state/transfer/capsule/handle transplant"
+    ],
+    "P07_all_rules": "Native must implement entire actual decision: SOURCE_SEMANTIC_EQUIVALENCE, operation SEMANTIC_EQUIVALENCE_ADMISSION, ordered exact full universe pair, operation/effective EXACT_BOUND_UNIVERSE_PAIR scope, target_use governed_use_id.object_id, relation ref, pinned authority/snapshot/ref/hash and replay. No parallel Python-positive owner.",
+    "runtime_seams": "No untrusted Python callback during adjudication; constructor may enumerate and inspect hostile Python objects only with defensively checked copy-and-validate. __iter__/__getattribute__/rich-comparison/callbacks can execute attacker code; reject reentrancy.",
+    "registry": "Visible post-seal _registry replacements and nested registry monkeypatch must not modify pinned constructor authority; never make registry identity a custody anchor",
+    "trusted_F7": "Can consume genuine native decision only if F7 code, module-global native alias, verifier and real consumer are explicitly inside adopted T1 TCB; Python module global is not immutable by default"
+  },
+  "attacks": [
+    {
+      "attack": "class/instance method monkeypatch decide, require, resolve_exact, _validate_positive and nested validators",
+      "classification": "ADMITTED_NAMED_T1_PROBES",
+      "requirement": "actual native authenticated path remains substantive/productive"
+    },
+    {
+      "attack": "closure-cell rebind and forged NamedTuple state",
+      "classification": "ADMITTED_T1",
+      "requirement": "no Python ledger controls private constructor custody"
+    },
+    {
+      "attack": "visible owner fields/registry changes",
+      "classification": "ADMITTED_T1",
+      "requirement": "no false positive; lawful registry replacement immunity preserved"
+    },
+    {
+      "attack": "module-global F7 P07 alias substitute",
+      "classification": "HISTORICALLY_EXECUTED_HQ231_POSITIVE_FAULT_INJECTION__T1_SCOPE_UNRESOLVED",
+      "requirement": "explicit HQ warrant: include => Design I fails, exclude => named nonmutable trusted alias assumption plus all other T1 attacks preserved"
+    },
+    {
+      "attack": "F7 comparator.__code__, verifier or final Python receipt replacement",
+      "classification": "GENERAL_T2",
+      "requirement": "protected end-to-end gate if demanded"
+    },
+    {
+      "attack": "ctypes/cffi, native debugger/memory modification",
+      "classification": "MUST_EXPLICITLY_EXCLUDE_OR_MODEL",
+      "requirement": "cannot claim native security against arbitrary C memory mutation"
+    },
+    {
+      "attack": "wrapper, PyCapsule, native method override, class alias fake, constructor reinit, pickle/copy",
+      "classification": "NEW_NATIVE_T1_COURTS",
+      "requirement": "C object identity and private state cannot be transplanted"
+    }
+  ],
+  "runtime": {
+    "governed": "macOS 13.7.8 x86_64 CPython 3.11.3",
+    "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "compiled_native_binary": null,
+    "toolchain": null,
+    "ABI_qualification": null,
+    "native_execution": false
+  },
+  "assessment": "CONDITIONALLY_IMPLEMENTABLE_BUT_TCB_ALIAS_AND_RELIANCE_GATES_NOT_CLOSED; NOT ADOPTABLE NOW"
+}
