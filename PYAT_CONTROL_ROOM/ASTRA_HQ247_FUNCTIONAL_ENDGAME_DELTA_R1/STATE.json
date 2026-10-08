@@ -6,9 +6,9 @@
   "phase": "P0_COMPLETE",
   "required_next_model": "Human-selected Astra Pro / highest available reasoning",
   "pending_model_switch": null,
-  "control_origin_head_observed": "675b0793fd2a2b75463fc00d2b884eefdc95e9f9",
-  "control_latest_checkpoint_observed": "20261008-PYAT-HQ248-F7-R2-REFCOUNT-N10E-PLACEMENT-HOLD-R1",
-  "handoff_commit_observed": "91595263d2888091e1f28af1ed38429b7c02966f",
+  "control_origin_head_observed": "a3d44f554e4e4fa01223679035599019ae2de527",
+  "control_latest_checkpoint_observed": "20261008-PYAT-HQ249-THREE-HQ248-RETURNS-ASTRA-AUDIT-WAKE-R1",
+  "handoff_commit_observed": "feff06d43428efa767ce6823f693ca5361767332",
   "semantic_pre_main_observed": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "branch_remote_head_at_issuance": "152bb3c3afd78d5b6a629eda158c56d5084bf86e",
   "other_remote_heads_observed": [
@@ -37,7 +37,7 @@
   "prior_astra_atlas": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/README.md",
   "previous_phase_completion": "P0",
   "latest_verified_audit_remote_head": "ddb88d654ae2e257a6401bf8c5421329c48249b9",
-  "checkpoint_status": "P0_HARD_STOP_PACKET__VERIFY_CONTAINING_COMMIT_ON_ORIGIN",
+  "checkpoint_status": "ENTRY_SCAFFOLD_CURRENT_HQ249__P0_NOT_STARTED__ASTRA_P1_HQ_GATE_SATISFIED",
   "completed_investigations": [
     "Verified direct origin control/audit/three worker refs and immutable checkpoint bindings at entry and stop",
     "Verified ancestry and return-only terrain for two pushed returns; read all ten artifacts",
@@ -58,7 +58,7 @@
     "Q9",
     "Q10"
   ],
-  "first_next_action": "Resolve pending explicit intake choice; if override, freeze HQ248 plus three pending returns and begin P1. Otherwise require sealed HQ249+ intake.",
+  "first_next_action": "Read 05_HQ249_ACTIVATION_UNBLOCKED.md and actual current LATEST; perform P0 economical delta census; commit/push/readback and STOP for operator to switch to Astra P1.",
   "last_stage_files": [
     "phases/P0_DELTA_CENSUS.md",
     "phases/P0_GIT_CENSUS_ENTRY.json",
@@ -69,31 +69,35 @@
     "EVIDENCE_LEDGER.md",
     "F1_F8_MATRIX.md",
     "CRITICAL_PATH.md",
-    "NEXT_OPERATOR.md"
+    "NEXT_OPERATOR.md",
+    "05_HQ249_ACTIVATION_UNBLOCKED.md"
   ],
   "original_commission_issuance_control_head": "4246cea7657b6bfb1e405a27f3dff952c4d157df",
   "original_commission_issuance_checkpoint": "20261008-PYAT-HQ247-N10E-R3-ADOPTED-F7-HOSTILE-BLOCKED-R1",
-  "pending_astra_P1_gate": "SEALED_HQ249_OR_LATER_OR_EXPLICIT_HUMAN_INTAKE_OVERRIDE_PENDING",
+  "pending_astra_P1_gate": "SATISFIED_BY_SEALED_HQ249__STILL_REQUIRES_P0_COMPLETION_PUSH_VERIFICATION_AND_MANUAL_ASTRA_SWITCH",
   "prior_HQ247_returns_classification": "ADJUDICATED_AT_HQD_2026_10_08_248__HISTORICAL_NOT_PENDING",
   "hq248_workers_at_amendment": [
     {
       "branch": "agent/space-bunny-pyat-hq248-f7-decide-refcount-repair-r3",
       "commission_tip": "8902013902ffcc8a6f936fb184a11320a57011ed",
       "observed_head": "8902013902ffcc8a6f936fb184a11320a57011ed",
-      "classification": "UNCHANGED_REMOTE__NO_RETURN_VISIBLE"
+      "classification": "ADJUDICATED_HQ249__HISTORICAL",
+      "adjudicated_return_head": "8df99878f7947ac7966f0182ddb2c18424c1c9ae"
     },
     {
       "branch": "agent/reviewer-pyat-hq248-f7-trusted-constructor-ingress-design-r1",
       "commission_tip": "ad320e05bf3f7ed75bca51e62e3b044da5d8c535",
       "observed_head": "ad320e05bf3f7ed75bca51e62e3b044da5d8c535",
-      "classification": "UNCHANGED_REMOTE__NO_RETURN_VISIBLE"
+      "classification": "ADJUDICATED_HQ249__HISTORICAL",
+      "adjudicated_return_head": "58934231d6e5bc895f937b069433237f7edce594"
     },
     {
       "branch": "agent/space-bunny-pyat-hq248-n10e-at07-deployment-placement-evidence-r1",
       "commission_tip": "9716656ee47fb04bf8bd6e842982d78b6490cca8",
       "observed_head": "e64379e542b931df1e7df47f1b37955a1cb9a3a9",
-      "classification": "POST_HQ248_CHECKPOINT_PENDING_RETURN_NOT_HQ_ADOPTED",
-      "author_claim": "BLOCKED_REAL_INDEPENDENT_VERIFIER_PLACEMENT"
+      "classification": "ADJUDICATED_HQ249__HISTORICAL",
+      "author_claim": "BLOCKED_REAL_INDEPENDENT_VERIFIER_PLACEMENT",
+      "adjudicated_return_head": "e64379e542b931df1e7df47f1b37955a1cb9a3a9"
     }
   ],
   "baseline_control_head": "675b0793fd2a2b75463fc00d2b884eefdc95e9f9",
@@ -221,7 +225,7 @@
     }
   ],
   "last_observed_remote_utc": "2026-10-08T18:29:20.149801+00:00",
-  "open_questions_source": "phases/P0_DELTA_CENSUS.md \u00a75",
+  "open_questions_source": "phases/P0_DELTA_CENSUS.md §5",
   "evidence_grades": [
     "DIRECT_GIT_PACKET_VERIFIED",
     "INHERITED_HQ_ADOPTION_AT_DECLARED_GRAIN",
@@ -234,5 +238,13 @@
   "p2_started": false,
   "p3_started": false,
   "worktree_bootstrap": "Existing supplied clean detached shared-store Codex worktree sparsified and local commissioned branch created at exact startup tip; not HQ-preprepared certification",
-  "entry_refresh": "phases/P1_ENTRY_REFRESH.md"
+  "entry_refresh": "phases/P1_ENTRY_REFRESH.md",
+  "hq249_decision": "HQD-2026-10-08-249",
+  "hq249_decision_record": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ249_THREE_HQ248_RETURNS_AND_ASTRA_SYSTEM_AUDIT_WAKE_R1.md",
+  "current_open_blockers": [
+    "F7_R3_OWNER_ADMISSION_CONSTRUCTION_LEAK_HQ248_OPEN_001",
+    "F7_T1_TRUSTED_PRODUCTION_INGRESS_UNIMPLEMENTED__TRANSITIVE_GLOBALS_UNRESOLVED",
+    "N10E_THIS_MAC_NO_INDEPENDENT_VERIFIER_CONTROL",
+    "GLOBAL_F1_F8_PRODUCTIVE_INTEGRATION_AND_ESTATE_UNPROVED"
+  ]
 }
