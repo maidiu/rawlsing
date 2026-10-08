@@ -1,0 +1,37 @@
+{
+  "schema": "ASTRA_P0_GIT_CENSUS@1",
+  "started_utc": "2026-10-08T19:30:44.849388+00:00",
+  "finished_utc": "2026-10-08T19:30:49.731065+00:00",
+  "audit_remote_head": "b5ec127a763a7f041604b0c96ddb2a906fc3a0e1",
+  "control_head": "a3d44f554e4e4fa01223679035599019ae2de527",
+  "pointer_blob": "40778b9ccba8722e3a6b5a14336dcd91867ccc9b",
+  "pointer_sha256": "5d7e24c5507a5ae86e37c0f05c71a73eeabf3ff2b79f94d439ad396874aca73b",
+  "checkpoint_id": "20261008-PYAT-HQ249-THREE-HQ248-RETURNS-ASTRA-AUDIT-WAKE-R1",
+  "handoff_commit": "feff06d43428efa767ce6823f693ca5361767332",
+  "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "operational_decision": "HQD-2026-10-08-249",
+  "pointer_legacy_last_hq_decision": "HQD-2026-10-08-247",
+  "manifest_blob": "afb22cdd3b96342bdf6db2bba743def1e97e1936",
+  "bindings": [
+    {
+      "path": "HQ_HANDOFF/checkpoints/20261008-PYAT-HQ249-THREE-HQ248-RETURNS-ASTRA-AUDIT-WAKE-R1/CURRENT.md",
+      "blob": "35e2d34b6a5c64ce51b740ca4c263bed15d69829",
+      "sha256": "6f0941d632db477709f01f79e3b6e7d1457055df66f360624f040e76797299c3"
+    },
+    {
+      "path": "HQ_HANDOFF/checkpoints/20261008-PYAT-HQ249-THREE-HQ248-RETURNS-ASTRA-AUDIT-WAKE-R1/CURRENT.json",
+      "blob": "b70a1014a68a42ebf048045645d4b5c3dc849387",
+      "sha256": "6b883b52b0d1cef49c4198f1ef4e1fa0b3a1b76951fab12340c7604600ec8cfc"
+    }
+  ],
+  "checks": {
+    "checkpoint_ids": true,
+    "semantic_tips": true,
+    "packet_is_control_ancestor": true,
+    "decision_agrees": true,
+    "current_md_binding": true,
+    "current_json_binding": true
+  },
+  "workers": [],
+  "scope": "Git documentary verification only; no runtime or estate qualification"
+}
