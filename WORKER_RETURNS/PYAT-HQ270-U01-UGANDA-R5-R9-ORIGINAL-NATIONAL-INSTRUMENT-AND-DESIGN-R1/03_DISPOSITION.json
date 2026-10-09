@@ -1,0 +1,106 @@
+{
+  "schema": "PYAT_HQ270_U01_UGANDA_R5_R9_ORIGINAL_NATIONAL_DOCUMENT_COURT@1.0.0",
+  "role": "SCIENTIFIC_DOCUMENTARY_RETURN_ONLY__NOT_NORMATIVE_AUTHORITY",
+  "terminal": "HQ270_U01_RETURNED_FOR_HQ__NO_SELF_ADOPTION",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-pyat-hq270-u01-uganda-r5-r9-original-national-document-court-r1",
+  "commission_tip": "e624160603860495cff679063d25833e2f4a3ddf",
+  "frozen_base": "7c7fd2903383603a2e4103970c2c80dd9b8b05b0",
+  "actual_model": "GPT-6 reasoning model; Sol High selection cannot be independently attested",
+  "finding": "QUALIFIED_FOR_BOUNDED_FUTURE_ORIGINAL_R5_ARCHIVE_AND_DICTIONARY_COURT__PAIR_USE_HELD",
+  "improved_evidence": {
+    "r5_uganda_country_codebook": "Danielle Carter, June 2012; country Q7 and TIF plus withinwt documented",
+    "r5_original_fielded_questionnaire": "NOT_RECOVERED__HOLD",
+    "r5_country_2012_summary": "Q7 question wording corroboration and national 2400 versus USAID supplemental 3800",
+    "r9_uganda_original_english_questionnaire": "28 December 2021 revision, question Q3 page 6 PDF indexed; actual deployment and translation custody not proven",
+    "r9_uganda_country_codebook": "April 2023 cover, public listing 2024; response codes and withinwt_ea/withinwt_hh documented",
+    "r9_technical_information_form": "2022 Jan 7–25 field dates, citizen 18+ noninstitutional, 2014 census frame, 3392 TIF total; 2400 national 992 cities",
+    "all_pdf_screenshots": "WEB_PDF_SCREENSHOT_CACHE_MISS__NO_VISUAL_PAGE_VERIFICATION",
+    "rawlsing_sav_physical_source_execution": false
+  },
+  "population": {
+    "candidate": "noninstitutional Ugandan citizens aged 18+ in each wave’s official national coverage",
+    "sampling": "independent repeated national probability cross-sections",
+    "r5_national_n": 2400,
+    "r5_supplemental_n": 3800,
+    "r5_all_fieldwork_n": 6200,
+    "r9_national_n": 2400,
+    "r9_supplemental_n": 992,
+    "r9_all_fieldwork_n": 3392,
+    "national_record_selector_status": "NOT_PROVED_FOR_ARCHIVED_ASSET",
+    "panel": false
+  },
+  "measurement": {
+    "construct": "subjective judgement of overall national direction; not objectively measured national performance",
+    "r5_item": "Q7",
+    "r9_item": "Q3",
+    "r5_codes": {
+      "1": "wrong",
+      "2": "right",
+      "9": "don't know",
+      "998": "refused",
+      "-1": "missing"
+    },
+    "r9_codes": {
+      "1": "wrong",
+      "2": "right",
+      "8": "refused",
+      "9": "don't know",
+      "-1": "missing"
+    },
+    "r9_added_balancing_prompt": true,
+    "original_r5_administered_prompt_verified": false,
+    "r9_page_visual_verified": false,
+    "outcome": null
+  },
+  "weights": {
+    "r5_codebook_variable": "withinwt",
+    "r5_tif_weight_field": "BLANK__CONFLICT_TO_RESOLVE",
+    "r9_codebook_variables": [
+      "withinwt_ea",
+      "withinwt_hh"
+    ],
+    "selected_approved_weight": "HOLD",
+    "exact_psu_strata_record_mapping": "HOLD",
+    "adopted_variance_design": false
+  },
+  "source_release_version_concerns": [
+    "R5 country codebook RESPNO identity range UGA0001-UGA6200 versus 2400 national reported",
+    "R9 country codebook RESPNO identity range UGA0001-UGA3392 versus 2400 public national release",
+    "R9 World Bank UGA_2022_AFB-R9_v01_M labels 2400-case data file Updated.7Nov23; no exact identity crosswalk to Rawlsing source",
+    "R5 2002 census projected to 2011; R9 2014 census; different urban/city and regional frames",
+    "R9 longer balancing prompt, translation and version deployment not qualified"
+  ],
+  "candidate_estimand": "P_R9(Q3=2 | Q3 in {1,2}, national eligible adult citizens) - P_R5(Q7=2 | Q7 in {1,2}, national eligible adult citizens); design-weighted independent repeated cross-sections with separately published invalid-response diagnostics",
+  "smallest_next_archival_owner": "Afrobarometer Data Management and Wilsken Agencies / Uganda R5 national team for fielded Uganda R5 questionnaire and translations; Afrobarometer Hatchile Consult for R9 design and supplemental/national manifests",
+  "smallest_next_dictionary_court": "Source-only exact-sha/version and no-row dictionary metadata for Q7/Q3, national inclusion marker, country, weight fields, PSU, strata, missing and release-to-Rawlsing identity; separate HQ commission required",
+  "no_authority": [
+    "NO_RAW_SAV_EXECUTION",
+    "NO_NUMERIC_TREND",
+    "NO_PAIRC7_EE12_USE_GRANT",
+    "NO_EE14_SELECTED_SERVICE",
+    "NO_WORLD_CONSUMER_OR_N9_GRANT",
+    "NO_V3_OR_ACTOR_PERMISSION",
+    "NO_SELF_ADOPTION"
+  ],
+  "work_performed": {
+    "original_country_public_docs_search": true,
+    "github_commission_and_upstream_scientific_return_read": true,
+    "official_pdf_text_index_read": true,
+    "official_pdf_screenshot_attempted": true,
+    "official_pdf_screenshot_succeeded": false,
+    "original_r5_questionnaire_found": false,
+    "raw_sav_or_row_decode": false,
+    "local_mac": false,
+    "production_or_semantic_edits": false,
+    "repository_mutations": "EXACTLY_FOUR_ADDITIVE_WORKER_RETURN_FILES"
+  },
+  "references": [
+    "https://www.afrobarometer.org/wp-content/uploads/2022/02/uga_r5_codebook.pdf",
+    "https://www.afrobarometer.org/wp-content/uploads/2022/02/uga_r5_sor.pdf",
+    "https://www.afrobarometer.org/wp-content/uploads/2023/06/UGA_R9.Indigenized-questionnaire_29Dec21-Final.docx.pdf",
+    "https://www.afrobarometer.org/wp-content/uploads/2024/05/UGA_R9.Codebook_16Apr24.final_.pdf",
+    "https://www.afrobarometer.org/wp-content/uploads/2023/08/UGA_R9_Summary-of-results_Afrobarometer-9aug23.pdf",
+    "https://microdata.worldbank.org/catalog/6756/data-dictionary/F1"
+  ]
+}
