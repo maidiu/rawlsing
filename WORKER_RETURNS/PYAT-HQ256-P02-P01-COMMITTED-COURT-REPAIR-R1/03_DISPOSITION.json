@@ -1,0 +1,131 @@
+{
+  "authority_resolution": {
+    "branch_local_checkpoint": "20261008-PYAT-HQ253-R01-R02-INTAKE-AUSTRIA-Q59C-PRIMARY-T0-ISSUED-R1",
+    "branch_local_pointer_was_stale": true,
+    "live_checkpoint": "20261008-PYAT-HQ256-R01-N01-RETURNS-P02-N02-ISSUED-R1",
+    "live_control_tip": "b9a486161f53d78da845b7f81122fb55458750ad",
+    "live_next_action": "LAUNCH_HQ256_P02_SPACE_BUNNY_AND_N02_BROWSER_SOL_IN_PARALLEL__NO_P01_T1_ADOPTION",
+    "quarantine_confirmed_by_live_authority": "NO_P01_T1_ADOPTION",
+    "r01_ref_resolved_to_commissioned_sha": true,
+    "r01_review_ref": "7db575466683e9c6511c65656f93e1f41158cffb",
+    "r01_verdict": "REPAIR_NARROW",
+    "semantic_pre_main": "1f47063c3205a45888b3c55e81e7485943ed1390",
+    "used_canonical_live_LATEST_not_branch_local": true
+  },
+  "baseline_blob_proof_measured": {
+    "blob_at_p01_base_428be7595": "4ba00b8ecf73f70ad0f6481e255fd0117744418a",
+    "blob_at_p01_candidate_23438ab52": "848d2d0eedb04b792747e9d6aaa49bb39d108a2c",
+    "git_hash_object_working_file": "848d2d0eedb04b792747e9d6aaa49bb39d108a2c",
+    "refusal_code_occurrences_baseline": 0,
+    "refusal_code_occurrences_candidate": 1,
+    "sha256_baseline_file": "0a5d3020572f1d72dd9b4a200d2a98176587cf3282714022ccfe910519900c75",
+    "sha256_working_file": "5221d8c2257ab1e8ec45289a30c57ba9ed4956b8609a890e80343718a6e9c66b"
+  },
+  "behaviours_verified_no_edit": {
+    "duplicate_detail": "binding [A,A] vs receipt [A] binds and the duplicate lands in material as perm-A twice -- R01 OBS_01, confirmed still present and NOT fixed here",
+    "duplicate_insensitive_still_present": true,
+    "exactref_key_set_equality_preserved": true,
+    "no_c1_custody_claim": true,
+    "no_extra_authority": true,
+    "order_insensitive": true,
+    "release_permission_precedence_preserved": true
+  },
+  "branch": "agent/space-bunny-pyat-hq256-p01-committed-court-repair-r1",
+  "changed_paths": [
+    "rawlsing_next/tests/test_pre553_f8_receipt_permission_identity_hq254.py",
+    "WORKER_RETURNS/PYAT-HQ256-P02-P01-COMMITTED-COURT-REPAIR-R1/"
+  ],
+  "commission_tip": "ea5110f7d26835cccbfabf86173d9815d94ddf74",
+  "commission_tip_verified_against_live_origin": true,
+  "committed_state_proof": {
+    "clean_tip": true,
+    "exit": 0,
+    "head_at_run": "ea5110f7d26835cccbfabf86173d9815d94ddf74",
+    "note": "green at a committed tip, which the pre-repair court never was",
+    "result": "16 passed"
+  },
+  "cut_over": false,
+  "defect_reproduced_before_repair": {
+    "exit": 1,
+    "failing_test": "test_adopted_binder_baseline_was_the_unmodified_owner",
+    "result": "1 failed, 15 passed",
+    "root_cause": "self-referential: asserted git rev-parse HEAD:<binder> equals the PRE-candidate baseline, so it could only pass while the production edit was uncommitted"
+  },
+  "disposition": "NARROW_COURT_REPAIR_COMPLETE__GREEN_AT_COMMITTED_STATE__NOT_ADOPTED",
+  "exact_startup_parent": "23438ab52f16abda5960a075dfca3f4d3396eab5",
+  "execution": [
+    {
+      "exit": 0,
+      "result": "16 passed",
+      "run": "committed-state new court"
+    },
+    {
+      "exit": 0,
+      "result": "199 passed",
+      "run": "four adopted baseline courts"
+    },
+    {
+      "exit": 0,
+      "result": "215 passed",
+      "run": "combined"
+    },
+    {
+      "exit": 1,
+      "result": "380 passed, 9 pre-existing collection errors",
+      "run": "wider sweep"
+    },
+    {
+      "exit": 1,
+      "result": "10 failed / 6 passed",
+      "run": "NEGATIVE CONTROL production reverted, git available"
+    },
+    {
+      "exit": 1,
+      "result": "10 failed / 6 passed",
+      "run": "NEGATIVE CONTROL production reverted, no-git tmp"
+    },
+    {
+      "exit": 0,
+      "result": "15 passed / 1 skipped",
+      "run": "candidate present, no-git tmp"
+    }
+  ],
+  "merged": false,
+  "negative_control_reconciliation": "R01 reported 10/6 and attributed the tenth failure to a no-git terrain artifact; the P01 author run showed 9/7. Both are correct. They differ by exactly the provenance test, whose outcome depends on whether production is committed. Pre-repair it could only fail; after the repair it fails meaningfully when the candidate is absent from disk and passes when present. The no-git spurious failure is eliminated by skipping layer B.",
+  "next": "Separate DeepSeek-Harness rerun required for candidate adoption. No auto-adoption.",
+  "not_adopted": true,
+  "production_byte_identity": {
+    "blob": "848d2d0eedb04b792747e9d6aaa49bb39d108a2c",
+    "bytes": 56186,
+    "modified_by_this_lane": false,
+    "path": "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+    "sha256": "5221d8c2257ab1e8ec45289a30c57ba9ed4956b8609a890e80343718a6e9c66b"
+  },
+  "repair": {
+    "approach": "pin baseline to FIXED commits; layer A git-free and always runs; layer B skipped not failed without git",
+    "baseline_ever_taken_from_head": false,
+    "file": "rawlsing_next/tests/test_pre553_f8_receipt_permission_identity_hq254.py",
+    "other_tests_edited": 0,
+    "production_edited": false,
+    "refusal_precedence_changed": false,
+    "renamed_to": "test_adopted_binder_baseline_is_pinned_to_a_fixed_commit_not_head",
+    "set_semantics_changed": false
+  },
+  "retained_observations": [
+    "R01 OBS_01 duplicate insensitivity remains open; this lane repairs one test and must not change set semantics",
+    "R01 OBS_03 malformed receipt permission mapping would raise plain Pre553IntegrityError on an unreachable path",
+    "the separate HQ253 T01 provenance/authority custody gap remains OPEN",
+    "T0, T1 and T2 stages remain distinct; no T1 adoption is implied"
+  ],
+  "runtime": {
+    "governed_certification_environment": false,
+    "machine": "macOS 13.7.8 x86_64",
+    "pytest": "9.1.1 (pre-existing local venv, stdlib only)",
+    "python": "3.11.3",
+    "raw_library_survey_native_issuer_used": false
+  },
+  "schema": "HQ256_P02_DISPOSITION@1.0.0",
+  "self_approved": false,
+  "startup_parent_matches_commission": true,
+  "terminal": "HQ256_P02_RETURNED_FOR_HQ_INDEPENDENT_INTAKE__NOT_ADOPTED"
+}

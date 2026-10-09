@@ -281,18 +281,73 @@ def test_candidate_is_confined_to_the_permission_field():
             "grant any permission", "").replace("grants no permission", "")
 
 
-def test_adopted_binder_baseline_was_the_unmodified_owner():
-    """Record the baseline blob this candidate was written against."""
+def test_adopted_binder_baseline_is_pinned_to_a_fixed_commit_not_head():
+    """HQ256 P02 REPAIR. The provenance guard is HEAD-independent.
+
+    The original witness read ``git rev-parse HEAD:<binder>`` and compared it to the
+    PRE-candidate baseline blob. That is self-referential: committing the candidate
+    necessarily moves ``HEAD`` to the candidate blob, so the guard could only ever
+    pass while the production edit was UNCOMMITTED. On every committed SHA of the
+    candidate it failed, which made the candidate's own court 15/16 on exactly the
+    artefact it was written to certify. A provenance guard that cannot pass on the
+    committed artefact certifies nothing.
+
+    The repair pins the baseline to FIXED commits instead of ``HEAD``:
+
+      * layer A is git-free and always runs -- the on-disk production file must be
+        byte-identical to the reviewed candidate, and the recorded baseline and
+        candidate identities must be distinct with the refusal code present only in
+        the candidate;
+      * layer B resolves the blob at two FIXED commits, so the result is identical at
+        every HEAD, and is skipped (not failed) when no git repository is available,
+        so a /tmp no-git artifact is reported as terrain rather than as a defect.
+
+    The baseline itself is NEVER taken from ``HEAD``.
+    """
+    import hashlib
     import pathlib
     import subprocess
 
+    # ---- fixed, recorded identities (never derived from HEAD) --------------
+    p01_base_commit = "428be7595fce3ecf6ae3cb37852bee884d9ce2e1"      # pre-candidate
+    p01_candidate_commit = "23438ab52f16abda5960a075dfca3f4d3396eab5"  # frozen candidate
+    baseline_blob = "4ba00b8ecf73f70ad0f6481e255fd0117744418a"
+    candidate_blob = "848d2d0eedb04b792747e9d6aaa49bb39d108a2c"
+    candidate_sha256 = (
+        "5221d8c2257ab1e8ec45289a30c57ba9ed4956b8609a890e80343718a6e9c66b")
+
+    # the module-level constant must still name the true pre-candidate baseline
+    assert BINDER_BASELINE_BLOB == baseline_blob
+    assert baseline_blob != candidate_blob
+
+    # ---- layer A: git-free, always executed -------------------------------
     path = pathlib.Path("rawlsing_next/pre553_service_f8_source_scope_binding.py")
-    head = subprocess.run(
-        ["git", "rev-parse", "HEAD:" + str(path)],
-        capture_output=True, text=True, check=True).stdout.strip()
-    assert head == BINDER_BASELINE_BLOB, (
-        "the candidate must be written against the recorded adopted baseline")
+    raw = path.read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == candidate_sha256, (
+        "the production binder must remain byte-identical to the reviewed candidate")
+    text = raw.decode("utf-8")
+    assert text.count("BINDING_PERMISSION_IDENTITY_MISMATCH") == 1, (
+        "the candidate adds exactly one refusal block and no duplicate vocabulary")
     assert B.__file__.endswith("pre553_service_f8_source_scope_binding.py")
+
+    # ---- layer B: git at FIXED commits; skipped, never failed, without git ----
+    def _blob(commit: str):
+        result = subprocess.run(
+            ["git", "rev-parse", f"{commit}:{path}"],
+            capture_output=True, text=True)
+        if result.returncode != 0:
+            return None
+        return result.stdout.strip()
+
+    baseline_at_base = _blob(p01_base_commit)
+    candidate_at_commit = _blob(p01_candidate_commit)
+    if baseline_at_base is None or candidate_at_commit is None:
+        pytest.skip("no git object store available: fixed-commit identity layer not "
+                    "executable here (terrain limitation, not a defect)")
+    assert baseline_at_base == baseline_blob
+    assert candidate_at_commit == candidate_blob
+    # and the working-tree file is the same candidate blob, independent of HEAD
+    assert _blob("HEAD") == candidate_blob
 
 
 def test_no_production_power_was_added_by_constructing_a_binding(source):

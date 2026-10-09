@@ -1,0 +1,139 @@
+{
+  "behaviours_verified_without_editing": {
+    "duplicate_insensitive": {
+      "binding": [
+        "A",
+        "A"
+      ],
+      "duplicate_lands_in_material": true,
+      "material_perms_observed": [
+        "perm-A",
+        "perm-A"
+      ],
+      "note": "R01 OBS_01 is CONFIRMED STILL PRESENT. Not fixed: this lane is commissioned to repair exactly one test and to change neither refusal precedence nor set semantics. Reported as a retained observation for the next owner.",
+      "receipt": [
+        "A"
+      ],
+      "result": "BOUND"
+    },
+    "exactref_key_set_equality_preserved": true,
+    "mismatch_refuses": {
+      "binding": [
+        "A",
+        "B"
+      ],
+      "receipt": [
+        "A"
+      ],
+      "result": "REFUSED BINDING_PERMISSION_IDENTITY_MISMATCH"
+    },
+    "no_c1_custody_claim": true,
+    "no_extra_authority": {
+      "forbidden_purposes_intact": true,
+      "grants_no_authority": true,
+      "model_use_added": false,
+      "permission_granted": false
+    },
+    "order_insensitive": {
+      "binding": [
+        "B",
+        "A"
+      ],
+      "receipt": [
+        "A",
+        "B"
+      ],
+      "result": "BOUND"
+    },
+    "release_permission_precedence_preserved": {
+      "changed_by_this_repair": false,
+      "permission_vs_release": "BINDING_PERMISSION_IDENTITY_MISMATCH precedes BINDING_RELEASE_GRAIN_MISMATCH, as in the reviewed candidate",
+      "release_alone": "BINDING_RELEASE_GRAIN_MISMATCH unchanged",
+      "target_use_vs_permission": "BINDING_TARGET_USE_GRAIN_MISMATCH still outranks permission"
+    },
+    "superset_multi_binding": {
+      "binding": [
+        "A",
+        "A",
+        "B"
+      ],
+      "receipt": [
+        "A",
+        "B"
+      ],
+      "result": "BOUND (duplicate tolerated)"
+    }
+  },
+  "committed_state_positive_oracle": {
+    "exit": 0,
+    "head_at_run": "ea5110f7d26835cccbfabf86173d9815d94ddf74",
+    "note": "the court is green at a CLEAN committed tip, which the pre-repair court never was",
+    "requirement": "must pass with HEAD at the committed candidate, not merely while the worktree is dirty",
+    "result": "16 passed",
+    "run": "pytest rawlsing_next/tests/test_pre553_f8_receipt_permission_identity_hq254.py -q -p no:cacheprovider"
+  },
+  "defect_reproduced_first": {
+    "actual_value": "848d2d0eedb04b792747e9d6aaa49bb39d108a2c (HEAD blob, committed candidate)",
+    "asserted_value": "4ba00b8ecf73f70ad0f6481e255fd0117744418a (HEAD blob, pre-candidate baseline)",
+    "exit": 1,
+    "failing_test": "test_adopted_binder_baseline_was_the_unmodified_owner",
+    "observed_before_repair": true,
+    "result": "1 failed, 15 passed",
+    "root_cause": "self-referential provenance guard: it read git rev-parse HEAD:<binder> and compared it to the PRE-candidate baseline. Committing the candidate necessarily moves HEAD to the candidate blob, so the guard could only pass while the production edit was UNCOMMITTED. On every committed SHA of the candidate it failed, so the candidate's own court was 15/16 on exactly the artefact it was meant to certify.",
+    "run": "pytest rawlsing_next/tests/test_pre553_f8_receipt_permission_identity_hq254.py -q -p no:cacheprovider"
+  },
+  "negative_control_correctly_configured": {
+    "git_available_in_worktree": {
+      "composition": {
+        "mismatch_refusal_discriminators": 9,
+        "provenance_guard_discriminator": 1,
+        "total_failed": 10
+      },
+      "exit": 1,
+      "reconciliation_with_R01": "R01 reported 10 failed / 6 passed and described the tenth as a no-git /tmp terrain artifact while the author's P01 run showed 9/7. Both numbers are correct and they differ by exactly the provenance test, whose count depends on whether production is committed. Pre-repair it could only ever fail; after the repair it FAILS MEANINGFULLY when the candidate is absent from disk and PASSES when the reviewed candidate is present.",
+      "result": "10 failed, 6 passed",
+      "setup": "production binder reverted to the P01 base commit 428be7595fce3ecf6ae3cb37852bee884d9ce2e1"
+    },
+    "no_git_tmp_positive": {
+      "exit": 0,
+      "note": "the git-dependent layer SKIPS rather than spuriously failing; this is the terrain artifact R01 recorded, now eliminated",
+      "result": "15 passed, 1 skipped",
+      "setup": "rawlsing_next copied to /tmp with no .git, production is the committed candidate"
+    },
+    "no_git_tmp_terrain": {
+      "exit": 1,
+      "note": "layer A is git-free, so the provenance guard still discriminates the absent candidate without any git access",
+      "result": "10 failed, 6 passed",
+      "setup": "rawlsing_next copied to /tmp with no .git, production reverted to baseline"
+    }
+  },
+  "not_claimed": [
+    "adoption",
+    "merge",
+    "cutover",
+    "T1 serving adoption",
+    "EE14 model-use permission",
+    "F8 producer custody",
+    "resolution of R01 OBS_01 duplicate insensitivity",
+    "resolution of the open HQ253 provenance/authority custody gap"
+  ],
+  "production_byte_identity": {
+    "bytes": 56186,
+    "modified_by_this_lane": false,
+    "p01_candidate_blob": "848d2d0eedb04b792747e9d6aaa49bb39d108a2c",
+    "path": "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+    "sha256": "5221d8c2257ab1e8ec45289a30c57ba9ed4956b8609a890e80343718a6e9c66b",
+    "verified": "git diff --stat on the binder is empty after all negative-control cycling"
+  },
+  "repair": {
+    "approach": "pin the baseline to FIXED commits instead of HEAD; layer A is git-free and always runs; layer B resolves blobs at fixed commits and is SKIPPED (never failed) when no git object store exists",
+    "baseline_never_taken_from_head": true,
+    "file": "rawlsing_next/tests/test_pre553_f8_receipt_permission_identity_hq254.py",
+    "other_tests_edited": "NONE",
+    "production_edited": "NONE",
+    "refusal_precedence_changed": false,
+    "set_semantics_changed": false,
+    "test_renamed_to": "test_adopted_binder_baseline_is_pinned_to_a_fixed_commit_not_head"
+  },
+  "schema": "HQ256_P02_COMMITTED_STATE_POSITIVE_NEGATIVE_ORACLE@1.0.0"
+}
