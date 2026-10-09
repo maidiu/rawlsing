@@ -1,0 +1,39 @@
+{
+  "commission": "PYAT-HQ264-G01-G1-AUTHENTICATED-G2-XOR-MINIMAL-REPAIR-R1",
+  "actual_model": "Space Bunny Max (space-bunny-free) -- NOT the GPT-6 Sol High named on the launch line, declared actual per commission instruction",
+  "committed_sha": "8377eee256175d1ad1a4d02494150e8f95af61f1",
+  "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+  "code_modified": false,
+  "candidate_files_unchanged": {
+    "rawlsing_next/pre553_ee14_c1_owner_authenticated_ingress.py": "e1c09957519f10b29ae2635f3277b4f3af0912c9",
+    "rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py": "f71c0ce87d4005acc6806cac9afe5bbbb76ad9bc"
+  },
+  "executed_assertions": [
+    {
+      "claim": "the adopted real G2 path is importable and callable on this SHA",
+      "command": "PYTHONPATH=. python3.11 -c 'import pre553_service_source_applicability as A; import pre553_service_f8_source_scope_binding as B; print(A.AUTHORISED_AUTHORITY)'",
+      "observed": "ADMISSIBLE_SET_ONLY__RANKING_AND_SELECTION_NOT_AUTHORIZED; resolve_service_source_applicability, bind_service_applicability_to_f8_scope and evaluate_bound_positioned_subject_possibility all callable",
+      "exit_code": 0,
+      "meaning": "F1 is feasible WITHOUT operative G0b, and G2 re-derives rather than self-hashing"
+    },
+    {
+      "claim": "the unadopted HQ262 candidate court still passes unmodified",
+      "command": "PYTHONPATH=. python3.11 -m pytest rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py -q -p no:randomly",
+      "result": "22 passed",
+      "exit_code": 0,
+      "meaning": "baseline preserved; the blocker is fixture availability, not a regression"
+    },
+    {
+      "claim": "the approved HQ253 T01 four-respondent XOR fixture exists in-tree",
+      "command": "grep -rn 'q(C|A=1' rawlsing_next/ ; grep -rln XOR rawlsing_next/tests/",
+      "observed": "no q(C|A=1) fixture material found; only unrelated XOR references in other test files",
+      "meaning": "F2 missing-artifact blocker CONFIRMED by search, not assumed"
+    }
+  ],
+  "documentation_only_claims": [
+    "F1 is feasible: established from reading the adopted binder and its docstring, NOT by executing a full authenticated G2 round trip. No qualified clean-SHA G2 execution was performed in this lane.",
+    "the G2 binder re-derives rather than self-hashes: read from its own docstring and code, not executed.",
+    "no XOR figures were produced or asserted anywhere"
+  ],
+  "no_pass_claimed": "this return contains no PASS. Author-run results are not independent review, and no independent clean-SHA hostile execution was performed."
+}
