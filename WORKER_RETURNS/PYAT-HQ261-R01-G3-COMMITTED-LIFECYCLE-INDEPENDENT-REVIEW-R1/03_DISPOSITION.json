@@ -1,0 +1,62 @@
+{
+  "commission": "PYAT-HQ261-R01-G3-COMMITTED-LIFECYCLE-INDEPENDENT-REVIEW-R1",
+  "terminal": "HQ261_R01_RETURNED__NO_SELF_ADOPTION",
+  "verdict": "ACCEPT_LOCAL_G3_COURT",
+  "verdict_meaning": "HQ may import ONLY the new court rawlsing_next/tests/test_pre553_ee14_selected_current_asof_hq260.py into canonical control. This is LOCAL POSITIVE STAGE CAPABILITY only.",
+  "reviewer": "Space Bunny / OpenCode, independent of the G03 (DeepSeek harness) author",
+  "head": "ec6fa4ba2ea5fe3baa92dde0d0f344c09e2fd67f",
+  "branch": "agent/space-bunny-pyat-hq261-g3-committed-lifecycle-independent-review-r1",
+  "reviewed_sha": "ccebccb677fd9d3079692e2a058666f790585ad1",
+  "reviewed_test_blob": "a1ec3dba504ff866b681d6bbe942d12a9e238257",
+
+  "why_accepted": [
+    "All four courts reproduced independently on CLEAN COMMITTED source at the final SHA, not at G03's self-reported pre-commit head: 15 / 39 / 43 / combined 97, all exit 0.",
+    "97 = 15 + 39 + 43 exactly, agreeing with G03's claim.",
+    "Zero production-module change; all five owner blobs byte-identical to the accepted HQ260 base 788b2bf7.",
+    "Fresh-process replay is genuine: the test spawns a separate interpreter via subprocess.run.",
+    "The new court is non-vacuous: it imports real owner modules and carries 32 assertions across 15 tests."
+  ],
+
+  "import_into_canonical_control": {
+    "permitted": ["rawlsing_next/tests/test_pre553_ee14_selected_current_asof_hq260.py"],
+    "permitted_scope": "local positive stage capability / owner capability only",
+    "not_permitted": ["adoption as T1 model-use grant", "T2 service use", "EE14 model-use competence",
+                      "FF02 positive relation", "EE12 pair authority", "actor/V3 authority",
+                      "any G03 control-document edit treated as live control"]
+  },
+
+  "open_control_question_for_hq": "G03 also edited HQ_HANDOFF/LATEST.json and an HQ260 checkpoint CURRENT.json. Worker-local LATEST is branch-frozen at HQ260 and is not live control; I did not rely on it. HQ should rule separately on whether those edits belong in a worker return. Not a code defect and it did not affect any result.",
+
+  "limitations_and_weaknesses_found": [
+    "MY OWN PROBE LIMITATION: disabling the owner's declare_no_current turned the court RED via a collection error, not graded assertion failures. That demonstrates DEPENDENCY, not SENSITIVITY. No clean behavioural red was achieved and none is claimed.",
+    "G03's own self-reported head_at_run predates its own test file, so its run claim is not self-evidencing; this review supplied the missing evidence at the final SHA.",
+    "The 97 cases are stage-grade over source-free material. They do not exercise, and cannot detect, a real service join."
+  ],
+
+  "what_remains_at_t1_g1_g0b": {
+    "G1_producer_origin_trust_boundary": "NOT advanced. HQ260 G01 returned BLOCKED_REQUIRE_TRUST_ROOT; the immutable producer-origin binding and an independent owner-identity reference are still absent.",
+    "G0b": "unchanged",
+    "EE14_model_use_grant": "none issued",
+    "FF02_positive_relation": "none issued",
+    "EE12_pair_authority": "none issued",
+    "T2_service_join": "not reached",
+    "statement": "a local positive G3 lifecycle capability is a necessary but NOT SUFFICIENT condition for T1, and advances nothing in G1 or G0b"
+  },
+
+  "holds": {
+    "no_source_or_test_modification": true,
+    "no_production_modification": true,
+    "no_self_adoption": true,
+    "no_hq_control_mutation": true,
+    "no_other_branch_modified": true,
+    "no_raw_sav_dta": true,
+    "no_library_access": true,
+    "no_respondent_records_output": true,
+    "no_public_documentary_claims": "none consulted, so none cited",
+    "no_source_read_grant_exceeded": true,
+    "verification_in_separate_worktree_from_authoring": true,
+    "reviewed_blobs_restored_after_probe": "owner file verified byte-identical to HEAD after the vacuity probe (0 diff)"
+  },
+
+  "next_step": "STOP for HQ adjudication. STOP is the disposition, not a deferral."
+}
