@@ -1,0 +1,60 @@
+{
+  "schema": "PYAT_HQ257_E02_FINAL_DISPOSITION_SMALLEST_EDGE@1",
+  "terminal": "HQ257_E02_RETURNED_FOR_HQ__NO_PAIR_AUTHORITY",
+  "status": "PRIMARY_CATALOGUE_ZA4479_STRONGER__COUNTRY_1990_METHOD_HOLD__BYTE_VERSION_HOLD__ESTIMAND_CANDIDATE_ONLY",
+  "branch": "agent/rabochii-pyat-hq257-evs-1990-austria-primary-method-version-r1",
+  "commission_tip": "d547dfc3bfbc74d1f6d1c8af0e9b9a3411ddde1c",
+  "sealed_hq_decision": "HQD-2026-10-08-257",
+  "passes": [
+    "ZA4479_1990_AUSTRIA_OFFICIAL_ZA4460_STUDYNOC_PAGE53",
+    "ZA4754_1990_ZA4460_TABLE_CONTRADICTS_STUDYNOC_AND_2008_NATIONAL",
+    "INTEGRATED_1990_ZA4460_V3.0.0",
+    "AUSTria_1990_N1460_DATES_PRIMARY",
+    "WEIGHT_G_1990_AGE_SEX_CALIBRATION_PRIMARY"
+  ],
+  "holds": [
+    {
+      "id": "COUNTRY_SAMPLING",
+      "first_missing": "AUTHENTIC_1990_AUSTRIA_PRIMARY_METHOD_ROW_OR_NATIONAL_FESSEL_GFK_TECHNICAL_REPORT",
+      "fields": [
+        "probability_vs_quota",
+        "citizenship_age_household_frame",
+        "strata_psu_probability_selection",
+        "household_person_draw",
+        "substitution_nonresponse",
+        "weight_design"
+      ],
+      "owner": "GESIS_EVS_ORIGINAL_AUSTRIA_1990_CUSTODIAN",
+      "candidate": "https://access.gesis.org/dbk/70780",
+      "access": "XLSX_UNREAD"
+    },
+    {
+      "id": "SOURCE_RELEASE",
+      "first_missing": "OFFICIAL_PUBLIC_SOURCE_SAV_SHA256_MANIFEST_OR_GOVERNED_ARCHIVE_BRIDGE_FOR_SRC12_SRC14",
+      "owner": "GESIS_ARCHIVE_VERSION_CUSTODIAN"
+    },
+    {
+      "id": "UNCERTAINTY_ESTIMAND",
+      "first_missing": "VALID_POPULATION_INTERSECTION_AND_1990_PROBABILITY_DESIGN_OR_NONPROBABILITY_UNCERTAINTY_DECISION",
+      "owner": "INDEPENDENT_SURVEY_STATISTICIAN"
+    },
+    {
+      "id": "MEASUREMENT",
+      "first_missing": "SHOW_READ_PROTOCOL_COMPARABILITY_JUDGMENT",
+      "owner": "EE12_MEASUREMENT_REVIEWER"
+    },
+    {
+      "id": "PAIR",
+      "first_missing": "ALL_UPSTREAM_QUALIFIED_AND_SEPARATE_ISSUER_AUTHORITY",
+      "owner": "HQ_LATER"
+    }
+  ],
+  "false_pair_authority": true,
+  "no_temporal_calculation": true,
+  "no_raw_survey": true,
+  "no_library": true,
+  "no_production_edits": true,
+  "first_falsifier": "PRIMARY_AT1990_COUNTRY_REPORT_SHOWS_QUOTA_NONPROBABILITY_OR_INCOMPATIBLE_UNIVERSE",
+  "official_checksum_match": false,
+  "public_aussda_pdf_md5_does_not_match_retained_sav": true
+}

@@ -1,0 +1,149 @@
+{
+  "schema": "PYAT_HQ257_E02_COUNTRY_DESIGN_VERSION_PRIMARY_WITNESSES@1",
+  "disposition": "PRIMARY_NATIONAL_ID_PASS__COUNTRY_METHOD_AND_SAV_VERSION_HOLD",
+  "sealed_hq": {
+    "decision": "HQD-2026-10-08-257",
+    "handoff": "6ced6f9f43230932429f5432dc31edc4ae7d5144"
+  },
+  "commission": {
+    "branch": "agent/rabochii-pyat-hq257-evs-1990-austria-primary-method-version-r1",
+    "tip": "d547dfc3bfbc74d1f6d1c8af0e9b9a3411ddde1c",
+    "parent": "b9a486161f53d78da845b7f81122fb55458750ad"
+  },
+  "official_witnesses": [
+    {
+      "id": "GESIS_ZA4460",
+      "level": "PRIMARY_OFFICIAL_ARCHIVE",
+      "url": "https://access.gesis.org/dbk/50678",
+      "pdf_zero_page_11": "Table 2 Austria ZA4754 lines 254-258; 1990 integrated only lines 277-278",
+      "pdf_zero_page_53": "studynoc Austria ZA4479 lines 2274-2278",
+      "pdf_zero_page_24": "weight_g gender-age national adjustment lines 763-770 per HQ254 E01",
+      "integrated": {
+        "study": "ZA4460",
+        "version": "3.0.0",
+        "release_date": "2011-11-20",
+        "doi": "10.4232/1.10790"
+      }
+    },
+    {
+      "id": "EVS1990_METHOD",
+      "level": "PRIMARY_WAVE_ONLY",
+      "url": "https://europeanvaluesstudy.eu/surveys/surveys-evs/survey-1990/methods-and-sample-survey-1990/",
+      "lines": "172-174",
+      "population_words": "adult citizens over 18",
+      "method": "random in some countries quota in others",
+      "age_gender_weight": true
+    },
+    {
+      "id": "GESIS1990_WAVE",
+      "level": "PRIMARY_WAVE",
+      "url": "https://www.gesis.org/en/european-values-study/data-and-documentation/2nd-wave-1990",
+      "lines": "13-19,37-40",
+      "population_words": "adult population 18 years and older",
+      "country_dates": "1990-04-09 to 1990-06-01",
+      "country_n": 1460,
+      "method": "multi-stage random OR quota unspecified for Austria"
+    },
+    {
+      "id": "AUSSDA_COMBINED",
+      "level": "PRIMARY_DERIVED_FOUR_WAVE_METADATA_NOT_1990_COUNTRY_DESIGN",
+      "url": "https://data.aussda.at/dataset.xhtml?persistentId=doi:10.11587/C4YBOT",
+      "lines": "275-289",
+      "sampling": "mixed probability and nonprobability",
+      "population": "eligible Austrian citizens older than 18 registered in Austrian private households",
+      "wave_specific_facts_admissible": false
+    },
+    {
+      "id": "AUSSDA_DOC_FILE",
+      "level": "PRIMARY_DOCUMENT_FILE_METADATA_NOT_REPORT_CONTENT",
+      "url": "https://data.aussda.at/file.xhtml?persistentId=doi:10.11587/C4YBOT/APVI1F&version=1.2",
+      "file": "10048_mr_en_v1_0.pdf",
+      "md5": "9e01c457dc64666afff3ce77ec4ba097",
+      "checksum_is_data_sav": false,
+      "contents_read": false
+    },
+    {
+      "id": "VIENNA_THESIS",
+      "level": "SECONDARY",
+      "url": "https://services.phaidra.univie.ac.at/api/object/o:1350433/download",
+      "page": 41,
+      "claim": "Austria 1990 Fessel-GfK PAPI face-to-face multi-stage random, N1460"
+    },
+    {
+      "id": "GESIS_70780",
+      "level": "PRIMARY_XLSX_UNREAD",
+      "url": "https://access.gesis.org/dbk/70780",
+      "content": "EVS 1981-2008 Method Overview",
+      "attempt_result": "unsupported xlsx media type; public secondary fetch unavailable",
+      "austria_row_read": false
+    },
+    {
+      "id": "GESIS_70775",
+      "level": "PRIMARY_XLSX_UNREAD",
+      "url": "https://access.gesis.org/dbk/70775",
+      "content": "EVS 1981-2017 Methodology Overview",
+      "attempt_result": "unsupported xlsx media type",
+      "austria_row_read": false
+    },
+    {
+      "id": "GESIS2008_AT",
+      "level": "PRIMARY_PREVIOUS_E01",
+      "url": "https://access.gesis.org/dbk/17933",
+      "study": "ZA4754",
+      "version": "1.1.0",
+      "doi": "10.4232/1.10152"
+    },
+    {
+      "id": "GESIS_TREND",
+      "level": "PRIMARY",
+      "url": "https://www.gesis.org/en/european-values-study/data-and-documentation/evs-trend-file-1981-2017",
+      "study": "ZA7503",
+      "version": "3.0.0",
+      "doi": "10.4232/1.14021"
+    }
+  ],
+  "catalogue": {
+    "at1990_component": "ZA4479_PRIMARY_INTERNAL_STUDYNOC_AND_QUESTIONNAIRE",
+    "bad_1990_table_cell": "ZA4754_HIGH_CONFIDENCE_INTERNAL_ERROR_NOT_FORMAL_ERRATUM",
+    "at1990_integrated": "ZA4460_V3.0.0",
+    "at2008_national": "ZA4754_V1.1.0",
+    "at2008_integrated": "ZA4800_V5.0.0",
+    "trend": "ZA7503_V3.0.0",
+    "separate_at1990_sav_release": null
+  },
+  "austria_1990_country_design": {
+    "probability_or_quota": "UNKNOWN_PRIMARY",
+    "random_design_secondary_only": true,
+    "psu": null,
+    "strata": null,
+    "selection_probabilities": null,
+    "household_person_selection": null,
+    "nonresponse": null,
+    "citizenship_household_frame": null,
+    "exact_age_boundary": null,
+    "gender_age_calibration_weight": "weight_g",
+    "design_based_SE_qualified": false
+  },
+  "retained_sources": [
+    {
+      "id": "SRC12",
+      "filename": "EVS 1990.sav",
+      "bytes": 24341244,
+      "sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec"
+    },
+    {
+      "id": "SRC14",
+      "filename": "EVS 2008.sav",
+      "bytes": 63832833,
+      "sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379"
+    }
+  ],
+  "retained_inventory": {
+    "commit": "a3d44f554e4e4fa01223679035599019ae2de527",
+    "blob": "2a87ed920606be95003684e3775227ff8e94639c",
+    "lines": "13,15"
+  },
+  "public_sav_checksum_bridge": false,
+  "raw_source_access": false,
+  "pair_adopted": false
+}
