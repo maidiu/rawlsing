@@ -1,0 +1,339 @@
+{
+  "schema": "HQ254_S01_DOCUMENTARY_SOURCE_FAMILY_SELECTION_MATRIX@1.0.0",
+  "document_status": "WORKER_EVIDENCE_NOT_A_NORMATIVE_SOURCE_GRANT_OR_NEW_RUNTIME_SCHEMA",
+  "sealed_control": {
+    "checkpoint": "20261008-PYAT-HQ254-T01-T0-POSITIVE-FIVE-PARALLEL-ISSUED-R1",
+    "frozen_commit": "6072a6891f47e713df0f70f0dec8770fc0abac32",
+    "semantic_pre_main": "1f47063c3205a45888b3c55e81e7485943ed1390",
+    "commission_tip": "2b985362e207d813bfb3506dbaef6748d820bc5e",
+    "commission_branch": "agent/rabochii-pyat-hq254-second-structural-family-r1",
+    "evidence": {
+      "path": "HQ_HANDOFF/checkpoints/20261008-PYAT-HQ254-T01-T0-POSITIVE-FIVE-PARALLEL-ISSUED-R1/CURRENT.md",
+      "blob": "e64ffa47922cd7361b87fc8d780600532cb04259",
+      "lines": "1-32",
+      "ref": "6072a6891f47e713df0f70f0dec8770fc0abac32"
+    }
+  },
+  "disposition": "LITS_I_Q301_RETAINED_EMPIRICAL_CANDIDATE_ONLY__FF02_READY_NOT_EXECUTED__NO_DUAL_SOURCE_WORLD_ADMISSION",
+  "first_source_existing_positive": {
+    "source_family": "Afrobarometer",
+    "source_wave": "R5",
+    "source_id": "SRC02",
+    "physical_source_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+    "source_native_question_order": [
+      "Q86B CONDITIONER",
+      "Q86A TARGET"
+    ],
+    "risk_set": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1",
+    "respondent_support": 19210,
+    "ordered_joint_cells": 36,
+    "measure": "RAW_SINGLE_UNIVERSE_UNWEIGHTED",
+    "fact_sha256": "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46",
+    "query_sha256": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+    "field_forge_relation_sha256": "1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19",
+    "structural_target_use": "STRUCTURAL_MEDIATION_INPUT",
+    "consumer_chain": [
+      "V554_SIG004",
+      "V557_ALLOW_CONTEXT_ONLY",
+      "V558_RESOLUTION_COMPLETE"
+    ],
+    "permitted_claim": "EXACT_CONDITIONAL_SUPPORT_COUNT_PROFILE_WITHIN_SCOPE; CONTEXT_ONLY",
+    "disallowed": [
+      "CAUSAL_STRENGTH",
+      "CROSS_FAMILY_POOLING",
+      "NUMERICAL_PRESSURE",
+      "V3_PERSON",
+      "N9_COMPLETION"
+    ],
+    "evidence": [
+      {
+        "path": "WORKER_RETURNS/PYAT-HQ221-C5-GT2-STRUCTURAL-POSITIVE-REALIZATION-R1/01_RETAINED_EMPIRICAL_INPUT_BINDING.json",
+        "blob": "b6829d672fbc72b3f7a04ec12781e643031665b0",
+        "lines": "4-125",
+        "ref": "6072a6891f47e713df0f70f0dec8770fc0abac32"
+      },
+      {
+        "path": "WORKER_RETURNS/PYAT-HQ222-C5-GT2-STRUCTURAL-POSITIVE-REALIZATION-REVIEW-R1/00_REVIEW.md",
+        "blob": "8b51f0c0ff21994a893744e8809744c7ca49d441",
+        "lines": "§§3-6,8",
+        "ref": "6072a6891f47e713df0f70f0dec8770fc0abac32"
+      }
+    ]
+  },
+  "candidate_second_family": {
+    "source_family": "LiTS",
+    "wave": "I / 2006",
+    "source_identity": "LITS_I",
+    "physical_source_path": "Data/LiTS_I.dta",
+    "physical_source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "source_physical_rows": 29002,
+    "source_variable_count": 1198,
+    "bounded_q301_projection": {
+      "respondent_events": [
+        "q301_2",
+        "q301_7"
+      ],
+      "empirical_coordinates": [
+        "country",
+        "city",
+        "region",
+        "tablec",
+        "tabled"
+      ],
+      "default_weight_authorized": false,
+      "projection_authority_sha256": "9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06",
+      "risk_set_ref_sha256": "31f7ec452d8d75eebf7963d1ce1715b38f5329a31c757d9088819c99f5d4db45",
+      "evidence": {
+        "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/19_AS2A_PART_A_ACCEPTANCE_AND_AS2B_LOCAL_EXECUTION_ROUTING.md",
+        "blob": "e17c718dedac22da99dcebeaafc0e05dd92902ea",
+        "lines": "21-53",
+        "ref": "6072a6891f47e713df0f70f0dec8770fc0abac32"
+      }
+    },
+    "item_meaning": [
+      {
+        "item": "q301_2",
+        "meaning": "Perceived present political situation relative to 1989 (retrospective evaluation)",
+        "evidence": {
+          "path": "data/ddm_build_copy/recovery_reservoir/semantic_relation_R1_through_Job3/R1_20260825/objects/33/3373f7cc51991a212d8e55bc3d1f5dfe82dd98ad065515c3bb621c81f07acf39.csv",
+          "blob": "76b3a94a27076b928b0843bf95c805ebbcd34ea5",
+          "lines": "201",
+          "ref": "6072a6891f47e713df0f70f0dec8770fc0abac32"
+        },
+        "exact_questionnaire_text_verified_here": false
+      },
+      {
+        "item": "q301_7",
+        "meaning": "Perception of present life satisfaction",
+        "evidence": {
+          "path": "data/ddm_build_copy/recovery_reservoir/semantic_relation_R1_through_Job3/R1_20260825/objects/33/3373f7cc51991a212d8e55bc3d1f5dfe82dd98ad065515c3bb621c81f07acf39.csv",
+          "blob": "76b3a94a27076b928b0843bf95c805ebbcd34ea5",
+          "lines": "184",
+          "ref": "6072a6891f47e713df0f70f0dec8770fc0abac32"
+        },
+        "exact_questionnaire_text_verified_here": false
+      }
+    ],
+    "retained_release": {
+      "universe_sha256": "83af05f5891e8accc18eeb99e5a1fd99242a509d9a38276004675c0e26be8080",
+      "logical_release_sha256": "192926fabd9c9c3d40e43d1d7705ca2bcfe7f8d06e286be26d4b886d436df43f",
+      "release_replay_sha256": "30c168fbdf8425b23cbf2a2b2d2c9ab56f3438851f52e3562510089f1d381a08",
+      "retained_full_public_object_checkpoint_sha256": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726",
+      "checkpoint_on_github": false,
+      "canonical_object_closure_id": "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415",
+      "retained_object_inventory": {
+        "EmpiricalUniverse@1.0.0": 1,
+        "EmpiricalFact@1.0.0": 60,
+        "EmpiricalQuerySpec@1.0.0": 63,
+        "EmpiricalPredicate@1.0.0": 35,
+        "AuthoritySnapshot@1.0.0": 24,
+        "DiscoveryResultReceipt@1.0.0": 50
+      },
+      "supported_fact_count": 60,
+      "i05_candidate_count": 50,
+      "i05_evaluated_supported": 49,
+      "i05_valid_empty": 1,
+      "i05_query_roles": 77,
+      "evidence": [
+        {
+          "path": "WORKER_RETURNS/PREMAIN-FIABC-LITS-FINAL-SUCCESS-DURABLE-CUSTODY-R1/source_retry_evidence/canonical_object_inventory.json",
+          "blob": "4794344046d0ca294fef24a4fd472dfe8df1b890",
+          "lines": "2-55",
+          "ref": "6072a6891f47e713df0f70f0dec8770fc0abac32"
+        },
+        {
+          "path": "WORKER_RETURNS/PREMAIN-FIABC-LITS-FINAL-SUCCESS-DURABLE-CUSTODY-R1/source_retry_evidence/i03_i05_closure_receipt.json",
+          "blob": "787c88b41f26a7dfd5c4786d1e9d3c4b9dca0a74",
+          "lines": "2-36",
+          "ref": "6072a6891f47e713df0f70f0dec8770fc0abac32"
+        },
+        {
+          "path": "WORKER_RETURNS/PREMAIN-FIABC-LITS-FINAL-SUCCESS-DURABLE-CUSTODY-R1/00_RETURN.md",
+          "blob": "70ad4c65bcf0f141f3f72c56e5dc4407b4ec275c",
+          "lines": "1-22",
+          "ref": "6072a6891f47e713df0f70f0dec8770fc0abac32"
+        }
+      ]
+    },
+    "candidate_i05_cotravel": {
+      "candidate_sha256": "0373f9117bb342746a870d61e743e6420a02757df76d4e46e6335b98acccf2e3",
+      "rule_id": "D02_P1_JOINT_DEPENDENCE",
+      "result_type": "PAIR_RESPONSE_COTRAVEL",
+      "validation_kind": "JOINT_NOT_PRODUCT_OF_MARGINALS",
+      "query_fact_roles": [
+        {
+          "role": "JOINT",
+          "query_sha256": "6ee12199bb7b5aabd62f0bd18d469d115b48d2cb0b5f30b36ff48a23903c6cbd",
+          "fact_sha256": "fb8bd6e50f27d77ed97827ba3ff712df5951e438d60b5a0194f9953107e3614b",
+          "raw_denominator": 24630
+        },
+        {
+          "role": "MARGINAL_0",
+          "query_sha256": "7abe35df3bcf4e586c0aa70f4d3b6968e4bf9b3e76329b759d9c9dce1a0fe9ee",
+          "fact_sha256": "4e72458484c1dd560f32987ac49c81908ddd47ccad325e2d617f5109792d3145",
+          "raw_denominator": 24897
+        },
+        {
+          "role": "MARGINAL_1",
+          "query_sha256": "169774a791eff18a8bd9541785bccab4a525774c750375aaccad1ff630d47a9d",
+          "fact_sha256": "ef51aa329781a81d8bf6034a907e936ba2bba0c28cafb95209ee50aa92809765",
+          "raw_denominator": 28325
+        }
+      ],
+      "predicate_sha256": "ac3fcb4e32a41f9972004b2c31da61e9b32ba69568a795d2c1e584c9bed21be0",
+      "empirical_measure": "RAW",
+      "uncertainty": "UNCERTAINTY_UNQUANTIFIED",
+      "weighted_denominators": [
+        null,
+        null,
+        null
+      ],
+      "bounded_claim": "source-native same-survey observed co-travel only, no causal attribution or time-series effect",
+      "direct_full_query_preimage_read_here": false,
+      "item_to_query_positive_binding": "EXPECTED_FROM_BOUNDED_PROJECTION__REQUIRES_CHECKPOINT_PREIMAGE_CONFIRMATION",
+      "evidence": {
+        "path": "WORKER_RETURNS/PREMAIN-FIABC-LITS-FINAL-SUCCESS-DURABLE-CUSTODY-R1/source_retry_evidence/current_standard_lits_oracle.json",
+        "blob": "d25c4eee1bd2d29394f0dca3a5958bbe02f497a0",
+        "lines": "JSON pointer /expected_fact_manifest/0; /source_identity; /projection_and_release_refs",
+        "ref": "6072a6891f47e713df0f70f0dec8770fc0abac32"
+      }
+    },
+    "source_and_operation_authority": {
+      "observed_source_representation_authority_id": "FIABC-LITS-I-Q301-DTA-DECODER-REPRESENTATION-REPLAY",
+      "observed_source_representation_authority_hash": "9fce3b606413c2a5d3e9a05eda967067d191fbb31ff869d445d962bdf321393d",
+      "observed_mixed_predicate_grammar_authority": "urn:rawlsing:prev3:p2r4a:pre553:mixed-predicate-grammar",
+      "observed_mixed_predicate_operation": "AND",
+      "observed_source_backed_empirical_closure": "PASS",
+      "observed_ff02_readiness": "FF02_READY__NO_SOURCE_REOPEN_REQUIRED",
+      "ff02_executed": false,
+      "structural_admission_object_count": 0,
+      "positive_structural_use_authority": "NOT_FOUND_FOR_SELECTED_LITS_OPERATION",
+      "positive_structural_relation": "NOT_PRODUCED_OR_BANKED",
+      "world_use_authority": "NOT_FOUND",
+      "evidence": [
+        {
+          "path": "WORKER_RETURNS/PREMAIN-FIABC-LITS-FINAL-SUCCESS-DURABLE-CUSTODY-R1/source_retry_evidence/authority_closure_receipt.json",
+          "blob": "210243ed24f8fe6485f72e1aa821d1ac2526e33b",
+          "lines": "3-43",
+          "ref": "6072a6891f47e713df0f70f0dec8770fc0abac32"
+        },
+        {
+          "path": "WORKER_RETURNS/PREMAIN-FIABC-LITS-FINAL-SUCCESS-DURABLE-CUSTODY-R1/source_retry_evidence/ff02_readiness_disposition.json",
+          "blob": "dfa3e8eac231cb6005ff164fd5a59f1b4aef690e",
+          "lines": "2-17",
+          "ref": "6072a6891f47e713df0f70f0dec8770fc0abac32"
+        },
+        {
+          "path": "WORKER_RETURNS/PREMAIN-FIABC-LITS-FINAL-SUCCESS-DURABLE-CUSTODY-R1/source_retry_evidence/i03_i05_closure_receipt.json",
+          "blob": "787c88b41f26a7dfd5c4786d1e9d3c4b9dca0a74",
+          "lines": "24-26",
+          "ref": "6072a6891f47e713df0f70f0dec8770fc0abac32"
+        }
+      ]
+    },
+    "first_missing_operational_edge": "A SOURCE-ITEM/Q301-SPECIFIC POSITIVE FIELD_FORGE or I04/P06 STRUCTURAL_USE DECISION AND PRODUCER WITH EXACT PERMISSION/SAMPLING/MEASURE CLAIM, using retained source-free object closure, NOT relabel GT2 owner",
+    "source_intrinsic_nonapplicability_claim": false,
+    "source_read_this_commission": false,
+    "local_executable_tests_this_commission": false
+  },
+  "world_consumer": {
+    "existing_pieces": [
+      "I4 pre553_learned_world_composition supports exact per-product learned-world release/selection without inferring rules or permissions",
+      "B5 lifecycle capable of exact per-product selection",
+      "V557/V558 GT2 CONTEXT resolution accepted only at source/local grain",
+      "OC01 empirical query and OC02 structural-admission seams current"
+    ],
+    "missing_pieces": [
+      "LiTS structural producer/admission",
+      "F6 exact permission for source-indexed multi-family co-presence and scope coherence",
+      "N7 composed field product",
+      "N9 current/as-of multi-source world snapshot",
+      "N10W selected positioned-subject world-conditioned service receipt"
+    ],
+    "oc05_state": "NOT_YET_APPLICABLE",
+    "consumer_target": "N7 (first selected field composition) -> N9 current/as-of world -> N10W possibility",
+    "world_operation_candidate": "EXACT_SOURCE_INDEXED_CO_PRESENCE_WITHOUT_POOLING_OR_NUMERICAL_PRESSURE; requires HQ-owner adoption",
+    "source_families": [
+      "Afrobarometer R5 SRC02",
+      "LiTS I 2006"
+    ],
+    "never_infer": [
+      "same respondents",
+      "same country/time coverage",
+      "cross-family scale portability",
+      "cross-family joint",
+      "unlicensed world-wide pressure coefficient",
+      "realized V3 actor"
+    ],
+    "evidence": [
+      {
+        "path": "rawlsing_next/objective_consumer_bounded_evidence.py",
+        "blob": "f30fca20e7b56e00348e82765d95f974b4b6a195",
+        "lines": "14-72",
+        "ref": "6072a6891f47e713df0f70f0dec8770fc0abac32"
+      },
+      {
+        "path": "rawlsing_next/pre553_learned_world_composition.py",
+        "blob": "4a8e27a226a9c06606f5ba493d2cc7356d491a7b",
+        "lines": "1-7,53-77",
+        "ref": "6072a6891f47e713df0f70f0dec8770fc0abac32"
+      },
+      {
+        "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N7.md",
+        "blob": "75ada5f2f187a76f45d3913a2dc927df96eaa578",
+        "lines": "3-32",
+        "ref": "6072a6891f47e713df0f70f0dec8770fc0abac32"
+      },
+      {
+        "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N9.md",
+        "blob": "20827a3187f83f32228fcaceee07e4bdf4847b22",
+        "lines": "3-34",
+        "ref": "6072a6891f47e713df0f70f0dec8770fc0abac32"
+      },
+      {
+        "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N10W.md",
+        "blob": "41cc00fb25833f6d4623a83aee9d202ee0abf4fa",
+        "lines": "3-31",
+        "ref": "6072a6891f47e713df0f70f0dec8770fc0abac32"
+      }
+    ]
+  },
+  "alternatives": {
+    "WVS7": {
+      "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "source_free_oracle": "PASS",
+      "count": 46,
+      "reason_not_selected": "Less direct exact retained LiTS canonical object + specifically bounded FF02 readiness evidence examined here; no source-intrinsic unsuitability claim",
+      "evidence": {
+        "path": "WORKER_RETURNS/PREMAIN-FIABC-LITS-INDEPENDENT-ACCEPTANCE-T3-FREEZE-R1/wvs7_standard_oracle_acceptance.json",
+        "blob": "e29af5fff74e191c9e1c4671c416234dc7b48ae3",
+        "lines": "2-46",
+        "ref": "6072a6891f47e713df0f70f0dec8770fc0abac32"
+      }
+    },
+    "EVS_Austria_1990_2008": {
+      "reason_not_selected": "Parallel HQ254 E01 design/version/estimand/pair-specific authority still open; not presuming positive temporal product",
+      "evidence": {
+        "path": "HQ_HANDOFF/checkpoints/20261008-PYAT-HQ254-T01-T0-POSITIVE-FIVE-PARALLEL-ISSUED-R1/CURRENT.md",
+        "blob": "e64ffa47922cd7361b87fc8d780600532cb04259",
+        "lines": "27-30",
+        "ref": "6072a6891f47e713df0f70f0dec8770fc0abac32"
+      }
+    },
+    "SRC02_Q86C": {
+      "reason_not_selected": "Same Afrobarometer family; Q86C triple requires separate source warrant",
+      "evidence": {
+        "path": "HQ_HANDOFF/checkpoints/20261008-PYAT-HQ254-T01-T0-POSITIVE-FIVE-PARALLEL-ISSUED-R1/CURRENT.md",
+        "blob": "e64ffa47922cd7361b87fc8d780600532cb04259",
+        "lines": "27",
+        "ref": "6072a6891f47e713df0f70f0dec8770fc0abac32"
+      }
+    }
+  },
+  "notes_on_identity_and_truth": [
+    "Some retrospective LiTS item names are source-reviewed semantic labels, not official literal wording verified this commission.",
+    "Source-free I05 oracle preserves exact query/fact identities, but full source-specific item and category preimages must be checked in retained local full checkpoint before a world claim.",
+    "Positive FF02 admission absent is a DEVELOPMENT/AUTHORITY gap, never empirical zero support, VALID_EMPTY, SOURCE_INTRINSIC_NA, or substantive NONCOMPARABLE.",
+    "Existing accepted Q86B→Q86A FIELD_FORGE implementation explicitly hardcodes these names and order; not a generic LiTS adapter."
+  ]
+}
