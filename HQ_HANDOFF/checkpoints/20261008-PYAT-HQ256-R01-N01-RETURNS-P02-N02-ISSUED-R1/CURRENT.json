@@ -1,0 +1,132 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.1.0",
+  "checkpoint_id": "20261008-PYAT-HQ256-R01-N01-RETURNS-P02-N02-ISSUED-R1",
+  "decision": "HQD-2026-10-08-256",
+  "date": "2026-10-08",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "inherited_checkpoint": "20261008-PYAT-HQ255-FIVE-HQ254-RETURNS-DEEPSEEK-P01-AND-EE14-T1-R1",
+  "inherited_handoff_commit": "f5ed4e614545e2365002f080e32b73d153369072",
+  "decision_record": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ256_R01_N01_INTAKE_P01_COMMITTED_COURT_REPAIR_AND_EE14_AUTHORITY_REVIEW_R1.md",
+  "returns": [
+    {
+      "id": "HQ255_R01_P01_POSTCANDIDATE_DEEPSEEK",
+      "branch": "agent/deepseek-harness-pyat-hq255-p01-permission-candidate-independent-review-r1",
+      "commission_tip": "d44678d49ae81da423c5c91c53db3ec7e31a3ccf",
+      "head": "7db575466683e9c6511c65656f93e1f41158cffb",
+      "ancestry": "ONE_AHEAD_ZERO_BEHIND",
+      "terrain": "FOUR_RETURN_ARTIFACTS_ONLY",
+      "disposition": "REPAIR_NARROW__PRODUCTION_GUARD_SOUND__COMMITTED_CANDIDATE_TEST_15_OF_16__NOT_ADOPTED",
+      "independent_runtime": "199_BASELINE_PASS_15_NEW_PASS_1_NEW_FAIL_EXIT1__214_COMBINED_PASS_1_FAIL_EXIT1"
+    },
+    {
+      "id": "HQ255_N01_EE14_NORMATIVE",
+      "branch": "agent/rabochii-pyat-hq255-ee14-source-free-t1-selected-use-normative-proposal-r1",
+      "commission_tip": "0aa79a0dc7b4004607e3f4f0327bcd2ceeddf5cc",
+      "head": "68a1837936fd40c89fcbe61eae5849dca7e77335",
+      "ancestry": "TWO_AHEAD_ZERO_BEHIND",
+      "terrain": "FOUR_RETURN_ARTIFACTS_ONLY",
+      "disposition": "NARROW_COHERENT_SOURCE_FREE_T1_MODEL_USE_PROPOSAL_ONLY__ALL_OPERATIVE_REFS_UNISSUED_NULL__NO_ADOPTION"
+    }
+  ],
+  "active_workers": [
+    {
+      "id": "HQ256_P02_P01_TEST_COMMITTED_CORRECTION",
+      "branch": "agent/space-bunny-pyat-hq256-p01-committed-court-repair-r1",
+      "commission_tip": "ea5110f7d26835cccbfabf86173d9815d94ddf74",
+      "observed_head_at_checkpoint": "ea5110f7d26835cccbfabf86173d9815d94ddf74",
+      "status": "ISSUED_NEEDS_HUMAN_LAUNCH",
+      "model": "GPT-6 Sol High or competent code executor",
+      "machine": "Governed Mac OpenCode Space Bunny isolated sparse worktree",
+      "library_access": "NO",
+      "grain": "ONE_HEAD_DEPENDENT_TEST_FIX_ONLY_BLOB_P01_BINDER_IDENTICAL",
+      "pass_wake": "ACTUAL_COMMITTED_TEST_FIX_AND_INDEPENDENT_REVIEW",
+      "prohibited": [
+        "BINDER_EDITS",
+        "T1_MODEL_USE",
+        "SOURCE_NATIVE_ISSUER"
+      ]
+    },
+    {
+      "id": "HQ256_N02_EE14_OPERATIVE_GRANT_QUALIFICATION",
+      "branch": "agent/reviewer-pyat-hq256-ee14-t1-operative-grant-qualification-r1",
+      "commission_tip": "c7ab882180e4ce6a22be8c13c390f917a8e1aa41",
+      "observed_head_at_checkpoint": "c7ab882180e4ce6a22be8c13c390f917a8e1aa41",
+      "status": "ISSUED_NEEDS_HUMAN_LAUNCH",
+      "model": "GPT-6 Sol High",
+      "machine": "Browser/GitHub semantic authority",
+      "library_access": "NO",
+      "grain": "EXACT_N01_NORMATIVE_GRANT_READY_OR_HOLD_DECISION",
+      "pass_wake": "COMPETENT_OWNER_IDENTIFIED_AND_PROPOSED_UNISSUED_GRANT_OR_NARROW_HOLD",
+      "prohibited": [
+        "ISSUE_PERMISSION",
+        "PRODUCTION_CHANGES",
+        "SOURCE_RAW_NATIVE_ISSUER"
+      ]
+    }
+  ],
+  "holds": {
+    "p01": "REVIEWED_PRODUCTION_GUARD_NOT_ADOPTABLE_WITH_ONE_COMMITTED_STATE_TEST_FAILURE__P02_CORRECTION_PENDING",
+    "t1": "EE14_EXACT_ISSUER_SERVICE_MODEL_USE_G1_C1_CUSTODY_G2_BIND_COHERENCE_G3_B5_CURRENT_ASOF_UNISSUED",
+    "source": "SRC02_Q86C_TRIPLE_LITS_STRUCTURAL_A048_TEMPORAL_UNQUALIFIED_NO_RAW_SOURCE",
+    "native": "F7_R3_HQ248_OPEN_001_NO_PRODUCTION_TRUST_CUTOVER",
+    "issuer": "AT07_NO_INDEPENDENT_VERIFIER_ROOT_EPOCH",
+    "actor": "V3_DEFERRED"
+  },
+  "dependency_graph": [
+    {
+      "id": "P02_P01_CANDIDATE_COURT",
+      "status": "ISSUED_TEST_ONLY_REPAIR",
+      "prerequisites": [
+        "FROZEN_P01_CANDIDATE",
+        "DEEPSEEK_R01_REVIEW"
+      ],
+      "pass_wake": "POST_P02_INDEPENDENT_CHANGED_CANDIDATE_VERDICT",
+      "prohibited_early": [
+        "P01_ADOPTION"
+      ]
+    },
+    {
+      "id": "N02_EE14_USE_DECISION",
+      "status": "ISSUED_NORMATIVE_INDEPENDENT",
+      "prerequisites": [
+        "N01_NORMATIVE_PROPOSAL",
+        "U01_BOUNDED_NEGATIVE_GRANT_SEARCH"
+      ],
+      "pass_wake": "EXACT_GRANT_OR_HOLD_TO_HQ",
+      "prohibited_early": [
+        "NEW_GRANTED_REFS"
+      ]
+    },
+    {
+      "id": "T1_PRODUCER_CUSTODY_AND_LIFECYCLE",
+      "status": "HELD_FOR_COMPETENT_EE14_ISSUANCE",
+      "prerequisites": [
+        "EE14_OPERATIVE_SCOPE_ADOPTED",
+        "G1_OWNER_CUSTODY",
+        "G2_QUALIFIED_BINDER",
+        "G3_REGISTERED_SELECTION_AND_REPLAY"
+      ],
+      "pass_wake": "FIRST_ACTUAL_SOURCE_FREE_T1_POSITIVE_AND_HOSTILE_TEST",
+      "prohibited_early": [
+        "SPECULATIVE_ADAPTER",
+        "CURRENTNESS_FABRICATION"
+      ]
+    },
+    {
+      "id": "T2_E1_E2",
+      "status": "NOT_READY",
+      "prerequisites": [
+        "REAL_SOURCE_INPUTS",
+        "TWO_ACTOR_INDEPENDENT_FAMILY_FIELDS",
+        "AUTHORIZED_COMPARE_WAVE_AND_WORLD_CONSUMER"
+      ],
+      "pass_wake": "WARRANTED_PRODUCTION_LATER",
+      "prohibited_early": [
+        "RAW_SURVEY_UNWARRANTED",
+        "ACTOR_V3"
+      ]
+    }
+  ],
+  "next_action": "LAUNCH_HQ256_P02_AND_N02_IN_PARALLEL__NO_ADOPTION"
+}
