@@ -1,0 +1,306 @@
+{
+  "return": "PYAT-HQ268-G01-D1-D2-AUTH-COMPLETENESS-AND-G2-REPLAY-IDENTITY-MINIMAL-REPAIR-R1",
+  "status": "HQ268_G01_RETURNED_FOR_HQ__NO_SELF_ADOPTION",
+  "branch": "agent/space-bunny-pyat-hq268-g01-d1-d2-auth-and-replay-identity-repair-r1",
+  "commission_tip": "e64f53a70a5167a7c79712038c9b1e14ae6c747c",
+  "final_committed_sha": "46a95a8e62e3e790da3b84dfa7ab1ae4d5bce6bd",
+  "model_actual": "MiMo V2.6-Flash (opencode/mimo-v2.6-flash-free) -- NOT GPT-6 Sol High, NOT Sol",
+  "test_environment": {
+    "os": "macOS 13.7.8 x86_64",
+    "python": "CPython 3.11.3",
+    "pytest": "9.1.1",
+    "interpreter": "/private/tmp/hq210venv/bin/python",
+    "command_form": "PYTHONPATH=. <python> -m pytest -q <files> -p no:cacheprovider",
+    "worktree_clean_at_run": true,
+    "new_machine_or_worktree_provisioned": false
+  },
+  "edit_scope": {
+    "changed_path_count": 2,
+    "changed_paths": [
+      "rawlsing_next/pre553_ee14_c1_owner_authenticated_ingress.py",
+      "rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py"
+    ],
+    "diff_stat": "2 files changed, 612 insertions(+), 24 deletions(-)",
+    "added_return_documents": 4,
+    "blobs_at_final_sha": {
+      "rawlsing_next/pre553_ee14_c1_owner_authenticated_ingress.py": "74e6ee826e8b6a2adebe84969fedcea5716d5b63",
+      "rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py": "64b6c747f76a1909b676566e6b529ed10456d33b"
+    },
+    "input_blobs_at_commission_tip": {
+      "rawlsing_next/pre553_ee14_c1_owner_authenticated_ingress.py": "4ec0038d218a20cc92f114e28fd6c1de4ebd71f5",
+      "rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py": "321e3e03415d1b980156f0ed4355216ca1f2273c"
+    },
+    "accepted_owners_verified_unchanged": [
+      "rawlsing_next/pre553_analytical_composition.py @ 604c8d59",
+      "rawlsing_next/source_backed_positioned_subject_possibility.py @ 62e5eced",
+      "rawlsing_next/pre553_service_source_applicability.py @ 3e40caca",
+      "rawlsing_next/pre553_service_f8_source_scope_binding.py @ 848d2d0e",
+      "rawlsing_next/tests/c1_at08_at13_fixture.py @ 0393cc8c"
+    ],
+    "other_refs_untouched": {
+      "control origin/integration/pre-main-reconciliation-r1": "a12f619d8",
+      "hq266_branch": "bdc65ff89",
+      "hq267_branch": "2678a10d9"
+    }
+  },
+  "baseline_preservation": {
+    "commission_obligation": {
+      "g01": 75,
+      "g2_sa": 199,
+      "c1_query": 80
+    },
+    "collected_ids_at_commission_tip": 75,
+    "collected_ids_at_final_sha": 96,
+    "baseline_ids_missing_at_final_sha": 0,
+    "new_test_ids": 21,
+    "all_original_names_still_present": true,
+    "parametrize_blocks_preserved": [
+      "test_hostile_non_request_shapes_refused: 8 cases",
+      "test_hostile_unknown_cell_refused / cell parametrize: 2 cases"
+    ],
+    "note": "75 -> 96 by addition only; no baseline test was renamed, deleted or weakened."
+  },
+  "final_committed_run": {
+    "all_exit_codes_zero": true,
+    "skip_xfail_error_count_in_combined": 0,
+    "oracles": [
+      {
+        "id": "A_new_g01_court",
+        "result": "96 passed",
+        "exit": 0,
+        "detail": "75 preserved baseline + 21 new D1/D2/R2"
+      },
+      {
+        "id": "B_four_accepted_g2_applicability_courts",
+        "result": "199 passed",
+        "exit": 0
+      },
+      {
+        "id": "C_c1_query_authority_higher_order_regression",
+        "result": "80 passed",
+        "exit": 0
+      },
+      {
+        "id": "D_combined",
+        "result": "375 passed",
+        "exit": 0,
+        "detail": "96 + 199 + 80 = 375 exactly"
+      },
+      {
+        "id": "E_step_a_positive_control",
+        "result": "ALL CHECKS PASSED",
+        "exit": 0
+      }
+    ],
+    "arithmetic_check": "96 + 199 + 80 = 375",
+    "author_side_cross_check": {
+      "script": "/tmp/hq268/verify.py (written fresh for HQ268, not derived from the HQ267 probe)",
+      "result": "49 PASS / 0 FAIL",
+      "exit": 0,
+      "notable": "reconstructs the PRE-D2 six-key hash and proves it was blind to receipt_id while replay_identity() discriminates it"
+    },
+    "grade": "AUTHOR_EVIDENCE_ONLY__NOT_INDEPENDENT_QA"
+  },
+  "new_counterexamples": {
+    "D1_owner_identity_completeness": [
+      {
+        "id": "D1a",
+        "name": "test_d1_empty_owner_identity_is_refused_before_any_chain_owner",
+        "case": "owner_identity={\"q1\": {}, \"q2\": {}}",
+        "pre_repair": "ACCEPTED -- full chain ran, selected technical receipt issued",
+        "observed": "SelectedIngressAuthenticationError at owner construction; missing_keys = all 19 required keys",
+        "f8_invocations": 0,
+        "applicability_invocations": 0,
+        "binder_invocations": 0,
+        "evaluate_invocations": 0,
+        "result": "REFUSED_BEFORE_APPLICABILITY_G2_F8"
+      },
+      {
+        "id": "D1b",
+        "name": "test_d1_single_key_owner_identity_is_refused",
+        "case": "cell expectation carrying only raw_denominator_support (1 of 19)",
+        "pre_repair": "ACCEPTED -- the other 18 fields were never compared",
+        "observed": "refused; len(missing_keys) == 18; the one present key is NOT reported missing",
+        "f8_invocations": 0,
+        "result": "REFUSED_BEFORE_APPLICABILITY_G2_F8"
+      },
+      {
+        "id": "D1c",
+        "name": "test_d1_missing_evidence_provenance_key_is_refused",
+        "case": "evidence_provenance_keys dropped from both cells",
+        "pre_repair": "ACCEPTED -- the custody field HQ267 proved could be skipped was never compared",
+        "observed": "refused; missing_keys == ('evidence_provenance_keys',)",
+        "f8_invocations": 0,
+        "result": "REFUSED"
+      },
+      {
+        "id": "D1d",
+        "name": "test_d1_missing_composed_identity_key_is_refused",
+        "case": "composed_result_identity_hash dropped from both cells",
+        "pre_repair": "ACCEPTED -- the C1 identity field was never compared",
+        "observed": "refused; missing_keys == ('composed_result_identity_hash',)",
+        "f8_invocations": 0,
+        "result": "REFUSED"
+      },
+      {
+        "id": "D1e",
+        "name": "test_d1_partially_populated_q2_identity_is_refused",
+        "case": "q2 fully populated, q1 missing 3 keys -- completeness of q2 is no excuse",
+        "observed": "refused; missing_keys exactly the 3 dropped keys",
+        "f8_invocations": 0,
+        "result": "REFUSED"
+      },
+      {
+        "id": "D1f",
+        "name": "test_d1_extraneous_unknown_identity_key_is_refused",
+        "case": "attacker_supplied_key added to a complete cell expectation",
+        "observed": "refused; mismatched_fields == ('attacker_supplied_key',)",
+        "f8_invocations": 0,
+        "result": "REFUSED"
+      },
+      {
+        "id": "D1g",
+        "name": "test_d1_wrong_builtin_type_is_refused",
+        "case": [
+          "raw_denominator_support as str",
+          "composed_result_identity_hash as int",
+          "evidence_provenance_keys as str",
+          "evidence_state as bool"
+        ],
+        "observed": "all four refused, each naming exactly its own field (type(v) is T, never isinstance)",
+        "f8_invocations": 0,
+        "result": "REFUSED"
+      },
+      {
+        "id": "D1h",
+        "name": "test_d1_complete_identity_positive_control_runs_the_whole_chain",
+        "case": "COMPLETE 19-key expectation -- the counterexample's control",
+        "observed": "accepted; compose>=1, applicability=1, binder>=1, evaluate=1",
+        "f8_invocations": 1,
+        "result": "ACCEPTED_F8_COUNT_GT_0"
+      },
+      {
+        "id": "D1i",
+        "name": "test_d1_fails_closed_inside_authenticate_before_applicability_and_f8",
+        "case": "live _owner_identity replaced with an empty mapping AFTER construction",
+        "observed": "refused inside _authenticate with the full 19-key missing set, f8_invoked False; measured compose=1 applicability=0 binder=0 evaluate=0",
+        "f8_invocations": 0,
+        "result": "REFUSED_BEFORE_APPLICABILITY_G2_F8"
+      },
+      {
+        "id": "D1j",
+        "name": "test_d1_authenticate_refuses_a_mismatched_complete_expectation",
+        "case": "COMPLETE expectation holding a different release_key_owner",
+        "observed": "refused; mismatched_fields == ('release_key_owner',), missing_keys == ()",
+        "f8_invocations": 0,
+        "result": "REFUSED -- completeness is necessary, not sufficient"
+      },
+      {
+        "id": "D1k",
+        "name": "test_d1_authenticate_has_no_membership_hole",
+        "case": "source-level structural assertion",
+        "observed": "no conditional membership guard in _authenticate; completeness gate called; closed-set iteration present; observed-builder drift guard present; construction gate wired",
+        "result": "STRUCTURE_ENFORCED"
+      },
+      {
+        "id": "D1l",
+        "name": "test_d1_required_key_set_is_closed_exact_and_typed",
+        "case": "the required set itself",
+        "observed": "frozenset of 19 keys, exactly equal to the type-map keys, exactly equal to the honest per-cell key set; no bool in the type map",
+        "result": "CLOSED_EXACT_TYPED"
+      }
+    ],
+    "D2_canonical_g2_replay_identity": [
+      {
+        "id": "D2a",
+        "name": "test_d2_g2_receipt_hash_equals_the_accepted_owner_replay_identity",
+        "case": "semantic-hash parity with the accepted primitive",
+        "observed": "r.g2_receipt_hash == accepted.replay_identity() == SA.semantic_hash(accepted._material())",
+        "result": "PARITY_CONFIRMED"
+      },
+      {
+        "id": "D2b",
+        "name": "test_d2_replay_identity_discriminates_receipt_id_and_request_key",
+        "case": "receipt_id / request_key / service_id -- all previously omitted or non-discriminating",
+        "observed": "each changed value changes replay_identity()",
+        "result": "DISCRIMINATES"
+      },
+      {
+        "id": "D2c",
+        "name": "test_d2_replay_identity_discriminates_no_applicable_source_and_binding",
+        "case": "no_applicable_source flipped, candidate_class_binding altered (isolated record construction)",
+        "observed": "each changes replay_identity()",
+        "result": "DISCRIMINATES"
+      },
+      {
+        "id": "D2d",
+        "name": "test_d2_authorised_authority_is_carried_by_the_replay_identity",
+        "case": "authorised_authority -- cannot be varied (accepted owner validates the ratified label)",
+        "observed": "present in _material(); a differing material value changes the hash",
+        "result": "CARRIED"
+      },
+      {
+        "id": "D2e",
+        "name": "test_d2_origin_receipt_hash_binds_the_g2_replay_identity",
+        "case": "origin layer",
+        "observed": "g2_receipt_hash = receipt.replay_identity(); origin_material carries both g2_receipt_hash and g2_canonical_replay_only_order",
+        "result": "BOUND"
+      },
+      {
+        "id": "D2f",
+        "name": "test_d2_no_local_six_field_subset_hash_remains",
+        "case": "regression to local re-derivation",
+        "observed": "hand-rolled six-field literal absent; receipt.replay_identity() appears exactly once in the module",
+        "result": "NO_LOCAL_SUBSET"
+      },
+      {
+        "id": "D2g",
+        "name": "test_d2_receipt_identity_varies_with_the_applicability_construction",
+        "case": "two ingresses differing only in applicability binding_request_id",
+        "observed": "shared receipt material, different origin_receipt_hash -- the origin layer carries the binding",
+        "result": "ORIGIN_SENSITIVE_TO_G2"
+      }
+    ],
+    "R2_shallow_container_freezing": [
+      {
+        "id": "R2a",
+        "name": "test_r2_live_source_and_cells_containers_are_read_only",
+        "case": "item assignment and item deletion on the live _source and _cells",
+        "observed": "TypeError on all; _owner_identity still deeply frozen",
+        "residual_named": "the freeze is deliberately SHALLOW -- nested source objects stay the owner's shared objects (asserted: ingress._source['universe'] is source['universe'])",
+        "result": "CONTAINERS_READONLY_RESIDUAL_NAMED"
+      },
+      {
+        "id": "R2b",
+        "name": "test_r2_external_source_dict_mutation_does_not_reach_the_ingress",
+        "case": "release_ref replaced in the dict handed in at construction, after construction",
+        "observed": "served release_key is still REL-c1-at09-xor, not REL-hq268-forged",
+        "result": "INSULATED"
+      }
+    ]
+  },
+  "preserved_obligations": {
+    "F1_source_free_real_chain": "unchanged, all pre-existing F1 tests pass",
+    "F2_same_respondent_q1_q2": "unchanged",
+    "frozen_xor_figures": {
+      "q1": "C|A=1 n2 (C0=1, C1=1)",
+      "q2": "C|A=1,B=0 n1 (C0=0, C1=1)",
+      "release": "REL-c1-at09-xor",
+      "universe_content_hash": "318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c",
+      "q1_tag_stratum": "hq253-qA / ('c0',)",
+      "q2_tag_stratum": "hq253-qAB / ('c0','c1')"
+    },
+    "F3_provenance_refused_before_f8": "unchanged",
+    "F4_native_zero_support_and_no_admitted_source": "unchanged",
+    "F5_exact_builtins": "unchanged, extended to the owner-held expectation values",
+    "F6_real_binder_hostiles": "unchanged",
+    "selected_request_data_only": "unchanged",
+    "authorizing_always_false": "unchanged",
+    "no_fake_current": "unchanged -- g2_currentness still None",
+    "no_natively_added_f7_at07": true,
+    "no_library_raw_survey_external_source": true,
+    "no_ee14_grant_no_t1_no_t2_no_deployment": true
+  },
+  "terminal": "HQ268_G01_RETURNED_FOR_HQ__NO_SELF_ADOPTION",
+  "next_required_by_hq": "NEW GPT-6 SOL HIGH SESSION UNCONNECTED TO THIS AUTHOR, FOR REAL INDEPENDENT HOSTILE REVIEW. Model label alone does not establish independence."
+}

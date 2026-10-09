@@ -1,0 +1,169 @@
+{
+  "return": "PYAT-HQ268-G01-D1-D2-AUTH-COMPLETENESS-AND-G2-REPLAY-IDENTITY-MINIMAL-REPAIR-R1",
+  "status": "RETURNED",
+  "terminal": "HQ268_G01_RETURNED_FOR_HQ__NO_SELF_ADOPTION",
+  "self_adoption": false,
+  "g1_pass_claimed": false,
+  "trust_root_claimed": false,
+  "t1_claimed": false,
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/space-bunny-pyat-hq268-g01-d1-d2-auth-and-replay-identity-repair-r1",
+  "commission_tip": "e64f53a70a5167a7c79712038c9b1e14ae6c747c",
+  "commission_tip_matched_origin_head_at_start": true,
+  "final_committed_sha": "46a95a8e62e3e790da3b84dfa7ab1ae4d5bce6bd",
+  "commits": [
+    {
+      "sha": "46a95a8e62e3e790da3b84dfa7ab1ae4d5bce6bd",
+      "subject": "HQ268 G01: make the owner-held expected C1 identity complete and take the G2 replay identity from the accepted owner",
+      "contains": "the two authorized files only"
+    }
+  ],
+  "model_actual": {
+    "name": "MiMo V2.6-Flash",
+    "id": "opencode/mimo-v2.6-flash-free",
+    "is_gpt6_sol_high": false,
+    "is_sol": false,
+    "label_accuracy_note": "stated exactly as commissioned; a model name is not evidence of capability or independence"
+  },
+  "test_environment": {
+    "os": "macOS 13.7.8 x86_64",
+    "python": "CPython 3.11.3",
+    "pytest": "9.1.1",
+    "interpreter": "/private/tmp/hq210venv/bin/python",
+    "new_machine_provisioned": false,
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing/rawlsing-pyat-hq268-g01-r1",
+    "worktree_clean_at_final_run": true
+  },
+  "corrections_executed": {
+    "D1": {
+      "required": "owner-identity completeness cannot be vacuous",
+      "status": "DONE",
+      "mechanism": "closed REQUIRED_IDENTITY_KEYS frozenset of 19 keys + exact builtin type per key, enforced at owner construction and again immediately before the field-by-field comparison; comparison iterates the closed set with no membership hole; observed builder drift-guarded to the same set",
+      "error": "SelectedIngressAuthenticationError with mismatched_fields + missing_keys + f8_invoked=False",
+      "chain_position": "refused before resolve_service_source_applicability, bind_service_applicability_to_f8_scope and evaluate_bound_positioned_subject_possibility",
+      "measured_on_live_expectation_replacement": "compose=1 applicability=0 binder=0 evaluate=0",
+      "trust_root_created": false,
+      "tests_added": 12
+    },
+    "D2": {
+      "required": "canonical complete accepted G2 receipt identity, no ad hoc 6-key subset",
+      "status": "DONE",
+      "mechanism": "g2_receipt_hash = receipt.replay_identity() taken from the accepted CandidateClassApplicabilityReceipt; local re-derivation removed; origin_receipt_hash still includes it",
+      "canonical_replay_only_order": "outside the accepted owner's own _material(), so bound directly at the ingress origin layer via g2_canonical_replay_only_order; the adopted SA owner remains unedited and the residual against it is referred to HQ",
+      "parity_proven": true,
+      "discrimination_proven_for": [
+        "receipt_id",
+        "no_applicable_source",
+        "candidate_class_binding",
+        "request_key",
+        "authorised_authority (carried in material)",
+        "canonical_replay_only_order (bound at origin)"
+      ],
+      "isolated_record_construction_only": true,
+      "forged_operative_g0b_authority": false,
+      "tests_added": 7
+    },
+    "R2": {
+      "required": "shallow container-only freezing if safe, else correct inaccurate prose; retain as bounded limitation",
+      "status": "PARTIALLY_DONE_RESIDUAL_RETAINED",
+      "done": "_source and _cells are read-only MappingProxyType containers; external dict mutation no longer reaches the ingress; both tested",
+      "not_done": "nested objects inside _source deliberately NOT deep-frozen -- converting them would change the semantic refs the accepted C1/G2 owners consume, which the commission forbade",
+      "prose_corrected": "module docstring gained a BOUNDED RESIDUAL (R2) section; class docstring gained a WHAT IS FROZEN block; chain step 3 no longer implies blanket non-mutability",
+      "classification": "precisely bounded trusted-harness limitation, not a custody root and not closed",
+      "tests_added": 2
+    }
+  },
+  "preserved": {
+    "F1_source_free_real_chain": "unchanged",
+    "F2_same_respondent_q1_q2": "unchanged",
+    "frozen_xor_figures": {
+      "q1": "C|A=1 n2 (C0=1, C1=1)",
+      "q2": "C|A=1,B=0 n1 (C0=0, C1=1)",
+      "release": "REL-c1-at09-xor",
+      "universe_content_hash": "318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c",
+      "source_free": true,
+      "fixture_mutated": false
+    },
+    "F3_provenance_refused_before_f8": "unchanged",
+    "F4_native_states": "unchanged",
+    "F5_exact_builtins": "unchanged and extended to owner-held expectation values",
+    "F6_real_binder_hostiles": "unchanged",
+    "selected_request_data_only": "unchanged",
+    "authorizing_false": "unchanged",
+    "no_fake_current": "unchanged"
+  },
+  "compliance": {
+    "only_edited_paths": [
+      "rawlsing_next/pre553_ee14_c1_owner_authenticated_ingress.py",
+      "rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py"
+    ],
+    "changed_path_count": 2,
+    "only_added_return_documents": 4,
+    "added_return_paths": [
+      "WORKER_RETURNS/PYAT-HQ268-G01-D1-D2-AUTH-COMPLETENESS-AND-G2-REPLAY-IDENTITY-MINIMAL-REPAIR-R1/00_D1_D2_EXACT_IMPLEMENTATION_AND_PRESERVED_G1_GRAPH.md",
+      "WORKER_RETURNS/PYAT-HQ268-G01-D1-D2-AUTH-COMPLETENESS-AND-G2-REPLAY-IDENTITY-MINIMAL-REPAIR-R1/01_COMMITTED_SOURCE_FREE_TESTS_AND_NEW_COUNTEREXAMPLES.json",
+      "WORKER_RETURNS/PYAT-HQ268-G01-D1-D2-AUTH-COMPLETENESS-AND-G2-REPLAY-IDENTITY-MINIMAL-REPAIR-R1/02_AUTHORITY_INDEPENDENCE_CEILING_AND_UNRESOLVED_RISKS.md",
+      "WORKER_RETURNS/PYAT-HQ268-G01-D1-D2-AUTH-COMPLETENESS-AND-G2-REPLAY-IDENTITY-MINIMAL-REPAIR-R1/03_DISPOSITION.json"
+    ],
+    "accepted_owners_unchanged": true,
+    "at09_fixture_unchanged": true,
+    "control_branch_untouched": "a12f619d8",
+    "hq266_branch_untouched": "bdc65ff89",
+    "hq267_branch_untouched": "2678a10d9",
+    "no_library_no_raw_survey_no_external_source": true,
+    "no_ee14_g0b_no_selected_t1_no_t2_no_deployment": true,
+    "no_native_f7_at07_no_v3": true,
+    "no_self_review": true,
+    "no_self_adoption": true
+  },
+  "final_committed_run": {
+    "all_exit_codes_zero": true,
+    "skips_xfails_errors": 0,
+    "oracles": [
+      {
+        "id": "A_new_g01_court",
+        "result": "96 passed",
+        "exit": 0
+      },
+      {
+        "id": "B_four_accepted_g2_applicability_courts",
+        "result": "199 passed",
+        "exit": 0
+      },
+      {
+        "id": "C_c1_query_authority_higher_order_regression",
+        "result": "80 passed",
+        "exit": 0
+      },
+      {
+        "id": "D_combined",
+        "result": "375 passed",
+        "exit": 0
+      },
+      {
+        "id": "E_step_a_positive_control",
+        "result": "ALL CHECKS PASSED",
+        "exit": 0
+      }
+    ],
+    "arithmetic_check": "96 + 199 + 80 = 375",
+    "commission_regression_obligations": {
+      "g01": "75 -> 96 (by addition only)",
+      "g2_sa": "199",
+      "c1_query": "80"
+    },
+    "baseline_ids_missing": 0,
+    "new_tests": 21,
+    "author_side_cross_check": "49 PASS / 0 FAIL (fresh script, not the HQ267 probe)",
+    "evidence_grade": "AUTHOR_EVIDENCE_ONLY__NOT_INDEPENDENT_QA"
+  },
+  "open_for_hq": [
+    "canonical_replay_only_order is absent from the adopted SA owner's _material(), so it remains outside replay_identity() for every consumer; closing it requires editing an adopted read-only owner that this commission forbade touching",
+    "R1 self-referential owner identity retained as a development invariant; no independent custody root exists",
+    "R2 nested source objects remain mutable in-process; deep conversion deliberately avoided",
+    "pre-existing unrelated failure test_f07_second_canary_prev3_admission.py::test_existing_m1_v554_ingress_accepts_and_same_input_replay_is_identical (FileNotFoundError on an untracked data file) -- outside authorized paths, untouched",
+    "9 pre-existing collection errors from absent pyarrow/pandas/numpy -- untouched"
+  ],
+  "required_next_by_hq": "NEW GPT-6 SOL HIGH SESSION UNCONNECTED TO THIS AUTHOR, FOR REAL INDEPENDENT HOSTILE REVIEW of SHA 46a95a8e62e3e790da3b84dfa7ab1ae4d5bce6bd, told that the same session authored HQ266, executed HQ267 R01 and executed this correction, and that the actual model throughout was opencode/mimo-v2.6-flash-free",
+  "independence_caveat": "No independent QA backs any number in this return. Model label alone does not establish independence."
+}
