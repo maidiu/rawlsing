@@ -1,0 +1,67 @@
+{
+  "commission": "PYAT-HQ265-G01-G1-FIXTURE-REGROUNDED-G2-XOR-MINIMAL-REPAIR-R1",
+  "actual_model": "Space Bunny Max (space-bunny-free) -- as commissioned; NOT relabelled",
+  "committed_sha": "c5e3ea36d8e6f1fab139821b9521c1740a7e46e9",
+  "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+  "code_modified": false,
+  "candidate_files_unchanged": {
+    "rawlsing_next/pre553_ee14_c1_owner_authenticated_ingress.py": "e1c09957519f10b29ae2635f3277b4f3af0912c9",
+    "rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py": "f71c0ce87d4005acc6806cac9afe5bbbb76ad9bc"
+  },
+  "fixture_verified": {
+    "path": "rawlsing_next/tests/c1_at08_at13_fixture.py",
+    "blob": "0393cc8c17a313b7944b2a5287d0406d6cbe3849",
+    "matches_commission": true,
+    "exports_used": ["XOR_ORACLE", "xor_fixture", "direct_condition_composition"],
+    "hq253_discriminator_commit": "e609be4f68c51182c5acb3a99c671949f1b71d34",
+    "hq253_discriminator_extracted_lines": 648
+  },
+
+  "executed_assertions": [
+    {
+      "claim": "the approved four-respondent XOR fixture exists in canonical control",
+      "observed": "blob 0393cc8c17a313b7944b2a5287d0406d6cbe3849, exact match to the commission",
+      "note": "this DISPROVES my own HQ264 HOLD; the earlier absence claim was a bad search, not a missing artifact"
+    },
+    {
+      "claim": "q1 = q(C|A=1) yields cells 1/2 and 1/2 with native joint denominator 2",
+      "command": "xor_fixture('c1-at09-xor') + direct_condition_composition(conditions=(('RESPONSE','A',1),), target_question='C')",
+      "observed": "cells fractions [[1,2],[1,2]]; raw_denominator_support=2; XOR_ORACLE unary_marginal_flat['P(C=1|A=1)']==(1,2)",
+      "matches_commission": true,
+      "exit_code": 0
+    },
+    {
+      "claim": "q2 = q(C|A=1,B=0) yields cells 0 and 1 with native joint denominator 1",
+      "command": "same fixture + conditions=(('RESPONSE','A',1),('RESPONSE','B',0))",
+      "observed": "cells fractions [[0,1],[1,1]] with cell_state OBSERVED_ZERO_IN_SUPPORTED_RISK_SET on C=0; raw_denominator_support=1; XOR_ORACLE joint_decisive['P(C=1|A=1,B=0)']==(1,1)",
+      "matches_commission": true,
+      "exit_code": 0
+    },
+    {
+      "claim": "q1 and q2 are distinct C1 compositions over the same respondents",
+      "observed": "composed_result_identity_hash differs between q1 and q2 while source_universe_refs and release_refs are equal",
+      "exit_code": 0
+    },
+    {
+      "claim": "the unmodified HQ262 candidate court is still green",
+      "command": "PYTHONPATH=. python3.11 -m pytest rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py -q -p no:randomly",
+      "result": "22 passed", "exit_code": 0
+    }
+  ],
+
+  "withdrawn_not_shipped": [
+    {
+      "what": "F1 real applicability + adopted G2 + bound F8 wiring, plus F3 in-flight checks, F4 typed error classes, F5 exact-type validation",
+      "why_withdrawn": "the rewritten court ran 17 passed / 6 FAILED. A candidate whose tests fail is not a deliverable, so the two permitted files were reverted byte-for-byte to their commissioned blobs.",
+      "root_cause": "under my own query-authority wiring, direct_condition_composition returned possibility_slice_evidence_or_null=None and consumer_result_or_null=None, so there was no C1-originated evidence object for G2 to authenticate and bind to F8.",
+      "narrowing": "the SAME figures reproduce under the HQ253 discriminator's own qauth (_query_authority). My wiring used _query_snapshot() instead. So the open question is which owner-held query authority populates possibility_slice_evidence_or_null, not whether the chain is possible."
+    }
+  ],
+
+  "documentation_only_claims": [
+    "F1's G0b blocker remains ruled out: AUTHORISED_AUTHORITY = ADMISSIBLE_SET_ONLY__RANKING_AND_SELECTION_NOT_AUTHORIZED, and the adopted binder re-derives from request+receipt+rule. Reconfirmed by reading adopted source; no full G2 round trip was executed in this lane."
+  ],
+
+  "no_pass_claimed": true,
+  "independent_review": "none performed; author-run results are not independent review"
+}
