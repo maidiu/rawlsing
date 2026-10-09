@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261009-PYAT-HQ267-G01-COMMITTED-G2-XOR-CORRECTION-INDEPENDENT-HOSTILE-REVIEW-R1",
-  "handoff_commit": "27d534fc04412205b17e66561c4c71cd256af7d5",
+  "checkpoint_id": "20261009-PYAT-HQ268-G01-R01-INDEPENDENCE-FAIL-D1-D2-REPAIR-ISSUED-R1",
+  "handoff_commit": "e09c4580bd0f6e4ce43674fcb4d32d6b8d3b60dd",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261009-PYAT-HQ267-G01-COMMITTED-G2-XOR-CORRECTION-INDEPENDENT-HOSTILE-REVIEW-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261009-PYAT-HQ267-G01-COMMITTED-G2-XOR-CORRECTION-INDEPENDENT-HOSTILE-REVIEW-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261009-PYAT-HQ267-G01-COMMITTED-G2-XOR-CORRECTION-INDEPENDENT-HOSTILE-REVIEW-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261009-PYAT-HQ268-G01-R01-INDEPENDENCE-FAIL-D1-D2-REPAIR-ISSUED-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261009-PYAT-HQ268-G01-R01-INDEPENDENCE-FAIL-D1-D2-REPAIR-ISSUED-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261009-PYAT-HQ268-G01-R01-INDEPENDENCE-FAIL-D1-D2-REPAIR-ISSUED-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -15,7 +15,7 @@
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
   "protected_execution_head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
-  "next_action": "LAUNCH_HQ267_R01_FINAL_INDEPENDENT_HOSTILE_G01_REVIEW_b48b5b4fb7ce__NO_G1_ADOPTION_BEFORE_HQ__GHANA_LITS_CUSTODY_SEPARATE",
+  "next_action": "LAUNCH_HQ268_G01_MIMO_AUTHOR_D1_D2_REPAIR_e64f53a70a51__THEN_NEW_SEPARATE_GPT6_SOL_HIGH_HOSTILE_REVIEW__GHANA_LITS_PHYSICAL_CUSTODY_UNCHANGED",
   "source_split_control_head": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "split_fanin_evidence_tip": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "joined_successor_return_tip": "b4dd6d6016367110c06317abe2cef276123b4c69",
@@ -62,7 +62,7 @@
   "pyat_current_handoff": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/CURRENT_HANDOFF.md",
   "pyat_current_grok_docket": "PYAT_CONTROL_ROOM/12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md",
   "pyat_fresh_hq_protocol": "PYAT_CONTROL_ROOM/13_FRESH_HQ_FULL_GROK_PROTOCOL.md",
-  "immediate_program_refinement": "HQ267_G01_AUTHORED_COMMITTED_SOURCE_FREE_C1_ORIGINAL_XOR_REAL_SA_G2_BOUND_F8_OWNER_CORRECTION_354_REPORTED_PASS__INDEPENDENT_HOSTILE_REQUIRED_BEFORE_G1_ADOPTION__G0B_STILL_UNISSUED",
+  "immediate_program_refinement": "HQ268_HQ267_REVIEW_NOT_INDEPENDENT_SAME_MIMO_AUTHOR_SESSION__NO_G1_PASS__HQ_DIRECT_SOURCE_VERIFIED_D1_MISSING_EXPECTED_KEYS_AND_D2_TRUNCATED_G2_REPLAY_HASH__MINIMAL_AUTHOR_REPAIR_ISSUED",
   "legacy_pyat_bootstrap_path": "HQ_HANDOFF/PYAT_HQ_BOOTSTRAP_R1.md",
   "pyat_documentary_hygiene": "HQD-2026-09-26-114",
   "pyat_forward_program_decision": "HQD-2026-09-28-125",
@@ -1193,7 +1193,7 @@
   "f7_immediate_launch_tip": "7b2eaf6cb15433f7919af8f9ed3dd2701b8423df",
   "c1_adoption_merge": "396aeff9205a9d648fb44e6fdd6d3e9e27afe3f9",
   "c1_review_merge": "15550c8f7c026c8446546bf8845e4dfba2642baf",
-  "last_hq_decision": "HQD-2026-10-09-267",
+  "last_hq_decision": "HQD-2026-10-09-268",
   "n10e_r3_documentary_warrant_status": "DISTINCT_HQ247_ADOPTED_PROSPECTIVE_ONLY__NO_ROOT_OR_ISSUER",
   "f7_native_current_status": "FROZEN_B_HOSTILE_BLOCKED__AB_F09_PARTIAL__NO_PRODUCTION_CUTOVER",
   "hq248_decision": "HQD-2026-10-08-248",
@@ -1451,6 +1451,17 @@
       "tip": "b48b5b4fb7cec83b1977aaeaeaab37ce74aba94f",
       "status": "ISSUED_NEEDS_HUMAN_LAUNCH",
       "model": "GPT-6 Sol High"
+    }
+  ],
+  "hq268_decision": "HQD-2026-10-09-268",
+  "hq268_checkpoint_status": "HQ267_R01_SELF_REVIEW_RETURN_2678a10d_INTAKEN_DISQUALIFIED_FOR_INDEPENDENCE__D1_D2_STATIC_DEFECTS_VERIFIED_BY_HQ__G01_AUTHOR_REPAIR_ISSUED_NEEDS_HUMAN_LAUNCH__NO_G0B_T1_T2",
+  "hq268_r01_return": "2678a10d9abb397682333bddddd24b24f9e9761c",
+  "hq268_active_branches": [
+    {
+      "branch": "agent/space-bunny-pyat-hq268-g01-d1-d2-auth-and-replay-identity-repair-r1",
+      "tip": "e64f53a70a5167a7c79712038c9b1e14ae6c747c",
+      "status": "ISSUED_NEEDS_HUMAN_LAUNCH",
+      "model": "MiMo V2.6-Flash (opencode/mimo-v2.6-flash-free)"
     }
   ]
 }
