@@ -1,0 +1,393 @@
+{
+  "branch": "agent/space-bunny-pyat-hq266-g01-query-authority-parity-repair-r1",
+  "commission_tip": "dfab8607177e02872a2da6cfa65a6d97bed8bdda",
+  "commission_tip_matched_origin_head": true,
+  "commits": [
+    {
+      "sha": "2de8ec281366a2e5e15f652b799078a37b4b7fbe",
+      "subject": "run the exact HQ253 query-authority positive control, then repair the two G01 files onto the real G2 chain"
+    },
+    {
+      "sha": "3829fc4e63fc9fb0d802e8af237dfab2febc3d23",
+      "subject": "restore all 22 baseline test names and the lost parametrize"
+    }
+  ],
+  "control_parent": "8d42dbbe9d8c07aa2672abd7a970bf15373fe056",
+  "edit_scope": {
+    "accepted_owners_verified_unchanged": [
+      "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+      "rawlsing_next/pre553_service_source_applicability.py",
+      "rawlsing_next/pre553_analytical_composition.py",
+      "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "rawlsing_next/tests/c1_at08_at13_fixture.py",
+      "rawlsing_next/tests/test_pre553_empirical_query.py"
+    ],
+    "changed_path_count": 2,
+    "changed_paths": [
+      "rawlsing_next/pre553_ee14_c1_owner_authenticated_ingress.py",
+      "rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py"
+    ],
+    "diff_stat": "2 files changed, 1701 insertions(+), 265 deletions(-)"
+  },
+  "final_committed_run": {
+    "all_exit_codes_zero": true,
+    "baseline_tests_preserved": {
+      "all_original_names_still_present": true,
+      "original_collected_tests": 22,
+      "original_function_names": 14,
+      "parametrized_bad_shapes_cases_restored": 8,
+      "parametrized_cell_cases": 2
+    },
+    "blobs_at_head": {
+      "rawlsing_next/pre553_ee14_c1_owner_authenticated_ingress.py": "4ec0038d218a20cc92f114e28fd6c1de4ebd71f5",
+      "rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py": "321e3e03415d1b980156f0ed4355216ca1f2273c"
+    },
+    "oracles": [
+      {
+        "detail": "22 preserved baseline + 53 new F1-F6",
+        "exit": 0,
+        "id": "A_new_g01_court",
+        "result": "75 passed"
+      },
+      {
+        "exit": 0,
+        "id": "B_four_accepted_g2_applicability_courts",
+        "result": "199 passed"
+      },
+      {
+        "exit": 0,
+        "id": "C_c1_query_authority_higher_order_regression",
+        "result": "80 passed"
+      },
+      {
+        "exit": 0,
+        "id": "D_combined",
+        "result": "354 passed"
+      },
+      {
+        "exit": 0,
+        "id": "E_step_a_positive_control",
+        "result": "ALL CHECKS PASSED"
+      }
+    ],
+    "worktree_clean": true
+  },
+  "final_committed_sha": "3829fc4e63fc9fb0d802e8af237dfab2febc3d23",
+  "hostiles_and_typed_negatives": [
+    {
+      "case": "real binder refusal must surface (no raw-F8 bypass)",
+      "finding": "F1",
+      "mechanism": "monkeypatch B.bind_service_applicability_to_f8_scope to raise BINDING_RELEASE_GRAIN_MISMATCH",
+      "observed": "ServiceF8ScopeBindingError surfaced, bound-F8 invocation count 0",
+      "result": "REFUSED_BEFORE_F8"
+    },
+    {
+      "case": "real binder refuses permission identity mismatch",
+      "finding": "F1",
+      "observed": "BINDING_PERMISSION_IDENTITY_MISMATCH",
+      "result": "REFUSED"
+    },
+    {
+      "case": "real binder refuses substituted release",
+      "finding": "F1",
+      "observed": "BINDING_RELEASE_GRAIN_MISMATCH",
+      "result": "REFUSED"
+    },
+    {
+      "case": "real binder refuses foreign source universe",
+      "finding": "F1",
+      "observed": "REQUESTED_SOURCE_NOT_ADMITTED",
+      "result": "REFUSED"
+    },
+    {
+      "case": "q1 cell served with q2 stratum (label flip)",
+      "finding": "F2",
+      "observed": "SelectedIngressError grain/substitution refusal",
+      "result": "REFUSED"
+    },
+    {
+      "case": "provenance_refs substituted, evidence_ref/geometry/support held",
+      "finding": "F3",
+      "observed": "SelectedIngressAuthenticationError, mismatched field evidence_provenance_keys, F8 count 0",
+      "result": "REFUSED_BEFORE_F8"
+    },
+    {
+      "case": "authority_refs substituted",
+      "finding": "F3",
+      "observed": "SelectedIngressAuthenticationError, F8 count 0",
+      "result": "REFUSED_BEFORE_F8"
+    },
+    {
+      "case": "evidence_ref substituted",
+      "finding": "F3",
+      "observed": "mismatched field evidence_ref_key, F8 count 0",
+      "result": "REFUSED_BEFORE_F8"
+    },
+    {
+      "case": "composed_result_identity_hash forged",
+      "finding": "F3",
+      "observed": "mismatched field composed_result_identity_hash, F8 count 0",
+      "result": "REFUSED_BEFORE_F8"
+    },
+    {
+      "case": "raw_denominator_support swapped across cells",
+      "finding": "F3",
+      "observed": "mismatched field raw_denominator_support, F8 count 0",
+      "result": "REFUSED_BEFORE_F8"
+    },
+    {
+      "case": "the HQ253 custody false positive itself",
+      "finding": "F3+C3",
+      "mechanism": "same substitution run through the ACCEPTED chain and through the ingress",
+      "observed": "accepted chain reproduced an IDENTICAL F8 result_hash for genuine and substituted provenance (baseline == mutated); the ingress refused the identical substitution with F8 count 0",
+      "result": "CUSTODY_GAP_REPRODUCED_AT_F8_AND_CLOSED_BY_INGRESS_AUTHENTICATION"
+    },
+    {
+      "case": "native ZERO_SUPPORT on the same XOR source (genuinely constructible)",
+      "finding": "F4",
+      "observed": "SelectedIngressC1StateError native_state=ZERO_SUPPORT, F8 count 0, message states intrinsic C1 outcome and NOT a missing-EE14-G0b condition",
+      "result": "TYPED_NATIVE_NEGATIVE_ZERO_F8"
+    },
+    {
+      "case": "handler accuracy for VALID_EMPTY, NONCOMPARABLE, UNRESOLVED, OBSERVED_ZERO, LOW_SUPPORT, INTEGRITY_FAILURE",
+      "finding": "F4",
+      "observed": "each state reported verbatim as native_state, F8 count 0",
+      "result": "EXACT_STATE_PRESERVED"
+    },
+    {
+      "case": "UNDERPOWERED (a route family, not an empirical fact state)",
+      "finding": "F4",
+      "observed": "refused as UNKNOWN_OR_UNRESOLVED rather than silently accepted",
+      "result": "REFUSED_NOT_COERCED"
+    },
+    {
+      "case": "out-of-vocabulary state",
+      "finding": "F4",
+      "observed": "refused as UNKNOWN_OR_UNRESOLVED, F8 count 0",
+      "result": "REFUSED_NOT_COERCED"
+    },
+    {
+      "case": "no admitted source",
+      "finding": "F4",
+      "observed": "SelectedIngressG2Error reason_code=NO_ADMITTED_SOURCE, distinct from C1 state error, F8 count 0",
+      "result": "APPLICABILITY_REFUSAL_DISTINCT_FROM_C1"
+    },
+    {
+      "case": "SelectedRequest subclass",
+      "finding": "F5",
+      "observed": "SelectedIngressError",
+      "result": "REFUSED"
+    },
+    {
+      "case": "str subclass as stratum id",
+      "finding": "F5",
+      "observed": "SelectedIngressError",
+      "result": "REFUSED"
+    },
+    {
+      "case": "tuple subclass as stratum_ids",
+      "finding": "F5",
+      "observed": "SelectedIngressError",
+      "result": "REFUSED"
+    },
+    {
+      "case": "str subclass as cell",
+      "finding": "F5",
+      "observed": "SelectedIngressError",
+      "result": "REFUSED"
+    },
+    {
+      "case": "nested mutation of owner material after construction",
+      "finding": "F5",
+      "observed": "TypeError at every nesting level (owner_identity, applicability, cells)",
+      "result": "DEEPLY_IMMUTABLE"
+    },
+    {
+      "case": "snapshot-style query authority at construction",
+      "finding": "F5",
+      "observed": "SelectedIngressError refusing substitute authority_id C1-AT07-QUERY",
+      "result": "REFUSED_AT_CONSTRUCTION"
+    },
+    {
+      "case": "self-consistent forged C1 provenance+authority injected at the actual ingress",
+      "finding": "F6",
+      "observed": "SelectedIngressAuthenticationError, F8 count 0",
+      "result": "REFUSED_BEFORE_F8"
+    },
+    {
+      "case": "recomputed caller digest",
+      "finding": "F6",
+      "observed": "recomputed sha256(f8_result_hash) != origin_receipt_hash; no request channel for a hash",
+      "result": "NOT_RECONSTRUCTABLE"
+    },
+    {
+      "case": "walkback wrong service",
+      "finding": "F6",
+      "observed": "BINDING_SERVICE_GRAIN_MISMATCH",
+      "result": "REFUSED"
+    },
+    {
+      "case": "walkback wrong request/receipt identity",
+      "finding": "F6",
+      "observed": "BINDING_REQUEST_RECEIPT_GRAIN_MISMATCH",
+      "result": "REFUSED"
+    },
+    {
+      "case": "cross-source proxy substitution",
+      "finding": "F6",
+      "observed": "REQUESTED_SOURCE_NOT_ADMITTED at the accepted binder",
+      "result": "REFUSED"
+    },
+    {
+      "case": "low-level F8 direct call mints a receipt",
+      "finding": "F6",
+      "observed": "low-level result carries no origin_receipt_hash, authorizing, c1_identity_hash or g2 fields",
+      "result": "IMPOSSIBLE"
+    },
+    {
+      "case": "non-vacuity of the zero-F8 assertions",
+      "finding": "F6",
+      "observed": "the same counter reads 1 on the positive path",
+      "result": "COUNTER_PROVED_NON_VACUOUS"
+    }
+  ],
+  "negative_state_accounting": {
+    "f8_invocation_on_any_refusal": 0,
+    "genuinely_constructible_on_this_xor_source": [
+      "ZERO_SUPPORT"
+    ],
+    "handler_verified_accurate_for": [
+      "VALID_EMPTY",
+      "NONCOMPARABLE",
+      "UNRESOLVED",
+      "OBSERVED_ZERO",
+      "LOW_SUPPORT",
+      "INTEGRITY_FAILURE",
+      "UNKNOWN_OR_UNRESOLVED"
+    ],
+    "intrinsic_c1_negative_never_attributed_to_g0b": true,
+    "not_natively_constructible_on_this_fixture": [
+      "VALID_EMPTY",
+      "NONCOMPARABLE",
+      "UNKNOWN_OR_UNRESOLVED"
+    ],
+    "route_mapping_reference": "rawlsing_next/pre553_analytical_state_and_route.py:86",
+    "zero_support_maps_to_route_family": "UNDERPOWERED"
+  },
+  "not_claimed": [
+    "production cutover",
+    "EE14 service use or model-use grant",
+    "EE14 G0b issuance",
+    "selected T1 service join",
+    "deployment claim",
+    "remote isolation proof",
+    "same-process adversary closure",
+    "native F7/AT07 use",
+    "V3 actor",
+    "library access",
+    "raw survey",
+    "self-adoption",
+    "control merge or push",
+    "current/as-of certification"
+  ],
+  "query_authority": {
+    "authority_content_hash": "7fbd015d4d45c533fdb2b9e48082544f284167a7dff5713e897a112b3bc94257",
+    "authority_id": "I03-AUTH-c1-at09-xor",
+    "authority_kind": "PREDICATE_GRAMMAR",
+    "authority_object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:8082957627c5f2a53c51d92dabcdd1b87f75c5975bfc117c2fbd97179941fc69",
+    "authority_version": "1.0.0",
+    "construction": "_query_authority(\"c1-at09-xor\") + _registry(source, qauth)",
+    "forbidden_substitute_authority_id": "C1-AT07-QUERY",
+    "forbidden_substitute_refused_by_ingress": true,
+    "governed_object_families": [
+      "EmpiricalFact@1.0.0",
+      "EmpiricalPredicate@1.0.0",
+      "EmpiricalQuerySpec@1.0.0"
+    ],
+    "governed_operations": [
+      "I03-OP-c1-at09-xor"
+    ],
+    "typed_state": "ALLOW"
+  },
+  "read_only_pinned_artefacts": {
+    "hq253_witness_commit": "e609be4f68c51182c5acb3a99c671949f1b71d34",
+    "hq253_witness_test_blob": "17300a405d78820cd663618918e64bb0323f532e",
+    "query_snapshot_used_anywhere": false,
+    "witness_blob_matched_pinned": true,
+    "witness_test_in_canonical_control": false,
+    "xor_fixture_blob": "0393cc8c17a313b7944b2a5287d0406d6cbe3849",
+    "xor_fixture_blob_matched_pinned": true
+  },
+  "runtime": {
+    "dependencies_absent": [
+      "pyarrow",
+      "pandas",
+      "pyreadstat",
+      "numpy"
+    ],
+    "governed_certification_environment": false,
+    "interpreter": "CPython 3.11.3",
+    "invocation_flags": [
+      "PYTHONPATH=.",
+      "-q",
+      "-p",
+      "no:cacheprovider"
+    ],
+    "machine_os": "macOS 13.7.8 x86_64",
+    "pytest": "9.1.1",
+    "raw_survey_or_library_used": false,
+    "runner": "/private/tmp/hq210venv/bin/python -m pytest"
+  },
+  "schema": "HQ266_G01_CLEAN_COMMITTED_RUN_AND_HOSTILES@1.0.0",
+  "step_a_positive_control": {
+    "exit_code": 0,
+    "fail_count": 0,
+    "pass_count": 34,
+    "rerun_at_final_sha_exit_code": 0,
+    "rerun_at_final_sha_result": "ALL CHECKS PASSED",
+    "result": "ALL CHECKS PASSED",
+    "run_before_any_edit": true
+  },
+  "worktree_state_at_final_run": {
+    "clean": true,
+    "non_pycache_dirty_entries": 0
+  },
+  "xor_figures_preserved": {
+    "distinct_producer_identities": true,
+    "one_shared_source_for_both_cells": true,
+    "q1": {
+      "C0": "1/2",
+      "C1": "1/2",
+      "conditions": [
+        [
+          "RESPONSE",
+          "A",
+          1
+        ]
+      ],
+      "denominator": 2,
+      "tag": "hq253-qA"
+    },
+    "q2": {
+      "C0": "0/1",
+      "C1": "1/1",
+      "conditions": [
+        [
+          "RESPONSE",
+          "A",
+          1
+        ],
+        [
+          "RESPONSE",
+          "B",
+          0
+        ]
+      ],
+      "denominator": 1,
+      "tag": "hq253-qAB"
+    },
+    "release_ref": "REL-c1-at09-xor",
+    "respondents": 4,
+    "universe_content_hash": "318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c"
+  }
+}

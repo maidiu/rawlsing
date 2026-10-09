@@ -1,0 +1,118 @@
+{
+  "authority_ceiling": {
+    "EE14_G0b_issued": false,
+    "EE14_operative_model_use_grant": false,
+    "G1_DEVELOPMENT_GRAIN": false,
+    "candidate_class": "G1_INTERNAL_OWNER_PATH_CANDIDATE_ONLY",
+    "current_or_as_of_certification": false,
+    "deployment_or_production_cutover": false,
+    "grants_permission": false,
+    "library_access_or_raw_survey": false,
+    "native_F7_AT07_or_V3": false,
+    "remote_isolation_or_runtime_remote_proof": false,
+    "same_process_adversary": "UNPROVED",
+    "selected_T1_service_join": false,
+    "self_adoption_or_control_merge": false
+  },
+  "branch": "agent/space-bunny-pyat-hq266-g01-query-authority-parity-repair-r1",
+  "commission": "PYAT-HQ266-G01-QUERY-AUTHORITY-PARITY-AND-G2-INTEGRATION-R1",
+  "commission_tip": "dfab8607177e02872a2da6cfa65a6d97bed8bdda",
+  "control_parent": "8d42dbbe9d8c07aa2672abd7a970bf15373fe056",
+  "custody_gap": {
+    "closed_at_f8": false,
+    "closed_by_ingress_authentication": true,
+    "custody_certified": false,
+    "detail": "accepted chain yields identical F8 result_hash for genuine and substituted provenance; ingress refuses it before F8",
+    "hq253_custody_false_positive_still_real": true,
+    "reproduced_in_court": true
+  },
+  "decision": "HQD-2026-10-09-266",
+  "disposition": "COMMITTED_CORRECTION",
+  "edit_scope": {
+    "accepted_owners_touched": 0,
+    "changed_path_count": 2,
+    "changed_paths": [
+      "rawlsing_next/pre553_ee14_c1_owner_authenticated_ingress.py",
+      "rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py"
+    ],
+    "committed_blobs": {
+      "rawlsing_next/pre553_ee14_c1_owner_authenticated_ingress.py": "4ec0038d218a20cc92f114e28fd6c1de4ebd71f5",
+      "rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py": "321e3e03415d1b980156f0ed4355216ca1f2273c"
+    },
+    "missing_edge_hold_required": false
+  },
+  "final_committed_sha": "3829fc4e63fc9fb0d802e8af237dfab2febc3d23",
+  "final_oracles": {
+    "A_new_g01_court": {
+      "baseline_preserved": "22 of 22",
+      "exit": 0,
+      "new_f1_f6": 53,
+      "result": "75 passed"
+    },
+    "B_four_accepted_g2_applicability_courts": {
+      "exit": 0,
+      "result": "199 passed"
+    },
+    "C_c1_query_higher_order_regression": {
+      "exit": 0,
+      "result": "80 passed"
+    },
+    "D_combined": {
+      "exit": 0,
+      "result": "354 passed"
+    },
+    "E_step_a_positive_control": {
+      "exit": 0,
+      "result": "ALL CHECKS PASSED"
+    },
+    "all_exit_codes_zero": true
+  },
+  "findings_addressed": {
+    "F1": "scope-hash stand-in and raw-F8 bypass removed; real SA -> B binder -> bound F8",
+    "F2": "two genuinely distinct q1/q2 producer queries over one XOR source",
+    "F3": "deep authority/provenance authentication refusing BEFORE F8",
+    "F4": "typed native C1 states with zero F8 and distinct NO_ADMITTED_SOURCE",
+    "F5": "exact builtin types plus deeply immutable owner material",
+    "F6": "hostiles exercise the real ingress boundary, with a non-vacuity control"
+  },
+  "model_as_declared": "Space Bunny Max (space-bunny-free / native Max)",
+  "next_for_hq": [
+    "commission a separate independent hostile review of these author tests before any adoption decision",
+    "do not treat this return as PASS_AT_DECLARED_G1_DEVELOPMENT_GRAIN",
+    "EE14 G0b hold remains UNISSUED; T1 hold unchanged"
+  ],
+  "schema": "PYAT_WORKER_DISPOSITION@1.0.0",
+  "sealed_hq266_checkpoint": "20261009-PYAT-HQ266-G01-XOR-VERIFIED-QUERY-AUTHORITY-G2-PARITY-REPAIR-R1",
+  "step_a": {
+    "adopted_g2_binding": true,
+    "authentic_applicability_receipt": true,
+    "bound_f8_parity_with_direct_c1": true,
+    "construction": "_query_authority(\"c1-at09-xor\") + _registry(source, qauth) + fx.xor_fixture() + fx.direct_condition_composition(...)",
+    "exit_code": 0,
+    "fail_count": 0,
+    "non_null_c1_evidence_both_cells": true,
+    "query_snapshot_used": false,
+    "rerun_at_final_sha": "PASSED",
+    "result": "ALL CHECKS PASSED",
+    "run_before_any_edit": true,
+    "xor_figures_exact": true
+  },
+  "steps_completed": {
+    "A_positive_control_exact_hq253_first_before_any_edit": "PASSED",
+    "B_integrate_proven_construction_into_two_authorized_files": "DONE",
+    "C_correct_f1_through_f6": "DONE",
+    "D_committed_tested_correction_and_stop": "DONE"
+  },
+  "stop_conditions_checked": {
+    "any_stop_triggered": false,
+    "conflated_mutual_exclusion_violation": false,
+    "edit_scope_exceeded": false,
+    "missing_edge_required_authoritative_source": false,
+    "positive_control_typed_failure": false,
+    "recomputed_receipt_hash_mismatch": false,
+    "remote_head_differs_from_commission_tip": false,
+    "separate_hostile_review_failed": "N/A - HQ has not yet commissioned one"
+  },
+  "terminal": "HQ266_G01_RETURNED_FOR_HQ__NO_SELF_ADOPTION",
+  "terminal_state": "HQ266_G01_RETURNED_FOR_HQ__NO_SELF_ADOPTION"
+}
