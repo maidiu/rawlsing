@@ -1,0 +1,23 @@
+# HQ270 L01 — one exact LiTS-I retained-query preimage and progressive condition court
+
+**Status:** ISSUED_NEEDS_HUMAN_LAUNCH. **Repo** maidiu/rawlsing (private). **Branch** `agent/rabochii-pyat-hq270-l01-lits-retained-preimage-nested-query-r1`. **Frozen commission base** `7c7fd2903383603a2e4103970c2c80dd9b8b05b0`. Resolve sealed HQ270 control on launch.
+**Agent:** other-Mac local scientific retained-product investigator; actual model must be recorded. The 3.4GB LiTS checkpoint EXISTS on this machine. **DO NOT reconstruct, upload, rebuild, decode DTA, bulk-read/hash 3.4GB or allocate 3.4GB+ RAM.** Disk ~12GiB free. Stream/read narrowly bounded JSON preimages or use small companion 264,917B frozen oracle and source retry receipts. Read only lawfully existing retained objects and documentary evidence, no fresh raw survey experiment or new model-use warrant.
+
+Read HQ269 S01 scientific return `agent/rabochii-pyat-hq269-s01-exact-measurement-and-structural-competence-r1 @ c2170891fdb1d3713beaeac4c52dfc105de6ff78`, especially 00/03. It audited an important previously overclaimed `D02_P3_CONDITIONAL_REVERSAL` discovery hash `a3dfb9c641e8efc16bdcdbcd5e6d1635a7446f3ff3c2f6ed53defba4b70e7eb4`: real **EVALUATED_VALID_EMPTY**, even though eight constituent facts SUPPORTED. Preserve that negative truth exactly. S01 proved positive `D02_P1_JOINT_DEPENDENCE` candidate `0373f9117bb342746a870d61e743e6420a02757df76d4e46e6335b98acccf2e3` at JOINT 24630, MARGINAL0 24897, MARGINAL1 28325 raw denoms, no weights/quantified uncertainty. Do not reduce denominator differences to one fabricated risk set. LiTS source `LiTS_I.dta` physical SHA fresh match `7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09`; checkpoint exact path `/Users/matthewsmith/Desktop/Rawlsing/LOCAL_CUSTODY/PREMAIN-FIABC-LITS-FINAL-SUCCESS-DURABLE-CUSTODY-R1/payload/PREMAIN-FIABC-LITS-FINAL-CANONICAL-CLOSURE-SOURCE-RETRY-R1/court/oracle_producers/LITS_I/current_i05_materialization_checkpoint_v3.json`.
+
+## Mission
+
+**First use small existing receipts/oracle**, original LiTS 2006 questionnaire/codebook, exact source projection and embedded catalog to resolve all actual `EmpiricalQuerySpec`/`EmpiricalPredicate`/`EmpiricalFact` preimages for a feasible same-respondent first `q(Y|A)`, then `q(Y|A,B)`. Provisional items **Y=q301_7 life satisfaction, A=q301_2 retrospective political appraisal, B=q310 preference market versus planned** are NOT adopted; q310 may not be a permitted third respondent-event slot in original AS2A q301_2/q301_7 projection. Better role triple only if exact supported retained joint preimages show it. Match target item original label/native code, routing/eligibility, respondent intersection, 1st vs 2nd query/predicate/witness and exact denominators, source-native missing/nonnumeric states, risk set/release SHA, ancestry and appropriate source weights/uncertainty ceiling. Never infer third condition from a K3 discovery rule name or an isolated Q310 stratum.
+
+Identify at most ONE exact positive `A,B,Y` triple in existing retained product. If none, produce **REFUSE_EXACT_TRIPLE_ALREADY_RETAINED** with strongest actual two-field co-travel positive and shortest **existing lawful** producer/authority next edge. Show which preimage evidence would falsify the absence claim; do not appoint yourself issuer.
+
+Also assess whether an exact retained source item can be offered as **actor-independent source-indexed observed social-context contribution**, separately from actual structural/causal mechanisms. `FF02_READY` says `ff02_executed=false` and `structural_admission_created=false`. Output existing exact producer/permission missing, not a synthetic "structural pressure" score. Retain 25 supported minority/nonmodal cells and `VALID_EMPTY` as separate typed truth.
+
+Return **small evidence summaries only**; NEVER include full checkpoint, respondent records, survey raw values, PII, carrier member blobs or deep data. If 3.4GB JSON pointer streaming cannot be bounded, STOP and name precise small manifest/index needed for a future approved streaming lookup.
+
+Allowed four return docs under `WORKER_RETURNS/PYAT-HQ270-L01-LITS-I05-EXACT-RETAINED-PREIMAGE-AND-PROGRESSIVE-CONDITIONING-R1/`:
+`00_ITEM_MEANING_AND_CHECKPOINT_EXACT_POINTERS.md`,
+`01_S1_NESTED_A_B_Y_IDENTITY_AND_ORIGINAL_DENOMINATORS.json`,
+`02_S2_MINORITY_CONTEXT_FF02_COMPETENCE_AND_REQUIRED_GRANTS.md`,
+`03_DISPOSITION.json`.
+Use light GitHub API pushes from this small-disk Mac, no large clone/checkout/reset. No HQ change, code alteration, raw decode, no ungranted model use, no self-adoption, no V3. Terminal `HQ270_L01_RETURNED_FOR_HQ__NO_SELF_ADOPTION`.
