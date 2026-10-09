@@ -476,7 +476,7 @@ def test_f1_no_currentness_is_claimed(ingress):
     assert r.authorizing is False
 
 
-def test_f1_receipt_is_technical_only_and_authorizing_is_false(ingress):
+def test_receipt_is_not_a_grant_and_grants_no_permission(ingress):
     r = ingress.serve(SelectedRequest(cell="q1", stratum_ids=Q1_STRATUM))
     assert r.authorizing is False
     assert not hasattr(r, "grant_ref")
@@ -537,7 +537,7 @@ def test_f2_cell_label_flip_is_refused_no_substitution(ingress):
         ingress.serve(SelectedRequest(cell="q2", stratum_ids=Q1_STRATUM))
 
 
-def test_f2_stratum_mismatch_refused_without_substitution(ingress):
+def test_hostile_stratum_mismatch_refused_without_substitution(ingress):
     with pytest.raises(SelectedIngressError) as e:
         ingress.serve(SelectedRequest(cell="q1", stratum_ids=("not", "the", "grain")))
     assert "grain" in str(e.value) or "substitution" in str(e.value)
@@ -863,7 +863,7 @@ def test_f5_subclass_of_str_is_refused_as_a_cell(ingress):
         ingress.serve(SelectedRequest(cell=CellSub("q1"), stratum_ids=Q1_STRATUM))
 
 
-def test_f5_client_cannot_supply_evidence_at_all(ingress):
+def test_hostile_client_cannot_supply_evidence_at_all(ingress):
     """There is no request field through which evidence can arrive."""
     bad = SelectedRequest(cell="q1", stratum_ids=("x",))
     with pytest.raises(dataclasses.FrozenInstanceError):
@@ -874,7 +874,7 @@ def test_f5_client_cannot_supply_evidence_at_all(ingress):
     assert not hasattr(SelectedRequest, "hash")
 
 
-def test_f5_owner_scope_material_is_read_only(ingress):
+def test_owner_scope_material_is_read_only(ingress):
     scope = ingress.owner_scope_material()
     with pytest.raises(TypeError):
         scope["injected"] = True
@@ -891,7 +891,7 @@ def test_f5_owner_scope_material_is_deeply_read_only(ingress):
         scope["cells"]["q1"]["stratum_ids"] = ("injected",)
 
 
-def test_f5_owner_setup_requires_every_permitted_cell(source, qauth, registry):
+def test_owner_setup_requires_every_permitted_cell(source, qauth, registry):
     with pytest.raises(SelectedIngressError):
         OwnerOnlySelectedIngress(
             source=source, qauth=qauth, registry=registry, cells={},
@@ -911,19 +911,22 @@ def test_f5_owner_setup_requires_the_pinned_query_authority(source, registry):
             c1_compose=_compose)
 
 
-def test_f5_non_request_shapes_are_all_refused(ingress, source_free_shape=None):
-    for bad in (None, 42, "q1", [], {}, object(), b"q1", type("Sneaky", (), {})()):
-        with pytest.raises(SelectedIngressError):
-            ingress.serve(bad)
+@pytest.mark.parametrize("bad", [
+    None, 42, "q1", [], {}, object(), b"q1",
+    type("Sneaky", (), {})(),
+])
+def test_hostile_non_request_shapes_refused(ingress, bad):
+    with pytest.raises(SelectedIngressError):
+        ingress.serve(bad)
 
 
-def test_f5_stratum_ids_must_be_exact_builtin_strings(ingress):
+def test_hostile_stratum_ids_must_be_plain_strings(ingress):
     for bad in ((), ["a"], ("a", 1), (object(),), (None,)):
         with pytest.raises(SelectedIngressError):
             ingress.serve(SelectedRequest(cell="q1", stratum_ids=bad))
 
 
-def test_f5_unknown_cell_refused(ingress):
+def test_hostile_unknown_cell_refused(ingress):
     with pytest.raises(SelectedIngressError):
         ingress.serve(SelectedRequest(cell="q3", stratum_ids=Q1_STRATUM))
 
@@ -943,7 +946,7 @@ def test_f6_forged_receipt_is_not_reconstructable_from_the_f8_number(ingress):
     assert not hasattr(SelectedRequest, "origin_receipt_hash")
 
 
-def test_f6_recomputed_caller_hash_is_unusable(ingress):
+def test_hostile_recomputed_caller_hash_is_unusable(ingress):
     r = ingress.serve(SelectedRequest(cell="q1", stratum_ids=Q1_STRATUM))
     recomputed = _h(r.f8_result_hash)
     assert recomputed != r.origin_receipt_hash
@@ -1015,7 +1018,7 @@ def test_f6_walkback_wrong_request_receipt_is_refused(source):
     assert "BINDING_REQUEST_RECEIPT_GRAIN_MISMATCH" in str(exc.value)
 
 
-def test_f6_low_level_f8_call_can_never_mint_a_selected_receipt(source, qauth, registry):
+def test_low_level_f8_direct_call_can_never_mint_a_selected_receipt(source, qauth, registry):
     """F8 has no notion of the selected receipt; a direct call yields only the number."""
     composition, consumer_query = _compose(
         source=source, qauth=qauth, registry=registry,
@@ -1040,7 +1043,7 @@ def test_f6_owner_material_carries_no_grant_or_currentness(ingress):
     assert MARKER
 
 
-def test_f6_same_process_monkeypatch_adversary_is_labelled_unproved():
+def test_strong_same_process_monkeypatch_adversary_is_labelled_unproved():
     """Explicitly UNPROVED under the data-only contract. Not claimed as covered."""
     assert "UNPROVED" in INGRESS_MODULE.__doc__
     assert "NOT DEPLOYED" in INGRESS_MODULE.__doc__.upper()
