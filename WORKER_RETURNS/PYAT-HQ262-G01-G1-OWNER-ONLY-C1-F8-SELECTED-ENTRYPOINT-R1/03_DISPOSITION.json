@@ -1,0 +1,70 @@
+{
+  "commission": "PYAT-HQ262-G01-G1-OWNER-ONLY-C1-F8-SELECTED-ENTRYPOINT-R1",
+  "terminal": "HQ262_G01_RETURNED_FOR_HQ__NO_SELF_ADOPTION",
+  "disposition": "G1_INTERNAL_OWNER_PATH_CANDIDATE_ONLY",
+  "agent": "Existing Space Bunny / OpenCode workflow",
+  "head": "63cdc0b5bb4c382acf558e040b3669b787fc245f",
+  "branch": "agent/space-bunny-pyat-hq262-g1-owner-only-selected-entrypoint-r1",
+  "commission_tip": "63cdc0b5bb4c382acf558e040b3669b787fc245f",
+  "live_control": "64b4e7ab1e67c139c7115430c711d459474cf31a (diverged from tip; reported, not reconciled)",
+
+  "what_was_built": {
+    "module": "rawlsing_next/pre553_ee14_c1_owner_authenticated_ingress.py",
+    "test": "rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py",
+    "existing_owners_modified": "none",
+    "new_statistical_engine": "none",
+    "public_surface": "data-only SelectedRequest(cell, stratum_ids) -- two closed fields, no objects",
+    "owner_executes_c1": true,
+    "evidence_origin": "C1-originated PossibilitySliceEvidence taken from AnalyticalCompositionResult; never client-supplied",
+    "receipt_binds": ["c1_identity_hash", "c1 evidence projection hash", "c1 authority keys", "c1 provenance keys", "c1 risk set ref", "c1 denominator members", "applicability scope hash", "f8 result hash"],
+    "authorizing": false
+  },
+
+  "runtime": {
+    "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "command": "PYTHONPATH=. python3.11 -m pytest rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py -q -p no:randomly",
+    "result": "22 passed",
+    "exit_code": 0,
+    "observed_positive": {"c1_identity": "01c381d3f3c386cfc22fd2f57b8e2c244771ddf1529d4f8ab8c7b1cf41bd50dd", "f8_result_hash": "47b51a3b6df4ec051b5b9fb04a92760c791f4ac761f20a157966cbe1b481a4be", "f8_state": "EXACT_SUPPORTED", "authorizing": false}
+  },
+
+  "evidence_grade": "AUTHOR-RUN ONLY. Not independent acceptance. An independent hostile reviewer is required before any adoption.",
+
+  "limitations_not_claimed": [
+    "the commission's specific four-respondent XOR marginals (1/2,1/2 and 0/1) are NOT reproduced; the accepted source-free C1 AT07 fixture is used instead",
+    "typed negative grain VALID_EMPTY / NONCOMPARABLE / UNDERPOWERED / UNKNOWN_OR_UNRESOLVED NOT banked at this ingress",
+    "altered in-flight authority mutation NOT banked as a separate case",
+    "cross-source and walkback-proxy refusal NOT banked at this ingress",
+    "strong same-process monkeypatch adversary EXPLICITLY UNPROVED and outside the data-only contract",
+    "NOT deployed security; no process isolation was verified or is claimed"
+  ],
+
+  "authority_ceiling": {
+    "self_signed_trust_root": false,
+    "ee14_permission_invented": false,
+    "fake_process_isolation": false,
+    "new_statistical_engine": false,
+    "g0b_model_use": "UNISSUED",
+    "ff02_positive_relation": "UNISSUED",
+    "ee12_c7_pair_authority": "UNISSUED",
+    "v3": "none",
+    "native_f7_at07": "not used",
+    "real_T1_credential": "none",
+    "receipt_is": "technical origin receipt binding C1 preimage + G2 scope + F8 hash",
+    "receipt_is_not": ["EE14 grant", "trust root", "runtime remote proof", "authorisation"]
+  },
+
+  "holds": {
+    "write_terrain_respected": "only the two permitted new files plus this return directory",
+    "no_existing_owner_edit": true,
+    "no_C1_F8_binder_B5_G3_test_rewrite": true,
+    "no_self_adoption": true,
+    "no_source_data": true,
+    "no_library_access": true,
+    "no_actor": true,
+    "no_other_branch_modified": true,
+    "hq260_diagnostic_reused_as_acceptance": false
+  },
+
+  "next_step": "STOP for independent hostile review. STOP is the disposition, not a deferral."
+}

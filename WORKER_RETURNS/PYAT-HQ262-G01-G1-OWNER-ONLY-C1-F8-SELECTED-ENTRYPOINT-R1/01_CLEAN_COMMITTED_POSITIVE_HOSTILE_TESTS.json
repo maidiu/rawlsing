@@ -1,0 +1,54 @@
+{
+  "commission": "PYAT-HQ262-G01-G1-OWNER-ONLY-C1-F8-SELECTED-ENTRYPOINT-R1",
+  "marker": "TEST_ONLY_UNISSUED__NOT_AN_EE14_GRANT__G1_INTERNAL_OWNER_PATH_CANDIDATE_ONLY",
+
+  "runtime": {
+    "interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+    "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "working_head_at_run": "63cdc0b5bb4c382acf558e040b3669b787fc245f",
+    "command": "PYTHONPATH=. python3.11 -m pytest rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py -q -p no:randomly",
+    "result": "22 passed",
+    "exit_code": 0,
+    "source_free": true,
+    "library_access": "none",
+    "raw_sav_dta": "none"
+  },
+
+  "positives": [
+    {"case": "q1 and q2 owner-originated ingress", "test": "test_positive_owner_originated_ingress", "result": "pass",
+     "observed": "C1 identity 01c381d3..., 4 genuine C1-AT07 authority keys, 7 C1 provenance refs, F8 EXACT_SUPPORTED, f8 hash 47b51a3b..., authorizing False"},
+    {"case": "receipt binds full C1 lineage, not just the F8 number", "test": "test_positive_receipt_binds_full_c1_lineage_not_just_f8", "result": "pass",
+     "observed": "c1_identity_hash != f8_result_hash and origin_receipt_hash differs from both"},
+    {"case": "determinism", "test": "test_positive_is_deterministic_for_the_same_request", "result": "pass",
+     "observed": "identical origin_receipt_hash and f8_result_hash across repeated identical requests"}
+  ],
+
+  "hostiles": [
+    {"attack": "client supplies evidence", "test": "test_hostile_client_cannot_supply_evidence_at_all", "result": "pass",
+     "mechanism": "request is frozen dataclass with exactly two closed fields; no evidence/authority_refs/c1_result attribute exists"},
+    {"attack": "unknown cell", "test": "test_hostile_unknown_cell_refused", "result": "pass", "mechanism": "closed ALLOWED_CELLS enumeration"},
+    {"attack": "non-request shapes (None/int/str/list/dict/object/bytes/sneaky class)", "test": "test_hostile_non_request_shapes_refused", "result": "pass", "mechanism": "isinstance check against SelectedRequest only"},
+    {"attack": "grain substitution", "test": "test_hostile_stratum_mismatch_refused_without_substitution", "result": "pass",
+     "mechanism": "requested stratum_ids must equal the C1-produced retained_conditioner_ids"},
+    {"attack": "non-plain-string stratum ids", "test": "test_hostile_stratum_ids_must_be_plain_strings", "result": "pass", "mechanism": "tuple of non-empty str enforced"},
+    {"attack": "caller-recomputed counterfeit hash", "test": "test_hostile_recomputed_caller_hash_is_unusable", "result": "pass",
+     "mechanism": "there is no request channel for a hash; the ingress never reads a caller hash"},
+    {"attack": "low-level F8 direct call mints a selected receipt", "test": "test_low_level_f8_direct_call_can_never_mint_a_selected_receipt", "result": "pass",
+     "mechanism": "F8 result object exposes no origin_receipt_hash, no authorizing, no c1_identity_hash, no applicability_scope_hash"},
+    {"attack": "receipt mistaken for a grant", "test": "test_receipt_is_not_a_grant_and_grants_no_permission", "result": "pass",
+     "mechanism": "authorizing False; no grant_ref, ee14_grant or currentness attribute; owner scope issued=False"},
+    {"attack": "caller mutates owner scope", "test": "test_owner_scope_material_is_read_only", "result": "pass", "mechanism": "MappingProxyType view"},
+    {"attack": "owner setup omits a permitted cell", "test": "test_owner_setup_requires_every_permitted_cell", "result": "pass", "mechanism": "setup refuses unless all ALLOWED_CELLS registered"},
+    {"attack": "strong same-process monkeypatch adversary", "test": "test_strong_same_process_monkeypatch_adversary_is_labelled_unproved", "result": "pass as a LABEL",
+     "mechanism": "explicitly UNPROVED under the data-only contract; asserted as a documented limitation, NOT as protection"}
+  ],
+
+  "limitations_and_non_coverage": {
+    "q1_q2_XOR_fixture": "NOT reproduced as the commission's specific q(C|A=1)=1/2,1/2 and q(C|A=1,B=0)=0,1 four-respondent XOR case. The court uses the accepted source-free C1 AT07 fixture, which is real C1 producer material, so producer-origin authenticity is genuinely exercised but the specific XOR marginal/denominator figures are NOT banked.",
+    "typed_negative_grain": "VALID_EMPTY, NONCOMPARABLE, UNDERPOWERED, UNKNOWN_OR_UNRESOLVED are NOT individually banked at the C1 producer; constructing them requires fixture material not assembled in this lane. They are documented as not covered rather than asserted.",
+    "altered_in_flight_authority": "NOT banked as a separate case; the receipt binds C1 identity plus the evidence preimage, but no in-flight mutation test was constructed.",
+    "cross_source_and_walkback_proxy_refusal": "NOT banked at this ingress.",
+    "strong_same_process_monkeypatch": "EXPLICITLY UNPROVED and out of the data-only contract.",
+    "independent_review": "NOT performed. Author-run results are not independent acceptance."
+  }
+}
