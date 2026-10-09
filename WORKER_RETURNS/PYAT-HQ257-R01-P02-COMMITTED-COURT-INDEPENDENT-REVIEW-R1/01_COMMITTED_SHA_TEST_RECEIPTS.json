@@ -1,0 +1,90 @@
+{
+  "schema": "PYAT_HQ257_R01_COMMITTED_SHA_TEST_RECEIPTS@1",
+  "commission": "PYAT-HQ257-R01-P02-COMMITTED-COURT-INDEPENDENT-REVIEW-R1",
+  "reviewer_branch": "agent/deepseek-harness-pyat-hq257-p02-committed-court-independent-review-r1",
+  "reviewer_head": "8636c0dcbbfb9a2749077280a6d4a57c150ffe71",
+  "frozen_p02_candidate": "cb4a8c5548dbe559825681e4a9f9d49af2ac7e8d",
+  "frozen_p01_candidate": "23438ab52f16abda5960a075dfca3f4d3396eab5",
+  "p01_base": "428be7595fce3ecf6ae3cb37852bee884d9ce2e1",
+  "p02_commission": "ea5110f7d26835cccbfabf86173d9815d94ddf74",
+  "live_control": "integration/pre-main-reconciliation-r1 @ 761291ffc24c79e5f64c5fa8625182dd05215524",
+  "sealed_hq257_checkpoint": "20261008-PYAT-HQ257-P02-N02-INTAKE-T1-ISSUER-HOLD-R01-E02-ISSUED-R1 @ 6ced6f9f43230932429f5432dc31edc4ae7d5144",
+  "sealed_worker_row_matches": true,
+  "execution_terrain": {
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq257-p02-review",
+    "shared_object_store": "/Users/matthewsmith/Desktop/Rawlsing/.git",
+    "new_clone": false,
+    "sparse_enabled": true,
+    "head_at_run": "8636c0dcbbfb9a2749077280a6d4a57c150ffe71",
+    "worktree_dirt_status": "CLEAN (git status --porcelain empty)",
+    "interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+    "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "machine": "macOS 13.7.8 x86_64",
+    "library_raw_surveys_native_issuer_actor": "NOT ACCESSED"
+  },
+  "blob_identity_at_final_committed_state": {
+    "binder_path": "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+    "binder_git_blob": "848d2d0eedb04b792747e9d6aaa49bb39d108a2c",
+    "binder_sha256_on_disk": "5221d8c2257ab1e8ec45289a30c57ba9ed4956b8609a890e80343718a6e9c66b",
+    "binder_unchanged_from_p01_candidate": true,
+    "test_path": "rawlsing_next/tests/test_pre553_f8_receipt_permission_identity_hq254.py",
+    "test_git_blob": "cdb4dc22fd1b403dee69bee626a43b6bc41c2b0a",
+    "test_sha256_on_disk": "aca3386397532ab532435686ff8bdbabfe0a05b7ff49e3dd81135dc989418bb1",
+    "test_was_changed_by_p02": true,
+    "test_numstat_vs_p01": "+62 / -7",
+    "binder_numstat_p01_base_to_candidate": "+33 / -0"
+  },
+  "mandated_courts_on_final_committed_sha": [
+    {
+      "id": "new_p01_court",
+      "command": "<governed python3.11> -m pytest rawlsing_next/tests/test_pre553_f8_receipt_permission_identity_hq254.py -q",
+      "collected": 16,
+      "result": "16 passed",
+      "exit_code": 0,
+      "matches_p02_claim": true
+    },
+    {
+      "id": "four_adopted_baseline_courts",
+      "command": "<governed python3.11> -m pytest rawlsing_next/tests/test_pre553_service_f8_source_scope_binding_court.py rawlsing_next/tests/test_pre553_service_f8_binding_authentication_court.py rawlsing_next/tests/test_pre553_service_f8_source_scope_binding_repair_court.py rawlsing_next/tests/test_pre553_service_source_applicability_court.py -q",
+      "collected": 199,
+      "result": "199 passed",
+      "exit_code": 0,
+      "matches_p02_claim": true
+    },
+    {
+      "id": "combined",
+      "command": "<governed python3.11> -m pytest <four baseline courts> rawlsing_next/tests/test_pre553_f8_receipt_permission_identity_hq254.py -q",
+      "collected": 215,
+      "result": "215 passed",
+      "exit_code": 0,
+      "matches_p02_claim": true
+    }
+  ],
+  "provenance_guard_control_matrix": {
+    "question": "does the repaired guard distinguish candidate-present from a reverted binder, and does it fail rather than skip when git is absent?",
+    "cells": [
+      {"binder": "candidate 848d2d0e", "git": "yes (clean sparse worktree at final SHA)", "result": "16 passed, exit 0", "provenance_test": "PASS (layer A sha256 + layer B fixed commits + HEAD agreement)"},
+      {"binder": "candidate 848d2d0e", "git": "no (/tmp copy)", "result": "15 passed, 1 skipped, exit 0", "provenance_test": "SKIP of layer B only; layer A still executes and passes"},
+      {"binder": "reverted 4ba00b8e", "git": "yes (temporary detached worktree at 428be759 with the P02 test injected)", "result": "10 failed, 6 passed, exit 1", "provenance_test": "FAIL at layer A: 'the production binder must remain byte-identical to the reviewed candidate' assert 0a5d3020... == 5221d8c2..."},
+      {"binder": "reverted 4ba00b8e", "git": "no (/tmp copy)", "result": "10 failed, 6 passed, exit 1", "provenance_test": "FAIL at layer A (git-free), so the no-git terrain still discriminates"}
+    ],
+    "conclusion": "layer A (git-free sha256 of the on-disk binder plus refusal-vocabulary count) alone distinguishes candidate-present from reverted binder in every terrain; layer B adds fixed-commit blob pinning and a HEAD-agreement check when git is available and is skipped, never failed, without git"
+  },
+  "p02_head_at_run_discrepancy_reviewed": {
+    "p02_artifact_recorded_head_at_run": "ea5110f7d26835cccbfabf86173d9815d94ddf74",
+    "meaning": "the author's own oracle run occurred with the committed P01 binder at HEAD and the repaired test in the working tree, i.e. before the P02 repair commit",
+    "independent_action": "this review executed on the FINAL committed state cb4a8c55 (via reviewer HEAD 8636c0dc, which adds only the commission commit) with a CLEAN worktree, so the totals above are the first independent evidence that the pushed P02 SHA is green",
+    "self_copied_author_assertion_relied_upon": false
+  },
+  "sparse_scope": {
+    "manifest_paths": "all commission-required source/test files materialized",
+    "documented_narrow_source_free_extension": "same closure validated under HQ255 R01 and recorded here: binder import closure (objective_non_event_currentness_contract, m1/m2/m3/m4, pre553_analytical_composition, pre553_empirical_query, _pre553_query_common, pre553_c11_integrity, pre553_empirical_authority, pre553_c11_repository, _pre553_query_eval, _pre553_query_predicate, pre553_runtime_authority, pre553_discovery_exact, pre553_recursive_handoff, pre553_c11_ingest), court fixture closure (c1_at08_at13_fixture, test_pre553_empirical_query), package __init__ markers, and the adopted-owner file objective_consumer_bounded_evidence.py required by the courts' byte-identity guards",
+    "silent_widening": false
+  },
+  "probe_commands": [
+    {"id": "semantic_probes", "command": "<governed python3.11> /tmp/hq257_probes.py (candidate worktree and /tmp baseline-binder worktree)", "result_file": "results summarised in 02_SOURCE_DIFF_AND_SEMANTICS.md"},
+    {"id": "forgery_and_no_grant_probe", "command": "<governed python3.11> /tmp/hq257_forge_probe.py", "result_file": "results summarised in 02_SOURCE_DIFF_AND_SEMANTICS.md"}
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "schema": "PYAT_HQ257_R01_DISPOSITION@1",
+  "commission": "PYAT-HQ257-R01-P02-COMMITTED-COURT-INDEPENDENT-REVIEW-R1",
+  "lane": "agent/deepseek-harness-pyat-hq257-p02-committed-court-independent-review-r1",
+  "reviewer_head": "8636c0dcbbfb9a2749077280a6d4a57c150ffe71",
+  "frozen_p02_candidate": "cb4a8c5548dbe559825681e4a9f9d49af2ac7e8d",
+  "frozen_p01_candidate": "23438ab52f16abda5960a075dfca3f4d3396eab5",
+  "p01_base": "428be7595fce3ecf6ae3cb37852bee884d9ce2e1",
+  "live_control": "integration/pre-main-reconciliation-r1 @ 761291ffc24c79e5f64c5fa8625182dd05215524",
+  "sealed_hq257_checkpoint": "20261008-PYAT-HQ257-P02-N02-INTAKE-T1-ISSUER-HOLD-R01-E02-ISSUED-R1 @ 6ced6f9f43230932429f5432dc31edc4ae7d5144",
+  "disposition": "ACCEPT_EXACT_GRAIN",
+  "accepted_grain": "the frozen P02 code state: binder blob 848d2d0e0... (byte-identical to the independently reviewed P01 candidate) plus the single repaired permission-identity court file blob cdb4dc22..., executed on a clean worktree at the final committed SHA",
+  "evidence_grade": "INDEPENDENT_GOVERNED_RUNTIME_ON_FINAL_COMMITTED_SHA",
+  "p02_head_at_run_discrepancy": {
+    "author_recorded_head_at_run": "ea5110f7d26835cccbfabf86173d9815d94ddf74",
+    "assessment": "the author's own green run predates the repair commit, so it is not evidence for the pushed SHA",
+    "independent_action": "re-executed the mandated courts on a clean worktree whose HEAD descends from cb4a8c55 with binder 848d2d0e and test cdb4dc22; results reproduced (16/199/215)",
+    "author_assertion_relied_upon": false
+  },
+  "verified": {
+    "new_court_16_of_16": true,
+    "four_baseline_courts_199_of_199": true,
+    "combined_215_of_215": true,
+    "binder_unchanged_p01_to_p02": true,
+    "test_repair_is_+62/-7_single_file": true,
+    "provenance_guard_layer_a_git_free_sha256": "distinguishes candidate-present from reverted binder in git and no-git terrain",
+    "provenance_guard_layer_b_fixed_commits": "pins blob 4ba00b8e at 428be759 and 848d2d0e at 23438ab5; skipped not failed without git",
+    "reversion_negative_control_git": "10 failed / 6 passed",
+    "reversion_negative_control_no_git": "10 failed / 6 passed",
+    "candidate_present_no_git": "15 passed / 1 skipped",
+    "exact_identity_sha_sensitive": true,
+    "same_object_id_changed_sha_refused": true,
+    "omitted_extra_superset_subset_replacement_refused": true,
+    "reversed_order_binds": true,
+    "duplicate_binding_refs_bind_and_remain_in_declared_material": true,
+    "honest_material_byte_identical_to_baseline": true,
+    "material_sha256_matching_case": "f03decea409eb6a9dfa9dfc369ce88e8fc9291b6530a11b495c28db436b149fd",
+    "caller_forged_receipt_or_request_refused": "BINDING_INTEGRITY_FAILURE",
+    "no_permission_granted": true,
+    "no_producer_c1_custody_claimed": true
+  },
+  "normative_grain_findings": {
+    "accepted": "exact permission-ref IDENTITY as a SET: sensitive to kind/object_id/content_hash (add/omit/replace/same-id-different-hash all refused), insensitive to declaration order and to a repeated declaration of the same exact ref",
+    "duplicate_note": "the receipt side is deduped and sorted by the applicability owner and cannot carry a duplicate; only the binding side can repeat; the repeated refs remain in the declared binding material, which must not be described as a normalised receipt form",
+    "refusal_precedence": "target_use > permission_identity > release; the permission-before-release order is fail-closed, disclosed by the author, and shadows no existing single-grain code",
+    "malformed_path_note": "a malformed receipt permission mapping raises plain Pre553IntegrityError rather than the binder subclass; unreachable through the genuine owner, defensive note only"
+  },
+  "integration_guidance_to_hq": {
+    "may_consider_integrating_only": [
+      "rawlsing_next/pre553_service_f8_source_scope_binding.py (blob 848d2d0e0..., unchanged from the reviewed P01 candidate)",
+      "rawlsing_next/tests/test_pre553_f8_receipt_permission_identity_hq254.py (blob cdb4dc22...)"
+    ],
+    "p02_return_documentation_required_for_code_integration": false,
+    "integration_is_an_hq_act": true,
+    "this_return_is_not_adoption": true
+  },
+  "limits": {
+    "wider_sweep_beyond_four_adopted_courts": "NOT RUN (would widen past the commissioned sparse manifest)",
+    "oom_or_platform_fault_injection": "NOT RUN",
+    "no_git_terrain": "Layer B skipped; Layer A still discriminates",
+    "raw_source_library_issuer_native_actor": "NOT ACCESSED",
+    "out_of_scope_and_still_open": ["HQ253 T01 G1/C1 provenance custody", "EE14/T1 model-use", "F8 producer custody", "native F7", "F7-RR-04G"]
+  },
+  "not_adopted": true,
+  "self_adoption": "NOT_PERFORMED",
+  "source_or_test_modified_by_reviewer": false,
+  "merged": false,
+  "authority_granted": false,
+  "terminal": "HQ257_R01_RETURNED_FOR_HQ_INTAKE__NO_SELF_ADOPTION"
+}
