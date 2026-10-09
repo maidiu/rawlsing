@@ -1,0 +1,226 @@
+{
+  "AUTHORITY_AND_SERVICE_CEILING": {
+    "PASS_AT_DECLARED_G1_DEVELOPMENT_GRAIN": false,
+    "authorizing": false,
+    "b5_g3_current_asof_join": false,
+    "deployment_claim": false,
+    "ee14_g0b_issued": false,
+    "ee14_operative_model_use_grant": false,
+    "grants_permission_ranking_or_selection": false,
+    "incorporation_into_canonical_pre_main": "NOT PERFORMED -- HQ rules separately",
+    "native_f7_at07_used": false,
+    "raw_survey_or_library": "NONE",
+    "requested_currentness_claim": null,
+    "selected_t1_service": false,
+    "source_free_admitted_set_is_technical_g2_positive_only": true,
+    "t2_empirical_field": false,
+    "v3_actor": false
+  },
+  "EDITS_MADE": {
+    "authority_changes": 0,
+    "changed_paths": [
+      "WORKER_RETURNS/PYAT-HQ267-R01-G1-AUTHENTIC-G2-XOR-FINAL-INDEPENDENT-HOSTILE-REVIEW-R1/00_EXACT_COMMITTED_BASE_AND_ACTUAL_CALL_GRAPH.md",
+      "WORKER_RETURNS/PYAT-HQ267-R01-G1-AUTHENTIC-G2-XOR-FINAL-INDEPENDENT-HOSTILE-REVIEW-R1/01_INDEPENDENT_EXECUTION_AND_F1_F6_HOSTILE_COURT.json",
+      "WORKER_RETURNS/PYAT-HQ267-R01-G1-AUTHENTIC-G2-XOR-FINAL-INDEPENDENT-HOSTILE-REVIEW-R1/02_ADVERSARIAL_FINDINGS_RUNTIME_GRADE_AND_MINIMAL_EDGE.md",
+      "WORKER_RETURNS/PYAT-HQ267-R01-G1-AUTHENTIC-G2-XOR-FINAL-INDEPENDENT-HOSTILE-REVIEW-R1/03_DISPOSITION.json"
+    ],
+    "code_changes": 0,
+    "count": 4,
+    "fixture_changes": 0,
+    "review_docs_only": true,
+    "test_changes": 0
+  },
+  "FIRST_MISSING_CONNECTION_TO_T1": {
+    "control_support": "dependency_graph[T1_SELECTED_SOURCE_FREE].status ends ...INDEPENDENT_FINAL_REVIEW_PENDING__G0B_UNISSUED; hold g3 = ...ACTUAL_SELECTED_T1_SERVICE_JOIN_NOT_PROVED",
+    "ordered_prerequisites": [
+      "1. EE14 G0b issuance (hold g0b still UNISSUED; this candidate grants no model-use or selected-service permission)",
+      "2. a genuinely separate independent hostile review of the author's tests -- not supplyable by this session",
+      "3. correction of D1 and D2",
+      "4. a HQ-provisioned, HQ-verified runtime if strict runtime separation is required",
+      "5. a real selected-service join carrying a current/as-of claim -- requested_currentness_claim is None throughout here by design"
+    ],
+    "statement": "an actual selected T1 service join"
+  },
+  "INDEPENDENCE_DISCLOSURE": {
+    "actual_model": "opencode/mimo-v2.6-flash-free",
+    "commissioned_model": "GPT-6 Sol High",
+    "consequence": "A PASS AT ANY GRADE cannot be issued or credited from this session. HQ must commission a genuinely separate reviewer, running an actually independent model, before any G1 adoption decision. The technical findings below are objective and re-runnable and may be re-verified by that separate reviewer.",
+    "declared_per_commission_instruction_to_state_actual_model": true,
+    "detail": "The commission requires an independent Browser/GitHub hostile reviewer who is NOT the HQ266 code author. This session executed the HQ266 author lane that wrote the ingress, the court and the four author returns under review. Full foreknowledge of the author's intent is present. This return is therefore author-adjacent self-review, not independent review.",
+    "does_not_impersonate_space_bunny": true,
+    "does_not_impersonate_user_mac_or_prior_qualification": true,
+    "model_impersonation_avoided": true,
+    "reviewer_is_independent_of_author": false,
+    "severe": true
+  },
+  "INDEPENDENT_EXECUTION_SUMMARY": {
+    "arithmetic": "75 + 199 + 80 = 354 = D",
+    "duplicate_counts": false,
+    "hq_provisioned": false,
+    "interpreter": "CPython 3.11.3",
+    "method": "fresh git clone of https://github.com/maidiu/rawlsing.git, checkout 3829fc4e63fc9fb0d802e8af237dfab2febc3d23, 0 dirty, blobs verified",
+    "performed": true,
+    "pytest": "9.1.1",
+    "results": {
+      "A_g01": "75 passed exit 0",
+      "B_g2_sa": "199 passed exit 0",
+      "C_c1_query": "80 passed exit 0",
+      "D_combined": "354 passed exit 0",
+      "E_step_a": "ALL CHECKS PASSED exit 0"
+    },
+    "reused_author_results": false,
+    "same_host_and_interpreter_as_author": true,
+    "skips_xfails": 0,
+    "tracked_files_modified": 0
+  },
+  "MINIMAL_EXACT_DEFECTS": [
+    {
+      "externally_exploitable_under_declared_threat_model": false,
+      "finding": "F3",
+      "id": "D1",
+      "location": "rawlsing_next/pre553_ee14_c1_owner_authenticated_ingress.py:595-596",
+      "minimal_fix": "Require REQUIRED_OWNER_IDENTITY_KEYS <= set(expected) and raise SelectedIngressAuthenticationError(missing_owner_identity_keys=...) otherwise; compare over that required key set rather than over expected. Add empty-identity and one-key-identity tests at f8_calls == 0.",
+      "probe": [
+        "P1b empty owner_identity accepted",
+        "P1c single-key owner_identity accepted",
+        "P1d no completeness assertion in _authenticate"
+      ],
+      "same_class_as_original": "The original F3 was a vacuous non-emptiness check; this conditional comparison can still be vacuous.",
+      "severity": "primary",
+      "statement": "_authenticate computes mismatches with `if k in expected`, so any key absent from owner_identity[cell] is never compared and completeness is never validated. With owner_identity={'q1': {}, 'q2': {}} or a single-key expectation, serve() ACCEPTS.",
+      "threat_model_note": "owner_identity is trusted-harness setup, not a data-only client channel; this is an owner-setup completeness defect and a false completeness claim, not an external bypass."
+    },
+    {
+      "accepted_owner_already_exposes_correct_primitive": "CandidateClassApplicabilityReceipt.replay_identity() = semantic_hash(self._material()) at pre553_service_source_applicability.py:631 covers all six",
+      "externally_exploitable_under_declared_threat_model": false,
+      "finding": "receipt completeness",
+      "id": "D2",
+      "location": "rawlsing_next/pre553_ee14_c1_owner_authenticated_ingress.py:690-702",
+      "minimal_fix": "Use receipt.replay_identity() (or semantic_hash(receipt.as_dict())) instead of the hand-rolled subset, and assert in the court that mutating receipt_id / no_applicable_source / authorised_authority changes origin_receipt_hash.",
+      "probe": [
+        "P4a six receipt fields omitted from g2_receipt_hash"
+      ],
+      "severity": "secondary",
+      "severity_calibration": "Most omitted fields are weakly discriminating (authorised_authority is a __post_init__-validated constant; receipt_id and candidate_class_binding/request_key are content-derived from already-bound material). This is an overstated completeness claim and needless hand-rolling, not an external bypass.",
+      "statement": "g2_receipt_hash is a hand-rolled 6-key subset of a 12-field receipt. Not hashed: receipt_id, no_applicable_source, candidate_class_binding, request_key, canonical_replay_only_order, authorised_authority. Because origin_receipt_hash only embeds g2_receipt_hash, those six are not transitively bound -- contradicting the docstring claim at ingress.py:238 that the receipt binds the EXACT G2 receipt identity."
+    }
+  ],
+  "NEXT_FOR_HQ": [
+    "commission a genuinely separate independent reviewer (separate session, separate model) -- this session is the HQ266 author and cannot discharge that requirement",
+    "route D1 and D2 to the author as a minimal two-line-class correction",
+    "if strict runtime separation is required, provision and verify an independent runtime before re-running",
+    "do not treat this return as PASS_AT_DECLARED_G1_DEVELOPMENT_GRAIN under any reading"
+  ],
+  "REPORTING_DISCREPANCY_ADJUDICATED": {
+    "adjudication": "one-character prose typo in the final commit message; the substantive 199 and 354 claims are correct and were re-executed here",
+    "claim_under_investigation": "199 versus 99 for the G2/SA subcourt",
+    "combined_claimed": 354,
+    "combined_measured": 354,
+    "commit_bdc65ff89_message_says": 99,
+    "frozen_author_docs_say": 199,
+    "independently_measured": 199,
+    "invented_199_run": false,
+    "silently_called_99_confirmed": false,
+    "verdict": "TYPO_CONFIRMED_AND_199_INDEPENDENTLY_REPRODUCED"
+  },
+  "RESIDUAL_RISKS_NOT_VERDICT_TRIGGERING": [
+    {
+      "answer": "computed from equally mutable owner setup -- NOT an independent custody root",
+      "characterization": "owner-controlled source-free internal development invariant",
+      "does_shipment_overclaim_it": false,
+      "evidence": "court._expected_identity (hq262.py:148-179) re-executes the same _compose(source, qauth, registry) that serve() later runs; expected and observed for source_universe_key_owner/release_key_owner both read the live self._source (ingress.py:592-593), so they cannot diverge unless the object mutates between reads [probe P3a, P3b]",
+      "id": "R1",
+      "not": "independent cryptographic custody root",
+      "overclaim_note": "docstring states NOT A TRUST ROOT and TRUSTED HARNESS SETUP ONLY -- correctly scoped",
+      "post_construction_evidence": "probe P2e: replacing source['release_ref'] after __init__ raises",
+      "post_construction_mutation_still_refused": true,
+      "question_asked_by_commission": "is _owner_identity pinned to a source-authorized preimage or computed from equally mutable owner setup?",
+      "topic": "owner identity independence"
+    },
+    {
+      "answer": "_deep_freeze covers owner_identity and the owner_scope_material SNAPSHOT only",
+      "bounded_by": [
+        "trusted owner harness",
+        "CellPlan objects are frozen dataclasses",
+        "post-construction _source mutation is refused (P2e)"
+      ],
+      "evidence": "probe P2a-P2d; inserting a key into live _cells makes owner_scope_material() raise AttributeError at ingress.py:419",
+      "id": "R2",
+      "immutable_live_objects": [
+        "_owner_identity",
+        "owner_scope_material() return"
+      ],
+      "minimal_hardening": "_deep_freeze the _source and _cells containers at __init__",
+      "mutable_live_objects": [
+        "_source (dict, mutation succeeded)",
+        "_cells (dict, mutation succeeded)"
+      ],
+      "severity": "F5 completeness gap, not an external exploit",
+      "topic": "_deep_freeze coverage"
+    },
+    {
+      "builtins_vs_remote_schema": "in-process builtin enforcement is NOT remote schema or isolation proof; no remote boundary claimed or established",
+      "external_data_only_boundary_respected": true,
+      "id": "R3",
+      "review_did_not_enlarge_threat_model": true,
+      "same_process_arbitrary_python_adversary": "UNPROVED (as declared in the module docstring)",
+      "topic": "threat model not enlarged"
+    }
+  ],
+  "RUNTIME_GRADE_SEPARATE_AXIS": {
+    "apply_strict_grade_if": "HQ requires a separately qualified, HQ-provisioned runtime",
+    "fresh_checkout_authority_invented": false,
+    "governed_mac_faked": false,
+    "grade": "INDEPENDENTLY_RE_EXECUTED_FRESH_CLONE_PINNED_SHA_CPY3113_PyTEST911__SAME_HOST_SAME_INTERPRETER_AS_AUTHOR__NOT_HQ_PROVISIONED",
+    "raw_survey_run": false,
+    "source_static_verdict_unaffected_by_this_axis": true,
+    "strict_separation_alternate_grade": "INDEPENDENT_QUALIFIED_RUNTIME_UNTESTED_HOLD",
+    "unapproved_environment_substituted": false
+  },
+  "STOP_CONDITIONS": {
+    "any_stop_triggered": false,
+    "candidate_or_accepted_owner_code_changed": false,
+    "edit_scope_exceeded": false,
+    "fixture_or_authority_changed": false,
+    "other_branch_mutated": false,
+    "raw_survey_or_library_used": false,
+    "remote_head_differs_from_commission_tip": false
+  },
+  "VERDICT": {
+    "basis": "Three literal contract claims shipped in the candidate are demonstrably not established: (a) F3 authentication has no completeness floor and can be zero-deep; (b) the receipt does not bind the full G2 receipt its docstring says it binds; (c) 'deeply immutable owner material' covers only two of the live owner objects. All three are reproduced by an independently written probe. F1, F2, F4, F6 are fully corrected and the F3 custody hostile is closed in the correctly-configured case -- the defects are completeness and overstatement defects, not external bypasses.",
+    "binary_claim_made": false,
+    "pass_at_declared_g1_development_grain": false,
+    "runtime_axis": "INDEPENDENTLY_RE_EXECUTED_ALL_GREEN__NOT_HQ_PROVISIONED_RUNTIME",
+    "source_static_axis": "FAIL_REQUIRED_CORRECTION",
+    "why_not_hold": "HOLD_EXACT_UNPROVED_EDGE is for edges that are unproved. These edges are PROVED defective by direct execution, so FAIL_REQUIRED_CORRECTION with a minimal exact defect is the accurate verdict.",
+    "why_not_pass": "PASS is available only if ALL necessary G1 contract claims are established. D1 and D2 falsify two of them outright, and the independence requirement is not met at all."
+  },
+  "WHAT_INDEPENDENTLY_HOLDS": [
+    "F1 real call graph: _applicability_scope absent (0 occurrences); SA.resolve_service_source_applicability (:641), B.bind_service_applicability_to_f8_scope (:674), B.evaluate_bound_positioned_subject_possibility (:65) all invoked; raw low-level evaluator absent; counters show applicability>=1, binder>=1, evaluate>=1; binder monkeypatched to raise surfaces with F8 count 0",
+    "unchanged original C1 evidence object consumed by bound F8, parity gate on result_hash and material() for both cells",
+    "exact source/release/permission coherence (probe P8); requested_currentness_claim is None; outcome ADMISSIBLE_SOURCE_INDEXED_SET; coverage COMPLETE",
+    "genuine XOR (probe P5): q1 denom 2 cells 1/1, q2 denom 1 cells 0/1, distinct producer predicates 9bdff5e3/a8b05e75, distinct composed identities e7a358b5/0556d4ab, distinct denominator member refs, one shared release REL-c1-at09-xor, one shared universe hash 318719f6, stratum swap refused",
+    "custody false positive REPRODUCED (probe P6c): accepted chain yields identical F8 hash 5f0fde451026c077 for genuine and provenance-forged evidence; ingress refuses it at f8_calls=0 with mismatched_fields=('evidence_provenance_keys',) [P6e]",
+    "low-level F8 cannot mint an owner receipt (probe P7)",
+    "F4 typed native states: 12-value vocabulary enforced, out-of-vocabulary and route family UNDERPOWERED refused not coerced, C1 negatives carry SelectedIngressC1StateError(native_state=...) with f8_invoked=False and never SelectedIngressPermissionError, NO_ADMITTED_SOURCE a distinct G2 reason",
+    "F6 test quality: non-vacuity control asserts f8_calls==1 on the positive path; zero skip/xfail markers",
+    "baseline preserved: 14 of 14 original names, 22 collected, +53 new = 75",
+    "query authority is the pinned PREDICATE_GRAMMAR object (I03-AUTH-c1-at09-xor, 7fbd015d..., three grammar families, I03-OP-c1-at09-xor); C1-AT07-QUERY deny-listed; _query_snapshot absent from the ingress",
+    "exact six changed paths, two of them code; all five accepted owners/fixture and the HQ253 witness match their commission-pinned blobs; no other branch mutated"
+  ],
+  "branch": "agent/reviewer-pyat-hq267-g01-authentic-g2-xor-final-hostile-r1",
+  "commission": "PYAT-HQ267-R01-G1-AUTHENTIC-G2-XOR-FINAL-INDEPENDENT-HOSTILE-REVIEW-R1",
+  "commission_tip": "b48b5b4fb7cec83b1977aaeaeaab37ce74aba94f",
+  "control_decision": "HQD-2026-10-09-267",
+  "object_under_review": {
+    "author_disposition_in_control": "COMMITTED_CORRECTION_CANDIDATE__AUTHOR_354_PASS_NOT_INDEPENDENT__F1_F6_FIXES_PROPOSED__UNADOPTED",
+    "final_code_sha": "3829fc4e63fc9fb0d802e8af237dfab2febc3d23",
+    "final_return_head": "bdc65ff897a8e6a61988fc2bb3a325e7f198222a",
+    "ingress_blob": "4ec0038d218a20cc92f114e28fd6c1de4ebd71f5",
+    "test_blob": "321e3e03415d1b980156f0ed4355216ca1f2273c"
+  },
+  "review_base": "22d0b474c3b4d6808799f4b55c2d88313abde239",
+  "schema": "PYAT_WORKER_DISPOSITION@1.0.0",
+  "sealed_checkpoint": "20261009-PYAT-HQ267-G01-COMMITTED-G2-XOR-CORRECTION-INDEPENDENT-HOSTILE-REVIEW-R1",
+  "terminal": "HQ267_R01_RETURNED_FOR_HQ__NO_SELF_ADOPTION"
+}

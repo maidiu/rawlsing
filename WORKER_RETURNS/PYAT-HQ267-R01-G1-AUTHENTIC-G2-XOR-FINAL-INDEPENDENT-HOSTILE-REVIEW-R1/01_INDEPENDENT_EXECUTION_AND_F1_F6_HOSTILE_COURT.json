@@ -1,0 +1,272 @@
+{
+  "all_exit_codes_zero": true,
+  "authority_and_service_ceiling_verified": {
+    "authorizing_field": false,
+    "b5_g3_current_asof_join": false,
+    "deployment_claim": false,
+    "ee14_g0b_issued": false,
+    "ee14_operative_model_use_grant": false,
+    "external_data_only_trust_boundary_respected": true,
+    "grants_permission_or_ranking_or_selection": false,
+    "native_f7_at07_used": false,
+    "requested_currentness_claim": null,
+    "same_process_arbitrary_python_adversary": "UNPROVED (as declared in the module docstring)",
+    "selected_t1_service": false,
+    "source_free_admitted_set_is_technical_g2_positive_only": true,
+    "t2_empirical_field": false,
+    "v3_actor": false
+  },
+  "branch": "agent/reviewer-pyat-hq267-g01-authentic-g2-xor-final-hostile-r1",
+  "commission": "PYAT-HQ267-R01-G1-AUTHENTIC-G2-XOR-FINAL-INDEPENDENT-HOSTILE-REVIEW-R1",
+  "commission_tip": "b48b5b4fb7cec83b1977aaeaeaab37ce74aba94f",
+  "control_decision": "HQD-2026-10-09-267",
+  "executed_oracles": [
+    {
+      "baseline_collected": 22,
+      "baseline_names_present": "14 of 14",
+      "collected": 75,
+      "exit": 0,
+      "failed": 0,
+      "file": "rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py",
+      "id": "A_g01_court",
+      "new_tests": 53,
+      "passed": 75,
+      "seconds": 1.54,
+      "skipped": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    {
+      "exit": 0,
+      "failed": 0,
+      "files": [
+        "test_pre553_service_f8_source_scope_binding_court.py",
+        "test_pre553_service_f8_binding_authentication_court.py",
+        "test_pre553_service_f8_source_scope_binding_repair_court.py",
+        "test_pre553_service_source_applicability_court.py"
+      ],
+      "id": "B_four_g2_applicability_courts",
+      "passed": 199,
+      "seconds": 1.35,
+      "skipped": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    {
+      "exit": 0,
+      "failed": 0,
+      "files": [
+        "test_pre553_analytical_composition.py",
+        "test_pre553_empirical_query.py",
+        "test_pre553_analytical_composition_higher_order.py"
+      ],
+      "id": "C_c1_query_higher_order",
+      "passed": 80,
+      "seconds": 9.78,
+      "skipped": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    {
+      "exit": 0,
+      "failed": 0,
+      "id": "D_combined",
+      "passed": 354,
+      "seconds": 11.74,
+      "skipped": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    {
+      "exit": 0,
+      "fail_lines": 0,
+      "id": "E_step_a_positive_control",
+      "pass_lines": 34,
+      "provenance": "script supplied by the HQ/author harness; re-run by this review, NOT authored by this review",
+      "result": "ALL CHECKS PASSED"
+    }
+  ],
+  "f1_f6_adjudication": {
+    "F1_real_sa_g2_bound_f8_no_scope_hash_no_raw_f8_bypass": {
+      "evidence": [
+        "_applicability_scope absent from module (0 occurrences)",
+        "SA.resolve_service_source_applicability at ingress.py:641",
+        "B.bind_service_applicability_to_f8_scope at ingress.py:674",
+        "B.evaluate_bound_positioned_subject_possibility at ingress.py:465",
+        "raw evaluate_positioned_subject_possibility absent from module",
+        "independent counters: applicability>=1, binder>=1, evaluate>=1",
+        "binder monkeypatched to raise -> refusal surfaces with F8 count 0"
+      ],
+      "verdict": "CORRECTED"
+    },
+    "F2_two_genuine_q1_q2_over_one_xor_source": {
+      "evidence": [
+        "distinct conditions, tags, stratum per cell",
+        "denominator 2 vs 1 independently recomputed",
+        "cells 1/1 vs 0/1 independently recomputed",
+        "producer predicates DISTINCT (9bdff5e3 vs a8b05e75)",
+        "composed identities DISTINCT (e7a358b5 vs 0556d4ab)",
+        "denominator member refs DISTINCT",
+        "one shared release REL-c1-at09-xor and one shared universe hash",
+        "q1 labelled with q2 stratum refused"
+      ],
+      "verdict": "CORRECTED"
+    },
+    "F3_deep_authentication_before_f8": {
+      "evidence": [
+        "19 structured keys compared field-by-field against owner identity",
+        "refusal raises SelectedIngressAuthenticationError with f8_invoked=False",
+        "custody false positive reproduced: accepted chain yields IDENTICAL F8 hash for genuine vs forged provenance",
+        "ingress refuses that same substitution at f8_calls=0 with mismatched_fields=('evidence_provenance_keys',)",
+        "post-construction source mutation refused"
+      ],
+      "owner_identity_characterization": "_expected_identity re-executes the same _compose(source,qauth,registry): an owner-controlled source-free development invariant, NOT a source-authorized independent preimage",
+      "owner_identity_is_independent_custody_root": false,
+      "residual": "comparison guarded by `if k in expected`; owner_identity completeness is never validated -- see defect D1",
+      "verdict": "CORRECTED_IN_TESTED_CONFIGURATION_BUT_INCOMPLETE"
+    },
+    "F4_typed_native_c1_state_zero_f8_distinct_no_admitted_source": {
+      "evidence": [
+        "reads analytical_state and producer_fact_state",
+        "membership check against NATIVE_C1_FACT_STATES (12 accepted values)",
+        "out-of-vocabulary refused as UNKNOWN_OR_UNRESOLVED, not coerced",
+        "UNDERPOWERED (a route family) refused, not accepted",
+        "SelectedIngressC1StateError carries native_state and f8_invoked=False",
+        "message states intrinsic C1 outcome, NOT a missing-EE14-G0b condition",
+        "NO_ADMITTED_SOURCE is a separate SelectedIngressG2Error reason_code",
+        "SelectedIngressPermissionError never used for a C1 negative"
+      ],
+      "handler_verified_only": [
+        "VALID_EMPTY",
+        "NONCOMPARABLE",
+        "UNKNOWN_OR_UNRESOLVED",
+        "OBSERVED_ZERO",
+        "LOW_SUPPORT",
+        "INTEGRITY_FAILURE"
+      ],
+      "native_states_genuinely_constructible_on_this_xor": [
+        "ZERO_SUPPORT"
+      ],
+      "verdict": "CORRECTED"
+    },
+    "F5_exact_builtin_types_and_deeply_immutable_owner_material": {
+      "evidence": [
+        "type(request) is SelectedRequest",
+        "type(request.cell) is str",
+        "type(request.stratum_ids) is tuple",
+        "type(s) is str for each id",
+        "subclasses of each refused (court)",
+        "_owner_identity deeply frozen and read-only (probe P2c)",
+        "owner_scope_material() top-level and nested read-only (P2a, P2b)"
+      ],
+      "residual": "_deep_freeze covers owner_identity and the owner_scope_material SNAPSHOT only; live _source and _cells remain mutable plain dicts (probe P2d mutation_succeeded=True for both). Post-construction _source mutation is still refused (P2e). See finding R2.",
+      "verdict": "PARTIALLY_CORRECTED"
+    },
+    "F6_real_hostiles_at_the_ingress_boundary": {
+      "evidence": [
+        "non-vacuity control asserts f8_calls == 1 on the positive path",
+        "every refusal test asserts f8_calls == 0",
+        "forged/self-consistent material injected at serve() refused before F8",
+        "recomputed caller hash cannot reconstruct a receipt",
+        "low-level F8 result carries none of origin_receipt_hash, authorizing, c1_identity_hash, g2_binding_hash, g2_receipt_hash (probe P7)",
+        "walkback wrong service / wrong request identity refused at the binder",
+        "cross-source proxy refused at the accepted binder",
+        "no skip/xfail markers anywhere in the court"
+      ],
+      "verdict": "CORRECTED"
+    }
+  },
+  "independence_disclosure": {
+    "actual_model": "opencode/mimo-v2.6-flash-free",
+    "commissioned_model": "GPT-6 Sol High",
+    "consequence": "No PASS issued or issuable by this session. A genuinely separate reviewer must be commissioned before any G1 adoption decision.",
+    "detail": "This review session also executed the HQ266 author lane that wrote the ingress, the court and the four author returns under review. The reviewer therefore has full foreknowledge of the author's intent and cannot supply the separate independent hostile review that G1 adoption requires.",
+    "impersonates_space_bunny_or_user_mac": false,
+    "model_impersonation_avoided": true,
+    "reviewer_is_independent_of_author": false
+  },
+  "independent_execution": {
+    "blobs_unchanged_after_run": true,
+    "checkout_clean_before_run": true,
+    "dirty_entries_after_run": [
+      "rawlsing_next/__pycache__/",
+      "rawlsing_next/tests/__pycache__/"
+    ],
+    "dirty_entries_before_run": 0,
+    "method": "fresh `git clone https://github.com/maidiu/rawlsing.git` to /tmp/hq267_exec, then `git checkout 3829fc4e63fc9fb0d802e8af237dfab2febc3d23`",
+    "origin_branch_head_crosscheck": "bdc65ff897a8e6a61988fc2bb3a325e7f198222a",
+    "reused_author_results": false,
+    "runtime": {
+      "executable": "/private/tmp/hq210venv/bin/python",
+      "hq_provisioned_or_verified": false,
+      "hq_recorded_machine": "QUALIFIED_INDEPENDENT_PYTHON_RUNTIME_NOT_VERIFIED_BY_HQ",
+      "hq_recorded_worktree": "NOT_PROVISIONED_BY_HQ",
+      "interpreter": "CPython 3.11.3",
+      "invocation": "PYTHONPATH=. <python> -m pytest <files> -p no:cacheprovider",
+      "only_available_interpreter_with_pytest": true,
+      "platform": "macOS-13.7.8-x86_64-i386-64bit",
+      "pytest": "9.1.1",
+      "same_host_as_author": true,
+      "same_interpreter_installation_as_author": true,
+      "system_python_has_pytest": false
+    },
+    "tracked_files_modified_by_run": 0
+  },
+  "independent_probe": {
+    "failed": 6,
+    "findings_detail": "see 02_ADVERSARIAL_FINDINGS_RUNTIME_GRADE_AND_MINIMAL_EDGE.md",
+    "passed": 38,
+    "script": "/tmp/hq267/independent_probe.py (written by this review, not the author)",
+    "target": "holes the author's own court does not cover",
+    "total": 44
+  },
+  "object_under_review": {
+    "accepted_owners_unchanged": true,
+    "ancestry_ahead_behind": "3 ahead / 0 behind",
+    "blobs_identical_at_code_sha_and_return_head": true,
+    "changed_paths_code": 2,
+    "changed_paths_total": 6,
+    "final_code_sha": "3829fc4e63fc9fb0d802e8af237dfab2febc3d23",
+    "final_return_head": "bdc65ff897a8e6a61988fc2bb3a325e7f198222a",
+    "fixture_unchanged": true,
+    "hq266_commission_tip": "dfab8607177e02872a2da6cfa65a6d97bed8bdda",
+    "ingress_blob": "4ec0038d218a20cc92f114e28fd6c1de4ebd71f5",
+    "test_blob": "321e3e03415d1b980156f0ed4355216ca1f2273c",
+    "witness_blob_matched": "17300a405d78820cd663618918e64bb0323f532e"
+  },
+  "reporting_discrepancy_adjudication": {
+    "adjudication": "The '99' is a one-character prose typo in the final commit message. The substantive claim -- 199 for the G2/SA subcourt and 354 combined -- is INDEPENDENTLY MEASURED in a fresh clone. No 199 run was invented; this review actually executed it.",
+    "arithmetic_check": "75 + 199 + 80 = 354 = D (exact, so no test double-counted)",
+    "commit_with_typo": "bdc65ff897a8e6a61988fc2bb3a325e7f198222a",
+    "duplicate_counts": false,
+    "file_sets_disjoint": true,
+    "frozen_author_docs": {
+      "00_POSITIVE_CONTROL_...md": [
+        "75 passed",
+        "199 passed",
+        "80 passed",
+        "354 passed"
+      ],
+      "01_CLEAN_COMMITTED_RUN_AND_HOSTILES.json": {
+        "A": "75 passed",
+        "B": "199 passed",
+        "C": "80 passed",
+        "D": "354 passed",
+        "all_exit_codes_zero": true
+      }
+    },
+    "independent_measurement": {
+      "A": 75,
+      "B": 199,
+      "C": 80,
+      "D": 354
+    },
+    "question": "author reported G2/SA subcourt as 199 in frozen docs but '99' in one commit message",
+    "skips_or_xfail_used_to_reach_totals": false,
+    "tests_actually_collected": true,
+    "typo_line": "B  99  passed  four accepted G2/applicability courts",
+    "verdict": "TYPO_CONFIRMED_AND_199_INDEPENDENTLY_REPRODUCED"
+  },
+  "review_base": "22d0b474c3b4d6808799f4b55c2d88313abde239",
+  "schema": "PYAT_HQ267_R01_INDEPENDENT_EXECUTION_AND_HOSTILE_COURT@1.0.0"
+}
