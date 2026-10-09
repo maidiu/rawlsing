@@ -1,0 +1,106 @@
+{
+  "adopted": false,
+  "branch": "agent/space-bunny-pyat-hq254-permission-identity-candidate-r1",
+  "candidate": {
+    "adds_model_use": false,
+    "baseline_blob": "4ba00b8ecf73f70ad0f6481e255fd0117744418a",
+    "candidate_blob": "848d2d0eedb04b792747e9d6aaa49bb39d108a2c",
+    "comparison": "set equality of ExactRef.key, order-insensitive",
+    "demands_custody": false,
+    "diff": "+33 / -0",
+    "file": "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+    "grants_permission": false,
+    "refusal_code": "BINDING_PERMISSION_IDENTITY_MISMATCH",
+    "refusal_site_line": 723,
+    "widens_power": false
+  },
+  "changed_paths": [
+    "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+    "rawlsing_next/tests/test_pre553_f8_receipt_permission_identity_hq254.py",
+    "WORKER_RETURNS/PYAT-HQ254-P01-PERMISSION-IDENTITY-BOUNDED-CANDIDATE-R1/"
+  ],
+  "collection_errors_pre_existing": true,
+  "commission_tip": "428be7595fce3ecf6ae3cb37852bee884d9ce2e1",
+  "commission_tip_verified_against_live_origin": true,
+  "cut_over": false,
+  "defect_confirmed": true,
+  "defect_detail": "binding accepted bound_target_use_permission_refs that contradict the receipt request_key, and copied the divergent set verbatim into the binding's canonical material",
+  "disposition": "CANDIDATE_BANKED_AWAITING_INDEPENDENT_REVIEW__NOT_ADOPTED",
+  "execution": [
+    {
+      "exit": 0,
+      "result": "199 passed",
+      "run": "baseline courts before candidate"
+    },
+    {
+      "exit": 0,
+      "result": "16 passed",
+      "run": "new P01 court"
+    },
+    {
+      "exit": 0,
+      "result": "199 passed (unchanged)",
+      "run": "baseline courts after candidate"
+    },
+    {
+      "exit": 0,
+      "result": "215 passed",
+      "run": "combined"
+    },
+    {
+      "exit": 1,
+      "result": "380 passed, 9 pre-existing collection errors",
+      "run": "wider sweep"
+    },
+    {
+      "exit": 1,
+      "result": "9 failed / 7 passed",
+      "run": "NEGATIVE CONTROL: new court vs unmodified baseline"
+    }
+  ],
+  "independence": {
+    "baseline_binder_blob": "4ba00b8ecf73f70ad0f6481e255fd0117744418a",
+    "baseline_matches_T01_recorded": true,
+    "reproduced_independently": true,
+    "t01_court_present_at_this_tip": false,
+    "t01_return_present_at_this_tip": false
+  },
+  "is_quarantined_candidate": true,
+  "merged": false,
+  "negative_control_failed_against_baseline": 9,
+  "new_test_file": "rawlsing_next/tests/test_pre553_f8_receipt_permission_identity_hq254.py",
+  "next": "Separate sealed HQ intake and an independent post-candidate reviewer, both required. No merge.",
+  "not_claimed": [
+    "adopted security authority",
+    "T1 serving adoption",
+    "EE14 model-use permission",
+    "F8 producer custody",
+    "any source-scope power widening",
+    "resolution of the HQ253 provenance/authority custody gap"
+  ],
+  "retained_counterevidence": [
+    "order-insensitive set comparison is a deliberate semantic choice; if ordered equality is intended the check must change",
+    "the check now precedes release grain for multi-grain dishonest requests; honest inputs are unaffected",
+    "this covers the permission identity field ONLY; the separate provenance/authority custody gap from HQ253 T01 remains OPEN",
+    "the receipt's permission set is trusted as the applicability authority's own decision and is not independently re-derived"
+  ],
+  "runtime": {
+    "governed_certification_environment": false,
+    "machine": "macOS 13.7.8 x86_64",
+    "pytest": "9.1.1 (pre-existing local venv, stdlib only)",
+    "python": "3.11.3",
+    "raw_sav_or_library_used": false
+  },
+  "schema": "HQ254_P01_DISPOSITION@1.0.0",
+  "schema_positively_verified": true,
+  "self_approved": false,
+  "semantic_pre_main": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "startup_hq_control": "b986a6ab36312ccff72309f69c45fbbdfd2eb6b6",
+  "terminal": "HQ254_P01_RETURNED_FOR_HQ_REVIEW__NOT_ADOPTED",
+  "truthful_discrepancies": [
+    {
+      "detail": "The commission requires resolving LATEST.json for HQ254. No HQ254 checkpoint exists; LATEST remains at the HQ253 checkpoint with next_action naming HQ253 T01. Work proceeded under the sealed commission's own bounded authority because the lane is a quarantined, non-adopted candidate that merges and adopts nothing. HQ may wish to seal the HQ254 checkpoint before intake.",
+      "item": "HQ254 is not yet sealed in HQ_HANDOFF/LATEST.json"
+    }
+  ]
+}

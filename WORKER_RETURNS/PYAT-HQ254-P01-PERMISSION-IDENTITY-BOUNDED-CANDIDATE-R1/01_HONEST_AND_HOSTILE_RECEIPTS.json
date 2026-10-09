@@ -1,0 +1,158 @@
+{
+  "baseline_verification": {
+    "binder_blob_at_sealed_tip": "4ba00b8ecf73f70ad0f6481e255fd0117744418a",
+    "conclusion": "reproduced against the UNCHANGED adopted binder baseline",
+    "matches_T01_recorded_baseline": true
+  },
+  "candidate_correction": {
+    "adds_model_use": false,
+    "baseline_blob": "4ba00b8ecf73f70ad0f6481e255fd0117744418a",
+    "candidate_blob": "848d2d0eedb04b792747e9d6aaa49bb39d108a2c",
+    "check_placed_immediately_after": "BINDING_TARGET_USE_GRAIN_MISMATCH",
+    "comparison_semantics": "SET equality of ExactRef.key; order-insensitive",
+    "demands_f8_producer_custody": false,
+    "diff_size": "+33 lines, 0 deletions, 0 modifications to existing behaviour for honest inputs",
+    "exact_refusal_text": "BINDING_PERMISSION_IDENTITY_MISMATCH: binding bound_target_use_permission_refs ['urn:hq254:target_use_permission:p01-perm-B'] do not equal the receipt's target_use_permission_refs ['urn:hq254:target_use_permission:p01-perm-A']; a binding may never re-describe applicability that was decided under a different bound target-use permission set",
+    "file": "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+    "grants_permission": false,
+    "refusal_code": "BINDING_PERMISSION_IDENTITY_MISMATCH",
+    "refusal_site_line": 723,
+    "widens_source_scope_power": false
+  },
+  "explicitly_not_claimed": [
+    "adopted security authority",
+    "merged or cut over",
+    "T1 serving adoption",
+    "EE14 model-use permission",
+    "F8 producer custody",
+    "any source-scope power widening",
+    "any change to unrelated owners"
+  ],
+  "hostile_receipts_after_candidate": [
+    {
+      "case": "wholly unrelated permission",
+      "code": "BINDING_PERMISSION_IDENTITY_MISMATCH",
+      "result": "REFUSED"
+    },
+    {
+      "case": "superset invents an extra permission",
+      "code": "BINDING_PERMISSION_IDENTITY_MISMATCH",
+      "result": "REFUSED"
+    },
+    {
+      "case": "subset silently drops a permission",
+      "code": "BINDING_PERMISSION_IDENTITY_MISMATCH",
+      "result": "REFUSED"
+    },
+    {
+      "case": "partial substitution within a set",
+      "code": "BINDING_PERMISSION_IDENTITY_MISMATCH",
+      "result": "REFUSED"
+    },
+    {
+      "case": "drops one of three",
+      "code": "BINDING_PERMISSION_IDENTITY_MISMATCH",
+      "result": "REFUSED"
+    },
+    {
+      "case": "mismatch plus wrong target use",
+      "code": "BINDING_TARGET_USE_GRAIN_MISMATCH",
+      "note": "target use still outranks permission; sibling code not shadowed",
+      "result": "REFUSED"
+    },
+    {
+      "case": "mismatch plus wrong release",
+      "code": "BINDING_PERMISSION_IDENTITY_MISMATCH",
+      "note": "DISCLOSED precedence change: the new check now precedes release grain for multi-grain dishonest requests",
+      "result": "REFUSED"
+    },
+    {
+      "case": "mismatch must refuse before any binding object exists",
+      "result": "REFUSED, no partial binding emitted"
+    },
+    {
+      "case": "wrong release alone, permissions agree",
+      "code": "BINDING_RELEASE_GRAIN_MISMATCH",
+      "note": "existing release refusal unchanged",
+      "result": "REFUSED"
+    }
+  ],
+  "independence_note": "T01's court and return are ABSENT from this sealed tip, so the defect was reproduced independently rather than reused. Reproduction used the same adopted owners, not T01 code.",
+  "negative_control": {
+    "failed_against_unmodified_baseline": 9,
+    "interpretation": "The 9 failures are the candidate's genuine discriminators. The 7 that still pass are positive, schema, back-compat and confinement guards that assert UNCHANGED behaviour, so passing them pre-patch is correct.",
+    "method": "production file reverted to the sealed tip; new court executed",
+    "passed_against_unmodified_baseline": 7
+  },
+  "positive_receipts_after_candidate": [
+    {
+      "case": "single matching permission",
+      "result": "BOUND"
+    },
+    {
+      "case": "three matching permissions",
+      "result": "BOUND"
+    },
+    {
+      "case": "matching set declared in reverse order",
+      "note": "set semantics are order-insensitive; recorded so the reviewer can confirm this is intended",
+      "result": "BOUND"
+    },
+    {
+      "case": "binding still declares permissions as inputs not grants",
+      "result": "PASS"
+    }
+  ],
+  "positively_verified_source_applicability_schema": {
+    "candidate_class_coverage": "COMPLETE",
+    "note": "The candidate depends on this field genuinely existing; verified, not assumed.",
+    "outcome": "ADMISSIBLE_SOURCE_INDEXED_SET",
+    "receipt_class": "CandidateClassApplicabilityReceipt",
+    "receipt_declares_permissions_are_bound_input_not_a_grant": true,
+    "receipt_module": "rawlsing_next/pre553_service_source_applicability.py",
+    "receipt_permission_refs_observed": [
+      "urn:hq254:target_use_permission:p01-perm-A"
+    ],
+    "request_key_contains_target_use_permission_refs": true
+  },
+  "regression": {
+    "baseline_courts_after_candidate": "199 passed (exit 0)",
+    "baseline_courts_before_candidate": "199 passed (exit 0)",
+    "collection_errors_causes": [
+      "pandas absent",
+      "pyarrow absent",
+      "rawlsing_next.tests.d07_bounded_loss_harness absent"
+    ],
+    "collection_errors_pre_existing_and_unrelated": true,
+    "combined": "215 passed (exit 0)",
+    "new_court": "16 passed (exit 0)",
+    "same_error_class_observed_on_this_tree_before_the_candidate": true,
+    "wider_sweep": "380 passed, 9 collection errors (exit 1)"
+  },
+  "reproduction_observed": {
+    "honest_matching_permissions": {
+      "binding_recorded_perms": [
+        "urn:hq254:target_use_permission:p01-perm-A"
+      ],
+      "result": "BOUND"
+    },
+    "mismatched_permissions": {
+      "binding_perms": [
+        "urn:hq254:target_use_permission:p01-perm-B"
+      ],
+      "divergence_recorded_in_binding_material": true,
+      "receipt_perms": [
+        "urn:hq254:target_use_permission:p01-perm-A"
+      ],
+      "result_before_candidate": "BOUND",
+      "verdict": "DEFECT CONFIRMED"
+    }
+  },
+  "retained_hostile_counterevidence": [
+    "Order-insensitive set comparison is a deliberate semantic choice, not an accident. If HQ intends ordered equality, the check must change.",
+    "The candidate sits between target-use and release grain, so a request wrong on several grains reports permission first. Honest inputs are unaffected.",
+    "This correction covers the PERMISSION identity field ONLY. It does not address the separate provenance/authority custody gap banked in the HQ253 T01 return.",
+    "The receipt's permission set is trusted as the applicability authority's own decision; this candidate does not independently re-derive or re-authorise it."
+  ],
+  "schema": "HQ254_P01_HONEST_AND_HOSTILE_RECEIPTS@1.0.0"
+}
