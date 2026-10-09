@@ -24,6 +24,21 @@ F6  The hostiles actually exercise the ingress: forged material is refused at th
     boundary, the real binder's refusals surface through the ingress, and a caller cannot
     reconstruct a selected receipt from the observable F8 number.
 
+HQ268 G01 CORRECTIONS (D1 / D2 / R2), added on top of F1-F6
+-----------------------------------------------------------
+D1  The owner-held EXPECTED C1 identity must be complete, exact and typed before it is
+    trusted. An empty or single-key cell expectation, a missing provenance key, a missing
+    composed-identity key, an extraneous key or a wrong builtin type is refused at owner
+    construction AND again immediately before the comparison -- always at zero F8 and with
+    no applicability, binder or evaluate call. The field-by-field comparison iterates the
+    closed required key set, so no required field can be skipped.
+D2  `g2_receipt_hash` is the accepted owner's own
+    `CandidateClassApplicabilityReceipt.replay_identity()`, exactly -- never a locally
+    re-derived six-field subset -- and `origin_receipt_hash` transitively includes it.
+R2  The live `_source` and `_cells` containers are read-only, and the BOUNDED RESIDUAL
+    (the nested objects inside `_source` stay the owner's shared objects) is named in the
+    test below rather than claimed away.
+
 The positive control is the EXACT HQ253 T01 construction from historical witness commit
 e609be4f68c51182c5acb3a99c671949f1b71d34 (test blob 17300a405d78820cd663618918e64bb0323f532e):
 `_query_authority("c1-at09-xor")` + `_registry(source, qauth)` + `fx.xor_fixture()` +
@@ -54,6 +69,8 @@ from rawlsing_next.pre553_ee14_c1_owner_authenticated_ingress import (
     SelectedIngressG2Error,
     SelectedIngressPermissionError,
     SelectedRequest,
+    IDENTITY_KEY_TYPES,
+    REQUIRED_IDENTITY_KEYS,
     _key,
 )
 from rawlsing_next import pre553_ee14_c1_owner_authenticated_ingress as INGRESS_MODULE
@@ -1104,3 +1121,349 @@ def _direct_cells(source, qauth, registry, conditions, tag):
     cells = composition.consumer_result_or_null.material()[
         "exact_lane"]["geometry"]["cells"]
     return {c["cell"]: c["raw_numerator_support"] for c in cells}
+
+
+# ============================================================ HQ268 G01 -- D1 / D2 / R2
+#
+# D1  The owner-held expected C1 identity is COMPLETE, exact and typed BEFORE it is
+#     trusted. Incomplete, mistyped or extraneous owner material is refused at owner
+#     construction AND again immediately before the field-by-field comparison, so
+#     authentication can never be vacuous and an incomplete owner setup reaches no
+#     applicability, G2 or F8 call at all. This is an internal owner-setup
+#     completeness invariant -- NOT an independent cryptographic trust root (R1).
+# D2  `g2_receipt_hash` is the accepted owner's own
+#     `CandidateClassApplicabilityReceipt.replay_identity()`, not a locally re-derived
+#     subset, and `origin_receipt_hash` transitively includes it.
+# R2  The live `_source` and `_cells` containers are read-only. The bounded residual
+#     (nested objects stay the owner's shared objects -- shallow container freezing
+#     only) is named rather than papered over.
+
+
+def _identity_source_text():
+    import pathlib
+    import rawlsing_next.pre553_ee14_c1_owner_authenticated_ingress as M
+    return pathlib.Path(M.__file__).read_text(encoding="utf-8")
+
+
+def _build_with_identity(source, qauth, registry, identity, **kw):
+    return build_ingress(source, qauth, registry, owner_identity=identity, **kw)
+
+
+# ------------------------------------------------------------------ D1
+
+
+def test_d1_required_key_set_is_closed_exact_and_typed(source, qauth, registry):
+    """The required set is one closed set of 19 keys, every one with an exact type."""
+    assert isinstance(REQUIRED_IDENTITY_KEYS, frozenset)
+    assert set(IDENTITY_KEY_TYPES) == set(REQUIRED_IDENTITY_KEYS)
+    assert len(REQUIRED_IDENTITY_KEYS) == 19
+    # every observed key the ingress itself produces is in the required set
+    honest = _expected_identity(source, qauth, registry)
+    for cell in ALLOWED_CELLS:
+        assert set(honest[cell]) == set(REQUIRED_IDENTITY_KEYS)
+    # the type map is exhaustive and exact-builtin
+    assert all(isinstance(v, type) for v in IDENTITY_KEY_TYPES.values())
+    assert "bool" not in {t.__name__ for t in IDENTITY_KEY_TYPES.values()}
+
+
+def test_d1_empty_owner_identity_is_refused_before_any_chain_owner(
+        source, qauth, registry, chain_calls):
+    """HQ267 P1b: `owner_identity={"q1": {}, "q2": {}}` must not be trusted.
+
+    Before the repair this configuration passed authentication and was issued a
+    selected technical receipt. It is now refused at owner construction, so it never
+    reaches compose, applicability, the binder or F8.
+    """
+    with pytest.raises(SelectedIngressAuthenticationError) as exc:
+        _build_with_identity(source, qauth, registry, {"q1": {}, "q2": {}})
+    assert "INCOMPLETE" in str(exc.value)
+    assert set(exc.value.missing_keys) == set(REQUIRED_IDENTITY_KEYS)
+    assert exc.value.f8_invoked is False
+    assert chain_calls["compose"] == 0
+    assert chain_calls["applicability"] == 0
+    assert chain_calls["binder"] == 0
+    assert chain_calls["evaluate"] == 0
+
+
+def test_d1_single_key_owner_identity_is_refused(
+        source, qauth, registry, chain_calls):
+    """A cell expectation holding exactly one key leaves 18 fields unverified."""
+    full = _expected_identity(source, qauth, registry)
+    one = {"q1": {"raw_denominator_support": full["q1"]["raw_denominator_support"]},
+           "q2": {}}
+    with pytest.raises(SelectedIngressAuthenticationError) as exc:
+        _build_with_identity(source, qauth, registry, one)
+    assert len(exc.value.missing_keys) == 18
+    assert "raw_denominator_support" not in exc.value.missing_keys
+    assert "evidence_provenance_keys" in exc.value.missing_keys
+    assert chain_calls["applicability"] == chain_calls["evaluate"] == 0
+
+
+def test_d1_missing_evidence_provenance_key_is_refused(
+        source, qauth, registry, chain_calls):
+    """Exactly the custody field HQ267 proved could be skipped."""
+    identity = _expected_identity(source, qauth, registry)
+    for cell in ALLOWED_CELLS:
+        del identity[cell]["evidence_provenance_keys"]
+    with pytest.raises(SelectedIngressAuthenticationError) as exc:
+        _build_with_identity(source, qauth, registry, identity)
+    assert exc.value.missing_keys == ("evidence_provenance_keys",)
+    assert "evidence_provenance_keys" in exc.value.mismatched_fields
+    assert chain_calls["evaluate"] == 0
+
+
+def test_d1_missing_composed_identity_key_is_refused(
+        source, qauth, registry, chain_calls):
+    """Exactly the C1 identity field HQ267 proved could be skipped."""
+    identity = _expected_identity(source, qauth, registry)
+    for cell in ALLOWED_CELLS:
+        del identity[cell]["composed_result_identity_hash"]
+    with pytest.raises(SelectedIngressAuthenticationError) as exc:
+        _build_with_identity(source, qauth, registry, identity)
+    assert exc.value.missing_keys == ("composed_result_identity_hash",)
+    assert chain_calls["evaluate"] == 0
+
+
+def test_d1_partially_populated_q2_identity_is_refused(
+        source, qauth, registry, chain_calls):
+    """q2 fully populated, q1 nearly so -- refused, and q2's completeness is no excuse."""
+    identity = _expected_identity(source, qauth, registry)
+    for key in ("evidence_provenance_keys", "evidence_authority_keys", "release_key"):
+        del identity["q1"][key]
+    with pytest.raises(SelectedIngressAuthenticationError) as exc:
+        _build_with_identity(source, qauth, registry, identity)
+    assert set(exc.value.missing_keys) == {
+        "evidence_provenance_keys", "evidence_authority_keys", "release_key"}
+    assert chain_calls["applicability"] == 0
+
+
+def test_d1_extraneous_unknown_identity_key_is_refused(
+        source, qauth, registry, chain_calls):
+    """Only the exact necessary canonical keys are accepted."""
+    identity = _expected_identity(source, qauth, registry)
+    identity["q1"]["attacker_supplied_key"] = "whatever"
+    with pytest.raises(SelectedIngressAuthenticationError) as exc:
+        _build_with_identity(source, qauth, registry, identity)
+    assert exc.value.mismatched_fields == ("attacker_supplied_key",)
+    assert chain_calls["evaluate"] == 0
+
+
+def test_d1_wrong_builtin_type_is_refused(source, qauth, registry, chain_calls):
+    """An int field holding a str, and a str field holding an int, are both refused."""
+    for field, bad in (("raw_denominator_support", "2"),
+                       ("composed_result_identity_hash", 123),
+                       ("evidence_provenance_keys", "not-a-tuple"),
+                       ("evidence_state", True)):
+        identity = _expected_identity(source, qauth, registry)
+        for cell in ALLOWED_CELLS:
+            identity[cell][field] = bad
+        with pytest.raises(SelectedIngressAuthenticationError) as exc:
+            _build_with_identity(source, qauth, registry, identity)
+        assert exc.value.mismatched_fields == (field,), (field, exc.value.mismatched_fields)
+    assert chain_calls["evaluate"] == 0
+
+
+def test_d1_complete_identity_positive_control_runs_the_whole_chain(
+        source, qauth, registry, chain_calls):
+    """The exact counterexample's control: a COMPLETE expectation is accepted and the
+    real C1 -> G2 -> bound-F8 chain runs exactly once each."""
+    ingress = _build_with_identity(
+        source, qauth, registry, _expected_identity(source, qauth, registry))
+    r = ingress.serve(SelectedRequest(cell="q1", stratum_ids=Q1_STRATUM))
+    assert r is not None
+    # compose also runs while the honest expectation is built (twice, once per cell)
+    # and the binder is invoked explicitly, from inside evaluate and from
+    # assert_query_source_admitted -- so assert presence, not an exact call count.
+    assert chain_calls["compose"] >= 1
+    assert chain_calls["binder"] >= 1
+    assert chain_calls["applicability"] == 1
+    assert chain_calls["evaluate"] == 1
+
+
+def test_d1_fails_closed_inside_authenticate_before_applicability_and_f8(
+        source, qauth, registry, chain_calls, f8_calls):
+    """Belt and braces: even a POST-construction replacement of the live expectation
+    is caught inside `_authenticate`, before applicability and at zero F8."""
+    ingress = _build_with_identity(
+        source, qauth, registry, _expected_identity(source, qauth, registry))
+    ingress._owner_identity = {"q1": {}, "q2": {}}
+    with pytest.raises(SelectedIngressAuthenticationError) as exc:
+        ingress.serve(SelectedRequest(cell="q1", stratum_ids=Q1_STRATUM))
+    assert "INCOMPLETE" in str(exc.value)
+    assert set(exc.value.missing_keys) == set(REQUIRED_IDENTITY_KEYS)
+    assert exc.value.f8_invoked is False
+    # compose must already have run (twice building the honest expectation, once for
+    # this serve) so the material being authenticated exists...
+    assert chain_calls["compose"] >= 1
+    # ...but nothing downstream of the completeness gate may run
+    assert chain_calls["applicability"] == 0
+    assert chain_calls["binder"] == 0
+    assert chain_calls["evaluate"] == 0
+    assert f8_calls["n"] == 0
+
+
+def test_d1_authenticate_has_no_membership_hole(source, qauth, registry):
+    """The conditional-membership guard is gone; completeness is re-checked first and
+    every required field is compared, with the observed builder pinned to the same
+    closed set so neither side can drift."""
+    import inspect
+    text = inspect.getsource(OwnerOnlySelectedIngress._authenticate)
+    assert "if k in expected" not in text
+    assert "_require_complete_identity(expected, req.cell)" in text
+    assert "for k in REQUIRED_IDENTITY_KEYS" in text
+    assert "REQUIRED_IDENTITY_KEYS - set(observed)" in text
+    # and the construction-time gate is wired too
+    assert "_require_complete_identity(owner_identity[cell], cell)" in _identity_source_text()
+
+
+def test_d1_authenticate_refuses_a_mismatched_complete_expectation(
+        source, qauth, registry, f8_calls):
+    """Completeness is not sufficient on its own -- a complete but DIFFERENT
+    expectation is still caught, before any F8."""
+    identity = _expected_identity(source, qauth, registry)
+    identity["q1"]["release_key_owner"] = "REL-forged"
+    ingress = _build_with_identity(source, qauth, registry, identity)
+    with pytest.raises(SelectedIngressAuthenticationError) as exc:
+        ingress.serve(SelectedRequest(cell="q1", stratum_ids=Q1_STRATUM))
+    assert exc.value.mismatched_fields == ("release_key_owner",)
+    assert exc.value.missing_keys == ()
+    assert exc.value.f8_invoked is False
+    assert f8_calls["n"] == 0
+
+
+# ------------------------------------------------------------------ D2
+
+
+def test_d2_g2_receipt_hash_equals_the_accepted_owner_replay_identity(
+        source, ingress):
+    """Parity: the technical field IS the accepted owner's primitive, exactly."""
+    r = ingress.serve(SelectedRequest(cell="q1", stratum_ids=Q1_STRATUM))
+    accepted = _real_receipt(source)
+    assert r.g2_receipt_hash == accepted.replay_identity()
+    assert r.g2_receipt_hash == SA.semantic_hash(accepted._material())
+    assert len(r.g2_receipt_hash) == 64
+
+
+def test_d2_replay_identity_discriminates_receipt_id_and_request_key(source):
+    """Isolated record-construction discrimination (never operative G0b authority).
+
+    receipt_id and request_key were absent from the pre-D2 six-field subset, so two
+    receipts differing only in those produced an IDENTICAL g2_receipt_hash. They must
+    now discriminate.
+    """
+    base = _real_receipt(source)
+    base_hash = base.replay_identity()
+    for field, other in (("receipt_id", "0" * 64),
+                         ("request_key", dict(base.request_key, extra="x")),
+                         ("service_id", "SOME_OTHER_SERVICE")):
+        changed = dataclasses.replace(base, **{field: other})
+        assert changed.replay_identity() != base_hash, field
+        assert changed._material()[field] != base._material()[field], field
+
+
+def test_d2_replay_identity_discriminates_no_applicable_source_and_binding(source):
+    """Isolated record-construction discrimination for the remaining omitted fields."""
+    base = _real_receipt(source)
+    base_hash = base.replay_identity()
+
+    # coverage is COMPLETE here, so no_applicable_source may lawfully flip -- and
+    # flipping it must move the replay identity.
+    assert base.no_applicable_source is False
+    flipped = dataclasses.replace(base, no_applicable_source=True)
+    assert flipped.replay_identity() != base_hash
+
+    binding = dict(base.candidate_class_binding)
+    binding["declared_population_scope_ref"] = dict(
+        binding["declared_population_scope_ref"], object_id="urn:hq268:other-pop")
+    rebound = dataclasses.replace(base, candidate_class_binding=binding)
+    assert rebound.replay_identity() != base_hash
+
+
+def test_d2_authorised_authority_is_carried_by_the_replay_identity(source):
+    """authorised_authority cannot be varied (the accepted owner validates the exact
+    ratified label), so prove it is present in -- and discriminates -- the material."""
+    base = _real_receipt(source)
+    assert base.authorised_authority == SA.AUTHORISED_AUTHORITY
+    assert "authorised_authority" in base._material()
+    material = dict(base._material())
+    material["authorised_authority"] = "SOME_OTHER_RATIFIED_LABEL"
+    assert SA.semantic_hash(material) != base.replay_identity()
+
+
+def test_d2_origin_receipt_hash_binds_the_g2_replay_identity():
+    """origin_receipt_hash must transitively include the G2 replay identity, and must
+    also carry canonical_replay_only_order -- the ONE receipt field the accepted
+    owner's own _material() omits, so it cannot be bound via replay_identity alone."""
+    text = _identity_source_text()
+    assert "g2_receipt_hash = receipt.replay_identity()" in text
+    assert '"g2_receipt_hash": g2_receipt_hash' in text
+    assert '"g2_canonical_replay_only_order"' in text
+
+
+def test_d2_no_local_six_field_subset_hash_remains():
+    """The hand-rolled six-field dict is gone from the ingress source."""
+    text = _identity_source_text()
+    assert '"coverage": receipt.candidate_class_coverage' not in text
+    assert "g2_receipt_hash = semantic_hash({" not in text
+    # nothing else in this module re-derives a receipt hash locally
+    assert text.count("receipt.replay_identity()") == 1
+
+
+def test_d2_receipt_identity_varies_with_the_applicability_construction(
+        source, qauth, registry):
+    """End to end: two ingresses whose applicability material differs produce
+    different origin receipt hashes, so the origin layer is sensitive to the G2
+    receipt it carries."""
+    a = build_ingress(source, qauth, registry)
+    b = build_ingress(
+        source, qauth, registry,
+        applicability=dataclasses.replace(
+            _applicability(), binding_request_id="hq268-breq-B"))
+    req = SelectedRequest(cell="q1", stratum_ids=Q1_STRATUM)
+    ra, rb = a.serve(req), b.serve(req)
+    assert ra.g2_receipt_hash == rb.g2_receipt_hash  # same receipt material
+    assert ra.origin_receipt_hash != rb.origin_receipt_hash  # origin carries the binding
+    assert ra.g2_binding_request_id != rb.g2_binding_request_id
+
+
+# ------------------------------------------------------------------ R2
+
+
+def test_r2_live_source_and_cells_containers_are_read_only(
+        source, qauth, registry):
+    """The live trusted containers are read-only mappings, not plain dicts."""
+    ingress = build_ingress(source, qauth, registry)
+    assert not isinstance(ingress._source, dict)
+    assert not isinstance(ingress._cells, dict)
+    # MappingProxyType exposes no mutating methods at all, and item assignment /
+    # deletion is refused outright.
+    with pytest.raises(TypeError):
+        ingress._source["release_ref"] = "x"
+    with pytest.raises(TypeError):
+        ingress._cells["q1"] = None
+    with pytest.raises(TypeError):
+        del ingress._source["universe"]
+    with pytest.raises(TypeError):
+        del ingress._cells["q1"]
+    # bounded residual, named rather than papered over: the freeze is SHALLOW. The
+    # nested objects are still the owner's own shared objects, because converting
+    # them would change the semantic refs the accepted C1/G2 owners consume.
+    assert ingress._source["universe"] is source["universe"]
+    assert ingress._source["release_ref"] is source["release_ref"]
+    # and the owner-held expectation remains deeply frozen, as before
+    with pytest.raises(TypeError):
+        ingress._owner_identity["q1"]["release_key"] = "x"
+
+
+def test_r2_external_source_dict_mutation_does_not_reach_the_ingress(
+        source, qauth, registry):
+    """A caller cannot mutate the ingress's view by mutating the dict it passed in."""
+    detached = dict(source)
+    ingress = build_ingress(source=detached, qauth=qauth, registry=registry)
+    honest_release = ingress._source["release_ref"].object_id
+    detached["release_ref"] = ExactRef(
+        kind=source["release_ref"].kind, object_id="REL-hq268-forged",
+        content_hash="0" * 64)
+    r = ingress.serve(SelectedRequest(cell="q1", stratum_ids=Q1_STRATUM))
+    assert r.release_key == honest_release == source["release_ref"].object_id
+    assert r.release_key != "REL-hq268-forged"

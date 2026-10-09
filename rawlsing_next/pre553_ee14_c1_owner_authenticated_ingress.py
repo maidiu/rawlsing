@@ -23,9 +23,13 @@ This ingress now runs the COMPLETE accepted chain, in this order:
      supplies only a cell name;
   2. the ACTUAL native C1 typed states are read, and a non-``SUPPORTED`` state is refused
      with that real state before any F8 evaluation (F4);
-  3. the produced C1 identity / evidence / authority / provenance is authenticated
-     DEEPLY -- structured field-by-field equality against non-mutable owner-held material,
-     not a length-of-hash test (F3) -- and refusal happens BEFORE any F8 invocation;
+  3. the owner-held EXPECTED C1 identity must first be COMPLETE, exact and typed
+     (every one of the 19 required keys present, none extraneous, each with its exact
+     builtin type) -- refused at owner construction and again immediately before the
+     comparison (D1) -- then the produced C1 identity / evidence / authority /
+     provenance is authenticated DEEPLY, field-by-field over that closed required set,
+     against the non-mutable owner-held material, not a length-of-hash test (F3) --
+     and refusal happens BEFORE any F8 invocation;
   4. the REAL ``resolve_service_source_applicability`` owner builds the receipt;
   5. the REAL ``bind_service_applicability_to_f8_scope`` binder builds the G2 binding;
   6. the REAL ``evaluate_bound_positioned_subject_possibility`` consumes the UNCHANGED
@@ -39,6 +43,37 @@ always ``False``.
 
 NO G0b is fabricated. No locally hashed scope stand-in remains. The accepted binder is
 never bypassed.
+
+HQ268 G01 MINIMAL REPAIR (D1 / D2)
+----------------------------------
+D1  The owner-held expected C1 identity is COMPLETE, exact and typed BEFORE it is
+    trusted: refused at owner construction and again immediately before the
+    field-by-field comparison, so authentication can never be vacuous and an
+    incomplete owner setup reaches no applicability, G2 or F8 call. This is an
+    internal owner-setup completeness invariant -- NOT an independent cryptographic
+    trust root and NOT a source-authorized preimage.
+
+D2  ``g2_receipt_hash`` is the ACCEPTED owner's own
+    ``CandidateClassApplicabilityReceipt.replay_identity()``, never a locally
+    re-derived subset of receipt fields, and ``origin_receipt_hash`` transitively
+    includes it.
+
+BOUNDED RESIDUAL (R2) -- exactly what is frozen, and what is not
+----------------------------------------------------------------
+FROZEN: the owner-held expected identity (deeply, at every level) and the ``_source``
+and ``_cells`` containers (read-only mappings, so item assignment, deletion and the
+mutating methods are all refused).
+
+NOT FROZEN: the NESTED objects inside ``_source`` -- universe, release_ref,
+repository, respondents -- remain the owner's own shared objects. The container freeze
+is deliberately SHALLOW, because deep-converting those objects would change the
+semantic ref objects the accepted C1/G2 owners consume, which is out of scope here.
+Consequently mutating the dict handed in at construction does NOT reach the ingress,
+but an in-process principal that already holds a nested object can still mutate it.
+This is a trusted-harness limitation. It is not a custody root, not a trust root, and
+not deployed security; the separate observation that the expected identity is derived
+by re-executing the same owner compose is likewise a development invariant, not an
+independent preimage.
 
 Threat model: the bounded external DATA-ONLY service client fixed by HQ262. It does NOT
 close G1 against a malicious principal executing arbitrary Python inside the owner
@@ -98,6 +133,121 @@ NATIVE_C1_FACT_STATES = frozenset({
     "UNRESOLVED", "VALID_EMPTY", "INTEGRITY_FAILURE",
 })
 
+# --------------------------------------------------------------------------
+# D1 -- owner-held expected C1 identity COMPLETENESS (HQ268).
+#
+# The previous comparison was guarded by `if k in expected`, so any key absent
+# from the owner-held expectation was silently never compared: owner setup could
+# pass owner_identity={"q1": {}, "q2": {}} and still be issued a selected
+# technical receipt. The required set below is exact and closed. Incomplete,
+# mistyped or extraneous owner material is refused at owner construction AND
+# again immediately before the comparison, so authentication can never be
+# vacuous. This is an internal owner-setup completeness invariant, NOT an
+# independent cryptographic trust root (R1) and NOT deployed security.
+# --------------------------------------------------------------------------
+
+#: The complete, exact, closed set of owner-held expected C1 identity keys.
+#: Every one of these is compared on every admitted serve -- none is optional.
+REQUIRED_IDENTITY_KEYS = frozenset({
+    "composed_result_identity_hash",
+    "producer_predicate_key",
+    "producer_query_key",
+    "producer_fact_key",
+    "condition_binding_witness_key",
+    "consumer_query_key",
+    "risk_set_key",
+    "denominator_member_keys",
+    "raw_denominator_support",
+    "evidence_ref_key",
+    "source_universe_key",
+    "release_key",
+    "evidence_state",
+    "retained_conditioner_ids",
+    "evidence_authority_keys",
+    "evidence_provenance_keys",
+    "target_question_key",
+    "source_universe_key_owner",
+    "release_key_owner",
+})
+
+#: Exact builtin type required for each expected value. ``type(v) is T`` (never
+#: isinstance), so a ``bool`` cannot satisfy ``raw_denominator_support`` and no
+#: subclass can satisfy a scalar field.
+IDENTITY_KEY_TYPES = {
+    "composed_result_identity_hash": str,
+    "producer_predicate_key": str,
+    "producer_query_key": str,
+    "producer_fact_key": str,
+    "condition_binding_witness_key": str,
+    "consumer_query_key": str,
+    "risk_set_key": str,
+    "denominator_member_keys": tuple,
+    "raw_denominator_support": int,
+    "evidence_ref_key": str,
+    "source_universe_key": str,
+    "release_key": str,
+    "evidence_state": str,
+    "retained_conditioner_ids": tuple,
+    "evidence_authority_keys": tuple,
+    "evidence_provenance_keys": tuple,
+    "target_question_key": str,
+    "source_universe_key_owner": str,
+    "release_key_owner": str,
+}
+
+
+def _require_complete_identity(expected: Any, cell: str) -> None:
+    """D1 fail-closed gate: owner expectation must be complete, exact and typed.
+
+    Called at owner construction for every permitted cell AND again inside
+    ``_authenticate`` immediately before the field-by-field comparison, so a
+    partially populated expectation can never reach the comparison and can never
+    reach applicability / G2 / F8. Raises ``SelectedIngressAuthenticationError``
+    carrying the exact missing and mistyped keys.
+    """
+    if not isinstance(expected, Mapping):
+        raise SelectedIngressAuthenticationError(
+            "owner-held expected C1 identity for cell %r must be a mapping of the "
+            "complete required key set; got %s" % (cell, type(expected).__name__),
+            mismatched_fields=("owner_identity[%s]" % cell,),
+            missing_keys=tuple(sorted(REQUIRED_IDENTITY_KEYS)))
+    if not isinstance(expected, dict) and type(expected) is not MappingProxyType:
+        # accepted mappings only: plain dict (construction input) or the deep-frozen
+        # MappingProxyType this module itself installs. No other mapping type.
+        raise SelectedIngressAuthenticationError(
+            "owner-held expected C1 identity for cell %r must be a plain mapping" % cell,
+            mismatched_fields=("owner_identity[%s]" % cell,),
+            missing_keys=tuple(sorted(REQUIRED_IDENTITY_KEYS)))
+    missing = tuple(sorted(REQUIRED_IDENTITY_KEYS - set(expected)))
+    if missing:
+        raise SelectedIngressAuthenticationError(
+            "owner-held expected C1 identity for cell %r is INCOMPLETE (%d of %d "
+            "required keys absent); authentication may not proceed vacuously. "
+            "missing keys: %s"
+            % (cell, len(missing), len(REQUIRED_IDENTITY_KEYS), ", ".join(missing)),
+            mismatched_fields=missing,
+            missing_keys=missing)
+    extraneous = tuple(sorted(set(expected) - REQUIRED_IDENTITY_KEYS))
+    if extraneous:
+        raise SelectedIngressAuthenticationError(
+            "owner-held expected C1 identity for cell %r carries %d key(s) outside "
+            "the exact required set; unknown keys: %s"
+            % (cell, len(extraneous), ", ".join(extraneous)),
+            mismatched_fields=extraneous,
+            missing_keys=())
+    mistyped = tuple(sorted(
+        k for k in REQUIRED_IDENTITY_KEYS
+        if type(expected[k]) is not IDENTITY_KEY_TYPES[k]))
+    if mistyped:
+        raise SelectedIngressAuthenticationError(
+            "owner-held expected C1 identity for cell %r carries wrong builtin types "
+            "for: %s" % (cell, ", ".join(
+                "%s (expected %s, got %s)" % (k, IDENTITY_KEY_TYPES[k].__name__,
+                                              type(expected[k]).__name__)
+                for k in mistyped)),
+            mismatched_fields=mistyped,
+            missing_keys=())
+
 
 class SelectedIngressError(Exception):
     """Typed refusal from the owner-only selected ingress."""
@@ -131,12 +281,20 @@ class SelectedIngressC1StateError(SelectedIngressError):
 class SelectedIngressAuthenticationError(SelectedIngressError):
     """Produced C1 identity/evidence failed deep authentication.
 
-    Raised BEFORE any F8 invocation (HQ263 R01 F3).
+    Raised BEFORE any F8 invocation (HQ263 R01 F3), and before applicability / G2
+    as well when the owner-held expectation itself is incomplete (HQ268 D1).
+
+    ``mismatched_fields`` carries every required field that failed to authenticate,
+    whether it was absent or present-but-different. ``missing_keys`` carries only
+    the absent subset, so an incomplete owner setup is distinguishable from a
+    complete expectation holding a different value.
     """
 
-    def __init__(self, message: str, *, mismatched_fields: Tuple[str, ...]) -> None:
+    def __init__(self, message: str, *, mismatched_fields: Tuple[str, ...],
+                 missing_keys: Tuple[str, ...] = ()) -> None:
         super().__init__(message)
         self.mismatched_fields = tuple(mismatched_fields)
+        self.missing_keys = tuple(missing_keys)
         self.f8_invoked = False
 
 
@@ -238,6 +396,9 @@ class SelectedIngressReceipt:
     # -- exact G2 request / receipt / replay --
     g2_service_request_set_identity: str
     g2_receipt_outcome: str
+    #: Exact ``CandidateClassApplicabilityReceipt.replay_identity()`` of the accepted
+    #: owner's own receipt -- i.e. semantic_hash over the receipt's complete twelve-
+    #: field material. Never a locally re-derived subset (HQ268 D2).
     g2_receipt_hash: str
     g2_binding_request_id: str
     g2_binding_hash: str
@@ -318,9 +479,18 @@ class OwnerOnlySelectedIngress:
 
     Construction registers OWNER-HELD material: the original XOR source, the original
     predicate-grammar query authority, the matching registry, the per-cell C1 plans, the
-    real applicability material, the non-mutable expected C1 identity, and the owner-built
+    real applicability material, the COMPLETE expected C1 identity, and the owner-built
     C1 compose callable. That is a TRUSTED HARNESS operation and is explicitly NOT runtime
     remote proof. The public `serve` surface is data-only.
+
+    An incomplete, mistyped or extraneous owner-held expected identity is refused here,
+    at construction (D1); it is re-checked immediately before the comparison, so it can
+    never reach applicability, G2 or F8.
+
+    WHAT IS FROZEN (see the module BOUNDED RESIDUAL note): the expected identity is
+    deeply frozen; ``_source`` and ``_cells`` are read-only containers. The NESTED
+    objects inside ``_source`` are still the owner's shared objects -- shallow container
+    freezing only. See the module docstring for the full, exact statement.
     """
 
     def __init__(
@@ -356,10 +526,34 @@ class OwnerOnlySelectedIngress:
             raise SelectedIngressError(
                 "owner setup must register the original XOR source carrying release_ref "
                 "and universe")
-        self._source = source
+        # ---- R2: the live owner containers are read-only mappings ----
+        # Shallow container freeze only: the nested objects (universe, release_ref,
+        # respondents, ...) stay the owner's own shared objects. Converting them
+        # would change the semantic refs the accepted C1/G2 owners consume, which is
+        # explicitly out of scope here. See the class docstring BOUNDED RESIDUAL note.
+        self._source = MappingProxyType(dict(source))
         self._registry = registry
-        self._cells = {k: cells[k] for k in ALLOWED_CELLS}
+        self._cells = MappingProxyType({k: cells[k] for k in ALLOWED_CELLS})
         self._applicability = applicability
+        # ---- D1: owner-held expectation must be COMPLETE, exact and typed ----
+        # Refused here, at owner construction, BEFORE any request can be served and
+        # therefore before applicability / G2 / F8 can ever be reached. Re-checked
+        # again inside _authenticate immediately before the comparison.
+        if not isinstance(owner_identity, Mapping):
+            raise SelectedIngressAuthenticationError(
+                "owner-held expected C1 identity must be a mapping of the complete "
+                "required key set for every permitted cell; got %s"
+                % type(owner_identity).__name__,
+                mismatched_fields=("owner_identity",),
+                missing_keys=tuple(sorted(REQUIRED_IDENTITY_KEYS)))
+        for cell in ALLOWED_CELLS:
+            if cell not in owner_identity:
+                raise SelectedIngressAuthenticationError(
+                    "owner-held expected C1 identity is missing cell %r entirely; "
+                    "authentication may not proceed vacuously" % cell,
+                    mismatched_fields=("owner_identity[%s]" % cell,),
+                    missing_keys=tuple(sorted(REQUIRED_IDENTITY_KEYS)))
+            _require_complete_identity(owner_identity[cell], cell)
         # non-mutable owner-held expected identity, deeply frozen
         self._owner_identity = _deep_freeze(dict(owner_identity))
         self._c1_compose = c1_compose
@@ -555,12 +749,24 @@ class OwnerOnlySelectedIngress:
 
         Compares the produced C1 identity and evidence material field-by-field against
         the non-mutable owner-held expectation. Not a length-of-hash or regex test.
+
+        D1: the owner-held expectation is re-validated for COMPLETENESS here, right
+        before the comparison, so an incomplete expectation can never produce a
+        vacuous pass. The comparison then iterates the closed required key set, so
+        every required field is compared -- a field is never skipped because it is
+        absent from the expectation, and an absent key can no longer be skipped.
+        This runs before applicability / G2 / F8, so an incomplete owner setup
+        reaches none of them.
         """
         expected = self._owner_identity.get(req.cell)
         if expected is None:
             raise SelectedIngressAuthenticationError(
                 "owner held no expected C1 identity for cell %r" % req.cell,
-                mismatched_fields=("owner_identity",))
+                mismatched_fields=("owner_identity",),
+                missing_keys=tuple(sorted(REQUIRED_IDENTITY_KEYS)))
+
+        # ---- D1 fail-closed gate: completeness before any comparison ----
+        _require_complete_identity(expected, req.cell)
 
         observed = {
             "composed_result_identity_hash": getattr(
@@ -592,14 +798,29 @@ class OwnerOnlySelectedIngress:
         observed["source_universe_key_owner"] = self._source["universe"].ref.object_id
         observed["release_key_owner"] = self._source["release_ref"].object_id
 
+        # internal drift guard: the builder must cover the closed required set
+        # exactly, so neither side can silently diverge from REQUIRED_IDENTITY_KEYS.
+        observed_missing = tuple(sorted(REQUIRED_IDENTITY_KEYS - set(observed)))
+        observed_extra = tuple(sorted(set(observed) - REQUIRED_IDENTITY_KEYS))
+        if observed_missing or observed_extra:
+            raise SelectedIngressAuthenticationError(
+                "observed C1 identity builder does not cover REQUIRED_IDENTITY_KEYS "
+                "exactly (missing: %s; extra: %s); authentication would not be "
+                "exhaustive" % (list(observed_missing), list(observed_extra)),
+                mismatched_fields=observed_missing + observed_extra,
+                missing_keys=observed_missing)
+
+        # every required field is compared -- membership of the expectation is
+        # irrelevant, because completeness was already proven above
         mismatches = tuple(
-            sorted(k for k, v in observed.items() if k in expected and expected[k] != v))
+            sorted(k for k in REQUIRED_IDENTITY_KEYS if observed[k] != expected[k]))
         if mismatches:
             raise SelectedIngressAuthenticationError(
                 "produced C1 identity/evidence does not authenticate against non-mutable "
                 "owner-held material for cell %r; mismatched fields: %s"
                 % (req.cell, ", ".join(mismatches)),
-                mismatched_fields=mismatches)
+                mismatched_fields=mismatches,
+                missing_keys=())
 
         if not getattr(evidence, "authority_refs", None) or \
                 not getattr(evidence, "provenance_refs", None):
@@ -687,19 +908,17 @@ class OwnerOnlySelectedIngress:
         binding_material = binding.material()
         binding_hash = semantic_hash(_plain(binding_material))
 
-        g2_receipt_hash = semantic_hash({
-            "service_request_set_identity": receipt.service_request_set_identity,
-            "outcome": receipt.outcome,
-            "coverage": receipt.candidate_class_coverage,
-            "candidate_class_ref": dict(receipt.candidate_class_ref),
-            "service_id": receipt.service_id,
-            "decisions": [
-                {"universe_key": _key(d.source_universe_ref)
-                 if hasattr(d, "source_universe_ref") else None,
-                 "decision": getattr(d, "applicability_decision", None)}
-                for d in receipt.decisions
-            ],
-        })
+        # ---- D2: G2 replay identity comes from the ACCEPTED OWNER ----
+        # The previous implementation hand-rolled six of the receipt's twelve
+        # material fields, so receipt_id, no_applicable_source,
+        # candidate_class_binding, request_key, canonical_replay_only_order and
+        # authorised_authority did not discriminate this hash at all, and the value
+        # was not transitively bound by the accepted owner's own replay identity.
+        # The accepted owner already defines the exact primitive -- see
+        # CandidateClassApplicabilityReceipt.replay_identity(), which is
+        # semantic_hash(self._material()). We take it from there and do not
+        # re-derive anything locally.
+        g2_receipt_hash = receipt.replay_identity()
 
         origin_material = {
             "contract": CONTRACT,
@@ -730,6 +949,12 @@ class OwnerOnlySelectedIngress:
             "g2_service_request_set_identity": receipt.service_request_set_identity,
             "g2_receipt_outcome": receipt.outcome,
             "g2_receipt_hash": g2_receipt_hash,
+            # D2 residual: the accepted owner's own _material() -- and therefore
+            # replay_identity() -- does NOT include canonical_replay_only_order, so
+            # binding it only inside g2_receipt_hash would leave it unbound. The
+            # origin layer binds it directly. (The adopted SA owner is read-only; the
+            # ingress may only add, never redefine, what it carries.)
+            "g2_canonical_replay_only_order": list(receipt.canonical_replay_only_order),
             "g2_binding_request_id": g2_request.binding_request_id,
             "g2_binding_hash": binding_hash,
             "g2_permission_keys": [p.object_id
