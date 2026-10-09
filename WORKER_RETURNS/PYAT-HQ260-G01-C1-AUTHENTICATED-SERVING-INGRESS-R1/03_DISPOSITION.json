@@ -1,0 +1,60 @@
+{
+  "commission": "PYAT-HQ260-G01-C1-AUTHENTICATED-SERVING-INGRESS-R1",
+  "terminal": "HQ260_G01_RETURNED__NOT_ADOPTED",
+  "disposition": "BLOCKED_REQUIRE_TRUST_ROOT",
+  "not": ["EXISTING_OWNER_PATH_SUFFICIENT", "code_returned"],
+  "agent": "Existing Space Bunny / OpenCode workflow",
+  "model": "actual configured Space Bunny model as resolved at launch; no override applied",
+  "head": "f38a2363a4bb6de394bfcdad99692564dab1b4aa",
+  "branch": "agent/space-bunny-pyat-hq260-g1-c1-authenticated-serving-ingress-r1",
+
+  "why_blocked": {
+    "core": "G1 is real and reproduced at runtime, but it cannot be closed in-process without a caller-forgeable self-hash, which the commission forbids as a trust root.",
+    "detail": "The F8 ingress receives  from the caller. Any binding computed in the same process over caller-held material is recomputable by that same caller. The accepted owners are ordinary mutable Python modules with no sealed producer identity and no independently administered principal at runtime. A new adapter would therefore re-wrap caller-supplied evidence behind a digest the caller can regenerate -- producing a green test and false assurance.",
+    "what_would_have_been_delivered_if_unblocked": "an ingress module plus a q1/q2 competent positive court and the four hostile cases. Those are deliberately NOT banked, because demonstrating them over unbound synthetic evidence would imply an authenticated serving path that does not exist."
+  },
+
+  "exact_minimal_precondition": [
+    "An immutable producer-origin binding for PossibilitySliceEvidence: a sealed owner that mints the slice, holds its authority/provenance custody, and is neither reachable by nor recomputable from the caller.",
+    "The F8 ingress must accept only owner-minted evidence, and the owner identity must be carried into the result identity so that substituting authority_refs or provenance_refs changes result_hash.",
+    "A trusted reference for that owner identity that is independent of the caller. Without it, no digest over caller-held material is evidence of origin."
+  ],
+
+  "artifacts": {
+    "code_written": "none",
+    "test_file_added": "rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq260.py (10 tests, all passing; a defect detector, not a fix)",
+    "production_or_accepted_files_changed": "none",
+    "blob_verified": "rawlsing_next/pre553_analytical_composition.py = 604c8d591d4cc2b646e9b149cdb233fc9d69cf6b (matches commission)",
+    "write_terrain_respected": true
+  },
+
+  "runtime_evidence": {
+    "command": "PYTHONPATH=. python3.11 -m pytest rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq260.py -q -p no:randomly",
+    "exit_code": 0,
+    "result": "10 passed",
+    "g1_reproduced": true,
+    "negative_control": "the defect tests assert reproduction and are EXPECTED to fail once G1 is genuinely closed; that is their purpose"
+  },
+
+  "control_resolution": {
+    "live_origin_integration_pre_main_reconciliation_r1": "788b2bf7e53c35e25d3f83b638e989169f3d990c",
+    "commission_tip": "f38a2363a4bb6de394bfcdad99692564dab1b4aa",
+    "status": "DIVERGED -- tip is not an ancestor of live control; live control is five commits ahead including the HQ260 EE14 competence instrument",
+    "action": "reported, not reconciled; no live-control branch modified"
+  },
+
+  "holds": {
+    "no_self_adoption": true,
+    "no_semantic_model_use_adopted": true,
+    "no_source_permission": true,
+    "no_ee14_grant_claimed": true,
+    "no_t1_model_use_grant": true,
+    "no_native_f7_at07_v3": true,
+    "no_actor_v3_f8_authority": true,
+    "no_library_or_raw_data_access": true,
+    "no_public_source_claims": true,
+    "other_branches_modified": false
+  },
+
+  "next_step": "HQ intake. A reviewer independent of this author must examine the banked G1 evidence. Any proposal for a sealed owner boundary requires new protected authority and is therefore out of scope for this lane -- STOP is the disposition, not a deferral."
+}

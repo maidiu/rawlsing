@@ -1,0 +1,55 @@
+{
+  "commission": "PYAT-HQ260-G01-C1-AUTHENTICATED-SERVING-INGRESS-R1",
+  "marker": "TEST_ONLY_NOT_ADOPTED -- every reference is synthetic and source-free. No T1 model/use grant, no EE14 grant, no source permission, no user or Library data.",
+
+  "runtime": {
+    "interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+    "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "head": "f38a2363a4bb6de394bfcdad99692564dab1b4aa",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq260-g01",
+    "command": "PYTHONPATH=. python3.11 -m pytest rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq260.py -q -p no:randomly",
+    "exit_code": 0,
+    "result": "10 passed",
+    "test_file": "rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq260.py",
+    "test_file_blob": "4babf7eeada1241dd69ac9742dd87819a95341d6",
+    "new_code_written": "NONE -- no ingress module was created; see 03_DISPOSITION.json"
+  },
+
+  "g1_defect_banked_at_runtime": {
+    "reproduced": true,
+    "mechanism": "evaluate_positioned_subject_possibility receives caller-supplied evidence; provenance_refs and authority_refs are validated in __post_init__ but never read by the evaluation path",
+    "observed": {
+      "result_state_identical": true,
+      "result_hash_identical": true,
+      "material_identical": true,
+      "replay_verifier_accepts_substituted_evidence": true
+    },
+    "static_confirmation": "test_g1_fields_are_validated_but_never_read_by_evaluation asserts by source inspection that neither field name appears in evaluate_positioned_subject_possibility",
+    "honest_framing": "these tests assert the defect REPRODUCES. They are a detector, not a fix, and would be expected to FAIL once G1 is genuinely closed."
+  },
+
+  "hostiles_banked": {
+    "caller_offers_same_f8_hash_with_changed_authority_provenance": "test_g1_authority_and_provenance_substitution_is_invisible_to_f8 -- substitution is invisible",
+    "caller_supplies_recomputed_self_consistent_hash": "test_caller_recomputed_hash_is_forgeable_and_therefore_not_a_trust_root -- demonstrates why this is not an acceptable control",
+    "replay_verifier_bypass": "test_g1_substitution_survives_the_replay_verifier",
+    "valid_honest_material_stable": "test_valid_honest_material_is_stable_across_repetition -- 25 evaluations are identical, so the G1 demo is specifically about substitution"
+  },
+
+  "negative_controls_at_the_actual_owner_route": {
+    "VALID_EMPTY": "test_typed_negative_controls_are_not_permission_blocks[VALID_EMPTY] -- stays an EMPIRICAL disposition, never collapsed into a permission refusal",
+    "NONCOMPARABLE": "test_typed_negative_controls_are_not_permission_blocks[NONCOMPARABLE]",
+    "UNDERPOWERED_and_UNKNOWN_OR_UNRESOLVED": "test_underpowered_and_unknown_are_typed_unresolved_not_permission_blocks -- typed UNRESOLVED/FAIL_CLOSED with no PERMISSION reason code"
+  },
+
+  "NOT_BANKED_and_why": {
+    "q1_q2_competent_positive_court": "NOT BANKED. The commission's q(C|A=1) 1/2,1/2 and q(C|A=1,B=0) 0,1 XOR fixture requires the source-applicability and C1 producer wiring to be established and owner-authenticated first. Since the trust root is absent (03_DISPOSITION.json), banking a 'competent positive' would demonstrate arithmetic over synthetic labels while implying an authenticated serving path that does not exist. It would also require modifying producers outside the permitted write terrain.",
+    "four_and_five_full_hostile_court": "NOT BANKED -- depends on the same missing owner boundary.",
+    "limitation_statement": "This court is a defect detector and a trust-root demonstration. It is NOT evidence of a working authenticated ingress, and must not be cited as one."
+  },
+
+  "scope_assertions": {
+    "test_marks_itself_not_adopted": "test_court_is_test_only_and_claims_no_authority",
+    "no_redundant_adapter_manufactured": "test_no_ingress_module_was_manufactured asserts rawlsing_next.pre553_ee14_c1_owner_authenticated_ingress does NOT exist",
+    "clean_status_at_commit": "4 changed paths beyond this stage's own two files"
+  }
+}

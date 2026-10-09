@@ -1,0 +1,38 @@
+{
+  "commission": "PYAT-HQ260-G01-C1-AUTHENTICATED-SERVING-INGRESS-R1",
+
+  "provenance_and_custody_finding": {
+    "upstream_c1": "AnalyticalCompositionResult.composed_result_identity_hash does carry full ancestry, authority and provenance material",
+    "gap": "that C1 identity is NOT reachable from, nor bound into, the F8 serving ingress. The handoff edge is the `evidence` argument, which is caller-supplied and carries its own independent, unbound provenance_refs and authority_refs.",
+    "consequence": "C1 provenance and F8 provenance are two disconnected custody chains. A caller can present F8 evidence whose authority/provenance has no relationship to the C1 composition that allegedly produced it.",
+    "custody_owner_for_f8_evidence": "NONE. PossibilitySliceEvidence is a frozen dataclass constructed directly by whoever calls the ingress; there is no minting owner, no sealed registry and no unforgeable producer identity.",
+    "independently_administered_principal": "ABSENT. Nothing at runtime distinguishes an owner-originated slice from a caller-constructed one."
+  },
+
+  "negative_grain": {
+    "behaviour_banked": "typed and non-invoking at the actual owner route",
+    "VALID_EMPTY": "empirical disposition, not a permission block",
+    "NONCOMPARABLE": "empirical disposition, not a permission block",
+    "UNDERPOWERED": "typed UNRESOLVED with no PERMISSION reason code",
+    "UNKNOWN_OR_UNRESOLVED": "typed UNRESOLVED / FAIL_CLOSED",
+    "fail_closed": "the walkback ladder already fails closed on cross-source or cross-release proxies (FAIL_CLOSED_UNAUTHORIZED_PROXY_SOURCE); this was observed, not modified",
+    "independently_evaluable_per_grade_receipts": "NOT ESTABLISHED. Per-grade receipts would inherit the same missing custody root and are deferred with the rest of the block."
+  },
+
+  "honest_negative_claim": {
+    "what_is_proven": "G1 substitution is real, reproduces at runtime, and is invisible to F8 evaluation and to the replay verifier.",
+    "what_is_NOT_proven": "that any in-process control can authenticate producer origin; that source-free origin proves an externally administered principal; that any F7/AT07/native path participates here (explicitly out of scope and not touched)."
+  },
+
+  "authority_and_scope_observations": {
+    "no_semantic_model_use_adopted": true,
+    "no_source_permission_claimed": true,
+    "no_world_product": true,
+    "no_native_security_or_actor_claim": true,
+    "library_access": "none",
+    "raw_sav_dta": "none",
+    "t1_grant": "none",
+    "public_source_investigation": "NONE PERFORMED. No external URL, document, cell, line or page is cited, because no external source was consulted. Every claim above is from this repository at the recorded blob.",
+    "control_divergence": "live origin/integration/pre-main-reconciliation-r1 has DIVERGED from this commission tip; reported in 00_OWNER_INGRESS_AND_CALLSITE.md and not reconciled unilaterally"
+  }
+}
