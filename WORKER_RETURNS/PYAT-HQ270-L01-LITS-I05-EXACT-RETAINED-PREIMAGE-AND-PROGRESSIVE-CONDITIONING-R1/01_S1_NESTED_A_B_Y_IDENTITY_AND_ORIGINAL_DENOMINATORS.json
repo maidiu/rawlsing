@@ -1,0 +1,174 @@
+{
+  "schema": "PYAT_HQ270_L01_S1_NESTED_A_B_Y_IDENTITY_AND_ORIGINAL_DENOMINATORS@1.0.0",
+  "document_role": "SCIENTIFIC_DOCUMENTARY_RETURN__NOT_RUNTIME_SCHEMA_OR_AUTHORITY",
+  "commission": "PYAT-HQ270-L01-LITS-I05-EXACT-RETAINED-PREIMAGE-AND-PROGRESSIVE-CONDITIONING-R1",
+  "branch": "agent/rabochii-pyat-hq270-l01-lits-retained-preimage-nested-query-r1",
+  "checkpoint_source": "current_i05_materialization_checkpoint_v3.json",
+  "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+  "extraction_method": "bounded_tail_streaming_last_2MB_json_raw_decode_no_full_scan",
+  "verdict": "REFUSE_EXACT_TRIPLE_ALREADY_RETAINED",
+  "verdict_reason": "No exact positive A,B,Y triple exists in retained products where a same-respondent nested q(Y|A) -> q(Y|A,B) conditioning operation is feasible. Only two RespondentEvent slots (q301_2, q301_7) are AS2A-permitted; q310 is not a permitted third RespondentEvent slot and the q310-conditioned predicates use EXACT_MIXED_RESPONDENT_REFINEMENT binding (mixed-respondent F02-release join), not EXACT_SAME_RESPONDENT_ONLY co-travel.",
+  "provisional_triple_not_adopted": {
+    "Y": "q301_7 present life satisfaction",
+    "A": "q301_2 retrospective political appraisal (relative to 1989)",
+    "B": "q310 preference market versus planned",
+    "reason_not_adopted": "q310 is NOT among the two AS2A-permitted RespondentEvent slots (q301_2, q301_7). The AS2A projection authority urn:rawlsing:pre553:as2a:lits1-projection-authority:sha256:9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06 authorizes only q301_2 and q301_7 as RespondentEvent slots. q310 appears only as SURVEY_RESPONSE_EVENT condition leaves sourced from the prev3:F02 release lineage (LITS1-F02-C11-7cac43e2ca5b31cb-bf305bf3f169d669), joined under EXACT_MIXED_RESPONDENT_REFINEMENT binding, not same-respondent co-travel with the AS2B RespondentEvent closure."
+  },
+  "as2a_projection_authority": {
+    "authority_id": "urn:rawlsing:pre553:as2a:lits1-projection-authority:sha256:9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06",
+    "authority_version": "AS2A-BANKED-1.0.0",
+    "permitted_respondent_event_slots": ["q301_2", "q301_7"],
+    "q310_permitted_as_respondent_event_slot": false,
+    "source_document": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/19_AS2A_PART_A_ACCEPTANCE_AND_AS2B_LOCAL_EXECUTION_ROUTING.md line 60"
+  },
+  "shared_risk_set": {
+    "object_id": "urn:rawlsing:pre553:as2b:lits1-q301-bounded:sha256:31f7ec452d8d75eebf7963d1ce1715b38f5329a31c757d9088819c99f5d4db45",
+    "c11_release": "LITS1-AS2B-C11-7cac43e2ca5b31cb-9dd1e6b7350ebb79",
+    "empirical_universe": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:83af05f5891e8accc18eeb99e5a1fd99242a509d9a38276004675c0e26be8080"
+  },
+  "measure_basis": {
+    "object_id": "urn:rawlsing:pre553:as3:measure-raw:sha256:25e90c83f1f226ce7eb6a337018635b28427ae90446f3e4d825a1788c43336ec",
+    "kind": "AS3_QUERY_MEASURE_BASIS",
+    "measure_kind": "RAW",
+    "uncertainty": "UNCERTAINTY_UNQUANTIFIED",
+    "weights_authorized": false
+  },
+  "strongest_two_field_cotravel_positive": {
+    "candidate_hash": "0373f9117bb342746a870d61e743e6420a02757df76d4e46e6335b98acccf2e3",
+    "candidate_id": "urn:rawlsing:pre553:i05:candidate:sha256:0373f9117bb342746a870d61e743e6420a02757df76d4e46e6335b98acccf2e3",
+    "family": "PAIR_RESPONSE_COTRAVEL",
+    "rule_id": "D02_P1_JOINT_DEPENDENCE",
+    "typed_state": "DISCOVERED_RESULT_SUPPORTED",
+    "validation": {"kind": "JOINT_NOT_PRODUCT_OF_MARGINALS"},
+    "binding_semantics": "EXACT_SAME_RESPONDENT_ONLY",
+    "routing_predicate_hash": "ac3fcb4e32a41f9972004b2c31da61e9b32ba69568a795d2c1e584c9bed21be0",
+    "roles": {
+      "JOINT": {
+        "query_spec_hash": "6ee12199bb7b5aabd62f0bd18d469d115b48d2cb0b5f30b36ff48a23903c6cbd",
+        "items": ["q301_2", "q301_7"],
+        "arity": 2,
+        "fact_hash": "fb8bd6e50f27d77ed97827ba3ff712df5951e438d60b5a0194f9953107e3614b",
+        "raw_denominator": 24630,
+        "typed_state": "SUPPORTED"
+      },
+      "MARGINAL_0": {
+        "query_spec_hash": "7abe35df3bcf4e586c0aa70f4d3b6968e4bf9b3e76329b759d9c9dce1a0fe9ee",
+        "items": ["q301_2"],
+        "arity": 1,
+        "fact_hash": "4e72458484c1dd560f32987ac49c81908ddd47ccad325e2d617f5109792d3145",
+        "raw_denominator": 24897,
+        "typed_state": "SUPPORTED"
+      },
+      "MARGINAL_1": {
+        "query_spec_hash": "169774a791eff18a8bd9541785bccab4a525774c750375aaccad1ff630d47a9d",
+        "items": ["q301_7"],
+        "arity": 1,
+        "fact_hash": "ef51aa329781a81d8bf6034a907e936ba2bba0c28cafb95209ee50aa92809765",
+        "raw_denominator": 28325,
+        "typed_state": "SUPPORTED"
+      }
+    },
+    "raw_denominators": [24897, 28325, 24630],
+    "denominator_collapsing_prohibited": true,
+    "denominator_note": "JOINT 24630 / MARGINAL_0 24897 / MARGINAL_1 28325 are three distinct raw risk-set denominators; they must not be reduced to one fabricated risk set.",
+    "uncertainty": "UNCERTAINTY_UNQUANTIFIED",
+    "weighted_denominators_if_authorized": [null, null, null],
+    "constituent_fact_states": ["SUPPORTED", "SUPPORTED", "SUPPORTED"]
+  },
+  "preserved_negative_truth_D02_P3": {
+    "candidate_hash": "a3dfb9c641e8efc16bdcdbcd5e6d1635a7446f3ff3c2f6ed53defba4b70e7eb4",
+    "candidate_id": "urn:rawlsing:pre553:i05:candidate:sha256:a3dfb9c641e8efc16bdcdbcd5e6d1635a7446f3ff3c2f6ed53defba4b70e7eb4",
+    "family": "CONDITIONAL_REVERSAL_OR_SIMPSON",
+    "rule_id": "D02_P3_CONDITIONAL_REVERSAL",
+    "typed_state": "VALID_EMPTY",
+    "validation": {"kind": "CONDITIONAL_REVERSAL", "target_cell": {"$exact_decimal": "5"}},
+    "constituent_fact_count": 8,
+    "constituent_fact_states": ["SUPPORTED", "SUPPORTED", "SUPPORTED", "SUPPORTED", "SUPPORTED", "SUPPORTED", "SUPPORTED", "SUPPORTED"],
+    "roles": {
+      "POOLED_POS": {"query_spec_hash": "086c4d9bdad91aeacb93c84fa6cba1e61e77f9390438638251c4f8cce548b3e8", "items": ["q301_7"], "arity": 1, "binding": "EXACT_SAME_RESPONDENT_ONLY", "raw_denominator": 1854},
+      "POOLED_NEG": {"query_spec_hash": "36d8174678099d9d8e15f2526353065fbe700267797782385ca03558f1f4aa52", "items": ["q301_7"], "arity": 1, "binding": "EXACT_SAME_RESPONDENT_ONLY", "raw_denominator": 4327},
+      "STRATUM:Q310V1:POS": {"query_spec_hash": "a0be3406c8c81c37e51851399b7ad42ba7249ff3d049505d3aef28becdff8a3a", "items": ["q301_7"], "arity": 1, "binding": "EXACT_MIXED_RESPONDENT_REFINEMENT", "raw_denominator": 1013},
+      "STRATUM:Q310V1:NEG": {"query_spec_hash": "e12c7136bb568f95c5776a474badf1ce506062b402b6a454a300935b00144f88", "items": ["q301_7"], "arity": 1, "binding": "EXACT_MIXED_RESPONDENT_REFINEMENT", "raw_denominator": 1523},
+      "STRATUM:Q310V2:POS": {"query_spec_hash": "147b633895dba227e8334e167a1ed46b1e6b05585a7743e45fd7e14bc113085e", "items": ["q301_7"], "arity": 1, "binding": "EXACT_MIXED_RESPONDENT_REFINEMENT", "raw_denominator": 384},
+      "STRATUM:Q310V2:NEG": {"query_spec_hash": "73e2c496ff927a23f884771961b1d7d541541d03d3c12e5cd032400c1d271faf", "items": ["q301_7"], "arity": 1, "binding": "EXACT_MIXED_RESPONDENT_REFINEMENT", "raw_denominator": 1337},
+      "STRATUM:Q310V3:POS": {"query_spec_hash": "9871c16351bdaffa100d0195a7ab28162e99d5af443f1636e980beb5f6db79ee", "items": ["q301_7"], "arity": 1, "binding": "EXACT_MIXED_RESPONDENT_REFINEMENT", "raw_denominator": 455},
+      "STRATUM:Q310V3:NEG": {"query_spec_hash": "1dfe1daab85e6113fbb5a200197bbffa5e21e203cb9303f18c8be34474612f01", "items": ["q301_7"], "arity": 1, "binding": "EXACT_MIXED_RESPONDENT_REFINEMENT", "raw_denominator": 1455}
+    },
+    "raw_denominators": [1854, 455, 384, 1455, 1523, 4327, 1013, 1337],
+    "reversal_not_established": true,
+    "note": "All eight constituent facts are SUPPORTED, but the conditional-reversal validation itself is EVALUATED_VALID_EMPTY. This negative truth is preserved exactly as returned by HQ269 S01 (candidate a3dfb9c641e8efc16bdcdbcd5e6d1635a7446f3ff3c2f6ed53defba4b70e7eb4, correct typed_state VALID_EMPTY, bank prior upgrade to SUPPORTED is SCIENTIFICALLY_UNSUPPORTED)."
+  },
+  "nested_conditioning_feasibility_analysis": {
+    "question": "Do retained products support ONE exact same-respondent nested q(Y|A) -> q(Y|A,B) operation?",
+    "answer": false,
+    "evidence": {
+      "step1_qY_given_A": {
+        "exists": true,
+        "examples": [
+          {"query": "q(q301_7 | q301_2==5)", "query_spec_hash": "086c4d9bdad91aeacb93c84fa6cba1e61e77f9390438638251c4f8cce548b3e8", "predicate_hash": "942eae7e0ff7ae37c35a2e426e36f33cafbdbd9cedda2443672b4223e98d8c6d", "fact_hash": "0978dbb2a5f4486508037149368cc470f77d8c1369868d740439375b9304f27e", "raw_denominator": 1854, "binding": "EXACT_SAME_RESPONDENT_ONLY", "children": 2},
+          {"query": "q(q301_7 | q301_2==1)", "query_spec_hash": "36d8174678099d9d8e15f2526353065fbe700267797782385ca03558f1f4aa52", "predicate_hash": "000e22f9d776f23e9665837fdb04e1438dd55b715e169ce9d8a77297410143b3", "fact_hash": "ba8f0d2a38fa16bbaa88f4f1333d65aa45484959e04cf6e8885c2b90d97b0db4", "raw_denominator": 4327, "binding": "EXACT_SAME_RESPONDENT_ONLY", "children": 2}
+        ],
+        "note": "These are genuine same-respondent conditionals q(q301_7 | q301_2==v) with EXACT_SAME_RESPONDENT_ONLY binding (2-child AND predicates: routing eligibility + q301_2 exact value)."
+      },
+      "step2_qY_given_A_and_B": {
+        "exists_but_not_same_respondent": true,
+        "examples": [
+          {"query": "q(q301_7 | q301_2==5, q310==1)", "query_spec_hash": "a0be3406c8c81c37e51851399b7ad42ba7249ff3d049505d3aef28becdff8a3a", "predicate_hash": "3d6678761c8a26492545f3fe6dcf7dcc3dff9fa90e73110cae7a19443fe72a46", "raw_denominator": 1013, "binding": "EXACT_MIXED_RESPONDENT_REFINEMENT", "children": 3},
+          {"query": "q(q301_7 | q301_2==5, q310==2)", "query_spec_hash": "147b633895dba227e8334e167a1ed46b1e6b05585a7743e45fd7e14bc113085e", "predicate_hash": "1802c4b93a194bcbecbada0c892f29cf3fe7dbc4eb20dad6ef1d84159107b361", "raw_denominator": 384, "binding": "EXACT_MIXED_RESPONDENT_REFINEMENT", "children": 3},
+          {"query": "q(q301_7 | q301_2==5, q310==3)", "query_spec_hash": "9871c16351bdaffa100d0195a7ab28162e99d5af443f1636e980beb5f6db79ee", "predicate_hash": "36ab45cd7ee93800117b788569111f530139a1b067e662f0bd62cf3f0b7341b7", "raw_denominator": 455, "binding": "EXACT_MIXED_RESPONDENT_REFINEMENT", "children": 3},
+          {"query": "q(q301_7 | q301_2==1, q310==1)", "query_spec_hash": "e12c7136bb568f95c5776a474badf1ce506062b402b6a454a300935b00144f88", "predicate_hash": "866a310d786997a3d89aa4bf2ee8277e2973bb1b11c717b4167018ef81368b8d", "raw_denominator": 1523, "binding": "EXACT_MIXED_RESPONDENT_REFINEMENT", "children": 3},
+          {"query": "q(q301_7 | q301_2==1, q310==2)", "query_spec_hash": "73e2c496ff927a23f884771961b1d7d541541d03d3c12e5cd032400c1d271faf", "predicate_hash": "f4f15952f76a919ed68974dcc0a927502e01826f15d397f21a7df4dd2e6d37ab", "raw_denominator": 1337, "binding": "EXACT_MIXED_RESPONDENT_REFINEMENT", "children": 3},
+          {"query": "q(q301_7 | q301_2==1, q310==3)", "query_spec_hash": "1dfe1daab85e6113fbb5a200197bbffa5e21e203cb9303f18c8be34474612f01", "predicate_hash": "c1057e593c1a35aa0a2920c22a1871551eb055bd8a702ba732de7f0afac946d3", "raw_denominator": 1455, "binding": "EXACT_MIXED_RESPONDENT_REFINEMENT", "children": 3}
+        ],
+        "note": "These 3-child AND predicates condition on q301_2==v AND q310==w, but use EXACT_MIXED_RESPONDENT_REFINEMENT binding (hash-suffixed 3ef0317887f6910838636d3816237a81d5a56b38e07595c8cc1f7c5e7f1fae74). The q310 leaf is a SURVEY_RESPONSE_EVENT from the prev3:F02 release (LITS1-F02-C11), joined at a mixed-respondent grain, NOT co-traveled on the same RespondentEvent respondent as q301_2/q301_7. This is NOT a same-respondent nested conditioning operation."
+      },
+      "binding_semantics_gap": {
+        "step1_binding": "EXACT_SAME_RESPONDENT_ONLY",
+        "step2_binding": "EXACT_MIXED_RESPONDENT_REFINEMENT__3ef0317887f6910838636d3816237a81d5a56b38e07595c8cc1f7c5e7f1fae74",
+        "gap": "The nesting q(Y|A) -> q(Y|A,B) with B=q310 changes binding semantics between steps. Step 1 is same-respondent; step 2 is mixed-respondent. A lawful same-respondent nested conditioning requires EXACT_SAME_RESPONDENT_ONLY on both steps. The retained products do not contain a q(Y|A,B) query with EXACT_SAME_RESPONDENT_ONLY binding where B is a third distinct variable.",
+        "only_same_respondent_pair": "The only EXACT_SAME_RESPONDENT_ONLY co-travel pair is (q301_2, q301_7) — the D02_P1 JOINT candidate. With only two same-respondent slots, a three-variable nested q(Y|A) -> q(Y|A,B) with A,B,Y all distinct and same-respondent is structurally impossible under the current AS2A projection."
+      }
+    },
+    "falsification_evidence_note": "The absence claim would be falsified by ANY retained EmpiricalQuerySpec with (a) EXACT_SAME_RESPONDENT_ONLY binding, (b) three distinct respondent-backed target/condition items, and (c) a matching EmpiricalFact with SUPPORTED typed_state. Exhaustive scan of all 63 query specs and 35 predicates in the checkpoint tail found none: all EXACT_SAME_RESPONDENT_ONLY specs involve at most two distinct items (q301_2, q301_7); all three-item specs use EXACT_MIXED_RESPONDENT_REFINEMENT."
+  },
+  "shortest_existing_lawful_producer_authority_next_edge": {
+    "edge": "Extend/re-issue the AS2A projection authority to admit a third RespondentEvent slot (e.g. q310) with its own routing authority and release lineage reconciled to the AS2B closure, enabling EXACT_SAME_RESPONDENT_ONLY co-travel for q301_2, q301_7, and the third slot.",
+    "existing_producer": "AS2A projection authority producer (urn:rawlsing:pre553:as2b:lits1:authority:part_a_projection, AS2A-BANKED-1.0.0, hash 9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06)",
+    "existing_authority_document": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/19_AS2A_PART_A_ACCEPTANCE_AND_AS2B_LOCAL_EXECUTION_ROUTING.md",
+    "current_limitation": "The banked AS2A-BANKED-1.0.0 authorizes only q301_2 and q301_7 as RespondentEvent slots. q310 is not permitted. The continuation 'may not reopen source-slot semantics' (doc line 115).",
+    "missing_piece": "A new/extended AS2A projection authority snapshot (or successor) that admits q310 (or another third variable) as a RespondentEvent slot with routing authority, response-semantics authority, and release lineage reconciled to the AS2B closure — enabling EXACT_SAME_RESPONDENT_ONLY predicates over three slots. No such authority exists in the retained products. This is a documentary naming of the missing edge, NOT an issuance or self-adoption.",
+    "not_self_issued": true
+  },
+  "ff02_status": {
+    "ff02_executed": false,
+    "structural_admission_created": false,
+    "structural_admission_object_count": 0,
+    "status": "FF02_READY__NO_SOURCE_REOPEN_REQUIRED",
+    "source_reopen_required": false,
+    "actor_independent_source_indexed_social_context_contribution_feasible": false,
+    "reason": "FF02 has not been executed and no structural admission object exists. The commission asks whether an exact retained source item can be offered as an actor-independent source-indexed observed social-context contribution. Without an executed FF02 structural-admission producer/permission, no such contribution can be lawfully offered. The missing piece is the existing FF02 structural-admission producer/permission (none created); not a synthetic structural pressure score."
+  },
+  "minority_cells_retained": {
+    "count": 25,
+    "family": "MINORITY_OR_NONMODAL_DEPARTURE",
+    "rule_id": "D02_P4_MINORITY_NONMODAL_COMPLETE_JOINT_CELLS",
+    "typed_state": "DISCOVERED_RESULT_SUPPORTED",
+    "role": "BASE",
+    "raw_denominator": 24630,
+    "note": "25 supported minority/nonmodal cells retained as separate typed truth. Exact native codes not force-labeled (preserved from HQ269 S01)."
+  },
+  "performed": {
+    "bounded_tail_streaming": true,
+    "full_checkpoint_scan": false,
+    "dta_reopen_decode": false,
+    "full_checkpoint_hash": false,
+    "ram_3_4gb_allocation": false,
+    "respondent_records_included": false,
+    "carrier_member_blobs_included": false,
+    "fresh_survey_experiment": false,
+    "new_model_use_warrant": false,
+    "self_adoption": false,
+    "hq_control_reopened": false
+  },
+  "terminal": "HQ270_L01_RETURNED_FOR_HQ__NO_SELF_ADOPTION"
+}
