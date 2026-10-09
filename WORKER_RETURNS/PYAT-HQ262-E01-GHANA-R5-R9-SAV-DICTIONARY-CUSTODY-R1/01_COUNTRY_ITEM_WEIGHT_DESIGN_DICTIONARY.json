@@ -1,0 +1,104 @@
+{
+  "schema": "PYAT_HQ262_E01_COUNTRY_ITEM_WEIGHT_DESIGN_DICTIONARY@1",
+  "commission": "PYAT-HQ262-E01-GHANA-R5-R9-SAV-DICTIONARY-CUSTODY-R1",
+  "branch": "agent/deepseek-harness-pyat-hq262-ghana-sav-dictionary-only-r1",
+  "head_at_inspection": "7c4a87c84a2350980293e6192626ce96e81864d5",
+  "startup_base": "1ff7c74f6bef580ba3ce0738b7a9ac6b560ca2d7",
+  "live_control": "integration/pre-main-reconciliation-r1 @ 64b4e7ab1e67c139c7115430c711d459474cf31a",
+  "sealed_hq262_checkpoint": "20261009-PYAT-HQ262-G3-ADOPTED-G1-BOUNDARY-GHANA-DICTIONARY-LITS-CUSTODY-R1 @ b394b431cfc330119db718b3b77acfe1e4626a1c",
+  "sealed_worker_row": "HQ262_E01_GHANA_METADATA_ONLY",
+  "readback_result": "PHYSICAL_CUSTODY_HOLD__AUTHORIZED_TWO_SAV_CARRIERS_ABSENT_ON_THIS_HOST",
+  "dictionary_read_performed": false,
+  "response_values_read": false,
+  "sha256_computed": false,
+  "carriers": [
+    {
+      "file": "Afro Barometer Round 5.sav",
+      "wave": "R5 (2012)",
+      "expected_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+      "expected_bytes": 49689458,
+      "recorded_absolute_path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/Afro Barometer Round 5.sav",
+      "recorded_in": [
+        "data/ddm_build_copy/manifests/file_accounting_manifest.csv",
+        "data/ddm_build_copy/manifests/source_dataset_manifest.csv",
+        "data/ddm_build_copy/manifests/source_dataset_manifest.yaml",
+        "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_BYTE_INVENTORY.csv (size+sha only, no path)"
+      ],
+      "git_tracked": false,
+      "observed_on_host": "ABSENT",
+      "observed_sha256": null,
+      "observed_bytes": null
+    },
+    {
+      "file": "Afro Barometer Round 9.sav",
+      "wave": "R9 (2022)",
+      "expected_sha256": "3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8",
+      "expected_bytes": 70621348,
+      "recorded_absolute_path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/Afro Barometer Round 9.sav",
+      "recorded_in": [
+        "data/ddm_build_copy/manifests/file_accounting_manifest.csv",
+        "data/ddm_build_copy/manifests/source_dataset_manifest.csv",
+        "data/ddm_build_copy/manifests/source_dataset_manifest.yaml",
+        "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_BYTE_INVENTORY.csv (size+sha only, no path)"
+      ],
+      "git_tracked": false,
+      "observed_on_host": "ABSENT",
+      "observed_sha256": null,
+      "observed_bytes": null
+    }
+  ],
+  "expected_containing_directories": {
+    "data_Data": {"path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data", "exists": false},
+    "codebooks": {"path": "/Users/matthewsmith/Desktop/Rawlsing/data/FINAL CODEBOOKS/FINAL FINAL CODEBOOKS", "exists": false}
+  },
+  "requested_field_readback_status": {
+    "note": "every field below was REQUIRED by the commission and is UNVERIFIED because no carrier was readable; none may be filled from the prior documentary return without re-grading it as secondary",
+    "file_label_and_release_version": "UNVERIFIED",
+    "ghana_country_selector_column_and_codes": "UNVERIFIED",
+    "respondent_age_field_and_native_categories": "UNVERIFIED",
+    "citizenship_field_and_native_categories": "UNVERIFIED",
+    "eligible_asked_routing_metadata": "UNVERIFIED",
+    "Q43_item_column_label_and_native_value_labels": "UNVERIFIED",
+    "Q31_item_column_label_and_native_value_labels": "UNVERIFIED",
+    "q43_native_missing_categories": "UNVERIFIED",
+    "q31_native_missing_categories": "UNVERIFIED",
+    "weight_candidate_withinwt": "UNVERIFIED",
+    "weight_candidate_withinwt_ea": "UNVERIFIED",
+    "weight_candidate_withinwt_hh": "UNVERIFIED",
+    "psu_or_ea_field_metadata": "UNVERIFIED",
+    "stratum_field_metadata": "UNVERIFIED",
+    "replicate_weight_metadata": "UNVERIFIED",
+    "header_release_version_descriptor": "UNVERIFIED"
+  },
+  "observed_sav_files_on_host": [
+    {"path": "/Users/matthewsmith/Desktop/EVS 2008.sav", "bytes": 63832833, "is_a_substitute": false, "note": "different source; not authorized and not used"},
+    {"path": "/Users/matthewsmith/Desktop/WVS Wave 7.sav", "bytes": 185163494, "is_a_substitute": false, "note": "different source; not authorized and not used"}
+  ],
+  "documentary_secondary_not_reverified": {
+    "grade": "SECONDARY__ALREADY_ADOPTED_DOCUMENTARY_RETURN__NOT_RE_VERIFIED_BY_THIS_LANE",
+    "source": "WORKER_RETURNS/PYAT-HQ261-E01-GHANA-R5-R9-ORIGINAL-MEASUREMENT-DESIGN-R1 (commit 8c9aefe11f294169c8d1c003cf1a0b96124c65b2)",
+    "content": [
+      "R5 Q43 national codebook codes 0,1,2,3,4,9,998,-1 with 998=refused and -1=missing data",
+      "R9 Q31 national codebook codes 0,1,2,3,4,8,9,-1 with 8=refused, 9=don't know, -1=missing",
+      "2022 Q30 uses a distinct refusal code 98 that must never be imported into Q31",
+      "2012->2022 refusal-code change 998->8 is a release-level missing-code reconciliation, not attitude movement",
+      "population eligibility: Ghanaian citizens 18+ in both national technical summaries",
+      "R5 weight candidate withinwt (EA level); R9 candidates withinwt_ea (EA level) and withinwt_hh (HH level with ADULT_CT) are NOT interchangeable",
+      "2022 published headline n=2400 vs country codebook RESPNO upper bound GHA2369 is unresolved without respondent-level scope"
+    ],
+    "explicit_warning": "these are documentary statements from a prior return; they are NOT SAV dictionary values and were NOT re-verified here; the frozen SAV column mapping, Ghana filter and release edition remain UNPROVEN"
+  },
+  "gaps_introduced_by_absence": {
+    "instrument_to_retained_variable_mapping": "NOT PRODUCED",
+    "source_native_missing_categories_physical": "UNVERIFIED",
+    "weight_candidate_types_physical": "UNVERIFIED",
+    "design_cluster_stratum_metadata_presence": "UNVERIFIED",
+    "header_release_version": "UNVERIFIED",
+    "official_released_byte_equivalence": "UNVERIFIED__AND_NOT_CLAIMABLE_FROM_A_FILENAME"
+  },
+  "substitution_made": false,
+  "library_searched": false,
+  "download_or_regeneration_attempted": false,
+  "self_adoption": "NOT_PERFORMED",
+  "terminal": "HQ262_E01_RETURNED_FOR_HQ__NO_SELF_ADOPTION"
+}

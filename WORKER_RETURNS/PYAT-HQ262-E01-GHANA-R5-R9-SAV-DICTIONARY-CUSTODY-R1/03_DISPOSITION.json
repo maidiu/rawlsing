@@ -1,0 +1,84 @@
+{
+  "schema": "PYAT_HQ262_E01_DISPOSITION@1",
+  "commission": "PYAT-HQ262-E01-GHANA-R5-R9-SAV-DICTIONARY-CUSTODY-R1",
+  "lane": "agent/deepseek-harness-pyat-hq262-ghana-sav-dictionary-only-r1",
+  "head_at_inspection": "7c4a87c84a2350980293e6192626ce96e81864d5",
+  "startup_base": "1ff7c74f6bef580ba3ce0738b7a9ac6b560ca2d7",
+  "live_control": "integration/pre-main-reconciliation-r1 @ 64b4e7ab1e67c139c7115430c711d459474cf31a",
+  "sealed_hq262_checkpoint": "20261009-PYAT-HQ262-G3-ADOPTED-G1-BOUNDARY-GHANA-DICTIONARY-LITS-CUSTODY-R1 @ b394b431cfc330119db718b3b77acfe1e4626a1c",
+  "sealed_worker_row": "HQ262_E01_GHANA_METADATA_ONLY",
+  "disposition": "PHYSICAL_CUSTODY_HOLD__AUTHORIZED_TWO_SAV_CARRIERS_ABSENT_ON_THIS_HOST",
+  "evidence_grade": "AUTHOR_RUN_ABSENCE_AND_LOCATOR_RECEIPT__NOT_INDEPENDENT_ACCEPTANCE",
+  "runtime": {
+    "interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+    "python": "3.11.3",
+    "machine": "macOS 13.7.8 x86_64",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq262-ghana-review",
+    "worktree_clean": true,
+    "pyreadstat_available": false,
+    "library_searched": false
+  },
+  "carriers": [
+    {"file": "Afro Barometer Round 5.sav", "expected_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651", "expected_bytes": 49689458, "recorded_path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/Afro Barometer Round 5.sav", "observed": "ABSENT"},
+    {"file": "Afro Barometer Round 9.sav", "expected_sha256": "3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8", "expected_bytes": 70621348, "recorded_path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/Afro Barometer Round 9.sav", "observed": "ABSENT"}
+  ],
+  "executed_checks": {
+    "exact_recorded_paths_present": false,
+    "data_Data_directory_exists": false,
+    "codebook_directory_exists": false,
+    "sav_files_under_repo_data": 0,
+    "afro_sav_files_on_host_non_library": 0,
+    "sav_files_on_host_non_library_total": 2,
+    "host_sav_files": ["/Users/matthewsmith/Desktop/EVS 2008.sav", "/Users/matthewsmith/Desktop/WVS Wave 7.sav"],
+    "git_tracked": false,
+    "substitution_made": false
+  },
+  "not_performed": [
+    "no SHA256 computed on any carrier",
+    "no SAV header or dictionary parsed",
+    "no metadata-only read",
+    "no respondent row, case data or column response value accessed",
+    "no count, share, weighted share, trend, variance or uncertainty computed",
+    "no Library access, download, regeneration or source re-release",
+    "no official release-edition match claimed",
+    "no FF02 LiTS work or LiTS checkpoint access",
+    "no EE12/C7 pair use, EE14 model use, G0b grant, V3, N9/N10W or world/actor claim",
+    "no code/test/source mutation outside this return directory"
+  ],
+  "held_fields": [
+    "file label and release/version descriptor",
+    "Ghana country selector column and codes",
+    "age, citizenship, eligible/asked routing metadata",
+    "Q43 and Q31 exact mapped columns and native value/missing labels",
+    "weight candidate names/types (withinwt, withinwt_ea, withinwt_hh)",
+    "PSU/EA, stratum and replicate-weight metadata presence",
+    "instrument-to-retained-variable mapping"
+  ],
+  "documentary_secondary_not_upgraded": "the prior adopted return 8c9aefe1... (Q43 codes 0-4/9/998/-1; Q31 codes 0-4/8/9/-1; withinwt vs withinwt_ea/withinwt_hh distinction; RESPNO GHA2369 vs n=2400) remains SECONDARY and was NOT verified as SAV dictionary metadata",
+  "custodian_request": {
+    "action": "RESTORE_OR_LOCATE_AND_VERIFY_THEN_RESUME",
+    "restore_paths": [
+      "/Users/matthewsmith/Desktop/Rawlsing/data/Data/Afro Barometer Round 5.sav",
+      "/Users/matthewsmith/Desktop/Rawlsing/data/Data/Afro Barometer Round 9.sav"
+    ],
+    "acceptance": "each file must be present under an authorized custodian and stream a SHA-256 equal to the expected value above",
+    "also_required": [
+      "provision the approved metadata-only SAV reader (pyreadstat or approved equivalent) in an already authorized environment",
+      "state the exact host/mount serving the restored carriers",
+      "provide or point to an independent official release-edition witness for the frozen bytes"
+    ],
+    "forbidden": ["Library hunt", "download/regeneration of raw survey", "substituting the EVS/WVS carriers", "claiming release match from a filename"]
+  },
+  "recorded_locator_provenance": {
+    "manifests": [
+      "data/ddm_build_copy/manifests/file_accounting_manifest.csv",
+      "data/ddm_build_copy/manifests/source_dataset_manifest.csv",
+      "data/ddm_build_copy/manifests/source_dataset_manifest.yaml",
+      "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_BYTE_INVENTORY.csv"
+    ],
+    "note": "these are custody documents read for locator/hash/size provenance only; they were not treated as source data"
+  },
+  "self_adoption": "NOT_PERFORMED",
+  "reviewer_required": true,
+  "terminal": "HQ262_E01_RETURNED_FOR_HQ__NO_SELF_ADOPTION"
+}
