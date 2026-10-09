@@ -1,0 +1,131 @@
+{
+  "schema": "PYAT_HQ252_R02_S03_A048_INDEPENDENT_DISPOSITION@1.0.0",
+  "terminal": "HQ252_S03_A048_INDEPENDENT_NATIONAL_INSTRUMENT_REVIEW_RETURNED_FOR_HQ__NOT_ADOPTED",
+  "choice": "SOURCE_INSTRUMENT_INSUFFICIENT",
+  "alternate_possible": [
+    "DOC_VERIFIED_BOUNDED",
+    "CONSTRUCT_REJECTED"
+  ],
+  "tier_ceiling": "ZA7503_A048_ORIGINAL_INTEGRATED_1990_Q467C_2008_V184_VERIFIED__2008_AUSTRIA_FIELDED_Q53A_AND_LISTE53_VERIFIED__1990_AUSTRIAN_Q465C_FIELD_UNVERIFIED__NO_EMPIRICAL_PAIR",
+  "crosswalk_status": "S03_SOUND_AT_ORIGINAL_INTEGRATED_MAPPING_GRAIN__COUNTRY_FIELDED_COMPARABILITY_NOT_VERIFIED",
+  "disproof_claim": false,
+  "false_equivalence_forbidden": true,
+  "positive_findings": [
+    "1990 ZA4460 v3 q467c Q465C master card Z and integrated response 0 disapprove,1 approve / original master 1 approve,2 disapprove documented official report PDF549",
+    "2008 ZA4800 v5 v184 Q53A original master and integrated response documented official PDF500 with 1999/2008 modified interviewer instruction warning",
+    "Actual Austrian 2008 national field Q53 v184 German 'Wenn die Frau ledig ist', Liste53, read and one per line, 1/2/8/9 at FQ PDF19; card on FQ PDF93",
+    "2008 Austria multistage clustered address sample 375 points, last birthday; EVS weight and additional Austria original weights distinct"
+  ],
+  "primary_blockers": [
+    {
+      "id": "R02_FIELD_AUSTRIA_1990_Q465C",
+      "state": "UNVERIFIED__IMAGE_SCAN_CANNOT_BE_READ_IN_PUBLIC_DOCUMENT_INTERFACE",
+      "owner": "GESIS national archival custodian and independent German instrument reviewer",
+      "needed": "Authenticated scan pages of 1990 field questionnaire Q465C plus card Z and routing/interviewer notes"
+    },
+    {
+      "id": "R02_AUSTRIA_1990_CATALOGUE_CONFLICT",
+      "state": "INCONSISTENT_SOURCE_REFERENCES",
+      "owner": "GESIS original-wave source identity owner",
+      "needed": "Reconcile 1990 Q report Austria ZA4754 entry versus 1990 Austrian FQ title ZA4479 and 2008 national ZA4754"
+    },
+    {
+      "id": "R02_AUSTRIA_1990_POPULATION_METHOD_WEIGHT",
+      "state": "UNVERIFIED",
+      "owner": "Survey-methodology/EE12",
+      "needed": "Country-specific 1990 sample selection/frame/eligibility, national weight and variance basis against confirmed 2008 methods"
+    },
+    {
+      "id": "R02_EXACT_FROZEN_RELEASE_MATCH",
+      "state": "UNPROVED",
+      "owner": "HQ retained-source/version owner",
+      "needed": "Exact SRC12 and SRC14 source SHA→GESIS version and q467c/v184 original variable/response map"
+    },
+    {
+      "id": "R02_ACTUAL_POSITIVE_C7_PAIR_USE",
+      "state": "NOT_ISSUED",
+      "owner": "HQ/EE12 C7",
+      "needed": "Two measured wave products, positive pair-specific source-universe relation and target-use authorization, selected temporal result and real consumer"
+    }
+  ],
+  "counterevidence": "ZA4800 v184 warns of modified interviewer instruction for EVS1999/2008; 1990 national instrument text not independently read; do not infer failure or invariance solely from warning.",
+  "observed_sign": null,
+  "empirical_noncomparability": null,
+  "smallest_next_witness": "Authenticated 1990 Austrian field questionnaire Q465C/card Z + interviewer/skip metadata, independently contrasted with confirmed 2008 FQ PDF19/93; plus original 1990 national sample-method source.",
+  "frozen_sources": {
+    "SRC12": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+    "SRC14": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379"
+  },
+  "citations": [
+    {
+      "kind": "1990_INTEGRATED",
+      "url": "https://access.gesis.org/dbk/50678",
+      "pdf_page_zero_index": 549,
+      "printed_page": 498
+    },
+    {
+      "kind": "1990_AUSTRIA_ORIGINAL_FQ_SCANNED_NOT_READ",
+      "url": "https://access.gesis.org/dbk/11623",
+      "pdf_page_count": 20
+    },
+    {
+      "kind": "2008_AUSTRIA_ACTUAL_FQ",
+      "url": "https://access.gesis.org/dbk/17774",
+      "pdf_page_zero_index": 19
+    },
+    {
+      "kind": "2008_AUSTRIA_ACTUAL_SHOW_LIST53",
+      "url": "https://access.gesis.org/dbk/17774",
+      "pdf_page_zero_index": 93
+    },
+    {
+      "kind": "2008_ORIGINAL_INTEGRATED",
+      "url": "https://access.gesis.org/dbk/17681",
+      "pdf_page_zero_index": 500,
+      "printed_page": 422
+    },
+    {
+      "kind": "2008_AUSTRIA_METHOD_REPORT",
+      "url": "https://access.gesis.org/dbk/17933",
+      "pdf_page_zero_indices": [
+        13,
+        14,
+        18,
+        19,
+        21,
+        28,
+        29
+      ]
+    },
+    {
+      "kind": "1990_NATIONAL_LIST",
+      "url": "https://www.gesis.org/en/european-values-study/data-and-documentation/2nd-wave-1990"
+    },
+    {
+      "kind": "2008_NATIONAL_LIST",
+      "url": "https://europeanvaluesstudy.eu/surveys/surveys-evs/survey-2008/participating-countries-and-country-information-survey-2008/"
+    }
+  ],
+  "commission_tip": "c93f42328760547dc187cadf86175307c631c6e9",
+  "branch": "agent/reviewer-pyat-hq252-s03-a048-austria-instrument-r1",
+  "permission": {
+    "library": false,
+    "raw_survey_read": false,
+    "survey_runtime": false,
+    "source_authored": false,
+    "authority_adopted": false,
+    "pair_run": false,
+    "security_bypassed": false,
+    "production_modified": false,
+    "HQ_mutation": false,
+    "V3": false
+  },
+  "exact_files": [
+    "WORKER_RETURNS/PYAT-HQ252-S03-A048-AUSTRIA-INSTRUMENT-INDEPENDENT-REVIEW-R1/00_INDEPENDENT_REVIEW.md",
+    "WORKER_RETURNS/PYAT-HQ252-S03-A048-AUSTRIA-INSTRUMENT-INDEPENDENT-REVIEW-R1/01_FIELDED_INSTRUMENT_CROSSWALK.json",
+    "WORKER_RETURNS/PYAT-HQ252-S03-A048-AUSTRIA-INSTRUMENT-INDEPENDENT-REVIEW-R1/02_POPULATION_DESIGN_VERSION_GAPS.md",
+    "WORKER_RETURNS/PYAT-HQ252-S03-A048-AUSTRIA-INSTRUMENT-INDEPENDENT-REVIEW-R1/03_DISPOSITION.json"
+  ],
+  "remote_head": "VERIFY_AFTER_PUSH_SEPARATELY",
+  "stop": true
+}

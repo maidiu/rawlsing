@@ -1,0 +1,198 @@
+{
+  "schema": "PYAT_HQ252_R02_A048_FIELDED_INSTRUMENT_CROSSWALK@1.0.0",
+  "scope": "AUSTRIA_ONLY__1990_2008__INDEPENDENT_DOCUMENTARY",
+  "disposition": "SOURCE_INSTRUMENT_INSUFFICIENT",
+  "review_grain": "1990_INTEGRATED_REPORT_AND_CATALOGUE_AUSTRIA_SCAN_POINTER__2008_ACTUAL_AUSTRIA_QUESTION_AND_SHOWCARD",
+  "parent_authority": {
+    "hq_decision": "HQD-2026-10-08-252",
+    "sealed_checkpoint_commit": "9ad2b1ee711bd51f36ae3ec73a70768a42b60afa",
+    "control_seen": "a0a1a0eb2ea1243c2a7341c2b85f22ec1d979a0e",
+    "exact_commission_tip": "c93f42328760547dc187cadf86175307c631c6e9"
+  },
+  "harmonized": {
+    "GESIS_study": "ZA7503",
+    "version": "3.0.0",
+    "variable": "A048",
+    "construct": "approve/disapprove of abortion when woman not married",
+    "values": {
+      "0": "disapprove",
+      "1": "approve",
+      "-1": "don't know",
+      "-2": "no answer",
+      "-3": "not applicable",
+      "-4": "not asked",
+      "-5": "other missing"
+    },
+    "reference": "https://access.gesis.org/dbk/71051",
+    "authority": "DOCUMENTARY_ONLY"
+  },
+  "country": "Austria",
+  "waves": [
+    {
+      "wave": "1990",
+      "src": "SRC12",
+      "frozen_source": "EVS 1990.sav",
+      "sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+      "physical_rows": 38213,
+      "physical_columns": 390,
+      "official_integrated": {
+        "study": "ZA4460",
+        "version": "3.0.0",
+        "variable": "q467c",
+        "label": "abortion if woman not married (Q465C)",
+        "master_question": "Q465/Q465C",
+        "master_show_card": "Z",
+        "master_values": {
+          "1": "approve",
+          "2": "disapprove"
+        },
+        "integrated_values": {
+          "0": "disapprove",
+          "1": "approve",
+          "-1": "don't know",
+          "-2": "no answer",
+          "-3": "not applicable",
+          "-4": "not asked",
+          "-5": "other missing"
+        },
+        "ref": "https://access.gesis.org/dbk/50678",
+        "pdf_page_zero_index": 549,
+        "printed_page": 498,
+        "read_status": "DIRECT_INTEGRATED_REPORT_READ"
+      },
+      "national_field": {
+        "url": "https://access.gesis.org/dbk/11623",
+        "document_type": "image-based 20-page Austrian field questionnaire",
+        "catalogue_title": "ZA4479 Austria Field Questionnaire",
+        "pdf_total_pages": 20,
+        "a048_native_item_text": null,
+        "a048_card_content": null,
+        "field_item_page": null,
+        "interviewer_instruction": null,
+        "local_values": null,
+        "verified": false,
+        "reason": "Image scan located but publicly accessible PDF screenshot/text interface could not furnish field-item image; no German wording or card Z read."
+      },
+      "catalogue_conflict": "1990 ZA4460 integrated report country table appears to list Austria ZA4754, conflicting with 1990 FQ title ZA4479 and 2008 national ZA4754; requires source owner reconciliation",
+      "population": {
+        "sample_n": 1460,
+        "field_dates": "1990-04-09 to 1990-06-01",
+        "min_age": "18+",
+        "austrian_sample_method": null,
+        "household_citizenship_frame": null,
+        "design_psu_strata": null,
+        "original_national_weight": null,
+        "source": "https://www.gesis.org/en/european-values-study/data-and-documentation/2nd-wave-1990"
+      },
+      "raw_release_matches_reference_version": false,
+      "statement": "FALSE here means not proven, not proven mismatch"
+    },
+    {
+      "wave": "2008",
+      "src": "SRC14",
+      "frozen_source": "EVS 2008.sav",
+      "sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+      "physical_rows": 66280,
+      "physical_columns": 477,
+      "official_integrated": {
+        "study": "ZA4800",
+        "version": "5.0.0",
+        "variable": "v184",
+        "label": "abortion if woman not married approve/disapprove (Q53A)",
+        "master_question": "Q53/Q53A",
+        "master_show_card": "53",
+        "integrated_values": {
+          "0": "disapprove",
+          "1": "approve",
+          "-1": "don't know",
+          "-2": "no answer",
+          "-3": "not applicable",
+          "-4": "not asked",
+          "-5": "other missing"
+        },
+        "warning": "1999/2008 modified trend interviewer instruction; not proof 1990/2008 invariance or failure",
+        "ref": "https://access.gesis.org/dbk/17681",
+        "pdf_page_zero_index": 500,
+        "printed_page": 422
+      },
+      "national_field": {
+        "study": "ZA4754",
+        "url": "https://access.gesis.org/dbk/17774",
+        "pdf_page_item_zero_index": 19,
+        "pdf_page_showcard_zero_index": 93,
+        "question": "Q53",
+        "variable": "v184",
+        "german_question": "Billigen Sie eine Abtreibung unter den folgenden Umständen oder nicht?",
+        "german_item": "Wenn die Frau ledig ist",
+        "show_list": "LISTE 53",
+        "instruction": "BITTE LISTE 53 VORLEGEN! – VORLESEN UND PRO ZEILE JEWEILS EINE ANTWORT ANKREUZEN",
+        "shown_card_item": "Wenn die Frau ledig ist",
+        "note": "Show-card itself lists circumstances; substantive response labels appear in interviewer question grid, not independently on card",
+        "native_values": {
+          "1": "Billige",
+          "2": "Billige nicht",
+          "8": "WN",
+          "9": "KA"
+        },
+        "verified": true
+      },
+      "population": {
+        "field_dates": "2008-07-21 to 2008-10-22",
+        "sample_n": 1510,
+        "universe": "persons aged 18+ resident in private households regardless nationality/citizenship/language",
+        "national_design": "multistage stratified clustered random address",
+        "stratification": "463 region x political district x community size cells",
+        "sample_points": 375,
+        "psu": "election units",
+        "household_selection": "PAC address random selection; 5 + reserve address per sample point",
+        "respondent_selection": "last birthday",
+        "method_ref": "https://access.gesis.org/dbk/17933",
+        "method_pdf_page": {
+          "population": 13,
+          "sampling": 18,
+          "weighting": 21,
+          "national_gender_region_table": 28,
+          "national_gender_age_table": 29
+        }
+      },
+      "weights": {
+        "evs_weight": "age x gender calibration, weight zero if birth year missing",
+        "additional_original_austria_weight": "present in national materials, construction tables gender x region and gender x age",
+        "weight_table_n_raw": 1510,
+        "weight_table_total_calibrated": 1500,
+        "no_adopted_estimand": true,
+        "weight_crosswalk_to_S017": null,
+        "psu_variance_operator": null
+      },
+      "raw_release_matches_reference_version": false,
+      "statement": "FALSE here means not proven, not proven mismatch"
+    }
+  ],
+  "comparability_adjudication": {
+    "same_label_construct": "SUPPORTED_BY_INTEGRATED_REFERENCES",
+    "same_country": "YES_AUSTRIA",
+    "same_fielded_German_wording": "UNVERIFIED_1990",
+    "same_stimulus_or_showcard": "UNVERIFIED_1990__2008_LISTE53_DOCUMENTED",
+    "same_interviewer_operation": "UNVERIFIED_1990__MODIFIED_WARNING_2008",
+    "same_substantive_binary_response_direction": "DOCUMENTED_MASTER_ONLY__FROZEN_BYTES_UNKNOWN",
+    "same_source_native_missingness": "UNVERIFIED",
+    "same_target_population": "NOT_DOCUMENTED_AS_EQUIVALENT",
+    "same_weighted_estimand": "NOT_DEFINED",
+    "same_design_variance": "NOT_DEFINED",
+    "same_exact_retained_release_version": "NOT_VERIFIED",
+    "current_positive_two_wave_product": false,
+    "positive_pair_authority": false,
+    "observed_temporal_sign": false,
+    "world_serving": false
+  },
+  "critical_falsifiers": [
+    "1990 Austrian scanned item/card changes question or response stimulus",
+    "1990 Austrian sample uses irreconcilable quota/frame or eligibility",
+    "2 native misread as harmonized 0/1 or 8/9 as substantive",
+    "2008 original-vs-EVS and 1990 weights/design incorrectly conflated",
+    "fixed source SHA vs reference versions mismatch",
+    "no positive pair/permission/temporal/currentness/world consumer"
+  ],
+  "no_execution": true,
+  "no_adoption": true
+}
