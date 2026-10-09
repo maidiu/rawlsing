@@ -696,6 +696,39 @@ def bind_service_applicability_to_f8_scope(
         raise _refusal("BINDING_TARGET_USE_GRAIN_MISMATCH",
                        "binding target use does not equal the receipt's target use")
 
+    # -- bound target-use permission identity coherence ----------------------
+    # HQ254 P01 CANDIDATE. Quarantined correction, NOT adopted security authority.
+    #
+    # Applicability is decided under the exact target_use_permission_refs carried in
+    # the receipt's request key; the receipt itself declares those refs to be "bound
+    # input not a grant". A binding that declares a DIFFERENT permission set is
+    # therefore describing applicability that was never decided. Before this check the
+    # binder copied the divergent set verbatim into the binding's canonical material,
+    # where downstream attestation would read it as the admitted one.
+    #
+    # This is the exact missing sibling of BINDING_TARGET_USE_GRAIN_MISMATCH above:
+    # the same fail-closed grain-coherence intent, one field that had no check at all.
+    # It grants no permission, widens no source-scope power, demands no F8 producer
+    # custody, and adds no model use. It only refuses to emit a binding whose declared
+    # permissions disagree with the receipt it claims to consume.
+    receipt_permission_refs = receipt.request_key.get("target_use_permission_refs", ())
+    declared_permission_refs = tuple(request.bound_target_use_permission_refs or ())
+    declared_permission_keys = {permission.key for permission in declared_permission_refs}
+    receipt_permission_keys = {
+        exact_ref(permission, "target_use_permission_ref").key
+        for permission in receipt_permission_refs
+    }
+    if declared_permission_keys != receipt_permission_keys:
+        raise _refusal(
+            "BINDING_PERMISSION_IDENTITY_MISMATCH",
+            f"binding bound_target_use_permission_refs "
+            f"{sorted(permission.as_dict()['object_id'] for permission in declared_permission_refs)!r} "
+            f"do not equal the receipt's target_use_permission_refs "
+            f"{sorted(permission.get('object_id') for permission in receipt_permission_refs)!r}; a "
+            f"binding may never re-describe applicability that was decided under a different "
+            f"bound target-use permission set",
+        )
+
     # -- release grain ------------------------------------------------------
     receipt_releases = {d.release_identity_ref["object_id"] for d in receipt.decisions}
     if request.release_identity_ref.object_id not in receipt_releases:
