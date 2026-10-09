@@ -1,0 +1,142 @@
+{
+  "schema": "PYAT_HQ260_G03_SOURCE_FREE_CURRENT_ASOF_REPLAY_TESTS@1",
+  "commission": "PYAT-HQ260-G03-CURRENT-ASOF-LIFECYCLE-COURT-R1",
+  "branch": "agent/deepseek-harness-pyat-hq260-g3-current-asof-lifecycle-court-r1",
+  "startup_base": "cb5f363b26c886c6ef855f81aa133fe194460c67",
+  "head_at_run": "35a8e2c0da7d22d3f54badd5ddb9d5f1dec2e5f5",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq260-g3-review",
+  "worktree_dirt_status": "CLEAN except the one new test file (untracked before commit)",
+  "runtime": {
+    "interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+    "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "machine": "macOS 13.7.8 x86_64",
+    "source_free": true,
+    "library_or_raw_survey_access": false,
+    "g01_branch_read": false
+  },
+  "code_identity": {
+    "new_test_path": "rawlsing_next/tests/test_pre553_ee14_selected_current_asof_hq260.py",
+    "new_test_git_blob": "a1ec3dba504ff866b681d6bbe942d12a9e238257",
+    "new_test_sha256": "122d8b6af2ecd431d8cdbc3db6971f5410933cde937b98203c1d53105f9618dc",
+    "production_adapter_added": false,
+    "production_adapter_reason": "the accepted B5 owner already meets the requirement; commission forbids a redundant new adapter",
+    "owner_blobs_used": {
+      "rawlsing_next/pre553_learned_product_lifecycle.py": "a11c9eb73abab9be118ef4f0b6e325e676059f27",
+      "rawlsing_next/pre553_analytical_replay_dependency.py": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+      "rawlsing_next/pre553_authority_maintenance.py": "547e6bf20354f38179a0e2600de64c7cb2260ea0"
+    },
+    "owner_files_modified": false,
+    "accepted_tests_modified": false
+  },
+  "execution_receipts": [
+    {
+      "id": "g3_court",
+      "command": "<governed python3.11> -m pytest rawlsing_next/tests/test_pre553_ee14_selected_current_asof_hq260.py -q",
+      "collected": 15,
+      "result": "15 passed",
+      "exit_code": 0
+    },
+    {
+      "id": "existing_owner_lifecycle_court",
+      "command": "<governed python3.11> -m pytest rawlsing_next/tests/test_pre553_learned_product_lifecycle.py -q",
+      "collected": 39,
+      "result": "39 passed",
+      "exit_code": 0,
+      "regression": false
+    },
+    {
+      "id": "existing_analytical_dependency_court",
+      "command": "<governed python3.11> -m pytest rawlsing_next/tests/test_pre553_analytical_replay_dependency.py -q",
+      "collected": 43,
+      "result": "43 passed",
+      "exit_code": 0,
+      "regression": false,
+      "note": "this existing court spawns its own fresh-process runners, so it takes ~36s"
+    },
+    {
+      "id": "combined",
+      "command": "<governed python3.11> -m pytest <lifecycle> <analytical dependency> <g3> -q",
+      "collected": 97,
+      "result": "97 passed",
+      "exit_code": 0
+    }
+  ],
+  "g3_test_outcomes": {
+    "test_g3_selected_current_derives_from_the_owner_receipt": "PASSED",
+    "test_g3_currentness_is_not_readable_off_a_release_object_or_cache": "PASSED",
+    "test_g3_second_purpose_or_scope_cannot_inherit_currentness": "PASSED",
+    "test_g3_as_of_event_and_as_of_checkpoint_agree": "PASSED",
+    "test_g3_tampered_checkpoint_is_refused": "PASSED",
+    "test_g3_fresh_process_checkpoint_reconstruction": "PASSED",
+    "test_g3_historical_as_of_still_resolves_the_prior_product": "PASSED",
+    "test_g3_affected_and_unaffected_dependency_transition": "PASSED",
+    "test_g3_invalidated_release_cannot_be_served_as_current": "PASSED",
+    "test_g3_unknown_selection_key_is_refused_not_guessed": "PASSED",
+    "test_g3_self_proclaimed_current_receipt_is_refused": "PASSED",
+    "test_g3_staged_but_unselected_release_is_unknown_not_current": "PASSED",
+    "test_g3_owner_unknown_analytical_dependent_is_never_current": "PASSED",
+    "test_g3_no_new_adapter_module_was_manufactured": "PASSED",
+    "test_g3_court_claims_no_service_or_model_use_permission": "PASSED"
+  },
+  "fresh_process_evidence": {
+    "mechanism": "the checkpoint dict is exported, written to a JSON payload, and a driver script is executed with subprocess.run([sys.executable, driver, payload], cwd=repo_root, env with PYTHONPATH=repo_root); the driver imports this court module by file location, calls module-level reconstruct_and_resolve(), and prints JSON",
+    "observed": "state=CURRENT_SELECTED, selected_release_ref == the fixture release A, receipt_ref == the owner's exact selection receipt",
+    "negative_in_same_test": "an absent selection key ref raises LearnedProductLifecycleError on the restored owner",
+    "why_this_is_additive": "the accepted lifecycle court reconstructs in-process only; this is the first fresh-interpreter reconstruction of the selected-current state for this grain"
+  },
+  "fixture_identity_scope": {
+    "root": "urn:hq260:g3:fixture:",
+    "statement": "every ExactRef/AuthorityRef in the court is an opaque fixture identity for the lifecycle state machine; none is authority, a permission, an issuer principal, a model-use grant or a service authorization",
+    "permission_issuing_surface_defined": false
+  },
+  "hostile_and_negative_results": {
+    "unknown_selection_key": "typed LearnedProductLifecycleError, never a guess",
+    "fabricated_current_selection_receipt": "refused by resolve_selection_exact",
+    "staged_but_unselected_release": "UNKNOWN_CURRENTNESS (never CURRENT)",
+    "second_purpose_scope_bleed": "UNKNOWN_CURRENTNESS",
+    "tampered_checkpoint_hash": "LearnedProductLifecycleConflict",
+    "invalidated_release_reselected": "LearnedProductLifecycleError (invalidated/withdrawn cannot be selected current)",
+    "owner_unknown_analytical_dependent": "OwnerUnknownDependent",
+    "cache_or_object_presence_restores_currentness": "no such path exists; the court asserts no currentness attribute or latest/current/default accessor exists"
+  },
+  "sparse_scope_extension": {
+    "named_in_commission": [
+      "rawlsing_next/pre553_learned_product_lifecycle.py",
+      "rawlsing_next/pre553_analytical_replay_dependency.py",
+      "rawlsing_next/pre553_empirical_objects.py",
+      "rawlsing_next/source_backed_positioned_subject_possibility.py"
+    ],
+    "documented_narrow_source_free_extension": [
+      "rawlsing_next/__init__.py",
+      "rawlsing_next/tests/__init__.py",
+      "rawlsing_next/pre553_authority_maintenance.py",
+      "rawlsing_next/pre553_analytical_composition.py",
+      "rawlsing_next/pre553_empirical_query.py",
+      "rawlsing_next/_pre553_query_common.py",
+      "rawlsing_next/pre553_c11_integrity.py",
+      "rawlsing_next/pre553_c11_repository.py",
+      "rawlsing_next/_pre553_query_eval.py",
+      "rawlsing_next/_pre553_query_predicate.py",
+      "rawlsing_next/pre553_runtime_authority.py",
+      "rawlsing_next/pre553_discovery_exact.py",
+      "rawlsing_next/pre553_recursive_handoff.py",
+      "rawlsing_next/pre553_c11_ingest.py",
+      "rawlsing_next/pre553_empirical_authority.py",
+      "rawlsing_next/tests/c1_at18_at19_fixture.py",
+      "rawlsing_next/tests/c1_at18_at19_fresh_process_runner.py",
+      "rawlsing_next/tests/test_pre553_empirical_query.py",
+      "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/ (existing synthetic-authority fixture artifacts required by the EXISTING analytical court)",
+      "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/ (same)"
+    ],
+    "silent_widening": false,
+    "raw_source_or_library_materialized": false
+  },
+  "test_limitations": [
+    "the scenario is a source-free synthetic XOR-free fixture; it demonstrates lifecycle capability, not any empirical or T1 service use",
+    "the fresh-process reconstruction covers the B5 selected-current state only; it does not exercise a production serving boundary",
+    "no G01 authenticated C1 ingress was used or read (per commission)",
+    "the analytical-grain EXPLICIT_NONCURRENT refusal is already covered by the existing accepted court and is not duplicated here; only the owner-UNKNOWN refusal is re-exercised"
+  ]
+}

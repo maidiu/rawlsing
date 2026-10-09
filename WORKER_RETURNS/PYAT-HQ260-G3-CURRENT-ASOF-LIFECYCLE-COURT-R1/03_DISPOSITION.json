@@ -1,0 +1,66 @@
+{
+  "schema": "PYAT_HQ260_G03_DISPOSITION@1",
+  "commission": "PYAT-HQ260-G03-CURRENT-ASOF-LIFECYCLE-COURT-R1",
+  "lane": "agent/deepseek-harness-pyat-hq260-g3-current-asof-lifecycle-court-r1",
+  "head_at_run": "35a8e2c0da7d22d3f54badd5ddb9d5f1dec2e5f5",
+  "startup_base": "cb5f363b26c886c6ef855f81aa133fe194460c67",
+  "live_control": "integration/pre-main-reconciliation-r1 @ 788b2bf7e53c35e25d3f83b638e989169f3d990c",
+  "sealed_hq260_checkpoint": "20261009-PYAT-HQ260-EE14-G0A-G1-G3-LITS-TEMPORAL-FOUR-ISSUED-R1 @ a39a4b2c9b0beaf28992a13e4149e98846829161",
+  "route_result": "EXISTING_OWNER_POSITIVE_CONFIRMED__SERVICE_JOIN_PENDING",
+  "disposition": "EXISTING_OWNER_POSITIVE_CONFIRMED__SERVICE_JOIN_PENDING",
+  "production_adapter_needed": false,
+  "production_adapter_written": false,
+  "production_or_owner_files_modified": false,
+  "accepted_tests_modified": false,
+  "changed_paths": [
+    "rawlsing_next/tests/test_pre553_ee14_selected_current_asof_hq260.py (NEW; blob a1ec3dba504ff866b681d6bbe942d12a9e238257; sha256 122d8b6af2ecd431d8cdbc3db6971f5410933cde937b98203c1d53105f9618dc)",
+    "WORKER_RETURNS/PYAT-HQ260-G3-CURRENT-ASOF-LIFECYCLE-COURT-R1/ (this return)"
+  ],
+  "evidence": {
+    "g3_court": "15 passed, exit 0",
+    "existing_lifecycle_court": "39 passed, exit 0 (no regression)",
+    "existing_analytical_dependency_court": "43 passed, exit 0 (no regression)",
+    "combined": "97 passed, exit 0",
+    "runtime": "governed CPython 3.11.3 sha256 11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6, pytest 9.1.1, clean committed SHA",
+    "fresh_process_checkpoint_reconstruction": "PASSED (new interpreter process via subprocess.run)",
+    "historical_as_of_prior_product": "PASSED",
+    "affected_unaffected_invalidation": "PASSED (D1 affects A and C; D2-only sibling B unaffected)",
+    "typed_refusals": ["LearnedProductLifecycleError for unknown selection", "LearnedProductLifecycleError for fabricated current receipt", "UNKNOWN_CURRENTNESS for staged-but-unselected", "LearnedProductLifecycleConflict for tampered checkpoint", "invalidated/withdrawn cannot be selected current", "OwnerUnknownDependent for the analytical-grain absent dependent"]
+  },
+  "proved_at_exact_grain": [
+    "selected CURRENT derives from the owner's exact selection receipt, not from a timestamp, cache, flag or caller tag",
+    "current/as-of resolves by exact event ref and by checkpoint with identical results",
+    "a fresh interpreter reconstructs the checkpoint and resolves the same current state",
+    "historical as-of still resolves the correct prior product after supersession",
+    "determinant-local invalidation reaches exactly the direct+transitive affected set and leaves the unrelated sibling unaffected",
+    "the invalidated product cannot be served or re-selected as current; its history stays addressable",
+    "the analytical owner never reports an unknown dependent as current"
+  ],
+  "explicitly_not_claimed": [
+    "EE14/T1 selected-service use or model-use grant (G0b NOT_ISSUED)",
+    "the CURRENT_AS_OF_SELECTED_FIXTURE_SERVICE service grade (service join absent)",
+    "any EE14 productive/served output",
+    "G1 producer-origin authority custody",
+    "G4 native C1 supported/negative evidence",
+    "independent acceptance (G5) - a separate reviewer is required",
+    "source permission, world product, pair authority, temporal sign, native F7/AT07, actor/V3",
+    "any adoption of this worker result"
+  ],
+  "gaps": {
+    "selected_service_join": "PENDING - requires G01 authenticated C1 ingress (not read) plus the serving consumer",
+    "g0b_positive_grant": "NOT_ISSUED",
+    "g1_producer_origin_custody": "OPEN",
+    "g4_native_negatives": "OPEN",
+    "g5_independent_acceptance": "REQUIRED"
+  },
+  "terrain_limits": [
+    "source-free synthetic fixture only; no source, no Library, no raw .sav/.dta",
+    "G01 branch was not read or used",
+    "the fresh-process evidence covers the owner checkpoint round-trip, not a deployed serving process",
+    "the analytical EXPLICIT_NONCURRENT refusal is covered by the existing accepted court and was not duplicated"
+  ],
+  "next_edge": "G1 owner-authenticated source-free C1 producer identity, then the EE14 selected-service join court, then a separate HQ grant-adoption decision",
+  "self_adoption": "NOT_PERFORMED",
+  "reviewer_required": true,
+  "terminal": "HQ260_G03_RETURNED__NOT_ADOPTED"
+}
