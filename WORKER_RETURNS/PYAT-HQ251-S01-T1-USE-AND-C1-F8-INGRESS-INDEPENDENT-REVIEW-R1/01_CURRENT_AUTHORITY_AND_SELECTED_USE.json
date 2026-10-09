@@ -1,0 +1,409 @@
+{
+  "schema": "HQ251_R01_CURRENT_AUTHORITY_AND_SELECTED_USE_REVIEW@1",
+  "status": "INDEPENDENT_DOCUMENTARY_REVIEW__NO_NEW_AUTHORITY",
+  "repository": "maidiu/rawlsing",
+  "review_tip": "ccb035404ab5a553ab35d6202b03dc5aeda758e7",
+  "hq252": {
+    "checkpoint_id": "20261008-PYAT-HQ252-S03-A048-DOCUMENTARY-RETURN-INDEPENDENT-REVIEW-R1",
+    "handoff_commit": "9ad2b1ee711bd51f36ae3ec73a70768a42b60afa",
+    "current_md_blob": "20adbdeeef399012d544720400f5c9380ab6933f",
+    "current_json_blob": "7cd3470956148f3e479c89b7b530ebdf217595df",
+    "manifest_blob": "9c029c7fc8529239bf7a1666772ca0bc36810f51",
+    "r01_observed_head": "ccb035404ab5a553ab35d6202b03dc5aeda758e7"
+  },
+  "review_target": "HQ250 S01 @ b3f28aad418150f4cadd54bcf6a6c2ab34a35898",
+  "disposition": "CONFIRMED_T1_USE_AUTHORITY_UNBOUND__T0_EXISTING_APIS_FEASIBLE__CUSTODY_IS_UPSTREAM_SERVING_CONTRACT__NO_ADAPTER_YET",
+  "meaningful_levels": [
+    {
+      "tier": "T0_COMPONENT_COURT",
+      "existing": true,
+      "legitimate": "C1 synthetic fixture and applicability/F8 binder synthetic same-grain authority test; not a registered or adopted service use",
+      "mechanical_join": "Can pass C1 owner-emitted PossibilitySliceEvidence unchanged to authenticated F8 with same F8 query and deterministic model rule; this is a predicted test based on types, not executed in this review",
+      "evidence": [
+        {
+          "path": "rawlsing_next/pre553_analytical_composition.py",
+          "blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+          "lines": "335-451,906-991,1008-1213",
+          "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+        },
+        {
+          "path": "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+          "blob": "4ba00b8ecf73f70ad0f6481e255fd0117744418a",
+          "lines": "1-76,263-363,644-702,817-863,894-961",
+          "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+        },
+        {
+          "path": "rawlsing_next/tests/c1_at08_at13_fixture.py",
+          "blob": "0393cc8c17a313b7944b2a5287d0406d6cbe3849",
+          "lines": "47-76,79-121,715-844",
+          "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+        },
+        {
+          "path": "rawlsing_next/tests/test_pre553_service_f8_binding_authentication_court.py",
+          "blob": "d1f43084271e70b03d3186c187d2437ba6721488",
+          "lines": "105-216,260-334,339-528",
+          "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+        }
+      ]
+    },
+    {
+      "tier": "T1_SELECTED_AUTHENTICATED_SERVICE",
+      "existing": "NOT_ESTABLISHED",
+      "legitimate": "Requires actual EE14 fixture-purpose target use, positive permission, source applicability and ownership of trusted evidence ingress/consumer receipt",
+      "missing": "No adopted exact EE14 service/model-use record authorizes synthetic C1 fixture evidence as externally usable selected service, and no named accepted serving ingress receipt proves producer custody",
+      "evidence": [
+        {
+          "path": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ251_TWO_OF_THREE_HQ250_RETURNS_INTAKE_AND_S01_INDEPENDENT_BOUNDARY_REVIEW_R1.md",
+          "blob": "93b2c60ca8fb6e41d85e6cbd57ada1876e689750",
+          "lines": "§Return lineage and exact adopted grain; §Independent exact next step",
+          "ref": "9ad2b1ee711bd51f36ae3ec73a70768a42b60afa"
+        },
+        {
+          "path": "HQ_HANDOFF/checkpoints/20261008-PYAT-HQ252-S03-A048-DOCUMENTARY-RETURN-INDEPENDENT-REVIEW-R1/CURRENT.md",
+          "blob": "20adbdeeef399012d544720400f5c9380ab6933f",
+          "lines": "1-38",
+          "ref": "9ad2b1ee711bd51f36ae3ec73a70768a42b60afa"
+        },
+        {
+          "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/functions/EE14.md",
+          "blob": "16f4aa8df38c9d41952ac1458a9059268aa8e56d",
+          "lines": "1-32",
+          "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+        },
+        {
+          "path": "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+          "blob": "4ba00b8ecf73f70ad0f6481e255fd0117744418a",
+          "lines": "1-76,263-363,644-702,817-863,894-961",
+          "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+        }
+      ]
+    },
+    {
+      "tier": "T2_ACTUAL_SOURCE_WORLD",
+      "existing": false,
+      "legitimate": "Outside R01; requires separate real source/temporal/multifamily world operation, not conferred by T0/T1",
+      "evidence": [
+        {
+          "path": "HQ_HANDOFF/checkpoints/20261008-PYAT-HQ252-S03-A048-DOCUMENTARY-RETURN-INDEPENDENT-REVIEW-R1/CURRENT.md",
+          "blob": "20adbdeeef399012d544720400f5c9380ab6933f",
+          "lines": "1-38",
+          "ref": "9ad2b1ee711bd51f36ae3ec73a70768a42b60afa"
+        }
+      ]
+    }
+  ],
+  "contract_inventory": [
+    {
+      "id": "C1_OWNER",
+      "api": "compose_positioned_subject_possibility",
+      "existing": "YES",
+      "type": "AnalyticalCompositionResult",
+      "exact_fields": [
+        "possibility_slice_evidence_or_null: PossibilitySliceEvidence | None",
+        "consumer_result_or_null: PositionedSubjectPossibilityResult | None",
+        "composed_result_identity_hash",
+        "complete_cell_geometry",
+        "recursive_lineage_refs",
+        "producer_fact_ref",
+        "condition_binding_witness_ref_or_hash"
+      ],
+      "ceiling": "Only SUPPORTED automatically derives evidence and invokes direct unbound F8",
+      "evidence": {
+        "path": "rawlsing_next/pre553_analytical_composition.py",
+        "blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+        "lines": "335-451,906-991,1008-1213",
+        "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+      }
+    },
+    {
+      "id": "F8_CORE",
+      "api": "evaluate_positioned_subject_possibility",
+      "existing": "YES",
+      "type": "PositionedSubjectPossibilityResult",
+      "ceiling": "Exact source/release/target/conditioner_ids lookup, no source custody; geometry selected but no causal transform",
+      "evidence": {
+        "path": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+        "blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+        "lines": "103-186,336-461",
+        "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+      }
+    },
+    {
+      "id": "SOURCE_APPLICABILITY",
+      "api": "resolve_service_source_applicability",
+      "existing": "YES",
+      "type": "CandidateClassApplicabilityReceipt",
+      "ceiling": "Owns ADMITTED source eligibility only; records and request may be fixture-constructed but that does not issue target-use permission",
+      "evidence": {
+        "path": "rawlsing_next/pre553_service_source_applicability.py",
+        "blob": "3e40caca29e8c96ee1f412f919cfc7dba63f96c4",
+        "lines": "308-388,401-468,684-809",
+        "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+      }
+    },
+    {
+      "id": "F8_BINDER",
+      "api": "bind_service_applicability_to_f8_scope / evaluate_bound_positioned_subject_possibility",
+      "existing": "YES",
+      "type": "ServiceApplicabilityF8SourceScopeBinding; PositionedSubjectPossibilityResult",
+      "ceiling": "Authenticates binding vs request, receipt, rule and exact source/release; evidence argument remains caller-supplied and unverified as C1-owner-produced",
+      "evidence": {
+        "path": "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+        "blob": "4ba00b8ecf73f70ad0f6481e255fd0117744418a",
+        "lines": "1-76,263-363,644-702,817-863,894-961",
+        "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+      }
+    },
+    {
+      "id": "MODEL_USE",
+      "api": "target_use_ref / target_use_permission_refs / PositionedSubjectPossibilityModelRule",
+      "existing": "GENERIC_TYPES_AND_FIXTURE_REFERENCES; NO_SELECTED_SERVICE_GRANT_SHOWN",
+      "type": "Authoritative exact selected EE14 service-use permission and rule instance",
+      "ceiling": "Synthetic `urn:test:` model authority and HQ217 TQ refs prove fixture API mechanics, not normative adopted target use",
+      "evidence": [
+        {
+          "path": "rawlsing_next/tests/c1_at08_at13_fixture.py",
+          "blob": "0393cc8c17a313b7944b2a5287d0406d6cbe3849",
+          "lines": "47-76,79-121,715-844",
+          "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+        },
+        {
+          "path": "rawlsing_next/tests/test_pre553_service_f8_binding_authentication_court.py",
+          "blob": "d1f43084271e70b03d3186c187d2437ba6721488",
+          "lines": "105-216,260-334,339-528",
+          "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+        },
+        {
+          "path": "rawlsing_next/tests/test_pre553_service_source_applicability_court.py",
+          "blob": "b79b8e64144aab1b157cd5c1ef36be851285bcd0",
+          "lines": "343-362",
+          "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+        },
+        {
+          "path": "PYAT_CONTROL_ROOM/C1_AT07_OWNER_NATIVE_MODEL_AUTHORITY_HQ230_R1/04_MODEL_RULE_OWNERSHIP.json",
+          "blob": "286d42d1350cd6ae5361f67338dd3ff09a60d538",
+          "lines": "opening status CANDIDATE_NOT_ADOPTED",
+          "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+        }
+      ]
+    },
+    {
+      "id": "GT2_CONTEXT",
+      "api": "run_current_r1c_e2b_actual_objects",
+      "existing": "YES_SCOPED_TEST_INTEGRATION",
+      "ceiling": "V558 RESOLUTION_COMPLETE, CONTEXT singleton, not model F8 input, current/as-of proof, N9 or OC05",
+      "evidence": [
+        {
+          "path": "rawlsing_next/tests/gt12_e2b_actual_object_consumer_harness.py",
+          "blob": "f86a2a368cfd427ec465fd84eb93e7736f0c51f5",
+          "lines": "1-10,124-224,262-349",
+          "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+        },
+        {
+          "path": "rawlsing_next/objective_consumer_bounded_evidence.py",
+          "blob": "f30fca20e7b56e00348e82765d95f974b4b6a195",
+          "lines": "67-72",
+          "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+        },
+        {
+          "path": "HQ_HANDOFF/checkpoints/20261008-PYAT-HQ252-S03-A048-DOCUMENTARY-RETURN-INDEPENDENT-REVIEW-R1/CURRENT.md",
+          "blob": "20adbdeeef399012d544720400f5c9380ab6933f",
+          "lines": "1-38",
+          "ref": "9ad2b1ee711bd51f36ae3ec73a70768a42b60afa"
+        }
+      ]
+    }
+  ],
+  "bound_use_status": {
+    "request_purpose": "EMPIRICAL_POSSIBILITY_ONLY",
+    "meaning": "Allowed F8 query purpose string, not a service operation permission",
+    "evidence": {
+      "path": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "lines": "103-186,336-461",
+      "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+    },
+    "adopted_fixture_target_use_ref": null,
+    "adopted_fixture_service_id": null,
+    "adopted_fixture_service_authority_ref": null,
+    "adopted_fixture_target_use_permission_refs": null,
+    "adopted_fixture_applicability_receipt": null,
+    "adopted_fixture_EE14_model_rule_ref": null,
+    "selected_service_ingress_owner": "EE14 positioned-subject service/model-use decision owner; trusted C1 producer-consumer invocation owner after permitted use is selected",
+    "existing_fixture_refs_that_must_not_be_promoted": [
+      "urn:test:c1-02:model-authority:*",
+      "HQ217 fixture target-use/perm-bound TQ refs",
+      "C1_AT07 owner-native authority candidate NOT_ADOPTED"
+    ]
+  },
+  "first_edges": [
+    {
+      "id": "R01-FIRST-01",
+      "classification": "CONFIRMED_FIRST_USE_DECISION",
+      "competent_owner": "EE14 positioned-subject/model-use authority owner (HQ adoption required)",
+      "missing": "Exact adopted fixture-grain target use/permission and chosen consumer/replay ceiling; independent CONTEXT is optional and not bundled in this first decision",
+      "falsifier": "Point to pre-existing HQ-adopted exact model-use/permission record and a selected rich service consumer instance for these precise fixture IDs, not a lookalike signed or self-hashed request"
+    },
+    {
+      "id": "R01-SECOND-02",
+      "classification": "SERVING_INGRESS_CUSTODY_CONTRACT_UNPROVEN_NOT_BINDER_VULNERABILITY",
+      "competent_owner": "EE14 selected service/product-ingress owner",
+      "missing": "Provenance-authenticated owner-to-consumer custody of the C1 composition and exact produced evidence, not merely validated source applicability and F8 result hash",
+      "falsifier": "Accepted owner-owned callsite or dedicated receipt re-derives/holds C1 product and consumes exactly its evidence with a substitution-resistant identity link"
+    },
+    {
+      "id": "R01-OPTIONAL-03",
+      "classification": "SEPARATE_CONTEXT_USE",
+      "competent_owner": "V557/V558 structural publication/use authority owner",
+      "missing": "Specific co-presentation use permission, not needed for T0/T1 first rich-only positive court",
+      "falsifier": "Approved exact CONTEXT-only co-presentation with no conditioning or probability transform"
+    },
+    {
+      "id": "R01-DEFER-04",
+      "classification": "CURRENTNESS_RELEASE_GRADE",
+      "competent_owner": "B5/C1-03R analytical product lifecycle owner for F8 selected result; M5 owner for separately claimed structural context",
+      "missing": "Chosen exact service registration/as-of/replay grade, not solved by V558 RESOLUTION_COMPLETE",
+      "falsifier": "Owner-selected current/as-of and affected/unaffected replay receipt for the exact chosen use"
+    }
+  ],
+  "discriminator": {
+    "positive": "Pass owner-emitted C1 evidence for existing xor_fixture q(C|A=1) then q(C|A=1,B=0) to binder with fixture-only exact one-source applicability receipt constructed by adopted owner; demand F8 equality/identities and retain C1 envelope",
+    "hostile": "With same admitted query/source/release and same evidence_ref plus same geometry, substitute a dataclasses.replace(evidence, provenance_refs=other, authority_refs=other) while passing binding authentication; F8 result hash is expected unchanged because those fields do not appear in F8 result.material; this disproves result-hash-equality-as-producer-custody, not the narrow F8 binder contract",
+    "new_test_terrain": "rawlsing_next/tests/test_pre553_scoped_rich_c1_f8_existing_api_discriminator.py",
+    "execution_status": "NOT_EXECUTED__STATIC_API_ANALYSIS",
+    "evidence": [
+      {
+        "path": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+        "blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+        "lines": "103-186,336-461",
+        "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+      },
+      {
+        "path": "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+        "blob": "4ba00b8ecf73f70ad0f6481e255fd0117744418a",
+        "lines": "1-76,263-363,644-702,817-863,894-961",
+        "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+      },
+      {
+        "path": "rawlsing_next/tests/c1_at08_at13_fixture.py",
+        "blob": "0393cc8c17a313b7944b2a5287d0406d6cbe3849",
+        "lines": "47-76,79-121,715-844",
+        "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+      },
+      {
+        "path": "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py",
+        "blob": "c8a83d3deffa6f0a10309e15143d7dcc953a8abe",
+        "lines": "54-152,1171-1234,1310-1353,1519-1623",
+        "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+      },
+      {
+        "path": "rawlsing_next/tests/test_pre553_service_f8_binding_authentication_court.py",
+        "blob": "d1f43084271e70b03d3186c187d2437ba6721488",
+        "lines": "105-216,260-334,339-528",
+        "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+      }
+    ]
+  },
+  "independent_counterevidence": {
+    "in_favor_of_s01": [
+      "No selected T1 adopted use in HQ251/252; wrapper grants no permission; C1 consumer bypasses authenticated binding; no owner provenance attest at F8 boundary in inspected code"
+    ],
+    "against_stronger_s01_reading": [
+      "Mechanical T0 can call existing public APIs without adapter; F8 deliberate caller evidence means lack of producer authentication is not a defect in binder; existing fixture already has a model rule but clearly synthetic; context and M5 not prerequisites to rich-only local T0"
+    ],
+    "remaining_uncertainty": "A different accepted serving ingress may exist elsewhere beyond the source paths and HQ materials inspected; do not assert repository-wide nonexistence"
+  },
+  "evidence": {
+    "hq252": {
+      "path": "HQ_HANDOFF/checkpoints/20261008-PYAT-HQ252-S03-A048-DOCUMENTARY-RETURN-INDEPENDENT-REVIEW-R1/CURRENT.md",
+      "blob": "20adbdeeef399012d544720400f5c9380ab6933f",
+      "lines": "1-38",
+      "ref": "9ad2b1ee711bd51f36ae3ec73a70768a42b60afa"
+    },
+    "hq251": {
+      "path": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ251_TWO_OF_THREE_HQ250_RETURNS_INTAKE_AND_S01_INDEPENDENT_BOUNDARY_REVIEW_R1.md",
+      "blob": "93b2c60ca8fb6e41d85e6cbd57ada1876e689750",
+      "lines": "§Return lineage and exact adopted grain; §Independent exact next step",
+      "ref": "9ad2b1ee711bd51f36ae3ec73a70768a42b60afa"
+    },
+    "s01": {
+      "path": "WORKER_RETURNS/PYAT-HQ250-S01-SELECTED-SERVICE-OPERATION-R1/FIRST_EDGE_COMMISSION.md",
+      "blob": "bbafb0548aae316d7ca253a0fb013d0539436b6f",
+      "lines": "§§First demonstrable missing edge; If HQ adopts",
+      "ref": "b3f28aad418150f4cadd54bcf6a6c2ab34a35898"
+    },
+    "c1": {
+      "path": "rawlsing_next/pre553_analytical_composition.py",
+      "blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "lines": "335-451,906-991,1008-1213",
+      "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+    },
+    "f8": {
+      "path": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "lines": "103-186,336-461",
+      "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+    },
+    "scope": {
+      "path": "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+      "blob": "4ba00b8ecf73f70ad0f6481e255fd0117744418a",
+      "lines": "1-76,263-363,644-702,817-863,894-961",
+      "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+    },
+    "applicability": {
+      "path": "rawlsing_next/pre553_service_source_applicability.py",
+      "blob": "3e40caca29e8c96ee1f412f919cfc7dba63f96c4",
+      "lines": "308-388,401-468,684-809",
+      "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+    },
+    "fixtures": {
+      "path": "rawlsing_next/tests/c1_at08_at13_fixture.py",
+      "blob": "0393cc8c17a313b7944b2a5287d0406d6cbe3849",
+      "lines": "47-76,79-121,715-844",
+      "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+    },
+    "rich": {
+      "path": "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py",
+      "blob": "c8a83d3deffa6f0a10309e15143d7dcc953a8abe",
+      "lines": "54-152,1171-1234,1310-1353,1519-1623",
+      "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+    },
+    "authTest": {
+      "path": "rawlsing_next/tests/test_pre553_service_f8_binding_authentication_court.py",
+      "blob": "d1f43084271e70b03d3186c187d2437ba6721488",
+      "lines": "105-216,260-334,339-528",
+      "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+    },
+    "testUse": {
+      "path": "rawlsing_next/tests/test_pre553_service_source_applicability_court.py",
+      "blob": "b79b8e64144aab1b157cd5c1ef36be851285bcd0",
+      "lines": "343-362",
+      "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+    },
+    "gt2": {
+      "path": "rawlsing_next/tests/gt12_e2b_actual_object_consumer_harness.py",
+      "blob": "f86a2a368cfd427ec465fd84eb93e7736f0c51f5",
+      "lines": "1-10,124-224,262-349",
+      "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+    },
+    "policy": {
+      "path": "rawlsing_next/objective_consumer_bounded_evidence.py",
+      "blob": "f30fca20e7b56e00348e82765d95f974b4b6a195",
+      "lines": "67-72",
+      "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+    },
+    "atlas": {
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/functions/EE14.md",
+      "blob": "16f4aa8df38c9d41952ac1458a9059268aa8e56d",
+      "lines": "1-32",
+      "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+    },
+    "ruleCandidate": {
+      "path": "PYAT_CONTROL_ROOM/C1_AT07_OWNER_NATIVE_MODEL_AUTHORITY_HQ230_R1/04_MODEL_RULE_OWNERSHIP.json",
+      "blob": "286d42d1350cd6ae5361f67338dd3ff09a60d538",
+      "lines": "opening status CANDIDATE_NOT_ADOPTED",
+      "ref": "f56bfa9afe3373126ceaef4fabf0ec81f09dbc59"
+    }
+  },
+  "stop": "NO_SOURCE_EXECUTION_NO_CODE_CHANGES_NO_MODEL_AUTHORITY_ADOPTION_NO_GT2_CURRENTNESS_NO_T1_POSITIVE_RECEIPT_NO_SELF_ADOPTION"
+}
