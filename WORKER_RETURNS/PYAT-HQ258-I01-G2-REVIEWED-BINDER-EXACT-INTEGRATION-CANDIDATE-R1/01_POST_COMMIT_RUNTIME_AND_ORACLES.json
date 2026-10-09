@@ -1,0 +1,116 @@
+{
+  "all_expected_oracles_met": true,
+  "blob_identity_before_and_after": {
+    "rawlsing_next/pre553_service_f8_source_scope_binding.py": {
+      "changed": true,
+      "committed_blob_at_candidate_head": "848d2d0eedb04b792747e9d6aaa49bb39d108a2c",
+      "identity_match": true,
+      "post_import_bytes": 56186,
+      "post_import_sha256": "5221d8c2257ab1e8ec45289a30c57ba9ed4956b8609a890e80343718a6e9c66b",
+      "pre_import_blob_at_my_tip": "4ba00b8ecf73f70ad0f6481e255fd0117744418a",
+      "pre_import_bytes": 54073,
+      "pre_import_sha256": "0a5d3020572f1d72dd9b4a200d2a98176587cf3282714022ccfe910519900c75",
+      "target_blob": "848d2d0eedb04b792747e9d6aaa49bb39d108a2c"
+    },
+    "rawlsing_next/tests/test_pre553_f8_receipt_permission_identity_hq254.py": {
+      "changed": true,
+      "committed_blob_at_candidate_head": "cdb4dc22fd1b403dee69bee626a43b6bc41c2b0a",
+      "identity_match": true,
+      "post_import_bytes": 16864,
+      "pre_import": "ABSENT at my tip",
+      "target_blob": "cdb4dc22fd1b403dee69bee626a43b6bc41c2b0a"
+    }
+  },
+  "candidate_commit": "105510d9ee45bf18ea1086e55221700ecf7ec2b4",
+  "candidate_diff_vs_my_tip": {
+    "binder": "+33 / -0",
+    "existing_lines_modified": 0,
+    "test": "added (was absent)",
+    "total": "2 files changed, 395 insertions"
+  },
+  "collection_errors": {
+    "causes": [
+      "pandas absent",
+      "pyarrow absent",
+      "rawlsing_next.tests.d07_bounded_loss_harness absent"
+    ],
+    "count": 9,
+    "pre_existing_and_unrelated": true
+  },
+  "commission_tip": "97adfeb89ae357ae7a9baba13159946cc5973c6b",
+  "control_parent": "761291ffc24c79e5f64c5fa8625182dd05215524",
+  "import_method": "git cat-file blob <sha> > path  (Git object read; no reimplementation, no cherry-pick, no content edit)",
+  "no_import_drift_probes": {
+    "honest_match_perm_A": "BOUND, material records perm-A",
+    "honest_reverse_order": "BOUND (order-insensitive, exactly as reviewed)",
+    "live_binder_sha256": "5221d8c2257ab1e8ec45289a30c57ba9ed4956b8609a890e80343718a6e9c66b",
+    "matches_reviewed_behaviour": true,
+    "mismatch_subset_of_receipt_pair": "REFUSED BINDING_PERMISSION_IDENTITY_MISMATCH",
+    "mismatch_unrelated_perm_B": "REFUSED BINDING_PERMISSION_IDENTITY_MISMATCH",
+    "refusal_code_occurrences_in_live_binder": 1
+  },
+  "not_claimed": [
+    "production cutover",
+    "EE14 service use or model-use grant",
+    "T1 serving adoption",
+    "C1 provenance certification",
+    "currentness certification",
+    "self-adoption",
+    "control merge"
+  ],
+  "oracles": [
+    {
+      "exit": 0,
+      "expected": "16",
+      "result": "16 passed",
+      "run": "new imported court"
+    },
+    {
+      "exit": 0,
+      "expected": "199",
+      "result": "199 passed",
+      "run": "four adopted baseline courts"
+    },
+    {
+      "exit": 0,
+      "expected": "215",
+      "result": "215 passed",
+      "run": "combined"
+    },
+    {
+      "exit": 1,
+      "result": "380 passed, 9 pre-existing collection errors",
+      "run": "differential regression (f8/applicability/service/C1/source-backed)"
+    },
+    {
+      "exit": 0,
+      "result": "honest match BOUND; unrelated mismatch REFUSED; subset mismatch REFUSED; order-insensitive honest BOUND; refusal code count 1; sha256 5221d8c2...",
+      "run": "no-import-drift probes"
+    }
+  ],
+  "pre_import_verification": {
+    "binder_dependencies_present_at_my_tip": [
+      "pre553_empirical_objects",
+      "objective_non_event_currentness_contract",
+      "pre553_service_source_applicability",
+      "source_backed_positioned_subject_possibility"
+    ],
+    "dependency_drift": false,
+    "source_P02_sha_present_and_reachable": true,
+    "stop_condition_triggered": false,
+    "stop_reason": null,
+    "target_blobs_matched_commission": true,
+    "target_blobs_present_in_object_store": true
+  },
+  "runtime": {
+    "governed_certification_environment": false,
+    "interpreter": "CPython 3.11.3",
+    "machine": "macOS 13.7.8 x86_64",
+    "pyarrow_pandas_pyreadstat_numpy": "absent",
+    "pytest": "9.1.1 (pre-existing local venv, stdlib only)",
+    "raw_sav_dta_library_actor_v3_native_f7_at07_issuer_used": false
+  },
+  "schema": "HQ258_I01_POST_COMMIT_RUNTIME_AND_ORACLES@1.0.0",
+  "source_of_blobs": "cb4a8c5548dbe559825681e4a9f9d49af2ac7e8d (reviewed frozen P02)",
+  "worktree_state_at_test_time": "clean, 0 non-pycache dirty entries, at committed candidate HEAD"
+}

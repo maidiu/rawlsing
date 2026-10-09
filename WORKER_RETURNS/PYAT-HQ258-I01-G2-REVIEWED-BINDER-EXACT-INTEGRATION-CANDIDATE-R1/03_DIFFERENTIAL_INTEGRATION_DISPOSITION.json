@@ -1,0 +1,67 @@
+{
+  "accepted_grain": "binding refused when bound_target_use_permission_refs disagree, as an ExactRef.key set, with the receipt request_key target_use_permission_refs",
+  "blocked": false,
+  "byte_identity_preserved": true,
+  "candidate_commit": "105510d9ee45bf18ea1086e55221700ecf7ec2b4",
+  "changed_paths": [
+    "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+    "rawlsing_next/tests/test_pre553_f8_receipt_permission_identity_hq254.py",
+    "WORKER_RETURNS/PYAT-HQ258-I01-G2-REVIEWED-BINDER-EXACT-INTEGRATION-CANDIDATE-R1/"
+  ],
+  "commission_tip": "97adfeb89ae357ae7a9baba13159946cc5973c6b",
+  "control_parent": "761291ffc24c79e5f64c5fa8625182dd05215524",
+  "diff": {
+    "binder": "+33 / -0",
+    "existing_lines_modified": 0,
+    "test": "added"
+  },
+  "disposition": "INTEGRATION_CANDIDATE_READY_FOR_HQ",
+  "holds_in_force": [
+    "KEEP_EE14_T1_HOLD",
+    "HQ253 T01 provenance/authority custody gap OPEN",
+    "R01 OBS_01 duplicate insensitivity OPEN"
+  ],
+  "hq_decision_reserved": "HQ may, under single HQ lease, authorize a guarded control integration preserving review ancestry and the exact +33/-0 diff, recording the exact adopted behaviour. This worker wrote no canonical HQ_HANDOFF or accepted semantic authority and did not merge or push control.",
+  "imported_blobs": {
+    "rawlsing_next/pre553_service_f8_source_scope_binding.py": "848d2d0eedb04b792747e9d6aaa49bb39d108a2c",
+    "rawlsing_next/tests/test_pre553_f8_receipt_permission_identity_hq254.py": "cdb4dc22fd1b403dee69bee626a43b6bc41c2b0a"
+  },
+  "negative_control_status": "Already independently established by HQ255 R01 on the original reviewed blobs. Selected honest/mismatch probes were re-run on the imported candidate and matched exactly, proving no import drift. No new negative control was required.",
+  "not_performed": [
+    "reimplementation",
+    "cherry-pick of worker return folders",
+    "unrelated edits",
+    "production cutover",
+    "EE14 grant",
+    "self-adoption",
+    "control merge or push",
+    "canonical HQ_HANDOFF write",
+    "accepted semantic authority write"
+  ],
+  "oracles_all_met": true,
+  "out_of_accepted_grain": [
+    "T1 serving adoption",
+    "EE14 service use / model-use permission",
+    "F8 producer custody",
+    "C1 provenance custody",
+    "currentness",
+    "source-scope power widening",
+    "resolution of R01 OBS_01 duplicate insensitivity"
+  ],
+  "results": {
+    "all_exits_zero_except_differential": true,
+    "baseline": "199 passed",
+    "combined": "215 passed",
+    "differential": "380 passed + 9 pre-existing collection errors",
+    "new": "16 passed"
+  },
+  "schema": "HQ258_I01_DIFFERENTIAL_INTEGRATION_DISPOSITION@1.0.0",
+  "source_of_blobs": "cb4a8c5548dbe559825681e4a9f9d49af2ac7e8d",
+  "stop_condition": {
+    "current_json_row_matched": true,
+    "dependency_drift": false,
+    "origin_head_matched": true,
+    "triggered": false
+  },
+  "terminal": "HQ258_I01_RETURNED__NO_SELF_ADOPTION"
+}
