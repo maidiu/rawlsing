@@ -1,0 +1,146 @@
+{
+  "schema": "PYAT_HQ258_E03_WORKBOOK_WITNESSES_AND_HASHES@1",
+  "commission": "PYAT-HQ258-E03-EVS1990-METHOD-XLSX-PRIMARY-WITNESS-R1",
+  "agent": "existing DeepSeek-Harness/OpenCode independent documentary verifier",
+  "branch": "agent/deepseek-harness-pyat-hq258-evs1990-method-workbook-independent-r1",
+  "head_at_run": "f3b4877554930141f447668eab9025ecc062d5a1",
+  "worktree_dirt_status": "CLEAN",
+  "live_control": "integration/pre-main-reconciliation-r1 @ f57be2d9e221eb089e3475b5f5be40ca41544510",
+  "sealed_hq258_checkpoint": "20261008-PYAT-HQ258-G2-INDEPENDENT-REVIEW-ACCEPTED-I01-E03-ISSUED-R1 @ 08219a5f64e89ced2e7ee554a3f392cdf7b25f6e",
+  "sealed_worker_row": "HQ258_E03_EVS_GESIS_PUBLIC_XLSX",
+  "retrieval": {
+    "governed_workflow_tool": "web_fetch",
+    "governed_workflow_result": "REFUSED: unsupported content type application/vnd.openxmlformats-officedocument.spreadsheetml.sheet (same failure class E02 recorded)",
+    "local_retrieval_performed": true,
+    "tool": "/usr/bin/curl (governed local network retrieval of public documentation)",
+    "user_agent": "Mozilla/5.0 (compatible; governed-research-verifier)",
+    "requests": [
+      {
+        "url": "https://access.gesis.org/dbk/70780",
+        "http_status": 200,
+        "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "content_length_header": 92628,
+        "content_disposition": "attachment; filename=ZA7503_Method_Information.xlsx",
+        "redirects_followed": false,
+        "effective_url": "https://access.gesis.org/dbk/70780",
+        "bytes_downloaded": 92628,
+        "sha256": "401048862995440764950a3fa3ec9ec5349bff674a58de7725db848de6655734",
+        "file_type": "Microsoft Excel 2007+",
+        "html_or_login_interstitial": false
+      },
+      {
+        "url": "https://access.gesis.org/dbk/70775",
+        "http_status": 200,
+        "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "content_length_header": 92628,
+        "content_disposition": "attachment; filename=ZA7503_Method_Information.xlsx",
+        "redirects_followed": false,
+        "effective_url": "https://access.gesis.org/dbk/70775",
+        "bytes_downloaded": 92628,
+        "sha256": "401048862995440764950a3fa3ec9ec5349bff674a58de7725db848de6655734",
+        "file_type": "Microsoft Excel 2007+"
+      }
+    ],
+    "urls_byte_identical": true,
+    "identity_finding": "catalogue entries 70780 (labelled 1981-2008) and 70775 (labelled 1981-2017) currently serve the SAME workbook file ZA7503_Method_Information.xlsx"
+  },
+  "workbook_identity": {
+    "filename": "ZA7503_Method_Information.xlsx",
+    "sha256": "401048862995440764950a3fa3ec9ec5349bff674a58de7725db848de6655734",
+    "bytes": 92628,
+    "docProps_title": "European Values Study 1981-2008 - Method Information (v1)",
+    "docProps_creator": "Brislinger, Evelyn",
+    "docProps_last_modified_by": "Solanes, Ivet",
+    "docProps_created": "2013-06-12T09:35:19Z",
+    "docProps_modified": "2022-12-15T10:41:52Z",
+    "contents_sheet_version_cell": {"ref": "Contents!C4", "value": "(Version 6, December 2022)"},
+    "sheets": ["Contents", "EVS Surveys 1981-2017"],
+    "sheet_dimensions": {
+      "Contents": {"populated_cells": 32, "row_range": "3-23", "col_range": "C-D"},
+      "EVS Surveys 1981-2017": {"populated_cells": 2352, "row_range": "1-169", "col_range": "A-N"}
+    },
+    "xlsx_is_a_zip_of_ooxml": true,
+    "parser_used": "stdlib zipfile + xml.etree (openpyxl absent on the governed interpreter)"
+  },
+  "header_row": {
+    "sheet": "EVS Surveys 1981-2017",
+    "row": 1,
+    "cells": {
+      "A1": "EVS Survey", "B1": "Country/Region", "C1": "ISO \n3166-1",
+      "D1": "ISO 3166-1-alpha-2 code", "E1": "ZANo in GESIS Data Collection",
+      "F1": "DOI in GESIS Data Collection", "G1": "Principal Investigator",
+      "H1": "Data Collector", "I1": "Fieldwork period", "J1": "Mode of data collection",
+      "K1": "Sample size", "L1": "Weight", "M1": "Datasets available as",
+      "N1": "Languages fielded"
+    }
+  },
+  "austria_1990_primary_witness": {
+    "sheet": "EVS Surveys 1981-2017",
+    "row": 9,
+    "row_identity": "B9 == 'Austria' and A9 == 'EVS 1990'",
+    "cells": {
+      "A9": "EVS 1990",
+      "B9": "Austria",
+      "C9": "40",
+      "D9": "AT",
+      "E9": "4479",
+      "F9": "doi:10.4232/1.10790",
+      "G9": "Zulehner, Paul M. - University of Vienna, Austria",
+      "H9": "Fessel - GIK Institut (Vienna)",
+      "I9": "1990-04-09 to 1990-06-01",
+      "J9": "Face-to-face interviews with standardized questionnaire",
+      "K9": "1460",
+      "L9": "yes",
+      "M9": "Integration / Cumulation",
+      "N9": "German"
+    },
+    "austria_rows_all_waves": {"row6": "EVS 2017", "row7": "EVS 2008", "row8": "EVS 1999", "row9": "EVS 1990"}
+  },
+  "evs_1990_cohort_zanumber_and_doi_pattern": [
+    {"country": "Austria", "row": 9, "col_E_ZANo": "4479", "col_F_DOI": "doi:10.4232/1.10790", "col_K_N": "1460", "col_L_weight": "yes"},
+    {"country": "Belgium", "row": 17, "col_E_ZANo": "4461", "col_F_DOI": "doi:10.4232/1.10790", "col_K_N": "2792", "col_L_weight": "yes"},
+    {"country": "Bulgaria", "row": 24, "col_E_ZANo": "4462", "col_F_DOI": "doi:10.4232/1.10790", "col_K_N": "1034", "col_L_weight": "no"},
+    {"country": "Canada", "row": 25, "col_E_ZANo": "4473", "col_F_DOI": "doi:10.4232/1.10790", "col_K_N": "1730", "col_L_weight": "yes"},
+    {"country": "Czech Republic", "row": 34, "col_E_ZANo": "4460", "col_F_DOI": "doi:10.4232/1.10790", "col_K_N": "2109", "col_L_weight": "no"},
+    {"country": "Denmark", "row": 38, "col_E_ZANo": "4460", "col_F_DOI": "doi:10.4232/1.10790", "col_K_N": "1030", "col_L_weight": "no"},
+    {"country": "Spain", "row": 153, "col_E_ZANo": "4460", "col_F_DOI": "doi:10.4232/1.10790", "col_K_N": "2637", "col_L_weight": "yes"},
+    {"country": "United States", "row": 167, "col_E_ZANo": "4460", "col_F_DOI": "doi:10.4232/1.10790", "col_K_N": "1839", "col_L_weight": "yes"}
+  ],
+  "evs_1990_cohort_summary": {
+    "rows_with_A_equal_EVS_1990": 30,
+    "rows_with_A_equal_EVS_1990_row_numbers": [9, 17, 24, 25, 34, 38, 43, 48, 52, 59, 62, 67, 75, 79, 83, 88, 94, 98, 105, 113, 118, 122, 127, 131, 136, 145, 149, 153, 158, 167],
+    "col_E_distinct_values": {"4460": "26 countries (integrated dataset number)", "4461": "Belgium", "4462": "Bulgaria", "4473": "Canada", "4479": "Austria"},
+    "col_F_value_for_all_1990_rows": "doi:10.4232/1.10790 (the EVS 1990 Integrated Dataset DOI per Contents!C13/D13)",
+    "interpretation": "column E mixes national study numbers (Austria 4479, Belgium 4461, Bulgaria 4462, Canada 4473) with the integrated dataset number 4460; column F always cites the integrated DOI"
+  },
+  "contents_sheet_related_dataset_witnesses": {
+    "Contents!C13": "EVS 1990 Integrated Dataset. ZA4460, Version 3.0.0",
+    "Contents!D13": "doi:10.4232/1.10790",
+    "Contents!C8": "EVS Trend Dataset 1981-2017. ZA7503, Version 3.0.0",
+    "Contents!D8": "doi:10.4232/1.14021"
+  },
+  "methodology_term_census_whole_workbook": {
+    "note": "case-insensitive substring census over every populated cell of both sheets",
+    "frame": 0, "design": 0, "population": 0, "citizen": 0, "selection": 0, "cluster": 0, "respondent": 0,
+    "weight": 2,
+    "weight_hits": ["Contents!C6 (field list)", "EVS Surveys 1981-2017!L1 (header 'Weight')"],
+    "sampl": 8,
+    "sampl_hits": ["EVS Surveys 1981-2017!K1 (header 'Sample size')", "Contents!C6", "country labels such as 'Germany - subsample East'"],
+    "ZA4460": 1, "ZA4479": 1, "ZA4754": 0, "4754": 0,
+    "ZA4460_hit": "Contents!C13", "ZA4479_hit": "EVS Surveys 1981-2017!E9",
+    "conclusion": "no sampling frame, design, target-population, selection, stratification/cluster or weight-construction field exists in this workbook"
+  },
+  "negative_access_result": {
+    "is_negative": false,
+    "workbook_obtained": true,
+    "methodology_fields_obtained": false,
+    "reason": "the workbook is a country-by-wave method overview, not a sampling/design/weight methodology document; the required Austria-specific design fields are absent from every populated cell",
+    "inference_used_to_fill_gap": false
+  },
+  "authenticity_limits": [
+    "workbook metadata does not authenticate any .sav SRC12/SRC14 SHA-256",
+    "no variance calculation is possible from this workbook (no design fields)",
+    "column L 'Weight: yes' is an availability flag, not a weight specification",
+    "the workbook is public documentation only and does not authorise raw/Library access"
+  ]
+}
