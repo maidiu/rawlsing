@@ -1,0 +1,141 @@
+{
+  "schema": "PYAT_HQ255_R01_ACTUAL_TEST_LOGS_AND_TERRAIN@1",
+  "reviewer_branch": "agent/deepseek-harness-pyat-hq255-p01-permission-candidate-independent-review-r1",
+  "reviewer_tip": "d44678d49ae81da423c5c91c53db3ec7e31a3ccf",
+  "frozen_candidate": "23438ab52f16abda5960a075dfca3f4d3396eab5",
+  "candidate_first_parent": "428be7595fce3ecf6ae3cb37852bee884d9ce2e1",
+  "runtime": {
+    "interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+    "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "machine": "macOS 13.7.8 x86_64",
+    "source_free": true,
+    "raw_sav_dta_library_issuer_native_touched": false
+  },
+  "worktree": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq255-p01-review",
+    "shared_object_store": "/Users/matthewsmith/Desktop/Rawlsing/.git",
+    "new_clone": false,
+    "sparse_enabled": true,
+    "sparse_mode": "no-cone explicit file list"
+  },
+  "sparse_scope": {
+    "manifest_paths_materialized": [
+      "WORKER_COMMISSIONS/PYAT-HQ255-R01-P01-POST-CANDIDATE-INDEPENDENT-HOSTILE-REVIEW-R1/",
+      "WORKER_RETURNS/PYAT-HQ255-R01-P01-POST-CANDIDATE-INDEPENDENT-HOSTILE-REVIEW-R1/",
+      "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+      "rawlsing_next/pre553_service_source_applicability.py",
+      "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "rawlsing_next/pre553_empirical_objects.py",
+      "rawlsing_next/tests/test_pre553_f8_receipt_permission_identity_hq254.py",
+      "rawlsing_next/tests/test_pre553_service_f8_source_scope_binding_court.py",
+      "rawlsing_next/tests/test_pre553_service_f8_binding_authentication_court.py",
+      "rawlsing_next/tests/test_pre553_service_f8_source_scope_binding_repair_court.py"
+    ],
+    "documented_narrow_source_free_extension": {
+      "why": "the manifest paths alone cannot import the binder or execute the named courts; each added path is plain source-free Python inside rawlsing_next",
+      "package_markers": [
+        "rawlsing_next/__init__.py",
+        "rawlsing_next/tests/__init__.py"
+      ],
+      "binder_import_closure": [
+        "rawlsing_next/objective_non_event_currentness_contract.py",
+        "rawlsing_next/m4_v557_v558_publication_repository.py",
+        "rawlsing_next/m1_temporal_v554_admission_dedup.py",
+        "rawlsing_next/m2_v555_atomic_route.py",
+        "rawlsing_next/m3_v556_higher_order_structural.py",
+        "rawlsing_next/pre553_analytical_composition.py",
+        "rawlsing_next/pre553_empirical_query.py",
+        "rawlsing_next/_pre553_query_common.py",
+        "rawlsing_next/pre553_c11_integrity.py",
+        "rawlsing_next/pre553_empirical_authority.py",
+        "rawlsing_next/pre553_c11_repository.py",
+        "rawlsing_next/_pre553_query_eval.py",
+        "rawlsing_next/_pre553_query_predicate.py",
+        "rawlsing_next/pre553_runtime_authority.py",
+        "rawlsing_next/pre553_discovery_exact.py",
+        "rawlsing_next/pre553_recursive_handoff.py",
+        "rawlsing_next/pre553_c11_ingest.py"
+      ],
+      "court_fixture_closure": [
+        "rawlsing_next/tests/c1_at08_at13_fixture.py",
+        "rawlsing_next/tests/test_pre553_empirical_query.py"
+      ],
+      "adopted_owner_files_required_by_the_byte_identity_guards": [
+        "rawlsing_next/objective_consumer_bounded_evidence.py"
+      ],
+      "fourth_baseline_court_materialized": "rawlsing_next/tests/test_pre553_service_source_applicability_court.py (the author's 4-court 199 set requires it)",
+      "silent_widening": false
+    },
+    "import_beyond_manifest_stopped_at": "none; the closure above was sufficient and every addition is recorded here"
+  },
+  "commands_and_results": [
+    {
+      "id": "baseline_4_courts",
+      "command": "<governed python3.11> -m pytest rawlsing_next/tests/test_pre553_service_f8_source_scope_binding_court.py rawlsing_next/tests/test_pre553_service_f8_binding_authentication_court.py rawlsing_next/tests/test_pre553_service_f8_source_scope_binding_repair_court.py rawlsing_next/tests/test_pre553_service_source_applicability_court.py -q",
+      "collected": 199,
+      "result": "199 passed",
+      "exit_code": 0,
+      "matches_author_claim": true,
+      "log_capture_note": "captured locally during the review; not committed because this commission returns four artifacts only (the exact command, counts and exit code are recorded here)"
+    },
+    {
+      "id": "new_p01_court_on_committed_candidate",
+      "command": "<governed python3.11> -m pytest rawlsing_next/tests/test_pre553_f8_receipt_permission_identity_hq254.py -q",
+      "collected": 16,
+      "result": "1 failed, 15 passed",
+      "exit_code": 1,
+      "failing_test": "test_adopted_binder_baseline_was_the_unmodified_owner",
+      "matches_author_claim": false,
+      "author_claim": "16 passed (only reproducible with the binder edit uncommitted)",
+      "log_capture_note": "captured locally during the review; not committed because this commission returns four artifacts only (the exact command, counts and exit code are recorded here)"
+    },
+    {
+      "id": "combined",
+      "command": "<governed python3.11> -m pytest <4 baseline courts> rawlsing_next/tests/test_pre553_f8_receipt_permission_identity_hq254.py -q",
+      "collected": 215,
+      "result": "1 failed, 214 passed",
+      "exit_code": 1,
+      "author_claim": "215 passed (not reproducible on the committed candidate)",
+      "log_capture_note": "captured locally during the review; not committed because this commission returns four artifacts only (the exact command, counts and exit code are recorded here)"
+    },
+    {
+      "id": "negative_control_new_court_vs_baseline_binder",
+      "command": "<governed python3.11> -m pytest rawlsing_next/tests/test_pre553_f8_receipt_permission_identity_hq254.py -q  (in /tmp copy with binder reverted to blob 4ba00b8e)",
+      "result": "10 failed, 6 passed",
+      "exit_code": 1,
+      "nine_genuine_discriminators": [
+        "5x test_permission_identity_mismatch_refuses_with_exact_named_error",
+        "test_mismatch_refuses_BEFORE_any_binding_object_exists",
+        "test_permission_mismatch_is_distinguishable_from_target_use_mismatch",
+        "test_permission_check_sits_between_target_use_and_release_grain",
+        "test_candidate_is_confined_to_the_permission_field"
+      ],
+      "tenth_failure_is_terrain": "test_adopted_binder_baseline_was_the_unmodified_owner fails in the /tmp copy only because there is no git repository there to rev-parse",
+      "author_claim": "9 failed / 7 passed",
+      "reconciliation": "in a git worktree with HEAD at the baseline the blob test passes, leaving exactly the author's 9 discriminators; both counts are the same evidence",
+      "log_capture_note": "captured locally during the review; not committed because this commission returns four artifacts only (the exact command, counts and exit code are recorded here)"
+    },
+    {
+      "id": "independent_identity_probes",
+      "command": "<governed python3.11> reproduction/hq255_identity_probes.py <mode>",
+      "log_capture_note": "captured locally during the review; not committed because this commission returns four artifacts only (the exact command, counts and exit code are recorded here)"
+    },
+    {
+      "id": "matching_material_byte_comparison",
+      "command": "<governed python3.11> /tmp/hq255_material_probe.py  (candidate vs /tmp baseline-binder copy)",
+      "result": "material_sha256 74fc3ffa059d87238fa490ab8a10a886222cd3627b4e33152495f93e80f1ffbf identical; binding_ref, binding_request_ref, applicability_receipt_id, applicability_receipt_replay_identity identical",
+      "verdict": "positive backward compatibility proven at the byte level"
+    }
+  ],
+  "terrain_ceiling": {
+    "static_only": false,
+    "runtime_available": true,
+    "note": "all totals above are exact local governed-runtime runs with exit codes; the sparse scope was extended only as documented and each extension is source-free Python",
+    "not_run": [
+      "no wider 380-test sweep was attempted (would require widening far beyond the manifest)",
+      "no raw source/library/issuer/native runtime"
+    ]
+  }
+}

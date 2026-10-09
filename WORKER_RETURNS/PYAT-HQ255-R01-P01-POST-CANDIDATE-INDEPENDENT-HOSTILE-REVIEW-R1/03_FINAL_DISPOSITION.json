@@ -1,0 +1,59 @@
+{
+  "schema": "PYAT_HQ255_R01_FINAL_DISPOSITION@1",
+  "commission": "PYAT-HQ255-R01-P01-POST-CANDIDATE-INDEPENDENT-HOSTILE-REVIEW-R1",
+  "lane": "agent/deepseek-harness-pyat-hq255-p01-permission-candidate-independent-review-r1",
+  "reviewer_tip": "d44678d49ae81da423c5c91c53db3ec7e31a3ccf",
+  "frozen_candidate": "23438ab52f16abda5960a075dfca3f4d3396eab5",
+  "candidate_first_parent": "428be7595fce3ecf6ae3cb37852bee884d9ce2e1",
+  "live_control": "integration/pre-main-reconciliation-r1 @ ce8467e833e537719d62e8f3db909bbafda907f1",
+  "sealed_hq255_checkpoint": "20261008-PYAT-HQ255-FIVE-HQ254-RETURNS-DEEPSEEK-P01-AND-EE14-T1-R1 @ f5ed4e614545e2365002f080e32b73d153369072",
+  "hq255_is_sealed": true,
+  "disposition": "REPAIR_NARROW",
+  "production_guard_assessment": {
+    "semantically_correct_at_exact_grain": true,
+    "fail_closed": true,
+    "minimal": "+33 / -0, one refusal block, no existing line modified",
+    "grants_permission": false,
+    "widens_source_scope_power": false,
+    "adds_authority_model_use_or_custody": false,
+    "new_vocabulary_not_in_baseline": "BINDING_PERMISSION_IDENTITY_MISMATCH (0 occurrences in baseline blob 4ba00b8e)",
+    "identity_comparison": "ExactRef.key set equality (kind|object_id|content_hash), therefore SHA-sensitive",
+    "detects": ["unrelated", "superset", "subset", "partial replacement", "same object_id with changed SHA"],
+    "positive_backward_compat": "matching-case material() byte-identical to the baseline binder (material_sha256 74fc3ffa...)"
+  },
+  "narrow_repair_required": {
+    "id": "HQ255_R01_REPAIR_01",
+    "file": "rawlsing_next/tests/test_pre553_f8_receipt_permission_identity_hq254.py",
+    "test": "test_adopted_binder_baseline_was_the_unmodified_owner",
+    "defect": "asserts `git rev-parse HEAD:<binder>` equals the pre-candidate baseline blob 4ba00b8e; on the committed candidate that value is 848d2d0e, so the test fails and the candidate's own court is 15/16 on every committed SHA. It passes only while the binder edit is uncommitted (HEAD at the baseline), which is how the reported '16 passed' was produced.",
+    "smallest_correction": "compare the PARENT/base commit blob, or a documented constant, instead of HEAD:; or assert the recorded baseline constant without consulting git state",
+    "behaviour_change_required_in_production": false,
+    "blocking": true,
+    "blocking_scope": "candidate self-certification only; the production correction itself is sound"
+  },
+  "other_findings": [
+    {"id": "HQ255_R01_OBS_01", "severity": "OBSERVATION", "title": "set equality is duplicate-insensitive on the binding side", "detail": "binding [A,A] vs receipt [A] binds and the duplicate lands in canonical material; the receipt side is deduped+sorted upstream so it can never carry a duplicate; author disclosed ordering only"},
+    {"id": "HQ255_R01_OBS_02", "severity": "OBSERVATION", "title": "declared order is preserved in material while the receipt is canonically sorted", "detail": "no in-repo consumer of bound_target_use_permission_refs needs ordered or subset semantics"},
+    {"id": "HQ255_R01_OBS_03", "severity": "OBSERVATION", "title": "malformed receipt permission mapping raises plain Pre553IntegrityError", "detail": "not reachable through the genuine applicability owner; qualifies the binder's single-typed-refusal-surface promise only on an unreachable path"},
+    {"id": "HQ255_R01_OBS_04", "severity": "OBSERVATION", "title": "empty permission sets are refused upstream", "detail": "TARGET_USE_PERMISSION_BOUND_REFS_REQUIRED (request) and SERVICE_REQUEST_UNDETERMINED (owner), so the new check never performs an empty/empty comparison"},
+    {"id": "HQ255_R01_OBS_05", "severity": "OBSERVATION", "title": "multi-grain precedence change", "detail": "target use still outranks permission; permission now outranks release for requests wrong on both; all pre-existing single-grain codes preserved; fail-closed"}
+  ],
+  "independent_evidence": {
+    "baseline_4_courts": "199 passed, exit 0 (matches author)",
+    "new_court_on_committed_candidate": "1 failed, 15 passed, exit 1",
+    "combined": "1 failed, 214 passed, exit 1",
+    "negative_control_vs_baseline_binder": "10 failed, 6 passed (9 genuine discriminators + 1 no-git terrain artifact); reconciles to the author's 9/7",
+    "sparse_scope": "manifest materialized exactly plus a documented narrow source-free extension (binder import closure, court fixture closure, one adopted-owner file, the fourth baseline court); no silent widening"
+  },
+  "out_of_scope_and_preserved": [
+    "HQ253 T01 G1/C1 provenance and authority custody remain OPEN",
+    "not an EE14 model-use permission, not a T1 serving grant, not F8 producer custody",
+    "F7_RR04G and the T1 trust gap remain open and untouched",
+    "no raw source, Library, issuer, actor/V3 or native runtime was accessed"
+  ],
+  "not_adopted": true,
+  "self_adoption": "NOT_PERFORMED",
+  "production_or_test_edit_by_reviewer": false,
+  "recommendation_to_hq": "Accept the production correction at its exact quarantined grain AND require the single narrow test repair above before any green certification; do not treat this review as adoption, cutover or authority.",
+  "terminal": "HQ255_R01_RETURNED_FOR_HQ_INTAKE__NOT_ADOPTED"
+}
