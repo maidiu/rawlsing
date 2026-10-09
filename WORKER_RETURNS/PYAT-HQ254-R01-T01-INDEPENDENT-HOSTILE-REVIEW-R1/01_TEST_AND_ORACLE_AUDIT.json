@@ -1,0 +1,272 @@
+{
+  "schema": "PYAT_HQ254_R01_TEST_AND_ORACLE_AUDIT@1",
+  "review_type": "INDEPENDENT_STATIC_CODE_AND_DOCUMENTARY__NO_INDEPENDENT_RUNTIME",
+  "status": "T0_POSITIVE_STATICALLY_SUPPORTED__CANDIDATE_RUNTIME_REPORTED_NOT_REEXECUTED__PERMISSION_DIVERGENCE_CONFIRMED_CODE__T1_UNAUTHORIZED",
+  "identity": {
+    "repository": "maidiu/rawlsing",
+    "review_parent": "7d7c44c94196d5e66d21e45d78c40890ac25b8fa",
+    "frozen_t01_candidate": "e609be4f68c51182c5acb3a99c671949f1b71d34",
+    "frozen_t01_parent": "8d61676670506a85ad2e7fabc425c1cb46291e47",
+    "sealed_hq254": {
+      "handoff": "6072a6891f47e713df0f70f0dec8770fc0abac32",
+      "checkpoint": "20261008-PYAT-HQ254-T01-T0-POSITIVE-FIVE-PARALLEL-ISSUED-R1",
+      "current_md": "e64ffa47922cd7361b87fc8d780600532cb04259",
+      "current_json": "dc2d52c208f13cc937d2f8e50effb0987f0a81ff",
+      "manifest": "7efcb49d5920d85d3701a399b614efca8524da4f"
+    },
+    "semantic_pre_main": "1f47063c3205a45888b3c55e81e7485943ed1390"
+  },
+  "candidate_change_audit": {
+    "ahead_by": 1,
+    "behind_by": 0,
+    "files_added": 6,
+    "new_test_files": 1,
+    "commissioned_return_files": 5,
+    "production_edits": 0,
+    "classification": "INDEPENDENT_GIT_COMPARE_CONFIRMED",
+    "paths": [
+      "rawlsing_next/tests/test_pre553_scoped_rich_c1_f8_existing_api_discriminator.py",
+      "WORKER_RETURNS/PYAT-HQ253-T0-C1-AUTH-F8-EXISTING-API-DISCRIMINATOR-R1/00_EXECUTION_AND_DISPOSITION.md",
+      "WORKER_RETURNS/PYAT-HQ253-T0-C1-AUTH-F8-EXISTING-API-DISCRIMINATOR-R1/01_FROZEN_ORACLE_AND_ACTUAL_RECEIPTS.json",
+      "WORKER_RETURNS/PYAT-HQ253-T0-C1-AUTH-F8-EXISTING-API-DISCRIMINATOR-R1/02_FIRST_EDGE_AND_T1_BOUNDARY.md",
+      "WORKER_RETURNS/PYAT-HQ253-T0-C1-AUTH-F8-EXISTING-API-DISCRIMINATOR-R1/03_CHANGED_PATHS_AND_NEXT_REVIEW.md",
+      "WORKER_RETURNS/PYAT-HQ253-T0-C1-AUTH-F8-EXISTING-API-DISCRIMINATOR-R1/FINAL_DISPOSITION.json"
+    ]
+  },
+  "oracle": {
+    "fixture": {
+      "path": "rawlsing_next/tests/c1_at08_at13_fixture.py",
+      "blob": "0393cc8c17a313b7944b2a5287d0406d6cbe3849",
+      "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+    },
+    "fixture_lines": "451-495",
+    "test": {
+      "path": "rawlsing_next/tests/test_pre553_scoped_rich_c1_f8_existing_api_discriminator.py",
+      "blob": "17300a405d78820cd663618918e64bb0323f532e",
+      "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+    },
+    "test_lines": "51-68,103-160,237-312",
+    "inputs": {
+      "respondents": [
+        {
+          "id": "R00",
+          "A": 0,
+          "B": 0,
+          "C": 0
+        },
+        {
+          "id": "R01",
+          "A": 0,
+          "B": 1,
+          "C": 1
+        },
+        {
+          "id": "R10",
+          "A": 1,
+          "B": 0,
+          "C": 1
+        },
+        {
+          "id": "R11",
+          "A": 1,
+          "B": 1,
+          "C": 0
+        }
+      ],
+      "target": "C",
+      "q1_predicate": "A==1",
+      "q2_predicate": "(A==1) AND (B==0)",
+      "shared_release": "REL-c1-at09-xor"
+    },
+    "frozen_expected": {
+      "N": 4,
+      "q1_C1_given_A1": [
+        1,
+        2
+      ],
+      "q2_C1_given_A1B0": [
+        1,
+        1
+      ],
+      "contrast_C1_given_A1B1": [
+        0,
+        1
+      ]
+    },
+    "independent_manual_derivation": "From four literal rows: q1 selects R10 and R11 => 1/2 C=1; q2 selects R10 only => 1/1 C=1; q2 selection is a same-respondent AND, not product of marginals",
+    "neutrality": "Test has literal expected fractions and verifies them against fixture XOR_ORACLE at import/runtime; mathematically non-vacuous. Prior-to-author-execution historical freezing is asserted by return, not independently proven by timestamps or a sealed pre-candidate oracle file.",
+    "result_status": "STATICALLY_CONFIRMED_ORACLE__AUTHOR_REPORTED_TEST_EXECUTION"
+  },
+  "tests": {
+    "count_by_source": "20 declared test functions; parameterization adds one test in test_c1_produces_exact_frozen_values, one in test_t0_positive_join_is_exactly_equivalent_to_direct_c1, three in four-grain refusal test => 25 collected tests expected",
+    "positive": {
+      "source_test_lines": "128-222,264-370",
+      "prediction": "Both supported C1 rich outputs pass via a source-applicability-owner constructed fixture receipt and binder, retaining equality to C1's direct F8 result; test code calls actual APIs and asserts equality of material() and result_hash",
+      "observed_reported": "25 passed with Python 3.11.3/pytest 9.1.1; no independent run",
+      "receipt_grain": "same source/release; SINGLE_SOURCE_VALIDATION; currentness claim None; fixture-only target-use permission refs; no EE14 serving permission",
+      "disposition": "SOURCE_LEVEL_COMPATIBILITY_CONFIRMED__EXECUTION_INHERITED_AUTHOR_ONLY"
+    },
+    "hostile": {
+      "source_test_lines": "399-506,558-588",
+      "checks": [
+        "Provenance-only dataclasses.replace changes provenance_refs but leaves existing evidence_ref/geometry/target/source/release/conditioner/state; predicted F8 hash and material remain identical",
+        "Authority-ref test mutates BOTH authority_refs and provenance_refs, not authority_refs alone; result identity unchanged is predicted but isolation incomplete",
+        "Changing evidence_ref changes F8 result_hash; changing geometry changes material, neither constitutes rejection",
+        "Binding request permissions changed to OTHER_PERMISSION_REF while receipt request_key stays PERMISSION_REF; bind and evaluate predicted to succeed"
+      ],
+      "source_status": "MATCHES_UNCHANGED_F8_AND_BINDER_CONTROL_FLOW; reported runtime results not independently executed"
+    },
+    "test_quality_limits": [
+      {
+        "id": "R01-QA-01",
+        "location": "test lines 589-599",
+        "finding": "Named C1 producer identity substitution test does not submit a substituted C1 product to F8; it merely checks q1 composed_result_identity_hash != q2 hash. Producer-identity non-authentication is separately visible statically in binder; dynamic swap not measured here.",
+        "effect": "LIMIT_QUALIFICATION_NOT_T0_POSITIVE_BLOCKER"
+      },
+      {
+        "id": "R01-QA-02",
+        "location": "test lines 605-626",
+        "finding": "Read-only inherited AT09/10/11 court validates AST function names only; not independent fresh coverage. Reported separate 234-pass suite includes one higher-order court but no independent reviewer run.",
+        "effect": "DO_NOT_CREDIT_AT10_OR_AT11_AS_NEW_T01_PROOF"
+      },
+      {
+        "id": "R01-QA-03",
+        "location": "test lines 639-649",
+        "finding": "No-production-edit test checks import paths and its own filename; it cannot independently attest git write terrain. Independent GitHub compare does establish zero production edits.",
+        "effect": "TEST_IS_WEAK__REVIEWER_DIFF_FALSIFIER_PASSES"
+      },
+      {
+        "id": "R01-QA-04",
+        "location": "test lines 446-465",
+        "finding": "Authority_ref mutation co-occurs with provenance mutation; no isolated authority-only mutation control.",
+        "effect": "SEPARATE_AUTHORITY_ONLY_TEST_OPTIONAL_FOR_INDEPENDENCE"
+      },
+      {
+        "id": "R01-QA-05",
+        "location": "test lines 71,383-396",
+        "finding": "GOVERNED_USE is an unused GT2-named test constant; no actual GT2 context consumed. Currentness absence asserted partly through repr string, weaker than typed object comparison, but binder request currentness None is directly observed.",
+        "effect": "NO_T1_OR_GT2_PROMOTION; CURRENTNESS_UNREQUESTED_GRAIN"
+      }
+    ]
+  },
+  "permissions": {
+    "adopted_binder": {
+      "path": "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+      "blob": "4ba00b8ecf73f70ad0f6481e255fd0117744418a",
+      "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+    },
+    "adopted_applicability": {
+      "path": "rawlsing_next/pre553_service_source_applicability.py",
+      "blob": "3e40caca29e8c96ee1f412f919cfc7dba63f96c4",
+      "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+    },
+    "binder_lines": "263-351,644-707,853-883,894-961,960-1047",
+    "applicability_lines": "253-258,308-388,684-809",
+    "test_lines": "160-207,558-588",
+    "frozen_receipt_permissions": [
+      "TARGET_USE_PERMISSION hq253-fixture-perm-only"
+    ],
+    "divergent_binding_request_permissions": [
+      "TARGET_USE_PERMISSION hq253-other-perm"
+    ],
+    "mechanism": "Receipt's service_request_set_identity was computed from adopted ServiceApplicabilityRequest including original permission refs; binder takes same receipt identity via request.service_request_set_identity, verifies service/class/target use/release but does not compare binding request permission refs to receipt.request_key.target_use_permission_refs. Binding constructs new self-consistent hash with divergent permissions and re-authenticator rederives it from same inconsistent request and receipt; F8 output independent of permissions.",
+    "verdict": "CONFIRMED_CROSS_INPUT_PERMISSION_IDENTITY_NONREFUSAL_AT_ADOPTED_BINDER_CONTRACT__NOT_TARGET_USE_GRANT_OR_EXPLOIT",
+    "min_falsifier": "With genuine fixture owner receipt and two different exact permission refs, owner binder must refuse mismatched full exact permission set before exposed binding or F8 evaluation; same refs in different supplied order must follow owner's declared canonical semantics without inventing ranking; matching case must continue to pass",
+    "priority": "NARROW_BINDER_OWNER_CROSS_INPUT_CONSISTENCY"
+  },
+  "runtime": {
+    "environment": "AUTHOR_REPORTED_MACOS_13_7_8_X86_64_PYTHON_3_11_3_PYTEST_9_1_1_PREEXISTING_VENV",
+    "independent_runtime_available": false,
+    "source_execution": false,
+    "author_reported": [
+      {
+        "surface": "new test",
+        "result": "25 passed",
+        "exit": 0
+      },
+      {
+        "surface": "five unchanged relevant tests",
+        "result": "234 passed",
+        "exit": 0
+      },
+      {
+        "surface": "broader -k sweep",
+        "result": "357 passed, nine collection errors",
+        "exit": 1
+      }
+    ],
+    "independent_classification": "GITHUB_ARTIFACTS_AUTHOR_REPORTED__NO_GOVERNED_INDEPENDENT_EXECUTION__NO_PERSISTED_RAW_TERMINAL_LOG_IN_REVIEWED_RETURN",
+    "collection_error_limit": "Nine errors labelled pre-existing and unrelated by T01 return. No controlled parent-vs-candidate same-host baseline log visible in reviewed artifacts; R01 does not elevate classification to independently proven pre-existing.",
+    "counts_can_be_independently_mathematically_checked": true
+  },
+  "scope": {
+    "t0": "MECHANICAL_FIXTURE_EXISTING_API_COMPATIBILITY_STATICALLY_SUPPORTED_AUTHOR_REPORTED_EXECUTION",
+    "t1": "EE14_USE_NOT_GRANTED__TRUSTED_C1_INGRESS_NOT_VERIFIED",
+    "gt2": "NO_CONTEXT_APPLIED",
+    "currentness": "CURRENTNESS_NOT_REQUESTED__NO_B5_M5",
+    "source": "NO_REAL_SURVEY_READ",
+    "world": "NO_OC05_N9_OR_MULTI_FAMILY",
+    "actor": "NO_V3",
+    "production": "NO_PATCH_OR_ADOPTION"
+  },
+  "source_refs": {
+    "sealed_hq": {
+      "handoff": "6072a6891f47e713df0f70f0dec8770fc0abac32",
+      "checkpoint": "20261008-PYAT-HQ254-T01-T0-POSITIVE-FIVE-PARALLEL-ISSUED-R1",
+      "current_md": "e64ffa47922cd7361b87fc8d780600532cb04259",
+      "current_json": "dc2d52c208f13cc937d2f8e50effb0987f0a81ff",
+      "manifest": "7efcb49d5920d85d3701a399b614efca8524da4f"
+    },
+    "test": {
+      "path": "rawlsing_next/tests/test_pre553_scoped_rich_c1_f8_existing_api_discriminator.py",
+      "blob": "17300a405d78820cd663618918e64bb0323f532e",
+      "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+    },
+    "fixture": {
+      "path": "rawlsing_next/tests/c1_at08_at13_fixture.py",
+      "blob": "0393cc8c17a313b7944b2a5287d0406d6cbe3849",
+      "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+    },
+    "f8": {
+      "path": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+    },
+    "binder": {
+      "path": "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+      "blob": "4ba00b8ecf73f70ad0f6481e255fd0117744418a",
+      "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+    },
+    "applicability": {
+      "path": "rawlsing_next/pre553_service_source_applicability.py",
+      "blob": "3e40caca29e8c96ee1f412f919cfc7dba63f96c4",
+      "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+    },
+    "c1": {
+      "path": "rawlsing_next/pre553_analytical_composition.py",
+      "blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+    },
+    "candidate_return": {
+      "path": "WORKER_RETURNS/PYAT-HQ253-T0-C1-AUTH-F8-EXISTING-API-DISCRIMINATOR-R1/00_EXECUTION_AND_DISPOSITION.md",
+      "blob": "8dd529e4d7c944a07856a32c5b4ac2a51a072792",
+      "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+    },
+    "candidate_oracle": {
+      "path": "WORKER_RETURNS/PYAT-HQ253-T0-C1-AUTH-F8-EXISTING-API-DISCRIMINATOR-R1/01_FROZEN_ORACLE_AND_ACTUAL_RECEIPTS.json",
+      "blob": "3b183194417de8593ad4494f196880213807b043",
+      "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+    },
+    "candidate_final": {
+      "path": "WORKER_RETURNS/PYAT-HQ253-T0-C1-AUTH-F8-EXISTING-API-DISCRIMINATOR-R1/FINAL_DISPOSITION.json",
+      "blob": "d0e9bd331107278d74024e26704964ce126046cf",
+      "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+    },
+    "prior_review": {
+      "path": "WORKER_RETURNS/PYAT-HQ251-S01-T1-USE-AND-C1-F8-INGRESS-INDEPENDENT-REVIEW-R1/02_EXACT_BOUNDARY_TEST_AND_ORACLE.md",
+      "blob": "6ef1b20dfad8102625cef49b647f8276a2a5dd9f",
+      "ref": "762cda8ce5b2d9f67b0870f6474df4468ca91630"
+    }
+  },
+  "next_owner_action": "HQ must preserve quarantined P01 owner candidate; only after separate P01 independent review may the adopted F8-binder owner fix cross-input exact permission-identity refusal. Separately schedule governed independent T01 runtime qualification when warranted; never self-adopt P01."
+}

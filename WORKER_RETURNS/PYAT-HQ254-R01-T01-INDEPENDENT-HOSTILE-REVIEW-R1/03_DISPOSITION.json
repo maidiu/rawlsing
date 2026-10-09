@@ -1,0 +1,210 @@
+{
+  "schema": "PYAT_HQ254_R01_HOSTILE_DISPOSITION@1",
+  "status": "HQ254_R01_RETURNED_FOR_HQ_REVIEW__NOT_ADOPTED",
+  "reviewer_branch": "agent/reviewer-pyat-hq254-t01-independent-hostile-r1",
+  "review_start_tip": "7d7c44c94196d5e66d21e45d78c40890ac25b8fa",
+  "candidate_frozen": "e609be4f68c51182c5acb3a99c671949f1b71d34",
+  "sealed_hq254": {
+    "handoff": "6072a6891f47e713df0f70f0dec8770fc0abac32",
+    "checkpoint": "20261008-PYAT-HQ254-T01-T0-POSITIVE-FIVE-PARALLEL-ISSUED-R1",
+    "current_md": "e64ffa47922cd7361b87fc8d780600532cb04259",
+    "current_json": "dc2d52c208f13cc937d2f8e50effb0987f0a81ff",
+    "manifest": "7efcb49d5920d85d3701a399b614efca8524da4f"
+  },
+  "review_execution": "BROWSER_GITHUB_STATIC_ONLY__NO_INDEPENDENT_TEST_EXECUTION",
+  "final": "T0_COMPATIBILITY_INDEPENDENT_CODE_SUPPORTED__CANDIDATE_AUTHOR_REPORTED_25_25__BOUND_PERMISSION_IDENTITY_DEFECT_CONFIRMED__T1_NOT_GRANTED",
+  "grade": {
+    "t0": "STATICALLY_SUPPORTED_COMPATIBILITY_AND_ORACLE__NOT_INDEPENDENT_RUNTIME_CERTIFIED",
+    "t1": "EE14_USE_NOT_GRANTED_AND_C1_PRODUCER_CUSTODY_NOT_ATTESTED",
+    "native": "NOT_EXAMINED",
+    "world": "NOT_CLAIMED",
+    "GT2": "NOT_APPLIED"
+  },
+  "findings": [
+    {
+      "id": "R01-ORACLE-001",
+      "severity": "POSITIVE",
+      "state": "CONFIRMED_STATIC",
+      "detail": "XOR 4 rows reproduce (1,2) and (1,1), same respondent/release predicates; expected literal outside computed candidate output",
+      "evidence": [
+        {
+          "path": "rawlsing_next/tests/c1_at08_at13_fixture.py",
+          "blob": "0393cc8c17a313b7944b2a5287d0406d6cbe3849",
+          "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+        },
+        {
+          "path": "rawlsing_next/tests/test_pre553_scoped_rich_c1_f8_existing_api_discriminator.py",
+          "blob": "17300a405d78820cd663618918e64bb0323f532e",
+          "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+        }
+      ]
+    },
+    {
+      "id": "R01-T0-POSITIVE-002",
+      "severity": "POSITIVE",
+      "state": "CODE_PATH_SUPPORTED_AUTHOR_REPORTED_RUNTIME",
+      "detail": "C1 owner-produced evidence, adopted applicability receipt, authenticated F8 scoped evaluation, full F8 equality; fixture-only permission not EE14 grant",
+      "evidence": [
+        {
+          "path": "rawlsing_next/tests/test_pre553_scoped_rich_c1_f8_existing_api_discriminator.py",
+          "blob": "17300a405d78820cd663618918e64bb0323f532e",
+          "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+        },
+        {
+          "path": "WORKER_RETURNS/PYAT-HQ253-T0-C1-AUTH-F8-EXISTING-API-DISCRIMINATOR-R1/00_EXECUTION_AND_DISPOSITION.md",
+          "blob": "8dd529e4d7c944a07856a32c5b4ac2a51a072792",
+          "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+        },
+        {
+          "path": "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+          "blob": "4ba00b8ecf73f70ad0f6481e255fd0117744418a",
+          "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+        }
+      ]
+    },
+    {
+      "id": "R01-CUSTODY-003",
+      "severity": "T1_LIMIT",
+      "state": "CONFIRMED_STATIC",
+      "detail": "Changing evidence provenance (and combined authority) while preserving evidence_ref+geometry yields same F8 hash; F8 does not attest C1 producer custody. No binder exploit claimed",
+      "evidence": [
+        {
+          "path": "rawlsing_next/tests/test_pre553_scoped_rich_c1_f8_existing_api_discriminator.py",
+          "blob": "17300a405d78820cd663618918e64bb0323f532e",
+          "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+        },
+        {
+          "path": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+          "blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+          "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+        }
+      ]
+    },
+    {
+      "id": "R01-PERMISSION-ID-NONREFUSAL-001",
+      "severity": "NARROW_BINDER_CONTRACT_DEFECT",
+      "state": "CONFIRMED_STATIC_AUTHOR_REPORTED_RUNTIME",
+      "detail": "Binder receives request permission tuple different from actual receipt request_key; copies it into bound material at line 881 without equality check. Re-derivation from same mismatch does not refuse",
+      "owner": "H-D/EE14 service-applicability F8 source-scope binder owner",
+      "evidence": [
+        {
+          "path": "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+          "blob": "4ba00b8ecf73f70ad0f6481e255fd0117744418a",
+          "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+        },
+        {
+          "path": "rawlsing_next/pre553_service_source_applicability.py",
+          "blob": "3e40caca29e8c96ee1f412f919cfc7dba63f96c4",
+          "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+        },
+        {
+          "path": "rawlsing_next/tests/test_pre553_scoped_rich_c1_f8_existing_api_discriminator.py",
+          "blob": "17300a405d78820cd663618918e64bb0323f532e",
+          "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+        }
+      ]
+    },
+    {
+      "id": "R01-COURT-LIMIT-004",
+      "severity": "QUALIFICATION_LIMIT",
+      "state": "CONFIRMED_STATIC",
+      "detail": "Producer identity substitution test only compares two composed IDs; authority-only mutation not isolated; inherited AT09/10/11 presence assertion is AST-only; author runtime has no independent R01 reproduction",
+      "evidence": [
+        {
+          "path": "rawlsing_next/tests/test_pre553_scoped_rich_c1_f8_existing_api_discriminator.py",
+          "blob": "17300a405d78820cd663618918e64bb0323f532e",
+          "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+        },
+        {
+          "path": "WORKER_RETURNS/PYAT-HQ253-T0-C1-AUTH-F8-EXISTING-API-DISCRIMINATOR-R1/00_EXECUTION_AND_DISPOSITION.md",
+          "blob": "8dd529e4d7c944a07856a32c5b4ac2a51a072792",
+          "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+        }
+      ]
+    }
+  ],
+  "hostile_counterevidence": [
+    "Binding does reject swapped release/source/service/request set identity as tested; source applicability refuses unadmitted source",
+    "Genuine C1 slice is actually passed into binder positive; no dummy standalone F8 fake is used for Q1/Q2",
+    "Evidence_ref change affects result_hash; geometry change affects material but not refusal",
+    "Not proven that permission mismatch grants a new real target use because binder explicitly grants none"
+  ],
+  "runtime_reconciliation": {
+    "author_reported_new": "25 passed exit 0",
+    "author_reported_relevant": "234 passed exit 0",
+    "author_reported_broad": "357 passed and nine collection errors exit 1",
+    "independent_rerun": false,
+    "preexisting_errors_independently_verified": false,
+    "environment": "author macOS 13.7.8 x86_64 Python 3.11.3 pytest 9.1.1; reviewer Browser/GitHub only"
+  },
+  "single_next_lawful_action": "Bank binder cross-input permission identity defect and require independent hostile review of separately commissioned P01 candidate before HQ acceptance; demand frozen matching positive and divergent nonempty permission refusal while preserving F8 geometry, without granting EE14 T1 use",
+  "write_terrain_only": "WORKER_RETURNS/PYAT-HQ254-R01-T01-INDEPENDENT-HOSTILE-REVIEW-R1/",
+  "source_refs": {
+    "sealed_hq": {
+      "handoff": "6072a6891f47e713df0f70f0dec8770fc0abac32",
+      "checkpoint": "20261008-PYAT-HQ254-T01-T0-POSITIVE-FIVE-PARALLEL-ISSUED-R1",
+      "current_md": "e64ffa47922cd7361b87fc8d780600532cb04259",
+      "current_json": "dc2d52c208f13cc937d2f8e50effb0987f0a81ff",
+      "manifest": "7efcb49d5920d85d3701a399b614efca8524da4f"
+    },
+    "test": {
+      "path": "rawlsing_next/tests/test_pre553_scoped_rich_c1_f8_existing_api_discriminator.py",
+      "blob": "17300a405d78820cd663618918e64bb0323f532e",
+      "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+    },
+    "fixture": {
+      "path": "rawlsing_next/tests/c1_at08_at13_fixture.py",
+      "blob": "0393cc8c17a313b7944b2a5287d0406d6cbe3849",
+      "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+    },
+    "f8": {
+      "path": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+    },
+    "binder": {
+      "path": "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+      "blob": "4ba00b8ecf73f70ad0f6481e255fd0117744418a",
+      "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+    },
+    "applicability": {
+      "path": "rawlsing_next/pre553_service_source_applicability.py",
+      "blob": "3e40caca29e8c96ee1f412f919cfc7dba63f96c4",
+      "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+    },
+    "c1": {
+      "path": "rawlsing_next/pre553_analytical_composition.py",
+      "blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+    },
+    "candidate_return": {
+      "path": "WORKER_RETURNS/PYAT-HQ253-T0-C1-AUTH-F8-EXISTING-API-DISCRIMINATOR-R1/00_EXECUTION_AND_DISPOSITION.md",
+      "blob": "8dd529e4d7c944a07856a32c5b4ac2a51a072792",
+      "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+    },
+    "candidate_oracle": {
+      "path": "WORKER_RETURNS/PYAT-HQ253-T0-C1-AUTH-F8-EXISTING-API-DISCRIMINATOR-R1/01_FROZEN_ORACLE_AND_ACTUAL_RECEIPTS.json",
+      "blob": "3b183194417de8593ad4494f196880213807b043",
+      "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+    },
+    "candidate_final": {
+      "path": "WORKER_RETURNS/PYAT-HQ253-T0-C1-AUTH-F8-EXISTING-API-DISCRIMINATOR-R1/FINAL_DISPOSITION.json",
+      "blob": "d0e9bd331107278d74024e26704964ce126046cf",
+      "ref": "e609be4f68c51182c5acb3a99c671949f1b71d34"
+    },
+    "prior_review": {
+      "path": "WORKER_RETURNS/PYAT-HQ251-S01-T1-USE-AND-C1-F8-INGRESS-INDEPENDENT-REVIEW-R1/02_EXACT_BOUNDARY_TEST_AND_ORACLE.md",
+      "blob": "6ef1b20dfad8102625cef49b647f8276a2a5dd9f",
+      "ref": "762cda8ce5b2d9f67b0870f6474df4468ca91630"
+    }
+  },
+  "holds": [
+    "NO_T1_PERMISSION",
+    "NO_PRODUCER_CUSTODY_SERVICE",
+    "NO_GT2_CURRENT_ASOF",
+    "NO_SURVEY_OR_LIBRARY",
+    "NO_P01_REPAIR_ADOPTION",
+    "NO_NATIVE_ACTOR_ISSUER"
+  ],
+  "terminal": "HQ254_R01_RETURNED_FOR_HQ_REVIEW__NOT_ADOPTED"
+}
