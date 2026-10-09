@@ -1,0 +1,98 @@
+{
+  "schema": "PYAT_HQ263_R01_G01_INDEPENDENT_HOSTILE_REVIEW_DISPOSITION@1.0",
+  "terminal": "HQ263_R01_RETURNED_FOR_HQ__NO_SELF_ADOPTION",
+  "decision": "FAIL_REQUIRED_CORRECTION",
+  "execution_caveat": "INDEPENDENT_QUALIFIED_CLEAN_COMMITTED_TESTS_UNTESTED_HOLD",
+  "authority_ceiling": "SOURCE_FREE_INTERNAL_DEVELOPMENT_ONLY__NOT_ADOPTED__NO_EE14_G0B__NO_DEPLOYED_G1_TRUST__NO_T1",
+  "reviewed_repository": "maidiu/rawlsing",
+  "commission": {
+    "branch": "agent/reviewer-pyat-hq263-g01-owner-ingress-hostile-r1",
+    "exact_start_tip": "108394be705dfe3c55e465d5c76cbe3d09b946a5",
+    "checkpoint": "20261009-PYAT-HQ263-G01-HOSTILE-REVIEW-G2-XOR-GHANA-LITS-CUSTODY-HOLD-R1",
+    "immutable_handoff": "af5d4b2d14268709b9198d14e58f83b1f9d8683a",
+    "active_worker_confirmed": true
+  },
+  "frozen_candidate": {
+    "sha": "22cd4976e3f9f860c7fe1bd889d3cc5faa44f8f3",
+    "commission_parent": "63cdc0b5bb4c382acf558e040b3669b787fc245f",
+    "ahead_by": 1,
+    "behind_by": 0,
+    "code_blob": "e1c09957519f10b29ae2635f3277b4f3af0912c9",
+    "test_blob": "f71c0ce87d4005acc6806cac9afe5bbbb76ad9bc",
+    "existing_owner_changes": 0
+  },
+  "positive_capability_preserved": [
+    "Owner calls original C1 producer and draws evidence from returned AnalyticalCompositionResult rather than external SelectedRequest",
+    "SelectedRequest ordinary dataclass exposes no direct evidence, repository, predicate, model rule, authority or witness field",
+    "Owner passes same C1-returned evidence object directly to low-level F8 under trusted normal flow",
+    "Technical receipt hashes C1 identity, C1 evidence material/keys, risk/denominator, scope and F8 hash",
+    "Technical receipt authorizing=false and no EE14 grant, CURRENT certificate or deployed isolation claimed"
+  ],
+  "required_contract_failures": [
+    {
+      "id": "HQ263-R01-G01-F1-NO_ACTUAL_G2",
+      "verdict": "FAIL",
+      "source": "module L200-L213; adopted G2 binder L644-L748/L927-L995",
+      "proof": "No real CandidateClassApplicabilityReceipt/binding/evaluate-bound or exact permission and release relation; local scope dictionary hash is not G2"
+    },
+    {
+      "id": "HQ263-R01-G01-F2-Q1_Q2_IDENTICAL_C1",
+      "verdict": "FAIL",
+      "source": "test L56-L100",
+      "proof": "Both cell keys map to identical producer predicate/query, consumer query, model rule and same stratum. Different cell key not actual same-respondent XOR with denominators 2 and 1"
+    },
+    {
+      "id": "HQ263-R01-G01-F3-NO_EVIDENCE_MUTATION_COURT",
+      "verdict": "REQUIRED_TEST_ABSENT",
+      "source": "module L171-L198 and test entire 241 lines",
+      "proof": "Evidence projection is hashed but in-flight authority/provenance substitution and original C1 preimage coherence have no adversarial refusal court"
+    },
+    {
+      "id": "HQ263-R01-G01-F4-TYPED_NEGATIVE_CONFLATION",
+      "verdict": "FAIL_FOR_REQUIRED_NEGATIVE_HANDLING",
+      "source": "module L176-L182",
+      "proof": "None evidence becomes one SelectedIngressPermissionError with G0b explanation regardless of actual C1 state"
+    },
+    {
+      "id": "HQ263-R01-G01-F5_EXTERNAL_DATA_ONLY_NOT_DEPLOYMENT",
+      "verdict": "LIMITATION_UNPROVEN",
+      "source": "module L93-L115, L145-L153, HQ262 boundary",
+      "proof": "isinstance accepts subclasses; shallow copies are not deep immutable; no deployed external data-only serialization/isolation verified"
+    },
+    {
+      "id": "HQ263-R01-G01-F6_TEST_HOSTILES_NOT_EFFECTIVE",
+      "verdict": "REQUIRED_COURTS_ABSENT",
+      "source": "test L172-L240",
+      "proof": "Forged hash is only constant-zero comparison; no exact G2 source/release/permission attack, in-flight provenance mutation, source-crossover/walkback negative"
+    }
+  ],
+  "independent_execution": {
+    "read_immutable_frozen_source": true,
+    "static_verdict_independent": true,
+    "qualified_runtime_available": false,
+    "independent_pytest_on_candidate_final_commit_executed": false,
+    "qualified_test_exit_code": null,
+    "verified_test_passes": null,
+    "author_claim_not_accepted_as_review": "22 passed on working HEAD 63cdc0... prior to candidate committed 22cd...",
+    "linux_environment_not_governed_mac": true
+  },
+  "smallest_correction": [
+    "Keep C1/F8/applicability/G2 accepted owners untouched; edit only candidate ingress and candidate tests under NEW HQ repair authorization",
+    "Perform genuine applicability resolve and adopted G2 binder + authenticated evaluate_bound, exact permission/release and replay identity; otherwise exact G0b authority HOLD",
+    "Use same original four-case respondent source for q1/q2 but distinct C1 target predicates/queries and test 1/2,1/2 n2 vs 0/1 n1 and distinct producer/source lineage",
+    "Add in-flight evidence provenance/authority negative and exact source/release/permission mismatch, typed no evidence native negative/no-F8-invocation, walkback refusal",
+    "Independently execute full committed tests plus hostile probes in existing qualified reviewer runtime; do not misstate local Linux interpreter as governed Mac"
+  ],
+  "self_adoption": false,
+  "grant_issued": false,
+  "production_changes": false,
+  "source_access": false,
+  "actual_selected_T1": false,
+  "hq_action": "REJECT_G01_AS_ACCEPTED_G1__RETAIN_BOUNDED_ORIGIN_CODE_AS_UNADOPTED_CANDIDATE__ISSUE_MINIMAL_REPAIR_AND_SEPARATE_QUALIFIED_CLEAN_SHA_COURT",
+  "review_artifacts": [
+    "00_BASE_CANDIDATE_AND_ACTUAL_CALL_GRAPH.md",
+    "01_INDEPENDENT_CLEAN_COMMITTED_EXECUTION.json",
+    "02_HOSTILE_COUNTEREXAMPLES_AND_REQUIRED_CORRECTIONS.md",
+    "03_DISPOSITION.json"
+  ]
+}
