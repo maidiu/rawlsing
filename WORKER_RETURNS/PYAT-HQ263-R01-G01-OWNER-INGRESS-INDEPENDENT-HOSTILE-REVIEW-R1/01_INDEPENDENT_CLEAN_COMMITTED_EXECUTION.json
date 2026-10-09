@@ -1,0 +1,116 @@
+{
+  "schema": "PYAT_HQ263_R01_G01_INDEPENDENT_CLEAN_COMMITTED_EXECUTION@1",
+  "terminal": "HQ263_R01_RETURNED_FOR_HQ__NO_SELF_ADOPTION",
+  "disposition": "CONTRACT_STATIC_FAIL__RUNTIME_UNTESTED_HOLD",
+  "commission": {
+    "repository": "maidiu/rawlsing",
+    "review_branch": "agent/reviewer-pyat-hq263-g01-owner-ingress-hostile-r1",
+    "review_start_tip": "108394be705dfe3c55e465d5c76cbe3d09b946a5",
+    "hq261_or_262_frozen_control": "64b4e7ab1e67c139c7115430c711d459474cf31a",
+    "live_checkpoint": "20261009-PYAT-HQ263-G01-HOSTILE-REVIEW-G2-XOR-GHANA-LITS-CUSTODY-HOLD-R1",
+    "hq263_immutable_handoff": "af5d4b2d14268709b9198d14e58f83b1f9d8683a",
+    "hq263_CURRENT_json_blob": "f2026b39b384afd012a39af53314530025086301"
+  },
+  "candidate": {
+    "sha": "22cd4976e3f9f860c7fe1bd889d3cc5faa44f8f3",
+    "parent_commission_tip": "63cdc0b5bb4c382acf558e040b3669b787fc245f",
+    "compare_to_parent": {
+      "ahead": 1,
+      "behind": 0,
+      "file_changes": 6,
+      "new_candidate_code_test_files": 2,
+      "new_return_files": 4,
+      "other_existing_owners_edited": false
+    },
+    "module": {
+      "path": "rawlsing_next/pre553_ee14_c1_owner_authenticated_ingress.py",
+      "git_blob": "e1c09957519f10b29ae2635f3277b4f3af0912c9"
+    },
+    "test": {
+      "path": "rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py",
+      "git_blob": "f71c0ce87d4005acc6806cac9afe5bbbb76ad9bc"
+    },
+    "dependencies": {
+      "C1": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "F8": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "source_applicability": "3e40caca29e8c96ee1f412f919cfc7dba63f96c4",
+      "G2_binder": "848d2d0eedb04b792747e9d6aaa49bb39d108a2c"
+    }
+  },
+  "independent_documentary_execution": {
+    "method": "CONNECTED_GITHUB_IMMUTABLE_FETCH_FILE_PLUS_COMPARE_COMMITS_AND_HQ263_SEALED_CURRENT_JSON",
+    "status": "COMPLETED",
+    "tool": "GitHub connected readonly repository metadata+UTF8 source",
+    "code_paths_read": [
+      "rawlsing_next/pre553_ee14_c1_owner_authenticated_ingress.py",
+      "rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py",
+      "rawlsing_next/pre553_analytical_composition.py",
+      "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "rawlsing_next/pre553_service_source_applicability.py",
+      "rawlsing_next/pre553_service_f8_source_scope_binding.py"
+    ],
+    "static_discriminators": [
+      {
+        "name": "AUTHENTIC_APPLICABILITY_G2_CHAIN",
+        "result": "FAIL",
+        "evidence": "candidate lines 200-213 hash dict then direct F8, no adopted applicability and G2 binding or evaluate_bound"
+      },
+      {
+        "name": "DISTINCT_Q1_Q2_PRODUCER_INPUTS_XOR",
+        "result": "FAIL",
+        "evidence": "test lines 73-80 identical per-cell C1 inputs and 88-100 same stratum; no required numerator/denominator assertion"
+      },
+      {
+        "name": "TYPED_NEGATIVE_HANDLING",
+        "result": "FAIL_OR_NOT_IMPLEMENTED",
+        "evidence": "candidate lines 176-182 collapses all no-evidence C1 states to SelectedIngressPermissionError"
+      },
+      {
+        "name": "IN_FLIGHT_MUTATION_AND_MISMATCH_PROBES",
+        "result": "NOT_COVERED",
+        "evidence": "review of 241-line candidate test covers no in-flight authority edit or G2 wrong permission/release"
+      }
+    ]
+  },
+  "qualified_clean_runtime": {
+    "status": "UNTESTED_QUALIFIED_RUNTIME_UNAVAILABLE",
+    "reviewer_machine_observed": "ephemeral Linux tool container, not user's governed Mac or existing qualified OpenCode review worktree",
+    "observed_OS": "Linux",
+    "observed_interpreter": "/opt/pyvenv/bin/python3",
+    "observed_python_version": "3.13.5",
+    "matches_candidate_declared_qualified_runtime": false,
+    "candidate_author_declared_interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+    "candidate_author_interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "qualified_runtime_resolved": false,
+    "qualified_sparse_worktree_resolved": false,
+    "command_required_at_actual_governed_clean_checkout": "PYTHONPATH=. /Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11 -m pytest rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py -q -p no:randomly",
+    "command_executed": false,
+    "exit_code": null,
+    "tests_passed": null,
+    "tests_failed": null,
+    "reasons": [
+      "No authorized governed Mac/shared-store sparse worktree or verified executable is connected to this review context",
+      "The environment here offers Linux Python 3.13.5, not the source's specified macOS CPython 3.11.3",
+      "Spinning up unqualified checkout or impersonating the Mac would not constitute clean committed qualified execution and violates explicit no-invented-workflow boundary"
+    ],
+    "required_followup": "Existing independent qualified reviewer pins candidate SHA 22cd4976... in clean worktree, verifies model/interpreter/environment, runs its 22 tests and new adversarial reproductions, records exact exit codes/pytest versions/clean git status and captured assertions; no code edits by this reviewer"
+  },
+  "author_report_only": {
+    "test_report": "22 passed",
+    "asserted_exit_code": 0,
+    "reported_head_at_run": "63cdc0b5bb4c382acf558e040b3669b787fc245f",
+    "final_candidate_commit": "22cd4976e3f9f860c7fe1bd889d3cc5faa44f8f3",
+    "independently_confirmed": false,
+    "warning": "The test and code were uncommitted at author run; author report cannot substitute for independent execution at final SHA"
+  },
+  "prohibitions": {
+    "survey_source_access": false,
+    "production_edits": false,
+    "model_use_grant_issued": false,
+    "self_adoption": false,
+    "security_deployment_claim": false,
+    "V3_actors": false
+  },
+  "binary_decision_rule": "Confirmed source-static absence of required real G2 and distinct XOR merits FAIL_REQUIRED_CORRECTION even though execution is untested; no claim of independently green or independently failing test runtime",
+  "need_to_stop": true
+}
