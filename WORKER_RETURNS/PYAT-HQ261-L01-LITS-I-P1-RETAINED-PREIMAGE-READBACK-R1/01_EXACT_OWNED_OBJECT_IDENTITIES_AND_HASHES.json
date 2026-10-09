@@ -1,0 +1,80 @@
+{
+  "schema": "PYAT_HQ261_L01_EXACT_OWNED_OBJECT_IDENTITIES_AND_HASHES@1",
+  "commission": "PYAT-HQ261-L01-LITS-I-P1-RETAINED-PREIMAGE-READBACK-R1",
+  "branch": "agent/deepseek-harness-pyat-hq261-lits-i-p1-retained-preimage-inspection-r1",
+  "head_at_inspection": "ebc39373e83b2fcf9831e16d8a469d1f69f7fb98",
+  "frozen_branch_base": "788b2bf7e53c35e25d3f83b638e989169f3d990c",
+  "live_control": "integration/pre-main-reconciliation-r1 @ 1ff7c74f6bef580ba3ce0738b7a9ac6b560ca2d7",
+  "sealed_hq261_checkpoint": "20261009-PYAT-HQ261-G1-TRUST-G3-LOCAL-LITS-P1-GHANA-R1 @ 91545f05a71190cde453d9d6b2f0ef1bf69154b9",
+  "warrant": "PYAT_CONTROL_ROOM/HQ261_LITS_I_RETAINED_CANONICAL_P1_READ_ONLY_CUSTODY_INSPECTION_R1.md",
+  "s01_report_commit": "465c87d218fdbb9892a5e0d712392d3a60a6b283",
+  "readback_result": "CUSTODY_BLOCKER__AUTHORIZED_ARTIFACT_ABSENT_ON_THIS_HOST",
+  "authorized_object": {
+    "relative_path": "court/oracle_producers/LITS_I/current_i05_materialization_checkpoint_v3.json",
+    "recorded_persistent_path": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_CUSTODY/PREMAIN-FIABC-LITS-FINAL-SUCCESS-DURABLE-CUSTODY-R1/payload/PREMAIN-FIABC-LITS-FINAL-CANONICAL-CLOSURE-SOURCE-RETRY-R1/court/oracle_producers/LITS_I/current_i05_materialization_checkpoint_v3.json",
+    "document_sha256_expected": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726",
+    "bytes_expected": 3404445161,
+    "git_disposition": "PERSISTENT_LOCAL_HEAVYWEIGHT_PAYLOAD",
+    "git_path": null,
+    "allowed_pointer": "/material/canonical_empirical_object_closure",
+    "closure_sha256_expected": "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415",
+    "present_on_this_host": false,
+    "observed_sha256": null,
+    "observed_bytes": null,
+    "attempted_path_test": "test -f <persistent_path> -> ABSENT",
+    "first_existing_ancestor": "/Users/matthewsmith/Desktop/Rawlsing",
+    "store_root_present": false,
+    "store_root": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_CUSTODY"
+  },
+  "warranted_selectors": {
+    "candidate_sha256": "0373f9117bb342746a870d61e743e6420a02757df76d4e46e6335b98acccf2e3",
+    "candidate_role": "D02_P1_JOINT_DEPENDENCE",
+    "query_roles": [
+      {"role": "JOINT", "query_sha256": "6ee12199bb7b5aabd62f0bd18d469d115b48d2cb0b5f30b36ff48a23903c6cbd", "fact_sha256": "fb8bd6e50f27d77ed97827ba3ff712df5951e438d60b5a0194f9953107e3614b", "raw_denominator_claimed": 24630},
+      {"role": "MARGINAL_0", "query_sha256": "7abe35df3bcf4e586c0aa70f4d3b6968e4bf9b3e76329b759d9dce1a0fe9ee", "fact_sha256": "4e72458484c1dd560f32987ac49c81908ddd47ccad325e2d617f5109792d3145", "raw_denominator_claimed": 24897},
+      {"role": "MARGINAL_1", "query_sha256": "169774a791eff18a8bd9541785bccab4a525774c750375aaccad1ff630d47a9d", "fact_sha256": "ef51aa329781a81d8bf6034a907e936ba2bba0c28cafb95209ee50aa92809765", "raw_denominator_claimed": 28325}
+    ],
+    "predicate_sha256": "ac3fcb4e32a41f9972004b2c31da61e9b32ba69568a795d2c1e584c9bed21be0",
+    "measure_basis_sha256": "25e90c83f1f226ce7eb6a337018635b28427ae90446f3e4d825a1788c43336ec",
+    "verification_status_of_selectors": "UNVERIFIED_ON_THIS_HOST__AUTHORIZED_PREIMAGE_ABSENT__SELECTORS_REPRODUCED_FROM_WARRANT_AND_S01_ONLY"
+  },
+  "observed_objects_on_this_host": {
+    "git_banked_precheck_not_a_substitute": {
+      "relative_path": "WORKER_RETURNS/PREMAIN-FIABC-LITS-FINAL-SUCCESS-DURABLE-CUSTODY-R1/source_retry_evidence/current_i05_precheck.json",
+      "git_blob": "284717079923f85b84c589159491d02a6681bd86",
+      "sha256": "1ffbcb0f02e0c6b89a09cb255ce9342cbcb162ab2a1302de0ca8ade24990eed6",
+      "bytes": 83613,
+      "used_as_evidence": false,
+      "reason": "not the warranted object (3.4 GB checkpoint); one-file warrant does not extend to it"
+    },
+    "in_repo_lits_i_directories": [
+      "WORKER_RETURNS/PREMAIN-FIABC-LITS-CANONICAL-EMPIRICAL-CLOSURE-SOURCEBACKED-R1/court/oracle_producers/LITS_I/",
+      "WORKER_RETURNS/PREMAIN-FIABC-LITS-EXECUTED-ROLE-CLOSURE-REPAIR-AND-SOURCE-RETRY-R1/court/oracle_producers/LITS_I/"
+    ],
+    "note": "these directories contain current_i05_precheck.json and small facades only; the 3.4 GB materialization checkpoint v3 is not present in any of them and is not tracked in Git"
+  },
+  "search_evidence": {
+    "filename_search_home_depth12_excluding_library": "NO MATCH for current_i05_materialization_checkpoint_v3.json",
+    "directory_search_home_depth8_excluding_library": "NO MATCH for LOCAL_CUSTODY",
+    "all_git_worktrees_checked": "NO worktree contains court/oracle_producers/LITS_I/current_i05_materialization_checkpoint_v3.json",
+    "git_ls_tree": "path is NOT tracked in the integration tree",
+    "custody_manifest_source": "WORKER_RETURNS/PREMAIN-FIABC-LITS-FINAL-SUCCESS-DURABLE-CUSTODY-R1/custody_manifest.json (content_addressed_payload.checkpoint_v3_path / all_payload_files row)",
+    "producer_retention_command": "WORKER_RETURNS/PREMAIN-FIABC-LITS-CANONICAL-EMPIRICAL-CLOSURE-RETENTION-R1/07_ONE_PASS_SOURCE_BACKED_EXECUTION_COMMAND.md (writes checkpoint v3 into $FIABC_LITS_WORK_ROOT from $LITS_SOURCE_PATH)"
+  },
+  "raw_source": {
+    "path_recorded_by_s01": "Data/LiTS_I.dta",
+    "sha256_recorded_by_s01": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "opened": false,
+    "hashed": false,
+    "reason": "raw survey access is forbidden by the warrant and by the commission"
+  },
+  "preimages_rehydrated": [],
+  "ordered_targets_determined": false,
+  "source_native_categories_determined": false,
+  "risk_set_determined": false,
+  "response_configuration_determined": false,
+  "q301_2_x_q301_7_assertion": "UNPROVABLE_ON_THIS_HOST",
+  "s01_provisional_claim_status": "REMAINS_PROVISIONAL__NEITHER_CONFIRMED_NOR_RETRACTED",
+  "self_adoption": "NOT_PERFORMED",
+  "terminal": "HQ261_L01_RETURNED__NO_SELF_ADOPTION"
+}
