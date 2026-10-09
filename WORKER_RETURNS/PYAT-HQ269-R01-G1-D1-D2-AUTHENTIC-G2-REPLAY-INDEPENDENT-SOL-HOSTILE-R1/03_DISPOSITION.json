@@ -1,0 +1,64 @@
+{
+  "schema": "PYAT_HQ269_R01_G1_D1_D2_INDEPENDENT_REVIEW@1",
+  "terminal": "HQ269_R01_RETURNED_FOR_HQ__NO_SELF_ADOPTION",
+  "verdict": "HOLD_EXACT_UNPROVED_EDGE",
+  "source_static_grade": "AFFIRMATIVE_D1_D2_AND_F1_F6_AT_DECLARED_SOURCE_FREE_G1_DEVELOPMENT_SCOPE",
+  "qualified_runtime_grade": "INDEPENDENT_STATIC_ONLY__RUNTIME_UNREPRODUCED",
+  "reviewer": "GPT-6 separate ChatGPT session; no involvement in HQ266/HQ267/HQ268 author or self-review; precise Sol High runtime option not tool-verifiable",
+  "repo": "maidiu/rawlsing",
+  "commission_tip": "10e55c530ac462bd967de23950fa92de12c2c0b6",
+  "sealed_hq269_handoff": "671f97094d5e75404cda0e65bfbf809aaf5b3e8d",
+  "candidate_code_sha": "46a95a8e62e3e790da3b84dfa7ab1ae4d5bce6bd",
+  "candidate_return_head": "f10523e1584086f38a640505e9a54155f3aef9a0",
+  "code_blobs": {
+    "ingress": "74e6ee826e8b6a2adebe84969fedcea5716d5b63",
+    "test": "64b6c747f76a1909b676566e6b529ed10456d33b",
+    "SA": "3e40caca29e8c96ee1f412f919cfc7dba63f96c4",
+    "G2": "848d2d0eedb04b792747e9d6aaa49bb39d108a2c"
+  },
+  "findings": {
+    "D1": "STATIC_CORRECTED: exact 19-key expected identity gate at construction and serve; all expected/observed keys compared before SA/G2/F8",
+    "D2": "STATIC_CORRECTED_LOCALLY: actual SA replay_identity used and separate order included in local origin hash",
+    "R1": "Owner expected identity derived from same source-free producer; internal invariant, not independent root",
+    "R2": "Top-level source and cell containers read-only, nested trusted objects mutable in-process",
+    "F1": "Real original C1 -> SA -> authenticated G2 -> bound F8, unchanged evidence",
+    "F2": "Original 4-respondent XOR q1 n2 C0=1 C1=1; q2 n1 C0=0 C1=1; same universe/release different C1 identities",
+    "F3": "Provenance/authority/evidence pre-F8 identity comparison; author tests inject false positive provenance",
+    "F4": "Real C1 ZERO_SUPPORT, SA NO_ADMITTED_SOURCE; others handler-only",
+    "F5": "Exact plain SelectedRequest types, no deployed isolation",
+    "F6": "Positive F8 nonvacuity and zero-F8 refusal assertions, no raw F8 selected receipt"
+  },
+  "SA_replay_order_residual": {
+    "receipt_dataclass_fields": 12,
+    "material_fields": 11,
+    "excluded": "canonical_replay_only_order",
+    "local_origin_hash_includes_order": true,
+    "owner_normative_disposition": "HOLD__separate SA-wide semantic interpretation, not an ingress grant"
+  },
+  "runtime": {
+    "independent_pytest_executed": false,
+    "qualified_independent_clean_checkout_available": false,
+    "author_test_count_claims_only": {
+      "G01": 96,
+      "G2_SA": 199,
+      "C1_query": 80,
+      "combined": 375
+    },
+    "independent_test_exit_codes": null
+  },
+  "next_edges": [
+    "Independent qualified source-free clean-commit Python 3.11.3 runtime run and hostile repro",
+    "Owner-native authority clarification whether SA canonical replay-only order intentionally nonsemantic or replay identity should include it",
+    "Separately granted G0b and actual G3/B5 T1 selected-service join if later authorized"
+  ],
+  "prohibitions_respected": {
+    "source_access": false,
+    "code_changes": false,
+    "self_adoption": false,
+    "EE14_G0b_issued": false,
+    "T1_claimed": false,
+    "deployment_claimed": false,
+    "V3_actors": false
+  },
+  "review_files_only": true
+}
