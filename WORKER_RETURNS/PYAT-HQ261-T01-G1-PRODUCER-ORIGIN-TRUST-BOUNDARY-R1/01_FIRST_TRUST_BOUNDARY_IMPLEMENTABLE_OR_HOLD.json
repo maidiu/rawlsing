@@ -1,0 +1,142 @@
+{
+  "schema": "PYAT_HQ261_T01_FIRST_TRUST_BOUNDARY_DECISION@1",
+  "terminal": "HQ261_T01_RETURNED__NO_SELF_ADOPTION",
+  "disposition": "CONDITIONAL_OWNER_INGRESS_IMPLEMENTABLE__CURRENT_G1_T1_HOLD",
+  "g01": {
+    "defect": "AFFIRMED",
+    "impossibility_of_any_in_process_solution": "NOT_PROVEN",
+    "observed_source": "G01 test blob 4babf7eeada1241dd69ac9742dd87819a95341d6 at 6ea8fd5cc963e0217d42027e8c190d41e6fa1b11",
+    "reported_tests": "10 pass intentionally asserting vulnerability; no reviewer runtime"
+  },
+  "control": {
+    "repo": "maidiu/rawlsing",
+    "branch": "integration/pre-main-reconciliation-r1",
+    "observed_head": "1ff7c74f6bef580ba3ce0738b7a9ac6b560ca2d7",
+    "sealed_checkpoint": "20261009-PYAT-HQ261-G1-TRUST-G3-LOCAL-LITS-P1-GHANA-R1",
+    "decision": "HQD-2026-10-09-261",
+    "commission_tip": "d8e01876423f55a844773a13fdc008a2c78e953e",
+    "frozen_base": "788b2bf7e53c35e25d3f83b638e989169f3d990c"
+  },
+  "inspected_code": {
+    "c1": {
+      "path": "rawlsing_next/pre553_analytical_composition.py",
+      "blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "api": "compose_positioned_subject_possibility",
+      "custody": "builds evidence with provenance/authority in hashed evidence preimage; includes evidence_ref, fact/authority/provenance/lineage in composed identity"
+    },
+    "f8": {
+      "path": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "api": "evaluate_positioned_subject_possibility",
+      "exposure": "accepts caller-supplied evidence; F8 result/replay ignores provenance_refs and authority_refs"
+    },
+    "applicability": {
+      "path": "rawlsing_next/pre553_service_source_applicability.py",
+      "blob": "3e40caca29e8c96ee1f412f919cfc7dba63f96c4",
+      "api": "resolve_service_source_applicability",
+      "boundary": "source eligibility, not model-use issuance"
+    },
+    "binder": {
+      "path": "rawlsing_next/pre553_service_f8_source_scope_binding.py",
+      "blob": "848d2d0eedb04b792747e9d6aaa49bb39d108a2c",
+      "api": "evaluate_bound_positioned_subject_possibility",
+      "boundary": "rederives scope binding but passes caller evidence unchanged; no C1 provenance guarantee"
+    }
+  },
+  "actual_service_status": "NO_VERIFIED_DEPLOYED_OWNER_ONLY_EXTERNAL_ENTRYPOINT_OR_CLIENT_PRIVILEGE_BOUNDARY",
+  "threat_fork": {
+    "A": {
+      "adversary": "external data-only service client; cannot execute or mutate owner process and no artifact injection",
+      "decision": "NEW_NARROW_OWNER_ENTRYPOINT_FEASIBLE",
+      "prerequisite": "HQ fixes explicit caller contract and owner-controlled runtime/registry/fixture source",
+      "independent_principal": "a legitimately separately controlled service process from external clients is sufficient for this bounded threat; no AT07 issuer-root implied"
+    },
+    "B": {
+      "adversary": "arbitrary same-process Python execution/monkeypatch of modules, registries, verifier or fixtures",
+      "decision": "TRUSTED_PRINCIPAL_HOLD",
+      "prerequisite": "real isolated service execution and independently controlled identity/registry/runtime integrity plus authenticated IPC; not a self-hash"
+    },
+    "C": {
+      "adversary": "caller able to construct and pass C1 result/evidence or authority registry through same selected ingress",
+      "decision": "REJECT_ROUTE_AS_UNAUTHENTICATED",
+      "prerequisite": "remove those caller-controlled inputs, not add a digest"
+    }
+  },
+  "first_positive_integration_owner": "EE14 selected service integration owner, over accepted C1 + source applicability + G2 binder + F8",
+  "owner_only_ingress_contract": {
+    "caller_allowed": [
+      "fixed source-free query identifier q1 or q2",
+      "bounded data-only request fields admitted by adopted target-use permission"
+    ],
+    "caller_forbidden": [
+      "PossibilitySliceEvidence",
+      "AnalyticalCompositionResult",
+      "EmpiricalFact",
+      "repository",
+      "authority_registry",
+      "model_rule",
+      "service authority/permission issuance",
+      "witness/predicate construction callback",
+      "applicability authority record",
+      "currentness result",
+      "arbitrary Python object or executable"
+    ],
+    "inputs_minted_or_selected_by_owner": [
+      "preapproved source-free fixture repository",
+      "exact source universe and release",
+      "registered query/predicate/witness and same-respondent risk-set identity",
+      "adopted EE14 target-use and model rule if independently granted",
+      "genuine service applicability request and receipt",
+      "G2 binding request and exact source-scope receipt"
+    ],
+    "operations": [
+      "execute actual C1 producer on owner-held inputs",
+      "check C1 composed_result_identity_hash against full identity_material and producer fact/witness/query/release references",
+      "check canonical C1 evidence preimage hash against evidence_ref and owner-held fact/witness/authority source; reject forged full and partial evidence",
+      "pass exactly owner-produced evidence object to existing evaluate_bound_positioned_subject_possibility",
+      "check F8 result equals original C1 internal F8 result and full producer evidence remains available",
+      "bind a separate selected service receipt to C1 identity, evidence preimage identity, applicability/G2, model rule, F8 result, B5 selected-current/as-of and replay; never treat digest itself as credential"
+    ],
+    "restrictions": [
+      "no direct evidence argument exposed at selected ingress",
+      "no low-level F8 result promotable into T1 receipt",
+      "no cross-release or cross-source pooling",
+      "zero walkback/proxy for source-free XOR T1",
+      "no fake CURRENT from currentness-unrequested binder"
+    ],
+    "reason_this_is_not_speculative_wrapper": "the endpoint removes a proven caller-control edge and does new owner-input selection and origin verification, rather than rehashing the same caller-held material"
+  },
+  "independent_verifier_control": {
+    "must_replay_from": "owner-controlled registered C1 inputs, authoritative applicability and permission record and selected product key, not caller-submitted expected hash",
+    "must_check": [
+      "C1 evidence preimage vs evidence_ref",
+      "C1 full identity and original query/fact/predicate/witness authority lineage",
+      "q1 q2 distinct same-source actual producer joints and denominators",
+      "adopted G2 result with authentic scope and unmodified C1 evidence",
+      "selected composite receipt and B5 replay/currentness only if actually selected",
+      "hostile evidence replacement refusal and direct raw F8 bypass classification"
+    ],
+    "execution_claim": "NONE_THIS_REVIEW_DOCUMENTARY_ONLY"
+  },
+  "exact_next_commission": {
+    "title": "EE14 G1 bounded C1 producer-owned selected ingress and hostile q1/q2 court — R1",
+    "status": "PROPOSED_FOR_HQ__NOT_ISSUED",
+    "approval_predicate": "HQ declares data-only external/owner-internal service caller boundary and its controlled service runtime; existing G0b hold separately preserved",
+    "write_surface": "one selected EE14 owner ingress function/module and one source-free positive/hostile integration test; exact paths and committed baseline set in next HQ commission",
+    "task": "Wire owner-held C1 result and preimage to adopted applicability/G2/F8, deny all caller-supplied evidence/composition, bind result to entire C1 authority/provenance, demonstrate q1/q2 and replay/forgery negatives; do not change native F8 or invent issuer",
+    "pass_condition": "independent reviewer verifies clean committed positive and hostile tests, owner-specific authenticated receipt on external-data-only threat boundary, no grant claimed",
+    "failure_condition": "adversary can pass forged C1 objects or mutate process, owner inputs are caller-controlled, canonical owner replay not possible or correct authority absent: fail closed/hold"
+  },
+  "other_gates": {
+    "G0b": "UNISSUED_EE14_MODEL_USE_PERMISSION",
+    "G2": "ADOPTED_AT_SOURCE_SCOPE_BOUNDED_GRAIN_NOT_ORIGIN",
+    "G3": "AUTHOR_LOCAL_POSITIVE_INDEPENDENT_FINAL_REVIEW_PENDING_NOT_SERVICE_JOIN",
+    "F7_AT07": "ONLY_IF_SELECTED_CONSUMED",
+    "FF02_EE12_T2_V3": "EXCLUDED"
+  },
+  "forbidden_actions_executed": [],
+  "code_modified": false,
+  "runtime_executed": false,
+  "source_data_opened": false,
+  "self_adopted": false
+}
