@@ -1,0 +1,142 @@
+{
+  "schema": "PYAT_HQ254_E01_ORIGINAL_WAVE_VERSION_MAPPING@1",
+  "disposition": "DOCUMENTARY_VERSION_MAPPING_PARTIAL__BYTE_TO_RELEASE_BRIDGE_UNPROVED",
+  "terminal": "HQ254_E01_RETURNED_FOR_HQ_REVIEW__NOT_ADOPTED",
+  "authority": {
+    "commission_tip": "a264c028a7921bb92e5ab56b4d79399f4149a09f",
+    "branch": "agent/rabochii-pyat-hq254-evs-a048-design-version-r1",
+    "sealed_hq254_checkpoint": "20261008-PYAT-HQ254-T01-T0-POSITIVE-FIVE-PARALLEL-ISSUED-R1",
+    "sealed_handoff_commit": "6072a6891f47e713df0f70f0dec8770fc0abac32",
+    "raw_survey_access": false,
+    "temporal_result_produced": false,
+    "pair_authority_issued": false
+  },
+  "frozen_retained_sources": [
+    {
+      "source_id": "SRC12",
+      "file": "EVS 1990.sav",
+      "bytes": 24341244,
+      "sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+      "repo_witness": {
+        "path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_BYTE_INVENTORY.csv",
+        "ref": "a3d44f554e4e4fa01223679035599019ae2de527",
+        "blob": "2a87ed920606be95003684e3775227ff8e94639c",
+        "lines": "13"
+      },
+      "byte_to_official_release_match": "UNPROVED_WITHOUT_RAW_ACCESS_OR_PUBLIC_CHECKSUM_BRIDGE"
+    },
+    {
+      "source_id": "SRC14",
+      "file": "EVS 2008.sav",
+      "bytes": 63832833,
+      "sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+      "repo_witness": {
+        "path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_BYTE_INVENTORY.csv",
+        "ref": "a3d44f554e4e4fa01223679035599019ae2de527",
+        "blob": "2a87ed920606be95003684e3775227ff8e94639c",
+        "lines": "15"
+      },
+      "byte_to_official_release_match": "UNPROVED_WITHOUT_RAW_ACCESS_OR_PUBLIC_CHECKSUM_BRIDGE"
+    }
+  ],
+  "documentary_layers": {
+    "evs_1990_integrated": {
+      "study": "ZA4460",
+      "version": "3.0.0",
+      "release": "2011-11-20",
+      "doi": "10.4232/1.10790",
+      "role": "OFFICIAL_INTEGRATED_WAVE_RELEASE",
+      "source": "https://access.gesis.org/dbk/50678",
+      "evidence": "ZA4460 Variable Report PDF p.11 lines 236-242; current EVS 1990 wave page",
+      "relation_to_SRC12": "PLAUSIBLE_REFERENCE_ONLY__EXACT_BYTE_MATCH_UNPROVED"
+    },
+    "austria_1990_field_archive": {
+      "study": "ZA4479",
+      "version": null,
+      "doi": null,
+      "role": "NATIONAL_FIELD_QUESTIONNAIRE_ARCHIVE_IDENTITY_PRINTED_ON_PRIMARY_SCAN",
+      "repo_witness": {
+        "path": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ253_R01_R02_INDEPENDENT_INTAKE_AUSTRIA_PRIMARY_SCAN_AND_T0_FIRST_TEST_R1.md",
+        "ref": "85f2835dc5b26735ed9ed36a6cb52ee11fc5abea",
+        "blob": "db045dff5d4340faa9abe604ef6e0cc8fe1f2c9e",
+        "lines": "26-38"
+      },
+      "warning": "DO_NOT_TREAT_AS_PROVED_SEPARATELY_DISTRIBUTED_NATIONAL_DATA_RELEASE"
+    },
+    "evs_2008_austria_national": {
+      "study": "ZA4754",
+      "version": "1.1.0",
+      "release": "2010-11-30",
+      "doi": "10.4232/1.10152",
+      "role": "OFFICIAL_NATIONAL_DATASET",
+      "source": "https://access.gesis.org/dbk/17933",
+      "evidence": "Austria Method Report PDF pp.0,22; lines 0-5 and 676-678",
+      "relation_to_SRC14": "POSSIBLE_ANCESTRAL_NATIONAL_LAYER__EXACT_BYTE_MATCH_UNPROVED"
+    },
+    "evs_2008_integrated": {
+      "study": "ZA4800",
+      "version": "5.0.0",
+      "release": "2022-06-08",
+      "doi": "10.4232/1.13841",
+      "role": "OFFICIAL_CURRENT_INTEGRATED_WAVE_RELEASE",
+      "source": "https://www.gesis.org/en/european-values-study/data-and-documentation/4th-wave-2008",
+      "relation_to_SRC14": "PLAUSIBLE_REFERENCE_ONLY__EXACT_BYTE_MATCH_UNPROVED"
+    },
+    "evs_trend_harmonized": {
+      "study": "ZA7503",
+      "version": "3.0.0",
+      "release": "2022-12-14",
+      "doi": "10.4232/1.14021",
+      "role": "HARMONIZED_TREND_LAYER_CONTAINING_A048",
+      "source": "https://www.gesis.org/en/european-values-study/data-and-documentation/evs-trend-file-1981-2017",
+      "warning": "HARMONIZATION_LAYER_IS_NOT_PROOF_OF_SOURCE_NATIVE_ADMINISTRATION_INVARIANCE"
+    },
+    "aussda_austria_longitudinal": {
+      "study": "AUSSDA DOI 10.11587/C4YBOT",
+      "version": "1.2",
+      "publication": "2019-07-18",
+      "role": "DERIVED_AUSTRIA_1990_2018_REPEATED_CROSS_SECTION_PRODUCT",
+      "source": "https://data.aussda.at/dataset.xhtml?persistentId=doi:10.11587/C4YBOT",
+      "warning": "SEPARATE_DERIVED_PRODUCT__NOT_A_BYTE_IDENTITY_BRIDGE_FOR_SRC12_OR_SRC14"
+    }
+  },
+  "national_identity_discrepancy": {
+    "observed_bad_table_claim": "ZA4460 v3.0.0 Variable Report p.11 prints Austria ZA4754",
+    "contradictory_same_report_rule": "same report says 1981/1990 integrated datasets only; national datasets additionally accessible for 1999/2008",
+    "primary_1990_field_identity": "ZA4479",
+    "official_2008_austria_identity": "ZA4754 v1.1.0 / DOI 10.4232/1.10152",
+    "adjudication": "HIGH_CONFIDENCE_METADATA_TABLE_DEFECT_OR_CONTAMINATION_IN_1990_REPORT__NOT_SECOND_VALID_1990_ZA4754_IDENTITY",
+    "authority_level": "DOCUMENTARY_INFERENCE__NOT_ARCHIVE_MUTATION_AUTHORITY"
+  },
+  "source_native_to_harmonized_relation": {
+    "1990": {
+      "native_integrated_variable": "q467c",
+      "trend_variable": "A048",
+      "evidence_repo": {
+        "path": "WORKER_RETURNS/PYAT-HQ250-S03-EVS-ONE-CONSTRUCT-COMPARABILITY-R1/EXACT_TWO_WAVE_LINEAGE.json",
+        "ref": "d7c529a2aaa424e558137daeb0f81ea678955928",
+        "blob": "b21613ce1e46ec730a5d8003658b75d40f70db22",
+        "lines": "34-86"
+      },
+      "exact_SRC12_column_and_release_correspondence": "UNPROVED"
+    },
+    "2008": {
+      "native_integrated_variable": "v184",
+      "trend_variable": "A048",
+      "evidence_repo": {
+        "path": "WORKER_RETURNS/PYAT-HQ250-S03-EVS-ONE-CONSTRUCT-COMPARABILITY-R1/EXACT_TWO_WAVE_LINEAGE.json",
+        "ref": "d7c529a2aaa424e558137daeb0f81ea678955928",
+        "blob": "b21613ce1e46ec730a5d8003658b75d40f70db22",
+        "lines": "88-151"
+      },
+      "exact_SRC14_column_and_release_correspondence": "UNPROVED"
+    }
+  },
+  "qualification": {
+    "semantic_lineage": "DOCUMENTARY_CANDIDATE",
+    "official_release_identity": "PARTIAL_PASS",
+    "retained_byte_to_release_identity": "FAIL_OPEN_BLOCKER",
+    "harmonized_A048_as_invariance_proof": false,
+    "pair_ready": false
+  }
+}

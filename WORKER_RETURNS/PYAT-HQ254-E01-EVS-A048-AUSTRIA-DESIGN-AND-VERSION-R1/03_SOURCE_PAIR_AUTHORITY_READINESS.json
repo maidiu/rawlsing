@@ -1,0 +1,103 @@
+{
+  "schema": "PYAT_HQ254_E01_SOURCE_PAIR_AUTHORITY_READINESS@1",
+  "disposition": "NOT_READY__DOCUMENTARY_METHOD_VERSION_AND_MEASUREMENT_GAPS",
+  "terminal": "HQ254_E01_RETURNED_FOR_HQ_REVIEW__NOT_ADOPTED",
+  "commission_tip": "a264c028a7921bb92e5ab56b4d79399f4149a09f",
+  "branch": "agent/rabochii-pyat-hq254-evs-a048-design-version-r1",
+  "sealed_hq254": {
+    "checkpoint": "20261008-PYAT-HQ254-T01-T0-POSITIVE-FIVE-PARALLEL-ISSUED-R1",
+    "handoff_commit": "6072a6891f47e713df0f70f0dec8770fc0abac32",
+    "row_status": "ISSUED_NEEDS_HUMAN_LAUNCH"
+  },
+  "positive_documentary_findings": [
+    "1990_AT_FIELD_ITEM_ALREADY_VERIFIED_BY_HQ253__NOT_RERETRIEVED",
+    "1990_AT_WEIGHT_G_AGE_GENDER_CALIBRATION_DOCUMENTED_BY_GESIS",
+    "1990_AT_MULTISTAGE_RANDOM_SECONDARY_CORROBORATION_EXISTS",
+    "2008_AT_PRIMARY_MULTISTAGE_STRATIFIED_CLUSTERED_RANDOM_ADDRESS_DESIGN_DOCUMENTED",
+    "2008_AT_375_ELECTION_UNIT_SAMPLEPOINTS_AND_LAST_BIRTHDAY_SELECTION_DOCUMENTED",
+    "2008_AT_NATIVE_UNIVERSE_18PLUS_PRIVATE_HOUSEHOLD_RESIDENTS_REGARDLESS_CITIZENSHIP_DOCUMENTED",
+    "1990_AND_2008_SUBSTANTIVE_TARGET_CLAUSE_AND_RESPONSE_DIRECTION_MATCH_AT_HQ253_GRAIN",
+    "1990_2008_ADMINISTRATION_DISPLAY_DIFFERENCE_CONFIRMED",
+    "ZA4754_1990_TABLE_ENTRY_CONFLICTS_WITH_PRIMARY_1990_ZA4479_AND_OFFICIAL_2008_ZA4754",
+    "OFFICIAL_RELEASE_LAYERS_ZA4460_ZA4754_ZA4800_ZA7503_DISTINGUISHED"
+  ],
+  "gates": {
+    "construct_semantics": "PASS_DOCUMENTARY_AT_HQ253_GRAIN",
+    "field_administration_invariance": "UNPROVED__KNOWN_PROTOCOL_DIFFERENCE",
+    "austria_1990_sample_design": "PARTIAL__SECONDARY_MULTISTAGE_RANDOM__PRIMARY_COUNTRY_MECHANICS_MISSING",
+    "austria_1990_weight": "PARTIAL_PASS__AGE_GENDER_CALIBRATION_EXISTS__INCLUSION_WEIGHT_NOT_PROVED",
+    "austria_2008_sample_design": "PRIMARY_DOC_PASS_AT_METHOD_REPORT_GRAIN",
+    "austria_2008_weight_choice": "UNRESOLVED__EVS_CALIBRATION_AND_COUNTRY_ORIGINAL_BOTH_EXIST",
+    "common_target_population": "CANDIDATE_ONLY__CITIZENSHIP_AND_AGE_BOUNDARY_REQUIRE_SOURCE_BINDING",
+    "item_risk_denominator": "UNRESOLVED_AT_RETAINED_BYTE_GRAIN",
+    "retained_SRC12_to_official_version": "UNPROVED",
+    "retained_SRC14_to_official_version": "UNPROVED",
+    "design_based_1990_uncertainty": "BLOCKED",
+    "temporal_difference_estimand": "NOT_AUTHORIZED",
+    "pair_relation_authority": "ABSENT",
+    "world_consumer": "OUT_OF_SCOPE_AND_NOT_EMITTED"
+  },
+  "blockers": [
+    {
+      "id": "HQ254-E01-BLOCK-1990-PRIMARY-DESIGN-001",
+      "problem": "No authoritative country-specific Austria-1990 method record has yet been banked for frame, exact sample type, stages/PSUs/strata, household/person selection, inclusion probabilities and nonresponse treatment.",
+      "owner": "GESIS/EVS archival methodology custodian; AUSSDA/University of Vienna Austrian-series custodian as independent national witness",
+      "disconfirming_test": "Primary country method shows quota/non-probability selection, incompatible frame, or non-reconstructable design inputs.",
+      "next_lawful_action": "Obtain and bank the public non-raw Austria-1990 method row/report and submit fixed evidence to independent survey-method review."
+    },
+    {
+      "id": "HQ254-E01-BLOCK-RETAINED-VERSION-BRIDGE-002",
+      "problem": "Frozen SRC12/SRC14 SHA-256 identities are not yet cryptographically or version-manifest bound to the claimed official GESIS release layers and exact source columns.",
+      "owner": "GESIS/EVS data archive/version custodian plus HQ source-identity adjudicator",
+      "disconfirming_test": "Official checksum/version/release metadata mismatches a retained SHA, file size, release identity or native variable lineage.",
+      "next_lawful_action": "Acquire public checksum/release manifest or other non-raw archive evidence binding retained bytes to official versions; do not infer from dimensions alone."
+    },
+    {
+      "id": "HQ254-E01-BLOCK-COMMON-POPULATION-003",
+      "problem": "2008 explicitly covers private-household residents regardless citizenship, while later Austrian longitudinal metadata describes an Austrian-citizen universe and the exact 1990 native frame/age boundary remains incompletely primary-qualified.",
+      "owner": "Survey-statistical target-population reviewer after source custodian facts are fixed",
+      "disconfirming_test": "Required 2008 citizenship restriction or matching 1990 frame cannot be source-verified, or would change the target materially.",
+      "next_lawful_action": "After method/version packet is fixed, adjudicate a common intersection target; otherwise retain separate native-wave estimands."
+    },
+    {
+      "id": "HQ254-E01-BLOCK-MEASUREMENT-PROTOCOL-004",
+      "problem": "1990 read-out/master-card representation and 2008 Liste-53 display/read protocol are not identical; no evidence yet proves the response-process difference negligible for the intended temporal use.",
+      "owner": "Independent survey-measurement/EE12 target-use reviewer",
+      "disconfirming_test": "Primary/validation evidence shows the presentation difference materially changes construct interpretation or response behavior.",
+      "next_lawful_action": "Review the already-banked protocol evidence for target-use tolerance; do not re-fetch the question texts."
+    },
+    {
+      "id": "HQ254-E01-BLOCK-UNCERTAINTY-005",
+      "problem": "1990 design-based variance is scientifically unsupported until primary design and variance inputs are resolved.",
+      "owner": "Independent survey statistician",
+      "disconfirming_test": "Primary documentation proves non-probability/quota design or lacks recoverable variance structure.",
+      "next_lawful_action": "Specify design-consistent variance only after blocker 001 is resolved; otherwise use explicitly model/sensitivity uncertainty if later authorized."
+    }
+  ],
+  "catalogue_identity_adjudication": {
+    "status": "HIGH_CONFIDENCE_DOCUMENTARY_INFERENCE__NOT_ARCHIVE_AUTHORITY",
+    "finding": "ZA4754 in the 1990 ZA4460 national-study table is inconsistent with the primary 1990 questionnaire identity ZA4479, the report's own integrated-only rule for 1990, and the official 2008 Austria national dataset ZA4754 v1.1.0.",
+    "forbidden_promotion": "DO_NOT_REWRITE_ARCHIVE_METADATA_OR_TREAT_ZA4479_AS_PROVED_BYTE_RELEASE_ID_WITHOUT_CUSTODIAN_EVIDENCE"
+  },
+  "permitted_candidate_products_after_future_resolution": {
+    "unweighted": "Wave-specific item-risk, substantive-valid sample approval proportion; sample-descriptive only.",
+    "weighted": "Wave-specific population approval proportion under an explicitly selected source-qualified weight and target population.",
+    "temporal": "Only after separate positive source-universe/comparability authority; repeated-cross-section contrast, never individual transition."
+  },
+  "uncertainty_requirements": {
+    "1990": "No design-based CI now. Need primary design/PSU/strata/inclusion facts; calibration weight alone insufficient.",
+    "2008": "Account for documented clustered/stratified design with available PSU/strata and selected weight logic; calibration alone insufficient.",
+    "measurement": "Administration/display uncertainty is non-sampling comparability uncertainty and must not be hidden inside sampling SE."
+  },
+  "execution_guards": {
+    "raw_SAV_DTA_opened": false,
+    "survey_values_read": false,
+    "temporal_result_calculated": false,
+    "sign_guessed": false,
+    "pair_authority_issued": false,
+    "source_operation_issued": false,
+    "production_or_world_consumer_changed": false
+  },
+  "smallest_next_lawful_action": "One fixed public documentary packet resolving Austria-1990 country design plus any public retained-byte/version bridge, followed by independent survey/source-authority adjudication.",
+  "final_readiness": "DOCUMENTARY_CANDIDATE_ONLY__NOT_VALID_C7_PAIR__NOT_TEMPORAL_CONSUMER"
+}
