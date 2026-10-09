@@ -1,0 +1,158 @@
+{
+  "additional_finding": {
+    "action_taken": "BANKED ONLY - no production edit, no adapter",
+    "id": "target_use_permission_divergence_not_refused",
+    "independently_found_by_this_worker": true,
+    "observed": "bind and evaluate both succeed with a result_hash identical to baseline",
+    "root_cause": "pre553_service_f8_source_scope_binding.py:881 copies request.bound_target_use_permission_refs into the binding and never compares it to the receipt request key"
+  },
+  "alias": "EXISTING_API_COMPATIBILITY_ACHIEVED_WITH_EXPECTED_CUSTODY_COUNTEREXAMPLE",
+  "boundaries_that_do_NOT_reject": [
+    "C1 producer identity substitution (not authenticated by F8)",
+    "binding vs receipt target-use permission divergence",
+    "evidence provenance/authority substitution"
+  ],
+  "boundaries_that_reject": [
+    "BINDING_RELEASE_GRAIN_MISMATCH",
+    "REQUESTED_SOURCE_NOT_ADMITTED",
+    "BINDING_SERVICE_GRAIN_MISMATCH",
+    "BINDING_REQUEST_RECEIPT_GRAIN_MISMATCH",
+    "non-admitted source absent from admissible_source_universe_refs"
+  ],
+  "branch": "agent/space-bunny-pyat-hq253-t0-c1-authf8-existing-api-discriminator-r1",
+  "changed_paths": [
+    "rawlsing_next/tests/test_pre553_scoped_rich_c1_f8_existing_api_discriminator.py",
+    "WORKER_RETURNS/PYAT-HQ253-T0-C1-AUTH-F8-EXISTING-API-DISCRIMINATOR-R1/"
+  ],
+  "custody_counterexample": {
+    "gap_is_narrow_because": [
+      "evidence_ref substitution DOES change result_hash",
+      "geometry substitution DOES change material()"
+    ],
+    "meaning": "parity with the direct C1 F8 result is NOT proof of producer provenance custody",
+    "mutation": "provenance_refs only (all other evidence fields held constant and asserted)",
+    "not_an_f8_vulnerability": true,
+    "observed_result_hash_changed": false,
+    "observed_state": "EXACT_SUPPORTED",
+    "predicted_by": "HQ251 R01 static review",
+    "prediction_confirmed": true
+  },
+  "disposition": "T0_EXISTING_APIS_SUFFICE; T1_CUSTODY_NOT_PROVED",
+  "execution": {
+    "collection_errors_pre_existing_and_unrelated": true,
+    "commands": [
+      {
+        "cmd": "pytest rawlsing_next/tests/test_pre553_scoped_rich_c1_f8_existing_api_discriminator.py -q -p no:cacheprovider",
+        "exit": 0,
+        "n": 1,
+        "result": "25 passed"
+      },
+      {
+        "cmd": "pytest 5 directly relevant unchanged courts",
+        "exit": 0,
+        "n": 2,
+        "result": "234 passed"
+      },
+      {
+        "cmd": "pytest -k 'analytical_composition or applicability or f8 or empirical_possibility or c1_at08 or higher_order'",
+        "exit": 1,
+        "n": 3,
+        "result": "357 passed, 9 pre-existing collection errors"
+      }
+    ],
+    "governed_certification_environment": false,
+    "interpreter": "Python 3.11.3",
+    "machine": "macOS 13.7.8 x86_64",
+    "pyarrow_pandas_pyreadstat_absent": true,
+    "pytest": "9.1.1 (pre-existing local venv, stdlib only)"
+  },
+  "explicitly_not_claimed": [
+    "T1 serving adoption",
+    "EE14 model-use permission",
+    "N9/OC05 current or as-of",
+    "empirical source occupancy",
+    "V3 or actor authority",
+    "producer custody certification",
+    "universal minority or recursive coverage from Q1/Q2 alone",
+    "native P07/AT07 activation",
+    "forged negative C1 measured artifacts",
+    "GT2 import"
+  ],
+  "falsifiable_outcome_selected": "Q1/Q2 positive reaches authenticated F8, provenance swap not detected by F8 result hash",
+  "frozen_oracle": {
+    "Q1_P_C1_given_A1": [
+      1,
+      2
+    ],
+    "Q2_P_C1_given_A1_B0": [
+      1,
+      1
+    ],
+    "anti_vacuity_Q1_flat_Q2_decisive": true,
+    "distinct_denominators": {
+      "q1": 2,
+      "q2": 1
+    },
+    "marginals_multiplied": false,
+    "observed_Q1_cells": [
+      [
+        0,
+        1,
+        [
+          1,
+          2
+        ]
+      ],
+      [
+        1,
+        1,
+        [
+          1,
+          2
+        ]
+      ]
+    ],
+    "observed_Q2_cells": [
+      [
+        0,
+        0,
+        [
+          0,
+          1
+        ]
+      ],
+      [
+        1,
+        1,
+        [
+          1,
+          1
+        ]
+      ]
+    ]
+  },
+  "is_ee14_grant": false,
+  "is_t1_serving_adoption": false,
+  "next": "HQ must issue an INDEPENDENT changed-candidate hostile reviewer separately. The test author does not approve its own result.",
+  "positive_finding": {
+    "claim": "zero-production-edit T0 reachability PROVED",
+    "currentness_result": "CURRENTNESS_NOT_REQUESTED",
+    "f8_state": "EXACT_SUPPORTED",
+    "first_edge_api_error": null,
+    "material_equals_direct_c1": true,
+    "requested_minimal_future_owner_terrain": null,
+    "result_hash_equals_direct_c1": true,
+    "stages_all_adopted_apis": [
+      "fx.direct_condition_composition",
+      "SA.resolve_service_source_applicability",
+      "B.bind_service_applicability_to_f8_scope",
+      "B.evaluate_bound_positioned_subject_possibility"
+    ]
+  },
+  "production_edits": 0,
+  "schema": "HQ253_FINAL_DISPOSITION@1.0.0",
+  "sealed_commission_tip_verified": "8d61676670506a85ad2e7fabc425c1cb46291e47",
+  "sealed_tip_verification": "remote refs/heads/agent/space-bunny-pyat-hq253-... resolved to the exact commissioned SHA; verified before any work",
+  "self_approval": false,
+  "terminal": "HQ253_T0_RICH_C1_AUTHENTICATED_F8_DISCRIMINATOR_RETURNED_FOR_INDEPENDENT_REVIEW__NOT_T1_ADOPTED"
+}
