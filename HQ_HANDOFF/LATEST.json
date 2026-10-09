@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261009-PYAT-HQ266-G01-XOR-VERIFIED-QUERY-AUTHORITY-G2-PARITY-REPAIR-R1",
-  "handoff_commit": "fbc016109b3ff805aebc90d134838599c667bc49",
+  "checkpoint_id": "20261009-PYAT-HQ267-G01-COMMITTED-G2-XOR-CORRECTION-INDEPENDENT-HOSTILE-REVIEW-R1",
+  "handoff_commit": "27d534fc04412205b17e66561c4c71cd256af7d5",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261009-PYAT-HQ266-G01-XOR-VERIFIED-QUERY-AUTHORITY-G2-PARITY-REPAIR-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261009-PYAT-HQ266-G01-XOR-VERIFIED-QUERY-AUTHORITY-G2-PARITY-REPAIR-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261009-PYAT-HQ266-G01-XOR-VERIFIED-QUERY-AUTHORITY-G2-PARITY-REPAIR-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261009-PYAT-HQ267-G01-COMMITTED-G2-XOR-CORRECTION-INDEPENDENT-HOSTILE-REVIEW-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261009-PYAT-HQ267-G01-COMMITTED-G2-XOR-CORRECTION-INDEPENDENT-HOSTILE-REVIEW-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261009-PYAT-HQ267-G01-COMMITTED-G2-XOR-CORRECTION-INDEPENDENT-HOSTILE-REVIEW-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -15,7 +15,7 @@
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
   "protected_execution_head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
-  "next_action": "LAUNCH_HQ266_G01_EXACT_QUERY_AUTHORITY_SOURCE_FREE_C1_G2_INGRESS_REPAIR_dfab8607177e__KEEP_GHANA_LITS_CUSTODY_HOLDS",
+  "next_action": "LAUNCH_HQ267_R01_FINAL_INDEPENDENT_HOSTILE_G01_REVIEW_b48b5b4fb7ce__NO_G1_ADOPTION_BEFORE_HQ__GHANA_LITS_CUSTODY_SEPARATE",
   "source_split_control_head": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "split_fanin_evidence_tip": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "joined_successor_return_tip": "b4dd6d6016367110c06317abe2cef276123b4c69",
@@ -62,7 +62,7 @@
   "pyat_current_handoff": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/CURRENT_HANDOFF.md",
   "pyat_current_grok_docket": "PYAT_CONTROL_ROOM/12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md",
   "pyat_fresh_hq_protocol": "PYAT_CONTROL_ROOM/13_FRESH_HQ_FULL_GROK_PROTOCOL.md",
-  "immediate_program_refinement": "HQ266_ORIGINAL_FOUR_CASE_XOR_QUALIFIED_AUTHOR_EXECUTION_Q1_N2_Q2_N1__INGRESS_G2_DRAFT_17_PASS_6_FAIL_REVERTED__FIX_QUERY_AUTHORITY_VS_SNAPSHOT_CONSTRUCTION_NOT_FIXTURE_OR_OWNER",
+  "immediate_program_refinement": "HQ267_G01_AUTHORED_COMMITTED_SOURCE_FREE_C1_ORIGINAL_XOR_REAL_SA_G2_BOUND_F8_OWNER_CORRECTION_354_REPORTED_PASS__INDEPENDENT_HOSTILE_REQUIRED_BEFORE_G1_ADOPTION__G0B_STILL_UNISSUED",
   "legacy_pyat_bootstrap_path": "HQ_HANDOFF/PYAT_HQ_BOOTSTRAP_R1.md",
   "pyat_documentary_hygiene": "HQD-2026-09-26-114",
   "pyat_forward_program_decision": "HQD-2026-09-28-125",
@@ -1193,7 +1193,7 @@
   "f7_immediate_launch_tip": "7b2eaf6cb15433f7919af8f9ed3dd2701b8423df",
   "c1_adoption_merge": "396aeff9205a9d648fb44e6fdd6d3e9e27afe3f9",
   "c1_review_merge": "15550c8f7c026c8446546bf8845e4dfba2642baf",
-  "last_hq_decision": "HQD-2026-10-09-266",
+  "last_hq_decision": "HQD-2026-10-09-267",
   "n10e_r3_documentary_warrant_status": "DISTINCT_HQ247_ADOPTED_PROSPECTIVE_ONLY__NO_ROOT_OR_ISSUER",
   "f7_native_current_status": "FROZEN_B_HOSTILE_BLOCKED__AB_F09_PARTIAL__NO_PRODUCTION_CUTOVER",
   "hq248_decision": "HQD-2026-10-08-248",
@@ -1439,6 +1439,18 @@
       "tip": "dfab8607177e02872a2da6cfa65a6d97bed8bdda",
       "status": "ISSUED_NEEDS_HUMAN_LAUNCH",
       "model": "Space Bunny Max (space-bunny-free) / Max"
+    }
+  ],
+  "hq267_decision": "HQD-2026-10-09-267",
+  "hq267_checkpoint_status": "HQ266_G01_CODE_CANDIDATE_AT_3829FC4E_RETURN_AT_BDC65FF_VALID_SCOPE__AUTHOR_354_REPORT_ONLY__R01_INDEPENDENT_FINAL_HOSTILE_ISSUED_NEEDS_LAUNCH__NO_G0B_T1_T2",
+  "hq267_g01_return": "bdc65ff897a8e6a61988fc2bb3a325e7f198222a",
+  "hq267_code_commit": "3829fc4e63fc9fb0d802e8af237dfab2febc3d23",
+  "hq267_active_branches": [
+    {
+      "branch": "agent/reviewer-pyat-hq267-g01-authentic-g2-xor-final-hostile-r1",
+      "tip": "b48b5b4fb7cec83b1977aaeaeaab37ce74aba94f",
+      "status": "ISSUED_NEEDS_HUMAN_LAUNCH",
+      "model": "GPT-6 Sol High"
     }
   ]
 }
