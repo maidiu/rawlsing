@@ -1,0 +1,1952 @@
+{
+  "AGGREGATE": {
+    "all_exits": 0,
+    "failed": 0,
+    "passed": 220,
+    "total_checks": 220
+  },
+  "CANDIDATE_BLOBS": {
+    "pre553_ee14_c1_owner_authenticated_ingress.py": "74e6ee826e8b6a2adebe84969fedcea5716d5b63",
+    "pre553_service_source_applicability.py": "3e40caca29e8c96ee1f412f919cfc7dba63f96c4",
+    "test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py": "64b6c747f76a1909b676566e6b529ed10456d33b"
+  },
+  "CANDIDATE_SHA": "46a95a8e62e3e790da3b84dfa7ab1ae4d5bce6bd",
+  "COMMAND_FORM": "cd <detached worktree pinned at 46a95a8e> && PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 <harness-dir>/<script>.py",
+  "CONTRACT": "HQ270 R02 G1 -- INDEPENDENT runtime hostile execution",
+  "COURTS": {
+    "D1_INDEPENDENT_OWNER_IDENTITY_HOSTILE": {
+      "cases": [
+        {
+          "case": "c01_owner_identity_is_a_tuple",
+          "detail": "owner-held expected C1 identity must be a mapping of the complete required key set for every permitted cell; got tuple",
+          "ok": true
+        },
+        {
+          "case": "c01_owner_identity_is_a_tuple__zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 0,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c02_owner_identity_is_a_str",
+          "detail": "owner-held expected C1 identity must be a mapping of the complete required key set for every permitted cell; got str",
+          "ok": true
+        },
+        {
+          "case": "c02_owner_identity_is_a_str__zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 0,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c03_q1_cell_entry_is_none",
+          "detail": "owner-held expected C1 identity for cell 'q1' must be a mapping of the complete required key set; got NoneType",
+          "ok": true
+        },
+        {
+          "case": "c03_q1_cell_entry_is_none__zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 0,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c04_q1_cell_entry_is_int",
+          "detail": "owner-held expected C1 identity for cell 'q1' must be a mapping of the complete required key set; got int",
+          "ok": true
+        },
+        {
+          "case": "c04_q1_cell_entry_is_int__zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 0,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c05_q1_cell_entry_is_str",
+          "detail": "owner-held expected C1 identity for cell 'q1' must be a mapping of the complete required key set; got str",
+          "ok": true
+        },
+        {
+          "case": "c05_q1_cell_entry_is_str__zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 0,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c06_q2_cell_missing_entirely",
+          "detail": "owner-held expected C1 identity is missing cell 'q2' entirely; authentication may not proceed vacuously",
+          "ok": true
+        },
+        {
+          "case": "c06_q2_cell_missing_entirely__zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 0,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c07_q1_cell_missing_entirely",
+          "detail": "owner-held expected C1 identity is missing cell 'q1' entirely; authentication may not proceed vacuously",
+          "ok": true
+        },
+        {
+          "case": "c07_q1_cell_missing_entirely__zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 0,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c08_q1_missing_denominator_member_keys",
+          "detail": "owner-held expected C1 identity for cell 'q1' is INCOMPLETE (1 of 19 required keys absent); authentication may not proceed vacuously. missing keys: denominator_member_keys",
+          "ok": true
+        },
+        {
+          "case": "c08_q1_missing_denominator_member_keys__names_exactly_that_key",
+          "detail": [
+            [
+              "denominator_member_keys"
+            ],
+            [
+              "denominator_member_keys"
+            ]
+          ],
+          "ok": true
+        },
+        {
+          "case": "c08_q1_missing_denominator_member_keys__zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 0,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c09_q2_missing_target_question_key",
+          "detail": "owner-held expected C1 identity for cell 'q2' is INCOMPLETE (1 of 19 required keys absent); authentication may not proceed vacuously. missing keys: target_question_key",
+          "ok": true
+        },
+        {
+          "case": "c09_q2_missing_target_question_key__names_exactly_that_key",
+          "detail": [
+            [
+              "target_question_key"
+            ],
+            [
+              "target_question_key"
+            ]
+          ],
+          "ok": true
+        },
+        {
+          "case": "c09_q2_missing_target_question_key__zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 0,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c10_q1_missing_release_key_owner",
+          "detail": "owner-held expected C1 identity for cell 'q1' is INCOMPLETE (1 of 19 required keys absent); authentication may not proceed vacuously. missing keys: release_key_owner",
+          "ok": true
+        },
+        {
+          "case": "c10_q1_missing_release_key_owner__names_exactly_that_key",
+          "detail": [
+            [
+              "release_key_owner"
+            ],
+            [
+              "release_key_owner"
+            ]
+          ],
+          "ok": true
+        },
+        {
+          "case": "c10_q1_missing_release_key_owner__zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 0,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c11_q2_missing_evidence_state",
+          "detail": "owner-held expected C1 identity for cell 'q2' is INCOMPLETE (1 of 19 required keys absent); authentication may not proceed vacuously. missing keys: evidence_state",
+          "ok": true
+        },
+        {
+          "case": "c11_q2_missing_evidence_state__names_exactly_that_key",
+          "detail": [
+            [
+              "evidence_state"
+            ],
+            [
+              "evidence_state"
+            ]
+          ],
+          "ok": true
+        },
+        {
+          "case": "c11_q2_missing_evidence_state__zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 0,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c12_q1_missing_composed_result_identity_hash",
+          "detail": "owner-held expected C1 identity for cell 'q1' is INCOMPLETE (1 of 19 required keys absent); authentication may not proceed vacuously. missing keys: composed_result_identity_hash",
+          "ok": true
+        },
+        {
+          "case": "c12_q1_missing_composed_result_identity_hash__names_exactly_that_key",
+          "detail": [
+            [
+              "composed_result_identity_hash"
+            ],
+            [
+              "composed_result_identity_hash"
+            ]
+          ],
+          "ok": true
+        },
+        {
+          "case": "c12_q1_missing_composed_result_identity_hash__zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 0,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c13_q2_missing_risk_set_key",
+          "detail": "owner-held expected C1 identity for cell 'q2' is INCOMPLETE (1 of 19 required keys absent); authentication may not proceed vacuously. missing keys: risk_set_key",
+          "ok": true
+        },
+        {
+          "case": "c13_q2_missing_risk_set_key__names_exactly_that_key",
+          "detail": [
+            [
+              "risk_set_key"
+            ],
+            [
+              "risk_set_key"
+            ]
+          ],
+          "ok": true
+        },
+        {
+          "case": "c13_q2_missing_risk_set_key__zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 0,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c14_q1_retained_conditioner_ids_is_a_str",
+          "detail": "owner-held expected C1 identity for cell 'q1' carries wrong builtin types for: retained_conditioner_ids (expected tuple, got str)",
+          "ok": true
+        },
+        {
+          "case": "c14_q1_retained_conditioner_ids_is_a_str__mistypes_exactly_that_key",
+          "detail": [
+            [
+              "retained_conditioner_ids"
+            ],
+            true
+          ],
+          "ok": true
+        },
+        {
+          "case": "c14_q1_retained_conditioner_ids_is_a_str__zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 0,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c15_q1_raw_denominator_support_is_a_bool",
+          "detail": "owner-held expected C1 identity for cell 'q1' carries wrong builtin types for: raw_denominator_support (expected int, got bool)",
+          "ok": true
+        },
+        {
+          "case": "c15_q1_raw_denominator_support_is_a_bool__mistypes_exactly_that_key",
+          "detail": [
+            [
+              "raw_denominator_support"
+            ],
+            true
+          ],
+          "ok": true
+        },
+        {
+          "case": "c15_q1_raw_denominator_support_is_a_bool__zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 0,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c16_q2_evidence_authority_keys_is_a_list",
+          "detail": "owner-held expected C1 identity for cell 'q2' carries wrong builtin types for: evidence_authority_keys (expected tuple, got list)",
+          "ok": true
+        },
+        {
+          "case": "c16_q2_evidence_authority_keys_is_a_list__mistypes_exactly_that_key",
+          "detail": [
+            [
+              "evidence_authority_keys"
+            ],
+            true
+          ],
+          "ok": true
+        },
+        {
+          "case": "c16_q2_evidence_authority_keys_is_a_list__zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 0,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c17_q1_producer_predicate_key_is_a_tuple",
+          "detail": "owner-held expected C1 identity for cell 'q1' carries wrong builtin types for: producer_predicate_key (expected str, got tuple)",
+          "ok": true
+        },
+        {
+          "case": "c17_q1_producer_predicate_key_is_a_tuple__mistypes_exactly_that_key",
+          "detail": [
+            [
+              "producer_predicate_key"
+            ],
+            true
+          ],
+          "ok": true
+        },
+        {
+          "case": "c17_q1_producer_predicate_key_is_a_tuple__zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 0,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c18_q2_denominator_member_keys_are_a_list",
+          "detail": "owner-held expected C1 identity for cell 'q2' carries wrong builtin types for: denominator_member_keys (expected tuple, got list)",
+          "ok": true
+        },
+        {
+          "case": "c18_q2_denominator_member_keys_are_a_list__mistypes_exactly_that_key",
+          "detail": [
+            [
+              "denominator_member_keys"
+            ],
+            true
+          ],
+          "ok": true
+        },
+        {
+          "case": "c18_q2_denominator_member_keys_are_a_list__zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 0,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c19_q1_carries_a_20th_key",
+          "detail": "owner-held expected C1 identity for cell 'q1' carries 1 key(s) outside the exact required set; unknown keys: forged_power_grant",
+          "ok": true
+        },
+        {
+          "case": "c19_q1_carries_a_20th_key__names_exactly_the_unknown_key",
+          "detail": [
+            "forged_power_grant"
+          ],
+          "ok": true
+        },
+        {
+          "case": "c19_q1_carries_a_20th_key__zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 0,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c20_q2_carries_an_extra_provenance_key",
+          "detail": "owner-held expected C1 identity for cell 'q2' carries 1 key(s) outside the exact required set; unknown keys: extra_note",
+          "ok": true
+        },
+        {
+          "case": "c20_q2_carries_an_extra_provenance_key__names_exactly_the_unknown_key",
+          "detail": [
+            "extra_note"
+          ],
+          "ok": true
+        },
+        {
+          "case": "c20_q2_carries_an_extra_provenance_key__zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 0,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c21_expectation_emptied_after_construction",
+          "detail": "owner held no expected C1 identity for cell 'q1'",
+          "ok": true
+        },
+        {
+          "case": "c21_empty_expectation_reports_all_19_missing",
+          "detail": [
+            [
+              "composed_result_identity_hash",
+              "condition_binding_witness_key",
+              "consumer_query_key",
+              "denominator_member_keys",
+              "evidence_authority_keys",
+              "evidence_provenance_keys",
+              "evidence_ref_key",
+              "evidence_state",
+              "producer_fact_key",
+              "producer_predicate_key",
+              "producer_query_key",
+              "raw_denominator_support",
+              "release_key",
+              "release_key_owner",
+              "retained_conditioner_ids",
+              "risk_set_key",
+              "source_universe_key",
+              "source_universe_key_owner",
+              "target_question_key"
+            ],
+            [
+              "owner_identity"
+            ]
+          ],
+          "ok": true
+        },
+        {
+          "case": "c21_zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 1,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c22_complete_expectation_with_wrong_release",
+          "detail": "produced C1 identity/evidence does not authenticate against non-mutable owner-held material for cell 'q1'; mismatched fields: release_key_owner",
+          "ok": true
+        },
+        {
+          "case": "c22_mismatch_is_exactly_release_key_owner",
+          "detail": [
+            [
+              "release_key_owner"
+            ],
+            []
+          ],
+          "ok": true
+        },
+        {
+          "case": "c22_zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 1,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c23_complete_expectation_with_truncated_denominator",
+          "detail": "produced C1 identity/evidence does not authenticate against non-mutable owner-held material for cell 'q1'; mismatched fields: denominator_member_keys",
+          "ok": true
+        },
+        {
+          "case": "c23_mismatch_is_exactly_denominator_member_keys",
+          "detail": [
+            [
+              "denominator_member_keys"
+            ],
+            []
+          ],
+          "ok": true
+        },
+        {
+          "case": "c23b_tuple_of_ints_passes_the_type_gate_and_is_still_refused",
+          "detail": "produced C1 identity/evidence does not authenticate against non-mutable owner-held material for cell 'q2'; mismatched fields: evidence_authority_keys",
+          "ok": true
+        },
+        {
+          "case": "c23b_mismatch_is_exactly_evidence_authority_keys",
+          "detail": [
+            [
+              "evidence_authority_keys"
+            ],
+            []
+          ],
+          "ok": true
+        },
+        {
+          "case": "c23b_zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 1,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c23_zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 1,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c24_complete_expectation_with_extra_key_at_serve",
+          "detail": "owner-held expected C1 identity for cell 'q1' carries 1 key(s) outside the exact required set; unknown keys: attacker_field",
+          "ok": true
+        },
+        {
+          "case": "c24_mismatch_is_exactly_the_unknown_key",
+          "detail": [
+            "attacker_field"
+          ],
+          "ok": true
+        },
+        {
+          "case": "c24_zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 1,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c25_complete_expectation_with_mistyped_value_at_serve",
+          "detail": "owner-held expected C1 identity for cell 'q1' carries wrong builtin types for: raw_denominator_support (expected int, got str)",
+          "ok": true
+        },
+        {
+          "case": "c25_mistype_reported_for_that_key_only",
+          "detail": [
+            "raw_denominator_support"
+          ],
+          "ok": true
+        },
+        {
+          "case": "c25_zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 1,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c26_observed_builder_drift_guard_is_live",
+          "detail": "observed C1 identity builder does not cover REQUIRED_IDENTITY_KEYS exactly (missing: ['drift_probe']; extra: []); authentication would not be exhaustive",
+          "ok": true
+        },
+        {
+          "case": "c26_drift_guard_names_the_unobserved_key",
+          "detail": [
+            "drift_probe"
+          ],
+          "ok": true
+        },
+        {
+          "case": "c26_zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 1,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c27_complete_but_wrong_cell_identity_refused",
+          "detail": "produced C1 identity/evidence does not authenticate against non-mutable owner-held material for cell 'q1'; mismatched fields: composed_result_identity_hash, condition_binding_witness_key, consumer_que",
+          "ok": true
+        },
+        {
+          "case": "c27_several_fields_mismatch_not_zero",
+          "detail": [
+            "composed_result_identity_hash",
+            "condition_binding_witness_key",
+            "consumer_query_key",
+            "denominator_member_keys",
+            "evidence_authority_keys",
+            "evidence_provenance_keys",
+            "evidence_ref_key",
+            "producer_fact_key",
+            "producer_predicate_key",
+            "producer_query_key",
+            "raw_denominator_support",
+            "retained_conditioner_ids"
+          ],
+          "ok": true
+        },
+        {
+          "case": "c27_zero_chain_spend",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 1,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "c28_complete_expectation_runs_the_whole_chain",
+          "detail": {
+            "applicability": 1,
+            "binder": 3,
+            "compose": 1,
+            "evaluate": 1
+          },
+          "ok": true
+        },
+        {
+          "case": "c29_expectation_equals_produced_identity_key_by_key",
+          "detail": "identical",
+          "ok": true
+        },
+        {
+          "case": "c30_positive_receipt_is_real",
+          "detail": "q1",
+          "ok": true
+        },
+        {
+          "case": "c31_complete_expectation_covers_both_cells",
+          "detail": {
+            "applicability": 1,
+            "binder": 3,
+            "compose": 1,
+            "evaluate": 1
+          },
+          "ok": true
+        }
+      ],
+      "court": "D1_INDEPENDENT_OWNER_IDENTITY_HOSTILE",
+      "failed": 0,
+      "failed_cases": [],
+      "passed": 81,
+      "refusals": [
+        "c01_owner_identity_is_a_tuple",
+        "c02_owner_identity_is_a_str",
+        "c03_q1_cell_entry_is_none",
+        "c04_q1_cell_entry_is_int",
+        "c05_q1_cell_entry_is_str",
+        "c06_q2_cell_missing_entirely",
+        "c07_q1_cell_missing_entirely",
+        "c08_q1_missing_denominator_member_keys",
+        "c09_q2_missing_target_question_key",
+        "c10_q1_missing_release_key_owner",
+        "c11_q2_missing_evidence_state",
+        "c12_q1_missing_composed_result_identity_hash",
+        "c13_q2_missing_risk_set_key",
+        "c14_q1_retained_conditioner_ids_is_a_str",
+        "c15_q1_raw_denominator_support_is_a_bool",
+        "c16_q2_evidence_authority_keys_is_a_list",
+        "c17_q1_producer_predicate_key_is_a_tuple",
+        "c18_q2_denominator_member_keys_are_a_list",
+        "c19_q1_carries_a_20th_key",
+        "c20_q2_carries_an_extra_provenance_key",
+        "c21_expectation_emptied_after_construction",
+        "c22_complete_expectation_with_wrong_release",
+        "c23_complete_expectation_with_truncated_denominator",
+        "c23b_tuple_of_ints_passes_the_type_gate_and_is_still_refused",
+        "c24_complete_expectation_with_extra_key_at_serve",
+        "c25_complete_expectation_with_mistyped_value_at_serve",
+        "c26_observed_builder_drift_guard_is_live",
+        "c27_complete_but_wrong_cell_identity_refused"
+      ],
+      "total": 81
+    },
+    "D2_INDEPENDENT_REPLAY_IDENTITY_AND_ORDER_COURT": {
+      "cases": [
+        {
+          "case": "d2_01_material_has_exactly_11_keys",
+          "detail": [
+            "authorised_authority",
+            "candidate_class_binding",
+            "candidate_class_coverage",
+            "candidate_class_ref",
+            "decisions",
+            "no_applicable_source",
+            "outcome",
+            "receipt_id",
+            "request_key",
+            "service_id",
+            "service_request_set_identity"
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_02_order_is_absent_from_the_identity_material",
+          "detail": [
+            "authorised_authority",
+            "candidate_class_binding",
+            "candidate_class_coverage",
+            "candidate_class_ref",
+            "decisions",
+            "no_applicable_source",
+            "outcome",
+            "receipt_id",
+            "request_key",
+            "service_id",
+            "service_request_set_identity"
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_03_replay_identity_is_the_material_hash",
+          "detail": "90b5401f572478d7db38b963eb04e09a66b7ef442711339272d29f113660fec0",
+          "ok": true
+        },
+        {
+          "case": "d2_04_replay_identity_carries_no_order",
+          "detail": [
+            "{\"content_hash\":\"318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c\",\"kind\":\"EmpiricalUniverse@1.0.0\",\"object_id\":\"urn:rawlsing:pre553:EmpiricalUniverse:sha256:318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c\"}"
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_05_as_dict_exposes_both_the_order_and_its_semantics",
+          "detail": "REPLAY_ONLY_DETERMINISTIC_SERIALIZATION__ZERO_RANKING_PRIORITY_PREFERENCE_WEIGHT_OR_FALLBACK_SEMANTICS",
+          "ok": true
+        },
+        {
+          "case": "d2_06_material_field_receipt_id_discriminates_replay_identity",
+          "detail": [
+            "90b5401f572478d7db38b963eb04e09a66b7ef442711339272d29f113660fec0",
+            "6b6bb4fd38f4e7b93d52af62e104bbf1b07823d2083ac8e3446f442368f5c72a"
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_06_material_field_service_request_set_identity_discriminates_replay_identity",
+          "detail": [
+            "90b5401f572478d7db38b963eb04e09a66b7ef442711339272d29f113660fec0",
+            "53a71c19091f7d1e79faaf02c75a32266a83267ce797ba2d667e22bb87d9490a"
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_06_material_field_service_id_discriminates_replay_identity",
+          "detail": [
+            "90b5401f572478d7db38b963eb04e09a66b7ef442711339272d29f113660fec0",
+            "16d8c92672c89725b8f50334b069f562edcd094870ab56836ee83ce3254172b3"
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_06_material_field_candidate_class_ref_discriminates_replay_identity",
+          "detail": [
+            "90b5401f572478d7db38b963eb04e09a66b7ef442711339272d29f113660fec0",
+            "113cd477937eb66631734b5d0d1829d142680bb617b2e88bf8b0d6e91a00076c"
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_06_material_field_candidate_class_coverage_discriminates_replay_identity",
+          "detail": [
+            "90b5401f572478d7db38b963eb04e09a66b7ef442711339272d29f113660fec0",
+            "b0b57db9c99604886ab03f7c141698a9bdf13401b828019a9693c8c966c115b6"
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_06_material_field_outcome_discriminates_replay_identity",
+          "detail": [
+            "90b5401f572478d7db38b963eb04e09a66b7ef442711339272d29f113660fec0",
+            "11ae69e8ffa4b56c1db87d7dae330eb51e57dbe4d3f4d5d6297a873197e51516"
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_06_material_field_no_applicable_source_discriminates_replay_identity",
+          "detail": [
+            "90b5401f572478d7db38b963eb04e09a66b7ef442711339272d29f113660fec0",
+            "1942e5cdb4ea37d16f4cdb96587a295819ddfad8fddbe1883afb73973566d595"
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_06_material_field_candidate_class_binding_discriminates_replay_identity",
+          "detail": [
+            "90b5401f572478d7db38b963eb04e09a66b7ef442711339272d29f113660fec0",
+            "be13f2ba1c740f6b823c7dacb0788632ed3806a6283a408d2f402a7416c8497e"
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_06_material_field_request_key_discriminates_replay_identity",
+          "detail": [
+            "90b5401f572478d7db38b963eb04e09a66b7ef442711339272d29f113660fec0",
+            "b4a320905b190c95c82b7a39a2620b3481ec199f7cd0b5d3c94397d1e9fd0546"
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_06_material_field_decisions_discriminates_replay_identity",
+          "detail": [
+            "90b5401f572478d7db38b963eb04e09a66b7ef442711339272d29f113660fec0",
+            "998471576990a915fd6d26acef15bb4881192318ff7d36cf649926c89f40bc80"
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_06_material_field_authorised_authority_discriminates_replay_identity",
+          "detail": [
+            "90b5401f572478d7db38b963eb04e09a66b7ef442711339272d29f113660fec0",
+            "67ec8b7b75e36e78bdc550b213a4e9fe1ede3bd5868fb9395d2bcb35bf86f373"
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_07_all_11_material_fields_were_probed",
+          "detail": [
+            "authorised_authority",
+            "candidate_class_binding",
+            "candidate_class_coverage",
+            "candidate_class_ref",
+            "decisions",
+            "no_applicable_source",
+            "outcome",
+            "receipt_id",
+            "request_key",
+            "service_id",
+            "service_request_set_identity"
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_08_order_mutation_leaves_replay_identity_unchanged",
+          "detail": [
+            "90b5401f572478d7db38b963eb04e09a66b7ef442711339272d29f113660fec0",
+            "90b5401f572478d7db38b963eb04e09a66b7ef442711339272d29f113660fec0"
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_09_order_mutation_changes_the_public_as_dict",
+          "detail": [
+            "{\"content_hash\":\"318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c\",\"kind\":\"EmpiricalUniverse@1.0.0\",\"object_id\":\"urn:rawlsing:pre553:EmpiricalUniverse:sha256:318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c\"}"
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_10_order_derived_from_material_alone__single_admitted",
+          "detail": {
+            "actual": [
+              "{\"content_hash\":\"318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c\",\"kind\":\"EmpiricalUniverse@1.0.0\",\"object_id\":\"urn:rawlsing:pre553:EmpiricalUniverse:sha256:318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c\"}"
+            ],
+            "derived": [
+              "{\"content_hash\":\"318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c\",\"kind\":\"EmpiricalUniverse@1.0.0\",\"object_id\":\"urn:rawlsing:pre553:EmpiricalUniverse:sha256:318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c\"}"
+            ]
+          },
+          "ok": true
+        },
+        {
+          "case": "d2_10_order_derived_from_material_alone__single_negative",
+          "detail": {
+            "actual": [],
+            "derived": []
+          },
+          "ok": true
+        },
+        {
+          "case": "d2_10_order_derived_from_material_alone__no_authority_record",
+          "detail": {
+            "actual": [],
+            "derived": []
+          },
+          "ok": true
+        },
+        {
+          "case": "d2_10_order_derived_from_material_alone__two_members_one_admitted",
+          "detail": {
+            "actual": [
+              "{\"content_hash\":\"318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c\",\"kind\":\"EmpiricalUniverse@1.0.0\",\"object_id\":\"urn:rawlsing:pre553:EmpiricalUniverse:sha256:318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c\"}"
+            ],
+            "derived": [
+              "{\"content_hash\":\"318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c\",\"kind\":\"EmpiricalUniverse@1.0.0\",\"object_id\":\"urn:rawlsing:pre553:EmpiricalUniverse:sha256:318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c\"}"
+            ]
+          },
+          "ok": true
+        },
+        {
+          "case": "d2_10_order_derived_from_material_alone__two_members_both_admitted",
+          "detail": {
+            "actual": [
+              "{\"content_hash\":\"318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c\",\"kind\":\"EmpiricalUniverse@1.0.0\",\"object_id\":\"urn:rawlsing:pre553:EmpiricalUniverse:sha256:318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c\"}",
+              "{\"content_hash\":\"d9298a10d1b0735837dc4bd85dac641b0f3cef27a47e5d53a54f2f3f5b2fcffa\",\"kind\":\"EmpiricalUniverse@1.0.0\",\"object_id\":\"urn:hq270r02:universe:other\"}"
+            ],
+            "derived": [
+              "{\"content_hash\":\"318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c\",\"kind\":\"EmpiricalUniverse@1.0.0\",\"object_id\":\"urn:rawlsing:pre553:EmpiricalUniverse:sha256:318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c\"}",
+              "{\"content_hash\":\"d9298a10d1b0735837dc4bd85dac641b0f3cef27a47e5d53a54f2f3f5b2fcffa\",\"kind\":\"EmpiricalUniverse@1.0.0\",\"object_id\":\"urn:hq270r02:universe:other\"}"
+            ]
+          },
+          "ok": true
+        },
+        {
+          "case": "d2_11_derivation_holds_across_every_varied_outcome",
+          "detail": [
+            "no_authority_record",
+            "single_admitted",
+            "single_negative",
+            "two_members_both_admitted",
+            "two_members_one_admitted"
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_12_two_admitted_class_has_a_two_entry_sorted_order",
+          "detail": [
+            "{\"content_hash\":\"318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c\",\"kind\":\"EmpiricalUniverse@1.0.0\",\"object_id\":\"urn:rawlsing:pre553:EmpiricalUniverse:sha256:318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c\"}",
+            "{\"content_hash\":\"d9298a10d1b0735837dc4bd85dac641b0f3cef27a47e5d53a54f2f3f5b2fcffa\",\"kind\":\"EmpiricalUniverse@1.0.0\",\"object_id\":\"urn:hq270r02:universe:other\"}"
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_13_no_admitted_source_yields_an_empty_order",
+          "detail": "NO_ADMITTED_SOURCE_IN_CANDIDATE_CLASS",
+          "ok": true
+        },
+        {
+          "case": "d2_14_order_never_ranks_only_serialises",
+          "detail": [
+            "{\"content_hash\":\"318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c\",\"kind\":\"EmpiricalUniverse@1.0.0\",\"object_id\":\"urn:rawlsing:pre553:EmpiricalUniverse:sha256:318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c\"}"
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_15_resolver_is_the_only_production_assignment_of_the_order",
+          "detail": "one assignment",
+          "ok": true
+        },
+        {
+          "case": "d2_16_the_ingress_always_obtains_its_receipt_from_that_resolver",
+          "detail": "resolver only",
+          "ok": true
+        },
+        {
+          "case": "d2_17_the_g2_binder_and_f8_evaluator_never_read_the_order",
+          "detail": "unread by G2/F8",
+          "ok": true
+        },
+        {
+          "case": "d2_18_sa_declares_the_order_zero_semantics",
+          "detail": "ADMISSIBLE_SET_ONLY__RANKING_AND_SELECTION_NOT_AUTHORIZED",
+          "ok": true
+        },
+        {
+          "case": "d2_19_sa_owner_state_carries_no_rank_or_priority_field",
+          "detail": [],
+          "ok": true
+        },
+        {
+          "case": "d2_20_order_only_tamper_still_serves",
+          "detail": "q1",
+          "ok": true
+        },
+        {
+          "case": "d2_21_g2_replay_identity_is_blind_to_the_tamper",
+          "detail": [
+            "90b5401f572478d7db38b963eb04e09a66b7ef442711339272d29f113660fec0",
+            "90b5401f572478d7db38b963eb04e09a66b7ef442711339272d29f113660fec0"
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_22_bound_f8_result_is_blind_to_the_tamper",
+          "detail": [
+            "ebde2f9a548374d56651065ba09e93628eef8ce59de5fbb4d0f933e82de83390",
+            "ebde2f9a548374d56651065ba09e93628eef8ce59de5fbb4d0f933e82de83390"
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_23_origin_receipt_hash_is_sensitive_to_the_tamper",
+          "detail": [
+            "516256bf72a05abda8493aebcdb19f7373c1bfbc4a4baf17aec0136832a0bc52",
+            "71892f727fb45358b1243053de5e7991688c68b300a68e88d9cb78bd3d9a70f0"
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_24_full_chain_still_ran_for_the_tampered_order",
+          "detail": {
+            "applicability": 1,
+            "binder": 3,
+            "compose": 1,
+            "evaluate": 1
+          },
+          "ok": true
+        },
+        {
+          "case": "d2_25_hand_built_receipt_shares_the_replay_identity",
+          "detail": [
+            "90b5401f572478d7db38b963eb04e09a66b7ef442711339272d29f113660fec0",
+            "90b5401f572478d7db38b963eb04e09a66b7ef442711339272d29f113660fec0"
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_26_hand_built_receipt_carries_a_different_order",
+          "detail": [
+            [],
+            [
+              "{\"content_hash\":\"318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c\",\"kind\":\"EmpiricalUniverse@1.0.0\",\"object_id\":\"urn:rawlsing:pre553:EmpiricalUniverse:sha256:318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c\"}"
+            ]
+          ],
+          "ok": true
+        },
+        {
+          "case": "d2_27_no_accepted_caller_mints_a_receipt_outside_the_resolver",
+          "detail": "production code path is resolver-only",
+          "ok": true
+        }
+      ],
+      "court": "D2_INDEPENDENT_REPLAY_IDENTITY_AND_ORDER_COURT",
+      "failed": 0,
+      "failed_cases": [],
+      "passed": 41,
+      "refusals": [],
+      "total": 41
+    },
+    "F1_F6_INDEPENDENT_REPRODUCTION": {
+      "cases": [
+        {
+          "case": "f1_positive_every_accepted_owner_runs",
+          "detail": {
+            "applicability": 2,
+            "binder": 6,
+            "compose": 2,
+            "evaluate": 2
+          },
+          "ok": true
+        },
+        {
+          "case": "f1_bomb_substituted_at_applicability_proves_the_real_call",
+          "detail": "BOMB:applicability",
+          "ok": true
+        },
+        {
+          "case": "f1_bomb_at_applicability_actually_fired",
+          "detail": {
+            "applicability": 1
+          },
+          "ok": true
+        },
+        {
+          "case": "f1_bomb_substituted_at_binder_proves_the_real_call",
+          "detail": "BOMB:binder",
+          "ok": true
+        },
+        {
+          "case": "f1_bomb_at_binder_actually_fired",
+          "detail": {
+            "binder": 1
+          },
+          "ok": true
+        },
+        {
+          "case": "f1_bomb_substituted_at_evaluate_proves_the_real_call",
+          "detail": "BOMB:evaluate",
+          "ok": true
+        },
+        {
+          "case": "f1_bomb_at_evaluate_actually_fired",
+          "detail": {
+            "evaluate": 1
+          },
+          "ok": true
+        },
+        {
+          "case": "f1_real_binder_refuses_a_foreign_source_universe",
+          "detail": "REQUESTED_SOURCE_NOT_ADMITTED: requested source 'urn:hq270r02:universe:foreign' is not a positively admitted source universe; a nonpositive applicability result is never treated as an admission",
+          "ok": true
+        },
+        {
+          "case": "f1_receipt_carries_a_real_g2_receipt_not_a_scope_hash",
+          "detail": "ADMISSIBLE_SOURCE_INDEXED_SET",
+          "ok": true
+        },
+        {
+          "case": "f1_no_currentness_claimed",
+          "detail": "clean",
+          "ok": true
+        },
+        {
+          "case": "f2_q1_and_q2_denominators_are_genuinely_different",
+          "detail": [
+            2,
+            1
+          ],
+          "ok": true
+        },
+        {
+          "case": "f2_xor_figures_are_1_2_1_2_and_0_1_1_1",
+          "detail": [
+            {
+              "0": 1,
+              "1": 1
+            },
+            {
+              "0": 0,
+              "1": 1
+            }
+          ],
+          "ok": true
+        },
+        {
+          "case": "f2_q2_is_not_a_product_of_q1_marginals",
+          "detail": "joint",
+          "ok": true
+        },
+        {
+          "case": "f2_both_cells_share_exactly_one_source_and_release",
+          "detail": "REL-c1-at09-xor",
+          "ok": true
+        },
+        {
+          "case": "f2_cell_label_flip_is_refused",
+          "detail": "C1-originated evidence grain ('c0',) does not match the requested stratum_ids ('c0', 'c1'); no substitution is permitted",
+          "ok": true
+        },
+        {
+          "case": "f3_in_flight_provenance_substitution",
+          "detail": "produced C1 identity/evidence does not authenticate against non-mutable owner-held material for cell 'q1'; mismatched fields: evidence_provenance_keys",
+          "ok": true
+        },
+        {
+          "case": "f3_in_flight_provenance_substitution__zero_f8_and_zero_later_owners",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 1,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "f3_in_flight_authority_substitution",
+          "detail": "produced C1 identity/evidence does not authenticate against non-mutable owner-held material for cell 'q1'; mismatched fields: evidence_authority_keys",
+          "ok": true
+        },
+        {
+          "case": "f3_in_flight_authority_substitution__zero_f8_and_zero_later_owners",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 1,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "f3_in_flight_evidence_ref_substitution",
+          "detail": "produced C1 identity/evidence does not authenticate against non-mutable owner-held material for cell 'q1'; mismatched fields: evidence_ref_key",
+          "ok": true
+        },
+        {
+          "case": "f3_in_flight_evidence_ref_substitution__zero_f8_and_zero_later_owners",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 1,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "f3_in_flight_release_substitution",
+          "detail": "produced C1 identity/evidence does not authenticate against non-mutable owner-held material for cell 'q1'; mismatched fields: release_key",
+          "ok": true
+        },
+        {
+          "case": "f3_in_flight_release_substitution__zero_f8_and_zero_later_owners",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 1,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "f3_in_flight_denominator_substitution",
+          "detail": "produced C1 identity/evidence does not authenticate against non-mutable owner-held material for cell 'q1'; mismatched fields: denominator_member_keys",
+          "ok": true
+        },
+        {
+          "case": "f3_in_flight_denominator_substitution__zero_f8_and_zero_later_owners",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 1,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "f3_in_flight_composed_identity_substitution",
+          "detail": "produced C1 identity/evidence does not authenticate against non-mutable owner-held material for cell 'q1'; mismatched fields: composed_result_identity_hash",
+          "ok": true
+        },
+        {
+          "case": "f3_in_flight_composed_identity_substitution__zero_f8_and_zero_later_owners",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 1,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "f4_genuine_zero_support_is_a_typed_c1_state",
+          "detail": "C1 producer produced no possibility slice evidence for cell 'q1' because its native state is 'ZERO_SUPPORT' (producer fact state 'ZERO_SUPPORT'); this is an intrinsic C1 outcome and is NOT a missing-E",
+          "ok": true
+        },
+        {
+          "case": "f4_native_state_is_read_as_zero_support",
+          "detail": [
+            "ZERO_SUPPORT",
+            "ZERO_SUPPORT"
+          ],
+          "ok": true
+        },
+        {
+          "case": "f4_intrinsic_c1_outcome_is_not_relabelled_a_g0b_or_g2_failure",
+          "detail": "C1 producer produced no possibility slice evidence for cell 'q1' because its native state is 'ZERO_SUPPORT' (producer fact state 'ZERO_SUPPORT'); this is an int",
+          "ok": true
+        },
+        {
+          "case": "f4_zero_support_spent_no_f8",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 1,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "f4_no_admitted_source_is_a_distinct_applicability_outcome",
+          "detail": "applicability owner admitted no source universe for this service and use (NO_ADMITTED_SOURCE); this is an applicability outcome, not a C1 native negative and not a fabricated G0b",
+          "ok": true
+        },
+        {
+          "case": "f4_no_admitted_source_carries_its_own_reason_code",
+          "detail": "NO_ADMITTED_SOURCE",
+          "ok": true
+        },
+        {
+          "case": "f4_no_admitted_source_spent_no_f8",
+          "detail": {
+            "applicability": 1,
+            "binder": 0,
+            "compose": 1,
+            "evaluate": 0
+          },
+          "ok": true
+        },
+        {
+          "case": "f5_subclass_of_selected_request_is_refused",
+          "detail": "selected ingress accepts only the exact builtin SelectedRequest data-only shape (subclasses are refused)",
+          "ok": true
+        },
+        {
+          "case": "f5_subclass_of_str_is_refused_as_the_cell",
+          "detail": "request cell must be an exact builtin str",
+          "ok": true
+        },
+        {
+          "case": "f5_subclass_of_tuple_is_refused_as_stratum_ids",
+          "detail": "stratum_ids must be an exact builtin tuple of plain strings",
+          "ok": true
+        },
+        {
+          "case": "f5_subclass_of_str_is_refused_as_a_stratum_entry",
+          "detail": "stratum_ids entries must be exact builtin non-empty str values",
+          "ok": true
+        },
+        {
+          "case": "f5_non_str_cell_is_refused",
+          "detail": "request cell must be an exact builtin str",
+          "ok": true
+        },
+        {
+          "case": "f5_empty_stratum_tuple_is_refused",
+          "detail": "stratum_ids must be a non-empty tuple of plain strings",
+          "ok": true
+        },
+        {
+          "case": "f5_the_request_cannot_carry_evidence",
+          "detail": "cannot assign to field 'evidence'",
+          "ok": true
+        },
+        {
+          "case": "f5_request_exposes_only_the_two_closed_fields",
+          "detail": [
+            "cell",
+            "stratum_ids"
+          ],
+          "ok": true
+        },
+        {
+          "case": "f6_positive_receipt_is_technical_not_authorizing",
+          "detail": "technical",
+          "ok": true
+        },
+        {
+          "case": "f6_receipt_lineage_is_not_collapsible_to_the_f8_number",
+          "detail": 6,
+          "ok": true
+        },
+        {
+          "case": "f6_a_caller_hash_of_the_f8_number_is_not_the_origin_hash",
+          "detail": "0d3d84a0b4e16586d8a4646f1799c7e0fb691631e89aed3602d7b36b4515bd75",
+          "ok": true
+        },
+        {
+          "case": "f6_no_request_channel_exists_for_a_caller_supplied_hash",
+          "detail": "closed",
+          "ok": true
+        },
+        {
+          "case": "f6_origin_hash_is_not_reconstructable_from_the_f8_number",
+          "detail": [
+            "516256bf72a05abda8493aebcdb19f7373c1bfbc4a4baf17aec0136832a0bc52",
+            "71892f727fb45358b1243053de5e7991688c68b300a68e88d9cb78bd3d9a70f0"
+          ],
+          "ok": true
+        },
+        {
+          "case": "f6_a_real_binder_refusal_surfaces_and_is_not_swallowed",
+          "detail": "real-binder-refusal-surfaced",
+          "ok": true
+        },
+        {
+          "case": "f6_the_ingress_has_no_second_f8_entrypoint",
+          "detail": [
+            "serve"
+          ],
+          "ok": true
+        }
+      ],
+      "court": "F1_F6_INDEPENDENT_REPRODUCTION",
+      "failed": 0,
+      "failed_cases": [],
+      "passed": 49,
+      "refusals": [
+        "f1_bomb_substituted_at_applicability_proves_the_real_call",
+        "f1_bomb_substituted_at_binder_proves_the_real_call",
+        "f1_bomb_substituted_at_evaluate_proves_the_real_call",
+        "f1_real_binder_refuses_a_foreign_source_universe",
+        "f2_cell_label_flip_is_refused",
+        "f3_in_flight_provenance_substitution",
+        "f3_in_flight_authority_substitution",
+        "f3_in_flight_evidence_ref_substitution",
+        "f3_in_flight_release_substitution",
+        "f3_in_flight_denominator_substitution",
+        "f3_in_flight_composed_identity_substitution",
+        "f4_genuine_zero_support_is_a_typed_c1_state",
+        "f4_no_admitted_source_is_a_distinct_applicability_outcome",
+        "f5_subclass_of_selected_request_is_refused",
+        "f5_subclass_of_str_is_refused_as_the_cell",
+        "f5_subclass_of_tuple_is_refused_as_stratum_ids",
+        "f5_subclass_of_str_is_refused_as_a_stratum_entry",
+        "f5_non_str_cell_is_refused",
+        "f5_empty_stratum_tuple_is_refused",
+        "f5_the_request_cannot_carry_evidence",
+        "f6_a_real_binder_refusal_surfaces_and_is_not_swallowed"
+      ],
+      "total": 49
+    },
+    "STEP_A_INDEPENDENT_POSITIVE_CONTROL": {
+      "cases": [
+        {
+          "case": "p1_authority_id_pinned",
+          "detail": "I03-AUTH-c1-at09-xor",
+          "ok": true
+        },
+        {
+          "case": "p2_authority_kind_predicate_grammar",
+          "detail": "PREDICATE_GRAMMAR",
+          "ok": true
+        },
+        {
+          "case": "p3_authority_content_hash_pinned",
+          "detail": "7fbd015d4d45c533fdb2b9e48082544f284167a7dff5713e897a112b3bc94257",
+          "ok": true
+        },
+        {
+          "case": "p4_governed_operations_exact",
+          "detail": [
+            "I03-OP-c1-at09-xor"
+          ],
+          "ok": true
+        },
+        {
+          "case": "p5_governed_families_exact_three",
+          "detail": [
+            "EmpiricalFact@1.0.0",
+            "EmpiricalPredicate@1.0.0",
+            "EmpiricalQuerySpec@1.0.0"
+          ],
+          "ok": true
+        },
+        {
+          "case": "p6_snapshot_substitute_is_forbidden",
+          "detail": "C1-AT07-QUERY",
+          "ok": true
+        },
+        {
+          "case": "p7_snapshot_substitute_refused_at_owner_construction",
+          "detail": "query authority 'C1-AT07-QUERY' is a snapshot-style substitute; the original predicate-grammar authority 'I03-AUTH-c1-at09-xor' is required and no substitute is accepted",
+          "ok": true
+        },
+        {
+          "case": "o1_release_identity_frozen",
+          "detail": "REL-c1-at09-xor",
+          "ok": true
+        },
+        {
+          "case": "o2_universe_content_hash_frozen",
+          "detail": "318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c",
+          "ok": true
+        },
+        {
+          "case": "o3_four_respondents_by_own_row_table",
+          "detail": 4,
+          "ok": true
+        },
+        {
+          "case": "o4_a1_count_is_two",
+          "detail": 2,
+          "ok": true
+        },
+        {
+          "case": "o5_a1b0_count_is_one",
+          "detail": 1,
+          "ok": true
+        },
+        {
+          "case": "o6_q1_denominator_matches_own_oracle",
+          "detail": [
+            2,
+            2
+          ],
+          "ok": true
+        },
+        {
+          "case": "o7_q2_denominator_matches_own_oracle",
+          "detail": [
+            1,
+            1
+          ],
+          "ok": true
+        },
+        {
+          "case": "o8_q1_figures_are_1_over_2_and_1_over_2",
+          "detail": {
+            "0": 1,
+            "1": 1
+          },
+          "ok": true
+        },
+        {
+          "case": "o9_q2_figures_are_0_over_1_and_1_over_1",
+          "detail": {
+            "0": 0,
+            "1": 1
+          },
+          "ok": true
+        },
+        {
+          "case": "o10_q1_and_q2_are_genuinely_different",
+          "detail": [
+            {
+              "0": 1,
+              "1": 1
+            },
+            {
+              "0": 0,
+              "1": 1
+            }
+          ],
+          "ok": true
+        },
+        {
+          "case": "o11_q1_states_are_supported",
+          "detail": [
+            "SUPPORTED",
+            "SUPPORTED"
+          ],
+          "ok": true
+        },
+        {
+          "case": "o11_q2_states_are_supported",
+          "detail": [
+            "SUPPORTED",
+            "SUPPORTED"
+          ],
+          "ok": true
+        },
+        {
+          "case": "r1_contract_pinned_on_both_receipts",
+          "detail": "HQ266_G01_OWNER_ONLY_C1_G2_F8_SELECTED_INGRESS@1",
+          "ok": true
+        },
+        {
+          "case": "r2_cell_labels_honoured",
+          "detail": [
+            "q1",
+            "q2"
+          ],
+          "ok": true
+        },
+        {
+          "case": "r3_hashes_are_64_hex",
+          "detail": [
+            64,
+            64
+          ],
+          "ok": true
+        },
+        {
+          "case": "r4_c1_authority_custody_present",
+          "detail": [
+            "I03-AUTH-c1-at09-xor",
+            "I03-AUTH-routing-c1-at09-xor",
+            "I03-AUTH-source-c1-at09-xor",
+            "urn:test:c1-02:pairing-authority:r02-qA"
+          ],
+          "ok": true
+        },
+        {
+          "case": "r5_c1_provenance_custody_present",
+          "detail": [
+            "urn:test:c1-02:r02-qA:witness",
+            "urn:test:c1-02:leaf-0:sha256:b1851428d304f12bd1ae36ec8a727c788a598299ced563829ca43a91217c3d35",
+            "urn:test:c1-02:pair-0:sha256:74ae0cb85d8e36e0ae63d804fd751785493fcf44810889ef0f7834860be2fd7e",
+            "urn:test:c1-02:subject-fact:A:1",
+            "urn:rawlsing:pre553:EmpiricalFact:sha256:cbc983e793a9ace652d5654b08c96944e6e9ada6613821d7d26f63bf98f7a59b",
+            "urn:rawlsing:pre553:EmpiricalPredicate:sha256:0ee92f7383543bc92b4d087cb15a17a81dea744628dd1a5a8b91a5911dfd5a14",
+            "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:5f223631d046d36ec3fb0f8bf14c4b4ba27169287489c333e5675b2223bf80ab",
+            "urn:rawlsing:pre553:i03-query-replay:sha256:617bba1b3e0a25478681be2a60d86a3eb2c7e8173642f15087b426823c570bcb"
+          ],
+          "ok": true
+        },
+        {
+          "case": "r6_receipt_is_not_authorizing",
+          "detail": false,
+          "ok": true
+        },
+        {
+          "case": "r7_no_grant_or_currentness_surface",
+          "detail": "clean",
+          "ok": true
+        },
+        {
+          "case": "r8_deterministic_for_identical_request",
+          "detail": "deterministic",
+          "ok": true
+        },
+        {
+          "case": "r9_lineage_hashes_mutually_distinct",
+          "detail": 5,
+          "ok": true
+        },
+        {
+          "case": "r10_denominators_bound_into_receipt",
+          "detail": [
+            2,
+            1
+          ],
+          "ok": true
+        },
+        {
+          "case": "r11_shared_source_and_release",
+          "detail": "REL-c1-at09-xor",
+          "ok": true
+        },
+        {
+          "case": "r12_distinct_producer_identity_between_cells",
+          "detail": "distinct",
+          "ok": true
+        },
+        {
+          "case": "g1_outcome_is_admissible_set",
+          "detail": "ADMISSIBLE_SOURCE_INDEXED_SET",
+          "ok": true
+        },
+        {
+          "case": "g2_service_request_set_identity_bound",
+          "detail": "f0b60ecb0272b73e1b02e0e2ab964d8c4f421680a0122d46c57539e92899f6c3",
+          "ok": true
+        },
+        {
+          "case": "g3_binding_request_id_owner_held",
+          "detail": "hq270r02-breq-1",
+          "ok": true
+        },
+        {
+          "case": "g4_permission_keys_owner_held",
+          "detail": [
+            "urn:hq270r02:target_use_permission:fixture-perm-only"
+          ],
+          "ok": true
+        },
+        {
+          "case": "g5_query_authority_bound",
+          "detail": "I03-AUTH-c1-at09-xor",
+          "ok": true
+        },
+        {
+          "case": "g6_no_local_scope_hash_stand_in",
+          "detail": "absent",
+          "ok": true
+        },
+        {
+          "case": "g7_g2_hash_is_the_accepted_owner_replay_identity",
+          "detail": "90b5401f572478d7db38b963eb04e09a66b7ef442711339272d29f113660fec0",
+          "ok": true
+        },
+        {
+          "case": "g8_projection_hash_is_distinct_from_the_f8_hash",
+          "detail": "f3610e3e4938e5b2ab4cd4a3677d6ada5b260ee25e0dfde8a6621b72585e5bad",
+          "ok": true
+        },
+        {
+          "case": "c1_every_accepted_owner_runs_on_the_positive_path",
+          "detail": {
+            "applicability": 1,
+            "binder": 3,
+            "compose": 1,
+            "evaluate": 1
+          },
+          "ok": true
+        },
+        {
+          "case": "c2_bound_f8_reached_exactly_once",
+          "detail": 1,
+          "ok": true
+        },
+        {
+          "case": "c3_applicability_and_the_real_binder_are_reached",
+          "detail": {
+            "applicability": 1,
+            "binder": 3,
+            "compose": 1,
+            "evaluate": 1
+          },
+          "ok": true
+        },
+        {
+          "case": "n1_bound_f8_equals_direct_c1_result",
+          "detail": [
+            "ebde2f9a548374d56651065ba09e93628eef8ce59de5fbb4d0f933e82de83390",
+            "ebde2f9a548374d56651065ba09e93628eef8ce59de5fbb4d0f933e82de83390"
+          ],
+          "ok": true
+        },
+        {
+          "case": "n2_receipt_reports_parity_flag",
+          "detail": true,
+          "ok": true
+        },
+        {
+          "case": "n3_owner_scope_material_top_level_readonly",
+          "detail": "'mappingproxy' object does not support item assignment",
+          "ok": true
+        },
+        {
+          "case": "n4_owner_identity_nested_readonly",
+          "detail": "'mappingproxy' object does not support item assignment",
+          "ok": true
+        },
+        {
+          "case": "n5_cells_nested_readonly",
+          "detail": "'mappingproxy' object does not support item assignment",
+          "ok": true
+        },
+        {
+          "case": "n6_wrong_stratum_grain_refused",
+          "detail": "C1-originated evidence grain ('c0',) does not match the requested stratum_ids ('nope',); no substitution is permitted",
+          "ok": true
+        },
+        {
+          "case": "n7_grain_refusal_spent_no_f8",
+          "detail": {
+            "applicability": 0,
+            "binder": 0,
+            "compose": 1,
+            "evaluate": 0
+          },
+          "ok": true
+        }
+      ],
+      "court": "STEP_A_INDEPENDENT_POSITIVE_CONTROL",
+      "failed": 0,
+      "failed_cases": [],
+      "passed": 49,
+      "refusals": [
+        "p7_snapshot_substitute_refused_at_owner_construction",
+        "n3_owner_scope_material_top_level_readonly",
+        "n4_owner_identity_nested_readonly",
+        "n5_cells_nested_readonly",
+        "n6_wrong_stratum_grain_refused"
+      ],
+      "total": 49
+    }
+  },
+  "D1": {
+    "every_refusal_measured_zero_invocations_of": [
+      "bound-F8 (evaluate_bound_positioned_subject_possibility)",
+      "source applicability (resolve_service_source_applicability)",
+      "G2 binder (bind_service_applicability_to_f8_scope)"
+    ],
+    "measurement_method": "the real accepted owners are monkeypatched with counting wrappers; the count is observed, not asserted from an exception type",
+    "non_vacuity_control": "a COMPLETE, correctly typed but cell-swapped owner expectation is refused with non-empty mismatched_fields, and the honest expectation serves both cells through the whole chain (c27/c28/c29/c31)",
+    "owner_expectation_custody_note": "the owner-held expected identity is produced by the SAME C1 producer the ingress later runs (SAME-PRODUCER fail-closed gate, NOT an independent custody root). Confirmed by c29 key-by-key equality with the produced identity and by c27: a different complete expectation fails.",
+    "post_construction_mutation": [
+      "c21 expectation emptied after __init__",
+      "c22 complete expectation with a wrong release_key_owner",
+      "c23 complete expectation with a truncated denominator_member_keys",
+      "c23b tuple-of-ints that passes the builtin-type gate and is still refused",
+      "c24 complete expectation with an extra attacker key",
+      "c25 complete expectation with a mistyped value",
+      "c26 the internal observed-builder drift guard is live (not dead code)"
+    ],
+    "primary_case_ids": [
+      "c01_owner_identity_is_a_tuple",
+      "c02_owner_identity_is_a_str",
+      "c03_q1_cell_entry_is_none",
+      "c04_q1_cell_entry_is_int",
+      "c05_q1_cell_entry_is_str",
+      "c06_q2_cell_missing_entirely",
+      "c07_q1_cell_missing_entirely",
+      "c08_q1_missing_denominator_member_keys",
+      "c09_q2_missing_target_question_key",
+      "c10_q1_missing_release_key_owner",
+      "c11_q2_missing_evidence_state",
+      "c12_q1_missing_composed_result_identity_hash",
+      "c13_q2_missing_risk_set_key",
+      "c14_q1_retained_conditioner_ids_is_a_str",
+      "c15_q1_raw_denominator_support_is_a_bool",
+      "c16_q2_evidence_authority_keys_is_a_list",
+      "c17_q1_producer_predicate_key_is_a_tuple",
+      "c18_q2_denominator_member_keys_are_a_list",
+      "c19_q1_carries_a_20th_key",
+      "c20_q2_carries_an_extra_provenance_key",
+      "c21_expectation_emptied_after_construction",
+      "c22_complete_expectation_with_wrong_release",
+      "c23_complete_expectation_with_truncated_denominator",
+      "c23b_tuple_of_ints_passes_the_type_gate_and_is_still_refused",
+      "c24_complete_expectation_with_extra_key_at_serve",
+      "c25_complete_expectation_with_mistyped_value_at_serve",
+      "c26_observed_builder_drift_guard_is_live",
+      "c27_complete_but_wrong_cell_identity_refused"
+    ],
+    "refusal_case_count": 28,
+    "requirement": "at least 12 D1 owner-identity refusals",
+    "requirement_met": true
+  },
+  "D2": {
+    "measured": {
+      "material_field_count": 11,
+      "material_fields_11_of_11_discriminate_replay_identity": true,
+      "order_discriminates_public_as_dict": true,
+      "order_discriminates_replay_identity": false,
+      "order_only_tamper_at_the_ingress": {
+        "f8_result_hash_unchanged": true,
+        "g2_receipt_hash_unchanged": true,
+        "origin_receipt_hash_changed": true
+      },
+      "order_re_derived_from_material_alone_across_varied_outcomes": [
+        "single_admitted",
+        "single_negative",
+        "no_authority_record",
+        "two_members_one_admitted",
+        "two_members_both_admitted"
+      ]
+    },
+    "requirement": "replay_identity() discriminates material fields; canonical_replay_only_order affects the selected ingress origin_receipt_hash but not the accepted SA replay_identity()",
+    "verdict": "INTENTIONAL_NONSEMANTIC_DERIVED"
+  },
+  "D2_ADJUDICATION": {
+    "derivation": "order == tuple(sorted(canonical_json(ref) for ref in admissible_source_universe_refs())), and the admissible set is exactly the ADMITTED members of receipt.decisions, which IS one of the 11 identity-bearing _material() fields",
+    "evidence": {
+      "declared_semantics": "REPLAY_ONLY_DETERMINISTIC_SERIALIZATION__ZERO_RANKING_PRIORITY_PREFERENCE_WEIGHT_OR_FALLBACK_SEMANTICS",
+      "g2_and_f8_read_the_order": false,
+      "ingress_receipt_source": "SA.resolve_service_source_applicability only",
+      "material_field_count": 11,
+      "material_fields": [
+        "authorised_authority",
+        "candidate_class_binding",
+        "candidate_class_coverage",
+        "candidate_class_ref",
+        "decisions",
+        "no_applicable_source",
+        "outcome",
+        "receipt_id",
+        "request_key",
+        "service_id",
+        "service_request_set_identity"
+      ],
+      "material_fields_discriminating_replay_identity": "11/11",
+      "order_discriminates_public_as_dict": true,
+      "order_discriminates_replay_identity": false,
+      "order_in_material": false,
+      "origin_hash_sensitivity_to_order_only_tamper": {
+        "f8_result_hash_unchanged": true,
+        "g2_receipt_hash_unchanged": true,
+        "origin_receipt_hash_changed": true
+      },
+      "resolver_is_only_production_assignment": true,
+      "varied_outcomes_re_derived": [
+        "no_authority_record",
+        "single_admitted",
+        "single_negative",
+        "two_members_both_admitted",
+        "two_members_one_admitted"
+      ]
+    },
+    "question": "is canonical_replay_only_order semantically derived from other identity-bearing fields of the accepted SA receipt?",
+    "residual": {
+      "name": "NON_RESOLVER_CONSTRUCTION_PATH",
+      "residual_is_reported_as": "ADVISORY__NOT_A_CONTRACT_DEFECT",
+      "statement": "CandidateClassApplicabilityReceipt is a public frozen dataclass whose canonical_replay_only_order defaults to () and is never re-derived or validated in __post_init__. A hand-built receipt can therefore carry any order, or none, while replay_identity() is unchanged.",
+      "why_it_is_not_an_owner_contract_defect": [
+        "the field is declared REPLAY_ONLY with zero ranking/priority/preference/weight/fallback semantics by the owner's own law",
+        "the order is a pure function of receipt.decisions, which the owner already includes in its identity material, so admitting it to _material() would be redundant",
+        "the only production producer of this receipt is the resolver, which always assigns the derived order",
+        "the selected ingress does not re-derive and does not trust the field: it binds the value it received into origin_receipt_hash, so any non-derived value is at worst a distinguishable origin, never a silent one",
+        "the accepted G2 binder and bound-F8 evaluator never read the field"
+      ]
+    },
+    "verdict": "INTENTIONAL_NONSEMANTIC_DERIVED"
+  },
+  "F1_F6": {
+    "positives": [
+      "every accepted owner runs on the positive path (compose/applicability/binder/evaluate all >= 2 over the two cells)",
+      "the two cells share one source and one release, carry distinct producer identity, and produce the frozen XOR figures",
+      "the positive receipt is technical, authorizing=False, carries no grant and claims no CURRENT"
+    ],
+    "requirement": "at least one adversarial tamper and one positive, independently reproduced",
+    "tampers": [
+      "a bomb substituted at the applicability owner / G2 binder / bound-F8 evaluator each fires, proving the ingress calls the real functions",
+      "the real binder, driven directly, refuses a foreign source universe",
+      "six in-flight C1 evidence tampers (provenance, authority, evidence ref, release, denominator, composed identity) are refused pre-F8 at zero applicability and zero binder",
+      "a genuine native ZERO_SUPPORT C1 negative is typed as C1, never as a missing G0b or a G2 failure, at zero F8",
+      "NO_ADMITTED_SOURCE surfaces as a distinct applicability reason_code at zero F8",
+      "only exact builtin request types are accepted (subclasses of SelectedRequest / str / tuple all refused)",
+      "an order-only tamper holds the observable F8 number and the G2 replay identity fixed while the origin hash moves, so the origin hash is not reconstructable from the F8 number",
+      "a real binder refusal surfaces; it is never swallowed into a silent fallback"
+    ]
+  },
+  "HARNESS": {
+    "d1_hostile.py": "sha256:17984eecc19e2d76039fea7a06d10d773aa13b76447a5dff67b08e0945506bb0",
+    "d2_hostile.py": "sha256:4111544b527681e12cea8907d515d39aa285ea04a570c42198cc016209f6b06c",
+    "f_hostile.py": "sha256:4b6103b9a9e41431ddd5fbd62c91d67b62133934fbdb125fdc238cb4aff92db3",
+    "harness.py": "sha256:3111cc15de330208514341722fb36d9802812bc8d7c6e986f3c634c3272484cc",
+    "step_a_positive_control.py": "sha256:ee0aa9002546f24a1fa1e7cf281b8755f2f286308580fe9f8a0373cb43a7e3a6"
+  },
+  "INDEPENDENCE": {
+    "authored_by": "HQ270 R02 independent reviewer runtime; not the MiMo HQ266/HQ267/HQ268 author session",
+    "designed_from": "the contract text of pre553_ee14_c1_owner_authenticated_ingress.py and pre553_service_source_applicability.py, not from the committed G01 test bodies",
+    "harness_is_new_code": true,
+    "harness_not_committed": "the five harness files live outside the repository; only their sha256 digests are recorded",
+    "re_derived_by_this_reviewer": [
+      "every urn, tag, permission/class/universe ref, binding_request_id, ApplicabilityMaterial and owner-expected-identity map (HQ270R02 namespace)",
+      "the four-respondent XOR oracle row table and its A=1 / A=1&B=0 counts",
+      "every tamper, bomb, mutation and counter"
+    ],
+    "shared_fixture_data": [
+      "fx.xor_fixture(), fx.direct_condition_composition(), fx.make_model_rule()",
+      "_query_authority('c1-at09-xor'), _registry()",
+      "the frozen XOR condition lists (RESPONSE A=1; A=1 AND B=0)"
+    ]
+  },
+  "MARKER": "TEST_ONLY_UNISSUED__NOT_AN_EE14_GRANT__G1_INTERNAL_OWNER_PATH_CANDIDATE_ONLY"
+}
