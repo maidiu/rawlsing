@@ -1,0 +1,219 @@
+{
+  "schema": "PYAT_HQ261_E01_GHANA_COUNTRY_DESIGN_WEIGHT_RELEASE_BRIDGE@1.0",
+  "status": "NATIVE_QUESTIONNAIRES_RECOVERED__COUNTRY_DESIGN_DOCUMENTED__RETAINED_RELEASE_AND_COMPLEX_SE_HOLD",
+  "checkpoint": {
+    "id": "20261009-PYAT-HQ261-G1-TRUST-G3-LOCAL-LITS-P1-GHANA-R1",
+    "handoff_commit": "91545f05a71190cde453d9d6b2f0ef1bf69154b9",
+    "commission_tip": "c658cb98fc0903bbc816036d839e0f5de05e927b",
+    "self_adoption": false
+  },
+  "country": "Ghana",
+  "family": "Afrobarometer",
+  "actual_source_read": false,
+  "wave_2012": {
+    "round": 5,
+    "question": "Q43",
+    "field_dates": "2012-05-08/2012-05-27",
+    "sample_universe": "Ghana citizens age 18+",
+    "field_sample_count": 2400,
+    "codebook_respno_range": "GHA0001-GHA2400",
+    "field_questionnaire_url": "https://www.afrobarometer.org/wp-content/uploads/2022/02/gha_r5_questionnaire.pdf",
+    "field_item_pdf_index": 8,
+    "codebook_url": "https://www.afrobarometer.org/wp-content/uploads/2022/02/gha_r5_codebook.pdf",
+    "design": {
+      "frame_primary_technical": "Pre-2010 Population and Housing Census Enumeration Frame, GSS population estimates",
+      "frame_conflict": "Some survey summary descriptions refer to 2010 PHC frame; original codebook explicitly says pre-2010 while weight calibration explicitly uses 2010 census: official origin/versions unresolved",
+      "stratification": "region x urban/rural",
+      "administrative_regions": 10,
+      "stages": [
+        "PPS EA/PSU within strata",
+        "random start point",
+        "5/10 interval household walk",
+        "alternating interview gender quota",
+        "numbered card randomly drawn by household member among eligible sex"
+      ],
+      "cluster_households_per_ea": 8,
+      "person_selection": "numbered card",
+      "field_mode": "face-to-face interviewer-administered",
+      "sample_substitution": "7 EAs (2.3%); respondent refusal and absence permit instructed household substitutions",
+      "languages": [
+        "English",
+        "Akan",
+        "Ga",
+        "Ewe",
+        "Dagbani"
+      ],
+      "response_rate_percent": 72.9,
+      "contact_rate_percent": 91.2,
+      "cooperation_rate_percent": 79.9,
+      "refusal_rate_percent": 6.2
+    },
+    "national_weight": {
+      "name_in_national_codebook": "withinwt",
+      "role": "within country weighting by individual inclusion probabilities and region/gender/urban-rural/household/EA size; 2010 census adult distribution referenced in technical report",
+      "owner_confirmed_design_vs_poststrat_components": false,
+      "retained_source_variable_present": "UNINSPECTED"
+    },
+    "values": {
+      "0": "Ghana is not a democracy",
+      "1": "Not at all satisfied",
+      "2": "Not very satisfied",
+      "3": "Fairly satisfied",
+      "4": "Very satisfied",
+      "9": "Don't know",
+      "998": "Refused to answer",
+      "-1": "Missing data"
+    },
+    "retained": {
+      "file": "Afro Barometer Round 5.sav",
+      "sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+      "merged_all_country_rows_inventory": 51587,
+      "merged_all_country_columns_inventory": 348,
+      "physical_sha_to_official_country_or_merged_release": "UNVERIFIED",
+      "Ghana_country_filter_and_Q43_mapping": "UNVERIFIED",
+      "actual_weight_psu_stratum_vars": "UNVERIFIED"
+    },
+    "source_pages": [
+      {
+        "url": "https://www.afrobarometer.org/wp-content/uploads/2022/02/gha_r5_codebook.pdf",
+        "pdf_index": 1,
+        "claim": "national technical survey overview"
+      },
+      {
+        "url": "https://www.afrobarometer.org/wp-content/uploads/2022/02/gha_r5_codebook.pdf",
+        "pdf_index": 63,
+        "claim": "withinwt"
+      },
+      {
+        "url": "https://www.afrobarometer.org/wp-content/uploads/2022/02/gha_r5_questionnaire.pdf",
+        "pdf_index": 8,
+        "claim": "original Q43"
+      }
+    ]
+  },
+  "wave_2022": {
+    "round": 9,
+    "question": "Q31",
+    "field_dates": "2022-04-04/2022-04-20",
+    "sample_universe": "Ghana citizens age 18+",
+    "field_sample_count_reported": 2400,
+    "codebook_respno_range": "GHA0001-GHA2369",
+    "release_n_discrepancy": "2022 national TIR sample=2400 vs 2024 national codebook RESPNO upper endpoint GHA2369; public version/anonymization/post-field exclusion mechanism and file count not reconciled",
+    "field_questionnaire_url": "https://www.afrobarometer.org/wp-content/uploads/2023/06/GHA_R9.Indigenized-Questionnaire-_30mar22-FINAL.docx.pdf",
+    "field_item_pdf_index": 12,
+    "country_codebook_url": "https://www.afrobarometer.org/wp-content/uploads/2024/05/GHA_R9.Codebook_21May24.final_.pdf",
+    "design": {
+      "frame": "2021 Adult Population and Housing Census frame",
+      "stratification": "region x urban/rural",
+      "administrative_regions": 16,
+      "stages": [
+        "PPS EA/PSU within strata",
+        "random start point",
+        "5/10 interval household walk",
+        "alternating interview gender quota",
+        "tablet/computer random person selection within eligible sex"
+      ],
+      "cluster_households_per_ea": 8,
+      "person_selection": "computer",
+      "field_mode": "face-to-face interviewer-administered tablet-assisted selection",
+      "languages": [
+        "English",
+        "Twi",
+        "Ga",
+        "Ewe",
+        "Dagaare",
+        "Dagbani"
+      ],
+      "response_rate_percent": 94.23,
+      "contact_rate_percent": 99.44,
+      "cooperation_rate_percent": 94.76,
+      "refusal_rate_percent": 2.82,
+      "ea_substitution": "1/300 EAs = 0.33%"
+    },
+    "national_weights": [
+      {
+        "name": "withinwt_ea",
+        "codebook_semantics": "weights to EA level (old AB withinwt): region,gender,urban-rural,household/EA size"
+      },
+      {
+        "name": "withinwt_hh",
+        "codebook_semantics": "weights to HH level (new AB withinwt): region,gender,urban-rural,household/EA size and ADULT_CT"
+      }
+    ],
+    "exact_weight_approved_for_estimand": "NOT_SELECTED__REQUIRES_STATISTICS_OWNER_DECISION",
+    "retained_source_weights_physical": "UNINSPECTED",
+    "values": {
+      "0": "Ghana is not a democracy",
+      "1": "Not at all satisfied",
+      "2": "Not very satisfied",
+      "3": "Fairly satisfied",
+      "4": "Very satisfied",
+      "8": "Refused",
+      "9": "Don't know",
+      "-1": "Missing"
+    },
+    "retained": {
+      "file": "Afro Barometer Round 9.sav",
+      "sha256": "3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8",
+      "merged_all_country_rows_inventory": 53444,
+      "merged_all_country_columns_inventory": 421,
+      "physical_sha_to_official_country_or_merged_release": "UNVERIFIED",
+      "Ghana_country_filter_and_Q31_mapping": "UNVERIFIED",
+      "actual_weight_psu_stratum_vars": "UNVERIFIED"
+    },
+    "source_pages": [
+      {
+        "url": "https://www.afrobarometer.org/wp-content/uploads/2022/10/Summary-of-results-Ghana-Afrobarometer-R9-21oct2022-1.pdf",
+        "pdf_index": 3,
+        "claim": "national technical information"
+      },
+      {
+        "url": "https://www.afrobarometer.org/wp-content/uploads/2024/05/GHA_R9.Codebook_21May24.final_.pdf",
+        "pdf_index": 1,
+        "claim": "respondent identifiers (2369 upper)"
+      },
+      {
+        "url": "https://www.afrobarometer.org/wp-content/uploads/2024/05/GHA_R9.Codebook_21May24.final_.pdf",
+        "pdf_index": 16,
+        "claim": "Q31 release coding"
+      },
+      {
+        "url": "https://www.afrobarometer.org/wp-content/uploads/2024/05/GHA_R9.Codebook_21May24.final_.pdf",
+        "pdf_index": 67,
+        "claim": "separate withinwt_ea and withinwt_hh"
+      },
+      {
+        "url": "https://www.afrobarometer.org/wp-content/uploads/2023/06/GHA_R9.Indigenized-Questionnaire-_30mar22-FINAL.docx.pdf",
+        "pdf_index": 12,
+        "claim": "original Q31"
+      }
+    ]
+  },
+  "shared_and_unresolved": {
+    "population": "Adult citizen 18+ headline common; realized coverage/nonresponse/translation and changing frame/region arrangements not automatically invariant",
+    "original_questionnaire_meaning": "same Ghana-specific democracy-satisfaction stem and response 0..4; same English-first instruction; no read code 0",
+    "measurement_recode": "R5 refusal 998; R9 refusal 8; DK 9 and missing -1; 0 valid but distinct from satisfaction scale 1..4",
+    "country_region_stratum": "2012 10 regions; 2022 16 regions; no crosswave PSU pooling, distinct survey-year design and variance",
+    "source_technical": "national codebooks list REGION and URBRUR, but these are not verified unique PSU IDs, stratum ID nor complete replicate-weight recipe",
+    "eligible_asked_routing": "public original instruments indicate unconditional Q43/Q31 in democracy block; retained data item applicability and -1 routes require authorized frozen-source mapping",
+    "response_rate_differential": "72.9% versus 94.23%; selection/nonresponse bias not repaired by ordinary weights without evidence",
+    "release_bridge": "Neither retained merged SAV SHA nor native mapped country columns and weights were opened, version matched or qualified",
+    "pair_authority": "NOT_ISSUED",
+    "variance_calculated": false,
+    "trend_calculated": false,
+    "world_consumer": "NONE_PROVED"
+  },
+  "source_byte_inventory": {
+    "repository_path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_BYTE_INVENTORY.csv",
+    "git_blob": "2a87ed920606be95003684e3775227ff8e94639c",
+    "evidence": "existing repository inventory, not rehashed or source inspected"
+  },
+  "negative_gate": [
+    "Do not infer R9 public country file row count solely from RESPNO label",
+    "Do not equate withinwt_hh and withinwt_ea, or silently transfer R5 withinwt",
+    "Do not infer PSU/stratum retained metadata presence from national methods description",
+    "Do not infer official SAV version equality from survey title/question name",
+    "Do not assert trend or model/world structural coefficient"
+  ],
+  "final_state": "FROZEN_DOCUMENTARY_POSITIVE_ORIGINALS__PRECISE_SOURCE_DESIGN_RELEASE_HOLD__NO_SELF_ADOPTION"
+}
