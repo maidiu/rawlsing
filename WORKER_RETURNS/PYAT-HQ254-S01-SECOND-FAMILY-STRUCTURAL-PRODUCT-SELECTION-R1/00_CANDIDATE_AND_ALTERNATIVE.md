@@ -1,0 +1,35 @@
+# HQ254 S01 — LiTS I second-family structural candidate, not a second admission
+
+**Disposition:** `SELECT_LITS_I_Q301_BOUNDED_COTRAVEL_FOR_SOURCE_SPECIFIC_STRUCTURAL_WARRANT__NOT_ADMITTED__NO_WORLD_CONSUMER_PROVED`  
+**Commit under inspection:** sealed HQ254 checkpoint `6072a6891f47e713df0f70f0dec8770fc0abac32`; source/production evidence is static; this is **not** a new empirical execution, structural adoption or T2 positive.  
+**Worker launch tip:** `2b985362e207d813bfb3506dbaef6748d820bc5e` (branch identical to tip before writing).  
+**World-law ceiling:** HQD125 §§8–9/F5–F6, HQD216 §§1–4, HQ254 CURRENT. Exact source evidence and limitations below.
+
+## Selection — one survey family, one bounded empirical operation
+
+**Select:** LiTS I (Life in Transition Survey, first wave, 2006), retained source SHA-256 `7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09`; 29,002 physical rows × 1,198 variables. The admitted **source-native respondent-event slots** in the frozen narrow proving projection are `q301_2` and `q301_7`, with `country`, `city`, `region`, `tablec`, `tabled` as empirical coordinates. No default weight was authorized. This is a source-backed survey about respondents' evaluations, *not* objective evidence that material political arrangements improved or worsened since 1989. [AS2A source/projection](../../data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/19_AS2A_PART_A_ACCEPTANCE_AND_AS2B_LOCAL_EXECUTION_ROUTING.md), blob `e17c718dedac22da99dcebeaafc0e05dd92902ea`, lines 21–53, at frozen repo.
+
+**Source meanings, as independently stored in the repo's source-reviewed semantic ledger (not a verbatim questionnaire quote):**
+- `q301_2`: “perception of present political sit. w.r.t. 1989” — retrospective appraisal, not measured institutional change.
+- `q301_7`: “perception of present life satisfaction” — an appraisal of lived satisfaction, **not** the same proposition, scale, or time comparison as q301_2.
+
+Ledger `data/ddm_build_copy/recovery_reservoir/semantic_relation_R1_through_Job3/R1_20260825/objects/33/3373f7cc51991a212d8e55bc3d1f5dfe82dd98ad065515c3bb621c81f07acf39.csv`, blob `76b3a94a27076b928b0843bf95c805ebbcd34ea5`, source rows/lines **201**, **184**, respectively. Its labels support these meanings; they **do not** alone establish exact native response poles, translation, country sampling, probability estimand, variance design or a structural-causation coefficient.
+
+**Retained respondent product:** the LiTS source-backed canonical closure has 60 supported `EmpiricalFact@1.0.0`, 63 query specs, 35 predicates, one empirical universe, 24 authority snapshots, 50 discovery results (49 supported, one `VALID_EMPTY`), 77 query roles; source/query/predicate closures PASS. A retained `PAIR_RESPONSE_COTRAVEL` I05 candidate includes `JOINT`, `MARGINAL_0`, `MARGINAL_1` facts with **distinct observed raw denominators 24,630 / 24,897 / 28,325**, one recorded Q301 risk-set ref and `UNCERTAINTY_UNQUANTIFIED`/no authorized weighted denominator. These different denominators **must not be silently interchanged**. Canonical closure inventory `WORKER_RETURNS/PREMAIN-FIABC-LITS-FINAL-SUCCESS-DURABLE-CUSTODY-R1/source_retry_evidence/canonical_object_inventory.json`, blob `4794344046d0ca294fef24a4fd472dfe8df1b890`; closure receipt `.../i03_i05_closure_receipt.json`, blob `787c88b41f26a7dfd5c4786d1e9d3c4b9dca0a74`, lines 2–31; frozen oracle `.../current_standard_lits_oracle.json`, blob `d25c4eee1bd2d29394f0dca3a5958bbe02f497a0`, `expected_fact_manifest[0]`/source/release references. **The item-to-I05-pair preimage identity must still be checked in the locally banked full closure**; the source-projection restriction is strong positive evidence, not authority to silently rename the pair's target query.
+
+**Crucial negative:** `ff02_readiness_disposition.json` blob `dfa3e8eac231cb6005ff164fd5a59f1b4aef690e`, lines 2–17: `FF02_READY__NO_SOURCE_REOPEN_REQUIRED`, **`ff02_executed=false` and `structural_admission_created=false`**. The I03/I05 closure independently records `structural_admission_object_count=0` (line 25). This is a real retained empirical candidate, **not** a structurally admitted second-world field.
+
+## Why it is distinct and competent at its narrow grain
+
+The first proven structural survey contribution is **SRC02 Afrobarometer R5**: `Q86B` conditioner → `Q86A` target, 19,210 actual respondents, 36 unweighted native joint cells; FIELD FORGE exact support relation `1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19`, admitted for `STRUCTURAL_MEDIATION_INPUT`, published only by V554→V557/V558 as `CONTEXT`. Read independent `WORKER_RETURNS/PYAT-HQ222-C5-GT2-STRUCTURAL-POSITIVE-REALIZATION-REVIEW-R1/00_REVIEW.md`, blob `8b51f0c0ff21994a893744e8809744c7ca49d441`, §§3–6/8, and HQ254 CURRENT blob `e64ffa47922cd7361b87fc8d780600532cb04259`, lines 26–30.
+
+LiTS is another **source family**, a different respondent universe and questionnaire. Its source-native q301 joint is scientifically useful as a **distribution of how reported political retrospective appraisal co-travels with reported life satisfaction in the defined survey risk set**. No causality, 1989-to-2006 measured change, universal post-transition score, imputed region-specific pressure, comparable Afrobarometer attitude, or shared respondent may be inferred. The paired I05 candidate supports testing the *presence/shape of within-survey co-travel* if its exact item preimages verify, not any directed causal model.
+
+## Alternative rejected for this commission
+
+**WVS7** also has source-free standardized oracle verification: `WVS7`, 97,220 rows/613 variables, SHA-256 `2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d`, 46 frozen candidates, PASS. But the examined retained acceptance is a standard-oracle/candidate receipt, **not** an accepted source-specific Field Forge relation or world service. LiTS has the more explicit retained public canonical objects + same-wave q301 native pair + `FF02_READY` source-free handoff; choosing LiTS minimizes needed rediscovery, **not** because WVS is inappropriate. WVS receipt `WORKER_RETURNS/PREMAIN-FIABC-LITS-INDEPENDENT-ACCEPTANCE-T3-FREEZE-R1/wvs7_standard_oracle_acceptance.json`, blob `e29af5fff74e191c9e1c4671c416234dc7b48ae3`.  
+**EVS 1990/2008 Austria:** source method/version/pair-authority questions are separately commissioned HQ254 E01; no pair or comparable-wave result is assumed here. **SRC02 Q86C** is still Afrobarometer, **not** an independent second family; its raw triple is separately held.
+
+## Banked determination
+
+`LITS_I_Q301_RETAINED_RESPONDENT_SUPPORTED_CANDIDATE__FIELD_FORGE_SPECIFIC_POSITIVE_UNBUILT__WORLD_F6_UNPROVED`. See exact identity matrix, consumer break and one next warrant in files 01–03. No new source bytes read, no runtime, no authority altered. **Nothing here says a source-supported structural relation is absent intrinsically**; its next admission/producer/use proof is a development and authority task.
