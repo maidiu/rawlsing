@@ -1,0 +1,181 @@
+{
+  "schema": "PYAT_HQ260_E01_MAX_TWO_RETAINED_SAME_SURVEY_ALTERNATIVES@1",
+  "status": "DOCUMENTARY_SCIENTIFIC_ONLY__NO_PAIR_AUTHORITY",
+  "hq260": {
+    "decision": "HQD-2026-10-09-260",
+    "sealed_checkpoint": "20261009-PYAT-HQ260-EE14-G0A-G1-G3-LITS-TEMPORAL-FOUR-ISSUED-R1",
+    "handoff": "a39a4b2c9b0beaf28992a13e4149e98846829161",
+    "commission_tip": "397ff575ecc9846bbf16db4f6130144926869433"
+  },
+  "retained_sha_inventory": {
+    "repository_path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_BYTE_INVENTORY.csv",
+    "blob": "2a87ed920606be95003684e3775227ff8e94639c",
+    "ref": "cb5f363b26c886c6ef855f81aa133fe194460c67"
+  },
+  "actual_candidate_count": 2,
+  "candidates": [
+    {
+      "id": "ALT1_AFROBAROMETER_GHANA_ROUND5_2012_VS_ROUND9_2022",
+      "family": "Afrobarometer",
+      "country": "Ghana",
+      "country_scope": "Citizens of Ghana aged 18+ (separate independent probability cross-sections)",
+      "suggestion": "BETTER_DOCUMENTED_METHOD_AND_NATIVE_ITEM_CHALLENGER__NOT_CURRENT_PAIR_AUTHORITY",
+      "selected_next_qualification": true,
+      "first": {
+        "file": "Afro Barometer Round 5.sav",
+        "sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+        "retained_rows_all_countries": 51587,
+        "retained_columns_all_countries": 348,
+        "country_study": "Ghana Round 5 2012",
+        "n_original_country_sample": 2400,
+        "field_dates": "2012-05-08 to 2012-05-27",
+        "country_reference": "https://www.afrobarometer.org/wp-content/uploads/2022/02/merged_r5_codebook_2.pdf",
+        "country_TIR_pdf_index": 82,
+        "question": "Q43",
+        "topic": "Satisfaction with way democracy works in the country",
+        "substantive_codes": {
+          "0": "Ghana is not a democracy",
+          "1": "Not at all satisfied",
+          "2": "Not very satisfied",
+          "3": "Fairly satisfied",
+          "4": "Very satisfied"
+        },
+        "nonresponse_codes": {
+          "9": "don't know",
+          "998": "refused",
+          "-1": "missing"
+        },
+        "sample_frame": "pre-2010 population/census enumeration estimates by GSS",
+        "design": "stratified region x urban/rural; clustered multistage PPPS PSUs; eight households/PSU; random-start 5/10 walking pattern; alternating gender quota plus numbered-card random eligible person",
+        "weight": "individual selection probability and 2010 census adult age/population distribution; exact variance-relevant design vars not yet verified",
+        "response_rate_percent": 72.9,
+        "ea_substitution_percent": 2.3,
+        "survey_languages": [
+          "English",
+          "Akan",
+          "Ga",
+          "Ewe",
+          "Dagbani"
+        ],
+        "questionnaire_local_Ghana_primary_inspected": false
+      },
+      "second": {
+        "file": "Afro Barometer Round 9.sav",
+        "sha256": "3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8",
+        "retained_rows_all_countries": 53444,
+        "retained_columns_all_countries": 421,
+        "country_study": "Ghana Round 9 2022",
+        "n_original_country_sample": 2400,
+        "field_dates": "2022-04-04 to 2022-04-20",
+        "national_method_reference": "https://www.afrobarometer.org/wp-content/uploads/2022/10/Summary-of-results-Ghana-Afrobarometer-R9-21oct2022-1.pdf",
+        "national_TIR_pdf_index": 3,
+        "country_fielded_questionnaire": "https://www.afrobarometer.org/wp-content/uploads/2023/06/GHA_R9.Indigenized-Questionnaire-_30mar22-FINAL.docx.pdf",
+        "country_fq_pdf_index": 12,
+        "merged_codebook": "https://www.afrobarometer.org/wp-content/uploads/2024/10/AB_R9.MergeCodebook_25Jun24.final_.pdf",
+        "merged_codebook_pdf_index": 22,
+        "question": "Q31",
+        "topic": "Satisfaction with way democracy works in Ghana",
+        "substantive_codes": {
+          "0": "Ghana is not a democracy (do not read)",
+          "1": "Not at all satisfied",
+          "2": "Not very satisfied",
+          "3": "Fairly satisfied",
+          "4": "Very satisfied"
+        },
+        "nonresponse_codes": {
+          "8": "refused per merged codebook, not printed as read option in Ghana questionnaire",
+          "9": "don't know",
+          "-1": "missing"
+        },
+        "sample_frame": "2021 Population and Housing Census frame",
+        "design": "national stratified region x urban/rural PPPS PSU clustered multistage, eight households/PSU, start-point/walk 5/10, alternating gender then random computer/tablet within selected gender",
+        "weight": "individual inclusion-probability weight; exact variance-relevant design variables not verified",
+        "response_rate_percent": 94.23,
+        "ea_substitution_percent": 0.33,
+        "survey_languages": [
+          "English",
+          "Twi",
+          "Ga",
+          "Ewe",
+          "Dagaare",
+          "Dagbani"
+        ],
+        "refusals_native_changed": true
+      },
+      "scoring": {
+        "same_target_country": true,
+        "same_eligibility_headline": true,
+        "both_national_probability_sampling_description": true,
+        "both_respondent_national_samples_documented": true,
+        "substantive_question_concept_aligned": true,
+        "native_coding_requires_explicit_refusal_998_to_8": true,
+        "zero_is_distinct_nondemocracy_category": true,
+        "instrument_translation_selection_changes": true,
+        "sample_frames_changed": true,
+        "actual_weight_and_design_SE_for_frozen_source": "UNVERIFIED",
+        "frozen_sav_official_release_identity": "UNVERIFIED",
+        "same_current_country_item_product": "NOT_PRODUCED",
+        "positive_C7_EE12_pair_relation": "NOT_ADOPTED",
+        "temporal_sign": null,
+        "actual_world_consumer": "ABSENT"
+      },
+      "proposed_estimand": "For each wave, Ghana citizens aged 18+ who were eligible/asked; design-weighted share responding fairly or very satisfied (Q43/Q31 in {3,4}) among respondents with substantive Q43/Q31 values 0..4. Keep 0 as distinct 'not a democracy', not as simply 'not satisfied'; separately tabulate refusals/DK/missing and respondent risk. Crosswave contrast only after admissible estimand/uncertainty and positive pair authority.",
+      "first_exact_missing_edge": "Native source versions Ghana country support, full 2012 field questionnaire and exact 2022 field/native item/routing, within-country weights, strata/PSU inclusion and item valid denominators from each frozen SHA; then EE12 positive pair-specific comparability/use authority and selected world consumer.",
+      "warning": "Reports' +/-2% national design descriptions are not the measured A048/Q31 comparison SE nor an automatically usable design-based variance; difference in response rates, frame and device requires explicit selection-bias/sensitivity."
+    },
+    {
+      "id": "ALT2_EVS_AUSTRIA_1999_VS_2008_A048",
+      "family": "European Values Study",
+      "country": "Austria",
+      "suggestion": "UNVERIFIED_BACKUP__NOT_BETTER_CONFIRMED",
+      "selected_next_qualification": false,
+      "first": {
+        "file": "EVS 1999.sav",
+        "sha256": "6058644a9308aad574b95fa0afd1b026fedea289c6c95aca043aefb41ae0ab8a",
+        "integrated_study": "ZA3811",
+        "country_national_study": "ZA3779",
+        "reported_national_sample_n": 1522,
+        "field": "1999-08-01 to 1999-10-31",
+        "candidate_source_question": "EVS Trend A048 associated original 1999 Q50; exact national Austrian local item and instructions not independently qualified",
+        "official_country_page": "https://www.gesis.org/en/european-values-study/data-and-documentation/3rd-wave-1999"
+      },
+      "second": {
+        "file": "EVS 2008.sav",
+        "sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+        "integrated_study": "ZA4800",
+        "country_national_study": "ZA4754",
+        "reported_national_sample_n": 1510,
+        "field": "2008-07-21 to 2008-10-22",
+        "candidate_source_question": "EVS Trend A048 original 2008 Q53A",
+        "official_country_page": "https://www.gesis.org/en/european-values-study/data-and-documentation/4th-wave-2008"
+      },
+      "measurement": {
+        "harmonized_study": "ZA7503",
+        "harmonized_variable": "A048",
+        "target": "Abortion when woman not married (approval)",
+        "study_crosswalk": "https://access.gesis.org/dbk/71051",
+        "native_1999_Austrian_administered_proven": false,
+        "warning": "ZA4800 report marks modified trend interviewer instruction specifically for EVS1999 and EVS2008",
+        "different_country_releases": "UNVERIFIED_SHAs"
+      },
+      "science": {
+        "sample_population_comparability": "NOT_QUALIFIED",
+        "method_1999_Austria": "NOT_QUALIFIED_AT_NATIONAL_GRAIN",
+        "weights_1999": "NOT_QUALIFIED",
+        "weight_2008": "EVS and Austrian original national weights documented; exact raw mapping not qualified",
+        "variance": "NOT_DESIGN_QUALIFIED",
+        "same_pair_grant": false,
+        "comparison_sign": null,
+        "world_consumer": "NONE",
+        "reason_not_preferred": "Prospective interviewer-instruction difference exactly across selected waves, absent national 1999 design/weight and fielded item qualification; no demonstrated methodological superiority."
+      }
+    }
+  ],
+  "selection": "ALT1_FOR_NEXT_DOCUMENTARY_SOURCE_NATIVE_QUALIFICATION_ONLY__NOT_POSITIVE_TEMPORAL_PAIR",
+  "positive_current_temporal_pair": false,
+  "source_runtime_executed": false,
+  "raw_source_opened": false,
+  "library_accessed": false,
+  "pair_authority_issued": false,
+  "temporal_change_computed": false
+}
