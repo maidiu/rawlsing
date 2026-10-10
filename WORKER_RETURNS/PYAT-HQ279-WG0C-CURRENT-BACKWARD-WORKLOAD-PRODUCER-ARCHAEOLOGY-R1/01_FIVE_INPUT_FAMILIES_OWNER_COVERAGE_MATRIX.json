@@ -1,0 +1,284 @@
+{
+  "schema": "PYAT_HQ279_WG0C_FIVE_FAMILIES_OWNER_COVERAGE@1.0.0",
+  "control_commit": "288316c6d9ecac9a92f5fb1c9f1bc1e1c5d5f44c",
+  "commission_tip": "96368a4055316d14b275a8356a6d83c2c22774bc",
+  "audit_kind": "STATIC_EXACT_GITHUB_CODE_AND_TEST_INSPECTION__NO_EXECUTION",
+  "proof_legend": [
+    "IMPLEMENTED_SCOPED_EXECUTOR",
+    "IMPLEMENTED_SCOPED_CONSTRUCTOR",
+    "HAND_AUTHORED_SOURCE_SPECIFIC",
+    "FIXTURE_POSITIVE_INSPECTED_NOT_EXECUTED",
+    "AUTHORITY_PACKET_PRECONDITION",
+    "UPSTREAM_WORKLOAD_ORIGINAL_ITEM_COMPLETENESS_UNVERIFIED",
+    "FROZEN_SCOPE_BEFORE_OUTCOME"
+  ],
+  "families": [
+    {
+      "name": "projection_and_runtime_catalog",
+      "downstream": "pre553_route_b_production.execute_route_b_production",
+      "owner_path": "rawlsing_next/pre553_route_b_production.py",
+      "owner_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "constructors": [
+        {
+          "path": "rawlsing_next/pre553_carrier_execution.py",
+          "blob": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+          "fn": "bind_governed_c11_projection",
+          "lines": "164-189",
+          "input": "complete caller-supplied projection_fields",
+          "output": "GovernedC11Projection",
+          "kind": "binding_not_original_semantic_enumeration"
+        },
+        {
+          "path": "rawlsing_next/pre553_carrier_execution.py",
+          "blob": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+          "fn": "RuntimeObjectCatalog.from_documents",
+          "lines": "314-344",
+          "input": "caller authority/predicate/query/discovery documents",
+          "output": "RuntimeObjectCatalog",
+          "kind": "materialization_and_validation_only"
+        },
+        {
+          "path": "rawlsing_next/wave1_r5_q86_c11_projection.py",
+          "blob": "d96933180d310b4078f23127bb5a97a3677728d1",
+          "fn": "build_r5_q86_c11_projection",
+          "lines": "505-538",
+          "input": "frozen source-specific Q86 governable inputs",
+          "output": "GovernedC11Projection",
+          "kind": "selected_source_specific_positive_ctor"
+        },
+        {
+          "path": "rawlsing_next/pre553_physical_decoder.py",
+          "blob": "d2a074a41fb556a1cd5928a5fe1421ef3672a4e5",
+          "fn": "_decode",
+          "lines": "439-522",
+          "input": "physical source metadata reader",
+          "output": "PhysicalSourceIncidence.variables and physical cell stream",
+          "kind": "physical_column_enumerator_only"
+        }
+      ],
+      "scientific_fit": "GovernedC11Projection binds source/release, respondent rows, question/response/coordinates, routing/weights, replay and exact authorities. Source-local universe permits RAW_ONLY without population inferential authority. Native questionnaire item completeness not validated.",
+      "positive_witness": {
+        "path": "rawlsing_next/tests/test_pre553_route_b_production.py",
+        "blob": "d244eaaa48f878f83d77a305b54e6dcde37244c5",
+        "kind": "declared synthetic fixture and parity tests; tests not run"
+      },
+      "negative_witness": {
+        "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+        "blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+        "lines": "498-575",
+        "explanation": "unprojected physical slots are skipped; no native item-level omission verdict"
+      },
+      "scope_frozen_pre_outcome": "projection exact before query; but no original source item scope completeness witness",
+      "full_original_items": false,
+      "full_scientific_design": false,
+      "statuses_distinct": "physical source missing/unknown, typed C11 absences, authority refusal distinct locally; original-item not-admitted universe not accounted",
+      "downstream_contract": true,
+      "verdicts": [
+        "EXISTING_CURRENT_OWNER_ALREADY_SUFFICES_AT_EXACT_PROVED_GRAIN",
+        "BOUNDED_MISSING_CONNECTION"
+      ],
+      "first_unproved_edge": "Original instrument item/option/routing/design+issuer oracle -> all eligible projection questions/slot binding and explicitly typed excluded native items",
+      "smallest_existing_binding": "Supply complete exact issuer-qualified source packet to bind_governed_c11_projection, retain original roster/no-drop receipt independent of projected slots; no new stage presumed"
+    },
+    {
+      "name": "i03_requests",
+      "downstream": "pre553_route_b_production.execute_route_b_production -> CarrierNeutralResearchExecutor.execute_i03 -> execute_empirical_query",
+      "owner_path": "rawlsing_next/pre553_empirical_query.py",
+      "owner_blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "constructors": [
+        {
+          "path": "rawlsing_next/pre553_route_b_production.py",
+          "blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+          "fn": "I03ExecutionRequest / _normalize_i03_requests",
+          "lines": "105-130,226-251",
+          "input": "caller exact query_ref and predicate_ref",
+          "output": "tuple[I03ExecutionRequest]",
+          "kind": "normalization_not_source_original_inventory_generation"
+        },
+        {
+          "path": "rawlsing_next/pre553_runtime_composition.py",
+          "blob": "3753c183ddb25b1b0eb0ce84db1868f39f50d3fa",
+          "fn": "compose_predicates_runtime",
+          "lines": "21+",
+          "input": "authorized predicates and runtime",
+          "output": "bound composite predicates",
+          "kind": "partial_grammar_composition_not_original_roster"
+        }
+      ],
+      "scientific_fit": "execute_empirical_query requires authorized exact source universe, risk set, measure, respondent membership, query topology and operation+target-use permissions; no per-wave originally eligible query role generation observed",
+      "positive_witness": {
+        "path": "rawlsing_next/tests/test_pre553_empirical_query.py",
+        "blob": "cc7d93db1f87d9c311170c229dbe3506937b404a",
+        "kind": "source-free joint/XOR/conditioning/zero/routing/weight and guard tests; not executed in this investigation"
+      },
+      "negative_witness": {
+        "path": "rawlsing_next/tests/test_pre553_route_b_production.py",
+        "blob": "d244eaaa48f878f83d77a305b54e6dcde37244c5",
+        "lines": "501-509",
+        "explanation": "I03 requests explicitly made by fixture; no accepted general producer traced"
+      },
+      "scope_frozen_pre_outcome": "prepared request identities exact before I03; complete source-eligible scope not independently frozen",
+      "full_original_items": false,
+      "full_scientific_design": false,
+      "statuses_distinct": "local negative query and observed zero supported, unsupported relation/authority blocked; absent original queries unrepresented",
+      "downstream_contract": true,
+      "verdicts": [
+        "EXISTING_CURRENT_OWNER_ALREADY_SUFFICES_AT_EXACT_PROVED_GRAIN",
+        "BOUNDED_MISSING_CONNECTION"
+      ],
+      "first_unproved_edge": "Authorized source-original target/condition roles and operation grammar -> complete I03ExecutionRequest sequence and exact query/predicate catalog entries",
+      "smallest_existing_binding": "Use existing EmpiricalPredicate, EmpiricalQuerySpec, I03ExecutionRequest and operation-fitness guard, with complete qualified registry and frozen no-drop manifest"
+    },
+    {
+      "name": "i05_authority_predicate_and_query_templates",
+      "downstream": "pre553_discovery_exact.execute_exact_bounded_discovery",
+      "owner_path": "rawlsing_next/pre553_discovery_exact.py",
+      "owner_blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "constructors": [
+        {
+          "path": "rawlsing_next/pre553_discovery_exact.py",
+          "blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+          "fn": "_catalog_atoms / _catalog_templates / _compile_frontier",
+          "lines": "348-448,617-813",
+          "input": "authority candidate_universe_definition plus caller predicate/query catalogs",
+          "output": "deterministic tuples of candidate families/forms; bound queries/predicates",
+          "kind": "real_finite_scope_generator_but_not_authority_or_source_item_issuer"
+        },
+        {
+          "path": "rawlsing_next/pre553_recursive_handoff.py",
+          "blob": "868f43bf9869af5501fd67c3de7a2703ba4cb1b4",
+          "fn": "execute_exact_bounded_discovery_with_handoffs",
+          "lines": "516-560",
+          "input": "provided discovery authority, catalogs, release_refs",
+          "output": "I05 result plus supported recursive handoffs",
+          "kind": "recursive_successor_not_full_source_roster"
+        }
+      ],
+      "scientific_fit": "Exact I05 requires positive DISCOVERY_FRONTIER, hashed grammar, allowed original source/risk/measure and finite K/J limits; automatically enumerates AND/XOR/cartesian/joint/reversal on *declared* atoms and templates. Missing declared atom is not inferred from physically present measurement.",
+      "positive_witness": {
+        "path": "rawlsing_next/tests/test_pre553_discovery_exact.py",
+        "blob": "b53039aeb95e012993c5233a7575c1dad5a14929",
+        "kind": "hand-authored grammar fixtures prove generated positive bounded minority/simpson/XOR/joint if run; static only"
+      },
+      "negative_witness": {
+        "path": "rawlsing_next/pre553_discovery_exact.py",
+        "blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+        "lines": "289-346,1050-1071",
+        "explanation": "NONE_EXACT_EVALUATE_ALL and presearch compile guarantee ONLY declared frontier, not source-wide omission accounting"
+      },
+      "scope_frozen_pre_outcome": "YES_FOR_DECLARED_I05_EXACT_FRONTIER; no post-outcome candidate pruning",
+      "full_original_items": false,
+      "full_scientific_design": false,
+      "statuses_distinct": "scoped terminal coverage/facts; undeclared original item has no candidate and no typed omission",
+      "downstream_contract": true,
+      "verdicts": [
+        "EXISTING_CURRENT_OWNER_ALREADY_SUFFICES_AT_EXACT_PROVED_GRAIN",
+        "BOUNDED_MISSING_CONNECTION"
+      ],
+      "first_unproved_edge": "Original eligible items/options/roles -> authority-signed complete atoms, query_templates, validation/operation rules and exact DiscoveryAuthority",
+      "smallest_existing_binding": "Populate authorized candidate_universe_definition, predicate_catalog and query_template_catalog against independent source-native oracle BEFORE I05; run existing compiler unchanged"
+    },
+    {
+      "name": "adaptive_units",
+      "downstream": "pre553_discovery_adaptive.execute_adaptive_exploration",
+      "owner_path": "rawlsing_next/pre553_discovery_adaptive.py",
+      "owner_blob": "58e32770381fa8d901701d6a2c676f28261aa3e3",
+      "constructors": [
+        {
+          "path": "rawlsing_next/pre553_discovery_adaptive.py",
+          "blob": "58e32770381fa8d901701d6a2c676f28261aa3e3",
+          "fn": "AdaptiveExplorationUnit / execute_adaptive_exploration",
+          "lines": "110-162,569-696",
+          "input": "initial_units, authority/allowed proposal rule refs, evaluate_unit, budget and checkpoint",
+          "output": "sealed visit/outcome/known/unknown checkpoint",
+          "kind": "real_scoped_policy_scheduler_not_complete_original_frontier_constructor"
+        }
+      ],
+      "scientific_fit": "Allowed roots and proposal grammar are authority bounded and versioned; outcome proposals MAY extend reachable future exploration between visits (unlike exact exhaustive candidate set)",
+      "positive_witness": {
+        "path": "rawlsing_next/tests/test_pre553_discovery_adaptive.py",
+        "blob": "fb7d00ad0ee2690dede339dd029476b64158824b",
+        "kind": "fixture replay, sealed proposed units, budget termination assertions; static only"
+      },
+      "negative_witness": {
+        "path": "rawlsing_next/pre553_discovery_adaptive.py",
+        "blob": "58e32770381fa8d901701d6a2c676f28261aa3e3",
+        "lines": "643-684",
+        "explanation": "UNKNOWN_UNVISITED and policy reachability, forbids partial global negative"
+      },
+      "scope_frozen_pre_outcome": "POLICY/ROOTS FROZEN; not whole reachable unit set (later proposals outcome dependent)",
+      "full_original_items": false,
+      "full_scientific_design": false,
+      "statuses_distinct": "UNKNOWN_UNVISITED, PARTIAL_INTERRUPTED, PARTIAL_BUDGET_EXHAUSTED distinct from measured null",
+      "downstream_contract": true,
+      "verdicts": [
+        "EXISTING_CURRENT_OWNER_ALREADY_SUFFICES_AT_EXACT_PROVED_GRAIN",
+        "BOUNDED_MISSING_CONNECTION"
+      ],
+      "first_unproved_edge": "Qualified original item/operation set -> policy-authorized root units with full unvisited/held roster; no scope-complete native oracle",
+      "smallest_existing_binding": "Bind comprehensive authorized initial-unit ledger and retain separate unvisited coverage accounting; exact I05 remains sole exhaustive declared-frontier route"
+    },
+    {
+      "name": "batch_manifest_units",
+      "downstream": "pre553_batch_runner.BatchExecutionRunner",
+      "owner_path": "rawlsing_next/pre553_batch_runner.py",
+      "owner_blob": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+      "constructors": [
+        {
+          "path": "rawlsing_next/pre553_batch_runner.py",
+          "blob": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+          "fn": "BatchUnitSpec / BatchManifest",
+          "lines": "100-212",
+          "input": "explicit job_kind/job_ref/C11 release_refs/semantic_input_refs and supplied tuple of units",
+          "output": "canonical immutable BatchManifest",
+          "kind": "canonicalizer_and_opaque_scheduler_not_workload_enumerator"
+        }
+      ],
+      "scientific_fit": "Each batch unit binds release exact ref and semantic job, but job-set cardinality doesn't prove every source item/eligible operation included; task scheduled over already sealed C11 release",
+      "positive_witness": {
+        "path": "rawlsing_next/tests/test_pre553_batch_runner.py",
+        "blob": "d22a1196008233e12f9b04918d417b32e0f53576",
+        "kind": "fixture-manifest scheduling, deferral/restart/tamper and throttle cannot claim full coverage; static only"
+      },
+      "negative_witness": {
+        "path": "rawlsing_next/tests/test_pre553_batch_runner.py",
+        "blob": "d22a1196008233e12f9b04918d417b32e0f53576",
+        "lines": "208-227,481-506",
+        "explanation": "only prepared units; explicit test prevents limited throttle from masquerading as completed entire manifest"
+      },
+      "scope_frozen_pre_outcome": "YES_FOR_PREPARED_BATCH_MANIFEST; no verified upstream original item/operation inventory",
+      "full_original_items": false,
+      "full_scientific_design": false,
+      "statuses_distinct": "operational deferred/failed/completed separate, but no original-item unvisited/unadmitted-class accounting",
+      "downstream_contract": true,
+      "verdicts": [
+        "EXISTING_CURRENT_OWNER_ALREADY_SUFFICES_AT_EXACT_PROVED_GRAIN",
+        "BOUNDED_MISSING_CONNECTION"
+      ],
+      "first_unproved_edge": "C11 complete source-specific releases + frozen permitted I03/I05/etc unit set -> complete BatchUnitSpec tuple -> BatchManifest",
+      "smallest_existing_binding": "Use BatchUnitSpec/BatchManifest with qualified exact jobs+releases; attach independent source-native no-drop expected-vs-manifest diff before execution"
+    }
+  ],
+  "scope_search": {
+    "enumerated": [
+      "rawlsing_next/ (144 entries)",
+      "rawlsing_next/tests/ (187 entries)",
+      "data/ddm_build_copy/ (189 entries)",
+      "data/ddm_registries/ (3 entries)"
+    ],
+    "inspected": "Targeted current major consumers, upstream sources, catalog/runtime, source admission, current selected producers, downstream analytic and representative tests; not 100% of all repository blobs",
+    "default_branch_search_caveat": "GitHub code search indexes main at 25830fe..., NOT frozen pre-main 288316...; negative search count rejected as absence proof",
+    "raw_dataset_operations": 0,
+    "runtime_test_execution": 0
+  },
+  "global_claim": {
+    "existing_generic_machine_is_real": true,
+    "complete_source_original_item_operation_workload_proved": false,
+    "full_closed35_execution_proved": false,
+    "missing_code_globally_proved": false,
+    "architecture_warrant_supported": false,
+    "requires_independent_oracle": true,
+    "exact_missing_connection_kind": "UNPROVED_BOUNDED_UPSTREAM_SOURCE_NATIVE_INVENTORY_TO_CURRENT_OWNER_INPUTS",
+    "operative_scope": "SOURCE_FREE_AND_SELECTED_SCOPED_ONLY"
+  }
+}

@@ -1,14 +1,14 @@
 {
   "schema_id": "RABOCHII_RETURN_MANIFEST@1.0.0",
-  "task_id": "PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1",
-  "branch": "agent/rabochii-pyat-hq118-i2-m2-release-runtime-r1",
+  "task_id": "PYAT-HQ279-WG0C-CURRENT-BACKWARD-WORKLOAD-PRODUCER-ARCHAEOLOGY-R1",
+  "branch": "agent/rabochii-pyat-hq279-wg0c-current-backward-workload-producer-archaeology-r1",
   "commission": {
-    "authority_ref": "d709ce3a64eced97c69c05506ead8a9e66292d67",
-    "exact_start_sha": "d709ce3a64eced97c69c05506ead8a9e66292d67"
+    "authority_ref": "96368a4055316d14b275a8356a6d83c2c22774bc",
+    "exact_start_sha": "96368a4055316d14b275a8356a6d83c2c22774bc"
   },
   "return": {
     "result": "PASS",
-    "terminal": "PYAT_HQ118_I2_PASS__M2_RELEASE_CORE_AND_RESOLUTION_RUNTIME_SOURCE_FREE_GREEN__NO_LIFECYCLE_PUBLICATION_COLLAPSE__RETURN_TO_HQ",
+    "terminal": "HQ279_WG0C_RETURNED_FOR_INDEPENDENT_REVIEW__NO_SELF_ADOPTION__RETURN_TO_HQ",
     "phase": "CLOSURE_ONLY",
     "completion": {
       "commission_consumed": true,
@@ -25,86 +25,41 @@
     "no_uncommissioned_review": true
   },
   "return_packet": {
-    "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/00_RETURN.md",
-    "blob_sha": "f30629ffad6d64b3b3c7bbc4e63ee7bcdab5f4c3"
+    "path": "WORKER_RETURNS/PYAT-HQ279-WG0C-CURRENT-BACKWARD-WORKLOAD-PRODUCER-ARCHAEOLOGY-R1/00_CURRENT_PRODUCER_CALL_GRAPH_AND_CODE_BLOBS.md",
+    "blob_sha": "2bf3e3af3368c6949f4ef7305fa219bd299c8f52"
   },
   "required_outputs": [
     {
-      "name": "m2_runtime",
+      "name": "call_graph",
       "kind": "path",
-      "path": "rawlsing_next/pre553_learned_product_release.py",
-      "blob_sha": "f76c390665f06ef126968ccf1a6b2d816f43ae92",
+      "path": "WORKER_RETURNS/PYAT-HQ279-WG0C-CURRENT-BACKWARD-WORKLOAD-PRODUCER-ARCHAEOLOGY-R1/00_CURRENT_PRODUCER_CALL_GRAPH_AND_CODE_BLOBS.md",
+      "blob_sha": "2bf3e3af3368c6949f4ef7305fa219bd299c8f52",
       "status": "DURABLE"
     },
     {
-      "name": "m2_tests",
+      "name": "coverage_matrix",
       "kind": "path",
-      "path": "rawlsing_next/tests/test_pre553_learned_product_release.py",
-      "blob_sha": "d45b54190815b4c6af506579962a9aac8a7074c2",
+      "path": "WORKER_RETURNS/PYAT-HQ279-WG0C-CURRENT-BACKWARD-WORKLOAD-PRODUCER-ARCHAEOLOGY-R1/01_FIVE_INPUT_FAMILIES_OWNER_COVERAGE_MATRIX.json",
+      "blob_sha": "07ec82a022e95158077f5d383a5d48a2ceb02933",
       "status": "DURABLE"
     },
     {
-      "name": "return_packet",
+      "name": "missing_edge",
       "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/00_RETURN.md",
-      "blob_sha": "f30629ffad6d64b3b3c7bbc4e63ee7bcdab5f4c3",
+      "path": "WORKER_RETURNS/PYAT-HQ279-WG0C-CURRENT-BACKWARD-WORKLOAD-PRODUCER-ARCHAEOLOGY-R1/02_SMALLEST_DEMONSTRATED_FIRST_MISSING_EDGE_OR_EXISTING_POSITIVE.md",
+      "blob_sha": "4b1b85cceeb4b38bbe6081ea091355c18e0b33e2",
       "status": "DURABLE"
     },
     {
-      "name": "changed_files",
+      "name": "disposition",
       "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/01_CHANGED_FILES.tsv",
-      "blob_sha": "d5a7b353bf85954cb3b2712ccf963caafa494f1e",
-      "status": "DURABLE"
-    },
-    {
-      "name": "public_api_owner_receipt",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/02_PUBLIC_API_AND_OWNER_RECEIPT.md",
-      "blob_sha": "4a40b119d4cdc8617b6cdf4c524608ddc7e3bb3a",
-      "status": "DURABLE"
-    },
-    {
-      "name": "hostile_test_ledger",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/03_HOSTILE_TEST_LEDGER.tsv",
-      "blob_sha": "e5e37c29fa1b9e3859b4c970209625b5d43f4727",
-      "status": "DURABLE"
-    },
-    {
-      "name": "m1_m2_interface_receipt",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/04_M1_TO_M2_INTERFACE_RECEIPT.md",
-      "blob_sha": "759428d57ab03bf0b7c7cf07ef20b896426cf7cc",
-      "status": "DURABLE"
-    },
-    {
-      "name": "representation_parity_receipt",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/05_VIRTUAL_MATERIALIZED_PARITY_RECEIPT.md",
-      "blob_sha": "6326a85da3eb3067456c483025d8a224b07a59b0",
-      "status": "DURABLE"
-    },
-    {
-      "name": "publication_boundary_receipt",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/06_PUBLICATION_BOUNDARY_RECEIPT.md",
-      "blob_sha": "210ef8b5e94ef09e95fb255c1f88e2fd7eafd8c2",
-      "status": "DURABLE"
-    },
-    {
-      "name": "qualified_semantic_candidate",
-      "kind": "commit",
-      "sha": "805f4ec04c5beff82ac5ac6bc346464d074dc1b0",
+      "path": "WORKER_RETURNS/PYAT-HQ279-WG0C-CURRENT-BACKWARD-WORKLOAD-PRODUCER-ARCHAEOLOGY-R1/03_DISPOSITION.json",
+      "blob_sha": "fb740f470cd7a6e1c77ffef020ddaa549f3f8026",
       "status": "DURABLE"
     }
   ],
   "evidence": {
-    "required": true,
-    "workflow_run_id": 36326255638,
-    "workflow_name": "Rabochii Governed Bounded Court",
-    "conclusion": "success",
-    "evidence_execution_sha": "4ba26b7e1501e8cbb2ef6e84ccd4a5d2dd8c890a",
-    "artifact_id": 10934510122
-  }
+    "required": false
+  },
+  "scope_note": "Completed exact bounded static documentary investigation only; original item operation all35 proof unverified, no dataset/runtime execution, no source/model grants."
 }
