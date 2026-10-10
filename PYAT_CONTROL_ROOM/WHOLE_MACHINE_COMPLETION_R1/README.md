@@ -1,5 +1,12 @@
 # RAWLSING / PYAT — all-35 automated-machine completion control
 
+## HQ278 handoff — RESUME AUDIT, DO NOT RESTART
+
+The [exact fresh-HQ transfer report](HQ278_FRESH_HQ_SECOND_PASS_AUDIT_HANDOFF_R1.md) banks both HQ276/HQ277 documentary findings, defects D01–D08, the current unproved WG0–WG4 source-original-to-authorized-workload path, what the 1,890 cells/101 tasks do and do not establish, five unchanged commission-tip worker branches and the precise next route. It is the mandatory continuation companion to HQ277's [hostile audit](SECOND_PASS_HOSTILE_AUDIT_R1.md). **First identify whether an actual current source-competent workload-assembler exists before commissioning another planner.** All 35 waves remain in scope.
+
+---
+
+
 ## HQ277 second-pass verdict — read before calling this inventory complete
 
 The original HQ276 matrix was a **valid no-drop scope scaffold, not a completed line-by-line factual work adjudication**. HQ277 independently identified and banked the nontrivial missing proof: [automatic questionnaire-item and operation-frontier construction](AUTOMATED_WORKLOAD_CONSTRUCTION_CRITICAL_GATE.md). Existing Route B takes prepared I03 requests; I05 compiles an authority-declared frontier; batch executes a prepared immutable manifest. Current code must be inspected for the accepted general *workload assembler* before anyone asserts missing implementation. The full scientifically supportable input/item/operation universe has NOT yet been executed and inventoried.
