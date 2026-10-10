@@ -1,0 +1,393 @@
+{
+  "access_envelope": {
+    "law": "HQ262 section B (decision HQD-2026-10-09-262): conditional source-custodian physical metadata inspection only",
+    "operations_NOT_performed": [
+      "no respondent record read, decode, iteration, dataframe with records, or export",
+      "no value/column frequency, share, cell count, cross-tabulation or any statistic",
+      "no weighted computation",
+      "no DTA decode; LiTS_I.dta was NOT opened and NOT hashed (no warrant covers it)",
+      "no source download, regeneration or Library hunt"
+    ],
+    "operations_performed": [
+      "memory-bounded streaming SHA-256 (1 MiB chunks) of the two exact physical SAV carriers, solely to verify expected byte identity",
+      "pyreadstat.read_sav(path, metadataonly=True) header/dictionary inspection"
+    ],
+    "scope_note": "HQ262 section B names Ghana Q43/Q31, country indicator, age/citizenship/asked/routing, weight candidates, PSU/EA, strata and release/version as the focused read set. This worker additionally recorded the dictionary entries for the items the M01 commission names (R5 Q86A/Q86B/Q86C, R5 Q7, R9 Q3) and the country variable, all of which are subsets of the warrant's general permission for 'column names/labels and native category/missing labels'. Whether a focused extension warrant is required for those specific named items is submitted for HQ adjudication rather than assumed."
+  },
+  "branch": "agent/rabochii-pyat-hq271-m01-exact-three-respondent-role-and-dictionary-court-r1",
+  "codebook_dictionary": {
+    "consequence": "R5 question stems and value labels in this return come from the governed merged R5 codebook (authority-grade for the frozen GT12 binding) plus the physical SAV dictionary; they do NOT come from a fielded instrument. This is the same limitation class HQ270 U01 recorded for Uganda R5.",
+    "governed_r5_codebook": {
+      "frozen_authority_sha256": "7e02c649c8ae69c61f88c116fdad92353b7f06cba9e160d9ae4be18e72276735",
+      "local_path": "/Users/matthewsmith/Desktop/Rawlsing/data/original codebook pdfs/Afro Bar r5_codebook.pdf",
+      "match": true,
+      "note": "equals merged_r5_codebook_2.pdf cited by the frozen GT12-A instrument_release binding",
+      "sha256": "7e02c649c8ae69c61f88c116fdad92353b7f06cba9e160d9ae4be18e72276735"
+    },
+    "local_r9_codebook": {
+      "frozen_authority_sha256": null,
+      "local_path": "/Users/matthewsmith/Desktop/Rawlsing/data/original codebook pdfs/Afro Bar r9_codebook.pdf",
+      "match": "NO_FROZEN_AUTHORITY_TO_COMPARE__RECORDED_FOR_HQ",
+      "sha256": "1afd1a78d26b01336dff1cb7b1fa5edbeae00361d935227decb08d4ffac20281"
+    },
+    "original_r5_fielded_questionnaire_located": false,
+    "original_r9_fielded_questionnaire_located": false
+  },
+  "commission": "PYAT-HQ271-M01-THREE-SAME-RESPONDENT-SOURCE-NATIVE-INPUT-AND-UGANDA-DICTIONARY-R1",
+  "commission_tip": "3332c2a3a85cb7e42a11c554fa2503fd472d406e",
+  "design_census": {
+    "R5": {
+      "adult_ct_present": true,
+      "geography_variable_names": [
+        "REGION",
+        "URBRUR",
+        "COUNTRY.BY.REGION",
+        "COUNTRY.BY.REGION.NO"
+      ],
+      "national_vs_supplement_record_selector_present": false,
+      "psu_or_stratum_identifier_present": false,
+      "strict_design_name_matches": [],
+      "urbrur_label": "Urban or Rural Primary Sampling Unit",
+      "variable_count": 348,
+      "weight_labels": {
+        "combinwt": "Multi-country weighting factor",
+        "withinwt": "Within country weighting factor"
+      },
+      "weight_variable_names": [
+        "withinwt",
+        "combinwt"
+      ]
+    },
+    "R9": {
+      "adult_ct_present": false,
+      "geography_variable_names": [
+        "REGION",
+        "URBRUR",
+        "URBRUR_COND",
+        "LOCATION.LEVEL.1",
+        "COUNTRY.BY.REGION"
+      ],
+      "national_vs_supplement_record_selector_present": false,
+      "psu_or_stratum_identifier_present": false,
+      "strict_design_name_matches": [],
+      "urbrur_label": "Urban or Rural Primary Sampling Unit",
+      "variable_count": 421,
+      "weight_labels": {
+        "Combinwt_new_hh": "Multi-country weighting factor (new, hh-level)",
+        "Combinwt_old_ea": "Multi-country weighting factor (old, ea-level)",
+        "withinwt_ea": "within country weighting factor, weights to EA level (\"old AB withinwt\")",
+        "withinwt_hh": "within country weighting factor, weights to HH level (\"new AB withinwt\")"
+      },
+      "weight_variable_names": [
+        "withinwt_ea",
+        "withinwt_hh",
+        "Combinwt_new_hh",
+        "Combinwt_old_ea"
+      ]
+    },
+    "corroboration": "These weight-name findings independently corroborate HQ270 U01 documentary claims (R5 withinwt; R9 withinwt_ea 'old AB withinwt' vs withinwt_hh 'new AB withinwt'). The exact labels quoted above are verbatim from the physical files.",
+    "field_existence_is_not_authorization": "The presence of a weight column is not evidence that it is valid, calibrated, applicable to the national-only subset, or intended by the source for a given analysis.",
+    "method": "variable-NAME and variable-LABEL regex census only; no values read",
+    "strict_absence_test": "psu | stratum | strata | cluster | ea_id | eaid | ea_code | weight_unit | sample_type | sample_flag | supplement | oversample | oversampled | targeted_sample | national_sample | national_flag | extra | boost | special_sample | usa | mission (word-boundary aware)"
+  },
+  "dictionary": {
+    "R5": {
+      "COUNTRY": {
+        "label": "Country",
+        "native_value_label_count": 35,
+        "note": "numeric country code; native value-label set has 35 entries (34-country merged R5 release)",
+        "present": true,
+        "uganda_native_code": 18
+      },
+      "Q7": {
+        "label": "Q7. Overall direction of the country",
+        "missing_ranges": {},
+        "missing_user_values": {},
+        "present": true,
+        "storage_width": null,
+        "value_labels": {
+          "-1.0": "Missing",
+          "1.0": "Going in the wrong direction",
+          "2.0": "Going in the right direction",
+          "9.0": "Don't know",
+          "998.0": "Refused"
+        }
+      },
+      "Q86A": {
+        "label": "Q86a. Right to be citizen: born in country with one non-citizen parent",
+        "missing_ranges": {},
+        "missing_user_values": {},
+        "present": true,
+        "storage_width": null,
+        "value_labels": {
+          "-1.0": "Missing",
+          "0.0": "No",
+          "1.0": "Yes",
+          "9.0": "Don't know",
+          "997.0": "Not asked",
+          "998.0": "Refused"
+        }
+      },
+      "Q86B": {
+        "label": "Q86b. Right to be citizen: born in country with two non-citizen parents",
+        "missing_ranges": {},
+        "missing_user_values": {},
+        "present": true,
+        "storage_width": null,
+        "value_labels": {
+          "-1.0": "Missing",
+          "0.0": "No",
+          "1.0": "Yes",
+          "9.0": "Don't know",
+          "997.0": "Not asked",
+          "998.0": "Refused"
+        }
+      },
+      "Q86C": {
+        "label": "Q86c. Right to be citizen: wife of citizen husband",
+        "missing_ranges": {},
+        "missing_user_values": {},
+        "present": true,
+        "storage_width": null,
+        "value_labels": {
+          "-1.0": "Missing",
+          "0.0": "No",
+          "1.0": "Yes",
+          "9.0": "Don't know",
+          "997.0": "Not asked",
+          "998.0": "Refused"
+        }
+      },
+      "RESPNO": {
+        "label": "Respondent number",
+        "missing_ranges": {},
+        "missing_user_values": {},
+        "present": true,
+        "storage_width": null,
+        "value_labels": {}
+      },
+      "country_identity_reconciliation": {
+        "COUNTRY_ALPHA3_present": false,
+        "COUNTRY_ALPHA_label": "Country in an alphabetical order",
+        "COUNTRY_ALPHA_present": true,
+        "COUNTRY_present": true,
+        "consequence": "The frozen GT12-A authority binds a coordinate slot literally named COUNTRY_ALPHA3 (rawlsing_next/wave1_r5_q86_c11_projection.py:162-168) on this R5 carrier, but the physical merged R5 SAV stores COUNTRY (numeric) and COUNTRY_ALPHA (numeric, alphabetical order) and does NOT store a COUNTRY_ALPHA3 column. The alpha-3 identity is therefore a derived crosswalk applied by the producer, not a source-native field. This must be reconciled before any three-way projection reuses the coordinate slot; it is a reconciliation item, not an asserted defect."
+      }
+    },
+    "R9": {
+      "COUNTRY": {
+        "label": "Country",
+        "native_value_label_count": 39,
+        "present": true
+      },
+      "Q3": {
+        "label": "Q3. Overall direction of the country",
+        "missing_ranges": {},
+        "missing_user_values": {},
+        "present": true,
+        "storage_width": null,
+        "value_labels": {
+          "-1.0": "Missing",
+          "1.0": "Going in the wrong direction",
+          "2.0": "Going in the right direction",
+          "8.0": "Refused",
+          "9.0": "Don't know"
+        }
+      },
+      "Q7A": {
+        "label": "Q7a. How often felt unsafe walking in neighbourhood",
+        "present": true,
+        "value_label_count": 8,
+        "value_labels_first_12": {
+          "-1.0": "Missing",
+          "0.0": "Never",
+          "1.0": "Just once or twice",
+          "2.0": "Several times",
+          "3.0": "Many times",
+          "4.0": "Always",
+          "8.0": "Refused",
+          "9.0": "Don't Know"
+        }
+      },
+      "Q7B": {
+        "label": "Q7b. How often feared crime in home",
+        "present": true,
+        "value_label_count": 8,
+        "value_labels_first_12": {
+          "-1.0": "Missing",
+          "0.0": "Never",
+          "1.0": "Just once or twice",
+          "2.0": "Several times",
+          "3.0": "Many times",
+          "4.0": "Always",
+          "8.0": "Refused",
+          "9.0": "Don't Know"
+        }
+      },
+      "Q7_present": false,
+      "RESPNO": {
+        "label": "Respondent number",
+        "missing_ranges": {},
+        "missing_user_values": {},
+        "present": true,
+        "storage_width": null,
+        "value_labels": {}
+      },
+      "country_identity_reconciliation": {
+        "COUNTRY_ALPHA3_present": false,
+        "COUNTRY_ALPHA_present": false,
+        "COUNTRY_present": true,
+        "related_present": [
+          "COUNTRY.old.spelling (40 labels)",
+          "COUNTRY_R5List (42 labels)",
+          "COUNTRY_R6List (42 labels)",
+          "COUNTRY_R7List (40 labels)",
+          "COUNTRY.BY.REGION"
+        ]
+      }
+    }
+  },
+  "disk_state": {
+    "available_at_end": "11GiB on /System/Volumes/Data",
+    "commission_directive_free_12GiB": "NOT_PERFORMED. Existing git worktrees under the shared opencode temp root (hq270 base/pinned/r02, ~1.5GiB) belong to other commissioned lanes and were not pruned. No unbounded storage was created by this worker.",
+    "worker_footprint": "approximately 1MiB (four return files + three bounded metadata JSON extracts)"
+  },
+  "execution_utc": "2026-10-10T00:01:24Z",
+  "files": {
+    "/Users/matthewsmith/Desktop/Rawlsing/data/Data/Afro Barometer Round 5.sav": {
+      "byte_size": {
+        "actual": 49689458,
+        "expected": 49689458,
+        "match": true
+      },
+      "header_declared": {
+        "file_encoding": "UTF-8",
+        "file_label": null,
+        "number_columns": 348,
+        "number_rows": 51587
+      },
+      "physical_path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/Afro Barometer Round 5.sav",
+      "sha256": {
+        "actual": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+        "expected": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+        "match": true
+      },
+      "sha_provenance": "Previously recorded by HQ263/HQ262 as documentary-only expected values. THIS RUN newly verified both from the physical bytes on this Mac. Note the file was ABSENT on the Mac inspected for HQ263 E01; it is present here at exactly the expected byte size.",
+      "wave": "R5"
+    },
+    "/Users/matthewsmith/Desktop/Rawlsing/data/Data/Afro Barometer Round 9.sav": {
+      "byte_size": {
+        "actual": 70621348,
+        "expected": 70621348,
+        "match": true
+      },
+      "header_declared": {
+        "file_encoding": "UTF-8",
+        "file_label": null,
+        "number_columns": 421,
+        "number_rows": 53444
+      },
+      "physical_path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/Afro Barometer Round 9.sav",
+      "sha256": {
+        "actual": "3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8",
+        "expected": "3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8",
+        "match": true
+      },
+      "sha_provenance": "Previously recorded by HQ263/HQ262 as documentary-only expected values. THIS RUN newly verified both from the physical bytes on this Mac. Note the file was ABSENT on the Mac inspected for HQ263 E01; it is present here at exactly the expected byte size.",
+      "wave": "R9"
+    }
+  },
+  "frozen_control_base": "8b02d85a2fcd8acb6fe266543821434ef63ccb07",
+  "lits_corpus_documentary_only": {
+    "dta_hashed": false,
+    "dta_opened": false,
+    "q310_identified_as": "Q.3.10 - market economy vs planned economy preference (1/2/3)",
+    "q311_identified_as": "Q.3.11 - democracy vs authoritarian government preference (1/2/3)",
+    "section3_header_quote": "Section 3. Attitudes and Values - INTERVIEWER: THANK THIS RESPONDENT AND ASK TO SPEAK TO THE PERSON WHO LAST HAD A BIRTHDAY IN THE HOUSEHOLD/ YOU HAVE SELECTED USING THE KISH GRID. IF THIS PERSON IS THE SAME RESPONDENT YOU ARE INTERVIEWING NOW, CONTINUE WITH THE INTERVIEW. IF DIFFERENT RESPONDENT REPEAT THE INTRODUCTION IF NECESSARY.",
+    "source": "data/original codebook pdfs/LiTSI_Questionnaire.pdf (36 pp.)",
+    "verdict": "LITS_I_THREE_WAY_SAME_RESPONDENT_REFUSED"
+  },
+  "machine_verified": {
+    "data_data_directory_sav_dta_count": 44,
+    "includes": [
+      "LiTS_I.dta",
+      "LiTS_II.dta",
+      "LiTS_III.dta",
+      "LiTS_IV.dta"
+    ],
+    "note": "launch machine claim (44 original SAV/DTA files) verified by directory census; no file content read"
+  },
+  "runtime": {
+    "host": "MacBookPro15,1 (Intel Core i9-9880H), macOS 13.2.1 build 22D68",
+    "model_declared_by_launch": "MiMo V2.6-Flash",
+    "model_identity_certification": "NONE__DISCREPANCY_REPORTED_NOT_RESOLVED",
+    "model_self_identified_harness": "opencode-go/step-5-preview-free",
+    "python": "CPython 3.11.3",
+    "sav_reader": "pyreadstat 1.3.2"
+  },
+  "schema": "PYAT_HQ271_M01_FILE_SHA_DICTIONARY_AND_NATIONAL_SAMPLE_METADATA@1.0.0",
+  "terminal": "HQ271_M01_RETURNED_FOR_HQ__NO_SELF_ADOPTION",
+  "uganda_temporal_dictionary_receipt": {
+    "R5": {
+      "label": "Q7. Overall direction of the country",
+      "matches_hq270_u01_documentary_claim": {
+        "claim": "Uganda R5 country codebook Q7: 1=wrong direction, 2=right direction, 9=don't know, 998=refused, -1=missing",
+        "divergence": "none in codes or labels",
+        "status": "PHYSICALLY_CORROBORATED_AT_MERGED_R5_DICTIONARY_LEVEL"
+      },
+      "native_value_labels": {
+        "-1.0": "Missing",
+        "1.0": "Going in the wrong direction",
+        "2.0": "Going in the right direction",
+        "9.0": "Don't know",
+        "998.0": "Refused"
+      },
+      "variable": "Q7"
+    },
+    "R9": {
+      "Q7_in_R9": {
+        "consequence": "An analyst matching R5 Q7 (overall country direction) to R9 Q7 by question number would silently compare country direction with fear of crime. The only country-direction pairing across these two releases is R5 Q7 <-> R9 Q3. This is now verified at the physical dictionary level, not merely from indexed PDFs.",
+        "present": false,
+        "what_Q7A_and_Q7B_actually_are": "Q7a. How often felt unsafe walking in neighbourhood; Q7b. How often feared crime in home (domains 0-4, 8, 9, -1). They are crime/fear items, NOT the overall-direction item."
+      },
+      "label": "Q3. Overall direction of the country",
+      "matches_hq270_u01_documentary_claim": {
+        "claim": "Uganda R9 codebook Q3: 1=wrong, 2=right, 8=refused, 9=don't know, -1=missing",
+        "divergence": "none in codes or labels",
+        "status": "PHYSICALLY_CORROBORATED_AT_MERGED_R9_DICTIONARY_LEVEL"
+      },
+      "native_value_labels": {
+        "-1.0": "Missing",
+        "1.0": "Going in the wrong direction",
+        "2.0": "Going in the right direction",
+        "8.0": "Refused",
+        "9.0": "Don't know"
+      },
+      "variable": "Q3"
+    },
+    "differential_refusal_coding": {
+      "R5_Q7_refusal_code": "998",
+      "R9_Q3_refusal_code": "8",
+      "handling": "requires an explicit tagged recode mapping R5 998 <-> R9 8; -1 stays missing; 9 stays a separately typed DK",
+      "status": "PHYSICALLY_VERIFIED_DIFFERENT"
+    },
+    "explicit_hold": "AN_ABSENT_SELECTOR_IS_NOT_EVIDENCE_OF_ABSENCE_OF_A_NATIONALLY_REPRESENTATIVE_PUBLIC_RELEASE. The World Bank catalogue lists a 2,400-case Uganda R9 national release (UGA_2022_AFB-R9_v01_M / UGA_R9.data_.final_.wtd_release.19Jun22_Updated.7Nov23.sav). That a country codebook is not a national-only extract does not disprove the existence of a national release; it means the archived Rawlsing file's sample entitlement is UNPROVED.",
+    "not_authorized": [
+      "no observed wave proportions",
+      "no trend",
+      "no EE12 / C7 pair use",
+      "no design-based variance"
+    ],
+    "still_cannot_be_inferred": [
+      "national-only vs supplemental RECORD SELECTOR: no such variable exists in either file (see design_census)",
+      "release identity: the physical files carry no file_label and no release/version metadata field (file_label = None)",
+      "which released Uganda version each archive corresponds to (R5 June-2012 country codebook vs July-2015 multinational merged codebook; R9 28-Dec-2021 questionnaire vs 16-Apr-2023 codebook vs 19-Jun-22/7-Nov-23 World Bank release)",
+      "actual weight validity, calibration or intended population",
+      "PSU / stratum identity: no PSU or stratum identifier exists in either file",
+      "original R5 fielded Uganda instrument (still not recovered)",
+      "population eligibility: the technical forms define adult Ugandan citizens >=18 excluding institutionalised residents, but no record-level eligibility field proves it",
+      "whether the archived 51,587 R5 rows / 53,444 R9 rows correspond to the 6,200 (R5) and 3,392 (R9) country fieldwork totals"
+    ]
+  },
+  "worktree": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/hq271/m01"
+}

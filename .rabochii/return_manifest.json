@@ -1,14 +1,14 @@
 {
   "schema_id": "RABOCHII_RETURN_MANIFEST@1.0.0",
-  "task_id": "PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1",
-  "branch": "agent/rabochii-pyat-hq118-i2-m2-release-runtime-r1",
+  "task_id": "PYAT-HQ271-M01-THREE-SAME-RESPONDENT-SOURCE-NATIVE-INPUT-AND-UGANDA-DICTIONARY-R1",
+  "branch": "agent/rabochii-pyat-hq271-m01-exact-three-respondent-role-and-dictionary-court-r1",
   "commission": {
-    "authority_ref": "d709ce3a64eced97c69c05506ead8a9e66292d67",
-    "exact_start_sha": "d709ce3a64eced97c69c05506ead8a9e66292d67"
+    "authority_ref": "3332c2a3a85cb7e42a11c554fa2503fd472d406e",
+    "exact_start_sha": "3332c2a3a85cb7e42a11c554fa2503fd472d406e"
   },
   "return": {
     "result": "PASS",
-    "terminal": "PYAT_HQ118_I2_PASS__M2_RELEASE_CORE_AND_RESOLUTION_RUNTIME_SOURCE_FREE_GREEN__NO_LIFECYCLE_PUBLICATION_COLLAPSE__RETURN_TO_HQ",
+    "terminal": "HQ271_M01_RETURNED_FOR_HQ__NO_SELF_ADOPTION",
     "phase": "CLOSURE_ONLY",
     "completion": {
       "commission_consumed": true,
@@ -25,86 +25,52 @@
     "no_uncommissioned_review": true
   },
   "return_packet": {
-    "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/00_RETURN.md",
-    "blob_sha": "f30629ffad6d64b3b3c7bbc4e63ee7bcdab5f4c3"
+    "path": "WORKER_RETURNS/PYAT-HQ271-M01-THREE-SAME-RESPONDENT-SOURCE-NATIVE-INPUT-AND-UGANDA-DICTIONARY-R1/00_CANDIDATE_SOURCE_ORIGINAL_MEANING_AND_TRUE_TRIPLE.md",
+    "blob_sha": "0aaa481b7b9c07448a0da00715b88e8876203d70"
   },
   "required_outputs": [
     {
-      "name": "m2_runtime",
+      "name": "candidate_source_original_meaning_and_true_triple",
       "kind": "path",
-      "path": "rawlsing_next/pre553_learned_product_release.py",
-      "blob_sha": "f76c390665f06ef126968ccf1a6b2d816f43ae92",
+      "path": "WORKER_RETURNS/PYAT-HQ271-M01-THREE-SAME-RESPONDENT-SOURCE-NATIVE-INPUT-AND-UGANDA-DICTIONARY-R1/00_CANDIDATE_SOURCE_ORIGINAL_MEANING_AND_TRUE_TRIPLE.md",
+      "blob_sha": "0aaa481b7b9c07448a0da00715b88e8876203d70",
       "status": "DURABLE"
     },
     {
-      "name": "m2_tests",
+      "name": "file_sha_dictionary_and_national_sample_metadata",
       "kind": "path",
-      "path": "rawlsing_next/tests/test_pre553_learned_product_release.py",
-      "blob_sha": "d45b54190815b4c6af506579962a9aac8a7074c2",
+      "path": "WORKER_RETURNS/PYAT-HQ271-M01-THREE-SAME-RESPONDENT-SOURCE-NATIVE-INPUT-AND-UGANDA-DICTIONARY-R1/01_FILE_SHA_DICTIONARY_AND_NATIONAL_SAMPLE_METADATA.json",
+      "blob_sha": "742af5e5be98cf604d04aac56ae0c6116c54744f",
       "status": "DURABLE"
     },
     {
-      "name": "return_packet",
+      "name": "exact_producer_operation_permission_and_first_executable_court",
       "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/00_RETURN.md",
-      "blob_sha": "f30629ffad6d64b3b3c7bbc4e63ee7bcdab5f4c3",
+      "path": "WORKER_RETURNS/PYAT-HQ271-M01-THREE-SAME-RESPONDENT-SOURCE-NATIVE-INPUT-AND-UGANDA-DICTIONARY-R1/02_EXACT_PRODUCER_OPERATION_PERMISSION_AND_FIRST_EXECUTABLE_COURT.md",
+      "blob_sha": "90715f692b37faec097b7d2df7b4986f526dbbae",
       "status": "DURABLE"
     },
     {
-      "name": "changed_files",
+      "name": "disposition",
       "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/01_CHANGED_FILES.tsv",
-      "blob_sha": "d5a7b353bf85954cb3b2712ccf963caafa494f1e",
-      "status": "DURABLE"
-    },
-    {
-      "name": "public_api_owner_receipt",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/02_PUBLIC_API_AND_OWNER_RECEIPT.md",
-      "blob_sha": "4a40b119d4cdc8617b6cdf4c524608ddc7e3bb3a",
-      "status": "DURABLE"
-    },
-    {
-      "name": "hostile_test_ledger",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/03_HOSTILE_TEST_LEDGER.tsv",
-      "blob_sha": "e5e37c29fa1b9e3859b4c970209625b5d43f4727",
-      "status": "DURABLE"
-    },
-    {
-      "name": "m1_m2_interface_receipt",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/04_M1_TO_M2_INTERFACE_RECEIPT.md",
-      "blob_sha": "759428d57ab03bf0b7c7cf07ef20b896426cf7cc",
-      "status": "DURABLE"
-    },
-    {
-      "name": "representation_parity_receipt",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/05_VIRTUAL_MATERIALIZED_PARITY_RECEIPT.md",
-      "blob_sha": "6326a85da3eb3067456c483025d8a224b07a59b0",
-      "status": "DURABLE"
-    },
-    {
-      "name": "publication_boundary_receipt",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/06_PUBLICATION_BOUNDARY_RECEIPT.md",
-      "blob_sha": "210ef8b5e94ef09e95fb255c1f88e2fd7eafd8c2",
-      "status": "DURABLE"
-    },
-    {
-      "name": "qualified_semantic_candidate",
-      "kind": "commit",
-      "sha": "805f4ec04c5beff82ac5ac6bc346464d074dc1b0",
+      "path": "WORKER_RETURNS/PYAT-HQ271-M01-THREE-SAME-RESPONDENT-SOURCE-NATIVE-INPUT-AND-UGANDA-DICTIONARY-R1/03_DISPOSITION.json",
+      "blob_sha": "2b2d122b530120a3c5b4ca50201587b9f1680a5c",
       "status": "DURABLE"
     }
   ],
   "evidence": {
-    "required": true,
-    "workflow_run_id": 36326255638,
-    "workflow_name": "Rabochii Governed Bounded Court",
-    "conclusion": "success",
-    "evidence_execution_sha": "4ba26b7e1501e8cbb2ef6e84ccd4a5d2dd8c890a",
-    "artifact_id": 10934510122
+    "required": false,
+    "note": "No governed Actions run is claimed. Physical verification performed locally on this Mac: R5 and R9 SAV SHA-256 match expected, governed R5 codebook SHA-256 matches the frozen authority, bounded metadata-only dictionary inspection with zero respondent-row reads and zero statistics computed."
+  },
+  "access_envelope": {
+    "law": "HQ262 section B conditional source-custodian physical metadata inspection",
+    "respondent_rows_read": 0,
+    "statistics_computed": 0,
+    "dta_opened_or_hashed": false
+  },
+  "model_provenance": {
+    "declared_by_launch": "MiMo V2.6-Flash",
+    "self_identified_harness": "opencode-go/step-5-preview-free",
+    "certification": "NONE__DISCREPANCY_REPORTED_NOT_RESOLVED"
   }
 }

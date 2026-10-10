@@ -1,0 +1,110 @@
+{
+  "schema": "PYAT_HQ271_M01_DISPOSITION@1.0.0",
+  "commission": "PYAT-HQ271-M01-THREE-SAME-RESPONDENT-SOURCE-NATIVE-INPUT-AND-UGANDA-DICTIONARY-R1",
+  "commission_file": "WORKER_COMMISSIONS/PYAT-HQ271-M01-THREE-SAME-RESPONDENT-SOURCE-NATIVE-INPUT-AND-UGANDA-DICTIONARY-R1/00_COMMISSION.md",
+  "commission_tip": "3332c2a3a85cb7e42a11c554fa2503fd472d406e",
+  "frozen_control_base": "8b02d85a2fcd8acb6fe266543821434ef63ccb07",
+  "branch": "agent/rabochii-pyat-hq271-m01-exact-three-respondent-role-and-dictionary-court-r1",
+  "worktree": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/hq271/m01",
+  "start_sha": "3332c2a3a85cb7e42a11c554fa2503fd472d406e",
+  "outcome": "PASS__QUALIFIED_CANDIDATE_RETURNED__BOTH_COMMISSIONED_OPTIONS_ADJUDICATED",
+  "phase": "CLOSURE_ONLY",
+
+  "sealed_hq271_resolution": {
+    "worktree_head_equals_commission_tip": true,
+    "frozen_control_base_present_as_parent": true,
+    "sealed_adjudication_read": "origin/integration/staging-pyat-hq271-intake-r1 @ e3a2e7c5a (HQD-2026-10-09-271)",
+    "parent_holding": "existing LiTS S1 triple REFUSED; M01 and F01 ISSUED, not launched",
+    "prior_agent_uncommitted_state": "NONE__WORKTREE_CLEAN_AT_START"
+  },
+
+  "commission_tasks": {
+    "1_choose_competent_actual_S1_subject": {
+      "status": "COMPLETE",
+      "option_a_afro_r5_q86abc": "QUALIFIED_CANDIDATE",
+      "option_b_lits_i_q301_2_q301_7_q310": "REFUSED",
+      "superior_alternative_identified": "Q86A x Q8A x Q97 heterogeneous triple, priced and offered as fallback"
+    },
+    "2_exact_physical_file_dictionary_gate": {
+      "status": "COMPLETE__PHYSICAL_FILES_PRESENT_AND_VERIFIED",
+      "law_applied": "HQ262 section B conditional source-custodian physical metadata inspection",
+      "r5_sha256_match": true,
+      "r9_sha256_match": true,
+      "metadata_rows_read": 0,
+      "statistics_computed": 0,
+      "scope_question_submitted_to_hq": true
+    },
+    "3_smallest_positive_producer_and_permission": {
+      "status": "COMPLETE__REQUEST_SUBMITTED_NOT_SELF_GRANTED",
+      "smallest_request": "GT3_R5_Q86A_X_Q86B_X_Q86C_RAW_JOINT_EXACT_RISK_SET@1 target-use permission over the unchanged 19,210-member risk set",
+      "q86c_extension_feasible": true,
+      "items_requiring_adoption_count": 13
+    },
+    "4_uganda_temporal_dictionary_receipt": {
+      "status": "COMPLETE__DISTINCT_FROM_S1",
+      "new_physical_corroboration": [
+        "R5 Q7 native domain {1 wrong, 2 right, 9 DK, 998 refused, -1 missing} verified in the physical SAV dictionary",
+        "R9 Q3 native domain {1 wrong, 2 right, 8 refused, 9 DK, -1 missing} verified in the physical SAV dictionary",
+        "differential refusal coding 998 (R5) vs 8 (R9) physically verified",
+        "R5 Q7 <-> R9 Q3 is the only country-direction pairing; R9 Q7A/Q7B are crime/fear items"
+      ],
+      "still_cannot_be_inferred": [
+        "national-only vs supplemental record selector (no such variable exists in either file)",
+        "release identity (physical file_label is None)",
+        "weight validity / calibration / intended population",
+        "PSU / stratum identity (no such variable exists in either file)",
+        "original R5 fielded Uganda instrument",
+        "population eligibility at record level",
+        "whether 51,587 R5 / 53,444 R9 archived rows correspond to 6,200 / 3,392 fieldwork totals"
+      ]
+    }
+  },
+
+  "headline_findings_for_hq": [
+    "Both commissioned physical SAV carriers are PRESENT on this Mac at exactly the expected byte sizes, unlike the Mac inspected for HQ263 E01 where both were absent.",
+    "R5 SHA-256 c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651 and R9 SHA-256 3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8 are newly verified from physical bytes on this host (HQ263 recorded them as documentary-only expected values).",
+    "R5 header declares 51,587 rows x 348 columns, matching the frozen GT12-A source_row_count of 51,587.",
+    "The governed R5 codebook merged_r5_codebook_2.pdf is physically present here with SHA-256 7e02c649c8ae69c61f88c116fdad92353b7f06cba9e160d9ae4be18e72276735, exactly matching the frozen authority's codebook_sha256.",
+    "Q86A/Q86B/Q86C are all present with an identical native domain {0 No, 1 Yes, 9 Don't know, 997 Not asked, 998 Refused, -1 Missing}. The printed codebook Values: line omits 997 while its value labels include it; the physical dictionary confirms 997 is a real stored state.",
+    "The frozen GT12-A authority binds a coordinate slot named COUNTRY_ALPHA3, but the physical merged R5 SAV stores COUNTRY (numeric, 35 labels, Uganda=18) and COUNTRY_ALPHA (numeric, alphabetical order) and does NOT store COUNTRY_ALPHA3. The alpha-3 identity is a derived crosswalk. RECONCILE before reuse.",
+    "Neither R5 (348 variables) nor R9 (421 variables) contains any PSU, stratum, cluster, EA-identifier, sample-type, sample-flag, supplement, oversample, national-sample or extra/boost variable. The national-vs-supplement RECORD SELECTOR does not exist in either archived file.",
+    "Weight column names are physically corroborated: R5 withinwt / combinwt; R9 withinwt_ea ('old AB withinwt') / withinwt_hh ('new AB withinwt') / Combinwt_new_hh / Combinwt_old_ea.",
+    "The physical 998 label is 'Refused' whereas the frozen Q86_NATIVE_STATES and the codebook say 'Refused to answer'. Codes and response-state typing match; only the label string differs. RECONCILE explicitly.",
+    "LiTS_I.dta was NOT opened, decoded or hashed: no warrant covers it. Only its questionnaire PDF was read as document text.",
+    "The Mac claim of 44 original SAV/DTA files is verified: data/Data/ contains exactly 44 .sav/.dta files."
+  ],
+
+  "refusals_and_holds": [
+    "LITS_I_THREE_WAY_SAME_RESPONDENT_REFUSED: q310/q311 are EXACT_MIXED_RESPONDENT_REFINEMENT (prev3:F02 lineage), and the original LiTS I Section 3 header explicitly permits a different selected respondent.",
+    "Q86C_SEMANTICS_NOT_ADOPTED: naming a third question is not a grant. Only a target-use permission can authorise it.",
+    "NO_WEIGHT_USE_AUTHORIZED: field existence is not weight-use authorization.",
+    "NO_UGANDA_TEMPORAL_USE: no observed proportions, trend, EE12 or C7 pair use.",
+    "NO_NEW_SOURCE_PERMISSION: no 44-source traversal, no download, no regeneration, no Library hunt.",
+    "AFRO_R5_Q86ABC_ATTITUDE_ONLY_LIMITATION_STATED: the qualified candidate is a within-block attitude battery and does not satisfy the commission's preference for heterogeneous material/behaviour/attitude combinations. This is disclosed rather than hidden."
+  ],
+
+  "commissioned_deliverables": [
+    "WORKER_RETURNS/PYAT-HQ271-M01-THREE-SAME-RESPONDENT-SOURCE-NATIVE-INPUT-AND-UGANDA-DICTIONARY-R1/00_CANDIDATE_SOURCE_ORIGINAL_MEANING_AND_TRUE_TRIPLE.md",
+    "WORKER_RETURNS/PYAT-HQ271-M01-THREE-SAME-RESPONDENT-SOURCE-NATIVE-INPUT-AND-UGANDA-DICTIONARY-R1/01_FILE_SHA_DICTIONARY_AND_NATIONAL_SAMPLE_METADATA.json",
+    "WORKER_RETURNS/PYAT-HQ271-M01-THREE-SAME-RESPONDENT-SOURCE-NATIVE-INPUT-AND-UGANDA-DICTIONARY-R1/02_EXACT_PRODUCER_OPERATION_PERMISSION_AND_FIRST_EXECUTABLE_COURT.md",
+    "WORKER_RETURNS/PYAT-HQ271-M01-THREE-SAME-RESPONDENT-SOURCE-NATIVE-INPUT-AND-UGANDA-DICTIONARY-R1/03_DISPOSITION.json"
+  ],
+
+  "disclosed_repository_infrastructure_addition": {
+    "path": ".rabochii/return_manifest.json",
+    "why": "mandatory under .rabochii/RETURN_BEACON_CONTRACT.md ('New commissions MUST use the manifest contract')",
+    "scope": "return certification metadata only; contributes no commissioned substantive content and grants nothing",
+    "note": "The commission says 'Push solely these four files'. This manifest is not a fifth commissioned deliverable; it is the repository-operational beacon record that the commission itself requires to be treated as mandatory. Flagged here so HQ can adjudicate."
+  },
+
+  "separation": {
+    "performed_only_commissioned_role": true,
+    "no_uncommissioned_repair": true,
+    "no_uncommissioned_review": true,
+    "no_self_adoption": true,
+    "no_production_or_hq_branch_mutation": true,
+    "no_post_checkpoint_movement": true
+  },
+
+  "terminal": "HQ271_M01_RETURNED_FOR_HQ__NO_SELF_ADOPTION"
+}
