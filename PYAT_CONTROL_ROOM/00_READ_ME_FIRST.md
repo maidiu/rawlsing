@@ -1,3 +1,13 @@
+# FIRST-PAGE MANDATORY VISION GATE — HQ276 FULL AUTOMATED MACHINE
+
+**BEFORE ANY PROJECT-LEVEL PYAT ADJUDICATION, COMMISSION OR CLAIM THAT A PIPELINE FUNCTION IS MISSING**, read the [WHOLE-MACHINE AUTOMATION DOCTRINE](00_WHOLE_MACHINE_AUTOMATION_DOCTRINE_R1.md), then the [full CLOSED35 completion room](WHOLE_MACHINE_COMPLETION_R1/README.md), [global current-function work register](WHOLE_MACHINE_COMPLETION_R1/GLOBAL_WORK_REGISTER.md), [35-wave × 54-axis source/EE/F1–F8 matrix](WHOLE_MACHINE_COMPLETION_R1/ESTATE_35X_REQUIREMENTS_MATRIX.json), and [mandatory incoming-HQ grok acceptance test](WHOLE_MACHINE_COMPLETION_R1/ACCEPTANCE_AND_GROK_TEST.md).
+
+The Rawlsing work has spent weeks **SUCCESSING THE AUTOMATED V550/V551/V552 + V550J/V551J/V552J SOURCE-TO-ARTIFACT GENERATOR, not developing isolated scientific-question analyses**. Main contains the original automated all-wave pipeline; pre-main contains real generalized Route B/C11/I03/I05/batch/analytical/learned-world/Field Forge/world owners. All 35 source waves are mandatory; individual questionnaire items are hostile proving examples, not inclusion candidates. HQD124 closed 53 source-free architectural responsibilities at its declared grain. HQD125 and HQD216 require **actual produced empirical, structural, temporal and downstream possibility artifacts for the entire scientifically applicable source estate**. Missing source packet, missing implementation, missing consumer and actual original-source nonapplicability are different verdicts. An unverified matrix cell is not a missing module. Do not restart a generic audit or reinvent existing code.
+
+**A new HQ that cannot demonstrate these facts from inherited primary code and law is GROK-INCOMPLETE and must not devise a new global work program.** This paragraph is an onboarding/cognitive lock, not a source read, empirical operation, structural, EE14/G0b or V3 grant. Live control authority remains the latest immutable handoff and competent original issuers.
+
+---
+
 ## Productive adequacy law — HQD-216
 
 All forward Pyat work must read and obey:
