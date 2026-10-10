@@ -1,14 +1,19 @@
 {
   "schema_id": "RABOCHII_RETURN_MANIFEST@1.0.0",
-  "task_id": "PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1",
-  "branch": "agent/rabochii-pyat-hq118-i2-m2-release-runtime-r1",
+  "task_id": "PYAT-HQ273-S01-AFRO-R5-Q86A-Q8A-Q97-HETEROGENEOUS-SCIENTIFIC-SOURCE-WARRANT-R1",
+  "branch": "agent/rabochii-pyat-hq273-s01-afro-q8a-q97-heterogeneous-source-science-r1",
   "commission": {
-    "authority_ref": "d709ce3a64eced97c69c05506ead8a9e66292d67",
-    "exact_start_sha": "d709ce3a64eced97c69c05506ead8a9e66292d67"
+    "authority_ref": "92681161cc9edbae24622ccaf3f45c6e073d04df",
+    "exact_start_sha": "92681161cc9edbae24622ccaf3f45c6e073d04df",
+    "frozen_control_base": "e82508091214d2543cfd1a2d8f7ff5ea4b5fe48f",
+    "sealed_HQ273_handoff": "652807ef0c39195e542dc0391f9c4757cb3d0aec"
   },
   "return": {
-    "result": "PASS",
-    "terminal": "PYAT_HQ118_I2_PASS__M2_RELEASE_CORE_AND_RESOLUTION_RUNTIME_SOURCE_FREE_GREEN__NO_LIFECYCLE_PUBLICATION_COLLAPSE__RETURN_TO_HQ",
+    "result": "BLOCKED",
+    "scientific_disposition": "GO_FOR_SOURCE_AUTHORITY_COURT",
+    "blocker_class": "DEVELOPMENT_BLOCKER_SOURCE_AUTHORITY_AND_PRODUCER__NOT_SOURCE_INTRINSIC",
+    "terminal": "HQ273_S01_RETURNED_FOR_HQ__NO_SELF_ADOPTION__RETURN_TO_HQ",
+    "scientific_terminal": "HQ273_S01_RETURNED_FOR_HQ__NO_SELF_ADOPTION",
     "phase": "CLOSURE_ONLY",
     "completion": {
       "commission_consumed": true,
@@ -22,89 +27,64 @@
   "separation": {
     "performed_only_commissioned_role": true,
     "no_uncommissioned_repair": true,
-    "no_uncommissioned_review": true
+    "no_uncommissioned_review": true,
+    "no_source_access": true,
+    "no_self_adoption": true
   },
   "return_packet": {
-    "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/00_RETURN.md",
-    "blob_sha": "f30629ffad6d64b3b3c7bbc4e63ee7bcdab5f4c3"
+    "path": "WORKER_RETURNS/PYAT-HQ273-S01-AFRO-R5-Q86A-Q8A-Q97-HETEROGENEOUS-SCIENTIFIC-SOURCE-WARRANT-R1/00_OFFICIAL_ORIGINAL_Q8A_Q97_Q86A_MEANINGS_AND_ADMINISTRATION.md",
+    "blob_sha": "8b6fd01af4dde339cd35eb7faa241e4935a63363"
   },
   "required_outputs": [
     {
-      "name": "m2_runtime",
+      "name": "original_country_instrument_and_routing",
       "kind": "path",
-      "path": "rawlsing_next/pre553_learned_product_release.py",
-      "blob_sha": "f76c390665f06ef126968ccf1a6b2d816f43ae92",
+      "path": "WORKER_RETURNS/PYAT-HQ273-S01-AFRO-R5-Q86A-Q8A-Q97-HETEROGENEOUS-SCIENTIFIC-SOURCE-WARRANT-R1/00_OFFICIAL_ORIGINAL_Q8A_Q97_Q86A_MEANINGS_AND_ADMINISTRATION.md",
+      "blob_sha": "8b6fd01af4dde339cd35eb7faa241e4935a63363",
       "status": "DURABLE"
     },
     {
-      "name": "m2_tests",
+      "name": "same_person_two_conditional_specs",
       "kind": "path",
-      "path": "rawlsing_next/tests/test_pre553_learned_product_release.py",
-      "blob_sha": "d45b54190815b4c6af506579962a9aac8a7074c2",
+      "path": "WORKER_RETURNS/PYAT-HQ273-S01-AFRO-R5-Q86A-Q8A-Q97-HETEROGENEOUS-SCIENTIFIC-SOURCE-WARRANT-R1/01_EXACT_SAME_RESPONDENT_COMMON_BASE_AND_TWO_CONDITIONALS.json",
+      "blob_sha": "176a286696779336cd94af43161f78517e6e831b",
       "status": "DURABLE"
     },
     {
-      "name": "return_packet",
+      "name": "source_permission_and_priority",
       "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/00_RETURN.md",
-      "blob_sha": "f30629ffad6d64b3b3c7bbc4e63ee7bcdab5f4c3",
+      "path": "WORKER_RETURNS/PYAT-HQ273-S01-AFRO-R5-Q86A-Q8A-Q97-HETEROGENEOUS-SCIENTIFIC-SOURCE-WARRANT-R1/02_SOURCE_AUTHORITY_FIRST_REAL_OPERATION_AND_HETEROGENEITY_PRIORITY.md",
+      "blob_sha": "5fee6111a045cc316bbc94e9f1860e6d75decac4",
       "status": "DURABLE"
     },
     {
-      "name": "changed_files",
+      "name": "scientific_disposition",
       "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/01_CHANGED_FILES.tsv",
-      "blob_sha": "d5a7b353bf85954cb3b2712ccf963caafa494f1e",
-      "status": "DURABLE"
-    },
-    {
-      "name": "public_api_owner_receipt",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/02_PUBLIC_API_AND_OWNER_RECEIPT.md",
-      "blob_sha": "4a40b119d4cdc8617b6cdf4c524608ddc7e3bb3a",
-      "status": "DURABLE"
-    },
-    {
-      "name": "hostile_test_ledger",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/03_HOSTILE_TEST_LEDGER.tsv",
-      "blob_sha": "e5e37c29fa1b9e3859b4c970209625b5d43f4727",
-      "status": "DURABLE"
-    },
-    {
-      "name": "m1_m2_interface_receipt",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/04_M1_TO_M2_INTERFACE_RECEIPT.md",
-      "blob_sha": "759428d57ab03bf0b7c7cf07ef20b896426cf7cc",
-      "status": "DURABLE"
-    },
-    {
-      "name": "representation_parity_receipt",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/05_VIRTUAL_MATERIALIZED_PARITY_RECEIPT.md",
-      "blob_sha": "6326a85da3eb3067456c483025d8a224b07a59b0",
-      "status": "DURABLE"
-    },
-    {
-      "name": "publication_boundary_receipt",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/06_PUBLICATION_BOUNDARY_RECEIPT.md",
-      "blob_sha": "210ef8b5e94ef09e95fb255c1f88e2fd7eafd8c2",
-      "status": "DURABLE"
-    },
-    {
-      "name": "qualified_semantic_candidate",
-      "kind": "commit",
-      "sha": "805f4ec04c5beff82ac5ac6bc346464d074dc1b0",
+      "path": "WORKER_RETURNS/PYAT-HQ273-S01-AFRO-R5-Q86A-Q8A-Q97-HETEROGENEOUS-SCIENTIFIC-SOURCE-WARRANT-R1/03_DISPOSITION.json",
+      "blob_sha": "6d0dc9111afdc39adf3056a2a36d14d08905e821",
       "status": "DURABLE"
     }
   ],
   "evidence": {
-    "required": true,
-    "workflow_run_id": 36326255638,
-    "workflow_name": "Rabochii Governed Bounded Court",
-    "conclusion": "success",
-    "evidence_execution_sha": "4ba26b7e1501e8cbb2ef6e84ccd4a5d2dd8c890a",
-    "artifact_id": 10934510122
+    "required": false,
+    "public_primary": [
+      "https://www.afrobarometer.org/wp-content/uploads/2022/02/gha_r5_questionnaire.pdf",
+      "https://www.afrobarometer.org/wp-content/uploads/2022/02/merged_r5_codebook_2.pdf"
+    ],
+    "preexisting_governed_source_science": [
+      "e115b81a0833a8f8983fe0ece62ef66b31654ff5",
+      "0c2730d5f7a15bfc6e633d8e4503f3144275bf69"
+    ],
+    "no_sav_dta_rows_read": true,
+    "no_measured_statistics": true,
+    "no_new_source_permission": true,
+    "no_code_edits": true,
+    "no_weights_or_design_inference": true,
+    "report_scope": "ORIGINAL_GHANA_FIELD_INSTRUMENT_AND_REPOSITORY_AUTHORITY_PROPOSAL_ONLY"
+  },
+  "model_provenance": {
+    "actual": "GPT-6",
+    "tier_or_UI_mode": "Sol High requested but independently unverifiable",
+    "surface": "Browser/GitHub + public original documents"
   }
 }
