@@ -64,7 +64,7 @@ def main():
     work_ids = [x["id"] for x in tasks["task_rows"]]
     fail(len(work_ids) == len(set(work_ids)), "duplicate work class ID")
     work_md = (HERE / "GLOBAL_WORK_REGISTER.md").read_text(encoding="utf-8")
-    md_ids = re.findall(r"^- ([GSPQLFTWA][0-9]{2})\\.", work_md, re.M)
+    md_ids = re.findall(r"^- ([GSPQLFTWA][0-9]{2})\.", work_md, re.M)
     fail(md_ids == work_ids, "markdown task IDs and typed task ledger disagree")
     for task in tasks["task_rows"]:
         fail(bool(task["owner_family"]) and task["existing_owner_candidate_paths"],
@@ -109,5 +109,5 @@ if __name__ == "__main__":
     try:
         sys.exit(main())
     except (KeyError, ValueError, AssertionError) as exc:
-        sys.stderr.write(f"FAIL_COMPLETION_INVENTORY: {exc}\\n")
+        sys.stderr.write(f"FAIL_COMPLETION_INVENTORY: {exc}\n")
         sys.exit(1)
