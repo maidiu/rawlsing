@@ -1,3 +1,9 @@
+## HQ277 follow-up condition — actual automated workload completeness
+
+After completing the HQ276 machine-grok, a new HQ must read [the hostile matrix audit](WHOLE_MACHINE_COMPLETION_R1/SECOND_PASS_HOSTILE_AUDIT_R1.md) and [the WG0–WG4 original-item/operation workload construction gate](WHOLE_MACHINE_COMPLETION_R1/AUTOMATED_WORKLOAD_CONSTRUCTION_CRITICAL_GATE.md). Demand evidence for the current generator of source-complete legitimate I03 requests, I05 authority/catalogs and batch jobs; these are currently proved *consumable inputs* to generic owners, not yet proved exhaustively constructed from all 35 original instruments. No selected-question handwork and no assertion an implementation is missing without examining current existing owners.
+
+---
+
 ## HQ276 FIRST PRIORITY — MACHINE-INHERITANCE AND AUTOMATION GROK
 
 Before Rule 1 / delta inspection or any new global program claim, read:
