@@ -1,0 +1,275 @@
+{
+  "branch": "agent/step5-pyat-hq273-c01-source-free-true-conditional-owner-court-r1",
+  "code_commit_under_test": "bec158a0c5aed7e7ad2f8b164fedfbf205e722e0",
+  "commission": "PYAT-HQ273-C01-TRUE-I03-CONDITIONED-DENOMINATORS-SOURCE-FREE-EXECUTABLE-COURT-R1",
+  "commission_tip": "6e9e1ddb766861da273aa75c7b692547506acc25",
+  "control_base": "e82508091214d2543cfd1a2d8f7ff5ea4b5fe48f",
+  "counting_stub_used": false,
+  "executor_used": "rawlsing_next.pre553_empirical_query.execute_empirical_query / replay_empirical_query",
+  "fixture": {
+    "id": "HQ273-C01-TRUE-CONDITIONAL-FIXTURE",
+    "marker": "DEVELOPMENT_FIXTURE_ONLY",
+    "operation": "HQ273-C01-I03-TRUE-CONDITIONAL",
+    "respondent_count": 10
+  },
+  "independent_oracle": {
+    "K1": [
+      "P01",
+      "P03",
+      "P04"
+    ],
+    "K1_count": 3,
+    "K2": [
+      "P01"
+    ],
+    "K2_count": 1,
+    "N1": 5,
+    "N2": 3,
+    "R1": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05"
+    ],
+    "R2": [
+      "P01",
+      "P02",
+      "P05"
+    ],
+    "S": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07"
+    ],
+    "q1": [
+      3,
+      5
+    ],
+    "q2": [
+      1,
+      3
+    ],
+    "unguarded_denominator": 8,
+    "unguarded_numerator": 5
+  },
+  "model_certification": "NONE__UNCERTIFIABLE_FROM_REPOSITORY_STATE",
+  "model_declared": "Step 5 Preview",
+  "oracle_independence": {
+    "asserted_by_test": "test_independent_oracle_shares_no_engine_code",
+    "method": "plain Python set logic over the declared row spec",
+    "shares_engine_code": false
+  },
+  "q1": {
+    "cell_states": {
+      "0": "OBSERVED_POSITIVE",
+      "1": "OBSERVED_POSITIVE"
+    },
+    "contract_id": "PRE553_I03_EXACT_EMPIRICAL_QUERY@1.0.0",
+    "denominator_member_ids": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05"
+    ],
+    "denominator_member_refs_count": 5,
+    "detail": "exact governed target distribution resolved",
+    "fact_ref": {
+      "content_hash": "1013ebedd273600ff1f1be28f3650497c6fc7c8037c8f739aa3909e9eba9bbc9",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:1013ebedd273600ff1f1be28f3650497c6fc7c8037c8f739aa3909e9eba9bbc9"
+    },
+    "measure_kind": "RAW",
+    "p02_failure_state": null,
+    "predicate_ref": {
+      "content_hash": "7f6a7d78781cf406bed52ea647d3b9b26143935d7372e4f07985da5cfb5d2c9f",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:7f6a7d78781cf406bed52ea647d3b9b26143935d7372e4f07985da5cfb5d2c9f"
+    },
+    "query_ref": {
+      "content_hash": "a30baed2b20dc448628eef1b52de1a321486890ede16c8d0da93e34cd3855352",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:a30baed2b20dc448628eef1b52de1a321486890ede16c8d0da93e34cd3855352"
+    },
+    "raw_denominator_support": 5,
+    "raw_resolved_target_support": 5,
+    "replay_ref": {
+      "content_hash": "83ad5f2545cabd49bf756df9461b5fbc036b0d1286872f3faf80831dc4f5c03b",
+      "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:83ad5f2545cabd49bf756df9461b5fbc036b0d1286872f3faf80831dc4f5c03b"
+    },
+    "replay_verified_identical_fact_ref": true,
+    "risk_member_ids": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10"
+    ],
+    "risk_set_type": "WHOLE_QUESTION_RISK_SET",
+    "source_scope_mode": "SINGLE_UNIVERSE",
+    "target_domain_identity": "85fd3b095810c93f47ca4bb22187a860d63eef377e230b249035f66672e13b8c",
+    "target_topology_arity": 1,
+    "typed_state": "SUPPORTED",
+    "uncertainty": "UNCERTAINTY_UNQUANTIFIED",
+    "weighted_denominator": null,
+    "weighted_numerator": null,
+    "y0_cell_numerator": 2,
+    "y1_cell_numerator": 3
+  },
+  "q2": {
+    "cell_states": {
+      "0": "OBSERVED_POSITIVE",
+      "1": "OBSERVED_POSITIVE"
+    },
+    "contract_id": "PRE553_I03_EXACT_EMPIRICAL_QUERY@1.0.0",
+    "denominator_member_ids": [
+      "P01",
+      "P02",
+      "P05"
+    ],
+    "denominator_member_refs_count": 3,
+    "detail": "exact governed target distribution resolved",
+    "fact_ref": {
+      "content_hash": "25f7ca658d7014b25c4d556a00c1f1b451f07369d7317a48bd902b0f9e931ae1",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:25f7ca658d7014b25c4d556a00c1f1b451f07369d7317a48bd902b0f9e931ae1"
+    },
+    "measure_kind": "RAW",
+    "p02_failure_state": null,
+    "predicate_ref": {
+      "content_hash": "6d1cc5be9346e5ccd87f54f8f2621d084f5000a899e88b12eafaf8d7736b7186",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:6d1cc5be9346e5ccd87f54f8f2621d084f5000a899e88b12eafaf8d7736b7186"
+    },
+    "query_ref": {
+      "content_hash": "3513067c421b24be15c19d41347a0aa2e6e7b4e73de39ea0db7e17865f57ff78",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:3513067c421b24be15c19d41347a0aa2e6e7b4e73de39ea0db7e17865f57ff78"
+    },
+    "raw_denominator_support": 3,
+    "raw_resolved_target_support": 3,
+    "replay_ref": {
+      "content_hash": "ab8da8b8914a155bf1e3b865a9e1dc8b8d8fe6ab873293bff3462b6536108be4",
+      "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:ab8da8b8914a155bf1e3b865a9e1dc8b8d8fe6ab873293bff3462b6536108be4"
+    },
+    "replay_verified_identical_fact_ref": true,
+    "risk_member_ids": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10"
+    ],
+    "risk_set_type": "WHOLE_QUESTION_RISK_SET",
+    "source_scope_mode": "SINGLE_UNIVERSE",
+    "target_domain_identity": "5dd877aec8b207c32654b17d10c74333c4b1f7471bc6d2bef047cd4aff3531c6",
+    "target_topology_arity": 1,
+    "typed_state": "SUPPORTED",
+    "uncertainty": "UNCERTAINTY_UNQUANTIFIED",
+    "weighted_denominator": null,
+    "weighted_numerator": null,
+    "y0_cell_numerator": 2,
+    "y1_cell_numerator": 1
+  },
+  "qa": {
+    "K1_equals_oracle": true,
+    "K2_equals_oracle": true,
+    "N1_equals_oracle": true,
+    "N2_equals_oracle": true,
+    "R1_subset_S": true,
+    "R2_subset_R1": true,
+    "all_three_events_same_respondent": true,
+    "both_replayable": true,
+    "cross_person_join": "NONE__SINGLE_UNIVERSE_PER_RESPONDENT_EVALUATION",
+    "distinct_denominator_member_sets": true,
+    "distinct_denominators": true,
+    "distinct_fact_refs": true,
+    "distinct_predicates": true,
+    "distinct_queries": true,
+    "distinct_replay_refs": true,
+    "q1_probability": "3/5",
+    "q2_probability": "1/3",
+    "weighted_measure_used": false
+  },
+  "release_ref": {
+    "content_hash": "c006e2cac7a9e8c92346f6c2b59ead1de761ddf96d0de852168fd035ce43824e",
+    "object_id": "HQ273-C01-REL-hq273c01-main"
+  },
+  "schema": "PYAT_HQ273_C01_INDEPENDENT_TWO_CONDITIONAL_FACT_EXECUTION@1.0.0",
+  "source_file_opened": false,
+  "terminal": "HQ273_C01_RETURNED_FOR_HQ__NO_SELF_ADOPTION",
+  "unguarded": {
+    "cell_states": {
+      "0": "OBSERVED_POSITIVE",
+      "1": "OBSERVED_POSITIVE"
+    },
+    "contract_id": "PRE553_I03_EXACT_EMPIRICAL_QUERY@1.0.0",
+    "denominator_member_ids": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P08",
+      "P09",
+      "P10"
+    ],
+    "denominator_member_refs_count": 8,
+    "detail": "positive denominator exists but exact target configuration is unresolved for one or more denominator members",
+    "fact_ref": {
+      "content_hash": "99f5c2a1d7cef542b3e925b5d65f043375918a5c7eb41d0472e9bdd38b5e21f9",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:99f5c2a1d7cef542b3e925b5d65f043375918a5c7eb41d0472e9bdd38b5e21f9"
+    },
+    "measure_kind": "RAW",
+    "p02_failure_state": null,
+    "raw_denominator_support": 8,
+    "raw_resolved_target_support": 7,
+    "risk_member_ids": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10"
+    ],
+    "risk_set_type": "WHOLE_QUESTION_RISK_SET",
+    "source_scope_mode": "SINGLE_UNIVERSE",
+    "target_domain_identity": "7cf912a720f3bf5968ecaa2c379c5f9e94a398cae4b990fea6e6a3978fe7e11e",
+    "target_topology_arity": 1,
+    "typed_state": "UNRESOLVED",
+    "uncertainty": "UNCERTAINTY_UNQUANTIFIED",
+    "weighted_denominator": null,
+    "weighted_numerator": null,
+    "y0_cell_numerator": 2,
+    "y1_cell_numerator": 5
+  },
+  "universe_ref": {
+    "content_hash": "b5d3fda17fcb202303843b4b403740a32ea263b5a25847c0354aef92515a6858",
+    "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:b5d3fda17fcb202303843b4b403740a32ea263b5a25847c0354aef92515a6858"
+  },
+  "worktree": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/hq273/c01",
+  "zero_support": {
+    "denominator_member_refs_count": 0,
+    "detail": "exact risk set is nonempty but the condition-selected denominator has zero members",
+    "fact_ref": {
+      "content_hash": "9d42ee3b7db74beba080ead5667b7c3306f2d1337d7facb2b2ef219bb8071909",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:9d42ee3b7db74beba080ead5667b7c3306f2d1337d7facb2b2ef219bb8071909"
+    },
+    "raw_denominator_support": 0,
+    "raw_resolved_target_support": 0,
+    "typed_state": "ZERO_SUPPORT"
+  }
+}

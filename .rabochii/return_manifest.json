@@ -1,14 +1,14 @@
 {
   "schema_id": "RABOCHII_RETURN_MANIFEST@1.0.0",
-  "task_id": "PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1",
-  "branch": "agent/rabochii-pyat-hq118-i2-m2-release-runtime-r1",
+  "task_id": "PYAT-HQ273-C01-TRUE-I03-CONDITIONED-DENOMINATORS-SOURCE-FREE-EXECUTABLE-COURT-R1",
+  "branch": "agent/step5-pyat-hq273-c01-source-free-true-conditional-owner-court-r1",
   "commission": {
-    "authority_ref": "d709ce3a64eced97c69c05506ead8a9e66292d67",
-    "exact_start_sha": "d709ce3a64eced97c69c05506ead8a9e66292d67"
+    "authority_ref": "6e9e1ddb766861da273aa75c7b692547506acc25",
+    "exact_start_sha": "6e9e1ddb766861da273aa75c7b692547506acc25"
   },
   "return": {
     "result": "PASS",
-    "terminal": "PYAT_HQ118_I2_PASS__M2_RELEASE_CORE_AND_RESOLUTION_RUNTIME_SOURCE_FREE_GREEN__NO_LIFECYCLE_PUBLICATION_COLLAPSE__RETURN_TO_HQ",
+    "terminal": "HQ273_C01_RETURNED_FOR_HQ__NO_SELF_ADOPTION",
     "phase": "CLOSURE_ONLY",
     "completion": {
       "commission_consumed": true,
@@ -25,86 +25,67 @@
     "no_uncommissioned_review": true
   },
   "return_packet": {
-    "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/00_RETURN.md",
-    "blob_sha": "f30629ffad6d64b3b3c7bbc4e63ee7bcdab5f4c3"
+    "path": "WORKER_RETURNS/PYAT-HQ273-C01-TRUE-I03-CONDITIONED-DENOMINATORS-SOURCE-FREE-EXECUTABLE-COURT-R1/00_ACTUAL_NATIVE_I03_CALL_GRAPH_AND_FIXTURE_GRAIN.md",
+    "blob_sha": "59dfae40f0706e601d50818810c71fedb2183237"
   },
   "required_outputs": [
     {
-      "name": "m2_runtime",
+      "name": "actual_native_i03_call_graph_and_fixture_grain",
       "kind": "path",
-      "path": "rawlsing_next/pre553_learned_product_release.py",
-      "blob_sha": "f76c390665f06ef126968ccf1a6b2d816f43ae92",
+      "path": "WORKER_RETURNS/PYAT-HQ273-C01-TRUE-I03-CONDITIONED-DENOMINATORS-SOURCE-FREE-EXECUTABLE-COURT-R1/00_ACTUAL_NATIVE_I03_CALL_GRAPH_AND_FIXTURE_GRAIN.md",
+      "blob_sha": "59dfae40f0706e601d50818810c71fedb2183237",
       "status": "DURABLE"
     },
     {
-      "name": "m2_tests",
+      "name": "independent_two_conditional_fact_execution",
       "kind": "path",
-      "path": "rawlsing_next/tests/test_pre553_learned_product_release.py",
-      "blob_sha": "d45b54190815b4c6af506579962a9aac8a7074c2",
+      "path": "WORKER_RETURNS/PYAT-HQ273-C01-TRUE-I03-CONDITIONED-DENOMINATORS-SOURCE-FREE-EXECUTABLE-COURT-R1/01_INDEPENDENT_TWO_CONDITIONAL_FACT_EXECUTION.json",
+      "blob_sha": "8566edeead5591e6553ce98c54dd697f31b8ea30",
       "status": "DURABLE"
     },
     {
-      "name": "return_packet",
+      "name": "positive_negative_tests_and_next_source_bound_warrant",
       "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/00_RETURN.md",
-      "blob_sha": "f30629ffad6d64b3b3c7bbc4e63ee7bcdab5f4c3",
+      "path": "WORKER_RETURNS/PYAT-HQ273-C01-TRUE-I03-CONDITIONED-DENOMINATORS-SOURCE-FREE-EXECUTABLE-COURT-R1/02_POSITIVE_NEGATIVE_TESTS_AND_NEXT_SOURCE_BOUND_WARRANT.md",
+      "blob_sha": "16f643cc82828129a5ee51389fe00849a4b68322",
       "status": "DURABLE"
     },
     {
-      "name": "changed_files",
+      "name": "disposition",
       "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/01_CHANGED_FILES.tsv",
-      "blob_sha": "d5a7b353bf85954cb3b2712ccf963caafa494f1e",
+      "path": "WORKER_RETURNS/PYAT-HQ273-C01-TRUE-I03-CONDITIONED-DENOMINATORS-SOURCE-FREE-EXECUTABLE-COURT-R1/03_DISPOSITION.json",
+      "blob_sha": "d5b1f4e7fcdcabeba7c966d54c763279e24b9410",
       "status": "DURABLE"
     },
     {
-      "name": "public_api_owner_receipt",
+      "name": "conditional_fixture_adapter",
       "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/02_PUBLIC_API_AND_OWNER_RECEIPT.md",
-      "blob_sha": "4a40b119d4cdc8617b6cdf4c524608ddc7e3bb3a",
-      "status": "DURABLE"
+      "path": "rawlsing_next/tests/hq273_c01_true_conditional_fixture.py",
+      "status": "DURABLE",
+      "note": "committed in the code commit bec158a0c5aed7e7ad2f8b164fedfbf205e722e0"
     },
     {
-      "name": "hostile_test_ledger",
+      "name": "conditional_denominator_test_suite",
       "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/03_HOSTILE_TEST_LEDGER.tsv",
-      "blob_sha": "e5e37c29fa1b9e3859b4c970209625b5d43f4727",
-      "status": "DURABLE"
-    },
-    {
-      "name": "m1_m2_interface_receipt",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/04_M1_TO_M2_INTERFACE_RECEIPT.md",
-      "blob_sha": "759428d57ab03bf0b7c7cf07ef20b896426cf7cc",
-      "status": "DURABLE"
-    },
-    {
-      "name": "representation_parity_receipt",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/05_VIRTUAL_MATERIALIZED_PARITY_RECEIPT.md",
-      "blob_sha": "6326a85da3eb3067456c483025d8a224b07a59b0",
-      "status": "DURABLE"
-    },
-    {
-      "name": "publication_boundary_receipt",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/06_PUBLICATION_BOUNDARY_RECEIPT.md",
-      "blob_sha": "210ef8b5e94ef09e95fb255c1f88e2fd7eafd8c2",
-      "status": "DURABLE"
-    },
-    {
-      "name": "qualified_semantic_candidate",
-      "kind": "commit",
-      "sha": "805f4ec04c5beff82ac5ac6bc346464d074dc1b0",
-      "status": "DURABLE"
+      "path": "rawlsing_next/tests/test_hq273_c01_true_i03_conditioned_denominators.py",
+      "status": "DURABLE",
+      "note": "committed in the code commit bec158a0c5aed7e7ad2f8b164fedfbf205e722e0"
     }
   ],
   "evidence": {
-    "required": true,
-    "workflow_run_id": 36326255638,
-    "workflow_name": "Rabochii Governed Bounded Court",
-    "conclusion": "success",
-    "evidence_execution_sha": "4ba26b7e1501e8cbb2ef6e84ccd4a5d2dd8c890a",
-    "artifact_id": 10934510122
+    "required": false,
+    "note": "No governed Actions run is claimed. Local execution on commit bec158a0c: 19 collected / 19 passed / 0 failed / 0 skipped for the commissioned suite, plus 289 baseline tests green across nine related I03, C11, replay and EE14 modules."
+  },
+  "access_envelope": {
+    "source_file_opened": false,
+    "sav_or_dta_or_lits_checkpoint_read": false,
+    "statistics_computed": false,
+    "population_inference": false,
+    "marker": "DEVELOPMENT_FIXTURE_ONLY"
+  },
+  "model_provenance": {
+    "declared": "Step 5 Preview",
+    "mid_task_switch_in_this_execution": false,
+    "certification": "NONE__UNCERTIFIABLE_FROM_REPOSITORY_STATE"
   }
 }

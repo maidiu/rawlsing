@@ -1,0 +1,164 @@
+{
+  "schema": "PYAT_HQ273_C01_DISPOSITION@1.0.0",
+  "commission": "PYAT-HQ273-C01-TRUE-I03-CONDITIONED-DENOMINATORS-SOURCE-FREE-EXECUTABLE-COURT-R1",
+  "commission_file": "WORKER_COMMISSIONS/PYAT-HQ273-C01-TRUE-I03-CONDITIONED-DENOMINATORS-SOURCE-FREE-EXECUTABLE-COURT-R1/00_COMMISSION.md",
+  "commission_tip": "6e9e1ddb766861da273aa75c7b692547506acc25",
+  "control_base": "e82508091214d2543cfd1a2d8f7ff5ea4b5fe48f",
+  "branch": "agent/step5-pyat-hq273-c01-source-free-true-conditional-owner-court-r1",
+  "worktree": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/hq273/c01",
+  "start_sha": "6e9e1ddb766861da273aa75c7b692547506acc25",
+  "code_commit": "bec158a0c5aed7e7ad2f8b164fedfbf205e722e0",
+  "model_declared": "Step 5 Preview",
+  "model_certification": "NONE__UNCERTIFIABLE_FROM_REPOSITORY_STATE__NO_MID_TASK_SWITCH_IN_THIS_EXECUTION",
+  "outcome": "PASS__TWO_NATIVE_CONDITIONED_EMPIRICAL_FACTS_DEMONSTRATED_SOURCE_FREE",
+  "marker": "DEVELOPMENT_FIXTURE_ONLY",
+  "phase": "CLOSURE_ONLY",
+
+  "sealed_hq273_resolution": {
+    "worktree_head_equals_commission_tip": true,
+    "frozen_control_base_present_as_parent": true,
+    "sealed_adjudication_read": "origin/integration/staging-pyat-hq273-r01-f02-intake-conditional-and-structural-science-r1 @ df4e28b17e086d7ba72511f498aa306045bd090d (HQD-2026-10-09-273)",
+    "hostile_review_read": "agent/reviewer-pyat-hq272-r01-afro-gt3-true-conditional-hostile-r1 @ 0c2730d5f7a15bfc6e633d8e4503f3144275bf69, documents 01 and 02",
+    "prior_agent_uncommitted_state": "NONE__WORKTREE_CLEAN_AT_START"
+  },
+
+  "productive_result": {
+    "executor": "rawlsing_next.pre553_empirical_query.execute_empirical_query / replay_empirical_query",
+    "counting_stub_used": false,
+    "two_native_empirical_facts": true,
+    "q1": {
+      "meaning": "q(Y=1 | A=0) over the declared complete-case base S",
+      "typed_state": "SUPPORTED",
+      "raw_denominator_support": 5,
+      "y1_cell_numerator": 3,
+      "y0_cell_numerator": 2,
+      "probability": "3/5",
+      "denominator_member_ids": ["P01", "P02", "P03", "P04", "P05"],
+      "fact_content_hash": "1013ebedd273600ff1f1be28f3650497c6fc7c8037c8f739aa3909e9eba9bbc9",
+      "replayable": true
+    },
+    "q2": {
+      "meaning": "q(Y=1 | A=0, B=0) over the SAME complete-case base S",
+      "typed_state": "SUPPORTED",
+      "raw_denominator_support": 3,
+      "y1_cell_numerator": 1,
+      "y0_cell_numerator": 2,
+      "probability": "1/3",
+      "denominator_member_ids": ["P01", "P02", "P05"],
+      "fact_content_hash": "25f7ca658d7014b25c4d556a00c1f1b451f07369d7317a48bd902b0f9e931ae1",
+      "replayable": true
+    },
+    "complete_case_base_S_size": 7,
+    "routed_eligible_size": 10,
+    "universe_ref": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:b5d3fda17fcb202303843b4b403740a32ea263b5a25847c0354aef92515a6858",
+    "release_ref": "HQ273-C01-REL-hq273c01-main",
+    "predicate_content_hashes": {
+      "q1": "7f6a7d78781cf406bed52ea647d3b9b261",
+      "q2": "6d1cc5be9346e5ccd87f54f8f2621d084f"
+    },
+    "unguarded_hazard_fact_content_hash": "99f5c2a1d7cef542b3e925b5d65f043375918a5c7eb41d0472e9bdd38b5e21f9",
+    "zero_support_fact_content_hash": "9d42ee3b7db74beba080ead5667b7c3306f2d1337d7facb2b2ef219bb8071909",
+    "nesting": "R2 (3) subset R1 (5) subset S (7) subset routed-eligible (10)",
+    "distinct_predicates": true,
+    "distinct_queries": true,
+    "distinct_fact_refs": true,
+    "distinct_replay_refs": true,
+    "distinct_denominator_member_sets": true,
+    "independent_oracle_agreement": true,
+    "cross_person_join": "NONE__SINGLE_UNIVERSE_PER_RESPONDENT_EVALUATION",
+    "weighted_measure_used": false
+  },
+
+  "commission_task_disposition": {
+    "1_inspect_owner_engine_and_build_narrow_fixture": "COMPLETE__10_PERSON_SOURCE_FREE_FIXTURE__Y_A_B_DISTINCT__urn_test_authorities__no_forged_R5",
+    "2_two_typed_native_predicates_with_distinct_denominators": "COMPLETE__AND_S,A EQ 0) and AND(S,A EQ 0,B EQ 0)__N1=5 N2=3__R2 subset R1 subset S__replayable",
+    "3_genuine_builtin_executor_and_typed_states": "COMPLETE__ZERO_SUPPORT, UNRESOLVED, UNAVAILABLE/RISK_SET_UNAVAILABLE, UNAVAILABLE/MISSING_REQUIRED_AUTHORITY all exercised",
+    "4_positive_and_malicious_negative_pytest_suite": "COMPLETE__19_tests__8_positive_11_negative__0_failed_0_skipped",
+    "5_at_most_two_source_or_test_paths": "COMPLETE__exactly_two_new_test-module_paths__no_production_edit"
+  },
+
+  "files": {
+    "adapter_module": "rawlsing_next/tests/hq273_c01_true_conditional_fixture.py",
+    "test_module": "rawlsing_next/tests/test_hq273_c01_true_i03_conditioned_denominators.py"
+  },
+
+  "test_run": {
+    "code_commit": "bec158a0c5aed7e7ad2f8b164fedfbf205e722e0",
+    "interpreter": "/usr/local/bin/python3 CPython 3.11.3, pytest 9.0.2, pluggy 1.6.0, darwin",
+    "collected": 19,
+    "passed": 19,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "command": "python3 -m pytest rawlsing_next/tests/test_hq273_c01_true_i03_conditioned_denominators.py -v -p no:cacheprovider"
+  },
+
+  "baseline_relevant_tests": {
+    "test_pre553_empirical_query.py": "32 passed",
+    "test_wave1_r5_q86_c11_projection.py": "10 passed",
+    "test_wave1_gt12_i03_positive_facts.py": "8 passed",
+    "test_pre553_source_backed_c11_facade.py": "10 passed",
+    "test_gt12_d_to_m4_typed_bridge.py": "50 passed",
+    "test_pre553_query_frontier_hostile.py": "14 passed",
+    "test_pre553_replay_audit.py": "54 passed",
+    "test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py": "72 passed",
+    "test_pre553_ee14_selected_current_asof_hq260.py": "39 passed",
+    "note": "all green on the same commit; no baseline test modified"
+  },
+
+  "preserved_hq271_byte_identities": [
+    {"path": "rawlsing_next/pre553_ee14_c1_owner_authenticated_ingress.py", "blob": "74e6ee826e8b6a2adebe84969fedcea5716d5b63", "status": "PRESERVED"},
+    {"path": "rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py", "blob": "64b6c747f76a1909b676566e6b529ed10456d33b", "status": "PRESERVED"},
+    {"path": "rawlsing_next/tests/test_pre553_ee14_selected_current_asof_hq260.py", "blob": "a1ec3dba504ff866b681d6bbe942d12a9e238257", "status": "PRESERVED"}
+  ],
+
+  "engineering_findings_for_hq": [
+    "F-1: the native SURVEY_RESPONSE_EVENT EQ leaf has no typed-state filter; value equality alone admits typed REFUSAL/DK respondents. In the fixture the unguarded predicate inflates the denominator from 5 to 8 and admits a refusal recoded to '0'. The resulting fact is typed UNRESOLVED, so the engine fails closed here, but ONLY because the target cell could not resolve. Every production conditional predicate must carry explicit TYPED_RESPONSE_STATE validity leaves.",
+    "F-2: the frozen GT12 DERIVED_BRANCH_COHORT-only predicate shape yields ONE denominator of 10 with identical member sets for both q1 and q2. The HQ272 R01 FAIL matrix row is reproduced as a green committed regression.",
+    "F-3: an arity-3 joint tensor over the same predicate yields denominator 7 (the whole complete-case base) with 8 cells, neither 5 nor 3. A joint table is provably not a substitute for two conditioned facts.",
+    "F-4: unresolved routing state is refused as UNAVAILABLE/RISK_SET_UNAVAILABLE with zero denominator; absence is never coerced to non-membership.",
+    "F-5: non-PREDICATE_GRAMMAR query authority, foreign release ref and foreign-operating target-use permission each fail closed with zero denominator; an extra forged snapshot in the registry but unnamed by the query does not license a fact.",
+    "F-6: for a fully resolved unary target, EmpiricalFact.raw_numerator_support is the RESOLVED-TARGET support, not the Y=1 cell count. The per-value numerator lives in target_topology.complete_cell_semantic_projection. Conflating them silently reports a denominator as a numerator."
+  ],
+
+  "refusals_and_holds": [
+    "NO_SOURCE_READ: no SAV/DTA/LiTS checkpoint opened, read or hashed.",
+    "NO_SOURCE_PERMISSION: no surveyed data, no I03 source release, no source-use authority issued or requested.",
+    "NO_T1_T2_G0b: operative G0b remains unissued and unfalse.",
+    "NO_ADOPTED_GT3_NO_FF02_NO_V3_NO_ACTOR: nothing promoted.",
+    "NO_SELF_ADOPTION: this return is advisory to HQ only.",
+    "NO_POPULATION_INFERENCE: the 10-person synthetic fixture carries no sampling, design or population meaning.",
+    "NO_FORGED_R5_AUTHORITY: all fixture authorities are urn:test:hq273-c01:* with HQ273-C01-AUTH-* ids and cannot be accepted by production issuer gates."
+  ],
+
+  "commissioned_deliverables": [
+    "WORKER_RETURNS/PYAT-HQ273-C01-TRUE-I03-CONDITIONED-DENOMINATORS-SOURCE-FREE-EXECUTABLE-COURT-R1/00_ACTUAL_NATIVE_I03_CALL_GRAPH_AND_FIXTURE_GRAIN.md",
+    "WORKER_RETURNS/PYAT-HQ273-C01-TRUE-I03-CONDITIONED-DENOMINATORS-SOURCE-FREE-EXECUTABLE-COURT-R1/01_INDEPENDENT_TWO_CONDITIONAL_FACT_EXECUTION.json",
+    "WORKER_RETURNS/PYAT-HQ273-C01-TRUE-I03-CONDITIONED-DENOMINATORS-SOURCE-FREE-EXECUTABLE-COURT-R1/02_POSITIVE_NEGATIVE_TESTS_AND_NEXT_SOURCE_BOUND_WARRANT.md",
+    "WORKER_RETURNS/PYAT-HQ273-C01-TRUE-I03-CONDITIONED-DENOMINATORS-SOURCE-FREE-EXECUTABLE-COURT-R1/03_DISPOSITION.json"
+  ],
+
+  "code_paths_changed": [
+    "rawlsing_next/tests/hq273_c01_true_conditional_fixture.py",
+    "rawlsing_next/tests/test_hq273_c01_true_i03_conditioned_denominators.py"
+  ],
+  "production_code_changed": false,
+
+  "disclosed_repository_infrastructure_addition": {
+    "path": ".rabochii/return_manifest.json",
+    "why": "mandatory under .rabochii/RETURN_BEACON_CONTRACT.md ('New commissions MUST use the manifest contract')",
+    "scope": "return certification metadata only; contributes no commissioned substantive content and grants nothing",
+    "note": "The commission says 'Honor .rabochii/return_manifest.json final beacon requirement, same final commit'. It also says 'Output only' four files. The manifest is the repository-operational beacon record the commission itself requires; flagged here so HQ can adjudicate."
+  },
+
+  "separation": {
+    "performed_only_commissioned_role": true,
+    "no_uncommissioned_repair": true,
+    "no_uncommissioned_review": true,
+    "no_self_adoption": true,
+    "no_production_or_hq_branch_mutation": true,
+    "no_post_checkpoint_movement": true
+  },
+
+  "terminal": "HQ273_C01_RETURNED_FOR_HQ__NO_SELF_ADOPTION"
+}
