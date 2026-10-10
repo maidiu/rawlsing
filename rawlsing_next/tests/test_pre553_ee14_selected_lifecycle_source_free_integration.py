@@ -251,6 +251,13 @@ def test_p01_current_selected_q1_and_progressive_q2_exact_owners(case):
     )
     assert q2["cell"] == "q2"
     assert case["cells"]["q2"]["composition"].raw_denominator_support == 1
+    def counts(cell):
+        result = case["cells"][cell]["composition"].consumer_result_or_null
+        assert result.result_state == "EXACT_SUPPORTED"
+        return {v["cell"]: v["raw_numerator_support"]
+                for v in result.material()["exact_lane"]["geometry"]["cells"]}
+    assert counts("q1") == {"0": 1, "1": 1}
+    assert counts("q2") == {"0": 0, "1": 1}
     assert q1["technical_join_hash"] != q2["technical_join_hash"]
     assert q1["c1_origin_receipt_hash"] != q2["c1_origin_receipt_hash"]
     assert q1["source_c11_release"] == q2["source_c11_release"]
