@@ -1,0 +1,29 @@
+# PYAT HQ273 C01 — actually execute the existing I03 predicate AND / conditioned denominator machinery on one source-free three-variable fixture
+
+**STATUS:** ISSUED_NEEDS_HUMAN_LAUNCH — engineering development only. **REPO:** private `maidiu/rawlsing`.
+**BRANCH:** `agent/step5-pyat-hq273-c01-source-free-true-conditional-owner-court-r1`. **EXACT CONTROL BASE:** `e82508091214d2543cfd1a2d8f7ff5ea4b5fe48f`; resolve sealed HQ273.
+**AGENT:** independent local owner-native engineer, NOT source semantic issuer.
+**MODEL / INTELLIGENCE:** **Step 5 Preview** (actual identity to be reported; if changed mid-task, record each).
+**MACHINE:** Mac with an existing repository worktree and Python development runtime. No original SAV/DTA needed or permitted. Use existing shared-store/worktree; no new clone.
+**MISSION:** Demonstrate genuine empirical `Pr(Y=1 | A=0)` versus `Pr(Y=1 | A=0,B=0)` **from distinct original predicate-defined subsets of the SAME synthetic respondent group**, via existing `pre553_empirical_query.execute_empirical_query` and native `EmpiricalQuerySpec/EmpiricalPredicate/EmpiricalFact`. This is lower than serving G0b/T1/T2; no invented source use.
+
+Read sealed HQ273 and R01 hostile review `agent/reviewer-pyat-hq272-r01-afro-gt3-true-conditional-hostile-r1 @ 0c2730d5f7a15bfc6e633d8e4503f3144275bf69` /01 and /02. Frozen GT12 `wave1_gt12_i03_positive_facts.py` has `_predicate_for_members` only `DERIVED_BRANCH_COHORT`, not value equality; arity-polymorphic target tuple is only a joint cell tensor. Generic `_pre553_query_predicate.py` implements SURVEY_RESPONSE_EVENT and respondent-wise AND; `_pre553_query_eval.py` constructs exact conditional denominator member refs from predicate-passing persons. HONOR both. Existing sealed HQ271 G1 source-free ingress adopted separately, not a GT3 measured positive.
+
+## Executable engineering court
+
+1. Independently inspect the owner-native engine and test contracts, derive the narrowest permissible **source-free** three-distinct-question synthetic 8–12 person fixture with genuine stable `RespondentIdentity`, single fixture release, exposed/routed Y,A,B items and exact native categorical semantics. Permitted fixtures may use generic synthetic labels rather than binding real Afro Q86C as if source-adopted. Do NOT forge positive adopted R5 source authority by assigning `urn:test` strings; fixture-only intrinsic grammar/authority objects stay demonstrably source-free and cannot be accepted by production issuer gates. If existing developer authority cannot legitimately run a fixture-positive through the generic I03 interface, stop with exact missing API and deliver tests of refusals, not a fake positive.
+2. Construct **two different exact typed predicates** using native survey-response EQ/AND:
+   - common complete-case eligibility and validity for Y,A,B, then A=0;
+   - same common eligibility/validity, A=0 AND B=0.
+   Let exact selected respondent groups `S`, `R1`, `R2` and their hashes be independently replayable, `R2 ⊆ R1 ⊆ S`. Both `EmpiricalFact` objects must contain their **different** appropriate `raw_denominator_support`, numerator Y=1 and `denominator_member_refs`, not 19,210, not baseline collection count, not an arity-3 target alone. Choose fixture values deliberately so `N1 != N2`, and positive responses q1 and q2 differ visibly; show exact source-free counts. Check identities: all three events from same respondent, no cross-person join.
+3. Use the genuine built-in `execute_empirical_query` function, not an independent Python counting stub masquerading as I03. No parallel API that silently bypasses auth/grammar. Source-free positive may require existing legitimate testing/fixture authority. If an existing owner function needs a small adapter to assemble the two predicate plans, add one bounded owner-native function and a test; preserve accepted semantics. Productive result means TWO replayable native `EmpiricalFact`s or a precisely justified existing API result carrying equivalent conditioned denominator identity. Verify typed `ZERO_SUPPORT` for empty A/B set, exclusion of native unanswered/refused/routing states and correct negative behavior on mismatched member/release, false cross-person join, and authority substitution.
+4. Produce at least one **positive vs malicious-negative** committed pytest suite. Run and report exact commit SHA, interpreter, selection/collection, PASS/FAIL/SKIP, baseline relevant tests, and *independent recomputation* of expected synthetic counts. Clear states `DEVELOPMENT_FIXTURE_ONLY`; no factual R5 source row, I03 source release/permission or C1 selected-service join certified. Preserve HQ271 source-free G1/G2/G3 byte identities and current false G0b.
+5. If a concrete new owner production capability is warranted, change **at most two existing/new source/test paths** (one bounded module/adapter and one test), plus four documentary returns; if actual generic engine already yields two positive facts without source change, avoid production code change and commit only tests + return. Do not modify accepted GT12 Q86 sources, semantic source owners, frozen PRE-MAIN, source-operation registries or G0b permissions.
+
+**DO NOT** read SV/DTA or LiTS checkpoint, issue source authorization, claim source-backed true conditional or T1/T2, fake a production source match, change canonical HQ, or self-adopt. Output only:
+`WORKER_RETURNS/PYAT-HQ273-C01-TRUE-I03-CONDITIONED-DENOMINATORS-SOURCE-FREE-EXECUTABLE-COURT-R1/00_ACTUAL_NATIVE_I03_CALL_GRAPH_AND_FIXTURE_GRAIN.md`
+`.../01_INDEPENDENT_TWO_CONDITIONAL_FACT_EXECUTION.json`
+`.../02_POSITIVE_NEGATIVE_TESTS_AND_NEXT_SOURCE_BOUND_WARRANT.md`
+`.../03_DISPOSITION.json`
+(in that directory; all file paths real).
+Honor `.rabochii/return_manifest.json` final beacon requirement, same final commit. Commit, push and return `HQ273_C01_RETURNED_FOR_HQ__NO_SELF_ADOPTION`.
