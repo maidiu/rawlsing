@@ -1,3 +1,16 @@
+## HQ276 FIRST PRIORITY — MACHINE-INHERITANCE AND AUTOMATION GROK
+
+Before Rule 1 / delta inspection or any new global program claim, read:
+
+1. PYAT_CONTROL_ROOM/00_WHOLE_MACHINE_AUTOMATION_DOCTRINE_R1.md
+2. PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/README.md, GLOBAL_WORK_REGISTER.md, ESTATE_35X_REQUIREMENTS_MATRIX.json, WAVE_BARRIERS.md
+3. PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/ACCEPTANCE_AND_GROK_TEST.md
+4. Main legacy V550/J automatic producers and pre-main selected Route B / C11 / I03 / I05 / batch / analytical/learned-world code listed in the doctrine.
+
+The inherited program is general automated all35 SOURCE→EMPIRICAL ARTIFACT→STRUCTURAL/TEMPORAL WORLD→POSSIBILITY SERVICE, not manual selected-question research or survey inclusion adjudication. A failed grok test bars project-level synthesis until corrected. Existing HQD124/HQD125/HQD216 and exact original issuers remain binding; this is not a new source or semantic grant.
+
+---
+
 ## Productive-adequacy check — HQD-216
 
 Every live delta/commission/review must distinguish:
