@@ -87,3 +87,7 @@ If source bytes or original answer meanings have not been inspected at the exact
 - Only AFTER source-to-world acceptance is N12 V3 actor wake eligible for separate decision.
 
 **Closing formula:** AUTOMATED GOVERNED ESTATE → EXACT EMPIRICAL PRODUCTS → COMPOSED STRUCTURAL/TEMPORAL SOCIOLOGICAL WORLD → AUTHORIZED PROGRESSIVE POSSIBILITY SERVICE. Nothing less is full PRE-V3 completion, and none of the intermediate achievements is to be erased.
+
+## HQ277 false-green discriminator
+
+A completed list of 35 sources, 1,890 scope cells, 101 work-class types, 63 possible temporal pairs and 36 possible cross-family pairs is a **structural coverage ledger only**. It is not a positive empirical acceptance verdict. A fresh HQ must also demand the actual source-original item/condition/operation frontier (every supported measurement scope, not manual cherry-picked questions), current owner exact-function proof, source/operation permission, real produced artifact and real consumer. The relation pair graph is a **candidate search domain**, not a warrant that all pairs are comparable or composable. The missing original item-level authoritative expansion is an explicit substantive completion dependency; do not conceal it inside "matrix filled" or claim this paper completed it.
