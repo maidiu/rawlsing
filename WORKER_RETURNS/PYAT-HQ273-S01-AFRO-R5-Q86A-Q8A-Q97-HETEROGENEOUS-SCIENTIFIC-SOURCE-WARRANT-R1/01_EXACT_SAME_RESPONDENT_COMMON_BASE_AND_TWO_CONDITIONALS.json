@@ -1,0 +1,174 @@
+{
+  "schema": "PYAT_HQ273_S01_EXACT_SAME_RESPONDENT_COMMON_BASE_AND_TWO_CONDITIONALS@1.0.0",
+  "commission_sha": "92681161cc9edbae24622ccaf3f45c6e073d04df",
+  "proposed_only": true,
+  "source": {
+    "family": "AFROBAROMETER",
+    "wave": "R5",
+    "country": "GHA",
+    "country_original": "https://www.afrobarometer.org/wp-content/uploads/2022/02/gha_r5_questionnaire.pdf",
+    "original_edition": "Ghana English, finalized 2012-04-19",
+    "merged_SAV": "Data/Afro Barometer Round 5.sav",
+    "merged_source_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+    "requested_basis": "RAW_UNWEIGHTED_AUTHENTICATED_GHANA_RESPONDENTS_ONLY",
+    "no_population_generalization": true
+  },
+  "existing_GT2_not_authorized": {
+    "id": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1",
+    "record_count": 19210,
+    "member_set_sha256": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+    "countries": [
+      "BFO",
+      "BOT",
+      "CVE",
+      "KEN",
+      "LES",
+      "MAU",
+      "MLW",
+      "MOZ",
+      "NAM",
+      "SAF",
+      "UGA"
+    ],
+    "ghana_in_scope": false
+  },
+  "respondent": {
+    "physical_key": [
+      "COUNTRY",
+      "RESPNO"
+    ],
+    "derived_GHA_country_coordinate": "ONLY_AFTER_GOVERNED_CROSSWALK",
+    "intended_original_administration": "ONE_SELECTED_RESPONDENT_NO_INTERIM_RESELECTION_BETWEEN_Q8A_Q86A_Q97",
+    "must_prove": [
+      "unique (COUNTRY,RESPNO) for authenticated source record",
+      "same RowRespondentBinding and RespondentIdentity on all three distinct RespondentEvent records",
+      "Q8A independent source-native RoutingEligibilityFact EXPOSED__PROVED",
+      "Q86A independent source-native RoutingEligibilityFact EXPOSED__PROVED",
+      "Q97 independent source-native RoutingEligibilityFact EXPOSED__PROVED",
+      "Q8A and Q97 original-vs-merged physical native dictionary reconciliation",
+      "exact Ghana source-release mapping"
+    ]
+  },
+  "variables": [
+    {
+      "id": "Q86A",
+      "role": "Y",
+      "meaning": "normative opinion on citizenship for child born Ghana with one Ghanaian and one non-Ghanaian parent",
+      "valid_substantive": [
+        "0",
+        "1"
+      ],
+      "excluded": {
+        "9": "DK",
+        "997": "NOT_ASKED",
+        "998": "REFUSAL",
+        "-1": "MISSING"
+      },
+      "positive_value": "1",
+      "positive_label": "Yes",
+      "existing_qimpl": "question_impl.phase0.67f036c0efb7fb98ff4a",
+      "existing_qimpl_ghana_scope_permission": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "Q8A",
+      "role": "A",
+      "meaning": "respondent-reported self or family went without enough food in preceding year",
+      "valid_substantive": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "excluded": {
+        "9": "DK",
+        "998": "REFUSAL",
+        "-1": "MISSING"
+      },
+      "condition_value": "3",
+      "condition_label": "Many times",
+      "qimpl": "NOT_YET_CREATED_OR_ADOPTED"
+    },
+    {
+      "id": "Q97",
+      "role": "B",
+      "meaning": "highest completed respondent education",
+      "valid_substantive": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "excluded": {
+        "99": "DK",
+        "998": "REFUSAL",
+        "-1": "MISSING"
+      },
+      "condition_value": "5",
+      "condition_label": "Secondary/high school completed",
+      "value_9": "POSTGRADUATE_SUBSTANTIVE",
+      "qimpl": "NOT_YET_CREATED_OR_ADOPTED"
+    }
+  ],
+  "S": {
+    "symbol": "S_GHA",
+    "definition": "Same exact Ghana R5 release/selected person; unique physical country/respondent key; each of Q86A,Q8A,Q97 independently exposed/eligible; each respondent event has native substantive-valid response respectively Y in {0,1}, A in {0,1,2,3,4}, B in {0,1,2,3,4,5,6,7,8,9}.",
+    "member_count": null,
+    "member_set_hash": null,
+    "member_refs": null,
+    "risk_set_ref": null,
+    "status": "NOT_CREATED__NOT_AUTHORIZED",
+    "same_comparison_base_for_q1_and_q2": true
+  },
+  "q1": {
+    "semantic_label": "q(Q86A=1 | Q8A=3,S_GHA)",
+    "condition": "Q8A(r)==3",
+    "selected_set": "R1 = {r in S_GHA: Q8A(r)=3}",
+    "denominator": "D1=|R1|",
+    "numerator": "N1=|{r in R1: Q86A(r)=1}|",
+    "estimand": "N1/D1 when D1>0",
+    "query_ref": null,
+    "predicate_ref": null,
+    "fact_ref": null,
+    "observed_denominator": null,
+    "observed_numerator": null
+  },
+  "q2": {
+    "semantic_label": "q(Q86A=1 | Q8A=3, Q97=5, S_GHA)",
+    "condition": "Q8A(r)==3 AND Q97(r)==5",
+    "selected_set": "R2 = {r in R1: Q97(r)=5}",
+    "denominator": "D2=|R2|",
+    "numerator": "N2=|{r in R2: Q86A(r)=1}|",
+    "estimand": "N2/D2 when D2>0",
+    "query_ref": null,
+    "predicate_ref": null,
+    "fact_ref": null,
+    "observed_denominator": null,
+    "observed_numerator": null
+  },
+  "law": [
+    "R2 subset-of R1 subset-of S_GHA; do not invent strict inequality D2<D1; actual respondent refs must prove selection and any accidental equality.",
+    "Both queries use the IDENTICAL triple complete-case S_GHA. Never mix pairwise-complete q1 and triple-complete q2.",
+    "Two separately authorized SURVEY_RESPONSE_EVENT EQ/AND predicates with distinct exact identities, two independently replayed EmpiricalQuerySpec and EmpiricalFact outputs, separate exact denominator_member_refs; never clone 19210 nor one frozen common risk denominator.",
+    "Zero denominator is typed not estimable, not an observed 0 rate. Nonempty denominator/zero numerator is a valid empirical zero if independently observed. Preserve low support/null/uncertainty without invented standard errors.",
+    "Conditioning is non-causal; no guarantee q1/q2 differ numerically, no assumption education exerts a causal effect.",
+    "Education category nine is valid substantive postgraduate, while Q8A/Q86A code nine is DK and Q97 ninety-nine DK.",
+    "Ghana is not within frozen eleven-country GT2, so new Ghana source scope and risk set are a prerequisite.",
+    "No raw data, respondents, numerators, denominators, covariances or weights were executed or inspected."
+  ],
+  "permission": {
+    "source_q8a_q97": null,
+    "ghana_target_q86a": null,
+    "two_query_target_use": null,
+    "selected_C1_service": null,
+    "status": "NOT_GRANTED"
+  },
+  "next_decision": "GO_FOR_SOURCE_AUTHORITY_COURT__HOLD_EXECUTION",
+  "terminal": "HQ273_S01_RETURNED_FOR_HQ__NO_SELF_ADOPTION"
+}
