@@ -1,0 +1,41 @@
+# HQ273 S01 — original Ghana R5 Q8A / Q86A / Q97 measurement and administration
+
+**Scope:** Independent original-documentary source science only. No raw survey read, new respondent statistics, question implementation, grant, empirical result or HQ self-adoption. Actual executing model GPT-6; requested Sol High effort not independently certifiable from connected tools. Browser/GitHub, no local Mac.
+
+**Commission tip:** `92681161cc9edbae24622ccaf3f45c6e073d04df`. **Frozen base:** `e82508091214d2543cfd1a2d8f7ff5ea4b5fe48f`. **Sealed HQ273:** `20261009-PYAT-HQ273-R01-F02-TRUE-CONDITIONAL-AND-MATERIAL-SOURCE-FRONT-R1` at handoff commit `652807ef0c39195e542dc0391f9c4757cb3d0aec`, checked on `integration/pre-main-reconciliation-r1`. Its S01 commission had no source grant.
+
+## Primary originals
+
+- Ghana 2012 **fielded national English questionnaire**, document finalized **19 April 2012**, 25-page PDF: https://www.afrobarometer.org/wp-content/uploads/2022/02/gha_r5_questionnaire.pdf. The actual original includes all three questions under one interview.
+- Afrobarometer **merged R5 codebook** (printed pp. 12, 53, 61 respectively): https://www.afrobarometer.org/wp-content/uploads/2022/02/merged_r5_codebook_2.pdf. The original Ghana questionnaire establishes Ghana administration; the merged book provides native missing/refusal codes. The original questionnaire cannot be extrapolated unchanged to all countries.
+- Existing physical/source evidence: HQ271 M01 return `e115b81a0833a8f8983fe0ece62ef66b31654ff5`, `00_CANDIDATE_SOURCE_ORIGINAL_MEANING_AND_TRUE_TRIPLE.md`, `01_FILE_SHA_DICTIONARY_AND_NATIONAL_SAMPLE_METADATA.json`; independent corrective HQ272 R01 `0c2730d5f7a15bfc6e633d8e4503f3144275bf69`. Physical Q8A/Q97 dictionaries were **not** checked by M01 and remain a new bounded-custodian gate.
+
+## Exact source meanings
+
+| Item | Ghana original instrument | Substantive codes | Native nonsubstantive codes | No semantic overreach |
+|---|---|---|---|---|
+| **Q8A** (A) | Q8A, Ghana questionnaire printed p.4/PDF p3. How often in **the previous year** the respondent **or anyone in their family** went without enough food. Interviewer **reads response options**. | `0 Never`; `1 Just once/twice`; `2 Several times`; `3 Many times`; `4 Always` | `9 Don't know`; `998 Refused`; `-1 Missing`. No native 997 recorded in codebook. | Retrospective family/self reported experience, not respondent-specific observed caloric intake, income, famine or objective institutional pressure. |
+| **Q86A** (Y) | Q86A, printed p.20/PDF p19. Opinion whether Ghanaian citizenship should extend to a person **born in Ghana with one Ghanaian and one non-Ghanaian parent**. Passport and adult voting rights explained in stem. | `0 No`; `1 Yes` | `9 Don't know`; `997 Not asked`; `998 Refused`; `-1 Missing`. | Normative citizenship inclusion stance, not measured citizenship law, respondent nationality, or Q86C foreign-born wife. |
+| **Q97** (B) | Q97, printed p.21/PDF p20. Highest education level **completed**, interviewer **codes answer without reading options**. | `0 No formal schooling`; `1 Informal incl. Koranic`; `2 Some primary`; `3 Primary completed`; `4 Some secondary`; `5 Secondary/high-school completed`; `6 Post-secondary non-university qualification`; `7 Some university`; `8 University completed`; **`9 Postgraduate`** | **`99 Don't know`**, `998 Refused`, `-1 Missing`. No native 997 recorded. | Attained schooling, not an income/class measure or proof of causal determination. |
+
+**Irreducible code trap:** Q8A and Q86A `9` are DK; Q97 `9` is **substantive postgraduate** and only `99` is DK. Q8A `3` means many times; Q97 `5` means secondary completed; Q86A `1` means Yes. Preserve distinct physical codes, typed response states, condition role and all missing/refusal/routing categories. Q86A merged codebook's shortened `Values:` field omits `997`, although same page's `Value Labels` includes it and prior bounded physical R5 dictionary verified `997`. Prior physical label for `998` is `Refused` versus printed `Refused to answer`—reconcile display, not code.
+
+**Routing:** Q86A merged codebook explicitly `Not asked in ALG, EGY, MRC, SUD, TUN`. Ghana is outside that list, and Ghana's original instrument administers Q86A as an ordinary unskipped item. The Ghana Q8A and Q97 originals are also in the common interview and have no printed item-specific Ghana skip. **Country instrument expected exposure is not proof of each record's eligibility/exposure**. New per-item routing facts are mandatory; nonresponse and refusal never imply positive eligibility.
+
+## Selected respondent and source-native carrier
+
+The Ghana questionnaire printed p.2/PDF p1 instructs one randomly selected household **citizen at least 18 years old**, within an alternating gender allocation, selected by numbered cards; if selected person is unavailable the substitution rule concerns households, not ad hoc person substitution. The age-under-18 screen and consent occur **before** questionnaire Q8A. Q8A, Q86A, Q97 appear later with **no new respondent-selection or household-member handoff** between them. The interviewer certifies on its final page that answers belong to the appropriately selected respondent. Therefore an original **single selected person's three genuine responses** is documentary-capable. This is not yet *authenticated C11 coexposure*.
+
+For a valid source-backed binding, use one physical merged R5 source **SHA256 `c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651`** (51,587 physical rows, 348 fields: **file header only, never an eligible denominator**), governing codebook SHA256 `7e02c649c8ae69c61f88c116fdad92353b7f06cba9e160d9ae4be18e72276735` from prior independent M01 custodian. The SAV physically has `COUNTRY`, `COUNTRY_ALPHA`, `RESPNO`, **not** a `COUNTRY_ALPHA3` source column; `GHA` needs an authenticated replayable derived country crosswalk. Prove unique `(COUNTRY, RESPNO)`, a shared `RowRespondentBinding` / `RespondentIdentity` and three distinct `RespondentEvent@1.0.0` with **three independently authenticated** `RoutingEligibilityFact@1.0.0` facts.
+
+**Ghana is NOT in the existing 19,210-person GT2 cohort.** The frozen Q86A/Q86B `FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1` comprises BFO, BOT, CVE, KEN, LES, MAU, MLW, MOZ, NAM, SAF, UGA. It does not license Ghana, Q8A, Q97, any triple complete-case set, weighted national extrapolation or a pooled eleven-country population. A Ghana source-universe/release & a **new exact complete-case common risk member set** must be formally qualified.
+
+## Design and inference ceiling
+
+Ghana's original instrument contains enumerated area/PSU identity at **questionnaire** level, household walking-pattern and selected adult gender/citizenship instructions. External Afrobarometer Ghana R5 description indicates a national designed interview sample, but the archived merged SAV's M01 bounded name census has no identified PSU/stratum/supplement-selector column; it has `withinwt` and `combinwt` **names** without design/weight applicability authority. No actual record exposure, inclusion probability, release-specific Ghana national sample identity, original language translation, strata/EA variance, unit nonresponse, weighted estimand or uncertainty method is established here. Minimal next product is strictly **RAW UNWEIGHTED descriptive conditional distribution of authenticated Ghana source respondents**, not national prevalence. A later population claim needs exact original sampling frame, release version and national-vs-supplement status, country weight basis, PSU/strata/EA design information, eligible universe and variance grant.
+
+## Rejection tests
+
+Reject if Ghana crosswalk disagrees with exact source country, a duplicate `(COUNTRY,RESPNO)` exists, Q8A/Q97 physical dictionary contradicts original codebook, any person/household is swapped mid-interview, a skipped or missing answer is marked exposed/valid without independent routing, Q86A country exclusion is ignored, Q97=9 is discarded as DK, Q97=99 is treated as schooling, Q8A=9 is food frequency, Q86A=997 is `No`, or existing 19,210 GT2 is copied as the Ghana common denominator.
+
+**Qualified at country-original instrument grain; HOLD physical Q8A/Q97 and source-bound respondent/risk/permission grain.**
