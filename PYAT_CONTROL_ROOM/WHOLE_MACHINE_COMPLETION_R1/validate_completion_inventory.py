@@ -25,6 +25,7 @@ def main():
     estate = load("ESTATE_35X_REQUIREMENTS_MATRIX.json")
     tasks = load("TASK_LEDGER_101_MACHINE.json")
     wave = load("WAVE35_COMMON_EDGE_ACTION_QUEUE.json")
+    relation = load("GLOBAL_F6_F7_F8_RELATION_SCOPE_MATRIX.json")
     ids = [f"SRC{i:02d}" for i in range(1, 36)]
     original = estate["sources"]
     found = [r["id"] for r in original]
@@ -74,6 +75,17 @@ def main():
         if task["reconciliation_state"] in ("CURRENT_ACCEPTED_AT_EXACT_SCOPE", "ACTUAL_CONSUMER_POSITIVE_PROVED"):
             fail(bool(task["current_accepted_positive_receipt"]),
                  f"{task['id']}: premature work closure without adopted positive receipt")
+    fail(relation["family_count"] == len(relation["families"]) == 9, "nine governed families")
+    assigned = [v for f in relation["families"] for v in f["source_ids"]]
+    fail(sorted(assigned) == sorted(ids), "family partition missing/duplicate source IDs")
+    fail(len(relation["within_family_temporal_pair_candidates"]) == relation["temporal_candidate_count"] == 63,
+         "temporal candidate relation count")
+    fail(len(relation["cross_family_field_pair_candidates"]) == relation["cross_family_candidate_count"] == 36,
+         "cross-family pair relation count")
+    fail(relation["higher_order_cover"]["all_multi_family_syntactic_candidate_sets"] == 502,
+         "k-way cross-family candidate grammar count")
+    fail(sum(x["count"] for x in relation["higher_order_cover"]["within_family_all_syntactic_multi_wave_subsets_arity_3_plus"]) == 249,
+         "3+ wave candidate grammar count")
     fail([x["id"] for x in wave["sources"]] == ids, "35-wave edge queue mismatch")
     for src in wave["sources"]:
         fail(src["attributed_edge_classes"], f"{src['id']}: no historic edge-class accounting")
@@ -98,6 +110,8 @@ def main():
         "explicit_wave_scope_cells": len(found) * (len(native) + len(ee) + len(fs)),
         "typed_global_task_classes": len(work_ids),
         "wave_edge_queue_rows": len(wave["sources"]),
+        "candidate_temporal_pairs_not_preapproved": relation["temporal_candidate_count"],
+        "candidate_cross_family_pairs_not_preapproved": relation["cross_family_candidate_count"],
         "empirical_source_rows_read": 0,
         "pipeline_executed": False,
         "F1_F8_acceptance_certified": False,
