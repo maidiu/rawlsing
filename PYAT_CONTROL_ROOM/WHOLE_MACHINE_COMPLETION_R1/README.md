@@ -1,5 +1,11 @@
 # RAWLSING / PYAT — all-35 automated-machine completion control
 
+## HQ277 second-pass verdict — read before calling this inventory complete
+
+The original HQ276 matrix was a **valid no-drop scope scaffold, not a completed line-by-line factual work adjudication**. HQ277 independently identified and banked the nontrivial missing proof: [automatic questionnaire-item and operation-frontier construction](AUTOMATED_WORKLOAD_CONSTRUCTION_CRITICAL_GATE.md). Existing Route B takes prepared I03 requests; I05 compiles an authority-declared frontier; batch executes a prepared immutable manifest. Current code must be inspected for the accepted general *workload assembler* before anyone asserts missing implementation. The full scientifically supportable input/item/operation universe has NOT yet been executed and inventoried.
+
+The machine-readable [101 work-class ledger](TASK_LEDGER_101_MACHINE.json), [35-wave source-edge action queue](WAVE35_COMMON_EDGE_ACTION_QUEUE.json), [F6/F7/F8 global relation/hyperedge graph](GLOBAL_F6_F7_F8_RELATION_SCOPE_MATRIX.json), and [20 directly verified legacy/current code anchors](VERIFIED_AUTOMATION_CODE_ANCHORS.md) are mandatory **companions** to the 1,890 source/EE/F scope-cell scaffold. Those numbers describe current accounting structure, not accepted work, missing modules or an exhaustive count of original-question jobs. All 35 remain in scope. [Static inventory validator](validate_completion_inventory.py) is a source-free consistency tool, not an empirical acceptance oracle.
+
 **Status:** HQ276 user-directed constitutional/cognitive correction and non-authorizing completion inventory. This packet is **mandatory** for incoming Pyat HQ before project/program synthesis. It does not invent source semantics or authorize a source run.
 
 ## Read in this order
