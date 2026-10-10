@@ -1,3 +1,9 @@
+## HQ277 immediate second-pass correction
+
+The [hostile matrix audit](WHOLE_MACHINE_COMPLETION_R1/SECOND_PASS_HOSTILE_AUDIT_R1.md) confirms that a 35-wave requirements scaffold is not source-item/operation readiness. [WG0–WG4 workload-construction gate](WHOLE_MACHINE_COMPLETION_R1/AUTOMATED_WORKLOAD_CONSTRUCTION_CRITICAL_GATE.md) now requires tracing how existing Route B/I03/I05/batch owners receive a complete, source-competent, authorized original-item processing frontier. The [101-task typed ledger](WHOLE_MACHINE_COMPLETION_R1/TASK_LEDGER_101_MACHINE.json), [35-wave specific edge queue](WHOLE_MACHINE_COMPLETION_R1/WAVE35_COMMON_EDGE_ACTION_QUEUE.json), and [F6/F7/F8 relation graph](WHOLE_MACHINE_COMPLETION_R1/GLOBAL_F6_F7_F8_RELATION_SCOPE_MATRIX.json) are mandatory companions. Unknown does not mean missing code. Documentation does not confer source/use authority.
+
+---
+
 # FIRST-PAGE MANDATORY VISION GATE — HQ276 FULL AUTOMATED MACHINE
 
 **BEFORE ANY PROJECT-LEVEL PYAT ADJUDICATION, COMMISSION OR CLAIM THAT A PIPELINE FUNCTION IS MISSING**, read the [WHOLE-MACHINE AUTOMATION DOCTRINE](00_WHOLE_MACHINE_AUTOMATION_DOCTRINE_R1.md), then the [full CLOSED35 completion room](WHOLE_MACHINE_COMPLETION_R1/README.md), [global current-function work register](WHOLE_MACHINE_COMPLETION_R1/GLOBAL_WORK_REGISTER.md), [35-wave × 54-axis source/EE/F1–F8 matrix](WHOLE_MACHINE_COMPLETION_R1/ESTATE_35X_REQUIREMENTS_MATRIX.json), and [mandatory incoming-HQ grok acceptance test](WHOLE_MACHINE_COMPLETION_R1/ACCEPTANCE_AND_GROK_TEST.md).
