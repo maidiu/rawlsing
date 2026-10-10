@@ -48,3 +48,16 @@ F6 (multi-field) is an inter-family relation, F7 temporal is an inter-wave relat
 The 1,890 cells + global work classes are an **open acceptance specification**, not a report that 1,890 defects remain. Every later HQ must attach accepted refs to cells and mark only truthful statuses; it must not reduce the expected-output scope to make pass rates look better or count missing authority as an intrinsic absence.
 
 **Terminal:** GENERAL_AUTOMATED_SOURCE_TO_SOCIOLOGICAL_ARTIFACT_MACHINE__EVERY_35_WAVE_MANDATORY__KNOWN_PROGRAM_BANKED__CURRENT_IMPLEMENTATION_AND_POSITIVE_PROOFS_NOT_ERASED__FULL_ACCEPTANCE_PENDING.
+
+## HQ277 hostile-audit operational reinforcement — read these BEFORE claiming matrix completeness
+
+The HQ276 1,890-cell table is a *requirements scaffold*, not a populated item/operation execution plan or a finding of 1,890 defects. HQ277 added three indispensable companion inventories:
+
+- [TASK_LEDGER_101_MACHINE.json](TASK_LEDGER_101_MACHINE.json) — every global work class has candidate existing-owner paths, exact N dependency and EE/F scope, evidence/actual consumer slots; **owner candidates are not an accepted public API proof**. The first action is prior-current evidence reconciliation, NOT implementation from scratch.
+- [WAVE35_COMMON_EDGE_ACTION_QUEUE.json](WAVE35_COMMON_EDGE_ACTION_QUEUE.json) — all 35 source waves, historical named physical/source authority classes and current independent claim examples crosswalked to reusable generic producer responsibilities. **No original item-level inventory has been certified by HQ277.**
+- [GLOBAL_F6_F7_F8_RELATION_SCOPE_MATRIX.json](GLOBAL_F6_F7_F8_RELATION_SCOPE_MATRIX.json) — all nine source families, 63 mathematically possible within-family temporal wave pairs, 36 mathematically possible inter-family field pairs, plus N9/N10E/N10W completion slots. These candidates are *not* 63 compulsory comparable trends or 36 compulsory positive structural relations.
+- [validate_completion_inventory.py](validate_completion_inventory.py) — pure stdlib inventory consistency checker, source-free. A structural PASS proves NO empirical service or source permission.
+
+**Outstanding irremovable uncertainty:** Neither the historical source dossiers nor HQ276/HQ277 documentation enumerates all original item/response/eligibility and authority-declared candidate operations for each wave. The finished machine must generate/reconcile that expanded finite governed workload, then actually compute source-native products and transport them to intended consumers. Do not call the detailed all-source work estimate, full admitted authority or empirical gate closed before that authoritative enumerated ledger and run exist.
+
+**Current accepted work is not erased:** main legacy automated generators and present pre-main Route B/C11/I03/I05/batch/analytical/learned/FF owners are genuinely in code. The task ledger does not label them missing. HQ275 E01 is already commissioned to adjudicate the current all35 source-by-F1F8 matrix; fold its result into this scaffolding without duplicate archaeology, not as a new unrelated source selection mission.
