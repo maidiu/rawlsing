@@ -1,0 +1,140 @@
+{
+  "schema": "PYAT_HQ280_B1_TEST_AND_OWNER_TRACE_R1",
+  "status": "CANDIDATE_STAGED_UNEXECUTED_NO_SELF_ADOPTION",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-pyat-hq280-b1-nodrop-fixture-integration-r1",
+  "sealed_base": "39bd807dd511e3fe3c2adfae9438a4ae6efd4ffe",
+  "control": "6a8c91d99dca1ae2fd3559ba3c11ee26649e3cd9",
+  "semantic_premain": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "test": {
+    "path": "rawlsing_next/tests/test_pre553_original_workload_nodrop_integration.py",
+    "blob_sha": "a5d3879c294f227328bc1819fbc63c8016951a30",
+    "execution_state": "UNEXECUTED",
+    "expected_tests": [
+      "test_p01_frozen_original_ab_all_operations_batch_and_actual_c1_consumer",
+      "test_n01_all_submitted_a_only_jobs_complete_but_frozen_original_b_fails",
+      "test_n02_three_expected_batch_jobs_one_omitted_locally_complete_globally_fails",
+      "test_n03_outcome_and_physical_order_do_not_select_the_original_frontier"
+    ]
+  },
+  "frozen_oracle": {
+    "instrument": "B1_SYNTHETIC_RELEASE_1",
+    "item_A": [
+      "0",
+      "1",
+      "2"
+    ],
+    "item_B": [
+      "0",
+      "1"
+    ],
+    "respondents": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R5",
+      "R6",
+      "R7",
+      "R8"
+    ],
+    "risk": "ALL_EIGHT_ELIGIBLE",
+    "measure": "RAW",
+    "work": [
+      "W01_A_MARGINAL",
+      "W02_B_MARGINAL",
+      "W03_B_GIVEN_A1",
+      "W04_A_GIVEN_B1",
+      "W05_B_GIVEN_A2",
+      "W06_B_GIVEN_A1_A2_EXACT_I05"
+    ],
+    "preoutcome": true
+  },
+  "owners": [
+    {
+      "stage": "C11",
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "function": "project_c11_candidate_from_physical_cells",
+      "blob_sha": "8a761119e4a8d68eb291fc4edfadb52e027f8284"
+    },
+    {
+      "stage": "Catalog",
+      "path": "rawlsing_next/pre553_carrier_execution.py",
+      "function": "RuntimeObjectCatalog",
+      "blob_sha": "e7cda773e6a2426bfa12b22790fd8e005fe75153"
+    },
+    {
+      "stage": "RouteB",
+      "path": "rawlsing_next/pre553_route_b_production.py",
+      "function": "execute_route_b_production",
+      "blob_sha": "2385cd327dced3c5b887b59085aa0d21b04d78c3"
+    },
+    {
+      "stage": "I03",
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "function": "execute_empirical_query",
+      "blob_sha": "03facecf70890bfd13b80418620d274cbcd69d02"
+    },
+    {
+      "stage": "I05",
+      "path": "rawlsing_next/pre553_discovery_exact.py",
+      "function": "execute_exact_bounded_discovery",
+      "blob_sha": "905f24d114419dbdd93879ad2bee5b59dd2f23af"
+    },
+    {
+      "stage": "batch",
+      "path": "rawlsing_next/pre553_batch_runner.py",
+      "function": "BatchExecutionRunner",
+      "blob_sha": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829"
+    },
+    {
+      "stage": "C1",
+      "path": "rawlsing_next/pre553_analytical_composition.py",
+      "function": "compose_positioned_subject_possibility",
+      "blob_sha": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b"
+    }
+  ],
+  "tested_here_execution": false,
+  "adopted": false,
+  "authority_added": false,
+  "production_files_changed": false,
+  "source_microdata_executed": false,
+  "expected_positive": {
+    "A": {
+      "0": 3,
+      "1": 3,
+      "2": 2
+    },
+    "B": {
+      "0": 4,
+      "1": 4
+    },
+    "B_1_given_A_1": "3/3",
+    "A_1_given_B_1": "3/4",
+    "B_1_given_A_2": "0/2",
+    "I05_candidates": 2
+  },
+  "expected_negative": {
+    "N01": {
+      "local": "MAY_COMPLETE",
+      "original_omission": "B",
+      "work_omissions": [
+        "W02",
+        "W03",
+        "W04",
+        "W05",
+        "W06"
+      ],
+      "global": "FAIL"
+    },
+    "N02": {
+      "local": "2_OF_2_COMPLETE",
+      "expected": "3_JOBS",
+      "missing": "J2",
+      "global": "FAIL"
+    }
+  },
+  "execution_environment": "REMOTE_GITHUB_API_ONLY__NO_PYTEST_RUNNER",
+  "execution_command": "python -m pytest -q rawlsing_next/tests/test_pre553_original_workload_nodrop_integration.py",
+  "return_terminal": "HQ280_B1_NODROP_TEST_CANDIDATE_RETURNED_FOR_HQ_REVIEW__NO_SELF_ADOPTION"
+}
