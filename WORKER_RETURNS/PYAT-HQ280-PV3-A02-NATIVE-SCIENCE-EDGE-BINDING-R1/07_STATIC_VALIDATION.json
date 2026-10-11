@@ -1,0 +1,116 @@
+{
+  "schema": "PYAT_HQ280_PV3_A02_STATIC_VALIDATION@1.0.0",
+  "method": "FETCH_ACTUAL_REMOTE_JSON_AT_CURRENT_ASSIGNED_BRANCH_AND_PARSE_ASSERTIONS; no raw survey or Python runtime",
+  "checked_files": [
+    "01_REUSABLE_NATIVE_EDGE_CONTRACT_SCHEMA.json",
+    "02_TWO_HETEROGENEOUS_GROUNDED_BINDINGS.json",
+    "03_ALL35_SOURCE_CLASS_HOLDS.json",
+    "05_HOSTILE_COURT.json",
+    "06_EVIDENCE_MANIFEST.json"
+  ],
+  "checked_git_blobs": [
+    {
+      "path": "01_REUSABLE_NATIVE_EDGE_CONTRACT_SCHEMA.json",
+      "blob": "7f37f020b8e5cb6cb649f0317bb94f576dffd8ff"
+    },
+    {
+      "path": "02_TWO_HETEROGENEOUS_GROUNDED_BINDINGS.json",
+      "blob": "974462579d0ba95e93563776ebc72f3a5699e3f4"
+    },
+    {
+      "path": "03_ALL35_SOURCE_CLASS_HOLDS.json",
+      "blob": "3a8cf1d791c22961ba39325a024b18d9a8edaf18"
+    },
+    {
+      "path": "05_HOSTILE_COURT.json",
+      "blob": "f11dec050ff3d251a95469c44b1a6b37f1dc734f"
+    },
+    {
+      "path": "06_EVIDENCE_MANIFEST.json",
+      "blob": "8bd8d5932fdb192b29741a16ad0ba6c7e589c971"
+    }
+  ],
+  "tests": [
+    {
+      "name": "required_json_all_parsed",
+      "pass": true
+    },
+    {
+      "name": "exact_source_count_35",
+      "pass": true
+    },
+    {
+      "name": "all_unique_SRC_ids",
+      "pass": true
+    },
+    {
+      "name": "preserve_SRC01_through_SRC35",
+      "pass": true
+    },
+    {
+      "name": "no_new_authority_issued",
+      "pass": true
+    },
+    {
+      "name": "no_forged_intrinsic_na",
+      "pass": true
+    },
+    {
+      "name": "two_heterogeneous_families",
+      "pass": true
+    },
+    {
+      "name": "ghana_Q97_code9_postgraduate",
+      "pass": true
+    },
+    {
+      "name": "ghana_Q97_code99_DK",
+      "pass": true
+    },
+    {
+      "name": "ghana_not_in_GT2",
+      "pass": true
+    },
+    {
+      "name": "ghana_conditionals_not_measured",
+      "pass": true
+    },
+    {
+      "name": "lits_third_event_held",
+      "pass": true
+    },
+    {
+      "name": "liTS_distinct_joint_vs_marginal_denominators",
+      "pass": true
+    },
+    {
+      "name": "hostile_runtime_not_claimed",
+      "pass": true
+    },
+    {
+      "name": "all35_dossier_refs",
+      "pass": true
+    },
+    {
+      "name": "edge_classes_12",
+      "pass": true
+    },
+    {
+      "name": "metadata_ref_sha_pinned",
+      "pass": true
+    }
+  ],
+  "pass_count": 17,
+  "total": 17,
+  "failures": [],
+  "verdict": "PASS_STATIC_JSON_DOCUMENTARY_ONLY",
+  "unperformed": [
+    "Original LR-A primary byte inspection",
+    "Original survey SAV/DTA",
+    "Full administered item operation acceptance",
+    "Independent actual pytest runtime hostile",
+    "New source/operation permission",
+    "Weighted variance/country population estimand",
+    "Operative G0b/model use"
+  ]
+}
