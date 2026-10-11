@@ -1,0 +1,521 @@
+{
+  "schema": "PYAT_HQ280_B2R_ACTUAL_EXECUTION@1",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/reviewer-pyat-hq280-b2-pinned-sourcefree-runtime-r1",
+  "sealed_startup_tip": "9b30f37a8c50a1bd043fc8834f7a9caee137587c",
+  "corrected_candidate_parent": "a159bff63b779b994d7b1e83f8a2d6a303b81ea2",
+  "runner": {
+    "executable": "/private/tmp/rawlsing_hq280_b2r_python_r1/bin/python",
+    "version": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "platform": "macOS-13.2.1-x86_64-i386-64bit",
+    "pytest_version": "9.0.2",
+    "pytest_module": "/private/tmp/rawlsing_hq280_b2r_python_r1/lib/python3.11/site-packages/pytest/__init__.py"
+  },
+  "command": [
+    "python",
+    "-m",
+    "pytest",
+    "-q",
+    "-vv",
+    "rawlsing_next/tests/test_pre553_ee14_selected_lifecycle_source_free_integration.py"
+  ],
+  "cwd": "/private/tmp/rawlsing_hq280_b2r_runtime_r1",
+  "started_utc": "2026-10-11T01:32:26.891228+00:00",
+  "ended_utc": "2026-10-11T01:32:29.318163+00:00",
+  "duration_seconds": 2.4263686269987375,
+  "exit_code": 0,
+  "stdout": "============================= test session starts ==============================\nplatform darwin -- Python 3.11.3, pytest-9.0.2, pluggy-1.6.0 -- /private/tmp/rawlsing_hq280_b2r_python_r1/bin/python\ncachedir: /tmp/rawlsing_hq280_b2r_evidence_r1/pytest_cache\nrootdir: /private/tmp/rawlsing_hq280_b2r_runtime_r1\ncollecting ... collected 8 items\n\nrawlsing_next/tests/test_pre553_ee14_selected_lifecycle_source_free_integration.py::test_p01_current_selected_q1_and_progressive_q2_exact_owners PASSED [ 12%]\nrawlsing_next/tests/test_pre553_ee14_selected_lifecycle_source_free_integration.py::test_p02_exact_historical_event_and_checkpoint_do_not_relabel_current PASSED [ 25%]\nrawlsing_next/tests/test_pre553_ee14_selected_lifecycle_source_free_integration.py::test_n01_superseded_or_unselected_product_never_current PASSED [ 37%]\nrawlsing_next/tests/test_pre553_ee14_selected_lifecycle_source_free_integration.py::test_n02_owner_invalidation_blocks_stale_and_preserves_sibling PASSED [ 50%]\nrawlsing_next/tests/test_pre553_ee14_selected_lifecycle_source_free_integration.py::test_n03_substituted_c1_provenance_cannot_reach_authenticated_f8 PASSED [ 62%]\nrawlsing_next/tests/test_pre553_ee14_selected_lifecycle_source_free_integration.py::test_n04_no_operative_g0b_even_after_successful_source_free_join PASSED [ 75%]\nrawlsing_next/tests/test_pre553_ee14_selected_lifecycle_source_free_integration.py::test_i4_m1_only_adapter_refuses_test_registered_c1_product PASSED [ 87%]\nrawlsing_next/tests/test_pre553_ee14_selected_lifecycle_source_free_integration.py::test_m2_missing_exact_c1_dependency_refuses_instead_of_release PASSED [100%]\n\n--- generated xml file: /tmp/rawlsing_hq280_b2r_evidence_r1/pytest_first.xml ---\n============================== 8 passed in 1.99s ===============================\n",
+  "stderr": "",
+  "environment_controls": {
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONNOUSERSITE": "1",
+    "PYTHONPATH": "/tmp/rawlsing_hq280_b2r_runtime_r1",
+    "PYTEST_ADDOPTS": "-o cache_dir=/tmp/rawlsing_hq280_b2r_evidence_r1/pytest_cache --junitxml=/tmp/rawlsing_hq280_b2r_evidence_r1/pytest_first.xml"
+  },
+  "startup_clean": true,
+  "pinned_preimages": {
+    "rawlsing_next/tests/test_pre553_ee14_selected_lifecycle_source_free_integration.py": {
+      "git_blob": "255013532848b3cb64991d626a5fe7e40f9eb57d",
+      "sha256": "058db3a862fb1a7df0b96bca75fbf2defd1c1fd5ebbe103d2b1c9765a799fcf7",
+      "matches_corrected_candidate_parent": true
+    },
+    ".rabochii/return_manifest.json": {
+      "git_blob": "f1f123b1494c38f5d031378bfbdd0d031f697a36",
+      "sha256": "e06b38c648a7a4d30f44fed63e7e48c8d44e4df7f238d6abf010590718a2518e",
+      "matches_corrected_candidate_parent": true
+    },
+    "rawlsing_next/pre553_learned_product_release.py": {
+      "git_blob": "f76c390665f06ef126968ccf1a6b2d816f43ae92",
+      "sha256": "9683bfd6cbc93763d52253dea019c4d031c47d55c8ac9854901f10df1c04b8e6",
+      "matches_corrected_candidate_parent": true
+    },
+    "rawlsing_next/pre553_learned_product_lifecycle.py": {
+      "git_blob": "a11c9eb73abab9be118ef4f0b6e325e676059f27",
+      "sha256": "706bd074b1f1318fc503cbea080c2761b79b73f6f1088addec2e6fdf79c29833",
+      "matches_corrected_candidate_parent": true
+    },
+    "rawlsing_next/pre553_learned_world_composition.py": {
+      "git_blob": "4a8e27a226a9c06606f5ba493d2cc7356d491a7b",
+      "sha256": "bde80b1fa2936c3bd9d18fa73ece913da1561cfd707692cc46e83004f42c4fc2",
+      "matches_corrected_candidate_parent": true
+    },
+    "rawlsing_next/pre553_ee14_c1_owner_authenticated_ingress.py": {
+      "git_blob": "74e6ee826e8b6a2adebe84969fedcea5716d5b63",
+      "sha256": "a9dcb06e6c56295f192d5110165b874c00d33d2e8b3546a9493b056246137559",
+      "matches_corrected_candidate_parent": true
+    },
+    "rawlsing_next/pre553_service_source_applicability.py": {
+      "git_blob": "3e40caca29e8c96ee1f412f919cfc7dba63f96c4",
+      "sha256": "de5e3dd3438b302f29381719749484d990f6b2777d51d81cd4e50365cf8e59f9",
+      "matches_corrected_candidate_parent": true
+    },
+    "rawlsing_next/pre553_service_f8_source_scope_binding.py": {
+      "git_blob": "848d2d0eedb04b792747e9d6aaa49bb39d108a2c",
+      "sha256": "5221d8c2257ab1e8ec45289a30c57ba9ed4956b8609a890e80343718a6e9c66b",
+      "matches_corrected_candidate_parent": true
+    },
+    "rawlsing_next/pre553_analytical_composition.py": {
+      "git_blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "sha256": "d83bf9fba14ab7a3c5bb2a4fad30e4746345f29f4d10c16fbc1d2b5d0030bcfe",
+      "matches_corrected_candidate_parent": true
+    },
+    "rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py": {
+      "git_blob": "64b6c747f76a1909b676566e6b529ed10456d33b",
+      "sha256": "83d99777c1bbd9eb045444dfe7d713fe1c026c4431f5c3dde97ab32c4e70e3da",
+      "matches_corrected_candidate_parent": true
+    },
+    "rawlsing_next/tests/test_pre553_ee14_selected_current_asof_hq260.py": {
+      "git_blob": "a1ec3dba504ff866b681d6bbe942d12a9e238257",
+      "sha256": "122d8b6af2ecd431d8cdbc3db6971f5410933cde937b98203c1d53105f9618dc",
+      "matches_corrected_candidate_parent": true
+    },
+    "rawlsing_next/tests/c1_at08_at13_fixture.py": {
+      "git_blob": "0393cc8c17a313b7944b2a5287d0406d6cbe3849",
+      "sha256": "ce88e393d107eada13e37bdceb8f956789452281a54563cf5e5aee3304337332",
+      "matches_corrected_candidate_parent": true
+    }
+  },
+  "post_run_status": "",
+  "test_results": [
+    {
+      "name": "test_p01_current_selected_q1_and_progressive_q2_exact_owners",
+      "classname": "rawlsing_next.tests.test_pre553_ee14_selected_lifecycle_source_free_integration",
+      "seconds": 0.141,
+      "outcome": "PASSED",
+      "diagnostics": []
+    },
+    {
+      "name": "test_p02_exact_historical_event_and_checkpoint_do_not_relabel_current",
+      "classname": "rawlsing_next.tests.test_pre553_ee14_selected_lifecycle_source_free_integration",
+      "seconds": 0.216,
+      "outcome": "PASSED",
+      "diagnostics": []
+    },
+    {
+      "name": "test_n01_superseded_or_unselected_product_never_current",
+      "classname": "rawlsing_next.tests.test_pre553_ee14_selected_lifecycle_source_free_integration",
+      "seconds": 0.102,
+      "outcome": "PASSED",
+      "diagnostics": []
+    },
+    {
+      "name": "test_n02_owner_invalidation_blocks_stale_and_preserves_sibling",
+      "classname": "rawlsing_next.tests.test_pre553_ee14_selected_lifecycle_source_free_integration",
+      "seconds": 0.109,
+      "outcome": "PASSED",
+      "diagnostics": []
+    },
+    {
+      "name": "test_n03_substituted_c1_provenance_cannot_reach_authenticated_f8",
+      "classname": "rawlsing_next.tests.test_pre553_ee14_selected_lifecycle_source_free_integration",
+      "seconds": 0.116,
+      "outcome": "PASSED",
+      "diagnostics": []
+    },
+    {
+      "name": "test_n04_no_operative_g0b_even_after_successful_source_free_join",
+      "classname": "rawlsing_next.tests.test_pre553_ee14_selected_lifecycle_source_free_integration",
+      "seconds": 0.104,
+      "outcome": "PASSED",
+      "diagnostics": []
+    },
+    {
+      "name": "test_i4_m1_only_adapter_refuses_test_registered_c1_product",
+      "classname": "rawlsing_next.tests.test_pre553_ee14_selected_lifecycle_source_free_integration",
+      "seconds": 0.079,
+      "outcome": "PASSED",
+      "diagnostics": []
+    },
+    {
+      "name": "test_m2_missing_exact_c1_dependency_refuses_instead_of_release",
+      "classname": "rawlsing_next.tests.test_pre553_ee14_selected_lifecycle_source_free_integration",
+      "seconds": 0.059,
+      "outcome": "PASSED",
+      "diagnostics": []
+    }
+  ],
+  "summary": {
+    "collected": 8,
+    "passed": 8,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "pytest_reported_seconds": 1.99
+  },
+  "junit_xml": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"0\" skipped=\"0\" tests=\"8\" time=\"1.987\" timestamp=\"2026-10-10T21:32:27.210553-04:00\" hostname=\"MacBook-Pro.lan\"><testcase classname=\"rawlsing_next.tests.test_pre553_ee14_selected_lifecycle_source_free_integration\" name=\"test_p01_current_selected_q1_and_progressive_q2_exact_owners\" time=\"0.141\" /><testcase classname=\"rawlsing_next.tests.test_pre553_ee14_selected_lifecycle_source_free_integration\" name=\"test_p02_exact_historical_event_and_checkpoint_do_not_relabel_current\" time=\"0.216\" /><testcase classname=\"rawlsing_next.tests.test_pre553_ee14_selected_lifecycle_source_free_integration\" name=\"test_n01_superseded_or_unselected_product_never_current\" time=\"0.102\" /><testcase classname=\"rawlsing_next.tests.test_pre553_ee14_selected_lifecycle_source_free_integration\" name=\"test_n02_owner_invalidation_blocks_stale_and_preserves_sibling\" time=\"0.109\" /><testcase classname=\"rawlsing_next.tests.test_pre553_ee14_selected_lifecycle_source_free_integration\" name=\"test_n03_substituted_c1_provenance_cannot_reach_authenticated_f8\" time=\"0.116\" /><testcase classname=\"rawlsing_next.tests.test_pre553_ee14_selected_lifecycle_source_free_integration\" name=\"test_n04_no_operative_g0b_even_after_successful_source_free_join\" time=\"0.104\" /><testcase classname=\"rawlsing_next.tests.test_pre553_ee14_selected_lifecycle_source_free_integration\" name=\"test_i4_m1_only_adapter_refuses_test_registered_c1_product\" time=\"0.079\" /><testcase classname=\"rawlsing_next.tests.test_pre553_ee14_selected_lifecycle_source_free_integration\" name=\"test_m2_missing_exact_c1_dependency_refuses_instead_of_release\" time=\"0.059\" /></testsuite></testsuites>",
+  "first_failure": null,
+  "test_repairs": [],
+  "reruns": [],
+  "supplemental_owner_observations": {
+    "kind": "BOUNDED_SOURCEFREE_INDEPENDENT_OBSERVATION_NOT_ADOPTION",
+    "cells": {
+      "q1": {
+        "trace": [
+          "C1",
+          "SA",
+          "G2",
+          "F8",
+          "G2",
+          "G2"
+        ],
+        "numerators": {
+          "0": 1,
+          "1": 1
+        },
+        "denominator": 2,
+        "origin_receipt": {
+          "contract": "HQ266_G01_OWNER_ONLY_C1_G2_F8_SELECTED_INGRESS@1",
+          "cell": "q1",
+          "c1_identity_hash": "e7a358b587bf6c0d6137c5b97a09b5dffcd9e717bd9c4206ca5949ef20602ea5",
+          "c1_evidence_ref_key": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:02601f9c57cc2f99ebcdcd86a391fddfc64ffd3b39707c8a84d5f800c309745e",
+          "c1_evidence_projection_hash": "b207a2ffaa27b6e0054cd932566b1ed653e774acf451b5352c1fe905a9c211b6",
+          "c1_evidence_authority_keys": [
+            "I03-AUTH-c1-at09-xor",
+            "I03-AUTH-routing-c1-at09-xor",
+            "I03-AUTH-source-c1-at09-xor",
+            "urn:test:c1-02:pairing-authority:hq253-qA"
+          ],
+          "c1_evidence_provenance_keys": [
+            "urn:test:c1-02:hq253-qA:witness",
+            "urn:test:c1-02:leaf-0:sha256:b1851428d304f12bd1ae36ec8a727c788a598299ced563829ca43a91217c3d35",
+            "urn:test:c1-02:pair-0:sha256:74ae0cb85d8e36e0ae63d804fd751785493fcf44810889ef0f7834860be2fd7e",
+            "urn:test:c1-02:subject-fact:A:1",
+            "urn:rawlsing:pre553:EmpiricalFact:sha256:71480605a55e1b4c66e56cf7f45efc551d59b271493aa9d0dc640f318a77905e",
+            "urn:rawlsing:pre553:EmpiricalPredicate:sha256:9bdff5e3d9b93b43480b14397dda1e79de89876a5cfd39a0c4807c47440d4289",
+            "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:07554b6d6ca68df0d394d221f2803abc2df8d88fc56b374e1e95cc2fada6493a",
+            "urn:rawlsing:pre553:i03-query-replay:sha256:0fa9a733e569555cb915983153b752870c1892ef3072800182d36416e679d8ee"
+          ],
+          "c1_producer_predicate_key": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:9bdff5e3d9b93b43480b14397dda1e79de89876a5cfd39a0c4807c47440d4289",
+          "c1_producer_query_key": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:07554b6d6ca68df0d394d221f2803abc2df8d88fc56b374e1e95cc2fada6493a",
+          "c1_producer_fact_key": "urn:rawlsing:pre553:EmpiricalFact:sha256:71480605a55e1b4c66e56cf7f45efc551d59b271493aa9d0dc640f318a77905e",
+          "c1_condition_witness_key": "urn:test:c1-02:hq253-qA:witness",
+          "c1_risk_set_key": "urn:test:i03:risk_set:c1-at09-xor-R",
+          "c1_denominator_member_keys": [
+            "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:8e1321510586bb925eda2710400a3607fb7dcfde81a306dd3f61abcf020c8f75",
+            "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:fce2ecf22bac90bf17efb420f4cf45ad4b1eaaaa5bb76a3c545bc7cd9cdaa52d"
+          ],
+          "c1_raw_denominator_support": 2,
+          "source_universe_key": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c",
+          "release_key": "REL-c1-at09-xor",
+          "g2_service_request_set_identity": "0f12a78ef5b7bae3cd71fbba58bd9c1708bfca65252d036ba9cf6ba6e04eae76",
+          "g2_receipt_outcome": "ADMISSIBLE_SOURCE_INDEXED_SET",
+          "g2_receipt_hash": "ee785e28e561d4e4a3c0149948259748169e7cf8766248cd078d6cd281daee35",
+          "g2_binding_request_id": "hq266-breq-1",
+          "g2_binding_hash": "82ba1225df678c959135da32f1521848cca17b86e02a77e55b48e7700e552742",
+          "g2_permission_keys": [
+            "urn:hq266:target_use_permission:hq266-fixture-perm-only"
+          ],
+          "g2_query_authority_id": "I03-AUTH-c1-at09-xor",
+          "g2_query_authority_content_hash": "7fbd015d4d45c533fdb2b9e48082544f284167a7dff5713e897a112b3bc94257",
+          "g2_replay_protocol_key": "urn:test:i03:replay_protocol:c1-at09-xor",
+          "f8_result_hash": "5f0fde451026c077b7fbb35e6d2f64a1c221962b9bedc422ad5dd4a46a044676",
+          "f8_result_state": "EXACT_SUPPORTED",
+          "f8_matches_direct_c1": true,
+          "origin_receipt_hash": "ec730966f3211b0cbe139af3a42fada10210830a8cc7428077b21f3481eb55c9",
+          "authorizing": false
+        },
+        "producer_query_ref": {
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:07554b6d6ca68df0d394d221f2803abc2df8d88fc56b374e1e95cc2fada6493a",
+          "content_hash": "07554b6d6ca68df0d394d221f2803abc2df8d88fc56b374e1e95cc2fada6493a"
+        },
+        "source_release": {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-c1-at09-xor",
+          "content_hash": "ba4bd9cd4d934bad8f4f229a5d1913d901eec6ddafd2437b98cb5b2d0cf14200"
+        },
+        "selected_m2_release": {
+          "kind": "LearnedProductReleaseCore",
+          "object_id": "urn:rawlsing:pre553:m2:release:sha256:a937d65cba91c12e62319f3707b7f338324caae276d37f67e478c4bac1cd2658",
+          "content_hash": "a937d65cba91c12e62319f3707b7f338324caae276d37f67e478c4bac1cd2658"
+        },
+        "g2_replay_hash_parity": true,
+        "bound_f8_direct_c1_parity": true
+      },
+      "q2": {
+        "trace": [
+          "C1",
+          "SA",
+          "G2",
+          "F8",
+          "G2",
+          "G2"
+        ],
+        "numerators": {
+          "0": 0,
+          "1": 1
+        },
+        "denominator": 1,
+        "origin_receipt": {
+          "contract": "HQ266_G01_OWNER_ONLY_C1_G2_F8_SELECTED_INGRESS@1",
+          "cell": "q2",
+          "c1_identity_hash": "0556d4abe02e650ed163369dd2a997c89f6537ac19d0170b6a37a297078d6626",
+          "c1_evidence_ref_key": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:ec23a1a149efd7542e67b2ee1a900abb7fc8a7be412db728ed3021c210bfd274",
+          "c1_evidence_projection_hash": "d97777f7837690e2f39db463e890c2c0af32ef94b07db2e9f87f92610cc0d80f",
+          "c1_evidence_authority_keys": [
+            "I03-AUTH-c1-at09-xor",
+            "I03-AUTH-routing-c1-at09-xor",
+            "I03-AUTH-source-c1-at09-xor",
+            "urn:test:c1-02:pairing-authority:hq253-qAB"
+          ],
+          "c1_evidence_provenance_keys": [
+            "urn:test:c1-02:hq253-qAB:witness",
+            "urn:test:c1-02:leaf-0:sha256:b1851428d304f12bd1ae36ec8a727c788a598299ced563829ca43a91217c3d35",
+            "urn:test:c1-02:leaf-1:sha256:700ea11e64d9ca78d97f7a84094f64e66c4a3589eb5ea54f2a247f296764430b",
+            "urn:test:c1-02:pair-0:sha256:74ae0cb85d8e36e0ae63d804fd751785493fcf44810889ef0f7834860be2fd7e",
+            "urn:test:c1-02:pair-1:sha256:ac1669c62be231e6fe8b9ee65bc0a3b7ef3b24be2e477a643c13bf954c69141b",
+            "urn:test:c1-02:subject-fact:A:1",
+            "urn:test:c1-02:subject-fact:B:0",
+            "urn:rawlsing:pre553:EmpiricalFact:sha256:eac5b925a69f45956b13ff8e993ab49942f4d5b3b2f650b48863a40fb10a323e",
+            "urn:rawlsing:pre553:EmpiricalPredicate:sha256:a8b05e75b088822782bb670ef909b0394b740a3e2b8a7ba226b4c5a6e21753c7",
+            "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:abc6d712881645dea23454f6aa36845a0ecaa2ac7a9b89487d5637cd02d9c635",
+            "urn:rawlsing:pre553:i03-query-replay:sha256:d15137380c8ccee12f56ebdf28f71149473e66c89f1afbd6feb328a32451029a"
+          ],
+          "c1_producer_predicate_key": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:a8b05e75b088822782bb670ef909b0394b740a3e2b8a7ba226b4c5a6e21753c7",
+          "c1_producer_query_key": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:abc6d712881645dea23454f6aa36845a0ecaa2ac7a9b89487d5637cd02d9c635",
+          "c1_producer_fact_key": "urn:rawlsing:pre553:EmpiricalFact:sha256:eac5b925a69f45956b13ff8e993ab49942f4d5b3b2f650b48863a40fb10a323e",
+          "c1_condition_witness_key": "urn:test:c1-02:hq253-qAB:witness",
+          "c1_risk_set_key": "urn:test:i03:risk_set:c1-at09-xor-R",
+          "c1_denominator_member_keys": [
+            "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:8e1321510586bb925eda2710400a3607fb7dcfde81a306dd3f61abcf020c8f75"
+          ],
+          "c1_raw_denominator_support": 1,
+          "source_universe_key": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:318719f670e52a093a9a87ea92f3faf91555c7e1999b03dd47689964483f605c",
+          "release_key": "REL-c1-at09-xor",
+          "g2_service_request_set_identity": "0f12a78ef5b7bae3cd71fbba58bd9c1708bfca65252d036ba9cf6ba6e04eae76",
+          "g2_receipt_outcome": "ADMISSIBLE_SOURCE_INDEXED_SET",
+          "g2_receipt_hash": "ee785e28e561d4e4a3c0149948259748169e7cf8766248cd078d6cd281daee35",
+          "g2_binding_request_id": "hq266-breq-1",
+          "g2_binding_hash": "edf4acf7506e066e59a6fc62dd6abff284e7690642d0daeabba1ee7a3050d973",
+          "g2_permission_keys": [
+            "urn:hq266:target_use_permission:hq266-fixture-perm-only"
+          ],
+          "g2_query_authority_id": "I03-AUTH-c1-at09-xor",
+          "g2_query_authority_content_hash": "7fbd015d4d45c533fdb2b9e48082544f284167a7dff5713e897a112b3bc94257",
+          "g2_replay_protocol_key": "urn:test:i03:replay_protocol:c1-at09-xor",
+          "f8_result_hash": "110da6885e9b57441d7a9d16911b5fad730c0f7ccce6c55f3f3bc094decd71c4",
+          "f8_result_state": "EXACT_SUPPORTED",
+          "f8_matches_direct_c1": true,
+          "origin_receipt_hash": "c68816c29c0baccfeae4575fb53de000c507bef7486204f75b1425f973c8ed7e",
+          "authorizing": false
+        },
+        "producer_query_ref": {
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:abc6d712881645dea23454f6aa36845a0ecaa2ac7a9b89487d5637cd02d9c635",
+          "content_hash": "abc6d712881645dea23454f6aa36845a0ecaa2ac7a9b89487d5637cd02d9c635"
+        },
+        "source_release": {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-c1-at09-xor",
+          "content_hash": "ba4bd9cd4d934bad8f4f229a5d1913d901eec6ddafd2437b98cb5b2d0cf14200"
+        },
+        "selected_m2_release": {
+          "kind": "LearnedProductReleaseCore",
+          "object_id": "urn:rawlsing:pre553:m2:release:sha256:1a777e75b4244ca5ab64e9ae00f621f041935199b696c95e6f6f063a9c2f9ca5",
+          "content_hash": "1a777e75b4244ca5ab64e9ae00f621f041935199b696c95e6f6f063a9c2f9ca5"
+        },
+        "g2_replay_hash_parity": true,
+        "bound_f8_direct_c1_parity": true
+      }
+    },
+    "current_q1": {
+      "grade": "SOURCE_FREE_DEVELOPMENT_ONLY__NONAUTHORIZING__G0B_NOT_ISSUED",
+      "as_of_mode": "CURRENT",
+      "cell": "q1",
+      "selection_key": {
+        "kind": "B5Lifecycle:SELECTION_KEY",
+        "object_id": "urn:rawlsing:pre553:b5-lifecycle:selection_key:sha256:0d608261dd17de3fab7fe82f5b6b78db917da7e0e6c7506e54fe0cca0db1a9d3",
+        "content_hash": "0d608261dd17de3fab7fe82f5b6b78db917da7e0e6c7506e54fe0cca0db1a9d3"
+      },
+      "selection_receipt": {
+        "kind": "B5Lifecycle:CURRENT_SELECTION",
+        "object_id": "urn:rawlsing:pre553:b5-lifecycle:current_selection:sha256:5ca41f4a3218c7d64aca8954f06ca000748cf236022d8feb0518dfd68de6ce10",
+        "content_hash": "5ca41f4a3218c7d64aca8954f06ca000748cf236022d8feb0518dfd68de6ce10"
+      },
+      "selected_m2_release": {
+        "kind": "LearnedProductReleaseCore",
+        "object_id": "urn:rawlsing:pre553:m2:release:sha256:a937d65cba91c12e62319f3707b7f338324caae276d37f67e478c4bac1cd2658",
+        "content_hash": "a937d65cba91c12e62319f3707b7f338324caae276d37f67e478c4bac1cd2658"
+      },
+      "c1_subject_ref": {
+        "kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+        "object_id": "urn:rawlsing:learned-world:positioned-subject-query:sha256:c1bf2e71598bdbbe9db91dd74c3102e9f5071d79037817e3cf2d0fc31ac1286b",
+        "content_hash": "c1bf2e71598bdbbe9db91dd74c3102e9f5071d79037817e3cf2d0fc31ac1286b"
+      },
+      "c1_composition_hash": "e7a358b587bf6c0d6137c5b97a09b5dffcd9e717bd9c4206ca5949ef20602ea5",
+      "c1_origin_receipt_hash": "ec730966f3211b0cbe139af3a42fada10210830a8cc7428077b21f3481eb55c9",
+      "c1_evidence_ref": {
+        "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+        "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:02601f9c57cc2f99ebcdcd86a391fddfc64ffd3b39707c8a84d5f800c309745e",
+        "content_hash": "02601f9c57cc2f99ebcdcd86a391fddfc64ffd3b39707c8a84d5f800c309745e"
+      },
+      "source_c11_release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-c1-at09-xor",
+        "content_hash": "ba4bd9cd4d934bad8f4f229a5d1913d901eec6ddafd2437b98cb5b2d0cf14200"
+      },
+      "g2_receipt_hash": "ee785e28e561d4e4a3c0149948259748169e7cf8766248cd078d6cd281daee35",
+      "f8_result_hash": "5f0fde451026c077b7fbb35e6d2f64a1c221962b9bedc422ad5dd4a46a044676",
+      "authorizing": false,
+      "technical_join_hash": "61128bdfeb964e45aa6b3463dfa28783b82efa609c595f732eb2bd036528a93e"
+    },
+    "current_q2": {
+      "grade": "SOURCE_FREE_DEVELOPMENT_ONLY__NONAUTHORIZING__G0B_NOT_ISSUED",
+      "as_of_mode": "CURRENT",
+      "cell": "q2",
+      "selection_key": {
+        "kind": "B5Lifecycle:SELECTION_KEY",
+        "object_id": "urn:rawlsing:pre553:b5-lifecycle:selection_key:sha256:0d608261dd17de3fab7fe82f5b6b78db917da7e0e6c7506e54fe0cca0db1a9d3",
+        "content_hash": "0d608261dd17de3fab7fe82f5b6b78db917da7e0e6c7506e54fe0cca0db1a9d3"
+      },
+      "selection_receipt": {
+        "kind": "B5Lifecycle:CURRENT_SELECTION",
+        "object_id": "urn:rawlsing:pre553:b5-lifecycle:current_selection:sha256:e8bdfcbe222577a23442a42c94a69a1b9cda23bc1687df942d8638ab93d2ea84",
+        "content_hash": "e8bdfcbe222577a23442a42c94a69a1b9cda23bc1687df942d8638ab93d2ea84"
+      },
+      "selected_m2_release": {
+        "kind": "LearnedProductReleaseCore",
+        "object_id": "urn:rawlsing:pre553:m2:release:sha256:1a777e75b4244ca5ab64e9ae00f621f041935199b696c95e6f6f063a9c2f9ca5",
+        "content_hash": "1a777e75b4244ca5ab64e9ae00f621f041935199b696c95e6f6f063a9c2f9ca5"
+      },
+      "c1_subject_ref": {
+        "kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+        "object_id": "urn:rawlsing:learned-world:positioned-subject-query:sha256:802ce95caa8bf39770a23ca95674f7e1e1b527f752d3a48cac786bf1cd66cf21",
+        "content_hash": "802ce95caa8bf39770a23ca95674f7e1e1b527f752d3a48cac786bf1cd66cf21"
+      },
+      "c1_composition_hash": "0556d4abe02e650ed163369dd2a997c89f6537ac19d0170b6a37a297078d6626",
+      "c1_origin_receipt_hash": "c68816c29c0baccfeae4575fb53de000c507bef7486204f75b1425f973c8ed7e",
+      "c1_evidence_ref": {
+        "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+        "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:ec23a1a149efd7542e67b2ee1a900abb7fc8a7be412db728ed3021c210bfd274",
+        "content_hash": "ec23a1a149efd7542e67b2ee1a900abb7fc8a7be412db728ed3021c210bfd274"
+      },
+      "source_c11_release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-c1-at09-xor",
+        "content_hash": "ba4bd9cd4d934bad8f4f229a5d1913d901eec6ddafd2437b98cb5b2d0cf14200"
+      },
+      "g2_receipt_hash": "ee785e28e561d4e4a3c0149948259748169e7cf8766248cd078d6cd281daee35",
+      "f8_result_hash": "110da6885e9b57441d7a9d16911b5fad730c0f7ccce6c55f3f3bc094decd71c4",
+      "authorizing": false,
+      "technical_join_hash": "a3b8fd1f07f928501df5ad875a7e36e7dbd38475b35e9afc2160d2b42ee27d16"
+    },
+    "historical_q1": {
+      "grade": "SOURCE_FREE_DEVELOPMENT_ONLY__NONAUTHORIZING__G0B_NOT_ISSUED",
+      "as_of_mode": "HISTORICAL",
+      "cell": "q1",
+      "selection_key": {
+        "kind": "B5Lifecycle:SELECTION_KEY",
+        "object_id": "urn:rawlsing:pre553:b5-lifecycle:selection_key:sha256:0d608261dd17de3fab7fe82f5b6b78db917da7e0e6c7506e54fe0cca0db1a9d3",
+        "content_hash": "0d608261dd17de3fab7fe82f5b6b78db917da7e0e6c7506e54fe0cca0db1a9d3"
+      },
+      "selection_receipt": {
+        "kind": "B5Lifecycle:CURRENT_SELECTION",
+        "object_id": "urn:rawlsing:pre553:b5-lifecycle:current_selection:sha256:5ca41f4a3218c7d64aca8954f06ca000748cf236022d8feb0518dfd68de6ce10",
+        "content_hash": "5ca41f4a3218c7d64aca8954f06ca000748cf236022d8feb0518dfd68de6ce10"
+      },
+      "selected_m2_release": {
+        "kind": "LearnedProductReleaseCore",
+        "object_id": "urn:rawlsing:pre553:m2:release:sha256:a937d65cba91c12e62319f3707b7f338324caae276d37f67e478c4bac1cd2658",
+        "content_hash": "a937d65cba91c12e62319f3707b7f338324caae276d37f67e478c4bac1cd2658"
+      },
+      "c1_subject_ref": {
+        "kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+        "object_id": "urn:rawlsing:learned-world:positioned-subject-query:sha256:c1bf2e71598bdbbe9db91dd74c3102e9f5071d79037817e3cf2d0fc31ac1286b",
+        "content_hash": "c1bf2e71598bdbbe9db91dd74c3102e9f5071d79037817e3cf2d0fc31ac1286b"
+      },
+      "c1_composition_hash": "e7a358b587bf6c0d6137c5b97a09b5dffcd9e717bd9c4206ca5949ef20602ea5",
+      "c1_origin_receipt_hash": "ec730966f3211b0cbe139af3a42fada10210830a8cc7428077b21f3481eb55c9",
+      "c1_evidence_ref": {
+        "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+        "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:02601f9c57cc2f99ebcdcd86a391fddfc64ffd3b39707c8a84d5f800c309745e",
+        "content_hash": "02601f9c57cc2f99ebcdcd86a391fddfc64ffd3b39707c8a84d5f800c309745e"
+      },
+      "source_c11_release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-c1-at09-xor",
+        "content_hash": "ba4bd9cd4d934bad8f4f229a5d1913d901eec6ddafd2437b98cb5b2d0cf14200"
+      },
+      "g2_receipt_hash": "ee785e28e561d4e4a3c0149948259748169e7cf8766248cd078d6cd281daee35",
+      "f8_result_hash": "5f0fde451026c077b7fbb35e6d2f64a1c221962b9bedc422ad5dd4a46a044676",
+      "authorizing": false,
+      "technical_join_hash": "75441e22cd920d498b0c8c8b8c0a5d980d7c6dd13483dd5ea1aad8f805ab2630"
+    },
+    "generic_fixture_producer_contract": {
+      "kind": "ProducerContract",
+      "object_id": "urn:hq266:producercontract:hq280-b2-fixture-c1-view",
+      "content_hash": "c074c2c86d3dd48690d554144f818fb534c909deb83c1c494a33dde15e98eadb"
+    },
+    "fixture_nonissuer_authority": {
+      "authority_id": "HQ266-FIXTURE-ONLY-hq280-b2-test-only-nonissuer",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "996a6a2fc138a05bdc0f9d15a8969a1fd65ca5a971c6ebfa86565d0e2bd87b8e"
+    },
+    "i4_wrong_producer_even_with_typed_disposition": "producer contract does not exactly identify the current M1 disposition owner",
+    "no_model_use_grant": true
+  },
+  "agent_identity": {
+    "role": "Independent local Codex verifier; separate from B2 test author",
+    "model_family": "GPT-6-based Codex per session instructions",
+    "exact_backend_model_id": null,
+    "reasoning_effort_runtime_introspection": null,
+    "requested_reasoning": "High"
+  },
+  "bootstrap": {
+    "initial_preflight": "PYTHONNOUSERSITE=1 excluded user-site pytest; ModuleNotFoundError before pytest execution",
+    "resolution": "Installed pytest==9.0.2 and dependencies into disposable /tmp virtual environment; no candidate change",
+    "candidate_test_attempts": 1
+  },
+  "witness_harnesses": {
+    "run_pinned.py": {
+      "sha256": "68847ab5c5784c5e79ecc816112323351507885e6a49f0a03944fde08f737b5f",
+      "source": "import datetime, hashlib, json, os, pathlib, platform, subprocess, time\nroot = pathlib.Path('/tmp/rawlsing_hq280_b2r_runtime_r1')\nout = pathlib.Path('/tmp/rawlsing_hq280_b2r_evidence_r1')\nbase = '9b30f37a8c50a1bd043fc8834f7a9caee137587c'\nparent = 'a159bff63b779b994d7b1e83f8a2d6a303b81ea2'\nbranch = 'agent/reviewer-pyat-hq280-b2-pinned-sourcefree-runtime-r1'\ntest = 'rawlsing_next/tests/test_pre553_ee14_selected_lifecycle_source_free_integration.py'\npaths = [test, '.rabochii/return_manifest.json', 'rawlsing_next/pre553_learned_product_release.py', 'rawlsing_next/pre553_learned_product_lifecycle.py', 'rawlsing_next/pre553_learned_world_composition.py', 'rawlsing_next/pre553_ee14_c1_owner_authenticated_ingress.py', 'rawlsing_next/pre553_service_source_applicability.py', 'rawlsing_next/pre553_service_f8_source_scope_binding.py', 'rawlsing_next/pre553_analytical_composition.py', 'rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py', 'rawlsing_next/tests/test_pre553_ee14_selected_current_asof_hq260.py', 'rawlsing_next/tests/c1_at08_at13_fixture.py']\ndef git(*args):\n    return subprocess.check_output(['git', '-c', 'gc.auto=0', *args], cwd=root, text=True).strip()\nassert git('rev-parse','HEAD') == base\nassert git('rev-parse','HEAD^') == parent\nassert git('branch','--show-current') == branch\nassert git('status','--porcelain') == ''\npreimages = {}\nfor p in paths:\n    data = (root/p).read_bytes()\n    blob = git('rev-parse', f'HEAD:{p}')\n    assert git('hash-object', p) == blob\n    assert git('rev-parse', f'{parent}:{p}') == blob\n    preimages[p] = {'git_blob': blob, 'sha256': hashlib.sha256(data).hexdigest(), 'matches_corrected_candidate_parent': True}\nassert preimages[test]['git_blob'] == '255013532848b3cb64991d626a5fe7e40f9eb57d'\nassert preimages['.rabochii/return_manifest.json']['git_blob'] == 'f1f123b1494c38f5d031378bfbdd0d031f697a36'\nenv = os.environ.copy()\nenv.update(PATH='/tmp/rawlsing_hq280_b2r_python_r1/bin:' + env['PATH'], PYTEST_DISABLE_PLUGIN_AUTOLOAD='1', PYTHONDONTWRITEBYTECODE='1', PYTHONNOUSERSITE='1', PYTHONPATH=str(root), PYTEST_ADDOPTS='-o cache_dir=/tmp/rawlsing_hq280_b2r_evidence_r1/pytest_cache --junitxml=/tmp/rawlsing_hq280_b2r_evidence_r1/pytest_first.xml')\nenv.pop('PYTHONHOME',None)\nenv.pop('PYTHONSTARTUP',None)\nidentity = subprocess.check_output(['python','-c','import sys, platform, pytest, json; print(json.dumps(dict(executable=sys.executable, version=sys.version, platform=platform.platform(), pytest_version=pytest.__version__, pytest_module=pytest.__file__)))'], env=env, cwd=root, text=True)\ncommand = ['python','-m','pytest','-q','-vv',test]\nstarted = datetime.datetime.now(datetime.timezone.utc).isoformat()\nt0 = time.monotonic()\nresult = subprocess.run(command, cwd=root, env=env, capture_output=True, text=True)\nrecord = dict(schema='PYAT_HQ280_B2R_ACTUAL_EXECUTION@1', repository='maidiu/rawlsing', branch=branch, sealed_startup_tip=base, corrected_candidate_parent=parent, runner=json.loads(identity), command=command, cwd=str(root.resolve()), started_utc=started, ended_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(), duration_seconds=time.monotonic()-t0, exit_code=result.returncode, stdout=result.stdout, stderr=result.stderr, environment_controls={k:env[k] for k in ['PYTEST_DISABLE_PLUGIN_AUTOLOAD','PYTHONDONTWRITEBYTECODE','PYTHONNOUSERSITE','PYTHONPATH','PYTEST_ADDOPTS']}, startup_clean=True, pinned_preimages=preimages, post_run_status=git('status','--porcelain'))\n(out/'first_execution.json').write_text(json.dumps(record,indent=2)+'\\n')\n(out/'first_stdout.txt').write_text(result.stdout)\n(out/'first_stderr.txt').write_text(result.stderr)\nprint(result.stdout)\nprint(result.stderr)\nprint('ACTUAL_PYTEST_EXIT_CODE=' + str(result.returncode))\n"
+    },
+    "probe_owner_chain.py": {
+      "sha256": "21f759e7b3f1f07bf96cdb0ee3f943b65a193b6ff07622cd78a1248e90efe1f0",
+      "source": "import dataclasses, json, pathlib\nfrom unittest.mock import patch\nfrom rawlsing_next.tests import test_pre553_ee14_selected_lifecycle_source_free_integration as T\nfrom rawlsing_next import pre553_analytical_composition as C1\nfrom rawlsing_next import pre553_service_source_applicability as SA\nfrom rawlsing_next import pre553_service_f8_source_scope_binding as G2\nout = pathlib.Path('/tmp/rawlsing_hq280_b2r_evidence_r1')\ncase = T.case.__wrapped__()\ntrace, rows, captured = [], {}, {}\nfunctions = [(C1,'compose_positioned_subject_possibility','C1'), (SA,'resolve_service_source_applicability','SA'), (G2,'bind_service_applicability_to_f8_scope','G2'), (G2,'evaluate_bound_positioned_subject_possibility','F8')]\ndef observer(fn, name):\n    def called(*args, **kwargs):\n        trace.append(name)\n        result = fn(*args, **kwargs)\n        captured.setdefault(name, []).append(result)\n        return result\n    return called\nfrom contextlib import ExitStack\nwith ExitStack() as stack:\n    for module, attr, name in functions:\n        stack.enter_context(patch.object(module, attr, observer(getattr(module,attr),name)))\n    for cell, expected in [('q1',({'0':1,'1':1},2)),('q2',({'0':0,'1':1},1))]:\n        trace.clear(); captured.clear()\n        origin = case['ingress'].serve(T.G1.SelectedRequest(cell=cell,stratum_ids=T.G1.Q1_STRATUM if cell=='q1' else T.G1.Q2_STRATUM))\n        composition = case['cells'][cell]['composition']\n        numerators = {r['cell']:r['raw_numerator_support'] for r in composition.consumer_result_or_null.material()['exact_lane']['geometry']['cells']}\n        assert (numerators,composition.raw_denominator_support) == expected\n        assert trace[0]=='C1' and all(name in trace for name in ['C1','SA','G2','F8'])\n        assert trace.index('SA') < trace.index('G2') < trace.index('F8')\n        assert origin.g2_receipt_hash == captured['SA'][0].replay_identity()\n        assert origin.f8_result_hash == captured['F8'][0].result_hash == composition.consumer_result_or_null.result_hash\n        assert origin.authorizing is False\n        rows[cell] = dict(trace=list(trace),numerators=numerators,denominator=composition.raw_denominator_support, origin_receipt=dataclasses.asdict(origin), producer_query_ref=composition.producer_query_ref.as_dict(), source_release=case['source']['release_ref'].as_dict(), selected_m2_release=case['cells'][cell]['m2_release'].ref.as_dict(), g2_replay_hash_parity=True, bound_f8_direct_c1_parity=True)\nfirst = T._join(case,as_of_event_ref=case['first'].current_select_event_ref,mode='CURRENT')\nsecond = T._advance(case)\ncurrent = T._join(case,as_of_event_ref=second.current_select_event_ref,mode='CURRENT')\nhistorical = T._join(case,as_of_event_ref=case['first'].current_select_event_ref,mode='HISTORICAL')\nassert historical['selection_receipt']==first['selection_receipt']\nassert current['selected_m2_release']!=historical['selected_m2_release']\ncontract = T.I4.LearnedWorldProductContractBinding(route='M1_M2_B5', product_family_ref=T.FAMILY,producer_owner_ref=T.OWNER,producer_contract_ref=T.PRODUCER_CONTRACT,release_subject_kind='TYPED_DISPOSITION',selection_scope_ref=T.SCOPE,producer_permission_ceiling_ref=T.PERMISSION_CEILING,consumer_product_purpose_ref=T.PURPOSE)\ntry:\n    T.I4.adapt_m2_release_to_b5(case['cells']['q1']['artifacts'],contract=contract)\nexcept T.I4.LearnedWorldCompositionBlocked as exc:\n    contract_ref_refusal=str(exc)\n    assert 'current M1 disposition owner' in contract_ref_refusal\nelse:\n    raise AssertionError('I4 allowed incorrect producer contract')\nresult=dict(kind='BOUNDED_SOURCEFREE_INDEPENDENT_OBSERVATION_NOT_ADOPTION', cells=rows, current_q1=first,current_q2=current,historical_q1=historical, generic_fixture_producer_contract=T.PRODUCER_CONTRACT.as_dict(),fixture_nonissuer_authority=T.SNAPSHOT.as_dict(), i4_wrong_producer_even_with_typed_disposition=contract_ref_refusal, no_model_use_grant=True)\n(out/'supplemental_observations.json').write_text(json.dumps(result,indent=2)+'\\n')\nprint(json.dumps({cell:{k:v for k,v in row.items() if k in ['trace','numerators','denominator','g2_replay_hash_parity','bound_f8_direct_c1_parity']} for cell,row in rows.items()},indent=2))\nprint(contract_ref_refusal)\n"
+    }
+  },
+  "authority_ceiling": {
+    "technical_sourcefree_runtime": "PASS",
+    "c1_owner_issued_release_contract": "UNPROVED",
+    "operative_selected_world_service": "UNPROVED",
+    "EE14_G0b": "HELD; operative use REFUSED",
+    "N9_OC05": "UNPROVED",
+    "N10W": "UNPROVED",
+    "structural_temporal_actor_permissions": "NOT_GRANTED",
+    "V3": "NOT_ACTIVATED",
+    "self_adoption": false
+  },
+  "inherited_HQ118_manifest": {
+    "git_blob": "f1f123b1494c38f5d031378bfbdd0d031f697a36",
+    "preserved_unchanged": true,
+    "used_as_B2_completion_beacon": false
+  },
+  "publication": {
+    "target_branch": "agent/reviewer-pyat-hq280-b2-pinned-sourcefree-runtime-r1",
+    "method": "explicit fast-forward branch push; direct origin SHA readback required",
+    "return_commit_sha": "Reported after commit and verified origin readback in conversation; not self-embedded"
+  }
+}
