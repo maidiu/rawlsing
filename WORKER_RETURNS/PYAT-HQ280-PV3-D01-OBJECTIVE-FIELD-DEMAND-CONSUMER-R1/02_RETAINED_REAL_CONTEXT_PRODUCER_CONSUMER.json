@@ -1,0 +1,92 @@
+{
+  "contract": "HQ280_PV3_D01_REAL_RETAINED_CONTEXT_TO_FIRST_CONSUMER@R1",
+  "grade": "ACCEPTED_HQ221_EXECUTION_REVIEWED_HQ222_PLUS_HQ225_CUSTODY; D01_STATIC_ONLY",
+  "source": {
+    "family": "Afrobarometer",
+    "wave": "R5",
+    "risk_id": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1",
+    "risk_member_sha256": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+    "respondents": 19210,
+    "topology": "SEMANTIC_ORDERED",
+    "roles": [
+      "Q86B:CONDITIONER",
+      "Q86A:TARGET"
+    ],
+    "native_domains": 6,
+    "cells": 36,
+    "observed_zero_cells": 23,
+    "measure": "RAW_SINGLE_UNIVERSE_UNWEIGHTED",
+    "query_sha256": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+    "fact_sha256": "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46",
+    "replay_sha256": "c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f"
+  },
+  "products": [
+    {
+      "stage": "FF owner",
+      "owner": "rawlsing_next/field_forge_conditional_support.py",
+      "product": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+      "value": "6x6 exact count support geometry",
+      "ceiling": "ASSOCIATION_ONLY"
+    },
+    {
+      "stage": "PREV3 admission",
+      "owner": "rawlsing_next/wave1_ff_prev3_relation_admission.py",
+      "product": "PREV3_FIELD_FORGE_RELATION_ADMISSION@1.0.0",
+      "value": "ADMITTED",
+      "target_use": "STRUCTURAL_MEDIATION_INPUT",
+      "ceiling": "NO_INSTITUTION_OR_CAUSAL_MEANING"
+    },
+    {
+      "stage": "M1 relation ingress",
+      "owner": "rawlsing_next/m1_admitted_field_forge_relation_v554_ingress.py",
+      "product": "V554 F1 + internal B1; F2=0 because no declared condition rows",
+      "value": "ELIGIBLE",
+      "ceiling": "NO_NEW_V553_TEMPORAL_MEANING_REQUIRED"
+    },
+    {
+      "stage": "actual current selection",
+      "owner": "rawlsing_next/gt12_e2b_publication_governance_binding.py",
+      "product": "GT12_V554_SIG004_ADMITTED_RELATION_CONTEXT_PUBLICATION_RULE@1.0.0",
+      "rule_hash": "da431544e57ed4b418cd746be3f0a9aa486cd3c2fb2007a022005821b25e194b",
+      "value": "ADOPTED_CURRENT"
+    },
+    {
+      "stage": "first actual competent consumer",
+      "owner": "rawlsing_next/m4_v557_v558_publication_repository.py",
+      "product": "V557 F1 publication",
+      "value": "ALLOW_CONTEXT_ONLY",
+      "allowed_uses": [
+        "CONTEXT"
+      ]
+    },
+    {
+      "stage": "second actual competent consumer",
+      "owner": "rawlsing_next/m4_v557_v558_publication_repository.py",
+      "product": "V558 resolution",
+      "value": "RESOLUTION_COMPLETE",
+      "allowed_uses": [
+        "CONTEXT"
+      ]
+    }
+  ],
+  "latest_current_f1": {
+    "object_id": "urn:rawlsing:v554:f1:sha256:3530f08f43e704ad67e0fb74984b03b7ad0f068ea1de4bcf658f3b2d591bd56d",
+    "content_hash": "a008553dc94af138de44e73ade8ddbcc1e2bb3a5c40cec575aad694aae104cbb",
+    "source": "HQ225 position court citing HQ224 current-rule F1 custody; not HQ221 fixture-ref"
+  },
+  "noncurrent_fixture_caution": "HQ221 local fixture F1/B1 refs differ from adopted current rule; do not treat them as selected.",
+  "v555": {
+    "immediate_legacy_consumer_failure": "M1 contract id mismatch",
+    "current_governing_semantic_disposition": "V555_GT2_ROUTE_NOT_APPLICABLE__NO_LAWFUL_POSITION_BINDING",
+    "current_rule_use_disposition": "SIG004_B1_NONPUBLICATION_IS_TERMINAL__V555_CONTINUATION_NOT_AUTHORIZED",
+    "reason": "Q86A and Q86B are respondents' attitudes about citizenship propositions, not structural position endpoints; B1 cannot override explicit adopted use prohibition."
+  },
+  "first_source_reports": [
+    "WORKER_RETURNS/PYAT-HQ221-C5-GT2-STRUCTURAL-POSITIVE-REALIZATION-R1/00_RETURN.md",
+    "WORKER_RETURNS/PYAT-HQ222-C5-GT2-STRUCTURAL-POSITIVE-REALIZATION-REVIEW-R1/00_REVIEW.md",
+    "WORKER_RETURNS/PYAT-HQ225-V555-GT2-POSITION-BINDING-AUTHORITY-R1/00_RETURN.md",
+    "WORKER_RETURNS/PYAT-HQ225-V555-GT2-B1-ROUTE-CONSUMPTION-AUTHORITY-R1/00_RETURN.md"
+  ],
+  "d01_new_raw_execution": false,
+  "d01_new_owner_runtime": false
+}
