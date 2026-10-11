@@ -1,0 +1,218 @@
+{
+  "schema": "PYAT_HQ280_E2BI_EXACT_ISSUER_GRAPH@1",
+  "status": "UNADOPTED_ISSUER_HOLD",
+  "decision": "HQD-2026-10-10-280",
+  "sealed_startup": "1a9ff32ac7c8912308edcfbf14749fc7e2592315",
+  "proposed_expected_work_key": "2ee8980a96a73351102c9b814f5d51464c2e7b2d1d625da6f3be8b3dc60e437a",
+  "exact_source_refs": {
+    "source": {
+      "kind": "SOURCE_ARTIFACT",
+      "object_id": "Data/Afro Barometer Round 5.sav",
+      "content_hash": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651"
+    },
+    "release": {
+      "kind": "C11LogicalRelease",
+      "object_id": "R5_GT12_Q86A_Q86B_FROZEN",
+      "content_hash": "8315b104a94ae985a3ee3d77c8c365d5fcef6b6cb51a606df5bf141434668295"
+    },
+    "risk": {
+      "kind": "RISK_SET",
+      "object_id": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1",
+      "content_hash": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b"
+    },
+    "conditioner": {
+      "kind": "QUESTION_IMPLEMENTATION",
+      "object_id": "question_impl.phase0.2fb3a62609dad4c1306d",
+      "content_hash": "2fb3a62609dad4c1306d8cfa14f997eab4d6e65ada56083279386a202544a506"
+    },
+    "target": {
+      "kind": "QUESTION_IMPLEMENTATION",
+      "object_id": "question_impl.phase0.67f036c0efb7fb98ff4a",
+      "content_hash": "67f036c0efb7fb98ff4a93dc811bf59cfc095608eda374f6534b006a62241bd3"
+    }
+  },
+  "nodes": [
+    {
+      "id": "GT12_A_SOURCE",
+      "role": "original source semantics / Q86A,Q86B native response domains",
+      "authority": "GT12-A-R5-Q86-SOURCE-SEMANTICS",
+      "owner_module": "rawlsing_next/wave1_r5_q86_c11_projection.py",
+      "blob": "d96933180d310b4078f23127bb5a97a3677728d1",
+      "scope": "one R5 source, exact six codes/state labels",
+      "can_issue_new_work_expectation": false
+    },
+    {
+      "id": "GT12_A_ROUTING",
+      "role": "common-coexposure respondent risk membership",
+      "authority": "GT12-A-R5-Q86-COMMON-RISK-ROUTING",
+      "owner_module": "rawlsing_next/wave1_r5_q86_c11_projection.py",
+      "blob": "d96933180d310b4078f23127bb5a97a3677728d1",
+      "scope": "exact fixed 19,210, prior risk identity",
+      "can_issue_new_work_expectation": false
+    },
+    {
+      "id": "GT12_A_TARGET_USE",
+      "role": "claim-scoped original empirical permission",
+      "authority": "GT12-A-R5-Q86-FROZEN-TARGET-USE",
+      "owner_module": "rawlsing_next/wave1_r5_q86_c11_projection.py",
+      "blob": "d96933180d310b4078f23127bb5a97a3677728d1",
+      "scope": "RAW GT2 empirical input to frozen exact conditional-support only",
+      "can_issue_new_work_expectation": false
+    },
+    {
+      "id": "GT12_B_I03",
+      "role": "exact governed RAW joint query and replay",
+      "authority": "GT2_R5_Q86A_X_Q86B_RAW_JOINT_EXACT_RISK_SET@1",
+      "owner_module": "rawlsing_next/wave1_gt12_i03_positive_facts.py",
+      "blob": "067628dc6605f28be68bdcd86ef57b02a0db4348",
+      "scope": "SINGLE_UNIVERSE ordered Q86B→Q86A",
+      "can_issue_new_work_expectation": false
+    },
+    {
+      "id": "FIELD_FORGE",
+      "role": "actor-independent conditional support profile",
+      "authority": "FIELD_FORGE_ACTOR_INDEPENDENT_RELATION_OWNER",
+      "owner_module": "rawlsing_next/field_forge_conditional_support.py",
+      "blob": "a70decb20747d84cbcbe27d1280babc6de88ef33",
+      "scope": "count profile; not causal/actor inference",
+      "can_issue_new_work_expectation": false
+    },
+    {
+      "id": "GT12_D",
+      "role": "positive PRE-V3 relation admission",
+      "authority": "PREV3_FIELD_FORGE_RELATION_ADMISSION_OWNER",
+      "owner_module": "rawlsing_next/wave1_ff_prev3_relation_admission.py",
+      "blob": "c5fb675fd6f95cb7dc9e0ad505224803839cc645",
+      "scope": "STRUCTURAL_MEDIATION_INPUT only",
+      "can_issue_new_work_expectation": false
+    },
+    {
+      "id": "GT12_TRANSLATOR",
+      "role": "adopted permission translation; no new permission",
+      "authority": "GT12_RELATION_SPECIFIC_PREV3_TO_M4_PRODUCER_PERMISSION_TRANSLATION_AUTHORITY",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "d052e299206b837292225853fca7ffcf8a3c02b6479c53065ad3aca135be489c",
+      "adoption_commit": "00374882168f8ca64606fef3ca84e246f1c573e9",
+      "owner_module": "rawlsing_next/gt12_permission_translation_authority.py",
+      "blob": "2eb1441e0ee5be3eef2567f8ffb57819fc47f0d6",
+      "scope": "CONTEXT singleton",
+      "can_issue_new_work_expectation": false
+    },
+    {
+      "id": "E2B_PUBLICATION",
+      "role": "current V554 F1, V557 ALLOW_CONTEXT_ONLY selection and V558 context resolution",
+      "authority": "GT12_E2B_R3_CURRENT_V554_V557_PUBLICATION_GOVERNANCE_BINDING",
+      "bundle_hash": "f7d4d2313bcc70faf104cff205b0eb7aaa7d88556c895c8ea123a3725105cf14",
+      "adoption_hash": "ff3c0db1ee346b176f240523f36048d88beb6216722988ea087040b4840cd492",
+      "owner_module": "rawlsing_next/gt12_e2b_publication_governance_binding.py",
+      "blob": "5c0e730972ca7f31c3be92564c299822c431ccc5",
+      "scope": "F1 only, CONTEXT only, no actor",
+      "can_issue_new_work_expectation": false
+    },
+    {
+      "id": "E2B_CONSUMER",
+      "role": "one existing actual-object source-local terminal",
+      "authority": "existing technical consumer, not issuer",
+      "owner_module": "rawlsing_next/tests/gt12_e2b_actual_object_consumer_harness.py",
+      "function": "run_current_r1c_e2b_actual_objects",
+      "blob": "f86a2a368cfd427ec465fd84eb93e7736f0c51f5",
+      "scope": "current R1C query/fact/replay identities; retained E2B only",
+      "can_issue_new_work_expectation": false
+    },
+    {
+      "id": "PYAT_HQ",
+      "role": "program governance and possible distinct adoption after qualified signoff",
+      "authority": "HQD-2026-10-10-280",
+      "source_free_ee14_precedent": "HQ260 3d31d12d954d7de3916301d0995d08c8105bd6f8; HQ271 82b48442db8009913ea61896a1c150210843ead6",
+      "scope": "governance; no independent source signer or operative G0b credential",
+      "can_issue_new_work_expectation": "ONLY_AFTER_DISTINCT_POSITIVE_HQ_ACT_AND_COMPETENT_SOURCE_CONSUMER_SIGNOFF"
+    },
+    {
+      "id": "INDEPENDENT_CUSTODIAN",
+      "role": "independently pre-execution Git/signature seal of exact future work; principal not located",
+      "authority": null,
+      "scope": "one future run; no scientific reauthorization",
+      "can_issue_new_work_expectation": false
+    }
+  ],
+  "edges": [
+    {
+      "from": "GT12_A_SOURCE",
+      "to": "GT12_B_I03",
+      "meaning": "response semantics and question implementation"
+    },
+    {
+      "from": "GT12_A_ROUTING",
+      "to": "GT12_B_I03",
+      "meaning": "same-respondent risk identity"
+    },
+    {
+      "from": "GT12_A_TARGET_USE",
+      "to": "GT12_B_I03",
+      "meaning": "RAW empirical operation permission"
+    },
+    {
+      "from": "GT12_B_I03",
+      "to": "FIELD_FORGE",
+      "meaning": "exact retained EmpiricalQuerySpec/EmpiricalFact; no new measurement"
+    },
+    {
+      "from": "FIELD_FORGE",
+      "to": "GT12_D",
+      "meaning": "count-profile relation admission"
+    },
+    {
+      "from": "GT12_D",
+      "to": "GT12_TRANSLATOR",
+      "meaning": "structural mediation input and singleton use"
+    },
+    {
+      "from": "GT12_TRANSLATOR",
+      "to": "E2B_PUBLICATION",
+      "meaning": "CONTEXT only"
+    },
+    {
+      "from": "E2B_PUBLICATION",
+      "to": "E2B_CONSUMER",
+      "meaning": "F1 V554/V557/V558 CONTEXT terminal"
+    },
+    {
+      "from": "PYAT_HQ",
+      "to": "INDEPENDENT_CUSTODIAN",
+      "meaning": "future document approval and custody require separate adoption"
+    }
+  ],
+  "missing_edges": [
+    {
+      "from": "competent original-source/operation-use signatory",
+      "to": "one new prospective retained CONTEXT expected-work declaration",
+      "problem": "no present adopted issuer act found; functional authority refs do not sign novel obligations"
+    },
+    {
+      "from": "qualified E2B consumer/publication signatory",
+      "to": "independent prospective custodian",
+      "problem": "no exact future seal acceptance delegation found"
+    },
+    {
+      "from": "actual independent signer identity",
+      "to": "prior-to-run Git expected-work seal",
+      "problem": "no signer principal, signature or authorizing HQ decision recorded"
+    }
+  ],
+  "outside_scope": [
+    "G0b",
+    "new original I03 measurement",
+    "I05",
+    "batch",
+    "35-wave",
+    "new F1/B1",
+    "REVIEW",
+    "ACTIVE_CAUSAL",
+    "causal inference",
+    "actor",
+    "V2",
+    "V3 positive",
+    "model/world selected service"
+  ],
+  "finding": "EXISTING GT12 CONTEXT USE IS POSITIVE AT ITS HISTORICAL SCOPE; NEW INDEPENDENT EXPECTATION ISSUANCE IS NOT PROVED."
+}
