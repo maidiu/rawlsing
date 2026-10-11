@@ -1,0 +1,230 @@
+{
+ "schema": "HQ280_PV3_A01_HOSTILE_COUNT_AND_IDENTITY_TESTS@1.0.0",
+ "input_crosswalk_sha256": "0f2b3f6ea581418e866ca03ec523ee06cdc013d40ff7a403d0711cd632f8463a",
+ "implementations": 18276,
+ "tests": [
+  {
+   "test_id": "T1_inner_join_b_omission",
+   "hostile_case": "Inner-join B omission",
+   "method": "For each of 46 carriers, count implemented coverage; a carrier covering <100% is omission bait under an inner join.",
+   "verdict": "OBSERVED_OMISSION_BAIT_PRESENT",
+   "full_coverage_carriers": [
+    "QSM_PROVENANCE",
+    "QSM_RAW",
+    "R10K_IMPLEMENTATION_SOURCE_CONTEXT_R1.csv",
+    "R10K_O06_IMPLEMENTATION_ROUTING_CENTRAL.jsonl"
+   ],
+   "partial_coverage_carrier_count": 42,
+   "lowest_coverage_examples": [
+    {
+     "carrier": "BLOCKED_QSMV2_IMPLEMENTATIONS_41_R1",
+     "implementations": 41,
+     "omitted_under_inner_join": 18235
+    },
+    {
+     "carrier": "BLOCKED_QSMV2_UNITS_21_R1",
+     "implementations": 41,
+     "omitted_under_inner_join": 18235
+    },
+    {
+     "carrier": "OPTIONS_Rawlsing_SOUTH_ASIA_BAROMETER_MANUAL_AUTHORITY_PACKET_20260715_MANUAL_ALIGNED",
+     "implementations": 135,
+     "omitted_under_inner_join": 18141
+    },
+    {
+     "carrier": "DEEP_Rawlsing_P2_South_Asia_Deep_Question_Node_Catalog_v2.csv",
+     "implementations": 141,
+     "omitted_under_inner_join": 18135
+    },
+    {
+     "carrier": "MANUAL_Rawlsing_SOUTH_ASIA_BAROMETER_MANUAL_AUTHORITY_PACKET_20260715_MANUAL_ALIGNED",
+     "implementations": 141,
+     "omitted_under_inner_join": 18135
+    }
+   ],
+   "safe_consumption": "union-of-carriers outer join only"
+  },
+  {
+   "test_id": "T2_battery_parent_child_confusion",
+   "hostile_case": "Battery-parent/child confusion",
+   "method": "Flag bindings whose final_driver_id/label contains parent/child/battery to surface battery structure as a distinct identity class from measurement.",
+   "verdict": "BATTERY_OR_PARENT_CHILD_BINDINGS_OBSERVED",
+   "implementation_count_with_battery_parent_child": 129,
+   "examples": [
+    {
+     "iid": "question_impl.phase0.67f036c0efb7fb98ff4a",
+     "carrier": "QSR_A",
+     "final_driver_id": "metadata::metadata_in_your_opinion_which_of_the_following_people_have_a_right_to_be_a_citizen_of_the_country_a_citizen_would_have_the_right_to_get_a_passport_and_to_vote_in_national_elections_if_they_are_at_least_18_years_old_a_person_born_in_the_country_with_one_national_and_one_non_national_parent",
+     "final_driver_label": "In your opinion, which of the following people have a right to be a citizen of the country? A citizen would have the right to get a passport and to vote in national elections if they are at least 18 years old: A person born in the country with one national and one non-national parent?",
+     "var": "Q86A"
+    },
+    {
+     "iid": "question_impl.phase0.67f036c0efb7fb98ff4a",
+     "carrier": "QSR_B",
+     "final_driver_id": "metadata::metadata_in_your_opinion_which_of_the_following_people_have_a_right_to_be_a_citizen_of_the_country_a_citizen_would_have_the_right_to_get_a_passport_and_to_vote_in_national_elections_if_they_are_at_least_18_years_old_a_person_born_in_the_country_with_one_national_and_one_non_national_parent",
+     "final_driver_label": "In your opinion, which of the following people have a right to be a citizen of the country? A citizen would have the right to get a passport and to vote in national elections if they are at least 18 years old: A person born in the country with one national and one non-national parent?",
+     "var": "Q86A"
+    },
+    {
+     "iid": "question_impl.phase0.67f036c0efb7fb98ff4a",
+     "carrier": "QSR_C",
+     "final_driver_id": "metadata::metadata_in_your_opinion_which_of_the_following_people_have_a_right_to_be_a_citizen_of_the_country_a_citizen_would_have_the_right_to_get_a_passport_and_to_vote_in_national_elections_if_they_are_at_least_18_years_old_a_person_born_in_the_country_with_one_national_and_one_non_national_parent",
+     "final_driver_label": "In your opinion, which of the following people have a right to be a citizen of the country? A citizen would have the right to get a passport and to vote in national elections if they are at least 18 years old: A person born in the country with one national and one non-national parent?",
+     "var": "Q86A"
+    },
+    {
+     "iid": "question_impl.phase0.67f036c0efb7fb98ff4a",
+     "carrier": "DRIVERS_D62",
+     "final_driver_id": "metadata::metadata_in_your_opinion_which_of_the_following_people_have_a_right_to_be_a_citizen_of_the_country_a_citizen_would_have_the_right_to_get_a_passport_and_to_vote_in_national_elections_if_they_are_at_least_18_years_old_a_person_born_in_the_country_with_one_national_and_one_non_national_parent",
+     "final_driver_label": "In your opinion, which of the following people have a right to be a citizen of the country? A citizen would have the right to get a passport and to vote in national elections if they are at least 18 years old: A person born in the country with one national and one non-national parent?",
+     "var": "Q86A"
+    },
+    {
+     "iid": "question_impl.phase0.67f036c0efb7fb98ff4a",
+     "carrier": "V525B_DRIVERS",
+     "final_driver_id": "metadata::metadata_in_your_opinion_which_of_the_following_people_have_a_right_to_be_a_citizen_of_the_country_a_citizen_would_have_the_right_to_get_a_passport_and_to_vote_in_national_elections_if_they_are_at_least_18_years_old_a_person_born_in_the_country_with_one_national_and_one_non_national_parent",
+     "final_driver_label": "In your opinion, which of the following people have a right to be a citizen of the country? A citizen would have the right to get a passport and to vote in national elections if they are at least 18 years old: A person born in the country with one national and one non-national parent?",
+     "var": "Q86A"
+    },
+    {
+     "iid": "question_impl.phase0.2fb3a62609dad4c1306d",
+     "carrier": "QSR_A",
+     "final_driver_id": "metadata::metadata_in_your_opinion_which_of_the_following_people_have_a_right_to_be_a_citizen_of_the_country_a_citizen_would_have_the_right_to_get_a_passport_and_to_vote_in_national_elections_if_they_are_at_least_18_years_old_a_person_born_in_the_country_with_two_non_national_parents",
+     "final_driver_label": "In your opinion, which of the following people have a right to be a citizen of the country? A citizen would have the right to get a passport and to vote in national elections if they are at least 18 years old: A person born in the country with two non-national parents?",
+     "var": "Q86B"
+    },
+    {
+     "iid": "question_impl.phase0.2fb3a62609dad4c1306d",
+     "carrier": "QSR_B",
+     "final_driver_id": "metadata::metadata_in_your_opinion_which_of_the_following_people_have_a_right_to_be_a_citizen_of_the_country_a_citizen_would_have_the_right_to_get_a_passport_and_to_vote_in_national_elections_if_they_are_at_least_18_years_old_a_person_born_in_the_country_with_two_non_national_parents",
+     "final_driver_label": "In your opinion, which of the following people have a right to be a citizen of the country? A citizen would have the right to get a passport and to vote in national elections if they are at least 18 years old: A person born in the country with two non-national parents?",
+     "var": "Q86B"
+    },
+    {
+     "iid": "question_impl.phase0.2fb3a62609dad4c1306d",
+     "carrier": "QSR_C",
+     "final_driver_id": "metadata::metadata_in_your_opinion_which_of_the_following_people_have_a_right_to_be_a_citizen_of_the_country_a_citizen_would_have_the_right_to_get_a_passport_and_to_vote_in_national_elections_if_they_are_at_least_18_years_old_a_person_born_in_the_country_with_two_non_national_parents",
+     "final_driver_label": "In your opinion, which of the following people have a right to be a citizen of the country? A citizen would have the right to get a passport and to vote in national elections if they are at least 18 years old: A person born in the country with two non-national parents?",
+     "var": "Q86B"
+    }
+   ]
+  },
+  {
+   "test_id": "T3_alias_collision",
+   "hostile_case": "Alias collision",
+   "method": "Detect (family,wave,casefold var) collisions across exact spellings and question_id -> multiple implementation_id mappings.",
+   "verdict": "COLLISIONS_OBSERVED",
+   "var_case_collision_count": 7,
+   "question_id_multi_impl_count": 7,
+   "var_case_collision_examples": [
+    {
+     "family": "LiTS",
+     "wave": "III",
+     "variants": [
+      "DURATION1",
+      "Duration1"
+     ]
+    },
+    {
+     "family": "LiTS",
+     "wave": "III",
+     "variants": [
+      "DURATION2",
+      "Duration2"
+     ]
+    },
+    {
+     "family": "LiTS",
+     "wave": "III",
+     "variants": [
+      "DURATION3",
+      "Duration3"
+     ]
+    },
+    {
+     "family": "LiTS",
+     "wave": "III",
+     "variants": [
+      "DURATION4",
+      "Duration4"
+     ]
+    },
+    {
+     "family": "LiTS",
+     "wave": "III",
+     "variants": [
+      "DURATION5",
+      "Duration5"
+     ]
+    },
+    {
+     "family": "LiTS",
+     "wave": "III",
+     "variants": [
+      "DURATION_ALL",
+      "Duration_ALL"
+     ]
+    },
+    {
+     "family": "LiTS",
+     "wave": "III",
+     "variants": [
+      "InterviewerID",
+      "interviewerID"
+     ]
+    }
+   ],
+   "question_id_multi_impl_examples": [
+    {
+     "question_id": "LiTS:III:Duration1",
+     "implementation_ids": [
+      "question_impl.phase0.448e4b115a868c90ba3c",
+      "question_impl.phase0.a9854046006c99e7f4c1"
+     ]
+    },
+    {
+     "question_id": "LiTS:III:Duration2",
+     "implementation_ids": [
+      "question_impl.phase0.2937ae56ac8572bf9242",
+      "question_impl.phase0.c11ec45e4ed6ab3c9eba"
+     ]
+    },
+    {
+     "question_id": "LiTS:III:Duration3",
+     "implementation_ids": [
+      "question_impl.phase0.a9bc36669aa43d5af794",
+      "question_impl.phase0.d7dcf53284bb31b90422"
+     ]
+    },
+    {
+     "question_id": "LiTS:III:Duration4",
+     "implementation_ids": [
+      "question_impl.phase0.43994419925f20f069a9",
+      "question_impl.phase0.47a717946bf6bca62f3e"
+     ]
+    },
+    {
+     "question_id": "LiTS:III:Duration5",
+     "implementation_ids": [
+      "question_impl.phase0.f265129a44228f826525",
+      "question_impl.phase0.f292f0629ff7ddb8d27d"
+     ]
+    },
+    {
+     "question_id": "LiTS:III:Duration_ALL",
+     "implementation_ids": [
+      "question_impl.phase0.0f22dc097cf38c9b0739",
+      "question_impl.phase0.956ce4e5427176c23a3e"
+     ]
+    },
+    {
+     "question_id": "LiTS:III:interviewerID",
+     "implementation_ids": [
+      "question_impl.phase0.97b8ffaa70c07db4429d",
+      "question_impl.phase0.a6ed6ed2ac1a638ec739"
+     ]
+    }
+   ]
+  }
+ ]
+}

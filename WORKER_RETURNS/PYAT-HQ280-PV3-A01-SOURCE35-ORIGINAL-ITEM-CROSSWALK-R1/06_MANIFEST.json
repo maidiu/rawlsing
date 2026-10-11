@@ -1,0 +1,162 @@
+{
+ "schema": "HQ280_PV3_A01_MANIFEST@1.0.0",
+ "commission": "PYAT-HQ280-PV3-A01-SOURCE35-ORIGINAL-ITEM-CROSSWALK-R1",
+ "terminal": "HQ280_PV3_A01_ALL35_ORIGINAL_ITEM_IDENTITY_CONSERVED_OR_EXACT_INSTRUMENT_HOLDS__GITHUB_PUSHED",
+ "authority_and_control": {
+  "governing_decision": "HQD-2026-10-10-280",
+  "parallel_operating_seal": "908ee4e74849884b1d4c2f532209a0ca57538b67",
+  "canonical_baseline": "a70a069fa948e0f3c041b389edcc732b6b948a4f",
+  "canonical_baseline_ref": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "lr_a_crosswalk_canonical_control_stamp": "6a8c91d99dca1ae2fd3559ba3c11ee26649e3cd9",
+  "note": "LR-A stamp is not the operating-HQ canonical; no reconciliation asserted."
+ },
+ "assigned_branch": "agent/rabochii-pyat-hq280-pv3-a01-source35-original-item-crosswalk-r1",
+ "inputs": {
+  "lr_a_archive": {
+   "path": "/tmp/rawlsing_hq280_LR_A/RAWLSING_HQ280_LR_A_SOURCE_SCIENCE_FORENSIC_RETURN_R1.zip",
+   "sha256": "e201e7923e1d34520dec7134a51e338b5204d55e39c3caa6a51b65888663600b",
+   "expected_sha256": "e201e7923e1d34520dec7134a51e338b5204d55e39c3caa6a51b65888663600b",
+   "bytes": 42955190,
+   "verified": true
+  },
+  "crosswalk": {
+   "path": "/tmp/rawlsing_hq280_LR_A/02_ORIGINAL_ITEM_IDENTITY_CARRIER_CROSSWALK.json",
+   "sha256": "0f2b3f6ea581418e866ca03ec523ee06cdc013d40ff7a403d0711cd632f8463a",
+   "bytes": 423620953,
+   "schema": "RAWLSING_HQ280_LR_A_CROSSWALK@1.0.0",
+   "access": "streamed (ijson), memory-bounded, never fully loaded"
+  }
+ },
+ "committed_reports": [
+  {
+   "path": "00_RETURN.md",
+   "sha256": "727cc3a745b235f17deaf6a580ae80698dd75ebd665c60e902908a06ee632514",
+   "bytes": 6065,
+   "committed_to_git": true
+  },
+  {
+   "path": "01_ALL35_SOURCE_AND_ORIGINAL_ITEM_SUMMARY.json",
+   "sha256": "06760f2b0cd8ec4680edbf66e48bc8f9bf5a0fd0be083c4aa1d7fda4994c4a53",
+   "bytes": 27996,
+   "committed_to_git": true
+  },
+  {
+   "path": "02_INSTRUMENT_PHYSICAL_IMPLEMENTATION_ANTIJOINS.json",
+   "sha256": "311bbace753038132b9163e9199e4f5270431341669f76f15a29eae4a0b4e563",
+   "bytes": 100623,
+   "committed_to_git": true
+  },
+  {
+   "path": "03_NATIVE_TOPOLOGY_IDENTITY_GAPS.md",
+   "sha256": "72b722f99858620f0c728a19cebda54c2f31864b5ba5450e9b89cb91b77d53c9",
+   "bytes": 3928,
+   "committed_to_git": true
+  },
+  {
+   "path": "04_EXACT_SOURCE_COMPETENCE_EDGES.json",
+   "sha256": "17c551f7a0beedf340c198830a955056f31d5ea11002ee17666153cb94339456",
+   "bytes": 163234,
+   "committed_to_git": true
+  },
+  {
+   "path": "05_HOSTILE_COUNT_AND_IDENTITY_TESTS.json",
+   "sha256": "03a41df3bb0858a8518a30139e4f6bf4c14a9e75249ed37594b96462e7f32926",
+   "bytes": 10599,
+   "committed_to_git": true
+  },
+  {
+   "path": "06_MANIFEST.json",
+   "sha256": "bedbd4a4e85d78dbe8c0b29a6a7cce68f9abf223070f6efaa9e2a8abd101b341",
+   "bytes": 5475,
+   "committed_to_git": true
+  }
+ ],
+ "committed_repro": [
+  {
+   "path": "repro/TEST_LOG.txt",
+   "sha256": "594d1530892b45ddf89f00e8490fed43a561899a07d2c7ef17afd54d6e1c1263",
+   "bytes": 6064,
+   "committed_to_git": true
+  },
+  {
+   "path": "repro/build_manifest.py",
+   "sha256": "ee4972158cd8d66eb07125c7e855480df0ac4474fe860e5c0793394cbff4f715",
+   "bytes": 5267,
+   "committed_to_git": true
+  },
+  {
+   "path": "repro/derive_antijoins.py",
+   "sha256": "0fa7c98a22ff5628868f7de009199b9b1724a15883d2f869ba244c143b4c2561",
+   "bytes": 6144,
+   "committed_to_git": true
+  },
+  {
+   "path": "repro/derive_crosswalk.py",
+   "sha256": "fda624bcb741eca59abecd87cc0e441728c3139ca6b74145fcc10b68be16d72b",
+   "bytes": 10407,
+   "committed_to_git": true
+  },
+  {
+   "path": "repro/derive_edges.py",
+   "sha256": "80c0131849265a2e78422895e6d06624056285059f4c15d37517a23d49c88714",
+   "bytes": 2781,
+   "committed_to_git": true
+  },
+  {
+   "path": "repro/derive_hostile_and_edges.py",
+   "sha256": "4e5cc49b6f98ca52551abf5dc82b4b7414673c3f64b21205e1981ad3858a3c3e",
+   "bytes": 6463,
+   "committed_to_git": true
+  },
+  {
+   "path": "repro/probe_one.py",
+   "sha256": "3ed83bc9ca5f3f9279c60decdbdc27c87840252d5217d37fafa882fd1eea6ef1",
+   "bytes": 824,
+   "committed_to_git": true
+  },
+  {
+   "path": "repro/stream_probe.py",
+   "sha256": "a6110fa4649c9a128e9723f08e179f0da18c4ae607262e449f1290227feada30",
+   "bytes": 1466,
+   "committed_to_git": true
+  },
+  {
+   "path": "repro/validate_witnesses.py",
+   "sha256": "2b76216cd873c76429cd1980d8dbf94eb732cb704e83dac095aea0fa77c3740b",
+   "bytes": 4803,
+   "committed_to_git": true
+  },
+  {
+   "path": "repro/witness_results.json",
+   "sha256": "2a88d1db2bd1f82dc73a42da6319002cbe27b8792e031601f10379151bd75cd6",
+   "bytes": 1620,
+   "committed_to_git": true
+  }
+ ],
+ "external_large_dataset": {
+  "pointer": "WORKER_RETURNS/PYAT-HQ280-PV3-A01-SOURCE35-ORIGINAL-ITEM-CROSSWALK-R1/../external/crosswalk_per_implementation.jsonl",
+  "local_path": "/tmp/rawlsing_hq280_PV3A01/external/crosswalk_per_implementation.jsonl",
+  "sha256": "4bcfe8e821a43763304afa9a8fd986f5a5a922da4a512c0a7cb459d5fba1476c",
+  "bytes": 27844706,
+  "records": 18276,
+  "committed_to_git": false,
+  "reason": "per-implementation identity dataset is large; hash-pinned, external only",
+  "sensitivity": "data-only identity crosswalk; no respondent microdata, no lineage export"
+ },
+ "acceptance_summary": {
+  "original_item_identity": "CONSERVED",
+  "witness_checks_all_pass": true,
+  "anti_join_two_sided": true,
+  "no_respondent_microdata_executed": true,
+  "semantic_adoption_granted": false,
+  "model_or_use_grant": false,
+  "canonical_mutated": false
+ },
+ "method_notes": [
+  "streaming/chunked deterministic derivation (ijson) over the 423MB crosswalk",
+  "record input hash + schema in every report",
+  "large data-only outputs partitioned outside Git; manifest + small per-wave counts/gap samples in Git",
+  "unknown counts labeled UNKNOWN, never zero"
+ ]
+}

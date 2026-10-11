@@ -1,0 +1,61 @@
+{
+ "schema": "HQ280_PV3_A01_WITNESS_VALIDATION@1.0.0",
+ "crosswalk": "/tmp/rawlsing_hq280_LR_A/02_ORIGINAL_ITEM_IDENTITY_CARRIER_CROSSWALK.json",
+ "independent_lr_a_summary": "/tmp/rawlsing_hq280_LR_A/evidence/scientific_summary.json",
+ "observed": {
+  "total_implementations": 18276,
+  "deep_bound": 16308,
+  "deep_blocked": 1968,
+  "catalog_only": 26,
+  "register_only": 9,
+  "case_collision_groups": 7,
+  "nonp2_excluded_rows": 7882
+ },
+ "checks": [
+  {
+   "witness": "total_implementations_equals_18276",
+   "expected": 18276,
+   "observed": 18276,
+   "status": "PASS"
+  },
+  {
+   "witness": "deep_bound_16308_plus_blocked_1968_equals_total",
+   "expected": 18276,
+   "observed": 18276,
+   "status": "PASS"
+  },
+  {
+   "witness": "catalog_only_26",
+   "expected": 26,
+   "observed": 26,
+   "status": "PASS"
+  },
+  {
+   "witness": "register_only_9",
+   "expected": 9,
+   "observed": 9,
+   "status": "PASS"
+  },
+  {
+   "witness": "case_collision_groups_7",
+   "expected": 7,
+   "observed": 7,
+   "status": "PASS"
+  },
+  {
+   "witness": "nonp2_excluded_rows_retained_7882",
+   "expected": 7882,
+   "observed": 7882,
+   "status": "PASS"
+  },
+  {
+   "witness": "register_only_items_are_retained_as_complement_not_dropped",
+   "expected": 0,
+   "observed": 0,
+   "status": "PASS",
+   "note": "register-only items are retained in nonp2_and_excluded_rows, not in implementations; they are not silently dropped \u2014 they are typed complement rows."
+  }
+ ],
+ "all_pass": true,
+ "unknown_not_zero_policy": "Any count without an independent witness is reported UNKNOWN, never zero; none were coerced to zero in this return."
+}

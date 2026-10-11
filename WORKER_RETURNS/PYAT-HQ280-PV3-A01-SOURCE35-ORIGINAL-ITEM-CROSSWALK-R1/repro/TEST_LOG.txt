@@ -1,0 +1,85 @@
+=== HQ280 PV3 A01 exact test log ===
+python: Python 3.11.3
+ijson: 3.5.1
+
+--- derive_crosswalk ---
+implementations: 18276 | waves: 35 | families: 9
+no-binding: 0 | conflicts: 10457 | casefold-only: 0
+duplicate impl ids: 0 | duplicate identity sha: 0 | duplicate case namespaces: 7
+roles: {'ADMINISTRATIVE_NONMEASURE': 490, 'CONTEXT_NONMEASURE': 4472, 'DERIVED_NONMEASURE_OR_CONTEXT': 29, 'MEASUREMENT_CANDIDATE': 13270, 'NONMEASURE_OR_ADMIN_HINT': 15}
+large dataset sha256: 4bcfe8e821a43763304afa9a8fd986f5a5a922da4a512c0a7cb459d5fba1476c
+
+--- derive_antijoins ---
+carrier universe: 46
+non-P2/excluded rows retained: 7882 {'EXACT_SCIENTIFIC_OR_PERMISSION_HOLD': 4316, 'IDENTITY_OR_PRECEDENCE_CONFLICT': 3566}
+full-coverage carriers: 4
+partial/zero carriers: 42
+coverage tiers (n_carriers_bound -> count): {7: 5, 10: 11, 11: 115, 12: 7, 13: 63, 14: 2815, 15: 7846, 16: 1007, 17: 2768, 18: 1849, 19: 321, 20: 1450, 21: 4, 22: 15}
+    0.224%      41  BLOCKED_QSMV2_IMPLEMENTATIONS_41_R1
+    0.224%      41  BLOCKED_QSMV2_UNITS_21_R1
+    4.996%     913  DEEP_Rawlsing_P2_Afrobarometer_Deep_Question_Node_Catalog_v1.csv
+    9.291%    1698  DEEP_Rawlsing_P2_Arab_Barometer_Deep_Question_Node_Catalog_v1.csv
+    4.454%     814  DEEP_Rawlsing_P2_Asian_Barometer_Deep_Question_Node_Catalog_v2.csv
+   12.169%    2224  DEEP_Rawlsing_P2_EVS_Deep_Question_Node_Catalog_v1.csv
+   32.945%    6021  DEEP_Rawlsing_P2_GSS_Deep_Question_Node_Catalog_v1.csv
+    4.443%     812  DEEP_Rawlsing_P2_Latinobarometro_Deep_Question_Node_Catalog_v2.csv
+   24.261%    4434  DEEP_Rawlsing_P2_LiTS_Deep_Question_Node_Catalog_v2.csv
+    0.772%     141  DEEP_Rawlsing_P2_South_Asia_Deep_Question_Node_Catalog_v2.csv
+    6.670%    1219  DEEP_Rawlsing_P2_WVS_Deep_Question_Node_Catalog_v1.csv
+   98.774%   18052  DRIVERS_D62
+   99.174%   18125  FIRST_PASS_35WAVE
+   99.858%   18250  FQRA_R1
+    4.996%     913  MANUAL_Rawlsing_AFROBAROMETER_MANUAL_AUTHORITY_PACKET_REBUILT_20260714
+    9.291%    1698  MANUAL_Rawlsing_ARAB_BAROMETER_MANUAL_AUTHORITY_PACKET_REBUILT_20260713
+    4.454%     814  MANUAL_Rawlsing_ASIAN_BAROMETER_MANUAL_AUTHORITY_PACKET_REBUILT_20260714
+   12.169%    2224  MANUAL_Rawlsing_EVS_MANUAL_AUTHORITY_PACKET_20260715_LEGACY_GATE_CORRECTED
+   32.945%    6021  MANUAL_Rawlsing_GSS_ALL_EIGHT_WAVE_MANUAL_AUTHORITY_PACKET_20260717
+    4.443%     812  MANUAL_Rawlsing_LATINOBAROMETRO_MANUAL_AUTHORITY_PACKET_REBUILT_20260713
+   24.261%    4434  MANUAL_Rawlsing_LITS_MANUAL_AUTHORITY_PACKET_20260716
+    0.772%     141  MANUAL_Rawlsing_SOUTH_ASIA_BAROMETER_MANUAL_AUTHORITY_PACKET_20260715_MANUAL_ALIGNED
+    6.670%    1219  MANUAL_Rawlsing_WVS_MANUAL_AUTHORITY_PACKET_20260716
+    4.547%     831  OPTIONS_Rawlsing_AFROBAROMETER_MANUAL_AUTHORITY_PACKET_REBUILT_20260714
+    9.034%    1651  OPTIONS_Rawlsing_ARAB_BAROMETER_MANUAL_AUTHORITY_PACKET_REBUILT_20260713
+    3.841%     702  OPTIONS_Rawlsing_ASIAN_BAROMETER_MANUAL_AUTHORITY_PACKET_REBUILT_20260714
+   11.934%    2181  OPTIONS_Rawlsing_EVS_MANUAL_AUTHORITY_PACKET_20260715_LEGACY_GATE_CORRECTED
+   32.316%    5906  OPTIONS_Rawlsing_GSS_ALL_EIGHT_WAVE_MANUAL_AUTHORITY_PACKET_20260717
+    4.241%     775  OPTIONS_Rawlsing_LATINOBAROMETRO_MANUAL_AUTHORITY_PACKET_REBUILT_20260713
+   16.760%    3063  OPTIONS_Rawlsing_LITS_MANUAL_AUTHORITY_PACKET_20260716
+    0.739%     135  OPTIONS_Rawlsing_SOUTH_ASIA_BAROMETER_MANUAL_AUTHORITY_PACKET_20260715_MANUAL_ALIGNED
+    5.822%    1064  OPTIONS_Rawlsing_WVS_MANUAL_AUTHORITY_PACKET_20260716
+   24.283%    4438  QSMV2_INTEGRATED_IMPLEMENTATION_BLOCKS_4438_R1
+   24.283%    4438  QSMV2_INTEGRATED_UNIT_AUTHORITY_3196_R1
+   24.283%    4438  QSMV2_STRUCTURAL_AUTHORITY_LEDGER_4438_R1
+  100.000%   18276  QSM_PROVENANCE
+  100.000%   18276  QSM_RAW
+   98.889%   18073  QSR_A
+   99.776%   18235  QSR_B
+   99.776%   18235  QSR_C
+   82.939%   15158  QUESTIONS_MASTER
+  100.000%   18276  R10K_IMPLEMENTATION_SOURCE_CONTEXT_R1.csv
+  100.000%   18276  R10K_O06_IMPLEMENTATION_ROUTING_CENTRAL.jsonl
+   98.774%   18052  SEMANTIC_171D
+   26.910%    4918  V525B_DRIVERS
+   26.910%    4918  V525B_SEMANTIC
+
+--- derive_edges ---
+wave/family populations: 35 | edge rows: 544
+edge rows at 100% wave coverage: 463 / 544
+
+--- derive_hostile_and_edges ---
+T1 omission bait carriers: 42 | full-coverage: 4
+T2 battery/parent/child impls: 129
+T3 var-case collisions: 7 | qid->multi-impl: 7
+   var example: {'family': 'LiTS', 'wave': 'III', 'variants': ['DURATION1', 'Duration1']}
+   qid example: {'question_id': 'LiTS:III:Duration1', 'implementation_ids': ['question_impl.phase0.448e4b115a868c90ba3c', 'question_impl.phase0.a9854046006c99e7f4c1']}
+   battery example: {'iid': 'question_impl.phase0.67f036c0efb7fb98ff4a', 'carrier': 'QSR_A', 'final_driver_id': 'metadata::metadata_in_your_opinion_which_of_the_following_people_have_a_right_to_be_a_citizen_of_the_country_a_citizen_would_have_the_right_to_get_a_passport_and_to_vote_in_national_elections_if_they_are_at_least_18_years_old_a_person_born_in_the_country_with_one_national_and_one_non_national_parent', 'final_driver_label': 'In your opinion, which of the following people have a right to be a citizen of the country? A citizen would have the right to get a passport and to vote in national elections if they are at least 18 years old: A person born in the country with one national and one non-national parent?', 'var': 'Q86A'}
+
+--- validate_witnesses ---
+PASS      total_implementations_equals_18276                           expected=18276 observed=18276
+PASS      deep_bound_16308_plus_blocked_1968_equals_total              expected=18276 observed=18276
+PASS      catalog_only_26                                              expected=26 observed=26
+PASS      register_only_9                                              expected=9 observed=9
+PASS      case_collision_groups_7                                      expected=7 observed=7
+PASS      nonp2_excluded_rows_retained_7882                            expected=7882 observed=7882
+PASS      register_only_items_are_retained_as_complement_not_dropped   expected=0 observed=0
+ALL_PASS = True

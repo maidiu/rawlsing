@@ -1,0 +1,963 @@
+{
+ "schema": "HQ280_PV3_A01_ALL35_SOURCE_AND_ORIGINAL_ITEM_SUMMARY@1.0.0",
+ "input": {
+  "crosswalk_path": "/tmp/rawlsing_hq280_LR_A/02_ORIGINAL_ITEM_IDENTITY_CARRIER_CROSSWALK.json",
+  "crosswalk_sha256": "0f2b3f6ea581418e866ca03ec523ee06cdc013d40ff7a403d0711cd632f8463a",
+  "crosswalk_bytes": 423620953,
+  "crosswalk_schema": "RAWLSING_HQ280_LR_A_CROSSWALK@1.0.0",
+  "lr_a_archive_sha256": "e201e7923e1d34520dec7134a51e338b5204d55e39c3caa6a51b65888663600b"
+ },
+ "implementations_streamed": 18276,
+ "distinct_implementation_ids": 18276,
+ "duplicate_implementation_ids": {},
+ "duplicate_exact_identity_sha256": {},
+ "wave_count": 35,
+ "family_count": 9,
+ "grain_counts": {
+  "HISTORICAL_IMPLEMENTATION__NOT_AUTOMATICALLY_ORIGINAL_MEASURED_ITEM": 18276
+ },
+ "measure_role_counts": {
+  "ADMINISTRATIVE_NONMEASURE": 490,
+  "CONTEXT_NONMEASURE": 4472,
+  "DERIVED_NONMEASURE_OR_CONTEXT": 29,
+  "MEASUREMENT_CANDIDATE": 13270,
+  "NONMEASURE_OR_ADMIN_HINT": 15
+ },
+ "carrier_binding_counts": {
+  "DEEP_Rawlsing_P2_Afrobarometer_Deep_Question_Node_Catalog_v1.csv": 913,
+  "DRIVERS_D62": 18052,
+  "FIRST_PASS_35WAVE": 18125,
+  "FQRA_R1": 18250,
+  "MANUAL_Rawlsing_AFROBAROMETER_MANUAL_AUTHORITY_PACKET_REBUILT_20260714": 913,
+  "QSM_PROVENANCE": 18276,
+  "QSM_RAW": 18276,
+  "QSR_A": 18073,
+  "QSR_B": 18235,
+  "QSR_C": 18235,
+  "R10K_IMPLEMENTATION_SOURCE_CONTEXT_R1.csv": 18276,
+  "R10K_O06_IMPLEMENTATION_ROUTING_CENTRAL.jsonl": 18276,
+  "SEMANTIC_171D": 18052,
+  "V525B_DRIVERS": 4918,
+  "V525B_SEMANTIC": 4918,
+  "OPTIONS_Rawlsing_AFROBAROMETER_MANUAL_AUTHORITY_PACKET_REBUILT_20260714": 831,
+  "QSMV2_INTEGRATED_IMPLEMENTATION_BLOCKS_4438_R1": 4438,
+  "QSMV2_INTEGRATED_UNIT_AUTHORITY_3196_R1": 4438,
+  "QSMV2_STRUCTURAL_AUTHORITY_LEDGER_4438_R1": 4438,
+  "BLOCKED_QSMV2_IMPLEMENTATIONS_41_R1": 41,
+  "BLOCKED_QSMV2_UNITS_21_R1": 41,
+  "DEEP_Rawlsing_P2_Arab_Barometer_Deep_Question_Node_Catalog_v1.csv": 1698,
+  "MANUAL_Rawlsing_ARAB_BAROMETER_MANUAL_AUTHORITY_PACKET_REBUILT_20260713": 1698,
+  "OPTIONS_Rawlsing_ARAB_BAROMETER_MANUAL_AUTHORITY_PACKET_REBUILT_20260713": 1651,
+  "QUESTIONS_MASTER": 15158,
+  "DEEP_Rawlsing_P2_Asian_Barometer_Deep_Question_Node_Catalog_v2.csv": 814,
+  "MANUAL_Rawlsing_ASIAN_BAROMETER_MANUAL_AUTHORITY_PACKET_REBUILT_20260714": 814,
+  "OPTIONS_Rawlsing_ASIAN_BAROMETER_MANUAL_AUTHORITY_PACKET_REBUILT_20260714": 702,
+  "DEEP_Rawlsing_P2_EVS_Deep_Question_Node_Catalog_v1.csv": 2224,
+  "MANUAL_Rawlsing_EVS_MANUAL_AUTHORITY_PACKET_20260715_LEGACY_GATE_CORRECTED": 2224,
+  "OPTIONS_Rawlsing_EVS_MANUAL_AUTHORITY_PACKET_20260715_LEGACY_GATE_CORRECTED": 2181,
+  "DEEP_Rawlsing_P2_GSS_Deep_Question_Node_Catalog_v1.csv": 6021,
+  "MANUAL_Rawlsing_GSS_ALL_EIGHT_WAVE_MANUAL_AUTHORITY_PACKET_20260717": 6021,
+  "OPTIONS_Rawlsing_GSS_ALL_EIGHT_WAVE_MANUAL_AUTHORITY_PACKET_20260717": 5906,
+  "DEEP_Rawlsing_P2_Latinobarometro_Deep_Question_Node_Catalog_v2.csv": 812,
+  "MANUAL_Rawlsing_LATINOBAROMETRO_MANUAL_AUTHORITY_PACKET_REBUILT_20260713": 812,
+  "OPTIONS_Rawlsing_LATINOBAROMETRO_MANUAL_AUTHORITY_PACKET_REBUILT_20260713": 775,
+  "DEEP_Rawlsing_P2_LiTS_Deep_Question_Node_Catalog_v2.csv": 4434,
+  "MANUAL_Rawlsing_LITS_MANUAL_AUTHORITY_PACKET_20260716": 4434,
+  "OPTIONS_Rawlsing_LITS_MANUAL_AUTHORITY_PACKET_20260716": 3063,
+  "DEEP_Rawlsing_P2_South_Asia_Deep_Question_Node_Catalog_v2.csv": 141,
+  "MANUAL_Rawlsing_SOUTH_ASIA_BAROMETER_MANUAL_AUTHORITY_PACKET_20260715_MANUAL_ALIGNED": 141,
+  "OPTIONS_Rawlsing_SOUTH_ASIA_BAROMETER_MANUAL_AUTHORITY_PACKET_20260715_MANUAL_ALIGNED": 135,
+  "DEEP_Rawlsing_P2_WVS_Deep_Question_Node_Catalog_v1.csv": 1219,
+  "MANUAL_Rawlsing_WVS_MANUAL_AUTHORITY_PACKET_20260716": 1219,
+  "OPTIONS_Rawlsing_WVS_MANUAL_AUTHORITY_PACKET_20260716": 1064
+ },
+ "join_basis_counts": {
+  "EXACT_COORDINATE_CANDIDATE__VARIABLE_CASE_PRESERVED": 513113,
+  "EXPLICIT_IMPLEMENTATION_ID": 73078,
+  "EXPLICIT_IMPLEMENTATION_ID__SEMANTIC_UNIT_MEMBERSHIP_NOT_ITEM_COLLAPSE": 13396
+ },
+ "implementations_with_no_binding": 0,
+ "implementations_with_alternative_conflicts": 10457,
+ "implementations_casefold_only_no_binding": 0,
+ "duplicate_case_namespace_keys": 7,
+ "current_adoption_counts": {
+  "UNPROVED_BY_THIS_INVESTIGATOR": 18276
+ },
+ "duplicate_namespace_examples": [
+  {
+   "family": "LiTS",
+   "wave": "III",
+   "var_code_lower": "duration1",
+   "observed_exact_variants": [
+    "DURATION1",
+    "Duration1"
+   ]
+  },
+  {
+   "family": "LiTS",
+   "wave": "III",
+   "var_code_lower": "duration2",
+   "observed_exact_variants": [
+    "DURATION2",
+    "Duration2"
+   ]
+  },
+  {
+   "family": "LiTS",
+   "wave": "III",
+   "var_code_lower": "duration3",
+   "observed_exact_variants": [
+    "DURATION3",
+    "Duration3"
+   ]
+  },
+  {
+   "family": "LiTS",
+   "wave": "III",
+   "var_code_lower": "duration4",
+   "observed_exact_variants": [
+    "DURATION4",
+    "Duration4"
+   ]
+  },
+  {
+   "family": "LiTS",
+   "wave": "III",
+   "var_code_lower": "duration5",
+   "observed_exact_variants": [
+    "DURATION5",
+    "Duration5"
+   ]
+  },
+  {
+   "family": "LiTS",
+   "wave": "III",
+   "var_code_lower": "duration_all",
+   "observed_exact_variants": [
+    "DURATION_ALL",
+    "Duration_ALL"
+   ]
+  },
+  {
+   "family": "LiTS",
+   "wave": "III",
+   "var_code_lower": "interviewerid",
+   "observed_exact_variants": [
+    "InterviewerID",
+    "interviewerID"
+   ]
+  }
+ ],
+ "per_wave": [
+  {
+   "family": "Afrobarometer",
+   "wave": "R1",
+   "implementations": 144,
+   "with_bindings": 144,
+   "role_counts": {
+    "ADMINISTRATIVE_NONMEASURE": 10,
+    "CONTEXT_NONMEASURE": 42,
+    "MEASUREMENT_CANDIDATE": 92
+   },
+   "alternative_conflicts_total": 0,
+   "gap_samples": {}
+  },
+  {
+   "family": "Afrobarometer",
+   "wave": "R5",
+   "implementations": 348,
+   "with_bindings": 348,
+   "role_counts": {
+    "ADMINISTRATIVE_NONMEASURE": 64,
+    "CONTEXT_NONMEASURE": 175,
+    "DERIVED_NONMEASURE_OR_CONTEXT": 3,
+    "MEASUREMENT_CANDIDATE": 106
+   },
+   "alternative_conflicts_total": 0,
+   "gap_samples": {}
+  },
+  {
+   "family": "Afrobarometer",
+   "wave": "R9",
+   "implementations": 421,
+   "with_bindings": 421,
+   "role_counts": {
+    "ADMINISTRATIVE_NONMEASURE": 61,
+    "CONTEXT_NONMEASURE": 213,
+    "DERIVED_NONMEASURE_OR_CONTEXT": 24,
+    "MEASUREMENT_CANDIDATE": 123
+   },
+   "alternative_conflicts_total": 0,
+   "gap_samples": {}
+  },
+  {
+   "family": "Arab Barometer",
+   "wave": "I",
+   "implementations": 181,
+   "with_bindings": 181,
+   "role_counts": {
+    "CONTEXT_NONMEASURE": 34,
+    "MEASUREMENT_CANDIDATE": 147
+   },
+   "alternative_conflicts_total": 0,
+   "gap_samples": {}
+  },
+  {
+   "family": "Arab Barometer",
+   "wave": "II",
+   "implementations": 468,
+   "with_bindings": 468,
+   "role_counts": {
+    "CONTEXT_NONMEASURE": 142,
+    "MEASUREMENT_CANDIDATE": 326
+   },
+   "alternative_conflicts_total": 0,
+   "gap_samples": {}
+  },
+  {
+   "family": "Arab Barometer",
+   "wave": "V",
+   "implementations": 359,
+   "with_bindings": 359,
+   "role_counts": {
+    "CONTEXT_NONMEASURE": 185,
+    "MEASUREMENT_CANDIDATE": 173,
+    "NONMEASURE_OR_ADMIN_HINT": 1
+   },
+   "alternative_conflicts_total": 0,
+   "gap_samples": {}
+  },
+  {
+   "family": "Arab Barometer",
+   "wave": "VIII",
+   "implementations": 690,
+   "with_bindings": 690,
+   "role_counts": {
+    "CONTEXT_NONMEASURE": 353,
+    "MEASUREMENT_CANDIDATE": 336,
+    "NONMEASURE_OR_ADMIN_HINT": 1
+   },
+   "alternative_conflicts_total": 0,
+   "gap_samples": {}
+  },
+  {
+   "family": "Asian Barometer",
+   "wave": "W1",
+   "implementations": 217,
+   "with_bindings": 217,
+   "role_counts": {
+    "ADMINISTRATIVE_NONMEASURE": 12,
+    "CONTEXT_NONMEASURE": 95,
+    "MEASUREMENT_CANDIDATE": 110
+   },
+   "alternative_conflicts_total": 0,
+   "gap_samples": {}
+  },
+  {
+   "family": "Asian Barometer",
+   "wave": "W4",
+   "implementations": 289,
+   "with_bindings": 289,
+   "role_counts": {
+    "ADMINISTRATIVE_NONMEASURE": 8,
+    "CONTEXT_NONMEASURE": 112,
+    "MEASUREMENT_CANDIDATE": 169
+   },
+   "alternative_conflicts_total": 0,
+   "gap_samples": {}
+  },
+  {
+   "family": "Asian Barometer",
+   "wave": "W5",
+   "implementations": 308,
+   "with_bindings": 308,
+   "role_counts": {
+    "ADMINISTRATIVE_NONMEASURE": 7,
+    "CONTEXT_NONMEASURE": 113,
+    "DERIVED_NONMEASURE_OR_CONTEXT": 2,
+    "MEASUREMENT_CANDIDATE": 186
+   },
+   "alternative_conflicts_total": 0,
+   "gap_samples": {}
+  },
+  {
+   "family": "EVS",
+   "wave": "1981",
+   "implementations": 370,
+   "with_bindings": 370,
+   "role_counts": {
+    "ADMINISTRATIVE_NONMEASURE": 2,
+    "MEASUREMENT_CANDIDATE": 368
+   },
+   "alternative_conflicts_total": 0,
+   "gap_samples": {}
+  },
+  {
+   "family": "EVS",
+   "wave": "1990",
+   "implementations": 390,
+   "with_bindings": 390,
+   "role_counts": {
+    "ADMINISTRATIVE_NONMEASURE": 4,
+    "CONTEXT_NONMEASURE": 1,
+    "MEASUREMENT_CANDIDATE": 385
+   },
+   "alternative_conflicts_total": 0,
+   "gap_samples": {}
+  },
+  {
+   "family": "EVS",
+   "wave": "1999",
+   "implementations": 513,
+   "with_bindings": 513,
+   "role_counts": {
+    "ADMINISTRATIVE_NONMEASURE": 4,
+    "CONTEXT_NONMEASURE": 1,
+    "MEASUREMENT_CANDIDATE": 508
+   },
+   "alternative_conflicts_total": 0,
+   "gap_samples": {}
+  },
+  {
+   "family": "EVS",
+   "wave": "2008",
+   "implementations": 477,
+   "with_bindings": 477,
+   "role_counts": {
+    "ADMINISTRATIVE_NONMEASURE": 4,
+    "CONTEXT_NONMEASURE": 1,
+    "MEASUREMENT_CANDIDATE": 472
+   },
+   "alternative_conflicts_total": 0,
+   "gap_samples": {}
+  },
+  {
+   "family": "EVS",
+   "wave": "2017",
+   "implementations": 474,
+   "with_bindings": 474,
+   "role_counts": {
+    "ADMINISTRATIVE_NONMEASURE": 14,
+    "CONTEXT_NONMEASURE": 14,
+    "MEASUREMENT_CANDIDATE": 444,
+    "NONMEASURE_OR_ADMIN_HINT": 2
+   },
+   "alternative_conflicts_total": 0,
+   "gap_samples": {}
+  },
+  {
+   "family": "GSS",
+   "wave": "1972",
+   "implementations": 216,
+   "with_bindings": 216,
+   "role_counts": {
+    "CONTEXT_NONMEASURE": 44,
+    "MEASUREMENT_CANDIDATE": 172
+   },
+   "alternative_conflicts_total": 216,
+   "gap_samples": {
+    "conflict": [
+     {
+      "question_implementation_id": "question_impl.phase0.d292d43a900c311b3b1c",
+      "source_variable_code_exact": "abdefect",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.6854543f9e0c00197661",
+      "source_variable_code_exact": "abhlth",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.0b98e85ad59489ef0d20",
+      "source_variable_code_exact": "abnomore",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.16f57b613e4329998eb3",
+      "source_variable_code_exact": "abpoor",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.75881b2f3c8a69ce35f1",
+      "source_variable_code_exact": "abrape",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     }
+    ]
+   }
+  },
+  {
+   "family": "GSS",
+   "wave": "1973",
+   "implementations": 339,
+   "with_bindings": 339,
+   "role_counts": {
+    "CONTEXT_NONMEASURE": 48,
+    "MEASUREMENT_CANDIDATE": 291
+   },
+   "alternative_conflicts_total": 339,
+   "gap_samples": {
+    "conflict": [
+     {
+      "question_implementation_id": "question_impl.phase0.bb7f69b7f5938c5d2e65",
+      "source_variable_code_exact": "abdefect",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.c4069d5a276ee56be677",
+      "source_variable_code_exact": "abhlth",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.ed62f99c401abffa0b5b",
+      "source_variable_code_exact": "abnomore",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.78adbdc6af1a1bb970c8",
+      "source_variable_code_exact": "aborct",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.1bdd9e7b6024d62e0c91",
+      "source_variable_code_exact": "abpoor",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     }
+    ]
+   }
+  },
+  {
+   "family": "GSS",
+   "wave": "1984",
+   "implementations": 675,
+   "with_bindings": 675,
+   "role_counts": {
+    "CONTEXT_NONMEASURE": 108,
+    "MEASUREMENT_CANDIDATE": 566,
+    "NONMEASURE_OR_ADMIN_HINT": 1
+   },
+   "alternative_conflicts_total": 675,
+   "gap_samples": {
+    "conflict": [
+     {
+      "question_implementation_id": "question_impl.phase0.e171c17be11c60ce5840",
+      "source_variable_code_exact": "abany",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.d23b82087ef238022354",
+      "source_variable_code_exact": "abcare",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.a8d2a701c1dcef13de62",
+      "source_variable_code_exact": "abdefect",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.cce659510705d6b89b31",
+      "source_variable_code_exact": "abfirm",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.9301099cad20ea5b5b05",
+      "source_variable_code_exact": "abhlth",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     }
+    ]
+   }
+  },
+  {
+   "family": "GSS",
+   "wave": "1993",
+   "implementations": 752,
+   "with_bindings": 752,
+   "role_counts": {
+    "CONTEXT_NONMEASURE": 138,
+    "MEASUREMENT_CANDIDATE": 613,
+    "NONMEASURE_OR_ADMIN_HINT": 1
+   },
+   "alternative_conflicts_total": 752,
+   "gap_samples": {
+    "conflict": [
+     {
+      "question_implementation_id": "question_impl.phase0.51b35a036068417c8fe0",
+      "source_variable_code_exact": "abany",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.db76b576cd89e3223278",
+      "source_variable_code_exact": "abdefect",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.19fea645f0733f9def7f",
+      "source_variable_code_exact": "abhlth",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.91849a2d395fb6d52287",
+      "source_variable_code_exact": "abnomore",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.15d96147c01cc1df9561",
+      "source_variable_code_exact": "abpoor",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     }
+    ]
+   }
+  },
+  {
+   "family": "GSS",
+   "wave": "2002",
+   "implementations": 1119,
+   "with_bindings": 1119,
+   "role_counts": {
+    "CONTEXT_NONMEASURE": 137,
+    "MEASUREMENT_CANDIDATE": 981,
+    "NONMEASURE_OR_ADMIN_HINT": 1
+   },
+   "alternative_conflicts_total": 1119,
+   "gap_samples": {
+    "conflict": [
+     {
+      "question_implementation_id": "question_impl.phase0.8ad4a48146d247ecd389",
+      "source_variable_code_exact": "abany",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.45ace696dbd830b04729",
+      "source_variable_code_exact": "abdefect",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.5293a667d39627fbca8b",
+      "source_variable_code_exact": "abhlth",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.3cc925ddb6c18bd16025",
+      "source_variable_code_exact": "abnomore",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.e601685c7f25001fe87a",
+      "source_variable_code_exact": "abort12",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     }
+    ]
+   }
+  },
+  {
+   "family": "GSS",
+   "wave": "2010",
+   "implementations": 922,
+   "with_bindings": 922,
+   "role_counts": {
+    "CONTEXT_NONMEASURE": 14,
+    "MEASUREMENT_CANDIDATE": 907,
+    "NONMEASURE_OR_ADMIN_HINT": 1
+   },
+   "alternative_conflicts_total": 922,
+   "gap_samples": {
+    "conflict": [
+     {
+      "question_implementation_id": "question_impl.phase0.1569f26ce284ee346a1c",
+      "source_variable_code_exact": "abany",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.8da159b3ddb964ba6920",
+      "source_variable_code_exact": "abdefect",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.dc8a1f84391d374d3994",
+      "source_variable_code_exact": "abhlth",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.7555028a2eafddb1c875",
+      "source_variable_code_exact": "abnomore",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.431fcff818ae0ade40bf",
+      "source_variable_code_exact": "abpoor",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     }
+    ]
+   }
+  },
+  {
+   "family": "GSS",
+   "wave": "2016",
+   "implementations": 1018,
+   "with_bindings": 1018,
+   "role_counts": {
+    "CONTEXT_NONMEASURE": 92,
+    "MEASUREMENT_CANDIDATE": 924,
+    "NONMEASURE_OR_ADMIN_HINT": 2
+   },
+   "alternative_conflicts_total": 1018,
+   "gap_samples": {
+    "conflict": [
+     {
+      "question_implementation_id": "question_impl.phase0.388a01fb094a3f81ac6b",
+      "source_variable_code_exact": "abany",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.5bbf9f25f27cf385fade",
+      "source_variable_code_exact": "abdefect",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.34c2787bfafaeeab3d50",
+      "source_variable_code_exact": "abhlth",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.d48f4a1e573dd15d4b8a",
+      "source_variable_code_exact": "abnomore",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.1480f92008f67afd4b40",
+      "source_variable_code_exact": "abpoor",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     }
+    ]
+   }
+  },
+  {
+   "family": "GSS",
+   "wave": "2024",
+   "implementations": 980,
+   "with_bindings": 980,
+   "role_counts": {
+    "ADMINISTRATIVE_NONMEASURE": 26,
+    "MEASUREMENT_CANDIDATE": 954
+   },
+   "alternative_conflicts_total": 980,
+   "gap_samples": {
+    "conflict": [
+     {
+      "question_implementation_id": "question_impl.phase0.eaadb4c99a2528500c3d",
+      "source_variable_code_exact": "abany",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.1bd2056b47f162b5da02",
+      "source_variable_code_exact": "abanyg",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.be54e9d12c75b9ed00a8",
+      "source_variable_code_exact": "abdefect",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.b6fb2fa508cbb0405c65",
+      "source_variable_code_exact": "abdefectg",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.992179426a8fbd285703",
+      "source_variable_code_exact": "abhelp1",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     }
+    ]
+   }
+  },
+  {
+   "family": "Latinobar\u00f3metro",
+   "wave": "1995",
+   "implementations": 203,
+   "with_bindings": 203,
+   "role_counts": {
+    "CONTEXT_NONMEASURE": 97,
+    "MEASUREMENT_CANDIDATE": 106
+   },
+   "alternative_conflicts_total": 2,
+   "gap_samples": {
+    "conflict": [
+     {
+      "question_implementation_id": "question_impl.phase0.410de40f9cd6d15b05cf",
+      "source_variable_code_exact": "p45",
+      "measure_role_class": "CONTEXT_NONMEASURE"
+     }
+    ]
+   }
+  },
+  {
+   "family": "Latinobar\u00f3metro",
+   "wave": "2011",
+   "implementations": 414,
+   "with_bindings": 414,
+   "role_counts": {
+    "CONTEXT_NONMEASURE": 188,
+    "MEASUREMENT_CANDIDATE": 226
+   },
+   "alternative_conflicts_total": 0,
+   "gap_samples": {}
+  },
+  {
+   "family": "Latinobar\u00f3metro",
+   "wave": "2024",
+   "implementations": 195,
+   "with_bindings": 195,
+   "role_counts": {
+    "CONTEXT_NONMEASURE": 67,
+    "MEASUREMENT_CANDIDATE": 128
+   },
+   "alternative_conflicts_total": 8,
+   "gap_samples": {
+    "conflict": [
+     {
+      "question_implementation_id": "question_impl.phase0.fa04b3cce5de4009cb61",
+      "source_variable_code_exact": "Q47STB",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     }
+    ]
+   }
+  },
+  {
+   "family": "LiTS",
+   "wave": "2006",
+   "implementations": 1198,
+   "with_bindings": 1198,
+   "role_counts": {
+    "ADMINISTRATIVE_NONMEASURE": 7,
+    "CONTEXT_NONMEASURE": 623,
+    "MEASUREMENT_CANDIDATE": 568
+   },
+   "alternative_conflicts_total": 1198,
+   "gap_samples": {
+    "conflict": [
+     {
+      "question_implementation_id": "question_impl.phase0.d98750779de583f994f6",
+      "source_variable_code_exact": "adults",
+      "measure_role_class": "CONTEXT_NONMEASURE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.5f451030dea4af6b282d",
+      "source_variable_code_exact": "age1",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.200815acc8850e4dc32b",
+      "source_variable_code_exact": "age10",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.87b45caa3b9f1ce9d299",
+      "source_variable_code_exact": "age11",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.f2e6c635f0c353c80fe6",
+      "source_variable_code_exact": "age12",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     }
+    ]
+   }
+  },
+  {
+   "family": "LiTS",
+   "wave": "II",
+   "implementations": 627,
+   "with_bindings": 627,
+   "role_counts": {
+    "ADMINISTRATIVE_NONMEASURE": 9,
+    "CONTEXT_NONMEASURE": 391,
+    "MEASUREMENT_CANDIDATE": 227
+   },
+   "alternative_conflicts_total": 627,
+   "gap_samples": {
+    "conflict": [
+     {
+      "question_implementation_id": "question_impl.phase0.e873f8b06d33b3d33772",
+      "source_variable_code_exact": "Adults_i",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.871407af625d23e00979",
+      "source_variable_code_exact": "Children",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.cf10473c3d8bbb8796f0",
+      "source_variable_code_exact": "Females_",
+      "measure_role_class": "CONTEXT_NONMEASURE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.db2603a63ac9dc948e85",
+      "source_variable_code_exact": "Head_Of0",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.5e875a1875074348617d",
+      "source_variable_code_exact": "Head_Of_",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     }
+    ]
+   }
+  },
+  {
+   "family": "LiTS",
+   "wave": "III",
+   "implementations": 1290,
+   "with_bindings": 1290,
+   "role_counts": {
+    "ADMINISTRATIVE_NONMEASURE": 51,
+    "CONTEXT_NONMEASURE": 340,
+    "MEASUREMENT_CANDIDATE": 899
+   },
+   "alternative_conflicts_total": 1304,
+   "gap_samples": {
+    "conflict": [
+     {
+      "question_implementation_id": "question_impl.phase0.23e830d46526ce9ce317",
+      "source_variable_code_exact": "B1",
+      "measure_role_class": "CONTEXT_NONMEASURE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.dc3b04b0525a720df5a2",
+      "source_variable_code_exact": "C1",
+      "measure_role_class": "CONTEXT_NONMEASURE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.306ee036ccf27ee0f2e7",
+      "source_variable_code_exact": "C1_notes",
+      "measure_role_class": "CONTEXT_NONMEASURE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.7341fcbd55e7ffa6053a",
+      "source_variable_code_exact": "C2",
+      "measure_role_class": "CONTEXT_NONMEASURE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.97c70ec8d4ac4f254c86",
+      "source_variable_code_exact": "C2_notes",
+      "measure_role_class": "CONTEXT_NONMEASURE"
+     }
+    ]
+   }
+  },
+  {
+   "family": "LiTS",
+   "wave": "IV",
+   "implementations": 1319,
+   "with_bindings": 1319,
+   "role_counts": {
+    "ADMINISTRATIVE_NONMEASURE": 192,
+    "CONTEXT_NONMEASURE": 658,
+    "MEASUREMENT_CANDIDATE": 469
+   },
+   "alternative_conflicts_total": 1319,
+   "gap_samples": {
+    "conflict": [
+     {
+      "question_implementation_id": "question_impl.phase0.402aa16b63923faee646",
+      "source_variable_code_exact": "country",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.f64402ba23ef393bafb1",
+      "source_variable_code_exact": "ecs001",
+      "measure_role_class": "CONTEXT_NONMEASURE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.71e5512eb3b248310d17",
+      "source_variable_code_exact": "ecs002",
+      "measure_role_class": "MEASUREMENT_CANDIDATE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.7a82b958744c32de2791",
+      "source_variable_code_exact": "ecs003",
+      "measure_role_class": "CONTEXT_NONMEASURE"
+     },
+     {
+      "question_implementation_id": "question_impl.phase0.8da93e315678cc8e59d1",
+      "source_variable_code_exact": "ecs003_skip",
+      "measure_role_class": "ADMINISTRATIVE_NONMEASURE"
+     }
+    ]
+   }
+  },
+  {
+   "family": "South Asia",
+   "wave": "W1",
+   "implementations": 68,
+   "with_bindings": 68,
+   "role_counts": {
+    "ADMINISTRATIVE_NONMEASURE": 1,
+    "CONTEXT_NONMEASURE": 14,
+    "MEASUREMENT_CANDIDATE": 53
+   },
+   "alternative_conflicts_total": 0,
+   "gap_samples": {}
+  },
+  {
+   "family": "South Asia",
+   "wave": "W2",
+   "implementations": 73,
+   "with_bindings": 73,
+   "role_counts": {
+    "ADMINISTRATIVE_NONMEASURE": 2,
+    "CONTEXT_NONMEASURE": 28,
+    "MEASUREMENT_CANDIDATE": 43
+   },
+   "alternative_conflicts_total": 0,
+   "gap_samples": {}
+  },
+  {
+   "family": "WVS",
+   "wave": "W1",
+   "implementations": 188,
+   "with_bindings": 188,
+   "role_counts": {
+    "ADMINISTRATIVE_NONMEASURE": 5,
+    "CONTEXT_NONMEASURE": 1,
+    "MEASUREMENT_CANDIDATE": 177,
+    "NONMEASURE_OR_ADMIN_HINT": 5
+   },
+   "alternative_conflicts_total": 0,
+   "gap_samples": {}
+  },
+  {
+   "family": "WVS",
+   "wave": "W4",
+   "implementations": 418,
+   "with_bindings": 418,
+   "role_counts": {
+    "ADMINISTRATIVE_NONMEASURE": 2,
+    "CONTEXT_NONMEASURE": 1,
+    "MEASUREMENT_CANDIDATE": 415
+   },
+   "alternative_conflicts_total": 0,
+   "gap_samples": {}
+  },
+  {
+   "family": "WVS",
+   "wave": "W7",
+   "implementations": 613,
+   "with_bindings": 613,
+   "role_counts": {
+    "ADMINISTRATIVE_NONMEASURE": 5,
+    "CONTEXT_NONMEASURE": 2,
+    "MEASUREMENT_CANDIDATE": 606
+   },
+   "alternative_conflicts_total": 0,
+   "gap_samples": {}
+  }
+ ],
+ "large_dataset": {
+  "path": "/tmp/rawlsing_hq280_PV3A01/external/crosswalk_per_implementation.jsonl",
+  "sha256": "4bcfe8e821a43763304afa9a8fd986f5a5a922da4a512c0a7cb459d5fba1476c",
+  "bytes": 27844706,
+  "records": 18276,
+  "note": "external data-only; hash-pinned, not committed to Git"
+ }
+}
