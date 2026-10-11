@@ -1,0 +1,49 @@
+{
+  "schema": "HQ280_WVF_HOSTILE_AND_NO_DROP_RESULTS@1",
+  "head_at_investigation": "e81b428bf6a7e28ede8959da05e6dd3fd68405f2",
+  "grading_rule": "STATIC_NEGATIVE_CONDITION = a deterministic absence/equality check over committed receipts. INJECTED_RUNTIME_TEST = an actual owner invocation with a substituted input whose typed exception/output is captured. A static check is never reported as an owner refusal.",
+  "no_drop": {
+    "grain": "WVS7 frontier / I05 candidate set -> R1M oracle -> T3 parity oracle",
+    "candidate_count": 46,
+    "covered_candidate_count": 46,
+    "additions": 0,
+    "drops": 0,
+    "exact_hash_stream_equal": true,
+    "frontier_exact_order_conserved": true,
+    "i05_replay_equal": true,
+    "truth_payload_identity_first": "eb2f9224219385dbf21af70d317e0978383012ff057ce2ac857b59c130472405",
+    "truth_payload_identity_second": "eb2f9224219385dbf21af70d317e0978383012ff057ce2ac857b59c130472405",
+    "cross_oracle": {
+      "frontier_digest": "cf8255816dc2ba5a51f6fc5918f09e901a5190f147a5192bd805f2908987299e",
+      "authority_closure_digest": "b9be2091764654a91e6b2c62e6e05311c677b60af3b5d8b942f5041280e056c4",
+      "r1m_coverage_limited": 46,
+      "t3_coverage_limited": 46,
+      "identical_digests_in_r1m_and_t3": true
+    },
+    "verdict": "PASS__NO_DROP_AT_FRONTIER_GRAIN__46_OF_46__ZERO_ADDITIONS__ZERO_DROPS",
+    "explicitly_not_extended_to": ["the 78,037 WGC documentary annotations", "35-wave source-operation completeness", "any world/N9/V3 product"]
+  },
+  "typed_outcome_preservation": {
+    "COVERAGE_LIMITED": 46,
+    "coverage_state": "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY",
+    "records_with_empirical_fact_refs": 46,
+    "classification": "honest evaluated coverage limit: the fact was measured; the governing authority to promote it to an eligible operation is missing or conflicting",
+    "not_classified_as": ["missing_job", "unsupported", "zero_denominator", "merely_absent", "arbitrarily_dropped"]
+  },
+  "static_negative_conditions_checked": [
+    {"id": "S1", "test": "expected-operation deletion", "method": "compare the 46 ordered candidate hashes of the pre-I05 frontier replay (03) with the 46 identities named in the oracle expected_fact_manifest (07)", "result": "NO_DELETION__46_IDENTITIES_MATCH_ONE_TO_ONE_IN_ORDER", "kind": "STATIC_NEGATIVE_CONDITION"},
+    {"id": "S2", "test": "manifest-derived oracle", "method": "audit oracle_build_provenance.dependencies for candidate-owned roots and check candidate_a_b_c_processes_started / candidate_outputs_used", "result": "NO_MANIFEST_DERIVATION__candidate_outputs_used=[]__candidate_processes_started=0__dependencies_are_EXACT_SOURCE_and_ACCEPTED_AUTHORITY_only", "kind": "STATIC_NEGATIVE_CONDITION"},
+    {"id": "S3", "test": "post-result expectation reconstruction", "method": "read gate order/durations in 10_COMMAND_TELEMETRY and the oracle status label", "result": "TRUTH_ORACLE_IS_POST_I05__GATE_6_FOLLOWS_GATE_5__failure_labels_are_POST_I05_ORACLE__the_pre_I05_artifact_is_the_FRONTIER_only", "kind": "STATIC_NEGATIVE_CONDITION", "note": "this is an adverse finding about the chain, not a pass"},
+    {"id": "S4", "test": "wrong original item / respondent identity", "method": "attempt to bind a source-native original instrument item to the 46 candidate identities", "result": "UNRESOLVED__no original instrument item, native code, routing, respondent-unit or weight/design binding exists in the accepted chain — see 01 HOLD", "kind": "STATIC_NEGATIVE_CONDITION"},
+    {"id": "S5", "test": "reversed target/condition roles", "method": "inspect query_roles role labels (BASE/CONDITIONER/TARGET) and rule ids across the 46 candidate identities", "result": "ROLES_ARE_LABELLED_AND_ORDERED__no reversed-role record found; but role semantics are I05-derived, not source-native-verified — residual UNRESOLVED pending the original item binding", "kind": "STATIC_NEGATIVE_CONDITION"},
+    {"id": "S6", "test": "false design/routing exactness", "method": "search the 46 records and the oracle for any claimed exact design/weight/routing denominator", "result": "NO_DESIGN_OR_WEIGHT_EXACTNESS_CLAIMED__no weighted/national estimand present__routing states remain typed-unknown where unresolved", "kind": "STATIC_NEGATIVE_CONDITION"},
+    {"id": "S7", "test": "fabricated supported pattern", "method": "verify that no record was promoted from COVERAGE_LIMITED to a supported/eligible state and that no ABC winner was declared", "result": "NO_FABRICATED_SUPPORT__46_of_46_remain_COVERAGE_LIMITED__abc_winner=NONE__selected_world_release=NONE", "kind": "STATIC_NEGATIVE_CONDITION"}
+  ],
+  "injected_runtime_tests": [],
+  "runtime_not_executed": {
+    "reason": "the retained real-source-derived chain is a past GitHub-Actions execution; this reviewer host has no retained I05 replay transport for WVS7 and the commission forbids raw source execution. The generic I05 owner code is present as Git blob c7380774e8a1959da5ed8c6f23c2fc3cf99ad18d (introduced in 3bef6f693), but replaying the frontier would require materialising the R15 C11 release closure, which is a large retained payload and is not required to answer the commission.",
+    "declared": "RUNTIME_NOT_EXECUTED — byte-level Git/receipt court performed instead, per commission item 4",
+    "what_would_be_needed_for_an_injected_court": "an authorised local runtime holding the exact R15 C11 release closure e6881e9a… plus the generic I05 blob, then injecting: a deleted expected operation, a manifest-derived oracle, a wrong original item, a reversed conditioner/target, and a fabricated supported pattern"
+  },
+  "terminal": "HQ280_WVF_EXISTING_WVS7_Q291_ORIGINAL_OPERATION_TO_I05_T3_INDEPENDENT_NO_DROP_BINDING_OR_EXACT_SCIENTIFIC_HOLD__GITHUB_PUSHED"
+}

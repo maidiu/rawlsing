@@ -1,0 +1,65 @@
+{
+ "schema": "HQ280_WVF_ORIGINAL_SOURCE_ITEM_AND_COMPETENT_AUTHORITY@1",
+ "commission": "PYAT-HQ280-WVF-WVS7-Q291-ORIGINAL-OPERATION-BINDING-R1",
+ "branch": "agent/rabochii-pyat-hq280-wvf-wvs-q291-original-operation-binding-r1",
+ "head_at_investigation": "e81b428bf6a7e28ede8959da05e6dd3fd68405f2",
+ "canonical_control": "6a8c91d99dca1ae2fd3559ba3c11ee26649e3cd9",
+ "terminal": "HQ280_WVF_EXISTING_WVS7_Q291_ORIGINAL_OPERATION_TO_I05_T3_INDEPENDENT_NO_DROP_BINDING_OR_EXACT_SCIENTIFIC_HOLD__GITHUB_PUSHED",
+ "source_identity": {
+  "source": "WVS7",
+  "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+  "rows": 97220,
+  "variables": 613,
+  "owner_class": "EXACT_SOURCE",
+  "bound_in": "07_FRESH_WVS_ORACLE.json#truth_payload.source_identity"
+ },
+ "r15_c11_release": {
+  "kind": "C11LogicalRelease",
+  "object_id": "WVS7_FROZEN_P2_EXACT_SOURCE",
+  "content_hash": "e6881e9a08a48f8871790e781c28bddbc44ee35db894d6ad7b1105a6a8fd262f",
+  "replay_manifest": "996ba218fc5da5e0ad1ddf0cdc7f91ce8fb8a7363ce62076dc3f4073b85c383f",
+  "r15_mechanical_rehydration": true,
+  "r15_semantic_rebuild": false,
+  "raw_source_reread": false,
+  "wvs_sav_reread": false
+ },
+ "bindings_present": {
+  "source_bytes_identity": "BOUND",
+  "r15_c11_logical_release": "BOUND",
+  "r15_replay_manifest": "BOUND",
+  "i05_candidate_grammar": "BOUND (a94bd2ed\u2026)",
+  "i05_evaluated_frontier": "BOUND (b2c3c50b\u2026)",
+  "i05_frontier_replay": "BOUND (a9d999d9\u2026)",
+  "oracle_identity_r1m": "BOUND (3694b8bd\u2026)",
+  "oracle_truth_payload_r1m": "BOUND (eb2f9224\u2026)",
+  "t3_standard_oracle": "BOUND (e546c155\u2026)"
+ },
+ "bindings_absent": {
+  "original_instrument_item_wording": "ABSENT",
+  "original_native_response_codes": "ABSENT",
+  "original_asked_routing_exposure": "ABSENT",
+  "respondent_unit_identity": "ABSENT",
+  "weight_design_role": "ABSENT",
+  "source_native_measure_meaning_for_Q291": "ABSENT"
+ },
+ "hold": {
+  "id": "HOLD__ORIGINAL_INSTRUMENT_ITEM_FIELD_UNBOUND",
+  "field": "source-native original instrument item semantics for WVS7 Q291",
+  "why_necessary": "the commission requires the original scientific-administered-item identity distinct from WGC's implementation id; the accepted chain binds only derived I05 candidate/query/predicate identities and R08 rule ids",
+  "smallest_competent_packet": [
+   "WVS7 Q291 original questionnaire/codebook entry (exact wording)",
+   "native response code list incl. DK/refusal/missing",
+   "asked/routing exposure rule",
+   "source-native role/weight designation"
+  ],
+  "responsible_owner": "WVS source-semantics / original-instrument authority owner",
+  "must_not_invent": "respondent risk, measure meaning, codes or routing from a physical variable name"
+ },
+ "credited_prior_execution": {
+  "stage_chain": "retained WVS7 carrier -> R15 C11 release -> 2 generic I05 -> R1M oracle -> T3 loader",
+  "coverage_limited_outcomes_conserved": 46,
+  "abc_winner": null,
+  "selected_world_release": null
+ },
+ "terminal_state": "HOLD_AT_ORIGINAL_ITEM_FIELD__NO_DROP_CONFIRMED_AT_FRONTIER_GRAIN__NO_SELF_ADOPTION"
+}

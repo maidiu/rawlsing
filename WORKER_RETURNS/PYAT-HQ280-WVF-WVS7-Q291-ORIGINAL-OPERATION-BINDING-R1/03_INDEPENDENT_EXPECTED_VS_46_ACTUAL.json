@@ -1,0 +1,122 @@
+{
+ "schema": "HQ280_WVF_INDEPENDENT_EXPECTED_VS_46_ACTUAL@1",
+ "grain": "WVS7 frontier / I05 candidate set / T3 parity oracle",
+ "expected_set_source": "PRE-I05 frontier (GATE_3) \u2014 NOT the 46 output records",
+ "expected_set_identities": {
+  "candidate_count": 46,
+  "candidate_grammar": "a94bd2ed3b64b2c51f6d329560feef6b97f69da3527081d8ca6168ae63e5f7f6",
+  "frontier_digest": "cf8255816dc2ba5a51f6fc5918f09e901a5190f147a5192bd805f2908987299e",
+  "ordered_candidate_hashes_sha256": "3c113ad4a5b0c00256e3a0bce0fb23b8bcf0ec0937da9e4669c5f5b0120f474e",
+  "families": {
+   "BOUNDED_K_WAY_RESPONSE_CONFIGURATION": 25,
+   "BRANCH_CONDITIONED_DISTRIBUTION": 10,
+   "PAIR_RESPONSE_COTRAVEL": 1,
+   "UNARY_SOCIAL_FORK": 10
+  },
+  "candidate_ranking_controls_frontier": false
+ },
+ "actual_outcomes": {
+  "coverage_state_counts": {
+   "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY": 46
+  },
+  "typed_state_counts": {
+   "COVERAGE_LIMITED": 46
+  },
+  "records_with_empirical_fact_refs": 46,
+  "family_counts": {
+   "UNARY_SOCIAL_FORK": 10,
+   "BOUNDED_K_WAY_RESPONSE_CONFIGURATION": 25,
+   "BRANCH_CONDITIONED_DISTRIBUTION": 10,
+   "PAIR_RESPONSE_COTRAVEL": 1
+  },
+  "rule_counts": {
+   "R08_JOINT_5X5": 25,
+   "R08_UNARY_Q0": 5,
+   "R08_BRANCH_Q0_TO_Q1": 5,
+   "R08_UNARY_Q1": 5,
+   "R08_BRANCH_Q1_TO_Q0": 5,
+   "R08_PAIR_COTRAVEL": 1
+  },
+  "validation_kind_counts": {
+   "TARGET_CELL_SUPPORTED": 35,
+   "DISTRIBUTION_DIFFERS_FROM_BASELINE": 10,
+   "JOINT_NOT_PRODUCT_OF_MARGINALS": 1
+  }
+ },
+ "no_drop_arithmetic": {
+  "candidate_count": 46,
+  "covered_candidate_count": 46,
+  "additions": 0,
+  "drops": 0,
+  "exact_hash_stream_equal": true,
+  "frontier_exact_order_conserved": true,
+  "verdict": "PASS__46_OF_46_CONSERVED__ZERO_ADDITIONS__ZERO_DROPS__STABLE_ORDER"
+ },
+ "cross_oracle_grain_preservation": {
+  "r1m_oracle_identity": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800",
+  "r1m_frontier_digest": "cf8255816dc2ba5a51f6fc5918f09e901a5190f147a5192bd805f2908987299e",
+  "r1m_authority_closure_digest": "b9be2091764654a91e6b2c62e6e05311c677b60af3b5d8b942f5041280e056c4",
+  "t3_oracle_identity": "e546c15533ba138be9995095059ea3b70b64a6d7b5765e3789935cff7342ef00",
+  "t3_schema": "RAWLSING_FIABC_CANDIDATE_NEUTRAL_PARITY_ORACLE@1.0.0",
+  "t3_frontier_digest": "cf8255816dc2ba5a51f6fc5918f09e901a5190f147a5192bd805f2908987299e",
+  "t3_authority_closure_digest": "b9be2091764654a91e6b2c62e6e05311c677b60af3b5d8b942f5041280e056c4",
+  "frontier_digest_identical": true,
+  "authority_closure_digest_identical": true,
+  "t3_expected_fact_manifest_len": 46,
+  "t3_coverage_limited_count": 0,
+  "verdict": "GRAIN_PRESERVED_R1M_TO_T3"
+ },
+ "typed_negative_classification": {
+  "COVERAGE_LIMITED": "honest evaluated coverage limit \u2014 measured fact present, governing authority missing/conflicting",
+  "not_missing_jobs": "all 46 executed and carry empirical_fact_refs",
+  "not_unsupported": "each has a produced EmpiricalFact",
+  "not_zero_denominators": "no denominator-zero state present",
+  "not_merely_absent": "records exist with refs",
+  "not_arbitrarily_dropped": "covered_candidate_count == candidate_count"
+ },
+ "chronology": {
+  "expected_frontier_before_i05": true,
+  "truth_oracle_before_i05": false,
+  "pipeline_order": [
+   {
+    "stage": "GATE_1_R1L_FANIN_ADJUDICATION",
+    "ms": 38,
+    "status": "PASS"
+   },
+   {
+    "stage": "GATE_2_SUCCESSOR_DISCOVERY_AUTHORITY",
+    "ms": 12,
+    "status": "PASS"
+   },
+   {
+    "stage": "GATE_3_SOURCE_FREE_FRONTIER_REPLAY",
+    "ms": 78,
+    "status": "PASS"
+   },
+   {
+    "stage": "GATE_4_SUCCESSOR_LOCK2",
+    "ms": 12,
+    "status": "PASS"
+   },
+   {
+    "stage": "GATE_5_R16_REENTRY",
+    "ms": 790750,
+    "status": "PASS"
+   },
+   {
+    "stage": "GATE_6_FRESH_ORACLE_AND_SECOND_REPLAY",
+    "ms": 504100,
+    "status": "PASS"
+   },
+   {
+    "stage": "GATE_7_R01_R18_FINAL",
+    "ms": 0,
+    "status": "PASS"
+   }
+  ],
+  "oracle_status_label": "PASS__FROZEN_BEFORE_CANDIDATE_EXECUTION",
+  "code11_independence_from_candidates": "PASS__INDEPENDENT_DETERMINISTIC_SECOND_REPLAY_EQUAL",
+  "interpretation": "GATE_3 frontier precedes GATE_5 I05; the oracle truth payload is assembled at GATE_6 AFTER I05"
+ },
+ "terminal": "HQ280_WVF_EXISTING_WVS7_Q291_ORIGINAL_OPERATION_TO_I05_T3_INDEPENDENT_NO_DROP_BINDING_OR_EXACT_SCIENTIFIC_HOLD__GITHUB_PUSHED"
+}
