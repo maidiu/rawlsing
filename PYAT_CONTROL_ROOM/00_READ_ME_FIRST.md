@@ -1,3 +1,9 @@
+## User-requested whole-machine assessment and forward plan — 11 October 2026
+
+Read the [corrected assessment and detailed completion plan](WHOLE_MACHINE_ASSESSMENT_AND_PLAN_20261011_R1/README.md). It updates F8F/WVQ status, identifies the B5 publication trust boundary, grades canonical versus staged evidence, and supplies 25 proposed work packages, all-35 reconciliation and AT01–AT35 acceptance routing. **Documentary delivery only:** no candidate/code adoption, source/model-use grant, dispatch or replacement of the sealed operational handoff. Exact read baseline and primary-evidence limits are in the packet.
+
+---
+
 ## HQ277 immediate second-pass correction
 
 The [hostile matrix audit](WHOLE_MACHINE_COMPLETION_R1/SECOND_PASS_HOSTILE_AUDIT_R1.md) confirms that a 35-wave requirements scaffold is not source-item/operation readiness. [WG0–WG4 workload-construction gate](WHOLE_MACHINE_COMPLETION_R1/AUTOMATED_WORKLOAD_CONSTRUCTION_CRITICAL_GATE.md) now requires tracing how existing Route B/I03/I05/batch owners receive a complete, source-competent, authorized original-item processing frontier. The [101-task typed ledger](WHOLE_MACHINE_COMPLETION_R1/TASK_LEDGER_101_MACHINE.json), [35-wave specific edge queue](WHOLE_MACHINE_COMPLETION_R1/WAVE35_COMMON_EDGE_ACTION_QUEUE.json), and [F6/F7/F8 relation graph](WHOLE_MACHINE_COMPLETION_R1/GLOBAL_F6_F7_F8_RELATION_SCOPE_MATRIX.json) are mandatory companions. Unknown does not mean missing code. Documentation does not confer source/use authority.

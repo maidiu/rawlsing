@@ -1,3 +1,9 @@
+## 11 October 2026 — verified picture and detailed forward plan
+
+The [user-requested assessment and plan](../WHOLE_MACHINE_ASSESSMENT_AND_PLAN_20261011_R1/README.md) corrects the supplied progress picture against exact canonical/staged/worker evidence and provides a dependency-bound program through full PRE-V3 acceptance. F8F and WVQ have returned; B5 provenance, operation issuance and real world/service integration remain separate gates. The original matrices below are preserved. This link does not adopt candidates, issue authority or dispatch the proposed packages.
+
+---
+
 # RAWLSING / PYAT — all-35 automated-machine completion control
 
 ## HQ278 handoff — RESUME AUDIT, DO NOT RESTART
