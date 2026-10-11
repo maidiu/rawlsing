@@ -1,0 +1,151 @@
+{
+ "schema": "HQ280_F8F_EVIDENCE_MANIFEST@1",
+ "commission": "PYAT-HQ280-F8F-C1-M2-B5-INDEPENDENT-HOSTILE-R1",
+ "reviewer_branch": "agent/reviewer-pyat-hq280-f8f-c1-m2-b5-independent-hostile-r1",
+ "reviewer_head": "f82bf8de50b5a76b71ff12063f5fff95efc33511",
+ "candidate_seed": "agent/rabochii-pyat-hq280-f8e-c1-m2-b5-closure-repair-r1 @ 2a4a90ec76d3400f98ba6fd3fd306f6ff977d042",
+ "canonical_observed": "6a8c91d99dca1ae2fd3559ba3c11ee26649e3cd9",
+ "semantic_pre_main": "1f47063c3205a45888b3c55e81e7485943ed1390",
+ "governing_decision": "HQD-2026-10-10-280",
+ "method": "actual local Git worktree at the sealed tip; pinned interpreter; real accepted owners; adversarially mutated inputs submitted to owners; no mocks",
+ "deliverables": {
+  "00_RETURN.md": {
+   "sha256": "f679766302d5b88a4a934ed589495667d83bd8a40839881a7a9b67e807b82c63",
+   "bytes": 7945
+  },
+  "01_EXACT_CODE_AND_FIXTURE_PINS.md": {
+   "sha256": "2bcd4ae6a95bbdba951d45791a2004142c776f401b4892ab122c25b0f328751b",
+   "bytes": 5221
+  },
+  "02_ACTUAL_PYTEST_REPLAY.json": {
+   "sha256": "afe8fcdeb76a829a69afe215a0e7e6b661326f9a2f1a74ee9960b2d4d967935d",
+   "bytes": 3819
+  },
+  "03_ACTUALLY_INJECTED_OWNER_HOSTILES.json": {
+   "sha256": "c51a0810649b5ff9533784c6a440d7a34257d230328148b0ffe3a601165b0924",
+   "bytes": 5598
+  },
+  "04_B5_TRUST_AND_NONISSUANCE_HOLDS.md": {
+   "sha256": "e490bbad3572281dcb08e71bbc9fef29c105bf4c69a14548a643debcfb468c61",
+   "bytes": 4508
+  }
+ },
+ "repro_scripts_and_logs": {
+  "adjacent_123.log": {
+   "sha256": "63348d27696ee09965cc3998d841d86ec0082a4b855a4dce3ad6f844ccb18a83",
+   "bytes": 181
+  },
+  "c103r_and_g1.log": {
+   "sha256": "1089e06385db780ab164d674c6e63872eab5d741934fbcf5f3d174aadac037ed",
+   "bytes": 181
+  },
+  "f8e_23_suite.log": {
+   "sha256": "488459dde70cd79e3cc0429adba411102c82bf75527063b8b256ddb6d2c1526e",
+   "bytes": 99
+  },
+  "f8f_hostiles.log": {
+   "sha256": "810ca1e58c25d5e0eb8205829407dd480e99f1ceea99699f6ac1a09a9b1b1010",
+   "bytes": 99
+  },
+  "test_f8f_independent_hostiles.py": {
+   "sha256": "b34c1f73bb8694c96c54828a0a6a38b3d2fd1228bfe58dfc385d5e6bb79a45ee",
+   "bytes": 9992
+  }
+ },
+ "inspected_owners": {
+  "rawlsing_next/pre553_c1_immutable_release_binding.py": {
+   "git_blob": "36563ddee5b6c1fe44940712ec85ba7a3156fb5d",
+   "sha256": "460547ad7ede9ff3ed1051f0316c2b6818e5e401216364cd4daff578140d49aa",
+   "bytes": 26431,
+   "lines": 503
+  },
+  "rawlsing_next/tests/test_pre553_c1_immutable_release_binding.py": {
+   "git_blob": "1e972bf9199278c715deedce6a52dd2be1b3ec55",
+   "sha256": "1af1289c5464e1e7af6a456a563cc2240a8861d492fbe1ffa0ec6ed74a412de5",
+   "bytes": 21574,
+   "lines": 436
+  },
+  "rawlsing_next/pre553_analytical_composition.py": {
+   "sha256": "d83bf9fba14ab7a3c5bb2a4fad30e4746345f29f4d10c16fbc1d2b5d0030bcfe",
+   "bytes": 59605,
+   "lines": 1249
+  },
+  "rawlsing_next/pre553_learned_product_release.py": {
+   "sha256": "9683bfd6cbc93763d52253dea019c4d031c47d55c8ac9854901f10df1c04b8e6",
+   "bytes": 40832,
+   "lines": 1025
+  },
+  "rawlsing_next/pre553_learned_product_lifecycle.py": {
+   "sha256": "706bd074b1f1318fc503cbea080c2761b79b73f6f1088addec2e6fdf79c29833",
+   "bytes": 121924,
+   "lines": 2882
+  },
+  "rawlsing_next/pre553_analytical_replay_dependency.py": {
+   "sha256": "065803394d50e5b39d20d2c7b2ffdd1ccacc35fd7676c70da59c93e764770dfa",
+   "bytes": 32914,
+   "lines": 756
+  },
+  "rawlsing_next/pre553_authority_maintenance.py": {
+   "sha256": "326722d1ae770eb2d7397964a5f836548c63fe2b7dc6796d8d4ea80c0cdf0e1a",
+   "bytes": 108964,
+   "lines": 2249
+  },
+  "rawlsing_next/tests/test_pre553_ee14_c1_owner_authenticated_ingress_hq262.py": {
+   "sha256": "83d99777c1bbd9eb045444dfe7d713fe1c026c4431f5c3dde97ab32c4e70e3da",
+   "bytes": 68584,
+   "lines": 1469
+  },
+  "rawlsing_next/tests/c1_at08_at13_fixture.py": {
+   "sha256": "ce88e393d107eada13e37bdceb8f956789452281a54563cf5e5aee3304337332",
+   "bytes": 33012,
+   "lines": 844
+  }
+ },
+ "execution_summary": {
+  "suites": 4,
+  "total_collected": 280,
+  "total_passed": 280,
+  "total_failed": 0,
+  "f8e_23": {
+   "passed": 23,
+   "match": true
+  },
+  "adjacent_123": {
+   "passed": 123,
+   "match": true
+  },
+  "c103r_and_g1": 124,
+  "reviewer_hostiles": 10
+ },
+ "environment": {
+  "python": "3.11.3",
+  "pytest": "9.1.1",
+  "f8e_pytest": "9.0.2",
+  "platform": "macOS 13.7.8 x86_64"
+ },
+ "observed_vs_unknown": {
+  "OBSERVED": [
+   "candidate git blobs and content sha256 equal the commissioned pins",
+   "23/23 and 123/123 independently reproduced (exact match to F8E)",
+   "five repairs confirmed at owner level with reviewer-built adversarial inputs",
+   "affected-set order invariance and subset mutation (not tested by F8E)",
+   "B5 accepts a caller-supplied forged replay closure, fake permission ceiling and fake receipt/root refs (four real invocations)",
+   "native nonpositive and replay-grade overclaim refusals"
+  ],
+  "UNKNOWN": [
+   "whether any producer-issued B5 subject credential exists elsewhere in the estate (not found in this scope)",
+   "the adjacent suites' behaviour outside the materialised fixture scope was not re-tested (checkout artefact)",
+   "no raw-source, world, N9/N10W, V3 or actor behaviour was exercised"
+  ]
+ },
+ "not_published": [
+  "no raw respondent data",
+  "no raw SAV/DTA",
+  "no production/canonical code change"
+ ],
+ "no_production_mutation": true,
+ "reviewer_edited_candidate_source_or_test": false,
+ "no_self_adoption": true,
+ "terminal": "HQ280_F8F_INDEPENDENT_C1_M2_B5_HOSTILE_RUNTIME_RETURNED__NONISSUING__GITHUB_PUSHED",
+ "deliverables_note": "05_EVIDENCE_MANIFEST.json hashes exclude itself by construction (self-reference); its own hash is reported in the final commit receipt."
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "HQ280_F8F_ACTUALLY_INJECTED_OWNER_HOSTILES@1",
+  "reviewer_head": "f82bf8de50b5a76b71ff12063f5fff95efc33511",
+  "grading_rule": "OWNER_LEVEL_NEGATIVE_INVOCATION = an adversarially mutated object is actually submitted to a real owner and the typed outcome (exception or accepted result) is captured. STATIC_ASSERTION = an equality/membership inspection over an already-built structure. The two are never interchanged.",
+  "my_injected_file": "repro/test_f8f_independent_hostiles.py",
+  "my_injected_result": {"collected": 10, "passed": 10, "failed": 0, "exit_code": 0},
+  "independently_injected_cases": [
+    {"id": "K1", "target": "affected-set order invariance", "injection": "same changed-authority list, original and reversed order", "actual_outcome": "affected sets identical; product reached", "kind": "OWNER_LEVEL_NEGATIVE_INVOCATION", "verdict": "PASS__Order invariance holds"},
+    {"id": "K2", "target": "subset mutation of the dependency graph", "injection": "registry.build_graph(omit_authority_edges=[(model_authority_ref, product_ref)]) then affected()", "actual_outcome": "propagation to the product changes exactly as the omitted edge predicts", "kind": "OWNER_LEVEL_NEGATIVE_INVOCATION", "verdict": "PASS__subset mutation behaved"},
+    {"id": "K2b", "target": "unrelated-authority negative control", "injection": "authority with authority_id='urn:reviewer:unrelated' passed to affected()", "actual_outcome": "product NOT reached", "kind": "OWNER_LEVEL_NEGATIVE_INVOCATION", "verdict": "PASS__no spurious propagation"},
+    {"id": "K3", "target": "graph edge completeness / unsupported edges", "injection": "live graph inspection of edge parents and children against the 31 determinant refs", "actual_outcome": "every determinant is an edge parent; the only edge child is this product", "kind": "STATIC_ASSERTION_OVER_LIVE_OWNER_GRAPH", "verdict": "PASS__no under-projection, no unsupported edge"},
+    {"id": "K4", "target": "B5 caller-supplied lifecycle trust boundary", "injection": "replace(lifecycle_subject, replay_state='REPLAY_COMPLETE') staged and published in a fresh B5 executor", "actual_outcome": "PUBLISHED (no exception)", "kind": "OWNER_LEVEL_NEGATIVE_INVOCATION", "verdict": "GAP__forged replay closure claim accepted"},
+    {"id": "K5a", "target": "control: which guard actually fires", "injection": "honest replay_state + fake ProducerPermissionCeiling('urn:reviewer:PRODUCTION_GRANT')", "actual_outcome": "LearnedProductLifecycleError, message about REPLAY", "kind": "OWNER_LEVEL_NEGATIVE_INVOCATION", "verdict": "the refusal is the REPLAY closure, NOT the ceiling"},
+    {"id": "K5b", "target": "permission-ceiling validation", "injection": "forged replay_state + fake production permission ceiling", "actual_outcome": "PUBLISHED, and the executor stores the caller's fake ceiling verbatim", "kind": "OWNER_LEVEL_NEGATIVE_INVOCATION", "verdict": "GAP__permission ceiling never validated"},
+    {"id": "K5c", "target": "closure-receipt and replay-root provenance", "injection": "forged replay_state + fake build_or_release_receipt_refs + fake replay_root_ref", "actual_outcome": "PUBLISHED", "kind": "OWNER_LEVEL_NEGATIVE_INVOCATION", "verdict": "GAP__receipt/root refs never validated"},
+    {"id": "K6", "target": "H01 cell identity (independent reproduction)", "injection": "a genuinely recomputed composition from a DIFFERENT condition set with identical arity and denominator, submitted as cell 'q1'", "actual_outcome": "refused with an *_IDENTITY_MISMATCH / MISMATCH code", "kind": "OWNER_LEVEL_NEGATIVE_INVOCATION", "verdict": "PASS__repair independently confirmed; binding is not shape-only"},
+    {"id": "K7", "target": "native nonpositive cannot mint M2", "injection": "replace(composition, analytical_state='UNSUPPORTED')", "actual_outcome": "refused with C1_NATIVE_NONPOSITIVE", "kind": "OWNER_LEVEL_NEGATIVE_INVOCATION", "verdict": "PASS"},
+    {"id": "K8", "target": "replay-grade overclaim", "injection": "requested_replay_grade='FRESH_PROCESS_REPLAY'", "actual_outcome": "refused with REPLAY_GRADE_OVERCLAIM", "kind": "OWNER_LEVEL_NEGATIVE_INVOCATION", "verdict": "PASS"}
+  ],
+  "f8e_case_regrade": [
+    {"id": "h01", "f8e_label": "genuinely injected hostile", "reviewer_grade": "GENUINE_INJECTION", "note": "an alien composition is built and submitted"},
+    {"id": "h02", "f8e_label": "genuinely injected hostile", "reviewer_grade": "GENUINE_INJECTION", "note": "reversed numerator profile built and submitted"},
+    {"id": "h02b", "f8e_label": "genuinely injected hostile", "reviewer_grade": "SCOPE_EQUALITY_CHECK"},
+    {"id": "h03", "f8e_label": "genuinely injected hostile", "reviewer_grade": "GENUINE_INJECTION", "note": "rehashed substituted members built and submitted"},
+    {"id": "h04", "f8e_label": "genuinely injected hostile", "reviewer_grade": "MIXED__STATIC_MEMBERSHIP_PLUS_ONE_REAL_affected_CALL"},
+    {"id": "h04b", "f8e_label": "genuinely injected hostile", "reviewer_grade": "REAL_affected_CALLS__constructed-input_negative_control"},
+    {"id": "h05", "f8e_label": "genuinely injected hostile", "reviewer_grade": "STATIC_ASSERTION_OVER_LIVE_GRAPH"},
+    {"id": "h05b", "f8e_label": "genuinely injected hostile", "reviewer_grade": "STATIC_ASSERTION_OVER_LIVE_GRAPH"},
+    {"id": "MISSING", "f8e_label": "not present", "reviewer_grade": "COMMISSION_REQUESTED_BUT_ABSENT__order invariance and subset mutation; reviewer added them as K1/K2"}
+  ],
+  "invocations_that_were_actually_attempted_and_NOT_run": [],
+  "terminal": "HQ280_F8F_INDEPENDENT_C1_M2_B5_HOSTILE_RUNTIME_RETURNED__NONISSUING__GITHUB_PUSHED"
+}

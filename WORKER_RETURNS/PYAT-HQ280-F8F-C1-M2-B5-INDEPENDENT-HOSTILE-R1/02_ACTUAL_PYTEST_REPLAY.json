@@ -1,0 +1,97 @@
+{
+ "schema": "HQ280_F8F_ACTUAL_PYTEST_REPLAY@1",
+ "reviewer_branch": "agent/reviewer-pyat-hq280-f8f-c1-m2-b5-independent-hostile-r1",
+ "reviewer_head": "f82bf8de50b5a76b71ff12063f5fff95efc33511",
+ "candidate_seed": "agent/rabochii-pyat-hq280-f8e-c1-m2-b5-closure-repair-r1 @ 2a4a90ec76d3400f98ba6fd3fd306f6ff977d042",
+ "canonical_observed": "6a8c91d99dca1ae2fd3559ba3c11ee26649e3cd9",
+ "semantic_pre_main": "1f47063c3205a45888b3c55e81e7485943ed1390",
+ "environment": {
+  "python": "3.11.3",
+  "pytest": "9.1.1",
+  "platform": "macOS x86_64",
+  "interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-f8f",
+  "pytest_version_difference_vs_f8e": "F8E reported pytest 9.0.2; this independent host has 9.1.1, and the same 23 tests still pass \u2014 the result is not pytest-patch-version dependent at this grain"
+ },
+ "candidate_blobs_verified": {
+  "rawlsing_next/pre553_c1_immutable_release_binding.py": {
+   "git_blob": "36563ddee5b6c1fe44940712ec85ba7a3156fb5d",
+   "expected_blob": "36563ddee5b6c1fe44940712ec85ba7a3156fb5d",
+   "content_sha256": "460547ad7ede9ff3ed1051f0316c2b6818e5e401216364cd4daff578140d49aa",
+   "expected_content_sha256": "460547ad7ede9ff3ed1051f0316c2b6818e5e401216364cd4daff578140d49aa",
+   "match": true
+  },
+  "rawlsing_next/tests/test_pre553_c1_immutable_release_binding.py": {
+   "git_blob": "1e972bf9199278c715deedce6a52dd2be1b3ec55",
+   "expected_blob": "1e972bf9199278c715deedce6a52dd2be1b3ec55",
+   "content_sha256": "1af1289c5464e1e7af6a456a563cc2240a8861d492fbe1ffa0ec6ed74a412de5",
+   "expected_content_sha256": "1af1289c5464e1e7af6a456a563cc2240a8861d492fbe1ffa0ec6ed74a412de5",
+   "match": true
+  }
+ },
+ "runs": [
+  {
+   "id": "f8e_23_suite",
+   "collected": 23,
+   "passed": 23,
+   "failed": 0,
+   "exit_code": 0,
+   "f8e_claim": "23 passed",
+   "match": true,
+   "log": {
+    "sha256": "488459dde70cd79e3cc0429adba411102c82bf75527063b8b256ddb6d2c1526e",
+    "bytes": 99
+   }
+  },
+  {
+   "id": "adjacent_123",
+   "collected": 123,
+   "passed": 123,
+   "failed": 0,
+   "exit_code": 0,
+   "f8e_claim": "123 passed",
+   "match": true,
+   "log": {
+    "sha256": "63348d27696ee09965cc3998d841d86ec0082a4b855a4dce3ad6f844ccb18a83",
+    "bytes": 181
+   },
+   "per_suite": {
+    "test_pre553_analytical_composition": 13,
+    "test_pre553_analytical_replay_dependency": 43,
+    "test_pre553_learned_product_release": 28,
+    "test_pre553_learned_product_lifecycle": 39
+   }
+  },
+  {
+   "id": "c103r_and_g1",
+   "collected": 124,
+   "passed": 124,
+   "failed": 0,
+   "exit_code": 0,
+   "per_suite": {
+    "test_pre553_c1_03_join": 28,
+    "test_pre553_ee14_c1_owner_authenticated_ingress_hq262": 96
+   },
+   "log": {
+    "sha256": "1089e06385db780ab164d674c6e63872eab5d741934fbcf5f3d174aadac037ed",
+    "bytes": 181
+   }
+  },
+  {
+   "id": "f8f_reviewer_hostiles",
+   "collected": 10,
+   "passed": 10,
+   "failed": 0,
+   "exit_code": 0,
+   "log": {
+    "sha256": "810ca1e58c25d5e0eb8205829407dd480e99f1ceea99699f6ac1a09a9b1b1010",
+    "bytes": 99
+   }
+  }
+ ],
+ "independent_reproduction_verdict": "F8E_REPORTED_COUNTS_INDEPENDENTLY_REPRODUCED_EXACTLY__23_AND_123",
+ "terrain_note": "the adjacent suites initially errored in this review worktree ONLY because sibling fixture artifacts (WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/-R3/-R8) lay outside the sparse checkout; materialising them restored 123/123. This is a checkout-scope gap, NOT a candidate regression.",
+ "total_independently_executed_tests": 280,
+ "root_git_diff_at_replay": "NONE for tracked candidate files (reviewer added only files under its own WORKER_RETURNS directory)",
+ "terminal": "HQ280_F8F_INDEPENDENT_C1_M2_B5_HOSTILE_RUNTIME_RETURNED__NONISSUING__GITHUB_PUSHED"
+}
