@@ -1,0 +1,79 @@
+{
+ "schema": "HQ280_F8E_EVIDENCE_MANIFEST@1.0.0",
+ "governing_decision": "HQD-2026-10-10-280",
+ "canonical_observed": "6a8c91d99dca1ae2fd3559ba3c11ee26649e3cd9",
+ "semantic_pre_main": "1f47063c3205a45888b3c55e81e7485943ed1390",
+ "sealed_startup_tip": "6552be7b6e4a92654e98e5562d3e2b6f24d769bd",
+ "seed_candidate": "69bb0fc69175b2f6048b00cfa47dc852593798c0",
+ "seed_module_blob": "2f6ab22c5f079b24fe81a3611bb21dcce7b9854f",
+ "seed_test_blob": "2c4617e132293dfae459ded56b2d0f79d211c5f3",
+ "hostile_review": "agent/reviewer-pyat-hq280-f8dr-c1-m2-b5-runtime-hostile-r1 @ 8e3a69ff4b3412e4c68b9553e017baa31413ae24",
+ "environment": {
+  "python": "3.11.3",
+  "pytest": "9.0.2",
+  "worktree": "local git worktree at the sealed tip",
+  "model": "Step 5 Preview Free"
+ },
+ "files": [
+  {
+   "path": "rawlsing_next/pre553_c1_immutable_release_binding.py",
+   "git_blob": "36563ddee5b6c1fe44940712ec85ba7a3156fb5d",
+   "sha256": "460547ad7ede9ff3ed1051f0316c2b6818e5e401216364cd4daff578140d49aa",
+   "bytes": 26431
+  },
+  {
+   "path": "rawlsing_next/tests/test_pre553_c1_immutable_release_binding.py",
+   "git_blob": "1e972bf9199278c715deedce6a52dd2be1b3ec55",
+   "sha256": "1af1289c5464e1e7af6a456a563cc2240a8861d492fbe1ffa0ec6ed74a412de5",
+   "bytes": 21574
+  },
+  {
+   "path": "WORKER_RETURNS/PYAT-HQ280-F8E-C1-M2-B5-CLOSURE-REPAIR-R1/00_RETURN.md",
+   "git_blob": "6c705b010fac87fb1cdaaded2c007b942e85c02c",
+   "sha256": "8f53faeafd4b99a5e5b9e2e1c82e906447d03abe01afd84a291189ec49b50a05",
+   "bytes": 3104
+  },
+  {
+   "path": "WORKER_RETURNS/PYAT-HQ280-F8E-C1-M2-B5-CLOSURE-REPAIR-R1/01_EXACT_OWNER_AND_CLOSURE_REPAIR.md",
+   "git_blob": "859a2e02411547551e361a89e04ad53fa4e43048",
+   "sha256": "79add5928c93eadefb1fa0b1086612432474c4b158985cd6417cbf201aa73082",
+   "bytes": 5494
+  },
+  {
+   "path": "WORKER_RETURNS/PYAT-HQ280-F8E-C1-M2-B5-CLOSURE-REPAIR-R1/02_ACTUAL_TEST_RUN.json",
+   "git_blob": "f68b946e856557788a822164c065ba5eb5c5561b",
+   "sha256": "89fcb0de8198a9cbd099b02b49d0763cbaea7422c9e4e07bba120e063c719608",
+   "bytes": 4123
+  },
+  {
+   "path": "WORKER_RETURNS/PYAT-HQ280-F8E-C1-M2-B5-CLOSURE-REPAIR-R1/03_INJECTED_HOSTILE_RESULTS.json",
+   "git_blob": "f6b9ac09e73619fc0c01c1e4b79aa538ee96a935",
+   "sha256": "88ee9a285cab9a29a0dfab8f2b9f9298233ed4e063aa047107fa16bf2c31edae",
+   "bytes": 5552
+  },
+  {
+   "path": "WORKER_RETURNS/PYAT-HQ280-F8E-C1-M2-B5-CLOSURE-REPAIR-R1/04_STILL_HELD_ISSUER_G1_G0B.md",
+   "git_blob": "10f043e48154d7e21f5eb6bc57793bc5b1627a23",
+   "sha256": "2498c6af2cc6b4c6c9ba3adc14d22220517dbab1b54405676723938f1901d90f",
+   "bytes": 2657
+  }
+ ],
+ "test_evidence": {
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTEST_ADDOPTS='-p no:cacheprovider' python3 -m pytest -vv rawlsing_next/tests/test_pre553_c1_immutable_release_binding.py",
+  "exit_code": 0,
+  "collected": 23,
+  "passed": 23,
+  "failed": 0,
+  "baseline_at_sealed_tip": {
+   "passed": 14,
+   "failed": 1
+  },
+  "adjacent_owner_regression": {
+   "passed": 123,
+   "failed": 0
+  },
+  "full_log_sha256": "ee27b2d53f17e7cae6800c6df8a7da867afb9d5ab56808656463a6eb576227fd"
+ },
+ "adoption": false,
+ "self_adoption": false
+}

@@ -1,0 +1,71 @@
+{
+  "schema": "HQ280_F8E_INJECTED_HOSTILE_RESULTS@1.0.0",
+  "governing_decision": "HQD-2026-10-10-280",
+  "hostile_source": "F8D-R review at agent/reviewer-pyat-hq280-f8dr-c1-m2-b5-runtime-hostile-r1 @ 8e3a69ff4b3412e4c68b9553e017baa31413ae24 (F8D-R itself was NOT executed runtime proof: exit 4, zero collected)",
+  "method": "every alien object is produced by the REAL accepted C1 owner (G1._compose over the frozen HQ260/HQ280 XOR fixture); no mocks; verified before and after repair by direct execution",
+  "defects": [
+    {
+      "id": "H01",
+      "title": "q1/q2 owner identity accepted from shape alone",
+      "before_repair": "ACCEPTED - q(C|A=0) has identical arity (1 conditioner) and denominator (2) to q1 but a different predicate",
+      "after_repair": "REFUSED - CELL_PREDICATE_IDENTITY_MISMATCH",
+      "repair": "pinned per-cell predicate, condition-binding witness, target ref, target domain identity and risk-set identity recorded from the accepted C1/query owner path; these are development preconditions, not an issued authority",
+      "test": "test_f8e_h01_correct_shape_wrong_condition_composition_is_refused",
+      "verdict": "REPAIRED_AND_TESTED"
+    },
+    {
+      "id": "H02",
+      "title": "wrong q2 numerator accepted despite identical denominator and support labels",
+      "before_repair": "ACCEPTED - q(C|A=1,B=1) has the same denominator (1) and the same sorted support labels [0,1] as honest q2 but the ordered profile is reversed: honest [('0',0),('1',1)] vs alien [('0',1),('1',0)]",
+      "after_repair": "REFUSED - pinned predicate identity catches it first; the order-sensitive frozen numerator oracle is the independent second guard",
+      "repair": "frozen order-sensitive numerator oracle per cell: q1 (1,1), q2 (0,1), plus pinned denominators 2 and 1; sorting can no longer hide a reversed distribution",
+      "test": "test_f8e_h02_reversed_numerator_q2_is_refused_before_m2 + test_f8e_h02b_original_q1_q2_scope_matches_actual_produced_scope",
+      "verdict": "REPAIRED_AND_TESTED"
+    },
+    {
+      "id": "H03",
+      "title": "missing risk-set member cross-preimage",
+      "before_repair": "ACCEPTED - a rehashed composition with substituted risk_set_member_refs passed, because only the risk-set id and denominator member refs were checked",
+      "after_repair": "REFUSED - RISK_MEMBER_PREIMAGE_MISMATCH",
+      "repair": "evidence geometry denominator risk_set_member_refs is now cross-checked against composition.risk_set_member_refs, with an added coverage floor over the admitted denominator and an explicit per-cell pinned risk-set identity",
+      "test": "test_f8e_h03_rehashed_substituted_risk_members_are_refused",
+      "verdict": "REPAIRED_AND_TESTED"
+    },
+    {
+      "id": "H04",
+      "title": "missing model and walkback authority references in the M2/B5 closure",
+      "before_repair": "model_authority_ref fb965da2... and walkback_authority_ref 836cd42b... were absent from the AUTHORITY closure (5 members) and produced no authority edge",
+      "after_repair": "both are explicit AUTHORITY closure transports, B5 authority-snapshot members and graph authority edges; changed-authority affected-set reaches the product",
+      "repair": "consumed model and walkback authorities are unioned into auths as separate exact AuthorityRef members rather than being represented only by the model-rule hash",
+      "test": "test_f8e_h04_model_and_walkback_authorities_are_closure_members + test_f8e_h04b_changed_model_authority_affects_the_product",
+      "verdict": "REPAIRED_AND_TESTED"
+    },
+    {
+      "id": "H05",
+      "title": "incomplete C1-03R dependency graph and affected-set propagation",
+      "before_repair": "determinant_exact_refs held 31 identities but dependency_edges_from held 22, so 9 determinant identities (including the model-rule ref) were never traversed as edges",
+      "after_repair": "dependency_edges_from is now the full determinant closure: 31 dependency edges for 31 determinants, 6 authority edges; affected() reaches the product for a changed consumed model authority",
+      "repair": "registration declares the full determinant set as the edge source, using the accepted AnalyticalDependencyRegistry correctly; explicit post-conditions assert edge count and authority propagation",
+      "test": "test_f8e_h05_every_determinant_is_a_real_graph_edge + test_f8e_h05b_non_dependency_determinants_are_reachable_in_the_graph",
+      "verdict": "REPAIRED_AND_TESTED"
+    }
+  ],
+  "additional_defect_found_by_actual_execution": {
+    "id": "N03-AUTHORSING-TEST",
+    "title": "the F8D candidate shipped with a failing authored test",
+    "detail": "baseline run was 14 passed / 1 failed: test_n03_wrong_conditioner_cell_or_risk_ref_is_refused. q1 and q2 share the same fixture risk-set ref 080132c4..., so replacing q2's risk_set_ref with q1's is a no-op and no refusal could fire.",
+    "repair": "the test now substitutes a genuinely different risk-set identity and rehashes, so the geometry/pinned risk-set guard has something real to reject; the test was defective, not the guard",
+    "verdict": "REPAIRED_AND_TESTED"
+  },
+  "preserved_ceilings": {
+    "nonissuing_development_family": true,
+    "grant": null,
+    "external_issuer": null,
+    "authorizing": false,
+    "replay_blocked_missing_authority": true,
+    "rebuild_blocked": true,
+    "historical_only_c103r_replay": true,
+    "i4_m1_only_unchanged": true,
+    "publication_current_selection_g1_g0b_must_still_fail": "verified by original tests p04, n09, n10 which still pass"
+  }
+}

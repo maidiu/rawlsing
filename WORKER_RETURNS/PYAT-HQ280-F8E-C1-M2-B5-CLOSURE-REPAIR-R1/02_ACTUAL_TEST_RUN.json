@@ -1,0 +1,135 @@
+{
+ "schema": "HQ280_F8E_ACTUAL_TEST_RUN@1.0.0",
+ "governing_decision": "HQD-2026-10-10-280",
+ "canonical_observed": "6a8c91d99dca1ae2fd3559ba3c11ee26649e3cd9",
+ "semantic_pre_main": "1f47063c3205a45888b3c55e81e7485943ed1390",
+ "worktree_head": "6552be7b6e4a92654e98e5562d3e2b6f24d769bd",
+ "sealed_startup_tip": "6552be7b6e4a92654e98e5562d3e2b6f24d769bd",
+ "seed_candidate": "69bb0fc69175b2f6048b00cfa47dc852593798c0",
+ "command": "PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTEST_ADDOPTS='-p no:cacheprovider' python3 -m pytest -vv rawlsing_next/tests/test_pre553_c1_immutable_release_binding.py",
+ "exit_code": 0,
+ "python": "3.11.3",
+ "pytest": "9.0.2",
+ "platform": "macOS-13.2.1-x86_64-i386-64bit",
+ "original_15_tests": {
+  "count": 15,
+  "passed": 15
+ },
+ "injected_hostile_tests": {
+  "count": 8,
+  "passed": 8
+ },
+ "total_collected": 23,
+ "total_passed": 23,
+ "total_failed": 0,
+ "cases": [
+  {
+   "case": "test_p01_two_actual_c1_products_receive_distinct_exact_m2_releases",
+   "result": "PASSED"
+  },
+  {
+   "case": "test_p02_all_five_required_m2_closures_and_dependency_graph",
+   "result": "PASSED"
+  },
+  {
+   "case": "test_p03_stable_content_addressing_no_new_issuer",
+   "result": "PASSED"
+  },
+  {
+   "case": "test_p04_b5_stage_register_only_no_publication_or_currentness",
+   "result": "PASSED"
+  },
+  {
+   "case": "test_p05_historical_only_replay_cannot_claim_fresh_process",
+   "result": "PASSED"
+  },
+  {
+   "case": "test_n01_wrong_source_release_is_refused",
+   "result": "PASSED"
+  },
+  {
+   "case": "test_n02_wrong_model_rule_is_refused",
+   "result": "PASSED"
+  },
+  {
+   "case": "test_n03_wrong_conditioner_cell_or_risk_ref_is_refused",
+   "result": "PASSED"
+  },
+  {
+   "case": "test_n04_forged_same_person_denominator_is_refused_even_if_rehashed",
+   "result": "PASSED"
+  },
+  {
+   "case": "test_n05_native_nonsupported_valid_empty_mints_no_m2",
+   "result": "PASSED"
+  },
+  {
+   "case": "test_n06_tampered_c1_provenance_and_evidence_are_refused",
+   "result": "PASSED"
+  },
+  {
+   "case": "test_n07_replay_overclaim_is_refused",
+   "result": "PASSED"
+  },
+  {
+   "case": "test_n08_missing_dependency_or_determinant_closure_refused_by_real_m2",
+   "result": "PASSED"
+  },
+  {
+   "case": "test_n09_substituted_contract_refuses_and_is_not_g0b",
+   "result": "PASSED"
+  },
+  {
+   "case": "test_n10_i4_m1_only_and_no_selected_service_path",
+   "result": "PASSED"
+  },
+  {
+   "case": "test_f8e_h01_correct_shape_wrong_condition_composition_is_refused",
+   "result": "PASSED"
+  },
+  {
+   "case": "test_f8e_h02_reversed_numerator_q2_is_refused_before_m2",
+   "result": "PASSED"
+  },
+  {
+   "case": "test_f8e_h02b_original_q1_q2_scope_matches_actual_produced_scope",
+   "result": "PASSED"
+  },
+  {
+   "case": "test_f8e_h03_rehashed_substituted_risk_members_are_refused",
+   "result": "PASSED"
+  },
+  {
+   "case": "test_f8e_h04_model_and_walkback_authorities_are_closure_members",
+   "result": "PASSED"
+  },
+  {
+   "case": "test_f8e_h04b_changed_model_authority_affects_the_product",
+   "result": "PASSED"
+  },
+  {
+   "case": "test_f8e_h05_every_determinant_is_a_real_graph_edge",
+   "result": "PASSED"
+  },
+  {
+   "case": "test_f8e_h05b_non_dependency_determinants_are_reachable_in_the_graph",
+   "result": "PASSED"
+  }
+ ],
+ "baseline_before_repair": {
+  "passed": 14,
+  "failed": 1,
+  "failing_case": "test_n03_wrong_conditioner_cell_or_risk_ref_is_refused",
+  "note": "F8D shipped a failing test: q1 and q2 share one fixture risk-set ref, so the authored swap was a no-op"
+ },
+ "adjacent_owner_regression": {
+  "suite": "test_pre553_analytical_composition, test_pre553_analytical_replay_dependency, test_pre553_learned_product_release, test_pre553_learned_product_lifecycle",
+  "passed": 123,
+  "failed": 0
+ },
+ "changed_files": {
+  "rawlsing_next/pre553_c1_immutable_release_binding.py": "460547ad7ede9ff3ed1051f0316c2b6818e5e401216364cd4daff578140d49aa",
+  "rawlsing_next/tests/test_pre553_c1_immutable_release_binding.py": "1af1289c5464e1e7af6a456a563cc2240a8861d492fbe1ffa0ec6ed74a412de5"
+ },
+ "test_log_sha256": "ee27b2d53f17e7cae6800c6df8a7da867afb9d5ab56808656463a6eb576227fd"
+}

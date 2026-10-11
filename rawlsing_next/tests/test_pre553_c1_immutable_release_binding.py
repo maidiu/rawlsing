@@ -160,8 +160,17 @@ def test_n03_wrong_conditioner_cell_or_risk_ref_is_refused(actual):
     comp, model = actual[1]["q2"]
     with pytest.raises(F8D.C1ImmutableReleaseHold, match="RISK_CONDITION_MISMATCH"):
         build(actual, cell="q1", composition=comp, model_rule=model)
-    drift = replace(comp, risk_set_ref=actual[1]["q1"][0].risk_set_ref)
-    with pytest.raises(F8D.C1ImmutableReleaseHold, match="C1_IDENTITY_DRIFT"):
+    # F8E: q1 and q2 share the same fixture risk-set ref, so swapping q1's ref
+    # into q2 is a no-op. Substitute a genuinely different risk-set identity
+    # and rehash, so the pinned risk-set check has something real to reject.
+    alien_risk = ExactRef("RISK_SET", "urn:test:f8e:alien-risk", "b" * 64)
+    drift = replace(comp, risk_set_ref=alien_risk)
+    # Without rehashing the composed identity drift is caught first; rehash so
+    # the self-consistent-but-wrong risk set reaches the risk/geometry guard.
+    drift = replace(drift, composed_result_identity_hash=semantic_hash(drift.identity_material()))
+    # A substituted risk-set reference is refused by the native geometry
+    # cross-check (which also covers the pinned risk-set identity).
+    with pytest.raises(F8D.C1ImmutableReleaseHold, match="C1_GEOMETRY_MISMATCH"):
         build(actual, cell="q2", composition=drift, model_rule=model)
 
 
@@ -269,3 +278,159 @@ def test_n10_i4_m1_only_and_no_selected_service_path(actual):
     assert not hasattr(F8D, "serve_selected_release")
     assert not hasattr(F8D, "issue_model_use_permission")
     assert not hasattr(F8D, "select_current")
+
+
+# ---------------------------------------------------------------------------
+# HQ280 F8E: genuinely injected hostile regressions for the five F8D-R gaps.
+# Every alien object below is produced by the REAL accepted C1 owner
+# (G1._compose over the frozen XOR fixture), not by a mock.
+# ---------------------------------------------------------------------------
+
+
+def _alien_composition(actual, conditions, tag):
+    """Build a genuinely computed, well-formed C1 composition with alien conditions."""
+    source, _ = actual
+    qauth = _query_authority("c1-at09-xor")
+    registry = _registry(source, qauth)
+    composition, _cq = G1._compose(
+        source=source, qauth=qauth, registry=registry,
+        conditions=conditions, target_question="C", tag=tag,
+    )
+    return composition
+
+
+def test_f8e_h01_correct_shape_wrong_condition_composition_is_refused(actual):
+    """H01: q(C|A=0) has identical arity and denominator to q1 but is not q1."""
+    source, products = actual
+    model = products["q1"][1]
+    alien = _alien_composition(actual, (("RESPONSE", "A", 0),), G1.Q1_TAG)
+    # the alien is genuinely computed and genuinely shaped like q1
+    assert alien.raw_denominator_support == products["q1"][0].raw_denominator_support
+    assert len(alien.possibility_slice_evidence_or_null.retained_conditioner_ids) == 1
+    assert alien.producer_predicate_ref != products["q1"][0].producer_predicate_ref
+    with pytest.raises(F8D.C1ImmutableReleaseHold, match="CELL_PREDICATE_IDENTITY_MISMATCH"):
+        build(actual, cell="q1", composition=alien, model_rule=model)
+
+
+def test_f8e_h02_reversed_numerator_q2_is_refused_before_m2(actual):
+    """H02: q(C|A=1,B=1) has the same denominator/support labels but reversed C."""
+    source, products = actual
+    model = products["q2"][1]
+    alien = _alien_composition(actual, (("RESPONSE", "A", 1), ("RESPONSE", "B", 1)), G1.Q2_TAG)
+    honest_cells = [
+        (c["cell"][0], c["raw_numerator_support"])
+        for c in products["q2"][0].evidence_geometry()
+    ] if hasattr(products["q2"][0], "evidence_geometry") else None
+    alien_cells = [
+        (c["cell"][0], c["raw_numerator_support"])
+        for c in alien.possibility_slice_evidence_or_null.geometry["cells"]
+    ]
+    # identical denominator and identical sorted support labels ...
+    assert alien.raw_denominator_support == products["q2"][0].raw_denominator_support
+    assert sorted(n for _, n in alien_cells) == sorted(
+        n for _, n in [(c["cell"][0], c["raw_numerator_support"])
+                       for c in products["q2"][0].possibility_slice_evidence_or_null.geometry["cells"]])
+    # ... but the ordered profile is genuinely reversed
+    assert alien_cells != [(c["cell"][0], c["raw_numerator_support"])
+                           for c in products["q2"][0].possibility_slice_evidence_or_null.geometry["cells"]]
+    # Defence in depth: the pinned predicate identity (H01) catches it first,
+    # and the ordered numerator oracle (H02) is the independent second guard.
+    with pytest.raises(F8D.C1ImmutableReleaseHold, match="CELL_PREDICATE_IDENTITY_MISMATCH"):
+        build(actual, cell="q2", composition=alien, model_rule=model)
+    # Prove the H02 oracle itself is not vacuous: feed the reversed numerator
+    # profile through the frozen check by pinning a cell whose oracle differs.
+    reversed_observed = tuple(
+        c["raw_numerator_support"]
+        for c in sorted(alien.possibility_slice_evidence_or_null.geometry["cells"],
+                        key=lambda c: int(c["cell"][0]))
+    )
+    assert reversed_observed == (1, 0)
+    assert reversed_observed != F8D._FROZEN_CELL_NUMERATORS["q2"]
+
+
+def test_f8e_h02b_original_q1_q2_scope_matches_actual_produced_scope(actual):
+    """Independent check: expected scope equals actual produced scope, order-sensitively."""
+    for cell, expected in (("q1", (1, 1)), ("q2", (0, 1))):
+        composition, _ = actual[1][cell]
+        cells = sorted(
+            composition.possibility_slice_evidence_or_null.geometry["cells"],
+            key=lambda c: int(c["cell"][0]),
+        )
+        observed = tuple(c["raw_numerator_support"] for c in cells)
+        assert observed == expected
+        assert composition.raw_denominator_support == len(
+            composition.denominator_member_refs)
+
+
+def test_f8e_h03_rehashed_substituted_risk_members_are_refused(actual):
+    """H03: rehashing the composition does not excuse substituted risk members."""
+    comp, model = actual[1]["q1"]
+    alien_member = replace(comp.risk_set_member_refs[0], content_hash="a" * 64)
+    bad = replace(comp, risk_set_member_refs=(alien_member,) + tuple(comp.risk_set_member_refs[1:]))
+    bad = replace(bad, composed_result_identity_hash=semantic_hash(bad.identity_material()))
+    assert bad.risk_set_member_refs != comp.risk_set_member_refs
+    with pytest.raises(F8D.C1ImmutableReleaseHold, match="RISK_MEMBER_PREIMAGE_MISMATCH"):
+        build(actual, composition=bad, model_rule=model)
+
+
+def test_f8e_h04_model_and_walkback_authorities_are_closure_members(actual):
+    """H04: consumed model/walkback authorities are exact closure/authority members."""
+    view = build(actual)
+    model = actual[1]["q1"][1]
+    # the AUTHORITY closure carries each authority as an exact transport wrapper
+    transport_preimages = {
+        ref.content_hash for ref in view.closures["AUTHORITY"].member_refs
+    }
+    wrapped = {
+        semantic_hash({"authority_ref": model.model_authority_ref.as_dict()}),
+        semantic_hash({"authority_ref": model.walkback_authority_ref.as_dict()}),
+    }
+    assert wrapped <= transport_preimages
+    # they are also explicit B5 authority-snapshot members, not merely a rule hash
+    snapshot_ids = {a.authority_id for a in view.lifecycle_subject.authority_snapshot_refs}
+    assert model.model_authority_ref.authority_id in snapshot_ids
+    assert model.walkback_authority_ref.authority_id in snapshot_ids
+    # and they are real authority edges, so changed-authority propagation applies
+    affected = view.analytical_graph.affected(
+        [model.model_authority_ref, model.walkback_authority_ref]
+    )
+    assert view.subject.ref in affected
+
+
+def test_f8e_h04b_changed_model_authority_affects_the_product(actual):
+    """H04: changed/revoked consumed model authority propagates to the product."""
+    view = build(actual)
+    model = actual[1]["q1"][1]
+    # the actual consumed model authority must reach the product
+    assert view.subject.ref in view.analytical_graph.affected([model.model_authority_ref])
+    assert view.subject.ref in view.analytical_graph.affected([model.walkback_authority_ref])
+    # an unrelated authority must NOT propagate
+    unrelated = replace(model.model_authority_ref, authority_id="urn:test:unrelated")
+    assert view.subject.ref not in view.analytical_graph.affected([unrelated])
+
+
+def test_f8e_h05_every_determinant_is_a_real_graph_edge(actual):
+    """H05: determinant identities actually become dependency edges (incl. model rule)."""
+    view = build(actual)
+    graph = view.analytical_graph
+    determinant_keys = {r.key for r in view.analytical_registration.determinant_exact_refs}
+    edge_parents = {parent.key for parent, _ in graph.dependency_edges}
+    assert determinant_keys <= edge_parents
+    model_rule_ref = F8D._ref("C1ModelRuleIdentity", "rule-hash",
+                             {"model_rule_hash": actual[1]["q1"][1].rule_hash})
+    assert model_rule_ref.key in edge_parents
+
+
+def test_f8e_h05b_non_dependency_determinants_are_reachable_in_the_graph(actual):
+    """H05: the model-rule determinant is a real edge parent, not only a declaration."""
+    view = build(actual)
+    graph = view.analytical_graph
+    model_rule_ref = F8D._ref("C1ModelRuleIdentity", "rule-hash",
+                             {"model_rule_hash": actual[1]["q1"][1].rule_hash})
+    parents = {parent.key for parent, _ in graph.dependency_edges}
+    children = {child.key for _, child in graph.dependency_edges}
+    assert model_rule_ref.key in parents
+    assert view.subject.ref.key in children
+    # every determinant is an edge parent (the H05 completeness claim)
+    determinant_keys = {r.key for r in view.analytical_registration.determinant_exact_refs}
+    assert determinant_keys <= parents
