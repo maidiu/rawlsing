@@ -1,0 +1,210 @@
+{
+  "schema": "PYAT_HQ280_PV3_A02_TWO_HETEROGENEOUS_GROUNDED_BINDINGS@1.0.0",
+  "scientific_adoption": "EXISTING_ORIGINAL_DOCUMENT_AND_RETAINED_BOUNDED_WARRANTS_ONLY",
+  "new_permissions": 0,
+  "bindings": [
+    {
+      "id": "SRC02_AFRO_R5_GHA_Q86A_Q8A_Q97",
+      "source": {
+        "id": "SRC02",
+        "family": "Afrobarometer",
+        "wave": "R5",
+        "country": "GHA",
+        "country_original_english": "https://www.afrobarometer.org/wp-content/uploads/2022/02/gha_r5_questionnaire.pdf",
+        "date": "2012-04-19",
+        "merged_codebook": "https://www.afrobarometer.org/wp-content/uploads/2022/02/merged_r5_codebook_2.pdf",
+        "source_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+        "codebook_sha256": "7e02c649c8ae69c61f88c116fdad92353b7f06cba9e160d9ae4be18e72276735",
+        "hash_origin": "HQ271 M01 prior bounded custodian, not this worker"
+      },
+      "original_administration": "One randomly selected Ghanaian household citizen adult aged 18+, no new selection between questions; C11 row-level source release and exposure NOT established",
+      "physical_identity": {
+        "reported_fields": [
+          "COUNTRY",
+          "COUNTRY_ALPHA",
+          "RESPNO"
+        ],
+        "COUNTRY_ALPHA3": "DERIVED_NOT_PHYSICAL",
+        "must_prove": [
+          "unique COUNTRY/RESPNO",
+          "governed GHA crosswalk",
+          "exact physical dictionary and release",
+          "one RowRespondentBinding and three distinct RespondentEvents",
+          "three independent RoutingEligibilityFact"
+        ]
+      },
+      "native_response_table": [
+        {
+          "item": "Q8A",
+          "role": "A",
+          "source_print_page": 4,
+          "meaning": "respondent OR family without enough food over past year",
+          "substantive": {
+            "0": "Never",
+            "1": "Just once/twice",
+            "2": "Several times",
+            "3": "Many times",
+            "4": "Always"
+          },
+          "special": {
+            "9": "DK",
+            "998": "REFUSED",
+            "-1": "MISSING"
+          },
+          "native_dictionary": "NEW_PHYSICAL_Q8A_STILL_HELD",
+          "routing": "Original Ghana no item-specific printed skip; exact per-person exposure unproved"
+        },
+        {
+          "item": "Q86A",
+          "role": "Y",
+          "source_print_page": 20,
+          "meaning": "citizenship opinion about Ghana-born person with one Ghanaian and one non-Ghanaian parent",
+          "substantive": {
+            "0": "No",
+            "1": "Yes"
+          },
+          "special": {
+            "9": "DK",
+            "997": "NOT_ASKED",
+            "998": "REFUSED",
+            "-1": "MISSING"
+          },
+          "native_dictionary": "EARLIER_Q86A_CHECKED_ONLY; GHA target grant held",
+          "routing": "Not asked in ALG EGY MRC SUD TUN in merged R5, GHA original fielded; per-person exposure unproved"
+        },
+        {
+          "item": "Q97",
+          "role": "B",
+          "source_print_page": 21,
+          "meaning": "respondent's highest COMPLETED education, not read options",
+          "substantive": {
+            "0": "No formal",
+            "1": "Informal including Koranic",
+            "2": "Some primary",
+            "3": "Primary completed",
+            "4": "Some secondary",
+            "5": "Secondary completed",
+            "6": "Postsecondary nonuniversity",
+            "7": "Some university",
+            "8": "University completed",
+            "9": "Postgraduate"
+          },
+          "special": {
+            "99": "DK",
+            "998": "REFUSED",
+            "-1": "MISSING"
+          },
+          "native_dictionary": "NEW_PHYSICAL_Q97_STILL_HELD",
+          "routing": "Original common Ghana interview; per-person exposure unproved"
+        }
+      ],
+      "risk": "S_GHA = one authenticated GHA selected adult, Q8A/Q86A/Q97 each source eligible, exposed, and source-native substantive; exact S count and member refs/null until issued and executed",
+      "risk_members": null,
+      "queries": [
+        {
+          "identity": "PROPOSED_q1",
+          "expression": "Pr(Q86A=1 | Q8A=3,S_GHA)",
+          "selection": "R1 = {r∈S_GHA: Q8A(r)=3}",
+          "numerator": null,
+          "denominator": null
+        },
+        {
+          "identity": "PROPOSED_q2",
+          "expression": "Pr(Q86A=1 | Q8A=3,Q97=5,S_GHA)",
+          "selection": "R2 = {r∈R1: Q97(r)=5}",
+          "numerator": null,
+          "denominator": null
+        }
+      ],
+      "query_law": "R2⊆R1⊆S_GHA; identical complete-case S for comparisons, distinct conditional denominator_member_refs; no implied numerical difference or strict inequality.",
+      "previous_GT2_19210": {
+        "countries": [
+          "BFO",
+          "BOT",
+          "CVE",
+          "KEN",
+          "LES",
+          "MAU",
+          "MLW",
+          "MOZ",
+          "NAM",
+          "SAF",
+          "UGA"
+        ],
+        "ghana": false,
+        "can_reuse": false
+      },
+      "estimand": "PROPOSED RAW unweighted description of authorized GHA respondent sample ONLY; no national, causal, design-weighted, structural, or model use",
+      "status": {
+        "original_instrument": "SUPPORTED_PREVIOUS_ORIGINAL_S01",
+        "row_identity": "HELD",
+        "Q8A_Q97_native_physical": "HELD",
+        "GHA_target_use": "HELD",
+        "q1_q2_true_conditional": "HELD",
+        "weights_variance": "HELD",
+        "C1_G0b": "HELD"
+      },
+      "required_signer": "Competent original R5/GT12 source-science and source/operation owner under adopted EE01–EE04, separately exact physical custodian and usage adoption; no issuer invented",
+      "warrant": "WORKER_RETURNS/PYAT-HQ273-S01-AFRO-R5-Q86A-Q8A-Q97-HETEROGENEOUS-SCIENTIFIC-SOURCE-WARRANT-R1/00_OFFICIAL_ORIGINAL_Q8A_Q97_Q86A_MEANINGS_AND_ADMINISTRATION.md @ 47755ddba44cd5f79c3fc4817c990e5d4ad9bb01"
+    },
+    {
+      "id": "SRC27_LITS_I_Q301_2_Q301_7_SECTION3",
+      "source": {
+        "id": "SRC27",
+        "family": "LiTS",
+        "wave": "I",
+        "period": "2006",
+        "retained_checkpoint_doc_sha256": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726",
+        "retained_canonical_closure_sha256": "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415",
+        "raw_DTA_opened_by_A02": false
+      },
+      "native_items": [
+        {
+          "item": "q301_2",
+          "meaning": "retrospective political situation relative to 1989",
+          "scope": "AS2A SAME_PERSON bound",
+          "value_codes": "NOT_RECOVERED_AT_A02__HELD"
+        },
+        {
+          "item": "q301_7",
+          "meaning": "current life satisfaction",
+          "scope": "AS2A SAME_PERSON bound",
+          "value_codes": "NOT_RECOVERED_AT_A02__HELD"
+        },
+        {
+          "item": "q310",
+          "meaning": "market-versus-planned-system preference",
+          "scope": "F02 EXACT_MIXED_RESPONDENT_REFINEMENT ONLY",
+          "same_person_third": "HELD",
+          "value_codes": "NOT_RECOVERED_AT_A02__HELD"
+        }
+      ],
+      "respondent_boundary": "LiTS original Section 3 may select another household member/adult. Two previously AS2A-proved respondent events do not transfer identity to q310 or other household-section event.",
+      "accepted_joint": {
+        "kind": "D02_P1_JOINT_DEPENDENCE",
+        "query_ref": "6ee12199bb7b5aabd62f0bd18d469d115b48d2cb0b5f30b36ff48a23903c6cbd",
+        "fact_ref": "fb8bd6e50f27d77ed97827ba3ff712df5951e438d60b5a0194f9953107e3614b",
+        "joint_RAW_risk": 24630,
+        "marginal0_RAW_risk": 24897,
+        "marginal1_RAW_risk": 28325,
+        "uncertainty": "UNCERTAINTY_UNQUANTIFIED",
+        "minority_nonmodal_cells": 25,
+        "conditional_reversal": "VALID_EMPTY_NOT_POSITIVE"
+      },
+      "denominator_rule": "Joint and two marginals have different documented RAW risk sets; do not pool or counterfeit q(Y|A,B).",
+      "design": "Retained RAW only; no weighted population estimand",
+      "status": {
+        "retained_two_item_joint": "SUPPORTED_AT_EXACT_PREVIOUS_SCOPE",
+        "third_same_person": "HELD",
+        "new_triple": "HELD",
+        "new_raw_DTA_read": "NOT_AUTHORIZED",
+        "FF01": "EMPIRICAL_OBSERVATION_ONLY",
+        "FF02": "STRUCTURAL_RELATION_NOT_ADMITTED",
+        "EE14": "HELD"
+      },
+      "required_signer": "LiTS native Section-3 original respondent selector and AS2A successor third-event/routing owner; separate operation and FF02 source focal-claim issuer if scientifically warranted",
+      "warrant": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ271_FOUR_HQ270_RETURNS_G1_RUNTIME_REVIEWED_CONTROL_ADOPTION_SOURCE_SCIENCE_AND_G0B_HOLD_R1.md; PYAT_CONTROL_ROOM/HQ261_LITS_I_RETAINED_CANONICAL_P1_READ_ONLY_CUSTODY_INSPECTION_R1.md"
+    }
+  ],
+  "negative": "These are two heterogeneous *evidence-bound contracts*, not two newly permitted operations. Neither authorizes raw source execution."
+}
