@@ -1,0 +1,35 @@
+{
+ "schema": "HQ280_PV3_B01CR_REPLAY_IDEMPOTENCE_AND_LOCK_HOSTILES@1",
+ "lock": {
+  "exclusion_while_held": "refused (CheckpointLockError)",
+  "after_holder_SIGKILL": "released, reacquired",
+  "stale_lock_deadlock_observed": false
+ },
+ "idempotence": {
+  "caller_asserted_proof_accepted": true,
+  "proof_value_read": false,
+  "disposition_granted": "RERUN_SAFE",
+  "unresolved_state_must_remain": "UNKNOWN_OUTCOME (HELD)",
+  "required_fix": "owner-verified idempotence credential (exact ref + issuer + signature/schema)"
+ },
+ "tamper_torn_foreign": {
+  "torn_truncated": "refused",
+  "digest_tamper": "detectable",
+  "foreign_identity": "not exhaustively exercised (bounded run) \u2014 UNKNOWN"
+ },
+ "atomicity": {
+  "sigkill_mid_write_leaves_torn_final_file": false,
+  "parent_dir_fsync_present": true
+ },
+ "nfs_or_distributed": {
+  "supported": false,
+  "note": "flock + dir-fsync semantics are filesystem dependent; no NFS claim made or tested"
+ },
+ "not_exhaustively_exercised": [
+  "manifest/release/ref multiplicity",
+  "attempt-index redo-on-failure",
+  "stale-checkpoint competition",
+  "foreign-checkpoint injection"
+ ],
+ "terminal": "HQ280_PV3_B01CR_INDEPENDENT_DURABLE_CHECKPOINT_RUNTIME_HOSTILE_RETURNED__NONISSUING__GITHUB_PUSHED"
+}

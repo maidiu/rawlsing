@@ -1,0 +1,87 @@
+{
+ "schema": "HQ280_PV3_B01CR_CRASH_WINDOWS@1",
+ "cases": [
+  {
+   "id": "W1",
+   "what": "SIGKILL during atomic write (tmp->fsync->replace->dirfsync)",
+   "command": "kill -9 pid=52703 at t+0.35s",
+   "observed": {
+    "returncode": -9,
+    "signal": 9,
+    "final_path_exists": false,
+    "final_path_parses": false,
+    "leftover_tmp": []
+   },
+   "verdict": "PASS__never_observes_a_torn_or_partial_file_at_the_final_path",
+   "detail": ""
+  },
+  {
+   "id": "W2",
+   "what": "torn/truncated mutation",
+   "command": "truncate to 50% then parse",
+   "observed": "refused:JSONDecodeError",
+   "verdict": "PASS__torn_state_detectable",
+   "detail": ""
+  },
+  {
+   "id": "W3",
+   "what": "content tamper vs returned digest",
+   "command": "flip a byte, recompute sha256",
+   "observed": {
+    "returned_digest": "fbf7612302afd65c06009618d5144fcb3957387bd75bd9b9d232a27293d9c072",
+    "observed_digest": "42118acdfecd02b67b251684138486198ff925d2df952b46f6b94b2aca4344dd",
+    "differs": true
+   },
+   "verdict": "PASS__tamper_detectable_by_digest",
+   "detail": ""
+  },
+  {
+   "id": "W4",
+   "what": "parent-directory fsync",
+   "command": "inspect accepted source _atomic_write_bytes/_fsync_dir",
+   "observed": {
+    "fsync_file": true,
+    "fsync_dir_after_replace": true,
+    "fsync_dir_opens_O_RDONLY": true
+   },
+   "verdict": "PASS__file+dir_fsync_present",
+   "detail": "macOS: dir fsync on APFS returns success; durability semantics are filesystem-dependent"
+  },
+  {
+   "id": "W5",
+   "what": "process lock exclusion and crash release",
+   "command": "flock LOCK_EX|LOCK_NB from two real processes",
+   "observed": {
+    "while_held": "refused:CheckpointLockError",
+    "after_holder_SIGKILL": "reacquired_after_holder_crash"
+   },
+   "verdict": "PASS__exclusion_and_release",
+   "detail": ""
+  },
+  {
+   "id": "W6",
+   "what": "FORGED caller idempotence proof (central adversarial question)",
+   "command": "plan_recovery(checkpoint, idempotence_proof={'<unit_key>': '<any value>'})",
+   "observed": {
+    "decisive_source_lines": [
+     "if unit_key in proofs:"
+    ],
+    "value_of_the_proof_is_read": false,
+    "consequence": "a START intent with no COMMIT receipt is proposed for RERUN when the caller merely names the key; the proof VALUE is never validated against any owner, signature, schema or competence"
+   },
+   "verdict": "FAIL__CALLER_ASSERTED_IDEMPOTENCE_ACCEPTED_AS_PROOF",
+   "detail": ""
+  }
+ ],
+ "forged_idempotence_verdict": {
+  "attack": "caller supplies {'unit_key': 'anything'} after a crash with a recorded INTENT and no COMMIT",
+  "observed_rule": [
+   "if unit_key in proofs:"
+  ],
+  "proof_is_verified": false,
+  "resulting_disposition": "RERUN_SAFE",
+  "duplicate_execution_risk": "REAL \u2014 the side effect may already have landed; rerun would duplicate it",
+  "required_fix": "RERUN_SAFE must require an owner-verified idempotence credential (exact ref + issuer + verified signature/schema), not mere key presence",
+  "unresolved_state": "UNKNOWN_OUTCOME must remain HELD unless such a credential verifies"
+ }
+}

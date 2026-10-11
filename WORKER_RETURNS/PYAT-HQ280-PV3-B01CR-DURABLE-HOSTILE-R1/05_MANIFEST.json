@@ -1,0 +1,55 @@
+{
+ "schema": "HQ280_PV3_B01CR_MANIFEST@1",
+ "reviewer_branch": "agent/reviewer-pyat-hq280-pv3-b01cr-durable-hostile-r1",
+ "reviewer_head": "7763ee38cadde298758ba7324a8d0e62693ba0cd",
+ "candidate": "88a2b4c1916c73d30cae4c2ffe48d083eb2e0667",
+ "authority": {
+  "governing": "HQD-2026-10-10-280",
+  "canonical": "a70a069fa948e0f3c041b389edcc732b6b948a4f"
+ },
+ "deliverables": {
+  "00_RETURN.md": {
+   "sha256": "18e151b335ab3aa05952dc07c6e186e6791d5645d189660fda5844f734130acd",
+   "bytes": 5471
+  },
+  "01_PINNED_CODE_AND_PROTOCOL.json": {
+   "sha256": "97aac55f1f27a94f3c098e20af3c0f3288427ccccbbb51ab5487373f3bc2da14",
+   "bytes": 1260
+  },
+  "02_ACTUAL_PROCESS_KILL_AND_CRASH_WINDOWS.json": {
+   "sha256": "7bb43f1f9fe8a81cf170538f7959c37a54dd9fc6b72e180c2dcf7455b38f3598",
+   "bytes": 3649
+  },
+  "03_REPLAY_IDEMPOTENCE_AND_LOCK_HOSTILES.json": {
+   "sha256": "a34e5a37a94eb18221a8872802d9e13e18ffaf8e1950506fecb19d2554b938bf",
+   "bytes": 1245
+  }
+ },
+ "repro": {
+  "b01c_35_suite.log": {
+   "sha256": "f54676a6cfd44413bcff68269c636238ae95c7b00d7acf8c307637676e5fffb3",
+   "bytes": 99
+  },
+  "b01cr_crash_hostiles.py": {
+   "sha256": "b3db850e2521e644363fe2cb6e6d8859fd210598110408b7e98345bdd1be70ba",
+   "bytes": 6153
+  },
+  "b01cr_worker.py": {
+   "sha256": "2a448c5bceb5b21a29fe8d7317992903fb0f6389097df1922e3c7d5810ae0a2d",
+   "bytes": 721
+  },
+  "protocol_suite.log": {
+   "sha256": "11a0325b6060b3447fd362169f65fd99c3a188fa6dfd7ec5bc03dd76fc5d3cb6",
+   "bytes": 99
+  },
+  "results.json": {
+   "sha256": "badb80bce4f430354e558a217b43b9c2803de9c49749d8f60bda608e6a3d80b1",
+   "bytes": 3054
+  }
+ },
+ "verdict": "DURABILITY_CORE_PASSES_REAL_CRASH_WINDOWS__ONE_EXACT_DEFECT__CALLER_ASSERTED_IDEMPOTENCE_ACCEPTED_AS_PROOF",
+ "owner_code_edited": false,
+ "raw_source_executed": false,
+ "no_self_adoption": true,
+ "terminal": "HQ280_PV3_B01CR_INDEPENDENT_DURABLE_CHECKPOINT_RUNTIME_HOSTILE_RETURNED__NONISSUING__GITHUB_PUSHED"
+}
