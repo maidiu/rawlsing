@@ -1,0 +1,84 @@
+{
+ "schema": "HQ280_PV3_A05_EVIDENCE_MANIFEST@1",
+ "commission": "PYAT-HQ280-PV3-A05-INDEPENDENT-NODROP-ORACLE-R1",
+ "branch": "agent/rabochii-pyat-hq280-pv3-a05-independent-nodrop-oracle-r1",
+ "head": "921a17130002e741d25824a19ce39412399a51a5",
+ "control": {
+  "parallel_seal": "908ee4e74849884b1d4c2f5322090a57538b67",
+  "inherited": "HQD-2026-10-10-280",
+  "canonical_baseline": "a70a069fa948e0f3c041b389edcc732b6b948a4f",
+  "semantic_pre_main": "1f47063c3205a45888b3c55e81e7485943ed1390"
+ },
+ "method": "standalone deterministic source-free oracle + adversarial court; stdlib only; no repository import, no A04 import, no raw survey",
+ "deliverables": {
+  "00_RETURN.md": {
+   "sha256": "12eeef8db88680db790d25715d91c78130bc5a94b46fc5cd5d776985fda1fc41",
+   "bytes": 6927
+  },
+  "01_INDEPENDENT_EXPECTED_WORK_SCHEMA.json": {
+   "sha256": "45560e37574c977fbf42aae81adc17b87657f4aba75a4b9fd1e013826aa3ce40",
+   "bytes": 4151
+  },
+  "02_ACTUAL_OMISSION_AND_EXTRA_TESTS.json": {
+   "sha256": "e4434d744768ac35352859171a44af61314206dbf8a6d9a22a5bede5dd91dfbb",
+   "bytes": 2663
+  },
+  "03_JOB_PRODUCT_CONSUMER_JOIN.md": {
+   "sha256": "6b0255edce1613554c73372ba376d8bd64575e298ca14ce651ed99b7a6041cd7",
+   "bytes": 3356
+  },
+  "04_GRADED_REAL_SOURCE_PRECEDENTS.json": {
+   "sha256": "2d44ff9b92ad814ba8d7f8180d510556548ffa9b97659a3abdd2f444c6c48d45",
+   "bytes": 2706
+  }
+ },
+ "repro": {
+  "a05_hostile_results.json": {
+   "sha256": "b0d1c682ce3078a98874ff404b85c2246faa7460494570cd1aa97dd42d967ce6",
+   "bytes": 5831
+  },
+  "a05_hostiles.py": {
+   "sha256": "68ba6926dc0f5c8049c0e5052fb016e4979e973a958170e02d1571f8f389bad5",
+   "bytes": 7533
+  },
+  "a05_oracle.py": {
+   "sha256": "81c74691d576b89a5569efcffd929ef8c995c6261362bad243d235ded8fe96d4",
+   "bytes": 10024
+  }
+ },
+ "execution": {
+  "command": "python3 repro/a05_hostiles.py",
+  "exit_code": 0,
+  "cases": 18,
+  "all_expectations_met": true,
+  "must_fail": 16,
+  "must_pass": 2,
+  "interpreter": "python3.11.3"
+ },
+ "a04_code_modified": false,
+ "repository_code_imported": false,
+ "raw_source_executed": false,
+ "observed_vs_unknown": {
+  "OBSERVED": [
+   "oracle PASSES the honest control and the stable-reorder control",
+   "oracle FAILS all 16 adversarial mutations with the expected typed codes",
+   "same-count/different-key substitution is caught although every count matches",
+   "consumer omission is caught although every product is present",
+   "held/denied/NA visibility and non-runnability are enforced",
+   "false nulls from AUTHORITY_UNAVAILABLE and zero denominators are refused"
+  ],
+  "UNKNOWN": [
+   "no real-wave expected operation was constructed or verified (out of scope)",
+   "A04's actual binder output was not available on this branch and was not depended upon",
+   "no threshold/truncation behaviour of any real producer was exercised"
+  ]
+ },
+ "not_published": [
+  "no raw respondent data",
+  "no raw SAV/DTA",
+  "no pseudonymous lineage trace"
+ ],
+ "no_self_adoption": true,
+ "terminal": "HQ280_PV3_A05_INDEPENDENT_EXTERNAL_NODROP_ORACLE_ADVERSARIAL_PASS_OR_EXACT_HOLD__GITHUB_PUSHED",
+ "deliverables_note": "05_EVIDENCE_MANIFEST.json excludes its own hash by construction; its hash is in the commit receipt."
+}

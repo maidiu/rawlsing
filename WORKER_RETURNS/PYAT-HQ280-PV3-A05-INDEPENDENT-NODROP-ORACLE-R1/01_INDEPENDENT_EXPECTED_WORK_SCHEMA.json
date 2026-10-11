@@ -1,0 +1,49 @@
+{
+  "schema": "HQ280_PV3_A05_INDEPENDENT_EXPECTED_WORK_SCHEMA@1.0.0",
+  "version": "HQ280_PV3_A05_EXPECTED_WORK@1.0.0",
+  "canonicalization": {"json": "sorted keys, compact separators", "hash": "sha256", "note": "complete canonical preimages; version is a hash input, so a version change changes every key"},
+  "independence_attestation": {
+    "authored": "before and apart from the A04 binder",
+    "imports_repository_code": false,
+    "imports_a04_code": false,
+    "derives_expected_set_from_submitted_manifest": false,
+    "derives_expected_set_from_empirical_outcomes": false,
+    "stdlib_only": true
+  },
+  "five_identity_kinds": {
+    "documentary_item_key": {"inputs": ["source", "wave", "item", "form", "slot"], "meaning": "what the instrument asked (documentary)"},
+    "operation_key": {"inputs": ["op_class", "roles", "target"], "meaning": "what operation is proposed"},
+    "expected_work_key": {"inputs": ["documentary_item_key", "operation_key", "authority", "risk", "topology", "version"], "meaning": "the frozen expectation"},
+    "execution_attempt_key": {"inputs": ["expected_work_key", "attempt ordinal"], "meaning": "one attempt at that work"},
+    "output_identity": {"inputs": ["expected_work_key", "result_type", "value"], "meaning": "the produced identity"}
+  },
+  "fields_per_expected_record": {
+    "required": ["expected_work_key", "documentary_item_key", "operation_key", "op_class", "roles", "target", "topology", "required_consumer", "authority", "risk", "item", "form", "slot", "source", "wave"],
+    "state_machine": ["RUNNABLE", "HELD", "DENIED", "SOURCE_NONAPPLICABLE"],
+    "rule": "only RUNNABLE records may appear in the constructed-job set J; HELD/DENIED/NA must remain visible and must never be runnable"
+  },
+  "typed_result_classes": {
+    "positive_or_geometry": ["MEASURED_POSITIVE", "TOPOLOGY_PRESERVED", "MEASURED_ZERO_IN_SUPPORTED_RISK_SET"],
+    "admissible_null": ["MEASURED_NULL"],
+    "forbidden_null_sources": ["AUTHORITY_UNAVAILABLE", "ZERO_DENOMINATOR", "UNEXECUTED", "UNVISITED"],
+    "never_success": ["PARTIAL", "ADAPTIVE_PARTIAL", "UNVISITED", "UNAVAILABLE"],
+    "distinct_from": ["missing job", "unsupported", "merely absent", "arbitrarily dropped"]
+  },
+  "set_model": {"E": "independently expected runnable operations", "J": "constructed jobs", "R": "typed results", "A": "released products", "C": "required consumers (expected_work_key, consumer)", "H": "held obligations", "D": "explicit denials", "NA": "source-intrinsic non-applicable"},
+  "failure_codes": ["EXPECTED_OPERATION_OMITTED", "UNAUTHORIZED_EXTRA_JOB", "EXPECTED_MULTIPLICITY_MISMATCH", "MISSING_TYPED_RESULT", "FALSE_EMPIRICAL_NULL", "PARTIAL_OR_UNAVAILABLE_REPORTED_AS_SUCCESS", "ZERO_DENOMINATOR_NOT_TYPED", "PRODUCT_ABSENT", "REQUIRED_CONSUMER_OMITTED", "HELD_OR_DENIED_WORK_EXECUTED", "HELD_OR_DENIED_WORK_NOT_VISIBLE", "CANDIDATE_OWN_DK_JOINT", "EXPECTED_SET_OUTPUT_DERIVED", "SOURCE_IDENTITY_MISMATCH"],
+  "a04_acceptance_contract": {
+    "note": "schema-compatible acceptance contract for A04's binder; supplied WITHOUT inspecting or depending on A04's implementation",
+    "requirements": [
+      "every constructed job carries an exact expected_work_key computed from the five identity kinds above",
+      "expected_work_key must be reproducible from a complete canonical preimage and must include an explicit version",
+      "the expected set must be reconcilable by OUTER join so that absent mappings remain visible",
+      "documentary item key, operation key, expected-work key, execution-attempt key and output identity must not be conflated",
+      "jobs must carry multiplicity; one expected operation = one job unless multiplicity is explicitly justified",
+      "required consumers must be declared per expected operation, not per product",
+      "held/denied/source-nonapplicable obligations must be exported in a separate visible set and must never appear in the job set",
+      "threshold or truncation must not be applied before the reconciliation"
+    ]
+  },
+  "nonauthorizing": true,
+  "terminal": "HQ280_PV3_A05_INDEPENDENT_EXTERNAL_NODROP_ORACLE_ADVERSARIAL_PASS_OR_EXACT_HOLD__GITHUB_PUSHED"
+}

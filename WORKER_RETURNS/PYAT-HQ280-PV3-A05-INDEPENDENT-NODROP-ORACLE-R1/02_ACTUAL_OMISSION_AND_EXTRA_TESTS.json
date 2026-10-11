@@ -1,0 +1,41 @@
+{
+  "schema": "HQ280_PV3_A05_OMISSION_AND_EXTRA_TESTS@1",
+  "oracle": "repro/a05_oracle.py",
+  "court": "repro/a05_hostiles.py",
+  "run_record": "repro/a05_hostile_results.json",
+  "command": "python3 repro/a05_hostiles.py",
+  "exit_code": 0,
+  "cases": 18,
+  "all_expectations_met": true,
+  "must_fail_cases": 16,
+  "must_pass_controls": 2,
+  "omission_classes": [
+    {"id": "T1", "class": "expected operation omitted", "code": "EXPECTED_OPERATION_OMITTED"},
+    {"id": "T2", "class": "missing B AND missing J2", "code": "EXPECTED_OPERATION_OMITTED", "note": "the B1-R A+B witness: local per-shard tests pass while B/J2 are absent upstream"},
+    {"id": "T4", "class": "A-only projection while both source items eligible", "code": "EXPECTED_OPERATION_OMITTED"},
+    {"id": "T11b", "class": "held work not visible at all", "code": "HELD_OR_DENIED_WORK_NOT_VISIBLE"},
+    {"id": "T10", "class": "required consumer omitted although product present", "code": "REQUIRED_CONSUMER_OMITTED"}
+  ],
+  "extra_unauthorized_classes": [
+    {"id": "T3", "class": "injected extra unauthorized job", "code": "UNAUTHORIZED_EXTRA_JOB"},
+    {"id": "T11", "class": "held obligation executed", "code": "HELD_OR_DENIED_WORK_EXECUTED"},
+    {"id": "T8", "class": "candidate own-_dk variable approved as co-travel", "code": "CANDIDATE_OWN_DK_JOINT"}
+  ],
+  "substitution_and_null_classes": [
+    {"id": "T5", "class": "same total count, different keys", "code": ["EXPECTED_OPERATION_OMITTED", "UNAUTHORIZED_EXTRA_JOB"]},
+    {"id": "T6", "class": "false empirical null from AUTHORITY_UNAVAILABLE", "code": "FALSE_EMPIRICAL_NULL"},
+    {"id": "T6b", "class": "false empirical null from zero denominator", "code": "FALSE_EMPIRICAL_NULL"},
+    {"id": "T7", "class": "PARTIAL reported as success", "code": "PARTIAL_OR_UNAVAILABLE_REPORTED_AS_SUCCESS"},
+    {"id": "T7b", "class": "UNVISITED reported as success", "code": "PARTIAL_OR_UNAVAILABLE_REPORTED_AS_SUCCESS"},
+    {"id": "T14", "class": "multiplicity mismatch", "code": "EXPECTED_MULTIPLICITY_MISMATCH"}
+  ],
+  "provenance_classes": [
+    {"id": "T9", "class": "expected set derived from the emitted manifest / output", "code": "EXPECTED_SET_OUTPUT_DERIVED"},
+    {"id": "T12", "class": "backward / wrong source identity", "code": "SOURCE_IDENTITY_MISMATCH"}
+  ],
+  "controls": [
+    {"id": "H0", "class": "honest manifest", "expected": "PASS", "observed": "PASS"},
+    {"id": "T13", "class": "stable reordered expected set", "expected": "PASS", "observed": "PASS", "note": "order invariance of set comparison"}
+  ],
+  "terminal": "HQ280_PV3_A05_INDEPENDENT_EXTERNAL_NODROP_ORACLE_ADVERSARIAL_PASS_OR_EXACT_HOLD__GITHUB_PUSHED"
+}
