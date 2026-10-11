@@ -13,7 +13,7 @@ const check=()=>{assert.equal(a.legacy_rows.length,151);assert.equal(a.normalize
  const keys=b.sources.flatMap(x=>{assert.equal(x.cells.length,54);return x.cells.map(y=>{assert.equal(y.source_id,x.source_id);assert(y.cell_key===x.source_id+'::'+y.axis_id);assert(y.issuance.startsWith('NOT_PROVEN'));assert(y.adoption.startsWith('NO_CURRENT'));assert(y.actual_product.startsWith('NOT_JOINED'));return y.cell_key;});});
  assert.equal(keys.length,1890);assert(uniq(keys));for(let i=1;i<=35;i++)assert(b.sources.some(x=>x.source_id==='SRC'+String(i).padStart(2,'0')));
  assert.equal(c.temporal.pairs.length,63);assert.equal(c.cross_family.pairs.length,36);assert(uniq(c.temporal.pairs.map(x=>x.id)));assert(uniq(c.cross_family.pairs.map(x=>x.id)));
- assert.equal(c.source_family_count,9);assert.deepEqual(Object.keys(c.global_services).sort(),['N10E','N10W','N9']);
+ assert.equal(c.source_family_count,9);assert.deepEqual(Object.keys(c.global_services).sort(),['N10E','N10W','N9']);assert(c.global_services.N9&&c.global_services.N10E&&c.global_services.N10W);
  assert(c.temporal.pairs.every(x=>x.accepted_product===false));assert(c.cross_family.pairs.every(x=>x.accepted_product===false));
  assert.equal(d.rows.length,101);assert(uniq(d.rows.map(x=>x.typed_task_id)));
  assert(d.rows.every(x=>x.acceptance.startsWith('UNADJUDICATED')&&x.real_products.actual_product_refs.length===0));return true;};
