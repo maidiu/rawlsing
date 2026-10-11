@@ -1,0 +1,205 @@
+{
+  "schema": "PYAT_HQ280_PV3_A02_REUSABLE_NATIVE_EDGE_CONTRACT@1.0.0",
+  "authority": "DOCUMENTARY_SCHEMA_ONLY_NO_ADOPTION_OR_SOURCE_USE",
+  "identity_contract": {
+    "required": [
+      "SRC identity",
+      "family/wave",
+      "original fielded instrument date/edition",
+      "release byte SHA256",
+      "country/language/form",
+      "original item/battery/child/occurrence and document page",
+      "physical carrier/slot and qimpl exact provenance",
+      "measurement/administrative/derived role",
+      "mapping uncertainty"
+    ]
+  },
+  "response_code_contract": {
+    "row_fields": [
+      "question+form",
+      "physical stored code and numeric type",
+      "original native label",
+      "semantic state",
+      "topology and position",
+      "polarity or noncomparable",
+      "special state source evidence",
+      "signed source semantic authority"
+    ],
+    "states": [
+      "SUBSTANTIVE_RESPONSE",
+      "DONT_KNOW",
+      "REFUSAL",
+      "NOT_ASKED",
+      "MISSING",
+      "ROUTE_UNKNOWN",
+      "NOT_FIELDED_WITH_DOCUMENT",
+      "UNKNOWN"
+    ],
+    "rule": "Codes are item-dependent: Q97 9 is postgraduate, Q8A/Q86A 9 is DK, Q97 99 is DK. Unverified codes are UNKNOWN not imputed."
+  },
+  "respondent_risk_contract": {
+    "required": [
+      "original sampling and interview unit",
+      "household vs respondent vs proxy/other person",
+      "person reselection by questionnaire section",
+      "form assignment",
+      "per-item eligible/asked/source exposure",
+      "response-state valid substantive filter",
+      "exact release/country/language/form",
+      "complete-case S member refs and SHA",
+      "conditional per-person selection list and denominator"
+    ],
+    "state_law": "Unknown route cannot produce denominator 0 or a scientific absence. Separate eligible / exposed / substantive / no answer / DK / refusal / not asked / unknown. Physical same-row not automatically same person."
+  },
+  "design_ceiling": {
+    "RAW": "only exact source sample respondent-descriptive scope if separately source-use authorized; no population extrapolation",
+    "WEIGHTED": "positive competent original sample design, national/boost restriction, release-specific weight and calibrated population and variance method and estimand issuer required",
+    "UNKNOWN": "uncertainty unquantified; no inferred confidence intervals/standard errors",
+    "CAUSAL": "not granted from contemporaneous associations or reported deprivation"
+  },
+  "permissions": {
+    "states": [
+      "CANDIDATE",
+      "PERMITTED_EXACT_GRAIN",
+      "HELD",
+      "DENIED_EXACT_GRAIN",
+      "SOURCE_INTRINSIC_NA_PROVED"
+    ],
+    "dimensions": [
+      "source-semantic",
+      "native-physical",
+      "respondent-selection",
+      "risk/route",
+      "weight/design",
+      "target operation",
+      "discovery",
+      "consumer use",
+      "structural inference",
+      "EE12 comparison",
+      "EE14 model use"
+    ],
+    "rule": "Never inherit new target-use rights from context, source literature or generic runtime capability; issuer/adoption and immutable preimage needed."
+  },
+  "edge_classes": [
+    {
+      "edge": "SCALAR",
+      "source_preimage": "Original response option and response state per field; no global numeric code semantics",
+      "competent_signer": "Original source/native survey science owner for interpretation; exact item/form and use permission issuer where required",
+      "if_absent": "HELD_EVIDENCE_OR_ISSUER",
+      "intrinsic_na_requires": "documented original nonmeasurement/not-fielded condition, competently adopted"
+    },
+    {
+      "edge": "MR",
+      "source_preimage": "Member/option vector with simultaneous selection, nonselection, DK, not-asked, refused and set denominators",
+      "competent_signer": "Original source/native survey science owner for interpretation; exact item/form and use permission issuer where required",
+      "if_absent": "HELD_EVIDENCE_OR_ISSUER",
+      "intrinsic_na_requires": "documented original nonmeasurement/not-fielded condition, competently adopted"
+    },
+    {
+      "edge": "RANKED",
+      "source_preimage": "Native ranked-choice occurrence, order, tie, missing-rank and non-substantive slots",
+      "competent_signer": "Original source/native survey science owner for interpretation; exact item/form and use permission issuer where required",
+      "if_absent": "HELD_EVIDENCE_OR_ISSUER",
+      "intrinsic_na_requires": "documented original nonmeasurement/not-fielded condition, competently adopted"
+    },
+    {
+      "edge": "REPEATED",
+      "source_preimage": "Battery parent/child and repeated occurrence identity; do not merge physical aliases",
+      "competent_signer": "Original source/native survey science owner for interpretation; exact item/form and use permission issuer where required",
+      "if_absent": "HELD_EVIDENCE_OR_ISSUER",
+      "intrinsic_na_requires": "documented original nonmeasurement/not-fielded condition, competently adopted"
+    },
+    {
+      "edge": "OPAQUE",
+      "source_preimage": "Text/date native representation and declared format; no guessed date, decoding or semantic null",
+      "competent_signer": "Original source/native survey science owner for interpretation; exact item/form and use permission issuer where required",
+      "if_absent": "HELD_EVIDENCE_OR_ISSUER",
+      "intrinsic_na_requires": "documented original nonmeasurement/not-fielded condition, competently adopted"
+    },
+    {
+      "edge": "FORM_SPLIT",
+      "source_preimage": "Original booklet/ballot/rotation/split, country/language applicability and item-specific exposure",
+      "competent_signer": "Original source/native survey science owner for interpretation; exact item/form and use permission issuer where required",
+      "if_absent": "HELD_EVIDENCE_OR_ISSUER",
+      "intrinsic_na_requires": "documented original nonmeasurement/not-fielded condition, competently adopted"
+    },
+    {
+      "edge": "ROUTING",
+      "source_preimage": "Source skip and eligibility; maintain eligible, asked, valid, DK, refusal, not-asked, unknown separately",
+      "competent_signer": "Original source/native survey science owner for interpretation; exact item/form and use permission issuer where required",
+      "if_absent": "HELD_EVIDENCE_OR_ISSUER",
+      "intrinsic_na_requires": "documented original nonmeasurement/not-fielded condition, competently adopted"
+    },
+    {
+      "edge": "SUBJECT",
+      "source_preimage": "Selected adult, proxy, household and other-person identity with original selection/reselection rules",
+      "competent_signer": "Original source/native survey science owner for interpretation; exact item/form and use permission issuer where required",
+      "if_absent": "HELD_EVIDENCE_OR_ISSUER",
+      "intrinsic_na_requires": "documented original nonmeasurement/not-fielded condition, competently adopted"
+    },
+    {
+      "edge": "PHYSICAL",
+      "source_preimage": "Release hash, stored-versus-display values, exact native numeric and missing-code encoding",
+      "competent_signer": "Original source/native survey science owner for interpretation; exact item/form and use permission issuer where required",
+      "if_absent": "HELD_EVIDENCE_OR_ISSUER",
+      "intrinsic_na_requires": "documented original nonmeasurement/not-fielded condition, competently adopted"
+    },
+    {
+      "edge": "DESIGN",
+      "source_preimage": "Population/frame, national vs supplement, inclusion, applicable weight, cluster/stratum and variance",
+      "competent_signer": "Original source/native survey science owner for interpretation; exact item/form and use permission issuer where required",
+      "if_absent": "HELD_EVIDENCE_OR_ISSUER",
+      "intrinsic_na_requires": "documented original nonmeasurement/not-fielded condition, competently adopted"
+    },
+    {
+      "edge": "JOINT",
+      "source_preimage": "Same-person coexposure, fixed shared complete-case S and independently conditioned risk and numerator",
+      "competent_signer": "Original source/native survey science owner for interpretation; exact item/form and use permission issuer where required",
+      "if_absent": "HELD_EVIDENCE_OR_ISSUER",
+      "intrinsic_na_requires": "documented original nonmeasurement/not-fielded condition, competently adopted"
+    },
+    {
+      "edge": "TEMPORAL",
+      "source_preimage": "Time/locale, original wording, frames, respondent and design, positive EE12 pair-use issuer",
+      "competent_signer": "Original source/native survey science owner for interpretation; exact item/form and use permission issuer where required",
+      "if_absent": "HELD_EVIDENCE_OR_ISSUER",
+      "intrinsic_na_requires": "documented original nonmeasurement/not-fielded condition, competently adopted"
+    }
+  ],
+  "operation_contract": {
+    "required": [
+      "one original item-role/response target",
+      "all conditioning item roles and directions",
+      "eligibility and joint topology",
+      "finite K/J/depth/meaningfulness and anti-duplication rules",
+      "source/operation grants",
+      "risk-set and uncertainty/estimand ceiling",
+      "demanded result kind and consumers",
+      "independent frozen expected-work identity"
+    ],
+    "terminal_types": [
+      "SUPPORTED",
+      "OBSERVED_ZERO",
+      "VALID_EMPTY",
+      "ZERO_SUPPORT",
+      "ZERO_OVERLAP",
+      "UNRESOLVED",
+      "NONCOMPARABLE",
+      "UNAVAILABLE",
+      "UNDERPOWERED"
+    ],
+    "rule": "Joint target tensor not same as q(Y|A) or q(Y|A,B), each latter has its own predicate and denominator. Empty risk is not an empirical zero rate."
+  },
+  "a04_c11_projection_mapping": {
+    "status": "PROPOSAL_NOT_ISSUED",
+    "existing_owner": "rawlsing_next/pre553_source_backed_c11_facade.py @ 77902731d3bc00a920835baf88924f649339b16b",
+    "source": "GovernedC11Projection(expected_source_sha256,source_family_id,study_product_id,release_id,instrument_release_id,source_snapshot_retention_ref)",
+    "subject": "RespondentIdentity + RowRespondentBinding(row_ordinal,respondent_ref), independently grounded on native original unit",
+    "response": "QuestionVariableBinding + ResponseSlotRule(PhysicalSlot, ResponseValueRule(physical_key,response_state,occurrences[OccurrenceRule]))",
+    "routing": "RoutingEligibilityFact per exact item and eligible/asked state",
+    "design": "WeightSlotRule(weight_basis_id,design_authority_ref,estimand_authority_ref,effective_scope_ref) only on true design grant",
+    "closure": "AuthoritySnapshot + required_authority_refs + projection_authority_ref + replay_authority_ref; predicate/query/use authority separately",
+    "negative": "project_c11_candidate_from_physical_cells rejects missing projection, source hash mismatch, unbound response value/state and incomplete projected cells. That validation does NOT issue scientific source meaning.",
+    "handoff": "A04 outer join original inventory and permitted operation to this projection; preserve every held item/operation instead of hiding in constructed selection."
+  }
+}
