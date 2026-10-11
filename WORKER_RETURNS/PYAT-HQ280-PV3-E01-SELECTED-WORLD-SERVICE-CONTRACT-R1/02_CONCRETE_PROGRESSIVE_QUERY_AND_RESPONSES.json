@@ -1,0 +1,295 @@
+{
+  "schema": "HQ280_E01_PROGRESSIVE_CONTRACT_QUERY_RESPONSES@1",
+  "status": "SOURCE_FREE_SPECIMEN_ONLY__NO_WORLD_NO_G0B_NO_ACTOR",
+  "lexicon": {
+    "A": "hypothetical original measured MATERIAL/SOCIAL POSITION",
+    "B": "hypothetical original measured ATTITUDE",
+    "C": "hypothetical original measured BEHAVIOR",
+    "Y": "distinct hypothetical source-native measured ATTITUDE/BEHAVIOR TARGET",
+    "Y1": "one source-native target response category; semantics not established"
+  },
+  "not_real": "The 8 cells are invented aggregate counts; there are no respondent records, fielded item meanings, actual science or personalities.",
+  "same_unit_fixture_table": [
+    {
+      "A": 1,
+      "B": 0,
+      "C": 0,
+      "Y1": 1,
+      "Y0": 3
+    },
+    {
+      "A": 1,
+      "B": 0,
+      "C": 1,
+      "Y1": 0,
+      "Y0": 2
+    },
+    {
+      "A": 1,
+      "B": 1,
+      "C": 0,
+      "Y1": 2,
+      "Y0": 2
+    },
+    {
+      "A": 1,
+      "B": 1,
+      "C": 1,
+      "Y1": 3,
+      "Y0": 1
+    },
+    {
+      "A": 0,
+      "B": 0,
+      "C": 0,
+      "Y1": 4,
+      "Y0": 0
+    },
+    {
+      "A": 0,
+      "B": 0,
+      "C": 1,
+      "Y1": 3,
+      "Y0": 1
+    },
+    {
+      "A": 0,
+      "B": 1,
+      "C": 0,
+      "Y1": 1,
+      "Y0": 3
+    },
+    {
+      "A": 0,
+      "B": 1,
+      "C": 1,
+      "Y1": 2,
+      "Y0": 2
+    }
+  ],
+  "candidate_public_query_contract": {
+    "contract": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+    "purpose": "EMPIRICAL_POSSIBILITY_ONLY",
+    "query_id": "null until a genuine immutable owner-bound identifier exists",
+    "subject_ref": null,
+    "target_ref": null,
+    "source_universe_ref": null,
+    "release_ref": null,
+    "conditioner_bindings": [
+      {
+        "binding_id": "A_source_native_position",
+        "subject_fact_ref": null,
+        "empirical_coordinate_ref": null,
+        "comparability_authority_ref": null,
+        "source_universe_ref": null,
+        "release_ref": null,
+        "effective_time_or_interval": null
+      },
+      {
+        "binding_id": "B_source_native_attitude",
+        "subject_fact_ref": null,
+        "empirical_coordinate_ref": null,
+        "comparability_authority_ref": null,
+        "source_universe_ref": null,
+        "release_ref": null,
+        "effective_time_or_interval": null
+      }
+    ],
+    "requested_projection": {
+      "target": "Y",
+      "same_respondent": "MUST_BE_POSITIVELY_WARRANTED",
+      "risk_set_ref": null,
+      "measure_basis_ref": null,
+      "weight_and_design_ref": null
+    },
+    "model_rule": {
+      "algorithm": "EXACT_CONDITIONAL_LOOKUP__NO_SMOOTHING_INTERPOLATION_OR_EXTRAPOLATION",
+      "model_authority_ref": null,
+      "walkback_authority_ref": null,
+      "positive_proxy_authority_refs": [],
+      "walkback_steps": [],
+      "rule_hash": null
+    },
+    "world_selected_service": {
+      "service_id": null,
+      "g0b_grant_ref": null,
+      "selected_N9_snapshot_ref": null,
+      "b5_selected_release_ref": null,
+      "as_of_event_or_checkpoint_ref": null,
+      "currentness_receipt_ref": null,
+      "source_native_population_estimand": null
+    }
+  },
+  "progressive_queries": [
+    {
+      "sequence": 0,
+      "query": "P(Y | A=1)",
+      "source_operation_scope": "position→target",
+      "example_result": {
+        "conditions": {
+          "A": 1
+        },
+        "risk_denominator": 14,
+        "raw_numerator_Y1": 6,
+        "raw_numerator_Y0": 8,
+        "exact_fraction_Y1": [
+          3,
+          7
+        ],
+        "exact_fraction_Y0": [
+          4,
+          7
+        ],
+        "evidence_class": "SOURCE_FREE_SYNTHETIC_ARITHMETIC__NOT_EMPIRICAL_OR_ISSUED",
+        "uncertainty": "NO_SOURCE_DESIGN_OR_POPULATION_ESTIMAND"
+      }
+    },
+    {
+      "sequence": 1,
+      "query": "P(Y | A=1, B=1)",
+      "source_operation_scope": "position+attitude→target",
+      "example_result": {
+        "conditions": {
+          "A": 1,
+          "B": 1
+        },
+        "risk_denominator": 8,
+        "raw_numerator_Y1": 5,
+        "raw_numerator_Y0": 3,
+        "exact_fraction_Y1": [
+          5,
+          8
+        ],
+        "exact_fraction_Y0": [
+          3,
+          8
+        ],
+        "evidence_class": "SOURCE_FREE_SYNTHETIC_ARITHMETIC__NOT_EMPIRICAL_OR_ISSUED",
+        "uncertainty": "NO_SOURCE_DESIGN_OR_POPULATION_ESTIMAND"
+      }
+    },
+    {
+      "sequence": 2,
+      "query": "P(Y | A=1, B=1, C=1)",
+      "source_operation_scope": "position+attitude+behavior→target; second successive additional condition",
+      "example_result": {
+        "conditions": {
+          "A": 1,
+          "B": 1,
+          "C": 1
+        },
+        "risk_denominator": 4,
+        "raw_numerator_Y1": 3,
+        "raw_numerator_Y0": 1,
+        "exact_fraction_Y1": [
+          3,
+          4
+        ],
+        "exact_fraction_Y0": [
+          1,
+          4
+        ],
+        "evidence_class": "SOURCE_FREE_SYNTHETIC_ARITHMETIC__NOT_EMPIRICAL_OR_ISSUED",
+        "uncertainty": "NO_SOURCE_DESIGN_OR_POPULATION_ESTIMAND"
+      }
+    }
+  ],
+  "other_requested_directions": [
+    {
+      "query": "P(A | B=1)",
+      "direction": "attitude→position",
+      "law": "rebuild empirical producer ordered target as A with actual B predicate and original same-unit denominator; do not infer reverse conditional from P(Y|B) or unrelated marginals",
+      "real_output": "HELD_UNISSUED_ORIGINAL_SOURCE_OP_AND_MODEL_USE"
+    },
+    {
+      "query": "P(Y | B=1)",
+      "direction": "attitude→another attitude/behavior",
+      "law": "independent genuinely fielded target and response topology",
+      "real_output": "HELD_UNISSUED_ORIGINAL_SOURCE_OP_AND_MODEL_USE"
+    },
+    {
+      "query": "P((A,B) | C=1)",
+      "direction": "behavior→joint position+attitude",
+      "law": "genuine same-respondent ordered joint, not independent marginals",
+      "real_output": "HELD_NATIVE_JOINT_SCOPE"
+    },
+    {
+      "query": "P(parent's stated attitude | parent-respondent role)",
+      "direction": "parent/role conditional",
+      "law": "source must contain actual parent's own response plus original respondent role and unit; statement ABOUT parents is not their psychology",
+      "real_output": "HELD_ORIGINAL_ROLE_AND_UNIT"
+    },
+    {
+      "query": "P(parent-1, parent-2 attitudes | linked dyad)",
+      "direction": "parent/coparent",
+      "law": "requires two survey-matched adults and exact relationship/routing/risk/design authority; household membership or unlinked adults not adequate",
+      "real_output": "HELD_DYAD_MATCH_AND_WARRANT"
+    }
+  ],
+  "actual_owner_route": {
+    "N10E_single_conditioner": "provide_empirical_possibility_slice(repository,empirical_query,predicate,authority_registry,release_refs,consumer_query,model_rule,condition_binding_witness) -> EmpiricalPossibilitySliceProviderResult",
+    "C1_multi_conditioner": "compose_positioned_subject_possibility(...) accepts ConditionValueBindingWitness plural preimages and actual joint predicate",
+    "F8_bound": "evaluate_bound_positioned_subject_possibility(binding,request,receipt,query,rule,evidence) -> PositionedSubjectPossibilityResult",
+    "limitation": "The public N10E provider currently calls _single_binding. No three-stage selected-world N10W callable has been proved."
+  },
+  "hypothetical_world_contract": {
+    "N9_snapshot_ref": null,
+    "multi_family_objective_scope": [
+      {
+        "type": "N5_N6",
+        "objective_source_ref": null,
+        "authority_ref": null,
+        "claim_ceiling": null
+      },
+      {
+        "type": "N8E_N8S",
+        "temporal_source_ref": null,
+        "ee12_comparability_ref": null
+      }
+    ],
+    "as_of_or_current": {
+      "requested_grade": "CURRENT_AS_OF_SELECTED_ONLY_WITH_ACTUAL_B5_AND_D05_OWNER_RECEIPTS",
+      "currentness_receipt_ref": null,
+      "event_checkpoint_ref": null
+    },
+    "world_to_micro_bridge": "A separate qualified model/operation mapping must establish how any objective-world field legitimately conditions the empirical risk, otherwise world remains scope/context and does not rewrite respondent answers."
+  },
+  "future_real_response": {
+    "result_state": "HELD__NO_OPERATIVE_G0B_AND_REAL_SELECTED_N9",
+    "service_id": null,
+    "model_use_authority_ref": null,
+    "query_ref": null,
+    "n9_world_ref": null,
+    "n10e_generated_evidence_ref": null,
+    "c1_producer_receipt_ref": null,
+    "sa_g2_binding_ref": null,
+    "b5_selected_ref": null,
+    "as_of_ref": null,
+    "source_native_sampling_unit_ref": null,
+    "dependency_refs": [],
+    "replay_identity": null,
+    "exact_lane": null,
+    "proxy_lane": null,
+    "uncertainty_state": null,
+    "actor_state_effect": false,
+    "reason": "These specimen numbers are not a world-conditioned output; do not turn them into a real source-backed current service."
+  },
+  "negative_state_law": [
+    "MISSING_ORIGINAL_EVIDENCE",
+    "PERMISSION_HELD",
+    "PERMISSION_DENIED",
+    "SOURCE_INTRINSIC_NA",
+    "UNAVAILABLE",
+    "UNRESOLVED",
+    "UNDERPOWERED",
+    "NONCOMPARABLE",
+    "VALID_EMPTY",
+    "ZERO_SUPPORT",
+    "ZERO_OVERLAP",
+    "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+    "ABSENT_ARTIFACT",
+    "NO_CURRENT",
+    "STALE",
+    "COVERAGE_LIMITED"
+  ]
+}
