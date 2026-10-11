@@ -1,0 +1,158 @@
+{
+  "schema": "PYAT_HQ280_PV3_D02_EXECUTED_POSITIVE_REFUSAL_COURT@1.0.0",
+  "environment": {
+    "python": "3.13.5",
+    "execution_host": "local isolated container; no raw survey",
+    "command": "PYTHONPATH=/mnt/data/d02_owner python /mnt/data/d02_owner/WORKER_RETURNS/PYAT-HQ280-PV3-D02-OBJECTIVE-PRODUCT-CANDIDATE-R1/repro/test_d02_sourcefree_objective_policy.py",
+    "equivalent_in_repo": "PYTHONPATH=. python WORKER_RETURNS/PYAT-HQ280-PV3-D02-OBJECTIVE-PRODUCT-CANDIDATE-R1/repro/test_d02_sourcefree_objective_policy.py",
+    "owner_module_path": "rawlsing_next/objective_consumer_bounded_evidence.py",
+    "owner_git_blob_verified_sha": "f30fca20e7b56e00348e82765d95f974b4b6a195",
+    "submitted_test_git_blob_verified_sha": "5c94963eceb95f995703d4abb14636531eff6e95",
+    "execution_exit_code": 0,
+    "test_runner": "unittest 18 in 0.001s"
+  },
+  "assertion_results": {
+    "test_count": 18,
+    "passed_assertions": 18,
+    "test_failures": 0,
+    "errors": 0,
+    "skips": 0
+  },
+  "cases": [
+    {
+      "id": "01",
+      "attack": "OC01 source-local fixture admitted at source-local ceiling",
+      "observation": "POSITIVE_LOCAL_POLICY",
+      "runtime_assertion": "PASS",
+      "safe_refusal_claim": true
+    },
+    {
+      "id": "02",
+      "attack": "Afro GT2 CONTEXT declared at OC02 structural relation ceiling",
+      "observation": "REFUSED_CLAIM_CEILING",
+      "runtime_assertion": "PASS",
+      "safe_refusal_claim": true
+    },
+    {
+      "id": "03",
+      "attack": "LiTS respondent opinion promoted to structural institution",
+      "observation": "REFUSED_CLAIM_CEILING",
+      "runtime_assertion": "PASS",
+      "safe_refusal_claim": true
+    },
+    {
+      "id": "04",
+      "attack": "Source-free hypothetically qualified external structure declared OC02",
+      "observation": "POLICY_SUPPORTED_NOT_ORIGINAL_SCIENCE",
+      "runtime_assertion": "PASS",
+      "safe_refusal_claim": true
+    },
+    {
+      "id": "05",
+      "attack": "Missing external institution only",
+      "observation": "ALL_UNAVAILABLE_NOT_POSITIVE",
+      "runtime_assertion": "PASS",
+      "safe_refusal_claim": true
+    },
+    {
+      "id": "06",
+      "attack": "CONTEXT plus missing required institution",
+      "observation": "REFUSED_REQUIRED_OBJECTIVE_EVIDENCE",
+      "runtime_assertion": "PASS",
+      "safe_refusal_claim": true
+    },
+    {
+      "id": "07",
+      "attack": "Synthetic partial with optional missing",
+      "observation": "PARTIAL_NOT_FULL",
+      "runtime_assertion": "PASS",
+      "safe_refusal_claim": true
+    },
+    {
+      "id": "08",
+      "attack": "Strict optional missing",
+      "observation": "REFUSED",
+      "runtime_assertion": "PASS",
+      "safe_refusal_claim": true
+    },
+    {
+      "id": "09",
+      "attack": "Model prior only substituted for external objective",
+      "observation": "ALL_UNAVAILABLE_NOT_POSITIVE",
+      "runtime_assertion": "PASS",
+      "safe_refusal_claim": true
+    },
+    {
+      "id": "10",
+      "attack": "Backfill/substitution without relation authority",
+      "observation": "EXCEPTION_REFUSED",
+      "runtime_assertion": "PASS",
+      "safe_refusal_claim": true
+    },
+    {
+      "id": "11",
+      "attack": "Unavailable marked with producer ref",
+      "observation": "EXCEPTION_REFUSED",
+      "runtime_assertion": "PASS",
+      "safe_refusal_claim": true
+    },
+    {
+      "id": "12",
+      "attack": "Renormalization requested",
+      "observation": "EXCEPTION_REFUSED",
+      "runtime_assertion": "PASS",
+      "safe_refusal_claim": true
+    },
+    {
+      "id": "13",
+      "attack": "Order stable, authority refs change exact receipt hash",
+      "observation": "PASS_HASH_INTEGRITY_ONLY",
+      "runtime_assertion": "PASS",
+      "safe_refusal_claim": true
+    },
+    {
+      "id": "14",
+      "attack": "Cross-family/population-disjoint fixture refs passed into OC02",
+      "observation": "UNSAFE_ACCEPTANCE_GAP_WITNESS__NOT_SAFE_REFUSAL",
+      "runtime_assertion": "PASS",
+      "safe_refusal_claim": false
+    },
+    {
+      "id": "15",
+      "attack": "Invented institution / source principal metadata passed into OC02",
+      "observation": "UNSAFE_ACCEPTANCE_GAP_WITNESS__NOT_SAFE_REFUSAL",
+      "runtime_assertion": "PASS",
+      "safe_refusal_claim": false
+    },
+    {
+      "id": "16",
+      "attack": "Fake N9 CURRENT through OC05",
+      "observation": "NOT_YET_APPLICABLE_EXCEPTION",
+      "runtime_assertion": "PASS",
+      "safe_refusal_claim": true
+    },
+    {
+      "id": "17",
+      "attack": "Objective fact claim alone treated as structural relation",
+      "observation": "REFUSED_CLAIM_CEILING",
+      "runtime_assertion": "PASS",
+      "safe_refusal_claim": true
+    },
+    {
+      "id": "18",
+      "attack": "Duplicate semantic input identity",
+      "observation": "EXCEPTION_REFUSED",
+      "runtime_assertion": "PASS",
+      "safe_refusal_claim": true
+    }
+  ],
+  "interpretation": "18 assertion passes include TWO UNSAFE ACCEPTANCE GAP WITNESSES. Not 18 successful access-control refusals. OC02 is a policy/receipt consumer, not a source/issuer authenticator.",
+  "not_executed": [
+    "full Pytest suite against entire Rawlsing checkout",
+    "raw SAV/DTA or retained empirical products",
+    "P06 source-backed structural admission",
+    "M1 positive new relation",
+    "M4 selected full N9 current/as-of",
+    "G0b model-use/actor"
+  ]
+}
