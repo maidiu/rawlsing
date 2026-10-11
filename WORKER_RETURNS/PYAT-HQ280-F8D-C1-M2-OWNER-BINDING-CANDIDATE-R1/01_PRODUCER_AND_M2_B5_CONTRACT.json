@@ -1,0 +1,161 @@
+{
+  "schema": "PYAT_HQ280_F8D_C1_M2_B5_SOURCEFREE_DEVELOPMENT_CONTRACT@1",
+  "commission_tip": "ccf1c4e0838fdf95b578369244211cd249e37ac2",
+  "authority": {
+    "hq": "HQD-2026-10-10-280",
+    "intake_blob": "e8de977c519450497758487a9f93948c1cd9d9d8",
+    "hq260_blob": "3d31d12d954d7de3916301d0995d08c8105bd6f8",
+    "hq271_blob": "82b48442db8009913ea61896a1c150210843ead6",
+    "source_free_development_allowed": true,
+    "independent_operational_issuer_exists": false,
+    "model_use_g0b": "HELD",
+    "adoption": "NONE"
+  },
+  "code": {
+    "path": "rawlsing_next/pre553_c1_immutable_release_binding.py",
+    "git_blob": "2f6ab22c5f079b24fe81a3611bb21dcce7b9854f",
+    "api": "build_source_free_c1_release",
+    "accepted_owners": {
+      "C1": [
+        "rawlsing_next/pre553_analytical_composition.py",
+        "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b"
+      ],
+      "C103R": [
+        "rawlsing_next/pre553_analytical_replay_dependency.py",
+        "47e65aad5e0a8df7af6fda72fc8807a002e556ce"
+      ],
+      "M2": [
+        "rawlsing_next/pre553_learned_product_release.py",
+        "f76c390665f06ef126968ccf1a6b2d816f43ae92"
+      ],
+      "B5": [
+        "rawlsing_next/pre553_learned_product_lifecycle.py",
+        "a11c9eb73abab9be118ef4f0b6e325e676059f27"
+      ]
+    }
+  },
+  "test": {
+    "path": "rawlsing_next/tests/test_pre553_c1_immutable_release_binding.py",
+    "git_blob": "2c4617e132293dfae459ded56b2d0f79d211c5f3",
+    "names": [
+      "test_p01_two_actual_c1_products_receive_distinct_exact_m2_releases",
+      "test_p02_all_five_required_m2_closures_and_dependency_graph",
+      "test_p03_stable_content_addressing_no_new_issuer",
+      "test_p04_b5_stage_register_only_no_publication_or_currentness",
+      "test_p05_historical_only_replay_cannot_claim_fresh_process",
+      "test_n01_wrong_source_release_is_refused",
+      "test_n02_wrong_model_rule_is_refused",
+      "test_n03_wrong_conditioner_cell_or_risk_ref_is_refused",
+      "test_n04_forged_same_person_denominator_is_refused_even_if_rehashed",
+      "test_n05_native_nonsupported_valid_empty_mints_no_m2",
+      "test_n06_tampered_c1_provenance_and_evidence_are_refused",
+      "test_n07_replay_overclaim_is_refused",
+      "test_n08_missing_dependency_or_determinant_closure_refused_by_real_m2",
+      "test_n09_substituted_contract_refuses_and_is_not_g0b",
+      "test_n10_i4_m1_only_and_no_selected_service_path"
+    ],
+    "result": "UNEXECUTED",
+    "runtime_present": false,
+    "claimed_passes": 0
+  },
+  "contract": {
+    "id": "C1_HQ280_F8D_SOURCE_FREE_RELEASE_CANDIDATE@1",
+    "status": "NONISSUED_SOURCEFREE_DEVELOPMENT_CANDIDATE",
+    "issuer": null,
+    "external_issuer": null,
+    "grant": null,
+    "producer_permission_ceiling": "NO_OPERATIVE_G0B_NO_CURRENT_SERVICE_NO_REAL_SOURCE",
+    "model_use_authorized": false,
+    "subject_kind": "IMMUTABLE_LEARNED_PRODUCT",
+    "original_fixture": "FOUR_RESPONDENT_XOR",
+    "cells": {
+      "q1": {
+        "expression": "q(C|A=1)",
+        "denominator": 2,
+        "numerators": {
+          "0": 1,
+          "1": 1
+        }
+      },
+      "q2": {
+        "expression": "q(C|A=1,B=0)",
+        "denominator": 1,
+        "numerators": {
+          "0": 0,
+          "1": 1
+        }
+      }
+    },
+    "immutable_subject_fields": [
+      "c1_identity_material",
+      "c1_evidence_ref",
+      "model_rule_hash",
+      "cell",
+      "source_c11_release",
+      "candidate_contract"
+    ],
+    "release": "M2.ReleaseCore",
+    "same_source_distinct_product": true
+  },
+  "closures": {
+    "AUTHORITY": [
+      "nonissued_candidate_contract",
+      "actual_c1_evidence_authority_transport_refs",
+      "actual_c1_authority_snapshot_preimages"
+    ],
+    "DEPENDENCY": [
+      "c1_dependencies",
+      "c1_and_evidence_provenance",
+      "actual_producer_fact",
+      "actual_evidence",
+      "source_c11_release"
+    ],
+    "DETERMINANT": [
+      "dependencies",
+      "producer_and_consumer_query",
+      "predicate",
+      "risk_and_denominator_members",
+      "measure_basis",
+      "condition_witness",
+      "model_rule_identity",
+      "source_universe_and_target",
+      "replay_discovery_recursive"
+    ],
+    "REPLAY_RECONSTRUCTION": [
+      "actual_c1_replay_root",
+      "C103R_AnalyticalReplayClaim_HISTORICAL_EXPLANATION_ONLY"
+    ],
+    "EXPLANATION_LINEAGE": [
+      "subject",
+      "contract",
+      "evidence",
+      "anatomy",
+      "replay_claim",
+      "provenance"
+    ]
+  },
+  "b5": {
+    "subject": "LearnedProductLifecycleSubject",
+    "can_stage": true,
+    "can_register": true,
+    "can_publish_without_upgrade": false,
+    "can_select_current": false,
+    "replay_state": "REPLAY_BLOCKED_MISSING_AUTHORITY",
+    "rebuild_state": "REBUILD_BLOCKED",
+    "selection_by": "B5 explicit owner event only"
+  },
+  "not_in_scope": [
+    "I4_M1_ONLY_CONTRACT_WIDENING",
+    "B5_TO_G1_SELECTED_SERVICE_MAP",
+    "N9_N10W",
+    "EE14_G0B_ISSUANCE",
+    "REAL_SOURCE_EXECUTION",
+    "V3_ACTOR"
+  ],
+  "remaining": {
+    "first": "INDEPENDENT_EXECUTABLE_TEST_OF_F8D_SOURCEFREE_CANDIDATE",
+    "then": "INDEPENDENT_REVIEW_AND_HQ_TECHNICAL_ADOPTION",
+    "further": "COMPETENT_C1_ISSUED_RELEASE_PERMISSION_AND_B5_SELECTED_TO_G1_SERVICE",
+    "model_use": "SEPARATE_G0B_ISSUER_HOLD"
+  }
+}
