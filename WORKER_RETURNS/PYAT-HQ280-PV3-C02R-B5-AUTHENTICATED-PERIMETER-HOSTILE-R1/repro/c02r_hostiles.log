@@ -1,0 +1,39 @@
+{"authorizing": false, "case": "A1_perimeter_positive", "current_selection_performed": false, "g0b": null, "g1_service": null, "grant": null, "published": true, "release_key": "urn:rawlsing:pre553:m2:release:sha256:dff9fb7f1f11c1749bfc7fb78cf54aa942bd15666c78186c443b90f20b6218a1", "scientific_claim": "NONE__TECHNICAL_PRODUCT_AUTHENTICITY_ONLY"}
+{"bypassed": true, "case": "B1_raw_executor_k4_bypass", "event_kinds": ["PRODUCT_REGISTERED", "PRODUCT_PUBLISHED"], "note": "accepted B5 reached directly; C02 perimeter never called", "perimeter_consulted": false, "publication": "PUBLISHED"}
+{"bypassed": true, "case": "B2_raw_executor_full_k5_forgery_bypass", "ceiling_is_forged": true, "event_kinds": ["PRODUCT_REGISTERED", "PRODUCT_PUBLISHED"], "publication": "PUBLISHED", "stored_ceiling": "ProducerPermissionCeiling|urn:c02r:PRODUCTION_GRANT|0715fabb3958d04a5c4f8ff10aad73004e077857f9d52ea72804cb697dc95e87"}
+{"bypassed": true, "case": "B3_raw_executor_current_selection_bypass", "event_kinds": ["PRODUCT_REGISTERED", "PRODUCT_PUBLISHED", "CURRENT_SELECTED"], "perimeter_consulted": false, "publication": "PUBLISHED"}
+{"case": "C1a_post_authoring_repo_mutation", "detected": true, "mismatched": ["determinant_keys", "determinant_set_hash"], "published": false, "refusal_class": "IDENTITY_AUTHENTICATION_FAILED"}
+{"admitted": true, "case": "C2_reauthorized_mutation_admitted", "determinant_count": 6, "injected_edge_present": true, "note": "expectation authored from mutated construction; tautology admits it"}
+{"case": "C3_shared_ref_class", "frozen": true, "note": "ExactRef frozen dataclass; in-process principal can bypass with object.__setattr__, and the M2Repository itself is never frozen", "ref_type": "ExactRef"}
+{"case": "D1_attacker_minted_release_published", "note": "caller-authored M2 release minted via public M2 API; perimeter authenticates it as 'producer-issued' with no issuer in existence", "producer_subject_key": "urn:c02r:learnedsemanticproduct:attacker-minted-subject:sha256:5d2119944e8608700bce657501274e9cdbb51ef7d10dad8ff6e2d4e2ee2f90ef", "published": true, "release_content_hash": "fc4d9c82255becc2a2f6ec126bb24ec5aca2bacb0b9c8ced94411b5072f044b4", "release_key": "urn:rawlsing:pre553:m2:release:sha256:fc4d9c82255becc2a2f6ec126bb24ec5aca2bacb0b9c8ced94411b5072f044b4"}
+{"attempted": true, "case": "D2_m2_content_binding_probe", "mismatched_exception": "M2ReleaseError", "mismatched_message": "RELEASE_UNAVAILABLE: requested exact release is unavailable", "mismatched_ref_resolved": false, "release_attr": null}
+{"b5_invoked": false, "case": "E1_release_revoked", "expected_class": "RELEASE", "refusal_class": "AUTHORITY_REVOKED", "refused": true}
+{"b5_invoked": false, "case": "E2_authority_revoked", "expected_class": "AUTHORITY", "refusal_class": "AUTHORITY_REVOKED", "refused": true}
+{"b5_invoked": false, "case": "E3_consumed_authority_revoked", "expected_class": "CONSUMED", "refusal_class": "AUTHORITY_REVOKED", "refused": true}
+{"case": "E4_unrelated_revocation_ignored", "note": "correct: exactness only, unrelated ref does not block", "published": true}
+{"b5_invoked": false, "case": "E5_grade_mismatch", "refusal_class": "REPLAY_CLOSURE_REFUSED", "refused": true}
+{"case": "F1_two_slots_independent", "distinct": true, "note": "receipts bind their own slot's release", "ok": true, "r1_release": "urn:rawlsing:pre553:m2:release:sha256:eb9edd81d7055f47e4588361265721ebfc1576536658e2e4f09f7db573ffe467", "r2_release": "urn:rawlsing:pre553:m2:release:sha256:4b8fb46276688a837897888779c84814a3b27daeb150d5a5576d4030985f5c70"}
+{"admitted": false, "case": "F2_cross_slot_expectation", "mismatched": ["direct_dependency_keys", "m2_release_projection_hash", "producer_contract_key", "producer_subject_key", "release_content_hash", "release_key"], "refusal_class": "IDENTITY_AUTHENTICATION_FAILED"}
+{"b5_invoked": false, "case": "G1_caller_subject_field", "refusal_class": "REQUEST_SURFACE_VIOLATION", "refused": true}
+{"b5_invoked": false, "case": "G2_caller_ceiling_field", "refusal_class": "REQUEST_SURFACE_VIOLATION", "refused": true}
+{"b5_invoked": false, "case": "G3_caller_currentness_field", "refusal_class": "REQUEST_SURFACE_VIOLATION", "refused": true}
+{"b5_invoked": false, "case": "G4_plain_string", "refusal_class": "REQUEST_SURFACE_VIOLATION", "refused": true}
+{"b5_invoked": false, "case": "G5_attacker_dataclass", "refusal_class": "REQUEST_SURFACE_VIOLATION", "refused": true}
+{"case": "G6_arbitrary_ceiling_accepted", "ceiling_key": "urn:c02r:TOTAL_CONTROL", "note": "owner custody may declare ANY ceiling; nothing validates it", "published": true}
+{"case": "H0_perimeter_publish_for_checkpoint", "publication_event_key": "urn:rawlsing:pre553:b5-lifecycle:event:sha256:4418f586dc9da177b76def1080e7a2e8d4ed5e51a6b8bc3dcd382a45fee9967a", "published": true}
+{"case": "H1_checkpoint_self_hash", "hash_is_self_referential": true, "n_subjects": 1, "note": "checkpoint_hash == semantic_hash(payload); a caller who can supply the checkpoint controls the hash, so the check cannot authenticate it", "rehydrated": true}
+{"case": "H2_checkpoint_rehydrates_current", "current_selected_event_present": true, "note": "caller-computed checkpoint hash accepted; rehydration path bypasses the perimeter entirely", "perimeter_consulted": false, "publication": "PUBLISHED", "rehydrated": true}
+{"case": "H3_issuer_or_crypto_search", "m2_issuer_credential_lines": "0", "note": "no accepted producer credential, signature scheme or issuer exists; M2 registration is unauthenticated by construction", "unresolved_hits": [], "verification_modules": 0}
+{"both_published": true, "case": "I1_repeated_publish_same_ingress", "same_publication_event": true}
+{"case": "I2_fresh_ingress_same_repo", "deterministic": true, "publication_event_key": "urn:rawlsing:pre553:b5-lifecycle:event:sha256:2bc0f142a7ea3dc749a745e4a8bc5c916dcfc213e3ac709c286edc9d13ae436c", "published": true}
+{"case": "J1_empty_expectation", "missing": ["authority_snapshot_keys", "consumed_authority_keys", "determinant_keys", "determinant_set_hash", "direct_dependency_keys", "m2_release_projection_hash", "permission_ceiling_key", "producer_contract_key", "producer_owner_key", "producer_subject_key", "product_family_key", "product_key", "receipt_keys", "release_content_hash", "release_key", "replay_closure_key", "replay_grade", "replay_root_key", "selection_scope_key", "semantic_anatomy_key", "semantic_projection_hash"], "refusal_class": "IDENTITY_AUTHENTICATION_FAILED", "refused": true}
+{"case": "J2_dropped_key", "missing": ["permission_ceiling_key"], "refusal_class": "IDENTITY_AUTHENTICATION_FAILED", "refused": true}
+{"case": "J3_extra_key", "missing": [], "refusal_class": "IDENTITY_AUTHENTICATION_FAILED", "refused": true}
+{"case": "J4_bool_for_str", "missing": [], "refusal_class": "IDENTITY_AUTHENTICATION_FAILED", "refused": true}
+{"case": "L1_module_mutable_registry", "count": 1, "mutable_containers": ["EXPECTATION_KEY_TYPES"], "note": "EXPECTATION_KEY_TYPES is a MODULE-LEVEL MUTABLE DICT; only that type gate is reachable, not the identity values"}
+{"case": "L1a_type_gate_baseline", "release_key_type_name": "str", "strictly_typed": true}
+{"case": "L1b_type_gate_weakened", "gate_bypassed": true, "note": "module-level EXPECTATION_KEY_TYPES is mutable; weakening it admits a wrong-typed expectation past the fail-closed type gate"}
+{"case": "L1c_type_gate_restored", "restored": true}
+{"case": "L2_custody_container_removal", "exception": "AttributeError", "mutation_methods_present": [], "note": "custody container is a MappingProxyType; no unmount surface exists", "removed": false}
+{"b5_sha256": "706bd074b1f1318fc503cbea080c2761b79b73f6f1088addec2e6fdf79c29833", "candidate_sha256": "417679a8294475ad1aec87567e4b32fc0f9de5f9a51e14b960cce32dd19c3edb", "case": "K1_integrity", "m2_sha256": "9683bfd6cbc93763d52253dea019c4d031c47d55c8ac9854901f10df1c04b8e6", "python": "3.11.3"}
+{"summary": {"total_cases": 38}}

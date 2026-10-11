@@ -1,0 +1,70 @@
+{
+  "b5_owner": "rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor",
+  "current_selected_probes": [
+    "K4-forged-replay-state",
+    "K5b-forged-replay-state-forged-production-ceiling",
+    "K5c-forged-replay-state-forged-receipts-and-replay-root",
+    "K7-forged-subject-from-caller-dicts-no-producer"
+  ],
+  "observed": [
+    {
+      "current_receipt_ref": "urn:rawlsing:pre553:b5-lifecycle:current_selection:sha256:c6b8c69d11f0a53a13057f42935397e3ecbac4c7a4eed23ac7e721d389687860",
+      "current_selected": true,
+      "probe": "K4-forged-replay-state",
+      "publication_event_ref": "urn:rawlsing:pre553:b5-lifecycle:event:sha256:de1e864a2e22f6a05aac82717b7a006b4ff60a10a9c865a873f0989972e65add",
+      "publication_payload_ceiling": "urn:c02-probe:permissionceiling:c02-ceiling:sha256:0053e3624303d40863f82a39c1956d333cf4e36170473f6594690e240cadac72",
+      "published": true,
+      "registered": true,
+      "staged": true
+    },
+    {
+      "probe": "K5a-honest-replay-state-forged-production-ceiling",
+      "publish_exception": "LearnedProductLifecycleError",
+      "publish_message": "MISSING_REPLAY_CLOSURE",
+      "published": false,
+      "registered": true,
+      "staged": true
+    },
+    {
+      "current_receipt_ref": "urn:rawlsing:pre553:b5-lifecycle:current_selection:sha256:bee0c1136fc9a6902d2aa98bee648d90bf127dd07343f993651f0ccdf4870fd6",
+      "current_selected": true,
+      "probe": "K5b-forged-replay-state-forged-production-ceiling",
+      "publication_event_ref": "urn:rawlsing:pre553:b5-lifecycle:event:sha256:d4523c06809d958aceb208a9204b84421103311ad9015ae4f4dcbf85340cacfe",
+      "publication_payload_ceiling": "urn:reviewer:PRODUCTION_GRANT:sha256:f487dee3325003fbc3073d9f6b0caedeafc43c6a1196df799e1204d363adaaa1",
+      "published": true,
+      "registered": true,
+      "staged": true
+    },
+    {
+      "current_receipt_ref": "urn:rawlsing:pre553:b5-lifecycle:current_selection:sha256:a8acb195f39dc8f54874950f401dabd6bfdafac62d8817cf7939e22a6c0102cb",
+      "current_selected": true,
+      "probe": "K5c-forged-replay-state-forged-receipts-and-replay-root",
+      "publication_event_ref": "urn:rawlsing:pre553:b5-lifecycle:event:sha256:8c748e80618c5372787eb0e32a7ee8413b3df8b1d7d574056ee71f96ba6ed245",
+      "publication_payload_ceiling": "urn:c02-probe:permissionceiling:c02-ceiling:sha256:0053e3624303d40863f82a39c1956d333cf4e36170473f6594690e240cadac72",
+      "published": true,
+      "registered": true,
+      "staged": true
+    },
+    {
+      "current_receipt_ref": "urn:rawlsing:pre553:b5-lifecycle:current_selection:sha256:f282301b1b755180e98fd60c44878fa6eba683ef086f4d59749e0ecf8091ce77",
+      "current_selected": true,
+      "probe": "K7-forged-subject-from-caller-dicts-no-producer",
+      "publication_event_ref": "urn:rawlsing:pre553:b5-lifecycle:event:sha256:dc23b698a653c355a39cfe253db1aa5cfbb226ea363aec8eb4f320e4e3506aae",
+      "publication_payload_ceiling": "urn:c02-probe:permissionceiling:c02-ceiling:sha256:0053e3624303d40863f82a39c1956d333cf4e36170473f6594690e240cadac72",
+      "published": true,
+      "registered": true,
+      "staged": true
+    }
+  ],
+  "platform": "macOS-13.7.8-x86_64-i386-64bit",
+  "published_probes": [
+    "K4-forged-replay-state",
+    "K5b-forged-replay-state-forged-production-ceiling",
+    "K5c-forged-replay-state-forged-receipts-and-replay-root",
+    "K7-forged-subject-from-caller-dicts-no-producer"
+  ],
+  "python": "3.11.3",
+  "worktree_head": "14ec16e2ef07716ab958aa7f514167821807d11c"
+}
+
+C02 OBSERVED: 4/5 caller-constructed subjects reached PUBLISHED and 4/5 reached CURRENT_SELECTED.

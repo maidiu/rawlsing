@@ -1,0 +1,98 @@
+{
+  "schema": "PYAT_HQ280_PV3_C02R_EVIDENCE_MANIFEST@1",
+  "terminal": "HQ280_PV3_C02R_B5_AUTHENTICATED_PERIMETER_HOSTILE_REVIEW_RETURNED__NONISSUING__GITHUB_PUSHED",
+  "role": "independent_code_runtime_hostile_reviewer",
+  "repository": "maidiu/rawlsing",
+  "assigned_branch": "agent/reviewer-pyat-hq280-pv3-c02r-b5-authenticated-perimeter-hostile-r1",
+  "sealed_startup_sha": "d4f50aff32e255935118b4a1d13a5e5a16c6f1e3",
+  "reviewed_candidate_sha": "14ec16e2ef07716ab958aa7f514167821807d11c",
+  "adversaries": [
+    "aecc3273615ef158ae8428819d82d86d4cc64462",
+    "2a4a90ec76d3400f98ba6fd3fd306f6ff977d042"
+  ],
+  "disposition": "INDEPENDENT_HOSTILE_REVIEW__BOUNDED_CANDIDATE_ACCEPTED_AS_HONEST__NOT_CERTIFIED_AS_AUTHENTICATED_PERIMETER__F8F_B5_TRUST_HOLD_OPEN__NO_ADOPTION",
+  "reproduce": {
+    "step_1": "cd /Users/matthewsmith/Desktop/Rawlsing && git worktree add --detach <wt> 14ec16e2ef07716ab958aa7f514167821807d11c",
+    "step_2": "cd <wt> && python3 -m pytest rawlsing_next/tests/test_pre553_authenticated_b5_ingress_candidate.py -q   # expect 37 passed",
+    "step_3": "cd <wt> && python3 -m pytest <13 adjacent owner files> -q   # expect 525 passed in a real git worktree",
+    "step_4": "cd <wt> && python3 <return>/repro/c02_official_f8f_repro.py   # expect 4/5 PUBLISHED, 4/5 CURRENT_SELECTED",
+    "step_5": "cd <wt> && python3 <return>/repro/hostile_c02r.py <wt>   # expect 38 cases, 0 exceptions, bypasses found",
+    "interpreter": "Python 3.11.3 / pytest 9.1.1",
+    "note": "step 1 creates a real git worktree because test_pre553_f8_receipt_permission_identity_hq254.py:345 requires a git object store; a plain archive export yields 524 passed + 1 skipped"
+  },
+  "artifacts": [
+    {
+      "path": "00_RETURN.md",
+      "sha256": "de1114e68dd1afff741dd78bcb18da7bedf1d87a1f4029912ae320689213d338",
+      "bytes": 13940
+    },
+    {
+      "path": "01_TRUST_ROOT_AND_REACHABLE_CALLERS.md",
+      "sha256": "0e14ae2ab62174ef0f36b87be1746f36ea17112eda848e1b54cb4d0f93b357f2",
+      "bytes": 8331
+    },
+    {
+      "path": "02_EXACT_RUNTIME_AND_INTEGRITY.json",
+      "sha256": "f77b607d0ca8ec6374494f692309015b39840cf939beabe94f91521b913f3d9e",
+      "bytes": 7140
+    },
+    {
+      "path": "03_BYPASS_AND_NEGATIVE_OWNER_INVOCATIONS.json",
+      "sha256": "851503a8d3ae3f8a9d4a504d6b5e05f1a8d5328bae7f09509f5a71e8e2ed96e7",
+      "bytes": 16455
+    },
+    {
+      "path": "04_ADOPTION_AND_ISSUER_HOLDS.md",
+      "sha256": "8bbf243520656a5a85bb44d58e633bd002fdecb68e12f61b6b2f5817af8e1515",
+      "bytes": 5458
+    },
+    {
+      "path": "repro/c02_official_f8f_repro.log",
+      "sha256": "ed59d3852f5c3a732b080550d95ed3488518dd8d9bbf7148ccc54201746975a4",
+      "bytes": 3615
+    },
+    {
+      "path": "repro/c02_official_f8f_repro.py",
+      "sha256": "cd727b8e36cc8245f23e50ab422e7c82fd4858fa3ca7d36b0c59aaa3f5d7d1ef",
+      "bytes": 8384
+    },
+    {
+      "path": "repro/c02r_adjacent_525_owners.log",
+      "sha256": "b94e6a5a6e318eaa738f58094887f6b235e9b213c97b69c4c39ee1ac76e6ebb2",
+      "bytes": 661
+    },
+    {
+      "path": "repro/c02r_candidate_37_suite.log",
+      "sha256": "ee8cf878180f88052d55ab96a9f2fda77c265b1a799fee72da55a3987e3cb2c2",
+      "bytes": 99
+    },
+    {
+      "path": "repro/c02r_hostiles.log",
+      "sha256": "4b2b06f1e384b2b1a68ea1011462ab8f78cba6f8233618e5c129622e2c5b9f89",
+      "bytes": 7927
+    },
+    {
+      "path": "repro/hostile_c02r.py",
+      "sha256": "24ee5d289712c22f3e54768136f2fcb519f5f8c6600719c75209a07231e48cf7",
+      "bytes": 39395
+    }
+  ],
+  "nonissuance": {
+    "adopted": false,
+    "self_adopted": false,
+    "g0b": null,
+    "g1_service": null,
+    "current_publication": null,
+    "trust_root": null,
+    "canonical_mutation": false,
+    "scientific_issuance": false,
+    "zip_relay": false
+  },
+  "open_holds": [
+    "PRODUCER-ISSUER HOLD: no accepted issuer/credential; M2 registration unauthenticated",
+    "ENFORCEMENT-SURFACE HOLD: raw B5 executor, production composition path and checkpoint rehydration bypass the perimeter",
+    "REPLAY HOLD: REPLAY_COMPLETE is an owner-held claim",
+    "AUTHORITY HOLD: AuthoritySnapshot and permission ceiling are owner-held and unvalidated",
+    "IN-PROCESS STATE HOLD: EXPECTATION_KEY_TYPES is a mutable module-level dict"
+  ]
+}
