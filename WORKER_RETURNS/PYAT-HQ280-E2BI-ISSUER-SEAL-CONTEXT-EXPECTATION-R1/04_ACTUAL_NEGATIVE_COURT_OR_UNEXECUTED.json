@@ -1,0 +1,85 @@
+{
+  "schema": "PYAT_HQ280_E2BI_OWN_DOMAIN_HOSTILE_COURT@1",
+  "review_scope": "STATIC_OWNER_BOUNDARY_INSPECTION_ONLY__NO_REEXECUTION",
+  "actual_independently_executed_cases": 0,
+  "cases_unexecuted": 7,
+  "cases": [
+    {
+      "id": "N01_PERMISSION_WIDEN_V557_REVIEW",
+      "attack": "Attempt V557 allowed uses ('CONTEXT','REVIEW') on adopted GT12 translation",
+      "owner": "rawlsing_next.gt12_permission_translation_authority.require_exact_downstream_use_shape",
+      "expected": "GT12PermissionTranslationError, requires exact V557 singleton ('CONTEXT',)",
+      "precondition": "adopted GT12 source-local positive admission",
+      "execution": "NOT_EXECUTED",
+      "reason": "no local full candidate runtime/source; command intentionally not run"
+    },
+    {
+      "id": "N02_PERMISSION_WIDEN_V558_ACTIVE_CAUSAL",
+      "attack": "Attempt requested resolution uses ('ACTIVE_CAUSAL',) or ('CONTEXT','ACTIVE_CAUSAL')",
+      "owner": "rawlsing_next.gt12_permission_translation_authority.require_exact_downstream_use_shape",
+      "expected": "GT12PermissionTranslationError, requires exact V558 requested singleton ('CONTEXT',)",
+      "precondition": "adopted GT12 translation",
+      "execution": "NOT_EXECUTED",
+      "reason": "documentary review only"
+    },
+    {
+      "id": "N03_FALSE_F1_B1_CURRENT_PUBLICATION",
+      "attack": "Inject B1 publication or false F1/B1 selection/currentness under GT12 E2B bundle",
+      "owner": "rawlsing_next.gt12_e2b_publication_governance_binding._validate_materials; rawlsing_next.tests.gt12_e2b_actual_object_consumer_harness._require_repository_surface",
+      "expected": "GT12E2BBindingError for bundle publication family drift or GT12E2BHarnessError for non-V554/B1 substitution; not a valid F1 current",
+      "precondition": "a deliberately constructed modified bundle or repository",
+      "execution": "NOT_EXECUTED",
+      "reason": "no owner-level injection actually invoked"
+    },
+    {
+      "id": "N04_WRONG_SOURCE_RELEASE_OR_RISK",
+      "attack": "Supply alien R5 source ref, alternate C11 release or changed risk hash while claiming current R1C",
+      "owner": "rawlsing_next.tests.gt12_e2b_actual_object_consumer_harness.require_current_r1c_actual_objects; gt12_c_to_d_relation_bridge._validate; wave1_ff_prev3_relation_admission GT12 risk/source gates",
+      "expected": "GT12E2BHarnessError / GT12CToDBridgeError / relation admission source dependency refusal by failing exact R1C or source/risk binding",
+      "precondition": "actual modified input object; do not use mock result as a passing injected test",
+      "execution": "NOT_EXECUTED",
+      "reason": "runtime not repeated, original source not read"
+    },
+    {
+      "id": "N05_WRONG_CONDITIONER_TARGET_DIRECTION",
+      "attack": "Swap Q86B/Q86A roles, replace selected Q86A target or change semantic order",
+      "owner": "rawlsing_next.tests.gt12_e2b_actual_object_consumer_harness.require_current_r1c_actual_objects; rawlsing_next.field_forge_conditional_support._query_component_material",
+      "expected": "GT12E2BHarnessError on exact R1C query/target order or FieldForgeConditionalSupportError on role/ref domain mismatch",
+      "precondition": "modified exact target preimage and same-source risk claim",
+      "execution": "NOT_EXECUTED",
+      "reason": "no alternate source/model/consumer execution"
+    },
+    {
+      "id": "N06_OUTCOME_HASH_IN_PRE_RUN_MATERIAL",
+      "attack": "Add actual 23-zero cell observation, produced F1/V557/V558 terminal hash, prior realized fact hash or other run result to prospective expected-work material",
+      "owner": "prospective competent expectation issuer + independent pre-run custodian (not yet implemented)",
+      "expected": "ISSUER_HOLD: invalid pre-result expected-work preimage; recalculated digest cannot be silently adopted; negative is governance-level, not claimed existing Python exception",
+      "precondition": "literal WGE preimage obtained and inspected",
+      "execution": "NOT_EXECUTED",
+      "reason": "original literal WGE JSON absent from Git/attached files"
+    },
+    {
+      "id": "N07_SELF_SIGNED_EXPECTATION",
+      "attack": "Worker declares its own SHA to be independent scientific expected-work issuance, or retroactively seals WGE/WGE-R",
+      "owner": "Pyat competent source/use adoption and independent custodian (not yet established)",
+      "expected": "NO_COMPETENT_EXPECTATION_ISSUER / PRE_RUN_ORDER_NOT_PROVED; prospective seal forbidden",
+      "precondition": "signed source/use record and pre-run Git evidence",
+      "execution": "NOT_EXECUTED",
+      "reason": "no issuer-adoption operation or credential exists"
+    }
+  ],
+  "prior_WGER_independent_owner_injections": {
+    "count": 4,
+    "status": "HISTORICAL_EXECUTION_INHERITED_NOT_E2BI_TESTED",
+    "source": "HQ reviewer intake receipt e1cd900ce9ba47f81d971a1d5e5b47172746e936",
+    "covered": "transport manifest/respondent/routing/event tamper only; not new permission/current/wrong-target attacks"
+  },
+  "prohibited_claims": [
+    "do not mark static analysis a runtime PASS",
+    "do not count WGE 9 boundary consistency assertions as injected tests",
+    "do not claim adopted independent seal",
+    "do not infer new original survey product",
+    "do not transform G0b HELD into positive"
+  ],
+  "disposition": "NO_ACTUAL_NEW_NEGATIVE_INVOCATIONS__REVIEW_PLAN_ONLY__EXPECTATION_ISSUER_HOLD"
+}
