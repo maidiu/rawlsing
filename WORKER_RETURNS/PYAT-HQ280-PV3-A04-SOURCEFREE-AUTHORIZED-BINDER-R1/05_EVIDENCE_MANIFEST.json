@@ -1,0 +1,163 @@
+{
+  "a05_compatibility": {
+    "a05_code_imported": false,
+    "asserted_by_test": "test_binder_does_not_import_or_depend_on_the_a05_oracle",
+    "declared_schema_token": "HQ280_PV3_A05_EXPECTED_WORK@1.0.0",
+    "expected_universe_derived_from_a05_or_from_own_output": false,
+    "oracle_branch": "agent/rabochii-pyat-hq280-pv3-a05-independent-nodrop-oracle-r1",
+    "oracle_sha": "9491d0296c95ee2942fe80eadc6aa9f54b07c634",
+    "own_schema_token": "HQ280_PV3_A04_EXPECTED_WORK@1.0.0",
+    "remote_sha_verified": true,
+    "usage": "PUBLIC_CONTRACT_COMPATIBILITY_ONLY"
+  },
+  "artifacts": [
+    {
+      "bytes": 10031,
+      "git_blob": "7b93d8a66aae894958d54eac88b68c4f71edfb1c",
+      "path": "WORKER_RETURNS/PYAT-HQ280-PV3-A04-SOURCEFREE-AUTHORIZED-BINDER-R1/00_RETURN.md",
+      "sha256": "2cf0bb22db2a7df3efcc6f0618c93451f381512e2022f32ed918758b746e6316"
+    },
+    {
+      "bytes": 4153,
+      "git_blob": "c9d9f9d61d32f3b0ce7607dc3ea9502b24aec88d",
+      "path": "WORKER_RETURNS/PYAT-HQ280-PV3-A04-SOURCEFREE-AUTHORIZED-BINDER-R1/01_OWNER_TO_BINDER_MAPPING.md",
+      "sha256": "052c23c76e3edb61e09dd7ccbd88ae58a02d7a17b428ad96d12090113651a8df"
+    },
+    {
+      "bytes": 12019,
+      "git_blob": "bb5990c2f141614a2367146550a3374d45a80be6",
+      "path": "WORKER_RETURNS/PYAT-HQ280-PV3-A04-SOURCEFREE-AUTHORIZED-BINDER-R1/02_ACTUAL_SOURCEFREE_RUNS.json",
+      "sha256": "6353de7b8344178a3d3d78d9febc9fdee24ec3aef2f28e0ff11151b91289bf37"
+    },
+    {
+      "bytes": 10015,
+      "git_blob": "80ad01e099d275b30d2a883daea99f6536aa6598",
+      "path": "WORKER_RETURNS/PYAT-HQ280-PV3-A04-SOURCEFREE-AUTHORIZED-BINDER-R1/03_HOSTILE_RESULTS.json",
+      "sha256": "8f5f39a7be027c3f88db6efafe59a3681af9800577bab23206cfb8dbaf4cf502"
+    },
+    {
+      "bytes": 4833,
+      "git_blob": "216bb9ee221352159eec67680e02a92923ce4556",
+      "path": "WORKER_RETURNS/PYAT-HQ280-PV3-A04-SOURCEFREE-AUTHORIZED-BINDER-R1/04_TYPED_ISSUER_AND_PRODUCTION_HOLDS.md",
+      "sha256": "3120ce0451a11a22630a6cb6bae458eaca9825aa77298226c31c871c81115aac"
+    },
+    {
+      "bytes": 6798,
+      "git_blob": "SELF_EXCLUDED",
+      "path": "WORKER_RETURNS/PYAT-HQ280-PV3-A04-SOURCEFREE-AUTHORIZED-BINDER-R1/05_EVIDENCE_MANIFEST.json",
+      "sha256": "SELF_EXCLUDED_MANIFEST_HASH_NOT_STABLE"
+    },
+    {
+      "bytes": 2689,
+      "git_blob": "8c9069f35c45b7367431fcad08ae6b8071ab3706",
+      "path": "WORKER_RETURNS/PYAT-HQ280-PV3-A04-SOURCEFREE-AUTHORIZED-BINDER-R1/repro/README.md",
+      "sha256": "e55cd259f86f677f380e53b13d7b508bbd65c95b4806a0e4d73c8f3731f51f18"
+    },
+    {
+      "bytes": 18885,
+      "git_blob": "91f56a0e418126954b0eada458d849a45fb13fa7",
+      "path": "WORKER_RETURNS/PYAT-HQ280-PV3-A04-SOURCEFREE-AUTHORIZED-BINDER-R1/repro/a04_sourcefree_binder_repro.py",
+      "sha256": "2eae2baf8d03ff307429404e62adcea7b7cb9ae65b3de4a4bfd07a654e01734b"
+    },
+    {
+      "bytes": 37153,
+      "git_blob": "e2f76f193456f20980785f26bc738fa17009a237",
+      "path": "WORKER_RETURNS/PYAT-HQ280-PV3-A04-SOURCEFREE-AUTHORIZED-BINDER-R1/repro/a04_sourcefree_runs.json",
+      "sha256": "87510f9a5fd2b8a6c98f1c8d8b83abdc0f495268a04ee250b8dc4ef0d377c955"
+    },
+    {
+      "bytes": 6008,
+      "git_blob": "12c91522a914c36fa19c4da81e6b47b36cd518ba",
+      "path": "WORKER_RETURNS/PYAT-HQ280-PV3-A04-SOURCEFREE-AUTHORIZED-BINDER-R1/repro/a04_pytest_verbose.log",
+      "sha256": "e73c050c570deea8725e38ac4c1a10d9d34f30a63299a8b7f288ac5dcd36db8e"
+    }
+  ],
+  "artifacts_note": "05_EVIDENCE_MANIFEST.json cannot hash itself; all other artifacts are hash-pinned.",
+  "authorizing": false,
+  "branch": "agent/rabochii-pyat-hq280-pv3-a04-sourcefree-authorized-binder-r1",
+  "canonical_mutated": false,
+  "commission": "WORKER_COMMISSIONS/PYAT-HQ280-PV3-A04-SOURCEFREE-AUTHORIZED-BINDER-R1/00_COMMISSION.md",
+  "control": {
+    "canonical_baseline": "a70a069fa948e0f3c041b389edcc732b6b948a4f",
+    "governing_authority": "HQD-2026-10-10-280",
+    "hq280_parallel_seal": "908ee4e74849884b1d4c2f532209a0ca57538b67",
+    "semantic_pre_main_unmutated": "1f47063c3205a45888b3c55e81e7485943ed1390"
+  },
+  "environment": {
+    "interpreter": ".pv3-venv/bin/python3",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit",
+    "pytest": "9.1.1",
+    "python_version": "3.11.3",
+    "raw_source_read": false,
+    "sav_dta_executed": false
+  },
+  "existing_owners_unmodified": [
+    {
+      "git_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "matches_hq280_evidence": "E18 = 2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "modified": false,
+      "path": "rawlsing_next/pre553_route_b_production.py"
+    },
+    {
+      "git_blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "matches_hq280_evidence": "E19 = 905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "modified": false,
+      "path": "rawlsing_next/pre553_discovery_exact.py"
+    },
+    {
+      "git_blob": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+      "modified": false,
+      "path": "rawlsing_next/pre553_batch_runner.py"
+    },
+    {
+      "git_blob": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+      "modified": false,
+      "path": "rawlsing_next/pre553_carrier_execution.py"
+    },
+    {
+      "git_blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "modified": false,
+      "path": "rawlsing_next/pre553_empirical_objects.py"
+    }
+  ],
+  "git_diff_vs_sealed_start_is_empty_for_tracked_files": true,
+  "large_or_sensitive_external_evidence": "NONE__all evidence is modest text/JSON committed to the branch",
+  "new_files_only": [
+    {
+      "git_blob": "7d8b3902c3f8f257637b7c07ad9feb5e096d48e5",
+      "lines": 1154,
+      "path": "rawlsing_next/pre553_original_workload_binder_candidate.py",
+      "sha256": "f5cf17bf78d656c519a83963c4f5feb08552b652ab660afcde609cd2f40838f1"
+    },
+    {
+      "git_blob": "6c06a5b013d3713af7d7ba9bf143c3ef7a6245a2",
+      "lines": 961,
+      "path": "rawlsing_next/tests/test_pre553_original_workload_binder_candidate.py",
+      "sha256": "71e4352437416384a2ef2f9d12d9daab4bd9e065703d3a35968e50b9a4284dc6"
+    }
+  ],
+  "schema": "HQ280_PV3_A04_EVIDENCE_MANIFEST@1.0.0",
+  "scope": "SOURCE_FREE_DEVELOPMENT_ONLY",
+  "sealed_startup_sha": "ce2d85a087aff43c45981e00ab822446d69daed9",
+  "self_adopted": false,
+  "terminal": "HQ280_PV3_A04_REAL_CURRENT_OWNER_BINDER_CANDIDATE_MEASURED__SOURCEFREE_ONLY__GITHUB_PUSHED",
+  "test_receipts": {
+    "a04_suite": {
+      "command": "python3 -m pytest rawlsing_next/tests/test_pre553_original_workload_binder_candidate.py -q",
+      "log": "repro/a04_pytest_verbose.log",
+      "result": "41 passed"
+    },
+    "determinism": "three consecutive runs byte-identical",
+    "full_repository_suite": "INCONCLUSIVE__BASELINE_NOT_DEMONSTRABLY_COMPARABLE__NOT_CLAIMED_PREEXISTING",
+    "hostile_court": {
+      "command": "PYTHONPATH=. python3 repro/a04_sourcefree_binder_repro.py",
+      "data": "repro/a04_sourcefree_runs.json",
+      "result": "21 cases; 17 must-fail all detected; 4 must-pass all pass"
+    },
+    "targeted_six_suites": {
+      "command": "python3 -m pytest rawlsing_next/tests/test_pre553_original_workload_binder_candidate.py rawlsing_next/tests/test_pre553_route_b_production.py rawlsing_next/tests/test_pre553_batch_runner.py rawlsing_next/tests/test_pre553_discovery_exact.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_carrier_execution.py -q",
+      "result": "118 passed in 6.88s"
+    }
+  },
+  "zip_relay_used": false
+}

@@ -1,0 +1,922 @@
+{
+  "authorizing": false,
+  "environment": {
+    "machine": "x86_64",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit",
+    "pytest_command": "python3 -m pytest rawlsing_next/tests/test_pre553_original_workload_binder_candidate.py -q",
+    "python_executable": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/.pv3-venv/bin/python3",
+    "python_version": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]"
+  },
+  "existing_owner_untouched": [
+    {
+      "blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "path": "rawlsing_next/pre553_route_b_production.py"
+    },
+    {
+      "blob": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+      "path": "rawlsing_next/pre553_carrier_execution.py"
+    },
+    {
+      "blob": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+      "path": "rawlsing_next/pre553_batch_runner.py"
+    },
+    {
+      "blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "path": "rawlsing_next/pre553_discovery_exact.py"
+    },
+    {
+      "blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "path": "rawlsing_next/pre553_empirical_objects.py"
+    }
+  ],
+  "hostile_and_control_cases": [
+    {
+      "case": "P0-honest-submission",
+      "description": "full declared expectation submitted and executed",
+      "expected": "PASS",
+      "extra_count": 0,
+      "observed_error": null,
+      "observed_failure_codes": [],
+      "observed_ok": true,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H1-a-only-submission",
+      "description": "A submitted while A and B are both independently expected",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "observed_error": null,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "EXPECTED_SET_OUTPUT_DERIVED",
+        "REQUIRED_CONSUMER_OMITTED"
+      ],
+      "observed_ok": false,
+      "omitted_count": 4,
+      "unsatisfied_consumer_count": 4
+    },
+    {
+      "case": "H2-missing-b",
+      "description": "every B operation omitted",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "observed_error": null,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "EXPECTED_SET_OUTPUT_DERIVED",
+        "REQUIRED_CONSUMER_OMITTED"
+      ],
+      "observed_ok": false,
+      "omitted_count": 4,
+      "unsatisfied_consumer_count": 4
+    },
+    {
+      "case": "H3-missing-j2",
+      "description": "the J2 joint operation omitted",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "observed_error": null,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "EXPECTED_SET_OUTPUT_DERIVED",
+        "REQUIRED_CONSUMER_OMITTED"
+      ],
+      "observed_ok": false,
+      "omitted_count": 1,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H4-missing-b-and-j2",
+      "description": "B omitted and the J2 joint omitted together",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "observed_error": null,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "EXPECTED_SET_OUTPUT_DERIVED",
+        "REQUIRED_CONSUMER_OMITTED"
+      ],
+      "observed_ok": false,
+      "omitted_count": 4,
+      "unsatisfied_consumer_count": 4
+    },
+    {
+      "case": "H5-unauthorized-extra-work",
+      "description": "an I03 job whose query the frozen universe never declared",
+      "expected": "FAIL",
+      "extra_count": 1,
+      "observed_error": null,
+      "observed_failure_codes": [
+        "EXPECTED_SET_OUTPUT_DERIVED",
+        "UNAUTHORIZED_EXTRA_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H6-same-count-different-keys",
+      "description": "equal totals, renamed documentary item: wrong expected-work keys",
+      "expected": "FAIL",
+      "extra_count": 1,
+      "observed_error": null,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "EXPECTED_SET_OUTPUT_DERIVED",
+        "UNAUTHORIZED_EXTRA_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 1,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H7-condition-order-substitution",
+      "description": "q(C|A) declared with the q(C|A,B) reversed owner target order",
+      "expected": "FAIL",
+      "extra_count": 1,
+      "observed_error": null,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "EXPECTED_SET_OUTPUT_DERIVED",
+        "REQUIRED_CONSUMER_OMITTED",
+        "UNAUTHORIZED_EXTRA_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 1,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H8-own-dk-cotopic-joint",
+      "description": "a candidate's own derived topic used as a joint co-travel warrant",
+      "expected": "FAIL",
+      "extra_count": 1,
+      "observed_error": null,
+      "observed_failure_codes": [
+        "CANDIDATE_OWN_DK_JOINT",
+        "EXPECTED_OPERATION_OMITTED",
+        "EXPECTED_SET_OUTPUT_DERIVED",
+        "REQUIRED_CONSUMER_OMITTED",
+        "UNAUTHORIZED_EXTRA_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 1,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H9-altered-document-version",
+      "description": "the same administered item declared under a different form version",
+      "expected": "FAIL",
+      "extra_count": 1,
+      "observed_error": null,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "EXPECTED_SET_OUTPUT_DERIVED",
+        "UNAUTHORIZED_EXTRA_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 1,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H10-source-identity-mismatch",
+      "description": "an expectation naming a source the owners never ran against",
+      "expected": "FAIL",
+      "extra_count": 1,
+      "observed_error": null,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "EXPECTED_SET_OUTPUT_DERIVED",
+        "SOURCE_IDENTITY_MISMATCH",
+        "UNAUTHORIZED_EXTRA_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 1,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H11a-post-result-laundering-self-certifies",
+      "description": "the truncated manifest reconciled against ITSELF: no omission visible, which is precisely why self-certification is insufficient",
+      "expected": "PASS",
+      "extra_count": 0,
+      "observed_error": null,
+      "observed_failure_codes": [],
+      "observed_ok": true,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H11b-post-result-laundering-vs-frozen",
+      "description": "the SAME execution reconciled against the independent frozen universe",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "observed_error": null,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "EXPECTED_SET_OUTPUT_DERIVED",
+        "REQUIRED_CONSUMER_OMITTED"
+      ],
+      "observed_ok": false,
+      "omitted_count": 4,
+      "unsatisfied_consumer_count": 4
+    },
+    {
+      "case": "H12-required-consumer-omitted",
+      "description": "every job completed and every product present, one required consumer unsatisfied",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "observed_error": null,
+      "observed_failure_codes": [
+        "REQUIRED_CONSUMER_OMITTED"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H13-held-obligations-invisible",
+      "description": "held/denied/non-applicable obligations removed from the export",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "observed_error": null,
+      "observed_failure_codes": [
+        "HELD_OR_DENIED_WORK_NOT_VISIBLE"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H14-duplicate-semantic-job",
+      "description": "two distinct expected operations collapsing onto one semantic batch job",
+      "expected": "FAIL",
+      "matched_expected_pattern": true,
+      "observed_error": "BinderCandidateError: two distinct expected operations collapsed onto one semantic batch job",
+      "observed_failure_codes": [
+        "BIND_TIME_REFUSAL"
+      ],
+      "observed_ok": false
+    },
+    {
+      "case": "H15-multiplicity-without-justification",
+      "description": "multiplicity > 1 asserted without explicit justification",
+      "expected": "FAIL",
+      "matched_expected_pattern": true,
+      "observed_error": "BinderCandidateError: two distinct expected operations collapsed onto one semantic batch job",
+      "observed_failure_codes": [
+        "BIND_TIME_REFUSAL"
+      ],
+      "observed_ok": false
+    },
+    {
+      "case": "H16-undeclared-authority",
+      "description": "an operation authority absent from the issued RuntimeObjectCatalog",
+      "expected": "FAIL",
+      "matched_expected_pattern": true,
+      "observed_error": "BinderCandidateError: declared operation authority is not exactly present in the issued RuntimeObjectCatalog (expected_work_key=35705a6aca8a6f793a8359c504a9163a10209ed3b369696aa9c59323354dd792)",
+      "observed_failure_codes": [
+        "BIND_TIME_REFUSAL"
+      ],
+      "observed_ok": false
+    },
+    {
+      "case": "H17-missing-i05-expected-work",
+      "description": "no I05 discovery operation in the expected work",
+      "expected": "FAIL",
+      "matched_expected_pattern": true,
+      "observed_error": "BinderCandidateError: expected work requires exactly one I05 discovery operation",
+      "observed_failure_codes": [
+        "BIND_TIME_REFUSAL"
+      ],
+      "observed_ok": false
+    },
+    {
+      "case": "P1-stable-reorder",
+      "description": "shuffled declarations and reversed catalog yield identical jobs, manifest hash and replay receipt",
+      "expected": "PASS",
+      "observed_error": null,
+      "observed_failure_codes": [],
+      "observed_ok": true
+    },
+    {
+      "case": "P2-restart-identity",
+      "description": "resume with prior receipts adds no work and preserves the receipt set hash",
+      "expected": "PASS",
+      "observed_error": null,
+      "observed_failure_codes": [],
+      "observed_ok": true
+    }
+  ],
+  "nonauthorizing": true,
+  "positive_run": {
+    "batch_manifest_hash": "db9e029e36489d390e07ab36eba43dd3f92d04b6be59c642230118263b7622f3",
+    "batch_manifest_ref": {
+      "content_hash": "db9e029e36489d390e07ab36eba43dd3f92d04b6be59c642230118263b7622f3",
+      "kind": "PRE553BatchManifest@1.0.0",
+      "object_id": "urn:rawlsing:pre553:batch-manifest:sha256:db9e029e36489d390e07ab36eba43dd3f92d04b6be59c642230118263b7622f3"
+    },
+    "batch_summary": {
+      "actual_execution_receipts": 6,
+      "batch_state": "COMPLETED",
+      "completed_units": 6,
+      "coverage_state": "FULL_MANIFEST_COVERAGE",
+      "deferred_units": 0,
+      "failed_units": 0,
+      "full_coverage": true,
+      "pending_units": 0,
+      "receipt_set_hash": "f62a5ab5e58b6acfbf4f5017c73794cd599832d395d49e97c7d747a9cebb05d6",
+      "total_units": 6
+    },
+    "batch_unit_receipts": [
+      {
+        "attempt_index": 1,
+        "execution_performed": true,
+        "failure_code": null,
+        "result_refs": [
+          {
+            "content_hash": "88012c17a72c2425223b0371c8f8d684e4480aa815862ce71a8d7b357dbb3c58",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:88012c17a72c2425223b0371c8f8d684e4480aa815862ce71a8d7b357dbb3c58"
+          }
+        ],
+        "state": "COMPLETED",
+        "unit_ref": {
+          "content_hash": "13acf928a4568cd0442a60bacc202e50a4db04ba1cd0407c715166de324ef04c",
+          "kind": "PRE553BatchUnit@1.0.0",
+          "object_id": "urn:rawlsing:pre553:batch-unit:sha256:13acf928a4568cd0442a60bacc202e50a4db04ba1cd0407c715166de324ef04c"
+        }
+      },
+      {
+        "attempt_index": 1,
+        "execution_performed": true,
+        "failure_code": null,
+        "result_refs": [
+          {
+            "content_hash": "75d9ebde152ce4075fd1eee9c1cf2268836ea8897b4f3c68695cf2b3fa2912f5",
+            "kind": "DiscoveryResultReceipt@1.0.0",
+            "object_id": "urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:75d9ebde152ce4075fd1eee9c1cf2268836ea8897b4f3c68695cf2b3fa2912f5"
+          }
+        ],
+        "state": "COMPLETED",
+        "unit_ref": {
+          "content_hash": "1c96dbdf2ba9f2e844e6cda4e08584c255e41be5347e084312e8687c2892d9c0",
+          "kind": "PRE553BatchUnit@1.0.0",
+          "object_id": "urn:rawlsing:pre553:batch-unit:sha256:1c96dbdf2ba9f2e844e6cda4e08584c255e41be5347e084312e8687c2892d9c0"
+        }
+      },
+      {
+        "attempt_index": 1,
+        "execution_performed": true,
+        "failure_code": null,
+        "result_refs": [
+          {
+            "content_hash": "1ae886401de87fac9ecbcb7826221d1e308ffbbb75ae261f06470c862face9a2",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:1ae886401de87fac9ecbcb7826221d1e308ffbbb75ae261f06470c862face9a2"
+          }
+        ],
+        "state": "COMPLETED",
+        "unit_ref": {
+          "content_hash": "47e71c43b83b7f1012b4488c8e449933e2e07e41d6fb28b8557eaa9628498e1f",
+          "kind": "PRE553BatchUnit@1.0.0",
+          "object_id": "urn:rawlsing:pre553:batch-unit:sha256:47e71c43b83b7f1012b4488c8e449933e2e07e41d6fb28b8557eaa9628498e1f"
+        }
+      },
+      {
+        "attempt_index": 1,
+        "execution_performed": true,
+        "failure_code": null,
+        "result_refs": [
+          {
+            "content_hash": "3ba695b097fc93fbd0fa63af52124946848653b19cc8bd3eb4645325629fc41a",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:3ba695b097fc93fbd0fa63af52124946848653b19cc8bd3eb4645325629fc41a"
+          }
+        ],
+        "state": "COMPLETED",
+        "unit_ref": {
+          "content_hash": "5d83e0eb03dc26ff9692c34c83c5e2d8c0d75d5bcef8f4f167cda77b989dd898",
+          "kind": "PRE553BatchUnit@1.0.0",
+          "object_id": "urn:rawlsing:pre553:batch-unit:sha256:5d83e0eb03dc26ff9692c34c83c5e2d8c0d75d5bcef8f4f167cda77b989dd898"
+        }
+      },
+      {
+        "attempt_index": 1,
+        "execution_performed": true,
+        "failure_code": null,
+        "result_refs": [
+          {
+            "content_hash": "06c4fa3189afa13167991c1d0a8a1ba6be71b55dbd2f5d633f6fe49444ad33e0",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:06c4fa3189afa13167991c1d0a8a1ba6be71b55dbd2f5d633f6fe49444ad33e0"
+          }
+        ],
+        "state": "COMPLETED",
+        "unit_ref": {
+          "content_hash": "da68a709e4ba15ae0bb672aff0dc6634b2fb15781cf9e605613658181145494e",
+          "kind": "PRE553BatchUnit@1.0.0",
+          "object_id": "urn:rawlsing:pre553:batch-unit:sha256:da68a709e4ba15ae0bb672aff0dc6634b2fb15781cf9e605613658181145494e"
+        }
+      },
+      {
+        "attempt_index": 1,
+        "execution_performed": true,
+        "failure_code": null,
+        "result_refs": [
+          {
+            "content_hash": "b83fce1581ecc4594d3cf2dcfadbb9425610b2a15de0f37ccfa50ec9d6bb48c6",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:b83fce1581ecc4594d3cf2dcfadbb9425610b2a15de0f37ccfa50ec9d6bb48c6"
+          }
+        ],
+        "state": "COMPLETED",
+        "unit_ref": {
+          "content_hash": "dfd012d5baa706704d577be84318d1819fd2c209766e750edac7dd738a9a382b",
+          "kind": "PRE553BatchUnit@1.0.0",
+          "object_id": "urn:rawlsing:pre553:batch-unit:sha256:dfd012d5baa706704d577be84318d1819fd2c209766e750edac7dd738a9a382b"
+        }
+      }
+    ],
+    "c11_release_ref": {
+      "content_hash": "95de34f09fa9ae4aac6c6a3c73ea7ff9dff5ef18189bac940805f30126fce88c",
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-m01"
+    },
+    "declared_expected_work": [
+      {
+        "documentary_item_key": "39e3e295f4e83c11aa6cbde231a376d471567c9db0b620429ff7741ba2b888b8",
+        "expected_work_key": "af15f1d34dc3bc4a7563f2d03c6454fbccf113c634138c0429c7d37060d258cc",
+        "hold_reason": null,
+        "item": "A",
+        "measure_kind": "RAW",
+        "op_class": "I03_UNARY_OR_JOINT_QUERY",
+        "operation_key": "aa5b9da91c8088800e529fd9176b9ff98db2c7ef118f772a2b7b6cb8b3fe0850",
+        "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+        "state": "RUNNABLE",
+        "target": "X"
+      },
+      {
+        "documentary_item_key": "542c5cfa0d7bac87982c080ef69f4761ef8bfafceb03b23b9cb5495019b94410",
+        "expected_work_key": "b64006e8ba44fb91399b7f6e4bcf18f4afd704911c698e890a584fb0f474fd66",
+        "hold_reason": null,
+        "item": "B",
+        "measure_kind": "RAW",
+        "op_class": "I03_UNARY_OR_JOINT_QUERY",
+        "operation_key": "54895a21bfc28f8fd1e4ca1caa4ef3f7057a41c69d3647b7e0c107acfc443fb1",
+        "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+        "state": "RUNNABLE",
+        "target": "Y"
+      },
+      {
+        "documentary_item_key": "542c5cfa0d7bac87982c080ef69f4761ef8bfafceb03b23b9cb5495019b94410",
+        "expected_work_key": "266ee4438e6f3032509ad6ca785603eb0dbff07842bbc001150a87da7ca3ac55",
+        "hold_reason": null,
+        "item": "B",
+        "measure_kind": "GOVERNED_WEIGHTED",
+        "op_class": "I03_UNARY_OR_JOINT_QUERY",
+        "operation_key": "5b45770afb58800e36f40100938947495515ae60591bc78ea6040e97f3ff38ca",
+        "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+        "state": "RUNNABLE",
+        "target": "Y"
+      },
+      {
+        "documentary_item_key": "542c5cfa0d7bac87982c080ef69f4761ef8bfafceb03b23b9cb5495019b94410",
+        "expected_work_key": "286aa0c86a91762532517f8443d7991856fd6fbbf0aaef8825d0b2fa687ddcc0",
+        "hold_reason": null,
+        "item": "B",
+        "measure_kind": "RAW",
+        "op_class": "I03_UNARY_OR_JOINT_QUERY",
+        "operation_key": "958f53a4c80d7f81beca7ff646dbbb3a60f803b4b31a916d92f02d177c204270",
+        "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+        "state": "RUNNABLE",
+        "target": "Y"
+      },
+      {
+        "documentary_item_key": "4cd91e975663cddcdd5f33a418ee2c918fca9240d8416fdf208287a4e48cb9da",
+        "expected_work_key": "5d4f741612db86f965ba37463d29e7ec822bcaf7b993dd229c55e188ee33fcee",
+        "hold_reason": null,
+        "item": "B",
+        "measure_kind": "RAW",
+        "op_class": "I03_UNARY_OR_JOINT_QUERY",
+        "operation_key": "22870a57eef30a2ad2e34609c07d21b6c5ec17c3d205f196a06da55efb66d1c9",
+        "required_consumer": "FIELD_FORGE_CONDITIONAL_SUPPORT",
+        "state": "RUNNABLE",
+        "target": "J2"
+      },
+      {
+        "documentary_item_key": "4cd91e975663cddcdd5f33a418ee2c918fca9240d8416fdf208287a4e48cb9da",
+        "expected_work_key": "83987d772e3b14b00a50602aa201933cfb09f6f4f7c73437615f85198de07ce0",
+        "hold_reason": null,
+        "item": "B",
+        "measure_kind": "RAW",
+        "op_class": "I05_BOUNDED_DISCOVERY",
+        "operation_key": "465293e0cc2425603d29e4a15f45b624807c4e3d5df5a2fe76196edfc2003a0f",
+        "required_consumer": "LEARNED_EMPIRICAL_ADJUDICATION",
+        "state": "RUNNABLE",
+        "target": "D1"
+      },
+      {
+        "documentary_item_key": "e1b117114536e9c588f74f0cd9a52eebeac948385e4e27e591238e948be69377",
+        "expected_work_key": "2e8a14bb4c2abd1929afa9fd4390acb6dab8e7cbf9aebbb3eaed455a4042dce3",
+        "hold_reason": "ORDERED_SEQUENCE_COLLAPSE_NOT_YET_AUTHORIZED",
+        "item": "O",
+        "measure_kind": "RAW",
+        "op_class": "I03_UNARY_OR_JOINT_QUERY",
+        "operation_key": "7d2f165a4f65ea8211b89cb41fcb5595df614403538d58318045774c4f73ef59",
+        "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+        "state": "HELD",
+        "target": "O"
+      },
+      {
+        "documentary_item_key": "9d1f08e73b3ad3d7f1a80c628f38cfe4e31b1e8211ac28af4943b2054ffd8f1b",
+        "expected_work_key": "163243d2c79d8b7157f73d05b150995396a38c92fe8d930ddcedd6917f00cc23",
+        "hold_reason": "REPEATED_EVENT_JOIN_NOT_YET_AUTHORIZED",
+        "item": "R",
+        "measure_kind": "RAW",
+        "op_class": "I03_UNARY_OR_JOINT_QUERY",
+        "operation_key": "1161fe8c5afb4248ea61ed5e5e13d9771489d2feec0902b08fe67287527e6afa",
+        "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+        "state": "HELD",
+        "target": "R"
+      },
+      {
+        "documentary_item_key": "c897c3b449a2cd05f318d4554dbfa8cb2b5b0d9c502f1830666084aa75483714",
+        "expected_work_key": "e2824d95635fac15dc871305f2869367e6c60ff56354ced18420fb145c21ae2f",
+        "hold_reason": "EXPLICIT_FAIL_CLOSED_SOURCE_GAP",
+        "item": "V",
+        "measure_kind": "RAW",
+        "op_class": "I03_UNARY_OR_JOINT_QUERY",
+        "operation_key": "da9c70b36760893a0b20fc0445d96210d11d4159df5f78654556604a1e67e048",
+        "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+        "state": "DENIED",
+        "target": "V"
+      },
+      {
+        "documentary_item_key": "f1d0d00acce789e6ffe883b9e4580059befd32169ee955f61b0e496b94efd296",
+        "expected_work_key": "1e227dfebaa7eb5bf03f1df8a43944c7423cf51750a0eddfbbdd14f13e827850",
+        "hold_reason": "NO_COADMINISTERED_TARGET_IN_THIS_SLICE",
+        "item": "U",
+        "measure_kind": "RAW",
+        "op_class": "I03_UNARY_OR_JOINT_QUERY",
+        "operation_key": "ed22a6d17002e5b948260d2c5ed4c9dc69f79fc94dff6fedc40b1848bdc03eb1",
+        "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+        "state": "SOURCE_NONAPPLICABLE",
+        "target": "U"
+      }
+    ],
+    "effects": {
+      "actor_v3_effect": false,
+      "authority_creation": false,
+      "candidate_frontier_invention": false,
+      "causal_truth_effect": false,
+      "learned_product_publication_effect": false,
+      "model_permission_effect": false,
+      "source_meaning_inference": false,
+      "structural_truth_effect": false
+    },
+    "expected_frontier_ref": {
+      "content_hash": "76bd0a91f8ab17a1c1c4ec08cc9c4dfbde973d3ccbd60386fa5bf01e8d326983",
+      "kind": "HQ280_A04_EXPECTED_FRONTIER@1.0.0",
+      "object_id": "urn:rawlsing:hq280:a04:expected-frontier:sha256:76bd0a91f8ab17a1c1c4ec08cc9c4dfbde973d3ccbd60386fa5bf01e8d326983"
+    },
+    "held_frontier": [
+      {
+        "documentary_item_key": "9d1f08e73b3ad3d7f1a80c628f38cfe4e31b1e8211ac28af4943b2054ffd8f1b",
+        "expected_work_key": "163243d2c79d8b7157f73d05b150995396a38c92fe8d930ddcedd6917f00cc23",
+        "item": "R",
+        "operation_key": "1161fe8c5afb4248ea61ed5e5e13d9771489d2feec0902b08fe67287527e6afa",
+        "reason": "REPEATED_EVENT_JOIN_NOT_YET_AUTHORIZED",
+        "runnable": false,
+        "state": "HELD"
+      },
+      {
+        "documentary_item_key": "f1d0d00acce789e6ffe883b9e4580059befd32169ee955f61b0e496b94efd296",
+        "expected_work_key": "1e227dfebaa7eb5bf03f1df8a43944c7423cf51750a0eddfbbdd14f13e827850",
+        "item": "U",
+        "operation_key": "ed22a6d17002e5b948260d2c5ed4c9dc69f79fc94dff6fedc40b1848bdc03eb1",
+        "reason": "NO_COADMINISTERED_TARGET_IN_THIS_SLICE",
+        "runnable": false,
+        "state": "SOURCE_NONAPPLICABLE"
+      },
+      {
+        "documentary_item_key": "e1b117114536e9c588f74f0cd9a52eebeac948385e4e27e591238e948be69377",
+        "expected_work_key": "2e8a14bb4c2abd1929afa9fd4390acb6dab8e7cbf9aebbb3eaed455a4042dce3",
+        "item": "O",
+        "operation_key": "7d2f165a4f65ea8211b89cb41fcb5595df614403538d58318045774c4f73ef59",
+        "reason": "ORDERED_SEQUENCE_COLLAPSE_NOT_YET_AUTHORIZED",
+        "runnable": false,
+        "state": "HELD"
+      },
+      {
+        "documentary_item_key": "c897c3b449a2cd05f318d4554dbfa8cb2b5b0d9c502f1830666084aa75483714",
+        "expected_work_key": "e2824d95635fac15dc871305f2869367e6c60ff56354ced18420fb145c21ae2f",
+        "item": "V",
+        "operation_key": "da9c70b36760893a0b20fc0445d96210d11d4159df5f78654556604a1e67e048",
+        "reason": "EXPLICIT_FAIL_CLOSED_SOURCE_GAP",
+        "runnable": false,
+        "state": "DENIED"
+      }
+    ],
+    "i03_requests": [
+      {
+        "predicate_ref": {
+          "content_hash": "3b9070f2ba9379bef29f4ff3be074d7f8ee0b5022e4376bf2e29ccc666f65d25",
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:3b9070f2ba9379bef29f4ff3be074d7f8ee0b5022e4376bf2e29ccc666f65d25"
+        },
+        "query_ref": {
+          "content_hash": "099948d88a77ee2329023d0c226858d9edb38490bb9fcd2f8d2480de2f41cc69",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:099948d88a77ee2329023d0c226858d9edb38490bb9fcd2f8d2480de2f41cc69"
+        },
+        "request_identity": "9ebad9429f937dce3b3c02bda1e172b32b78a279c7f6eba616f7e41a27912c1e"
+      },
+      {
+        "predicate_ref": {
+          "content_hash": "3b9070f2ba9379bef29f4ff3be074d7f8ee0b5022e4376bf2e29ccc666f65d25",
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:3b9070f2ba9379bef29f4ff3be074d7f8ee0b5022e4376bf2e29ccc666f65d25"
+        },
+        "query_ref": {
+          "content_hash": "0b33c556943fc9a7999f727e92ecc700baf0abfeb8d46cb7c1f26f64df2882f7",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:0b33c556943fc9a7999f727e92ecc700baf0abfeb8d46cb7c1f26f64df2882f7"
+        },
+        "request_identity": "ecffddb2d4689fcfa2275ce773946ad3673289f24f0a6d76f3d04848457080a7"
+      },
+      {
+        "predicate_ref": {
+          "content_hash": "76deee9b8ad11eaef6527c6626521f99e6ceed784e7d4259a900490abd52c9ee",
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:76deee9b8ad11eaef6527c6626521f99e6ceed784e7d4259a900490abd52c9ee"
+        },
+        "query_ref": {
+          "content_hash": "6dcf1d36f4d49c03ad630ad8414e8ab0c958c11c2ae9f53d752adf0e47338093",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:6dcf1d36f4d49c03ad630ad8414e8ab0c958c11c2ae9f53d752adf0e47338093"
+        },
+        "request_identity": "0b66c00eb3acc9356c7abf5177f4328400858b5abd562e6b01920be6f8cd10ec"
+      },
+      {
+        "predicate_ref": {
+          "content_hash": "3b9070f2ba9379bef29f4ff3be074d7f8ee0b5022e4376bf2e29ccc666f65d25",
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:3b9070f2ba9379bef29f4ff3be074d7f8ee0b5022e4376bf2e29ccc666f65d25"
+        },
+        "query_ref": {
+          "content_hash": "8261b2a5d8915bf6fd338a435c0ebe6359d4bec0a8c0255dbcffd3045bb9f4da",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:8261b2a5d8915bf6fd338a435c0ebe6359d4bec0a8c0255dbcffd3045bb9f4da"
+        },
+        "request_identity": "4381a2d056dd7b9e65764c74d8b84825a9b5a9e8d5d0ae7427764df0e918cdc2"
+      },
+      {
+        "predicate_ref": {
+          "content_hash": "3b9070f2ba9379bef29f4ff3be074d7f8ee0b5022e4376bf2e29ccc666f65d25",
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:3b9070f2ba9379bef29f4ff3be074d7f8ee0b5022e4376bf2e29ccc666f65d25"
+        },
+        "query_ref": {
+          "content_hash": "a6dbd278a644f5538ae017d6b497bf30684fcb0c07d4a8ac0cb19bff3b236e0a",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:a6dbd278a644f5538ae017d6b497bf30684fcb0c07d4a8ac0cb19bff3b236e0a"
+        },
+        "request_identity": "81e6e37cca6a479ed34f308b4627627161775e41f5a3c507656524fefde45ceb"
+      }
+    ],
+    "i03_results": [
+      {
+        "fact_refs": [
+          {
+            "content_hash": "1ae886401de87fac9ecbcb7826221d1e308ffbbb75ae261f06470c862face9a2",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:1ae886401de87fac9ecbcb7826221d1e308ffbbb75ae261f06470c862face9a2"
+          }
+        ],
+        "measure_kinds": [
+          "RAW"
+        ],
+        "query_ref": {
+          "content_hash": "099948d88a77ee2329023d0c226858d9edb38490bb9fcd2f8d2480de2f41cc69",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:099948d88a77ee2329023d0c226858d9edb38490bb9fcd2f8d2480de2f41cc69"
+        },
+        "raw_denominators": [
+          3
+        ],
+        "typed_states": [
+          "SUPPORTED"
+        ]
+      },
+      {
+        "fact_refs": [
+          {
+            "content_hash": "b83fce1581ecc4594d3cf2dcfadbb9425610b2a15de0f37ccfa50ec9d6bb48c6",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:b83fce1581ecc4594d3cf2dcfadbb9425610b2a15de0f37ccfa50ec9d6bb48c6"
+          }
+        ],
+        "measure_kinds": [
+          "RAW"
+        ],
+        "query_ref": {
+          "content_hash": "0b33c556943fc9a7999f727e92ecc700baf0abfeb8d46cb7c1f26f64df2882f7",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:0b33c556943fc9a7999f727e92ecc700baf0abfeb8d46cb7c1f26f64df2882f7"
+        },
+        "raw_denominators": [
+          2
+        ],
+        "typed_states": [
+          "SUPPORTED"
+        ]
+      },
+      {
+        "fact_refs": [
+          {
+            "content_hash": "88012c17a72c2425223b0371c8f8d684e4480aa815862ce71a8d7b357dbb3c58",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:88012c17a72c2425223b0371c8f8d684e4480aa815862ce71a8d7b357dbb3c58"
+          }
+        ],
+        "measure_kinds": [
+          "RAW"
+        ],
+        "query_ref": {
+          "content_hash": "6dcf1d36f4d49c03ad630ad8414e8ab0c958c11c2ae9f53d752adf0e47338093",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:6dcf1d36f4d49c03ad630ad8414e8ab0c958c11c2ae9f53d752adf0e47338093"
+        },
+        "raw_denominators": [
+          1
+        ],
+        "typed_states": [
+          "SUPPORTED"
+        ]
+      },
+      {
+        "fact_refs": [
+          {
+            "content_hash": "3ba695b097fc93fbd0fa63af52124946848653b19cc8bd3eb4645325629fc41a",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:3ba695b097fc93fbd0fa63af52124946848653b19cc8bd3eb4645325629fc41a"
+          }
+        ],
+        "measure_kinds": [
+          "GOVERNED_WEIGHTED"
+        ],
+        "query_ref": {
+          "content_hash": "8261b2a5d8915bf6fd338a435c0ebe6359d4bec0a8c0255dbcffd3045bb9f4da",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:8261b2a5d8915bf6fd338a435c0ebe6359d4bec0a8c0255dbcffd3045bb9f4da"
+        },
+        "raw_denominators": [
+          2
+        ],
+        "typed_states": [
+          "SUPPORTED"
+        ]
+      },
+      {
+        "fact_refs": [
+          {
+            "content_hash": "06c4fa3189afa13167991c1d0a8a1ba6be71b55dbd2f5d633f6fe49444ad33e0",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:06c4fa3189afa13167991c1d0a8a1ba6be71b55dbd2f5d633f6fe49444ad33e0"
+          }
+        ],
+        "measure_kinds": [
+          "RAW"
+        ],
+        "query_ref": {
+          "content_hash": "a6dbd278a644f5538ae017d6b497bf30684fcb0c07d4a8ac0cb19bff3b236e0a",
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:a6dbd278a644f5538ae017d6b497bf30684fcb0c07d4a8ac0cb19bff3b236e0a"
+        },
+        "raw_denominators": [
+          2
+        ],
+        "typed_states": [
+          "SUPPORTED"
+        ]
+      }
+    ],
+    "i05": {
+      "candidate_count": 1,
+      "covered_candidate_count": 1,
+      "discovery_authority_ref": {
+        "content_hash": "f47eb3d106a22b8ae1ad2760269cd1045fcc3ed73422d8ed083900e4ccfd8428",
+        "kind": "DiscoveryAuthority@1.0.0",
+        "object_id": "urn:rawlsing:pre553:DiscoveryAuthority:sha256:f47eb3d106a22b8ae1ad2760269cd1045fcc3ed73422d8ed083900e4ccfd8428"
+      },
+      "evaluated_frontier_ref": {
+        "content_hash": "c9da610003f7337b9b075302be3f545132eeecf21e0690523db9e9434bfecba3",
+        "kind": "PRE553_I05_EVALUATED_FRONTIER",
+        "object_id": "urn:rawlsing:pre553:i05:frontier:sha256:c9da610003f7337b9b075302be3f545132eeecf21e0690523db9e9434bfecba3"
+      },
+      "receipt_refs": [
+        {
+          "content_hash": "75d9ebde152ce4075fd1eee9c1cf2268836ea8897b4f3c68695cf2b3fa2912f5",
+          "kind": "DiscoveryResultReceipt@1.0.0",
+          "object_id": "urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:75d9ebde152ce4075fd1eee9c1cf2268836ea8897b4f3c68695cf2b3fa2912f5"
+        }
+      ],
+      "receipt_typed_states": [
+        "DISCOVERED_RESULT_SUPPORTED"
+      ],
+      "valid_empty": false
+    },
+    "projection_binding_identity": "0a5d0a8c63571786f62965250eeddfd5ecdf72b92752ca379735fae6c8806033",
+    "reconciliation": {
+      "bound_frontier_hash": "76bd0a91f8ab17a1c1c4ec08cc9c4dfbde973d3ccbd60386fa5bf01e8d326983",
+      "consumer_obligations": [
+        {
+          "consumer": "C1_ANALYTICAL_COMPOSITION",
+          "expected_work_key": "266ee4438e6f3032509ad6ca785603eb0dbff07842bbc001150a87da7ca3ac55",
+          "item": "B"
+        },
+        {
+          "consumer": "C1_ANALYTICAL_COMPOSITION",
+          "expected_work_key": "286aa0c86a91762532517f8443d7991856fd6fbbf0aaef8825d0b2fa687ddcc0",
+          "item": "B"
+        },
+        {
+          "consumer": "FIELD_FORGE_CONDITIONAL_SUPPORT",
+          "expected_work_key": "5d4f741612db86f965ba37463d29e7ec822bcaf7b993dd229c55e188ee33fcee",
+          "item": "B"
+        },
+        {
+          "consumer": "LEARNED_EMPIRICAL_ADJUDICATION",
+          "expected_work_key": "83987d772e3b14b00a50602aa201933cfb09f6f4f7c73437615f85198de07ce0",
+          "item": "B"
+        },
+        {
+          "consumer": "C1_ANALYTICAL_COMPOSITION",
+          "expected_work_key": "af15f1d34dc3bc4a7563f2d03c6454fbccf113c634138c0429c7d37060d258cc",
+          "item": "A"
+        },
+        {
+          "consumer": "C1_ANALYTICAL_COMPOSITION",
+          "expected_work_key": "b64006e8ba44fb91399b7f6e4bcf18f4afd704911c698e890a584fb0f474fd66",
+          "item": "B"
+        }
+      ],
+      "declared_frontier_hash": "76bd0a91f8ab17a1c1c4ec08cc9c4dfbde973d3ccbd60386fa5bf01e8d326983",
+      "expected_key_count": 6,
+      "extra": [],
+      "failure_codes": [],
+      "job_key_count": 6,
+      "ok": true,
+      "omitted": [],
+      "unsatisfied_consumers": [],
+      "visible_non_runnable": [
+        "163243d2c79d8b7157f73d05b150995396a38c92fe8d930ddcedd6917f00cc23",
+        "1e227dfebaa7eb5bf03f1df8a43944c7423cf51750a0eddfbbdd14f13e827850",
+        "2e8a14bb4c2abd1929afa9fd4390acb6dab8e7cbf9aebbb3eaed455a4042dce3",
+        "e2824d95635fac15dc871305f2869367e6c60ff56354ced18420fb145c21ae2f"
+      ],
+      "work_reconciled": true
+    },
+    "replay_receipt": {
+      "dependency_root": "db804020ef4d4577ff1eac590a0c9531fd812be3bded56aae36d5c69fdac6eaa",
+      "receipt_identity": "667dd0af39d91de16017158508d7a8c3fd217c7e2dda1b13bfc89ea9a743d13d"
+    },
+    "result_classes": {
+      "266ee4438e6f3032509ad6ca785603eb0dbff07842bbc001150a87da7ca3ac55": "MEASURED_POSITIVE",
+      "286aa0c86a91762532517f8443d7991856fd6fbbf0aaef8825d0b2fa687ddcc0": "MEASURED_POSITIVE",
+      "5d4f741612db86f965ba37463d29e7ec822bcaf7b993dd229c55e188ee33fcee": "MEASURED_POSITIVE",
+      "83987d772e3b14b00a50602aa201933cfb09f6f4f7c73437615f85198de07ce0": "MEASURED_POSITIVE",
+      "af15f1d34dc3bc4a7563f2d03c6454fbccf113c634138c0429c7d37060d258cc": "MEASURED_POSITIVE",
+      "b64006e8ba44fb91399b7f6e4bcf18f4afd704911c698e890a584fb0f474fd66": "MEASURED_POSITIVE"
+    },
+    "route_b_effects": {
+      "actor_v3_effect": false,
+      "causal_truth_effect": false,
+      "learned_empirical_adjudication_effect": false,
+      "learned_product_current_selection_effect": false,
+      "learned_product_publication_effect": false,
+      "structural_truth_effect": false
+    },
+    "runtime_catalog_identity": "e9e05ff00e85f80bb7c5f35b1b4bc70dbf643d3dd3e2b48a91cdebd0c03af6cd",
+    "scope": "SYNTHETIC-SOURCEFREE-A04"
+  },
+  "schema": "HQ280_PV3_A04_ACTUAL_SOURCEFREE_RUNS@1.0.0",
+  "scope": "SOURCE_FREE_DEVELOPMENT_ONLY",
+  "source_code_identity": [
+    {
+      "blob": "7d8b3902c3f8f257637b7c07ad9feb5e096d48e5",
+      "path": "rawlsing_next/pre553_original_workload_binder_candidate.py"
+    },
+    {
+      "blob": "6c06a5b013d3713af7d7ba9bf143c3ef7a6245a2",
+      "path": "rawlsing_next/tests/test_pre553_original_workload_binder_candidate.py"
+    }
+  ],
+  "summary": {
+    "case_count": 21,
+    "failures_observed_with_expected_code": 17,
+    "must_fail_cases": 17,
+    "must_pass_cases": 4
+  },
+  "terminal": "HQ280_PV3_A04_REAL_CURRENT_OWNER_BINDER_CANDIDATE_MEASURED__SOURCEFREE_ONLY__GITHUB_PUSHED"
+}

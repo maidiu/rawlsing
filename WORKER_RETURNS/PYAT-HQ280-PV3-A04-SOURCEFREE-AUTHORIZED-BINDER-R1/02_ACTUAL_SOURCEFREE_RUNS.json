@@ -1,0 +1,277 @@
+{
+  "authorizing": false,
+  "commands": {
+    "a04_only": "python3 -m pytest rawlsing_next/tests/test_pre553_original_workload_binder_candidate.py -q",
+    "a04_only_result": "41 passed",
+    "repro": "PYTHONPATH=. python3 repro/a04_sourcefree_binder_repro.py",
+    "targeted_result": "118 passed",
+    "targeted_tests": "python3 -m pytest rawlsing_next/tests/test_pre553_original_workload_binder_candidate.py rawlsing_next/tests/test_pre553_route_b_production.py rawlsing_next/tests/test_pre553_batch_runner.py rawlsing_next/tests/test_pre553_discovery_exact.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_carrier_execution.py -q"
+  },
+  "declared_expected_work_preimage": [
+    {
+      "documentary_item_key": "39e3e295f4e83c11aa6cbde231a376d471567c9db0b620429ff7741ba2b888b8",
+      "expected_work_key": "af15f1d34dc3bc4a7563f2d03c6454fbccf113c634138c0429c7d37060d258cc",
+      "hold_reason": null,
+      "item": "A",
+      "measure_kind": "RAW",
+      "op_class": "I03_UNARY_OR_JOINT_QUERY",
+      "operation_key": "aa5b9da91c8088800e529fd9176b9ff98db2c7ef118f772a2b7b6cb8b3fe0850",
+      "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+      "state": "RUNNABLE",
+      "target": "X"
+    },
+    {
+      "documentary_item_key": "542c5cfa0d7bac87982c080ef69f4761ef8bfafceb03b23b9cb5495019b94410",
+      "expected_work_key": "b64006e8ba44fb91399b7f6e4bcf18f4afd704911c698e890a584fb0f474fd66",
+      "hold_reason": null,
+      "item": "B",
+      "measure_kind": "RAW",
+      "op_class": "I03_UNARY_OR_JOINT_QUERY",
+      "operation_key": "54895a21bfc28f8fd1e4ca1caa4ef3f7057a41c69d3647b7e0c107acfc443fb1",
+      "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+      "state": "RUNNABLE",
+      "target": "Y"
+    },
+    {
+      "documentary_item_key": "542c5cfa0d7bac87982c080ef69f4761ef8bfafceb03b23b9cb5495019b94410",
+      "expected_work_key": "266ee4438e6f3032509ad6ca785603eb0dbff07842bbc001150a87da7ca3ac55",
+      "hold_reason": null,
+      "item": "B",
+      "measure_kind": "GOVERNED_WEIGHTED",
+      "op_class": "I03_UNARY_OR_JOINT_QUERY",
+      "operation_key": "5b45770afb58800e36f40100938947495515ae60591bc78ea6040e97f3ff38ca",
+      "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+      "state": "RUNNABLE",
+      "target": "Y"
+    },
+    {
+      "documentary_item_key": "542c5cfa0d7bac87982c080ef69f4761ef8bfafceb03b23b9cb5495019b94410",
+      "expected_work_key": "286aa0c86a91762532517f8443d7991856fd6fbbf0aaef8825d0b2fa687ddcc0",
+      "hold_reason": null,
+      "item": "B",
+      "measure_kind": "RAW",
+      "op_class": "I03_UNARY_OR_JOINT_QUERY",
+      "operation_key": "958f53a4c80d7f81beca7ff646dbbb3a60f803b4b31a916d92f02d177c204270",
+      "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+      "state": "RUNNABLE",
+      "target": "Y"
+    },
+    {
+      "documentary_item_key": "4cd91e975663cddcdd5f33a418ee2c918fca9240d8416fdf208287a4e48cb9da",
+      "expected_work_key": "5d4f741612db86f965ba37463d29e7ec822bcaf7b993dd229c55e188ee33fcee",
+      "hold_reason": null,
+      "item": "B",
+      "measure_kind": "RAW",
+      "op_class": "I03_UNARY_OR_JOINT_QUERY",
+      "operation_key": "22870a57eef30a2ad2e34609c07d21b6c5ec17c3d205f196a06da55efb66d1c9",
+      "required_consumer": "FIELD_FORGE_CONDITIONAL_SUPPORT",
+      "state": "RUNNABLE",
+      "target": "J2"
+    },
+    {
+      "documentary_item_key": "4cd91e975663cddcdd5f33a418ee2c918fca9240d8416fdf208287a4e48cb9da",
+      "expected_work_key": "83987d772e3b14b00a50602aa201933cfb09f6f4f7c73437615f85198de07ce0",
+      "hold_reason": null,
+      "item": "B",
+      "measure_kind": "RAW",
+      "op_class": "I05_BOUNDED_DISCOVERY",
+      "operation_key": "465293e0cc2425603d29e4a15f45b624807c4e3d5df5a2fe76196edfc2003a0f",
+      "required_consumer": "LEARNED_EMPIRICAL_ADJUDICATION",
+      "state": "RUNNABLE",
+      "target": "D1"
+    },
+    {
+      "documentary_item_key": "e1b117114536e9c588f74f0cd9a52eebeac948385e4e27e591238e948be69377",
+      "expected_work_key": "2e8a14bb4c2abd1929afa9fd4390acb6dab8e7cbf9aebbb3eaed455a4042dce3",
+      "hold_reason": "ORDERED_SEQUENCE_COLLAPSE_NOT_YET_AUTHORIZED",
+      "item": "O",
+      "measure_kind": "RAW",
+      "op_class": "I03_UNARY_OR_JOINT_QUERY",
+      "operation_key": "7d2f165a4f65ea8211b89cb41fcb5595df614403538d58318045774c4f73ef59",
+      "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+      "state": "HELD",
+      "target": "O"
+    },
+    {
+      "documentary_item_key": "9d1f08e73b3ad3d7f1a80c628f38cfe4e31b1e8211ac28af4943b2054ffd8f1b",
+      "expected_work_key": "163243d2c79d8b7157f73d05b150995396a38c92fe8d930ddcedd6917f00cc23",
+      "hold_reason": "REPEATED_EVENT_JOIN_NOT_YET_AUTHORIZED",
+      "item": "R",
+      "measure_kind": "RAW",
+      "op_class": "I03_UNARY_OR_JOINT_QUERY",
+      "operation_key": "1161fe8c5afb4248ea61ed5e5e13d9771489d2feec0902b08fe67287527e6afa",
+      "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+      "state": "HELD",
+      "target": "R"
+    },
+    {
+      "documentary_item_key": "c897c3b449a2cd05f318d4554dbfa8cb2b5b0d9c502f1830666084aa75483714",
+      "expected_work_key": "e2824d95635fac15dc871305f2869367e6c60ff56354ced18420fb145c21ae2f",
+      "hold_reason": "EXPLICIT_FAIL_CLOSED_SOURCE_GAP",
+      "item": "V",
+      "measure_kind": "RAW",
+      "op_class": "I03_UNARY_OR_JOINT_QUERY",
+      "operation_key": "da9c70b36760893a0b20fc0445d96210d11d4159df5f78654556604a1e67e048",
+      "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+      "state": "DENIED",
+      "target": "V"
+    },
+    {
+      "documentary_item_key": "f1d0d00acce789e6ffe883b9e4580059befd32169ee955f61b0e496b94efd296",
+      "expected_work_key": "1e227dfebaa7eb5bf03f1df8a43944c7423cf51750a0eddfbbdd14f13e827850",
+      "hold_reason": "NO_COADMINISTERED_TARGET_IN_THIS_SLICE",
+      "item": "U",
+      "measure_kind": "RAW",
+      "op_class": "I03_UNARY_OR_JOINT_QUERY",
+      "operation_key": "ed22a6d17002e5b948260d2c5ed4c9dc69f79fc94dff6fedc40b1848bdc03eb1",
+      "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+      "state": "SOURCE_NONAPPLICABLE",
+      "target": "U"
+    }
+  ],
+  "full_suite_status": "INCONCLUSIVE__BASELINE_NOT_DEMONSTRABLY_COMPARABLE__NOT_CLAIMED_PREEXISTING",
+  "held_frontier_visible": [
+    {
+      "documentary_item_key": "9d1f08e73b3ad3d7f1a80c628f38cfe4e31b1e8211ac28af4943b2054ffd8f1b",
+      "expected_work_key": "163243d2c79d8b7157f73d05b150995396a38c92fe8d930ddcedd6917f00cc23",
+      "item": "R",
+      "operation_key": "1161fe8c5afb4248ea61ed5e5e13d9771489d2feec0902b08fe67287527e6afa",
+      "reason": "REPEATED_EVENT_JOIN_NOT_YET_AUTHORIZED",
+      "runnable": false,
+      "state": "HELD"
+    },
+    {
+      "documentary_item_key": "f1d0d00acce789e6ffe883b9e4580059befd32169ee955f61b0e496b94efd296",
+      "expected_work_key": "1e227dfebaa7eb5bf03f1df8a43944c7423cf51750a0eddfbbdd14f13e827850",
+      "item": "U",
+      "operation_key": "ed22a6d17002e5b948260d2c5ed4c9dc69f79fc94dff6fedc40b1848bdc03eb1",
+      "reason": "NO_COADMINISTERED_TARGET_IN_THIS_SLICE",
+      "runnable": false,
+      "state": "SOURCE_NONAPPLICABLE"
+    },
+    {
+      "documentary_item_key": "e1b117114536e9c588f74f0cd9a52eebeac948385e4e27e591238e948be69377",
+      "expected_work_key": "2e8a14bb4c2abd1929afa9fd4390acb6dab8e7cbf9aebbb3eaed455a4042dce3",
+      "item": "O",
+      "operation_key": "7d2f165a4f65ea8211b89cb41fcb5595df614403538d58318045774c4f73ef59",
+      "reason": "ORDERED_SEQUENCE_COLLAPSE_NOT_YET_AUTHORIZED",
+      "runnable": false,
+      "state": "HELD"
+    },
+    {
+      "documentary_item_key": "c897c3b449a2cd05f318d4554dbfa8cb2b5b0d9c502f1830666084aa75483714",
+      "expected_work_key": "e2824d95635fac15dc871305f2869367e6c60ff56354ced18420fb145c21ae2f",
+      "item": "V",
+      "operation_key": "da9c70b36760893a0b20fc0445d96210d11d4159df5f78654556604a1e67e048",
+      "reason": "EXPLICIT_FAIL_CLOSED_SOURCE_GAP",
+      "runnable": false,
+      "state": "DENIED"
+    }
+  ],
+  "measured_data_file": "repro/a04_sourcefree_runs.json",
+  "measured_data_sha256": "87510f9a5fd2b8a6c98f1c8d8b83abdc0f495268a04ee250b8dc4ef0d377c955",
+  "positive_run_summary": {
+    "batch_manifest_hash": "db9e029e36489d390e07ab36eba43dd3f92d04b6be59c642230118263b7622f3",
+    "batch_summary": {
+      "actual_execution_receipts": 6,
+      "batch_state": "COMPLETED",
+      "completed_units": 6,
+      "coverage_state": "FULL_MANIFEST_COVERAGE",
+      "deferred_units": 0,
+      "failed_units": 0,
+      "full_coverage": true,
+      "pending_units": 0,
+      "receipt_set_hash": "f62a5ab5e58b6acfbf4f5017c73794cd599832d395d49e97c7d747a9cebb05d6",
+      "total_units": 6
+    },
+    "binder_effects_all_false": true,
+    "c11_release_ref_hash": "95de34f09fa9ae4aac6c6a3c73ea7ff9dff5ef18189bac940805f30126fce88c",
+    "expected_frontier_hash": "76bd0a91f8ab17a1c1c4ec08cc9c4dfbde973d3ccbd60386fa5bf01e8d326983",
+    "i03_fact_typed_states": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "i03_measure_kinds": [
+      "RAW",
+      "RAW",
+      "RAW",
+      "GOVERNED_WEIGHTED",
+      "RAW"
+    ],
+    "i03_raw_denominators": [
+      3,
+      2,
+      1,
+      2,
+      2
+    ],
+    "i03_request_count": 5,
+    "i03_result_count": 5,
+    "i05_candidate_count": 1,
+    "i05_covered_candidate_count": 1,
+    "i05_receipt_typed_states": [
+      "DISCOVERED_RESULT_SUPPORTED"
+    ],
+    "projection_binding_identity": "0a5d0a8c63571786f62965250eeddfd5ecdf72b92752ca379735fae6c8806033",
+    "reconciliation": {
+      "bound_frontier_hash": "76bd0a91f8ab17a1c1c4ec08cc9c4dfbde973d3ccbd60386fa5bf01e8d326983",
+      "consumer_obligations": [
+        {
+          "consumer": "C1_ANALYTICAL_COMPOSITION",
+          "expected_work_key": "266ee4438e6f3032509ad6ca785603eb0dbff07842bbc001150a87da7ca3ac55",
+          "item": "B"
+        },
+        {
+          "consumer": "C1_ANALYTICAL_COMPOSITION",
+          "expected_work_key": "286aa0c86a91762532517f8443d7991856fd6fbbf0aaef8825d0b2fa687ddcc0",
+          "item": "B"
+        },
+        {
+          "consumer": "FIELD_FORGE_CONDITIONAL_SUPPORT",
+          "expected_work_key": "5d4f741612db86f965ba37463d29e7ec822bcaf7b993dd229c55e188ee33fcee",
+          "item": "B"
+        },
+        {
+          "consumer": "LEARNED_EMPIRICAL_ADJUDICATION",
+          "expected_work_key": "83987d772e3b14b00a50602aa201933cfb09f6f4f7c73437615f85198de07ce0",
+          "item": "B"
+        },
+        {
+          "consumer": "C1_ANALYTICAL_COMPOSITION",
+          "expected_work_key": "af15f1d34dc3bc4a7563f2d03c6454fbccf113c634138c0429c7d37060d258cc",
+          "item": "A"
+        },
+        {
+          "consumer": "C1_ANALYTICAL_COMPOSITION",
+          "expected_work_key": "b64006e8ba44fb91399b7f6e4bcf18f4afd704911c698e890a584fb0f474fd66",
+          "item": "B"
+        }
+      ],
+      "declared_frontier_hash": "76bd0a91f8ab17a1c1c4ec08cc9c4dfbde973d3ccbd60386fa5bf01e8d326983",
+      "expected_key_count": 6,
+      "extra": [],
+      "failure_codes": [],
+      "job_key_count": 6,
+      "ok": true,
+      "omitted": [],
+      "unsatisfied_consumers": [],
+      "visible_non_runnable": [
+        "163243d2c79d8b7157f73d05b150995396a38c92fe8d930ddcedd6917f00cc23",
+        "1e227dfebaa7eb5bf03f1df8a43944c7423cf51750a0eddfbbdd14f13e827850",
+        "2e8a14bb4c2abd1929afa9fd4390acb6dab8e7cbf9aebbb3eaed455a4042dce3",
+        "e2824d95635fac15dc871305f2869367e6c60ff56354ced18420fb145c21ae2f"
+      ],
+      "work_reconciled": true
+    },
+    "route_b_dependency_root": "db804020ef4d4577ff1eac590a0c9531fd812be3bded56aae36d5c69fdac6eaa",
+    "route_b_effects_all_false": true,
+    "route_b_receipt_identity": "667dd0af39d91de16017158508d7a8c3fd217c7e2dda1b13bfc89ea9a743d13d",
+    "runtime_catalog_identity": "e9e05ff00e85f80bb7c5f35b1b4bc70dbf643d3dd3e2b48a91cdebd0c03af6cd"
+  },
+  "schema": "HQ280_PV3_A04_ACTUAL_SOURCEFREE_RUNS_INDEX@1.0.0",
+  "scope": "SOURCE_FREE_DEVELOPMENT_ONLY",
+  "terminal": "HQ280_PV3_A04_REAL_CURRENT_OWNER_BINDER_CANDIDATE_MEASURED__SOURCEFREE_ONLY__GITHUB_PUSHED"
+}
