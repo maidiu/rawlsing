@@ -1,0 +1,77 @@
+{
+  "schema": "PYAT_HQ280_PV3_R01_HOSTILE_VALIDATION@1",
+  "cut": "f952758267764a8f5406569efc0ed1b306995806",
+  "execution": "DETERMINISTIC_JS_OBJECT_VALIDATORS_EXECUTED_IN_GITHUB_WORKER_SESSION__NO_RAW_DATA_OR_PYTHON_TESTS",
+  "counts": {
+    "legacy": 151,
+    "typed": 101,
+    "links": 191,
+    "split": 37,
+    "merge": 63,
+    "sources": 35,
+    "cells": 1890,
+    "temporal": 63,
+    "cross_family": 36
+  },
+  "checks": {
+    "151 legacy rows": "PASS",
+    "101 normalized rows": "PASS",
+    "legacy identity uniqueness and no drop": "PASS",
+    "all normalized identities reached": "PASS",
+    "no invented normalized ID": "PASS",
+    "genuine splits and merges": "PASS",
+    "exact 35x54": "PASS",
+    "1890 unique cells": "PASS",
+    "no omitted/extra original matrix cells": "PASS",
+    "global relation graph preserved separately": "PASS",
+    "no unproven cell green": "PASS",
+    "no fabricated per-task product/consumer": "PASS",
+    "F8 service single global object": "PASS",
+    "8-dimensional coverage": "PASS"
+  },
+  "hostile_fixtures": [
+    {
+      "id": "MISSING_LEGACY_G001",
+      "mutation": "drop first legacy row",
+      "expected": "DETECTED_BY_COUNT_AND_SET",
+      "run_grade": "DESIGN_GUARD_DOCUMENTED__NOT_AN_EXECUTED_RUNTIME_NEGATIVE_UNLESS_REPRO_ASSERTED"
+    },
+    {
+      "id": "ONE_TO_MANY_SPLIT_LOST",
+      "mutation": "replace G001 mapping with G01 alone",
+      "expected": "DETECTED_BY_EXPECTED_LINK_MANIFEST_COMPARISON_NOT_COUNTS_ALONE",
+      "run_grade": "DESIGN_GUARD_DOCUMENTED__NOT_AN_EXECUTED_RUNTIME_NEGATIVE_UNLESS_REPRO_ASSERTED"
+    },
+    {
+      "id": "SRC35_DROPPED",
+      "mutation": "remove SRC35 wave",
+      "expected": "DETECTED_BY_SOURCE_AND_KEY_UNIVERSE",
+      "run_grade": "DESIGN_GUARD_DOCUMENTED__NOT_AN_EXECUTED_RUNTIME_NEGATIVE_UNLESS_REPRO_ASSERTED"
+    },
+    {
+      "id": "DUPLICATE_GLOBAL_F8",
+      "mutation": "treat 35 F8 contribution cells as 35 selected global service passes",
+      "expected": "REJECTED_BY_GRAIN_AND_SERVICE_UNIQUENESS",
+      "run_grade": "DESIGN_GUARD_DOCUMENTED__NOT_AN_EXECUTED_RUNTIME_NEGATIVE_UNLESS_REPRO_ASSERTED"
+    },
+    {
+      "id": "STAGED_REPORT_MISADOPTED",
+      "mutation": "upgrade nonissuing F8F to real selected service",
+      "expected": "REJECTED_BY_SCOPED_RECEIPT_GRADE",
+      "run_grade": "DESIGN_GUARD_DOCUMENTED__NOT_AN_EXECUTED_RUNTIME_NEGATIVE_UNLESS_REPRO_ASSERTED"
+    },
+    {
+      "id": "UNAVAILABLE_AS_ZERO",
+      "mutation": "turn WVQ's 58 UNAVAILABLE facts and 58 zero raw denominator placeholders into 58 observed-zero results",
+      "expected": "REJECTED_BY_ORACLE_TRUTH_TYPE",
+      "run_grade": "DESIGN_GUARD_DOCUMENTED__NOT_AN_EXECUTED_RUNTIME_NEGATIVE_UNLESS_REPRO_ASSERTED"
+    },
+    {
+      "id": "SOURCE_FREE_C1_AS_SELECTED",
+      "mutation": "interpret F8F source-free XOR fixture as genuine selected G0b",
+      "expected": "REJECTED_BY_SCOPE_AND_G0B_ISSUER_ABSENCE",
+      "run_grade": "DESIGN_GUARD_DOCUMENTED__NOT_AN_EXECUTED_RUNTIME_NEGATIVE_UNLESS_REPRO_ASSERTED"
+    }
+  ],
+  "outcome": "PASS_STRUCTURAL_CENSUS__HOLD_PER_ITEM_SCIENCE_AND_AUTHORITY"
+}
