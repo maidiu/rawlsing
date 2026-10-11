@@ -1,0 +1,161 @@
+{
+  "schema": "HQ280_WVQ_WVS7_Q291_ORIGINAL_INSTRUMENT_EVIDENCE_MANIFEST@1",
+  "control": "HQD-2026-10-10-280",
+  "sealed_startup": "71b90179b784f11ff39d983c87d0678b27487b23",
+  "inherited_wvf_tip": "b3c460c6ba2d1f750905f5ef95429065d7904ff5",
+  "method": "Github repo documentary + WVSA master/codebook externally reproduced text; no SAV or I05",
+  "primary_source_documentation": [
+    {
+      "title": "WVS Wave 7 2017-2021 Master Questionnaire, F00010738",
+      "url": "https://www.scribd.com/document/477319701/F00010738-WVS-7-Master-Questionnaire-2017-2020-English-pdf",
+      "location": "Regional and thematic module Q291, master pages 23-24",
+      "custody": "WVSA-authored text via Scribd (3rd-party reproduction)",
+      "verified_contents": [
+        "Q291 introduction",
+        "P1-P6",
+        "G1-G6",
+        "UN1-UN6",
+        "1..5 response codes",
+        "-3 generic filter",
+        "pilot country note"
+      ],
+      "official_binary_sha256": null
+    },
+    {
+      "title": "WVSA WVS Wave 7 2017-2020 Variables Report",
+      "url": "https://www.statsclass.org/dsci310/Tasks/WorldValuesData_Codebook.pdf",
+      "location": "PDF page indices 100-104 Q291P/G/UN (printed 101–105)",
+      "custody": "WVSA-authored PDF copy hosted externally; PDF text direct indexed; screenshot requests cache-miss",
+      "verified_contents": [
+        "Q291 18 children",
+        "1..5 codes",
+        "-1 DK",
+        "-2 no answer",
+        "-4 not asked",
+        "-5 missing/unavailable",
+        "selected-country political trust pilot"
+      ],
+      "official_binary_sha256": null
+    },
+    {
+      "title": "WVSA Wave7 archive",
+      "url": "https://www.worldvaluessurvey.org/WVSDocumentationWV7.jsp",
+      "custody": "official archive navigation",
+      "verified_contents": [
+        "wave-specific documentation gateway"
+      ]
+    },
+    {
+      "title": "WVSA WVS/EVS 2017 official release table",
+      "url": "https://www.worldvaluessurvey.org/WVSEVSjoint2017.jsp",
+      "custody": "official WVSA site",
+      "verified_contents": [
+        "Wave 7 v6 2024-05-01",
+        "97,220 cases",
+        "606 reported variables"
+      ],
+      "limit": "cannot identify retained 613-variable SAV version with this published table"
+    },
+    {
+      "title": "WVSA weighting explanation",
+      "url": "https://www.worldvaluessurvey.org/WVSContents.jsp?CMSID=WEIGHT",
+      "custody": "official guidance general weighted analyses",
+      "limit": "S017 naming not automatically valid for 613-field retained WVS7 release"
+    },
+    {
+      "title": "WVSA Wave 7 Questionnaire development",
+      "url": "https://www.worldvaluessurvey.org/WVSContents.jsp?CMSID=QuestDevelopment",
+      "custody": "official master instrument history",
+      "verified_contents": [
+        "executive/scientific committee finalized 2016"
+      ]
+    }
+  ],
+  "git_evidence": [
+    {
+      "path": "WORKER_COMMISSIONS/PYAT-HQ280-WVQ-WVS7-Q291-ORIGINAL-INSTRUMENT-AUTHORITY-R1/00_COMMISSION.md",
+      "sha": "03f00a183f391458ee51d702857792d53a182f8a",
+      "ref": "71b90179b784f11ff39d983c87d0678b27487b23"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ280-WVF-WVS7-Q291-ORIGINAL-OPERATION-BINDING-R1/00_RETURN.md",
+      "sha": "c1b77abbc9753447fb9404d26d1fda8052de4f1b",
+      "ref": "b3c460c6ba2d1f750905f5ef95429065d7904ff5"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ280-WVF-WVS7-Q291-ORIGINAL-OPERATION-BINDING-R1/01_ORIGINAL_SOURCE_ITEM_AND_COMPETENT_AUTHORITY.json",
+      "sha": "1a2c05c631dce490769a2a022d900463d68afa04",
+      "ref": "b3c460c6ba2d1f750905f5ef95429065d7904ff5"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ280-WVF-WVS7-Q291-ORIGINAL-OPERATION-BINDING-R1/03_INDEPENDENT_EXPECTED_VS_46_ACTUAL.json",
+      "sha": "38310b626e65a6629345821372ab439422657f95",
+      "ref": "b3c460c6ba2d1f750905f5ef95429065d7904ff5"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ280-WVF-WVS7-Q291-ORIGINAL-OPERATION-BINDING-R1/05_GENERALIZABLE_BINDING_SCHEMA_AND_EXACT_HOLDS.md",
+      "sha": "18363249fe2c55672f3026a9dbb0df196d009f64",
+      "ref": "b3c460c6ba2d1f750905f5ef95429065d7904ff5"
+    },
+    {
+      "path": "WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/03_46_CANDIDATE_REPLAY_CONSERVATION.json",
+      "sha": "45950a5fe1be8c10be2a6f90562b87e09b1dcc08",
+      "ref": "71b90179b784f11ff39d983c87d0678b27487b23"
+    },
+    {
+      "path": "WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/06_R16_EXECUTION_RECEIPT.json",
+      "sha": "7a972f19ea5099a54c59acdcd73ebb027346446c",
+      "ref": "71b90179b784f11ff39d983c87d0678b27487b23"
+    },
+    {
+      "path": "WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/07_FRESH_WVS_ORACLE.json",
+      "sha": "9eecf801afa2c9f3d9140b4e5fb79fb14fc1fe20",
+      "ref": "71b90179b784f11ff39d983c87d0678b27487b23"
+    },
+    {
+      "path": "WORKER_RETURNS/PREMAIN-FIABC-LITS-INDEPENDENT-ACCEPTANCE-T3-FREEZE-R1/court/oracles/WVS7.standard.json",
+      "sha": "60146f39598b7dae2e87cf30a1e88954db404022",
+      "ref": "71b90179b784f11ff39d983c87d0678b27487b23"
+    }
+  ],
+  "independent_readback_numbers": {
+    "T3_manifest_count": 46,
+    "T3_typed_COVERAGE_LIMITED": 46,
+    "T3_underlying_query_role_fact_states_UNAVAILABLE": 58,
+    "T3_underlying_raw_denominator_entries_all_zero": 58,
+    "Q291_literal_occurrences_T3": 0,
+    "Q291_literal_occurrences_R1M": 0,
+    "pre_I05_candidate_count": 46,
+    "frontier_no_drop": 46
+  },
+  "unresolved": [
+    "retained 613-field source official release/version matching original questionnaire/codebook",
+    "country-year/form translated Q291 pilot routes and source dataset field presence",
+    "exact two R1M/I05 source question identities and original Q291 children if any",
+    "same-person asked/eligible risk and actual sample/weight/PSU/strata",
+    "competent source-use+operation-use issuance"
+  ],
+  "nonexecutions": [
+    "raw WVS7 SAV",
+    "raw source file census",
+    "original source questionnaire administration",
+    "I03/I05 runtime",
+    "country-specific complete coverage test"
+  ],
+  "mutations": {
+    "production_code": 0,
+    "canonical": 0,
+    "semantic_authority": 0,
+    "previous_WVF_files": 0
+  },
+  "append_only_WVF_correction": "05_WVF_T3_COUNT_CORRIGENDUM.md",
+  "expected_files": [
+    "00_RETURN.md",
+    "01_PRIMARY_ORIGINAL_ITEM_AND_VERSION_PROOF.json",
+    "02_RESPONSE_ROUTING_RESPONDENT_WEIGHT_DESIGN.md",
+    "03_COMPETENT_SOURCE_ISSUER_AND_OPERATION_SCOPE.md",
+    "04_Q291_TO_46_EXPECTED_FRONTIER_BINDING_OR_HOLD.json",
+    "05_WVF_T3_COUNT_CORRIGENDUM.md",
+    "06_EVIDENCE_MANIFEST.json"
+  ]
+}
