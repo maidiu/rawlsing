@@ -1,0 +1,24 @@
+# PYAT HQ280 F8F — Independent hostile exact runtime review of F8E repaired source-free C1→M2/B5 R1
+
+**Agent:** Independent local Python/pytest hostile code reviewer. Actual runtime REQUIRED; report model/host/git checkout. **No self-adoption**.
+**Controlling law:** HQD-2026-10-10-280; PRE-MAIN `1f47063c3205a45888b3c55e81e7485943ed1390`; canonical at commission `6a8c91d99dca1ae2fd3559ba3c11ee26649e3cd9`. Read HQ staged triple intake `PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/HQ280_F8E_E2BI_WVF_TRIPLE_RETURN_ADJUDICATION_R1.md` via `agent/vozhd-pyat-hq280-three-return-adjudication-r1 @ 53397edab63e56524ff62c6c6e92e35125874bfd`; document is HQ staging, not operational grant.
+**Reviewer branch:** `agent/reviewer-pyat-hq280-f8f-c1-m2-b5-independent-hostile-r1`. **Exact sealed startup tip:** supplied after this commission is committed; inspect it and candidate/commission blobs.
+**F8E candidate seed:** `agent/rabochii-pyat-hq280-f8e-c1-m2-b5-closure-repair-r1 @ 2a4a90ec76d3400f98ba6fd3fd306f6ff977d042`. This reviewer branch inherits the **actual repaired source/test bytes**. Candidate module `rawlsing_next/pre553_c1_immutable_release_binding.py` blob `36563ddee5b6c1fe44940712ec85ba7a3156fb5d`; test blob `1e972bf9199278c715deedce6a52dd2be1b3ec55`. Worker-reported **23/23 candidate tests + 123/123 adjacent regressions** from local pytest, NOT independently reproduced by HQ; full pytest logs only recorded by SHA.
+**Historical hostile inputs:** F8D-R `agent/reviewer-pyat-hq280-f8dr-c1-m2-b5-runtime-hostile-r1 @ 8e3a69ff4b3412e4c68b9553e017baa31413ae24`; F8E return under `WORKER_RETURNS/PYAT-HQ280-F8E-C1-M2-B5-CLOSURE-REPAIR-R1/`.
+
+## Mission
+
+1. At an actual exact local Git worktree, verify HEAD, file blobs, Python/pytest version, installed owners. **Independently rerun the F8E 23-test suite** and adjacent narrow C1/C1-03R/M2/B5 owner regressions. Capture actual command, per-case exit, stdout hash, root Git diff. If no checkout, STOP `RUNTIME_UNAVAILABLE`; do not repeat F8D-R's simulated pytest exit 4 as hostile work.
+2. Hostile-review five repairs **against real accepted owners**: recomputed C1 q1 from different predicate same denominator; recomputed q2 wrong C numerator; altered risk-set member list with all proper hashes; model/walkback authority revocation and altered authority snapshot; 31 determinant vs dependency graph affected-set counterfactual. Independently validate those frozen q1/q2 pinned source/witness/hash preconditions against actual G1 accepted fixture values, rather than trusting F8E's own constants. Distinguish actual owner-level rejection from static comparison.
+3. Inspect source-free fixture-pinned numerator `(1,1)` and `(0,1)` and pinned predicates. Determine whether these are genuinely restricted to source-free four-XOR scope; reject accidental generic C1 binding or scientifically issued model-use claims.
+4. Challenge B5 caller-supplied opaque lifecycle stage/register/publish trust boundary: try an uncredentialed/mutated subject with spoofed replay state, old source release, fake closure refs or production permission. Record actual refusal or exact existing gap. Do NOT infer source or operative authorization from a technical PASS.
+5. Verify model/walkback AUTHORITY closure AND affected dependency propagation across both authorities; C1-03R edges should cover every determinant **without unsupported edges** or irrelevant authority reclassification. Test subset mutation and order invariance.
+6. Confirm native unsupported/VALID_EMPTY C1 cannot mint an M2 product, q1/q2 denominator/risk/witness and source-C11 selection remain aligned, I4 M1-only, historic replay cannot become CURRENT or G1 selected serving.
+7. Return exact **technical** grade: development-candidate ready for staged HQ technical adoption vs specific defect/hold; separately name still-missing competent producer issuer, G0b, selected-world, V3 and source scientific grants.
+
+## Mandatory GitHub-first return
+
+Write new report/test-only files under `WORKER_RETURNS/PYAT-HQ280-F8F-C1-M2-B5-INDEPENDENT-HOSTILE-R1/`: `00_RETURN.md`, `01_EXACT_CODE_AND_FIXTURE_PINS.md`, `02_ACTUAL_PYTEST_REPLAY.json`, `03_ACTUALLY_INJECTED_OWNER_HOSTILES.json`, `04_B5_TRUST_AND_NONISSUANCE_HOLDS.md`, `05_EVIDENCE_MANIFEST.json`, optional short `repro/`. **DO NOT edit repaired candidate source or tests**; return patch suggestion and exact failure evidence if a defect exists. No adopted owner, canonical, raw source, issuer, PRE-MAIN or root manifest mutation.
+**Commit and PUSH actual files to this assigned reviewer branch; verify remote HEAD and changed-file list; return exact tip and grade.** No routine ZIP. If push unavailable, report exact error and NOT_PUSHED.
+
+**Terminal:** `HQ280_F8F_INDEPENDENT_C1_M2_B5_HOSTILE_RUNTIME_RETURNED__NONISSUING__GITHUB_PUSHED`.
