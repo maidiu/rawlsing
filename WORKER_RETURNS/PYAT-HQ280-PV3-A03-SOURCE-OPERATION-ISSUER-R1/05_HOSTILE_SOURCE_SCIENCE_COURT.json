@@ -1,0 +1,188 @@
+{
+  "schema": "PYAT_HQ280_PV3_A03_HOSTILE_SOURCE_SCIENCE_COURT@1",
+  "scope": "PROPOSED_GHA_Q86A_RAW_UNARY_ORIGINAL_SCIENCE_FRONTIER__NO_RUN",
+  "positive_documentary_baseline": "DOC_CANDIDATE_SCIENCE_ELIGIBLE__ISSUER_HELD_NOT_RUNNABLE",
+  "not_operative_issuer": true,
+  "runtime_executed": false,
+  "survey_data_read": false,
+  "actually_executed_static_documentary_court": [
+    {
+      "id": "H01_OTHER_COUNTRY_FORM",
+      "input": {
+        "country": "ALG"
+      },
+      "expected": "COUNTRY_Q86A_NOT_FIELDED_ORIGINAL",
+      "observed": "COUNTRY_Q86A_NOT_FIELDED_ORIGINAL",
+      "result": "EXPECTED_STATIC_REFUSAL",
+      "test_class": "ACTUALLY_EXECUTED_JS_DOCUMENTARY_CONTRACT_COURT__NOT_OWNER_RUNTIME_OR_SOURCE_DATA"
+    },
+    {
+      "id": "H02_TWO_PERSON_SAME_HOUSEHOLD",
+      "input": {
+        "single_selected_respondent": false
+      },
+      "expected": "RESPONDENT_IDENTITY_MISMATCH",
+      "observed": "RESPONDENT_IDENTITY_MISMATCH",
+      "result": "EXPECTED_STATIC_REFUSAL",
+      "test_class": "ACTUALLY_EXECUTED_JS_DOCUMENTARY_CONTRACT_COURT__NOT_OWNER_RUNTIME_OR_SOURCE_DATA"
+    },
+    {
+      "id": "H03_DK9_AS_SUBSTANTIVE",
+      "input": {
+        "code": 9
+      },
+      "expected": "NON_SUBSTANTIVE_RESPONSE_STATE",
+      "observed": "NON_SUBSTANTIVE_RESPONSE_STATE",
+      "result": "EXPECTED_STATIC_REFUSAL",
+      "test_class": "ACTUALLY_EXECUTED_JS_DOCUMENTARY_CONTRACT_COURT__NOT_OWNER_RUNTIME_OR_SOURCE_DATA"
+    },
+    {
+      "id": "H04_REFUSAL998_AS_SUBSTANTIVE",
+      "input": {
+        "code": 998
+      },
+      "expected": "NON_SUBSTANTIVE_RESPONSE_STATE",
+      "observed": "NON_SUBSTANTIVE_RESPONSE_STATE",
+      "result": "EXPECTED_STATIC_REFUSAL",
+      "test_class": "ACTUALLY_EXECUTED_JS_DOCUMENTARY_CONTRACT_COURT__NOT_OWNER_RUNTIME_OR_SOURCE_DATA"
+    },
+    {
+      "id": "H05_NOT_ASKED997_AS_NO",
+      "input": {
+        "code": 997
+      },
+      "expected": "NON_SUBSTANTIVE_RESPONSE_STATE",
+      "observed": "NON_SUBSTANTIVE_RESPONSE_STATE",
+      "result": "EXPECTED_STATIC_REFUSAL",
+      "test_class": "ACTUALLY_EXECUTED_JS_DOCUMENTARY_CONTRACT_COURT__NOT_OWNER_RUNTIME_OR_SOURCE_DATA"
+    },
+    {
+      "id": "H06_MISSING_MINUS1_AS_ZERO",
+      "input": {
+        "code": -1
+      },
+      "expected": "NON_SUBSTANTIVE_RESPONSE_STATE",
+      "observed": "NON_SUBSTANTIVE_RESPONSE_STATE",
+      "result": "EXPECTED_STATIC_REFUSAL",
+      "test_class": "ACTUALLY_EXECUTED_JS_DOCUMENTARY_CONTRACT_COURT__NOT_OWNER_RUNTIME_OR_SOURCE_DATA"
+    },
+    {
+      "id": "H07_SPLIT_OR_FORM_EXCLUSION",
+      "input": {
+        "actual_exposure": false
+      },
+      "expected": "ELIGIBLE_ASKED_NOT_AUTHENTICATED",
+      "observed": "ELIGIBLE_ASKED_NOT_AUTHENTICATED",
+      "result": "EXPECTED_STATIC_REFUSAL",
+      "test_class": "ACTUALLY_EXECUTED_JS_DOCUMENTARY_CONTRACT_COURT__NOT_OWNER_RUNTIME_OR_SOURCE_DATA"
+    },
+    {
+      "id": "H08_WEIGHTED_AS_RAW",
+      "input": {
+        "measure_kind": "GOVERNED_WEIGHTED"
+      },
+      "expected": "WEIGHT_DESIGN_ISSUER_ABSENT",
+      "observed": "WEIGHT_DESIGN_ISSUER_ABSENT",
+      "result": "EXPECTED_STATIC_REFUSAL",
+      "test_class": "ACTUALLY_EXECUTED_JS_DOCUMENTARY_CONTRACT_COURT__NOT_OWNER_RUNTIME_OR_SOURCE_DATA"
+    },
+    {
+      "id": "H09_ALIEN_SOURCE_SHA",
+      "input": {
+        "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "expected": "SOURCE_RELEASE_IDENTITY_MISMATCH",
+      "observed": "SOURCE_RELEASE_IDENTITY_MISMATCH",
+      "result": "EXPECTED_STATIC_REFUSAL",
+      "test_class": "ACTUALLY_EXECUTED_JS_DOCUMENTARY_CONTRACT_COURT__NOT_OWNER_RUNTIME_OR_SOURCE_DATA"
+    },
+    {
+      "id": "H10_WRONG_ITEM_ID",
+      "input": {
+        "item": "Q86B"
+      },
+      "expected": "ORIGINAL_ITEM_IDENTITY_MISMATCH",
+      "observed": "ORIGINAL_ITEM_IDENTITY_MISMATCH",
+      "result": "EXPECTED_STATIC_REFUSAL",
+      "test_class": "ACTUALLY_EXECUTED_JS_DOCUMENTARY_CONTRACT_COURT__NOT_OWNER_RUNTIME_OR_SOURCE_DATA"
+    },
+    {
+      "id": "H11_NONEMPTY_CONDITION_ORDER",
+      "input": {
+        "condition_order": [
+          {
+            "item": "Q8A",
+            "eq": 3
+          }
+        ]
+      },
+      "expected": "UNISSUED_CONDITION_ORDER",
+      "observed": "UNISSUED_CONDITION_ORDER",
+      "result": "EXPECTED_STATIC_REFUSAL",
+      "test_class": "ACTUALLY_EXECUTED_JS_DOCUMENTARY_CONTRACT_COURT__NOT_OWNER_RUNTIME_OR_SOURCE_DATA"
+    },
+    {
+      "id": "H12_UNAUTHORIZED_COTRAVEL",
+      "input": {
+        "operation_kind": "PAIR_COTRAVEL"
+      },
+      "expected": "UNISSUED_OPERATION",
+      "observed": "UNISSUED_OPERATION",
+      "result": "EXPECTED_STATIC_REFUSAL",
+      "test_class": "ACTUALLY_EXECUTED_JS_DOCUMENTARY_CONTRACT_COURT__NOT_OWNER_RUNTIME_OR_SOURCE_DATA"
+    },
+    {
+      "id": "H13_OUTCOME_DERIVED_EXPECTATION",
+      "input": {
+        "expectation_source": "I03_EMPIRICAL_OUTCOME"
+      },
+      "expected": "INDEPENDENT_PREOUTCOME_ORACLE_VIOLATION",
+      "observed": "INDEPENDENT_PREOUTCOME_ORACLE_VIOLATION",
+      "result": "EXPECTED_STATIC_REFUSAL",
+      "test_class": "ACTUALLY_EXECUTED_JS_DOCUMENTARY_CONTRACT_COURT__NOT_OWNER_RUNTIME_OR_SOURCE_DATA"
+    },
+    {
+      "id": "H14_MEASURED_ZERO_FROM_NO_ISSUER",
+      "input": {
+        "claim_measured_zero": true
+      },
+      "expected": "ISSUER_ABSENCE_NOT_OBSERVED_ZERO",
+      "observed": "ISSUER_ABSENCE_NOT_OBSERVED_ZERO",
+      "result": "EXPECTED_STATIC_REFUSAL",
+      "test_class": "ACTUALLY_EXECUTED_JS_DOCUMENTARY_CONTRACT_COURT__NOT_OWNER_RUNTIME_OR_SOURCE_DATA"
+    },
+    {
+      "id": "H15_FAKE_GHANA_19210",
+      "input": {
+        "denominator": 19210
+      },
+      "expected": "INHERITED_OTHER_COUNTRY_RISK_FORBIDDEN",
+      "observed": "INHERITED_OTHER_COUNTRY_RISK_FORBIDDEN",
+      "result": "EXPECTED_STATIC_REFUSAL",
+      "test_class": "ACTUALLY_EXECUTED_JS_DOCUMENTARY_CONTRACT_COURT__NOT_OWNER_RUNTIME_OR_SOURCE_DATA"
+    },
+    {
+      "id": "H16_Q97_NINE_DISCARDED",
+      "input": {
+        "second_item": "Q97",
+        "code": 9
+      },
+      "expected": "Q97_9_SUBSTANTIVE_POSTGRADUATE_NOT_DK",
+      "observed": "Q97_9_SUBSTANTIVE_POSTGRADUATE_NOT_DK",
+      "result": "EXPECTED_STATIC_REFUSAL",
+      "test_class": "ACTUALLY_EXECUTED_JS_DOCUMENTARY_CONTRACT_COURT__NOT_OWNER_RUNTIME_OR_SOURCE_DATA"
+    },
+    {
+      "id": "H17_REVERSED_NUMERATOR",
+      "input": {
+        "target": "Q8A"
+      },
+      "expected": "TARGET_ROLE_REVERSAL_UNISSUED",
+      "observed": "TARGET_ROLE_REVERSAL_UNISSUED",
+      "result": "EXPECTED_STATIC_REFUSAL",
+      "test_class": "ACTUALLY_EXECUTED_JS_DOCUMENTARY_CONTRACT_COURT__NOT_OWNER_RUNTIME_OR_SOURCE_DATA"
+    }
+  ],
+  "grade": "PASS_DOCUMENTARY_STATIC_LOGIC_17_HOSTILES__NOT_EMPIRICAL_RUNTIME",
+  "negatives_not_claimed": "These probes verify proposed decision/identity constraints, not that C11/I03/B02 actually rejected physical data or that an external issuer signed."
+}

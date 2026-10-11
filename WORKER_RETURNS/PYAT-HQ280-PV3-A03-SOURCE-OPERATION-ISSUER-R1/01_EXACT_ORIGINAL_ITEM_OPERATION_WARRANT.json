@@ -1,0 +1,240 @@
+{
+  "schema": "PYAT_HQ280_PV3_A03_EXACT_ORIGINAL_ITEM_OPERATION_WARRANT@1",
+  "status": "ORIGINAL_ADMINISTERED_ITEM_GROUNDED__PROPOSED_RAW_UNARY_ISSUER_HOLD__NO_AUTHORIZATION",
+  "governing": "HQD-2026-10-10-280",
+  "startup": "376f2643954bd2f6b31c994204a3a0b1b98aad69",
+  "smallest_selection": "ONE_GHA_Q86A_UNARY_RAW__NOT_CONDITIONED_OR_JOINT_OR_WEIGHTED",
+  "original_item": {
+    "id": "SRC02_R5_GHA_Q86A_ORIGINAL_EN_2012_04_19",
+    "estate_id": "SRC02",
+    "family": "Afrobarometer",
+    "wave": "R5",
+    "country": "GHA",
+    "national_form": "Ghana original national English questionnaire, finalized 2012-04-19",
+    "original_document_url": "https://www.afrobarometer.org/wp-content/uploads/2022/02/gha_r5_questionnaire.pdf",
+    "document_sha256": null,
+    "document_hash_status": "EXACT_ORIGINAL_PDF_BYTE_HASH_NOT_PINNED_IN_A03_GITHUB_REPORT__REQUIRED_BEFORE_OPERATIVE_GRANT",
+    "item_id": "Q86A",
+    "printed_page": 20,
+    "pdf_page_reported": 19,
+    "item_meaning": "Whether a person born in Ghana with one Ghanaian and one non-Ghanaian parent should have Ghanaian citizenship (normative respondent opinion, not citizenship law)",
+    "interviewer_method": "Ordinary Ghana interview item; no Q86A-specific printed skip in consulted original-source warrant",
+    "measurement_role": "ORIGINAL_ADMINISTERED_NORMATIVE_OPINION_MEASUREMENT",
+    "physical": {
+      "merged_sav_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+      "merged_source_header_rows": 51587,
+      "merged_source_header_fields": 348,
+      "merged_source_counts_not_country_respondent_denominators": true,
+      "merged_codebook_sha256": "7e02c649c8ae69c61f88c116fdad92353b7f06cba9e160d9ae4be18e72276735",
+      "merged_codebook_url": "https://www.afrobarometer.org/wp-content/uploads/2022/02/merged_r5_codebook_2.pdf",
+      "field_name": "Q86A",
+      "national_physical_field_binding": "HELD_NOT_AUTHENTICATED_GHA_RELEASE",
+      "identity_columns_reported": [
+        "COUNTRY",
+        "COUNTRY_ALPHA",
+        "RESPNO"
+      ],
+      "country_alpha3": "DERIVED_GHA_CROSSWALK_MUST_BE_AUTHORIZED_NOT_A_PHYSICAL_FIELD",
+      "duplicate_row_identity_guard": "UNIQUE(COUNTRY,RESPNO) MUST BE PROVED BEFORE PROJECTION"
+    },
+    "response_codes": {
+      "substantive": [
+        {
+          "code": 0,
+          "label": "No"
+        },
+        {
+          "code": 1,
+          "label": "Yes"
+        }
+      ],
+      "non_substantive": [
+        {
+          "code": 9,
+          "state": "DONT_KNOW"
+        },
+        {
+          "code": 997,
+          "state": "NOT_ASKED"
+        },
+        {
+          "code": 998,
+          "state": "REFUSAL"
+        },
+        {
+          "code": -1,
+          "state": "MISSING"
+        }
+      ],
+      "code_997_provenance_note": "Q86A printed merged codebook Value Labels includes 997 despite shorter Values field omission",
+      "no_global_numeric_recode": true
+    },
+    "routing": {
+      "fielding": "GHANA_COUNTRY_FORM_PRESENT_ORIGINAL_INSTRUMENT",
+      "excluded_country_forms_in_merged_codebook": [
+        "ALG",
+        "EGY",
+        "MRC",
+        "SUD",
+        "TUN"
+      ],
+      "selected_adult": "One randomly selected household Ghanaian citizen at least 18 years; gender allocation per questionnaire; no individual reselection between Q8A/Q86A/Q97",
+      "route": "No printed Ghana Q86A-specific skip; individual exposure/routing fact still UNPROVEN",
+      "respondent_unit": "INDIVIDUAL_SELECTED_INTERVIEWEE",
+      "household_not_respondent": true,
+      "record_level_member_set": null,
+      "risk_rule": "Selected Ghana adult + matching exact country/form/release + unique physical row-person binding + certified Q86A eligible/exposed event + Q86A substantive code 0 or 1; no value missingness interpreted as false exposure.",
+      "no_GHA_from_GT2_19210": true
+    },
+    "design": {
+      "mode": "RAW",
+      "estimand": "Observed Q86A 0/1 distribution among authenticated Ghana R5 selected adult respondents with valid substantive answers in this exact release",
+      "population_inference": "NOT_AUTHORIZED",
+      "national_prevalence": "NOT_AUTHORIZED",
+      "weight_variable": null,
+      "weight_warrant": null,
+      "psu_strata_variance": null,
+      "uncertainty": "UNQUANTIFIED",
+      "rationale": "RAW sample descriptives only pending source-use grant; withinwt/combinwt names do not authenticate a national weighted estimand"
+    },
+    "adopted_science_ref": "WORKER_RETURNS/PYAT-HQ273-S01-AFRO-R5-Q86A-Q8A-Q97-HETEROGENEOUS-SCIENTIFIC-SOURCE-WARRANT-R1/00_OFFICIAL_ORIGINAL_Q8A_Q97_Q86A_MEANINGS_AND_ADMINISTRATION.md",
+    "reported_adopted_source_doc_grain": "HQ273 S01 original-country questionnaire meanings; NOT new source/operation authorization",
+    "historical_carrier_crosswalk": "A01 Afro R5 348 wave implementation coordinates / 106 historical MEASUREMENT_CANDIDATE roles, not country-administered-item census",
+    "original_count_status": "NOT_CLAIMED_FROM_IMPLEMENTATION_POPULATION"
+  },
+  "proposed_operation": {
+    "proposed_id": "A03_DOC_CANDIDATE_SRC02_R5_GHA_Q86A_RAW_UNARY@1",
+    "kind": "UNARY_DISTRIBUTION",
+    "science_kind": "RESPONDENT_REPORTED_OPINION_RAW_MARGINAL",
+    "source_item_ref": "SRC02_R5_GHA_Q86A_ORIGINAL_EN_2012_04_19",
+    "owner": "PRE553_I03_EXACT_EMPIRICAL_QUERY@1.0.0",
+    "owner_function": "rawlsing_next/pre553_empirical_query.py::execute_empirical_query",
+    "selected_route": "rawlsing_next/pre553_route_b_production.py::execute_route_b_production",
+    "projection": "rawlsing_next/pre553_source_backed_c11_facade.py::GovernedC11Projection and RowRespondentBinding, ResponseSlotRule, RoutingEligibilityFact",
+    "population_scope": "GHA R5 original selected adult, exact release; NO pooling or original 11-country GT2 reuse",
+    "target_item": "Q86A",
+    "target_values": [
+      0,
+      1
+    ],
+    "predicate_ast_semantics": "ELIGIBLE_EXPOSED_Q86A_AND_SUBSTANTIVE_0_OR_1",
+    "conditions": [],
+    "condition_order": [],
+    "measure_kind": "RAW",
+    "risk_set_members": null,
+    "output_contract": "One typed I03 empirical marginal response distribution with numerator per value, denominator of eligible substantive source respondents, exact risk ref, unavailable/zero/weak/empty states classified by runtime evidence, retained minority and no invented uncertainty.",
+    "expected_consumers": [
+      "SOURCE_LOCAL_I03_EMPIRICAL_FACT_REGISTER_WITH_EXACT_ARTIFACT_REF",
+      "AUTHORIZED_LATER_ANALYTICAL_CONSUMER_IF_SEPARATELY_GRANTED"
+    ],
+    "no_specific_learned_or_model_selected_consumer_permitted": true,
+    "permission": "HELD_NO_GHA_SPECIFIC_SOURCE_AND_OPERATION_ISSUER",
+    "documentary_scientific_applicability": "SUPPORTED_AT_COUNTRY_ORIGINAL_INSTRUMENT_GRAIN",
+    "runnable_now": false,
+    "factual_denominator": null,
+    "result_values": null,
+    "no_precomputed_truth": true
+  },
+  "issuance_edges": [
+    {
+      "id": "E01",
+      "gate": "Original Ghana questionnaire exact bytes and edition",
+      "state": "DOCUMENT_SUPPORTED__BYTE_HASH_OPEN",
+      "principal": "Original source custodian + competent source semantic owner"
+    },
+    {
+      "id": "E02",
+      "gate": "Exact Q86A physical field/source dictionary and GHA identity crosswalk",
+      "state": "HELD",
+      "principal": "Source physical custodian and C11 projection owner"
+    },
+    {
+      "id": "E03",
+      "gate": "Unique COUNTRY/RESPNO respondent map and source-route exposure",
+      "state": "HELD",
+      "principal": "Original respondent/routing scientist + C11 respondent binding owner"
+    },
+    {
+      "id": "E04",
+      "gate": "Exact scoped source-semantic Q86A response/target-use authority",
+      "state": "HELD",
+      "principal": "Competent Afrobarometer R5/GT12 source-semantic issuer delegated under adopted source law"
+    },
+    {
+      "id": "E05",
+      "gate": "Exact original unary RAW I03 predicate/query operation and dependent authority snapshots",
+      "state": "HELD",
+      "principal": "Competent I03 predicate-grammar/operation and specified target-use issuer"
+    },
+    {
+      "id": "E06",
+      "gate": "Exact RAW sample descriptive ceiling and source-read/custody grant",
+      "state": "HELD",
+      "principal": "Physical source access custodian + estimand/usage owner"
+    },
+    {
+      "id": "E07",
+      "gate": "Independently frozen pre-run expectation acceptance with complete preimages",
+      "state": "HELD_FOR_ISSUER_FREEZE",
+      "principal": "External competent expectation issuer/custodian different from A04/A05/batch producer"
+    },
+    {
+      "id": "E08",
+      "gate": "Actual C11 release, I03 query result, downstream registered empirical fact and replay",
+      "state": "NOT_EXECUTED",
+      "principal": "B02 owner after E01–E07 issuance and independent runtime"
+    },
+    {
+      "id": "E09",
+      "gate": "Population-weighted inference",
+      "state": "NOT_REQUESTED_AND_UNAUTHORIZED",
+      "principal": "Source sampling/weight-design and estimand owner"
+    },
+    {
+      "id": "E10",
+      "gate": "EE12, objective FIELD, G0b, actor/V3",
+      "state": "NOT_REQUESTED_AND_UNAUTHORIZED",
+      "principal": "Separately competent issuers, outside A03"
+    }
+  ],
+  "comparison_to_alternatives": [
+    {
+      "id": "GHA_Q8A_CONDITION_Q86A",
+      "grade": "MORE_DEPENDENCIES_HELD",
+      "reason": "Q8A original codes known, Ghana exact physical Q8A dictionary and coexposure unresolved; conditional denominator cannot be inherited from base sample."
+    },
+    {
+      "id": "GHA_Q8A_Q97_CONDITION_Q86A",
+      "grade": "MORE_DEPENDENCIES_HELD",
+      "reason": "Q97 actual 9 = postgraduate, 99=DK; new physical binding, triple same-person risk, nested source permission not issued."
+    },
+    {
+      "id": "LITS_I_Q301_2_X_Q301_7",
+      "grade": "EXISTING_RETAINED_EXACT_POSITIVE_NOT_NEW_B02_ISSUER",
+      "reason": "Actual P1 retained RAW same-person joint with 24,630 risk and minority cells, but new generic B02 operation and original response-code table not granted/recovered here."
+    },
+    {
+      "id": "WVS7_Q291",
+      "grade": "MASTER_INSTRUMENT_ONLY",
+      "reason": "18 master pilot items not bound to retained 613-field SAV nor country asked risk; no 46 positive findings."
+    },
+    {
+      "id": "AFRO_R5_GT2",
+      "grade": "BOUND_11_COUNTRY_CONTEXT_ONLY",
+      "reason": "19,210 RAW coexposure excludes GHA and is not a Ghana source read/target use permission."
+    }
+  ],
+  "A01_A02_reconciliation": {
+    "a01_implementation_population": 18276,
+    "a01_afro_r5_wave_implementations": 348,
+    "a01_afro_r5_measurement_candidates": 106,
+    "a01_no_GHA_item_certification": true,
+    "a01_machine_context_nonmeasure": 4472,
+    "a01_prose_context_nonmeasure": 4272,
+    "correction": "A01 prose count 4,272 is an arithmetic typo, machine summary 4,472 correctly sums to 18,276. This does not change its identity-conservation receipt or issue source authority.",
+    "a02_ghana_item_documentary_qualified": true,
+    "a02_ghana_per_record_and_operation_held": true,
+    "no_A01_coordinate_as_source_grant": true
+  },
+  "scope_conservation": "35/35 mandatory source identities unaffected; one scientifically argued proving example does not reduce the estate, and source-intrinsic NA/denied cannot be inferred from absent rows."
+}

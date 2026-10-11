@@ -1,0 +1,211 @@
+{
+  "schema": "PYAT_HQ280_PV3_A03_EXTERNALLY_PREPARED_PREOUTCOME_EXPECTATION@1",
+  "status": "PRE_OUTCOME_SCIENTIFIC_CANDIDATE_FROZEN_IN_WORKER_GIT_RETURN__NOT_INDEPENDENT_COMPETENT_ISSUER_SEAL",
+  "freeze_cut": "376f2643954bd2f6b31c994204a3a0b1b98aad69",
+  "not_derived_from": [
+    "A04_CONSTRUCTED_BINDER_MANIFEST",
+    "A05_POSTHOC_ORACLE_SET",
+    "I03_I05_EMPIRICAL_OUTPUTS",
+    "B02_EXECUTION_OR_DENOMINATORS"
+  ],
+  "candidate_source_basis": [
+    "https://www.afrobarometer.org/wp-content/uploads/2022/02/gha_r5_questionnaire.pdf",
+    "https://www.afrobarometer.org/wp-content/uploads/2022/02/merged_r5_codebook_2.pdf",
+    "WORKER_RETURNS/PYAT-HQ273-S01-AFRO-R5-Q86A-Q8A-Q97-HETEROGENEOUS-SCIENTIFIC-SOURCE-WARRANT-R1/00_OFFICIAL_ORIGINAL_Q8A_Q97_Q86A_MEANINGS_AND_ADMINISTRATION.md",
+    "A01 independent role/identity summary",
+    "A02 independent country-native contract"
+  ],
+  "preimage_version": "PYAT_HQ280_PV3_A03_SOURCE_LOCAL_OPERATION_PREIMAGE@1",
+  "source": "SRC02_R5_GHA_Q86A_ORIGINAL_EN_2012_04_19",
+  "original_release": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+  "universe_description": "Single source-country original Q86A and independently specified alternative/held operation classes; 35-wave obligation denominator unchanged.",
+  "partition_of_proposed_scope": {
+    "scientifically_supported_candidate_operations": [
+      {
+        "id": "A03_DOC_CANDIDATE_SRC02_R5_GHA_Q86A_RAW_UNARY@1",
+        "subject": "SRC02/R5/GHA/2012 English/Q86A",
+        "semantic_kind": "UNARY_DISTRIBUTION",
+        "measure": "RAW",
+        "target": "Q86A",
+        "condition_order": [],
+        "native_values": [
+          0,
+          1
+        ],
+        "risk": "S_GHA_Q86A_SUBSTANTIVE_EXPOSED_UNRESOLVED",
+        "science_grade": "ORIGINAL_ITEM_APPLICABLE",
+        "permission_grade": "HELD_PENDING_COMPETENT_SOURCE_AND_I03_ISSUER",
+        "scheduled": false,
+        "required_consumers": [
+          "SOURCE_LOCAL_I03_EMPIRICAL_FACT_REGISTER_WITH_EXACT_ARTIFACT_REF",
+          "AUTHORIZED_LATER_ANALYTICAL_CONSUMER_IF_SEPARATELY_GRANTED"
+        ]
+      },
+      {
+        "id": "A03_HELD_GHA_Q86A_GIVEN_Q8A_3",
+        "subject": "SRC02/R5/GHA/Q86A|Q8A",
+        "semantic_kind": "CONDITIONAL_DISTRIBUTION",
+        "measure": "RAW",
+        "target": "Q86A",
+        "condition_order": [
+          {
+            "item": "Q8A",
+            "eq": 3
+          }
+        ],
+        "native_values": [
+          0,
+          1
+        ],
+        "risk": "S_GHA_Q86A_AND_Q8A_CONDITIONAL_UNRESOLVED",
+        "science_grade": "ORIGINAL_CONDITION_MEANINGS_SUPPORTED_BUT_PHYSICAL_Q8A_HELD",
+        "permission_grade": "HELD_NO_CONDITION_GRANT",
+        "scheduled": false,
+        "required_consumers": []
+      },
+      {
+        "id": "A03_HELD_GHA_Q86A_GIVEN_Q8A_3_Q97_5",
+        "subject": "SRC02/R5/GHA/Q86A|Q8A,Q97",
+        "semantic_kind": "CONDITIONAL_DISTRIBUTION",
+        "measure": "RAW",
+        "target": "Q86A",
+        "condition_order": [
+          {
+            "item": "Q8A",
+            "eq": 3
+          },
+          {
+            "item": "Q97",
+            "eq": 5
+          }
+        ],
+        "native_values": [
+          0,
+          1
+        ],
+        "risk": "S_GHA_Q86A_Q8A_Q97_TRIPLE_UNRESOLVED",
+        "science_grade": "THREE_COUNTRY_ORIGINAL_ITEMS_DOCUMENTED_BUT_NEW_PHYSICAL_AND_RISK_HELD",
+        "permission_grade": "HELD_NO_TRIPLE_GRANT",
+        "scheduled": false,
+        "required_consumers": []
+      },
+      {
+        "id": "A03_HELD_GHA_Q86A_GOVERNED_WEIGHTED",
+        "subject": "SRC02/R5/GHA/Q86A",
+        "semantic_kind": "UNARY_DISTRIBUTION",
+        "measure": "GOVERNED_WEIGHTED",
+        "target": "Q86A",
+        "condition_order": [],
+        "native_values": [
+          0,
+          1
+        ],
+        "risk": "WEIGHTED_GHA_POPULATION_UNDETERMINED",
+        "science_grade": "WEIGHT_FRAME_PSU_STRATA_ESTIMAND_UNKNOWN",
+        "permission_grade": "HELD_NO_DESIGN_OR_TARGET_ISSUER",
+        "scheduled": false,
+        "required_consumers": []
+      },
+      {
+        "id": "A03_HELD_GHA_Q86A_SAME_PERSON_COTRAVEL",
+        "subject": "SRC02/R5/GHA/Q86A with additional original item unknown",
+        "semantic_kind": "PAIR_COTRAVEL",
+        "measure": "RAW",
+        "target": "Q86A",
+        "condition_order": [],
+        "native_values": [
+          0,
+          1
+        ],
+        "risk": "SECOND_ITEM_AND_SHARED_RISK_UNDETERMINED",
+        "science_grade": "NOT_QUALIFIED_AT_PAIR_ITEM_GRAIN",
+        "permission_grade": "HELD_UNBOUNDED_OPERATION_NOT_RUNNABLE",
+        "scheduled": false,
+        "required_consumers": []
+      }
+    ],
+    "PERMITTED_ISSUED": [],
+    "HELD": [
+      "A03_DOC_CANDIDATE_SRC02_R5_GHA_Q86A_RAW_UNARY@1",
+      "A03_HELD_GHA_Q86A_GIVEN_Q8A_3",
+      "A03_HELD_GHA_Q86A_GIVEN_Q8A_3_Q97_5",
+      "A03_HELD_GHA_Q86A_GOVERNED_WEIGHTED",
+      "A03_HELD_GHA_Q86A_SAME_PERSON_COTRAVEL"
+    ],
+    "DENIED_EXACT_OPERATION": [],
+    "SOURCE_INTRINSIC_NA_ADOPTED": [],
+    "source_not_fielded_documentary_proposals": [
+      {
+        "candidate": "A03_DOC_NA_AFRO_R5_ALG_Q86A",
+        "classification": "ORIGINAL_MERGED_CODEBOOK_COUNTRY_NOT_ASKED__INTRINSIC_NOT_FIELDED_DOCUMENTARY_CANDIDATE",
+        "source": "Afro R5 merged codebook Q86A value labels/exclusion",
+        "adopted_intrinsic_NA": false,
+        "issuance": "NOT_REQUESTED_NO_COMPETENT_MACHINE_NA_RULING",
+        "reason": "Not within Ghana issuer petition; retains global source form exclusion evidence and forbids implicit zero."
+      },
+      {
+        "candidate": "A03_DOC_NA_AFRO_R5_EGY_Q86A",
+        "classification": "ORIGINAL_MERGED_CODEBOOK_COUNTRY_NOT_ASKED__INTRINSIC_NOT_FIELDED_DOCUMENTARY_CANDIDATE",
+        "source": "Afro R5 merged codebook Q86A value labels/exclusion",
+        "adopted_intrinsic_NA": false,
+        "issuance": "NOT_REQUESTED_NO_COMPETENT_MACHINE_NA_RULING",
+        "reason": "Not within Ghana issuer petition; retains global source form exclusion evidence and forbids implicit zero."
+      },
+      {
+        "candidate": "A03_DOC_NA_AFRO_R5_MRC_Q86A",
+        "classification": "ORIGINAL_MERGED_CODEBOOK_COUNTRY_NOT_ASKED__INTRINSIC_NOT_FIELDED_DOCUMENTARY_CANDIDATE",
+        "source": "Afro R5 merged codebook Q86A value labels/exclusion",
+        "adopted_intrinsic_NA": false,
+        "issuance": "NOT_REQUESTED_NO_COMPETENT_MACHINE_NA_RULING",
+        "reason": "Not within Ghana issuer petition; retains global source form exclusion evidence and forbids implicit zero."
+      },
+      {
+        "candidate": "A03_DOC_NA_AFRO_R5_SUD_Q86A",
+        "classification": "ORIGINAL_MERGED_CODEBOOK_COUNTRY_NOT_ASKED__INTRINSIC_NOT_FIELDED_DOCUMENTARY_CANDIDATE",
+        "source": "Afro R5 merged codebook Q86A value labels/exclusion",
+        "adopted_intrinsic_NA": false,
+        "issuance": "NOT_REQUESTED_NO_COMPETENT_MACHINE_NA_RULING",
+        "reason": "Not within Ghana issuer petition; retains global source form exclusion evidence and forbids implicit zero."
+      },
+      {
+        "candidate": "A03_DOC_NA_AFRO_R5_TUN_Q86A",
+        "classification": "ORIGINAL_MERGED_CODEBOOK_COUNTRY_NOT_ASKED__INTRINSIC_NOT_FIELDED_DOCUMENTARY_CANDIDATE",
+        "source": "Afro R5 merged codebook Q86A value labels/exclusion",
+        "adopted_intrinsic_NA": false,
+        "issuance": "NOT_REQUESTED_NO_COMPETENT_MACHINE_NA_RULING",
+        "reason": "Not within Ghana issuer petition; retains global source form exclusion evidence and forbids implicit zero."
+      }
+    ],
+    "DENIED_ABSENCE_NOT_AN_AFFIRMATIVE_PERMISSION": "No independent explicit exact operative denial was recovered for the chosen GHA scope; do not label a hold as DENIED.",
+    "NA_ABSENCE_NOT_FABRICATED": "Five other-country Q86A nonfielded classifications are original-codebook evidence only, not signed machine NA rulings."
+  },
+  "pre_issuer_external_proposed_E": [
+    {
+      "proposed_semantic_work_key": "A03_DOC_CANDIDATE_SRC02_R5_GHA_Q86A_RAW_UNARY@1",
+      "operation": "UNARY_DISTRIBUTION",
+      "original_source": "SRC02_R5_GHA_Q86A_ORIGINAL_EN_2012_04_19",
+      "exact_release_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+      "native_domain": [
+        0,
+        1
+      ],
+      "risk_predicate": "Selected Ghana adult + matching exact country/form/release + unique physical row-person binding + certified Q86A eligible/exposed event + Q86A substantive code 0 or 1; no value missingness interpreted as false exposure.",
+      "measure_kind": "RAW",
+      "condition_order": [],
+      "expected_output": "Full Q86A substantive RAW sample marginal empirical distribution or correctly typed measured negative with a real denominator and output evidence",
+      "required_consumers": [
+        "SOURCE_LOCAL_I03_EMPIRICAL_FACT_REGISTER_WITH_EXACT_ARTIFACT_REF",
+        "AUTHORIZED_LATER_ANALYTICAL_CONSUMER_IF_SEPARATELY_GRANTED"
+      ],
+      "state": "CANDIDATE_NOT_E_EXECUTABLE_UNTIL_GRANTED"
+    }
+  ],
+  "issued_E": [],
+  "current_runnable_count": 0,
+  "expected_product_refs": null,
+  "expected_denominators": null,
+  "key_ontology": "Source-original item != operation proposition != independently sealed expected-work key != A04 owner dispatch job != execution attempt != empirical outcome != consumer receipt",
+  "seal_required": "Competent exact source and operation issuer must approve full literal preimage and independent pre-run custodian must attest version/order/time; worker Git commit is not that issuer seal.",
+  "no_outcome_truth_before_execution": true,
+  "next_state_after_approval": "ISSUER_SIGNED_EXPECTATION_CAN_BE_EXTERNAL_E_ONLY_AFTER_ADOPTED_PERMISSION_AND_EXACT_PROJECTION_READ_AUTHORITY"
+}
