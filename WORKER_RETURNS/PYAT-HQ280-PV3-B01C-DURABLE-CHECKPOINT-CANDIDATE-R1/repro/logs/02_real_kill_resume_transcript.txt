@@ -1,0 +1,56 @@
+==============================================================================
+B01C REAL PROCESS KILL / RESTART TRANSCRIPT
+==============================================================================
+
+[1] root=/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/b01c-kill-intent-yqfzrjo_
+    worker phase=start returncode=-9 (REAL SIGKILL) in 126.99 ms
+    durable records on disk: 1 state=['START_INTENT_WRITTEN']
+    recovery_safe=False held=1 rerunnable=0
+    -> UNKNOWN OUTCOME HELD, not silently rerun  [CORRECT]
+
+[2] root=/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/b01c-resume-bh4eqoga
+    phase=partial:2 returncode=0 in 137.88 ms
+    committed after partial: ['7b7773549b5c673f', '2ebc1bcaeddd3eb8']
+    recovery_safe=True
+    phase=normal (fresh process restart) returncode=0 in 148.43 ms
+    committed after restart: 4 of 4
+    previously committed preserved: True
+    recovery_safe=True held=0
+    -> resume completed remaining work, re-executed nothing  [CORRECT]
+
+[3] restart of an already-committed unit: returncode=1 refused=True  [CORRECT]
+
+[4] concurrent second real writer: REFUSED  [CORRECT]
+
+[5] torn checkpoint -> probe_failed=True  [CORRECT]
+
+==============================================================================
+B01C DURABILITY / TAMPER / SCOPE CASES
+==============================================================================
+  atomic_write_leaves_no_temp_residue                  expected=[] observed=[]
+  atomic_write_byte_stable                             expected=b'{\n  "checkpoint_version": "1.0.0",\n  "content_digest": " observed=b'{\n  "checkpoint_version": "1.0.0",\n  "content_digest": "
+  directory_fsync_helper_present                       expected=True observed=True
+  commit_without_durable_intent_refused                expected=True observed=True
+  full_roundtrip_digest_stable                         expected='13782c2edf12f0655c0a6c8850a28c813ef48a68f9098d9557d4d136733 observed='13782c2edf12f0655c0a6c8850a28c813ef48a68f9098d9557d4d136733
+  full_roundtrip_recovery_safe                         expected=True observed=True
+  full_roundtrip_receipts_rehydrated                   expected=3 observed=3
+  resume_admits_receipts_to_accepted_runner            expected=True observed=True
+  torn_truncated_refused                               expected=True observed=True
+  sequence_tamper_refused                              expected=True observed=True
+  foreign_manifest_refused                             expected=True observed=True
+  foreign_release_refused                              expected=True observed=True
+  forged_receipt_digest_refused                        expected=True observed=True
+  foreign_unit_smuggling_refused                       expected=True observed=True
+  write_ahead_intent_alone_is_NOT_exactly_once         expected=False observed=False
+  unknown_outcome_is_held_not_rerun                    expected=() observed=()
+  rerun_only_with_explicit_idempotence_proof           expected=True observed=True
+  completed_unit_not_restartable                       expected=True observed=True
+  candidate_effects_all_false                          expected=True observed=True
+
+==============================================================================
+SAFE HOSTED BOUNDED RESOURCE MEASUREMENT
+==============================================================================
+  self_peak_rss_mib: 25.918
+  self_user_cpu_s: 0.248
+  self_sys_cpu_s: 0.147
+  manifest_units_measured: 4

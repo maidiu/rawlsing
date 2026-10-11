@@ -1,0 +1,43 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /Users/matthewsmith/Desktop/Rawlsing_Worktrees/.pv3-venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01c
+collecting ... collected 35 items
+
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_real_run_persists_durable_checkpoint_with_real_receipts PASSED [  2%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_receipts_rehydrate_into_the_accepted_runner_exactly PASSED [  5%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_atomic_write_leaves_no_temp_residue_and_is_byte_stable PASSED [  8%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_directory_fsync_is_performed_closing_the_existing_gap PASSED [ 11%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_checkpoint_is_bound_to_exact_manifest_release_and_scope PASSED [ 14%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_real_sigkill_after_durable_intent_leaves_checkpoint_and_holds PASSED [ 17%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_real_restart_resumes_from_durable_receipts_without_redo PASSED [ 20%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_real_kill_on_an_unstarted_unit_holds_only_that_unit PASSED [ 22%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_real_restart_of_a_committed_unit_is_refused PASSED [ 25%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_real_concurrent_writers_are_serialised_by_the_lock PASSED [ 28%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_torn_truncated_checkpoint_is_refused PASSED [ 31%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_byte_tampered_checkpoint_digest_is_refused PASSED [ 34%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_tampered_record_content_is_refused PASSED [ 37%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_committed_receipt_digest_mismatch_blocks_rehydration PASSED [ 40%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_foreign_manifest_unit_cannot_be_smuggled_into_a_checkpoint PASSED [ 42%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_foreign_schema_is_refused PASSED [ 45%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_non_object_json_checkpoint_is_refused PASSED [ 48%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_lock_refuses_a_second_concurrent_writer PASSED [ 51%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_missing_checkpoint_is_typed_not_silently_empty PASSED [ 54%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_real_tamper_on_disk_then_probe_subprocess_refuses PASSED [ 57%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_write_ahead_intent_alone_never_implies_exactly_once PASSED [ 60%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_unknown_outcome_becomes_rerunnable_only_with_an_idempotence_proof PASSED [ 62%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_completed_unit_cannot_be_restarted PASSED [ 65%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_commit_without_intent_is_refused PASSED [ 68%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_commit_attempt_index_must_match_the_durable_intent PASSED [ 71%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_intent_record_may_not_carry_a_receipt PASSED [ 74%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_recovery_does_not_duplicate_committed_semantic_work PASSED [ 77%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_attempt_indices_stay_contiguous_across_recovery PASSED [ 80%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_never_started_unit_is_dispositioned_explicitly PASSED [ 82%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_accepted_owners_and_protocol_are_not_modified_by_this_candidate PASSED [ 85%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_candidate_declares_no_authority_or_protocol_effect PASSED [ 88%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_write_ahead_protocol_tokens_are_satisfied_by_this_candidate PASSED [ 91%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_batch_runner_file_is_untouched_by_this_work PASSED [ 94%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_source_free_posture_no_raw_survey_reads PASSED [ 97%]
+rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py::test_worker_script_exists_and_is_executable_as_a_real_process PASSED [100%]
+
+============================== 35 passed in 2.82s ==============================

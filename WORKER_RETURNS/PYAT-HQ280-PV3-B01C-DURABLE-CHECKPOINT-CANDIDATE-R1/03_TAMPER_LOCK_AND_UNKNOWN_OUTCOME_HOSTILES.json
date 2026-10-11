@@ -1,0 +1,179 @@
+{
+  "authorizing": false,
+  "cases": [
+    {
+      "case": "atomic_write_leaves_no_temp_residue",
+      "detail": "",
+      "expected": [],
+      "met": true,
+      "observed": []
+    },
+    {
+      "case": "atomic_write_byte_stable",
+      "detail": "",
+      "expected": "sha256:0bd95ac706c83eef04380aa1b5697f5d302f95a5154cbd230aa2f8f78be7b4d4",
+      "met": true,
+      "observed": "sha256:0bd95ac706c83eef04380aa1b5697f5d302f95a5154cbd230aa2f8f78be7b4d4"
+    },
+    {
+      "case": "directory_fsync_helper_present",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    },
+    {
+      "case": "commit_without_durable_intent_refused",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    },
+    {
+      "case": "full_roundtrip_digest_stable",
+      "detail": "",
+      "expected": "13782c2edf12f0655c0a6c8850a28c813ef48a68f9098d9557d4d136733123e3",
+      "met": true,
+      "observed": "13782c2edf12f0655c0a6c8850a28c813ef48a68f9098d9557d4d136733123e3"
+    },
+    {
+      "case": "full_roundtrip_recovery_safe",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    },
+    {
+      "case": "full_roundtrip_receipts_rehydrated",
+      "detail": "",
+      "expected": 3,
+      "met": true,
+      "observed": 3
+    },
+    {
+      "case": "resume_admits_receipts_to_accepted_runner",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    },
+    {
+      "case": "torn_truncated_refused",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    },
+    {
+      "case": "sequence_tamper_refused",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    },
+    {
+      "case": "foreign_manifest_refused",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    },
+    {
+      "case": "foreign_release_refused",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    },
+    {
+      "case": "forged_receipt_digest_refused",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    },
+    {
+      "case": "foreign_unit_smuggling_refused",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    },
+    {
+      "case": "write_ahead_intent_alone_is_NOT_exactly_once",
+      "detail": "",
+      "expected": false,
+      "met": true,
+      "observed": false
+    },
+    {
+      "case": "unknown_outcome_is_held_not_rerun",
+      "detail": "",
+      "expected": [],
+      "met": true,
+      "observed": []
+    },
+    {
+      "case": "rerun_only_with_explicit_idempotence_proof",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    },
+    {
+      "case": "completed_unit_not_restartable",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    },
+    {
+      "case": "candidate_effects_all_false",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    }
+  ],
+  "critical_hazard_statement": "Write-ahead intent alone does NOT prove exactly-once external execution. After a crash between an owner side effect and the durable COMMITTED record, the outcome is genuinely UNKNOWN. The candidate classifies this as UNKNOWN_OUTCOME and HOLDS the unit. Rerun is proposed only when the caller supplies an explicit idempotence proof for that exact unit key. No case in this packet asserts exactly-once external execution.",
+  "hostile_taxonomy": {
+    "duplicate_work": [
+      "completed_unit_not_restartable",
+      "restart of an already-committed unit refused"
+    ],
+    "foreign_scope": [
+      "foreign_manifest_refused",
+      "foreign_release_refused",
+      "foreign_unit_smuggling_refused"
+    ],
+    "lock_concurrency": [
+      "concurrent second real writer REFUSED",
+      "commit_without_durable_intent_refused"
+    ],
+    "tampered": [
+      "sequence_tamper_refused",
+      "forged_receipt_digest_refused"
+    ],
+    "torn_or_truncated": [
+      "torn_truncated_refused",
+      "torn checkpoint -> probe"
+    ],
+    "unknown_outcome": [
+      "write_ahead_intent_alone_is_NOT_exactly_once",
+      "unknown_outcome_is_held_not_rerun",
+      "rerun_only_with_explicit_idempotence_proof"
+    ]
+  },
+  "note": "All cases EXECUTED. expected=false is a real expected-false hostile, not a skip.",
+  "reproduce": "PYTHONPATH=. python3 repro/b01c_evidence_recorder.py",
+  "schema": "PYAT_HQ280_B01C_TAMPER_LOCK_AND_UNKNOWN_OUTCOME_HOSTILES@1.0.0",
+  "scope": "SOURCE_FREE_DEVELOPMENT_ONLY",
+  "summary": {
+    "effect_flags_all_false": true,
+    "expected_false_cases": [
+      "write_ahead_intent_alone_is_NOT_exactly_once"
+    ],
+    "met_expectation": 19,
+    "total": 19
+  }
+}

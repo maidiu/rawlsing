@@ -1,0 +1,206 @@
+{
+  "authorizing": false,
+  "canonical_mutated": false,
+  "durability_tamper_scope_cases": [
+    {
+      "case": "atomic_write_leaves_no_temp_residue",
+      "detail": "",
+      "expected": [],
+      "met": true,
+      "observed": []
+    },
+    {
+      "case": "atomic_write_byte_stable",
+      "detail": "",
+      "expected": "sha256:0bd95ac706c83eef04380aa1b5697f5d302f95a5154cbd230aa2f8f78be7b4d4",
+      "met": true,
+      "observed": "sha256:0bd95ac706c83eef04380aa1b5697f5d302f95a5154cbd230aa2f8f78be7b4d4"
+    },
+    {
+      "case": "directory_fsync_helper_present",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    },
+    {
+      "case": "commit_without_durable_intent_refused",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    },
+    {
+      "case": "full_roundtrip_digest_stable",
+      "detail": "",
+      "expected": "13782c2edf12f0655c0a6c8850a28c813ef48a68f9098d9557d4d136733123e3",
+      "met": true,
+      "observed": "13782c2edf12f0655c0a6c8850a28c813ef48a68f9098d9557d4d136733123e3"
+    },
+    {
+      "case": "full_roundtrip_recovery_safe",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    },
+    {
+      "case": "full_roundtrip_receipts_rehydrated",
+      "detail": "",
+      "expected": 3,
+      "met": true,
+      "observed": 3
+    },
+    {
+      "case": "resume_admits_receipts_to_accepted_runner",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    },
+    {
+      "case": "torn_truncated_refused",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    },
+    {
+      "case": "sequence_tamper_refused",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    },
+    {
+      "case": "foreign_manifest_refused",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    },
+    {
+      "case": "foreign_release_refused",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    },
+    {
+      "case": "forged_receipt_digest_refused",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    },
+    {
+      "case": "foreign_unit_smuggling_refused",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    },
+    {
+      "case": "write_ahead_intent_alone_is_NOT_exactly_once",
+      "detail": "",
+      "expected": false,
+      "met": true,
+      "observed": false
+    },
+    {
+      "case": "unknown_outcome_is_held_not_rerun",
+      "detail": "",
+      "expected": [],
+      "met": true,
+      "observed": []
+    },
+    {
+      "case": "rerun_only_with_explicit_idempotence_proof",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    },
+    {
+      "case": "completed_unit_not_restartable",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    },
+    {
+      "case": "candidate_effects_all_false",
+      "detail": "",
+      "expected": true,
+      "met": true,
+      "observed": true
+    }
+  ],
+  "environment": {
+    "machine": "x86_64",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit",
+    "python_executable": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/.pv3-venv/bin/python3",
+    "python_version": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "raw_source_read": false,
+    "sav_dta_present": false
+  },
+  "protocol_relaxed": false,
+  "real_subprocess_kill_and_resume": {
+    "concurrent_writer_refused": {
+      "contender_verdict": "REFUSED",
+      "holder_acquired": true,
+      "verdict": "EXCLUSIVE_LOCK_ENFORCED"
+    },
+    "kill_after_intent": {
+      "checkpoint_digest": "394f4cf599685028be451dacc01cb3faec993fbad4447dc4d6d2df7221bdfd44",
+      "durable_records": 1,
+      "held_units": 1,
+      "killed_by_real_sigkill": true,
+      "record_states": [
+        "START_INTENT_WRITTEN"
+      ],
+      "recovery_safe": false,
+      "rerunnable_units": 0,
+      "returncode": -9,
+      "verdict": "HELD_UNKNOWN_OUTCOME",
+      "wall_ms": 126.99
+    },
+    "real_restart_resume": {
+      "committed_after_partial": 2,
+      "committed_after_restart": 4,
+      "held_after_restart": 0,
+      "partial_returncode": 0,
+      "prior_work_preserved": true,
+      "recovery_safe_after_restart": true,
+      "verdict": "RESUME_WITHOUT_DUPLICATE_WORK",
+      "wall_ms_restart": 148.43
+    },
+    "restart_of_committed_unit_refused": {
+      "refused": true,
+      "returncode": 1,
+      "verdict": "COMPLETED_UNIT_NOT_RETRYABLE"
+    },
+    "torn_checkpoint_refused": {
+      "probe_failed": true,
+      "verdict": "TORN_CHECKPOINT_REFUSED"
+    }
+  },
+  "resource_measurement": {
+    "manifest_units_measured": 4,
+    "self_peak_rss_mib": 25.918,
+    "self_sys_cpu_s": 0.147,
+    "self_user_cpu_s": 0.248
+  },
+  "schema": "PYAT_HQ280_B01C_REAL_KILL_RESUME_RESULTS@1.0.0",
+  "scope": "SOURCE_FREE_DEVELOPMENT_ONLY",
+  "self_adopted": false,
+  "summary": {
+    "cases_met_expectation": 19,
+    "durable_cases": 19,
+    "exactly_once_claimed": false,
+    "kill_resume_scenarios": 5,
+    "unknown_outcome_policy": "HELD_NOT_RERUN"
+  },
+  "terminal": "HQ280_PV3_B01C_SOURCEFREE_DURABLE_CHECKPOINT_CANDIDATE_RETURNED__NO_REAL_SOURCE_ADOPTION__GITHUB_PUSHED",
+  "total_wall_s": 2.032
+}
