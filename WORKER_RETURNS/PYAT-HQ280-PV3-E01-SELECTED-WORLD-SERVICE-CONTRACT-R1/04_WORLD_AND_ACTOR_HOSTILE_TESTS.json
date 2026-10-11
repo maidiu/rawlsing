@@ -1,0 +1,313 @@
+{
+  "schema": "HQ280_E01_WORLD_AND_ACTOR_HOSTILE_TEST_SPECIFICATION@1",
+  "status": "UNEXECUTED_CONTRACT_TEST_DESIGNS_ONLY",
+  "source_read": false,
+  "owner_python_runtime": false,
+  "actor_created": false,
+  "actual_test_results": [],
+  "hostiles": [
+    {
+      "id": "H01_FIXTURE_CURRENT",
+      "attack": "Caller supplies source-free fixture geometry and a CURRENT string as if selected N9 were real",
+      "expected_result": "REFUSE_FIXTURE_WORLD_NOT_SOURCE_BACKED; no CURRENT without original B5/D05 receipt",
+      "owner": "N9/B5/D05/N10W",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    },
+    {
+      "id": "H02_MARGINAL_TO_JOINT",
+      "attack": "Multiply P(Y),P(A),P(B) from unlinked sources to simulate P(Y|A,B)",
+      "expected_result": "REFUSE_NO_AUTHORIZED_JOINT_RISK",
+      "owner": "C1/N10E/source-science",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    },
+    {
+      "id": "H03_MODEL_REF_FORGERY",
+      "attack": "Call F8 with self-consistent locally constructed AuthorityRef as G0b",
+      "expected_result": "REFUSE_NO_ISSUED_MODEL_USE; no selected T1",
+      "owner": "EE14/G0b",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    },
+    {
+      "id": "H04_RULE_HASH_SWAP",
+      "attack": "Reuse a genuine source slice but replace rule/walkback hash or proxy list",
+      "expected_result": "REFUSE_RULE_AND_PERMISSION_CLOSURE_MISMATCH",
+      "owner": "F8/SA/G0b",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    },
+    {
+      "id": "H05_REVOKED_MODEL",
+      "attack": "Serve cached CURRENT after model/target-use revoke or expiry",
+      "expected_result": "NO_CURRENT_OR_STALE_AUTHORITY; affected descendants invalidated",
+      "owner": "G0b/B5/E04",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    },
+    {
+      "id": "H06_HISTORICAL_CURRENT",
+      "attack": "Select a historical release and label it CURRENT via timestamp",
+      "expected_result": "REFUSE_CURRENTNESS_NOT_OWNER_PROVED; historical/as-of labeled",
+      "owner": "N9/G3/D05",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    },
+    {
+      "id": "H07_HOUSEHOLD_AS_ADULT",
+      "attack": "Infer one measured adult's answer from household context row",
+      "expected_result": "REFUSE_SAMPLING_UNIT_AND_NATIVE_QUESTION_MISMATCH",
+      "owner": "source science/AT34",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    },
+    {
+      "id": "H08_REPORTED_PARENT_AS_PARENT",
+      "attack": "Turn child's report ABOUT parent into parent's own belief",
+      "expected_result": "REFUSE_RESPONDENT_IDENTITY_MISMATCH",
+      "owner": "source science/V555",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    },
+    {
+      "id": "H09_UNLINKED_COPARENT",
+      "attack": "Pair two independently sampled respondents as coparents via city/household marker",
+      "expected_result": "REFUSE_NO_NATIVE_MATCHED_DYAD_OR_DESIGN",
+      "owner": "source science/AT34",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    },
+    {
+      "id": "H10_MULTIFAMILY_RESPONDENT_POOL",
+      "attack": "Combine unrelated source-family person distributions into one same respondent risk",
+      "expected_result": "REFUSE_CROSS_FAMILY_UNIT_POOLING",
+      "owner": "D02/N9/N10W",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    },
+    {
+      "id": "H11_CONTEXT_AS_CAUSAL",
+      "attack": "Promote Afrobarometer E2B CONTEXT or J04 CONTEXT to material/ACTIVE_CAUSAL world mechanism",
+      "expected_result": "REFUSE_UNISSUED_ACTIVE_CAUSAL_CEILING",
+      "owner": "M4/D01",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    },
+    {
+      "id": "H12_ACTOR_CREATION",
+      "attack": "Return invented parent identity, biography, child's future belief, sampled realized behavior, or dyad actor state",
+      "expected_result": "REFUSE_ACTOR_AND_N12_WAKE",
+      "owner": "N10W/N12/M6",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    },
+    {
+      "id": "H13_ALL35_BROAD_USE",
+      "attack": "Extend one narrow fixture or source grant to all 35 waves/queries/models",
+      "expected_result": "REFUSE_REQUEST_SET_AND_SOURCE_SCOPE_WIDENING",
+      "owner": "G0b/source issuer",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    },
+    {
+      "id": "H14_ABSENCE_AS_EMPIRICAL_ZERO",
+      "attack": "Map unavailable joint, no authority, not fielded, underpowered or missing output to a measured zero/VALID_EMPTY",
+      "expected_result": "REFUSE_NATIVE_NEGATIVE_STATE_LAUNDERING",
+      "owner": "N10E/F8/source owner",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    },
+    {
+      "id": "H15_PROXY_IS_EXACT",
+      "attack": "Return lower-specificity walkback geometry as exact conditional without loss path",
+      "expected_result": "REFUSE_PROXY_EXACT_CONFLATION; exact lane UNRESOLVED",
+      "owner": "F8",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    },
+    {
+      "id": "H16_SUCCESSIVE_STEPS_INDEPENDENT",
+      "attack": "Compute P(Y|A,B,C) by multiplying independent marginal factors without same-row joint",
+      "expected_result": "REFUSE_UNAUTHORIZED_CONDITIONAL; denominator must be genuine joint",
+      "owner": "C1/N10E",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    },
+    {
+      "id": "H17_G2_EQUALS_GRANT",
+      "attack": "Use correct SA permission-ref SET as proof permission issuer signed and adopted G0b",
+      "expected_result": "REFUSE_G2_ELIGIBILITY_NOT_GRANT",
+      "owner": "SA/G2/G0b",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    },
+    {
+      "id": "H18_MUTATION_DEPENDENCY",
+      "attack": "Revoke N9 component while leaving descendant N10W cached current; revoke unrelated sibling too",
+      "expected_result": "AFFECTED_N10W_CURRENT_WITHDRAWN; UNAFFECTED_SIBLING_REMAINS_ELIGIBLE",
+      "owner": "N9/B5/E04",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    },
+    {
+      "id": "H19_DOUBLE_COUNT_FAMILY",
+      "attack": "Enter same source family twice to satisfy two-family N9 proof",
+      "expected_result": "REFUSE_UNIQUE_SOURCE_FAMILY_INDEPENDENCE_UNPROVED",
+      "owner": "N9/D02",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    },
+    {
+      "id": "H20_RAW_ESTIMAND_INFLATION",
+      "attack": "Describe raw exact fractions as nationally representative weighted probabilities without source design/estimand",
+      "expected_result": "REFUSE_WEIGHTED_POPULATION_CLAIM",
+      "owner": "source science/N10E",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    },
+    {
+      "id": "H21_EMPIRICAL_NULL_AS_FAILURE",
+      "attack": "Drop a properly measured SUPPORTED observed-zero category and mark entire query absent",
+      "expected_result": "PRESERVE_OBSERVED_ZERO_IN_SUPPORTED_RISK_SET_AND_POSITIVE_DENOMINATOR",
+      "owner": "C1/N10E",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    },
+    {
+      "id": "H22_ASOF_REPLAY_DRIFT",
+      "attack": "Change source/release/risk/permission/event without invalidating replay identity",
+      "expected_result": "REPLAY_IDENTITY_MISMATCH_OR_EXPLICIT_HISTORICAL_VERSION",
+      "owner": "N9/F8/B5/E04",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    },
+    {
+      "id": "H23_ALIEN_SOURCE_WALKBACK",
+      "attack": "Use proxy from different source universe/release with valid-looking proxy authority",
+      "expected_result": "FAIL_CLOSED_UNAUTHORIZED_PROXY_SOURCE",
+      "owner": "F8",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    },
+    {
+      "id": "H24_SCOPED_INAPPLICABILITY",
+      "attack": "Missing N8 temporal product is called failure even when declared N9 query does not demand temporal analysis; alternatively omit when demanded",
+      "expected_result": "DECLARED_SCOPE_CONDITIONAL_DEPENDENCY_MUST_BE_JUSTIFIED; mandatory demand cannot silently drop",
+      "owner": "N9/E02",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    },
+    {
+      "id": "H25_PUBLIC_N10E_MULTI_CLAIM",
+      "attack": "Call public provider with two conditioner bindings and report it supports arbitrary nesting despite _single_binding",
+      "expected_result": "REJECT_OR_USE_QUALIFIED_C1_MULTI_CONDITION_PATH; no false API claim",
+      "owner": "N10E/E03",
+      "evaluation_type": "FUTURE_SOURCE_FREE_OR_REAL_SELECTED_OWNER_HOSTILE",
+      "executed_in_E01": false,
+      "owner_invoked": false,
+      "observed_runtime_result": null,
+      "expected_state_is_specification_not_observed": true
+    }
+  ],
+  "required_future_positive_courts": [
+    {
+      "id": "P01_OWNER_GENERATED",
+      "given": "genuine authorized C1 same-source supported query and exact risk",
+      "expected": "N10E generates evidence itself, preserves raw cells/risk/uncertainty and source/consumer refs",
+      "executed_in_E01": false
+    },
+    {
+      "id": "P02_MULTI_CONDITION",
+      "given": "authorized original same-respondent A,B,C,Y with all original routing/risk and model permission",
+      "expected": "C1 source-bound multi-condition witness permits separately identified q(Y|A),q(Y|A,B),q(Y|A,B,C); N10W join not yet observed",
+      "executed_in_E01": false
+    },
+    {
+      "id": "P03_CURRENT_ASOF",
+      "given": "actual authorized N9 multi-family subset and B5 selected event with correct currentness and G0b",
+      "expected": "current/as-of N10W preserves replay and selective invalidation with no actor",
+      "executed_in_E01": false
+    },
+    {
+      "id": "P04_MEASURED_NULL",
+      "given": "legitimate source-native observed zero within supported nonzero risk",
+      "expected": "cell zero retained; no false absent/not-fielded/permission fail",
+      "executed_in_E01": false
+    }
+  ],
+  "success_criterion": "Only real owner invocations with exact adopted source science and selected model-use for each requested scope can be marked PASS; existing test source inspection is not new runtime execution.",
+  "negative_semantic_law": "UNAVAILABLE, SOURCE_INTRINSIC_NA, DENIED, HELD, UNRESOLVED, UNDERPOWERED, VALID_EMPTY, NONCOMPARABLE, COVERAGE_LIMITED, observed zero and absent artifact remain separate."
+}
