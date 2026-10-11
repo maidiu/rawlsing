@@ -1,0 +1,178 @@
+{
+  "schema": "PYAT_HQ280_PV3_C02_EVIDENCE_MANIFEST@1",
+  "terminal": "HQ280_PV3_C02_B5_TRUST_BOUNDARY_SOURCEFREE_CANDIDATE_AND_HOSTILES_PUSHED__NO_OPERATIVE_PUBLICATION",
+  "disposition": "SOURCE_FREE_DEVELOPMENT_CANDIDATE__NONAUTHORIZING__NO_OPERATIVE_PUBLICATION__NO_SELF_ADOPTION",
+
+  "identity": {
+    "repository": "maidiu/rawlsing",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-c02",
+    "branch": "agent/rabochii-pyat-hq280-pv3-c02-authenticated-b5-boundary-r1",
+    "sealed_startup_sha": "c6e986dfa02b80887ded5f4d0da2e2413e676172",
+    "sealed_startup_verified": true,
+    "authority": "HQD-2026-10-10-280",
+    "parallel_seal": "908ee4e74849884b1d4c2f532209a0ca57538b67",
+    "canonical_baseline": "a70a069fa948e0f3c041b389edcc732b6b948a4f",
+    "semantic_pre_main": "1f47063c3205a45888b3c55e81e7485943ed1390",
+    "semantic_pre_main_mutated": false,
+    "canonical_mutated": false,
+    "inputs_reused_read_only": {
+      "f8f_hostile_review": "aecc3273615ef158ae8428819d82d86d4cc64462",
+      "f8e_repaired_candidate": "2a4a90ec76d3400f98ba6fd3fd306f6ff977d042",
+      "note": "Both read as references only. F8E's candidate module pre553_c1_immutable_release_binding.py is ABSENT from this worktree's HEAD (it exists only on the F8E line branched from 6a8c91d99...), so C02 built its own genuine M2 fixture rather than depending on an unavailable sibling artifact."
+    }
+  },
+
+  "environment": {
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit",
+    "log": "repro/interpreter.txt",
+    "note": "pytest was not installed in this worktree's interpreter; an isolated venv outside the repository was used. pytest 9.1.1 matches the version F8F reported."
+  },
+
+  "artifacts": [
+    {
+      "path": "rawlsing_next/pre553_authenticated_b5_ingress_candidate.py",
+      "role": "C02 authenticated B5 ingress candidate (NEW, candidate only)",
+      "state": "ADDED",
+      "git_blob": "5c30b9a0739989827f6028ef7858f3a4c046f4b8",
+      "sha256": "417679a8294475ad1aec87567e4b32fc0f9de5f9a51e14b960cce32dd19c3edb",
+      "lines": 1008,
+      "static_check": "pyflakes rc=0"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_authenticated_b5_ingress_candidate.py",
+      "role": "C02 candidate test suite: 7 genuine positives + 30 hostiles (NEW, candidate only)",
+      "state": "ADDED",
+      "git_blob": "00a6c039c4d17ce5cbabbb8e238611c02280b0c3",
+      "sha256": "f489aa29ffe11790accec41469697f0c0728aa0d8b9f6bf33a9a31c1d95d931a",
+      "lines": 1089,
+      "static_check": "pyflakes rc=0"
+    },
+    {
+      "path": "rawlsing_next/pre553_learned_product_lifecycle.py",
+      "role": "ACCEPTED B5 lifecycle owner",
+      "state": "UNMODIFIED",
+      "git_blob": "a11c9eb73abab9be118ef4f0b6e325e676059f27",
+      "proof": "git hash-object of the working-tree file equals git rev-parse HEAD:<path>"
+    },
+    {
+      "path": "rawlsing_next/pre553_learned_product_release.py",
+      "role": "ACCEPTED M2 ReleaseCore owner",
+      "state": "UNMODIFIED",
+      "git_blob": "f76c390665f06ef126968ccf1a6b2d816f43ae92",
+      "proof": "git hash-object of the working-tree file equals git rev-parse HEAD:<path>"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ280-PV3-C02-AUTHENTICATED-B5-BOUNDARY-R1/00_RETURN.md",
+      "role": "Commission return"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ280-PV3-C02-AUTHENTICATED-B5-BOUNDARY-R1/01_PRODUCER_TO_B5_CALLGRAPH_AND_TRUST.md",
+      "role": "Producer-to-B5 caller graph, trust boundary and enforcement-point decision"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ280-PV3-C02-AUTHENTICATED-B5-BOUNDARY-R1/02_AUTHENTICATED_INGRESS_CANDIDATE.md",
+      "role": "Candidate design, bindings, typed refusals, bounded residuals"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ280-PV3-C02-AUTHENTICATED-B5-BOUNDARY-R1/03_ACTUAL_POSITIVE_NEGATIVE_TESTS.json",
+      "role": "Machine-readable actual positive/negative evidence and mutation results"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ280-PV3-C02-AUTHENTICATED-B5-BOUNDARY-R1/04_RESIDUAL_SERVICE_ISSUER_AND_ADOPTION_HOLDS.md",
+      "role": "Residual service, issuer and adoption holds"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ280-PV3-C02-AUTHENTICATED-B5-BOUNDARY-R1/05_EVIDENCE_MANIFEST.json",
+      "role": "This manifest"
+    }
+  ],
+
+  "evidence": [
+    {
+      "path": "repro/repro_f8f_k4_k5_boundary.py",
+      "role": "Independent re-reproduction of the F8F K4/K5 boundary against the accepted owners",
+      "sha256": "cd727b8e36cc8245f23e50ab422e7c82fd4858fa3ca7d36b0c59aaa3f5d7d1ef",
+      "git_blob": "da3ad8650d1f7f8e35de5bc60852cb6271569c69",
+      "headline": "4/5 caller-constructed subjects reached PUBLISHED and 4/5 reached CURRENT_SELECTED"
+    },
+    {
+      "path": "repro/c02_boundary_repro.log",
+      "role": "Observed per-probe typed outcomes of the boundary reproduction",
+      "sha256": "714e0f38035e75c015da3402350ab99c2befdc65129776c972b971022a877c7d"
+    },
+    {
+      "path": "repro/c02_candidate_suite.log",
+      "role": "Actual pytest run of the C02 candidate suite",
+      "sha256": "17514bba66fad2ca769a3c2abfd7e48f99c0ff70c6735acca417fc60fa34de22",
+      "result": "37 passed"
+    },
+    {
+      "path": "repro/adjacent_adopted_owners.log",
+      "role": "Actual pytest run over 13 adjacent ACCEPTED owners",
+      "sha256": "2b9f8676e6221afa2dd0380602e29a54f764b442c22fe7fbe78818ab74a3b2ee",
+      "result": "525 passed"
+    },
+    {
+      "path": "repro/pyflakes.log",
+      "role": "Static check on both new candidate files",
+      "sha256": "44508a3317ed645f038bbb33159c1b02452922f29da413009a7d6cb87e303271",
+      "result": "rc=0"
+    },
+    {
+      "path": "repro/interpreter.txt",
+      "role": "Recorded interpreter and pytest version",
+      "sha256": "083ec914bc4c9188e9b67262ffebf22a731ec861e00ad8ccf82d2ddae14b717a"
+    }
+  ],
+
+  "commands_actually_executed": [
+    "git rev-parse HEAD  # -> c6e986dfa02b80887ded5f4d0da2e2413e676172",
+    "python WORKER_RETURNS/.../repro/repro_f8f_k4_k5_boundary.py",
+    "python -m pytest rawlsing_next/tests/test_pre553_authenticated_b5_ingress_candidate.py -v   # 37 passed",
+    "python -m pytest <13 adjacent accepted owner test files> -q                                     # 525 passed",
+    "python -m pyflakes rawlsing_next/pre553_authenticated_b5_ingress_candidate.py rawlsing_next/tests/test_pre553_authenticated_b5_ingress_candidate.py   # rc=0",
+    "git hash-object <each artifact>  # recorded above",
+    "git hash-object rawlsing_next/pre553_learned_product_lifecycle.py  # == HEAD blob, owner unmodified",
+    "git hash-object rawlsing_next/pre553_learned_product_release.py    # == HEAD blob, owner unmodified",
+    "git ls-remote --heads origin agent/rabochii-pyat-hq280-pv3-c02-authenticated-b5-boundary-r1  # pre-push: c6e986dfa02b80887ded5f4d0da2e2413e676172"
+  ],
+
+  "mutation_testing": {
+    "mutants_applied": 6,
+    "mutants_killed": 6,
+    "detail_ref": "03_ACTUAL_POSITIVE_NEGATIVE_TESTS.json#/mutation_testing_non_vacuity",
+    "method": "Each mutant applied to the candidate, suite run, candidate restored from a verified backup, restored tree re-verified at 37 passed."
+  },
+
+  "custody": {
+    "large_or_sensitive_artifacts": "NONE",
+    "external_files": "NONE",
+    "note": "Every artifact is modest, non-sensitive and committed directly to the branch under WORKER_RETURNS/. No /tmp ZIP relay, no manual user relay. The only out-of-tree file is the throwaway pytest virtualenv used to obtain a test runner; it contains no repository content and is reproducible from `python -m venv && pip install pytest`."
+  },
+
+  "honest_limits": [
+    "COVERAGE_LIMITED: no whole-repository green suite is claimed. Whole-suite collection errors occur on 9 pre-existing files caused by absent sibling WORKER_RETURNS artifacts (the same checkout-scope gap F8F recorded), and a whole-suite run additionally meets pre-existing failures/errors in legacy FIABC and objective-consumer modules unrelated to the two new candidate files. The 525-test adjacent-owner regression is the load-bearing no-regression evidence.",
+    "UNEXECUTED: no raw SAV/DTA source read; no respondent-lineage republication; no replay re-execution; no G0b, G1, CURRENT or V3 exercise; no canonical, semantic PRE-MAIN or root-manifest mutation; no self-adoption.",
+    "UNPROVED: no defence against an attacker executing arbitrary Python in the owner process (residual R4).",
+    "UNPROVED: an in-process principal able to rewrite BOTH custody and expectation consistently (residual R3).",
+    "STILL ABSENT: a competent producer issuer (residual R1).",
+    "NOT INDEPENDENTLY REVIEWED: C02 has run mutation testing but has had no independent hostile review. An F8F-style independent re-review is recommended before any grade above development is considered."
+  ],
+
+  "no_invention_attestation": {
+    "new_g0b_created": false,
+    "selected_g1_service_created": false,
+    "source_authority_created": false,
+    "operative_current_publication": false,
+    "v3_actor_permission": false,
+    "new_registrar_or_trust_root_created": false,
+    "scientific_or_model_use_issued": false,
+    "existing_owner_modified": false,
+    "proposed_unadopted_diff_offered": false,
+    "proposed_unadopted_diff_omitted_because": "No correction to any existing owner proved indispensable. The defect is the absence of a perimeter, and it is corrected by the new candidate-only module in front of the accepted B5 owner."
+  },
+
+  "terminal": "HQ280_PV3_C02_B5_TRUST_BOUNDARY_SOURCEFREE_CANDIDATE_AND_HOSTILES_PUSHED__NO_OPERATIVE_PUBLICATION"
+}
