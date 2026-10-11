@@ -1,7 +1,7 @@
 # Pyat HQ280 — Astra PRE-V3 plan readback and LR/WGE-R primary archive custody reconciliation R1
 
 **Grade:** DOCUMENTARY_PLAN_READBACK_CONFIRMED__PRIMARY_ARCHIVES_AVAILABLE_TO_THIS_HQ_SESSION__PERSISTENT_EVIDENCE_CUSTODY_NOT_YET_ADOPTED.
-**Read baseline:** `integration/pre-main-reconciliation-r1 @ a70a069fa948e0f3c041b389edcc732b6b948a4f`, whose sole parent is the previously verified `6a8c91d99dca1ae2fd3559ba3c11ee26649e3cd9`. This canonical commit added ten packet files plus two navigation updates, **no production code and no semantic/source/G0b adoption**. Immutable semantic PRE-MAIN remains separate at `1f47063c3205a45888b3c55e81e7485943ed1390`.
+**Read baseline:** `integration/pre-main-reconciliation-r1 @ a70a069fa948e0f3c041b389edcc732b6b948a4f`, whose sole parent is the previously verified `6a8c91d99dca1ae2fd3559ba3c11ee26649e3cd9`. This canonical commit added eleven packet files plus two navigation updates, **no production code and no semantic/source/G0b adoption**. Immutable semantic PRE-MAIN remains separate at `1f47063c3205a45888b3c55e81e7485943ed1390`.
 **Primary packet:** `PYAT_CONTROL_ROOM/WHOLE_MACHINE_ASSESSMENT_AND_PLAN_20261011_R1/`, notably `ASSESSMENT.md`, `ACTION_PLAN.md`, `EXECUTION_AND_ACCEPTANCE.md`, `TASKS.json` (25 **UNISSUED** proposed packages) and `SOURCE35_RECONCILIATION.json` (all 35 **UNRECONCILED at full original-operation-consumer grain**).
 
 ## Primary ZIPs verified in this HQ session
@@ -26,7 +26,7 @@ Direct reading of the HQ conversation's mounted files at `/mnt/data` independent
 
 ## Astra plan assessment and immediate controls
 
-**ACCEPT as evidence-linked, NONISSUING program proposal:** 25 R/A/B/C/D/E/Q packages, five milestones M0–M5, a DAG and AT01–AT35 routing. F8F actually returned 280 recorded passing test executions but K4/K5 among them expose caller-forged B5 publication; this is a **security/provenance gap**, not 280 refused attacks. WVQ identifies an 18-subitem selected-country pilot Q291 master battery but not a verified mapping to the retained 613-field WVS7 source and 46 derived I05 candidates. WVS 46 COVERAGE_LIMITED candidates/58 UNAVAILABLE fact states/58 zero denominators are **not** positive statistical support nor measured nulls. Q291 exact release/fielding/issuer holds remain.
+**ACCEPT as evidence-linked, NONISSUING program proposal:** 25 R/A/B/C/D/E/Q packages, six milestones M0–M5, a DAG and AT01–AT35 routing. F8F actually returned 280 recorded passing test executions but K4/K5 among them expose caller-forged B5 publication; this is a **security/provenance gap**, not 280 refused attacks. WVQ identifies an 18-subitem selected-country pilot Q291 master battery but not a verified mapping to the retained 613-field WVS7 source and 46 derived I05 candidates. WVS 46 COVERAGE_LIMITED candidates/58 UNAVAILABLE fact states/58 zero denominators are **not** positive statistical support nor measured nulls. Q291 exact release/fielding/issuer holds remain.
 
 **DO NOT promote to operative authority:** documentation on canonical, staged worker tests, proposed expected-key hash, source-native instrument text without retained version binding, or source-free development competence. Sourcing, operation issuance, producer lifecycle authenticity, and model/use are distinct acts.
 
