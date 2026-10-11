@@ -1,0 +1,156 @@
+{
+  "schema": "PYAT_HQ280_D03_SOURCEFREE_HOSTILES_AND_SCIENTIFIC_HOLDS@1",
+  "method": "direct frozen GitHub file/doc inspections and pure documentary logic; NOT Python pytest or raw survey tests",
+  "cases": [
+    {
+      "id": "H01",
+      "attack": "identical numeric 1/2 with different original question meaning",
+      "expected": "REFUSE_AUTO_COMPATIBILITY",
+      "documentary_reason": "source form required",
+      "result": "STATIC_DOC_AND_CODE_JUDGMENT__OWNER_RUNTIME_UNEXECUTED"
+    },
+    {
+      "id": "H02",
+      "attack": "Uganda 6200/3392 treated as national samples",
+      "expected": "HOLD_NATIONAL_SELECTOR",
+      "documentary_reason": "national n2400 each insufficient to select rows",
+      "result": "STATIC_DOC_AND_CODE_JUDGMENT__OWNER_RUNTIME_UNEXECUTED"
+    },
+    {
+      "id": "H03",
+      "attack": "R5 refusal 998 treated as substantive R9 8",
+      "expected": "REFUSE_CODE_COLLAPSE",
+      "documentary_reason": "different missing codes",
+      "result": "STATIC_DOC_AND_CODE_JUDGMENT__OWNER_RUNTIME_UNEXECUTED"
+    },
+    {
+      "id": "H04",
+      "attack": "Uganda R9 balancing lead-in ignored",
+      "expected": "HOLD_PROCESS_COMPARABILITY",
+      "documentary_reason": "original Q7 fielded questionnaire missing",
+      "result": "STATIC_DOC_AND_CODE_JUDGMENT__OWNER_RUNTIME_UNEXECUTED"
+    },
+    {
+      "id": "H05",
+      "attack": "EVS source-native 1=approve vs harmonized 1=approve/0=disapprove improperly mapped",
+      "expected": "REFUSE_NATIVE_TREND_CODING",
+      "documentary_reason": "0/1 harmonized cannot replace native 1/2",
+      "result": "STATIC_DOC_AND_CODE_JUDGMENT__OWNER_RUNTIME_UNEXECUTED"
+    },
+    {
+      "id": "H06",
+      "attack": "2008 Austria all residents treated as 1990 citizens",
+      "expected": "HOLD_COMMON_POPULATION",
+      "documentary_reason": "same frame unverified",
+      "result": "STATIC_DOC_AND_CODE_JUDGMENT__OWNER_RUNTIME_UNEXECUTED"
+    },
+    {
+      "id": "H07",
+      "attack": "1990 EVS weight_g used as national PSU/variance proof",
+      "expected": "HOLD_DESIGN",
+      "documentary_reason": "primary country sampling report missing",
+      "result": "STATIC_DOC_AND_CODE_JUDGMENT__OWNER_RUNTIME_UNEXECUTED"
+    },
+    {
+      "id": "H08",
+      "attack": "show list versus interviewer read implies fatal difference without validation",
+      "expected": "REFUSE_UNPROVEN_NEGATIVE",
+      "documentary_reason": "measurement process differs; effects not established",
+      "result": "STATIC_DOC_AND_CODE_JUDGMENT__OWNER_RUNTIME_UNEXECUTED"
+    },
+    {
+      "id": "H09",
+      "attack": "two cross-sections joined as panel respondents",
+      "expected": "REFUSE_PERSON_TRANSITIONS",
+      "documentary_reason": "no respondent linkage",
+      "result": "STATIC_DOC_AND_CODE_JUDGMENT__OWNER_RUNTIME_UNEXECUTED"
+    },
+    {
+      "id": "H10",
+      "attack": "63 syntactic pairs called 63 trends",
+      "expected": "REFUSE_PAIR_GRAPH_PROMOTION",
+      "documentary_reason": "claim-grain science not adjudicated",
+      "result": "STATIC_DOC_AND_CODE_JUDGMENT__OWNER_RUNTIME_UNEXECUTED"
+    },
+    {
+      "id": "H11",
+      "attack": "F7-RR security/candidate code mistaken for EE12 issuance",
+      "expected": "REFUSE_AUTHORITY_SUBSTITUTION",
+      "documentary_reason": "source comparison issuer distinct",
+      "result": "STATIC_DOC_AND_CODE_JUDGMENT__OWNER_RUNTIME_UNEXECUTED"
+    },
+    {
+      "id": "H12",
+      "attack": "M1 V553/V554 temporal ingress mistaken for empirical product",
+      "expected": "REFUSE_ADMISSION_AS_PRODUCER",
+      "documentary_reason": "M1 is admission/dedup",
+      "result": "STATIC_DOC_AND_CODE_JUDGMENT__OWNER_RUNTIME_UNEXECUTED"
+    },
+    {
+      "id": "H13",
+      "attack": "historical V553 probe_delta_direction treated as authorized structural direction",
+      "expected": "REFUSE_PROBE_PROMOTION",
+      "documentary_reason": "delta_interpretation_permission false on probes",
+      "result": "STATIC_DOC_AND_CODE_JUDGMENT__OWNER_RUNTIME_UNEXECUTED"
+    },
+    {
+      "id": "H14",
+      "attack": "attitude change called institutional collapse/causal pressure",
+      "expected": "REFUSE_STRUCTURAL_INFLATION",
+      "documentary_reason": "N8S distinct issuer and objective inputs",
+      "result": "STATIC_DOC_AND_CODE_JUDGMENT__OWNER_RUNTIME_UNEXECUTED"
+    },
+    {
+      "id": "H15",
+      "attack": "post-result pair selection",
+      "expected": "REFUSE_RETROACTIVE_ISSUANCE",
+      "documentary_reason": "freeze before measured direction",
+      "result": "STATIC_DOC_AND_CODE_JUDGMENT__OWNER_RUNTIME_UNEXECUTED"
+    },
+    {
+      "id": "H16",
+      "attack": "source silence called scientifically established noncomparable",
+      "expected": "HOLD_NOT_NEGATIVE",
+      "documentary_reason": "requires positive contradictory source and competent negative decision",
+      "result": "STATIC_DOC_AND_CODE_JUDGMENT__OWNER_RUNTIME_UNEXECUTED"
+    },
+    {
+      "id": "H17",
+      "attack": "HQ214 F7 candidate called present at sealed startup",
+      "expected": "REFUSE_CODE_ADOPTION_CLAIM",
+      "documentary_reason": "pre553_temporal_comparability.py absent at seal",
+      "result": "STATIC_DOC_AND_CODE_JUDGMENT__OWNER_RUNTIME_UNEXECUTED"
+    },
+    {
+      "id": "H18",
+      "attack": "missing wave facts treated as empirical zero/no-change",
+      "expected": "REFUSE_ZERO_FABRICATION",
+      "documentary_reason": "two actual qualified wave facts required",
+      "result": "STATIC_DOC_AND_CODE_JUDGMENT__OWNER_RUNTIME_UNEXECUTED"
+    }
+  ],
+  "Uganda_hold": {
+    "status": "SCIENTIFIC_HOLD_UNISSUED",
+    "scientific_noncomparable": false,
+    "first_doc": "fielded Uganda R5 Q7 country questionnaire and translations",
+    "other": [
+      "two national subset release selectors",
+      "PSU/strata and exact authorized weights/variance",
+      "R9 prompt process judgment",
+      "source SHA mapping and two respondent backed products"
+    ]
+  },
+  "Austria_hold": {
+    "status": "SCIENTIFIC_HOLD_UNISSUED",
+    "scientific_noncomparable": false,
+    "first_doc": "Austria ZA4479 1990 national method report",
+    "other": [
+      "1990 population+sample probability/strata/PSU",
+      "both source SAV version map",
+      "2008 citizen restriction and sample weights",
+      "1990/2008 show/read process decision",
+      "two respondent backed wave products"
+    ]
+  },
+  "scientific_output": "2 cases: HOLD; 0 new EE12 positives; 0 source-proven negative comparisons"
+}

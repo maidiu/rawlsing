@@ -1,0 +1,214 @@
+{
+  "schema": "PYAT_HQ280_D03_TWO_ORIGINAL_CASE_SCIENCE@1.0.0",
+  "cases": [
+    {
+      "case_id": "D03-UGANDA-NATIONAL-OVERSAMPLE",
+      "graph_id": "TEMP_SRC02_SRC03",
+      "status": "SCIENTIFIC_HOLD_UNISSUED",
+      "scientifically_established_noncomparability": false,
+      "source_family": "Afrobarometer",
+      "country": "Uganda",
+      "common_eligible_population_candidate": "noninstitutional adult Ugandan citizens age 18+, country national sample only; survey release mapping pending",
+      "repeated_cross_sections": true,
+      "person_panel": false,
+      "wave_a": {
+        "SRC": "SRC02",
+        "wave": "R5",
+        "SHA256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+        "field_dates": "2011-12-02 through 2012-02-27",
+        "original": "country Q7",
+        "construct": "respondent appraisal of country going wrong/right",
+        "native_substantive": {
+          "1": "wrong",
+          "2": "right"
+        },
+        "native_nonresponse": {
+          "9": "DK",
+          "998": "refused",
+          "-1": "missing"
+        },
+        "national_n": 2400,
+        "supplemental_n": 3800,
+        "field_total": 6200,
+        "frame": "2002 census projected forward; reported 2010/2011 projection year discrepancy",
+        "weight": "withinwt documented, R5 technical form weight field blank",
+        "PSU": "PPS, 300 national EAs × 8 reported",
+        "form": "country codebook+national summary, fielded original indigenized script and final translations NOT recovered"
+      },
+      "wave_b": {
+        "SRC": "SRC03",
+        "wave": "R9",
+        "SHA256": "3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8",
+        "field_dates": "2022-01-07 through 2022-01-25",
+        "original": "country Q3",
+        "construct": "respondent appraisal of country going wrong/right with longer balancing lead-in",
+        "native_substantive": {
+          "1": "wrong",
+          "2": "right"
+        },
+        "native_nonresponse": {
+          "8": "refused",
+          "9": "DK",
+          "-1": "missing"
+        },
+        "national_n": 2400,
+        "supplemental_new_cities_n": 992,
+        "field_total": 3392,
+        "frame": "2014 census",
+        "weight_candidates": [
+          "withinwt_ea",
+          "withinwt_hh"
+        ],
+        "PSU": "PPS, 8 respondents per PSU; precise national identifiers unbound",
+        "form": "Uganda country original English questionnaire 2021-12-28 revision indexed; field deployment and translations unproved"
+      },
+      "measurement": {
+        "same_target_candidate": true,
+        "protocol_invariance": "UNPROVED_R9_PROMPT_DIFFERS",
+        "same_numeric_1_2": "SUBSTANTIVE_ONLY",
+        "refusals_identical": false,
+        "not_asked_routing": "UNPROVED",
+        "source_native_response_polarity": "1 wrong / 2 right",
+        "interpretation_ceiling": "SUBJECTIVE_ATTITUDE_NOT_OBJECTIVE_NATIONAL_PERFORMANCE"
+      },
+      "national_design_hazards": [
+        "No certified original-release national-versus-supplemental selector for either retained SAV",
+        "RESPNO ranges, 2400 row cut, urban status, weights and row order are not national-sample identifiers",
+        "R5 withinwt documented but technical form weight blank; R9 withinwt_ea vs withinwt_hh unselected",
+        "2012 numbered-card person selection vs 2022 tablet selection, geographic frame and language changes",
+        "PSU/strata identifiers, calibrated national weights and variance not certified"
+      ],
+      "estimand_candidate": "Design-weighted difference p_R9(Q3=2 | actual national eligible+asked with Q3 in {1,2}) minus p_R5(Q7=2 | analogous Q7 risk), with separate missing/nonresponse and design-based covariance/uncertainty; NOT an observed difference",
+      "unresolved": [
+        "final fielded Uganda R5 Q7 script and translations",
+        "actual frozen SHA-to-official-release and national selector in R5 and R9",
+        "source-native stratum/PSU and selected weight calibration/inclusion",
+        "R9 balancing prompt comparability decision",
+        "risk and separate wave outcome facts",
+        "EE12 pair issuer and selected target-use temporal operation"
+      ],
+      "original_document_grade": "HG270 indexed original country documentation; original R5 questionnaire not recovered; 2021 R9 PDF page-image not independently visually rechecked in D03",
+      "next_owner": "Afrobarometer original Uganda survey/data custodians and independent survey statistician; then HQ exact EE12 issuer",
+      "evidence": [
+        "https://github.com/maidiu/rawlsing/blob/7ff4a9dd5dbecfd070fbd72e69f0765213f28416/WORKER_RETURNS/PYAT-HQ270-U01-UGANDA-R5-R9-ORIGINAL-NATIONAL-INSTRUMENT-AND-DESIGN-R1/00_ORIGINAL_UGANDA_R5_R9_INSTRUMENT_VERSIONS_AND_RESPONSE_MEANINGS.md",
+        "https://github.com/maidiu/rawlsing/blob/7ff4a9dd5dbecfd070fbd72e69f0765213f28416/WORKER_RETURNS/PYAT-HQ270-U01-UGANDA-R5-R9-ORIGINAL-NATIONAL-INSTRUMENT-AND-DESIGN-R1/01_NATIONAL_VERSUS_SPECIAL_SAMPLE_FRAME_WEIGHT_DESIGN_COURT.md"
+      ],
+      "product": {
+        "wave_a": "NOT_CURRENTLY_PRODUCED_FOR_THIS_EXACT_CLAIM",
+        "wave_b": "NOT_CURRENTLY_PRODUCED_FOR_THIS_EXACT_CLAIM",
+        "pair_auth": "UNISSUED",
+        "N8E": "ABSENT",
+        "N8S": "ABSENT",
+        "N9": "NOT_CONSUMED"
+      }
+    },
+    {
+      "case_id": "D03-EVS-A048-RESPONSE-SUCCESSION",
+      "graph_id": "TEMP_SRC12_SRC14",
+      "status": "SCIENTIFIC_HOLD_UNISSUED",
+      "scientifically_established_noncomparability": false,
+      "source_family": "EVS",
+      "country": "Austria",
+      "country_ISO": "AT/040",
+      "target": "Adult respondent approval/disapproval of abortion when woman unmarried; not abortion behavior or law",
+      "GESIS_trend": {
+        "dataset": "ZA7503 v3.0.0",
+        "variable": "A048",
+        "harmonized": {
+          "0": "disapprove",
+          "1": "approve",
+          "-1": "DK",
+          "-2": "no answer",
+          "-3": "NA",
+          "-4": "not asked",
+          "-5": "other missing"
+        }
+      },
+      "wave_a": {
+        "SRC": "SRC12",
+        "wave": "EVS1990",
+        "SHA256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+        "GESIS_reference": "ZA4460 v3.0.0",
+        "original": "q467c / original Q465C; master Q467C",
+        "native_codes": {
+          "1": "approve",
+          "2": "disapprove"
+        },
+        "national_n": 1460,
+        "fieldwork": "1990-04-09 through 1990-06-01",
+        "population": "18+ summary; exact citizenship/private-household domain unresolved",
+        "sampling_design": "probability versus quota Austria-specific primary 1990 method missing",
+        "weight": "weight_g age/sex calibration documented but not an inclusion/variance proof",
+        "presentation": "read-out/Card Z original documentation",
+        "official_release_mapping": "NOT_PROVED_FOR_RETAINED_SHA"
+      },
+      "wave_b": {
+        "SRC": "SRC14",
+        "wave": "EVS2008",
+        "SHA256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+        "GESIS_reference": "ZA4800 v5.0.0; Austria national ZA4754",
+        "original": "v184 / Q53A",
+        "native_codes": {
+          "1": "approve",
+          "2": "disapprove"
+        },
+        "national_n": 1510,
+        "fieldwork": "2008-07-21 through 2008-10-22",
+        "population": "18+ residents in private households irrespective citizenship",
+        "sampling_design": "multistage stratified cluster probability; 375 sampling points",
+        "weight": "EVS age×sex calibration plus separately reported Austria original weight; selection for estimand unresolved",
+        "presentation": "Liste 53 shown and question read out; documented modified interviewer instruction warning in 1999/2008 succession",
+        "official_release_mapping": "NOT_PROVED_FOR_RETAINED_SHA"
+      },
+      "measurement": {
+        "same_substantive_target_documented": true,
+        "administered_protocol_identical": false,
+        "proof_protocol_difference_harmless": "ABSENT",
+        "fatal_measurement_break": "NOT_ESTABLISHED",
+        "native_numeric_to_harmonized_recode": "must translate native 1=approve/2=disapprove to trend 1/0 and preserve all distinct missing/not-asked categories"
+      },
+      "population": {
+        "intersection_candidate": "Austrian citizens meeting verified common lower age/household criterion and actually exposed to A048",
+        "eligible_common_domain": "UNPROVEN_CITIZENSHIP_AND_AGE_FRAME",
+        "panel": false,
+        "source_population_as_is_may_differ": true
+      },
+      "sampling": {
+        "W1990_probability_design": "PRIMARY_METHOD_MISSING",
+        "W2008_cluster_design": "DOCUMENTED__EXACT_ANALYTIC_PSU_STRATA_WEIGHT_UNBOUND",
+        "source_native_weight_validity": "UNQUALIFIED_FOR_PAIR",
+        "variance": "NO_1990_DESIGN_BASED_CI_WARRANT",
+        "measurement_nonsampling_uncertainty": "known visual/interviewer protocol difference cannot be folded into sample SE"
+      },
+      "estimand_candidate": "Separate Austria national approval shares among source-authorized asked-and-valid A048 responses with verified matched common target and separately selected design/correct variance; temporal difference only after EE12 positive pair issuance",
+      "first_exact_missing": "Austria 1990 ZA4479 country method/technical report (Fessel/GfK), source SHA/version certification and weight+sampling population; independent protocol comparability decision",
+      "archive_identity_warning": "1990 ZA4754 record conflicted with HQ257 primary ZA4479 identification; do not correct source metadata by inference",
+      "issuer": "GESIS/EVS and AUSSDA national archival method + HQ source owner, independent survey-statistics/EE12 measurement authority, then HQ comparative pair owner",
+      "evidence": [
+        "https://github.com/maidiu/rawlsing/blob/d7c529a2aaa424e558137daeb0f81ea678955928/WORKER_RETURNS/PYAT-HQ250-S03-EVS-ONE-CONSTRUCT-COMPARABILITY-R1/EXACT_TWO_WAVE_LINEAGE.json",
+        "https://github.com/maidiu/rawlsing/blob/111adb35cac4a04041f20422c4593a2feee3d1d4/WORKER_RETURNS/PYAT-HQ254-E01-EVS-A048-AUSTRIA-DESIGN-AND-VERSION-R1/02_MEASUREMENT_AND_ESTIMAND_COURT.md",
+        "https://github.com/maidiu/rawlsing/blob/fa0335a6401d467a1ef63f7ed1b85014adeea69e/WORKER_RETURNS/PYAT-HQ257-E02-AUSTRIA-1990-PRIMARY-METHOD-AND-VERSION-R1/03_FINAL_DISPOSITION_AND_SMALLEST_REMAINING_EDGE.json"
+      ],
+      "primary": [
+        "https://access.gesis.org/dbk/71051",
+        "https://access.gesis.org/dbk/50678",
+        "https://access.gesis.org/dbk/17681",
+        "https://access.gesis.org/dbk/17933",
+        "https://access.gesis.org/dbk/70780"
+      ],
+      "product": {
+        "wave_a": "NOT_CURRENTLY_PRODUCED_FOR_THIS_EXACT_CLAIM",
+        "wave_b": "NOT_CURRENTLY_PRODUCED_FOR_THIS_EXACT_CLAIM",
+        "pair_auth": "UNISSUED",
+        "N8E": "ABSENT",
+        "N8S": "ABSENT",
+        "N9": "NOT_CONSUMED"
+      }
+    }
+  ],
+  "ghana_challenger": {
+    "scope": "SRC02×SRC03, Ghana country-specific R5 Q43 versus R9 Q31",
+    "status": "HQ260_BEST_NEXT_METHODS_DOCKET__NOT_ADOPTED_COMPARABLE",
+    "evidence": "https://github.com/maidiu/rawlsing/blob/5da99d15aeb83ab8d83f22128523e6a1be67209b/WORKER_RETURNS/PYAT-HQ260-E01-TEMPORAL-PAIR-METHOD-SELECTION-R1/02_ONE_TEMPORAL_ESTIMAND_READINESS_CHOICE.md"
+  }
+}

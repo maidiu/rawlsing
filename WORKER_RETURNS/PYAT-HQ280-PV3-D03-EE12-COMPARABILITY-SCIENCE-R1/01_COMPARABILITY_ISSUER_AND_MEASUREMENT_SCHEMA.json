@@ -1,0 +1,104 @@
+{
+  "schema": "PYAT_HQ280_D03_ORIGINAL_MEASUREMENT_POPULATION_ESTIMAND_COMPARABILITY@1.0.0",
+  "status": "DOCUMENTARY_PROPOSAL_NOT_COMPETENT_GRANT",
+  "scope": "exact two source releases × country × administered question × language/form × risk/subject × national design/weight × pre-result estimand × temporal comparison operation × consumer",
+  "wave_required": [
+    "original_SRC_and_SHA256",
+    "official_release_and_version_identity",
+    "original_fielded_country_language_item",
+    "respondent_vs_household_identity",
+    "route_asked_eligible_risk",
+    "substantive_and_typed_missing_codes",
+    "fieldwork_start_end_reference_period",
+    "country_age_citizenship_residence_household_frame",
+    "national_inclusion_vs_special_boost_selector",
+    "sampling_frame_PSU_strata_respondent_design",
+    "inclusion_calibration_weight_rule",
+    "denominator_and_uncertainty_methods",
+    "per_wave_measured_fact_and_quality"
+  ],
+  "pair_required": [
+    "two distinct verified original item products",
+    "documented common construct and original response recode",
+    "tested differences in presentation_and_translation",
+    "population common intersection or authorized transformed estimand",
+    "same-country scope_country_restriction",
+    "independent_design_variance_method",
+    "order_not_person_linkage",
+    "distinct source-universe_refs plus comparison relation",
+    "EE12 temporal use scoped affirmative snapshot",
+    "pre-result selected operation and intended consumer",
+    "temporal result uncertainty negative-state and replay",
+    "actual consumed product and as-of status"
+  ],
+  "authority_owners": [
+    {
+      "issuer": "original country survey+archive custodian",
+      "own": "source release, fielded question and design documentation",
+      "state": "NOT_NEWLY_GRANTED"
+    },
+    {
+      "issuer": "source-semantic and survey statistician",
+      "own": "response/risk/weight/design and estimand ceiling",
+      "state": "NOT_NEWLY_GRANTED"
+    },
+    {
+      "issuer": "HQ exact source execution",
+      "own": "frozen file use + per-wave source products",
+      "state": "NOT_NEWLY_GRANTED"
+    },
+    {
+      "issuer": "EE12/C7 competent positive pair issuer",
+      "own": "country item population response and source-universe/comparison relation",
+      "state": "NOT_NEWLY_GRANTED"
+    },
+    {
+      "issuer": "N8E temporal operation producer/use owner",
+      "own": "exact comparison operator and typed uncertainty/change result",
+      "state": "NOT_NEWLY_GRANTED"
+    },
+    {
+      "issuer": "N8S structural-world owner",
+      "own": "separately warranted structural premises+temporal pressure",
+      "state": "NOT_NEWLY_GRANTED"
+    },
+    {
+      "issuer": "N9/N10W service/use owner",
+      "own": "selected current/as-of consumer, dependency and replay",
+      "state": "NOT_NEWLY_GRANTED"
+    }
+  ],
+  "scientific_state_law": {
+    "unresolved_original_source": "HELD_MISSING_EVIDENCE",
+    "known_instrument_difference_without_qualified_tolerance": "HELD_SCIENTIFIC_DECISION",
+    "explicit_necessary_condition_mismatch_supported_by_source_and_competent_issuer": "SOURCE_ESTABLISHED_NONCOMPARABLE_FOR_DECLARED_ESTIMAND",
+    "unissued_exact_positive_pair": "HELD_ISSUER",
+    "missing_two_live_products": "HELD_PRODUCTS",
+    "measured_exact_zero": "OBSERVED_ZERO_ONLY_AFTER_EXECUTION",
+    "design_supported_no_measurable_change": "INFERENTIAL_OUTCOME_ONLY_AFTER_AUTHORIZED_EXECUTION",
+    "not_asked": "NOT_ASKED_NEVER_ZERO",
+    "unvisited": "UNKNOWN_NOT_NONCOMPARABLE"
+  },
+  "forbidden": [
+    "label equality as evidence",
+    "boosted n as national",
+    "wrong native-to-trend recode",
+    "whole-sample denominator instead of asked-risk",
+    "SRS CI from calibration weight",
+    "raw two-country pooling",
+    "panel transition without linkage",
+    "probe-only delta as learned structural change",
+    "attitude as objective institution",
+    "admission/refusal as producer",
+    "post-outcome choice",
+    "missing doc as scientific negative"
+  ],
+  "source_evidence": {
+    "ugInstrument": "https://github.com/maidiu/rawlsing/blob/7ff4a9dd5dbecfd070fbd72e69f0765213f28416/WORKER_RETURNS/PYAT-HQ270-U01-UGANDA-R5-R9-ORIGINAL-NATIONAL-INSTRUMENT-AND-DESIGN-R1/00_ORIGINAL_UGANDA_R5_R9_INSTRUMENT_VERSIONS_AND_RESPONSE_MEANINGS.md",
+    "ugDesign": "https://github.com/maidiu/rawlsing/blob/7ff4a9dd5dbecfd070fbd72e69f0765213f28416/WORKER_RETURNS/PYAT-HQ270-U01-UGANDA-R5-R9-ORIGINAL-NATIONAL-INSTRUMENT-AND-DESIGN-R1/01_NATIONAL_VERSUS_SPECIAL_SAMPLE_FRAME_WEIGHT_DESIGN_COURT.md",
+    "evsLineage": "https://github.com/maidiu/rawlsing/blob/d7c529a2aaa424e558137daeb0f81ea678955928/WORKER_RETURNS/PYAT-HQ250-S03-EVS-ONE-CONSTRUCT-COMPARABILITY-R1/EXACT_TWO_WAVE_LINEAGE.json",
+    "evsMethod": "https://github.com/maidiu/rawlsing/blob/111adb35cac4a04041f20422c4593a2feee3d1d4/WORKER_RETURNS/PYAT-HQ254-E01-EVS-A048-AUSTRIA-DESIGN-AND-VERSION-R1/02_MEASUREMENT_AND_ESTIMAND_COURT.md",
+    "evs1990": "https://github.com/maidiu/rawlsing/blob/fa0335a6401d467a1ef63f7ed1b85014adeea69e/WORKER_RETURNS/PYAT-HQ257-E02-AUSTRIA-1990-PRIMARY-METHOD-AND-VERSION-R1/03_FINAL_DISPOSITION_AND_SMALLEST_REMAINING_EDGE.json",
+    "ghana": "https://github.com/maidiu/rawlsing/blob/5da99d15aeb83ab8d83f22128523e6a1be67209b/WORKER_RETURNS/PYAT-HQ260-E01-TEMPORAL-PAIR-METHOD-SELECTION-R1/02_ONE_TEMPORAL_ESTIMAND_READINESS_CHOICE.md"
+  }
+}
