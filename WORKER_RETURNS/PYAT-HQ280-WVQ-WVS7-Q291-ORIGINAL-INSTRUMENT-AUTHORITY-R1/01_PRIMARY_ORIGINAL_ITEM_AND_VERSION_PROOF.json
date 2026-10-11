@@ -1,0 +1,445 @@
+{
+  "schema": "HQ280_WVQ_WVS7_Q291_ORIGINAL_INSTRUMENT_ITEM_AND_VERSION_COURT@1",
+  "status": "MASTER_INSTRUMENT_ITEM_FAMILY_IDENTIFIED__RETAINED_RELEASE_FIELD_LEVEL_AND_COUNTRY_EXPOSURE_HOLD",
+  "authority": "HQD-2026-10-10-280",
+  "sealed_tip": "71b90179b784f11ff39d983c87d0678b27487b23",
+  "source_identity": {
+    "filename": "WVS7.sav",
+    "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "rows": 97220,
+    "fields": 613,
+    "provenance": "Inherited WVF source identity; no SAV opened by WVQ",
+    "c11_release": {
+      "kind": "C11LogicalRelease",
+      "object_id": "WVS7_FROZEN_P2_EXACT_SOURCE",
+      "content_hash": "e6881e9a08a48f8871790e781c28bddbc44ee35db894d6ad7b1105a6a8fd262f"
+    },
+    "replay_manifest_sha256": "996ba218fc5da5e0ad1ddf0cdc7f91ce8fb8a7363ce62076dc3f4073b85c383f",
+    "dataset_exact_official_release_version": "UNRESOLVED_BY_CHECKSUM_TO_DATASET_RELEASE_MANIFEST"
+  },
+  "documentary_master": {
+    "title": "World Values Survey Wave 7 (2017-2021) Master Survey Questionnaire, 2017-2020 English master",
+    "file_code": "F00010738",
+    "location": "Regional and Thematic Modules, POLITICAL TRUST MODULE, questionnaire pages 23–24 of 27",
+    "url": "https://www.scribd.com/document/477319701/F00010738-WVS-7-Master-Questionnaire-2017-2020-English-pdf",
+    "presentation": "Accessible text transcription of WVSA master, not verified byte-identical original official PDF; primary-authored content via third-party presentation",
+    "pdf_sha256": null,
+    "exact_country_translation_variant": "NOT_ESTABLISHED",
+    "asked_all_countries": false,
+    "documentary_support": "Political trust module pilot in selected countries, instituted with TrustGov University of Southampton; questionnaire Q291 is 18 distinct 5-point statements, not one standalone variable"
+  },
+  "documentary_codebook": {
+    "title": "WVSA World Values Survey Wave 7 (2017-2020), Variables Report, Q291-294 political trust module",
+    "url": "https://www.statsclass.org/dsci310/Tasks/WorldValuesData_Codebook.pdf",
+    "locators": [
+      "PDF page index 100: module introduction and Q291P1–P4",
+      "PDF page index 101: Q291P4–P6, Q291G1 onward",
+      "PDF pages 102–104: Q291G/UN subitems and nonresponse values"
+    ],
+    "pdf_sha256": null,
+    "original_WVSA_host_bytes_verified": false,
+    "screenshot_attempt": "web PDF screenshot attempted at p100 and p102 but cache miss; text-extracted PDF page positions verified",
+    "primary_authored_WVSA_content": true,
+    "source_release_version_match": "UNVERIFIED"
+  },
+  "question_stem": "Now we would like to ask few more questions about the parliament, government and the United Nations. In particular, do you agree or disagree with the following statements?",
+  "respondent_grain": "INDIVIDUAL_INTERVIEWEE_ANSWER_PER_SUBITEM (master instrument; no household joint respondent fiction)",
+  "response_form": "ONE_ORDINAL_LIKERT_CHOICE_PER_SUBITEM (numerical direction source-defined only)",
+  "subitems": [
+    {
+      "variable": "Q291P1",
+      "institution": "PARLIAMENT",
+      "ordinal_in_group": 1,
+      "source_native_statement": "Overall, parliament is competent and efficient",
+      "response_codes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        -1,
+        -2,
+        -4,
+        -5
+      ]
+    },
+    {
+      "variable": "Q291P2",
+      "institution": "PARLIAMENT",
+      "ordinal_in_group": 2,
+      "source_native_statement": "Parliament usually carries out its duties poorly",
+      "response_codes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        -1,
+        -2,
+        -4,
+        -5
+      ]
+    },
+    {
+      "variable": "Q291P3",
+      "institution": "PARLIAMENT",
+      "ordinal_in_group": 3,
+      "source_native_statement": "Parliament usually acts in its own interests",
+      "response_codes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        -1,
+        -2,
+        -4,
+        -5
+      ]
+    },
+    {
+      "variable": "Q291P4",
+      "institution": "PARLIAMENT",
+      "ordinal_in_group": 4,
+      "source_native_statement": "Parliament wants to do its best to serve the country",
+      "response_codes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        -1,
+        -2,
+        -4,
+        -5
+      ]
+    },
+    {
+      "variable": "Q291P5",
+      "institution": "PARLIAMENT",
+      "ordinal_in_group": 5,
+      "source_native_statement": "Parliament is generally free of corruption",
+      "response_codes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        -1,
+        -2,
+        -4,
+        -5
+      ]
+    },
+    {
+      "variable": "Q291P6",
+      "institution": "PARLIAMENT",
+      "ordinal_in_group": 6,
+      "source_native_statement": "Parliament's work is open and transparent",
+      "response_codes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        -1,
+        -2,
+        -4,
+        -5
+      ]
+    },
+    {
+      "variable": "Q291G1",
+      "institution": "GOVERNMENT",
+      "ordinal_in_group": 1,
+      "source_native_statement": "Overall, the government is competent and efficient",
+      "response_codes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        -1,
+        -2,
+        -4,
+        -5
+      ]
+    },
+    {
+      "variable": "Q291G2",
+      "institution": "GOVERNMENT",
+      "ordinal_in_group": 2,
+      "source_native_statement": "The government usually carries out its duties poorly",
+      "response_codes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        -1,
+        -2,
+        -4,
+        -5
+      ]
+    },
+    {
+      "variable": "Q291G3",
+      "institution": "GOVERNMENT",
+      "ordinal_in_group": 3,
+      "source_native_statement": "The government usually acts in its own interests",
+      "response_codes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        -1,
+        -2,
+        -4,
+        -5
+      ]
+    },
+    {
+      "variable": "Q291G4",
+      "institution": "GOVERNMENT",
+      "ordinal_in_group": 4,
+      "source_native_statement": "The government wants to do its best to serve the country",
+      "response_codes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        -1,
+        -2,
+        -4,
+        -5
+      ]
+    },
+    {
+      "variable": "Q291G5",
+      "institution": "GOVERNMENT",
+      "ordinal_in_group": 5,
+      "source_native_statement": "The government is generally free of corruption",
+      "response_codes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        -1,
+        -2,
+        -4,
+        -5
+      ]
+    },
+    {
+      "variable": "Q291G6",
+      "institution": "GOVERNMENT",
+      "ordinal_in_group": 6,
+      "source_native_statement": "The government's work is open and transparent",
+      "response_codes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        -1,
+        -2,
+        -4,
+        -5
+      ]
+    },
+    {
+      "variable": "Q291UN1",
+      "institution": "UNITED_NATIONS",
+      "ordinal_in_group": 1,
+      "source_native_statement": "Overall, the UN is competent and efficient",
+      "response_codes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        -1,
+        -2,
+        -4,
+        -5
+      ]
+    },
+    {
+      "variable": "Q291UN2",
+      "institution": "UNITED_NATIONS",
+      "ordinal_in_group": 2,
+      "source_native_statement": "The UN usually carries out its duties poorly",
+      "response_codes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        -1,
+        -2,
+        -4,
+        -5
+      ]
+    },
+    {
+      "variable": "Q291UN3",
+      "institution": "UNITED_NATIONS",
+      "ordinal_in_group": 3,
+      "source_native_statement": "The UN usually acts in its own interests",
+      "response_codes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        -1,
+        -2,
+        -4,
+        -5
+      ]
+    },
+    {
+      "variable": "Q291UN4",
+      "institution": "UNITED_NATIONS",
+      "ordinal_in_group": 4,
+      "source_native_statement": "The UN wants to do its best to serve the world",
+      "response_codes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        -1,
+        -2,
+        -4,
+        -5
+      ]
+    },
+    {
+      "variable": "Q291UN5",
+      "institution": "UNITED_NATIONS",
+      "ordinal_in_group": 5,
+      "source_native_statement": "The UN is generally free of corruption",
+      "response_codes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        -1,
+        -2,
+        -4,
+        -5
+      ]
+    },
+    {
+      "variable": "Q291UN6",
+      "institution": "UNITED_NATIONS",
+      "ordinal_in_group": 6,
+      "source_native_statement": "The UN's work is open and transparent",
+      "response_codes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        -1,
+        -2,
+        -4,
+        -5
+      ]
+    }
+  ],
+  "native_response_codes": [
+    {
+      "code": 1,
+      "meaning": "Agree strongly",
+      "state": "SUBSTANTIVE"
+    },
+    {
+      "code": 2,
+      "meaning": "Agree",
+      "state": "SUBSTANTIVE"
+    },
+    {
+      "code": 3,
+      "meaning": "Neither agree nor disagree",
+      "state": "SUBSTANTIVE"
+    },
+    {
+      "code": 4,
+      "meaning": "Disagree",
+      "state": "SUBSTANTIVE"
+    },
+    {
+      "code": 5,
+      "meaning": "Disagree strongly",
+      "state": "SUBSTANTIVE"
+    },
+    {
+      "code": -1,
+      "meaning": "Don't know",
+      "state": "NONRESPONSE_DK"
+    },
+    {
+      "code": -2,
+      "meaning": "No answer",
+      "state": "NONRESPONSE"
+    },
+    {
+      "code": -4,
+      "meaning": "Not asked",
+      "state": "NOT_ASKED"
+    },
+    {
+      "code": -5,
+      "meaning": "Missing / not available",
+      "state": "OTHER_MISSING"
+    }
+  ],
+  "module_jurisdiction": {
+    "class": "SELECTED_COUNTRY_PILOT_NOT_GLOBAL_CORE",
+    "listed_countries": [
+      "Ethiopia",
+      "Iran",
+      "Kyrgyzstan",
+      "Myanmar",
+      "Nicaragua",
+      "Philippines",
+      "Tajikistan",
+      "Vietnam",
+      "Zimbabwe"
+    ],
+    "list_exhaustive": false,
+    "original_master_note": "Applied in selected countries, national datasets; further surveys expected. Country-specific administered forms still necessary.",
+    "country_form_effective_asked": true,
+    "country_year_language_variants_custody": "UNRESOLVED",
+    "applicability_exposure_claims": "NO_POSITIVE_APPLICABILITY_FOR_ANY_CASE_WITHOUT_COUNTRY/FORM/ITEM ROUTING"
+  },
+  "release_version_discrepancy": {
+    "WVSA_joint_page": "https://www.worldvaluessurvey.org/WVSEVSjoint2017.jsp",
+    "wvsa_wave7_v6_2024_05_01": {
+      "cases": 97220,
+      "variables_reported": 606,
+      "doi": "10.14281/18241.24"
+    },
+    "retained_WVS7_sav": {
+      "cases": 97220,
+      "variables": 613
+    },
+    "result": "MATCHING_ROW_COUNT_IS_NOT_SUFFICIENT_FOR_ISSUED_DATASET_VERSION__VARIABLE_COUNT_DIFFERENCE_REQUIRES_RECONCILIATION"
+  },
+  "not_proved": [
+    "specific original questionnaire country-language version used for each admitted respondent",
+    "whether any exact Q291P/G/UN subitem exists in the 613-variable retained .sav dictionary",
+    "exact data-release codebook version or official original PDF bytes and sha256",
+    "per-country/per-form Q291 asked membership, joint conditioned denominator or subitem country overrides",
+    "Q291R7 weighted estimand, country design strata/PSU and optional supplemental modules",
+    "which two actual WVS I05 input queries/target refs use which two Q291 subitems, if any",
+    "competent source/use permission and per-candidate eligible operation identity"
+  ],
+  "negative_boundary": "Q291 is a whole 18-item battery with 5 response atoms each; 5x5 derived I05 grammar on two five-state coordinates is NOT proof of Q291 item identity or original co-exposure."
+}
