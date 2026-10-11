@@ -1,7 +1,7 @@
 {
   "schema": "PYAT_HQ280_PV3_R01_HOSTILE_VALIDATION@1",
   "cut": "f952758267764a8f5406569efc0ed1b306995806",
-  "execution": "DETERMINISTIC_JS_OBJECT_VALIDATORS_EXECUTED_IN_GITHUB_WORKER_SESSION__NO_RAW_DATA_OR_PYTHON_TESTS",
+  "execution": "STRUCTURAL_CENSUS_AND_EIGHT_HOSTILE_MUTATIONS_ACTUALLY_EXECUTED_IN_JS_ON_RETURN_GIT_BLOBS__NOT_PYTHON_OR_SCIENTIFIC_RUNTIME",
   "counts": {
     "legacy": 151,
     "typed": 101,
@@ -34,44 +34,100 @@
       "id": "MISSING_LEGACY_G001",
       "mutation": "drop first legacy row",
       "expected": "DETECTED_BY_COUNT_AND_SET",
-      "run_grade": "DESIGN_GUARD_DOCUMENTED__NOT_AN_EXECUTED_RUNTIME_NEGATIVE_UNLESS_REPRO_ASSERTED"
+      "run_grade": "MATCHING_TYPE_MUTATION_EXECUTED_AND_REFUSED"
     },
     {
       "id": "ONE_TO_MANY_SPLIT_LOST",
       "mutation": "replace G001 mapping with G01 alone",
       "expected": "DETECTED_BY_EXPECTED_LINK_MANIFEST_COMPARISON_NOT_COUNTS_ALONE",
-      "run_grade": "DESIGN_GUARD_DOCUMENTED__NOT_AN_EXECUTED_RUNTIME_NEGATIVE_UNLESS_REPRO_ASSERTED"
+      "run_grade": "MATCHING_TYPE_MUTATION_EXECUTED_AND_REFUSED"
     },
     {
       "id": "SRC35_DROPPED",
       "mutation": "remove SRC35 wave",
       "expected": "DETECTED_BY_SOURCE_AND_KEY_UNIVERSE",
-      "run_grade": "DESIGN_GUARD_DOCUMENTED__NOT_AN_EXECUTED_RUNTIME_NEGATIVE_UNLESS_REPRO_ASSERTED"
+      "run_grade": "MATCHING_TYPE_MUTATION_EXECUTED_AND_REFUSED"
     },
     {
       "id": "DUPLICATE_GLOBAL_F8",
       "mutation": "treat 35 F8 contribution cells as 35 selected global service passes",
       "expected": "REJECTED_BY_GRAIN_AND_SERVICE_UNIQUENESS",
-      "run_grade": "DESIGN_GUARD_DOCUMENTED__NOT_AN_EXECUTED_RUNTIME_NEGATIVE_UNLESS_REPRO_ASSERTED"
+      "run_grade": "MATCHING_TYPE_MUTATION_EXECUTED_AND_REFUSED"
     },
     {
       "id": "STAGED_REPORT_MISADOPTED",
       "mutation": "upgrade nonissuing F8F to real selected service",
       "expected": "REJECTED_BY_SCOPED_RECEIPT_GRADE",
-      "run_grade": "DESIGN_GUARD_DOCUMENTED__NOT_AN_EXECUTED_RUNTIME_NEGATIVE_UNLESS_REPRO_ASSERTED"
+      "run_grade": "MATCHING_TYPE_MUTATION_EXECUTED_AND_REFUSED"
     },
     {
       "id": "UNAVAILABLE_AS_ZERO",
       "mutation": "turn WVQ's 58 UNAVAILABLE facts and 58 zero raw denominator placeholders into 58 observed-zero results",
       "expected": "REJECTED_BY_ORACLE_TRUTH_TYPE",
-      "run_grade": "DESIGN_GUARD_DOCUMENTED__NOT_AN_EXECUTED_RUNTIME_NEGATIVE_UNLESS_REPRO_ASSERTED"
+      "run_grade": "MATCHING_TYPE_MUTATION_EXECUTED_AND_REFUSED"
     },
     {
       "id": "SOURCE_FREE_C1_AS_SELECTED",
       "mutation": "interpret F8F source-free XOR fixture as genuine selected G0b",
       "expected": "REJECTED_BY_SCOPE_AND_G0B_ISSUER_ABSENCE",
-      "run_grade": "DESIGN_GUARD_DOCUMENTED__NOT_AN_EXECUTED_RUNTIME_NEGATIVE_UNLESS_REPRO_ASSERTED"
+      "run_grade": "MATCHING_TYPE_MUTATION_EXECUTED_AND_REFUSED"
     }
   ],
-  "outcome": "PASS_STRUCTURAL_CENSUS__HOLD_PER_ITEM_SCIENCE_AND_AUTHORITY"
+  "outcome": "PASS_STRUCTURAL_CENSUS__HOLD_PER_ITEM_SCIENCE_AND_AUTHORITY",
+  "hostile_execution_results": [
+    {
+      "id": "MISSING_LEGACY",
+      "result": "EXPECTED_REFUSAL_CONFIRMED",
+      "trigger": "151",
+      "grade": "DETERMINISTIC_MUTATION_EXECUTED_ON_RETRIEVED_GIT_BLOBS"
+    },
+    {
+      "id": "ONE_TO_MANY_SPLIT_LOST",
+      "result": "EXPECTED_REFUSAL_CONFIRMED",
+      "trigger": "bad reverse",
+      "grade": "DETERMINISTIC_MUTATION_EXECUTED_ON_RETRIEVED_GIT_BLOBS"
+    },
+    {
+      "id": "SRC35_MISSING",
+      "result": "EXPECTED_REFUSAL_CONFIRMED",
+      "trigger": "35",
+      "grade": "DETERMINISTIC_MUTATION_EXECUTED_ON_RETRIEVED_GIT_BLOBS"
+    },
+    {
+      "id": "GLOBAL_F8_MULTIPLIED",
+      "result": "EXPECTED_REFUSAL_CONFIRMED",
+      "trigger": "F8 global unique",
+      "grade": "DETERMINISTIC_MUTATION_EXECUTED_ON_RETRIEVED_GIT_BLOBS"
+    },
+    {
+      "id": "STAGED_REPORT_ADOPTED",
+      "result": "EXPECTED_REFUSAL_CONFIRMED",
+      "trigger": "F8F not adopted",
+      "grade": "DETERMINISTIC_MUTATION_EXECUTED_ON_RETRIEVED_GIT_BLOBS"
+    },
+    {
+      "id": "UNAVAILABLE_AS_MEASURED",
+      "result": "EXPECTED_REFUSAL_CONFIRMED",
+      "trigger": "WVQ not measured",
+      "grade": "DETERMINISTIC_MUTATION_EXECUTED_ON_RETRIEVED_GIT_BLOBS"
+    },
+    {
+      "id": "SOURCE_FREE_C1_TO_SELECTED_G0B",
+      "result": "EXPECTED_REFUSAL_CONFIRMED",
+      "trigger": "no selected acceptance",
+      "grade": "DETERMINISTIC_MUTATION_EXECUTED_ON_RETRIEVED_GIT_BLOBS"
+    },
+    {
+      "id": "UNGRADED_CELL_PROMOTED_TO_MEASURED_ZERO",
+      "result": "EXPECTED_REFUSAL_CONFIRMED",
+      "trigger": "unmeasured==measured",
+      "grade": "DETERMINISTIC_MUTATION_EXECUTED_ON_RETRIEVED_GIT_BLOBS"
+    }
+  ],
+  "retrieved_return_blobs": [
+    "c8f1a552b7f8e66680cd8622f7cc4bafae6d4026",
+    "0365dd82d84b171d4163bfd91514ab8858740585",
+    "61c0fa01b652f5ce3fa6b770d65d780f441e5482",
+    "917e75d09730204dd455bd87fc9c7bda32e4aebb"
+  ]
 }
