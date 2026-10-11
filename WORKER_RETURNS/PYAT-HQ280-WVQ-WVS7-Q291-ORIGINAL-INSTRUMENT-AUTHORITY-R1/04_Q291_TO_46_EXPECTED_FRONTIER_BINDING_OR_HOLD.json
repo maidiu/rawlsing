@@ -1,0 +1,114 @@
+{
+  "schema": "HQ280_WVQ_Q291_TO_46_PREI05_EXPECTED_FRONTIER_BINDING_OR_HOLD@1",
+  "status": "EXACT_SOURCE_ITEM_TO_TWO_QUERY_TARGETS_UNBOUND__NO_I05_PERMISSION_ISSUED",
+  "control": "HQD-2026-10-10-280",
+  "inherited_WVF": {
+    "commit": "b3c460c6ba2d1f750905f5ef95429065d7904ff5",
+    "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "WVS7_FROZEN_P2_EXACT_SOURCE",
+      "content_hash": "e6881e9a08a48f8871790e781c28bddbc44ee35db894d6ad7b1105a6a8fd262f"
+    },
+    "replay_hash": "996ba218fc5da5e0ad1ddf0cdc7f91ce8fb8a7363ce62076dc3f4073b85c383f",
+    "grammar_sha256": "a94bd2ed3b64b2c51f6d329560feef6b97f69da3527081d8ca6168ae63e5f7f6",
+    "frontier_digest": "cf8255816dc2ba5a51f6fc5918f09e901a5190f147a5192bd805f2908987299e",
+    "i05_frontier_hash": "b2c3c50b68bcadb94ff2bf898d11c2b72694ced9fee4154e535db2694e26a4f3",
+    "r1m_truth_post_i05": "eb2f9224219385dbf21af70d317e0978383012ff057ce2ac857b59c130472405",
+    "t3_original_oracle_git_blob": "60146f39598b7dae2e87cf30a1e88954db404022"
+  },
+  "operation_families": [
+    {
+      "family": "BOUNDED_K_WAY_RESPONSE_CONFIGURATION",
+      "count": 25,
+      "rule": "R08_JOINT_5X5",
+      "original_q291_children": "NOT_RESOLVED",
+      "needs": "two exact source-native children plus same-person pair, ordered roles, structural label/domain and per-operation permission"
+    },
+    {
+      "family": "UNARY_SOCIAL_FORK",
+      "count": 10,
+      "rule": "R08_UNARY_Q0 / R08_UNARY_Q1 (5 each)",
+      "original_q291_children": "NOT_RESOLVED",
+      "needs": "each unary query's one identified original item and its asked-risk and permission"
+    },
+    {
+      "family": "BRANCH_CONDITIONED_DISTRIBUTION",
+      "count": 10,
+      "rule": "R08_BRANCH_Q0_TO_Q1 / R08_BRANCH_Q1_TO_Q0 (5 each)",
+      "original_q291_children": "NOT_RESOLVED",
+      "needs": "two original items, ordered reversals, same-respondent risk, correct substantive denominator and eligibility"
+    },
+    {
+      "family": "PAIR_RESPONSE_COTRAVEL",
+      "count": 1,
+      "rule": "R08_PAIR_COTRAVEL",
+      "original_q291_children": "NOT_RESOLVED",
+      "needs": "exact original pair and honest joint vs product-of-marginals validation authority"
+    }
+  ],
+  "source_documentary_item": {
+    "Q291": "MODULE_STEM_CONTAINING_18_SEPARATE_ITEMS_NOT_A_SINGLE_SOURCE_MEASURE",
+    "child_identifiers": [
+      "Q291P1",
+      "Q291P2",
+      "Q291P3",
+      "Q291P4",
+      "Q291P5",
+      "Q291P6",
+      "Q291G1",
+      "Q291G2",
+      "Q291G3",
+      "Q291G4",
+      "Q291G5",
+      "Q291G6",
+      "Q291UN1",
+      "Q291UN2",
+      "Q291UN3",
+      "Q291UN4",
+      "Q291UN5",
+      "Q291UN6"
+    ],
+    "not_valid_assumption": "two ordinal five-state I05 roles imply Q291 even without original variable refs"
+  },
+  "retained_t3_evidence": {
+    "manifest_n": 46,
+    "typed_count_COVERAGE_LIMITED": 46,
+    "query_role_fact_states": {
+      "UNAVAILABLE": 58
+    },
+    "query_role_raw_denominators": {
+      "zero": 58,
+      "positive": 0
+    },
+    "observed_Q291_literal_in_t3_JSON": false,
+    "scientific_implication": "source-variable item is not established from T3 metadata alone; fact refs and evaluated negative states do not confer original source use"
+  },
+  "source_issuance_dependency_graph": {
+    "required_for_each_proposed_item_operation": [
+      "source and release identity reconciled with official WVS Wave 7 release/version dictionary",
+      "original child item administered-language/country-form question text",
+      "codebook exact native atom semantics + nonresponse not-asked values",
+      "sample-unit / country/form routing and exact same-respondent asked/eligible risk",
+      "weight/design/estimand or explicitly RAW descriptive-only ceiling",
+      "concrete I03 query/predicate/ref component source bindings (two where pair)",
+      "competent positive source-owner use act + per-operation grant",
+      "independent review before any promotion of COVERAGE_LIMITED"
+    ],
+    "already_proved": [
+      "46 pre-I05 candidate identities at GATE_3",
+      "R1M/T3 identical candidate/authority closure digests",
+      "two generic I05 invocations historic only",
+      "46 typed post-I05 COVERAGE_LIMITED at GATE_6",
+      "0 drops/0 adds; no ABC winner"
+    ],
+    "not_proved": [
+      "Q291 any exact child in 613-fields original dictionary",
+      "Q0/Q1 original labels and their relationship to Q291",
+      "country/form actual Q291 routing and common asked-risk",
+      "eligible denominator, substantive cell support, design/weights",
+      "authority to promote any of 46 candidates"
+    ]
+  },
+  "disposition": "NO_SHORTCUT_FROM_WVS7_Q291_BATTERY_TO_46_OPERATIONS__P2_SOURCE_ORIGINAL_ITEM_ISSUER_AND_I05_OPERATION_GRANT_HELD"
+}
