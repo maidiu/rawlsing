@@ -1,0 +1,87 @@
+{
+  "schema": "PYAT_HQ280_PV3_B01_MANIFEST@1.0.0",
+  "commission": "WORKER_COMMISSIONS/PYAT-HQ280-PV3-B01-RUNTIME-RESTART-CAPACITY-R1/00_COMMISSION.md",
+  "sealed_startup_sha": "150033139132a801c0cb22cb896e70d783a3a1bc",
+  "branch": "agent/rabochii-pyat-hq280-pv3-b01-runtime-restart-capacity-r1",
+  "governing_authority": "HQD-2026-10-10-280",
+  "hash_algorithm": "sha256",
+  "raw_source_executed": false,
+  "sensitive_artifacts": "NONE",
+  "files": [
+    {
+      "path": "00_RETURN.md",
+      "sha256": "fb90dee2645cac2b2da4d6fcdfefd03e59b6370f8731cbed07b15ccf79814577",
+      "bytes": 6545
+    },
+    {
+      "path": "01_ENV_CODE_DEPS_CUSTODY.json",
+      "sha256": "c1df659b3b46286d5f4014df6d308723fd1bffd4e7ab2ae9b52f26fa8f744ca1",
+      "bytes": 7694
+    },
+    {
+      "path": "02_ACTUAL_RUN_AND_RESOURCE_MEASURES.json",
+      "sha256": "888c074065b8c6c75788eae5e8a320dba620b816f096751fe3b4abcc1f5e9968",
+      "bytes": 11715
+    },
+    {
+      "path": "03_RESTART_CANCELLATION_CACHE_TESTS.json",
+      "sha256": "2a0285f9f1bd4608bac8b504ce2e73b17c71e4de7090d789848df7d4ebff1786",
+      "bytes": 19653
+    },
+    {
+      "path": "04_EXECUTION_SAFETY_AND_SOURCE_WARRANT_HOLDS.md",
+      "sha256": "3d142ccf5db38b3c1a85c20ad19422aedce9a9615357553fa9badf9e4c786f97",
+      "bytes": 9881
+    },
+    {
+      "path": "repro/b01_harness.py",
+      "sha256": "6f6f01d4f14c272ab3ba0167afa8f60a546784e95dc42a5bdcd271583fa74632",
+      "bytes": 39572
+    },
+    {
+      "path": "repro/b01_memory_bench.py",
+      "sha256": "c195ba2d2c1902f7cb2c197b41a663ed326240d84ea3188f63c0b46998c7421a",
+      "bytes": 1689
+    },
+    {
+      "path": "repro/harness_results.json",
+      "sha256": "a47b65b06083e9df095224a7e934ca0c6bb04305da641c9157e519e3a019c710",
+      "bytes": 15066
+    },
+    {
+      "path": "repro/logs/01_baseline_core_suite.txt",
+      "sha256": "c0d95598bd65bf0b98c679761ec29cfa9e7336d12a136a84efb17cf328053244",
+      "bytes": 3085
+    },
+    {
+      "path": "repro/logs/02_full_suite_attempt.txt",
+      "sha256": "922e1f0849c2a580b2bbd3b8feff55adb5a32ff08d5b417efd029506b75b02ac",
+      "bytes": 8147
+    },
+    {
+      "path": "repro/logs/03_full_suite_pandas_pyarrow.txt",
+      "sha256": "22af69476d1fca44fcad737aade96a8b58557659534b53283a108d52d32162ca",
+      "bytes": 1748
+    },
+    {
+      "path": "repro/logs/04_full_suite_bounded.txt",
+      "sha256": "eda86ddb828461a5fe415a386a7dff3bf06450b39d766d9b4c9c3992c4262a09",
+      "bytes": 10327
+    },
+    {
+      "path": "repro/logs/05_full_suite_signal_timeout.txt",
+      "sha256": "c65390f5271b82b39ecc8dfe93bf25ff6ddd9d9b40264fe0e6fa978924342d5d",
+      "bytes": 1452347
+    },
+    {
+      "path": "repro/logs/06_harness_run.txt",
+      "sha256": "43a98bd85e5c0a9d260524080f685e4a19ae3e81fae0bd9e726c4bd90f064f52",
+      "bytes": 5209
+    },
+    {
+      "path": "repro/logs/07_memory_scaling.txt",
+      "sha256": "757f889f099d1630a8dd4592ce4a346b3e2082234d9bd683928affc9cde401b9",
+      "bytes": 1163
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "schema": "PYAT_HQ280_PV3_B01_ENV_CODE_DEPS_CUSTODY@1.0.0",
+  "commission": "WORKER_COMMISSIONS/PYAT-HQ280-PV3-B01-RUNTIME-RESTART-CAPACITY-R1/00_COMMISSION.md",
+  "governing_authority": "HQD-2026-10-10-280",
+  "scope_label": "SCOPED_NONAUTHORIZING_DEVELOPMENT_DOCUMENTARY_EXECUTION",
+  "sealed_startup_sha_verified": "150033139132a801c0cb22cb896e70d783a3a1bc",
+  "sealed_startup_branch_verified": "agent/rabochii-pyat-hq280-pv3-b01-runtime-restart-capacity-r1",
+  "sealed_startup_match": "EXACT_MATCH",
+  "canonical_baseline_per_seal": "a70a069fa948e0f3c041b389edcc732b6b948a4f",
+  "semantic_pre_main_per_seal": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "hq280_parallel_seal": "908ee4e74849884b1d4c2f532209a0ca57538b67",
+
+  "host": {
+    "os_product": "macOS 13.7.8 (Build 22H730)",
+    "arch": "x86_64",
+    "platform_string": "macOS-13.7.8-x86_64-i386-64bit",
+    "cpu_logical_cores": 16,
+    "physical_memory_bytes": 17179869184,
+    "secondary_mac_used": false,
+    "stress_testing": "NONE_UNBOUNDED_STRESS_DECLINED_BY_COMMISSION"
+  },
+
+  "interpreter": {
+    "version": "3.11.3",
+    "version_full": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "system_interpreter_path": "/usr/local/bin/python3",
+    "system_python_modified": false,
+    "system_python_evidence": "python3 -m pip list at start returned only pip 23.1.2 and setuptools 65.5.0; all work used an isolated venv interpreter"
+  },
+
+  "venv": {
+    "isolation": "python3 -m venv (isolated virtual environment)",
+    "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/.venv_b01_hq280b01",
+    "path_note": "DELIBERATELY OUTSIDE the worktree. A venv created inside the worktree makes `git status --porcelain` non-empty and therefore breaks every owner test that calls require_clean_worktree(). See finding F-03.",
+    "creation_command": "python3 -m venv /Users/matthewsmith/Desktop/Rawlsing_Worktrees/.venv_b01_hq280b01",
+    "pip_upgrade_command": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/.venv_b01_hq280b01/bin/python -m pip install --upgrade pip",
+    "pip_upgrade_result": "pip 22.3.1 -> 26.2.1",
+    "dependency_install_commands": [
+      "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/.venv_b01_hq280b01/bin/python -m pip install pytest==8.3.4",
+      "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/.venv_b01_hq280b01/bin/python -m pip install pandas pyarrow",
+      "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/.venv_b01_hq280b01/bin/python -m pip install pytest-timeout"
+    ],
+    "final_pip_freeze": [
+      "iniconfig==2.3.1",
+      "numpy==2.4.6",
+      "packaging==26.3",
+      "pandas==3.0.6",
+      "pluggy==1.6.0",
+      "pyarrow==26.0.0",
+      "pytest==8.3.4",
+      "pytest-timeout==2.4.0",
+      "python-dateutil==2.9.0.post0",
+      "six==1.17.0"
+    ],
+    "pytest_present_at_start": false,
+    "pytest_absent_evidence": "python3 -c 'import pytest' -> ModuleNotFoundError: No module named 'pytest'"
+  },
+
+  "test_configuration": {
+    "pytest_ini": "ABSENT",
+    "setup_cfg": "ABSENT",
+    "pyproject_toml": "ABSENT",
+    "conftest_py": "ABSENT_ANYWHERE_IN_REPO",
+    "package_init_files": "ABSENT (implicit namespace packages)",
+    "rootdir": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01",
+    "import_mode": "prepend (pytest default)",
+    "canonical_command_form": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/.venv_b01_hq280b01/bin/python -m pytest -q <files>  (run from repo root)",
+    "command_note": "`python -m pytest` from the repo root is required so that `rawlsing_next` resolves via CWD on sys.path; bare `pytest` is unsafe here because no __init__.py files exist."
+  },
+
+  "measured_owner_blob_shas_at_head": {
+    "rawlsing_next/pre553_batch_runner.py": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+    "rawlsing_next/pre553_replay_audit.py": "86e0b9c518633735f2527b89fb72fca1a40dc2cc",
+    "rawlsing_next/pre553_c11_repository.py": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+    "rawlsing_next/pre553_c11_integrity.py": "7c59aa13a2b7c8e3ab0dc90a1400df645b0b4bbd",
+    "rawlsing_next/pre553_route_b_production.py": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+    "rawlsing_next/bounded_empirical_runtime.py": "5677751c36a8cd15daa7679232126a4ab69bdd89",
+    "rawlsing_next/pre553_discovery_adaptive.py": "58e32770381fa8d901701d6a2c676f28261aa3e3",
+    "rawlsing_next/pre553_discovery_exact.py": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+    "rawlsing_next/pre553_empirical_objects.py": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "rawlsing_next/pre553_runtime_authority.py": "896c7094124a4aaea23eec550178e4bf8e73ac68",
+    "rawlsing_next/pre553_empirical_query.py": "03facecf70890bfd13b80418620d274cbcd69d02"
+  },
+  "owner_source_mutated_by_this_commission": false,
+  "owner_source_identity_note": "rawlsing_next/pre553_empirical_objects.py blob a61365b994e5c3c50de0f598fcf40e90abf757b6 is byte-identical at HEAD 1500331 and at canonical baseline a70a069; the measured owner surface is the same code HQ holds.",
+
+  "raw_source_custody": {
+    "sav_files_present_in_worktree": 0,
+    "dta_files_present_in_worktree": 0,
+    "search_command": "find . -path ./.venv_b01 -prune -o \\( -name '*.sav' -o -name '*.dta' \\) -print",
+    "observation": "NO_RAW_SURVEY_SOURCE_PRESENT_IN_THIS_WORKTREE",
+    "sav_dta_opened_by_this_commission": false,
+    "private_primary_custody_noted_not_accessed": {
+      "LR-A": "e201e7923e1d34520dec7134a51e338b5204d55e39c3caa6a51b65888663600b",
+      "LR-B": "cc5197f7570f3e2eddeab9dc4e6675838334536504df101f5b6ab12e52b598a9",
+      "LR-C": "ac36b217a8c779f1d9e091fb8bb6489a13023b51d02b31a8434f39dbf9e8f366",
+      "WGE-R": "cc346273cf843ed90719ed6608e0dfc684a62741244dddc41d5644f0dbec2391",
+      "access": "NOT_PRESENT_LOCALLY_NOT_REQUESTED_NOT_OPENED"
+    },
+    "data_directory_observed": "data/ddm_build_copy/ contains only Python sources and build scripts; no binary survey payload."
+  },
+
+  "fixture_hash": {
+    "source_free_fixture_basis": "all probes synthesize ExactRef values in-process; no on-disk fixture file is read by any probe",
+    "accepted_test_fixture_dir": "rawlsing_next/tests/fixtures/",
+    "accepted_test_fixture_files": 6,
+    "accepted_test_fixture_note": "None of the batch/Route B/I03/I05/bounded-runtime owner tests read from fixtures/; they build everything in-process.",
+    "harness_fixture_identity": "deterministic from sha256(label); ref(kind,tag) = ExactRef(kind, urn:b01:<kind>:<tag>, sha256-of-label)"
+  },
+
+  "disk_output_and_custody": {
+    "owner_disk_writes_in_pre553_family": 0,
+    "owner_disk_write_grep_pattern": "open\\(|write_text|json\\.dump\\(|tempfile|os\\.replace|\\.mkdir\\(",
+    "modules_checked_with_zero_matches": [
+      "pre553_batch_runner.py", "pre553_replay_audit.py", "pre553_c11_repository.py",
+      "pre553_c11_integrity.py", "pre553_route_b_production.py",
+      "bounded_empirical_runtime.py", "pre553_discovery_adaptive.py"
+    ],
+    "harness_artifacts_written": [
+      "repro/b01_harness.py",
+      "repro/b01_memory_bench.py",
+      "repro/harness_results.json",
+      "repro/logs/*.txt"
+    ],
+    "large_or_sensitive_artifacts": "NONE. Everything committed is small, non-sensitive text/JSON.",
+    "temp_dirs": "All scratch directories were created under tempfile.mkdtemp and removed; the only persistent writes are inside this return directory."
+  },
+
+  "host_constraints_observed": {
+    "unbounded_stress": "NOT_RUN",
+    "raw_sav_dta_execution": "NOT_RUN",
+    "worktree_deletion": "NOT_PERFORMED",
+    "git_gc": "NOT_PERFORMED",
+    "other_worktrees_disturbed": "NONE (parallel A04/C02 untouched)",
+    "new_clone_or_checkout_created": "NONE",
+    "canonical_mutation": "NONE"
+  }
+}

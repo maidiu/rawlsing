@@ -1,0 +1,283 @@
+{
+  "schema": "PYAT_HQ280_PV3_B01_RESTART_CANCELLATION_CACHE_TESTS@1.0.0",
+  "sealed_startup_sha": "150033139132a801c0cb22cb896e70d783a3a1bc",
+  "discipline": "Every entry below records an ACTUAL owner invocation performed by repro/b01_harness.py. Where no owner operation exists, the entry says so explicitly and is labelled NOT_EXECUTED_NO_OWNER_OPERATION. No anticipated failure is reported as an executed hostile test.",
+
+  "summary": {
+    "probes_executed": 24,
+    "pass": 20,
+    "fail": 0,
+    "typed_non_pass": 4,
+    "unresolved_after_execution": 0,
+    "owner_source_modified": false,
+    "synthetic_owner_capability_implemented_by_harness": "NONE"
+  },
+
+  "restart_and_interruption": [
+    {
+      "probe_id": "B01-P03",
+      "area": "recovery/interrupt",
+      "owner_call_actually_invoked": "BatchExecutionRunner(manifest, repository).run(executors={QUERY:ExecutorBinding}, max_units=5) then BatchExecutionRunner(manifest, repository, prior_receipts=<prefix receipts>).run(executors=...)",
+      "expectation": "an interrupted run leaves explicit pending coverage and cannot be mistaken for completion; a fresh runner fed only the prefix receipts resumes and finishes",
+      "observed": "mid: completed=5/12 state=IN_PROGRESS coverage=INCOMPLETE_MANIFEST_COVERAGE; resumed: completed=12/12 state=COMPLETED full_coverage=True",
+      "outcome": "PASS",
+      "classification": "OBSERVED_RUNTIME_BEHAVIOUR"
+    },
+    {
+      "probe_id": "B01-P15",
+      "area": "recovery/throttle",
+      "owner_call_actually_invoked": "BatchExecutionRunner.run(executors=..., max_units=3) over a 10-unit manifest",
+      "expectation": "a throttled run reports INCOMPLETE coverage and cannot forge full completion",
+      "observed": "completed=3/10 coverage=INCOMPLETE_MANIFEST_COVERAGE full_coverage=False batch_state=IN_PROGRESS",
+      "outcome": "PASS",
+      "classification": "OBSERVED_RUNTIME_BEHAVIOUR"
+    },
+    {
+      "probe_id": "B01-P14",
+      "area": "recovery/defer",
+      "owner_call_actually_invoked": "BatchExecutionRunner.run(executors={}) -> DEFERRED, then BatchExecutionRunner(prior_receipts=...).run(executors={QUERY:...})",
+      "expectation": "a missing executor is an explicit DEFERRED state and is resumable to COMPLETED",
+      "observed": "run1: state=DEFERRED deferred=5; resume: state=COMPLETED completed=5/5",
+      "outcome": "PASS",
+      "classification": "OBSERVED_RUNTIME_BEHAVIOUR"
+    },
+    {
+      "probe_id": "B01-P05",
+      "area": "recovery/retry",
+      "owner_call_actually_invoked": "BatchExecutionRunner.run() with a failing executor -> FAILED receipts -> new runner(prior_receipts=r1).run() with a succeeding executor",
+      "expectation": "FAILED units are safely retryable, attempt indices stay contiguous, semantic unit identity is unchanged across the retry",
+      "observed": "run1: completed=2 failed=2 state=FAILED; retry: completed=4 failed=0 state=COMPLETED; attempt indices after retry were contiguous from 1",
+      "outcome": "PASS",
+      "classification": "OBSERVED_RUNTIME_BEHAVIOUR"
+    },
+    {
+      "probe_id": "B01-P19",
+      "area": "recovery/process-loss",
+      "owner_call_actually_invoked": "TWO SEPARATE OS PROCESSES. Process A: BatchExecutionRunner.run(max_units=5) then the harness serializes receipts via UnitExecutionReceipt.projection(). Process B (independent interpreter, handed only the file): UnitExecutionReceipt rehydration from those projections, then BatchExecutionRunner(prior_receipts=...).run()",
+      "expectation": "execution progress survives genuine process loss when receipts are serialized",
+      "observed": "procA: completed=5/10 state=IN_PROGRESS; procB: restored=5, final=10/10, full=True",
+      "outcome": "PASS",
+      "classification": "OBSERVED_RUNTIME_BEHAVIOUR",
+      "critical_caveat": "This passes ONLY because the CALLER serialized the receipts. The owner contributed no persistence. See B01-P04 and F-01."
+    },
+    {
+      "probe_id": "B01-P20",
+      "area": "recovery/process-loss-severe",
+      "owner_call_actually_invoked": "BatchExecutionRunner constructed with NO prior_receipts after the caller's serialized receipt file was deleted, then run to completion",
+      "expectation": "with no recovery input the owner redoes all work at-least-once and never reports false completion",
+      "observed": "no-input start: completed=0/10 state=READY pending=10; after re-run: completed=10/10 full=True; manifest identity unchanged",
+      "outcome": "OBSERVED_FULL_REDO_NO_OWNER_STORE",
+      "classification": "OBSERVED_RUNTIME_BEHAVIOUR",
+      "significance": "Correct and safe, but it means the entire unit set is recomputed after total process loss. There is no partial-progress store to consult."
+    },
+    {
+      "probe_id": "B01-P16",
+      "area": "recovery/interrupt+I05",
+      "owner_call_actually_invoked": "execute_adaptive_exploration(interrupt_after=1) -> AdaptiveSearchCheckpoint.as_dict() -> json.dumps -> json.loads -> AdaptiveSearchCheckpoint.from_dict() -> execute_adaptive_exploration(resume_from=reloaded)",
+      "expectation": "an interrupted adaptive search survives a REAL disk round-trip and resumes to exactly the one-shot result identity",
+      "observed": "partial_state=PARTIAL_INTERRUPTED unvisited=2; checkpoint_bytes=7111; disk_roundtrip_identity_stable=True; one-shot checkpoint ref == resumed-from-disk checkpoint ref",
+      "outcome": "PASS",
+      "classification": "OBSERVED_RUNTIME_BEHAVIOUR",
+      "significance": "The I05 adaptive checkpoint IS genuinely serializable and IS identity-stable across a real disk round-trip. This is the strongest restart-grade result measured in this commission."
+    }
+  ],
+
+  "cancellation": [
+    {
+      "probe_id": "B01-P15",
+      "area": "cancellation",
+      "owner_call_actually_invoked": "BatchExecutionRunner.run(executors=..., max_units=3)",
+      "expectation": "owner-level cooperative stop via max_units leaves typed pending coverage",
+      "observed": "as recorded above",
+      "outcome": "PASS",
+      "classification": "OBSERVED_RUNTIME_BEHAVIOUR",
+      "scope_limit": "max_units is a COOPERATIVE THROTTLE applied between whole units. It is not a mid-unit abort, not a signal handler and not a timeout mechanism. No owner API exists to cancel a unit already inside an executor call."
+    },
+    {
+      "probe_id": "CANCEL-HARD",
+      "area": "cancellation",
+      "owner_call_actually_invoked": "NONE",
+      "expectation": "a hard in-flight cancellation primitive",
+      "observed": "NOT_EXECUTED_NO_OWNER_OPERATION",
+      "outcome": "NOT_EXECUTED_NO_OWNER_OPERATION",
+      "classification": "TYPED_ABSENT",
+      "note": "No cancel/abort/timeout/signal API exists on BatchExecutionRunner, BatchUnitSpec, ExecutorBinding, execute_route_b_production or bounded_empirical_runtime. A host that loses its process loses the in-flight unit. This is an ABSENCE OF OWNER OPERATION, not a test that failed."
+    }
+  ],
+
+  "duplicate_publication_prevention": [
+    {
+      "probe_id": "B01-P02",
+      "area": "recovery/duplicate",
+      "owner_call_actually_invoked": "BatchExecutionRunner(prior_receipts=<all completed>).next_attempt_index(<completed unit>)",
+      "expectation": "a COMPLETED unit is not retryable, so a duplicate cannot be published",
+      "observed": "raised BatchIntegrityError: completed unit is not retryable",
+      "outcome": "PASS",
+      "classification": "OBSERVED_RUNTIME_BEHAVIOUR"
+    },
+    {
+      "probe_id": "B01-P06",
+      "area": "recovery/duplicate",
+      "owner_call_actually_invoked": "UnitExecutionReceipt(attempt_index=99) fed into BatchExecutionRunner(prior_receipts=...)",
+      "expectation": "a non-contiguous or replayed attempt index is refused fail-closed",
+      "observed": "raised BatchIntegrityError: receipt attempts must be contiguous and deterministic",
+      "outcome": "PASS",
+      "classification": "OBSERVED_RUNTIME_BEHAVIOUR"
+    },
+    {
+      "probe_id": "B01-P01",
+      "area": "duplicate",
+      "owner_call_actually_invoked": "BatchExecutionRunner.run() over a 50-unit manifest with a counting executor",
+      "expectation": "the executor is invoked exactly once per unit",
+      "observed": "summary.completed=50/50 executor_calls=50 state=COMPLETED coverage=FULL_MANIFEST_COVERAGE",
+      "outcome": "PASS",
+      "classification": "OBSERVED_RUNTIME_BEHAVIOUR"
+    },
+    {
+      "probe_id": "DUP-PUBLISH",
+      "area": "duplicate publication at the PRODUCT layer",
+      "owner_call_actually_invoked": "NONE",
+      "expectation": "an idempotent publish/commit boundary that refuses a second publication of the same semantic result",
+      "observed": "NOT_EXECUTED_NO_OWNER_OPERATION",
+      "outcome": "NOT_EXECUTED_NO_OWNER_OPERATION",
+      "classification": "TYPED_ABSENT",
+      "note": "BatchExecutionRunner owns EXECUTION receipts only. It has no product commit/publication step, so no duplicate-publication hostile can be executed against it. The nearest owner-side atomic swap is C11Repository._commit_validated (in-memory). Publication-layer idempotency belongs to C02 scope, not B01."
+    }
+  ],
+
+  "checkpoint_tamper_and_staleness": [
+    {
+      "probe_id": "B01-P07",
+      "area": "recovery/tamper",
+      "owner_call_actually_invoked": "BatchExecutionRunner(manifest=B).record_receipt(<UnitExecutionReceipt bound to a byte-different manifest A>)",
+      "expectation": "a stale checkpoint minted against another manifest is refused",
+      "observed": "manifest_A=13e536d6a875c52a manifest_B=6b7c266b34d42be8 (distinct); raised BatchIntegrityError: receipt manifest hash mismatch",
+      "outcome": "PASS",
+      "classification": "OBSERVED_RUNTIME_BEHAVIOUR",
+      "correction_note": "the first attempt at this probe built two IDENTICAL manifests and so was vacuous; it was rebuilt with genuinely distinct units before the result above was recorded."
+    },
+    {
+      "probe_id": "B01-P08",
+      "area": "recovery/tamper",
+      "owner_call_actually_invoked": "UnitExecutionReceipt with result_ref.content_hash rewritten, rebuilt through the owner constructor from the tampered projection",
+      "expectation": "byte-level substitution inside a serialized receipt changes the receipt identity (content addressing)",
+      "observed": "original_receipt_hash=17e2a3604b5243241166732c forged_receipt_hash=4a2f1b66039b79fdc6a8e73c identity_changed=True",
+      "outcome": "PASS",
+      "classification": "OBSERVED_RUNTIME_BEHAVIOUR",
+      "correction_note": "the first attempt replaced the receipt hash inside a projection string, but receipt_hash is NOT a member of projection(), making the replacement a no-op. Corrected to mutate a real member."
+    },
+    {
+      "probe_id": "B01-P17",
+      "area": "recovery/tamper+I05",
+      "owner_call_actually_invoked": "AdaptiveSearchCheckpoint.from_dict(<checkpoint dict with visits erased to []>) then execute_adaptive_exploration(resume_from=tampered)",
+      "expectation": "erasing visit history must not skip work, must not double-count a unit and must not forge completion",
+      "observed": "identity_changed=True; visited_set_equal_to_one_shot=True; duplicate_units=False; terminal completeness equal (both EXPLORATORY_POLICY_FRONTIER_EXHAUSTED); checkpoint_identity_converges=False. one_shot order ['b01-root','b01-child','b01-later'] vs resumed order ['b01-child','b01-root','b01-later']",
+      "outcome": "PASS",
+      "classification": "OBSERVED_RUNTIME_BEHAVIOUR_WITH_IDENTITY_FINDING",
+      "finding": "CHECKPOINT_IDENTITY_IS_VISIT_ORDER_SENSITIVE. A rewritten checkpoint re-executes an EQUAL work set and reaches the EQUAL terminal state, but produces a DIFFERENT checkpoint ref purely because visit ordering differs. Safety holds (no skipped work, no duplicate unit, no false completion); identity determinism does not converge.",
+      "honest_limitation": "AdaptiveSearchCheckpoint.from_dict does NOT reject the tampered dict. Detection is only available to a caller that independently compares the content-addressed ref. There is no owner-side tamper rejection path."
+    },
+    {
+      "probe_id": "B01-P18",
+      "area": "recovery/partial-negative+I05",
+      "owner_call_actually_invoked": "dataclasses.replace(<partial adaptive result>, global_negative_claim=True)",
+      "expectation": "an interrupted/partial search can never authorize a global empirical negative",
+      "observed": "raised PartialSearchNegativeError: adaptive result cannot claim global empirical absence",
+      "outcome": "PASS",
+      "classification": "OBSERVED_RUNTIME_BEHAVIOUR"
+    },
+    {
+      "probe_id": "STALE-CKPT-FILE",
+      "area": "recovery/tamper",
+      "owner_call_actually_invoked": "NONE",
+      "expectation": "owner-side validation of a checkpoint FILE against a pinned manifest hash at load time",
+      "observed": "NOT_EXECUTED_NO_OWNER_OPERATION",
+      "outcome": "NOT_EXECUTED_NO_OWNER_OPERATION",
+      "classification": "TYPED_ABSENT",
+      "note": "There is no owner checkpoint file, so no owner load-time validation can be executed. The equivalent invariant (B01-P07) is enforced in-memory at record_receipt time and WAS executed."
+    }
+  ],
+
+  "cache_behaviour": [
+    {
+      "probe_id": "B01-P12",
+      "area": "cache",
+      "owner_call_actually_invoked": "BatchExecutionRunner.run() with a pre-populated cache dict of ExecutionOutcome values deliberately NOT passed as prior_receipts",
+      "expectation": "cache presence cannot satisfy a unit; every unit still requires a real execution receipt",
+      "observed": "executor_invocations=6 completed=6/6 actual_execution_receipts=6",
+      "outcome": "PASS",
+      "classification": "OBSERVED_RUNTIME_BEHAVIOUR",
+      "significance": "Cache neutrality is enforced structurally: the runner has no cache parameter at all, so a cache cannot be laundered into a receipt."
+    },
+    {
+      "probe_id": "CACHE-ROUTEB",
+      "area": "cache",
+      "owner_call_actually_invoked": "NONE (owner accepted test only)",
+      "expectation": "dropping the Route B SourceBackedC11SessionCache and rebuilding yields a semantically identical result",
+      "observed": "the accepted owner test test_pre553_route_b_production.py::test_cache_drop_rebuild_is_semantically_invariant passes in the 178-test core run",
+      "outcome": "OBSERVED_VIA_ACCEPTED_OWNER_TEST",
+      "classification": "OBSERVED_RUNTIME_BEHAVIOUR_INHERITED",
+      "note": "SourceBackedC11SessionCache (rawlsing_next/pre553_source_backed_c11_facade.py:612) is a bare in-memory dict with get/put/clear/entry_count. No serialization, no eviction, no TTL, no size bound. It is process-local and contributes no authority across runs."
+    }
+  ],
+
+  "resource_and_concurrency": [
+    {
+      "probe_id": "B01-P10",
+      "area": "resource/disk",
+      "owner_call_actually_invoked": "BatchExecutionRunner.run() inside a temporary directory chmod 0o500 (no write permission)",
+      "expectation": "the owner either completes without needing disk, or fails with an explicit typed error",
+      "observed": "no exception; files_created_in_tmp=0; the owner wrote nothing",
+      "outcome": "OBSERVED_NO_DISK_DEPENDENCY",
+      "classification": "OBSERVED_RUNTIME_BEHAVIOUR",
+      "scope_limit": "This demonstrates disk INDEPENDENCE for the batch owner. It is NOT a disk-exhaustion test: no owner writes to disk, so disk exhaustion cannot be provoked against it. Genuine disk-exhaustion hostile testing is UNEXECUTED because it has no applicable owner surface."
+    },
+    {
+      "probe_id": "B01-P11",
+      "area": "resource/concurrency",
+      "owner_call_actually_invoked": "Two threads each constructing an independent BatchExecutionRunner over ONE shared immutable BatchManifest, synchronized on a threading.Barrier",
+      "expectation": "an immutable manifest admits concurrent independent runners without shared mutable state",
+      "observed": "w1 completed=24/24 and w2 completed=24/24, no exception, no interference",
+      "outcome": "PASS",
+      "classification": "OBSERVED_RUNTIME_BEHAVIOUR",
+      "scope_limit": "Thread-level concurrency within one process, and only across INDEPENDENT runners. There is no owner-side lock, no multi-process file lock and no single-writer publication boundary in the pre553 family. The repo's only real cross-process owner lock is fcntl.flock in ee_p2x_darwin_court_driver.py:802-810, which is outside the batch/Route B surface and is coupled to the EE-P2X court."
+    },
+    {
+      "probe_id": "B01-P09",
+      "area": "replay/determinism",
+      "owner_call_actually_invoked": "BatchManifest(units=(a,b,c)) vs BatchManifest(units=(c,a,b)) vs BatchManifest(units=(b,c,a))",
+      "expectation": "storage order does not change manifest identity",
+      "observed": "h1=h2=h3=847b0d72752945474d3d7f52 all_equal=True",
+      "outcome": "PASS",
+      "classification": "OBSERVED_RUNTIME_BEHAVIOUR"
+    },
+    {
+      "probe_id": "B01-P13",
+      "area": "replay/identity",
+      "owner_call_actually_invoked": "The same 10-unit manifest executed twice in two independent runners",
+      "expectation": "receipt_set_hash is stable across independent executions",
+      "observed": "distinct_receipt_set_hashes=1 value=7a80d2a0d20bff06bf415d23; distinct_manifest_hashes=1",
+      "outcome": "PASS",
+      "classification": "OBSERVED_RUNTIME_BEHAVIOUR"
+    }
+  ],
+
+  "durable_checkpoint_finding": {
+    "probe_id": "B01-P04",
+    "area": "recovery/persistence",
+    "owner_call_actually_invoked": "NONE — a direct source scan for an owner-side durable serialization path",
+    "expectation": "if a durable checkpoint exists, receipts survive a fresh process with no caller-supplied prior_receipts",
+    "observed": "NO_OWNER_WRITE_PATH. rawlsing_next/pre553_batch_runner.py contains zero matches for open(, write_text, json.dump(, tempfile, os.replace, .mkdir(. Receipts live only in an in-memory dict (line 407).",
+    "outcome": "GAP_NO_DURABLE_CHECKPOINT",
+    "classification": "TYPED_ABSENT_CONFIRMED_BY_SOURCE_AND_BY_TEST",
+    "corroboration": "Verified independently by targeted source inspection across pre553_batch_runner, pre553_replay_audit, pre553_c11_repository, pre553_c11_integrity, pre553_route_b_production, bounded_empirical_runtime and pre553_discovery_adaptive: zero file-write operations in all seven.",
+    "the_one_real_exception": "rawlsing_next/ee_p2x_darwin_court_driver.py DOES implement a durable atomic stage ledger (StageLedger at line 756, _atomic_write_json at 502-510 using fsync + os.replace, --resume at 1095/1192/1294, an fcntl.flock DriverInstanceLock at 802-810, and revalidate_terminal re-hashing every output). It is coupled to the EE-P2X Darwin court and is not reusable by the batch/Route B/C11 family without adaptation. It is the reference pattern for F-01."
+  },
+
+  "protocol_mandate_without_implementation": {
+    "observation": "rawlsing_next/rabochii_execution_protocol.py:300-323 REQUIRES, for REAL_EXECUTION profiles, a checkpoint_state with mode WRITE_AHEAD and, while a volatile result is pending, a PERSIST_CHECKPOINT action. It also forbids volatile_result_pending coexisting with durable_checkpoint_ref.",
+    "verdict": "NO_OWNER_IMPLEMENTATION_FOUND",
+    "evidence": "A repository-wide search for PERSIST_CHECKPOINT, durable_checkpoint_ref and checkpoint_state matches only this validator and its test file. No owner code creates a durable checkpoint.",
+    "consequence": "The written protocol mandates a write-ahead durable checkpoint that the codebase does not implement. Any REAL_EXECUTION claim would be running ahead of the implemented capability. This is a documentation-vs-implementation gap, not an executed failure."
+  }
+}

@@ -1,0 +1,326 @@
+{
+  "results": [
+    {
+      "probe_id": "B01-P01",
+      "area": "batch",
+      "owner_call_actually_invoked": "BatchExecutionRunner.run(executors={QUERY:ExecutorBinding})",
+      "expectation": "all units COMPLETED, executor invoked exactly once per unit",
+      "observed": "summary.completed=50/50 executor_calls=50 state=COMPLETED coverage=FULL_MANIFEST_COVERAGE",
+      "outcome": "PASS",
+      "elapsed_s": 0.005643,
+      "detail": {
+        "receipt_set_hash": "7489b04a746cfe5a8675a26d61da0015d6df017d8a22402aed74add2e10540ef"
+      }
+    },
+    {
+      "probe_id": "B01-P01",
+      "area": "batch",
+      "owner_call_actually_invoked": "BatchExecutionRunner.run(executors={QUERY:ExecutorBinding})",
+      "expectation": "all units COMPLETED, executor invoked exactly once per unit",
+      "observed": "summary.completed=20/20 executor_calls=20 state=COMPLETED coverage=FULL_MANIFEST_COVERAGE",
+      "outcome": "PASS",
+      "elapsed_s": 0.002273,
+      "detail": {
+        "receipt_set_hash": "76480df85011fe6aecc9b93056bc45536ab778ec11ac7341b4e2c13b4b2cc2b3"
+      }
+    },
+    {
+      "probe_id": "B01-P02",
+      "area": "recovery/duplicate",
+      "owner_call_actually_invoked": "BatchExecutionRunner(prior_receipts=...).next_attempt_index(completed_unit)",
+      "expectation": "COMPLETED unit is not retryable; duplicate publication refused",
+      "observed": "raised BatchIntegrityError: completed unit is not retryable",
+      "outcome": "PASS"
+    },
+    {
+      "probe_id": "B01-P03",
+      "area": "recovery/interrupt",
+      "owner_call_actually_invoked": "BatchExecutionRunner(prior_receipts=).run(max_units=5) then fresh-runner resume",
+      "expectation": "interrupted run leaves explicit pending coverage; fresh runner resumes and completes",
+      "observed": "mid: completed=5/12 state=IN_PROGRESS coverage=INCOMPLETE_MANIFEST_COVERAGE; resumed: completed=12/12 state=COMPLETED full_coverage=True",
+      "outcome": "PASS",
+      "detail": {
+        "pending_units_after_interrupt": 7,
+        "receipts_part1": 5,
+        "receipts_part2": 7
+      }
+    },
+    {
+      "probe_id": "B01-P04",
+      "area": "recovery/persistence",
+      "owner_call_actually_invoked": "probe for owner-side durable serialization of UnitExecutionReceipt",
+      "expectation": "if a durable checkpoint exists, receipts survive a fresh process with no prior_receipts",
+      "observed": "NO_OWNER_WRITE_PATH: pre553_batch_runner.py contains zero file-write operations; receipts are in-memory only (rawlsing_next/pre553_batch_runner.py)",
+      "outcome": "GAP_NO_DURABLE_CHECKPOINT",
+      "detail": {
+        "grep_write_patterns_in_module": 0,
+        "checkpoint_file_created": false,
+        "tmp_dir": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/b01-batch-disk-vxn32k9g"
+      }
+    },
+    {
+      "probe_id": "B01-P19",
+      "area": "recovery/process-loss",
+      "owner_call_actually_invoked": "2 separate OS processes: proc A executes prefix, proc B rebuilds from serialized receipts only",
+      "expectation": "execution progress survives real process loss when receipts are serialized by the caller",
+      "observed": "procA: completed=5/10 state=IN_PROGRESS; procB(restored=5, final=10/10, full=True)",
+      "outcome": "PASS",
+      "detail": {
+        "receipt_file_bytes": 7144,
+        "owner_serializes_this_itself": false,
+        "serialization_owner": "CALLER (this harness) via UnitExecutionReceipt.projection()",
+        "note": "projection() emits plain dicts; rehydration requires the caller to rebuild ExactRef values explicitly (no owner-provided from_dict)"
+      }
+    },
+    {
+      "probe_id": "B01-P20",
+      "area": "recovery/process-loss-severe",
+      "owner_call_actually_invoked": "BatchExecutionRunner with NO prior_receipts after the caller's receipt file is DELETED",
+      "expectation": "with no recovery input the owner must redo all work at-least-once (never report false completion, never trust a cache in place of a receipt)",
+      "observed": "no-input start: completed=0/10 state=READY pending=0; after re-run: completed=10/10 full=True; same_manifest_identity=True",
+      "outcome": "OBSERVED_FULL_REDO_NO_OWNER_STORE",
+      "detail": {
+        "owner_durable_checkpoint_exists": false,
+        "recovery_input_is_caller_owned": true,
+        "redone_units": 10,
+        "duplicate_publication_risk": "NONE: units are semantic identities, not rows"
+      }
+    },
+    {
+      "probe_id": "B01-P05",
+      "area": "recovery/retry",
+      "owner_call_actually_invoked": "BatchExecutionRunner.run() -> FAILED receipts -> new runner(prior_receipts=) -> run()",
+      "expectation": "FAILED units are retryable; attempt indices stay contiguous; unit identity unchanged",
+      "observed": "run1: completed=2 failed=2 state=FAILED; retry: completed=4 failed=0 state=COMPLETED",
+      "outcome": "PASS",
+      "detail": {
+        "attempt_indices_after_retry": [
+          1,
+          2,
+          1,
+          2,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "probe_id": "B01-P01",
+      "area": "batch",
+      "owner_call_actually_invoked": "BatchExecutionRunner.run(executors={QUERY:ExecutorBinding})",
+      "expectation": "all units COMPLETED, executor invoked exactly once per unit",
+      "observed": "summary.completed=6/6 executor_calls=6 state=COMPLETED coverage=FULL_MANIFEST_COVERAGE",
+      "outcome": "PASS",
+      "elapsed_s": 0.00068,
+      "detail": {
+        "receipt_set_hash": "8cd1d0720893006e6a42d216c962be8bd3da9ff22e99a625e842fa3925df4464"
+      }
+    },
+    {
+      "probe_id": "B01-P06",
+      "area": "recovery/tamper",
+      "owner_call_actually_invoked": "UnitExecutionReceipt(attempt_index=99) into BatchExecutionRunner(prior_receipts=)",
+      "expectation": "non-contiguous/forged attempt index is refused fail-closed",
+      "observed": "raised BatchIntegrityError: receipt attempts must be contiguous and deterministic",
+      "outcome": "PASS"
+    },
+    {
+      "probe_id": "B01-P07",
+      "area": "recovery/tamper",
+      "owner_call_actually_invoked": "BatchExecutionRunner(manifest=B).record_receipt(receipt_bound_to_distinct_manifest_A)",
+      "expectation": "stale checkpoint from a different manifest is refused",
+      "observed": "manifest_A=fad6d22b7b6558ea manifest_B=10f88f12b1326d42 distinct=True; raised BatchIntegrityError: receipt manifest hash mismatch",
+      "outcome": "PASS"
+    },
+    {
+      "probe_id": "B01-P01",
+      "area": "batch",
+      "owner_call_actually_invoked": "BatchExecutionRunner.run(executors={QUERY:ExecutorBinding})",
+      "expectation": "all units COMPLETED, executor invoked exactly once per unit",
+      "observed": "summary.completed=4/4 executor_calls=4 state=COMPLETED coverage=FULL_MANIFEST_COVERAGE",
+      "outcome": "PASS",
+      "elapsed_s": 0.000459,
+      "detail": {
+        "receipt_set_hash": "9ec8d0dc5b093df0c6e36a1a786c3ecf069c6e57e931079f3412ce9dd10a02ff"
+      }
+    },
+    {
+      "probe_id": "B01-P08",
+      "area": "recovery/tamper",
+      "owner_call_actually_invoked": "UnitExecutionReceipt result_ref.content_hash rewritten, receipt rebuilt from tampered projection",
+      "expectation": "byte-level result substitution changes the receipt identity (content-addressed)",
+      "observed": "original_receipt_hash=35bd5dbaff1ff383a39b25b2 forged_receipt_hash=20714f522a9c6f9ab48c185a identity_changed=True",
+      "outcome": "PASS"
+    },
+    {
+      "probe_id": "B01-P09",
+      "area": "replay/determinism",
+      "owner_call_actually_invoked": "BatchManifest(units=(a,b,c)) vs (c,a,b) vs (b,c,a)",
+      "expectation": "storage order does not change manifest_hash (canonical ordering)",
+      "observed": "h1=b4a904e6588a9b1baa503fb9 h2=b4a904e6588a9b1baa503fb9 h3=b4a904e6588a9b1baa503fb9 all_equal=True",
+      "outcome": "PASS"
+    },
+    {
+      "probe_id": "B01-P10",
+      "area": "resource/disk",
+      "owner_call_actually_invoked": "BatchExecutionRunner.run() inside a non-writable (0o500) temporary directory",
+      "expectation": "owner either completes without disk pressure or fails with an explicit typed error",
+      "observed": "exception=None; files_created_in_tmp=0; owner_wrote_nothing=True",
+      "outcome": "OBSERVED_NO_DISK_DEPENDENCY"
+    },
+    {
+      "probe_id": "B01-P11",
+      "area": "resource/concurrency",
+      "owner_call_actually_invoked": "2x BatchExecutionRunner on one shared immutable BatchManifest (threads)",
+      "expectation": "immutable manifest admits concurrent independent runners; no shared mutable state",
+      "observed": "outcomes={'w2': 'completed=24/24', 'w1': 'completed=24/24'} receipt_set_hashes_differ=True (executor_ref differs, so expected)",
+      "outcome": "PASS",
+      "detail": {
+        "receipt_set_hashes": {
+          "w2": "6492e457d032676e35133f6a8521f0b5b4a5c0b0027b00f6e5cb8199b46dba0e",
+          "w1": "1e65981717903f30a87d92e51844c8de18ace2df2d67d1345e74c6a7957f2560"
+        }
+      }
+    },
+    {
+      "probe_id": "B01-P12",
+      "area": "cache",
+      "owner_call_actually_invoked": "BatchExecutionRunner.run() with a pre-populated cache dict NOT passed as receipts",
+      "expectation": "cache presence cannot satisfy a unit; every unit still requires a real receipt",
+      "observed": "executor_invocations=6 completed=6/6 actual_execution_receipts=6",
+      "outcome": "PASS"
+    },
+    {
+      "probe_id": "B01-P13",
+      "area": "replay/identity",
+      "owner_call_actually_invoked": "BatchExecutionRunner.run() executed twice over identical manifest",
+      "expectation": "receipt_set_hash is stable across independent executions",
+      "observed": "distinct_receipt_set_hashes=1 value=64b55774948f80bc37e0cc96 distinct_manifest_hashes=1",
+      "outcome": "PASS"
+    },
+    {
+      "probe_id": "B01-P14",
+      "area": "recovery/defer",
+      "owner_call_actually_invoked": "BatchExecutionRunner.run(executors={}) -> DEFERRED, then resume with executor",
+      "expectation": "missing executor is an explicit DEFERRED state, resumable to COMPLETED",
+      "observed": "run1: state=DEFERRED deferred=5; resume: state=COMPLETED completed=5/5",
+      "outcome": "PASS"
+    },
+    {
+      "probe_id": "B01-P15",
+      "area": "recovery/throttle",
+      "owner_call_actually_invoked": "BatchExecutionRunner.run(max_units=3) over a 10-unit manifest",
+      "expectation": "throttled run reports INCOMPLETE coverage and cannot claim full completion",
+      "observed": "completed=3/10 coverage=INCOMPLETE_MANIFEST_COVERAGE full_coverage=False batch_state=IN_PROGRESS",
+      "outcome": "PASS"
+    },
+    {
+      "probe_id": "B01-P16",
+      "area": "recovery/interrupt+I05",
+      "owner_call_actually_invoked": "execute_adaptive_exploration(interrupt_after=1) -> as_dict -> from_dict -> resume_from=",
+      "expectation": "interrupted adaptive search resumes to exactly the one-shot result identity",
+      "observed": "partial_state=PARTIAL_INTERRUPTED unvisited=2; checkpoint_bytes=7111 disk_roundtrip_identity_stable=True; one_shot_vs_resumed_equal=True",
+      "outcome": "PASS",
+      "elapsed_s": 0.005083
+    },
+    {
+      "probe_id": "B01-P17",
+      "area": "recovery/tamper+I05",
+      "owner_call_actually_invoked": "AdaptiveSearchCheckpoint.from_dict(visits=[]) then execute_adaptive_exploration(resume_from=)",
+      "expectation": "erasing visit history must not skip work or double-count units; safety is measured as equal visited SET + equal terminal completeness, not equal checkpoint hash",
+      "observed": "tampered_checkpoint_identity_changed=True; visited_set_equal_to_one_shot=True; duplicate_units=False; terminal_completeness_equal=True (one-shot=EXPLORATORY_POLICY_FRONTIER_EXHAUSTED, resumed=EXPLORATORY_POLICY_FRONTIER_EXHAUSTED); checkpoint_identity_converges=False one_shot_order=['b01-root', 'b01-child', 'b01-later'] resumed_order=['b01-child', 'b01-root', 'b01-later']",
+      "outcome": "PASS",
+      "detail": {
+        "finding": "checkpoint identity is sensitive to VISIT ORDER; a rewritten checkpoint re-executes an equal work set and reaches the equal terminal state but yields a different checkpoint ref",
+        "tampered_accepted_by_from_dict": true,
+        "safety_property_held": "no skipped work, no duplicated unit, no false completion",
+        "identity_property": "DIVERGES (order-sensitive content addressing)",
+        "detection_available_to_caller": "content-addressed ref comparison"
+      }
+    },
+    {
+      "probe_id": "B01-P18",
+      "area": "recovery/partial-negative+I05",
+      "owner_call_actually_invoked": "dataclasses.replace(partial_result, global_negative_claim=True)",
+      "expectation": "partial/interrupted search can never authorize a global empirical negative",
+      "observed": "raised PartialSearchNegativeError: adaptive result cannot claim global empirical absence",
+      "outcome": "PASS"
+    },
+    {
+      "probe_id": "B01-S01",
+      "area": "resource/scaling",
+      "owner_call_actually_invoked": "BatchManifest + BatchExecutionRunner.run() at 4 unit counts",
+      "expectation": "measure per-unit cost growth; bound scaling without a 35-wave forecast",
+      "observed": "n=50 exec=0.00552s us/unit=110.408; n=200 exec=0.022457s us/unit=112.284; n=800 exec=0.085626s us/unit=107.032; n=3200 exec=0.343258s us/unit=107.268",
+      "outcome": "MEASURED",
+      "detail": [
+        {
+          "units": 50,
+          "manifest_build_s": 0.00535,
+          "execute_s": 0.00552,
+          "us_per_unit": 110.408,
+          "receipts": 50,
+          "coverage": "FULL_MANIFEST_COVERAGE"
+        },
+        {
+          "units": 200,
+          "manifest_build_s": 0.019653,
+          "execute_s": 0.022457,
+          "us_per_unit": 112.284,
+          "receipts": 200,
+          "coverage": "FULL_MANIFEST_COVERAGE"
+        },
+        {
+          "units": 800,
+          "manifest_build_s": 0.070615,
+          "execute_s": 0.085626,
+          "us_per_unit": 107.032,
+          "receipts": 800,
+          "coverage": "FULL_MANIFEST_COVERAGE"
+        },
+        {
+          "units": 3200,
+          "manifest_build_s": 0.303758,
+          "execute_s": 0.343258,
+          "us_per_unit": 107.268,
+          "receipts": 3200,
+          "coverage": "FULL_MANIFEST_COVERAGE"
+        }
+      ]
+    }
+  ],
+  "scaling": [
+    {
+      "units": 50,
+      "manifest_build_s": 0.00535,
+      "execute_s": 0.00552,
+      "us_per_unit": 110.408,
+      "receipts": 50,
+      "coverage": "FULL_MANIFEST_COVERAGE"
+    },
+    {
+      "units": 200,
+      "manifest_build_s": 0.019653,
+      "execute_s": 0.022457,
+      "us_per_unit": 112.284,
+      "receipts": 200,
+      "coverage": "FULL_MANIFEST_COVERAGE"
+    },
+    {
+      "units": 800,
+      "manifest_build_s": 0.070615,
+      "execute_s": 0.085626,
+      "us_per_unit": 107.032,
+      "receipts": 800,
+      "coverage": "FULL_MANIFEST_COVERAGE"
+    },
+    {
+      "units": 3200,
+      "manifest_build_s": 0.303758,
+      "execute_s": 0.343258,
+      "us_per_unit": 107.268,
+      "receipts": 3200,
+      "coverage": "FULL_MANIFEST_COVERAGE"
+    }
+  ]
+}

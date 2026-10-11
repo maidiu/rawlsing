@@ -1,0 +1,33 @@
+
+==================================== ERRORS ====================================
+___ ERROR collecting rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py ___
+ImportError while importing test module '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py:7: in <module>
+    import pyreadstat
+E   ModuleNotFoundError: No module named 'pyreadstat'
+=========================== short test summary info ============================
+ERROR rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 64.65s (0:01:04)
+       65.24 real         4.09 user         1.11 sys
+           139325440  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+               79693  page reclaims
+                 217  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                1045  voluntary context switches
+               13193  involuntary context switches
+         13775848930  instructions retired
+         13609481703  cycles elapsed
+           126668800  peak memory footprint

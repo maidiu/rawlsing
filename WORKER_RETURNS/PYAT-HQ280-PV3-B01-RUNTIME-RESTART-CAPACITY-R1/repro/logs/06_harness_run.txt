@@ -1,0 +1,50 @@
+====================================================================================================
+PYAT HQ280 PV3 B01 — measured runtime / restart / cache hostile harness
+repo_root=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01
+python=3.11.3  executable=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/.venv_b01_hq280b01/bin/python
+====================================================================================================
+[PASS                  ] B01-P01                            summary.completed=50/50 executor_calls=50 state=COMPLETED coverage=FULL_MANIFEST_COVERAGE
+[PASS                  ] B01-P01                            summary.completed=20/20 executor_calls=20 state=COMPLETED coverage=FULL_MANIFEST_COVERAGE
+[PASS                  ] B01-P02                            raised BatchIntegrityError: completed unit is not retryable
+[PASS                  ] B01-P03                            mid: completed=5/12 state=IN_PROGRESS coverage=INCOMPLETE_MANIFEST_COVERAGE; resumed: completed=12/12 state=CO
+[GAP_NO_DURABLE_CHECKPOINT] B01-P04                            NO_OWNER_WRITE_PATH: pre553_batch_runner.py contains zero file-write operations; receipts are in-memory only (
+[PASS                  ] B01-P19                            procA: completed=5/10 state=IN_PROGRESS; procB(restored=5, final=10/10, full=True)
+[OBSERVED_FULL_REDO_NO_OWNER_STORE] B01-P20                            no-input start: completed=0/10 state=READY pending=0; after re-run: completed=10/10 full=True; same_manifest_i
+[PASS                  ] B01-P05                            run1: completed=2 failed=2 state=FAILED; retry: completed=4 failed=0 state=COMPLETED
+[PASS                  ] B01-P01                            summary.completed=6/6 executor_calls=6 state=COMPLETED coverage=FULL_MANIFEST_COVERAGE
+[PASS                  ] B01-P06                            raised BatchIntegrityError: receipt attempts must be contiguous and deterministic
+[PASS                  ] B01-P07                            manifest_A=401f88566ab05a1f manifest_B=2163fc1193471f97 distinct=True; raised BatchIntegrityError: receipt man
+[PASS                  ] B01-P01                            summary.completed=4/4 executor_calls=4 state=COMPLETED coverage=FULL_MANIFEST_COVERAGE
+[PASS                  ] B01-P08                            original_receipt_hash=583c323d2f81dd6393d39bbf forged_receipt_hash=e703caf19020b8afdfb55341 identity_changed=T
+[PASS                  ] B01-P09                            h1=0e9a36b861f7a2a8a59a4749 h2=0e9a36b861f7a2a8a59a4749 h3=0e9a36b861f7a2a8a59a4749 all_equal=True
+[OBSERVED_NO_DISK_DEPENDENCY] B01-P10                            exception=None; files_created_in_tmp=0; owner_wrote_nothing=True
+[PASS                  ] B01-P11                            outcomes={'w1': 'completed=24/24', 'w2': 'completed=24/24'} receipt_set_hashes_differ=True (executor_ref diffe
+[PASS                  ] B01-P12                            executor_invocations=6 completed=6/6 actual_execution_receipts=6
+[PASS                  ] B01-P13                            distinct_receipt_set_hashes=1 value=3553d5f4df3b7da378c2ae34 distinct_manifest_hashes=1
+[PASS                  ] B01-P14                            run1: state=DEFERRED deferred=5; resume: state=COMPLETED completed=5/5
+[PASS                  ] B01-P15                            completed=3/10 coverage=INCOMPLETE_MANIFEST_COVERAGE full_coverage=False batch_state=IN_PROGRESS
+[PASS                  ] B01-P16                            partial_state=PARTIAL_INTERRUPTED unvisited=2; checkpoint_bytes=7111 disk_roundtrip_identity_stable=True; one_
+[PASS                  ] B01-P17                            tampered_checkpoint_identity_changed=True; visited_set_equal_to_one_shot=True; duplicate_units=False; terminal
+[PASS                  ] B01-P18                            raised PartialSearchNegativeError: adaptive result cannot claim global empirical absence
+[MEASURED              ] B01-S01                            n=50 exec=0.007209s us/unit=144.184; n=200 exec=0.028977s us/unit=144.887; n=800 exec=0.115654s us/unit=144.56
+====================================================================================================
+TOTAL=24 PASS=20 FAIL=0 OTHER=4
+results -> /Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/WORKER_RETURNS/PYAT-HQ280-PV3-B01-RUNTIME-RESTART-CAPACITY-R1/repro/harness_results.json
+        2.15 real         1.94 user         0.13 sys
+            72638464  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+               35188  page reclaims
+                  25  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                 146  voluntary context switches
+                 700  involuntary context switches
+         10083028352  instructions retired
+          5442504495  cycles elapsed
+            68014080  peak memory footprint

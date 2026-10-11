@@ -1,0 +1,105 @@
+................................................F..FF.FF............FFFF [  2%]
+F.FFFFFFFF...................FF......................................... [  4%]
+........................................................................ [  6%]
+............F................EEEE..........FFFFF.F.F...F.FIABC_LM2_R1H_GATE1={"candidate_neutral":true,"carrier_bytes":83340882,"carrier_path":"WORKER_RETURNS/FIABC-LM2-R1F-CARRIER-ARCHAEOLOGY/LOCAL_OUTPUT/FIABC_LM2_R1E_FROZEN_Q291_PHYSICAL_CELL_CARRIER.json","carrier_sha256":"1aea888d8d576fc8606d56dd7a3b1a552411b8f8126ea27a54c36ff6d551dd7e","contains_candidate_output":false,"existing_validator":{"path":"/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/WORKER_RETURNS/FIABC-LM2-R1F-CARRIER-ARCHAEOLOGY/LOCAL_OUTPUT/FIABC_LM2_R1E_FROZEN_Q291_PHYSICAL_CELL_CARRIER.json","questions":["Q291G5","Q291P5"],"rows":97220,"status":"PASS__ACCEPTED_FROZEN_RESPONSE_CARRIER_PRESENT"},"gate":"GATE_1_CARRIER_PREFLIGHT","physical_cells":194440,"question_names":["Q291G5","Q291P5"],"row_count":97220,"source_sha256":"2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d","status":"PASS","structural_preimage_identity":"151907b3163959d0eb5ebb020fa5253d33447362420e465600035744112fe5bc"}
+.+++++++++++++++++++++++++++++++++++ Timeout ++++++++++++++++++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~ Stack of MainThread (140704407534080) ~~~~~~~~~~~~~~~~~~~~~
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/pytest/__main__.py", line 9, in <module>
+    raise SystemExit(pytest.console_main())
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/_pytest/config/__init__.py", line 201, in console_main
+    code = main()
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/_pytest/config/__init__.py", line 175, in main
+    ret: ExitCode | int = config.hook.pytest_cmdline_main(config=config)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/pluggy/_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/pluggy/_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/pluggy/_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/_pytest/main.py", line 330, in pytest_cmdline_main
+    return wrap_session(config, _main)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/_pytest/main.py", line 283, in wrap_session
+    session.exitstatus = doit(config, session) or 0
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/_pytest/main.py", line 337, in _main
+    config.hook.pytest_runtestloop(session=session)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/pluggy/_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/pluggy/_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/pluggy/_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/_pytest/main.py", line 362, in pytest_runtestloop
+    item.config.hook.pytest_runtest_protocol(item=item, nextitem=nextitem)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/pluggy/_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/pluggy/_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/pluggy/_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/_pytest/runner.py", line 113, in pytest_runtest_protocol
+    runtestprotocol(item, nextitem=nextitem)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/_pytest/runner.py", line 132, in runtestprotocol
+    reports.append(call_and_report(item, "call", log))
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/_pytest/runner.py", line 241, in call_and_report
+    call = CallInfo.from_call(
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/_pytest/runner.py", line 341, in from_call
+    result: TResult | None = func()
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/_pytest/runner.py", line 242, in <lambda>
+    lambda: runtest_hook(item=item, **kwds), when=when, reraise=reraise
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/pluggy/_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/pluggy/_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/pluggy/_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/_pytest/runner.py", line 174, in pytest_runtest_call
+    item.runtest()
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/_pytest/python.py", line 1627, in runtest
+    self.ihook.pytest_pyfunc_call(pyfuncitem=self)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/pluggy/_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/pluggy/_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/pluggy/_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/.venv_b01/lib/python3.11/site-packages/_pytest/python.py", line 159, in pytest_pyfunc_call
+    result = testfunction(**testargs)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/rawlsing_next/tests/test_fiabc_lm2_r1h_real_material_c11.py", line 85, in test_r15_real_candidate_neutral_common_c11
+    receipt = common_c11_receipt(CARRIER)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/rawlsing_next/fiabc_lm2_r1e_common_c11.py", line 159, in common_c11_receipt
+    release, projection = build_common_c11_release(carrier_path)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/rawlsing_next/fiabc_lm2_r1e_common_c11.py", line 149, in build_common_c11_release
+    projection = module.materialize_from_structural_input(structural_doc)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py", line 1116, in materialize_from_structural_input
+    return materialize_and_bind(
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py", line 1197, in materialize_and_bind
+    fields = build_projection_fields(
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py", line 894, in build_projection_fields
+    routing = _routing_facts(
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py", line 801, in _routing_facts
+    facts.append(RoutingEligibilityFact(
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/rawlsing_next/pre553_empirical_objects.py", line 432, in __init__
+    digest = semantic_hash(projection)
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-b01/rawlsing_next/pre553_empirical_objects.py", line 221, in semantic_hash
+    return hashlib.sha256(canonical_json(value).encode("utf-8")).hexdigest()
++++++++++++++++++++++++++++++++++++ Timeout ++++++++++++++++++++++++++++++++++++
+       93.41 real        79.93 user         8.48 sys
+          1093394432  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+             1811989  page reclaims
+                5322  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                2760  voluntary context switches
+               89479  involuntary context switches
+        407832605497  instructions retired
+        232074641890  cycles elapsed
+          1093079040  peak memory footprint

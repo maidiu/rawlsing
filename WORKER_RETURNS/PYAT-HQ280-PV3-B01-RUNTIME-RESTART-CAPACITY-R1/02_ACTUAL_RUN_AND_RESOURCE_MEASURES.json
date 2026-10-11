@@ -1,0 +1,199 @@
+{
+  "schema": "PYAT_HQ280_PV3_B01_ACTUAL_RUN_AND_RESOURCE_MEASURES@1.0.0",
+  "sealed_startup_sha": "150033139132a801c0cb22cb896e70d783a3a1bc",
+  "measurement_host": "macOS 13.7.8 x86_64, 16 logical cores, 16 GiB RAM",
+  "interpreter": "CPython 3.11.3 (isolated venv, system Python untouched)",
+  "measurement_method": "/usr/bin/time -l (macOS) for real/user/sys and maximum resident set size; resource.getrusage(RUSAGE_SELF).ru_maxrss in-process for per-size isolation",
+  "ru_maxrss_unit_correction": "On darwin, ru_maxrss is reported in BYTES. An initial reading that assumed KB overstated memory by ~1024x; all memory figures below are the corrected byte-unit measurements.",
+
+  "run_01_core_owner_suite": {
+    "purpose": "Route B / C11 / I03 / I05 / batch / bounded-runtime accepted owner tests, source-free",
+    "command": "/usr/bin/time -l .venv_b01/bin/python -m pytest -q --durations=15 rawlsing_next/tests/test_pre553_batch_runner.py rawlsing_next/tests/test_pre553_replay_audit.py rawlsing_next/tests/test_pre553_c11_repository_ingest.py rawlsing_next/tests/test_pre553_route_b_production.py rawlsing_next/tests/test_pre553_discovery_exact.py rawlsing_next/tests/test_pre553_discovery_adaptive.py rawlsing_next/tests/test_pre553_carrier_execution.py rawlsing_next/tests/test_pre553_i03_scale_equivalence_repair.py rawlsing_next/tests/test_bounded_empirical_runtime.py rawlsing_next/tests/test_bounded_empirical_runtime_hostile_r1.py rawlsing_next/tests/test_wave1_gt12_i03_positive_facts.py",
+    "result": "178 passed",
+    "exit_code": 0,
+    "wall_s": 4.44,
+    "user_cpu_s": 4.01,
+    "sys_cpu_s": 0.20,
+    "peak_rss_bytes": 34377728,
+    "peak_rss_mib": 32.78,
+    "peak_memory_footprint_bytes": 29536256,
+    "log": "repro/logs/01_baseline_core_suite.txt",
+    "slowest_test": "test_pre553_route_b_production.py::test_exact_replay_identity_and_tamper_fail_closed = 0.26s"
+  },
+
+  "run_02_full_suite_minimal_deps": {
+    "purpose": "whole rawlsing_next/tests tree with only pytest available",
+    "command": ".venv_b01/bin/python -m pytest -q rawlsing_next/tests/",
+    "result": "ABORTED_AT_COLLECTION",
+    "collection_errors": 9,
+    "wall_s": 4.07,
+    "peak_rss_bytes": 87801856,
+    "error_causes": {
+      "pandas_absent": 6,
+      "pyarrow_absent": 1,
+      "repo_module_absent": 1,
+      "repo_sibling_test_absent": 1
+    },
+    "log": "repro/logs/02_full_suite_attempt.txt",
+    "interpretation": "These are ENVIRONMENTAL collection errors, not runtime defects."
+  },
+
+  "run_03_full_suite_with_optional_deps": {
+    "purpose": "same tree after installing pandas and pyarrow into the isolated venv",
+    "command": ".venv_b01/bin/python -m pytest -q --ignore=rawlsing_next/tests/test_objective_consumer_bounded_evidence_d07.py --ignore=rawlsing_next/tests/test_subv_e_obl059_positive_applicability_r13_independent_review_r1_corrected.py rawlsing_next/tests/",
+    "result": "ABORTED_AT_COLLECTION",
+    "remaining_collection_errors": 1,
+    "wall_s": 65.24,
+    "user_cpu_s": 4.09,
+    "sys_cpu_s": 1.11,
+    "peak_rss_bytes": 139325440,
+    "remaining_error": "ModuleNotFoundError: No module named 'pyreadstat' (test_pre553_sr06_decoder_carrier.py)",
+    "wall_vs_cpu_anomaly": "65.24s wall against only 4.09s user CPU. The gap is interpreter/import and collection cost, NOT compute. Recorded as measured, not explained away.",
+    "log": "repro/logs/03_full_suite_pandas_pyarrow.txt"
+  },
+
+  "run_04_05_full_suite_bounded": {
+    "purpose": "whole suite executed to completion under a per-test timeout so that slow tests surface rather than hang the run",
+    "command": ".venv_b01/bin/python -m pytest -q --timeout=60 --timeout-method=signal --ignore=rawlsing_next/tests/test_objective_consumer_bounded_evidence_d07.py --ignore=rawlsing_next/tests/test_subv_e_obl059_positive_applicability_r13_independent_review_r1_corrected.py --ignore=rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py rawlsing_next/tests/",
+    "result": "3216 passed, 58 failed, 15 errors, 54 warnings in 1088.17s (18:08)",
+    "exit_code": 1,
+    "wall_s": 1094.97,
+    "user_cpu_s": 1034.52,
+    "sys_cpu_s": 33.14,
+    "peak_rss_bytes": 1603002368,
+    "peak_rss_mib": 1528.9,
+    "peak_memory_footprint_bytes": 1629700096,
+    "timeouts_over_60s": 17,
+    "log": "repro/logs/05_full_suite_signal_timeout.txt",
+    "IMPORTANT": "An earlier unbounded invocation of this same suite exceeded a 120s command ceiling and was terminated. That is a harness-level observation about run cost, recorded here; it is not a repo defect."
+  },
+
+  "failure_taxonomy_of_the_58_failures_and_15_errors": {
+    "method": "grep of the 'E ' assertion lines in the run log, deduplicated and SHA-masked",
+    "categories": [
+      {
+        "category": "MISSING_HISTORICAL_ARTIFACT_CUSTODY",
+        "count": 15,
+        "example": "FileNotFoundError ... /data/ddm_build_copy/recovery_integration/.../01_SECOND_CANARY_RELATION_ADMISSION_AUTHORITY.json",
+        "classification": "COVERAGE_LIMITED_ABSENT_ARTIFACT",
+        "note": "governed evidence JSON that is not present in this worktree. NOT a runtime defect and NOT evidence of a code failure."
+      },
+      {
+        "category": "HEAD_RELATIVE_BLOB_IDENTITY_PIN",
+        "count": 6,
+        "example": "ee_p2x_driver_bound_verify.DriverBindingBlocker: FAILURE__QUALIFIED_DRIVER_BLOB_DRIFT",
+        "classification": "HEAD_RELATIVE_IDENTITY_NOT_RUNTIME_DEFECT",
+        "note": "these tests pin exact git blob SHAs against a specific base. Running them from a different commit legitimately reports drift."
+      },
+      {
+        "category": "OPTIONAL_DEPENDENCY_ABSENT",
+        "count": 6,
+        "example": "ModuleNotFoundError: No module named 'duckdb'",
+        "classification": "ENVIRONMENTAL",
+        "note": "duckdb was not installed; it was not required by any in-scope owner."
+      },
+      {
+        "category": "PER_TEST_TIMEOUT",
+        "count": 17,
+        "example": "test_fiabc_lm2_r1h_real_material_c11.py::test_r15_real_candidate_neutral_common_c11",
+        "classification": "MEASURED_CAPACITY_SIGNAL",
+        "note": "genuinely slow. This is the single most important resource finding for scaling: the real-material C11 materialization path exceeds 60s and drives the suite peak RSS."
+      },
+      {
+        "category": "REPRESENTATION_AUTHORITY_MISMATCH",
+        "count": 7,
+        "example": "ValueError: representation authority variable identity/ordinal mismatch",
+        "classification": "POSSIBLE_PRE_EXISTING_DEFECT_NOT_ISOLATED_BY_THIS_COMMISSION",
+        "note": "left open; not adjudicated here."
+      },
+      {
+        "category": "RECONSTRUCTED_SOURCE_BINDING_MISMATCH",
+        "count": 12,
+        "example": "OEEIntegrityError: reconstructed CAUSAL_USE_PERMISSION source does not match exact stored OBL056 binding",
+        "classification": "POSSIBLE_PRE_EXISTING_DEFECT_NOT_ISOLATED_BY_THIS_COMMISSION",
+        "note": "left open; not adjudicated here."
+      },
+      {
+        "category": "WORKTREE_CLEANLINESS_CAUSALITY_PROVEN",
+        "count": 1,
+        "example": "SuccessionProducerError: succession producer requires a clean working tree",
+        "classification": "CAUSED_BY_THIS_COMMISSIONS_OWN_ARTIFACTS_THEN_ELIMINATED",
+        "note": "See finding F-03. An in-worktree venv made git status non-empty. After relocating the venv outside the worktree and clearing untracked bytecode, the same file passes 15/15. Proven by A/B re-run, not assumed."
+      }
+    ],
+    "honesty_note": "These counts are a deduplicated histogram of assertion lines, not a per-test adjudication. This commission did not adjudicate each of the 58 failures and does not claim they are all benign."
+  },
+
+  "harness_execution": {
+    "script": "repro/b01_harness.py",
+    "probes": 24,
+    "pass": 20,
+    "fail": 0,
+    "other_typed": 4,
+    "other_breakdown": {
+      "GAP_NO_DURABLE_CHECKPOINT": 1,
+      "OBSERVED_NO_DISK_DEPENDENCY": 1,
+      "OBSERVED_FULL_REDO_NO_OWNER_STORE": 1,
+      "MEASURED_SCALING": 1
+    },
+    "wall_s": 2.15,
+    "user_cpu_s": 1.94,
+    "sys_cpu_s": 0.13,
+    "peak_rss_bytes": 72638464,
+    "peak_rss_mib": 69.3,
+    "log": "repro/logs/06_harness_run.txt",
+    "machine_readable": "repro/harness_results.json",
+    "corrections_made_during_execution": "Three probes initially reported FAIL due to harness defects, not owner defects: (P07) two byte-identical manifests were constructed so the stale-manifest test was vacuous; (P08) the receipt hash is not a member of UnitExecutionReceipt.projection() so the string replacement was a no-op; (P17) the expectation was wrong because checkpoint identity is visit-order-sensitive. Each was diagnosed, corrected and re-executed. No owner source was changed to obtain a PASS."
+  },
+
+  "scaling_measurements": {
+    "time_scaling_in_process": {
+      "units": [50, 200, 800, 3200],
+      "execute_s": [0.007209, 0.028977, 0.115654, 0.476764],
+      "us_per_unit": [144.184, 144.887, 144.567, 148.989],
+      "observation": "per-unit cost is flat within ~3% across a 64x size increase. LINEAR, not superlinear.",
+      "caveat": "in-process, synthetic executor, single manifest. This bounds ORCHESTRATION cost only. It is NOT a forecast of any real 35-wave workload."
+    },
+    "memory_scaling_isolated_processes": {
+      "method": "one fresh interpreter per size; ru_maxrss in bytes (darwin semantics)",
+      "rows": [
+        {"units": 100, "peak_rss_mib": 14.2, "execute_s": 0.0167, "bytes_per_unit": 7987.2, "full": true},
+        {"units": 1000, "peak_rss_mib": 22.1, "execute_s": 0.1925, "bytes_per_unit": 9027.6, "full": true},
+        {"units": 10000, "peak_rss_mib": 78.6, "execute_s": 1.7797, "bytes_per_unit": 6816.6, "full": true},
+        {"units": 50000, "peak_rss_mib": 310.5, "execute_s": 7.9553, "bytes_per_unit": 6245.4, "full": true},
+        {"units": 200000, "peak_rss_mib": 1196.6, "execute_s": 48.281, "bytes_per_unit": 6208.3, "full": true}
+      ],
+      "observation": "roughly LINEAR memory at ~6.2 KB per manifest unit, dominated by the immutable BatchManifest plus retained receipts. 200k units reached ~1.17 GiB and ~48s.",
+      "caveat": "measured to 200k units only. Extrapolation beyond that is NOT claimed.",
+      "log": "repro/logs/07_memory_scaling.txt"
+    }
+  },
+
+  "measured_execution_envelope": {
+    "source_free_owner_suite": {
+      "verdict": "REPRODUCIBLE_AND_FAST",
+      "evidence": "178/178 passed in 4.44s wall, 32.78 MiB peak RSS, 4.01s user CPU"
+    },
+    "whole_suite": {
+      "verdict": "HEAVY_AND_PARTLY_BLOCKED",
+      "evidence": "3216 passed / 58 failed / 15 errors in 18m08s wall, 1.49 GiB peak RSS; 17 tests exceed 60s"
+    },
+    "batch_orchestration": {
+      "verdict": "MEASURED_LINEAR_ENVELOPE",
+      "evidence": "~145-149 us/unit orchestration; ~6.2 KB/unit resident; FULL_MANIFEST_COVERAGE at every size tested up to 200k units"
+    },
+    "durable_checkpoint_envelope": {
+      "verdict": "ABSENT_FOR_BATCH_AND_ROUTE_B_FAMILY",
+      "evidence": "zero file-write operations across pre553_batch_runner, pre553_replay_audit, pre553_c11_repository, pre553_c11_integrity, pre553_route_b_production, bounded_empirical_runtime, pre553_discovery_adaptive",
+      "consequence": "process-loss recovery is CALLER-OWNED. See 03_RESTART_CANCELLATION_CACHE_TESTS.json and finding F-01."
+    }
+  },
+
+  "unmeasured_values_recorded_as_null": {
+    "real_source_35_wave_throughput": null,
+    "real_source_peak_memory": null,
+    "real_source_disk_output_volume": null,
+    "all_35_wave_cost_forecast": null,
+    "reason": "No raw SAV/DTA source warrant exists for this commission and no source bytes are present in this worktree. No value is estimated, extrapolated or invented."
+  }
+}
