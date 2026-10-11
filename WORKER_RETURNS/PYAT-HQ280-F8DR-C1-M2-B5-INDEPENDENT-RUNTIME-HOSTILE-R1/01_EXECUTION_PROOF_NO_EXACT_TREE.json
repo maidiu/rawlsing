@@ -1,0 +1,89 @@
+{
+  "schema": "PYAT_HQ280_F8DR_INDEPENDENT_TEST_EXECUTION_RECEIPT@1",
+  "sealed_startup": "3dadce2e35c6c9d7e84e225090bf7cac3a63f129",
+  "candidate_commit": "69bb0fc69175b2f6048b00cfa47dc852593798c0",
+  "git_tree": "3af7edd93601d16b1a802ba12c4ed64c0890b8f2",
+  "candidate_test_blob": "2c4617e132293dfae459ded56b2d0f79d211c5f3",
+  "python_version": "3.13.5",
+  "pytest_version": "9.0.2",
+  "command": "python -m pytest -q -vv rawlsing_next/tests/test_pre553_c1_immutable_release_binding.py",
+  "executed_on_exact_candidate_tree": false,
+  "execution_attempt": {
+    "exit_code": 4,
+    "collected": 0,
+    "error": "file or directory not found: rawlsing_next/tests/test_pre553_c1_immutable_release_binding.py",
+    "location": "/tmp/rawlsing_hq280_F8DR/isolated_candidate_checkout_UNAVAILABLE"
+  },
+  "checkout_attempt": {
+    "command": "GIT_TERMINAL_PROMPT=0 git ls-remote https://github.com/maidiu/rawlsing.git refs/heads/agent/rabochii-pyat-hq280-f8d-c1-m2-owner-binding-candidate-r1",
+    "exit_code": 128,
+    "stderr": "Could not resolve host: github.com"
+  },
+  "actual_pass": 0,
+  "actual_case_fail": 0,
+  "unrun": 15,
+  "cases": [
+    {
+      "name": "test_p01_two_actual_c1_products_receive_distinct_exact_m2_releases",
+      "result": "NOT_RUN_NO_EXACT_TREE"
+    },
+    {
+      "name": "test_p02_all_five_required_m2_closures_and_dependency_graph",
+      "result": "NOT_RUN_NO_EXACT_TREE"
+    },
+    {
+      "name": "test_p03_stable_content_addressing_no_new_issuer",
+      "result": "NOT_RUN_NO_EXACT_TREE"
+    },
+    {
+      "name": "test_p04_b5_stage_register_only_no_publication_or_currentness",
+      "result": "NOT_RUN_NO_EXACT_TREE"
+    },
+    {
+      "name": "test_p05_historical_only_replay_cannot_claim_fresh_process",
+      "result": "NOT_RUN_NO_EXACT_TREE"
+    },
+    {
+      "name": "test_n01_wrong_source_release_is_refused",
+      "result": "NOT_RUN_NO_EXACT_TREE"
+    },
+    {
+      "name": "test_n02_wrong_model_rule_is_refused",
+      "result": "NOT_RUN_NO_EXACT_TREE"
+    },
+    {
+      "name": "test_n03_wrong_conditioner_cell_or_risk_ref_is_refused",
+      "result": "NOT_RUN_NO_EXACT_TREE"
+    },
+    {
+      "name": "test_n04_forged_same_person_denominator_is_refused_even_if_rehashed",
+      "result": "NOT_RUN_NO_EXACT_TREE"
+    },
+    {
+      "name": "test_n05_native_nonsupported_valid_empty_mints_no_m2",
+      "result": "NOT_RUN_NO_EXACT_TREE"
+    },
+    {
+      "name": "test_n06_tampered_c1_provenance_and_evidence_are_refused",
+      "result": "NOT_RUN_NO_EXACT_TREE"
+    },
+    {
+      "name": "test_n07_replay_overclaim_is_refused",
+      "result": "NOT_RUN_NO_EXACT_TREE"
+    },
+    {
+      "name": "test_n08_missing_dependency_or_determinant_closure_refused_by_real_m2",
+      "result": "NOT_RUN_NO_EXACT_TREE"
+    },
+    {
+      "name": "test_n09_substituted_contract_refuses_and_is_not_g0b",
+      "result": "NOT_RUN_NO_EXACT_TREE"
+    },
+    {
+      "name": "test_n10_i4_m1_only_and_no_selected_service_path",
+      "result": "NOT_RUN_NO_EXACT_TREE"
+    }
+  ],
+  "b2r_prior_8_of_8_not_substituted": true,
+  "notes": "Pytest launcher ran; the specified 15-case suite did NOT run. All code-visible findings require dynamic confirmation."
+}
