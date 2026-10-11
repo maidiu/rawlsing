@@ -1,0 +1,154 @@
+{
+ "schema": "HQ280_PV3_A04R_EXACT_CODE_AND_PREIMAGES@1",
+ "reviewer_head": "4f3238aff7644ad58406c623c9eac6682f1a0743",
+ "a04": {
+  "commit": "cbe047cf15a2285b0e918bd77640037f7bec63ef",
+  "module": "rawlsing_next/pre553_original_workload_binder_candidate.py",
+  "module_blob": "7d8b3902c3f8f257637b7c07ad9feb5e096d48e5",
+  "module_blob_verified": true,
+  "test": "rawlsing_next/tests/test_pre553_original_workload_binder_candidate.py",
+  "test_blob": "6c06a5b013d3713af7d7ba9bf143c3ef7a6245a2",
+  "test_blob_verified": true,
+  "declared_schema_version": "HQ280_PV3_A04_EXPECTED_WORK@1.0.0",
+  "declared_a05_compatible_token": "HQ280_PV3_A05_EXPECTED_WORK@1.0.0",
+  "op_class_domain": [
+   "I03_UNARY_OR_JOINT_QUERY",
+   "I05_BOUNDED_DISCOVERY"
+  ],
+  "measure_kinds": [
+   "RAW",
+   "GOVERNED_WEIGHTED"
+  ],
+  "operation_key_preimage": {
+   "kind": "ELIGIBLE_OPERATION",
+   "fields": [
+    "op_class",
+    "roles",
+    "target",
+    "condition_order",
+    "measure_kind",
+    "version"
+   ]
+  },
+  "expected_work_key_signature": [
+   "item_key",
+   "operation_key_value",
+   "source_identity",
+   "authority_ref",
+   "risk_identity",
+   "topology_identity",
+   "consumer",
+   "version"
+  ]
+ },
+ "a05": {
+  "branch": "agent/rabochii-pyat-hq280-pv3-a05-independent-nodrop-oracle-r1",
+  "commit": "9491d0296c95ee2942fe80eadc6aa9f54b07c634",
+  "oracle_sha256": "81c74691d576b89a5569efcffd929ef8c995c6261362bad243d235ded8fe96d4",
+  "hostiles_sha256": "68ba6926dc0f5c8049c0e5052fb016e4979e973a958170e02d1571f8f389bad5",
+  "schema_version": "HQ280_PV3_A05_EXPECTED_WORK@1.0.0",
+  "op_class_domain": [
+   "UNARY_DISTRIBUTION",
+   "PAIR_RESPONSE_COTRAVEL",
+   "NONSCALAR_TOPOLOGY_PRESERVATION"
+  ],
+  "operation_key_preimage": {
+   "k": "OP",
+   "fields": [
+    "class",
+    "roles",
+    "target"
+   ]
+  },
+  "expected_work_key_signature": [
+   "item_k",
+   "op_k",
+   "authority",
+   "risk",
+   "topology",
+   "version"
+  ]
+ },
+ "compatibility_checks": [
+  {
+   "id": "C1",
+   "name": "schema token string equality",
+   "a04": "HQ280_PV3_A05_EXPECTED_WORK@1.0.0",
+   "a05": "HQ280_PV3_A05_EXPECTED_WORK@1.0.0",
+   "equal": true,
+   "means_interoperability": false,
+   "note": "a shared version STRING is not hash/preimage interoperability"
+  },
+  {
+   "id": "C0",
+   "name": "op_class VOCABULARY",
+   "a04_supported": [
+    "I03_UNARY_OR_JOINT_QUERY",
+    "I05_BOUNDED_DISCOVERY"
+   ],
+   "a05_supported": [
+    "UNARY_DISTRIBUTION",
+    "PAIR_RESPONSE_COTRAVEL",
+    "NONSCALAR_TOPOLOGY_PRESERVATION"
+   ],
+   "shared_tokens": [],
+   "vocabulary_interoperable": false,
+   "note": "A04 op_class is a DISPATCH/route class; A05 op_class is a SEMANTIC operation class. The field name is shared but its domain is disjoint."
+  },
+  {
+   "id": "C2",
+   "name": "operation_key for the SAME semantic operation",
+   "a04_key": "a8ead2fd6eacb9283dcc5db83c0a8ae928d5cb9238411c53e36a133c23392272",
+   "a05_key": "c75d5f2954548aec5fe4177a9170ec958d95b4b7f974f6aab3b26301cf972e39",
+   "equal": false,
+   "a04_preimage": "{op_class,roles,target,condition_order,measure_kind,version}",
+   "a05_preimage": "{k,class,roles,target}"
+  },
+  {
+   "id": "C3",
+   "name": "RAW vs GOVERNED_WEIGHTED under A04",
+   "raw": "a8ead2fd6eacb9283dcc5db83c0a8ae928d5cb9238411c53e36a133c23392272",
+   "governed_weighted": "db842f031b728095898015cb8e1a958ff53ff8565e73f988d86fec6f7263f094",
+   "differs": true,
+   "a05_has_measure_kind_parameter": false,
+   "consequence": "A05 cannot represent the RAW/GOVERNED_WEIGHTED distinction at all"
+  },
+  {
+   "id": "C4",
+   "name": "q(C|A) vs q(C|A,B) under A04",
+   "q_C_given_A": "de80230e92f90ecb66c3134e9457c23979b5f2b1700e351650d6e32e2b5bfff2",
+   "q_C_given_A_B": "a8ead2fd6eacb9283dcc5db83c0a8ae928d5cb9238411c53e36a133c23392272",
+   "differs": true,
+   "a05_has_condition_order_parameter": false,
+   "consequence": "A05 keys cannot distinguish conditioner cardinality"
+  },
+  {
+   "id": "C5",
+   "name": "documentary_item_key",
+   "a04": "08226709af06c4b6102cb4eb92b9974f1e872cd414f40ab4d5c97dd81ea924cb",
+   "a05": "f7ebae8c6d80f85535f44ba34f417a7beb780c07148798a85509a0a257f8db9d",
+   "equal": false
+  },
+  {
+   "id": "C6",
+   "name": "expected_work_key signatures",
+   "a04": "(*, item_key: 'str', operation_key_value: 'str', source_identity: 'str', authority_ref: 'str', risk_identity: 'str', topology_identity: 'str', consumer: 'str', version: 'str' = 'HQ280_PV3_A04_EXPECTED_WORK@1.0.0') -> 'str'",
+   "a05": "(item_k, op_k, authority, risk, topology, version='HQ280_PV3_A05_EXPECTED_WORK@1.0.0') -> 'str'",
+   "a04_includes_required_consumer": false,
+   "interoperable_preimage": false,
+   "note": "A04 also folds required_consumer into the broader preimage; A05 declares the consumer per expected record instead"
+  }
+ ],
+ "interoperability_verdict": {
+  "shared_schema_token_string": true,
+  "hash_preimage_interoperable": false,
+  "honest_resolution": "SCHEMA_VERSIONED_SUCCESSOR_REQUIRED",
+  "not_acceptable": [
+   "string coercion",
+   "key collision acceptance",
+   "silent re-hashing of A05 keys into A04 scope"
+  ],
+  "reason": "A04's operation_key preimage = {op_class, roles, target, condition_order, measure_kind, version}; A05's = {class, roles, target}. The version string is identical, so a naive equality check on the token wrongly suggests interoperability while the keys cannot collide even for semantically identical operations."
+ },
+ "terminal": "HQ280_PV3_A04R_INDEPENDENT_BINDER_ORACLE_OWNER_HOSTILE_RETURNED__NONISSUING__GITHUB_PUSHED"
+}

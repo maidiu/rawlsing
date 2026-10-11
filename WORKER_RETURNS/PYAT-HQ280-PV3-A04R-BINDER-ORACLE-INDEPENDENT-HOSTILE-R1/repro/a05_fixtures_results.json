@@ -1,0 +1,227 @@
+{
+ "schema": "HQ280_PV3_A05_HOSTILE_RESULTS@1",
+ "universe_frontier_digest": "03dc3b302f186f792835e86eff729eab9424c9482d7b563b5b07c1731fc63bad",
+ "expected_runnable_operations": 4,
+ "held": 2,
+ "denied": 1,
+ "source_nonapplicable": 1,
+ "cases": 18,
+ "all_expectations_met": true,
+ "results": [
+  {
+   "case": "H0_honest_manifest_passes",
+   "expected": "PASS",
+   "oracle_ok": true,
+   "failures": [],
+   "n_failures": 0,
+   "held_visible": true,
+   "verdict": "OK",
+   "detail": "PASS"
+  },
+  {
+   "case": "T1_expected_operation_omitted",
+   "expected": "FAIL['EXPECTED_OPERATION_OMITTED']",
+   "oracle_ok": false,
+   "failures": [
+    "EXPECTED_OPERATION_OMITTED"
+   ],
+   "n_failures": 1,
+   "held_visible": true,
+   "verdict": "OK",
+   "detail": "codes=['EXPECTED_OPERATION_OMITTED']"
+  },
+  {
+   "case": "T2_missing_B_and_J2",
+   "expected": "FAIL['EXPECTED_OPERATION_OMITTED']",
+   "oracle_ok": false,
+   "failures": [
+    "EXPECTED_OPERATION_OMITTED"
+   ],
+   "n_failures": 1,
+   "held_visible": true,
+   "verdict": "OK",
+   "detail": "codes=['EXPECTED_OPERATION_OMITTED']"
+  },
+  {
+   "case": "T3_unauthorized_extra_job",
+   "expected": "FAIL['UNAUTHORIZED_EXTRA_JOB']",
+   "oracle_ok": false,
+   "failures": [
+    "UNAUTHORIZED_EXTRA_JOB"
+   ],
+   "n_failures": 1,
+   "held_visible": true,
+   "verdict": "OK",
+   "detail": "codes=['UNAUTHORIZED_EXTRA_JOB']"
+  },
+  {
+   "case": "T4_A_only_projection",
+   "expected": "FAIL['EXPECTED_OPERATION_OMITTED']",
+   "oracle_ok": false,
+   "failures": [
+    "EXPECTED_OPERATION_OMITTED"
+   ],
+   "n_failures": 1,
+   "held_visible": true,
+   "verdict": "OK",
+   "detail": "codes=['EXPECTED_OPERATION_OMITTED']"
+  },
+  {
+   "case": "T5_same_count_different_keys",
+   "expected": "FAIL['EXPECTED_OPERATION_OMITTED', 'UNAUTHORIZED_EXTRA_JOB']",
+   "oracle_ok": false,
+   "failures": [
+    "EXPECTED_OPERATION_OMITTED",
+    "UNAUTHORIZED_EXTRA_JOB"
+   ],
+   "n_failures": 2,
+   "held_visible": true,
+   "verdict": "OK",
+   "detail": "codes=['EXPECTED_OPERATION_OMITTED', 'UNAUTHORIZED_EXTRA_JOB']"
+  },
+  {
+   "case": "T6_false_null_from_authority_unavailable",
+   "expected": "FAIL['FALSE_EMPIRICAL_NULL']",
+   "oracle_ok": false,
+   "failures": [
+    "FALSE_EMPIRICAL_NULL"
+   ],
+   "n_failures": 1,
+   "held_visible": true,
+   "verdict": "OK",
+   "detail": "codes=['FALSE_EMPIRICAL_NULL']"
+  },
+  {
+   "case": "T6b_false_null_from_zero_denominator",
+   "expected": "FAIL['FALSE_EMPIRICAL_NULL']",
+   "oracle_ok": false,
+   "failures": [
+    "FALSE_EMPIRICAL_NULL"
+   ],
+   "n_failures": 1,
+   "held_visible": true,
+   "verdict": "OK",
+   "detail": "codes=['FALSE_EMPIRICAL_NULL']"
+  },
+  {
+   "case": "T7_partial_reported_as_success",
+   "expected": "FAIL['PARTIAL_OR_UNAVAILABLE_REPORTED_AS_SUCCESS']",
+   "oracle_ok": false,
+   "failures": [
+    "PARTIAL_OR_UNAVAILABLE_REPORTED_AS_SUCCESS"
+   ],
+   "n_failures": 1,
+   "held_visible": true,
+   "verdict": "OK",
+   "detail": "codes=['PARTIAL_OR_UNAVAILABLE_REPORTED_AS_SUCCESS']"
+  },
+  {
+   "case": "T7b_unvisited_reported_as_success",
+   "expected": "FAIL['PARTIAL_OR_UNAVAILABLE_REPORTED_AS_SUCCESS']",
+   "oracle_ok": false,
+   "failures": [
+    "PARTIAL_OR_UNAVAILABLE_REPORTED_AS_SUCCESS"
+   ],
+   "n_failures": 1,
+   "held_visible": true,
+   "verdict": "OK",
+   "detail": "codes=['PARTIAL_OR_UNAVAILABLE_REPORTED_AS_SUCCESS']"
+  },
+  {
+   "case": "T8_candidate_own_dk_joint",
+   "expected": "FAIL['CANDIDATE_OWN_DK_JOINT', 'UNAUTHORIZED_EXTRA_JOB']",
+   "oracle_ok": false,
+   "failures": [
+    "CANDIDATE_OWN_DK_JOINT",
+    "UNAUTHORIZED_EXTRA_JOB"
+   ],
+   "n_failures": 2,
+   "held_visible": true,
+   "verdict": "OK",
+   "detail": "codes=['CANDIDATE_OWN_DK_JOINT', 'UNAUTHORIZED_EXTRA_JOB']"
+  },
+  {
+   "case": "T9_expected_set_output_derived",
+   "expected": "FAIL['EXPECTED_SET_OUTPUT_DERIVED']",
+   "oracle_ok": false,
+   "failures": [
+    "EXPECTED_SET_OUTPUT_DERIVED"
+   ],
+   "n_failures": 1,
+   "held_visible": true,
+   "verdict": "OK",
+   "detail": "codes=['EXPECTED_SET_OUTPUT_DERIVED']"
+  },
+  {
+   "case": "T10_required_consumer_omitted",
+   "expected": "FAIL['REQUIRED_CONSUMER_OMITTED']",
+   "oracle_ok": false,
+   "failures": [
+    "REQUIRED_CONSUMER_OMITTED"
+   ],
+   "n_failures": 1,
+   "held_visible": true,
+   "verdict": "OK",
+   "detail": "codes=['REQUIRED_CONSUMER_OMITTED']"
+  },
+  {
+   "case": "T11_held_work_executed",
+   "expected": "FAIL['HELD_OR_DENIED_WORK_EXECUTED', 'UNAUTHORIZED_EXTRA_JOB']",
+   "oracle_ok": false,
+   "failures": [
+    "HELD_OR_DENIED_WORK_EXECUTED",
+    "UNAUTHORIZED_EXTRA_JOB"
+   ],
+   "n_failures": 2,
+   "held_visible": true,
+   "verdict": "OK",
+   "detail": "codes=['HELD_OR_DENIED_WORK_EXECUTED', 'UNAUTHORIZED_EXTRA_JOB']"
+  },
+  {
+   "case": "T11b_held_work_not_visible",
+   "expected": "FAIL['HELD_OR_DENIED_WORK_NOT_VISIBLE']",
+   "oracle_ok": false,
+   "failures": [
+    "HELD_OR_DENIED_WORK_NOT_VISIBLE"
+   ],
+   "n_failures": 4,
+   "held_visible": true,
+   "verdict": "OK",
+   "detail": "codes=['HELD_OR_DENIED_WORK_NOT_VISIBLE']"
+  },
+  {
+   "case": "T12_source_identity_mismatch",
+   "expected": "FAIL['SOURCE_IDENTITY_MISMATCH']",
+   "oracle_ok": false,
+   "failures": [
+    "SOURCE_IDENTITY_MISMATCH"
+   ],
+   "n_failures": 4,
+   "held_visible": true,
+   "verdict": "OK",
+   "detail": "codes=['SOURCE_IDENTITY_MISMATCH']"
+  },
+  {
+   "case": "T13_stable_reordered_expected_set_passes",
+   "expected": "PASS",
+   "oracle_ok": true,
+   "failures": [],
+   "n_failures": 0,
+   "held_visible": true,
+   "verdict": "OK",
+   "detail": "PASS"
+  },
+  {
+   "case": "T14_multiplicity_mismatch",
+   "expected": "FAIL['EXPECTED_MULTIPLICITY_MISMATCH']",
+   "oracle_ok": false,
+   "failures": [
+    "EXPECTED_MULTIPLICITY_MISMATCH"
+   ],
+   "n_failures": 1,
+   "held_visible": true,
+   "verdict": "OK",
+   "detail": "codes=['EXPECTED_MULTIPLICITY_MISMATCH']"
+  }
+ ]
+}

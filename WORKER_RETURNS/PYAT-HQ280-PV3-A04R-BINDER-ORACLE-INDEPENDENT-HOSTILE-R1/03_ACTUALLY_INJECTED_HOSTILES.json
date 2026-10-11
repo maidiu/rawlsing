@@ -1,0 +1,21 @@
+{
+  "schema": "HQ280_PV3_A04R_ACTUALLY_INJECTED_HOSTILES@1",
+  "reviewer_head": "4f3238aff7644ad58406c623c9eac6682f1a0743",
+  "grading_rule": "OWNER_OR_JOIN_REFUSAL = an adversarially mutated input is actually submitted and the typed outcome captured. A shared error NAME or version STRING is not evidence of interoperability.",
+  "injected_hostiles": [
+    {"id": "H1", "target": "canonical identity/preimage compatibility", "injection": "compute operation_key in A04 and A05 for the SAME semantic operation", "actual_outcome": "keys DIFFER (C2)", "kind": "EXECUTED_COMPARISON", "verdict": "FAIL__not interoperable"},
+    {"id": "H2", "target": "schema token trap", "injection": "compare A04.A05_COMPATIBLE_SCHEMA_VERSION with A05.SCHEMA_VERSION", "actual_outcome": "strings EQUAL; keys still differ", "kind": "EXECUTED_COMPARISON", "verdict": "TRAP_CONFIRMED__token equality is not interoperability"},
+    {"id": "H3", "target": "RAW vs GOVERNED_WEIGHTED collision", "injection": "A04 operation_key with measure_kind=RAW then GOVERNED_WEIGHTED", "actual_outcome": "A04 keys differ; A05 has no measure_kind parameter", "kind": "EXECUTED_COMPARISON", "verdict": "FAIL__A05 collides the two into one identity"},
+    {"id": "H4", "target": "q(C|A) vs q(C|A,B) collision", "injection": "A04 operation_key with condition_order=('A',) then ('A','B')", "actual_outcome": "A04 keys differ; A05 has no condition_order parameter", "kind": "EXECUTED_COMPARISON", "verdict": "FAIL__A05 cannot distinguish conditioner cardinality"},
+    {"id": "H5", "target": "documentary item identity", "injection": "same source/wave/item/form/slot through both", "actual_outcome": "keys DIFFER (C5)", "kind": "EXECUTED_COMPARISON", "verdict": "FAIL__divergent preimages"},
+    {"id": "H6", "target": "expected_work_key preimage", "injection": "signature comparison", "actual_outcome": "A04 folds consumer into the key; A05 does not", "kind": "EXECUTED_COMPARISON", "verdict": "FAIL__not interoperable"},
+    {"id": "H7", "target": "op_class vocabulary", "injection": "enumerate both domains", "actual_outcome": "disjoint (dispatch classes vs semantic classes)", "kind": "EXECUTED_COMPARISON", "verdict": "FAIL__shared field name, disjoint domain"},
+    {"id": "H8", "target": "omission / A-only vs A+B / B+J2 absent / same-count-different-key", "injection": "A05's 18-case adversarial court executed independently", "actual_outcome": "16 must-fail mutations all FAIL with the expected codes; 2 controls PASS", "kind": "EXECUTED_INJECTION", "verdict": "PASS__A05 oracle remains adversarially sound"}
+  ],
+  "owner_vs_join_refusal": {
+    "owner_level_refusals_observed": ["A04 rejects unsupported op_class and unsupported measure_kind (BinderCandidateError)"],
+    "join_level_refusals_observed": ["all A04-A05 key comparisons", "the 16 A05 adversarial mutations"],
+    "note": "A04's own refusals are genuine owner-level guardrails. The A04<->A05 incompatibility is a JOIN-level defect, not an owner defect."
+  },
+  "terminal": "HQ280_PV3_A04R_INDEPENDENT_BINDER_ORACLE_OWNER_HOSTILE_RETURNED__NONISSUING__GITHUB_PUSHED"
+}

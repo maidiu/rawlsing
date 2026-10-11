@@ -1,0 +1,134 @@
+{
+ "schema": "HQ280_PV3_A04R_COMPAT_AND_HOSTILES@1",
+ "results": [
+  {
+   "id": "C1a",
+   "what": "A04.A05_COMPATIBLE_SCHEMA_VERSION string",
+   "outcome": "HQ280_PV3_A05_EXPECTED_WORK@1.0.0",
+   "detail": ""
+  },
+  {
+   "id": "C1b",
+   "what": "A05.SCHEMA_VERSION string",
+   "outcome": "HQ280_PV3_A05_EXPECTED_WORK@1.0.0",
+   "detail": ""
+  },
+  {
+   "id": "C0",
+   "what": "op_class vocabulary",
+   "outcome": "DISJOINT_DOMAINS",
+   "detail": "a04=['I03_UNARY_OR_JOINT_QUERY', 'I05_BOUNDED_DISCOVERY']"
+  },
+  {
+   "id": "C2",
+   "what": "operation_key equality for identical semantics",
+   "outcome": "DIFFERENT",
+   "detail": "a04=a8ead2fd6eacb928 a05=c75d5f2954548aec"
+  },
+  {
+   "id": "C3",
+   "what": "RAW vs GOVERNED_WEIGHTED operation identity",
+   "outcome": "A04_DISTINGUISHES__A05_CANNOT",
+   "detail": ""
+  },
+  {
+   "id": "C4",
+   "what": "q(C|A) vs q(C|A,B) identity",
+   "outcome": "A04_DISTINGUISHES__A05_CANNOT",
+   "detail": ""
+  },
+  {
+   "id": "C5",
+   "what": "documentary_item_key equality",
+   "outcome": "DIFFERENT",
+   "detail": ""
+  },
+  {
+   "id": "C6",
+   "what": "expected_work_key preimage compatibility",
+   "outcome": "NOT_INTEROPERABLE",
+   "detail": "distinct parameterisation; A04 folds required_consumer, A05 does not"
+  }
+ ],
+ "checks": [
+  {
+   "id": "C1",
+   "name": "schema token string equality",
+   "a04": "HQ280_PV3_A05_EXPECTED_WORK@1.0.0",
+   "a05": "HQ280_PV3_A05_EXPECTED_WORK@1.0.0",
+   "equal": true,
+   "means_interoperability": false,
+   "note": "a shared version STRING is not hash/preimage interoperability"
+  },
+  {
+   "id": "C0",
+   "name": "op_class VOCABULARY",
+   "a04_supported": [
+    "I03_UNARY_OR_JOINT_QUERY",
+    "I05_BOUNDED_DISCOVERY"
+   ],
+   "a05_supported": [
+    "UNARY_DISTRIBUTION",
+    "PAIR_RESPONSE_COTRAVEL",
+    "NONSCALAR_TOPOLOGY_PRESERVATION"
+   ],
+   "shared_tokens": [],
+   "vocabulary_interoperable": false,
+   "note": "A04 op_class is a DISPATCH/route class; A05 op_class is a SEMANTIC operation class. The field name is shared but its domain is disjoint."
+  },
+  {
+   "id": "C2",
+   "name": "operation_key for the SAME semantic operation",
+   "a04_key": "a8ead2fd6eacb9283dcc5db83c0a8ae928d5cb9238411c53e36a133c23392272",
+   "a05_key": "c75d5f2954548aec5fe4177a9170ec958d95b4b7f974f6aab3b26301cf972e39",
+   "equal": false,
+   "a04_preimage": "{op_class,roles,target,condition_order,measure_kind,version}",
+   "a05_preimage": "{k,class,roles,target}"
+  },
+  {
+   "id": "C3",
+   "name": "RAW vs GOVERNED_WEIGHTED under A04",
+   "raw": "a8ead2fd6eacb9283dcc5db83c0a8ae928d5cb9238411c53e36a133c23392272",
+   "governed_weighted": "db842f031b728095898015cb8e1a958ff53ff8565e73f988d86fec6f7263f094",
+   "differs": true,
+   "a05_has_measure_kind_parameter": false,
+   "consequence": "A05 cannot represent the RAW/GOVERNED_WEIGHTED distinction at all"
+  },
+  {
+   "id": "C4",
+   "name": "q(C|A) vs q(C|A,B) under A04",
+   "q_C_given_A": "de80230e92f90ecb66c3134e9457c23979b5f2b1700e351650d6e32e2b5bfff2",
+   "q_C_given_A_B": "a8ead2fd6eacb9283dcc5db83c0a8ae928d5cb9238411c53e36a133c23392272",
+   "differs": true,
+   "a05_has_condition_order_parameter": false,
+   "consequence": "A05 keys cannot distinguish conditioner cardinality"
+  },
+  {
+   "id": "C5",
+   "name": "documentary_item_key",
+   "a04": "08226709af06c4b6102cb4eb92b9974f1e872cd414f40ab4d5c97dd81ea924cb",
+   "a05": "f7ebae8c6d80f85535f44ba34f417a7beb780c07148798a85509a0a257f8db9d",
+   "equal": false
+  },
+  {
+   "id": "C6",
+   "name": "expected_work_key signatures",
+   "a04": "(*, item_key: 'str', operation_key_value: 'str', source_identity: 'str', authority_ref: 'str', risk_identity: 'str', topology_identity: 'str', consumer: 'str', version: 'str' = 'HQ280_PV3_A04_EXPECTED_WORK@1.0.0') -> 'str'",
+   "a05": "(item_k, op_k, authority, risk, topology, version='HQ280_PV3_A05_EXPECTED_WORK@1.0.0') -> 'str'",
+   "a04_includes_required_consumer": false,
+   "interoperable_preimage": false,
+   "note": "A04 also folds required_consumer into the broader preimage; A05 declares the consumer per expected record instead"
+  }
+ ],
+ "interoperability_verdict": {
+  "shared_schema_token_string": true,
+  "hash_preimage_interoperable": false,
+  "honest_resolution": "SCHEMA_VERSIONED_SUCCESSOR_REQUIRED",
+  "not_acceptable": [
+   "string coercion",
+   "key collision acceptance",
+   "silent re-hashing of A05 keys into A04 scope"
+  ],
+  "reason": "A04's operation_key preimage = {op_class, roles, target, condition_order, measure_kind, version}; A05's = {class, roles, target}. The version string is identical, so a naive equality check on the token wrongly suggests interoperability while the keys cannot collide even for semantically identical operations."
+ }
+}

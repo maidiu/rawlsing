@@ -1,0 +1,72 @@
+{
+ "schema": "HQ280_PV3_A04R_MANIFEST@1",
+ "reviewer_branch": "agent/reviewer-pyat-hq280-pv3-a04r-binder-oracle-hostile-r1",
+ "reviewer_head": "4f3238aff7644ad58406c623c9eac6682f1a0743",
+ "a04_commit": "cbe047cf15a2285b0e918bd77640037f7bec63ef",
+ "a05_commit": "9491d0296c95ee2942fe80eadc6aa9f54b07c634",
+ "authority": {
+  "governing": "HQD-2026-10-10-280",
+  "canonical": "a70a069fa948e0f3c041b389edcc732b6b948a4f",
+  "semantic_pre_main": "1f47063c3205a45888b3c55e81e7485943ed1390"
+ },
+ "deliverables": {
+  "00_RETURN.md": {
+   "sha256": "2b855c9a71016217ed2932facd72a7c32c1426b80349b0b04a12e24206bbb0fd",
+   "bytes": 6465
+  },
+  "01_EXACT_CODE_AND_PREIMAGES.json": {
+   "sha256": "f6eaf2a532fd42a7da2d1c62ca3371fc2abdf71f556feda7ba1e86f355729273",
+   "bytes": 5475
+  },
+  "02_ACTUAL_RUNS_AND_ORACLE_ADAPTER.json": {
+   "sha256": "0cbd994d85ef223e158253233b8ff24ab1485f69803b9932173de227b0e2f42d",
+   "bytes": 1500
+  },
+  "03_ACTUALLY_INJECTED_HOSTILES.json": {
+   "sha256": "d8a34ac84716ebf54a8f7e75dba2f97e5c08b4fe74e70ea0da4e628c8c29fb45",
+   "bytes": 3098
+  },
+  "04_CONSUMER_AND_PROVENANCE_HOLDS.md": {
+   "sha256": "11cf88098e3e0a33466c8ee2804f0aeccf102ee2d6e1c44f36a6e9932a58cab7",
+   "bytes": 3983
+  }
+ },
+ "repro": {
+  "a04_41_suite.log": {
+   "sha256": "2da0eee3fd99ec20d6e7240fa75c84b0d323919398a4abaf44f1aac23f855065",
+   "bytes": 99
+  },
+  "a04_module.py": {
+   "sha256": "f5cf17bf78d656c519a83963c4f5feb08552b652ab660afcde609cd2f40838f1",
+   "bytes": 43357
+  },
+  "a04r_compat_and_hostiles.py": {
+   "sha256": "f3611ae088dab98524d79dacf9fdf739d114022adfff56f36470a27fc54a2267",
+   "bytes": 6660
+  },
+  "a04r_compat_results.json": {
+   "sha256": "51aa41e8dc2ffd4edd8f2c3051bc2f1d3f47fae7f36bb542ab2e17f50a6b5cb5",
+   "bytes": 4701
+  },
+  "a05_fixtures_results.json": {
+   "sha256": "b0d1c682ce3078a98874ff404b85c2246faa7460494570cd1aa97dd42d967ce6",
+   "bytes": 5831
+  },
+  "a05_oracle.py": {
+   "sha256": "81c74691d576b89a5569efcffd929ef8c995c6261362bad243d235ded8fe96d4",
+   "bytes": 10024
+  }
+ },
+ "execution_summary": {
+  "a04_suite": "41 passed",
+  "a05_fixtures": "18/18 all_expectations_met",
+  "compat_probe": "exit 0, 7 checks"
+ },
+ "verdict": "TECHNICAL_ACCEPTANCE_WITH_EXACT_DEFECT__A04_AND_A05_ARE_NOT_KEY_INTEROPERABLE",
+ "honest_resolution": "SCHEMA_VERSIONED_SUCCESSOR_REQUIRED",
+ "a04_code_edited": false,
+ "a05_bytes_merged": false,
+ "raw_source_executed": false,
+ "no_self_adoption": true,
+ "terminal": "HQ280_PV3_A04R_INDEPENDENT_BINDER_ORACLE_OWNER_HOSTILE_RETURNED__NONISSUING__GITHUB_PUSHED"
+}

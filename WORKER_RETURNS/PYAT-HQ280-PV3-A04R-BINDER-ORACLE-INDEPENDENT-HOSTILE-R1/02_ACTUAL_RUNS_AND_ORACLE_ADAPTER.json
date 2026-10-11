@@ -1,0 +1,20 @@
+{
+  "schema": "HQ280_PV3_A04R_ACTUAL_RUNS_AND_ORACLE_ADAPTER@1",
+  "reviewer_head": "4f3238aff7644ad58406c623c9eac6682f1a0743",
+  "environment": {"python": "3.11.3", "pytest": "9.1.1", "platform": "macOS 13.7.8 x86_64",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-a04r",
+    "a05_temp_dir": "/tmp/a04r/a05 (separate; immutable A05 bytes copied, not merged)"},
+  "runs": [
+    {"id": "a04_candidate_suite", "command": "pytest rawlsing_next/tests/test_pre553_original_workload_binder_candidate.py -q",
+     "collected": 41, "passed": 41, "failed": 0, "exit_code": 0, "log": "repro/a04_41_suite.log"},
+    {"id": "a05_independent_fixtures", "command": "python3 a05_hostiles.py (in /tmp/a04r/a05)",
+     "cases": 18, "all_expectations_met": true, "exit_code": 0, "log": "repro/a05_fixtures_results.json"},
+    {"id": "a04_a05_compat_probe", "command": "python3 a04r_compat_and_hostiles.py",
+     "checks": 7, "exit_code": 0, "log": "repro/a04r_compat_results.json"}],
+  "adapter": {
+    "kind": "AUDIT_ONLY",
+    "location": "repro/a04r_compat_and_hostiles.py",
+    "writes_to_a04": false, "writes_to_a05": false, "merges_authority": false,
+    "what_it_does": "loads A04's candidate module by file path (read-only, package importable via PYTHONPATH) and A05's immutable oracle from a separate temp dir, then compares key preimages for the SAME semantic operation",
+    "result": "A04 and A05 are NOT hash/preimage interoperable despite an identical declared version string"}
+}
