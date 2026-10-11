@@ -1,0 +1,208 @@
+{
+  "schema": "PYAT_PV3_A02_HOSTILE_COURT@1.0.0",
+  "grade": "HOSTILE_SPECIFICATION_NOT_RUNTIME_TEST",
+  "source_raw_execution": false,
+  "source_science_reissued": false,
+  "hostile_count": 18,
+  "tests": [
+    {
+      "id": "WRONG_SUBJECT",
+      "attack": "LiTS Section-3 selected adult silently merged with household respondent or q310",
+      "expected": "HELD_OR_REJECT",
+      "support": "original selection and C11 respondent-ref same-person proof",
+      "method": "DOCUMENTARY_HOSTILE_DESIGN_ONLY",
+      "actual_execution": false,
+      "observed_result": null,
+      "independent_test_grade": "NOT_RUN",
+      "pass_claim": false
+    },
+    {
+      "id": "Q97_NINE",
+      "attack": "Afro R5 Q97 code 9 recoded as DK",
+      "expected": "REJECT",
+      "support": "9=postgraduate substantive, 99=DK",
+      "method": "DOCUMENTARY_HOSTILE_DESIGN_ONLY",
+      "actual_execution": false,
+      "observed_result": null,
+      "independent_test_grade": "NOT_RUN",
+      "pass_claim": false
+    },
+    {
+      "id": "Q8A_NINE",
+      "attack": "Afro R5 Q8A 9 admitted as frequency of food insufficiency",
+      "expected": "REJECT",
+      "support": "9=DK, 0–4 substantive",
+      "method": "DOCUMENTARY_HOSTILE_DESIGN_ONLY",
+      "actual_execution": false,
+      "observed_result": null,
+      "independent_test_grade": "NOT_RUN",
+      "pass_claim": false
+    },
+    {
+      "id": "Q86A_997",
+      "attack": "Afro R5 Q86A 997 treated as No/zero",
+      "expected": "REJECT",
+      "support": "997 not asked",
+      "method": "DOCUMENTARY_HOSTILE_DESIGN_ONLY",
+      "actual_execution": false,
+      "observed_result": null,
+      "independent_test_grade": "NOT_RUN",
+      "pass_claim": false
+    },
+    {
+      "id": "Q86A_EXCLUDED_COUNTRY",
+      "attack": "ALG, EGY, MRC, SUD, TUN counted as asked Q86A without local proof",
+      "expected": "REJECT",
+      "support": "codebook exclusion",
+      "method": "DOCUMENTARY_HOSTILE_DESIGN_ONLY",
+      "actual_execution": false,
+      "observed_result": null,
+      "independent_test_grade": "NOT_RUN",
+      "pass_claim": false
+    },
+    {
+      "id": "RISK_IMPORT",
+      "attack": "Ghana copied from GT2 19,210 respondent common exposure",
+      "expected": "REJECT",
+      "support": "GHA not in those 11 countries",
+      "method": "DOCUMENTARY_HOSTILE_DESIGN_ONLY",
+      "actual_execution": false,
+      "observed_result": null,
+      "independent_test_grade": "NOT_RUN",
+      "pass_claim": false
+    },
+    {
+      "id": "SAME_ROW_NOT_EXPOSURE",
+      "attack": "C11 physical row of three columns assumed to prove all three routing facts",
+      "expected": "REJECT",
+      "support": "per-question source-native exposure/subject event",
+      "method": "DOCUMENTARY_HOSTILE_DESIGN_ONLY",
+      "actual_execution": false,
+      "observed_result": null,
+      "independent_test_grade": "NOT_RUN",
+      "pass_claim": false
+    },
+    {
+      "id": "CONDITIONAL_DENOMINATOR",
+      "attack": "3-target joint tensor or one cohort used as q1 and q2 conditional denominator",
+      "expected": "REJECT",
+      "support": "distinct value-passing predicate member refs, common complete-case S",
+      "method": "DOCUMENTARY_HOSTILE_DESIGN_ONLY",
+      "actual_execution": false,
+      "observed_result": null,
+      "independent_test_grade": "NOT_RUN",
+      "pass_claim": false
+    },
+    {
+      "id": "PAIRWISE_COMPLETE_DIFF",
+      "attack": "q1 uses pairwise base, q2 triple complete-case base without declaration",
+      "expected": "REJECT",
+      "support": "freeze S_GHA before both q1/q2 for intended comparison",
+      "method": "DOCUMENTARY_HOSTILE_DESIGN_ONLY",
+      "actual_execution": false,
+      "observed_result": null,
+      "independent_test_grade": "NOT_RUN",
+      "pass_claim": false
+    },
+    {
+      "id": "ROUTE_UNKNOWN_ZERO",
+      "attack": "Unresolved route silently becomes eligible base 0, observed 0 rate or source-intrinsic NA",
+      "expected": "REJECT",
+      "support": "typed HELD/UNKNOWN not measured zero",
+      "method": "DOCUMENTARY_HOSTILE_DESIGN_ONLY",
+      "actual_execution": false,
+      "observed_result": null,
+      "independent_test_grade": "NOT_RUN",
+      "pass_claim": false
+    },
+    {
+      "id": "POPULATION_GENERALIZATION",
+      "attack": "Nominal sample size, source weight column, or RAW unweighted Ghana slice called nationally representative",
+      "expected": "REJECT",
+      "support": "frame/PSU/strata/weight applicability and variance issuer absent",
+      "method": "DOCUMENTARY_HOSTILE_DESIGN_ONLY",
+      "actual_execution": false,
+      "observed_result": null,
+      "independent_test_grade": "NOT_RUN",
+      "pass_claim": false
+    },
+    {
+      "id": "FAMILY_AS_RESPONDENT",
+      "attack": "Q8A family/self food hardship recoded as respondent's exact observed personal nutrition",
+      "expected": "REJECT",
+      "support": "question subject is self or anyone family",
+      "method": "DOCUMENTARY_HOSTILE_DESIGN_ONLY",
+      "actual_execution": false,
+      "observed_result": null,
+      "independent_test_grade": "NOT_RUN",
+      "pass_claim": false
+    },
+    {
+      "id": "SOURCE_Q291_MASTER",
+      "attack": "WVS master 18 Q291 children all treated as retained 613-SAV variables and exact I05 target",
+      "expected": "REJECT",
+      "support": "retained dictionary, fielding and query target need exact proof",
+      "method": "DOCUMENTARY_HOSTILE_DESIGN_ONLY",
+      "actual_execution": false,
+      "observed_result": null,
+      "independent_test_grade": "NOT_RUN",
+      "pass_claim": false
+    },
+    {
+      "id": "GSS_SPLIT",
+      "attack": "1973/1984/1993/2002 GSS form nonreceipt treated as response refusal or no one eligible",
+      "expected": "REJECT",
+      "support": "form assignment/asked population",
+      "method": "DOCUMENTARY_HOSTILE_DESIGN_ONLY",
+      "actual_execution": false,
+      "observed_result": null,
+      "independent_test_grade": "NOT_RUN",
+      "pass_claim": false
+    },
+    {
+      "id": "UGANDA_BOOST",
+      "attack": "R5 Uganda n6200 or R9 n3392 called national n2400 target/weighted trend",
+      "expected": "REJECT",
+      "support": "R5 3800 and R9 992 targeted supplements separate; exact flags/variance absent",
+      "method": "DOCUMENTARY_HOSTILE_DESIGN_ONLY",
+      "actual_execution": false,
+      "observed_result": null,
+      "independent_test_grade": "NOT_RUN",
+      "pass_claim": false
+    },
+    {
+      "id": "S14_ERASURE",
+      "attack": "Missing structural focal referent removes supported LiTS FF01 empirical co-travel",
+      "expected": "REJECT",
+      "support": "empirical report vs structural relation separate",
+      "method": "DOCUMENTARY_HOSTILE_DESIGN_ONLY",
+      "actual_execution": false,
+      "observed_result": null,
+      "independent_test_grade": "NOT_RUN",
+      "pass_claim": false
+    },
+    {
+      "id": "O06_O08_INFERENCE",
+      "attack": "Original source warning text fabricated from developer label",
+      "expected": "REJECT",
+      "support": "full source warning bytes/authority uninspected here",
+      "method": "DOCUMENTARY_HOSTILE_DESIGN_ONLY",
+      "actual_execution": false,
+      "observed_result": null,
+      "independent_test_grade": "NOT_RUN",
+      "pass_claim": false
+    },
+    {
+      "id": "ALL35_FALSE_COMPLETE",
+      "attack": "One narrow positive used as whole wave original item→product→consumer proof",
+      "expected": "REJECT",
+      "support": "35-wave obligation queue retains uncompleted source classes",
+      "method": "DOCUMENTARY_HOSTILE_DESIGN_ONLY",
+      "actual_execution": false,
+      "observed_result": null,
+      "independent_test_grade": "NOT_RUN",
+      "pass_claim": false
+    }
+  ],
+  "warning": "These are proof-obligation injections. No source-run or executable pytest invocation occurred, hence no claim of independent hostile PASS."
+}
