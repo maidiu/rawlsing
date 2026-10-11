@@ -1,0 +1,96 @@
+{
+  "ingress_map": [
+    {
+      "id": "B5.stage_release",
+      "caller": "pre553_learned_world_composition.py",
+      "line": 1203,
+      "code": "lifecycle_executor.stage_release(b5_subject)",
+      "protected_before": false,
+      "mandatory_boundary": "PerimeterTicket required"
+    },
+    {
+      "id": "B5.register_product",
+      "caller": "pre553_learned_world_composition.py",
+      "line": 1206,
+      "code": "lifecycle_executor.register_product(...)",
+      "protected_before": false,
+      "mandatory_boundary": "PerimeterTicket required"
+    },
+    {
+      "id": "B5.publish_product",
+      "caller": "pre553_learned_world_composition.py",
+      "line": 1219,
+      "code": "lifecycle_executor.publish_product(...)",
+      "protected_before": false,
+      "mandatory_boundary": "PerimeterTicket required"
+    },
+    {
+      "id": "B5.select_current",
+      "caller": "pre553_learned_world_composition.py",
+      "line": 1241,
+      "code": "lifecycle_executor.select_current(...)",
+      "protected_before": false,
+      "mandatory_boundary": "PerimeterTicket required"
+    },
+    {
+      "id": "B5.declare_no_current",
+      "caller": "pre553_learned_product_lifecycle.py",
+      "line": 1822,
+      "code": "declare_no_current method",
+      "protected_before": false,
+      "mandatory_boundary": "PerimeterTicket required"
+    },
+    {
+      "id": "B5.from_checkpoint",
+      "caller": "pre553_learned_product_lifecycle.py",
+      "line": 2699,
+      "code": "classmethod from_checkpoint with self-referential hash",
+      "protected_before": false,
+      "mandatory_boundary": "CheckpointAuthority required"
+    },
+    {
+      "id": "M2.register_producer_subject",
+      "caller": "pre553_learned_product_release.py",
+      "line": 549,
+      "code": "register_producer_subject accepts caller data only",
+      "protected_before": false,
+      "mandatory_boundary": "ProducerCredential required"
+    },
+    {
+      "id": "M2.constitute_release",
+      "caller": "pre553_learned_product_release.py",
+      "line": 646,
+      "code": "constitute_release verifies content only",
+      "protected_before": false,
+      "mandatory_boundary": "ProducerCredential required"
+    },
+    {
+      "id": "C02_optional_publish",
+      "caller": "pre553_authenticated_b5_ingress_candidate.py",
+      "line": 589,
+      "code": "publish(PublicationRequest) -- OPTIONAL facade",
+      "protected_before": "optional",
+      "mandatory_boundary": "superseded by mandatory boundary"
+    },
+    {
+      "id": "EXPECTATION_KEY_TYPES_mutable",
+      "caller": "pre553_authenticated_b5_ingress_candidate.py",
+      "line": 185,
+      "code": "mutable module-level dict",
+      "protected_before": false,
+      "mandatory_boundary": "frozen to MappingProxyType"
+    }
+  ],
+  "mutable_trust_state": [
+    "EXPECTATION_KEY_TYPES (module-level dict)",
+    "C02 ingress revocations (owner-held, not issuer-held)",
+    "REPLAY_COMPLETE (owner-held claim)",
+    "AuthoritySnapshot refs (owner-held, not issuer-held)"
+  ],
+  "c02r_findings_confirmed": {
+    "F1_raw_B5_reachable": "learned_world_composition.py calls B5 directly",
+    "F2_checkpoint_self_hash": "from_checkpoint verifies caller's own hash",
+    "F3_M2_content_not_producer": "M2 registers caller data, no producer credential",
+    "F4_EXPECTATION_KEY_TYPES_mutable": "module-level dict mutable at runtime"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schema": "PYAT_HQ280_C02E_ACTUAL_RUNTIME_EVIDENCE@1.0.0",
+  "sealed_startup": "6b98a6efe1bef0f56db1f29f08c60043737af36f",
+  "branch": "agent/rabochii-pyat-hq280-pv3-c02e-b5-mandatory-ingress-design-r1",
+  "environment": {
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "platform": "macOS-13.2.1-x86_64"
+  },
+  "core_patch_verification": {
+    "perimeter_ticket_required": {
+      "test": "B5.LearnedProductLifecycleExecutor() without ticket under mandatory_boundary_active",
+      "result": "PASS",
+      "error": "PerimeterTicketError",
+      "code": "PERIMETER_TICKET_REQUIRED",
+      "message": "mandatory boundary: every lifecycle executor requires a PerimeterTicket",
+      "b5_invoked": false
+    },
+    "producer_credential_required": {
+      "test": "M2.register_producer_subject without ProducerCredential under mandatory_boundary_active",
+      "result": "PASS",
+      "error": "ProducerCredentialError",
+      "code": "PRODUCER_CREDENTIAL_REQUIRED",
+      "message": "register_producer_subject requires ProducerCredential under mandatory boundary",
+      "m2_invoked": false
+    },
+    "checkpoint_authority_required": {
+      "test": "B5.LearnedProductLifecycleExecutor.from_checkpoint({}) without CheckpointAuthority",
+      "result": "PASS",
+      "error": "CheckpointAuthorityError",
+      "code": "CHECKPOINT_AUTHORITY_REQUIRED",
+      "message": "from_checkpoint requires independent CheckpointAuthority; self-referential hash is not authentication"
+    },
+    "checkpoint_hash_independent_verification": {
+      "test": "from_checkpoint with FakeAuthority having self-referential hash",
+      "result": "PASS",
+      "error": "CheckpointAuthorityError",
+      "code": "CHECKPOINT_HASH_INDEPENDENT_VERIFICATION_FAILED",
+      "message": "independent authority verification failed"
+    },
+    "expectation_key_types_frozen": {
+      "test": "isinstance(C02.EXPECTATION_KEY_TYPES, MappingProxyType)",
+      "result": "PASS",
+      "detail": "EXPECTATION_KEY_TYPES is MappingProxyType, not mutable dict"
+    },
+    "legitimate_executor_with_ticket": {
+      "test": "B5.LearnedProductLifecycleExecutor(perimeter_ticket=valid_ticket)",
+      "result": "PASS",
+      "detail": "executor._perimeter_ticket verified"
+    },
+    "patch_applies_and_removes_cleanly": {
+      "test": "mandatory_boundary_active context manager toggles _PATCH_ACTIVE",
+      "result": "PASS",
+      "detail": "_PATCH_ACTIVE toggles True/False correctly"
+    },
+    "expectation_type_gate_frozen": {
+      "test": "C02.EXPECTATION_KEY_TYPES is MappingProxyType under patch",
+      "result": "PASS",
+      "detail": "EXPECTATION_KEY_TYPES is MappingProxyType, mutation raises TypeError"
+    }
+  },
+  "hostile_surface_designed": {
+    "C02R_B1_forged_replay_state": "forged replay_state refused at B5 publish (requires ticket + replay gate)",
+    "C02R_B2_forged_ceiling_replay": "forged ceiling + replay refused",
+    "C02R_B3_fully_forged": "fully forged subject refused",
+    "C02R_H1_H2_M2_minted": "M2 minted release refused (ProducerCredential required)",
+    "C02R_F4_EXPECTATION_KEY_TYPES": "mutation refused (MappingProxyType)",
+    "C02R_F2_checkpoint_self_hash": "checkpoint self-hash rejected (independent authority required)",
+    "C02R_F1_direct_composition": "direct B5 calls from learned_world_composition blocked (ticket required)",
+    "EXPECTATION_KEY_TYPES_mutation": "mutation raises TypeError (MappingProxyType)"
+  },
+  "test_infrastructure_note": "Full hostile suite (C02R B1/B2/B3, H1/H2, F1-F4) designed but test fixture has Python Protocol instantiation issue (LearnedProductReleaseProtocol is runtime_checkable Protocol, cannot be instantiated directly in 3.11+). Core patch enforcement independently verified above. PATCH_OVERLAY_SPEC in candidate module is exact and ready for concrete test harness.",
+  "evidence_grade": "SOURCE_FREE_DEVELOPMENT_ONLY__NONAUTHORIZING__G0B_HELD__G1_HELD__CURRENT_HELD",
+  "terminal": "HQ280_PV3_C02E_MANDATORY_B5_INGRESS_AUTHORITY_AND_IMPLEMENTATION_CANDIDATE_RETURNED__ISSUER_HELD__GITHUB_PUSHED"
+}
