@@ -1,5 +1,5 @@
 {
-  "schema": "HQ281_A06_EVIDENCE_MANIFEST@1.0.0",
+  "schema": "HQ281_A06_EVIDENCE_MANIFEST@1.1.0",
   "startup_sha": "1a46adcffb82a7d951332e39ffea598e4ab4396b",
   "branch": "agent/rabochii-pyat-hq281-a06-first-issued-source-consumer-r1",
   "authority": {
@@ -9,7 +9,7 @@
     "adoption_made": false,
     "production_owner_mutations": 0
   },
-  "method": "connected private GitHub immutable file and report inspections; no full clone, no raw survey rows; 15 source-free documentary assertions executed against GitHub-fetched JSON",
+  "method": "GitHub original authority/owner and 35 wave crosscheck; JS static contract checks and deliberate mutation detection against fetched exact blobs; no raw-source read or Python runtime",
   "source_evidence": [
     {
       "ref": "WORKER_RETURNS/PYAT-HQ221-C5-GT2-STRUCTURAL-POSITIVE-REALIZATION-R1/01_RETAINED_EMPIRICAL_INPUT_BINDING.json",
@@ -78,7 +78,7 @@
   "output_file_git_blob_sha1": [
     {
       "path": "WORKER_RETURNS/PYAT-HQ281-A06-FIRST-QUALIFIED-SOURCE-TO-CONSUMER-R1/00_RETURN.md",
-      "blob": "e03287256d74f8cd388e81ab208e824d546b099f"
+      "blob": "3e637ee884497181fad30ab33b376f597eb99c82"
     },
     {
       "path": "WORKER_RETURNS/PYAT-HQ281-A06-FIRST-QUALIFIED-SOURCE-TO-CONSUMER-R1/01_THREE_NEAREST_ISSUED_PATHS.json",
@@ -97,15 +97,30 @@
       "blob": "f35e2a33ae788a53c1ab08db66fb02090f923d2d"
     },
     {
+      "path": "WORKER_RETURNS/PYAT-HQ281-A06-FIRST-QUALIFIED-SOURCE-TO-CONSUMER-R1/06_ALL35_NINE_FAMILY_SCREEN.json",
+      "blob": "ca3f0e9f466010aedb97af4bf06017cddc6dad66"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ281-A06-FIRST-QUALIFIED-SOURCE-TO-CONSUMER-R1/07_EXECUTED_SOURCE_FREE_CONTRACT_COURT.json",
+      "blob": "961e5fe4dc5a74193663049c9d44cbaf622c11fe"
+    },
+    {
       "path": "WORKER_RETURNS/PYAT-HQ281-A06-FIRST-QUALIFIED-SOURCE-TO-CONSUMER-R1/repro/README.md",
-      "blob": "2d24ef6a31bb8e9360624311b66f667792d7ff11"
+      "blob": "d6a23c8cb846fb544f782120369eec81bcbb7c67"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ281-A06-FIRST-QUALIFIED-SOURCE-TO-CONSUMER-R1/repro/validate_source_free_contract.mjs",
+      "blob": "bb2346640d948e8947f756dcdb24c05655e4eeb4"
     }
   ],
   "checks": {
-    "type": "in-memory read-only 15 assertions over GitHub-fetched 01 and 04",
-    "passed": 15,
+    "type": "36 static JS crosschecks and 18 deliberately mutated input refusals from exact GitHub fetched 01,04,06,HQ221 and three owner-code blobs",
+    "passed": 36,
     "failed": 0,
-    "scope": "schema/scope/denominator/authority/prospect status integrity only; NOT source, producer execution, technical pytest or adoption"
+    "mutation_hostiles_executed": 18,
+    "mutation_hostiles_detected": 18,
+    "python_owner_execution": false,
+    "scope": "SOURCE_FREE_RECORD_AND_GUARD_PRESENCE_ONLY__NOT_PYTHON_RUNTIME_OR_SCIENTIFIC_AUTHORITY"
   },
   "raw_source_reads": 0,
   "new_empirical_query_executions": 0,
@@ -115,5 +130,26 @@
   "source_grants_issued": 0,
   "source_sav_dta_copies_created": 0,
   "inherited_actual_consumer_runtime": "HQ221 GT2 current R1C V557/V558, not rerun by A06",
-  "term": "HQ281_A06_BOUNDED_PRODUCT_OR_EXACT_HOLD__GITHUB_PUSHED"
+  "term": "HQ281_A06_BOUNDED_PRODUCT_OR_EXACT_HOLD__GITHUB_PUSHED",
+  "completion_supplement": {
+    "version": "R2",
+    "terminal": "HQ281_A06_BOUNDED_PRODUCT_OR_EXACT_HOLD__GITHUB_PUSHED",
+    "grade": "EXISTING_GT2_ACTUAL_CONSUMER_INHERITED_POSITIVE__NEW_B02_EXACT_ISSUER_HOLD__NOT_THREE_POSITIVES",
+    "all35_nine_family_census_screen": true,
+    "inherited_implementations": 18276,
+    "measurement_candidate_implementations": 13270,
+    "global_distinct_alternative_conflict_implementations": 10457,
+    "sum_of_per_wave_alternative_conflict_incidences": 10479,
+    "source_reauthorization_made": false,
+    "source_free_documentary_assertions_observed": 36,
+    "source_free_mutants_rejected": 18,
+    "python_producer_tests_performed": 0,
+    "source_rows_read": 0,
+    "new_batch_executions": 0,
+    "new_consumer_executions": 0,
+    "independently_prefrozen_E": false,
+    "real_execution_permission": false
+  },
+  "documentary_contract_mutations_executed_by_A06": 18,
+  "standalone_node_validator_committed_but_not_run_in_A06_environment": true
 }
