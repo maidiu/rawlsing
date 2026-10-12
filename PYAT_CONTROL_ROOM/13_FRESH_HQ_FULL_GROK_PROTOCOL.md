@@ -1,3 +1,11 @@
+## HQ281+ MANDATORY RESOURCE-ECONOMY DELTA-GROK — NO NEW COMMISSIONS UNTIL SATISFIED
+
+Before issuing, assigning, redispatching or accepting any new work, the incoming HQ must read [the resource-aware commissioning and successor gate](RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ_MANDATORY_COMMISSION_AND_SUCCESSOR_GROK_ADDENDUM_R1.md) and sealed `WORKER_COMMISSIONS/PYAT-RCM01-RESOURCE-AWARE-COMMAND-R1/{00_COMMISSION.md,01_OPERATING_CONTRACT.md,02_ACCEPTANCE.md,03_RESOURCE_SEED.json,04_TEST_VECTORS.json}` at `c71f83c731fe1465b59f5ad701a5e1bb3018b34a`. Answer the six resource hostiles and demonstrate the 22 RCM01 adversarial cases are predeclared but **NOT independently executed** as scheduler code. Show an exact current resource/commission ledger with unknown-as-null, explicit privacy/scientific/runtime/branch/reviewer gates, source-vs-local host capability, one shared Go normalized quota, independent separately observed Codex A/B, no paid-overflow or extra-account circumvention, time-to-accepted-product, independence, no duplicate active workers, and no automatic Astra. Model/variant + machine/worktree + budget/status + SHA are mandatory commission identity. No silent promotion of RCM01 into scientific or autonomous authority; successor reconcile working-branch evidence with canonical `HQ_HANDOFF/LATEST.json` before operative adoption.
+
+**Failing any of these requirements = RESOURCE_GROK_INCOMPLETE; no newly routed commission until corrected.** Existing authorized work continues under its own sealed law.
+
+---
+
 ## HQ277 follow-up condition — actual automated workload completeness
 
 After completing the HQ276 machine-grok, a new HQ must read [the hostile matrix audit](WHOLE_MACHINE_COMPLETION_R1/SECOND_PASS_HOSTILE_AUDIT_R1.md) and [the WG0–WG4 original-item/operation workload construction gate](WHOLE_MACHINE_COMPLETION_R1/AUTOMATED_WORKLOAD_CONSTRUCTION_CRITICAL_GATE.md). Demand evidence for the current generator of source-complete legitimate I03 requests, I05 authority/catalogs and batch jobs; these are currently proved *consumable inputs* to generic owners, not yet proved exhaustively constructed from all 35 original instruments. No selected-question handwork and no assertion an implementation is missing without examining current existing owners.
