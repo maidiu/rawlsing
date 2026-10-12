@@ -78,27 +78,28 @@ The deepest longitudinal mirror is the user's own relational praxis.
 
 1. `00_FULL_RAWLSING_VOZHD_GROUNDING_GATE_R1.md` — **mandatory general Rawlsing HQ grounding; read before Sorok specialization**
 2. `00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md` — **mandatory Sorok/V3/PFF specialization gate**
-3. `01_PRODUCT_CHARTER.md`
+3. `00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md` — **mandatory HQ assessment/calibration gate; required before consequential feasibility/readiness/confidence claims**
+5. `01_PRODUCT_CHARTER.md`
 4. `02_PROVISIONAL_RELATIONAL_ONTOLOGY.md`
-5. `03_REAL_ALPHA_SPINE.md`
-6. `04_CURRENT_SYSTEM_TO_PRODUCT_CROSSWALK.md`
-7. `05_PROGRAM_MAP.md`
-8. `06_OPERATING_METHOD.md`
-9. `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md` — current cross-cutting interaction synthesis
-10. `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md` — second-pass corrections
-11. `10_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R3.md` — third-pass corrections
-12. `11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md` — prior causal-mechanics completeness audit
-13. `12_CHAT_EXHAUSTIVE_HARVEST_AUDIT_R5.md` — current exhaustive chat-harvest audit
-14. `13_R5_CHAT_HARVEST_INTEGRITY_RECEIPT.md` — mechanical + semantic closure receipt
-15. `dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md` — inherited mediation genealogy
-16. `dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/03_SOROK_RELATIONALIZATION_DELTA_OVER_INHERITED_PFF_R1.md` — current novel ontology frontier
-17. `state/CURRENT_STATE.md`
-18. machine-readable ledgers in `registers/`
-19. `15_SOROK_WIDE_OPEN_FRONTIER_PROGRAM_R1.md` — current open-question dependency/program map
-20. `16_COURT1_COURT2_PLAYER_ENCOUNTER_RELATIONSHIP_SYNTHESIS_R1.md` — player/encounter + relationship-state ideation
-21. `18_COURT3_COURT4_LIFE_PROGRESS_SYNTHESIS_R1.md` — life outside user + progress-without-score ideation
-22. `17_FULL_RAWLSING_VOZHD_GROUNDING_INTEGRITY_R1.md` — takeover grounding verification
-23. open scoped investigations in `dockets/`
+6. `03_REAL_ALPHA_SPINE.md`
+7. `04_CURRENT_SYSTEM_TO_PRODUCT_CROSSWALK.md`
+8. `05_PROGRAM_MAP.md`
+9. `06_OPERATING_METHOD.md`
+10. `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md` — current cross-cutting interaction synthesis
+11. `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md` — second-pass corrections
+12. `10_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R3.md` — third-pass corrections
+13. `11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md` — prior causal-mechanics completeness audit
+14. `12_CHAT_EXHAUSTIVE_HARVEST_AUDIT_R5.md` — current exhaustive chat-harvest audit
+15. `13_R5_CHAT_HARVEST_INTEGRITY_RECEIPT.md` — mechanical + semantic closure receipt
+16. `dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md` — inherited mediation genealogy
+17. `dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/03_SOROK_RELATIONALIZATION_DELTA_OVER_INHERITED_PFF_R1.md` — current novel ontology frontier
+18. `state/CURRENT_STATE.md`
+19. machine-readable ledgers in `registers/`
+20. `15_SOROK_WIDE_OPEN_FRONTIER_PROGRAM_R1.md` — current open-question dependency/program map
+21. `16_COURT1_COURT2_PLAYER_ENCOUNTER_RELATIONSHIP_SYNTHESIS_R1.md` — player/encounter + relationship-state ideation
+22. `18_COURT3_COURT4_LIFE_PROGRESS_SYNTHESIS_R1.md` — life outside user + progress-without-score ideation
+23. `17_FULL_RAWLSING_VOZHD_GROUNDING_INTEGRITY_R1.md` — takeover grounding verification
+24. open scoped investigations in `dockets/`
 
 ## 4. Anti-sprawl law
 
