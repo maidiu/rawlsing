@@ -1,3 +1,9 @@
+## P02 route correction — new branch, old branch retained
+
+The original P02 review branch `agent/reviewer-pyat-hq282-p02-c02j-principal-security-hostile-r1` at `dad074579ee705a720fb3cfe9cacb0193d573ffd` is **superseded for new dispatch, not deleted or adopted**. Replace its prospective assignment with **P02R**, a plain-language independent C02J interface verification. The candidate under review remains the exact `895980397cc0533043c7ca0e493ebbb455666c1e` tree. Do not run both P02/P02R simultaneously; inspect any existing local state before starting P02R. The P02R worktree and current secondary quota remain to be checked.
+
+---
+
 ## P01 plain-language revision
 
 P01's revised commission uses ordinary engineering language and an updated exact GitHub startup. The local secondary worktree is still missing; setup comes before Codex. Daybreak enrollment or a hardware key is not part of this project's required workflow. If a platform itself demands one, report the issue without bypassing the platform. The older P01 startup must not be used.
@@ -15,7 +21,7 @@ P01's revised commission uses ordinary engineering language and an updated exact
 | Lane | Proposed qualified executor (NOT yet assigned) | Exact verified commission-containing HEAD |
 | --- | --- | --- |
 | **P01** | SECONDARY Codex GPT-6.1 Sol Medium, Python/pytest/SIGKILL | [`fae6300505997347cab1baf61bf01b204d2ff448`](https://github.com/maidiu/rawlsing/blob/fae6300505997347cab1baf61bf01b204d2ff448/WORKER_COMMISSIONS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/00_COMMISSION.md) |
-| **P02** | SECONDARY Codex GPT-6.1 Sol Low, independent review | [`dad074579ee705a720fb3cfe9cacb0193d573ffd`](https://github.com/maidiu/rawlsing/blob/dad074579ee705a720fb3cfe9cacb0193d573ffd/WORKER_COMMISSIONS/PYAT-HQ282-P02-C02J-PRINCIPAL-SECURITY-HOSTILE-R1/00_COMMISSION.md) |
+| **P02R** | SECONDARY Codex GPT-6.1 Sol Low, independent source-free owner-interface review | [`835f22e6c6010fa35f6bd0b2739cd630736ef920`](https://github.com/maidiu/rawlsing/blob/835f22e6c6010fa35f6bd0b2739cd630736ef920/WORKER_COMMISSIONS/PYAT-HQ282-P02R-C02J-INDEPENDENT-INTERFACE-VERIFICATION-R1/00_COMMISSION.md) |
 | **P03** | Browser/GitHub GPT-6 High; no Python runtime claimed | [`da3c7f647f823fed885717f78156e1c6105a76c6`](https://github.com/maidiu/rawlsing/blob/da3c7f647f823fed885717f78156e1c6105a76c6/WORKER_COMMISSIONS/PYAT-HQ282-P03-TWO-FAMILY-EXTERNAL-FIELD-PRODUCTS-R1/00_COMMISSION.md) |
 | **P04** | Qualified Go/DeepSeek first; optional SECONDARY Codex GPT-6 Luna Medium | [`91169010041f9c2ee79a6bc1426a2a7901d9677c`](https://github.com/maidiu/rawlsing/blob/91169010041f9c2ee79a6bc1426a2a7901d9677c/WORKER_COMMISSIONS/PYAT-HQ282-P04-SELECTED-WORLD-PROGRESSIVE-FIXTURE-R1/00_COMMISSION.md) |
 | **P05** | Browser/GitHub GPT-6 High owner, optional cheap local collector | [`e0fd2b9ca9bde68ca462baa1bf9c9e691901344c`](https://github.com/maidiu/rawlsing/blob/e0fd2b9ca9bde68ca462baa1bf9c9e691901344c/WORKER_COMMISSIONS/PYAT-HQ282-P05-ORIGINAL-ROSTER-INDEPENDENT-E-R1/00_COMMISSION.md) |
