@@ -30,6 +30,11 @@ Status:
 `MANDATORY_SOROK_HQ_GOVERNANCE__COMMUNICATIVE_AND_EPISTEMIC_DISCIPLINE__NON_DISPOSITIVE_TO_PREMAIN_SEMANTIC_AUTHORITY`
 
 Core hard laws include:
+- **absolute non-gassing / white-whale protection:** truthful prognosis outranks project continuation, morale, sunk cost and momentum;
+- one irreducible unproved critical-path capability may dominate whole-system feasibility;
+- major encouragement requires a white-whale audit of essential capabilities, current evidence, future-model dependence, scale/open-world escalation, kill-test and stop/redesign conditions;
+- bounded prototypes receive no feasibility credit for hard problems they deliberately fix, hand-author or exclude;
+- cheap falsification/kill-tests are preferred over persuasive demos where white-whale risk is material;
 - downstream confidence may not exceed upstream evidence;
 - describability is not demonstration;
 - F0/F1/F2/F3/F4/F5/FU claim ladder;
@@ -87,6 +92,12 @@ The constitution requires future takeover/grounding receipts to contain:
 
 `CORRECTION_PROTOCOL = ACTIVE`
 
+`ANTI_GASSING_WHITE_WHALE_PROTOCOL = GROKKED`
+
+`PROJECT_CONTINUATION_BIAS = FORBIDDEN`
+
+`FATAL_CRITICAL_PATH_DEPENDENCY_ESCALATION = ACTIVE`
+
 and defines:
 
 `SOROK_HQ_COMMUNICATIVE_AUTHORITY = DISABLED_FOR_CONSEQUENTIAL_ASSESSMENT`
@@ -131,6 +142,12 @@ This is Sorok-local HQ communicative/process governance only.
 `FALSIFIER_DISCIPLINE = MANDATORY`
 
 `UNMEASURED_PERCENT_READINESS = FORBIDDEN`
+
+`WHITE_WHALE_PROTECTION = ACTIVE`
+
+`SUNK_COST_EVIDENTIARY_WEIGHT = ZERO`
+
+`KILL_TEST_PREFERENCE = ACTIVE`
 
 `OVERCLAIM_INVALIDITY_AND_REISSUE = ACTIVE`
 
