@@ -1,0 +1,393 @@
+{
+  "contract_id": "PYAT_HQ282_P04_SELECTED_WORLD_PROGRESSIVE_CONTRACT@1.0.0",
+  "contract_content_hash": "f323c7206f97d58b47fdd8f391b9614680fd699cc24e90f61c3fcde91eb6758c",
+  "world_tag": "p04-selected-world",
+  "real_current": false,
+  "selection_metadata": {
+    "schema": "P04_SYNTHETIC_SELECTION@1",
+    "fixture_id": "P04_SELECTED_WORLD_ABC_Y_58",
+    "world_tag": "p04-selected-world",
+    "row_count": 58,
+    "selection_kind": "SOURCE_FREE_SYNTHETIC",
+    "real_current": false,
+    "n9_owner_status": "ABSENT__E01_IMPLEMENTED_FALSE",
+    "n10w_owner_status": "ABSENT__E01_IMPLEMENTED_FALSE",
+    "g0b_status": "ABSENT__NOT_FABRICATED",
+    "b5_current_status": "ABSENT__NOT_SELECTED"
+  },
+  "steps": [
+    {
+      "step_id": "P_Y_given_A",
+      "conditioners": [
+        [
+          "A",
+          1
+        ]
+      ],
+      "producer_route": "N10E_SINGLE_CONDITIONER",
+      "producer_fact_state": "SUPPORTED",
+      "raw_denominator_support": 32,
+      "cells": {
+        "0": {
+          "raw_numerator_support": 14,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              7,
+              16
+            ]
+          }
+        },
+        "1": {
+          "raw_numerator_support": 18,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              9,
+              16
+            ]
+          }
+        }
+      },
+      "consumer_state": "EXACT_SUPPORTED",
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-p04-selected-world",
+        "content_hash": "1018c204a4f974b393b6d4d63eeb4f5b922bf562488e6057131138463d7366c4"
+      },
+      "risk_set_ref": {
+        "content_hash": "e3c1874ae6998a0bbc6a4ab6656a480ce0ad4d1c344098c08680e30b0e367c4e",
+        "kind": "RISK_SET",
+        "object_id": "urn:test:i03:risk_set:p04-selected-world-R_ALL"
+      },
+      "uncertainty_state": "UNCERTAINTY_UNQUANTIFIED",
+      "produced_evidence_ref": {
+        "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+        "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:f885bc9a054a86c647c1e2246926f5a89a1acfd7b9dfcf45f8182ee9b34a41c1",
+        "content_hash": "f885bc9a054a86c647c1e2246926f5a89a1acfd7b9dfcf45f8182ee9b34a41c1"
+      }
+    },
+    {
+      "step_id": "P_Y_given_A_B",
+      "conditioners": [
+        [
+          "A",
+          1
+        ],
+        [
+          "B",
+          1
+        ]
+      ],
+      "producer_route": "C1_MULTI_CONDITIONER",
+      "producer_fact_state": "SUPPORTED",
+      "raw_denominator_support": 16,
+      "cells": {
+        "0": {
+          "raw_numerator_support": 6,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              3,
+              8
+            ]
+          }
+        },
+        "1": {
+          "raw_numerator_support": 10,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              5,
+              8
+            ]
+          }
+        }
+      },
+      "consumer_state": "EXACT_SUPPORTED",
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-p04-selected-world",
+        "content_hash": "1018c204a4f974b393b6d4d63eeb4f5b922bf562488e6057131138463d7366c4"
+      },
+      "risk_set_ref": {
+        "content_hash": "e3c1874ae6998a0bbc6a4ab6656a480ce0ad4d1c344098c08680e30b0e367c4e",
+        "kind": "RISK_SET",
+        "object_id": "urn:test:i03:risk_set:p04-selected-world-R_ALL"
+      },
+      "uncertainty_state": "UNCERTAINTY_UNQUANTIFIED",
+      "produced_evidence_ref": {
+        "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+        "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:08142b892b060730f2f8f63c031b1d99961e1689cb1f8c6fac165ba8e3acd0f6",
+        "content_hash": "08142b892b060730f2f8f63c031b1d99961e1689cb1f8c6fac165ba8e3acd0f6"
+      }
+    },
+    {
+      "step_id": "P_Y_given_A_B_C",
+      "conditioners": [
+        [
+          "A",
+          1
+        ],
+        [
+          "B",
+          1
+        ],
+        [
+          "C",
+          1
+        ]
+      ],
+      "producer_route": "C1_MULTI_CONDITIONER",
+      "producer_fact_state": "SUPPORTED",
+      "raw_denominator_support": 8,
+      "cells": {
+        "0": {
+          "raw_numerator_support": 2,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              1,
+              4
+            ]
+          }
+        },
+        "1": {
+          "raw_numerator_support": 6,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              3,
+              4
+            ]
+          }
+        }
+      },
+      "consumer_state": "EXACT_SUPPORTED",
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-p04-selected-world",
+        "content_hash": "1018c204a4f974b393b6d4d63eeb4f5b922bf562488e6057131138463d7366c4"
+      },
+      "risk_set_ref": {
+        "content_hash": "e3c1874ae6998a0bbc6a4ab6656a480ce0ad4d1c344098c08680e30b0e367c4e",
+        "kind": "RISK_SET",
+        "object_id": "urn:test:i03:risk_set:p04-selected-world-R_ALL"
+      },
+      "uncertainty_state": "UNCERTAINTY_UNQUANTIFIED",
+      "produced_evidence_ref": {
+        "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+        "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:9e929601a9d24d9b2eaf42e84843ea8e867d771369f888e55203173772d4a32a",
+        "content_hash": "9e929601a9d24d9b2eaf42e84843ea8e867d771369f888e55203173772d4a32a"
+      }
+    }
+  ],
+  "f8_consumptions": [
+    {
+      "call": "evaluate_positioned_subject_possibility",
+      "step_id": "P_Y_given_A",
+      "result_state": "EXACT_SUPPORTED",
+      "exact_disposition": "SUPPORTED",
+      "exact_reason": "EXACT_POSITIONED_STRATUM_SUPPORTED",
+      "exact_evidence_ref": {
+        "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+        "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:f885bc9a054a86c647c1e2246926f5a89a1acfd7b9dfcf45f8182ee9b34a41c1",
+        "content_hash": "f885bc9a054a86c647c1e2246926f5a89a1acfd7b9dfcf45f8182ee9b34a41c1"
+      }
+    },
+    {
+      "call": "evaluate_positioned_subject_possibility",
+      "step_id": "P_Y_given_A_B",
+      "result_state": "EXACT_SUPPORTED",
+      "exact_disposition": "SUPPORTED",
+      "exact_reason": "EXACT_POSITIONED_STRATUM_SUPPORTED",
+      "exact_evidence_ref": {
+        "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+        "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:08142b892b060730f2f8f63c031b1d99961e1689cb1f8c6fac165ba8e3acd0f6",
+        "content_hash": "08142b892b060730f2f8f63c031b1d99961e1689cb1f8c6fac165ba8e3acd0f6"
+      }
+    },
+    {
+      "call": "evaluate_positioned_subject_possibility",
+      "step_id": "P_Y_given_A_B_C",
+      "result_state": "EXACT_SUPPORTED",
+      "exact_disposition": "SUPPORTED",
+      "exact_reason": "EXACT_POSITIONED_STRATUM_SUPPORTED",
+      "exact_evidence_ref": {
+        "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+        "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:9e929601a9d24d9b2eaf42e84843ea8e867d771369f888e55203173772d4a32a",
+        "content_hash": "9e929601a9d24d9b2eaf42e84843ea8e867d771369f888e55203173772d4a32a"
+      }
+    }
+  ],
+  "invocation_log": [
+    {
+      "call": "provide_empirical_possibility_slice",
+      "inputs": {
+        "empirical_query": {
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:44846c39f131a90eb136914a073d3149bf6cb5cd53591fcabe3515003e1c4ace",
+          "content_hash": "44846c39f131a90eb136914a073d3149bf6cb5cd53591fcabe3515003e1c4ace"
+        },
+        "predicate": {
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:05e7965bb9b3267203564934fa01772ed71f03d266bf6aebc25de3bf144756d0",
+          "content_hash": "05e7965bb9b3267203564934fa01772ed71f03d266bf6aebc25de3bf144756d0"
+        },
+        "consumer_query": {
+          "kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+          "object_id": "urn:rawlsing:learned-world:positioned-subject-query:sha256:62d4e2438badaa2cff8d6c9934ff3af6c6b909cd4922be351a020728a60f43d7",
+          "content_hash": "62d4e2438badaa2cff8d6c9934ff3af6c6b909cd4922be351a020728a60f43d7"
+        },
+        "conditioners": [
+          [
+            "A",
+            1
+          ]
+        ]
+      },
+      "outputs": {
+        "provider_state": "EXACT_SUPPORTED_SLICE_PRODUCED",
+        "evidence_ref": {
+          "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+          "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:f885bc9a054a86c647c1e2246926f5a89a1acfd7b9dfcf45f8182ee9b34a41c1",
+          "content_hash": "f885bc9a054a86c647c1e2246926f5a89a1acfd7b9dfcf45f8182ee9b34a41c1"
+        },
+        "consumer_state": "EXACT_SUPPORTED"
+      }
+    },
+    {
+      "call": "compose_positioned_subject_possibility",
+      "inputs": {
+        "empirical_query": {
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:5afb455d22ec8b381bd01cdfdfdc134d85ce9fb67b76395990c0513c32b95e98",
+          "content_hash": "5afb455d22ec8b381bd01cdfdfdc134d85ce9fb67b76395990c0513c32b95e98"
+        },
+        "predicate": {
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:f55b638c793e143b34dc7622686ceff55f556edcccfc67de60e14744d5e3f816",
+          "content_hash": "f55b638c793e143b34dc7622686ceff55f556edcccfc67de60e14744d5e3f816"
+        },
+        "consumer_query": {
+          "kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+          "object_id": "urn:rawlsing:learned-world:positioned-subject-query:sha256:be8252b45736ed77b301aff0f6c1dad2cf8dcafa8fe338141dcd1a563bd6a510",
+          "content_hash": "be8252b45736ed77b301aff0f6c1dad2cf8dcafa8fe338141dcd1a563bd6a510"
+        },
+        "conditioners": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ]
+        ]
+      },
+      "outputs": {
+        "analytical_state": "SUPPORTED",
+        "evidence_ref": {
+          "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+          "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:08142b892b060730f2f8f63c031b1d99961e1689cb1f8c6fac165ba8e3acd0f6",
+          "content_hash": "08142b892b060730f2f8f63c031b1d99961e1689cb1f8c6fac165ba8e3acd0f6"
+        },
+        "consumer_state": "EXACT_SUPPORTED"
+      }
+    },
+    {
+      "call": "compose_positioned_subject_possibility",
+      "inputs": {
+        "empirical_query": {
+          "kind": "EmpiricalQuerySpec@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:dff374f7246207fecfc57470ed32fda254484b8442c7676b886f84eaf1d3b07e",
+          "content_hash": "dff374f7246207fecfc57470ed32fda254484b8442c7676b886f84eaf1d3b07e"
+        },
+        "predicate": {
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:dc8ef1b0a4e91e986ca9474961d48c4126db6ca0c20a1f0eb441ed1da5432a4b",
+          "content_hash": "dc8ef1b0a4e91e986ca9474961d48c4126db6ca0c20a1f0eb441ed1da5432a4b"
+        },
+        "consumer_query": {
+          "kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+          "object_id": "urn:rawlsing:learned-world:positioned-subject-query:sha256:e082fe7ae0c6cd0ce2304b4c84fab10ac22adf74d8a95d247642f42edf574145",
+          "content_hash": "e082fe7ae0c6cd0ce2304b4c84fab10ac22adf74d8a95d247642f42edf574145"
+        },
+        "conditioners": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ],
+          [
+            "C",
+            1
+          ]
+        ]
+      },
+      "outputs": {
+        "analytical_state": "SUPPORTED",
+        "evidence_ref": {
+          "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+          "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:9e929601a9d24d9b2eaf42e84843ea8e867d771369f888e55203173772d4a32a",
+          "content_hash": "9e929601a9d24d9b2eaf42e84843ea8e867d771369f888e55203173772d4a32a"
+        },
+        "consumer_state": "EXACT_SUPPORTED"
+      }
+    },
+    {
+      "call": "evaluate_positioned_subject_possibility",
+      "step_id": "P_Y_given_A",
+      "result_state": "EXACT_SUPPORTED",
+      "exact_disposition": "SUPPORTED",
+      "exact_reason": "EXACT_POSITIONED_STRATUM_SUPPORTED",
+      "exact_evidence_ref": {
+        "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+        "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:f885bc9a054a86c647c1e2246926f5a89a1acfd7b9dfcf45f8182ee9b34a41c1",
+        "content_hash": "f885bc9a054a86c647c1e2246926f5a89a1acfd7b9dfcf45f8182ee9b34a41c1"
+      }
+    },
+    {
+      "call": "evaluate_positioned_subject_possibility",
+      "step_id": "P_Y_given_A_B",
+      "result_state": "EXACT_SUPPORTED",
+      "exact_disposition": "SUPPORTED",
+      "exact_reason": "EXACT_POSITIONED_STRATUM_SUPPORTED",
+      "exact_evidence_ref": {
+        "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+        "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:08142b892b060730f2f8f63c031b1d99961e1689cb1f8c6fac165ba8e3acd0f6",
+        "content_hash": "08142b892b060730f2f8f63c031b1d99961e1689cb1f8c6fac165ba8e3acd0f6"
+      }
+    },
+    {
+      "call": "evaluate_positioned_subject_possibility",
+      "step_id": "P_Y_given_A_B_C",
+      "result_state": "EXACT_SUPPORTED",
+      "exact_disposition": "SUPPORTED",
+      "exact_reason": "EXACT_POSITIONED_STRATUM_SUPPORTED",
+      "exact_evidence_ref": {
+        "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+        "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:9e929601a9d24d9b2eaf42e84843ea8e867d771369f888e55203173772d4a32a",
+        "content_hash": "9e929601a9d24d9b2eaf42e84843ea8e867d771369f888e55203173772d4a32a"
+      }
+    }
+  ],
+  "checks": {
+    "release_ref_preserved": true,
+    "risk_set_ref_preserved": true,
+    "minority_cells_present": true,
+    "uncertainty_conserved": true,
+    "real_current_false": true,
+    "oracle_match": true
+  },
+  "effects": {
+    "source_meaning_inference": false,
+    "model_use_grant": false,
+    "g0b_issuance": false,
+    "b5_current_selection": false,
+    "field_forge_effect": false,
+    "temporal_current_effect": false,
+    "actor_v3_effect": false,
+    "real_current_claim": false,
+    "n9_owner_implemented": false,
+    "n10w_owner_implemented": false
+  },
+  "elapsed_seconds": 0.386
+}

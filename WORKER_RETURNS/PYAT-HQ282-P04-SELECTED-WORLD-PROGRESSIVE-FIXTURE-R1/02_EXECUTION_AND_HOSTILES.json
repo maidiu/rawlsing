@@ -1,0 +1,141 @@
+{
+  "positive_runs": [
+    {
+      "test": "test_full_chain_matches_hand_derived_oracle_under_contract",
+      "status": "pass",
+      "steps": 3,
+      "fractions": [[9, 16], [5, 8], [3, 4]]
+    },
+    {
+      "test": "test_chain_preserves_contract_bindings",
+      "status": "pass",
+      "checks": {
+        "release_ref_preserved": true,
+        "risk_set_ref_preserved": true,
+        "minority_cells_present": true,
+        "uncertainty_conserved": true,
+        "real_current_false": true,
+        "oracle_match": true
+      }
+    },
+    {
+      "test": "test_exact_fractions_9_16_5_8_3_4",
+      "status": "pass"
+    },
+    {
+      "test": "test_denominator_is_conditioned_cohort",
+      "status": "pass",
+      "denominators": [32, 16, 8]
+    },
+    {
+      "test": "test_production_and_consumption_are_distinct_invocations",
+      "status": "pass",
+      "production_calls": 3,
+      "consumption_calls": 3
+    },
+    {
+      "test": "test_chain_without_explicit_world_rebuilds_from_contract",
+      "status": "pass"
+    },
+    {
+      "test": "test_replayed_chain_matches_original",
+      "status": "pass"
+    }
+  ],
+  "hostile_runs": [
+    {
+      "test": "test_unauthorized_world_substitution_is_refused",
+      "expected": "P04WorldSubstitutionError or SOURCE_UNIVERSE_MISMATCH",
+      "observed": "SOURCE_UNIVERSE_MISMATCH",
+      "status": "pass"
+    },
+    {
+      "test": "test_contract_verify_bindings_rejects_wrong_universe",
+      "expected": "P04WorldSubstitutionError",
+      "observed": "P04WorldSubstitutionError",
+      "status": "pass"
+    },
+    {
+      "test": "test_contract_verify_bindings_rejects_wrong_release",
+      "expected": "P04WorldSubstitutionError",
+      "observed": "P04WorldSubstitutionError",
+      "status": "pass"
+    },
+    {
+      "test": "test_contract_verify_bindings_rejects_wrong_risk_set",
+      "expected": "P04WorldSubstitutionError",
+      "observed": "P04WorldSubstitutionError",
+      "status": "pass"
+    },
+    {
+      "test": "test_changed_selected_context_is_refused",
+      "expected": "P04WorldSubstitutionError",
+      "observed": "P04WorldSubstitutionError",
+      "status": "pass"
+    },
+    {
+      "test": "test_unordered_conditioner_list_is_refused_under_contract",
+      "expected": "ConditionValueRelationMismatch",
+      "observed": "ConditionValueRelationMismatch",
+      "status": "pass"
+    },
+    {
+      "test": "test_empty_predicate_cannot_fabricate_null_geometry_under_contract",
+      "expected": "no matching producer leaf",
+      "observed": "no matching producer leaf",
+      "status": "pass"
+    },
+    {
+      "test": "test_own_topic_joint_conditioners_are_refused_under_contract",
+      "expected": "duplicate conditioner binding",
+      "observed": "duplicate conditioner binding",
+      "status": "pass"
+    },
+    {
+      "test": "test_exact_absence_is_unresolved_not_proxied_under_contract",
+      "expected": "UNRESOLVED / EXACT_POSITIONED_STRATUM_ABSENT",
+      "observed": "UNRESOLVED / EXACT_POSITIONED_STRATUM_ABSENT",
+      "status": "pass"
+    },
+    {
+      "test": "test_walkback_proxy_is_labelled_never_exact_under_contract",
+      "expected": "EXACT_UNRESOLVED_PROXY_AVAILABLE",
+      "observed": "EXACT_UNRESOLVED_PROXY_AVAILABLE",
+      "status": "pass"
+    }
+  ],
+  "governance_runs": [
+    {
+      "test": "test_module_import_surface_contains_no_forbidden_owner",
+      "status": "pass"
+    },
+    {
+      "test": "test_no_raw_sav_dta_and_no_respondent_row_leakage",
+      "status": "pass"
+    },
+    {
+      "test": "test_synthetic_world_is_58_rows_and_never_real_current",
+      "status": "pass"
+    },
+    {
+      "test": "test_effects_declare_no_rights",
+      "status": "pass"
+    },
+    {
+      "test": "test_contract_is_immutable",
+      "status": "pass"
+    },
+    {
+      "test": "test_contract_content_hash_is_deterministic",
+      "status": "pass"
+    }
+  ],
+  "summary": {
+    "total_tests": 24,
+    "passed": 24,
+    "failed": 0,
+    "positive": 7,
+    "hostile": 10,
+    "governance": 7
+  }
+}
