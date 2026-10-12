@@ -1,0 +1,161 @@
+{
+  "unpatched": [
+    {
+      "case": "PHASE",
+      "patch_active": false,
+      "phase": "UNPATCHED"
+    },
+    {
+      "authorizing": false,
+      "case": "A1_perimeter_positive",
+      "current_selection_performed": false,
+      "patch_active": false,
+      "perimeter_consulted": true,
+      "published": true
+    },
+    {
+      "bypassed": true,
+      "case": "B1_raw_executor_k4_bypass",
+      "patch_active": false,
+      "perimeter_consulted": false,
+      "publication": "PUBLISHED"
+    },
+    {
+      "bypassed": true,
+      "case": "B2_raw_executor_full_k5_forgery",
+      "ceiling_is_forged": true,
+      "patch_active": false,
+      "perimeter_consulted": false
+    },
+    {
+      "bypassed": true,
+      "case": "B3_raw_executor_current_selection_bypass",
+      "current_selected_event_present": true,
+      "patch_active": false,
+      "perimeter_consulted": false
+    },
+    {
+      "authorizing": false,
+      "case": "D1_attacker_minted_release_published",
+      "patch_active": false,
+      "published": true
+    },
+    {
+      "authorizing": false,
+      "case": "G6_arbitrary_ceiling_accepted",
+      "ceiling": "urn:c02f:producerpermissionceiling:urn:c02f:TOTAL_CONTROL:sha256:cdd3afd815aa2372b769c62b780694bda0571d75e6a830006c9beeda5aa5914b",
+      "patch_active": false,
+      "published": true
+    },
+    {
+      "case": "H1_checkpoint_self_hash",
+      "hash_is_self_referential": true,
+      "patch_active": false,
+      "perimeter_consulted": false,
+      "rehydrated": true
+    },
+    {
+      "case": "H2_checkpoint_rehydrates_current",
+      "current_selected_event_present": true,
+      "patch_active": false,
+      "perimeter_consulted": false,
+      "rehydrated": true
+    },
+    {
+      "case": "L1b_type_gate_weakened",
+      "gate_bypassed": true,
+      "patch_active": false
+    },
+    {
+      "admitted": true,
+      "authorizing": false,
+      "case": "C2_reauthorized_mutation_admitted",
+      "injected_edge_present": true,
+      "patch_active": false
+    },
+    {
+      "case": "H3_issuer_or_crypto_search",
+      "patch_active": false,
+      "verification_modules": 3
+    },
+    {
+      "case": "PHASE",
+      "patch_active": false,
+      "phase": "PATCHED"
+    }
+  ],
+  "patched": [
+    {
+      "case": "PATCH_APPLIED",
+      "patch_active": true
+    },
+    {
+      "case": "B1_patched_raw_executor",
+      "error": "PERIMETER_TICKET_REQUIRED",
+      "patch_active": true,
+      "refused": true
+    },
+    {
+      "case": "B2_patched_full_k5_forgery",
+      "patch_active": true,
+      "refused": false
+    },
+    {
+      "case": "B3_patched_select_current",
+      "patch_active": true,
+      "refused": false
+    },
+    {
+      "case": "D1_patched_M2_minted",
+      "error": "PRODUCER_CREDENTIAL_REQUIRED",
+      "patch_active": true,
+      "refused": true
+    },
+    {
+      "bypassed": true,
+      "case": "B2b_patched_demo_ticket_forged_subject",
+      "note": "demo-fixture ticket is NOT issuer authentication; C02 perimeter expectation comparison still required",
+      "patch_active": true
+    },
+    {
+      "case": "D1b_patched_M2_minted_with_credential",
+      "patch_active": true,
+      "refused": false
+    },
+    {
+      "case": "G6_patched_arbitrary_ceiling",
+      "patch_active": true,
+      "refused": false
+    },
+    {
+      "case": "H1_patched_checkpoint_self_hash",
+      "error": "CHECKPOINT_AUTHORITY_REQUIRED",
+      "patch_active": true,
+      "refused": true
+    },
+    {
+      "case": "H2_patched_checkpoint_with_authority",
+      "patch_active": true,
+      "refused": false
+    },
+    {
+      "case": "L1b_patched_type_gate_frozen",
+      "frozen": true,
+      "mutation_succeeded": false,
+      "patch_active": true
+    },
+    {
+      "admitted": true,
+      "authorizing": false,
+      "case": "C2_patched_reauthorized_mutation",
+      "patch_active": true
+    },
+    {
+      "authorizing": false,
+      "case": "POSITIVE_genuine_m2_published",
+      "grade": "DEMO_FIXTURE__NOT_OPERATIVE_CREDENTIALS",
+      "patch_active": true,
+      "publication": "PUBLISHED"
+    }
+  ]
+}
