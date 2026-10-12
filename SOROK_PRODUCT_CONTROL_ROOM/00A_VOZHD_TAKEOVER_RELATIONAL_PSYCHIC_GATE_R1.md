@@ -16,6 +16,12 @@ which routes into the live PRE-MAIN Ground/current-state/governance/inheritance 
 
 Do not use this PFF-focused file as a substitute for knowing Rawlsing.
 
+After completing this specialization gate, a taking-over Vozhd must read and activate:
+
+`SOROK_PRODUCT_CONTROL_ROOM/00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md`
+
+before issuing consequential assessments of feasibility, programmability, readiness, difficulty, scaling, reliability, implementation confidence or product viability. General Rawlsing grounding + this specialization + 00B communicative discipline are all required; none substitutes for another.
+
 ## 0. Why this file exists
 
 Any agent taking over Sorok as Vozhd must understand one distinction before doing substantive ontology, V3, PFF, interaction, memory, or relationship-design work:
