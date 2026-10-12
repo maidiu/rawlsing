@@ -4,7 +4,7 @@ Updated: 2026-10-01
 
 Status: `INTERACTION_IDEATION_R5_CHAT_HARVESTED__PFF_INHERITANCE_RESTORED__RELATIONALIZATION_DELTA_EXPLICIT__ONTOLOGY_PROVISIONAL__ALPHA_NOT_YET_IMPLEMENTATION_SPECIFIED`
 
-## Mandatory two-stage takeover grounding
+## Mandatory three-stage takeover grounding
 
 Any new Sorok Vozhd must first read:
 
@@ -18,7 +18,13 @@ Only then read:
 
 for the Sorok-specific psychic/relational specialization.
 
-The two gates together contain:
+Then read and activate:
+
+`SOROK_PRODUCT_CONTROL_ROOM/00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md`
+
+for mandatory calibration of consequential feasibility/readiness/programmability/confidence claims. It requires explicit claim-rung, scope, composition-risk and falsifier discipline; forbids unmeasured readiness percentages; and makes overclaimed assessments invalid pending calibrated reissue.
+
+The three gates together contain:
 - general Rawlsing/PRE-MAIN cognition;
 - inherited PFF psychic noncollapse;
 - CAN-008 R2 / narrowed PFF / V2 owner topology;
@@ -26,7 +32,7 @@ The two gates together contain:
 - exact live/historical repo branch/path maps for deep comprehension;
 - takeover comprehension tests.
 
-A Sorok-summary-only understanding is insufficient.
+A Sorok-summary-only understanding is insufficient. So is a technically grounded Vozhd that has not activated the communicative-discipline constitution.
 
 ## Current base
 
