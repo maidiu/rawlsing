@@ -25,18 +25,24 @@ Use the exact source-code references in the commission. Older tests may refer to
 
 If a platform warning appears or an unfamiliar account/security-key login is requested, describe it plainly and stop that step rather than working around it. No Daybreak account is a prerequisite for this commission. At completion, commit the allowed P01 changes, verify the pushed commit and report the results and unresolved requirements accurately.
 
-## P02 — SECONDARY MAC / CODEX / GPT-6.1 SOL / LOW
+## P02R — Secondary Mac, Codex GPT-6.1 Sol Low; independent C02J interface review
 
-> Repository: `maidiu/rawlsing`  
-> **STATUS:** NEW_SEALED_COMMISSION__NOT_YET_LAUNCH_ATTESTED  
-> **MODEL / MACHINE:** SECONDARY MAC / CODEX / GPT-6.1 SOL / LOW  
-> **BRANCH:** `agent/reviewer-pyat-hq282-p02-c02j-principal-security-hostile-r1`  
-> **EXACT SEALED STARTUP:** `dad074579ee705a720fb3cfe9cacb0193d573ffd`  
-> **COMMISSION:** `WORKER_COMMISSIONS/PYAT-HQ282-P02-C02J-PRINCIPAL-SECURITY-HOSTILE-R1/00_COMMISSION.md`
->
-> Read and execute the sealed commission exactly, including the 12 Oct user-confirmed primary/secondary Astra topology correction and RCM01 preflight. Independently hostile-review the frozen C02J implementation at 895980397cc0533043c7ca0e493ebbb455666c1e against actual M2/B5 owner entrypoints. Execute direct attacks on repo+expectation re-derivation, self-declared permission, event authority, checkpoint replay, revocation, and legitimate positive control. Pin exact candidate SHA; do NOT serve as C02J's own implementer or grant an issuer. Secondary needs Git-tracked rawlsing_next/pre553_b5_owner_held_verifier_candidate.py, repro/c02j_owner_court.py, repro/c02j_mandatory_overlay.py, accepted M2/B5 modules and Python. Run after P01's weekly usage check unless independent available headroom and separate sparse worktree are confirmed. Start LOW, not Medium/High; do not use primary Codex or reset credits.
->
-> First check direct origin branch HEAD, active local sessions, permission and file/runtime/resource eligibility. For local work use ONLY already-authorized shared-object-store isolated sparse worktree; if not prepared, return `BOOTSTRAP_REQUIRED` without cloning/resetting. Report actual local model/variant, usage before/after (or null), commands/exits, independent review needs, exact typed result or HOLD. Push ONLY assigned branch, verify remote SHA, no self-adoption.
+**Status:** New sealed commission, local worktree and current allowance unverified. This replaces the old P02 **dispatch**; the old branch is preserved and should not be launched in parallel.
+
+**Repository:** `maidiu/rawlsing`  
+**Branch:** `agent/reviewer-pyat-hq282-p02r-c02j-independent-interface-verification-r1`  
+**Exact sealed startup:** `835f22e6c6010fa35f6bd0b2739cd630736ef920`  
+**Commission:** `WORKER_COMMISSIONS/PYAT-HQ282-P02R-C02J-INDEPENDENT-INTERFACE-VERIFICATION-R1/00_COMMISSION.md`  
+**Model:** GPT-6.1 Sol · Low  
+**Machine:** Secondary Mac
+
+Read and follow the new, plain-language commission. Independently test the existing C02J source-free identity/permission and saved-state checks at exact commit `895980397cc0533043c7ca0e493ebbb455666c1e`. Use synthetic local tests to compare ordinary owner behavior and the test-only verifier layer. Check mismatched identity/permission/event information, separately prepared expected identities, changed repository contents, saved-state restoration, revocation, and normal publication behavior. Report what passes, fails, is skipped, or still requires an external decision.
+
+Before any code execution, confirm a dedicated sparse worktree and exact Git sources on the secondary. If no worktree exists, report `WORKTREE_SETUP_REQUIRED` rather than using someone else's checkout or cloning. Preserve primary Codex capacity for full-repository Astra. Check remaining secondary usage before and after a bounded review, do not change from Low or spend resets without approval.
+
+Use normal, precise engineering language in responses and reports. If the platform requests additional account enrollment or a hardware security device, report the message accurately and stop that part rather than trying to work around a requirement.
+
+Only write reviewer-owned tests and reports to the P02R branch. Do not modify C02J, production owners or canonical integration. Push and verify the exact remote result.
 
 ## P03 — BROWSER/GITHUB / GPT-6 HIGH / NO CODEX
 
