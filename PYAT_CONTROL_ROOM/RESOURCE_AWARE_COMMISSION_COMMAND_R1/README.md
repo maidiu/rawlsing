@@ -1,3 +1,9 @@
+## P01 worktree absence — immediate bootstrap dependency
+
+The secondary P01 worktree is **confirmed absent by the user**, so P01 is `BOOTSTRAP_REQUIRED`, not currently launchable even with remaining Codex quota. [Exact secondary setup handoff](HQ282_P01_SECONDARY_BOOTSTRAP_HANDOFF_R1.md). No clone-per-worker and no primary Astra Codex spend. Existing sealed P01 commission SHA remains unchanged.
+
+---
+
 ## Exact user-ready HQ282 launches — updated 12 October
 
 [Six ready-to-paste HQ282 launch prompts](HQ282_USER_READY_SIX_LAUNCH_PROMPTS_R1.md). **This is an exact sealed dispatch packet, not an unattended launch.**
