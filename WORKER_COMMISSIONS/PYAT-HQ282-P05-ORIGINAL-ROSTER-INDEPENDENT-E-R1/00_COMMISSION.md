@@ -1,3 +1,17 @@
+## RCM01 user-requested binding correction — minimum Codex effort, Astra reserve and Mac file custody
+
+**THIS SECTION SUPERSEDES less precise suggested "strong Codex" or "qualified model" wording below.** This is a branch-local commission routing correction, not a new scientific or security grant. Full user-directed law: `PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ282_CODEX_ASTRA_RESERVE_MODEL_AND_SECONDARY_FILE_LAW_R1.md` on operating HQ, and RCM01 original at `c71f83c731fe1465b59f5ad701a5e1bb3018b34a`.
+
+**MODEL EXACT:** Browser/GitHub **GPT-6 High**; **CODEX: NONE** for source-original semantics/E issuer. Local mechanical anti-join optional only as separately resourced Go/DeepSeek collector; if Codex absolutely necessary after user approval, **GPT-6 Luna Low**. Keep the Astra reserve protected. **MAC:** no required local file read in this stage.
+
+**FILE GATE:** Distinguish Git-tracked original-source contracts from possibly primary-Mac-only raw SAV/DTA, local question-codebook translations and unpublished source science. Stop at precise path/hash/custody if source material unavailable; do NOT transfer automatically or substitute column carriers for actual originally administered items.
+
+**Astra reservation:** 12 Oct UI shows 85% and 98% weekly remaining (both 100% five-hour; three unspent full reset credits each), but screenshots do not map to a specific Mac/account. Preserve a user-designated Astra pool for Astra only; by default lock the 98% envelope and limit proposed ordinary use on the identified 85% work pool to ≤2 percentage points per job / ≤3 total until 18 Oct weekly reset, nominal 82% floor. These are MANUALLY MONITORED safeguards, not automatically enforceable percentage caps; take actual usage snapshots before and after each bounded stage. Never spend reset credits or paid overflow without explicit instruction. Missing account binding/eligibility remains HARD HOLD.
+
+**Exact returned-commission startup after THIS correction:** Must use the final full 40-hex GitHub branch HEAD published in the refreshed HQ launch ledger, NOT the predecessor commission SHA in the older status block below.
+
+---
+
 # PYAT HQ282 P05 — resource-aware product-first work order
 
 **STATUS:** SEALED_AWAITING_RESOURCE_BINDING__NOT_LAUNCHED; NO UNATTENDED EXECUTION
