@@ -1,6 +1,6 @@
 ## P01 launch correction — secondary worktree does not exist
 
-**P01 is NOT launchable yet.** User confirmed the SECONDARY P01 local worktree is absent. Before sending its existing GPT-6.1 Sol Medium commission, perform the [one-time secondary existing-store sparse worktree bootstrap](HQ282_P01_SECONDARY_BOOTSTRAP_HANDOFF_R1.md) with Terminal / qualified no-Codex shell helper, obtain actual clean branch/runtime/object receipts, and THEN launch unchanged P01 startup `712b818e6c0fa87412db7f4edaad1397b2e9f090`. No worker clone or worktree reset. If the secondary has no canonical Rawlsing clone, STOP and request separate machine-level bootstrap authorization. The other five commissions' startups are unchanged.
+**P01 is NOT launchable yet.** User confirmed the SECONDARY P01 local worktree is absent. Before sending its existing GPT-6.1 Sol Medium commission, perform the [one-time secondary existing-store sparse worktree bootstrap](HQ282_P01_SECONDARY_BOOTSTRAP_HANDOFF_R1.md) with Terminal / qualified no-Codex shell helper, obtain actual clean branch/runtime/object receipts, and THEN launch unchanged P01 startup `fae6300505997347cab1baf61bf01b204d2ff448`. No worker clone or worktree reset. If the secondary has no canonical Rawlsing clone, STOP and request separate machine-level bootstrap authorization. The other five commissions' startups are unchanged.
 
 ---
 
@@ -8,18 +8,22 @@
 
 **STATUS:** DISPATCH PROMPTS ONLY. Worker local startup must first attest model/policy/remaining usage and existing sparse worktree. PRIMARY Codex 85% snapshot is reserved for full-repository Astra; SECONDARY Codex 98% snapshot is the ordinary coding pool; GitHub-only Astra may use either. Three reset credits per screenshot untouched. No automatic dispatch/semantic grant. The exact SHA below must be reverified by worker before mutation. If branch differs, preserve work and report; do not reset.
 
-## P01 — SECONDARY MAC / CODEX / GPT-6.1 SOL / MEDIUM
+## P01 — Secondary Mac, Codex GPT-6.1 Sol Medium (worktree setup required first)
 
-> Repository: `maidiu/rawlsing`  
-> **STATUS:** NEW_SEALED_COMMISSION__NOT_YET_LAUNCH_ATTESTED  
-> **MODEL / MACHINE:** SECONDARY MAC / CODEX / GPT-6.1 SOL / MEDIUM  
-> **BRANCH:** `agent/rabochii-pyat-hq282-p01-v2-durable-consumer-integration-r1`  
-> **EXACT SEALED STARTUP:** `712b818e6c0fa87412db7f4edaad1397b2e9f090`  
-> **COMMISSION:** `WORKER_COMMISSIONS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/00_COMMISSION.md`
->
-> Read and execute the sealed commission exactly, including the 12 Oct user-confirmed primary/secondary Astra topology correction and RCM01 preflight. Unify A04T/A04TU V2 verifier and B01E/B01D durable BatchExecutionRunner on one actual source-free candidate importable tree, frozen independent fixture-E, real Route B/I03/I05 execution and exact C1/FF consumer receipt, reproducing R02's blocked composed hostiles. Your original V2 tests refer to PRIMARY A04/A05 worktree paths and can silently SKIP on SECONDARY; explicitly qualify these as HOLD and use exact Git-object A05 oracle at 9491d0296c95ee2942fe80eadc6aa9f54b07c634 (blob 00a4cc84d321c3fbace0f4aa09be62dbb31994fc). Required Git trees d6e766cd6ba7dc46b19cc61123d968a274015ddd and 92cb25340c49fb51e2b8d6e00d5a4f471296fc8f. Do not copy a PRIMARY worktree or access raw respondent files. Python/pytest/SIGKILL require actual local interpreter; do not run until governed sparse worktree and exact objects are ready. Hard-stop if weekly secondary use approaches 95%; no High or reset.
->
-> First check direct origin branch HEAD, active local sessions, permission and file/runtime/resource eligibility. For local work use ONLY already-authorized shared-object-store isolated sparse worktree; if not prepared, return `BOOTSTRAP_REQUIRED` without cloning/resetting. Report actual local model/variant, usage before/after (or null), commands/exits, independent review needs, exact typed result or HOLD. Push ONLY assigned branch, verify remote SHA, no self-adoption.
+Repository: `maidiu/rawlsing`  
+Branch: `agent/rabochii-pyat-hq282-p01-v2-durable-consumer-integration-r1`  
+Exact startup: `fae6300505997347cab1baf61bf01b204d2ff448`  
+Commission: `WORKER_COMMISSIONS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/00_COMMISSION.md`
+
+Use clear, ordinary engineering language throughout your work and reports. Please read the revised commission. Its goal is to connect the existing source-free workload verifier, batch execution with saved progress, and an actual downstream consumer, using a small synthetic test fixture and portable checks.
+
+**Before writing code:** The P01 worktree has not been prepared on the secondary Mac. Follow the existing [secondary worktree setup handoff](HQ282_P01_SECONDARY_BOOTSTRAP_HANDOFF_R1.md), using the secondary Mac's shared Git repository. If that shared repository is absent, report that setup is needed and do not create a separate clone without permission.
+
+Once the worktree, source-code objects, Python, pytest, account/privacy settings and current weekly usage are verified, continue with GPT-6.1 Sol **Medium** on the secondary. Preserve the primary Codex allowance for full-repository Astra. Do not use reset credits or change models without approval.
+
+Use the exact source-code references in the commission. Older tests may refer to primary-Mac directories and skip on secondary; record skips as untested rather than passes. Run ordinary integration and interruption/recovery checks only with local synthetic fixtures, not private survey records.
+
+If a platform warning appears or an unfamiliar account/security-key login is requested, describe it plainly and stop that step rather than working around it. No Daybreak account is a prerequisite for this commission. At completion, commit the allowed P01 changes, verify the pushed commit and report the results and unresolved requirements accurately.
 
 ## P02 — SECONDARY MAC / CODEX / GPT-6.1 SOL / LOW
 
