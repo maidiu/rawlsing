@@ -1,7 +1,7 @@
 # HQ282 — six independently sealed RCM01-gated commission launch identities
 
 **Status:** SIX_REMOTE_SEALS_VERIFIED__NONE_AUTOMATICALLY_LAUNCHED__LOCAL_RESOURCE_GATES_UNBOUND__NO_SCIENTIFIC_ADOPTION.
-**Commission parent:** `9f6a926f0dd1633861ed9727416b8c8f21829c1d`. All six direct GitHub comparisons: exactly one commission-file commit ahead, zero behind. Last HQ281 six returns remain separate, no duplication. New HQ must re-fetch direct HEAD at actual startup.
+**Commission parent:** `9f6a926f0dd1633861ed9727416b8c8f21829c1d`. Direct-origin startup comparisons: P01–P05 each one commission-file commit ahead, zero behind; P06 two permitted commission-file commits ahead, zero behind (final path correction). Last HQ281 six returns remain separate, no duplication. New HQ must re-fetch direct HEAD at actual startup.
 **Mandatory**: [RCM01 resource-aware preflight](HQ_MANDATORY_COMMISSION_AND_SUCCESSOR_GROK_ADDENDUM_R1.md), [resource-aware work board](HQ282_RESOURCE_AWARE_RECOMMISSION_BOARD_R1.md). No model/account balance, paid allowance, exact local worktree or source authority is inferred from this ledger.
 
 | Lane | Proposed qualified executor (NOT yet assigned) | Exact verified commission-containing HEAD |
@@ -11,7 +11,7 @@
 | **P03** | Browser/GitHub GPT-6 High; no Python runtime claimed | [`37e134b9a1048ab230ea33f30f04de7bfb36ce26`](https://github.com/maidiu/rawlsing/blob/37e134b9a1048ab230ea33f30f04de7bfb36ce26/WORKER_COMMISSIONS/PYAT-HQ282-P03-TWO-FAMILY-EXTERNAL-FIELD-PRODUCTS-R1/00_COMMISSION.md) |
 | **P04** | High-competence local code model; Go only if qualified | [`aa6c450fae5c550ac61d381374b2365606ccc451`](https://github.com/maidiu/rawlsing/blob/aa6c450fae5c550ac61d381374b2365606ccc451/WORKER_COMMISSIONS/PYAT-HQ282-P04-SELECTED-WORLD-PROGRESSIVE-FIXTURE-R1/00_COMMISSION.md) |
 | **P05** | Browser/GitHub GPT-6 High owner, optional cheap local collector | [`10815727d51f57c7126a9124f3cc84a4fbe88327`](https://github.com/maidiu/rawlsing/blob/10815727d51f57c7126a9124f3cc84a4fbe88327/WORKER_COMMISSIONS/PYAT-HQ282-P05-ORIGINAL-ROSTER-INDEPENDENT-E-R1/00_COMMISSION.md) |
-| **P06** | Cheapest qualified local DeepSeek-Harness or OpenCode Go | [`39d1172efd89b1fe9602b128f5a575185ec5a34a`](https://github.com/maidiu/rawlsing/blob/39d1172efd89b1fe9602b128f5a575185ec5a34a/WORKER_COMMISSIONS/PYAT-HQ282-P06-RCM01-LOCAL-ADVISORY-ROUTER-R1/00_COMMISSION.md) |
+| **P06** | Cheapest qualified local DeepSeek-Harness or OpenCode Go | [`dbbbd90230a8fb9e956275118b00013331823594`](https://github.com/maidiu/rawlsing/blob/dbbbd90230a8fb9e956275118b00013331823594/WORKER_COMMISSIONS/PYAT-HQ282-P06-RCM01-LOCAL-ADVISORY-ROUTER-R1/00_COMMISSION.md) |
 
 ## Launch handback — mandatory
 Every user-visible launch prompt must re-resolve branch and report `STATUS`, `AGENT`, exact **MODEL / INTELLIGENCE**, actual ACCOUNT / plan / quota+reset+max spend, `MACHINE`, actual interpreter/`WORKTREE`, `BRANCH`, the full `STARTUP` above, exact `COMMISSION`, and runtime/semantic/independence ceiling. A sealed commission containing unknown model, worktree or budget is a **draft held for binding**, not runnable execution; do not tell the user to send it blindly.
