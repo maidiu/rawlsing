@@ -1,0 +1,48 @@
+{
+ "schema": "HQ280_PV3_B01DR_MANIFEST@1",
+ "reviewer_branch": "agent/reviewer-pyat-hq280-pv3-b01dr-idempotence-failclosed-hostile-r1",
+ "reviewer_head": "680cb9baee00ddb46d5bb57932caca66038255a7",
+ "candidate": "ef93f014a157983e0f713c118ee3a95311c16292",
+ "authority": {
+  "governing": "HQD-2026-10-10-280",
+  "canonical": "a70a069fa948e0f3c041b389edcc732b6b948a4f",
+  "pre_main": "1f47063c3205a45888b3c55e81e7485943ed1390"
+ },
+ "deliverables": {
+  "00_RETURN.md": {
+   "sha256": "7692c457daf688b743b71698d7d93f2be85049e37b060ee15a84b48048cb2a2c",
+   "bytes": 5128
+  },
+  "02_ACTUAL_CRASH_AND_FAILCLOSED_HOSTILES.json": {
+   "sha256": "2142deaae974342b114c5141684c0291b227e7cbf365a6d2bfcedfe9122fa371",
+   "bytes": 1088
+  }
+ },
+ "repro": {
+  "b01d_48_suite.log": {
+   "sha256": "8b19fb12ab647cd79a5fa755522b773cc20ccd29917789df35531803aaff93d6",
+   "bytes": 99
+  },
+  "b01dr_hostiles.py": {
+   "sha256": "3f635c6b726f282104b7bb924e9f615be24652ef89f0834361e373ea6cbad32f",
+   "bytes": 4600
+  },
+  "b01dr_worker.py": {
+   "sha256": "569a2168ec8c61f12e52f2d5fe35f67cb7815d61ef6f8c1628691c1a59db38d4",
+   "bytes": 787
+  },
+  "results.json": {
+   "sha256": "5623bd0721f07bdbe3829ca4ebd38078732ba633b54b64a23990a1cf274d5cee",
+   "bytes": 3135
+  }
+ },
+ "grades": {
+  "SOURCE_FREE_DURABILITY": "ACCEPTED_NARROW",
+  "REAL_EXECUTION_PROTOCOL": "NOT_GRANTED",
+  "EXACTLY_ONCE_EXTERNAL": "NOT_ESTABLISHED"
+ },
+ "verdict": "FAIL_CLOSED_REPAIR_CONFIRMED__B01CR_W6_CLOSED",
+ "owner_code_edited": false,
+ "no_self_adoption": true,
+ "terminal": "HQ280_PV3_B01DR_INDEPENDENT_IDEMPOTENCE_FAILCLOSED_HOSTILE_RETURNED__NONISSUING__GITHUB_PUSHED"
+}

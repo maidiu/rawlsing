@@ -1,0 +1,26 @@
+{
+ "schema": "HQ280_PV3_B01DR_CODE_AND_HOSTILES@1",
+ "reviewer_head": "680cb9baee00ddb46d5bb57932caca66038255a7",
+ "candidate_b01d": "ef93f014a157983e0f713c118ee3a95311c16292",
+ "module_blob_b01d": "719c8d878bcfb3b6c61c844c9bf974ada8365929",
+ "module_blob_b01c": "57b8cc426eaf073213217a7ee7179b9f9cacb3d0",
+ "test_result": {
+  "collected": 48,
+  "passed": 48,
+  "failed": 0,
+  "exit_code": 0
+ },
+ "defect_before": "if unit_key in proofs: dispositions[unit_key] = RERUN_SAFE  # value never read",
+ "repair_after": "caller proofs never honored; recorded under disregarded_caller_proofs; RERUN_SAFE unreachable behind IDEMPOTENCE_ISSUER_HOLD",
+ "independent_hostiles": {
+  "A_forged_proof_shapes": 8,
+  "A_any_rerun_safe": false,
+  "B_unknown_outcome_held": true,
+  "C_alternate_grant_paths": [
+   "only the enum member declaration"
+  ],
+  "D_real_sigkill_resume": "NOT_EXECUTED_IN_THIS_SCRIPT (covered by B01CR W1 and B01D suite)"
+ },
+ "verdict": "FAIL_CLOSED_REPAIR_CONFIRMED",
+ "terminal": "HQ280_PV3_B01DR_INDEPENDENT_IDEMPOTENCE_FAILCLOSED_HOSTILE_RETURNED__NONISSUING__GITHUB_PUSHED"
+}

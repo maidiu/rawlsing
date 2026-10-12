@@ -1,0 +1,123 @@
+{
+ "schema": "HQ280_PV3_B01DR_HOSTILES@1",
+ "cases": [
+  {
+   "id": "A",
+   "what": "forged idempotence proofs of 8 shapes",
+   "observed": {
+    "shapes": [
+     {
+      "shape": "empty_string",
+      "rerun_safe_granted": false,
+      "dispositions": [
+       "RecoveryDisposition.NEVER_STARTED",
+       "RecoveryDisposition.UNKNOWN_OUTCOME"
+      ],
+      "disregarded_recorded": true
+     },
+     {
+      "shape": "whitespace",
+      "rerun_safe_granted": false,
+      "dispositions": [
+       "RecoveryDisposition.NEVER_STARTED",
+       "RecoveryDisposition.UNKNOWN_OUTCOME"
+      ],
+      "disregarded_recorded": true
+     },
+     {
+      "shape": "nonempty_string",
+      "rerun_safe_granted": false,
+      "dispositions": [
+       "RecoveryDisposition.NEVER_STARTED",
+       "RecoveryDisposition.UNKNOWN_OUTCOME"
+      ],
+      "disregarded_recorded": true
+     },
+     {
+      "shape": "dict_value",
+      "rerun_safe_granted": false,
+      "dispositions": [
+       "RecoveryDisposition.NEVER_STARTED",
+       "RecoveryDisposition.UNKNOWN_OUTCOME"
+      ],
+      "disregarded_recorded": true
+     },
+     {
+      "shape": "bool_true",
+      "rerun_safe_granted": false,
+      "dispositions": [
+       "RecoveryDisposition.NEVER_STARTED",
+       "RecoveryDisposition.UNKNOWN_OUTCOME"
+      ],
+      "disregarded_recorded": true
+     },
+     {
+      "shape": "cross_unit",
+      "rerun_safe_granted": false,
+      "dispositions": [
+       "RecoveryDisposition.NEVER_STARTED",
+       "RecoveryDisposition.UNKNOWN_OUTCOME"
+      ],
+      "disregarded_recorded": true
+     },
+     {
+      "shape": "manifest_derived",
+      "rerun_safe_granted": false,
+      "dispositions": [
+       "RecoveryDisposition.NEVER_STARTED",
+       "RecoveryDisposition.UNKNOWN_OUTCOME"
+      ],
+      "disregarded_recorded": true
+     },
+     {
+      "shape": "nested",
+      "rerun_safe_granted": false,
+      "dispositions": [
+       "RecoveryDisposition.NEVER_STARTED",
+       "RecoveryDisposition.UNKNOWN_OUTCOME"
+      ],
+      "disregarded_recorded": true
+     }
+    ],
+    "any_rerun_safe": false
+   },
+   "verdict": "PASS__fail_closed"
+  },
+  {
+   "id": "B",
+   "what": "UNKNOWN_OUTCOME held without proof",
+   "observed": {
+    "disposition": "RecoveryDisposition.UNKNOWN_OUTCOME"
+   },
+   "verdict": "PASS__held"
+  },
+  {
+   "id": "C",
+   "what": "alternate code paths assigning RERUN_SAFE",
+   "observed": {
+    "assignments": [
+     "RERUN_SAFE = \"RERUN_SAFE\""
+    ]
+   },
+   "verdict": "REVIEW"
+  },
+  {
+   "id": "D",
+   "what": "real SIGKILL after durable intent + fresh-process resume with forged proof",
+   "observed": {
+    "status": "NOT_EXECUTED_IN_THIS_SCRIPT",
+    "covered_elsewhere": [
+     "reviewer B01CR W1 real SIGKILL atomicity (rc -9, no torn final file)",
+     "B01D suite test_real_sigkill_after_durable_intent_leaves_checkpoint_and_holds"
+    ]
+   },
+   "verdict": "NOT_EXECUTED__NOT_CLAIMED_AS_PASS"
+  }
+ ],
+ "summary": {
+  "rerun_safe_reachable": false,
+  "unknown_outcome_held": true,
+  "real_crash_held": "NOT_EXECUTED_IN_THIS_SCRIPT (see B01CR W1 + B01D suite)",
+  "verdict": "FAIL_CLOSED_REPAIR_CONFIRMED"
+ }
+}
