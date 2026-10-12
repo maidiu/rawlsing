@@ -1,3 +1,17 @@
+## RCM01 user-requested binding correction — minimum Codex effort, Astra reserve and Mac file custody
+
+**THIS SECTION SUPERSEDES less precise suggested "strong Codex" or "qualified model" wording below.** This is a branch-local commission routing correction, not a new scientific or security grant. Full user-directed law: `PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ282_CODEX_ASTRA_RESERVE_MODEL_AND_SECONDARY_FILE_LAW_R1.md` on operating HQ, and RCM01 original at `c71f83c731fe1465b59f5ad701a5e1bb3018b34a`.
+
+**MODEL EXACT:** Browser/GitHub **GPT-6 High**; **CODEX: NONE** for original scientific judgment or source/documentary archaeology. A later cheap local collector requires a separate scoped commission and could use Codex GPT-6 Luna Low **only after** allowed non-Astra quota and no economical Go/DeepSeek capacity, but NEVER as science issuer. **MAC:** none required for this documentary task.
+
+**FILE GATE:** Check GitHub sources and authenticated documentary evidence directly. If genuinely original unpushed external institutional/survey documents exist ONLY on primary Mac, return exact required physical-path/hash/custody/authority HOLD; do not silently export files to secondary or treat source absence as scientific inapplicability.
+
+**Astra reservation:** 12 Oct UI shows 85% and 98% weekly remaining (both 100% five-hour; three unspent full reset credits each), but screenshots do not map to a specific Mac/account. Preserve a user-designated Astra pool for Astra only; by default lock the 98% envelope and limit proposed ordinary use on the identified 85% work pool to ≤2 percentage points per job / ≤3 total until 18 Oct weekly reset, nominal 82% floor. These are MANUALLY MONITORED safeguards, not automatically enforceable percentage caps; take actual usage snapshots before and after each bounded stage. Never spend reset credits or paid overflow without explicit instruction. Missing account binding/eligibility remains HARD HOLD.
+
+**Exact returned-commission startup after THIS correction:** Must use the final full 40-hex GitHub branch HEAD published in the refreshed HQ launch ledger, NOT the predecessor commission SHA in the older status block below.
+
+---
+
 # PYAT HQ282 P03 — resource-aware product-first work order
 
 **STATUS:** SEALED_AWAITING_RESOURCE_BINDING__NOT_LAUNCHED; NO UNATTENDED EXECUTION
