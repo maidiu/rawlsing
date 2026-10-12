@@ -1,0 +1,81 @@
+{
+  "all_demonstrated_by_execution": true,
+  "authorizing": false,
+  "negatives": [
+    {
+      "demonstration": "step2-style two-binding consumer query",
+      "edge": "N9->N10W progressive multi-condition NOT served by N10E provider",
+      "owner_locus": "rawlsing_next/pre553_empirical_possibility_provider.py:_single_binding (len(query.conditioner_bindings) != 1)",
+      "refusal": "ProviderRequestShapeError: PROVIDER_REQUEST_SHAPE_ERROR: N10E R1 follows the accepted C1-01 scalar grain and requires exactly one conditioner binding"
+    },
+    {
+      "demonstration": "repository-wide search for an N9 implementable selected join",
+      "edge": "N9 world-serving publication/resolution/lifecycle implementable join absent",
+      "owner_locus": "no owner module; E01 API graph grades implemented:false",
+      "refusal": "ABSENT__recorded_not_fabricated"
+    },
+    {
+      "demonstration": "repository-wide search for an N10W implementable binding",
+      "edge": "N10W progressive multi-condition world binding absent",
+      "owner_locus": "no owner module; E01 API graph grades implemented:false",
+      "refusal": "ABSENT__recorded_not_fabricated"
+    },
+    {
+      "demonstration": "consumer [B,A] against witness built for [A,B]",
+      "edge": "unordered conditioner list",
+      "owner_locus": "ConditionValueRelationMismatch",
+      "refusal": "ConditionValueRelationMismatch: CONDITION_VALUE_RELATION_MISMATCH: witness field mismatch: consumer_query_ref"
+    },
+    {
+      "demonstration": "GOVERNED_WEIGHTED requested with weight basis W, no weights in fixture",
+      "edge": "wrong weighted measure over unweighted fixture",
+      "owner_locus": "pre553_analytical_composition (measure grain law)",
+      "refusal": "analytical_state='UNAVAILABLE' (evidence=None)"
+    },
+    {
+      "demonstration": "foreign-universe consumer query against local producer",
+      "edge": "cross-sample join",
+      "owner_locus": "AnalyticalCompositionError SOURCE_UNIVERSE_MISMATCH",
+      "refusal": "AnalyticalCompositionError: SOURCE_UNIVERSE_MISMATCH"
+    },
+    {
+      "demonstration": "conditioner 1 exact value 1->0",
+      "edge": "proxy presented as exact (false pairing)",
+      "owner_locus": "ConditionValueRelationMismatch",
+      "refusal": "ConditionValueRelationMismatch: CONDITION_VALUE_RELATION_MISMATCH: conditioner 1: pairing exact value mismatch"
+    },
+    {
+      "demonstration": "conditioners (A=1, A=1): duplicate binding",
+      "edge": "parent/coparent relationship inference via own-topic joint",
+      "owner_locus": "PositionedSubjectPossibilityError",
+      "refusal": "PositionedSubjectPossibilityError: duplicate conditioner binding"
+    },
+    {
+      "demonstration": "F8 asked for A,B stratum with only A,B,C evidence present",
+      "edge": "exact stratum absence laundered to exact",
+      "owner_locus": "source_backed_positioned_subject_possibility (exact-conditional law)",
+      "refusal": "result_state='UNRESOLVED' reason='EXACT_POSITIONED_STRATUM_ABSENT' exact_evidence=None"
+    },
+    {
+      "demonstration": "F8 for A,B stratum with only A evidence + authorized walkback ladder",
+      "edge": "walkback proxy presented as exact",
+      "owner_locus": "source_backed_positioned_subject_possibility (proxy labelling)",
+      "refusal": "result_state='EXACT_UNRESOLVED_PROXY_AVAILABLE' proxy_present=True exact_evidence=None"
+    },
+    {
+      "demonstration": "empty-cohort predicate",
+      "edge": "false null from zero-support predicate",
+      "owner_locus": "ConditionValueRelationMismatch",
+      "refusal": "ConditionValueRelationMismatch: CONDITION_VALUE_RELATION_MISMATCH: conditioner 0: no matching producer leaf found"
+    }
+  ],
+  "note": "None of these refusals is mediated by the new adapter; each is the real owner's own typed error or state.",
+  "reproduce": "PYTHONPATH=. python3 repro/e03_evidence_recorder.py",
+  "schema": "HQ281_E03_NEGATIVES@1.0.0",
+  "scope": "SOURCE_FREE_DEVELOPMENT_ONLY",
+  "summary": {
+    "hostile_refusals_demonstrated": 11,
+    "no_refusal_softened_by_adapter": true,
+    "owner_absences_recorded": 3
+  }
+}

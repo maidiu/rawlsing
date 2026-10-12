@@ -1,0 +1,460 @@
+{
+  "authorizing": false,
+  "contract": "PYAT_HQ281_E03_PROGRESSIVE_N9_N10W_JOIN_CANDIDATE@1.0.0",
+  "environment": {
+    "machine": "x86_64",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit",
+    "python_executable": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/.pv3-venv/bin/python3",
+    "python_version": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]"
+  },
+  "existing_owners_untouched": [
+    {
+      "blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "path": "rawlsing_next/pre553_empirical_possibility_provider.py"
+    },
+    {
+      "blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "path": "rawlsing_next/pre553_analytical_composition.py"
+    },
+    {
+      "blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "path": "rawlsing_next/source_backed_positioned_subject_possibility.py"
+    }
+  ],
+  "nonauthorizing": true,
+  "owner_absent_edges_and_refusals": [
+    {
+      "demonstration": "step2-style two-binding consumer query",
+      "edge": "N9->N10W progressive multi-condition NOT served by N10E provider",
+      "owner_locus": "rawlsing_next/pre553_empirical_possibility_provider.py:_single_binding (len(query.conditioner_bindings) != 1)",
+      "refusal": "ProviderRequestShapeError: PROVIDER_REQUEST_SHAPE_ERROR: N10E R1 follows the accepted C1-01 scalar grain and requires exactly one conditioner binding"
+    },
+    {
+      "demonstration": "repository-wide search for an N9 implementable selected join",
+      "edge": "N9 world-serving publication/resolution/lifecycle implementable join absent",
+      "owner_locus": "no owner module; E01 API graph grades implemented:false",
+      "refusal": "ABSENT__recorded_not_fabricated"
+    },
+    {
+      "demonstration": "repository-wide search for an N10W implementable binding",
+      "edge": "N10W progressive multi-condition world binding absent",
+      "owner_locus": "no owner module; E01 API graph grades implemented:false",
+      "refusal": "ABSENT__recorded_not_fabricated"
+    },
+    {
+      "demonstration": "consumer [B,A] against witness built for [A,B]",
+      "edge": "unordered conditioner list",
+      "owner_locus": "ConditionValueRelationMismatch",
+      "refusal": "ConditionValueRelationMismatch: CONDITION_VALUE_RELATION_MISMATCH: witness field mismatch: consumer_query_ref"
+    },
+    {
+      "demonstration": "GOVERNED_WEIGHTED requested with weight basis W, no weights in fixture",
+      "edge": "wrong weighted measure over unweighted fixture",
+      "owner_locus": "pre553_analytical_composition (measure grain law)",
+      "refusal": "analytical_state='UNAVAILABLE' (evidence=None)"
+    },
+    {
+      "demonstration": "foreign-universe consumer query against local producer",
+      "edge": "cross-sample join",
+      "owner_locus": "AnalyticalCompositionError SOURCE_UNIVERSE_MISMATCH",
+      "refusal": "AnalyticalCompositionError: SOURCE_UNIVERSE_MISMATCH"
+    },
+    {
+      "demonstration": "conditioner 1 exact value 1->0",
+      "edge": "proxy presented as exact (false pairing)",
+      "owner_locus": "ConditionValueRelationMismatch",
+      "refusal": "ConditionValueRelationMismatch: CONDITION_VALUE_RELATION_MISMATCH: conditioner 1: pairing exact value mismatch"
+    },
+    {
+      "demonstration": "conditioners (A=1, A=1): duplicate binding",
+      "edge": "parent/coparent relationship inference via own-topic joint",
+      "owner_locus": "PositionedSubjectPossibilityError",
+      "refusal": "PositionedSubjectPossibilityError: duplicate conditioner binding"
+    },
+    {
+      "demonstration": "F8 asked for A,B stratum with only A,B,C evidence present",
+      "edge": "exact stratum absence laundered to exact",
+      "owner_locus": "source_backed_positioned_subject_possibility (exact-conditional law)",
+      "refusal": "result_state='UNRESOLVED' reason='EXACT_POSITIONED_STRATUM_ABSENT' exact_evidence=None"
+    },
+    {
+      "demonstration": "F8 for A,B stratum with only A evidence + authorized walkback ladder",
+      "edge": "walkback proxy presented as exact",
+      "owner_locus": "source_backed_positioned_subject_possibility (proxy labelling)",
+      "refusal": "result_state='EXACT_UNRESOLVED_PROXY_AVAILABLE' proxy_present=True exact_evidence=None"
+    },
+    {
+      "demonstration": "empty-cohort predicate",
+      "edge": "false null from zero-support predicate",
+      "owner_locus": "ConditionValueRelationMismatch",
+      "refusal": "ConditionValueRelationMismatch: CONDITION_VALUE_RELATION_MISMATCH: conditioner 0: no matching producer leaf found"
+    }
+  ],
+  "positive_run": {
+    "consumptions": [
+      {
+        "call": "evaluate_positioned_subject_possibility",
+        "consumed_evidence_is_producer_generated_object": true,
+        "exact_reason": "EXACT_POSITIONED_STRATUM_SUPPORTED",
+        "result_state": "EXACT_SUPPORTED",
+        "step_id": "P_Y_given_A"
+      },
+      {
+        "call": "evaluate_positioned_subject_possibility",
+        "consumed_evidence_is_producer_generated_object": true,
+        "exact_reason": "EXACT_POSITIONED_STRATUM_SUPPORTED",
+        "result_state": "EXACT_SUPPORTED",
+        "step_id": "P_Y_given_A_B"
+      },
+      {
+        "call": "evaluate_positioned_subject_possibility",
+        "consumed_evidence_is_producer_generated_object": true,
+        "exact_reason": "EXACT_POSITIONED_STRATUM_SUPPORTED",
+        "result_state": "EXACT_SUPPORTED",
+        "step_id": "P_Y_given_A_B_C"
+      }
+    ],
+    "effects": {
+      "actor_v3_effect": false,
+      "b5_current_selection": false,
+      "field_forge_effect": false,
+      "g0b_issuance": false,
+      "model_use_grant": false,
+      "real_current_claim": false,
+      "source_meaning_inference": false,
+      "temporal_current_effect": false
+    },
+    "fixture_id": "E03_PROGRESSIVE_ABC_Y_58",
+    "fixture_rows": 58,
+    "oracle_check": true,
+    "steps": [
+      {
+        "cells": {
+          "0": 14,
+          "1": 18
+        },
+        "conditioners": [
+          [
+            "A",
+            1
+          ]
+        ],
+        "consumer_state": "EXACT_SUPPORTED",
+        "denominator": 32,
+        "fractions": {
+          "0": {
+            "$exact_fraction": [
+              7,
+              16
+            ]
+          },
+          "1": {
+            "$exact_fraction": [
+              9,
+              16
+            ]
+          }
+        },
+        "invocations": [
+          {
+            "call": "provide_empirical_possibility_slice",
+            "inputs": {
+              "conditioners": [
+                [
+                  "A",
+                  1
+                ]
+              ],
+              "consumer_query": {
+                "content_hash": "0c9f15a54cd57631b699c1bba9f8c78e7991943243f81a7a0e48a272aab37205",
+                "kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+                "object_id": "urn:rawlsing:learned-world:positioned-subject-query:sha256:0c9f15a54cd57631b699c1bba9f8c78e7991943243f81a7a0e48a272aab37205"
+              },
+              "empirical_query": {
+                "content_hash": "ea043c3ae275c3a2c61b43fd1619e3dbcae80cc6a8b2ab2c603b4c82cf2dbca8",
+                "kind": "EmpiricalQuerySpec@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:ea043c3ae275c3a2c61b43fd1619e3dbcae80cc6a8b2ab2c603b4c82cf2dbca8"
+              },
+              "predicate": {
+                "content_hash": "315a2f8313f11ae82fd5047a6a29be0ac726199a33c65f9f692eab5990c7410d",
+                "kind": "EmpiricalPredicate@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:315a2f8313f11ae82fd5047a6a29be0ac726199a33c65f9f692eab5990c7410d"
+              }
+            },
+            "outputs": {
+              "consumer_state": "EXACT_SUPPORTED",
+              "evidence_ref": {
+                "content_hash": "dd6f2ac917c0c4775783f5bbe7c001a5fde44222d458184664aa3dd0bd036592",
+                "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+                "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:dd6f2ac917c0c4775783f5bbe7c001a5fde44222d458184664aa3dd0bd036592"
+              },
+              "provider_state": "EXACT_SUPPORTED_SLICE_PRODUCED"
+            }
+          }
+        ],
+        "matches_hand_derived_oracle": true,
+        "producer_route": "N10E_SINGLE_CONDITIONER",
+        "release_ref": {
+          "content_hash": "b0fed5e96bd903404b6d2a1c252e7add429b3e05ef56dcd17bbf6159184390db",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-e03-progressive"
+        },
+        "risk_set_ref": {
+          "content_hash": "5ed692aa18a735d500c9982ca71cc9680d0317945f61bcdf1f5e3e04c9df8fba",
+          "kind": "RISK_SET",
+          "object_id": "urn:test:i03:risk_set:e03-progressive-R_ALL"
+        },
+        "step_id": "P_Y_given_A",
+        "uncertainty_state": "UNCERTAINTY_UNQUANTIFIED"
+      },
+      {
+        "cells": {
+          "0": 6,
+          "1": 10
+        },
+        "conditioners": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ]
+        ],
+        "consumer_state": "EXACT_SUPPORTED",
+        "denominator": 16,
+        "fractions": {
+          "0": {
+            "$exact_fraction": [
+              3,
+              8
+            ]
+          },
+          "1": {
+            "$exact_fraction": [
+              5,
+              8
+            ]
+          }
+        },
+        "invocations": [
+          {
+            "call": "compose_positioned_subject_possibility",
+            "inputs": {
+              "conditioners": [
+                [
+                  "A",
+                  1
+                ],
+                [
+                  "B",
+                  1
+                ]
+              ],
+              "consumer_query": {
+                "content_hash": "343aa4d68dc2b78634d393cfc7f9cd3b70e5f146b3bf4fe9d2e436191d404ad2",
+                "kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+                "object_id": "urn:rawlsing:learned-world:positioned-subject-query:sha256:343aa4d68dc2b78634d393cfc7f9cd3b70e5f146b3bf4fe9d2e436191d404ad2"
+              },
+              "empirical_query": {
+                "content_hash": "b339e46cdb1eb868c83c06efbac4bb57b80d6c575fd6f8cd7533f5a1e5a7f50b",
+                "kind": "EmpiricalQuerySpec@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:b339e46cdb1eb868c83c06efbac4bb57b80d6c575fd6f8cd7533f5a1e5a7f50b"
+              },
+              "predicate": {
+                "content_hash": "0df3fb3a5621ac106bc0c910607e54596c77315f88f6ffc0f29436bc646a557f",
+                "kind": "EmpiricalPredicate@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:0df3fb3a5621ac106bc0c910607e54596c77315f88f6ffc0f29436bc646a557f"
+              }
+            },
+            "outputs": {
+              "analytical_state": "SUPPORTED",
+              "consumer_state": "EXACT_SUPPORTED",
+              "evidence_ref": {
+                "content_hash": "26d6e745fca91da652ec9b70d098bdf85929d889ad46c2c9b9ab485bb4038c4c",
+                "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+                "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:26d6e745fca91da652ec9b70d098bdf85929d889ad46c2c9b9ab485bb4038c4c"
+              }
+            }
+          }
+        ],
+        "matches_hand_derived_oracle": true,
+        "producer_route": "C1_MULTI_CONDITIONER",
+        "release_ref": {
+          "content_hash": "b0fed5e96bd903404b6d2a1c252e7add429b3e05ef56dcd17bbf6159184390db",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-e03-progressive"
+        },
+        "risk_set_ref": {
+          "content_hash": "5ed692aa18a735d500c9982ca71cc9680d0317945f61bcdf1f5e3e04c9df8fba",
+          "kind": "RISK_SET",
+          "object_id": "urn:test:i03:risk_set:e03-progressive-R_ALL"
+        },
+        "step_id": "P_Y_given_A_B",
+        "uncertainty_state": "UNCERTAINTY_UNQUANTIFIED"
+      },
+      {
+        "cells": {
+          "0": 2,
+          "1": 6
+        },
+        "conditioners": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ],
+          [
+            "C",
+            1
+          ]
+        ],
+        "consumer_state": "EXACT_SUPPORTED",
+        "denominator": 8,
+        "fractions": {
+          "0": {
+            "$exact_fraction": [
+              1,
+              4
+            ]
+          },
+          "1": {
+            "$exact_fraction": [
+              3,
+              4
+            ]
+          }
+        },
+        "invocations": [
+          {
+            "call": "compose_positioned_subject_possibility",
+            "inputs": {
+              "conditioners": [
+                [
+                  "A",
+                  1
+                ],
+                [
+                  "B",
+                  1
+                ],
+                [
+                  "C",
+                  1
+                ]
+              ],
+              "consumer_query": {
+                "content_hash": "9dfd5c2f71b27b42bc62f51cc4f94c80123fa71ca7274b716be60d348fcb682c",
+                "kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+                "object_id": "urn:rawlsing:learned-world:positioned-subject-query:sha256:9dfd5c2f71b27b42bc62f51cc4f94c80123fa71ca7274b716be60d348fcb682c"
+              },
+              "empirical_query": {
+                "content_hash": "04f3afcfe6fb4e78e20979b96a5a6e87d9c5a347d1e79bb35608ff795ad850f3",
+                "kind": "EmpiricalQuerySpec@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:04f3afcfe6fb4e78e20979b96a5a6e87d9c5a347d1e79bb35608ff795ad850f3"
+              },
+              "predicate": {
+                "content_hash": "53ced0268006b2071f410cf75d288b24e22d7f10c5b8f28b0acd4dfb586002d8",
+                "kind": "EmpiricalPredicate@1.0.0",
+                "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:53ced0268006b2071f410cf75d288b24e22d7f10c5b8f28b0acd4dfb586002d8"
+              }
+            },
+            "outputs": {
+              "analytical_state": "SUPPORTED",
+              "consumer_state": "EXACT_SUPPORTED",
+              "evidence_ref": {
+                "content_hash": "67a00f3109559961ef9ded2808b9fa637380d4a7822d982ee67b4f6581044b1c",
+                "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+                "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:67a00f3109559961ef9ded2808b9fa637380d4a7822d982ee67b4f6581044b1c"
+              }
+            }
+          }
+        ],
+        "matches_hand_derived_oracle": true,
+        "producer_route": "C1_MULTI_CONDITIONER",
+        "release_ref": {
+          "content_hash": "b0fed5e96bd903404b6d2a1c252e7add429b3e05ef56dcd17bbf6159184390db",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-e03-progressive"
+        },
+        "risk_set_ref": {
+          "content_hash": "5ed692aa18a735d500c9982ca71cc9680d0317945f61bcdf1f5e3e04c9df8fba",
+          "kind": "RISK_SET",
+          "object_id": "urn:test:i03:risk_set:e03-progressive-R_ALL"
+        },
+        "step_id": "P_Y_given_A_B_C",
+        "uncertainty_state": "UNCERTAINTY_UNQUANTIFIED"
+      }
+    ],
+    "world_posts": [
+      {
+        "cell": "a0b0c0",
+        "y0": 6,
+        "y1": 2
+      },
+      {
+        "cell": "a0b0c1",
+        "y0": 3,
+        "y1": 3
+      },
+      {
+        "cell": "a0b1c0",
+        "y0": 4,
+        "y1": 2
+      },
+      {
+        "cell": "a0b1c1",
+        "y0": 2,
+        "y1": 4
+      },
+      {
+        "cell": "a1b0c0",
+        "y0": 5,
+        "y1": 3
+      },
+      {
+        "cell": "a1b0c1",
+        "y0": 3,
+        "y1": 5
+      },
+      {
+        "cell": "a1b1c0",
+        "y0": 4,
+        "y1": 4
+      },
+      {
+        "cell": "a1b1c1",
+        "y0": 2,
+        "y1": 6
+      }
+    ]
+  },
+  "schema": "HQ281_E03_REAL_SOURCEFREE_PROGRESSIVE_OWNER_RUNS@1.0.0",
+  "scope": "SOURCE_FREE_DEVELOPMENT_ONLY",
+  "source_code_identity": [
+    {
+      "blob": "84d404147547767be8ecd4b6e1541f5fa3a8c8a2",
+      "path": "rawlsing_next/pre553_n9_n10w_progressive_candidate.py"
+    },
+    {
+      "blob": "2161c0fff86ecb7a2c9a40b29852075e802841fd",
+      "path": "rawlsing_next/tests/test_pre553_n9_n10w_progressive_candidate.py"
+    }
+  ],
+  "summary": {
+    "consumed_object_identity_preserved": true,
+    "f8_consumptions": 3,
+    "hostile_refusals_demonstrated": 11,
+    "owner_absent_edges_recorded": 3,
+    "progressive_steps": 3,
+    "real_current_claim": false,
+    "steps_matching_oracle": 3
+  },
+  "synthetic_world_note": "explicitly synthetic fixture; NEVER called real CURRENT; every positioned subject carries real_subject=False",
+  "terminal": "HQ281_E03_BOUNDED_PRODUCT_OR_EXACT_HOLD__GITHUB_PUSHED",
+  "total_wall_s": 0.642
+}

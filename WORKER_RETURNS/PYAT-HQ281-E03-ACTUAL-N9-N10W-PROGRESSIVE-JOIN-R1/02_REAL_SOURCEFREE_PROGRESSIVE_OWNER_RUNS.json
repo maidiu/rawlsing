@@ -1,0 +1,225 @@
+{
+  "authorizing": false,
+  "commands": {
+    "recorder": "PYTHONPATH=. python3 repro/e03_evidence_recorder.py",
+    "suite": "python3 -m pytest rawlsing_next/tests/test_pre553_n9_n10w_progressive_candidate.py -q",
+    "suite_result": "18 passed",
+    "widest_result": "227 passed",
+    "widest_targeted": "python3 -m pytest <e03> <composition> <higher_order> <provider> <empirical_query> <positioned_subject> <f8_court> -q"
+  },
+  "measured_data_file": "repro/e03_progressive_runs.json",
+  "measured_data_sha256": "8ec92912a7d2dc66c224abb564572c1f1d125042dc8c09cb8c0c0612facace35",
+  "owner_absent_edges_and_refusals_index": [
+    {
+      "edge": "N9->N10W progressive multi-condition NOT served by N10E provider",
+      "owner_locus": "rawlsing_next/pre553_empirical_possibility_provider.py:_single_binding (len(query.conditioner_bindings) != 1)",
+      "refusal_head": "ProviderRequestShapeError: PROVIDER_REQUEST_SHAPE_ERROR: N10E R1 follows the accepted C1-01 scalar grain and requires exactly one conditioner binding"
+    },
+    {
+      "edge": "N9 world-serving publication/resolution/lifecycle implementable join absent",
+      "owner_locus": "no owner module; E01 API graph grades implemented:false",
+      "refusal_head": "ABSENT__recorded_not_fabricated"
+    },
+    {
+      "edge": "N10W progressive multi-condition world binding absent",
+      "owner_locus": "no owner module; E01 API graph grades implemented:false",
+      "refusal_head": "ABSENT__recorded_not_fabricated"
+    },
+    {
+      "edge": "unordered conditioner list",
+      "owner_locus": "ConditionValueRelationMismatch",
+      "refusal_head": "ConditionValueRelationMismatch: CONDITION_VALUE_RELATION_MISMATCH: witness field mismatch: consumer_query_ref"
+    },
+    {
+      "edge": "wrong weighted measure over unweighted fixture",
+      "owner_locus": "pre553_analytical_composition (measure grain law)",
+      "refusal_head": "analytical_state='UNAVAILABLE' (evidence=None)"
+    },
+    {
+      "edge": "cross-sample join",
+      "owner_locus": "AnalyticalCompositionError SOURCE_UNIVERSE_MISMATCH",
+      "refusal_head": "AnalyticalCompositionError: SOURCE_UNIVERSE_MISMATCH"
+    },
+    {
+      "edge": "proxy presented as exact (false pairing)",
+      "owner_locus": "ConditionValueRelationMismatch",
+      "refusal_head": "ConditionValueRelationMismatch: CONDITION_VALUE_RELATION_MISMATCH: conditioner 1: pairing exact value mismatch"
+    },
+    {
+      "edge": "parent/coparent relationship inference via own-topic joint",
+      "owner_locus": "PositionedSubjectPossibilityError",
+      "refusal_head": "PositionedSubjectPossibilityError: duplicate conditioner binding"
+    },
+    {
+      "edge": "exact stratum absence laundered to exact",
+      "owner_locus": "source_backed_positioned_subject_possibility (exact-conditional law)",
+      "refusal_head": "result_state='UNRESOLVED' reason='EXACT_POSITIONED_STRATUM_ABSENT' exact_evidence=None"
+    },
+    {
+      "edge": "walkback proxy presented as exact",
+      "owner_locus": "source_backed_positioned_subject_possibility (proxy labelling)",
+      "refusal_head": "result_state='EXACT_UNRESOLVED_PROXY_AVAILABLE' proxy_present=True exact_evidence=None"
+    },
+    {
+      "edge": "false null from zero-support predicate",
+      "owner_locus": "ConditionValueRelationMismatch",
+      "refusal_head": "ConditionValueRelationMismatch: CONDITION_VALUE_RELATION_MISMATCH: conditioner 0: no matching producer leaf found"
+    }
+  ],
+  "positive_run_index": {
+    "conservation": {
+      "minority_cells_present_at_every_depth": true,
+      "release_ref_shared_by_all_steps": true,
+      "risk_set_ref_shared_by_all_steps": true,
+      "uncertainty_state_preserved": "UNCERTAINTY_UNQUANTIFIED"
+    },
+    "consumptions": [
+      {
+        "call": "evaluate_positioned_subject_possibility",
+        "consumed_evidence_is_producer_generated_object": true,
+        "exact_reason": "EXACT_POSITIONED_STRATUM_SUPPORTED",
+        "result_state": "EXACT_SUPPORTED",
+        "step_id": "P_Y_given_A"
+      },
+      {
+        "call": "evaluate_positioned_subject_possibility",
+        "consumed_evidence_is_producer_generated_object": true,
+        "exact_reason": "EXACT_POSITIONED_STRATUM_SUPPORTED",
+        "result_state": "EXACT_SUPPORTED",
+        "step_id": "P_Y_given_A_B"
+      },
+      {
+        "call": "evaluate_positioned_subject_possibility",
+        "consumed_evidence_is_producer_generated_object": true,
+        "exact_reason": "EXACT_POSITIONED_STRATUM_SUPPORTED",
+        "result_state": "EXACT_SUPPORTED",
+        "step_id": "P_Y_given_A_B_C"
+      }
+    ],
+    "effects_all_false": true,
+    "fixture": "E03_PROGRESSIVE_ABC_Y_58",
+    "fixture_rows": 58,
+    "steps": [
+      {
+        "cells": {
+          "0": 14,
+          "1": 18
+        },
+        "conditioners": [
+          [
+            "A",
+            1
+          ]
+        ],
+        "consumer_state": "EXACT_SUPPORTED",
+        "denominator": 32,
+        "fractions": {
+          "0": {
+            "$exact_fraction": [
+              7,
+              16
+            ]
+          },
+          "1": {
+            "$exact_fraction": [
+              9,
+              16
+            ]
+          }
+        },
+        "matches_hand_derived_oracle": true,
+        "producer_route": "N10E_SINGLE_CONDITIONER",
+        "step_id": "P_Y_given_A",
+        "uncertainty_state": "UNCERTAINTY_UNQUANTIFIED"
+      },
+      {
+        "cells": {
+          "0": 6,
+          "1": 10
+        },
+        "conditioners": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ]
+        ],
+        "consumer_state": "EXACT_SUPPORTED",
+        "denominator": 16,
+        "fractions": {
+          "0": {
+            "$exact_fraction": [
+              3,
+              8
+            ]
+          },
+          "1": {
+            "$exact_fraction": [
+              5,
+              8
+            ]
+          }
+        },
+        "matches_hand_derived_oracle": true,
+        "producer_route": "C1_MULTI_CONDITIONER",
+        "step_id": "P_Y_given_A_B",
+        "uncertainty_state": "UNCERTAINTY_UNQUANTIFIED"
+      },
+      {
+        "cells": {
+          "0": 2,
+          "1": 6
+        },
+        "conditioners": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ],
+          [
+            "C",
+            1
+          ]
+        ],
+        "consumer_state": "EXACT_SUPPORTED",
+        "denominator": 8,
+        "fractions": {
+          "0": {
+            "$exact_fraction": [
+              1,
+              4
+            ]
+          },
+          "1": {
+            "$exact_fraction": [
+              3,
+              4
+            ]
+          }
+        },
+        "matches_hand_derived_oracle": true,
+        "producer_route": "C1_MULTI_CONDITIONER",
+        "step_id": "P_Y_given_A_B_C",
+        "uncertainty_state": "UNCERTAINTY_UNQUANTIFIED"
+      }
+    ]
+  },
+  "schema": "HQ281_E03_PROGRESSIVE_OWNER_RUNS_INDEX@1.0.0",
+  "scope": "SOURCE_FREE_DEVELOPMENT_ONLY",
+  "summary": {
+    "consumed_object_identity_preserved": true,
+    "f8_consumptions": 3,
+    "hostile_refusals_demonstrated": 11,
+    "owner_absent_edges_recorded": 3,
+    "progressive_steps": 3,
+    "real_current_claim": false,
+    "steps_matching_oracle": 3
+  },
+  "terminal": "HQ281_E03_BOUNDED_PRODUCT_OR_EXACT_HOLD__GITHUB_PUSHED"
+}
