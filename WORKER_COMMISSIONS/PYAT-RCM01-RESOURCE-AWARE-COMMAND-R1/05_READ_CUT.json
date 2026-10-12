@@ -1,0 +1,65 @@
+{
+  "schema": "PYAT_RCM01_LIVE_READ_CUT@1.0.0",
+  "read_date": "2026-10-12",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "control_head": "a70a069fa948e0f3c041b389edcc732b6b948a4f",
+  "latest_handoff_pointer": "2936ccaca35d8a0414869efdd2870f1ea244f1c2",
+  "semantic_pre_main": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "note": "These refs were resolved directly on origin for this documentary read cut. Pushed packet is not adopted. Unchanged remote or absent packet does not settle local activity.",
+  "lanes": [
+    {
+      "id": "HQ281-A06",
+      "branch": "agent/rabochii-pyat-hq281-a06-first-issued-source-consumer-r1",
+      "head": "da1282079508e5e684ebc094148c8d357b795ef3",
+      "remote_packet": "PUSHED_READY_FOR_HQ_INTAKE",
+      "scientific_grade": "GT2_CONTEXT_EXISTING_POSITIVE; NEW_V2_B02_HOLD"
+    },
+    {
+      "id": "HQ281-C02J",
+      "branch": "agent/rabochii-pyat-hq281-c02j-mandatory-b5-owner-trust-r1",
+      "head": "895980397cc0533043c7ca0e493ebbb455666c1e",
+      "remote_packet": "PUSHED_READY_FOR_HQ_INTAKE",
+      "scientific_grade": "BOUNDED_TEST_ONLY_ENFORCEMENT; ISSUER_HOLD"
+    },
+    {
+      "id": "HQ281-D06",
+      "branch": "agent/rabochii-pyat-hq281-d06-two-family-objective-world-r1",
+      "head": "b51f453979c94180d5bd51d3bc2904c79ef77c99",
+      "remote_packet": "PUSHED_READY_FOR_HQ_INTAKE",
+      "scientific_grade": "TWO_FAMILY_EXTERNAL_OBJECTIVE_N9_HOLD"
+    },
+    {
+      "id": "HQ281-D07",
+      "branch": "agent/rabochii-pyat-hq281-d07-first-ee12-temporal-product-r1",
+      "head": "e0b81aa2fc3520dfd0a645ac3db624e3235ef364",
+      "remote_packet": "PUSHED_READY_FOR_HQ_INTAKE",
+      "scientific_grade": "GHANA_ORIGINAL_INSTRUMENT_POSITIVE; RELEASE_DESIGN_ISSUER_HOLD"
+    },
+    {
+      "id": "HQ281-R02",
+      "branch": "agent/reviewer-pyat-hq281-r02-v2-batch-integration-hostile-r1",
+      "head": "59d644ccf35cd79c67e7e26e6b9e4de74039b442",
+      "remote_packet": "PUSHED_READY_FOR_HQ_INTAKE",
+      "scientific_grade": "V2_AND_DURABLE_UNJOINED",
+      "note": "Return report references earlier eaf838ed within its text; resolve full history before acceptance."
+    },
+    {
+      "id": "HQ281-E03",
+      "branch": "agent/rabochii-pyat-hq281-e03-progressive-n9-n10w-owner-join-r1",
+      "head": "e79c6a136748c204963d2169c4f64b0c48374437",
+      "remote_packet": "NO_RETURN_PACKET_OBSERVED",
+      "local_state": "UNKNOWN_ACTIVE_OR_UNSTARTED"
+    },
+    {
+      "id": "HQ281-F8E",
+      "branch": "agent/rabochii-pyat-hq281-f8e-c1-m2-b5-closure-repair-r1",
+      "head": "4ec7c8e804af9dc9ba925ee7d6f7707995b77497",
+      "remote_packet": "NO_RETURN_PACKET_OBSERVED",
+      "local_state": "UNKNOWN_ACTIVE_OR_UNSTARTED"
+    }
+  ],
+  "blocker_priority": "Product-first M1/M2: source-issued operation into V2/durable consumed path; M3 F6 objective fields, F7 qualified temporal pair, F8 N9/N10W; B5 authentic publication. No Ghana default, preserve full 35-wave estate.",
+  "dispatcher": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/runtime/dispatcher.mjs",
+  "dispatcher_status": "CANDIDATE_NOT_INDEPENDENTLY_QUALIFIED_FOR_UNATTENDED_DISPATCH",
+  "routing_mode": "USER_REQUESTED_RESOURCE_AWARE_HQ_DESIGN_ONLY; NOT_CANONICAL_ADOPTION"
+}
