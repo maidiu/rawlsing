@@ -4,14 +4,18 @@
 
 ## Direct user usage evidence and hard reserve
 
-Two screenshots supplied 12 Oct 2026, ~13:45 local: **both five-hour usage windows 100% left**; one weekly balance **85% left**, the other **98% left**; each UI shows **three Full reset (Weekly + 5 hr) credits available**. Both state weekly reset **18 October**. Neither screenshot identifies which account/Mac it belongs to or whether future sessions consume at the same rate. No Codex account alias may be associated with either screenshot without user attestation. The extra full reset credits are contingencies, **never** automatic budget or capacity to spend.
+Two screenshots supplied 12 Oct 2026, ~13:45 local. The user has now **explicitly identified** the accounts/machines: **PRIMARY Mac = 85% weekly remaining**, **SECONDARY Mac = 98% weekly remaining**; both five-hour windows showed **100% left**, each UI showed **three Full reset (Weekly + 5 hr) credits available**, and both weekly windows reset **18 October 2026**. These are user-attested historical snapshots, NOT a current live meter.
 
-The user states **Codex is the only platform where their Astra runs are available**, with Astra consuming finite shared Codex usage. Therefore **Astra use is a hard strategic reservation**:
-1. Mark the higher 98%-remaining envelope **PROVISIONAL_ASTRA_RESERVE** pending user identification. It is **locked against ALL non-Astra Codex work** by default; no automated migration to the other account/host. If account identification conflicts, require explicit user mapping and preserve the intended Astra reserve.
-2. The 85%-remaining envelope is **PROVISIONAL_OPERATING_POOL** only if its identity, host, entitlement, allowed worktree, model and privacy are separately confirmed. Default conservative proposal: at most **two percentage points** weekly use for a *single* non-Astra commission, and **three percentage points aggregate** before the next weekly reset, with a nominal **82%** preserved floor. This is a manual monitoring/stop policy, **not an automated spend guarantee**: dashboard percentages round, consumption is unpredictable and a single model action may exceed a target. Only the user may change floors or authorize a reset.
-3. No speculative five-hour vs weekly conversion; snapshot immediately before and after each **bounded** stage, do not let a model run continuously until it has spent the weekly pool. On approaching an unknown or crossed hard floor, STOP (not invoke reset). **Never spend a Full reset credit, activate paid overflow, buy top-up or launch Astra without separate explicit user choice.**
-4. Before assignment, identify which Mac is logged into which resource envelope. A second legitimate Codex allowance is independent observed capacity, **not** implicit license for invisible account switching.
-5. Prioritize productive scientific original-source Browser HQ and cheap eligible Go/DeepSeek mechanical local proof before spending scarce Codex. Reserve Astra for strategic contradiction, program governance or deliberate high-stakes direction review.
+**CRITICAL ASTRA ACCESS TOPOLOGY:** Codex is the only place this user can run Astra. **Astra requiring the full local Rawlsing repository runs on the PRIMARY Mac**; **Astra using GitHub only can run on EITHER account**. This is a real topology distinction. Never assign the 98% secondary allowance exclusively to Astra merely because its balance is larger.
+
+**Current protective allocation, user binding governs:**
+
+1. **PRIMARY Codex (85% weekly)** = **PROTECTED FULL-REPOSITORY ASTRA RESERVE**. Zero ordinary Codex worker assignments here by default. Primary may perform independently permitted *non-Codex* activity without consuming Codex quota or colliding with Astra's working tree. No speculative Codex overflow here. Only user may temporarily release this reserve.
+2. **SECONDARY Codex (98% weekly)** = **PREFERRED ORDINARY CODEX EXECUTION POOL** for P01 and, if permitted, P02; actual model availability, account privacy and already-governed separate sparse worktrees must first be verified. Default conservative manual stop rule: **at most two percentage points weekly per bounded commission, three percentage points cumulative** before 18 Oct, nominal **95% weekly floor** on secondary, unless user adjusts. This is NOT a hard technical throttle; a single expensive prompt may cross it. Screenshot before/after each bounded phase. Do not automatically add P02 merely because P01 ended.
+3. **GitHub-only Astra** can run on either account **by deliberate user choice**. Preserve some secondary headroom for that optional use as well. Never launch Astra automatically or consume either account's reserve under a coding commission.
+4. **All six Full reset credits across screenshots are held in contingency**, not counted toward operating allowance. Do not touch them without an explicit user action. No paid overflow, automatic top-up, account cycling or quota circumvention.
+5. Distinguish two independent Codex account allowances from machines and worktrees. The screenshots establish machine→allowance mapping, NOT live remaining percentage, model picker availability, privacy configuration, CLI installation or a prepared branch-specific worktree.
+6. Reduce consumption before starting Sol: Browser GitHub science and qualifying mechanical evidence gathering via properly permitted Go/DeepSeek first; only spend secondary Codex for the exact high-value code/security slices that warrant it. Protect actual future Astra runs from preventable coding burn.
 
 ## Minimum justified Codex model/effort — exact launch contract
 
@@ -28,6 +32,9 @@ These are **specific starting choices**, not verified per-account UI availabilit
 | **ASTRA strategic** | **GPT-6 Astra only when independently directed** | Source of last resort for substantive program/authority fork. No worker may spend its protected account or resets by default. |
 
 OpenAI official model guide describes Luna as efficiency-first and GPT-6.1 Sol Medium for complex technical work; the API/docs support low/medium/high/xhigh/max on Sol (Codex UI might display a different label). Codex allowance sharing and actual model availability depend on the account. Do NOT convert generic model API per-token costs into fabricated subscription weekly percentages. See `https://developers.openai.com/api/docs/guides/model-selection` and `https://chatgpt.com/codex/pricing/`.
+
+
+**Machine assignment for current six-lane queue, user-attested:** P01 and P02 recommend SECONDARY Codex only. P03/P05 Browser/GitHub. P04 source-free local Go/DeepSeek on whichever authorized worktree can run, optionally SECONDARY Luna Medium if user permits; P06 Go/DeepSeek without Codex, optional SECONDARY Luna Low after user approval. **PRIMARY Codex is reserved for local full-repo Astra**. Existing primary-only worktree tests in P01 must be made portable by exact Git-object verification instead of switching P01 to primary merely to avoid skipped tests.
 
 ## Secondary Mac — mandatory source-free file manifest and truthful cross-host claims
 
@@ -65,6 +72,6 @@ Do not equate clean sourcefree tests with lawful source or operative CURRENT/N9/
 
 ## Successor-resource-grok mandatory challenge
 
-Incoming HQ must name per-commission **precise minimum model+effort**, map 85%- vs 98%-weekly screenshots to actual legitimate accounts only by user attestation, preserve protected Astra capacity and three unused reset vouchers, explain why P01 portable candidate V2 tests can silently SKIP on secondary, prove how exact A04/A05 and B01E objects would be made available without data transfer, and list every actual primary-only file blocker before secondary execution. **Fail => resource grok incomplete.**
+Incoming HQ must name per-commission **precise minimum model+effort**, state the now-attested PRIMARY=85% and SECONDARY=98% mapping, and explain PRIMARY is protected for full-repo Astra while GitHub-only Astra may run on either, preserve protected Astra capacity and three unused reset vouchers, explain why P01 portable candidate V2 tests can silently SKIP on secondary, prove how exact A04/A05 and B01E objects would be made available without data transfer, and list every actual primary-only file blocker before secondary execution. **Fail => resource grok incomplete.**
 
-**Terminal:** `PYAT_RCM01_CODEX_AST​RA_RESERVE__SPECIFIC_MINIMUM_MODEL_ROUTES__SECONDARY_SOURCEFREE_OBJECT_MANIFEST__NO_RESET_OR_AUTORUN`.
+**Terminal:** `PYAT_RCM01_CODEX_ASTRA_TOPOLOGY_CORRECTED__PRIMARY_85_FULL_REPO_RESERVE__SECONDARY_98_ORDINARY_POOL__NO_RESET_OR_AUTORUN`.
