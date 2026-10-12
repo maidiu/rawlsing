@@ -406,3 +406,38 @@ def test_saved_fact_must_use_frozen_predicate_and_release(tmp_path, substitution
     kwargs['resolve_fact'] = lambda ref: facts[ref.key] if ref.key in facts else resolver(ref)
     with pytest.raises(ValueError, match='FACT_PREDICATE_SUBSTITUTION' if substitution == 'predicate' else 'FACT_RELEASE_SUBSTITUTION'):
         P.run_integrated(**kwargs)
+
+
+@pytest.mark.parametrize('job', ['QUERY','DISCOVERY'])
+def test_field_forge_measure_is_bound_for_queries_and_discovery(tmp_path, job):
+    kwargs, calls = _fixture(tmp_path)
+    doc = json.loads(kwargs['expected'].payload_json)
+    row = next(r for r in doc['declarations'] if ('discovery_authority_ref' in r) == (job == 'DISCOVERY') and r['state']=='RUNNABLE')
+    row['measure_kind'] = 'GOVERNED_WEIGHTED'
+    kwargs['expected'] = P.FrozenExpected.from_documentary_payload(doc)
+    with pytest.raises(ValueError, match='FIELD_FORGE_RAW_MEASURE_REQUIRED'):
+        P.run_integrated(**kwargs)
+    assert calls == []
+
+
+@pytest.mark.parametrize('job', ['QUERY','DISCOVERY'])
+def test_nonexistent_frozen_authority_is_refused_before_execution(tmp_path, job):
+    kwargs, calls = _fixture(tmp_path)
+    doc = json.loads(kwargs['expected'].payload_json)
+    row = next(r for r in doc['declarations'] if ('discovery_authority_ref' in r) == (job == 'DISCOVERY') and r['state']=='RUNNABLE')
+    row['authority_ref'] = 'UNRELATED-NONEXISTENT-AUTHORITY'
+    kwargs['expected'] = P.FrozenExpected.from_documentary_payload(doc)
+    with pytest.raises(ValueError, match='declared operation authority is not exactly present'):
+        P.run_integrated(**kwargs)
+    assert calls == []
+
+
+def test_different_existing_authority_cannot_replace_dispatch_authority(tmp_path):
+    kwargs, calls = _fixture(tmp_path)
+    doc = json.loads(kwargs['expected'].payload_json)
+    row = next(r for r in doc['declarations'] if 'query_ref' in r)
+    row['authority_ref'] = next(a.authority_ref.key for a in kwargs['runtime_catalog'].authorities if a.authority_ref.key != row['authority_ref'])
+    kwargs['expected'] = P.FrozenExpected.from_documentary_payload(doc)
+    with pytest.raises(ValueError, match='DISPATCH_AUTHORITY_SUBSTITUTION'):
+        P.run_integrated(**kwargs)
+    assert calls == []

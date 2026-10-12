@@ -55,6 +55,12 @@ class FrozenExpected:
         frozen = V.freeze_payload(payload)
         if any(r['raw'].get('multiplicity', 1) != 1 for r in frozen['records'] if r['runnable']):
             raise ValueError('FIELD_FORGE_SINGLE_RESULT_REQUIRED')
+        for record in frozen['records']:
+            if record['runnable'] and record['raw']['required_consumer'] == CONSUMER:
+                if record['raw'].get('measure_kind', 'RAW') != 'RAW':
+                    raise ValueError('FIELD_FORGE_RAW_MEASURE_REQUIRED')
+                if record['raw']['semantic_op_class'] not in ('PAIR_RESPONSE_COTRAVEL', 'BOUNDED_DISCOVERY'):
+                    raise ValueError('FIELD_FORGE_OPERATION_UNSUPPORTED')
         return frozen
 
 
@@ -94,6 +100,10 @@ def _run_integrated_locked(
         if key is None or key in units_by_key:
             raise ValueError('FOREIGN_OR_COLLIDING_MANIFEST_UNIT')
         row = rows[key]['raw']
+        from rawlsing_next.pre553_original_workload_binder_candidate import _resolve_declared_authority
+        snapshot = _resolve_declared_authority(runtime_catalog, row['authority_ref'], expected_work_key_value=key)
+        if snapshot.ref not in unit.semantic_input_refs:
+            raise ValueError('DISPATCH_AUTHORITY_SUBSTITUTION')
         if row['source_identity'] != session.source_sha256:
             raise ValueError('SOURCE_IDENTITY_MISMATCH')
         expected_kind = 'DISCOVERY' if row['semantic_op_class'] == 'BOUNDED_DISCOVERY' else 'QUERY'
@@ -102,6 +112,8 @@ def _run_integrated_locked(
         if unit.job_kind == 'QUERY':
             from rawlsing_next.pre553_original_workload_contract_v2_candidate import _v2_owner_short_order
             query = runtime_catalog.resolve_query_exact(unit.job_ref)
+            if snapshot.authority_ref not in query.authority_snapshot_refs:
+                raise ValueError('QUERY_AUTHORITY_SUBSTITUTION')
             owner_order = _v2_owner_short_order(query)
             if len(owner_order) > 1 and tuple(row.get('condition_order', ())) != owner_order:
                 raise ValueError('CONDITION_ORDER_SUBSTITUTION')
@@ -112,6 +124,10 @@ def _run_integrated_locked(
                 raise ValueError('QUERY_PREDICATE_SUBSTITUTION')
             if predicate not in unit.semantic_input_refs:
                 raise ValueError('PREDICATE_SUBSTITUTION')
+        if unit.job_kind == 'DISCOVERY':
+            discovery_authority = runtime_catalog.resolve_discovery_authority_exact(unit.job_ref)
+            if snapshot.authority_ref not in discovery_authority.authority_snapshot_refs:
+                raise ValueError('DISCOVERY_AUTHORITY_SUBSTITUTION')
         units_by_key[key] = unit
     if set(units_by_key) != set(frozen['runnable_keys']):
         raise ValueError('EXPECTED_OPERATION_OMITTED')
@@ -156,6 +172,8 @@ def _run_integrated_locked(
     produced_units, consumers, consumer_products, holds = [], [], [], []
     for key, unit in units_by_key.items():
         raw = rows[key]['raw']
+        from rawlsing_next.pre553_original_workload_binder_candidate import _resolve_declared_authority
+        snapshot = _resolve_declared_authority(runtime_catalog, raw['authority_ref'], expected_work_key_value=key)
         receipt = receipts.get(unit.unit_ref.key)
         if receipt is None or receipt.state != 'COMPLETED':
             holds.append({'code': 'DURABLE_RESULT_NOT_COMPLETED', 'expected_work_key': key})
@@ -171,6 +189,8 @@ def _run_integrated_locked(
             if not facts or tuple(f.ref for f in facts) != receipt.result_refs:
                 raise ValueError('SAVED_RESULT_OBJECT_IDENTITY_MISMATCH')
             for fact in facts:
+                if snapshot.authority_ref not in fact.authority_snapshot_refs:
+                    raise ValueError('FACT_AUTHORITY_SUBSTITUTION')
                 if exact_ref(fact.condition_predicate_ref) != ExactRef(**raw['predicate_ref']):
                     raise ValueError('FACT_PREDICATE_SUBSTITUTION')
         elif unit.job_kind == 'DISCOVERY' and resolve_discovery is not None:
@@ -190,6 +210,8 @@ def _run_integrated_locked(
             if len(matching) != 1:
                 raise ValueError('SAVED_DISCOVERY_RECEIPT_IDENTITY_MISMATCH')
             discovery_receipt = matching[0]
+            if snapshot.authority_ref not in discovery_receipt.authority_snapshot_refs:
+                raise ValueError('DISCOVERY_RECEIPT_AUTHORITY_SUBSTITUTION')
             if discovery_receipt.typed_state != 'DISCOVERED_RESULT_SUPPORTED':
                 holds.append({'code': 'DISCOVERY_RESULT_NOT_SUPPORTED', 'expected_work_key': key,
                               'typed_state': discovery_receipt.typed_state})
@@ -214,6 +236,8 @@ def _run_integrated_locked(
             holds.append({'code': 'FIELD_FORGE_REQUIRES_SINGLE_TWO_TARGET_FACT',
                           'expected_work_key': key})
             continue
+        if query.requested_output_grain.get('measure_kind') != raw.get('measure_kind', 'RAW') or facts[0].measure_kind != raw.get('measure_kind', 'RAW'):
+            raise ValueError('CONSUMED_MEASURE_SUBSTITUTION')
         fact_releases = {exact_ref(ref) for ref in facts[0].source_empirical_provenance_refs
                          if exact_ref(ref).kind == 'C11LogicalRelease'}
         if fact_releases != set(unit.release_refs):
