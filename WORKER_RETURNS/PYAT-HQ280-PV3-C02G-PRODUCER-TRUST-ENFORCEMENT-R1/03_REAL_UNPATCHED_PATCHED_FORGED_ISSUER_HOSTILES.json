@@ -1,0 +1,53 @@
+{
+  "issuer_probes": [
+    {
+      "case": "ISSUER_GAP",
+      "competent_issuer_exists": false,
+      "disposition": "OWNER_ISSUER_HOLD",
+      "issuer_modules_found": 0,
+      "key_registry_modules_found": 0,
+      "patch_active": true,
+      "signature_scheme_exists": false,
+      "trust_root_exists": false,
+      "trust_root_modules_found": 0,
+      "verification_modules_found": 5
+    },
+    {
+      "case": "ISSUER_FORGED_CREDENTIAL",
+      "credential_issuer_id": "CALLER-DECLARED-ISSUER",
+      "credential_signature_is_self_hash": true,
+      "is_independently_verifiable": false,
+      "patch_active": true,
+      "refusal": "ISSUER_CREDENTIAL_FORGED"
+    },
+    {
+      "case": "ISSUER_DEMO_TICKET_NOT_AUTHENTICATION",
+      "is_caller_minted": true,
+      "is_issuer_authenticated": false,
+      "patch_active": true,
+      "refusal": "PRODUCER_AUTHENTICATION_UNPROVED",
+      "ticket_perimeter_ref": "urn:c02g:perimeter:c02g-perimeter:sha256:0f22e152d368bddbe85d899aa6062024d6847ba75dfeb1406535a6b3d2cd1308"
+    },
+    {
+      "case": "ISSUER_CALLER_TRUST_ROOT",
+      "is_independently_held": false,
+      "patch_active": true,
+      "refusal": "ISSUER_TRUST_ROOT_MISMATCH",
+      "root_held_by": "caller"
+    },
+    {
+      "case": "ISSUER_ABSENT",
+      "disposition": "OWNER_ISSUER_HOLD",
+      "patch_active": true
+    }
+  ],
+  "positive": [
+    {
+      "authorizing": false,
+      "case": "POSITIVE_genuine_m2_published",
+      "grade": "DEMO_FIXTURE__NOT_OPERATIVE_CREDENTIALS",
+      "patch_active": true,
+      "publication": "PUBLISHED"
+    }
+  ]
+}
