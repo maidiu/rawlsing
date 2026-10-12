@@ -79,8 +79,8 @@ The deepest longitudinal mirror is the user's own relational praxis.
 1. `00_FULL_RAWLSING_VOZHD_GROUNDING_GATE_R1.md` — **mandatory general Rawlsing HQ grounding; read before Sorok specialization**
 2. `00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md` — **mandatory Sorok/V3/PFF specialization gate**
 3. `00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md` — **mandatory HQ assessment/calibration gate; required before consequential feasibility/readiness/confidence claims**
-5. `01_PRODUCT_CHARTER.md`
-4. `02_PROVISIONAL_RELATIONAL_ONTOLOGY.md`
+4. `01_PRODUCT_CHARTER.md`
+5. `02_PROVISIONAL_RELATIONAL_ONTOLOGY.md`
 6. `03_REAL_ALPHA_SPINE.md`
 7. `04_CURRENT_SYSTEM_TO_PRODUCT_CROSSWALK.md`
 8. `05_PROGRAM_MAP.md`
