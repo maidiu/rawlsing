@@ -41,7 +41,9 @@ The primary bank explicitly preserves all of the following developments:
 21. a second high-capability phenomenal renderer is deferred until evidence shows local composition insufficient;
 22. whole-person expressive substrate size/structure, one-shot actor realization, distributional Nadia continuity, phenomenal composition quality and structured-occurrence/prose equivalence remain explicit empirical seams;
 23. the proposed hostile renderer test and stop/redesign conditions are banked;
-24. current composed renderer feasibility ceiling remains `F2 BOUNDEDLY PROTOTYPEABLE__F3 NOT EARNED`.
+24. current composed renderer feasibility ceiling remains `F2 BOUNDEDLY PROTOTYPEABLE__F3 NOT EARNED`;
+25. current personhood context should remain whole enough for expression while the potentially unbounded historical tail is retrieved selectively;
+26. live turns route to the minimum competent temporal/owner grain and do not automatically rerun durable V3 redevelopment.
 
 ## 2. Inherited authority explicitly preserved
 
