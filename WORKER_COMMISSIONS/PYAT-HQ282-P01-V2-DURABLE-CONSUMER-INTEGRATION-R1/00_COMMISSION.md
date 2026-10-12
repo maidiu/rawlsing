@@ -1,3 +1,17 @@
+## RCM01 user-requested binding correction — minimum Codex effort, Astra reserve and Mac file custody
+
+**THIS SECTION SUPERSEDES less precise suggested "strong Codex" or "qualified model" wording below.** This is a branch-local commission routing correction, not a new scientific or security grant. Full user-directed law: `PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ282_CODEX_ASTRA_RESERVE_MODEL_AND_SECONDARY_FILE_LAW_R1.md` on operating HQ, and RCM01 original at `c71f83c731fe1465b59f5ad701a5e1bb3018b34a`.
+
+**CODEX MODEL EXACT:** GPT-6.1 Sol, **Medium**. No High/Extra High/Astra without a separately documented failed Medium case and user's budget approval. First perform exact Git source-object/materialization and shell-based baseline for free or through an approved cheap collector. **MAC:** PRIMARY preferred only if its worktree and account are actually verified; SECONDARY permitted solely after the exact-Git manifest and portable A04/A05 court below are present. Spend only from user-designated non-Astra Codex pool, after manual before/after allowance check. If no safe quota/worktree, STOP; not auto-run.
+
+**SECONDARY FILE GATE:** V2 A04TU tree `d6e766cd6ba7dc46b19cc61123d968a274015ddd` and B01E/B01D tree `92cb25340c49fb51e2b8d6e00d5a4f471296fc8f` are disjoint. Materialize exact Git-tracked V2 verifier/test + B01E adapter/durable/test plus imported accepted C11/Route B/I03/I05/batch owners into one *new isolated candidate* worktree without merging accepted branches. V2 legacy verifier tests hardcode PRIMARY Mac A04/A05 worktree paths and SKIP if absent: checks around lines 745, 760, 877. On SECONDARY, MUST explicitly report these SKIPs as external dependency HOLD, or create a NEW portable exact-Git-blob court using A05 oracle at `9491d0296c95ee2942fe80eadc6aa9f54b07c634` (expected oracle blob `00a4cc84d321c3fbace0f4aa09be62dbb31994fc`); NEVER present a skipped test as pass. No primary-private SAV/DTA required or permitted.
+
+**Astra reservation:** 12 Oct UI shows 85% and 98% weekly remaining (both 100% five-hour; three unspent full reset credits each), but screenshots do not map to a specific Mac/account. Preserve a user-designated Astra pool for Astra only; by default lock the 98% envelope and limit proposed ordinary use on the identified 85% work pool to ≤2 percentage points per job / ≤3 total until 18 Oct weekly reset, nominal 82% floor. These are MANUALLY MONITORED safeguards, not automatically enforceable percentage caps; take actual usage snapshots before and after each bounded stage. Never spend reset credits or paid overflow without explicit instruction. Missing account binding/eligibility remains HARD HOLD.
+
+**Exact returned-commission startup after THIS correction:** Must use the final full 40-hex GitHub branch HEAD published in the refreshed HQ launch ledger, NOT the predecessor commission SHA in the older status block below.
+
+---
+
 # PYAT HQ282 P01 — resource-aware product-first work order
 
 **STATUS:** SEALED_AWAITING_RESOURCE_BINDING__NOT_LAUNCHED; NO UNATTENDED EXECUTION
