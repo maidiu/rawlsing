@@ -1,0 +1,365 @@
+{
+  "schema": "PYAT_RCM01_ADVERSARIAL_VECTORS@1.0.0",
+  "status": "PREDECLARED_EXPECTATIONS__NOT_RUN",
+  "usage": "Each case is a required independent test. Implementation may add a documented versioned adapter but must not change expected behavior to match its actual output.",
+  "input_contract": {
+    "task": {
+      "id": "string",
+      "needs": "array<string>",
+      "risk": "low|high|issuer|security",
+      "critical_path": "bool",
+      "status": "string",
+      "provenance": "string"
+    },
+    "resources": "record list loaded from independent resource snapshot, never guessed",
+    "quota": "measured normalized shared pool or unknown",
+    "publisher": "not in scope"
+  },
+  "cases": [
+    {
+      "id": "T01",
+      "task": {
+        "needs": [
+          "python",
+          "pytest",
+          "sigkill"
+        ],
+        "risk": "high"
+      },
+      "available": [
+        "BROWSER_HQ"
+      ],
+      "expected": "NO_ELIGIBLE_EXECUTION_RESOURCE",
+      "assert": "Browser never manufactures runtime PASS"
+    },
+    {
+      "id": "T02",
+      "task": {
+        "needs": [
+          "document_science"
+        ],
+        "risk": "issuer"
+      },
+      "available": [
+        "DEEPSEEK_HARNESS",
+        "BROWSER_HQ"
+      ],
+      "expected": "BROWSER_SCIENCE_OWNER_OR_SCIENTIFIC_HOLD",
+      "assert": "Cheap extractor never self-issues"
+    },
+    {
+      "id": "T03",
+      "task": {
+        "needs": [
+          "python"
+        ],
+        "risk": "low"
+      },
+      "available": [
+        "OPENCODE_GO"
+      ],
+      "overrides": {
+        "shared_remaining": 0,
+        "overflow": false
+      },
+      "expected": "WAIT_FOR_RESET_OR_BUDGET_HOLD",
+      "assert": "No unapproved Zen spend"
+    },
+    {
+      "id": "T04",
+      "task": {
+        "needs": [
+          "python"
+        ],
+        "risk": "low"
+      },
+      "available": [
+        "OPENCODE_GO"
+      ],
+      "overrides": {
+        "glm_flash_fraction_used": 0.5,
+        "kimi_code_fraction_used": 0.5
+      },
+      "expected": "SHARED_POOL_EXHAUSTED",
+      "assert": "Not two independent free $60 model pools"
+    },
+    {
+      "id": "T05",
+      "task": {
+        "needs": [
+          "python"
+        ],
+        "risk": "high"
+      },
+      "available": [
+        "CODEX_A",
+        "CODEX_B"
+      ],
+      "overrides": {
+        "a_remaining": 0,
+        "b_remaining": "MEASURED_POSITIVE",
+        "b_authorized": true
+      },
+      "expected": "CONSIDER_CODEX_B_IF_INDEPENDENCE_AND_BUDGET_ALLOW",
+      "assert": "B unobserved entitlement cannot be inferred"
+    },
+    {
+      "id": "T06",
+      "task": {
+        "status": "EXISTING_ACTIVE_NOT_RETURNED",
+        "needs": [
+          "python"
+        ],
+        "risk": "low"
+      },
+      "available": [
+        "CODEX_A",
+        "DEEPSEEK_HARNESS"
+      ],
+      "expected": "PRESERVE_ACTIVE_WORKTREE_AND_RESUME",
+      "assert": "Never duplicate/force reset"
+    },
+    {
+      "id": "T07",
+      "task": {
+        "status": "PUSHED_READY_FOR_HQ_INTAKE",
+        "needs": [
+          "git_review"
+        ],
+        "risk": "low"
+      },
+      "expected": "INTAKE_EXISTING_RETURN",
+      "assert": "Pushed is not adopted and no reimplementation"
+    },
+    {
+      "id": "T08",
+      "task": {
+        "needs": [
+          "independent_review"
+        ],
+        "risk": "high"
+      },
+      "overrides": {
+        "reviewer_same_as_implementer": true
+      },
+      "expected": "REVIEW_INELIGIBLE",
+      "assert": "Review independence hard gate"
+    },
+    {
+      "id": "T09",
+      "task": {
+        "needs": [
+          "owner_mutation"
+        ],
+        "risk": "high"
+      },
+      "overrides": {
+        "write_overlap": true,
+        "otherwise_independent_lane_ready": true
+      },
+      "expected": "SERIALIZE_COLLIDING_WRITES_CONTINUE_ORTHOGONAL",
+      "assert": "No fixed global two-slot cap"
+    },
+    {
+      "id": "T10",
+      "task": {
+        "needs": [
+          "original_ee12_issuer"
+        ],
+        "risk": "issuer"
+      },
+      "available": [
+        "CODEX_A",
+        "ASTRA",
+        "BROWSER_HQ"
+      ],
+      "overrides": {
+        "issuer_credential": null
+      },
+      "expected": "SCIENTIFIC_HOLD",
+      "assert": "No model can invent competent issuer"
+    },
+    {
+      "id": "T11",
+      "task": {
+        "needs": [
+          "python"
+        ],
+        "risk": "low"
+      },
+      "overrides": {
+        "cost_estimate": null,
+        "wall_estimate": null
+      },
+      "expected": "EXPLICIT_ESTIMATE_UNKNOWN_OR_BOUNDED_PROBE",
+      "assert": "Unknown is not zero"
+    },
+    {
+      "id": "T12",
+      "task": {
+        "needs": [
+          "many_repo_reads"
+        ],
+        "risk": "low"
+      },
+      "overrides": {
+        "browser_roundtrip_measured_slow": true,
+        "cheap_local_collector_available": true
+      },
+      "expected": "LOCAL_EVIDENCE_COLLECTOR_WITH_BROWSER_HQ_OWNER",
+      "assert": "No compulsory free-first latency"
+    },
+    {
+      "id": "T13",
+      "task": {
+        "needs": [
+          "empirical_product"
+        ],
+        "risk": "high"
+      },
+      "overrides": {
+        "measured_supported_null": true,
+        "real_consumer": true
+      },
+      "expected": "COUNT_SCIENTIFIC_PRODUCT",
+      "assert": "Measured null differs from pipeline failure"
+    },
+    {
+      "id": "T14",
+      "task": {
+        "needs": [
+          "publication"
+        ],
+        "risk": "security"
+      },
+      "overrides": {
+        "dispatcher_qualified": false
+      },
+      "expected": "ADVISORY_ONLY_PUBLICATION_HOLD",
+      "assert": "Unqualified Space Bunny candidate never launches/publishes"
+    },
+    {
+      "id": "T15",
+      "task": {
+        "needs": [
+          "python"
+        ],
+        "risk": "low"
+      },
+      "overrides": {
+        "pricing_freshness": "STALE",
+        "remaining_quota": null
+      },
+      "expected": "REQUIRE_FRESH_RESOURCE_EVIDENCE",
+      "assert": "No fictional usage balances"
+    },
+    {
+      "id": "T16",
+      "task": {
+        "needs": [
+          "private_repo_processing"
+        ],
+        "risk": "high"
+      },
+      "available": [
+        "FREE_PROVIDER_X"
+      ],
+      "overrides": {
+        "provider_training": true,
+        "source_permission": false
+      },
+      "expected": "PROVIDER_PRIVACY_INELIGIBLE",
+      "assert": "No cost advantage defeats privacy"
+    },
+    {
+      "id": "T17",
+      "task": {
+        "needs": [
+          "python"
+        ],
+        "risk": "low"
+      },
+      "overrides": {
+        "provider_stream_failure_repeated": true,
+        "local_committed_work": true
+      },
+      "expected": "HALT_AND_PRESERVE_LOCAL_STATE",
+      "assert": "Avoid model loops and lost state"
+    },
+    {
+      "id": "T18",
+      "task": {
+        "needs": [
+          "worktree_mutation"
+        ],
+        "risk": "low"
+      },
+      "overrides": {
+        "remote_sha_unknown": true,
+        "worktree_missing": true
+      },
+      "expected": "BLOCK_STARTUP_NO_CLONE_RESET",
+      "assert": "Explicit bootstrap owner required"
+    },
+    {
+      "id": "T19",
+      "task": {
+        "needs": [
+          "runtime_review"
+        ],
+        "risk": "high"
+      },
+      "overrides": {
+        "review_frozen_tip": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "candidate_tip": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "expected": "REVIEW_INVALIDATED_BY_CHANGED_CANDIDATE",
+      "assert": "Independent review bound to actual candidate"
+    },
+    {
+      "id": "T20",
+      "task": {
+        "needs": [
+          "python"
+        ],
+        "risk": "low"
+      },
+      "overrides": {
+        "secondary_go_account_intended_for_limit_evasion": true
+      },
+      "expected": "RESOURCE_INELIGIBLE_PROVIDER_POLICY",
+      "assert": "No usage limit evasion"
+    },
+    {
+      "id": "T21",
+      "task": {
+        "needs": [
+          "authority_decision"
+        ],
+        "risk": "high"
+      },
+      "overrides": {
+        "astra_only_because_two_retries": true,
+        "scientific_conflict": false
+      },
+      "expected": "HQ_ROOT_CAUSE_REVIEW_NOT_AUTO_ASTRA",
+      "assert": "Repetition alone isn't strategic escalation"
+    },
+    {
+      "id": "T22",
+      "task": {
+        "needs": [
+          "local_python",
+          "real_consumer"
+        ],
+        "risk": "high"
+      },
+      "overrides": {
+        "source_only_static_graph": true,
+        "executed_calls": 0
+      },
+      "expected": "RUNTIME_UNPROVED",
+      "assert": "Static repo text not executed owner chain"
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "schema": "PYAT_RCM01_RESOURCE_LEDGER_SEED@1.0.0",
+  "status": "UNBOUND_DOCUMENTARY_SEED_NOT_LIVE_ENTITLEMENTS",
+  "rule": "All price, quota, runtime, privacy and balance facts require observation and freshness. Do not treat this seed as provider entitlement or authority.",
+  "last_verified_utc": null,
+  "currency": "USD",
+  "shared_policy": {
+    "go_normalized_pool": "ONE_POOL_PER_LEGITIMATE_SUBSCRIPTION__MODEL_SPECIFIC_FRACTION",
+    "extra_go_accounts_for_limit_evasion": "FORBIDDEN",
+    "paid_overflow_default": false,
+    "autonomous_dispatch_default": false
+  },
+  "resources": [
+    {
+      "id": "BROWSER_HQ",
+      "class": "browser_github",
+      "role": "command_science_review",
+      "account_alias": "browser-hq",
+      "model": "GPT-6 High",
+      "variant": "high",
+      "machine": "browser_cloud",
+      "tools": [
+        "github_connector",
+        "document_read",
+        "git_remote"
+      ],
+      "local_python": false,
+      "local_raw_custody": false,
+      "estimated_roundtrip_latency_sec": null,
+      "remaining_usage": null,
+      "reset_at": null,
+      "source_privacy": "REQUIRE_SEPARATE_AUTHORITY",
+      "live_evidence": "NOT_MEASURED",
+      "can_act_as_runtime_reviewer": false
+    },
+    {
+      "id": "CODEX_A",
+      "class": "codex",
+      "role": "premium_local_primary",
+      "account_alias": "codex-a",
+      "model": null,
+      "variant": null,
+      "machine": null,
+      "tools": [],
+      "local_python": null,
+      "remaining_usage": null,
+      "quota_window": null,
+      "reset_at": null,
+      "cost_per_accepted_product": null,
+      "source_privacy": "CHECK_PROVIDER_AND_SOURCE_AUTHORITY",
+      "live_evidence": "MISSING_OBSERVED_STATUS"
+    },
+    {
+      "id": "CODEX_B",
+      "class": "codex",
+      "role": "premium_local_independent",
+      "account_alias": "codex-b",
+      "model": null,
+      "variant": null,
+      "machine": null,
+      "tools": [],
+      "local_python": null,
+      "remaining_usage": null,
+      "quota_window": null,
+      "reset_at": null,
+      "cost_per_accepted_product": null,
+      "source_privacy": "CHECK_PROVIDER_AND_SOURCE_AUTHORITY",
+      "live_evidence": "MISSING_OBSERVED_STATUS"
+    },
+    {
+      "id": "DEEPSEEK_HARNESS",
+      "class": "metered_local",
+      "role": "economical_evidence_and_bounded_repairs",
+      "account_alias": "deepseek-harness",
+      "model": "deepseek-v4.1-flash-like",
+      "variant": null,
+      "machine": null,
+      "tools": [],
+      "local_python": null,
+      "remaining_usage": null,
+      "cost_usd": null,
+      "dollar_cap_usd": null,
+      "source_privacy": "VERIFY_ENDPOINT_AND_EXPORT_TERMS",
+      "live_evidence": "MODEL_CAPABILITY_HYPOTHESIS_ONLY"
+    },
+    {
+      "id": "OPENCODE_GO",
+      "class": "subscription_pool",
+      "role": "economical_substantive_local",
+      "account_alias": "one-legitimate-go-workspace",
+      "model": null,
+      "variant": null,
+      "machine": null,
+      "tools": [],
+      "local_python": null,
+      "plan": "UNVERIFIED",
+      "normalized_shared_remaining_fraction": null,
+      "window5h_remaining_fraction": null,
+      "weekly_remaining_fraction": null,
+      "reset_at": null,
+      "paid_fallback_enabled": false,
+      "source_privacy": "PER_ENDPOINT_CHECK_REQUIRED",
+      "live_evidence": "SUBSCRIPTION_AND_USAGE_NOT_OBSERVED",
+      "eligible_models": [
+        {
+          "label": "MiMo-V2.6-Pro",
+          "model_id": null,
+          "normalized_model_monthly_cap_usd": null
+        },
+        {
+          "label": "GLM-5.3 Flash",
+          "model_id": null,
+          "normalized_model_monthly_cap_usd": null
+        },
+        {
+          "label": "Kimi K2.7 Code",
+          "model_id": null,
+          "normalized_model_monthly_cap_usd": null
+        },
+        {
+          "label": "GLM-5.3",
+          "model_id": null,
+          "normalized_model_monthly_cap_usd": null
+        }
+      ]
+    },
+    {
+      "id": "ZEN_METERED_OVERFLOW",
+      "class": "metered_local",
+      "role": "explicit_paid_fallback_only",
+      "account_alias": "opencode-zen",
+      "model": null,
+      "variant": null,
+      "machine": null,
+      "tools": [],
+      "local_python": null,
+      "enabled": false,
+      "remaining_balance_usd": null,
+      "hard_dollar_cap_usd": 0,
+      "automatic_topup": false,
+      "source_privacy": "PER_ENDPOINT_CHECK_REQUIRED",
+      "live_evidence": "DISABLED_UNTIL_EXPLICIT_OPERATOR_BOUND"
+    },
+    {
+      "id": "ASTRA",
+      "class": "strategic_oversight",
+      "role": "strategic_nonroutine",
+      "account_alias": "astra",
+      "model": null,
+      "variant": null,
+      "machine": "browser",
+      "tools": [
+        "github_connector"
+      ],
+      "local_python": false,
+      "remaining_usage": null,
+      "reset_at": null,
+      "dispatch_automatically": false,
+      "live_evidence": "RESERVED_BY_USER"
+    }
+  ],
+  "machines": [
+    {
+      "id": "MAC_PRIMARY",
+      "worktree_roots": null,
+      "shared_repo_store": null,
+      "governed_interpreter": null,
+      "available_cpu_mem": null,
+      "verified_at": null
+    },
+    {
+      "id": "MAC_SECONDARY",
+      "worktree_roots": null,
+      "shared_repo_store": null,
+      "governed_interpreter": null,
+      "available_cpu_mem": null,
+      "verified_at": null
+    }
+  ],
+  "required_run_telemetry": [
+    "commission_id",
+    "branch",
+    "startup_tip",
+    "return_tip",
+    "machine",
+    "account_alias",
+    "model_id",
+    "model_variant",
+    "start_end_wall_seconds",
+    "tool_calls",
+    "provider_errors",
+    "actual_cost_usd",
+    "normalized_allowance_consumed",
+    "human_interventions",
+    "test_commands_exit_codes",
+    "product_and_consumer_refs",
+    "independent_review_ref",
+    "scientific_grade"
+  ]
+}

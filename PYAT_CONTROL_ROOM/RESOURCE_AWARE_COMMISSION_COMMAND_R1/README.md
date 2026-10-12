@@ -4,7 +4,7 @@
 
 The user directs Browser Pyat HQ to establish a militarily disciplined, product-first resource router across Browser/GitHub, two legitimately available Codex account allowances, DeepSeek-Harness, OpenCode Go/Zen and the user's two local Macs, preserving Astra as reserved strategic oversight.
 
-Read the complete issued design/qualification assignment:
+Read the complete HQ commission:
 `WORKER_COMMISSIONS/PYAT-RCM01-RESOURCE-AWARE-COMMAND-R1/00_COMMISSION.md`.
 The exact branch startup is the published commission commit, supplied in the launch message and independently checked against origin.
 
@@ -19,7 +19,10 @@ Related authority:
 - `PYAT_CONTROL_ROOM/00_WHOLE_MACHINE_AUTOMATION_DOCTRINE_R1.md`
 - `PYAT_CONTROL_ROOM/SHARED_STORE_SPARSE_WORKTREE_EXECUTION_LAW_R1.md`
 - `PYAT_CONTROL_ROOM/HQ_OPERATING_REQUIREMENTS_EFFECTIVENESS_R1.md`
-- `PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/REVIEWS/HQ181_187_AUDIT_20261003/{REVIEW,REPAIR_PLAN}.md`
-- `PYAT_CONTROL_ROOM/WHOLE_MACHINE_ASSESSMENT_AND_PLAN_20261011_R1/{README,ACTION_PLAN,TASKS.json}.md` (the actual files are README.md, ACTION_PLAN.md and TASKS.json).
+- `PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/REVIEWS/HQ181_187_AUDIT_20261003/REVIEW.md`
+- `PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/REVIEWS/HQ181_187_AUDIT_20261003/REPAIR_PLAN.md`
+- `PYAT_CONTROL_ROOM/WHOLE_MACHINE_ASSESSMENT_AND_PLAN_20261011_R1/README.md`
+- `PYAT_CONTROL_ROOM/WHOLE_MACHINE_ASSESSMENT_AND_PLAN_20261011_R1/ACTION_PLAN.md`
+- `PYAT_CONTROL_ROOM/WHOLE_MACHINE_ASSESSMENT_AND_PLAN_20261011_R1/TASKS.json`
 
 **Exit for this publication only:** exact GitHub-pushed commission and test vectors, no machine activity.
