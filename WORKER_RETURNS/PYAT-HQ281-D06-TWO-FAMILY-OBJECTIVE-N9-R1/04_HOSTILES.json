@@ -1,0 +1,162 @@
+{
+  "schema": "HQ281_D06_SYNTHETIC_JS_CONTRACT_HOSTILES@R1",
+  "execution": "ACTUALLY_EXECUTED_JS_FUNCTION_IN_TOOL_RUNTIME_NOT_PYTHON_NOT_NODE_NOT_GITHUB_ACTIONS",
+  "source_scope": "SYNTHETIC_AUTHORITY_REGISTRIES_NO_REAL_SOURCE",
+  "risk": "Contract shape only; cannot establish owner authenticity or field/product existence",
+  "result": "PASS",
+  "checks": 23,
+  "passed": 23,
+  "failed": 0,
+  "cases": [
+    {
+      "id": "fixture_positive_shape_only",
+      "expected_state": "SYNTHETIC_CONTRACT_SHAPE_PASS_ONLY",
+      "reason": "NO_REAL_FIELD_OR_N9_ISSUANCE_IMPLIED",
+      "pass": true
+    },
+    {
+      "id": "duplicate_product_as_second_family",
+      "expected_state": "HELD_SOURCE_FREE_CONTRACT",
+      "reason": "DUPLICATE_FIELD_PRODUCT",
+      "pass": true
+    },
+    {
+      "id": "duplicate_family_under_distinct_product",
+      "expected_state": "HELD_SOURCE_FREE_CONTRACT",
+      "reason": "DUPLICATE_SOURCE_FAMILY",
+      "pass": true
+    },
+    {
+      "id": "cross_sample_pseudo_pooling",
+      "expected_state": "HELD_SOURCE_FREE_CONTRACT",
+      "reason": "CROSS_SAMPLE_PSEUDO_POOLING",
+      "pass": true
+    },
+    {
+      "id": "forged_source_root",
+      "expected_state": "HELD_SOURCE_FREE_CONTRACT",
+      "reason": "FORGED_OR_UNBOUND_SOURCE_ROOT",
+      "pass": true
+    },
+    {
+      "id": "missing_issuer",
+      "expected_state": "HELD_SOURCE_FREE_CONTRACT",
+      "reason": "MISSING_AUTHENTIC_PRODUCER_ISSUER",
+      "pass": true
+    },
+    {
+      "id": "missing_ee13_issuer",
+      "expected_state": "HELD_SOURCE_FREE_CONTRACT",
+      "reason": "MISSING_EE13_COMPETENT_ISSUANCE",
+      "pass": true
+    },
+    {
+      "id": "fake_ee13_pair",
+      "expected_state": "HELD_SOURCE_FREE_CONTRACT",
+      "reason": "EE13_PRODUCT_PAIR_NOT_BOUND",
+      "pass": true
+    },
+    {
+      "id": "context_into_institution",
+      "expected_state": "HELD_SOURCE_FREE_CONTRACT",
+      "reason": "SUBJECTIVE_CONTEXT_NOT_OBJECTIVE_FIELD",
+      "pass": true
+    },
+    {
+      "id": "reported_attitude_as_external_fact",
+      "expected_state": "HELD_SOURCE_FREE_CONTRACT",
+      "reason": "SUBJECTIVE_CONTEXT_NOT_OBJECTIVE_FIELD",
+      "pass": true
+    },
+    {
+      "id": "context_into_cause",
+      "expected_state": "HELD_SOURCE_FREE_CONTRACT",
+      "reason": "CLAIM_WIDENING_NOT_ISSUED",
+      "pass": true
+    },
+    {
+      "id": "time_mismatch",
+      "expected_state": "HELD_SOURCE_FREE_CONTRACT",
+      "reason": "WORLD_TIME_PLACE_INCOMPATIBLE",
+      "pass": true
+    },
+    {
+      "id": "place_mismatch",
+      "expected_state": "HELD_SOURCE_FREE_CONTRACT",
+      "reason": "WORLD_TIME_PLACE_INCOMPATIBLE",
+      "pass": true
+    },
+    {
+      "id": "missing_uncertainty",
+      "expected_state": "HELD_SOURCE_FREE_CONTRACT",
+      "reason": "UNCERTAINTY_NOT_CONSERVED",
+      "pass": true
+    },
+    {
+      "id": "missing_n9_consumer",
+      "expected_state": "HELD_SOURCE_FREE_CONTRACT",
+      "reason": "NO_ACTUAL_N9_CONSUMER",
+      "pass": true
+    },
+    {
+      "id": "fake_consumer_selected_ref",
+      "expected_state": "HELD_SOURCE_FREE_CONTRACT",
+      "reason": "N9_CONSUMPTION_IDENTITY_MISMATCH",
+      "pass": true
+    },
+    {
+      "id": "wrong_estimand",
+      "expected_state": "HELD_SOURCE_FREE_CONTRACT",
+      "reason": "UNIT_ESTIMAND_POPULATION_MISMATCH",
+      "pass": true
+    },
+    {
+      "id": "same_cross_source_population",
+      "expected_state": "HELD_SOURCE_FREE_CONTRACT",
+      "reason": "CROSS_FAMILY_UNIVERSE_REIDENTIFICATION",
+      "pass": true
+    },
+    {
+      "id": "permission_removed",
+      "expected_state": "HELD_SOURCE_FREE_CONTRACT",
+      "reason": "MISSING_CONSUMER_USE_PERMISSION",
+      "pass": true
+    },
+    {
+      "id": "ee13_time_not_qualified",
+      "expected_state": "HELD_SOURCE_FREE_CONTRACT",
+      "reason": "EE13_SCOPE_MISMATCH",
+      "pass": true
+    },
+    {
+      "id": "missing_world_output",
+      "expected_state": "HELD_SOURCE_FREE_CONTRACT",
+      "reason": "N9_CONSUMPTION_IDENTITY_MISMATCH",
+      "pass": true
+    },
+    {
+      "id": "actor_wake",
+      "expected_state": "HELD_SOURCE_FREE_CONTRACT",
+      "reason": "ACTOR_OR_MODEL_USE_NOT_GRANTED",
+      "pass": true
+    },
+    {
+      "id": "model_use_wake",
+      "expected_state": "HELD_SOURCE_FREE_CONTRACT",
+      "reason": "ACTOR_OR_MODEL_USE_NOT_GRANTED",
+      "pass": true
+    }
+  ],
+  "missing_real_preimages": [
+    "TWO_INDEPENDENT_REAL_FIELD_PRODUCT_RECEIPTS",
+    "COMPETENT_EE13_SCOPE_ISSUANCE",
+    "AUTHENTIC_N9_OC05_CONSUMPTION_RECEIPT"
+  ],
+  "prohibited_promotions": [
+    "SURVEY_CONTEXT_TO_INSTITUTION",
+    "JOINT_RESPONDENTS_ACROSS_FAMILIES",
+    "SYNTHETIC_PASS_TO_WORLD_CURRENT",
+    "DOCUMENT_RULE_TO_CAUSAL_FACT",
+    "N9_CONTEXT_TO_V3"
+  ]
+}
