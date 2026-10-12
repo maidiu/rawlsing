@@ -793,10 +793,101 @@ def test_no_raw_sav_dta_reads():
 
 
 def test_accepted_owners_a04_a04s_a05_untouched():
+    """Owner-specific integrity (A04TU correction of a self-defeating check).
+
+    The previous form of this test asserted zero ``git diff`` output anywhere
+    under ``rawlsing_next/`` relative to sealed base ``b68de0dd``.  That scope
+    necessarily contains A04T's own two explicitly permitted NEW files, so the
+    assertion could never pass on the committed branch (independent A04TR
+    review: 43 passed / 1 failed, owners exonerated by the diff output
+    itself).  This corrected form checks three separate properties instead:
+
+    (A) every ``rawlsing_next/`` path changed since the sealed base is inside
+        an explicit permitted-change allow-list (the V2 candidate, its test,
+        and the A04TU hostile test); any other changed or added path fails;
+    (B) every protected accepted-owner file is byte-identical to its pinned
+        Git blob (A04 owner, A04S owner, C11, Route B, Batch);
+    (C) no TRACKED file under ``rawlsing_next/`` carries uncommitted
+        worktree modifications (untracked files cannot conceal an edit to a
+        tracked owner, so ``??`` entries are reported but do not fail);
+    (D) the external A05 oracle blob is checked independently on its own
+        branch (it does not exist on this branch, so it is never asserted
+        as a local path).
+    """
     import subprocess as _sp
+    sealed = "b68de0dd35a9885efcb46bcd8ec9cbe41dabf500"
+    # (B) protected accepted owners pinned at the sealed base.  Blobs verified
+    # against A04T's own return and HQ intake; A04 binder 7d8b3902, A04S
+    # contract 08bb75c4, route_b 2385cd32 match those records.
+    protected_blobs = {
+        "rawlsing_next/pre553_original_workload_binder_candidate.py":
+            "7d8b3902c3f8f257637b7c07ad9feb5e096d48e5",
+        "rawlsing_next/tests/test_pre553_original_workload_binder_candidate.py":
+            "6c06a5b013d3713af7d7ba9bf143c3ef7a6245a2",
+        "rawlsing_next/pre553_original_workload_contract_v2_candidate.py":
+            "08bb75c431d3352cb0d17e9a65f7d855b4d35e59",
+        "rawlsing_next/tests/test_pre553_original_workload_contract_v2_candidate.py":
+            "0b9f1addf2b28f2a8e489fe44f1567a137a166f2",
+        "rawlsing_next/pre553_c11_repository.py":
+            "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+        "rawlsing_next/pre553_c11_integrity.py":
+            "7c59aa13a2b7c8e3ab0dc90a1400df645b0b4bbd",
+        "rawlsing_next/pre553_route_b_production.py":
+            "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+        "rawlsing_next/pre553_batch_runner.py":
+            "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+    }
+    # (A) exact diff allow-list: the only rawlsing_next/ paths that may
+    # differ from the sealed base.  No accepted owner is whitelisted here.
+    permitted_changed = frozenset({
+        "rawlsing_next/pre553_original_workload_v2_verifier_candidate.py",
+        "rawlsing_next/tests/test_pre553_original_workload_v2_verifier_candidate.py",
+        "rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py",
+    })
     r = _sp.run(
-        ["git", "diff", "--name-only",
-         "b68de0dd35a9885efcb46bcd8ec9cbe41dabf500", "--", "rawlsing_next/"],
+        ["git", "diff", "--name-only", sealed, "HEAD", "--", "rawlsing_next/"],
         capture_output=True, text=True, cwd=str(REPO_ROOT))
-    assert r.returncode == 0
-    assert r.stdout.strip() == ""
+    assert r.returncode == 0, r.stderr
+    changed = [p for p in r.stdout.split() if p]
+    unexpected = [p for p in changed if p not in permitted_changed]
+    assert unexpected == [], (
+        "paths changed outside the permitted V2-candidate allow-list: "
+        + ", ".join(unexpected))
+    for path, blob in sorted(protected_blobs.items()):
+        q = _sp.run(["git", "rev-parse", f"HEAD:{path}"],
+                    capture_output=True, text=True, cwd=str(REPO_ROOT))
+        assert q.returncode == 0, f"protected owner missing at HEAD: {path}"
+        assert q.stdout.strip() == blob, (
+            f"protected accepted owner mutated: {path} "
+            f"(HEAD {q.stdout.strip()[:12]} != pinned {blob[:12]})")
+    # (C) tracked worktree dirt must not conceal an owner edit.  Untracked
+    # (??) entries are listed for the record but cannot modify a tracked
+    # owner, so they do not fail this check.
+    s = _sp.run(["git", "status", "--porcelain", "--", "rawlsing_next/"],
+                capture_output=True, text=True, cwd=str(REPO_ROOT))
+    assert s.returncode == 0, s.stderr
+    dirty_tracked = [ln for ln in s.stdout.splitlines()
+                     if not ln.startswith("??")]
+    assert dirty_tracked == [], (
+        "uncommitted modifications to tracked rawlsing_next/ files: "
+        + "; ".join(dirty_tracked))
+    # (D) external A05 oracle: independent blob check on its own branch.
+    # The oracle does not exist on this branch, so it is never asserted here
+    # as a local path.  Absence of the A05 worktree is a HOLD, not a pass.
+    a05_root = Path("/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-a05")
+    a05_rel = ("WORKER_RETURNS/PYAT-HQ280-PV3-A05-INDEPENDENT-NODROP-ORACLE-R1"
+               "/repro/a05_oracle.py")
+    if not (a05_root / ".git").exists():
+        pytest.skip("A05 worktree not present on this machine: "
+                    "external A05 oracle blob UNCHECKED (HOLD)")
+    h = _sp.run(["git", "-C", str(a05_root), "rev-parse", "HEAD"],
+                capture_output=True, text=True)
+    assert h.returncode == 0, h.stderr
+    assert h.stdout.strip() == "9491d0296c95ee2942fe80eadc6aa9f54b07c634", (
+        "A05 worktree is not at the accepted oracle commit; "
+        f"found {h.stdout.strip()[:12]}")
+    b = _sp.run(["git", "-C", str(a05_root), "rev-parse", f"HEAD:{a05_rel}"],
+                capture_output=True, text=True)
+    assert b.returncode == 0, b.stderr
+    assert b.stdout.strip() == "00a4cc84d321c3fbace0f4aa09be62dbb31994fc", (
+        "external A05 oracle blob drifted from its accepted identity")
