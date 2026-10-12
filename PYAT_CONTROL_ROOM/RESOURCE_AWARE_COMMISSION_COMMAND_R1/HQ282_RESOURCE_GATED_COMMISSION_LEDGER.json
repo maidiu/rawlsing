@@ -58,16 +58,16 @@
       "note": "Plain technical wording governs P01 reports and launch. Secondary worktree setup still required. No Daybreak or hardware security key required by commission."
     },
     {
-      "id": "P02",
-      "branch": "agent/reviewer-pyat-hq282-p02-c02j-principal-security-hostile-r1",
-      "commit_sha": "dad074579ee705a720fb3cfe9cacb0193d573ffd",
-      "mission": "INDEPENDENT_C02J_PRINCIPAL_HOSTILE",
+      "id": "P02R",
+      "branch": "agent/reviewer-pyat-hq282-p02r-c02j-independent-interface-verification-r1",
+      "commit_sha": "835f22e6c6010fa35f6bd0b2739cd630736ef920",
+      "mission": "INDEPENDENT_C02J_SOURCE_FREE_INTERFACE_VERIFICATION",
       "milestone": "B5_SECURITY",
       "independence_risk": "HIGH_SECURITY_REVIEW",
       "suggested_resource": "SECONDARY_CODEX_SOL_LOW",
       "required_environment": "LOCAL_PYTHON_INDEPENDENT_REVIEW",
       "execution_resource_bound": false,
-      "launch_state": "SEALED_AWAITING_RESOURCE_BINDING__NOT_LAUNCHED",
+      "launch_state": "SEALED_AWAITING_SECONDARY_WORKTREE_AND_USAGE_VERIFICATION",
       "actual_model": null,
       "model_variant": null,
       "machine": null,
@@ -86,7 +86,7 @@
       "real_product_ref": null,
       "real_consumer_ref": null,
       "adoption_ref": null,
-      "reason": "Exact remote commission sealed; machine-to-screenshot mapping confirmed, but local worktree/runtime/current quota and model picker unknown.",
+      "reason": "New user-directed neutral-language review commission replaces old P02 dispatch. Requires separate secondary worktree, existing exact C02J code, Python and measured quota before execution.",
       "commission_scope_specified": true,
       "hard_eligibility_satisfied": false,
       "original_commission_tip_before_precise_model_update": "96dd20555a8f8aa3195fbd47ac8cd25c91171032",
@@ -104,7 +104,12 @@
       "previous_commission_tip_before_machine_mapping": "09d78b8f8523d1004fe9f1f411f31841ff9428d6",
       "machine_preference": "MAC_SECONDARY",
       "primary_codex_reserved_for_full_repo_astra": true,
-      "secondary_codex_provisional_floor_percent": 95
+      "secondary_codex_provisional_floor_percent": 95,
+      "replaces": {
+        "id": "P02",
+        "branch": "agent/reviewer-pyat-hq282-p02-c02j-principal-security-hostile-r1",
+        "commit_sha": "dad074579ee705a720fb3cfe9cacb0193d573ffd"
+      }
     },
     {
       "id": "P03",
@@ -369,5 +374,17 @@
     },
     "current_live_remaining_not_verified": true
   },
-  "resource_law": "PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ282_CODEX_ASTRA_RESERVE_MODEL_AND_SECONDARY_FILE_LAW_R1.md"
+  "resource_law": "PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ282_CODEX_ASTRA_RESERVE_MODEL_AND_SECONDARY_FILE_LAW_R1.md",
+  "superseded_dispatches": [
+    {
+      "id": "P02",
+      "branch": "agent/reviewer-pyat-hq282-p02-c02j-principal-security-hostile-r1",
+      "commit_sha": "dad074579ee705a720fb3cfe9cacb0193d573ffd",
+      "disposition": "PRESERVED_UNCHANGED_SUPERSEDED_FOR_FUTURE_DISPATCH_BY_P02R",
+      "local_session_unknown": true,
+      "replacement_branch": "agent/reviewer-pyat-hq282-p02r-c02j-independent-interface-verification-r1",
+      "replacement_tip": "835f22e6c6010fa35f6bd0b2739cd630736ef920"
+    }
+  ],
+  "note": "Only the P02 routing/commission is replaced. P01 and other P03-P06 are unchanged. Prior P02 local session state was not observed; do not relaunch both or erase any local work."
 }
