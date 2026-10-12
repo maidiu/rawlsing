@@ -1,3 +1,9 @@
+## Most recent Astra PRE-V3 critical-path check — 12 October
+
+[Course correction after all six HQ282 returns](HQ282_ASTRA_PREV3_COURSE_CORRECTION_20261012_R1.md). Prioritize original scientifically issued workload E→actual real P01/B02 consumer, with authentic survey-family structural F6, competent temporal EE12 F7 and B5/G0b selected service in parallel. P03 external institutional records are supplemental, not the survey-family pair needed by the global graph. P04/P06 already have enough source-free demonstration to stop extending them speculatively. Last user screenshot shows 36% five-hour / 88% weekly remaining; the account is not attested, no new Codex or Astra budget granted. Formal readme and HQ grok now point here.
+
+---
+
 ## HQ282 sixth return — P01 integrated result now banked (12 October)
 
 The previous five-return intake remains historical; [P01 completed source-free integrated runtime and consumer intake](HQ282_P01_INTEGRATION_RETURN_INTAKE_20261012_R1.md) is the most recent status. P01 remote `3f91dc22d2eb863bc1d2facccfd33e6c05349503` now has **169 PASS / 6 skipped ordinary tests**, **25 integrated PASS**, a real existing C11/Route B/I03/I05 → durable journal/recovery → synthetic Field Forge consumer chain with identical replay, and a separate-process read-only independent review finding no remaining code blockers **within the supported sourcefree scope**. The reviewer did not freshly execute filesystem SIGKILL recovery; author's writable courts did. **All six HQ282 commission lanes now have pushed returns.** Real original-source `E_pre` custody, all35 source science, source permissions, M2 real production/B5/G0b/V3 remain HELD. No owner/canonical/semantic adoption.
