@@ -101,7 +101,8 @@ The deepest longitudinal mirror is the user's own relational praxis.
 23. `17_FULL_RAWLSING_VOZHD_GROUNDING_INTEGRITY_R1.md` — takeover grounding verification
 24. `100_MINIMAL_WHITE_WHALE_ALPHA_AND_FIDELITY_ESCALATION_CONSTITUTION_R1.md` — bounded alpha/fidelity-frontier strategy; preserve constitutive Rawlsing while deferring maximal white-whale forms
 25. `101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md` — current live-render architecture: whole-person Nadia continuity, objective observable occurrence before user phenomenalization, hard epistemic membrane, binding emitted surface, and normal two-model-call target
-26. open scoped investigations in `dockets/`
+26. `102_BINDING_SURFACE_TWO_CALL_DEVELOPMENT_BANKING_INTEGRITY_R1.md` — integrity receipt proving the recent renderer / phenomenal-segregation / binding-surface developments are serialized and routed
+27. open scoped investigations in `dockets/`
 
 ## 4. Anti-sprawl law
 
