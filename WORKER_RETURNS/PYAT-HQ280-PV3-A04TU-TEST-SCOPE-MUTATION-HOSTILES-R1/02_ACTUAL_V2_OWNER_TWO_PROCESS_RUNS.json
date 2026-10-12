@@ -1,0 +1,90 @@
+{
+  "schema": "PYAT_HQ280_PV3_A04TU_ACTUAL_V2_OWNER_TWO_PROCESS_RUNS@1.0.0",
+  "sealed_startup_sha": "ff859444355724658bf6b8b00a3ae3354abe0c9f",
+  "branch": "agent/rabochii-pyat-hq280-pv3-a04tu-test-scope-mutation-hostiles-r1",
+  "governing_authority": "HQD-2026-10-10-280",
+  "host": "macOS 13.7.8 x86_64, secondary Mac, Python 3.11.3",
+  "venv": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/.venv_a04tu",
+    "placement": "OUTSIDE the worktree (tracked-dirt coupling: an in-worktree venv breaks clean-tree checks)",
+    "system_python_modified": false,
+    "install_commands": [
+      "python3 -m venv /Users/matthewsmith/Desktop/Rawlsing_Worktrees/.venv_a04tu",
+      "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/.venv_a04tu/bin/python -m pip install pytest",
+      "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/.venv_a04tu/bin/python -m pip install pandas pyarrow"
+    ],
+    "pip_freeze": [
+      "iniconfig==2.3.1",
+      "numpy==2.4.6",
+      "packaging==26.3",
+      "pandas==3.0.6",
+      "pluggy==1.6.0",
+      "pyarrow==26.0.0",
+      "Pygments==2.21.0",
+      "pytest==9.1.1",
+      "python-dateutil==2.9.0.post0",
+      "six==1.17.0"
+    ]
+  },
+  "chain": "real source-free C11 -> Route B/I03/I05 -> Batch through the A04S v2 candidate (produce phase, full repo imports allowed); verification in a SEPARATE OS process with the v2-candidate import blocked (blocker proved active in every verdict: candidate_import_blocked true)",
+  "runs": [
+    {
+      "id": "RUN-BASELINE",
+      "command": ".venv_a04tu/bin/python -m pytest rawlsing_next/tests/test_pre553_original_workload_v2_verifier_candidate.py -q",
+      "tree_state": "sealed startup ff85944, unmodified",
+      "result": "43 passed, 1 failed",
+      "wall_s": 25.92,
+      "user_cpu_s": 23.50,
+      "sys_cpu_s": 1.87,
+      "peak_rss_bytes": 53686272,
+      "failing_test": "test_accepted_owners_a04_a04s_a05_untouched (the self-referential defect; reproduces A04TR 43/44)",
+      "log": "repro/logs/01_baseline_43of44.txt"
+    },
+    {
+      "id": "RUN-GATE1-FIXED",
+      "command": ".venv_a04tu/bin/python -m pytest rawlsing_next/tests/test_pre553_original_workload_v2_verifier_candidate.py -q",
+      "tree_state": "commit 574ecf697 (Gate 1 test fix + Gate 2 hostile file), committed clean tree",
+      "result": "44 passed",
+      "exit_code": 0,
+      "wall_s": 24.71,
+      "user_cpu_s": 22.68,
+      "sys_cpu_s": 1.73,
+      "peak_rss_bytes": 54308864,
+      "inherited_suites": "A04S 26 (here), A04 41 (hq280-a04 worktree), A05 18 (hq280-a05 worktree), owner spot suites (here) - all executed, zero skips",
+      "claim_basis": "OBSERVED - 44/44 reported only because this run shows 44 passed",
+      "log": "repro/logs/02_full_v2_suite_after_fix.txt"
+    },
+    {
+      "id": "RUN-BOTH-SUITES",
+      "command": ".venv_a04tu/bin/python -m pytest rawlsing_next/tests/test_pre553_original_workload_v2_verifier_candidate.py rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py -q",
+      "tree_state": "commit 574ecf697, committed clean tree",
+      "result": "73 passed (44 + 29)",
+      "exit_code": 0,
+      "wall_s": 39.64,
+      "user_cpu_s": 35.90,
+      "sys_cpu_s": 3.35,
+      "peak_rss_bytes": 55095296,
+      "log": "repro/logs/03_both_suites_clean_tree.txt"
+    },
+    {
+      "id": "RUN-HOSTILES-ONLY",
+      "command": ".venv_a04tu/bin/python -m pytest rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py -q",
+      "result": "29 passed",
+      "wall_s": 12.57,
+      "note": "pre-commit run; file committed unchanged afterwards (blob aa918ea7895cf516986f191b33f17072cfad07e8)"
+    }
+  ],
+  "positive_control_measurement": {
+    "c11_release": "recomputed per run (source-free synthetic scope)",
+    "batch_units": 6,
+    "expected_keys": 6,
+    "visible_non_runnable": 4,
+    "holds_on_pass": ["EXTERNAL_CUSTODIAN_ISSUER_HOLD", "REAL_CONSUMER_MODELLED_NOT_EXECUTED"],
+    "actual_consumer_court": "HOLD"
+  },
+  "unmeasured_as_null": {
+    "real_source_execution": null,
+    "all_35_wave_cost": null,
+    "reason": "no source-read grant; zero .sav/.dta in worktree; nothing estimated"
+  }
+}

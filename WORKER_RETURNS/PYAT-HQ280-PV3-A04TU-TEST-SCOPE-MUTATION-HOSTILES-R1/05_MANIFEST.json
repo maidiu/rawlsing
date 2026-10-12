@@ -1,0 +1,20 @@
+{
+  "schema": "PYAT_HQ280_PV3_A04TU_MANIFEST@1.0.0",
+  "sealed_startup_sha": "ff859444355724658bf6b8b00a3ae3354abe0c9f",
+  "branch": "agent/rabochii-pyat-hq280-pv3-a04tu-test-scope-mutation-hostiles-r1",
+  "governing_authority": "HQD-2026-10-10-280",
+  "raw_source_executed": false,
+  "sensitive_artifacts": "NONE",
+  "code_commit_574ecf697_changes": "two test files only (Gate 1 fix + Gate 2 hostile file); verifier module 996c8e90 unchanged; no owner modified",
+  "files": [
+    {"path": "00_RETURN.md", "sha256": "f1b5c599992d5e11b60e389f0f1898936143cfac8e59a5382d8ecbc4b8072e80", "bytes": 5111},
+    {"path": "01_EXACT_OWNER_INTEGRITY_DIFF_AND_TEST_FIX.md", "sha256": "8a17dad0275175307384b8fbe63d4e67f8c4cfa763ded18f3e5fb5b3c4271854", "bytes": 4397},
+    {"path": "02_ACTUAL_V2_OWNER_TWO_PROCESS_RUNS.json", "sha256": "0c9b71bc312dc3a6a9f5925d9f6eda9ba47d866077b0529a46799630d313a2fa", "bytes": 4170},
+    {"path": "03_FRESH_MUTATED_INPUT_HOSTILES.json", "sha256": "31329be625bd3f05245e55fba0357de639990e439943a80e186829a15299e0f6", "bytes": 9746},
+    {"path": "04_EXACT_ACCEPTANCE_AND_PROVENANCE_CONSUMER_ISSUER_HOLDS.md", "sha256": "2bebc0bbbee26c954b017085bb9a8de554dec25210ab4344acf4d3a174d98b4c", "bytes": 4858},
+    {"path": "repro/a04tu_commands.sh", "sha256": "8733c16d347931e63aa282fe4c0fb68e70597d0bc0354fb70705e9e83242ab84", "bytes": 774},
+    {"path": "repro/logs/01_baseline_43of44.txt", "sha256": "03547e4993e612271393de7bf46ff2347914e9a715fc597025478bab97c6969c", "bytes": 1965},
+    {"path": "repro/logs/02_full_v2_suite_after_fix.txt", "sha256": "48e6d03bb335a29cde0084a47558c5f0da90819f6bb1612e8c9a4adf62edfe58", "bytes": 877},
+    {"path": "repro/logs/03_both_suites_clean_tree.txt", "sha256": "ea22581ae775cb1fab61dc659746207d94fba91fe6ae7a968baff4731c23bd1f", "bytes": 957}
+  ]
+}
