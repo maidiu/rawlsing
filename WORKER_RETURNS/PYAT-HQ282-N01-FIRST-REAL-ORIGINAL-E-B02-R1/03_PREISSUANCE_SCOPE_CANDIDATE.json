@@ -1,0 +1,136 @@
+{
+  "schema": "PYAT_HQ282_N01_PREISSUANCE_GT2_SCOPE@R1",
+  "status": "DOCUMENTARY_PREISSUANCE_CANDIDATE_NOT_E_PRE",
+  "issuer_adoption": "NONE",
+  "sensitive_row_data_included": false,
+  "source": {
+    "family": "Afrobarometer",
+    "wave": "R5",
+    "path": "Data/Afro Barometer Round 5.sav",
+    "sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+    "original_country_waves": [
+      "BFO",
+      "BOT",
+      "CVE",
+      "KEN",
+      "LES",
+      "MAU",
+      "MLW",
+      "MOZ",
+      "NAM",
+      "SAF",
+      "UGA"
+    ],
+    "original_forms_exhaustive": false,
+    "source_rows_inherited": 51587,
+    "risk_name": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1",
+    "coexposure_members_inherited": 19210,
+    "risk_member_set_sha256": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+    "exact_release_ref": null
+  },
+  "native_items": [
+    {
+      "item": "Q86A",
+      "meaning": "respondent opinion: birth in country, one citizen and one noncitizen parent",
+      "states": {
+        "0": "SUBSTANTIVE_NO",
+        "1": "SUBSTANTIVE_YES",
+        "9": "DK",
+        "997": "NOT_ASKED",
+        "998": "REFUSAL",
+        "-1": "MISSING"
+      },
+      "qimpl": "question_impl.phase0.67f036c0efb7fb98ff4a",
+      "original_eleven_country_language_forms_issued": false
+    },
+    {
+      "item": "Q86B",
+      "meaning": "respondent opinion: birth in country, two noncitizen parents",
+      "states": {
+        "0": "SUBSTANTIVE_NO",
+        "1": "SUBSTANTIVE_YES",
+        "9": "DK",
+        "997": "NOT_ASKED",
+        "998": "REFUSAL",
+        "-1": "MISSING"
+      },
+      "qimpl": "question_impl.phase0.2fb3a62609dad4c1306d",
+      "original_eleven_country_language_forms_issued": false
+    }
+  ],
+  "respondent": "same selected adult in frozen GT12 governed row; unique country_native|RESPNO required",
+  "native_risk": "19,210 frozen common coexposure; complete-case sample/numerators not issued here",
+  "estimand": "RAW exact source-sample count support only, not weighted population",
+  "confidence": "PREVIOUS_BOUNDED_GT12_SOURCE_CONTRACT_NOT_NEW_EXECUTION",
+  "known_frozen_operations": [
+    {
+      "id": "GT1_R5_Q86A_RAW_UNARY_EXACT_RISK_SET@1",
+      "original_roles": [
+        "Q86A"
+      ],
+      "class": "UNARY_DISTRIBUTION",
+      "current_p01_ff_consumer": "UNSUPPORTED_IN_THIS_P01_CONSUMER",
+      "eligible_in_independent_U": "MUST_PRESERVE",
+      "new_E_key": null
+    },
+    {
+      "id": "GT2_R5_Q86A_X_Q86B_RAW_JOINT_EXACT_RISK_SET@1",
+      "original_roles": [
+        "Q86B_CONDITIONER",
+        "Q86A_TARGET"
+      ],
+      "class": "PAIR_RESPONSE_COTRAVEL",
+      "measure": "RAW",
+      "target_order": [
+        "Q86B",
+        "Q86A"
+      ],
+      "consumer": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+      "new_E_key": null
+    }
+  ],
+  "remaining_original_item_and_operation_eligibility": "UNKNOWN_NOT_ZERO",
+  "source_intrinsic_na_issued": false,
+  "candidate_E_pre": {
+    "original_U_roster_signed": null,
+    "operation_closure_signed": null,
+    "independent_custodian_identity": null,
+    "signature": null,
+    "independent_timing_proof": null,
+    "immutable_digest": null,
+    "expected_work_set": null,
+    "expected_count": null,
+    "denied_count": null,
+    "held_count": null,
+    "intrinsic_na_count": null,
+    "real_owner_key_map": null,
+    "actual_consumer_receipt": null
+  },
+  "source_access": {
+    "fresh_R5_read_authorized": false,
+    "browser_survey_bytes_available": false,
+    "custodian_regrant_required": true
+  },
+  "execution": {
+    "P01_candidate_commit": "3f91dc22d2eb863bc1d2facccfd33e6c05349503",
+    "P01_frozen_input": "SOURCE_FREE_ONLY",
+    "real_source_execution": "NOT_RUN",
+    "GT2_consumer_materialized_in_N01": false,
+    "missing_permission": [
+      "O1_INSTRUMENT_CLOSURE",
+      "O3_OPERATION_ISSUER",
+      "O4_INDEPENDENT_E_CUSTODY",
+      "O5_LOSSLESS_V2_BINDING",
+      "O6_SOURCE_USE_REAL_EXECUTION"
+    ]
+  },
+  "scope35": {
+    "waves": 35,
+    "families": 9,
+    "requirements_cells": 1890,
+    "inherited_task_classes": 151,
+    "normalized_task_classes": 101,
+    "baseline": "P05 06_ORIGINAL_WARRANTS_AND_ALL35_SCOPE.json; WHOLE_MACHINE_COMPLETION_R1/ESTATE_35X_REQUIREMENTS_MATRIX.json",
+    "all35_independent_original_E": "UNKNOWN_NOT_ZERO"
+  }
+}
