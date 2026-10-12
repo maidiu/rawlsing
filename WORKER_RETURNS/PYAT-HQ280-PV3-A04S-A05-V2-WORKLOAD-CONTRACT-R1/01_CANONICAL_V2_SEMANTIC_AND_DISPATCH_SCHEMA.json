@@ -1,0 +1,135 @@
+{
+  "anti_equivalence": "A04 expected_work_key != v2 expected_work_key by construction (different kind tags and preimages); matching schema tokens are not proof of identity",
+  "contract": "PYAT_HQ280_A04S_CANONICAL_V2_WORKLOAD_CONTRACT@1.0.0",
+  "custodian": {
+    "established": "BEFORE_EXECUTION",
+    "fields": [
+      "custodian_id",
+      "frozen_frontier_digest",
+      "expectation_preimage_hash",
+      "issuer_signature",
+      "custodian_timestamp",
+      "scope_version"
+    ]
+  },
+  "dispatch_classes": [
+    "I03_UNARY_OR_JOINT_QUERY",
+    "I05_BOUNDED_DISCOVERY"
+  ],
+  "expected_states": [
+    "RUNNABLE",
+    "HELD",
+    "DENIED",
+    "SOURCE_NONAPPLICABLE"
+  ],
+  "identity_kinds": [
+    {
+      "inputs": [
+        "source",
+        "wave",
+        "item",
+        "form",
+        "slot",
+        "version"
+      ],
+      "kind": "V2_DOCUMENTARY_ITEM"
+    },
+    {
+      "inputs": [
+        "semantic_op_class",
+        "roles",
+        "target",
+        "condition_order",
+        "measure_kind",
+        "version"
+      ],
+      "kind": "V2_SEMANTIC_OPERATION"
+    },
+    {
+      "inputs": [
+        "dispatch_class",
+        "roles",
+        "target",
+        "condition_order",
+        "measure_kind",
+        "version"
+      ],
+      "kind": "V2_DISPATCH_OPERATION"
+    },
+    {
+      "excludes": [
+        "consumer"
+      ],
+      "inputs": [
+        "item_key",
+        "semantic_operation_key",
+        "dispatch_operation_key",
+        "source_identity",
+        "authority_ref",
+        "risk_identity",
+        "topology_identity",
+        "version"
+      ],
+      "kind": "V2_EXPECTED_WORK"
+    },
+    {
+      "inputs": [
+        "expected_work_key",
+        "consumer",
+        "version"
+      ],
+      "kind": "V2_CONSUMER_OBLIGATION"
+    },
+    {
+      "inputs": [
+        "expected_work_key",
+        "attempt_index",
+        "version"
+      ],
+      "kind": "V2_EXECUTION_ATTEMPT"
+    },
+    {
+      "inputs": [
+        "expected_work_key",
+        "result_type",
+        "value",
+        "version"
+      ],
+      "kind": "V2_OUTPUT_IDENTITY"
+    }
+  ],
+  "issuer": {
+    "fields": [
+      "issuer_id",
+      "issuer_authority_ref",
+      "issuer_signature",
+      "issuance_timestamp",
+      "scope_version"
+    ]
+  },
+  "measure_kinds": [
+    "RAW",
+    "GOVERNED_WEIGHTED"
+  ],
+  "migration_from_a04": {
+    "a04_keys_not_coerced": "v2 keys are new hashes; A04 keys never reinterpreted",
+    "condition_order_preserved_short_names": true,
+    "consumer_removed_from_expected_key": true,
+    "measure_kind_preserved": true,
+    "semantic_op_class_new": "A04 op_class was the owner dispatch class; v2 separates semantic from dispatch"
+  },
+  "schema": "HQ280_PV3_A04S_CANONICAL_V2_SEMANTIC_AND_DISPATCH@1.0.0",
+  "semantic_operation_classes": [
+    "UNARY_DISTRIBUTION",
+    "PAIR_RESPONSE_COTRAVEL",
+    "NONSCALAR_TOPOLOGY_PRESERVATION",
+    "BOUNDED_DISCOVERY"
+  ],
+  "semantic_to_dispatch": {
+    "BOUNDED_DISCOVERY": "I05_BOUNDED_DISCOVERY",
+    "NONSCALAR_TOPOLOGY_PRESERVATION": "I03_UNARY_OR_JOINT_QUERY",
+    "PAIR_RESPONSE_COTRAVEL": "I03_UNARY_OR_JOINT_QUERY",
+    "UNARY_DISTRIBUTION": "I03_UNARY_OR_JOINT_QUERY"
+  },
+  "version": "HQ280_PV3_A04S_CANONICAL_V2@1.0.0"
+}

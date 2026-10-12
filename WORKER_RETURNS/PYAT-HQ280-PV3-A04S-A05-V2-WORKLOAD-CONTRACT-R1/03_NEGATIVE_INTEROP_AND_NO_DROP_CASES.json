@@ -1,0 +1,287 @@
+{
+  "all_cases_actually_executed": true,
+  "authorizing": false,
+  "commission_coverage": {
+    "altered_version": "H9",
+    "conditioning_substitutions": "H7",
+    "duplicate_semantic_job": "H14, H15",
+    "extra_jobs": "H5, H14-H17",
+    "missing_consumers": "H12",
+    "omitted_B_J2": "H1, H3, H4",
+    "own_dk_joint": "H8",
+    "post_result_laundering": "H11a (must PASS) + H11b (must FAIL)",
+    "source_identity": "H10",
+    "wrong_keys": "H6"
+  },
+  "decisive_evidence": {
+    "claim": "A produced manifest cannot certify itself as the independent expectation.",
+    "conclusion": "Self-reconciliation hid 4 omissions; frozen-universe reconciliation exposed them.",
+    "frozen_universe": {
+      "ok": false,
+      "omitted": 4
+    },
+    "same_execution": "truncated submission executed once, reconciled two ways",
+    "self_certified": {
+      "ok": true,
+      "omitted_visible": 0
+    }
+  },
+  "reproduce": "PYTHONPATH=. python3 repro/a04s_evidence_recorder.py",
+  "results": [
+    {
+      "case": "P0-honest-v2-submission",
+      "expected": "PASS",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [],
+      "observed_ok": true,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H1-a-only-while-a-and-b-expected",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "EXPECTED_SET_OUTPUT_DERIVED"
+      ],
+      "observed_ok": false,
+      "omitted_count": 4,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H3-missing-j2-joint",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "EXPECTED_SET_OUTPUT_DERIVED"
+      ],
+      "observed_ok": false,
+      "omitted_count": 1,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H4-missing-b-witness",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "EXPECTED_SET_OUTPUT_DERIVED"
+      ],
+      "observed_ok": false,
+      "omitted_count": 4,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H5-unauthorized-extra-work",
+      "expected": "FAIL",
+      "extra_count": 1,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_SET_OUTPUT_DERIVED",
+        "REQUIRED_CONSUMER_OMITTED",
+        "UNAUTHORIZED_EXTRA_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H6-same-count-different-keys",
+      "expected": "FAIL",
+      "extra_count": 1,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "EXPECTED_SET_OUTPUT_DERIVED",
+        "REQUIRED_CONSUMER_OMITTED",
+        "UNAUTHORIZED_EXTRA_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 1,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H7-condition-order-substitution",
+      "expected": "FAIL",
+      "extra_count": 1,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "EXPECTED_SET_OUTPUT_DERIVED",
+        "REQUIRED_CONSUMER_OMITTED",
+        "UNAUTHORIZED_EXTRA_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 1,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H8-own-dk-cotopic-fake-joint",
+      "expected": "FAIL",
+      "extra_count": 1,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "CANDIDATE_OWN_DK_JOINT",
+        "EXPECTED_OPERATION_OMITTED",
+        "EXPECTED_SET_OUTPUT_DERIVED",
+        "REQUIRED_CONSUMER_OMITTED",
+        "UNAUTHORIZED_EXTRA_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 1,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H9-altered-document-version",
+      "expected": "FAIL",
+      "extra_count": 1,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "EXPECTED_SET_OUTPUT_DERIVED",
+        "REQUIRED_CONSUMER_OMITTED",
+        "UNAUTHORIZED_EXTRA_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 1,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H10-source-identity-mismatch",
+      "expected": "FAIL",
+      "extra_count": 1,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "EXPECTED_SET_OUTPUT_DERIVED",
+        "REQUIRED_CONSUMER_OMITTED",
+        "SOURCE_IDENTITY_MISMATCH",
+        "UNAUTHORIZED_EXTRA_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 1,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H11a-post-result-laundering-self-certifies",
+      "expected": "PASS",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [],
+      "observed_ok": true,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H11b-post-result-laundering-vs-frozen",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "EXPECTED_SET_OUTPUT_DERIVED"
+      ],
+      "observed_ok": false,
+      "omitted_count": 4,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H12-required-consumer-omitted",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "REQUIRED_CONSUMER_OMITTED"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H13-held-obligations-invisible",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "HELD_OR_DENIED_WORK_NOT_VISIBLE"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H14-duplicate-semantic-job",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "BIND_TIME_REFUSAL"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H15-multiplicity-unjustified",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "BIND_TIME_REFUSAL"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H16-undeclared-authority",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "BIND_TIME_REFUSAL"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H17-missing-i05",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "BIND_TIME_REFUSAL"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "P1-stable-reorder",
+      "expected": "PASS",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [],
+      "observed_ok": true,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    }
+  ],
+  "schema": "HQ280_PV3_A04S_NEGATIVE_INTEROP_AND_NO_DROP_CASES@1.0.0",
+  "scope": "SOURCE_FREE_DEVELOPMENT_ONLY",
+  "summary": {
+    "case_count": 19,
+    "must_fail": 16,
+    "must_fail_detected": 16,
+    "must_pass": 3,
+    "must_pass_passed": 3
+  },
+  "terminal": "HQ280_PV3_A04S_SOURCEFREE_V2_EXPECTATION_BINDER_ORACLE_ACTUAL_JOIN_RETURNED_OR_EXACT_HOLD__NONISSUING__GITHUB_PUSHED"
+}

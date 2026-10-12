@@ -1,0 +1,313 @@
+{
+  "authorizing": false,
+  "commands": {
+    "a04_suite": "41 passed (hq280-a04 worktree)",
+    "a05_oracle": "18/18 all_expectations_met (hq280-a05 worktree)",
+    "recorder": "PYTHONPATH=. python3 repro/a04s_evidence_recorder.py",
+    "v2_result": "26 passed",
+    "v2_suite": "python3 -m pytest rawlsing_next/tests/test_pre553_original_workload_contract_v2_candidate.py -q",
+    "widest_result": "103 passed",
+    "widest_targeted": "python3 -m pytest <v2> <route_b> <batch_runner> <discovery_exact> <empirical_query> <carrier_execution> -q"
+  },
+  "custodian": {
+    "custodian_id": "A04S-INDEPENDENT-CUSTODIAN",
+    "custodian_timestamp": "2026-10-11T00:00:00Z",
+    "expectation_preimage_hash": "6d1fecf571d89b2f5fa9b865bf63ca5e049e60ed77e9f13bf467f780e2593182",
+    "frozen_frontier_digest": "6064e859ad95ea06040b1bfc45006236afe33f5c535872f36ea89156495c39e7",
+    "issuer_signature": "452d7b731594487d2c32e094d844866d44903088d9ca254a620682e035baef1d",
+    "scope_version": "HQ280_PV3_A04S_CANONICAL_V2@1.0.0"
+  },
+  "declared_expected_work_preimage": [
+    {
+      "consumer_obligation_key": "eddceb903785c354f62fe4205e50ccc21231b51637fd3b7db9c4a95ec0253105",
+      "dispatch_class": "I03_UNARY_OR_JOINT_QUERY",
+      "expected_work_key": "4a9def9a45eff5df5d9ac567fddf8bef8f781af9c0610178512b56e63aa3d22e",
+      "hold_reason": null,
+      "item": "A",
+      "measure_kind": "RAW",
+      "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+      "semantic_op_class": "UNARY_DISTRIBUTION",
+      "state": "RUNNABLE",
+      "target": "X"
+    },
+    {
+      "consumer_obligation_key": "35578094222589ad5ad7b920a2303982b2f0d4a10bdd5012ce8f477d331323e5",
+      "dispatch_class": "I03_UNARY_OR_JOINT_QUERY",
+      "expected_work_key": "c79fbfd3f50a1167921d87ba812f504d2ee986f0fe5afdf1a50f9d79d1309468",
+      "hold_reason": null,
+      "item": "B",
+      "measure_kind": "RAW",
+      "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+      "semantic_op_class": "UNARY_DISTRIBUTION",
+      "state": "RUNNABLE",
+      "target": "Y"
+    },
+    {
+      "consumer_obligation_key": "7f910c8f99127c3ab462ac160c935930b556fbe5b1d16f58399297cd3333f625",
+      "dispatch_class": "I03_UNARY_OR_JOINT_QUERY",
+      "expected_work_key": "d474787bb3a3e0ccd5a725b094835a228920958be4996e3876925a99acb98ce5",
+      "hold_reason": null,
+      "item": "B",
+      "measure_kind": "GOVERNED_WEIGHTED",
+      "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+      "semantic_op_class": "UNARY_DISTRIBUTION",
+      "state": "RUNNABLE",
+      "target": "Y"
+    },
+    {
+      "consumer_obligation_key": "96d5e34c806e6b1faee99f0354ca23910280e25a203bc154e924e17923756845",
+      "dispatch_class": "I03_UNARY_OR_JOINT_QUERY",
+      "expected_work_key": "2194f81220a72b3adfe3719d5ea0d3512c4d31aa54b6537b378a78c35e219150",
+      "hold_reason": null,
+      "item": "B",
+      "measure_kind": "RAW",
+      "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+      "semantic_op_class": "UNARY_DISTRIBUTION",
+      "state": "RUNNABLE",
+      "target": "Y"
+    },
+    {
+      "consumer_obligation_key": "4c6e9de55f28617554dd923be36440dfa41fadcdc6ebfe881e8fccacecdf6f36",
+      "dispatch_class": "I03_UNARY_OR_JOINT_QUERY",
+      "expected_work_key": "d74d1c6f90811e0f712b91845c79312a2a35fc34498ba88c1e7e173bb6bdf25a",
+      "hold_reason": null,
+      "item": "B",
+      "measure_kind": "RAW",
+      "required_consumer": "FIELD_FORGE_CONDITIONAL_SUPPORT",
+      "semantic_op_class": "PAIR_RESPONSE_COTRAVEL",
+      "state": "RUNNABLE",
+      "target": "J2"
+    },
+    {
+      "consumer_obligation_key": "0bc234610a0ba46c04770ace21eea56f8351befef79aaf24ff5a9a1d2d966f6b",
+      "dispatch_class": "I05_BOUNDED_DISCOVERY",
+      "expected_work_key": "ac616dbde377da44ab267a8ac0b7fbdb0e7c235152215d176e126d9d787ddb95",
+      "hold_reason": null,
+      "item": "B",
+      "measure_kind": "RAW",
+      "required_consumer": "LEARNED_EMPIRICAL_ADJUDICATION",
+      "semantic_op_class": "BOUNDED_DISCOVERY",
+      "state": "RUNNABLE",
+      "target": "D1"
+    },
+    {
+      "consumer_obligation_key": "a883028bf2e7bc2062d48e09e72c1ecc1dab34a3a170fe1a20f59ddc7551b30a",
+      "dispatch_class": "I03_UNARY_OR_JOINT_QUERY",
+      "expected_work_key": "5b66a50ac42ca4b9c3f71532c2d54f67192baab63068086a01dcc21561dda303",
+      "hold_reason": "ORDERED_SEQUENCE_COLLAPSE_NOT_YET_AUTHORIZED",
+      "item": "O",
+      "measure_kind": "RAW",
+      "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+      "semantic_op_class": "UNARY_DISTRIBUTION",
+      "state": "HELD",
+      "target": "O"
+    },
+    {
+      "consumer_obligation_key": "21946fb723b63239af3586c521026a0ea37fe48130313015f5eb2be495f85f5c",
+      "dispatch_class": "I03_UNARY_OR_JOINT_QUERY",
+      "expected_work_key": "694377350c1b03cb6632519fbd8e488a66ad06c42bf981a0002f87d762016d18",
+      "hold_reason": "REPEATED_EVENT_JOIN_NOT_YET_AUTHORIZED",
+      "item": "R",
+      "measure_kind": "RAW",
+      "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+      "semantic_op_class": "UNARY_DISTRIBUTION",
+      "state": "HELD",
+      "target": "R"
+    },
+    {
+      "consumer_obligation_key": "b663fb39ba00ae64ac7a0e00b6b0213ed29a3c8732b64b9011e234cd8ae257fd",
+      "dispatch_class": "I03_UNARY_OR_JOINT_QUERY",
+      "expected_work_key": "1345a35d985a546c7f8e683dd5758ee1c7bfda5ff483e2b4923bc04dbab50ae7",
+      "hold_reason": "EXPLICIT_FAIL_CLOSED_SOURCE_GAP",
+      "item": "V",
+      "measure_kind": "RAW",
+      "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+      "semantic_op_class": "UNARY_DISTRIBUTION",
+      "state": "DENIED",
+      "target": "V"
+    },
+    {
+      "consumer_obligation_key": "c8d99988a860f9f8c2cb7cfc87b3b9f1c4b6be91d925294afed21a784cec1479",
+      "dispatch_class": "I03_UNARY_OR_JOINT_QUERY",
+      "expected_work_key": "a8a89de3661ac9fe1f64169dd111def4d28095e7a7d04bbaeb1d4140994dd6e3",
+      "hold_reason": "NO_COADMINISTERED_TARGET_IN_THIS_SLICE",
+      "item": "U",
+      "measure_kind": "RAW",
+      "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+      "semantic_op_class": "UNARY_DISTRIBUTION",
+      "state": "SOURCE_NONAPPLICABLE",
+      "target": "U"
+    }
+  ],
+  "dispatch_bindings": [
+    {
+      "dispatch_class": "I03_UNARY_OR_JOINT_QUERY",
+      "expected_work_key": "2194f81220a72b3adfe3719d5ea0d3512c4d31aa54b6537b378a78c35e219150",
+      "job_ref": {
+        "content_hash": "88ac67851a511a255ce7f80d19473802ba3437e8f550011b7f4ed5c266ed012b",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:88ac67851a511a255ce7f80d19473802ba3437e8f550011b7f4ed5c266ed012b"
+      }
+    },
+    {
+      "dispatch_class": "I03_UNARY_OR_JOINT_QUERY",
+      "expected_work_key": "4a9def9a45eff5df5d9ac567fddf8bef8f781af9c0610178512b56e63aa3d22e",
+      "job_ref": {
+        "content_hash": "be33be5383dd61ef748199d1742f80cdaea51aea9780265c4d7c4b9219c91b5d",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:be33be5383dd61ef748199d1742f80cdaea51aea9780265c4d7c4b9219c91b5d"
+      }
+    },
+    {
+      "dispatch_class": "I05_BOUNDED_DISCOVERY",
+      "expected_work_key": "ac616dbde377da44ab267a8ac0b7fbdb0e7c235152215d176e126d9d787ddb95",
+      "job_ref": {
+        "content_hash": "f47eb3d106a22b8ae1ad2760269cd1045fcc3ed73422d8ed083900e4ccfd8428",
+        "kind": "DiscoveryAuthority@1.0.0",
+        "object_id": "urn:rawlsing:pre553:DiscoveryAuthority:sha256:f47eb3d106a22b8ae1ad2760269cd1045fcc3ed73422d8ed083900e4ccfd8428"
+      }
+    },
+    {
+      "dispatch_class": "I03_UNARY_OR_JOINT_QUERY",
+      "expected_work_key": "c79fbfd3f50a1167921d87ba812f504d2ee986f0fe5afdf1a50f9d79d1309468",
+      "job_ref": {
+        "content_hash": "0b33c556943fc9a7999f727e92ecc700baf0abfeb8d46cb7c1f26f64df2882f7",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:0b33c556943fc9a7999f727e92ecc700baf0abfeb8d46cb7c1f26f64df2882f7"
+      }
+    },
+    {
+      "dispatch_class": "I03_UNARY_OR_JOINT_QUERY",
+      "expected_work_key": "d474787bb3a3e0ccd5a725b094835a228920958be4996e3876925a99acb98ce5",
+      "job_ref": {
+        "content_hash": "8261b2a5d8915bf6fd338a435c0ebe6359d4bec0a8c0255dbcffd3045bb9f4da",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:8261b2a5d8915bf6fd338a435c0ebe6359d4bec0a8c0255dbcffd3045bb9f4da"
+      }
+    },
+    {
+      "dispatch_class": "I03_UNARY_OR_JOINT_QUERY",
+      "expected_work_key": "d74d1c6f90811e0f712b91845c79312a2a35fc34498ba88c1e7e173bb6bdf25a",
+      "job_ref": {
+        "content_hash": "9427bb61fd767c3c2559b226fd6e497d7e2a7e6818dbf372a1aa23edbcdf5b72",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:9427bb61fd767c3c2559b226fd6e497d7e2a7e6818dbf372a1aa23edbcdf5b72"
+      }
+    }
+  ],
+  "held_frontier_visible": [
+    {
+      "consumer_obligation_key": "a883028bf2e7bc2062d48e09e72c1ecc1dab34a3a170fe1a20f59ddc7551b30a",
+      "dispatch_class": "I03_UNARY_OR_JOINT_QUERY",
+      "expected_work_key": "5b66a50ac42ca4b9c3f71532c2d54f67192baab63068086a01dcc21561dda303",
+      "hold_reason": "ORDERED_SEQUENCE_COLLAPSE_NOT_YET_AUTHORIZED",
+      "item": "O",
+      "measure_kind": "RAW",
+      "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+      "semantic_op_class": "UNARY_DISTRIBUTION",
+      "state": "HELD",
+      "target": "O"
+    },
+    {
+      "consumer_obligation_key": "21946fb723b63239af3586c521026a0ea37fe48130313015f5eb2be495f85f5c",
+      "dispatch_class": "I03_UNARY_OR_JOINT_QUERY",
+      "expected_work_key": "694377350c1b03cb6632519fbd8e488a66ad06c42bf981a0002f87d762016d18",
+      "hold_reason": "REPEATED_EVENT_JOIN_NOT_YET_AUTHORIZED",
+      "item": "R",
+      "measure_kind": "RAW",
+      "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+      "semantic_op_class": "UNARY_DISTRIBUTION",
+      "state": "HELD",
+      "target": "R"
+    },
+    {
+      "consumer_obligation_key": "b663fb39ba00ae64ac7a0e00b6b0213ed29a3c8732b64b9011e234cd8ae257fd",
+      "dispatch_class": "I03_UNARY_OR_JOINT_QUERY",
+      "expected_work_key": "1345a35d985a546c7f8e683dd5758ee1c7bfda5ff483e2b4923bc04dbab50ae7",
+      "hold_reason": "EXPLICIT_FAIL_CLOSED_SOURCE_GAP",
+      "item": "V",
+      "measure_kind": "RAW",
+      "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+      "semantic_op_class": "UNARY_DISTRIBUTION",
+      "state": "DENIED",
+      "target": "V"
+    },
+    {
+      "consumer_obligation_key": "c8d99988a860f9f8c2cb7cfc87b3b9f1c4b6be91d925294afed21a784cec1479",
+      "dispatch_class": "I03_UNARY_OR_JOINT_QUERY",
+      "expected_work_key": "a8a89de3661ac9fe1f64169dd111def4d28095e7a7d04bbaeb1d4140994dd6e3",
+      "hold_reason": "NO_COADMINISTERED_TARGET_IN_THIS_SLICE",
+      "item": "U",
+      "measure_kind": "RAW",
+      "required_consumer": "C1_ANALYTICAL_COMPOSITION",
+      "semantic_op_class": "UNARY_DISTRIBUTION",
+      "state": "SOURCE_NONAPPLICABLE",
+      "target": "U"
+    }
+  ],
+  "issuer": {
+    "issuance_timestamp": "2026-10-11T00:00:00Z",
+    "issuer_authority_ref": "I03-AUTH-m01-query|1.0.0|6b35c996e3e483476b1d9b6dc5b29987c0b490a2b3655207f885db240b45c738",
+    "issuer_id": "A04S-SOURCEFREE-FIXTURE-ISSUER",
+    "issuer_signature": "452d7b731594487d2c32e094d844866d44903088d9ca254a620682e035baef1d",
+    "scope_version": "HQ280_PV3_A04S_CANONICAL_V2@1.0.0"
+  },
+  "measured_data_file": "repro/a04s_owner_oracle_runs.json",
+  "measured_data_sha256": "e23a97396f2bcc731b2277143fb0acd12158cacc6ef85bbec4dac157f5b8709e",
+  "positive_run_summary": {
+    "batch_completed": 6,
+    "batch_full_coverage": true,
+    "batch_state": "COMPLETED",
+    "batch_total_units": 6,
+    "c11_release_ref_hash": "95de34f09fa9ae4aac6c6a3c73ea7ff9dff5ef18189bac940805f30126fce88c",
+    "custodian_frontier_hash": "6064e859ad95ea06040b1bfc45006236afe33f5c535872f36ea89156495c39e7",
+    "expected_frontier_hash": "6064e859ad95ea06040b1bfc45006236afe33f5c535872f36ea89156495c39e7",
+    "expected_key_count": 6,
+    "extra": [],
+    "frontier_matches_custodian": true,
+    "i03_fact_states": [
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "i03_measure_kinds": [
+      "RAW",
+      "GOVERNED_WEIGHTED",
+      "RAW",
+      "RAW",
+      "RAW"
+    ],
+    "i03_result_count": 5,
+    "i05_candidate_count": 1,
+    "i05_covered": 1,
+    "i05_receipt_states": [
+      "DISCOVERED_RESULT_SUPPORTED"
+    ],
+    "job_key_count": 6,
+    "omitted": [],
+    "reconciliation_ok": true,
+    "result_classes": {
+      "2194f81220a72b3adfe3719d5ea0d3512c4d31aa54b6537b378a78c35e219150": "MEASURED_POSITIVE",
+      "4a9def9a45eff5df5d9ac567fddf8bef8f781af9c0610178512b56e63aa3d22e": "MEASURED_POSITIVE",
+      "ac616dbde377da44ab267a8ac0b7fbdb0e7c235152215d176e126d9d787ddb95": "MEASURED_POSITIVE",
+      "c79fbfd3f50a1167921d87ba812f504d2ee986f0fe5afdf1a50f9d79d1309468": "MEASURED_POSITIVE",
+      "d474787bb3a3e0ccd5a725b094835a228920958be4996e3876925a99acb98ce5": "MEASURED_POSITIVE",
+      "d74d1c6f90811e0f712b91845c79312a2a35fc34498ba88c1e7e173bb6bdf25a": "MEASURED_POSITIVE"
+    },
+    "route_b_dependency_root": "9db3c38159688863f816b52ea648234e8d23b76a4dbb47af1af8397f72bf9ba1",
+    "route_b_effects_all_false": true,
+    "unsatisfied_consumers": [],
+    "visible_non_runnable": [
+      "1345a35d985a546c7f8e683dd5758ee1c7bfda5ff483e2b4923bc04dbab50ae7",
+      "5b66a50ac42ca4b9c3f71532c2d54f67192baab63068086a01dcc21561dda303",
+      "694377350c1b03cb6632519fbd8e488a66ad06c42bf981a0002f87d762016d18",
+      "a8a89de3661ac9fe1f64169dd111def4d28095e7a7d04bbaeb1d4140994dd6e3"
+    ],
+    "work_reconciled": true
+  },
+  "schema": "HQ280_PV3_A04S_REAL_OWNER_RUNS_INDEX@1.0.0",
+  "scope": "SOURCE_FREE_DEVELOPMENT_ONLY",
+  "terminal": "HQ280_PV3_A04S_SOURCEFREE_V2_EXPECTATION_BINDER_ORACLE_ACTUAL_JOIN_RETURNED_OR_EXACT_HOLD__NONISSUING__GITHUB_PUSHED"
+}
