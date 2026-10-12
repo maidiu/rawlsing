@@ -1,0 +1,149 @@
+{
+  "schema": "HQ280_D02X_ORIGINAL_LEGAL_SOURCE_ANTI_CONFLATION_HOSTILES@1.0.0",
+  "count": 20,
+  "hostiles": [
+    {
+      "id": "H01",
+      "attack": "Official accession text from 2000 silently treated as complete 2026 consolidated law",
+      "required_disposition": "HOLD_AMENDMENT_AND_CURRENT_ASOF_PROOF",
+      "why": "The sources pin enacted text, not all later law",
+      "execution_grade": "DOCUMENTARY_SCIENTIFIC_NEGATIVE__NO_PYTHON_RUNTIME_EXECUTION"
+    },
+    {
+      "id": "H02",
+      "attack": "Original Act s7's 1993 birth-cohort used as Act commencement",
+      "required_disposition": "DENY_DATE_ROLE_COLLAPSE",
+      "why": "Birth index and 2000 assent / 2001 Gazette notification are different",
+      "execution_grade": "DOCUMENTARY_SCIENTIFIC_NEGATIVE__NO_PYTHON_RUNTIME_EXECUTION"
+    },
+    {
+      "id": "H03",
+      "attack": "Government BRR metadata says Gazette 29/12/2000; PDF says 05/01/2001",
+      "required_disposition": "KEEP_CONFLICT_OPEN",
+      "why": "No silent reconciliation or fake certification",
+      "execution_grade": "DOCUMENTARY_SCIENTIFIC_NEGATIVE__NO_PYTHON_RUNTIME_EXECUTION"
+    },
+    {
+      "id": "H04",
+      "attack": "Constitution scan with pre-1996 Article 8 asserted current 2026 constitutional edition",
+      "required_disposition": "DENY_UNVERIFIED_CONSOLIDATION",
+      "why": "Historical original scan not current-version guarantee",
+      "execution_grade": "DOCUMENTARY_SCIENTIFIC_NEGATIVE__NO_PYTHON_RUNTIME_EXECUTION"
+    },
+    {
+      "id": "H05",
+      "attack": "Ghana Q86A respondent opinion reclassified as legislative text",
+      "required_disposition": "DENY_SOURCE_FAMILY_CONFLATION",
+      "why": "Question norm is respondent view of hypothetical, independent of law",
+      "execution_grade": "DOCUMENTARY_SCIENTIFIC_NEGATIVE__NO_PYTHON_RUNTIME_EXECUTION"
+    },
+    {
+      "id": "H06",
+      "attack": "Ghana legal s7 born-in/outside and grandparent cohort collapsed into Ghana-born one-parent Q86A hypothetical",
+      "required_disposition": "DENY_PROPOSITION_EXACTNESS",
+      "why": "Birth date/population/legal status/scope differ",
+      "execution_grade": "DOCUMENTARY_SCIENTIFIC_NEGATIVE__NO_PYTHON_RUNTIME_EXECUTION"
+    },
+    {
+      "id": "H07",
+      "attack": "Citizenship by birth presumed actual physical passport/registration granted",
+      "required_disposition": "DENY_EXPERIENCED_ACCESS",
+      "why": "No administrative award or issuance record",
+      "execution_grade": "DOCUMENTARY_SCIENTIFIC_NEGATIVE__NO_PYTHON_RUNTIME_EXECUTION"
+    },
+    {
+      "id": "H08",
+      "attack": "National legal eligibility treated as local office functioning or service availability",
+      "required_disposition": "DENY_UNIT_AND_LOCAL_IMPLEMENTATION",
+      "why": "No geocoded offices/queues/capacity/administrative data",
+      "execution_grade": "DOCUMENTARY_SCIENTIFIC_NEGATIVE__NO_PYTHON_RUNTIME_EXECUTION"
+    },
+    {
+      "id": "H09",
+      "attack": "Institutional rule asserted as measured causal effect of social position or opinion",
+      "required_disposition": "DENY_CAUSAL_PROMOTION",
+      "why": "No intervention, changed determinant, identification or outcome",
+      "execution_grade": "DOCUMENTARY_SCIENTIFIC_NEGATIVE__NO_PYTHON_RUNTIME_EXECUTION"
+    },
+    {
+      "id": "H10",
+      "attack": "Doc tagged as EmpiricalFact and submitted to P06/I04",
+      "required_disposition": "DENY_FALSE_TYPE_ORIGINAL",
+      "why": "P06 requires original exact I01 query/fact with governance",
+      "execution_grade": "DOCUMENTARY_SCIENTIFIC_NEGATIVE__NO_PYTHON_RUNTIME_EXECUTION"
+    },
+    {
+      "id": "H11",
+      "attack": "Caller-created StructuralObject with hash treated as producer-issued citizenship law",
+      "required_disposition": "DENY_PRODUCER_AUTHENTICATION",
+      "why": "M4 construction is transport not legal issuer",
+      "execution_grade": "DOCUMENTARY_SCIENTIFIC_NEGATIVE__NO_PYTHON_RUNTIME_EXECUTION"
+    },
+    {
+      "id": "H12",
+      "attack": "Invent V554 root to pass M4 root whitelist",
+      "required_disposition": "DENY_FALSE_ROOT_FAMILY",
+      "why": "Frozen V553–V556 does not admit arbitrary legal-document objects",
+      "execution_grade": "DOCUMENTARY_SCIENTIFIC_NEGATIVE__NO_PYTHON_RUNTIME_EXECUTION"
+    },
+    {
+      "id": "H13",
+      "attack": "Use J04 BEN0002/Q73A whitelist as authority for new Ghana law",
+      "required_disposition": "DENY_CLAIM_SPECIFIC_REUSE",
+      "why": "J04 fixed fact; other source family/claim not admitted",
+      "execution_grade": "DOCUMENTARY_SCIENTIFIC_NEGATIVE__NO_PYTHON_RUNTIME_EXECUTION"
+    },
+    {
+      "id": "H14",
+      "attack": "OC02 synthetic PolicyInput and SHA tag asserted external legal proof",
+      "required_disposition": "DENY_FAKE_PRODUCER_TAG",
+      "why": "D02 found this seam does not authenticate issuer",
+      "execution_grade": "DOCUMENTARY_SCIENTIFIC_NEGATIVE__NO_PYTHON_RUNTIME_EXECUTION"
+    },
+    {
+      "id": "H15",
+      "attack": "Cross-family Afro and legal sources pseudo-joined at person level",
+      "required_disposition": "DENY_POPULATION_AND_UNIT_MERGE",
+      "why": "Law has conditional legal subjects, no survey respondent IDs",
+      "execution_grade": "DOCUMENTARY_SCIENTIFIC_NEGATIVE__NO_PYTHON_RUNTIME_EXECUTION"
+    },
+    {
+      "id": "H16",
+      "attack": "Original documentary hold classified SOURCE_INTRINSIC_NA",
+      "required_disposition": "DENY_FALSE_NONAPPLICABILITY",
+      "why": "Original normative law exists; only functional issuer/product not proven",
+      "execution_grade": "DOCUMENTARY_SCIENTIFIC_NEGATIVE__NO_PYTHON_RUNTIME_EXECUTION"
+    },
+    {
+      "id": "H17",
+      "attack": "As-enacted law published as N9 CURRENT without version/selection/permission",
+      "required_disposition": "DENY_FAKE_CURRENT_OR_ASOF",
+      "why": "No producer-authentic world snapshot, amendment closure or consumer",
+      "execution_grade": "DOCUMENTARY_SCIENTIFIC_NEGATIVE__NO_PYTHON_RUNTIME_EXECUTION"
+    },
+    {
+      "id": "H18",
+      "attack": "Citizenship law treated as G0b model inference/actor V3 grant",
+      "required_disposition": "DENY_MODEL_USE_AND_ACTOR",
+      "why": "D02X has no such decision authority",
+      "execution_grade": "DOCUMENTARY_SCIENTIFIC_NEGATIVE__NO_PYTHON_RUNTIME_EXECUTION"
+    },
+    {
+      "id": "H19",
+      "attack": "Registration/naturalization procedures of ss10–14 applied to s7 birth right indiscriminately",
+      "required_disposition": "DENY_LEGAL_ROUTE_COLLAPSE",
+      "why": "Citizenship by birth and later registration are distinct statutory routes",
+      "execution_grade": "DOCUMENTARY_SCIENTIFIC_NEGATIVE__NO_PYTHON_RUNTIME_EXECUTION"
+    },
+    {
+      "id": "H20",
+      "attack": "Official hosted PDF assumed byte-authenticated and certified Gazette facsimile",
+      "required_disposition": "HOLD_DOCUMENT_CUSTODY_HASH",
+      "why": "No verified source bytes SHA or certified image; government reproduction is documented",
+      "execution_grade": "DOCUMENTARY_SCIENTIFIC_NEGATIVE__NO_PYTHON_RUNTIME_EXECUTION"
+    }
+  ],
+  "actual_runtime_count": 0,
+  "all_negative_states": "REQUIRED_FOR_FUTURE_ISSUANCE_NOT_EXECUTED_IN_PRODUCTION",
+  "source_issuer_gap": "External citation and self-hashed field do not authenticate legal authority or N9 currentness"
+}

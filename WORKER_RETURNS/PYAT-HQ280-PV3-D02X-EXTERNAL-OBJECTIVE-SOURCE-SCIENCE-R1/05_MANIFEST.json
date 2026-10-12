@@ -1,0 +1,119 @@
+{
+  "schema": "HQ280_PV3_D02X_NON_SENSITIVE_SOURCE_AND_CODE_EVIDENCE_MANIFEST@1.0.0",
+  "sealed_sha": "84e526501bf29b44575669689f38724458f07ce6",
+  "branch": "agent/rabochii-pyat-hq280-pv3-d02x-external-objective-source-science-r1",
+  "governing": "HQD-2026-10-10-280",
+  "canonical_preserved": "a70a069fa948e0f3c041b389edcc732b6b948a4f",
+  "semantic_pre_main_preserved": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "hq_staged_decision_sha": "c8f7b50e5e7dcb1098b3f39041e9a5398599e50e",
+  "hq_staged_decision_blob": "1c073e1824090542059be2039655e83b1d17dc0d",
+  "inherited_D02": "5059bd61c005b9b9e978213e271557bafc8cac0c",
+  "source_primary_count": 2,
+  "original_public_official_sources": [
+    {
+      "candidate": "GHANA_ACT591",
+      "issuer": "Ghana Parliament",
+      "official_repository": "https://repository.parliament.gh/handle/123456789/1773",
+      "official_document": "https://www.brr.gov.gh/acc/registry/docs/Citizenship%20Act%20-%20ACT%20591.pdf",
+      "locations": "PDF screenshot 0,1,2; Part I ss2,7; page 7 notification",
+      "hash_sha256": null,
+      "custody_note": "URL/content visually examined; complete PDF immutable bytes could not be downloaded into local SHA custody; no false digest"
+    },
+    {
+      "candidate": "GHANA_CONSTITUTION_1992",
+      "issuer": "Republic of Ghana",
+      "official_document": "https://www.osp.gov.gh/media/Resources/constitutionofghana.pdf",
+      "location": "PDF index 17, original printed pp5–6, Article6(2)",
+      "hash_sha256": null,
+      "custody_note": "Viewer text and original scan visually checked; no local SHA custody"
+    }
+  ],
+  "official_metadata_discrepancy": {
+    "gov_index": "https://www.brr.gov.gh/reg_details.php?id=NzM4",
+    "index_date_gazette": "2000-12-29",
+    "act_pdf_gazette": "2001-01-05",
+    "disposition": "UNRESOLVED_GOV_SOURCE_DATE_ROLE_CONFLICT"
+  },
+  "third_party_alternate_same_statute_not_new_candidate": "https://ghalii.org/akn/gh/act/2000/591/eng@2001-01-05/source",
+  "code_owner_exact": [
+    {
+      "path": "rawlsing_next/pre553_structural_admission.py",
+      "git_blob_sha": "fe8f706afbb5739d026846952681081b2937e9a8",
+      "grade": "GITHUB_EXACT_SOURCE_READ_STATIC"
+    },
+    {
+      "path": "rawlsing_next/m1_admitted_field_forge_relation_v554_ingress.py",
+      "git_blob_sha": "0aeacd9e66c7e4340b36e1b622bb5c9bf2865fd5",
+      "grade": "GITHUB_EXACT_SOURCE_READ_STATIC"
+    },
+    {
+      "path": "rawlsing_next/m4_v557_v558_publication_repository.py",
+      "git_blob_sha": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360",
+      "grade": "GITHUB_EXACT_SOURCE_READ_STATIC"
+    },
+    {
+      "path": "rawlsing_next/objective_consumer_bounded_evidence.py",
+      "git_blob_sha": "f30fca20e7b56e00348e82765d95f974b4b6a195",
+      "grade": "GITHUB_EXACT_SOURCE_READ_STATIC"
+    },
+    {
+      "path": "rawlsing_next/prev3_objective_position_v557_v558_publication.py",
+      "git_blob_sha": "7d2a5dbb3e0979c599632645867aa48a336a8e79",
+      "grade": "GITHUB_EXACT_SOURCE_READ_STATIC"
+    },
+    {
+      "path": "rawlsing_next/sdtf_r4_world_response_redrive.py",
+      "git_blob_sha": "9964a24e25467fa53cc9f5529b6f40be9f11f53a",
+      "grade": "GITHUB_EXACT_SOURCE_READ_STATIC"
+    }
+  ],
+  "static_predicates": {
+    "total": 13,
+    "passed": 13,
+    "identities": [
+      "P06_EXACT_I01_EMPIRICAL_OBJECTS",
+      "P06_POSITIVE_NAMED_RULE",
+      "P06_STRUCTURAL_FOCAL_TARGET",
+      "P06_INCLUDES_SOURCE_SCOPE",
+      "M1_EXPECTS_POSITIVE_RELATION_ADMISSION",
+      "M1_SCOPES_TO_EXACT_INGRESS",
+      "M4_WHITELIST_V553_V556",
+      "M4_PRODUCER_CEILING",
+      "M4_EXACT_BOUND_OBJECT",
+      "OC02_DECLARED_INPUTS",
+      "OC05_NOT_YET_APPLICABLE",
+      "J04_EXACT_PROVING_FACT_ONLY",
+      "R4_NO_OBJECTIVE_WORLD_RESPONSE"
+    ],
+    "method": "JS predicates on exact fetched connected private GitHub file content, not Python/pytest/runtime"
+  },
+  "external_source_retrieval": {
+    "government_site_pdf_web_visual": "PASS",
+    "parliament_repository_original_index": "PASS",
+    "parliament_pdf_web_direct": "HTTP_403_AT_BROWSER_OPEN",
+    "local_public_pdf_sha": "NOT_COMPUTED_DOWNLOAD_FAILED"
+  },
+  "science_dispositions": {
+    "original_law_rule": "POSITIVE_DOCUMENTARY_WARRANT",
+    "legally_consolidated_current_date": "HOLD",
+    "native_producer_and_issuer": "HOLD",
+    "P06_or_M1_positive": "NOT_ISSUED",
+    "M4_or_N9_positive": "NOT_ISSUED",
+    "G0b": "NOT_ISSUED",
+    "actor": "FORBIDDEN"
+  },
+  "production_files_changed": 0,
+  "source_read_raw_survey_runs": 0,
+  "test_runtime_runs": 0,
+  "files": [
+    "00_RETURN.md",
+    "01_PRIMARY_OBJECTIVE_SOURCE_AND_VERSION_COURT.json",
+    "02_SCIENTIFIC_OBJECTIVE_RULE_CLAIM_AND_SCOPE.md",
+    "03_REAL_OWNER_N5N6_N9_DEMAND_AND_ISSUER.md",
+    "04_ANTI_CONFLATION_HOSTILES.json",
+    "05_MANIFEST.json",
+    "06_UNISSUED_ORIGINAL_OBJECTIVE_RULE_CLAIM.json",
+    "07_PRIMARY_SOURCE_BROWSE_AND_STATIC_COURT_LOG.md"
+  ],
+  "terminal": "HQ280_PV3_D02X_FIRST_EXTERNAL_OBJECTIVE_ORIGINAL_SOURCE_WARRANT_OR_PRECISE_HOLD__NO_MATERIAL_CAUSAL_OR_CURRENT_GRANT__GITHUB_PUSHED"
+}
