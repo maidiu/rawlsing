@@ -1,49 +1,115 @@
-## RCM01 user-requested binding correction — minimum Codex effort, Astra reserve and Mac file custody
+# Pyat HQ282 P01 — connect the workload verifier, batch processing, and downstream consumer
 
-**THIS SECTION SUPERSEDES less precise suggested "strong Codex" or "qualified model" wording below.** This is a branch-local commission routing correction, not a new scientific or security grant. Full user-directed law: `PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ282_CODEX_ASTRA_RESERVE_MODEL_AND_SECONDARY_FILE_LAW_R1.md` on operating HQ, and RCM01 original at `c71f83c731fe1465b59f5ad701a5e1bb3018b34a`.
+**Status:** Commission prepared; waiting for the secondary-Mac worktree to be set up. No engineering work has been launched by this document.
 
-**CODEX MODEL EXACT:** GPT-6.1 Sol, **Medium**. No High/Extra High/Astra without a separately documented failed Medium case and user's budget approval. First perform exact Git source-object/materialization and shell-based baseline for free or through an approved cheap collector. **MAC:** PRIMARY preferred only if its worktree and account are actually verified; SECONDARY permitted solely after the exact-Git manifest and portable A04/A05 court below are present. Spend only from user-designated non-Astra Codex pool, after manual before/after allowance check. If no safe quota/worktree, STOP; not auto-run.
+**Repository:** `maidiu/rawlsing`  
+**Branch:** `agent/rabochii-pyat-hq282-p01-v2-durable-consumer-integration-r1`  
+**Startup:** Use the exact remote commit containing this revised commission, supplied in the accompanying launch message. Confirm that commit before beginning.  
+**Worker:** Local integration engineer  
+**Machine:** Secondary Mac  
+**Model:** GPT-6.1 Sol  
+**Reasoning level:** Medium. Do not automatically increase it.  
+**Repository permissions:** Source-free implementation and tests only.  
+**Governing project decision:** `HQD-2026-10-10-280`. This commission does not change scientific or release authority.
 
-**SECONDARY FILE GATE:** V2 A04TU tree `d6e766cd6ba7dc46b19cc61123d968a274015ddd` and B01E/B01D tree `92cb25340c49fb51e2b8d6e00d5a4f471296fc8f` are disjoint. Materialize exact Git-tracked V2 verifier/test + B01E adapter/durable/test plus imported accepted C11/Route B/I03/I05/batch owners into one *new isolated candidate* worktree without merging accepted branches. V2 legacy verifier tests hardcode PRIMARY Mac A04/A05 worktree paths and SKIP if absent: checks around lines 745, 760, 877. On SECONDARY, MUST explicitly report these SKIPs as external dependency HOLD, or create a NEW portable exact-Git-blob court using A05 oracle at `9491d0296c95ee2942fe80eadc6aa9f54b07c634` (expected oracle blob `00a4cc84d321c3fbace0f4aa09be62dbb31994fc`); NEVER present a skipped test as pass. No primary-private SAV/DTA required or permitted.
+## 1. Writing and communication
 
-**ASTRA TOPOLOGY + REAL USAGE (USER CONFIRMED 2026-10-12):** **PRIMARY MAC = 85% weekly left** (full-repository Astra requires PRIMARY); **SECONDARY MAC = 98% weekly left** (preferred normal Codex execution). GitHub-only Astra may run on either legitimate Codex account at user's choice. Both five-hour limits 100% left in historical screenshots; 3 full reset vouchers each, all held. PRIMARY Codex is **RESERVED FOR FULL-REPO ASTRA**, not for routine P01/P02/etc. SECONDARY suggested budget ≤2 weekly percentage points per bounded job and ≤3 combined until Oct 18, provisional 95% floor; operator must inspect usage before and after every phase and must STOP instead of spending reset credits. No auto transfer/overflow or automatic Astra launch. **EXACT ROUTE FOR THIS COMMISSION:** SECONDARY Mac Codex GPT-6.1 Sol Medium ONLY after available quota, Python/pytest/SIGKILL, prepared sparse worktree and exact portable A04/A05 oracle objects; PRIMARY Codex reserved for full-repo Astra. Screenshot balances do not prove fresh live usage, prepared worktrees or installed model.
+Use plain, ordinary engineering language throughout your work, terminal notes, code comments, reports, and conversations. Describe a test in terms of the behavior it checks, such as "missing-item test," "incorrect release reference," "duplicate-result check," or "process interruption and recovery." Avoid unnecessary dramatic or adversarial labels when precise technical wording will do.
 
-**Exact returned-commission startup after THIS correction:** Must use the final full 40-hex GitHub branch HEAD published in the refreshed HQ launch ledger, NOT the predecessor commission SHA in the older status block below.
+Do not change, weaken, omit, or misrepresent the required tests to obtain more agreeable wording. If a tool or platform gives a warning or requests an unfamiliar external login, special security device, or account enrollment, do not attempt to bypass it. Stop that step, record the exact request in neutral language, and ask for an authorized alternative. This task does not call for a Daybreak account or hardware security key.
 
----
+## 2. Worktree setup must be completed first
 
-# PYAT HQ282 P01 — resource-aware product-first work order
+The user has confirmed that this commission's secondary-Mac worktree **does not exist yet**. Do not assume a directory exists, run the integration tests in a different worker's directory, or create a fresh repository clone.
 
-**STATUS:** SEALED_AWAITING_RESOURCE_BINDING__NOT_LAUNCHED; NO UNATTENDED EXECUTION
-**AGENT / ROLE:** Local high-intelligence producer/owner integration engineer; Browser HQ adjudicates scientific meaning
-**PROPOSED MODEL / INTELLIGENCE / ACCOUNT:** Codex A with a measured high-capability code model (GPT-6 Sol High if actually available), local Python/pytest/SIGKILL; **EXACT MODEL/VARIANT/ENTITLEMENT UNBOUND**
-**MACHINE / RUNTIME:** PRIMARY or SECONDARY MAC after worktree, writable paths and quota verification; **CURRENT HOST AND PYTHON/WORKTREE STATE UNVERIFIED**
-**WORKTREE:** SPARSE_REQUIRED; exact local worktree UNASSIGNED; do not clone/create/reset without HQ-authorized infrastructure bootstrap
-**BRANCH:** `agent/rabochii-pyat-hq282-p01-v2-durable-consumer-integration-r1`
-**EXACT SEALED STARTUP:** Use the full returned GitHub commission-containing HEAD in the separate launch handback, NOT the shared parent `9f6a926f0dd1633861ed9727416b8c8f21829c1d`.
-**RESOURCE EVIDENCE / BUDGET:** balances/reset/cost/time and shared Go-pool currently null; explicit no paid overflow; hard gate REQUIRES_RESOURCE_EVIDENCE before local run.
-**CONTROL:** `HQD-2026-10-10-280`, canonical `a70a069fa948e0f3c041b389edcc732b6b948a4f`, immutable semantic PRE-MAIN `1f47063c3205a45888b3c55e81e7485943ed1390`; HQ282 is organization label, not a newly issued scientific decision.
-**PRODUCT/MILESTONE:** M1→M2; exact sourcefree E→V2→durable Route B→actual consumer
+Before using Codex for the engineering work, have the user or an already authorized inexpensive shell helper follow:
 
-## Original evidence (re-fetch exact trees)
-A04T/A04TU V2 verifier @ d6e766cd6ba7dc46b19cc61123d968a274015ddd; B01E durable Route B adapter @ 92cb25340c49fb51e2b8d6e00d5a4f471296fc8f; independent R02 blocker @ 59d644ccf35cd79c67e7e26e6b9e4de74039b442; existing C1/FF producer/consumer owners; sourcefree fixtures only.
+`PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ282_P01_SECONDARY_BOOTSTRAP_HANDOFF_R1.md`
 
-## One coherent product or precise scientific HOLD
-Deliver **one importable, combined SOURCE-FREE candidate tree**, not a merge of accepted science. R02 proved V2 verifier and B01E+B01D on different Git histories. New isolated candidate module must invoke both through actual APIs and produce independently frozen fixture E before producing a result. Use real existing C11/RouteB/I03/I05/BatchExecutionRunner, durable START/effect/COMMIT/recovery and actual C1 or Field Forge consumer, with exact E→result→consumer identity/replay reconciliation. Retain typed negatives, respondent+item keys, no-drop proof. Never self-construct E from observed output or claim real source grant.
+That setup note is on the working HQ branch `agent/vozhd-pyat-hq280-pre-v3-parallel-operating-seal-r1`, not necessarily present in this commission's checkout.
 
-## Exact positive, hostile and acceptance courts
-Positive: several eligible fixture items and operations, new assembled sourcefree run, durable replay, actual consumed evidence with exact refs and no lost minority/configuration. Negative: intentionally omitted original item, foreign key/release/collision, source mismatch, held pending head, effect-before-COMMIT SIGKILL and no-double effect, DEFERRED/FAILED pin, forged idempotence, stale consumer, self-derived expectation/custody spoof; independently review **the integrated tree**, not disjoint candidate PASS. If existing helper can do the join, reuse it.
+The setup should attach **one separate sparse worktree** for this existing branch to the **existing Rawlsing Git object store on the secondary Mac**. A fresh clone is not permitted merely because the worktree is missing. If there is no existing shared repository on the secondary, return `SECONDARY_REPOSITORY_SETUP_REQUIRED` and wait for separate machine-level instructions.
 
-## Permitted write terrain
-NEW distinct candidate implementation and tests under rawlsing_next/ only; commission WORKER_RETURNS and reproduction logs. No accepted owner file edits, branch merges, raw sources, security/current publication changes.
+Before coding, confirm and record:
+- The actual working directory, branch and full commit.
+- That the directory is the dedicated P01 worktree and has no unexpected edits.
+- The shared Git directory, available Python interpreter, and pytest installation.
+- The required source-code commits and any missing dependencies.
+- The actual available secondary Codex allowance, approved environment and model setting.
 
-## Stop/escalation boundary
-If importing both candidates into one test-only worktree requires altering accepted owners, explicitly HOLD and return narrow owner-call mismatch. Do not solve source issuer, REAL_EXECUTION or external E custody by simulation; no exactly-once theorem.
+If any required item cannot be confirmed, report `SETUP_INCOMPLETE` and the missing detail. Do not consume Codex usage trying to guess how the machine was arranged.
 
-## RCM01 common hard eligibility and return protocol
-**REQUIRED RESOURCE RULE:** Before any worker executes or mutates, read `PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ_MANDATORY_COMMISSION_AND_SUCCESSOR_GROK_ADDENDUM_R1.md` and the RCM01 `WORKER_COMMISSIONS/PYAT-RCM01-RESOURCE-AWARE-COMMAND-R1/{00_COMMISSION.md,01_OPERATING_CONTRACT.md,02_ACCEPTANCE.md,03_RESOURCE_SEED.json,04_TEST_VECTORS.json}` pinned at `c71f83c731fe1465b59f5ad701a5e1bb3018b34a`. Recheck current direct-origin HEAD and all active sessions. RCM01 seed quota/prices are UNVERIFIED; do not presume account entitlement, run-capability, low cost or paid overflow. Proposed model and machine are NOT an active assignment. No secret/account identifying values in Git. Stop if actual model ID+variant, account/remaining allowance and provider privacy terms, machine/interpreter, exact existing sparse worktree and single-writer access, hard spend cap, or independent-review plan remain unknown for work that requires them. Status stays `SEALED_AWAITING_RESOURCE_BINDING__NOT_LAUNCHED`. No clone/reset/broad fetch; preserve existing work. At return report model/host/worktree, exact branch/startup/HEAD, actual test commands/exits, measurements (or null), direct remote return SHA, consumer receipt, independent review, exact holds. All scientific, source-read, release, B5, G0b, current-world and actor authority remains HELD unless separately competent issued. No canonical/PRE-MAIN/HQ_HANDOFF/LATEST edits; no self-adoption, autonomous dispatcher, billing or source execution.
+## 3. Engineering goal
 
+Previous work produced two separate parts that have been individually tested but not yet exercised together:
 
-**RETURN PACKET:** `WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/00_RETURN.md`, `01_PRODUCT_OR_HOLD.md`, `02_EXECUTION_AND_HOSTILES.json`, `03_RESOURCE_TELEMETRY.json`, `04_DEPENDENCY_AND_AUTHORITY.md`, `05_MANIFEST.json` and exact minimal repro under `repro/` when relevant. Source-free or documentary scope may explicitly set test/cost fields null with exact reason. Commit and push to the named branch and verify direct remote HEAD, no ZIP-only return.
+1. A verifier that checks whether the expected source-free work was fully and correctly represented.
+2. A batch execution component that records progress and supports recovery after an interrupted process.
 
-**TERMINAL:** `PYAT_HQ282_P01_RESOURCE_AWARE_ISSUED_COMMISSION_ONLY__MUST_BIND_ACTUAL_EXECUTION_RESOURCE__NO_SELF_ADOPTION`.
+Build **one working source-free integration** connecting these parts and an existing downstream empirical or Field Forge consumer. Reuse the real existing C11, Route B, I03/I05, batch, C1 and Field Forge interfaces where relevant, rather than writing parallel replacements.
+
+Demonstrate this sequence:
+
+`independently prepared expected tasks → existing verifier → existing batch runner and saved execution record → actual downstream consumer → independently checked result`.
+
+Use a small deterministic synthetic dataset. The expected task set must be prepared separately from the execution output, before running that output. Keep item, subject, release and response identities consistent across steps.
+
+### Exact previously committed inputs
+
+- V2 verifier and associated tests: `d6e766cd6ba7dc46b19cc61123d968a274015ddd`
+- Batch integration and recovery candidate: `92cb25340c49fb51e2b8d6e00d5a4f471296fc8f`
+- Independent integration review: `59d644ccf35cd79c67e7e26e6b9e4de74039b442`
+- Independent expected-work checking script: `9491d0296c95ee2942fe80eadc6aa9f54b07c634`
+- Exact independent checking script Git blob: `00a4cc84d321c3fbace0f4aa09be62dbb31994fc`
+
+Read these from Git using the exact commit and file identities. Do not assume the source files from separate branches are already available as a single installed module. Bring only the required code and synthetic test dependencies into the new P01 candidate in a controlled, documented way. Do not merge the original branches into the project's main or accepted implementation branches.
+
+Some older verifier tests contain file paths pointing to worktrees on the primary Mac. On the secondary Mac they may be skipped because those folders are absent. Record every skipped test separately. Verify the independent checking script using the exact Git objects and create portable test checks where appropriate. A test that did not run must not be reported as passed.
+
+## 4. Tests and expected results
+
+Run a positive example showing that every expected task is included, the batch component completes an ordinary run, the result is saved and can be read again, and an existing downstream consumer actually uses that result.
+
+Also test the important failure cases:
+- An expected original item is missing from the submitted work.
+- The submitted work contains a different item, release, or subject identity.
+- Two items or saved results incorrectly reuse an identity.
+- A process ends before its result is fully recorded.
+- The process resumes after an interrupted save without repeating completed external effects.
+- A task remains unresolved, so later tasks must not be counted as completed.
+- The downstream consumer receives outdated, unrelated, or incomplete input.
+- The expected task list is generated from the observed output instead of being independently prepared.
+
+Use the actual project test framework and report commands, exit codes, counts of passed/failed/skipped tests, and the exact code revision. For interruption tests, use the project's existing safe synthetic subprocess test harness; do not run against real services or respondent records.
+
+If there is a necessary interface change to an accepted owner, document exactly what is missing and stop at a proposed change rather than editing the accepted owner.
+
+## 5. Scope and resource limits
+
+- Work only in **new, isolated source-free candidate code and tests** and the P01 return directory.
+- Do not access real survey data, move the primary Mac's private files, or change accepted scientific meaning.
+- Do not publish any output as a current or authorized Rawlsing product.
+- Do not change canonical integration, semantic PRE-MAIN, the HQ handoff pointer, or another worker's branch.
+- Primary Mac Codex is reserved for full-repository Astra work. The **secondary Mac** is the only proposed Codex account for P01.
+- Last observed screenshot: secondary **98% weekly remaining**. This is historical; check live usage before starting and after each bounded phase. Proposed P01 allowance is no more than **two weekly percentage points**, with a provisional **95% weekly floor** across ordinary jobs before 18 October. Dashboard percentages are not enforceable hard caps.
+- Do not use reset credits, enable paid overage, change accounts, or raise reasoning beyond **Medium** without the user's express approval.
+
+Read and apply the original resource-selection contract at:
+
+`agent/vozhd-pyat-rcm01-resource-aware-commission-command-r1 @ c71f83c731fe1465b59f5ad701a5e1bb3018b34a`
+
+and the later working-HQ resource and shared-worktree instructions. Where earlier wording conflicts with this revised, user-directed route, the secondary-Mac/MEDIUM/model and plain-language requirements above govern this assignment. Existing scientific, source and security decisions remain binding.
+
+## 6. Completion and handoff
+
+Once actual engineering begins, make a commit on **this branch only**, push it and verify the remote commit. Put the return under:
+
+`WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/`
+
+Include a short `00_RETURN.md` describing what works and what remains blocked; a precise implementation and consumer record; actual test commands and results; resource usage if observed (or `unknown`); and the relevant code/test commit identities. Existing structured return filenames in earlier commission instructions may be retained for compatibility, but write reports in the plain technical style specified here.
+
+A separate reviewer will assess the completed integrated candidate. Do not treat passing your own tests as final scientific or integration acceptance.
+
+**Expected first response if the worktree is still absent:** `SETUP_INCOMPLETE — secondary P01 worktree not prepared; engineering not started; no Codex engineering usage`.
+
+**Expected successful handoff:** A reproducible source-free integration, evidence of actual consumer use, independently reviewable test results, and an exact pushed commit.
