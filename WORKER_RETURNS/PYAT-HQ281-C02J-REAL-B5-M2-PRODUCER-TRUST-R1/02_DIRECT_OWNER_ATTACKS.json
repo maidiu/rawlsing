@@ -1,0 +1,112 @@
+{
+  "unpatched": [
+    {
+      "case": "UNPATCHED_B1_raw_publishes",
+      "publication": "PUBLISHED"
+    },
+    {
+      "case": "UNPATCHED_B2_forgery_publishes",
+      "ceiling_is_forged": true
+    },
+    {
+      "case": "UNPATCHED_B3_current_selected",
+      "current_events": [
+        "CURRENT_SELECTED"
+      ]
+    },
+    {
+      "case": "UNPATCHED_H_checkpoint_self_hash",
+      "current_present": true,
+      "rehydrated": true
+    },
+    {
+      "case": "UNPATCHED_D1_minted_release",
+      "release_key": "urn:rawlsing:pre553:m2:release:sha256:9bb149bfe9644151ce1be6e2bb09c47198f9bfc5eaf5e210385ad6606a0c627a"
+    }
+  ],
+  "patched": [
+    {
+      "case": "PATCHED_direct_stage_unknown",
+      "refusal_class": "UNKNOWN_RELEASE",
+      "refused": true
+    },
+    {
+      "case": "PATCHED_registered_forged_ceiling",
+      "mismatched": [
+        "permission_ceiling_key",
+        "receipt_keys",
+        "replay_root_key"
+      ],
+      "refusal_class": "IDENTITY_AUTHENTICATION_FAILED",
+      "refused": true
+    },
+    {
+      "case": "PATCHED_no_credential_surface",
+      "has_credential_field": false,
+      "request_fields": [
+        "slot"
+      ]
+    },
+    {
+      "case": "PATCHED_no_root_to_swap",
+      "repo_is_request_addressable": false,
+      "verifier_holds_repo_object": true
+    },
+    {
+      "case": "PATCHED_self_made_expectation_publish",
+      "refusal_class": "IDENTITY_AUTHENTICATION_FAILED",
+      "refused": true
+    },
+    {
+      "case": "PATCHED_self_made_expectation_constructed",
+      "constructed": true
+    },
+    {
+      "case": "PATCHED_self_made_event_refs",
+      "event_attribution_unproved": true,
+      "subject_still_held_authenticated": true
+    },
+    {
+      "case": "PATCHED_revoked_release",
+      "refusal_class": "AUTHORITY_REVOKED",
+      "refused": true
+    },
+    {
+      "case": "PATCHED_fake_permission",
+      "refusal_class": "IDENTITY_AUTHENTICATION_FAILED",
+      "refused": true
+    },
+    {
+      "case": "PATCHED_fake_checkpoint_hash",
+      "refusal_class": "CHECKPOINT_UNRESOLVED",
+      "refused": true
+    },
+    {
+      "authorizing": false,
+      "case": "PATCHED_legitimate_positive",
+      "current_selection_performed": false,
+      "publication": "PUBLISHED"
+    },
+    {
+      "case": "PATCHED_foreign_m2_registration",
+      "refusal_class": "UNREGISTERED_REPOSITORY",
+      "refused": true
+    },
+    {
+      "case": "PATCHED_mutated_repo_publish",
+      "refusal_class": "IDENTITY_AUTHENTICATION_FAILED",
+      "refused": true
+    },
+    {
+      "case": "PATCHED_stale_replay_grade",
+      "refusal_class": "REPLAY_CLOSURE_REFUSED",
+      "refused": true
+    },
+    {
+      "case": "PATCHED_truncated_replay",
+      "error": "VerifierCheckpointError",
+      "refusal_class": "CHECKPOINT_UNRESOLVED",
+      "refused": true
+    }
+  ]
+}
