@@ -1,3 +1,9 @@
+## PERSONA-FIRST HQ GATE — USER-DIRECTED CORRECTION (2026-10-12)
+
+**Before any new F6/EE12/temporal/survey synthesis commission**, read `PYAT_CONTROL_ROOM/HQ283_PERSONA_FIRST_INHERITED_METHODS_AND_HQ_GROK_CORRECTION_R1.md`. Project purpose is the complete survey-grounded **generated person**, not documentation-only science. Historical Crosswave Atlas, driver/facet/semantic mappings, V549b attitude clouds, V550–V553 original harmonization/temporal-pressure builders, Dva/Trii/Chetiri and Long Memory Authority 38–40 have already established meaningful capital. Prove whether those functions have a CURRENT accepted implementable successor and terminal V3 persona consumer before rebuilding any mechanism. Permit science-aware probabilistic approximation and explicit uncertainty without pretending modeled values are original measurements. Ghana EE12 and Afro×LiTS F6 are optional cases, not whole-project blockers. The existing Dva Governing Spirit and Terminal Demand Envelope already require end-product-first, downstream-aware engineering. No new source permission or semantic authority is issued by this working-HQ note.
+
+---
+
 ## Latest operative N01–N04 follow-up — decisions, not more archaeology
 
 Read `PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ282_COMPETENT_DECISIONS_AND_N04R_DISPATCH_20261012_R1.md`. Three private GitHub issues now request competent actual decisions: **#499** GT2 original/E-pre/real B02, **#500** Afro/LiTS genuine F6/N9 use, **#501** Ghana release/design/EE12. They are **unassigned, not approvals or external outreach**. An independent N04R checkpoint reviewer is separately sealed at `f6e20f14e73ea2bb13b65b91eea2f737df916e0e`, pending local worktree/model/quota qualification. Do not launch duplicate Browser source investigations or ordinary Codex; preserve Astra. No change to semantic/canonical/handoff authority.
