@@ -1,0 +1,67 @@
+{
+ "schema": "HQ280_PV3_A04TR_MANIFEST@1",
+ "reviewer_branch": "agent/reviewer-pyat-hq280-pv3-a04tr-independent-v2-verifier-hostile-r1",
+ "reviewer_head": "be553023c985c3e7f7a407c97773363b5440482c",
+ "candidate": "c1df9842b7531146f1d8e215f216915b9039e4d7",
+ "verifier_module_blob": "996c8e907f2befde93af09b60154b610c1ffeb63",
+ "authority": {
+  "governing": "HQD-2026-10-10-280",
+  "canonical": "a70a069fa948e0f3c041b389edcc732b6b948a4f",
+  "pre_main": "1f47063c3205a45888b3c55e81e7485943ed1390"
+ },
+ "actual_run": {
+  "collected": 44,
+  "passed": 43,
+  "failed": 1,
+  "exit_code": 1,
+  "failing_case": "test_accepted_owners_a04_a04s_a05_untouched",
+  "cause": "its git diff scope rawlsing_next/ necessarily includes the candidate's own two new files; the assertion can never pass on the committed branch",
+  "diff_output": [
+   "rawlsing_next/pre553_original_workload_v2_verifier_candidate.py",
+   "rawlsing_next/tests/test_pre553_original_workload_v2_verifier_candidate.py"
+  ],
+  "owner_modification_indicated": false,
+  "verdict": "CANDIDATE_TEST_DEFECT__OWNERS_EXONERATED_BY_THE_SAME_OUTPUT"
+ },
+ "grades": {
+  "TECHNICAL": "ACCEPTED_NARROW_WITH_ONE_TEST_DEFECT",
+  "INDEPENDENT_EXPECTATION_PROVENANCE": "STRUCTURALLY_SOUND_NOT_EXTERNALLY_SEALED",
+  "REAL_CONSUMER": "NOT_ESTABLISHED",
+  "SOURCE_ISSUER": "NOT_ESTABLISHED"
+ },
+ "credited": [
+  "versioned native V2 verifier instead of an A05 translation layer (resolves the A04R/A04SR objection at technical level)",
+  "raw-field-only frozen payload with independent recomputation of all seven identity kinds",
+  "does not demand equality with legacy A05 keys",
+  "carries measure_kind, condition_order, semantic/dispatch domains, forbidden null sources and never-success classes"
+ ],
+ "not_executed_recorded_UNKNOWN": [
+  "injected omissions/extras through the real chain",
+  "conditional-order substitution",
+  "RAW/weighted collision",
+  "false nulls",
+  "job-identity collision",
+  "self-certified manifest",
+  "fabricated consumer receipt"
+ ],
+ "deliverables": {
+  "00_RETURN.md": {
+   "sha256": "382fc019680ed13c621faec9c1cc98fadbebf4dbed7616401863dd754f96433b",
+   "bytes": 6289
+  }
+ },
+ "repro": {
+  "a04t_44_suite.log": {
+   "sha256": "14507f89758c0abf3797b43b45f2b2fe20d99700610ac1956a3c36d5fcdf504b",
+   "bytes": 1188
+  },
+  "owner_untouched_diff.txt": {
+   "sha256": "62d61b16aa814c263e2be7c8fa4c38b1fe3e57c336cdc560686f13bf7ab5d491",
+   "bytes": 139
+  }
+ },
+ "candidate_implementation_edited": false,
+ "raw_survey_executed": false,
+ "no_self_adoption": true,
+ "terminal": "HQ280_PV3_A04TR_INDEPENDENT_V2_VERIFIER_HOSTILE_RETURNED__NONISSUING__GITHUB_PUSHED"
+}
