@@ -1,0 +1,69 @@
+{
+  "authorizing": false,
+  "commands": {
+    "recorder": "PYTHONPATH=. python3 repro/a04t_evidence_recorder.py",
+    "v2_result": "44 passed",
+    "v2_verifier_suite": "python3 -m pytest rawlsing_next/tests/test_pre553_original_workload_v2_verifier_candidate.py -q"
+  },
+  "expected_payload_authoring": "raw plain-dict records in rawlsing_next/tests/test_pre553_original_workload_v2_verifier_candidate.py (_frozen_raws); owner dispatch refs extracted from the real catalog; no v2 constructors used for the payload",
+  "join_shape": "produce subprocess (may import all) -> plain-data JSON -> verify subprocess (candidate imports blocked, block proved active)",
+  "measured_data_file": "repro/a04t_verifier_runs.json",
+  "measured_data_sha256": "ab3b588f7e0668c85e9ac6b9f4b250f02e8332b8fdbcf78040ff1d2c8a504887",
+  "positive_run_summary": {
+    "actual_consumer_court": {
+      "code": "REAL_CONSUMER_MODELLED_NOT_EXECUTED",
+      "reason": "no authenticated consumer receipts exist; modelled receipts satisfy the structural join only",
+      "verdict": "HOLD"
+    },
+    "batch": {
+      "release_ref": {
+        "content_hash": "95de34f09fa9ae4aac6c6a3c73ea7ff9dff5ef18189bac940805f30126fce88c",
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-m01"
+      },
+      "source_sha": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54",
+      "units": 6
+    },
+    "candidate_import_blocked": true,
+    "custodian": {
+      "consistent": false,
+      "detail": "no custodian record supplied",
+      "finding": "CUSTODIAN_ABSENT",
+      "hold": "EXTERNAL_CUSTODIAN_ISSUER_HOLD",
+      "recomputed_frontier_digest": "fcd0abb637061dc6e79ec394a06c511dc775a10458795351bab47d935409cb78",
+      "signature_trusted": false,
+      "timestamp_trusted": false
+    },
+    "expected_key_count": 6,
+    "extra": [],
+    "failure_codes": [],
+    "frontier_digest": "fcd0abb637061dc6e79ec394a06c511dc775a10458795351bab47d935409cb78",
+    "holds": [
+      "EXTERNAL_CUSTODIAN_ISSUER_HOLD",
+      "REAL_CONSUMER_MODELLED_NOT_EXECUTED"
+    ],
+    "job_key_count": 6,
+    "migration_set_verdict": "NONREPRESENTABLE__SHARED_A05_TRIPLE_WOULD_COLLIDE",
+    "ok": true,
+    "omitted": [],
+    "result_classes": {
+      "03ffada8720986dc7a80c7ae0fd6a477c62d80ad50f4bb356b38a40b044490a3": "MEASURED_POSITIVE",
+      "0d8065b6d552659a73e2dd06f9b2fe700841d70750afb8758f770df98ff9bb65": "MEASURED_POSITIVE",
+      "1224205f851c15e659dba5cc1b0f0fcdba62f3f96da16f5094ba3821e1ed223a": "MEASURED_POSITIVE",
+      "6edd7cc7b0b4a0fdf570e0cabcb1bea5c6af1b056fb387ebce8fd709ee7f7d02": "MEASURED_POSITIVE",
+      "cb9a5cb0952589ce48275ff25657301fbd2d77d46e7ef8cc5bc3ded94b9e4010": "MEASURED_POSITIVE",
+      "f74104804d695684e6d33dab438b147db7e2f0cb41a8cd0fe3fda265b3aeeccc": "MEASURED_POSITIVE"
+    },
+    "unsatisfied_consumers": [],
+    "verifier_contract": "PYAT_HQ280_A04T_V2_INDEPENDENT_VERIFIER_CANDIDATE@1.0.0",
+    "visible_non_runnable": [
+      "24eef2ce9351f4b2b70eb4c3e5f80581ff1af9d2f1246825b8a3ab977dd5bfb7",
+      "27a10f7b97e78117e2064535a9824fe92aded0524addc67413c15a2cb7fa077a",
+      "9bf902ad56128b5c5dd010c0c505e9d5ca1b89ec2041fe5b7f0eaa23df68c8de",
+      "aeb1d86c2afa359b9d31be01e3e4781be82ec1535ef03aad3e036aeef53da654"
+    ]
+  },
+  "schema": "HQ280_PV3_A04T_ACTUAL_C11_BATCH_VERIFIER_RUNS@1.0.0",
+  "scope": "SOURCE_FREE_DEVELOPMENT_ONLY",
+  "terminal": "HQ280_PV3_A04T_ACTUAL_V2_INDEPENDENT_NO_DROP_VERIFIER_JOIN_OR_EXACT_HOLD__NONISSUING__GITHUB_PUSHED"
+}

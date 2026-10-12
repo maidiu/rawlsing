@@ -1,0 +1,336 @@
+{
+  "all_cases_actually_executed": true,
+  "authorizing": false,
+  "commission_coverage": {
+    "conditioning_substitutions": "H7",
+    "consumer_omission": "H12 + actual-court HOLD",
+    "custodian_forgery": "H21, H22 + rewritten-frontier test",
+    "duplicates": "H17 + bind refusals + freeze DUPLICATE",
+    "extra_jobs": "H5",
+    "false_null_unvisited": "H15, H16 + coverage controls",
+    "forged_release": "H14 (matched and unmatched jobs)",
+    "form_split_person_weight_source": "H9, risk/person swap, H10",
+    "key_forgery": "supplied-key forgery unit tests",
+    "laundering": "H11a (must PASS) + H11b (must FAIL)",
+    "omissions": "H1, H3, H4",
+    "own_dk_joint": "H8 (expectation and produced sides)",
+    "raw_weighted": "H19/H20 bind refusals + migration NONREPRESENTABLE",
+    "wrong_keys": "H6"
+  },
+  "decisive_evidence": {
+    "claim": "A produced manifest cannot certify itself as the independent expectation.",
+    "conclusion": "Self-reconciliation hid 4 omissions; frozen-universe reconciliation exposed them.",
+    "frozen_universe": {
+      "ok": false,
+      "omitted": 4
+    },
+    "self_certified": {
+      "ok": true,
+      "omitted_visible": 0
+    }
+  },
+  "reproduce": "PYTHONPATH=. python3 repro/a04t_evidence_recorder.py",
+  "results": [
+    {
+      "case": "H1-a-only-while-a-and-b-expected",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "REQUIRED_CONSUMER_OMITTED"
+      ],
+      "observed_ok": false,
+      "omitted_count": 4,
+      "unsatisfied_consumer_count": 4
+    },
+    {
+      "case": "H3-missing-j2-joint",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "REQUIRED_CONSUMER_OMITTED"
+      ],
+      "observed_ok": false,
+      "omitted_count": 1,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H4-missing-b-witness",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "REQUIRED_CONSUMER_OMITTED"
+      ],
+      "observed_ok": false,
+      "omitted_count": 4,
+      "unsatisfied_consumer_count": 4
+    },
+    {
+      "case": "H5-unauthorized-extra-work",
+      "expected": "FAIL",
+      "extra_count": 1,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "UNAUTHORIZED_EXTRA_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H6-same-count-different-keys",
+      "expected": "FAIL",
+      "extra_count": 1,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "REQUIRED_CONSUMER_OMITTED",
+        "UNAUTHORIZED_EXTRA_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 1,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H7-condition-order-substitution",
+      "expected": "FAIL",
+      "extra_count": 1,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "REQUIRED_CONSUMER_OMITTED",
+        "UNAUTHORIZED_EXTRA_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 1,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H8-own-dk-cotopic-fake-joint",
+      "expected": "FAIL",
+      "extra_count": 1,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "CANDIDATE_OWN_DK_JOINT",
+        "EXPECTED_OPERATION_OMITTED",
+        "REQUIRED_CONSUMER_OMITTED",
+        "UNAUTHORIZED_EXTRA_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 1,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H9-altered-document-version",
+      "expected": "FAIL",
+      "extra_count": 1,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "REQUIRED_CONSUMER_OMITTED",
+        "UNAUTHORIZED_EXTRA_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 1,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H10-source-identity-mismatch",
+      "expected": "FAIL",
+      "extra_count": 1,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "REQUIRED_CONSUMER_OMITTED",
+        "SOURCE_IDENTITY_MISMATCH",
+        "UNAUTHORIZED_EXTRA_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 1,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H11a-post-result-laundering-self-certifies",
+      "expected": "PASS",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [],
+      "observed_ok": true,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H11b-post-result-laundering-vs-frozen",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "REQUIRED_CONSUMER_OMITTED"
+      ],
+      "observed_ok": false,
+      "omitted_count": 4,
+      "unsatisfied_consumer_count": 4
+    },
+    {
+      "case": "H12-required-consumer-omitted",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "REQUIRED_CONSUMER_OMITTED"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H13-held-obligations-invisible",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "HELD_OR_DENIED_WORK_NOT_VISIBLE"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H14-forged-release-refused",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "FORGED_RELEASE"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H15-false-empirical-null",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "FALSE_EMPIRICAL_NULL"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H16-unvisited-discovery-reported-as-success",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "PARTIAL_OR_UNAVAILABLE_REPORTED_AS_SUCCESS"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H17-duplicate-constructed-job",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "DUPLICATE_CONSTRUCTED_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H18-missing-typed-result",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "MISSING_TYPED_RESULT"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H19-raw-weighted-collapse-refused-at-bind",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "BIND_TIME_REFUSAL"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H20-weight-measure-query-swap-refused-at-bind",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "BIND_TIME_REFUSAL"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H21-forged-custodian-digest-mismatch",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "CUSTODIAN_MISMATCH"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H22-consistent-forgery-still-holds-external-auth",
+      "expected": "PASS",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [],
+      "observed_ok": true,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "P2-migration-audit-honest",
+      "expected": "PASS",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [],
+      "observed_ok": true,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    }
+  ],
+  "schema": "HQ280_PV3_A04T_KEY_LOSS_OMISSION_CONSUMER_PROVENANCE_HOSTILES@1.0.0",
+  "scope": "SOURCE_FREE_DEVELOPMENT_ONLY",
+  "summary": {
+    "case_count": 23,
+    "must_fail": 20,
+    "must_fail_detected": 20,
+    "must_pass": 3,
+    "must_pass_passed": 3
+  },
+  "verifier_defects_found_by_running": [
+    "pure owner-ref joining cannot see documentary-level key swaps -> produced manifest now carries claimed mapping, checked AND cross-checked (CLAIMED_JOB_REF_MISMATCH)",
+    "SUPPORTED short-circuited the zero-denominator check -> denominator check now precedes all promotion",
+    "constructed-side source/release checks skipped unmatched jobs -> all produced units checked",
+    "extra claims never landed in verdict.extra -> recorded"
+  ]
+}

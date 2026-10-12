@@ -1,0 +1,434 @@
+{
+  "authorizing": false,
+  "environment": {
+    "machine": "x86_64",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit",
+    "python_executable": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/.pv3-venv/bin/python3",
+    "python_version": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]"
+  },
+  "existing_a04_a04s_a05_owners_untouched": [
+    {
+      "blob": "08bb75c431d3352cb0d17e9a65f7d855b4d35e59",
+      "path": "rawlsing_next/pre553_original_workload_contract_v2_candidate.py"
+    },
+    {
+      "blob": "7d8b3902c3f8f257637b7c07ad9feb5e096d48e5",
+      "path": "rawlsing_next/pre553_original_workload_binder_candidate.py"
+    },
+    {
+      "blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "path": "rawlsing_next/pre553_route_b_production.py"
+    },
+    {
+      "blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "path": "rawlsing_next/pre553_discovery_exact.py"
+    },
+    {
+      "blob": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+      "path": "rawlsing_next/pre553_batch_runner.py"
+    },
+    {
+      "blob": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+      "path": "rawlsing_next/pre553_carrier_execution.py"
+    },
+    {
+      "blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "path": "rawlsing_next/pre553_empirical_objects.py"
+    }
+  ],
+  "hostile_and_control_cases": [
+    {
+      "case": "H1-a-only-while-a-and-b-expected",
+      "description": "A submitted while A and B independently expected",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "REQUIRED_CONSUMER_OMITTED"
+      ],
+      "observed_ok": false,
+      "omitted_count": 4,
+      "unsatisfied_consumer_count": 4
+    },
+    {
+      "case": "H3-missing-j2-joint",
+      "description": "J2 omitted",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "REQUIRED_CONSUMER_OMITTED"
+      ],
+      "observed_ok": false,
+      "omitted_count": 1,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H4-missing-b-witness",
+      "description": "every B I03 operation omitted",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "REQUIRED_CONSUMER_OMITTED"
+      ],
+      "observed_ok": false,
+      "omitted_count": 4,
+      "unsatisfied_consumer_count": 4
+    },
+    {
+      "case": "H5-unauthorized-extra-work",
+      "description": "I03 job whose query the frozen universe never declared",
+      "expected": "FAIL",
+      "extra_count": 1,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "UNAUTHORIZED_EXTRA_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H6-same-count-different-keys",
+      "description": "equal manifest totals, renamed documentary item",
+      "expected": "FAIL",
+      "extra_count": 1,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "REQUIRED_CONSUMER_OMITTED",
+        "UNAUTHORIZED_EXTRA_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 1,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H7-condition-order-substitution",
+      "description": "q(C|A) declared with the reversed owner target order",
+      "expected": "FAIL",
+      "extra_count": 1,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "REQUIRED_CONSUMER_OMITTED",
+        "UNAUTHORIZED_EXTRA_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 1,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H8-own-dk-cotopic-fake-joint",
+      "description": "shared topic used as a joint warrant",
+      "expected": "FAIL",
+      "extra_count": 1,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "CANDIDATE_OWN_DK_JOINT",
+        "EXPECTED_OPERATION_OMITTED",
+        "REQUIRED_CONSUMER_OMITTED",
+        "UNAUTHORIZED_EXTRA_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 1,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H9-altered-document-version",
+      "description": "same item under a different form version",
+      "expected": "FAIL",
+      "extra_count": 1,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "REQUIRED_CONSUMER_OMITTED",
+        "UNAUTHORIZED_EXTRA_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 1,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H10-source-identity-mismatch",
+      "description": "expectation naming a source the owners never ran",
+      "expected": "FAIL",
+      "extra_count": 1,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "REQUIRED_CONSUMER_OMITTED",
+        "SOURCE_IDENTITY_MISMATCH",
+        "UNAUTHORIZED_EXTRA_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 1,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H11a-post-result-laundering-self-certifies",
+      "description": "truncated manifest reconciled against itself",
+      "expected": "PASS",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [],
+      "observed_ok": true,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H11b-post-result-laundering-vs-frozen",
+      "description": "same execution against the frozen universe",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "EXPECTED_OPERATION_OMITTED",
+        "REQUIRED_CONSUMER_OMITTED"
+      ],
+      "observed_ok": false,
+      "omitted_count": 4,
+      "unsatisfied_consumer_count": 4
+    },
+    {
+      "case": "H12-required-consumer-omitted",
+      "description": "every job present, one required consumer unsatisfied",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "REQUIRED_CONSUMER_OMITTED"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 1
+    },
+    {
+      "case": "H13-held-obligations-invisible",
+      "description": "held/denied/NA removed from the export",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "HELD_OR_DENIED_WORK_NOT_VISIBLE"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H14-forged-release-refused",
+      "description": "produced manifest bound to a foreign release",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "FORGED_RELEASE"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H15-false-empirical-null",
+      "description": "MEASURED_NULL laundered from AUTHORITY_UNAVAILABLE",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "FALSE_EMPIRICAL_NULL"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H16-unvisited-discovery-reported-as-success",
+      "description": "UNVISITED discovery claimed successful",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "PARTIAL_OR_UNAVAILABLE_REPORTED_AS_SUCCESS"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H17-duplicate-constructed-job",
+      "description": "two produced jobs, one unit identity",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "DUPLICATE_CONSTRUCTED_JOB"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H18-missing-typed-result",
+      "description": "job with no typed outcome",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "MISSING_TYPED_RESULT"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H19-raw-weighted-collapse-refused-at-bind",
+      "description": "WEIGHTED collapsed onto RAW: duplicate semantic identity",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "BIND_TIME_REFUSAL"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "producer_stderr_tail": [
+        "rawlsing_next.pre553_original_workload_contract_v2_candidate.V2MappingError: duplicate expected_work_key in dispatch bindings"
+      ],
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H20-weight-measure-query-swap-refused-at-bind",
+      "description": "WEIGHTED op pointed at the RAW query collapses jobs",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "BIND_TIME_REFUSAL"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "producer_stderr_tail": [
+        "rawlsing_next.pre553_original_workload_binder_candidate.BinderCandidateError: two distinct expected operations collapsed onto one semantic batch job"
+      ],
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H21-forged-custodian-digest-mismatch",
+      "description": "custodian digest does not match recomputation",
+      "expected": "FAIL",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "CUSTODIAN_MISMATCH"
+      ],
+      "observed_ok": false,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "H22-consistent-forgery-still-holds-external-auth",
+      "description": "matching digests prove integrity only; backdated timestamp recorded, never trusted",
+      "expected": "PASS",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [],
+      "observed_ok": true,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    },
+    {
+      "case": "P2-migration-audit-honest",
+      "description": "triple mapping audited; full-key equality never claimed; shared Y triple non-injective",
+      "expected": "PASS",
+      "extra_count": 0,
+      "met_expectation": true,
+      "observed_failure_codes": [],
+      "observed_ok": true,
+      "omitted_count": 0,
+      "unsatisfied_consumer_count": 0
+    }
+  ],
+  "nonauthorizing": true,
+  "positive_run": {
+    "actual_consumer_court": {
+      "code": "REAL_CONSUMER_MODELLED_NOT_EXECUTED",
+      "reason": "no authenticated consumer receipts exist; modelled receipts satisfy the structural join only",
+      "verdict": "HOLD"
+    },
+    "batch": {
+      "release_ref": {
+        "content_hash": "95de34f09fa9ae4aac6c6a3c73ea7ff9dff5ef18189bac940805f30126fce88c",
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-m01"
+      },
+      "source_sha": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54",
+      "units": 6
+    },
+    "candidate_import_blocked": true,
+    "custodian": {
+      "consistent": false,
+      "detail": "no custodian record supplied",
+      "finding": "CUSTODIAN_ABSENT",
+      "hold": "EXTERNAL_CUSTODIAN_ISSUER_HOLD",
+      "recomputed_frontier_digest": "fcd0abb637061dc6e79ec394a06c511dc775a10458795351bab47d935409cb78",
+      "signature_trusted": false,
+      "timestamp_trusted": false
+    },
+    "expected_key_count": 6,
+    "extra": [],
+    "failure_codes": [],
+    "frontier_digest": "fcd0abb637061dc6e79ec394a06c511dc775a10458795351bab47d935409cb78",
+    "holds": [
+      "EXTERNAL_CUSTODIAN_ISSUER_HOLD",
+      "REAL_CONSUMER_MODELLED_NOT_EXECUTED"
+    ],
+    "job_key_count": 6,
+    "migration_set_verdict": "NONREPRESENTABLE__SHARED_A05_TRIPLE_WOULD_COLLIDE",
+    "ok": true,
+    "omitted": [],
+    "result_classes": {
+      "03ffada8720986dc7a80c7ae0fd6a477c62d80ad50f4bb356b38a40b044490a3": "MEASURED_POSITIVE",
+      "0d8065b6d552659a73e2dd06f9b2fe700841d70750afb8758f770df98ff9bb65": "MEASURED_POSITIVE",
+      "1224205f851c15e659dba5cc1b0f0fcdba62f3f96da16f5094ba3821e1ed223a": "MEASURED_POSITIVE",
+      "6edd7cc7b0b4a0fdf570e0cabcb1bea5c6af1b056fb387ebce8fd709ee7f7d02": "MEASURED_POSITIVE",
+      "cb9a5cb0952589ce48275ff25657301fbd2d77d46e7ef8cc5bc3ded94b9e4010": "MEASURED_POSITIVE",
+      "f74104804d695684e6d33dab438b147db7e2f0cb41a8cd0fe3fda265b3aeeccc": "MEASURED_POSITIVE"
+    },
+    "unsatisfied_consumers": [],
+    "verifier_contract": "PYAT_HQ280_A04T_V2_INDEPENDENT_VERIFIER_CANDIDATE@1.0.0",
+    "visible_non_runnable": [
+      "24eef2ce9351f4b2b70eb4c3e5f80581ff1af9d2f1246825b8a3ab977dd5bfb7",
+      "27a10f7b97e78117e2064535a9824fe92aded0524addc67413c15a2cb7fa077a",
+      "9bf902ad56128b5c5dd010c0c505e9d5ca1b89ec2041fe5b7f0eaa23df68c8de",
+      "aeb1d86c2afa359b9d31be01e3e4781be82ec1535ef03aad3e036aeef53da654"
+    ]
+  },
+  "schema": "HQ280_PV3_A04T_VERIFIER_RUNS@1.0.0",
+  "scope": "SOURCE_FREE_DEVELOPMENT_ONLY",
+  "source_code_identity": [
+    {
+      "blob": "996c8e907f2befde93af09b60154b610c1ffeb63",
+      "path": "rawlsing_next/pre553_original_workload_v2_verifier_candidate.py"
+    },
+    {
+      "blob": "5799900d58b9949ab2784ea489f170f1be2f14bc",
+      "path": "rawlsing_next/tests/test_pre553_original_workload_v2_verifier_candidate.py"
+    }
+  ],
+  "summary": {
+    "case_count": 23,
+    "must_fail": 20,
+    "must_fail_detected": 20,
+    "must_pass": 3,
+    "must_pass_passed": 3
+  },
+  "terminal": "HQ280_PV3_A04T_ACTUAL_V2_INDEPENDENT_NO_DROP_VERIFIER_JOIN_OR_EXACT_HOLD__NONISSUING__GITHUB_PUSHED",
+  "total_wall_s": 7.833,
+  "verifier_contract": "PYAT_HQ280_A04T_V2_INDEPENDENT_VERIFIER_CANDIDATE@1.0.0",
+  "verifier_schema": "HQ280_PV3_A04T_V2_VERIFIER@1.0.0"
+}
