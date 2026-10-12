@@ -1,3 +1,5 @@
+> **FINAL R2 SCIENTIFIC CORRECTION (2026-10-12):** R1 source-free hostile checks were over-restrictive about equality of named target population, source time and geography. See `06_FINAL_SCIENTIFIC_CORRECTION_R2.md` and the executed successor `07_SOURCE_FREE_HOSTILES_R2.json` (the R1 record is preserved below). R2 requires a real competent EE13 compatibility decision rather than automatic equality; the underlying real two-family N9 HOLD remains unchanged.
+
 # PYAT HQ281 D06 — Two-family objective world / N9 return
 
 **Terminal:** `HQ281_D06_BOUNDED_PRODUCT_OR_EXACT_HOLD__GITHUB_PUSHED`

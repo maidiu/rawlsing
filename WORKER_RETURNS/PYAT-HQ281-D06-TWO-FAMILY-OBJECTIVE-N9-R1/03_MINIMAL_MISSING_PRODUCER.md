@@ -1,3 +1,5 @@
+> **R2 scientific corrigendum:** The R1 fixture demanded identical source time/place and distinct population labels; both were overconstraints. See `06_FINAL_SCIENTIFIC_CORRECTION_R2.md`. Independent sample universes/root custody must remain distinct; **the named target population may coincide**, and native time/place may differ only under a competent *explicit EE13 compatibility/selected-world-scope decision*, with all original indices retained. The runnable R2 contract supersedes the R1 test-only predicate but does not issue missing authority.
+
 # HQ281 D06 — Smallest generic missing producing edge and executable source-free court
 
 ## Concrete gap, no new generic ontology

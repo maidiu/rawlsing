@@ -1,0 +1,252 @@
+{
+  "schema": "PYAT_HQ281_D06_R2_SYNTHETIC_HOSTILE_CONTRACT_RESULTS",
+  "startup": "7f53f1eccdf797ab889534e5f48b94bbaefda12e",
+  "prior": "b51f453979c94180d5bd51d3bc2904c79ef77c99",
+  "execution_environment": "ACTUALLY_EXECUTED_JS_FUNCTIONS_IN_FUNCTIONS_EXEC_V8_ISOLATE_NOT_NODE_NOT_PYTEST_NOT_SOURCE",
+  "authority_grade": "ALL_AUTHORITIES_AND_FIELDS_SYNTHETIC_UNISSUED",
+  "passed": 40,
+  "failed": 0,
+  "cases": [
+    {
+      "id": "positive_synthetic_same_named_population_different_scopes",
+      "result": "SYNTHETIC_CONTRACT_SHAPE_PASS_ONLY",
+      "reason": "REAL_PRODUCER_ISSUANCE_AND_N9_RUNTIME_NOT_VERIFIED",
+      "pass": true
+    },
+    {
+      "id": "same_population_allowed_but_distinct_samples_required",
+      "result": "SYNTHETIC_CONTRACT_SHAPE_PASS_ONLY",
+      "reason": "REAL_PRODUCER_ISSUANCE_AND_N9_RUNTIME_NOT_VERIFIED",
+      "pass": true
+    },
+    {
+      "id": "different_time_and_place_allowed_only_with_issuer",
+      "result": "SYNTHETIC_CONTRACT_SHAPE_PASS_ONLY",
+      "reason": "REAL_PRODUCER_ISSUANCE_AND_N9_RUNTIME_NOT_VERIFIED",
+      "pass": true
+    },
+    {
+      "id": "duplicate_product",
+      "result": "HELD",
+      "reason": "DUPLICATE_FIELD_REF",
+      "pass": true
+    },
+    {
+      "id": "duplicate_family",
+      "result": "HELD",
+      "reason": "SAME_FAMILY_MASQUERADING_AS_TWO",
+      "pass": true
+    },
+    {
+      "id": "two_labels_one_underlying_custody",
+      "result": "HELD",
+      "reason": "NONINDEPENDENT_OR_DUPLICATE_SOURCE_ROOT",
+      "pass": true
+    },
+    {
+      "id": "two_families_one_source_root",
+      "result": "HELD",
+      "reason": "NONINDEPENDENT_OR_DUPLICATE_SOURCE_ROOT",
+      "pass": true
+    },
+    {
+      "id": "one_sample_pseudojoin",
+      "result": "HELD",
+      "reason": "FALSE_CROSS_SOURCE_POOLING",
+      "pass": true
+    },
+    {
+      "id": "pooled_mode",
+      "result": "HELD",
+      "reason": "FALSE_CROSS_SOURCE_POOLING",
+      "pass": true
+    },
+    {
+      "id": "forged_source_root",
+      "result": "HELD",
+      "reason": "FORGED_OR_UNBOUND_FIELD_IDENTITY_SOURCEROOTREF",
+      "pass": true
+    },
+    {
+      "id": "forged_hash",
+      "result": "HELD",
+      "reason": "FORGED_OR_UNBOUND_FIELD_IDENTITY_PRODUCTHASH",
+      "pass": true
+    },
+    {
+      "id": "missing_producer_issuer",
+      "result": "HELD",
+      "reason": "PRODUCT_OR_ISSUER_NOT_AUTHENTICATED",
+      "pass": true
+    },
+    {
+      "id": "fake_producer_issuer",
+      "result": "HELD",
+      "reason": "FIELD_PRODUCER_ISSUER_NOT_COMPETENT",
+      "pass": true
+    },
+    {
+      "id": "unissued_field",
+      "result": "HELD",
+      "reason": "PRODUCT_OR_ISSUER_NOT_AUTHENTICATED",
+      "pass": true
+    },
+    {
+      "id": "subjective_context_to_institution",
+      "result": "HELD",
+      "reason": "SUBJECTIVE_OR_DOCUMENTARY_NOT_OBJECTIVE",
+      "pass": true
+    },
+    {
+      "id": "official_legal_text_without_field_producer",
+      "result": "HELD",
+      "reason": "SUBJECTIVE_OR_DOCUMENTARY_NOT_OBJECTIVE",
+      "pass": true
+    },
+    {
+      "id": "external_survey_judgment_to_structural",
+      "result": "HELD",
+      "reason": "SUBJECTIVE_OR_DOCUMENTARY_NOT_OBJECTIVE",
+      "pass": true
+    },
+    {
+      "id": "causal_overclaim",
+      "result": "HELD",
+      "reason": "UNAUTHORIZED_USE_OR_CAUSAL_INFERENCE",
+      "pass": true
+    },
+    {
+      "id": "actor_overclaim",
+      "result": "HELD",
+      "reason": "UNAUTHORIZED_USE_OR_CAUSAL_INFERENCE",
+      "pass": true
+    },
+    {
+      "id": "model_use_overclaim",
+      "result": "HELD",
+      "reason": "UNAUTHORIZED_USE_OR_CAUSAL_INFERENCE",
+      "pass": true
+    },
+    {
+      "id": "producer_use_not_authorized",
+      "result": "HELD",
+      "reason": "NO_PRODUCER_WORLD_CONTEXT_PERMISSION",
+      "pass": true
+    },
+    {
+      "id": "uncertainty_stripped",
+      "result": "HELD",
+      "reason": "FORGED_OR_UNBOUND_FIELD_IDENTITY_UNCERTAINTYSTATE",
+      "pass": true
+    },
+    {
+      "id": "estimand_identity_corrupted",
+      "result": "HELD",
+      "reason": "FORGED_OR_UNBOUND_FIELD_IDENTITY_ESTIMANDREF",
+      "pass": true
+    },
+    {
+      "id": "source_time_forgery",
+      "result": "HELD",
+      "reason": "FORGED_OR_UNBOUND_FIELD_IDENTITY_TIMESCOPEREF",
+      "pass": true
+    },
+    {
+      "id": "source_place_forgery",
+      "result": "HELD",
+      "reason": "FORGED_OR_UNBOUND_FIELD_IDENTITY_PLACESCOPEREF",
+      "pass": true
+    },
+    {
+      "id": "original_universe_reidentified",
+      "result": "HELD",
+      "reason": "NONINDEPENDENT_OR_DUPLICATE_SOURCE_ROOT",
+      "pass": true
+    },
+    {
+      "id": "missing_ee13_issuer",
+      "result": "HELD",
+      "reason": "MISSING_COMPETENT_EE13",
+      "pass": true
+    },
+    {
+      "id": "ee13_issuer_not_competent",
+      "result": "HELD",
+      "reason": "EE13_ISSUER_NOT_COMPETENT",
+      "pass": true
+    },
+    {
+      "id": "ee13_fake_pair",
+      "result": "HELD",
+      "reason": "EE13_NOT_BOUND_TO_EXACT_PRODUCT_PAIR",
+      "pass": true
+    },
+    {
+      "id": "ee13_compatibility_held",
+      "result": "HELD",
+      "reason": "EE13_SCOPE_OR_PERMISSION_MISMATCH",
+      "pass": true
+    },
+    {
+      "id": "ee13_scope_binding_time_wrong",
+      "result": "HELD",
+      "reason": "EE13_ORIGINAL_SCOPE_BINDING_MISMATCH",
+      "pass": true
+    },
+    {
+      "id": "ee13_world_scope_wrong",
+      "result": "HELD",
+      "reason": "EE13_SCOPE_OR_PERMISSION_MISMATCH",
+      "pass": true
+    },
+    {
+      "id": "world_selection_absent",
+      "result": "HELD",
+      "reason": "MISSING_SELECTED_WORLD_CURRENTNESS",
+      "pass": true
+    },
+    {
+      "id": "selection_issuer_not_competent",
+      "result": "HELD",
+      "reason": "WORLD_SELECTION_ISSUER_NOT_COMPETENT",
+      "pass": true
+    },
+    {
+      "id": "missing_actual_consumer",
+      "result": "HELD",
+      "reason": "NO_ACTUAL_N9_TWO_FIELD_CONSUMER",
+      "pass": true
+    },
+    {
+      "id": "consumer_not_actually_run",
+      "result": "HELD",
+      "reason": "NO_ACTUAL_N9_TWO_FIELD_CONSUMER",
+      "pass": true
+    },
+    {
+      "id": "n9_issuer_not_competent",
+      "result": "HELD",
+      "reason": "N9_CONSUMER_ISSUER_NOT_COMPETENT",
+      "pass": true
+    },
+    {
+      "id": "n9_dropped_second_field",
+      "result": "HELD",
+      "reason": "N9_FAILED_TO_CONSUME_BOTH",
+      "pass": true
+    },
+    {
+      "id": "n9_output_forgery",
+      "result": "HELD",
+      "reason": "N9_QUERY_OUTPUT_CLOSURE_MISMATCH",
+      "pass": true
+    },
+    {
+      "id": "n9_pooled_consumption",
+      "result": "HELD",
+      "reason": "N9_SCOPE_OR_POOLING_WIDENED",
+      "pass": true
+    }
+  ],
+  "world_claim": "NO_TWO_FAMILY_OBJECTIVE_OR_N9_RUNTIME_DEMONSTRATED"
+}
