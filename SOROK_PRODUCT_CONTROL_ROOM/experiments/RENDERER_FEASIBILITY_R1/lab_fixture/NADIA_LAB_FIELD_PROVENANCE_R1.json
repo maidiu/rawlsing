@@ -1,0 +1,436 @@
+{
+  "document_type": "RFA05_LAB_FIELD_PROVENANCE_R1",
+  "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+  "inherited_schema": {
+    "source": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/RFA_R_RECONCILIATION_R1/LABORATORY_TURN_TARGET_SCHEMA_R1.json",
+    "sha": "e65846bbb1c38a366d79b54bb89be47da0f8502e",
+    "immutable_target": true
+  },
+  "inherited_ledger": {
+    "source": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/RFA_R_RECONCILIATION_R1/FIELD_PROVENANCE_LEDGER_R1.json",
+    "sha": "e65846bbb1c38a366d79b54bb89be47da0f8502e",
+    "origin_classes": [
+      "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+      "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT",
+      "SOROK_PROVISIONAL_PRODUCT_REQUIREMENT",
+      "LAB_SURROGATE_ONLY",
+      "UNRESOLVED_FUTURE_OWNER"
+    ]
+  },
+  "design_rule": "Top-level case slots exactly follow the reconciled schema; each slot preserves exact RFA-R origin classification, while every instance value and all seeded canon facts are hand-authored lab surrogates, never actual future-owner output.",
+  "field_provenance": {
+    "fixture_identity": {
+      "reconciled_origin_type": "LAB_SURROGATE_ONLY",
+      "source_evidence": [
+        "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb",
+        "RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "canonical_precontact_history": {
+      "reconciled_origin_type": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/100_MINIMAL_WHITE_WHALE_ALPHA_AND_FIDELITY_ESCALATION_CONSTITUTION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "durable_person_owner_refs": {
+      "reconciled_origin_type": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "relation_scoped_person_organization": {
+      "reconciled_origin_type": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "relation_class_generalization": {
+      "reconciled_origin_type": "UNRESOLVED_FUTURE_OWNER",
+      "source_evidence": [
+        "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb",
+        "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "MUST_BE_NULL_WITH_UNAUTHORIZED_OR_UNKNOWN_STATUS"
+    },
+    "nadia_model_of_user": {
+      "reconciled_origin_type": "UNRESOLVED_FUTURE_OWNER",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/100_MINIMAL_WHITE_WHALE_ALPHA_AND_FIDELITY_ESCALATION_CONSTITUTION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "MUST_BE_NULL_WITH_UNAUTHORIZED_OR_UNKNOWN_STATUS"
+    },
+    "objective_relationship_history": {
+      "reconciled_origin_type": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "nadia_perceived_relationships": {
+      "reconciled_origin_type": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "independent_projects_and_competencies": {
+      "reconciled_origin_type": "UNRESOLVED_FUTURE_OWNER",
+      "source_evidence": [
+        "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "MUST_BE_NULL_WITH_UNAUTHORIZED_OR_UNKNOWN_STATUS"
+    },
+    "current_world_slice": {
+      "reconciled_origin_type": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/100_MINIMAL_WHITE_WHALE_ALPHA_AND_FIDELITY_ESCALATION_CONSTITUTION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "current_material_organismic_state": {
+      "reconciled_origin_type": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "exact_user_event": {
+      "reconciled_origin_type": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "machine_event_interpretation": {
+      "reconciled_origin_type": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "actor_perception_opportunity": {
+      "reconciled_origin_type": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "can008_receivability": {
+      "reconciled_origin_type": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "can008_uptake_appraisal": {
+      "reconciled_origin_type": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "can008_recruitment": {
+      "reconciled_origin_type": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "can008_response_streams": {
+      "reconciled_origin_type": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "actor_accessibility_and_uncertainty": {
+      "reconciled_origin_type": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb",
+        "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "current_focality_and_self_explanation": {
+      "reconciled_origin_type": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "communicative_intention_and_inhibition": {
+      "reconciled_origin_type": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "pff_interaction_context": {
+      "reconciled_origin_type": "SOROK_PROVISIONAL_PRODUCT_REQUIREMENT",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "pff_actor_local_fast_carryover": {
+      "reconciled_origin_type": "SOROK_PROVISIONAL_PRODUCT_REQUIREMENT",
+      "source_evidence": [
+        "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "expression_action_constraints": {
+      "reconciled_origin_type": "SOROK_PROVISIONAL_PRODUCT_REQUIREMENT",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-03/REPORT.md@81baa3cd7f2f399a4219c6da1988e6627d959236"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "actor_realization_candidate": {
+      "reconciled_origin_type": "SOROK_PROVISIONAL_PRODUCT_REQUIREMENT",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-03/REPORT.md@81baa3cd7f2f399a4219c6da1988e6627d959236"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "unresolved_materialization_permissions": {
+      "reconciled_origin_type": "UNRESOLVED_FUTURE_OWNER",
+      "source_evidence": [
+        "RFA-03/REPORT.md@81baa3cd7f2f399a4219c6da1988e6627d959236",
+        "RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "MUST_BE_NULL_WITH_UNAUTHORIZED_OR_UNKNOWN_STATUS"
+    },
+    "objective_occurrence_admission": {
+      "reconciled_origin_type": "SOROK_PROVISIONAL_PRODUCT_REQUIREMENT",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-03/REPORT.md@81baa3cd7f2f399a4219c6da1988e6627d959236",
+        "RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "owner_specific_durable_effect_candidates": {
+      "reconciled_origin_type": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "effect_commit_or_defer_receipts": {
+      "reconciled_origin_type": "LAB_SURROGATE_ONLY",
+      "source_evidence": [
+        "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053",
+        "RFA-03/REPORT.md@81baa3cd7f2f399a4219c6da1988e6627d959236"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "user_phenomenal_allowlist": {
+      "reconciled_origin_type": "SOROK_PROVISIONAL_PRODUCT_REQUIREMENT",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "user_attention_recognition_access": {
+      "reconciled_origin_type": "SOROK_PROVISIONAL_PRODUCT_REQUIREMENT",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "user_phenomenal_output": {
+      "reconciled_origin_type": "SOROK_PROVISIONAL_PRODUCT_REQUIREMENT",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "user_exposure_and_interpretation": {
+      "reconciled_origin_type": "SOROK_PROVISIONAL_PRODUCT_REQUIREMENT",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "forbidden_knowledge_and_invention": {
+      "reconciled_origin_type": "SOROK_PROVISIONAL_PRODUCT_REQUIREMENT",
+      "source_evidence": [
+        "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+        "RFA-03/REPORT.md@81baa3cd7f2f399a4219c6da1988e6627d959236",
+        "RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    },
+    "status_and_provenance": {
+      "reconciled_origin_type": "LAB_SURROGATE_ONLY",
+      "source_evidence": [
+        "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb",
+        "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053",
+        "RFA-03/REPORT.md@81baa3cd7f2f399a4219c6da1988e6627d959236",
+        "RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+      ],
+      "fixture_value_origin": "LAB_SURROGATE_ONLY",
+      "permission_rule": "INSTANCE_MUST_BE_EXPLICITLY_TAGGED"
+    }
+  },
+  "seeded_fact_domains": [
+    {
+      "category": "immutable_precontact_events",
+      "origin_type": "LAB_SURROGATE_ONLY",
+      "marker": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "claim": "No V3 generation or owner-commit proved"
+    },
+    {
+      "category": "durable_organization",
+      "origin_type": "LAB_SURROGATE_ONLY",
+      "marker": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "claim": "No V3 generation or owner-commit proved"
+    },
+    {
+      "category": "material_constraints",
+      "origin_type": "LAB_SURROGATE_ONLY",
+      "marker": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "claim": "No V3 generation or owner-commit proved"
+    },
+    {
+      "category": "independent_life_activity",
+      "origin_type": "LAB_SURROGATE_ONLY",
+      "marker": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "claim": "No V3 generation or owner-commit proved"
+    },
+    {
+      "category": "memory_access_register",
+      "origin_type": "LAB_SURROGATE_ONLY",
+      "marker": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "claim": "No V3 generation or owner-commit proved"
+    },
+    {
+      "category": "knowledge_capability_boundaries",
+      "origin_type": "LAB_SURROGATE_ONLY",
+      "marker": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "claim": "No V3 generation or owner-commit proved"
+    },
+    {
+      "category": "objective_truth_register",
+      "origin_type": "LAB_SURROGATE_ONLY",
+      "marker": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "claim": "No V3 generation or owner-commit proved"
+    },
+    {
+      "category": "relation episodes and branch events",
+      "origin_type": "LAB_SURROGATE_ONLY",
+      "marker": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "claim": "No V3 generation or owner-commit proved"
+    },
+    {
+      "category": "world inventory",
+      "origin_type": "LAB_SURROGATE_ONLY",
+      "marker": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "claim": "No V3 generation or owner-commit proved"
+    },
+    {
+      "category": "actor projection",
+      "origin_type": "LAB_SURROGATE_ONLY",
+      "marker": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "claim": "No V3 generation or owner-commit proved"
+    },
+    {
+      "category": "case slot values",
+      "origin_type": "LAB_SURROGATE_ONLY",
+      "marker": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "claim": "No V3 generation or owner-commit proved"
+    },
+    {
+      "category": "evaluator oracles",
+      "origin_type": "LAB_SURROGATE_ONLY",
+      "marker": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "claim": "No V3 generation or owner-commit proved"
+    }
+  ],
+  "admission_hierarchy": [
+    "EVALUATOR_ONLY_CANON",
+    "ACTOR_ACCESSIBLE_PROJECTION",
+    "MODEL_CANDIDATE_NOT_ADMITTED",
+    "LAB_ADMISSION_IF_PASSED",
+    "DOWNSTREAM_USER_PHENOMENAL_ALLOWLIST"
+  ],
+  "unresolved_future_owner_gaps": [
+    "relation_class_generalization",
+    "nadia_model_of_user",
+    "independent_projects_and_competencies",
+    "unresolved_materialization_permissions"
+  ],
+  "evidence_refs": {
+    "reconciliation_return": "e65846bbb1c38a366d79b54bb89be47da0f8502e",
+    "sorok_base": "da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+    "rfa01": "75c6d24ccad0f07344712fcba94878288acf33eb",
+    "rfa02": "cb156ee99c040eb52dfd87155e7e446eb9dc7053",
+    "rfa03": "81baa3cd7f2f399a4219c6da1988e6627d959236",
+    "rfa04": "9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+  }
+}

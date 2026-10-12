@@ -1,0 +1,13 @@
+# RFA-05 — Laboratory Nadia / ten first turns
+
+**Verdict proposed:** `READY_FOR_RENDERER_EXPERIMENT` (surrogate only, no API execution). **All invented facts:** `HAND_AUTHORED_LAB_SURROGATE_ONLY`.
+
+**Upstream authority:** SOROK base `da6f3c5e43f7f12c8c33f0109f2894e37b482e7d`; independently reconciled RFA-R `e65846bbb1c38a366d79b54bb89be47da0f8502e`; [RFA-R REPORT](https://github.com/maidiu/rawlsing/blob/e65846bbb1c38a366d79b54bb89be47da0f8502e/SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/RFA_R_RECONCILIATION_R1/REPORT.md) and [fixed schema](https://github.com/maidiu/rawlsing/blob/e65846bbb1c38a366d79b54bb89be47da0f8502e/SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/RFA_R_RECONCILIATION_R1/LABORATORY_TURN_TARGET_SCHEMA_R1.json).
+
+The RFA-05 branch was created from the exact SOROK base. The reconciliation lives at a separate immutable SHA; it is cited, not silently promoted to this branch's historical root. Each RF file has exactly the adjudicated top-level slots, typed `state/value/evidence_refs/source_owner/causal_time/scope`; values are hand-authored lab surrogates with per-slot notes and separate full field provenance. No invented production psychology owner.
+
+**Files:** immutable person and evaluator truth in `NADIA_LAB_CANON_R1.json`; read-only distributed expressive substrate in `NADIA_LAB_WHOLE_PERSON_RENDER_SUBSTRATE_R1.json`; segregated participant relation, perspectives, and RF009 copy-on-write fork in `NADIA_LAB_RELATION_USER_R1.json`; bounded materials in `NADIA_LAB_WORLD_STATE_R1.json`; field-origin crosswalk in `NADIA_LAB_FIELD_PROVENANCE_R1.json`. Ten RF files are independent first-turn experiments, not a continuous Nadia conversation. The output schema is for an **unadmitted model proposal**, and the contract describes a distinct deterministic admission gate.
+
+**NEVER pass a complete case file, complete canon, or scoring oracle to Claude.** Construct actor input solely from `expression_action_constraints.value.actor_safe_projection` and actor-permitted documented world details. Full cases and `status_and_provenance.value.evaluator_only_oracle` remain evaluator-only. User-specific phenomenal rendering does not belong to this experiment. A model response is not an admitted objective occurrence. `UNAUTHORIZED` fields stay null, and missing authority does not become `VALID_EMPTY`. **No Claude scoring or model calls conducted.**
+
+Validation: `node VALIDATE_LAB_FIXTURES_R1.js` (Node 18+) checks top-level schema conformance, status/owner/evidence provenance, NULL unresolved gaps, case count and RF008/RF009 paired stimulus. It is an offline structural test, not a substitute for the post-model admission court or a production JSON Schema validator.

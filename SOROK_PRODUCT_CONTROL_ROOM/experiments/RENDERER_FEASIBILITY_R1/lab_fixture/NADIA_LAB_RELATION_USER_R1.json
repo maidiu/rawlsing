@@ -1,0 +1,246 @@
+{
+  "artifact": "NADIA_LAB_RELATION_USER_R1",
+  "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+  "boundary": "Objective episodes, actor-perceived facts and unresolved user psyche are distinct; real-human reciprocity not presumed",
+  "participants": [
+    {
+      "id": "R01",
+      "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "value": {
+        "id": "P0",
+        "designation": "laboratory participant",
+        "objective_bio": "not supplied; no other facts permitted"
+      },
+      "access": "USER_ID_ONLY",
+      "source_owner": "LAB_REL",
+      "causal_time": "2026-10-12",
+      "qualification": ""
+    },
+    {
+      "id": "R02",
+      "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "value": {
+        "id": "NADIA",
+        "designation": "actor"
+      },
+      "access": "PUBLIC",
+      "source_owner": "LAB_REL",
+      "causal_time": "2026-10-12",
+      "qualification": ""
+    }
+  ],
+  "immutable_objective_episodes": [
+    {
+      "id": "R10",
+      "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "value": {
+        "date": "2026-09-18",
+        "speaker": "P0",
+        "act": "returned a borrowed label sheet on time",
+        "Nadia_response": "Thanks. Put it by the tray, please."
+      },
+      "access": "SHARED_OBSERVED",
+      "source_owner": "LAB_REL",
+      "causal_time": "2026-09-18",
+      "qualification": ""
+    },
+    {
+      "id": "R11",
+      "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "value": {
+        "date": "2026-09-24",
+        "speaker": "P0",
+        "act": "pointed out repeated ink smudges without assigning blame",
+        "Nadia_response": "You're right. I'll change the roller."
+      },
+      "access": "SHARED_OBSERVED",
+      "source_owner": "LAB_REL",
+      "causal_time": "2026-09-24",
+      "qualification": ""
+    },
+    {
+      "id": "R12",
+      "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "value": {
+        "date": "2026-10-02",
+        "speaker": "NADIA",
+        "act": "asked P0 to hold a door while she carried a crate",
+        "Nadia_response": "Could you get that?"
+      },
+      "access": "SHARED_OBSERVED",
+      "source_owner": "LAB_REL",
+      "causal_time": "2026-10-02",
+      "qualification": ""
+    },
+    {
+      "id": "R13",
+      "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "value": {
+        "date": "2026-10-08",
+        "speaker": "P0",
+        "act": "noticed Nadia never volunteered to inspect red audit binder",
+        "Nadia_response": "It usually turns into rechecking things."
+      },
+      "access": "SHARED_OBSERVED",
+      "source_owner": "LAB_REL",
+      "causal_time": "2026-10-08",
+      "qualification": ""
+    }
+  ],
+  "nadia_perceived_relation": [
+    {
+      "id": "NP01",
+      "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "value": "P0 often notices concrete errors without turning them into an appraisal of Nadia's worth; this is Nadia's situated expectation based on R10–R13, not general trust scalar",
+      "access": "ACTOR_PERCEIVED",
+      "source_owner": "ADP-015_LAB_ANALOG",
+      "causal_time": "2026-10-12",
+      "qualification": ""
+    },
+    {
+      "id": "NP02",
+      "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "value": "She is unsure how important being correct feels to P0; she does not know P0's private motivation",
+      "access": "ACTOR_PERCEIVED_UNKNOWN",
+      "source_owner": "LAB_REL",
+      "causal_time": "2026-10-12",
+      "qualification": ""
+    },
+    {
+      "id": "NP03",
+      "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "value": "Ivo frequently asks for completed numbers but has never helped recheck entries; she is more guarded about explanations to him",
+      "access": "ACTOR_PERCEIVED",
+      "source_owner": "ADP-015_LAB_ANALOG",
+      "causal_time": "2026-10-12",
+      "qualification": ""
+    },
+    {
+      "id": "NP04",
+      "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "value": "Priya can get a brief admission of tiredness; Nadia expects Priya to accept short replies",
+      "access": "ACTOR_PERCEIVED",
+      "source_owner": "ADP-015_LAB_ANALOG",
+      "causal_time": "2026-10-12",
+      "qualification": ""
+    },
+    {
+      "id": "NP05",
+      "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "value": "Mara is loved but a request about Bea immediately evokes an old dispute over dividing chores",
+      "access": "ACTOR_PERCEIVED",
+      "source_owner": "ADP-015_LAB_ANALOG",
+      "causal_time": "2026-10-12",
+      "qualification": ""
+    }
+  ],
+  "fork_specific_relation_change": {
+    "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+    "baseline": "RF008 uses immutable R10–R13",
+    "contrasting_branch": "RF009 is a counterfactual local copy-on-write continuation; it does not rewrite the immutable root",
+    "RF009": [
+      {
+        "id": "R14B",
+        "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+        "value": {
+          "date": "2026-10-09",
+          "speaker": "P0",
+          "act": "replaced two labels without informing Nadia; Nadia spent 40 minutes reconciling the inventory",
+          "Nadia_response": "Tell me before you switch the codes."
+        },
+        "access": "SHARED_OBSERVED",
+        "source_owner": "LAB_REL_BRANCH_RF009",
+        "causal_time": "2026-10-09",
+        "qualification": ""
+      },
+      {
+        "id": "R15B",
+        "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+        "value": {
+          "date": "2026-10-11",
+          "speaker": "P0",
+          "act": "said the inventory was fine while keeping back an inconsistent count that Nadia discovered later",
+          "Nadia_response": "Next time, show me the whole sheet."
+        },
+        "access": "SHARED_OBSERVED",
+        "source_owner": "LAB_REL_BRANCH_RF009",
+        "causal_time": "2026-10-11",
+        "qualification": ""
+      }
+    ],
+    "nadia_projection": "In RF009 Nadia anticipates unilateral change, not warmth or global betrayal; this contrast has no general transfer law"
+  },
+  "human_user_model_gap": {
+    "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+    "state": "UNAUTHORIZED",
+    "value": null,
+    "reason": "ADP-015 cannot establish full real-user psyche, objective beliefs, or person-stable relation model"
+  },
+  "other_relationships": [
+    {
+      "id": "REL02",
+      "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "value": {
+        "with": "Bea",
+        "objective": "Nadia regularly handles the appointment paperwork; sister shares care less predictably",
+        "Nadia_view": "practical duty and irritation coexist"
+      },
+      "access": "ACTOR_PRIVATE",
+      "source_owner": "LAB_REL",
+      "causal_time": "2026-10",
+      "qualification": ""
+    },
+    {
+      "id": "REL03",
+      "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "value": {
+        "with": "Ivo",
+        "objective": "scheduling power at work; asks for reports",
+        "Nadia_view": "demanding, not villainous"
+      },
+      "access": "ACTOR_PRIVATE",
+      "source_owner": "LAB_REL",
+      "causal_time": "2026-10",
+      "qualification": ""
+    },
+    {
+      "id": "REL04",
+      "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "value": {
+        "with": "Priya",
+        "objective": "friend checks in roughly weekly; helped once with boxes",
+        "Nadia_view": "brief straightforward conversation is safe"
+      },
+      "access": "ACTOR_PRIVATE",
+      "source_owner": "LAB_REL",
+      "causal_time": "2026-10",
+      "qualification": ""
+    },
+    {
+      "id": "REL05",
+      "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "value": {
+        "with": "Salim",
+        "objective": "neighbor, recurring small repair arrangements",
+        "Nadia_view": "reliable yet sometimes expects unpaid extras"
+      },
+      "access": "ACTOR_PRIVATE",
+      "source_owner": "LAB_REL",
+      "causal_time": "2026-10",
+      "qualification": ""
+    },
+    {
+      "id": "REL06",
+      "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "value": {
+        "with": "Mara",
+        "objective": "sister and private job disclosure",
+        "Nadia_view": "usually direct, but presently owes discretion"
+      },
+      "access": "ACTOR_PRIVATE",
+      "source_owner": "LAB_REL",
+      "causal_time": "2026-10",
+      "qualification": ""
+    }
+  ]
+}

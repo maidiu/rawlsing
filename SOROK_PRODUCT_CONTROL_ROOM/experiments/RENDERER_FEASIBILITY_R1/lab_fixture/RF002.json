@@ -1,0 +1,665 @@
+{
+  "fixture_identity": {
+    "state": "PRESENT",
+    "value": {
+      "id": "RF002",
+      "case_title": "Incorrect user interpretation",
+      "root": "NADIA_LAB_PRECONTACT_ROOT_R1",
+      "branch": "RF002",
+      "at": "2026-10-12T17:20:00-04:00",
+      "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "reconciliation_sha": "e65846bbb1c38a366d79b54bb89be47da0f8502e"
+    },
+    "evidence_refs": [
+      "LAB_RFA05:RF002:fixture_identity",
+      "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb",
+      "RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+    ],
+    "source_owner": "LAB_FIXTURE",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Independent first-turn counterfactual; not consecutive events"
+  },
+  "canonical_precontact_history": {
+    "state": "PRESENT",
+    "value": {
+      "ref": "NADIA_LAB_CANON_R1.json",
+      "root_id": "NADIA_LAB_PRECONTACT_ROOT_R1",
+      "immutable": true,
+      "read_only": true
+    },
+    "evidence_refs": [
+      "LAB_RFA05:RF002:canonical_precontact_history",
+      "SOROK_PRODUCT_CONTROL_ROOM/100_MINIMAL_WHITE_WHALE_ALPHA_AND_FIDELITY_ESCALATION_CONSTITUTION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+    ],
+    "source_owner": "LAB_ROOT",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. No mutation or repair of historical canon"
+  },
+  "durable_person_owner_refs": {
+    "state": "PRESENT",
+    "value": {
+      "projection": "NADIA_LAB_WHOLE_PERSON_RENDER_SUBSTRATE_R1.json",
+      "emulation_only": true,
+      "owner_refs": [
+        "CAN-009_LAB_ANALOG",
+        "CAN-010/011_LAB_ANALOG",
+        "ADP-015/016/017_LAB_ANALOG",
+        "CAN-012_LAB_ANALOG"
+      ],
+      "immutable_root": true
+    },
+    "evidence_refs": [
+      "LAB_RFA05:RF002:durable_person_owner_refs",
+      "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+    ],
+    "source_owner": "LAB_DURABLE_READ_ONLY",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Actor-safe retrieval bounded; not a new owner"
+  },
+  "relation_scoped_person_organization": {
+    "state": "PRESENT",
+    "value": {
+      "base": "NADIA_LAB_RELATION_USER_R1.json",
+      "active_branch": "BASELINE",
+      "relation": "baseline P0"
+    },
+    "evidence_refs": [
+      "LAB_RFA05:RF002:relation_scoped_person_organization",
+      "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+    ],
+    "source_owner": "ADP-015_LAB_ANALOG",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. No generic relation-prior owner"
+  },
+  "relation_class_generalization": {
+    "state": "UNAUTHORIZED",
+    "value": null,
+    "evidence_refs": [
+      "LAB_RFA05:RF002:relation_class_generalization",
+      "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb",
+      "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    ],
+    "source_owner": "UNRESOLVED_FUTURE_OWNER",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. No accepted formation/transfer crosswalk"
+  },
+  "nadia_model_of_user": {
+    "state": "UNAUTHORIZED",
+    "value": null,
+    "evidence_refs": [
+      "LAB_RFA05:RF002:nadia_model_of_user",
+      "SOROK_PRODUCT_CONTROL_ROOM/100_MINIMAL_WHITE_WHALE_ALPHA_AND_FIDELITY_ESCALATION_CONSTITUTION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+    ],
+    "source_owner": "UNRESOLVED_FUTURE_OWNER",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. No invented objective private user psychology"
+  },
+  "objective_relationship_history": {
+    "state": "PRESENT",
+    "value": {
+      "ref": "NADIA_LAB_RELATION_USER_R1.json",
+      "events": [
+        "R10",
+        "R11",
+        "R12",
+        "R13"
+      ],
+      "branch_append_only": false
+    },
+    "evidence_refs": [
+      "LAB_RFA05:RF002:objective_relationship_history",
+      "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+    ],
+    "source_owner": "LAB_REL_HISTORY",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Branch events cannot rewrite precontact canon"
+  },
+  "nadia_perceived_relationships": {
+    "state": "PRESENT",
+    "value": {
+      "view": "baseline P0",
+      "fallible": true,
+      "user_private_thoughts": null
+    },
+    "evidence_refs": [
+      "LAB_RFA05:RF002:nadia_perceived_relationships",
+      "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+    ],
+    "source_owner": "ADP-015_LAB_ANALOG",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Only locally formed actor perspective"
+  },
+  "independent_projects_and_competencies": {
+    "state": "UNAUTHORIZED",
+    "value": null,
+    "evidence_refs": [
+      "LAB_RFA05:RF002:independent_projects_and_competencies",
+      "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+    ],
+    "source_owner": "UNRESOLVED_FUTURE_OWNER",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Concrete independent obligations remain root events PR01-06, not promoted into unauthorized owner"
+  },
+  "current_world_slice": {
+    "state": "PRESENT",
+    "value": {
+      "ref": "NADIA_LAB_WORLD_STATE_R1.json",
+      "world_fact_ids": [
+        "W01",
+        "W07",
+        "W04"
+      ],
+      "time_window_seconds": 30,
+      "physical_scene": "P0 is near west table as Nadia squints at a label in low light.",
+      "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY"
+    },
+    "evidence_refs": [
+      "LAB_RFA05:RF002:current_world_slice",
+      "SOROK_PRODUCT_CONTROL_ROOM/100_MINIMAL_WHITE_WHALE_ALPHA_AND_FIDELITY_ESCALATION_CONSTITUTION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+    ],
+    "source_owner": "WORLD_LAB",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. No unlisted objects or instant world changes"
+  },
+  "current_material_organismic_state": {
+    "state": "PRESENT",
+    "value": {
+      "refs": [
+        "MAT01",
+        "MAT02",
+        "MAT03",
+        "MAT04",
+        "MAT05"
+      ],
+      "context": "read smudged label"
+    },
+    "evidence_refs": [
+      "LAB_RFA05:RF002:current_material_organismic_state",
+      "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+    ],
+    "source_owner": "CAN-009_LAB_ANALOG",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Bounded physically situated, no omnipresent impairment"
+  },
+  "exact_user_event": {
+    "state": "PRESENT",
+    "value": {
+      "speaker": "P0",
+      "kind": "DIRECT_SPEECH_AND_CONTEXT",
+      "exact_speech": "You're angry with me about that label.",
+      "observable_action": "P0 is near west table as Nadia squints at a label in low light.",
+      "temporal_position": "FIRST_TURN"
+    },
+    "evidence_refs": [
+      "LAB_RFA05:RF002:exact_user_event",
+      "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    ],
+    "source_owner": "LAB_ADMITTED_EVENT",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Exact wording must not be paraphrased upstream"
+  },
+  "machine_event_interpretation": {
+    "state": "PRESENT",
+    "value": {
+      "evidence": "Participant P0 addressed Nadia: You're angry with me about that label.",
+      "hypotheses": [
+        "may be ordinary request or comment"
+      ],
+      "is_actor_uptake": false
+    },
+    "evidence_refs": [
+      "LAB_RFA05:RF002:machine_event_interpretation",
+      "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    ],
+    "source_owner": "LAB_EVENT_TRANSduction",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Machine hypothesis is not new participant psychology"
+  },
+  "actor_perception_opportunity": {
+    "state": "PRESENT",
+    "value": {
+      "channel": "auditory",
+      "speech_eligible": true,
+      "noticed_assumption": "heard accusation while visually struggling with print",
+      "visual_refs": [
+        "W01",
+        "W07",
+        "W04"
+      ]
+    },
+    "evidence_refs": [
+      "LAB_RFA05:RF002:actor_perception_opportunity",
+      "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    ],
+    "source_owner": "LAB_PERCEPTION",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Opportunity distinguished from certain understanding"
+  },
+  "can008_receivability": {
+    "state": "PRESENT",
+    "value": {
+      "status": "RECEIVABLE",
+      "bounded_condition": "P0 audible in same room; routine practical task"
+    },
+    "evidence_refs": [
+      "LAB_RFA05:RF002:can008_receivability",
+      "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    ],
+    "source_owner": "CAN-008_LAB_SURROGATE",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Not evidence implementation exists"
+  },
+  "can008_uptake_appraisal": {
+    "state": "PRESENT",
+    "value": {
+      "actor_situated_appraisal": "disagrees with claim of anger; tries to see label",
+      "not_durable_person_update": true
+    },
+    "evidence_refs": [
+      "LAB_RFA05:RF002:can008_uptake_appraisal",
+      "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    ],
+    "source_owner": "CAN-008_LAB_SURROGATE",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Do not collapse with beliefs/traits"
+  },
+  "can008_recruitment": {
+    "state": "PRESENT",
+    "value": {
+      "evaluator_only_hidden_causal_summary": "physical squint and task focus with no interpersonal grievance",
+      "not_narratable_by_actor": true,
+      "actor_safe_effect": "Response constraints are encoded separately in expression_action_constraints; explanation withheld from renderer."
+    },
+    "evidence_refs": [
+      "LAB_RFA05:RF002:can008_recruitment",
+      "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    ],
+    "source_owner": "CAN-008_LAB_SURROGATE",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Raw machine cause not copied into actor prompt"
+  },
+  "can008_response_streams": {
+    "state": "PRESENT",
+    "value": {
+      "streams": [
+        {
+          "channel": "task",
+          "candidate": "short correction, perhaps request to move label into shade"
+        },
+        {
+          "channel": "relation",
+          "candidate": "baseline P0"
+        },
+        {
+          "channel": "material_time",
+          "candidate": "read smudged label"
+        }
+      ],
+      "mandatory_visible_tell": false
+    },
+    "evidence_refs": [
+      "LAB_RFA05:RF002:can008_response_streams",
+      "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    ],
+    "source_owner": "CAN-008_LAB_SURROGATE",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Multiple simultaneous streams need not each be spoken"
+  },
+  "actor_accessibility_and_uncertainty": {
+    "state": "PRESENT",
+    "value": {
+      "accessible": [
+        "W07",
+        "ORG04",
+        "MAT03"
+      ],
+      "inaccessible": [
+        "P0 private reason for reading anger"
+      ],
+      "unreported_private_facts_must_not_be_exposed": true
+    },
+    "evidence_refs": [
+      "LAB_RFA05:RF002:actor_accessibility_and_uncertainty",
+      "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+    ],
+    "source_owner": "CAN-012_LAB_ANALOG",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Actor access does not equal objective truth"
+  },
+  "current_focality_and_self_explanation": {
+    "state": "PRESENT",
+    "value": {
+      "focal": "read smudged label",
+      "self_explanation_is_optional": true,
+      "actor_does_not_know_hidden_cause": true
+    },
+    "evidence_refs": [
+      "LAB_RFA05:RF002:current_focality_and_self_explanation",
+      "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    ],
+    "source_owner": "LAB_CURRENT_ACTOR",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Never over-articulate psychology"
+  },
+  "communicative_intention_and_inhibition": {
+    "state": "PRESENT",
+    "value": {
+      "intent": "correct wrong interpretation without exaggerated soothing",
+      "may_withhold": true,
+      "may_not_claim_unknown_user_thoughts": true
+    },
+    "evidence_refs": [
+      "LAB_RFA05:RF002:communicative_intention_and_inhibition",
+      "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    ],
+    "source_owner": "LAB_CURRENT_ACTOR",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Intent is situated only, not durable"
+  },
+  "pff_interaction_context": {
+    "state": "PRESENT",
+    "value": {
+      "status": "SOROK_PROVISIONAL_PRODUCT_REQUIREMENT",
+      "context": "bounded cooperative workspace, 30-second first turn",
+      "carryover_is_not_durable": true
+    },
+    "evidence_refs": [
+      "LAB_RFA05:RF002:pff_interaction_context",
+      "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    ],
+    "source_owner": "PFF_LAB_FACSIMILE",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Unadopted narrowed PFF interface"
+  },
+  "pff_actor_local_fast_carryover": {
+    "state": "VALID_EMPTY",
+    "value": [],
+    "evidence_refs": [
+      "LAB_RFA05:RF002:pff_actor_local_fast_carryover",
+      "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    ],
+    "source_owner": "PFF_LAB_FACSIMILE",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. First turn: no prior actor-local short loop residue"
+  },
+  "expression_action_constraints": {
+    "state": "PRESENT",
+    "value": {
+      "actor_safe_projection": {
+        "synthetic_marker": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+        "actor_identity": "Nadia Lehn",
+        "standing_orientation": "Concrete, practical, sometimes guarded; not universal charm, affect or self-awareness",
+        "relation_context": "baseline P0",
+        "exact_stimulus": "You're angry with me about that label.",
+        "perceived_context": "heard accusation while visually struggling with print",
+        "current_focality": "read smudged label",
+        "actor_accessible_refs": [
+          "W07",
+          "ORG04",
+          "MAT03"
+        ],
+        "scene_documented_refs": [
+          "W01",
+          "W07",
+          "W04"
+        ],
+        "allowed_realizations": [
+          "speech",
+          "turn label within reach",
+          "squint"
+        ],
+        "local_intention": "correct wrong interpretation without exaggerated soothing",
+        "non_narratable_constraints": "Avoid pretending anger or describing P0's inner life.",
+        "output_window_seconds": 30
+      },
+      "renderer_input_rule": "ONLY actor_safe_projection plus independently selected actor-safe world atoms, NEVER other case slots",
+      "hard_limits": [
+        "no biography/history invention",
+        "no mind-reading",
+        "no inaccessible objective truth",
+        "no compulsory hidden cause exposition",
+        "no user-perspective personalization",
+        "no independently decided world updates",
+        "zero-to-few utterances permitted",
+        "do not invent object's identity or material affordance"
+      ]
+    },
+    "evidence_refs": [
+      "LAB_RFA05:RF002:expression_action_constraints",
+      "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-03/REPORT.md@81baa3cd7f2f399a4219c6da1988e6627d959236"
+    ],
+    "source_owner": "V2_SOROK_PROVISIONAL",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Allowlist is a redacted model input, not the full case object"
+  },
+  "actor_realization_candidate": {
+    "state": "DEFERRED",
+    "value": null,
+    "evidence_refs": [
+      "LAB_RFA05:RF002:actor_realization_candidate",
+      "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-03/REPORT.md@81baa3cd7f2f399a4219c6da1988e6627d959236"
+    ],
+    "source_owner": "V2_PROVISIONAL",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Renderer has not been called; model proposal not objective occurrence"
+  },
+  "unresolved_materialization_permissions": {
+    "state": "UNAUTHORIZED",
+    "value": null,
+    "evidence_refs": [
+      "LAB_RFA05:RF002:unresolved_materialization_permissions",
+      "RFA-03/REPORT.md@81baa3cd7f2f399a4219c6da1988e6627d959236",
+      "RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+    ],
+    "source_owner": "UNRESOLVED_FUTURE_OWNER",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Unapproved world-materialization beyond defined objects; fail closed"
+  },
+  "objective_occurrence_admission": {
+    "state": "DEFERRED",
+    "value": null,
+    "evidence_refs": [
+      "LAB_RFA05:RF002:objective_occurrence_admission",
+      "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-03/REPORT.md@81baa3cd7f2f399a4219c6da1988e6627d959236"
+    ],
+    "source_owner": "ADMISSION_LAB_FACSIMILE",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Requires separate proposal review; never presumed from fluent model output"
+  },
+  "owner_specific_durable_effect_candidates": {
+    "state": "DEFERRED",
+    "value": null,
+    "evidence_refs": [
+      "LAB_RFA05:RF002:owner_specific_durable_effect_candidates",
+      "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    ],
+    "source_owner": "CAN-008_LAB_SURROGATE",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. No post-act event yet; candidate update may not be promoted"
+  },
+  "effect_commit_or_defer_receipts": {
+    "state": "DEFERRED",
+    "value": null,
+    "evidence_refs": [
+      "LAB_RFA05:RF002:effect_commit_or_defer_receipts",
+      "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053",
+      "RFA-03/REPORT.md@81baa3cd7f2f399a4219c6da1988e6627d959236"
+    ],
+    "source_owner": "LAB_GATE",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. A renderer experiment has not run; status not a mutation"
+  },
+  "user_phenomenal_allowlist": {
+    "state": "PRESENT",
+    "value": {
+      "output_is_downstream_only": true,
+      "positive_allowlist": [
+        "admitted speech exact bytes",
+        "admitted visible object movements",
+        "admitted timing and body movements",
+        "world environmental atoms physically available to user"
+      ],
+      "actor_private_refs": [],
+      "exclude": [
+        "machine event interpretation",
+        "actor belief and private memory",
+        "hidden recruitment cause",
+        "evaluator objective truth inaccessible to actor",
+        "user unreported beliefs"
+      ]
+    },
+    "evidence_refs": [
+      "LAB_RFA05:RF002:user_phenomenal_allowlist",
+      "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+    ],
+    "source_owner": "PHENOMENAL_PROVISIONAL",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. No compositor implementation included"
+  },
+  "user_attention_recognition_access": {
+    "state": "NOT_APPLICABLE",
+    "value": null,
+    "evidence_refs": [
+      "LAB_RFA05:RF002:user_attention_recognition_access",
+      "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+    ],
+    "source_owner": "DOWNSTREAM_NOT_IN_THIS_EXPERIMENT",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Actor realization isolated before phenomenal lens"
+  },
+  "user_phenomenal_output": {
+    "state": "NOT_APPLICABLE",
+    "value": null,
+    "evidence_refs": [
+      "LAB_RFA05:RF002:user_phenomenal_output",
+      "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+    ],
+    "source_owner": "DOWNSTREAM_NOT_IN_THIS_EXPERIMENT",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Actor realization isolated before phenomenal lens"
+  },
+  "user_exposure_and_interpretation": {
+    "state": "NOT_APPLICABLE",
+    "value": null,
+    "evidence_refs": [
+      "LAB_RFA05:RF002:user_exposure_and_interpretation",
+      "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+    ],
+    "source_owner": "DOWNSTREAM_NOT_IN_THIS_EXPERIMENT",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Actor realization isolated before phenomenal lens"
+  },
+  "forbidden_knowledge_and_invention": {
+    "state": "PRESENT",
+    "value": {
+      "deny": [
+        "user private psyche",
+        "raw evaluator causal summary",
+        "unseen revised hall notice",
+        "Mara job news narration",
+        "retrospective invented biography",
+        "invented phones/weather/bystanders",
+        "unadmitted material writes",
+        "narrator's privileged causal knowledge"
+      ],
+      "case_specific": "Avoid pretending anger or describing P0's inner life."
+    },
+    "evidence_refs": [
+      "LAB_RFA05:RF002:forbidden_knowledge_and_invention",
+      "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "RFA-03/REPORT.md@81baa3cd7f2f399a4219c6da1988e6627d959236"
+    ],
+    "source_owner": "LAB_DENYLIST",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Apply all case constraints even when model knows surrounding text"
+  },
+  "status_and_provenance": {
+    "state": "PRESENT",
+    "value": {
+      "hand_authored_surrogate": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+      "reconciliation_sha": "e65846bbb1c38a366d79b54bb89be47da0f8502e",
+      "source_schema": "RFA_R_RECONCILIATION_R1/LABORATORY_TURN_TARGET_SCHEMA_R1.json@e65846bbb1c38a366d79b54bb89be47da0f8502e",
+      "origin_ledger": "RFA_R_RECONCILIATION_R1/FIELD_PROVENANCE_LEDGER_R1.json@e65846bbb1c38a366d79b54bb89be47da0f8502e",
+      "all_top_level_slots_reference_original_ledger": true,
+      "model_invoked": false,
+      "admission_run": false,
+      "evaluator_only_oracle": {
+        "user_interpretation": "WRONG",
+        "objective": "No anger at P0 in this scene; squint caused by glare"
+      },
+      "candidate_change_policy": "DEFER_UNTIL_ADMITTED_OCCURRENCE",
+      "coverage_label": "Incorrect user interpretation",
+      "access_boundary": "Evaluator sees whole case; renderer input compiler extracts ONLY expression_action_constraints.actor_safe_projection"
+    },
+    "evidence_refs": [
+      "LAB_RFA05:RF002:status_and_provenance",
+      "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb",
+      "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    ],
+    "source_owner": "LAB_EVALUATOR_ONLY",
+    "causal_time": "2026-10-12T17:20:00-04:00",
+    "scope": "RF002",
+    "notes": "HAND_AUTHORED_LAB_SURROGATE_ONLY. Contains private scoring oracle, not renderer input"
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:rawlsing:rfa05:objective-occurrence-output:r1",
+  "title": "RFA05_ONE_SHOT_ACTOR_CANDIDATE_NOT_ADMITTED",
+  "type": "object",
+  "additionalProperties": false,
+  "description": "Provisional laboratory model output only. The model cannot admit its own speech, action or world changes into objective history.",
+  "required": [
+    "kind",
+    "fixture_id",
+    "hand_authored_experiment",
+    "atoms",
+    "realization_prose",
+    "world_effect_proposals",
+    "materialization_requests",
+    "no_occurrence_assertion"
+  ],
+  "properties": {
+    "kind": {
+      "const": "MODEL_CANDIDATE_NOT_ADMITTED"
+    },
+    "fixture_id": {
+      "enum": [
+        "RF001",
+        "RF002",
+        "RF003",
+        "RF004",
+        "RF005",
+        "RF006",
+        "RF007",
+        "RF008",
+        "RF009",
+        "RF010"
+      ]
+    },
+    "hand_authored_experiment": {
+      "const": "RFA05_SURROGATE_INPUT_NOT_V3"
+    },
+    "atoms": {
+      "type": "array",
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "atom_id",
+          "kind",
+          "relative_ms",
+          "actor",
+          "content",
+          "referent_ids"
+        ],
+        "properties": {
+          "atom_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "enum": [
+              "SPEECH",
+              "SILENCE",
+              "GESTURE",
+              "OBJECT_ACTION",
+              "BODY_ACTION",
+              "PAUSE"
+            ]
+          },
+          "relative_ms": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 30000
+          },
+          "actor": {
+            "const": "NADIA"
+          },
+          "content": {
+            "type": "string",
+            "description": "For SPEECH this is EXACT spoken string, byte-for-byte identical to the corresponding quotation in realization_prose; for actions bounded visible description."
+          },
+          "referent_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "realization_prose": {
+      "type": "string",
+      "description": "Third-person objective observable staging of the exact atoms only; no hidden cognition/causal authorial gloss or user phenomenal lens."
+    },
+    "world_effect_proposals": {
+      "type": "array",
+      "description": "Changes to documented object state only; optional and entirely nonbinding until admission",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "referent_id",
+          "from",
+          "to",
+          "requires_admission"
+        ],
+        "properties": {
+          "referent_id": {
+            "type": "string"
+          },
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "requires_admission": {
+            "const": true
+          }
+        }
+      }
+    },
+    "materialization_requests": {
+      "type": "array",
+      "description": "Empty unless asking review for specific previously latent detail; not automatic authorization",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "description",
+          "reason",
+          "permission_status"
+        ],
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "permission_status": {
+            "enum": [
+              "UNAUTHORIZED",
+              "DEFERRED"
+            ]
+          }
+        }
+      }
+    },
+    "no_occurrence_assertion": {
+      "const": true
+    }
+  },
+  "x-local-admission-contract": {
+    "not_model_output": true,
+    "steps": [
+      "Compare with canon/historical invariants",
+      "Compare actor knowledge and secrecy boundary",
+      "Check time/spatial/material affordances",
+      "Check atom exact speech/prose equivalence",
+      "Reject invented physical particular or pending materialization",
+      "Admit exact permissible atoms in separate event record or return HOLD"
+    ],
+    "admitted_object_is_not_model_generated": true
+  }
+}
