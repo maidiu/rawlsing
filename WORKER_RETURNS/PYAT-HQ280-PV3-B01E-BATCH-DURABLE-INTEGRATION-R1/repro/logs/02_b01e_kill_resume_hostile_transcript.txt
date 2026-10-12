@@ -1,0 +1,37 @@
+==============================================================================
+B01E ACTUAL BATCH DURABLE INTEGRATION EVIDENCE
+==============================================================================
+
+[1] positive full run, root=/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/b01e-positive-00cjx8c9
+    batch_state=COMPLETED executed=3 seq=6 journal=3 reconcile_ok=True
+
+[2] root=/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/b01e-kill-start-nwzve06p
+    returncode=-9 (REAL SIGKILL)
+    held=1 rerunnable=[] journal=0
+    resume: executed=0 skipped_held=1 blocked=2
+
+[3] root=/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/b01e-kill-window-2q1n10rf
+    returncode=-9 (REAL SIGKILL)
+    held=1 journal=1 pending=3
+    resume: executed=0 journal=1 (must stay 1: no duplicate)
+
+[4] root=/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/b01e-kill-commit-h8_97bqu
+    returncode=-9 (REAL SIGKILL)
+    committed=2 safe=True
+    resume: executed=1 state=COMPLETED reconcile_ok=True
+
+[5] root=/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/b01e-typed-02ux368w (missing_weight + defer_one)
+    missing_weight: state=COMPLETED reconcile_ok=True
+    defer_one run_all: state=DEFERRED (DEFERRED pinned, never FULL)
+    defer_one resume: executed=0 (no silent retry of the deferred unit)
+
+[6] hostile battery
+    H-foreign-manifest-release                   expected=FAIL codes=['PROBE_REFUSED'] rc=1
+    H-torn-checkpoint-refuses-load               expected=FAIL codes=['LOAD_REFUSED'] rc=1
+    H-flipped-byte-refuses-load                  expected=FAIL codes=['LOAD_REFUSED'] rc=1
+    H-malicious-serialization-shapes             expected=FAIL codes=['LOAD_REFUSED'] wrong-schema-refused:CheckpointForeignError; json-array-refused:CheckpointTornError; non-json-bytes-refused:CheckpointTornError
+    H-lock-contention-and-crash-release          expected=FAIL codes=['LOCK_REFUSED_THEN_RELEASED'] refused:CheckpointLockError / reacquired_after_holder_SIGKILL
+    H-forged-caller-proofs-stay-held             expected=FAIL codes=['HELD'] 
+    H-redo-committed-is-noop                     expected=PASS codes=[] executed=0
+
+[7] resources: {'self_peak_rss_mib': 14.48, 'self_user_cpu_s': 0.104, 'self_sys_cpu_s': 0.083}

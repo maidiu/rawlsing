@@ -1,0 +1,77 @@
+{
+  "authorizing": false,
+  "join_shape": "worker subprocess runs the real chain through the new adapter; each phase is a fresh OS process sharing only a tmpdir",
+  "kill_after_commit_resume": {
+    "committed_before_kill": 2,
+    "final_state": "COMPLETED",
+    "killed_by_real_sigkill": true,
+    "resume_executed": 1,
+    "returncode": -9,
+    "verdict": "RESUME_COMPLETES_WITHOUT_REDO",
+    "wall_ms": 344.13
+  },
+  "kill_after_start_no_effect": {
+    "held": 1,
+    "journal": 0,
+    "killed_by_real_sigkill": true,
+    "resume_blocked": 2,
+    "resume_executed": 0,
+    "returncode": -9,
+    "verdict": "HELD_WITHOUT_ANY_EFFECT",
+    "wall_ms": 456.29
+  },
+  "kill_in_window_side_effect": {
+    "journal_after_kill": 1,
+    "journal_after_resume": 1,
+    "killed_by_real_sigkill": true,
+    "resume_executed": 0,
+    "returncode": -9,
+    "verdict": "HELD_UNKNOWN_OUTCOME__NO_DUPLICATE_EXTERNALIZATION",
+    "wall_ms": 512.2
+  },
+  "measured_data_file": "repro/b01e_integration_evidence.json",
+  "measured_data_sha256": "a338d3c1bc35c6d6711c612a7295e1812d70434c5d70efca244bdfc9ffd1a5c6",
+  "positive_run": {
+    "batch_state": "COMPLETED",
+    "checkpoint_sequence": 6,
+    "executed": [
+      [
+        "ae8e8f0253f7",
+        1,
+        "COMPLETED"
+      ],
+      [
+        "a77b989dd898",
+        1,
+        "COMPLETED"
+      ],
+      [
+        "dd738a9a382b",
+        1,
+        "COMPLETED"
+      ]
+    ],
+    "journal_entry_count": 3,
+    "manifest_hash": "7a9c5224b35e441366b5492784b2f8be42319719b4a3e23322c9b1e33a843908",
+    "pending": [],
+    "reconciliation_ok": true,
+    "wall_ms": 611.98
+  },
+  "real_sigkill_count": 3,
+  "resource_measurement": {
+    "self_peak_rss_mib": 14.48,
+    "self_sys_cpu_s": 0.083,
+    "self_user_cpu_s": 0.104
+  },
+  "schema": "PYAT_HQ280_B01E_ACTUAL_DURABLE_OWNER_EXECUTION_AND_RESTART@1.0.0",
+  "scope": "SOURCE_FREE_DEVELOPMENT_ONLY",
+  "signal": "SIGKILL (uncatchable; exit -9/137; no cleanup handlers run)",
+  "terminal": "HQ280_PV3_B01E_ACTUAL_BATCH_DURABLE_ADAPTER_SOURCEFREE_RUN_OR_PRECISE_HOLD__NO_REAL_EXECUTION_GRANT__GITHUB_PUSHED",
+  "total_wall_s": 11.4,
+  "typed_states": {
+    "deferred_batch_state": "DEFERRED",
+    "deferred_pinned": 1,
+    "deferred_resume_executed": 0,
+    "missing_weight_reconcile_ok": true
+  }
+}

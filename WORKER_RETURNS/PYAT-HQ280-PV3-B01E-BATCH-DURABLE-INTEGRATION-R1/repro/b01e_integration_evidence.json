@@ -1,0 +1,168 @@
+{
+  "authorizing": false,
+  "canonical_mutated": false,
+  "environment": {
+    "machine": "x86_64",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit",
+    "python_executable": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/.pv3-venv/bin/python3",
+    "python_version": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "raw_source_read": false,
+    "sav_dta_present": false
+  },
+  "hostile_cases": [
+    {
+      "case": "H-foreign-manifest-release",
+      "description": "probe with a different variant identity is refused",
+      "detail": "rc=1",
+      "expected": "FAIL",
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "PROBE_REFUSED"
+      ],
+      "observed_ok": false
+    },
+    {
+      "case": "H-torn-checkpoint-refuses-load",
+      "description": "truncated checkpoint file refused on fresh load",
+      "detail": "rc=1",
+      "expected": "FAIL",
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "LOAD_REFUSED"
+      ],
+      "observed_ok": false
+    },
+    {
+      "case": "H-flipped-byte-refuses-load",
+      "description": "single-byte digest mismatch refused on fresh load",
+      "detail": "rc=1",
+      "expected": "FAIL",
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "LOAD_REFUSED"
+      ],
+      "observed_ok": false
+    },
+    {
+      "case": "H-malicious-serialization-shapes",
+      "description": "wrong schema / array / non-JSON bytes all refused",
+      "detail": "wrong-schema-refused:CheckpointForeignError; json-array-refused:CheckpointTornError; non-json-bytes-refused:CheckpointTornError",
+      "expected": "FAIL",
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "LOAD_REFUSED"
+      ],
+      "observed_ok": true
+    },
+    {
+      "case": "H-lock-contention-and-crash-release",
+      "description": "second real writer refused; lock released after SIGKILL",
+      "detail": "refused:CheckpointLockError / reacquired_after_holder_SIGKILL",
+      "expected": "FAIL",
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "LOCK_REFUSED_THEN_RELEASED"
+      ],
+      "observed_ok": true
+    },
+    {
+      "case": "H-forged-caller-proofs-stay-held",
+      "description": "B01D W6 regression at integration level (incl. empty string)",
+      "detail": "",
+      "expected": "FAIL",
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "HELD"
+      ],
+      "observed_ok": true
+    },
+    {
+      "case": "H-redo-committed-is-noop",
+      "description": "resume on a completed batch executes nothing",
+      "detail": "executed=0",
+      "expected": "PASS",
+      "met_expectation": true,
+      "observed_failure_codes": [],
+      "observed_ok": true
+    }
+  ],
+  "kill_after_commit_resume": {
+    "committed_before_kill": 2,
+    "final_state": "COMPLETED",
+    "killed_by_real_sigkill": true,
+    "resume_executed": 1,
+    "returncode": -9,
+    "verdict": "RESUME_COMPLETES_WITHOUT_REDO",
+    "wall_ms": 344.13
+  },
+  "kill_after_start_no_effect": {
+    "held": 1,
+    "journal": 0,
+    "killed_by_real_sigkill": true,
+    "resume_blocked": 2,
+    "resume_executed": 0,
+    "returncode": -9,
+    "verdict": "HELD_WITHOUT_ANY_EFFECT",
+    "wall_ms": 456.29
+  },
+  "kill_in_window_side_effect": {
+    "journal_after_kill": 1,
+    "journal_after_resume": 1,
+    "killed_by_real_sigkill": true,
+    "resume_executed": 0,
+    "returncode": -9,
+    "verdict": "HELD_UNKNOWN_OUTCOME__NO_DUPLICATE_EXTERNALIZATION",
+    "wall_ms": 512.2
+  },
+  "positive_run": {
+    "batch_state": "COMPLETED",
+    "checkpoint_sequence": 6,
+    "executed": [
+      [
+        "ae8e8f0253f7",
+        1,
+        "COMPLETED"
+      ],
+      [
+        "a77b989dd898",
+        1,
+        "COMPLETED"
+      ],
+      [
+        "dd738a9a382b",
+        1,
+        "COMPLETED"
+      ]
+    ],
+    "journal_entry_count": 3,
+    "manifest_hash": "7a9c5224b35e441366b5492784b2f8be42319719b4a3e23322c9b1e33a843908",
+    "pending": [],
+    "reconciliation_ok": true,
+    "wall_ms": 611.98
+  },
+  "protocol_relaxed": false,
+  "resource_measurement": {
+    "self_peak_rss_mib": 14.48,
+    "self_sys_cpu_s": 0.083,
+    "self_user_cpu_s": 0.104
+  },
+  "schema": "PYAT_HQ280_B01E_INTEGRATION_EVIDENCE@1.0.0",
+  "scope": "SOURCE_FREE_DEVELOPMENT_ONLY",
+  "self_adopted": false,
+  "summary": {
+    "exactly_once_claimed": false,
+    "hostile_count": 7,
+    "hostiles_detected": 7,
+    "real_sigkills": 3,
+    "rerun_safe_reachable": false,
+    "unknown_outcome_policy": "HELD_NOT_RERUN"
+  },
+  "terminal": "HQ280_PV3_B01E_ACTUAL_BATCH_DURABLE_ADAPTER_SOURCEFREE_RUN_OR_PRECISE_HOLD__NO_REAL_EXECUTION_GRANT__GITHUB_PUSHED",
+  "total_wall_s": 11.4,
+  "typed_states": {
+    "deferred_batch_state": "DEFERRED",
+    "deferred_pinned": 1,
+    "deferred_resume_executed": 0,
+    "missing_weight_reconcile_ok": true
+  }
+}

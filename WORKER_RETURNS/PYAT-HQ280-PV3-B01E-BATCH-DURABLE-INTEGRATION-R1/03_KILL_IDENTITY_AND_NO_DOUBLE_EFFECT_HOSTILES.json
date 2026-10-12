@@ -1,0 +1,99 @@
+{
+  "all_cases_actually_executed": true,
+  "authorizing": false,
+  "commission_coverage": {
+    "attempt_index_substitution": "forged high-attempt intent superseded without execution; mismatched commit refused (suite)",
+    "caller_forgery": "H-forged-caller-proofs-stay-held incl. empty string (B01D W6 at integration level)",
+    "concurrency": "H-lock-contention-and-crash-release (two real processes)",
+    "corrupt_receipts": "H-torn-checkpoint + H-flipped-byte (load refused)",
+    "crash_lock": "H-lock-contention-and-crash-release",
+    "duplicate_execution": "kill-in-window journal stays 1 across resume (no duplicate externalization)",
+    "foreign_manifest_release": "H-foreign-manifest-release (probe refused)",
+    "incomplete_recovery": "recover() executes nothing; pending explicit (suite)",
+    "interrupted_rename": "kills at 3 windows; checkpoint always loads or is absent-never-torn; sequence monotonic (suite)",
+    "malicious_serialization": "H-malicious-serialization-shapes (Foreign/Torn/Torn)",
+    "redo_committed": "H-redo-committed-is-noop (0 executed, journal unchanged)",
+    "zero_denominator_partial": "missing_weight UNAVAILABLE conserved; DEFERRED pinned never FULL; no fabricated nulls (suite)"
+  },
+  "hostile_battery": [
+    {
+      "case": "H-foreign-manifest-release",
+      "detail": "rc=1",
+      "expected": "FAIL",
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "PROBE_REFUSED"
+      ],
+      "observed_ok": false
+    },
+    {
+      "case": "H-torn-checkpoint-refuses-load",
+      "detail": "rc=1",
+      "expected": "FAIL",
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "LOAD_REFUSED"
+      ],
+      "observed_ok": false
+    },
+    {
+      "case": "H-flipped-byte-refuses-load",
+      "detail": "rc=1",
+      "expected": "FAIL",
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "LOAD_REFUSED"
+      ],
+      "observed_ok": false
+    },
+    {
+      "case": "H-malicious-serialization-shapes",
+      "detail": "wrong-schema-refused:CheckpointForeignError; json-array-refused:CheckpointTornError; non-json-bytes-refused:CheckpointTornError",
+      "expected": "FAIL",
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "LOAD_REFUSED"
+      ],
+      "observed_ok": true
+    },
+    {
+      "case": "H-lock-contention-and-crash-release",
+      "detail": "refused:CheckpointLockError / reacquired_after_holder_SIGKILL",
+      "expected": "FAIL",
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "LOCK_REFUSED_THEN_RELEASED"
+      ],
+      "observed_ok": true
+    },
+    {
+      "case": "H-forged-caller-proofs-stay-held",
+      "detail": "",
+      "expected": "FAIL",
+      "met_expectation": true,
+      "observed_failure_codes": [
+        "HELD"
+      ],
+      "observed_ok": true
+    },
+    {
+      "case": "H-redo-committed-is-noop",
+      "detail": "executed=0",
+      "expected": "PASS",
+      "met_expectation": true,
+      "observed_failure_codes": [],
+      "observed_ok": true
+    }
+  ],
+  "reproduce": "PYTHONPATH=. python3 repro/b01e_evidence_recorder.py",
+  "schema": "PYAT_HQ280_B01E_KILL_IDENTITY_AND_NO_DOUBLE_EFFECT_HOSTILES@1.0.0",
+  "scope": "SOURCE_FREE_DEVELOPMENT_ONLY",
+  "summary": {
+    "exactly_once_claimed": false,
+    "hostile_count": 7,
+    "hostiles_detected": 7,
+    "real_sigkills": 3,
+    "rerun_safe_reachable": false,
+    "unknown_outcome_policy": "HELD_NOT_RERUN"
+  }
+}
