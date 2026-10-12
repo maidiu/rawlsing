@@ -1,3 +1,17 @@
+## RCM01 user-requested binding correction — minimum Codex effort, Astra reserve and Mac file custody
+
+**THIS SECTION SUPERSEDES less precise suggested "strong Codex" or "qualified model" wording below.** This is a branch-local commission routing correction, not a new scientific or security grant. Full user-directed law: `PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ282_CODEX_ASTRA_RESERVE_MODEL_AND_SECONDARY_FILE_LAW_R1.md` on operating HQ, and RCM01 original at `c71f83c731fe1465b59f5ad701a5e1bb3018b34a`.
+
+**CODEX MODEL EXACT, ONLY IF NEEDED:** **GPT-6 Luna · Medium**, never Sol/Astra by default. Prefer eligible economical OpenCode Go/DeepSeek local host before spending Codex. If Luna Medium hits a reproducible existing-owner semantic/API blocker twice, halt, preserve tests, seek user approval before upgrade to **GPT-6.1 Sol Low**. No unrequested High. **MAC:** SECONDARY acceptable only with verified isolated worktree and local Python/pytest; avoid conflict with P01/P02.
+
+**SECONDARY FILE GATE:** E03 source-free tree `0e0ed50dbce2dd1434d3a3c84b937b9a956adba9`: `rawlsing_next/pre553_n9_n10w_progressive_candidate.py`, `rawlsing_next/tests/test_pre553_n9_n10w_progressive_candidate.py`, fixture `rawlsing_next/tests/c1_at08_at13_fixture.py`, `rawlsing_next/tests/test_pre553_empirical_query.py`, `pre553_empirical_possibility_provider.py`, `pre553_analytical_composition.py`, `source_backed_positioned_subject_possibility.py`, and transitive imports. Original E03 synthetic 58-subject fixture is code; private primary-Mac respondent data not required.
+
+**Astra reservation:** 12 Oct UI shows 85% and 98% weekly remaining (both 100% five-hour; three unspent full reset credits each), but screenshots do not map to a specific Mac/account. Preserve a user-designated Astra pool for Astra only; by default lock the 98% envelope and limit proposed ordinary use on the identified 85% work pool to ≤2 percentage points per job / ≤3 total until 18 Oct weekly reset, nominal 82% floor. These are MANUALLY MONITORED safeguards, not automatically enforceable percentage caps; take actual usage snapshots before and after each bounded stage. Never spend reset credits or paid overflow without explicit instruction. Missing account binding/eligibility remains HARD HOLD.
+
+**Exact returned-commission startup after THIS correction:** Must use the final full 40-hex GitHub branch HEAD published in the refreshed HQ launch ledger, NOT the predecessor commission SHA in the older status block below.
+
+---
+
 # PYAT HQ282 P04 — resource-aware product-first work order
 
 **STATUS:** SEALED_AWAITING_RESOURCE_BINDING__NOT_LAUNCHED; NO UNATTENDED EXECUTION
