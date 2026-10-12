@@ -1996,3 +1996,29 @@ Current compact distinctions added to the kernel research frontier:
 `MORE PERSONALIZED PERCEPTION != GREATER ADEQUACY TO THE OTHER`
 
 `KERNEL = OPEN_DISCOVERY`.
+
+
+## R15 live-render / binding-surface development — 2026-10-12
+
+Current detailed bank:
+`101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md`.
+
+Strongest provisional live-turn architecture now separates:
+
+`CAUSAL NADIA → OBJECTIVE OBSERVABLE NADIA OCCURRENCE → HARD EPISTEMIC MEMBRANE → USER PHENOMENAL SURFACE`.
+
+The user's adaptive attention/recognition profile may affect phenomenal selection/lexicalization only after Nadia's outward occurrence has been generated. It may not causally tailor Nadia's behavior.
+
+Whole-person continuity requires both:
+- noncontradiction with established Nadia/world/history; and
+- reasonable extrapolability from this Nadia, including lawful lying, misremembering, rationalization and self-misrecognition where generated state supports them.
+
+A live user-visible surface is forward-binding: exact speech/action/material particulars presented as occurred become constraints on future history.
+
+Current minimal-white-whale normal-call target is:
+`DeepSeek-class semantic/causal transduction ×1 → local Rawlsing computation → Claude-class actor/world realization ×1 → local phenomenal composition`.
+
+Routine iterative `DeepSeek→Claude→DeepSeek→Claude` review/rerender loops are NOT the intended architecture. Additional high-capability phenomenal rendering is deferred until evidence proves local phenomenal composition inadequate.
+
+Current feasibility rung for the composed live renderer:
+`F2 BOUNDEDLY PROTOTYPEABLE__F3 NOT EARNED`.
