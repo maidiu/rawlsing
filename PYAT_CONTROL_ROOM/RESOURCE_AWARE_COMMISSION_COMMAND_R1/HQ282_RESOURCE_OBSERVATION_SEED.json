@@ -1,0 +1,141 @@
+{
+  "schema": "PYAT_HQ_RCM01_RESOURCE_OBSERVATION@1.0.0",
+  "date": "2026-10-12",
+  "state": "DOCUMENTARY_RESOURCE_BASELINE_NOT_PROVIDER_METERED",
+  "source_commission": "c71f83c731fe1465b59f5ad701a5e1bb3018b34a",
+  "policy_file": "PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ_MANDATORY_COMMISSION_AND_SUCCESSOR_GROK_ADDENDUM_R1.md",
+  "shared_rules": {
+    "provider_policies_require_live_check": true,
+    "paid_overflow": false,
+    "extra_accounts_to_evade_limits": false,
+    "one_go_pool_per_subscription": true,
+    "allow_autonomous_dispatch": false
+  },
+  "resources": [
+    {
+      "id": "BROWSER_HQ",
+      "provider": "ChatGPT Browser/GitHub",
+      "model": "GPT-6",
+      "variant": "High",
+      "machine": "browser",
+      "verified_capabilities": [
+        "private_git_read",
+        "private_git_write",
+        "document_source_forensics",
+        "static_review"
+      ],
+      "cannot_claim": [
+        "mac_python_runtime",
+        "local_pytest",
+        "sigkill",
+        "source_custody"
+      ],
+      "account_alias": "browser-hq",
+      "usage_balance": null,
+      "usage_reset": null,
+      "price_usd": null,
+      "privacy": null,
+      "host_pinned": true
+    },
+    {
+      "id": "CODEX_A",
+      "provider": "Codex",
+      "model": null,
+      "variant": null,
+      "machine": null,
+      "verified_capabilities": [],
+      "account_alias": "codex-a",
+      "usage_balance": null,
+      "usage_reset": null,
+      "price_usd": null,
+      "privacy": null,
+      "host_pinned": false
+    },
+    {
+      "id": "CODEX_B",
+      "provider": "Codex",
+      "model": null,
+      "variant": null,
+      "machine": null,
+      "verified_capabilities": [],
+      "account_alias": "codex-b",
+      "usage_balance": null,
+      "usage_reset": null,
+      "price_usd": null,
+      "privacy": null,
+      "host_pinned": false
+    },
+    {
+      "id": "DEEPSEEK_HARNESS",
+      "provider": "DeepSeek metered",
+      "model": null,
+      "variant": null,
+      "machine": null,
+      "verified_capabilities": [],
+      "account_alias": "deepseek-harness",
+      "usage_balance": null,
+      "usage_reset": null,
+      "price_usd": null,
+      "hard_money_cap_usd": null,
+      "privacy": null,
+      "host_pinned": false
+    },
+    {
+      "id": "OPENCODE_GO",
+      "provider": "OpenCode Go",
+      "model": null,
+      "variant": null,
+      "machine": null,
+      "verified_capabilities": [],
+      "account_alias": "single-legitimate-go-pool",
+      "shared_remaining_normalized": null,
+      "usage_reset": null,
+      "price_usd": null,
+      "hard_money_cap_usd": null,
+      "privacy": null,
+      "host_pinned": false
+    },
+    {
+      "id": "ZEN_OVERFLOW",
+      "provider": "OpenCode Zen metered",
+      "model": null,
+      "variant": null,
+      "machine": null,
+      "verified_capabilities": [],
+      "enabled": false,
+      "hard_money_cap_usd": 0,
+      "automatic_topup": false
+    },
+    {
+      "id": "ASTRA",
+      "provider": "strategic oversight",
+      "model": null,
+      "variant": null,
+      "machine": "browser",
+      "verified_capabilities": [
+        "strategic_documentary_review"
+      ],
+      "auto_dispatch": false,
+      "usage_balance": null,
+      "usage_reset": null
+    }
+  ],
+  "machines": [
+    {
+      "id": "MAC_PRIMARY",
+      "interpreter": null,
+      "worktree_root": null,
+      "active_lanes": null,
+      "verified_at": null
+    },
+    {
+      "id": "MAC_SECONDARY",
+      "interpreter": null,
+      "worktree_root": null,
+      "active_lanes": null,
+      "verified_at": null
+    }
+  ],
+  "evidence_null_reason": "No actual provider meter, current account entitlement, CLI/environment or machine-worktree attestation was supplied to this HQ. The RCM seed is hypothetical; do not score or dispatch with unknown critical entries.",
+  "refresh_protocol": "Before each launch and after observed reset, obtain permission-compliant exact provider/account balance and policy observation, worktree+environment attestation, model+variant, owner/source privacy, cap and independent-review lease. Keep timestamp and source with non-sensitive pseudonym; explicit HOLD on unknown critical."
+}
