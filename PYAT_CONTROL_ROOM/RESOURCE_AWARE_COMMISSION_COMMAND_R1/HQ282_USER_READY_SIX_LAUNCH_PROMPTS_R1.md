@@ -1,3 +1,9 @@
+## P01 launch correction — secondary worktree does not exist
+
+**P01 is NOT launchable yet.** User confirmed the SECONDARY P01 local worktree is absent. Before sending its existing GPT-6.1 Sol Medium commission, perform the [one-time secondary existing-store sparse worktree bootstrap](HQ282_P01_SECONDARY_BOOTSTRAP_HANDOFF_R1.md) with Terminal / qualified no-Codex shell helper, obtain actual clean branch/runtime/object receipts, and THEN launch unchanged P01 startup `712b818e6c0fa87412db7f4edaad1397b2e9f090`. No worker clone or worktree reset. If the secondary has no canonical Rawlsing clone, STOP and request separate machine-level bootstrap authorization. The other five commissions' startups are unchanged.
+
+---
+
 # HQ282 — copy/paste six launch prompts, verified RCM01 + user-confirmed Astra topology
 
 **STATUS:** DISPATCH PROMPTS ONLY. Worker local startup must first attest model/policy/remaining usage and existing sparse worktree. PRIMARY Codex 85% snapshot is reserved for full-repository Astra; SECONDARY Codex 98% snapshot is the ordinary coding pool; GitHub-only Astra may use either. Three reset credits per screenshot untouched. No automatic dispatch/semantic grant. The exact SHA below must be reverified by worker before mutation. If branch differs, preserve work and report; do not reset.
