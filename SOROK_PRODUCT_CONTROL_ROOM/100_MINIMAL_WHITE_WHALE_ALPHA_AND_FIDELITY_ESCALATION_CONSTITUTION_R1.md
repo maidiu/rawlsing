@@ -4,6 +4,8 @@
 
 **Date:** 2026-10-12
 
+**Currentness note:** For live rendering, binding user-visible surface, actor-private versus user-phenomenal segregation, whole-person expressive continuity, and the normal two-model-call target, read `101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md`. Where artifact 100 uses simpler `LLM flesh` / renderer language, artifact 101 is the more precise current interpretation.
+
 ## 0. Mission
 
 Construct the smallest Rawlsing product that preserves the defining interactional proposition:
