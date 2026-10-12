@@ -1,0 +1,224 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:rawlsing:rfa-r:lab-turn-target:r1",
+  "title": "LABORATORY_TURN_TARGET_SCHEMA_R1",
+  "description": "HAND-CONSTRUCTED, NONEXECUTABLE FACSIMILE. This is not evidence of existing rebuilt V3, production CAN-008/PFF/V2, or materialization permissions.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "fixture_identity",
+    "canonical_precontact_history",
+    "durable_person_owner_refs",
+    "objective_relationship_history",
+    "current_world_slice",
+    "exact_user_event",
+    "actor_perception_opportunity",
+    "can008_receivability",
+    "can008_uptake_appraisal",
+    "can008_recruitment",
+    "can008_response_streams",
+    "actor_accessibility_and_uncertainty",
+    "actor_realization_candidate",
+    "objective_occurrence_admission",
+    "user_phenomenal_allowlist",
+    "forbidden_knowledge_and_invention",
+    "status_and_provenance"
+  ],
+  "$defs": {
+    "slot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "value",
+        "evidence_refs",
+        "source_owner",
+        "causal_time",
+        "scope"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "PRESENT",
+            "VALID_EMPTY",
+            "UNKNOWN",
+            "DEFERRED",
+            "UNAUTHORIZED",
+            "NOT_APPLICABLE",
+            "INTEGRITY_FAILURE"
+          ]
+        },
+        "value": {},
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "source_owner": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "causal_time": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "scope": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "properties": {
+    "fixture_identity": {
+      "$ref": "#/$defs/slot",
+      "description": "Hand-built seed/branch/time IDs; no claim of generated V3 | Provenance classification: LAB_SURROGATE_ONLY | evidence: RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb; RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+    },
+    "canonical_precontact_history": {
+      "$ref": "#/$defs/slot",
+      "description": "Immutable root biography/events distinct from current projections | Provenance classification: DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT | evidence: SOROK_PRODUCT_CONTROL_ROOM/100_MINIMAL_WHITE_WHALE_ALPHA_AND_FIDELITY_ESCALATION_CONSTITUTION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+    },
+    "durable_person_owner_refs": {
+      "$ref": "#/$defs/slot",
+      "description": "Separate CAN-009/010/011, ADP-015/016/017, CAN-012 and other valid owners | Provenance classification: DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY | evidence: SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+    },
+    "relation_scoped_person_organization": {
+      "$ref": "#/$defs/slot",
+      "description": "Only exact formed owner records, no universal trait or new relation-prior store | Provenance classification: DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY | evidence: SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+    },
+    "relation_class_generalization": {
+      "$ref": "#/$defs/slot",
+      "description": "Formation/update/generalization contract not adopted; nullable gap marker only | Provenance classification: UNRESOLVED_FUTURE_OWNER | evidence: RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb; RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    },
+    "nadia_model_of_user": {
+      "$ref": "#/$defs/slot",
+      "description": "Needed product seam, but real-user participant formation and permissions not settled | Provenance classification: UNRESOLVED_FUTURE_OWNER | evidence: SOROK_PRODUCT_CONTROL_ROOM/100_MINIMAL_WHITE_WHALE_ALPHA_AND_FIDELITY_ESCALATION_CONSTITUTION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+    },
+    "objective_relationship_history": {
+      "$ref": "#/$defs/slot",
+      "description": "Objective relationship != each participant's view | Provenance classification: DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY | evidence: SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+    },
+    "nadia_perceived_relationships": {
+      "$ref": "#/$defs/slot",
+      "description": "Actor-specific fallible views/epistemic permissions | Provenance classification: DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY | evidence: SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+    },
+    "independent_projects_and_competencies": {
+      "$ref": "#/$defs/slot",
+      "description": "No invented joint-project/competence/register ownership | Provenance classification: UNRESOLVED_FUTURE_OWNER | evidence: RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+    },
+    "current_world_slice": {
+      "$ref": "#/$defs/slot",
+      "description": "Bounded independent, material world not authored from current utterance | Provenance classification: DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT | evidence: SOROK_PRODUCT_CONTROL_ROOM/100_MINIMAL_WHITE_WHALE_ALPHA_AND_FIDELITY_ESCALATION_CONSTITUTION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+    },
+    "current_material_organismic_state": {
+      "$ref": "#/$defs/slot",
+      "description": "Dimension-specific CAN-009 consequences | Provenance classification: DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY | evidence: SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+    },
+    "exact_user_event": {
+      "$ref": "#/$defs/slot",
+      "description": "Admitted occurrence distinguished from interpreted meaning | Provenance classification: DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY | evidence: SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    },
+    "machine_event_interpretation": {
+      "$ref": "#/$defs/slot",
+      "description": "Bounded evidence; not actor uptake | Provenance classification: DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY | evidence: SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    },
+    "actor_perception_opportunity": {
+      "$ref": "#/$defs/slot",
+      "description": "Observable opportunity vs actual notice | Provenance classification: DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT | evidence: SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    },
+    "can008_receivability": {
+      "$ref": "#/$defs/slot",
+      "description": "May be negative or unresolved | Provenance classification: DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY | evidence: SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    },
+    "can008_uptake_appraisal": {
+      "$ref": "#/$defs/slot",
+      "description": "Distinct from durable belief | Provenance classification: DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY | evidence: SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    },
+    "can008_recruitment": {
+      "$ref": "#/$defs/slot",
+      "description": "Situated competing mediators and conditions; not actor awareness | Provenance classification: DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY | evidence: SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    },
+    "can008_response_streams": {
+      "$ref": "#/$defs/slot",
+      "description": "Multiple simultaneous response streams; valid empty allowed | Provenance classification: DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY | evidence: SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    },
+    "actor_accessibility_and_uncertainty": {
+      "$ref": "#/$defs/slot",
+      "description": "Trace may act without being narratable | Provenance classification: DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY | evidence: SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb; RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    },
+    "current_focality_and_self_explanation": {
+      "$ref": "#/$defs/slot",
+      "description": "Optional/unknown; not machine causal explanation | Provenance classification: DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT | evidence: SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    },
+    "communicative_intention_and_inhibition": {
+      "$ref": "#/$defs/slot",
+      "description": "Bounded presentation/withholding, not new durable psyche state | Provenance classification: DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT | evidence: SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    },
+    "pff_interaction_context": {
+      "$ref": "#/$defs/slot",
+      "description": "Narrow interaction specialization; exact freeze candidate not self-adopted | Provenance classification: SOROK_PROVISIONAL_PRODUCT_REQUIREMENT | evidence: SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    },
+    "pff_actor_local_fast_carryover": {
+      "$ref": "#/$defs/slot",
+      "description": "Only interaction hypothesis and nondurable response residue candidates | Provenance classification: SOROK_PROVISIONAL_PRODUCT_REQUIREMENT | evidence: RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    },
+    "expression_action_constraints": {
+      "$ref": "#/$defs/slot",
+      "description": "Actor-safe V2 constraints, no arbitrary psychology authored by model | Provenance classification: SOROK_PROVISIONAL_PRODUCT_REQUIREMENT | evidence: SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-03/REPORT.md@81baa3cd7f2f399a4219c6da1988e6627d959236"
+    },
+    "actor_realization_candidate": {
+      "$ref": "#/$defs/slot",
+      "description": "Typed proposed speech/action/gesture/time/world effect; never occurrence itself | Provenance classification: SOROK_PROVISIONAL_PRODUCT_REQUIREMENT | evidence: SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-03/REPORT.md@81baa3cd7f2f399a4219c6da1988e6627d959236"
+    },
+    "unresolved_materialization_permissions": {
+      "$ref": "#/$defs/slot",
+      "description": "Proposal-slot, admission/owner expansion not yet governed | Provenance classification: UNRESOLVED_FUTURE_OWNER | evidence: RFA-03/REPORT.md@81baa3cd7f2f399a4219c6da1988e6627d959236; RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+    },
+    "objective_occurrence_admission": {
+      "$ref": "#/$defs/slot",
+      "description": "Exact admitted outward atoms precede user surface | Provenance classification: SOROK_PROVISIONAL_PRODUCT_REQUIREMENT | evidence: SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-03/REPORT.md@81baa3cd7f2f399a4219c6da1988e6627d959236; RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+    },
+    "owner_specific_durable_effect_candidates": {
+      "$ref": "#/$defs/slot",
+      "description": "Zero or more exact owner-routed proposals, not generic mutation | Provenance classification: DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY | evidence: SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+    },
+    "effect_commit_or_defer_receipts": {
+      "$ref": "#/$defs/slot",
+      "description": "Lab receipt emulates gating; missing permission != valid no-change | Provenance classification: LAB_SURROGATE_ONLY | evidence: RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053; RFA-03/REPORT.md@81baa3cd7f2f399a4219c6da1988e6627d959236"
+    },
+    "user_phenomenal_allowlist": {
+      "$ref": "#/$defs/slot",
+      "description": "Only admitted observable surface plus lawful user access | Provenance classification: SOROK_PROVISIONAL_PRODUCT_REQUIREMENT | evidence: SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+    },
+    "user_attention_recognition_access": {
+      "$ref": "#/$defs/slot",
+      "description": "Physical affordance, ATTEND, knowledge, recognition; downstream only | Provenance classification: SOROK_PROVISIONAL_PRODUCT_REQUIREMENT | evidence: SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+    },
+    "user_phenomenal_output": {
+      "$ref": "#/$defs/slot",
+      "description": "Perceptual rendering not private actor facts | Provenance classification: SOROK_PROVISIONAL_PRODUCT_REQUIREMENT | evidence: SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+    },
+    "user_exposure_and_interpretation": {
+      "$ref": "#/$defs/slot",
+      "description": "User observations/beliefs separate from objective occurrence | Provenance classification: SOROK_PROVISIONAL_PRODUCT_REQUIREMENT | evidence: SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+    },
+    "forbidden_knowledge_and_invention": {
+      "$ref": "#/$defs/slot",
+      "description": "Explicit denylist; no hidden causes, user-private data, or unsupported biography | Provenance classification: SOROK_PROVISIONAL_PRODUCT_REQUIREMENT | evidence: SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d; RFA-03/REPORT.md@81baa3cd7f2f399a4219c6da1988e6627d959236; RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+    },
+    "status_and_provenance": {
+      "$ref": "#/$defs/slot",
+      "description": "Every slot references provenance and one of five adjudicated origins | Provenance classification: LAB_SURROGATE_ONLY | evidence: RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb; RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053; RFA-03/REPORT.md@81baa3cd7f2f399a4219c6da1988e6627d959236; RFA-04/REPORT.md@9d94bd42d0e260fd440f7f1982fc41c90dad8463"
+    }
+  }
+}
