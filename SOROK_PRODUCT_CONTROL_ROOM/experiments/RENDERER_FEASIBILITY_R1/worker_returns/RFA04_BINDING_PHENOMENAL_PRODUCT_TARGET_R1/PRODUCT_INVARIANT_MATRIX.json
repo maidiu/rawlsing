@@ -1,0 +1,565 @@
+{
+  "matrix_id": "RFA04_BINDING_PHENOMENAL_PRODUCT_TARGET_R1",
+  "sealed_startup": "da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+  "branch": "agent/rabochii-sorok-r15-rfa04-binding-phenomenal-product-target-r1",
+  "verdict": "COHERENT_WITH_GAPS",
+  "empirical_claim": "F2_BOUNDEDLY_PROTOTYPEABLE__F3_NOT_EARNED",
+  "status": "INDEPENDENT_WORKER_EXPERIMENTAL_ANALYSIS__NO_OWNER_ADOPTION",
+  "classification_definitions": {
+    "CONSTITUTIVE_ALPHA_INVARIANT": "Removing the requirement changes the experiment from Rawlsing into something else.",
+    "FACILE_BUT_FUNCTIONAL_ALPHA_BASELINE": "Cheap replaceable implementation that preserves constitutive behavior at bounded grain.",
+    "FIDELITY_ESCALATION": "More fidelity possibly needed after comparative experience/failure evidence; not an initial gate.",
+    "POTENTIAL_WHITE_WHALE": "Expensive or open-ended frontier that could be a white whale; explicitly excluded from renderer-only proof.",
+    "NOT_REQUIRED_FOR_RENDERER_TEST": "Not part of this renderer feasibility target, or disallowed product behavior; never implied proven."
+  },
+  "boundary_contract": {
+    "order": [
+      "CAUSAL_NADIA",
+      "OBJECTIVE_OBSERVABLE_NADIA",
+      "HARD_EPISTEMIC_MEMBRANE",
+      "USER_EXPERIENCED_NADIA",
+      "USER_INTERPRETATION"
+    ],
+    "phenomenal_allowlist": [
+      "admitted_observable_nadia_atoms",
+      "admitted_observable_world_atoms",
+      "user_position_and_sensory_access",
+      "attend_target_depth_duration",
+      "recognition_repertoire_and_evidence_provenance",
+      "current_focus_load_and_physical_salience",
+      "user_known_history_with_acquisition_sources",
+      "optional_non_authoritative_user_hypotheses",
+      "render_policy_and_atom_ids"
+    ],
+    "phenomenal_denylist": [
+      "nadia_private_motives_or_hidden_causal_parents",
+      "inaccessible_actor_memories_and_epistemic_state",
+      "CAN008_recruitment_and_private_response",
+      "PFF_private_hypotheses_or_residue",
+      "nadia_private_model_of_user",
+      "hidden_object_provenance",
+      "unobserved_world_or_future_events",
+      "plot_importance_or_retention_targets"
+    ],
+    "committed_speech_rule": "exact actor utterance is binding as utterance, not necessarily as truth of its proposition",
+    "committed_particulars_rule": "objective asserted particulars admitted before publication; lens-dependent construal remains user-perspective evidence rather than world fact",
+    "user_lens_rule": "may select and lexicalize preexisting observable atoms but may not affect actor occurrence"
+  },
+  "requirements": [
+    {
+      "id": "UNCHOSEN_OTHER",
+      "requirement": "unchosen other",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "Assigned neighbor cannot be selected to flatter a user.",
+      "test_implication": "Preset a nonuser-selected Nadia root.",
+      "source_basis": "01_PRODUCT_CHARTER;100"
+    },
+    {
+      "id": "INDEPENDENT_ANTECEDENT_STATE",
+      "requirement": "independent antecedent state",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "Person, world, time and obligations precede user utterance.",
+      "test_implication": "Freeze audited root canon and before-state.",
+      "source_basis": "03_REAL_ALPHA_SPINE;D002/12;100"
+    },
+    {
+      "id": "HISTORICALLY_FORMED_PERSON",
+      "requirement": "historically produced Nadia",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "The encounter is with causally formed personhood, not a trait prompt.",
+      "test_implication": "Trace current expressive constraints to antecedent histories.",
+      "source_basis": "00A;03_REAL_ALPHA_SPINE;101"
+    },
+    {
+      "id": "WHOLE_PERSON_CONTINUITY",
+      "requirement": "whole-person continuity",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "Noncontradiction alone does not prevent generic fluent Nadia.",
+      "test_implication": "Judge reasonable extrapolability and distributional drift.",
+      "source_basis": "101 sections 4-6,18-19"
+    },
+    {
+      "id": "RELATION_SPECIFICITY",
+      "requirement": "relation specificity",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "This user can causally affect Nadia's actor-model/relation without owning it.",
+      "test_implication": "Compare admitted relation-history conditions at actor side.",
+      "source_basis": "101 sections 3,5,18"
+    },
+    {
+      "id": "PARTIAL_PERCEPTION",
+      "requirement": "partial perception",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "User never receives total person/world truth by default.",
+      "test_implication": "Emit only lawful senses/previously acquired user evidence.",
+      "source_basis": "D002/01;60;101"
+    },
+    {
+      "id": "USER_OWNED_SEMANTIC_CONTRIBUTION",
+      "requirement": "user-owned semantic contribution",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "Actual user judgment/joke/refusal/wording is the human work.",
+      "test_implication": "Never synthesize the user's meaningful choice or argument.",
+      "source_basis": "D002/12;100"
+    },
+    {
+      "id": "SAY_DO_ATTEND_DISTINCTION",
+      "requirement": "SAY / DO / ATTEND channel separation",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "Speech, action and observation have different causal and epistemic effects.",
+      "test_implication": "Preserve channel split for a bounded fixture.",
+      "source_basis": "D002/01;100"
+    },
+    {
+      "id": "ATTEMPT_RESULT",
+      "requirement": "attempt/result distinction",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "User may specify attempt, not realization, persuasion or reception.",
+      "test_implication": "Track attempted and admitted act separately.",
+      "source_basis": "D002/01;D002/13"
+    },
+    {
+      "id": "ACTOR_RESISTANCE_NONRESPONSE",
+      "requirement": "actor resistance/nonresponse",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "Actor can ignore, misunderstand, refuse or cooperate from independent constraints.",
+      "test_implication": "Include a valid silence or nonresponse condition.",
+      "source_basis": "D002/01;D002/12"
+    },
+    {
+      "id": "IRREVERSIBLE_HISTORY",
+      "requirement": "irreversible history",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "Admitted past cannot be save-scummed or retrospectively softened.",
+      "test_implication": "Append and retain exact objective event identity.",
+      "source_basis": "61;100"
+    },
+    {
+      "id": "HISTORY_LATER_CONSEQUENCE",
+      "requirement": "history can affect a later turn",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "Otherwise claimed continuity is callback theater.",
+      "test_implication": "Short later-return and event-ablation proof.",
+      "source_basis": "100 gates 2-3;101"
+    },
+    {
+      "id": "INDEPENDENT_LIFE",
+      "requirement": "independent life",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "Nadia cannot be suspended except while she responds to user.",
+      "test_implication": "Schedule one offscreen task/departure independent of user.",
+      "source_basis": "03_REAL_ALPHA_SPINE;35;100"
+    },
+    {
+      "id": "USER_CANNOT_EDIT_NADIA_TRUTH",
+      "requirement": "user cannot edit Nadia truth",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "Queries may trigger but cannot condition preexisting truth.",
+      "test_implication": "Rephrase leading query with invariant canonical answer.",
+      "source_basis": "38;60;100"
+    },
+    {
+      "id": "NADIA_NONEXHAUSTIBILITY",
+      "requirement": "Nadia non-exhaustibility",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "No observed surface or relationship completes the person.",
+      "test_implication": "Keep unexposed, independently constraining history and future.",
+      "source_basis": "03_REAL_ALPHA_SPINE;D002/04;100"
+    },
+    {
+      "id": "ACTOR_BEFORE_USER_PHENOMENOLOGY",
+      "requirement": "actor-before-user-phenomenology",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "Objective occurrence must be realized before a user's lens is applied.",
+      "test_implication": "Compare same occurrence across different lenses.",
+      "source_basis": "101 sections 1-3,17"
+    },
+    {
+      "id": "HARD_PRIVATE_STATE_MEMBRANE",
+      "requirement": "hard private-state membrane",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "Prompted secrecy is weaker than omitting the secret from compositor input.",
+      "test_implication": "Type-level allowlist; assert private keys absent.",
+      "source_basis": "101 sections 3,6,12,17"
+    },
+    {
+      "id": "EXACT_DIALOGUE",
+      "requirement": "exact dialogue",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "Lawfully heard utterances are events, not improvisational paraphrase.",
+      "test_implication": "Pass through actual quote or warranted partial hearing.",
+      "source_basis": "101 sections 7,13"
+    },
+    {
+      "id": "LAWFUL_LIES_ERRORS",
+      "requirement": "lawful lies/errors",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "Speech claims, belief, memory and truth must diverge when history warrants.",
+      "test_implication": "Include false assertion or sincere memory error as speech event.",
+      "source_basis": "38;74;80;101 section 11"
+    },
+    {
+      "id": "BINDING_VISIBLE_PARTICULARS",
+      "requirement": "binding visible particulars",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "Assertions of world/action cannot be discarded after display.",
+      "test_implication": "Admit observable physical facts before rendering.",
+      "source_basis": "D002/04;101 sections 7-9,21"
+    },
+    {
+      "id": "NO_RENDERER_CANON_SOVEREIGNTY",
+      "requirement": "no unilateral renderer canonicalization",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "LLM candidates require competent lawful admission.",
+      "test_implication": "Fail closed when undeclared material particular appears.",
+      "source_basis": "38;101 sections 9,21-23"
+    },
+    {
+      "id": "USER_CAN_BE_WRONG",
+      "requirement": "user can infer wrongly without system correction",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "User's interpretation is not objective Nadia/motive truth.",
+      "test_implication": "Wrong and right hypothesis branches avoid omniscient correction.",
+      "source_basis": "01_PRODUCT_CHARTER;D002/03;101"
+    },
+    {
+      "id": "NO_PRIVATE_CAUSE_NARRATION",
+      "requirement": "inference allowed; private cause not asserted",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "Observable cue can prompt hypothesis but not engine-certified motive.",
+      "test_implication": "Narrate gaze/silence without internal reason.",
+      "source_basis": "D002/01;80;101"
+    },
+    {
+      "id": "ATTENTION_REALITY_FIREWALL",
+      "requirement": "attention affects access not Nadia's event",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "User lens cannot author evidence it will later confirm.",
+      "test_implication": "Swap lenses and compare exact actor occurrence.",
+      "source_basis": "60;D008/01;101"
+    },
+    {
+      "id": "GROSS_GESTALT_AND_PARTIALS",
+      "requirement": "shared coarse gestalt versus selected particulars",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "Users need enough common setting to act; no exhaustive inventory.",
+      "test_implication": "Preserve gross scene and finite marginal sampling.",
+      "source_basis": "63;100;101"
+    },
+    {
+      "id": "RECOGNITION_GATED_DESCRIPTION",
+      "requirement": "recognition and marking gates",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "Canonical IDs are not user recognition or readable text.",
+      "test_implication": "Show generic object until expertise/access warranted.",
+      "source_basis": "60;87;101"
+    },
+    {
+      "id": "NONCURATORIAL_SALIENCE",
+      "requirement": "no secret-meaning detail selection",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "Narrator cannot plant emotional hints by hidden Nadia salience.",
+      "test_implication": "Sample by physical perceptual conditions, not hidden importance.",
+      "source_basis": "D002/04;D008/01;101"
+    },
+    {
+      "id": "NO_HIDDEN_RELATION_SCORE_OBJECTIVE",
+      "requirement": "no relationship score as gameplay objective",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "User cannot optimize meter instead of learning a person.",
+      "test_implication": "No score or hidden-motive feedback in player view.",
+      "source_basis": "01_PRODUCT_CHARTER;100"
+    },
+    {
+      "id": "CAUSAL_PLAUSIBLE_TIME",
+      "requirement": "real time and competing agenda",
+      "classification": "CONSTITUTIVE_ALPHA_INVARIANT",
+      "why": "Time/ongoing situation can limit lawful observation and response.",
+      "test_implication": "Include plausible time cost and interruption.",
+      "source_basis": "D002/02;35"
+    },
+    {
+      "id": "BOUNDED_SEED_NADIA",
+      "requirement": "one audited seed Nadia",
+      "classification": "FACILE_BUT_FUNCTIONAL_ALPHA_BASELINE",
+      "why": "Sufficient fixed person for renderer seam, not general seed generation.",
+      "test_implication": "Root has history, body, world and expressive profile.",
+      "source_basis": "100;101"
+    },
+    {
+      "id": "BOUNDED_SCENE",
+      "requirement": "one bounded ordinary physical scene",
+      "classification": "FACILE_BUT_FUNCTIONAL_ALPHA_BASELINE",
+      "why": "Fixed household/landing holds open-world explosion outside experiment.",
+      "test_implication": "Declare exact spatial/action limits.",
+      "source_basis": "35;100"
+    },
+    {
+      "id": "SMALL_SUPPORTING_CAST",
+      "requirement": "small consequential supporting cast",
+      "classification": "FACILE_BUT_FUNCTIONAL_ALPHA_BASELINE",
+      "why": "One child/neighbor can establish social otherness without arbitrary graph.",
+      "test_implication": "Fix 1-2 independent actors and perception packets.",
+      "source_basis": "39;100"
+    },
+    {
+      "id": "FACILE_OFFSCREEN_SCHEDULER",
+      "requirement": "bounded agenda scheduler",
+      "classification": "FACILE_BUT_FUNCTIONAL_ALPHA_BASELINE",
+      "why": "Minimal independent life, not continuous autonomous simulation.",
+      "test_implication": "Allow one appointment/child task to proceed.",
+      "source_basis": "39;100"
+    },
+    {
+      "id": "ROOT_COPY_ON_WRITE",
+      "requirement": "versioned root and copy-on-write test branch",
+      "classification": "FACILE_BUT_FUNCTIONAL_ALPHA_BASELINE",
+      "why": "Practical cheap way to preserve identical initial Nadia and divergence.",
+      "test_implication": "Use separate test branches after first contact.",
+      "source_basis": "61;100"
+    },
+    {
+      "id": "APPEND_ONLY_LEDGER_AND_STATE",
+      "requirement": "event ledger and materialized current state",
+      "classification": "FACILE_BUT_FUNCTIONAL_ALPHA_BASELINE",
+      "why": "Practical identity/provenance substrate without summary as truth.",
+      "test_implication": "Ledger retains committed occurrence and next-state delta.",
+      "source_basis": "100"
+    },
+    {
+      "id": "WHOLE_PERSON_RENDER_PACKET",
+      "requirement": "current expressive projection plus selective tail",
+      "classification": "FACILE_BUT_FUNCTIONAL_ALPHA_BASELINE",
+      "why": "Thin projection may be adequate if it preserves person-specific effects.",
+      "test_implication": "Measure drift while varying packet size.",
+      "source_basis": "101 sections 18-19"
+    },
+    {
+      "id": "STRUCTURED_OCCURRENCE",
+      "requirement": "typed occurrence plus exact actor utterance",
+      "classification": "FACILE_BUT_FUNCTIONAL_ALPHA_BASELINE",
+      "why": "Inspectable binding contract for before-display admission.",
+      "test_implication": "Check atom/prose equivalence; fail closed.",
+      "source_basis": "101 sections 21-23"
+    },
+    {
+      "id": "LOCAL_PHENOMENAL_COMPOSITOR",
+      "requirement": "local phenomenal selection/lexicalization",
+      "classification": "FACILE_BUT_FUNCTIONAL_ALPHA_BASELINE",
+      "why": "A functional baseline before assuming third/second phenomenal LLM.",
+      "test_implication": "Use allowlisted atoms, geometry, salience, templates.",
+      "source_basis": "101 section 20"
+    },
+    {
+      "id": "SIMPLE_ATTEND",
+      "requirement": "simple bounded ATTEND and resolution depth",
+      "classification": "FACILE_BUT_FUNCTIONAL_ALPHA_BASELINE",
+      "why": "Preserves user choice with local, limited detail and realistic time.",
+      "test_implication": "Inspect one mundane object; disclose physical only.",
+      "source_basis": "60;80;100"
+    },
+    {
+      "id": "MINIMAL_ATTENTION_PRIORS",
+      "requirement": "minimal user attention and recognition priors",
+      "classification": "FACILE_BUT_FUNCTIONAL_ALPHA_BASELINE",
+      "why": "Cheap explicit priors suffice to test lens independence.",
+      "test_implication": "Two artificial lawful user-lens fixtures.",
+      "source_basis": "60;63;100"
+    },
+    {
+      "id": "LIGHTWEIGHT_BOUNDED_CONTEXT",
+      "requirement": "fixed relevant world/context facts",
+      "classification": "FACILE_BUT_FUNCTIONAL_ALPHA_BASELINE",
+      "why": "Large-scale real-time external ingestion is unnecessary.",
+      "test_implication": "Pin time, place, schedule and object constraints.",
+      "source_basis": "38;100"
+    },
+    {
+      "id": "MINIMUM_DECISION_CELL",
+      "requirement": "one meaningful native contribution and return",
+      "classification": "FACILE_BUT_FUNCTIONAL_ALPHA_BASELINE",
+      "why": "Binds full user-loop ambition to testable small interaction.",
+      "test_implication": "Return before engine chooses next user judgment.",
+      "source_basis": "D002/12-13"
+    },
+    {
+      "id": "ADAPTIVE_LENS_LONGITUDINAL",
+      "requirement": "mature adaptive attention/recognition modeling",
+      "classification": "FIDELITY_ESCALATION",
+      "why": "Useful product property but a simple profile suffices for renderer test.",
+      "test_implication": "Escalate after failure of simple lens.",
+      "source_basis": "60;D008/01;100"
+    },
+    {
+      "id": "LOCAL_PHENOMENAL_LITERARY_QUALITY",
+      "requirement": "more fluid/literary phenomenal composition",
+      "classification": "FIDELITY_ESCALATION",
+      "why": "Improves experience but does not justify private-data access.",
+      "test_implication": "Compare blinded quality within same membrane.",
+      "source_basis": "101 sections 20,24"
+    },
+    {
+      "id": "SECOND_PHENOMENAL_LLM",
+      "requirement": "second phenomenal LLM",
+      "classification": "FIDELITY_ESCALATION",
+      "why": "Only needed if local compositor is empirically inadequate.",
+      "test_implication": "Introduce only with membrane-preserving ablation.",
+      "source_basis": "101 sections 17,20,26"
+    },
+    {
+      "id": "LIVE_WORLD_BREADTH",
+      "requirement": "live-world breadth",
+      "classification": "FIDELITY_ESCALATION",
+      "why": "Bounded current context is enough for seam testing.",
+      "test_implication": "Defer geographically broad events/relevance.",
+      "source_basis": "38;100"
+    },
+    {
+      "id": "DEEPER_OBJECT_ECOLOGY",
+      "requirement": "many rooms/objects and provenance",
+      "classification": "FIDELITY_ESCALATION",
+      "why": "More discovery depth but not fundamental to first test.",
+      "test_implication": "Expand if bounded object lacks needed realism.",
+      "source_basis": "60;80;100"
+    },
+    {
+      "id": "MULTIMODAL_VOICE_BODY",
+      "requirement": "voice/audio/visual/body fidelity",
+      "classification": "FIDELITY_ESCALATION",
+      "why": "Rendering modality can scale after text-based epistemics.",
+      "test_implication": "Separate modality tests with same occurrence IDs.",
+      "source_basis": "100;101"
+    },
+    {
+      "id": "MORE_CONCURRENT_ACTORS",
+      "requirement": "many simultaneous consequential actors",
+      "classification": "FIDELITY_ESCALATION",
+      "why": "Supporting actor realism may later require expansion.",
+      "test_implication": "Measure orchestration after one supporting actor passes.",
+      "source_basis": "39;100"
+    },
+    {
+      "id": "ARBITRARY_SUPPORTING_ACTORS",
+      "requirement": "arbitrary recursively formative supporting actors",
+      "classification": "POTENTIAL_WHITE_WHALE",
+      "why": "Unbounded graph and deep independent histories may dominate cost.",
+      "test_implication": "Explicitly exclude, do not credit fixture.",
+      "source_basis": "39;100"
+    },
+    {
+      "id": "ARBITRARY_OPEN_WORLD",
+      "requirement": "arbitrary open world",
+      "classification": "POTENTIAL_WHITE_WHALE",
+      "why": "Unlimited locations and actions are qualitatively beyond bounded proof.",
+      "test_implication": "Declare physical and action-envelope exclusions.",
+      "source_basis": "100"
+    },
+    {
+      "id": "LONG_HORIZON_PERSISTENCE",
+      "requirement": "years-scale long-horizon persistence/coherence",
+      "classification": "POTENTIAL_WHITE_WHALE",
+      "why": "Exact short history is necessary; years-scale retrieval and behavior remain unproved.",
+      "test_implication": "Test two encounters now, no scaling claim.",
+      "source_basis": "100;101"
+    },
+    {
+      "id": "UNLIMITED_PERSON_GENERATION",
+      "requirement": "on-demand arbitrary focal persons at full depth",
+      "classification": "POTENTIAL_WHITE_WHALE",
+      "why": "Not needed when deeply audited seed is permitted.",
+      "test_implication": "Fixed seed substitution gate deferred.",
+      "source_basis": "100"
+    },
+    {
+      "id": "GLOBAL_AUTONOMOUS_LIFE",
+      "requirement": "continuous global autonomous person/world simulation",
+      "classification": "POTENTIAL_WHITE_WHALE",
+      "why": "Non-user-centric life can be represented by sparse agenda at alpha.",
+      "test_implication": "Exclude full autonomy and profile cost separately.",
+      "source_basis": "38;39;100"
+    },
+    {
+      "id": "TWO_CALL_BUDGET_PROOF",
+      "requirement": "full two-model-call live-turn integration",
+      "classification": "NOT_REQUIRED_FOR_RENDERER_TEST",
+      "why": "Renderer-only test may inject parsed admitted events, while candidly excluding parser/latency proof.",
+      "test_implication": "Mark semantic transduction untested; no F3 whole-turn claim.",
+      "source_basis": "101 sections 15-17,24-28"
+    },
+    {
+      "id": "CONTINUOUS_WORLD_NEWS",
+      "requirement": "continuous news and external-event ingestion",
+      "classification": "NOT_REQUIRED_FOR_RENDERER_TEST",
+      "why": "Historical/contextual grounding can be fixed for renderer testing.",
+      "test_implication": "No external feed required.",
+      "source_basis": "38;100"
+    },
+    {
+      "id": "MULTIPLAYER_SHARED_NADIA",
+      "requirement": "shared multiplayer Nadia",
+      "classification": "NOT_REQUIRED_FOR_RENDERER_TEST",
+      "why": "User-local counterfactual forks suffice; shared multi-user runtime is separate.",
+      "test_implication": "Explicitly exclude shared-world users.",
+      "source_basis": "60;61;100"
+    },
+    {
+      "id": "RELATIONSHIP_PROGRESS_UI",
+      "requirement": "relationship meter/quest log or progress badges",
+      "classification": "NOT_REQUIRED_FOR_RENDERER_TEST",
+      "why": "Not part of the renderer test and actively risks distorting product identity.",
+      "test_implication": "Do not present score cues.",
+      "source_basis": "01_PRODUCT_CHARTER;35"
+    },
+    {
+      "id": "OMNISCIENT_NARRATOR",
+      "requirement": "omnipresent narrator diagnosing Nadia",
+      "classification": "NOT_REQUIRED_FOR_RENDERER_TEST",
+      "why": "Not a capability goal; prohibited within the target seam.",
+      "test_implication": "Reject psychological interpretation of private cause.",
+      "source_basis": "D002/01;101"
+    },
+    {
+      "id": "HIDDEN_MOTIVE_LABELS",
+      "requirement": "hidden motive or truth status shown as user hint",
+      "classification": "NOT_REQUIRED_FOR_RENDERER_TEST",
+      "why": "Evaluation-only internal tags must stay outside phenotype.",
+      "test_implication": "No 'Nadia is lying' banner.",
+      "source_basis": "80;101"
+    },
+    {
+      "id": "PERSONALIZED_NADIA_BEHAVIOR",
+      "requirement": "Nadia behavior engineered from user-lens profile",
+      "classification": "NOT_REQUIRED_FOR_RENDERER_TEST",
+      "why": "Directly invalid under actor-before-phenomenal boundary.",
+      "test_implication": "Reject if swap of user lens alters occurrence.",
+      "source_basis": "60;D008/01;101"
+    }
+  ],
+  "coverage_required_by_mission": [
+    "unchosen other",
+    "independent antecedent state",
+    "whole-person continuity",
+    "relation specificity",
+    "partial perception",
+    "user-owned semantic contribution",
+    "attempt/result distinction",
+    "actor resistance/nonresponse",
+    "irreversible history",
+    "independent life",
+    "user cannot edit Nadia truth",
+    "Nadia non-exhaustibility",
+    "actor-before-user-phenomenology",
+    "hard private-state membrane",
+    "exact dialogue",
+    "lawful lies/errors",
+    "binding visible particulars",
+    "attention/recognition model",
+    "local phenomenal compositor",
+    "second phenomenal LLM",
+    "live-world breadth",
+    "arbitrary supporting actors",
+    "arbitrary open world",
+    "long-horizon persistence"
+  ],
+  "minimal_test": "one fixed unchosen seeded Nadia; objective pre-state and agenda; user-owned SAY/DO/ATTEND; independent response/nonresponse; admitted exact occurrence; double user-specific phenomenal projection over SAME occurrence; lawful error/lie fixture; short irreversible later return with event ablation"
+}
