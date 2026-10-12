@@ -1,3 +1,7 @@
+## Codex / Astra reserved quota and secondary-Mac sourcefree execution
+
+The user's 12 October screenshots and the Codex-only Astra constraint are now binding in [the exact minimum-model and Mac-file preflight](HQ282_CODEX_ASTRA_RESERVE_MODEL_AND_SECONDARY_FILE_LAW_R1.md). The model-specific decisions supersede earlier generic "strong local Codex" suggestions. Exact commission SHAs are in [the refreshed launch ledger](HQ282_SIX_SEALED_RESOURCE_GATED_LAUNCH_LEDGER_R1.md), not older text. **Astra reserve cannot be consumed by a cheap-looking local coding job without explicit user choice.**
+
 ## Latest sealed next-wave dispatch
 
 - [RCM01-gated post-six-return commission board](HQ282_RESOURCE_AWARE_RECOMMISSION_BOARD_R1.md)
