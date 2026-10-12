@@ -1,0 +1,11 @@
+Reviewed exact HEAD **`ca65fd49e84f80912307646dac31001711436a24`**. **One blocking correctness finding remains** for the supported P01 source-free candidate.
+
+- **[P1] Bind the frozen predicate to the actual query and consumed fact.** At [the predicate check](/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq282-p01-secondary/rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py:110), `run_integrated` only checks membership in `semantic_input_refs`. A different frozen predicate can be added there while the owner executes the query’s original predicate. [The verifier submission](/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq282-p01-secondary/rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py:231) then copies the frozen predicate rather than checking the observed fact. I reproduced `ok=True`, no failure codes, and three actual owner calls despite one consumed fact having the wrong expected predicate. Require exact predicate equality with both query and fact, and add a regression test.
+
+The new wrapper addresses the initial review’s transaction-lock, FAILED/DEFERRED scheduling, multiplicity and unknown-success findings at its supported boundary. The imported baselines remain exact pinned blobs with their documented direct-call limitations.
+
+Verification here passed: 17 exact imported objects, 328 unchanged materialized startup files, A05’s 18 cases, six read-only verifier tests, and saved expectation/consumer/replay integrity checks. The committed evidence records **161 passed, 6 skipped**. I could not rerun the durable suite: the read-only sandbox has no writable temporary directory. The defect reproduction substituted storage, journals and locks in memory; it establishes the semantic defect, not durability.
+
+The candidate demonstrates actual C11/Route B/I03/I05 and Field Forge use, but the defect prevents clearing its frozen-E integration requirement. External custody, source-use, scientific/model authority, REAL_EXECUTION and publication holds remain intact; none is accepted by this review.
+
+No files were edited, committed or pushed. No real survey data was accessed.

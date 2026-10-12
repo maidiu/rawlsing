@@ -108,6 +108,8 @@ def _run_integrated_locked(
             if query.requested_output_grain.get('measure_kind') != row.get('measure_kind', 'RAW'):
                 raise ValueError('MEASURE_KIND_SUBSTITUTION')
             predicate = ExactRef(**row['predicate_ref'])
+            if exact_ref(query.condition_predicate_ref) != predicate:
+                raise ValueError('QUERY_PREDICATE_SUBSTITUTION')
             if predicate not in unit.semantic_input_refs:
                 raise ValueError('PREDICATE_SUBSTITUTION')
         units_by_key[key] = unit
@@ -168,6 +170,9 @@ def _run_integrated_locked(
             facts = tuple(resolve_fact(ref) for ref in receipt.result_refs)
             if not facts or tuple(f.ref for f in facts) != receipt.result_refs:
                 raise ValueError('SAVED_RESULT_OBJECT_IDENTITY_MISMATCH')
+            for fact in facts:
+                if exact_ref(fact.condition_predicate_ref) != ExactRef(**raw['predicate_ref']):
+                    raise ValueError('FACT_PREDICATE_SUBSTITUTION')
         elif unit.job_kind == 'DISCOVERY' and resolve_discovery is not None:
             if len(receipt.result_refs) != 1:
                 raise ValueError('EXPECTED_DISCOVERY_MULTIPLICITY_MISMATCH')
@@ -209,6 +214,12 @@ def _run_integrated_locked(
             holds.append({'code': 'FIELD_FORGE_REQUIRES_SINGLE_TWO_TARGET_FACT',
                           'expected_work_key': key})
             continue
+        fact_releases = {exact_ref(ref) for ref in facts[0].source_empirical_provenance_refs
+                         if exact_ref(ref).kind == 'C11LogicalRelease'}
+        if fact_releases != set(unit.release_refs):
+            raise ValueError('FACT_RELEASE_SUBSTITUTION')
+        if exact_ref(query.condition_predicate_ref) != exact_ref(facts[0].condition_predicate_ref):
+            raise ValueError('QUERY_FACT_PREDICATE_MISMATCH')
         kwargs = dict(joint_fact=facts[0], joint_query=query,
                       conditioner_ref=query.target_refs[0], target_ref=query.target_refs[1],
                       producer_permission_ceiling=producer_permission_ceiling)
@@ -221,6 +232,9 @@ def _run_integrated_locked(
         consumer_products.append({'expected_work_key': key,
             'durable_unit_ref': unit.unit_ref.as_dict(),
             'result_ref': facts[0].ref.as_dict(),
+            'producer_query_ref': query.ref.as_dict(),
+            'producer_predicate_ref': exact_ref(facts[0].condition_predicate_ref).as_dict(),
+            'producer_release_refs': [ref.as_dict() for ref in sorted(fact_releases, key=lambda ref: ref.key)],
             'durable_result_refs': [ref.as_dict() for ref in receipt.result_refs],
             'discovery_receipt_ref': discovery_receipt.ref.as_dict() if discovery_receipt else None,
             'consumer_ref': profile.ref.as_dict(),
@@ -228,7 +242,7 @@ def _run_integrated_locked(
         produced_units.append({'job_kind': unit.job_kind, 'job_ref': unit.job_ref.as_dict(),
             'claimed_expected_work_key': key, 'declared_source_identity': session.source_sha256,
             'declared_condition_order': raw.get('condition_order', []),
-            'predicate_ref': raw.get('predicate_ref'),
+            'predicate_ref': exact_ref(facts[0].condition_predicate_ref).as_dict() if unit.job_kind == 'QUERY' else None,
             'release_refs': [r.as_dict() for r in unit.release_refs],
             'attempt_index': receipt.attempt_index, 'state': receipt.state,
             'result_typed_states': [discovery_receipt.typed_state] if discovery_receipt else [f.typed_state for f in facts],

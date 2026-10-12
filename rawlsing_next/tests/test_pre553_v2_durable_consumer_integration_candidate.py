@@ -353,3 +353,56 @@ P.run_integrated(**kwargs)
     assert 'CheckpointLockError' in child.stderr
     assert calls == []
     assert not kwargs['session'].store.exists()
+
+
+def test_extra_manifest_predicate_cannot_substitute_frozen_query_predicate(tmp_path):
+    from rawlsing_next.pre553_batch_durable_checkpoint_candidate import CheckpointIdentity
+    kwargs, calls = _fixture(tmp_path)
+    payload = json.loads(kwargs['expected'].payload_json)
+    row = next(r for r in payload['declarations'] if 'query_ref' in r)
+    original = ExactRef(**row['predicate_ref'])
+    other = next(p.ref for p in kwargs['runtime_catalog'].predicates if p.ref != original)
+    row['predicate_ref'] = other.as_dict()
+    kwargs['expected'] = P.FrozenExpected.from_documentary_payload(payload)
+    session = kwargs['session']
+    units = tuple(replace(unit, semantic_input_refs=(*unit.semantic_input_refs, other))
+                  if unit.job_ref == ExactRef(**row['query_ref']) else unit for unit in session.manifest.units)
+    manifest = BatchManifest(units)
+    kwargs['session'] = replace(session, manifest=manifest, identity=CheckpointIdentity.from_manifest(manifest))
+    with pytest.raises(ValueError, match='QUERY_PREDICATE_SUBSTITUTION'):
+        P.run_integrated(**kwargs)
+    assert calls == []
+
+
+@pytest.mark.parametrize('substitution', ['predicate', 'release'])
+def test_saved_fact_must_use_frozen_predicate_and_release(tmp_path, substitution):
+    from rawlsing_next.pre553_empirical_objects import EmpiricalFact
+    kwargs, _ = _fixture(tmp_path)
+    session = kwargs['session']
+    facts = {}
+    other = next(p.ref for p in kwargs['runtime_catalog'].predicates
+                 if p.ref != ExactRef(**next(r for r in json.loads(kwargs['expected'].payload_json)['declarations'] if 'predicate_ref' in r)['predicate_ref']))
+    original_execute = session.executors['QUERY'].execute
+    def substituted(unit):
+        outcome = original_execute(unit)
+        original = kwargs['resolve_fact'](outcome.result_refs[0])
+        fields = dict(original.semantic_fields)
+        if substitution == 'predicate':
+            fields['condition_predicate_ref'] = other
+        else:
+            provenance = [ref for ref in fields['source_empirical_provenance_refs'] if ref['kind'] != 'C11LogicalRelease']
+            provenance.append(ExactRef('C11LogicalRelease', 'FOREIGN-RELEASE', '4'*64).as_dict())
+            fields['source_empirical_provenance_refs'] = provenance
+        fact = EmpiricalFact(typed_state=original.typed_state,
+            authority_snapshot_refs=original.authority_snapshot_refs,
+            dependency_refs=original.dependency_refs,
+            producer_replay_locator_or_reference_root=original.producer_replay_locator_or_reference_root,
+            **fields)
+        facts[fact.ref.key] = fact
+        return ExecutionOutcome(result_refs=(fact.ref,), provenance_refs=outcome.provenance_refs)
+    kwargs['session'] = replace(session, executors={**session.executors,
+        'QUERY': ExecutorBinding(session.executors['QUERY'].executor_ref, substituted)})
+    resolver = kwargs['resolve_fact']
+    kwargs['resolve_fact'] = lambda ref: facts[ref.key] if ref.key in facts else resolver(ref)
+    with pytest.raises(ValueError, match='FACT_PREDICATE_SUBSTITUTION' if substitution == 'predicate' else 'FACT_RELEASE_SUBSTITUTION'):
+        P.run_integrated(**kwargs)
