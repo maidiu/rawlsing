@@ -1,0 +1,21 @@
+{
+ "schema": "HQ280_PV3_R02_ACTUAL_SUBPROCESS_RUNS@1",
+ "runs": [
+  {
+   "id": "b01e_governed_batch_suite",
+   "tree": "92cb2534",
+   "collected": 29,
+   "passed": 29,
+   "failed": 0,
+   "exit_code": 0,
+   "wall_seconds": 73.85,
+   "log": "repro/b01e_suite.log",
+   "note": "includes B01E's three real SIGKILL windows"
+  }
+ ],
+ "composed_run": {
+  "status": "NOT_AVAILABLE",
+  "reason": "the two candidates are mutually exclusive on every tree; no importable tree contains both"
+ },
+ "terminal": "HQ281_R02_BOUNDED_PRODUCT_OR_EXACT_HOLD__GITHUB_PUSHED"
+}

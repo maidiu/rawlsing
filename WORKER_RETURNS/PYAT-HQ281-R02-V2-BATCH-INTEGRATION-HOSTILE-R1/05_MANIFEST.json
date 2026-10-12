@@ -1,0 +1,39 @@
+{
+ "schema": "HQ280_PV3_R02_MANIFEST@1",
+ "reviewer_branch": "agent/reviewer-pyat-hq281-r02-v2-batch-integration-hostile-r1",
+ "reviewer_head": "eaf838ed42d924c3185f9e158b2da03c91eb3e40",
+ "b01e": "92cb25340c49fb51e2b8d6e00d5a4f471296fc8f",
+ "a04tu": "d6e766cd6ba7dc46b19cc61123d968a274015ddd",
+ "deliverables": {
+  "00_RETURN.md": {
+   "sha256": "2c3b5d52a33e9cefca61f3ff7f1e063236d6eb72eeaf872cd36697bfede6d715",
+   "bytes": 5045
+  },
+  "01_PINNED_TREES.json": {
+   "sha256": "fe5773d917cf6ba76319a4a6d307c832d541858c5088a63b8c3093842b3eff9c",
+   "bytes": 1160
+  },
+  "02_ACTUAL_SUBPROCESS_RUNS.json": {
+   "sha256": "2a06d5eb0f506a72797f6e20d4203e1a7cad8b3e856953281b749e4b2e92fb74",
+   "bytes": 554
+  },
+  "03_HOSTILE_RESULTS.json": {
+   "sha256": "796971ade620c5b95925f96b4855d141040ffc82b5edcc438e375dc9fb52391c",
+   "bytes": 963
+  },
+  "04_ACCEPTANCE_GATES.json": {
+   "sha256": "9d8f7bab5a9ef0607d8acc0cce8ee8e35946034f8c49e508ae3265b1bf2b30bc",
+   "bytes": 780
+  }
+ },
+ "repro": {
+  "b01e_suite.log": {
+   "sha256": "ec1537cca9d40a887732b4df27db50a34f84c32046a50b6561ac1f7cdf115b2e",
+   "bytes": 110
+  }
+ },
+ "disposition": "EXACT_HOLD__CANDIDATES_CANNOT_COMPOSE",
+ "candidate_code_changed": false,
+ "no_self_adoption": true,
+ "terminal": "HQ281_R02_BOUNDED_PRODUCT_OR_EXACT_HOLD__GITHUB_PUSHED"
+}

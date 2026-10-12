@@ -1,0 +1,21 @@
+{
+ "schema": "HQ280_PV3_R02_HOSTILE_RESULTS@1",
+ "executed": [
+  "B01E 29-test suite on its exact committed tree (incl. three real SIGKILL windows)",
+  "blob verification of governed-batch and durable modules",
+  "cross-tree module presence matrix",
+  "confirmation that B01E's durable dependency is the B01D RERUN_SAFE-closed core"
+ ],
+ "blocked_by_missing_join": [
+  "unified unknown-side-effect-before-COMMIT across the composed stack",
+  "head-blocking vs forbidden skip through a V2 expectation",
+  "failed/deferred pin against a V2 key",
+  "forged idempotence against the composed path",
+  "manifest/work-key mismatch across the two trees",
+  "foreign source/release authority through the V2 verifier",
+  "altered actual consumer",
+  "producer-self-generated E"
+ ],
+ "grading_rule": "a hostile that cannot be lawfully constructed is reported as BLOCKED_BY_MISSING_JOIN, never as PASS",
+ "terminal": "HQ281_R02_BOUNDED_PRODUCT_OR_EXACT_HOLD__GITHUB_PUSHED"
+}

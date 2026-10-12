@@ -1,0 +1,35 @@
+{
+ "schema": "HQ280_PV3_R02_PINNED_TREES@1",
+ "reviewer_branch": "agent/reviewer-pyat-hq281-r02-v2-batch-integration-hostile-r1",
+ "reviewer_head": "eaf838ed42d924c3185f9e158b2da03c91eb3e40",
+ "b01e": "92cb25340c49fb51e2b8d6e00d5a4f471296fc8f",
+ "a04tu": "d6e766cd6ba7dc46b19cc61123d968a274015ddd",
+ "authority": {
+  "governing": "HQD-2026-10-10-280",
+  "canonical": "a70a069fa948e0f3c041b389edcc732b6b948a4f",
+  "pre_main": "1f47063c3205a45888b3c55e81e7485943ed1390"
+ },
+ "cross_tree_matrix": {
+  "pre553_governed_batch_checkpoint_integration_candidate.py": {
+   "b01e": "PRESENT",
+   "a04tu": "ABSENT",
+   "reviewer_head": "PRESENT"
+  },
+  "pre553_original_workload_v2_verifier_candidate.py": {
+   "b01e": "ABSENT",
+   "a04tu": "PRESENT",
+   "reviewer_head": "ABSENT"
+  },
+  "pre553_batch_durable_checkpoint_candidate.py": {
+   "b01e": "PRESENT",
+   "a04tu": "ABSENT"
+  },
+  "mutually_exclusive": true
+ },
+ "blobs": {
+  "governed_batch": "44807c6a287145507d7332138c944cd61da363bf",
+  "durable": "719c8d878bcfb3b6c61c844c9bf974ada8365929",
+  "durable_equals_b01d_reviewed_core": true
+ },
+ "terminal": "HQ281_R02_BOUNDED_PRODUCT_OR_EXACT_HOLD__GITHUB_PUSHED"
+}
