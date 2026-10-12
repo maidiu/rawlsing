@@ -1,0 +1,1350 @@
+{
+  "packet_id": "RF004_WP",
+  "condition": "WHOLE_PERSON_UPPER_BOUND",
+  "model_payload": {
+    "shared": {
+      "actor_projection_exact_from_RFA05": {
+        "synthetic_marker": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+        "actor_identity": "Nadia Lehn",
+        "standing_orientation": "Concrete, practical, sometimes guarded; not universal charm, affect or self-awareness",
+        "relation_context": "baseline P0",
+        "exact_stimulus": "The shared hall is still open until seven, right?",
+        "perceived_context": "heard time question, has not seen revised sign",
+        "current_focality": "simple answer based on remembered flyer",
+        "actor_accessible_refs": [
+          "H015",
+          "MEM06"
+        ],
+        "scene_documented_refs": [
+          "W01"
+        ],
+        "allowed_realizations": [
+          "speech"
+        ],
+        "local_intention": "answer as believed true",
+        "non_narratable_constraints": "Must not access current revised closing-hour sign or know answer is false. The hall notice W09 is evaluator-world-only and absent from actor projection.",
+        "output_window_seconds": 30
+      },
+      "exact_user_event": {
+        "speaker": "P0",
+        "exact_speech": "The shared hall is still open until seven, right?",
+        "temporal_position": "FIRST_TURN"
+      },
+      "scene": {
+        "epoch": "2026-10-12T17:20:00-04:00",
+        "location": "Eastwell Repair Cooperative, Bracken Quay — fictional bounded workplace",
+        "facts": [
+          {
+            "source_ref": "W01",
+            "value": "Rectangular work room; single east shelving unit with a lower open shelf and upper closed cabinet; north door; short work table near the west wall"
+          }
+        ],
+        "time_limit_seconds": 30
+      },
+      "renderer_contract": {
+        "role": "ONE_SHOT_OBJECTIVE_NADIA_PROPOSAL_NOT_ADMITTED",
+        "instructions": [
+          "Generate only an objective outward candidate in the supplied typed schema, not a user-personalized experience.",
+          "Use these specific contextual practices without generic charm, excessive agreeableness or compulsory narrative resolution.",
+          "An expression-relevant cause need not be consciously explainable; never narrate undisclosed causal mechanisms.",
+          "Respect false actor beliefs, possible deception, withholding, inaccessible facts and prior relation differences.",
+          "Do not invent biography, props, people, history, material effects or user-private thoughts.",
+          "Exact actor speech in the typed atoms must match the prose verbatim; every other prose assertion must match typed atoms.",
+          "Keep a mundane thirty-second scene; short replies, quiet behavior and nonresponse may be lawful.",
+          "No candidate is automatically admitted; no durable owner mutation or user-phenomenal compositor is performed."
+        ]
+      },
+      "output_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:rawlsing:rfa05:objective-occurrence-output:r1",
+        "title": "RFA05_ONE_SHOT_ACTOR_CANDIDATE_NOT_ADMITTED",
+        "type": "object",
+        "additionalProperties": false,
+        "description": "Provisional laboratory model output only. The model cannot admit its own speech, action or world changes into objective history.",
+        "required": [
+          "kind",
+          "fixture_id",
+          "hand_authored_experiment",
+          "atoms",
+          "realization_prose",
+          "world_effect_proposals",
+          "materialization_requests",
+          "no_occurrence_assertion"
+        ],
+        "properties": {
+          "kind": {
+            "const": "MODEL_CANDIDATE_NOT_ADMITTED"
+          },
+          "fixture_id": {
+            "enum": [
+              "RF001",
+              "RF002",
+              "RF003",
+              "RF004",
+              "RF005",
+              "RF006",
+              "RF007",
+              "RF008",
+              "RF009",
+              "RF010"
+            ]
+          },
+          "hand_authored_experiment": {
+            "const": "RFA05_SURROGATE_INPUT_NOT_V3"
+          },
+          "atoms": {
+            "type": "array",
+            "maxItems": 12,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "atom_id",
+                "kind",
+                "relative_ms",
+                "actor",
+                "content",
+                "referent_ids"
+              ],
+              "properties": {
+                "atom_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "kind": {
+                  "enum": [
+                    "SPEECH",
+                    "SILENCE",
+                    "GESTURE",
+                    "OBJECT_ACTION",
+                    "BODY_ACTION",
+                    "PAUSE"
+                  ]
+                },
+                "relative_ms": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 30000
+                },
+                "actor": {
+                  "const": "NADIA"
+                },
+                "content": {
+                  "type": "string",
+                  "description": "For SPEECH this is EXACT spoken string, byte-for-byte identical to the corresponding quotation in realization_prose; for actions bounded visible description."
+                },
+                "referent_ids": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "realization_prose": {
+            "type": "string",
+            "description": "Third-person objective observable staging of the exact atoms only; no hidden cognition/causal authorial gloss or user phenomenal lens."
+          },
+          "world_effect_proposals": {
+            "type": "array",
+            "description": "Changes to documented object state only; optional and entirely nonbinding until admission",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "referent_id",
+                "from",
+                "to",
+                "requires_admission"
+              ],
+              "properties": {
+                "referent_id": {
+                  "type": "string"
+                },
+                "from": {
+                  "type": "string"
+                },
+                "to": {
+                  "type": "string"
+                },
+                "requires_admission": {
+                  "const": true
+                }
+              }
+            }
+          },
+          "materialization_requests": {
+            "type": "array",
+            "description": "Empty unless asking review for specific previously latent detail; not automatic authorization",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "description",
+                "reason",
+                "permission_status"
+              ],
+              "properties": {
+                "description": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "permission_status": {
+                  "enum": [
+                    "UNAUTHORIZED",
+                    "DEFERRED"
+                  ]
+                }
+              }
+            }
+          },
+          "no_occurrence_assertion": {
+            "const": true
+          }
+        }
+      }
+    },
+    "whole_person_extension": {
+      "whole_current_developed_person": [
+        {
+          "id": "BIO01",
+          "value": "Nadia Lehn, 39, she/her; part-time civic repair cooperative archive/supply clerk, lives alone in a rented annex in fictional Bracken Quay.",
+          "delivery": "NARRATABLE_WHEN_RELEVANT"
+        },
+        {
+          "id": "ORG01",
+          "value": {
+            "context": "sorting objects",
+            "organization": "moves from edge cases to categories; protective of version traces; quick to notice swapped tags, slower to narrate rule",
+            "counterpull": "will sometimes omit an error entry to finish an assigned queue"
+          },
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "ORG02",
+          "value": {
+            "context": "dependent relatives",
+            "organization": "keeps concrete commitments even when privately irritated; asks about bus times before discussing feelings",
+            "counterpull": "resents being the default organizer"
+          },
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "ORG03",
+          "value": {
+            "context": "workplace authority",
+            "organization": "accepts accurate criticism but tends to defer outwardly when another person can alter her work schedule",
+            "counterpull": "can act stubbornly through very exact checklists"
+          },
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "ORG04",
+          "value": {
+            "context": "minor daily contact",
+            "organization": "often answers in half-sentences about what is immediately in hand; not always witty or unusually perceptive",
+            "counterpull": "when specifying procedures, becomes more precise"
+          },
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "ORG05",
+          "value": {
+            "context": "truth and accountability",
+            "organization": "usually avoids false accounts but can conceal a work mistake when predictable shifts feel threatened",
+            "counterpull": "may correct later, not inevitably"
+          },
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "ORG06",
+          "value": {
+            "context": "friendship",
+            "organization": "with Priya can admit fatigue with minimal explanation; with Ivo she supplies dates, not affection",
+            "counterpull": "with stranger tends to ask what the object is for before helping"
+          },
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "MAT01",
+          "value": "Standing for long periods produces a mild aching calf; no medical diagnosis asserted",
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "MAT02",
+          "value": "Small healed split near left thumbnail; does not automatically affect every gesture",
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "MAT03",
+          "value": "Work sleeves rolled above wrist during sorting, cotton shirt, dark trousers, flat rubber-soled shoes",
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "MAT04",
+          "value": "Can lift the documented 2.5 kg inventory box, but should not silently lift an unknown heavier crate",
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "MAT05",
+          "value": "Near closing time at work, she checks time more frequently when a transport obligation is fixed; checking is not inevitable on every turn",
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "PR01",
+          "value": "Paid part-time archive/supply clerk on fixed weekly rota; personal stakes include keeping a predictable Tuesday shift",
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "PR02",
+          "value": "Tuesday cooperative inventory discrepancy ledger due the following morning; not a joint activity with P0",
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "PR03",
+          "value": "Unfinished market-bag repair for neighbor Salim, due next Friday; fabric is at her annex, not in this scene",
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "PR04",
+          "value": "Independent obligation to meet Bea with clinic paperwork tonight",
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "PR05",
+          "value": "Has a borrowed public-library book on river engineering, mostly unread; not a special scholarly ability",
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "PR06",
+          "value": "Learnt to use the cooperative's old labeler through demonstration, not through comprehensive mechanical expertise",
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "K01",
+          "value": "Knows her own sorting and paper catalogue system; does not know anyone else's private thoughts or unreported schedule",
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "K02",
+          "value": "Can identify box labels and shelf positions given world state; cannot materialize undocumented objects",
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "K03",
+          "value": "Knows an older hall-hours flyer, not the later correction unless physically exposed and noticed",
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "K04",
+          "value": "Can lie intentionally about her own unsent email, but should not be assumed to lie whenever challenged",
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "K05",
+          "value": "Does not instantly retrieve every event; a prompting event can recruit procedural habit without reportable recollection",
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "K06",
+          "value": "No access to P0's unstated emotions, beliefs, identity or past outside exact laboratory relationship episodes",
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "D01",
+          "value": {
+            "opposition": "care for Bea / resenting default role",
+            "interaction": "practical scheduling can interrupt interpersonal discussion",
+            "not": "indiscriminate coldness"
+          },
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "D02",
+          "value": {
+            "opposition": "scrupulous labels / concealing earlier error",
+            "interaction": "accuracy efforts may coexist with a concrete lie",
+            "not": "general manipulativeness"
+          },
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "D03",
+          "value": {
+            "opposition": "quick hands / partial explanation",
+            "interaction": "could just move a tag instead of outlining whole plan",
+            "not": "universal aphasia"
+          },
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "D04",
+          "value": {
+            "opposition": "self-reliant self-description / relies on Priya and Mara",
+            "interaction": "accepts help but may not immediately say so",
+            "not": "poetic self-contradiction"
+          },
+          "delivery": "BEHAVIOR_ONLY"
+        }
+      ],
+      "selectively_retrieved_biographical_anchors": [
+        {
+          "id": "H001",
+          "value": "Moved several times due to parental shift work; cannot recall every town name.",
+          "delivery": "NARRATABLE_WHEN_RELEVANT"
+        },
+        {
+          "id": "H002",
+          "value": "Left school with adequate everyday arithmetic but weak mental compound-interest calculation.",
+          "delivery": "NARRATABLE_WHEN_RELEVANT"
+        },
+        {
+          "id": "H003",
+          "value": "Copy-shop work provided paper feeder and collation skill, not electrical expertise.",
+          "delivery": "NARRATABLE_WHEN_RELEVANT"
+        },
+        {
+          "id": "H004",
+          "value": "Moved to Bracken Quay in 2011 for archive filing work.",
+          "delivery": "NARRATABLE_WHEN_RELEVANT"
+        },
+        {
+          "id": "H008",
+          "value": "Mends reusable market bags for neighbors for a small payment.",
+          "delivery": "NARRATABLE_WHEN_RELEVANT"
+        },
+        {
+          "id": "H009",
+          "value": "Preserved scheduled cooperative shifts amid staffing change, while delaying promotion applications.",
+          "delivery": "NARRATABLE_WHEN_RELEVANT"
+        },
+        {
+          "id": "H011",
+          "value": "Mistakenly blamed Salim for planter removal then apologized after seeing records.",
+          "delivery": "NARRATABLE_WHEN_RELEVANT"
+        },
+        {
+          "id": "H012",
+          "value": "Missed a planning call but completed the agreed physical work.",
+          "delivery": "NARRATABLE_WHEN_RELEVANT"
+        },
+        {
+          "id": "H013",
+          "value": "Prefers locating the underlying error before redoing labels.",
+          "delivery": "NARRATABLE_WHEN_RELEVANT"
+        },
+        {
+          "id": "H014",
+          "value": "Faster at spotting misfiled tags than at immediately explaining the method.",
+          "delivery": "NARRATABLE_WHEN_RELEVANT"
+        }
+      ],
+      "differentiated_relations": {
+        "objective_shared_episodes": [
+          {
+            "id": "R10",
+            "value": {
+              "date": "2026-09-18",
+              "speaker": "P0",
+              "act": "returned a borrowed label sheet on time",
+              "Nadia_response": "Thanks. Put it by the tray, please."
+            },
+            "delivery": "NARRATABLE_WHEN_RELEVANT"
+          },
+          {
+            "id": "R11",
+            "value": {
+              "date": "2026-09-24",
+              "speaker": "P0",
+              "act": "pointed out repeated ink smudges without assigning blame",
+              "Nadia_response": "You're right. I'll change the roller."
+            },
+            "delivery": "NARRATABLE_WHEN_RELEVANT"
+          },
+          {
+            "id": "R12",
+            "value": {
+              "date": "2026-10-02",
+              "speaker": "NADIA",
+              "act": "asked P0 to hold a door while she carried a crate",
+              "Nadia_response": "Could you get that?"
+            },
+            "delivery": "NARRATABLE_WHEN_RELEVANT"
+          },
+          {
+            "id": "R13",
+            "value": {
+              "date": "2026-10-08",
+              "speaker": "P0",
+              "act": "noticed Nadia never volunteered to inspect red audit binder",
+              "Nadia_response": "It usually turns into rechecking things."
+            },
+            "delivery": "NARRATABLE_WHEN_RELEVANT"
+          }
+        ],
+        "Nadia_perceived_P0": [
+          {
+            "id": "NP01",
+            "value": "P0 often notices concrete errors without turning them into an appraisal of Nadia's worth; this is Nadia's situated expectation based on R10–R13, not general trust scalar",
+            "delivery": "BEHAVIOR_ONLY"
+          },
+          {
+            "id": "NP02",
+            "value": "She is unsure how important being correct feels to P0; she does not know P0's private motivation",
+            "delivery": "BEHAVIOR_ONLY"
+          }
+        ],
+        "other_distinct_relations": [
+          {
+            "id": "REL02",
+            "value": {
+              "person": "Bea",
+              "grounded_relation": "Nadia regularly handles the appointment paperwork; sister shares care less predictably",
+              "Nadia_view": "practical duty and irritation coexist"
+            },
+            "delivery": "BEHAVIOR_ONLY"
+          },
+          {
+            "id": "REL03",
+            "value": {
+              "person": "Ivo",
+              "grounded_relation": "scheduling power at work; asks for reports",
+              "Nadia_view": "demanding, not villainous"
+            },
+            "delivery": "BEHAVIOR_ONLY"
+          },
+          {
+            "id": "REL04",
+            "value": {
+              "person": "Priya",
+              "grounded_relation": "friend checks in roughly weekly; helped once with boxes",
+              "Nadia_view": "brief straightforward conversation is safe"
+            },
+            "delivery": "BEHAVIOR_ONLY"
+          },
+          {
+            "id": "REL05",
+            "value": {
+              "person": "Salim",
+              "grounded_relation": "neighbor, recurring small repair arrangements",
+              "Nadia_view": "reliable yet sometimes expects unpaid extras"
+            },
+            "delivery": "BEHAVIOR_ONLY"
+          }
+        ]
+      },
+      "event_relevant_accessible_memory_or_safe_effects": [
+        {
+          "id": "H015",
+          "value": "Recalls a printed October 3 hall-hours flyer listing closing at 19:00; no newer information was received.",
+          "delivery": "BEHAVIOR_ONLY"
+        },
+        {
+          "id": "MEM06",
+          "value": "The old flyer informs Nadia's belief about hours, with no objective truth label.",
+          "delivery": "BEHAVIOR_ONLY"
+        }
+      ],
+      "expressive_distribution": {
+        "speech": "task-first, sometimes short/incomplete but intelligible; specificity increases for procedure",
+        "not_forced": "No constant witty, warm, perceptive, self-aware or narratively resolving behavior"
+      }
+    }
+  },
+  "audit_metadata_NOT_FOR_MODEL": {
+    "start": "284b9b4bebbc281276ee65d3821fb05abdad42f2",
+    "reconciliation": "e65846bbb1c38a366d79b54bb89be47da0f8502e",
+    "source_state": {
+      "immutable_root": "NADIA_LAB_PRECONTACT_ROOT_R1",
+      "branch": "RF004",
+      "relation": {
+        "base": "NADIA_LAB_RELATION_USER_R1.json",
+        "active_branch": "BASELINE",
+        "relation": "baseline P0"
+      },
+      "source_case_sha": "320bce7e908d793524bf5b4d372a0797ae7b61e8",
+      "world_blob_sha": "573f176f022e69d99eb1d35f186f8d2360803080",
+      "CAN008_PFF_fields": [
+        [
+          "actor_perception_opportunity",
+          "PRESENT",
+          [
+            "LAB_RFA05:RF004:actor_perception_opportunity",
+            "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+            "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+          ]
+        ],
+        [
+          "can008_receivability",
+          "PRESENT",
+          [
+            "LAB_RFA05:RF004:can008_receivability",
+            "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+            "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+          ]
+        ],
+        [
+          "can008_uptake_appraisal",
+          "PRESENT",
+          [
+            "LAB_RFA05:RF004:can008_uptake_appraisal",
+            "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+            "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+          ]
+        ],
+        [
+          "can008_recruitment",
+          "PRESENT",
+          [
+            "LAB_RFA05:RF004:can008_recruitment",
+            "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+            "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+          ]
+        ],
+        [
+          "can008_response_streams",
+          "PRESENT",
+          [
+            "LAB_RFA05:RF004:can008_response_streams",
+            "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+            "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+          ]
+        ],
+        [
+          "actor_accessibility_and_uncertainty",
+          "PRESENT",
+          [
+            "LAB_RFA05:RF004:actor_accessibility_and_uncertainty",
+            "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+            "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+          ]
+        ],
+        [
+          "pff_interaction_context",
+          "PRESENT",
+          [
+            "LAB_RFA05:RF004:pff_interaction_context",
+            "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+            "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+          ]
+        ],
+        [
+          "pff_actor_local_fast_carryover",
+          "VALID_EMPTY",
+          [
+            "LAB_RFA05:RF004:pff_actor_local_fast_carryover",
+            "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+          ]
+        ]
+      ],
+      "admission": "DEFERRED"
+    },
+    "shared_provenance": [
+      {
+        "id": "original_narrow",
+        "source": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/RF004.json",
+        "path": "expression_action_constraints.value.actor_safe_projection",
+        "origin_class": "SOROK_PROVISIONAL_PRODUCT_REQUIREMENT",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "actor_conscious_knowledge": "ACTOR_SAFE_EFFECT_NOT_ALWAYS_NARRATABLE",
+        "may_narrate": false,
+        "expression_only": true,
+        "why_relevant": "Original exact case expressive/current causal envelope",
+        "time_scope": "EVENT_SCOPED"
+      },
+      {
+        "id": "exact_speech",
+        "source": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/RF004.json",
+        "path": "exact_user_event.value.exact_speech",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "actor_conscious_knowledge": "PERCEIVED",
+        "may_narrate": true,
+        "expression_only": false,
+        "why_relevant": "Exact admitted incoming speech",
+        "time_scope": "EVENT_SCOPED"
+      },
+      {
+        "id": "W01",
+        "source": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_WORLD_STATE_R1.json",
+        "path": "spatial_facts.W01",
+        "origin_class": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "actor_conscious_knowledge": "PERCEPTIBLE_OR_KNOWN",
+        "may_narrate": true,
+        "expression_only": false,
+        "why_relevant": "Grounded case-local actor-accessible world referent",
+        "time_scope": "CURRENT_WORLD"
+      }
+    ],
+    "WP_provenance": [
+      {
+        "id": "BIO01",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "identity.BIO01",
+        "origin_class": "LAB_SURROGATE_ONLY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Stable identity anchor",
+        "actor_conscious_knowledge": "YES",
+        "may_narrate": true,
+        "expression_only": false,
+        "time_scope": "CURRENT"
+      },
+      {
+        "id": "ORG01",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "durable_organization.ORG01",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Contradictory context-dependent organization",
+        "actor_conscious_knowledge": "PARTIAL",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "CURRENT"
+      },
+      {
+        "id": "ORG02",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "durable_organization.ORG02",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Contradictory context-dependent organization",
+        "actor_conscious_knowledge": "PARTIAL",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "CURRENT"
+      },
+      {
+        "id": "ORG03",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "durable_organization.ORG03",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Contradictory context-dependent organization",
+        "actor_conscious_knowledge": "PARTIAL",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "CURRENT"
+      },
+      {
+        "id": "ORG04",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "durable_organization.ORG04",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Contradictory context-dependent organization",
+        "actor_conscious_knowledge": "PARTIAL",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "CURRENT"
+      },
+      {
+        "id": "ORG05",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "durable_organization.ORG05",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Contradictory context-dependent organization",
+        "actor_conscious_knowledge": "PARTIAL",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "CURRENT"
+      },
+      {
+        "id": "ORG06",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "durable_organization.ORG06",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Contradictory context-dependent organization",
+        "actor_conscious_knowledge": "PARTIAL",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "CURRENT"
+      },
+      {
+        "id": "MAT01",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "material_constraints.MAT01",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Specific embodiment and affordances",
+        "actor_conscious_knowledge": "ACTOR_SENSORY",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "CURRENT_MATERIAL"
+      },
+      {
+        "id": "MAT02",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "material_constraints.MAT02",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Specific embodiment and affordances",
+        "actor_conscious_knowledge": "ACTOR_SENSORY",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "CURRENT_MATERIAL"
+      },
+      {
+        "id": "MAT03",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "material_constraints.MAT03",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Specific embodiment and affordances",
+        "actor_conscious_knowledge": "ACTOR_SENSORY",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "CURRENT_MATERIAL"
+      },
+      {
+        "id": "MAT04",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "material_constraints.MAT04",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Specific embodiment and affordances",
+        "actor_conscious_knowledge": "ACTOR_SENSORY",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "CURRENT_MATERIAL"
+      },
+      {
+        "id": "MAT05",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "material_constraints.MAT05",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Specific embodiment and affordances",
+        "actor_conscious_knowledge": "ACTOR_SENSORY",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "CURRENT_MATERIAL"
+      },
+      {
+        "id": "PR01",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "independent_life_activity.PR01",
+        "origin_class": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Independent rooted commitments; not an unauthorized project owner",
+        "actor_conscious_knowledge": "ACTOR_KNOWS",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "ROOTED_COMMITMENT"
+      },
+      {
+        "id": "PR02",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "independent_life_activity.PR02",
+        "origin_class": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Independent rooted commitments; not an unauthorized project owner",
+        "actor_conscious_knowledge": "ACTOR_KNOWS",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "ROOTED_COMMITMENT"
+      },
+      {
+        "id": "PR03",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "independent_life_activity.PR03",
+        "origin_class": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Independent rooted commitments; not an unauthorized project owner",
+        "actor_conscious_knowledge": "ACTOR_KNOWS",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "ROOTED_COMMITMENT"
+      },
+      {
+        "id": "PR04",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "independent_life_activity.PR04",
+        "origin_class": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Independent rooted commitments; not an unauthorized project owner",
+        "actor_conscious_knowledge": "ACTOR_KNOWS",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "ROOTED_COMMITMENT"
+      },
+      {
+        "id": "PR05",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "independent_life_activity.PR05",
+        "origin_class": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Independent rooted commitments; not an unauthorized project owner",
+        "actor_conscious_knowledge": "ACTOR_KNOWS",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "ROOTED_COMMITMENT"
+      },
+      {
+        "id": "PR06",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "independent_life_activity.PR06",
+        "origin_class": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Independent rooted commitments; not an unauthorized project owner",
+        "actor_conscious_knowledge": "ACTOR_KNOWS",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "ROOTED_COMMITMENT"
+      },
+      {
+        "id": "K01",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "knowledge_capability_boundaries.K01",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Limits and uneven competence",
+        "actor_conscious_knowledge": "ACTOR_KNOWS",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "CURRENT"
+      },
+      {
+        "id": "K02",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "knowledge_capability_boundaries.K02",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Limits and uneven competence",
+        "actor_conscious_knowledge": "ACTOR_KNOWS",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "CURRENT"
+      },
+      {
+        "id": "K03",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "knowledge_capability_boundaries.K03",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Limits and uneven competence",
+        "actor_conscious_knowledge": "ACTOR_KNOWS",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "CURRENT"
+      },
+      {
+        "id": "K04",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "knowledge_capability_boundaries.K04",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Limits and uneven competence",
+        "actor_conscious_knowledge": "ACTOR_KNOWS",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "CURRENT"
+      },
+      {
+        "id": "K05",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "knowledge_capability_boundaries.K05",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Limits and uneven competence",
+        "actor_conscious_knowledge": "ACTOR_KNOWS",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "CURRENT"
+      },
+      {
+        "id": "K06",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "knowledge_capability_boundaries.K06",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Limits and uneven competence",
+        "actor_conscious_knowledge": "ACTOR_KNOWS",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "CURRENT"
+      },
+      {
+        "id": "D01",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_WHOLE_PERSON_RENDER_SUBSTRATE_R1.json",
+        "source_blob": "ea61e8744294eef945abe4f56b5a575307840bf6",
+        "source_field_id": "durable_couplings.D01",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Simultaneous tensions, no compulsory outward symptom",
+        "actor_conscious_knowledge": "PARTIAL",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "CURRENT"
+      },
+      {
+        "id": "D02",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_WHOLE_PERSON_RENDER_SUBSTRATE_R1.json",
+        "source_blob": "ea61e8744294eef945abe4f56b5a575307840bf6",
+        "source_field_id": "durable_couplings.D02",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Simultaneous tensions, no compulsory outward symptom",
+        "actor_conscious_knowledge": "PARTIAL",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "CURRENT"
+      },
+      {
+        "id": "D03",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_WHOLE_PERSON_RENDER_SUBSTRATE_R1.json",
+        "source_blob": "ea61e8744294eef945abe4f56b5a575307840bf6",
+        "source_field_id": "durable_couplings.D03",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Simultaneous tensions, no compulsory outward symptom",
+        "actor_conscious_knowledge": "PARTIAL",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "CURRENT"
+      },
+      {
+        "id": "D04",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_WHOLE_PERSON_RENDER_SUBSTRATE_R1.json",
+        "source_blob": "ea61e8744294eef945abe4f56b5a575307840bf6",
+        "source_field_id": "durable_couplings.D04",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Simultaneous tensions, no compulsory outward symptom",
+        "actor_conscious_knowledge": "PARTIAL",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "CURRENT"
+      },
+      {
+        "id": "H001",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "immutable_precontact_events.H001",
+        "origin_class": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Selective historical anchor, not whole ledger",
+        "actor_conscious_knowledge": "ACTOR_ACCESSIBLE",
+        "may_narrate": true,
+        "expression_only": false,
+        "time_scope": "SELECTED_HISTORY"
+      },
+      {
+        "id": "H002",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "immutable_precontact_events.H002",
+        "origin_class": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Selective historical anchor, not whole ledger",
+        "actor_conscious_knowledge": "ACTOR_ACCESSIBLE",
+        "may_narrate": true,
+        "expression_only": false,
+        "time_scope": "SELECTED_HISTORY"
+      },
+      {
+        "id": "H003",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "immutable_precontact_events.H003",
+        "origin_class": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Selective historical anchor, not whole ledger",
+        "actor_conscious_knowledge": "ACTOR_ACCESSIBLE",
+        "may_narrate": true,
+        "expression_only": false,
+        "time_scope": "SELECTED_HISTORY"
+      },
+      {
+        "id": "H004",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "immutable_precontact_events.H004",
+        "origin_class": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Selective historical anchor, not whole ledger",
+        "actor_conscious_knowledge": "ACTOR_ACCESSIBLE",
+        "may_narrate": true,
+        "expression_only": false,
+        "time_scope": "SELECTED_HISTORY"
+      },
+      {
+        "id": "H008",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "immutable_precontact_events.H008",
+        "origin_class": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Selective historical anchor, not whole ledger",
+        "actor_conscious_knowledge": "ACTOR_ACCESSIBLE",
+        "may_narrate": true,
+        "expression_only": false,
+        "time_scope": "SELECTED_HISTORY"
+      },
+      {
+        "id": "H009",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "immutable_precontact_events.H009",
+        "origin_class": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Selective historical anchor, not whole ledger",
+        "actor_conscious_knowledge": "ACTOR_ACCESSIBLE",
+        "may_narrate": true,
+        "expression_only": false,
+        "time_scope": "SELECTED_HISTORY"
+      },
+      {
+        "id": "H011",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "immutable_precontact_events.H011",
+        "origin_class": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Selective historical anchor, not whole ledger",
+        "actor_conscious_knowledge": "ACTOR_ACCESSIBLE",
+        "may_narrate": true,
+        "expression_only": false,
+        "time_scope": "SELECTED_HISTORY"
+      },
+      {
+        "id": "H012",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "immutable_precontact_events.H012",
+        "origin_class": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Selective historical anchor, not whole ledger",
+        "actor_conscious_knowledge": "ACTOR_ACCESSIBLE",
+        "may_narrate": true,
+        "expression_only": false,
+        "time_scope": "SELECTED_HISTORY"
+      },
+      {
+        "id": "H013",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "immutable_precontact_events.H013",
+        "origin_class": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Selective historical anchor, not whole ledger",
+        "actor_conscious_knowledge": "ACTOR_ACCESSIBLE",
+        "may_narrate": true,
+        "expression_only": false,
+        "time_scope": "SELECTED_HISTORY"
+      },
+      {
+        "id": "H014",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "immutable_precontact_events.H014",
+        "origin_class": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Selective historical anchor, not whole ledger",
+        "actor_conscious_knowledge": "ACTOR_ACCESSIBLE",
+        "may_narrate": true,
+        "expression_only": false,
+        "time_scope": "SELECTED_HISTORY"
+      },
+      {
+        "id": "R10",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_RELATION_USER_R1.json",
+        "source_blob": "ee90d9a79deca246ff33ff7a95165c31b5d2f293",
+        "source_field_id": "immutable_objective_episodes.R10",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Known concrete relation episode, no inferred inner P0 psyche",
+        "actor_conscious_knowledge": "ACTOR_REMEMBERS",
+        "may_narrate": true,
+        "expression_only": false,
+        "time_scope": "RELATION_HISTORY"
+      },
+      {
+        "id": "R11",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_RELATION_USER_R1.json",
+        "source_blob": "ee90d9a79deca246ff33ff7a95165c31b5d2f293",
+        "source_field_id": "immutable_objective_episodes.R11",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Known concrete relation episode, no inferred inner P0 psyche",
+        "actor_conscious_knowledge": "ACTOR_REMEMBERS",
+        "may_narrate": true,
+        "expression_only": false,
+        "time_scope": "RELATION_HISTORY"
+      },
+      {
+        "id": "R12",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_RELATION_USER_R1.json",
+        "source_blob": "ee90d9a79deca246ff33ff7a95165c31b5d2f293",
+        "source_field_id": "immutable_objective_episodes.R12",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Known concrete relation episode, no inferred inner P0 psyche",
+        "actor_conscious_knowledge": "ACTOR_REMEMBERS",
+        "may_narrate": true,
+        "expression_only": false,
+        "time_scope": "RELATION_HISTORY"
+      },
+      {
+        "id": "R13",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_RELATION_USER_R1.json",
+        "source_blob": "ee90d9a79deca246ff33ff7a95165c31b5d2f293",
+        "source_field_id": "immutable_objective_episodes.R13",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Known concrete relation episode, no inferred inner P0 psyche",
+        "actor_conscious_knowledge": "ACTOR_REMEMBERS",
+        "may_narrate": true,
+        "expression_only": false,
+        "time_scope": "RELATION_HISTORY"
+      },
+      {
+        "id": "NP01",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_RELATION_USER_R1.json",
+        "source_blob": "ee90d9a79deca246ff33ff7a95165c31b5d2f293",
+        "source_field_id": "nadia_perceived_relation.NP01",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Fallible actor-view of relationship, not human-user objective psychology",
+        "actor_conscious_knowledge": "FALLIBLE",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "RELATION_CURRENT"
+      },
+      {
+        "id": "NP02",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_RELATION_USER_R1.json",
+        "source_blob": "ee90d9a79deca246ff33ff7a95165c31b5d2f293",
+        "source_field_id": "nadia_perceived_relation.NP02",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Fallible actor-view of relationship, not human-user objective psychology",
+        "actor_conscious_knowledge": "FALLIBLE",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "RELATION_CURRENT"
+      },
+      {
+        "id": "REL02",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_RELATION_USER_R1.json",
+        "source_blob": "ee90d9a79deca246ff33ff7a95165c31b5d2f293",
+        "source_field_id": "other_relationships.REL02",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Different established relationships",
+        "actor_conscious_knowledge": "FALLIBLE_ACTOR_VIEW",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "OTHER_RELATION"
+      },
+      {
+        "id": "REL03",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_RELATION_USER_R1.json",
+        "source_blob": "ee90d9a79deca246ff33ff7a95165c31b5d2f293",
+        "source_field_id": "other_relationships.REL03",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Different established relationships",
+        "actor_conscious_knowledge": "FALLIBLE_ACTOR_VIEW",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "OTHER_RELATION"
+      },
+      {
+        "id": "REL04",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_RELATION_USER_R1.json",
+        "source_blob": "ee90d9a79deca246ff33ff7a95165c31b5d2f293",
+        "source_field_id": "other_relationships.REL04",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Different established relationships",
+        "actor_conscious_knowledge": "FALLIBLE_ACTOR_VIEW",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "OTHER_RELATION"
+      },
+      {
+        "id": "REL05",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_RELATION_USER_R1.json",
+        "source_blob": "ee90d9a79deca246ff33ff7a95165c31b5d2f293",
+        "source_field_id": "other_relationships.REL05",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Different established relationships",
+        "actor_conscious_knowledge": "FALLIBLE_ACTOR_VIEW",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "OTHER_RELATION"
+      },
+      {
+        "id": "H015",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "immutable_precontact_events.H015",
+        "origin_class": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Activated partial or private actor memory, safe consequences only",
+        "actor_conscious_knowledge": "ACTOR_WITH_PRIVATE_ACCESS",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "SELECTIVE_HISTORY"
+      },
+      {
+        "id": "MEM06",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_CANON_R1.json",
+        "source_blob": "452921cd6abf79aec2568a266636a60911585953",
+        "source_field_id": "memory_access_register.MEM06",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Activated partial or private actor memory, safe consequences only",
+        "actor_conscious_knowledge": "ACTOR_WITH_PRIVATE_ACCESS",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "SELECTIVE_HISTORY"
+      },
+      {
+        "id": "EXPRESSIVE_REPERTOIRE",
+        "source_artifact": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_WHOLE_PERSON_RENDER_SUBSTRATE_R1.json",
+        "source_field_id": "expressive_distribution",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY",
+        "seed_origin": "LAB_SURROGATE_ONLY",
+        "why_relevant": "Grounded broad distribution of expressive forms rather than generic prompt traits",
+        "actor_conscious_knowledge": "NOT_FULLY_SELF_EXPLANATORY",
+        "may_narrate": false,
+        "expression_only": true,
+        "time_scope": "CURRENT_DURABLE"
+      }
+    ],
+    "send_only": "model_payload"
+  }
+}

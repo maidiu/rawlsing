@@ -1,0 +1,337 @@
+{
+  "packet_id": "RF001_N",
+  "condition": "NARROW_CONTEXT_ABLATION",
+  "model_payload": {
+    "shared": {
+      "actor_projection_exact_from_RFA05": {
+        "synthetic_marker": "HAND_AUTHORED_LAB_SURROGATE_ONLY",
+        "actor_identity": "Nadia Lehn",
+        "standing_orientation": "Concrete, practical, sometimes guarded; not universal charm, affect or self-awareness",
+        "relation_context": "baseline P0",
+        "exact_stimulus": "You keep avoiding the red binder, don't you?",
+        "perceived_context": "hears sentence and sees finger toward red binder",
+        "current_focality": "finish sorting before leaving",
+        "actor_accessible_refs": [
+          "H006 partial",
+          "MEM01 fragment",
+          "W03",
+          "R13"
+        ],
+        "scene_documented_refs": [
+          "W01",
+          "W03"
+        ],
+        "allowed_realizations": [
+          "speech",
+          "small gesture toward closed binders",
+          "brief silence"
+        ],
+        "local_intention": "avoid speculative self-analysis without forced denial of observable pattern",
+        "non_narratable_constraints": "Do not provide accurate psychological explanation; may imperfectly account for avoiding binder.",
+        "output_window_seconds": 30
+      },
+      "exact_user_event": {
+        "speaker": "P0",
+        "exact_speech": "You keep avoiding the red binder, don't you?",
+        "temporal_position": "FIRST_TURN"
+      },
+      "scene": {
+        "epoch": "2026-10-12T17:20:00-04:00",
+        "location": "Eastwell Repair Cooperative, Bracken Quay — fictional bounded workplace",
+        "facts": [
+          {
+            "source_ref": "W01",
+            "value": "Rectangular work room; single east shelving unit with a lower open shelf and upper closed cabinet; north door; short work table near the west wall"
+          },
+          {
+            "source_ref": "W03",
+            "value": "Blue and red audit binders lie flat on work table; both closed; red binder has damaged lower corner"
+          }
+        ],
+        "time_limit_seconds": 30
+      },
+      "renderer_contract": {
+        "role": "ONE_SHOT_OBJECTIVE_NADIA_PROPOSAL_NOT_ADMITTED",
+        "instructions": [
+          "Generate only an objective outward candidate in the supplied typed schema, not a user-personalized experience.",
+          "Use these specific contextual practices without generic charm, excessive agreeableness or compulsory narrative resolution.",
+          "An expression-relevant cause need not be consciously explainable; never narrate undisclosed causal mechanisms.",
+          "Respect false actor beliefs, possible deception, withholding, inaccessible facts and prior relation differences.",
+          "Do not invent biography, props, people, history, material effects or user-private thoughts.",
+          "Exact actor speech in the typed atoms must match the prose verbatim; every other prose assertion must match typed atoms.",
+          "Keep a mundane thirty-second scene; short replies, quiet behavior and nonresponse may be lawful.",
+          "No candidate is automatically admitted; no durable owner mutation or user-phenomenal compositor is performed."
+        ]
+      },
+      "output_schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "urn:rawlsing:rfa05:objective-occurrence-output:r1",
+        "title": "RFA05_ONE_SHOT_ACTOR_CANDIDATE_NOT_ADMITTED",
+        "type": "object",
+        "additionalProperties": false,
+        "description": "Provisional laboratory model output only. The model cannot admit its own speech, action or world changes into objective history.",
+        "required": [
+          "kind",
+          "fixture_id",
+          "hand_authored_experiment",
+          "atoms",
+          "realization_prose",
+          "world_effect_proposals",
+          "materialization_requests",
+          "no_occurrence_assertion"
+        ],
+        "properties": {
+          "kind": {
+            "const": "MODEL_CANDIDATE_NOT_ADMITTED"
+          },
+          "fixture_id": {
+            "enum": [
+              "RF001",
+              "RF002",
+              "RF003",
+              "RF004",
+              "RF005",
+              "RF006",
+              "RF007",
+              "RF008",
+              "RF009",
+              "RF010"
+            ]
+          },
+          "hand_authored_experiment": {
+            "const": "RFA05_SURROGATE_INPUT_NOT_V3"
+          },
+          "atoms": {
+            "type": "array",
+            "maxItems": 12,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "atom_id",
+                "kind",
+                "relative_ms",
+                "actor",
+                "content",
+                "referent_ids"
+              ],
+              "properties": {
+                "atom_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "kind": {
+                  "enum": [
+                    "SPEECH",
+                    "SILENCE",
+                    "GESTURE",
+                    "OBJECT_ACTION",
+                    "BODY_ACTION",
+                    "PAUSE"
+                  ]
+                },
+                "relative_ms": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 30000
+                },
+                "actor": {
+                  "const": "NADIA"
+                },
+                "content": {
+                  "type": "string",
+                  "description": "For SPEECH this is EXACT spoken string, byte-for-byte identical to the corresponding quotation in realization_prose; for actions bounded visible description."
+                },
+                "referent_ids": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "realization_prose": {
+            "type": "string",
+            "description": "Third-person objective observable staging of the exact atoms only; no hidden cognition/causal authorial gloss or user phenomenal lens."
+          },
+          "world_effect_proposals": {
+            "type": "array",
+            "description": "Changes to documented object state only; optional and entirely nonbinding until admission",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "referent_id",
+                "from",
+                "to",
+                "requires_admission"
+              ],
+              "properties": {
+                "referent_id": {
+                  "type": "string"
+                },
+                "from": {
+                  "type": "string"
+                },
+                "to": {
+                  "type": "string"
+                },
+                "requires_admission": {
+                  "const": true
+                }
+              }
+            }
+          },
+          "materialization_requests": {
+            "type": "array",
+            "description": "Empty unless asking review for specific previously latent detail; not automatic authorization",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "description",
+                "reason",
+                "permission_status"
+              ],
+              "properties": {
+                "description": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "permission_status": {
+                  "enum": [
+                    "UNAUTHORIZED",
+                    "DEFERRED"
+                  ]
+                }
+              }
+            }
+          },
+          "no_occurrence_assertion": {
+            "const": true
+          }
+        }
+      }
+    }
+  },
+  "audit_metadata_NOT_FOR_MODEL": {
+    "start": "284b9b4bebbc281276ee65d3821fb05abdad42f2",
+    "reconciliation": "e65846bbb1c38a366d79b54bb89be47da0f8502e",
+    "source_state": {
+      "immutable_root": "NADIA_LAB_PRECONTACT_ROOT_R1",
+      "branch": "RF001",
+      "relation": {
+        "base": "NADIA_LAB_RELATION_USER_R1.json",
+        "active_branch": "BASELINE",
+        "relation": "baseline P0"
+      },
+      "source_case_sha": "0783d154008b2deb8e85f4b37f46ebfd892293b1",
+      "world_blob_sha": "573f176f022e69d99eb1d35f186f8d2360803080",
+      "CAN008_PFF_fields": [
+        [
+          "actor_perception_opportunity",
+          "PRESENT",
+          [
+            "LAB_RFA05:RF001:actor_perception_opportunity",
+            "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+            "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+          ]
+        ],
+        [
+          "can008_receivability",
+          "PRESENT",
+          [
+            "LAB_RFA05:RF001:can008_receivability",
+            "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+            "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+          ]
+        ],
+        [
+          "can008_uptake_appraisal",
+          "PRESENT",
+          [
+            "LAB_RFA05:RF001:can008_uptake_appraisal",
+            "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+            "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+          ]
+        ],
+        [
+          "can008_recruitment",
+          "PRESENT",
+          [
+            "LAB_RFA05:RF001:can008_recruitment",
+            "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+            "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+          ]
+        ],
+        [
+          "can008_response_streams",
+          "PRESENT",
+          [
+            "LAB_RFA05:RF001:can008_response_streams",
+            "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+            "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+          ]
+        ],
+        [
+          "actor_accessibility_and_uncertainty",
+          "PRESENT",
+          [
+            "LAB_RFA05:RF001:actor_accessibility_and_uncertainty",
+            "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+            "RFA-01/REPORT.md@75c6d24ccad0f07344712fcba94878288acf33eb"
+          ]
+        ],
+        [
+          "pff_interaction_context",
+          "PRESENT",
+          [
+            "LAB_RFA05:RF001:pff_interaction_context",
+            "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md@da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+            "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+          ]
+        ],
+        [
+          "pff_actor_local_fast_carryover",
+          "VALID_EMPTY",
+          [
+            "LAB_RFA05:RF001:pff_actor_local_fast_carryover",
+            "RFA-02/REPORT.md@cb156ee99c040eb52dfd87155e7e446eb9dc7053"
+          ]
+        ]
+      ],
+      "admission": "DEFERRED"
+    },
+    "shared_provenance": [
+      {
+        "id": "original_narrow",
+        "source": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/RF001.json",
+        "path": "expression_action_constraints.value.actor_safe_projection",
+        "origin_class": "SOROK_PROVISIONAL_PRODUCT_REQUIREMENT"
+      },
+      {
+        "id": "exact_speech",
+        "source": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/RF001.json",
+        "path": "exact_user_event.value.exact_speech",
+        "origin_class": "DERIVED_FROM_ACCEPTED_CURRENT_AUTHORITY"
+      },
+      {
+        "id": "W01",
+        "source": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_WORLD_STATE_R1.json",
+        "path": "spatial_facts.W01",
+        "origin_class": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT"
+      },
+      {
+        "id": "W03",
+        "source": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/NADIA_LAB_WORLD_STATE_R1.json",
+        "path": "spatial_facts.W03",
+        "origin_class": "DERIVED_FROM_INHERITED_CONCEPTUAL_REQUIREMENT"
+      }
+    ],
+    "send_only": "model_payload"
+  }
+}

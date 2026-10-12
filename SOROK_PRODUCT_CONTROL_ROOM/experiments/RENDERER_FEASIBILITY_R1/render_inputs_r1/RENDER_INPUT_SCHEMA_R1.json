@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:rawlsing:rfa05b:render-input:r1",
+  "title": "RFA-05B Actor input / private metadata partition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "packet_id",
+    "condition",
+    "model_payload",
+    "audit_metadata_NOT_FOR_MODEL"
+  ],
+  "properties": {
+    "packet_id": {
+      "type": "string",
+      "pattern": "^RF(00[1-9]|010)_(WP|N)$"
+    },
+    "condition": {
+      "enum": [
+        "WHOLE_PERSON_UPPER_BOUND",
+        "NARROW_CONTEXT_ABLATION"
+      ]
+    },
+    "model_payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "shared"
+      ],
+      "properties": {
+        "shared": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "actor_projection_exact_from_RFA05",
+            "exact_user_event",
+            "scene",
+            "renderer_contract",
+            "output_schema"
+          ],
+          "properties": {
+            "actor_projection_exact_from_RFA05": {
+              "type": "object"
+            },
+            "exact_user_event": {
+              "type": "object"
+            },
+            "scene": {
+              "type": "object"
+            },
+            "renderer_contract": {
+              "type": "object"
+            },
+            "output_schema": {
+              "type": "object"
+            }
+          }
+        },
+        "whole_person_extension": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "whole_current_developed_person",
+            "selectively_retrieved_biographical_anchors",
+            "differentiated_relations",
+            "event_relevant_accessible_memory_or_safe_effects",
+            "expressive_distribution"
+          ],
+          "properties": {
+            "whole_current_developed_person": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/component"
+              }
+            },
+            "selectively_retrieved_biographical_anchors": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/component"
+              }
+            },
+            "differentiated_relations": {
+              "type": "object",
+              "required": [
+                "objective_shared_episodes",
+                "Nadia_perceived_P0",
+                "other_distinct_relations"
+              ]
+            },
+            "event_relevant_accessible_memory_or_safe_effects": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/component"
+              }
+            },
+            "expressive_distribution": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "audit_metadata_NOT_FOR_MODEL": {
+      "type": "object",
+      "required": [
+        "start",
+        "reconciliation",
+        "source_state",
+        "shared_provenance",
+        "send_only"
+      ],
+      "properties": {
+        "start": {
+          "const": "284b9b4bebbc281276ee65d3821fb05abdad42f2"
+        },
+        "reconciliation": {
+          "const": "e65846bbb1c38a366d79b54bb89be47da0f8502e"
+        },
+        "source_state": {
+          "type": "object"
+        },
+        "shared_provenance": {
+          "type": "array"
+        },
+        "WP_provenance": {
+          "type": "array"
+        },
+        "send_only": {
+          "const": "model_payload"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "component": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "value",
+        "delivery"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "value": {},
+        "delivery": {
+          "enum": [
+            "BEHAVIOR_ONLY",
+            "NARRATABLE_WHEN_RELEVANT"
+          ]
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "condition": {
+            "const": "WHOLE_PERSON_UPPER_BOUND"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "model_payload": {
+            "required": [
+              "whole_person_extension"
+            ]
+          },
+          "audit_metadata_NOT_FOR_MODEL": {
+            "required": [
+              "WP_provenance"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "condition": {
+            "const": "NARROW_CONTEXT_ABLATION"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "model_payload": {
+            "not": {
+              "required": [
+                "whole_person_extension"
+              ]
+            }
+          }
+        }
+      }
+    }
+  ]
+}
