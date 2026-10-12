@@ -1,0 +1,72 @@
+{
+  "contract_id": "PYAT_HQ282_N04_B5_CHECKPOINT_INTERFACE_CORRECTION@1.0.0",
+  "defect_demonstration": {
+    "defect_reproduced": true,
+    "correction_works": true,
+    "original_error": "M2ReleaseError: RELEASE_SUBJECT_NOT_FOUND: exact producer subject is not registered",
+    "corrected_result": {
+      "producer_contract_ref": {
+        "kind": "ProducerContract",
+        "object_id": "urn:c02j:producercontract:n04-defect-contract:sha256:f188482de1ab6416af3ea88d0009be5ea36f3e6927f10ea8c952c96251c96f21",
+        "content_hash": "f188482de1ab6416af3ea88d0009be5ea36f3e6927f10ea8c952c96251c96f21"
+      },
+      "subject_kind": "IMMUTABLE_LEARNED_PRODUCT"
+    }
+  },
+  "method_inventory": {
+    "b5_wrapped": [
+      "stage_release",
+      "stage_protocol",
+      "register_product",
+      "publish_product",
+      "record_recertification",
+      "select_current",
+      "declare_no_current",
+      "from_checkpoint"
+    ],
+    "b5_unwrapped": [
+      "supersede_current",
+      "withdraw_product",
+      "declare_invalidation",
+      "record_rebuild_eligibility",
+      "link_rebuild",
+      "record_cache_materialized",
+      "record_cache_dropped",
+      "attest_gc_eligibility",
+      "record_payload_gc"
+    ],
+    "b5_partial": [
+      "declare_no_current",
+      "record_recertification"
+    ],
+    "m2_wrapped": [
+      "register_producer_subject",
+      "constitute_release"
+    ],
+    "m2_unwrapped": [
+      "M2Repository.register_subject",
+      "M2Repository.register_closure",
+      "M2Repository.register_release",
+      "M2Repository.register_representation",
+      "M2Repository.register_binding",
+      "constitute_closure",
+      "register_representation",
+      "publish_binding"
+    ],
+    "checkpoint_defect": "verify_checkpoint_subject uses subject_exact(subject.release_ref) instead of resolve_subject_exact(repository, subject.release_ref)",
+    "identity_mismatch": "release_ref != release.release_subject_ref"
+  },
+  "effects": {
+    "source_meaning_inference": false,
+    "model_use_grant": false,
+    "g0b_issuance": false,
+    "b5_current_selection": false,
+    "field_forge_effect": false,
+    "temporal_current_effect": false,
+    "actor_v3_effect": false,
+    "real_current_claim": false,
+    "production_publication": false,
+    "external_authority_issuance": false
+  },
+  "elapsed_seconds": 0.062
+}
