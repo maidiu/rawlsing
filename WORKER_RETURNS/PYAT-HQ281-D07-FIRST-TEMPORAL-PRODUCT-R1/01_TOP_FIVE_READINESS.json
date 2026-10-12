@@ -1,0 +1,152 @@
+{
+  "schema": "PYAT_HQ281_D07_FIVE_MAX_CANDIDATE_READINESS@1.0.0",
+  "authority": "DOCUMENTARY_STATIC_WORKER_FINDING_ONLY__NOT_ADOPTED",
+  "sealed_startup": "7d06ac0024ce7978bcef7d055086cf1f977b37c0",
+  "inherited_science": "f5173776412e4b93eaa82af291a6dcabafef32e9",
+  "graph": {
+    "source": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/GLOBAL_F6_F7_F8_RELATION_SCOPE_MATRIX.json",
+    "within_family_syntactic_pairs": 63,
+    "conserved": true,
+    "qualified_positive_pair_grants_from_D07": 0,
+    "scientifically_proven_noncomparable_pairs_from_D07": 0
+  },
+  "compared_count": 4,
+  "max_allowed": 5,
+  "not_exhaustive_of_graph": true,
+  "rank": [
+    {
+      "rank": 1,
+      "id": "GHA_R5_Q43_R9_Q31_DEMOCRACY_SATISFACTION",
+      "graph_id": "TEMP_SRC02_SRC03",
+      "family": "Afrobarometer",
+      "country": "Ghana",
+      "releases": [
+        "SRC02 Afrobarometer R5 retained SHA256 c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+        "SRC03 Afrobarometer R9 retained SHA256 3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8"
+      ],
+      "original_items": [
+        "R5 Ghana 19 April 2012 final English questionnaire Q43 PDF index 8",
+        "R9 Ghana 30 March 2022 English country questionnaire Q31 PDF index 12"
+      ],
+      "measurement": "Closest identified native-country wording: both explicitly Ghana satisfaction with how democracy works; Q42/Q30 are immediately prior; 4 very satisfied,3 fairly,2 not very,1 not at all,0 Ghana is not a democracy (DNR),9 DK (DNR); both prescribe reading 'democracy' in English unless respondent does not understand, with translated remainder. Difference in per-option punctuation/read instruction, translation deployment and mode effects not certified neutral.",
+      "respondent_risk": "Separate Ghanaian citizens age >=18; eligible selected respondents; asked Q43/Q31 plus substantive {0,1,2,3,4}; verify skip/missing and population release domain.",
+      "design": "Both official technical reports claim national stratified multi-stage clustered PPPS probability target n=2400, 8/PSU, gender alternation; R5 numbered-card respondent selection vs R9 tablet, 2010 vs 2021 census frames, R5 response 72.9% vs R9 94.23%; released PSU/strata/weights/specific survey universe not bound.",
+      "field_dates": [
+        "2012-05-08 to 2012-05-27",
+        "2022-04-04 to 2022-04-20"
+      ],
+      "response_values": "Retain all 0..4; R5 merged refusal=998, R9 merged refusal=8; 9 DK, -1 missing; original item card lacks explicit separate refusal option, top-level interviewer refusal handling exists.",
+      "estimand": "p2022=P_w(Q31 in {3,4} | Ghana eligible asked and Q31 in {0,1,2,3,4}) minus p2012=P_w(Q43 in {3,4} | counterpart) using separate cross-sections; complete five-category marginals and typed invalids; design variance/CI only under selected exact authority.",
+      "retained_empirical_products": "NO TWO CUSTODY-VERIFIED WAVE-SPECIFIC RETAINED EMPIRICAL FACTS FOR THIS CLAIM",
+      "EE12": "UNISSUED",
+      "N8E": "NO EXECUTED COMPARISON",
+      "N9": "NO CONSUMPTION",
+      "status": "NEAREST_TO_SCIENTIFIC_ISSUANCE__HELD_EXACT_RETAINED_RELEASE_DESIGN_AND_ISSUER",
+      "primary_evidence": [
+        "https://www.afrobarometer.org/wp-content/uploads/2022/02/gha_r5_questionnaire.pdf",
+        "https://www.afrobarometer.org/wp-content/uploads/2023/06/GHA_R9.Indigenized-Questionnaire-_30mar22-FINAL.docx.pdf",
+        "https://www.afrobarometer.org/wp-content/uploads/2022/02/merged_r5_codebook_2.pdf",
+        "https://www.afrobarometer.org/wp-content/uploads/2024/10/AB_R9.MergeCodebook_25Jun24.final_.pdf",
+        "https://www.afrobarometer.org/wp-content/uploads/2022/10/Summary-of-results-Ghana-Afrobarometer-R9-21oct2022-1.pdf"
+      ]
+    },
+    {
+      "rank": 2,
+      "id": "UGA_R5_Q7_R9_Q3_COUNTRY_DIRECTION",
+      "graph_id": "TEMP_SRC02_SRC03",
+      "family": "Afrobarometer",
+      "country": "Uganda",
+      "releases": [
+        "SRC02 same retained R5 physical",
+        "SRC03 same retained R9 physical"
+      ],
+      "original_items": [
+        "R5 Uganda original administered Q7 script NOT RECOVERED; country original codebook + published national summary corroborate Q7",
+        "R9 Uganda 28 Dec 2021 country-specific Q3 English questionnaire indexed"
+      ],
+      "measurement": "Construct both subjective wrong/right national direction; R9 materially longer balancing lead-in; substantive 1 wrong,2 right; R5 refused 998 vs R9 refused 8, DK9, missing -1; language/field changes unresolved.",
+      "respondent_risk": "Ugandan noninstitutional adult citizens; exact national-only inclusion flags not certified",
+      "design": "R5 2400 national + 3800 targeted focus-district extras; R9 2400 national + 992 new-city extras. Distinct frame 2002 census projection vs 2014. R5 withinwt and R9 withinwt_ea/withinwt_hh not selected for exact releases; PSU/strata and variance unresolved.",
+      "field_dates": [
+        "2011-12-02 to 2012-02-27",
+        "2022-01-07 to 2022-01-25"
+      ],
+      "response_values": "1/2 substantive; DK9; refusal 998 -> 8; typed missing -1",
+      "estimand": "Design-weighted national-only share response=2 among valid {1,2}, independent-wave difference; conditional",
+      "retained_empirical_products": "NONE FOR EXACT CLAIM",
+      "EE12": "UNISSUED",
+      "N8E": "ABSENT",
+      "N9": "ABSENT",
+      "status": "HOLD_ORIGINAL_R5_FIELD_SCRIPT_PLUS_NATIONAL_EXTRA_SPLIT_DESIGN",
+      "primary_evidence": [
+        "https://github.com/maidiu/rawlsing/blob/7ff4a9dd5dbecfd070fbd72e69f0765213f28416/WORKER_RETURNS/PYAT-HQ270-U01-UGANDA-R5-R9-ORIGINAL-NATIONAL-INSTRUMENT-AND-DESIGN-R1/00_ORIGINAL_UGANDA_R5_R9_INSTRUMENT_VERSIONS_AND_RESPONSE_MEANINGS.md",
+        "https://github.com/maidiu/rawlsing/blob/7ff4a9dd5dbecfd070fbd72e69f0765213f28416/WORKER_RETURNS/PYAT-HQ270-U01-UGANDA-R5-R9-ORIGINAL-NATIONAL-INSTRUMENT-AND-DESIGN-R1/01_NATIONAL_VERSUS_SPECIAL_SAMPLE_FRAME_WEIGHT_DESIGN_COURT.md"
+      ]
+    },
+    {
+      "rank": 3,
+      "id": "AT_EVS1990_2008_A048_UNMARRIED_ABORTION",
+      "graph_id": "TEMP_SRC12_SRC14",
+      "family": "EVS",
+      "country": "Austria",
+      "original_items": [
+        "1990 q467c / Q465C original German",
+        "2008 v184/Q53A German"
+      ],
+      "releases": [
+        "SRC12 EVS1990 SHA256 66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+        "SRC14 EVS2008 SHA256 5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379"
+      ],
+      "measurement": "Approve/disapprove abortion where unmarried; native 1 approve,2 disapprove; harmonized GESIS A048 1 approve/0 disapprove is a transformation, not raw original. 1990 read/card vs 2008 show-list/read interviewer instruction differs.",
+      "respondent_risk": "Austria 1990 adult-citizen versus 2008 18+ private household resident regardless citizenship: exact intersection and coverage not proven",
+      "design": "1990 national ZA4479 primary method needed to resolve probability/quota, PSU/strata and national weights; 2008 multistage stratified cluster probability 375 points; 1990 weight_g age/sex calibration not variance warrant",
+      "field_dates": [
+        "1990-04-09 to 1990-06-01",
+        "2008-07-21 to 2008-10-22"
+      ],
+      "response_values": "Native 1/2 vs harmonized 0/1, negative -1..-5 reserved for nonresponse/not asked in GESIS trend",
+      "estimand": "Approved share within source-authorized matched-population valid interviewed risk in both waves, design/uncertainty method withheld",
+      "retained_empirical_products": "NONE QUALIFIED",
+      "EE12": "UNISSUED",
+      "N8E": "ABSENT",
+      "N9": "ABSENT",
+      "status": "HOLD_ZA4479_AUSTRIA_1990_METHOD_AND_RELEASE_VERSION",
+      "primary_evidence": [
+        "https://github.com/maidiu/rawlsing/blob/fa0335a6401d467a1ef63f7ed1b85014adeea69e/WORKER_RETURNS/PYAT-HQ257-E02-AUSTRIA-1990-PRIMARY-METHOD-AND-VERSION-R1/03_FINAL_DISPOSITION_AND_SMALLEST_REMAINING_EDGE.json"
+      ]
+    },
+    {
+      "rank": 4,
+      "id": "AT_EVS1999_2008_A048_UNMARRIED_ABORTION",
+      "graph_id": "TEMP_SRC13_SRC14",
+      "family": "EVS",
+      "country": "Austria",
+      "original_items": [
+        "1999 original Q50 (per GESIS trend crosswalk; Austria fielded form unverified)",
+        "2008 original Q53A"
+      ],
+      "releases": [
+        "SRC13 EVS1999 retained physical; exact public release identity NOT VERIFIED",
+        "SRC14 EVS2008 retained physical; exact public release identity NOT VERIFIED"
+      ],
+      "measurement": "GESIS A048 succession candidate with changed 1999/2008 interviewer instruction; no independently certified original Austria-1999 administered text/translation or stable form-mode effect.",
+      "respondent_risk": "1999 Austria adult-country target not shown to match 2008 private-household 18+ residents",
+      "design": "Austria-1999 national probability/weight/PSU and 2008 overlap not proven; no source-qualified variance operator",
+      "field_dates": [
+        "1999 Austria exact dates NOT CERTIFIED IN REVIEW",
+        "2008-07-21 to 2008-10-22"
+      ],
+      "response_values": "Original categories/typed absent or not-asked vs harmonized A048 transformations must be certified; 2008 original 1 approve,2 disapprove",
+      "estimand": "Provisional valid-item approval share in verified common Austria adult domain, NOT PERMITTED",
+      "retained_empirical_products": "NONE QUALIFIED",
+      "EE12": "UNISSUED",
+      "N8E": "ABSENT",
+      "N9": "ABSENT",
+      "status": "HOLD_COUNTRY_1999_INSTRUMENT_METHOD_AND_VERSION",
+      "primary_evidence": [
+        "https://github.com/maidiu/rawlsing/blob/5da99d15aeb83ab8d83f22128523e6a1be67209b/WORKER_RETURNS/PYAT-HQ260-E01-TEMPORAL-PAIR-METHOD-SELECTION-R1/02_ONE_TEMPORAL_ESTIMAND_READINESS_CHOICE.md"
+      ]
+    }
+  ],
+  "exclusions": "No fifth item-specific candidate promoted without original item/responder/design evidence. 63-node family graph retained as prior scope, not re-enumerated as unobserved conclusions."
+}

@@ -1,0 +1,155 @@
+{
+  "schema": "PYAT_HQ281_D07_EE12_N8E_N9_HOSTILES@1",
+  "execution_grade": "STATIC_DOCUMENTARY_AND_CONTRACT_REASONING_ONLY",
+  "python_runtime_executed": false,
+  "raw_survey_executed": false,
+  "actual_consumer_executed": false,
+  "authority": "PROPOSED_REFUSALS_NOT_ADOPTED_TESTS",
+  "count": 18,
+  "cases": [
+    {
+      "id": "H01",
+      "attack": "GHANA_MERGED_RELEASE_MASQUERADES_AS_COUNTRY_DOWNLOAD",
+      "trigger": "Different official Ghana-only SAV accession or codebook merely shares title/year; no retained SRC02/SRC03 SHA identity",
+      "expected": "HOLD_RELEASE_IDENTITY",
+      "owner": "Afrobarometer original release custodian",
+      "result": "EXPECTED_CONTRACT_REFUSAL__NOT_LIVE_EXECUTION"
+    },
+    {
+      "id": "H02",
+      "attack": "UGANDA_SPECIAL_CITY_OR_DISTRICT_AS_NATIONAL",
+      "trigger": "Uganda R5 6200/R9 3392 field totals or first 2400 rows called national without actual selector",
+      "expected": "REJECT_UNWARRANTED_NATIONAL_ESTIMAND",
+      "owner": "original survey/design owner",
+      "result": "EXPECTED_CONTRACT_REFUSAL__NOT_LIVE_EXECUTION"
+    },
+    {
+      "id": "H03",
+      "attack": "CATEGORY_ZERO_ERASED_GHANA",
+      "trigger": "Ghana 0 'not a democracy' recoded as missing or 1 'not satisfied'",
+      "expected": "REJECT_SEMANTIC_COLLAPSE",
+      "owner": "original country respondent semantics",
+      "result": "EXPECTED_CONTRACT_REFUSAL__NOT_LIVE_EXECUTION"
+    },
+    {
+      "id": "H04",
+      "attack": "REFUSAL_CODES_AS_SUBSTANTIVE_OR_COMMON",
+      "trigger": "Ghana R5 998 or R9 8 treated as observed satisfaction; original cards absence of explicit refusal used to claim none",
+      "expected": "REJECT_MISSINGNESS_COLLAPSE",
+      "owner": "country codebook plus field protocol owner",
+      "result": "EXPECTED_CONTRACT_REFUSAL__NOT_LIVE_EXECUTION"
+    },
+    {
+      "id": "H05",
+      "attack": "R5_R9_CHANGED_RESPONSE_POLARITY",
+      "trigger": "Ghana 4 very vs 1 not at all is inverted from native; EVS original approve 1 becomes disapprove by applying harmonized 0/1 without map",
+      "expected": "REJECT_POLARITY_MAPPING",
+      "owner": "source-semantic issuer",
+      "result": "EXPECTED_CONTRACT_REFUSAL__NOT_LIVE_EXECUTION"
+    },
+    {
+      "id": "H06",
+      "attack": "UNVERIFIED_TRANSLATION_AND_FORM",
+      "trigger": "R5/R9 English text alignment assumed to certify local language implementation, mode/priming invariance and same interview script",
+      "expected": "HOLD_MEASUREMENT_DECISION",
+      "owner": "Ghana survey field custodian + independent statistician",
+      "result": "EXPECTED_CONTRACT_REFUSAL__NOT_LIVE_EXECUTION"
+    },
+    {
+      "id": "H07",
+      "attack": "RAW_WEIGHTED_ESTIMAND_SWAP",
+      "trigger": "Use raw 2400 percentage or generic cross-country Combinwt in place of correct separate-wave Ghana population selection weights",
+      "expected": "REJECT_ESTIMAND_MISMATCH",
+      "owner": "survey statistician",
+      "result": "EXPECTED_CONTRACT_REFUSAL__NOT_LIVE_EXECUTION"
+    },
+    {
+      "id": "H08",
+      "attack": "UNKNOWN_DESIGN_EFFECT_AS_SRS",
+      "trigger": "Apply IID binomial sqrt(p(1-p)/2400) or published per-wave ±2pp MOE directly as a confidence interval for two-wave delta",
+      "expected": "REJECT_VARIANCE_CLAIM",
+      "owner": "source/statistics methods owner",
+      "result": "EXPECTED_CONTRACT_REFUSAL__NOT_LIVE_EXECUTION"
+    },
+    {
+      "id": "H09",
+      "attack": "ALLEGED_NO_CHANGE_FROM_UNVERIFIED_DENOMINATORS",
+      "trigger": "Two published headline rounded percentages match; reports do not bind substantive-valid asked denominator, design and release",
+      "expected": "REJECT_STABLE_TREND_VERDICT",
+      "owner": "empirical source/statistics issuer",
+      "result": "EXPECTED_CONTRACT_REFUSAL__NOT_LIVE_EXECUTION"
+    },
+    {
+      "id": "H10",
+      "attack": "SILENT_VERSION_ASOF_REPLACEMENT",
+      "trigger": "New archive file or 2024 merged codebook substituted for frozen retained source without custody and invalidation",
+      "expected": "REJECT_SNAPSHOT_CURRENTNESS",
+      "owner": "release and N9 world owner",
+      "result": "EXPECTED_CONTRACT_REFUSAL__NOT_LIVE_EXECUTION"
+    },
+    {
+      "id": "H11",
+      "attack": "COUNTERFEIT_EE12_ISSUER",
+      "trigger": "Worker, codebook, string-equal item labels or source-free fixture declare pair comparability without separately competent positive snapshot",
+      "expected": "REJECT_AUTHORITY_FORGERY",
+      "owner": "EE12/C7 exact competent authority owner",
+      "result": "EXPECTED_CONTRACT_REFUSAL__NOT_LIVE_EXECUTION"
+    },
+    {
+      "id": "H12",
+      "attack": "PANEL_FROM_REPEATED_CROSS_SECTION",
+      "trigger": "Ghana R5 respondents assumed individually identified in R9",
+      "expected": "REJECT_PERSON_TRANSITION",
+      "owner": "source respondent-linkage issuer",
+      "result": "EXPECTED_CONTRACT_REFUSAL__NOT_LIVE_EXECUTION"
+    },
+    {
+      "id": "H13",
+      "attack": "ATTITUDE_TO_INSTITUTION_LAUNDERING",
+      "trigger": "Ghana democracy satisfaction delta used as causal state/institutional political stability or N8S material structural pressure",
+      "expected": "REJECT_OBJECTIVE_CAUSAL_PROMOTION",
+      "owner": "N5/N6/N8S objective rule + world owners",
+      "result": "EXPECTED_CONTRACT_REFUSAL__NOT_LIVE_EXECUTION"
+    },
+    {
+      "id": "H14",
+      "attack": "GAP_BECOMES_NONCOMPARABLE_OR_ZERO",
+      "trigger": "Missing 1990 Austria method or missing Ghana release attestation interpreted as source-proven NONCOMPARABLE or measured zero",
+      "expected": "HOLD_MISSING_EVIDENCE",
+      "owner": "original custodian and competent comparability negative issuer",
+      "result": "EXPECTED_CONTRACT_REFUSAL__NOT_LIVE_EXECUTION"
+    },
+    {
+      "id": "H15",
+      "attack": "EE12_CANDIDATE_INTO_CURRENT_PRODUCER",
+      "trigger": "HQ214 repaired branch-local comparator presented as sealed current code and passing actual source/product consumer",
+      "expected": "REJECT_UNADOPTED_PRODUCER",
+      "owner": "HQ code/authority adoption and independent reviewer",
+      "result": "EXPECTED_CONTRACT_REFUSAL__NOT_LIVE_EXECUTION"
+    },
+    {
+      "id": "H16",
+      "attack": "N9_SERVICE_WITHOUT_RECEIPT",
+      "trigger": "Proposed N9 temporal context route called actual selected world and downstream service despite no output/dependency/as-of receipt",
+      "expected": "REJECT_FALSE_CONSUMER",
+      "owner": "N9 source/dependency/serving owner",
+      "result": "EXPECTED_CONTRACT_REFUSAL__NOT_LIVE_EXECUTION"
+    },
+    {
+      "id": "H17",
+      "attack": "POST_RESULT_OPERATION_CHOICE",
+      "trigger": "Choose {3,4} versus alternate categories only after seeing measured direction",
+      "expected": "REJECT_SELECTION_LEAK",
+      "owner": "pre-result scope/estimand owner",
+      "result": "EXPECTED_CONTRACT_REFUSAL__NOT_LIVE_EXECUTION"
+    },
+    {
+      "id": "H18",
+      "attack": "AUSTRIA_1990_QUOTA_DEDUCTION_FROM_UNKNOWN",
+      "trigger": "1990 source method missing leads to categorical quota or proven incompatibility claim",
+      "expected": "HOLD_METHOD_NOT_NEGATIVE",
+      "owner": "GESIS Austria ZA4479 original custodian",
+      "result": "EXPECTED_CONTRACT_REFUSAL__NOT_LIVE_EXECUTION"
+    }
+  ]
+}
