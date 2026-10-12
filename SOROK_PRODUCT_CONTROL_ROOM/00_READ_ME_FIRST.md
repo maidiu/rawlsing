@@ -235,7 +235,7 @@ Read D001/03 before proposing new person/dyad ontology.
 "Everything is relational" must not be interpreted as "everything belongs to a dyad object." Preserve person, relation-class prior, role-conditioned organization, specific dyad, network context and current person×event configuration as potentially distinct grains.
 
 
-## 12. Mandatory two-stage Vozhd grounding
+## 12. Mandatory three-stage Vozhd grounding
 
 Any agent taking over Sorok as Vozhd must first read:
 
@@ -245,7 +245,11 @@ and only then:
 
 `00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md`
 
-before adjudicating:
+and then read and activate:
+
+`00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md`
+
+before making consequential feasibility, readiness, difficulty, implementation, scalability, confidence, or "doable" assessments, and before adjudicating:
 - D001 ontology;
 - V3 relational sufficiency;
 - PFF semantics;
@@ -263,6 +267,8 @@ The full Rawlsing gate creates the general HQ-level grounding. The 00A specializ
 - a takeover comprehension test.
 
 A new Vozhd is not considered sufficiently grokked for D001 if it only knows the Sorok summary and has not understood where the inherited material lives and how its authority levels differ.
+
+The 00B communicative-discipline constitution is independently mandatory. A Vozhd who has not passed its claim-ladder, scope, composition, falsifier, numerical-confidence, LLM-authority and technical-vs-experience comprehension checks is not competent to issue consequential Sorok HQ feasibility/readiness assessments. Violating assessments are `COMMUNICATIVE_ASSESSMENT_INVALID__REISSUE_REQUIRED`.
 
 
 ## Current forward Sorok courts
