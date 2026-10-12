@@ -2,6 +2,8 @@
 
 - [RCM01-gated post-six-return commission board](HQ282_RESOURCE_AWARE_RECOMMISSION_BOARD_R1.md)
 - [Six exact GitHub commission startup SHAs, proposed executor routes and binding holds](HQ282_SIX_SEALED_RESOURCE_GATED_LAUNCH_LEDGER_R1.md)
+- [Latest machine-readable resource observation seed — unknown balances remain null](HQ282_RESOURCE_OBSERVATION_SEED.json)
+- [Machine-readable six-commission ledger — no worker yet resource-qualified](HQ282_RESOURCE_GATED_COMMISSION_LEDGER.json)
 
 **All six are sealed proposals, NOT runnable local starts until fresh model/account quota, tool and sparse-worktree authorization are actually known; no paid overflow.** The P06 final sealed startup is `dbbbd90230a8fb9e956275118b00013331823594` after a return-directory correction. Independent final-tree reviews must be separately commissioned.
 
