@@ -1,3 +1,9 @@
+## Exact user-ready HQ282 launches — updated 12 October
+
+[Six exact user-ready resource-aware launch prompts](RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ282_USER_READY_SIX_LAUNCH_PROMPTS_R1.md). Successor HQ must inherit exact sealed start SHAs and never duplicate already launched/returned sessions.
+
+---
+
 ## RCM01 USER-ATTESTED MACHINE/ASTRA TOPOLOGY — SUPERSEDING PREVIOUS PROVISIONAL RESERVE
 
 **12 October 2026 explicit user correction:** Primary Mac Codex = **85% weekly at screenshot**, dedicated to full-local-repository Astra, which cannot use the secondary's smaller set of local-only source files without separately governed transfer. Secondary Mac Codex = **98% weekly at screenshot**, preferred ordinary coding quota. GitHub-only Astra may be run on either Codex account at user's choice. Both screenshots show 100% 5-hour allowance and three unused full-reset credits each (retain them untouched). Neither percentage proves live current balance. P01 **secondary Sol 6.1 Medium**; P02 **secondary Sol 6.1 Low**; P03/P05 **Browser GPT-6 High**; P04 cheap non-Codex first, secondary **Luna Medium** if necessary; P06 non-Codex, secondary **Luna Low** only if approved. Mandatory original-source object portability/independent A05 Git blob instead of primary-only pytest SKIPs. Resource ledger and sealed six-commission SHA index: `PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ282_RESOURCE_GATED_COMMISSION_LEDGER.json` and `HQ282_SIX_SEALED_RESOURCE_GATED_LAUNCH_LEDGER_R1.md`. Hard reset prohibition, no automatic model escalation, no primary Codex coding expenditure, and new HQs **must state this topology correctly** before dispatch. This later working-HQ policy does not advance the older immutable HQ_HANDOFF pointer or issue scientific authority.
