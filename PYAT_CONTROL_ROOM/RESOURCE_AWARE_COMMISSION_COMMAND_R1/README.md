@@ -1,3 +1,11 @@
+## HQ282 sixth return — P01 integrated result now banked (12 October)
+
+The previous five-return intake remains historical; [P01 completed source-free integrated runtime and consumer intake](HQ282_P01_INTEGRATION_RETURN_INTAKE_20261012_R1.md) is the most recent status. P01 remote `3f91dc22d2eb863bc1d2facccfd33e6c05349503` now has **169 PASS / 6 skipped ordinary tests**, **25 integrated PASS**, a real existing C11/Route B/I03/I05 → durable journal/recovery → synthetic Field Forge consumer chain with identical replay, and a separate-process read-only independent review finding no remaining code blockers **within the supported sourcefree scope**. The reviewer did not freshly execute filesystem SIGKILL recovery; author's writable courts did. **All six HQ282 commission lanes now have pushed returns.** Real original-source `E_pre` custody, all35 source science, source permissions, M2 real production/B5/G0b/V3 remain HELD. No owner/canonical/semantic adoption.
+
+P01 reports secondary Codex **89% weekly left after engineering**, following an **explicit user override for this individual assignment** of the historical 95% stop. It does **not** authorize future Codex work or touch the primary full-repo Astra reserve. Do not repeat P01 worktree bootstrap or assume the old 95% observation is current. Recheck actual meter and seek explicit user permission for more scarce Codex use.
+
+---
+
 ## HQ282 five completed returns — intake 12 October
 
 [Five-return technical/scientific HQ assessment](HQ282_FIVE_WORKER_RETURNS_INTAKE_20261012_R1.md) and [updated machine-readable six-lane ledger](HQ282_RESOURCE_GATED_COMMISSION_LEDGER.json) now control new intake/dispatch decisions. P02R b3523bed… **41 PASS / 14 FAIL / 3 untested** (83 separate accepted-owner PASS); P04 c98e888… **42 source-free** tests; P06 a58a669… **37 local Node** tests **awaiting Stage2**; P03 b7683bef… official ILO/UN *documentary witnesses*, no N5/N6/EE13/N9; P05 e26f803… synthetic independent-E omission test, real all35 E unissued. P01 fae63005… has no pushed return. Reported secondary Codex at **95% weekly** is the provisional stop floor. No new ordinary Codex assignment, no auto-Astra, no change to canonical/PRE-MAIN, no acceptance by receipt.
