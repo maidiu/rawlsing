@@ -34,6 +34,8 @@ The three gates together contain:
 
 A Sorok-summary-only understanding is insufficient. So is a technically grounded Vozhd that has not activated the communicative-discipline constitution.
 
+Current alpha-feasibility strategy: `100_MINIMAL_WHITE_WHALE_ALPHA_AND_FIDELITY_ESCALATION_CONSTITUTION_R1.md`. Alpha should preserve core interactional invariants while explicitly bounding maximal forms of open-world expansion, autonomous life simulation, unlimited actor fidelity, broad current-event coupling and other potential white-whale dimensions. Fidelity escalates only on observed constitutive failure of the bounded form.
+
 ## Current base
 
 - Sorok branch: `agent/sorok-product-ontology-control-room-r1`
