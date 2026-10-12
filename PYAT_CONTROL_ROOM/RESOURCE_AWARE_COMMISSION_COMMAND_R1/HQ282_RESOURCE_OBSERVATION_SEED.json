@@ -42,28 +42,34 @@
       "provider": "Codex",
       "model": null,
       "variant": null,
-      "machine": null,
+      "machine": "MAC_PRIMARY",
       "verified_capabilities": [],
-      "account_alias": "codex-a",
+      "account_alias": "codex-primary-asta-reserve",
       "usage_balance": null,
       "usage_reset": null,
       "price_usd": null,
       "privacy": null,
-      "host_pinned": false
+      "host_pinned": false,
+      "weekly_left_at_capture_percent": 85,
+      "astra_local_repo_required_here": true,
+      "reserved_for_astra": true
     },
     {
       "id": "CODEX_B",
       "provider": "Codex",
       "model": null,
       "variant": null,
-      "machine": null,
+      "machine": "MAC_SECONDARY",
       "verified_capabilities": [],
-      "account_alias": "codex-b",
+      "account_alias": "codex-secondary-work",
       "usage_balance": null,
       "usage_reset": null,
       "price_usd": null,
       "privacy": null,
-      "host_pinned": false
+      "host_pinned": false,
+      "weekly_left_at_capture_percent": 98,
+      "reserved_for_astra": false,
+      "astra_github_only_optional": true
     },
     {
       "id": "DEEPSEEK_HARNESS",
@@ -136,7 +142,7 @@
       "verified_at": null
     }
   ],
-  "evidence_null_reason": "No actual provider meter, current account entitlement, CLI/environment or machine-worktree attestation was supplied to this HQ. The RCM seed is hypothetical; do not score or dispatch with unknown critical entries.",
+  "evidence_null_reason": "Account-to-Mac screenshot mapping is user-confirmed (primary85,secondary98), but refreshed remaining allowance, local model picker, installed runtime, worktree location and provider privacy/export terms have NOT been observed by HQ.",
   "refresh_protocol": "Before each launch and after observed reset, obtain permission-compliant exact provider/account balance and policy observation, worktree+environment attestation, model+variant, owner/source privacy, cap and independent-review lease. Keep timestamp and source with non-sensitive pseudonym; explicit HOLD on unknown critical.",
   "user_supplied_captures": {
     "observation_date": "2026-10-12",
@@ -153,23 +159,42 @@
       3,
       3
     ],
-    "account_to_machine_binding": null,
-    "cannot_infer_identity": true,
+    "account_to_machine_binding": {
+      "PRIMARY_MAC": {
+        "weekly_left_percent_at_capture": 85,
+        "five_hour_left_percent_at_capture": 100,
+        "full_resets_available_at_capture": 3
+      },
+      "SECONDARY_MAC": {
+        "weekly_left_percent_at_capture": 98,
+        "five_hour_left_percent_at_capture": 100,
+        "full_resets_available_at_capture": 3
+      },
+      "source": "User explicit assignment 2026-10-12 after screenshots"
+    },
+    "cannot_infer_identity": false,
     "source": "User supplied two Codex usage screenshots in this conversation; only non-sensitive aggregate values recorded"
   },
   "strategic_capacity_law": {
     "astra_access_platform": "CODEX_ONLY_PER_USER",
-    "astra_designated_account": null,
-    "provisional_98_percent_reserved_for_astra": true,
+    "astra_designated_account": "MAC_PRIMARY_FOR_FULL_LOCAL_REPO__EITHER_CODEX_ACCOUNT_FOR_GITHUB_ONLY",
+    "provisional_98_percent_reserved_for_astra": false,
     "allow_non_astra_charge_to_astra_reserve": false,
     "unreserved_work_pool_weekly_percent": null,
-    "provisional_85_percent_if_attested": 85,
+    "provisional_85_percent_if_attested": null,
     "proposed_per_job_weekly_percentage_point_max": 2,
     "proposed_total_weekly_percentage_point_max": 3,
-    "proposed_floor_work_pool_percent": 82,
+    "proposed_floor_work_pool_percent": 95,
     "reset_credits_spend_authorized": false,
     "paid_overflow": false,
     "real_stop_enforcement": "HUMAN_DASHBOARD_CHECK_REQUIRED__NOT_AUTOMATIC",
-    "unknown_model_cost_conversion": "NO_PERCENT_PER_TOKEN_INFERENCE"
+    "unknown_model_cost_conversion": "NO_PERCENT_PER_TOKEN_INFERENCE",
+    "primary_full_repo_astra_reserve": true,
+    "primary_weekly_left_at_capture": 85,
+    "secondary_normal_codex_work_pool_weekly_left_at_capture": 98,
+    "allow_non_astra_usage_on_astra_pool": false,
+    "secondary_github_astra_optional": true,
+    "full_repo_astra_primary_only": true,
+    "current_meter_observed": false
   }
 }
