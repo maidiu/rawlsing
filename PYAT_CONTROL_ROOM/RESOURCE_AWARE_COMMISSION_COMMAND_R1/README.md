@@ -1,3 +1,9 @@
+## HQ282 five completed returns — intake 12 October
+
+[Five-return technical/scientific HQ assessment](HQ282_FIVE_WORKER_RETURNS_INTAKE_20261012_R1.md) and [updated machine-readable six-lane ledger](HQ282_RESOURCE_GATED_COMMISSION_LEDGER.json) now control new intake/dispatch decisions. P02R b3523bed… **41 PASS / 14 FAIL / 3 untested** (83 separate accepted-owner PASS); P04 c98e888… **42 source-free** tests; P06 a58a669… **37 local Node** tests **awaiting Stage2**; P03 b7683bef… official ILO/UN *documentary witnesses*, no N5/N6/EE13/N9; P05 e26f803… synthetic independent-E omission test, real all35 E unissued. P01 fae63005… has no pushed return. Reported secondary Codex at **95% weekly** is the provisional stop floor. No new ordinary Codex assignment, no auto-Astra, no change to canonical/PRE-MAIN, no acceptance by receipt.
+
+---
+
 ## P02R plain-language replacement for the earlier P02 review
 
 The user identified P02 (not P01) as the commission encountering platform access/warning difficulties. A new separate branch `agent/reviewer-pyat-hq282-p02r-c02j-independent-interface-verification-r1` at `835f22e6c6010fa35f6bd0b2739cd630736ef920` contains a fully rewritten, straightforward source-free C02J code verification assignment: `WORKER_COMMISSIONS/PYAT-HQ282-P02R-C02J-INDEPENDENT-INTERFACE-VERIFICATION-R1/00_COMMISSION.md`. The former P02 branch `dad074579ee705a720fb3cfe9cacb0193d573ffd` is preserved but **superseded for dispatch**, not an accepted scientific/security return. Never send both. Confirm local P02R sparse worktree and current secondary quota before execution. The rewrite neither weakens tests nor provides permission to bypass platform authentication.
