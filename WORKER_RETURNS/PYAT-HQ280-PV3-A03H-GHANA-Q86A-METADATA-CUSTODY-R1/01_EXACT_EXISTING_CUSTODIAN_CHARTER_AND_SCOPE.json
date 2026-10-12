@@ -1,0 +1,118 @@
+{
+  "schema": "PYAT_HQ280_PV3_A03H_EXISTING_CUSTODY_CHARTER_AND_Q86A_METADATA_RECEIPT@1.0.0",
+  "disposition": "PRIOR_Q86A_RETAINED_PHYSICAL_DICTIONARY_WITNESS_RECOVERED__AUTHORITY_SCOPE_RATIFICATION_HELD",
+  "governance": {
+    "law": "HQD-2026-10-09-262",
+    "current": "HQD-2026-10-10-280",
+    "charter_path": "PYAT_CONTROL_ROOM/HQ262_G1_DATA_ONLY_ENTRYPOINT_AND_GHANA_METADATA_INSPECTION_LIMITS_R1.md",
+    "charter_git_blob": "4eebc4a8d68c5cf877965539150cf15a4dbf3ccf",
+    "scope_custodian": "Qualified source custodian, subject to stricter source/access law",
+    "source_in_scope": [
+      "Afro Barometer Round 5.sav",
+      "Afro Barometer Round 9.sav"
+    ],
+    "exact_named_items": [
+      "Ghana R5 Q43",
+      "Ghana R9 Q31"
+    ],
+    "named_additional_metadata": [
+      "Ghana country indicator",
+      "age/citizenship/asked/routing",
+      "respondent weight candidates",
+      "PSU/EA",
+      "strata",
+      "release/version",
+      "column names/labels and native category/missing labels"
+    ],
+    "explicit_Q86A_listed": false,
+    "ambiguous_language": "General column names/labels and category/missing labels might be read broadly; specific stated scientific purpose Q43/Q31 does not expressly authorize new Q86A dictionary extraction.",
+    "interpretation": "DO_NOT_EXTEND_Q43_TO_Q86A_BY_ANALOGY__ASK_CHARTER_ISSUER_FOR_EXPLICIT_Q86A_RATIFICATION_OR_EXTENSION",
+    "access_ceiling": "conditional streaming SHA256 + read_sav(metadataonly=True) headers/dictionary, NO person/case row, no aggregate or target operation",
+    "credential": "HQ262 is a scoped documentary HQ decision, NOT a standalone source principal credential or respondent-use grant",
+    "original_approval_for_read": "Q86A specificity not expressly covered or subsequently clearly adopted"
+  },
+  "previous_E01_host_negative": {
+    "source": "HQ262 E01 DeepSeek-Harness return at 60f3fc871f9688a83ac96bb060b07eae854837b5",
+    "record": "WORKER_RETURNS/PYAT-HQ262-E01-GHANA-R5-R9-SAV-DICTIONARY-CUSTODY-R1/00_TWO_SOURCE_LOCATION_AND_CHECKSUM_RECEIPTS.md",
+    "blob": "47f7c671eef48642b9e37ede12617a33129c48eb",
+    "result": "EXACT_RETAINED_SAVS_ABSENT_ON_THAT_HOST",
+    "observed_directory_absent": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/",
+    "did_not_search_library": true,
+    "did_not_try_external_download": true,
+    "missing_on_one_host_not_global_absence": true
+  },
+  "previous_M01_positive": {
+    "source": "HQ271 M01 actual second-Mac custodian return e115b81a0833a8f8983fe0ece62ef66b31654ff5",
+    "record": "WORKER_RETURNS/PYAT-HQ271-M01-THREE-SAME-RESPONDENT-SOURCE-NATIVE-INPUT-AND-UGANDA-DICTIONARY-R1/01_FILE_SHA_DICTIONARY_AND_NATIONAL_SAMPLE_METADATA.json",
+    "blob": "742af5e5be98cf604d04aac56ae0c6116c54744f",
+    "custodian_method_reported": "1 MiB bounded stream hash + pyreadstat.read_sav(metadataonly=True)",
+    "source_path_at_previous_authorized_host": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/Afro Barometer Round 5.sav",
+    "sha256_expected": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+    "sha256_observed": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+    "sha_matches": true,
+    "bytes_expected": 49689458,
+    "bytes_observed": 49689458,
+    "header": {
+      "number_columns": 348,
+      "number_rows": 51587,
+      "file_encoding": "UTF-8",
+      "file_label": null
+    },
+    "Q86A": {
+      "present": true,
+      "label": "Q86a. Right to be citizen: born in country with one non-citizen parent",
+      "value_labels": {
+        "-1.0": "Missing",
+        "0.0": "No",
+        "1.0": "Yes",
+        "9.0": "Don't know",
+        "997.0": "Not asked",
+        "998.0": "Refused"
+      },
+      "missing_ranges": {},
+      "missing_user_values": {},
+      "storage_width": null
+    },
+    "RESPNo": {
+      "present": true,
+      "label": "Respondent number",
+      "unique_count": null,
+      "duplicate_count": null
+    },
+    "COUNTRY": {
+      "present": true,
+      "type": "numeric",
+      "actual_country_code_GHA_from_rows": null
+    },
+    "COUNTRY_ALPHA": {
+      "present": true,
+      "label": "Country in an alphabetical order",
+      "actual_country_alpha_GHA_from_rows": null
+    },
+    "COUNTRY_ALPHA3": {
+      "physical_present": false,
+      "derived_crosswalk_require_exact_authority": true
+    },
+    "no_respondent_rows_read": true,
+    "no_counts_computed": true,
+    "limits": "Whole merged R5 dictionary presence only; says nothing about true Ghana per-record Q86A routing, sample denominator, form variants, unique selected person, or official release equivalence.",
+    "model_provenance_note": "HQ272 observed mid-task model identity discrepancy; later HQ273 records user-confirmed MiMo to Step 5 Preview switch. Neither invalidates hash receipt mechanically, nor converts it into independent physical rerun.",
+    "grant_provenance": "M01 cited HQ262 general column dictionary language for Q86A despite narrower stated Q43 purpose and expressly left legal scope to HQ.",
+    "authority_status": "CREDITED_PHYSICAL_EVIDENCE_AT_HQ272__NOT_POSITIVELY_RATIFIED_Q86A_SPECIFIC_AUTHORIZATION"
+  },
+  "HQ272_decision": {
+    "path": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ272_M01_F01_SOURCE_NATIVE_TRIPLE_AND_FF02_SEMANTIC_INTAKE_R1.md",
+    "blob": "db0cc63f45e78768ccb3defbd40bd39835fd9456",
+    "status": "EVIDENCE_CREDIT_WITH_EXPLICIT_SOURCE_AND_AUTHORITY_HOLDS__NO_GRANT",
+    "quoted_scope_assessment": "exact applicability to wider M01 named Q86ABC source dictionary beyond Ghana-centric focus remains to be independently reconciled, not automatically a granted general source read",
+    "correction_to_A03G": "A03G correctly identified a missing accepted Q86A-specific issuer but understated the earlier exact retained source SHA + Q86A physical dictionary readback. This return retrieves it. Does not retrospectively fabricate legal permission."
+  },
+  "current_A03H_read": {
+    "raw_sav_opened": false,
+    "new_header_extraction": false,
+    "new_sha_computed": false,
+    "source_witness": "PRIOR_EXACT_GIT_RETURN_ONLY",
+    "absence_on_this_worker_environment_not_tested": true
+  },
+  "required_immediate_act": "Competent HQ262 charter issuer/current HQ principal + qualified source custodian rule on M01 Q86A scope and/or issue a new literal metadata-only Q86A extension; no inference by this worker."
+}
