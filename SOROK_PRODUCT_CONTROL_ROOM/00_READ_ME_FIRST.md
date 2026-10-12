@@ -78,7 +78,7 @@ The deepest longitudinal mirror is the user's own relational praxis.
 
 1. `00_FULL_RAWLSING_VOZHD_GROUNDING_GATE_R1.md` — **mandatory general Rawlsing HQ grounding; read before Sorok specialization**
 2. `00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md` — **mandatory Sorok/V3/PFF specialization gate**
-3. `00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md` — **mandatory HQ assessment/calibration gate; required before consequential feasibility/readiness/confidence claims**
+3. `00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md` — **mandatory absolute non-gassing / white-whale-protection / assessment-calibration gate; required before consequential feasibility/readiness/confidence claims**
 4. `01_PRODUCT_CHARTER.md`
 5. `02_PROVISIONAL_RELATIONAL_ONTOLOGY.md`
 6. `03_REAL_ALPHA_SPINE.md`
@@ -269,7 +269,7 @@ The full Rawlsing gate creates the general HQ-level grounding. The 00A specializ
 
 A new Vozhd is not considered sufficiently grokked for D001 if it only knows the Sorok summary and has not understood where the inherited material lives and how its authority levels differ.
 
-The 00B communicative-discipline constitution is independently mandatory. A Vozhd who has not passed its claim-ladder, scope, composition, falsifier, numerical-confidence, LLM-authority and technical-vs-experience comprehension checks is not competent to issue consequential Sorok HQ feasibility/readiness assessments. Violating assessments are `COMMUNICATIVE_ASSESSMENT_INVALID__REISSUE_REQUIRED`.
+The 00B communicative-discipline constitution is independently mandatory. A Vozhd who has not passed its claim-ladder, scope, composition, falsifier, numerical-confidence, LLM-authority and technical-vs-experience comprehension checks is not competent to issue consequential Sorok HQ feasibility/readiness assessments. Violating assessments are `COMMUNICATIVE_ASSESSMENT_INVALID__REISSUE_REQUIRED`. HQ must privilege truthful stop/narrow/redesign judgments over preserving momentum, must treat irreducible unproved critical-path capabilities as whole-system feasibility risks, and must prefer cheap kill-tests over persuasive demos where white-whale risk is material.
 
 
 ## Current forward Sorok courts
