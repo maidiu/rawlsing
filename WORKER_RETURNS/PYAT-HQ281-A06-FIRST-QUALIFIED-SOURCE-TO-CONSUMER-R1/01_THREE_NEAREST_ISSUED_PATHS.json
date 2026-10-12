@@ -1,0 +1,115 @@
+{
+  "schema": "HQ281_A06_THREE_NEAREST_PATHS_R1",
+  "grading": "THREE_PROSPECTS_NOT_THREE_ISSUED_FULL_PATHS",
+  "screen": {
+    "waves": 35,
+    "families": 9,
+    "temporal_candidate_pairs": 63,
+    "source": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_ASSESSMENT_AND_PLAN_20261011_R1/SOURCE35_RECONCILIATION.json",
+    "independent": "HQ280 R01 / A01 / A02 / D01 / E01"
+  },
+  "paths": [
+    {
+      "rank": 1,
+      "id": "SRC02_GT2",
+      "family": "Afrobarometer",
+      "wave": "R5",
+      "source_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+      "items": {
+        "conditioner": "Q86B",
+        "target": "Q86A",
+        "subject": "one selected adult expresses two distinct citizenship opinions; not material citizenship law"
+      },
+      "native": {
+        "domain": "0/1, DK, NOT_ASKED, REFUSAL, MISSING",
+        "risk": "common same-person coexposure 19,210 in eleven countries EXCLUDING Ghana",
+        "weight": "RAW unweighted",
+        "estimand": "bounded respondent samples",
+        "special": "6x6 36 cells including 23 observed zero cells"
+      },
+      "accepted_authorities": [
+        [
+          "GT12-A-R5-Q86-CARRIER-REEXPRESSION",
+          "a62630cdc2c81161bcce4c3be7f3757bb4a7e279c9cb334e0b9b013d7339a435"
+        ],
+        [
+          "GT12-A-R5-Q86-COMMON-RISK-ROUTING",
+          "943fa2c44710480948f1dc7a5ae2fe512b806462776e89dcd6de761c5c956d0a"
+        ],
+        [
+          "GT12-A-R5-Q86-SOURCE-SEMANTICS",
+          "c89c04fcaeb0742e5c6248f526082f90156af78f978f44023ab75eef53e830a4"
+        ],
+        [
+          "GT12-A3-GT2-I03-QUERY",
+          "c0ec18e231c8b934acc1fd072b8cd26d59ee2d784c9fb5b29b345b944a757a16"
+        ],
+        [
+          "GT12-A3-GT2-TARGET-USE",
+          "8be1db868deb8b1d613495a2120d2092df2fe55aa5f8884830d7a7e85e221a0e"
+        ]
+      ],
+      "query_sha256": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+      "fact_sha256": "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46",
+      "existing_consumer": "run_current_r1c_e2b_actual_objects(query,fact) -> V557 F1 CONTEXT -> V558 RESOLUTION_COMPLETE (inherited HQ221)",
+      "expected_E": "bounded existing query+fact exact; NEW independently custodied V2 E NOT_ISSUED",
+      "new_B02": "HOLD",
+      "status": "EXISTING_SOURCE_BACKED_PRODUCT_AND_CONSUMER_POSITIVE"
+    },
+    {
+      "rank": 2,
+      "id": "SRC27_LITS_P1",
+      "family": "LiTS",
+      "wave": "I",
+      "source_closure_sha256": "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415",
+      "items": {
+        "a": "q301_2 retrospective politics vs 1989",
+        "b": "q301_7 life satisfaction",
+        "subject": "same-person original Section 2; q310 Section 3 reselection not transferable"
+      },
+      "native": {
+        "joint_risk": 24630,
+        "marginal_risks": [
+          24897,
+          28325
+        ],
+        "response_codes": "native label table HELD in A02",
+        "weight": "RAW unweighted",
+        "estimand": "retained respondent co-travel only"
+      },
+      "query_sha256": "6ee12199bb7b5aabd62f0bd18d469d115b48d2cb0b5f30b36ff48a23903c6cbd",
+      "fact_sha256": "fb8bd6e50f27d77ed97827ba3ff712df5951e438d60b5a0194f9953107e3614b",
+      "permission": "accepted retained P1 same-person empirical only; not FF02 material institution",
+      "expected_E": "NEW V2 E NOT_ISSUED",
+      "first_consumer": "FF01 reference accepted; FF02/Field Forge consuming structural route HELD",
+      "status": "EMPIRICAL_POSITIVE__TARGET_CONSUMER_HELD"
+    },
+    {
+      "rank": 3,
+      "id": "SRC35_WVS7_Q291",
+      "family": "WVS",
+      "wave": "W7",
+      "items": "18 children in historical MASTER, retained 613-variable source child existence/fielded country eligibility HELD",
+      "native": {
+        "risk": "HELD",
+        "response_codes": "HELD",
+        "weight": "HELD",
+        "estimand": "NO_ISSUED_OBSERVATION"
+      },
+      "permission": "bounded logical release/replay; not a retained Q291 child operation",
+      "historical_states": {
+        "candidate": 46,
+        "unavailable": 58
+      },
+      "expected_E": "NOT_ISSUED",
+      "first_consumer": "C1/F8 N10W use HELD",
+      "status": "THIRD_NEAREST_PROSPECT__NOT_AN_ISSUED_PATH"
+    }
+  ],
+  "alternate": {
+    "id": "SRC02_J04_BEN0002_Q73A",
+    "reason": "distinct claim but same source family as first; one-fact CONTEXT mapping and carrier code, no positive invocation established; materializer import not found in D01 inspected tree",
+    "fact_sha256": "c823a816ce6f71431c99b1a466c7313f3766e5d1e7832fc36b6a31f15835dd02"
+  },
+  "full_three_positive_found": false
+}
