@@ -1,0 +1,33 @@
+# P05 dependencies, original warrants, issuer graph and original E prerequisites
+
+## Immutable witnesses (read in this Browser session)
+
+- A01 return `agent/rabochii-pyat-hq280-pv3-a01-source35-original-item-crosswalk-r1@de479e4c25ff179f9298de098e6f474ea283ae40`: `01_ALL35_SOURCE_AND_ORIGINAL_ITEM_SUMMARY.json` Git blob `175b3fde2e130b949405219ae35805f97668e000`, `03_NATIVE_TOPOLOGY_IDENTITY_GAPS.md` `342baefa21b10ec836ceeee3a5ce85e8554f10d2`. Documentary 18,276 implementations, 35 distinct wave keys, **not administered-question census**. Its LR-A archive SHA256 `e201e7923e1d34520dec7134a51e338b5204d55e39c3caa6a51b65888663600b` and 423,620,953-byte crosswalk SHA256 `0f2b3f6ea581418e866ca03ec523ee06cdc013d40ff7a403d0711cd632f8463a` were validated by A01, **not downloaded or independently rehashed by P05**. Primary-Mac-local unpublished source witnesses still have custody gate.
+- A02 `agent/rabochii-pyat-hq280-pv3-a02-native-science-edge-binding-r1@837ba126a213b7d93f37e58d0d56d24d9b8d26b3`: `01_REUSABLE_NATIVE_EDGE_CONTRACT_SCHEMA.json` blob `7f37f020b8e5cb6cb649f0317bb94f576dffd8ff`, `04_COMPETENT_ISSUER_GRAPH.md` blob `0f93c28eaa87046c4349e3ee686e25fbcdb9ffd2`. Differentiates Ghana R5 original questionnaire Q8A/Q86A/Q97 **documentary** original role from missing physical same-person/target issuance and LiTS I native q301_2/q301_7 accepted prior **bounded RAW co-travel** from q310 third event uncertain due to possible different adult.
+- WG0-R `agent/reviewer-pyat-hq279-wg0r-independent-hostile-workload-construction-r1@7b49b2af721002a547a892782be6d579930bdb4b`: primary code review blob `40dac38f46cc9bc49c3c4c1f28465dd06ec75ef1`, matrix blob `c0897a3dc073e85aaf7cb9ce0e2b7ac2204dd4cb`. 24 row C/A candidate classification; no new science B/D/E proved.
+- A04T `agent/rabochii-pyat-hq280-pv3-a04t-v2-verifier-join-r1@d6e766cd6ba7dc46b19cc61123d968a274015ddd` returns `00_RETURN.md` blob `65e8a83a44b2d4ca36bb0c9fadf77b44dc75644d`; A04TU `WORKER_RETURNS/PYAT-HQ280-PV3-A04TU-TEST-SCOPE-MUTATION-HOSTILES-R1/00_RETURN.md` blob `(fetch evidence in P05 trace)`, both exact run receipts inherited only. Source-free v2 verifier module blob `996c8e907f2befde93af09b60154b610c1ffeb63`; not present at P05 sealed HEAD, no misleading local import or owner-runtime claim.
+- Selected owner baseline read at P05 exact startup: `pre553_source_backed_c11_facade.py` blob `8a761119e4a8d68eb291fc4edfadb52e027f8284`, `pre553_route_b_production.py` `2385cd327dced3c5b887b59085aa0d21b04d78c3`, `pre553_discovery_exact.py` `905f24d114419dbdd93879ad2bee5b59dd2f23af`, `pre553_batch_runner.py` `2d291600b9a10c56d9c6f6de7f7d619f6c52e829`, `pre553_service_source_applicability.py` `3e40caca29e8c96ee1f412f919cfc7dba63f96c4`, legacy `build_determinicity_repository_v550.py` `04f3a3646d8b468660385087d92541f03f860cb0`.
+- RCM01: source `c71f83c731fe1465b59f5ad701a5e1bb3018b34a`; HQ operating `HQ_MANDATORY_COMMISSION_AND_SUCCESSOR_GROK_ADDENDUM_R1.md` blob `c6d9e7df505fc06e1865644f1a4738c4f7031462`. Original commission RCM01 `01_OPERATING_CONTRACT.md` blob `bb13b6495c2f9b8c6556da94a05848c4f484c06b`. The additional resource-mac directive mentioned in P05 commission was **NOT_FOUND at the P05 sealed branch path**; P05 applied its explicit RCM01-correction stanza and did not presume unverified account quota, Mac custody or source transfer.
+
+## Two real source-bound exemplars, not a 2×all35 E
+
+1. **Afrobarometer R5 Ghana** original Q8A food deprivation, Q86A citizenship opinion, Q97 completed schooling share one adult per original questionnaire documentation in A02. Their semantic distinctions and routing are documentary supported; expanded Ghana same-person physical sample/target operations and eligible weighted design not accepted. No independent two-operation E issuance.
+2. **LiTS I / retained D02_P1** q301_2 × q301_7 same-person `RAW` joint 24,630 (separate marginals 24,897 and 28,325) retained exact scoped positive; q310 possible Section-3 different adult, new conditional triples unsupported. Do not count 3-item eligibility or FF02 institution.
+
+Their native pair examples cannot authorize any other item/operation or universal wave. All35 E completeness remains **UNKNOWN, not zero**.
+
+## Explicit issuer/principal sequence
+
+**O1 instrument and source custodian:** authoritative fielded instrument per wave×country×language×form with item occurrence, battery, split, assignment, response codes and routing, plus exact retention bytes and independently authenticated provenance.
+
+**O2 measurement scientist:** original respondent identity/reselection/eligible risk and response topology, original source sample frame, mode and sampling weights/design/variance. Issue `RAW` only for exact permitted source-sample scope; national weighted only on positive design/estimand signer. Do not infer from physical column shape.
+
+**O3 independent operation-science issuer:** exact finite closure per original item×operation, directions, condition order, J-only, higher-order and recursive permitted frontier; use/multiset and consumer grants for each selected scope; explicit `HELD` vs `DENIED` vs competently warranted `SOURCE_INTRINSIC_NA_PROVED`.
+
+**O4 independent E custodian:** take O1/O2/O3 pre-result roster and publish immutable authenticated original U + operation closure + `E_pre` with independently timestamped digest and signer. Expected identities include exact native respondent/routing, source/form, operation/estimand/measure and target/condition; preserve E for pending/held science. Posthoc hashes / self-claimed time do NOT prove independent chronology.
+
+**O5 producer binder:** reuse existing A04S/A04T development candidate only at compatible versioned keys (v2 source/owner coverage is narrower than full respondent/design preimage), map to governed C11 exact native projection and owner Route B/I03/I05/BatchUnitSpec. Refuse collisions, many-to-one semantic→dispatch collapse if it loses operation identification, A05 v1 coerced keys, top-N exclusion and post-result E expansion.
+
+**O6 independent verifier:** independently recompute keys against frozen O4, anti-join both directions at `U→E`, `E→D`, `D→batch/results`, and `E→genuine downstream consumer obligations`. A04T/A04TU already provide candidate source-free verifier logic, not source authority. No proof of O4/O5/O6 real all35 integration in this turn.
+
+**Actual missing principal:** **O1/O2/O3 all35 original science issuers, O4 external custodian, O6 actual consumer receipt**, and a verified nonlossy runtime mapping. Existing C11/I03/I05/batch engines are not absent. A verified complete 35-wave original roster may be only partially eligible; unknown stays UNKNOWN and is not a `SOURCE_INTRINSIC_NA` grant.
