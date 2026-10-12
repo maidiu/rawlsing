@@ -1,0 +1,71 @@
+{
+  "schema": "HQ282_N02_SOURCE_WARRANTS@R1",
+  "selected_family_pair": "FAMILYFIELD_AFROBAROMETER_LITS",
+  "relationship": "SURVEY_FAMILY_CANDIDATE_NOT_EE13_APPROVED",
+  "wave_count_preserved": 35,
+  "family_count": 9,
+  "syntactic_pairs": 36,
+  "fieldA": {
+    "id": "SRC02_R5_GT2",
+    "survey_family": "Afrobarometer",
+    "original_role": "Q86B CONDITIONER > Q86A TARGET reported citizenship opinions",
+    "source_root_SHA256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+    "country_codes": [
+      "BFO",
+      "BOT",
+      "CVE",
+      "KEN",
+      "LES",
+      "MAU",
+      "MLW",
+      "MOZ",
+      "NAM",
+      "SAF",
+      "UGA"
+    ],
+    "ghana_included": false,
+    "risk_n": 19210,
+    "risk_set_SHA256": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+    "cells": 36,
+    "observed_zero_cells": 23,
+    "source_query_SHA256": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+    "source_fact_SHA256": "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46",
+    "measure": "RAW_SINGLE_UNIVERSE_UNWEIGHTED",
+    "uncertainty": "UNQUANTIFIED_AT_NEW_FIELD_SCOPE",
+    "existing_consumer": "V557_V558_CONTEXT_ONLY",
+    "native_time": "R5_HISTORICAL_EXACT_F6_SELECTION_HELD",
+    "field_product_ref": null,
+    "field_issuer_ref": null
+  },
+  "fieldB": {
+    "id": "SRC27_LITS_I_D02P1",
+    "survey_family": "LiTS",
+    "period": "2006",
+    "items": [
+      "q301_2",
+      "q301_7"
+    ],
+    "semantics": "respondent retrospective political situation relative to 1989 x current satisfaction",
+    "native_response_codes": "A02_NOT_RECOVERED",
+    "risk_joint": 24630,
+    "risk_marginals": [
+      24897,
+      28325
+    ],
+    "minority_cells": 25,
+    "source_query_SHA256": "6ee12199bb7b5aabd62f0bd18d469d115b48d2cb0b5f30b36ff48a23903c6cbd",
+    "source_fact_SHA256": "fb8bd6e50f27d77ed97827ba3ff712df5951e438d60b5a0194f9953107e3614b",
+    "canonical_closure_SHA256": "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415",
+    "respondent_scope": "AS2A_SAME_PERSON_THIS_PAIR_ONLY",
+    "uncertainty": "UNCERTAINTY_UNQUANTIFIED",
+    "FF01": "EXISTING_SOURCE_BOUND_EMPIRICAL",
+    "FF02": "STRUCTURAL_INSTITUTION_RELATION_HELD",
+    "native_time": "2006_WAVE_EXACT_FIELD_DATES_HELD",
+    "field_product_ref": null,
+    "field_issuer_ref": null
+  },
+  "status": "SOURCE_DOCUMENTARY_WARRANTS_NOT_NEW_POSITIVE_FIELD_PRODUCTS",
+  "external_treaty_substitution": false,
+  "ee13_ref": null,
+  "n9_ref": null
+}
