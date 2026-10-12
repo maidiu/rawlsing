@@ -52,10 +52,13 @@ class FrozenExpected:
         payload = json.loads(self.payload_json)
         if payload.get('expected_derived_from') != 'EXTERNAL_FROZEN':
             raise ValueError('EXPECTED_SET_OUTPUT_DERIVED_OR_UNDECLARED')
-        return V.freeze_payload(payload)
+        frozen = V.freeze_payload(payload)
+        if any(r['raw'].get('multiplicity', 1) != 1 for r in frozen['records'] if r['runnable']):
+            raise ValueError('FIELD_FORGE_SINGLE_RESULT_REQUIRED')
+        return frozen
 
 
-def run_integrated(
+def _run_integrated_locked(
     *, expected: FrozenExpected,
     session: G.GovernedBatchCheckpointSession,
     runtime_catalog: Any,
@@ -169,12 +172,23 @@ def run_integrated(
             if len(receipt.result_refs) != 1:
                 raise ValueError('EXPECTED_DISCOVERY_MULTIPLICITY_MISMATCH')
             result = resolve_discovery(receipt.result_refs[0])
+            from rawlsing_next.pre553_discovery_exact import ExactBoundedDiscoveryResult
+            from rawlsing_next.pre553_empirical_objects import semantic_hash
+            if not isinstance(result, ExactBoundedDiscoveryResult):
+                raise ValueError('EXACT_DISCOVERY_RESULT_REQUIRED')
+            for result_receipt in result.receipts:
+                if semantic_hash(result_receipt.semantic_projection()) != result_receipt.content_hash:
+                    raise ValueError('DISCOVERY_RECEIPT_SEMANTIC_IDENTITY_MISMATCH')
             if result.discovery_authority_ref != unit.job_ref:
                 raise ValueError('DISCOVERY_AUTHORITY_SUBSTITUTION')
             matching = [r for r in result.receipts if r.ref == receipt.result_refs[0]]
             if len(matching) != 1:
                 raise ValueError('SAVED_DISCOVERY_RECEIPT_IDENTITY_MISMATCH')
             discovery_receipt = matching[0]
+            if discovery_receipt.typed_state != 'DISCOVERED_RESULT_SUPPORTED':
+                holds.append({'code': 'DISCOVERY_RESULT_NOT_SUPPORTED', 'expected_work_key': key,
+                              'typed_state': discovery_receipt.typed_state})
+                continue
             winning = exact_ref(discovery_receipt.winning_predicate_ref)
             receipt_fact_refs = tuple(exact_ref(ref) for ref in discovery_receipt.empirical_fact_refs)
             facts = tuple(f for f in result.empirical_facts
@@ -219,7 +233,8 @@ def run_integrated(
             'attempt_index': receipt.attempt_index, 'state': receipt.state,
             'result_typed_states': [discovery_receipt.typed_state] if discovery_receipt else [f.typed_state for f in facts],
             'denominators': [f.raw_denominator_support for f in facts],
-            'reported_success': all(f.typed_state == 'SUPPORTED' for f in facts)})
+            'reported_success': all(f.typed_state == 'SUPPORTED' for f in facts) and
+                (discovery_receipt is None or discovery_receipt.typed_state == 'DISCOVERED_RESULT_SUPPORTED')})
     release_refs = session.identity.release_refs
     if len(release_refs) != 1:
         raise ValueError('SINGLE_RELEASE_REQUIRED')
@@ -229,6 +244,15 @@ def run_integrated(
                          'state': row['state']} for key, row in rows.items() if not row['runnable']],
         'consumer_receipts': consumers, 'expected_derived_from': 'EXTERNAL_FROZEN'}
     verdict = V.verify(frozen, produced)
+    # The pinned verifier is preserved byte-for-byte. Close its permissive
+    # unknown-state branch at this candidate's supported consumer boundary.
+    for unit in produced_units:
+        if unit['reported_success'] and any(
+            V.classify_result(state) not in V.MEASURED_RESULT_CLASSES
+            for state in unit['result_typed_states']
+        ):
+            verdict.fail('UNSUPPORTED_RESULT_REPORTED_AS_SUCCESS', unit['claimed_expected_work_key'])
+            verdict.ok = False
     return {'ok': verdict.ok and recovery.reconciliation.ok and not holds,
         'expected_payload_sha256': expected.payload_sha256,
         'run': report.summary(), 'recovery': recovery.summary(), 'produced': produced,
@@ -238,3 +262,14 @@ def run_integrated(
         'custodian': V.custodian_check(frozen, json.loads(expected.payload_json).get('custodian')),
         'holds': holds + [{'code': 'EXTERNAL_CUSTODIAN_ISSUER_HOLD'},
                           {'code': 'SOURCE_USE_AND_REAL_EXECUTION_NOT_GRANTED'}]}
+
+
+def run_integrated(*, session: G.GovernedBatchCheckpointSession, **kwargs: Any) -> dict:
+    """Single-writer entry point for the complete P01 checkpoint transaction.
+
+    All P01 callers must use this entry point. Raw imported B01E calls are not
+    covered by its outer lock and are not an authorized parallel writer route.
+    """
+    from rawlsing_next.pre553_batch_durable_checkpoint_candidate import ledger_lock
+    with ledger_lock(session.store.root / '.p01.integration.lock'):
+        return _run_integrated_locked(session=session, **kwargs)

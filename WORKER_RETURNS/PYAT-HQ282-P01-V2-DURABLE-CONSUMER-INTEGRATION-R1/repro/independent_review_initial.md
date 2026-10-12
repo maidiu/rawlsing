@@ -1,0 +1,18 @@
+The durable adapter can duplicate execution under concurrent callers and raises unexpectedly after intermediate failed or deferred units. The verifier also accepts invalid result submissions, and several added tests reference missing worker files.
+
+Full review comments:
+
+- [P1] Lock the complete checkpoint transaction before planning execution — /Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq282-p01-secondary/rawlsing_next/pre553_governed_batch_checkpoint_integration_candidate.py:385-390
+  When two callers share a checkpoint root, both can load the same checkpoint before either acquires the lock. Each then writes an intent using its stale local snapshot and executes the same unit, because the lock protects only individual saves and no locked reload checks for another caller's intent or commit. This can duplicate owner effects and overwrite newer checkpoint records. Acquire the lock before loading/planning and retain exclusive ownership through execution and commit, or implement equivalent atomic claims.
+
+- [P2] Stop and replan after committing a non-completed receipt — /Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq282-p01-secondary/rawlsing_next/pre553_governed_batch_checkpoint_integration_candidate.py:410-416
+  With multiple pending units and the default `max_units=None`, a FAILED or DEFERRED receipt before the last unit leaves that unit at the runner's schedule head. The loop nevertheless advances to the next entry in the precomputed executable prefix, so the head check raises `IntegrationError` instead of returning the promised pinned/blocked report. Stop after a non-COMPLETED receipt and recompute the pinned and blocked suffix before reporting.
+
+- [P2] Classify every result when expected multiplicity exceeds one — /Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq282-p01-secondary/rawlsing_next/pre553_original_workload_v2_verifier_candidate.py:661-663
+  For an expectation with multiplicity greater than one, matching the expected result count unconditionally assigns `MULTIPLICITY_MISMATCH`, and no subsequent branch records a failure or examines the individual states. A declaration with multiplicity 2 and results `['FAILED', 'FAILED']` therefore returns `ok=True`. Classify and validate each result, or explicitly reject unsupported multiplicities rather than silently accepting them.
+
+- [P2] Reject success claims for unknown or non-success result states — /Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq282-p01-secondary/rawlsing_next/pre553_original_workload_v2_verifier_candidate.py:683-688
+  When a producer supplies an unknown typed state, `classify_result` prefixes it with `OWNER_TYPED_`, and this branch accepts it even when `reported_success=True`. Changing a saved positive submission's state to `INVENTED_STATE` while retaining its success claim still yields `ok=True` with no failures. Preserve unknown/non-success states as documentary outcomes if needed, but reject their promotion to successful results.
+
+- [P2] Point the added tests at the committed repro workers — /Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq282-p01-secondary/rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py:38-42
+  Running these tests directly through pytest fails because the worker paths refer to historical HQ280 return directories that are absent from this checkout. The same issue affects the B01D, governed integration, verifier, and mutation-hostile tests; the committed workers instead live under the new HQ282 return directory. The portable court scripts patch these globals only for their custom invocation, leaving ordinary test discovery broken. Resolve the committed worker locations directly in the tests or through a shared fixture.

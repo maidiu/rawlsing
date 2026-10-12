@@ -20,7 +20,7 @@
     {
       "court": "integrated_court",
       "exit": 0,
-      "passed": 15,
+      "passed": 17,
       "deselected": 0,
       "skipped": 0,
       "log": "repro/integrated_court.log"
@@ -39,6 +39,14 @@
       "court": "emit_integration",
       "exit": 0,
       "log": "repro/emit_integration.log"
+    },
+    {
+      "court": "ordinary_pytest_court",
+      "exit": 0,
+      "passed": 161,
+      "skipped": 6,
+      "deselected": 0,
+      "log": "repro/ordinary_pytest_court.log"
     }
   ],
   "commands": {
@@ -47,8 +55,9 @@
     "integrated_court": "python3 -m pytest -q rawlsing_next/tests/test_pre553_v2_durable_consumer_integration_candidate.py",
     "a05_hostiles": "python3 WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a05_hostiles.py",
     "exact_manifest_court": "python3 WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/exact_manifest_court.py",
-    "emit_integration": "python3 WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/emit_integration.py"
+    "emit_integration": "python3 WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/emit_integration.py",
+    "ordinary_pytest_court": "python3 -m pytest -q rawlsing_next/tests/test_pre553_v2_durable_consumer_integration_candidate.py rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py rawlsing_next/tests/test_pre553_governed_batch_checkpoint_integration_candidate.py rawlsing_next/tests/test_pre553_original_workload_v2_verifier_candidate.py rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py"
   },
   "scope": "source-free only",
-  "independent_review": "PENDING"
+  "independent_review": "INITIAL_FINDINGS_ADDRESSED_AT_P01_BOUNDARY_FOLLOWUP_PENDING"
 }

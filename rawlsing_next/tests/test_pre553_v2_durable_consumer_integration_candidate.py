@@ -323,3 +323,33 @@ def test_wrong_condition_order_is_refused_before_execution(tmp_path):
     with pytest.raises(ValueError, match='CONDITION_ORDER_SUBSTITUTION'):
         P.run_integrated(**kwargs)
     assert calls == []
+
+
+def test_multiple_results_are_explicitly_unsupported(tmp_path):
+    kwargs, calls = _fixture(tmp_path)
+    doc = json.loads(kwargs['expected'].payload_json)
+    doc['declarations'][0]['multiplicity'] = 2
+    kwargs['expected'] = P.FrozenExpected.from_documentary_payload(doc)
+    with pytest.raises(ValueError, match='FIELD_FORGE_SINGLE_RESULT_REQUIRED'):
+        P.run_integrated(**kwargs)
+    assert calls == []
+
+
+def test_second_integrated_writer_is_refused_before_execution(tmp_path):
+    import subprocess, sys
+    kwargs, calls = _fixture(tmp_path)
+    from rawlsing_next.pre553_batch_durable_checkpoint_candidate import ledger_lock
+    script = '''
+from pathlib import Path
+import sys
+from rawlsing_next.tests.test_pre553_v2_durable_consumer_integration_candidate import _fixture
+from rawlsing_next import pre553_v2_durable_consumer_integration_candidate as P
+kwargs,calls = _fixture(Path(sys.argv[1]))
+P.run_integrated(**kwargs)
+'''
+    with ledger_lock(tmp_path / '.p01.integration.lock'):
+        child = subprocess.run([sys.executable, '-c', script, str(tmp_path)], capture_output=True, text=True, timeout=30)
+    assert child.returncode != 0
+    assert 'CheckpointLockError' in child.stderr
+    assert calls == []
+    assert not kwargs['session'].store.exists()
