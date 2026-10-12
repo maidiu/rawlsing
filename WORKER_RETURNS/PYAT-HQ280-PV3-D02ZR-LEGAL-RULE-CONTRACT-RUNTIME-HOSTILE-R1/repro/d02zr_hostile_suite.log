@@ -1,0 +1,56 @@
+test_35_fixture_cases_all_execute (test_d02zr_hostiles.D02ZRIndependentHostiles.test_35_fixture_cases_all_execute)
+Independently execute all 35 D02Z fixture cases per the documented protocol. ... ok
+test_altered_json_identity_changes_hash (test_d02zr_hostiles.D02ZRIndependentHostiles.test_altered_json_identity_changes_hash)
+Altering any field changes the canonical hash (local JSON identity). ... ok
+test_as_enacted_text_is_not_person_outcome (test_d02zr_hostiles.D02ZRIndependentHostiles.test_as_enacted_text_is_not_person_outcome)
+An as-enacted textual description is not a person-level outcome. ... ok
+test_causal_assertion_refused (test_d02zr_hostiles.D02ZRIndependentHostiles.test_causal_assertion_refused)
+ASSERT_CAUSAL_MECHANISM is REFUSED — no causal mechanism authority. ... ok
+test_empirical_fact_refused (test_d02zr_hostiles.D02ZRIndependentHostiles.test_empirical_fact_refused)
+EMIT_EMPIRICAL_FACT is REFUSED — wrong empirical object family. ... ok
+test_enforcement_assertion_refused (test_d02zr_hostiles.D02ZRIndependentHostiles.test_enforcement_assertion_refused)
+ASSERT_ENFORCEMENT is REFUSED — no official administrative observation. ... ok
+test_extra_key_refused (test_d02zr_hostiles.D02ZRIndependentHostiles.test_extra_key_refused)
+Adding an unauthorized extra key refuses. ... ok
+test_g0b_refused (test_d02zr_hostiles.D02ZRIndependentHostiles.test_g0b_refused)
+G0B_OR_ACTOR_V3 is REFUSED — no model or actor use grant. ... ok
+test_issued_fact_ref_masquerade_refused (test_d02zr_hostiles.D02ZRIndependentHostiles.test_issued_fact_ref_masquerade_refused)
+A non-null issued_fact_ref claims an issued fact that does not exist. ... ok
+test_local_sha256_is_not_original_document_identity (test_d02zr_hostiles.D02ZRIndependentHostiles.test_local_sha256_is_not_original_document_identity)
+The canonical_input_sha256 is a local JSON hash, not original document custody. ... ok
+test_local_sha256_is_not_pdf_custody (test_d02zr_hostiles.D02ZRIndependentHostiles.test_local_sha256_is_not_pdf_custody)
+A local input SHA-256 must never be treated as custody of the original PDF. ... ok
+test_n9_current_refused (test_d02zr_hostiles.D02ZRIndependentHostiles.test_n9_current_refused)
+SERVE_N9_CURRENT is HELD — no issued rule source root or selected world. ... ok
+test_n9_historical_refused (test_d02zr_hostiles.D02ZRIndependentHostiles.test_n9_historical_refused)
+SERVE_N9_HISTORICAL is HELD — no issued rule source root or N9 consumer. ... ok
+test_non_dict_refused (test_d02zr_hostiles.D02ZRIndependentHostiles.test_non_dict_refused)
+A non-dict input refuses. ... ok
+test_omitted_required_key_refused (test_d02zr_hostiles.D02ZRIndependentHostiles.test_omitted_required_key_refused)
+Omitting a required key refuses. ... ok
+test_operative_state_assertion_refused (test_d02zr_hostiles.D02ZRIndependentHostiles.test_operative_state_assertion_refused)
+Attempting to assert a current/operative state is refused. ... ok
+test_original_pdf_byte_custody_not_custodied (test_d02zr_hostiles.D02ZRIndependentHostiles.test_original_pdf_byte_custody_not_custodied)
+original_pdf_byte_custody is NOT_CUSTODIED — no PDF bytes are held. ... ok
+test_person_citizenship_assertion_refused (test_d02zr_hostiles.D02ZRIndependentHostiles.test_person_citizenship_assertion_refused)
+INTERPRET_PERSON_CITIZENSHIP is REFUSED — no person case facts. ... ok
+test_rule_text_documented_held (test_d02zr_hostiles.D02ZRIndependentHostiles.test_rule_text_documented_held)
+ISSUE_RULE_TEXT_DOCUMENTED is HELD — no competent issuer. ... ok
+test_unsigned_issuer_metadata_refused (test_d02zr_hostiles.D02ZRIndependentHostiles.test_unsigned_issuer_metadata_refused)
+A non-null producer_issuer_ref is an unproved authority claim. ... ok
+test_wrong_assent_date_refused (test_d02zr_hostiles.D02ZRIndependentHostiles.test_wrong_assent_date_refused) ... ok
+test_wrong_clause_id_refused (test_d02zr_hostiles.D02ZRIndependentHostiles.test_wrong_clause_id_refused)
+PART_I_SECTION_7 must not be substituted with another clause. ... ok
+test_wrong_grandparent_wording_refused (test_d02zr_hostiles.D02ZRIndependentHostiles.test_wrong_grandparent_wording_refused) ... ok
+test_wrong_legal_document_id_refused (test_d02zr_hostiles.D02ZRIndependentHostiles.test_wrong_legal_document_id_refused)
+ACT_591_2000 must not be substituted. ... ok
+test_wrong_parent_wording_refused (test_d02zr_hostiles.D02ZRIndependentHostiles.test_wrong_parent_wording_refused)
+Qualifying ancestor roles must be exactly PARENT, GRANDPARENT. ... ok
+test_wrong_source_url_refused (test_d02zr_hostiles.D02ZRIndependentHostiles.test_wrong_source_url_refused) ... ok
+test_wrong_time_boundary_refused (test_d02zr_hostiles.D02ZRIndependentHostiles.test_wrong_time_boundary_refused)
+Birth cohort date must be exactly 1993-01-07. ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.006s
+
+OK

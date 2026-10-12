@@ -1,0 +1,67 @@
+{
+  "schema": "PYAT_HQ280_D02ZR_ACTUAL_RUNTIME_RESULTS@1.0.0",
+  "sealed_startup": "ee66e2b8435d281399e8ce1f8feeeb6927971254",
+  "inherited_d02z_candidate": "8fbcc84f3ec7664ef2ea565c6813d6e2c1723761",
+  "branch": "agent/reviewer-pyat-hq280-pv3-d02zr-legal-rule-runtime-hostile-r1",
+  "interpreter": "Python 3.11.3",
+  "d02z_candidate_suite": {
+    "command": "python -m unittest -v test_d02z_documentary_rule_contract.py",
+    "cwd": "WORKER_RETURNS/PYAT-HQ280-PV3-D02Z-NATIVE-LEGAL-RULE-PRODUCER-CONTRACT-R1/repro",
+    "tests": 6,
+    "passed": 6,
+    "failed": 0,
+    "errors": 0,
+    "exit_code": 0,
+    "wall_seconds": 0.005,
+    "test_methods": [
+      "test_positive_shape_is_not_issued",
+      "test_deterministic_local_replay",
+      "test_all_fixture_mutations_and_expected_states",
+      "test_production_operations_always_held_or_refused",
+      "test_wrong_type_fails_closed",
+      "test_hash_is_local_json_not_original_source"
+    ],
+    "log": "repro/d02z_candidate_suite.log"
+  },
+  "d02zr_independent_hostile_suite": {
+    "command": "python -m unittest -v test_d02zr_hostiles.py",
+    "cwd": "WORKER_RETURNS/PYAT-HQ280-PV3-D02Z-NATIVE-LEGAL-RULE-PRODUCER-CONTRACT-R1/repro (execution copy; canonical file in this return's repro/)",
+    "tests": 27,
+    "passed": 27,
+    "failed": 0,
+    "errors": 0,
+    "exit_code": 0,
+    "wall_seconds": 0.006,
+    "log": "repro/d02zr_hostile_suite.log"
+  },
+  "fixture_cases": {
+    "file": "WORKER_RETURNS/PYAT-HQ280-PV3-D02Z-NATIVE-LEGAL-RULE-PRODUCER-CONTRACT-R1/03_RULE_TEXT_ORIGINAL_POSITIVE_AND_NEGATIVE_FIXTURES.json",
+    "declared_case_count": 35,
+    "actual_cases_executed": 35,
+    "all_issued_fact_ref_null": true,
+    "all_candidate_only_true": true,
+    "ids": [
+      "P01_VALID_HISTORICAL_TEXT_ONLY",
+      "H01_FAKE_PDF_SHA", "H02_FALSE_ISSUER", "H03_FALSE_SOURCE_GRANT",
+      "H04_WRONG_CLAUSE", "H05_WRONG_ACT", "H06_BIRTH_AFTER_INSTEAD_ON",
+      "H07_BIRTH_COHORT_AS_STATUTE_DATE", "H08_NO_GRANDPARENT", "H09_ONLY_GH_BIRTH",
+      "H10_WAS_OR_IS_SIMPLIFIED", "H11_CONSTITUTION_BOUNDARY_FUSED",
+      "H12_PRETEND_COMMENCEMENT", "H13_PRETEND_CURRENT", "H14_UNPROVED_AMENDMENTS",
+      "H15_FORGED_V554", "H16_EMPIRICAL_FACT", "H17_Q86A_SURVEY", "H18_CITIZENSHIP_PERSON",
+      "H19_ENFORCEMENT_CLAIM", "H20_ACCESS_CLAIM", "H21_CAUSAL_EFFECT",
+      "H22_FALSE_CURRENT_REF", "H23_WRONG_REPRODUCTION", "H24_CONFLATED_GAZETTE",
+      "H25_FORBIDDEN_V557_REF", "H26_MISSING_DATE", "H27_WRONG_JURISDICTION",
+      "H28_ISSUE_OPERATION", "H29_RULE_IN_FORCE_OPERATION", "H30_V557_OPERATION",
+      "H31_N9_CURRENT_OPERATION", "H32_UNKNOWN_OPERATION", "H33_OUTCOME_AS_CURRENT",
+      "H34_PUBLISHED_AS_SOURCE"
+    ]
+  },
+  "totals": {
+    "test_methods": 33,
+    "passed": 33,
+    "failed": 0,
+    "fixture_cases_executed": 35
+  },
+  "evidence_grade": "SOURCE_FREE_REVIEW_ONLY__NONISSUING",
+  "terminal": "HQ280_PV3_D02ZR_DOCUMENTARY_RULE_SOURCEFREE_RUNTIME_HOSTILE_RETURNED__NONISSUING__GITHUB_PUSHED"
+}
