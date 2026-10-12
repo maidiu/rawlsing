@@ -1,3 +1,7 @@
+## ASTRA CODEX-WEEK RESERVE + EXACT MINIMUM MODEL GATE — 12 OCTOBER 2026
+
+All new local Pyat commissions and future HQ groks must apply `PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ282_CODEX_ASTRA_RESERVE_MODEL_AND_SECONDARY_FILE_LAW_R1.md`: **Astra can run only within Codex**, so reserve its legitimate weekly quota before assigning any coding worker; check model + exact Low/Medium before any run; don't waste Sol High when low/medium or Luna suffices; three reset vouchers per screenshot are not discretionary spend. Two screenshots show 85% and 98% weekly but account-to-Mac mapping is UNKNOWN. Secondary Mac is not a mirror of primary; original V2 candidate pytest hardcodes primary worktree paths and skips when absent, so verify exact Git blobs/A05 oracle instead of certifying false passes. New assignments are HELD until current model/usage, host and sparse worktree are actually attested. This is user-directed working-HQ operational law, not a new HQD/immutable handoff or scientific grant.
+
 Use the [resource observation ledger](RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ282_RESOURCE_OBSERVATION_SEED.json) and [six-commission candidate ledger](RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ282_RESOURCE_GATED_COMMISSION_LEDGER.json) as a versioned STARTING POINT ONLY. Re-resolve live status, budgets, model and Mac/worktree facts; do not dispatch any local worker whose hard eligibility remains unproved.
 
 ## HQ281+ USER-DIRECTED RESOURCE-AWARE COMMISSION GATE — READ FIRST
