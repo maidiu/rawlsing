@@ -1,3 +1,9 @@
+## HQ281+ USER-DIRECTED RESOURCE-AWARE COMMISSION GATE — READ FIRST
+
+**Every new Pyat commission and incoming-HQ readiness exercise on this working HQ must first apply** [the RCM01 resource-aware operational preflight](RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ_MANDATORY_COMMISSION_AND_SUCCESSOR_GROK_ADDENDUM_R1.md). Original sealed source: `agent/vozhd-pyat-rcm01-resource-aware-commission-command-r1@c71f83c731fe1465b59f5ad701a5e1bb3018b34a` and `WORKER_COMMISSIONS/PYAT-RCM01-RESOURCE-AWARE-COMMAND-R1/00_COMMISSION.md`. Optimize accepted products per measured time, finite quota, money, failures, reviewer independence and human intervention **after source/privacy/runtime/issuer/branch gates**. Keep Browser scientific HQ, local runtime, model intelligence, shared Go quotas, Codex A/B observed separately, provider privacy, worktree isolation, and Astra exceptional escalation explicit. Unknown resource evidence is not a free eligible assignment. RCM01 remains recommendation-only and not autonomous Space Bunny authority. This is a user-directed *working-branch operating preflight*, not a canonical HQD/scientific/source-use adoption or a replacement for `HQ_HANDOFF/LATEST.json`.
+
+---
+
 ## User-requested whole-machine assessment and forward plan — 11 October 2026
 
 Read the [corrected assessment and detailed completion plan](WHOLE_MACHINE_ASSESSMENT_AND_PLAN_20261011_R1/README.md). It updates F8F/WVQ status, identifies the B5 publication trust boundary, grades canonical versus staged evidence, and supplies 25 proposed work packages, all-35 reconciliation and AT01–AT35 acceptance routing. **Documentary delivery only:** no candidate/code adoption, source/model-use grant, dispatch or replacement of the sealed operational handoff. Exact read baseline and primary-evidence limits are in the packet.
