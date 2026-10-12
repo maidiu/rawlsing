@@ -1,0 +1,19 @@
+{
+  "status": "NO_REMAINING_BLOCKING_FINDINGS_SUPPORTED_SOURCE_FREE_CANDIDATE",
+  "reviewed_commit": "73d45f3ac6a50fbee6666ad3a5023840f01ef196",
+  "reviewed_rawlsing_next_tree": "149d119c27fc64d13eb778dcfc27d3861b088ae4",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "medium",
+  "separate_process": true,
+  "sandbox": "read-only",
+  "exit": 0,
+  "report": "repro/independent_review_final.md",
+  "independent_checks": {
+    "exact_imports": 17,
+    "unchanged_startup_files": 328,
+    "a05_cases": 18,
+    "readonly_verifier_passes": 6,
+    "in_memory_integrated_semantic_passes": 22
+  },
+  "limitation": "Filesystem recovery not rerun by read-only reviewer; independently recomputed semantic results use memory storage and lock substitutes. Root writable subprocess courts supply recovery evidence."
+}
