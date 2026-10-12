@@ -1,3 +1,9 @@
+## Post-succession mandatory resource command update — 12 October 2026
+
+After completing the original sealed succession packet at `0edeb025d9f255238d6784c21d3a36cd59bab6dc`, apply the user-directed [RCM01 operational preflight](../RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ_MANDATORY_COMMISSION_AND_SUCCESSOR_GROK_ADDENDUM_R1.md), [reworked product-first board](../RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ282_RESOURCE_AWARE_RECOMMISSION_BOARD_R1.md), and [six exact new resource-gated startup identities](../RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ282_SIX_SEALED_RESOURCE_GATED_LAUNCH_LEDGER_R1.md). Both `00_READ_ME_FIRST.md` and `13_FRESH_HQ_FULL_GROK_PROTOCOL.md` on the operating branch now require the resource hard-eligibility examination before commissioning. **This notice is later noncanonical working-HQ operational context, not an amendment to the original immutable 0edeb packet or the older canonical HQ_HANDOFF checkpoint.** Do not revive six HQ281 workers already returned or treat the new six commissions as launched before actual resource binding.
+
+---
+
 # Incoming VOZHD — HQ281 Astra PRE-V3 succession packet
 
 **Scope:** complete operational/context handoff, not source/semantic/operative adoption. Governing HQD-2026-10-10-280; original Oct11 Astra M0–M5 program continues to govern completion definitions.
