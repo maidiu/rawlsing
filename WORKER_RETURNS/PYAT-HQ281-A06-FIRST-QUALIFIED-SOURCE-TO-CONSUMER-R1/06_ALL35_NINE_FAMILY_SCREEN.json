@@ -1,0 +1,589 @@
+{
+  "schema": "HQ281_A06_ALL35_NINE_FAMILY_QUALIFICATION_SCREEN@1",
+  "status": "EXHAUSTIVE_INHERITED_SOURCE_IDENTITY_SCREEN__NOT_NEW_ORIGINAL_OPERATION_ADJUDICATION",
+  "inputs": [
+    {
+      "path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_ASSESSMENT_AND_PLAN_20261011_R1/SOURCE35_RECONCILIATION.json",
+      "ref": "1a46adcffb82a7d951332e39ffea598e4ab4396b",
+      "blob": "ef4961239d5ea78fe1bc89ffe213063d21fe0236"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ280-PV3-A01-SOURCE35-ORIGINAL-ITEM-CROSSWALK-R1/01_ALL35_SOURCE_AND_ORIGINAL_ITEM_SUMMARY.json",
+      "ref": "agent/rabochii-pyat-hq280-pv3-a01-source35-original-item-crosswalk-r1",
+      "blob": "175b3fde2e130b949405219ae35805f97668e000"
+    }
+  ],
+  "count": {
+    "waves": 35,
+    "families": 9,
+    "inherited_implementations": 18276,
+    "inherited_measurement_candidates": 13270,
+    "carrier_alternative_conflicts": 10479,
+    "temporal_syntactic_pairs": 63,
+    "existing_consumed_positive_source_count": 1,
+    "new_B02_authorized_source_count": 0
+  },
+  "family_counts": {
+    "AFROBAROMETER": 3,
+    "ARAB_BAROMETER": 4,
+    "ASIAN_BAROMETER": 3,
+    "EVS": 5,
+    "GSS": 8,
+    "LATINOBAROMETRO": 3,
+    "LITS": 4,
+    "SOUTH_ASIA": 2,
+    "WVS": 3
+  },
+  "interpretation": "All 35 historical wave identities screened and A01 per-wave implementation census cross-joined, not independently 35 native questionnaire/operation adjudications. No new issuer or adopter acted. UNKNOWN/HELD must not be mapped to DENIED or SOURCE_NONAPPLICABLE. 18,276 are historical implementations, not distinct original administered questions.",
+  "ranked_nearest": [
+    "SRC02",
+    "SRC27",
+    "SRC35"
+  ],
+  "sources": [
+    {
+      "source_id": "SRC01",
+      "family": "AFROBAROMETER",
+      "wave_census": "Afrobarometer R1",
+      "wave_a01": "R1",
+      "historical_implementations": 144,
+      "measurement_candidate_implementations": 92,
+      "carrier_conflicts": 0,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC02",
+      "family": "AFROBAROMETER",
+      "wave_census": "Afrobarometer R5",
+      "wave_a01": "R5",
+      "historical_implementations": 348,
+      "measurement_candidate_implementations": 106,
+      "carrier_conflicts": 0,
+      "narrow_claims": [
+        {
+          "scope": "R5 selected GT12 original-country set",
+          "proven": "BOUNDED_SRC02_GT2_COEXPOSURE_19210",
+          "not_proven": "GHANA_Q8A_Q97_SOURCE_BACKED_C11_OR_ALL_R5_QUERY_AUTOMATION",
+          "refs": [
+            "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ274_C01_S01_INTAKE_L01_UNPUSHED_AND_TWO_EXACT_COURTS_R1.md"
+          ]
+        }
+      ],
+      "nearest_path_grade": "EXISTING_GT2_SOURCE_BACKED_CONTEXT_CONSUMER__NEW_B02_HELD",
+      "item_to_current_consumer_issuance_proved": true,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC03",
+      "family": "AFROBAROMETER",
+      "wave_census": "Afrobarometer R9",
+      "wave_a01": "R9",
+      "historical_implementations": 421,
+      "measurement_candidate_implementations": 123,
+      "carrier_conflicts": 0,
+      "narrow_claims": [
+        {
+          "scope": "Uganda R9 original national measurement",
+          "proven": "Q3_WAVE_MEANING_AND_NATIONAL_VS_BOOST_DISTINCTION_INVESTIGATED",
+          "not_proven": "ACCEPTED_R5_R9_COMPARABLE_ESTIMATE_AND_N8E_SERVICE",
+          "refs": [
+            "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/WAVE_BARRIERS.md"
+          ]
+        }
+      ],
+      "nearest_path_grade": "UGANDA_R9_ORIGINAL_WAVE_DESIGN_INVESTIGATED__TEMPORAL_COMPARABILITY_HELD",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC04",
+      "family": "ARAB_BAROMETER",
+      "wave_census": "Arab Barometer W1",
+      "wave_a01": "I",
+      "historical_implementations": 181,
+      "measurement_candidate_implementations": 147,
+      "carrier_conflicts": 0,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC05",
+      "family": "ARAB_BAROMETER",
+      "wave_census": "Arab Barometer W2",
+      "wave_a01": "II",
+      "historical_implementations": 468,
+      "measurement_candidate_implementations": 326,
+      "carrier_conflicts": 0,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC06",
+      "family": "ARAB_BAROMETER",
+      "wave_census": "Arab Barometer W5",
+      "wave_a01": "V",
+      "historical_implementations": 359,
+      "measurement_candidate_implementations": 173,
+      "carrier_conflicts": 0,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC07",
+      "family": "ARAB_BAROMETER",
+      "wave_census": "Arab Barometer W8",
+      "wave_a01": "VIII",
+      "historical_implementations": 690,
+      "measurement_candidate_implementations": 336,
+      "carrier_conflicts": 0,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC08",
+      "family": "ASIAN_BAROMETER",
+      "wave_census": "Asian Barometer W1",
+      "wave_a01": "W1",
+      "historical_implementations": 217,
+      "measurement_candidate_implementations": 110,
+      "carrier_conflicts": 0,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC09",
+      "family": "ASIAN_BAROMETER",
+      "wave_census": "Asian Barometer W4",
+      "wave_a01": "W4",
+      "historical_implementations": 289,
+      "measurement_candidate_implementations": 169,
+      "carrier_conflicts": 0,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC10",
+      "family": "ASIAN_BAROMETER",
+      "wave_census": "Asian Barometer W5",
+      "wave_a01": "W5",
+      "historical_implementations": 308,
+      "measurement_candidate_implementations": 186,
+      "carrier_conflicts": 0,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC11",
+      "family": "EVS",
+      "wave_census": "EVS1981",
+      "wave_a01": "1981",
+      "historical_implementations": 370,
+      "measurement_candidate_implementations": 368,
+      "carrier_conflicts": 0,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC12",
+      "family": "EVS",
+      "wave_census": "EVS1990",
+      "wave_a01": "1990",
+      "historical_implementations": 390,
+      "measurement_candidate_implementations": 385,
+      "carrier_conflicts": 0,
+      "narrow_claims": [
+        {
+          "scope": "Austria EVS1990 A048",
+          "proven": "ORIGINAL_ITEM_TEXT_QUALIFIED_PRIOR",
+          "not_proven": "ORIGINAL_VS_HARMONIZED_DESIGN_VERSION_WEIGHT_BRIDGE",
+          "refs": [
+            "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/WAVE_BARRIERS.md"
+          ]
+        }
+      ],
+      "nearest_path_grade": "AUSTRIA_A048_ORIGINAL_ITEM_TEXT__DESIGN_WEIGHT_ESTIMAND_OR_PAIR_HELD",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC13",
+      "family": "EVS",
+      "wave_census": "EVS1999",
+      "wave_a01": "1999",
+      "historical_implementations": 513,
+      "measurement_candidate_implementations": 508,
+      "carrier_conflicts": 0,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC14",
+      "family": "EVS",
+      "wave_census": "EVS2008",
+      "wave_a01": "2008",
+      "historical_implementations": 477,
+      "measurement_candidate_implementations": 472,
+      "carrier_conflicts": 0,
+      "narrow_claims": [
+        {
+          "scope": "Austria EVS2008 A048",
+          "proven": "ORIGINAL_ITEM_TEXT_QUALIFIED_PRIOR",
+          "not_proven": "NATIONAL_INFERENTIAL_ESTIMAND_WAVE_PAIR_ADOPTION",
+          "refs": [
+            "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/WAVE_BARRIERS.md"
+          ]
+        }
+      ],
+      "nearest_path_grade": "AUSTRIA_A048_ORIGINAL_ITEM_TEXT__DESIGN_WEIGHT_ESTIMAND_OR_PAIR_HELD",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC15",
+      "family": "EVS",
+      "wave_census": "EVS2017",
+      "wave_a01": "2017",
+      "historical_implementations": 474,
+      "measurement_candidate_implementations": 444,
+      "carrier_conflicts": 0,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC16",
+      "family": "GSS",
+      "wave_census": "GSS1972",
+      "wave_a01": "1972",
+      "historical_implementations": 216,
+      "measurement_candidate_implementations": 172,
+      "carrier_conflicts": 216,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC17",
+      "family": "GSS",
+      "wave_census": "GSS1973",
+      "wave_a01": "1973",
+      "historical_implementations": 339,
+      "measurement_candidate_implementations": 291,
+      "carrier_conflicts": 339,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC18",
+      "family": "GSS",
+      "wave_census": "GSS1984",
+      "wave_a01": "1984",
+      "historical_implementations": 675,
+      "measurement_candidate_implementations": 566,
+      "carrier_conflicts": 675,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC19",
+      "family": "GSS",
+      "wave_census": "GSS1993",
+      "wave_a01": "1993",
+      "historical_implementations": 752,
+      "measurement_candidate_implementations": 613,
+      "carrier_conflicts": 752,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC20",
+      "family": "GSS",
+      "wave_census": "GSS2002",
+      "wave_a01": "2002",
+      "historical_implementations": 1119,
+      "measurement_candidate_implementations": 981,
+      "carrier_conflicts": 1119,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC21",
+      "family": "GSS",
+      "wave_census": "GSS2010",
+      "wave_a01": "2010",
+      "historical_implementations": 922,
+      "measurement_candidate_implementations": 907,
+      "carrier_conflicts": 922,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC22",
+      "family": "GSS",
+      "wave_census": "GSS2016",
+      "wave_a01": "2016",
+      "historical_implementations": 1018,
+      "measurement_candidate_implementations": 924,
+      "carrier_conflicts": 1018,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC23",
+      "family": "GSS",
+      "wave_census": "GSS2024",
+      "wave_a01": "2024",
+      "historical_implementations": 980,
+      "measurement_candidate_implementations": 954,
+      "carrier_conflicts": 980,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC24",
+      "family": "LATINOBAROMETRO",
+      "wave_census": "Latinobarómetro1995",
+      "wave_a01": "1995",
+      "historical_implementations": 203,
+      "measurement_candidate_implementations": 106,
+      "carrier_conflicts": 2,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC25",
+      "family": "LATINOBAROMETRO",
+      "wave_census": "Latinobarómetro2011",
+      "wave_a01": "2011",
+      "historical_implementations": 414,
+      "measurement_candidate_implementations": 226,
+      "carrier_conflicts": 0,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC26",
+      "family": "LATINOBAROMETRO",
+      "wave_census": "Latinobarómetro2024",
+      "wave_a01": "2024",
+      "historical_implementations": 195,
+      "measurement_candidate_implementations": 128,
+      "carrier_conflicts": 8,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC27",
+      "family": "LITS",
+      "wave_census": "LiTS I",
+      "wave_a01": "2006",
+      "historical_implementations": 1198,
+      "measurement_candidate_implementations": 568,
+      "carrier_conflicts": 1198,
+      "narrow_claims": [
+        {
+          "scope": "LiTS I retained q301_2 × q301_7",
+          "proven": "GENUINE_SAME_PERSON_REPORTED_ATTITUDE_JOINT_FF01_EMPIRICAL_ONLY",
+          "not_proven": "EXTERNAL_OBJECTIVE_INSTITUTION_FF02_RELATION_OR_SECOND_SOURCE_FAMILY",
+          "refs": [
+            "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/WAVE_BARRIERS.md"
+          ]
+        }
+      ],
+      "nearest_path_grade": "RETAINED_SAME_PERSON_EMPIRICAL_JOINT__FF02_CONSUMER_HELD",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC28",
+      "family": "LITS",
+      "wave_census": "LiTS II",
+      "wave_a01": "II",
+      "historical_implementations": 627,
+      "measurement_candidate_implementations": 227,
+      "carrier_conflicts": 627,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC29",
+      "family": "LITS",
+      "wave_census": "LiTS III",
+      "wave_a01": "III",
+      "historical_implementations": 1290,
+      "measurement_candidate_implementations": 899,
+      "carrier_conflicts": 1304,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC30",
+      "family": "LITS",
+      "wave_census": "LiTS IV",
+      "wave_a01": "IV",
+      "historical_implementations": 1319,
+      "measurement_candidate_implementations": 469,
+      "carrier_conflicts": 1319,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC31",
+      "family": "SOUTH_ASIA",
+      "wave_census": "South Asia W1",
+      "wave_a01": "W1",
+      "historical_implementations": 68,
+      "measurement_candidate_implementations": 53,
+      "carrier_conflicts": 0,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC32",
+      "family": "SOUTH_ASIA",
+      "wave_census": "South Asia W2",
+      "wave_a01": "W2",
+      "historical_implementations": 73,
+      "measurement_candidate_implementations": 43,
+      "carrier_conflicts": 0,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC33",
+      "family": "WVS",
+      "wave_census": "WVS W1",
+      "wave_a01": "W1",
+      "historical_implementations": 188,
+      "measurement_candidate_implementations": 177,
+      "carrier_conflicts": 0,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC34",
+      "family": "WVS",
+      "wave_census": "WVS W4",
+      "wave_a01": "W4",
+      "historical_implementations": 418,
+      "measurement_candidate_implementations": 415,
+      "carrier_conflicts": 0,
+      "narrow_claims": [],
+      "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    },
+    {
+      "source_id": "SRC35",
+      "family": "WVS",
+      "wave_census": "WVS W7",
+      "wave_a01": "W7",
+      "historical_implementations": 613,
+      "measurement_candidate_implementations": 606,
+      "carrier_conflicts": 0,
+      "narrow_claims": [
+        {
+          "scope": "WVS W7 Q291 retained proof",
+          "proven": "BOUNDED_LOGICAL_RELEASE_AND_REPLAY",
+          "not_proven": "WHOLE_WVS7_SOURCE_OPERATION_FRONTIER_AND_N10W_CONSUMPTION",
+          "refs": [
+            "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/WAVE_BARRIERS.md"
+          ]
+        }
+      ],
+      "nearest_path_grade": "MASTER_Q291_LOGICAL_FRONTIER__RETAINED_FIELD_RISK_HELD",
+      "item_to_current_consumer_issuance_proved": false,
+      "new_B02_issuance_proved": false,
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+    }
+  ]
+}
