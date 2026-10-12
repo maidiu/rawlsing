@@ -1,0 +1,113 @@
+{
+  "schema": "HQ281_A06_SOURCE_TO_CONSUMER_HOSTILES@1.0.0",
+  "execution_grade": "DOCUMENTARY_EXPECTED_REFUSALS_ONLY__NOT_EXECUTED_RUNTIME_HOSTILES",
+  "source_raw_reads": 0,
+  "auto_source_grants": 0,
+  "tests": [
+    {
+      "id": "H01",
+      "attack": "Reassign Q86A or Q86B to a different source release/country (including Ghana)",
+      "expected": "REFUSE_SOURCE_SCOPE_MISMATCH",
+      "evidence": "HQ221 GT2 eleven-country coexposure and A02 Ghana exclusion",
+      "observed_runtime": "NOT_EXECUTED_BY_A06"
+    },
+    {
+      "id": "H02",
+      "attack": "Use two physical rows or household adult reselection as same interview subject",
+      "expected": "REFUSE_RESPONDENT_IDENTITY",
+      "evidence": "A02 original same adult and LiTS Section3 exception",
+      "observed_runtime": "NOT_EXECUTED_BY_A06"
+    },
+    {
+      "id": "H03",
+      "attack": "Substitute LiTS two marginal risks 24897/28325 for joint denominator 24630",
+      "expected": "REFUSE_WRONG_RISK",
+      "evidence": "A02 retained P1",
+      "observed_runtime": "NOT_EXECUTED_BY_A06"
+    },
+    {
+      "id": "H04",
+      "attack": "Append LiTS q310 as a third same-person conditioner",
+      "expected": "HOLD_EXACT_MIXED_RESPONDENT_REFINEMENT",
+      "evidence": "A02 / HQ271",
+      "observed_runtime": "NOT_EXECUTED_BY_A06"
+    },
+    {
+      "id": "H05",
+      "attack": "Treat Q86A/B citizenship opinions as Ghana citizenship statute or causal law",
+      "expected": "REFUSE_CONTEXT_TO_INSTITUTION_CAUSALITY",
+      "evidence": "D01 / HQ225",
+      "observed_runtime": "NOT_EXECUTED_BY_A06"
+    },
+    {
+      "id": "H06",
+      "attack": "Publish GT2 B1 or V555 endpoint despite SIG004 F1-only and OBL005 NA",
+      "expected": "REFUSE_CLAIM_SPECIFIC_POSITION_APPLICABILITY",
+      "evidence": "HQ225 current semantic ruling",
+      "observed_runtime": "NOT_EXECUTED_BY_A06"
+    },
+    {
+      "id": "H07",
+      "attack": "Erase 23 observed zero cells or coerce DK/NOT_ASKED/REFUSED/MISSING to 0",
+      "expected": "REFUSE_CATEGORY_COLLAPSE",
+      "evidence": "HQ221 6x6 native geometry",
+      "observed_runtime": "NOT_EXECUTED_BY_A06"
+    },
+    {
+      "id": "H08",
+      "attack": "Turn RAW unweighted empirical sample into weighted national estimate",
+      "expected": "HOLD_SOURCE_DESIGN_ESTIMAND",
+      "evidence": "A02 original weights/design court",
+      "observed_runtime": "NOT_EXECUTED_BY_A06"
+    },
+    {
+      "id": "H09",
+      "attack": "Treat 18 WVS Q291 MASTER children as 18 physically retained source slots",
+      "expected": "HOLD_FIELD_RETAINED_ROUTING",
+      "evidence": "A02 and R01 WVS7 caveat",
+      "observed_runtime": "NOT_EXECUTED_BY_A06"
+    },
+    {
+      "id": "H10",
+      "attack": "Build post-run expected E from produced jobs, then sign a consistent pair",
+      "expected": "HOLD_EXTERNAL_PREEXEC_CUSTODY",
+      "evidence": "A04TU H-M13 shows self-consistency is forgeable",
+      "observed_runtime": "NOT_EXECUTED_BY_A06"
+    },
+    {
+      "id": "H11",
+      "attack": "Convert B01E durable source-free checkpoint success into operative REAL_EXECUTION",
+      "expected": "REFUSE_UNISSUED_EXECUTION_IDEMPOTENCE",
+      "evidence": "B01E issuer and kill-window hold",
+      "observed_runtime": "NOT_EXECUTED_BY_A06"
+    },
+    {
+      "id": "H12",
+      "attack": "Claim that V558 inherited source-free consumer implies new B02 batch consumer receipt",
+      "expected": "REFUSE_FALSE_NEW_PRODUCT",
+      "evidence": "HQ221 versus A04TU/B01E",
+      "observed_runtime": "NOT_EXECUTED_BY_A06"
+    },
+    {
+      "id": "H13",
+      "attack": "Read 63 temporal candidate pairs as 63 measured comparable trends",
+      "expected": "HOLD_EE12_ORIGINAL_DESIGN",
+      "evidence": "R01/D03 retained candidate graph",
+      "observed_runtime": "NOT_EXECUTED_BY_A06"
+    },
+    {
+      "id": "H14",
+      "attack": "Mark HELD/DENIED as SOURCE_NONAPPLICABLE or VALID_EMPTY",
+      "expected": "REFUSE_STATUS_LAUNDERING",
+      "evidence": "A04TU no-drop and R01",
+      "observed_runtime": "NOT_EXECUTED_BY_A06"
+    },
+    {
+      "id": "H15",
+      "attack": "Treat 18276 historical implementations as complete original administered item count",
+      "expected": "HOLD_ORIGINAL_INSTRUMENT_ATTESTATION",
+      "evidence": "A01 implementation vs original item distinction",
+      "observed_runtime": "NOT_EXECUTED_BY_A06"
+    }
+  ]
+}
