@@ -22,7 +22,7 @@ Then read and activate:
 
 `SOROK_PRODUCT_CONTROL_ROOM/00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md`
 
-for mandatory calibration of consequential feasibility/readiness/programmability/confidence claims. It requires explicit claim-rung, scope, composition-risk and falsifier discipline; forbids unmeasured readiness percentages; and makes overclaimed assessments invalid pending calibrated reissue.
+for mandatory absolute non-gassing / white-whale protection in consequential feasibility/readiness/programmability/confidence claims. It requires explicit claim-rung, scope, composition-risk, critical-path dependency and falsifier/kill-test discipline; forbids unmeasured readiness percentages; assigns zero positive evidentiary weight to sunk cost/project-preservation pressure; and makes overclaimed assessments invalid pending calibrated reissue.
 
 The three gates together contain:
 - general Rawlsing/PRE-MAIN cognition;
