@@ -1,0 +1,36 @@
+{
+  "candidate_suite": {
+    "command": "python3 -m pytest rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py -q",
+    "log": "repro/logs/01_b01d_pytest_verbose.log",
+    "result": "48 passed"
+  },
+  "full_repository_suite": "NOT_RUN__out_of_scope_per_commission__no_claim_made",
+  "new_b01d_tests": [
+    "test_idempotence_issuer_hold_is_explicit_and_closed",
+    "test_empty_string_idempotence_proof_is_refused_b01d",
+    "test_key_only_and_arbitrary_junk_proofs_are_refused_b01d",
+    "test_forged_dict_and_cross_unit_proofs_are_refused_b01d",
+    "test_mismatched_release_proof_is_refused_b01d",
+    "test_rerun_safe_is_currently_unreachable_b01d",
+    "test_disregarded_proofs_are_auditable_evidence_b01d",
+    "test_real_crash_after_side_effect_before_commit_holds_counter_at_1_b01d",
+    "test_unsafe_rerun_would_duplicate_the_side_effect_b01d",
+    "test_repaired_recovery_never_auto_reruns_a_held_unit_b01d",
+    "test_altered_attempt_replay_is_refused_at_commit_b01d",
+    "test_stale_release_checkpoint_cannot_promote_a_live_unit_b01d",
+    "test_crash_after_commit_recovers_as_committed_b01d"
+  ],
+  "schema": "HQ280_PV3_B01D_TARGETED_PYTEST_RECEIPTS@1.0.0",
+  "scope": "SOURCE_FREE_DEVELOPMENT_ONLY",
+  "versioned_unsafe_test": {
+    "identical_input": "{unit_key: 'proof-sha'}",
+    "new_assertion": "UNKNOWN_OUTCOME / HELD / proof recorded as disregarded / no RERUN_SAFE anywhere",
+    "old_assertion": "RERUN_SAFE / recovery_safe True",
+    "replacement": "test_unknown_outcome_stays_held_despite_caller_idempotence_proof_b01d",
+    "retired": "test_unknown_outcome_becomes_rerunnable_only_with_an_idempotence_proof"
+  },
+  "widest_targeted": {
+    "command": "python3 -m pytest <candidate> <batch_runner> <route_b> <discovery_adaptive> <discovery_exact> <execution_protocol> -q",
+    "result": "115 passed in 4.79s"
+  }
+}

@@ -28,8 +28,16 @@ Write-ahead intent ALONE does NOT prove exactly-once external execution.  If a
 process dies between an owner side effect and the durable COMMITTED record, the
 true outcome is UNKNOWN.  This candidate therefore classifies that case as
 ``RecoveryDisposition.UNKNOWN_OUTCOME`` and **holds the unit** rather than
-silently rerunning it.  Rerun is only proposed when the caller supplies a
-declared idempotence proof.  See ``plan_recovery``.
+silently rerunning it.
+
+B01D fail-closed repair: a caller-supplied ``idempotence_proof`` mapping can
+NEVER promote an unknown outcome, no matter what keys or values it carries —
+not even a non-empty string.  Caller assertion is not proof.  ``RERUN_SAFE``
+is currently UNREACHABLE: no accepted owner issues a verifiable idempotence
+credential, so the automatic upgrade path is DISABLED and every
+START-without-COMMIT unit stays HELD.  Presented caller proofs are recorded
+as disregarded evidence, never honored.  See ``plan_recovery`` and
+``IDEMPOTENCE_ISSUER_HOLD``.
 
 Scope ceiling
 -------------
@@ -50,6 +58,7 @@ import tempfile
 from dataclasses import dataclass, field
 from enum import Enum
 from pathlib import Path
+from types import MappingProxyType
 from typing import Any, Iterable, Mapping, Sequence
 
 from rawlsing_next.pre553_batch_runner import (
@@ -88,14 +97,47 @@ class CheckpointForeignError(DurableCheckpointError):
 class RecoveryDisposition(str, Enum):
     """What recovery may lawfully do with one unit.
 
-    ``RERUN_SAFE`` is reachable ONLY with a declared idempotence proof.
-    ``UNKNOWN_OUTCOME`` is a HOLD: the side effect may or may not have landed.
+    ``RERUN_SAFE`` is currently UNREACHABLE (see ``IDEMPOTENCE_ISSUER_HOLD``):
+    no accepted owner issues a verifiable idempotence credential, so no
+    START-without-COMMIT unit may be proposed for rerun.  ``UNKNOWN_OUTCOME``
+    is a HOLD: the side effect may or may not have landed.
     """
 
     ALREADY_COMMITTED = "ALREADY_COMMITTED"
     RERUN_SAFE = "RERUN_SAFE"
     UNKNOWN_OUTCOME = "UNKNOWN_OUTCOME"
     NEVER_STARTED = "NEVER_STARTED"
+
+
+#: Explicit issuance hold: no accepted, competent existing owner supplies a
+#: verifiable, exact unit/release/manifest/side-effect/idempotence attestation
+#: (exact ref + issuer + verified signature/schema).  Until such a credential
+#: exists and verifies, the UNKNOWN_OUTCOME -> RERUN_SAFE upgrade path is
+#: DISABLED and every unknown outcome stays HELD.  A caller-supplied mapping,
+#: string or object is never a substitute.
+IDEMPOTENCE_ISSUER_HOLD = MappingProxyType({
+    "hold_id": "IDEMPOTENCE_ISSUER_HOLD",
+    "state": "HELD__NO_VERIFIED_IDEMPOTENCE_ISSUER",
+    "automatic_rerun_upgrade": "DISABLED",
+    "caller_proofs_honored": False,
+    "required_future_credential": {
+        "exact_unit_key": "the precise unit_ref.key the claim covers",
+        "exact_release_refs": "the C11LogicalRelease refs the claim covers",
+        "exact_manifest_hash": "the BatchManifest the claim covers",
+        "executor_identity": "the exact executor whose side effect is claimed idempotent",
+        "side_effect_classification": "a verifiable statement of what the side effect is",
+        "issuer": "an already-accepted, demonstrably competent existing owner",
+        "verification": "signature/schema check against that owner's accepted contract",
+    },
+    "forbidden_substitutes": [
+        "caller mapping key presence",
+        "caller string value (including non-empty strings)",
+        "caller dict/object shape",
+        "content hash alone",
+        "claimed issuer name alone",
+        "dataclass type alone",
+    ],
+})
 
 
 @dataclass(frozen=True)
@@ -606,6 +648,7 @@ class RecoveryPlan:
     committed_units: tuple[str, ...]
     receipt_units: tuple[str, ...]
     rehydration_errors: Mapping[str, str] = field(default_factory=dict)
+    disregarded_caller_proofs: Mapping[str, str] = field(default_factory=dict)
 
     @property
     def recovery_safe(self) -> bool:
@@ -621,6 +664,8 @@ class RecoveryPlan:
                 k: v.value for k, v in sorted(self.dispositions.items())
             },
             "rehydration_errors": dict(self.rehydration_errors),
+            "disregarded_caller_proofs": dict(self.disregarded_caller_proofs),
+            "idempotence_issuer_hold": dict(IDEMPOTENCE_ISSUER_HOLD),
         }
 
 
@@ -633,10 +678,24 @@ def plan_recovery(
 
     A unit whose durable record is a START intent with no matching COMMITTED
     receipt may have had its owner side effect land and then lost the receipt.
-    That outcome is UNKNOWN.  It is proposed for rerun ONLY when the caller
-    supplies an explicit idempotence proof for that exact unit key.
+    That outcome is UNKNOWN and stays HELD.
+
+    B01D fail-closed repair: the ``idempotence_proof`` argument is retained
+    ONLY for backward call-compatibility and is NEVER honored.  The presence
+    of any caller-provided mapping, key, string or object — empty or not,
+    well-formed or not — cannot promote an unknown outcome.  Presented proofs
+    are recorded under ``disregarded_caller_proofs`` as auditable evidence
+    that a promotion was attempted and refused.  ``RERUN_SAFE`` is currently
+    unreachable; see ``IDEMPOTENCE_ISSUER_HOLD``.
     """
-    proofs = dict(idempotence_proof or {})
+    presented = dict(idempotence_proof or {})
+    disregarded: dict[str, str] = {}
+    for key, value in presented.items():
+        disregarded[str(key)] = (
+            f"disregarded: caller-asserted proof is never honored "
+            f"(presented value type={type(value).__name__}); "
+            f"see IDEMPOTENCE_ISSUER_HOLD"
+        )
     dispositions: dict[str, RecoveryDisposition] = {}
     errors: dict[str, str] = {}
     held: list[str] = []
@@ -660,12 +719,9 @@ def plan_recovery(
             committed.append(unit_key)
             continue
         # START intent without a durable COMMIT: side effect may have landed.
-        if unit_key in proofs:
-            dispositions[unit_key] = RecoveryDisposition.RERUN_SAFE
-            rerunnable.append(unit_key)
-        else:
-            dispositions[unit_key] = RecoveryDisposition.UNKNOWN_OUTCOME
-            held.append(unit_key)
+        # Fail closed: caller proofs are recorded above and never honored.
+        dispositions[unit_key] = RecoveryDisposition.UNKNOWN_OUTCOME
+        held.append(unit_key)
 
     receipts = ()
     try:
@@ -680,6 +736,7 @@ def plan_recovery(
         committed_units=tuple(sorted(committed)),
         receipt_units=tuple(r.unit_ref.key for r in receipts),
         rehydration_errors=errors,
+        disregarded_caller_proofs=disregarded,
     )
 
 
@@ -699,6 +756,7 @@ def checkpoint_effect_flags() -> dict[str, bool]:
         "actor_v3_effect": False,
         "invented_scientific_issuer": False,
         "claims_exactly_once_external_execution": False,
+        "honors_caller_idempotence_proof": False,
     }
 
 
@@ -713,6 +771,7 @@ __all__ = [
     "CheckpointTornError",
     "CheckpointForeignError",
     "RecoveryDisposition",
+    "IDEMPOTENCE_ISSUER_HOLD",
     "CheckpointIdentity",
     "UnitRecord",
     "DurableCheckpoint",

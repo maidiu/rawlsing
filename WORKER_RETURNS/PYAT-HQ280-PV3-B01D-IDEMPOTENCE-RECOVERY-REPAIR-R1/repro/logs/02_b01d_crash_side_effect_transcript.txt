@@ -1,0 +1,39 @@
+==============================================================================
+B01D FAIL-CLOSED REPAIR EVIDENCE (defect: caller-forged idempotence)
+==============================================================================
+
+[1] caller-proof attack table (all must stay UNKNOWN_OUTCOME/HELD)
+    no_proof               -> UNKNOWN_OUTCOME held=True disregarded=0
+    empty_string           -> UNKNOWN_OUTCOME held=True disregarded=1
+    junk_string            -> UNKNOWN_OUTCOME held=True disregarded=1
+    nonempty_sha           -> UNKNOWN_OUTCOME held=True disregarded=1
+    forged_dict            -> UNKNOWN_OUTCOME held=True disregarded=1
+    non_string_value       -> UNKNOWN_OUTCOME held=True disregarded=1
+    cross_unit_key         -> UNKNOWN_OUTCOME held=True disregarded=1
+    stale_release_claim    -> UNKNOWN_OUTCOME held=True disregarded=1
+    -> every caller proof refused; RERUN_SAFE unreachable  [REPAIRED]
+
+[2] source audit of plan_recovery
+    'if unit_key in proofs' present: False
+    'RERUN_SAFE' assigned anywhere: False
+    honors_caller_idempotence_proof flag: False
+
+[3] root=/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/b01d-side-effect-2mj7mkdr
+    worker returncode=-9 (REAL SIGKILL) in 95.08 ms
+    durable side-effect counter after kill: 1
+    disposition: ['UNKNOWN_OUTCOME'] held=1 rerunnable=[]
+    -> effect landed once, outcome UNKNOWN, unit HELD  [CORRECT]
+
+[4] unsafe_rerun_demo (what the old rule permitted): counter 1 -> 2
+    repaired plan still says: ['UNKNOWN_OUTCOME']
+    -> duplication is REAL under the old rule; repaired rule holds  [CORRECT]
+
+[5] B01CR W1-W6 regression
+    W1 SIGKILL mid-write: rc=-9 torn_visible=False tmp=[] -> PASS
+    W2 torn: refused:CheckpointTornError -> PASS
+    W3 tamper differs=True -> PASS
+    W4 dir fsync present -> PASS
+    W5 lock: refused:CheckpointLockError / reacquired_after_holder_crash -> PASS
+    W6 forged proof -> UNKNOWN_OUTCOME rerunnable=[] -> PASS__DEFECT_CLOSED
+
+[6] resources: {"self_peak_rss_mib": 15.906, "self_user_cpu_s": 0.093, "self_sys_cpu_s": 0.084}

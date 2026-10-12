@@ -1,0 +1,146 @@
+{
+  "attack_variants": {
+    "cross_unit_key": {
+      "disposition": "UNKNOWN_OUTCOME",
+      "disregarded": 1,
+      "held": true,
+      "rerunnable": []
+    },
+    "empty_string": {
+      "disposition": "UNKNOWN_OUTCOME",
+      "disregarded": 1,
+      "held": true,
+      "rerunnable": []
+    },
+    "forged_dict": {
+      "disposition": "UNKNOWN_OUTCOME",
+      "disregarded": 1,
+      "held": true,
+      "rerunnable": []
+    },
+    "junk_string": {
+      "disposition": "UNKNOWN_OUTCOME",
+      "disregarded": 1,
+      "held": true,
+      "rerunnable": []
+    },
+    "no_proof": {
+      "disposition": "UNKNOWN_OUTCOME",
+      "disregarded": 0,
+      "held": true,
+      "rerunnable": []
+    },
+    "non_string_value": {
+      "disposition": "UNKNOWN_OUTCOME",
+      "disregarded": 1,
+      "held": true,
+      "rerunnable": []
+    },
+    "nonempty_sha": {
+      "disposition": "UNKNOWN_OUTCOME",
+      "disregarded": 1,
+      "held": true,
+      "rerunnable": []
+    },
+    "stale_release_claim": {
+      "disposition": "UNKNOWN_OUTCOME",
+      "disregarded": 1,
+      "held": true,
+      "rerunnable": []
+    }
+  },
+  "authorizing": false,
+  "b01cr_regression": {
+    "W1_sigkill_mid_atomic_write": {
+      "final_parseable_or_absent": true,
+      "leftover_tmp": [],
+      "returncode": -9,
+      "verdict": "PASS"
+    },
+    "W2_torn_refused": {
+      "observed": "refused:CheckpointTornError",
+      "verdict": "PASS"
+    },
+    "W3_tamper_detectable": {
+      "differs": true,
+      "verdict": "PASS"
+    },
+    "W4_dir_fsync": {
+      "fsync_dir": true,
+      "fsync_file": true,
+      "verdict": "PASS"
+    },
+    "W5_lock": {
+      "after_crash": "reacquired_after_holder_crash",
+      "verdict": "PASS",
+      "while_held": "refused:CheckpointLockError"
+    },
+    "W6_forged_proof_now_held": {
+      "disposition": "UNKNOWN_OUTCOME",
+      "disregarded": 1,
+      "rerunnable": [],
+      "verdict": "PASS__DEFECT_CLOSED"
+    }
+  },
+  "caller_proof_attack_table": {
+    "empty_string_promoted": true,
+    "id": "B01CR-W6",
+    "proof_value_validated": false,
+    "reproduced_live": true,
+    "rule_before": "if unit_key in proofs: RERUN_SAFE"
+  },
+  "crash_window": {
+    "checkpoint_record": "1 x START_INTENT_WRITTEN, no COMMIT",
+    "counter_after_recovery_pass": 1,
+    "durable_counter_after_kill": 1,
+    "held": true,
+    "id": "CW1-kill-after-side-effect-before-commit",
+    "interpretation": "Effect landed once; outcome unknown; unit HELD; recovery performs no side effect.",
+    "observed_returncode": -9,
+    "repaired_disposition": "UNKNOWN_OUTCOME",
+    "rerunnable": [],
+    "sequence": [
+      "durable START intent (fsync)",
+      "durable side effect: counter 0->1 (fsync)",
+      "stdout SIDE_EFFECT_DURABLE",
+      "os.kill(SIGKILL) self",
+      "parent observes -9/137"
+    ]
+  },
+  "duplicate_execution_demonstration": {
+    "counter_after": 2,
+    "counter_before": 1,
+    "duplicate_proven": true,
+    "method": "unsafe_rerun_demo re-executes the side effect as the old rule permitted",
+    "repaired_plan_afterward": "UNKNOWN_OUTCOME/HELD"
+  },
+  "environment": {
+    "machine": "x86_64",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit",
+    "python_executable": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/.pv3-venv/bin/python3",
+    "python_version": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "raw_source_read": false,
+    "sav_dta_present": false
+  },
+  "note": "Every entry EXECUTED against real tmpdirs, real files, real OS signals. Nothing anticipated.",
+  "protocol_relaxed": false,
+  "real_signal_used": "SIGKILL (uncatchable; no cleanup handler runs)",
+  "reproduce": "PYTHONPATH=. python3 repro/b01d_evidence_recorder.py",
+  "resource_measurement": {
+    "self_peak_rss_mib": 15.906,
+    "self_sys_cpu_s": 0.084,
+    "self_user_cpu_s": 0.093
+  },
+  "schema": "PYAT_HQ280_B01D_ACTUAL_CRASH_SIDE_EFFECT_HOSTILES@1.0.0",
+  "scope": "SOURCE_FREE_DEVELOPMENT_ONLY",
+  "summary": {
+    "attack_variants_all_held": true,
+    "b01cr_w1_w5_still_pass": true,
+    "b01cr_w6_defect_closed": true,
+    "duplicate_proven_under_old_rule": true,
+    "exactly_once_claimed": false,
+    "unknown_outcome_policy": "HELD_NOT_RERUN"
+  },
+  "total_wall_s": 1.091,
+  "transcript": "repro/logs/02_b01d_crash_side_effect_transcript.txt"
+}

@@ -1,0 +1,171 @@
+{
+  "authorizing": false,
+  "b01cr_regression": {
+    "W1_sigkill_mid_atomic_write": {
+      "final_parseable_or_absent": true,
+      "leftover_tmp": [],
+      "returncode": -9,
+      "verdict": "PASS"
+    },
+    "W2_torn_refused": {
+      "observed": "refused:CheckpointTornError",
+      "verdict": "PASS"
+    },
+    "W3_tamper_detectable": {
+      "differs": true,
+      "verdict": "PASS"
+    },
+    "W4_dir_fsync": {
+      "fsync_dir": true,
+      "fsync_file": true,
+      "verdict": "PASS"
+    },
+    "W5_lock": {
+      "after_crash": "reacquired_after_holder_crash",
+      "verdict": "PASS",
+      "while_held": "refused:CheckpointLockError"
+    },
+    "W6_forged_proof_now_held": {
+      "disposition": "UNKNOWN_OUTCOME",
+      "disregarded": 1,
+      "rerunnable": [],
+      "verdict": "PASS__DEFECT_CLOSED"
+    }
+  },
+  "caller_proof_attack_table": {
+    "cross_unit_key": {
+      "disposition": "UNKNOWN_OUTCOME",
+      "disregarded": 1,
+      "held": true,
+      "rerunnable": []
+    },
+    "empty_string": {
+      "disposition": "UNKNOWN_OUTCOME",
+      "disregarded": 1,
+      "held": true,
+      "rerunnable": []
+    },
+    "forged_dict": {
+      "disposition": "UNKNOWN_OUTCOME",
+      "disregarded": 1,
+      "held": true,
+      "rerunnable": []
+    },
+    "junk_string": {
+      "disposition": "UNKNOWN_OUTCOME",
+      "disregarded": 1,
+      "held": true,
+      "rerunnable": []
+    },
+    "no_proof": {
+      "disposition": "UNKNOWN_OUTCOME",
+      "disregarded": 0,
+      "held": true,
+      "rerunnable": []
+    },
+    "non_string_value": {
+      "disposition": "UNKNOWN_OUTCOME",
+      "disregarded": 1,
+      "held": true,
+      "rerunnable": []
+    },
+    "nonempty_sha": {
+      "disposition": "UNKNOWN_OUTCOME",
+      "disregarded": 1,
+      "held": true,
+      "rerunnable": []
+    },
+    "stale_release_claim": {
+      "disposition": "UNKNOWN_OUTCOME",
+      "disregarded": 1,
+      "held": true,
+      "rerunnable": []
+    }
+  },
+  "canonical_mutated": false,
+  "defect": {
+    "empty_string_promoted": true,
+    "id": "B01CR-W6",
+    "proof_value_validated": false,
+    "reproduced_live": true,
+    "rule_before": "if unit_key in proofs: RERUN_SAFE"
+  },
+  "duplicate_execution_demonstration": {
+    "counter_after": 2,
+    "counter_before": 1,
+    "duplicate_proven": true,
+    "method": "unsafe_rerun_demo re-executes the side effect as the old rule permitted",
+    "repaired_plan_afterward": "UNKNOWN_OUTCOME/HELD"
+  },
+  "environment": {
+    "machine": "x86_64",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit",
+    "python_executable": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/.pv3-venv/bin/python3",
+    "python_version": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "raw_source_read": false,
+    "sav_dta_present": false
+  },
+  "protocol_relaxed": false,
+  "real_crash_after_side_effect": {
+    "counter_after_kill": 1,
+    "disposition": "UNKNOWN_OUTCOME",
+    "held": true,
+    "rerunnable": [],
+    "signal": "SIGKILL"
+  },
+  "repair": {
+    "effect_flags": {
+      "actor_v3_effect": false,
+      "claims_exactly_once_external_execution": false,
+      "granted_real_execution_approval": false,
+      "honors_caller_idempotence_proof": false,
+      "invented_scientific_issuer": false,
+      "learned_product_publication_effect": false,
+      "relaxed_execution_protocol": false,
+      "semantic_truth_effect": false
+    },
+    "hold": {
+      "automatic_rerun_upgrade": "DISABLED",
+      "caller_proofs_honored": false,
+      "forbidden_substitutes": [
+        "caller mapping key presence",
+        "caller string value (including non-empty strings)",
+        "caller dict/object shape",
+        "content hash alone",
+        "claimed issuer name alone",
+        "dataclass type alone"
+      ],
+      "hold_id": "IDEMPOTENCE_ISSUER_HOLD",
+      "required_future_credential": {
+        "exact_manifest_hash": "the BatchManifest the claim covers",
+        "exact_release_refs": "the C11LogicalRelease refs the claim covers",
+        "exact_unit_key": "the precise unit_ref.key the claim covers",
+        "executor_identity": "the exact executor whose side effect is claimed idempotent",
+        "issuer": "an already-accepted, demonstrably competent existing owner",
+        "side_effect_classification": "a verifiable statement of what the side effect is",
+        "verification": "signature/schema check against that owner's accepted contract"
+      },
+      "state": "HELD__NO_VERIFIED_IDEMPOTENCE_ISSUER"
+    },
+    "rerun_safe_reachable": false,
+    "rule_after": "caller proofs recorded as disregarded; START-without-COMMIT always UNKNOWN_OUTCOME/HELD"
+  },
+  "resource_measurement": {
+    "self_peak_rss_mib": 15.906,
+    "self_sys_cpu_s": 0.084,
+    "self_user_cpu_s": 0.093
+  },
+  "schema": "PYAT_HQ280_B01D_REPAIR_EVIDENCE@1.0.0",
+  "scope": "SOURCE_FREE_DEVELOPMENT_ONLY",
+  "self_adopted": false,
+  "summary": {
+    "attack_variants_all_held": true,
+    "b01cr_w1_w5_still_pass": true,
+    "b01cr_w6_defect_closed": true,
+    "duplicate_execution_proven_under_old_rule": true,
+    "exactly_once_claimed": false,
+    "unknown_outcome_policy": "HELD_NOT_RERUN"
+  },
+  "terminal": "HQ280_PV3_B01D_CALLER_IDEMPOTENCE_FORGERY_CLOSED_OR_TYPED_HOLD__SOURCEFREE__GITHUB_PUSHED",
+  "total_wall_s": 1.091
+}

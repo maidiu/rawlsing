@@ -473,7 +473,15 @@ def test_write_ahead_intent_alone_never_implies_exactly_once(tmp_path):
     assert plan.dispositions[unit.unit_ref.key] is cp.RecoveryDisposition.UNKNOWN_OUTCOME
 
 
-def test_unknown_outcome_becomes_rerunnable_only_with_an_idempotence_proof():
+def test_unknown_outcome_stays_held_despite_caller_idempotence_proof_b01d():
+    """B01D versioned replacement for the unsafe predecessor test.
+
+    The predecessor asserted that a caller-supplied ``{"key": "proof-sha"}``
+    promotes UNKNOWN_OUTCOME to RERUN_SAFE.  B01CR proved that rule accepts
+    forged idempotence (including the empty string) and risks duplicate
+    external execution.  The fail-closed rule: caller proofs are recorded as
+    disregarded evidence and the unit stays HELD.
+    """
     manifest = _manifest(2)
     identity = _identity(manifest)
     checkpoint = cp.empty_checkpoint(identity)
@@ -487,9 +495,147 @@ def test_unknown_outcome_becomes_rerunnable_only_with_an_idempotence_proof():
     with_proof = cp.plan_recovery(
         checkpoint, idempotence_proof={unit.unit_ref.key: "proof-sha"}
     )
-    assert with_proof.recovery_safe is True
-    assert with_proof.rerunnable_units == (unit.unit_ref.key,)
-    assert with_proof.dispositions[unit.unit_ref.key] is cp.RecoveryDisposition.RERUN_SAFE
+    assert with_proof.recovery_safe is False
+    assert with_proof.rerunnable_units == ()
+    assert with_proof.held_units == (unit.unit_ref.key,)
+    assert with_proof.dispositions[unit.unit_ref.key] is (
+        cp.RecoveryDisposition.UNKNOWN_OUTCOME
+    )
+    assert unit.unit_ref.key in with_proof.disregarded_caller_proofs
+    assert "RERUN_SAFE" not in {
+        d.value for d in with_proof.dispositions.values()
+    }
+
+
+def test_empty_string_idempotence_proof_is_refused_b01d():
+    """The exact B01CR W6 attack: ``{key: ""}`` must NOT promote."""
+    manifest = _manifest(1)
+    checkpoint = cp.empty_checkpoint(_identity(manifest))
+    unit = manifest.units[0]
+    checkpoint = cp.record_intent(
+        checkpoint, unit_ref=unit.unit_ref, attempt_index=1
+    )
+    plan = cp.plan_recovery(checkpoint, idempotence_proof={unit.unit_ref.key: ""})
+    assert plan.dispositions[unit.unit_ref.key] is (
+        cp.RecoveryDisposition.UNKNOWN_OUTCOME
+    )
+    assert plan.recovery_safe is False
+    assert plan.rerunnable_units == ()
+    assert unit.unit_ref.key in plan.disregarded_caller_proofs
+    assert "RERUN_SAFE" not in {d.value for d in plan.dispositions.values()}
+
+
+def test_key_only_and_arbitrary_junk_proofs_are_refused_b01d():
+    """Key presence alone, whatever the value, never upgrades."""
+    manifest = _manifest(1)
+    checkpoint = cp.empty_checkpoint(_identity(manifest))
+    unit = manifest.units[0]
+    checkpoint = cp.record_intent(
+        checkpoint, unit_ref=unit.unit_ref, attempt_index=1
+    )
+    for junk in ("x", "definitely idempotent, trust me", "0" * 64, "null", "false"):
+        plan = cp.plan_recovery(checkpoint, idempotence_proof={unit.unit_ref.key: junk})
+        assert plan.dispositions[unit.unit_ref.key] is (
+            cp.RecoveryDisposition.UNKNOWN_OUTCOME
+        ), junk
+        assert plan.rerunnable_units == ()
+
+
+def test_forged_dict_and_cross_unit_proofs_are_refused_b01d():
+    """Proofs naming the wrong unit, or carrying forged structure, are held."""
+    manifest = _manifest(2)
+    checkpoint = cp.empty_checkpoint(_identity(manifest))
+    first, second = manifest.units[0], manifest.units[1]
+    checkpoint = cp.record_intent(
+        checkpoint, unit_ref=first.unit_ref, attempt_index=1
+    )
+    # proof names only the OTHER unit: first unit must stay HELD
+    plan = cp.plan_recovery(
+        checkpoint, idempotence_proof={second.unit_ref.key: "proof"}
+    )
+    assert plan.dispositions[first.unit_ref.key] is (
+        cp.RecoveryDisposition.UNKNOWN_OUTCOME
+    )
+    assert plan.rerunnable_units == ()
+    assert second.unit_ref.key in plan.disregarded_caller_proofs
+    # non-string values are also just caller assertion
+    plan = cp.plan_recovery(checkpoint, idempotence_proof={first.unit_ref.key: 12345})  # type: ignore[dict-item]
+    assert plan.dispositions[first.unit_ref.key] is (
+        cp.RecoveryDisposition.UNKNOWN_OUTCOME
+    )
+    assert first.unit_ref.key in plan.disregarded_caller_proofs
+
+
+def test_mismatched_release_proof_is_refused_b01d():
+    """A proof cannot smuggle a different release scope into recovery."""
+    other_release = _release("B")
+    other = BatchManifest((
+        BatchUnitSpec(
+            job_kind="QUERY",
+            job_ref=_ref("EmpiricalQuerySpec@1.0.0", "q0"),
+            release_refs=(other_release,),
+            semantic_input_refs=(_ref("EmpiricalPredicate@1.0.0", "p0"),),
+        ),
+    ))
+    manifest = _manifest(1)
+    checkpoint = cp.empty_checkpoint(_identity(manifest))
+    unit = manifest.units[0]
+    checkpoint = cp.record_intent(
+        checkpoint, unit_ref=unit.unit_ref, attempt_index=1
+    )
+    plan = cp.plan_recovery(
+        checkpoint,
+        idempotence_proof={
+            unit.unit_ref.key: "release:" + other_release.key,
+            other.units[0].unit_ref.key: "cross-manifest-proof",
+        },
+    )
+    assert plan.dispositions[unit.unit_ref.key] is (
+        cp.RecoveryDisposition.UNKNOWN_OUTCOME
+    )
+    assert plan.rerunnable_units == ()
+    assert len(plan.disregarded_caller_proofs) == 2
+
+
+def test_rerun_safe_is_currently_unreachable_b01d():
+    """No caller input of any shape can produce RERUN_SAFE."""
+    manifest = _manifest(2)
+    checkpoint = cp.empty_checkpoint(_identity(manifest))
+    for unit in manifest.units:
+        checkpoint = cp.record_intent(
+            checkpoint, unit_ref=unit.unit_ref, attempt_index=1
+        )
+    hostile_proofs = [
+        None,
+        {},
+        {u.unit_ref.key: "" for u in manifest.units},
+        {u.unit_ref.key: "non-empty-proof" for u in manifest.units},
+        {u.unit_ref.key: {"nested": ["object"]} for u in manifest.units},  # type: ignore[dict-item]
+        {"completely-foreign-key": "x"},
+    ]
+    for proofs in hostile_proofs:
+        plan = cp.plan_recovery(checkpoint, idempotence_proof=proofs)  # type: ignore[arg-type]
+        assert "RERUN_SAFE" not in {d.value for d in plan.dispositions.values()}
+        assert plan.rerunnable_units == ()
+        assert set(plan.dispositions.values()) == {cp.RecoveryDisposition.UNKNOWN_OUTCOME}
+
+
+def test_disregarded_proofs_are_auditable_evidence_b01d():
+    """Disregard is recorded, never silent: the attempt itself is evidence."""
+    manifest = _manifest(1)
+    checkpoint = cp.empty_checkpoint(_identity(manifest))
+    unit = manifest.units[0]
+    checkpoint = cp.record_intent(
+        checkpoint, unit_ref=unit.unit_ref, attempt_index=1
+    )
+    plan = cp.plan_recovery(checkpoint, idempotence_proof={unit.unit_ref.key: "x"})
+    assert unit.unit_ref.key in plan.disregarded_caller_proofs
+    assert "IDEMPOTENCE_ISSUER_HOLD" in plan.summary()["disregarded_caller_proofs"][
+        unit.unit_ref.key
+    ] or "disregarded" in plan.disregarded_caller_proofs[unit.unit_ref.key]
+    assert "idempotence_issuer_hold" in plan.summary()
+    clean = cp.plan_recovery(checkpoint)
+    assert clean.disregarded_caller_proofs == {}
 
 
 def test_completed_unit_cannot_be_restarted(tmp_path):
@@ -630,7 +776,24 @@ def test_candidate_declares_no_authority_or_protocol_effect():
         "actor_v3_effect": False,
         "invented_scientific_issuer": False,
         "claims_exactly_once_external_execution": False,
+        "honors_caller_idempotence_proof": False,
     }
+
+
+def test_idempotence_issuer_hold_is_explicit_and_closed():
+    hold = dict(cp.IDEMPOTENCE_ISSUER_HOLD)
+    assert hold["state"] == "HELD__NO_VERIFIED_IDEMPOTENCE_ISSUER"
+    assert hold["automatic_rerun_upgrade"] == "DISABLED"
+    assert hold["caller_proofs_honored"] is False
+    assert "caller mapping key presence" in hold["forbidden_substitutes"]
+    assert "caller string value (including non-empty strings)" in (
+        hold["forbidden_substitutes"]
+    )
+    required = hold["required_future_credential"]
+    for field in ("exact_unit_key", "exact_release_refs", "exact_manifest_hash",
+                  "executor_identity", "issuer", "verification"):
+        assert field in required, field
+    assert "IDEMPOTENCE_ISSUER_HOLD" in cp.__all__
 
 
 def test_write_ahead_protocol_tokens_are_satisfied_by_this_candidate():
@@ -671,3 +834,133 @@ def test_worker_script_exists_and_is_executable_as_a_real_process():
     result = _run_worker(Path(os.environ["TMPDIR"]) / f"b01c-probe-{os.getpid()}", "probe")
     assert result.returncode == 0
     assert json.loads(result.stdout)["exists"] is False
+
+# ==========================================================================
+# B01D: real crash AFTER external side effect BEFORE commit + repair proof
+# ==========================================================================
+B01D_WORKER = (
+    REPO_ROOT / "WORKER_RETURNS"
+    / "PYAT-HQ280-PV3-B01D-IDEMPOTENCE-RECOVERY-REPAIR-R1"
+    / "repro" / "b01d_worker.py"
+)
+
+
+def _run_b01d_worker(root: Path, phase: str, timeout: float = 60.0):
+    return subprocess.run(
+        [sys.executable, str(B01D_WORKER), str(root), phase],
+        capture_output=True, text=True, timeout=timeout,
+        cwd=str(REPO_ROOT),
+    )
+
+
+def _b01d_probe(root: Path) -> dict:
+    result = _run_b01d_worker(root, "probe")
+    assert result.returncode == 0, result.stderr
+    return json.loads(result.stdout)
+
+
+def test_real_crash_after_side_effect_before_commit_holds_counter_at_1_b01d(tmp_path):
+    """The exact B01CR window, executed: START, durable side effect, SIGKILL."""
+    assert B01D_WORKER.is_file()
+    result = _run_b01d_worker(tmp_path, "side_effect_then_die")
+    assert result.returncode in (-signal.SIGKILL, 137)
+    assert "SIDE_EFFECT_DURABLE counter=1" in result.stdout
+
+    # the side effect landed exactly once and survived the crash
+    assert (tmp_path / "side_effect_counter.txt").read_text().strip() == "1"
+
+    probed = _b01d_probe(tmp_path)
+    assert len(probed["records"]) == 1
+    assert probed["records"][0]["state"] == cp.UNIT_STATE_INTENT
+    # repaired rule: HELD even though a proof could be forged
+    assert probed["plan"]["recovery_safe"] is False
+    assert len(probed["plan"]["held_units"]) == 1
+    assert probed["plan"]["rerunnable_units"] == []
+    assert probed["side_effect_counter"] == 1
+
+
+def test_unsafe_rerun_would_duplicate_the_side_effect_b01d(tmp_path):
+    """What the pre-B01D rule permitted: forged proof -> rerun -> counter 2."""
+    assert _run_b01d_worker(tmp_path, "side_effect_then_die").returncode in (
+        -signal.SIGKILL, 137)
+    assert (tmp_path / "side_effect_counter.txt").read_text().strip() == "1"
+
+    demo = _run_b01d_worker(tmp_path, "unsafe_rerun_demo")
+    assert demo.returncode == 0
+    assert json.loads(demo.stdout)["counter"] == 2
+    assert (tmp_path / "side_effect_counter.txt").read_text().strip() == "2"
+
+    # the repaired adapter still refuses to propose the rerun it just watched
+    probed = _b01d_probe(tmp_path)
+    assert probed["plan"]["recovery_safe"] is False
+    assert len(probed["plan"]["held_units"]) == 1
+    assert probed["plan"]["rerunnable_units"] == []
+
+
+def test_repaired_recovery_never_auto_reruns_a_held_unit_b01d(tmp_path):
+    """No adapter path executes a HELD unit on its own."""
+    assert _run_b01d_worker(tmp_path, "side_effect_then_die").returncode in (
+        -signal.SIGKILL, 137)
+    probed = _b01d_probe(tmp_path)
+    assert probed["plan"]["recovery_safe"] is False
+    # the adapter exposes no execute/rerun entrypoint at all
+    assert not hasattr(cp, "execute_unit")
+    assert not hasattr(cp, "rerun_unit")
+    assert not hasattr(cp, "recover_and_execute")
+    # and the counter is untouched by recovery itself
+    assert (tmp_path / "side_effect_counter.txt").read_text().strip() == "1"
+
+
+def test_altered_attempt_replay_is_refused_at_commit_b01d():
+    """A commit carrying a forged attempt index cannot land."""
+    manifest = _manifest(1)
+    checkpoint = cp.empty_checkpoint(_identity(manifest))
+    unit = manifest.units[0]
+    checkpoint = cp.record_intent(checkpoint, unit_ref=unit.unit_ref, attempt_index=1)
+    receipt = _receipt(manifest)
+    with pytest.raises(cp.DurableCheckpointError, match="attempt index"):
+        cp.record_commit(
+            checkpoint, unit_ref=unit.unit_ref, attempt_index=2, receipt=receipt,
+        )
+    # and the unit is still HELD, not silently advanced
+    plan = cp.plan_recovery(checkpoint)
+    assert plan.dispositions[unit.unit_ref.key] is cp.RecoveryDisposition.UNKNOWN_OUTCOME
+
+
+def test_stale_release_checkpoint_cannot_promote_a_live_unit_b01d(tmp_path):
+    """A checkpoint bound to release A says nothing about release B work."""
+    manifest_a = _manifest(1, release_label="A")
+    store = cp.DurableCheckpointStore(tmp_path)
+    checkpoint = cp.empty_checkpoint(_identity(manifest_a))
+    checkpoint = cp.record_intent(
+        checkpoint, unit_ref=manifest_a.units[0].unit_ref, attempt_index=1
+    )
+    store.save(checkpoint)
+    with pytest.raises(cp.CheckpointForeignError):
+        store.load(identity=_identity(_manifest(1, release_label="B")))
+    plan = cp.plan_recovery(checkpoint, idempotence_proof={
+        manifest_a.units[0].unit_ref.key: "release:B-proof"})
+    assert plan.dispositions[manifest_a.units[0].unit_ref.key] is (
+        cp.RecoveryDisposition.UNKNOWN_OUTCOME)
+
+
+def test_crash_after_commit_recovers_as_committed_b01d(tmp_path):
+    """The safe side of the window: COMMIT durable, then crash, then resume."""
+    manifest = _manifest(1)
+    store = cp.DurableCheckpointStore(tmp_path)
+    checkpoint = cp.empty_checkpoint(_identity(manifest))
+    unit = manifest.units[0]
+    checkpoint = cp.record_intent(checkpoint, unit_ref=unit.unit_ref, attempt_index=1)
+    store.save(checkpoint)
+    checkpoint = cp.record_commit(
+        checkpoint, unit_ref=unit.unit_ref, attempt_index=1, receipt=_receipt(manifest))
+    ref_before = store.save(checkpoint)
+    reloaded = store.load(identity=_identity(manifest))
+    assert reloaded.checkpoint_ref == ref_before
+    plan = cp.plan_recovery(reloaded)
+    assert plan.recovery_safe is True
+    assert plan.committed_units == (unit.unit_ref.key,)
+    resumed = BatchExecutionRunner(
+        manifest=manifest, repository=_repository(manifest),
+        prior_receipts=cp.admit_receipts_for_resume(reloaded))
+    assert resumed.pending_units() == ()
