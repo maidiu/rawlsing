@@ -1,3 +1,9 @@
+## P02R plain-language replacement for the earlier P02 review
+
+The user identified P02 (not P01) as the commission encountering platform access/warning difficulties. A new separate branch `agent/reviewer-pyat-hq282-p02r-c02j-independent-interface-verification-r1` at `835f22e6c6010fa35f6bd0b2739cd630736ef920` contains a fully rewritten, straightforward source-free C02J code verification assignment: `WORKER_COMMISSIONS/PYAT-HQ282-P02R-C02J-INDEPENDENT-INTERFACE-VERIFICATION-R1/00_COMMISSION.md`. The former P02 branch `dad074579ee705a720fb3cfe9cacb0193d573ffd` is preserved but **superseded for dispatch**, not an accepted scientific/security return. Never send both. Confirm local P02R sparse worktree and current secondary quota before execution. The rewrite neither weakens tests nor provides permission to bypass platform authentication.
+
+---
+
 ## P01 worktree absence — immediate bootstrap dependency
 
 The secondary P01 worktree is **confirmed absent by the user**, so P01 is `BOOTSTRAP_REQUIRED`, not currently launchable even with remaining Codex quota. [Exact secondary setup handoff](HQ282_P01_SECONDARY_BOOTSTRAP_HANDOFF_R1.md). No clone-per-worker and no primary Astra Codex spend. Existing sealed P01 commission SHA remains unchanged.
