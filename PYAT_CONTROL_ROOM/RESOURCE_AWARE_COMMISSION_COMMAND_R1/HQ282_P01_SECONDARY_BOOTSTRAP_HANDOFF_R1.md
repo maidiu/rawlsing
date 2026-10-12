@@ -4,7 +4,7 @@
 
 User confirmed that the P01 worktree does not exist on the secondary Mac. This is an infrastructure condition, not failure of any empirical or integration test. The existing P01 GitHub branch stays unchanged:
 - Branch: `agent/rabochii-pyat-hq282-p01-v2-durable-consumer-integration-r1`
-- Exact commission/startup: `712b818e6c0fa87412db7f4edaad1397b2e9f090`
+- Exact commission/startup: `fae6300505997347cab1baf61bf01b204d2ff448`
 - Local planned model AFTER bootstrap: SECONDARY Codex GPT-6.1 Sol **Medium**.
 - PRIMARY Codex is protected for full-local-repository Astra; no Codex usage for ordinary Git setup.
 
@@ -12,7 +12,7 @@ User confirmed that the P01 worktree does not exist on the secondary Mac. This i
 
 On **SECONDARY** Mac, an operator or zero-Codex qualified local shell helper may create **one new isolated sparse worktree** for this already-issued P01 branch, using ONLY the existing shared canonical Rawlsing clone/object store ON SECONDARY. First observe actual canonical clone path and already-present worktrees. Do not guess the path from PRIMARY-Mac historical tests. Require explicit new nonexisting worktree target under the authorized secondary worktree root.
 
-Before creating any path: verify secondary existing canonical clone, `origin` points to `maidiu/rawlsing`, exact current remote P01 branch tip matches `712b818e6c0fa87412db7f4edaad1397b2e9f090`, no already registered P01 worktree, no changed/dirty P01 local branch and no write collision. Missing actual canonical clone => `SECONDARY_CANONICAL_STORE_MISSING__SEPARATE_AUTHORIZATION_REQUIRED`; do NOT make a per-worker clone.
+Before creating any path: verify secondary existing canonical clone, `origin` points to `maidiu/rawlsing`, exact current remote P01 branch tip matches `fae6300505997347cab1baf61bf01b204d2ff448`, no already registered P01 worktree, no changed/dirty P01 local branch and no write collision. Missing actual canonical clone => `SECONDARY_CANONICAL_STORE_MISSING__SEPARATE_AUTHORIZATION_REQUIRED`; do NOT make a per-worker clone.
 
 When all checks pass, use standard Git `worktree add --no-checkout` from the existing shared repository to attach P01's exact branch, then `sparse-checkout set --cone` to include `rawlsing_next`, P01 commission, and necessary resource-law paths. Local branch may be attached if already present **at the same exact tip and not checked out elsewhere**, otherwise create the local branch at the exact startup commit. Do not switch any existing checked-out worktree, merge/rebase V2/B01E branches, reset, prune, or recreate.
 
