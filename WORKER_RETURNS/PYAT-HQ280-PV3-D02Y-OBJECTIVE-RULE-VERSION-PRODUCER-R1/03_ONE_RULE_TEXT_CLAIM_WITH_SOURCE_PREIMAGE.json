@@ -1,0 +1,93 @@
+{
+  "schema": "HQ280_D02Y_UNISSUED_RULE_TEXT_DOCUMENTED_SOURCE_PREIMAGE@1.0.0",
+  "candidate_only": true,
+  "does_not_assert_accepted_rawlsing_schema": true,
+  "decision": "HISTORICAL_STATUTORY_RULE_TEXT_POSITIVE__NOT_SOURCE_NATIVE_ISSUED",
+  "candidate_key": "GHA:ACT591:PART_I:SEC7:AS_ENACTED_TEXT:2000-12-29",
+  "source": {
+    "issuing_jurisdiction": "GH",
+    "legislative_body": "Parliament of Ghana",
+    "legal_document": "Citizenship Act, 2000",
+    "act": "591",
+    "part": "I",
+    "section": "7",
+    "version_kind": "AS_ENACTED_DOCUMENTARY_TEXT",
+    "anchor_assent_date": "2000-12-29",
+    "government_reproduction_url": "https://www.brr.gov.gh/acc/registry/docs/Citizenship%20Act%20-%20ACT%20591.pdf",
+    "official_parliament_index": "https://repository.parliament.gh/handle/123456789/1773",
+    "second_government_textual_witness": "https://www.gis.gov.gh/wp-content/uploads/2024/02/Legal-Handbook-2016.pdf",
+    "source_pdf_sha256": null,
+    "original_certified_gazette_bitstream": false
+  },
+  "institutional_rule": {
+    "kind": "PRESCRIPTIVE_LEGAL_TEXT",
+    "permitted_semantics_if_issued": "RULE_TEXT_DOCUMENTED",
+    "not_formal_issuer_output": true,
+    "jurisdiction": "GH_NATIONAL",
+    "subject_class": "PERSONS_BORN_ON_OR_AFTER_1993_01_07_AS_WORDING_IN_ACT591_S7",
+    "birth_place": "IN_OR_OUTSIDE_GHANA_AS_DESCRIBED",
+    "ancestor_types": [
+      "EITHER_PARENT",
+      "ONE_GRANDPARENT"
+    ],
+    "ancestor_status_exact_original_semantics": "WAS_OR_IS_A_CITIZEN_OF_GHANA_WITH_CLAUSE_AT_DATE_OF_BIRTH_CONTEXT",
+    "ancestor_status_simple_at_birth_test": "NOT_REINTERPRETED",
+    "cohort_boundary": "ON_OR_AFTER_1993-01-07",
+    "observed_natural_persons": null,
+    "adjudicated_citizenships": null,
+    "legal_effectiveness_test": false
+  },
+  "constitutional_source": {
+    "document": "Constitution of the Republic of Ghana, 1992",
+    "article": "6(2)",
+    "government_original_scan": "https://www.osp.gov.gh/media/Resources/constitutionofghana.pdf",
+    "constitutional_promulgation_source": "https://osp.gov.gh/media/Resources/Ghana_Constitution.pdf",
+    "constitution_in_force": "1993-01-07",
+    "art6_2_after_commencement_vs_s7_on_commencement_boundary": "UNRESOLVED_TEXTUAL_BOUNDARY_DIFFERENCE__DO_NOT_FUSE"
+  },
+  "times": {
+    "birth_cohort_index": "1993-01-07",
+    "act_assent": "2000-12-29",
+    "gazette_notification_printed": "2001-01-05",
+    "BRR_HTML_conflicting_date_of_gazette": "2000-12-29",
+    "act_commencement": null,
+    "operative_world_asof_2000_12_29": null,
+    "operative_world_asof_2012": null,
+    "operative_world_asof_2026": null
+  },
+  "producer_contract": {
+    "accepted_native_producer_ref": null,
+    "competent_original_source_issuer_ref": null,
+    "legal_version_issuer_ref": null,
+    "source_file_byte_sha256": null,
+    "source_authenticity_grade": "GOVERNMENT_PUBLISHED_REPRODUCTION__NOT_CERTIFIED_BITSTREAM",
+    "candidate_new_contract": "PREV3_ORIGINAL_DOCUMENTARY_LEGAL_RULE_SOURCE@0.1.0-CANDIDATE",
+    "permitted_first_context_use_if_later_issued": "DOCUMENTARY_RULE_TEXT_CONTEXT",
+    "allowed_uses_issued": [],
+    "producer_object_ref": null,
+    "producer_object_hash": null,
+    "publication_bundle_ref": null,
+    "asof_selector_ref": null,
+    "n9_consumer_receipt": null
+  },
+  "negative_scope": {
+    "not_empirical_fact": true,
+    "not_survey_response": true,
+    "not_a_person_citizenship_determination": true,
+    "not_evidence_of_administrative_enforcement": true,
+    "not_observed_service_access": true,
+    "not_material_causal_rule": true,
+    "not_current_consolidated_law": true,
+    "not_actor_v3": true,
+    "not_g0b": true
+  },
+  "holds": [
+    "SOURCE_BITSTREAM_CUSTODY",
+    "ACT_STATUTORY_COMMENCEMENT",
+    "AMENDMENT_AND_CONSOLIDATION_CHAIN_FOR_OPERATIVE_ASOF",
+    "ORIGINAL_DOCUMENT_RULE_ISSUER",
+    "NATIVE_DOCUMENTARY_RULE_PRODUCER",
+    "PUBLICATION_ROOT_OR_CARRIER",
+    "N9_EXPLICIT_DEMAND_AND_SELECTED_ASOF_SERVICE"
+  ]
+}

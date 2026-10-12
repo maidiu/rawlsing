@@ -1,0 +1,205 @@
+{
+  "schema": "HQ280_D02Y_HOSTILE_LEGAL_SOURCE_AND_TEMPORAL_COURT@1.0.0",
+  "case_count": 28,
+  "actual_executed_code_tests": 0,
+  "visual_sources_reviewed": true,
+  "legal_issuer_tested": false,
+  "cases": [
+    {
+      "id": "H01",
+      "hostile": "Wrong act/section (Act 591 §6, §8 or Constitution article 7 substituted)",
+      "expected_disposition": "FAIL",
+      "rationale": "Exact Act 591 Part I section 7 and separately article 6(2) must remain explicit.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H02",
+      "hostile": "Birth 1993 threshold used as 1993 statutory enactment/commencement",
+      "expected_disposition": "FAIL",
+      "rationale": "Birth cohort is not Act enactment; Act assented 2000-12-29.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H03",
+      "hostile": "1993-01-07 boundary changed to strictly after for section 7",
+      "expected_disposition": "FAIL",
+      "rationale": "Section 7 explicitly includes on 7 Jan, Constitution worded after coming into force.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H04",
+      "hostile": "Constitution on/after boundary silently equated exactly with Act",
+      "expected_disposition": "HOLD",
+      "rationale": "Temporal formulations differ. Their precise legal equivalence is not issued.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H05",
+      "hostile": "Parent-only predicate replacing parent or grandparent",
+      "expected_disposition": "FAIL",
+      "rationale": "Grandparent is independently specified in both texts.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H06",
+      "hostile": "Ghanaian birth-place-only or all Ghana-born deemed citizens",
+      "expected_disposition": "FAIL",
+      "rationale": "Section 7 text refers inside/outside and ancestor predicate; not pure jus soli.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H07",
+      "hostile": "Anyone resident in Ghana treated in birth cohort",
+      "expected_disposition": "FAIL",
+      "rationale": "Law applies to a conditional legal class, not residence universe.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H08",
+      "hostile": "A parent/grandparent necessarily citizen exactly at birth simplified from 'was or is'",
+      "expected_disposition": "FAIL",
+      "rationale": "Keep text qualification and original grammar; no silent juridical interpretation.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H09",
+      "hostile": "Assent 2000-12-29 treated as Gazette notification",
+      "expected_disposition": "FAIL",
+      "rationale": "Published PDF says Gazette notification 2001-01-05; BRR HTML conflict unresolved.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H10",
+      "hostile": "GhaLII 'Commenced 2001-01-05' treated as independently authenticated commencement instrument",
+      "expected_disposition": "FAIL",
+      "rationale": "It is an index datum, not an original law instrument independently certified.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H11",
+      "hostile": "Government BRR DataCenta typeset PDF declared certified original signed Gazette",
+      "expected_disposition": "FAIL",
+      "rationale": "Government-hosted reproduction differs from authenticated Gazette original.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H12",
+      "hostile": "Parliament PDF search snippet declared downloaded and hashable",
+      "expected_disposition": "FAIL",
+      "rationale": "PDF direct open 403; only repository catalog verified.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H13",
+      "hostile": "Fabricated or inferred primary PDF SHA-256",
+      "expected_disposition": "FAIL",
+      "rationale": "No bytes retrieved through hash-capable network; source sha256 remains null.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H14",
+      "hostile": "2016 Immigration Handbook called certified 2016 consolidated Act or unamended-through-2016 proof",
+      "expected_disposition": "FAIL",
+      "rationale": "Government handbook reproduces text; no exhaustive amendment warrant.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H15",
+      "hostile": "2012 or 2026 selected current legal version inferred from 2000 copy",
+      "expected_disposition": "FAIL",
+      "rationale": "Needs full amendment/version/commencement chain at exact query time.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H16",
+      "hostile": "Afro R5 Q86A respondent opinion cast into independent Ghana citizenship statute",
+      "expected_disposition": "FAIL",
+      "rationale": "Different legal prescriptive and attitudinal empirical objects; no shared identity.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H17",
+      "hostile": "Raw statutory text cast into PRE553 EmpiricalFact for P06 admission",
+      "expected_disposition": "FAIL",
+      "rationale": "P06 requires authenticated empirical query/fact, not documentary legal norm.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H18",
+      "hostile": "M1 positive Field Forge relation fabricated for stand-alone law",
+      "expected_disposition": "FAIL",
+      "rationale": "Requires separate positive relation-specific admission; not justified for text-only.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H19",
+      "hostile": "Caller-authored PolicyInput with invented issuer labels called official source fact",
+      "expected_disposition": "FAIL",
+      "rationale": "D02 verified two positive forgery gaps in policy seam; not source authenticator.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H20",
+      "hostile": "M4 StructuralObject self-label with V554 used as legal law original source producer",
+      "expected_disposition": "FAIL",
+      "rationale": "V557 V553–V556 whitelist does not confer producer legitimacy by relabeling.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H21",
+      "hostile": "J04 Q73A source-domain CONTEXT authority reused for a law PDF",
+      "expected_disposition": "FAIL",
+      "rationale": "Exact source and item whitelist prohibits substitution.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H22",
+      "hostile": "Statute yields a specific person's citizenship/adjudication",
+      "expected_disposition": "FAIL",
+      "rationale": "No legal case-specific ancestor facts, decision, registry or person ID.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H23",
+      "hostile": "Act text interpreted as proof of enforcement, office capacity, issuance or realized service access",
+      "expected_disposition": "FAIL",
+      "rationale": "No administrative observations; law norm is not implementation.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H24",
+      "hostile": "Rule text projected into P1-P5 causal response or M4/N9 CURRENT",
+      "expected_disposition": "FAIL",
+      "rationale": "No causal model, selected version, current service or authority.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H25",
+      "hostile": "Absence of source-native producer means objective rule-text evidence is intrinsically unavailable",
+      "expected_disposition": "FAIL",
+      "rationale": "Documentary positive exists. Unknown software producer/issuer not source intrinsic NA.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H26",
+      "hostile": "Constitution 1996-amended editorial copy equated with 2026 authoritative legal consolidation",
+      "expected_disposition": "FAIL",
+      "rationale": "Official-hosted copy contains editor annotations; no full version chain.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H27",
+      "hostile": "A second Parliament catalog copy treated as independent signed Gazette authentication",
+      "expected_disposition": "FAIL",
+      "rationale": "Two catalog records do not authenticate distinct original signed bitstreams.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    },
+    {
+      "id": "H28",
+      "hostile": "V557 CONTEXT query presented as full N9 world selected current",
+      "expected_disposition": "FAIL",
+      "rationale": "M4 bounded context is not general terminal world service.",
+      "execution_grade": "DOCUMENTARY_OR_STATIC_CODE_ARGUMENT_ONLY__NOT_EXECUTED_TEST"
+    }
+  ]
+}
