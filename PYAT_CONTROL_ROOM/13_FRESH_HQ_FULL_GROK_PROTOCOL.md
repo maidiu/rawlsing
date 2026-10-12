@@ -1,3 +1,9 @@
+## USER CORRECTION / FRESH HQ GROK CHECK: PERSONA END PRODUCT AND REUSE
+
+Mandatory: read `PYAT_CONTROL_ROOM/HQ283_PERSONA_FIRST_INHERITED_METHODS_AND_HQ_GROK_CORRECTION_R1.md`, Dva `RAWLSING_GOVERNING_SPIRIT.md`, `TERMINAL_DEMAND_ENVELOPE.md`, the originary persona frameworks, Dva/Trii/Chetiri functional inheritance, Long Memory Authority 38/39/40, the crosswave atlas/driver facet mappings and actual V553 harmonization/temporal-pressure code. Explain exact provenance, implementation status, current successor, downstream V3 use, missing bridge and a measured persona-generation outcome. Do not conflate historical archive presence with current adopted execution, but NEVER infer missing mechanism merely from missing current P01/N9 receipt. Do not elevate Ghana or arbitrary Afro/LiTS pair to a universal end-product gate. Applied uncertainty-aware proxies/approximation and fallback are legitimate engineering paths with honest claim grades. No successor may declare itself fully HQ-grokked without passing these checks.
+
+---
+
 ## HQ282 issuer-decision next-state check
 
 A successor must read `PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ282_COMPETENT_DECISIONS_AND_N04R_DISPATCH_20261012_R1.md` and distinguish **opened issues** #499 GT2, #500 two-family F6, #501 Ghana EE12 from actual independently issued source/operation/permission decisions. None is an authorization; no external message was sent and competent assignees are not yet established. N04R is sealed at `f6e20f14e73ea2bb13b65b91eea2f737df916e0e`, **not** run, with independent worktree/runtime and an economical non-Codex model required. Reopening N01–N03 source documentaries without an issuer-requested new missing artifact, or certifying B5 after unreviewed N04, fails readiness. Protect full-repo primary Astra quota and separate source original E from declared-work D before any real P01 B02 execution.
