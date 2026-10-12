@@ -1,0 +1,257 @@
+{
+  "schema": "HQ280_D02Z_NATIVE_RULE_CONTRACT_POSITIVE_AND_HOSTILE_FIXTURES@1.0.0",
+  "grade": "EXECUTABLE_SOURCEFREE_VECTORS__NOT_ORIGINAL_SOURCE_AUTHENTICATION",
+  "base_preimage_path": "01_DOCUMENTARY_SOURCE_IMMUTABLE_PREIMAGE.json#source_local_input",
+  "case_count": 35,
+  "cases": [
+    {
+      "id": "P01_VALID_HISTORICAL_TEXT_ONLY",
+      "replace": {},
+      "expected_state": "LOCAL_PREIMAGE_SHAPE_POSITIVE__NOT_ISSUED"
+    },
+    {
+      "id": "H01_FAKE_PDF_SHA",
+      "replace": {
+        "original_pdf_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H02_FALSE_ISSUER",
+      "replace": {
+        "producer_issuer_ref": "issuer:pretend"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H03_FALSE_SOURCE_GRANT",
+      "replace": {
+        "accepted_source_grant_ref": "RANDOM"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H04_WRONG_CLAUSE",
+      "replace": {
+        "clause_id": "PART_I_SECTION_8"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H05_WRONG_ACT",
+      "replace": {
+        "legal_document_id": "ACT_592_2000"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H06_BIRTH_AFTER_INSTEAD_ON",
+      "replace": {
+        "birth_cohort_operator": "AFTER"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H07_BIRTH_COHORT_AS_STATUTE_DATE",
+      "replace": {
+        "assent_date": "1993-01-07"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H08_NO_GRANDPARENT",
+      "replace": {
+        "qualifying_ancestor_roles": [
+          "PARENT"
+        ]
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H09_ONLY_GH_BIRTH",
+      "replace": {
+        "birthplace_domain": "BORN_IN_GHANA_ONLY"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H10_WAS_OR_IS_SIMPLIFIED",
+      "replace": {
+        "ancestor_status_original_verb": "WAS"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H11_CONSTITUTION_BOUNDARY_FUSED",
+      "replace": {
+        "constitutional_crossref": "ON_OR_AFTER_1993-01-07"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H12_PRETEND_COMMENCEMENT",
+      "replace": {
+        "act_commencement_date": "2001-01-05"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H13_PRETEND_CURRENT",
+      "replace": {
+        "operative_world_asof": "2026-10-11"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H14_UNPROVED_AMENDMENTS",
+      "replace": {
+        "amendment_version_chain": "CERTIFIED_2026"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H15_FORGED_V554",
+      "replace": {
+        "producer_family": "V554"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H16_EMPIRICAL_FACT",
+      "replace": {
+        "record_type": "EmpiricalFact"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H17_Q86A_SURVEY",
+      "replace": {
+        "source_url": "AFRO_R5_GHANA_Q86A"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H18_CITIZENSHIP_PERSON",
+      "replace": {
+        "legal_individual_status": "PERSON_CITIZEN"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H19_ENFORCEMENT_CLAIM",
+      "replace": {
+        "administrative_observation": "ENFORCED"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H20_ACCESS_CLAIM",
+      "replace": {
+        "observed_service_access": true
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H21_CAUSAL_EFFECT",
+      "replace": {
+        "causal_effect": 0.8
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H22_FALSE_CURRENT_REF",
+      "replace": {
+        "n9_current_ref": "N9:CURRENT"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H23_WRONG_REPRODUCTION",
+      "replace": {
+        "source_format": "CERTIFIED_ORIGINAL_GAZETTE"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H24_CONFLATED_GAZETTE",
+      "replace": {
+        "gazette_notification_printed": "2000-12-29"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H25_FORBIDDEN_V557_REF",
+      "replace": {
+        "v557_publication_ref": "FAKE"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H26_MISSING_DATE",
+      "replace": {},
+      "remove": [
+        "birth_cohort_date"
+      ],
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H27_WRONG_JURISDICTION",
+      "replace": {
+        "jurisdiction": "OTHER"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H28_ISSUE_OPERATION",
+      "replace": {},
+      "operation": "ISSUE_RULE_TEXT_DOCUMENTED",
+      "expected_state": "HELD_COMPETENT_ORIGINAL_SOURCE_ISSUER_AND_PRODUCER_ADOPTION"
+    },
+    {
+      "id": "H29_RULE_IN_FORCE_OPERATION",
+      "replace": {},
+      "operation": "RULE_IN_FORCE_AT_TIME",
+      "expected_state": "HELD_ACT_COMMENCEMENT_AND_AMENDMENT_ASOF_AUTHORITY"
+    },
+    {
+      "id": "H30_V557_OPERATION",
+      "replace": {},
+      "operation": "BIND_V557_V558",
+      "expected_state": "HELD_UNAPPROVED_DOCUMENTARY_ROOT_AND_PUBLICATION_AUTHORITY"
+    },
+    {
+      "id": "H31_N9_CURRENT_OPERATION",
+      "replace": {},
+      "operation": "SERVE_N9_CURRENT",
+      "expected_state": "HELD_NO_CURRENT_LEGAL_VERSION_OR_SELECTED_WORLD"
+    },
+    {
+      "id": "H32_UNKNOWN_OPERATION",
+      "replace": {},
+      "operation": "BY_PASS_AUTHORITY",
+      "expected_state": "REFUSED_UNKNOWN_OPERATION"
+    },
+    {
+      "id": "H33_OUTCOME_AS_CURRENT",
+      "replace": {
+        "requested_use": "SERVE_N9_CURRENT"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    },
+    {
+      "id": "H34_PUBLISHED_AS_SOURCE",
+      "replace": {
+        "documentary_assertion": "ORIGINAL_SOURCE_VERIFIED"
+      },
+      "expected_state": "REFUSED_INVALID_SOURCE_PREIMAGE"
+    }
+  ],
+  "expected_global_invariants": [
+    "issued_fact_ref == null",
+    "source_document_pdf_sha256 == null",
+    "permitted_externally_active_uses == []",
+    "candidate_only == true",
+    "no N9/current/V3/G0b product"
+  ],
+  "attested_positive": "LOCAL_SHAPE_VALIDATION_ONLY__NOT_AUTHORITY"
+}
