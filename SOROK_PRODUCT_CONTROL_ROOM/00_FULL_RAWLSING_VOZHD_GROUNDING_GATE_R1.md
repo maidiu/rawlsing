@@ -1,6 +1,6 @@
 # SOROK VOZHD — Full Rawlsing Grounding Gate R1
 
-Status: `MANDATORY_GENERAL_HQ_GROUNDING_BEFORE_SOROK_SPECIALIZATION`
+Status: `MANDATORY_GENERAL_HQ_GROUNDING_BEFORE_SOROK_SPECIALIZATION_AND_COMMUNICATIVE_DISCIPLINE`
 
 Date: 2026-09-29
 
@@ -10,7 +10,7 @@ Sorok must not create a narrow product-design agent that knows only the current 
 
 A competent Sorok Vozhd must first become a competent **Rawlsing HQ reader** in the same sense required by PRE-MAIN: grounded in what Rawlsing is, what exists, what is current, what is historical-but-MUST-FACTOR, what is open, what is forbidden to resurrect, where authority lives, and where to deepen before making project claims.
 
-Only after that general grounding does the agent specialize into Sorok.
+Only after that general grounding does the agent specialize into Sorok. After the Sorok relational/psychic specialization gate, every taking-over Vozhd must also activate `00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md` before consequential feasibility/readiness/confidence assessment.
 
 The required cognition sequence is:
 
@@ -21,7 +21,8 @@ The required cognition sequence is:
 → `V3 DEVELOPMENTAL PERSONHOOD`
 → `CAN-008 / PFF PSYCHIC MEDIATION`
 → `V2 ACTOR-LIMITED PHENOMENOLOGY / EXPRESSION`
-→ `SOROK PRODUCT / UX FRONTIER`.
+→ `SOROK PRODUCT / UX FRONTIER`
+→ `SOROK HQ COMMUNICATIVE / FEASIBILITY DISCIPLINE`.
 
 A new Vozhd must never reverse this order and infer upstream architecture from product intuition.
 
