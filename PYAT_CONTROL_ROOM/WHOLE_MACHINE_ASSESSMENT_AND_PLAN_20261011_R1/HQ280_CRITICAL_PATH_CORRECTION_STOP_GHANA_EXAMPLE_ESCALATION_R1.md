@@ -27,6 +27,6 @@ Ghana neither is nor should become a mandatory prerequisite for M3, all-35 progr
 
 **Explicitly not decided here:** retrospective HQ262 Q86A metadata permission, legal commencement, source access, source-science authority issuance, native objective legal producer adoption, REAL_EXECUTION, G0b/CURRENT, or actor/V3. No negative source judgment or retrospective refusal by this planning decision.
 
-**Next HQ deliverable:** a dependency/product-graded **M3/M4 critical-path board** from the existing `ACTION_PLAN.md`, `TASKS.json`, latest R01/A01/A02/D01/D03/E01/return evidence, showing actual qualifying sources/products/consumers, missing owner-bound edges and independently issuable operations, not another Gujarat/Ghana pilot genealogy.
+**Next HQ deliverable:** a dependency/product-graded **M3/M4 critical-path board** from the existing `ACTION_PLAN.md`, `TASKS.json`, latest R01/A01/A02/D01/D03/E01/return evidence, showing actual qualifying sources/products/consumers, missing owner-bound edges and independently issuable operations, not another Ghana pilot genealogy.
 
 **Terminal:** `HQ280_GHANA_EXEMPLAR_ESCALATION_STOPPED_IN_HQ_SEQUENCING__GENERAL_35_WAVE_FIELD_TEMPORAL_SERVICE_CRITICAL_PATH_RESTORED__NO_SELF_ADOPTION`.
