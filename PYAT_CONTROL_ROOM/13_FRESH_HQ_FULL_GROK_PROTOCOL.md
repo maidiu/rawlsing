@@ -1,3 +1,9 @@
+## P02R successor status — revised review wording and branch
+
+For future Pyat readiness grok, distinguish the old P02 candidate commission at `dad074579ee705a720fb3cfe9cacb0193d573ffd` (**superseded for new dispatch**) from the new, separate **P02R independent interface verification** at `835f22e6c6010fa35f6bd0b2739cd630736ef920`. P02R reviews unchanged C02J code at `895980397cc0533043c7ca0e493ebbb455666c1e`. Its plain-language commission includes exactly the same substantive synthetic owner/identity/permission/replay/currentness coverage and no claimed issuer/adoption. It may not start without a verified secondary sparse worktree and actual usage check. If there are platform warnings or extra credential requests, stop and report; no account bypass or compulsory unfamiliar signup is part of this commission. Avoid duplicating old P02 if a local worker is already active; check exact origin and operator attestation first.
+
+---
+
 ## New local-worktree fact, 12 October 2026
 
 User reported the HQ282 P01 worktree **does not exist on secondary**. Incoming HQ must classify `BOOTSTRAP_REQUIRED`, not launched or running, until local infrastructure receipt proves the same branch, SHA, isolated sparse checkout, shared object store, source code blobs and Python runtime. Read `PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ282_P01_SECONDARY_BOOTSTRAP_HANDOFF_R1.md`. Never bootstrap it with protected primary Astra Codex quota or clone per worker.
