@@ -1,3 +1,7 @@
+## P01 plain-language revision
+
+P01's revised commission uses ordinary engineering language and an updated exact GitHub startup. The local secondary worktree is still missing; setup comes before Codex. Daybreak enrollment or a hardware key is not part of this project's required workflow. If a platform itself demands one, report the issue without bypassing the platform. The older P01 startup must not be used.
+
 ## Subsequent user-directed Codex/Astra reserve and secondary-Mac correction
 
 **Final model levels (no guesswork):** P01 GPT-6.1 Sol **Medium**; P02 GPT-6.1 Sol **Low** (Light in some UI); P03/P05 Browser GPT-6 High **NO Codex**; P04 GPT-6 Luna **Medium** only as eligible fallback after cheaper non-Codex; P06 **NO Codex** normally, emergency approved fallback GPT-6 Luna **Low**. Astra usage is **reserved**, not a default coding pool. See [binding minimum-model, Astra and secondary-file law](HQ282_CODEX_ASTRA_RESERVE_MODEL_AND_SECONDARY_FILE_LAW_R1.md). USER CONFIRMED: PRIMARY MAC 85% weekly (reserved for full-repo Astra), SECONDARY MAC 98% weekly (ordinary Codex P01/P02). Both five-hour windows 100% and three reset credits each at screenshot; full-repo Astra needs primary, GitHub-only Astra may use either. Current balances, model picker and worktree state still need direct local checks.
@@ -10,7 +14,7 @@
 
 | Lane | Proposed qualified executor (NOT yet assigned) | Exact verified commission-containing HEAD |
 | --- | --- | --- |
-| **P01** | SECONDARY Codex GPT-6.1 Sol Medium, Python/pytest/SIGKILL | [`712b818e6c0fa87412db7f4edaad1397b2e9f090`](https://github.com/maidiu/rawlsing/blob/712b818e6c0fa87412db7f4edaad1397b2e9f090/WORKER_COMMISSIONS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/00_COMMISSION.md) |
+| **P01** | SECONDARY Codex GPT-6.1 Sol Medium, Python/pytest/SIGKILL | [`fae6300505997347cab1baf61bf01b204d2ff448`](https://github.com/maidiu/rawlsing/blob/fae6300505997347cab1baf61bf01b204d2ff448/WORKER_COMMISSIONS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/00_COMMISSION.md) |
 | **P02** | SECONDARY Codex GPT-6.1 Sol Low, independent review | [`dad074579ee705a720fb3cfe9cacb0193d573ffd`](https://github.com/maidiu/rawlsing/blob/dad074579ee705a720fb3cfe9cacb0193d573ffd/WORKER_COMMISSIONS/PYAT-HQ282-P02-C02J-PRINCIPAL-SECURITY-HOSTILE-R1/00_COMMISSION.md) |
 | **P03** | Browser/GitHub GPT-6 High; no Python runtime claimed | [`da3c7f647f823fed885717f78156e1c6105a76c6`](https://github.com/maidiu/rawlsing/blob/da3c7f647f823fed885717f78156e1c6105a76c6/WORKER_COMMISSIONS/PYAT-HQ282-P03-TWO-FAMILY-EXTERNAL-FIELD-PRODUCTS-R1/00_COMMISSION.md) |
 | **P04** | Qualified Go/DeepSeek first; optional SECONDARY Codex GPT-6 Luna Medium | [`91169010041f9c2ee79a6bc1426a2a7901d9677c`](https://github.com/maidiu/rawlsing/blob/91169010041f9c2ee79a6bc1426a2a7901d9677c/WORKER_COMMISSIONS/PYAT-HQ282-P04-SELECTED-WORLD-PROGRESSIVE-FIXTURE-R1/00_COMMISSION.md) |
