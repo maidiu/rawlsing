@@ -1,0 +1,211 @@
+{
+  "schema": "PYAT_HQ280_PV3_A03I_FIRST_FINITE_GHA_Q86A_B02_OPERATION_ISSUER_PATH@1.0.0",
+  "authority_status": "PROPOSED_PREOUTCOME_NONISSUED_NOT_E",
+  "evidence_inputs": {
+    "original_GHA_English_questionnaire": "2012-04-19 national instrument Q86A, original one selected Ghanaian citizen adult 18+ throughout interview; supported by HQ273 S01 prior original science",
+    "retained_merged_SAV_expected_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+    "physical_Q86A_value_labels": "PRIOR_M01_R5_PHYSICAL_METADATA_MATCHED_BUT_SCOPE_HELD",
+    "original_and_retained_code_pairings": {
+      "0": "NO",
+      "1": "YES",
+      "9": "DK",
+      "997": "NOT_ASKED",
+      "998": "REFUSED",
+      "-1": "MISSING"
+    },
+    "actual_GHA_country_rows": "NOT_READ",
+    "actual_Q86A_n": "UNKNOWN",
+    "physical_RESPNO_uniqueness": "UNTESTED",
+    "country_release_version_equivalence": "NOT_ADMITTED"
+  },
+  "finite_one_job_candidate": {
+    "id": "SRC02_AFRO_R5_GHA_Q86A_RAW_UNARY_SOURCELOCAL_B02_ECANDIDATE@1",
+    "semantics": "RAW source-local respondent-descriptive Q86A 0/1 within authenticated Ghana applicable selected adult who was actually asked and has valid substantive native response",
+    "source_universe": {
+      "family": "Afrobarometer",
+      "wave": "R5",
+      "release": "retained merged SAV @ exact source SHA",
+      "country": "GHA",
+      "physically_documented_row_count_whole_R5": 51587,
+      "actual_GHA_country_rows": null,
+      "source_release_official_edition": "UNVERIFIED",
+      "country_alpha_11": "OFFICIAL_CODEBOOK_LABEL_ONLY_NOT_ACTUAL_ROW_VERIFICATION"
+    },
+    "person": {
+      "one_original_selected_adult": true,
+      "sampling_target": "Ghanaian citizens 18+",
+      "physical_key_candidates": [
+        "COUNTRY",
+        "RESPNO"
+      ],
+      "physical_country_code_native": "COUNTRY / COUNTRY_ALPHA; source authority must qualify GHA code and derive COUNTRY_ALPHA3 if used",
+      "key_uniqueness": null,
+      "selected_respondent_bindings": null
+    },
+    "target": {
+      "original_item": "Q86A",
+      "physical_field": "Q86A",
+      "allowed_native_substantive_values": [
+        0,
+        1
+      ],
+      "non_substantive": [
+        {
+          "code": 9,
+          "reason": "DONT_KNOW"
+        },
+        {
+          "code": 997,
+          "reason": "NOT_ASKED"
+        },
+        {
+          "code": 998,
+          "reason": "REFUSED"
+        },
+        {
+          "code": -1,
+          "reason": "MISSING"
+        }
+      ],
+      "source_slot_rule_authority": "NOT_ISSUED_FOR_GHA",
+      "routing_exposure_per_respondent": "NOT_AVAILABLE"
+    },
+    "predicate_schema": "SINGLE_UNIVERSE AND source_sha_exact AND qualified_country_is_GHA AND same_unique_selected_respondent AND routed_eligible_and_ACTUALLY_ASKED_Q86A AND typed_state_SUBSTANTIVE_RESPONSE AND Q86A_in_{0,1}",
+    "operation_name_candidate": "SRC02_R5_GHA_Q86A_RAW_UNARY@1",
+    "measure_kind": "RAW",
+    "output_grain": "SCALAR_SINGULAR native 0/1 counts and actual denominator, source-local EmpiricalFact/replay",
+    "forbidden": [
+      "WEIGHTED",
+      "GOVERNED_WEIGHTED",
+      "national population share",
+      "design variance claim",
+      "cross wave",
+      "Q86B conditional",
+      "GT2 11-country member set",
+      "country release substitution",
+      "FF02 structural",
+      "G0b model use",
+      "EE12 temporal",
+      "N9/CURRENT",
+      "actor/v3"
+    ],
+    "expected_consumer": {
+      "first_real_owner_precedent": "rawlsing_next/wave1_gt12_a2_real_gt1.py::execute_and_replay_a2_gt1 (exact 19,210 non-GHA, not reusable)",
+      "general_owned_ability": "rawlsing_next/pre553_empirical_query.py::execute_empirical_query, and C11 logical release/EmpiricalFact object",
+      "new_GHA_consumer_contract": "SINGLE_GHA_SOURCE_LOCAL_EMPIRICAL_FACT_REPLAY_RECEIPT@1",
+      "new_ref_issued": false,
+      "actual_GHA_result": null
+    },
+    "scientific_conditions": [],
+    "target_order": [
+      "Q86A"
+    ],
+    "output_value_counts": null,
+    "acceptable_actual_result_states": [
+      "SUPPORTED_COUNTS",
+      "ZERO_SUPPORT_MEASURED_AFTER_REAL_SOURCE_AUTHORIZED",
+      "UNRESOLVED_NATIVE_NEGATIVE_WITH_TRUE_SOURCE_EVIDENCE"
+    ],
+    "not_accept": "HELD_PERMISSION_AS_ZERO_SUPPORT"
+  },
+  "issuer_sequence": [
+    {
+      "sequence": 0,
+      "name": "HQ262 metadata charter yes/no",
+      "actor": "actual HQ262 issuing successor + qualified local custodian under stricter access law",
+      "action": "classify past metadata authority and/or issue genuinely narrow prospective only",
+      "can_do_now_without_survey": "YES_IF_COMPETENT_AND_RECORDED",
+      "issued": false,
+      "blocking_for_real_source": "METADATA_LEGAL_SCOPE"
+    },
+    {
+      "sequence": 1,
+      "name": "original source semantic/country/individual and row release",
+      "actor": "actual source physical custodian plus qualified Afro R5 source-native scientific issuer under accepted EE01/EE02/EE03/EE04",
+      "action": "verify fielded Ghana forms/release equivalence as far as needed, permission for bounded row risk inspection, country correct native predicate and missingness, unique person/routing authority",
+      "issued": false,
+      "physical_read_authorized": false
+    },
+    {
+      "sequence": 2,
+      "name": "C11 exact governed projection",
+      "actor": "qualified C11/GT12-A original-source projection authority owner (individual authorization not independently identified)",
+      "action": "issue exact Ghana source/coordinate crosswalk, respondent identity, native ResponseSlotRule, RoutingEligibilityFact, projection/replay authority, source-universe and release ref, without porting non-Ghana GT12 risk",
+      "issued": false
+    },
+    {
+      "sequence": 3,
+      "name": "I03 RAW unary predicate and target-use",
+      "actor": "qualified original I03 source-operation and scientific target-use issuer (individual delegation not independently identified)",
+      "action": "issue exact PREDICATE_GRAMMAR and TARGET_USE_PERMISSION snapshots governing SRC02_R5_GHA_Q86A_RAW_UNARY@1 for GHA source universe, EmpiricalPredicate/EmpiricalQuerySpec/EmpiricalFact and source-local descriptive consumer",
+      "issued": false
+    },
+    {
+      "sequence": 4,
+      "name": "source-local fact/replay consuming endpoint",
+      "actor": "C11/I03/Ghana empirical producer and source-local fact consumer under owner-controlled authority",
+      "action": "adopt a Ghana analog of GT12-A2 exact execution/replay fact handoff, preserving genuinely resolved I03 query and consumption receipt (not a copied fixture or self-sign)",
+      "issued": false
+    },
+    {
+      "sequence": 5,
+      "name": "independent pre-result expected-work E",
+      "actor": "competent independent scientific E issuer + external pre-run custody/oracle independent of B02 result, A04/A05 workers",
+      "action": "independently approve single job after 0–4 acts; freeze full original item/risk/operation/consumer preimage and independently identifiable signer/time; ensure A04T v2↔A05 keys verify semantics and consumer",
+      "issued": false
+    },
+    {
+      "sequence": 6,
+      "name": "B02 true source-backed execution and acceptance",
+      "actor": "authorized bounded source operator with independent science/runtime reviewer",
+      "action": "only then inspect respondent rows under actual approved scope, execute one exact source-local query, replay and record typed outcomes including legitimate empty/unknown",
+      "issued": false
+    }
+  ],
+  "proposed_frontier": {
+    "planned": [
+      {
+        "candidate_id": "SRC02_AFRO_R5_GHA_Q86A_RAW_UNARY_SOURCELOCAL_B02_ECANDIDATE@1",
+        "status": "HELD_PROPOSED_ONLY"
+      }
+    ],
+    "PERMITTED_ISSUED": [],
+    "issued_E": [],
+    "DENIED": [],
+    "SOURCE_INTRINSIC_NA_ADOPTED": [],
+    "executable_B02_jobs": 0
+  },
+  "real_owners_and_scoping": [
+    {
+      "path": "rawlsing_next/wave1_r5_q86_c11_projection.py",
+      "sha": "d96933180d310b4078f23127bb5a97a3677728d1",
+      "role": "frozen exact R5 source C11 old 11-country Q86A/B; no Ghana"
+    },
+    {
+      "path": "rawlsing_next/wave1_gt12_a2_real_gt1.py",
+      "sha": "595610fd3a0c453d8a4528f52fdd9be458db5e9c",
+      "role": "constructs scoped PREDICATE_GRAMMAR and TARGET_USE_PERMISSION snapshots for old GT1, executes actual I03 and replays on A1 release; it requires 19,210"
+    },
+    {
+      "path": "rawlsing_next/wave1_gt12_i03_positive_facts.py",
+      "sha": "067628dc6605f28be68bdcd86ef57b02a0db4348",
+      "role": "old 11-country query/risk, fixed hash/arity"
+    },
+    {
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "sha": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "role": "generic release physical projection with exact RowRespondentBinding, routing and response semantics"
+    },
+    {
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "sha": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "role": "I03 _require_exact_i03_authority_fitness checks PREDICATE_GRAMMAR exact source object family/operation and TARGET_USE_PERMISSION when declared"
+    }
+  ],
+  "no_current_new_authoritative_grant": true,
+  "not_a_new_denominator": true,
+  "not_a_real_workload": true,
+  "not_source_executed": true,
+  "not_output_derived": true,
+  "next_immediate_act": "COMPETENT_METADATA_YES_NO_OR_HOLD_DECISION_ON_PRIOR_M01; DO_NOT_REREAD_SAV"
+}
