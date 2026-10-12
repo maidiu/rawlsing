@@ -690,6 +690,36 @@ Its output should route candidate meaning into competent owners.
 
 ---
 
+# 16A. Minimum competent temporal grain / no compulsory full-V3 turn
+
+A live user turn does NOT automatically justify rerunning the full durable developmental machine.
+
+The semantic-transduction layer should route the admitted event to the minimum competent owner/grain.
+
+Candidate outcomes include:
+
+- no durable update;
+- objective world/material delta only;
+- session/interaction-fast update only;
+- Nadia-model-of-user evidence/update under competent authority;
+- relationship-state effect under competent authority;
+- memory/accessibility effect under competent authority;
+- CAN-008 current person×event coupling;
+- one or more exact durable V3 owner effects;
+- deeper developmental recomputation only when the event actually warrants it.
+
+Preserve inherited law:
+
+`CURRENT RESPONSE != DURABLE PERSON CHANGE`.
+
+And:
+
+> **DO NOT RUN THE WHOLE PERSON'S DEVELOPMENTAL HISTORY AS A RITUAL CONSEQUENCE OF EVERY TURN.**
+
+A trivial acknowledgment, ordinary object move, or low-significance exchange may lawfully produce little or no durable psychic update.
+
+This is both an authority rule and a cost-control rule.
+
 # 17. Claude-class call should generate the actor/world observable occurrence, not the user-personalized phenomenal lens
 
 To preserve hard epistemic hygiene and keep the normal call budget at two, the current minimal-white-whale direction is:
@@ -798,6 +828,22 @@ The actor-realization model SHOULD NOT need the user's adaptive attention profil
 ---
 
 # 19. Whole-person context criterion
+
+Current operational shorthand:
+
+> **KEEP THE CURRENT PERSON WHOLE; RETRIEVE THE HISTORICAL TAIL SELECTIVELY.**
+
+The actor-realization model should normally receive a sufficiently complete current whole-person expressive substrate rather than reconstructing Nadia from a few retrieved facts each turn.
+
+By contrast, the potentially unbounded historical event/provenance tail should be retrieved selectively according to present causal/expression dependency.
+
+Preserve:
+
+`CURRENT PERSON SUBSTRATE != COMPLETE EVENT LEDGER IN PROMPT`.
+
+`SELECTIVE HISTORY RETRIEVAL != SELECTIVE PERSONHOOD`.
+
+The durable Rawlsing state remains authoritative even where the model working context is a bounded projection.
 
 Do not assume generic RAG suffices.
 
