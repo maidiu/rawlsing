@@ -99,7 +99,8 @@ The deepest longitudinal mirror is the user's own relational praxis.
 21. `16_COURT1_COURT2_PLAYER_ENCOUNTER_RELATIONSHIP_SYNTHESIS_R1.md` — player/encounter + relationship-state ideation
 22. `18_COURT3_COURT4_LIFE_PROGRESS_SYNTHESIS_R1.md` — life outside user + progress-without-score ideation
 23. `17_FULL_RAWLSING_VOZHD_GROUNDING_INTEGRITY_R1.md` — takeover grounding verification
-24. open scoped investigations in `dockets/`
+24. `100_MINIMAL_WHITE_WHALE_ALPHA_AND_FIDELITY_ESCALATION_CONSTITUTION_R1.md` — bounded alpha/fidelity-frontier strategy; preserve constitutive Rawlsing while deferring maximal white-whale forms
+25. open scoped investigations in `dockets/`
 
 ## 4. Anti-sprawl law
 
