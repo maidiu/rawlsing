@@ -1,0 +1,36 @@
+{
+  "schema": "PYAT_RCM01_RETURN_MANIFEST@1.0.0",
+  "commission_id": "PYAT-HQ282-P06-RCM01-LOCAL-ADVISORY-ROUTER-R1",
+  "branch": "agent/rabochii-pyat-hq282-p06-rcm01-local-advisory-router-r1",
+  "sealed_startup": "3755d68c6f45d8e35992b2246f7e43e22cf42bd0",
+  "rcm01_original_source": "c71f83c731fe1465b59f5ad701a5e1bb3018b34a",
+  "files_written": [
+    "PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/runtime/scheduler.mjs",
+    "PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/fixtures/test_vectors.json",
+    "PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/tests/scheduler.test.mjs",
+    "PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/tests/hostiles.test.mjs",
+    "PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/docs/DESIGN.md",
+    "WORKER_RETURNS/PYAT-RCM01-IMPLEMENTATION-R1/00_RETURN.md",
+    "WORKER_RETURNS/PYAT-RCM01-IMPLEMENTATION-R1/01_PRODUCT_OR_HOLD.md",
+    "WORKER_RETURNS/PYAT-RCM01-IMPLEMENTATION-R1/02_EXECUTION_AND_HOSTILES.json",
+    "WORKER_RETURNS/PYAT-RCM01-IMPLEMENTATION-R1/03_RESOURCE_TELEMETRY.json",
+    "WORKER_RETURNS/PYAT-RCM01-IMPLEMENTATION-R1/04_DEPENDENCY_AND_AUTHORITY.md",
+    "WORKER_RETURNS/PYAT-RCM01-IMPLEMENTATION-R1/05_MANIFEST.json"
+  ],
+  "files_modified": [],
+  "files_deleted": [],
+  "test_results": {
+    "scheduler_test_mjs": {"exit": 0, "pass": 25, "fail": 0},
+    "hostiles_test_mjs": {"exit": 0, "pass": 12, "fail": 0}
+  },
+  "vectors_covered": 22,
+  "vectors_passed": 22,
+  "no_side_effects": true,
+  "deterministic": true,
+  "acceptance_ceiling_reached": "ADVISORY_ROUTER_SOURCEFREE_PASS_LOCAL_TESTS",
+  "independent_review_required": true,
+  "space_bunny_dispatcher_edited": false,
+  "unattended_dispatch_activated": false,
+  "paid_provider_called": false,
+  "terminal": "PYAT_HQ282_P06_RCM01_LOCAL_ADVISORY_ROUTER_IMPLEMENTED_LOCAL_TESTS_PASS__AWAITING_INDEPENDENT_REVIEW__NO_UNATTENDED_DISPATCH"
+}

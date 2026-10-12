@@ -1,0 +1,39 @@
+{
+  "commission_id": "PYAT-HQ282-P06-RCM01-LOCAL-ADVISORY-ROUTER-R1",
+  "branch": "agent/rabochii-pyat-hq282-p06-rcm01-local-advisory-router-r1",
+  "sealed_startup": "3755d68c6f45d8e35992b2246f7e43e22cf42bd0",
+  "rcm01_original": "c71f83c731fe1465b59f5ad701a5e1bb3018b34a",
+  "test_commands": [
+    {
+      "command": "node --test PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/tests/scheduler.test.mjs",
+      "exit_code": 0,
+      "passed": 25,
+      "failed": 0,
+      "suite": "22 predeclared adversarial vectors + fixture validation + purity + no-side-effects"
+    },
+    {
+      "command": "node --test PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/tests/hostiles.test.mjs",
+      "exit_code": 0,
+      "passed": 12,
+      "failed": 0,
+      "suite": "malformed input, limit evasion, unknown pricing, active worker preservation, false runtime evidence, unauthorized fallback, side-effect verification, crash/restart, duplicate IDs, missing quota, fake refs, no worker cap"
+    }
+  ],
+  "hostile_evidence": {
+    "malformed_json": "PASS -- null, undefined, empty, wrong types all produce typed decisions without crash",
+    "extra_account_circumvention": "PASS -- secondary Go account for limit evasion rejected",
+    "unverified_pricing": "PASS -- null cost/time estimates produce EXPLICIT_ESTIMATE_UNKNOWN_OR_BOUNDED_PROBE",
+    "active_worker_preservation": "PASS -- EXISTING_ACTIVE_NOT_RETURNED produces PRESERVE_ACTIVE_WORKTREE_AND_RESUME; no RESET or CLONE recommended",
+    "false_runtime_evidence": "PASS -- Browser-only resource cannot manufacture runtime PASS for python/pytest/sigkill task",
+    "unauthorized_fallback": "PASS -- exhausted quota with disabled overflow produces WAIT_FOR_RESET_OR_BUDGET_HOLD; no PAY_OVERFLOW",
+    "side_effect_verification": "PASS -- synthetic worktree state JSON unchanged after advise() call",
+    "crash_restart_consistency": "PASS -- identical results across fresh scheduler instances",
+    "duplicate_task_ids": "PASS -- deterministic output for repeated task IDs",
+    "missing_quota_state": "PASS -- null quota produces REQUIRE_FRESH_RESOURCE_EVIDENCE",
+    "fake_repo_refs": "PASS -- unverified resource still subject to hard gates",
+    "no_arbitrary_worker_cap": "PASS -- 6 concurrent resources accepted without CAP_WORKERS"
+  },
+  "22_vectors_status": "ALL_22_PASS",
+  "no_side_effects": true,
+  "deterministic": true
+}

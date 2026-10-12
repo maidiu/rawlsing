@@ -1,0 +1,29 @@
+{
+  "commission_id": "PYAT-HQ282-P06-RCM01-LOCAL-ADVISORY-ROUTER-R1",
+  "model_id": "opencode-go/mimo-v2.6-pro",
+  "model_variant": "MiMo-V2.6-Pro",
+  "account_alias": "one-legitimate-go-workspace",
+  "machine": "macOS_Darwin_local",
+  "runtime_node": "v20.19.1",
+  "runtime_python": "3.11.3",
+  "runtime_git": "2.43.0",
+  "start_end_wall_seconds": null,
+  "tool_calls": null,
+  "provider_errors": 0,
+  "actual_cost_usd": null,
+  "normalized_allowance_consumed": null,
+  "human_interventions": 0,
+  "test_commands_exit_codes": [
+    {"command": "node --test scheduler.test.mjs", "exit": 0},
+    {"command": "node --test hostiles.test.mjs", "exit": 0}
+  ],
+  "product_and_consumer_refs": {
+    "product": "PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/runtime/scheduler.mjs",
+    "consumer": "advisory-only; no dispatcher integration"
+  },
+  "independent_review_ref": null,
+  "scientific_grade": "ADVISORY_ROUTER_SOURCEFREE_PASS_LOCAL_TESTS",
+  "cost_null_reason": "NOT_INDIVIDUALLY_METERED_BY_PROVIDER",
+  "quota_null_reason": "SUBSCRIPTION_POOL_NOT_OBSERVED_IN_LIVE_SESSION",
+  "wall_time_null_reason": "NOT_TIMED_INDIVIDUALLY"
+}
