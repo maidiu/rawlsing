@@ -1,3 +1,17 @@
+## RCM01 user-requested binding correction — minimum Codex effort, Astra reserve and Mac file custody
+
+**THIS SECTION SUPERSEDES less precise suggested "strong Codex" or "qualified model" wording below.** This is a branch-local commission routing correction, not a new scientific or security grant. Full user-directed law: `PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ282_CODEX_ASTRA_RESERVE_MODEL_AND_SECONDARY_FILE_LAW_R1.md` on operating HQ, and RCM01 original at `c71f83c731fe1465b59f5ad701a5e1bb3018b34a`.
+
+**CODEX MODEL EXACT:** GPT-6.1 Sol, **Low** (if picker uses **Light**, that's this low-effort starting setting). Focus solely on frozen code-owner adversarial tests; don't spend Medium/High initially. Independent Browser HQ GPT-6 High judges authority/security meaning against exact receipts; no low-effort model self-certification. Escalate to Sol Medium only for a reproduced difficult new security failure, user-approved budget and sufficient unreserved allowance. **MAC:** SECONDARY preferred after exact code and Python provenance check, never merely because Codex B is assumed to be there. Use only non-Astra designated pool.
+
+**SECONDARY FILE GATE:** Must have exact Git objects at `895980397cc0533043c7ca0e493ebbb455666c1e`: `rawlsing_next/pre553_b5_owner_held_verifier_candidate.py`, `rawlsing_next/repro/c02j_owner_court.py`, `rawlsing_next/repro/c02j_mandatory_overlay.py`, plus accepted `pre553_learned_product_lifecycle.py`, `pre553_learned_product_release.py`, `pre553_empirical_objects.py`, inherited C02J return and pytest/CPython. No primary-Mac survey SAV/DTA needed; an absent Python test or Git object is a hard blocker, not permission to copy primary local secrets.
+
+**Astra reservation:** 12 Oct UI shows 85% and 98% weekly remaining (both 100% five-hour; three unspent full reset credits each), but screenshots do not map to a specific Mac/account. Preserve a user-designated Astra pool for Astra only; by default lock the 98% envelope and limit proposed ordinary use on the identified 85% work pool to ≤2 percentage points per job / ≤3 total until 18 Oct weekly reset, nominal 82% floor. These are MANUALLY MONITORED safeguards, not automatically enforceable percentage caps; take actual usage snapshots before and after each bounded stage. Never spend reset credits or paid overflow without explicit instruction. Missing account binding/eligibility remains HARD HOLD.
+
+**Exact returned-commission startup after THIS correction:** Must use the final full 40-hex GitHub branch HEAD published in the refreshed HQ launch ledger, NOT the predecessor commission SHA in the older status block below.
+
+---
+
 # PYAT HQ282 P02 — resource-aware product-first work order
 
 **STATUS:** SEALED_AWAITING_RESOURCE_BINDING__NOT_LAUNCHED; NO UNATTENDED EXECUTION
