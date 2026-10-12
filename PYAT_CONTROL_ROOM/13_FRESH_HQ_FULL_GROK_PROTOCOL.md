@@ -1,3 +1,9 @@
+## New local-worktree fact, 12 October 2026
+
+User reported the HQ282 P01 worktree **does not exist on secondary**. Incoming HQ must classify `BOOTSTRAP_REQUIRED`, not launched or running, until local infrastructure receipt proves the same branch, SHA, isolated sparse checkout, shared object store, source code blobs and Python runtime. Read `PYAT_CONTROL_ROOM/RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ282_P01_SECONDARY_BOOTSTRAP_HANDOFF_R1.md`. Never bootstrap it with protected primary Astra Codex quota or clone per worker.
+
+---
+
 ## Exact user-ready HQ282 launches — updated 12 October
 
 [Six exact user-ready resource-aware launch prompts](RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ282_USER_READY_SIX_LAUNCH_PROMPTS_R1.md). Successor HQ must inherit exact sealed start SHAs and never duplicate already launched/returned sessions.
