@@ -18,10 +18,11 @@
     "families": 9,
     "inherited_implementations": 18276,
     "inherited_measurement_candidates": 13270,
-    "carrier_alternative_conflicts": 10479,
     "temporal_syntactic_pairs": 63,
     "existing_consumed_positive_source_count": 1,
-    "new_B02_authorized_source_count": 0
+    "new_B02_authorized_source_count": 0,
+    "per_wave_alternative_conflict_incidence_sum": 10479,
+    "a01_global_distinct_implementations_with_alternative_conflicts": 10457
   },
   "family_counts": {
     "AFROBAROMETER": 3,
@@ -34,7 +35,7 @@
     "SOUTH_ASIA": 2,
     "WVS": 3
   },
-  "interpretation": "All 35 historical wave identities screened and A01 per-wave implementation census cross-joined, not independently 35 native questionnaire/operation adjudications. No new issuer or adopter acted. UNKNOWN/HELD must not be mapped to DENIED or SOURCE_NONAPPLICABLE. 18,276 are historical implementations, not distinct original administered questions.",
+  "interpretation": "All 35 historical wave identities screened and A01 per-wave implementation census cross-joined, not independently 35 native questionnaire/operation adjudications. No new issuer or adopter acted. UNKNOWN/HELD must not be mapped to DENIED or SOURCE_NONAPPLICABLE. 18,276 are historical implementations, not distinct original administered questions. A01 reports 10,457 globally distinct implementations with alternatives, while the 35 per-wave alternative_conflicts_total fields sum to 10,479 incidences (LiTS IΙI alone 1,304 for 1,290 implementations); the latter must NOT be called distinct conflicted implementations or silently reconciled.",
   "ranked_nearest": [
     "SRC02",
     "SRC27",
@@ -48,12 +49,12 @@
       "wave_a01": "R1",
       "historical_implementations": 144,
       "measurement_candidate_implementations": 92,
-      "carrier_conflicts": 0,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 0
     },
     {
       "source_id": "SRC02",
@@ -62,7 +63,6 @@
       "wave_a01": "R5",
       "historical_implementations": 348,
       "measurement_candidate_implementations": 106,
-      "carrier_conflicts": 0,
       "narrow_claims": [
         {
           "scope": "R5 selected GT12 original-country set",
@@ -76,7 +76,8 @@
       "nearest_path_grade": "EXISTING_GT2_SOURCE_BACKED_CONTEXT_CONSUMER__NEW_B02_HELD",
       "item_to_current_consumer_issuance_proved": true,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 0
     },
     {
       "source_id": "SRC03",
@@ -85,7 +86,6 @@
       "wave_a01": "R9",
       "historical_implementations": 421,
       "measurement_candidate_implementations": 123,
-      "carrier_conflicts": 0,
       "narrow_claims": [
         {
           "scope": "Uganda R9 original national measurement",
@@ -99,7 +99,8 @@
       "nearest_path_grade": "UGANDA_R9_ORIGINAL_WAVE_DESIGN_INVESTIGATED__TEMPORAL_COMPARABILITY_HELD",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 0
     },
     {
       "source_id": "SRC04",
@@ -108,12 +109,12 @@
       "wave_a01": "I",
       "historical_implementations": 181,
       "measurement_candidate_implementations": 147,
-      "carrier_conflicts": 0,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 0
     },
     {
       "source_id": "SRC05",
@@ -122,12 +123,12 @@
       "wave_a01": "II",
       "historical_implementations": 468,
       "measurement_candidate_implementations": 326,
-      "carrier_conflicts": 0,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 0
     },
     {
       "source_id": "SRC06",
@@ -136,12 +137,12 @@
       "wave_a01": "V",
       "historical_implementations": 359,
       "measurement_candidate_implementations": 173,
-      "carrier_conflicts": 0,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 0
     },
     {
       "source_id": "SRC07",
@@ -150,12 +151,12 @@
       "wave_a01": "VIII",
       "historical_implementations": 690,
       "measurement_candidate_implementations": 336,
-      "carrier_conflicts": 0,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 0
     },
     {
       "source_id": "SRC08",
@@ -164,12 +165,12 @@
       "wave_a01": "W1",
       "historical_implementations": 217,
       "measurement_candidate_implementations": 110,
-      "carrier_conflicts": 0,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 0
     },
     {
       "source_id": "SRC09",
@@ -178,12 +179,12 @@
       "wave_a01": "W4",
       "historical_implementations": 289,
       "measurement_candidate_implementations": 169,
-      "carrier_conflicts": 0,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 0
     },
     {
       "source_id": "SRC10",
@@ -192,12 +193,12 @@
       "wave_a01": "W5",
       "historical_implementations": 308,
       "measurement_candidate_implementations": 186,
-      "carrier_conflicts": 0,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 0
     },
     {
       "source_id": "SRC11",
@@ -206,12 +207,12 @@
       "wave_a01": "1981",
       "historical_implementations": 370,
       "measurement_candidate_implementations": 368,
-      "carrier_conflicts": 0,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 0
     },
     {
       "source_id": "SRC12",
@@ -220,7 +221,6 @@
       "wave_a01": "1990",
       "historical_implementations": 390,
       "measurement_candidate_implementations": 385,
-      "carrier_conflicts": 0,
       "narrow_claims": [
         {
           "scope": "Austria EVS1990 A048",
@@ -234,7 +234,8 @@
       "nearest_path_grade": "AUSTRIA_A048_ORIGINAL_ITEM_TEXT__DESIGN_WEIGHT_ESTIMAND_OR_PAIR_HELD",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 0
     },
     {
       "source_id": "SRC13",
@@ -243,12 +244,12 @@
       "wave_a01": "1999",
       "historical_implementations": 513,
       "measurement_candidate_implementations": 508,
-      "carrier_conflicts": 0,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 0
     },
     {
       "source_id": "SRC14",
@@ -257,7 +258,6 @@
       "wave_a01": "2008",
       "historical_implementations": 477,
       "measurement_candidate_implementations": 472,
-      "carrier_conflicts": 0,
       "narrow_claims": [
         {
           "scope": "Austria EVS2008 A048",
@@ -271,7 +271,8 @@
       "nearest_path_grade": "AUSTRIA_A048_ORIGINAL_ITEM_TEXT__DESIGN_WEIGHT_ESTIMAND_OR_PAIR_HELD",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 0
     },
     {
       "source_id": "SRC15",
@@ -280,12 +281,12 @@
       "wave_a01": "2017",
       "historical_implementations": 474,
       "measurement_candidate_implementations": 444,
-      "carrier_conflicts": 0,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 0
     },
     {
       "source_id": "SRC16",
@@ -294,12 +295,12 @@
       "wave_a01": "1972",
       "historical_implementations": 216,
       "measurement_candidate_implementations": 172,
-      "carrier_conflicts": 216,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 216
     },
     {
       "source_id": "SRC17",
@@ -308,12 +309,12 @@
       "wave_a01": "1973",
       "historical_implementations": 339,
       "measurement_candidate_implementations": 291,
-      "carrier_conflicts": 339,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 339
     },
     {
       "source_id": "SRC18",
@@ -322,12 +323,12 @@
       "wave_a01": "1984",
       "historical_implementations": 675,
       "measurement_candidate_implementations": 566,
-      "carrier_conflicts": 675,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 675
     },
     {
       "source_id": "SRC19",
@@ -336,12 +337,12 @@
       "wave_a01": "1993",
       "historical_implementations": 752,
       "measurement_candidate_implementations": 613,
-      "carrier_conflicts": 752,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 752
     },
     {
       "source_id": "SRC20",
@@ -350,12 +351,12 @@
       "wave_a01": "2002",
       "historical_implementations": 1119,
       "measurement_candidate_implementations": 981,
-      "carrier_conflicts": 1119,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 1119
     },
     {
       "source_id": "SRC21",
@@ -364,12 +365,12 @@
       "wave_a01": "2010",
       "historical_implementations": 922,
       "measurement_candidate_implementations": 907,
-      "carrier_conflicts": 922,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 922
     },
     {
       "source_id": "SRC22",
@@ -378,12 +379,12 @@
       "wave_a01": "2016",
       "historical_implementations": 1018,
       "measurement_candidate_implementations": 924,
-      "carrier_conflicts": 1018,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 1018
     },
     {
       "source_id": "SRC23",
@@ -392,12 +393,12 @@
       "wave_a01": "2024",
       "historical_implementations": 980,
       "measurement_candidate_implementations": 954,
-      "carrier_conflicts": 980,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 980
     },
     {
       "source_id": "SRC24",
@@ -406,12 +407,12 @@
       "wave_a01": "1995",
       "historical_implementations": 203,
       "measurement_candidate_implementations": 106,
-      "carrier_conflicts": 2,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 2
     },
     {
       "source_id": "SRC25",
@@ -420,12 +421,12 @@
       "wave_a01": "2011",
       "historical_implementations": 414,
       "measurement_candidate_implementations": 226,
-      "carrier_conflicts": 0,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 0
     },
     {
       "source_id": "SRC26",
@@ -434,12 +435,12 @@
       "wave_a01": "2024",
       "historical_implementations": 195,
       "measurement_candidate_implementations": 128,
-      "carrier_conflicts": 8,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 8
     },
     {
       "source_id": "SRC27",
@@ -448,7 +449,6 @@
       "wave_a01": "2006",
       "historical_implementations": 1198,
       "measurement_candidate_implementations": 568,
-      "carrier_conflicts": 1198,
       "narrow_claims": [
         {
           "scope": "LiTS I retained q301_2 × q301_7",
@@ -462,7 +462,8 @@
       "nearest_path_grade": "RETAINED_SAME_PERSON_EMPIRICAL_JOINT__FF02_CONSUMER_HELD",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 1198
     },
     {
       "source_id": "SRC28",
@@ -471,12 +472,12 @@
       "wave_a01": "II",
       "historical_implementations": 627,
       "measurement_candidate_implementations": 227,
-      "carrier_conflicts": 627,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 627
     },
     {
       "source_id": "SRC29",
@@ -485,12 +486,12 @@
       "wave_a01": "III",
       "historical_implementations": 1290,
       "measurement_candidate_implementations": 899,
-      "carrier_conflicts": 1304,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 1304
     },
     {
       "source_id": "SRC30",
@@ -499,12 +500,12 @@
       "wave_a01": "IV",
       "historical_implementations": 1319,
       "measurement_candidate_implementations": 469,
-      "carrier_conflicts": 1319,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 1319
     },
     {
       "source_id": "SRC31",
@@ -513,12 +514,12 @@
       "wave_a01": "W1",
       "historical_implementations": 68,
       "measurement_candidate_implementations": 53,
-      "carrier_conflicts": 0,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 0
     },
     {
       "source_id": "SRC32",
@@ -527,12 +528,12 @@
       "wave_a01": "W2",
       "historical_implementations": 73,
       "measurement_candidate_implementations": 43,
-      "carrier_conflicts": 0,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 0
     },
     {
       "source_id": "SRC33",
@@ -541,12 +542,12 @@
       "wave_a01": "W1",
       "historical_implementations": 188,
       "measurement_candidate_implementations": 177,
-      "carrier_conflicts": 0,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 0
     },
     {
       "source_id": "SRC34",
@@ -555,12 +556,12 @@
       "wave_a01": "W4",
       "historical_implementations": 418,
       "measurement_candidate_implementations": 415,
-      "carrier_conflicts": 0,
       "narrow_claims": [],
       "nearest_path_grade": "NOT_ESTABLISHED_AT_ITEM_OPERATION_TARGET_USE_CONSUMER_GRAIN",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 0
     },
     {
       "source_id": "SRC35",
@@ -569,7 +570,6 @@
       "wave_a01": "W7",
       "historical_implementations": 613,
       "measurement_candidate_implementations": 606,
-      "carrier_conflicts": 0,
       "narrow_claims": [
         {
           "scope": "WVS W7 Q291 retained proof",
@@ -583,7 +583,8 @@
       "nearest_path_grade": "MASTER_Q291_LOGICAL_FRONTIER__RETAINED_FIELD_RISK_HELD",
       "item_to_current_consumer_issuance_proved": false,
       "new_B02_issuance_proved": false,
-      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA"
+      "other_unevidenced_scopes": "UNKNOWN_NOT_INTRINSIC_NA",
+      "alternative_conflict_incidences_a01": 0
     }
   ]
 }
