@@ -1,0 +1,17 @@
+# HQ280 PV3 A03G — Ghana Q86A original release + authority archaeology
+
+**TERMINAL:** `HQ280_PV3_A03G_GHANA_Q86A_SOURCE_RELEASE_AND_ISSUER_RECOVERED_OR_EXACT_HOLD__NO_SELF_GRANT__GITHUB_PUSHED`
+
+**Proven new source-original positive:** separate official [Ghana R5 2012 SAV data page](https://www.afrobarometer.org/survey-resource/ghana-round-5-data-updated-july-2015/), IHSN `GHA_2012_AFB-R5_v01_M` catalog (2,400 cases/354 variables with an individually listed `Q86A` field), official merged codebook PDF p3 country `COUNTRY_ALPHA=11`, `RESPNO=GHA0001-GHA2400`, and PDF p53 `Q86A` 0 No, 1 Yes, 9 DK, 997 not asked, 998 refused, -1 missing; original Ghana national English questionnaire finalized 19 Apr 2012 actually fields this item at p20 and one card-selected adult 18+ Ghanaian citizen. These are documentary facts, not inferred sample frequencies.
+
+**Important antijoin:** Ghana country `2400×354` catalog is **not** the retained multi-country merged R5 `51587×348` source, expected SHA256 `c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651`; each can independently name `Q86A` without proving binary equivalence or actual Ghana R5 respondent-risk. Codebook `GHA0001–GHA2400` is value-range documentary metadata, not independently established uniqueness, valid count or actual denominator. The IHSN high-level 'Households' analysis label conflicts with its per-individual survey description; original adult interviewee remains Q86A's reported opinion subject, but requires exact source row binding.
+
+**Actual current source permission discovered:** HQ262's enacted *conditional custodian-mediated, header/dictionary-only* authority allows SHA/header metadata inspection of the retained Afro R5 SAV for explicitly named Ghana Q43 and related country/design metadata; it expressly prohibits respondent rows, computation and general source grants. That authority does **not automatically encompass new Q86A metadata/row use**. The exact Q86A source-header expansion is the narrowest viable next custodian act.
+
+**Actual existing operation inspected:** accepted GT1 R5 Q86A RAW unary exists, but is frozen to an **11-country 19,210-person risk set excluding Ghana**. Current code and tests do not issue Ghana Q86A. GT2 context permission is source/relation/use bound, not reusable. Original-source public-use rights remove an invented external research licensing barrier, but do not establish internal Rawlsing source-read, C11/person/routing, I03 predicate-grammar/target-use authority, independent expected set or B02 permission.
+
+**Disposition:** `DOCUMENTARY_GHANA_COUNTRY_Q86A_FIELD_POSITIVE__RETAINED_RELEASE_MATCH_AND_PERSON_ASKED_RISK_HELD__OPERATIVE_I03_ISSUER_NOT_FOUND__B02_HOLD`.
+
+**Productive next acts:** (1) scoped custodian approved metadata-only Q86A exact binary/header and original release equivalence; (2) separately authorized physical respondent/routing identity verification; (3) competent source-science and I03 target/operation signature; (4) independently issued pre-result expected set (v2 producer/consumer compatible); (5) then only a new B02 workload with real result and consumer receipts.
+
+**Deliverables:** `01` primary original release/physical science JSON; `02` bounded actual accepted authority/grant court; `03` B02 exact original source operation hold; `04` 17 executed JS logic-level documentary hostiles; `05` exact evidence Git blobs and URLs. No raw SAV/DTA, no new actor or publication permission, no canonical or semantic-pre-main mutations.

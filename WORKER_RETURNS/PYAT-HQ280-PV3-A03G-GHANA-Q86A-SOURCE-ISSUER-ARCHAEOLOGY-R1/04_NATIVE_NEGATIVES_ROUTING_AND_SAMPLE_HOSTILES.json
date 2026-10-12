@@ -1,0 +1,191 @@
+{
+  "schema": "PYAT_HQ280_PV3_A03G_NATIVE_NEGATIVES_ROUTING_SAMPLE_HOSTILES@1",
+  "documentary_baseline": "ISSUER_HELD_NOT_MEASURED_ZERO",
+  "tests": [
+    {
+      "id": "H01_OTHER_NATIONAL_FORM",
+      "mutation": {
+        "country": "ALG"
+      },
+      "expected": "GHANA_COUNTRY_FORM_MISMATCH",
+      "actual": "GHANA_COUNTRY_FORM_MISMATCH",
+      "pass": true,
+      "proof": "EXECUTED_JS_DOC_CONTRACT_ONLY__NOT_C11_I03_OR_REAL_SOURCE"
+    },
+    {
+      "id": "H02_CATALOG_COUNTRY_EDITION_AS_MERGED",
+      "mutation": {
+        "uses_retained_merged": false
+      },
+      "expected": "COUNTRY_EDITION_NOT_RETAINED_MERGED_RELEASE",
+      "actual": "COUNTRY_EDITION_NOT_RETAINED_MERGED_RELEASE",
+      "pass": true,
+      "proof": "EXECUTED_JS_DOC_CONTRACT_ONLY__NOT_C11_I03_OR_REAL_SOURCE"
+    },
+    {
+      "id": "H03_OLD_SAV_SHA_SWAP",
+      "mutation": {
+        "source_sha": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "expected": "RETAINED_SOURCE_SHA_MISMATCH",
+      "actual": "RETAINED_SOURCE_SHA_MISMATCH",
+      "pass": true,
+      "proof": "EXECUTED_JS_DOC_CONTRACT_ONLY__NOT_C11_I03_OR_REAL_SOURCE"
+    },
+    {
+      "id": "H04_Q86B_SWAPPED",
+      "mutation": {
+        "item": "Q86B"
+      },
+      "expected": "Q86_ITEM_SUBSTITUTION",
+      "actual": "Q86_ITEM_SUBSTITUTION",
+      "pass": true,
+      "proof": "EXECUTED_JS_DOC_CONTRACT_ONLY__NOT_C11_I03_OR_REAL_SOURCE"
+    },
+    {
+      "id": "H05_TWO_PERSON_HOUSEHOLD",
+      "mutation": {
+        "one_selected_person": false
+      },
+      "expected": "ORIGINAL_PERSON_HOUSEHOLD_CONFLATION",
+      "actual": "ORIGINAL_PERSON_HOUSEHOLD_CONFLATION",
+      "pass": true,
+      "proof": "EXECUTED_JS_DOC_CONTRACT_ONLY__NOT_C11_I03_OR_REAL_SOURCE"
+    },
+    {
+      "id": "H06_HOUSEHOLD_UNIT_FOR_Q86A",
+      "mutation": {
+        "household_as_subject": true
+      },
+      "expected": "ORIGINAL_PERSON_HOUSEHOLD_CONFLATION",
+      "actual": "ORIGINAL_PERSON_HOUSEHOLD_CONFLATION",
+      "pass": true,
+      "proof": "EXECUTED_JS_DOC_CONTRACT_ONLY__NOT_C11_I03_OR_REAL_SOURCE"
+    },
+    {
+      "id": "H07_DUPLICATE_OR_UNCHECKED_RESPNO",
+      "mutation": {
+        "unique_country_respno": false
+      },
+      "expected": "SOURCE_ROW_PERSON_KEY_NOT_AUTHENTICATED",
+      "actual": "SOURCE_ROW_PERSON_KEY_NOT_AUTHENTICATED",
+      "pass": true,
+      "proof": "EXECUTED_JS_DOC_CONTRACT_ONLY__NOT_C11_I03_OR_REAL_SOURCE"
+    },
+    {
+      "id": "H08_Q86A_NO_ASKED_FACT",
+      "mutation": {
+        "asked_routing_fact": false
+      },
+      "expected": "Q86A_ASKED_RISK_NOT_AUTHENTICATED",
+      "actual": "Q86A_ASKED_RISK_NOT_AUTHENTICATED",
+      "pass": true,
+      "proof": "EXECUTED_JS_DOC_CONTRACT_ONLY__NOT_C11_I03_OR_REAL_SOURCE"
+    },
+    {
+      "id": "H09_DK9",
+      "mutation": {
+        "value": 9
+      },
+      "expected": "Q86A_NON_SUBSTANTIVE_NATIVE_VALUE",
+      "actual": "Q86A_NON_SUBSTANTIVE_NATIVE_VALUE",
+      "pass": true,
+      "proof": "EXECUTED_JS_DOC_CONTRACT_ONLY__NOT_C11_I03_OR_REAL_SOURCE"
+    },
+    {
+      "id": "H10_NOT_ASKED997",
+      "mutation": {
+        "value": 997
+      },
+      "expected": "Q86A_NON_SUBSTANTIVE_NATIVE_VALUE",
+      "actual": "Q86A_NON_SUBSTANTIVE_NATIVE_VALUE",
+      "pass": true,
+      "proof": "EXECUTED_JS_DOC_CONTRACT_ONLY__NOT_C11_I03_OR_REAL_SOURCE"
+    },
+    {
+      "id": "H11_REFUSED998",
+      "mutation": {
+        "value": 998
+      },
+      "expected": "Q86A_NON_SUBSTANTIVE_NATIVE_VALUE",
+      "actual": "Q86A_NON_SUBSTANTIVE_NATIVE_VALUE",
+      "pass": true,
+      "proof": "EXECUTED_JS_DOC_CONTRACT_ONLY__NOT_C11_I03_OR_REAL_SOURCE"
+    },
+    {
+      "id": "H12_MISSING_MINUS1",
+      "mutation": {
+        "value": -1
+      },
+      "expected": "Q86A_NON_SUBSTANTIVE_NATIVE_VALUE",
+      "actual": "Q86A_NON_SUBSTANTIVE_NATIVE_VALUE",
+      "pass": true,
+      "proof": "EXECUTED_JS_DOC_CONTRACT_ONLY__NOT_C11_I03_OR_REAL_SOURCE"
+    },
+    {
+      "id": "H13_WEIGHTED_WITHOUT_ESTIMAND",
+      "mutation": {
+        "measure": "GOVERNED_WEIGHTED"
+      },
+      "expected": "WEIGHTED_DESIGN_AND_ESTIMAND_GRANT_MISSING",
+      "actual": "WEIGHTED_DESIGN_AND_ESTIMAND_GRANT_MISSING",
+      "pass": true,
+      "proof": "EXECUTED_JS_DOC_CONTRACT_ONLY__NOT_C11_I03_OR_REAL_SOURCE"
+    },
+    {
+      "id": "H14_UNAUTHORIZED_CO_TRAVEL",
+      "mutation": {
+        "operator": "JOINT"
+      },
+      "expected": "EXTRA_UNISSUED_OPERATION",
+      "actual": "EXTRA_UNISSUED_OPERATION",
+      "pass": true,
+      "proof": "EXECUTED_JS_DOC_CONTRACT_ONLY__NOT_C11_I03_OR_REAL_SOURCE"
+    },
+    {
+      "id": "H15_POSTRESULT_EXPECTED_SET",
+      "mutation": {
+        "expected_source": "I03_OUTPUT"
+      },
+      "expected": "POST_RESULT_FRONTIER_FORBIDDEN",
+      "actual": "POST_RESULT_FRONTIER_FORBIDDEN",
+      "pass": true,
+      "proof": "EXECUTED_JS_DOC_CONTRACT_ONLY__NOT_C11_I03_OR_REAL_SOURCE"
+    },
+    {
+      "id": "H16_OLD_GT2_DENOMINATOR",
+      "mutation": {
+        "respondent_set_size": 19210
+      },
+      "expected": "CROSS_COUNTRY_GT2_MEMBERSET_NOT_GHANA",
+      "actual": "CROSS_COUNTRY_GT2_MEMBERSET_NOT_GHANA",
+      "pass": true,
+      "proof": "EXECUTED_JS_DOC_CONTRACT_ONLY__NOT_C11_I03_OR_REAL_SOURCE"
+    },
+    {
+      "id": "H17_DOCUMENTARY_ITEM_AS_ISSUED",
+      "mutation": {
+        "authorizing_issuer": false
+      },
+      "expected": "ISSUER_HELD_NOT_MEASURED_ZERO",
+      "actual": "ISSUER_HELD_NOT_MEASURED_ZERO",
+      "pass": true,
+      "proof": "EXECUTED_JS_DOC_CONTRACT_ONLY__NOT_C11_I03_OR_REAL_SOURCE"
+    }
+  ],
+  "actually_executed_JS_documentary_tests": 17,
+  "all_pass": true,
+  "no_Python_claim": true,
+  "no_raw_read": true,
+  "key_distinctions": [
+    "9 is DK not substantive",
+    "997 not asked documented in codebook labels even when short Values omits",
+    "998 refused, -1 missing",
+    "2400 raw case/public RESPNO range not a valid response denominator",
+    "Households metadata label cannot change adult Q86A reported opinion respondent unit",
+    "IHSN 354 variable Ghana country file not byte-equal to 348 variable merged R5 source",
+    "11-country GT2 19,210 excludes Ghana",
+    "Absent issuer is not observed raw zero"
+  ],
+  "limitations": "Hostile logical contract checks cannot establish byte-level source correctness, owner rejection at runtime, independent source custodian, actual permission, or survey substantive effects."
+}

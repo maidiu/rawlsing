@@ -1,0 +1,171 @@
+{
+  "schema": "PYAT_HQ280_PV3_A03G_EVIDENCE_MANIFEST@1",
+  "repo": "maidiu/rawlsing",
+  "parent": "d0f82c92a9229ad33b4e6bb436adc0ae99343c6f",
+  "branch": "agent/rabochii-pyat-hq280-pv3-a03g-ghana-q86a-source-issuer-archaeology-r1",
+  "governing": "HQD-2026-10-10-280",
+  "evidence_external": [
+    {
+      "id": "P01",
+      "type": "ORIGINAL_OFFICIAL_NATIONAL_QUESTIONNAIRE",
+      "url": "https://www.afrobarometer.org/wp-content/uploads/2022/02/gha_r5_questionnaire.pdf",
+      "locator": "PDF index 0 title/finalized 19 Apr 2012; index 1 respondent selection; index 19 printed p20 Q86",
+      "facts": [
+        "2012-04-19 final English original Ghana R5",
+        "one card-selected 18+ Ghanaian citizen gender-eligible adult, no within-interview reselect",
+        "Q86A born Ghana one Ghanaian parent, 1 yes, 0 no, 9 DK; no printed Q86A-specific skip"
+      ],
+      "evidence_grade": "PUBLIC_OFFICIAL_PDF_TEXT_DIRECT_OPEN__SCREENSHOT_CACHE_MISS__PRIOR_HQ273_DOCUMENTARY_SUPPORT",
+      "byte_sha256": null
+    },
+    {
+      "id": "P02",
+      "type": "OFFICIAL_MERGED_R5_2015_CODEBOOK",
+      "url": "https://afrobarometer.org/wp-content/uploads/migrated/files/data/round-5/merged_r5_codebook.pdf",
+      "locator": "PDF index 2 COUNTRY_ALPHA and RESPNO; PDF index 52 Q86A (printed p53), screenshot index52 inspected",
+      "facts": [
+        "COUNTRY_ALPHA=11 Ghana",
+        "RESPNO value-label range GHA0001-GHA2400, NOT uniqueness/complete valid response proof",
+        "Q86A variable name, 0 No 1 Yes 9 DK 997 not asked 998 refused -1 missing; 997 absent from short Values list but in Value Labels",
+        "Q86A not asked in ALG EGY MRC SUD TUN"
+      ],
+      "evidence_grade": "OFFICIAL_SOURCE_PDF_TEXT_AND_PAGE52_SCREENSHOT_VERIFIED",
+      "byte_sha256": null
+    },
+    {
+      "id": "P03",
+      "type": "OFFICIAL_GHA_R5_PUBLIC_DATASET_PAGE",
+      "url": "https://www.afrobarometer.org/survey-resource/ghana-round-5-data-updated-july-2015/",
+      "locator": "web page lines 113-132",
+      "facts": [
+        "Ghana Round 5 2012 dataset officially offered as SAV",
+        "publisher notes last updated July 2015"
+      ],
+      "evidence_grade": "DIRECT_PUBLISHER_RESOURCE_WEBPAGE",
+      "downloaded": false,
+      "source_sav_sha256": null
+    },
+    {
+      "id": "P04",
+      "type": "INDEPENDENT_GHA_COUNTRY_DICTIONARY",
+      "url": "https://catalog.ihsn.org/catalog/8848/data-dictionary/F1",
+      "locator": "IHSN ID GHA_2012_AFB-R5_v01_M, data dictionary Q86A, 2400 cases / 354 variables",
+      "facts": [
+        "country-local public file cataloged as 2400 cases/354 variables",
+        "Q86A individually listed in separate country file",
+        "RESPNO listed; physical respondent values/uniqueness not independently read"
+      ],
+      "evidence_grade": "EXTERNAL_PUBLISHED_METADATA_NOT_RETAINED_SAV_BYTES",
+      "byte_sha256": null
+    },
+    {
+      "id": "P05",
+      "type": "INDEPENDENT_GHA_SAMPLE_AND_ACCESS_METADATA",
+      "url": "https://catalog.ihsn.org/catalog/8848",
+      "locator": "IHSN Sampling/Data Access and Metadata version sections",
+      "facts": [
+        "national frame sampled Ghanaian citizens 18+, one person per sampled household, multistage stratified EA/PSU sampling, gender quota/card selection",
+        "2400 respondents, response rate 72.9%, collection 8-27 May 2012",
+        "Public use files available to all, citation requirements",
+        "2020 documented DDI version 01; does NOT identify same byte release as Rawlsing retained 2015 merged SAV",
+        "IHSN metadata marks Unit of Analysis 'Households' whereas original instrument questions one selected individual: precise target is selected respondent, not household-level Q86A opinion",
+        "Pre-2010 frame noted here versus 2010 census references in other official Ghana reporting: population/design weighted inference not adjudicated"
+      ],
+      "evidence_grade": "INDEPENDENT_DATA_CATALOG_DOCUMENTARY",
+      "source_sav_sha256": null
+    },
+    {
+      "id": "P06",
+      "type": "ORIGINAL_PUBLISHER_PUBLIC_DATA_POLICY",
+      "url": "https://www.afrobarometer.org/data/data-usage-and-access-policy/",
+      "locator": "Data usage and access policy copyright/access",
+      "facts": [
+        "released surveys freely accessible with acknowledgment",
+        "restricted/geocoded and early access require application",
+        "not a Rawlsing EE01-04 source/operation grant"
+      ],
+      "evidence_grade": "DIRECT_PUBLISHER_POLICY"
+    },
+    {
+      "id": "P07",
+      "type": "OFFICIAL_GHA_R5_SAMPLE_SUMMARY",
+      "url": "https://www.afrobarometer.org/publication/ghana-round-5-summary-results-2012/",
+      "locator": "official source search extract",
+      "facts": [
+        "2400 adult respondents sampled 2012",
+        "four local survey languages including Akan, Ga/Adangbe, Ewe, Dagbani",
+        "sampling/field documentation; cannot assume English original was only fielded language form"
+      ],
+      "evidence_grade": "OFFICIAL_WEB_SEARCH_EXTRACT__FULL_PAGE_BLOCKED_NOT_REPLAYED"
+    }
+  ],
+  "git_input_blobs": [
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ280-PV3-A03-SOURCE-OPERATION-ISSUER-R1/00_RETURN.md",
+      "ref": "d7cba9819b635e16eaf5228f0c8c974ab58b6cbc",
+      "blob": "d63d874461b8ba8f4a48cb97b67526e15a1d2f64"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/HQ262_G1_DATA_ONLY_ENTRYPOINT_AND_GHANA_METADATA_INSPECTION_LIMITS_R1.md",
+      "ref": "d0f82c92a9229ad33b4e6bb436adc0ae99343c6f",
+      "blob": "4eebc4a8d68c5cf877965539150cf15a4dbf3ccf"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ262_FOUR_HQ261_RETURNS_G3_COURT_ADOPTED_G1_BOUNDARY_GHANA_DICTIONARY_LITS_CUSTODY_HOLD_R1.md",
+      "ref": "d0f82c92a9229ad33b4e6bb436adc0ae99343c6f",
+      "blob": "590655cf125c44cca83817958ab805a7bcff8ea1"
+    },
+    {
+      "path": "rawlsing_next/wave1_gt12_i03_positive_facts.py",
+      "ref": "d0f82c92a9229ad33b4e6bb436adc0ae99343c6f",
+      "blob": "067628dc6605f28be68bdcd86ef57b02a0db4348"
+    },
+    {
+      "path": "rawlsing_next/tests/test_wave1_gt12_i03_positive_facts.py",
+      "ref": "d0f82c92a9229ad33b4e6bb436adc0ae99343c6f",
+      "blob": "747857536bc1ea04e4ceac8ed79894acca864359"
+    },
+    {
+      "path": "rawlsing_next/gt12_permission_translation_authority.py",
+      "ref": "d0f82c92a9229ad33b4e6bb436adc0ae99343c6f",
+      "blob": "2eb1441e0ee5be3eef2567f8ffb57819fc47f0d6"
+    },
+    {
+      "path": "rawlsing_next/gt12_e2b_publication_governance_binding.py",
+      "ref": "d0f82c92a9229ad33b4e6bb436adc0ae99343c6f",
+      "blob": "5c0e730972ca7f31c3be92564c299822c431ccc5"
+    },
+    {
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "ref": "d0f82c92a9229ad33b4e6bb436adc0ae99343c6f",
+      "blob": "03facecf70890bfd13b80418620d274cbcd69d02"
+    },
+    {
+      "path": "data/ddm_build_copy/manifests/survey_microdata_reload_manifest_Afrobarometer.json",
+      "ref": "d0f82c92a9229ad33b4e6bb436adc0ae99343c6f",
+      "blob": "bc3244dde1da7893f38b05f008af834aed086db1"
+    }
+  ],
+  "inspect_grade": "Public original PDFs/web metadata and exact private Git source/authority blobs directly read; no original SAV/DTA or empirical row material decoded",
+  "pdf_source_document_sha_proven": false,
+  "official_pdf_screenshot_Q86A_codebook": true,
+  "official_pdf_screenshot_gha_questionnaire": false,
+  "omitted_sensitive_data": [
+    "no raw respondents",
+    "no source bytes",
+    "no external primary SAV download",
+    "no hidden local machine"
+  ],
+  "current_holds": [
+    "R5 retained binary/release equivalence and Q86A physical native dictionary",
+    "per respondent exact GHA selected adult/routing/valid risk",
+    "explicit internal source read/target operation grants",
+    "independently issuer sealed B02 expectation",
+    "A04S v2 producer/external provenance and A05 independent checker"
+  ],
+  "worker_grant_count": 0,
+  "executed_real_source_count": 0,
+  "executed_owner_runtime_count": 0,
+  "scripted_static_logic_checks": 17,
+  "terminal": "HQ280_PV3_A03G_GHANA_Q86A_SOURCE_RELEASE_AND_ISSUER_RECOVERED_OR_EXACT_HOLD__NO_SELF_GRANT__GITHUB_PUSHED"
+}

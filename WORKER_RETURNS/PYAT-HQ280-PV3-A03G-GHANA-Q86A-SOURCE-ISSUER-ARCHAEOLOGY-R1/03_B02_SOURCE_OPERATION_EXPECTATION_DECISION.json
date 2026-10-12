@@ -1,0 +1,89 @@
+{
+  "schema": "PYAT_HQ280_PV3_A03G_B02_SCIENTIFIC_SOURCE_OPERATION_DECISION@1",
+  "source_id": "SRC02",
+  "proposed_item": "Q86A",
+  "country": "GHA",
+  "operation": "RAW_UNARY_DISTRIBUTION",
+  "latest_new_evidence": [
+    "OFFICIAL_PUBLIC_GHA_R5_SAV_DOWNLOAD_PAGE",
+    "IHSN_GHA_2012_AFB-R5_v01_M_Q86A_DICTIONARY_2400x354",
+    "OFFICIAL_MERGED_R5_COUNTRY_ALPHA_11_RESPNO_GHA0001_GHA2400",
+    "OFFICIAL_MERGED_R5_Q86A_CODEBOOK_0_1_9_997_998_MINUS1",
+    "EXACT_HQ262_HEADER_ONLY_ADOPTED_SCOPE_IDENTIFIED"
+  ],
+  "original_preimage": {
+    "source_release_expected_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+    "source_alias": "Afro Barometer Round 5.sav",
+    "national_original": "English finalized 2012-04-19; local translations not independently inspected",
+    "item": "Q86A",
+    "substantive_values": [
+      0,
+      1
+    ],
+    "nonsubstantive_codes": [
+      9,
+      997,
+      998,
+      -1
+    ],
+    "country_alpha": 11,
+    "respondent": "one individually selected Ghanaian adult citizen 18+",
+    "eligible_risk_rule": "physical_source_identical && original_GHA_country && unique_same_selected_person && verified_asked_Q86A && value in 0/1",
+    "measure": "RAW",
+    "target_class": "UNARY_DISTRIBUTION",
+    "conditions": [],
+    "required_outputs": [
+      "I03 EmpiricalFact typed actual counts/denominator, including measured weak/null/zero",
+      "risk and exact source/operation/consumer refs",
+      "replay/independent acceptance"
+    ],
+    "excluded_uses": [
+      "national weighted prevalence",
+      "GT2 eleven-country recode",
+      "Q86B or other Q86 children",
+      "structural/causal/EE12/selected G0b/V3"
+    ]
+  },
+  "proposed_pre_result_work": [
+    {
+      "candidate_key": "SRC02_R5_GHA_Q86A_RAW_UNARY_ORIGINAL@1",
+      "scientifically_possible": "YES_ON_DOCUMENTARY_ORIGINAL",
+      "permission": "HELD",
+      "expected_consumer": "SOURCE_LOCAL_EMPIRICAL_FACT_REGISTER__SPECIFIC_CURRENT_REF_UNISSUED",
+      "issuer_preimage": null,
+      "pre_run_seal": null
+    }
+  ],
+  "partition": {
+    "PERMITTED_ISSUED": [],
+    "HELD": [
+      "RAW_GHA_Q86A_SOURCE_READ",
+      "GHA_C11_FIELD_PERSON_ROUTING",
+      "RAW_GHA_Q86A_UNARY_I03_OPERATION",
+      "PRE_RUN_EXPECTATION_AND_CONSUMER"
+    ],
+    "DENIED": [],
+    "SOURCE_INTRINSIC_NA_ADOPTED": []
+  },
+  "public_nonfielding_evidence": {
+    "countries_not_asked": [
+      "ALG",
+      "EGY",
+      "MRC",
+      "SUD",
+      "TUN"
+    ],
+    "authority_grade": "ORIGINAL_CODEBOOK_NOT_FIELDED_DOCUMENTARY__NOT_ISSUED_NA"
+  },
+  "executable_E": [],
+  "actual_B02_jobs": 0,
+  "actual_data_products": 0,
+  "readiness": "SOURCE_ITEM_PHYSICAL_DOCUMENTARY_POSITIVE__RETAINED_EXACT_BYTES_AND_PERSON_ROUTE_UNVERIFIED__I03_ISSUER_UNISSUED__B02_HOLD",
+  "next_act_order": [
+    "Bounded Q86A metadata authority and custodian exact existing retained source SHA/release",
+    "positive source-semantic + actual row key/routing/source read + exact I03 issuer",
+    "independently signed pre-run semantic expected set E with v2 A04/A05 compatibility",
+    "only then source-backed B02 and independent hostile acceptance"
+  ],
+  "not_inferred": "No Q86A respondent denominator from 2400 cases / name ranges, no empirical negative from absence of permission, no all35 completion from selected country"
+}

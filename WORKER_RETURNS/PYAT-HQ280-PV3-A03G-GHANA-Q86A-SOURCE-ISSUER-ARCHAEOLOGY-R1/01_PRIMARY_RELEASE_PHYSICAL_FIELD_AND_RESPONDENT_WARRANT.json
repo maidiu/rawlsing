@@ -1,0 +1,224 @@
+{
+  "schema": "PYAT_HQ280_PV3_A03G_PRIMARY_RELEASE_PHYSICAL_RESPONDENT_WARRANT@1",
+  "authority": "NONISSUING_DOCUMENTARY_SCIENCE",
+  "source": "SRC02_AFROBAROMETER_R5",
+  "candidate": "GHA_Q86A_RAW_UNARY",
+  "new_direct_documentary_witnesses": [
+    {
+      "id": "P01",
+      "type": "ORIGINAL_OFFICIAL_NATIONAL_QUESTIONNAIRE",
+      "url": "https://www.afrobarometer.org/wp-content/uploads/2022/02/gha_r5_questionnaire.pdf",
+      "locator": "PDF index 0 title/finalized 19 Apr 2012; index 1 respondent selection; index 19 printed p20 Q86",
+      "facts": [
+        "2012-04-19 final English original Ghana R5",
+        "one card-selected 18+ Ghanaian citizen gender-eligible adult, no within-interview reselect",
+        "Q86A born Ghana one Ghanaian parent, 1 yes, 0 no, 9 DK; no printed Q86A-specific skip"
+      ],
+      "evidence_grade": "PUBLIC_OFFICIAL_PDF_TEXT_DIRECT_OPEN__SCREENSHOT_CACHE_MISS__PRIOR_HQ273_DOCUMENTARY_SUPPORT",
+      "byte_sha256": null
+    },
+    {
+      "id": "P02",
+      "type": "OFFICIAL_MERGED_R5_2015_CODEBOOK",
+      "url": "https://afrobarometer.org/wp-content/uploads/migrated/files/data/round-5/merged_r5_codebook.pdf",
+      "locator": "PDF index 2 COUNTRY_ALPHA and RESPNO; PDF index 52 Q86A (printed p53), screenshot index52 inspected",
+      "facts": [
+        "COUNTRY_ALPHA=11 Ghana",
+        "RESPNO value-label range GHA0001-GHA2400, NOT uniqueness/complete valid response proof",
+        "Q86A variable name, 0 No 1 Yes 9 DK 997 not asked 998 refused -1 missing; 997 absent from short Values list but in Value Labels",
+        "Q86A not asked in ALG EGY MRC SUD TUN"
+      ],
+      "evidence_grade": "OFFICIAL_SOURCE_PDF_TEXT_AND_PAGE52_SCREENSHOT_VERIFIED",
+      "byte_sha256": null
+    },
+    {
+      "id": "P03",
+      "type": "OFFICIAL_GHA_R5_PUBLIC_DATASET_PAGE",
+      "url": "https://www.afrobarometer.org/survey-resource/ghana-round-5-data-updated-july-2015/",
+      "locator": "web page lines 113-132",
+      "facts": [
+        "Ghana Round 5 2012 dataset officially offered as SAV",
+        "publisher notes last updated July 2015"
+      ],
+      "evidence_grade": "DIRECT_PUBLISHER_RESOURCE_WEBPAGE",
+      "downloaded": false,
+      "source_sav_sha256": null
+    },
+    {
+      "id": "P04",
+      "type": "INDEPENDENT_GHA_COUNTRY_DICTIONARY",
+      "url": "https://catalog.ihsn.org/catalog/8848/data-dictionary/F1",
+      "locator": "IHSN ID GHA_2012_AFB-R5_v01_M, data dictionary Q86A, 2400 cases / 354 variables",
+      "facts": [
+        "country-local public file cataloged as 2400 cases/354 variables",
+        "Q86A individually listed in separate country file",
+        "RESPNO listed; physical respondent values/uniqueness not independently read"
+      ],
+      "evidence_grade": "EXTERNAL_PUBLISHED_METADATA_NOT_RETAINED_SAV_BYTES",
+      "byte_sha256": null
+    },
+    {
+      "id": "P05",
+      "type": "INDEPENDENT_GHA_SAMPLE_AND_ACCESS_METADATA",
+      "url": "https://catalog.ihsn.org/catalog/8848",
+      "locator": "IHSN Sampling/Data Access and Metadata version sections",
+      "facts": [
+        "national frame sampled Ghanaian citizens 18+, one person per sampled household, multistage stratified EA/PSU sampling, gender quota/card selection",
+        "2400 respondents, response rate 72.9%, collection 8-27 May 2012",
+        "Public use files available to all, citation requirements",
+        "2020 documented DDI version 01; does NOT identify same byte release as Rawlsing retained 2015 merged SAV",
+        "IHSN metadata marks Unit of Analysis 'Households' whereas original instrument questions one selected individual: precise target is selected respondent, not household-level Q86A opinion",
+        "Pre-2010 frame noted here versus 2010 census references in other official Ghana reporting: population/design weighted inference not adjudicated"
+      ],
+      "evidence_grade": "INDEPENDENT_DATA_CATALOG_DOCUMENTARY",
+      "source_sav_sha256": null
+    },
+    {
+      "id": "P06",
+      "type": "ORIGINAL_PUBLISHER_PUBLIC_DATA_POLICY",
+      "url": "https://www.afrobarometer.org/data/data-usage-and-access-policy/",
+      "locator": "Data usage and access policy copyright/access",
+      "facts": [
+        "released surveys freely accessible with acknowledgment",
+        "restricted/geocoded and early access require application",
+        "not a Rawlsing EE01-04 source/operation grant"
+      ],
+      "evidence_grade": "DIRECT_PUBLISHER_POLICY"
+    },
+    {
+      "id": "P07",
+      "type": "OFFICIAL_GHA_R5_SAMPLE_SUMMARY",
+      "url": "https://www.afrobarometer.org/publication/ghana-round-5-summary-results-2012/",
+      "locator": "official source search extract",
+      "facts": [
+        "2400 adult respondents sampled 2012",
+        "four local survey languages including Akan, Ga/Adangbe, Ewe, Dagbani",
+        "sampling/field documentation; cannot assume English original was only fielded language form"
+      ],
+      "evidence_grade": "OFFICIAL_WEB_SEARCH_EXTRACT__FULL_PAGE_BLOCKED_NOT_REPLAYED"
+    }
+  ],
+  "physical_releases": [
+    {
+      "kind": "RETAINED_GOVERNED_MERGED_SOURCE_CANDIDATE",
+      "path": "Afro Barometer Round 5.sav",
+      "sha256_expected": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+      "expected_rows_from_previous_metadata": 51587,
+      "expected_variables_from_previous_metadata": 348,
+      "identity_grade": "PRIOR_CUSTODIAN_HEADER_CLAIM__NO_BYTES_SHA256_RECHECKED_IN_A03G",
+      "current_host_file_found": false,
+      "current_host_absence_not_claimed": true,
+      "authority": "HQ262 CONDITIONAL CUSTODIAN HEADER_METADATA_ONLY, NOT ROW READ"
+    },
+    {
+      "kind": "COUNTRY_ORIGINAL_PUBLISHED_STUDY_FILE",
+      "public_study_id": "GHA_2012_AFB-R5_v01_M",
+      "dictionary_file": "gha_r5_data",
+      "cases_in_independent_catalog": 2400,
+      "variables_in_independent_catalog": 354,
+      "official_download_page": "https://www.afrobarometer.org/survey-resource/ghana-round-5-data-updated-july-2015/",
+      "byte_sha256": null,
+      "identity_grade": "COUNTRY_FILE_DOCUMENTED__NO_BINARY_FETCH_OR_HASH__NOT_SAME_OBJECT_AS_RETAINED_MERGED"
+    },
+    {
+      "kind": "OFFICIAL_MERGED_CODEBOOK",
+      "reference": "https://afrobarometer.org/wp-content/uploads/migrated/files/data/round-5/merged_r5_codebook.pdf",
+      "reported_prior_sha256_for_2022_url": "7e02c649c8ae69c61f88c116fdad92353b7f06cba9e160d9ae4be18e72276735",
+      "same_bytes_as_alt_2015_codebook": "NOT_CHECKED",
+      "content": "Direct original printed Q86A code definitions + Ghana country and respondent value-label identifiers"
+    }
+  ],
+  "release_antijoin": {
+    "country_vs_merged_fields": "354 vs 348 physical variable counts; different release granularity and extra country-specific indicators plausible; NOT a contradiction proof and NOT equal SHA",
+    "country_dataset_vs_merged_hash": "NO_SHA_AND_NO_ACTUAL_FIELD_UNIVERSE_JOIN",
+    "item_label_vs_merged_physical": "Official merged dictionary Q86A; Ghana country separate dictionary Q86A; retained merged R5 SAV variable Q86A verified earlier limited scope, but authenticated specific Ghana Q86A value and row exposure not demonstrated by this worker",
+    "unproved": "Exact source branch / release version / file label, metadata byte source, country selector, field raw type and missingness, observed GHA rows, row/person uniqueness, per-record Q86A asked/substantive risk",
+    "different_country_not_joint": "GHA not part of accepted 11-country GT2 19,210 group"
+  },
+  "original_item": {
+    "source_item": "Q86A",
+    "original_question": "Opinion whether person born in Ghana with one Ghanaian and one non-Ghanaian parent should have Ghanaian citizenship",
+    "original_kind": "REPORTED_NORMATIVE_OPINION_NOT_GHANA_CITIZENSHIP_LAW",
+    "original_form": "Ghana original English finalized 2012-04-19, printed p20 PDF index19",
+    "country_languages": "English original located; four local field translations publicly reported but their exact child forms not inspected; translation/form alignment remains a source-science caveat",
+    "substantive": [
+      {
+        "code": 0,
+        "meaning": "NO"
+      },
+      {
+        "code": 1,
+        "meaning": "YES"
+      }
+    ],
+    "negative": [
+      {
+        "code": 9,
+        "kind": "DONT_KNOW"
+      },
+      {
+        "code": 997,
+        "kind": "NOT_ASKED"
+      },
+      {
+        "code": 998,
+        "kind": "REFUSED"
+      },
+      {
+        "code": -1,
+        "kind": "MISSING"
+      }
+    ],
+    "special_not_a_vote": "Q86A opinion, not a citizenship-status case or proxy response",
+    "codebook_short_values_missing_997": true
+  },
+  "respondent": {
+    "original_sampling_unit": "One 18+ Ghanaian citizen of selected gender in selected household, selected by card",
+    "questionnaire_says": "No individual substitution; substitute households; no individual reselection between Q86A and other main questionnaire questions",
+    "data_catalog_unit_of_analysis_label": "Households",
+    "conflict_handling": "Catalog label does not authorize treating Q86A as household opinion; exact person-to-row identity must be governed by custodian",
+    "documentary_keys": {
+      "merged_country_alpha_value_for_GHA": 11,
+      "merged_responder_range_label": "GHA0001-GHA2400",
+      "source_reported_fields": [
+        "COUNTRY",
+        "COUNTRY_ALPHA",
+        "RESPNO"
+      ],
+      "derived_alpha3_not_physical": true
+    },
+    "observed_unique_pair_in_retained_file": false,
+    "observed_person_routing_refs": null,
+    "respondent_raw_keys_committed": false
+  },
+  "risk": {
+    "pre_outcome_eligibility": "EXACT_RETAINED_R5_RELEASE && EXACT_GHA_COUNTRY_RECODE && ORIGINAL_FIELD_Q86A_EXPOSURE && SELECTED_18PLUS_GHANAIAN_ADULT && SAME_AUTHENTICATED_PERSON && RAW_Q86A_IN_{0,1}",
+    "sampling_n_reported": 2400,
+    "actual_Q86A_eligible_n": null,
+    "actual_valid_substantive_n": null,
+    "respondent_member_hash": null,
+    "universe": "RAW survey sample descriptive: selected eligible individual interviewees with Q86A valid substantive response",
+    "not_population_share": true,
+    "weights_not_applied": true,
+    "design_uncertainty": "NOT_QUANTIFIED",
+    "missing_not_at_random_cannot_assume": "Do not treat 2400 / range GHA0001-GHA2400 as Q86A raw denominator or a proof of complete coverage",
+    "exclude_nonsubstantive": [
+      9,
+      997,
+      998,
+      -1
+    ],
+    "routing": "No Ghana original Q86A-specific printed skip; per-row asked exposure remains held",
+    "legitimate_future_null": "If issuer + true observed data eventually yields null/empty it must be measured typed product, not current auth hold"
+  },
+  "public_source_rights": {
+    "available": "OFFICIAL_GHANA_PUBLIC_USE_DATA",
+    "citation_required": true,
+    "external_permission": "Public-use rights distinguish normal data access from restricted/geocoded early-access application",
+    "internal_raw_source_read": "NOT_ISSUED_BY_PUBLIC_POLICY_ALONE",
+    "internal_I03_operation": "NOT_ISSUED_BY_PUBLIC_POLICY_ALONE"
+  },
+  "no_external_pdf_hash_invented": true,
+  "no_raw_microdata_executed": true,
+  "no_new_authority": true
+}
