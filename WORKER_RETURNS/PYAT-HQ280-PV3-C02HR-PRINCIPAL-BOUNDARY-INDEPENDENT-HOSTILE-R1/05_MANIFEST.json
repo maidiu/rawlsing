@@ -1,0 +1,106 @@
+{
+ "schema": "HQ280_PV3_C02HR_MANIFEST@1",
+ "reviewer_branch": "agent/reviewer-pyat-hq280-pv3-c02hr-separate-principal-hostile-r1",
+ "reviewer_head": "f279541a53f2fd996ea8074b754928c2b96720e9",
+ "candidate": "82309fe17c70324217382d0550ce1cc591e39eae",
+ "module_blob": "eabb25c8a2b50256cf3fe85c1f6e7376da9e19f5",
+ "authority": {
+  "governing": "HQD-2026-10-10-280",
+  "canonical": "a70a069fa948e0f3c041b389edcc732b6b948a4f",
+  "pre_main": "1f47063c3205a45888b3c55e81e7485943ed1390"
+ },
+ "security_grade": "NOT_A_TRUST_BOUNDARY__DEMO_ILLUSTRATION_ONLY",
+ "forgery_succeeded": true,
+ "trust_root_caller_supplied": true,
+ "keypair_fixed_constant": true,
+ "candidate_hostiles_inert_stubs": true,
+ "cases": [
+  {
+   "id": "F1",
+   "what": "toy RSA key is a hardcoded constant",
+   "observed": {
+    "n": 3233,
+    "e": 17,
+    "d": 2753,
+    "primes": "p=61,q=53",
+    "issuer_public_key": "rsa:3233:17"
+   },
+   "verdict": "FAIL__FIXED_KNOWN_KEYPAIR"
+  },
+  {
+   "id": "F2",
+   "what": "honest credential verifies against the shared root",
+   "observed": {
+    "honest_verifies": true
+   },
+   "verdict": "INFO__baseline"
+  },
+  {
+   "id": "F3",
+   "what": "REAL forgery: re-sign a substituted credential with the known private key",
+   "observed": {
+    "outcome": "ACCEPTED__FORGERY_SUCCEEDED",
+    "note": "no access to issuer object beyond the public source constant"
+   },
+   "verdict": "FAIL__FORGERY_ACCEPTED"
+  },
+  {
+   "id": "F4",
+   "what": "root swap by CONSTRUCTION (the candidate's swap_root stub returns False instead of trying)",
+   "observed": {
+    "outcome": "ACCEPTED__SELF_ANCHORED_VERIFIER_WORKS",
+    "attacker_root_equals_honest_root": true,
+    "candidate_swap_root_returned": false,
+    "candidate_self_register_returned": false
+   },
+   "verdict": "FAIL__ROOT_IS_A_CALLER_ARGUMENT"
+  },
+  {
+   "id": "F5",
+   "what": "candidate's own forge_credential is a stub, not an adversarial attempt",
+   "observed": {
+    "signature_is_valid_rsa_integer": false,
+    "signature_prefix": "094aec33c6d2a18c34f94e8e",
+    "swap_root_body": "returns False unconditionally",
+    "self_register_issuer_body": "returns False unconditionally"
+   },
+   "verdict": "FAIL__INERT_STUBS_NOT_ADVERSARIAL_TESTS"
+  }
+ ],
+ "holds": [
+  "no competent issuer (fixed shared demo key + caller-supplied root)",
+  "REAL_EXECUTION / production credential issuance NOT GRANTED",
+  "G0b / CURRENT / selected-service NOT GRANTED",
+  "B5/M2 caller-supplied trust boundary OPEN (unchanged)"
+ ],
+ "not_executed_UNKNOWN": [
+  "HSM/keystore integration",
+  "key rotation",
+  "revocation-list authority",
+  "multi-principal distinct-key separation"
+ ],
+ "deliverables": {
+  "00_RETURN.md": {
+   "sha256": "524fb6148dd81e2b9babf50ead52ede91a7aba0fa57a669a5ad15703ef76ff95",
+   "bytes": 4501
+  }
+ },
+ "repro": {
+  "c02hr_forge_attack.py": {
+   "sha256": "9a73aeb94604ad09a340cae8c628832661d0a37559dabe12fd1e10cd7a6f40d3",
+   "bytes": 4513
+  },
+  "owner_diff_baseline.txt": {
+   "sha256": "f863fb843e4524cc45fc090d2c830b835977cc0f463a092202ade420dc3cab48",
+   "bytes": 819
+  },
+  "results.json": {
+   "sha256": "0cd374e3b947db62ff928a02f5fc7ee08281593ee18e974676d5837a36011c2f",
+   "bytes": 1820
+  }
+ },
+ "accepted_owner_edited": false,
+ "production_credential_issued": false,
+ "no_self_adoption": true,
+ "terminal": "HQ280_PV3_C02HR_PRINCIPAL_BOUNDARY_INDEPENDENT_HOSTILE_RETURNED__NONISSUING__GITHUB_PUSHED"
+}

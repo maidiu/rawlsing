@@ -1,0 +1,63 @@
+{
+ "schema": "HQ280_PV3_C02HR_FORGE_ATTACK@1",
+ "cases": [
+  {
+   "id": "F1",
+   "what": "toy RSA key is a hardcoded constant",
+   "observed": {
+    "n": 3233,
+    "e": 17,
+    "d": 2753,
+    "primes": "p=61,q=53",
+    "issuer_public_key": "rsa:3233:17"
+   },
+   "verdict": "FAIL__FIXED_KNOWN_KEYPAIR"
+  },
+  {
+   "id": "F2",
+   "what": "honest credential verifies against the shared root",
+   "observed": {
+    "honest_verifies": true
+   },
+   "verdict": "INFO__baseline"
+  },
+  {
+   "id": "F3",
+   "what": "REAL forgery: re-sign a substituted credential with the known private key",
+   "observed": {
+    "outcome": "ACCEPTED__FORGERY_SUCCEEDED",
+    "note": "no access to issuer object beyond the public source constant"
+   },
+   "verdict": "FAIL__FORGERY_ACCEPTED"
+  },
+  {
+   "id": "F4",
+   "what": "root swap by CONSTRUCTION (the candidate's swap_root stub returns False instead of trying)",
+   "observed": {
+    "outcome": "ACCEPTED__SELF_ANCHORED_VERIFIER_WORKS",
+    "attacker_root_equals_honest_root": true,
+    "candidate_swap_root_returned": false,
+    "candidate_self_register_returned": false
+   },
+   "verdict": "FAIL__ROOT_IS_A_CALLER_ARGUMENT"
+  },
+  {
+   "id": "F5",
+   "what": "candidate's own forge_credential is a stub, not an adversarial attempt",
+   "observed": {
+    "signature_is_valid_rsa_integer": false,
+    "signature_prefix": "094aec33c6d2a18c34f94e8e",
+    "swap_root_body": "returns False unconditionally",
+    "self_register_issuer_body": "returns False unconditionally"
+   },
+   "verdict": "FAIL__INERT_STUBS_NOT_ADVERSARIAL_TESTS"
+  }
+ ],
+ "verdict": {
+  "forgery_with_known_key_succeeded": true,
+  "trust_root_is_caller_supplied": true,
+  "keypair_is_a_fixed_constant": true,
+  "candidate_hostiles_are_inert_stubs": true,
+  "grade": "NOT_A_TRUST_BOUNDARY__DEMO_ILLUSTRATION_ONLY"
+ }
+}
