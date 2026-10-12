@@ -27,3 +27,20 @@ The **separate requested new productive V2/B02 edge** `original item → source-
 - This report is a bounded GitHub documentary investigation, with 04 documentary hostiles **not runtime executions**, and 05 exact provenance manifest.
 
 **Terminal:** `HQ281_A06_BOUNDED_PRODUCT_OR_EXACT_HOLD__GITHUB_PUSHED` conditional on verified remote commit.
+## A06 completion supplement — independent bounded verification
+
+**Decision:** A06 is resolved to one inherited source-backed CONTEXT consumer positive and precise HOLD on new B02; **NOT** three issued consumer paths. The commission authorizes a scientific HOLD, but not invention of the missing operation/target-use issuers.
+
+**Nine-family crosscheck:** 06_ALL35_NINE_FAMILY_SCREEN.json independently joins the sealed 35-wave/9-family source census to the A01 35-wave historical implementation summary. All 18,276 historical implementations and 13,270 measurement-candidate implementations are retained as census figures, **not** 18,276 independent original administered-item permissions. Every unevidenced other scope remains UNKNOWN_NOT_INTRINSIC_NA. The 63 within-family temporal pairs remain syntactic.
+
+**A01 conflict-count distinction discovered:** 10,457 is the global number of *distinct implementations* reporting alternate carrier conflict; 10,479 is the sum of A01 *per-wave* alternative-conflict incidences. LiTS III even has 1,304 such reported incidences across 1,290 implementations. The two counts are not treated as equal, nor are they silently corrected or converted into permissions.
+
+**Actually executed read-only court:** 07_EXECUTED_SOURCE_FREE_CONTRACT_COURT.json records 36/36 actual documentary and owner-source-text cross-checks and 18/18 deliberate mutation refusals against exact GitHub blobs: all sources, item-role/Q86B-Q86A ordering, empirical/query/fact and five authority hashes, 19,210 risk excluding Ghana, RAW unweighted estimand, LiTS marginal/joint distinction, WVS retained child holds, C11/Field Forge/GT12 guard *presence*. A Node 18+ local reproduction is committed at repro/validate_source_free_contract.mjs. Owner-code substring checks are NOT Python owner-function invocations, and the original 04_HOSTILES.json's 15 documentary expected refusals remain **unexecuted Python hostiles**; the 18 new mutation refusals concern the separate documentary contract court.
+
+**Exact consumer graph:** existing accepted SRC02 R5 source/item/operation/target-use authorization → accepted retained GT2 I03 query + fact → previously executed source-free rehydration → Field Forge relation and PRE-V3 admission → V554 F1 → V557 ALLOW_CONTEXT_ONLY → V558 RESOLUTION_COMPLETE/CONTEXT. This is an inherited real consumer witness, **not a new C11/B02 source read or new batch**. Neither LiTS same-person empirical FF01 nor WVS7 master Q291 gives a second or third authorized Field Forge/C1/F8 consumer. EVS Austria A048 original wording and Uganda R9 Q3 original design evidence are screened but do not establish complete issuance.
+
+**New desired chain remains separately blocked:** physical source → separately warranted C11 release → class-scoped Route B/I03 (I05 only when eligible) → genuinely independently pre-execution custodied E → A04TU no-drop → B01E durable REAL_EXECUTION → actually authenticated new consumer. The **first source/operation act** needed is the separately competent GT12_R5_Q86B_Q86A_CLASS_SCOPED_B02_SOURCE_READ_AND_RAW_I03_REPLAY_PERMISSION_R1, plus later independent E custodian, protocol/idempotence and consumer acts. None was issued.
+
+**Execution ceiling:** no raw SAV/DTA or respondent data read; zero Python producer/owner/pytest runs, new empirical queries, C11 releases, batches, new consumer executions or self-issued permissions/adoption. 36 source-free checks and 18 mutation tests were actually run.
+
+**Terminal:** HQ281_A06_BOUNDED_PRODUCT_OR_EXACT_HOLD__GITHUB_PUSHED — bounded positive/exact issuer HOLD, not full new-source-to-consumer execution.
