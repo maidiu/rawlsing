@@ -1,0 +1,70 @@
+{
+ "schema": "HQ280_PV3_A04SR_MANIFEST@1",
+ "reviewer_branch": "agent/reviewer-pyat-hq280-pv3-a04sr-v2-issuer-oracle-hostile-r1",
+ "reviewer_head": "37c486099fd9aee36fbc33c8a64cd00e10c594bb",
+ "candidate": "56574bec2176df7fc95d4b877dfab79469de9c03",
+ "authority": {
+  "governing": "HQD-2026-10-10-280",
+  "canonical": "a70a069fa948e0f3c041b389edcc732b6b948a4f",
+  "pre_main": "1f47063c3205a45888b3c55e81e7485943ed1390"
+ },
+ "deliverables": {
+  "00_RETURN.md": {
+   "sha256": "841be172caa2251e6620131b57bf0d42c9cf01c746d0558fd78a60dbfc038560",
+   "bytes": 6693
+  },
+  "01_V2_IDENTITY_AND_TRUE_ORACLE_ADAPTER.md": {
+   "sha256": "d187435c76229aa948d17751742fa5ae01dfef5857529f93f30b6d17f8db9b97",
+   "bytes": 1582
+  },
+  "02_ACTUAL_RUNS_AND_POSITIVES.json": {
+   "sha256": "26294fb28a347759a0ff720977e1f82e02b62ac5b4ce03175d2c058c5028d407",
+   "bytes": 1400
+  },
+  "03_FORGED_ISSUER_CUSTODIAN_CONSUMER_HOSTILES.json": {
+   "sha256": "00191dd0b370ed1b01bc5d881c090b30f74266a61f66b43a58fc77f4380276e8",
+   "bytes": 2039
+  },
+  "04_EXACT_GATES_TO_B02_AND_ADOPTION.md": {
+   "sha256": "ab07190d92dea6f1d45d9c84bda85d4a9022d673a74f1617cdaf485cb0d29a2e",
+   "bytes": 1955
+  }
+ },
+ "repro": {
+  "a04_41_suite.log": {
+   "sha256": "87e00f21237276d80dd2f8a84e33115cd80c811f22f82bf27f51ab6c30c11b48",
+   "bytes": 99
+  },
+  "a04s_26_suite.log": {
+   "sha256": "8dbee07cf1e034843ae299b24b1ac0609aff9e5d358c0802d2b14350531a54b2",
+   "bytes": 99
+  },
+  "a04sr_probe.py": {
+   "sha256": "263c0f40e15314bb6d14f6c1a11bbefed0069453d822581e3d7a17269cbc5892",
+   "bytes": 3071
+  },
+  "a04sr_probe_results.json": {
+   "sha256": "ca7ad40ed534e895429d69c5b715f9f32fc95dbf46b3315bd78397b9eac51909",
+   "bytes": 2328
+  },
+  "a05_oracle.py": {
+   "sha256": "81c74691d576b89a5569efcffd929ef8c995c6261362bad243d235ded8fe96d4",
+   "bytes": 10024
+  },
+  "v2_module.py": {
+   "sha256": "b22a0843fe21b711ceacc05dca93afd277a47d10030df935f2522ee581f5fae4",
+   "bytes": 45136
+  }
+ },
+ "grades": {
+  "TECHNICAL": "narrow acceptance",
+  "INDEPENDENT_EXPECTATION_PROVENANCE": "FAIL / NOT PROVEN",
+  "REAL_CONSUMER": "MODELLED_NOT_EXECUTED",
+  "SOURCE_ISSUER": "NOT ESTABLISHED"
+ },
+ "central_answer": "NOT_CLOSED__INCOMPATIBILITY_MOVED_INTO_A_TRANSLATION_LAYER",
+ "owner_code_edited": false,
+ "raw_source_executed": false,
+ "no_self_adoption": true,
+ "terminal": "HQ280_PV3_A04SR_V2_INDEPENDENT_SOURCEFREE_RUNTIME_AND_PROVENANCE_HOSTILE_RETURNED__NONISSUING__GITHUB_PUSHED"
+}

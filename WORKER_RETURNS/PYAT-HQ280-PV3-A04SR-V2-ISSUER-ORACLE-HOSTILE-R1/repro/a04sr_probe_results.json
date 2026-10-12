@@ -1,0 +1,61 @@
+{
+ "schema": "HQ280_PV3_A04SR_PROBE@1",
+ "checks": [
+  {
+   "id": "P0",
+   "name": "v2 exposes semantic_operation_key",
+   "available": false
+  },
+  {
+   "id": "P0b",
+   "name": "candidate v2 key functions",
+   "names": [
+    "DISPATCH_TO_SEMANTICS",
+    "SEMANTIC_OP_CLASSES",
+    "SEMANTIC_TO_DISPATCH",
+    "semantic_hash",
+    "v2_bind_semantic_to_dispatch",
+    "v2_dispatch_operation_key",
+    "v2_semantic_operation_key"
+   ]
+  },
+  {
+   "id": "P1",
+   "name": "SEMANTIC_TO_DISPATCH mapping",
+   "mapping": {
+    "UNARY_DISTRIBUTION": "I03_UNARY_OR_JOINT_QUERY",
+    "PAIR_RESPONSE_COTRAVEL": "I03_UNARY_OR_JOINT_QUERY",
+    "NONSCALAR_TOPOLOGY_PRESERVATION": "I03_UNARY_OR_JOINT_QUERY",
+    "BOUNDED_DISCOVERY": "I05_BOUNDED_DISCOVERY"
+   },
+   "distinct_semantic": 4,
+   "distinct_dispatch": 2,
+   "many_semantic_to_one_dispatch": {
+    "I03_UNARY_OR_JOINT_QUERY": 3
+   },
+   "fail_closed_on_multiple": false,
+   "note": "multiple semantic operations collapse onto one dispatch class; the mapping is not injective, so a dispatch job cannot recover which semantic operation it came from"
+  },
+  {
+   "id": "P2",
+   "name": "v2_to_a05_universe present",
+   "present": true,
+   "schema": "HQ280_PV3_A04S_CANONICAL_V2@1.0.0"
+  },
+  {
+   "id": "P3",
+   "name": "declaration classes",
+   "classes": [
+    "V2ExpectedWorkDeclaration"
+   ]
+  }
+ ],
+ "decisive_assessment": {
+  "translation_is_derivation": false,
+  "translation_docstring": "'This is a TRANSLATION, not derivation'",
+  "what_it_does": "copies d.expected_work_key (v2 preimage, includes measure_kind + condition_order) VERBATIM into an A05-shaped record with operation_key=d.semantic_operation_key",
+  "why_that_cannot_close_the_defect": "A05's verify() compares manifest job keys against keys A05 computes itself from {item_k,op_k,authority,risk,topology,version}. v2's preimage differs, so the translated keys cannot equal A05's keys; an A05 run over them fails set equality, and forcing a pass would require rewriting the oracle's keys - exactly the coercion A04R forbade",
+  "verdict": "NOT_CLOSED__INCOMPATIBILITY_MOVED_INTO_A_TRANSLATION_LAYER",
+  "honest_resolution": "SCHEMA_VERSIONED_SUCCESSOR_WITH_A_VERIFIED_PREIMAGE_MAPPING (each v2 semantic key must be paired with an A05-scope key by an explicit, verified, injective mapping - not by copying)"
+ }
+}

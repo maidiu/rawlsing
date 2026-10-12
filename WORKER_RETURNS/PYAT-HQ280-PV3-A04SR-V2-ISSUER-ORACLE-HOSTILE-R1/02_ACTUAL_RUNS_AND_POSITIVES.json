@@ -1,0 +1,16 @@
+{"schema":"HQ280_PV3_A04SR_ACTUAL_RUNS_AND_POSITIVES@1",
+ "reviewer_head":"37c486099fd9aee36fbc33c8a64cd00e10c594bb",
+ "environment":{"python":"3.11.3","pytest":"9.1.1","platform":"macOS 13.7.8 x86_64",
+   "worktree":"/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq280-a04sr"},
+ "blobs":{"a04s_v2_module":"08bb75c431d3352cb0d17e9a65f7d855b4d35e59","a04s_v2_commit":"56574bec2176df7fc95d4b877dfab79469de9c03",
+   "a04_commit":"cbe047cf15a2285b0e918bd77640037f7bec63ef","a05_commit":"9491d0296c95ee2942fe80eadc6aa9f54b07c634",
+   "reviewer_prior_finding":"fca056a3e8497a3acd6c6de597c269e3000df875"},
+ "runs":[
+  {"id":"a04s_v2_26","collected":26,"passed":26,"failed":0,"exit_code":0,"log":"repro/a04s_26_suite.log"},
+  {"id":"a04_41","collected":41,"passed":41,"failed":0,"exit_code":0,"log":"repro/a04_41_suite.log"},
+  {"id":"interop_provenance_probe","exit_code":0,"log":"repro/a04sr_probe_results.json"}],
+ "positives_credited":["v2 is a real, self-consistent contract; 26/26 of its own tests pass",
+   "v2 carries measure_kind (RAW/GOVERNED_WEIGHTED) and condition_order (q(C|A) vs q(C|A,B)) in its own preimage — identities A05 cannot express",
+   "v2 does not falsely reuse A05's schema token (unlike A04)",
+   "A04 root remains green at 41/41 under this reviewer"],
+ "terminal":"HQ280_PV3_A04SR_V2_INDEPENDENT_SOURCEFREE_RUNTIME_AND_PROVENANCE_HOSTILE_RETURNED__NONISSUING__GITHUB_PUSHED"}
