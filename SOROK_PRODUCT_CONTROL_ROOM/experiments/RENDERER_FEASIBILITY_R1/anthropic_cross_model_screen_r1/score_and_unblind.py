@@ -130,6 +130,9 @@ def report():
         hard=Counter(h for x in items for h in x["hard_fail_codes"])
         means={d:round(sum(x["scores"][d] for x in items)/len(items),3) for d in DIMENSIONS}
         valid=sum(x["corrected_structural_status"]=="SCHEMA_VALID" for x in items)
+        schemas=sum(x["source_schema_status"]=="EXACT_ORIGINAL_SCHEMA_VALID" for x in items)
+        original_counts=Counter(x["original_structural_status"] for x in items)
+        corrected_counts=Counter(x["corrected_structural_status"] for x in items)
         def total(field):
             vals=[x["provider_usage"][field] for x in items
                   if isinstance(x["provider_usage"].get(field),(int,float))]
