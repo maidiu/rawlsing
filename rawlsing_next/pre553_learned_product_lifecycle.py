@@ -2956,6 +2956,8 @@ class LearnedProductLifecycleExecutor:
             raise LearnedProductLifecycleError("lifecycle checkpoint schema mismatch")
         if payload.get("contract_id") != LIFECYCLE_CONTRACT_ID:
             raise LearnedProductLifecycleError("lifecycle contract id mismatch")
+        if payload.get("runtime_schema") != LIFECYCLE_RUNTIME_SCHEMA:
+            raise LearnedProductLifecycleError("lifecycle runtime schema mismatch")
 
         executor = cls()
         for row in payload.get("repository_subjects", ()):
@@ -3019,7 +3021,18 @@ class LearnedProductLifecycleExecutor:
                 raise LearnedProductLifecycleConflict(
                     f"checkpoint {name} must be canonical pair list"
                 )
-            return {row[0]: row[1] for row in raw}
+            result: dict[str, Any] = {}
+            for row in raw:
+                if not isinstance(row, (list, tuple)) or len(row) != 2:
+                    raise LearnedProductLifecycleConflict(
+                        f"checkpoint {name} contains invalid pair"
+                    )
+                if row[0] in result:
+                    raise LearnedProductLifecycleConflict(
+                        f"checkpoint {name} repeats key"
+                    )
+                result[row[0]] = row[1]
+            return result
 
         executor._publication = _pairs("publication")
         executor._validity = _pairs("validity")
