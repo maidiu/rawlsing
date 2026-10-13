@@ -1,0 +1,61 @@
+{
+  "schema": "PYAT_HQ293_I01K_RETURN_INTAKE@1",
+  "asof": "2026-10-13",
+  "private_repo": "maidiu/rawlsing",
+  "canonical": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+  "ref_state": {
+    "branch": "agent/rabochii-pyat-r3-hq292-i01k-typed-selection-restore-r1",
+    "sealed_startup": "6ef78d4e4fab1ca65bb4850dbef8d4e08eb29f3e",
+    "direct_remote_head": "a1dc59411faaee01b3acb1c4f08b2e6f09d56028",
+    "compare": "ahead 1 behind 0",
+    "changed_impl": "rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py",
+    "source_tests": [
+      "rawlsing_next/tests/test_hq292_i01k_typed_selection_restore.py",
+      "WORKER_RETURNS/PYAT-R3-HQ291-S00V3X-INDEPENDENT-OFFLINE-EXECUTION-R1/repro/test_hq291_s00v3x_typed_index.py"
+    ]
+  },
+  "observed_patch": "Replaces unguarded next(...) in restore_product selection-key resolution with shape check, scan for matching lifecycle selection_key refs and explicit I01Error('SAVED_SELECTION_KEY_IDENTITY_MISMATCH') for no match or multiple matches, before Product construction. At exact published source shape check uses {'record_ref','kind'} any-one presence and then exact equality; partial shape therefore usually fails by mismatch; not a full schema validation of all nested key entries.",
+  "reported_tests": [
+    {
+      "suite": "frozen S00V3X typed index",
+      "passed": 1,
+      "failed": 0,
+      "exit": 0
+    },
+    {
+      "suite": "new I01K author 7",
+      "passed": 7,
+      "failed": 0,
+      "exit": 0
+    },
+    {
+      "suite": "I01 author 10",
+      "passed": 10,
+      "failed": 0,
+      "exit": 0
+    },
+    {
+      "suite": "original I01R independent 26",
+      "passed": 25,
+      "failed": 1,
+      "exit": 1,
+      "failed_test": "test_copied_module_or_dynamic_hash_is_not_frozen_owner",
+      "reason": "deliberate module blob SHA pre-repair; versioned governance pin migration required before claiming new code approved"
+    }
+  ],
+  "total": "43 passed, 1 failed across 44 tests; 25/26 original I01R pass, NOT full independent acceptance",
+  "evidence_limit": "Runner recorded cwd /Users/matthewsmith/Desktop/Rawlsing; report does not contain independently attested exact tested composite source-module hashes, new source selector, interpreter import identities or per-test JUnit. This is an author-reported runtime result and verified Git patch, not independently executed reviewer court.",
+  "coverage_gaps": [
+    "No standalone duplicate-match test in new 7 cases; duplicate behavior follows len(matches)>1 source branch but not independently verified as executable B5 history",
+    "No new typed selected-receipt/malformed B5 index broadening permitted by narrow commission",
+    "No authenticated scientific original/source use claim"
+  ],
+  "decision": "ACCEPT_PATCH_INTO_HQ_CANDIDATE_BANK_ONLY__BOUNDED_TYPED_KEY_FIX_PLAUSIBLY_PROVEN__INDEPENDENT_VERSIONED_PIN_AND_EXACT_COMPOSITE_RUNTIME_NOT_DONE__NO_CANONICAL_ADOPTION",
+  "next": "Stop synthetic-only commission loop. If/when release of altered I01 owner is contemplated, minimally verify new module pin with a separately versioned independent acceptance (not edit old test), exact composite imports and frozen typed test. Primary PREV3 next action: competent original-source O1/O2/O3 scientific issuer and independent O4 pre-result U/E custodian, O5 respondent/form lossless V2 key binding and O6 authorized respondent-source execution; no agent may self-issue.",
+  "scientific_ceiling": [
+    "sourcefree P04/I01/M2/B5 code-pin integrity not authentic original source issuer",
+    "original GT2 real source use U/E_pre and fresh raw SURVEY execution not granted",
+    "no real EE13/F6 or N9 source-qualified output",
+    "no protected CURRENT or V3, no canonical merge"
+  ]
+}
