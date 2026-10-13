@@ -1,0 +1,9 @@
+# S06FR native security review — incomplete resource checkpoint
+
+Exact sealed startup `90f59298a63523c4bdd5a6b46b8719c13afe928a` was verified directly against the assigned remote branch. The separate Git-registered sparse worktree is `/Users/matthewsmith/.codex/worktrees/hq284-s06fr-native-security-r1/Rawlsing`; its initial index/worktree is clean, and no `data/` directory is checked out. The Codex attachment API cannot attach this CLI-created checkout because it is not app-managed.
+
+Current-session evidence confirms OpenAI Codex Desktop, `gpt-6.1-sol`, `low` effort. Host is `Matthews-MBP.lan`, MacBookPro15,1, x86_64, user-designated secondary Mac. Fresh Plus quota was 0% used in both windows. Audit execution stopped at 5% five-hour use / 1% weekly use, the commission's 95% remaining floor. No reset credit, paid overflow, model escalation, protected CURRENT, raw source use, issuer credential or production source edit occurred.
+
+The actual S06F authored and existing B5/M2 native suites were executed: **83 passed, 2 failed**, exit 1. Original logs and JUnit test identities are retained under `repro/`. The two accepted M2 fixtures fail at the newly guarded registration boundary (`RELEASE_UNAVAILABLE`) before their intended later publication/failover attack. This is an observed fixture compatibility change, not a blanket native security PASS. No accepted or frozen oracle was modified.
+
+This checkpoint is not the final method-level review. Independent bypass/atomicity/history hostiles and the complete 24 frozen S06R-to-native mapping remain required. No detached S06 results are counted as native acceptance. External authenticated issuance and custody remain HOLD without an independent issuer, revocation source and authenticated history root. The goal remains incomplete; audit execution must not resume while the quota floor is reached without a revised authorized stop policy or replenished eligible quota.

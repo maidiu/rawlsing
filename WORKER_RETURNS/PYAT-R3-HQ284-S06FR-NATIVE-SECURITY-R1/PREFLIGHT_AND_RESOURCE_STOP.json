@@ -1,0 +1,97 @@
+{
+  "schema": "S06FR_PREFLIGHT_AND_RESOURCE_STOP@1",
+  "startup_sha": "90f59298a63523c4bdd5a6b46b8719c13afe928a",
+  "candidate_sha": "6187d0a25f98370a3d78371fcdf1752a3b1ec80f",
+  "branch": "agent/reviewer-pyat-r3-hq284-s06fr-native-security-r1",
+  "worktree": "/Users/matthewsmith/.codex/worktrees/hq284-s06fr-native-security-r1/Rawlsing",
+  "worktree_status": "SEPARATE_GIT_REGISTERED_SPARSE; Codex attachment tool reported not app-managed",
+  "host": {
+    "hostname": "Matthews-MBP.lan",
+    "computer_name": "Matthew\u2019s MacBook Pro",
+    "hardware_model": "MacBookPro15,1",
+    "architecture": "x86_64",
+    "designation": "SECONDARY per launch; no independent hardware-to-account registry supplied"
+  },
+  "provider": "openai/Codex Desktop",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "low",
+  "model_evidence": "current thread session latest turn_context; actual execution setting, not screenshot of picker",
+  "initial_quota": {
+    "five_hour_used_percent": 0,
+    "weekly_used_percent": 0,
+    "ordinaryUsageAllowed": true,
+    "plan": "plus"
+  },
+  "stop_quota": {
+    "ordinaryUsageAllowed": true,
+    "plan": "plus",
+    "five_hour_used_percent": 5,
+    "weekly_used_percent": 1,
+    "reset_credits_used": 0,
+    "paid_overflow": 0,
+    "account_fingerprint": "b4d51d8e"
+  },
+  "stop_policy": {
+    "remaining_floor_percent": 95,
+    "stop_at_used_percent": 5,
+    "no_reset_credits": true,
+    "no_paid_overflow": true,
+    "no_model_escalation": true
+  },
+  "status": "INCOMPLETE_REVIEW__RESOURCE_FLOOR_STOP",
+  "regression_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m pytest rawlsing_next/tests/test_pre553_s06f_native_owner_security.py rawlsing_next/tests/test_pre553_learned_product_lifecycle.py rawlsing_next/tests/test_pre553_learned_product_release.py -q -p no:cacheprovider --junitxml=WORKER_RETURNS/PYAT-R3-HQ284-S06FR-NATIVE-SECURITY-R1/repro/native_regressions.xml",
+  "regression_exit": 1,
+  "passed": 83,
+  "failed": 2,
+  "failed_tests": [
+    "test_pre553_learned_product_release.py::test_17_binding_cannot_resolve_different_release",
+    "test_pre553_learned_product_release.py::test_18_endpoint_failover_only_among_same_release"
+  ],
+  "failure_observation": "M2 rejects unavailable foreign release during registration; older fixtures expected registration to succeed before later hostile publication/failover checks. Tests and sources left unchanged.",
+  "remaining": [
+    "Independent runtime method-level matrix for 17 B5 mutators and five M2 writers",
+    "Direct helper and saved callable bypass court",
+    "24 frozen S06R expectations retrieval/identity and native mapping",
+    "Independent checkpoint/history/current/as-of/invalidations/recovery court",
+    "Concurrency/atomicity and torn process court",
+    "Risk-ranked final findings and completion audit"
+  ],
+  "external_authenticated_issuance": "HOLD_NO_INDEPENDENT_ISSUER_REVOCATION_OR_HISTORY_ROOT",
+  "raw_source_use": false,
+  "protected_current_use": false,
+  "production_source_edits": false,
+  "canonical_merge": false,
+  "reviewer_independence": "This session is not S06F author; no self-adoption",
+  "goal_completion_claim": false,
+  "recorded_at_utc": "2026-10-13T05:54:14.481906+00:00",
+  "runtime": {
+    "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "interpreter": "/usr/local/bin/python3",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit",
+    "pytest": "pytest 9.1.1"
+  },
+  "actual_suite_counts": {
+    "rawlsing_next.tests.test_pre553_s06f_native_owner_security": {
+      "passed": 18,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "rawlsing_next.tests.test_pre553_learned_product_lifecycle": {
+      "passed": 39,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "rawlsing_next.tests.test_pre553_learned_product_release": {
+      "passed": 26,
+      "failed": 2,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "owner_blob_identity_at_candidate": {
+    "rawlsing_next/pre553_learned_product_lifecycle.py": "1ebf7f9302c46a8e957529b92e60c78493364d78",
+    "rawlsing_next/pre553_learned_product_release.py": "1072fdd2f5d11ebe6e4cffb7df8819af679f0174"
+  }
+}
