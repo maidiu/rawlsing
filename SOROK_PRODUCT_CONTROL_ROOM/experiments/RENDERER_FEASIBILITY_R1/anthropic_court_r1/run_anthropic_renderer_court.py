@@ -69,7 +69,7 @@ def snapshot(run, request_hash, input_hash, packet_name, config, start, latency,
         "input_packet_raw_sha256": file_sha256(HERE.parent / "render_inputs_r1" / packet_name),
         "model": config["model"], "effort": config["effort"],
         "max_tokens": config["max_tokens"],
-        "api_endpoint": config["api_endpoint"],
+        "api_endpoint": config["api_endpoint"], "api_version": config["api_version"],
         "sdk_package": "anthropic", "sdk_version": sdk_version(),
         "provider_seed_status": config["provider_seed_status"],
         "started_at_utc": start, "ended_at_utc": utcnow(),
@@ -260,7 +260,7 @@ def main():
             import anthropic
             probe = {"case_id": "RF001", "condition": "N"}
             request, _, _, _ = request_for(probe, c, transport)
-            client = anthropic.Anthropic(max_retries=0, timeout=c["timeout_seconds"])
+            client = anthropic.Anthropic(max_retries=0, timeout=c["timeout_seconds"], default_headers={"anthropic-version": c["api_version"]})
             counted = client.messages.count_tokens(model=request["model"],
                       messages=request["messages"], output_config=request["output_config"])
             print("Non-generative count-tokens request: " + str(counted.input_tokens))
