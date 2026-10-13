@@ -1,0 +1,48 @@
+.F........................                                               [100%]
+=================================== FAILURES ===================================
+____________ test_serving_saved_bundle_with_all_producers_disabled _____________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-535/test_serving_saved_bundle_with0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108695610>
+
+    def test_serving_saved_bundle_with_all_producers_disabled(tmp_path,monkeypatch):
+        p,_=I.build_product(tmp_path);expected=I.serve(p);payload=I.load_artifact(tmp_path,p.subject_ref)
+        def forbidden(*a,**kw):raise AssertionError('producer reconstructed during serving')
+        for obj,names in [(I.selected,['select_world','run_selected_world_progressive_chain']),(I.progressive,['build_synthetic_world','run_progressive_chain']),(I.seam,['build_sociological_bundle','build_synthetic_world','run_progressive_chain','select_world'])]:
+            for name in names:monkeypatch.setattr(obj,name,forbidden)
+        native=I.seam.ContractOnlySeamConsumer;observed=[]
+        def spy(bundle):
+            observed.append(bundle.as_dict());return native(bundle)
+        monkeypatch.setattr(I.seam,'ContractOnlySeamConsumer',spy)
+>       assert I.serve(p)==expected and observed==[payload['bundle']]
+               ^^^^^^^^^^
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:214: in serve
+    numeric=consumer.compute_scenario(SCENARIO,list(seam.P04_STEPS));receipt=consumer.get_receipt().as_dict()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/r3_s02_seam_witness.py:653: in compute_scenario
+    issue = self._validate_bundle()
+            ^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/r3_s02_seam_witness.py:433: in _validate_bundle
+    return self._validate_bundle_typed()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/r3_s02_seam_witness.py:482: in _validate_bundle_typed
+    return self._validate_producer_identity()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/r3_s02_seam_witness.py:558: in _validate_producer_identity
+    expected = build_sociological_bundle(bundle_id=b.bundle_id)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+a = (), kw = {'bundle_id': 'R3_S00_S02_BUNDLE_001'}
+
+>   def forbidden(*a,**kw):raise AssertionError('producer reconstructed during serving')
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: producer reconstructed during serving
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py:34: AssertionError
+=========================== short test summary info ============================
+FAILED ../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py::test_serving_saved_bundle_with_all_producers_disabled
+1 failed, 25 passed in 16.26s

@@ -1,0 +1,122 @@
+{
+  "contract_version": "R3_S00_SOCIOLOGICAL_TARGET@1.0.0",
+  "bundle_id": "R3_S00_S02_SELECTED_WORLD_SEAM_R1",
+  "canonical_preimage_ref": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+  "r3_plan_ref": "88d3c40def26d34ff202258171c256dfa9d17dbb",
+  "status": "FROZEN_FOR_S03_S04_COORDINATION",
+  "world_scope": {
+    "geography": "Sub-Saharan Africa, 11-country Afrobarometer R5 subset",
+    "historical_boundary": "Afrobarometer Round 5 (2011-2013 fieldwork)",
+    "population": "Adult citizens 18+ in sampled countries",
+    "eligibility": "Afrobarometer R5 respondents with complete Q86A/Q86B responses",
+    "unit": "individual respondent (country-stratified)",
+    "structural_position": "Democracy support / institutional trust cross-classification",
+    "exclusions": ["non-citizens", "under-18", "countries outside R5 11-country set"],
+    "release_ref": "retained_N01_N02_GT2_Q86B_Q86A",
+    "as_of_mode": "FROZEN_SNAPSHOT_NO_PROTECTED_CURRENT",
+    "status": "RETAINED_SOURCE_CONDITIONED"
+  },
+  "scenarios": [
+    {
+      "scenario_id": "S00_SCENARIO_A_HIGH_DEMOCRACY_SUPPORT",
+      "label": "High democracy support / high institutional trust",
+      "description": "Conditional distribution of democratic attitudes given high democracy support and high institutional trust",
+      "conditioning_variables": [
+        {"name": "democracy_support", "category": "high", "channel_kind": "survey_distribution"},
+        {"name": "institutional_trust", "category": "high", "channel_kind": "survey_distribution"}
+      ],
+      "target_variable": "democratic_attitudes",
+      "expected_effect": "Narrower, more concentrated democratic attitudes distribution"
+    },
+    {
+      "scenario_id": "S00_SCENARIO_B_LOW_DEMOCRACY_SUPPORT",
+      "label": "Low democracy support / low institutional trust",
+      "description": "Conditional distribution of democratic attitudes given low democracy support and low institutional trust",
+      "conditioning_variables": [
+        {"name": "democracy_support", "category": "low", "channel_kind": "survey_distribution"},
+        {"name": "institutional_trust", "category": "low", "channel_kind": "survey_distribution"}
+      ],
+      "target_variable": "democratic_attitudes",
+      "expected_effect": "Wider, more dispersed democratic attitudes distribution"
+    }
+  ],
+  "required_channels": [
+    {
+      "channel_id": "CH_01_DEMOCRACY_SUPPORT",
+      "kind": "survey_distribution",
+      "semantic_object_ref": "N01_N02_GT2_Q86B",
+      "evidence_mode": "MEASURED",
+      "units": "ordinal Likert (Afrobarometer R5 Q86B)",
+      "category_meanings": "1=Strongly disagree ... 4=Strongly agree (democracy support)",
+      "source_scope": "Afrobarometer R5, 11 countries, N=19210 coexposures",
+      "missingness_policy": "LISTWISE_DELETION_EXPLICIT"
+    },
+    {
+      "channel_id": "CH_02_INSTITUTIONAL_TRUST",
+      "kind": "survey_distribution",
+      "semantic_object_ref": "N01_N02_GT2_Q86A",
+      "evidence_mode": "MEASURED",
+      "units": "ordinal Likert (Afrobarometer R5 Q86A)",
+      "category_meanings": "1=Strongly disagree ... 4=Strongly agree (institutional trust)",
+      "source_scope": "Afrobarometer R5, 11 countries, N=19210 coexposures",
+      "missingness_policy": "LISTWISE_DELETION_EXPLICIT"
+    },
+    {
+      "channel_id": "CH_03_DEMOCRATIC_ATTITUDES",
+      "kind": "survey_distribution",
+      "semantic_object_ref": "derived_from_Q86A_Q86B_joint",
+      "evidence_mode": "TRANSFORMED",
+      "units": "joint distribution",
+      "category_meanings": "Cross-classification of democracy support and institutional trust",
+      "source_scope": "Derived from measured Q86A/Q86B joint distribution",
+      "missingness_policy": "PROPAGATE_FROM_PARENTS"
+    }
+  ],
+  "observed_boundaries": {
+    "measured": ["Q86A responses", "Q86B responses", "country membership"],
+    "transformed": ["joint cross-classification", "conditional distributions"],
+    "inferred": [],
+    "prior": [],
+    "synthetic": ["P04 58-respondent fixture for interface testing only"]
+  },
+  "legitimate_missingness": [
+    {
+      "channel_id": "CH_03_DEMOCRATIC_ATTITUDES",
+      "missingness_type": "STRUCTURAL_NO_NATIONAL_DENOMINATOR",
+      "description": "Retained N01/N02 coexposure counts are not a national complete-case denominator",
+      "policy": "REPORT_AS_COEXPOSURE_NOT_PREVALENCE"
+    }
+  ],
+  "expected_change_stability": {
+    "changed_by_scenario": ["CH_03_DEMOCRATIC_ATTITUDES conditional distribution"],
+    "stable_across_scenarios": ["CH_01_DEMOCRACY_SUPPORT marginal", "CH_02_INSTITUTIONAL_TRUST marginal", "source_scope", "release_ref"],
+    "changed_by_qualification": ["synthesis uncertainty", "temporal model"],
+    "stable_across_qualification": ["measured joint frequencies", "source provenance"]
+  },
+  "seam_contract": {
+    "consumer_kind": "CONTRACT_ONLY_SEAM_CONSUMER",
+    "consumer_must": [
+      "dereference selected world bundle",
+      "request progressive conditional possibilities",
+      "verify permissible use",
+      "record actual values read",
+      "compute scenario distributions",
+      "inspect possibility sets"
+    ],
+    "consumer_must_not": [
+      "invoke V3",
+      "invoke V2",
+      "invoke actor constructors",
+      "invoke narrative renderer",
+      "create parent/coparent objects",
+      "generate biography or childhood"
+    ]
+  },
+  "evidence_boundary": {
+    "strongest_output_status": "RETAINED_SOURCE_CONDITIONED",
+    "source_free_elements": ["P04 synthetic fixture", "interface acceptance tests"],
+    "retained_source_elements": ["N01/N02 GT2 Q86A/Q86B coexposure counts", "Afrobarometer R5 metadata"],
+    "not_source_executed": ["fresh survey runs", "national prevalence estimation", "institutional capacity measurement"],
+    "not_conflated": true
+  }
+}

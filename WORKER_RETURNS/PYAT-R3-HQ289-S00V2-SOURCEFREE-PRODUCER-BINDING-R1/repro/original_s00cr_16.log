@@ -1,0 +1,84 @@
+.....F.......FFF                                                         [100%]
+=================================== FAILURES ===================================
+______________ test_s00cr_unused_changed_value_no_numeric_effect _______________
+
+    def test_s00cr_unused_changed_value_no_numeric_effect():
+        b = seam.build_sociological_bundle()
+        unrelated = b.channels[-1]
+        altered = _rewrite_channel(
+            b, unrelated.channel_id,
+            {"raw_numerator_support": 999, "raw_probability_exact_fraction": None}
+        )
+        a = seam.ContractOnlySeamConsumer(b).compute_scenario(
+            "keep", ["P_Y_given_A"])
+        z = seam.ContractOnlySeamConsumer(altered).compute_scenario(
+            "keep", ["P_Y_given_A"])
+>       assert a["status"] == z["status"] == "COMPUTED"
+E       AssertionError: assert 'COMPUTED' == 'REFUSED'
+E         
+E         - REFUSED
+E         + COMPUTED
+
+../frozen/test_original_s00cr_16.py:132: AssertionError
+__________ test_s00cr_source_fraction_claim_must_match_numeric_count ___________
+
+    def test_s00cr_source_fraction_claim_must_match_numeric_count():
+        b = _fixture()
+        bad = _rewrite_channel(
+            b, "CH_P_Q86A_given_Q86B_1_1",
+            {"raw_probability_exact_fraction": {"$exact_fraction": [100, 101]}}
+        )
+        r = _native_result(bad)
+        assert r["status"] == "REFUSED"
+>       assert r["reason"] == "SOURCE_COUNT_CLOSURE_MISMATCH"
+E       AssertionError: assert 'FRACTION_CLOSURE_MISMATCH' == 'SOURCE_COUNT...SURE_MISMATCH'
+E         
+E         - SOURCE_COUNT_CLOSURE_MISMATCH
+E         + FRACTION_CLOSURE_MISMATCH
+
+../frozen/test_original_s00cr_16.py:214: AssertionError
+__________ test_s00cr_step_geometry_cannot_disagree_with_read_values ___________
+
+    def test_s00cr_step_geometry_cannot_disagree_with_read_values():
+        b = _fixture()
+        changed_steps = list(b.steps)
+        first = dict(changed_steps[1])
+        original_cells = dict(first["cells"])
+        original_cells["1"] = {"numerator": 234}
+        first["cells"] = original_cells
+        changed_steps[1] = first
+        edited = _rehash(b, steps=tuple(changed_steps))
+        r = _native_result(edited)
+        assert r["status"] == "REFUSED"
+>       assert r["reason"] == "SOURCE_COUNT_CLOSURE_MISMATCH"
+E       AssertionError: assert 'STEP_CELL_NUMERATOR_MISMATCH' == 'SOURCE_COUNT...SURE_MISMATCH'
+E         
+E         - SOURCE_COUNT_CLOSURE_MISMATCH
+E         + STEP_CELL_NUMERATOR_MISMATCH
+
+../frozen/test_original_s00cr_16.py:228: AssertionError
+_______ test_s00cr_numeric_mutation_with_stale_producer_ref_must_refuse ________
+
+    def test_s00cr_numeric_mutation_with_stale_producer_ref_must_refuse():
+        b = _fixture()
+        # Rehash bundle, but DO NOT change selected-world risk/release/row law.
+        after = _rewrite_channel(
+            b, "CH_P_Q86A_given_Q86B_1_1", {"raw_numerator_support": 2}
+        )
+        after = _rewrite_channel(
+            after, "CH_P_Q86A_given_Q86B_1_0", {"raw_numerator_support": 2}
+        )
+        r = _native_result(after)
+        assert r["status"] == "REFUSED"
+>       assert r["reason"] in {
+            "SOURCE_COUNT_CLOSURE_MISMATCH", "SELECTED_WORLD_BINDING_MISMATCH",
+            "PRODUCER_VALUE_IDENTITY_MISMATCH"}
+E       AssertionError: assert 'FRACTION_CLOSURE_MISMATCH' in {'PRODUCER_VALUE_IDENTITY_MISMATCH', 'SELECTED_WORLD_BINDING_MISMATCH', 'SOURCE_COUNT_CLOSURE_MISMATCH'}
+
+../frozen/test_original_s00cr_16.py:242: AssertionError
+=========================== short test summary info ============================
+FAILED ../frozen/test_original_s00cr_16.py::test_s00cr_unused_changed_value_no_numeric_effect
+FAILED ../frozen/test_original_s00cr_16.py::test_s00cr_source_fraction_claim_must_match_numeric_count
+FAILED ../frozen/test_original_s00cr_16.py::test_s00cr_step_geometry_cannot_disagree_with_read_values
+FAILED ../frozen/test_original_s00cr_16.py::test_s00cr_numeric_mutation_with_stale_producer_ref_must_refuse
+4 failed, 12 passed in 7.60s

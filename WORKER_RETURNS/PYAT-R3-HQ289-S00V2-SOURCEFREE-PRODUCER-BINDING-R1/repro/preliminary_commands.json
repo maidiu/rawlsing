@@ -1,0 +1,38 @@
+[
+  {
+    "label": "first_overlay_smoke",
+    "argv": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "rawlsing_next/tests/test_hq286_s00e_s00cr_overlay.py",
+      "-q",
+      "-p",
+      "no:cacheprovider"
+    ],
+    "cwd": "/Users/matthewsmith/.codex/worktrees/hq289-s00v2-binding/Rawlsing",
+    "exit": 0,
+    "stdout_summary": "18 passed in 12.22s",
+    "source_state": "first validation implementation, before documentary annotation correction"
+  },
+  {
+    "label": "v2_initial",
+    "argv": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "rawlsing_next/tests/test_hq289_s00v2_count_derived_acceptance.py",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "--junitxml=WORKER_RETURNS/PYAT-R3-HQ289-S00V2-SOURCEFREE-PRODUCER-BINDING-R1/repro/v2_initial.xml"
+    ],
+    "cwd": "/Users/matthewsmith/.codex/worktrees/hq289-s00v2-binding/Rawlsing",
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "exit": 0,
+    "stdout": "repro/v2_initial.log",
+    "junit": "repro/v2_initial.xml"
+  }
+]

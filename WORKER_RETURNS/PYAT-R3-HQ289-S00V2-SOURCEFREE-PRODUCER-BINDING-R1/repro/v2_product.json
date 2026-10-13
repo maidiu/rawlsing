@@ -1,0 +1,2959 @@
+{
+  "p04": {
+    "bundle": {
+      "bundle_id": "R3_S00_S02_BUNDLE_001",
+      "contract_version": "R3_S02_SOCIOLOGICAL_SEAM_WITNESS@1.0.0",
+      "content_hash": "1db25957846f11fa750bc4b0ea076b1c544fefe897630692d6c9aea7d7c5c1ce",
+      "world_scope": {
+        "geography": "NONE__P04_SYNTHETIC_TEST_ONLY",
+        "historical_boundary": "NONE__P04_SYNTHETIC_TEST_ONLY",
+        "population": "58 synthetic A/B/C/Y fixture respondents",
+        "unit": "synthetic fixture respondent",
+        "status": "SOURCE_FREE_SYNTHETIC",
+        "qualified_real_source_value_read": false,
+        "source_measurement": "P04_SIMULATED_A_B_C_Y__NOT_AFRO_R5_Q86"
+      },
+      "channels": [
+        {
+          "channel_id": "CH_P_Y_given_A_0",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Y_given_A",
+            "conditioners": [
+              [
+                "A",
+                1
+              ]
+            ],
+            "cell": "0",
+            "raw_numerator_support": 14,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                7,
+                16
+              ]
+            },
+            "producer_evidence_ref": {
+              "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+              "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:f885bc9a054a86c647c1e2246926f5a89a1acfd7b9dfcf45f8182ee9b34a41c1",
+              "content_hash": "f885bc9a054a86c647c1e2246926f5a89a1acfd7b9dfcf45f8182ee9b34a41c1"
+            }
+          },
+          "support": 32,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+          "test_origin": true
+        },
+        {
+          "channel_id": "CH_P_Y_given_A_1",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Y_given_A",
+            "conditioners": [
+              [
+                "A",
+                1
+              ]
+            ],
+            "cell": "1",
+            "raw_numerator_support": 18,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                9,
+                16
+              ]
+            },
+            "producer_evidence_ref": {
+              "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+              "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:f885bc9a054a86c647c1e2246926f5a89a1acfd7b9dfcf45f8182ee9b34a41c1",
+              "content_hash": "f885bc9a054a86c647c1e2246926f5a89a1acfd7b9dfcf45f8182ee9b34a41c1"
+            }
+          },
+          "support": 32,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+          "test_origin": true
+        },
+        {
+          "channel_id": "CH_P_Y_given_A_B_0",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Y_given_A_B",
+            "conditioners": [
+              [
+                "A",
+                1
+              ],
+              [
+                "B",
+                1
+              ]
+            ],
+            "cell": "0",
+            "raw_numerator_support": 6,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                8
+              ]
+            },
+            "producer_evidence_ref": {
+              "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+              "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:08142b892b060730f2f8f63c031b1d99961e1689cb1f8c6fac165ba8e3acd0f6",
+              "content_hash": "08142b892b060730f2f8f63c031b1d99961e1689cb1f8c6fac165ba8e3acd0f6"
+            }
+          },
+          "support": 16,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+          "test_origin": true
+        },
+        {
+          "channel_id": "CH_P_Y_given_A_B_1",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Y_given_A_B",
+            "conditioners": [
+              [
+                "A",
+                1
+              ],
+              [
+                "B",
+                1
+              ]
+            ],
+            "cell": "1",
+            "raw_numerator_support": 10,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                5,
+                8
+              ]
+            },
+            "producer_evidence_ref": {
+              "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+              "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:08142b892b060730f2f8f63c031b1d99961e1689cb1f8c6fac165ba8e3acd0f6",
+              "content_hash": "08142b892b060730f2f8f63c031b1d99961e1689cb1f8c6fac165ba8e3acd0f6"
+            }
+          },
+          "support": 16,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+          "test_origin": true
+        },
+        {
+          "channel_id": "CH_P_Y_given_A_B_C_0",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Y_given_A_B_C",
+            "conditioners": [
+              [
+                "A",
+                1
+              ],
+              [
+                "B",
+                1
+              ],
+              [
+                "C",
+                1
+              ]
+            ],
+            "cell": "0",
+            "raw_numerator_support": 2,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "producer_evidence_ref": {
+              "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+              "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:9e929601a9d24d9b2eaf42e84843ea8e867d771369f888e55203173772d4a32a",
+              "content_hash": "9e929601a9d24d9b2eaf42e84843ea8e867d771369f888e55203173772d4a32a"
+            }
+          },
+          "support": 8,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+          "test_origin": true
+        },
+        {
+          "channel_id": "CH_P_Y_given_A_B_C_1",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Y_given_A_B_C",
+            "conditioners": [
+              [
+                "A",
+                1
+              ],
+              [
+                "B",
+                1
+              ],
+              [
+                "C",
+                1
+              ]
+            ],
+            "cell": "1",
+            "raw_numerator_support": 6,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            },
+            "producer_evidence_ref": {
+              "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+              "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:9e929601a9d24d9b2eaf42e84843ea8e867d771369f888e55203173772d4a32a",
+              "content_hash": "9e929601a9d24d9b2eaf42e84843ea8e867d771369f888e55203173772d4a32a"
+            }
+          },
+          "support": 8,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+          "test_origin": true
+        }
+      ],
+      "evidence_graph": [
+        {
+          "node_id": "EV_P_Y_given_A",
+          "evidence_mode": "TRANSFORMED",
+          "parent_refs": [
+            {
+              "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+              "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:f885bc9a054a86c647c1e2246926f5a89a1acfd7b9dfcf45f8182ee9b34a41c1",
+              "content_hash": "f885bc9a054a86c647c1e2246926f5a89a1acfd7b9dfcf45f8182ee9b34a41c1"
+            }
+          ],
+          "method": "N10E_SINGLE_CONDITIONER",
+          "uncertainty": "UNCERTAINTY_UNQUANTIFIED",
+          "test_origin": true,
+          "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE"
+        },
+        {
+          "node_id": "EV_P_Y_given_A_B",
+          "evidence_mode": "TRANSFORMED",
+          "parent_refs": [
+            {
+              "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+              "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:08142b892b060730f2f8f63c031b1d99961e1689cb1f8c6fac165ba8e3acd0f6",
+              "content_hash": "08142b892b060730f2f8f63c031b1d99961e1689cb1f8c6fac165ba8e3acd0f6"
+            }
+          ],
+          "method": "C1_MULTI_CONDITIONER",
+          "uncertainty": "UNCERTAINTY_UNQUANTIFIED",
+          "test_origin": true,
+          "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE"
+        },
+        {
+          "node_id": "EV_P_Y_given_A_B_C",
+          "evidence_mode": "TRANSFORMED",
+          "parent_refs": [
+            {
+              "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+              "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:9e929601a9d24d9b2eaf42e84843ea8e867d771369f888e55203173772d4a32a",
+              "content_hash": "9e929601a9d24d9b2eaf42e84843ea8e867d771369f888e55203173772d4a32a"
+            }
+          ],
+          "method": "C1_MULTI_CONDITIONER",
+          "uncertainty": "UNCERTAINTY_UNQUANTIFIED",
+          "test_origin": true,
+          "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE"
+        }
+      ],
+      "conditions": [
+        {
+          "step_id": "P_Y_given_A",
+          "conditioners": [
+            [
+              "A",
+              1
+            ]
+          ],
+          "predicate_ref": "joint_predicate_P_Y_given_A",
+          "denominator": 32,
+          "risk_set_ref": {
+            "content_hash": "e3c1874ae6998a0bbc6a4ab6656a480ce0ad4d1c344098c08680e30b0e367c4e",
+            "kind": "RISK_SET",
+            "object_id": "urn:test:i03:risk_set:p04-selected-world-R_ALL"
+          }
+        },
+        {
+          "step_id": "P_Y_given_A_B",
+          "conditioners": [
+            [
+              "A",
+              1
+            ],
+            [
+              "B",
+              1
+            ]
+          ],
+          "predicate_ref": "joint_predicate_P_Y_given_A_B",
+          "denominator": 16,
+          "risk_set_ref": {
+            "content_hash": "e3c1874ae6998a0bbc6a4ab6656a480ce0ad4d1c344098c08680e30b0e367c4e",
+            "kind": "RISK_SET",
+            "object_id": "urn:test:i03:risk_set:p04-selected-world-R_ALL"
+          }
+        },
+        {
+          "step_id": "P_Y_given_A_B_C",
+          "conditioners": [
+            [
+              "A",
+              1
+            ],
+            [
+              "B",
+              1
+            ],
+            [
+              "C",
+              1
+            ]
+          ],
+          "predicate_ref": "joint_predicate_P_Y_given_A_B_C",
+          "denominator": 8,
+          "risk_set_ref": {
+            "content_hash": "e3c1874ae6998a0bbc6a4ab6656a480ce0ad4d1c344098c08680e30b0e367c4e",
+            "kind": "RISK_SET",
+            "object_id": "urn:test:i03:risk_set:p04-selected-world-R_ALL"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "step_id": "P_Y_given_A",
+          "producer_route": "N10E_SINGLE_CONDITIONER",
+          "cells": {
+            "0": {
+              "numerator": 14,
+              "fraction": {
+                "$exact_fraction": [
+                  7,
+                  16
+                ]
+              }
+            },
+            "1": {
+              "numerator": 18,
+              "fraction": {
+                "$exact_fraction": [
+                  9,
+                  16
+                ]
+              }
+            }
+          },
+          "consumer_state": "EXACT_SUPPORTED",
+          "uncertainty_state": "UNCERTAINTY_UNQUANTIFIED"
+        },
+        {
+          "step_id": "P_Y_given_A_B",
+          "producer_route": "C1_MULTI_CONDITIONER",
+          "cells": {
+            "0": {
+              "numerator": 6,
+              "fraction": {
+                "$exact_fraction": [
+                  3,
+                  8
+                ]
+              }
+            },
+            "1": {
+              "numerator": 10,
+              "fraction": {
+                "$exact_fraction": [
+                  5,
+                  8
+                ]
+              }
+            }
+          },
+          "consumer_state": "EXACT_SUPPORTED",
+          "uncertainty_state": "UNCERTAINTY_UNQUANTIFIED"
+        },
+        {
+          "step_id": "P_Y_given_A_B_C",
+          "producer_route": "C1_MULTI_CONDITIONER",
+          "cells": {
+            "0": {
+              "numerator": 2,
+              "fraction": {
+                "$exact_fraction": [
+                  1,
+                  4
+                ]
+              }
+            },
+            "1": {
+              "numerator": 6,
+              "fraction": {
+                "$exact_fraction": [
+                  3,
+                  4
+                ]
+              }
+            }
+          },
+          "consumer_state": "EXACT_SUPPORTED",
+          "uncertainty_state": "UNCERTAINTY_UNQUANTIFIED"
+        }
+      ],
+      "replay": {
+        "input_preimages": [
+          "f323c7206f97d58b47fdd8f391b9614680fd699cc24e90f61c3fcde91eb6758c"
+        ],
+        "code_ref": "pre553_n9_n10w_progressive_candidate.py",
+        "deterministic": true,
+        "test_origin": true,
+        "source_permission": "SOURCE_FREE_ONLY",
+        "qualified_gt2_numeric_cells": false
+      },
+      "selected_world_contract_hash": "f323c7206f97d58b47fdd8f391b9614680fd699cc24e90f61c3fcde91eb6758c"
+    },
+    "selected_contract": {
+      "contract_id": "PYAT_HQ282_P04_SELECTED_WORLD_PROGRESSIVE_CONTRACT@1.0.0",
+      "world_tag": "p04-selected-world",
+      "source_universe_ref": {
+        "kind": "EmpiricalUniverse@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:d70a2ea3db1067340453f5c16fc443d9236efb996ad79cc2a14ce3fc5282dd14",
+        "content_hash": "d70a2ea3db1067340453f5c16fc443d9236efb996ad79cc2a14ce3fc5282dd14"
+      },
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-p04-selected-world",
+        "content_hash": "1018c204a4f974b393b6d4d63eeb4f5b922bf562488e6057131138463d7366c4"
+      },
+      "risk_set_ref": {
+        "kind": "RISK_SET",
+        "object_id": "urn:test:i03:risk_set:p04-selected-world-R_ALL",
+        "content_hash": "e3c1874ae6998a0bbc6a4ab6656a480ce0ad4d1c344098c08680e30b0e367c4e"
+      },
+      "selection_metadata": {
+        "schema": "P04_SYNTHETIC_SELECTION@1",
+        "fixture_id": "P04_SELECTED_WORLD_ABC_Y_58",
+        "world_tag": "p04-selected-world",
+        "row_count": 58,
+        "selection_kind": "SOURCE_FREE_SYNTHETIC",
+        "real_current": false,
+        "n9_owner_status": "ABSENT__E01_IMPLEMENTED_FALSE",
+        "n10w_owner_status": "ABSENT__E01_IMPLEMENTED_FALSE",
+        "g0b_status": "ABSENT__NOT_FABRICATED",
+        "b5_current_status": "ABSENT__NOT_SELECTED"
+      },
+      "real_current": false
+    },
+    "result": {
+      "scenario_id": "v2_p04",
+      "conditioning": [
+        "P_Y_given_A",
+        "P_Y_given_A_B",
+        "P_Y_given_A_B_C"
+      ],
+      "channels_used": [
+        "CH_P_Y_given_A_B_C_0",
+        "CH_P_Y_given_A_B_C_1"
+      ],
+      "total_support": 8,
+      "raw_denominator_support": 8,
+      "raw_numerators": {
+        "0": 2,
+        "1": 6
+      },
+      "exact_probabilities": {
+        "0": {
+          "$exact_fraction": [
+            1,
+            4
+          ]
+        },
+        "1": {
+          "$exact_fraction": [
+            3,
+            4
+          ]
+        }
+      },
+      "distributions": [
+        {
+          "channel_id": "CH_P_Y_given_A_B_C_0",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Y_given_A_B_C",
+            "conditioners": [
+              [
+                "A",
+                1
+              ],
+              [
+                "B",
+                1
+              ],
+              [
+                "C",
+                1
+              ]
+            ],
+            "cell": "0",
+            "raw_numerator_support": 2,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "producer_evidence_ref": {
+              "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+              "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:9e929601a9d24d9b2eaf42e84843ea8e867d771369f888e55203173772d4a32a",
+              "content_hash": "9e929601a9d24d9b2eaf42e84843ea8e867d771369f888e55203173772d4a32a"
+            }
+          },
+          "support": 8,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+          "test_origin": true
+        },
+        {
+          "channel_id": "CH_P_Y_given_A_B_C_1",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Y_given_A_B_C",
+            "conditioners": [
+              [
+                "A",
+                1
+              ],
+              [
+                "B",
+                1
+              ],
+              [
+                "C",
+                1
+              ]
+            ],
+            "cell": "1",
+            "raw_numerator_support": 6,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            },
+            "producer_evidence_ref": {
+              "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+              "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:9e929601a9d24d9b2eaf42e84843ea8e867d771369f888e55203173772d4a32a",
+              "content_hash": "9e929601a9d24d9b2eaf42e84843ea8e867d771369f888e55203173772d4a32a"
+            }
+          },
+          "support": 8,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+          "test_origin": true
+        }
+      ],
+      "progressive_trace": [
+        {
+          "step_id": "P_Y_given_A",
+          "predicate_ref": "joint_predicate_P_Y_given_A",
+          "conditioners": [
+            [
+              "A",
+              1
+            ]
+          ],
+          "raw_denominator_support": 32,
+          "raw_numerators": {
+            "0": 14,
+            "1": 18
+          },
+          "exact_probabilities": {
+            "0": {
+              "$exact_fraction": [
+                7,
+                16
+              ]
+            },
+            "1": {
+              "$exact_fraction": [
+                9,
+                16
+              ]
+            }
+          },
+          "used_input_refs": [
+            {
+              "channel_id": "CH_P_Y_given_A_0",
+              "value_hash": "52c76f64893d54c150258ab87a0498e6118b16a50eecef083c007a7cf7588c32"
+            },
+            {
+              "channel_id": "CH_P_Y_given_A_1",
+              "value_hash": "61983bf043e8115d0dd1a876e2338d76dce958bb6cbf8b9838e742dcad5931cc"
+            }
+          ]
+        },
+        {
+          "step_id": "P_Y_given_A_B",
+          "predicate_ref": "joint_predicate_P_Y_given_A_B",
+          "conditioners": [
+            [
+              "A",
+              1
+            ],
+            [
+              "B",
+              1
+            ]
+          ],
+          "raw_denominator_support": 16,
+          "raw_numerators": {
+            "0": 6,
+            "1": 10
+          },
+          "exact_probabilities": {
+            "0": {
+              "$exact_fraction": [
+                3,
+                8
+              ]
+            },
+            "1": {
+              "$exact_fraction": [
+                5,
+                8
+              ]
+            }
+          },
+          "used_input_refs": [
+            {
+              "channel_id": "CH_P_Y_given_A_B_0",
+              "value_hash": "a541e4d0e231ddd50f0d2b4ea2b8bbde8d2e82be74ff52fe278258dafcc85e65"
+            },
+            {
+              "channel_id": "CH_P_Y_given_A_B_1",
+              "value_hash": "463f8d13de53631dfb1e9d078219ddf16418b7d036bb6fcadd952544ef4497a8"
+            }
+          ]
+        },
+        {
+          "step_id": "P_Y_given_A_B_C",
+          "predicate_ref": "joint_predicate_P_Y_given_A_B_C",
+          "conditioners": [
+            [
+              "A",
+              1
+            ],
+            [
+              "B",
+              1
+            ],
+            [
+              "C",
+              1
+            ]
+          ],
+          "raw_denominator_support": 8,
+          "raw_numerators": {
+            "0": 2,
+            "1": 6
+          },
+          "exact_probabilities": {
+            "0": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "1": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            }
+          },
+          "used_input_refs": [
+            {
+              "channel_id": "CH_P_Y_given_A_B_C_0",
+              "value_hash": "a2bd0f3cf3f6015c6ff7796638ab2f043670b458898e9d36d64a5cfaa786ff7a"
+            },
+            {
+              "channel_id": "CH_P_Y_given_A_B_C_1",
+              "value_hash": "5d8261dbca72aac434d31f1ff6f0c4a99cee49151d35942e7bcd6ee2fd68dfc7"
+            }
+          ]
+        }
+      ],
+      "source_value_dependency": {
+        "value_reads_used": 6,
+        "used_input_refs": [
+          {
+            "channel_id": "CH_P_Y_given_A_B_C_0",
+            "value_hash": "a2bd0f3cf3f6015c6ff7796638ab2f043670b458898e9d36d64a5cfaa786ff7a"
+          },
+          {
+            "channel_id": "CH_P_Y_given_A_B_C_1",
+            "value_hash": "5d8261dbca72aac434d31f1ff6f0c4a99cee49151d35942e7bcd6ee2fd68dfc7"
+          }
+        ],
+        "source_permission": "SOURCE_FREE_ONLY"
+      },
+      "scientific_claim_grade": "SOURCE_FREE_SYNTHETIC",
+      "status": "COMPUTED"
+    },
+    "receipt": {
+      "consumer_ref": "R3_S00C_SOURCE_FREE_VALUE_USE_CONSUMER@1.0.0",
+      "requested_scope": "R3_S00_S02_BUNDLE_001",
+      "values_read": [
+        {
+          "receipt_id": "VRR_0001",
+          "channel_id": "CH_P_Y_given_A_0",
+          "value_hash": "52c76f64893d54c150258ab87a0498e6118b16a50eecef083c007a7cf7588c32",
+          "semantic_effect": "VALUE_USED_IN_EXACT_CONDITIONAL",
+          "query_ref": "v2_p04:P_Y_given_A",
+          "used_in": "v2_p04:P_Y_given_A"
+        },
+        {
+          "receipt_id": "VRR_0002",
+          "channel_id": "CH_P_Y_given_A_1",
+          "value_hash": "61983bf043e8115d0dd1a876e2338d76dce958bb6cbf8b9838e742dcad5931cc",
+          "semantic_effect": "VALUE_USED_IN_EXACT_CONDITIONAL",
+          "query_ref": "v2_p04:P_Y_given_A",
+          "used_in": "v2_p04:P_Y_given_A"
+        },
+        {
+          "receipt_id": "VRR_0003",
+          "channel_id": "CH_P_Y_given_A_B_0",
+          "value_hash": "a541e4d0e231ddd50f0d2b4ea2b8bbde8d2e82be74ff52fe278258dafcc85e65",
+          "semantic_effect": "VALUE_USED_IN_EXACT_CONDITIONAL",
+          "query_ref": "v2_p04:P_Y_given_A_B",
+          "used_in": "v2_p04:P_Y_given_A_B"
+        },
+        {
+          "receipt_id": "VRR_0004",
+          "channel_id": "CH_P_Y_given_A_B_1",
+          "value_hash": "463f8d13de53631dfb1e9d078219ddf16418b7d036bb6fcadd952544ef4497a8",
+          "semantic_effect": "VALUE_USED_IN_EXACT_CONDITIONAL",
+          "query_ref": "v2_p04:P_Y_given_A_B",
+          "used_in": "v2_p04:P_Y_given_A_B"
+        },
+        {
+          "receipt_id": "VRR_0005",
+          "channel_id": "CH_P_Y_given_A_B_C_0",
+          "value_hash": "a2bd0f3cf3f6015c6ff7796638ab2f043670b458898e9d36d64a5cfaa786ff7a",
+          "semantic_effect": "VALUE_USED_IN_EXACT_CONDITIONAL",
+          "query_ref": "v2_p04:P_Y_given_A_B_C",
+          "used_in": "v2_p04:P_Y_given_A_B_C"
+        },
+        {
+          "receipt_id": "VRR_0006",
+          "channel_id": "CH_P_Y_given_A_B_C_1",
+          "value_hash": "5d8261dbca72aac434d31f1ff6f0c4a99cee49151d35942e7bcd6ee2fd68dfc7",
+          "semantic_effect": "VALUE_USED_IN_EXACT_CONDITIONAL",
+          "query_ref": "v2_p04:P_Y_given_A_B_C",
+          "used_in": "v2_p04:P_Y_given_A_B_C"
+        }
+      ],
+      "scenario_results": {
+        "v2_p04": {
+          "scenario_id": "v2_p04",
+          "conditioning": [
+            "P_Y_given_A",
+            "P_Y_given_A_B",
+            "P_Y_given_A_B_C"
+          ],
+          "channels_used": [
+            "CH_P_Y_given_A_B_C_0",
+            "CH_P_Y_given_A_B_C_1"
+          ],
+          "total_support": 8,
+          "raw_denominator_support": 8,
+          "raw_numerators": {
+            "0": 2,
+            "1": 6
+          },
+          "exact_probabilities": {
+            "0": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "1": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            }
+          },
+          "distributions": [
+            {
+              "channel_id": "CH_P_Y_given_A_B_C_0",
+              "evidence_mode": "TRANSFORMED",
+              "value": {
+                "step_id": "P_Y_given_A_B_C",
+                "conditioners": [
+                  [
+                    "A",
+                    1
+                  ],
+                  [
+                    "B",
+                    1
+                  ],
+                  [
+                    "C",
+                    1
+                  ]
+                ],
+                "cell": "0",
+                "raw_numerator_support": 2,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    1,
+                    4
+                  ]
+                },
+                "producer_evidence_ref": {
+                  "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+                  "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:9e929601a9d24d9b2eaf42e84843ea8e867d771369f888e55203173772d4a32a",
+                  "content_hash": "9e929601a9d24d9b2eaf42e84843ea8e867d771369f888e55203173772d4a32a"
+                }
+              },
+              "support": 8,
+              "units": "synthetic_exact_conditional_fraction",
+              "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+              "test_origin": true
+            },
+            {
+              "channel_id": "CH_P_Y_given_A_B_C_1",
+              "evidence_mode": "TRANSFORMED",
+              "value": {
+                "step_id": "P_Y_given_A_B_C",
+                "conditioners": [
+                  [
+                    "A",
+                    1
+                  ],
+                  [
+                    "B",
+                    1
+                  ],
+                  [
+                    "C",
+                    1
+                  ]
+                ],
+                "cell": "1",
+                "raw_numerator_support": 6,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    3,
+                    4
+                  ]
+                },
+                "producer_evidence_ref": {
+                  "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+                  "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:9e929601a9d24d9b2eaf42e84843ea8e867d771369f888e55203173772d4a32a",
+                  "content_hash": "9e929601a9d24d9b2eaf42e84843ea8e867d771369f888e55203173772d4a32a"
+                }
+              },
+              "support": 8,
+              "units": "synthetic_exact_conditional_fraction",
+              "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+              "test_origin": true
+            }
+          ],
+          "progressive_trace": [
+            {
+              "step_id": "P_Y_given_A",
+              "predicate_ref": "joint_predicate_P_Y_given_A",
+              "conditioners": [
+                [
+                  "A",
+                  1
+                ]
+              ],
+              "raw_denominator_support": 32,
+              "raw_numerators": {
+                "0": 14,
+                "1": 18
+              },
+              "exact_probabilities": {
+                "0": {
+                  "$exact_fraction": [
+                    7,
+                    16
+                  ]
+                },
+                "1": {
+                  "$exact_fraction": [
+                    9,
+                    16
+                  ]
+                }
+              },
+              "used_input_refs": [
+                {
+                  "channel_id": "CH_P_Y_given_A_0",
+                  "value_hash": "52c76f64893d54c150258ab87a0498e6118b16a50eecef083c007a7cf7588c32"
+                },
+                {
+                  "channel_id": "CH_P_Y_given_A_1",
+                  "value_hash": "61983bf043e8115d0dd1a876e2338d76dce958bb6cbf8b9838e742dcad5931cc"
+                }
+              ]
+            },
+            {
+              "step_id": "P_Y_given_A_B",
+              "predicate_ref": "joint_predicate_P_Y_given_A_B",
+              "conditioners": [
+                [
+                  "A",
+                  1
+                ],
+                [
+                  "B",
+                  1
+                ]
+              ],
+              "raw_denominator_support": 16,
+              "raw_numerators": {
+                "0": 6,
+                "1": 10
+              },
+              "exact_probabilities": {
+                "0": {
+                  "$exact_fraction": [
+                    3,
+                    8
+                  ]
+                },
+                "1": {
+                  "$exact_fraction": [
+                    5,
+                    8
+                  ]
+                }
+              },
+              "used_input_refs": [
+                {
+                  "channel_id": "CH_P_Y_given_A_B_0",
+                  "value_hash": "a541e4d0e231ddd50f0d2b4ea2b8bbde8d2e82be74ff52fe278258dafcc85e65"
+                },
+                {
+                  "channel_id": "CH_P_Y_given_A_B_1",
+                  "value_hash": "463f8d13de53631dfb1e9d078219ddf16418b7d036bb6fcadd952544ef4497a8"
+                }
+              ]
+            },
+            {
+              "step_id": "P_Y_given_A_B_C",
+              "predicate_ref": "joint_predicate_P_Y_given_A_B_C",
+              "conditioners": [
+                [
+                  "A",
+                  1
+                ],
+                [
+                  "B",
+                  1
+                ],
+                [
+                  "C",
+                  1
+                ]
+              ],
+              "raw_denominator_support": 8,
+              "raw_numerators": {
+                "0": 2,
+                "1": 6
+              },
+              "exact_probabilities": {
+                "0": {
+                  "$exact_fraction": [
+                    1,
+                    4
+                  ]
+                },
+                "1": {
+                  "$exact_fraction": [
+                    3,
+                    4
+                  ]
+                }
+              },
+              "used_input_refs": [
+                {
+                  "channel_id": "CH_P_Y_given_A_B_C_0",
+                  "value_hash": "a2bd0f3cf3f6015c6ff7796638ab2f043670b458898e9d36d64a5cfaa786ff7a"
+                },
+                {
+                  "channel_id": "CH_P_Y_given_A_B_C_1",
+                  "value_hash": "5d8261dbca72aac434d31f1ff6f0c4a99cee49151d35942e7bcd6ee2fd68dfc7"
+                }
+              ]
+            }
+          ],
+          "source_value_dependency": {
+            "value_reads_used": 6,
+            "used_input_refs": [
+              {
+                "channel_id": "CH_P_Y_given_A_B_C_0",
+                "value_hash": "a2bd0f3cf3f6015c6ff7796638ab2f043670b458898e9d36d64a5cfaa786ff7a"
+              },
+              {
+                "channel_id": "CH_P_Y_given_A_B_C_1",
+                "value_hash": "5d8261dbca72aac434d31f1ff6f0c4a99cee49151d35942e7bcd6ee2fd68dfc7"
+              }
+            ],
+            "source_permission": "SOURCE_FREE_ONLY"
+          },
+          "scientific_claim_grade": "SOURCE_FREE_SYNTHETIC",
+          "status": "COMPUTED"
+        }
+      },
+      "refused_fields": [],
+      "output_hash": "545d8f5b697b6ec2053bb3231344f0c2fa31230c726cca4260f3a79d355c2114"
+    }
+  },
+  "native_base": {
+    "bundle": {
+      "bundle_id": "S00C_Q86B_Q86A_BINARY_TEST_ONLY",
+      "contract_version": "R3_S02_SOCIOLOGICAL_SEAM_WITNESS@1.0.0",
+      "content_hash": "4586bb18132d1fe657f554b936e2585d93bb4dad927d8261dd5ee464586574f3",
+      "world_scope": {
+        "geography": "NONE__SYNTHETIC_TEST_ONLY",
+        "historical_boundary": "NONE__SYNTHETIC_TEST_ONLY",
+        "population": "invented 2x2 native semantic test",
+        "unit": "synthetic joint cell",
+        "status": "SOURCE_FREE_SYNTHETIC",
+        "qualified_real_source_value_read": false,
+        "source_measurement": "BINARY_Q86B_CONDITIONER_Q86A_TARGET_TEST__NOT_GT2",
+        "target": "Q86A",
+        "conditioner": "Q86B",
+        "native_codes": {
+          "0": "No",
+          "1": "Yes",
+          "9": "Dont know",
+          "997": "Not asked",
+          "998": "Refused",
+          "-1": "Missing"
+        },
+        "native_semantic_limit": "CITIZENSHIP_INCLUSION_OPINIONS__NO_DEMOCRACY_TRUST"
+      },
+      "channels": [
+        {
+          "channel_id": "CH_P_Q86A_given_Q86B_0_0",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Q86A_given_Q86B_0",
+            "conditioners": [
+              [
+                "Q86B",
+                "0"
+              ]
+            ],
+            "cell": "0",
+            "raw_numerator_support": 3,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            },
+            "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+          },
+          "support": 4,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "test_origin": true
+        },
+        {
+          "channel_id": "CH_P_Q86A_given_Q86B_0_1",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Q86A_given_Q86B_0",
+            "conditioners": [
+              [
+                "Q86B",
+                "0"
+              ]
+            ],
+            "cell": "1",
+            "raw_numerator_support": 1,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+          },
+          "support": 4,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "test_origin": true
+        },
+        {
+          "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Q86A_given_Q86B_1",
+            "conditioners": [
+              [
+                "Q86B",
+                "1"
+              ]
+            ],
+            "cell": "0",
+            "raw_numerator_support": 1,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+          },
+          "support": 4,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "test_origin": true
+        },
+        {
+          "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Q86A_given_Q86B_1",
+            "conditioners": [
+              [
+                "Q86B",
+                "1"
+              ]
+            ],
+            "cell": "1",
+            "raw_numerator_support": 3,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            },
+            "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+          },
+          "support": 4,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "test_origin": true
+        }
+      ],
+      "evidence_graph": [
+        {
+          "node_id": "S00C_NATIVE_SYNTHETIC_2X2",
+          "evidence_mode": "TRANSFORMED",
+          "method": "HAND_CONSTRUCTED_JOINT_HOSTILE",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "parent_refs": [],
+          "test_origin": true
+        }
+      ],
+      "conditions": [
+        {
+          "step_id": "P_Q86A_given_Q86B_0",
+          "conditioners": [
+            [
+              "Q86B",
+              "0"
+            ]
+          ],
+          "predicate_ref": "SOURCE_FREE_TEST_Q86B_0",
+          "denominator": 4,
+          "risk_set_ref": {
+            "kind": "SYNTHETIC_RISK_SET",
+            "object_id": "urn:test:s00c:binary-joint:joint-risk",
+            "content_hash": "209a6c7c0fc8994c9db6adc98d185cb92e7f24f084651bf355a9602df88f85f2"
+          }
+        },
+        {
+          "step_id": "P_Q86A_given_Q86B_1",
+          "conditioners": [
+            [
+              "Q86B",
+              "1"
+            ]
+          ],
+          "predicate_ref": "SOURCE_FREE_TEST_Q86B_1",
+          "denominator": 4,
+          "risk_set_ref": {
+            "kind": "SYNTHETIC_RISK_SET",
+            "object_id": "urn:test:s00c:binary-joint:joint-risk",
+            "content_hash": "209a6c7c0fc8994c9db6adc98d185cb92e7f24f084651bf355a9602df88f85f2"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "step_id": "P_Q86A_given_Q86B_0",
+          "producer_route": "SOURCE_FREE_2X2_VALUE_COURT",
+          "cells": {
+            "0": {
+              "numerator": 3
+            },
+            "1": {
+              "numerator": 1
+            }
+          },
+          "consumer_state": "TEST_ONLY",
+          "uncertainty_state": "NOT_REAL_SOURCE"
+        },
+        {
+          "step_id": "P_Q86A_given_Q86B_1",
+          "producer_route": "SOURCE_FREE_2X2_VALUE_COURT",
+          "cells": {
+            "0": {
+              "numerator": 1
+            },
+            "1": {
+              "numerator": 3
+            }
+          },
+          "consumer_state": "TEST_ONLY",
+          "uncertainty_state": "NOT_REAL_SOURCE"
+        }
+      ],
+      "replay": {
+        "input_preimages": [
+          "2710aadd112a29ace46bf43afd54ef226c458676edada1a5bf7a56bacd4ab90e"
+        ],
+        "code_ref": "S00C_SYNTHETIC_NATIVE_2X2_ONLY",
+        "deterministic": true,
+        "test_origin": true,
+        "source_permission": "SOURCE_FREE_ONLY",
+        "qualified_gt2_numeric_cells": false
+      },
+      "selected_world_contract_hash": "2710aadd112a29ace46bf43afd54ef226c458676edada1a5bf7a56bacd4ab90e"
+    },
+    "selected_contract": {
+      "contract_id": "S00C_SOURCE_FREE_BINARY_JOINT_SELECTION@1.0.0",
+      "world_tag": "s00c-synthetic-q86-native",
+      "source_universe_ref": {
+        "kind": "SYNTHETIC_UNIVERSE",
+        "object_id": "urn:test:s00c:binary-joint:source",
+        "content_hash": "6738a01aa76b36eb20f5fc26f269eb134a993b9fe66e9bcdb0399d1a84e433ae"
+      },
+      "release_ref": {
+        "kind": "SYNTHETIC_RELEASE",
+        "object_id": "urn:test:s00c:binary-joint:release",
+        "content_hash": "a0a6753c7cb07467d8d30c4da0b5dac2e9497c482e8a8bc5d80a05326870527a"
+      },
+      "risk_set_ref": {
+        "kind": "SYNTHETIC_RISK_SET",
+        "object_id": "urn:test:s00c:binary-joint:joint-risk",
+        "content_hash": "209a6c7c0fc8994c9db6adc98d185cb92e7f24f084651bf355a9602df88f85f2"
+      },
+      "selection_metadata": {
+        "schema": "S00C_BINARY_JOINT_SELECTION@1",
+        "fixture_id": "S00C_SOURCE_FREE_NATIVE_2X2",
+        "row_count": 8,
+        "selection_kind": "SOURCE_FREE_SYNTHETIC",
+        "real_current": false
+      },
+      "real_current": false
+    },
+    "result": {
+      "scenario_id": "v2_native_base",
+      "conditioning": [
+        "P_Q86A_given_Q86B_1"
+      ],
+      "channels_used": [
+        "CH_P_Q86A_given_Q86B_1_0",
+        "CH_P_Q86A_given_Q86B_1_1"
+      ],
+      "total_support": 4,
+      "raw_denominator_support": 4,
+      "raw_numerators": {
+        "0": 1,
+        "1": 3
+      },
+      "exact_probabilities": {
+        "0": {
+          "$exact_fraction": [
+            1,
+            4
+          ]
+        },
+        "1": {
+          "$exact_fraction": [
+            3,
+            4
+          ]
+        }
+      },
+      "distributions": [
+        {
+          "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Q86A_given_Q86B_1",
+            "conditioners": [
+              [
+                "Q86B",
+                "1"
+              ]
+            ],
+            "cell": "0",
+            "raw_numerator_support": 1,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+          },
+          "support": 4,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "test_origin": true
+        },
+        {
+          "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Q86A_given_Q86B_1",
+            "conditioners": [
+              [
+                "Q86B",
+                "1"
+              ]
+            ],
+            "cell": "1",
+            "raw_numerator_support": 3,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            },
+            "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+          },
+          "support": 4,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "test_origin": true
+        }
+      ],
+      "progressive_trace": [
+        {
+          "step_id": "P_Q86A_given_Q86B_1",
+          "predicate_ref": "SOURCE_FREE_TEST_Q86B_1",
+          "conditioners": [
+            [
+              "Q86B",
+              "1"
+            ]
+          ],
+          "raw_denominator_support": 4,
+          "raw_numerators": {
+            "0": 1,
+            "1": 3
+          },
+          "exact_probabilities": {
+            "0": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "1": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            }
+          },
+          "used_input_refs": [
+            {
+              "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+              "value_hash": "d7189392ce4a9ff9a3287e07b8db23c41d7779da1924a4b490eace18b8de56dd"
+            },
+            {
+              "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+              "value_hash": "7bdfbbb644d00605067d3bf99522f15a881330a454a1be9caee26f3e527d261b"
+            }
+          ]
+        }
+      ],
+      "source_value_dependency": {
+        "value_reads_used": 2,
+        "used_input_refs": [
+          {
+            "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+            "value_hash": "d7189392ce4a9ff9a3287e07b8db23c41d7779da1924a4b490eace18b8de56dd"
+          },
+          {
+            "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+            "value_hash": "7bdfbbb644d00605067d3bf99522f15a881330a454a1be9caee26f3e527d261b"
+          }
+        ],
+        "source_permission": "SOURCE_FREE_ONLY"
+      },
+      "scientific_claim_grade": "SOURCE_FREE_SYNTHETIC",
+      "status": "COMPUTED"
+    },
+    "receipt": {
+      "consumer_ref": "R3_S00C_SOURCE_FREE_VALUE_USE_CONSUMER@1.0.0",
+      "requested_scope": "S00C_Q86B_Q86A_BINARY_TEST_ONLY",
+      "values_read": [
+        {
+          "receipt_id": "VRR_0001",
+          "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+          "value_hash": "d7189392ce4a9ff9a3287e07b8db23c41d7779da1924a4b490eace18b8de56dd",
+          "semantic_effect": "VALUE_USED_IN_EXACT_CONDITIONAL",
+          "query_ref": "v2_native_base:P_Q86A_given_Q86B_1",
+          "used_in": "v2_native_base:P_Q86A_given_Q86B_1"
+        },
+        {
+          "receipt_id": "VRR_0002",
+          "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+          "value_hash": "7bdfbbb644d00605067d3bf99522f15a881330a454a1be9caee26f3e527d261b",
+          "semantic_effect": "VALUE_USED_IN_EXACT_CONDITIONAL",
+          "query_ref": "v2_native_base:P_Q86A_given_Q86B_1",
+          "used_in": "v2_native_base:P_Q86A_given_Q86B_1"
+        }
+      ],
+      "scenario_results": {
+        "v2_native_base": {
+          "scenario_id": "v2_native_base",
+          "conditioning": [
+            "P_Q86A_given_Q86B_1"
+          ],
+          "channels_used": [
+            "CH_P_Q86A_given_Q86B_1_0",
+            "CH_P_Q86A_given_Q86B_1_1"
+          ],
+          "total_support": 4,
+          "raw_denominator_support": 4,
+          "raw_numerators": {
+            "0": 1,
+            "1": 3
+          },
+          "exact_probabilities": {
+            "0": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "1": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            }
+          },
+          "distributions": [
+            {
+              "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+              "evidence_mode": "TRANSFORMED",
+              "value": {
+                "step_id": "P_Q86A_given_Q86B_1",
+                "conditioners": [
+                  [
+                    "Q86B",
+                    "1"
+                  ]
+                ],
+                "cell": "0",
+                "raw_numerator_support": 1,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    1,
+                    4
+                  ]
+                },
+                "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+              },
+              "support": 4,
+              "units": "synthetic_exact_conditional_fraction",
+              "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+              "test_origin": true
+            },
+            {
+              "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+              "evidence_mode": "TRANSFORMED",
+              "value": {
+                "step_id": "P_Q86A_given_Q86B_1",
+                "conditioners": [
+                  [
+                    "Q86B",
+                    "1"
+                  ]
+                ],
+                "cell": "1",
+                "raw_numerator_support": 3,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    3,
+                    4
+                  ]
+                },
+                "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+              },
+              "support": 4,
+              "units": "synthetic_exact_conditional_fraction",
+              "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+              "test_origin": true
+            }
+          ],
+          "progressive_trace": [
+            {
+              "step_id": "P_Q86A_given_Q86B_1",
+              "predicate_ref": "SOURCE_FREE_TEST_Q86B_1",
+              "conditioners": [
+                [
+                  "Q86B",
+                  "1"
+                ]
+              ],
+              "raw_denominator_support": 4,
+              "raw_numerators": {
+                "0": 1,
+                "1": 3
+              },
+              "exact_probabilities": {
+                "0": {
+                  "$exact_fraction": [
+                    1,
+                    4
+                  ]
+                },
+                "1": {
+                  "$exact_fraction": [
+                    3,
+                    4
+                  ]
+                }
+              },
+              "used_input_refs": [
+                {
+                  "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+                  "value_hash": "d7189392ce4a9ff9a3287e07b8db23c41d7779da1924a4b490eace18b8de56dd"
+                },
+                {
+                  "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+                  "value_hash": "7bdfbbb644d00605067d3bf99522f15a881330a454a1be9caee26f3e527d261b"
+                }
+              ]
+            }
+          ],
+          "source_value_dependency": {
+            "value_reads_used": 2,
+            "used_input_refs": [
+              {
+                "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+                "value_hash": "d7189392ce4a9ff9a3287e07b8db23c41d7779da1924a4b490eace18b8de56dd"
+              },
+              {
+                "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+                "value_hash": "7bdfbbb644d00605067d3bf99522f15a881330a454a1be9caee26f3e527d261b"
+              }
+            ],
+            "source_permission": "SOURCE_FREE_ONLY"
+          },
+          "scientific_claim_grade": "SOURCE_FREE_SYNTHETIC",
+          "status": "COMPUTED"
+        }
+      },
+      "refused_fields": [],
+      "output_hash": "70f6442ec242399486678254eb2f226db5e6a5f743c43e274e44b6d099bc06c1"
+    }
+  },
+  "native_new": {
+    "bundle": {
+      "bundle_id": "S00C_Q86B_Q86A_BINARY_TEST_ONLY",
+      "contract_version": "R3_S02_SOCIOLOGICAL_SEAM_WITNESS@1.0.0",
+      "content_hash": "05871452764af2fb5c3e0c705f7fb5ceb5e77d5f7db16487a5bbf11f31ac02c6",
+      "world_scope": {
+        "geography": "NONE__SYNTHETIC_TEST_ONLY",
+        "historical_boundary": "NONE__SYNTHETIC_TEST_ONLY",
+        "population": "invented 2x2 native semantic test",
+        "unit": "synthetic joint cell",
+        "status": "SOURCE_FREE_SYNTHETIC",
+        "qualified_real_source_value_read": false,
+        "source_measurement": "BINARY_Q86B_CONDITIONER_Q86A_TARGET_TEST__NOT_GT2",
+        "target": "Q86A",
+        "conditioner": "Q86B",
+        "native_codes": {
+          "0": "No",
+          "1": "Yes",
+          "9": "Dont know",
+          "997": "Not asked",
+          "998": "Refused",
+          "-1": "Missing"
+        },
+        "native_semantic_limit": "CITIZENSHIP_INCLUSION_OPINIONS__NO_DEMOCRACY_TRUST"
+      },
+      "channels": [
+        {
+          "channel_id": "CH_P_Q86A_given_Q86B_0_0",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Q86A_given_Q86B_0",
+            "conditioners": [
+              [
+                "Q86B",
+                "0"
+              ]
+            ],
+            "cell": "0",
+            "raw_numerator_support": 3,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            },
+            "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+          },
+          "support": 4,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "test_origin": true
+        },
+        {
+          "channel_id": "CH_P_Q86A_given_Q86B_0_1",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Q86A_given_Q86B_0",
+            "conditioners": [
+              [
+                "Q86B",
+                "0"
+              ]
+            ],
+            "cell": "1",
+            "raw_numerator_support": 1,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+          },
+          "support": 4,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "test_origin": true
+        },
+        {
+          "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Q86A_given_Q86B_1",
+            "conditioners": [
+              [
+                "Q86B",
+                "1"
+              ]
+            ],
+            "cell": "0",
+            "raw_numerator_support": 2,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                1,
+                2
+              ]
+            },
+            "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+          },
+          "support": 4,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "test_origin": true
+        },
+        {
+          "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Q86A_given_Q86B_1",
+            "conditioners": [
+              [
+                "Q86B",
+                "1"
+              ]
+            ],
+            "cell": "1",
+            "raw_numerator_support": 2,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                1,
+                2
+              ]
+            },
+            "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+          },
+          "support": 4,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "test_origin": true
+        }
+      ],
+      "evidence_graph": [
+        {
+          "node_id": "S00C_NATIVE_SYNTHETIC_2X2",
+          "evidence_mode": "TRANSFORMED",
+          "method": "HAND_CONSTRUCTED_JOINT_HOSTILE",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "parent_refs": [],
+          "test_origin": true
+        }
+      ],
+      "conditions": [
+        {
+          "step_id": "P_Q86A_given_Q86B_0",
+          "conditioners": [
+            [
+              "Q86B",
+              "0"
+            ]
+          ],
+          "predicate_ref": "SOURCE_FREE_TEST_Q86B_0",
+          "denominator": 4,
+          "risk_set_ref": {
+            "kind": "SYNTHETIC_RISK_SET",
+            "object_id": "urn:test:s00c:binary-joint:joint-risk",
+            "content_hash": "e54cda5aa9f3a4dc8e478393a558f1ae00a3149a263e4e1acf59e16cd6076ffe"
+          }
+        },
+        {
+          "step_id": "P_Q86A_given_Q86B_1",
+          "conditioners": [
+            [
+              "Q86B",
+              "1"
+            ]
+          ],
+          "predicate_ref": "SOURCE_FREE_TEST_Q86B_1",
+          "denominator": 4,
+          "risk_set_ref": {
+            "kind": "SYNTHETIC_RISK_SET",
+            "object_id": "urn:test:s00c:binary-joint:joint-risk",
+            "content_hash": "e54cda5aa9f3a4dc8e478393a558f1ae00a3149a263e4e1acf59e16cd6076ffe"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "step_id": "P_Q86A_given_Q86B_0",
+          "producer_route": "SOURCE_FREE_2X2_VALUE_COURT",
+          "cells": {
+            "0": {
+              "numerator": 3
+            },
+            "1": {
+              "numerator": 1
+            }
+          },
+          "consumer_state": "TEST_ONLY",
+          "uncertainty_state": "NOT_REAL_SOURCE"
+        },
+        {
+          "step_id": "P_Q86A_given_Q86B_1",
+          "producer_route": "SOURCE_FREE_2X2_VALUE_COURT",
+          "cells": {
+            "0": {
+              "numerator": 2
+            },
+            "1": {
+              "numerator": 2
+            }
+          },
+          "consumer_state": "TEST_ONLY",
+          "uncertainty_state": "NOT_REAL_SOURCE"
+        }
+      ],
+      "replay": {
+        "input_preimages": [
+          "e1a5c0a2723265f2c98c612b15b8bdedb3eff837c453863fef9977c368ac4e21"
+        ],
+        "code_ref": "S00C_SYNTHETIC_NATIVE_2X2_ONLY",
+        "deterministic": true,
+        "test_origin": true,
+        "source_permission": "SOURCE_FREE_ONLY",
+        "qualified_gt2_numeric_cells": false
+      },
+      "selected_world_contract_hash": "e1a5c0a2723265f2c98c612b15b8bdedb3eff837c453863fef9977c368ac4e21"
+    },
+    "selected_contract": {
+      "contract_id": "S00C_SOURCE_FREE_BINARY_JOINT_SELECTION@1.0.0",
+      "world_tag": "s00c-synthetic-q86-native",
+      "source_universe_ref": {
+        "kind": "SYNTHETIC_UNIVERSE",
+        "object_id": "urn:test:s00c:binary-joint:source",
+        "content_hash": "1cf19ba30dd701930025990308025c151e523057f929cd2ba297925067d72ef9"
+      },
+      "release_ref": {
+        "kind": "SYNTHETIC_RELEASE",
+        "object_id": "urn:test:s00c:binary-joint:release",
+        "content_hash": "795b56cb3536964440f56a144211185c1b09f93aae4a06527b56f13415b719cf"
+      },
+      "risk_set_ref": {
+        "kind": "SYNTHETIC_RISK_SET",
+        "object_id": "urn:test:s00c:binary-joint:joint-risk",
+        "content_hash": "e54cda5aa9f3a4dc8e478393a558f1ae00a3149a263e4e1acf59e16cd6076ffe"
+      },
+      "selection_metadata": {
+        "schema": "S00C_BINARY_JOINT_SELECTION@1",
+        "fixture_id": "S00C_SOURCE_FREE_NATIVE_2X2",
+        "row_count": 8,
+        "selection_kind": "SOURCE_FREE_SYNTHETIC",
+        "real_current": false
+      },
+      "real_current": false
+    },
+    "result": {
+      "scenario_id": "v2_native_new",
+      "conditioning": [
+        "P_Q86A_given_Q86B_1"
+      ],
+      "channels_used": [
+        "CH_P_Q86A_given_Q86B_1_0",
+        "CH_P_Q86A_given_Q86B_1_1"
+      ],
+      "total_support": 4,
+      "raw_denominator_support": 4,
+      "raw_numerators": {
+        "0": 2,
+        "1": 2
+      },
+      "exact_probabilities": {
+        "0": {
+          "$exact_fraction": [
+            1,
+            2
+          ]
+        },
+        "1": {
+          "$exact_fraction": [
+            1,
+            2
+          ]
+        }
+      },
+      "distributions": [
+        {
+          "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Q86A_given_Q86B_1",
+            "conditioners": [
+              [
+                "Q86B",
+                "1"
+              ]
+            ],
+            "cell": "0",
+            "raw_numerator_support": 2,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                1,
+                2
+              ]
+            },
+            "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+          },
+          "support": 4,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "test_origin": true
+        },
+        {
+          "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Q86A_given_Q86B_1",
+            "conditioners": [
+              [
+                "Q86B",
+                "1"
+              ]
+            ],
+            "cell": "1",
+            "raw_numerator_support": 2,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                1,
+                2
+              ]
+            },
+            "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+          },
+          "support": 4,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "test_origin": true
+        }
+      ],
+      "progressive_trace": [
+        {
+          "step_id": "P_Q86A_given_Q86B_1",
+          "predicate_ref": "SOURCE_FREE_TEST_Q86B_1",
+          "conditioners": [
+            [
+              "Q86B",
+              "1"
+            ]
+          ],
+          "raw_denominator_support": 4,
+          "raw_numerators": {
+            "0": 2,
+            "1": 2
+          },
+          "exact_probabilities": {
+            "0": {
+              "$exact_fraction": [
+                1,
+                2
+              ]
+            },
+            "1": {
+              "$exact_fraction": [
+                1,
+                2
+              ]
+            }
+          },
+          "used_input_refs": [
+            {
+              "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+              "value_hash": "1ef2dcb0e39d65bb38aa4df319c29bcf7edd438a8b573b7574d68d17e73cef83"
+            },
+            {
+              "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+              "value_hash": "cdc78ddd1d0a6b802dfb747d77c2a8fac815bce93a1a1398e6995e807f77336a"
+            }
+          ]
+        }
+      ],
+      "source_value_dependency": {
+        "value_reads_used": 2,
+        "used_input_refs": [
+          {
+            "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+            "value_hash": "1ef2dcb0e39d65bb38aa4df319c29bcf7edd438a8b573b7574d68d17e73cef83"
+          },
+          {
+            "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+            "value_hash": "cdc78ddd1d0a6b802dfb747d77c2a8fac815bce93a1a1398e6995e807f77336a"
+          }
+        ],
+        "source_permission": "SOURCE_FREE_ONLY"
+      },
+      "scientific_claim_grade": "SOURCE_FREE_SYNTHETIC",
+      "status": "COMPUTED"
+    },
+    "receipt": {
+      "consumer_ref": "R3_S00C_SOURCE_FREE_VALUE_USE_CONSUMER@1.0.0",
+      "requested_scope": "S00C_Q86B_Q86A_BINARY_TEST_ONLY",
+      "values_read": [
+        {
+          "receipt_id": "VRR_0001",
+          "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+          "value_hash": "1ef2dcb0e39d65bb38aa4df319c29bcf7edd438a8b573b7574d68d17e73cef83",
+          "semantic_effect": "VALUE_USED_IN_EXACT_CONDITIONAL",
+          "query_ref": "v2_native_new:P_Q86A_given_Q86B_1",
+          "used_in": "v2_native_new:P_Q86A_given_Q86B_1"
+        },
+        {
+          "receipt_id": "VRR_0002",
+          "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+          "value_hash": "cdc78ddd1d0a6b802dfb747d77c2a8fac815bce93a1a1398e6995e807f77336a",
+          "semantic_effect": "VALUE_USED_IN_EXACT_CONDITIONAL",
+          "query_ref": "v2_native_new:P_Q86A_given_Q86B_1",
+          "used_in": "v2_native_new:P_Q86A_given_Q86B_1"
+        }
+      ],
+      "scenario_results": {
+        "v2_native_new": {
+          "scenario_id": "v2_native_new",
+          "conditioning": [
+            "P_Q86A_given_Q86B_1"
+          ],
+          "channels_used": [
+            "CH_P_Q86A_given_Q86B_1_0",
+            "CH_P_Q86A_given_Q86B_1_1"
+          ],
+          "total_support": 4,
+          "raw_denominator_support": 4,
+          "raw_numerators": {
+            "0": 2,
+            "1": 2
+          },
+          "exact_probabilities": {
+            "0": {
+              "$exact_fraction": [
+                1,
+                2
+              ]
+            },
+            "1": {
+              "$exact_fraction": [
+                1,
+                2
+              ]
+            }
+          },
+          "distributions": [
+            {
+              "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+              "evidence_mode": "TRANSFORMED",
+              "value": {
+                "step_id": "P_Q86A_given_Q86B_1",
+                "conditioners": [
+                  [
+                    "Q86B",
+                    "1"
+                  ]
+                ],
+                "cell": "0",
+                "raw_numerator_support": 2,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    1,
+                    2
+                  ]
+                },
+                "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+              },
+              "support": 4,
+              "units": "synthetic_exact_conditional_fraction",
+              "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+              "test_origin": true
+            },
+            {
+              "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+              "evidence_mode": "TRANSFORMED",
+              "value": {
+                "step_id": "P_Q86A_given_Q86B_1",
+                "conditioners": [
+                  [
+                    "Q86B",
+                    "1"
+                  ]
+                ],
+                "cell": "1",
+                "raw_numerator_support": 2,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    1,
+                    2
+                  ]
+                },
+                "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+              },
+              "support": 4,
+              "units": "synthetic_exact_conditional_fraction",
+              "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+              "test_origin": true
+            }
+          ],
+          "progressive_trace": [
+            {
+              "step_id": "P_Q86A_given_Q86B_1",
+              "predicate_ref": "SOURCE_FREE_TEST_Q86B_1",
+              "conditioners": [
+                [
+                  "Q86B",
+                  "1"
+                ]
+              ],
+              "raw_denominator_support": 4,
+              "raw_numerators": {
+                "0": 2,
+                "1": 2
+              },
+              "exact_probabilities": {
+                "0": {
+                  "$exact_fraction": [
+                    1,
+                    2
+                  ]
+                },
+                "1": {
+                  "$exact_fraction": [
+                    1,
+                    2
+                  ]
+                }
+              },
+              "used_input_refs": [
+                {
+                  "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+                  "value_hash": "1ef2dcb0e39d65bb38aa4df319c29bcf7edd438a8b573b7574d68d17e73cef83"
+                },
+                {
+                  "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+                  "value_hash": "cdc78ddd1d0a6b802dfb747d77c2a8fac815bce93a1a1398e6995e807f77336a"
+                }
+              ]
+            }
+          ],
+          "source_value_dependency": {
+            "value_reads_used": 2,
+            "used_input_refs": [
+              {
+                "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+                "value_hash": "1ef2dcb0e39d65bb38aa4df319c29bcf7edd438a8b573b7574d68d17e73cef83"
+              },
+              {
+                "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+                "value_hash": "cdc78ddd1d0a6b802dfb747d77c2a8fac815bce93a1a1398e6995e807f77336a"
+              }
+            ],
+            "source_permission": "SOURCE_FREE_ONLY"
+          },
+          "scientific_claim_grade": "SOURCE_FREE_SYNTHETIC",
+          "status": "COMPUTED"
+        }
+      },
+      "refused_fields": [],
+      "output_hash": "844a8a71afbfeb66d0286876154416b7ecb9b5c1b3f4f18666e9586cb13ffe8a"
+    }
+  },
+  "native_unrelated_new": {
+    "bundle": {
+      "bundle_id": "S00C_Q86B_Q86A_BINARY_TEST_ONLY",
+      "contract_version": "R3_S02_SOCIOLOGICAL_SEAM_WITNESS@1.0.0",
+      "content_hash": "e4d264b75df15cb1c859e252a85142638c1e2481256a9fca1019c5d92508e4cc",
+      "world_scope": {
+        "geography": "NONE__SYNTHETIC_TEST_ONLY",
+        "historical_boundary": "NONE__SYNTHETIC_TEST_ONLY",
+        "population": "invented 2x2 native semantic test",
+        "unit": "synthetic joint cell",
+        "status": "SOURCE_FREE_SYNTHETIC",
+        "qualified_real_source_value_read": false,
+        "source_measurement": "BINARY_Q86B_CONDITIONER_Q86A_TARGET_TEST__NOT_GT2",
+        "target": "Q86A",
+        "conditioner": "Q86B",
+        "native_codes": {
+          "0": "No",
+          "1": "Yes",
+          "9": "Dont know",
+          "997": "Not asked",
+          "998": "Refused",
+          "-1": "Missing"
+        },
+        "native_semantic_limit": "CITIZENSHIP_INCLUSION_OPINIONS__NO_DEMOCRACY_TRUST"
+      },
+      "channels": [
+        {
+          "channel_id": "CH_P_Q86A_given_Q86B_0_0",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Q86A_given_Q86B_0",
+            "conditioners": [
+              [
+                "Q86B",
+                "0"
+              ]
+            ],
+            "cell": "0",
+            "raw_numerator_support": 5,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                5,
+                12
+              ]
+            },
+            "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+          },
+          "support": 12,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "test_origin": true
+        },
+        {
+          "channel_id": "CH_P_Q86A_given_Q86B_0_1",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Q86A_given_Q86B_0",
+            "conditioners": [
+              [
+                "Q86B",
+                "0"
+              ]
+            ],
+            "cell": "1",
+            "raw_numerator_support": 7,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                7,
+                12
+              ]
+            },
+            "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+          },
+          "support": 12,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "test_origin": true
+        },
+        {
+          "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Q86A_given_Q86B_1",
+            "conditioners": [
+              [
+                "Q86B",
+                "1"
+              ]
+            ],
+            "cell": "0",
+            "raw_numerator_support": 1,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+          },
+          "support": 4,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "test_origin": true
+        },
+        {
+          "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Q86A_given_Q86B_1",
+            "conditioners": [
+              [
+                "Q86B",
+                "1"
+              ]
+            ],
+            "cell": "1",
+            "raw_numerator_support": 3,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            },
+            "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+          },
+          "support": 4,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "test_origin": true
+        }
+      ],
+      "evidence_graph": [
+        {
+          "node_id": "S00C_NATIVE_SYNTHETIC_2X2",
+          "evidence_mode": "TRANSFORMED",
+          "method": "HAND_CONSTRUCTED_JOINT_HOSTILE",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "parent_refs": [],
+          "test_origin": true
+        }
+      ],
+      "conditions": [
+        {
+          "step_id": "P_Q86A_given_Q86B_0",
+          "conditioners": [
+            [
+              "Q86B",
+              "0"
+            ]
+          ],
+          "predicate_ref": "SOURCE_FREE_TEST_Q86B_0",
+          "denominator": 12,
+          "risk_set_ref": {
+            "kind": "SYNTHETIC_RISK_SET",
+            "object_id": "urn:test:s00c:binary-joint:joint-risk",
+            "content_hash": "6a6b3101e3c1589dafba6fc6b6b034c849cecdd6deb60bfdaed9569d16e48b4a"
+          }
+        },
+        {
+          "step_id": "P_Q86A_given_Q86B_1",
+          "conditioners": [
+            [
+              "Q86B",
+              "1"
+            ]
+          ],
+          "predicate_ref": "SOURCE_FREE_TEST_Q86B_1",
+          "denominator": 4,
+          "risk_set_ref": {
+            "kind": "SYNTHETIC_RISK_SET",
+            "object_id": "urn:test:s00c:binary-joint:joint-risk",
+            "content_hash": "6a6b3101e3c1589dafba6fc6b6b034c849cecdd6deb60bfdaed9569d16e48b4a"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "step_id": "P_Q86A_given_Q86B_0",
+          "producer_route": "SOURCE_FREE_2X2_VALUE_COURT",
+          "cells": {
+            "0": {
+              "numerator": 5
+            },
+            "1": {
+              "numerator": 7
+            }
+          },
+          "consumer_state": "TEST_ONLY",
+          "uncertainty_state": "NOT_REAL_SOURCE"
+        },
+        {
+          "step_id": "P_Q86A_given_Q86B_1",
+          "producer_route": "SOURCE_FREE_2X2_VALUE_COURT",
+          "cells": {
+            "0": {
+              "numerator": 1
+            },
+            "1": {
+              "numerator": 3
+            }
+          },
+          "consumer_state": "TEST_ONLY",
+          "uncertainty_state": "NOT_REAL_SOURCE"
+        }
+      ],
+      "replay": {
+        "input_preimages": [
+          "c0a5629c738aebad79bded89272c5b5b224b172364d529cdf5e3a521c41005e5"
+        ],
+        "code_ref": "S00C_SYNTHETIC_NATIVE_2X2_ONLY",
+        "deterministic": true,
+        "test_origin": true,
+        "source_permission": "SOURCE_FREE_ONLY",
+        "qualified_gt2_numeric_cells": false
+      },
+      "selected_world_contract_hash": "c0a5629c738aebad79bded89272c5b5b224b172364d529cdf5e3a521c41005e5"
+    },
+    "selected_contract": {
+      "contract_id": "S00C_SOURCE_FREE_BINARY_JOINT_SELECTION@1.0.0",
+      "world_tag": "s00c-synthetic-q86-native",
+      "source_universe_ref": {
+        "kind": "SYNTHETIC_UNIVERSE",
+        "object_id": "urn:test:s00c:binary-joint:source",
+        "content_hash": "f7477030d5de32a5d981dbc2bc079df8f7e0028875e920eb376fcfda055589ae"
+      },
+      "release_ref": {
+        "kind": "SYNTHETIC_RELEASE",
+        "object_id": "urn:test:s00c:binary-joint:release",
+        "content_hash": "f967d04c39a00c52646bd2706991e4d76d8fd291ca306a87b3c34363cc558306"
+      },
+      "risk_set_ref": {
+        "kind": "SYNTHETIC_RISK_SET",
+        "object_id": "urn:test:s00c:binary-joint:joint-risk",
+        "content_hash": "6a6b3101e3c1589dafba6fc6b6b034c849cecdd6deb60bfdaed9569d16e48b4a"
+      },
+      "selection_metadata": {
+        "schema": "S00C_BINARY_JOINT_SELECTION@1",
+        "fixture_id": "S00C_SOURCE_FREE_NATIVE_2X2",
+        "row_count": 16,
+        "selection_kind": "SOURCE_FREE_SYNTHETIC",
+        "real_current": false
+      },
+      "real_current": false
+    },
+    "result": {
+      "scenario_id": "v2_native_unrelated_new",
+      "conditioning": [
+        "P_Q86A_given_Q86B_1"
+      ],
+      "channels_used": [
+        "CH_P_Q86A_given_Q86B_1_0",
+        "CH_P_Q86A_given_Q86B_1_1"
+      ],
+      "total_support": 4,
+      "raw_denominator_support": 4,
+      "raw_numerators": {
+        "0": 1,
+        "1": 3
+      },
+      "exact_probabilities": {
+        "0": {
+          "$exact_fraction": [
+            1,
+            4
+          ]
+        },
+        "1": {
+          "$exact_fraction": [
+            3,
+            4
+          ]
+        }
+      },
+      "distributions": [
+        {
+          "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Q86A_given_Q86B_1",
+            "conditioners": [
+              [
+                "Q86B",
+                "1"
+              ]
+            ],
+            "cell": "0",
+            "raw_numerator_support": 1,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+          },
+          "support": 4,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "test_origin": true
+        },
+        {
+          "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Q86A_given_Q86B_1",
+            "conditioners": [
+              [
+                "Q86B",
+                "1"
+              ]
+            ],
+            "cell": "1",
+            "raw_numerator_support": 3,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            },
+            "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+          },
+          "support": 4,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "test_origin": true
+        }
+      ],
+      "progressive_trace": [
+        {
+          "step_id": "P_Q86A_given_Q86B_1",
+          "predicate_ref": "SOURCE_FREE_TEST_Q86B_1",
+          "conditioners": [
+            [
+              "Q86B",
+              "1"
+            ]
+          ],
+          "raw_denominator_support": 4,
+          "raw_numerators": {
+            "0": 1,
+            "1": 3
+          },
+          "exact_probabilities": {
+            "0": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "1": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            }
+          },
+          "used_input_refs": [
+            {
+              "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+              "value_hash": "d7189392ce4a9ff9a3287e07b8db23c41d7779da1924a4b490eace18b8de56dd"
+            },
+            {
+              "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+              "value_hash": "7bdfbbb644d00605067d3bf99522f15a881330a454a1be9caee26f3e527d261b"
+            }
+          ]
+        }
+      ],
+      "source_value_dependency": {
+        "value_reads_used": 2,
+        "used_input_refs": [
+          {
+            "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+            "value_hash": "d7189392ce4a9ff9a3287e07b8db23c41d7779da1924a4b490eace18b8de56dd"
+          },
+          {
+            "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+            "value_hash": "7bdfbbb644d00605067d3bf99522f15a881330a454a1be9caee26f3e527d261b"
+          }
+        ],
+        "source_permission": "SOURCE_FREE_ONLY"
+      },
+      "scientific_claim_grade": "SOURCE_FREE_SYNTHETIC",
+      "status": "COMPUTED"
+    },
+    "receipt": {
+      "consumer_ref": "R3_S00C_SOURCE_FREE_VALUE_USE_CONSUMER@1.0.0",
+      "requested_scope": "S00C_Q86B_Q86A_BINARY_TEST_ONLY",
+      "values_read": [
+        {
+          "receipt_id": "VRR_0001",
+          "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+          "value_hash": "d7189392ce4a9ff9a3287e07b8db23c41d7779da1924a4b490eace18b8de56dd",
+          "semantic_effect": "VALUE_USED_IN_EXACT_CONDITIONAL",
+          "query_ref": "v2_native_unrelated_new:P_Q86A_given_Q86B_1",
+          "used_in": "v2_native_unrelated_new:P_Q86A_given_Q86B_1"
+        },
+        {
+          "receipt_id": "VRR_0002",
+          "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+          "value_hash": "7bdfbbb644d00605067d3bf99522f15a881330a454a1be9caee26f3e527d261b",
+          "semantic_effect": "VALUE_USED_IN_EXACT_CONDITIONAL",
+          "query_ref": "v2_native_unrelated_new:P_Q86A_given_Q86B_1",
+          "used_in": "v2_native_unrelated_new:P_Q86A_given_Q86B_1"
+        }
+      ],
+      "scenario_results": {
+        "v2_native_unrelated_new": {
+          "scenario_id": "v2_native_unrelated_new",
+          "conditioning": [
+            "P_Q86A_given_Q86B_1"
+          ],
+          "channels_used": [
+            "CH_P_Q86A_given_Q86B_1_0",
+            "CH_P_Q86A_given_Q86B_1_1"
+          ],
+          "total_support": 4,
+          "raw_denominator_support": 4,
+          "raw_numerators": {
+            "0": 1,
+            "1": 3
+          },
+          "exact_probabilities": {
+            "0": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "1": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            }
+          },
+          "distributions": [
+            {
+              "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+              "evidence_mode": "TRANSFORMED",
+              "value": {
+                "step_id": "P_Q86A_given_Q86B_1",
+                "conditioners": [
+                  [
+                    "Q86B",
+                    "1"
+                  ]
+                ],
+                "cell": "0",
+                "raw_numerator_support": 1,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    1,
+                    4
+                  ]
+                },
+                "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+              },
+              "support": 4,
+              "units": "synthetic_exact_conditional_fraction",
+              "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+              "test_origin": true
+            },
+            {
+              "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+              "evidence_mode": "TRANSFORMED",
+              "value": {
+                "step_id": "P_Q86A_given_Q86B_1",
+                "conditioners": [
+                  [
+                    "Q86B",
+                    "1"
+                  ]
+                ],
+                "cell": "1",
+                "raw_numerator_support": 3,
+                "raw_probability_exact_fraction": {
+                  "$exact_fraction": [
+                    3,
+                    4
+                  ]
+                },
+                "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+              },
+              "support": 4,
+              "units": "synthetic_exact_conditional_fraction",
+              "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+              "test_origin": true
+            }
+          ],
+          "progressive_trace": [
+            {
+              "step_id": "P_Q86A_given_Q86B_1",
+              "predicate_ref": "SOURCE_FREE_TEST_Q86B_1",
+              "conditioners": [
+                [
+                  "Q86B",
+                  "1"
+                ]
+              ],
+              "raw_denominator_support": 4,
+              "raw_numerators": {
+                "0": 1,
+                "1": 3
+              },
+              "exact_probabilities": {
+                "0": {
+                  "$exact_fraction": [
+                    1,
+                    4
+                  ]
+                },
+                "1": {
+                  "$exact_fraction": [
+                    3,
+                    4
+                  ]
+                }
+              },
+              "used_input_refs": [
+                {
+                  "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+                  "value_hash": "d7189392ce4a9ff9a3287e07b8db23c41d7779da1924a4b490eace18b8de56dd"
+                },
+                {
+                  "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+                  "value_hash": "7bdfbbb644d00605067d3bf99522f15a881330a454a1be9caee26f3e527d261b"
+                }
+              ]
+            }
+          ],
+          "source_value_dependency": {
+            "value_reads_used": 2,
+            "used_input_refs": [
+              {
+                "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+                "value_hash": "d7189392ce4a9ff9a3287e07b8db23c41d7779da1924a4b490eace18b8de56dd"
+              },
+              {
+                "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+                "value_hash": "7bdfbbb644d00605067d3bf99522f15a881330a454a1be9caee26f3e527d261b"
+              }
+            ],
+            "source_permission": "SOURCE_FREE_ONLY"
+          },
+          "scientific_claim_grade": "SOURCE_FREE_SYNTHETIC",
+          "status": "COMPUTED"
+        }
+      },
+      "refused_fields": [],
+      "output_hash": "c3feec14be3b034a7d37430cb62b9fe58457ce701534ef5d7873b10d7ff796f1"
+    }
+  },
+  "zero": {
+    "bundle": {
+      "bundle_id": "S00C_Q86B_Q86A_BINARY_TEST_ONLY",
+      "contract_version": "R3_S02_SOCIOLOGICAL_SEAM_WITNESS@1.0.0",
+      "content_hash": "78c8c2030cbace177357ebc84d9a6885a405c89d8640139fb068ef63a0558c80",
+      "world_scope": {
+        "geography": "NONE__SYNTHETIC_TEST_ONLY",
+        "historical_boundary": "NONE__SYNTHETIC_TEST_ONLY",
+        "population": "invented 2x2 native semantic test",
+        "unit": "synthetic joint cell",
+        "status": "SOURCE_FREE_SYNTHETIC",
+        "qualified_real_source_value_read": false,
+        "source_measurement": "BINARY_Q86B_CONDITIONER_Q86A_TARGET_TEST__NOT_GT2",
+        "target": "Q86A",
+        "conditioner": "Q86B",
+        "native_codes": {
+          "0": "No",
+          "1": "Yes",
+          "9": "Dont know",
+          "997": "Not asked",
+          "998": "Refused",
+          "-1": "Missing"
+        },
+        "native_semantic_limit": "CITIZENSHIP_INCLUSION_OPINIONS__NO_DEMOCRACY_TRUST"
+      },
+      "channels": [
+        {
+          "channel_id": "CH_P_Q86A_given_Q86B_0_0",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Q86A_given_Q86B_0",
+            "conditioners": [
+              [
+                "Q86B",
+                "0"
+              ]
+            ],
+            "cell": "0",
+            "raw_numerator_support": 3,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            },
+            "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+          },
+          "support": 4,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "test_origin": true
+        },
+        {
+          "channel_id": "CH_P_Q86A_given_Q86B_0_1",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Q86A_given_Q86B_0",
+            "conditioners": [
+              [
+                "Q86B",
+                "0"
+              ]
+            ],
+            "cell": "1",
+            "raw_numerator_support": 1,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            },
+            "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+          },
+          "support": 4,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "test_origin": true
+        },
+        {
+          "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Q86A_given_Q86B_1",
+            "conditioners": [
+              [
+                "Q86B",
+                "1"
+              ]
+            ],
+            "cell": "0",
+            "raw_numerator_support": 0,
+            "raw_probability_exact_fraction": null,
+            "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+          },
+          "support": 0,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "test_origin": true
+        },
+        {
+          "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+          "evidence_mode": "TRANSFORMED",
+          "value": {
+            "step_id": "P_Q86A_given_Q86B_1",
+            "conditioners": [
+              [
+                "Q86B",
+                "1"
+              ]
+            ],
+            "cell": "1",
+            "raw_numerator_support": 0,
+            "raw_probability_exact_fraction": null,
+            "producer_evidence_ref": "S00C_SYNTHETIC_2X2_INPUT_ONLY"
+          },
+          "support": 0,
+          "units": "synthetic_exact_conditional_fraction",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "test_origin": true
+        }
+      ],
+      "evidence_graph": [
+        {
+          "node_id": "S00C_NATIVE_SYNTHETIC_2X2",
+          "evidence_mode": "TRANSFORMED",
+          "method": "HAND_CONSTRUCTED_JOINT_HOSTILE",
+          "source_scope": "SOURCE_FREE_SYNTHETIC_Q86B_Q86A_JOINT",
+          "parent_refs": [],
+          "test_origin": true
+        }
+      ],
+      "conditions": [
+        {
+          "step_id": "P_Q86A_given_Q86B_0",
+          "conditioners": [
+            [
+              "Q86B",
+              "0"
+            ]
+          ],
+          "predicate_ref": "SOURCE_FREE_TEST_Q86B_0",
+          "denominator": 4,
+          "risk_set_ref": {
+            "kind": "SYNTHETIC_RISK_SET",
+            "object_id": "urn:test:s00c:binary-joint:joint-risk",
+            "content_hash": "d6d8cc46fd9a5e0bfa8518abc5a7e5d99400ba7a59f1cc6fd065055aad473445"
+          }
+        },
+        {
+          "step_id": "P_Q86A_given_Q86B_1",
+          "conditioners": [
+            [
+              "Q86B",
+              "1"
+            ]
+          ],
+          "predicate_ref": "SOURCE_FREE_TEST_Q86B_1",
+          "denominator": 0,
+          "risk_set_ref": {
+            "kind": "SYNTHETIC_RISK_SET",
+            "object_id": "urn:test:s00c:binary-joint:joint-risk",
+            "content_hash": "d6d8cc46fd9a5e0bfa8518abc5a7e5d99400ba7a59f1cc6fd065055aad473445"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "step_id": "P_Q86A_given_Q86B_0",
+          "producer_route": "SOURCE_FREE_2X2_VALUE_COURT",
+          "cells": {
+            "0": {
+              "numerator": 3
+            },
+            "1": {
+              "numerator": 1
+            }
+          },
+          "consumer_state": "TEST_ONLY",
+          "uncertainty_state": "NOT_REAL_SOURCE"
+        },
+        {
+          "step_id": "P_Q86A_given_Q86B_1",
+          "producer_route": "SOURCE_FREE_2X2_VALUE_COURT",
+          "cells": {
+            "0": {
+              "numerator": 0
+            },
+            "1": {
+              "numerator": 0
+            }
+          },
+          "consumer_state": "TEST_ONLY",
+          "uncertainty_state": "NOT_REAL_SOURCE"
+        }
+      ],
+      "replay": {
+        "input_preimages": [
+          "de80fe6e253ee08d350a5f93926c60ee47e64736c53d0e278445d4a34995346a"
+        ],
+        "code_ref": "S00C_SYNTHETIC_NATIVE_2X2_ONLY",
+        "deterministic": true,
+        "test_origin": true,
+        "source_permission": "SOURCE_FREE_ONLY",
+        "qualified_gt2_numeric_cells": false
+      },
+      "selected_world_contract_hash": "de80fe6e253ee08d350a5f93926c60ee47e64736c53d0e278445d4a34995346a"
+    },
+    "selected_contract": {
+      "contract_id": "S00C_SOURCE_FREE_BINARY_JOINT_SELECTION@1.0.0",
+      "world_tag": "s00c-synthetic-q86-native",
+      "source_universe_ref": {
+        "kind": "SYNTHETIC_UNIVERSE",
+        "object_id": "urn:test:s00c:binary-joint:source",
+        "content_hash": "d2c41c2d59add11093542def7a76a09d59a6bf6fc22e5b058260f4bcdc819a6e"
+      },
+      "release_ref": {
+        "kind": "SYNTHETIC_RELEASE",
+        "object_id": "urn:test:s00c:binary-joint:release",
+        "content_hash": "dfc8260782455f46b158b9ae3ffc8291e9abb5bdfba9b30f0362a4a3b8b79c7e"
+      },
+      "risk_set_ref": {
+        "kind": "SYNTHETIC_RISK_SET",
+        "object_id": "urn:test:s00c:binary-joint:joint-risk",
+        "content_hash": "d6d8cc46fd9a5e0bfa8518abc5a7e5d99400ba7a59f1cc6fd065055aad473445"
+      },
+      "selection_metadata": {
+        "schema": "S00C_BINARY_JOINT_SELECTION@1",
+        "fixture_id": "S00C_SOURCE_FREE_NATIVE_2X2",
+        "row_count": 4,
+        "selection_kind": "SOURCE_FREE_SYNTHETIC",
+        "real_current": false
+      },
+      "real_current": false
+    },
+    "result": {
+      "scenario_id": "v2_zero",
+      "status": "ZERO_SUPPORT",
+      "reason": "ZERO_DENOMINATOR_ABSTENTION",
+      "scientific_claim_grade": "SOURCE_FREE_SYNTHETIC"
+    },
+    "receipt": {
+      "consumer_ref": "R3_S00C_SOURCE_FREE_VALUE_USE_CONSUMER@1.0.0",
+      "requested_scope": "S00C_Q86B_Q86A_BINARY_TEST_ONLY",
+      "values_read": [
+        {
+          "receipt_id": "VRR_0001",
+          "channel_id": "CH_P_Q86A_given_Q86B_1_0",
+          "value_hash": "e355387fc8fbb165e3d3995e172239d9aee317c49fa54ea2c488d60ca0e587f1",
+          "semantic_effect": "VALUE_READ_ONLY",
+          "query_ref": "v2_zero:P_Q86A_given_Q86B_1",
+          "used_in": ""
+        },
+        {
+          "receipt_id": "VRR_0002",
+          "channel_id": "CH_P_Q86A_given_Q86B_1_1",
+          "value_hash": "c59d4ee62f566f7de22186309fc3cdf0152ea7627f558af7a8669532fa6dcaf1",
+          "semantic_effect": "VALUE_READ_ONLY",
+          "query_ref": "v2_zero:P_Q86A_given_Q86B_1",
+          "used_in": ""
+        }
+      ],
+      "scenario_results": {},
+      "refused_fields": [
+        {
+          "scenario_id": "v2_zero",
+          "reason": "ZERO_DENOMINATOR_ABSTENTION"
+        }
+      ],
+      "output_hash": "f5690723fb902e35db235267851232a32c623e9a5c9c405f4f7e38abc146d325"
+    }
+  },
+  "acceptance_version": "PYAT_R3_HQ288_S00M_SOURCEFREE_COUNT_DERIVED_FRACTION_ACCEPTANCE@2.0.0"
+}

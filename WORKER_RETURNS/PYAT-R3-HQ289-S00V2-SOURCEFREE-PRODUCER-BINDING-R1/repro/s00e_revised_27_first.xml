@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="27" time="17.071" timestamp="2026-10-13T16:15:25.084459-04:00" hostname="Matthews-MBP.lan"><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_s00_contract_manifest_exists_and_is_valid" time="0.001" /><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_bundle_builds_with_channels_and_evidence" time="0.348" /><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_bundle_channels_have_provenance" time="0.351" /><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_bundle_preserves_progressive_geometry" time="0.333" /><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_consumer_reads_values_and_records_receipts" time="0.337" /><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_consumer_computes_scenario_distributions" time="0.681" /><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_consumer_refuses_unsupported_condition" time="0.678" /><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_consumer_refuses_unknown_channel" time="0.342" /><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_bundle_replay_is_deterministic" time="0.704" /><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_full_witness_replay_is_deterministic" time="2.665" /><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_same_marginals_different_joints_produce_different_conditionals" time="0.002" /><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_cumulative_conditioning_narrows_denominator" time="0.337" /><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_irrelevant_inputs_do_not_change_result" time="1.034" /><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_zero_support_produces_typed_refusal" time="0.678" /><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_scope_mismatch_produces_refusal" time="0.355" /><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_effects_declare_no_v3_no_actor" time="1.409" /><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_module_import_surface_contains_no_forbidden_owner" time="0.001" /><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_no_raw_sav_dta" time="0.000" /><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_s00c_synthetic_bundle_never_claims_real_r5_or_measured_source" time="1.787" /><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_s00c_false_frozen_s00_democracy_semantics_refused" time="0.710" /><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_s00c_exact_32_16_8_denominators_not_112_or_48" time="2.063" /><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_s00c_unused_read_is_not_misrepresented_as_use" time="0.679" /><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_s00c_change_source_owned_synthetic_numeric_values_changes_result" time="0.002"><failure message="KeyError: 'exact_probabilities'">def test_s00c_change_source_owned_synthetic_numeric_values_changes_result():
+        from dataclasses import replace
+        from rawlsing_next.r3_s02_seam_witness import (
+            build_source_free_native_joint_bundle, _content_hash)
+        original = build_source_free_native_joint_bundle({
+            (0, 0): 3, (0, 1): 1, (1, 0): 1, (1, 1): 3,
+        })
+        before = ContractOnlySeamConsumer(original).compute_scenario(
+            "T", ["P_Q86A_given_Q86B_1"])
+        edited = []
+        for c in original.channels:
+            if c.channel_id in ("CH_P_Q86A_given_Q86B_1_0", "CH_P_Q86A_given_Q86B_1_1"):
+                value = dict(c.value)
+                value["raw_numerator_support"] = 2
+                value["raw_probability_exact_fraction"] = {"$exact_fraction": [1, 2]}
+                edited.append(replace(c, value=value))
+            else:
+                edited.append(c)
+        edited_steps = []
+        for s in original.steps:
+            if s["step_id"] == "P_Q86A_given_Q86B_1":
+                new_cells = {}
+                for k, v in s["cells"].items():
+                    new_cells[k] = {"numerator": 2, "fraction": {"$exact_fraction": [1, 2]}}
+                edited_steps.append({**s, "cells": new_cells})
+            else:
+                edited_steps.append(s)
+        temporary = replace(original, channels=tuple(edited), steps=tuple(edited_steps), content_hash="")
+        changed = replace(temporary, content_hash=_content_hash(temporary.as_dict()))
+        after = ContractOnlySeamConsumer(changed).compute_scenario(
+            "T", ["P_Q86A_given_Q86B_1"])
+        assert before["exact_probabilities"]["1"] == {"$exact_fraction": [3, 4]}
+&gt;       assert after["exact_probabilities"]["1"] == {"$exact_fraction": [1, 2]}
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'exact_probabilities'
+
+../../../../rawlsing_next/tests/test_r3_s02_seam_witness.py:321: KeyError</failure></testcase><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_s00c_irrelevant_context_changes_stable_numeric_output" time="1.017"><failure message="AssertionError: assert {'scenario_id...ort': 16, ...} == {'scenario_id...EE_SYNTHETIC'}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'status': 'COMPUTED'} != {'status': 'REFUSED'}&#10;  Left contains 9 more items:&#10;  {'channels_used': ['CH_P_Y_given_A_B_0', 'CH_P_Y_given_A_B_1'],&#10;   'conditioning': ['P_Y_given_A_B'],...&#10;  &#10;  ...Full output truncated (57 lines hidden), use '-vv' to show">def test_s00c_irrelevant_context_changes_stable_numeric_output():
+        from dataclasses import replace
+        from rawlsing_next.r3_s02_seam_witness import _content_hash
+        original = build_sociological_bundle()
+        scope = dict(original.world_scope)
+        scope["unrelated_test_note"] = "This is not a measured value"
+        temporary = replace(original, world_scope=scope, content_hash="")
+        changed = replace(temporary, content_hash=_content_hash(temporary.as_dict()))
+        a = ContractOnlySeamConsumer(original).compute_scenario("T", ["P_Y_given_A_B"])
+        b = ContractOnlySeamConsumer(changed).compute_scenario("T", ["P_Y_given_A_B"])
+&gt;       assert a == b
+E       AssertionError: assert {'scenario_id...ort': 16, ...} == {'scenario_id...EE_SYNTHETIC'}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'status': 'COMPUTED'} != {'status': 'REFUSED'}
+E         Left contains 9 more items:
+E         {'channels_used': ['CH_P_Y_given_A_B_0', 'CH_P_Y_given_A_B_1'],
+E          'conditioning': ['P_Y_given_A_B'],...
+E         
+E         ...Full output truncated (57 lines hidden), use '-vv' to show
+
+../../../../rawlsing_next/tests/test_r3_s02_seam_witness.py:350: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_s00c_scope_and_risk_mismatch_both_typed_refusals" time="0.361" /><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_s00c_zero_denominator_distinct_from_missing_channel" time="0.001" /><testcase classname="rawlsing_next.tests.test_r3_s02_seam_witness" name="test_s00c_unissued_real_gt2_never_accepts_arbitrary_dict_as_source" time="0.000" /></testsuite></testsuites>

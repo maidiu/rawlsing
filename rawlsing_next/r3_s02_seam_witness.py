@@ -56,6 +56,10 @@ from rawlsing_next.pre553_selected_world_progressive_contract import (
 
 SEAM_CONTRACT_VERSION = "R3_S02_SOCIOLOGICAL_SEAM_WITNESS@1.0.0"
 SEAM_BUNDLE_SCHEMA = "R3_SOCIOLOGICAL_WORLD_BUNDLE@1"
+# Acceptance semantics are versioned separately from the unchanged wire shape.
+SOURCE_FREE_VALUE_ACCEPTANCE_VERSION = (
+    "PYAT_R3_HQ288_S00M_SOURCEFREE_COUNT_DERIVED_FRACTION_ACCEPTANCE@2.0.0"
+)
 SOURCE_FREE_SYNTHETIC = "SOURCE_FREE_SYNTHETIC"
 GT2_VALUE_HOLD = "SOURCE_VALUE_UNAVAILABLE__ISSUED_GT2_AGGREGATE_AND_USE_AUTHORITY_HOLD"
 P04_FIXTURE_SCOPE = "P04_SYNTHETIC_58_RESPONDENT_FIXTURE"
@@ -423,6 +427,15 @@ class ContractOnlySeamConsumer:
         }
 
     def _validate_bundle(self) -> str | None:
+        # Caller-controlled malformed representations must never escape as
+        # Python indexing/arithmetic errors. No upstream authority is inferred.
+        try:
+            return self._validate_bundle_typed()
+        except (KeyError, TypeError, ValueError, AttributeError, IndexError,
+                ZeroDivisionError, OverflowError):
+            return "MALFORMED_SOURCE_FREE_BUNDLE"
+
+    def _validate_bundle_typed(self) -> str | None:
         if self._bundle.content_hash != _content_hash(
             replace(self._bundle, content_hash="").as_dict()
         ):
@@ -457,38 +470,139 @@ class ContractOnlySeamConsumer:
         if any(ch.source_scope != expected_scope or ch.test_origin is not True
                or ch.evidence_mode != "TRANSFORMED" for ch in self._bundle.channels):
             return "SOURCE_SCOPE_OR_VALUE_ORIGIN_MISMATCH"
+        domain_issue = self._validate_complete_domain()
+        if domain_issue:
+            return domain_issue
         frac_issue = self._validate_fraction_closure()
         if frac_issue:
             return frac_issue
         step_issue = self._validate_step_geometry()
         if step_issue:
             return step_issue
+        return self._validate_producer_identity()
+
+    def _validate_complete_domain(self) -> str | None:
+        """Require the complete producer law, including unqueried cells."""
+        b = self._bundle
+        native = b.world_scope.get("target") == "Q86A"
+        steps = (("P_Q86A_given_Q86B_0", "P_Q86A_given_Q86B_1")
+                 if native else P04_STEPS)
+        ids = {f"CH_{step}_{cell}" for step in steps for cell in ("0", "1")}
+        if (len(b.channels) != len(ids)
+                or {ch.channel_id for ch in b.channels} != ids):
+            return "INCOMPLETE_PRODUCER_CELL_DOMAIN"
+        for rows in (b.conditions, b.steps):
+            if (len(rows) != len(steps)
+                    or {row["step_id"] for row in rows} != set(steps)):
+                return "INCOMPLETE_PRODUCER_STEP_DOMAIN"
+        for ch in b.channels:
+            v = ch.value
+            if (not isinstance(v, Mapping)
+                    or type(v.get("raw_numerator_support")) is not int
+                    or v["raw_numerator_support"] < 0):
+                return "INVALID_RAW_NUMERATOR"
+            if type(ch.support) is not int or ch.support < 0:
+                return "INVALID_RAW_DENOMINATOR"
+            if (v.get("step_id") not in steps
+                    or v.get("cell") not in ("0", "1")
+                    or ch.channel_id != f"CH_{v['step_id']}_{v['cell']}"):
+                return "PRODUCER_CELL_IDENTITY_MISMATCH"
+        for row in b.conditions:
+            if type(row.get("denominator")) is not int or row["denominator"] < 0:
+                return "INVALID_RAW_DENOMINATOR"
+        for step in b.steps:
+            cells = step["cells"]
+            if not isinstance(cells, Mapping) or set(cells) != {"0", "1"}:
+                return "INCOMPLETE_PRODUCER_CELL_DOMAIN"
+            if any(not isinstance(c, Mapping)
+                   or type(c.get("numerator")) is not int
+                   or c["numerator"] < 0 for c in cells.values()):
+                return "INVALID_STEP_NUMERATOR"
+        return None
+
+    @staticmethod
+    def _fraction_issue(value: Any, numerator: int, denominator: int,
+                        mismatch: str) -> str | None:
+        if denominator == 0:
+            return None if numerator == 0 and value is None else "INVALID_ZERO_SUPPORT_FRACTION"
+        if (not isinstance(value, Mapping) or set(value) != {"$exact_fraction"}
+                or not isinstance(value["$exact_fraction"], (list, tuple))
+                or len(value["$exact_fraction"]) != 2):
+            return "MALFORMED_EXACT_FRACTION"
+        n, d = value["$exact_fraction"]
+        if type(n) is not int or type(d) is not int or n < 0 or d <= 0:
+            return "MALFORMED_EXACT_FRACTION"
+        expected = Fraction(numerator, denominator)
+        if Fraction(n, d) != expected:
+            return mismatch
+        if [n, d] != [expected.numerator, expected.denominator]:
+            return "NONCANONICAL_EXACT_FRACTION"
+        return None
+
+    def _validate_producer_identity(self) -> str | None:
+        """Internal synthetic replay identity; never survey authentication.
+
+        The fixed P04 law is produced by its genuine selected-world owner.
+        A native synthetic law is reconstructed from all four primitive cells;
+        its old content-addressed source/release/risk roots cannot survive a
+        changed law. Compare every emitted field, not only aggregate sums.
+        """
+        b = self._bundle
+        if b.world_scope.get("target") == "Q86A":
+            cells = {(x, y): next(ch.value["raw_numerator_support"]
+                     for ch in b.channels
+                     if ch.channel_id == f"CH_P_Q86A_given_Q86B_{x}_{y}")
+                     for x in (0, 1) for y in (0, 1)}
+            expected = build_source_free_native_joint_bundle(cells, bundle_id=b.bundle_id)
+        else:
+            expected = build_sociological_bundle(bundle_id=b.bundle_id)
+        if (contract_content_hash(b.selected_world_contract)
+                != contract_content_hash(expected.selected_world_contract)):
+            return "PRODUCER_VALUE_IDENTITY_MISMATCH"
+        presented = replace(b, content_hash="").as_dict()
+        # Preserve the existing documentary annotation escape hatch. It has
+        # no numerical/producer semantics; all producer-defined scope fields
+        # and all other fields remain exact. Unknown additions still refuse.
+        scope = dict(presented["world_scope"])
+        if "unrelated_test_note" in scope:
+            if not isinstance(scope.pop("unrelated_test_note"), str):
+                return "MALFORMED_SOURCE_FREE_ANNOTATION"
+        presented["world_scope"] = scope
+        if presented != replace(expected, content_hash="").as_dict():
+            return "PRODUCER_VALUE_IDENTITY_MISMATCH"
         return None
 
     def _validate_fraction_closure(self) -> str | None:
         for ch in self._bundle.channels:
             val = ch.value
-            num = val.get("raw_numerator_support")
-            frac = val.get("raw_probability_exact_fraction")
-            support = ch.support
-            if num is not None and frac is not None and isinstance(support, int) and support > 0:
-                from fractions import Fraction as _F
-                expected = _F(num, support)
-                claimed = _F(frac["$exact_fraction"][0], frac["$exact_fraction"][1])
-                if expected != claimed:
-                    return "FRACTION_CLOSURE_MISMATCH"
+            if "raw_probability_exact_fraction" not in val:
+                return "MISSING_EXACT_FRACTION"
+            issue = self._fraction_issue(val["raw_probability_exact_fraction"],
+                                        val["raw_numerator_support"], ch.support,
+                                        "FRACTION_CLOSURE_MISMATCH")
+            if issue:
+                return issue
         for step in self._bundle.steps:
-            for cell_key, cell in step["cells"].items():
-                num = cell.get("numerator")
-                frac = cell.get("fraction")
-                if num is not None and frac is not None:
-                    from fractions import Fraction as _F
-                    step_denom = sum(c.get("numerator", 0) for c in step["cells"].values())
-                    if step_denom > 0:
-                        expected = _F(num, step_denom)
-                        claimed = _F(frac["$exact_fraction"][0], frac["$exact_fraction"][1])
-                        if expected != claimed:
-                            return "STEP_CELL_FRACTION_MISMATCH"
+            cells = step["cells"]
+            # Reconcile step counts before fraction derivation for precise
+            # stale-step diagnostics and no accidentally accepted twin.
+            channels = {ch.value["cell"]: ch for ch in self._bundle.channels
+                        if ch.value["step_id"] == step["step_id"]}
+            if any(cells[cell]["numerator"] != channels[cell].value["raw_numerator_support"]
+                   for cell in ("0", "1")):
+                return "STEP_CELL_NUMERATOR_MISMATCH"
+            denominator = sum(c["numerator"] for c in cells.values())
+            for cell in cells.values():
+                # The native builder emits count-only step projections; P04
+                # emits redundant fractions which are required and checked.
+                if "fraction" not in cell:
+                    if self._bundle.world_scope.get("target") is None:
+                        return "MISSING_STEP_EXACT_FRACTION"
+                    continue
+                issue = self._fraction_issue(cell["fraction"], cell["numerator"],
+                                            denominator, "STEP_CELL_FRACTION_MISMATCH")
+                if issue:
+                    return issue
         return None
 
     def _validate_step_geometry(self) -> str | None:
@@ -684,6 +798,7 @@ def run_seam_witness() -> dict[str, Any]:
 __all__ = [
     "SEAM_CONTRACT_VERSION",
     "SEAM_BUNDLE_SCHEMA",
+    "SOURCE_FREE_VALUE_ACCEPTANCE_VERSION",
     "SeamContractError",
     "ChannelValue",
     "ValueReadReceipt",

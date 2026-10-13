@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="16" time="7.597" timestamp="2026-10-13T16:17:40.055875-04:00" hostname="Matthews-MBP.lan"><testcase classname="frozen.test_original_s00cr_16" name="test_s00cr_p04_risk_and_fraction_oracle" time="1.383" /><testcase classname="frozen.test_original_s00cr_16" name="test_s00cr_cumulative_step_risks_not_overlapping_support_sums" time="1.001" /><testcase classname="frozen.test_original_s00cr_16" name="test_s00cr_read_receipts_precisely_contribute_to_arithmetic" time="0.001" /><testcase classname="frozen.test_original_s00cr_16" name="test_s00cr_numeric_mutation_changes_conditional_not_just_receipt_hash" time="0.002" /><testcase classname="frozen.test_original_s00cr_16" name="test_s00cr_same_margins_opposite_joint_change_conditional" time="0.002" /><testcase classname="frozen.test_original_s00cr_16" name="test_s00cr_unused_changed_value_no_numeric_effect" time="0.674"><failure message="AssertionError: assert 'COMPUTED' == 'REFUSED'&#10;  &#10;  - REFUSED&#10;  + COMPUTED">def test_s00cr_unused_changed_value_no_numeric_effect():
+        b = seam.build_sociological_bundle()
+        unrelated = b.channels[-1]
+        altered = _rewrite_channel(
+            b, unrelated.channel_id,
+            {"raw_numerator_support": 999, "raw_probability_exact_fraction": None}
+        )
+        a = seam.ContractOnlySeamConsumer(b).compute_scenario(
+            "keep", ["P_Y_given_A"])
+        z = seam.ContractOnlySeamConsumer(altered).compute_scenario(
+            "keep", ["P_Y_given_A"])
+&gt;       assert a["status"] == z["status"] == "COMPUTED"
+E       AssertionError: assert 'COMPUTED' == 'REFUSED'
+E         
+E         - REFUSED
+E         + COMPUTED
+
+../frozen/test_original_s00cr_16.py:132: AssertionError</failure></testcase><testcase classname="frozen.test_original_s00cr_16" name="test_s00cr_wrong_channel_scope_typed_refusal" time="0.334" /><testcase classname="frozen.test_original_s00cr_16" name="test_s00cr_wrong_risk_typed_refusal" time="0.369" /><testcase classname="frozen.test_original_s00cr_16" name="test_s00cr_zero_denominator_distinct_from_unknown_selector" time="0.002" /><testcase classname="frozen.test_original_s00cr_16" name="test_s00cr_stable_replay_and_self_excluded_receipt_hash" time="2.333" /><testcase classname="frozen.test_original_s00cr_16" name="test_s00cr_unissued_source_value_must_refuse" time="0.000" /><testcase classname="frozen.test_original_s00cr_16" name="test_s00cr_uppercase_historical_s00_semantics_refused" time="0.670" /><testcase classname="frozen.test_original_s00cr_16" name="test_s00cr_mixed_case_false_construct_label_is_also_refused" time="0.671" /><testcase classname="frozen.test_original_s00cr_16" name="test_s00cr_source_fraction_claim_must_match_numeric_count" time="0.001"><failure message="AssertionError: assert 'FRACTION_CLOSURE_MISMATCH' == 'SOURCE_COUNT...SURE_MISMATCH'&#10;  &#10;  - SOURCE_COUNT_CLOSURE_MISMATCH&#10;  + FRACTION_CLOSURE_MISMATCH">def test_s00cr_source_fraction_claim_must_match_numeric_count():
+        b = _fixture()
+        bad = _rewrite_channel(
+            b, "CH_P_Q86A_given_Q86B_1_1",
+            {"raw_probability_exact_fraction": {"$exact_fraction": [100, 101]}}
+        )
+        r = _native_result(bad)
+        assert r["status"] == "REFUSED"
+&gt;       assert r["reason"] == "SOURCE_COUNT_CLOSURE_MISMATCH"
+E       AssertionError: assert 'FRACTION_CLOSURE_MISMATCH' == 'SOURCE_COUNT...SURE_MISMATCH'
+E         
+E         - SOURCE_COUNT_CLOSURE_MISMATCH
+E         + FRACTION_CLOSURE_MISMATCH
+
+../frozen/test_original_s00cr_16.py:214: AssertionError</failure></testcase><testcase classname="frozen.test_original_s00cr_16" name="test_s00cr_step_geometry_cannot_disagree_with_read_values" time="0.001"><failure message="AssertionError: assert 'STEP_CELL_NUMERATOR_MISMATCH' == 'SOURCE_COUNT...SURE_MISMATCH'&#10;  &#10;  - SOURCE_COUNT_CLOSURE_MISMATCH&#10;  + STEP_CELL_NUMERATOR_MISMATCH">def test_s00cr_step_geometry_cannot_disagree_with_read_values():
+        b = _fixture()
+        changed_steps = list(b.steps)
+        first = dict(changed_steps[1])
+        original_cells = dict(first["cells"])
+        original_cells["1"] = {"numerator": 234}
+        first["cells"] = original_cells
+        changed_steps[1] = first
+        edited = _rehash(b, steps=tuple(changed_steps))
+        r = _native_result(edited)
+        assert r["status"] == "REFUSED"
+&gt;       assert r["reason"] == "SOURCE_COUNT_CLOSURE_MISMATCH"
+E       AssertionError: assert 'STEP_CELL_NUMERATOR_MISMATCH' == 'SOURCE_COUNT...SURE_MISMATCH'
+E         
+E         - SOURCE_COUNT_CLOSURE_MISMATCH
+E         + STEP_CELL_NUMERATOR_MISMATCH
+
+../frozen/test_original_s00cr_16.py:228: AssertionError</failure></testcase><testcase classname="frozen.test_original_s00cr_16" name="test_s00cr_numeric_mutation_with_stale_producer_ref_must_refuse" time="0.001"><failure message="AssertionError: assert 'FRACTION_CLOSURE_MISMATCH' in {'PRODUCER_VALUE_IDENTITY_MISMATCH', 'SELECTED_WORLD_BINDING_MISMATCH', 'SOURCE_COUNT_CLOSURE_MISMATCH'}">def test_s00cr_numeric_mutation_with_stale_producer_ref_must_refuse():
+        b = _fixture()
+        # Rehash bundle, but DO NOT change selected-world risk/release/row law.
+        after = _rewrite_channel(
+            b, "CH_P_Q86A_given_Q86B_1_1", {"raw_numerator_support": 2}
+        )
+        after = _rewrite_channel(
+            after, "CH_P_Q86A_given_Q86B_1_0", {"raw_numerator_support": 2}
+        )
+        r = _native_result(after)
+        assert r["status"] == "REFUSED"
+&gt;       assert r["reason"] in {
+            "SOURCE_COUNT_CLOSURE_MISMATCH", "SELECTED_WORLD_BINDING_MISMATCH",
+            "PRODUCER_VALUE_IDENTITY_MISMATCH"}
+E       AssertionError: assert 'FRACTION_CLOSURE_MISMATCH' in {'PRODUCER_VALUE_IDENTITY_MISMATCH', 'SELECTED_WORLD_BINDING_MISMATCH', 'SOURCE_COUNT_CLOSURE_MISMATCH'}
+
+../frozen/test_original_s00cr_16.py:242: AssertionError</failure></testcase></testsuite></testsuites>

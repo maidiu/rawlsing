@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="26" time="16.244" timestamp="2026-10-13T16:19:50.580990-04:00" hostname="Matthews-MBP.lan"><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_frozen_retained_bytes_and_fresh_execution" time="1.355" /><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_serving_saved_bundle_with_all_producers_disabled" time="1.326"><failure message="AssertionError: producer reconstructed during serving">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-535/test_serving_saved_bundle_with0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x108695610&gt;
+
+    def test_serving_saved_bundle_with_all_producers_disabled(tmp_path,monkeypatch):
+        p,_=I.build_product(tmp_path);expected=I.serve(p);payload=I.load_artifact(tmp_path,p.subject_ref)
+        def forbidden(*a,**kw):raise AssertionError('producer reconstructed during serving')
+        for obj,names in [(I.selected,['select_world','run_selected_world_progressive_chain']),(I.progressive,['build_synthetic_world','run_progressive_chain']),(I.seam,['build_sociological_bundle','build_synthetic_world','run_progressive_chain','select_world'])]:
+            for name in names:monkeypatch.setattr(obj,name,forbidden)
+        native=I.seam.ContractOnlySeamConsumer;observed=[]
+        def spy(bundle):
+            observed.append(bundle.as_dict());return native(bundle)
+        monkeypatch.setattr(I.seam,'ContractOnlySeamConsumer',spy)
+&gt;       assert I.serve(p)==expected and observed==[payload['bundle']]
+               ^^^^^^^^^^
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:214: in serve
+    numeric=consumer.compute_scenario(SCENARIO,list(seam.P04_STEPS));receipt=consumer.get_receipt().as_dict()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/r3_s02_seam_witness.py:653: in compute_scenario
+    issue = self._validate_bundle()
+            ^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/r3_s02_seam_witness.py:433: in _validate_bundle
+    return self._validate_bundle_typed()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/r3_s02_seam_witness.py:482: in _validate_bundle_typed
+    return self._validate_producer_identity()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/r3_s02_seam_witness.py:558: in _validate_producer_identity
+    expected = build_sociological_bundle(bundle_id=b.bundle_id)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+a = (), kw = {'bundle_id': 'R3_S00_S02_BUNDLE_001'}
+
+&gt;   def forbidden(*a,**kw):raise AssertionError('producer reconstructed during serving')
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: producer reconstructed during serving
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py:34: AssertionError</failure></testcase><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_rehashed_artifact_does_not_bypass_durable_binding[schema-FOREIGN]" time="1.040" /><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_rehashed_artifact_does_not_bypass_durable_binding[security_mode-AUTHENTICATED]" time="1.034" /><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_rehashed_artifact_does_not_bypass_durable_binding[producer_contract_ref-value2]" time="1.091" /><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_rehashed_artifact_does_not_bypass_durable_binding[query_ref-value3]" time="1.241" /><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_rehashed_artifact_does_not_bypass_durable_binding[source_release_ref-value4]" time="1.047" /><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_native_consumer_rejects_rehashed_hostile_saved_bundle[scope]" time="0.002" /><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_native_consumer_rejects_rehashed_hostile_saved_bundle[origin]" time="0.001" /><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_native_consumer_rejects_rehashed_hostile_saved_bundle[permission]" time="0.001" /><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_native_consumer_rejects_rehashed_hostile_saved_bundle[gt2]" time="0.001" /><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_native_consumer_rejects_rehashed_hostile_saved_bundle[protected]" time="0.001" /><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_native_consumer_rejects_rehashed_hostile_saved_bundle[risk]" time="0.001" /><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_native_consumer_rejects_rehashed_hostile_saved_bundle[duplicate]" time="0.001" /><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_native_consumer_rejects_rehashed_hostile_saved_bundle[no_channels]" time="0.001" /><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_native_consumer_rejects_rehashed_hostile_saved_bundle[fraction]" time="0.001" /><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_native_consumer_rejects_rehashed_hostile_saved_bundle[denominator]" time="0.001" /><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_native_consumer_rejects_rehashed_hostile_saved_bundle[step_numerator]" time="0.001" /><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_native_consumer_rejects_rehashed_hostile_saved_bundle[condition]" time="0.001" /><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_missing_artifact_cannot_reconstruct_fixture" time="1.005" /><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_unscheduled_and_incomplete_work_cannot_admit" time="0.211" /><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_release_index_substitution_refused" time="1.277" /><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_cold_invalidated_resume_preserves_asof_without_execution" time="2.514" /><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_copied_module_or_dynamic_hash_is_not_frozen_owner" time="0.070" /><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_independent_external_issuer_and_retained_gt2_refusals" time="1.063" /><testcase classname="hq288-i01r-independent.Rawlsing.rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_reconstructed_m2_dereferences_only_exact_saved_subject" time="1.723" /></testsuite></testsuites>

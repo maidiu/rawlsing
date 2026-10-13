@@ -1,0 +1,500 @@
+FFFFFFF............F.FF.FF                                               [100%]
+=================================== FAILURES ===================================
+________________ test_frozen_retained_bytes_and_fresh_execution ________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-533/test_frozen_retained_bytes_and0')
+
+    def test_frozen_retained_bytes_and_fresh_execution(tmp_path):
+        raw=(AUTHOR/'artifacts'/f'{ARTIFACT}.json').read_bytes()
+        assert hashlib.sha256(raw).hexdigest()==ARTIFACT
+>       p,report=I.build_product(tmp_path)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:155: in build_product
+    return _build_product_locked(root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-533/test_frozen_retained_bytes_and0')
+
+    def _build_product_locked(root):
+        if (root/'product_index.json').exists() or (root/'lifecycle.json').exists():
+            if not (root/'product_index.json').exists() or not (root/'lifecycle.json').exists():
+                raise I01Error('PARTIAL_LIFECYCLE_PUBLICATION_HOLD')
+            product=restore_product(root)
+            with ledger_lock(root/'.p01.integration.lock'):
+                report=durable.run_to_completion(product.session)
+            return product,report.summary()
+        session,world,query,calls=open_world_session(root)
+        with ledger_lock(root/'.p01.integration.lock'):
+            report=durable.run_to_completion(session)
+        subject_ref,payload,saved=admit_saved_world(session)
+        cp=session.checkpoint()
+        repo,release,binding,determinant,dependencies=reconstruct_m2(payload,subject_ref,cp.checkpoint_ref)
+        life=B5();c=bundle_from_payload(payload).selected_world_contract
+        dets=tuple(sorted((determinant,c.release_ref),key=lambda r:r.key))
+        subject=LearnedProductLifecycleSubject(release_ref=release.ref,product_ref=subject_ref,product_family_ref=FAMILY,producer_owner_ref=PRODUCER,producer_contract_ref=PRODUCER,semantic_projection_hash=subject_ref.content_hash,authority_snapshot_refs=tuple(query.authority_snapshot_refs),direct_dependency_refs=dependencies,determinant_refs=dets,determinant_set_hash=semantic_hash([r.as_dict() for r in dets]),replay_root_ref=cp.checkpoint_ref,selection_scope_ref=c.risk_set_ref,build_or_release_receipt_refs=(saved.receipt_ref,),producer_permission_ceiling_ref=CEILING)
+>       life.stage_release(subject);life.verify_m2_release_subject_exact(repo,release.ref)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'LearnedProductLifecycleExecutor' object has no attribute 'verify_m2_release_subject_exact'
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:175: AttributeError
+____________ test_serving_saved_bundle_with_all_producers_disabled _____________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-533/test_serving_saved_bundle_with0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1088630d0>
+
+    def test_serving_saved_bundle_with_all_producers_disabled(tmp_path,monkeypatch):
+>       p,_=I.build_product(tmp_path);expected=I.serve(p);payload=I.load_artifact(tmp_path,p.subject_ref)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:155: in build_product
+    return _build_product_locked(root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-533/test_serving_saved_bundle_with0')
+
+    def _build_product_locked(root):
+        if (root/'product_index.json').exists() or (root/'lifecycle.json').exists():
+            if not (root/'product_index.json').exists() or not (root/'lifecycle.json').exists():
+                raise I01Error('PARTIAL_LIFECYCLE_PUBLICATION_HOLD')
+            product=restore_product(root)
+            with ledger_lock(root/'.p01.integration.lock'):
+                report=durable.run_to_completion(product.session)
+            return product,report.summary()
+        session,world,query,calls=open_world_session(root)
+        with ledger_lock(root/'.p01.integration.lock'):
+            report=durable.run_to_completion(session)
+        subject_ref,payload,saved=admit_saved_world(session)
+        cp=session.checkpoint()
+        repo,release,binding,determinant,dependencies=reconstruct_m2(payload,subject_ref,cp.checkpoint_ref)
+        life=B5();c=bundle_from_payload(payload).selected_world_contract
+        dets=tuple(sorted((determinant,c.release_ref),key=lambda r:r.key))
+        subject=LearnedProductLifecycleSubject(release_ref=release.ref,product_ref=subject_ref,product_family_ref=FAMILY,producer_owner_ref=PRODUCER,producer_contract_ref=PRODUCER,semantic_projection_hash=subject_ref.content_hash,authority_snapshot_refs=tuple(query.authority_snapshot_refs),direct_dependency_refs=dependencies,determinant_refs=dets,determinant_set_hash=semantic_hash([r.as_dict() for r in dets]),replay_root_ref=cp.checkpoint_ref,selection_scope_ref=c.risk_set_ref,build_or_release_receipt_refs=(saved.receipt_ref,),producer_permission_ceiling_ref=CEILING)
+>       life.stage_release(subject);life.verify_m2_release_subject_exact(repo,release.ref)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'LearnedProductLifecycleExecutor' object has no attribute 'verify_m2_release_subject_exact'
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:175: AttributeError
+____ test_rehashed_artifact_does_not_bypass_durable_binding[schema-FOREIGN] ____
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-533/test_rehashed_artifact_does_no0')
+field = 'schema', value = 'FOREIGN'
+
+    @pytest.mark.parametrize('field,value',[('schema','FOREIGN'),('security_mode','AUTHENTICATED'),('producer_contract_ref',{}),('query_ref',{}),('source_release_ref',{})])
+    def test_rehashed_artifact_does_not_bypass_durable_binding(tmp_path,field,value):
+>       p,_=I.build_product(tmp_path);payload=I.load_artifact(tmp_path,p.subject_ref)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:155: in build_product
+    return _build_product_locked(root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-533/test_rehashed_artifact_does_no0')
+
+    def _build_product_locked(root):
+        if (root/'product_index.json').exists() or (root/'lifecycle.json').exists():
+            if not (root/'product_index.json').exists() or not (root/'lifecycle.json').exists():
+                raise I01Error('PARTIAL_LIFECYCLE_PUBLICATION_HOLD')
+            product=restore_product(root)
+            with ledger_lock(root/'.p01.integration.lock'):
+                report=durable.run_to_completion(product.session)
+            return product,report.summary()
+        session,world,query,calls=open_world_session(root)
+        with ledger_lock(root/'.p01.integration.lock'):
+            report=durable.run_to_completion(session)
+        subject_ref,payload,saved=admit_saved_world(session)
+        cp=session.checkpoint()
+        repo,release,binding,determinant,dependencies=reconstruct_m2(payload,subject_ref,cp.checkpoint_ref)
+        life=B5();c=bundle_from_payload(payload).selected_world_contract
+        dets=tuple(sorted((determinant,c.release_ref),key=lambda r:r.key))
+        subject=LearnedProductLifecycleSubject(release_ref=release.ref,product_ref=subject_ref,product_family_ref=FAMILY,producer_owner_ref=PRODUCER,producer_contract_ref=PRODUCER,semantic_projection_hash=subject_ref.content_hash,authority_snapshot_refs=tuple(query.authority_snapshot_refs),direct_dependency_refs=dependencies,determinant_refs=dets,determinant_set_hash=semantic_hash([r.as_dict() for r in dets]),replay_root_ref=cp.checkpoint_ref,selection_scope_ref=c.risk_set_ref,build_or_release_receipt_refs=(saved.receipt_ref,),producer_permission_ceiling_ref=CEILING)
+>       life.stage_release(subject);life.verify_m2_release_subject_exact(repo,release.ref)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'LearnedProductLifecycleExecutor' object has no attribute 'verify_m2_release_subject_exact'
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:175: AttributeError
+_ test_rehashed_artifact_does_not_bypass_durable_binding[security_mode-AUTHENTICATED] _
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-533/test_rehashed_artifact_does_no1')
+field = 'security_mode', value = 'AUTHENTICATED'
+
+    @pytest.mark.parametrize('field,value',[('schema','FOREIGN'),('security_mode','AUTHENTICATED'),('producer_contract_ref',{}),('query_ref',{}),('source_release_ref',{})])
+    def test_rehashed_artifact_does_not_bypass_durable_binding(tmp_path,field,value):
+>       p,_=I.build_product(tmp_path);payload=I.load_artifact(tmp_path,p.subject_ref)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:155: in build_product
+    return _build_product_locked(root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-533/test_rehashed_artifact_does_no1')
+
+    def _build_product_locked(root):
+        if (root/'product_index.json').exists() or (root/'lifecycle.json').exists():
+            if not (root/'product_index.json').exists() or not (root/'lifecycle.json').exists():
+                raise I01Error('PARTIAL_LIFECYCLE_PUBLICATION_HOLD')
+            product=restore_product(root)
+            with ledger_lock(root/'.p01.integration.lock'):
+                report=durable.run_to_completion(product.session)
+            return product,report.summary()
+        session,world,query,calls=open_world_session(root)
+        with ledger_lock(root/'.p01.integration.lock'):
+            report=durable.run_to_completion(session)
+        subject_ref,payload,saved=admit_saved_world(session)
+        cp=session.checkpoint()
+        repo,release,binding,determinant,dependencies=reconstruct_m2(payload,subject_ref,cp.checkpoint_ref)
+        life=B5();c=bundle_from_payload(payload).selected_world_contract
+        dets=tuple(sorted((determinant,c.release_ref),key=lambda r:r.key))
+        subject=LearnedProductLifecycleSubject(release_ref=release.ref,product_ref=subject_ref,product_family_ref=FAMILY,producer_owner_ref=PRODUCER,producer_contract_ref=PRODUCER,semantic_projection_hash=subject_ref.content_hash,authority_snapshot_refs=tuple(query.authority_snapshot_refs),direct_dependency_refs=dependencies,determinant_refs=dets,determinant_set_hash=semantic_hash([r.as_dict() for r in dets]),replay_root_ref=cp.checkpoint_ref,selection_scope_ref=c.risk_set_ref,build_or_release_receipt_refs=(saved.receipt_ref,),producer_permission_ceiling_ref=CEILING)
+>       life.stage_release(subject);life.verify_m2_release_subject_exact(repo,release.ref)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'LearnedProductLifecycleExecutor' object has no attribute 'verify_m2_release_subject_exact'
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:175: AttributeError
+_ test_rehashed_artifact_does_not_bypass_durable_binding[producer_contract_ref-value2] _
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-533/test_rehashed_artifact_does_no2')
+field = 'producer_contract_ref', value = {}
+
+    @pytest.mark.parametrize('field,value',[('schema','FOREIGN'),('security_mode','AUTHENTICATED'),('producer_contract_ref',{}),('query_ref',{}),('source_release_ref',{})])
+    def test_rehashed_artifact_does_not_bypass_durable_binding(tmp_path,field,value):
+>       p,_=I.build_product(tmp_path);payload=I.load_artifact(tmp_path,p.subject_ref)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:155: in build_product
+    return _build_product_locked(root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-533/test_rehashed_artifact_does_no2')
+
+    def _build_product_locked(root):
+        if (root/'product_index.json').exists() or (root/'lifecycle.json').exists():
+            if not (root/'product_index.json').exists() or not (root/'lifecycle.json').exists():
+                raise I01Error('PARTIAL_LIFECYCLE_PUBLICATION_HOLD')
+            product=restore_product(root)
+            with ledger_lock(root/'.p01.integration.lock'):
+                report=durable.run_to_completion(product.session)
+            return product,report.summary()
+        session,world,query,calls=open_world_session(root)
+        with ledger_lock(root/'.p01.integration.lock'):
+            report=durable.run_to_completion(session)
+        subject_ref,payload,saved=admit_saved_world(session)
+        cp=session.checkpoint()
+        repo,release,binding,determinant,dependencies=reconstruct_m2(payload,subject_ref,cp.checkpoint_ref)
+        life=B5();c=bundle_from_payload(payload).selected_world_contract
+        dets=tuple(sorted((determinant,c.release_ref),key=lambda r:r.key))
+        subject=LearnedProductLifecycleSubject(release_ref=release.ref,product_ref=subject_ref,product_family_ref=FAMILY,producer_owner_ref=PRODUCER,producer_contract_ref=PRODUCER,semantic_projection_hash=subject_ref.content_hash,authority_snapshot_refs=tuple(query.authority_snapshot_refs),direct_dependency_refs=dependencies,determinant_refs=dets,determinant_set_hash=semantic_hash([r.as_dict() for r in dets]),replay_root_ref=cp.checkpoint_ref,selection_scope_ref=c.risk_set_ref,build_or_release_receipt_refs=(saved.receipt_ref,),producer_permission_ceiling_ref=CEILING)
+>       life.stage_release(subject);life.verify_m2_release_subject_exact(repo,release.ref)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'LearnedProductLifecycleExecutor' object has no attribute 'verify_m2_release_subject_exact'
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:175: AttributeError
+___ test_rehashed_artifact_does_not_bypass_durable_binding[query_ref-value3] ___
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-533/test_rehashed_artifact_does_no3')
+field = 'query_ref', value = {}
+
+    @pytest.mark.parametrize('field,value',[('schema','FOREIGN'),('security_mode','AUTHENTICATED'),('producer_contract_ref',{}),('query_ref',{}),('source_release_ref',{})])
+    def test_rehashed_artifact_does_not_bypass_durable_binding(tmp_path,field,value):
+>       p,_=I.build_product(tmp_path);payload=I.load_artifact(tmp_path,p.subject_ref)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:155: in build_product
+    return _build_product_locked(root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-533/test_rehashed_artifact_does_no3')
+
+    def _build_product_locked(root):
+        if (root/'product_index.json').exists() or (root/'lifecycle.json').exists():
+            if not (root/'product_index.json').exists() or not (root/'lifecycle.json').exists():
+                raise I01Error('PARTIAL_LIFECYCLE_PUBLICATION_HOLD')
+            product=restore_product(root)
+            with ledger_lock(root/'.p01.integration.lock'):
+                report=durable.run_to_completion(product.session)
+            return product,report.summary()
+        session,world,query,calls=open_world_session(root)
+        with ledger_lock(root/'.p01.integration.lock'):
+            report=durable.run_to_completion(session)
+        subject_ref,payload,saved=admit_saved_world(session)
+        cp=session.checkpoint()
+        repo,release,binding,determinant,dependencies=reconstruct_m2(payload,subject_ref,cp.checkpoint_ref)
+        life=B5();c=bundle_from_payload(payload).selected_world_contract
+        dets=tuple(sorted((determinant,c.release_ref),key=lambda r:r.key))
+        subject=LearnedProductLifecycleSubject(release_ref=release.ref,product_ref=subject_ref,product_family_ref=FAMILY,producer_owner_ref=PRODUCER,producer_contract_ref=PRODUCER,semantic_projection_hash=subject_ref.content_hash,authority_snapshot_refs=tuple(query.authority_snapshot_refs),direct_dependency_refs=dependencies,determinant_refs=dets,determinant_set_hash=semantic_hash([r.as_dict() for r in dets]),replay_root_ref=cp.checkpoint_ref,selection_scope_ref=c.risk_set_ref,build_or_release_receipt_refs=(saved.receipt_ref,),producer_permission_ceiling_ref=CEILING)
+>       life.stage_release(subject);life.verify_m2_release_subject_exact(repo,release.ref)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'LearnedProductLifecycleExecutor' object has no attribute 'verify_m2_release_subject_exact'
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:175: AttributeError
+_ test_rehashed_artifact_does_not_bypass_durable_binding[source_release_ref-value4] _
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-533/test_rehashed_artifact_does_no4')
+field = 'source_release_ref', value = {}
+
+    @pytest.mark.parametrize('field,value',[('schema','FOREIGN'),('security_mode','AUTHENTICATED'),('producer_contract_ref',{}),('query_ref',{}),('source_release_ref',{})])
+    def test_rehashed_artifact_does_not_bypass_durable_binding(tmp_path,field,value):
+>       p,_=I.build_product(tmp_path);payload=I.load_artifact(tmp_path,p.subject_ref)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:155: in build_product
+    return _build_product_locked(root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-533/test_rehashed_artifact_does_no4')
+
+    def _build_product_locked(root):
+        if (root/'product_index.json').exists() or (root/'lifecycle.json').exists():
+            if not (root/'product_index.json').exists() or not (root/'lifecycle.json').exists():
+                raise I01Error('PARTIAL_LIFECYCLE_PUBLICATION_HOLD')
+            product=restore_product(root)
+            with ledger_lock(root/'.p01.integration.lock'):
+                report=durable.run_to_completion(product.session)
+            return product,report.summary()
+        session,world,query,calls=open_world_session(root)
+        with ledger_lock(root/'.p01.integration.lock'):
+            report=durable.run_to_completion(session)
+        subject_ref,payload,saved=admit_saved_world(session)
+        cp=session.checkpoint()
+        repo,release,binding,determinant,dependencies=reconstruct_m2(payload,subject_ref,cp.checkpoint_ref)
+        life=B5();c=bundle_from_payload(payload).selected_world_contract
+        dets=tuple(sorted((determinant,c.release_ref),key=lambda r:r.key))
+        subject=LearnedProductLifecycleSubject(release_ref=release.ref,product_ref=subject_ref,product_family_ref=FAMILY,producer_owner_ref=PRODUCER,producer_contract_ref=PRODUCER,semantic_projection_hash=subject_ref.content_hash,authority_snapshot_refs=tuple(query.authority_snapshot_refs),direct_dependency_refs=dependencies,determinant_refs=dets,determinant_set_hash=semantic_hash([r.as_dict() for r in dets]),replay_root_ref=cp.checkpoint_ref,selection_scope_ref=c.risk_set_ref,build_or_release_receipt_refs=(saved.receipt_ref,),producer_permission_ceiling_ref=CEILING)
+>       life.stage_release(subject);life.verify_m2_release_subject_exact(repo,release.ref)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'LearnedProductLifecycleExecutor' object has no attribute 'verify_m2_release_subject_exact'
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:175: AttributeError
+_______________ test_missing_artifact_cannot_reconstruct_fixture _______________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-533/test_missing_artifact_cannot_r0')
+
+    def test_missing_artifact_cannot_reconstruct_fixture(tmp_path):
+>       p,_=I.build_product(tmp_path);I.artifact_path(tmp_path,p.subject_ref).unlink()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:155: in build_product
+    return _build_product_locked(root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-533/test_missing_artifact_cannot_r0')
+
+    def _build_product_locked(root):
+        if (root/'product_index.json').exists() or (root/'lifecycle.json').exists():
+            if not (root/'product_index.json').exists() or not (root/'lifecycle.json').exists():
+                raise I01Error('PARTIAL_LIFECYCLE_PUBLICATION_HOLD')
+            product=restore_product(root)
+            with ledger_lock(root/'.p01.integration.lock'):
+                report=durable.run_to_completion(product.session)
+            return product,report.summary()
+        session,world,query,calls=open_world_session(root)
+        with ledger_lock(root/'.p01.integration.lock'):
+            report=durable.run_to_completion(session)
+        subject_ref,payload,saved=admit_saved_world(session)
+        cp=session.checkpoint()
+        repo,release,binding,determinant,dependencies=reconstruct_m2(payload,subject_ref,cp.checkpoint_ref)
+        life=B5();c=bundle_from_payload(payload).selected_world_contract
+        dets=tuple(sorted((determinant,c.release_ref),key=lambda r:r.key))
+        subject=LearnedProductLifecycleSubject(release_ref=release.ref,product_ref=subject_ref,product_family_ref=FAMILY,producer_owner_ref=PRODUCER,producer_contract_ref=PRODUCER,semantic_projection_hash=subject_ref.content_hash,authority_snapshot_refs=tuple(query.authority_snapshot_refs),direct_dependency_refs=dependencies,determinant_refs=dets,determinant_set_hash=semantic_hash([r.as_dict() for r in dets]),replay_root_ref=cp.checkpoint_ref,selection_scope_ref=c.risk_set_ref,build_or_release_receipt_refs=(saved.receipt_ref,),producer_permission_ceiling_ref=CEILING)
+>       life.stage_release(subject);life.verify_m2_release_subject_exact(repo,release.ref)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'LearnedProductLifecycleExecutor' object has no attribute 'verify_m2_release_subject_exact'
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:175: AttributeError
+___________________ test_release_index_substitution_refused ____________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-533/test_release_index_substitutio0')
+
+    def test_release_index_substitution_refused(tmp_path):
+>       p,_=I.build_product(tmp_path);index=json.loads((tmp_path/'product_index.json').read_text())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:155: in build_product
+    return _build_product_locked(root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-533/test_release_index_substitutio0')
+
+    def _build_product_locked(root):
+        if (root/'product_index.json').exists() or (root/'lifecycle.json').exists():
+            if not (root/'product_index.json').exists() or not (root/'lifecycle.json').exists():
+                raise I01Error('PARTIAL_LIFECYCLE_PUBLICATION_HOLD')
+            product=restore_product(root)
+            with ledger_lock(root/'.p01.integration.lock'):
+                report=durable.run_to_completion(product.session)
+            return product,report.summary()
+        session,world,query,calls=open_world_session(root)
+        with ledger_lock(root/'.p01.integration.lock'):
+            report=durable.run_to_completion(session)
+        subject_ref,payload,saved=admit_saved_world(session)
+        cp=session.checkpoint()
+        repo,release,binding,determinant,dependencies=reconstruct_m2(payload,subject_ref,cp.checkpoint_ref)
+        life=B5();c=bundle_from_payload(payload).selected_world_contract
+        dets=tuple(sorted((determinant,c.release_ref),key=lambda r:r.key))
+        subject=LearnedProductLifecycleSubject(release_ref=release.ref,product_ref=subject_ref,product_family_ref=FAMILY,producer_owner_ref=PRODUCER,producer_contract_ref=PRODUCER,semantic_projection_hash=subject_ref.content_hash,authority_snapshot_refs=tuple(query.authority_snapshot_refs),direct_dependency_refs=dependencies,determinant_refs=dets,determinant_set_hash=semantic_hash([r.as_dict() for r in dets]),replay_root_ref=cp.checkpoint_ref,selection_scope_ref=c.risk_set_ref,build_or_release_receipt_refs=(saved.receipt_ref,),producer_permission_ceiling_ref=CEILING)
+>       life.stage_release(subject);life.verify_m2_release_subject_exact(repo,release.ref)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'LearnedProductLifecycleExecutor' object has no attribute 'verify_m2_release_subject_exact'
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:175: AttributeError
+________ test_cold_invalidated_resume_preserves_asof_without_execution _________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-533/test_cold_invalidated_resume_p0')
+
+    def test_cold_invalidated_resume_preserves_asof_without_execution(tmp_path):
+>       p,_=I.build_product(tmp_path);before=I.serve(p);I.invalidate(p)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:155: in build_product
+    return _build_product_locked(root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-533/test_cold_invalidated_resume_p0')
+
+    def _build_product_locked(root):
+        if (root/'product_index.json').exists() or (root/'lifecycle.json').exists():
+            if not (root/'product_index.json').exists() or not (root/'lifecycle.json').exists():
+                raise I01Error('PARTIAL_LIFECYCLE_PUBLICATION_HOLD')
+            product=restore_product(root)
+            with ledger_lock(root/'.p01.integration.lock'):
+                report=durable.run_to_completion(product.session)
+            return product,report.summary()
+        session,world,query,calls=open_world_session(root)
+        with ledger_lock(root/'.p01.integration.lock'):
+            report=durable.run_to_completion(session)
+        subject_ref,payload,saved=admit_saved_world(session)
+        cp=session.checkpoint()
+        repo,release,binding,determinant,dependencies=reconstruct_m2(payload,subject_ref,cp.checkpoint_ref)
+        life=B5();c=bundle_from_payload(payload).selected_world_contract
+        dets=tuple(sorted((determinant,c.release_ref),key=lambda r:r.key))
+        subject=LearnedProductLifecycleSubject(release_ref=release.ref,product_ref=subject_ref,product_family_ref=FAMILY,producer_owner_ref=PRODUCER,producer_contract_ref=PRODUCER,semantic_projection_hash=subject_ref.content_hash,authority_snapshot_refs=tuple(query.authority_snapshot_refs),direct_dependency_refs=dependencies,determinant_refs=dets,determinant_set_hash=semantic_hash([r.as_dict() for r in dets]),replay_root_ref=cp.checkpoint_ref,selection_scope_ref=c.risk_set_ref,build_or_release_receipt_refs=(saved.receipt_ref,),producer_permission_ceiling_ref=CEILING)
+>       life.stage_release(subject);life.verify_m2_release_subject_exact(repo,release.ref)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'LearnedProductLifecycleExecutor' object has no attribute 'verify_m2_release_subject_exact'
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:175: AttributeError
+__________ test_independent_external_issuer_and_retained_gt2_refusals __________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-533/test_independent_external_issu0')
+
+    def test_independent_external_issuer_and_retained_gt2_refusals(tmp_path):
+        from rawlsing_next.pre553_learned_product_lifecycle import LearnedProductLifecycleError
+        from rawlsing_next.pre553_learned_product_release import M2ReleaseError
+>       p,_=I.build_product(tmp_path)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py:126: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:155: in build_product
+    return _build_product_locked(root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-533/test_independent_external_issu0')
+
+    def _build_product_locked(root):
+        if (root/'product_index.json').exists() or (root/'lifecycle.json').exists():
+            if not (root/'product_index.json').exists() or not (root/'lifecycle.json').exists():
+                raise I01Error('PARTIAL_LIFECYCLE_PUBLICATION_HOLD')
+            product=restore_product(root)
+            with ledger_lock(root/'.p01.integration.lock'):
+                report=durable.run_to_completion(product.session)
+            return product,report.summary()
+        session,world,query,calls=open_world_session(root)
+        with ledger_lock(root/'.p01.integration.lock'):
+            report=durable.run_to_completion(session)
+        subject_ref,payload,saved=admit_saved_world(session)
+        cp=session.checkpoint()
+        repo,release,binding,determinant,dependencies=reconstruct_m2(payload,subject_ref,cp.checkpoint_ref)
+        life=B5();c=bundle_from_payload(payload).selected_world_contract
+        dets=tuple(sorted((determinant,c.release_ref),key=lambda r:r.key))
+        subject=LearnedProductLifecycleSubject(release_ref=release.ref,product_ref=subject_ref,product_family_ref=FAMILY,producer_owner_ref=PRODUCER,producer_contract_ref=PRODUCER,semantic_projection_hash=subject_ref.content_hash,authority_snapshot_refs=tuple(query.authority_snapshot_refs),direct_dependency_refs=dependencies,determinant_refs=dets,determinant_set_hash=semantic_hash([r.as_dict() for r in dets]),replay_root_ref=cp.checkpoint_ref,selection_scope_ref=c.risk_set_ref,build_or_release_receipt_refs=(saved.receipt_ref,),producer_permission_ceiling_ref=CEILING)
+>       life.stage_release(subject);life.verify_m2_release_subject_exact(repo,release.ref)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'LearnedProductLifecycleExecutor' object has no attribute 'verify_m2_release_subject_exact'
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:175: AttributeError
+_________ test_reconstructed_m2_dereferences_only_exact_saved_subject __________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-533/test_reconstructed_m2_derefere0')
+
+    def test_reconstructed_m2_dereferences_only_exact_saved_subject(tmp_path):
+        from rawlsing_next.pre553_learned_product_release import M2ReleaseError
+>       p,_=I.build_product(tmp_path)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py:135: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:155: in build_product
+    return _build_product_locked(root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-533/test_reconstructed_m2_derefere0')
+
+    def _build_product_locked(root):
+        if (root/'product_index.json').exists() or (root/'lifecycle.json').exists():
+            if not (root/'product_index.json').exists() or not (root/'lifecycle.json').exists():
+                raise I01Error('PARTIAL_LIFECYCLE_PUBLICATION_HOLD')
+            product=restore_product(root)
+            with ledger_lock(root/'.p01.integration.lock'):
+                report=durable.run_to_completion(product.session)
+            return product,report.summary()
+        session,world,query,calls=open_world_session(root)
+        with ledger_lock(root/'.p01.integration.lock'):
+            report=durable.run_to_completion(session)
+        subject_ref,payload,saved=admit_saved_world(session)
+        cp=session.checkpoint()
+        repo,release,binding,determinant,dependencies=reconstruct_m2(payload,subject_ref,cp.checkpoint_ref)
+        life=B5();c=bundle_from_payload(payload).selected_world_contract
+        dets=tuple(sorted((determinant,c.release_ref),key=lambda r:r.key))
+        subject=LearnedProductLifecycleSubject(release_ref=release.ref,product_ref=subject_ref,product_family_ref=FAMILY,producer_owner_ref=PRODUCER,producer_contract_ref=PRODUCER,semantic_projection_hash=subject_ref.content_hash,authority_snapshot_refs=tuple(query.authority_snapshot_refs),direct_dependency_refs=dependencies,determinant_refs=dets,determinant_set_hash=semantic_hash([r.as_dict() for r in dets]),replay_root_ref=cp.checkpoint_ref,selection_scope_ref=c.risk_set_ref,build_or_release_receipt_refs=(saved.receipt_ref,),producer_permission_ceiling_ref=CEILING)
+>       life.stage_release(subject);life.verify_m2_release_subject_exact(repo,release.ref)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'LearnedProductLifecycleExecutor' object has no attribute 'verify_m2_release_subject_exact'
+
+../../hq288-i01r-independent/Rawlsing/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:175: AttributeError
+=========================== short test summary info ============================
+FAILED ../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py::test_frozen_retained_bytes_and_fresh_execution
+FAILED ../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py::test_serving_saved_bundle_with_all_producers_disabled
+FAILED ../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py::test_rehashed_artifact_does_not_bypass_durable_binding[schema-FOREIGN]
+FAILED ../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py::test_rehashed_artifact_does_not_bypass_durable_binding[security_mode-AUTHENTICATED]
+FAILED ../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py::test_rehashed_artifact_does_not_bypass_durable_binding[producer_contract_ref-value2]
+FAILED ../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py::test_rehashed_artifact_does_not_bypass_durable_binding[query_ref-value3]
+FAILED ../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py::test_rehashed_artifact_does_not_bypass_durable_binding[source_release_ref-value4]
+FAILED ../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py::test_missing_artifact_cannot_reconstruct_fixture
+FAILED ../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py::test_release_index_substitution_refused
+FAILED ../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py::test_cold_invalidated_resume_preserves_asof_without_execution
+FAILED ../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py::test_independent_external_issuer_and_retained_gt2_refusals
+FAILED ../../hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py::test_reconstructed_m2_dereferences_only_exact_saved_subject
+12 failed, 14 passed in 12.99s
