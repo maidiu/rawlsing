@@ -97,6 +97,11 @@
     {
       "status": "FAILED",
       "name": "test_s06r_untrusted_selection_cannot_be_staged_through_public_event_api"
+    },
+    {
+      "name": "test_s06r_external_mode_without_independent_root_must_refuse",
+      "status": "PASSED",
+      "evidence_source": "S06T 00_RETURN.md and log 20 failed, 1 passed"
     }
   ],
   "requirement_coverage": [
@@ -287,8 +292,14 @@
     {
       "id": "S06R-H16",
       "adversary": "EXTERNAL_CUSTODY_MODE",
-      "coverage": "NO_DIRECT_CASE",
-      "pytest_nodes": [],
+      "coverage": "DIRECT_PASS",
+      "pytest_nodes": [
+        {
+          "name": "test_s06r_external_mode_without_independent_root_must_refuse",
+          "status": "PASSED",
+          "evidence_source": "S06T 00_RETURN.md sole named pass + frozen test source; short log only lists failed node ids"
+        }
+      ],
       "scientific_security_interpretation": "Narrow negative refusal only: no external root means external mode refused"
     },
     {
@@ -389,5 +400,6 @@
   ],
   "matrix_defect": "Original 16/15/1 conflicts with actual 21/20/1. Original H24 credited PASS incorrectly; only PASS is no-external-root refusal H16. Several original requirement node mappings unsupported.",
   "grade": "SECURITY_REJECT_NO_ADOPTION",
-  "no_new_execution": true
+  "no_new_execution": true,
+  "execution_log_note": "Short pytest log names failing nodes only; sole PASS identity is supplied by S06T 00_RETURN and frozen case name. Zero additional runtime was executed."
 }
