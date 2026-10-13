@@ -1,0 +1,30 @@
+{
+  "commission_id": "PYAT-R3-S06-B5-RELEASE-REPLAY-TRUST-R1",
+  "branch": "agent/rabochii-pyat-r3-s06-b5-release-replay-trust-r1",
+  "implementation_base": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+  "astra_r3": "88d3c40def26d34ff202258171c256dfa9d17dbb",
+  "prior_evidence": {
+    "n04_candidate": "b5a6b6409c765d2aecb8c2f9c9ef9bd8fc6473c2",
+    "n04r_review": "fde95ee9275f9fe14b6868db363035757cffab48",
+    "p02r": "b3523bed5d751b24f0bf1fd111af4161727fe9b5"
+  },
+  "test_command": "python3 -m pytest rawlsing_next/tests/test_s06_trusted_release_replay.py -v",
+  "test_exit": 0,
+  "tests_passed": 26,
+  "tests_failed": 0,
+  "defects_addressed": [
+    "ALTERED_STATE_RESTORE",
+    "HISTORY_TRUNCATION",
+    "UNWRAPPED_STATE_CHANGE",
+    "SELF_CONSISTENT_HASH_ONLY",
+    "STALE_EPOCH_SELECTION",
+    "REVOKED_DEPENDENCY",
+    "WRONG_SUBJECT",
+    "MISSING_EXTERNAL_ROOT"
+  ],
+  "trust_modes": ["LOCAL_REPLAY", "IMMUTABLE_SNAPSHOT", "PROTECTED_CURRENT", "EXTERNAL_CUSTODY"],
+  "no_production_publication": true,
+  "no_v3_execution": true,
+  "no_side_effects": true,
+  "deterministic_replay": true
+}
