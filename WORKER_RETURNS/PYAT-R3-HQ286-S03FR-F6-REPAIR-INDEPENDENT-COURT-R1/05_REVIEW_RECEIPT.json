@@ -1,0 +1,146 @@
+{
+  "schema": "PYAT_HQ286_S03FR_INDEPENDENT_SCIENTIFIC_COURT@1",
+  "role": "independent reviewer not HQ",
+  "repository": "maidiu/rawlsing",
+  "private": true,
+  "commission_sha": "e8f089653b0fa180b4aa9da3340c67e368a72aa7",
+  "commission_blob": "38ad06383eb8a9ecaaae25bccccd94aac1d22033",
+  "original_s03r": "34cc7bdb28664ecbc707528470c2b4397aa96f12",
+  "original_s03r_test_blob": "69b0896738a38835e8328ab9101f7a9445fb853f",
+  "s03f_sha": "bb739fb6d60b40876566ec6320ff6eec2388e8cf",
+  "s03f_source_sha256": "818638c937a9b1b64ac400dcb8e33337310f6c793417a1558f838edb01eb4841",
+  "s03f_source_git_blob": "b1b05e7d60f92357fb31cbea99e5b432415cc7b0",
+  "s03f_modified_original_test_git_blob": "4e40102f500a58630775e4affffd0f07cd212d76",
+  "s03f_original_test_diff_only": "EXPECTED_SHA original=68aba... rewritten=818638...",
+  "fixture_git_blob": "8e4902df9ef9e6fa63e8e28617543257b8d40b28",
+  "semantic_hash_shared_git_blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+  "versioned_review_test": "rawlsing_next/tests/test_hq286_s03fr_f6_repair_court.py",
+  "versioned_freeze_commit": "21bde003bce385a88c26c1fdefbbf1fb39849703",
+  "independent_test_count": 13,
+  "reviewer_tests_executed": 0,
+  "method_grades": {
+    "declared_domain_completeness": "STATIC_PASS_SOURCEFREE_ONLY",
+    "native_original_domain_issuance": "HOLD_UNISSUED_SOURCE_REFERENCE_AND_ROUTING",
+    "sparse_zero_compressed_proof": "HOLD_NOT_IMPLEMENTED",
+    "outcome_self_conditioning_label": "STATIC_PASS_DESCRIPTIVE_NOT_PREDICTIVE",
+    "target_joint_keyed_math": "STATIC_PASS",
+    "source_indexed_baselines": "STATIC_PASS_SYNTHETIC",
+    "minority_coverage": "STATIC_PASS",
+    "transport_science_real": "HOLD",
+    "uncertainty": "STATIC_PASS_DECLARED_CEILING",
+    "original_S03R_01_positional_order": "REPAIR_UNRESOLVED",
+    "N9_selected_world": "HOLD",
+    "EE13": "HOLD",
+    "real_F6_two_family": "HOLD",
+    "model_use_issuer": "HOLD",
+    "protected_CURRENT": "NO",
+    "V3": "NO"
+  },
+  "exact_sourcefree_oracle": {
+    "semantic_order": [
+      "secure/formal",
+      "secure/informal",
+      "insecure/formal",
+      "insecure/informal"
+    ],
+    "expected": [
+      "27/50",
+      "3/20",
+      "11/100",
+      "1/5"
+    ],
+    "actual_list_order": [
+      "insecure/formal",
+      "insecure/informal",
+      "secure/formal",
+      "secure/informal"
+    ],
+    "actual_list_values": [
+      "11/100",
+      "1/5",
+      "27/50",
+      "3/20"
+    ],
+    "source_A": [
+      "16/25",
+      "1/10",
+      "1/10",
+      "4/25"
+    ],
+    "source_B": [
+      "1/5",
+      "1/5",
+      "9/50",
+      "21/50"
+    ],
+    "target_shares": [
+      "4/5",
+      "1/5"
+    ],
+    "tv_against_constructed_ideal": {
+      "A": "1/10",
+      "B": "17/50",
+      "candidate": "0"
+    },
+    "adverse_tv": {
+      "A": "27/50",
+      "B": "7/25",
+      "candidate": "1/2"
+    },
+    "real_validation": false
+  },
+  "execution_evidence": {
+    "reviewer_local": {
+      "executed": false,
+      "commands": [],
+      "exits": [],
+      "machine": "Browser/GitHub only"
+    },
+    "l02_original": {
+      "commit": "d396b9b3d9bbb4f3b763bb0f00d79276b845ccfe",
+      "original_candidate": "69a1686528bb46c2db3051a75710989a46fe5c45",
+      "passed": 8,
+      "failed": 3,
+      "exit": 1,
+      "failing": [
+        "01",
+        "07",
+        "08"
+      ]
+    },
+    "s03f_author_json": {
+      "file": "WORKER_RETURNS/PYAT-R3-HQ284-S03F-F6-DOMAIN-LEAKAGE-REPAIR-R1/repro/s03f_evidence.json",
+      "source_suite_passed": 24,
+      "source_suite_exit": 0,
+      "reviewer_errors": 11,
+      "reviewer_exit": 1,
+      "combined_passed": 24,
+      "combined_errors": 11,
+      "combined_exit": 1
+    },
+    "narrative_claim": {
+      "passed": 34,
+      "failed": 1,
+      "proven": false,
+      "status": "UNRECONCILED_FROM_COMMITTED_RUNTIME_EVIDENCE"
+    }
+  },
+  "provider": "ChatGPT Browser/GitHub",
+  "requested_model": "GPT-6 High",
+  "model_family": "GPT-6",
+  "effort_verification": "UNKNOWN",
+  "account": "UNKNOWN",
+  "usage_remaining": "UNKNOWN",
+  "normalized_go_pool": "UNKNOWN",
+  "codex_quota": "UNKNOWN",
+  "paid_overflow_used_by_reviewer": false,
+  "reviewer_code_changes": false,
+  "original_review_oracles_changed": false,
+  "original_survey_access": false,
+  "source_rights_issued": false,
+  "production_merge": false,
+  "protected_current": false,
+  "v3_execution": false,
+  "scientific_decision": "BOUNDED_METHOD_STATIC_PASS__CONSUMER_ORDER_REPAIR__REAL_SOURCE_AND_RUNTIME_HOLD__NO_ADOPTION",
+  "terminal": "S03FR_TWO_SCOPED_SOURCEFREE_REPAIRS_STATIC_PASS__CELL_ORDER_CONSUMER_REPAIR__NATIVE_SOURCE_DOMAIN_AND_REAL_F6_HOLD__REPAIRED_RUNTIME_NOT_EXECUTED__NO_ADOPTION"
+}
