@@ -1,0 +1,93 @@
+{
+  "schema": "PYAT_R3_HQ285_FOUR_RETURN_INTAKE_R1",
+  "status": "SIX_HQ283_AND_FOUR_HQ284_RETURNED__NO_GLOBAL_PRODUCTION_ADOPTION",
+  "canonical": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+  "parent_dispatch": "53c6d61cd7b079bf8209c3536d0d97f1b0e6210a",
+  "new_worker_states": [
+    {
+      "id": "L01",
+      "startup": "0e8de4daf5bd27c7c7d8dc0223551fe2451e9ec2",
+      "head": "c6dba4b705ccf8857a6b38877708d2218b54c043",
+      "ahead": 1,
+      "verdict": "PUSHED_INTAKE_COMPLETE__RUNTIME_PARTIAL__TERRAIN_AND_EVIDENCE_SCOPE_REVIEW",
+      "observed": [
+        "Reported Mac Python 3.11.3 pytest 9.1.1 S00C 26/27, one missing S00 manifest",
+        "P01 integrated 25/25",
+        "P01 5-suite 83PASS 86FAIL 6SKIP, cause claimed missing WORKER_RETURNS—not independently reproduced from full stderr",
+        "S03R 11 errors S03_CANDIDATE_ROOT unbound",
+        "S04 original 17/17"
+      ],
+      "issues": [
+        "L01 incorrectly reports S05JR and S04R branches had no Python test files; reviewer test paths exist",
+        "L01 adds 25+ production-like original code and tests to its own evidence-collector branch, contrary to documentation-only write boundary",
+        "No full per-case stdout logs in return, aggregate P01 failures not individually classified",
+        "No S00CR independent or S04R independent suite run"
+      ],
+      "adoption": false
+    },
+    {
+      "id": "S00CR",
+      "startup": "9abd16770ac600f16466535d0049ca7938445f84",
+      "head": "7f0d655ff98056bfe161e4947ef0f17add521db2",
+      "ahead": 2,
+      "verdict": "PUSHED_INDEPENDENT_STATIC_REVIEW__SOURCEFREE_ADOPTION_HOLD",
+      "observed": [
+        "read_value numerical path static confirmed and P04 fractions preserved",
+        "18 frozen adversarial expectations, 16 authored independent Python tests, not run",
+        "stale producer numerical identity and nested step/cell fields can disagree",
+        "case-variant alias bypass false historical S00 semantics; old S00 contract remains inaccurate"
+      ],
+      "issues": [
+        "Need binding/replay closure and original historic false manifest quarantine",
+        "Need runnable frozen independent hostile suite"
+      ],
+      "adoption": false
+    },
+    {
+      "id": "S06FR",
+      "startup": "90f59298a63523c4bdd5a6b46b8719c13afe928a",
+      "head": "1b5b6072f855a74864c82d0f1b3923327bfb8b99",
+      "ahead": 2,
+      "verdict": "INDEPENDENT_RUNTIME_REJECT__P1_SECURITY_BLOCKER",
+      "observed": [
+        "Python 3.11.3 pytest 9.1.1, 111 PASS 3 FAIL, exit=1, final logs and JUnit preserved",
+        "Public event nested payload mutation changes internal event ref",
+        "Rehashed publication replay_root_ref/determinant_set_hash/producer_permission_ceiling inconsistency accepted; wrong-release rebuild event receipt accepted",
+        "Concurrent select_current double success and unrecoverable state",
+        "fault after append leaves event/projector torn; cold restore fails",
+        "direct saved _append_events/M2 _insert bypass of public guards",
+        "M2 check-then-insert collision concurrency risk",
+        "two existing M2 tests early reject foreign release with RELEASE_UNAVAILABLE; fix fixture contract rather than weaken owner"
+      ],
+      "external": "Independent issuer, epoch revocation and protected CURRENT remain HOLD",
+      "adoption": false
+    },
+    {
+      "id": "S03F",
+      "startup": "1adfc948c4bf601969803ba3bc716c9bb3389251",
+      "head": "bb739fb6d60b40876566ec6320ff6eec2388e8cf",
+      "ahead": 1,
+      "verdict": "SOURCEFREE_CODE_REPAIR_PRESENT__EXECUTION_EVIDENCE_AND_FROZEN_TEST_CUSTODY_UNGRADED",
+      "observed": [
+        "Implementation adds domain cardinality check and DESCRIPTIVE_SELF_CONDITIONING",
+        "Worker narrative 34 pass/1 fail but committed s03f_evidence.json reports original 24 pass, independent 11 errors, combined 24 pass +11 errors",
+        "Test execution helper hardcodes a local working directory and does not set S03_CANDIDATE_ROOT",
+        "Changed reviewer independent test EXPECTED_SHA from 68aba5... to 818638..., while rest of review assertions likely unchanged"
+      ],
+      "issues": [
+        "Should not edit independent reviewer test even for new code hash; use separately versioned test identity with original frozen acceptance preserved",
+        "Establish exact observed no-source suite outcomes in approved actual compatible worktree",
+        "Domain cardinality proof assumes unique cartesian/native producer-issued axes and sparse-zero semantics—review"
+      ],
+      "adoption": false
+    }
+  ],
+  "adoption_ceiling": "NO_CANONICAL_MERGE_NO_PROTECTED_CURRENT_NO_REAL_SOURCE_PERMISSION_NO_V3",
+  "next_order": [
+    "Native B5/M2 P1 exact owner repair as dependency for trusted selected-world publication; independent executable security recheck",
+    "S00D synthetic value/replay binding and false legacy source-contract quarantine; independent hostile run",
+    "Evidence-only L02 correct L01/S03F independent runtime/hard-coded root, no copied producer files",
+    "E01 original U/E issuer-custody remains separate source-science, not reopen GT2 archaeology",
+    "F7 method repairs backed by S04R independent failing original scope, source-pair authority still separate"
+  ]
+}
