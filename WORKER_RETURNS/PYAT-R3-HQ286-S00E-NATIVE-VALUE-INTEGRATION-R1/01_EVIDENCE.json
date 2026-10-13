@@ -1,0 +1,35 @@
+{
+  "commission_id": "PYAT-R3-HQ286-S00E-NATIVE-VALUE-INTEGRATION-R1",
+  "branch": "agent/rabochii-pyat-r3-hq286-s00e-native-value-provenance-integration-r1",
+  "sealed_startup": "789ed8dd6cd92112ff469556e81923731c45b4d2",
+  "s00c_parent": "54f145538ed0880f8257368f838baa5b0e12e2d3",
+  "s00cr_review": "7f0d655ff98056bfe161e4947ef0f17add521db2",
+  "s00d_wrapper_readonly": "4c8168b7e68e034796221bcbf36281324042e94c",
+  "test_suites": [
+    {
+      "name": "S00C full-fixture",
+      "command": "python3 -m pytest rawlsing_next/tests/test_r3_s02_seam_witness.py -v",
+      "exit": 0,
+      "passed": 27,
+      "failed": 0
+    },
+    {
+      "name": "S00CR 16-test read-only overlay",
+      "command": "python3 -m pytest rawlsing_next/tests/test_hq286_s00e_s00cr_overlay.py -v",
+      "exit": 0,
+      "passed": 18,
+      "failed": 0
+    }
+  ],
+  "total_passed": 45,
+  "total_failed": 0,
+  "repairs": {
+    "fraction_closure": "Declared fractions must match recomputed numerator/denominator",
+    "step_geometry": "Step cells must match channel numerators and condition denominators",
+    "case_insensitive_semantic_rejection": "democracy/trust/attitudes tokens checked case-insensitively",
+    "p04_preserved": {"denominators": [32, 16, 8], "fractions": ["9/16", "5/8", "3/4"]}
+  },
+  "gt2_status": "SCIENTIFIC_HOLD",
+  "no_self_adoption": true,
+  "no_v3_execution": true
+}

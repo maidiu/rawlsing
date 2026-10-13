@@ -299,11 +299,21 @@ def test_s00c_change_source_owned_synthetic_numeric_values_changes_result():
     for c in original.channels:
         if c.channel_id in ("CH_P_Q86A_given_Q86B_1_0", "CH_P_Q86A_given_Q86B_1_1"):
             value = dict(c.value)
-            value["raw_numerator_support"] = 2  # preserve denominator and source metadata
+            value["raw_numerator_support"] = 2
+            value["raw_probability_exact_fraction"] = {"$exact_fraction": [1, 2]}
             edited.append(replace(c, value=value))
         else:
             edited.append(c)
-    temporary = replace(original, channels=tuple(edited), content_hash="")
+    edited_steps = []
+    for s in original.steps:
+        if s["step_id"] == "P_Q86A_given_Q86B_1":
+            new_cells = {}
+            for k, v in s["cells"].items():
+                new_cells[k] = {"numerator": 2, "fraction": {"$exact_fraction": [1, 2]}}
+            edited_steps.append({**s, "cells": new_cells})
+        else:
+            edited_steps.append(s)
+    temporary = replace(original, channels=tuple(edited), steps=tuple(edited_steps), content_hash="")
     changed = replace(temporary, content_hash=_content_hash(temporary.as_dict()))
     after = ContractOnlySeamConsumer(changed).compute_scenario(
         "T", ["P_Q86A_given_Q86B_1"])
@@ -312,6 +322,19 @@ def test_s00c_change_source_owned_synthetic_numeric_values_changes_result():
     assert before["raw_denominator_support"] == after["raw_denominator_support"] == 4
     assert before["source_value_dependency"]["used_input_refs"] != after[
         "source_value_dependency"]["used_input_refs"]
+    stale = []
+    for c in original.channels:
+        if c.channel_id in ("CH_P_Q86A_given_Q86B_1_0", "CH_P_Q86A_given_Q86B_1_1"):
+            value = dict(c.value)
+            value["raw_numerator_support"] = 2
+            stale.append(replace(c, value=value))
+        else:
+            stale.append(c)
+    stale_tmp = replace(original, channels=tuple(stale), content_hash="")
+    stale_bundle = replace(stale_tmp, content_hash=_content_hash(stale_tmp.as_dict()))
+    stale_result = ContractOnlySeamConsumer(stale_bundle).compute_scenario(
+        "T", ["P_Q86A_given_Q86B_1"])
+    assert stale_result["status"] == "REFUSED"
 
 
 def test_s00c_irrelevant_context_changes_stable_numeric_output():

@@ -457,6 +457,60 @@ class ContractOnlySeamConsumer:
         if any(ch.source_scope != expected_scope or ch.test_origin is not True
                or ch.evidence_mode != "TRANSFORMED" for ch in self._bundle.channels):
             return "SOURCE_SCOPE_OR_VALUE_ORIGIN_MISMATCH"
+        frac_issue = self._validate_fraction_closure()
+        if frac_issue:
+            return frac_issue
+        step_issue = self._validate_step_geometry()
+        if step_issue:
+            return step_issue
+        return None
+
+    def _validate_fraction_closure(self) -> str | None:
+        for ch in self._bundle.channels:
+            val = ch.value
+            num = val.get("raw_numerator_support")
+            frac = val.get("raw_probability_exact_fraction")
+            support = ch.support
+            if num is not None and frac is not None and isinstance(support, int) and support > 0:
+                from fractions import Fraction as _F
+                expected = _F(num, support)
+                claimed = _F(frac["$exact_fraction"][0], frac["$exact_fraction"][1])
+                if expected != claimed:
+                    return "FRACTION_CLOSURE_MISMATCH"
+        for step in self._bundle.steps:
+            for cell_key, cell in step["cells"].items():
+                num = cell.get("numerator")
+                frac = cell.get("fraction")
+                if num is not None and frac is not None:
+                    from fractions import Fraction as _F
+                    step_denom = sum(c.get("numerator", 0) for c in step["cells"].values())
+                    if step_denom > 0:
+                        expected = _F(num, step_denom)
+                        claimed = _F(frac["$exact_fraction"][0], frac["$exact_fraction"][1])
+                        if expected != claimed:
+                            return "STEP_CELL_FRACTION_MISMATCH"
+        return None
+
+    def _validate_step_geometry(self) -> str | None:
+        channel_map = {c.channel_id: c for c in self._bundle.channels}
+        condition_map = {c["step_id"]: c for c in self._bundle.conditions}
+        for step in self._bundle.steps:
+            step_id = step["step_id"]
+            condition = condition_map.get(step_id)
+            if condition is None:
+                return "STEP_MISSING_CONDITION"
+            channel_numerators = {}
+            for ch_id, ch in channel_map.items():
+                if ch.value.get("step_id") == step_id:
+                    cell_key = str(ch.value.get("cell"))
+                    channel_numerators[cell_key] = ch.value.get("raw_numerator_support")
+            for cell_key, cell in step["cells"].items():
+                if cell_key in channel_numerators:
+                    if cell.get("numerator") != channel_numerators[cell_key]:
+                        return "STEP_CELL_NUMERATOR_MISMATCH"
+            channel_denom = sum(channel_numerators.values())
+            if channel_denom != condition.get("denominator"):
+                return "DENOMINATOR_CLOSURE_MISMATCH"
         return None
 
     def read_value(self, channel_id: str, *, query_ref: str = "") -> ChannelValue | None:
@@ -485,8 +539,10 @@ class ContractOnlySeamConsumer:
         issue = self._validate_bundle()
         if issue:
             return self._refuse(scenario_id, issue)
-        if ("DEMOCRACY_SUPPORT" in scenario_id or "INSTITUTIONAL_TRUST" in scenario_id
-                or "DEMOCRATIC_ATTITUDES" in scenario_id):
+        _lower_id = scenario_id.lower()
+        if (any(t in _lower_id for t in (
+            "democracy_support", "institutional_trust", "democratic_attitudes",
+        ))):
             return self._refuse(scenario_id, "FALSE_S00_Q86_SOURCE_MEANING")
         if not isinstance(conditioning, (list, tuple)) or not conditioning:
             return self._refuse(scenario_id, "NO_CONDITION_SPEC", status="NO_SUPPORT")
