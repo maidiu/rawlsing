@@ -1,3 +1,13 @@
+# NEW PYAT HQ ADMISSION — MANDATORY FULL INHERITANCE + CRITICAL METHOD ADJUDICATION
+
+**NO NEW/RESUMED/SUCCESSOR HQ IS VALID BY TITLE, MEMORY, PRIOR R2.1 TOKEN OR SELF-DECLARATION.** A candidate must complete `PYAT_CONTROL_ROOM/00_INCOMING_HQ_VALIDITY_AND_PERSONA_END_PRODUCT_GATE_R1.md`, all applicable historical grok passes, and an independently/user-reviewed evidence accession before ANY command, commission, authority adoption or new whole-machine work plan. Until then its only role is `CANDIDATE__READ_ONLY_GROK`.
+
+This is **not** a requirement to blindly preserve old mechanisms: inspect actual inherited implementations, assess whether each is the *best attainable method* for the finished survey-grounded persona generator, then compare reuse/integration/improvement/completion/replacement by evidence and positive end-product tests. The end-product governs; science disciplines the transformations; approximations are valid when labeled/modelled with constraints and uncertainties. Historical F6 Afro×LiTS pairing and Ghana EE12 are optional test candidates, never required global bottlenecks. Preserve the PRE-V3→V3 actor seam and existing source/issuer law.
+
+Fresh accession: `INCOMING_HQ_GROK_ATTESTATION_TEMPLATE_R1.json` copied to a **new** dossier with real exact refs, `verify_incoming_hq_grok_r1.py` run as formal completeness check, plus *actual* external reviewer/user acceptance. The validator does NOT issue HQ authority. Prior grok acceptance tokens remain historical, and alone never satisfy these newly specified obligations.
+
+---
+
 ## USER CORRECTION / FRESH HQ GROK CHECK: PERSONA END PRODUCT AND REUSE
 
 Mandatory: read `PYAT_CONTROL_ROOM/HQ283_PERSONA_FIRST_INHERITED_METHODS_AND_HQ_GROK_CORRECTION_R1.md`, Dva `RAWLSING_GOVERNING_SPIRIT.md`, `TERMINAL_DEMAND_ENVELOPE.md`, the originary persona frameworks, Dva/Trii/Chetiri functional inheritance, Long Memory Authority 38/39/40, the crosswave atlas/driver facet mappings and actual V553 harmonization/temporal-pressure code. Explain exact provenance, implementation status, current successor, downstream V3 use, missing bridge and a measured persona-generation outcome. Do not conflate historical archive presence with current adopted execution, but NEVER infer missing mechanism merely from missing current P01/N9 receipt. Do not elevate Ghana or arbitrary Afro/LiTS pair to a universal end-product gate. Applied uncertainty-aware proxies/approximation and fallback are legitimate engineering paths with honest claim grades. No successor may declare itself fully HQ-grokked without passing these checks.
@@ -477,6 +487,6 @@ A fresh HQ has failed grokking if it:
 
 ## Fresh-HQ completion token
 
-The accepted R2.1 baseline returned the following token. A successor may inherit it after verifying the HQD-115 checkpoint and finding no material contradictory delta:
+The accepted R2.1 baseline returned the following token. A successor may inherit this token ONLY as evidence of the prior HQD-115/R2.1 historical grok (after checking the checkpoint and deltas). It does NOT establish operative successor HQ validity or waive the independent persona-first/current-functional-succession/critical-improvement accession gate in `PYAT_CONTROL_ROOM/00_INCOMING_HQ_VALIDITY_AND_PERSONA_END_PRODUCT_GATE_R1.md`:
 
 `PYAT_FRESH_HQ_FULL_GROK_COMPLETE__CHRONOLOGY_CURRENTNESS_ROUTE_B_PRODUCT_FIELD_FORGE_AND_PREV3_PROGRAM_RECONCILED`
