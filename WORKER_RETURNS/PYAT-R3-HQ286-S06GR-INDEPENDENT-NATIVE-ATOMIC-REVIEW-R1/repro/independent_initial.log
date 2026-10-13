@@ -1,0 +1,490 @@
+...............F......FFFFFF...........F                                 [100%]
+=================================== FAILURES ===================================
+_ test_baseexception_rollback_then_success_and_recovery[attest_gc_eligibility] _
+
+name = 'attest_gc_eligibility'
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10cab6dd0>
+
+    @pytest.mark.parametrize('name', WRITERS)
+    def test_baseexception_rollback_then_success_and_recovery(name, monkeypatch):
+        x,a,b,k,ops = fixture(); cp = roundtrip(x)
+        if name in ('stage_release','stage_protocol','selection_key'):
+            store = '_selection_keys' if name == 'selection_key' else '_repository_subjects'
+            class FaultDict(dict):
+                def __setitem__(self,k,v):
+                    super().__setitem__(k,v); raise Fault('post-write')
+            original = getattr(x,store)
+            monkeypatch.setattr(x,store,FaultDict(original))
+        else:
+            original = x._append_events
+            def fail(events):
+                original(events); raise Fault('post-append')
+            monkeypatch.setattr(x,'_append_events',fail)
+>       with pytest.raises(Fault): ops[name]()
+                                   ^^^^^^^^^^^
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:80: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:56: in <lambda>
+    'attest_gc_eligibility': lambda:x.attest_gc_eligibility(b.release_ref, **proofs, **A),
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_lifecycle.py:58: in guarded
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10cab5750>
+release_ref = ExactRef(kind='LearnedProductRelease', object_id='urn:test:LearnedProductRelease:gr-b:sha256:66c443c25d50d8fd72c388258a74c013fb6770c47e2a978c6f3c39dc561eb269', content_hash='66c443c25d50d8fd72c388258a74c013fb6770c47e2a978c6f3c39dc561eb269')
+reconstruction_proof_ref = ExactRef(kind='Proof', object_id='urn:test:Proof:reconstruction_proof_ref:sha256:dce2eb268f20a92353a00a717b016703da52b1737018caea9ad572462d167c01', content_hash='dce2eb268f20a92353a00a717b016703da52b1737018caea9ad572462d167c01')
+historical_retention_proof_ref = ExactRef(kind='Proof', object_id='urn:test:Proof:historical_retention_proof_ref:sha256:5bf6507477995a88b8345ab8eaf91875f3b3b7b367093748308ffff305cf8691', content_hash='5bf6507477995a88b8345ab8eaf91875f3b3b7b367093748308ffff305cf8691')
+serving_reconstruction_proof_ref = ExactRef(kind='Proof', object_id='urn:test:Proof:serving_reconstruction_proof_ref:sha256:b626e4b5ee396c5666f2a8fcbc4e1b8d7cc3c8a225c9988e412ede63df7092aa', content_hash='b626e4b5ee396c5666f2a8fcbc4e1b8d7cc3c8a225c9988e412ede63df7092aa')
+downstream_byte_dependency_absence_proof_ref = ExactRef(kind='Proof', object_id='urn:test:Proof:downstream_byte_dependency_absence_proof_ref:sha256:ac34d0ed2198f5f9a...d2982dcb7d8e1d37f1570884cc84a73e24df', content_hash='ac34d0ed2198f5f9a8d2fdd479e1d2982dcb7d8e1d37f1570884cc84a73e24df')
+source_carrier_retention_proof_ref = ExactRef(kind='Proof', object_id='urn:test:Proof:source_carrier_retention_proof_ref:sha256:de29b79ee3ea9a9134a78ae356b0cb3e983fbf7b10f7e547aa34d51e06625501', content_hash='de29b79ee3ea9a9134a78ae356b0cb3e983fbf7b10f7e547aa34d51e06625501')
+event_authority_ref = ExactRef(kind='Authority', object_id='urn:test:Authority:gr:sha256:a6bb75d8f08a81109834efb3aec94049d9405e7aac586c4ba0d1055af7f5d948', content_hash='a6bb75d8f08a81109834efb3aec94049d9405e7aac586c4ba0d1055af7f5d948')
+event_rule_ref = ExactRef(kind='Rule', object_id='urn:test:Rule:gr:sha256:90f56ffa29e94ff3d261bda60268df33968fa63c8ba500cf700bfb251b774e6f', content_hash='90f56ffa29e94ff3d261bda60268df33968fa63c8ba500cf700bfb251b774e6f')
+evidence_refs = ()
+
+    @_atomic_mutation
+    def attest_gc_eligibility(
+        self,
+        release_ref: ExactRef,
+        *,
+        reconstruction_proof_ref: ExactRef,
+        historical_retention_proof_ref: ExactRef,
+        serving_reconstruction_proof_ref: ExactRef,
+        downstream_byte_dependency_absence_proof_ref: ExactRef,
+        source_carrier_retention_proof_ref: ExactRef,
+        event_authority_ref: ExactRef,
+        event_rule_ref: ExactRef,
+        evidence_refs: Iterable[ExactRef] = (),
+    ) -> GCElegibilityReceipt:
+        self._native_mutation_preflight("attest_gc_eligibility")
+        subject = self._subject(release_ref)
+        if subject.materialization_class != "RECOMPUTABLE_PRODUCT_PAYLOAD":
+>           raise LearnedProductLifecycleError("GC_NOT_AUTHORIZED")
+E           rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleError: GC_NOT_AUTHORIZED
+
+rawlsing_next/pre553_learned_product_lifecycle.py:2998: LearnedProductLifecycleError
+______ test_missing_receipt_family_is_not_replayable[selection_receipts] _______
+
+kind = 'selection_receipts'
+
+    @pytest.mark.parametrize('kind', ['selection_receipts','no_current_receipts','invalidations','rebuild_eligibility','rebuild_links','gc_eligibility'])
+    def test_missing_receipt_family_is_not_replayable(kind):
+        x,a,b,k,ops=fixture()
+>       ops['link_rebuild'](); ops['declare_no_current'](); ops['declare_invalidation']()
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:51: in <lambda>
+    'declare_invalidation': lambda:x.declare_invalidation(a.determinant_refs, dependency_closure_receipt_ref=ref('Closure','inv'), selection_attestation_ref=ref('Attestation','inv'), current_transitions={k.ref.key:None}, **A),
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_lifecycle.py:58: in guarded
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10ca442d0>
+changed_determinant_refs = (ExactRef(kind='DETERMINANT', object_id='urn:test:DETERMINANT:gr-a-det:sha256:63b0c3593941ec39d4373cbc402ee39912a97463451a0197f9bf15d9bba66927', content_hash='63b0c3593941ec39d4373cbc402ee39912a97463451a0197f9bf15d9bba66927'),)
+event_authority_ref = ExactRef(kind='Authority', object_id='urn:test:Authority:gr:sha256:a6bb75d8f08a81109834efb3aec94049d9405e7aac586c4ba0d1055af7f5d948', content_hash='a6bb75d8f08a81109834efb3aec94049d9405e7aac586c4ba0d1055af7f5d948')
+event_rule_ref = ExactRef(kind='Rule', object_id='urn:test:Rule:gr:sha256:90f56ffa29e94ff3d261bda60268df33968fa63c8ba500cf700bfb251b774e6f', content_hash='90f56ffa29e94ff3d261bda60268df33968fa63c8ba500cf700bfb251b774e6f')
+dependency_closure_receipt_ref = ExactRef(kind='Closure', object_id='urn:test:Closure:inv:sha256:c7dac97e9da126a1e0424cb47c8cdb85655b53f07adecbeb54ee966f58956d9c', content_hash='c7dac97e9da126a1e0424cb47c8cdb85655b53f07adecbeb54ee966f58956d9c')
+selection_attestation_ref = ExactRef(kind='Attestation', object_id='urn:test:Attestation:inv:sha256:23a74427165ebbb24399a4049e305db579356762957a6e68dbb13ae91a23554a', content_hash='23a74427165ebbb24399a4049e305db579356762957a6e68dbb13ae91a23554a')
+current_transitions = {'B5Lifecycle:SELECTION_KEY|urn:rawlsing:pre553:b5-lifecycle:selection_key:sha256:1c3f8e0e66c40e8eead59b939efdd2bb79275b0d7c39269ca6f0802d8fb18d2c|1c3f8e0e66c40e8eead59b939efdd2bb79275b0d7c39269ca6f0802d8fb18d2c': None}
+evidence_refs = ()
+
+    @_atomic_mutation
+    def declare_invalidation(
+        self,
+        changed_determinant_refs: Iterable[ExactRef | AuthorityRef | Mapping[str, Any]],
+        *,
+        event_authority_ref: ExactRef,
+        event_rule_ref: ExactRef,
+        dependency_closure_receipt_ref: ExactRef,
+        selection_attestation_ref: ExactRef,
+        current_transitions: Mapping[str, ExactRef | None] | None = None,
+        evidence_refs: Iterable[ExactRef] = (),
+    ) -> InvalidationReceipt:
+        self._native_mutation_preflight("declare_invalidation")
+        changed = _determinant_refs(changed_determinant_refs)
+        if not changed:
+            raise LearnedProductLifecycleError(
+                "invalidation requires at least one exact changed determinant"
+            )
+        graph = self.determinant_graph
+        direct, transitive = graph.affected(changed)
+        affected = _exact_refs(direct + transitive)
+        unaffected = graph.unaffected(affected)
+        affected_subjects = tuple(self._subject(ref) for ref in affected)
+        affected_current_keys: dict[str, SelectionKey] = {}
+        for subject in affected_subjects:
+            for key in self._current_keys_for_release(subject.release_ref):
+                affected_current_keys[key.ref.key] = key
+        transitions = dict(current_transitions or {})
+        if set(transitions) != set(affected_current_keys):
+>           raise LearnedProductLifecycleError(
+                "current invalidation requires explicit replacement/NO_CURRENT for every affected current key"
+            )
+E           rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleError: current invalidation requires explicit replacement/NO_CURRENT for every affected current key
+
+rawlsing_next/pre553_learned_product_lifecycle.py:2703: LearnedProductLifecycleError
+______ test_missing_receipt_family_is_not_replayable[no_current_receipts] ______
+
+kind = 'no_current_receipts'
+
+    @pytest.mark.parametrize('kind', ['selection_receipts','no_current_receipts','invalidations','rebuild_eligibility','rebuild_links','gc_eligibility'])
+    def test_missing_receipt_family_is_not_replayable(kind):
+        x,a,b,k,ops=fixture()
+>       ops['link_rebuild'](); ops['declare_no_current'](); ops['declare_invalidation']()
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:51: in <lambda>
+    'declare_invalidation': lambda:x.declare_invalidation(a.determinant_refs, dependency_closure_receipt_ref=ref('Closure','inv'), selection_attestation_ref=ref('Attestation','inv'), current_transitions={k.ref.key:None}, **A),
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_lifecycle.py:58: in guarded
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10cb050d0>
+changed_determinant_refs = (ExactRef(kind='DETERMINANT', object_id='urn:test:DETERMINANT:gr-a-det:sha256:63b0c3593941ec39d4373cbc402ee39912a97463451a0197f9bf15d9bba66927', content_hash='63b0c3593941ec39d4373cbc402ee39912a97463451a0197f9bf15d9bba66927'),)
+event_authority_ref = ExactRef(kind='Authority', object_id='urn:test:Authority:gr:sha256:a6bb75d8f08a81109834efb3aec94049d9405e7aac586c4ba0d1055af7f5d948', content_hash='a6bb75d8f08a81109834efb3aec94049d9405e7aac586c4ba0d1055af7f5d948')
+event_rule_ref = ExactRef(kind='Rule', object_id='urn:test:Rule:gr:sha256:90f56ffa29e94ff3d261bda60268df33968fa63c8ba500cf700bfb251b774e6f', content_hash='90f56ffa29e94ff3d261bda60268df33968fa63c8ba500cf700bfb251b774e6f')
+dependency_closure_receipt_ref = ExactRef(kind='Closure', object_id='urn:test:Closure:inv:sha256:c7dac97e9da126a1e0424cb47c8cdb85655b53f07adecbeb54ee966f58956d9c', content_hash='c7dac97e9da126a1e0424cb47c8cdb85655b53f07adecbeb54ee966f58956d9c')
+selection_attestation_ref = ExactRef(kind='Attestation', object_id='urn:test:Attestation:inv:sha256:23a74427165ebbb24399a4049e305db579356762957a6e68dbb13ae91a23554a', content_hash='23a74427165ebbb24399a4049e305db579356762957a6e68dbb13ae91a23554a')
+current_transitions = {'B5Lifecycle:SELECTION_KEY|urn:rawlsing:pre553:b5-lifecycle:selection_key:sha256:1c3f8e0e66c40e8eead59b939efdd2bb79275b0d7c39269ca6f0802d8fb18d2c|1c3f8e0e66c40e8eead59b939efdd2bb79275b0d7c39269ca6f0802d8fb18d2c': None}
+evidence_refs = ()
+
+    @_atomic_mutation
+    def declare_invalidation(
+        self,
+        changed_determinant_refs: Iterable[ExactRef | AuthorityRef | Mapping[str, Any]],
+        *,
+        event_authority_ref: ExactRef,
+        event_rule_ref: ExactRef,
+        dependency_closure_receipt_ref: ExactRef,
+        selection_attestation_ref: ExactRef,
+        current_transitions: Mapping[str, ExactRef | None] | None = None,
+        evidence_refs: Iterable[ExactRef] = (),
+    ) -> InvalidationReceipt:
+        self._native_mutation_preflight("declare_invalidation")
+        changed = _determinant_refs(changed_determinant_refs)
+        if not changed:
+            raise LearnedProductLifecycleError(
+                "invalidation requires at least one exact changed determinant"
+            )
+        graph = self.determinant_graph
+        direct, transitive = graph.affected(changed)
+        affected = _exact_refs(direct + transitive)
+        unaffected = graph.unaffected(affected)
+        affected_subjects = tuple(self._subject(ref) for ref in affected)
+        affected_current_keys: dict[str, SelectionKey] = {}
+        for subject in affected_subjects:
+            for key in self._current_keys_for_release(subject.release_ref):
+                affected_current_keys[key.ref.key] = key
+        transitions = dict(current_transitions or {})
+        if set(transitions) != set(affected_current_keys):
+>           raise LearnedProductLifecycleError(
+                "current invalidation requires explicit replacement/NO_CURRENT for every affected current key"
+            )
+E           rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleError: current invalidation requires explicit replacement/NO_CURRENT for every affected current key
+
+rawlsing_next/pre553_learned_product_lifecycle.py:2703: LearnedProductLifecycleError
+_________ test_missing_receipt_family_is_not_replayable[invalidations] _________
+
+kind = 'invalidations'
+
+    @pytest.mark.parametrize('kind', ['selection_receipts','no_current_receipts','invalidations','rebuild_eligibility','rebuild_links','gc_eligibility'])
+    def test_missing_receipt_family_is_not_replayable(kind):
+        x,a,b,k,ops=fixture()
+>       ops['link_rebuild'](); ops['declare_no_current'](); ops['declare_invalidation']()
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:51: in <lambda>
+    'declare_invalidation': lambda:x.declare_invalidation(a.determinant_refs, dependency_closure_receipt_ref=ref('Closure','inv'), selection_attestation_ref=ref('Attestation','inv'), current_transitions={k.ref.key:None}, **A),
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_lifecycle.py:58: in guarded
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10ca45e90>
+changed_determinant_refs = (ExactRef(kind='DETERMINANT', object_id='urn:test:DETERMINANT:gr-a-det:sha256:63b0c3593941ec39d4373cbc402ee39912a97463451a0197f9bf15d9bba66927', content_hash='63b0c3593941ec39d4373cbc402ee39912a97463451a0197f9bf15d9bba66927'),)
+event_authority_ref = ExactRef(kind='Authority', object_id='urn:test:Authority:gr:sha256:a6bb75d8f08a81109834efb3aec94049d9405e7aac586c4ba0d1055af7f5d948', content_hash='a6bb75d8f08a81109834efb3aec94049d9405e7aac586c4ba0d1055af7f5d948')
+event_rule_ref = ExactRef(kind='Rule', object_id='urn:test:Rule:gr:sha256:90f56ffa29e94ff3d261bda60268df33968fa63c8ba500cf700bfb251b774e6f', content_hash='90f56ffa29e94ff3d261bda60268df33968fa63c8ba500cf700bfb251b774e6f')
+dependency_closure_receipt_ref = ExactRef(kind='Closure', object_id='urn:test:Closure:inv:sha256:c7dac97e9da126a1e0424cb47c8cdb85655b53f07adecbeb54ee966f58956d9c', content_hash='c7dac97e9da126a1e0424cb47c8cdb85655b53f07adecbeb54ee966f58956d9c')
+selection_attestation_ref = ExactRef(kind='Attestation', object_id='urn:test:Attestation:inv:sha256:23a74427165ebbb24399a4049e305db579356762957a6e68dbb13ae91a23554a', content_hash='23a74427165ebbb24399a4049e305db579356762957a6e68dbb13ae91a23554a')
+current_transitions = {'B5Lifecycle:SELECTION_KEY|urn:rawlsing:pre553:b5-lifecycle:selection_key:sha256:1c3f8e0e66c40e8eead59b939efdd2bb79275b0d7c39269ca6f0802d8fb18d2c|1c3f8e0e66c40e8eead59b939efdd2bb79275b0d7c39269ca6f0802d8fb18d2c': None}
+evidence_refs = ()
+
+    @_atomic_mutation
+    def declare_invalidation(
+        self,
+        changed_determinant_refs: Iterable[ExactRef | AuthorityRef | Mapping[str, Any]],
+        *,
+        event_authority_ref: ExactRef,
+        event_rule_ref: ExactRef,
+        dependency_closure_receipt_ref: ExactRef,
+        selection_attestation_ref: ExactRef,
+        current_transitions: Mapping[str, ExactRef | None] | None = None,
+        evidence_refs: Iterable[ExactRef] = (),
+    ) -> InvalidationReceipt:
+        self._native_mutation_preflight("declare_invalidation")
+        changed = _determinant_refs(changed_determinant_refs)
+        if not changed:
+            raise LearnedProductLifecycleError(
+                "invalidation requires at least one exact changed determinant"
+            )
+        graph = self.determinant_graph
+        direct, transitive = graph.affected(changed)
+        affected = _exact_refs(direct + transitive)
+        unaffected = graph.unaffected(affected)
+        affected_subjects = tuple(self._subject(ref) for ref in affected)
+        affected_current_keys: dict[str, SelectionKey] = {}
+        for subject in affected_subjects:
+            for key in self._current_keys_for_release(subject.release_ref):
+                affected_current_keys[key.ref.key] = key
+        transitions = dict(current_transitions or {})
+        if set(transitions) != set(affected_current_keys):
+>           raise LearnedProductLifecycleError(
+                "current invalidation requires explicit replacement/NO_CURRENT for every affected current key"
+            )
+E           rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleError: current invalidation requires explicit replacement/NO_CURRENT for every affected current key
+
+rawlsing_next/pre553_learned_product_lifecycle.py:2703: LearnedProductLifecycleError
+______ test_missing_receipt_family_is_not_replayable[rebuild_eligibility] ______
+
+kind = 'rebuild_eligibility'
+
+    @pytest.mark.parametrize('kind', ['selection_receipts','no_current_receipts','invalidations','rebuild_eligibility','rebuild_links','gc_eligibility'])
+    def test_missing_receipt_family_is_not_replayable(kind):
+        x,a,b,k,ops=fixture()
+>       ops['link_rebuild'](); ops['declare_no_current'](); ops['declare_invalidation']()
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:51: in <lambda>
+    'declare_invalidation': lambda:x.declare_invalidation(a.determinant_refs, dependency_closure_receipt_ref=ref('Closure','inv'), selection_attestation_ref=ref('Attestation','inv'), current_transitions={k.ref.key:None}, **A),
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_lifecycle.py:58: in guarded
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10cb06490>
+changed_determinant_refs = (ExactRef(kind='DETERMINANT', object_id='urn:test:DETERMINANT:gr-a-det:sha256:63b0c3593941ec39d4373cbc402ee39912a97463451a0197f9bf15d9bba66927', content_hash='63b0c3593941ec39d4373cbc402ee39912a97463451a0197f9bf15d9bba66927'),)
+event_authority_ref = ExactRef(kind='Authority', object_id='urn:test:Authority:gr:sha256:a6bb75d8f08a81109834efb3aec94049d9405e7aac586c4ba0d1055af7f5d948', content_hash='a6bb75d8f08a81109834efb3aec94049d9405e7aac586c4ba0d1055af7f5d948')
+event_rule_ref = ExactRef(kind='Rule', object_id='urn:test:Rule:gr:sha256:90f56ffa29e94ff3d261bda60268df33968fa63c8ba500cf700bfb251b774e6f', content_hash='90f56ffa29e94ff3d261bda60268df33968fa63c8ba500cf700bfb251b774e6f')
+dependency_closure_receipt_ref = ExactRef(kind='Closure', object_id='urn:test:Closure:inv:sha256:c7dac97e9da126a1e0424cb47c8cdb85655b53f07adecbeb54ee966f58956d9c', content_hash='c7dac97e9da126a1e0424cb47c8cdb85655b53f07adecbeb54ee966f58956d9c')
+selection_attestation_ref = ExactRef(kind='Attestation', object_id='urn:test:Attestation:inv:sha256:23a74427165ebbb24399a4049e305db579356762957a6e68dbb13ae91a23554a', content_hash='23a74427165ebbb24399a4049e305db579356762957a6e68dbb13ae91a23554a')
+current_transitions = {'B5Lifecycle:SELECTION_KEY|urn:rawlsing:pre553:b5-lifecycle:selection_key:sha256:1c3f8e0e66c40e8eead59b939efdd2bb79275b0d7c39269ca6f0802d8fb18d2c|1c3f8e0e66c40e8eead59b939efdd2bb79275b0d7c39269ca6f0802d8fb18d2c': None}
+evidence_refs = ()
+
+    @_atomic_mutation
+    def declare_invalidation(
+        self,
+        changed_determinant_refs: Iterable[ExactRef | AuthorityRef | Mapping[str, Any]],
+        *,
+        event_authority_ref: ExactRef,
+        event_rule_ref: ExactRef,
+        dependency_closure_receipt_ref: ExactRef,
+        selection_attestation_ref: ExactRef,
+        current_transitions: Mapping[str, ExactRef | None] | None = None,
+        evidence_refs: Iterable[ExactRef] = (),
+    ) -> InvalidationReceipt:
+        self._native_mutation_preflight("declare_invalidation")
+        changed = _determinant_refs(changed_determinant_refs)
+        if not changed:
+            raise LearnedProductLifecycleError(
+                "invalidation requires at least one exact changed determinant"
+            )
+        graph = self.determinant_graph
+        direct, transitive = graph.affected(changed)
+        affected = _exact_refs(direct + transitive)
+        unaffected = graph.unaffected(affected)
+        affected_subjects = tuple(self._subject(ref) for ref in affected)
+        affected_current_keys: dict[str, SelectionKey] = {}
+        for subject in affected_subjects:
+            for key in self._current_keys_for_release(subject.release_ref):
+                affected_current_keys[key.ref.key] = key
+        transitions = dict(current_transitions or {})
+        if set(transitions) != set(affected_current_keys):
+>           raise LearnedProductLifecycleError(
+                "current invalidation requires explicit replacement/NO_CURRENT for every affected current key"
+            )
+E           rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleError: current invalidation requires explicit replacement/NO_CURRENT for every affected current key
+
+rawlsing_next/pre553_learned_product_lifecycle.py:2703: LearnedProductLifecycleError
+_________ test_missing_receipt_family_is_not_replayable[rebuild_links] _________
+
+kind = 'rebuild_links'
+
+    @pytest.mark.parametrize('kind', ['selection_receipts','no_current_receipts','invalidations','rebuild_eligibility','rebuild_links','gc_eligibility'])
+    def test_missing_receipt_family_is_not_replayable(kind):
+        x,a,b,k,ops=fixture()
+>       ops['link_rebuild'](); ops['declare_no_current'](); ops['declare_invalidation']()
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:51: in <lambda>
+    'declare_invalidation': lambda:x.declare_invalidation(a.determinant_refs, dependency_closure_receipt_ref=ref('Closure','inv'), selection_attestation_ref=ref('Attestation','inv'), current_transitions={k.ref.key:None}, **A),
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_lifecycle.py:58: in guarded
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10ca47690>
+changed_determinant_refs = (ExactRef(kind='DETERMINANT', object_id='urn:test:DETERMINANT:gr-a-det:sha256:63b0c3593941ec39d4373cbc402ee39912a97463451a0197f9bf15d9bba66927', content_hash='63b0c3593941ec39d4373cbc402ee39912a97463451a0197f9bf15d9bba66927'),)
+event_authority_ref = ExactRef(kind='Authority', object_id='urn:test:Authority:gr:sha256:a6bb75d8f08a81109834efb3aec94049d9405e7aac586c4ba0d1055af7f5d948', content_hash='a6bb75d8f08a81109834efb3aec94049d9405e7aac586c4ba0d1055af7f5d948')
+event_rule_ref = ExactRef(kind='Rule', object_id='urn:test:Rule:gr:sha256:90f56ffa29e94ff3d261bda60268df33968fa63c8ba500cf700bfb251b774e6f', content_hash='90f56ffa29e94ff3d261bda60268df33968fa63c8ba500cf700bfb251b774e6f')
+dependency_closure_receipt_ref = ExactRef(kind='Closure', object_id='urn:test:Closure:inv:sha256:c7dac97e9da126a1e0424cb47c8cdb85655b53f07adecbeb54ee966f58956d9c', content_hash='c7dac97e9da126a1e0424cb47c8cdb85655b53f07adecbeb54ee966f58956d9c')
+selection_attestation_ref = ExactRef(kind='Attestation', object_id='urn:test:Attestation:inv:sha256:23a74427165ebbb24399a4049e305db579356762957a6e68dbb13ae91a23554a', content_hash='23a74427165ebbb24399a4049e305db579356762957a6e68dbb13ae91a23554a')
+current_transitions = {'B5Lifecycle:SELECTION_KEY|urn:rawlsing:pre553:b5-lifecycle:selection_key:sha256:1c3f8e0e66c40e8eead59b939efdd2bb79275b0d7c39269ca6f0802d8fb18d2c|1c3f8e0e66c40e8eead59b939efdd2bb79275b0d7c39269ca6f0802d8fb18d2c': None}
+evidence_refs = ()
+
+    @_atomic_mutation
+    def declare_invalidation(
+        self,
+        changed_determinant_refs: Iterable[ExactRef | AuthorityRef | Mapping[str, Any]],
+        *,
+        event_authority_ref: ExactRef,
+        event_rule_ref: ExactRef,
+        dependency_closure_receipt_ref: ExactRef,
+        selection_attestation_ref: ExactRef,
+        current_transitions: Mapping[str, ExactRef | None] | None = None,
+        evidence_refs: Iterable[ExactRef] = (),
+    ) -> InvalidationReceipt:
+        self._native_mutation_preflight("declare_invalidation")
+        changed = _determinant_refs(changed_determinant_refs)
+        if not changed:
+            raise LearnedProductLifecycleError(
+                "invalidation requires at least one exact changed determinant"
+            )
+        graph = self.determinant_graph
+        direct, transitive = graph.affected(changed)
+        affected = _exact_refs(direct + transitive)
+        unaffected = graph.unaffected(affected)
+        affected_subjects = tuple(self._subject(ref) for ref in affected)
+        affected_current_keys: dict[str, SelectionKey] = {}
+        for subject in affected_subjects:
+            for key in self._current_keys_for_release(subject.release_ref):
+                affected_current_keys[key.ref.key] = key
+        transitions = dict(current_transitions or {})
+        if set(transitions) != set(affected_current_keys):
+>           raise LearnedProductLifecycleError(
+                "current invalidation requires explicit replacement/NO_CURRENT for every affected current key"
+            )
+E           rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleError: current invalidation requires explicit replacement/NO_CURRENT for every affected current key
+
+rawlsing_next/pre553_learned_product_lifecycle.py:2703: LearnedProductLifecycleError
+________ test_missing_receipt_family_is_not_replayable[gc_eligibility] _________
+
+kind = 'gc_eligibility'
+
+    @pytest.mark.parametrize('kind', ['selection_receipts','no_current_receipts','invalidations','rebuild_eligibility','rebuild_links','gc_eligibility'])
+    def test_missing_receipt_family_is_not_replayable(kind):
+        x,a,b,k,ops=fixture()
+>       ops['link_rebuild'](); ops['declare_no_current'](); ops['declare_invalidation']()
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:51: in <lambda>
+    'declare_invalidation': lambda:x.declare_invalidation(a.determinant_refs, dependency_closure_receipt_ref=ref('Closure','inv'), selection_attestation_ref=ref('Attestation','inv'), current_transitions={k.ref.key:None}, **A),
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_lifecycle.py:58: in guarded
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10ca4c850>
+changed_determinant_refs = (ExactRef(kind='DETERMINANT', object_id='urn:test:DETERMINANT:gr-a-det:sha256:63b0c3593941ec39d4373cbc402ee39912a97463451a0197f9bf15d9bba66927', content_hash='63b0c3593941ec39d4373cbc402ee39912a97463451a0197f9bf15d9bba66927'),)
+event_authority_ref = ExactRef(kind='Authority', object_id='urn:test:Authority:gr:sha256:a6bb75d8f08a81109834efb3aec94049d9405e7aac586c4ba0d1055af7f5d948', content_hash='a6bb75d8f08a81109834efb3aec94049d9405e7aac586c4ba0d1055af7f5d948')
+event_rule_ref = ExactRef(kind='Rule', object_id='urn:test:Rule:gr:sha256:90f56ffa29e94ff3d261bda60268df33968fa63c8ba500cf700bfb251b774e6f', content_hash='90f56ffa29e94ff3d261bda60268df33968fa63c8ba500cf700bfb251b774e6f')
+dependency_closure_receipt_ref = ExactRef(kind='Closure', object_id='urn:test:Closure:inv:sha256:c7dac97e9da126a1e0424cb47c8cdb85655b53f07adecbeb54ee966f58956d9c', content_hash='c7dac97e9da126a1e0424cb47c8cdb85655b53f07adecbeb54ee966f58956d9c')
+selection_attestation_ref = ExactRef(kind='Attestation', object_id='urn:test:Attestation:inv:sha256:23a74427165ebbb24399a4049e305db579356762957a6e68dbb13ae91a23554a', content_hash='23a74427165ebbb24399a4049e305db579356762957a6e68dbb13ae91a23554a')
+current_transitions = {'B5Lifecycle:SELECTION_KEY|urn:rawlsing:pre553:b5-lifecycle:selection_key:sha256:1c3f8e0e66c40e8eead59b939efdd2bb79275b0d7c39269ca6f0802d8fb18d2c|1c3f8e0e66c40e8eead59b939efdd2bb79275b0d7c39269ca6f0802d8fb18d2c': None}
+evidence_refs = ()
+
+    @_atomic_mutation
+    def declare_invalidation(
+        self,
+        changed_determinant_refs: Iterable[ExactRef | AuthorityRef | Mapping[str, Any]],
+        *,
+        event_authority_ref: ExactRef,
+        event_rule_ref: ExactRef,
+        dependency_closure_receipt_ref: ExactRef,
+        selection_attestation_ref: ExactRef,
+        current_transitions: Mapping[str, ExactRef | None] | None = None,
+        evidence_refs: Iterable[ExactRef] = (),
+    ) -> InvalidationReceipt:
+        self._native_mutation_preflight("declare_invalidation")
+        changed = _determinant_refs(changed_determinant_refs)
+        if not changed:
+            raise LearnedProductLifecycleError(
+                "invalidation requires at least one exact changed determinant"
+            )
+        graph = self.determinant_graph
+        direct, transitive = graph.affected(changed)
+        affected = _exact_refs(direct + transitive)
+        unaffected = graph.unaffected(affected)
+        affected_subjects = tuple(self._subject(ref) for ref in affected)
+        affected_current_keys: dict[str, SelectionKey] = {}
+        for subject in affected_subjects:
+            for key in self._current_keys_for_release(subject.release_ref):
+                affected_current_keys[key.ref.key] = key
+        transitions = dict(current_transitions or {})
+        if set(transitions) != set(affected_current_keys):
+>           raise LearnedProductLifecycleError(
+                "current invalidation requires explicit replacement/NO_CURRENT for every affected current key"
+            )
+E           rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleError: current invalidation requires explicit replacement/NO_CURRENT for every affected current key
+
+rawlsing_next/pre553_learned_product_lifecycle.py:2703: LearnedProductLifecycleError
+________________ test_full_world_consumer_n04_and_fresh_process ________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10ca9a090>
+
+    def test_full_world_consumer_n04_and_fresh_process(monkeypatch):
+        from rawlsing_next.tests.test_pre553_learned_world_composition import _contract,_m1_authority,_binding,_registry,execute_m01,m01_fixture
+        from rawlsing_next.pre553_learned_world_composition import compose_learned_world
+        auth=_m1_authority('gr-world'); binding=_binding(auth); native=execute_m01(m01_fixture())
+        x=B5(); repo=M2Repository()
+        result=compose_learned_world(_contract(route='M01_M1_M2_B5',binding=binding,actions=('REGISTER','PUBLISH','SELECT_CURRENT'),tag='gr-world'),m2_repository=repo,lifecycle_executor=x,m01_result=native,selected_discovery_receipt_refs=tuple(r.ref for r in native.i05_result.receipts),requested_scope={'fixture':'GR_SYNTHETIC'},m1_family_rule_binding=binding,validator_registry=_registry(binding),m1_authority_snapshots=(auth,))
+        assert result.receipt.terminal_state=='RULE_SATISFIED'
+        release=result.m2_artifacts.release; calls=[]; saved=repo.subject_exact
+        def spy(r):calls.append(r); assert r==release.release_subject_ref; return saved(r)
+        monkeypatch.setattr(repo,'subject_exact',spy)
+        assert x.verify_m2_release_subject_exact(repo,release.ref)==result.b5_subject
+        assert calls and release.ref!=release.release_subject_ref
+        cp=roundtrip(x)
+        script="import json,sys; from rawlsing_next.pre553_learned_product_lifecycle import LearnedProductLifecycleExecutor as B; x=B.from_checkpoint(json.load(sys.stdin)); print(json.dumps(x.export_checkpoint()))"
+        proc=subprocess.run([sys.executable,'-c',script],input=json.dumps(cp),text=True,capture_output=True,env={**os.environ,'PYTHONDONTWRITEBYTECODE':'1'})
+        assert proc.returncode==0,proc.stderr
+>       assert json.loads(proc.stdout)==cp
+E       AssertionError: assert {'checkpoint_...08eabb9cf215'} == {'checkpoint_...08eabb9cf215'}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...cd158beac80c44f9914', 'content_hash': 'fc74f36f9045db568a5c30c8223db18e0a5db994c098dcd158beac80c44f9914'}, ...}], ...}} != {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...cd158beac80c44f9914', 'content_hash': 'fc74f36f9045db568a5c30c8223db18e0a5db994c098dcd158beac80c44f9914'}, ...}], ...}}
+E         Use -v to get more diff
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:235: AssertionError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py::test_baseexception_rollback_then_success_and_recovery[attest_gc_eligibility]
+FAILED rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py::test_missing_receipt_family_is_not_replayable[selection_receipts]
+FAILED rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py::test_missing_receipt_family_is_not_replayable[no_current_receipts]
+FAILED rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py::test_missing_receipt_family_is_not_replayable[invalidations]
+FAILED rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py::test_missing_receipt_family_is_not_replayable[rebuild_eligibility]
+FAILED rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py::test_missing_receipt_family_is_not_replayable[rebuild_links]
+FAILED rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py::test_missing_receipt_family_is_not_replayable[gc_eligibility]
+FAILED rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py::test_full_world_consumer_n04_and_fresh_process
+8 failed, 32 passed in 6.80s

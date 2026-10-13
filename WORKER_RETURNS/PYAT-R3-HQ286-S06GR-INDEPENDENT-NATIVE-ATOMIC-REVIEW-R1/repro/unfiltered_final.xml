@@ -1,0 +1,1482 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="14" skipped="0" tests="249" time="25.844" timestamp="2026-10-13T12:27:08.613772-04:00" hostname="Matthews-MBP.lan"><testcase classname="rawlsing_next.tests.test_pre553_s06f_native_owner_security" name="test_b5_valid_native_checkpoint_local_roundtrip" time="0.018" /><testcase classname="rawlsing_next.tests.test_pre553_s06f_native_owner_security" name="test_b5_native_checkpoint_rejects_self_rehashed_inconsistent_state[truncate_published]" time="0.008" /><testcase classname="rawlsing_next.tests.test_pre553_s06f_native_owner_security" name="test_b5_native_checkpoint_rejects_self_rehashed_inconsistent_state[alter_publication]" time="0.011" /><testcase classname="rawlsing_next.tests.test_pre553_s06f_native_owner_security" name="test_b5_native_checkpoint_rejects_self_rehashed_inconsistent_state[drop_registered]" time="0.010" /><testcase classname="rawlsing_next.tests.test_pre553_s06f_native_owner_security" name="test_b5_typed_unknown_event_rejected_before_append" time="0.007" /><testcase classname="rawlsing_next.tests.test_pre553_s06f_native_owner_security" name="test_b5_transitive_determinants_and_unaffected_sibling" time="0.064" /><testcase classname="rawlsing_next.tests.test_pre553_s06f_native_owner_security" name="test_b5_no_current_subject_must_match_family_scope" time="0.004" /><testcase classname="rawlsing_next.tests.test_pre553_s06f_native_owner_security" name="test_b5_protected_current_and_external_custody_are_explicit_holds" time="0.002" /><testcase classname="rawlsing_next.tests.test_pre553_s06f_native_owner_security" name="test_native_b5_all_mutators_have_in_body_preflight" time="0.016" /><testcase classname="rawlsing_next.tests.test_pre553_s06f_native_owner_security" name="test_m2_direct_release_registration_requires_native_subject" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_s06f_native_owner_security" name="test_m2_native_valid_release_and_direct_representation_binding" time="0.002" /><testcase classname="rawlsing_next.tests.test_pre553_s06f_native_owner_security" name="test_m2_saved_method_alias_cannot_claim_protected_issuance" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_s06f_native_owner_security" name="test_native_m2_all_registration_routes_reach_in_method_preflight" time="0.006" /><testcase classname="rawlsing_next.tests.test_pre553_s06f_native_owner_security" name="test_b5_m2_cross_owner_release_ref_is_not_subject_ref" time="0.002" /><testcase classname="rawlsing_next.tests.test_pre553_s06f_native_owner_security" name="test_no_caller_trusted_flag_or_arbitrary_token_on_native_owners" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_s06f_native_owner_security" name="test_b5_changed_runtime_schema_fails_even_with_new_local_hash" time="0.006" /><testcase classname="rawlsing_next.tests.test_pre553_s06f_native_owner_security" name="test_b5_duplicate_checkpoint_projection_key_fails_closed" time="0.010" /><testcase classname="rawlsing_next.tests.test_pre553_s06f_native_owner_security" name="test_local_checkpoint_has_no_external_epoch_revocation_or_custody_claim" time="0.006" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h01_repository_presence_is_not_lifecycle_registration" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h02_registration_is_not_publication" time="0.002" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h03_publication_is_not_current_selection" time="0.004" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h04_only_exact_selection_receipt_resolves_currentness" time="0.007" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h05_no_latest_default_newest_semver_or_file_order_api_exists" time="0.000" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h06_explicit_no_current_is_first_class_and_exact" time="0.008" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h07_recertification_does_not_silently_select" time="0.005" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h08_b5_supersession_is_explicit_selection_transition_and_nondestructive" time="0.013" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h09_current_withdrawal_requires_explicit_clear_or_replacement_and_preserves_history" time="0.014" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h10_stale_concurrent_selection_conflict_fails_closed_without_mutation" time="0.014" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h11_historical_current_as_of_uses_exact_event_not_git_time" time="0.014" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h12_determinant_local_invalidation_reaches_direct_and_transitive_only" time="0.014" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h13_unrelated_same_family_product_remains_unaffected" time="0.006" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h14_optional_cache_loss_changes_performance_materialization_only" time="0.006" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h15_semantic_change_on_rebuild_requires_new_upstream_product_identity" time="0.002" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h16_missing_rebuild_inputs_yield_typed_blocker_not_fabricated_successor" time="0.003" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h17_gc_only_for_proven_recomputable_payload_never_mandatory_history" time="0.009" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h18_runtime_exposes_no_source_or_carrier_retirement_authority" time="0.000" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h19_authority_snapshot_cannot_alias_learned_product_release[AuthoritySnapshot]" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h19_authority_snapshot_cannot_alias_learned_product_release[AuthoritySnapshot@1.0.0]" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h20_authority_release_receipt_cannot_alias_lifecycle_current_receipt" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h21_currentness_does_not_create_consumer_permission_api" time="0.006" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h22_checkpoint_restart_and_replay_identity_are_exact" time="0.065" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h23_failed_selection_is_atomic_and_does_not_expose_half_state" time="0.005" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_h24_b5_machine_rule_event_parity_and_required_common_fields" time="0.007" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_publication_requires_exact_replay_closure" time="0.002" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_two_selection_purposes_can_hold_distinct_current_releases" time="0.012" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_selection_scope_cannot_bleed_to_other_scope" time="0.004" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_current_invalidation_requires_explicit_no_current_or_replacement_atomically" time="0.014" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_unrelated_changed_determinant_produces_exact_noop_invalidation" time="0.003" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_cache_operations_are_rejected_for_semantic_product_payload_classes" time="0.002" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_gc_receipt_cannot_claim_source_carrier_retirement" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_m2_interface_is_narrow_protocol_not_release_core_reimplementation" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_unknown_currentness_never_selects_only_or_newest_release" time="0.004" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_withdrawal_can_atomically_replace_current_with_other_lawful_product" time="0.014" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_select_after_explicit_no_current_requires_and_accepts_exact_no_current_receipt" time="0.013" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_withdrawn_release_cannot_replace_itself_current" time="0.009" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_invalidated_release_cannot_be_selected_as_its_own_replacement" time="0.009" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_lifecycle" name="test_lcr009_authority_change_routes_as_explicit_neutral_determinant" time="0.004" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_01_same_exact_preimage_same_release_id" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_02_constitutive_closure_change_changes_release_id" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_03_physical_relayout_changes_binding_not_release_core" time="0.002" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_04_exact_subject_required" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_05_producer_contract_mismatch_fails_closed" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_06_incomplete_required_closure_fails_closed" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_07_no_latest_default_fuzzy_nearest_semver_fallback[latest]" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_07_no_latest_default_fuzzy_nearest_semver_fallback[default]" time="0.002" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_07_no_latest_default_fuzzy_nearest_semver_fallback[fuzzy]" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_07_no_latest_default_fuzzy_nearest_semver_fallback[nearest]" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_07_no_latest_default_fuzzy_nearest_semver_fallback[semver]" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_08_virtual_rebuild_parity_and_mismatch_detection" time="0.002" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_09_materialized_virtual_semantic_parity" time="0.003" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_10_valid_empty_disposition_publishes_without_positive_invention" time="0.002" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_11_nonpositive_states_preserved[NONCOMPARABLE]" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_11_nonpositive_states_preserved[BLOCKED]" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_11_nonpositive_states_preserved[UNKNOWN]" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_11_nonpositive_states_preserved[INTEGRITY_FAILURE]" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_12_no_negative_state_laundering_through_representation" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_13_no_b5_lifecycle_published_state_minted" time="0.002" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_14_no_current_selection_minted" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_15_no_consumer_permission_minted" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_16_direct_producer_dereference_preserves_owner" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_17_binding_cannot_resolve_different_release" time="0.002"><failure message="rawlsing_next.pre553_learned_product_release.M2ReleaseError: RELEASE_UNAVAILABLE: requested exact release is unavailable">def test_17_binding_cannot_resolve_different_release():
+        repo1, release1, _, _, _, _ = build_fixture(subject_label="release-one")
+        repo2, release2, subject2, producer2, _, _ = build_fixture(subject_label="release-two")
+        # Recreate release-two representation inside repo1 only as a foreign exact record.
+        # First copy its producer subject/closures is intentionally avoided; a foreign
+        # representation exact-ref is enough to test release mismatch at publication.
+        locator = ref("foreign:locator", "RepresentationLocator")
+        integrity = ref("foreign:integrity", "RepresentationIntegrity")
+        from rawlsing_next.pre553_learned_product_release import RepresentationRecord
+&gt;       repo1.register_representation(
+            RepresentationRecord(
+                release_ref=release2.ref,
+                resolved_subject_ref=subject2,
+                producer_contract_ref=producer2,
+                resolution_mode="CONTENT_ADDRESSED_MATERIALIZATION",
+                resolver_or_locator_ref=locator,
+                representation_integrity_ref=integrity,
+            )
+        )
+
+rawlsing_next/tests/test_pre553_learned_product_release.py:385: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_learned_product_release.py:476: in guarded
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_release.py:606: in register_representation
+    release = self.release_exact(representation.release_ref)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_release.py:493: in guarded
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_release.py:667: in release_exact
+    _fail("RELEASE_UNAVAILABLE", "requested exact release is unavailable")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = 'RELEASE_UNAVAILABLE', message = 'requested exact release is unavailable'
+
+    def _fail(code: str, message: str) -&gt; None:
+&gt;       raise M2ReleaseError(code, message)
+E       rawlsing_next.pre553_learned_product_release.M2ReleaseError: RELEASE_UNAVAILABLE: requested exact release is unavailable
+
+rawlsing_next/pre553_learned_product_release.py:74: M2ReleaseError</failure></testcase><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_18_endpoint_failover_only_among_same_release" time="0.005"><failure message="rawlsing_next.pre553_learned_product_release.M2ReleaseError: RELEASE_UNAVAILABLE: requested exact release is unavailable">def test_18_endpoint_failover_only_among_same_release():
+        repo, release, subject, producer, _, _ = build_fixture(subject_label="failover-one")
+        b1, _, _ = bind_representation(
+            repo, release, subject, producer,
+            label="failover-a", mode="CONTENT_ADDRESSED_MATERIALIZATION",
+        )
+        b2, _, _ = bind_representation(
+            repo, release, subject, producer,
+            label="failover-b", mode="CONTENT_ADDRESSED_MATERIALIZATION",
+        )
+        result = resolve_release_exact(
+            repo,
+            release.ref,
+            publication_binding_refs=(b1.ref, b2.ref),
+            unavailable_binding_refs=(b1.ref,),
+        )
+        assert result.receipt.used_publication_binding_ref == b2.ref
+    
+        repo_other, release_other, subject_other, producer_other, _, _ = build_fixture(
+            subject_label="failover-other"
+        )
+        other_binding, _, _ = bind_representation(
+            repo_other,
+            release_other,
+            subject_other,
+            producer_other,
+            label="other-endpoint",
+            mode="CONTENT_ADDRESSED_MATERIALIZATION",
+        )
+        # Register exact foreign binding into repo solely to attack the failover list.
+&gt;       repo.register_binding(other_binding)
+
+rawlsing_next/tests/test_pre553_learned_product_release.py:436: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_learned_product_release.py:476: in guarded
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_release.py:632: in register_binding
+    release = self.release_exact(binding.release_ref)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_release.py:493: in guarded
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_release.py:667: in release_exact
+    _fail("RELEASE_UNAVAILABLE", "requested exact release is unavailable")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = 'RELEASE_UNAVAILABLE', message = 'requested exact release is unavailable'
+
+    def _fail(code: str, message: str) -&gt; None:
+&gt;       raise M2ReleaseError(code, message)
+E       rawlsing_next.pre553_learned_product_release.M2ReleaseError: RELEASE_UNAVAILABLE: requested exact release is unavailable
+
+rawlsing_next/pre553_learned_product_release.py:74: M2ReleaseError</failure></testcase><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_19_deterministic_historical_resolution" time="0.002" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_20_m1_learned_empirical_disposition_is_exact_release_subject" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_product_release" name="test_21_affected_release_refs_is_graph_only_and_selective" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_nested_payload_and_history_are_detached_immutable_and_refs_stable" time="0.005" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_publication_payload_must_match_subject_even_rehashed[replay_root_ref]" time="0.012" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_publication_payload_must_match_subject_even_rehashed[determinant_set_hash]" time="0.013" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_publication_payload_must_match_subject_even_rehashed[producer_permission_ceiling]" time="0.013" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_publication_payload_must_match_subject_even_rehashed[authority_snapshot_refs]" time="0.012" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_receipts_must_bind_event_release_and_all_fields[rebuild_eligibility]" time="0.123" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_receipts_must_bind_event_release_and_all_fields[rebuild_links]" time="0.126" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_receipts_must_bind_event_release_and_all_fields[gc_eligibility]" time="0.118" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_receipts_must_bind_event_release_and_all_fields[selection_receipts]" time="0.095" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_receipts_must_bind_event_release_and_all_fields[no_current_receipts]" time="0.120" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_concurrent_select_has_one_winner_one_conflict_and_recoverable_history" time="0.489" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_each_event_mutator_rolls_back_post_append_exception[register_product]" time="0.084" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_each_event_mutator_rolls_back_post_append_exception[publish_product]" time="0.089" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_each_event_mutator_rolls_back_post_append_exception[record_recertification]" time="0.101" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_each_event_mutator_rolls_back_post_append_exception[select_current]" time="0.088" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_each_event_mutator_rolls_back_post_append_exception[declare_no_current]" time="0.089" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_each_event_mutator_rolls_back_post_append_exception[supersede_current]" time="0.096" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_each_event_mutator_rolls_back_post_append_exception[withdraw_product]" time="0.093" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_each_event_mutator_rolls_back_post_append_exception[declare_invalidation]" time="0.092" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_each_event_mutator_rolls_back_post_append_exception[record_rebuild_eligibility]" time="0.096" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_each_event_mutator_rolls_back_post_append_exception[link_rebuild]" time="0.091" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_each_event_mutator_rolls_back_post_append_exception[record_cache_materialized]" time="0.087" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_each_event_mutator_rolls_back_post_append_exception[record_cache_dropped]" time="0.094" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_each_event_mutator_rolls_back_post_append_exception[attest_gc_eligibility]" time="0.093" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_each_event_mutator_rolls_back_post_append_exception[record_payload_gc]" time="0.087" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_non_event_mutators_rollback_after_write[stage_release]" time="0.006" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_non_event_mutators_rollback_after_write[stage_protocol]" time="0.006" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_non_event_mutators_rollback_after_write[selection_key]" time="0.006" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_saved_internal_helpers_refuse_without_transaction" time="0.006" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_each_m2_writer_rolls_back_post_insert_exception[register_subject]" time="0.002" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_each_m2_writer_rolls_back_post_insert_exception[register_closure]" time="0.002" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_each_m2_writer_rolls_back_post_insert_exception[register_release]" time="0.002" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_each_m2_writer_rolls_back_post_insert_exception[register_representation]" time="0.002" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_each_m2_writer_rolls_back_post_insert_exception[register_binding]" time="0.002" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_m2_competing_subject_preimages_have_one_winner_no_overwrite" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_reconciled_m2_17_early_refusal_and_lawful_downstream_mismatch" time="0.002" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_reconciled_m2_18_early_refusal_and_lawful_failover_mismatch" time="0.004" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_invalidation_receipt_closure_cannot_be_rewritten_or_dropped" time="0.104" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_noop_invalidation_before_later_registration_remains_replayable" time="0.019" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_reader_waits_for_transaction_and_sees_complete_rollback" time="0.059" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_m2_closure_descendants_are_immutable" time="0.000" /><testcase classname="rawlsing_next.tests.test_pre553_s06g_atomic_integrity" name="test_unwrapped_saved_public_bodies_cannot_bypass_transaction" time="0.002" /><testcase classname="rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260" name="test_g3_selected_current_derives_from_the_owner_receipt" time="0.015" /><testcase classname="rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260" name="test_g3_currentness_is_not_readable_off_a_release_object_or_cache" time="0.000" /><testcase classname="rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260" name="test_g3_second_purpose_or_scope_cannot_inherit_currentness" time="0.017" /><testcase classname="rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260" name="test_g3_as_of_event_and_as_of_checkpoint_agree" time="0.069" /><testcase classname="rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260" name="test_g3_tampered_checkpoint_is_refused" time="0.020" /><testcase classname="rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260" name="test_g3_fresh_process_checkpoint_reconstruction" time="0.423" /><testcase classname="rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260" name="test_g3_historical_as_of_still_resolves_the_prior_product" time="0.020" /><testcase classname="rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260" name="test_g3_affected_and_unaffected_dependency_transition" time="0.018" /><testcase classname="rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260" name="test_g3_invalidated_release_cannot_be_served_as_current" time="0.025" /><testcase classname="rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260" name="test_g3_unknown_selection_key_is_refused_not_guessed" time="0.012" /><testcase classname="rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260" name="test_g3_self_proclaimed_current_receipt_is_refused" time="0.011" /><testcase classname="rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260" name="test_g3_staged_but_unselected_release_is_unknown_not_current" time="0.009" /><testcase classname="rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260" name="test_g3_owner_unknown_analytical_dependent_is_never_current" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260" name="test_g3_no_new_adapter_module_was_manufactured" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260" name="test_g3_court_claims_no_service_or_model_use_permission" time="0.000" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t01_full_synthetic_m01_m1_m2_b5_composition_succeeds" time="0.310" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t02_m01_graph_cannot_self_select_m1_rule" time="0.071" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t03_missing_product_family_fails_closed" time="0.196" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t04_missing_selection_scope_fails_closed_for_b5_path" time="0.218" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t05_missing_permission_ceiling_fails_closed" time="0.215" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t06_m1_disposition_ref_is_exact_m2_subject_ref" time="0.269" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t07_m1_typed_state_is_exact_m2_subject_state" time="0.384" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t08_m1_authority_dependency_determinant_replay_explanation_conserved" time="0.256" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t09_m2_release_ref_is_exact_b5_release_ref" time="0.267" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t10_m2_closure_members_are_exact_b5_protocol_members" time="0.272" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t11_determinant_set_hash_is_recomputed_exactly" time="0.234" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t12_m2_publication_binding_does_not_make_b5_published" time="0.251" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t13_m2_release_existence_does_not_register_b5_subject" time="0.236" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t14_b5_registration_does_not_publish" time="0.263" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t15_b5_publication_does_not_select_current" time="0.315" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t16_current_selection_requires_explicit_action_and_exact_authority" time="0.334" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t17_latest_default_newest_fuzzy_fallback_is_impossible" time="0.269" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t18_rule_not_satisfied_does_not_become_negative_semantic_truth" time="0.368" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t19_valid_empty_is_preserved_end_to_end" time="0.334" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t20_noncomparable_blocked_unknown_and_integrity_failure_are_preserved" time="0.991" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t21_direct_producer_route_requires_explicit_route_authority_and_acceptance" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t22_missing_required_stage_cannot_switch_to_direct_route" time="0.001" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t23_composition_never_mints_consumer_permission" time="0.279" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t24_no_structural_causal_field_forge_or_v3_effect" time="0.233" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t25_identical_input_and_contract_yield_identical_receipt" time="0.281" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t26_changed_constitutive_contract_field_changes_contract_and_receipt_identity" time="0.274" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t27_publication_binding_relayout_does_not_change_semantic_product_or_release" time="0.255" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t28_default_composition_preserves_b5_history_exactly" time="0.241" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t29_replay_or_tamper_failure_closes" time="0.228" /><testcase classname="rawlsing_next.tests.test_pre553_learned_world_composition" name="test_t30_no_candidate_fiabc_astra_historical_stage_resurrection" time="0.001" /><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_all_saved_native_writers_refuse_external_mode_before_validation[PROTECTED_CURRENT-LearnedProductLifecycleExecutor-names0]" time="0.002" /><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_all_saved_native_writers_refuse_external_mode_before_validation[PROTECTED_CURRENT-M2Repository-names1]" time="0.001" /><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_all_saved_native_writers_refuse_external_mode_before_validation[EXTERNAL_CUSTODY-LearnedProductLifecycleExecutor-names0]" time="0.001" /><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_all_saved_native_writers_refuse_external_mode_before_validation[EXTERNAL_CUSTODY-M2Repository-names1]" time="0.001" /><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_all_saved_native_writers_refuse_external_mode_before_validation[arbitrary-token-LearnedProductLifecycleExecutor-names0]" time="0.001" /><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_all_saved_native_writers_refuse_external_mode_before_validation[arbitrary-token-M2Repository-names1]" time="0.001" /><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_predecessor_and_ordinal_refusal_is_atomic" time="0.006" /><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_diamond_invalidation_preserves_sibling_and_cold_replay" time="0.077" /><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_public_snapshots_are_immutable" time="0.006" /><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_OBSERVED_direct_b5_append_bypasses_native_preflight[RECERTIFIES]" time="0.005"><failure message="rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleError: EXTERNAL_ISSUER_HOLD: no independently anchored B5 issuer, revocation/as-of source or custody root for _append_events">kind = 'RECERTIFIES'
+
+    @pytest.mark.parametrize('kind', ['RECERTIFIES', 'CURRENT_SELECTED', 'PRODUCT_PUBLISHED'])
+    def test_OBSERVED_direct_b5_append_bypasses_native_preflight(kind):
+        x, s, _ = checkpoint_with_publication()
+        saved = x._append_events
+        event = x._event(event_kind=kind, subject=subject('unregistered-direct-event'),
+            event_authority_ref=ref('Authority', 'unissued'), event_rule_ref=ref('Rule', 'unissued'))
+        x._native_security_mode = 'EXTERNAL_CUSTODY'
+&gt;       saved((event,))
+
+WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_learned_product_lifecycle.py:1990: in _append_events
+    self._require_mutation_transaction("_append_events")
+rawlsing_next/pre553_learned_product_lifecycle.py:1517: in _require_mutation_transaction
+    self._native_mutation_preflight(operation)
+rawlsing_next/pre553_learned_product_lifecycle.py:1543: in _native_mutation_preflight
+    self.require_external_issuer(operation)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10e384510&gt;
+operation = '_append_events'
+
+    def require_external_issuer(self, operation: str) -&gt; None:
+        """Fail closed until a competent external issuer/root exists and is bound."""
+&gt;       raise LearnedProductLifecycleError(
+            "EXTERNAL_ISSUER_HOLD: no independently anchored B5 issuer, "
+            f"revocation/as-of source or custody root for {operation}"
+        )
+E       rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleError: EXTERNAL_ISSUER_HOLD: no independently anchored B5 issuer, revocation/as-of source or custody root for _append_events
+
+rawlsing_next/pre553_learned_product_lifecycle.py:1530: LearnedProductLifecycleError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_OBSERVED_direct_b5_append_bypasses_native_preflight[CURRENT_SELECTED]" time="0.005"><failure message="rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleError: EXTERNAL_ISSUER_HOLD: no independently anchored B5 issuer, revocation/as-of source or custody root for _append_events">kind = 'CURRENT_SELECTED'
+
+    @pytest.mark.parametrize('kind', ['RECERTIFIES', 'CURRENT_SELECTED', 'PRODUCT_PUBLISHED'])
+    def test_OBSERVED_direct_b5_append_bypasses_native_preflight(kind):
+        x, s, _ = checkpoint_with_publication()
+        saved = x._append_events
+        event = x._event(event_kind=kind, subject=subject('unregistered-direct-event'),
+            event_authority_ref=ref('Authority', 'unissued'), event_rule_ref=ref('Rule', 'unissued'))
+        x._native_security_mode = 'EXTERNAL_CUSTODY'
+&gt;       saved((event,))
+
+WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_learned_product_lifecycle.py:1990: in _append_events
+    self._require_mutation_transaction("_append_events")
+rawlsing_next/pre553_learned_product_lifecycle.py:1517: in _require_mutation_transaction
+    self._native_mutation_preflight(operation)
+rawlsing_next/pre553_learned_product_lifecycle.py:1543: in _native_mutation_preflight
+    self.require_external_issuer(operation)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10ec4fc10&gt;
+operation = '_append_events'
+
+    def require_external_issuer(self, operation: str) -&gt; None:
+        """Fail closed until a competent external issuer/root exists and is bound."""
+&gt;       raise LearnedProductLifecycleError(
+            "EXTERNAL_ISSUER_HOLD: no independently anchored B5 issuer, "
+            f"revocation/as-of source or custody root for {operation}"
+        )
+E       rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleError: EXTERNAL_ISSUER_HOLD: no independently anchored B5 issuer, revocation/as-of source or custody root for _append_events
+
+rawlsing_next/pre553_learned_product_lifecycle.py:1530: LearnedProductLifecycleError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_OBSERVED_direct_b5_append_bypasses_native_preflight[PRODUCT_PUBLISHED]" time="0.005"><failure message="rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleError: EXTERNAL_ISSUER_HOLD: no independently anchored B5 issuer, revocation/as-of source or custody root for _append_events">kind = 'PRODUCT_PUBLISHED'
+
+    @pytest.mark.parametrize('kind', ['RECERTIFIES', 'CURRENT_SELECTED', 'PRODUCT_PUBLISHED'])
+    def test_OBSERVED_direct_b5_append_bypasses_native_preflight(kind):
+        x, s, _ = checkpoint_with_publication()
+        saved = x._append_events
+        event = x._event(event_kind=kind, subject=subject('unregistered-direct-event'),
+            event_authority_ref=ref('Authority', 'unissued'), event_rule_ref=ref('Rule', 'unissued'))
+        x._native_security_mode = 'EXTERNAL_CUSTODY'
+&gt;       saved((event,))
+
+WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_learned_product_lifecycle.py:1990: in _append_events
+    self._require_mutation_transaction("_append_events")
+rawlsing_next/pre553_learned_product_lifecycle.py:1517: in _require_mutation_transaction
+    self._native_mutation_preflight(operation)
+rawlsing_next/pre553_learned_product_lifecycle.py:1543: in _native_mutation_preflight
+    self.require_external_issuer(operation)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10e187b50&gt;
+operation = '_append_events'
+
+    def require_external_issuer(self, operation: str) -&gt; None:
+        """Fail closed until a competent external issuer/root exists and is bound."""
+&gt;       raise LearnedProductLifecycleError(
+            "EXTERNAL_ISSUER_HOLD: no independently anchored B5 issuer, "
+            f"revocation/as-of source or custody root for {operation}"
+        )
+E       rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleError: EXTERNAL_ISSUER_HOLD: no independently anchored B5 issuer, revocation/as-of source or custody root for _append_events
+
+rawlsing_next/pre553_learned_product_lifecycle.py:1530: LearnedProductLifecycleError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_OBSERVED_direct_m2_insert_bypasses_type_and_preflight" time="0.000"><failure message="rawlsing_next.pre553_learned_product_release.M2ReleaseError: EXTERNAL_ISSUER_HOLD: no independently authenticated producer, epoch/revocation or external custody root for M2 _insert">def test_OBSERVED_direct_m2_insert_bypasses_type_and_preflight():
+        repo = M2()
+        repo._native_security_mode = 'EXTERNAL_CUSTODY'
+        fake = ref('Release', 'unissued')
+&gt;       repo._insert(repo._releases, fake, 'not-a-ReleaseCore', 'COLLISION')
+
+WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_learned_product_release.py:537: in _insert
+    self._native_mutation_preflight("_insert")
+rawlsing_next/pre553_learned_product_release.py:531: in _native_mutation_preflight
+    self.require_external_issuer(operation)
+rawlsing_next/pre553_learned_product_release.py:518: in require_external_issuer
+    _fail(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = 'EXTERNAL_ISSUER_HOLD'
+message = 'no independently authenticated producer, epoch/revocation or external custody root for M2 _insert'
+
+    def _fail(code: str, message: str) -&gt; None:
+&gt;       raise M2ReleaseError(code, message)
+E       rawlsing_next.pre553_learned_product_release.M2ReleaseError: EXTERNAL_ISSUER_HOLD: no independently authenticated producer, epoch/revocation or external custody root for M2 _insert
+
+rawlsing_next/pre553_learned_product_release.py:74: M2ReleaseError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_OBSERVED_publication_payload_not_bound_to_subject_on_cold_replay[replay_root_ref]" time="0.012"><failure message="rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint semantic replay rejected: checkpoint event semantics differ from native operation">self = &lt;rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10e386790&gt;
+
+    def _verify_native_checkpoint_semantics(self) -&gt; None:
+        """Re-execute owner operations; compare entire events, receipts and state.
+    
+        Payload arguments remain unauthenticated local claims. Re-execution binds
+        their internal relationships, not issuer entitlement or history custody.
+        """
+        replay = LearnedProductLifecycleExecutor()
+        for subject in self._repository_subjects.values():
+            replay.stage_release(subject)
+        replay._selection_keys = dict(self._selection_keys)
+        graphs = [replay.determinant_graph]
+        index = 0
+    
+        def transitions(start, keys):
+            rows = self._events[start:start + len(keys)]
+            if len(rows) != len(keys):
+                raise LearnedProductLifecycleConflict("missing explicit transition events")
+            result = {}
+            for row in rows:
+                if row.event_kind not in {"CURRENT_CLEARED", "CURRENT_SELECTED"}:
+                    raise LearnedProductLifecycleConflict("invalid explicit transition event")
+                key = _exact(row.payload["selection_key_ref"])
+                if key.key in result:
+                    raise LearnedProductLifecycleConflict("duplicate transition key")
+                result[key.key] = None if row.event_kind == "CURRENT_CLEARED" else row.release_ref
+            if set(result) != {key.ref.key for key in keys}:
+                raise LearnedProductLifecycleConflict("transition key set mismatch")
+            attestation = _exact(rows[0].payload["selection_attestation_ref"]) if rows else self._events[index].event_authority_ref
+            return result, attestation
+    
+        try:
+            while index &lt; len(self._events):
+                event = self._events[index]
+                payload = event.payload
+                common = dict(event_authority_ref=event.event_authority_ref,
+                              event_rule_ref=event.event_rule_ref, evidence_refs=event.evidence_refs)
+                basic = {name: value for name, value in common.items() if name != "evidence_refs"}
+                before = len(replay._events)
+                kind = event.event_kind
+                if kind == "PRODUCT_REGISTERED":
+                    replay.register_product(event.release_ref, **common)
+                    graphs.append(replay.determinant_graph)
+                elif kind == "PRODUCT_PUBLISHED":
+                    replay.publish_product(event.release_ref, **common)
+                elif kind == "RECERTIFIES":
+                    replay.record_recertification(event.release_ref,
+                        attestation_ref=_exact(payload["attestation_ref"]), **common)
+                elif kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                    key = _exact(payload["selection_key_ref"])
+                    previous = replay._selection_index.get(key.key)
+                    selection = dict(expected_previous_receipt_ref=previous,
+                        selection_attestation_ref=_exact(payload["selection_attestation_ref"]), **common)
+                    if kind == "CURRENT_SELECTED":
+                        replay.select_current(key, event.release_ref, **selection)
+                    elif kind == "CURRENT_SUPERSEDED":
+                        replay.supersede_current(key,
+                            predecessor_release_ref=_exact(payload["predecessor_release_ref"]),
+                            successor_release_ref=event.release_ref,
+                            supersession_basis_ref=_exact(payload["supersession_basis_ref"]), **selection)
+                    else:
+                        replay.declare_no_current(key, reason_ref=_exact(payload["reason_ref"]),
+                            subject_release_ref=event.release_ref, **selection)
+                elif kind == "PRODUCT_WITHDRAWN":
+                    keys = replay._current_keys_for_release(event.release_ref)
+                    targets, attestation = transitions(index + 1, keys)
+                    replay.withdraw_product(event.release_ref,
+                        withdrawal_reason_ref=_exact(payload["withdrawal_reason_ref"]),
+                        withdrawal_scope_ref=_exact(payload["withdrawal_scope_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "PRODUCT_INVALIDATED":
+                    changed = _determinant_refs(payload["changed_determinant_refs"])
+                    direct, transitive = replay.determinant_graph.affected(changed)
+                    affected = _exact_refs(direct + transitive)
+                    keys = {key.ref.key: key for release in affected
+                            for key in replay._current_keys_for_release(release)}
+                    targets, attestation = transitions(index + len(affected), tuple(keys.values()))
+                    replay.declare_invalidation(changed,
+                        dependency_closure_receipt_ref=_exact_any(payload["dependency_closure_receipt_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                    mechanism = _optional_exact(payload["execution_mechanism_ref"], allow_authority_kind=True)
+                    inputs = tuple(_exact_any(row) for row in payload["reconstruction_input_refs"])
+                    # With no dependencies, a live mechanism plus REBUILD_NOT_PROVED
+                    # is evidence of absent explicit inputs. Otherwise using the
+                    # canonical input set regenerates exactly the same receipt.
+                    if (mechanism is not None and "REBUILD_NOT_PROVED" in payload["blocker_states"]
+                            and not replay._subject(event.release_ref).direct_dependency_refs):
+                        inputs = ()
+                    replay.record_rebuild_eligibility(event.release_ref,
+                        execution_mechanism_ref=mechanism, source_or_upstream_refs=inputs,
+                        historical=payload["rebuild_state"] == "HISTORICAL_REPLAY_ELIGIBLE", **common)
+                elif kind == "PRODUCT_REBUILT":
+                    replay.link_rebuild(event.release_ref,
+                        new_release_ref=_optional_exact(payload["new_release_ref"]),
+                        rebuild_state=payload["rebuild_state"],
+                        rebuild_determinant_set_hash=payload["rebuild_determinant_set_hash"],
+                        replay_or_execution_receipt_ref=_exact(payload["replay_or_execution_receipt_ref"]), **common)
+                elif kind in {"CACHE_MATERIALIZED", "CACHE_DROPPED"}:
+                    operation = replay.record_cache_materialized if kind == "CACHE_MATERIALIZED" else replay.record_cache_dropped
+                    operation(event.release_ref, cache_ref=_exact(payload["cache_ref"]), **basic)
+                elif kind == "GC_ELIGIBILITY_ATTESTED":
+                    proofs = {name: _exact(payload[name]) for name in (
+                        "reconstruction_proof_ref", "historical_retention_proof_ref",
+                        "serving_reconstruction_proof_ref", "downstream_byte_dependency_absence_proof_ref",
+                        "source_carrier_retention_proof_ref")}
+                    replay.attest_gc_eligibility(event.release_ref, **proofs, **common)
+                elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                    replay.record_payload_gc(_exact_any(payload["gc_eligibility_receipt_ref"]), **basic)
+                else:
+                    raise LearnedProductLifecycleConflict("checkpoint event has no native operation")
+                generated = replay._events[before:]
+                expected = self._events[index:index + len(generated)]
+                if not generated or generated != expected:
+&gt;                   raise LearnedProductLifecycleConflict("checkpoint event semantics differ from native operation")
+E                   rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint event semantics differ from native operation
+
+rawlsing_next/pre553_learned_product_lifecycle.py:1819: LearnedProductLifecycleConflict
+
+The above exception was the direct cause of the following exception:
+
+field = 'replay_root_ref'
+
+    @pytest.mark.parametrize('field', ['replay_root_ref', 'determinant_set_hash', 'producer_permission_ceiling'])
+    def test_OBSERVED_publication_payload_not_bound_to_subject_on_cold_replay(field):
+        x, s, cp = checkpoint_with_publication()
+        event = x.events[-1]
+        payload = dict(event.payload)
+        payload[field] = semantic_hash('alien') if field == 'determinant_set_hash' else ref('Alien', field).as_dict()
+        forged_event = replace(event, payload=payload)
+        cp['checkpoint_payload']['events'][-1] = forged_event.as_dict()
+        cp['checkpoint_hash'] = semantic_hash(cp['checkpoint_payload'])
+&gt;       restored = B5.from_checkpoint(cp)
+                   ^^^^^^^^^^^^^^^^^^^^^^
+
+WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_learned_product_lifecycle.py:3363: in from_checkpoint
+    executor._verify_native_checkpoint_semantics()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10e386790&gt;
+
+    def _verify_native_checkpoint_semantics(self) -&gt; None:
+        """Re-execute owner operations; compare entire events, receipts and state.
+    
+        Payload arguments remain unauthenticated local claims. Re-execution binds
+        their internal relationships, not issuer entitlement or history custody.
+        """
+        replay = LearnedProductLifecycleExecutor()
+        for subject in self._repository_subjects.values():
+            replay.stage_release(subject)
+        replay._selection_keys = dict(self._selection_keys)
+        graphs = [replay.determinant_graph]
+        index = 0
+    
+        def transitions(start, keys):
+            rows = self._events[start:start + len(keys)]
+            if len(rows) != len(keys):
+                raise LearnedProductLifecycleConflict("missing explicit transition events")
+            result = {}
+            for row in rows:
+                if row.event_kind not in {"CURRENT_CLEARED", "CURRENT_SELECTED"}:
+                    raise LearnedProductLifecycleConflict("invalid explicit transition event")
+                key = _exact(row.payload["selection_key_ref"])
+                if key.key in result:
+                    raise LearnedProductLifecycleConflict("duplicate transition key")
+                result[key.key] = None if row.event_kind == "CURRENT_CLEARED" else row.release_ref
+            if set(result) != {key.ref.key for key in keys}:
+                raise LearnedProductLifecycleConflict("transition key set mismatch")
+            attestation = _exact(rows[0].payload["selection_attestation_ref"]) if rows else self._events[index].event_authority_ref
+            return result, attestation
+    
+        try:
+            while index &lt; len(self._events):
+                event = self._events[index]
+                payload = event.payload
+                common = dict(event_authority_ref=event.event_authority_ref,
+                              event_rule_ref=event.event_rule_ref, evidence_refs=event.evidence_refs)
+                basic = {name: value for name, value in common.items() if name != "evidence_refs"}
+                before = len(replay._events)
+                kind = event.event_kind
+                if kind == "PRODUCT_REGISTERED":
+                    replay.register_product(event.release_ref, **common)
+                    graphs.append(replay.determinant_graph)
+                elif kind == "PRODUCT_PUBLISHED":
+                    replay.publish_product(event.release_ref, **common)
+                elif kind == "RECERTIFIES":
+                    replay.record_recertification(event.release_ref,
+                        attestation_ref=_exact(payload["attestation_ref"]), **common)
+                elif kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                    key = _exact(payload["selection_key_ref"])
+                    previous = replay._selection_index.get(key.key)
+                    selection = dict(expected_previous_receipt_ref=previous,
+                        selection_attestation_ref=_exact(payload["selection_attestation_ref"]), **common)
+                    if kind == "CURRENT_SELECTED":
+                        replay.select_current(key, event.release_ref, **selection)
+                    elif kind == "CURRENT_SUPERSEDED":
+                        replay.supersede_current(key,
+                            predecessor_release_ref=_exact(payload["predecessor_release_ref"]),
+                            successor_release_ref=event.release_ref,
+                            supersession_basis_ref=_exact(payload["supersession_basis_ref"]), **selection)
+                    else:
+                        replay.declare_no_current(key, reason_ref=_exact(payload["reason_ref"]),
+                            subject_release_ref=event.release_ref, **selection)
+                elif kind == "PRODUCT_WITHDRAWN":
+                    keys = replay._current_keys_for_release(event.release_ref)
+                    targets, attestation = transitions(index + 1, keys)
+                    replay.withdraw_product(event.release_ref,
+                        withdrawal_reason_ref=_exact(payload["withdrawal_reason_ref"]),
+                        withdrawal_scope_ref=_exact(payload["withdrawal_scope_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "PRODUCT_INVALIDATED":
+                    changed = _determinant_refs(payload["changed_determinant_refs"])
+                    direct, transitive = replay.determinant_graph.affected(changed)
+                    affected = _exact_refs(direct + transitive)
+                    keys = {key.ref.key: key for release in affected
+                            for key in replay._current_keys_for_release(release)}
+                    targets, attestation = transitions(index + len(affected), tuple(keys.values()))
+                    replay.declare_invalidation(changed,
+                        dependency_closure_receipt_ref=_exact_any(payload["dependency_closure_receipt_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                    mechanism = _optional_exact(payload["execution_mechanism_ref"], allow_authority_kind=True)
+                    inputs = tuple(_exact_any(row) for row in payload["reconstruction_input_refs"])
+                    # With no dependencies, a live mechanism plus REBUILD_NOT_PROVED
+                    # is evidence of absent explicit inputs. Otherwise using the
+                    # canonical input set regenerates exactly the same receipt.
+                    if (mechanism is not None and "REBUILD_NOT_PROVED" in payload["blocker_states"]
+                            and not replay._subject(event.release_ref).direct_dependency_refs):
+                        inputs = ()
+                    replay.record_rebuild_eligibility(event.release_ref,
+                        execution_mechanism_ref=mechanism, source_or_upstream_refs=inputs,
+                        historical=payload["rebuild_state"] == "HISTORICAL_REPLAY_ELIGIBLE", **common)
+                elif kind == "PRODUCT_REBUILT":
+                    replay.link_rebuild(event.release_ref,
+                        new_release_ref=_optional_exact(payload["new_release_ref"]),
+                        rebuild_state=payload["rebuild_state"],
+                        rebuild_determinant_set_hash=payload["rebuild_determinant_set_hash"],
+                        replay_or_execution_receipt_ref=_exact(payload["replay_or_execution_receipt_ref"]), **common)
+                elif kind in {"CACHE_MATERIALIZED", "CACHE_DROPPED"}:
+                    operation = replay.record_cache_materialized if kind == "CACHE_MATERIALIZED" else replay.record_cache_dropped
+                    operation(event.release_ref, cache_ref=_exact(payload["cache_ref"]), **basic)
+                elif kind == "GC_ELIGIBILITY_ATTESTED":
+                    proofs = {name: _exact(payload[name]) for name in (
+                        "reconstruction_proof_ref", "historical_retention_proof_ref",
+                        "serving_reconstruction_proof_ref", "downstream_byte_dependency_absence_proof_ref",
+                        "source_carrier_retention_proof_ref")}
+                    replay.attest_gc_eligibility(event.release_ref, **proofs, **common)
+                elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                    replay.record_payload_gc(_exact_any(payload["gc_eligibility_receipt_ref"]), **basic)
+                else:
+                    raise LearnedProductLifecycleConflict("checkpoint event has no native operation")
+                generated = replay._events[before:]
+                expected = self._events[index:index + len(generated)]
+                if not generated or generated != expected:
+                    raise LearnedProductLifecycleConflict("checkpoint event semantics differ from native operation")
+                index += len(generated)
+    
+            # Legacy no-op receipts lack a history anchor. They must match an
+            # actual registration prefix graph; they cannot affect any release.
+            # This preserves lawful no-op history without inventing an ordinal.
+            for receipt in self._invalidations.values():
+                if receipt.invalidation_event_refs:
+                    continue
+                valid = False
+                for graph in graphs:
+                    direct, transitive = graph.affected(receipt.changed_determinant_refs)
+                    if direct or transitive:
+                        continue
+                    unaffected = graph.unaffected(())
+                    expected = InvalidationReceipt(
+                        changed_determinant_refs=receipt.changed_determinant_refs,
+                        directly_affected_release_refs=(), transitively_affected_release_refs=(),
+                        affected_product_refs=(),
+                        unaffected_product_refs=tuple(replay._subject(ref).product_ref for ref in unaffected),
+                        dependency_closure_receipt_ref=receipt.dependency_closure_receipt_ref,
+                        invalidation_event_refs=())
+                    if receipt == expected:
+                        valid = True
+                        break
+                if not valid:
+                    raise LearnedProductLifecycleConflict("invalid no-op invalidation receipt")
+                replay._invalidations[receipt.ref.key] = receipt
+            if replay._checkpoint_payload() != self._checkpoint_payload():
+                raise LearnedProductLifecycleConflict("checkpoint receipts/state differ from native operations")
+        except (KeyError, TypeError, ValueError, IndexError, LearnedProductLifecycleError) as exc:
+&gt;           raise LearnedProductLifecycleConflict(f"checkpoint semantic replay rejected: {exc}") from exc
+E           rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint semantic replay rejected: checkpoint event semantics differ from native operation
+
+rawlsing_next/pre553_learned_product_lifecycle.py:1850: LearnedProductLifecycleConflict</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_OBSERVED_publication_payload_not_bound_to_subject_on_cold_replay[determinant_set_hash]" time="0.013"><failure message="rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint semantic replay rejected: checkpoint event semantics differ from native operation">self = &lt;rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10e3af850&gt;
+
+    def _verify_native_checkpoint_semantics(self) -&gt; None:
+        """Re-execute owner operations; compare entire events, receipts and state.
+    
+        Payload arguments remain unauthenticated local claims. Re-execution binds
+        their internal relationships, not issuer entitlement or history custody.
+        """
+        replay = LearnedProductLifecycleExecutor()
+        for subject in self._repository_subjects.values():
+            replay.stage_release(subject)
+        replay._selection_keys = dict(self._selection_keys)
+        graphs = [replay.determinant_graph]
+        index = 0
+    
+        def transitions(start, keys):
+            rows = self._events[start:start + len(keys)]
+            if len(rows) != len(keys):
+                raise LearnedProductLifecycleConflict("missing explicit transition events")
+            result = {}
+            for row in rows:
+                if row.event_kind not in {"CURRENT_CLEARED", "CURRENT_SELECTED"}:
+                    raise LearnedProductLifecycleConflict("invalid explicit transition event")
+                key = _exact(row.payload["selection_key_ref"])
+                if key.key in result:
+                    raise LearnedProductLifecycleConflict("duplicate transition key")
+                result[key.key] = None if row.event_kind == "CURRENT_CLEARED" else row.release_ref
+            if set(result) != {key.ref.key for key in keys}:
+                raise LearnedProductLifecycleConflict("transition key set mismatch")
+            attestation = _exact(rows[0].payload["selection_attestation_ref"]) if rows else self._events[index].event_authority_ref
+            return result, attestation
+    
+        try:
+            while index &lt; len(self._events):
+                event = self._events[index]
+                payload = event.payload
+                common = dict(event_authority_ref=event.event_authority_ref,
+                              event_rule_ref=event.event_rule_ref, evidence_refs=event.evidence_refs)
+                basic = {name: value for name, value in common.items() if name != "evidence_refs"}
+                before = len(replay._events)
+                kind = event.event_kind
+                if kind == "PRODUCT_REGISTERED":
+                    replay.register_product(event.release_ref, **common)
+                    graphs.append(replay.determinant_graph)
+                elif kind == "PRODUCT_PUBLISHED":
+                    replay.publish_product(event.release_ref, **common)
+                elif kind == "RECERTIFIES":
+                    replay.record_recertification(event.release_ref,
+                        attestation_ref=_exact(payload["attestation_ref"]), **common)
+                elif kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                    key = _exact(payload["selection_key_ref"])
+                    previous = replay._selection_index.get(key.key)
+                    selection = dict(expected_previous_receipt_ref=previous,
+                        selection_attestation_ref=_exact(payload["selection_attestation_ref"]), **common)
+                    if kind == "CURRENT_SELECTED":
+                        replay.select_current(key, event.release_ref, **selection)
+                    elif kind == "CURRENT_SUPERSEDED":
+                        replay.supersede_current(key,
+                            predecessor_release_ref=_exact(payload["predecessor_release_ref"]),
+                            successor_release_ref=event.release_ref,
+                            supersession_basis_ref=_exact(payload["supersession_basis_ref"]), **selection)
+                    else:
+                        replay.declare_no_current(key, reason_ref=_exact(payload["reason_ref"]),
+                            subject_release_ref=event.release_ref, **selection)
+                elif kind == "PRODUCT_WITHDRAWN":
+                    keys = replay._current_keys_for_release(event.release_ref)
+                    targets, attestation = transitions(index + 1, keys)
+                    replay.withdraw_product(event.release_ref,
+                        withdrawal_reason_ref=_exact(payload["withdrawal_reason_ref"]),
+                        withdrawal_scope_ref=_exact(payload["withdrawal_scope_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "PRODUCT_INVALIDATED":
+                    changed = _determinant_refs(payload["changed_determinant_refs"])
+                    direct, transitive = replay.determinant_graph.affected(changed)
+                    affected = _exact_refs(direct + transitive)
+                    keys = {key.ref.key: key for release in affected
+                            for key in replay._current_keys_for_release(release)}
+                    targets, attestation = transitions(index + len(affected), tuple(keys.values()))
+                    replay.declare_invalidation(changed,
+                        dependency_closure_receipt_ref=_exact_any(payload["dependency_closure_receipt_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                    mechanism = _optional_exact(payload["execution_mechanism_ref"], allow_authority_kind=True)
+                    inputs = tuple(_exact_any(row) for row in payload["reconstruction_input_refs"])
+                    # With no dependencies, a live mechanism plus REBUILD_NOT_PROVED
+                    # is evidence of absent explicit inputs. Otherwise using the
+                    # canonical input set regenerates exactly the same receipt.
+                    if (mechanism is not None and "REBUILD_NOT_PROVED" in payload["blocker_states"]
+                            and not replay._subject(event.release_ref).direct_dependency_refs):
+                        inputs = ()
+                    replay.record_rebuild_eligibility(event.release_ref,
+                        execution_mechanism_ref=mechanism, source_or_upstream_refs=inputs,
+                        historical=payload["rebuild_state"] == "HISTORICAL_REPLAY_ELIGIBLE", **common)
+                elif kind == "PRODUCT_REBUILT":
+                    replay.link_rebuild(event.release_ref,
+                        new_release_ref=_optional_exact(payload["new_release_ref"]),
+                        rebuild_state=payload["rebuild_state"],
+                        rebuild_determinant_set_hash=payload["rebuild_determinant_set_hash"],
+                        replay_or_execution_receipt_ref=_exact(payload["replay_or_execution_receipt_ref"]), **common)
+                elif kind in {"CACHE_MATERIALIZED", "CACHE_DROPPED"}:
+                    operation = replay.record_cache_materialized if kind == "CACHE_MATERIALIZED" else replay.record_cache_dropped
+                    operation(event.release_ref, cache_ref=_exact(payload["cache_ref"]), **basic)
+                elif kind == "GC_ELIGIBILITY_ATTESTED":
+                    proofs = {name: _exact(payload[name]) for name in (
+                        "reconstruction_proof_ref", "historical_retention_proof_ref",
+                        "serving_reconstruction_proof_ref", "downstream_byte_dependency_absence_proof_ref",
+                        "source_carrier_retention_proof_ref")}
+                    replay.attest_gc_eligibility(event.release_ref, **proofs, **common)
+                elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                    replay.record_payload_gc(_exact_any(payload["gc_eligibility_receipt_ref"]), **basic)
+                else:
+                    raise LearnedProductLifecycleConflict("checkpoint event has no native operation")
+                generated = replay._events[before:]
+                expected = self._events[index:index + len(generated)]
+                if not generated or generated != expected:
+&gt;                   raise LearnedProductLifecycleConflict("checkpoint event semantics differ from native operation")
+E                   rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint event semantics differ from native operation
+
+rawlsing_next/pre553_learned_product_lifecycle.py:1819: LearnedProductLifecycleConflict
+
+The above exception was the direct cause of the following exception:
+
+field = 'determinant_set_hash'
+
+    @pytest.mark.parametrize('field', ['replay_root_ref', 'determinant_set_hash', 'producer_permission_ceiling'])
+    def test_OBSERVED_publication_payload_not_bound_to_subject_on_cold_replay(field):
+        x, s, cp = checkpoint_with_publication()
+        event = x.events[-1]
+        payload = dict(event.payload)
+        payload[field] = semantic_hash('alien') if field == 'determinant_set_hash' else ref('Alien', field).as_dict()
+        forged_event = replace(event, payload=payload)
+        cp['checkpoint_payload']['events'][-1] = forged_event.as_dict()
+        cp['checkpoint_hash'] = semantic_hash(cp['checkpoint_payload'])
+&gt;       restored = B5.from_checkpoint(cp)
+                   ^^^^^^^^^^^^^^^^^^^^^^
+
+WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_learned_product_lifecycle.py:3363: in from_checkpoint
+    executor._verify_native_checkpoint_semantics()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10e3af850&gt;
+
+    def _verify_native_checkpoint_semantics(self) -&gt; None:
+        """Re-execute owner operations; compare entire events, receipts and state.
+    
+        Payload arguments remain unauthenticated local claims. Re-execution binds
+        their internal relationships, not issuer entitlement or history custody.
+        """
+        replay = LearnedProductLifecycleExecutor()
+        for subject in self._repository_subjects.values():
+            replay.stage_release(subject)
+        replay._selection_keys = dict(self._selection_keys)
+        graphs = [replay.determinant_graph]
+        index = 0
+    
+        def transitions(start, keys):
+            rows = self._events[start:start + len(keys)]
+            if len(rows) != len(keys):
+                raise LearnedProductLifecycleConflict("missing explicit transition events")
+            result = {}
+            for row in rows:
+                if row.event_kind not in {"CURRENT_CLEARED", "CURRENT_SELECTED"}:
+                    raise LearnedProductLifecycleConflict("invalid explicit transition event")
+                key = _exact(row.payload["selection_key_ref"])
+                if key.key in result:
+                    raise LearnedProductLifecycleConflict("duplicate transition key")
+                result[key.key] = None if row.event_kind == "CURRENT_CLEARED" else row.release_ref
+            if set(result) != {key.ref.key for key in keys}:
+                raise LearnedProductLifecycleConflict("transition key set mismatch")
+            attestation = _exact(rows[0].payload["selection_attestation_ref"]) if rows else self._events[index].event_authority_ref
+            return result, attestation
+    
+        try:
+            while index &lt; len(self._events):
+                event = self._events[index]
+                payload = event.payload
+                common = dict(event_authority_ref=event.event_authority_ref,
+                              event_rule_ref=event.event_rule_ref, evidence_refs=event.evidence_refs)
+                basic = {name: value for name, value in common.items() if name != "evidence_refs"}
+                before = len(replay._events)
+                kind = event.event_kind
+                if kind == "PRODUCT_REGISTERED":
+                    replay.register_product(event.release_ref, **common)
+                    graphs.append(replay.determinant_graph)
+                elif kind == "PRODUCT_PUBLISHED":
+                    replay.publish_product(event.release_ref, **common)
+                elif kind == "RECERTIFIES":
+                    replay.record_recertification(event.release_ref,
+                        attestation_ref=_exact(payload["attestation_ref"]), **common)
+                elif kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                    key = _exact(payload["selection_key_ref"])
+                    previous = replay._selection_index.get(key.key)
+                    selection = dict(expected_previous_receipt_ref=previous,
+                        selection_attestation_ref=_exact(payload["selection_attestation_ref"]), **common)
+                    if kind == "CURRENT_SELECTED":
+                        replay.select_current(key, event.release_ref, **selection)
+                    elif kind == "CURRENT_SUPERSEDED":
+                        replay.supersede_current(key,
+                            predecessor_release_ref=_exact(payload["predecessor_release_ref"]),
+                            successor_release_ref=event.release_ref,
+                            supersession_basis_ref=_exact(payload["supersession_basis_ref"]), **selection)
+                    else:
+                        replay.declare_no_current(key, reason_ref=_exact(payload["reason_ref"]),
+                            subject_release_ref=event.release_ref, **selection)
+                elif kind == "PRODUCT_WITHDRAWN":
+                    keys = replay._current_keys_for_release(event.release_ref)
+                    targets, attestation = transitions(index + 1, keys)
+                    replay.withdraw_product(event.release_ref,
+                        withdrawal_reason_ref=_exact(payload["withdrawal_reason_ref"]),
+                        withdrawal_scope_ref=_exact(payload["withdrawal_scope_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "PRODUCT_INVALIDATED":
+                    changed = _determinant_refs(payload["changed_determinant_refs"])
+                    direct, transitive = replay.determinant_graph.affected(changed)
+                    affected = _exact_refs(direct + transitive)
+                    keys = {key.ref.key: key for release in affected
+                            for key in replay._current_keys_for_release(release)}
+                    targets, attestation = transitions(index + len(affected), tuple(keys.values()))
+                    replay.declare_invalidation(changed,
+                        dependency_closure_receipt_ref=_exact_any(payload["dependency_closure_receipt_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                    mechanism = _optional_exact(payload["execution_mechanism_ref"], allow_authority_kind=True)
+                    inputs = tuple(_exact_any(row) for row in payload["reconstruction_input_refs"])
+                    # With no dependencies, a live mechanism plus REBUILD_NOT_PROVED
+                    # is evidence of absent explicit inputs. Otherwise using the
+                    # canonical input set regenerates exactly the same receipt.
+                    if (mechanism is not None and "REBUILD_NOT_PROVED" in payload["blocker_states"]
+                            and not replay._subject(event.release_ref).direct_dependency_refs):
+                        inputs = ()
+                    replay.record_rebuild_eligibility(event.release_ref,
+                        execution_mechanism_ref=mechanism, source_or_upstream_refs=inputs,
+                        historical=payload["rebuild_state"] == "HISTORICAL_REPLAY_ELIGIBLE", **common)
+                elif kind == "PRODUCT_REBUILT":
+                    replay.link_rebuild(event.release_ref,
+                        new_release_ref=_optional_exact(payload["new_release_ref"]),
+                        rebuild_state=payload["rebuild_state"],
+                        rebuild_determinant_set_hash=payload["rebuild_determinant_set_hash"],
+                        replay_or_execution_receipt_ref=_exact(payload["replay_or_execution_receipt_ref"]), **common)
+                elif kind in {"CACHE_MATERIALIZED", "CACHE_DROPPED"}:
+                    operation = replay.record_cache_materialized if kind == "CACHE_MATERIALIZED" else replay.record_cache_dropped
+                    operation(event.release_ref, cache_ref=_exact(payload["cache_ref"]), **basic)
+                elif kind == "GC_ELIGIBILITY_ATTESTED":
+                    proofs = {name: _exact(payload[name]) for name in (
+                        "reconstruction_proof_ref", "historical_retention_proof_ref",
+                        "serving_reconstruction_proof_ref", "downstream_byte_dependency_absence_proof_ref",
+                        "source_carrier_retention_proof_ref")}
+                    replay.attest_gc_eligibility(event.release_ref, **proofs, **common)
+                elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                    replay.record_payload_gc(_exact_any(payload["gc_eligibility_receipt_ref"]), **basic)
+                else:
+                    raise LearnedProductLifecycleConflict("checkpoint event has no native operation")
+                generated = replay._events[before:]
+                expected = self._events[index:index + len(generated)]
+                if not generated or generated != expected:
+                    raise LearnedProductLifecycleConflict("checkpoint event semantics differ from native operation")
+                index += len(generated)
+    
+            # Legacy no-op receipts lack a history anchor. They must match an
+            # actual registration prefix graph; they cannot affect any release.
+            # This preserves lawful no-op history without inventing an ordinal.
+            for receipt in self._invalidations.values():
+                if receipt.invalidation_event_refs:
+                    continue
+                valid = False
+                for graph in graphs:
+                    direct, transitive = graph.affected(receipt.changed_determinant_refs)
+                    if direct or transitive:
+                        continue
+                    unaffected = graph.unaffected(())
+                    expected = InvalidationReceipt(
+                        changed_determinant_refs=receipt.changed_determinant_refs,
+                        directly_affected_release_refs=(), transitively_affected_release_refs=(),
+                        affected_product_refs=(),
+                        unaffected_product_refs=tuple(replay._subject(ref).product_ref for ref in unaffected),
+                        dependency_closure_receipt_ref=receipt.dependency_closure_receipt_ref,
+                        invalidation_event_refs=())
+                    if receipt == expected:
+                        valid = True
+                        break
+                if not valid:
+                    raise LearnedProductLifecycleConflict("invalid no-op invalidation receipt")
+                replay._invalidations[receipt.ref.key] = receipt
+            if replay._checkpoint_payload() != self._checkpoint_payload():
+                raise LearnedProductLifecycleConflict("checkpoint receipts/state differ from native operations")
+        except (KeyError, TypeError, ValueError, IndexError, LearnedProductLifecycleError) as exc:
+&gt;           raise LearnedProductLifecycleConflict(f"checkpoint semantic replay rejected: {exc}") from exc
+E           rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint semantic replay rejected: checkpoint event semantics differ from native operation
+
+rawlsing_next/pre553_learned_product_lifecycle.py:1850: LearnedProductLifecycleConflict</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_OBSERVED_publication_payload_not_bound_to_subject_on_cold_replay[producer_permission_ceiling]" time="0.012"><failure message="rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint semantic replay rejected: checkpoint event semantics differ from native operation">self = &lt;rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10e450d10&gt;
+
+    def _verify_native_checkpoint_semantics(self) -&gt; None:
+        """Re-execute owner operations; compare entire events, receipts and state.
+    
+        Payload arguments remain unauthenticated local claims. Re-execution binds
+        their internal relationships, not issuer entitlement or history custody.
+        """
+        replay = LearnedProductLifecycleExecutor()
+        for subject in self._repository_subjects.values():
+            replay.stage_release(subject)
+        replay._selection_keys = dict(self._selection_keys)
+        graphs = [replay.determinant_graph]
+        index = 0
+    
+        def transitions(start, keys):
+            rows = self._events[start:start + len(keys)]
+            if len(rows) != len(keys):
+                raise LearnedProductLifecycleConflict("missing explicit transition events")
+            result = {}
+            for row in rows:
+                if row.event_kind not in {"CURRENT_CLEARED", "CURRENT_SELECTED"}:
+                    raise LearnedProductLifecycleConflict("invalid explicit transition event")
+                key = _exact(row.payload["selection_key_ref"])
+                if key.key in result:
+                    raise LearnedProductLifecycleConflict("duplicate transition key")
+                result[key.key] = None if row.event_kind == "CURRENT_CLEARED" else row.release_ref
+            if set(result) != {key.ref.key for key in keys}:
+                raise LearnedProductLifecycleConflict("transition key set mismatch")
+            attestation = _exact(rows[0].payload["selection_attestation_ref"]) if rows else self._events[index].event_authority_ref
+            return result, attestation
+    
+        try:
+            while index &lt; len(self._events):
+                event = self._events[index]
+                payload = event.payload
+                common = dict(event_authority_ref=event.event_authority_ref,
+                              event_rule_ref=event.event_rule_ref, evidence_refs=event.evidence_refs)
+                basic = {name: value for name, value in common.items() if name != "evidence_refs"}
+                before = len(replay._events)
+                kind = event.event_kind
+                if kind == "PRODUCT_REGISTERED":
+                    replay.register_product(event.release_ref, **common)
+                    graphs.append(replay.determinant_graph)
+                elif kind == "PRODUCT_PUBLISHED":
+                    replay.publish_product(event.release_ref, **common)
+                elif kind == "RECERTIFIES":
+                    replay.record_recertification(event.release_ref,
+                        attestation_ref=_exact(payload["attestation_ref"]), **common)
+                elif kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                    key = _exact(payload["selection_key_ref"])
+                    previous = replay._selection_index.get(key.key)
+                    selection = dict(expected_previous_receipt_ref=previous,
+                        selection_attestation_ref=_exact(payload["selection_attestation_ref"]), **common)
+                    if kind == "CURRENT_SELECTED":
+                        replay.select_current(key, event.release_ref, **selection)
+                    elif kind == "CURRENT_SUPERSEDED":
+                        replay.supersede_current(key,
+                            predecessor_release_ref=_exact(payload["predecessor_release_ref"]),
+                            successor_release_ref=event.release_ref,
+                            supersession_basis_ref=_exact(payload["supersession_basis_ref"]), **selection)
+                    else:
+                        replay.declare_no_current(key, reason_ref=_exact(payload["reason_ref"]),
+                            subject_release_ref=event.release_ref, **selection)
+                elif kind == "PRODUCT_WITHDRAWN":
+                    keys = replay._current_keys_for_release(event.release_ref)
+                    targets, attestation = transitions(index + 1, keys)
+                    replay.withdraw_product(event.release_ref,
+                        withdrawal_reason_ref=_exact(payload["withdrawal_reason_ref"]),
+                        withdrawal_scope_ref=_exact(payload["withdrawal_scope_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "PRODUCT_INVALIDATED":
+                    changed = _determinant_refs(payload["changed_determinant_refs"])
+                    direct, transitive = replay.determinant_graph.affected(changed)
+                    affected = _exact_refs(direct + transitive)
+                    keys = {key.ref.key: key for release in affected
+                            for key in replay._current_keys_for_release(release)}
+                    targets, attestation = transitions(index + len(affected), tuple(keys.values()))
+                    replay.declare_invalidation(changed,
+                        dependency_closure_receipt_ref=_exact_any(payload["dependency_closure_receipt_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                    mechanism = _optional_exact(payload["execution_mechanism_ref"], allow_authority_kind=True)
+                    inputs = tuple(_exact_any(row) for row in payload["reconstruction_input_refs"])
+                    # With no dependencies, a live mechanism plus REBUILD_NOT_PROVED
+                    # is evidence of absent explicit inputs. Otherwise using the
+                    # canonical input set regenerates exactly the same receipt.
+                    if (mechanism is not None and "REBUILD_NOT_PROVED" in payload["blocker_states"]
+                            and not replay._subject(event.release_ref).direct_dependency_refs):
+                        inputs = ()
+                    replay.record_rebuild_eligibility(event.release_ref,
+                        execution_mechanism_ref=mechanism, source_or_upstream_refs=inputs,
+                        historical=payload["rebuild_state"] == "HISTORICAL_REPLAY_ELIGIBLE", **common)
+                elif kind == "PRODUCT_REBUILT":
+                    replay.link_rebuild(event.release_ref,
+                        new_release_ref=_optional_exact(payload["new_release_ref"]),
+                        rebuild_state=payload["rebuild_state"],
+                        rebuild_determinant_set_hash=payload["rebuild_determinant_set_hash"],
+                        replay_or_execution_receipt_ref=_exact(payload["replay_or_execution_receipt_ref"]), **common)
+                elif kind in {"CACHE_MATERIALIZED", "CACHE_DROPPED"}:
+                    operation = replay.record_cache_materialized if kind == "CACHE_MATERIALIZED" else replay.record_cache_dropped
+                    operation(event.release_ref, cache_ref=_exact(payload["cache_ref"]), **basic)
+                elif kind == "GC_ELIGIBILITY_ATTESTED":
+                    proofs = {name: _exact(payload[name]) for name in (
+                        "reconstruction_proof_ref", "historical_retention_proof_ref",
+                        "serving_reconstruction_proof_ref", "downstream_byte_dependency_absence_proof_ref",
+                        "source_carrier_retention_proof_ref")}
+                    replay.attest_gc_eligibility(event.release_ref, **proofs, **common)
+                elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                    replay.record_payload_gc(_exact_any(payload["gc_eligibility_receipt_ref"]), **basic)
+                else:
+                    raise LearnedProductLifecycleConflict("checkpoint event has no native operation")
+                generated = replay._events[before:]
+                expected = self._events[index:index + len(generated)]
+                if not generated or generated != expected:
+&gt;                   raise LearnedProductLifecycleConflict("checkpoint event semantics differ from native operation")
+E                   rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint event semantics differ from native operation
+
+rawlsing_next/pre553_learned_product_lifecycle.py:1819: LearnedProductLifecycleConflict
+
+The above exception was the direct cause of the following exception:
+
+field = 'producer_permission_ceiling'
+
+    @pytest.mark.parametrize('field', ['replay_root_ref', 'determinant_set_hash', 'producer_permission_ceiling'])
+    def test_OBSERVED_publication_payload_not_bound_to_subject_on_cold_replay(field):
+        x, s, cp = checkpoint_with_publication()
+        event = x.events[-1]
+        payload = dict(event.payload)
+        payload[field] = semantic_hash('alien') if field == 'determinant_set_hash' else ref('Alien', field).as_dict()
+        forged_event = replace(event, payload=payload)
+        cp['checkpoint_payload']['events'][-1] = forged_event.as_dict()
+        cp['checkpoint_hash'] = semantic_hash(cp['checkpoint_payload'])
+&gt;       restored = B5.from_checkpoint(cp)
+                   ^^^^^^^^^^^^^^^^^^^^^^
+
+WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_learned_product_lifecycle.py:3363: in from_checkpoint
+    executor._verify_native_checkpoint_semantics()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10e450d10&gt;
+
+    def _verify_native_checkpoint_semantics(self) -&gt; None:
+        """Re-execute owner operations; compare entire events, receipts and state.
+    
+        Payload arguments remain unauthenticated local claims. Re-execution binds
+        their internal relationships, not issuer entitlement or history custody.
+        """
+        replay = LearnedProductLifecycleExecutor()
+        for subject in self._repository_subjects.values():
+            replay.stage_release(subject)
+        replay._selection_keys = dict(self._selection_keys)
+        graphs = [replay.determinant_graph]
+        index = 0
+    
+        def transitions(start, keys):
+            rows = self._events[start:start + len(keys)]
+            if len(rows) != len(keys):
+                raise LearnedProductLifecycleConflict("missing explicit transition events")
+            result = {}
+            for row in rows:
+                if row.event_kind not in {"CURRENT_CLEARED", "CURRENT_SELECTED"}:
+                    raise LearnedProductLifecycleConflict("invalid explicit transition event")
+                key = _exact(row.payload["selection_key_ref"])
+                if key.key in result:
+                    raise LearnedProductLifecycleConflict("duplicate transition key")
+                result[key.key] = None if row.event_kind == "CURRENT_CLEARED" else row.release_ref
+            if set(result) != {key.ref.key for key in keys}:
+                raise LearnedProductLifecycleConflict("transition key set mismatch")
+            attestation = _exact(rows[0].payload["selection_attestation_ref"]) if rows else self._events[index].event_authority_ref
+            return result, attestation
+    
+        try:
+            while index &lt; len(self._events):
+                event = self._events[index]
+                payload = event.payload
+                common = dict(event_authority_ref=event.event_authority_ref,
+                              event_rule_ref=event.event_rule_ref, evidence_refs=event.evidence_refs)
+                basic = {name: value for name, value in common.items() if name != "evidence_refs"}
+                before = len(replay._events)
+                kind = event.event_kind
+                if kind == "PRODUCT_REGISTERED":
+                    replay.register_product(event.release_ref, **common)
+                    graphs.append(replay.determinant_graph)
+                elif kind == "PRODUCT_PUBLISHED":
+                    replay.publish_product(event.release_ref, **common)
+                elif kind == "RECERTIFIES":
+                    replay.record_recertification(event.release_ref,
+                        attestation_ref=_exact(payload["attestation_ref"]), **common)
+                elif kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                    key = _exact(payload["selection_key_ref"])
+                    previous = replay._selection_index.get(key.key)
+                    selection = dict(expected_previous_receipt_ref=previous,
+                        selection_attestation_ref=_exact(payload["selection_attestation_ref"]), **common)
+                    if kind == "CURRENT_SELECTED":
+                        replay.select_current(key, event.release_ref, **selection)
+                    elif kind == "CURRENT_SUPERSEDED":
+                        replay.supersede_current(key,
+                            predecessor_release_ref=_exact(payload["predecessor_release_ref"]),
+                            successor_release_ref=event.release_ref,
+                            supersession_basis_ref=_exact(payload["supersession_basis_ref"]), **selection)
+                    else:
+                        replay.declare_no_current(key, reason_ref=_exact(payload["reason_ref"]),
+                            subject_release_ref=event.release_ref, **selection)
+                elif kind == "PRODUCT_WITHDRAWN":
+                    keys = replay._current_keys_for_release(event.release_ref)
+                    targets, attestation = transitions(index + 1, keys)
+                    replay.withdraw_product(event.release_ref,
+                        withdrawal_reason_ref=_exact(payload["withdrawal_reason_ref"]),
+                        withdrawal_scope_ref=_exact(payload["withdrawal_scope_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "PRODUCT_INVALIDATED":
+                    changed = _determinant_refs(payload["changed_determinant_refs"])
+                    direct, transitive = replay.determinant_graph.affected(changed)
+                    affected = _exact_refs(direct + transitive)
+                    keys = {key.ref.key: key for release in affected
+                            for key in replay._current_keys_for_release(release)}
+                    targets, attestation = transitions(index + len(affected), tuple(keys.values()))
+                    replay.declare_invalidation(changed,
+                        dependency_closure_receipt_ref=_exact_any(payload["dependency_closure_receipt_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                    mechanism = _optional_exact(payload["execution_mechanism_ref"], allow_authority_kind=True)
+                    inputs = tuple(_exact_any(row) for row in payload["reconstruction_input_refs"])
+                    # With no dependencies, a live mechanism plus REBUILD_NOT_PROVED
+                    # is evidence of absent explicit inputs. Otherwise using the
+                    # canonical input set regenerates exactly the same receipt.
+                    if (mechanism is not None and "REBUILD_NOT_PROVED" in payload["blocker_states"]
+                            and not replay._subject(event.release_ref).direct_dependency_refs):
+                        inputs = ()
+                    replay.record_rebuild_eligibility(event.release_ref,
+                        execution_mechanism_ref=mechanism, source_or_upstream_refs=inputs,
+                        historical=payload["rebuild_state"] == "HISTORICAL_REPLAY_ELIGIBLE", **common)
+                elif kind == "PRODUCT_REBUILT":
+                    replay.link_rebuild(event.release_ref,
+                        new_release_ref=_optional_exact(payload["new_release_ref"]),
+                        rebuild_state=payload["rebuild_state"],
+                        rebuild_determinant_set_hash=payload["rebuild_determinant_set_hash"],
+                        replay_or_execution_receipt_ref=_exact(payload["replay_or_execution_receipt_ref"]), **common)
+                elif kind in {"CACHE_MATERIALIZED", "CACHE_DROPPED"}:
+                    operation = replay.record_cache_materialized if kind == "CACHE_MATERIALIZED" else replay.record_cache_dropped
+                    operation(event.release_ref, cache_ref=_exact(payload["cache_ref"]), **basic)
+                elif kind == "GC_ELIGIBILITY_ATTESTED":
+                    proofs = {name: _exact(payload[name]) for name in (
+                        "reconstruction_proof_ref", "historical_retention_proof_ref",
+                        "serving_reconstruction_proof_ref", "downstream_byte_dependency_absence_proof_ref",
+                        "source_carrier_retention_proof_ref")}
+                    replay.attest_gc_eligibility(event.release_ref, **proofs, **common)
+                elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                    replay.record_payload_gc(_exact_any(payload["gc_eligibility_receipt_ref"]), **basic)
+                else:
+                    raise LearnedProductLifecycleConflict("checkpoint event has no native operation")
+                generated = replay._events[before:]
+                expected = self._events[index:index + len(generated)]
+                if not generated or generated != expected:
+                    raise LearnedProductLifecycleConflict("checkpoint event semantics differ from native operation")
+                index += len(generated)
+    
+            # Legacy no-op receipts lack a history anchor. They must match an
+            # actual registration prefix graph; they cannot affect any release.
+            # This preserves lawful no-op history without inventing an ordinal.
+            for receipt in self._invalidations.values():
+                if receipt.invalidation_event_refs:
+                    continue
+                valid = False
+                for graph in graphs:
+                    direct, transitive = graph.affected(receipt.changed_determinant_refs)
+                    if direct or transitive:
+                        continue
+                    unaffected = graph.unaffected(())
+                    expected = InvalidationReceipt(
+                        changed_determinant_refs=receipt.changed_determinant_refs,
+                        directly_affected_release_refs=(), transitively_affected_release_refs=(),
+                        affected_product_refs=(),
+                        unaffected_product_refs=tuple(replay._subject(ref).product_ref for ref in unaffected),
+                        dependency_closure_receipt_ref=receipt.dependency_closure_receipt_ref,
+                        invalidation_event_refs=())
+                    if receipt == expected:
+                        valid = True
+                        break
+                if not valid:
+                    raise LearnedProductLifecycleConflict("invalid no-op invalidation receipt")
+                replay._invalidations[receipt.ref.key] = receipt
+            if replay._checkpoint_payload() != self._checkpoint_payload():
+                raise LearnedProductLifecycleConflict("checkpoint receipts/state differ from native operations")
+        except (KeyError, TypeError, ValueError, IndexError, LearnedProductLifecycleError) as exc:
+&gt;           raise LearnedProductLifecycleConflict(f"checkpoint semantic replay rejected: {exc}") from exc
+E           rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint semantic replay rejected: checkpoint event semantics differ from native operation
+
+rawlsing_next/pre553_learned_product_lifecycle.py:1850: LearnedProductLifecycleConflict</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_OBSERVED_publication_torn_after_event_append" time="0.004"><failure message="AssertionError: assert 'PRODUCT_REGISTERED' == 'PRODUCT_PUBLISHED'&#10;  &#10;  - PRODUCT_PUBLISHED&#10;  + PRODUCT_REGISTERED">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10e137c50&gt;
+
+    def test_OBSERVED_publication_torn_after_event_append(monkeypatch):
+        x = B5()
+        s = register(x, subject('torn'))
+        prior = x.export_checkpoint()
+        append = x._append_events
+        def crash(events):
+            append(events)
+            raise RuntimeError('simulated process interruption after ledger append')
+        monkeypatch.setattr(x, '_append_events', crash)
+        with pytest.raises(RuntimeError):
+            x.publish_product(s.release_ref, event_authority_ref=ref('Authority', 'pub'), event_rule_ref=ref('Rule', 'pub'))
+&gt;       assert x.events[-1].event_kind == 'PRODUCT_PUBLISHED'
+E       AssertionError: assert 'PRODUCT_REGISTERED' == 'PRODUCT_PUBLISHED'
+E         
+E         - PRODUCT_PUBLISHED
+E         + PRODUCT_REGISTERED
+
+WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py:125: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_OBSERVED_m2_check_then_insert_race_overwrites_collision" time="0.001"><failure message="AssertionError: assert (not [M2ReleaseError('INTERNAL_MUTATION_OUTSIDE_TRANSACTION: _insert requires native writer transaction'), M2ReleaseError('INTERNAL_MUTATION_OUTSIDE_TRANSACTION: _insert requires native writer transaction')])">def test_OBSERVED_m2_check_then_insert_race_overwrites_collision():
+        repo = M2()
+        barrier = Barrier(2)
+        class RacingDict(dict):
+            def get(self, key, default=None):
+                result = super().get(key, default)
+                barrier.wait(timeout=5)
+                return result
+        store = RacingDict()
+        identity = ref('TestIdentity', 'same')
+        errors = []
+        def insert(value):
+            try:
+                repo._insert(store, identity, value, 'COLLISION')
+            except Exception as exc:
+                errors.append(exc)
+        threads = [Thread(target=insert, args=(value,)) for value in ('A', 'B')]
+        for thread in threads: thread.start()
+        for thread in threads: thread.join(timeout=6)
+&gt;       assert not errors and all(not thread.is_alive() for thread in threads)
+E       AssertionError: assert (not [M2ReleaseError('INTERNAL_MUTATION_OUTSIDE_TRANSACTION: _insert requires native writer transaction'), M2ReleaseError('INTERNAL_MUTATION_OUTSIDE_TRANSACTION: _insert requires native writer transaction')])
+
+WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py:150: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_coherent_local_replacement_never_establishes_authenticity" time="0.017" /><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_m2_exact_foreign_release_rejected_at_repository_boundary" time="0.001" /><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_OBSERVED_concurrent_b5_selection_accepts_two_stale_predecessors" time="5.012"><failure message="assert (not [BrokenBarrierError(), BrokenBarrierError()])">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10e3d8510&gt;
+
+    def test_OBSERVED_concurrent_b5_selection_accepts_two_stale_predecessors(monkeypatch):
+        x = B5()
+        a = register(x, subject('race-a'), publish=True)
+        b = register(x, subject('race-b'), publish=True)
+        key = x.selection_key(product_family_ref=a.product_family_ref,
+            selection_scope_ref=a.selection_scope_ref, selection_purpose_ref=ref('Purpose', 'race'))
+        barrier = Barrier(2)
+        original = x._assert_expected_previous
+        def checked(*args, **kwargs):
+            result = original(*args, **kwargs)
+            barrier.wait(timeout=5)  # Both real checks finish before either commits.
+            return result
+        monkeypatch.setattr(x, '_assert_expected_previous', checked)
+        receipts, errors = [], []
+        def select(item):
+            try:
+                receipts.append(x.select_current(key.ref, item.release_ref,
+                    expected_previous_receipt_ref=None, event_authority_ref=ref('Authority', 'race'),
+                    event_rule_ref=ref('Rule', 'race'), selection_attestation_ref=ref('Attestation', 'race')))
+            except Exception as exc:
+                errors.append(exc)
+        threads = [Thread(target=select, args=(item,)) for item in (a, b)]
+        for thread in threads: thread.start()
+        for thread in threads: thread.join(timeout=6)
+&gt;       assert not errors and len(receipts) == 2
+E       assert (not [BrokenBarrierError(), BrokenBarrierError()])
+
+WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py:198: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_OBSERVED_public_event_payload_changes_internal_identity" time="0.006"><failure message="TypeError: 'mappingproxy' object does not support item assignment">def test_OBSERVED_public_event_payload_changes_internal_identity():
+        x, s, cp = checkpoint_with_publication()
+        old_ref = x.events[-1].ref
+&gt;       x.events[-1].payload['attacker'] = True
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: 'mappingproxy' object does not support item assignment
+
+WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py:206: TypeError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_checkpoint_changed_subject_scope_is_rejected_even_rehashed" time="0.008" /><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_unknown_event_kind_is_rejected_without_mutation" time="0.007" /><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_OBSERVED_rebuild_receipt_can_link_event_for_different_release" time="0.025"><failure message="rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint semantic replay rejected: checkpoint receipts/state differ from native operations">self = &lt;rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10e1bd110&gt;
+
+    def _verify_native_checkpoint_semantics(self) -&gt; None:
+        """Re-execute owner operations; compare entire events, receipts and state.
+    
+        Payload arguments remain unauthenticated local claims. Re-execution binds
+        their internal relationships, not issuer entitlement or history custody.
+        """
+        replay = LearnedProductLifecycleExecutor()
+        for subject in self._repository_subjects.values():
+            replay.stage_release(subject)
+        replay._selection_keys = dict(self._selection_keys)
+        graphs = [replay.determinant_graph]
+        index = 0
+    
+        def transitions(start, keys):
+            rows = self._events[start:start + len(keys)]
+            if len(rows) != len(keys):
+                raise LearnedProductLifecycleConflict("missing explicit transition events")
+            result = {}
+            for row in rows:
+                if row.event_kind not in {"CURRENT_CLEARED", "CURRENT_SELECTED"}:
+                    raise LearnedProductLifecycleConflict("invalid explicit transition event")
+                key = _exact(row.payload["selection_key_ref"])
+                if key.key in result:
+                    raise LearnedProductLifecycleConflict("duplicate transition key")
+                result[key.key] = None if row.event_kind == "CURRENT_CLEARED" else row.release_ref
+            if set(result) != {key.ref.key for key in keys}:
+                raise LearnedProductLifecycleConflict("transition key set mismatch")
+            attestation = _exact(rows[0].payload["selection_attestation_ref"]) if rows else self._events[index].event_authority_ref
+            return result, attestation
+    
+        try:
+            while index &lt; len(self._events):
+                event = self._events[index]
+                payload = event.payload
+                common = dict(event_authority_ref=event.event_authority_ref,
+                              event_rule_ref=event.event_rule_ref, evidence_refs=event.evidence_refs)
+                basic = {name: value for name, value in common.items() if name != "evidence_refs"}
+                before = len(replay._events)
+                kind = event.event_kind
+                if kind == "PRODUCT_REGISTERED":
+                    replay.register_product(event.release_ref, **common)
+                    graphs.append(replay.determinant_graph)
+                elif kind == "PRODUCT_PUBLISHED":
+                    replay.publish_product(event.release_ref, **common)
+                elif kind == "RECERTIFIES":
+                    replay.record_recertification(event.release_ref,
+                        attestation_ref=_exact(payload["attestation_ref"]), **common)
+                elif kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                    key = _exact(payload["selection_key_ref"])
+                    previous = replay._selection_index.get(key.key)
+                    selection = dict(expected_previous_receipt_ref=previous,
+                        selection_attestation_ref=_exact(payload["selection_attestation_ref"]), **common)
+                    if kind == "CURRENT_SELECTED":
+                        replay.select_current(key, event.release_ref, **selection)
+                    elif kind == "CURRENT_SUPERSEDED":
+                        replay.supersede_current(key,
+                            predecessor_release_ref=_exact(payload["predecessor_release_ref"]),
+                            successor_release_ref=event.release_ref,
+                            supersession_basis_ref=_exact(payload["supersession_basis_ref"]), **selection)
+                    else:
+                        replay.declare_no_current(key, reason_ref=_exact(payload["reason_ref"]),
+                            subject_release_ref=event.release_ref, **selection)
+                elif kind == "PRODUCT_WITHDRAWN":
+                    keys = replay._current_keys_for_release(event.release_ref)
+                    targets, attestation = transitions(index + 1, keys)
+                    replay.withdraw_product(event.release_ref,
+                        withdrawal_reason_ref=_exact(payload["withdrawal_reason_ref"]),
+                        withdrawal_scope_ref=_exact(payload["withdrawal_scope_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "PRODUCT_INVALIDATED":
+                    changed = _determinant_refs(payload["changed_determinant_refs"])
+                    direct, transitive = replay.determinant_graph.affected(changed)
+                    affected = _exact_refs(direct + transitive)
+                    keys = {key.ref.key: key for release in affected
+                            for key in replay._current_keys_for_release(release)}
+                    targets, attestation = transitions(index + len(affected), tuple(keys.values()))
+                    replay.declare_invalidation(changed,
+                        dependency_closure_receipt_ref=_exact_any(payload["dependency_closure_receipt_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                    mechanism = _optional_exact(payload["execution_mechanism_ref"], allow_authority_kind=True)
+                    inputs = tuple(_exact_any(row) for row in payload["reconstruction_input_refs"])
+                    # With no dependencies, a live mechanism plus REBUILD_NOT_PROVED
+                    # is evidence of absent explicit inputs. Otherwise using the
+                    # canonical input set regenerates exactly the same receipt.
+                    if (mechanism is not None and "REBUILD_NOT_PROVED" in payload["blocker_states"]
+                            and not replay._subject(event.release_ref).direct_dependency_refs):
+                        inputs = ()
+                    replay.record_rebuild_eligibility(event.release_ref,
+                        execution_mechanism_ref=mechanism, source_or_upstream_refs=inputs,
+                        historical=payload["rebuild_state"] == "HISTORICAL_REPLAY_ELIGIBLE", **common)
+                elif kind == "PRODUCT_REBUILT":
+                    replay.link_rebuild(event.release_ref,
+                        new_release_ref=_optional_exact(payload["new_release_ref"]),
+                        rebuild_state=payload["rebuild_state"],
+                        rebuild_determinant_set_hash=payload["rebuild_determinant_set_hash"],
+                        replay_or_execution_receipt_ref=_exact(payload["replay_or_execution_receipt_ref"]), **common)
+                elif kind in {"CACHE_MATERIALIZED", "CACHE_DROPPED"}:
+                    operation = replay.record_cache_materialized if kind == "CACHE_MATERIALIZED" else replay.record_cache_dropped
+                    operation(event.release_ref, cache_ref=_exact(payload["cache_ref"]), **basic)
+                elif kind == "GC_ELIGIBILITY_ATTESTED":
+                    proofs = {name: _exact(payload[name]) for name in (
+                        "reconstruction_proof_ref", "historical_retention_proof_ref",
+                        "serving_reconstruction_proof_ref", "downstream_byte_dependency_absence_proof_ref",
+                        "source_carrier_retention_proof_ref")}
+                    replay.attest_gc_eligibility(event.release_ref, **proofs, **common)
+                elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                    replay.record_payload_gc(_exact_any(payload["gc_eligibility_receipt_ref"]), **basic)
+                else:
+                    raise LearnedProductLifecycleConflict("checkpoint event has no native operation")
+                generated = replay._events[before:]
+                expected = self._events[index:index + len(generated)]
+                if not generated or generated != expected:
+                    raise LearnedProductLifecycleConflict("checkpoint event semantics differ from native operation")
+                index += len(generated)
+    
+            # Legacy no-op receipts lack a history anchor. They must match an
+            # actual registration prefix graph; they cannot affect any release.
+            # This preserves lawful no-op history without inventing an ordinal.
+            for receipt in self._invalidations.values():
+                if receipt.invalidation_event_refs:
+                    continue
+                valid = False
+                for graph in graphs:
+                    direct, transitive = graph.affected(receipt.changed_determinant_refs)
+                    if direct or transitive:
+                        continue
+                    unaffected = graph.unaffected(())
+                    expected = InvalidationReceipt(
+                        changed_determinant_refs=receipt.changed_determinant_refs,
+                        directly_affected_release_refs=(), transitively_affected_release_refs=(),
+                        affected_product_refs=(),
+                        unaffected_product_refs=tuple(replay._subject(ref).product_ref for ref in unaffected),
+                        dependency_closure_receipt_ref=receipt.dependency_closure_receipt_ref,
+                        invalidation_event_refs=())
+                    if receipt == expected:
+                        valid = True
+                        break
+                if not valid:
+                    raise LearnedProductLifecycleConflict("invalid no-op invalidation receipt")
+                replay._invalidations[receipt.ref.key] = receipt
+            if replay._checkpoint_payload() != self._checkpoint_payload():
+&gt;               raise LearnedProductLifecycleConflict("checkpoint receipts/state differ from native operations")
+E               rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint receipts/state differ from native operations
+
+rawlsing_next/pre553_learned_product_lifecycle.py:1848: LearnedProductLifecycleConflict
+
+The above exception was the direct cause of the following exception:
+
+    def test_OBSERVED_rebuild_receipt_can_link_event_for_different_release():
+        x = B5()
+        a = register(x, subject('receipt-a'))
+        b = register(x, subject('receipt-b'))
+        receipt = x.record_rebuild_eligibility(a.release_ref, event_authority_ref=ref('Authority', 'rebuild'),
+            event_rule_ref=ref('Rule', 'rebuild'), execution_mechanism_ref=None)
+        cp = x.export_checkpoint()
+        cp['checkpoint_payload']['rebuild_eligibility'] = [replace(receipt, release_ref=b.release_ref).as_dict()]
+        cp['checkpoint_hash'] = semantic_hash(cp['checkpoint_payload'])
+&gt;       restored = B5.from_checkpoint(cp)
+                   ^^^^^^^^^^^^^^^^^^^^^^
+
+WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py:233: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_learned_product_lifecycle.py:3363: in from_checkpoint
+    executor._verify_native_checkpoint_semantics()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10e1bd110&gt;
+
+    def _verify_native_checkpoint_semantics(self) -&gt; None:
+        """Re-execute owner operations; compare entire events, receipts and state.
+    
+        Payload arguments remain unauthenticated local claims. Re-execution binds
+        their internal relationships, not issuer entitlement or history custody.
+        """
+        replay = LearnedProductLifecycleExecutor()
+        for subject in self._repository_subjects.values():
+            replay.stage_release(subject)
+        replay._selection_keys = dict(self._selection_keys)
+        graphs = [replay.determinant_graph]
+        index = 0
+    
+        def transitions(start, keys):
+            rows = self._events[start:start + len(keys)]
+            if len(rows) != len(keys):
+                raise LearnedProductLifecycleConflict("missing explicit transition events")
+            result = {}
+            for row in rows:
+                if row.event_kind not in {"CURRENT_CLEARED", "CURRENT_SELECTED"}:
+                    raise LearnedProductLifecycleConflict("invalid explicit transition event")
+                key = _exact(row.payload["selection_key_ref"])
+                if key.key in result:
+                    raise LearnedProductLifecycleConflict("duplicate transition key")
+                result[key.key] = None if row.event_kind == "CURRENT_CLEARED" else row.release_ref
+            if set(result) != {key.ref.key for key in keys}:
+                raise LearnedProductLifecycleConflict("transition key set mismatch")
+            attestation = _exact(rows[0].payload["selection_attestation_ref"]) if rows else self._events[index].event_authority_ref
+            return result, attestation
+    
+        try:
+            while index &lt; len(self._events):
+                event = self._events[index]
+                payload = event.payload
+                common = dict(event_authority_ref=event.event_authority_ref,
+                              event_rule_ref=event.event_rule_ref, evidence_refs=event.evidence_refs)
+                basic = {name: value for name, value in common.items() if name != "evidence_refs"}
+                before = len(replay._events)
+                kind = event.event_kind
+                if kind == "PRODUCT_REGISTERED":
+                    replay.register_product(event.release_ref, **common)
+                    graphs.append(replay.determinant_graph)
+                elif kind == "PRODUCT_PUBLISHED":
+                    replay.publish_product(event.release_ref, **common)
+                elif kind == "RECERTIFIES":
+                    replay.record_recertification(event.release_ref,
+                        attestation_ref=_exact(payload["attestation_ref"]), **common)
+                elif kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                    key = _exact(payload["selection_key_ref"])
+                    previous = replay._selection_index.get(key.key)
+                    selection = dict(expected_previous_receipt_ref=previous,
+                        selection_attestation_ref=_exact(payload["selection_attestation_ref"]), **common)
+                    if kind == "CURRENT_SELECTED":
+                        replay.select_current(key, event.release_ref, **selection)
+                    elif kind == "CURRENT_SUPERSEDED":
+                        replay.supersede_current(key,
+                            predecessor_release_ref=_exact(payload["predecessor_release_ref"]),
+                            successor_release_ref=event.release_ref,
+                            supersession_basis_ref=_exact(payload["supersession_basis_ref"]), **selection)
+                    else:
+                        replay.declare_no_current(key, reason_ref=_exact(payload["reason_ref"]),
+                            subject_release_ref=event.release_ref, **selection)
+                elif kind == "PRODUCT_WITHDRAWN":
+                    keys = replay._current_keys_for_release(event.release_ref)
+                    targets, attestation = transitions(index + 1, keys)
+                    replay.withdraw_product(event.release_ref,
+                        withdrawal_reason_ref=_exact(payload["withdrawal_reason_ref"]),
+                        withdrawal_scope_ref=_exact(payload["withdrawal_scope_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "PRODUCT_INVALIDATED":
+                    changed = _determinant_refs(payload["changed_determinant_refs"])
+                    direct, transitive = replay.determinant_graph.affected(changed)
+                    affected = _exact_refs(direct + transitive)
+                    keys = {key.ref.key: key for release in affected
+                            for key in replay._current_keys_for_release(release)}
+                    targets, attestation = transitions(index + len(affected), tuple(keys.values()))
+                    replay.declare_invalidation(changed,
+                        dependency_closure_receipt_ref=_exact_any(payload["dependency_closure_receipt_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                    mechanism = _optional_exact(payload["execution_mechanism_ref"], allow_authority_kind=True)
+                    inputs = tuple(_exact_any(row) for row in payload["reconstruction_input_refs"])
+                    # With no dependencies, a live mechanism plus REBUILD_NOT_PROVED
+                    # is evidence of absent explicit inputs. Otherwise using the
+                    # canonical input set regenerates exactly the same receipt.
+                    if (mechanism is not None and "REBUILD_NOT_PROVED" in payload["blocker_states"]
+                            and not replay._subject(event.release_ref).direct_dependency_refs):
+                        inputs = ()
+                    replay.record_rebuild_eligibility(event.release_ref,
+                        execution_mechanism_ref=mechanism, source_or_upstream_refs=inputs,
+                        historical=payload["rebuild_state"] == "HISTORICAL_REPLAY_ELIGIBLE", **common)
+                elif kind == "PRODUCT_REBUILT":
+                    replay.link_rebuild(event.release_ref,
+                        new_release_ref=_optional_exact(payload["new_release_ref"]),
+                        rebuild_state=payload["rebuild_state"],
+                        rebuild_determinant_set_hash=payload["rebuild_determinant_set_hash"],
+                        replay_or_execution_receipt_ref=_exact(payload["replay_or_execution_receipt_ref"]), **common)
+                elif kind in {"CACHE_MATERIALIZED", "CACHE_DROPPED"}:
+                    operation = replay.record_cache_materialized if kind == "CACHE_MATERIALIZED" else replay.record_cache_dropped
+                    operation(event.release_ref, cache_ref=_exact(payload["cache_ref"]), **basic)
+                elif kind == "GC_ELIGIBILITY_ATTESTED":
+                    proofs = {name: _exact(payload[name]) for name in (
+                        "reconstruction_proof_ref", "historical_retention_proof_ref",
+                        "serving_reconstruction_proof_ref", "downstream_byte_dependency_absence_proof_ref",
+                        "source_carrier_retention_proof_ref")}
+                    replay.attest_gc_eligibility(event.release_ref, **proofs, **common)
+                elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                    replay.record_payload_gc(_exact_any(payload["gc_eligibility_receipt_ref"]), **basic)
+                else:
+                    raise LearnedProductLifecycleConflict("checkpoint event has no native operation")
+                generated = replay._events[before:]
+                expected = self._events[index:index + len(generated)]
+                if not generated or generated != expected:
+                    raise LearnedProductLifecycleConflict("checkpoint event semantics differ from native operation")
+                index += len(generated)
+    
+            # Legacy no-op receipts lack a history anchor. They must match an
+            # actual registration prefix graph; they cannot affect any release.
+            # This preserves lawful no-op history without inventing an ordinal.
+            for receipt in self._invalidations.values():
+                if receipt.invalidation_event_refs:
+                    continue
+                valid = False
+                for graph in graphs:
+                    direct, transitive = graph.affected(receipt.changed_determinant_refs)
+                    if direct or transitive:
+                        continue
+                    unaffected = graph.unaffected(())
+                    expected = InvalidationReceipt(
+                        changed_determinant_refs=receipt.changed_determinant_refs,
+                        directly_affected_release_refs=(), transitively_affected_release_refs=(),
+                        affected_product_refs=(),
+                        unaffected_product_refs=tuple(replay._subject(ref).product_ref for ref in unaffected),
+                        dependency_closure_receipt_ref=receipt.dependency_closure_receipt_ref,
+                        invalidation_event_refs=())
+                    if receipt == expected:
+                        valid = True
+                        break
+                if not valid:
+                    raise LearnedProductLifecycleConflict("invalid no-op invalidation receipt")
+                replay._invalidations[receipt.ref.key] = receipt
+            if replay._checkpoint_payload() != self._checkpoint_payload():
+                raise LearnedProductLifecycleConflict("checkpoint receipts/state differ from native operations")
+        except (KeyError, TypeError, ValueError, IndexError, LearnedProductLifecycleError) as exc:
+&gt;           raise LearnedProductLifecycleConflict(f"checkpoint semantic replay rejected: {exc}") from exc
+E           rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint semantic replay rejected: checkpoint receipts/state differ from native operations
+
+rawlsing_next/pre553_learned_product_lifecycle.py:1850: LearnedProductLifecycleConflict</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_duplicate_subject_identity_and_invalid_recertification_refuse" time="0.010" /><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_actual_m2_release_to_subject_route_and_b5_crosscheck" time="0.001" /><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_current_asof_stale_selection_and_withdrawal_are_distinct" time="0.054" /><testcase classname="WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review" name="test_cache_and_rebuild_link_native_local_roundtrip" time="0.045" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[stage_release]" time="0.194" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[stage_protocol]" time="0.188" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[selection_key]" time="0.192" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[register_product]" time="0.192" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[publish_product]" time="0.188" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[record_recertification]" time="0.192" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[select_current]" time="0.191" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[declare_no_current]" time="0.196" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[supersede_current]" time="0.193" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[withdraw_product]" time="0.192" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[declare_invalidation]" time="0.199" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[record_rebuild_eligibility]" time="0.197" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[link_rebuild]" time="0.215" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[record_cache_materialized]" time="0.194" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[record_cache_dropped]" time="0.186" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[attest_gc_eligibility]" time="0.196" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[record_payload_gc]" time="0.187" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_recursive_snapshot_detachment" time="0.234" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_rehashed_event_semantic_drift_refused[PRODUCT_REGISTERED-determinant_set_hash]" time="0.014" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_rehashed_event_semantic_drift_refused[PRODUCT_PUBLISHED-replay_root_ref]" time="0.022" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_rehashed_event_semantic_drift_refused[PRODUCT_PUBLISHED-producer_permission_ceiling]" time="0.023" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_rehashed_event_semantic_drift_refused[CURRENT_SELECTED-determinant_snapshot_ref]" time="0.036" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_missing_receipt_family_is_not_replayable[selection_receipts]" time="0.130" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_missing_receipt_family_is_not_replayable[no_current_receipts]" time="0.117" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_missing_receipt_family_is_not_replayable[invalidations]" time="0.152" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_missing_receipt_family_is_not_replayable[rebuild_eligibility]" time="0.160" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_missing_receipt_family_is_not_replayable[rebuild_links]" time="0.154" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_missing_receipt_family_is_not_replayable[gc_eligibility]" time="0.159" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_four_concurrent_public_selectors[False]" time="0.321" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_four_concurrent_public_selectors[True]" time="0.406" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_public_m2_colliding_preimages[subject]" time="0.010" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_public_m2_colliding_preimages[representation]" time="0.013" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_m2_baseexception_rollback_and_retry[register_subject]" time="0.002" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_m2_baseexception_rollback_and_retry[register_closure]" time="0.002" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_m2_baseexception_rollback_and_retry[register_release]" time="0.002" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_m2_baseexception_rollback_and_retry[register_representation]" time="0.002" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_m2_baseexception_rollback_and_retry[register_binding]" time="0.002" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_saved_helpers_and_unwrapped_bodies_refuse" time="0.137" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_m2_early_refusal_lawful_foreign_mismatch_and_same_release_failover" time="0.005" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_full_world_consumer_n04_and_fresh_process" time="0.447" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_rehashed_receipt_field_mismatch_refused[selection_receipts-selection_authority_refs]" time="0.127" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_rehashed_receipt_field_mismatch_refused[no_current_receipts-selection_attestation_refs]" time="0.155" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_rehashed_receipt_field_mismatch_refused[invalidations-unaffected_product_refs]" time="0.152" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_rehashed_receipt_field_mismatch_refused[rebuild_eligibility-release_ref]" time="0.162" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_rehashed_receipt_field_mismatch_refused[rebuild_links-old_release_ref]" time="0.169" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_rehashed_receipt_field_mismatch_refused[gc_eligibility-release_ref]" time="0.187" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_public_reader_waits_until_rollback" time="0.119" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_m2_nested_metadata_cannot_change_release_closure" time="0.001" /></testsuite></testsuites>

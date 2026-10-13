@@ -1,0 +1,97 @@
+[
+  {
+    "requirement": "Recursive public event/history immutability",
+    "verdict": "PASS",
+    "evidence": "own recursive snapshot and unchanged prior immutability oracle pass"
+  },
+  {
+    "requirement": "Detached state/checkpoint and input exports",
+    "verdict": "PASS",
+    "evidence": "own snapshot, restored checkpoint survives caller-container mutation"
+  },
+  {
+    "requirement": "Publication/registration subject semantics",
+    "verdict": "PASS",
+    "evidence": "rehashed final event drift refuses on semantic replay, not stale hash"
+  },
+  {
+    "requirement": "Exact receipt fields, release/event/subject linkage and cardinality",
+    "verdict": "PASS",
+    "evidence": "six receipt omission cases, six rehashed field cases; author 42-case repair court additionally passes"
+  },
+  {
+    "requirement": "Concurrent same/distinct-key selectors",
+    "verdict": "PASS",
+    "evidence": "four public callers, eight trials per variant; exactly one winner per key, all histories restore"
+  },
+  {
+    "requirement": "M2 subject/locator collision serialization",
+    "verdict": "PASS",
+    "evidence": "two public record writers, eight trials per variant; winner retained, retry idempotent"
+  },
+  {
+    "requirement": "All 17 B5 and five M2 exception rollback/retry",
+    "verdict": "PASS",
+    "evidence": "own post-write BaseException injection, full state equality and lawful retry; B5 cold restore"
+  },
+  {
+    "requirement": "Public reader pending mutation visibility",
+    "verdict": "PASS",
+    "evidence": "reader blocks then observes exact rollback"
+  },
+  {
+    "requirement": "Saved helpers/unwrapped bodies out-of-transaction",
+    "verdict": "PASS",
+    "evidence": "native guards refuse; no arbitrary Python isolation"
+  },
+  {
+    "requirement": "N04 exact release to producer-subject route",
+    "verdict": "PASS",
+    "evidence": "full-world spy requires release_subject_ref; identities distinct"
+  },
+  {
+    "requirement": "Actual source-free consumer compatibility",
+    "verdict": "PASS",
+    "evidence": "full M01/M1/M2/B5 composition, current receipt and fresh process checkpoint equivalence; 45 unchanged adjacent passes"
+  },
+  {
+    "requirement": "Inherited M2 early refusal and lawful downstream mismatch",
+    "verdict": "PASS",
+    "evidence": "early RELEASE_UNAVAILABLE retained; lawful foreign registration then PUBLICATION_BINDING_MISMATCH, same-release failover works"
+  },
+  {
+    "requirement": "Authenticated issuer/subject entitlement/permission ceiling",
+    "verdict": "HOLD",
+    "evidence": "no independent issuer or credential furnished; constructor refs do not grant authority"
+  },
+  {
+    "requirement": "External anchored history authenticity/completeness",
+    "verdict": "HOLD",
+    "evidence": "coherent whole-history replacement remains locally replayable; no custody root"
+  },
+  {
+    "requirement": "Authenticated epochs, expiry, revocation and protected CURRENT",
+    "verdict": "HOLD",
+    "evidence": "native checkpoint has no authenticated issuer epoch/revocation source; external modes refuse"
+  },
+  {
+    "requirement": "Python same-process principal isolation",
+    "verdict": "FAIL_AS_SECURITY_BOUNDARY",
+    "evidence": "private dictionaries, transaction context and replaceable methods remain reachable; explicit non-goal, not new repair regression"
+  },
+  {
+    "requirement": "OS-kill/durable/multiprocess/distributed atomicity",
+    "verdict": "HOLD",
+    "evidence": "only in-memory thread serialization, exception rollback, complete checkpoint restart tested"
+  },
+  {
+    "requirement": "No-op invalidation anchored timing/completeness",
+    "verdict": "HOLD",
+    "evidence": "legacy zero-event receipts have only registration-prefix graph consistency; precise time/omission not provable"
+  },
+  {
+    "requirement": "Large-history throughput/production scale",
+    "verdict": "HOLD",
+    "evidence": "snapshot copies and semantic replay may be quadratic; no production-scale qualification"
+  }
+]

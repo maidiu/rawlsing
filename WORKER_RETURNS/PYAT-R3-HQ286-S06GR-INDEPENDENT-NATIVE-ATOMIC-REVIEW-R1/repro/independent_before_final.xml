@@ -1,0 +1,2098 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="42" skipped="0" tests="48" time="4.566" timestamp="2026-10-13T12:26:55.035805-04:00" hostname="Matthews-MBP.lan"><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[stage_release]" time="0.092"><failure message="AssertionError: assert {'checkpoint_...2287def01f9e'} == {'checkpoint_...86e8979fe126'}&#10;  &#10;  Differing items:&#10;  {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}} != {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}}&#10;  {'checkpoint_hash': 'ebca7f30cae02d7de2bae6da970da82b6062838c19c3ce632037228...&#10;  &#10;  ...Full output truncated (2 lines hidden), use '-vv' to show">name = 'stage_release'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10c8d71d0&gt;
+
+    @pytest.mark.parametrize('name', WRITERS)
+    def test_baseexception_rollback_then_success_and_recovery(name, monkeypatch):
+        x,a,b,k,ops = fixture(); cp = roundtrip(x)
+        if name in ('stage_release','stage_protocol','selection_key'):
+            store = '_selection_keys' if name == 'selection_key' else '_repository_subjects'
+            class FaultDict(dict):
+                def __setitem__(self,k,v):
+                    super().__setitem__(k,v); raise Fault('post-write')
+            original = getattr(x,store)
+            monkeypatch.setattr(x,store,FaultDict(original))
+        else:
+            original = x._append_events
+            def fail(events):
+                original(events); raise Fault('post-append')
+            monkeypatch.setattr(x,'_append_events',fail)
+        with pytest.raises(Fault): ops[name]()
+&gt;       assert roundtrip(x) == cp
+E       AssertionError: assert {'checkpoint_...2287def01f9e'} == {'checkpoint_...86e8979fe126'}
+E         
+E         Differing items:
+E         {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}} != {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}}
+E         {'checkpoint_hash': 'ebca7f30cae02d7de2bae6da970da82b6062838c19c3ce632037228...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:81: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[stage_protocol]" time="0.080"><failure message="AssertionError: assert {'checkpoint_...2287def01f9e'} == {'checkpoint_...86e8979fe126'}&#10;  &#10;  Differing items:&#10;  {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}} != {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}}&#10;  {'checkpoint_hash': 'ebca7f30cae02d7de2bae6da970da82b6062838c19c3ce632037228...&#10;  &#10;  ...Full output truncated (2 lines hidden), use '-vv' to show">name = 'stage_protocol'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10caaa750&gt;
+
+    @pytest.mark.parametrize('name', WRITERS)
+    def test_baseexception_rollback_then_success_and_recovery(name, monkeypatch):
+        x,a,b,k,ops = fixture(); cp = roundtrip(x)
+        if name in ('stage_release','stage_protocol','selection_key'):
+            store = '_selection_keys' if name == 'selection_key' else '_repository_subjects'
+            class FaultDict(dict):
+                def __setitem__(self,k,v):
+                    super().__setitem__(k,v); raise Fault('post-write')
+            original = getattr(x,store)
+            monkeypatch.setattr(x,store,FaultDict(original))
+        else:
+            original = x._append_events
+            def fail(events):
+                original(events); raise Fault('post-append')
+            monkeypatch.setattr(x,'_append_events',fail)
+        with pytest.raises(Fault): ops[name]()
+&gt;       assert roundtrip(x) == cp
+E       AssertionError: assert {'checkpoint_...2287def01f9e'} == {'checkpoint_...86e8979fe126'}
+E         
+E         Differing items:
+E         {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}} != {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}}
+E         {'checkpoint_hash': 'ebca7f30cae02d7de2bae6da970da82b6062838c19c3ce632037228...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:81: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[selection_key]" time="0.079"><failure message="AssertionError: assert {'checkpoint_...d20ff6487da4'} == {'checkpoint_...86e8979fe126'}&#10;  &#10;  Differing items:&#10;  {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}} != {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}}&#10;  {'checkpoint_hash': '80bb0f7c0925e817195063ec9b3481982a87d784d753bc098efbd20...&#10;  &#10;  ...Full output truncated (2 lines hidden), use '-vv' to show">name = 'selection_key'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10ca6ec50&gt;
+
+    @pytest.mark.parametrize('name', WRITERS)
+    def test_baseexception_rollback_then_success_and_recovery(name, monkeypatch):
+        x,a,b,k,ops = fixture(); cp = roundtrip(x)
+        if name in ('stage_release','stage_protocol','selection_key'):
+            store = '_selection_keys' if name == 'selection_key' else '_repository_subjects'
+            class FaultDict(dict):
+                def __setitem__(self,k,v):
+                    super().__setitem__(k,v); raise Fault('post-write')
+            original = getattr(x,store)
+            monkeypatch.setattr(x,store,FaultDict(original))
+        else:
+            original = x._append_events
+            def fail(events):
+                original(events); raise Fault('post-append')
+            monkeypatch.setattr(x,'_append_events',fail)
+        with pytest.raises(Fault): ops[name]()
+&gt;       assert roundtrip(x) == cp
+E       AssertionError: assert {'checkpoint_...d20ff6487da4'} == {'checkpoint_...86e8979fe126'}
+E         
+E         Differing items:
+E         {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}} != {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}}
+E         {'checkpoint_hash': '80bb0f7c0925e817195063ec9b3481982a87d784d753bc098efbd20...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:81: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[register_product]" time="0.062"><failure message="rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint registration differs from events">name = 'register_product'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10ca6d890&gt;
+
+    @pytest.mark.parametrize('name', WRITERS)
+    def test_baseexception_rollback_then_success_and_recovery(name, monkeypatch):
+        x,a,b,k,ops = fixture(); cp = roundtrip(x)
+        if name in ('stage_release','stage_protocol','selection_key'):
+            store = '_selection_keys' if name == 'selection_key' else '_repository_subjects'
+            class FaultDict(dict):
+                def __setitem__(self,k,v):
+                    super().__setitem__(k,v); raise Fault('post-write')
+            original = getattr(x,store)
+            monkeypatch.setattr(x,store,FaultDict(original))
+        else:
+            original = x._append_events
+            def fail(events):
+                original(events); raise Fault('post-append')
+            monkeypatch.setattr(x,'_append_events',fail)
+        with pytest.raises(Fault): ops[name]()
+&gt;       assert roundtrip(x) == cp
+               ^^^^^^^^^^^^
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:26: in roundtrip
+    assert B5.from_checkpoint(cp).export_checkpoint() == cp
+           ^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/baseline_mz3f8bxc/rawlsing_next/pre553_learned_product_lifecycle.py:3082: in from_checkpoint
+    executor._verify_native_checkpoint_history()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10cc27e10&gt;
+
+    def _verify_native_checkpoint_history(self) -&gt; None:
+        """Compare native projections to the typed event chain, not saved maps.
+    
+        This proves LOCAL consistency only. A coherent replacement history still
+        requires an independently witnessed ordinal/root to prove completeness.
+        """
+        registered: set[str] = set()
+        publication: dict[str, str] = {}
+        validity: dict[str, str] = {}
+        replay: dict[str, str] = {}
+        rebuild: dict[str, str] = {}
+        materialization: dict[str, str] = {}
+        payload_materialized: dict[str, bool] = {}
+        selection_index: dict[str, ExactRef] = {}
+        selection_kind: dict[str, str] = {}
+        seen_selection_events: set[str] = set()
+        selection_events = {
+            receipt.current_select_event_ref.key: receipt
+            for receipt in self._selection_receipts.values()
+        }
+        no_current_events = {
+            receipt.no_current_event_ref.key: receipt
+            for receipt in self._no_current_receipts.values()
+        }
+        if len(selection_events) != len(self._selection_receipts):
+            raise LearnedProductLifecycleConflict("multiple selection receipts for one event")
+        if len(no_current_events) != len(self._no_current_receipts):
+            raise LearnedProductLifecycleConflict("multiple NO_CURRENT receipts for one event")
+        previous_ref: ExactRef | None = None
+        for ordinal, event in enumerate(self._events, 1):
+            if event.ordinal != ordinal or event.parent_lifecycle_event_ref != previous_ref:
+                raise LearnedProductLifecycleConflict("checkpoint event sequence/parent mismatch")
+            previous_ref = event.ref
+            subject = self._repository_subjects.get(event.release_ref.key)
+            if (
+                subject is None
+                or subject.product_ref != event.product_ref
+                or subject.selection_scope_ref != event.selection_scope_ref
+            ):
+                raise LearnedProductLifecycleConflict("checkpoint event subject/scope mismatch")
+            release_key = event.release_ref.key
+            kind = event.event_kind
+            if kind == "PRODUCT_REGISTERED":
+                if release_key in registered:
+                    raise LearnedProductLifecycleConflict("duplicate registration event")
+                registered.add(release_key)
+                publication[release_key] = "UNPUBLISHED"
+                validity[release_key] = "VALID"
+                replay[release_key] = subject.replay_state
+                rebuild[release_key] = subject.rebuild_state
+                materialization[release_key] = subject.materialization_class
+                payload_materialized[release_key] = True
+            elif release_key not in registered:
+                raise LearnedProductLifecycleConflict("unregistered release has lifecycle event")
+            elif kind == "PRODUCT_PUBLISHED":
+                if publication[release_key] == "PUBLISHED":
+                    raise LearnedProductLifecycleConflict("duplicate publication event")
+                publication[release_key] = "PUBLISHED"
+            elif kind == "PRODUCT_WITHDRAWN":
+                validity[release_key] = "WITHDRAWN"
+            elif kind == "PRODUCT_INVALIDATED":
+                validity[release_key] = "INVALIDATED_REBUILD_REQUIRED"
+                rebuild[release_key] = "REBUILD_NOT_REQUESTED"
+            elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                state = event.payload.get("rebuild_state")
+                if state not in REBUILD_STATES:
+                    raise LearnedProductLifecycleConflict("invalid event-derived rebuild state")
+                rebuild[release_key] = state
+            elif kind == "CACHE_MATERIALIZED":
+                if subject.materialization_class != "OPTIONAL_CACHE_ACCELERATOR":
+                    raise LearnedProductLifecycleConflict("invalid cache materialization event")
+                payload_materialized[release_key] = True
+            elif kind == "CACHE_DROPPED":
+                if subject.materialization_class != "OPTIONAL_CACHE_ACCELERATOR":
+                    raise LearnedProductLifecycleConflict("invalid cache drop event")
+                payload_materialized[release_key] = False
+            elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                if subject.materialization_class != "RECOMPUTABLE_PRODUCT_PAYLOAD":
+                    raise LearnedProductLifecycleConflict("invalid payload GC event")
+                payload_materialized[release_key] = False
+            if kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                raw_key = event.payload.get("selection_key_ref")
+                if raw_key is None:
+                    raise LearnedProductLifecycleConflict("selection event lacks exact key")
+                key_ref = _exact(raw_key)
+                key = self._selection_keys.get(key_ref.key)
+                if (
+                    key is None
+                    or key.product_family_ref != subject.product_family_ref
+                    or key.selection_scope_ref != subject.selection_scope_ref
+                ):
+                    raise LearnedProductLifecycleConflict("selection event family/scope mismatch")
+                previous = selection_index.get(key_ref.key)
+                if kind == "CURRENT_CLEARED":
+                    receipt = no_current_events.get(event.ref.key)
+                    if receipt is None:
+                        raise LearnedProductLifecycleConflict("NO_CURRENT event lacks receipt")
+                    if receipt.previous_selection_receipt_ref != previous:
+                        raise LearnedProductLifecycleConflict("NO_CURRENT predecessor mismatch")
+                    selection_kind[key_ref.key] = "NO_CURRENT"
+                else:
+                    receipt = selection_events.get(event.ref.key)
+                    if receipt is None or receipt.selected_release_ref != event.release_ref:
+                        raise LearnedProductLifecycleConflict("selected event/release mismatch")
+                    if receipt.previous_selection_receipt_ref != previous:
+                        raise LearnedProductLifecycleConflict("current predecessor mismatch")
+                    if publication[release_key] != "PUBLISHED" or validity[release_key] != "VALID":
+                        raise LearnedProductLifecycleConflict("unpublished/invalid selected release")
+                    if kind == "CURRENT_SUPERSEDED" and previous is None:
+                        raise LearnedProductLifecycleConflict("supersession lacks predecessor")
+                    selection_kind[key_ref.key] = "CURRENT_SELECTED"
+                selection_index[key_ref.key] = receipt.ref
+                seen_selection_events.add(event.ref.key)
+        if registered != self._registered:
+&gt;           raise LearnedProductLifecycleConflict("checkpoint registration differs from events")
+E           rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint registration differs from events
+
+WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/baseline_mz3f8bxc/rawlsing_next/pre553_learned_product_lifecycle.py:1584: LearnedProductLifecycleConflict</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[publish_product]" time="0.068"><failure message="rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint publication differs from native event replay">name = 'publish_product'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10cca60d0&gt;
+
+    @pytest.mark.parametrize('name', WRITERS)
+    def test_baseexception_rollback_then_success_and_recovery(name, monkeypatch):
+        x,a,b,k,ops = fixture(); cp = roundtrip(x)
+        if name in ('stage_release','stage_protocol','selection_key'):
+            store = '_selection_keys' if name == 'selection_key' else '_repository_subjects'
+            class FaultDict(dict):
+                def __setitem__(self,k,v):
+                    super().__setitem__(k,v); raise Fault('post-write')
+            original = getattr(x,store)
+            monkeypatch.setattr(x,store,FaultDict(original))
+        else:
+            original = x._append_events
+            def fail(events):
+                original(events); raise Fault('post-append')
+            monkeypatch.setattr(x,'_append_events',fail)
+        with pytest.raises(Fault): ops[name]()
+&gt;       assert roundtrip(x) == cp
+               ^^^^^^^^^^^^
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:26: in roundtrip
+    assert B5.from_checkpoint(cp).export_checkpoint() == cp
+           ^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/baseline_mz3f8bxc/rawlsing_next/pre553_learned_product_lifecycle.py:3082: in from_checkpoint
+    executor._verify_native_checkpoint_history()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10cba82d0&gt;
+
+    def _verify_native_checkpoint_history(self) -&gt; None:
+        """Compare native projections to the typed event chain, not saved maps.
+    
+        This proves LOCAL consistency only. A coherent replacement history still
+        requires an independently witnessed ordinal/root to prove completeness.
+        """
+        registered: set[str] = set()
+        publication: dict[str, str] = {}
+        validity: dict[str, str] = {}
+        replay: dict[str, str] = {}
+        rebuild: dict[str, str] = {}
+        materialization: dict[str, str] = {}
+        payload_materialized: dict[str, bool] = {}
+        selection_index: dict[str, ExactRef] = {}
+        selection_kind: dict[str, str] = {}
+        seen_selection_events: set[str] = set()
+        selection_events = {
+            receipt.current_select_event_ref.key: receipt
+            for receipt in self._selection_receipts.values()
+        }
+        no_current_events = {
+            receipt.no_current_event_ref.key: receipt
+            for receipt in self._no_current_receipts.values()
+        }
+        if len(selection_events) != len(self._selection_receipts):
+            raise LearnedProductLifecycleConflict("multiple selection receipts for one event")
+        if len(no_current_events) != len(self._no_current_receipts):
+            raise LearnedProductLifecycleConflict("multiple NO_CURRENT receipts for one event")
+        previous_ref: ExactRef | None = None
+        for ordinal, event in enumerate(self._events, 1):
+            if event.ordinal != ordinal or event.parent_lifecycle_event_ref != previous_ref:
+                raise LearnedProductLifecycleConflict("checkpoint event sequence/parent mismatch")
+            previous_ref = event.ref
+            subject = self._repository_subjects.get(event.release_ref.key)
+            if (
+                subject is None
+                or subject.product_ref != event.product_ref
+                or subject.selection_scope_ref != event.selection_scope_ref
+            ):
+                raise LearnedProductLifecycleConflict("checkpoint event subject/scope mismatch")
+            release_key = event.release_ref.key
+            kind = event.event_kind
+            if kind == "PRODUCT_REGISTERED":
+                if release_key in registered:
+                    raise LearnedProductLifecycleConflict("duplicate registration event")
+                registered.add(release_key)
+                publication[release_key] = "UNPUBLISHED"
+                validity[release_key] = "VALID"
+                replay[release_key] = subject.replay_state
+                rebuild[release_key] = subject.rebuild_state
+                materialization[release_key] = subject.materialization_class
+                payload_materialized[release_key] = True
+            elif release_key not in registered:
+                raise LearnedProductLifecycleConflict("unregistered release has lifecycle event")
+            elif kind == "PRODUCT_PUBLISHED":
+                if publication[release_key] == "PUBLISHED":
+                    raise LearnedProductLifecycleConflict("duplicate publication event")
+                publication[release_key] = "PUBLISHED"
+            elif kind == "PRODUCT_WITHDRAWN":
+                validity[release_key] = "WITHDRAWN"
+            elif kind == "PRODUCT_INVALIDATED":
+                validity[release_key] = "INVALIDATED_REBUILD_REQUIRED"
+                rebuild[release_key] = "REBUILD_NOT_REQUESTED"
+            elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                state = event.payload.get("rebuild_state")
+                if state not in REBUILD_STATES:
+                    raise LearnedProductLifecycleConflict("invalid event-derived rebuild state")
+                rebuild[release_key] = state
+            elif kind == "CACHE_MATERIALIZED":
+                if subject.materialization_class != "OPTIONAL_CACHE_ACCELERATOR":
+                    raise LearnedProductLifecycleConflict("invalid cache materialization event")
+                payload_materialized[release_key] = True
+            elif kind == "CACHE_DROPPED":
+                if subject.materialization_class != "OPTIONAL_CACHE_ACCELERATOR":
+                    raise LearnedProductLifecycleConflict("invalid cache drop event")
+                payload_materialized[release_key] = False
+            elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                if subject.materialization_class != "RECOMPUTABLE_PRODUCT_PAYLOAD":
+                    raise LearnedProductLifecycleConflict("invalid payload GC event")
+                payload_materialized[release_key] = False
+            if kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                raw_key = event.payload.get("selection_key_ref")
+                if raw_key is None:
+                    raise LearnedProductLifecycleConflict("selection event lacks exact key")
+                key_ref = _exact(raw_key)
+                key = self._selection_keys.get(key_ref.key)
+                if (
+                    key is None
+                    or key.product_family_ref != subject.product_family_ref
+                    or key.selection_scope_ref != subject.selection_scope_ref
+                ):
+                    raise LearnedProductLifecycleConflict("selection event family/scope mismatch")
+                previous = selection_index.get(key_ref.key)
+                if kind == "CURRENT_CLEARED":
+                    receipt = no_current_events.get(event.ref.key)
+                    if receipt is None:
+                        raise LearnedProductLifecycleConflict("NO_CURRENT event lacks receipt")
+                    if receipt.previous_selection_receipt_ref != previous:
+                        raise LearnedProductLifecycleConflict("NO_CURRENT predecessor mismatch")
+                    selection_kind[key_ref.key] = "NO_CURRENT"
+                else:
+                    receipt = selection_events.get(event.ref.key)
+                    if receipt is None or receipt.selected_release_ref != event.release_ref:
+                        raise LearnedProductLifecycleConflict("selected event/release mismatch")
+                    if receipt.previous_selection_receipt_ref != previous:
+                        raise LearnedProductLifecycleConflict("current predecessor mismatch")
+                    if publication[release_key] != "PUBLISHED" or validity[release_key] != "VALID":
+                        raise LearnedProductLifecycleConflict("unpublished/invalid selected release")
+                    if kind == "CURRENT_SUPERSEDED" and previous is None:
+                        raise LearnedProductLifecycleConflict("supersession lacks predecessor")
+                    selection_kind[key_ref.key] = "CURRENT_SELECTED"
+                selection_index[key_ref.key] = receipt.ref
+                seen_selection_events.add(event.ref.key)
+        if registered != self._registered:
+            raise LearnedProductLifecycleConflict("checkpoint registration differs from events")
+        for name, actual, expected in (
+            ("publication", self._publication, publication),
+            ("validity", self._validity, validity),
+            ("replay", self._replay, replay),
+            ("rebuild", self._rebuild, rebuild),
+            ("materialization", self._materialization, materialization),
+            ("payload_materialized", self._payload_materialized, payload_materialized),
+            ("selection_index", self._selection_index, selection_index),
+            ("selection_state_kind", self._selection_state_kind, selection_kind),
+        ):
+            if actual != expected:
+&gt;               raise LearnedProductLifecycleConflict(
+                    f"checkpoint {name} differs from native event replay"
+                )
+E               rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint publication differs from native event replay
+
+WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/baseline_mz3f8bxc/rawlsing_next/pre553_learned_product_lifecycle.py:1596: LearnedProductLifecycleConflict</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[record_recertification]" time="0.075"><failure message="AssertionError: assert {'checkpoint_...b9ad07aa3ee3'} == {'checkpoint_...86e8979fe126'}&#10;  &#10;  Differing items:&#10;  {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}} != {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}}&#10;  {'checkpoint_hash': '832dfb4ce58ac01608c19843732ac323b1bdf59db2f9cd29c13db9a...&#10;  &#10;  ...Full output truncated (2 lines hidden), use '-vv' to show">name = 'record_recertification'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10cc25290&gt;
+
+    @pytest.mark.parametrize('name', WRITERS)
+    def test_baseexception_rollback_then_success_and_recovery(name, monkeypatch):
+        x,a,b,k,ops = fixture(); cp = roundtrip(x)
+        if name in ('stage_release','stage_protocol','selection_key'):
+            store = '_selection_keys' if name == 'selection_key' else '_repository_subjects'
+            class FaultDict(dict):
+                def __setitem__(self,k,v):
+                    super().__setitem__(k,v); raise Fault('post-write')
+            original = getattr(x,store)
+            monkeypatch.setattr(x,store,FaultDict(original))
+        else:
+            original = x._append_events
+            def fail(events):
+                original(events); raise Fault('post-append')
+            monkeypatch.setattr(x,'_append_events',fail)
+        with pytest.raises(Fault): ops[name]()
+&gt;       assert roundtrip(x) == cp
+E       AssertionError: assert {'checkpoint_...b9ad07aa3ee3'} == {'checkpoint_...86e8979fe126'}
+E         
+E         Differing items:
+E         {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}} != {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}}
+E         {'checkpoint_hash': '832dfb4ce58ac01608c19843732ac323b1bdf59db2f9cd29c13db9a...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:81: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[select_current]" time="0.062"><failure message="rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: selected event/release mismatch">name = 'select_current'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10c8f2e10&gt;
+
+    @pytest.mark.parametrize('name', WRITERS)
+    def test_baseexception_rollback_then_success_and_recovery(name, monkeypatch):
+        x,a,b,k,ops = fixture(); cp = roundtrip(x)
+        if name in ('stage_release','stage_protocol','selection_key'):
+            store = '_selection_keys' if name == 'selection_key' else '_repository_subjects'
+            class FaultDict(dict):
+                def __setitem__(self,k,v):
+                    super().__setitem__(k,v); raise Fault('post-write')
+            original = getattr(x,store)
+            monkeypatch.setattr(x,store,FaultDict(original))
+        else:
+            original = x._append_events
+            def fail(events):
+                original(events); raise Fault('post-append')
+            monkeypatch.setattr(x,'_append_events',fail)
+        with pytest.raises(Fault): ops[name]()
+&gt;       assert roundtrip(x) == cp
+               ^^^^^^^^^^^^
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:26: in roundtrip
+    assert B5.from_checkpoint(cp).export_checkpoint() == cp
+           ^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/baseline_mz3f8bxc/rawlsing_next/pre553_learned_product_lifecycle.py:3082: in from_checkpoint
+    executor._verify_native_checkpoint_history()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10cbee4d0&gt;
+
+    def _verify_native_checkpoint_history(self) -&gt; None:
+        """Compare native projections to the typed event chain, not saved maps.
+    
+        This proves LOCAL consistency only. A coherent replacement history still
+        requires an independently witnessed ordinal/root to prove completeness.
+        """
+        registered: set[str] = set()
+        publication: dict[str, str] = {}
+        validity: dict[str, str] = {}
+        replay: dict[str, str] = {}
+        rebuild: dict[str, str] = {}
+        materialization: dict[str, str] = {}
+        payload_materialized: dict[str, bool] = {}
+        selection_index: dict[str, ExactRef] = {}
+        selection_kind: dict[str, str] = {}
+        seen_selection_events: set[str] = set()
+        selection_events = {
+            receipt.current_select_event_ref.key: receipt
+            for receipt in self._selection_receipts.values()
+        }
+        no_current_events = {
+            receipt.no_current_event_ref.key: receipt
+            for receipt in self._no_current_receipts.values()
+        }
+        if len(selection_events) != len(self._selection_receipts):
+            raise LearnedProductLifecycleConflict("multiple selection receipts for one event")
+        if len(no_current_events) != len(self._no_current_receipts):
+            raise LearnedProductLifecycleConflict("multiple NO_CURRENT receipts for one event")
+        previous_ref: ExactRef | None = None
+        for ordinal, event in enumerate(self._events, 1):
+            if event.ordinal != ordinal or event.parent_lifecycle_event_ref != previous_ref:
+                raise LearnedProductLifecycleConflict("checkpoint event sequence/parent mismatch")
+            previous_ref = event.ref
+            subject = self._repository_subjects.get(event.release_ref.key)
+            if (
+                subject is None
+                or subject.product_ref != event.product_ref
+                or subject.selection_scope_ref != event.selection_scope_ref
+            ):
+                raise LearnedProductLifecycleConflict("checkpoint event subject/scope mismatch")
+            release_key = event.release_ref.key
+            kind = event.event_kind
+            if kind == "PRODUCT_REGISTERED":
+                if release_key in registered:
+                    raise LearnedProductLifecycleConflict("duplicate registration event")
+                registered.add(release_key)
+                publication[release_key] = "UNPUBLISHED"
+                validity[release_key] = "VALID"
+                replay[release_key] = subject.replay_state
+                rebuild[release_key] = subject.rebuild_state
+                materialization[release_key] = subject.materialization_class
+                payload_materialized[release_key] = True
+            elif release_key not in registered:
+                raise LearnedProductLifecycleConflict("unregistered release has lifecycle event")
+            elif kind == "PRODUCT_PUBLISHED":
+                if publication[release_key] == "PUBLISHED":
+                    raise LearnedProductLifecycleConflict("duplicate publication event")
+                publication[release_key] = "PUBLISHED"
+            elif kind == "PRODUCT_WITHDRAWN":
+                validity[release_key] = "WITHDRAWN"
+            elif kind == "PRODUCT_INVALIDATED":
+                validity[release_key] = "INVALIDATED_REBUILD_REQUIRED"
+                rebuild[release_key] = "REBUILD_NOT_REQUESTED"
+            elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                state = event.payload.get("rebuild_state")
+                if state not in REBUILD_STATES:
+                    raise LearnedProductLifecycleConflict("invalid event-derived rebuild state")
+                rebuild[release_key] = state
+            elif kind == "CACHE_MATERIALIZED":
+                if subject.materialization_class != "OPTIONAL_CACHE_ACCELERATOR":
+                    raise LearnedProductLifecycleConflict("invalid cache materialization event")
+                payload_materialized[release_key] = True
+            elif kind == "CACHE_DROPPED":
+                if subject.materialization_class != "OPTIONAL_CACHE_ACCELERATOR":
+                    raise LearnedProductLifecycleConflict("invalid cache drop event")
+                payload_materialized[release_key] = False
+            elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                if subject.materialization_class != "RECOMPUTABLE_PRODUCT_PAYLOAD":
+                    raise LearnedProductLifecycleConflict("invalid payload GC event")
+                payload_materialized[release_key] = False
+            if kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                raw_key = event.payload.get("selection_key_ref")
+                if raw_key is None:
+                    raise LearnedProductLifecycleConflict("selection event lacks exact key")
+                key_ref = _exact(raw_key)
+                key = self._selection_keys.get(key_ref.key)
+                if (
+                    key is None
+                    or key.product_family_ref != subject.product_family_ref
+                    or key.selection_scope_ref != subject.selection_scope_ref
+                ):
+                    raise LearnedProductLifecycleConflict("selection event family/scope mismatch")
+                previous = selection_index.get(key_ref.key)
+                if kind == "CURRENT_CLEARED":
+                    receipt = no_current_events.get(event.ref.key)
+                    if receipt is None:
+                        raise LearnedProductLifecycleConflict("NO_CURRENT event lacks receipt")
+                    if receipt.previous_selection_receipt_ref != previous:
+                        raise LearnedProductLifecycleConflict("NO_CURRENT predecessor mismatch")
+                    selection_kind[key_ref.key] = "NO_CURRENT"
+                else:
+                    receipt = selection_events.get(event.ref.key)
+                    if receipt is None or receipt.selected_release_ref != event.release_ref:
+&gt;                       raise LearnedProductLifecycleConflict("selected event/release mismatch")
+E                       rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: selected event/release mismatch
+
+WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/baseline_mz3f8bxc/rawlsing_next/pre553_learned_product_lifecycle.py:1573: LearnedProductLifecycleConflict</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[declare_no_current]" time="0.074"><failure message="rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: NO_CURRENT event lacks receipt">name = 'declare_no_current'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10cc710d0&gt;
+
+    @pytest.mark.parametrize('name', WRITERS)
+    def test_baseexception_rollback_then_success_and_recovery(name, monkeypatch):
+        x,a,b,k,ops = fixture(); cp = roundtrip(x)
+        if name in ('stage_release','stage_protocol','selection_key'):
+            store = '_selection_keys' if name == 'selection_key' else '_repository_subjects'
+            class FaultDict(dict):
+                def __setitem__(self,k,v):
+                    super().__setitem__(k,v); raise Fault('post-write')
+            original = getattr(x,store)
+            monkeypatch.setattr(x,store,FaultDict(original))
+        else:
+            original = x._append_events
+            def fail(events):
+                original(events); raise Fault('post-append')
+            monkeypatch.setattr(x,'_append_events',fail)
+        with pytest.raises(Fault): ops[name]()
+&gt;       assert roundtrip(x) == cp
+               ^^^^^^^^^^^^
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:26: in roundtrip
+    assert B5.from_checkpoint(cp).export_checkpoint() == cp
+           ^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/baseline_mz3f8bxc/rawlsing_next/pre553_learned_product_lifecycle.py:3082: in from_checkpoint
+    executor._verify_native_checkpoint_history()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10cc196d0&gt;
+
+    def _verify_native_checkpoint_history(self) -&gt; None:
+        """Compare native projections to the typed event chain, not saved maps.
+    
+        This proves LOCAL consistency only. A coherent replacement history still
+        requires an independently witnessed ordinal/root to prove completeness.
+        """
+        registered: set[str] = set()
+        publication: dict[str, str] = {}
+        validity: dict[str, str] = {}
+        replay: dict[str, str] = {}
+        rebuild: dict[str, str] = {}
+        materialization: dict[str, str] = {}
+        payload_materialized: dict[str, bool] = {}
+        selection_index: dict[str, ExactRef] = {}
+        selection_kind: dict[str, str] = {}
+        seen_selection_events: set[str] = set()
+        selection_events = {
+            receipt.current_select_event_ref.key: receipt
+            for receipt in self._selection_receipts.values()
+        }
+        no_current_events = {
+            receipt.no_current_event_ref.key: receipt
+            for receipt in self._no_current_receipts.values()
+        }
+        if len(selection_events) != len(self._selection_receipts):
+            raise LearnedProductLifecycleConflict("multiple selection receipts for one event")
+        if len(no_current_events) != len(self._no_current_receipts):
+            raise LearnedProductLifecycleConflict("multiple NO_CURRENT receipts for one event")
+        previous_ref: ExactRef | None = None
+        for ordinal, event in enumerate(self._events, 1):
+            if event.ordinal != ordinal or event.parent_lifecycle_event_ref != previous_ref:
+                raise LearnedProductLifecycleConflict("checkpoint event sequence/parent mismatch")
+            previous_ref = event.ref
+            subject = self._repository_subjects.get(event.release_ref.key)
+            if (
+                subject is None
+                or subject.product_ref != event.product_ref
+                or subject.selection_scope_ref != event.selection_scope_ref
+            ):
+                raise LearnedProductLifecycleConflict("checkpoint event subject/scope mismatch")
+            release_key = event.release_ref.key
+            kind = event.event_kind
+            if kind == "PRODUCT_REGISTERED":
+                if release_key in registered:
+                    raise LearnedProductLifecycleConflict("duplicate registration event")
+                registered.add(release_key)
+                publication[release_key] = "UNPUBLISHED"
+                validity[release_key] = "VALID"
+                replay[release_key] = subject.replay_state
+                rebuild[release_key] = subject.rebuild_state
+                materialization[release_key] = subject.materialization_class
+                payload_materialized[release_key] = True
+            elif release_key not in registered:
+                raise LearnedProductLifecycleConflict("unregistered release has lifecycle event")
+            elif kind == "PRODUCT_PUBLISHED":
+                if publication[release_key] == "PUBLISHED":
+                    raise LearnedProductLifecycleConflict("duplicate publication event")
+                publication[release_key] = "PUBLISHED"
+            elif kind == "PRODUCT_WITHDRAWN":
+                validity[release_key] = "WITHDRAWN"
+            elif kind == "PRODUCT_INVALIDATED":
+                validity[release_key] = "INVALIDATED_REBUILD_REQUIRED"
+                rebuild[release_key] = "REBUILD_NOT_REQUESTED"
+            elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                state = event.payload.get("rebuild_state")
+                if state not in REBUILD_STATES:
+                    raise LearnedProductLifecycleConflict("invalid event-derived rebuild state")
+                rebuild[release_key] = state
+            elif kind == "CACHE_MATERIALIZED":
+                if subject.materialization_class != "OPTIONAL_CACHE_ACCELERATOR":
+                    raise LearnedProductLifecycleConflict("invalid cache materialization event")
+                payload_materialized[release_key] = True
+            elif kind == "CACHE_DROPPED":
+                if subject.materialization_class != "OPTIONAL_CACHE_ACCELERATOR":
+                    raise LearnedProductLifecycleConflict("invalid cache drop event")
+                payload_materialized[release_key] = False
+            elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                if subject.materialization_class != "RECOMPUTABLE_PRODUCT_PAYLOAD":
+                    raise LearnedProductLifecycleConflict("invalid payload GC event")
+                payload_materialized[release_key] = False
+            if kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                raw_key = event.payload.get("selection_key_ref")
+                if raw_key is None:
+                    raise LearnedProductLifecycleConflict("selection event lacks exact key")
+                key_ref = _exact(raw_key)
+                key = self._selection_keys.get(key_ref.key)
+                if (
+                    key is None
+                    or key.product_family_ref != subject.product_family_ref
+                    or key.selection_scope_ref != subject.selection_scope_ref
+                ):
+                    raise LearnedProductLifecycleConflict("selection event family/scope mismatch")
+                previous = selection_index.get(key_ref.key)
+                if kind == "CURRENT_CLEARED":
+                    receipt = no_current_events.get(event.ref.key)
+                    if receipt is None:
+&gt;                       raise LearnedProductLifecycleConflict("NO_CURRENT event lacks receipt")
+E                       rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: NO_CURRENT event lacks receipt
+
+WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/baseline_mz3f8bxc/rawlsing_next/pre553_learned_product_lifecycle.py:1566: LearnedProductLifecycleConflict</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[supersede_current]" time="0.074"><failure message="rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: selected event/release mismatch">name = 'supersede_current'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10caefbd0&gt;
+
+    @pytest.mark.parametrize('name', WRITERS)
+    def test_baseexception_rollback_then_success_and_recovery(name, monkeypatch):
+        x,a,b,k,ops = fixture(); cp = roundtrip(x)
+        if name in ('stage_release','stage_protocol','selection_key'):
+            store = '_selection_keys' if name == 'selection_key' else '_repository_subjects'
+            class FaultDict(dict):
+                def __setitem__(self,k,v):
+                    super().__setitem__(k,v); raise Fault('post-write')
+            original = getattr(x,store)
+            monkeypatch.setattr(x,store,FaultDict(original))
+        else:
+            original = x._append_events
+            def fail(events):
+                original(events); raise Fault('post-append')
+            monkeypatch.setattr(x,'_append_events',fail)
+        with pytest.raises(Fault): ops[name]()
+&gt;       assert roundtrip(x) == cp
+               ^^^^^^^^^^^^
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:26: in roundtrip
+    assert B5.from_checkpoint(cp).export_checkpoint() == cp
+           ^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/baseline_mz3f8bxc/rawlsing_next/pre553_learned_product_lifecycle.py:3082: in from_checkpoint
+    executor._verify_native_checkpoint_history()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10c8dda90&gt;
+
+    def _verify_native_checkpoint_history(self) -&gt; None:
+        """Compare native projections to the typed event chain, not saved maps.
+    
+        This proves LOCAL consistency only. A coherent replacement history still
+        requires an independently witnessed ordinal/root to prove completeness.
+        """
+        registered: set[str] = set()
+        publication: dict[str, str] = {}
+        validity: dict[str, str] = {}
+        replay: dict[str, str] = {}
+        rebuild: dict[str, str] = {}
+        materialization: dict[str, str] = {}
+        payload_materialized: dict[str, bool] = {}
+        selection_index: dict[str, ExactRef] = {}
+        selection_kind: dict[str, str] = {}
+        seen_selection_events: set[str] = set()
+        selection_events = {
+            receipt.current_select_event_ref.key: receipt
+            for receipt in self._selection_receipts.values()
+        }
+        no_current_events = {
+            receipt.no_current_event_ref.key: receipt
+            for receipt in self._no_current_receipts.values()
+        }
+        if len(selection_events) != len(self._selection_receipts):
+            raise LearnedProductLifecycleConflict("multiple selection receipts for one event")
+        if len(no_current_events) != len(self._no_current_receipts):
+            raise LearnedProductLifecycleConflict("multiple NO_CURRENT receipts for one event")
+        previous_ref: ExactRef | None = None
+        for ordinal, event in enumerate(self._events, 1):
+            if event.ordinal != ordinal or event.parent_lifecycle_event_ref != previous_ref:
+                raise LearnedProductLifecycleConflict("checkpoint event sequence/parent mismatch")
+            previous_ref = event.ref
+            subject = self._repository_subjects.get(event.release_ref.key)
+            if (
+                subject is None
+                or subject.product_ref != event.product_ref
+                or subject.selection_scope_ref != event.selection_scope_ref
+            ):
+                raise LearnedProductLifecycleConflict("checkpoint event subject/scope mismatch")
+            release_key = event.release_ref.key
+            kind = event.event_kind
+            if kind == "PRODUCT_REGISTERED":
+                if release_key in registered:
+                    raise LearnedProductLifecycleConflict("duplicate registration event")
+                registered.add(release_key)
+                publication[release_key] = "UNPUBLISHED"
+                validity[release_key] = "VALID"
+                replay[release_key] = subject.replay_state
+                rebuild[release_key] = subject.rebuild_state
+                materialization[release_key] = subject.materialization_class
+                payload_materialized[release_key] = True
+            elif release_key not in registered:
+                raise LearnedProductLifecycleConflict("unregistered release has lifecycle event")
+            elif kind == "PRODUCT_PUBLISHED":
+                if publication[release_key] == "PUBLISHED":
+                    raise LearnedProductLifecycleConflict("duplicate publication event")
+                publication[release_key] = "PUBLISHED"
+            elif kind == "PRODUCT_WITHDRAWN":
+                validity[release_key] = "WITHDRAWN"
+            elif kind == "PRODUCT_INVALIDATED":
+                validity[release_key] = "INVALIDATED_REBUILD_REQUIRED"
+                rebuild[release_key] = "REBUILD_NOT_REQUESTED"
+            elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                state = event.payload.get("rebuild_state")
+                if state not in REBUILD_STATES:
+                    raise LearnedProductLifecycleConflict("invalid event-derived rebuild state")
+                rebuild[release_key] = state
+            elif kind == "CACHE_MATERIALIZED":
+                if subject.materialization_class != "OPTIONAL_CACHE_ACCELERATOR":
+                    raise LearnedProductLifecycleConflict("invalid cache materialization event")
+                payload_materialized[release_key] = True
+            elif kind == "CACHE_DROPPED":
+                if subject.materialization_class != "OPTIONAL_CACHE_ACCELERATOR":
+                    raise LearnedProductLifecycleConflict("invalid cache drop event")
+                payload_materialized[release_key] = False
+            elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                if subject.materialization_class != "RECOMPUTABLE_PRODUCT_PAYLOAD":
+                    raise LearnedProductLifecycleConflict("invalid payload GC event")
+                payload_materialized[release_key] = False
+            if kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                raw_key = event.payload.get("selection_key_ref")
+                if raw_key is None:
+                    raise LearnedProductLifecycleConflict("selection event lacks exact key")
+                key_ref = _exact(raw_key)
+                key = self._selection_keys.get(key_ref.key)
+                if (
+                    key is None
+                    or key.product_family_ref != subject.product_family_ref
+                    or key.selection_scope_ref != subject.selection_scope_ref
+                ):
+                    raise LearnedProductLifecycleConflict("selection event family/scope mismatch")
+                previous = selection_index.get(key_ref.key)
+                if kind == "CURRENT_CLEARED":
+                    receipt = no_current_events.get(event.ref.key)
+                    if receipt is None:
+                        raise LearnedProductLifecycleConflict("NO_CURRENT event lacks receipt")
+                    if receipt.previous_selection_receipt_ref != previous:
+                        raise LearnedProductLifecycleConflict("NO_CURRENT predecessor mismatch")
+                    selection_kind[key_ref.key] = "NO_CURRENT"
+                else:
+                    receipt = selection_events.get(event.ref.key)
+                    if receipt is None or receipt.selected_release_ref != event.release_ref:
+&gt;                       raise LearnedProductLifecycleConflict("selected event/release mismatch")
+E                       rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: selected event/release mismatch
+
+WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/baseline_mz3f8bxc/rawlsing_next/pre553_learned_product_lifecycle.py:1573: LearnedProductLifecycleConflict</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[withdraw_product]" time="0.070"><failure message="rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: NO_CURRENT event lacks receipt">name = 'withdraw_product'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10cb9f010&gt;
+
+    @pytest.mark.parametrize('name', WRITERS)
+    def test_baseexception_rollback_then_success_and_recovery(name, monkeypatch):
+        x,a,b,k,ops = fixture(); cp = roundtrip(x)
+        if name in ('stage_release','stage_protocol','selection_key'):
+            store = '_selection_keys' if name == 'selection_key' else '_repository_subjects'
+            class FaultDict(dict):
+                def __setitem__(self,k,v):
+                    super().__setitem__(k,v); raise Fault('post-write')
+            original = getattr(x,store)
+            monkeypatch.setattr(x,store,FaultDict(original))
+        else:
+            original = x._append_events
+            def fail(events):
+                original(events); raise Fault('post-append')
+            monkeypatch.setattr(x,'_append_events',fail)
+        with pytest.raises(Fault): ops[name]()
+&gt;       assert roundtrip(x) == cp
+               ^^^^^^^^^^^^
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:26: in roundtrip
+    assert B5.from_checkpoint(cp).export_checkpoint() == cp
+           ^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/baseline_mz3f8bxc/rawlsing_next/pre553_learned_product_lifecycle.py:3082: in from_checkpoint
+    executor._verify_native_checkpoint_history()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10caaae10&gt;
+
+    def _verify_native_checkpoint_history(self) -&gt; None:
+        """Compare native projections to the typed event chain, not saved maps.
+    
+        This proves LOCAL consistency only. A coherent replacement history still
+        requires an independently witnessed ordinal/root to prove completeness.
+        """
+        registered: set[str] = set()
+        publication: dict[str, str] = {}
+        validity: dict[str, str] = {}
+        replay: dict[str, str] = {}
+        rebuild: dict[str, str] = {}
+        materialization: dict[str, str] = {}
+        payload_materialized: dict[str, bool] = {}
+        selection_index: dict[str, ExactRef] = {}
+        selection_kind: dict[str, str] = {}
+        seen_selection_events: set[str] = set()
+        selection_events = {
+            receipt.current_select_event_ref.key: receipt
+            for receipt in self._selection_receipts.values()
+        }
+        no_current_events = {
+            receipt.no_current_event_ref.key: receipt
+            for receipt in self._no_current_receipts.values()
+        }
+        if len(selection_events) != len(self._selection_receipts):
+            raise LearnedProductLifecycleConflict("multiple selection receipts for one event")
+        if len(no_current_events) != len(self._no_current_receipts):
+            raise LearnedProductLifecycleConflict("multiple NO_CURRENT receipts for one event")
+        previous_ref: ExactRef | None = None
+        for ordinal, event in enumerate(self._events, 1):
+            if event.ordinal != ordinal or event.parent_lifecycle_event_ref != previous_ref:
+                raise LearnedProductLifecycleConflict("checkpoint event sequence/parent mismatch")
+            previous_ref = event.ref
+            subject = self._repository_subjects.get(event.release_ref.key)
+            if (
+                subject is None
+                or subject.product_ref != event.product_ref
+                or subject.selection_scope_ref != event.selection_scope_ref
+            ):
+                raise LearnedProductLifecycleConflict("checkpoint event subject/scope mismatch")
+            release_key = event.release_ref.key
+            kind = event.event_kind
+            if kind == "PRODUCT_REGISTERED":
+                if release_key in registered:
+                    raise LearnedProductLifecycleConflict("duplicate registration event")
+                registered.add(release_key)
+                publication[release_key] = "UNPUBLISHED"
+                validity[release_key] = "VALID"
+                replay[release_key] = subject.replay_state
+                rebuild[release_key] = subject.rebuild_state
+                materialization[release_key] = subject.materialization_class
+                payload_materialized[release_key] = True
+            elif release_key not in registered:
+                raise LearnedProductLifecycleConflict("unregistered release has lifecycle event")
+            elif kind == "PRODUCT_PUBLISHED":
+                if publication[release_key] == "PUBLISHED":
+                    raise LearnedProductLifecycleConflict("duplicate publication event")
+                publication[release_key] = "PUBLISHED"
+            elif kind == "PRODUCT_WITHDRAWN":
+                validity[release_key] = "WITHDRAWN"
+            elif kind == "PRODUCT_INVALIDATED":
+                validity[release_key] = "INVALIDATED_REBUILD_REQUIRED"
+                rebuild[release_key] = "REBUILD_NOT_REQUESTED"
+            elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                state = event.payload.get("rebuild_state")
+                if state not in REBUILD_STATES:
+                    raise LearnedProductLifecycleConflict("invalid event-derived rebuild state")
+                rebuild[release_key] = state
+            elif kind == "CACHE_MATERIALIZED":
+                if subject.materialization_class != "OPTIONAL_CACHE_ACCELERATOR":
+                    raise LearnedProductLifecycleConflict("invalid cache materialization event")
+                payload_materialized[release_key] = True
+            elif kind == "CACHE_DROPPED":
+                if subject.materialization_class != "OPTIONAL_CACHE_ACCELERATOR":
+                    raise LearnedProductLifecycleConflict("invalid cache drop event")
+                payload_materialized[release_key] = False
+            elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                if subject.materialization_class != "RECOMPUTABLE_PRODUCT_PAYLOAD":
+                    raise LearnedProductLifecycleConflict("invalid payload GC event")
+                payload_materialized[release_key] = False
+            if kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                raw_key = event.payload.get("selection_key_ref")
+                if raw_key is None:
+                    raise LearnedProductLifecycleConflict("selection event lacks exact key")
+                key_ref = _exact(raw_key)
+                key = self._selection_keys.get(key_ref.key)
+                if (
+                    key is None
+                    or key.product_family_ref != subject.product_family_ref
+                    or key.selection_scope_ref != subject.selection_scope_ref
+                ):
+                    raise LearnedProductLifecycleConflict("selection event family/scope mismatch")
+                previous = selection_index.get(key_ref.key)
+                if kind == "CURRENT_CLEARED":
+                    receipt = no_current_events.get(event.ref.key)
+                    if receipt is None:
+&gt;                       raise LearnedProductLifecycleConflict("NO_CURRENT event lacks receipt")
+E                       rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: NO_CURRENT event lacks receipt
+
+WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/baseline_mz3f8bxc/rawlsing_next/pre553_learned_product_lifecycle.py:1566: LearnedProductLifecycleConflict</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[declare_invalidation]" time="0.070"><failure message="rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: NO_CURRENT event lacks receipt">name = 'declare_invalidation'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10cc63290&gt;
+
+    @pytest.mark.parametrize('name', WRITERS)
+    def test_baseexception_rollback_then_success_and_recovery(name, monkeypatch):
+        x,a,b,k,ops = fixture(); cp = roundtrip(x)
+        if name in ('stage_release','stage_protocol','selection_key'):
+            store = '_selection_keys' if name == 'selection_key' else '_repository_subjects'
+            class FaultDict(dict):
+                def __setitem__(self,k,v):
+                    super().__setitem__(k,v); raise Fault('post-write')
+            original = getattr(x,store)
+            monkeypatch.setattr(x,store,FaultDict(original))
+        else:
+            original = x._append_events
+            def fail(events):
+                original(events); raise Fault('post-append')
+            monkeypatch.setattr(x,'_append_events',fail)
+        with pytest.raises(Fault): ops[name]()
+&gt;       assert roundtrip(x) == cp
+               ^^^^^^^^^^^^
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:26: in roundtrip
+    assert B5.from_checkpoint(cp).export_checkpoint() == cp
+           ^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/baseline_mz3f8bxc/rawlsing_next/pre553_learned_product_lifecycle.py:3082: in from_checkpoint
+    executor._verify_native_checkpoint_history()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10cb82d50&gt;
+
+    def _verify_native_checkpoint_history(self) -&gt; None:
+        """Compare native projections to the typed event chain, not saved maps.
+    
+        This proves LOCAL consistency only. A coherent replacement history still
+        requires an independently witnessed ordinal/root to prove completeness.
+        """
+        registered: set[str] = set()
+        publication: dict[str, str] = {}
+        validity: dict[str, str] = {}
+        replay: dict[str, str] = {}
+        rebuild: dict[str, str] = {}
+        materialization: dict[str, str] = {}
+        payload_materialized: dict[str, bool] = {}
+        selection_index: dict[str, ExactRef] = {}
+        selection_kind: dict[str, str] = {}
+        seen_selection_events: set[str] = set()
+        selection_events = {
+            receipt.current_select_event_ref.key: receipt
+            for receipt in self._selection_receipts.values()
+        }
+        no_current_events = {
+            receipt.no_current_event_ref.key: receipt
+            for receipt in self._no_current_receipts.values()
+        }
+        if len(selection_events) != len(self._selection_receipts):
+            raise LearnedProductLifecycleConflict("multiple selection receipts for one event")
+        if len(no_current_events) != len(self._no_current_receipts):
+            raise LearnedProductLifecycleConflict("multiple NO_CURRENT receipts for one event")
+        previous_ref: ExactRef | None = None
+        for ordinal, event in enumerate(self._events, 1):
+            if event.ordinal != ordinal or event.parent_lifecycle_event_ref != previous_ref:
+                raise LearnedProductLifecycleConflict("checkpoint event sequence/parent mismatch")
+            previous_ref = event.ref
+            subject = self._repository_subjects.get(event.release_ref.key)
+            if (
+                subject is None
+                or subject.product_ref != event.product_ref
+                or subject.selection_scope_ref != event.selection_scope_ref
+            ):
+                raise LearnedProductLifecycleConflict("checkpoint event subject/scope mismatch")
+            release_key = event.release_ref.key
+            kind = event.event_kind
+            if kind == "PRODUCT_REGISTERED":
+                if release_key in registered:
+                    raise LearnedProductLifecycleConflict("duplicate registration event")
+                registered.add(release_key)
+                publication[release_key] = "UNPUBLISHED"
+                validity[release_key] = "VALID"
+                replay[release_key] = subject.replay_state
+                rebuild[release_key] = subject.rebuild_state
+                materialization[release_key] = subject.materialization_class
+                payload_materialized[release_key] = True
+            elif release_key not in registered:
+                raise LearnedProductLifecycleConflict("unregistered release has lifecycle event")
+            elif kind == "PRODUCT_PUBLISHED":
+                if publication[release_key] == "PUBLISHED":
+                    raise LearnedProductLifecycleConflict("duplicate publication event")
+                publication[release_key] = "PUBLISHED"
+            elif kind == "PRODUCT_WITHDRAWN":
+                validity[release_key] = "WITHDRAWN"
+            elif kind == "PRODUCT_INVALIDATED":
+                validity[release_key] = "INVALIDATED_REBUILD_REQUIRED"
+                rebuild[release_key] = "REBUILD_NOT_REQUESTED"
+            elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                state = event.payload.get("rebuild_state")
+                if state not in REBUILD_STATES:
+                    raise LearnedProductLifecycleConflict("invalid event-derived rebuild state")
+                rebuild[release_key] = state
+            elif kind == "CACHE_MATERIALIZED":
+                if subject.materialization_class != "OPTIONAL_CACHE_ACCELERATOR":
+                    raise LearnedProductLifecycleConflict("invalid cache materialization event")
+                payload_materialized[release_key] = True
+            elif kind == "CACHE_DROPPED":
+                if subject.materialization_class != "OPTIONAL_CACHE_ACCELERATOR":
+                    raise LearnedProductLifecycleConflict("invalid cache drop event")
+                payload_materialized[release_key] = False
+            elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                if subject.materialization_class != "RECOMPUTABLE_PRODUCT_PAYLOAD":
+                    raise LearnedProductLifecycleConflict("invalid payload GC event")
+                payload_materialized[release_key] = False
+            if kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                raw_key = event.payload.get("selection_key_ref")
+                if raw_key is None:
+                    raise LearnedProductLifecycleConflict("selection event lacks exact key")
+                key_ref = _exact(raw_key)
+                key = self._selection_keys.get(key_ref.key)
+                if (
+                    key is None
+                    or key.product_family_ref != subject.product_family_ref
+                    or key.selection_scope_ref != subject.selection_scope_ref
+                ):
+                    raise LearnedProductLifecycleConflict("selection event family/scope mismatch")
+                previous = selection_index.get(key_ref.key)
+                if kind == "CURRENT_CLEARED":
+                    receipt = no_current_events.get(event.ref.key)
+                    if receipt is None:
+&gt;                       raise LearnedProductLifecycleConflict("NO_CURRENT event lacks receipt")
+E                       rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: NO_CURRENT event lacks receipt
+
+WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/baseline_mz3f8bxc/rawlsing_next/pre553_learned_product_lifecycle.py:1566: LearnedProductLifecycleConflict</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[record_rebuild_eligibility]" time="0.069"><failure message="rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint rebuild differs from native event replay">name = 'record_rebuild_eligibility'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10c3d1390&gt;
+
+    @pytest.mark.parametrize('name', WRITERS)
+    def test_baseexception_rollback_then_success_and_recovery(name, monkeypatch):
+        x,a,b,k,ops = fixture(); cp = roundtrip(x)
+        if name in ('stage_release','stage_protocol','selection_key'):
+            store = '_selection_keys' if name == 'selection_key' else '_repository_subjects'
+            class FaultDict(dict):
+                def __setitem__(self,k,v):
+                    super().__setitem__(k,v); raise Fault('post-write')
+            original = getattr(x,store)
+            monkeypatch.setattr(x,store,FaultDict(original))
+        else:
+            original = x._append_events
+            def fail(events):
+                original(events); raise Fault('post-append')
+            monkeypatch.setattr(x,'_append_events',fail)
+        with pytest.raises(Fault): ops[name]()
+&gt;       assert roundtrip(x) == cp
+               ^^^^^^^^^^^^
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:26: in roundtrip
+    assert B5.from_checkpoint(cp).export_checkpoint() == cp
+           ^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/baseline_mz3f8bxc/rawlsing_next/pre553_learned_product_lifecycle.py:3082: in from_checkpoint
+    executor._verify_native_checkpoint_history()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10cb9e410&gt;
+
+    def _verify_native_checkpoint_history(self) -&gt; None:
+        """Compare native projections to the typed event chain, not saved maps.
+    
+        This proves LOCAL consistency only. A coherent replacement history still
+        requires an independently witnessed ordinal/root to prove completeness.
+        """
+        registered: set[str] = set()
+        publication: dict[str, str] = {}
+        validity: dict[str, str] = {}
+        replay: dict[str, str] = {}
+        rebuild: dict[str, str] = {}
+        materialization: dict[str, str] = {}
+        payload_materialized: dict[str, bool] = {}
+        selection_index: dict[str, ExactRef] = {}
+        selection_kind: dict[str, str] = {}
+        seen_selection_events: set[str] = set()
+        selection_events = {
+            receipt.current_select_event_ref.key: receipt
+            for receipt in self._selection_receipts.values()
+        }
+        no_current_events = {
+            receipt.no_current_event_ref.key: receipt
+            for receipt in self._no_current_receipts.values()
+        }
+        if len(selection_events) != len(self._selection_receipts):
+            raise LearnedProductLifecycleConflict("multiple selection receipts for one event")
+        if len(no_current_events) != len(self._no_current_receipts):
+            raise LearnedProductLifecycleConflict("multiple NO_CURRENT receipts for one event")
+        previous_ref: ExactRef | None = None
+        for ordinal, event in enumerate(self._events, 1):
+            if event.ordinal != ordinal or event.parent_lifecycle_event_ref != previous_ref:
+                raise LearnedProductLifecycleConflict("checkpoint event sequence/parent mismatch")
+            previous_ref = event.ref
+            subject = self._repository_subjects.get(event.release_ref.key)
+            if (
+                subject is None
+                or subject.product_ref != event.product_ref
+                or subject.selection_scope_ref != event.selection_scope_ref
+            ):
+                raise LearnedProductLifecycleConflict("checkpoint event subject/scope mismatch")
+            release_key = event.release_ref.key
+            kind = event.event_kind
+            if kind == "PRODUCT_REGISTERED":
+                if release_key in registered:
+                    raise LearnedProductLifecycleConflict("duplicate registration event")
+                registered.add(release_key)
+                publication[release_key] = "UNPUBLISHED"
+                validity[release_key] = "VALID"
+                replay[release_key] = subject.replay_state
+                rebuild[release_key] = subject.rebuild_state
+                materialization[release_key] = subject.materialization_class
+                payload_materialized[release_key] = True
+            elif release_key not in registered:
+                raise LearnedProductLifecycleConflict("unregistered release has lifecycle event")
+            elif kind == "PRODUCT_PUBLISHED":
+                if publication[release_key] == "PUBLISHED":
+                    raise LearnedProductLifecycleConflict("duplicate publication event")
+                publication[release_key] = "PUBLISHED"
+            elif kind == "PRODUCT_WITHDRAWN":
+                validity[release_key] = "WITHDRAWN"
+            elif kind == "PRODUCT_INVALIDATED":
+                validity[release_key] = "INVALIDATED_REBUILD_REQUIRED"
+                rebuild[release_key] = "REBUILD_NOT_REQUESTED"
+            elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                state = event.payload.get("rebuild_state")
+                if state not in REBUILD_STATES:
+                    raise LearnedProductLifecycleConflict("invalid event-derived rebuild state")
+                rebuild[release_key] = state
+            elif kind == "CACHE_MATERIALIZED":
+                if subject.materialization_class != "OPTIONAL_CACHE_ACCELERATOR":
+                    raise LearnedProductLifecycleConflict("invalid cache materialization event")
+                payload_materialized[release_key] = True
+            elif kind == "CACHE_DROPPED":
+                if subject.materialization_class != "OPTIONAL_CACHE_ACCELERATOR":
+                    raise LearnedProductLifecycleConflict("invalid cache drop event")
+                payload_materialized[release_key] = False
+            elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                if subject.materialization_class != "RECOMPUTABLE_PRODUCT_PAYLOAD":
+                    raise LearnedProductLifecycleConflict("invalid payload GC event")
+                payload_materialized[release_key] = False
+            if kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                raw_key = event.payload.get("selection_key_ref")
+                if raw_key is None:
+                    raise LearnedProductLifecycleConflict("selection event lacks exact key")
+                key_ref = _exact(raw_key)
+                key = self._selection_keys.get(key_ref.key)
+                if (
+                    key is None
+                    or key.product_family_ref != subject.product_family_ref
+                    or key.selection_scope_ref != subject.selection_scope_ref
+                ):
+                    raise LearnedProductLifecycleConflict("selection event family/scope mismatch")
+                previous = selection_index.get(key_ref.key)
+                if kind == "CURRENT_CLEARED":
+                    receipt = no_current_events.get(event.ref.key)
+                    if receipt is None:
+                        raise LearnedProductLifecycleConflict("NO_CURRENT event lacks receipt")
+                    if receipt.previous_selection_receipt_ref != previous:
+                        raise LearnedProductLifecycleConflict("NO_CURRENT predecessor mismatch")
+                    selection_kind[key_ref.key] = "NO_CURRENT"
+                else:
+                    receipt = selection_events.get(event.ref.key)
+                    if receipt is None or receipt.selected_release_ref != event.release_ref:
+                        raise LearnedProductLifecycleConflict("selected event/release mismatch")
+                    if receipt.previous_selection_receipt_ref != previous:
+                        raise LearnedProductLifecycleConflict("current predecessor mismatch")
+                    if publication[release_key] != "PUBLISHED" or validity[release_key] != "VALID":
+                        raise LearnedProductLifecycleConflict("unpublished/invalid selected release")
+                    if kind == "CURRENT_SUPERSEDED" and previous is None:
+                        raise LearnedProductLifecycleConflict("supersession lacks predecessor")
+                    selection_kind[key_ref.key] = "CURRENT_SELECTED"
+                selection_index[key_ref.key] = receipt.ref
+                seen_selection_events.add(event.ref.key)
+        if registered != self._registered:
+            raise LearnedProductLifecycleConflict("checkpoint registration differs from events")
+        for name, actual, expected in (
+            ("publication", self._publication, publication),
+            ("validity", self._validity, validity),
+            ("replay", self._replay, replay),
+            ("rebuild", self._rebuild, rebuild),
+            ("materialization", self._materialization, materialization),
+            ("payload_materialized", self._payload_materialized, payload_materialized),
+            ("selection_index", self._selection_index, selection_index),
+            ("selection_state_kind", self._selection_state_kind, selection_kind),
+        ):
+            if actual != expected:
+&gt;               raise LearnedProductLifecycleConflict(
+                    f"checkpoint {name} differs from native event replay"
+                )
+E               rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint rebuild differs from native event replay
+
+WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/baseline_mz3f8bxc/rawlsing_next/pre553_learned_product_lifecycle.py:1596: LearnedProductLifecycleConflict</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[link_rebuild]" time="0.081"><failure message="AssertionError: assert {'checkpoint_...ffbd3e91f696'} == {'checkpoint_...86e8979fe126'}&#10;  &#10;  Differing items:&#10;  {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}} != {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}}&#10;  {'checkpoint_hash': '01ee52d274c031d9b655a78e3ef809c4e3598d14b1c7fecc8287ffb...&#10;  &#10;  ...Full output truncated (2 lines hidden), use '-vv' to show">name = 'link_rebuild'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10cd16090&gt;
+
+    @pytest.mark.parametrize('name', WRITERS)
+    def test_baseexception_rollback_then_success_and_recovery(name, monkeypatch):
+        x,a,b,k,ops = fixture(); cp = roundtrip(x)
+        if name in ('stage_release','stage_protocol','selection_key'):
+            store = '_selection_keys' if name == 'selection_key' else '_repository_subjects'
+            class FaultDict(dict):
+                def __setitem__(self,k,v):
+                    super().__setitem__(k,v); raise Fault('post-write')
+            original = getattr(x,store)
+            monkeypatch.setattr(x,store,FaultDict(original))
+        else:
+            original = x._append_events
+            def fail(events):
+                original(events); raise Fault('post-append')
+            monkeypatch.setattr(x,'_append_events',fail)
+        with pytest.raises(Fault): ops[name]()
+&gt;       assert roundtrip(x) == cp
+E       AssertionError: assert {'checkpoint_...ffbd3e91f696'} == {'checkpoint_...86e8979fe126'}
+E         
+E         Differing items:
+E         {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}} != {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}}
+E         {'checkpoint_hash': '01ee52d274c031d9b655a78e3ef809c4e3598d14b1c7fecc8287ffb...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:81: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[record_cache_materialized]" time="0.079"><failure message="AssertionError: assert {'checkpoint_...9443f87c3071'} == {'checkpoint_...86e8979fe126'}&#10;  &#10;  Differing items:&#10;  {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}} != {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}}&#10;  {'checkpoint_hash': '14261bb2e2b49c5d2f83a71c94d3939ce7c88a0ab75314f7484a944...&#10;  &#10;  ...Full output truncated (2 lines hidden), use '-vv' to show">name = 'record_cache_materialized'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10cccd510&gt;
+
+    @pytest.mark.parametrize('name', WRITERS)
+    def test_baseexception_rollback_then_success_and_recovery(name, monkeypatch):
+        x,a,b,k,ops = fixture(); cp = roundtrip(x)
+        if name in ('stage_release','stage_protocol','selection_key'):
+            store = '_selection_keys' if name == 'selection_key' else '_repository_subjects'
+            class FaultDict(dict):
+                def __setitem__(self,k,v):
+                    super().__setitem__(k,v); raise Fault('post-write')
+            original = getattr(x,store)
+            monkeypatch.setattr(x,store,FaultDict(original))
+        else:
+            original = x._append_events
+            def fail(events):
+                original(events); raise Fault('post-append')
+            monkeypatch.setattr(x,'_append_events',fail)
+        with pytest.raises(Fault): ops[name]()
+&gt;       assert roundtrip(x) == cp
+E       AssertionError: assert {'checkpoint_...9443f87c3071'} == {'checkpoint_...86e8979fe126'}
+E         
+E         Differing items:
+E         {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}} != {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}}
+E         {'checkpoint_hash': '14261bb2e2b49c5d2f83a71c94d3939ce7c88a0ab75314f7484a944...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:81: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[record_cache_dropped]" time="0.067"><failure message="rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint payload_materialized differs from native event replay">name = 'record_cache_dropped'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10ca4ac10&gt;
+
+    @pytest.mark.parametrize('name', WRITERS)
+    def test_baseexception_rollback_then_success_and_recovery(name, monkeypatch):
+        x,a,b,k,ops = fixture(); cp = roundtrip(x)
+        if name in ('stage_release','stage_protocol','selection_key'):
+            store = '_selection_keys' if name == 'selection_key' else '_repository_subjects'
+            class FaultDict(dict):
+                def __setitem__(self,k,v):
+                    super().__setitem__(k,v); raise Fault('post-write')
+            original = getattr(x,store)
+            monkeypatch.setattr(x,store,FaultDict(original))
+        else:
+            original = x._append_events
+            def fail(events):
+                original(events); raise Fault('post-append')
+            monkeypatch.setattr(x,'_append_events',fail)
+        with pytest.raises(Fault): ops[name]()
+&gt;       assert roundtrip(x) == cp
+               ^^^^^^^^^^^^
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:26: in roundtrip
+    assert B5.from_checkpoint(cp).export_checkpoint() == cp
+           ^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/baseline_mz3f8bxc/rawlsing_next/pre553_learned_product_lifecycle.py:3082: in from_checkpoint
+    executor._verify_native_checkpoint_history()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10c8f8d50&gt;
+
+    def _verify_native_checkpoint_history(self) -&gt; None:
+        """Compare native projections to the typed event chain, not saved maps.
+    
+        This proves LOCAL consistency only. A coherent replacement history still
+        requires an independently witnessed ordinal/root to prove completeness.
+        """
+        registered: set[str] = set()
+        publication: dict[str, str] = {}
+        validity: dict[str, str] = {}
+        replay: dict[str, str] = {}
+        rebuild: dict[str, str] = {}
+        materialization: dict[str, str] = {}
+        payload_materialized: dict[str, bool] = {}
+        selection_index: dict[str, ExactRef] = {}
+        selection_kind: dict[str, str] = {}
+        seen_selection_events: set[str] = set()
+        selection_events = {
+            receipt.current_select_event_ref.key: receipt
+            for receipt in self._selection_receipts.values()
+        }
+        no_current_events = {
+            receipt.no_current_event_ref.key: receipt
+            for receipt in self._no_current_receipts.values()
+        }
+        if len(selection_events) != len(self._selection_receipts):
+            raise LearnedProductLifecycleConflict("multiple selection receipts for one event")
+        if len(no_current_events) != len(self._no_current_receipts):
+            raise LearnedProductLifecycleConflict("multiple NO_CURRENT receipts for one event")
+        previous_ref: ExactRef | None = None
+        for ordinal, event in enumerate(self._events, 1):
+            if event.ordinal != ordinal or event.parent_lifecycle_event_ref != previous_ref:
+                raise LearnedProductLifecycleConflict("checkpoint event sequence/parent mismatch")
+            previous_ref = event.ref
+            subject = self._repository_subjects.get(event.release_ref.key)
+            if (
+                subject is None
+                or subject.product_ref != event.product_ref
+                or subject.selection_scope_ref != event.selection_scope_ref
+            ):
+                raise LearnedProductLifecycleConflict("checkpoint event subject/scope mismatch")
+            release_key = event.release_ref.key
+            kind = event.event_kind
+            if kind == "PRODUCT_REGISTERED":
+                if release_key in registered:
+                    raise LearnedProductLifecycleConflict("duplicate registration event")
+                registered.add(release_key)
+                publication[release_key] = "UNPUBLISHED"
+                validity[release_key] = "VALID"
+                replay[release_key] = subject.replay_state
+                rebuild[release_key] = subject.rebuild_state
+                materialization[release_key] = subject.materialization_class
+                payload_materialized[release_key] = True
+            elif release_key not in registered:
+                raise LearnedProductLifecycleConflict("unregistered release has lifecycle event")
+            elif kind == "PRODUCT_PUBLISHED":
+                if publication[release_key] == "PUBLISHED":
+                    raise LearnedProductLifecycleConflict("duplicate publication event")
+                publication[release_key] = "PUBLISHED"
+            elif kind == "PRODUCT_WITHDRAWN":
+                validity[release_key] = "WITHDRAWN"
+            elif kind == "PRODUCT_INVALIDATED":
+                validity[release_key] = "INVALIDATED_REBUILD_REQUIRED"
+                rebuild[release_key] = "REBUILD_NOT_REQUESTED"
+            elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                state = event.payload.get("rebuild_state")
+                if state not in REBUILD_STATES:
+                    raise LearnedProductLifecycleConflict("invalid event-derived rebuild state")
+                rebuild[release_key] = state
+            elif kind == "CACHE_MATERIALIZED":
+                if subject.materialization_class != "OPTIONAL_CACHE_ACCELERATOR":
+                    raise LearnedProductLifecycleConflict("invalid cache materialization event")
+                payload_materialized[release_key] = True
+            elif kind == "CACHE_DROPPED":
+                if subject.materialization_class != "OPTIONAL_CACHE_ACCELERATOR":
+                    raise LearnedProductLifecycleConflict("invalid cache drop event")
+                payload_materialized[release_key] = False
+            elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                if subject.materialization_class != "RECOMPUTABLE_PRODUCT_PAYLOAD":
+                    raise LearnedProductLifecycleConflict("invalid payload GC event")
+                payload_materialized[release_key] = False
+            if kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                raw_key = event.payload.get("selection_key_ref")
+                if raw_key is None:
+                    raise LearnedProductLifecycleConflict("selection event lacks exact key")
+                key_ref = _exact(raw_key)
+                key = self._selection_keys.get(key_ref.key)
+                if (
+                    key is None
+                    or key.product_family_ref != subject.product_family_ref
+                    or key.selection_scope_ref != subject.selection_scope_ref
+                ):
+                    raise LearnedProductLifecycleConflict("selection event family/scope mismatch")
+                previous = selection_index.get(key_ref.key)
+                if kind == "CURRENT_CLEARED":
+                    receipt = no_current_events.get(event.ref.key)
+                    if receipt is None:
+                        raise LearnedProductLifecycleConflict("NO_CURRENT event lacks receipt")
+                    if receipt.previous_selection_receipt_ref != previous:
+                        raise LearnedProductLifecycleConflict("NO_CURRENT predecessor mismatch")
+                    selection_kind[key_ref.key] = "NO_CURRENT"
+                else:
+                    receipt = selection_events.get(event.ref.key)
+                    if receipt is None or receipt.selected_release_ref != event.release_ref:
+                        raise LearnedProductLifecycleConflict("selected event/release mismatch")
+                    if receipt.previous_selection_receipt_ref != previous:
+                        raise LearnedProductLifecycleConflict("current predecessor mismatch")
+                    if publication[release_key] != "PUBLISHED" or validity[release_key] != "VALID":
+                        raise LearnedProductLifecycleConflict("unpublished/invalid selected release")
+                    if kind == "CURRENT_SUPERSEDED" and previous is None:
+                        raise LearnedProductLifecycleConflict("supersession lacks predecessor")
+                    selection_kind[key_ref.key] = "CURRENT_SELECTED"
+                selection_index[key_ref.key] = receipt.ref
+                seen_selection_events.add(event.ref.key)
+        if registered != self._registered:
+            raise LearnedProductLifecycleConflict("checkpoint registration differs from events")
+        for name, actual, expected in (
+            ("publication", self._publication, publication),
+            ("validity", self._validity, validity),
+            ("replay", self._replay, replay),
+            ("rebuild", self._rebuild, rebuild),
+            ("materialization", self._materialization, materialization),
+            ("payload_materialized", self._payload_materialized, payload_materialized),
+            ("selection_index", self._selection_index, selection_index),
+            ("selection_state_kind", self._selection_state_kind, selection_kind),
+        ):
+            if actual != expected:
+&gt;               raise LearnedProductLifecycleConflict(
+                    f"checkpoint {name} differs from native event replay"
+                )
+E               rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint payload_materialized differs from native event replay
+
+WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/baseline_mz3f8bxc/rawlsing_next/pre553_learned_product_lifecycle.py:1596: LearnedProductLifecycleConflict</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[attest_gc_eligibility]" time="0.081"><failure message="AssertionError: assert {'checkpoint_...10a3a0a344c7'} == {'checkpoint_...86e8979fe126'}&#10;  &#10;  Differing items:&#10;  {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}} != {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}}&#10;  {'checkpoint_hash': 'c0bded9e573334209737561ba2e24f5e28a823a9272a1167f2e110a...&#10;  &#10;  ...Full output truncated (2 lines hidden), use '-vv' to show">name = 'attest_gc_eligibility'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10ca495d0&gt;
+
+    @pytest.mark.parametrize('name', WRITERS)
+    def test_baseexception_rollback_then_success_and_recovery(name, monkeypatch):
+        x,a,b,k,ops = fixture(); cp = roundtrip(x)
+        if name in ('stage_release','stage_protocol','selection_key'):
+            store = '_selection_keys' if name == 'selection_key' else '_repository_subjects'
+            class FaultDict(dict):
+                def __setitem__(self,k,v):
+                    super().__setitem__(k,v); raise Fault('post-write')
+            original = getattr(x,store)
+            monkeypatch.setattr(x,store,FaultDict(original))
+        else:
+            original = x._append_events
+            def fail(events):
+                original(events); raise Fault('post-append')
+            monkeypatch.setattr(x,'_append_events',fail)
+        with pytest.raises(Fault): ops[name]()
+&gt;       assert roundtrip(x) == cp
+E       AssertionError: assert {'checkpoint_...10a3a0a344c7'} == {'checkpoint_...86e8979fe126'}
+E         
+E         Differing items:
+E         {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}} != {'checkpoint_payload': {'schema': 'PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_CHECKPOINT@1.0.0', 'contract_id': 'PRE553_LEARN...86c949733fec8c6a573', 'content_hash': '2fe554a5dd4635aa1ed22bbb0e04d1b56c09c9b09fa6b86c949733fec8c6a573'}, ...}], ...}}
+E         {'checkpoint_hash': 'c0bded9e573334209737561ba2e24f5e28a823a9272a1167f2e110a...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:81: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_baseexception_rollback_then_success_and_recovery[record_payload_gc]" time="0.062"><failure message="rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint payload_materialized differs from native event replay">name = 'record_payload_gc'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10ca9b090&gt;
+
+    @pytest.mark.parametrize('name', WRITERS)
+    def test_baseexception_rollback_then_success_and_recovery(name, monkeypatch):
+        x,a,b,k,ops = fixture(); cp = roundtrip(x)
+        if name in ('stage_release','stage_protocol','selection_key'):
+            store = '_selection_keys' if name == 'selection_key' else '_repository_subjects'
+            class FaultDict(dict):
+                def __setitem__(self,k,v):
+                    super().__setitem__(k,v); raise Fault('post-write')
+            original = getattr(x,store)
+            monkeypatch.setattr(x,store,FaultDict(original))
+        else:
+            original = x._append_events
+            def fail(events):
+                original(events); raise Fault('post-append')
+            monkeypatch.setattr(x,'_append_events',fail)
+        with pytest.raises(Fault): ops[name]()
+&gt;       assert roundtrip(x) == cp
+               ^^^^^^^^^^^^
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:26: in roundtrip
+    assert B5.from_checkpoint(cp).export_checkpoint() == cp
+           ^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/baseline_mz3f8bxc/rawlsing_next/pre553_learned_product_lifecycle.py:3082: in from_checkpoint
+    executor._verify_native_checkpoint_history()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor object at 0x10ca346d0&gt;
+
+    def _verify_native_checkpoint_history(self) -&gt; None:
+        """Compare native projections to the typed event chain, not saved maps.
+    
+        This proves LOCAL consistency only. A coherent replacement history still
+        requires an independently witnessed ordinal/root to prove completeness.
+        """
+        registered: set[str] = set()
+        publication: dict[str, str] = {}
+        validity: dict[str, str] = {}
+        replay: dict[str, str] = {}
+        rebuild: dict[str, str] = {}
+        materialization: dict[str, str] = {}
+        payload_materialized: dict[str, bool] = {}
+        selection_index: dict[str, ExactRef] = {}
+        selection_kind: dict[str, str] = {}
+        seen_selection_events: set[str] = set()
+        selection_events = {
+            receipt.current_select_event_ref.key: receipt
+            for receipt in self._selection_receipts.values()
+        }
+        no_current_events = {
+            receipt.no_current_event_ref.key: receipt
+            for receipt in self._no_current_receipts.values()
+        }
+        if len(selection_events) != len(self._selection_receipts):
+            raise LearnedProductLifecycleConflict("multiple selection receipts for one event")
+        if len(no_current_events) != len(self._no_current_receipts):
+            raise LearnedProductLifecycleConflict("multiple NO_CURRENT receipts for one event")
+        previous_ref: ExactRef | None = None
+        for ordinal, event in enumerate(self._events, 1):
+            if event.ordinal != ordinal or event.parent_lifecycle_event_ref != previous_ref:
+                raise LearnedProductLifecycleConflict("checkpoint event sequence/parent mismatch")
+            previous_ref = event.ref
+            subject = self._repository_subjects.get(event.release_ref.key)
+            if (
+                subject is None
+                or subject.product_ref != event.product_ref
+                or subject.selection_scope_ref != event.selection_scope_ref
+            ):
+                raise LearnedProductLifecycleConflict("checkpoint event subject/scope mismatch")
+            release_key = event.release_ref.key
+            kind = event.event_kind
+            if kind == "PRODUCT_REGISTERED":
+                if release_key in registered:
+                    raise LearnedProductLifecycleConflict("duplicate registration event")
+                registered.add(release_key)
+                publication[release_key] = "UNPUBLISHED"
+                validity[release_key] = "VALID"
+                replay[release_key] = subject.replay_state
+                rebuild[release_key] = subject.rebuild_state
+                materialization[release_key] = subject.materialization_class
+                payload_materialized[release_key] = True
+            elif release_key not in registered:
+                raise LearnedProductLifecycleConflict("unregistered release has lifecycle event")
+            elif kind == "PRODUCT_PUBLISHED":
+                if publication[release_key] == "PUBLISHED":
+                    raise LearnedProductLifecycleConflict("duplicate publication event")
+                publication[release_key] = "PUBLISHED"
+            elif kind == "PRODUCT_WITHDRAWN":
+                validity[release_key] = "WITHDRAWN"
+            elif kind == "PRODUCT_INVALIDATED":
+                validity[release_key] = "INVALIDATED_REBUILD_REQUIRED"
+                rebuild[release_key] = "REBUILD_NOT_REQUESTED"
+            elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                state = event.payload.get("rebuild_state")
+                if state not in REBUILD_STATES:
+                    raise LearnedProductLifecycleConflict("invalid event-derived rebuild state")
+                rebuild[release_key] = state
+            elif kind == "CACHE_MATERIALIZED":
+                if subject.materialization_class != "OPTIONAL_CACHE_ACCELERATOR":
+                    raise LearnedProductLifecycleConflict("invalid cache materialization event")
+                payload_materialized[release_key] = True
+            elif kind == "CACHE_DROPPED":
+                if subject.materialization_class != "OPTIONAL_CACHE_ACCELERATOR":
+                    raise LearnedProductLifecycleConflict("invalid cache drop event")
+                payload_materialized[release_key] = False
+            elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                if subject.materialization_class != "RECOMPUTABLE_PRODUCT_PAYLOAD":
+                    raise LearnedProductLifecycleConflict("invalid payload GC event")
+                payload_materialized[release_key] = False
+            if kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                raw_key = event.payload.get("selection_key_ref")
+                if raw_key is None:
+                    raise LearnedProductLifecycleConflict("selection event lacks exact key")
+                key_ref = _exact(raw_key)
+                key = self._selection_keys.get(key_ref.key)
+                if (
+                    key is None
+                    or key.product_family_ref != subject.product_family_ref
+                    or key.selection_scope_ref != subject.selection_scope_ref
+                ):
+                    raise LearnedProductLifecycleConflict("selection event family/scope mismatch")
+                previous = selection_index.get(key_ref.key)
+                if kind == "CURRENT_CLEARED":
+                    receipt = no_current_events.get(event.ref.key)
+                    if receipt is None:
+                        raise LearnedProductLifecycleConflict("NO_CURRENT event lacks receipt")
+                    if receipt.previous_selection_receipt_ref != previous:
+                        raise LearnedProductLifecycleConflict("NO_CURRENT predecessor mismatch")
+                    selection_kind[key_ref.key] = "NO_CURRENT"
+                else:
+                    receipt = selection_events.get(event.ref.key)
+                    if receipt is None or receipt.selected_release_ref != event.release_ref:
+                        raise LearnedProductLifecycleConflict("selected event/release mismatch")
+                    if receipt.previous_selection_receipt_ref != previous:
+                        raise LearnedProductLifecycleConflict("current predecessor mismatch")
+                    if publication[release_key] != "PUBLISHED" or validity[release_key] != "VALID":
+                        raise LearnedProductLifecycleConflict("unpublished/invalid selected release")
+                    if kind == "CURRENT_SUPERSEDED" and previous is None:
+                        raise LearnedProductLifecycleConflict("supersession lacks predecessor")
+                    selection_kind[key_ref.key] = "CURRENT_SELECTED"
+                selection_index[key_ref.key] = receipt.ref
+                seen_selection_events.add(event.ref.key)
+        if registered != self._registered:
+            raise LearnedProductLifecycleConflict("checkpoint registration differs from events")
+        for name, actual, expected in (
+            ("publication", self._publication, publication),
+            ("validity", self._validity, validity),
+            ("replay", self._replay, replay),
+            ("rebuild", self._rebuild, rebuild),
+            ("materialization", self._materialization, materialization),
+            ("payload_materialized", self._payload_materialized, payload_materialized),
+            ("selection_index", self._selection_index, selection_index),
+            ("selection_state_kind", self._selection_state_kind, selection_kind),
+        ):
+            if actual != expected:
+&gt;               raise LearnedProductLifecycleConflict(
+                    f"checkpoint {name} differs from native event replay"
+                )
+E               rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleConflict: checkpoint payload_materialized differs from native event replay
+
+WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/baseline_mz3f8bxc/rawlsing_next/pre553_learned_product_lifecycle.py:1596: LearnedProductLifecycleConflict</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_recursive_snapshot_detachment" time="0.043"><failure message="Failed: DID NOT RAISE TypeError">def test_recursive_snapshot_detachment():
+        x,a,_,_,_ = fixture(); before = roundtrip(x)
+        for e in x.events:
+&gt;           with pytest.raises(TypeError): e.payload['injected'] = 1
+E           Failed: DID NOT RAISE TypeError
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:90: Failed</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_rehashed_event_semantic_drift_refused[PRODUCT_REGISTERED-determinant_set_hash]" time="0.009"><failure message="Failed: DID NOT RAISE LearnedProductLifecycleError">event_kind = 'PRODUCT_REGISTERED', field = 'determinant_set_hash'
+
+    @pytest.mark.parametrize('event_kind,field', [('PRODUCT_REGISTERED','determinant_set_hash'),('PRODUCT_PUBLISHED','replay_root_ref'),('PRODUCT_PUBLISHED','producer_permission_ceiling'),('CURRENT_SELECTED','determinant_snapshot_ref')])
+    def test_rehashed_event_semantic_drift_refused(event_kind,field):
+        x=B5(); a=register(x,subject('gr-drift'),publish=event_kind!='PRODUCT_REGISTERED')
+        chosen=None
+        if event_kind=='CURRENT_SELECTED': chosen=select(x,key(x,a),a)
+        cp=roundtrip(x); e=x.events[-1]; assert e.event_kind==event_kind
+        payload=e.as_dict()['payload']
+        payload[field] = semantic_hash('alien') if field=='determinant_set_hash' else ref('Alien','gr').as_dict()
+        forged=replace(e,payload=payload)
+        cp['checkpoint_payload']['events'][-1]=forged.as_dict()
+        if chosen:
+            receipt=replace(chosen,current_select_event_ref=forged.ref,determinant_snapshot_ref=ref('Alien','gr'))
+            cp['checkpoint_payload']['selection_receipts'][0]=receipt.as_dict()
+            for row in cp['checkpoint_payload']['selection_index']:row['receipt_ref']=receipt.ref.as_dict()
+        cp['checkpoint_hash']=semantic_hash(cp['checkpoint_payload'])
+&gt;       with pytest.raises(LearnedProductLifecycleError,match='semantics|semantic replay|native operations'): B5.from_checkpoint(cp)
+E       Failed: DID NOT RAISE LearnedProductLifecycleError
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:119: Failed</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_rehashed_event_semantic_drift_refused[PRODUCT_PUBLISHED-replay_root_ref]" time="0.013"><failure message="Failed: DID NOT RAISE LearnedProductLifecycleError">event_kind = 'PRODUCT_PUBLISHED', field = 'replay_root_ref'
+
+    @pytest.mark.parametrize('event_kind,field', [('PRODUCT_REGISTERED','determinant_set_hash'),('PRODUCT_PUBLISHED','replay_root_ref'),('PRODUCT_PUBLISHED','producer_permission_ceiling'),('CURRENT_SELECTED','determinant_snapshot_ref')])
+    def test_rehashed_event_semantic_drift_refused(event_kind,field):
+        x=B5(); a=register(x,subject('gr-drift'),publish=event_kind!='PRODUCT_REGISTERED')
+        chosen=None
+        if event_kind=='CURRENT_SELECTED': chosen=select(x,key(x,a),a)
+        cp=roundtrip(x); e=x.events[-1]; assert e.event_kind==event_kind
+        payload=e.as_dict()['payload']
+        payload[field] = semantic_hash('alien') if field=='determinant_set_hash' else ref('Alien','gr').as_dict()
+        forged=replace(e,payload=payload)
+        cp['checkpoint_payload']['events'][-1]=forged.as_dict()
+        if chosen:
+            receipt=replace(chosen,current_select_event_ref=forged.ref,determinant_snapshot_ref=ref('Alien','gr'))
+            cp['checkpoint_payload']['selection_receipts'][0]=receipt.as_dict()
+            for row in cp['checkpoint_payload']['selection_index']:row['receipt_ref']=receipt.ref.as_dict()
+        cp['checkpoint_hash']=semantic_hash(cp['checkpoint_payload'])
+&gt;       with pytest.raises(LearnedProductLifecycleError,match='semantics|semantic replay|native operations'): B5.from_checkpoint(cp)
+E       Failed: DID NOT RAISE LearnedProductLifecycleError
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:119: Failed</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_rehashed_event_semantic_drift_refused[PRODUCT_PUBLISHED-producer_permission_ceiling]" time="0.014"><failure message="Failed: DID NOT RAISE LearnedProductLifecycleError">event_kind = 'PRODUCT_PUBLISHED', field = 'producer_permission_ceiling'
+
+    @pytest.mark.parametrize('event_kind,field', [('PRODUCT_REGISTERED','determinant_set_hash'),('PRODUCT_PUBLISHED','replay_root_ref'),('PRODUCT_PUBLISHED','producer_permission_ceiling'),('CURRENT_SELECTED','determinant_snapshot_ref')])
+    def test_rehashed_event_semantic_drift_refused(event_kind,field):
+        x=B5(); a=register(x,subject('gr-drift'),publish=event_kind!='PRODUCT_REGISTERED')
+        chosen=None
+        if event_kind=='CURRENT_SELECTED': chosen=select(x,key(x,a),a)
+        cp=roundtrip(x); e=x.events[-1]; assert e.event_kind==event_kind
+        payload=e.as_dict()['payload']
+        payload[field] = semantic_hash('alien') if field=='determinant_set_hash' else ref('Alien','gr').as_dict()
+        forged=replace(e,payload=payload)
+        cp['checkpoint_payload']['events'][-1]=forged.as_dict()
+        if chosen:
+            receipt=replace(chosen,current_select_event_ref=forged.ref,determinant_snapshot_ref=ref('Alien','gr'))
+            cp['checkpoint_payload']['selection_receipts'][0]=receipt.as_dict()
+            for row in cp['checkpoint_payload']['selection_index']:row['receipt_ref']=receipt.ref.as_dict()
+        cp['checkpoint_hash']=semantic_hash(cp['checkpoint_payload'])
+&gt;       with pytest.raises(LearnedProductLifecycleError,match='semantics|semantic replay|native operations'): B5.from_checkpoint(cp)
+E       Failed: DID NOT RAISE LearnedProductLifecycleError
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:119: Failed</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_rehashed_event_semantic_drift_refused[CURRENT_SELECTED-determinant_snapshot_ref]" time="0.024"><failure message="Failed: DID NOT RAISE LearnedProductLifecycleError">event_kind = 'CURRENT_SELECTED', field = 'determinant_snapshot_ref'
+
+    @pytest.mark.parametrize('event_kind,field', [('PRODUCT_REGISTERED','determinant_set_hash'),('PRODUCT_PUBLISHED','replay_root_ref'),('PRODUCT_PUBLISHED','producer_permission_ceiling'),('CURRENT_SELECTED','determinant_snapshot_ref')])
+    def test_rehashed_event_semantic_drift_refused(event_kind,field):
+        x=B5(); a=register(x,subject('gr-drift'),publish=event_kind!='PRODUCT_REGISTERED')
+        chosen=None
+        if event_kind=='CURRENT_SELECTED': chosen=select(x,key(x,a),a)
+        cp=roundtrip(x); e=x.events[-1]; assert e.event_kind==event_kind
+        payload=e.as_dict()['payload']
+        payload[field] = semantic_hash('alien') if field=='determinant_set_hash' else ref('Alien','gr').as_dict()
+        forged=replace(e,payload=payload)
+        cp['checkpoint_payload']['events'][-1]=forged.as_dict()
+        if chosen:
+            receipt=replace(chosen,current_select_event_ref=forged.ref,determinant_snapshot_ref=ref('Alien','gr'))
+            cp['checkpoint_payload']['selection_receipts'][0]=receipt.as_dict()
+            for row in cp['checkpoint_payload']['selection_index']:row['receipt_ref']=receipt.ref.as_dict()
+        cp['checkpoint_hash']=semantic_hash(cp['checkpoint_payload'])
+&gt;       with pytest.raises(LearnedProductLifecycleError,match='semantics|semantic replay|native operations'): B5.from_checkpoint(cp)
+E       Failed: DID NOT RAISE LearnedProductLifecycleError
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:119: Failed</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_missing_receipt_family_is_not_replayable[selection_receipts]" time="0.073" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_missing_receipt_family_is_not_replayable[no_current_receipts]" time="0.070" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_missing_receipt_family_is_not_replayable[invalidations]" time="0.085"><failure message="Failed: DID NOT RAISE LearnedProductLifecycleError">kind = 'invalidations'
+
+    @pytest.mark.parametrize('kind', ['selection_receipts','no_current_receipts','invalidations','rebuild_eligibility','rebuild_links','gc_eligibility'])
+    def test_missing_receipt_family_is_not_replayable(kind):
+        x,a,b,k,ops=fixture()
+        ops['link_rebuild'](); ops['declare_no_current'](); x.declare_invalidation(a.determinant_refs,dependency_closure_receipt_ref=ref('Closure','inv'),selection_attestation_ref=ref('Attestation','inv'),**A)
+        cp=roundtrip(x); assert cp['checkpoint_payload'][kind]
+        cp['checkpoint_payload'][kind].clear(); cp['checkpoint_hash']=semantic_hash(cp['checkpoint_payload'])
+&gt;       with pytest.raises(LearnedProductLifecycleError): B5.from_checkpoint(cp)
+E       Failed: DID NOT RAISE LearnedProductLifecycleError
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:127: Failed</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_missing_receipt_family_is_not_replayable[rebuild_eligibility]" time="0.080"><failure message="Failed: DID NOT RAISE LearnedProductLifecycleError">kind = 'rebuild_eligibility'
+
+    @pytest.mark.parametrize('kind', ['selection_receipts','no_current_receipts','invalidations','rebuild_eligibility','rebuild_links','gc_eligibility'])
+    def test_missing_receipt_family_is_not_replayable(kind):
+        x,a,b,k,ops=fixture()
+        ops['link_rebuild'](); ops['declare_no_current'](); x.declare_invalidation(a.determinant_refs,dependency_closure_receipt_ref=ref('Closure','inv'),selection_attestation_ref=ref('Attestation','inv'),**A)
+        cp=roundtrip(x); assert cp['checkpoint_payload'][kind]
+        cp['checkpoint_payload'][kind].clear(); cp['checkpoint_hash']=semantic_hash(cp['checkpoint_payload'])
+&gt;       with pytest.raises(LearnedProductLifecycleError): B5.from_checkpoint(cp)
+E       Failed: DID NOT RAISE LearnedProductLifecycleError
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:127: Failed</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_missing_receipt_family_is_not_replayable[rebuild_links]" time="0.081"><failure message="Failed: DID NOT RAISE LearnedProductLifecycleError">kind = 'rebuild_links'
+
+    @pytest.mark.parametrize('kind', ['selection_receipts','no_current_receipts','invalidations','rebuild_eligibility','rebuild_links','gc_eligibility'])
+    def test_missing_receipt_family_is_not_replayable(kind):
+        x,a,b,k,ops=fixture()
+        ops['link_rebuild'](); ops['declare_no_current'](); x.declare_invalidation(a.determinant_refs,dependency_closure_receipt_ref=ref('Closure','inv'),selection_attestation_ref=ref('Attestation','inv'),**A)
+        cp=roundtrip(x); assert cp['checkpoint_payload'][kind]
+        cp['checkpoint_payload'][kind].clear(); cp['checkpoint_hash']=semantic_hash(cp['checkpoint_payload'])
+&gt;       with pytest.raises(LearnedProductLifecycleError): B5.from_checkpoint(cp)
+E       Failed: DID NOT RAISE LearnedProductLifecycleError
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:127: Failed</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_missing_receipt_family_is_not_replayable[gc_eligibility]" time="0.081"><failure message="Failed: DID NOT RAISE LearnedProductLifecycleError">kind = 'gc_eligibility'
+
+    @pytest.mark.parametrize('kind', ['selection_receipts','no_current_receipts','invalidations','rebuild_eligibility','rebuild_links','gc_eligibility'])
+    def test_missing_receipt_family_is_not_replayable(kind):
+        x,a,b,k,ops=fixture()
+        ops['link_rebuild'](); ops['declare_no_current'](); x.declare_invalidation(a.determinant_refs,dependency_closure_receipt_ref=ref('Closure','inv'),selection_attestation_ref=ref('Attestation','inv'),**A)
+        cp=roundtrip(x); assert cp['checkpoint_payload'][kind]
+        cp['checkpoint_payload'][kind].clear(); cp['checkpoint_hash']=semantic_hash(cp['checkpoint_payload'])
+&gt;       with pytest.raises(LearnedProductLifecycleError): B5.from_checkpoint(cp)
+E       Failed: DID NOT RAISE LearnedProductLifecycleError
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:127: Failed</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_four_concurrent_public_selectors[False]" time="0.011"><failure message="AssertionError: assert 2 == 1&#10; +  where 2 = len([CurrentSelectionReceipt(selection_key_ref=ExactRef(kind='B5Lifecycle:SELECTION_KEY', object_id='urn:rawlsing:pre553:b...', content_hash='a30c9351457877d675838bf4ac448634bf51366e9c2aa166d4cb92e302cec9a2'), receipt_state='CURRENT_SELECTED')])">distinct = False
+
+    @pytest.mark.parametrize('distinct', [False,True])
+    def test_four_concurrent_public_selectors(distinct):
+        for _ in range(8):
+            x=B5(); a=register(x,subject('gr-race-a'),publish=True); b=register(x,subject('gr-race-b'),publish=True)
+            k=key(x,a); other=key(x,a,'other') if distinct else k
+            results,errors=parallel([lambda:select(x,k,a),lambda:select(x,k,b),lambda:select(x,other,a),lambda:select(x,other,b)])
+&gt;           assert len(results)==(2 if distinct else 1)
+E           AssertionError: assert 2 == 1
+E            +  where 2 = len([CurrentSelectionReceipt(selection_key_ref=ExactRef(kind='B5Lifecycle:SELECTION_KEY', object_id='urn:rawlsing:pre553:b...', content_hash='a30c9351457877d675838bf4ac448634bf51366e9c2aa166d4cb92e302cec9a2'), receipt_state='CURRENT_SELECTED')])
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:147: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_four_concurrent_public_selectors[True]" time="0.012"><failure message="AssertionError: assert 4 == 2&#10; +  where 4 = len([CurrentSelectionReceipt(selection_key_ref=ExactRef(kind='B5Lifecycle:SELECTION_KEY', object_id='urn:rawlsing:pre553:b...', content_hash='a30c9351457877d675838bf4ac448634bf51366e9c2aa166d4cb92e302cec9a2'), receipt_state='CURRENT_SELECTED')])">distinct = True
+
+    @pytest.mark.parametrize('distinct', [False,True])
+    def test_four_concurrent_public_selectors(distinct):
+        for _ in range(8):
+            x=B5(); a=register(x,subject('gr-race-a'),publish=True); b=register(x,subject('gr-race-b'),publish=True)
+            k=key(x,a); other=key(x,a,'other') if distinct else k
+            results,errors=parallel([lambda:select(x,k,a),lambda:select(x,k,b),lambda:select(x,other,a),lambda:select(x,other,b)])
+&gt;           assert len(results)==(2 if distinct else 1)
+E           AssertionError: assert 4 == 2
+E            +  where 4 = len([CurrentSelectionReceipt(selection_key_ref=ExactRef(kind='B5Lifecycle:SELECTION_KEY', object_id='urn:rawlsing:pre553:b...', content_hash='a30c9351457877d675838bf4ac448634bf51366e9c2aa166d4cb92e302cec9a2'), receipt_state='CURRENT_SELECTED')])
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:147: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_public_m2_colliding_preimages[subject]" time="0.008" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_public_m2_colliding_preimages[representation]" time="0.010" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_m2_baseexception_rollback_and_retry[register_subject]" time="0.002"><failure message="AssertionError: assert {'_subjects':...f6911')}, ...} == {'_subjects':...f6911')}, ...}&#10;  &#10;  Omitting 4 identical items, use -vv to show&#10;  Differing items:&#10;  {'_subjects': {'LearnedEmpiricalDisposition|urn:test:LearnedEmpiricalDisposition:m2-source:sha256:123f4ac7ddfc572cbf17...8b0ad1d14b7dadec', content_hash='5d7e68f336f944d719cbbfb3944507285bf503e1e98314928b0ad1d14b7dadec'),), complete=True)}} != {'_subjects': {'LearnedEmpiricalDisposition|urn:test:LearnedEmpiricalDisposition:m2-source:sha256:123f4ac7ddfc572cbf17...8b0ad1d14b7dadec', content_hash='5d7e68f336f944d719cbbfb3944507285bf503e1e98314928b0ad1d14b7dadec'),), complete=True)}}&#10;  Use -v to get more diff">name = 'register_subject'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10cbcc0d0&gt;
+
+    @pytest.mark.parametrize('name',['register_subject','register_closure','register_release','register_representation','register_binding'])
+    def test_m2_baseexception_rollback_and_retry(name,monkeypatch):
+        repo,r,s,p,closures=m2_fixture(); record=representation(r,s,p); repo.register_representation(record)
+        bind=PublicationBinding(release_ref=r.ref,publication_contract_ref=M2_PUBLICATION_CONTRACT_REF,resolution_mode=record.resolution_mode,resolver_or_locator_ref=record.resolver_or_locator_ref,representation_integrity_ref=record.representation_integrity_ref)
+        if name=='register_release':
+            target=M2Repository(); target.register_subject(repo.subject_exact(s))
+            for c in closures.values():target.register_closure(c)
+            repo=target
+        values={'register_subject':replace(repo.subject_exact(s),ref=ref('Subject','gr-new')),'register_closure':replace(closures['DEPENDENCY'],member_refs=(ref('Member','gr-new'),)),'register_release':r,'register_representation':replace(record,resolver_or_locator_ref=ref('Locator','gr-new')),'register_binding':bind}
+        before={n:dict(getattr(repo,n)) for n in ('_subjects','_closures','_releases','_representations','_bindings')}; saved=repo._insert
+        def fail(*args):saved(*args); raise Fault('post-insert')
+        monkeypatch.setattr(repo,'_insert',fail)
+        with pytest.raises(Fault):getattr(repo,name)(values[name])
+&gt;       assert {n:dict(getattr(repo,n)) for n in ('_subjects','_closures','_releases','_representations','_bindings')}==before
+E       AssertionError: assert {'_subjects':...f6911')}, ...} == {'_subjects':...f6911')}, ...}
+E         
+E         Omitting 4 identical items, use -vv to show
+E         Differing items:
+E         {'_subjects': {'LearnedEmpiricalDisposition|urn:test:LearnedEmpiricalDisposition:m2-source:sha256:123f4ac7ddfc572cbf17...8b0ad1d14b7dadec', content_hash='5d7e68f336f944d719cbbfb3944507285bf503e1e98314928b0ad1d14b7dadec'),), complete=True)}} != {'_subjects': {'LearnedEmpiricalDisposition|urn:test:LearnedEmpiricalDisposition:m2-source:sha256:123f4ac7ddfc572cbf17...8b0ad1d14b7dadec', content_hash='5d7e68f336f944d719cbbfb3944507285bf503e1e98314928b0ad1d14b7dadec'),), complete=True)}}
+E         Use -v to get more diff
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:183: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_m2_baseexception_rollback_and_retry[register_closure]" time="0.002"><failure message="AssertionError: assert {'_subjects':...f6911')}, ...} == {'_subjects':...f6911')}, ...}&#10;  &#10;  Omitting 4 identical items, use -vv to show&#10;  Differing items:&#10;  {'_closures': {'M2Closure|urn:rawlsing:pre553:m2:closure:authority:sha256:809b99146ddeeb2909d67b501c2b815b8e805162fd38...f543de96144eb4091106f67bf9ea8', content_hash='932ccc00f579f5ec6cc845389a8266169cdf543de96144eb4091106f67bf9ea8'), ...}} != {'_closures': {'M2Closure|urn:rawlsing:pre553:m2:closure:authority:sha256:809b99146ddeeb2909d67b501c2b815b8e805162fd38...f543de96144eb4091106f67bf9ea8', content_hash='932ccc00f579f5ec6cc845389a8266169cdf543de96144eb4091106f67bf9ea8'), ...}}&#10;  Use -v to get more diff">name = 'register_closure'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10cc541d0&gt;
+
+    @pytest.mark.parametrize('name',['register_subject','register_closure','register_release','register_representation','register_binding'])
+    def test_m2_baseexception_rollback_and_retry(name,monkeypatch):
+        repo,r,s,p,closures=m2_fixture(); record=representation(r,s,p); repo.register_representation(record)
+        bind=PublicationBinding(release_ref=r.ref,publication_contract_ref=M2_PUBLICATION_CONTRACT_REF,resolution_mode=record.resolution_mode,resolver_or_locator_ref=record.resolver_or_locator_ref,representation_integrity_ref=record.representation_integrity_ref)
+        if name=='register_release':
+            target=M2Repository(); target.register_subject(repo.subject_exact(s))
+            for c in closures.values():target.register_closure(c)
+            repo=target
+        values={'register_subject':replace(repo.subject_exact(s),ref=ref('Subject','gr-new')),'register_closure':replace(closures['DEPENDENCY'],member_refs=(ref('Member','gr-new'),)),'register_release':r,'register_representation':replace(record,resolver_or_locator_ref=ref('Locator','gr-new')),'register_binding':bind}
+        before={n:dict(getattr(repo,n)) for n in ('_subjects','_closures','_releases','_representations','_bindings')}; saved=repo._insert
+        def fail(*args):saved(*args); raise Fault('post-insert')
+        monkeypatch.setattr(repo,'_insert',fail)
+        with pytest.raises(Fault):getattr(repo,name)(values[name])
+&gt;       assert {n:dict(getattr(repo,n)) for n in ('_subjects','_closures','_releases','_representations','_bindings')}==before
+E       AssertionError: assert {'_subjects':...f6911')}, ...} == {'_subjects':...f6911')}, ...}
+E         
+E         Omitting 4 identical items, use -vv to show
+E         Differing items:
+E         {'_closures': {'M2Closure|urn:rawlsing:pre553:m2:closure:authority:sha256:809b99146ddeeb2909d67b501c2b815b8e805162fd38...f543de96144eb4091106f67bf9ea8', content_hash='932ccc00f579f5ec6cc845389a8266169cdf543de96144eb4091106f67bf9ea8'), ...}} != {'_closures': {'M2Closure|urn:rawlsing:pre553:m2:closure:authority:sha256:809b99146ddeeb2909d67b501c2b815b8e805162fd38...f543de96144eb4091106f67bf9ea8', content_hash='932ccc00f579f5ec6cc845389a8266169cdf543de96144eb4091106f67bf9ea8'), ...}}
+E         Use -v to get more diff
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:183: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_m2_baseexception_rollback_and_retry[register_release]" time="0.003"><failure message="AssertionError: assert {'_subjects':...ons': {}, ...} == {'_subjects':...ons': {}, ...}&#10;  &#10;  Omitting 4 identical items, use -vv to show&#10;  Differing items:&#10;  {'_releases': {'LearnedProductReleaseCore|urn:rawlsing:pre553:m2:release:sha256:e54f0c4055439c8f26ba390fc74e2a33b1d386...33b1d38694a677e88d0ef37c42e9261676', content_hash='e54f0c4055439c8f26ba390fc74e2a33b1d38694a677e88d0ef37c42e9261676')}} != {'_releases': {}}&#10;  Use -v to get more diff">name = 'register_release'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10cccf750&gt;
+
+    @pytest.mark.parametrize('name',['register_subject','register_closure','register_release','register_representation','register_binding'])
+    def test_m2_baseexception_rollback_and_retry(name,monkeypatch):
+        repo,r,s,p,closures=m2_fixture(); record=representation(r,s,p); repo.register_representation(record)
+        bind=PublicationBinding(release_ref=r.ref,publication_contract_ref=M2_PUBLICATION_CONTRACT_REF,resolution_mode=record.resolution_mode,resolver_or_locator_ref=record.resolver_or_locator_ref,representation_integrity_ref=record.representation_integrity_ref)
+        if name=='register_release':
+            target=M2Repository(); target.register_subject(repo.subject_exact(s))
+            for c in closures.values():target.register_closure(c)
+            repo=target
+        values={'register_subject':replace(repo.subject_exact(s),ref=ref('Subject','gr-new')),'register_closure':replace(closures['DEPENDENCY'],member_refs=(ref('Member','gr-new'),)),'register_release':r,'register_representation':replace(record,resolver_or_locator_ref=ref('Locator','gr-new')),'register_binding':bind}
+        before={n:dict(getattr(repo,n)) for n in ('_subjects','_closures','_releases','_representations','_bindings')}; saved=repo._insert
+        def fail(*args):saved(*args); raise Fault('post-insert')
+        monkeypatch.setattr(repo,'_insert',fail)
+        with pytest.raises(Fault):getattr(repo,name)(values[name])
+&gt;       assert {n:dict(getattr(repo,n)) for n in ('_subjects','_closures','_releases','_representations','_bindings')}==before
+E       AssertionError: assert {'_subjects':...ons': {}, ...} == {'_subjects':...ons': {}, ...}
+E         
+E         Omitting 4 identical items, use -vv to show
+E         Differing items:
+E         {'_releases': {'LearnedProductReleaseCore|urn:rawlsing:pre553:m2:release:sha256:e54f0c4055439c8f26ba390fc74e2a33b1d386...33b1d38694a677e88d0ef37c42e9261676', content_hash='e54f0c4055439c8f26ba390fc74e2a33b1d38694a677e88d0ef37c42e9261676')}} != {'_releases': {}}
+E         Use -v to get more diff
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:183: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_m2_baseexception_rollback_and_retry[register_representation]" time="0.002"><failure message="AssertionError: assert {'_subjects':...4b163')}, ...} == {'_subjects':...f6911')}, ...}&#10;  &#10;  Omitting 4 identical items, use -vv to show&#10;  Differing items:&#10;  {'_representations': {'Locator|urn:test:Locator:gr:sha256:1d0b4e32dea0964a7c3acfba9a14dcf69ec88ea260061889206a8c2b8543...0a95071934fa01d0a4b08743e6caa4b163', content_hash='965790b19b164281b431c2f2c173b30a95071934fa01d0a4b08743e6caa4b163')}} != {'_representations': {'Locator|urn:test:Locator:gr:sha256:1d0b4e32dea0964a7c3acfba9a14dcf69ec88ea260061889206a8c2b8543...a7589fb8015e3bb5d0ca518751f60f6911', content_hash='1689e37664609df4417b8da8cc3baca7589fb8015e3bb5d0ca518751f60f6911')}}&#10;  Use -v to get more diff">name = 'register_representation'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10ca50990&gt;
+
+    @pytest.mark.parametrize('name',['register_subject','register_closure','register_release','register_representation','register_binding'])
+    def test_m2_baseexception_rollback_and_retry(name,monkeypatch):
+        repo,r,s,p,closures=m2_fixture(); record=representation(r,s,p); repo.register_representation(record)
+        bind=PublicationBinding(release_ref=r.ref,publication_contract_ref=M2_PUBLICATION_CONTRACT_REF,resolution_mode=record.resolution_mode,resolver_or_locator_ref=record.resolver_or_locator_ref,representation_integrity_ref=record.representation_integrity_ref)
+        if name=='register_release':
+            target=M2Repository(); target.register_subject(repo.subject_exact(s))
+            for c in closures.values():target.register_closure(c)
+            repo=target
+        values={'register_subject':replace(repo.subject_exact(s),ref=ref('Subject','gr-new')),'register_closure':replace(closures['DEPENDENCY'],member_refs=(ref('Member','gr-new'),)),'register_release':r,'register_representation':replace(record,resolver_or_locator_ref=ref('Locator','gr-new')),'register_binding':bind}
+        before={n:dict(getattr(repo,n)) for n in ('_subjects','_closures','_releases','_representations','_bindings')}; saved=repo._insert
+        def fail(*args):saved(*args); raise Fault('post-insert')
+        monkeypatch.setattr(repo,'_insert',fail)
+        with pytest.raises(Fault):getattr(repo,name)(values[name])
+&gt;       assert {n:dict(getattr(repo,n)) for n in ('_subjects','_closures','_releases','_representations','_bindings')}==before
+E       AssertionError: assert {'_subjects':...4b163')}, ...} == {'_subjects':...f6911')}, ...}
+E         
+E         Omitting 4 identical items, use -vv to show
+E         Differing items:
+E         {'_representations': {'Locator|urn:test:Locator:gr:sha256:1d0b4e32dea0964a7c3acfba9a14dcf69ec88ea260061889206a8c2b8543...0a95071934fa01d0a4b08743e6caa4b163', content_hash='965790b19b164281b431c2f2c173b30a95071934fa01d0a4b08743e6caa4b163')}} != {'_representations': {'Locator|urn:test:Locator:gr:sha256:1d0b4e32dea0964a7c3acfba9a14dcf69ec88ea260061889206a8c2b8543...a7589fb8015e3bb5d0ca518751f60f6911', content_hash='1689e37664609df4417b8da8cc3baca7589fb8015e3bb5d0ca518751f60f6911')}}
+E         Use -v to get more diff
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:183: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_m2_baseexception_rollback_and_retry[register_binding]" time="0.002"><failure message="AssertionError: assert {'_subjects':...f6911')}, ...} == {'_subjects':...f6911')}, ...}&#10;  &#10;  Omitting 4 identical items, use -vv to show&#10;  Differing items:&#10;  {'_bindings': {'M2PublicationBinding|urn:rawlsing:pre553:m2:binding:sha256:5698de1322b9ae043159788e210ef8942486870589a...942486870589a66e02ec2411f5ce1a580a', content_hash='5698de1322b9ae043159788e210ef8942486870589a66e02ec2411f5ce1a580a')}} != {'_bindings': {}}&#10;  Use -v to get more diff">name = 'register_binding'
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10ccd6950&gt;
+
+    @pytest.mark.parametrize('name',['register_subject','register_closure','register_release','register_representation','register_binding'])
+    def test_m2_baseexception_rollback_and_retry(name,monkeypatch):
+        repo,r,s,p,closures=m2_fixture(); record=representation(r,s,p); repo.register_representation(record)
+        bind=PublicationBinding(release_ref=r.ref,publication_contract_ref=M2_PUBLICATION_CONTRACT_REF,resolution_mode=record.resolution_mode,resolver_or_locator_ref=record.resolver_or_locator_ref,representation_integrity_ref=record.representation_integrity_ref)
+        if name=='register_release':
+            target=M2Repository(); target.register_subject(repo.subject_exact(s))
+            for c in closures.values():target.register_closure(c)
+            repo=target
+        values={'register_subject':replace(repo.subject_exact(s),ref=ref('Subject','gr-new')),'register_closure':replace(closures['DEPENDENCY'],member_refs=(ref('Member','gr-new'),)),'register_release':r,'register_representation':replace(record,resolver_or_locator_ref=ref('Locator','gr-new')),'register_binding':bind}
+        before={n:dict(getattr(repo,n)) for n in ('_subjects','_closures','_releases','_representations','_bindings')}; saved=repo._insert
+        def fail(*args):saved(*args); raise Fault('post-insert')
+        monkeypatch.setattr(repo,'_insert',fail)
+        with pytest.raises(Fault):getattr(repo,name)(values[name])
+&gt;       assert {n:dict(getattr(repo,n)) for n in ('_subjects','_closures','_releases','_representations','_bindings')}==before
+E       AssertionError: assert {'_subjects':...f6911')}, ...} == {'_subjects':...f6911')}, ...}
+E         
+E         Omitting 4 identical items, use -vv to show
+E         Differing items:
+E         {'_bindings': {'M2PublicationBinding|urn:rawlsing:pre553:m2:binding:sha256:5698de1322b9ae043159788e210ef8942486870589a...942486870589a66e02ec2411f5ce1a580a', content_hash='5698de1322b9ae043159788e210ef8942486870589a66e02ec2411f5ce1a580a')}} != {'_bindings': {}}
+E         Use -v to get more diff
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:183: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_saved_helpers_and_unwrapped_bodies_refuse" time="0.048"><failure message="Failed: DID NOT RAISE LearnedProductLifecycleError">def test_saved_helpers_and_unwrapped_bodies_refuse():
+        x,a,b,k,_=fixture(); cp=roundtrip(x)
+        for call in (lambda:x._append_events((x.events[-1],)),lambda:x._commit_selection_transition_receipts(()),lambda:B5.stage_release.__wrapped__(x,subject('outside'))):
+&gt;           with pytest.raises(LearnedProductLifecycleError):call()
+E           Failed: DID NOT RAISE LearnedProductLifecycleError
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:190: Failed</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_m2_early_refusal_lawful_foreign_mismatch_and_same_release_failover" time="0.028" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_full_world_consumer_n04_and_fresh_process" time="0.798" /><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_rehashed_receipt_field_mismatch_refused[selection_receipts-selection_authority_refs]" time="0.074"><failure message="Failed: DID NOT RAISE LearnedProductLifecycleError">kind = 'selection_receipts', field = 'selection_authority_refs'
+
+    @pytest.mark.parametrize('kind,field', [('selection_receipts','selection_authority_refs'),('no_current_receipts','selection_attestation_refs'),('invalidations','unaffected_product_refs'),('rebuild_eligibility','release_ref'),('rebuild_links','old_release_ref'),('gc_eligibility','release_ref')])
+    def test_rehashed_receipt_field_mismatch_refused(kind,field):
+        from rawlsing_next import pre553_learned_product_lifecycle as mod
+        classes=dict(selection_receipts=mod.CurrentSelectionReceipt,no_current_receipts=mod.NoCurrentReceipt,invalidations=mod.InvalidationReceipt,rebuild_eligibility=mod.RebuildEligibilityReceipt,rebuild_links=mod.RebuildLinkReceipt,gc_eligibility=mod.GCElegibilityReceipt)
+        x,a,b,k,ops=fixture(); ops['link_rebuild']()
+        if kind!='selection_receipts':
+            ops['declare_no_current']()
+            x.declare_invalidation(a.determinant_refs,dependency_closure_receipt_ref=ref('Closure','inv'),selection_attestation_ref=ref('Attestation','inv'),**A)
+        cp=roundtrip(x); old=classes[kind].from_dict(cp['checkpoint_payload'][kind][0])
+        value=(ref('Alien','gr'),) if field.endswith('_refs') else b.release_ref
+        forged=replace(old,**{field:value}); cp['checkpoint_payload'][kind][0]=forged.as_dict()
+        for row in cp['checkpoint_payload']['selection_index']:
+            if row['receipt_ref']==old.ref.as_dict():row['receipt_ref']=forged.ref.as_dict()
+        cp['checkpoint_hash']=semantic_hash(cp['checkpoint_payload'])
+&gt;       with pytest.raises(LearnedProductLifecycleError,match='semantic replay|native operations'):B5.from_checkpoint(cp)
+E       Failed: DID NOT RAISE LearnedProductLifecycleError
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:254: Failed</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_rehashed_receipt_field_mismatch_refused[no_current_receipts-selection_attestation_refs]" time="0.112"><failure message="Failed: DID NOT RAISE LearnedProductLifecycleError">kind = 'no_current_receipts', field = 'selection_attestation_refs'
+
+    @pytest.mark.parametrize('kind,field', [('selection_receipts','selection_authority_refs'),('no_current_receipts','selection_attestation_refs'),('invalidations','unaffected_product_refs'),('rebuild_eligibility','release_ref'),('rebuild_links','old_release_ref'),('gc_eligibility','release_ref')])
+    def test_rehashed_receipt_field_mismatch_refused(kind,field):
+        from rawlsing_next import pre553_learned_product_lifecycle as mod
+        classes=dict(selection_receipts=mod.CurrentSelectionReceipt,no_current_receipts=mod.NoCurrentReceipt,invalidations=mod.InvalidationReceipt,rebuild_eligibility=mod.RebuildEligibilityReceipt,rebuild_links=mod.RebuildLinkReceipt,gc_eligibility=mod.GCElegibilityReceipt)
+        x,a,b,k,ops=fixture(); ops['link_rebuild']()
+        if kind!='selection_receipts':
+            ops['declare_no_current']()
+            x.declare_invalidation(a.determinant_refs,dependency_closure_receipt_ref=ref('Closure','inv'),selection_attestation_ref=ref('Attestation','inv'),**A)
+        cp=roundtrip(x); old=classes[kind].from_dict(cp['checkpoint_payload'][kind][0])
+        value=(ref('Alien','gr'),) if field.endswith('_refs') else b.release_ref
+        forged=replace(old,**{field:value}); cp['checkpoint_payload'][kind][0]=forged.as_dict()
+        for row in cp['checkpoint_payload']['selection_index']:
+            if row['receipt_ref']==old.ref.as_dict():row['receipt_ref']=forged.ref.as_dict()
+        cp['checkpoint_hash']=semantic_hash(cp['checkpoint_payload'])
+&gt;       with pytest.raises(LearnedProductLifecycleError,match='semantic replay|native operations'):B5.from_checkpoint(cp)
+E       Failed: DID NOT RAISE LearnedProductLifecycleError
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:254: Failed</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_rehashed_receipt_field_mismatch_refused[invalidations-unaffected_product_refs]" time="0.092"><failure message="Failed: DID NOT RAISE LearnedProductLifecycleError">kind = 'invalidations', field = 'unaffected_product_refs'
+
+    @pytest.mark.parametrize('kind,field', [('selection_receipts','selection_authority_refs'),('no_current_receipts','selection_attestation_refs'),('invalidations','unaffected_product_refs'),('rebuild_eligibility','release_ref'),('rebuild_links','old_release_ref'),('gc_eligibility','release_ref')])
+    def test_rehashed_receipt_field_mismatch_refused(kind,field):
+        from rawlsing_next import pre553_learned_product_lifecycle as mod
+        classes=dict(selection_receipts=mod.CurrentSelectionReceipt,no_current_receipts=mod.NoCurrentReceipt,invalidations=mod.InvalidationReceipt,rebuild_eligibility=mod.RebuildEligibilityReceipt,rebuild_links=mod.RebuildLinkReceipt,gc_eligibility=mod.GCElegibilityReceipt)
+        x,a,b,k,ops=fixture(); ops['link_rebuild']()
+        if kind!='selection_receipts':
+            ops['declare_no_current']()
+            x.declare_invalidation(a.determinant_refs,dependency_closure_receipt_ref=ref('Closure','inv'),selection_attestation_ref=ref('Attestation','inv'),**A)
+        cp=roundtrip(x); old=classes[kind].from_dict(cp['checkpoint_payload'][kind][0])
+        value=(ref('Alien','gr'),) if field.endswith('_refs') else b.release_ref
+        forged=replace(old,**{field:value}); cp['checkpoint_payload'][kind][0]=forged.as_dict()
+        for row in cp['checkpoint_payload']['selection_index']:
+            if row['receipt_ref']==old.ref.as_dict():row['receipt_ref']=forged.ref.as_dict()
+        cp['checkpoint_hash']=semantic_hash(cp['checkpoint_payload'])
+&gt;       with pytest.raises(LearnedProductLifecycleError,match='semantic replay|native operations'):B5.from_checkpoint(cp)
+E       Failed: DID NOT RAISE LearnedProductLifecycleError
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:254: Failed</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_rehashed_receipt_field_mismatch_refused[rebuild_eligibility-release_ref]" time="0.083"><failure message="Failed: DID NOT RAISE LearnedProductLifecycleError">kind = 'rebuild_eligibility', field = 'release_ref'
+
+    @pytest.mark.parametrize('kind,field', [('selection_receipts','selection_authority_refs'),('no_current_receipts','selection_attestation_refs'),('invalidations','unaffected_product_refs'),('rebuild_eligibility','release_ref'),('rebuild_links','old_release_ref'),('gc_eligibility','release_ref')])
+    def test_rehashed_receipt_field_mismatch_refused(kind,field):
+        from rawlsing_next import pre553_learned_product_lifecycle as mod
+        classes=dict(selection_receipts=mod.CurrentSelectionReceipt,no_current_receipts=mod.NoCurrentReceipt,invalidations=mod.InvalidationReceipt,rebuild_eligibility=mod.RebuildEligibilityReceipt,rebuild_links=mod.RebuildLinkReceipt,gc_eligibility=mod.GCElegibilityReceipt)
+        x,a,b,k,ops=fixture(); ops['link_rebuild']()
+        if kind!='selection_receipts':
+            ops['declare_no_current']()
+            x.declare_invalidation(a.determinant_refs,dependency_closure_receipt_ref=ref('Closure','inv'),selection_attestation_ref=ref('Attestation','inv'),**A)
+        cp=roundtrip(x); old=classes[kind].from_dict(cp['checkpoint_payload'][kind][0])
+        value=(ref('Alien','gr'),) if field.endswith('_refs') else b.release_ref
+        forged=replace(old,**{field:value}); cp['checkpoint_payload'][kind][0]=forged.as_dict()
+        for row in cp['checkpoint_payload']['selection_index']:
+            if row['receipt_ref']==old.ref.as_dict():row['receipt_ref']=forged.ref.as_dict()
+        cp['checkpoint_hash']=semantic_hash(cp['checkpoint_payload'])
+&gt;       with pytest.raises(LearnedProductLifecycleError,match='semantic replay|native operations'):B5.from_checkpoint(cp)
+E       Failed: DID NOT RAISE LearnedProductLifecycleError
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:254: Failed</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_rehashed_receipt_field_mismatch_refused[rebuild_links-old_release_ref]" time="0.084"><failure message="Failed: DID NOT RAISE LearnedProductLifecycleError">kind = 'rebuild_links', field = 'old_release_ref'
+
+    @pytest.mark.parametrize('kind,field', [('selection_receipts','selection_authority_refs'),('no_current_receipts','selection_attestation_refs'),('invalidations','unaffected_product_refs'),('rebuild_eligibility','release_ref'),('rebuild_links','old_release_ref'),('gc_eligibility','release_ref')])
+    def test_rehashed_receipt_field_mismatch_refused(kind,field):
+        from rawlsing_next import pre553_learned_product_lifecycle as mod
+        classes=dict(selection_receipts=mod.CurrentSelectionReceipt,no_current_receipts=mod.NoCurrentReceipt,invalidations=mod.InvalidationReceipt,rebuild_eligibility=mod.RebuildEligibilityReceipt,rebuild_links=mod.RebuildLinkReceipt,gc_eligibility=mod.GCElegibilityReceipt)
+        x,a,b,k,ops=fixture(); ops['link_rebuild']()
+        if kind!='selection_receipts':
+            ops['declare_no_current']()
+            x.declare_invalidation(a.determinant_refs,dependency_closure_receipt_ref=ref('Closure','inv'),selection_attestation_ref=ref('Attestation','inv'),**A)
+        cp=roundtrip(x); old=classes[kind].from_dict(cp['checkpoint_payload'][kind][0])
+        value=(ref('Alien','gr'),) if field.endswith('_refs') else b.release_ref
+        forged=replace(old,**{field:value}); cp['checkpoint_payload'][kind][0]=forged.as_dict()
+        for row in cp['checkpoint_payload']['selection_index']:
+            if row['receipt_ref']==old.ref.as_dict():row['receipt_ref']=forged.ref.as_dict()
+        cp['checkpoint_hash']=semantic_hash(cp['checkpoint_payload'])
+&gt;       with pytest.raises(LearnedProductLifecycleError,match='semantic replay|native operations'):B5.from_checkpoint(cp)
+E       Failed: DID NOT RAISE LearnedProductLifecycleError
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:254: Failed</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_rehashed_receipt_field_mismatch_refused[gc_eligibility-release_ref]" time="0.112"><failure message="Failed: DID NOT RAISE LearnedProductLifecycleError">kind = 'gc_eligibility', field = 'release_ref'
+
+    @pytest.mark.parametrize('kind,field', [('selection_receipts','selection_authority_refs'),('no_current_receipts','selection_attestation_refs'),('invalidations','unaffected_product_refs'),('rebuild_eligibility','release_ref'),('rebuild_links','old_release_ref'),('gc_eligibility','release_ref')])
+    def test_rehashed_receipt_field_mismatch_refused(kind,field):
+        from rawlsing_next import pre553_learned_product_lifecycle as mod
+        classes=dict(selection_receipts=mod.CurrentSelectionReceipt,no_current_receipts=mod.NoCurrentReceipt,invalidations=mod.InvalidationReceipt,rebuild_eligibility=mod.RebuildEligibilityReceipt,rebuild_links=mod.RebuildLinkReceipt,gc_eligibility=mod.GCElegibilityReceipt)
+        x,a,b,k,ops=fixture(); ops['link_rebuild']()
+        if kind!='selection_receipts':
+            ops['declare_no_current']()
+            x.declare_invalidation(a.determinant_refs,dependency_closure_receipt_ref=ref('Closure','inv'),selection_attestation_ref=ref('Attestation','inv'),**A)
+        cp=roundtrip(x); old=classes[kind].from_dict(cp['checkpoint_payload'][kind][0])
+        value=(ref('Alien','gr'),) if field.endswith('_refs') else b.release_ref
+        forged=replace(old,**{field:value}); cp['checkpoint_payload'][kind][0]=forged.as_dict()
+        for row in cp['checkpoint_payload']['selection_index']:
+            if row['receipt_ref']==old.ref.as_dict():row['receipt_ref']=forged.ref.as_dict()
+        cp['checkpoint_hash']=semantic_hash(cp['checkpoint_payload'])
+&gt;       with pytest.raises(LearnedProductLifecycleError,match='semantic replay|native operations'):B5.from_checkpoint(cp)
+E       Failed: DID NOT RAISE LearnedProductLifecycleError
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:254: Failed</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_public_reader_waits_until_rollback" time="0.010"><failure message="assert (False)">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10cef7750&gt;
+
+    def test_public_reader_waits_until_rollback(monkeypatch):
+        x=B5(); a=register(x,subject('gr-reader')); before=roundtrip(x)
+        appended=Event(); unblock=Event(); attempted=Event(); finished=Event(); errors=[]; reads=[]; saved=x._append_events
+        def pause(events):
+            saved(events); appended.set(); assert unblock.wait(5); raise Fault('pending')
+        monkeypatch.setattr(x,'_append_events',pause)
+        def writer():
+            try:x.publish_product(a.release_ref,**A)
+            except Fault as e:errors.append(e)
+        def reader():
+            attempted.set(); reads.append(x.export_checkpoint()); finished.set()
+        wt=Thread(target=writer);wt.start(); assert appended.wait(5)
+        rt=Thread(target=reader);rt.start();assert attempted.wait(5)
+        blocked=not finished.wait(.1);unblock.set();wt.join(5);rt.join(5)
+&gt;       assert blocked and not wt.is_alive() and not rt.is_alive()
+E       assert (False)
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:271: AssertionError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq286_s06gr_independent_atomic_review" name="test_m2_nested_metadata_cannot_change_release_closure" time="0.001"><failure message="Failed: DID NOT RAISE TypeError">def test_m2_nested_metadata_cannot_change_release_closure():
+        from rawlsing_next.pre553_learned_product_release import ClosureObject
+        repo=M2Repository(); raw={'nested':[{'v':'original'}]}
+        obj=ClosureObject('DEPENDENCY',(ref('Member','gr'),),True,metadata=raw); repo.register_closure(obj)
+        old=obj.ref; raw['nested'][0]['v']='external'
+&gt;       with pytest.raises(TypeError):repo.closure_exact(old).metadata['nested'][0]['v']='internal'
+E       Failed: DID NOT RAISE TypeError
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:280: Failed</failure></testcase></testsuite></testsuites>

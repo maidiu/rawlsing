@@ -1,0 +1,27 @@
+........................................F.......                         [100%]
+=================================== FAILURES ===================================
+_ test_rehashed_receipt_field_mismatch_refused[selection_receipts-selection_authority_refs] _
+
+kind = 'selection_receipts', field = 'selection_authority_refs'
+
+    @pytest.mark.parametrize('kind,field', [('selection_receipts','selection_authority_refs'),('no_current_receipts','selection_attestation_refs'),('invalidations','unaffected_product_refs'),('rebuild_eligibility','release_ref'),('rebuild_links','old_release_ref'),('gc_eligibility','release_ref')])
+    def test_rehashed_receipt_field_mismatch_refused(kind,field):
+        from rawlsing_next import pre553_learned_product_lifecycle as mod
+        classes=dict(selection_receipts=mod.CurrentSelectionReceipt,no_current_receipts=mod.NoCurrentReceipt,invalidations=mod.InvalidationReceipt,rebuild_eligibility=mod.RebuildEligibilityReceipt,rebuild_links=mod.RebuildLinkReceipt,gc_eligibility=mod.GCElegibilityReceipt)
+        x,a,b,k,ops=fixture(); ops['link_rebuild'](); ops['declare_no_current']()
+        x.declare_invalidation(a.determinant_refs,dependency_closure_receipt_ref=ref('Closure','inv'),selection_attestation_ref=ref('Attestation','inv'),**A)
+        cp=roundtrip(x); old=classes[kind].from_dict(cp['checkpoint_payload'][kind][0])
+        value=(ref('Alien','gr'),) if field.endswith('_refs') else b.release_ref
+        forged=replace(old,**{field:value}); cp['checkpoint_payload'][kind][0]=forged.as_dict()
+        for row in cp['checkpoint_payload']['selection_index']:
+            if row['receipt_ref']==old.ref.as_dict():row['receipt_ref']=forged.ref.as_dict()
+        cp['checkpoint_hash']=semantic_hash(cp['checkpoint_payload'])
+>       with pytest.raises(LearnedProductLifecycleError,match='semantic replay|native operations'):B5.from_checkpoint(cp)
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'semantic replay|native operations'
+E         Actual message: 'NO_CURRENT predecessor mismatch'
+
+rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py:252: AssertionError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py::test_rehashed_receipt_field_mismatch_refused[selection_receipts-selection_authority_refs]
+1 failed, 47 passed in 7.67s

@@ -1,0 +1,474 @@
+[
+  {
+    "owner": "B5",
+    "method": "native_security_mode",
+    "line": 1524,
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "own recursive snapshot, reader rollback, full world/N04/fresh process, concurrent replay; unchanged accepted B5/M2/current-asof and S06FR courts",
+    "external_guard": "READ_OR_SCHEMA_ROUTE",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "require_external_issuer",
+    "line": 1528,
+    "local_verdict": "PASS_REFUSAL",
+    "evidence": "test_saved_helpers_and_unwrapped_bodies_refuse",
+    "external_guard": "PASS_REFUSAL",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "events",
+    "line": 1854,
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "own recursive snapshot, reader rollback, full world/N04/fresh process, concurrent replay; unchanged accepted B5/M2/current-asof and S06FR courts",
+    "external_guard": "READ_OR_SCHEMA_ROUTE",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "registered_release_refs",
+    "line": 1859,
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "own recursive snapshot, reader rollback, full world/N04/fresh process, concurrent replay; unchanged accepted B5/M2/current-asof and S06FR courts",
+    "external_guard": "READ_OR_SCHEMA_ROUTE",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "staged_release_refs",
+    "line": 1866,
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "own recursive snapshot, reader rollback, full world/N04/fresh process, concurrent replay; unchanged accepted B5/M2/current-asof and S06FR courts",
+    "external_guard": "READ_OR_SCHEMA_ROUTE",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "determinant_graph",
+    "line": 1874,
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "own recursive snapshot, reader rollback, full world/N04/fresh process, concurrent replay; unchanged accepted B5/M2/current-asof and S06FR courts",
+    "external_guard": "READ_OR_SCHEMA_ROUTE",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "stage_release",
+    "line": 1880,
+    "local_verdict": "PASS",
+    "evidence": "test_baseexception_rollback_then_success_and_recovery[stage_release]",
+    "external_guard": "PASS; unchanged S06FR all_saved_native_writers in three refused modes, executed in unfiltered_final",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "stage_protocol",
+    "line": 1910,
+    "local_verdict": "PASS",
+    "evidence": "test_baseexception_rollback_then_success_and_recovery[stage_protocol]",
+    "external_guard": "PASS; unchanged S06FR all_saved_native_writers in three refused modes, executed in unfiltered_final",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "verify_m2_release_subject_exact",
+    "line": 1919,
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "own recursive snapshot, reader rollback, full world/N04/fresh process, concurrent replay; unchanged accepted B5/M2/current-asof and S06FR courts",
+    "external_guard": "READ_OR_SCHEMA_ROUTE",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "_append_events",
+    "line": 1989,
+    "local_verdict": "PASS_OUTSIDE_TRANSACTION_REFUSAL",
+    "evidence": "test_saved_helpers_and_unwrapped_bodies_refuse; no same-process authentication claim",
+    "external_guard": "PASS_REFUSAL",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "register_product",
+    "line": 2029,
+    "local_verdict": "PASS",
+    "evidence": "test_baseexception_rollback_then_success_and_recovery[register_product]",
+    "external_guard": "PASS; unchanged S06FR all_saved_native_writers in three refused modes, executed in unfiltered_final",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "lifecycle_state",
+    "line": 2077,
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "own recursive snapshot, reader rollback, full world/N04/fresh process, concurrent replay; unchanged accepted B5/M2/current-asof and S06FR courts",
+    "external_guard": "READ_OR_SCHEMA_ROUTE",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "publish_product",
+    "line": 2094,
+    "local_verdict": "PASS",
+    "evidence": "test_baseexception_rollback_then_success_and_recovery[publish_product]",
+    "external_guard": "PASS; unchanged S06FR all_saved_native_writers in three refused modes, executed in unfiltered_final",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "record_recertification",
+    "line": 2135,
+    "local_verdict": "PASS",
+    "evidence": "test_baseexception_rollback_then_success_and_recovery[record_recertification]",
+    "external_guard": "PASS; unchanged S06FR all_saved_native_writers in three refused modes, executed in unfiltered_final",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "selection_key",
+    "line": 2162,
+    "local_verdict": "PASS",
+    "evidence": "test_baseexception_rollback_then_success_and_recovery[selection_key]",
+    "external_guard": "PASS; unchanged S06FR all_saved_native_writers in three refused modes, executed in unfiltered_final",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "select_current",
+    "line": 2232,
+    "local_verdict": "PASS",
+    "evidence": "test_baseexception_rollback_then_success_and_recovery[select_current]",
+    "external_guard": "PASS; unchanged S06FR all_saved_native_writers in three refused modes, executed in unfiltered_final",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "declare_no_current",
+    "line": 2296,
+    "local_verdict": "PASS",
+    "evidence": "test_baseexception_rollback_then_success_and_recovery[declare_no_current]",
+    "external_guard": "PASS; unchanged S06FR all_saved_native_writers in three refused modes, executed in unfiltered_final",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "resolve_selection_exact",
+    "line": 2368,
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "own recursive snapshot, reader rollback, full world/N04/fresh process, concurrent replay; unchanged accepted B5/M2/current-asof and S06FR courts",
+    "external_guard": "READ_OR_SCHEMA_ROUTE",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "current_selection_receipt_ref",
+    "line": 2398,
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "own recursive snapshot, reader rollback, full world/N04/fresh process, concurrent replay; unchanged accepted B5/M2/current-asof and S06FR courts",
+    "external_guard": "READ_OR_SCHEMA_ROUTE",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "supersede_current",
+    "line": 2408,
+    "local_verdict": "PASS",
+    "evidence": "test_baseexception_rollback_then_success_and_recovery[supersede_current]",
+    "external_guard": "PASS; unchanged S06FR all_saved_native_writers in three refused modes, executed in unfiltered_final",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "_commit_selection_transition_receipts",
+    "line": 2587,
+    "local_verdict": "PASS_OUTSIDE_TRANSACTION_REFUSAL",
+    "evidence": "test_saved_helpers_and_unwrapped_bodies_refuse; no same-process authentication claim",
+    "external_guard": "PASS_REFUSAL",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "withdraw_product",
+    "line": 2618,
+    "local_verdict": "PASS",
+    "evidence": "test_baseexception_rollback_then_success_and_recovery[withdraw_product]",
+    "external_guard": "PASS; unchanged S06FR all_saved_native_writers in three refused modes, executed in unfiltered_final",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "declare_invalidation",
+    "line": 2675,
+    "local_verdict": "PASS",
+    "evidence": "test_baseexception_rollback_then_success_and_recovery[declare_invalidation]",
+    "external_guard": "PASS; unchanged S06FR all_saved_native_writers in three refused modes, executed in unfiltered_final",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "record_rebuild_eligibility",
+    "line": 2789,
+    "local_verdict": "PASS",
+    "evidence": "test_baseexception_rollback_then_success_and_recovery[record_rebuild_eligibility]",
+    "external_guard": "PASS; unchanged S06FR all_saved_native_writers in three refused modes, executed in unfiltered_final",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "link_rebuild",
+    "line": 2863,
+    "local_verdict": "PASS",
+    "evidence": "test_baseexception_rollback_then_success_and_recovery[link_rebuild]",
+    "external_guard": "PASS; unchanged S06FR all_saved_native_writers in three refused modes, executed in unfiltered_final",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "record_cache_materialized",
+    "line": 2924,
+    "local_verdict": "PASS",
+    "evidence": "test_baseexception_rollback_then_success_and_recovery[record_cache_materialized]",
+    "external_guard": "PASS; unchanged S06FR all_saved_native_writers in three refused modes, executed in unfiltered_final",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "record_cache_dropped",
+    "line": 2950,
+    "local_verdict": "PASS",
+    "evidence": "test_baseexception_rollback_then_success_and_recovery[record_cache_dropped]",
+    "external_guard": "PASS; unchanged S06FR all_saved_native_writers in three refused modes, executed in unfiltered_final",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "attest_gc_eligibility",
+    "line": 2982,
+    "local_verdict": "PASS",
+    "evidence": "test_baseexception_rollback_then_success_and_recovery[attest_gc_eligibility]",
+    "external_guard": "PASS; unchanged S06FR all_saved_native_writers in three refused modes, executed in unfiltered_final",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "record_payload_gc",
+    "line": 3054,
+    "local_verdict": "PASS",
+    "evidence": "test_baseexception_rollback_then_success_and_recovery[record_payload_gc]",
+    "external_guard": "PASS; unchanged S06FR all_saved_native_writers in three refused modes, executed in unfiltered_final",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "release_history",
+    "line": 3084,
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "own recursive snapshot, reader rollback, full world/N04/fresh process, concurrent replay; unchanged accepted B5/M2/current-asof and S06FR courts",
+    "external_guard": "READ_OR_SCHEMA_ROUTE",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "resolve_current_as_of",
+    "line": 3094,
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "own recursive snapshot, reader rollback, full world/N04/fresh process, concurrent replay; unchanged accepted B5/M2/current-asof and S06FR courts",
+    "external_guard": "READ_OR_SCHEMA_ROUTE",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "export_checkpoint",
+    "line": 3213,
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "own recursive snapshot, reader rollback, full world/N04/fresh process, concurrent replay; unchanged accepted B5/M2/current-asof and S06FR courts",
+    "external_guard": "READ_OR_SCHEMA_ROUTE",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "from_checkpoint",
+    "line": 3221,
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "own recursive snapshot, reader rollback, full world/N04/fresh process, concurrent replay; unchanged accepted B5/M2/current-asof and S06FR courts",
+    "external_guard": "READ_OR_SCHEMA_ROUTE",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "B5",
+    "method": "audit_replay",
+    "line": 3372,
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "own recursive snapshot, reader rollback, full world/N04/fresh process, concurrent replay; unchanged accepted B5/M2/current-asof and S06FR courts",
+    "external_guard": "READ_OR_SCHEMA_ROUTE",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "M2",
+    "method": "native_security_mode",
+    "line": 514,
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "own recursive snapshot, reader rollback, full world/N04/fresh process, concurrent replay; unchanged accepted B5/M2/current-asof and S06FR courts",
+    "external_guard": "READ_OR_SCHEMA_ROUTE",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "M2",
+    "method": "require_external_issuer",
+    "line": 517,
+    "local_verdict": "PASS_REFUSAL",
+    "evidence": "test_saved_helpers_and_unwrapped_bodies_refuse",
+    "external_guard": "PASS_REFUSAL",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "M2",
+    "method": "_insert",
+    "line": 536,
+    "local_verdict": "PASS_OUTSIDE_TRANSACTION_REFUSAL",
+    "evidence": "test_saved_helpers_and_unwrapped_bodies_refuse; no same-process authentication claim",
+    "external_guard": "PASS_REFUSAL",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "M2",
+    "method": "register_subject",
+    "line": 557,
+    "local_verdict": "PASS",
+    "evidence": "test_m2_baseexception_rollback_and_retry[register_subject]",
+    "external_guard": "PASS; unchanged S06FR all_saved_native_writers in three refused modes, executed in unfiltered_final",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "M2",
+    "method": "register_closure",
+    "line": 566,
+    "local_verdict": "PASS",
+    "evidence": "test_m2_baseexception_rollback_and_retry[register_closure]",
+    "external_guard": "PASS; unchanged S06FR all_saved_native_writers in three refused modes, executed in unfiltered_final",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "M2",
+    "method": "register_release",
+    "line": 575,
+    "local_verdict": "PASS",
+    "evidence": "test_m2_baseexception_rollback_and_retry[register_release]",
+    "external_guard": "PASS; unchanged S06FR all_saved_native_writers in three refused modes, executed in unfiltered_final",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "M2",
+    "method": "register_representation",
+    "line": 602,
+    "local_verdict": "PASS",
+    "evidence": "test_m2_baseexception_rollback_and_retry[register_representation]",
+    "external_guard": "PASS; unchanged S06FR all_saved_native_writers in three refused modes, executed in unfiltered_final",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "M2",
+    "method": "register_binding",
+    "line": 627,
+    "local_verdict": "PASS",
+    "evidence": "test_m2_baseexception_rollback_and_retry[register_binding]",
+    "external_guard": "PASS; unchanged S06FR all_saved_native_writers in three refused modes, executed in unfiltered_final",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "M2",
+    "method": "subject_exact",
+    "line": 647,
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "own recursive snapshot, reader rollback, full world/N04/fresh process, concurrent replay; unchanged accepted B5/M2/current-asof and S06FR courts",
+    "external_guard": "READ_OR_SCHEMA_ROUTE",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "M2",
+    "method": "closure_exact",
+    "line": 655,
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "own recursive snapshot, reader rollback, full world/N04/fresh process, concurrent replay; unchanged accepted B5/M2/current-asof and S06FR courts",
+    "external_guard": "READ_OR_SCHEMA_ROUTE",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "M2",
+    "method": "release_exact",
+    "line": 663,
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "own recursive snapshot, reader rollback, full world/N04/fresh process, concurrent replay; unchanged accepted B5/M2/current-asof and S06FR courts",
+    "external_guard": "READ_OR_SCHEMA_ROUTE",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "M2",
+    "method": "representation_exact",
+    "line": 672,
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "own recursive snapshot, reader rollback, full world/N04/fresh process, concurrent replay; unchanged accepted B5/M2/current-asof and S06FR courts",
+    "external_guard": "READ_OR_SCHEMA_ROUTE",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "M2",
+    "method": "binding_exact",
+    "line": 680,
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "own recursive snapshot, reader rollback, full world/N04/fresh process, concurrent replay; unchanged accepted B5/M2/current-asof and S06FR courts",
+    "external_guard": "READ_OR_SCHEMA_ROUTE",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "M2",
+    "method": "releases",
+    "line": 690,
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "own recursive snapshot, reader rollback, full world/N04/fresh process, concurrent replay; unchanged accepted B5/M2/current-asof and S06FR courts",
+    "external_guard": "READ_OR_SCHEMA_ROUTE",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "M2_MODULE_ROUTE",
+    "method": "register_producer_subject",
+    "writer": "register_subject",
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "full world or m2_fixture/accepted M2 tests; static route reaches guarded repository writer",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "M2_MODULE_ROUTE",
+    "method": "constitute_closure",
+    "writer": "register_closure",
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "full world or m2_fixture/accepted M2 tests; static route reaches guarded repository writer",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "M2_MODULE_ROUTE",
+    "method": "constitute_release",
+    "writer": "register_release",
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "full world or m2_fixture/accepted M2 tests; static route reaches guarded repository writer",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "M2_MODULE_ROUTE",
+    "method": "register_representation",
+    "writer": "register_representation",
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "full world or m2_fixture/accepted M2 tests; static route reaches guarded repository writer",
+    "external_issuance_custody": "HOLD"
+  },
+  {
+    "owner": "M2_MODULE_ROUTE",
+    "method": "publish_binding",
+    "writer": "register_binding",
+    "local_verdict": "PASS_BOUNDED_LOCAL",
+    "evidence": "full world or m2_fixture/accepted M2 tests; static route reaches guarded repository writer",
+    "external_issuance_custody": "HOLD"
+  }
+]

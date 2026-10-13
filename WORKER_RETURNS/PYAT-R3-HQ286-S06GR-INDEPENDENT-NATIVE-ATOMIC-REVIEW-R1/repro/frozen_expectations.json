@@ -1,0 +1,234 @@
+{
+  "schema": "PYAT_R3_S06R_SECURITY_HOSTILES_FROZEN_BEFORE_AUTHOR_TEST_INSPECTION@1",
+  "frozen_candidate": "4fec074c7e40a8b233055ffd1d80dbede293c9c4",
+  "canonical_base": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+  "provenance": "Independently derived from actual S06 implementation and accepted owner + N04/N04R/P02R review evidence; candidate test source not read when authored; author return file listed test names but no test source inspected.",
+  "status": "FROZEN_ACCEPTANCE_EXPECTATIONS_UNEXECUTED",
+  "independent_hostile_count": 24,
+  "execution_evidence": {
+    "executor": "DeepSeek Harness requested; not connected in this session",
+    "host": "BROWSER_GITHUB_CODE_INSPECTION_ONLY",
+    "commands": [],
+    "exits": [],
+    "executed": 0
+  },
+  "cases": [
+    {
+      "id": "S06R-H01",
+      "adversary": "CALLER_TRUE_WITHDRAW",
+      "action": "withdraw(release, trusted=True) on uncredentialed instance",
+      "expected_authoritative_result": "REFUSE_WITHOUT_VERIFIED_ISSUER",
+      "evidence_type": "INDEPENDENT_PRETEST_ORACLE",
+      "executed": false,
+      "observed_runtime": null
+    },
+    {
+      "id": "S06R-H02",
+      "adversary": "CALLER_TRUE_INVALIDATE",
+      "action": "invalidate(release, trusted=True)",
+      "expected_authoritative_result": "REFUSE_WITHOUT_VERIFIED_ISSUER",
+      "evidence_type": "INDEPENDENT_PRETEST_ORACLE",
+      "executed": false,
+      "observed_runtime": null
+    },
+    {
+      "id": "S06R-H03",
+      "adversary": "CALLER_TRUE_SUPERSEDE",
+      "action": "supersede(A,B,trusted=True)",
+      "expected_authoritative_result": "REFUSE_WITHOUT_VERIFIED_ISSUER",
+      "evidence_type": "INDEPENDENT_PRETEST_ORACLE",
+      "executed": false,
+      "observed_runtime": null
+    },
+    {
+      "id": "S06R-H04",
+      "adversary": "CALLER_TRUE_REVOKE",
+      "action": "revoke(A,trusted=True)",
+      "expected_authoritative_result": "REFUSE_WITHOUT_VERIFIED_ISSUER",
+      "evidence_type": "INDEPENDENT_PRETEST_ORACLE",
+      "executed": false,
+      "observed_runtime": null
+    },
+    {
+      "id": "S06R-H05",
+      "adversary": "CALLER_TRUE_SELECT",
+      "action": "select_current(unknown,epoch=99,trusted=True)",
+      "expected_authoritative_result": "REFUSE_UNPUBLISHED_AND_UNVERIFIED_CURRENT",
+      "evidence_type": "INDEPENDENT_PRETEST_ORACLE",
+      "executed": false,
+      "observed_runtime": null
+    },
+    {
+      "id": "S06R-H06",
+      "adversary": "PUBLIC_APPEND_EVENT",
+      "action": "append_event(PUBLISHED UNKNOWN) direct, no flag",
+      "expected_authoritative_result": "REFUSE_UNISSUED_EVENT_AND_NO_MUTATION",
+      "evidence_type": "INDEPENDENT_PRETEST_ORACLE",
+      "executed": false,
+      "observed_runtime": null
+    },
+    {
+      "id": "S06R-H07",
+      "adversary": "ARBITRARY_AUTH_TOKEN",
+      "action": "require_independent_auth=True; token='arbitrary'",
+      "expected_authoritative_result": "REFUSE_NO_ISSUER_SUBJECT_SCOPE_SIGNATURE",
+      "evidence_type": "INDEPENDENT_PRETEST_ORACLE",
+      "executed": false,
+      "observed_runtime": null
+    },
+    {
+      "id": "S06R-H08",
+      "adversary": "CONSISTENT_FULLEVENT_FORGERY",
+      "action": "replace events state event_count both hashes with attacker coherent corpus",
+      "expected_authoritative_result": "REFUSE_WITHOUT_CUSTODIAN_SIGNATURE_AND_ANCHORED_ROOT",
+      "evidence_type": "INDEPENDENT_PRETEST_ORACLE",
+      "executed": false,
+      "observed_runtime": null
+    },
+    {
+      "id": "S06R-H09",
+      "adversary": "EPOCH_REWRITE",
+      "action": "alter payload epoch without altering hashes",
+      "expected_authoritative_result": "REFUSE_UNBOUND_EPOCH",
+      "evidence_type": "INDEPENDENT_PRETEST_ORACLE",
+      "executed": false,
+      "observed_runtime": null
+    },
+    {
+      "id": "S06R-H10",
+      "adversary": "REVOCATION_REWRITE",
+      "action": "alter revoked list without altering hashes",
+      "expected_authoritative_result": "REFUSE_UNBOUND_REVOCATION_SET",
+      "evidence_type": "INDEPENDENT_PRETEST_ORACLE",
+      "executed": false,
+      "observed_runtime": null
+    },
+    {
+      "id": "S06R-H11",
+      "adversary": "MULTI_GEN_CLOSURE",
+      "action": "A->B->C then invalidate_descendants(A)",
+      "expected_authoritative_result": "INVALIDATE_A_B_C_KEEP_UNRELATED_SIBLINGS",
+      "evidence_type": "INDEPENDENT_PRETEST_ORACLE",
+      "executed": false,
+      "observed_runtime": null
+    },
+    {
+      "id": "S06R-H12",
+      "adversary": "MUTABLE_GET_STATE",
+      "action": "mutate nested get_state mapping",
+      "expected_authoritative_result": "INTERNAL_OWNER_STATE_UNCHANGED",
+      "evidence_type": "INDEPENDENT_PRETEST_ORACLE",
+      "executed": false,
+      "observed_runtime": null
+    },
+    {
+      "id": "S06R-H13",
+      "adversary": "MUTABLE_EVENTS_PROPERTY",
+      "action": "mutate event dict from public events tuple",
+      "expected_authoritative_result": "IMMUTABLE_SNAPSHOT",
+      "evidence_type": "INDEPENDENT_PRETEST_ORACLE",
+      "executed": false,
+      "observed_runtime": null
+    },
+    {
+      "id": "S06R-H14",
+      "adversary": "UNKNOWN_EVENT_TYPE",
+      "action": "append unknown kind",
+      "expected_authoritative_result": "TYPED_REJECTION_NO_LEDGER_APPEND",
+      "evidence_type": "INDEPENDENT_PRETEST_ORACLE",
+      "executed": false,
+      "observed_runtime": null
+    },
+    {
+      "id": "S06R-H15",
+      "adversary": "UNCONDITIONAL_MODE",
+      "action": "verify_trust_mode(PROTECTED_CURRENT) with no owner/root/release",
+      "expected_authoritative_result": "REFUSE_UNISSUED_MODE",
+      "evidence_type": "INDEPENDENT_PRETEST_ORACLE",
+      "executed": false,
+      "observed_runtime": null
+    },
+    {
+      "id": "S06R-H16",
+      "adversary": "EXTERNAL_CUSTODY_MODE",
+      "action": "verify_trust_mode(EXTERNAL_CUSTODY) without root",
+      "expected_authoritative_result": "REFUSE_MISSING_ROOT",
+      "evidence_type": "INDEPENDENT_PRETEST_ORACLE",
+      "executed": false,
+      "observed_runtime": null
+    },
+    {
+      "id": "S06R-H17",
+      "adversary": "REAL_B5_SCHEMA",
+      "action": "pass valid LearnedProductLifecycleExecutor export_checkpoint",
+      "expected_authoritative_result": "OWNER_SCHEMA_COMPATIBLE_OR_EXPLICIT_UNIMPLEMENTED_HOLD",
+      "evidence_type": "INDEPENDENT_PRETEST_ORACLE",
+      "executed": false,
+      "observed_runtime": null
+    },
+    {
+      "id": "S06R-H18",
+      "adversary": "REAL_B5_M2_OWNER",
+      "action": "assert B5/M2 accepted owner imports and adapters actually wrap state mutation",
+      "expected_authoritative_result": "COVER_MUTATING_OWNER_ENTRYPOINTS_NO_DETACHED_LEDGER",
+      "evidence_type": "INDEPENDENT_PRETEST_ORACLE",
+      "executed": false,
+      "observed_runtime": null
+    },
+    {
+      "id": "S06R-H19",
+      "adversary": "COLD_REPLAY_AUTH_LAUNDER",
+      "action": "internally replay self-authored unauthorized PUBLISHED",
+      "expected_authoritative_result": "CONSISTENT_REPLAY_NEVER_AUTHENTICITY",
+      "evidence_type": "INDEPENDENT_PRETEST_ORACLE",
+      "executed": false,
+      "observed_runtime": null
+    },
+    {
+      "id": "S06R-H20",
+      "adversary": "PUBLIC_SELECTED_EVENT",
+      "action": "append SELECTED unissued release no verifier",
+      "expected_authoritative_result": "REFUSE_DIRECT_EVENT_MUTATION",
+      "evidence_type": "INDEPENDENT_PRETEST_ORACLE",
+      "executed": false,
+      "observed_runtime": null
+    },
+    {
+      "id": "S06R-H21",
+      "adversary": "PREVIOUS_OVERLAY_COVERAGE",
+      "action": "9 B5 unwrapped, 8 M2 unwrapped, partial declare_no_current/recertification",
+      "expected_authoritative_result": "OWNER_INTEGRATED_ENFORCEMENT_ALL_ROUTES",
+      "evidence_type": "INDEPENDENT_PRETEST_ORACLE",
+      "executed": false,
+      "observed_runtime": null
+    },
+    {
+      "id": "S06R-H22",
+      "adversary": "AS_OF_AND_REVOCATION",
+      "action": "stale epochs, revoke after select, historical vs CURRENT resolver",
+      "expected_authoritative_result": "SIGNED_EPOCH_ASOF_REVOCATION_BINDING",
+      "evidence_type": "INDEPENDENT_PRETEST_ORACLE",
+      "executed": false,
+      "observed_runtime": null
+    },
+    {
+      "id": "S06R-H23",
+      "adversary": "CHECKPOINT_SUBJECT_ID",
+      "action": "alter subject/release/replay refs while regenerating local hashes",
+      "expected_authoritative_result": "FAIL_PUBLISHED_SUBJECT_PERMISSION_AND_REPLAY",
+      "evidence_type": "INDEPENDENT_PRETEST_ORACLE",
+      "executed": false,
+      "observed_runtime": null
+    },
+    {
+      "id": "S06R-H24",
+      "adversary": "MULTIBRANCH_DEPENDENCIES",
+      "action": "A->B and A->C branch -> D invalidation, sibling unrelated",
+      "expected_authoritative_result": "FULL_TRANSITIVE_DEPENDENCY_CLOSURE_PRESERVE_UNRELATED",
+      "evidence_type": "INDEPENDENT_PRETEST_ORACLE",
+      "executed": false,
+      "observed_runtime": null
+    }
+  ],
+  "risk_policy": "No current/production/source operations; synthetic fixtures only. Until independent verifier and owner integration, require security REFUSE. Historical source-free ability does not grant positive authority."
+}

@@ -1,0 +1,67 @@
+[
+  {
+    "label": "independent_before_final",
+    "command": [
+      "/usr/local/bin/python3",
+      "-c",
+      "import sys; sys.path.insert(0,'/Users/matthewsmith/.codex/worktrees/hq286-s06gr-independent-native-atomic-r1/Rawlsing/WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/baseline_0qw_u8kg'); import rawlsing_next.pre553_learned_product_lifecycle as b; import rawlsing_next.pre553_learned_product_release as m; print('BASELINE_LOADED',b.__file__,m.__file__,flush=True); assert b.__file__.startswith('/Users/matthewsmith/.codex/worktrees/hq286-s06gr-independent-native-atomic-r1/Rawlsing/WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/baseline_0qw_u8kg'); import pytest; raise SystemExit(pytest.main(sys.argv[1:]))",
+      "/Users/matthewsmith/.codex/worktrees/hq286-s06gr-independent-native-atomic-r1/Rawlsing/rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "--import-mode=importlib",
+      "--junitxml=/Users/matthewsmith/.codex/worktrees/hq286-s06gr-independent-native-atomic-r1/Rawlsing/WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/independent_before_final.xml"
+    ],
+    "cwd": "/Users/matthewsmith/.codex/worktrees/hq286-s06gr-independent-native-atomic-r1/Rawlsing",
+    "exit": 1,
+    "baseline": "1b5b6072f855a74864c82d0f1b3923327bfb8b99",
+    "overlay": "two exact owners with package path fallback; recreate via this runner",
+    "timestamp_utc": "2026-10-13T16:26:11.450564+00:00",
+    "evidence_status": "SUPERSEDED_PILOT; final same-label artifacts supersede earlier run"
+  },
+  {
+    "label": "independent_after_final",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "--import-mode=importlib",
+      "--junitxml=/Users/matthewsmith/.codex/worktrees/hq286-s06gr-independent-native-atomic-r1/Rawlsing/WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/independent_after_final.xml"
+    ],
+    "cwd": "/Users/matthewsmith/.codex/worktrees/hq286-s06gr-independent-native-atomic-r1/Rawlsing",
+    "env": {},
+    "exit": 0,
+    "timestamp_utc": "2026-10-13T16:26:19.053742+00:00",
+    "evidence_status": "SUPERSEDED_PILOT; final same-label artifacts supersede earlier run"
+  },
+  {
+    "label": "unfiltered_final",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "rawlsing_next/tests/test_pre553_s06f_native_owner_security.py",
+      "rawlsing_next/tests/test_pre553_learned_product_lifecycle.py",
+      "rawlsing_next/tests/test_pre553_learned_product_release.py",
+      "rawlsing_next/tests/test_pre553_s06g_atomic_integrity.py",
+      "rawlsing_next/tests/test_pre553_ee14_selected_current_asof_hq260.py",
+      "rawlsing_next/tests/test_pre553_learned_world_composition.py",
+      "WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py",
+      "rawlsing_next/tests/test_hq286_s06gr_independent_atomic_review.py",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "--import-mode=importlib",
+      "--junitxml=/Users/matthewsmith/.codex/worktrees/hq286-s06gr-independent-native-atomic-r1/Rawlsing/WORKER_RETURNS/PYAT-R3-HQ286-S06GR-INDEPENDENT-NATIVE-ATOMIC-REVIEW-R1/repro/unfiltered_final.xml"
+    ],
+    "cwd": "/Users/matthewsmith/.codex/worktrees/hq286-s06gr-independent-native-atomic-r1/Rawlsing",
+    "env": {},
+    "exit": 1,
+    "timestamp_utc": "2026-10-13T16:26:43.951213+00:00",
+    "evidence_status": "SUPERSEDED_PILOT; final same-label artifacts supersede earlier run"
+  }
+]
