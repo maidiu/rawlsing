@@ -1,0 +1,137 @@
+{
+ "schema": "PYAT_R3_HQ285_L02_RUNTIME_COURT@1",
+ "branch": "agent/reviewer-pyat-r3-hq285-l02-independent-runtime-evidence-r1",
+ "sealed_startup": "62f5b398ec99019627e25148e481ff8620971b22",
+ "environment": {
+  "python": "3.11.3",
+  "pytest": "9.1.1",
+  "platform": "macOS 13.7.8 x86_64",
+  "model_identity_invented": false,
+  "privacy_claim_made": false,
+  "cost_figure_invented": false,
+  "primary_codex_used": false,
+  "reset_credits_used": false,
+  "paid_overflow_used": false
+ },
+ "p01_s05jr": {
+  "tree": "73d45f3ac6a50fbee6666ad3a5023840f01ef196",
+  "complete_tree": true,
+  "fixture_terrain": "WORKER_RETURNS/ materialised (103 entries)",
+  "l01_partial_result": {
+   "failed": 86,
+   "passed": 83,
+   "skipped": 6
+  },
+  "l02_full_terrain_result": {
+   "passed": 169,
+   "skipped": 6,
+   "failed": 0,
+   "exit_code": 0
+  },
+  "classification_of_historical_86": "100% MISSING_FIXTURE_SETUP_TERRAIN; zero scientific failures; zero code failures",
+  "mechanism_proof": "dominant L01 signature FileNotFoundError on WORKER_RETURNS/ paths; materialising terrain drives failures to exactly 0",
+  "resolved": true
+ },
+ "s03_s03r": {
+  "candidate": "69a1686528bb46c2db3051a75710989a46fe5c45",
+  "review_test": "34cc7bdb28664ecbc707528470c2b4397aa96f12",
+  "EXPECTED_SHA": "68aba5645bf0b1fa9c26f5a546b6df29a70a9c13a499fae7768a03b59e1de2e0",
+  "EXPECTED_SHA_verified_against_candidate": true,
+  "EXPECTED_SHARED_HASHING_GIT_BLOB": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+  "runs": [
+   {
+    "root": null,
+    "result": "11 errors \u2014 HOLD: S03_CANDIDATE_ROOT absent"
+   },
+   {
+    "root": "rawlsing_next/ only",
+    "result": "11 errors \u2014 HOLD: exact S03 candidate files unavailable"
+   },
+   {
+    "root": "complete 69a16865 tree (7463 files)",
+    "result": "8 passed / 3 failed",
+    "exit_code": 1
+   }
+  ],
+  "genuine_failures": [
+   "test_01_independent_four_cell_oracle",
+   "test_07_missing_native_joint_cell_must_not_be_silent_zero",
+   "test_08_outcome_predicate_requires_tautology_warning"
+  ],
+  "failure_area": "F6 joint-domain / leakage \u2014 the S03F repair target bb739fb6d60b40876566ec6320ff6eec2388e8cf",
+  "the_11_were": "SETUP_REFUSALS_NOT_SCIENTIFIC_FAILURES",
+  "resolved": true,
+  "frozen_oracle_edited": false
+ },
+ "s03f": {
+  "candidate": "bb739fb6d60b40876566ec6320ff6eec2388e8cf",
+  "qualified": false,
+  "reason": "no versioned test-only identity adaptation built in this window; NOT claimed"
+ },
+ "narrative_34_pass_1_fail": {
+  "reproduced": false,
+  "status": "UNRECONCILED",
+  "note": "not reproduced in any configuration run; recorded honestly rather than inventing a run to produce it"
+ },
+ "s04": {
+  "candidate": "9ae87f2227384e0567190c6a2d5f3a33a60d4b4c",
+  "suite": "test_s04_temporal_policy.py",
+  "passed": 17,
+  "failed": 0,
+  "xfail": 0,
+  "xpass": 0,
+  "exit_code": 0,
+  "note": "expected xfails recorded separately from passes; none present; technical result only, not scientific acceptance"
+ },
+ "s04r": {
+  "commit": "755fb501e4b6405136bd77d71d434919c7b6c371",
+  "python_test_suite_exists": false,
+  "contents": "00_RETURN.md + 01_REVIEW_FINDINGS.json only",
+  "status": "OPEN \u2014 no runnable independent temporal hostile suite to execute"
+ },
+ "distinctions": {
+  "scientific_failure": [
+   "S03R test_01",
+   "S03R test_07",
+   "S03R test_08"
+  ],
+  "code_failure": [],
+  "missing_fixture": "the historical 86 at P01",
+  "setup_refusal": "the 11 at S03R"
+ },
+ "constraints_honoured": {
+  "clone": false,
+  "reset": false,
+  "frozen_oracle_modified": false,
+  "producer_code_copied_to_reviewer_branch": false,
+  "original_respondent_data": false,
+  "scientific_issuance": false,
+  "protected_current": false,
+  "self_adoption": false
+ },
+ "deliverables": {
+  "00_RETURN.md": {
+   "sha256": "6a7fd2634f38d90736bf8ddc3fb6caae13701cb64ebbceb09c897aec4807fba1",
+   "bytes": 6495
+  }
+ },
+ "repro": {
+  "p01_full_terrain.log": {
+   "sha256": "d4bfa9bcacbbd34df66c1af5a690eb3798eeefca194c1ac071aa1760ae5101ae",
+   "bytes": 272
+  },
+  "s03r_bound.log": {
+   "sha256": "ed19e0a89a5956a83e274f946b922e771fcef3a2e4351508d6d7f775b6ac6f80",
+   "bytes": 1672
+  },
+  "s03r_full_root.log": {
+   "sha256": "247a79626888118e6ce8d5c368efdce5542a7917780daeddc71b98fe786163b5",
+   "bytes": 1881
+  },
+  "s04.log": {
+   "sha256": "7b5ab41a6447fb409d2fa009970d63ddec9af5939138fddb27339e8dad9ad520",
+   "bytes": 99
+  }
+ },
+ "terminal": "PYAT_R3_HQ285_L02_EXACT_INDEPENDENT_RUNTIME_COURT_COMPLETE__GITHUB_PUSHED"
+}

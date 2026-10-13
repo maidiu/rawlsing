@@ -1,6 +1,8 @@
-# MANDATORY PYAT HQ VALIDITY CHANGE — PERSONA END-PRODUCT + CRITICAL METHOD GROK
+## HQ281+ MANDATORY RESOURCE-ECONOMY DELTA-GROK — NO NEW COMMISSIONS UNTIL SATISFIED
 
-**A NEW PYAT HQ IS NOT VALID AS OPERATIVE HQ UNTIL `PYAT_CONTROL_ROOM/00_INCOMING_HQ_VALIDITY_AND_PERSONA_END_PRODUCT_GATE_R1.md` IS PASSED AND INDEPENDENTLY/USER REVIEWED.** Historical HQD-115/R2.1 tokens establish only historical grok. Live canonical handoff control remains intact. Read existing PASSES A–I and the machine automation doctrine, then substantively establish full Dva/Trii/Chetiri/Long Memory, crosswave-driver-facet, V553 harmonization/temporal pressure and actual modern V3/V2 producer/consumer inheritance. Assess the BEST attainable method—including whether to reuse, improve, complete or replace inherited versions with measured output gains. Do not substitute Ghana, arbitrary two-survey context fields or academic documentation for a functioning persona generator. Source-level legal/semantic truth and explicit approximations both matter; never manufacture observations or bypass rights. Until accepted, only orientation and proposed grok dossier; no new HQ command.
+Before issuing, assigning, redispatching or accepting any new work, the incoming HQ must read [the resource-aware commissioning and successor gate](RESOURCE_AWARE_COMMISSION_COMMAND_R1/HQ_MANDATORY_COMMISSION_AND_SUCCESSOR_GROK_ADDENDUM_R1.md) and sealed `WORKER_COMMISSIONS/PYAT-RCM01-RESOURCE-AWARE-COMMAND-R1/{00_COMMISSION.md,01_OPERATING_CONTRACT.md,02_ACCEPTANCE.md,03_RESOURCE_SEED.json,04_TEST_VECTORS.json}` at `c71f83c731fe1465b59f5ad701a5e1bb3018b34a`. Answer the six resource hostiles and demonstrate the 22 RCM01 adversarial cases are predeclared but **NOT independently executed** as scheduler code. Show an exact current resource/commission ledger with unknown-as-null, explicit privacy/scientific/runtime/branch/reviewer gates, source-vs-local host capability, one shared Go normalized quota, independent separately observed Codex A/B, no paid-overflow or extra-account circumvention, time-to-accepted-product, independence, no duplicate active workers, and no automatic Astra. Model/variant + machine/worktree + budget/status + SHA are mandatory commission identity. No silent promotion of RCM01 into scientific or autonomous authority; successor reconcile working-branch evidence with canonical `HQ_HANDOFF/LATEST.json` before operative adoption.
+
+**Failing any of these requirements = RESOURCE_GROK_INCOMPLETE; no newly routed commission until corrected.** Existing authorized work continues under its own sealed law.
 
 ---
 
@@ -413,6 +415,6 @@ A fresh HQ has failed grokking if it:
 
 ## Fresh-HQ completion token
 
-The accepted R2.1 baseline returned the following token. A successor may inherit this token as historical evidence of R2.1 only, not as proof of current operative HQ eligibility; the user-directed persona-first and critically-adjudicated-method accession remains separately mandatory:
+The accepted R2.1 baseline returned the following token. A successor may inherit it after verifying the HQD-115 checkpoint and finding no material contradictory delta:
 
 `PYAT_FRESH_HQ_FULL_GROK_COMPLETE__CHRONOLOGY_CURRENTNESS_ROUTE_B_PRODUCT_FIELD_FORGE_AND_PREV3_PROGRAM_RECONCILED`

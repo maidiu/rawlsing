@@ -1,0 +1,1 @@
+Setup complete. Model gpt-6.1-sol / medium confirmed by local session metadata. Prior resource floor was explicitly superseded by the user. Implementation and integrated courts pass; independent review remains pending. See 00_RETURN.md.

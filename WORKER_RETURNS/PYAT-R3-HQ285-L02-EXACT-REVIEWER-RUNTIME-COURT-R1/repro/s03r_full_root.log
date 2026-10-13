@@ -1,0 +1,20 @@
+F.....FF...                                                              [100%]
+=================================== FAILURES ===================================
+E   AssertionError: Lists differ: [Fraction(11, 100), Fraction(1, 5), Fraction(27, 50), Fraction(3, 20)] != [Fraction(27, 50), Fraction(3, 20), Fraction(11, 100), Fraction(1, 5)]
+    
+    First differing element 0:
+    Fraction(11, 100)
+    Fraction(27, 50)
+    
+    - [Fraction(11, 100), Fraction(1, 5), Fraction(27, 50), Fraction(3, 20)]
+    + [Fraction(27, 50), Fraction(3, 20), Fraction(11, 100), Fraction(1, 5)]
+/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/lib/python3.11/unittest/case.py:703: AssertionError: Lists differ: [Fraction(11, 100), Fraction(1, 5), Fraction(27, 50), Fraction(3, 20)] != [Fraction(27, 50), Fraction(3, 20), Fraction(11, 100), Fraction(1, 5)]
+E   AssertionError: SynthesisError not raised
+/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/lib/python3.11/unittest/case.py:199: AssertionError: SynthesisError not raised
+E   AssertionError: None != 'OUTCOME_LEAKAGE_TAUTOLOGY'
+/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/lib/python3.11/unittest/case.py:866: AssertionError: None != 'OUTCOME_LEAKAGE_TAUTOLOGY'
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_hq283_s03r_f6_method_hostile.py::S03RIndependentHostiles::test_01_independent_four_cell_oracle
+FAILED rawlsing_next/tests/test_hq283_s03r_f6_method_hostile.py::S03RIndependentHostiles::test_07_missing_native_joint_cell_must_not_be_silent_zero
+FAILED rawlsing_next/tests/test_hq283_s03r_f6_method_hostile.py::S03RIndependentHostiles::test_08_outcome_predicate_requires_tautology_warning
+3 failed, 8 passed in 0.11s

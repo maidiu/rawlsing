@@ -1,0 +1,63 @@
+{
+  "status": "PASS_SOURCE_FREE_IMPLEMENTATION_REVIEW_PENDING",
+  "results": [
+    {
+      "court": "portable_component_court",
+      "exit": 0,
+      "passed": 142,
+      "deselected": 2,
+      "skipped": 0,
+      "log": "repro/portable_component_court.log"
+    },
+    {
+      "court": "portable_v2_court",
+      "exit": 0,
+      "passed": 69,
+      "deselected": 4,
+      "skipped": 0,
+      "log": "repro/portable_v2_court.log"
+    },
+    {
+      "court": "integrated_court",
+      "exit": 0,
+      "passed": 25,
+      "deselected": 0,
+      "skipped": 0,
+      "log": "repro/integrated_court.log"
+    },
+    {
+      "court": "a05_hostiles",
+      "exit": 0,
+      "log": "repro/a05_hostiles.log"
+    },
+    {
+      "court": "exact_manifest_court",
+      "exit": 0,
+      "log": "repro/exact_manifest_court.log"
+    },
+    {
+      "court": "emit_integration",
+      "exit": 0,
+      "log": "repro/emit_integration.log"
+    },
+    {
+      "court": "ordinary_pytest_court",
+      "exit": 0,
+      "passed": 169,
+      "skipped": 6,
+      "deselected": 0,
+      "log": "repro/ordinary_pytest_court.log"
+    }
+  ],
+  "commands": {
+    "portable_component_court": "python3 WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/portable_component_court.py",
+    "portable_v2_court": "python3 WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/portable_v2_court.py",
+    "integrated_court": "python3 -m pytest -q rawlsing_next/tests/test_pre553_v2_durable_consumer_integration_candidate.py",
+    "a05_hostiles": "python3 WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a05_hostiles.py",
+    "exact_manifest_court": "python3 WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/exact_manifest_court.py",
+    "emit_integration": "python3 WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/emit_integration.py",
+    "ordinary_pytest_court": "python3 -m pytest -q rawlsing_next/tests/test_pre553_v2_durable_consumer_integration_candidate.py rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py rawlsing_next/tests/test_pre553_governed_batch_checkpoint_integration_candidate.py rawlsing_next/tests/test_pre553_original_workload_v2_verifier_candidate.py rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py"
+  },
+  "scope": "source-free only",
+  "independent_review": "INITIAL_FINDINGS_ADDRESSED_AT_P01_BOUNDARY_FOLLOWUP_PENDING"
+}
