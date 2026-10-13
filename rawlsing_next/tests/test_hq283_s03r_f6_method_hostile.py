@@ -13,6 +13,14 @@ from fractions import Fraction as F
 from pathlib import Path
 
 EXPECTED_SHA = "68aba5645bf0b1fa9c26f5a546b6df29a70a9c13a499fae7768a03b59e1de2e0"
+EXPECTED_FIXTURE_GIT_BLOB = "8e4902df9ef9e6fa63e8e28617543257b8d40b28"
+EXPECTED_SHARED_HASHING_GIT_BLOB = "a61365b994e5c3c50de0f598fcf40e90abf757b6"
+
+
+def _git_blob_sha(path):
+    raw = path.read_bytes()
+    return hashlib.sha1(f"blob {len(raw)}\0".encode("ascii") + raw).hexdigest()
+
 
 
 def _load(path, name):
@@ -35,6 +43,14 @@ def _candidate_modules():
         raise RuntimeError("HOLD: exact S03 candidate files unavailable")
     if hashlib.sha256(impl.read_bytes()).hexdigest() != EXPECTED_SHA:
         raise RuntimeError("HOLD: candidate SHA256 mismatch")
+    if _git_blob_sha(fixtures) != EXPECTED_FIXTURE_GIT_BLOB:
+        raise RuntimeError("HOLD: frozen S03 fixture Git blob identity mismatch")
+    shared = root / "rawlsing_next/pre553_empirical_objects.py"
+    if not shared.is_file() or _git_blob_sha(shared) != EXPECTED_SHARED_HASHING_GIT_BLOB:
+        raise RuntimeError("HOLD: S03 semantic_hash dependency mismatch")
+    from rawlsing_next import pre553_empirical_objects as loaded_shared
+    if _git_blob_sha(Path(loaded_shared.__file__).resolve()) != EXPECTED_SHARED_HASHING_GIT_BLOB:
+        raise RuntimeError("HOLD: executed import resolves a different shared dependency")
     return _load(impl, "hq283_s03r_exact_candidate"), _load(fixtures, "hq283_s03r_fixture")
 
 
@@ -144,6 +160,19 @@ class S03RIndependentHostiles(unittest.TestCase):
         self.assertIsNotNone(b["candidate"])
         self.assertEqual(b["real_source_qualification"], "EXTERNAL_REVIEW_REQUIRED")
         self.assertIsNone(b["candidate"]["sample_size"])
+
+    def test_10_inferred_conditional_uncertainty_stays_unknown(self):
+        b = self.run_candidate()
+        r = self.method.conditional(b, {"material_security": "secure"}, "employment_position")
+        self.assertEqual(r["evidence_mode"], "INFERRED")
+        self.assertIsNone(r["observed_denominator"])
+        self.assertEqual(r["uncertainty"], "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED")
+
+    def test_11_complementary_binary_only_frechet_not_measured_joint(self):
+        b = self.method.complementary_binary_bounds("3/5", "7/10")
+        self.assertEqual((b["lower"], b["upper"]), ("3/10", "3/5"))
+        self.assertEqual(b["independence_scenario"], "21/50")
+        self.assertIs(b["scenario_is_measured"], False)
 
 
 if __name__ == "__main__":
