@@ -1,0 +1,163 @@
+{
+  "schema": "R3_DOCUMENTARY_VERIFICATION",
+  "status": "PASS_AUTHOR_CHECKS_ONLY",
+  "checked_base": "0d38dae68ff4016c47d1af809d2e85cb160bab0c",
+  "checks": [
+    {
+      "check": "required_artifacts",
+      "status": "PASS",
+      "detail": 8
+    },
+    {
+      "check": "unique_dag_nodes",
+      "status": "PASS",
+      "detail": [
+        "S00",
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10"
+      ]
+    },
+    {
+      "check": "dag_dependency_references",
+      "status": "PASS",
+      "detail": "All targets exist"
+    },
+    {
+      "check": "dag_acyclic",
+      "status": "PASS",
+      "detail": "11 nodes topologically resolved"
+    },
+    {
+      "check": "conditional_dependency_references",
+      "status": "PASS",
+      "detail": "Mode-specific S06 gates resolve"
+    },
+    {
+      "check": "conditional_graph_acyclic",
+      "status": "PASS",
+      "detail": "Protected-mode paths cannot deadlock"
+    },
+    {
+      "check": "bounded_and_full_paths_distinct",
+      "status": "PASS",
+      "detail": "No actor node"
+    },
+    {
+      "check": "unissued_assignments",
+      "status": "PASS",
+      "detail": "No invented dispatch/source grant"
+    },
+    {
+      "check": "all12_exact",
+      "status": "PASS",
+      "detail": "T00\u2013T11 retained"
+    },
+    {
+      "check": "disposition_enum",
+      "status": "PASS",
+      "detail": "Explicit scope dispositions"
+    },
+    {
+      "check": "all25_original_objects_exact",
+      "status": "PASS",
+      "detail": "Compared directly with original baseline Git object"
+    },
+    {
+      "check": "original_conditional_edges_exact",
+      "status": "PASS",
+      "detail": "Original conditional edges preserved as history"
+    },
+    {
+      "check": "all35_sources_exact",
+      "status": "PASS",
+      "detail": "Entire inherited source object unchanged"
+    },
+    {
+      "check": "all35_matches_original_git",
+      "status": "PASS",
+      "detail": "Source queue compared with exact October 11 baseline"
+    },
+    {
+      "check": "all35_active_routes",
+      "status": "PASS",
+      "detail": "Per-source obligation routes retained"
+    },
+    {
+      "check": "functional_gates_identities",
+      "status": "PASS",
+      "detail": 8
+    },
+    {
+      "check": "functional_gates_original_definitions_exact",
+      "status": "PASS",
+      "detail": "Compared with original commit, not generated summaries"
+    },
+    {
+      "check": "acceptance_cases_identities",
+      "status": "PASS",
+      "detail": 35
+    },
+    {
+      "check": "acceptance_cases_original_definitions_exact",
+      "status": "PASS",
+      "detail": "Compared with original commit, not generated summaries"
+    },
+    {
+      "check": "all15_methods_exact",
+      "status": "PASS",
+      "detail": "Comparisons, fallbacks and evidence preserved"
+    },
+    {
+      "check": "all74_long_memory_exact",
+      "status": "PASS",
+      "detail": "44 LMX + 30 LMQ"
+    },
+    {
+      "check": "all_crosswalk_routes_exist",
+      "status": "PASS",
+      "detail": "No stale T IDs in active routes"
+    },
+    {
+      "check": "r2_files_unchanged",
+      "status": "PASS",
+      "detail": "Every inherited R2 artifact byte-identical"
+    },
+    {
+      "check": "178_inherited_evidence_identities",
+      "status": "PASS",
+      "detail": "Recorded fresh Git blob/SHA-256/length verification; no semantic review claim"
+    },
+    {
+      "check": "source_free_probe_cases",
+      "status": "PASS",
+      "detail": "10 author-run source-free case groups"
+    },
+    {
+      "check": "probe_standard_library_only",
+      "status": "PASS",
+      "detail": [
+        "hashlib",
+        "json",
+        "pathlib"
+      ]
+    },
+    {
+      "check": "only_r3_terrain_changed",
+      "status": "PASS",
+      "detail": "Canonical/production/R2/HQ_HANDOFF unchanged"
+    }
+  ],
+  "independent_review": false,
+  "production_tests_executed": false,
+  "source_data_runs": 0,
+  "v3_runs": 0,
+  "scope": "Artifact conservation and synthetic acceptance oracle; not full PRE-V3 qualification"
+}

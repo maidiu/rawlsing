@@ -1,0 +1,250 @@
+{
+  "baseline_bundle": {
+    "receipt": {
+      "actor_execution": false,
+      "calibration_claim": false,
+      "consumer": "R3_SYNTHETIC_CONTRACT_ORACLE_V1",
+      "input_hash": "09e1ee31b63494ef4912917b2de7a99b498b91e1bc7c1317a71074ffb99453ab",
+      "output_hash": "b9c1d13f2a8b1fa1cfee483240ce5dd0a299d9ba3decc46567eef1d043e460d4",
+      "production_owner_invoked": false,
+      "read_value_hashes": {
+        "anchors": "98f0f437270ca4d3de1a1a4cfb75141a56bcc41f0ec2dd4055d4c53b3e923279",
+        "breaks": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "cells": "d519f58e5a9ea27f179af6f76b82bcddf5d03244321ea486589be3225da3fa51",
+        "channels": "0950dcb86f809079f963d0d9f44157d76bf962fed1305b79a982e736000821f5",
+        "conditions": "52dddc1755a9b3acadf12eab7f2ac1eb564a55de3a33822fa369f59923dddefc",
+        "material": "7220dca3ebc8f4ea0eb1108021ef5269f48473bb3b77bc853fe04207ebea2865",
+        "mode": "1617ef94773c70ad782fb0da55387d3a3aba02ed480cc0a8cddeef833612e37b",
+        "year": "a20a2b7bb0842d5cf8a0c06c626421fd51ec103925c1819a51271f2779afa730"
+      }
+    },
+    "result": {
+      "conditional": {
+        "conditions": {
+          "A": 1
+        },
+        "denominator": 20,
+        "numerator": 18,
+        "p_Y1": 0.9,
+        "state": "SUPPORTED"
+      },
+      "historical_context": {
+        "anchor_refs": [
+          "SYNTH_ANCHOR_2000",
+          "SYNTH_ANCHOR_2010"
+        ],
+        "evidence_mode": "INFERRED",
+        "state": "INTERPOLATED",
+        "uncertainty": "UNQUANTIFIED_MODEL",
+        "value": 20.0
+      },
+      "opportunity_context": {
+        "available_slots": 100
+      },
+      "synthesis": {
+        "assumption": "Toy fixed model weights; no respondent linkage or empirical calibration",
+        "evidence_mode": "INFERRED",
+        "observed_joint": false,
+        "p": 0.5,
+        "source_refs": [
+          "SYNTH_SOURCE_A",
+          "SYNTH_SOURCE_B"
+        ],
+        "state": "MODELED",
+        "uncertainty": {
+          "model": "UNVALIDATED_TOY_POLICY",
+          "sampling": "UNKNOWN_SYNTHETIC"
+        }
+      }
+    },
+    "state": "CONSUMED",
+    "test_origin": "SYNTHETIC_SOURCE_FREE",
+    "world_scope": {
+      "geography": "TEST_REGION",
+      "target_population": "TEST_POPULATION",
+      "year": 2005
+    }
+  },
+  "cases": [
+    {
+      "case": "same_marginals_opposite_joints",
+      "evidence": {
+        "conditioned_baseline": 0.9,
+        "conditioned_opposite": 0.1,
+        "unconditional": 0.5
+      },
+      "status": "PASS_SOURCE_FREE_ONLY"
+    },
+    {
+      "case": "cumulative_condition_and_minority",
+      "evidence": {
+        "denominators": [
+          40,
+          20,
+          10
+        ],
+        "minority_count": 1
+      },
+      "status": "PASS_SOURCE_FREE_ONLY"
+    },
+    {
+      "case": "synthesis_input_consumed",
+      "evidence": {
+        "after": 0.3,
+        "before": 0.5,
+        "mode": "INFERRED"
+      },
+      "status": "PASS_SOURCE_FREE_ONLY"
+    },
+    {
+      "case": "source_support_mismatch",
+      "evidence": {
+        "evidence_mode": "INFERRED",
+        "state": "SUPPORT_MISMATCH"
+      },
+      "status": "PASS_SOURCE_FREE_ONLY"
+    },
+    {
+      "case": "historical_input_consumed",
+      "evidence": {
+        "after": 30,
+        "before": 20,
+        "mode": "INFERRED"
+      },
+      "status": "PASS_SOURCE_FREE_ONLY"
+    },
+    {
+      "case": "break_gap_and_horizon",
+      "evidence": {
+        "break": {
+          "anchor_refs": [
+            "SYNTH_ANCHOR_2000"
+          ],
+          "evidence_mode": "PRIOR",
+          "state": "BREAK_OR_GAP_BACKOFF",
+          "uncertainty": "UNQUANTIFIED_BROAD",
+          "value": 10
+        },
+        "outside": {
+          "state": "OUTSIDE_HORIZON",
+          "value": null
+        }
+      },
+      "status": "PASS_SOURCE_FREE_ONLY"
+    },
+    {
+      "case": "material_value_consumed_selectively",
+      "evidence": {
+        "after": 10,
+        "before": 100
+      },
+      "status": "PASS_SOURCE_FREE_ONLY"
+    },
+    {
+      "case": "irrelevant_context_and_replay",
+      "evidence": {
+        "identical_replay": true,
+        "identical_semantic_result": true
+      },
+      "status": "PASS_SOURCE_FREE_ONLY"
+    },
+    {
+      "case": "synthetic_current_refusal_historical_survival",
+      "evidence": {
+        "current": "CURRENT_REFUSED",
+        "frozen_test": "CONSUMED",
+        "limit": "Toy policy only; not B5 authentication proof"
+      },
+      "status": "PASS_SOURCE_FREE_ONLY"
+    },
+    {
+      "case": "unsupported_condition",
+      "evidence": {
+        "conditions": {
+          "A": 2
+        },
+        "denominator": 0,
+        "numerator": 0,
+        "p_Y1": null,
+        "state": "ZERO_SUPPORT"
+      },
+      "status": "PASS_SOURCE_FREE_ONLY"
+    }
+  ],
+  "changed_joint_bundle": {
+    "receipt": {
+      "actor_execution": false,
+      "calibration_claim": false,
+      "consumer": "R3_SYNTHETIC_CONTRACT_ORACLE_V1",
+      "input_hash": "a4cc37d0ee206c3a92c3177af811034a934f0e034e3eaf5e6e3b83900a5f6b91",
+      "output_hash": "247dab8281234fd856e72f91a7b64e0523bf8c2a07d9e15dcc00824c92a29b77",
+      "production_owner_invoked": false,
+      "read_value_hashes": {
+        "anchors": "98f0f437270ca4d3de1a1a4cfb75141a56bcc41f0ec2dd4055d4c53b3e923279",
+        "breaks": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "cells": "3a9b09201f9561ae99d4513be3694324a6b96cebd76b89b8c2e2aa76b12e4b69",
+        "channels": "0950dcb86f809079f963d0d9f44157d76bf962fed1305b79a982e736000821f5",
+        "conditions": "52dddc1755a9b3acadf12eab7f2ac1eb564a55de3a33822fa369f59923dddefc",
+        "material": "7220dca3ebc8f4ea0eb1108021ef5269f48473bb3b77bc853fe04207ebea2865",
+        "mode": "1617ef94773c70ad782fb0da55387d3a3aba02ed480cc0a8cddeef833612e37b",
+        "year": "a20a2b7bb0842d5cf8a0c06c626421fd51ec103925c1819a51271f2779afa730"
+      }
+    },
+    "result": {
+      "conditional": {
+        "conditions": {
+          "A": 1
+        },
+        "denominator": 20,
+        "numerator": 2,
+        "p_Y1": 0.1,
+        "state": "SUPPORTED"
+      },
+      "historical_context": {
+        "anchor_refs": [
+          "SYNTH_ANCHOR_2000",
+          "SYNTH_ANCHOR_2010"
+        ],
+        "evidence_mode": "INFERRED",
+        "state": "INTERPOLATED",
+        "uncertainty": "UNQUANTIFIED_MODEL",
+        "value": 20.0
+      },
+      "opportunity_context": {
+        "available_slots": 100
+      },
+      "synthesis": {
+        "assumption": "Toy fixed model weights; no respondent linkage or empirical calibration",
+        "evidence_mode": "INFERRED",
+        "observed_joint": false,
+        "p": 0.5,
+        "source_refs": [
+          "SYNTH_SOURCE_A",
+          "SYNTH_SOURCE_B"
+        ],
+        "state": "MODELED",
+        "uncertainty": {
+          "model": "UNVALIDATED_TOY_POLICY",
+          "sampling": "UNKNOWN_SYNTHETIC"
+        }
+      }
+    },
+    "state": "CONSUMED",
+    "test_origin": "SYNTHETIC_SOURCE_FREE",
+    "world_scope": {
+      "geography": "TEST_REGION",
+      "target_population": "TEST_POPULATION",
+      "year": 2005
+    }
+  },
+  "limits": [
+    "No production owner imported or qualified",
+    "No source or fitted model validated",
+    "No independent reviewer execution",
+    "No full35/F6/F7/F8 acceptance"
+  ],
+  "production_tests_run": false,
+  "real_source_evidence": false,
+  "scope": "R3_SYNTHETIC_CONTRACT_ACCEPTANCE_ORACLE_ONLY",
+  "v3_executed": false
+}
