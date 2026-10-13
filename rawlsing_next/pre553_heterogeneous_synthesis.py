@@ -113,6 +113,19 @@ def _source_check(source):
                 raise SynthesisError("weighted/raw zero support mismatch")
         if sum(c["n"] for c in table["cells"]) + table["excluded_n"] != table["eligible_n"]:
             raise SynthesisError("denominator/exclusion conservation failed")
+        # S03F Fix 1: require complete categorical joint domain.  An omitted
+        # original category must not silently become an observed zero.  The
+        # producer must issue either a complete cross-product of native
+        # category values or an explicit sparse-zero coverage proof.
+        domain_size = 1
+        for a in axes:
+            domain_size *= len(a["category_map"])
+        if len(seen) != domain_size:
+            raise SynthesisError(
+                "incomplete native joint domain; omitted category cannot be "
+                "silently manufactured as zero (domain_size=%d, observed=%d)"
+                % (domain_size, len(seen))
+            )
 
 
 def _mapping_reasons(source):
@@ -348,11 +361,26 @@ def conditional(bundle: dict, conditions: dict[str, str], outcome: str) -> dict:
     for cell in selected:
         v = cell["categories"][axes.index(outcome)]
         table[v] = table.get(v, F(0)) + _q(cell["probability"])
-    result = {"state": "SUPPORTED_MODEL" if denom else "ZERO_MODEL_SUPPORT",
+    # S03F Fix 2: outcome-as-conditioning-predicate must not masquerade as
+    # a nontrivial predictive conditional.  Return a strictly descriptive
+    # self-conditioning status, not generic predictive SUPPORTED_MODEL.
+    self_conditioning = outcome in conditions
+    if self_conditioning and denom:
+        state = "DESCRIPTIVE_SELF_CONDITIONING"
+        self_cond_status = "OUTCOME_LEAKAGE_TAUTOLOGY"
+    elif self_conditioning:
+        state = "ZERO_MODEL_SUPPORT"
+        self_cond_status = "OUTCOME_LEAKAGE_TAUTOLOGY"
+    else:
+        state = "SUPPORTED_MODEL" if denom else "ZERO_MODEL_SUPPORT"
+        self_cond_status = None
+    result = {"state": state,
               "evidence_mode": "INFERRED", "conditions": conditions, "outcome": outcome,
               "probabilities": _distribution(table), "model_denominator_mass": str(denom),
               "observed_denominator": None, "uncertainty": "CONDITIONAL_UNCERTAINTY_NOT_IDENTIFIED",
               "bundle_hash": bundle["content_hash"], "values_read_hash": semantic_hash(c["distribution"])}
+    if self_cond_status is not None:
+        result["self_conditioning_status"] = self_cond_status
     result["output_hash"] = semantic_hash(result)
     return result
 
