@@ -1,0 +1,60 @@
+{
+ "schema": "PYAT_R3_S05_MANIFEST@1",
+ "branch": "agent/rabochii-pyat-r3-s05-original-work-consumer-r1",
+ "implementation_base": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+ "astra_r3": "88d3c40def26d34ff202258171c256dfa9d17dbb",
+ "p01": "3f91dc22d2eb863bc1d2facccfd33e6c05349503",
+ "p05": "e26f803a3e36ce5961af446b38d5be65e07b2a4f",
+ "disposition": "EXACT_HOLD__NAMED_MACHINERY_NOT_ON_BASE__COMPOSITION_NOT_CONSTRUCTIBLE",
+ "composition_probe": {
+  "present": 9,
+  "absent": 5,
+  "composition_possible_on_base": false,
+  "mission_critical_absent": [
+   "V2 verifier E",
+   "V2 contract",
+   "governed batch",
+   "durable checkpoint"
+  ]
+ },
+ "missing_owners_and_branches": {
+  "V2_verifier_E": "c1df9842b7531146f1d8e215f216915b9039e4d7",
+  "V2_contract": "56574bec2176df7fc95d4b877dfab79469de9c03",
+  "governed_batch": "92cb25340c49fb51e2b8d6e00d5a4f471296fc8f",
+  "durable_checkpoint": "ef93f014a157983e0f713c118ee3a95311c16292",
+  "separate_principal": "82309fe17c70324217382d0550ce1cc591e39eae"
+ },
+ "reusable_existing_design": "PV3 A05 outer-reconciliation contract (9491d0296c95ee2942fe80eadc6aa9f54b07c634) \u2014 adopt, do not rewrite",
+ "gates_to_first_lawful_real_source_run": [
+  "land E-custody + durable-batch owners on one lineage",
+  "small E->D outer-reconciliation adapter (existing design)",
+  "competent source/design/operation warrant (NOT granted here)",
+  "real issuer principal (C02H demo key is not one)",
+  "independent E_pre custodian sealing before execution"
+ ],
+ "deliverables": {
+  "00_RETURN.md": {
+   "sha256": "96e48c3202ad6b8664a2a4230054b4af3faf116e5bd319e19d2768a87d17e62e",
+   "bytes": 7146
+  }
+ },
+ "repro": {
+  "base_batch_runner_suite.log": {
+   "sha256": "d8801bae6559019a0a1679a355f602b67dbf530166df2374d6890fc2d1117341",
+   "bytes": 99
+  },
+  "probe.json": {
+   "sha256": "d9d2e9c19b99a18820ddd3abf2d50ef2792be6a79773c4567f843a1108718d25",
+   "bytes": 2663
+  },
+  "s05_composition_probe.py": {
+   "sha256": "11c4d32af078966b546b1c020a4b32ce2058a48bfbf75cc2120a7aaf7ae77357",
+   "bytes": 2693
+  }
+ },
+ "candidate_code_changed": false,
+ "accepted_owner_edited": false,
+ "raw_source_read": false,
+ "no_self_adoption": true,
+ "terminal": "PYAT_R3_S05_ORIGINAL_WORK_CONSUMER_BOUNDED_HOLD__GITHUB_PUSHED"
+}

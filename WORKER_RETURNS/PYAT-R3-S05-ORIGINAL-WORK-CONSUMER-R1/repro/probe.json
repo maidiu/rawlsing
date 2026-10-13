@@ -1,0 +1,91 @@
+{
+ "schema": "PYAT_R3_S05_COMPOSITION_PROBE@1",
+ "base": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+ "components": [
+  {
+   "component": "C11 release",
+   "module": "rawlsing_next.pre553_c11_repository",
+   "state": "PRESENT_IMPORTABLE"
+  },
+  {
+   "component": "C11 integrity",
+   "module": "rawlsing_next.pre553_c11_integrity",
+   "state": "PRESENT_IMPORTABLE"
+  },
+  {
+   "component": "Route B",
+   "module": "rawlsing_next.pre553_source_backed_c11_facade",
+   "state": "PRESENT_IMPORTABLE"
+  },
+  {
+   "component": "empirical query",
+   "module": "rawlsing_next.pre553_empirical_query",
+   "state": "PRESENT_IMPORTABLE"
+  },
+  {
+   "component": "discovery exact",
+   "module": "rawlsing_next.pre553_discovery_exact",
+   "state": "PRESENT_IMPORTABLE"
+  },
+  {
+   "component": "batch runner",
+   "module": "rawlsing_next.pre553_batch_runner",
+   "state": "PRESENT_IMPORTABLE"
+  },
+  {
+   "component": "analytical comp",
+   "module": "rawlsing_next.pre553_analytical_composition",
+   "state": "PRESENT_IMPORTABLE"
+  },
+  {
+   "component": "field forge",
+   "module": "rawlsing_next.field_forge_conditional_support",
+   "state": "PRESENT_IMPORTABLE"
+  },
+  {
+   "component": "learned product",
+   "module": "rawlsing_next.pre553_learned_product_release",
+   "state": "PRESENT_IMPORTABLE"
+  },
+  {
+   "component": "V2 verifier E",
+   "module": "rawlsing_next.pre553_original_workload_v2_verifier_candidate",
+   "state": "ABSENT",
+   "error": "No module named 'rawlsing_next.pre553_original_workload_v2_v"
+  },
+  {
+   "component": "V2 contract",
+   "module": "rawlsing_next.pre553_original_workload_contract_v2_candidate",
+   "state": "ABSENT",
+   "error": "No module named 'rawlsing_next.pre553_original_workload_cont"
+  },
+  {
+   "component": "governed batch",
+   "module": "rawlsing_next.pre553_governed_batch_checkpoint_integration_candidate",
+   "state": "ABSENT",
+   "error": "No module named 'rawlsing_next.pre553_governed_batch_checkpo"
+  },
+  {
+   "component": "durable checkpoint",
+   "module": "rawlsing_next.pre553_batch_durable_checkpoint_candidate",
+   "state": "ABSENT",
+   "error": "No module named 'rawlsing_next.pre553_batch_durable_checkpoi"
+  },
+  {
+   "component": "separate principal",
+   "module": "rawlsing_next.pre553_b5_separate_principal_verifier_candidate",
+   "state": "ABSENT",
+   "error": "No module named 'rawlsing_next.pre553_b5_separate_principal_"
+  }
+ ],
+ "present": 9,
+ "absent": 5,
+ "composition_possible_on_base": false,
+ "mission_critical_absent": [
+  "V2 verifier E",
+  "V2 contract",
+  "governed batch",
+  "durable checkpoint"
+ ],
+ "verdict": "NOT_COMPOSABLE_ON_BASE__CANDIDATE_MODULES_LIVE_ON_UNMERGED_WORKER_BRANCHES"
+}
