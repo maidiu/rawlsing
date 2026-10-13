@@ -205,6 +205,7 @@ def freeze_fingerprints(c,r2c,rows,mapping,packet_hashes,payload_hashes,transpor
             "README.md","REFERENT_ADMISSION_ONTOLOGY_AUDIT_R1.md",
             "REFERENT_ADMISSION_CONTRACT_R2.md","COMPARABILITY_AND_DESIGN_RECEIPT_R1.md",
             "LOCAL_EXECUTION_INSTRUCTIONS_R1.md","MODEL_BINDING_RECEIPT_R1.md",
+            "STATIC_VERIFICATION_RECEIPT_R1.md",".gitignore",
             "EXPERIMENT_CONFIG_R1.json","OPUS_EXISTING_SAMPLE_SELECTION_R1.json",
             "EXECUTION_MANIFEST_PRIVATE_R1.json","BLIND_MAPPING_PRIVATE_R1.json",
             "BLINDED_SCORING_MANIFEST_R1.json")
