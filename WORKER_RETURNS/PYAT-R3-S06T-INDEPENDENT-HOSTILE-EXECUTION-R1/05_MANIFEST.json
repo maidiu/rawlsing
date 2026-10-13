@@ -1,0 +1,74 @@
+{
+ "schema": "PYAT_R3_S06T_MANIFEST@1",
+ "branch": "agent/rabochii-pyat-r3-s06t-independent-hostile-execution-r1",
+ "candidate": "4fec074c7e40a8b233055ffd1d80dbede293c9c4",
+ "reviewer": "25722ffab845c54bd5330384ca800b9e4cfcfded",
+ "frozen_expectations": "7e96914ed6c9a186d5de8a778e8396e46a741eb2",
+ "candidate_module_blob": "40b1009512aea909612a5fa01081ec3d0955860d",
+ "frozen_hostile_file_sha256": "93ff42ddc04edceaa49acde07dbf1890373fc9dc47dbf3d538e3e393640ce59b",
+ "import_provenance": "CONFIRMED_FROM_CANDIDATE_TREE",
+ "candidate_suite": {
+  "passed": 26,
+  "failed": 0,
+  "exit_code": 0
+ },
+ "frozen_hostile_run": {
+  "collected": 21,
+  "passed": 1,
+  "failed": 20,
+  "exit_code": 1,
+  "wall_seconds": 1
+ },
+ "matrix": {
+  "requirements_not_met": 21,
+  "requirements_met": 1,
+  "independent_hostile_count": 24,
+  "by_category": {
+   "caller trust": 5,
+   "mutator coverage": 4,
+   "token verification": 1,
+   "epoch/revocation": 3,
+   "other": 6,
+   "mutable state exposure": 2,
+   "native owner integration": 2,
+   "history authentication": 1
+  }
+ },
+ "disposition": "SECURITY_REJECT_NO_ADOPTION",
+ "code_fixed": false,
+ "hostiles_weakened": false,
+ "alternative_expected_values_generated": false,
+ "accepted_owner_changed": false,
+ "protected_survey_accessed": false,
+ "current_publication_attempted": false,
+ "independent_security_issuer_claimed": false,
+ "deliverables": {
+  "00_RETURN.md": {
+   "sha256": "f4f05cd52986790666a5dd34921e8c7c1a946f390ae07cc3daf41341fc554320",
+   "bytes": 7846
+  },
+  "03_EXECUTION_MATRIX.json": {
+   "sha256": "0ec48caf48521724e4c451f46ac97654d3a8b5e67144b001a6c3b9165dffaa86",
+   "bytes": 10634
+  }
+ },
+ "repro": {
+  "candidate_26_suite.log": {
+   "sha256": "df9e28e05d90b973065157bbe55007b3fc1a0794a0d63cf989ec77d6b3adfd43",
+   "bytes": 99
+  },
+  "frozen_hostiles.log": {
+   "sha256": "b45db91084924a32342450acc35a3543088003900896440f1200594d52e2fd0e",
+   "bytes": 3694
+  },
+  "frozen_hostiles_verbose.log": {
+   "sha256": "54f4691f534103ca2c39b1a3b1b1a9a2316724112802ee419b2660f2f1132062",
+   "bytes": 22267
+  },
+  "test_s06r_independent_hostiles.py": {
+   "sha256": "93ff42ddc04edceaa49acde07dbf1890373fc9dc47dbf3d538e3e393640ce59b",
+   "bytes": 6846
+  }
+ },
+ "terminal": "PYAT_R3_S06T_INDEPENDENT_HOSTILE_EXECUTION_COMPLETE__SECURITY_REJECT_REPRODUCED__GITHUB_PUSHED"
+}

@@ -1,0 +1,138 @@
+============================= test session starts ==============================
+collecting ... collected 21 items
+
+WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_caller_trusted_true_must_not_act_as_external_verifier[withdraw-args0] FAILED [  4%]
+WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_caller_trusted_true_must_not_act_as_external_verifier[invalidate-args1] FAILED [  9%]
+WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_caller_trusted_true_must_not_act_as_external_verifier[supersede-args2] FAILED [ 14%]
+WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_caller_trusted_true_must_not_act_as_external_verifier[revoke-args3] FAILED [ 19%]
+WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_caller_trusted_true_must_not_act_as_external_verifier[invalidate_descendants-args4] FAILED [ 23%]
+WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_caller_trusted_true_cannot_select_arbitrary_unpublished_release FAILED [ 28%]
+WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_public_append_event_cannot_bypass_auth_gate FAILED [ 33%]
+WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_arbitrary_nonempty_external_token_is_not_issuer_validation FAILED [ 38%]
+WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_consistent_history_state_hash_rewrite_is_not_external_custody FAILED [ 42%]
+WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_epoch_must_be_bound_to_issuer_and_replayed_events FAILED [ 47%]
+WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_revocation_set_must_be_issued_and_ledger_bound FAILED [ 52%]
+WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_transitive_descendants_not_one_hop FAILED [ 57%]
+WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_immutable_export_not_mutable_state_alias FAILED [ 61%]
+WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_event_property_is_immutable_deep_snapshot FAILED [ 66%]
+WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_unknown_event_cannot_silently_enter_event_ledger FAILED [ 71%]
+WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_protected_current_mode_not_unconditionally_allowed FAILED [ 76%]
+WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_external_mode_without_independent_root_must_refuse PASSED [ 80%]
+WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_real_owner_checkpoint_schema_interoperation FAILED [ 85%]
+WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_owner_wrapping_is_not_a_second_detached_state_machine FAILED [ 90%]
+WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_without_event_signature_cold_replay_not_external_trust FAILED [ 95%]
+WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_untrusted_selection_cannot_be_staged_through_public_event_api FAILED [100%]
+
+=================================== FAILURES ===================================
+E   AssertionError: caller boolean is not independently verified authority
+    assert not True
+     +  where True = TrustVerdict(allowed=True, mode=<TrustMode.PROTECTED_CURRENT: 'PROTECTED_CURRENT'>, defects=(), provenance={}).allowed
+/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r3s06t/WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py:35: AssertionError: caller boolean is not independently verified authority
+E   AssertionError: caller boolean is not independently verified authority
+    assert not True
+     +  where True = TrustVerdict(allowed=True, mode=<TrustMode.PROTECTED_CURRENT: 'PROTECTED_CURRENT'>, defects=(), provenance={}).allowed
+/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r3s06t/WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py:35: AssertionError: caller boolean is not independently verified authority
+E   AssertionError: caller boolean is not independently verified authority
+    assert not True
+     +  where True = TrustVerdict(allowed=True, mode=<TrustMode.PROTECTED_CURRENT: 'PROTECTED_CURRENT'>, defects=(), provenance={}).allowed
+/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r3s06t/WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py:35: AssertionError: caller boolean is not independently verified authority
+E   AssertionError: caller boolean is not independently verified authority
+    assert not True
+     +  where True = TrustVerdict(allowed=True, mode=<TrustMode.PROTECTED_CURRENT: 'PROTECTED_CURRENT'>, defects=(), provenance={}).allowed
+/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r3s06t/WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py:35: AssertionError: caller boolean is not independently verified authority
+E   AssertionError: caller boolean is not independently verified authority
+    assert not True
+     +  where True = TrustVerdict(allowed=True, mode=<TrustMode.PROTECTED_CURRENT: 'PROTECTED_CURRENT'>, defects=(), provenance={}).allowed
+/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r3s06t/WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py:35: AssertionError: caller boolean is not independently verified authority
+E   AssertionError: assert not True
+     +  where True = TrustVerdict(allowed=True, mode=<TrustMode.PROTECTED_CURRENT: 'PROTECTED_CURRENT'>, defects=(), provenance={}).allowed
+/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r3s06t/WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py:42: AssertionError: assert not True
+E   AssertionError: assert 'PUBLISHED' != 'PUBLISHED'
+     +  where 'PUBLISHED' = <built-in method get of dict object at 0x10184e980>('UNISSUED')
+     +    where <built-in method get of dict object at 0x10184e980> = {'UNISSUED': 'PUBLISHED'}.get
+     +      where {'UNISSUED': 'PUBLISHED'} = <built-in method get of dict object at 0x10184e9c0>('publications', {})
+     +        where <built-in method get of dict object at 0x10184e9c0> = {'publications': {'UNISSUED': 'PUBLISHED'}}.get
+     +          where {'publications': {'UNISSUED': 'PUBLISHED'}} = get_state()
+     +            where get_state = <rawlsing_next.s06_trusted_release_replay.TrustedCheckpoint object at 0x10186c790>.get_state
+/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r3s06t/WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py:52: AssertionError: assert 'PUBLISHED' != 'PUBLISHED'
+E   assert <rawlsing_next.s06_trusted_release_replay.TrustedCheckpoint object at 0x10186e1d0> is None
+/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r3s06t/WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py:60: assert <rawlsing_next.s06_trusted_release_replay.TrustedCheckpoint object at 0x10186e1d0> is None
+E   AssertionError: rehashed payload is not a signed external history root
+    assert <rawlsing_next.s06_trusted_release_replay.TrustedCheckpoint object at 0x10185edd0> is None
+/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r3s06t/WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py:77: AssertionError: rehashed payload is not a signed external history root
+E   AssertionError: unauthenticated arbitrary high epoch cannot be promoted
+    assert <rawlsing_next.s06_trusted_release_replay.TrustedCheckpoint object at 0x10184ff10> is None
+/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r3s06t/WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py:86: AssertionError: unauthenticated arbitrary high epoch cannot be promoted
+E   AssertionError: revocation set is outside both hashes and independent issuer
+    assert <rawlsing_next.s06_trusted_release_replay.TrustedCheckpoint object at 0x10186c110> is None
+/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r3s06t/WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py:94: AssertionError: revocation set is outside both hashes and independent issuer
+E   AssertionError: assert {'A', 'B'} == {'A', 'B', 'C'}
+      
+      Extra items in the right set:
+      'C'
+      
+      Full diff:
+        {
+            'A',...
+      
+      ...Full output truncated (3 lines hidden), use '-vv' to show
+/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r3s06t/WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py:104: AssertionError: assert {'A', 'B'} == {'A', 'B', 'C'}
+E   AssertionError: assert 'PUBLISHED' == 'REGISTERED'
+      
+      - REGISTERED
+      + PUBLISHED
+/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r3s06t/WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py:111: AssertionError: assert 'PUBLISHED' == 'REGISTERED'
+E   AssertionError: assert 'PUBLISHED' == 'REGISTERED'
+      
+      - REGISTERED
+      + PUBLISHED
+/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r3s06t/WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py:121: AssertionError: assert 'PUBLISHED' == 'REGISTERED'
+E   AssertionError: assert not ({'kind': 'FAKE_ISSUER', 'release_ref': 'SYNTHETIC_A'},)
+     +  where ({'kind': 'FAKE_ISSUER', 'release_ref': 'SYNTHETIC_A'},) = <rawlsing_next.s06_trusted_release_replay.TrustedCheckpoint object at 0x10185ebd0>.events
+/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r3s06t/WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py:130: AssertionError: assert not ({'kind': 'FAKE_ISSUER', 'release_ref': 'SYNTHETIC_A'},)
+E   AssertionError: no subject, event, trusted epoch, release state or issued capability
+    assert not True
+     +  where True = TrustVerdict(allowed=True, mode=<TrustMode.PROTECTED_CURRENT: 'PROTECTED_CURRENT'>, defects=(), provenance={}).allowed
+/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r3s06t/WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py:136: AssertionError: no subject, event, trusted epoch, release state or issued capability
+E   AssertionError: a claimed B5 checkpoint verifier must accept valid B5 owner schema
+    assert None is not None
+/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r3s06t/WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py:148: AssertionError: a claimed B5 checkpoint verifier must accept valid B5 owner schema
+E   assert 'pre553_learned_product_lifecycle' in '"""PYAT R3 S06 -- B5/M2 trusted release, checkpoint, and replay hardening.\n\nCloses the invoked trust gaps identified in N04R independent review:\n  1. Checkpoint event-history truncation and altered-state restoration\n  2. Unwrapped state-changing B5 methods (withdraw/invalidate/supersede)\n  3. Self-consistent hashes separated from independent authentication\n  4. Stale/current/as-of selection and revocation\n  5. Cold replay and selective invalidation\n  6. External-root requirements for production claims\n\nDevelopment-only, source-free. No G0b, B5 CURRENT, or production publication.\nNo accepted owner is edited; this module wraps and validates.\n"""\n\nfrom __future__ import annotations\n\nimport hashlib\nimport json\nfrom dataclasses import dataclass, field\nfrom enum import Enum\nfrom typing import Any, Callable, Mapping\n\n\nclass TrustMode(str, Enum):\n    LOCAL_REPLAY = "LOCAL_REPLAY"\n    IMMUTABLE_SNAPSHOT = "IMMUTABLE_SNAPSHOT"\n    PROTECTED_CURRENT = "PROTECTED_CURRENT"\n    EXTERNAL_CUSTODY = "EXTERNAL_CUSTODY"\n\n\nclass DefectCode(str, Enum):\n    HISTORY_TRUNCATION = "HISTORY_TRUNCATION"\n    ALTERED_STATE_RESTORE = "ALTERED_STATE_RESTORE"\n    UNWRAPPED_STAT...   return TrustVerdict(allowed=True, mode=TrustMode.PROTECTED_CURRENT)\n\n    def cold_replay(self) -> bool:\n        """Verify state can be rebuilt from events alone."""\n        rebuilt = TrustedCheckpoint()\n        rebuilt._epoch = self._epoch\n        rebuilt._revoked = set(self._revoked)\n        for event in self._events:\n            rebuilt._apply_event(dict(event))\n        return _state_projection_hash(rebuilt._state) == _state_projection_hash(self._state)\n\n    def verify_trust_mode(self, mode: TrustMode) -> TrustVerdict:\n        """Verify the trust mode is honestly represented."""\n        if mode == TrustMode.EXTERNAL_CUSTODY:\n            return TrustVerdict(\n                allowed=False,\n                mode=TrustMode.EXTERNAL_CUSTODY,\n                defects=(DefectCode.MISSING_EXTERNAL_ROOT,),\n                provenance={"reason": "external custody requires independent authority"},\n            )\n        return TrustVerdict(allowed=True, mode=mode)\n\n    def get_state(self) -> dict[str, Any]:\n        normalized = {}\n        for k, v in self._state.items():\n            normalized[k] = sorted(v) if isinstance(v, set) else v\n        return normalized\n'
+/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r3s06t/WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py:153: assert 'pre553_learned_product_lifecycle' in '"""PYAT R3 S06 -- B5/M2 trusted release, checkpoint, and replay hardening.\n\nCloses the invoked trust gaps identified in N04R independent review:\n  1. Checkpoint event-history truncation and altered-state restoration\n  2. Unwrapped state-changing B5 methods (withdraw/invalidate/supersede)\n  3. Self-consistent hashes separated from independent authentication\n  4. Stale/current/as-of selection and revocation\n  5. Cold replay and selective invalidation\n  6. External-root requirements for production claims\n\nDevelopment-only, source-free. No G0b, B5 CURRENT, or production publication.\nNo accepted owner is edited; this module wraps and validates.\n"""\n\nfrom __future__ import annotations\n\nimport hashlib\nimport json\nfrom dataclasses import dataclass, field\nfrom enum import Enum\nfrom typing import Any, Callable, Mapping\n\n\nclass TrustMode(str, Enum):\n    LOCAL_REPLAY = "LOCAL_REPLAY"\n    IMMUTABLE_SNAPSHOT = "IMMUTABLE_SNAPSHOT"\n    PROTECTED_CURRENT = "PROTECTED_CURRENT"\n    EXTERNAL_CUSTODY = "EXTERNAL_CUSTODY"\n\n\nclass DefectCode(str, Enum):\n    HISTORY_TRUNCATION = "HISTORY_TRUNCATION"\n    ALTERED_STATE_RESTORE = "ALTERED_STATE_RESTORE"\n    UNWRAPPED_STAT...   return TrustVerdict(allowed=True, mode=TrustMode.PROTECTED_CURRENT)\n\n    def cold_replay(self) -> bool:\n        """Verify state can be rebuilt from events alone."""\n        rebuilt = TrustedCheckpoint()\n        rebuilt._epoch = self._epoch\n        rebuilt._revoked = set(self._revoked)\n        for event in self._events:\n            rebuilt._apply_event(dict(event))\n        return _state_projection_hash(rebuilt._state) == _state_projection_hash(self._state)\n\n    def verify_trust_mode(self, mode: TrustMode) -> TrustVerdict:\n        """Verify the trust mode is honestly represented."""\n        if mode == TrustMode.EXTERNAL_CUSTODY:\n            return TrustVerdict(\n                allowed=False,\n                mode=TrustMode.EXTERNAL_CUSTODY,\n                defects=(DefectCode.MISSING_EXTERNAL_ROOT,),\n                provenance={"reason": "external custody requires independent authority"},\n            )\n        return TrustVerdict(allowed=True, mode=mode)\n\n    def get_state(self) -> dict[str, Any]:\n        normalized = {}\n        for k, v in self._state.items():\n            normalized[k] = sorted(v) if isinstance(v, set) else v\n        return normalized\n'
+E   AssertionError: assert not True
+     +  where True = TrustVerdict(allowed=True, mode=<TrustMode.PROTECTED_CURRENT: 'PROTECTED_CURRENT'>, defects=(), provenance={}).allowed
+     +    where TrustVerdict(allowed=True, mode=<TrustMode.PROTECTED_CURRENT: 'PROTECTED_CURRENT'>, defects=(), provenance={}) = verify_trust_mode(<TrustMode.PROTECTED_CURRENT: 'PROTECTED_CURRENT'>)
+     +      where verify_trust_mode = <rawlsing_next.s06_trusted_release_replay.TrustedCheckpoint object at 0x1018e99d0>.verify_trust_mode
+     +      and   <TrustMode.PROTECTED_CURRENT: 'PROTECTED_CURRENT'> = <enum 'TrustMode'>.PROTECTED_CURRENT
+     +        where <enum 'TrustMode'> = s06.TrustMode
+/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r3s06t/WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py:162: AssertionError: assert not True
+E   AssertionError: assert {'release_ref': 'UNKNOWN', 'epoch': 0} is None
+     +  where {'release_ref': 'UNKNOWN', 'epoch': 0} = <built-in method get of dict object at 0x1018eacc0>('KEY')
+     +    where <built-in method get of dict object at 0x1018eacc0> = {'KEY': {'release_ref': 'UNKNOWN', 'epoch': 0}}.get
+     +      where {'KEY': {'release_ref': 'UNKNOWN', 'epoch': 0}} = <built-in method get of dict object at 0x1018eabc0>('selections', {})
+     +        where <built-in method get of dict object at 0x1018eabc0> = {'selections': {'KEY': {'release_ref': 'UNKNOWN', 'epoch': 0}}}.get
+     +          where {'selections': {'KEY': {'release_ref': 'UNKNOWN', 'epoch': 0}}} = get_state()
+     +            where get_state = <rawlsing_next.s06_trusted_release_replay.TrustedCheckpoint object at 0x1018eab50>.get_state
+/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r3s06t/WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py:169: AssertionError: assert {'release_ref': 'UNKNOWN', 'epoch': 0} is None
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_caller_trusted_true_must_not_act_as_external_verifier[withdraw-args0]
+FAILED WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_caller_trusted_true_must_not_act_as_external_verifier[invalidate-args1]
+FAILED WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_caller_trusted_true_must_not_act_as_external_verifier[supersede-args2]
+FAILED WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_caller_trusted_true_must_not_act_as_external_verifier[revoke-args3]
+FAILED WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_caller_trusted_true_must_not_act_as_external_verifier[invalidate_descendants-args4]
+FAILED WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_caller_trusted_true_cannot_select_arbitrary_unpublished_release
+FAILED WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_public_append_event_cannot_bypass_auth_gate
+FAILED WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_arbitrary_nonempty_external_token_is_not_issuer_validation
+FAILED WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_consistent_history_state_hash_rewrite_is_not_external_custody
+FAILED WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_epoch_must_be_bound_to_issuer_and_replayed_events
+FAILED WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_revocation_set_must_be_issued_and_ledger_bound
+FAILED WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_transitive_descendants_not_one_hop
+FAILED WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_immutable_export_not_mutable_state_alias
+FAILED WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_event_property_is_immutable_deep_snapshot
+FAILED WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_unknown_event_cannot_silently_enter_event_ledger
+FAILED WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_protected_current_mode_not_unconditionally_allowed
+FAILED WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_real_owner_checkpoint_schema_interoperation
+FAILED WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_owner_wrapping_is_not_a_second_detached_state_machine
+FAILED WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_without_event_signature_cold_replay_not_external_trust
+FAILED WORKER_RETURNS/PYAT-R3-S06T-INDEPENDENT-HOSTILE-EXECUTION-R1/repro/test_s06r_independent_hostiles.py::test_s06r_untrusted_selection_cannot_be_staged_through_public_event_api
+========================= 20 failed, 1 passed in 0.09s =========================

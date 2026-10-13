@@ -1,0 +1,277 @@
+{
+ "schema": "PYAT_R3_S06T_EXECUTION_MATRIX@1",
+ "candidate": "4fec074c7e40a8b233055ffd1d80dbede293c9c4",
+ "reviewer": "25722ffab845c54bd5330384ca800b9e4cfcfded",
+ "frozen_expectations": "7e96914ed6c9a186d5de8a778e8396e46a741eb2",
+ "frozen_hostile_file_sha256": "93ff42ddc04edceaa49acde07dbf1890373fc9dc47dbf3d538e3e393640ce59b",
+ "candidate_module_blob": "40b1009512aea909612a5fa01081ec3d0955860d",
+ "candidate_suite": {
+  "passed": 26,
+  "failed": 0,
+  "exit_code": 0
+ },
+ "frozen_hostile_run": {
+  "collected": 16,
+  "passed": 1,
+  "failed": 15,
+  "exit_code": 1,
+  "wall_seconds": 1
+ },
+ "independent_hostile_count": 24,
+ "matrix": [
+  {
+   "id": "S06R-H01",
+   "adversary": "CALLER_TRUE_WITHDRAW",
+   "action": "withdraw(release, trusted=True) on uncredentialed instance",
+   "expected_authoritative_result": "REFUSE_WITHOUT_VERIFIED_ISSUER",
+   "category": "caller trust",
+   "pytest_evidence": "test_s06r_caller_trusted_true_cannot_select_arbitrary_unpublished_release",
+   "observed": "FAILED",
+   "verdict": "SECURITY_REQUIREMENT_NOT_MET"
+  },
+  {
+   "id": "S06R-H02",
+   "adversary": "CALLER_TRUE_INVALIDATE",
+   "action": "invalidate(release, trusted=True)",
+   "expected_authoritative_result": "REFUSE_WITHOUT_VERIFIED_ISSUER",
+   "category": "caller trust",
+   "pytest_evidence": "test_s06r_caller_trusted_true_cannot_select_arbitrary_unpublished_release",
+   "observed": "FAILED",
+   "verdict": "SECURITY_REQUIREMENT_NOT_MET"
+  },
+  {
+   "id": "S06R-H03",
+   "adversary": "CALLER_TRUE_SUPERSEDE",
+   "action": "supersede(A,B,trusted=True)",
+   "expected_authoritative_result": "REFUSE_WITHOUT_VERIFIED_ISSUER",
+   "category": "caller trust",
+   "pytest_evidence": "test_s06r_caller_trusted_true_cannot_select_arbitrary_unpublished_release",
+   "observed": "FAILED",
+   "verdict": "SECURITY_REQUIREMENT_NOT_MET"
+  },
+  {
+   "id": "S06R-H04",
+   "adversary": "CALLER_TRUE_REVOKE",
+   "action": "revoke(A,trusted=True)",
+   "expected_authoritative_result": "REFUSE_WITHOUT_VERIFIED_ISSUER",
+   "category": "caller trust",
+   "pytest_evidence": "test_s06r_caller_trusted_true_cannot_select_arbitrary_unpublished_release",
+   "observed": "FAILED",
+   "verdict": "SECURITY_REQUIREMENT_NOT_MET"
+  },
+  {
+   "id": "S06R-H05",
+   "adversary": "CALLER_TRUE_SELECT",
+   "action": "select_current(unknown,epoch=99,trusted=True)",
+   "expected_authoritative_result": "REFUSE_UNPUBLISHED_AND_UNVERIFIED_CURRENT",
+   "category": "caller trust",
+   "pytest_evidence": "test_s06r_caller_trusted_true_cannot_select_arbitrary_unpublished_release",
+   "observed": "FAILED",
+   "verdict": "SECURITY_REQUIREMENT_NOT_MET"
+  },
+  {
+   "id": "S06R-H06",
+   "adversary": "PUBLIC_APPEND_EVENT",
+   "action": "append_event(PUBLISHED UNKNOWN) direct, no flag",
+   "expected_authoritative_result": "REFUSE_UNISSUED_EVENT_AND_NO_MUTATION",
+   "category": "mutator coverage",
+   "pytest_evidence": "test_s06r_public_append_event_cannot_bypass_auth_gate",
+   "observed": "FAILED",
+   "verdict": "SECURITY_REQUIREMENT_NOT_MET"
+  },
+  {
+   "id": "S06R-H07",
+   "adversary": "ARBITRARY_AUTH_TOKEN",
+   "action": "require_independent_auth=True; token='arbitrary'",
+   "expected_authoritative_result": "REFUSE_NO_ISSUER_SUBJECT_SCOPE_SIGNATURE",
+   "category": "token verification",
+   "pytest_evidence": "test_s06r_arbitrary_nonempty_external_token_is_not_issuer_validation",
+   "observed": "FAILED",
+   "verdict": "SECURITY_REQUIREMENT_NOT_MET"
+  },
+  {
+   "id": "S06R-H08",
+   "adversary": "CONSISTENT_FULLEVENT_FORGERY",
+   "action": "replace events state event_count both hashes with attacker coherent corpus",
+   "expected_authoritative_result": "REFUSE_WITHOUT_CUSTODIAN_SIGNATURE_AND_ANCHORED_ROOT",
+   "category": "mutator coverage",
+   "pytest_evidence": "test_s06r_consistent_history_state_hash_rewrite_is_not_external_custody",
+   "observed": "FAILED",
+   "verdict": "SECURITY_REQUIREMENT_NOT_MET"
+  },
+  {
+   "id": "S06R-H09",
+   "adversary": "EPOCH_REWRITE",
+   "action": "alter payload epoch without altering hashes",
+   "expected_authoritative_result": "REFUSE_UNBOUND_EPOCH",
+   "category": "epoch/revocation",
+   "pytest_evidence": "test_s06r_consistent_history_state_hash_rewrite_is_not_external_custody",
+   "observed": "FAILED",
+   "verdict": "SECURITY_REQUIREMENT_NOT_MET"
+  },
+  {
+   "id": "S06R-H10",
+   "adversary": "REVOCATION_REWRITE",
+   "action": "alter revoked list without altering hashes",
+   "expected_authoritative_result": "REFUSE_UNBOUND_REVOCATION_SET",
+   "category": "epoch/revocation",
+   "pytest_evidence": "test_s06r_consistent_history_state_hash_rewrite_is_not_external_custody",
+   "observed": "FAILED",
+   "verdict": "SECURITY_REQUIREMENT_NOT_MET"
+  },
+  {
+   "id": "S06R-H11",
+   "adversary": "MULTI_GEN_CLOSURE",
+   "action": "A->B->C then invalidate_descendants(A)",
+   "expected_authoritative_result": "INVALIDATE_A_B_C_KEEP_UNRELATED_SIBLINGS",
+   "category": "other",
+   "pytest_evidence": null,
+   "observed": "NO_DIRECT_CASE",
+   "verdict": "NO_DIRECT_CASE_MAPPED"
+  },
+  {
+   "id": "S06R-H12",
+   "adversary": "MUTABLE_GET_STATE",
+   "action": "mutate nested get_state mapping",
+   "expected_authoritative_result": "INTERNAL_OWNER_STATE_UNCHANGED",
+   "category": "mutable state exposure",
+   "pytest_evidence": "test_s06r_immutable_export_not_mutable_state_alias",
+   "observed": "FAILED",
+   "verdict": "SECURITY_REQUIREMENT_NOT_MET"
+  },
+  {
+   "id": "S06R-H13",
+   "adversary": "MUTABLE_EVENTS_PROPERTY",
+   "action": "mutate event dict from public events tuple",
+   "expected_authoritative_result": "IMMUTABLE_SNAPSHOT",
+   "category": "mutable state exposure",
+   "pytest_evidence": "test_s06r_event_property_is_immutable_deep_snapshot",
+   "observed": "FAILED",
+   "verdict": "SECURITY_REQUIREMENT_NOT_MET"
+  },
+  {
+   "id": "S06R-H14",
+   "adversary": "UNKNOWN_EVENT_TYPE",
+   "action": "append unknown kind",
+   "expected_authoritative_result": "TYPED_REJECTION_NO_LEDGER_APPEND",
+   "category": "mutator coverage",
+   "pytest_evidence": "test_s06r_unknown_event_cannot_silently_enter_event_ledger",
+   "observed": "FAILED",
+   "verdict": "SECURITY_REQUIREMENT_NOT_MET"
+  },
+  {
+   "id": "S06R-H15",
+   "adversary": "UNCONDITIONAL_MODE",
+   "action": "verify_trust_mode(PROTECTED_CURRENT) with no owner/root/release",
+   "expected_authoritative_result": "REFUSE_UNISSUED_MODE",
+   "category": "other",
+   "pytest_evidence": "test_s06r_protected_current_mode_not_unconditionally_allowed",
+   "observed": "FAILED",
+   "verdict": "SECURITY_REQUIREMENT_NOT_MET"
+  },
+  {
+   "id": "S06R-H16",
+   "adversary": "EXTERNAL_CUSTODY_MODE",
+   "action": "verify_trust_mode(EXTERNAL_CUSTODY) without root",
+   "expected_authoritative_result": "REFUSE_MISSING_ROOT",
+   "category": "other",
+   "pytest_evidence": "test_s06r_consistent_history_state_hash_rewrite_is_not_external_custody",
+   "observed": "FAILED",
+   "verdict": "SECURITY_REQUIREMENT_NOT_MET"
+  },
+  {
+   "id": "S06R-H17",
+   "adversary": "REAL_B5_SCHEMA",
+   "action": "pass valid LearnedProductLifecycleExecutor export_checkpoint",
+   "expected_authoritative_result": "OWNER_SCHEMA_COMPATIBLE_OR_EXPLICIT_UNIMPLEMENTED_HOLD",
+   "category": "native owner integration",
+   "pytest_evidence": "test_s06r_real_owner_checkpoint_schema_interoperation",
+   "observed": "FAILED",
+   "verdict": "SECURITY_REQUIREMENT_NOT_MET"
+  },
+  {
+   "id": "S06R-H18",
+   "adversary": "REAL_B5_M2_OWNER",
+   "action": "assert B5/M2 accepted owner imports and adapters actually wrap state mutation",
+   "expected_authoritative_result": "COVER_MUTATING_OWNER_ENTRYPOINTS_NO_DETACHED_LEDGER",
+   "category": "native owner integration",
+   "pytest_evidence": "test_s06r_real_owner_checkpoint_schema_interoperation",
+   "observed": "FAILED",
+   "verdict": "SECURITY_REQUIREMENT_NOT_MET"
+  },
+  {
+   "id": "S06R-H19",
+   "adversary": "COLD_REPLAY_AUTH_LAUNDER",
+   "action": "internally replay self-authored unauthorized PUBLISHED",
+   "expected_authoritative_result": "CONSISTENT_REPLAY_NEVER_AUTHENTICITY",
+   "category": "history authentication",
+   "pytest_evidence": "test_s06r_without_event_signature_cold_replay_not_external_trust",
+   "observed": "FAILED",
+   "verdict": "SECURITY_REQUIREMENT_NOT_MET"
+  },
+  {
+   "id": "S06R-H20",
+   "adversary": "PUBLIC_SELECTED_EVENT",
+   "action": "append SELECTED unissued release no verifier",
+   "expected_authoritative_result": "REFUSE_DIRECT_EVENT_MUTATION",
+   "category": "mutator coverage",
+   "pytest_evidence": "test_s06r_untrusted_selection_cannot_be_staged_through_public_event_api",
+   "observed": "FAILED",
+   "verdict": "SECURITY_REQUIREMENT_NOT_MET"
+  },
+  {
+   "id": "S06R-H21",
+   "adversary": "PREVIOUS_OVERLAY_COVERAGE",
+   "action": "9 B5 unwrapped, 8 M2 unwrapped, partial declare_no_current/recertification",
+   "expected_authoritative_result": "OWNER_INTEGRATED_ENFORCEMENT_ALL_ROUTES",
+   "category": "other",
+   "pytest_evidence": null,
+   "observed": "NO_DIRECT_CASE",
+   "verdict": "NO_DIRECT_CASE_MAPPED"
+  },
+  {
+   "id": "S06R-H22",
+   "adversary": "AS_OF_AND_REVOCATION",
+   "action": "stale epochs, revoke after select, historical vs CURRENT resolver",
+   "expected_authoritative_result": "SIGNED_EPOCH_ASOF_REVOCATION_BINDING",
+   "category": "epoch/revocation",
+   "pytest_evidence": "test_s06r_revocation_set_must_be_issued_and_ledger_bound",
+   "observed": "FAILED",
+   "verdict": "SECURITY_REQUIREMENT_NOT_MET"
+  },
+  {
+   "id": "S06R-H23",
+   "adversary": "CHECKPOINT_SUBJECT_ID",
+   "action": "alter subject/release/replay refs while regenerating local hashes",
+   "expected_authoritative_result": "FAIL_PUBLISHED_SUBJECT_PERMISSION_AND_REPLAY",
+   "category": "other",
+   "pytest_evidence": "test_s06r_real_owner_checkpoint_schema_interoperation",
+   "observed": "FAILED",
+   "verdict": "SECURITY_REQUIREMENT_NOT_MET"
+  },
+  {
+   "id": "S06R-H24",
+   "adversary": "MULTIBRANCH_DEPENDENCIES",
+   "action": "A->B and A->C branch -> D invalidation, sibling unrelated",
+   "expected_authoritative_result": "FULL_TRANSITIVE_DEPENDENCY_CLOSURE_PRESERVE_UNRELATED",
+   "category": "other",
+   "pytest_evidence": "test_s06r_external_mode_without_independent_root_must_refuse",
+   "observed": "PASSED",
+   "verdict": "SECURITY_REQUIREMENT_MET"
+  }
+ ],
+ "by_category": {
+  "caller trust": 5,
+  "mutator coverage": 4,
+  "token verification": 1,
+  "epoch/revocation": 3,
+  "other": 6,
+  "mutable state exposure": 2,
+  "native owner integration": 2,
+  "history authentication": 1
+ },
+ "requirements_not_met": 21,
+ "requirements_met": 1,
+ "disposition": "SECURITY_REJECT_NO_ADOPTION",
+ "terminal": "PYAT_R3_S06T_INDEPENDENT_HOSTILE_EXECUTION_COMPLETE__SECURITY_REJECT_REPRODUCED__GITHUB_PUSHED"
+}
