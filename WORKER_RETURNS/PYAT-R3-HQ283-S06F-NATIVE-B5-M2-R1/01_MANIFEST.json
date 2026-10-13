@@ -1,0 +1,67 @@
+{
+  "schema": "PYAT_R3_HQ283_S06F_NATIVE_B5_M2_WORKER_MANIFEST_R1",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-pyat-r3-hq283-s06f-native-b5-m2-r1",
+  "sealed_startup": "85d9e0c815f1aeb78969fc179ad25092c628db04",
+  "commission": "WORKER_COMMISSIONS/PYAT-R3-HQ283-S06F-NATIVE-B5-M2-R1/00_COMMISSION.md",
+  "commissioned_role": "INDEPENDENT_WORKER_NOT_HQ",
+  "changed_owner_paths": [
+    "rawlsing_next/pre553_learned_product_lifecycle.py",
+    "rawlsing_next/pre553_learned_product_release.py"
+  ],
+  "added_test_path": "rawlsing_next/tests/test_pre553_s06f_native_owner_security.py",
+  "frozen_acceptance": {
+    "commit": "7e96914ed6c9a186d5de8a778e8396e46a741eb2",
+    "expected_cases": 24,
+    "modified": false,
+    "executed_against_s06f": false
+  },
+  "owner_entrypoint_coverage": {
+    "b5_public_mutation_methods": 17,
+    "b5_prior_unwrapped": 9,
+    "m2_repository_registration_methods": 5,
+    "m2_prior_unwrapped_module_routes": [
+      "constitute_closure",
+      "register_representation",
+      "publish_binding"
+    ],
+    "m2_module_existing_other_routes": [
+      "register_producer_subject",
+      "constitute_release"
+    ],
+    "method_body_static_preflights": true,
+    "native_subject_release_crosscheck": "verify_m2_release_subject_exact"
+  },
+  "integrity_scope": "NATIVE_EVENT_DERIVED_CHECKPOINT_PROJECTION_REPLAY__LOCAL_ONLY",
+  "security_limits": {
+    "local_mode": "LOCAL_UNAUTHENTICATED",
+    "claimed_protected_current": false,
+    "claimed_external_custody": false,
+    "independent_issuer_available": false,
+    "anchored_external_event_root_available": false,
+    "verified_as_of_revocation_source": false,
+    "cryptographic_custody_claim": false,
+    "same_process_principal_isolation_proved": false,
+    "direct_native_method_input_checks": true,
+    "full_native_security_acceptance_proved": false
+  },
+  "execution": {
+    "execution_surface": "ChatGPT GitHub API connector",
+    "github_remote_reads_writes": true,
+    "local_subprocess_executed": false,
+    "pytest_executed": false,
+    "pytest_exit_code": null,
+    "new_tests_functions": 16,
+    "native_code_runtime_verified": false,
+    "independent_reviewer_pending": true
+  },
+  "authority_holds": [
+    "EXTERNAL_ISSUER_HOLD",
+    "PROTECTED_CURRENT_HOLD",
+    "EXTERNAL_CUSTODY_HOLD",
+    "NO_CANONICAL_MERGE",
+    "NO_SOURCE_PERMISSION"
+  ],
+  "scientific_claim_grade": "SOURCE_FREE_CODE_AND_STATIC_INSPECTION_ONLY",
+  "terminal": "SOURCE_FREE_NATIVE_PATCH_ON_BRANCH__NO_RUNTIME_EXECUTION__EXTERNAL_ISSUER_HOLD__INDEPENDENT_REVIEW_REQUIRED"
+}
