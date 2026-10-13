@@ -169,6 +169,10 @@ def report():
             "comparison":overall,"case_rows":case_rows,
             "opus_secondary_replication_n":40,
             "opus_secondary_corrected_mechanical_statuses":dict(secondary_status),
+            "opus_all_sixty_corrected_mechanical_statuses":dict(full_status),
+            "opus_case_condition_cells_with_structural_variation":variable_cells,
+            "opus_case_condition_cell_count":20,
+            "opus_secondary_substantive_quality":"NOT_REASSESSED_BY_BALANCED_60_SCORE_SHEET",
             "interpretation_limitations":[
                 "Screen, not a powered model-by-context interaction estimator",
                 "Additional 40 Opus observations are secondary only",
