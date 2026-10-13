@@ -332,3 +332,33 @@ def test_no_caller_trusted_flag_or_arbitrary_token_on_native_owners():
         executor.require_external_issuer("PROTECTED_CURRENT")
     with pytest.raises(M2ReleaseError, match="EXTERNAL_ISSUER_HOLD"):
         repo.require_external_issuer("EXTERNAL_CUSTODY")
+
+
+def test_b5_changed_runtime_schema_fails_even_with_new_local_hash():
+    _, _, cp = checkpoint_with_publication()
+    tampered = deepcopy(cp)
+    tampered["checkpoint_payload"]["runtime_schema"] = "UNISSUED_SCHEMA"
+    tampered["checkpoint_hash"] = semantic_hash(tampered["checkpoint_payload"])
+    with pytest.raises(LearnedProductLifecycleError, match="runtime schema mismatch"):
+        LearnedProductLifecycleExecutor.from_checkpoint(tampered)
+
+
+def test_b5_duplicate_checkpoint_projection_key_fails_closed():
+    _, _, cp = checkpoint_with_publication()
+    altered = deepcopy(cp)
+    altered["checkpoint_payload"]["publication"].append(
+        altered["checkpoint_payload"]["publication"][0]
+    )
+    altered["checkpoint_hash"] = semantic_hash(altered["checkpoint_payload"])
+    with pytest.raises(LearnedProductLifecycleConflict, match="repeats key"):
+        LearnedProductLifecycleExecutor.from_checkpoint(altered)
+
+
+def test_local_checkpoint_has_no_external_epoch_revocation_or_custody_claim():
+    executor, _, cp = checkpoint_with_publication()
+    assert "epoch" not in cp["checkpoint_payload"]
+    assert "revoked" not in cp["checkpoint_payload"]
+    assert "external_custody" not in cp["checkpoint_payload"]
+    assert executor.native_security_mode == "LOCAL_UNAUTHENTICATED"
+    with pytest.raises(LearnedProductLifecycleError, match="EXTERNAL_ISSUER_HOLD"):
+        executor.require_external_issuer("checkpoint historical completeness")
