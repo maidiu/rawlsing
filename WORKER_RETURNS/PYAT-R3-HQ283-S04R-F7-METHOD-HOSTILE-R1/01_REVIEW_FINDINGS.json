@@ -1,0 +1,200 @@
+{
+  "schema": "PYAT_HQ283_S04R_F7_INDEPENDENT_METHOD_REVIEW_R1",
+  "role": "independent_reviewer_not_HQ",
+  "sealed_startup": "28b2a7f048b8412c72fb549eda954654a1780449",
+  "assigned_branch": "agent/reviewer-pyat-r3-hq283-s04r-f7-method-r1",
+  "initial_remote_branch_tip": "28b2a7f048b8412c72fb549eda954654a1780449",
+  "candidate_s04": "9ae87f2227384e0567190c6a2d5f3a33a60d4b4c",
+  "comparison_source": "WORKER_RETURNS/PYAT-R3-S04-F7-TEMPORAL-SOCIOLOGY-R1/01_METHOD_COMPARISON.json",
+  "inherited_v553_main_commit": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+  "d07": "bab16899f4c2d7137aba95debbce5410ea0dd74d",
+  "n03": "d2475e630e6f32a83c6fa4a35983259049d179f9",
+  "astra": "88d3c40def26d34ff202258171c256dfa9d17dbb",
+  "review_grade": "SOURCE_FREE_CODE_AND_DOCUMENTARY_INSPECTION_ONLY__NO_EMPIRICAL_MEASUREMENT",
+  "scientific_verdict": "HOLD_S04_AS_SCIENTIFIC_TEMPORAL_ESTIMATOR__MAY_RETAIN_AS_UNCALIBRATED_SOURCE_FREE_DEMONSTRATOR",
+  "status": "REVIEW_COMPLETED__REVIEWER_NOT_ADOPTION_AUTHORITY",
+  "findings": [
+    {
+      "id": "S04R-F01",
+      "severity": "BLOCKS_SCIENTIFIC_USE",
+      "topic": "0.05_year_drift",
+      "code": "s04_temporal_policy.py:nearest_anchor_backoff;linear_interpolation",
+      "fact": "S04 assigns abs(year gap)*0.05 as drift_uncertainty; no units, design estimator, calibration, or tested coverage bound supplied.",
+      "required": "Separate model-gap uncertainty from survey design/sampling/measurement uncertainty; hold numeric interval until independent calibration/qualification."
+    },
+    {
+      "id": "S04R-F02",
+      "severity": "BLOCKS_SCIENTIFIC_USE",
+      "topic": "source_identity_design",
+      "code": "Anchor dataclass and _qualify",
+      "fact": "Anchor lacks country/geography/source wave identity, original item category code mapping, original field/risk/denominator, weight/PSU/stratum/sample/field method and authority snapshot; qualified bool is unvalidated.",
+      "required": "Accept only immutable source-specific qualified per-wave facts and explicit exact comparability/operation permit; no row-level use without separate grant."
+    },
+    {
+      "id": "S04R-F03",
+      "severity": "BLOCKS_SCIENTIFIC_USE",
+      "topic": "break_detection_scope",
+      "code": "_find_breaks(anchors) called inside nearest_anchor_backoff",
+      "fact": "Breaks scanned across entire supplied list, including different populations, polarities, unqualified anchors; false refusal possible. Filtering polarity before scanner additionally erases competing semantic anchors.",
+      "required": "Scope break review to source-qualified identical construct/estimand, while detecting drift of original semantics as an independent qualification failure."
+    },
+    {
+      "id": "S04R-F04",
+      "severity": "BLOCKS_SCIENTIFIC_USE",
+      "topic": "break_threshold",
+      "code": "_find_breaks",
+      "fact": "abs(curr-prev)/abs(prev)>3.0 is an uncalibrated relative-change heuristic, zero baseline excluded; magnitude discontinuity is neither measurement incompatibility nor independently proved regime break.",
+      "required": "Require documented wave method/instrument break and separately estimated statistical change-point where justified; never infer SOURCE_NONCOMPARABLE from 3x numeric trigger."
+    },
+    {
+      "id": "S04R-F05",
+      "severity": "BLOCKS_SCIENTIFIC_USE",
+      "topic": "measured_grade_relabel",
+      "code": "nearest_anchor_backoff exact branch; linear_interpolation exact branch",
+      "fact": "Exact branch returns evidence_mode=MEASURED and drift_uncertainty=0.0 even when Anchor.evidence_mode is PRIOR/TRANSFORMED/INFERRED; 0 says nothing about survey design error.",
+      "required": "Preserve original evidence grade and distinct sampling/design error; OBSERVED only after exact measured-wave authority."
+    },
+    {
+      "id": "S04R-F06",
+      "severity": "BLOCKS_SCIENTIFIC_USE",
+      "topic": "ordinal_and_polarity",
+      "code": "_qualify;Anchor.category_semantics",
+      "fact": "Category semantics field never inspected, and nominal polarity strings are not source-native ordered response equivalence; a reversed scale can silently pass.",
+      "required": "Conserve original code maps, DNR substantive 0, typed refusal/DK, ordinal treatment and independent measurement-invariance decision."
+    },
+    {
+      "id": "S04R-F07",
+      "severity": "BLOCKS_SCIENTIFIC_USE",
+      "topic": "interpolation_inheritance",
+      "code": "S04 linear_interpolation; historical V553 _build_interpolated_pressure_rows versus _build_v553_interpolation_segment_index/_build_v553_temporal_pressure_field_contract",
+      "fact": "S04 labels inherited linear gap-insensitive; its own code imposes max_gap, and the later V553 authorized temporal field explicitly preserves unknown survey gap without value inference. Legacy helper supports interpolation on pressure aggregates only.",
+      "required": "Describe inheritance by exact function and permission lane; preserve missing year unknown for original survey measurement."
+    },
+    {
+      "id": "S04R-F08",
+      "severity": "BLOCKS_SCIENTIFIC_USE",
+      "topic": "horizon_gap_and_single_anchor",
+      "code": "TemporalRequest;nearest_anchor_backoff;linear_interpolation",
+      "fact": "Nearest uses nearest-anchor distance rather than two-anchor segment length; default max_gap=10 precedes default max_horizon=20, making horizon refusal unreachable under defaults. Linear backoff is asymmetric (earlier gap vs later horizon). One anchor cannot measure temporal change.",
+      "required": "Adjudicate bracketing and extrapolation separately, refuse indefinite prior carryforward, label singleton as contextual historical anchor only."
+    },
+    {
+      "id": "S04R-F09",
+      "severity": "INTEGRITY",
+      "topic": "replay_hash",
+      "code": "content_hash",
+      "fact": "Hash omits source_ref/evidence_mode/category_semantics, allow_* operation flags and some request semantics; duplicate same-year anchors resolved by list order. Output/authority identity not fully captured.",
+      "required": "Include full typed semantic/authority inputs, tie ambiguity/invalidation, method version and effect scope in replay custody."
+    },
+    {
+      "id": "S04R-F10",
+      "severity": "INTEGRITY",
+      "topic": "unknown_method_and_prior",
+      "code": "evaluate_temporal;allow_prior;TemporalPolicyDecision.PRIOR_BROAD",
+      "fact": "Any method other than literal linear_interpolation silently dispatches nearest; allow_prior and PRIOR_BROAD are declared but do not implement an authorized prior operation.",
+      "required": "Fail closed on unknown method; hold broad priors outside measured temporal relation and require separately authorized prior source."
+    },
+    {
+      "id": "S04R-F11",
+      "severity": "DOWNSTREAM_SCOPE",
+      "topic": "observed_vs_inferred_and_N8",
+      "code": "D07/N03 qualified path",
+      "fact": "S04 offers no real qualified Ghana per-wave estimates, design variances, EE12/C7 source-pair snapshot, N8E production or actual N9 receipt. N8S cannot consume opinion as institutional structure.",
+      "required": "First positive product only after scoped Ghana release bridge + source-authorized national estimator + independent statistical design decision + exact EE12 issuer + executed N8E/N9."
+    }
+  ],
+  "scenario_matrix": [
+    {
+      "id": "ordinal_reversal",
+      "proposed_expected": "HOLD_SCALE_EQUIVALENCE",
+      "s04_source_code_read": "category_semantics ignored",
+      "runtime": "NOT_EXECUTED"
+    },
+    {
+      "id": "changed_respondent_target",
+      "proposed_expected": "HOLD_SCOPE_OR_DENOMINATOR",
+      "s04_source_code_read": "population string equality only; no eligible/routing/denominator",
+      "runtime": "NOT_EXECUTED"
+    },
+    {
+      "id": "field_method_break",
+      "proposed_expected": "HOLD_METHOD_INVARIANCE_PENDING_ISSUER",
+      "s04_source_code_read": "no instrument, frame, language or mode fields",
+      "runtime": "NOT_EXECUTED"
+    },
+    {
+      "id": "numerical_3x_jump",
+      "proposed_expected": "MODEL_DIAGNOSTIC_ONLY",
+      "s04_source_code_read": "break refusal by arbitrary relative jump; zero baseline missed",
+      "runtime": "NOT_EXECUTED"
+    },
+    {
+      "id": "long_or_irregular_gap",
+      "proposed_expected": "GAP_UNKNOWN_UNLESS_ISSUED_MODEL",
+      "s04_source_code_read": "nearest/linear model fills bounded gaps; no empirical gap measurement",
+      "runtime": "NOT_EXECUTED"
+    },
+    {
+      "id": "missing_sample_design",
+      "proposed_expected": "UNQUANTIFIED_DESIGN_UNCERTAINTY",
+      "s04_source_code_read": "no design metadata; numeric drift not SE/CI",
+      "runtime": "NOT_EXECUTED"
+    },
+    {
+      "id": "different_geography",
+      "proposed_expected": "HOLD_COUNTRY_DOMAIN",
+      "s04_source_code_read": "no geography/country field",
+      "runtime": "NOT_EXECUTED"
+    },
+    {
+      "id": "mixed_observed_inferred_prior",
+      "proposed_expected": "PRESERVE_ORIGINAL_GRADES",
+      "s04_source_code_read": "exact-year mode rewritten MEASURED",
+      "runtime": "NOT_EXECUTED"
+    },
+    {
+      "id": "single_anchor",
+      "proposed_expected": "NO_MEASURED_TREND",
+      "s04_source_code_read": "nearest model backoff inferred, no second measurement",
+      "runtime": "NOT_EXECUTED"
+    }
+  ],
+  "smallest_positive_path": {
+    "source_pair": "Ghana Afrobarometer R5 (2012) Q43 to R9 (2022) Q31, edge TEMP_SRC02_SRC03",
+    "claim": "weighted change in p(response in native categories 3 or 4 | nationally eligible asked-valid citizens 18+) between independent field periods, retaining native 0 as valid distinct substantive",
+    "first_required": "GHANA_Q43_Q31_EXACT_RETAINED_RELEASE_NATIONAL_DESIGN_ESTIMAND_BRIDGE_R1 (D07/N03); source issuer/actual retained roots/statistician distinct",
+    "gates": [
+      "official original merged round accession/version and field method",
+      "separate internal original-byte/source permission and Ghana national selector/weights/PSU/strata",
+      "independent measure/population/design/variance assessment",
+      "positive exact EE12/C7 operation and source relation snapshot",
+      "real wave-specific measured products and N8E comparison",
+      "explicit N9 attitudinal-context serving permission and as-of/replay",
+      "N8S separate original objective structural evidence and rule"
+    ],
+    "not_granted": [
+      "source_read",
+      "positive_EE12",
+      "measured_delta",
+      "N8S_objective_inference",
+      "N9_execution",
+      "V3"
+    ]
+  },
+  "observed_operations": [
+    "GitHub fetch_file / fetch_commit / fetch ref / GitHub create_file; successful responses",
+    "No local subprocess or pytest executed"
+  ],
+  "execution": {
+    "host": "ChatGPT GitHub connector; browser-mediated remote reads/writes",
+    "model_identity": "GPT-6; High requested, actual effort setting not independently verifiable",
+    "provider": "OpenAI ChatGPT with connected GitHub",
+    "local_environment": "NOT_USED",
+    "python_or_pytest": "NOT_EXECUTED",
+    "original_survey_rows": "NOT_ACCESSED",
+    "survey_permission": "NOT_GRANTED_BY_COMMISSION",
+    "model_metering_cost_and_allowance": "UNKNOWN",
+    "review_tests": "COMMITTED_NOT_EXECUTED",
+    "independent_acceptance": "NOT_YET_GRANTED"
+  }
+}
