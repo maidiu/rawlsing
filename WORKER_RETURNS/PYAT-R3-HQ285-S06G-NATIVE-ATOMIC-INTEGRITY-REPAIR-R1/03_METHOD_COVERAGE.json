@@ -1,0 +1,227 @@
+{
+  "schema": "HQ285_S06G_22_NATIVE_WRITERS@1",
+  "methods": [
+    {
+      "owner": "LearnedProductLifecycleExecutor",
+      "method": "stage_release",
+      "native_decorator": "_atomic_mutation",
+      "preflight_in_body": true,
+      "exception_rollback_evidence": "test_non_event_mutators_rollback_after_write[stage_release]",
+      "local_rollback_result": "PASS",
+      "saved_public_external_refusal_evidence": "unchanged S06FR test_all_saved_native_writers_refuse_external_mode_before_validation",
+      "issuer_verdict": "HOLD"
+    },
+    {
+      "owner": "LearnedProductLifecycleExecutor",
+      "method": "stage_protocol",
+      "native_decorator": "_atomic_mutation",
+      "preflight_in_body": true,
+      "exception_rollback_evidence": "test_non_event_mutators_rollback_after_write[stage_protocol]",
+      "local_rollback_result": "PASS",
+      "saved_public_external_refusal_evidence": "unchanged S06FR test_all_saved_native_writers_refuse_external_mode_before_validation",
+      "issuer_verdict": "HOLD"
+    },
+    {
+      "owner": "LearnedProductLifecycleExecutor",
+      "method": "register_product",
+      "native_decorator": "_atomic_mutation",
+      "preflight_in_body": true,
+      "exception_rollback_evidence": "test_each_event_mutator_rolls_back_post_append_exception[register_product]",
+      "local_rollback_result": "PASS",
+      "saved_public_external_refusal_evidence": "unchanged S06FR test_all_saved_native_writers_refuse_external_mode_before_validation",
+      "issuer_verdict": "HOLD"
+    },
+    {
+      "owner": "LearnedProductLifecycleExecutor",
+      "method": "publish_product",
+      "native_decorator": "_atomic_mutation",
+      "preflight_in_body": true,
+      "exception_rollback_evidence": "test_each_event_mutator_rolls_back_post_append_exception[publish_product]",
+      "local_rollback_result": "PASS",
+      "saved_public_external_refusal_evidence": "unchanged S06FR test_all_saved_native_writers_refuse_external_mode_before_validation",
+      "issuer_verdict": "HOLD"
+    },
+    {
+      "owner": "LearnedProductLifecycleExecutor",
+      "method": "record_recertification",
+      "native_decorator": "_atomic_mutation",
+      "preflight_in_body": true,
+      "exception_rollback_evidence": "test_each_event_mutator_rolls_back_post_append_exception[record_recertification]",
+      "local_rollback_result": "PASS",
+      "saved_public_external_refusal_evidence": "unchanged S06FR test_all_saved_native_writers_refuse_external_mode_before_validation",
+      "issuer_verdict": "HOLD"
+    },
+    {
+      "owner": "LearnedProductLifecycleExecutor",
+      "method": "selection_key",
+      "native_decorator": "_atomic_mutation",
+      "preflight_in_body": true,
+      "exception_rollback_evidence": "test_non_event_mutators_rollback_after_write[selection_key]",
+      "local_rollback_result": "PASS",
+      "saved_public_external_refusal_evidence": "unchanged S06FR test_all_saved_native_writers_refuse_external_mode_before_validation",
+      "issuer_verdict": "HOLD"
+    },
+    {
+      "owner": "LearnedProductLifecycleExecutor",
+      "method": "select_current",
+      "native_decorator": "_atomic_mutation",
+      "preflight_in_body": true,
+      "exception_rollback_evidence": "test_each_event_mutator_rolls_back_post_append_exception[select_current]",
+      "local_rollback_result": "PASS",
+      "saved_public_external_refusal_evidence": "unchanged S06FR test_all_saved_native_writers_refuse_external_mode_before_validation",
+      "issuer_verdict": "HOLD"
+    },
+    {
+      "owner": "LearnedProductLifecycleExecutor",
+      "method": "declare_no_current",
+      "native_decorator": "_atomic_mutation",
+      "preflight_in_body": true,
+      "exception_rollback_evidence": "test_each_event_mutator_rolls_back_post_append_exception[declare_no_current]",
+      "local_rollback_result": "PASS",
+      "saved_public_external_refusal_evidence": "unchanged S06FR test_all_saved_native_writers_refuse_external_mode_before_validation",
+      "issuer_verdict": "HOLD"
+    },
+    {
+      "owner": "LearnedProductLifecycleExecutor",
+      "method": "supersede_current",
+      "native_decorator": "_atomic_mutation",
+      "preflight_in_body": true,
+      "exception_rollback_evidence": "test_each_event_mutator_rolls_back_post_append_exception[supersede_current]",
+      "local_rollback_result": "PASS",
+      "saved_public_external_refusal_evidence": "unchanged S06FR test_all_saved_native_writers_refuse_external_mode_before_validation",
+      "issuer_verdict": "HOLD"
+    },
+    {
+      "owner": "LearnedProductLifecycleExecutor",
+      "method": "withdraw_product",
+      "native_decorator": "_atomic_mutation",
+      "preflight_in_body": true,
+      "exception_rollback_evidence": "test_each_event_mutator_rolls_back_post_append_exception[withdraw_product]",
+      "local_rollback_result": "PASS",
+      "saved_public_external_refusal_evidence": "unchanged S06FR test_all_saved_native_writers_refuse_external_mode_before_validation",
+      "issuer_verdict": "HOLD"
+    },
+    {
+      "owner": "LearnedProductLifecycleExecutor",
+      "method": "declare_invalidation",
+      "native_decorator": "_atomic_mutation",
+      "preflight_in_body": true,
+      "exception_rollback_evidence": "test_each_event_mutator_rolls_back_post_append_exception[declare_invalidation]",
+      "local_rollback_result": "PASS",
+      "saved_public_external_refusal_evidence": "unchanged S06FR test_all_saved_native_writers_refuse_external_mode_before_validation",
+      "issuer_verdict": "HOLD"
+    },
+    {
+      "owner": "LearnedProductLifecycleExecutor",
+      "method": "record_rebuild_eligibility",
+      "native_decorator": "_atomic_mutation",
+      "preflight_in_body": true,
+      "exception_rollback_evidence": "test_each_event_mutator_rolls_back_post_append_exception[record_rebuild_eligibility]",
+      "local_rollback_result": "PASS",
+      "saved_public_external_refusal_evidence": "unchanged S06FR test_all_saved_native_writers_refuse_external_mode_before_validation",
+      "issuer_verdict": "HOLD"
+    },
+    {
+      "owner": "LearnedProductLifecycleExecutor",
+      "method": "link_rebuild",
+      "native_decorator": "_atomic_mutation",
+      "preflight_in_body": true,
+      "exception_rollback_evidence": "test_each_event_mutator_rolls_back_post_append_exception[link_rebuild]",
+      "local_rollback_result": "PASS",
+      "saved_public_external_refusal_evidence": "unchanged S06FR test_all_saved_native_writers_refuse_external_mode_before_validation",
+      "issuer_verdict": "HOLD"
+    },
+    {
+      "owner": "LearnedProductLifecycleExecutor",
+      "method": "record_cache_materialized",
+      "native_decorator": "_atomic_mutation",
+      "preflight_in_body": true,
+      "exception_rollback_evidence": "test_each_event_mutator_rolls_back_post_append_exception[record_cache_materialized]",
+      "local_rollback_result": "PASS",
+      "saved_public_external_refusal_evidence": "unchanged S06FR test_all_saved_native_writers_refuse_external_mode_before_validation",
+      "issuer_verdict": "HOLD"
+    },
+    {
+      "owner": "LearnedProductLifecycleExecutor",
+      "method": "record_cache_dropped",
+      "native_decorator": "_atomic_mutation",
+      "preflight_in_body": true,
+      "exception_rollback_evidence": "test_each_event_mutator_rolls_back_post_append_exception[record_cache_dropped]",
+      "local_rollback_result": "PASS",
+      "saved_public_external_refusal_evidence": "unchanged S06FR test_all_saved_native_writers_refuse_external_mode_before_validation",
+      "issuer_verdict": "HOLD"
+    },
+    {
+      "owner": "LearnedProductLifecycleExecutor",
+      "method": "attest_gc_eligibility",
+      "native_decorator": "_atomic_mutation",
+      "preflight_in_body": true,
+      "exception_rollback_evidence": "test_each_event_mutator_rolls_back_post_append_exception[attest_gc_eligibility]",
+      "local_rollback_result": "PASS",
+      "saved_public_external_refusal_evidence": "unchanged S06FR test_all_saved_native_writers_refuse_external_mode_before_validation",
+      "issuer_verdict": "HOLD"
+    },
+    {
+      "owner": "LearnedProductLifecycleExecutor",
+      "method": "record_payload_gc",
+      "native_decorator": "_atomic_mutation",
+      "preflight_in_body": true,
+      "exception_rollback_evidence": "test_each_event_mutator_rolls_back_post_append_exception[record_payload_gc]",
+      "local_rollback_result": "PASS",
+      "saved_public_external_refusal_evidence": "unchanged S06FR test_all_saved_native_writers_refuse_external_mode_before_validation",
+      "issuer_verdict": "HOLD"
+    },
+    {
+      "owner": "M2Repository",
+      "method": "register_subject",
+      "native_decorator": "_repository_mutation",
+      "preflight_in_body": true,
+      "exception_rollback_evidence": "test_each_m2_writer_rolls_back_post_insert_exception[register_subject]",
+      "local_rollback_result": "PASS",
+      "saved_public_external_refusal_evidence": "unchanged S06FR test_all_saved_native_writers_refuse_external_mode_before_validation",
+      "issuer_verdict": "HOLD"
+    },
+    {
+      "owner": "M2Repository",
+      "method": "register_closure",
+      "native_decorator": "_repository_mutation",
+      "preflight_in_body": true,
+      "exception_rollback_evidence": "test_each_m2_writer_rolls_back_post_insert_exception[register_closure]",
+      "local_rollback_result": "PASS",
+      "saved_public_external_refusal_evidence": "unchanged S06FR test_all_saved_native_writers_refuse_external_mode_before_validation",
+      "issuer_verdict": "HOLD"
+    },
+    {
+      "owner": "M2Repository",
+      "method": "register_release",
+      "native_decorator": "_repository_mutation",
+      "preflight_in_body": true,
+      "exception_rollback_evidence": "test_each_m2_writer_rolls_back_post_insert_exception[register_release]",
+      "local_rollback_result": "PASS",
+      "saved_public_external_refusal_evidence": "unchanged S06FR test_all_saved_native_writers_refuse_external_mode_before_validation",
+      "issuer_verdict": "HOLD"
+    },
+    {
+      "owner": "M2Repository",
+      "method": "register_representation",
+      "native_decorator": "_repository_mutation",
+      "preflight_in_body": true,
+      "exception_rollback_evidence": "test_each_m2_writer_rolls_back_post_insert_exception[register_representation]",
+      "local_rollback_result": "PASS",
+      "saved_public_external_refusal_evidence": "unchanged S06FR test_all_saved_native_writers_refuse_external_mode_before_validation",
+      "issuer_verdict": "HOLD"
+    },
+    {
+      "owner": "M2Repository",
+      "method": "register_binding",
+      "native_decorator": "_repository_mutation",
+      "preflight_in_body": true,
+      "exception_rollback_evidence": "test_each_m2_writer_rolls_back_post_insert_exception[register_binding]",
+      "local_rollback_result": "PASS",
+      "saved_public_external_refusal_evidence": "unchanged S06FR test_all_saved_native_writers_refuse_external_mode_before_validation",
+      "issuer_verdict": "HOLD"
+    }
+  ],
+  "reader_lock_scope": "public B5 state/history/checkpoint views and M2 exact getters; fresh from_checkpoint instance not published until verification",
+  "principal_isolation": "not provided"
+}

@@ -1,0 +1,2458 @@
+{
+  "schema": "HQ285_S06G_EXECUTION@1",
+  "timestamp_utc": "2026-10-13T15:49:57.374551+00:00",
+  "baseline": {
+    "commit": "1b5b6072f855a74864c82d0f1b3923327bfb8b99",
+    "pass": 111,
+    "fail": 3,
+    "evidence": "repro/prior_independent_baseline.xml",
+    "rerun_claim": false
+  },
+  "commands": [
+    {
+      "name": "final_full",
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m pytest rawlsing_next/tests/test_pre553_s06f_native_owner_security.py rawlsing_next/tests/test_pre553_learned_product_lifecycle.py rawlsing_next/tests/test_pre553_learned_product_release.py rawlsing_next/tests/test_pre553_s06g_atomic_integrity.py rawlsing_next/tests/test_pre553_ee14_selected_current_asof_hq260.py rawlsing_next/tests/test_pre553_learned_world_composition.py WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py -q -p no:cacheprovider --junitxml=WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/final_full.xml",
+      "exit": 1,
+      "log": "repro/final_full.log",
+      "junit": "repro/final_full.xml",
+      "cases": [
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_b5_valid_native_checkpoint_local_roundtrip",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_b5_native_checkpoint_rejects_self_rehashed_inconsistent_state[truncate_published]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_b5_native_checkpoint_rejects_self_rehashed_inconsistent_state[alter_publication]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_b5_native_checkpoint_rejects_self_rehashed_inconsistent_state[drop_registered]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_b5_typed_unknown_event_rejected_before_append",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_b5_transitive_determinants_and_unaffected_sibling",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_b5_no_current_subject_must_match_family_scope",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_b5_protected_current_and_external_custody_are_explicit_holds",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_native_b5_all_mutators_have_in_body_preflight",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_m2_direct_release_registration_requires_native_subject",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_m2_native_valid_release_and_direct_representation_binding",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_m2_saved_method_alias_cannot_claim_protected_issuance",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_native_m2_all_registration_routes_reach_in_method_preflight",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_b5_m2_cross_owner_release_ref_is_not_subject_ref",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_no_caller_trusted_flag_or_arbitrary_token_on_native_owners",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_b5_changed_runtime_schema_fails_even_with_new_local_hash",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_b5_duplicate_checkpoint_projection_key_fails_closed",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_local_checkpoint_has_no_external_epoch_revocation_or_custody_claim",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h01_repository_presence_is_not_lifecycle_registration",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h02_registration_is_not_publication",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h03_publication_is_not_current_selection",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h04_only_exact_selection_receipt_resolves_currentness",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h05_no_latest_default_newest_semver_or_file_order_api_exists",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h06_explicit_no_current_is_first_class_and_exact",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h07_recertification_does_not_silently_select",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h08_b5_supersession_is_explicit_selection_transition_and_nondestructive",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h09_current_withdrawal_requires_explicit_clear_or_replacement_and_preserves_history",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h10_stale_concurrent_selection_conflict_fails_closed_without_mutation",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h11_historical_current_as_of_uses_exact_event_not_git_time",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h12_determinant_local_invalidation_reaches_direct_and_transitive_only",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h13_unrelated_same_family_product_remains_unaffected",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h14_optional_cache_loss_changes_performance_materialization_only",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h15_semantic_change_on_rebuild_requires_new_upstream_product_identity",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h16_missing_rebuild_inputs_yield_typed_blocker_not_fabricated_successor",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h17_gc_only_for_proven_recomputable_payload_never_mandatory_history",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h18_runtime_exposes_no_source_or_carrier_retirement_authority",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h19_authority_snapshot_cannot_alias_learned_product_release[AuthoritySnapshot]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h19_authority_snapshot_cannot_alias_learned_product_release[AuthoritySnapshot@1.0.0]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h20_authority_release_receipt_cannot_alias_lifecycle_current_receipt",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h21_currentness_does_not_create_consumer_permission_api",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h22_checkpoint_restart_and_replay_identity_are_exact",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h23_failed_selection_is_atomic_and_does_not_expose_half_state",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h24_b5_machine_rule_event_parity_and_required_common_fields",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_publication_requires_exact_replay_closure",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_two_selection_purposes_can_hold_distinct_current_releases",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_selection_scope_cannot_bleed_to_other_scope",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_current_invalidation_requires_explicit_no_current_or_replacement_atomically",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_unrelated_changed_determinant_produces_exact_noop_invalidation",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_cache_operations_are_rejected_for_semantic_product_payload_classes",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_gc_receipt_cannot_claim_source_carrier_retirement",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_m2_interface_is_narrow_protocol_not_release_core_reimplementation",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_unknown_currentness_never_selects_only_or_newest_release",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_withdrawal_can_atomically_replace_current_with_other_lawful_product",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_select_after_explicit_no_current_requires_and_accepts_exact_no_current_receipt",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_withdrawn_release_cannot_replace_itself_current",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_invalidated_release_cannot_be_selected_as_its_own_replacement",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_lcr009_authority_change_routes_as_explicit_neutral_determinant",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_01_same_exact_preimage_same_release_id",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_02_constitutive_closure_change_changes_release_id",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_03_physical_relayout_changes_binding_not_release_core",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_04_exact_subject_required",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_05_producer_contract_mismatch_fails_closed",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_06_incomplete_required_closure_fails_closed",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_07_no_latest_default_fuzzy_nearest_semver_fallback[latest]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_07_no_latest_default_fuzzy_nearest_semver_fallback[default]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_07_no_latest_default_fuzzy_nearest_semver_fallback[fuzzy]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_07_no_latest_default_fuzzy_nearest_semver_fallback[nearest]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_07_no_latest_default_fuzzy_nearest_semver_fallback[semver]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_08_virtual_rebuild_parity_and_mismatch_detection",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_09_materialized_virtual_semantic_parity",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_10_valid_empty_disposition_publishes_without_positive_invention",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_11_nonpositive_states_preserved[NONCOMPARABLE]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_11_nonpositive_states_preserved[BLOCKED]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_11_nonpositive_states_preserved[UNKNOWN]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_11_nonpositive_states_preserved[INTEGRITY_FAILURE]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_12_no_negative_state_laundering_through_representation",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_13_no_b5_lifecycle_published_state_minted",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_14_no_current_selection_minted",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_15_no_consumer_permission_minted",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_16_direct_producer_dereference_preserves_owner",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_17_binding_cannot_resolve_different_release",
+          "verdict": "FAIL",
+          "classification": "LEGACY_M2_FOREIGN_SETUP_EARLY_REFUSAL"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_18_endpoint_failover_only_among_same_release",
+          "verdict": "FAIL",
+          "classification": "LEGACY_M2_FOREIGN_SETUP_EARLY_REFUSAL"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_19_deterministic_historical_resolution",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_20_m1_learned_empirical_disposition_is_exact_release_subject",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_21_affected_release_refs_is_graph_only_and_selective",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_nested_payload_and_history_are_detached_immutable_and_refs_stable",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_publication_payload_must_match_subject_even_rehashed[replay_root_ref]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_publication_payload_must_match_subject_even_rehashed[determinant_set_hash]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_publication_payload_must_match_subject_even_rehashed[producer_permission_ceiling]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_publication_payload_must_match_subject_even_rehashed[authority_snapshot_refs]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_receipts_must_bind_event_release_and_all_fields[rebuild_eligibility]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_receipts_must_bind_event_release_and_all_fields[rebuild_links]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_receipts_must_bind_event_release_and_all_fields[gc_eligibility]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_receipts_must_bind_event_release_and_all_fields[selection_receipts]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_receipts_must_bind_event_release_and_all_fields[no_current_receipts]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_concurrent_select_has_one_winner_one_conflict_and_recoverable_history",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[register_product]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[publish_product]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[record_recertification]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[select_current]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[declare_no_current]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[supersede_current]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[withdraw_product]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[declare_invalidation]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[record_rebuild_eligibility]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[link_rebuild]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[record_cache_materialized]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[record_cache_dropped]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[attest_gc_eligibility]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[record_payload_gc]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_non_event_mutators_rollback_after_write[stage_release]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_non_event_mutators_rollback_after_write[stage_protocol]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_non_event_mutators_rollback_after_write[selection_key]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_saved_internal_helpers_refuse_without_transaction",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_m2_writer_rolls_back_post_insert_exception[register_subject]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_m2_writer_rolls_back_post_insert_exception[register_closure]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_m2_writer_rolls_back_post_insert_exception[register_release]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_m2_writer_rolls_back_post_insert_exception[register_representation]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_m2_writer_rolls_back_post_insert_exception[register_binding]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_m2_competing_subject_preimages_have_one_winner_no_overwrite",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_reconciled_m2_17_early_refusal_and_lawful_downstream_mismatch",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_reconciled_m2_18_early_refusal_and_lawful_failover_mismatch",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_invalidation_receipt_closure_cannot_be_rewritten_or_dropped",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_noop_invalidation_before_later_registration_remains_replayable",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_reader_waits_for_transaction_and_sees_complete_rollback",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_m2_closure_descendants_are_immutable",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_unwrapped_saved_public_bodies_cannot_bypass_transaction",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_selected_current_derives_from_the_owner_receipt",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_currentness_is_not_readable_off_a_release_object_or_cache",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_second_purpose_or_scope_cannot_inherit_currentness",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_as_of_event_and_as_of_checkpoint_agree",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_tampered_checkpoint_is_refused",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_fresh_process_checkpoint_reconstruction",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_historical_as_of_still_resolves_the_prior_product",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_affected_and_unaffected_dependency_transition",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_invalidated_release_cannot_be_served_as_current",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_unknown_selection_key_is_refused_not_guessed",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_self_proclaimed_current_receipt_is_refused",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_staged_but_unselected_release_is_unknown_not_current",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_owner_unknown_analytical_dependent_is_never_current",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_no_new_adapter_module_was_manufactured",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_court_claims_no_service_or_model_use_permission",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t01_full_synthetic_m01_m1_m2_b5_composition_succeeds",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t02_m01_graph_cannot_self_select_m1_rule",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t03_missing_product_family_fails_closed",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t04_missing_selection_scope_fails_closed_for_b5_path",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t05_missing_permission_ceiling_fails_closed",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t06_m1_disposition_ref_is_exact_m2_subject_ref",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t07_m1_typed_state_is_exact_m2_subject_state",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t08_m1_authority_dependency_determinant_replay_explanation_conserved",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t09_m2_release_ref_is_exact_b5_release_ref",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t10_m2_closure_members_are_exact_b5_protocol_members",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t11_determinant_set_hash_is_recomputed_exactly",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t12_m2_publication_binding_does_not_make_b5_published",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t13_m2_release_existence_does_not_register_b5_subject",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t14_b5_registration_does_not_publish",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t15_b5_publication_does_not_select_current",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t16_current_selection_requires_explicit_action_and_exact_authority",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t17_latest_default_newest_fuzzy_fallback_is_impossible",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t18_rule_not_satisfied_does_not_become_negative_semantic_truth",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t19_valid_empty_is_preserved_end_to_end",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t20_noncomparable_blocked_unknown_and_integrity_failure_are_preserved",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t21_direct_producer_route_requires_explicit_route_authority_and_acceptance",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t22_missing_required_stage_cannot_switch_to_direct_route",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t23_composition_never_mints_consumer_permission",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t24_no_structural_causal_field_forge_or_v3_effect",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t25_identical_input_and_contract_yield_identical_receipt",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t26_changed_constitutive_contract_field_changes_contract_and_receipt_identity",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t27_publication_binding_relayout_does_not_change_semantic_product_or_release",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t28_default_composition_preserves_b5_history_exactly",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t29_replay_or_tamper_failure_closes",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t30_no_candidate_fiabc_astra_historical_stage_resurrection",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_all_saved_native_writers_refuse_external_mode_before_validation[PROTECTED_CURRENT-LearnedProductLifecycleExecutor-names0]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_all_saved_native_writers_refuse_external_mode_before_validation[PROTECTED_CURRENT-M2Repository-names1]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_all_saved_native_writers_refuse_external_mode_before_validation[EXTERNAL_CUSTODY-LearnedProductLifecycleExecutor-names0]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_all_saved_native_writers_refuse_external_mode_before_validation[EXTERNAL_CUSTODY-M2Repository-names1]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_all_saved_native_writers_refuse_external_mode_before_validation[arbitrary-token-LearnedProductLifecycleExecutor-names0]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_all_saved_native_writers_refuse_external_mode_before_validation[arbitrary-token-M2Repository-names1]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_predecessor_and_ordinal_refusal_is_atomic",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_diamond_invalidation_preserves_sibling_and_cold_replay",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_public_snapshots_are_immutable",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_OBSERVED_direct_b5_append_bypasses_native_preflight[RECERTIFIES]",
+          "verdict": "FAIL",
+          "classification": "OBSOLETE_DEFECT_PRESENCE_ASSERTION"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_OBSERVED_direct_b5_append_bypasses_native_preflight[CURRENT_SELECTED]",
+          "verdict": "FAIL",
+          "classification": "OBSOLETE_DEFECT_PRESENCE_ASSERTION"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_OBSERVED_direct_b5_append_bypasses_native_preflight[PRODUCT_PUBLISHED]",
+          "verdict": "FAIL",
+          "classification": "OBSOLETE_DEFECT_PRESENCE_ASSERTION"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_OBSERVED_direct_m2_insert_bypasses_type_and_preflight",
+          "verdict": "FAIL",
+          "classification": "OBSOLETE_DEFECT_PRESENCE_ASSERTION"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_OBSERVED_publication_payload_not_bound_to_subject_on_cold_replay[replay_root_ref]",
+          "verdict": "FAIL",
+          "classification": "OBSOLETE_DEFECT_PRESENCE_ASSERTION"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_OBSERVED_publication_payload_not_bound_to_subject_on_cold_replay[determinant_set_hash]",
+          "verdict": "FAIL",
+          "classification": "OBSOLETE_DEFECT_PRESENCE_ASSERTION"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_OBSERVED_publication_payload_not_bound_to_subject_on_cold_replay[producer_permission_ceiling]",
+          "verdict": "FAIL",
+          "classification": "OBSOLETE_DEFECT_PRESENCE_ASSERTION"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_OBSERVED_publication_torn_after_event_append",
+          "verdict": "FAIL",
+          "classification": "OBSOLETE_DEFECT_PRESENCE_ASSERTION"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_OBSERVED_m2_check_then_insert_race_overwrites_collision",
+          "verdict": "FAIL",
+          "classification": "OBSOLETE_DEFECT_PRESENCE_ASSERTION"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_coherent_local_replacement_never_establishes_authenticity",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_m2_exact_foreign_release_rejected_at_repository_boundary",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_OBSERVED_concurrent_b5_selection_accepts_two_stale_predecessors",
+          "verdict": "FAIL",
+          "classification": "OBSOLETE_DEFECT_PRESENCE_ASSERTION"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_OBSERVED_public_event_payload_changes_internal_identity",
+          "verdict": "FAIL",
+          "classification": "OBSOLETE_DEFECT_PRESENCE_ASSERTION"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_checkpoint_changed_subject_scope_is_rejected_even_rehashed",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_unknown_event_kind_is_rejected_without_mutation",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_OBSERVED_rebuild_receipt_can_link_event_for_different_release",
+          "verdict": "FAIL",
+          "classification": "OBSOLETE_DEFECT_PRESENCE_ASSERTION"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_duplicate_subject_identity_and_invalid_recertification_refuse",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_actual_m2_release_to_subject_route_and_b5_crosscheck",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_current_asof_stale_selection_and_withdrawal_are_distinct",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_cache_and_rebuild_link_native_local_roundtrip",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        }
+      ],
+      "counts": {
+        "PASS": 187,
+        "FAIL": 14,
+        "ERROR": 0,
+        "SKIP": 0
+      }
+    },
+    {
+      "name": "repair_acceptance",
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m pytest rawlsing_next/tests/test_pre553_s06f_native_owner_security.py rawlsing_next/tests/test_pre553_learned_product_lifecycle.py rawlsing_next/tests/test_pre553_learned_product_release.py rawlsing_next/tests/test_pre553_s06g_atomic_integrity.py rawlsing_next/tests/test_pre553_ee14_selected_current_asof_hq260.py rawlsing_next/tests/test_pre553_learned_world_composition.py WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/reviewer_overlay/test_hq284_s06fr_native_review.py -k 'not OBSERVED and not test_17_binding_cannot_resolve_different_release and not test_18_endpoint_failover_only_among_same_release' -q -p no:cacheprovider --junitxml=WORKER_RETURNS/PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1/repro/repair_acceptance.xml",
+      "exit": 0,
+      "log": "repro/repair_acceptance.log",
+      "junit": "repro/repair_acceptance.xml",
+      "cases": [
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_b5_valid_native_checkpoint_local_roundtrip",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_b5_native_checkpoint_rejects_self_rehashed_inconsistent_state[truncate_published]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_b5_native_checkpoint_rejects_self_rehashed_inconsistent_state[alter_publication]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_b5_native_checkpoint_rejects_self_rehashed_inconsistent_state[drop_registered]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_b5_typed_unknown_event_rejected_before_append",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_b5_transitive_determinants_and_unaffected_sibling",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_b5_no_current_subject_must_match_family_scope",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_b5_protected_current_and_external_custody_are_explicit_holds",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_native_b5_all_mutators_have_in_body_preflight",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_m2_direct_release_registration_requires_native_subject",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_m2_native_valid_release_and_direct_representation_binding",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_m2_saved_method_alias_cannot_claim_protected_issuance",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_native_m2_all_registration_routes_reach_in_method_preflight",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_b5_m2_cross_owner_release_ref_is_not_subject_ref",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_no_caller_trusted_flag_or_arbitrary_token_on_native_owners",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_b5_changed_runtime_schema_fails_even_with_new_local_hash",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_b5_duplicate_checkpoint_projection_key_fails_closed",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06f_native_owner_security",
+          "name": "test_local_checkpoint_has_no_external_epoch_revocation_or_custody_claim",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h01_repository_presence_is_not_lifecycle_registration",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h02_registration_is_not_publication",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h03_publication_is_not_current_selection",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h04_only_exact_selection_receipt_resolves_currentness",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h05_no_latest_default_newest_semver_or_file_order_api_exists",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h06_explicit_no_current_is_first_class_and_exact",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h07_recertification_does_not_silently_select",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h08_b5_supersession_is_explicit_selection_transition_and_nondestructive",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h09_current_withdrawal_requires_explicit_clear_or_replacement_and_preserves_history",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h10_stale_concurrent_selection_conflict_fails_closed_without_mutation",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h11_historical_current_as_of_uses_exact_event_not_git_time",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h12_determinant_local_invalidation_reaches_direct_and_transitive_only",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h13_unrelated_same_family_product_remains_unaffected",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h14_optional_cache_loss_changes_performance_materialization_only",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h15_semantic_change_on_rebuild_requires_new_upstream_product_identity",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h16_missing_rebuild_inputs_yield_typed_blocker_not_fabricated_successor",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h17_gc_only_for_proven_recomputable_payload_never_mandatory_history",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h18_runtime_exposes_no_source_or_carrier_retirement_authority",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h19_authority_snapshot_cannot_alias_learned_product_release[AuthoritySnapshot]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h19_authority_snapshot_cannot_alias_learned_product_release[AuthoritySnapshot@1.0.0]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h20_authority_release_receipt_cannot_alias_lifecycle_current_receipt",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h21_currentness_does_not_create_consumer_permission_api",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h22_checkpoint_restart_and_replay_identity_are_exact",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h23_failed_selection_is_atomic_and_does_not_expose_half_state",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_h24_b5_machine_rule_event_parity_and_required_common_fields",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_publication_requires_exact_replay_closure",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_two_selection_purposes_can_hold_distinct_current_releases",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_selection_scope_cannot_bleed_to_other_scope",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_current_invalidation_requires_explicit_no_current_or_replacement_atomically",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_unrelated_changed_determinant_produces_exact_noop_invalidation",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_cache_operations_are_rejected_for_semantic_product_payload_classes",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_gc_receipt_cannot_claim_source_carrier_retirement",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_m2_interface_is_narrow_protocol_not_release_core_reimplementation",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_unknown_currentness_never_selects_only_or_newest_release",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_withdrawal_can_atomically_replace_current_with_other_lawful_product",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_select_after_explicit_no_current_requires_and_accepts_exact_no_current_receipt",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_withdrawn_release_cannot_replace_itself_current",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_invalidated_release_cannot_be_selected_as_its_own_replacement",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_lifecycle",
+          "name": "test_lcr009_authority_change_routes_as_explicit_neutral_determinant",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_01_same_exact_preimage_same_release_id",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_02_constitutive_closure_change_changes_release_id",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_03_physical_relayout_changes_binding_not_release_core",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_04_exact_subject_required",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_05_producer_contract_mismatch_fails_closed",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_06_incomplete_required_closure_fails_closed",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_07_no_latest_default_fuzzy_nearest_semver_fallback[latest]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_07_no_latest_default_fuzzy_nearest_semver_fallback[default]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_07_no_latest_default_fuzzy_nearest_semver_fallback[fuzzy]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_07_no_latest_default_fuzzy_nearest_semver_fallback[nearest]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_07_no_latest_default_fuzzy_nearest_semver_fallback[semver]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_08_virtual_rebuild_parity_and_mismatch_detection",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_09_materialized_virtual_semantic_parity",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_10_valid_empty_disposition_publishes_without_positive_invention",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_11_nonpositive_states_preserved[NONCOMPARABLE]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_11_nonpositive_states_preserved[BLOCKED]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_11_nonpositive_states_preserved[UNKNOWN]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_11_nonpositive_states_preserved[INTEGRITY_FAILURE]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_12_no_negative_state_laundering_through_representation",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_13_no_b5_lifecycle_published_state_minted",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_14_no_current_selection_minted",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_15_no_consumer_permission_minted",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_16_direct_producer_dereference_preserves_owner",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_19_deterministic_historical_resolution",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_20_m1_learned_empirical_disposition_is_exact_release_subject",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+          "name": "test_21_affected_release_refs_is_graph_only_and_selective",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_nested_payload_and_history_are_detached_immutable_and_refs_stable",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_publication_payload_must_match_subject_even_rehashed[replay_root_ref]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_publication_payload_must_match_subject_even_rehashed[determinant_set_hash]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_publication_payload_must_match_subject_even_rehashed[producer_permission_ceiling]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_publication_payload_must_match_subject_even_rehashed[authority_snapshot_refs]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_receipts_must_bind_event_release_and_all_fields[rebuild_eligibility]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_receipts_must_bind_event_release_and_all_fields[rebuild_links]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_receipts_must_bind_event_release_and_all_fields[gc_eligibility]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_receipts_must_bind_event_release_and_all_fields[selection_receipts]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_receipts_must_bind_event_release_and_all_fields[no_current_receipts]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_concurrent_select_has_one_winner_one_conflict_and_recoverable_history",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[register_product]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[publish_product]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[record_recertification]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[select_current]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[declare_no_current]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[supersede_current]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[withdraw_product]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[declare_invalidation]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[record_rebuild_eligibility]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[link_rebuild]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[record_cache_materialized]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[record_cache_dropped]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[attest_gc_eligibility]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_event_mutator_rolls_back_post_append_exception[record_payload_gc]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_non_event_mutators_rollback_after_write[stage_release]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_non_event_mutators_rollback_after_write[stage_protocol]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_non_event_mutators_rollback_after_write[selection_key]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_saved_internal_helpers_refuse_without_transaction",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_m2_writer_rolls_back_post_insert_exception[register_subject]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_m2_writer_rolls_back_post_insert_exception[register_closure]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_m2_writer_rolls_back_post_insert_exception[register_release]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_m2_writer_rolls_back_post_insert_exception[register_representation]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_each_m2_writer_rolls_back_post_insert_exception[register_binding]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_m2_competing_subject_preimages_have_one_winner_no_overwrite",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_reconciled_m2_17_early_refusal_and_lawful_downstream_mismatch",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_reconciled_m2_18_early_refusal_and_lawful_failover_mismatch",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_invalidation_receipt_closure_cannot_be_rewritten_or_dropped",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_noop_invalidation_before_later_registration_remains_replayable",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_reader_waits_for_transaction_and_sees_complete_rollback",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_m2_closure_descendants_are_immutable",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_s06g_atomic_integrity",
+          "name": "test_unwrapped_saved_public_bodies_cannot_bypass_transaction",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_selected_current_derives_from_the_owner_receipt",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_currentness_is_not_readable_off_a_release_object_or_cache",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_second_purpose_or_scope_cannot_inherit_currentness",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_as_of_event_and_as_of_checkpoint_agree",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_tampered_checkpoint_is_refused",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_fresh_process_checkpoint_reconstruction",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_historical_as_of_still_resolves_the_prior_product",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_affected_and_unaffected_dependency_transition",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_invalidated_release_cannot_be_served_as_current",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_unknown_selection_key_is_refused_not_guessed",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_self_proclaimed_current_receipt_is_refused",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_staged_but_unselected_release_is_unknown_not_current",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_owner_unknown_analytical_dependent_is_never_current",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_no_new_adapter_module_was_manufactured",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_ee14_selected_current_asof_hq260",
+          "name": "test_g3_court_claims_no_service_or_model_use_permission",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t01_full_synthetic_m01_m1_m2_b5_composition_succeeds",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t02_m01_graph_cannot_self_select_m1_rule",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t03_missing_product_family_fails_closed",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t04_missing_selection_scope_fails_closed_for_b5_path",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t05_missing_permission_ceiling_fails_closed",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t06_m1_disposition_ref_is_exact_m2_subject_ref",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t07_m1_typed_state_is_exact_m2_subject_state",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t08_m1_authority_dependency_determinant_replay_explanation_conserved",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t09_m2_release_ref_is_exact_b5_release_ref",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t10_m2_closure_members_are_exact_b5_protocol_members",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t11_determinant_set_hash_is_recomputed_exactly",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t12_m2_publication_binding_does_not_make_b5_published",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t13_m2_release_existence_does_not_register_b5_subject",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t14_b5_registration_does_not_publish",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t15_b5_publication_does_not_select_current",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t16_current_selection_requires_explicit_action_and_exact_authority",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t17_latest_default_newest_fuzzy_fallback_is_impossible",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t18_rule_not_satisfied_does_not_become_negative_semantic_truth",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t19_valid_empty_is_preserved_end_to_end",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t20_noncomparable_blocked_unknown_and_integrity_failure_are_preserved",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t21_direct_producer_route_requires_explicit_route_authority_and_acceptance",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t22_missing_required_stage_cannot_switch_to_direct_route",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t23_composition_never_mints_consumer_permission",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t24_no_structural_causal_field_forge_or_v3_effect",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t25_identical_input_and_contract_yield_identical_receipt",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t26_changed_constitutive_contract_field_changes_contract_and_receipt_identity",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t27_publication_binding_relayout_does_not_change_semantic_product_or_release",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t28_default_composition_preserves_b5_history_exactly",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t29_replay_or_tamper_failure_closes",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "rawlsing_next.tests.test_pre553_learned_world_composition",
+          "name": "test_t30_no_candidate_fiabc_astra_historical_stage_resurrection",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_all_saved_native_writers_refuse_external_mode_before_validation[PROTECTED_CURRENT-LearnedProductLifecycleExecutor-names0]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_all_saved_native_writers_refuse_external_mode_before_validation[PROTECTED_CURRENT-M2Repository-names1]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_all_saved_native_writers_refuse_external_mode_before_validation[EXTERNAL_CUSTODY-LearnedProductLifecycleExecutor-names0]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_all_saved_native_writers_refuse_external_mode_before_validation[EXTERNAL_CUSTODY-M2Repository-names1]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_all_saved_native_writers_refuse_external_mode_before_validation[arbitrary-token-LearnedProductLifecycleExecutor-names0]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_all_saved_native_writers_refuse_external_mode_before_validation[arbitrary-token-M2Repository-names1]",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_predecessor_and_ordinal_refusal_is_atomic",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_diamond_invalidation_preserves_sibling_and_cold_replay",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_public_snapshots_are_immutable",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_coherent_local_replacement_never_establishes_authenticity",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_m2_exact_foreign_release_rejected_at_repository_boundary",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_checkpoint_changed_subject_scope_is_rejected_even_rehashed",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_unknown_event_kind_is_rejected_without_mutation",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_duplicate_subject_identity_and_invalid_recertification_refuse",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_actual_m2_release_to_subject_route_and_b5_crosscheck",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_current_asof_stale_selection_and_withdrawal_are_distinct",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        },
+        {
+          "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+          "name": "test_cache_and_rebuild_link_native_local_roundtrip",
+          "verdict": "PASS",
+          "classification": "ACCEPTANCE"
+        }
+      ],
+      "counts": {
+        "PASS": 187,
+        "FAIL": 0,
+        "ERROR": 0,
+        "SKIP": 0
+      }
+    }
+  ],
+  "acceptance_deselected_cases": [
+    {
+      "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+      "name": "test_17_binding_cannot_resolve_different_release",
+      "verdict": "FAIL",
+      "classification": "LEGACY_M2_FOREIGN_SETUP_EARLY_REFUSAL"
+    },
+    {
+      "classname": "rawlsing_next.tests.test_pre553_learned_product_release",
+      "name": "test_18_endpoint_failover_only_among_same_release",
+      "verdict": "FAIL",
+      "classification": "LEGACY_M2_FOREIGN_SETUP_EARLY_REFUSAL"
+    },
+    {
+      "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+      "name": "test_OBSERVED_direct_b5_append_bypasses_native_preflight[RECERTIFIES]",
+      "verdict": "FAIL",
+      "classification": "OBSOLETE_DEFECT_PRESENCE_ASSERTION"
+    },
+    {
+      "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+      "name": "test_OBSERVED_direct_b5_append_bypasses_native_preflight[CURRENT_SELECTED]",
+      "verdict": "FAIL",
+      "classification": "OBSOLETE_DEFECT_PRESENCE_ASSERTION"
+    },
+    {
+      "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+      "name": "test_OBSERVED_direct_b5_append_bypasses_native_preflight[PRODUCT_PUBLISHED]",
+      "verdict": "FAIL",
+      "classification": "OBSOLETE_DEFECT_PRESENCE_ASSERTION"
+    },
+    {
+      "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+      "name": "test_OBSERVED_direct_m2_insert_bypasses_type_and_preflight",
+      "verdict": "FAIL",
+      "classification": "OBSOLETE_DEFECT_PRESENCE_ASSERTION"
+    },
+    {
+      "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+      "name": "test_OBSERVED_publication_payload_not_bound_to_subject_on_cold_replay[replay_root_ref]",
+      "verdict": "FAIL",
+      "classification": "OBSOLETE_DEFECT_PRESENCE_ASSERTION"
+    },
+    {
+      "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+      "name": "test_OBSERVED_publication_payload_not_bound_to_subject_on_cold_replay[determinant_set_hash]",
+      "verdict": "FAIL",
+      "classification": "OBSOLETE_DEFECT_PRESENCE_ASSERTION"
+    },
+    {
+      "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+      "name": "test_OBSERVED_publication_payload_not_bound_to_subject_on_cold_replay[producer_permission_ceiling]",
+      "verdict": "FAIL",
+      "classification": "OBSOLETE_DEFECT_PRESENCE_ASSERTION"
+    },
+    {
+      "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+      "name": "test_OBSERVED_publication_torn_after_event_append",
+      "verdict": "FAIL",
+      "classification": "OBSOLETE_DEFECT_PRESENCE_ASSERTION"
+    },
+    {
+      "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+      "name": "test_OBSERVED_m2_check_then_insert_race_overwrites_collision",
+      "verdict": "FAIL",
+      "classification": "OBSOLETE_DEFECT_PRESENCE_ASSERTION"
+    },
+    {
+      "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+      "name": "test_OBSERVED_concurrent_b5_selection_accepts_two_stale_predecessors",
+      "verdict": "FAIL",
+      "classification": "OBSOLETE_DEFECT_PRESENCE_ASSERTION"
+    },
+    {
+      "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+      "name": "test_OBSERVED_public_event_payload_changes_internal_identity",
+      "verdict": "FAIL",
+      "classification": "OBSOLETE_DEFECT_PRESENCE_ASSERTION"
+    },
+    {
+      "classname": "WORKER_RETURNS.PYAT-R3-HQ285-S06G-NATIVE-ATOMIC-INTEGRITY-REPAIR-R1.repro.reviewer_overlay.test_hq284_s06fr_native_review",
+      "name": "test_OBSERVED_rebuild_receipt_can_link_event_for_different_release",
+      "verdict": "FAIL",
+      "classification": "OBSOLETE_DEFECT_PRESENCE_ASSERTION"
+    }
+  ],
+  "interpretation": "Full exit remains 1. Twelve OBSERVED assertions now fail to reproduce old defects; two accepted M2 setup incompatibilities remain, reconciled by two new tests. Not independent adoption."
+}

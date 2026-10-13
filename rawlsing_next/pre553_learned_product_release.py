@@ -12,6 +12,8 @@ adjudication, consumer permission, structural admission, or source semantics.
 """
 from __future__ import annotations
 
+from functools import wraps
+from threading import RLock, local
 from dataclasses import dataclass, field
 from types import MappingProxyType
 from typing import Any, Iterable, Mapping, Sequence
@@ -119,7 +121,13 @@ def _ordered_refs(values: Iterable[ExactRef | Mapping[str, Any]], name: str) -> 
 
 def _freeze_mapping(value: Mapping[str, Any] | None) -> Mapping[str, Any]:
     material = canonicalize(dict(value or {}))
-    return MappingProxyType(material)
+    def freeze(item):
+        if isinstance(item, Mapping):
+            return MappingProxyType({key: freeze(child) for key, child in item.items()})
+        if isinstance(item, list):
+            return tuple(freeze(child) for child in item)
+        return item
+    return freeze(material)
 
 
 def _derived_ref(kind: str, namespace: str, material: Any) -> ExactRef:
@@ -456,10 +464,44 @@ class ReleaseExplanation:
     explanation_members: tuple[ExactRef, ...]
 
 
+def _repository_mutation(method):
+    @wraps(method)
+    def guarded(self, *args, **kwargs):
+        with self._lock:
+            before = {name: dict(getattr(self, name)) for name in self._store_names}
+            depth = getattr(self._mutation_context, "depth", 0)
+            self._mutation_context.depth = depth + 1
+            try:
+                self._native_mutation_preflight(method.__name__)
+                return method(self, *args, **kwargs)
+            except BaseException:
+                # Restore containers in place: saved store references remain exact.
+                for name, values in before.items():
+                    store = getattr(self, name)
+                    store.clear()
+                    store.update(values)
+                raise
+            finally:
+                self._mutation_context.depth = depth
+    return guarded
+
+
+def _repository_read(method):
+    @wraps(method)
+    def guarded(self, *args, **kwargs):
+        with self._lock:
+            return method(self, *args, **kwargs)
+    return guarded
+
+
 class M2Repository:
     """In-memory exact-index runtime; indexes are nonauthoritative projections."""
 
+    _store_names = ("_subjects", "_closures", "_releases", "_representations", "_bindings")
+
     def __init__(self) -> None:
+        self._lock = RLock()
+        self._mutation_context = local()
         # Exact in-memory records are not independently authenticated issuance.
         self._native_security_mode = "LOCAL_UNAUTHENTICATED"
         self._subjects: dict[str, ProducerSubject] = {}
@@ -487,15 +529,31 @@ class M2Repository:
         """
         if self._native_security_mode != "LOCAL_UNAUTHENTICATED":
             self.require_external_issuer(operation)
+        if not getattr(self._mutation_context, "depth", 0):
+            _fail("INTERNAL_MUTATION_OUTSIDE_TRANSACTION",
+                  f"{operation} requires native writer transaction")
 
-    @staticmethod
-    def _insert(store: dict[str, Any], ref: ExactRef, value: Any, code: str) -> Any:
+    def _insert(self, store: dict[str, Any], ref: ExactRef, value: Any, code: str) -> Any:
+        self._native_mutation_preflight("_insert")
+        if not getattr(self._mutation_context, "depth", 0):
+            _fail("INTERNAL_MUTATION_OUTSIDE_TRANSACTION", "_insert requires native writer transaction")
+        expected = (
+            (self._subjects, ProducerSubject, lambda obj: obj.ref),
+            (self._closures, ClosureObject, lambda obj: obj.ref),
+            (self._releases, ReleaseCore, lambda obj: obj.ref),
+            (self._representations, RepresentationRecord, lambda obj: obj.resolver_or_locator_ref),
+            (self._bindings, PublicationBinding, lambda obj: obj.ref),
+        )
+        matched = next((row for row in expected if row[0] is store), None)
+        if matched is None or not isinstance(value, matched[1]) or matched[2](value) != ref:
+            _fail("INTERNAL_STORE_IDENTITY_MISMATCH", "_insert requires own typed exact store record")
         previous = store.get(ref.key)
         if previous is not None and previous != value:
             _fail(code, "exact identity collision with different preimage")
         store[ref.key] = value
         return value
 
+    @_repository_mutation
     def register_subject(self, subject: ProducerSubject) -> ProducerSubject:
         self._native_mutation_preflight("register_subject")
         if not isinstance(subject, ProducerSubject):
@@ -504,6 +562,7 @@ class M2Repository:
             self._subjects, subject.ref, subject, "SEMANTIC_REOWNERSHIP_ATTEMPT"
         )
 
+    @_repository_mutation
     def register_closure(self, closure: ClosureObject) -> ClosureObject:
         self._native_mutation_preflight("register_closure")
         if not isinstance(closure, ClosureObject):
@@ -512,6 +571,7 @@ class M2Repository:
             self._closures, closure.ref, closure, "RELEASE_ID_MISMATCH"
         )
 
+    @_repository_mutation
     def register_release(self, release: ReleaseCore) -> ReleaseCore:
         self._native_mutation_preflight("register_release")
         if not isinstance(release, ReleaseCore):
@@ -538,6 +598,7 @@ class M2Repository:
             _fail("REPLAY_CLOSURE_INCOMPLETE", "registered release lacks exact replay grade")
         return self._insert(self._releases, release.ref, release, "RELEASE_ID_MISMATCH")
 
+    @_repository_mutation
     def register_representation(self, representation: RepresentationRecord) -> RepresentationRecord:
         self._native_mutation_preflight("register_representation")
         if not isinstance(representation, RepresentationRecord):
@@ -562,6 +623,7 @@ class M2Repository:
             representation, "REPRESENTATION_INTEGRITY_FAILURE",
         )
 
+    @_repository_mutation
     def register_binding(self, binding: PublicationBinding) -> PublicationBinding:
         self._native_mutation_preflight("register_binding")
         if not isinstance(binding, PublicationBinding):
@@ -581,6 +643,7 @@ class M2Repository:
             _fail("PUBLICATION_BINDING_MISMATCH", "direct binding mismatch")
         return self._insert(self._bindings, binding.ref, binding, "PUBLICATION_BINDING_MISMATCH")
 
+    @_repository_read
     def subject_exact(self, ref: ExactRef | Mapping[str, Any]) -> ProducerSubject:
         exact = _exact(ref, "release_subject_ref")
         value = self._subjects.get(exact.key)
@@ -588,6 +651,7 @@ class M2Repository:
             _fail("RELEASE_SUBJECT_NOT_FOUND", "exact producer subject is not registered")
         return value
 
+    @_repository_read
     def closure_exact(self, ref: ExactRef | Mapping[str, Any]) -> ClosureObject:
         exact = _exact(ref, "closure_ref")
         value = self._closures.get(exact.key)
@@ -595,6 +659,7 @@ class M2Repository:
             _fail("RELEASE_ID_MISMATCH", "exact closure is unavailable")
         return value
 
+    @_repository_read
     def release_exact(self, ref: ExactRef | Mapping[str, Any]) -> ReleaseCore:
         exact = _exact(ref, "release_ref")
         value = self._releases.get(exact.key)
@@ -603,6 +668,7 @@ class M2Repository:
         _verify_release_core(value)
         return value
 
+    @_repository_read
     def representation_exact(self, locator_ref: ExactRef | Mapping[str, Any]) -> RepresentationRecord:
         exact = _exact(locator_ref, "resolver_or_locator_ref")
         value = self._representations.get(exact.key)
@@ -610,6 +676,7 @@ class M2Repository:
             _fail("RESOLVER_NOT_EXACT", "exact representation locator is unavailable")
         return value
 
+    @_repository_read
     def binding_exact(self, ref: ExactRef | Mapping[str, Any]) -> PublicationBinding:
         exact = _exact(ref, "publication_binding_ref")
         value = self._bindings.get(exact.key)
@@ -619,6 +686,7 @@ class M2Repository:
         return value
 
     @property
+    @_repository_read
     def releases(self) -> tuple[ReleaseCore, ...]:
         return tuple(sorted(self._releases.values(), key=lambda item: item.ref.key))
 
