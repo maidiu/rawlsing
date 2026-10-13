@@ -60,6 +60,16 @@ SEAM_BUNDLE_SCHEMA = "R3_SOCIOLOGICAL_WORLD_BUNDLE@1"
 SOURCE_FREE_VALUE_ACCEPTANCE_VERSION = (
     "PYAT_R3_HQ288_S00M_SOURCEFREE_COUNT_DERIVED_FRACTION_ACCEPTANCE@2.0.0"
 )
+# Immutable scalar commitments for the fixed accepted 58-row SOURCE_FREE law.
+# Custody: P04 c98e888166a941a06ad694411911bc58f9c4639b, reproduced
+# by the accepted I01 artifact a5d1146a... at independent I01R
+# 473b7997d1b446c54a2d8688f94053b6c8670881. Full derivation is retained
+# in the HQ290 return. Exclude only bundle_id, its self hash and the
+# established unrelated_test_note annotation; every producer field is bound.
+P04_OFFLINE_LAW_VERSION = "P04_SOURCE_FREE_58_ROW_PRODUCER_LAW@1"
+_P04_OFFLINE_LAW_SHA256 = "a621c7d80ad801f82da84c0f89346032d91aed26f45d125a2df6291329265576"
+_P04_OFFLINE_ROOT_SHA256 = "f323c7206f97d58b47fdd8f391b9614680fd699cc24e90f61c3fcde91eb6758c"
+
 SOURCE_FREE_SYNTHETIC = "SOURCE_FREE_SYNTHETIC"
 GT2_VALUE_HOLD = "SOURCE_VALUE_UNAVAILABLE__ISSUED_GT2_AGGREGATE_AND_USE_AUTHORITY_HOLD"
 P04_FIXTURE_SCOPE = "P04_SYNTHETIC_58_RESPONDENT_FIXTURE"
@@ -288,6 +298,13 @@ def build_source_free_native_joint_bundle(
     joint_cells: Mapping[tuple[int, int], int],
     *,
     bundle_id: str = "S00C_Q86B_Q86A_BINARY_TEST_ONLY",
+) -> SociologicalWorldBundle:
+    """Admit an invented binary law; this never executes original sources."""
+    return _source_free_native_joint_law(joint_cells, bundle_id=bundle_id)
+
+
+def _source_free_native_joint_law(
+    joint_cells: Mapping[tuple[int, int], int], *, bundle_id: str,
 ) -> SociologicalWorldBundle:
     """Exercise native Q86B conditioner / Q86A target on an INVENTED 2x2.
 
@@ -540,36 +557,37 @@ class ContractOnlySeamConsumer:
         return None
 
     def _validate_producer_identity(self) -> str | None:
-        """Internal synthetic replay identity; never survey authentication.
+        """Offline synthetic identity, never original-survey authentication.
 
-        The fixed P04 law is produced by its genuine selected-world owner.
-        A native synthetic law is reconstructed from all four primitive cells;
-        its old content-addressed source/release/risk roots cannot survive a
-        changed law. Compare every emitted field, not only aggregate sums.
+        Fixed P04 compares saved fields to independently pinned accepted law
+        and root commitments. No P04 builder or world selection is invoked.
+        Native 2x2 validation rederives only the pure serialized four-cell law
+        from its primitive saved counts, including all synthetic root refs.
         """
         b = self._bundle
-        if b.world_scope.get("target") == "Q86A":
-            cells = {(x, y): next(ch.value["raw_numerator_support"]
-                     for ch in b.channels
-                     if ch.channel_id == f"CH_P_Q86A_given_Q86B_{x}_{y}")
-                     for x in (0, 1) for y in (0, 1)}
-            expected = build_source_free_native_joint_bundle(cells, bundle_id=b.bundle_id)
-        else:
-            expected = build_sociological_bundle(bundle_id=b.bundle_id)
-        if (contract_content_hash(b.selected_world_contract)
-                != contract_content_hash(expected.selected_world_contract)):
-            return "PRODUCER_VALUE_IDENTITY_MISMATCH"
         presented = replace(b, content_hash="").as_dict()
-        # Preserve the existing documentary annotation escape hatch. It has
-        # no numerical/producer semantics; all producer-defined scope fields
-        # and all other fields remain exact. Unknown additions still refuse.
+        # Preserve only the established documentary annotation escape hatch;
+        # all numerical/semantic scope fields and other fields remain exact.
         scope = dict(presented["world_scope"])
         if "unrelated_test_note" in scope:
             if not isinstance(scope.pop("unrelated_test_note"), str):
                 return "MALFORMED_SOURCE_FREE_ANNOTATION"
         presented["world_scope"] = scope
-        if presented != replace(expected, content_hash="").as_dict():
-            return "PRODUCER_VALUE_IDENTITY_MISMATCH"
+        if b.world_scope.get("target") == "Q86A":
+            cells = {(x, y): next(ch.value["raw_numerator_support"]
+                     for ch in b.channels
+                     if ch.channel_id == f"CH_P_Q86A_given_Q86B_{x}_{y}")
+                     for x in (0, 1) for y in (0, 1)}
+            expected = _source_free_native_joint_law(cells, bundle_id=b.bundle_id)
+            if (contract_content_hash(b.selected_world_contract)
+                    != contract_content_hash(expected.selected_world_contract)
+                    or presented != replace(expected, content_hash="").as_dict()):
+                return "PRODUCER_VALUE_IDENTITY_MISMATCH"
+        else:
+            presented.pop("bundle_id")
+            if (contract_content_hash(b.selected_world_contract) != _P04_OFFLINE_ROOT_SHA256
+                    or _content_hash(presented) != _P04_OFFLINE_LAW_SHA256):
+                return "PRODUCER_VALUE_IDENTITY_MISMATCH"
         return None
 
     def _validate_fraction_closure(self) -> str | None:
@@ -798,6 +816,7 @@ def run_seam_witness() -> dict[str, Any]:
 __all__ = [
     "SEAM_CONTRACT_VERSION",
     "SEAM_BUNDLE_SCHEMA",
+    "P04_OFFLINE_LAW_VERSION",
     "SOURCE_FREE_VALUE_ACCEPTANCE_VERSION",
     "SeamContractError",
     "ChannelValue",

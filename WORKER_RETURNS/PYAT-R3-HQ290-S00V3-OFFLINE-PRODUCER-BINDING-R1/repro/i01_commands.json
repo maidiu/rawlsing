@@ -1,0 +1,77 @@
+[
+  {
+    "label": "i01_author_compatibility",
+    "argv": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "/Users/matthewsmith/.codex/worktrees/hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq287_i01_sourcefree_world_lifecycle.py",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "--junitxml=/Users/matthewsmith/.codex/worktrees/hq290-s00v3-offline/Rawlsing/WORKER_RETURNS/PYAT-R3-HQ290-S00V3-OFFLINE-PRODUCER-BINDING-R1/repro/i01_author_compatibility.xml"
+    ],
+    "cwd": "/Users/matthewsmith/.codex/worktrees/hq290-s00v3-offline/Rawlsing",
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPATH": "/Users/matthewsmith/.codex/worktrees/hq290-s00v3-offline/Rawlsing/WORKER_RETURNS/PYAT-R3-HQ290-S00V3-OFFLINE-PRODUCER-BINDING-R1/repro/i01_overlay:/Users/matthewsmith/.codex/worktrees/hq288-i01r-independent/Rawlsing",
+      "S00V2_SEAM_PATH": "/Users/matthewsmith/.codex/worktrees/hq290-s00v3-offline/Rawlsing/rawlsing_next/r3_s02_seam_witness.py",
+      "S00V2_I01_ROOT": "/Users/matthewsmith/.codex/worktrees/hq288-i01r-independent/Rawlsing"
+    },
+    "exit": 0
+  },
+  {
+    "label": "i01_independent_previous_court",
+    "argv": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "/Users/matthewsmith/.codex/worktrees/hq288-i01r-independent/Rawlsing/rawlsing_next/tests/test_hq288_i01r_independent_product.py",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "--junitxml=/Users/matthewsmith/.codex/worktrees/hq290-s00v3-offline/Rawlsing/WORKER_RETURNS/PYAT-R3-HQ290-S00V3-OFFLINE-PRODUCER-BINDING-R1/repro/i01_independent_previous_court.xml"
+    ],
+    "cwd": "/Users/matthewsmith/.codex/worktrees/hq290-s00v3-offline/Rawlsing",
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPATH": "/Users/matthewsmith/.codex/worktrees/hq290-s00v3-offline/Rawlsing/WORKER_RETURNS/PYAT-R3-HQ290-S00V3-OFFLINE-PRODUCER-BINDING-R1/repro/i01_overlay:/Users/matthewsmith/.codex/worktrees/hq288-i01r-independent/Rawlsing",
+      "S00V2_SEAM_PATH": "/Users/matthewsmith/.codex/worktrees/hq290-s00v3-offline/Rawlsing/rawlsing_next/r3_s02_seam_witness.py",
+      "S00V2_I01_ROOT": "/Users/matthewsmith/.codex/worktrees/hq288-i01r-independent/Rawlsing"
+    },
+    "exit": 0
+  },
+  {
+    "label": "i01_product",
+    "argv": [
+      "/usr/local/bin/python3",
+      "/Users/matthewsmith/.codex/worktrees/hq288-i01r-independent/Rawlsing/WORKER_RETURNS/PYAT-R3-HQ287-I01-SOURCEFREE-INTEGRATED-WORLD-LIFECYCLE-R1/repro/emit_product.py",
+      "/Users/matthewsmith/.codex/worktrees/hq290-s00v3-offline/Rawlsing/WORKER_RETURNS/PYAT-R3-HQ290-S00V3-OFFLINE-PRODUCER-BINDING-R1/repro/i01_product"
+    ],
+    "cwd": "/Users/matthewsmith/.codex/worktrees/hq290-s00v3-offline/Rawlsing",
+    "exit": 0,
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPATH": "/Users/matthewsmith/.codex/worktrees/hq290-s00v3-offline/Rawlsing/WORKER_RETURNS/PYAT-R3-HQ290-S00V3-OFFLINE-PRODUCER-BINDING-R1/repro/i01_overlay:/Users/matthewsmith/.codex/worktrees/hq288-i01r-independent/Rawlsing",
+      "S00V2_SEAM_PATH": "/Users/matthewsmith/.codex/worktrees/hq290-s00v3-offline/Rawlsing/rawlsing_next/r3_s02_seam_witness.py",
+      "S00V2_I01_ROOT": "/Users/matthewsmith/.codex/worktrees/hq288-i01r-independent/Rawlsing"
+    }
+  },
+  {
+    "label": "i01_offline_cold",
+    "argv": [
+      "/usr/local/bin/python3",
+      "-c",
+      "import json,sys\nfrom rawlsing_next import pre553_i01_sourcefree_world_lifecycle_candidate as I\np=I.restore_product(sys.argv[1]);report=I.durable.run_to_completion(p.session)\nassert not p.calls and not report.executed_units\nproducer_calls=[]\ndef forbidden(*a,**kw):\n producer_calls.append('FORBIDDEN');raise AssertionError('producer called at serve')\nfor module,names in [(I.seam,['build_sociological_bundle','build_source_free_native_joint_bundle','select_world','run_progressive_chain','build_synthetic_world']),(I.selected,['select_world','run_selected_world_progressive_chain']),(I.progressive,['build_synthetic_world','run_progressive_chain'])]:\n for name in names:setattr(module,name,forbidden)\ntry:I.serve(p)\nexcept I.I01Error as exc:assert 'NO_CURRENT' in str(exc)\nelse:raise AssertionError('resurrection')\nhistory=I.serve(p,historical=True)\nassert producer_calls==[]\nprint(json.dumps({'history':history,'durable_callback_calls':p.calls,'serve_producer_calls':producer_calls,'executed_units':len(report.executed_units)}))\n",
+      "/Users/matthewsmith/.codex/worktrees/hq290-s00v3-offline/Rawlsing/WORKER_RETURNS/PYAT-R3-HQ290-S00V3-OFFLINE-PRODUCER-BINDING-R1/repro/i01_product"
+    ],
+    "cwd": "/Users/matthewsmith/.codex/worktrees/hq290-s00v3-offline/Rawlsing",
+    "exit": 0,
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPATH": "/Users/matthewsmith/.codex/worktrees/hq290-s00v3-offline/Rawlsing/WORKER_RETURNS/PYAT-R3-HQ290-S00V3-OFFLINE-PRODUCER-BINDING-R1/repro/i01_overlay:/Users/matthewsmith/.codex/worktrees/hq288-i01r-independent/Rawlsing",
+      "S00V2_SEAM_PATH": "/Users/matthewsmith/.codex/worktrees/hq290-s00v3-offline/Rawlsing/rawlsing_next/r3_s02_seam_witness.py",
+      "S00V2_I01_ROOT": "/Users/matthewsmith/.codex/worktrees/hq288-i01r-independent/Rawlsing"
+    }
+  }
+]
