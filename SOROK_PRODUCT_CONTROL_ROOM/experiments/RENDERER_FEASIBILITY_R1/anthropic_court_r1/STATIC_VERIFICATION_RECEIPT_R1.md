@@ -10,6 +10,7 @@ Verification performed against exact sealed GitHub commit `a406e1d289faac31fd51c
 - `NARROW_UNCHANGED = PASS`: N's actor projection equals the corresponding original RFA-05 `actor_safe_projection`.
 - `EXACT_USER_EVENT = PASS`: every pair retains the source case's exact utterance.
 - `INPUT_SIZE_PARITY = PASS`: compact UTF-8 payload byte counts for all twenty cases agree with RFA-05B's manifest.
+- `PROVIDER_JSON_GRAMMAR_STATIC_PROJECTION = PASS`: independent schema traversal preserved all eight root output fields, nested atom requirements, and excluded unsupported grammar keywords without dropping original local validation.
 - `MODEL_VISIBLE_OUTPUT_SCHEMA = PASS`: packet schema equals the original output schema minus its explicitly local-only `x-local-admission-contract`.
 - `EVALUATOR_ORACLE_NOT_TRANSMITTED = PASS` (static denylist): neither prompt arm contains known excluded evaluator-only fields / phrases. The runner transmits the allowlisted `model_payload` only.
 - `USER_PHENOMENAL_STATE_NOT_TRANSMITTED = PASS` (static denylist), without modifying inherited fixtures.
