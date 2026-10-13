@@ -1,0 +1,101 @@
+{
+  "kind": "PYAT_HQ283_S05JR_INDEPENDENT_GIT_OBJECT_PROOF_R1",
+  "method": "GitHub Git Trees REST GET recursive=1 at three exact commit SHAs; compare rawlsing_next/ blob path -> Git SHA-1; no local git subprocess",
+  "branch_start": "b2e73d0e4de1b3b5a28da858c7c7e68aad56761b",
+  "canonical": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+  "original_composed": "73d45f3ac6a50fbee6666ad3a5023840f01ef196",
+  "s05j": "f56a137fa93a0047361a7b7bbcd0e7564b182889",
+  "counts": {
+    "canonical": 339,
+    "original_composed": 353,
+    "s05j": 353,
+    "common": 339,
+    "added": 14,
+    "modified_common": 0
+  },
+  "assertions": {
+    "common_unchanged": true,
+    "additions_identical": true,
+    "complete_same_path_set": true,
+    "exact_entire_subtree_blob_set": true
+  },
+  "added_blobs": [
+    {
+      "path": "rawlsing_next/pre553_batch_durable_checkpoint_candidate.py",
+      "git_blob_sha1": "719c8d878bcfb3b6c61c844c9bf974ada8365929",
+      "exact_at_s05j": true
+    },
+    {
+      "path": "rawlsing_next/pre553_governed_batch_checkpoint_integration_candidate.py",
+      "git_blob_sha1": "44807c6a287145507d7332138c944cd61da363bf",
+      "exact_at_s05j": true
+    },
+    {
+      "path": "rawlsing_next/pre553_original_workload_binder_candidate.py",
+      "git_blob_sha1": "7d8b3902c3f8f257637b7c07ad9feb5e096d48e5",
+      "exact_at_s05j": true
+    },
+    {
+      "path": "rawlsing_next/pre553_original_workload_contract_v2_candidate.py",
+      "git_blob_sha1": "08bb75c431d3352cb0d17e9a65f7d855b4d35e59",
+      "exact_at_s05j": true
+    },
+    {
+      "path": "rawlsing_next/pre553_original_workload_v2_verifier_candidate.py",
+      "git_blob_sha1": "996c8e907f2befde93af09b60154b610c1ffeb63",
+      "exact_at_s05j": true
+    },
+    {
+      "path": "rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py",
+      "git_blob_sha1": "dc146e920909c8577b5c3c316cd9a8631e96ffd8",
+      "exact_at_s05j": true
+    },
+    {
+      "path": "rawlsing_next/tests/conftest.py",
+      "git_blob_sha1": "c0e9e21fee15d3ea032561510215c3d982c36c39",
+      "exact_at_s05j": true
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_batch_durable_checkpoint_candidate.py",
+      "git_blob_sha1": "f467d53edd22b31ccb5f5f1e6f882c537b77047b",
+      "exact_at_s05j": true
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_governed_batch_checkpoint_integration_candidate.py",
+      "git_blob_sha1": "2b362b04cfc01fd297768990209829b4fca4a83e",
+      "exact_at_s05j": true
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_original_workload_binder_candidate.py",
+      "git_blob_sha1": "6c06a5b013d3713af7d7ba9bf143c3ef7a6245a2",
+      "exact_at_s05j": true
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_original_workload_contract_v2_candidate.py",
+      "git_blob_sha1": "0b9f1addf2b28f2a8e489fe44f1567a137a166f2",
+      "exact_at_s05j": true
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py",
+      "git_blob_sha1": "aa918ea7895cf516986f191b33f17072cfad07e8",
+      "exact_at_s05j": true
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_original_workload_v2_verifier_candidate.py",
+      "git_blob_sha1": "f7d6bda21cadff6891a37560a7edb060f942eace",
+      "exact_at_s05j": true
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_v2_durable_consumer_integration_candidate.py",
+      "git_blob_sha1": "3218f2800ea6da63b3d5c87ed83747b84c0b5171",
+      "exact_at_s05j": true
+    }
+  ],
+  "limits": [
+    "Git blob equality limited to rawlsing_next/ subtree, not entire historical lineage",
+    "Diverged ancestry: identical content is not historical merge",
+    "No independent Python runtime from Git tree identity",
+    "All original acceptance oracle blobs remain unmodified by S05J"
+  ],
+  "verdict": "PASS_GIT_OBJECT_ONLY"
+}
