@@ -118,6 +118,7 @@ def report():
              "substantive_lawful":scored["substantive_lawful"],
              "scores":scored["dimensions"],"hard_fail_codes":scored["hard_fail_codes"],
              "original_structural_status":old_status,
+             "source_schema_status":raw.get("schema_status"),
              "corrected_structural_status":corrected_status,
              "corrected_structural_issues":corrected_issues,
              "provider_usage":usage_snapshot(raw)}
