@@ -1684,6 +1684,35 @@ class LearnedProductLifecycleExecutor:
             LearnedProductLifecycleSubject.from_protocol(value, **overrides)
         )
 
+    def verify_m2_release_subject_exact(
+        self, repository: Any, release_ref: ExactRef | Mapping[str, Any]
+    ) -> LearnedProductLifecycleSubject:
+        """Source-free native M2 identity cross-check, never custody issuance.
+
+        N04/R correction: resolve_subject_exact takes the RELEASE ref, whereas
+        repository.subject_exact takes the producer SUBJECT ref. The latter
+        must never be called with release_ref. Any missing or mismatched M2
+        material fails; this does not itself authenticate an external producer.
+        """
+        from rawlsing_next.pre553_learned_product_release import (
+            M2Repository, resolve_subject_exact,
+        )
+
+        if not isinstance(repository, M2Repository):
+            raise LearnedProductLifecycleError("native M2Repository required")
+        subject = self._subject(release_ref, require_registered=False)
+        release = repository.release_exact(subject.release_ref)
+        producer_subject = resolve_subject_exact(repository, release.ref)
+        if (
+            release.ref != subject.release_ref
+            or release.semantic_producer_contract_ref != subject.producer_contract_ref
+            or producer_subject.producer_contract_ref != subject.producer_contract_ref
+        ):
+            raise LearnedProductLifecycleConflict(
+                "native B5/M2 release/producer subject identity mismatch"
+            )
+        return subject
+
     def _subject(
         self, release_ref: ExactRef | Mapping[str, Any], *, require_registered: bool = True
     ) -> LearnedProductLifecycleSubject:
