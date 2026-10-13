@@ -180,7 +180,7 @@ def verify_inputs(c):
             payload = packet["model_payload"]
             require(set(payload) == ({"shared", "whole_person_extension"} if arm == "WP" else {"shared"}),
                     f"PAYLOAD_EXTENSION_DRIFT: {filename}")
-            require(payload["shared"]["output_schema"] == schema, f"OUTPUT_SCHEMA_DRIFT: {filename}")
+            require(payload["shared"]["output_schema"] == {k: v for k, v in schema.items() if k != "x-local-admission-contract"}, f"OUTPUT_SCHEMA_DRIFT: {filename}")
             transmitted = canonical(payload)
             for marker in FORBIDDEN:
                 require(marker not in transmitted.decode("utf-8"), f"FORBIDDEN_INPUT: {id_} {marker}")
