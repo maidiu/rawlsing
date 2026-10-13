@@ -1,0 +1,99 @@
+{
+  "schema": "PYAT_R3_S06R_SEPARATE_SECURITY_DECISION@1",
+  "frozen_candidate": "4fec074c7e40a8b233055ffd1d80dbede293c9c4",
+  "decision": "SECURITY_REJECT_NO_ADOPTION",
+  "independent_security_grade": "CRITICAL_DEFECTS_CONFIRMED_BY_DIRECT_CODE_INSPECTION",
+  "independent_execution_grade": "UNEXECUTED_NO_QUALIFIED_DEEPSEEK_WORKTREE",
+  "production_adoption": false,
+  "protected_current": false,
+  "external_custody": false,
+  "v3_execution": false,
+  "source_issuance": false,
+  "model_use_grant": false,
+  "first_pretest_hostile_commit": "7e96914ed6c9a186d5de8a778e8396e46a741eb2",
+  "acceptance_hostile_count": 24,
+  "runtime_hostiles_passed": null,
+  "runtime_hostiles_failed": null,
+  "severity_counts": {
+    "critical": 4,
+    "high": 6,
+    "medium": 1
+  },
+  "defects": [
+    {
+      "id": "G1",
+      "grade": "CRITICAL",
+      "predicate": "trusted=True bypasses all wrapper mutators and current selection",
+      "repair": "independent noncaller-issued mandatory verifier"
+    },
+    {
+      "id": "G2",
+      "grade": "CRITICAL",
+      "predicate": "any nonempty external_auth_token satisfies require_independent_auth",
+      "repair": "verify issuer signature subject scope permission epoch expiry revocation"
+    },
+    {
+      "id": "G3",
+      "grade": "CRITICAL",
+      "predicate": "consistent histories and hashes can be rewritten",
+      "repair": "external append-only signed checkpoint-event custody root"
+    },
+    {
+      "id": "G4",
+      "grade": "CRITICAL",
+      "predicate": "new class does not mediate accepted B5/M2 owners",
+      "repair": "guard every accepted owner entrypoint transactionally"
+    },
+    {
+      "id": "G5",
+      "grade": "HIGH",
+      "predicate": "one-generation invalidation only",
+      "repair": "transitive native determinant graph"
+    },
+    {
+      "id": "G6",
+      "grade": "HIGH",
+      "predicate": "epoch/revoked independent identity unbound",
+      "repair": "signed effective epoch and revocation ledger"
+    },
+    {
+      "id": "G7",
+      "grade": "HIGH",
+      "predicate": "append_event public trust bypass",
+      "repair": "typed signed event + no exposed mutator"
+    },
+    {
+      "id": "G8",
+      "grade": "HIGH",
+      "predicate": "mutable nested state and event aliases",
+      "repair": "deep immutable evidence snapshot; accepted owner commit"
+    },
+    {
+      "id": "G9",
+      "grade": "HIGH",
+      "predicate": "native B5 checkpoint and S06 schema incompatible",
+      "repair": "native B5/M2 exact-ref owner interface"
+    },
+    {
+      "id": "G10",
+      "grade": "HIGH",
+      "predicate": "PROTECTED_CURRENT and IMMUTABLE_SNAPSHOT mode labels allowed unconditionally",
+      "repair": "owner+issuer+actual release/scope/as-of verification"
+    },
+    {
+      "id": "G11",
+      "grade": "MEDIUM",
+      "predicate": "cold replay proves own event consistency only",
+      "repair": "native owner replay plus external history root"
+    }
+  ],
+  "future_promotion_gates": [
+    "independently issued identity & verification",
+    "exact native B5/M2 owner entrypoint enforcement",
+    "externally authenticated complete event/custody replay",
+    "epoch/revocation/time-policy binding",
+    "transitive descendant invalidation",
+    "independent qualified host hostile and regression receipts"
+  ],
+  "recommend_adoption": false
+}

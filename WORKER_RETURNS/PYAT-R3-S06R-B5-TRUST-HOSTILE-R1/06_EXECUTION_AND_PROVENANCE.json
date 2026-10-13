@@ -1,0 +1,91 @@
+{
+  "schema": "PYAT_R3_S06R_EVIDENCE_AND_EXECUTION@1",
+  "repo": "maidiu/rawlsing",
+  "frozen_candidate": "4fec074c7e40a8b233055ffd1d80dbede293c9c4",
+  "canonical": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+  "review_branch": "agent/reviewer-pyat-r3-s06r-b5-trust-hostile-r1",
+  "pretest_hostile_commit": "7e96914ed6c9a186d5de8a778e8396e46a741eb2",
+  "authored_before_candidate_test_read": true,
+  "frozen_hostiles": 24,
+  "sources": [
+    {
+      "role": "CANDIDATE_MAIN",
+      "ref": "4fec074c7e40a8b233055ffd1d80dbede293c9c4",
+      "path": "rawlsing_next/s06_trusted_release_replay.py",
+      "blob": "40b1009512aea909612a5fa01081ec3d0955860d"
+    },
+    {
+      "role": "AUTHOR_TEST_READ_AFTER_HOSTILE_FREEZE",
+      "ref": "4fec074c7e40a8b233055ffd1d80dbede293c9c4",
+      "path": "rawlsing_next/tests/test_s06_trusted_release_replay.py",
+      "blob": "5e336e85e2b42fbd3a1808e74b58e97aa0486094"
+    },
+    {
+      "role": "ACCEPTED_B5",
+      "ref": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "rawlsing_next/pre553_learned_product_lifecycle.py",
+      "blob": "a11c9eb73abab9be118ef4f0b6e325e676059f27"
+    },
+    {
+      "role": "ACCEPTED_M2",
+      "ref": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "rawlsing_next/pre553_learned_product_release.py",
+      "blob": "f76c390665f06ef126968ccf1a6b2d816f43ae92"
+    },
+    {
+      "role": "N04",
+      "ref": "b5a6b6409c765d2aecb8c2f9c9ef9bd8fc6473c2"
+    },
+    {
+      "role": "N04R",
+      "ref": "fde95ee9275f9fe14b6868db363035757cffab48"
+    },
+    {
+      "role": "P02R",
+      "ref": "b3523bed5d751b24f0bf1fd111af4161727fe9b5"
+    }
+  ],
+  "author_reported_execution": {
+    "command": "python3 -m pytest rawlsing_next/tests/test_s06_trusted_release_replay.py -v",
+    "exit": 0,
+    "passed": 26,
+    "origin": "AUTHOR_RETURN_UNVERIFIED_BY_REVIEWER",
+    "reviewer_reproduction": false
+  },
+  "reviewer_environment_probe": {
+    "command": "command -v deepseek; command -v opencode; command -v git; command -v python3; test -d /mnt/data/rawlsing/.git; test -n \"${DEEPSEEK_API_KEY:-}\"",
+    "observed": {
+      "deepseek_binary": false,
+      "opencode_binary": false,
+      "git_binary": true,
+      "python3_binary": true,
+      "rawlsing_worktree": false,
+      "deepseek_env_key": false
+    },
+    "meaning": "Not the user-requested qualified DeepSeek isolated worktree; DO NOT run tests here."
+  },
+  "reviewer_test_execution": {
+    "performed": false,
+    "host": "UNAVAILABLE_QUALIFIED_LOCAL_EXECUTOR",
+    "commands_run": [],
+    "exit_codes": [],
+    "pytest_report": null,
+    "tests_count": 0,
+    "tests_passed": 0,
+    "tests_failed": 0
+  },
+  "reviewer_test_artifact": {
+    "path": "WORKER_RETURNS/PYAT-R3-S06R-B5-TRUST-HOSTILE-R1/repro/test_s06r_independent_hostiles.py",
+    "status": "FROZEN_BEFORE_AUTHOR_TEST_SOURCE_READ",
+    "expected_command_for_future_qualified_host": "PYTHONPATH=. python3 -m pytest -q WORKER_RETURNS/PYAT-R3-S06R-B5-TRUST-HOSTILE-R1/repro/test_s06r_independent_hostiles.py",
+    "not_run": true
+  },
+  "preserved_states": {
+    "candidate_unmodified": true,
+    "canonical_unmodified": true,
+    "current_not_issued": true,
+    "production_not_modified": true,
+    "v3_not_run": true,
+    "source_rows_not_run": true
+  }
+}
