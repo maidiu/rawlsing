@@ -133,6 +133,20 @@ def source_r2_result(run_id):
     require(record.get("run_id")==run_id and record.get("model")=="claude-opus-5-5"
             and record.get("provider_returned_model")=="claude-opus-5-5",
             "EXISTING_OPUS_PROVIDER_IDENTITY_MISMATCH: "+run_id)
+    # Also verify R2 custody by the exact originally transmitted request.
+    parent_config=inherited.config()
+    run=next(x for x in inherited.execution_manifest(parent_config) if x["run_id"]==run_id)
+    schema=inherited.transport_schema(inherited.original_schema(parent_config))
+    prior,request_hash,message_hash,packet_name=inherited.request_for(run,parent_config,schema)
+    require(record.get("case_id")==run["case_id"]
+            and record.get("condition")==run["condition"]
+            and record.get("replicate_ordinal")==run["replicate"]
+            and record.get("request_identity_sha256")==request_hash
+            and record.get("transmitted_user_message_sha256")==message_hash
+            and record.get("input_packet_file")==packet_name
+            and record.get("model_payload_sha256")==sha(canonical(
+                read(INPUT/packet_name)["model_payload"])),
+            "OPUS_SOURCE_REQUEST_IDENTITY_MISMATCH: "+run_id)
     return record
 
 def collect_opus(c,full_r2_rows):
