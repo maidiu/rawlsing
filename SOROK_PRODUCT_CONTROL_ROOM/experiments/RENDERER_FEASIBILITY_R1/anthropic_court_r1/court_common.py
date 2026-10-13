@@ -144,8 +144,9 @@ def execution_manifest(c):
         proposed[i], proposed[j] = proposed[j], proposed[i]
     require([(r["case_id"], r["condition"], r["replicate"]) for r in runs] == proposed,
             "RANDOMIZED_ORDER_MISMATCH")
-    for field in ("condition", "case_id", "WP", "N", "replicate", "input_hash"):
-        require(field not in json.dumps(b), "PRIVATE_MAPPING_IN_BLIND_MANIFEST")
+    require(set(b) == {"kind", "run_count", "runs"}, "BLIND_MANIFEST_EXTRA_FIELDS")
+    require(all(set(row) == {"run_id"} and isinstance(row["run_id"], str)
+                for row in b["runs"]), "PRIVATE_MAPPING_IN_BLIND_MANIFEST")
     return runs
 
 
