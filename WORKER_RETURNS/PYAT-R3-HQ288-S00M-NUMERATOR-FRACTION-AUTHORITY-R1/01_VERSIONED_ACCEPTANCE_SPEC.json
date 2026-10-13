@@ -1,0 +1,192 @@
+{
+  "schema": "PYAT_R3_HQ288_S00M_SOURCEFREE_COUNT_DERIVED_FRACTION_ACCEPTANCE@2.0.0",
+  "status": "REVIEW_PROPOSAL__NOT_CANONICAL_ISSUER__NONADOPTED",
+  "sealed_startup": "b5d7465e44d33973b4f5e96048fd762adade0964",
+  "court": {
+    "s00c": "54f145538ed0880f8257368f838baa5b0e12e2d3",
+    "s00cr": "7f0d655ff98056bfe161e4947ef0f17add521db2",
+    "s00e": "ac75c6fc899804b226a0fbd22245cbe0030ce876",
+    "s00er": "f9b762ae5157a9e0116f45e6899953ba0e3c5b2f",
+    "p04": "c98e888166a941a06ad694411911bc58f9c4639b",
+    "canonical": "7f29aec36d24f16da52d84f17c00f08db3a55434"
+  },
+  "original_test_identities": {
+    "s00c_27": {
+      "path": "rawlsing_next/tests/test_r3_s02_seam_witness.py",
+      "git_blob": "e26204c1bd61eb66d6f254de0a953c5f83c57c84",
+      "sha256": "09ac3d24875007f1cbffd8f4cd8b3fd413ccaa7292c9f43f9d49225422f8dce1",
+      "historical_expected": "count-only downstream synthetic mutation changes result to 1/2",
+      "v2_semantic_disposition": "SUPERSEDED_EXPECTATION__INVALID_STALE_REPRESENTATION"
+    },
+    "s00e_modified_27": {
+      "path": "rawlsing_next/tests/test_r3_s02_seam_witness.py",
+      "git_blob": "190076a90c64714e64e0c9b8895ee9bc66b8b54b",
+      "sha256": "5a7d698b5df441410dfefbdff10c5f5d36e77fb6d0932502415cf7e8f9ff2d63"
+    },
+    "s00cr_exact_16": {
+      "path": "rawlsing_next/tests/test_hq284_s00cr_value_dependency_hostiles.py",
+      "git_blob": "de6df93f59535652e0a46456dc42f6c816d1c1f2",
+      "execution_status": "NOT_EXECUTED_BY_S00ER_OR_S00M"
+    },
+    "s00e_nonidentical_overlay_18": {
+      "path": "rawlsing_next/tests/test_hq286_s00e_s00cr_overlay.py",
+      "git_blob": "6e768e0bdbe4c9d1f6cab3b4ac93e0ab24c00b99",
+      "limitation": "NOT_EXACT_S00CR_16; R06 and R17 weaker"
+    },
+    "s00e_implementation": {
+      "path": "rawlsing_next/r3_s02_seam_witness.py",
+      "git_blob": "739c70d6802baf5f6d6498b3daa39d0688a41840"
+    }
+  },
+  "value_contract": {
+    "primitive": "owner-produced typed raw_numerator_support plus exact producer risk denominator/target cell universe",
+    "derived": "raw_probability_exact_fraction = normalized rational raw_numerator_support / raw_denominator_support",
+    "serialized_invariant": "present derived fields and step projections must equal fresh derivation from primitive count geometry",
+    "positive_denominator": "fraction required for v2 canonical product; nonnegative integer counts; partition sums equal denominator",
+    "zero_denominator": "explicit None and ZERO_SUPPORT/ZERO_DENOMINATOR_ABSTENTION",
+    "producer_binding": "synthetic source-free P04 or native builder must reproduce identity of exact row law, target, risk, selected-world, evidence and aggregate numbers",
+    "trust_grade": "SOURCE_FREE_SYNTHETIC, never real GT2"
+  },
+  "oracle_cases": [
+    {
+      "id": "M01_P04_CUMULATIVE",
+      "input": "P04 fixture 58 rows",
+      "expected": "COMPUTED 32->16->8, Yes 18->10->6, No 14->6->2, exact 9/16->5/8->3/4; final cumulative supports 16 and 8",
+      "receipts": "VALUE_USED_IN_EXACT_CONDITIONAL on read cells"
+    },
+    {
+      "id": "M02_NATIVE_BASE",
+      "input": "fresh native 2x2 [[3,1],[1,3]] Q86B row/Q86A column",
+      "expected": "COMPUTED Yes|Q86B=1 3/4; n=3,d=4",
+      "receipts": "two used cell reads"
+    },
+    {
+      "id": "M03_NATIVE_REISSUED_SYNTH",
+      "input": "fresh native 2x2 [[3,1],[2,2]] rebuilt through producer with new synthetic refs",
+      "expected": "COMPUTED Yes|Q86B=1 1/2; n=2,d=4; distinct synthetic root",
+      "receipts": "two used reads and changed used_input_refs"
+    },
+    {
+      "id": "M04_STALE_COUNT_ONLY",
+      "input": "change downstream channels 1->2 and 3->2, preserve fractions, steps and producer refs, local rehash",
+      "expected": "REFUSED/FRACTION_CLOSURE_MISMATCH",
+      "receipts": "zero reads or value-used marks before validation"
+    },
+    {
+      "id": "M05_STALE_FRACTION",
+      "input": "numerator 3/denominator 4; declared fraction 100/101, local rehash",
+      "expected": "REFUSED/FRACTION_CLOSURE_MISMATCH",
+      "receipts": "no value-used"
+    },
+    {
+      "id": "M06_STALE_STEP",
+      "input": "channels authentic but steps[Q86B=1][1].numerator 234, local rehash",
+      "expected": "REFUSED/STEP_CELL_NUMERATOR_MISMATCH",
+      "receipts": "no value-used"
+    },
+    {
+      "id": "M07_LOCAL_REHASH_STALE_ROOT",
+      "input": "edit channels both counts, all fractions and steps consistently to 2/2; preserve prior selected-world producer root and evidence refs; rehash bundle",
+      "expected_v2": "REFUSED/PRODUCER_VALUE_IDENTITY_MISMATCH or SELECTED_WORLD_BINDING_MISMATCH",
+      "status_s00e": "UNPROVED__CURRENT_VALIDATOR_NO_INDEPENDENT_PRODUCER_REDERIVATION",
+      "receipts": "no value-used on refusal"
+    },
+    {
+      "id": "M08_UNRELATED_VALID_PRODUCER",
+      "input": "freshly generated internally consistent source-free bundle changing unrelated row/step without touching queried conditioned cells, new correct root",
+      "expected_v2": "same queried numeric fraction and independent lawful origin; or typed strict scope refusal if source-free P04 exact fixture law is fixed",
+      "caveat": "do not substitute an invalid rehashed channel edit for authorized unrelated producer event"
+    },
+    {
+      "id": "M09_UNRELATED_INVALID_GLOBAL",
+      "input": "set unrelated P04 channel numerator 999, fraction None, unchanged step and issuer root, local rehash",
+      "expected_v2": "REFUSED globally inconsistent bundle; original S00CR R06 positive computation expectation requires migration",
+      "receipts": "no value-used"
+    },
+    {
+      "id": "M10_NULL_MALFORMED",
+      "input": "fraction missing or malformed under v2 fraction-required positive-risk canonical product",
+      "expected_v2": "typed REFUSED, never uncaught exception or silently skipped",
+      "receipts": "none"
+    },
+    {
+      "id": "M11_ZERO_SUPPORT",
+      "input": "fresh native 2x2 with all Q86B=1 cells zero",
+      "expected": "ZERO_SUPPORT/ZERO_DENOMINATOR_ABSTENTION, no fabricated conditional 0/0",
+      "receipts": "no VALUE_USED_IN_EXACT_CONDITIONAL"
+    },
+    {
+      "id": "M12_FALSE_LABELS",
+      "input": "any case variant of democracy_support/institutional_trust/democratic_attitudes",
+      "expected": "REFUSED/FALSE_S00_Q86_SOURCE_MEANING"
+    },
+    {
+      "id": "M13_GT2_ISSUER",
+      "input": "arbitrary dict or token claiming R5 19,210 coexposure and numeric counts",
+      "expected": "SOURCE_VALUE_UNAVAILABLE__ISSUED_GT2_AGGREGATE_AND_USE_AUTHORITY_HOLD; real cohort count never auto-complete-case denominator",
+      "rights": "none"
+    }
+  ],
+  "test_migrations": [
+    {
+      "original": "S00C 27 original count-only positive case",
+      "versioned_successor": "M03 true fresh synthetic producer positive plus M04 count-only stale fraction refusal",
+      "preservation": "ORIGINAL FILE UNCHANGED"
+    },
+    {
+      "original": "S00CR 16 R06",
+      "versioned_successor": "M08 authorized unrelated root-preserving calculation plus M09 invalid entire bundle refusal",
+      "preservation": "ORIGINAL R06 UNCHANGED"
+    },
+    {
+      "original": "S00CR 16 R15",
+      "versioned_successor": "M05 typed FRACTION_CLOSURE_MISMATCH rather than generic SOURCE_COUNT_CLOSURE_MISMATCH",
+      "preservation": "ORIGINAL R15 UNCHANGED"
+    },
+    {
+      "original": "S00CR 16 R16",
+      "versioned_successor": "M06 typed STEP_CELL_NUMERATOR_MISMATCH rather than generic SOURCE_COUNT_CLOSURE_MISMATCH",
+      "preservation": "ORIGINAL R16 UNCHANGED"
+    },
+    {
+      "original": "S00CR 16 R17",
+      "versioned_successor": "M07 fully coherent stale producer root falsifier; do not accept fraction-only short-circuit as producer-origin proof",
+      "preservation": "ORIGINAL R17 UNCHANGED"
+    }
+  ],
+  "observed_runtime": [
+    {
+      "executor": "S00ER secondary Mac",
+      "snapshot": "byte-original S00C 27 on S00E code",
+      "result": "26 passed, 1 failed, exit 1; KeyError exact_probabilities"
+    },
+    {
+      "executor": "S00E author",
+      "snapshot": "modified S00E 27",
+      "result": "27 passed, exit 0, reported and secondarily corroborated"
+    },
+    {
+      "executor": "S00E author",
+      "snapshot": "nonidentical 18 overlay",
+      "result": "18 passed, exit 0, reported and secondarily corroborated"
+    },
+    {
+      "executor": "S00M reviewer",
+      "snapshot": "exact original S00CR 16 and any suite",
+      "result": "NOT_EXECUTED"
+    }
+  ],
+  "method_grade": {
+    "count_vs_fraction": "PASS__DERIVATION_AND_SERIALIZATION_DECIDED",
+    "s00e_fraction_closure": "PASS__CORE_CONCEPT",
+    "current_sourcefree_producer_identity": "REPAIR__COHERENT_STALE_ROOT_UNREJECTED",
+    "s00cr_exact_runtime": "HOLD__NOT_EXECUTED",
+    "real_gt2": "SCIENTIFIC_HOLD"
+  },
+  "next_implementer": {
+    "scope": "smallest sourcefree _validate_bundle fraction/step/root reconciliation plus new noncolliding v2 tests",
+    "disallowed": "do not change historical frozen tests, canonical contracts, original data, protected CURRENT or V3",
+    "required_runs": "unaltered S00C 27 diagnostic; unaltered S00CR 16 independent; separate author 27; separate nonidentical overlay 18; new v2 tests with exact SHA/exit",
+    "needs_resource_attestation": true
+  }
+}
