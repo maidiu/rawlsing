@@ -122,8 +122,7 @@ def import_existing_smokes(c,r2c,transport,original_schema):
     for item in report["verified"]:
         record=read(PREDECESSOR/"results"/"raw"/item["receipt_file"])
         atomic_new(RAW/item["receipt_file"],record)
-        require(file_hash(RAW/item["receipt_file"]) == item["receipt_sha256"] or
-                read(RAW/item["receipt_file"]) == record,
-                "EXISTING_SMOKE_REUSE_HOLD: imported receipt content mismatch")
+        require(file_hash(RAW/item["receipt_file"]) == item["receipt_sha256"],
+                "EXISTING_SMOKE_REUSE_HOLD: imported receipt bytes differ")
     atomic_new(PROOF_FILE,report)
     return report
