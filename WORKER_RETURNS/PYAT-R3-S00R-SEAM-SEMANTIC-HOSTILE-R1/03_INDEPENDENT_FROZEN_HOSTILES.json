@@ -1,0 +1,280 @@
+{
+  "schema": "PYAT_R3_S00R_INDEPENDENT_SEMANTIC_CONSUMER_HOSTILES@1.0.0",
+  "reviewer": "INDEPENDENT_BROWSER_GITHUB_DOCUMENTARY",
+  "freeze_basis": "CANDIDATE_208bca30471710d48124a6b69ba467f240d8834b__CANONICAL_7f29aec36d24f16da52d84f17c00f08db3a55434",
+  "independently_authored": true,
+  "observed_test_execution": "NONE__NOT_EXECUTED__DO_NOT_CREDIT_AS_PYTEST",
+  "number_of_hostiles": 19,
+  "protection": "NO AUTHOR PATCH OR SOURCE EXECUTION; corrections must be tested independently before adoption",
+  "hostiles": [
+    {
+      "id": "H01",
+      "class_id": "FALSE_NATIVE_LIKERT",
+      "mutation": "Replace 0/1 Q86B and Q86A with categories 1..4 and meanings democracy/trust",
+      "expected_disposition": "FAIL_SOURCE_SEMANTIC_AUTHORITY",
+      "independent_expected_basis": "exact native item qimpl/response-domain+source issuer; no semantic relabel",
+      "observed_run_result": null,
+      "executed": false
+    },
+    {
+      "id": "H02",
+      "class_id": "GT2_Q86_ROLE_SWAP",
+      "mutation": "Reverse Q86A target/Q86B conditioner while preserving output reference",
+      "expected_disposition": "REFUSE_ROLE_ORDER_MISMATCH",
+      "independent_expected_basis": "frozen native ordered target refs and replay",
+      "observed_run_result": null,
+      "executed": false
+    },
+    {
+      "id": "H03",
+      "class_id": "MISSINGNESS_AS_NO",
+      "mutation": "Collapse DK 9, NOT_ASKED 997, REFUSAL 998 or MISSING -1 into 0=No",
+      "expected_disposition": "REFUSE_RESPONSE_STATE_LAUNDERING",
+      "independent_expected_basis": "source-native typed risk and emitted cell domain",
+      "observed_run_result": null,
+      "executed": false
+    },
+    {
+      "id": "H04",
+      "class_id": "COEXPOSURE_AS_COMPLETE_CASE",
+      "mutation": "Report frozen 19,210 as substantive Q86A/B denominator or national-weighted prevalence",
+      "expected_disposition": "HOLD_OR_REFUSE_UNPROVED_DENOMINATOR_ESTIMAND",
+      "independent_expected_basis": "source member refs + response states + design/weight issuer",
+      "observed_run_result": null,
+      "executed": false
+    },
+    {
+      "id": "H05",
+      "class_id": "SYNTHETIC_SOURCE_LABEL",
+      "mutation": "Keep P04 58-row fixture but set world_scope to R5 and overall mode RETAINED_SOURCE_CONDITIONED",
+      "expected_disposition": "REFUSE_REAL_SOURCE_QUALIFICATION__ALLOW_SOURCE_FREE_FIXTURE",
+      "independent_expected_basis": "input channel source receipts must bind output and mode",
+      "observed_run_result": null,
+      "executed": false
+    },
+    {
+      "id": "H06",
+      "class_id": "FAKE_GT2_NUMERIC_INPUT",
+      "mutation": "Cite GT2 source SHA and 19,210 in envelope while channel numerators remain 18,14,10,6,6,2",
+      "expected_disposition": "REFUSE_NO_RETAINED_GT2_VALUE_INPUT",
+      "independent_expected_basis": "expected real empirical fact + joint cell numeric provenance refs",
+      "observed_run_result": null,
+      "executed": false
+    },
+    {
+      "id": "H07",
+      "class_id": "PREFIX_CHANNEL_COLLISION",
+      "mutation": "Request conditioning P_Y_given_A; observe inclusion of P_Y_given_A_B and P_Y_given_A_B_C",
+      "expected_disposition": "REFUSE_SUBSTRING_CONDITION_MATCH",
+      "independent_expected_basis": "exact typed conditioner IDs/values; no partial string matching",
+      "observed_run_result": null,
+      "executed": false
+    },
+    {
+      "id": "H08",
+      "class_id": "DENOMINATOR_DUPLICATION",
+      "mutation": "Two Y category channels each set support=N and sum to 2N (e.g. 32+32)",
+      "expected_disposition": "REFUSE_DOUBLE_COUNTED_RISK",
+      "independent_expected_basis": "one denominator per exact condition-predicate/risk; numerator cells sum once",
+      "observed_run_result": null,
+      "executed": false
+    },
+    {
+      "id": "H09",
+      "class_id": "SCENARIO_ID_VALUE_INERT",
+      "mutation": "Change scenario high/high to low/low without changing actual source-native predicate values",
+      "expected_disposition": "REFUSE_LABEL_ONLY_SCENARIO",
+      "independent_expected_basis": "exact condition tuple identity, identical semantic requests=>identical output regardless name",
+      "observed_run_result": null,
+      "executed": false
+    },
+    {
+      "id": "H10",
+      "class_id": "ZERO_SUPPORT_VS_ABSENT_ID",
+      "mutation": "Create real qualified predicate with exact zero eligible respondents, not absent channel ID",
+      "expected_disposition": "RETURN_TYPED_ZERO_DENOMINATOR_ABSTENTION_NOT_NO_MATCHING_CHANNELS",
+      "independent_expected_basis": "source-native risk/predicate with zero support; no invented numeric zero probability",
+      "observed_run_result": null,
+      "executed": false
+    },
+    {
+      "id": "H11",
+      "class_id": "READ_NOT_USED",
+      "mutation": "Omit calls to read_value but invoke compute_scenario on same bundle; scenario output unchanged",
+      "expected_disposition": "FAIL_VALUE_USE_ATTESTATION",
+      "independent_expected_basis": "consumer must consume exactly read values through dataflow/dependency binding",
+      "observed_run_result": null,
+      "executed": false
+    },
+    {
+      "id": "H12",
+      "class_id": "LABEL_FAKED",
+      "mutation": "Hard-code VALUE_READ_AND_USED for a returned but never consumed channel",
+      "expected_disposition": "REFUSE_RECEIPT_WITHOUT_COMPUTATIONAL_DEPENDENCY",
+      "independent_expected_basis": "input hash + exact use site/output dependence verified",
+      "observed_run_result": null,
+      "executed": false
+    },
+    {
+      "id": "H13",
+      "class_id": "VALUE_ABLATION",
+      "mutation": "For an exact consumed GT2 cell, mutate count by +1 with valid graph/denominator adjustment and keep refs updated only by competent producer",
+      "expected_disposition": "EXPECTED_OUTPUT_OR_STATE_CHANGE",
+      "independent_expected_basis": "positive causal dependency/ablated input hostile in authorized test fixture; never mutate accepted live fact",
+      "observed_run_result": null,
+      "executed": false
+    },
+    {
+      "id": "H14",
+      "class_id": "IGNORED_VALUE_MUTATION",
+      "mutation": "Mutate irrelevant channel value preserving its other valid identity/context",
+      "expected_disposition": "EXPECTED_SEMANTIC_OUTPUT_STABILITY",
+      "independent_expected_basis": "dataflow-specific invariance instead of extra read",
+      "observed_run_result": null,
+      "executed": false
+    },
+    {
+      "id": "H15",
+      "class_id": "EQUAL_MARGINAL_DIFFERENT_JOINT",
+      "mutation": "Use separately frozen synthetic 2x2 tables [[3,1],[1,3]] and [[1,3],[3,1]], each X,Y marginals 4/4, but Y=1 conditional on X=1 is 3/4 vs 1/4 (given row/column order)",
+      "expected_disposition": "EXPECTED_DIFFERENT_CONDITIONAL_OUTPUT",
+      "independent_expected_basis": "complete exact joint evidence, not channel ID changes",
+      "observed_run_result": null,
+      "executed": false
+    },
+    {
+      "id": "H16",
+      "class_id": "WRONG_RELEASE_RISK",
+      "mutation": "Supply same categories and counts with different source/release/risk or domain order",
+      "expected_disposition": "REFUSE_SOURCE_SCOPE_BINDING",
+      "independent_expected_basis": "exact refs, native role and replay; semantic equality insufficient",
+      "observed_run_result": null,
+      "executed": false
+    },
+    {
+      "id": "H17",
+      "class_id": "S00_BUNDLE_ID_MISMATCH",
+      "mutation": "Keep S00 bundle_id R3_S00_S02_SELECTED_WORLD_SEAM_R1 and runtime R3_S00_S02_BUNDLE_001 with no link",
+      "expected_disposition": "REFUSE_UNBOUND_CONTRACT",
+      "independent_expected_basis": "contract hash and bundle identity in consumer receipt",
+      "observed_run_result": null,
+      "executed": false
+    },
+    {
+      "id": "H18",
+      "class_id": "RECEIPT_HASH_REPLAY",
+      "mutation": "Call get_receipt twice without intervening semantic effects; output_hash changes due to hashing itself",
+      "expected_disposition": "EXPECTED_CANONICAL_STABILITY",
+      "independent_expected_basis": "self-excluded semantic digest and exact preimage",
+      "observed_run_result": null,
+      "executed": false
+    },
+    {
+      "id": "H19",
+      "class_id": "NO_V3_SCOPE",
+      "mutation": "Introduce any V3/actor/parent/biography operation in positive seam path",
+      "expected_disposition": "REFUSE_PREV3_SCOPE_CROSSING",
+      "independent_expected_basis": "existing P04 no-V3 invariant",
+      "observed_run_result": null,
+      "executed": false
+    }
+  ],
+  "independent_numeric_controls": {
+    "p04_synthetic_fixture": {
+      "source": "P04 58 synthetic A/B/C/Y",
+      "conditions": [
+        [
+          "A",
+          1
+        ],
+        [
+          "B",
+          1
+        ],
+        [
+          "C",
+          1
+        ]
+      ],
+      "raw_denominators": [
+        32,
+        16,
+        8
+      ],
+      "raw_success_counts": [
+        18,
+        10,
+        6
+      ],
+      "exact_success_probabilities": [
+        "9/16",
+        "5/8",
+        "3/4"
+      ]
+    },
+    "s02_author_saved_scenario_a": {
+      "condition_substrings": [
+        "P_Y_given_A",
+        "P_Y_given_A_B"
+      ],
+      "matched_channel_supports": [
+        32,
+        32,
+        16,
+        16,
+        8,
+        8
+      ],
+      "incorrect_sum": 112
+    },
+    "s02_author_saved_scenario_b": {
+      "condition_substrings": [
+        "P_Y_given_A_B",
+        "P_Y_given_A_B_C"
+      ],
+      "matched_channel_supports": [
+        16,
+        16,
+        8,
+        8
+      ],
+      "incorrect_sum": 48
+    },
+    "equal_marginals_different_joints": {
+      "rows": "X=0 and X=1, columns Y=0 and Y=1",
+      "table_1": [
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "table_2": [
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "x_marginals": [
+        4,
+        4
+      ],
+      "y_marginals": [
+        4,
+        4
+      ],
+      "conditional_Y1_given_X1": [
+        "3/4",
+        "1/4"
+      ]
+    }
+  },
+  "adoption_gate": "SOURCE_SEMANTICS_AND_ACTUAL_VALUE_USE_NOT_QUALIFIED__REJECT"
+}
