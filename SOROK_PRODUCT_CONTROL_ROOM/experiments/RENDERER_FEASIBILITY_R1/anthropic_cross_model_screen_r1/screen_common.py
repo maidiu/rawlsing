@@ -60,6 +60,8 @@ def atomic_new(path,value):
 def config():
     c=read(HERE/"EXPERIMENT_CONFIG_R1.json")
     r2c=inherited.config()
+    for filename, blob in c["sealed_r2_git_blobs"].items():
+        assert_file_sha(R2/filename, blob)
     for key in ("effort","max_tokens","api_version","api_endpoint","timeout_seconds",
                 "operational_retries","system_message","temperature","top_p","top_k"):
         require(c[key]==r2c[key],"PARENT_PROVIDER_CONFIG_CHANGED: "+key)
