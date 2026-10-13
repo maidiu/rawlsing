@@ -241,7 +241,7 @@ def test_m2_direct_release_registration_requires_native_subject():
     )
     with pytest.raises(M2ReleaseError):
         M2Repository.register_release(repo, bogus)
-    assert not repo.releases()
+    assert not repo.releases
 
 
 def test_m2_native_valid_release_and_direct_representation_binding():
