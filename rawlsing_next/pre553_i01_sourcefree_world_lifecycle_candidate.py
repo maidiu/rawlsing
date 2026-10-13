@@ -193,7 +193,20 @@ def restore_product(root):
     life=B5.from_checkpoint(json.loads((root/'lifecycle.json').read_text()))
     chosen=CurrentSelectionReceipt.from_dict(index['selected_receipt'])
     life.verify_m2_release_subject_exact(repo,release.ref)
-    key=next(k for k in life.export_checkpoint()['checkpoint_payload']['selection_keys'] if k['record_ref']==index['selection_key_ref'])
+    # I01K: explicit selection-key identity validation.  Reject absent,
+    # foreign, malformed or ambiguous matches with a typed I01Error instead
+    # of uncontrolled StopIteration.  Never construct a Product using a
+    # substituted key.
+    saved_key_ref=index.get('selection_key_ref')
+    if not isinstance(saved_key_ref,dict) or 'record_ref' not in saved_key_ref and 'kind' not in saved_key_ref:
+        raise I01Error('SAVED_SELECTION_KEY_IDENTITY_MISMATCH')
+    all_keys=life.export_checkpoint()['checkpoint_payload']['selection_keys']
+    matches=[k for k in all_keys if k['record_ref']==saved_key_ref]
+    if len(matches)==0:
+        raise I01Error('SAVED_SELECTION_KEY_IDENTITY_MISMATCH')
+    if len(matches)>1:
+        raise I01Error('SAVED_SELECTION_KEY_IDENTITY_MISMATCH')
+    key=matches[0]
     return Product(root,session,life,repo,release,binding,SelectionKey.from_dict(key),subject_ref,chosen,determinant,calls)
 
 

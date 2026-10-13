@@ -1,0 +1,26 @@
+{
+  "frozen_typed_index": {
+    "cmd": "/usr/local/bin/python3 -m pytest WORKER_RETURNS/PYAT-R3-HQ291-S00V3X-INDEPENDENT-OFFLINE-EXECUTION-R1/repro/test_hq291_s00v3x_typed_index.py -v",
+    "exit_code": 0,
+    "elapsed_seconds": 1.621,
+    "stdout_tail": "t session starts ==============================\nplatform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3\ncachedir: .pytest_cache\nrootdir: /Users/matthewsmith/Desktop/Rawlsing\ncollecting ... collected 1 item\n\nWORKER_RETURNS/PYAT-R3-HQ291-S00V3X-INDEPENDENT-OFFLINE-EXECUTION-R1/repro/test_hq291_s00v3x_typed_index.py::test_forged_selection_key_requires_typed_product_refusal PASSED [100%]\n\n============================== 1 passed in 1.18s ===============================\n"
+  },
+  "i01k_tests": {
+    "cmd": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_hq292_i01k_typed_selection_restore.py -v",
+    "exit_code": 0,
+    "elapsed_seconds": 7.278,
+    "stdout_tail": "_i01error PASSED [ 57%]\nrawlsing_next/tests/test_hq292_i01k_typed_selection_restore.py::test_hq292_i01k_malformed_key_returns_typed_i01error PASSED [ 71%]\nrawlsing_next/tests/test_hq292_i01k_typed_selection_restore.py::test_hq292_i01k_invalid_type_key_returns_typed_i01error PASSED [ 85%]\nrawlsing_next/tests/test_hq292_i01k_typed_selection_restore.py::test_hq292_i01k_no_product_constructed_on_negative PASSED [100%]\n\n============================== 7 passed in 7.04s ===============================\n"
+  },
+  "i01_author": {
+    "cmd": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_hq287_i01_sourcefree_world_lifecycle.py -q",
+    "exit_code": 0,
+    "elapsed_seconds": 9.275,
+    "stdout_tail": "..........                                                               [100%]\n10 passed in 9.03s\n"
+  },
+  "i01r_independent": {
+    "cmd": "/usr/local/bin/python3 -m pytest rawlsing_next/tests/test_hq288_i01r_independent_product.py -q",
+    "exit_code": 1,
+    "elapsed_seconds": 12.09,
+    "stdout_tail": "ead_bytes()==blob\nE       assert b'\"\"\"Executed...t.as_dict()\\n' == b'\"\"\"Executed...t.as_dict()\\n'\nE         \nE         At index 13682 diff: b'#' != b'k'\nE         Use -v to get more diff\n\nrawlsing_next/tests/test_hq288_i01r_independent_product.py:116: AssertionError\n=========================== short test summary info ============================\nFAILED rawlsing_next/tests/test_hq288_i01r_independent_product.py::test_copied_module_or_dynamic_hash_is_not_frozen_owner\n1 failed, 25 passed in 11.83s\n"
+  }
+}
