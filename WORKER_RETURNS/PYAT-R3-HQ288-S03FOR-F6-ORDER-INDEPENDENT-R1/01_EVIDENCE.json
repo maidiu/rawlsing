@@ -1,0 +1,30 @@
+{
+  "commission_id": "PYAT-R3-HQ288-S03FOR-F6-ORDER-INDEPENDENT-R1",
+  "branch": "agent/reviewer-pyat-r3-hq288-s03for-f6-order-independent-r1",
+  "sealed_startup": "11e89eef41448f3f6320d0db3735a1cd108b75ce",
+  "s03fo_candidate": "1428c2e92bce1a49efd87378cb23df936d646dc5",
+  "s03r_frozen": "34cc7bdb28664ecbc707528470c2b4397aa96f12",
+  "s03fr_frozen": "1263a43cefabff9f7b4f0f9711babc87babeaa8f",
+  "test_suites": [
+    {"name": "S03FO author court", "tests": 13, "passed": 13, "failed": 0},
+    {"name": "S03FR independent court (adapted)", "tests": 13, "passed": 13, "failed": 0},
+    {"name": "S03R method hostiles (adapted)", "tests": 11, "passed": 11, "failed": 0},
+    {"name": "Independent permutation hostiles", "tests": 12, "passed": 12, "failed": 0}
+  ],
+  "total_tests": 49,
+  "total_passed": 49,
+  "total_failed": 0,
+  "verified_fractions": {
+    "secure/formal": "27/50",
+    "secure/informal": "3/20",
+    "insecure/formal": "11/100",
+    "insecure/informal": "1/5"
+  },
+  "declared_order_stable_under_permutation": true,
+  "missing_cells_not_zero": true,
+  "outcome_self_conditioning_descriptive": true,
+  "stable_category_identities": true,
+  "first_remaining_defect": "Declared order depends on category_map insertion order; explicit source-level order contract would strengthen guarantee",
+  "source_science_holds": ["real_F6", "EE13", "N9", "protected_CURRENT", "V3", "canonical_merge"],
+  "no_self_adoption": true
+}
