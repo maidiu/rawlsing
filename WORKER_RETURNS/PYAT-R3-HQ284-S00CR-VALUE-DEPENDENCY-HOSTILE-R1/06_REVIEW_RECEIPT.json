@@ -1,0 +1,108 @@
+{
+  "schema": "PYAT_R3_HQ284_S00CR_INDEPENDENT_REVIEW_RECEIPT@1",
+  "repository": "maidiu/rawlsing",
+  "private": true,
+  "role": "independent reviewer, NOT HQ",
+  "requested_model": "GPT-6 High",
+  "model_family": "GPT-6",
+  "effort_attested_by_tool": false,
+  "provider": "ChatGPT Browser/GitHub",
+  "machine": "Browser/GitHub remote; no local Mac/worktree",
+  "startup": {
+    "sealed": "9abd16770ac600f16466535d0049ca7938445f84",
+    "remote_verified": true,
+    "commission_path": "WORKER_COMMISSIONS/PYAT-R3-HQ284-S00CR-VALUE-DEPENDENCY-HOSTILE-R1/00_COMMISSION.md",
+    "commission_blob": "a2dc8d1dcadd0eb3bdb6108bf13c211f377d3903",
+    "parent": "54f145538ed0880f8257368f838baa5b0e12e2d3"
+  },
+  "candidate": {
+    "commit": "54f145538ed0880f8257368f838baa5b0e12e2d3",
+    "source_path": "rawlsing_next/r3_s02_seam_witness.py",
+    "blob": "408c4700aee7a63db43f1e01c22ab6e1371e3568",
+    "author_test_blob": "e26204c1bd61eb66d6f254de0a953c5f83c57c84"
+  },
+  "prior_science": {
+    "s00r": "b91e2c9b2b15827027a0163431b440270c4f7692",
+    "p04": "c98e888166a941a06ad694411911bc58f9c4639b",
+    "canonical": "7f29aec36d24f16da52d84f17c00f08db3a55434"
+  },
+  "pretest_freeze": {
+    "commit": "c30dda6919a634409b9b13aae0c70542fbb27498",
+    "independent_hostile_count": 18,
+    "python_test_functions": 16,
+    "after_candidate_code_inspection": true,
+    "before_candidate_tests_inspection": true
+  },
+  "static_findings": {
+    "numeric_dependence_via_read_value": true,
+    "read_receipt_labeled_use_after_numeric_computation": true,
+    "P04_fixture_risk": [
+      32,
+      16,
+      8
+    ],
+    "P04_fraction": [
+      "9/16",
+      "5/8",
+      "3/4"
+    ],
+    "sourcefree_native_opposite_joints": [
+      "3/4",
+      "1/4"
+    ],
+    "stale_producer_numeric_substitution_unchecked": true,
+    "inconsistent_fraction_claim_unchecked": true,
+    "inconsistent_step_geometry_unchecked": true,
+    "mixed_case_false_scenario_label_unchecked": true,
+    "historical_s00_contract_invalid": true,
+    "historical_s00_manifest_test_still_affirms_false_status": true,
+    "real_gt2_ingress_status": "EXPLICIT_HOLD"
+  },
+  "reviewer_execution": {
+    "python_executed": false,
+    "pytest_executed": false,
+    "commands": [],
+    "exits": [],
+    "actual_test_passes": 0,
+    "actual_test_failures": 0,
+    "host": "BROWSER_SOURCE_INSPECTION_ONLY"
+  },
+  "l01_attributed_runtime": {
+    "branch": "agent/rabochii-pyat-r3-hq284-l01-sourcefree-runtime-qualification-r1",
+    "sha": "c6dba4b705ccf8857a6b38877708d2218b54c043",
+    "candidate": "54f145538ed0880f8257368f838baa5b0e12e2d3",
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "platform": "macOS 13.7.8 x86_64",
+    "suite": "rawlsing_next/tests/test_r3_s02_seam_witness.py",
+    "reported_total": 27,
+    "reported_passed": 26,
+    "reported_failed": 1,
+    "reported_exit": 1,
+    "reported_failure_case": "test_s00_contract_manifest_exists_and_is_valid",
+    "reported_failure_reason": "FileNotFoundError in sparse source checkout",
+    "independent_s00cr_tests_run": false,
+    "raw_stdout_in_return": false
+  },
+  "resource": {
+    "normalized_go_pool": "UNKNOWN",
+    "codex_quota": "UNKNOWN",
+    "remaining_usage": "UNKNOWN",
+    "paid_overflow_approved": false,
+    "paid_overflow_used_by_reviewer": false,
+    "actual_external_executor_cost": "UNKNOWN"
+  },
+  "safety": {
+    "canonical_changed": false,
+    "candidate_changed": false,
+    "prior_oracles_changed": false,
+    "source_rows_accessed": false,
+    "source_issuer_created": false,
+    "model_use_granted": false,
+    "protected_current_issued": false,
+    "v3_executed": false
+  },
+  "scientific_verdict": "NO_ADOPTION__STATIC_SOURCEFREE_ARITHMETIC_WORKS_BUT_PRODUCER_VALUE_IDENTITY_NOT_PROVED",
+  "pending": "Qualified L01/other host must run independent reviewer suite and separately authorized owner corrects D1-D3",
+  "review_return_commit": "TO_BE_REPORTED_AFTER_GIT_REF_PUSH"
+}
