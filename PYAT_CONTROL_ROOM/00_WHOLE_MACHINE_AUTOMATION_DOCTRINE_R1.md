@@ -1,3 +1,9 @@
+## SUPPLEMENTARY HQ VALIDITY RULE — TERMINAL PERSONA + BEST AVAILABLE INHERITED METHODS
+
+This original whole-machine automation doctrine remains operative at its declared PRE-V3 source→world grain, but **the finished persona-generation product is the practical end**. Every fresh/resumed Pyat HQ must also pass `PYAT_CONTROL_ROOM/00_INCOMING_HQ_VALIDITY_AND_PERSONA_END_PRODUCT_GATE_R1.md` before directing this machinery. It must determine whether Crosswave Atlas, driver/facet/semantic, statistical synthesis and V553 temporal functions exist historically or currently, whether they are optimal/adequate, and whether to reuse, upgrade, integrate or replace after comparison. Missing a single survey's permission cannot halt all other lawful persona-conditioning/method work. Use transparent uncertainty-aware approximations without presenting modeled inferences as observed facts; preserve the actual accepted source/semantic/model-use and PRE-V3/V3 jurisdictions. Old HQD-115 grok certificates do not suffice for this additional user-directed gate.
+
+---
+
 # VOZHD PYAT — WHOLE-MACHINE AUTOMATION AND ZERO-LOSS SUCCESSION DOCTRINE
 
 **Status:** USER-DIRECTED MANDATORY HQ COGNITIVE GATE / OPERATING INTERPRETATION / INHERITED PROJECT PURPOSE. Documentary clarification, NOT a new empirical, semantic, source-read, structural, model-use or actor authorization.
