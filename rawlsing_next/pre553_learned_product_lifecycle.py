@@ -1871,6 +1871,10 @@ class LearnedProductLifecycleExecutor:
     ) -> LearnedProductLifecycleEvent:
         self._native_mutation_preflight("record_recertification")
         subject = self._subject(release_ref)
+        if self._validity[subject.release_ref.key] != "VALID":
+            raise LearnedProductLifecycleError(
+                "recertification of withdrawn/invalidated release requires new qualified authority"
+            )
         event = self._event(
             event_kind="RECERTIFIES",
             subject=subject,
@@ -2050,6 +2054,13 @@ class LearnedProductLifecycleExecutor:
                     "NO_CURRENT requires an exact subject release when no prior selection exists"
                 )
             subject = sorted(candidates, key=lambda x: x.release_ref.key)[0]
+        if (
+            subject.product_family_ref != key.product_family_ref
+            or subject.selection_scope_ref != key.selection_scope_ref
+        ):
+            raise LearnedProductLifecycleError(
+                "NO_CURRENT subject family/scope mismatch"
+            )
         event = self._event(
             event_kind="CURRENT_CLEARED",
             subject=subject,
