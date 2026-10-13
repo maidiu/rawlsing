@@ -1,0 +1,49 @@
+{
+  "schema": "PYAT_HQ292_S00V3X_INDEPENDENT_COURT_INTAKE@1",
+  "date": "2026-10-13",
+  "canonical": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+  "reviewer": {
+    "id": "S00V3X",
+    "startup": "797efd3aa2f39e84464a48982ae988ef6e822c27",
+    "head": "ed34944e253b78714a28d72b8ca2a6521ce15930",
+    "ahead": 3,
+    "baseline_candidate": "aba2f6a60d21b8daeeaf9eb3cfadef2620ac13f4",
+    "pre_result_independent": "d4967c2f00b60d496a9c8a78714cf47fb0035953",
+    "independence": "session 01a13770-695b-7563-9b37-d4af7dedb297 differs from prior I01 and S00v3 implementer/reviewer",
+    "method": "isolated exact composite I01R accepted plus only S00V3 seam, committed candidate source selector before executing, exact source hashes and runtime stdout/JUnit; installed Python 3.11.3 macOS; remote worker report lists machine/model executable telemetry UNKNOWN",
+    "accepted": {
+      "scope": "BOUNDED_SOURCE_FREE_SYNTHETIC_LOCAL_UNAUTHENTICATED_OFFLINE_SEAM",
+      "s00v3r_original_independent": "18/18",
+      "i01r_exact_independent": "26/26",
+      "s00v2": "71/71",
+      "s00v3_author": "12/12",
+      "p04": "42/42",
+      "s00v3x_new": "9/9",
+      "s00e_overlay": "18/18",
+      "frozen_saved_artifact": "a5d1146a5bc0182a0232b1f59dda9ea78a35b4c42096c2fc938fc0cd8ebd7606",
+      "m2_release": "582317a6731c43d84959f7d0e74604f30bba4d49f3fe114f1afb07f63108d22a"
+    },
+    "historic_red": {
+      "s00c": "26/27",
+      "s00cr": "12/16",
+      "s00e_revised": "26/27",
+      "disposition": "distinct explicitly versioned S00M acceptance migration, leave frozen original red visible"
+    },
+    "new_defect": {
+      "grade": "REPAIR_COMPLETE_INTEGRATED_TYPED_REFUSAL_ONLY",
+      "owner": "rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py",
+      "method": "restore_product(root)",
+      "reason": "next(k for k in life.export_checkpoint()['checkpoint_payload']['selection_keys'] if k['record_ref']==index['selection_key_ref']) throws untyped StopIteration when foreign or missing selection key; released product not accepted",
+      "frozen_new_regression": "WORKER_RETURNS/PYAT-R3-HQ291-S00V3X-INDEPENDENT-OFFLINE-EXECUTION-R1/repro/test_hq291_s00v3x_typed_index.py",
+      "required": "typed I01Error on absent/nonmatching selection key, fail before Product and no synthetic current resurrection"
+    },
+    "scope_limits": [
+      "accepted S00V3 seam distinct from full integrated typed-refusal",
+      "full restore still synthesizes selected-world session descriptor; no full setup-producer-free restore",
+      "sourcefree code-pinned P04 law is not external survey custody",
+      "no original U/E custodian, original source run/use grant, real GT2, EE13, protected CURRENT, G0b, V3"
+    ]
+  },
+  "hq": "ACCEPT_SOURCEFREE_SEAM_AND_I01R_EXISTING_TESTED_PATH__HOLD_INTEGRATED_STRICT_TYPED_FOREIGN_KEY__NO_MERGE",
+  "next": "single small I01K owner repair with independent saved frozen red test; return then one final independent typed-case review if needed, original-source program must progress"
+}
