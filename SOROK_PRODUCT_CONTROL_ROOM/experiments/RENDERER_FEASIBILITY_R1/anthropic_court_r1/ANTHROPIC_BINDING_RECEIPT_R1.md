@@ -8,7 +8,7 @@ These are **current official provider-document facts**, verified before implemen
 | --- | --- | --- |
 | Provider/model | Anthropic Claude API, **`claude-opus-5-5`** | [Models overview](https://platform.claude.com/docs/en/models/overview), [Opus 5.5 model page](https://platform.claude.com/docs/en/models/opus-5-5/overview) |
 | Model stability | **Pinned snapshot**: 4.6+ dateless IDs are fixed, not mutable legacy aliases; serving infrastructure can change independently | [Model IDs and versioning](https://platform.claude.com/docs/en/about-claude/models/model-ids-and-versions) |
-| Messages | `POST /v1/messages`, `client.messages.create` | [Create a Message](https://platform.claude.com/docs/en/api/messages/create) |
+| Messages | `POST /v1/messages`, `client.messages.create`; SDK transport header `anthropic-version: 2023-06-01` pinned | [Create a Message](https://platform.claude.com/docs/en/api/messages/create), [API versions](https://platform.claude.com/docs/en/api/versioning) |
 | JSON grammar | `output_config={"format":{"type":"json_schema","schema":...}}` in Messages GA, no beta header | [Structured outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs) |
 | Effort | `output_config.effort="high"`; Opus 5.5 supports `low`, `medium`, `high`, `xhigh`, `max`, default `medium` | [Effort](https://platform.claude.com/docs/en/build-with-claude/effort) |
 | Thinking | Opus 5.5 uses adaptive thinking, always on; do not set legacy `budget_tokens` or disabled thinking | [Thinking](https://platform.claude.com/docs/en/build-with-claude/thinking), [Opus 5.5 prompting](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5) |
