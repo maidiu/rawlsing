@@ -13,6 +13,12 @@ Commission date: 2026-10-12. Sealed predecessor: `4a6bf4dafbe113ae61ab6fc2423ace
 - `R2_SMOKE_HOLD_BEFORE_PRIMARY = STATIC PASS`: the primary execution path calls `require_r2_smoke_pass`, requiring persisted schema-valid `R2SMOKE-0001` with exact RF001 ID.
 - `R1_R2_EVIDENCE_ISOLATION = STATIC PASS`: separate `anthropic_court_r2/` directory, freeze, raw/blinded/receipt subdirectories and only `R2RUN-XXXX`/`R2SMOKE-0001` attempt filename patterns.
 
+## Minimal-repair differential check
+
+Comparing R2 directly with the exact RFA-06A sources shows the inherited `verify_inputs` function is **byte-for-byte unchanged** and the inherited `deterministic_candidate` local integrity function is **byte-for-byte unchanged**. The frozen provider configuration preserves the exact model ID, effort, max tokens, Python SDK pin, output-schema Git blob and all source packet/fixture Git blob mappings. Only the experiment identifier, fresh seed, court revision, R1 reference/disposition, identity wrapper/instruction, and R2 result ID namespaces differ in configuration. The runner still issues precisely one `client.messages.create(**request)` call per generation attempt.
+
+The R2 source projection changes *only* `fixture_id` from global enum to per-request const and leaves all other output schema fields untouched. The inherited R1 raw results and original fixtures are never opened by the R2 execution path.
+
 ## Independent schedule verification
 
 The manifest has **60 R2 primary IDs**, exactly `R2RUN-0001`–`R2RUN-0060`. Independent xorshift32/Fisher–Yates reproduction from `0x5A0B2026` matched every entry. There are exactly three replicate ordinals for each of 10 × 2 pairs. All **60 positions** differ from the R1 order. The blinded manifest contains only opaque run IDs, in correct order, without condition or replicate mapping.
