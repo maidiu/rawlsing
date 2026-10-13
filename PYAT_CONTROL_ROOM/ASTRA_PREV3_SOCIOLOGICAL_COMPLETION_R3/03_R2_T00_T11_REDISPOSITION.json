@@ -1,0 +1,303 @@
+{
+  "schema": "R2_TASK_REDISPOSITION_R3",
+  "r2_commit": "0d38dae68ff4016c47d1af809d2e85cb160bab0c",
+  "task_count": 12,
+  "historical_fields_are_not_current_instructions": true,
+  "rows": [
+    {
+      "r2_id": "T00",
+      "r2_task_exact": {
+        "id": "T00",
+        "title": "Delivery contract and provisional-policy decision",
+        "depends_on": [],
+        "owner_role": "Product owner + existing model-use owner",
+        "timebox": "First session",
+        "work": "Freeze usable output, two contrast scenarios, fallback ladder and bounded V3 prototype scope. Pin candidate runtime and interface; a manifest is sufficient.",
+        "exit": "Owner accepts bounded prototype policy and eight-case evaluation contract; engineering can implement without repeated method permission requests.",
+        "hostile": "Policy ambiguity cannot create observed facts; source access and actual trust requirements remain operation-local.",
+        "assigned_agent": null,
+        "actual_model": null,
+        "actual_host": null,
+        "issued": false
+      },
+      "disposition": "revised",
+      "r3_tasks": [
+        "S00"
+      ],
+      "reason_and_preserved_work": "Freeze sociological outputs, model-use ceilings and seam acceptance; delete bounded V3 activation prerequisite."
+    },
+    {
+      "r2_id": "T01",
+      "r2_task_exact": {
+        "id": "T01",
+        "title": "Pin and run the inherited developmental baseline",
+        "depends_on": [
+          "T00"
+        ],
+        "owner_role": "Developmental/runtime engineer",
+        "timebox": "One focused session",
+        "work": "Compare adjudicated archive against local V3/V2 manifest; select one baseline; run its permitted isolated source-free smoke path.",
+        "exit": "One replayable actor history and state-backed expression, even with declared broad priors; exact blocker repair if run fails.",
+        "hostile": "No first-candidate bypass, unlogged randomness, invented diagnosis or renderer mutation.",
+        "assigned_agent": null,
+        "actual_model": null,
+        "actual_host": null,
+        "issued": false
+      },
+      "disposition": "deferred-after-seam",
+      "r3_tasks": [],
+      "reason_and_preserved_work": "Runtime pin/run, actor history and expression belong to a separate V3 commission. Read-only input requirements may inform S00 without execution."
+    },
+    {
+      "r2_id": "T02",
+      "r2_task_exact": {
+        "id": "T02",
+        "title": "Bind useful retained inputs to a world/possibility snapshot",
+        "depends_on": [
+          "T00"
+        ],
+        "owner_role": "World-service/C1 integration engineer",
+        "timebox": "One focused session in parallel with T01",
+        "work": "Reuse M1\u2013M4, rich C1 and P04 seams; carry selected release, context, joints, uncertainty and evidence modes to a concrete developmental input.",
+        "exit": "Saved snapshot plus receipt proves consumer reads values, not just context IDs. One genuine retained empirical dependency plus explicit model fallbacks.",
+        "hostile": "False joint, wrong population, denominator loss, ignored world payload, CURRENT claim on frozen snapshot.",
+        "assigned_agent": null,
+        "actual_model": null,
+        "actual_host": null,
+        "issued": false
+      },
+      "disposition": "revised",
+      "r3_tasks": [
+        "S01"
+      ],
+      "reason_and_preserved_work": "Retain world/possibility binding; stop at contract consumer instead of developmental input use."
+    },
+    {
+      "r2_id": "T03",
+      "r2_task_exact": {
+        "id": "T03",
+        "title": "Deliver the first evaluated person loop",
+        "depends_on": [
+          "T01",
+          "T02"
+        ],
+        "owner_role": "Integration engineer + independent product reviewer",
+        "timebox": "Target 3\u20135 focused engineering days from issuance, contingent on baseline smoke test",
+        "work": "Wire snapshot\u2192developmental transitions\u2192state\u2192expression. Deliver 16 seeded cases across matched contrasts, browseable biography and evidence trace.",
+        "exit": "Eight-case suite in 02/06 passes at prototype scope; user can inspect and compare real outputs. Report failures and ship the honest simpler mode.",
+        "hostile": "A generic biography pasted over unchanged state, deterministic stereotypes, empirical labels on priors or fabricated childhood facts.",
+        "assigned_agent": null,
+        "actual_model": null,
+        "actual_host": null,
+        "issued": false
+      },
+      "disposition": "removed-from-scope",
+      "r3_tasks": [
+        "S02"
+      ],
+      "reason_and_preserved_work": "Remove biography/person-generation loop. S02 is a replacement sociological witness, not a relabeled actor test."
+    },
+    {
+      "r2_id": "T04",
+      "r2_task_exact": {
+        "id": "T04",
+        "title": "Improve only the weak methods exposed by the loop",
+        "depends_on": [
+          "T03"
+        ],
+        "owner_role": "Methods engineer + independent held-out evaluator",
+        "timebox": "One method decision per focused session",
+        "work": "Compare baseline against at most one stronger candidate per gap: pooling, temporal smoothing or proxy/latent mapping. Keep same inputs/consumer.",
+        "exit": "Demonstrated product/calibration benefit or explicit no-replacement decision; deploy simpler fallback if inconclusive.",
+        "hostile": "Training-test leakage, minority erasure, spurious certainty and higher cost without downstream benefit.",
+        "assigned_agent": null,
+        "actual_model": null,
+        "actual_host": null,
+        "issued": false
+      },
+      "disposition": "revised",
+      "r3_tasks": [
+        "S03",
+        "S04",
+        "S08"
+      ],
+      "reason_and_preserved_work": "Evaluate methods on distributions, world channels, uncertainty and seam effects; remove dependency on generated persons."
+    },
+    {
+      "r2_id": "T05",
+      "r2_task_exact": {
+        "id": "T05",
+        "title": "Integrate original-work automation and omission oracle",
+        "depends_on": [
+          "T00"
+        ],
+        "owner_role": "Empirical integration and independent expected-work owners",
+        "timebox": "Parallel coverage lane",
+        "work": "Reuse P01/P05 constructors, freeze original U/E before execution, integrate exact candidate delta and bind first lawful real slice.",
+        "exit": "Original\u2192expected\u2192declared\u2192durable result\u2192actual consumer receipt; positive omission adversary fails.",
+        "hostile": "Output-derived expected set, held item silently dropped, directional/J-only omissions, inconsistent recovery.",
+        "assigned_agent": null,
+        "actual_model": null,
+        "actual_host": null,
+        "issued": false
+      },
+      "disposition": "retained",
+      "r3_tasks": [
+        "S05"
+      ],
+      "reason_and_preserved_work": "Conserve original U/E, P01/P05 integration and real-slice warrant requirements."
+    },
+    {
+      "r2_id": "T06",
+      "r2_task_exact": {
+        "id": "T06",
+        "title": "Close invoked release and recovery trust gaps",
+        "depends_on": [
+          "T00"
+        ],
+        "owner_role": "Lifecycle/security owner + distinct reviewer",
+        "timebox": "Parallel; prerequisite only for invoked protected mode",
+        "work": "Preserve N04 correction; test P02R/N04R remaining history, wrapper and external-root gaps on exact selected path.",
+        "exit": "Declared trust promise proved for exact modes; current/as-of effects and affected descendants correct.",
+        "hostile": "Self-consistent forged history, revocation bypass, unwrapped CURRENT access, false independent root.",
+        "assigned_agent": null,
+        "actual_model": null,
+        "actual_host": null,
+        "issued": false
+      },
+      "disposition": "retained",
+      "r3_tasks": [
+        "S06"
+      ],
+      "reason_and_preserved_work": "Preserve invoked trust/recovery obligations and exact N04 correction; no global hold on unrelated modes."
+    },
+    {
+      "r2_id": "T07",
+      "r2_task_exact": {
+        "id": "T07",
+        "title": "Expand generalized source and operation coverage",
+        "depends_on": [
+          "T05"
+        ],
+        "owner_role": "Source/design owners and empirical production engineer",
+        "timebox": "Rolling small resumable batches",
+        "work": "Keep all 35 sources and finite issued operation frontiers; prioritize product demand then remaining functions. Use generic contracts, not bespoke selected-question scripts.",
+        "exit": "Per-source original/operation/consumer reconciliation, typed holds and no silent loss. Full35 remains separate exit.",
+        "hostile": "False N/A, skipped battery child, raw design fabrication, suppressed low-frequency branch, partial frontier called complete.",
+        "assigned_agent": null,
+        "actual_model": null,
+        "actual_host": null,
+        "issued": false
+      },
+      "disposition": "retained",
+      "r3_tasks": [
+        "S07"
+      ],
+      "reason_and_preserved_work": "Conserve all35 source/item/operation/consumer coverage and higher-order frontier."
+    },
+    {
+      "r2_id": "T08",
+      "r2_task_exact": {
+        "id": "T08",
+        "title": "Complete useful institutional and temporal channels",
+        "depends_on": [
+          "T02"
+        ],
+        "owner_role": "Structural/temporal engineer + competent source reviewers",
+        "timebox": "Parallel to T03 and source lane",
+        "work": "Reuse V553\u2192V558 and actual external field contracts. Select material/history gaps exposed by person scenarios; Ghana optional validation.",
+        "exit": "Changed historical/material evidence produces appropriate context differences and traceable modeled uncertainty.",
+        "hostile": "Ratification equals enforcement, repeated cross-sections equal individual transition, time extrapolation labeled measured.",
+        "assigned_agent": null,
+        "actual_model": null,
+        "actual_host": null,
+        "issued": false
+      },
+      "disposition": "revised",
+      "r3_tasks": [
+        "S03",
+        "S04"
+      ],
+      "reason_and_preserved_work": "Material, institutional, historical and temporal channels terminate in sociology; no person scenario gate."
+    },
+    {
+      "r2_id": "T09",
+      "r2_task_exact": {
+        "id": "T09",
+        "title": "Qualify richer product and independent release",
+        "depends_on": [
+          "T03",
+          "T04",
+          "T06",
+          "T08"
+        ],
+        "owner_role": "Independent product/scientific reviewer + release owner",
+        "timebox": "After usable loop, incremental",
+        "work": "Assess source transfer, minority configurations, cohort effects, parent priors, replay and narrative fidelity; use live outputs.",
+        "exit": "Scoped release passes declared acceptance; limitations recorded alongside concrete generated persons.",
+        "hostile": "Pretty prose conceals invariant state or unsupported confidence; reviewer merely repeats author oracle.",
+        "assigned_agent": null,
+        "actual_model": null,
+        "actual_host": null,
+        "issued": false
+      },
+      "disposition": "merged",
+      "r3_tasks": [
+        "S08"
+      ],
+      "reason_and_preserved_work": "Merge independent scientific product review into rich sociological qualification; person/parent/narrative review deferred after seam."
+    },
+    {
+      "r2_id": "T10",
+      "r2_task_exact": {
+        "id": "T10",
+        "title": "Full PRE-V3 estate certificate",
+        "depends_on": [
+          "T05",
+          "T06",
+          "T07",
+          "T08"
+        ],
+        "owner_role": "Whole-estate integration/review owners",
+        "timebox": "Parallel completion track",
+        "work": "Conserve F1\u2013F8, AT01\u2013AT35, exact35 and Long Memory function debts; complete original operations and terminal consumers.",
+        "exit": "Independent exact full-estate certificate; no fixture/global test multiplied across waves.",
+        "hostile": "Counts substitute for products; unreached telemetry invented; narrower prototype declared full completion.",
+        "assigned_agent": null,
+        "actual_model": null,
+        "actual_host": null,
+        "issued": false
+      },
+      "disposition": "retained",
+      "r3_tasks": [
+        "S09"
+      ],
+      "reason_and_preserved_work": "Preserve full35, F1\u2013F8, AT01\u2013AT35 and inherited function debts; endpoint corrected to seam."
+    },
+    {
+      "r2_id": "T11",
+      "r2_task_exact": {
+        "id": "T11",
+        "title": "Full production activation decision",
+        "depends_on": [
+          "T09",
+          "T10"
+        ],
+        "owner_role": "Project owner and competent release authority",
+        "timebox": "Separate final decision",
+        "work": "Review full certificate, product evidence, runtime custody and support/recovery plan.",
+        "exit": "Explicit full-production activation decision; bounded prototype approval is not automatically full activation.",
+        "hostile": "Silent scope escalation from prototype, stale exact candidate or self-adoption.",
+        "assigned_agent": null,
+        "actual_model": null,
+        "actual_host": null,
+        "issued": false
+      },
+      "disposition": "deferred-after-seam",
+      "r3_tasks": [
+        "S10"
+      ],
+      "reason_and_preserved_work": "Full Rawlsing activation is deferred. S10 records PRE-V3 readiness only; it does not activate downstream runtime."
+    }
+  ]
+}

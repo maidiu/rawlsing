@@ -1,0 +1,735 @@
+{
+  "contract_version": "R3_S02_SOCIOLOGICAL_SEAM_WITNESS@1.0.0",
+  "bundle_id": "R3_S00_S02_BUNDLE_001",
+  "bundle_content_hash": "9dc9509489dd3a18491ecddd90ff68882f0708b3bc1b2c01d14ca8e3fa161894",
+  "replay_verified": true,
+  "consumer_receipt": {
+    "consumer_ref": "R3_CONTRACT_ONLY_SEAM_CONSUMER@1.0.0",
+    "requested_scope": "R3_S00_S02_BUNDLE_001",
+    "values_read": [
+      {
+        "receipt_id": "VRR_0001",
+        "channel_id": "CH_P_Y_given_A_0",
+        "value_hash": "dd0527a872f9d535be17180545103cac56a038263ef00dad90d4766710fd7a56",
+        "semantic_effect": "VALUE_READ_AND_USED",
+        "query_ref": "read_CH_P_Y_given_A_0"
+      },
+      {
+        "receipt_id": "VRR_0002",
+        "channel_id": "CH_P_Y_given_A_1",
+        "value_hash": "cb7eb461133455fd81aaf46c3b154a2f5275e181441471a065ec641b388756eb",
+        "semantic_effect": "VALUE_READ_AND_USED",
+        "query_ref": "read_CH_P_Y_given_A_1"
+      },
+      {
+        "receipt_id": "VRR_0003",
+        "channel_id": "CH_P_Y_given_A_B_0",
+        "value_hash": "03e49c7227112dc8b395c528a4e1dbf7e7acf7816d892cf7cb3cf265250b8c2c",
+        "semantic_effect": "VALUE_READ_AND_USED",
+        "query_ref": "read_CH_P_Y_given_A_B_0"
+      },
+      {
+        "receipt_id": "VRR_0004",
+        "channel_id": "CH_P_Y_given_A_B_1",
+        "value_hash": "039aaf5906fc966613f800413a7362ff7d5e5afc01cbcf1fc2b74f10b11a6c29",
+        "semantic_effect": "VALUE_READ_AND_USED",
+        "query_ref": "read_CH_P_Y_given_A_B_1"
+      },
+      {
+        "receipt_id": "VRR_0005",
+        "channel_id": "CH_P_Y_given_A_B_C_0",
+        "value_hash": "5ff13f887ead6857a3e8dc8c58ad106cc8ac353d71fc3e4c8a2798db8a980080",
+        "semantic_effect": "VALUE_READ_AND_USED",
+        "query_ref": "read_CH_P_Y_given_A_B_C_0"
+      },
+      {
+        "receipt_id": "VRR_0006",
+        "channel_id": "CH_P_Y_given_A_B_C_1",
+        "value_hash": "164c761edf3c4622b7a1e0c5928acefe6bf31efff3388e15ab230631841a9f8c",
+        "semantic_effect": "VALUE_READ_AND_USED",
+        "query_ref": "read_CH_P_Y_given_A_B_C_1"
+      }
+    ],
+    "scenario_results": {
+      "S00_SCENARIO_A_HIGH_DEMOCRACY_SUPPORT": {
+        "scenario_id": "S00_SCENARIO_A_HIGH_DEMOCRACY_SUPPORT",
+        "conditioning": [
+          "P_Y_given_A",
+          "P_Y_given_A_B"
+        ],
+        "channels_used": [
+          "CH_P_Y_given_A_0",
+          "CH_P_Y_given_A_1",
+          "CH_P_Y_given_A_B_0",
+          "CH_P_Y_given_A_B_1",
+          "CH_P_Y_given_A_B_C_0",
+          "CH_P_Y_given_A_B_C_1"
+        ],
+        "total_support": 112,
+        "distributions": [
+          {
+            "channel_id": "CH_P_Y_given_A_0",
+            "evidence_mode": "MEASURED",
+            "value": {
+              "step_id": "P_Y_given_A",
+              "conditioners": [
+                [
+                  "A",
+                  1
+                ]
+              ],
+              "cell": "0",
+              "raw_numerator_support": 14,
+              "raw_probability_exact_fraction": {
+                "$exact_fraction": [
+                  7,
+                  16
+                ]
+              }
+            },
+            "support": 32,
+            "units": "probability",
+            "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+            "test_origin": true
+          },
+          {
+            "channel_id": "CH_P_Y_given_A_1",
+            "evidence_mode": "MEASURED",
+            "value": {
+              "step_id": "P_Y_given_A",
+              "conditioners": [
+                [
+                  "A",
+                  1
+                ]
+              ],
+              "cell": "1",
+              "raw_numerator_support": 18,
+              "raw_probability_exact_fraction": {
+                "$exact_fraction": [
+                  9,
+                  16
+                ]
+              }
+            },
+            "support": 32,
+            "units": "probability",
+            "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+            "test_origin": true
+          },
+          {
+            "channel_id": "CH_P_Y_given_A_B_0",
+            "evidence_mode": "TRANSFORMED",
+            "value": {
+              "step_id": "P_Y_given_A_B",
+              "conditioners": [
+                [
+                  "A",
+                  1
+                ],
+                [
+                  "B",
+                  1
+                ]
+              ],
+              "cell": "0",
+              "raw_numerator_support": 6,
+              "raw_probability_exact_fraction": {
+                "$exact_fraction": [
+                  3,
+                  8
+                ]
+              }
+            },
+            "support": 16,
+            "units": "probability",
+            "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+            "test_origin": true
+          },
+          {
+            "channel_id": "CH_P_Y_given_A_B_1",
+            "evidence_mode": "TRANSFORMED",
+            "value": {
+              "step_id": "P_Y_given_A_B",
+              "conditioners": [
+                [
+                  "A",
+                  1
+                ],
+                [
+                  "B",
+                  1
+                ]
+              ],
+              "cell": "1",
+              "raw_numerator_support": 10,
+              "raw_probability_exact_fraction": {
+                "$exact_fraction": [
+                  5,
+                  8
+                ]
+              }
+            },
+            "support": 16,
+            "units": "probability",
+            "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+            "test_origin": true
+          },
+          {
+            "channel_id": "CH_P_Y_given_A_B_C_0",
+            "evidence_mode": "TRANSFORMED",
+            "value": {
+              "step_id": "P_Y_given_A_B_C",
+              "conditioners": [
+                [
+                  "A",
+                  1
+                ],
+                [
+                  "B",
+                  1
+                ],
+                [
+                  "C",
+                  1
+                ]
+              ],
+              "cell": "0",
+              "raw_numerator_support": 2,
+              "raw_probability_exact_fraction": {
+                "$exact_fraction": [
+                  1,
+                  4
+                ]
+              }
+            },
+            "support": 8,
+            "units": "probability",
+            "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+            "test_origin": true
+          },
+          {
+            "channel_id": "CH_P_Y_given_A_B_C_1",
+            "evidence_mode": "TRANSFORMED",
+            "value": {
+              "step_id": "P_Y_given_A_B_C",
+              "conditioners": [
+                [
+                  "A",
+                  1
+                ],
+                [
+                  "B",
+                  1
+                ],
+                [
+                  "C",
+                  1
+                ]
+              ],
+              "cell": "1",
+              "raw_numerator_support": 6,
+              "raw_probability_exact_fraction": {
+                "$exact_fraction": [
+                  3,
+                  4
+                ]
+              }
+            },
+            "support": 8,
+            "units": "probability",
+            "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+            "test_origin": true
+          }
+        ],
+        "status": "COMPUTED"
+      },
+      "S00_SCENARIO_B_LOW_DEMOCRACY_SUPPORT": {
+        "scenario_id": "S00_SCENARIO_B_LOW_DEMOCRACY_SUPPORT",
+        "conditioning": [
+          "P_Y_given_A_B",
+          "P_Y_given_A_B_C"
+        ],
+        "channels_used": [
+          "CH_P_Y_given_A_B_0",
+          "CH_P_Y_given_A_B_1",
+          "CH_P_Y_given_A_B_C_0",
+          "CH_P_Y_given_A_B_C_1"
+        ],
+        "total_support": 48,
+        "distributions": [
+          {
+            "channel_id": "CH_P_Y_given_A_B_0",
+            "evidence_mode": "TRANSFORMED",
+            "value": {
+              "step_id": "P_Y_given_A_B",
+              "conditioners": [
+                [
+                  "A",
+                  1
+                ],
+                [
+                  "B",
+                  1
+                ]
+              ],
+              "cell": "0",
+              "raw_numerator_support": 6,
+              "raw_probability_exact_fraction": {
+                "$exact_fraction": [
+                  3,
+                  8
+                ]
+              }
+            },
+            "support": 16,
+            "units": "probability",
+            "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+            "test_origin": true
+          },
+          {
+            "channel_id": "CH_P_Y_given_A_B_1",
+            "evidence_mode": "TRANSFORMED",
+            "value": {
+              "step_id": "P_Y_given_A_B",
+              "conditioners": [
+                [
+                  "A",
+                  1
+                ],
+                [
+                  "B",
+                  1
+                ]
+              ],
+              "cell": "1",
+              "raw_numerator_support": 10,
+              "raw_probability_exact_fraction": {
+                "$exact_fraction": [
+                  5,
+                  8
+                ]
+              }
+            },
+            "support": 16,
+            "units": "probability",
+            "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+            "test_origin": true
+          },
+          {
+            "channel_id": "CH_P_Y_given_A_B_C_0",
+            "evidence_mode": "TRANSFORMED",
+            "value": {
+              "step_id": "P_Y_given_A_B_C",
+              "conditioners": [
+                [
+                  "A",
+                  1
+                ],
+                [
+                  "B",
+                  1
+                ],
+                [
+                  "C",
+                  1
+                ]
+              ],
+              "cell": "0",
+              "raw_numerator_support": 2,
+              "raw_probability_exact_fraction": {
+                "$exact_fraction": [
+                  1,
+                  4
+                ]
+              }
+            },
+            "support": 8,
+            "units": "probability",
+            "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+            "test_origin": true
+          },
+          {
+            "channel_id": "CH_P_Y_given_A_B_C_1",
+            "evidence_mode": "TRANSFORMED",
+            "value": {
+              "step_id": "P_Y_given_A_B_C",
+              "conditioners": [
+                [
+                  "A",
+                  1
+                ],
+                [
+                  "B",
+                  1
+                ],
+                [
+                  "C",
+                  1
+                ]
+              ],
+              "cell": "1",
+              "raw_numerator_support": 6,
+              "raw_probability_exact_fraction": {
+                "$exact_fraction": [
+                  3,
+                  4
+                ]
+              }
+            },
+            "support": 8,
+            "units": "probability",
+            "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+            "test_origin": true
+          }
+        ],
+        "status": "COMPUTED"
+      }
+    },
+    "refused_fields": [],
+    "output_hash": "1a116d2263103b3f794b82838d5a774e2e8eba4e615cc69526274fb9c0a951d9"
+  },
+  "scenario_a": {
+    "scenario_id": "S00_SCENARIO_A_HIGH_DEMOCRACY_SUPPORT",
+    "conditioning": [
+      "P_Y_given_A",
+      "P_Y_given_A_B"
+    ],
+    "channels_used": [
+      "CH_P_Y_given_A_0",
+      "CH_P_Y_given_A_1",
+      "CH_P_Y_given_A_B_0",
+      "CH_P_Y_given_A_B_1",
+      "CH_P_Y_given_A_B_C_0",
+      "CH_P_Y_given_A_B_C_1"
+    ],
+    "total_support": 112,
+    "distributions": [
+      {
+        "channel_id": "CH_P_Y_given_A_0",
+        "evidence_mode": "MEASURED",
+        "value": {
+          "step_id": "P_Y_given_A",
+          "conditioners": [
+            [
+              "A",
+              1
+            ]
+          ],
+          "cell": "0",
+          "raw_numerator_support": 14,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              7,
+              16
+            ]
+          }
+        },
+        "support": 32,
+        "units": "probability",
+        "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+        "test_origin": true
+      },
+      {
+        "channel_id": "CH_P_Y_given_A_1",
+        "evidence_mode": "MEASURED",
+        "value": {
+          "step_id": "P_Y_given_A",
+          "conditioners": [
+            [
+              "A",
+              1
+            ]
+          ],
+          "cell": "1",
+          "raw_numerator_support": 18,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              9,
+              16
+            ]
+          }
+        },
+        "support": 32,
+        "units": "probability",
+        "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+        "test_origin": true
+      },
+      {
+        "channel_id": "CH_P_Y_given_A_B_0",
+        "evidence_mode": "TRANSFORMED",
+        "value": {
+          "step_id": "P_Y_given_A_B",
+          "conditioners": [
+            [
+              "A",
+              1
+            ],
+            [
+              "B",
+              1
+            ]
+          ],
+          "cell": "0",
+          "raw_numerator_support": 6,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              3,
+              8
+            ]
+          }
+        },
+        "support": 16,
+        "units": "probability",
+        "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+        "test_origin": true
+      },
+      {
+        "channel_id": "CH_P_Y_given_A_B_1",
+        "evidence_mode": "TRANSFORMED",
+        "value": {
+          "step_id": "P_Y_given_A_B",
+          "conditioners": [
+            [
+              "A",
+              1
+            ],
+            [
+              "B",
+              1
+            ]
+          ],
+          "cell": "1",
+          "raw_numerator_support": 10,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              5,
+              8
+            ]
+          }
+        },
+        "support": 16,
+        "units": "probability",
+        "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+        "test_origin": true
+      },
+      {
+        "channel_id": "CH_P_Y_given_A_B_C_0",
+        "evidence_mode": "TRANSFORMED",
+        "value": {
+          "step_id": "P_Y_given_A_B_C",
+          "conditioners": [
+            [
+              "A",
+              1
+            ],
+            [
+              "B",
+              1
+            ],
+            [
+              "C",
+              1
+            ]
+          ],
+          "cell": "0",
+          "raw_numerator_support": 2,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              1,
+              4
+            ]
+          }
+        },
+        "support": 8,
+        "units": "probability",
+        "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+        "test_origin": true
+      },
+      {
+        "channel_id": "CH_P_Y_given_A_B_C_1",
+        "evidence_mode": "TRANSFORMED",
+        "value": {
+          "step_id": "P_Y_given_A_B_C",
+          "conditioners": [
+            [
+              "A",
+              1
+            ],
+            [
+              "B",
+              1
+            ],
+            [
+              "C",
+              1
+            ]
+          ],
+          "cell": "1",
+          "raw_numerator_support": 6,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              3,
+              4
+            ]
+          }
+        },
+        "support": 8,
+        "units": "probability",
+        "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+        "test_origin": true
+      }
+    ],
+    "status": "COMPUTED"
+  },
+  "scenario_b": {
+    "scenario_id": "S00_SCENARIO_B_LOW_DEMOCRACY_SUPPORT",
+    "conditioning": [
+      "P_Y_given_A_B",
+      "P_Y_given_A_B_C"
+    ],
+    "channels_used": [
+      "CH_P_Y_given_A_B_0",
+      "CH_P_Y_given_A_B_1",
+      "CH_P_Y_given_A_B_C_0",
+      "CH_P_Y_given_A_B_C_1"
+    ],
+    "total_support": 48,
+    "distributions": [
+      {
+        "channel_id": "CH_P_Y_given_A_B_0",
+        "evidence_mode": "TRANSFORMED",
+        "value": {
+          "step_id": "P_Y_given_A_B",
+          "conditioners": [
+            [
+              "A",
+              1
+            ],
+            [
+              "B",
+              1
+            ]
+          ],
+          "cell": "0",
+          "raw_numerator_support": 6,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              3,
+              8
+            ]
+          }
+        },
+        "support": 16,
+        "units": "probability",
+        "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+        "test_origin": true
+      },
+      {
+        "channel_id": "CH_P_Y_given_A_B_1",
+        "evidence_mode": "TRANSFORMED",
+        "value": {
+          "step_id": "P_Y_given_A_B",
+          "conditioners": [
+            [
+              "A",
+              1
+            ],
+            [
+              "B",
+              1
+            ]
+          ],
+          "cell": "1",
+          "raw_numerator_support": 10,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              5,
+              8
+            ]
+          }
+        },
+        "support": 16,
+        "units": "probability",
+        "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+        "test_origin": true
+      },
+      {
+        "channel_id": "CH_P_Y_given_A_B_C_0",
+        "evidence_mode": "TRANSFORMED",
+        "value": {
+          "step_id": "P_Y_given_A_B_C",
+          "conditioners": [
+            [
+              "A",
+              1
+            ],
+            [
+              "B",
+              1
+            ],
+            [
+              "C",
+              1
+            ]
+          ],
+          "cell": "0",
+          "raw_numerator_support": 2,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              1,
+              4
+            ]
+          }
+        },
+        "support": 8,
+        "units": "probability",
+        "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+        "test_origin": true
+      },
+      {
+        "channel_id": "CH_P_Y_given_A_B_C_1",
+        "evidence_mode": "TRANSFORMED",
+        "value": {
+          "step_id": "P_Y_given_A_B_C",
+          "conditioners": [
+            [
+              "A",
+              1
+            ],
+            [
+              "B",
+              1
+            ],
+            [
+              "C",
+              1
+            ]
+          ],
+          "cell": "1",
+          "raw_numerator_support": 6,
+          "raw_probability_exact_fraction": {
+            "$exact_fraction": [
+              3,
+              4
+            ]
+          }
+        },
+        "support": 8,
+        "units": "probability",
+        "source_scope": "P04_SYNTHETIC_58_RESPONDENT_FIXTURE",
+        "test_origin": true
+      }
+    ],
+    "status": "COMPUTED"
+  },
+  "effects": {
+    "v3_invoked": false,
+    "v2_invoked": false,
+    "actor_created": false,
+    "biography_generated": false,
+    "parent_created": false,
+    "real_current_claim": false
+  },
+  "elapsed_seconds": 0.828
+}
