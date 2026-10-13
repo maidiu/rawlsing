@@ -1,0 +1,94 @@
+{
+ "schema": "PYAT_R3_HQ287_S00ER_NATIVE_SEAM_COURT@1",
+ "branch": "agent/reviewer-pyat-r3-hq287-s00er-native-seam-independent-r1",
+ "sealed_startup": "0ab4ada15aeacfc265db10a745957de07bd702c7",
+ "s00e_candidate": "ac75c6fc899804b226a0fbd22245cbe0030ce876",
+ "original_s00cr": "7f0d655ff98056bfe161e4947ef0f17add521db2",
+ "environment": {
+  "python": "3.11.3",
+  "pytest": "9.1.1",
+  "platform": "macOS 13.7.8 x86_64",
+  "model_identity_invented": false,
+  "paid_fallback_used": false
+ },
+ "test_file_identity": {
+  "original_s00c_54f14553": {
+   "sha256": "09ac3d24875007f1cbffd8f4cd8b3fd413ccaa7292c9f43f9d49225422f8dce1",
+   "bytes": 16264,
+   "test_functions": 27
+  },
+  "s00e_ac75c6fc": {
+   "sha256": "5a7d698b5df441410dfefbdff10c5f5d36e77fb6d0932502415cf7e8f9ff2d63",
+   "bytes": 17325,
+   "test_functions": 27
+  },
+  "byte_identical": false,
+  "modification": "ADDITIVE but representation-changing: adds raw_probability_exact_fraction and new self-rehashed/stale mutation blocks"
+ },
+ "implementation": {
+  "path": "rawlsing_next/r3_s02_seam_witness.py",
+  "sha256": "61f3ff039f18e9890c0ea7dd56215afcbfe22aa597e5d485c31077797380f0bd",
+  "source": "S00E ac75c6fc"
+ },
+ "runs": [
+  {
+   "id": "s00e_own_test",
+   "suite": "rawlsing_next/tests/test_r3_s02_seam_witness.py",
+   "passed": 27,
+   "failed": 0,
+   "exit": 0
+  },
+  {
+   "id": "s00e_overlay",
+   "suite": "rawlsing_next/tests/test_hq286_s00e_s00cr_overlay.py",
+   "passed": 18,
+   "failed": 0,
+   "exit": 0
+  },
+  {
+   "id": "ORIGINAL_READONLY_OVERLAY_vs_S00E",
+   "suite": "/tmp/s00er_overlay/tests/test_original_s00c_overlay.py",
+   "passed": 26,
+   "failed": 1,
+   "exit": 1,
+   "failing_case": "test_s00c_change_source_owned_synthetic_numeric_values_changes_result",
+   "failure": "KeyError: 'exact_probabilities' (line 311)"
+  }
+ ],
+ "central_result": "S00E's 45 green is achieved with its MODIFIED test file; the byte-original independent acceptance FAILS 1/27 against the S00E implementation",
+ "grade": "SOURCEFREE_HOLD__ORIGINAL_INDEPENDENT_ACCEPTANCE_NOT_PRESERVED",
+ "discrepancy_recorded": "commission describes a 16-test original file; reviewer measures 27 test functions \u2014 recorded, not silently adopted",
+ "fundamental_distinction": "local content hash != external source issuer; no producer authentication or scientific issuance claimed",
+ "reviewer_edits": {
+  "assertions": false,
+  "freeze_identity": false,
+  "implementation": false
+ },
+ "original_survey_data_read": false,
+ "gt2_scientific_hold": "PERSISTS",
+ "protected_current": false,
+ "canonical_merge": false,
+ "g0b": false,
+ "v3": false,
+ "deliverables": {
+  "00_RETURN.md": {
+   "sha256": "aaefdae21a8d5b43d04b56ea0e7bd2b68804097821c25e641acfaaa8808ef6f6",
+   "bytes": 5474
+  }
+ },
+ "repro": {
+  "ORIGINAL_s00c_test_r3_s02_seam_witness.py": {
+   "sha256": "09ac3d24875007f1cbffd8f4cd8b3fd413ccaa7292c9f43f9d49225422f8dce1",
+   "bytes": 16264
+  },
+  "S00E_modified_test_r3_s02_seam_witness.py": {
+   "sha256": "5a7d698b5df441410dfefbdff10c5f5d36e77fb6d0932502415cf7e8f9ff2d63",
+   "bytes": 17325
+  },
+  "original_overlay_vs_s00e.log": {
+   "sha256": "d4ddcfb3adc2ed0a4e722d9f3421af296b5e5665a399817299eb5c47fc9c2057",
+   "bytes": 547
+  }
+ },
+ "terminal": "PYAT_R3_HQ287_S00ER_NATIVE_SEAM_INDEPENDENT_COURT_COMPLETE__GITHUB_PUSHED"
+}
