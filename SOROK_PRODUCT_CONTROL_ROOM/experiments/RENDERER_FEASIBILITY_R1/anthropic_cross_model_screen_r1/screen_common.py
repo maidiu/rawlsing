@@ -110,7 +110,7 @@ def source_manifest(c):
     require(all((x["tier"],x["model"],x["case_id"],x["condition"])==shuffled[i]
                 and x["run_id"]==f"CMRUN-{i+1:04d}" and x["replicate"]==1
                 for i,x in enumerate(rows)),"NEW_SCHEDULE_NOT_REPRODUCIBLE")
-    comp=[("EXISTING_OPUS_R2","claude-opus-5-5",x["case_id"],x["condition"],x["run_id"])
+    comp=[("EXISTING_OPUS_R2","claude-opus-5-5",x["case_id"],x["condition"],x["source_run_id"])
           for x in selection["selected"]]
     comp += [("NEW_CROSS_MODEL",x["model"],x["case_id"],x["condition"],x["run_id"])
              for x in rows]
