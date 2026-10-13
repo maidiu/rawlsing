@@ -1,0 +1,90 @@
+{
+  "schema": "PYAT_HQ286_S03FR_F6_ORACLES_V1",
+  "candidate": "bb739fb6d60b40876566ec6320ff6eec2388e8cf",
+  "original_review": "34cc7bdb28664ecbc707528470c2b4397aa96f12",
+  "versioned_test": "rawlsing_next/tests/test_hq286_s03fr_f6_repair_court.py",
+  "no_original_review_edit": true,
+  "expected_sha256": "818638c937a9b1b64ac400dcb8e33337310f6c793417a1558f838edb01eb4841",
+  "candidate_git_blob": "b1b05e7d60f92357fb31cbea99e5b432415cc7b0",
+  "fixture_git_blob": "8e4902df9ef9e6fa63e8e28617543257b8d40b28",
+  "shared_git_blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+  "test_count": 13,
+  "run": false,
+  "command_proposed": "S03F_CANDIDATE_ROOT=<complete exact S03F tree> PYTHONPATH=<complete exact root> python3.11 -m pytest -q rawlsing_next/tests/test_hq286_s03fr_f6_repair_court.py",
+  "static_expectations": [
+    {
+      "case": "01",
+      "grade": "STATIC_EXPECT_PASS",
+      "why": "named categories match 27/50 3/20 11/100 1/5"
+    },
+    {
+      "case": "02",
+      "grade": "STATIC_EXPECT_PASS",
+      "why": "domain size mismatch after missing joint cell"
+    },
+    {
+      "case": "03",
+      "grade": "STATIC_EXPECT_PASS",
+      "why": "explicit native zero cell must be present; dropping zero refuses"
+    },
+    {
+      "case": "04",
+      "grade": "STATIC_EXPECT_PASS",
+      "why": "self conditioning status descriptive"
+    },
+    {
+      "case": "05",
+      "grade": "STATIC_EXPECT_PASS",
+      "why": "non-self conditional exact inferred 18/23"
+    },
+    {
+      "case": "06",
+      "grade": "STATIC_EXPECT_PASS",
+      "why": "baseline retained and candidate inferred"
+    },
+    {
+      "case": "07",
+      "grade": "STATIC_EXPECT_PASS",
+      "why": "minority uncovered 1/5 and no full target distribution"
+    },
+    {
+      "case": "08",
+      "grade": "STATIC_EXPECT_PASS",
+      "why": "sampling design variance none => UNKNOWN_DESIGN"
+    },
+    {
+      "case": "09",
+      "grade": "STATIC_EXPECT_PASS",
+      "why": "opposite same margins different same-person joint"
+    },
+    {
+      "case": "10",
+      "grade": "STATIC_EXPECT_PASS",
+      "why": "unknown category unavailable"
+    },
+    {
+      "case": "11",
+      "grade": "STATIC_EXPECT_FAIL",
+      "why": "positional category order differs from frozen consumer expectation; no implicit normalization"
+    },
+    {
+      "case": "12",
+      "grade": "STATIC_EXPECT_PASS",
+      "why": "real source missing issuer rejected"
+    },
+    {
+      "case": "13",
+      "grade": "STATIC_EXPECT_PASS",
+      "why": "self-declared smaller domain changes synthetic input and is not original-domain warrant"
+    }
+  ],
+  "explicitly_not_claimed": [
+    "pytest execution",
+    "real-source completeness",
+    "external issuer",
+    "EE13",
+    "V3",
+    "production selected world",
+    "passing strict order oracle"
+  ]
+}
