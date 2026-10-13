@@ -1,0 +1,66 @@
+{
+ "schema": "PYAT_R3_S05J_MANIFEST@1",
+ "branch": "agent/rabochii-pyat-r3-s05j-p01-integrated-succession-r1",
+ "canonical_base": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+ "p01_candidate_commit": "3f91dc22d2eb863bc1d2facccfd33e6c05349503",
+ "s05_diagnostic": "4602c0e957949b40bd40a6c37a62c21401d2a310",
+ "astra_r3": "88d3c40def26d34ff202258171c256dfa9d17dbb",
+ "p01_reviewed_integration_candidate": "73d45f3ac6a50fbee6666ad3a5023840f01ef196",
+ "integration_module_blob": "dc146e920909c8577b5c3c316cd9a8631e96ffd8",
+ "integration_suite": {
+  "file": "test_pre553_v2_durable_consumer_integration_candidate.py",
+  "passed": 25,
+  "failed": 0,
+  "exit_code": 0
+ },
+ "succession": {
+  "added_files": 14,
+  "shared_files": 339,
+  "shared_files_modified": 0,
+  "is_descendant_of_base": false,
+  "kind": "BOUNDED_ADDITIVE_SUCCESSION_NOT_A_MERGE",
+  "file_list": "repro/succession_file_list.txt"
+ },
+ "NOT_CLAIMED": {
+  "sibling_suites_in_partial_tree": "86 failed / 83 passed / 6 skipped \u2014 recorded as NOT GRADED (partial diverged-lineage checkout), neither PASS nor candidate defect",
+  "full_lineage_run": "NOT PERFORMED",
+  "real_source_execution": "NOT AUTHORISED"
+ },
+ "review_requirements": [
+  "independent review of the composed module dc146e92 at 73d45f3a",
+  "full-lineage run of all five suites",
+  "verify the durable core in the succession is the B01D fail-closed revision",
+  "E-custody provenance hold persists (no external custodian)",
+  "no source/principal/CURRENT claim from a source-free 25/25"
+ ],
+ "deliverables": {
+  "00_RETURN.md": {
+   "sha256": "9c993c528e18dc197ef0d5a4b42230c04f93006ba95904671965e88c3cd1916f",
+   "bytes": 5976
+  }
+ },
+ "repro": {
+  "aggregate.log": {
+   "sha256": "b2a2816a0926fdd4cd401e41c66a2b7d67b7eeb9a6889cd1d6dc5a00a0668658",
+   "bytes": 185
+  },
+  "aggregate_head.log": {
+   "sha256": "b2a2816a0926fdd4cd401e41c66a2b7d67b7eeb9a6889cd1d6dc5a00a0668658",
+   "bytes": 185
+  },
+  "integration_suite.log": {
+   "sha256": "0dad42be7bd2d0b76916f5f77c424819d2e6e76b60e8caf2aa77631d3e4f24de",
+   "bytes": 99
+  },
+  "succession_file_list.txt": {
+   "sha256": "0bb261df94e2a4aad4617a67c54e9401f28bb88f2fb381518e28437d7e5e6f9f",
+   "bytes": 950
+  }
+ },
+ "new_planner_written": false,
+ "canonical_merge": false,
+ "accepted_owner_edited": false,
+ "raw_source_read": false,
+ "no_self_adoption": true,
+ "terminal": "PYAT_R3_S05J_P01_INTEGRATED_SUCCESSION_PROVEN__GITHUB_PUSHED"
+}
