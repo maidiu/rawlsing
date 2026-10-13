@@ -1,0 +1,164 @@
+{
+  "schema": "PYAT_R3_HQ290_S00V3R_OFFLINE_DURABLE_PRODUCER_CUSTODY_HOSTILES@1.0.0",
+  "status": "INDEPENDENT_PRE_RESULT_DOCUMENTARY_FROZEN__NOT_EXECUTED__NONADOPTING",
+  "source": {
+    "commission": "bd35da26db26166edcd05f8a8a225d8d3d8009d7",
+    "s00v2": "5e6e802f5f13e559a5b5c781ab6fa4ceb3cc97da",
+    "i01r": "473b7997d1b446c54a2d8688f94053b6c8670881",
+    "s00m": "52dd12ce6c45548a5ae87c030b9f0a58d95d0b39",
+    "p04": "c98e888166a941a06ad694411911bc58f9c4639b",
+    "canonical": "7f29aec36d24f16da52d84f17c00f08db3a55434"
+  },
+  "pinned_static_authority": {
+    "p04_selected_world": {
+      "git_blob": "e9caea543bcc4e1418905f1442d2c7c97eef04b2",
+      "sha256": "6608ffe1c19e7ec889541cfe4f6f50fda7ab21a1871d42b19b92e1742875a0e3"
+    },
+    "p04_progressive": {
+      "git_blob": "84d404147547767be8ecd4b6e1541f5fa3a8c8a2",
+      "sha256": "78f85aea938e9a087167af2938ab11aabbf5a731e852194f021918cf21044c8d"
+    },
+    "i01_source": {
+      "git_blob": "1e26a60d985ef489e62d01cf4020f3202f2f774f",
+      "source_ref": "473b7997d1b446c54a2d8688f94053b6c8670881"
+    },
+    "saved_artifact_sha256": "a5d1146a5bc0182a0232b1f59dda9ea78a35b4c42096c2fc938fc0cd8ebd7606",
+    "m2_release_sha256": "582317a6731c43d84959f7d0e74604f30bba4d49f3fe114f1afb07f63108d22a",
+    "p04": {
+      "population": 58,
+      "steps": [
+        "P_Y_given_A",
+        "P_Y_given_A_B",
+        "P_Y_given_A_B_C"
+      ],
+      "denominators": [
+        32,
+        16,
+        8
+      ],
+      "yes": [
+        18,
+        10,
+        6
+      ],
+      "no": [
+        14,
+        6,
+        2
+      ],
+      "fractions": [
+        "9/16",
+        "5/8",
+        "3/4"
+      ],
+      "selected_real_current": false,
+      "permission": "SOURCE_FREE_ONLY"
+    }
+  },
+  "law": {
+    "admission": "Original P04 synthetic producer may execute while admitting, but verification must compare exact complete count/fraction geometry, six channel identities, source/release/risk/query/target/producer-evidence refs, selected-world contract and scope to code-pinned independently frozen P04 commitments BEFORE persisting. Bind admission witness to exact saved payload byte digest plus P01 B01E COMMITTED receipt/checkpoint and M2 subject, release, B5 selection. Freeze trusted witness outside caller-supplied editable bundle; local trust is contingent on separate custody of pin/checkpoint and excludes external authentication.",
+    "serve": "Byte-verify saved artifact against exact pre-existing durable result ref, admission commitment and receipt; load exact saved bundle and validate complete count/fraction/root closure with pinned constants/commitment, compute conditional from saved raw values, verify saved numeric result and consumer receipts, and resolve local M2/B5. NEVER invoke producer constructors, select_world, run_progressive_chain, native synthetic builder, owner N10E/C1/F8 or call durable executor on serve.",
+    "trust_limitation": "A caller who controls artifact, pin, admission witness, checkpoint and code can forge all local hashes; local code-pinned sourcefree oracle and independent previously committed bytes are not original-survey custody or external signature. No cryptographic claim beyond precisely stated trust root."
+  },
+  "cases": [
+    {
+      "id": "O01",
+      "class": "ADMISSION",
+      "input": "valid pinned P04 producer and full synthetic oracle; one completed exact P01 job",
+      "expect": "admit exact byte-identical I01 saved world, COMMITTED receipt, selected world identity, release and 6-channel complete geometry; no external issuer"
+    },
+    {
+      "id": "O02",
+      "class": "PRODUCER_DISABLED_SERVE",
+      "input": "after valid save monkeypatch seam and P04 entrypoints to raise on every invocation",
+      "expect": "I01.serve still computes 9/16,5/8,3/4 from saved channels; same output and receipts; zero producer calls; S00V2 baseline EXPECTED_FAIL"
+    },
+    {
+      "id": "O03",
+      "class": "SAVED_BYTES",
+      "input": "byte-original saved artifact and distinct durable checkpoint; canonical digest read from disk",
+      "expect": "SHA256 exact a5d114... ; M2 release hash exactly 582317... ; matching durable COMMITTED result_ref, not only self-rehash"
+    },
+    {
+      "id": "O04",
+      "class": "ARTIFACT_BYTE_FORGERY",
+      "input": "flip one byte at current committed artifact path without changing ledger",
+      "expect": "typed refuse before computation; cannot rebuild from fixture"
+    },
+    {
+      "id": "O05",
+      "class": "ARTIFACT_REHASH_SUBSTITUTION",
+      "input": "change saved payload scope/channel, coherently rehash and write at new content-addressed path, substitute product.subject_ref but retain old committed receipt",
+      "expect": "typed refuse: COMMITTED result ref mismatch; no relearning"
+    },
+    {
+      "id": "O06",
+      "class": "DURABLE_RECEIPT_FORGERY",
+      "input": "mutate completed receipt/result_ref in stored checkpoint or index, even if JSON remains syntactically valid",
+      "expect": "typed durable torn/ref-substitution refusal; independent committed witness cannot be caller-replaced"
+    },
+    {
+      "id": "O07",
+      "class": "FULL_COHERENT_STALE_ROOT",
+      "input": "P04 Y0/Y1 count changed coherently, fractions/steps/supports all updated, self-hash replaced, but prior selected-world source/release/risk/evidence refs remain",
+      "expect": "typed PRODUCER_VALUE_IDENTITY_MISMATCH or equivalent even without producer execution; no VALUE_USED"
+    },
+    {
+      "id": "O08",
+      "class": "NEW_NATIVE_SYNTHETIC_LAW",
+      "input": "fresh 2x2 3/1 row vs 2/2 conditioned row rebuilt by native source-free builder and properly newly admitted",
+      "expect": "COMPUTED 3/4->1/2 with distinct source/release/risk roots; not an alteration of old committed P04 subject, not GT2"
+    },
+    {
+      "id": "O09",
+      "class": "MALFORMED_INCOMPLETE",
+      "input": "missing/duplicate category, channel, step, condition; missing/noncanonical/mismatched exact fraction, zero denominator; forged topology",
+      "expect": "typed refusal, complete domain exact, minority/uncertainty preserved; no uncaught error/value-used"
+    },
+    {
+      "id": "O10",
+      "class": "COLD_RESTART",
+      "input": "new process resumes preexisting checkpoint/index/artifact; producers disabled during numerical serve",
+      "expect": "zero durable callback/QUERY executions and exact saved output/receipts; initial restore may construct *query metadata* only if separately documented, not re-run progressive producer; stricter fully producer-disabled restart is desired separately"
+    },
+    {
+      "id": "O11",
+      "class": "INVALIDATED_ASOF",
+      "input": "commit invalidation then fresh restart",
+      "expect": "serve current -> NO_CURRENT; exact as-of historical selection resolves prior committed saved bytes/result/receipt; no resurrection/callback"
+    },
+    {
+      "id": "O12",
+      "class": "NO_CURRENT",
+      "input": "no committed selection, wrong release/empty index/invalid selection",
+      "expect": "typed no-current or selection/refusal, never silently build a synthetic world or CURRENT"
+    },
+    {
+      "id": "O13",
+      "class": "ORIGINAL_SOURCE_REFUSAL",
+      "input": "caller-provided GT2 19,210 coexposure/values/permission token or external issuer attempt",
+      "expect": "SOURCE_VALUE_UNAVAILABLE / EXTERNAL_ISSUER_HOLD; no survey data, real source, model-use or protected CURRENT"
+    },
+    {
+      "id": "O14",
+      "class": "CODE_PIN_SUBSTITUTION",
+      "input": "change local P04 source file or compute expectations from attacking bundle instead of sealed static pin",
+      "expect": "fail pin attestation or sourcefree producer identity before serve; no producer-run necessary"
+    }
+  ],
+  "expected_runtime": {
+    "s00v2_previous_i01r_26": "25 passed / 1 failed reported, producer-disabled test failure",
+    "s00v3r_this_court": "NOT_EXECUTED",
+    "qualified_executor_required": true
+  },
+  "versioning": "new candidate selector MUST name exact V3 source SHA256 and tested composite root; no prospective SHA invented, do not modify frozen S00C/S00CR/I01R",
+  "limits": [
+    "SOURCE_FREE_ONLY",
+    "LOCAL_UNAUTHENTICATED",
+    "NO_GT2_SCIENTIFIC_ADMISSION",
+    "NO_G0b",
+    "NO_V3",
+    "NO_PROTECTED_CURRENT",
+    "NO_CANONICAL_MERGE"
+  ]
+}
