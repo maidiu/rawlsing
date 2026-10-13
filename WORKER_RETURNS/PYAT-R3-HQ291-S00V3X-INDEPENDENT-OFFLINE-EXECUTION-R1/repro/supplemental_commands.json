@@ -1,0 +1,46 @@
+[
+  {
+    "argv": [
+      "/usr/local/bin/python3",
+      "WORKER_RETURNS/PYAT-R3-HQ291-S00V3X-INDEPENDENT-OFFLINE-EXECUTION-R1/repro/probe_index_refusals.py"
+    ],
+    "cwd": "/Users/matthewsmith/.codex/worktrees/hq291-s00v3x-independent/Rawlsing",
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPATH": "/Users/matthewsmith/.codex/worktrees/hq291-s00v3x-independent/Rawlsing/WORKER_RETURNS/PYAT-R3-HQ291-S00V3X-INDEPENDENT-OFFLINE-EXECUTION-R1/repro/composite"
+    },
+    "exit": 0
+  },
+  {
+    "argv": [
+      "/usr/local/bin/python3",
+      "WORKER_RETURNS/PYAT-R3-HQ291-S00V3X-INDEPENDENT-OFFLINE-EXECUTION-R1/repro/retain_product.py"
+    ],
+    "cwd": "/Users/matthewsmith/.codex/worktrees/hq291-s00v3x-independent/Rawlsing",
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPATH": "/Users/matthewsmith/.codex/worktrees/hq291-s00v3x-independent/Rawlsing/WORKER_RETURNS/PYAT-R3-HQ291-S00V3X-INDEPENDENT-OFFLINE-EXECUTION-R1/repro/composite"
+    },
+    "exit": 0
+  },
+  {
+    "argv": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "WORKER_RETURNS/PYAT-R3-HQ291-S00V3X-INDEPENDENT-OFFLINE-EXECUTION-R1/repro/test_hq291_s00v3x_typed_index.py",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "--junitxml=WORKER_RETURNS/PYAT-R3-HQ291-S00V3X-INDEPENDENT-OFFLINE-EXECUTION-R1/repro/s00v3x_typed_index.xml"
+    ],
+    "cwd": "/Users/matthewsmith/.codex/worktrees/hq291-s00v3x-independent/Rawlsing",
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPATH": "/Users/matthewsmith/.codex/worktrees/hq291-s00v3x-independent/Rawlsing/WORKER_RETURNS/PYAT-R3-HQ291-S00V3X-INDEPENDENT-OFFLINE-EXECUTION-R1/repro/composite"
+    },
+    "exit": 1,
+    "pre_execution_freeze_commit": "577f64fa1",
+    "resource_usage": "UNKNOWN"
+  }
+]

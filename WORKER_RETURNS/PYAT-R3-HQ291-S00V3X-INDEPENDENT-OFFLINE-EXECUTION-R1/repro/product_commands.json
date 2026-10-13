@@ -1,0 +1,24 @@
+[
+  {
+    "argv": [
+      "/usr/local/bin/python3",
+      "-c",
+      "import json,sys\nfrom rawlsing_next import pre553_i01_sourcefree_world_lifecycle_candidate as I\ncounts={}\nfor mod,name in [(I.selected,'select_world'),(I.progressive,'build_synthetic_world')]:\n native=getattr(mod,name)\n def spy(*a,_native=native,_name=name,**kw):counts[_name]=counts.get(_name,0)+1;return _native(*a,**kw)\n setattr(mod,name,spy)\np,report=I.build_product(sys.argv[1]);assert p.calls==[] and report['executed']==[]\ndef deny(*a,**kw):raise AssertionError('PRODUCER_ON_POST_RESTORE_SERVE')\nfor mod,names in [(I.selected,['select_world','run_selected_world_progressive_chain']),(I.progressive,['build_synthetic_world','run_progressive_chain']),(I.seam,['build_sociological_bundle','build_source_free_native_joint_bundle','build_synthetic_world','run_progressive_chain','select_world'])]:\n for name in names:setattr(mod,name,deny)\nif sys.argv[2]=='historical':\n try:I.serve(p)\n except I.I01Error as e:assert 'NO_CURRENT' in str(e)\n else:raise AssertionError('current resurrected')\n result=I.serve(p,historical=True)\nelse:result=I.serve(p)\nprint(json.dumps(dict(result=result,durable_callbacks=p.calls,executed=report['executed'],restore_setup_calls=counts),sort_keys=True))\n",
+      "/Users/matthewsmith/.codex/worktrees/hq291-s00v3x-independent/Rawlsing/WORKER_RETURNS/PYAT-R3-HQ291-S00V3X-INDEPENDENT-OFFLINE-EXECUTION-R1/repro/product",
+      "current"
+    ],
+    "cwd": "/Users/matthewsmith/.codex/worktrees/hq291-s00v3x-independent/Rawlsing",
+    "exit": 0
+  },
+  {
+    "argv": [
+      "/usr/local/bin/python3",
+      "-c",
+      "import json,sys\nfrom rawlsing_next import pre553_i01_sourcefree_world_lifecycle_candidate as I\ncounts={}\nfor mod,name in [(I.selected,'select_world'),(I.progressive,'build_synthetic_world')]:\n native=getattr(mod,name)\n def spy(*a,_native=native,_name=name,**kw):counts[_name]=counts.get(_name,0)+1;return _native(*a,**kw)\n setattr(mod,name,spy)\np,report=I.build_product(sys.argv[1]);assert p.calls==[] and report['executed']==[]\ndef deny(*a,**kw):raise AssertionError('PRODUCER_ON_POST_RESTORE_SERVE')\nfor mod,names in [(I.selected,['select_world','run_selected_world_progressive_chain']),(I.progressive,['build_synthetic_world','run_progressive_chain']),(I.seam,['build_sociological_bundle','build_source_free_native_joint_bundle','build_synthetic_world','run_progressive_chain','select_world'])]:\n for name in names:setattr(mod,name,deny)\nif sys.argv[2]=='historical':\n try:I.serve(p)\n except I.I01Error as e:assert 'NO_CURRENT' in str(e)\n else:raise AssertionError('current resurrected')\n result=I.serve(p,historical=True)\nelse:result=I.serve(p)\nprint(json.dumps(dict(result=result,durable_callbacks=p.calls,executed=report['executed'],restore_setup_calls=counts),sort_keys=True))\n",
+      "/Users/matthewsmith/.codex/worktrees/hq291-s00v3x-independent/Rawlsing/WORKER_RETURNS/PYAT-R3-HQ291-S00V3X-INDEPENDENT-OFFLINE-EXECUTION-R1/repro/product",
+      "historical"
+    ],
+    "cwd": "/Users/matthewsmith/.codex/worktrees/hq291-s00v3x-independent/Rawlsing",
+    "exit": 0
+  }
+]
