@@ -157,6 +157,12 @@ def report():
                         "WP":stats(groups[(model,"WP")])}
     secondary_diagnostics=[x for x in all_opus if x["replicate"] in (2,3)]
     secondary_status=Counter(x["corrected_referent_admission_status"] for x in secondary_diagnostics)
+    full_status=Counter(x["corrected_referent_admission_status"] for x in all_opus)
+    cells=defaultdict(list)
+    for x in all_opus:
+        cells[(x["case_id"],x["condition"])].append(
+            x["corrected_referent_admission_status"])
+    variable_cells=sum(len(set(values))>1 for values in cells.values())
     result={"kind":"RFA06C_EXPLICIT_POST_SEAL_UNBLINDED_REPORT",
             "score_seal_sha256":seal_record["score_sha256"],
             "primary_universe_n":60,"per_model_n":20,
