@@ -346,6 +346,18 @@ def atomic_new_json(path, value):
 
 
 def freeze_inputs(c, packet_hashes, payload_hashes, transport):
+    # Freeze every exact R2 user message and per-request provider grammar, not
+    # merely the source compiler. This makes the identity binding auditable.
+    compiled = {}
+    for run in execution_manifest(c) + [{"run_id": "R2SMOKE-0001", "case_id": "RF001",
+                                         "condition": "N", "replicate": 0}]:
+        request, request_hash, input_hash, _ = request_for(run, c, transport)
+        compiled[run["run_id"]] = {
+            "request_sha256": request_hash,
+            "message_sha256": input_hash,
+            "provider_schema_sha256": sha256(canonical(request["output_config"]["format"]["schema"])),
+            "fixture_id": run["case_id"],
+        }
     files = ("run_anthropic_renderer_court_r2.py", "court_common_r2.py",
              "validate_renderer_court_r2.py", "requirements.txt", "README.md",
              "ANTHROPIC_BINDING_RECEIPT_R2.md",
@@ -362,6 +374,8 @@ def freeze_inputs(c, packet_hashes, payload_hashes, transport):
         "packet_raw_sha256": packet_hashes, "model_payload_sha256": payload_hashes,
         "output_schema_sha256": file_sha256(HERE / c["output_schema_path"]),
         "api_transport_schema_sha256": sha256(canonical(transport)),
+        "compiled_request_bindings": compiled,
+        "transport_identity_contract": c["identity_instruction"],
         "file_sha256": {f: file_sha256(HERE / f) for f in files},
     }
 
