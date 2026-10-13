@@ -1,0 +1,5 @@
+Original frozen S00V3R 18/18, I01R 26/26, S00V2 71/71, author 12/12, P04 42/42, S00E overlay 18/18 and new reviewer 9/9 passed. Original S00C 26/27 and S00CR 12/16 retain historical RED. Unmodified S00E revised 26/27 also retains its stale-root expectation RED; that exact file is unchanged between accepted I01R and S00V3 commits.
+
+Additional index classification found forged selection_key_ref refuses with untyped StopIteration in accepted I01R restore_product. This does not compute or resurrect current, but fails a strict typed-refusal gate at the integrated product boundary. A separately versioned supplemental test is committed before execution; no source repair or original test alteration is authorized. Source-free S00V3 seam acceptance and full integrated typed-error readiness are therefore distinct verdicts.
+
+Initial assembly omitted five accepted I01R fixture imports and preflight stopped before court execution. complete_fixtures.py adds exact accepted Git bytes. Candidate selector and frozen test bytes remain identical to pre-execution commit 5798f545d. This setup correction never edits a frozen court.

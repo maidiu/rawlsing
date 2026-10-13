@@ -1,0 +1,34 @@
+......................F....                                              [100%]
+=================================== FAILURES ===================================
+____ test_s00c_change_source_owned_synthetic_numeric_values_changes_result _____
+
+    def test_s00c_change_source_owned_synthetic_numeric_values_changes_result():
+        from dataclasses import replace
+        from rawlsing_next.r3_s02_seam_witness import (
+            build_source_free_native_joint_bundle, _content_hash)
+        original = build_source_free_native_joint_bundle({
+            (0, 0): 3, (0, 1): 1, (1, 0): 1, (1, 1): 3,
+        })
+        before = ContractOnlySeamConsumer(original).compute_scenario(
+            "T", ["P_Q86A_given_Q86B_1"])
+        edited = []
+        for c in original.channels:
+            if c.channel_id in ("CH_P_Q86A_given_Q86B_1_0", "CH_P_Q86A_given_Q86B_1_1"):
+                value = dict(c.value)
+                value["raw_numerator_support"] = 2  # preserve denominator and source metadata
+                edited.append(replace(c, value=value))
+            else:
+                edited.append(c)
+        temporary = replace(original, channels=tuple(edited), content_hash="")
+        changed = replace(temporary, content_hash=_content_hash(temporary.as_dict()))
+        after = ContractOnlySeamConsumer(changed).compute_scenario(
+            "T", ["P_Q86A_given_Q86B_1"])
+        assert before["exact_probabilities"]["1"] == {"$exact_fraction": [3, 4]}
+>       assert after["exact_probabilities"]["1"] == {"$exact_fraction": [1, 2]}
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'exact_probabilities'
+
+../frozen/test_original_s00c_27.py:311: KeyError
+=========================== short test summary info ============================
+FAILED ../frozen/test_original_s00c_27.py::test_s00c_change_source_owned_synthetic_numeric_values_changes_result
+1 failed, 26 passed in 9.69s
