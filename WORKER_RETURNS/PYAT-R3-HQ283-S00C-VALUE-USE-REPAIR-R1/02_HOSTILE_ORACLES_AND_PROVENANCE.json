@@ -1,0 +1,173 @@
+{
+  "schema": "PYAT_HQ283_S00C_HOSTILE_EVIDENCE_PLAN@1",
+  "startup": "4e39e7bd59a559b981e776cd966b36e8c34cf190",
+  "commission_path": "WORKER_COMMISSIONS/PYAT-R3-HQ283-S00C-VALUE-USE-REPAIR-R1/00_COMMISSION.md",
+  "commission_blob": "dc06a5dd2b02241f5b8f3f86d3df046f68a75cea",
+  "frozen_author": "208bca30471710d48124a6b69ba467f240d8834b",
+  "independent_reviewer": "b91e2c9b2b15827027a0163431b440270c4f7692",
+  "p04": "c98e888166a941a06ad694411911bc58f9c4639b",
+  "canonical": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+  "execution": {
+    "machine": "Browser/GitHub only",
+    "pytest_executed": false,
+    "commands": [],
+    "exits": [],
+    "numeric_observations": "STATIC_SOURCE_DERIVED_EXPECTATIONS_NOT_EXECUTED",
+    "qualifying_host": "NOT_PRESENT"
+  },
+  "source_status": {
+    "synthetic": "SOURCE_FREE_SYNTHETIC",
+    "real_gt2": "SOURCE_VALUE_UNAVAILABLE__ISSUED_GT2_AGGREGATE_AND_USE_AUTHORITY_HOLD",
+    "gt2_carrying_original_counts": false,
+    "country11_coexposure19k": "REFERENCE_ONLY_NO_DENOMINATOR_ISSUANCE",
+    "respondent_data_executed": false,
+    "protected_current": false,
+    "v3": false
+  },
+  "oracles": [
+    {
+      "id": "T01",
+      "case": "P04 exact progressive A",
+      "denominator": 32,
+      "numerator_yes": 18,
+      "prob_yes": "9/16",
+      "expected": "COMPUTED_SOURCE_FREE"
+    },
+    {
+      "id": "T02",
+      "case": "P04 exact progressive AB",
+      "denominator": 16,
+      "numerator_yes": 10,
+      "prob_yes": "5/8",
+      "expected": "COMPUTED_SOURCE_FREE"
+    },
+    {
+      "id": "T03",
+      "case": "P04 exact progressive ABC",
+      "denominator": 8,
+      "numerator_yes": 6,
+      "prob_yes": "3/4",
+      "expected": "COMPUTED_SOURCE_FREE"
+    },
+    {
+      "id": "T04",
+      "case": "S02 previous overlap A trace",
+      "previous_illegal_support": 112,
+      "expected_final_denominator": 16,
+      "expected_trace": [
+        32,
+        16
+      ]
+    },
+    {
+      "id": "T05",
+      "case": "S02 previous overlap B trace",
+      "previous_illegal_support": 48,
+      "expected_final_denominator": 8,
+      "expected_trace": [
+        16,
+        8
+      ]
+    },
+    {
+      "id": "T06",
+      "case": "Equal margins different Q86B-Q86A joint",
+      "margins_x": [
+        4,
+        4
+      ],
+      "margins_y": [
+        4,
+        4
+      ],
+      "joint1": [
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "joint2": [
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "expected_cond_yes_given_x1": [
+        "3/4",
+        "1/4"
+      ],
+      "mode": "SYNTHETIC_TEST_ONLY"
+    },
+    {
+      "id": "T07",
+      "case": "Numerator mutation with constant row sum and metadata",
+      "before_yes": 3,
+      "after_yes": 2,
+      "denominator": 4,
+      "expected_prob": [
+        "3/4",
+        "1/2"
+      ],
+      "mode": "SYNTHETIC_TEST_ONLY"
+    },
+    {
+      "id": "T08",
+      "case": "Unrelated context mutation",
+      "expected": "SAME_NUMERIC_RESULT_AND_PROVENANCE_INPUT_REFS"
+    },
+    {
+      "id": "T09",
+      "case": "Foreign channel scope",
+      "expected": "REFUSED_SOURCE_SCOPE_OR_VALUE_ORIGIN_MISMATCH"
+    },
+    {
+      "id": "T10",
+      "case": "Wrong recorded risk",
+      "expected": "REFUSED_RISK_SET_OR_SELECTION_BINDING_MISMATCH"
+    },
+    {
+      "id": "T11",
+      "case": "Zero proper native conditioner subset",
+      "expected": "ZERO_SUPPORT_ZERO_DENOMINATOR_ABSTENTION"
+    },
+    {
+      "id": "T12",
+      "case": "False democracy/trust Q86 label",
+      "expected": "REFUSED_FALSE_S00_Q86_SOURCE_MEANING"
+    },
+    {
+      "id": "T13",
+      "case": "Caller-supplied fake GT2 and token",
+      "expected": "SeamContractError_SOURCE_VALUE_UNAVAILABLE"
+    },
+    {
+      "id": "T14",
+      "case": "Read without compute",
+      "expected": "VALUE_READ_ONLY"
+    },
+    {
+      "id": "T15",
+      "case": "Compute reads actual inputs",
+      "expected": "VALUE_USED_IN_EXACT_CONDITIONAL_PLUS_CHANGED_PROBABILITY"
+    },
+    {
+      "id": "T16",
+      "case": "Repeat receipt read",
+      "expected": "IDENTICAL_SELF_EXCLUDED_HASH"
+    }
+  ],
+  "new_test_count": 9,
+  "historical_reported_tests": 60,
+  "p04_tests_modified": 0,
+  "source_contract_modified": 0,
+  "tests_run": 0,
+  "scientific_completion": false
+}

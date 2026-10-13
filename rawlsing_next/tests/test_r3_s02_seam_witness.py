@@ -77,7 +77,7 @@ def test_consumer_reads_values_and_records_receipts():
     receipt = consumer.get_receipt()
     assert len(receipt.values_read) == 3
     for vr in receipt.values_read:
-        assert vr.semantic_effect == "VALUE_READ_AND_USED"
+        assert vr.semantic_effect == "VALUE_READ_ONLY"  # a lookup is not yet use
         assert vr.value_hash != ""
 
 
@@ -85,13 +85,13 @@ def test_consumer_computes_scenario_distributions():
     bundle = build_sociological_bundle()
     consumer = ContractOnlySeamConsumer(bundle)
     result = consumer.compute_scenario(
-        "S00_SCENARIO_A_HIGH_DEMOCRACY_SUPPORT",
+        "P04_SYNTHETIC_PROBABILITY_A",
         ["P_Y_given_A"],
     )
     assert result["status"] == "COMPUTED"
     assert len(result["channels_used"]) > 0
     receipt = consumer.get_receipt()
-    assert "S00_SCENARIO_A_HIGH_DEMOCRACY_SUPPORT" in receipt.scenario_results
+    assert "P04_SYNTHETIC_PROBABILITY_A" in receipt.scenario_results
 
 
 def test_consumer_refuses_unsupported_condition():
@@ -133,15 +133,24 @@ def test_full_witness_replay_is_deterministic():
 # S02: semantic differences (not merely changed hashes)
 # ==========================================================================
 def test_same_marginals_different_joints_produce_different_conditionals():
-    """Changing conditioning variables changes the conditional result."""
-    bundle = build_sociological_bundle()
-    consumer = ContractOnlySeamConsumer(bundle)
-    result_a = consumer.compute_scenario("A", ["P_Y_given_A"])
-    result_b = consumer.compute_scenario("B", ["P_Y_given_A_B"])
-    # Different conditioning produces different channel sets
-    assert result_a["channels_used"] != result_b["channels_used"]
-    # Unconditional marginals are stable
-    assert bundle.channels[0].support == 32  # first step denominator
+    """Same X/Y marginals but opposite X-Y joints change P(Y|X)."""
+    from rawlsing_next.r3_s02_seam_witness import build_source_free_native_joint_bundle
+    one = build_source_free_native_joint_bundle({
+        (0, 0): 3, (0, 1): 1, (1, 0): 1, (1, 1): 3,
+    })
+    two = build_source_free_native_joint_bundle({
+        (0, 0): 1, (0, 1): 3, (1, 0): 3, (1, 1): 1,
+    })
+    for x in (0, 1):
+        assert sum(v for (r, y), v in {
+            (0, 0): 3, (0, 1): 1, (1, 0): 1, (1, 1): 3}.items() if r == x) == 4
+    result_a = ContractOnlySeamConsumer(one).compute_scenario(
+        "NATIVE_SYNTH_A", ["P_Q86A_given_Q86B_1"])
+    result_b = ContractOnlySeamConsumer(two).compute_scenario(
+        "NATIVE_SYNTH_B", ["P_Q86A_given_Q86B_1"])
+    assert result_a["exact_probabilities"]["1"] == {"$exact_fraction": [3, 4]}
+    assert result_b["exact_probabilities"]["1"] == {"$exact_fraction": [1, 4]}
+    assert result_a["raw_denominator_support"] == result_b["raw_denominator_support"] == 4
 
 
 def test_cumulative_conditioning_narrows_denominator():
@@ -216,3 +225,143 @@ def test_no_raw_sav_dta():
     source = pathlib.Path(seam.__file__).read_text()
     for forbidden in (".sav", ".dta", "pyreadstat"):
         assert forbidden not in source
+
+
+# ==========================================================================
+# S00C independent frozen S00R repair hostiles (SOURCE FREE ONLY)
+# ==========================================================================
+def test_s00c_synthetic_bundle_never_claims_real_r5_or_measured_source():
+    bundle = build_sociological_bundle()
+    assert bundle.world_scope["status"] == "SOURCE_FREE_SYNTHETIC"
+    assert bundle.world_scope["qualified_real_source_value_read"] is False
+    assert "Afrobarometer" not in str(bundle.world_scope)
+    assert bundle.replay["source_permission"] == "SOURCE_FREE_ONLY"
+    assert all(c.test_origin and c.evidence_mode == "TRANSFORMED"
+               for c in bundle.channels)
+    assert run_seam_witness()["real_gt2_value_use"].startswith("SOURCE_VALUE_UNAVAILABLE")
+
+
+def test_s00c_false_frozen_s00_democracy_semantics_refused():
+    bundle = build_sociological_bundle()
+    result = ContractOnlySeamConsumer(bundle).compute_scenario(
+        "S00_SCENARIO_A_HIGH_DEMOCRACY_SUPPORT", ["P_Y_given_A"])
+    assert result["status"] == "REFUSED"
+    assert result["reason"] == "FALSE_S00_Q86_SOURCE_MEANING"
+
+
+def test_s00c_exact_32_16_8_denominators_not_112_or_48():
+    bundle = build_sociological_bundle()
+    consumer = ContractOnlySeamConsumer(bundle)
+    expected = (
+        ("P_Y_given_A", 32, [9, 16]),
+        ("P_Y_given_A_B", 16, [5, 8]),
+        ("P_Y_given_A_B_C", 8, [3, 4]),
+    )
+    for step, denom, fraction in expected:
+        result = consumer.compute_scenario("EXACT_" + step, [step])
+        assert result["status"] == "COMPUTED"
+        assert result["raw_denominator_support"] == denom
+        assert result["exact_probabilities"]["1"] == {"$exact_fraction": fraction}
+        assert result["raw_numerators"]["1"] > 0
+    a = consumer.compute_scenario("A_TRACE", ["P_Y_given_A", "P_Y_given_A_B"])
+    b = consumer.compute_scenario("B_TRACE", ["P_Y_given_A_B", "P_Y_given_A_B_C"])
+    assert (a["total_support"], b["total_support"]) == (16, 8)
+    assert [x["raw_denominator_support"] for x in a["progressive_trace"]] == [32, 16]
+    assert [x["raw_denominator_support"] for x in b["progressive_trace"]] == [16, 8]
+
+
+def test_s00c_unused_read_is_not_misrepresented_as_use():
+    bundle = build_sociological_bundle()
+    c = ContractOnlySeamConsumer(bundle)
+    c.read_value(bundle.channels[0].channel_id)
+    assert c.get_receipt().values_read[0].semantic_effect == "VALUE_READ_ONLY"
+    c.compute_scenario("EXACT_P04_USE", ["P_Y_given_A"])
+    receipt = c.get_receipt()
+    assert receipt.values_read[0].semantic_effect == "VALUE_READ_ONLY"
+    used = [x for x in receipt.values_read if x.semantic_effect == "VALUE_USED_IN_EXACT_CONDITIONAL"]
+    assert len(used) == 2
+    assert set(x.channel_id for x in used) == {
+        "CH_P_Y_given_A_0", "CH_P_Y_given_A_1"}
+    first_hash = receipt.output_hash
+    assert c.get_receipt().output_hash == first_hash
+
+
+def test_s00c_change_source_owned_synthetic_numeric_values_changes_result():
+    from dataclasses import replace
+    from rawlsing_next.r3_s02_seam_witness import (
+        build_source_free_native_joint_bundle, _content_hash)
+    original = build_source_free_native_joint_bundle({
+        (0, 0): 3, (0, 1): 1, (1, 0): 1, (1, 1): 3,
+    })
+    before = ContractOnlySeamConsumer(original).compute_scenario(
+        "T", ["P_Q86A_given_Q86B_1"])
+    edited = []
+    for c in original.channels:
+        if c.channel_id in ("CH_P_Q86A_given_Q86B_1_0", "CH_P_Q86A_given_Q86B_1_1"):
+            value = dict(c.value)
+            value["raw_numerator_support"] = 2  # preserve denominator and source metadata
+            edited.append(replace(c, value=value))
+        else:
+            edited.append(c)
+    temporary = replace(original, channels=tuple(edited), content_hash="")
+    changed = replace(temporary, content_hash=_content_hash(temporary.as_dict()))
+    after = ContractOnlySeamConsumer(changed).compute_scenario(
+        "T", ["P_Q86A_given_Q86B_1"])
+    assert before["exact_probabilities"]["1"] == {"$exact_fraction": [3, 4]}
+    assert after["exact_probabilities"]["1"] == {"$exact_fraction": [1, 2]}
+    assert before["raw_denominator_support"] == after["raw_denominator_support"] == 4
+    assert before["source_value_dependency"]["used_input_refs"] != after[
+        "source_value_dependency"]["used_input_refs"]
+
+
+def test_s00c_irrelevant_context_changes_stable_numeric_output():
+    from dataclasses import replace
+    from rawlsing_next.r3_s02_seam_witness import _content_hash
+    original = build_sociological_bundle()
+    scope = dict(original.world_scope)
+    scope["unrelated_test_note"] = "This is not a measured value"
+    temporary = replace(original, world_scope=scope, content_hash="")
+    changed = replace(temporary, content_hash=_content_hash(temporary.as_dict()))
+    a = ContractOnlySeamConsumer(original).compute_scenario("T", ["P_Y_given_A_B"])
+    b = ContractOnlySeamConsumer(changed).compute_scenario("T", ["P_Y_given_A_B"])
+    assert a == b
+
+
+def test_s00c_scope_and_risk_mismatch_both_typed_refusals():
+    from dataclasses import replace
+    from rawlsing_next.r3_s02_seam_witness import _content_hash
+    original = build_sociological_bundle()
+    bad = replace(original.channels[0], source_scope="FOREIGN_UNISSUED_SURVEY")
+    temporary = replace(original, channels=(bad,) + original.channels[1:],
+                        content_hash="")
+    wrong_scope = replace(temporary, content_hash=_content_hash(temporary.as_dict()))
+    r = ContractOnlySeamConsumer(wrong_scope).compute_scenario("T", ["P_Y_given_A"])
+    assert (r["status"], r["reason"]) == (
+        "REFUSED", "SOURCE_SCOPE_OR_VALUE_ORIGIN_MISMATCH")
+    cond = dict(original.conditions[0])
+    cond["risk_set_ref"] = {"forged_risk": True}
+    temporary = replace(original, conditions=(cond,) + original.conditions[1:],
+                        content_hash="")
+    wrong_risk = replace(temporary, content_hash=_content_hash(temporary.as_dict()))
+    r = ContractOnlySeamConsumer(wrong_risk).compute_scenario("T", ["P_Y_given_A"])
+    assert (r["status"], r["reason"]) == (
+        "REFUSED", "RISK_SET_OR_SELECTION_BINDING_MISMATCH")
+
+
+def test_s00c_zero_denominator_distinct_from_missing_channel():
+    from rawlsing_next.r3_s02_seam_witness import build_source_free_native_joint_bundle
+    zero = build_source_free_native_joint_bundle({
+        (0, 0): 2, (0, 1): 3, (1, 0): 0, (1, 1): 0,
+    })
+    r = ContractOnlySeamConsumer(zero).compute_scenario(
+        "SYNTH_ZERO", ["P_Q86A_given_Q86B_1"])
+    assert r["status"] == "ZERO_SUPPORT"
+    assert r["reason"] == "ZERO_DENOMINATOR_ABSTENTION"
+
+
+def test_s00c_unissued_real_gt2_never_accepts_arbitrary_dict_as_source():
+    from rawlsing_next.r3_s02_seam_witness import build_retained_gt2_bundle
+    with pytest.raises(SeamContractError, match="SOURCE_VALUE_UNAVAILABLE"):
+        build_retained_gt2_bundle(
+            issued_source_owned_values={"Q86B": 1, "Q86A": 1, "count": 19210},
+            issued_use_authority="FAKE_SIGNATURE")
