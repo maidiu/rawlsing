@@ -44,6 +44,7 @@ def is_terminal(record):
         "SCHEMA_VALID", "SCHEMA_INVALID", "JSON_PARSE_INVALID",
         "STRUCTURAL_INVALID", "MODEL_REFUSAL", "MODEL_TRUNCATED",
         "PROVIDER_SCHEMA_FAILURE", "PERMANENT_PROVIDER_FAILURE",
+        "PROVIDER_MODEL_MISMATCH",
         "NO_TEXT_CANDIDATE",
     }
 
@@ -148,7 +149,12 @@ def take_one(client, run, config, transport_schema, original_schema):
         receipt["provider_returned_model"] = raw.get("model")
         texts = [block.get("text") for block in raw.get("content", [])
                  if block.get("type") == "text" and isinstance(block.get("text"), str)]
-        if raw.get("stop_reason") == "refusal":
+        if raw.get("model") != config["model"]:
+            # A returned model mismatch is a captured provider result, not a
+            # license to substitute a different model or silently regenerate.
+            receipt["status"] = "PROVIDER_MODEL_MISMATCH"
+            receipt["parse_status"] = "MODEL_ID_MISMATCH"
+        elif raw.get("stop_reason") == "refusal":
             receipt["status"] = "MODEL_REFUSAL"
             receipt["parse_status"] = "REFUSAL_EVIDENCE"
         elif raw.get("stop_reason") == "max_tokens":
