@@ -1,0 +1,42 @@
+{
+  "origin": "SYNTHETIC_ONLY",
+  "frozen_before_comparison_script": "yes; after implementation and first unit run, writer-authored, not external custody",
+  "same_target_validation_counts": [
+    540,
+    150,
+    110,
+    200
+  ],
+  "invariant_target_law": {
+    "majority": [
+      "13/20",
+      "3/20",
+      "1/10",
+      "1/10"
+    ],
+    "minority": [
+      "1/10",
+      "3/20",
+      "3/20",
+      "3/5"
+    ]
+  },
+  "source_B_heldout_counts": [
+    20,
+    20,
+    18,
+    42
+  ],
+  "adverse_target_counts": [
+    100,
+    100,
+    100,
+    700
+  ],
+  "criteria": {
+    "primary": "total variation at identical heldout target; source-indexed tables retained",
+    "subgroup": "report majority and minority TV separately; no minority deletion",
+    "cost": "time and peak RSS for bounded comparison",
+    "decision": "retain baseline for real sources unless target/permissions and independent review establish valid transport; synthetic success alone cannot replace baseline"
+  }
+}
