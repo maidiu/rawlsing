@@ -1,0 +1,217 @@
+{
+  "schema": "PYAT_HQ284_S00CR_PRE_AUTHOR_TEST_INDEPENDENT_HOSTILE_ORACLES@1",
+  "commission_sha": "9abd16770ac600f16466535d0049ca7938445f84",
+  "candidate_sha": "54f145538ed0880f8257368f838baa5b0e12e2d3",
+  "reviewer_base": "9abd16770ac600f16466535d0049ca7938445f84",
+  "authority_grade": "DOCUMENTARY_STATIC_ORACLE_ONLY__NOT_PYTEST",
+  "freeze_scope": "independent expectations authored after inspecting candidate runtime code, accepted P04 and frozen S00R but before reading S00C authored test module",
+  "prior_oracle": "b91e2c9b2b15827027a0163431b440270c4f7692",
+  "actual_executed_tests": 0,
+  "hostiles": [
+    {
+      "id": "R01",
+      "cls": "P04_OWNER_RISK",
+      "oracle": "P04 A,AB,ABC must compute exact denominator 32,16,8 and fractions 9/16,5/8,3/4",
+      "static_prediction": "PASS_EXPECTED_CODE__RUNTIME_UNOBSERVED",
+      "runtime_status": "NOT_EXECUTED",
+      "independence": "ORACLE_EXPECTATION_NOT_CANDIDATE_TEST_ASSERTION"
+    },
+    {
+      "id": "R02",
+      "cls": "OVERLAP_NO_DUPLICATION",
+      "oracle": "Trace A->AB final denominator 16, AB->ABC final 8, never 112 or 48",
+      "static_prediction": "PASS_EXPECTED_CODE__RUNTIME_UNOBSERVED",
+      "runtime_status": "NOT_EXECUTED",
+      "independence": "ORACLE_EXPECTATION_NOT_CANDIDATE_TEST_ASSERTION"
+    },
+    {
+      "id": "R03",
+      "cls": "READ_TO_ARITHMETIC",
+      "oracle": "Numeric result and used input refs must derive from retrieved raw_numerator_support, not independently from receipt hash",
+      "static_prediction": "PASS_EXPECTED_CODE__RUNTIME_UNOBSERVED",
+      "runtime_status": "NOT_EXECUTED",
+      "independence": "ORACLE_EXPECTATION_NOT_CANDIDATE_TEST_ASSERTION"
+    },
+    {
+      "id": "R04",
+      "cls": "UNCONSUMED_READ",
+      "oracle": "Read-only lookup remains VALUE_READ_ONLY after unrelated scenario",
+      "static_prediction": "PASS_EXPECTED_CODE__RUNTIME_UNOBSERVED",
+      "runtime_status": "NOT_EXECUTED",
+      "independence": "ORACLE_EXPECTATION_NOT_CANDIDATE_TEST_ASSERTION"
+    },
+    {
+      "id": "R05",
+      "cls": "NUMERIC_CELL_MUTATION",
+      "oracle": "Changing synthetic conditioned Y Yes from 3->2 and No from 1->2 at fixed d=4 changes probability 3/4->1/2",
+      "static_prediction": "PASS_EXPECTED_CODE__RUNTIME_UNOBSERVED",
+      "runtime_status": "NOT_EXECUTED",
+      "independence": "ORACLE_EXPECTATION_NOT_CANDIDATE_TEST_ASSERTION"
+    },
+    {
+      "id": "R06",
+      "cls": "IRRELEVANT_CHANNEL_INVARIANCE",
+      "oracle": "Editing an unconsumed channel with a rehashed synthetic bundle does not change unrelated exact conditional numeric values",
+      "static_prediction": "PASS_EXPECTED_CODE__RUNTIME_UNOBSERVED",
+      "runtime_status": "NOT_EXECUTED",
+      "independence": "ORACLE_EXPECTATION_NOT_CANDIDATE_TEST_ASSERTION"
+    },
+    {
+      "id": "R07",
+      "cls": "OPPOSITE_JOINT_SAME_MARGINALS",
+      "oracle": "[[3,1],[1,3]] vs [[1,3],[3,1]] preserve marginals 4/4 but Y1|X1=3/4 vs 1/4",
+      "static_prediction": "PASS_EXPECTED_CODE__RUNTIME_UNOBSERVED",
+      "runtime_status": "NOT_EXECUTED",
+      "independence": "ORACLE_EXPECTATION_NOT_CANDIDATE_TEST_ASSERTION"
+    },
+    {
+      "id": "R08",
+      "cls": "SCOPE_MISMATCH",
+      "oracle": "Wrong channel source_scope fails with SOURCE_SCOPE_OR_VALUE_ORIGIN_MISMATCH",
+      "static_prediction": "PASS_EXPECTED_CODE__RUNTIME_UNOBSERVED",
+      "runtime_status": "NOT_EXECUTED",
+      "independence": "ORACLE_EXPECTATION_NOT_CANDIDATE_TEST_ASSERTION"
+    },
+    {
+      "id": "R09",
+      "cls": "RISK_MISMATCH",
+      "oracle": "Wrong conditions[].risk_set_ref must fail RISK_SET_OR_SELECTION_BINDING_MISMATCH",
+      "static_prediction": "PASS_EXPECTED_CODE__RUNTIME_UNOBSERVED",
+      "runtime_status": "NOT_EXECUTED",
+      "independence": "ORACLE_EXPECTATION_NOT_CANDIDATE_TEST_ASSERTION"
+    },
+    {
+      "id": "R10",
+      "cls": "ZERO_SUPPORT",
+      "oracle": "Zero qualified synthetic conditioner risk must return ZERO_SUPPORT/ZERO_DENOMINATOR_ABSTENTION",
+      "static_prediction": "PASS_EXPECTED_CODE__RUNTIME_UNOBSERVED",
+      "runtime_status": "NOT_EXECUTED",
+      "independence": "ORACLE_EXPECTATION_NOT_CANDIDATE_TEST_ASSERTION"
+    },
+    {
+      "id": "R11",
+      "cls": "REPLAY_HASH",
+      "oracle": "Identical synthetic selected world gives identical content hash; repeated receipt hashes are stable under no new effects",
+      "static_prediction": "PASS_EXPECTED_CODE__RUNTIME_UNOBSERVED",
+      "runtime_status": "NOT_EXECUTED",
+      "independence": "ORACLE_EXPECTATION_NOT_CANDIDATE_TEST_ASSERTION"
+    },
+    {
+      "id": "R12",
+      "cls": "FAKE_SOURCE_ISSUER",
+      "oracle": "build_retained_gt2_bundle with arbitrary values/token always refuses SOURCE_VALUE_UNAVAILABLE",
+      "static_prediction": "PASS_EXPECTED_CODE__RUNTIME_UNOBSERVED",
+      "runtime_status": "NOT_EXECUTED",
+      "independence": "ORACLE_EXPECTATION_NOT_CANDIDATE_TEST_ASSERTION"
+    },
+    {
+      "id": "R13",
+      "cls": "OLD_S00_SEMANTIC_PROHIBITION",
+      "oracle": "Old exact democracy/trust scenario IDs must refuse; original manifest must not be treated as source permission",
+      "static_prediction": "PASS_EXPECTED_CODE__RUNTIME_UNOBSERVED",
+      "runtime_status": "NOT_EXECUTED",
+      "independence": "ORACLE_EXPECTATION_NOT_CANDIDATE_TEST_ASSERTION"
+    },
+    {
+      "id": "R14",
+      "cls": "CASEFOLD_SCENARIO_SEMANTICS",
+      "oracle": "Mixed-case democracy/trust scenario label must also refuse; caller text cannot evade exact uppercase sentinel",
+      "static_prediction": "FAIL_EXPECTED_CODE__RUNTIME_UNOBSERVED",
+      "runtime_status": "NOT_EXECUTED",
+      "independence": "ORACLE_EXPECTATION_NOT_CANDIDATE_TEST_ASSERTION"
+    },
+    {
+      "id": "R15",
+      "cls": "NUMERIC_PRECOMPUTED_FRACTION_CLOSURE",
+      "oracle": "Declared channel raw_probability_exact_fraction must equal recomputed numerator/denominator or refuse",
+      "static_prediction": "FAIL_EXPECTED_CODE__RUNTIME_UNOBSERVED",
+      "runtime_status": "NOT_EXECUTED",
+      "independence": "ORACLE_EXPECTATION_NOT_CANDIDATE_TEST_ASSERTION"
+    },
+    {
+      "id": "R16",
+      "cls": "STEPS_MATERIAL_CLOSURE",
+      "oracle": "Bundle steps[].cells and conditions[].denominator must match read source values; rehashing contradictory steps may not silently succeed",
+      "static_prediction": "FAIL_EXPECTED_CODE__RUNTIME_UNOBSERVED",
+      "runtime_status": "NOT_EXECUTED",
+      "independence": "ORACLE_EXPECTATION_NOT_CANDIDATE_TEST_ASSERTION"
+    },
+    {
+      "id": "R17",
+      "cls": "SELECTED_WORLD_VALUE_BINDING",
+      "oracle": "Changing counts and rehashing a bundle while preserving selected-world synthetic contract/release risk and claimed producer evidence refs must fail provenance/replay closure",
+      "static_prediction": "FAIL_EXPECTED_CODE__RUNTIME_UNOBSERVED",
+      "runtime_status": "NOT_EXECUTED",
+      "independence": "ORACLE_EXPECTATION_NOT_CANDIDATE_TEST_ASSERTION"
+    },
+    {
+      "id": "R18",
+      "cls": "NO_ORIGINAL_RIGHTS",
+      "oracle": "No 19,210 cohort as substantive denominator, no native 1–4 Likert, no source model-use grant, actor or V3",
+      "static_prediction": "PASS_EXPECTED_CODE__RUNTIME_UNOBSERVED",
+      "runtime_status": "NOT_EXECUTED",
+      "independence": "ORACLE_EXPECTATION_NOT_CANDIDATE_TEST_ASSERTION"
+    }
+  ],
+  "numeric_oracle": {
+    "p04": {
+      "denominators": [
+        32,
+        16,
+        8
+      ],
+      "yes": [
+        18,
+        10,
+        6
+      ],
+      "fractions": [
+        "9/16",
+        "5/8",
+        "3/4"
+      ],
+      "scenario_final": [
+        16,
+        8
+      ]
+    },
+    "native_synth": {
+      "joint1": [
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "joint2": [
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "x_marginal": [
+        4,
+        4
+      ],
+      "y_marginal": [
+        4,
+        4
+      ],
+      "conditioner": "Q86B=1",
+      "target": "Q86A=1",
+      "probabilities": [
+        "3/4",
+        "1/4"
+      ]
+    }
+  },
+  "mandatory_holder": "HQ284 L01 qualified worktree executor separate from Browser/GitHub reviewer",
+  "limits": "No canonical change, no original respondent data or actual retained GT2 aggregate read, no V3 and no protected CURRENT."
+}
