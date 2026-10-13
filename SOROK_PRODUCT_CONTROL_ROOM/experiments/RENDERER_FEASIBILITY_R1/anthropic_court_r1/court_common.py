@@ -103,7 +103,14 @@ def transport_schema(s):
             return [convert(v) for v in obj]
         if not isinstance(obj, dict):
             return obj
-        result = {k: convert(v) for k, v in obj.items() if k in allowed}
+        result = {}
+        for k, v in obj.items():
+            if k in ("properties", "$defs", "definitions"):
+                # Keys in a schema's property/definition table are field names,
+                # not JSON Schema keywords; NEVER filter those names.
+                result[k] = {name: convert(member) for name, member in v.items()}
+            elif k in allowed:
+                result[k] = convert(v)
         extra = {k: obj[k] for k in nontransport if k in obj}
         if extra:
             # The same schema guidance goes to both arms. Full constraint validation
