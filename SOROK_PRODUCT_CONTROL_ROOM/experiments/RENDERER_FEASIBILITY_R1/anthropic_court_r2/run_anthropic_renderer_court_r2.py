@@ -269,7 +269,7 @@ def main():
     group.add_argument("--export-blinded", action="store_true", help="Offline scoring export without condition metadata")
     parser.add_argument("--count-tokens", action="store_true",
                         help="With --preflight only: explicitly contact non-generative provider count-tokens API")
-    parser.add_argument("--force-rerun", metavar="RUN-XXXX",
+    parser.add_argument("--force-rerun", metavar="R2RUN-XXXX",
                         help="Explicitly create a new attempt for ONE primary run (never overwrite)")
     args = parser.parse_args()
     require(not args.count_tokens or args.preflight, "--count-tokens requires --preflight")
@@ -313,7 +313,7 @@ def main():
     if args.smoke:
         smoke = {"run_id": "R2SMOKE-0001", "case_id": "RF001", "condition": "N", "replicate": 0}
         if latest_terminal(smoke["run_id"]):
-            print("SMOKE-0001 already completed; no duplicate probe.")
+            print("R2SMOKE-0001 already completed; no duplicate probe.")
         else:
             take_one(client, smoke, c, transport, orig)
         require_r2_smoke_pass()
