@@ -118,6 +118,10 @@ def transport_schema(s):
             label = "Original-schema constraints (enforced locally): " + json.dumps(
                 extra, sort_keys=True, separators=(",", ":"))
             result["description"] = ((result.get("description", "") + " " + label).strip())
+        if "properties" in obj:
+            require("properties" in result and
+                    set(result["properties"]) == set(obj["properties"]),
+                    "TRANSPORT_NESTED_PROPERTIES_LOST")
         return result
     t = convert(s)
     require(t["type"] == "object" and t["additionalProperties"] is False, "INVALID_TRANSPORT_SCHEMA")
