@@ -79,9 +79,11 @@ def court():
         assert identities[rel] == pinned, "P04 code pin must precede candidate"
     sys.path.insert(0, str(root))
     pkg = importlib.import_module("rawlsing_next")
-    assert root == Path(pkg.__file__).resolve().parents[1] or (
-        root / "rawlsing_next" in list(map(Path, pkg.__path__))
-    ), "IMPORTED_WRONG_PACKAGE_ROOT"
+    # Namespace packages may have pkg.__file__ == None; verify the actual
+    # loaded module files rather than assuming __init__.py is present.
+    assert (root / "rawlsing_next").resolve() in [
+        Path(p).resolve() for p in pkg.__path__
+    ], "IMPORTED_WRONG_PACKAGE_ROOT"
     I = importlib.import_module("rawlsing_next.pre553_i01_sourcefree_world_lifecycle_candidate")
     S = importlib.import_module("rawlsing_next.r3_s02_seam_witness")
     assert Path(I.__file__).resolve() == root / "rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py"
@@ -198,8 +200,9 @@ def test_O06_durable_result_receipt_is_not_caller_replaceable(court, tmp_path):
         I.restore_product(tmp_path)
     except Exception as exc:
         assert type(exc).__name__ in {
-            "CheckpointTornError", "I01Error", "BatchCheckpointError",
-            "BatchIntegrationError", "CheckpointIntegrityError",
+            "CheckpointTornError", "CheckpointForeignError",
+            "DurableCheckpointError", "IntegrationError",
+            "IntegrationForeignError", "IntegrationHeldError", "I01Error",
         }, f"untyped durable failure: {type(exc).__name__}: {exc}"
     else:
         pytest.fail("DURABLE_RECEIPT_SUBSTITUTION_WAS_ACCEPTED")
