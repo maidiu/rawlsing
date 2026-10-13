@@ -111,7 +111,7 @@ def take_one(client, run, config, transport_schema, original_schema):
             error = {"type": type(exc).__name__, "class": "OPERATIONAL_TRANSIENT_NO_CANDIDATE"}
         except anthropic.APIStatusError as exc:
             status = getattr(exc, "status_code", None)
-            kind = ("OPERATIONAL_TRANSIENT_NO_CANDIDATE" if status in (429, 500, 502, 503, 504)
+            kind = ("OPERATIONAL_TRANSIENT_NO_CANDIDATE" if status == 429 or (isinstance(status, int) and 500 <= status <= 599)
                     else "PERMANENT_PROVIDER_FAILURE")
             if status == 400:
                 kind = "PROVIDER_SCHEMA_FAILURE"
