@@ -76,7 +76,7 @@ def sdk_version():
 def config():
     c = read(HERE / "EXPERIMENT_CONFIG_R1.json")
     require(c["model"] == "claude-opus-5-5" and c["effort"] == "high", "MODEL_OR_EFFORT_DRIFT")
-    require(c["sdk_version"] == "1.13.0" and c["primary_runs"] == 60, "CONFIG_DRIFT")
+    require(c["sdk_version"] == "1.13.0" and c["primary_runs"] == 60 and c["api_version"] == "2023-06-01", "CONFIG_DRIFT")
     require(c["temperature"] is None and c["top_p"] is None and c["top_k"] is None
             and c["system_message"] is None, "UNAPPROVED_SAMPLING_OR_SYSTEM_MESSAGE")
     require(c["provider_seed_status"] == "UNSUPPORTED_BY_PINNED_BINDING", "PROVIDER_SEED_DRIFT")
@@ -296,7 +296,7 @@ def freeze_inputs(c, packet_hashes, payload_hashes, transport):
     return {
         "experiment": c["experiment"], "model": c["model"], "effort": c["effort"],
         "max_tokens": c["max_tokens"], "sdk_version": sdk_version(),
-        "api_contract": c["api_endpoint"], "provider_binding": "ANTHROPIC",
+        "api_contract": c["api_endpoint"], "api_version": c["api_version"], "provider_binding": "ANTHROPIC",
         "packet_raw_sha256": packet_hashes, "model_payload_sha256": payload_hashes,
         "output_schema_sha256": file_sha256(HERE / c["output_schema_path"]),
         "api_transport_schema_sha256": sha256(canonical(transport)),
@@ -326,6 +326,35 @@ def verify_static(key_required=False, sdk_required=False):
         p.mkdir(parents=True, exist_ok=True)
         require(os.access(p, os.W_OK), f"RESULT_DIRECTORY_NOT_WRITABLE: {p}")
     files = evidence_files()
+    # Resume gate: every existing attempt must still belong to this exact
+    # sealed request and input. Never mingle receipts from a different freeze.
+    by_id = {r["run_id"]: r for r in runs}
+    by_id["SMOKE-0001"] = {"run_id": "SMOKE-0001", "case_id": "RF001",
+                           "condition": "N", "replicate": 0}
+    seen_provider_ids = set()
+    for path in files:
+        prior = read(path)
+        rid = prior["run_id"]
+        require(rid in by_id, f"FOREIGN_RUN_COLLISION: {path.name}")
+        planned = by_id[rid]
+        _, expected_hash, expected_payload_hash, expected_packet = request_for(planned, c, t)
+        require(prior.get("request_identity_sha256") == expected_hash and
+                prior.get("model_payload_sha256") == expected_payload_hash and
+                prior.get("input_packet_file") == expected_packet and
+                prior.get("input_packet_raw_sha256") ==
+                file_sha256(INPUT / expected_packet), f"REQUEST_IDENTITY_COLLISION: {path.name}")
+        require(prior.get("model") == c["model"] and prior.get("effort") == c["effort"] and
+                prior.get("max_tokens") == c["max_tokens"] and
+                prior.get("api_version") == c["api_version"] and
+                prior.get("sdk_version") == c["sdk_version"] and
+                prior.get("case_id") == planned["case_id"] and
+                prior.get("condition") == planned["condition"] and
+                prior.get("replicate_ordinal") == planned["replicate"],
+                f"ATTEMPT_BINDING_COLLISION: {path.name}")
+        pid = prior.get("provider_message_id")
+        if pid:
+            require(pid not in seen_provider_ids, f"REUSED_PROVIDER_MESSAGE_ID: {pid}")
+            seen_provider_ids.add(pid)
     # If the key is present, ensure it has not accidentally been serialized into static artifacts.
     key = os.getenv("ANTHROPIC_API_KEY", "")
     if key and len(key) >= 8:
