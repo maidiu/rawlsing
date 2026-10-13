@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="24" time="8.596" timestamp="2026-10-13T15:20:52.168897-04:00" hostname="Matthews-MBP.lan"><testcase classname="rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_frozen_retained_bytes_and_fresh_execution" time="0.681"><failure message="KeyError: 'inputs'">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-525/test_frozen_retained_bytes_and0')
+
+    def test_frozen_retained_bytes_and_fresh_execution(tmp_path):
+        raw=(AUTHOR/'artifacts'/f'{ARTIFACT}.json').read_bytes()
+        assert hashlib.sha256(raw).hexdigest()==ARTIFACT
+        p,report=I.build_product(tmp_path)
+        assert p.subject_ref.content_hash==ARTIFACT and p.release.ref.content_hash==RELEASE
+        assert I.artifact_path(tmp_path,p.subject_ref).read_bytes()==raw
+        assert report['batch_state']=='COMPLETED'
+        payload=I.load_artifact(tmp_path,p.subject_ref)
+        assert payload['query_ref']==p.session.manifest.units[0].job_ref.as_dict()
+&gt;       assert payload['producer_invocations'][-1]['inputs']['empirical_query']==payload['query_ref']
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'inputs'
+
+rawlsing_next/tests/test_hq288_i01r_independent_product.py:21: KeyError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_serving_saved_bundle_with_all_producers_disabled" time="0.703" /><testcase classname="rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_rehashed_artifact_does_not_bypass_durable_binding[schema-FOREIGN]" time="0.774" /><testcase classname="rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_rehashed_artifact_does_not_bypass_durable_binding[security_mode-AUTHENTICATED]" time="0.692" /><testcase classname="rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_rehashed_artifact_does_not_bypass_durable_binding[producer_contract_ref-value2]" time="0.699" /><testcase classname="rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_rehashed_artifact_does_not_bypass_durable_binding[query_ref-value3]" time="0.654" /><testcase classname="rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_rehashed_artifact_does_not_bypass_durable_binding[source_release_ref-value4]" time="0.669" /><testcase classname="rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_native_consumer_rejects_rehashed_hostile_saved_bundle[scope]" time="0.001" /><testcase classname="rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_native_consumer_rejects_rehashed_hostile_saved_bundle[origin]" time="0.001" /><testcase classname="rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_native_consumer_rejects_rehashed_hostile_saved_bundle[permission]" time="0.001" /><testcase classname="rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_native_consumer_rejects_rehashed_hostile_saved_bundle[gt2]" time="0.001" /><testcase classname="rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_native_consumer_rejects_rehashed_hostile_saved_bundle[protected]" time="0.001" /><testcase classname="rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_native_consumer_rejects_rehashed_hostile_saved_bundle[risk]" time="0.001" /><testcase classname="rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_native_consumer_rejects_rehashed_hostile_saved_bundle[duplicate]" time="0.001" /><testcase classname="rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_native_consumer_rejects_rehashed_hostile_saved_bundle[no_channels]" time="0.001" /><testcase classname="rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_native_consumer_rejects_rehashed_hostile_saved_bundle[fraction]" time="0.001" /><testcase classname="rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_native_consumer_rejects_rehashed_hostile_saved_bundle[denominator]" time="0.001" /><testcase classname="rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_native_consumer_rejects_rehashed_hostile_saved_bundle[step_numerator]" time="0.001" /><testcase classname="rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_native_consumer_rejects_rehashed_hostile_saved_bundle[condition]" time="0.001" /><testcase classname="rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_missing_artifact_cannot_reconstruct_fixture" time="0.662" /><testcase classname="rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_unscheduled_and_incomplete_work_cannot_admit" time="0.206"><failure message="rawlsing_next.pre553_batch_durable_checkpoint_candidate.CheckpointTornError: no durable checkpoint present">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-525/test_unscheduled_and_incomplet0')
+
+    def test_unscheduled_and_incomplete_work_cannot_admit(tmp_path):
+        session,_,_,calls=I.open_world_session(tmp_path)
+&gt;       with pytest.raises(I.I01Error):I.admit_saved_world(session)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_hq288_i01r_independent_product.py:82: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:113: in admit_saved_world
+    receipts=durable.admit_saved_receipts(session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_governed_batch_checkpoint_integration_candidate.py:562: in admit_saved_receipts
+    return admit_receipts_for_resume(session.store.load(identity=session.identity))
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;rawlsing_next.pre553_batch_durable_checkpoint_candidate.DurableCheckpointStore object at 0x102471e10&gt;
+identity = CheckpointIdentity(manifest_hash='ba20b3421f2296ba710b2c212bc54022f62e6dde34a250df833092ec75b0ff1d', manifest_ref=Exac...ff85b1|2fb75fec8c2057972db40aa505ba68439843c3fb834930356f71e6bfbeff85b1',), protocol_profile='DEVELOPMENT_SOURCE_FREE')
+
+    def load(self, *, identity: CheckpointIdentity | None = None) -&gt; DurableCheckpoint:
+        if not self.path.is_file():
+&gt;           raise CheckpointTornError("no durable checkpoint present")
+E           rawlsing_next.pre553_batch_durable_checkpoint_candidate.CheckpointTornError: no durable checkpoint present
+
+rawlsing_next/pre553_batch_durable_checkpoint_candidate.py:529: CheckpointTornError</failure></testcase><testcase classname="rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_release_index_substitution_refused" time="0.892" /><testcase classname="rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_cold_invalidated_resume_preserves_asof_without_execution" time="1.348" /><testcase classname="rawlsing_next.tests.test_hq288_i01r_independent_product" name="test_copied_module_or_dynamic_hash_is_not_frozen_owner" time="0.040" /></testsuite></testsuites>

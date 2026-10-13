@@ -1,0 +1,40 @@
+..........................................F............................. [ 82%]
+...............                                                          [100%]
+=================================== FAILURES ===================================
+________________ test_s00_contract_manifest_exists_and_is_valid ________________
+
+    def test_s00_contract_manifest_exists_and_is_valid():
+        import json
+        import pathlib
+        manifest = json.loads(
+            pathlib.Path("WORKER_RETURNS/PYAT-R3-S00-S02-SELECTED-WORLD-SEAM-R1/"
+>                        "s00_target_contract.json").read_text()
+                                                     ^^^^^^^^^^^
+        )
+
+rawlsing_next/tests/test_r3_s02_seam_witness.py:30: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1058: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('WORKER_RETURNS/PYAT-R3-S00-S02-SELECTED-WORLD-SEAM-R1/s00_target_contract.json')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'WORKER_RETURNS/PYAT-R3-S00-S02-SELECTED-WORLD-SEAM-R1/s00_target_contract.json'
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1044: FileNotFoundError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_r3_s02_seam_witness.py::test_s00_contract_manifest_exists_and_is_valid
+1 failed, 86 passed in 25.43s

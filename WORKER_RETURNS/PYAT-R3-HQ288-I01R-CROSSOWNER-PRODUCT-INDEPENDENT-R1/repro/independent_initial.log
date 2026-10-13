@@ -1,0 +1,52 @@
+F...................F...                                                 [100%]
+=================================== FAILURES ===================================
+________________ test_frozen_retained_bytes_and_fresh_execution ________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-525/test_frozen_retained_bytes_and0')
+
+    def test_frozen_retained_bytes_and_fresh_execution(tmp_path):
+        raw=(AUTHOR/'artifacts'/f'{ARTIFACT}.json').read_bytes()
+        assert hashlib.sha256(raw).hexdigest()==ARTIFACT
+        p,report=I.build_product(tmp_path)
+        assert p.subject_ref.content_hash==ARTIFACT and p.release.ref.content_hash==RELEASE
+        assert I.artifact_path(tmp_path,p.subject_ref).read_bytes()==raw
+        assert report['batch_state']=='COMPLETED'
+        payload=I.load_artifact(tmp_path,p.subject_ref)
+        assert payload['query_ref']==p.session.manifest.units[0].job_ref.as_dict()
+>       assert payload['producer_invocations'][-1]['inputs']['empirical_query']==payload['query_ref']
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'inputs'
+
+rawlsing_next/tests/test_hq288_i01r_independent_product.py:21: KeyError
+______________ test_unscheduled_and_incomplete_work_cannot_admit _______________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-525/test_unscheduled_and_incomplet0')
+
+    def test_unscheduled_and_incomplete_work_cannot_admit(tmp_path):
+        session,_,_,calls=I.open_world_session(tmp_path)
+>       with pytest.raises(I.I01Error):I.admit_saved_world(session)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_hq288_i01r_independent_product.py:82: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py:113: in admit_saved_world
+    receipts=durable.admit_saved_receipts(session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_governed_batch_checkpoint_integration_candidate.py:562: in admit_saved_receipts
+    return admit_receipts_for_resume(session.store.load(identity=session.identity))
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rawlsing_next.pre553_batch_durable_checkpoint_candidate.DurableCheckpointStore object at 0x102471e10>
+identity = CheckpointIdentity(manifest_hash='ba20b3421f2296ba710b2c212bc54022f62e6dde34a250df833092ec75b0ff1d', manifest_ref=Exac...ff85b1|2fb75fec8c2057972db40aa505ba68439843c3fb834930356f71e6bfbeff85b1',), protocol_profile='DEVELOPMENT_SOURCE_FREE')
+
+    def load(self, *, identity: CheckpointIdentity | None = None) -> DurableCheckpoint:
+        if not self.path.is_file():
+>           raise CheckpointTornError("no durable checkpoint present")
+E           rawlsing_next.pre553_batch_durable_checkpoint_candidate.CheckpointTornError: no durable checkpoint present
+
+rawlsing_next/pre553_batch_durable_checkpoint_candidate.py:529: CheckpointTornError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_hq288_i01r_independent_product.py::test_frozen_retained_bytes_and_fresh_execution
+FAILED rawlsing_next/tests/test_hq288_i01r_independent_product.py::test_unscheduled_and_incomplete_work_cannot_admit
+2 failed, 22 passed in 8.70s
