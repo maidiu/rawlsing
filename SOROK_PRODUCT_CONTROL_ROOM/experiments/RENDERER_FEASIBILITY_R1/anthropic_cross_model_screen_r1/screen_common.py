@@ -250,6 +250,11 @@ def gate(check_key=False,check_sdk=False):
                 row.get("transmitted_user_message_sha256")==
                 sha(req["messages"][0]["content"].encode("utf-8")) and
                 row.get("input_packet_file")==packet_name and
-                row.get("requested_model")==source["model"],
+                row.get("requested_model")==source["model"] and
+                row.get("case_id")==source["case_id"] and
+                row.get("condition")==source["condition"] and
+                row.get("provider_schema_fixture_const")==source["case_id"] and
+                row.get("original_model_payload_sha256")==
+                sha(canonical(read(INPUT/packet_name)["model_payload"])),
                 "LOCAL_EVIDENCE_REQUEST_IDENTITY_MISMATCH: "+p.name)
     return c,r2c,rows,mapping,selected,secondary,packets,payloads,transport,original
