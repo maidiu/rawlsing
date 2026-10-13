@@ -1,3 +1,9 @@
+# NEW PYAT HQ: INVALID UNTIL FULL PERSONA-FIRST + INHERITED-METHOD ACCESSION
+
+Read `PYAT_CONTROL_ROOM/00_INCOMING_HQ_VALIDITY_AND_PERSONA_END_PRODUCT_GATE_R1.md` immediately. Every new/resumed/transferred HQ starts `CANDIDATE__READ_ONLY_GROK`, **not operative HQ**, regardless of earlier R2.1 completion token. Verify the last sealed immutable HQ_HANDOFF checkpoint then demonstrate PRE-MAIN/Pyat currentness, the user-authored final persona demand, Dva/Trii/Chetiri/Long Memory and previous implementation capital, actual crosswave/driver/facet/empirical/temporal current successors, and best-available science/approximation methods. **Critically adjudicate whether inherited methods are fit to reuse, should be integrated/improved/completed, or replaced after comparative proof; old code is neither automatically best nor automatically obsolete.** Require a concrete persona-changing consumer/evaluation and independent or user-reviewed accession evidence before any new commissions, scientific/semantic adoption or global program change. Preserves all 35-wave machine and PRE-V3→V3 boundaries. No new source/model-use authorizations.
+
+---
+
 ## User-requested whole-machine assessment and forward plan — 11 October 2026
 
 Read the [corrected assessment and detailed completion plan](WHOLE_MACHINE_ASSESSMENT_AND_PLAN_20261011_R1/README.md). It updates F8F/WVQ status, identifies the B5 publication trust boundary, grades canonical versus staged evidence, and supplies 25 proposed work packages, all-35 reconciliation and AT01–AT35 acceptance routing. **Documentary delivery only:** no candidate/code adoption, source/model-use grant, dispatch or replacement of the sealed operational handoff. Exact read baseline and primary-evidence limits are in the packet.
