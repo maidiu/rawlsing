@@ -1,0 +1,204 @@
+{
+  "schema": "HQ284_NATIVE_METHOD_MATRIX@1",
+  "rows": [
+    {
+      "owner": "B5",
+      "method": "stage_release",
+      "saved_public_guard": "PASS (all three modes)",
+      "local_method_checks": "PASS_BOUNDED",
+      "evidence": "duplicate_subject_identity_and_invalid_recertification_refuse; B5 test_h01/h15",
+      "shared_integrity_verdict": "FAIL: mutable B5 events, helper access, nontransactional stores affect composition",
+      "external_authenticated_issuance": "HOLD"
+    },
+    {
+      "owner": "B5",
+      "method": "stage_protocol",
+      "saved_public_guard": "PASS (all three modes)",
+      "local_method_checks": "PASS_BOUNDED",
+      "evidence": "B5 test_m2_interface_is_narrow_protocol_not_release_core_reimplementation",
+      "shared_integrity_verdict": "FAIL: mutable B5 events, helper access, nontransactional stores affect composition",
+      "external_authenticated_issuance": "HOLD"
+    },
+    {
+      "owner": "B5",
+      "method": "register_product",
+      "saved_public_guard": "PASS (all three modes)",
+      "local_method_checks": "PASS_BOUNDED",
+      "evidence": "B5 test_h01/h02; diamond_invalidation",
+      "shared_integrity_verdict": "FAIL: mutable B5 events, helper access, nontransactional stores affect composition",
+      "external_authenticated_issuance": "HOLD"
+    },
+    {
+      "owner": "B5",
+      "method": "publish_product",
+      "saved_public_guard": "PASS (all three modes)",
+      "local_method_checks": "FAIL",
+      "evidence": "publication_payload_not_bound_to_subject; publication_torn_after_event_append",
+      "shared_integrity_verdict": "FAIL: mutable B5 events, helper access, nontransactional stores affect composition",
+      "external_authenticated_issuance": "HOLD"
+    },
+    {
+      "owner": "B5",
+      "method": "record_recertification",
+      "saved_public_guard": "PASS (all three modes)",
+      "local_method_checks": "PASS_BOUNDED",
+      "evidence": "duplicate_subject_identity_and_invalid_recertification_refuse; B5 test_h07",
+      "shared_integrity_verdict": "FAIL: mutable B5 events, helper access, nontransactional stores affect composition",
+      "external_authenticated_issuance": "HOLD"
+    },
+    {
+      "owner": "B5",
+      "method": "selection_key",
+      "saved_public_guard": "PASS (all three modes)",
+      "local_method_checks": "PASS_BOUNDED",
+      "evidence": "B5 test_two_selection_purposes_can_hold_distinct_current_releases",
+      "shared_integrity_verdict": "FAIL: mutable B5 events, helper access, nontransactional stores affect composition",
+      "external_authenticated_issuance": "HOLD"
+    },
+    {
+      "owner": "B5",
+      "method": "select_current",
+      "saved_public_guard": "PASS (all three modes)",
+      "local_method_checks": "FAIL",
+      "evidence": "concurrent_b5_selection_accepts_two_stale_predecessors; B5 test_h10/h23",
+      "shared_integrity_verdict": "FAIL: mutable B5 events, helper access, nontransactional stores affect composition",
+      "external_authenticated_issuance": "HOLD"
+    },
+    {
+      "owner": "B5",
+      "method": "declare_no_current",
+      "saved_public_guard": "PASS (all three modes)",
+      "local_method_checks": "PASS_BOUNDED",
+      "evidence": "B5 test_h06; authored wrong scope; current_asof_stale_selection",
+      "shared_integrity_verdict": "FAIL: mutable B5 events, helper access, nontransactional stores affect composition",
+      "external_authenticated_issuance": "HOLD"
+    },
+    {
+      "owner": "B5",
+      "method": "supersede_current",
+      "saved_public_guard": "PASS (all three modes)",
+      "local_method_checks": "PASS_BOUNDED",
+      "evidence": "B5 test_h08",
+      "shared_integrity_verdict": "FAIL: mutable B5 events, helper access, nontransactional stores affect composition",
+      "external_authenticated_issuance": "HOLD"
+    },
+    {
+      "owner": "B5",
+      "method": "withdraw_product",
+      "saved_public_guard": "PASS (all three modes)",
+      "local_method_checks": "PASS_BOUNDED",
+      "evidence": "B5 test_h09; current_asof_stale_selection",
+      "shared_integrity_verdict": "FAIL: mutable B5 events, helper access, nontransactional stores affect composition",
+      "external_authenticated_issuance": "HOLD"
+    },
+    {
+      "owner": "B5",
+      "method": "declare_invalidation",
+      "saved_public_guard": "PASS (all three modes)",
+      "local_method_checks": "PASS_BOUNDED",
+      "evidence": "diamond_invalidation; B5 test_h12/h13",
+      "shared_integrity_verdict": "FAIL: mutable B5 events, helper access, nontransactional stores affect composition",
+      "external_authenticated_issuance": "HOLD"
+    },
+    {
+      "owner": "B5",
+      "method": "record_rebuild_eligibility",
+      "saved_public_guard": "PASS (all three modes)",
+      "local_method_checks": "FAIL",
+      "evidence": "rebuild_receipt_can_link_event_for_different_release; B5 test_h16",
+      "shared_integrity_verdict": "FAIL: mutable B5 events, helper access, nontransactional stores affect composition",
+      "external_authenticated_issuance": "HOLD"
+    },
+    {
+      "owner": "B5",
+      "method": "link_rebuild",
+      "saved_public_guard": "PASS (all three modes)",
+      "local_method_checks": "PASS_BOUNDED",
+      "evidence": "cache_and_rebuild_link_native_local_roundtrip",
+      "shared_integrity_verdict": "FAIL: mutable B5 events, helper access, nontransactional stores affect composition",
+      "external_authenticated_issuance": "HOLD"
+    },
+    {
+      "owner": "B5",
+      "method": "record_cache_materialized",
+      "saved_public_guard": "PASS (all three modes)",
+      "local_method_checks": "PASS_BOUNDED",
+      "evidence": "cache_and_rebuild_link_native_local_roundtrip",
+      "shared_integrity_verdict": "FAIL: mutable B5 events, helper access, nontransactional stores affect composition",
+      "external_authenticated_issuance": "HOLD"
+    },
+    {
+      "owner": "B5",
+      "method": "record_cache_dropped",
+      "saved_public_guard": "PASS (all three modes)",
+      "local_method_checks": "PASS_BOUNDED",
+      "evidence": "cache_and_rebuild_link_native_local_roundtrip; B5 test_h14",
+      "shared_integrity_verdict": "FAIL: mutable B5 events, helper access, nontransactional stores affect composition",
+      "external_authenticated_issuance": "HOLD"
+    },
+    {
+      "owner": "B5",
+      "method": "attest_gc_eligibility",
+      "saved_public_guard": "PASS (all three modes)",
+      "local_method_checks": "PASS_BOUNDED",
+      "evidence": "B5 test_h17; GC_NOT_AUTHORIZED",
+      "shared_integrity_verdict": "FAIL: mutable B5 events, helper access, nontransactional stores affect composition",
+      "external_authenticated_issuance": "HOLD"
+    },
+    {
+      "owner": "B5",
+      "method": "record_payload_gc",
+      "saved_public_guard": "PASS (all three modes)",
+      "local_method_checks": "PASS_BOUNDED",
+      "evidence": "B5 test_h17; source_carrier_retirement_authorized_false",
+      "shared_integrity_verdict": "FAIL: mutable B5 events, helper access, nontransactional stores affect composition",
+      "external_authenticated_issuance": "HOLD"
+    },
+    {
+      "owner": "M2",
+      "method": "register_subject",
+      "saved_public_guard": "PASS (all three modes)",
+      "local_method_checks": "PASS_BOUNDED",
+      "evidence": "M2 test_04/05; m2_fixture",
+      "shared_integrity_verdict": "FAIL: mutable B5 events, helper access, nontransactional stores affect composition",
+      "external_authenticated_issuance": "HOLD"
+    },
+    {
+      "owner": "M2",
+      "method": "register_closure",
+      "saved_public_guard": "PASS (all three modes)",
+      "local_method_checks": "PASS_BOUNDED",
+      "evidence": "M2 test_06; m2_fixture",
+      "shared_integrity_verdict": "FAIL: mutable B5 events, helper access, nontransactional stores affect composition",
+      "external_authenticated_issuance": "HOLD"
+    },
+    {
+      "owner": "M2",
+      "method": "register_release",
+      "saved_public_guard": "PASS (all three modes)",
+      "local_method_checks": "PASS_BOUNDED",
+      "evidence": "m2_exact_foreign_release_rejected_at_repository_boundary; M2 test_01/02",
+      "shared_integrity_verdict": "FAIL: mutable B5 events, helper access, nontransactional stores affect composition",
+      "external_authenticated_issuance": "HOLD"
+    },
+    {
+      "owner": "M2",
+      "method": "register_representation",
+      "saved_public_guard": "PASS (all three modes)",
+      "local_method_checks": "PASS_BOUNDED",
+      "evidence": "m2_exact_foreign_release_rejected_at_repository_boundary; M2 test_08/09",
+      "shared_integrity_verdict": "FAIL: mutable B5 events, helper access, nontransactional stores affect composition",
+      "external_authenticated_issuance": "HOLD"
+    },
+    {
+      "owner": "M2",
+      "method": "register_binding",
+      "saved_public_guard": "PASS (all three modes)",
+      "local_method_checks": "PASS_BOUNDED",
+      "evidence": "author native_valid_release_and_direct_representation_binding; M2 test_03",
+      "shared_integrity_verdict": "FAIL: mutable B5 events, helper access, nontransactional stores affect composition",
+      "external_authenticated_issuance": "HOLD"
+    }
+  ],
+  "limits": "PASS_BOUNDED means listed checks passed, not exhaustive security acceptance; guards tested before argument validation via saved class callables. Private helpers are reachable by same-process Python caller."
+}

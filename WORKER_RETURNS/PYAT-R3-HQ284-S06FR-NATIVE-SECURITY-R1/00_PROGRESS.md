@@ -1,5 +1,7 @@
 # S06FR native security review — incomplete resource checkpoint
 
+**Historical checkpoint, superseded:** the user lifted the quota cap and the review is complete. See `04_FINAL_REVIEW.md`, the 22-method matrix, 24-expectation mapping and final native log/XML. Final verdict: security FAIL; external authenticated issuance/custody HOLD. The observations below describe the earlier stop only.
+
 Exact sealed startup `90f59298a63523c4bdd5a6b46b8719c13afe928a` was verified directly against the assigned remote branch. The separate Git-registered sparse worktree is `/Users/matthewsmith/.codex/worktrees/hq284-s06fr-native-security-r1/Rawlsing`; its initial index/worktree is clean, and no `data/` directory is checked out. The Codex attachment API cannot attach this CLI-created checkout because it is not app-managed.
 
 Current-session evidence confirms OpenAI Codex Desktop, `gpt-6.1-sol`, `low` effort. Host is `Matthews-MBP.lan`, MacBookPro15,1, x86_64, user-designated secondary Mac. Fresh Plus quota was 0% used in both windows. Audit execution stopped at 5% five-hour use / 1% weekly use, the commission's 95% remaining floor. No reset credit, paid overflow, model escalation, protected CURRENT, raw source use, issuer credential or production source edit occurred.

@@ -1,0 +1,16 @@
+........F.................                                               [100%]
+=================================== FAILURES ===================================
+_____________________ test_public_snapshots_are_immutable ______________________
+
+    def test_public_snapshots_are_immutable():
+        x, s, cp = checkpoint_with_publication()
+        snapshot = x.export_checkpoint()
+        snapshot['checkpoint_payload']['events'][0]['payload']['attacker'] = True
+        assert x.export_checkpoint() == cp
+>       with pytest.raises((TypeError, AttributeError)):
+E       Failed: DID NOT RAISE any of (TypeError, AttributeError)
+
+rawlsing_next/tests/test_hq284_s06fr_native_review.py:81: Failed
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_hq284_s06fr_native_review.py::test_public_snapshots_are_immutable
+1 failed, 25 passed in 0.50s

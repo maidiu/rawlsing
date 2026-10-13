@@ -1,0 +1,60 @@
+{
+  "timestamp_utc": "2026-10-13T06:29:55.620851+00:00",
+  "user_revision": "bro fuck the quote and finish the work; quota*",
+  "effect": "95%-remaining quota stop rescinded by human; other authority ceilings unchanged",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "provider": "openai",
+  "session_attestation": "PREFLIGHT_AND_RESOURCE_STOP.json and selected actual turn_context fields",
+  "host": "Matthews-MBP.lan",
+  "worktree": "/Users/matthewsmith/.codex/worktrees/hq284-s06fr-native-security-r1/Rawlsing",
+  "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "interpreter": "/usr/local/bin/python3",
+  "platform": "macOS-13.7.8-x86_64-i386-64bit",
+  "pytest": "9.1.1",
+  "quota_used_percent": {
+    "five_hour": 10,
+    "weekly": 2
+  },
+  "ordinary_usage_allowed": true,
+  "reset_credits_used": 0,
+  "available_reset_credits": 3,
+  "paid_overflow": 0,
+  "Go_pool": "UNKNOWN; not used",
+  "primary_account_use": "not used",
+  "source_ceiling": "source-free synthetic owner records only; no survey originals or protected CURRENT",
+  "startup": "90f59298a63523c4bdd5a6b46b8719c13afe928a",
+  "candidate": "6187d0a25f98370a3d78371fcdf1752a3b1ec80f",
+  "canonical": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+  "frozen": "7e96914ed6c9a186d5de8a778e8396e46a741eb2",
+  "final_test_exit": 1,
+  "final_test_counts": {
+    "rawlsing_next.tests.test_pre553_s06f_native_owner_security": {
+      "passed": 18,
+      "failed": 0,
+      "observed_defect_reproductions": 0
+    },
+    "rawlsing_next.tests.test_pre553_learned_product_lifecycle": {
+      "passed": 39,
+      "failed": 0,
+      "observed_defect_reproductions": 0
+    },
+    "rawlsing_next.tests.test_pre553_learned_product_release": {
+      "passed": 26,
+      "failed": 2,
+      "observed_defect_reproductions": 0
+    },
+    "rawlsing_next.tests.test_hq284_s06fr_native_review": {
+      "passed": 28,
+      "failed": 1,
+      "observed_defect_reproductions": 12
+    }
+  },
+  "commands": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m pytest rawlsing_next/tests/test_pre553_s06f_native_owner_security.py rawlsing_next/tests/test_pre553_learned_product_lifecycle.py rawlsing_next/tests/test_pre553_learned_product_release.py rawlsing_next/tests/test_hq284_s06fr_native_review.py -q -p no:cacheprovider --junitxml=WORKER_RETURNS/PYAT-R3-HQ284-S06FR-NATIVE-SECURITY-R1/repro/final_native.xml",
+      "exit": 1,
+      "stdout_stderr": "repro/final_native.log"
+    }
+  ]
+}
