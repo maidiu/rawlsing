@@ -269,11 +269,14 @@ def main():
         freeze(c, packet_hashes, payload_hashes, transport)
         return
     if args.export_blinded:
+        if any(p.name.startswith("RUN-") for p in existing):
+            assert_freeze(freeze_inputs(c, packet_hashes, payload_hashes, transport))
         export_blinded(runs)
         return
     assert_freeze(freeze_inputs(c, packet_hashes, payload_hashes, transport))
     import anthropic
-    client = anthropic.Anthropic(max_retries=0, timeout=c["timeout_seconds"])
+    client = anthropic.Anthropic(max_retries=0, timeout=c["timeout_seconds"],
+                                default_headers={"anthropic-version": c["api_version"]})
     if args.smoke:
         smoke = {"run_id": "SMOKE-0001", "case_id": "RF001", "condition": "N", "replicate": 0}
         if latest_terminal(smoke["run_id"]):
