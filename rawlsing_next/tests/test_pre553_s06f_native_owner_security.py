@@ -135,7 +135,7 @@ def test_b5_native_checkpoint_rejects_self_rehashed_inconsistent_state(alteratio
     if alteration == "truncate_published":
         payload["events"].pop()
     elif alteration == "alter_publication":
-        payload["publication"][0][1] = "UNPUBLISHED"
+        payload["publication"][0] = (payload["publication"][0][0], "UNPUBLISHED")
     else:
         payload["registered_release_refs"].clear()
     forged["checkpoint_hash"] = semantic_hash(payload)
