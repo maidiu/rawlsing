@@ -6,6 +6,7 @@ or independent acceptance. Frozen S06R acceptance expectations are unmodified.
 from __future__ import annotations
 
 from copy import deepcopy
+from dataclasses import replace
 from inspect import getsource
 
 import pytest
@@ -298,3 +299,36 @@ def test_native_m2_all_registration_routes_reach_in_method_preflight():
         (publish_binding, "register_binding"),
     ):
         assert f"repository.{target}(" in getsource(function)
+
+
+def test_b5_m2_cross_owner_release_ref_is_not_subject_ref():
+    repo, release, producer_subject_ref, producer, _ = m2_fixture()
+    executor = LearnedProductLifecycleExecutor()
+    b5 = replace(
+        subject("m2-cross-owner"),
+        release_ref=release.ref,
+        producer_contract_ref=producer,
+    )
+    executor.stage_release(b5)
+    assert executor.verify_m2_release_subject_exact(repo, release.ref) == b5
+    # The producer subject and the M2 release are different exact identities.
+    assert producer_subject_ref != release.ref
+    with pytest.raises(M2ReleaseError):
+        repo.subject_exact(release.ref)
+    wrong = LearnedProductLifecycleExecutor()
+    wrong.stage_release(replace(b5, producer_contract_ref=ref("ProducerContract", "wrong")))
+    with pytest.raises(LearnedProductLifecycleConflict, match="identity mismatch"):
+        wrong.verify_m2_release_subject_exact(repo, release.ref)
+
+
+def test_no_caller_trusted_flag_or_arbitrary_token_on_native_owners():
+    executor = LearnedProductLifecycleExecutor()
+    repo = M2Repository()
+    with pytest.raises(TypeError):
+        executor.stage_release(subject("flag"), trusted=True)
+    with pytest.raises(TypeError):
+        repo.register_subject(None, trusted=True)
+    with pytest.raises(LearnedProductLifecycleError, match="EXTERNAL_ISSUER_HOLD"):
+        executor.require_external_issuer("PROTECTED_CURRENT")
+    with pytest.raises(M2ReleaseError, match="EXTERNAL_ISSUER_HOLD"):
+        repo.require_external_issuer("EXTERNAL_CUSTODY")
