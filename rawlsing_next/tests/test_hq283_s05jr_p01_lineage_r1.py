@@ -7,32 +7,45 @@ reviewer; no runtime claim follows from this file alone.
 import json
 from copy import deepcopy
 
+import pytest
+
 from rawlsing_next import pre553_v2_durable_consumer_integration_candidate as P
 from rawlsing_next import pre553_governed_batch_checkpoint_integration_candidate as G
 from rawlsing_next.pre553_batch_runner import BatchManifest
 from rawlsing_next.tests.test_pre553_v2_durable_consumer_integration_candidate import _fixture
 
 
-def test_s05jr_symmetric_expected_and_manifest_omission_can_still_structurally_pass(tmp_path):
-    """Falsification: a complete declared local join need not be original U->E complete.
+@pytest.mark.parametrize("omitted_kind", ("I03_XY", "I03_YX", "I05_DISCOVERY"))
+def test_s05jr_symmetric_expected_and_manifest_omission_can_still_structurally_pass(
+    tmp_path, omitted_kind
+):
+    """Blind spot across both directional I03 jobs and independent I05 dispatch.
 
-    Exact observed target: both local expectation and manifest omit one originally
-    prepared X/Y query; frozen original respondent inventory stays unchanged.
-    Existing code is expected to return local ok=True, two consumed results and
-    external issuer/custody HOLD. This is a SCIENTIFIC AUTHORITY GAP, not proof
-    that the supported local subset's execution misbehaves.
+    Local declared-E/manifest equality cannot prove original source U -> E_pre.
+    Retain the entire originally enumerated synthetic respondent/item inventory,
+    drop precisely one predeclared operation on BOTH local sides, and test
+    expected local admission with external source/custody HOLD still present.
+    These are synthetic proposed tests, NOT original-source scientific warrants.
     """
     kwargs, calls = _fixture(tmp_path / "initial")
     documentary = json.loads(kwargs["expected"].payload_json)
     original_records = deepcopy(documentary["declarations"])
-    candidates = [r for r in original_records if r.get("semantic_op_class") == "PAIR_RESPONSE_COTRAVEL"]
-    assert len(candidates) == 2
-    dropped = candidates[0]
+    pair = [r for r in original_records
+            if r.get("semantic_op_class") == "PAIR_RESPONSE_COTRAVEL"]
+    discovery = [r for r in original_records
+                 if r.get("semantic_op_class") == "BOUNDED_DISCOVERY"]
+    assert len(pair) == 2 and len(discovery) == 1
+    assert len([r for r in original_records if r["state"] == "RUNNABLE"]) == 3
+    dropped = {"I03_XY": pair[0], "I03_YX": pair[1],
+               "I05_DISCOVERY": discovery[0]}[omitted_kind]
+    job_ref = dropped.get("query_ref", dropped.get("discovery_authority_ref"))
+    original_inventory = deepcopy(documentary["source_inventory"])
     documentary["declarations"] = [r for r in original_records if r is not dropped]
+    assert documentary["source_inventory"] == original_inventory
     kwargs["expected"] = P.FrozenExpected.from_documentary_payload(documentary)
     original_session = kwargs["session"]
     retained = tuple(u for u in original_session.manifest.units
-                     if u.job_ref.as_dict() != dropped["query_ref"])
+                     if u.job_ref.as_dict() != job_ref)
     assert len(retained) == 2
     kwargs["session"] = G.open_session(
         manifest=BatchManifest(retained),
@@ -45,9 +58,35 @@ def test_s05jr_symmetric_expected_and_manifest_omission_can_still_structurally_p
     assert result["ok"] is True
     assert len(calls) == 2
     assert len(result["consumer_products"]) == 2
-    assert result["source_inventory"]  # original respondent/item rows still present
+    assert result["source_inventory"] == original_inventory
     assert any(h["code"] == "EXTERNAL_CUSTODIAN_ISSUER_HOLD" for h in result["holds"])
-    assert any(h["code"] == "SOURCE_USE_AND_REAL_EXECUTION_NOT_GRANTED" for h in result["holds"])
+    assert any(h["code"] == "SOURCE_USE_AND_REAL_EXECUTION_NOT_GRANTED"
+               for h in result["holds"])
+
+
+def test_s05jr_caller_asserted_source_intrinsic_na_is_not_externally_issued(tmp_path):
+    """A reason string plus local hash does not establish original NOT_FIELDED.
+
+    The synthetic E author may relabel one HELD row as SOURCE_NONAPPLICABLE.
+    This locally consistent row cannot be upgraded to independently warranted
+    intrinsic NA; the source-science decision remains HOLD notwithstanding
+    source-free successful execution of the three other runnable rows.
+    """
+    kwargs, calls = _fixture(tmp_path)
+    documentary = json.loads(kwargs["expected"].payload_json)
+    held = next(r for r in documentary["declarations"] if r["state"] == "HELD")
+    held["state"] = "SOURCE_NONAPPLICABLE"
+    held["hold_reason"] = "CALLER_ASSERTED_NA__ORIGINAL_SOURCE_WARRANT_ABSENT"
+    kwargs["expected"] = P.FrozenExpected.from_documentary_payload(documentary)
+    result = P.run_integrated(**kwargs)
+    assert result["ok"] is True
+    assert len(calls) == 3
+    assert len(result["consumer_products"]) == 3
+    assert any(r["state"] == "SOURCE_NONAPPLICABLE"
+               and r["item"] == held["item"]
+               for r in result["produced"]["held_export"])
+    assert any(h["code"] == "EXTERNAL_CUSTODIAN_ISSUER_HOLD"
+               for h in result["holds"])
 
 
 def test_s05jr_structural_ok_must_not_be_confused_with_external_permission(tmp_path):
