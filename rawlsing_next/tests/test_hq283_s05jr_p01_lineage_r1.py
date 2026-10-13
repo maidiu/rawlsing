@@ -58,7 +58,10 @@ def test_s05jr_symmetric_expected_and_manifest_omission_can_still_structurally_p
     assert result["ok"] is True
     assert len(calls) == 2
     assert len(result["consumer_products"]) == 2
-    assert result["source_inventory"] == original_inventory
+    # Preserve multiset equality without requiring C11 and physical stream
+    # enumerators to use an identical record ordering.
+    as_key = lambda record: json.dumps(record, sort_keys=True, separators=(",", ":"))
+    assert sorted(map(as_key, result["source_inventory"])) == sorted(map(as_key, original_inventory))
     assert any(h["code"] == "EXTERNAL_CUSTODIAN_ISSUER_HOLD" for h in result["holds"])
     assert any(h["code"] == "SOURCE_USE_AND_REAL_EXECUTION_NOT_GRANTED"
                for h in result["holds"])
