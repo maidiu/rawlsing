@@ -1,0 +1,80 @@
+{
+ "schema": "PYAT_R3_HQ284_L01_QUALIFICATION@1",
+ "branch": "agent/rabochii-pyat-r3-hq284-l01-sourcefree-runtime-qualification-r1",
+ "sealed_startup": "0e8de4daf5bd27c7c7d8dc0223551fe2451e9ec2",
+ "environment": {
+  "python": "3.11.3",
+  "pytest": "9.1.1",
+  "platform": "macOS 13.7.8 x86_64",
+  "provider_identity_invented": false
+ },
+ "workstreams": {
+  "A": {
+   "candidate": "54f145538ed0880f8257368f838baa5b0e12e2d3",
+   "suite": "test_r3_s02_seam_witness.py",
+   "total": 27,
+   "passed": 26,
+   "failed": 1,
+   "exit": 1,
+   "failure_class": "TERRAIN_MISSING_SIBLING_RETURN_ARTIFACT",
+   "failing_case": "test_s00_contract_manifest_exists_and_is_valid",
+   "grade": "QUALIFIED_SOURCEFREE_WITH_TERRAIN_GAP"
+  },
+  "B": {
+   "candidate": "73d45f3ac6a50fbee6666ad3a5023840f01ef196",
+   "complete_tree": true,
+   "candidate_suites_present": 7,
+   "integration_suite": {
+    "total": 25,
+    "passed": 25,
+    "exit": 0
+   },
+   "aggregate_5_suites": {
+    "total": 175,
+    "passed": 83,
+    "failed": 86,
+    "skipped": 6,
+    "exit": 1,
+    "grade": "NOT_GRADED_TERRAIN_MISSING_WORKER_RETURNS_FIXTURES"
+   },
+   "s05jr": "8df031cad5e6bdb9eb4032839c406fefb879a308 adds NO python; documentary hostiles only",
+   "grade": "QUALIFIED_SOURCEFREE_FOR_COMPOSED_ROUTE"
+  },
+  "C": {
+   "candidate": "69a1686528bb46c2db3051a75710989a46fe5c45",
+   "review_test": "34cc7bdb28664ecbc707528470c2b4397aa96f12",
+   "suite": "test_hq283_s03r_f6_method_hostile.py",
+   "total": 11,
+   "errors": 11,
+   "exit": 1,
+   "error": "RuntimeError: HOLD: S03_CANDIDATE_ROOT absent; no project runtime executed (line 38)",
+   "grade": "HOLD_BY_DESIGN_PRESERVED_NOT_A_FAILURE"
+  },
+  "D": {
+   "candidate": "9ae87f2227384e0567190c6a2d5f3a33a60d4b4c",
+   "suite": "test_s04_temporal_policy.py",
+   "total": 17,
+   "passed": 17,
+   "exit": 0,
+   "xfail_observed": false,
+   "s04r": "755fb501e4b6405136bd77d71d434919c7b6c371 adds NO python tests; verdict documents only",
+   "grade": "QUALIFIED_TECHNICAL_ONLY_NO_SCIENTIFIC_ACCEPTANCE"
+  }
+ },
+ "constraints_honoured": {
+  "clone": false,
+  "reset": false,
+  "merge": false,
+  "frozen_oracle_modified": false,
+  "original_survey_data": false,
+  "production_edits": false,
+  "protected_current": false
+ },
+ "deliverables": {
+  "00_RETURN.md": {
+   "sha256": "16aa3f000c498f08c0575be537b090ccf7938293deb059d56182febf11d76040",
+   "bytes": 6096
+  }
+ },
+ "terminal": "PYAT_R3_HQ284_L01_SOURCEFREE_RUNTIME_QUALIFICATION_COMPLETE__GITHUB_PUSHED"
+}
