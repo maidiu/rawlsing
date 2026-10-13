@@ -149,8 +149,13 @@ def _mapped(source):
     return tables
 
 
-def _cells(table):
-    return [{"categories": list(k), "probability": str(v)} for k, v in sorted(table.items())]
+def _cells(table, category_order=None):
+    if category_order is not None:
+        index = {k: i for i, k in enumerate(category_order)}
+        items = sorted(table.items(), key=lambda kv: index.get(kv[0], len(index)))
+    else:
+        items = sorted(table.items())
+    return [{"categories": list(k), "probability": str(v)} for k, v in items]
 
 
 def _baseline(source, expected_mapping_hash):
@@ -227,6 +232,8 @@ def synthesize(target: dict, sources: list[dict], policy: dict,
                 overlap.append({"pair": pair, "reason": "DUPLICATE_SAMPLE" if duplicate else "OVERLAP_UNRESOLVED"})
     topology = [a["construct_ref"] for a in sources[0]["axes"]]
     category_sets = [set(a["category_map"].values()) for a in sources[0]["axes"]]
+    # S03FO: declared category order from category_map insertion order
+    declared_order = [list(dict.fromkeys(a["category_map"].values())) for a in sources[0]["axes"]]
     domain_size = 1
     for cats in category_sets:
         domain_size *= len(cats)
@@ -258,7 +265,7 @@ def synthesize(target: dict, sources: list[dict], policy: dict,
         out["content_hash"] = semantic_hash(out)
         return out
     mapped = {s["source_id"]: _mapped(s) for s in sources}
-    keys = sorted(product(*(sorted(cats) for cats in category_sets)))
+    keys = list(product(*declared_order))
     joint = {k: F(0) for k in keys}
     lower = {k: F(0) for k in keys}
     upper = {k: F(0) for k in keys}
@@ -316,8 +323,9 @@ def synthesize(target: dict, sources: list[dict], policy: dict,
     radius = sum(_q(policy[k]) for k in ("mapping_bias_radius", "transport_bias_radius", "target_share_bias_radius"))
     candidate = {"evidence_mode": "INFERRED", "method": METHOD, "construct_topology": topology,
                  "parent_refs": [s["product_ref"] for s in sources], "assumptions_ref": policy["policy_ref"],
-                 "distribution": _cells(joint) if uncovered == 0 else None,
-                 "covered_subprobability": _cells(joint), "uncovered_target_mass": str(uncovered),
+                 "ordered_categories": [list(k) for k in keys],
+                 "distribution": _cells(joint, keys) if uncovered == 0 else None,
+                 "covered_subprobability": _cells(joint, keys), "uncovered_target_mass": str(uncovered),
                  "support": coverage, "sample_size": None,
                  "dependence": "SOURCE_JOINTS_TRANSPORTED_AND_MIXED; NO_CROSS_SURVEY_RESPONDENT_LINKS",
                  "uncertainty": {"sampling_variance": None if unknown_variance else [{"categories": list(k), "variance": str(v)} for k, v in sorted(variances.items())],
