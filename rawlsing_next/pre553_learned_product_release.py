@@ -460,11 +460,33 @@ class M2Repository:
     """In-memory exact-index runtime; indexes are nonauthoritative projections."""
 
     def __init__(self) -> None:
+        # Exact in-memory records are not independently authenticated issuance.
+        self._native_security_mode = "LOCAL_UNAUTHENTICATED"
         self._subjects: dict[str, ProducerSubject] = {}
         self._closures: dict[str, ClosureObject] = {}
         self._releases: dict[str, ReleaseCore] = {}
         self._representations: dict[str, RepresentationRecord] = {}
         self._bindings: dict[str, PublicationBinding] = {}
+
+    @property
+    def native_security_mode(self) -> str:
+        return "LOCAL_UNAUTHENTICATED"
+
+    def require_external_issuer(self, operation: str) -> None:
+        _fail(
+            "EXTERNAL_ISSUER_HOLD",
+            "no independently authenticated producer, epoch/revocation "
+            f"or external custody root for M2 {operation}",
+        )
+
+    def _native_mutation_preflight(self, operation: str) -> None:
+        """Native guard reached by public and saved method aliases.
+
+        All mutations remain LOCAL_UNAUTHENTICATED, not protected issuance.
+        No caller boolean, arbitrary token or self-consistent hash grants rights.
+        """
+        if self._native_security_mode != "LOCAL_UNAUTHENTICATED":
+            self.require_external_issuer(operation)
 
     @staticmethod
     def _insert(store: dict[str, Any], ref: ExactRef, value: Any, code: str) -> Any:
@@ -475,6 +497,7 @@ class M2Repository:
         return value
 
     def register_subject(self, subject: ProducerSubject) -> ProducerSubject:
+        self._native_mutation_preflight("register_subject")
         if not isinstance(subject, ProducerSubject):
             _fail("RELEASE_SUBJECT_REF_NOT_EXACT", "subject registration requires ProducerSubject")
         return self._insert(
@@ -482,6 +505,7 @@ class M2Repository:
         )
 
     def register_closure(self, closure: ClosureObject) -> ClosureObject:
+        self._native_mutation_preflight("register_closure")
         if not isinstance(closure, ClosureObject):
             _fail("RELEASE_CONTRACT_MISMATCH", "closure registration requires ClosureObject")
         return self._insert(
@@ -489,20 +513,73 @@ class M2Repository:
         )
 
     def register_release(self, release: ReleaseCore) -> ReleaseCore:
+        self._native_mutation_preflight("register_release")
+        if not isinstance(release, ReleaseCore):
+            _fail("RELEASE_CONTRACT_MISMATCH", "registration requires ReleaseCore")
+        _verify_release_core(release)
+        if release.release_contract_ref != M2_RELEASE_CONTRACT_REF:
+            _fail("RELEASE_CONTRACT_MISMATCH", "registered release contract mismatch")
+        subject = self.subject_exact(release.release_subject_ref)
+        if not subject.complete or subject.subject_kind != release.release_subject_kind:
+            _fail("RELEASE_SUBJECT_KIND_MISMATCH", "registered release subject mismatch")
+        if subject.producer_contract_ref != release.semantic_producer_contract_ref:
+            _fail("PRODUCER_CONTRACT_MISMATCH", "registered release producer mismatch")
+        for field, kind, required in (
+            ("authority_closure_ref", "AUTHORITY", (subject.producer_contract_ref,) + subject.required_authority_refs),
+            ("dependency_closure_ref", "DEPENDENCY", subject.required_dependency_refs),
+            ("determinant_closure_ref", "DETERMINANT", subject.required_determinant_refs),
+            ("replay_reconstruction_ref", "REPLAY_RECONSTRUCTION", subject.required_replay_refs),
+            ("explanation_lineage_ref", "EXPLANATION_LINEAGE", (subject.ref, subject.producer_contract_ref) + subject.required_explanation_refs),
+        ):
+            closure = _require_closure(self, getattr(release, field), kind, "RELEASE_CONTRACT_MISMATCH")
+            _require_members(closure, required, "RELEASE_CONTRACT_MISMATCH", field)
+        replay = self.closure_exact(release.replay_reconstruction_ref)
+        if replay.metadata.get("replay_grade") not in REPLAY_GRADES:
+            _fail("REPLAY_CLOSURE_INCOMPLETE", "registered release lacks exact replay grade")
         return self._insert(self._releases, release.ref, release, "RELEASE_ID_MISMATCH")
 
     def register_representation(self, representation: RepresentationRecord) -> RepresentationRecord:
+        self._native_mutation_preflight("register_representation")
+        if not isinstance(representation, RepresentationRecord):
+            _fail("REPRESENTATION_INTEGRITY_FAILURE", "requires RepresentationRecord")
+        release = self.release_exact(representation.release_ref)
+        if (
+            representation.resolved_subject_ref != release.release_subject_ref
+            or representation.producer_contract_ref != release.semantic_producer_contract_ref
+        ):
+            _fail("REBUILD_SEMANTIC_MISMATCH", "direct representation subject/producer mismatch")
+        replay = self.closure_exact(release.replay_reconstruction_ref)
+        if (
+            representation.resolution_mode == "GOVERNED_VIRTUAL_REBUILDER"
+            and replay.metadata.get("replay_grade") != "EXACT_DETERMINISTIC_REBUILD"
+        ) or (
+            representation.resolution_mode == "GOVERNED_SERVICE_RESOLVER"
+            and replay.metadata.get("replay_grade") != "EXACT_SERVICE_REEXECUTION"
+        ):
+            _fail("REBUILD_UNAVAILABLE", "direct representation lacks qualified replay grade")
         return self._insert(
-            self._representations,
-            representation.resolver_or_locator_ref,
-            representation,
-            "REPRESENTATION_INTEGRITY_FAILURE",
+            self._representations, representation.resolver_or_locator_ref,
+            representation, "REPRESENTATION_INTEGRITY_FAILURE",
         )
 
     def register_binding(self, binding: PublicationBinding) -> PublicationBinding:
-        return self._insert(
-            self._bindings, binding.ref, binding, "PUBLICATION_BINDING_MISMATCH"
-        )
+        self._native_mutation_preflight("register_binding")
+        if not isinstance(binding, PublicationBinding):
+            _fail("PUBLICATION_BINDING_MISMATCH", "requires PublicationBinding")
+        _verify_publication_binding(binding)
+        release = self.release_exact(binding.release_ref)
+        if binding.publication_contract_ref != M2_PUBLICATION_CONTRACT_REF:
+            _fail("PUBLICATION_BINDING_MISMATCH", "direct binding uses unaccepted contract")
+        representation = self.representation_exact(binding.resolver_or_locator_ref)
+        if (
+            representation.release_ref != release.ref
+            or representation.resolution_mode != binding.resolution_mode
+            or representation.representation_integrity_ref != binding.representation_integrity_ref
+            or representation.resolved_subject_ref != release.release_subject_ref
+            or representation.producer_contract_ref != release.semantic_producer_contract_ref
+        ):
+            _fail("PUBLICATION_BINDING_MISMATCH", "direct binding mismatch")
+        return self._insert(self._bindings, binding.ref, binding, "PUBLICATION_BINDING_MISMATCH")
 
     def subject_exact(self, ref: ExactRef | Mapping[str, Any]) -> ProducerSubject:
         exact = _exact(ref, "release_subject_ref")
