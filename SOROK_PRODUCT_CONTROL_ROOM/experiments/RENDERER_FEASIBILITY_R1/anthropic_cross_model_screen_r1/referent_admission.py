@@ -94,3 +94,49 @@ def compile_grounding(packet):
                     row["delivery"])
     return {id_:{**entry,"delivery":sorted(entry["delivery"])}
             for id_,entry in sorted(items.items())}
+
+def review_candidate(candidate,case_id,packet,inherited_checker):
+    """Preserve R2 flags; reconsider only the atom grounding class.
+
+    No permission to narrate a BEHAVIOR_ONLY ground or perform actions against
+    absent objects follows from permitting a semantic reference ID.
+    """
+    grounding=compile_grounding(packet)
+    physical={ref for ref,row in grounding.items() if row["physical"]}
+    old=inherited_checker(candidate,case_id,sorted(physical))
+    current=[code for code in old if code!="UNKNOWN_ATOM_REFERENT"]
+    findings=[]
+    review=set()
+    atoms=candidate.get("atoms",[]) if isinstance(candidate,dict) else []
+    for i,atom in enumerate(atoms):
+        if not isinstance(atom,dict):
+            current.append("INVALID_ATOM_CONTAINER")
+            continue
+        refs=atom.get("referent_ids",[])
+        if not isinstance(refs,list):
+            current.append("INVALID_ATOM_REFERENT_CONTAINER")
+            continue
+        for ref in refs:
+            row=grounding.get(ref) if isinstance(ref,str) else None
+            if row is None:
+                current.append("UNKNOWN_OR_UNAUTHORIZED_ATOM_REFERENT")
+                findings.append({"atom_index":i,"referent_id":ref,
+                    "class":"UNKNOWN_OR_UNAUTHORIZED_REFERENT","decision":"REJECT"})
+            else:
+                findings.append({"atom_index":i,"referent_id":ref,
+                    "class":row["class"],"source_fields":row["sources"],
+                    "delivery":row["delivery"],"decision":"GROUNDING_ALLOWED"})
+                if "BEHAVIOR_ONLY" in row["delivery"]:
+                    review.add("BEHAVIOR_ONLY_GROUNDING_REQUIRES_SUBSTANTIVE_REVIEW")
+                if not row["physical"]:
+                    review.add("NON_SCENE_GROUNDING_REQUIRES_SUBSTANTIVE_REVIEW")
+        if atom.get("kind")=="OBJECT_ACTION" and not set(refs).intersection(physical):
+            current.append("OBJECT_ACTION_WITHOUT_DOCUMENTED_PHYSICAL_TARGET")
+    for effect in candidate.get("world_effect_proposals",[]):
+        if isinstance(effect,dict) and effect.get("referent_id") not in physical:
+            current.append("UNKNOWN_WORLD_EFFECT_REFERENT")
+    if candidate.get("materialization_requests"):
+        review.add("MATERIALIZATION_IS_A_REQUEST_NOT_PERMISSION")
+    return {"original_r2_issues":sorted(set(old)),
+            "corrected_issues":sorted(set(current)),
+            "referent_findings":findings,"semantic_review_flags":sorted(review)}
