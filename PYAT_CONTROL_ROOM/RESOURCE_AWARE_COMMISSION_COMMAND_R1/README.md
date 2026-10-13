@@ -1,3 +1,9 @@
+## INVALID HQ UNTIL PERSONA-END-PRODUCT AND FULL CURRENT FUNCTION GROK
+
+Before RCM01 model/worker/resource routing, apply `PYAT_CONTROL_ROOM/00_INCOMING_HQ_VALIDITY_AND_PERSONA_END_PRODUCT_GATE_R1.md`. Resource eligibility is **necessary but not sufficient**: the incoming HQ must first be accepted on terminal persona purpose, pre-main/Pyat and Dva/Trii/Chetiri/Long Memory, inherited empirical/semantic/temporal methods, verified current successors and comparative *reuse vs improvement vs replacement*. An arbitrary 2-family F6 pair or Ghana EE12 documentary subtask cannot substitute for a persona-changing integration requirement. Old historical HQ token alone is inadequate. Until the accession is accepted, no new assignments or self-adoptions; ongoing originally authorized workers keep their own independent assignment validity.
+
+---
+
 ## Most recent Astra PRE-V3 critical-path check — 12 October
 
 [Course correction after all six HQ282 returns](HQ282_ASTRA_PREV3_COURSE_CORRECTION_20261012_R1.md). Prioritize original scientifically issued workload E→actual real P01/B02 consumer, with authentic survey-family structural F6, competent temporal EE12 F7 and B5/G0b selected service in parallel. P03 external institutional records are supplemental, not the survey-family pair needed by the global graph. P04/P06 already have enough source-free demonstration to stop extending them speculatively. Last user screenshot shows 36% five-hour / 88% weekly remaining; the account is not attested, no new Codex or Astra budget granted. Formal readme and HQ grok now point here.
