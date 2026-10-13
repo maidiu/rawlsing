@@ -1,0 +1,11 @@
+# RFA-06C2 — nonselective smoke eligibility and predecessor evidence custody
+
+**Gate defect CONFIRMED:** predecessor `run_cross_model_court.py::smoke_pass` requires `record.status == "SCHEMA_VALID"` and `not record.get("corrected_issues")`, despite the smoke being a provider-transport/contract probe. A stochastic renderer output defect therefore improperly excludes an otherwise working model. RFA-06C2 accepts either historical `SCHEMA_VALID` or `STRUCTURAL_INVALID` provided schema, fixture, provider/model identity, candidate and receipt conditions hold. It does not equate schema status with character quality.
+
+**Reuse policy:** `smoke_custody.py::check_existing_smokes` opens the owner-local predecessor freeze and exact original smoke response files; checks the frozen request/message/schema hashes, fixed source packet hashes, model/fixture/arm, effort/max tokens/API/SDK, complete sent message, original payload, original output schema, raw response ID/model/body, unique message identity and terminal non-refusal. Recomputed successor diagnostics are separated from unchanged historical receipts. Both must verify before `--reuse-existing-smokes` appends either response to the new isolated `results/raw` directory and persists a private proof. It makes zero Anthropic calls.
+
+**GitHub-only limit:** predecessor smoke receipts and freeze are ignored/private and unavailable in this branch. Therefore `EXISTING_SONNET_SMOKE_REUSABLE = HOLD__UNVERIFIED_LOCAL_EVIDENCE`; `EXISTING_HAIKU_SMOKE_REUSABLE = HOLD__UNVERIFIED_LOCAL_EVIDENCE`. This is not evidence of a genuine failure or a need for new calls.
+
+**Reported owner evidence:** Sonnet local smoke was `SCHEMA_VALID`. Haiku had requested/returned `claude-haiku-5-5`, `EXACT_ORIGINAL_SCHEMA_VALID`, `stop_reason=end_turn`, `fixture_id=RF001`, and a single `SPEECH_PROSE_EXACT_QUOTATION_MISMATCH` on single-quoted unchanged content. The latter is a proven possible checker false positive. Exact historical reclassification awaits local receipt custody, never fabricated from this report.
+
+No model selection on quality; no two extra smoke generations if both receipts verify. Original RFA-06C freeze, receipts, R2 Opus, and candidates remain unchanged.

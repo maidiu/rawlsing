@@ -1,0 +1,65 @@
+{
+  "kind": "RFA06C2_THREE_MODEL_SCREEN_V2",
+  "base": "4ce795413c2e77be04657a260cbda586610f4756",
+  "inherited_rfa05b": "a406e1d289faac31fd51cca8b36a4bb47af93852",
+  "provider": "ANTHROPIC",
+  "comparison_model_ids": [
+    "claude-opus-5-5",
+    "claude-sonnet-5-5",
+    "claude-haiku-5-5"
+  ],
+  "new_model_ids": [
+    "claude-sonnet-5-5",
+    "claude-haiku-5-5"
+  ],
+  "effort": "high",
+  "max_tokens": 16384,
+  "system_message": null,
+  "temperature": null,
+  "top_p": null,
+  "top_k": null,
+  "provider_seed": null,
+  "sdk_pin": "anthropic==1.13.0",
+  "jsonschema_pin": "jsonschema==4.25.1",
+  "api_version": "2023-06-01",
+  "api_endpoint": "POST /v1/messages",
+  "timeout_seconds": 180,
+  "operational_retries": 2,
+  "schedule_seed": "0x5A0C4020",
+  "blind_seed": "0x5A0C5001",
+  "new_primary_calls": 40,
+  "primary_comparison_observations": 60,
+  "opus_source_replicate_ordinal": 1,
+  "opus_secondary_replicates": [
+    2,
+    3
+  ],
+  "model_smokes": [
+    {
+      "run_id": "CMSONNET-SMOKE",
+      "model": "claude-sonnet-5-5",
+      "case_id": "RF001",
+      "condition": "N"
+    },
+    {
+      "run_id": "CMHAIKU-SMOKE",
+      "model": "claude-haiku-5-5",
+      "case_id": "RF001",
+      "condition": "N"
+    }
+  ],
+  "original_output_schema": "../lab_fixture/OBJECTIVE_OCCURRENCE_OUTPUT_SCHEMA_R1.json",
+  "original_scoring_rubric": "../lab_fixture/RENDERER_SCORING_RUBRIC_R1.md",
+  "original_semantic_packet_root": "../render_inputs_r1/",
+  "original_r2_provider_contract": "../anthropic_court_r2/",
+  "original_r2_raw_receipts": "../anthropic_court_r2/results/raw/",
+  "evidence_policy": "PRIVATE_LOCAL_ONLY",
+  "gen_calls_by_commission": 0,
+  "sealed_r2_git_blobs": {
+    "court_common_r2.py": "3fbde47473bf96f32a49dafd5be88762fe352b77",
+    "run_anthropic_renderer_court_r2.py": "12a2def1420772948cd61ac2539d4ef294cba47e",
+    "EXPERIMENT_CONFIG_R2.json": "502f8004a3bf508897148e1934231436597493d1",
+    "EXECUTION_MANIFEST_PRIVATE_R2.json": "e9b1e12ff605b875d34943dc09da00c799ef8074",
+    "BLINDED_SCORING_MANIFEST_R2.json": "a64eb2d594ad387bd05ba3f63372c9cbc418b29e"
+  }
+}
