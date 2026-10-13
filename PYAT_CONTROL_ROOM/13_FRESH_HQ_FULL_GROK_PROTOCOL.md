@@ -1,3 +1,9 @@
+# MANDATORY PYAT HQ VALIDITY CHANGE — PERSONA END-PRODUCT + CRITICAL METHOD GROK
+
+**A NEW PYAT HQ IS NOT VALID AS OPERATIVE HQ UNTIL `PYAT_CONTROL_ROOM/00_INCOMING_HQ_VALIDITY_AND_PERSONA_END_PRODUCT_GATE_R1.md` IS PASSED AND INDEPENDENTLY/USER REVIEWED.** Historical HQD-115/R2.1 tokens establish only historical grok. Live canonical handoff control remains intact. Read existing PASSES A–I and the machine automation doctrine, then substantively establish full Dva/Trii/Chetiri/Long Memory, crosswave-driver-facet, V553 harmonization/temporal pressure and actual modern V3/V2 producer/consumer inheritance. Assess the BEST attainable method—including whether to reuse, improve, complete or replace inherited versions with measured output gains. Do not substitute Ghana, arbitrary two-survey context fields or academic documentation for a functioning persona generator. Source-level legal/semantic truth and explicit approximations both matter; never manufacture observations or bypass rights. Until accepted, only orientation and proposed grok dossier; no new HQ command.
+
+---
+
 ## HQ277 follow-up condition — actual automated workload completeness
 
 After completing the HQ276 machine-grok, a new HQ must read [the hostile matrix audit](WHOLE_MACHINE_COMPLETION_R1/SECOND_PASS_HOSTILE_AUDIT_R1.md) and [the WG0–WG4 original-item/operation workload construction gate](WHOLE_MACHINE_COMPLETION_R1/AUTOMATED_WORKLOAD_CONSTRUCTION_CRITICAL_GATE.md). Demand evidence for the current generator of source-complete legitimate I03 requests, I05 authority/catalogs and batch jobs; these are currently proved *consumable inputs* to generic owners, not yet proved exhaustively constructed from all 35 original instruments. No selected-question handwork and no assertion an implementation is missing without examining current existing owners.
@@ -407,6 +413,6 @@ A fresh HQ has failed grokking if it:
 
 ## Fresh-HQ completion token
 
-The accepted R2.1 baseline returned the following token. A successor may inherit it after verifying the HQD-115 checkpoint and finding no material contradictory delta:
+The accepted R2.1 baseline returned the following token. A successor may inherit this token as historical evidence of R2.1 only, not as proof of current operative HQ eligibility; the user-directed persona-first and critically-adjudicated-method accession remains separately mandatory:
 
 `PYAT_FRESH_HQ_FULL_GROK_COMPLETE__CHRONOLOGY_CURRENTNESS_ROUTE_B_PRODUCT_FIELD_FORGE_AND_PREV3_PROGRAM_RECONCILED`
