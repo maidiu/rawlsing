@@ -1,0 +1,237 @@
+{
+  "schema": "USERDIRECT_I2_PREIMPLEMENTATION_FROZEN_EXPECTATIONS_R1",
+  "chronology": "Committed to independent reviewer branch BEFORE reading HQ298 SC0 port implementation and author's execution-status ledger",
+  "sealed_startup": "cf26a03e6e3ece8dc783e6068aab1f1c3ac518d5",
+  "source_oracles": [
+    {
+      "commit": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+      "path": "WORKER_RETURNS/SOROK-R3-POSTASTRA-SC0-WORLD-PORT-CONTRACT-R1/02_K9_PROVIDER_SWAP_ORACLES.json",
+      "blob": "9ccb66f9b08a4aa8b96582295bb2966d250fd72d"
+    },
+    {
+      "commit": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+      "path": "WORKER_RETURNS/SOROK-R3-POSTASTRA-SC0-WORLD-PORT-CONTRACT-R1/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json",
+      "blob": "e78b3ee91da1fb18deaf8d8f226800ad855adbae"
+    },
+    {
+      "commit": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+      "path": "WORKER_RETURNS/SOROK-R3-POSTASTRA-SC0-WORLD-PORT-CONTRACT-R1/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json",
+      "blob": "610ac870fde6cfe63796592b3c6b1e1bf1e37150"
+    }
+  ],
+  "K9": [
+    {
+      "id": "K9_01_TWO_PROVIDERS_SAME_MEANING",
+      "expected": "EQUIVALENT_EXCEPT_DECLARED_PHYSICAL_LINEAGE"
+    },
+    {
+      "id": "K9_02_INDEPENDENT_NONPARENT",
+      "expected": "GENERIC_API_CONSUMED_WITHOUT_GENEALOGY"
+    },
+    {
+      "id": "K9_03_ID_REORDER_AND_STAGE_RENAME",
+      "expected": "EQUIVALENT"
+    },
+    {
+      "id": "K9_04_NOT_EQUIVALENT_CONTRAST",
+      "expected": "FAIL_NON_EQUIVALENT_PROVIDER_NOT_PERMITTED_NORMALIZATION"
+    },
+    {
+      "id": "K9_05_MODELLED_VS_OBSERVED",
+      "expected": "REFUSE_GRADE_PROMOTION"
+    },
+    {
+      "id": "K9_06_FORWARD_REVERSE",
+      "expected": "HELD_AUTHORITY_REVERSE_ROLE"
+    },
+    {
+      "id": "K9_07_PERMISSIONS",
+      "expected": "DENIED_USE"
+    },
+    {
+      "id": "K9_08_TWO_CHANNEL_REFRESH",
+      "expected": "TWO_INDEPENDENT_SUCCESSORS"
+    }
+  ],
+  "K10": [
+    {
+      "id": "K10_01",
+      "mutation": "DROP_AH",
+      "expected": "REJECT_SEMANTIC_LOSS"
+    },
+    {
+      "id": "K10_02",
+      "mutation": "STRATUM_TRANSLATION",
+      "expected": "REJECT_NONINJECTIVE_COORDINATE"
+    },
+    {
+      "id": "K10_03",
+      "mutation": "DYADIZE_NARY",
+      "expected": "REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS"
+    },
+    {
+      "id": "K10_04",
+      "mutation": "DROP_F2_HISTORY_REQUIREMENT",
+      "expected": "REJECT_F2_PREREQUISITE_LOSS"
+    },
+    {
+      "id": "K10_05",
+      "mutation": "PREDICATE_BECOMES_EXPERIENCE",
+      "expected": "REJECT_ACTOR_FIREWALL"
+    },
+    {
+      "id": "K10_06",
+      "mutation": "CONTRADICTION_DOMINANT_ONLY",
+      "expected": "REJECT_ALTERNATIVE_ERASURE"
+    },
+    {
+      "id": "K10_07",
+      "mutation": "MINORITY_ERASE",
+      "expected": "REJECT_SUPPORT_ERASURE"
+    },
+    {
+      "id": "K10_08",
+      "mutation": "ZERO_MISSING_COLLAPSE",
+      "expected": "REJECT_NEGATIVE_ALGEBRA_COLLAPSE"
+    },
+    {
+      "id": "K10_09",
+      "mutation": "UNDERPOWERED_AS_EMPTY",
+      "expected": "REJECT_UNDERPOWERED_ERASURE"
+    },
+    {
+      "id": "K10_10",
+      "mutation": "NOT_ASKED_AS_NO",
+      "expected": "REJECT_ROUTING_NONRESPONSE_LOSS"
+    },
+    {
+      "id": "K10_11",
+      "mutation": "CROSS_UNIT_POOL",
+      "expected": "REFUSE_SAMPLING_UNIT_JOINT"
+    },
+    {
+      "id": "K10_12",
+      "mutation": "DIRECTION_REVERSE",
+      "expected": "HELD_AUTHORITY"
+    },
+    {
+      "id": "K10_13",
+      "mutation": "CONDITION_SET_SORT",
+      "expected": "REJECT_ORDERED_PATH_LOSS"
+    },
+    {
+      "id": "K10_14",
+      "mutation": "UNCERTAIN_TO_POINT",
+      "expected": "REJECT_MODEL_PRECISION_INVENTION"
+    },
+    {
+      "id": "K10_15",
+      "mutation": "CLOCK_CONFLATION",
+      "expected": "NO_CURRENT_OR_NOT_KNOWN_ASOF"
+    },
+    {
+      "id": "K10_16",
+      "mutation": "LAG_INTERPOLATION",
+      "expected": "HELD_AUTHORITY"
+    },
+    {
+      "id": "K10_17",
+      "mutation": "BINDING_AS_OBSERVATION",
+      "expected": "REJECT_GENERATED_FACT_PROMOTION"
+    },
+    {
+      "id": "K10_18",
+      "mutation": "CHANGE_BINDING_NO_REFRESH",
+      "expected": "REJECT_STALE_BINDING_CONTEXT"
+    },
+    {
+      "id": "K10_19",
+      "mutation": "PUBLISH_BOUNDARY_NO_REFRESH",
+      "expected": "REJECT_STALE_REPOSITORY_CONTEXT"
+    },
+    {
+      "id": "K10_20",
+      "mutation": "PERMISSION_REVOKED",
+      "expected": "DENIED_USE"
+    },
+    {
+      "id": "K10_21",
+      "mutation": "PARTIAL_AS_COMPLETE",
+      "expected": "PARTIAL_DEFERRED"
+    },
+    {
+      "id": "K10_22",
+      "mutation": "PROXY_AS_OBSERVED",
+      "expected": "REJECT_EPISTEMIC_PROMOTION"
+    },
+    {
+      "id": "K10_23",
+      "mutation": "OPAQUE_HASH_NO_VALUES",
+      "expected": "REJECT_UNVERIFIABLE_CONSUMER_USE"
+    },
+    {
+      "id": "K10_24",
+      "mutation": "IMPLICIT_MODEL_CROSSPRODUCT",
+      "expected": "REFUSE_UNAUTHORIZED_COMPOSITION"
+    },
+    {
+      "id": "K10_25",
+      "mutation": "UPSTREAM_PSYCHIC_FIELDS",
+      "expected": "REJECT_ACTOR_JURISDICTION"
+    },
+    {
+      "id": "K10_26",
+      "mutation": "F2_PUBLIC_SANCTION",
+      "expected": "REJECT_PUBLIC_RULE_AND_OWNER_LOSS"
+    },
+    {
+      "id": "K10_27",
+      "mutation": "NONPARENT_CONSUMER",
+      "expected": "PRODUCE_GENERIC_OBJECTIVE_POSSIBILITY_ONLY"
+    },
+    {
+      "id": "K10_28",
+      "mutation": "NO_ACTOR_WELD",
+      "expected": "REFUSE_UNGRANTED_ACTOR_USE"
+    }
+  ],
+  "independent_derivations": [
+    {
+      "case": "K10_07",
+      "premise": "YES=54, NO=6, native support=60",
+      "expectation": "Preserving only modal YES cannot be called lossless: the 6 negative routes alter the support algebra, including downstream minority-conditioned possibilities.",
+      "class": "REJECT_SUPPORT_ERASURE"
+    },
+    {
+      "case": "K10_10",
+      "premise": "A respondent never routed to a question is not an observed respondent answering NO.",
+      "expectation": "NOT_ASKED must retain its original routing status and its nonparticipation in that item-specific risk denominator.",
+      "class": "REJECT_ROUTING_NONRESPONSE_LOSS"
+    },
+    {
+      "case": "K10_15",
+      "premise": "A rule published in 2010 cannot be reported as known in a knowledge-as-of 2009 query solely because it is effective for an earlier interval.",
+      "expectation": "Separate observation effective, publication knowledge, actor event, and request currentness; no retrospective leakage.",
+      "class": "NO_CURRENT_OR_NOT_KNOWN_ASOF"
+    },
+    {
+      "case": "K10_23",
+      "premise": "A hash of an undereferenceable source does not show what numeric/text values either consumer actually read.",
+      "expectation": "Value identity plus dereference path plus consumer read-set needed; reject hash-only receipt.",
+      "class": "REJECT_UNVERIFIABLE_CONSUMER_USE"
+    }
+  ],
+  "hostiles_to_run": [
+    "A and B built independently, differ ONLY on five enumerated storage-lineage fields; compare value-by-value, not receipt slogan",
+    "Change one WORLD numeric payload value; verify at least one consumer outcome changes and unrelated source/consumer stays byte-semantic invariant",
+    "Erase a minor NO route, conflate not-asked with NO, or replace measured zero with MISSING; fail closed",
+    "Forge non-null reverse authority including future version and wrong risk/target; must refuse without independent issuer grant",
+    "Change generated binding (H3), preserve source grade, issue successor selection, preserve prior",
+    "Cross publication/effective as-of boundary (H2), issue distinct successor, preserve prior",
+    "N-ary role topology must not silently collapse to two roles",
+    "Nonparent consumer reads objective values without genealogy selectors",
+    "Conception scenario is constraints input, not generated parent identity or actor psyche"
+  ],
+  "execution_rule": "A suite is EXECTUED only if exact tests and imports were staged, their __file__ and blob verified, subprocess returned real exit and JUnit/log captured. Prior author 36/36 is independent-review evidence only, not self-executed.",
+  "safety_ceiling": "No operative source release, original microdata, N9 issuer, N10W joint model-use, N12 wake, or V3 actor permission."
+}
