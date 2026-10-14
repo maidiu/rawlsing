@@ -1,66 +1,128 @@
 {
-  "observed_at_utc": "2026-10-14T12:33:50.517Z",
-  "check_kind": "DOCUMENTARY_HYGIENE_NOT_PROJECT_TEST",
-  "official_pre_final_sha": "efbbc454f1d37c09baea436696f2df7e7324be72",
+  "schema": "ASTRA_FINAL_DOCUMENTARY_VALIDATION@2",
+  "observed_at_utc": "2026-10-14T12:39:32.040Z",
+  "check_kind": "DOCUMENTARY_HYGIENE_NOT_PROJECT_OR_SCIENTIFIC_TEST",
+  "official_pre_final_sha": "9c282852a14ab9aa6c9f9948637985e508e8d68b",
+  "official_pre_final_remote_equal": true,
   "sealed_ancestor": true,
   "recovery_ancestor": true,
-  "changed_paths_since_seal": 121,
+  "changed_paths_since_seal": 124,
   "outside_allowed_terrain": [],
   "recovered_00_06": [
     {
       "path": "00_RETURN.md",
-      "identical": true
+      "identical": true,
+      "sha256": "82437a59c9e5b75f22e391f1dda14e244037fd6faad04ec104e1ecc948e9b5e6"
     },
     {
       "path": "01_CONFLICTS_AND_ALTERNATIVES.md",
-      "identical": true
+      "identical": true,
+      "sha256": "a933ce39f4e042390dd55578548e0129c6d369ed6376bea0af12ebd79f4969b6"
     },
     {
       "path": "02_STRUCTURAL_WORLD_PORT.md",
-      "identical": true
+      "identical": true,
+      "sha256": "bf3b791a8256b36456b1acc936a6f713c92068b512e6068f5bbf25b1fcf073a4"
     },
     {
       "path": "03_PERSON_ARCHITECTURE.md",
-      "identical": true
+      "identical": true,
+      "sha256": "4b3b30078cafd808d8588e8ca1ddeb8fde80de0ad01eff1bdea81f75ec2ba04a"
     },
     {
       "path": "04_SCIENTIFIC_AUTHORITY.md",
-      "identical": true
+      "identical": true,
+      "sha256": "1abf13bf8516d25fc1013a22414aa6607bb8b6260617cfc5824020490c91b71f"
     },
     {
       "path": "05_ENGINEERING_ARCHITECTURE.md",
-      "identical": true
+      "identical": true,
+      "sha256": "85ee877acdd4303dd723db5d4464e772b9ef35e78f3fc596f14a906591c449b0"
     },
     {
       "path": "06_FEASIBILITY.md",
-      "identical": true
+      "identical": true,
+      "sha256": "c3dd8a7ae24e9b1c9fa177594a958bc0e58980ede966faadbcb5924c0f8552a4"
     }
   ],
   "source_hashes_checked": 90,
   "source_hash_errors": [],
-  "json_files_parsed": 15,
-  "deliverables": 18,
-  "question_counts": {
-    "architecture": 5,
-    "psyche": 10,
-    "engineering": 5,
-    "k": 11,
-    "feasibility": 15,
-    "corrective": 14
+  "json_files_parsed": 17,
+  "coverage_counts": {
+    "deliverables": 18,
+    "architecture_questions": 5,
+    "psyche_questions": 10,
+    "engineering_questions": 5,
+    "feasibility_components": 15,
+    "kill_tests": 11,
+    "corrective_questions": 14,
+    "functional_gates": 8
   },
   "broken_report_links": [],
-  "pending_final_files": [
+  "pending_final_files": [],
+  "named_input_refs_rechecked": [
     {
-      "file": "00_RETURN.md",
-      "target": "FINAL_FREEZE_MANIFEST.json"
+      "sha": "ae3d2780d3c7356d87f919e2997f85cd06d0a492",
+      "ref": "refs/heads/agent/rabochii-pyat-r3-hq294-a03u-original-u-e-issuer-action-r1"
     },
     {
-      "file": "FINAL_RETURN.md",
-      "target": "FINAL_REQUIREMENT_AUDIT.md"
+      "sha": "4576b24f26167845ad5992c394b2ffb105dbcce1",
+      "ref": "refs/heads/agent/rabochii-pyat-r3-hq294-a04b-lossless-original-v2-binder-r1"
     },
     {
-      "file": "FINAL_RETURN.md",
-      "target": "FINAL_FREEZE_MANIFEST.json"
+      "sha": "f9e1f4234eeac3e4fd74c520bd65176decf4a491",
+      "ref": "refs/heads/agent/rabochii-pyat-r3-hq294-d02p-multifamily-objective-production-r1"
+    },
+    {
+      "sha": "46bc5c61f5d3e672ef9ca0567b9311eb067265e0",
+      "ref": "refs/heads/agent/rabochii-pyat-r3-hq294-d04p-temporal-v553-to-n9-r1"
+    },
+    {
+      "sha": "c6e56332cf260ad40e30bb658683d2aed335e730",
+      "ref": "refs/heads/agent/rabochii-pyat-r3-hq294-e05-consumer-interface-r1"
+    },
+    {
+      "sha": "8f8e49a91dd893ac11ffcda39d5c3cb449e17f20",
+      "ref": "refs/heads/agent/rabochii-pyat-r3-hq295-d2f-external-field-prod-r1"
+    },
+    {
+      "sha": "f5ce57a5ff098020ff220531d114d95e81f21e8b",
+      "ref": "refs/heads/agent/rabochii-pyat-r3-hq295-t8e-temporal-output-r1"
+    },
+    {
+      "sha": "4768122c1fa985c00d2dda6fb50c288e9801ae7d",
+      "ref": "refs/heads/agent/rabochii-pyat-r3-hq295-u04-pre-result-e-custody-r1"
+    },
+    {
+      "sha": "102fb3d3942e55e7575ee396b567d5e05b4dc6ed",
+      "ref": "refs/heads/agent/rabochii-pyat-r3-hq295-uel-exact-axis-ledger-r1"
+    },
+    {
+      "sha": "d1283fb53b543471fe825e78d64bf5bd19efbf11",
+      "ref": "refs/heads/agent/rabochii-pyat-r3-hq295-v2k-original-identity-successor-r1"
+    },
+    {
+      "sha": "3c36aa1740a008d0b876850ed47057783e820367",
+      "ref": "refs/heads/agent/rabochii-pyat-r3-hq295-w10-world-consumer-probe-r1"
+    },
+    {
+      "sha": "8e1beddf0d79118afec9c601c3b02f60a1b2b9a3",
+      "ref": "refs/heads/agent/reviewer-pyat-r3-sorok-prea0-prev3-weld-advisory-r1"
+    },
+    {
+      "sha": "bace7640777098732d425e9368cf28ada0e57aeb",
+      "ref": "refs/heads/agent/sorok-prea0-psyche-architecture-r1"
+    },
+    {
+      "sha": "b2b07acd0c3637e725236250e6d06f5aa651b978",
+      "ref": "refs/heads/agent/vozhd-pyat-r3-hq-accession-reconstruction-20261013-r1"
+    },
+    {
+      "sha": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "ref": "refs/heads/integration/pre-main-reconciliation-r1"
     }
-  ]
+  ],
+  "unexpected_input_ref_drift": [],
+  "publication": "Final manifest hash verification and enclosing commit publication are checked externally after this receipt is frozen; exact final SHA is returned in chat.",
+  "scientific_actor_model_k_trials": "NOT_EXECUTED"
 }
