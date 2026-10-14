@@ -1,0 +1,159 @@
+{
+  "schema": "HQ297_K9_CASEWISE_REVIEW_RESULTS@1",
+  "root_commit": "c0663827abf3627e8beb13dd3516a495d27c1093",
+  "freeze_commit": "4fb21a8108d29f4c820326204bfcfee41500788c",
+  "candidate_commit": "b497f85713847cecc169d4d71c7629655d562dc0",
+  "candidate_pe_blob": "58484f4c3d9aae148d4116dcf00420c432aefcbd",
+  "SC0_commit": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+  "SC0_k9_blob": "9ccb66f9b08a4aa8b96582295bb2966d250fd72d",
+  "SC0_k10_blob": "e78b3ee91da1fb18deaf8d8f226800ad855adbae",
+  "independent_test_blob": "d2fe653dadf94893b0fdfd268f36683f8dfed9af",
+  "execution_status": "NOT_EXECUTED_NO_QUALIFIED_PROJECT_WORKTREE",
+  "claimed_pass": 0,
+  "claimed_fail": 0,
+  "not_reached": 8,
+  "independent_expected_source": "SC0_K9_PROVIDER_SWAP_ORACLES@1.0.0",
+  "records": [
+    {
+      "id": "K9_01_TWO_PROVIDERS_SAME_MEANING",
+      "expected": "EQUIVALENT_EXCEPT_DECLARED_PHYSICAL_LINEAGE",
+      "SC0_assertions": [
+        "schema_valid(A) && schema_valid(B)",
+        "semantic_world_projection(A)==semantic_world_projection(B)",
+        "ordered_possibility_projection(A)==ordered_possibility_projection(B)",
+        "both_consumer_effects(A)==both_consumer_effects(B)",
+        "physical_provider_id(A)!=physical_provider_id(B)"
+      ],
+      "SC0_procedure": [
+        "load A then B under identical use ceiling",
+        "resolve same world demand with same four clocks",
+        "query three ordered empirical steps",
+        "dereference all semantic objects",
+        "invoke each of two consumers under same rule version"
+      ],
+      "actual_status": "NOT_REACHED",
+      "observed_actual_output": null,
+      "pytest_case_receipt": null,
+      "code_boundary": "PE has no world-provider resolver, physical provider A/B load, two tagged world/possibility contracts or consumer effect parity; N9 refs are caller-supplied.",
+      "static_grade": "DOCUMENTARY_METHOD_LIMIT_ONLY__NOT_RUNTIME_PASS_OR_FAIL"
+    },
+    {
+      "id": "K9_02_INDEPENDENT_NONPARENT",
+      "expected": "GENERIC_API_CONSUMED_WITHOUT_GENEALOGY",
+      "SC0_assertions": [
+        "requires_no_parent_or_coparent_tag",
+        "selected_apprenticeship_routes_equal",
+        "no_person_generation"
+      ],
+      "SC0_procedure": [
+        "use NONPARENT_APPRENTICESHIP_ENTRY",
+        "exclude genealogical selectors from request"
+      ],
+      "actual_status": "NOT_REACHED",
+      "observed_actual_output": null,
+      "pytest_case_receipt": null,
+      "code_boundary": "PE can compute sourcefree nonparent reverse fraction, but no independent apprenticeship world-route consumer.",
+      "static_grade": "DOCUMENTARY_METHOD_LIMIT_ONLY__NOT_RUNTIME_PASS_OR_FAIL"
+    },
+    {
+      "id": "K9_03_ID_REORDER_AND_STAGE_RENAME",
+      "expected": "EQUIVALENT",
+      "SC0_assertions": [
+        "no_stage_name_dependency",
+        "all roles/order unchanged",
+        "semantic projections equal"
+      ],
+      "SC0_procedure": [
+        "B shuffles physical record order and renames all stage-shaped files",
+        "semantic refs and values preserved"
+      ],
+      "actual_status": "NOT_REACHED",
+      "observed_actual_output": null,
+      "pytest_case_receipt": null,
+      "code_boundary": "No provider B alternate normalized files/stage-renamed physical port or semantic dereference comparator.",
+      "static_grade": "DOCUMENTARY_METHOD_LIMIT_ONLY__NOT_RUNTIME_PASS_OR_FAIL"
+    },
+    {
+      "id": "K9_04_NOT_EQUIVALENT_CONTRAST",
+      "expected": "FAIL_NON_EQUIVALENT_PROVIDER_NOT_PERMITTED_NORMALIZATION",
+      "SC0_assertions": [
+        "world_projection_inequality_detected",
+        "port must reject lost role"
+      ],
+      "SC0_procedure": [
+        "B omits sponsor participant or converts triad into dyads"
+      ],
+      "actual_status": "NOT_REACHED",
+      "observed_actual_output": null,
+      "pytest_case_receipt": null,
+      "code_boundary": "No N9 n-ary/F1 triad value in PE to drop sponsor and check structured refusal.",
+      "static_grade": "DOCUMENTARY_METHOD_LIMIT_ONLY__NOT_RUNTIME_PASS_OR_FAIL"
+    },
+    {
+      "id": "K9_05_MODELLED_VS_OBSERVED",
+      "expected": "REFUSE_GRADE_PROMOTION",
+      "SC0_assertions": [
+        "epistemic_grade_difference_detected",
+        "reject promotion"
+      ],
+      "SC0_procedure": [
+        "B marks fixture synthetic route as observed source fact"
+      ],
+      "actual_status": "NOT_REACHED",
+      "observed_actual_output": null,
+      "pytest_case_receipt": null,
+      "code_boundary": "PE declares TEST_ONLY service grade but cannot ingest/validate alternate physical provider B epistemic grade.",
+      "static_grade": "DOCUMENTARY_METHOD_LIMIT_ONLY__NOT_RUNTIME_PASS_OR_FAIL"
+    },
+    {
+      "id": "K9_06_FORWARD_REVERSE",
+      "expected": "HELD_AUTHORITY_REVERSE_ROLE",
+      "SC0_assertions": [
+        "no_calculation_of_reverse_from_forward",
+        "forward_legal_slice_preserved"
+      ],
+      "SC0_procedure": [
+        "request reversal from B without separate target risk-set issuer"
+      ],
+      "actual_status": "NOT_REACHED",
+      "observed_actual_output": null,
+      "pytest_case_receipt": null,
+      "code_boundary": "PE rejects missing reversal ref; no competent authority lookup of supplied non-null reversal scope/target risk; independent unauthorized-ref hostile frozen.",
+      "static_grade": "DOCUMENTARY_METHOD_LIMIT_ONLY__NOT_RUNTIME_PASS_OR_FAIL"
+    },
+    {
+      "id": "K9_07_PERMISSIONS",
+      "expected": "DENIED_USE",
+      "SC0_assertions": [
+        "denied_requested_slice",
+        "no cached A bypass"
+      ],
+      "SC0_procedure": [
+        "B drops dependency use atom while preserving bytes"
+      ],
+      "actual_status": "NOT_REACHED",
+      "observed_actual_output": null,
+      "pytest_case_receipt": null,
+      "code_boundary": "PE checks model ref equality and C1 permissions at empirical path; no transitive selected N9 dependency use/revocation resolution.",
+      "static_grade": "DOCUMENTARY_METHOD_LIMIT_ONLY__NOT_RUNTIME_PASS_OR_FAIL"
+    },
+    {
+      "id": "K9_08_TWO_CHANNEL_REFRESH",
+      "expected": "TWO_INDEPENDENT_SUCCESSORS",
+      "SC0_assertions": [
+        "binding_change_causes_new_query",
+        "publication_boundary_causes_separate_successor",
+        "prior_receipts_immutable"
+      ],
+      "SC0_procedure": [
+        "same timestamp, generated location binding changes",
+        "next run crosses publication boundary independently"
+      ],
+      "actual_status": "NOT_REACHED",
+      "observed_actual_output": null,
+      "pytest_case_receipt": null,
+      "code_boundary": "Selected/asof dependency ref lists carried only; no separate structural publication and generated-binding refresh outputs.",
+      "static_grade": "DOCUMENTARY_METHOD_LIMIT_ONLY__NOT_RUNTIME_PASS_OR_FAIL"
+    }
+  ]
+}

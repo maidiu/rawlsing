@@ -1,0 +1,118 @@
+{
+  "schema": "HQ297_K9K10_EXECUTION_AND_SOURCE_MANIFEST@1",
+  "sealed_startup": "c0663827abf3627e8beb13dd3516a495d27c1093",
+  "commission_blob": "2b35d4351417701d6317ec30efc1f23d941a8b09",
+  "PE": {
+    "commit": "b497f85713847cecc169d4d71c7629655d562dc0",
+    "code_blob": "58484f4c3d9aae148d4116dcf00420c432aefcbd",
+    "fixture_blob": "c9674d5fe9d01621eda0fdb4a999391eba422d92",
+    "author_test_blob": "92f59875583bf513c6fdbcd3ad7fe2b49e45e212"
+  },
+  "SC0": {
+    "commit": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+    "schema_blob": "610ac870fde6cfe63796592b3c6b1e1bf1e37150",
+    "k9_blob": "9ccb66f9b08a4aa8b96582295bb2966d250fd72d",
+    "k10_blob": "e78b3ee91da1fb18deaf8d8f226800ad855adbae"
+  },
+  "reviewer": {
+    "freeze_commit": "4fb21a8108d29f4c820326204bfcfee41500788c",
+    "test_path": "rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py",
+    "test_blob": "d2fe653dadf94893b0fdfd268f36683f8dfed9af",
+    "authored_tests": 13
+  },
+  "session": {
+    "assistant": "GPT-6",
+    "user_requested": "GPT-6 High or eligible local GPT-6.1 Sol Medium",
+    "effort_attested": false,
+    "surface": "Private GitHub connector; ordinary sandbox container for capability preflight only",
+    "qualified_secondary_Mac": false,
+    "host_quota": "UNKNOWN",
+    "account_identity": "UNKNOWN",
+    "external_paid_overflow": false
+  },
+  "local_container_capability": {
+    "python": "3.13.5",
+    "pytest": "installed",
+    "git": "installed",
+    "project_checkout_at_mnt_data_rawlsing": false,
+    "required_owner_python_modules_not_materialized": true,
+    "eligible_user_authorized_sourcefree_worktree_available": false,
+    "qualified_test_runs": 0,
+    "reason": "A bare interpreter without a pinned authorized private checkout cannot execute SC0×PE nor accepted N10E suite, and is not a user-approved Mac runner."
+  },
+  "actual_execution": {
+    "k9": {
+      "PASS": 0,
+      "FAIL": 0,
+      "NOT_REACHED": 8
+    },
+    "k10": {
+      "PASS": 0,
+      "FAIL": 0,
+      "NOT_REACHED": 28
+    },
+    "reviewer_pytest": {
+      "collected_by_host": 0,
+      "executed": 0,
+      "exit_code": null
+    },
+    "PE_author_suite_replay": {
+      "executed": false,
+      "exit_code": null
+    },
+    "legacy_N10E_regressions": {
+      "executed": false,
+      "exit_code": null
+    },
+    "two_physically_independent_SC0_providers_executed": false
+  },
+  "inherited_other_worker_reports": {
+    "PE_author_21": {
+      "reported_pass": 21,
+      "reported_exit": 0,
+      "not_HQ297_independent": true
+    },
+    "N10E_author_43": {
+      "reported_pass": 43,
+      "reported_exit": 0,
+      "not_HQ297_independent": true
+    }
+  },
+  "repro_runner_spec": {
+    "code_tree": "Exact PE b497f85713847cecc169d4d71c7629655d562dc0",
+    "test_overlay": "Only independent reviewed test blob d2fe653dadf94893b0fdfd268f36683f8dfed9af from freeze 4fb21a8108d29f4c820326204bfcfee41500788c",
+    "sc0_specs": "Fetch K9/K10 and schema as immutable files from exact separate SC0 commit, do NOT assume SC0 branch physically inside PE git tree.",
+    "preflight": [
+      "confirm exact PE code blob and imported PE module origin",
+      "record Python/pytest/owner dependency and machine/provider/quota",
+      "confirm independent review test blob, sourcefree fixture blob and SC0 frozen schema/oracle blobs",
+      "no original SAV/DTA, model API, source issuer or V3"
+    ],
+    "proposed_not_executed_commands": [
+      "export HQ297_EXACT_PE_ROOT=/ABSOLUTE/EXACT_PE_WORKTREE",
+      "export PYTHONPATH=\"$HQ297_EXACT_PE_ROOT\"",
+      "cd \"$HQ297_EXACT_PE_ROOT\"",
+      "python3 -m pytest -q --junitxml=/ABSOLUTE/OUTPUT/hq297_independent.xml rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py",
+      "python3 -m pytest -q --junitxml=/ABSOLUTE/OUTPUT/hq297_pe_author.xml rawlsing_next/tests/test_postastra_pe_generic_world_possibility.py",
+      "python3 -m pytest -q --junitxml=/ABSOLUTE/OUTPUT/hq297_n10e.xml rawlsing_next/tests/test_pre553_empirical_possibility_provider.py"
+    ],
+    "required_for_full_k9_k10": "Separate true A/B physical SC0 world providers and actual two-contract adapter with exact native semantical dereference, both consumer effects, all 36 individual test executions; current reviewer 13 PE-boundary tests do NOT claim to substitute for them."
+  },
+  "test_artifacts": {
+    "local_stdout": null,
+    "local_stderr": null,
+    "junit": null,
+    "actual_exit": null,
+    "actual_casewise_responses": null
+  },
+  "safety": {
+    "original_respondents_executed": false,
+    "operative_N9": false,
+    "model_issuer_created": false,
+    "V3_actor_run": false,
+    "source_data_admitted": false,
+    "production_changed": false,
+    "canonical_merged": false
+  },
+  "verdict": "NO_INDEPENDENT_PYTEST_RUN__K9_8_AND_K10_28_ALL_NOT_REACHED__SC0_TWO_CONTRACT_PORT_MISSING__NO_ADOPTION"
+}
