@@ -1,0 +1,123 @@
+{
+  "schema": "GI2_SOURCEFREE_RECEIPT@1",
+  "frozen_sha256": "5b3339d5e28205032e44bd4e614b03e94de8a09bb90a0c66710b9efcf5f948ca",
+  "test_count": 57,
+  "tests_pass": 57,
+  "tests_fail": 0,
+  "junit_sha256": "69496478e2c1708ed09ffa1aef83a9b330985c3acf12c7ec94f72edb9366501e",
+  "test_command": "python -m pytest -q test_forward_lab.py --junitxml=junit_gi2.xml",
+  "runner": "Python 3.13.5; pytest 9.0.2",
+  "executed": "STANDALONE_RECONSTRUCTED_SOURCEFREE_ONLY",
+  "original_sgi1_24": "NOT_RUN_MISSING_IMPORT_CLOSURE",
+  "original_g11_25": "NOT_RUN_BY_DESIGN",
+  "case_count": 12,
+  "status_counts": {
+    "COMMITTED": 6,
+    "HISTORY_SEARCH_EXHAUSTED": 2,
+    "WORLD_ROUTE_UNAVAILABLE": 1,
+    "WORLD_EVIDENCE_UNKNOWN": 1,
+    "WORLD_EVIDENCE_STALE": 1,
+    "FUTURE_CHILD_INFORMATION_LEAK": 1
+  },
+  "attempt_distribution": {
+    "0": 4,
+    "1": 5,
+    "3": 1,
+    "4": 2
+  },
+  "total_attempts": 16,
+  "model_calls": 0,
+  "original_source_reads": 0,
+  "reported_pytest_seconds": 0.08,
+  "observed_batch_ns": 5154119,
+  "two_fathers": [
+    {
+      "seed": "alpha",
+      "endpoint": "WORKSHOP",
+      "history_sha256": "0e7c7eb0650a06d6f3ca4a63afb0c97baaf766b18a17062273f703cdda17a95e"
+    },
+    {
+      "seed": "beta",
+      "endpoint": "WORKSHOP",
+      "history_sha256": "e00cfe9f515a55f77dcf1f41aebf0c83c273f51d178e2ad2551d7b0684cfe298"
+    }
+  ],
+  "cases": [
+    [
+      "HW01_M0_LOCAL_TWO_FATHERS",
+      "COMMITTED",
+      1
+    ],
+    [
+      "HW02_M1_OLDER_CHILD",
+      "COMMITTED",
+      1
+    ],
+    [
+      "HW03_M1_MOBILITY",
+      "COMMITTED",
+      1
+    ],
+    [
+      "HW04_WORLD_ROUTE_CLOSED",
+      "WORLD_ROUTE_UNAVAILABLE",
+      0
+    ],
+    [
+      "HW05_N9_UNAVAILABLE",
+      "WORLD_EVIDENCE_UNKNOWN",
+      0
+    ],
+    [
+      "HW06_N9_STALE_ASOF",
+      "WORLD_EVIDENCE_STALE",
+      0
+    ],
+    [
+      "HW07_ENDPOINT_SHIFT",
+      "HISTORY_SEARCH_EXHAUSTED",
+      4
+    ],
+    [
+      "HW08_RETRY_SUCCESS_THIRD",
+      "COMMITTED",
+      3
+    ],
+    [
+      "HW09_RETRY_ALL_FAIL",
+      "HISTORY_SEARCH_EXHAUSTED",
+      4
+    ],
+    [
+      "HW10_CHILD_FUTURE_DEPENDENT",
+      "FUTURE_CHILD_INFORMATION_LEAK",
+      0
+    ],
+    [
+      "HW11_M1_UNCONVENTIONAL",
+      "COMMITTED",
+      1
+    ],
+    [
+      "HW12_M0_NO_DYAD_BRIDGE",
+      "COMMITTED",
+      1
+    ]
+  ],
+  "facts": {
+    "embargo_all_12_byte_equal": true,
+    "dag_negative_oracle_rejected": true,
+    "older_child_prior_care_hours": 22,
+    "conception": "PENDING_NOT_ADMITTED_CONCEPTION",
+    "birth": "NOT_ISSUED",
+    "child_generated_events": 0,
+    "population_posterior": "NOT_ESTIMABLE"
+  },
+  "limits": [
+    "No S-GI1 imported modules",
+    "No real population or dyad estimands",
+    "No original survey",
+    "No V3 actor",
+    "No independent reviewer"
+  ]
+}

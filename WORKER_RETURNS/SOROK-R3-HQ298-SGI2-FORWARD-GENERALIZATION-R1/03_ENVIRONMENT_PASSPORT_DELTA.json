@@ -1,0 +1,111 @@
+{
+  "passport_schema": "SOROK_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "env-gi2-reconstructed-20261014",
+  "epoch_id": "epoch-gi2-fresh-01",
+  "owner_session_alias": "GI2_BROWSER_ONLY",
+  "surface": "BROWSER_CONTAINER",
+  "machine_alias": null,
+  "conversation_or_account_affinity": "current_chat_only",
+  "status": "RECONSTRUCTED",
+  "last_live_probe_at": "2026-10-14 (precise local probe timestamp UNKNOWN)",
+  "runtime_marker_digest": "2fbde969e828c9bb25bd554d5af28312782218d915b355e652d4e5884fe1de89",
+  "probe_command_and_result": "python --version -> 3.13.5; python -m pytest --version -> 9.0.2; git --version -> 2.47.3; git ls-remote github -> DNS failure; importlab_sgi1.construction -> ModuleNotFoundError",
+  "capabilities": {
+    "python": {
+      "status": "VERIFIED",
+      "version": "3.13.5"
+    },
+    "pytest": {
+      "status": "VERIFIED",
+      "version": "9.0.2"
+    },
+    "git_binary": {
+      "status": "VERIFIED",
+      "version": "2.47.3"
+    },
+    "shell": {
+      "status": "VERIFIED"
+    },
+    "github_connector": {
+      "status": "VERIFIED"
+    },
+    "direct_git_network": {
+      "status": "UNAVAILABLE"
+    },
+    "node": {
+      "status": "UNKNOWN"
+    },
+    "persistent_cross_session": {
+      "status": "UNKNOWN"
+    },
+    "SGI1_import": {
+      "status": "UNAVAILABLE"
+    }
+  },
+  "git_object_store_alias": null,
+  "worktree_alias": null,
+  "branch": "agent/rabochii-sorok-r3-hq298-sgi2-forward-generalization-r1",
+  "exact_checkout_base": null,
+  "exact_checkout_head": null,
+  "clean_or_dirty_state": "NO_GIT_WORKTREE",
+  "source_family": "K11_GENEALOGY_SYNTHETIC",
+  "materialized_source_refs": [
+    {
+      "module": "forward_lab",
+      "local_relative_path": "forward_lab.py",
+      "module_file_verified": "after source-written local runner",
+      "git_blob_sha1": "NOT_REPOSITORY_BLOB__BUNDLE_ONLY",
+      "sha256": "15053f2a0392e93e39520b48979a33e04104aa535f75ecdc9ae41a7213f9d8d7"
+    }
+  ],
+  "predecessor_not_materialized": [
+    {
+      "commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "01_LAB_IMPLEMENTATION/lab_sgi1/construction.py",
+      "git_blob_sha1": "8bc7c1a5d8d96112b313326445c4fdbf5b222fe7",
+      "import": "ModuleNotFoundError"
+    },
+    {
+      "commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "01_LAB_IMPLEMENTATION/lab_sgi1/pipeline.py",
+      "git_blob_sha1": "cf91c99b90e485bf3a1d8f4f87fad2e4c7f22f51",
+      "import": "NOT_ATTEMPTED"
+    }
+  ],
+  "dependency_closure_status": "BOUNDED_NEW_ONLY__SGI1_MISSING",
+  "covered_test_suites": [
+    {
+      "command": "python -m pytest -q test_forward_lab.py --junitxml=junit_gi2.xml",
+      "junit": "01_EXACT_TESTS_AND_JUNIT.tar.xz/junit_gi2.xml",
+      "result": "57_PASS_0_FAIL",
+      "grade": "STANDALONE_SOURCEFREE_ONLY"
+    },
+    {
+      "command": "SGI1 original 24",
+      "result": "NOT_RUN_MISSING_IMPORT_CLOSURE"
+    }
+  ],
+  "science_grade": "isolated source-free surrogate only",
+  "model_provider": null,
+  "model_effort": null,
+  "pricing_class": "UNKNOWN",
+  "observed_model_calls": 0,
+  "observed_credits_or_cash": null,
+  "quota_remaining": null,
+  "expected_reset": null,
+  "independent_review_separation": "REQUIRED_NOT_PERFORMED",
+  "privacy_source_grant": "Synthetic source-free only",
+  "model_call_grant": "NONE",
+  "actor_use_grant": "NONE",
+  "assignments_completed": [
+    "GI2 isolated heldout surrogate"
+  ],
+  "next_good_affinity_tags": [
+    "GENEALOGY",
+    "K11",
+    "FORWARD_REPLAY",
+    "CHILD_EMBARGO"
+  ],
+  "staged_state_preservation": "LOCAL_RUNTIME_ONLY_NOT_GUARANTEED_TO_SURVIVE",
+  "retire_or_rebuild_reason": "No verified SGI1 warm import closure; no committed follow-on K11 queue"
+}
