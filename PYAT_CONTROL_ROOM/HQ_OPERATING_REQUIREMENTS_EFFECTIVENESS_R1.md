@@ -1,4 +1,6 @@
 # Pyat HQ operating requirements — effective delivery
+
+> **USER-DIRECTED DISPENSATION UPDATE — 2026-10-14:** Read and obey `PYAT_CONTROL_ROOM/00D_WARM_EXECUTION_PASSPORT_AND_MONEY_FIRST_AGENT_DISPENSATION_R1.md` as a mandatory supplement to §§1–8. The historical Browser Economy preference below is NOT a reason to ignore cheaper qualified local/OpenCode/DeepSeek hosts, to restart a useful existing runtime, or to mark Browser Python unavailable. Reuse verified warm environments and exact sourcefree import closures, prefer cash- and quota-efficient qualified dispatch, and record sanitized environment passports on returns. No permission/semantic/actor gate relaxed.
 Status: USER_DIRECTED_OPERATING_REFINEMENT
 Record: USER_DIRECTED_PYAT_HQ_EFFECTIVENESS_20260930
 Applies to: operating HQ, Sub-Vozdhi, implementers and reviewers.
