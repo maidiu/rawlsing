@@ -49,7 +49,7 @@ All new genealogy semantics remain `PROVISIONAL_LAB_RULE__NOT_ADOPTED`. Explicit
 | LLM proposal capture | `08_LLM_PROPOSAL_RECORDS/` (exact model, prompt text + hash, raw output + hash, parsed candidate IDs, dedup receipts, proposal hash) |
 | Scientific interpretation | `09_SCIENTIFIC_INTERPRETATION.md` |
 | Next authority/adoption recommendation | `10_NEXT_AUTHORITY_RECOMMENDATION.md` |
-| Remote verification receipt | `11_REMOTE_VERIFICATION_RECEIPT.json` (filled after push; see dispatch) |
+| Remote verification receipt | `11_REMOTE_VERIFICATION_RECEIPT.json` — **VERIFIED**: branch `agent/rabochii-sorok-sgi1-sourcefree-genealogy-k11-lab-r1` remote ref = `51862d340d4dac91d2664dc9a37c2bad9ced6061`, parent = exact S-G SHA `aec8fecc1ae2e3438ff70c44ce5ce7845d1a4829`; changed-path scope: 64 added / 0 removed / 0 modified, all under `WORKER_RETURNS/SOROK-SGI1-SOURCEFREE-K11-LAB-R1/`; out-of-scope paths: none |
 
 ## Required lab pipeline — implementation status (all 12 stages implemented and exercised)
 
