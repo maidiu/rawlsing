@@ -1,0 +1,295 @@
+FFFFFFFFFFF                                                              [100%]
+=================================== FAILURES ===================================
+____ test_actual_two_namespace_original_successor_consumes_all_B_and_J_only ____
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-560/test_actual_two_namespace_orig0')
+
+    def test_actual_two_namespace_original_successor_consumes_all_B_and_J_only(tmp_path):
+>       records,expected,plans,calls=successor_fixture(tmp_path)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:200: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:192: in successor_fixture
+    per_scope=[freeze_original_before_production(i)[0] for i in inputs]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:192: in <listcomp>
+    per_scope=[freeze_original_before_production(i)[0] for i in inputs]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:144: in freeze_original_before_production
+    routing_refs=tuple(r.ref for r in projection.routing if r.question_or_target_ref in
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <tuple_iterator object at 0x10a8380a0>
+
+>   routing_refs=tuple(r.ref for r in projection.routing if r.question_or_target_ref in
+        {inputs['fx']['qrefs'][item] for item in order}),
+    original_item_scope_ref=_ref('SOURCEFREE_ORIGINAL_ITEM_SCOPE','v2k-items-'+declaration.item))
+E   TypeError: unhashable type: 'mappingproxy'
+
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:144: TypeError
+__ test_independent_B_or_J_only_omission_rejected_before_any_durable_call[B] ___
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-560/test_independent_B_or_J_only_o0')
+omit = 'B'
+
+    @pytest.mark.parametrize('omit', ['B','DISCOVERY'])
+    def test_independent_B_or_J_only_omission_rejected_before_any_durable_call(tmp_path,omit):
+>       records,expected,plans,calls=successor_fixture(tmp_path)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:218: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:192: in successor_fixture
+    per_scope=[freeze_original_before_production(i)[0] for i in inputs]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:192: in <listcomp>
+    per_scope=[freeze_original_before_production(i)[0] for i in inputs]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:144: in freeze_original_before_production
+    routing_refs=tuple(r.ref for r in projection.routing if r.question_or_target_ref in
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <tuple_iterator object at 0x10a8a12d0>
+
+>   routing_refs=tuple(r.ref for r in projection.routing if r.question_or_target_ref in
+        {inputs['fx']['qrefs'][item] for item in order}),
+    original_item_scope_ref=_ref('SOURCEFREE_ORIGINAL_ITEM_SCOPE','v2k-items-'+declaration.item))
+E   TypeError: unhashable type: 'mappingproxy'
+
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:144: TypeError
+_ test_independent_B_or_J_only_omission_rejected_before_any_durable_call[DISCOVERY] _
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-560/test_independent_B_or_J_only_o1')
+omit = 'DISCOVERY'
+
+    @pytest.mark.parametrize('omit', ['B','DISCOVERY'])
+    def test_independent_B_or_J_only_omission_rejected_before_any_durable_call(tmp_path,omit):
+>       records,expected,plans,calls=successor_fixture(tmp_path)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:218: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:192: in successor_fixture
+    per_scope=[freeze_original_before_production(i)[0] for i in inputs]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:192: in <listcomp>
+    per_scope=[freeze_original_before_production(i)[0] for i in inputs]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:144: in freeze_original_before_production
+    routing_refs=tuple(r.ref for r in projection.routing if r.question_or_target_ref in
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <tuple_iterator object at 0x10a83ab30>
+
+>   routing_refs=tuple(r.ref for r in projection.routing if r.question_or_target_ref in
+        {inputs['fx']['qrefs'][item] for item in order}),
+    original_item_scope_ref=_ref('SOURCEFREE_ORIGINAL_ITEM_SCOPE','v2k-items-'+declaration.item))
+E   TypeError: unhashable type: 'mappingproxy'
+
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:144: TypeError
+_ test_original_identity_fields_distinguish_successor_keys[respondent_namespace-OTHER] _
+
+field = 'respondent_namespace', value = 'OTHER'
+
+    @pytest.mark.parametrize('field,value', [('respondent_namespace','OTHER'),('respondent_unit','HOUSEHOLD'),
+        ('form','F2'),('language','OTHER'),('administered_occurrence','SECOND'),('option_scope',('1','0'))])
+    def test_original_identity_fields_distinguish_successor_keys(field,value):
+>       data=sourcefree_original_inputs('V2K-SCOPE');records,_=freeze_original_before_production(data)
+                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:229: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:144: in freeze_original_before_production
+    routing_refs=tuple(r.ref for r in projection.routing if r.question_or_target_ref in
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <tuple_iterator object at 0x10a8962c0>
+
+>   routing_refs=tuple(r.ref for r in projection.routing if r.question_or_target_ref in
+        {inputs['fx']['qrefs'][item] for item in order}),
+    original_item_scope_ref=_ref('SOURCEFREE_ORIGINAL_ITEM_SCOPE','v2k-items-'+declaration.item))
+E   TypeError: unhashable type: 'mappingproxy'
+
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:144: TypeError
+_ test_original_identity_fields_distinguish_successor_keys[respondent_unit-HOUSEHOLD] _
+
+field = 'respondent_unit', value = 'HOUSEHOLD'
+
+    @pytest.mark.parametrize('field,value', [('respondent_namespace','OTHER'),('respondent_unit','HOUSEHOLD'),
+        ('form','F2'),('language','OTHER'),('administered_occurrence','SECOND'),('option_scope',('1','0'))])
+    def test_original_identity_fields_distinguish_successor_keys(field,value):
+>       data=sourcefree_original_inputs('V2K-SCOPE');records,_=freeze_original_before_production(data)
+                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:229: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:144: in freeze_original_before_production
+    routing_refs=tuple(r.ref for r in projection.routing if r.question_or_target_ref in
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <tuple_iterator object at 0x10a91ffa0>
+
+>   routing_refs=tuple(r.ref for r in projection.routing if r.question_or_target_ref in
+        {inputs['fx']['qrefs'][item] for item in order}),
+    original_item_scope_ref=_ref('SOURCEFREE_ORIGINAL_ITEM_SCOPE','v2k-items-'+declaration.item))
+E   TypeError: unhashable type: 'mappingproxy'
+
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:144: TypeError
+______ test_original_identity_fields_distinguish_successor_keys[form-F2] _______
+
+field = 'form', value = 'F2'
+
+    @pytest.mark.parametrize('field,value', [('respondent_namespace','OTHER'),('respondent_unit','HOUSEHOLD'),
+        ('form','F2'),('language','OTHER'),('administered_occurrence','SECOND'),('option_scope',('1','0'))])
+    def test_original_identity_fields_distinguish_successor_keys(field,value):
+>       data=sourcefree_original_inputs('V2K-SCOPE');records,_=freeze_original_before_production(data)
+                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:229: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:144: in freeze_original_before_production
+    routing_refs=tuple(r.ref for r in projection.routing if r.question_or_target_ref in
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <tuple_iterator object at 0x10a987e50>
+
+>   routing_refs=tuple(r.ref for r in projection.routing if r.question_or_target_ref in
+        {inputs['fx']['qrefs'][item] for item in order}),
+    original_item_scope_ref=_ref('SOURCEFREE_ORIGINAL_ITEM_SCOPE','v2k-items-'+declaration.item))
+E   TypeError: unhashable type: 'mappingproxy'
+
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:144: TypeError
+___ test_original_identity_fields_distinguish_successor_keys[language-OTHER] ___
+
+field = 'language', value = 'OTHER'
+
+    @pytest.mark.parametrize('field,value', [('respondent_namespace','OTHER'),('respondent_unit','HOUSEHOLD'),
+        ('form','F2'),('language','OTHER'),('administered_occurrence','SECOND'),('option_scope',('1','0'))])
+    def test_original_identity_fields_distinguish_successor_keys(field,value):
+>       data=sourcefree_original_inputs('V2K-SCOPE');records,_=freeze_original_before_production(data)
+                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:229: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:144: in freeze_original_before_production
+    routing_refs=tuple(r.ref for r in projection.routing if r.question_or_target_ref in
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <tuple_iterator object at 0x10a948040>
+
+>   routing_refs=tuple(r.ref for r in projection.routing if r.question_or_target_ref in
+        {inputs['fx']['qrefs'][item] for item in order}),
+    original_item_scope_ref=_ref('SOURCEFREE_ORIGINAL_ITEM_SCOPE','v2k-items-'+declaration.item))
+E   TypeError: unhashable type: 'mappingproxy'
+
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:144: TypeError
+_ test_original_identity_fields_distinguish_successor_keys[administered_occurrence-SECOND] _
+
+field = 'administered_occurrence', value = 'SECOND'
+
+    @pytest.mark.parametrize('field,value', [('respondent_namespace','OTHER'),('respondent_unit','HOUSEHOLD'),
+        ('form','F2'),('language','OTHER'),('administered_occurrence','SECOND'),('option_scope',('1','0'))])
+    def test_original_identity_fields_distinguish_successor_keys(field,value):
+>       data=sourcefree_original_inputs('V2K-SCOPE');records,_=freeze_original_before_production(data)
+                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:229: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:144: in freeze_original_before_production
+    routing_refs=tuple(r.ref for r in projection.routing if r.question_or_target_ref in
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <tuple_iterator object at 0x10a9b3a00>
+
+>   routing_refs=tuple(r.ref for r in projection.routing if r.question_or_target_ref in
+        {inputs['fx']['qrefs'][item] for item in order}),
+    original_item_scope_ref=_ref('SOURCEFREE_ORIGINAL_ITEM_SCOPE','v2k-items-'+declaration.item))
+E   TypeError: unhashable type: 'mappingproxy'
+
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:144: TypeError
+_ test_original_identity_fields_distinguish_successor_keys[option_scope-value5] _
+
+field = 'option_scope', value = ('1', '0')
+
+    @pytest.mark.parametrize('field,value', [('respondent_namespace','OTHER'),('respondent_unit','HOUSEHOLD'),
+        ('form','F2'),('language','OTHER'),('administered_occurrence','SECOND'),('option_scope',('1','0'))])
+    def test_original_identity_fields_distinguish_successor_keys(field,value):
+>       data=sourcefree_original_inputs('V2K-SCOPE');records,_=freeze_original_before_production(data)
+                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:229: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:144: in freeze_original_before_production
+    routing_refs=tuple(r.ref for r in projection.routing if r.question_or_target_ref in
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <tuple_iterator object at 0x10a9c2770>
+
+>   routing_refs=tuple(r.ref for r in projection.routing if r.question_or_target_ref in
+        {inputs['fx']['qrefs'][item] for item in order}),
+    original_item_scope_ref=_ref('SOURCEFREE_ORIGINAL_ITEM_SCOPE','v2k-items-'+declaration.item))
+E   TypeError: unhashable type: 'mappingproxy'
+
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:144: TypeError
+_ test_exact_query_predicate_routing_and_custody_refs_bind_successor_identity __
+
+    def test_exact_query_predicate_routing_and_custody_refs_bind_successor_identity():
+>       data=sourcefree_original_inputs('V2K-SCOPE');work=freeze_original_before_production(data)[0][0]
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:238: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:144: in freeze_original_before_production
+    routing_refs=tuple(r.ref for r in projection.routing if r.question_or_target_ref in
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <tuple_iterator object at 0x10aaf9c30>
+
+>   routing_refs=tuple(r.ref for r in projection.routing if r.question_or_target_ref in
+        {inputs['fx']['qrefs'][item] for item in order}),
+    original_item_scope_ref=_ref('SOURCEFREE_ORIGINAL_ITEM_SCOPE','v2k-items-'+declaration.item))
+E   TypeError: unhashable type: 'mappingproxy'
+
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:144: TypeError
+_ test_actual_wrong_namespace_or_routing_rejected_before_first_scope_execution _
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-560/test_actual_wrong_namespace_or0')
+
+    def test_actual_wrong_namespace_or_routing_rejected_before_first_scope_execution(tmp_path):
+>       records,expected,plans,calls=successor_fixture(tmp_path)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:247: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:192: in successor_fixture
+    per_scope=[freeze_original_before_production(i)[0] for i in inputs]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:192: in <listcomp>
+    per_scope=[freeze_original_before_production(i)[0] for i in inputs]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:144: in freeze_original_before_production
+    routing_refs=tuple(r.ref for r in projection.routing if r.question_or_target_ref in
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <tuple_iterator object at 0x10aa69510>
+
+>   routing_refs=tuple(r.ref for r in projection.routing if r.question_or_target_ref in
+        {inputs['fx']['qrefs'][item] for item in order}),
+    original_item_scope_ref=_ref('SOURCEFREE_ORIGINAL_ITEM_SCOPE','v2k-items-'+declaration.item))
+E   TypeError: unhashable type: 'mappingproxy'
+
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py:144: TypeError
+=========================== short test summary info ============================
+FAILED ../../../Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py::test_actual_two_namespace_original_successor_consumes_all_B_and_J_only
+FAILED ../../../Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py::test_independent_B_or_J_only_omission_rejected_before_any_durable_call[B]
+FAILED ../../../Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py::test_independent_B_or_J_only_omission_rejected_before_any_durable_call[DISCOVERY]
+FAILED ../../../Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py::test_original_identity_fields_distinguish_successor_keys[respondent_namespace-OTHER]
+FAILED ../../../Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py::test_original_identity_fields_distinguish_successor_keys[respondent_unit-HOUSEHOLD]
+FAILED ../../../Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py::test_original_identity_fields_distinguish_successor_keys[form-F2]
+FAILED ../../../Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py::test_original_identity_fields_distinguish_successor_keys[language-OTHER]
+FAILED ../../../Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py::test_original_identity_fields_distinguish_successor_keys[administered_occurrence-SECOND]
+FAILED ../../../Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py::test_original_identity_fields_distinguish_successor_keys[option_scope-value5]
+FAILED ../../../Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py::test_exact_query_predicate_routing_and_custody_refs_bind_successor_identity
+FAILED ../../../Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py::test_actual_wrong_namespace_or_routing_rejected_before_first_scope_execution
+11 failed in 1.06s

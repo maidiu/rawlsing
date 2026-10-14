@@ -1,0 +1,234 @@
+{
+  "schema": "HQ295_V2K_TEST_EXECUTIONS@1",
+  "sealed_startup": "2403fb214218c119d21341624967e6377fdd3d52",
+  "branch": "agent/rabochii-pyat-r3-hq295-v2k-original-identity-successor-r1",
+  "model": "gpt-6.1-sol",
+  "effort": "medium",
+  "model_evidence": "actual session turn_context",
+  "host": "Matthews-MBP.lan",
+  "secondary_mac_role": "USER_ASSIGNED_NOT_INDEPENDENTLY_VERIFIED",
+  "account_B_designation": "UNKNOWN",
+  "worktree": "/Users/matthewsmith/.codex/worktrees/1037/Rawlsing",
+  "sparse_cones": [
+    "rawlsing_next",
+    "WORKER_COMMISSIONS",
+    "WORKER_RETURNS",
+    "PYAT_CONTROL_ROOM"
+  ],
+  "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "executable": "/usr/local/bin/python3",
+  "pytest": "9.1.1",
+  "quota_preflight": {
+    "ordinaryUsageAllowed": true,
+    "five_hour_used_percent": 33,
+    "weekly_used_percent": 15
+  },
+  "runtime_root": "/tmp/hq295-v2k-p01-3f91dc22",
+  "runtime_commit": "3f91dc22d2eb863bc1d2facccfd33e6c05349503",
+  "runtime_includes": [
+    "rawlsing_next",
+    "WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1"
+  ],
+  "candidate_sha256": "d1e5e3693f91b94ce934f6765fda90bc88aed22392fb06966742db9633be4d46",
+  "test_sha256": "0f0b80ff65c1ee42c6c17dae869a1ff127f999b1cfd29567a6826d3677e36eae",
+  "owner_sources": {
+    "pre553_original_workload_contract_v2_candidate.py": {
+      "git_blob": "08bb75c431d3352cb0d17e9a65f7d855b4d35e59",
+      "sha256": "b22a0843fe21b711ceacc05dca93afd277a47d10030df935f2522ee581f5fae4",
+      "runtime_bytes_match": true
+    },
+    "pre553_original_workload_v2_verifier_candidate.py": {
+      "git_blob": "996c8e907f2befde93af09b60154b610c1ffeb63",
+      "sha256": "63d91062f1a080c0297d21364b36492d376137c7936acacb2f0feb702cc0bf28",
+      "runtime_bytes_match": true
+    },
+    "pre553_v2_durable_consumer_integration_candidate.py": {
+      "git_blob": "dc146e920909c8577b5c3c316cd9a8631e96ffd8",
+      "sha256": "ec52d15fe485b2ccb331cb44094008773702f9fed67013b77e5dbd51ee95424c",
+      "runtime_bytes_match": true
+    },
+    "pre553_governed_batch_checkpoint_integration_candidate.py": {
+      "git_blob": "44807c6a287145507d7332138c944cd61da363bf",
+      "sha256": "049bf788c28775ccd4d6787fd1ae8cf2e77c7dda715ab8861036a01c47f8f555",
+      "runtime_bytes_match": true
+    },
+    "pre553_batch_durable_checkpoint_candidate.py": {
+      "git_blob": "719c8d878bcfb3b6c61c844c9bf974ada8365929",
+      "sha256": "349d9b2bcc8b35a8fd24eeb3300ac7d93a2d22a9334c1ca47e50895bb84cf2ce",
+      "runtime_bytes_match": true
+    },
+    "pre553_batch_runner.py": {
+      "git_blob": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+      "sha256": "5071bde0180db05f59386884d5de2bdea503cd26db2024806a92887d2a5a1e04",
+      "runtime_bytes_match": true
+    },
+    "pre553_carrier_execution.py": {
+      "git_blob": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+      "sha256": "e4f0413c1ca4717993f6a40e0b42e8b23ae3f50b0d11eeb860625e9cc0ec6261",
+      "runtime_bytes_match": true
+    },
+    "pre553_route_b_production.py": {
+      "git_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "sha256": "3a677b4d7a9083ce627f9c773d8a1697f949deebc550bc8f072cff011589f18b",
+      "runtime_bytes_match": true
+    },
+    "pre553_empirical_query.py": {
+      "git_blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "sha256": "d45ad313bc57e94c8c3652b4123c7cb03b0fc18d38d577aaaae94435664ef4cb",
+      "runtime_bytes_match": true
+    },
+    "pre553_discovery_exact.py": {
+      "git_blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "sha256": "808fd0bd8e2423c047268285c00ca43f0f4cdbff80ed1ad286e3c6c56b8f7217",
+      "runtime_bytes_match": true
+    },
+    "pre553_source_backed_c11_facade.py": {
+      "git_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "sha256": "03b88d258d21c403542756db7316923aa392871442d99294de904b1744da1d01",
+      "runtime_bytes_match": true
+    },
+    "pre553_c11_ingest.py": {
+      "git_blob": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+      "sha256": "0c56a0f6f656547a096982a6adab21c9b47d749385411a5d159f2b5390eec8bf",
+      "runtime_bytes_match": true
+    },
+    "pre553_c11_repository.py": {
+      "git_blob": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+      "sha256": "84a71fe43307cca30f9eeaaedb269d8390468a4744a0fac251aebc2cda7b498e",
+      "runtime_bytes_match": true
+    },
+    "pre553_empirical_objects.py": {
+      "git_blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "sha256": "9cd1d71440a7e8c1861dda73274529e07211edc14335583e93ad91c0833e9ab4",
+      "runtime_bytes_match": true
+    },
+    "field_forge_conditional_support.py": {
+      "git_blob": "a70decb20747d84cbcbe27d1280babc6de88ef33",
+      "sha256": "ec9558c68a2138de7d44796986db39df28a679ccc1506785b79929d624d32034",
+      "runtime_bytes_match": true
+    }
+  },
+  "suites": [
+    {
+      "name": "development",
+      "tests": 11,
+      "failures": 11,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 1.042,
+      "exit_code": 1
+    },
+    {
+      "name": "repair1",
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 2.279,
+      "exit_code": 0
+    },
+    {
+      "name": "extended",
+      "tests": 18,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 3.032,
+      "exit_code": 1
+    },
+    {
+      "name": "successor",
+      "tests": 19,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 3.4,
+      "exit_code": 0
+    },
+    {
+      "name": "owners_incomplete_archive",
+      "tests": 111,
+      "failures": 26,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 9.843,
+      "exit_code": 1
+    },
+    {
+      "name": "owners",
+      "tests": 111,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 19.792,
+      "exit_code": 0
+    },
+    {
+      "name": "final_successor",
+      "tests": 24,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 3.565,
+      "exit_code": 0
+    }
+  ],
+  "counts_overlap": true,
+  "final_grades": {
+    "successor": "24_PASS_ZERO_SKIPS",
+    "owners": "111_PASS_ZERO_SKIPS",
+    "cold": "SIX_IDENTICAL_LINKS_ZERO_REPLAY_DURABLE_CALLS"
+  },
+  "failure_diagnoses": {
+    "development": "11 fixture failures: canonical ref mappings need exact_ref normalization",
+    "extended": "1 assertion failure: earlier original binding anti-join is correct diagnostic",
+    "owners_incomplete_archive": "26 failures: missing pinned a04t_join_worker helper; restored exact archive, 111 final pass"
+  },
+  "command_entrypoint": "repro/reproduce.sh",
+  "cold_entrypoint": "repro/emit_successor.py",
+  "cold_process_exit_codes": [
+    0,
+    0
+  ],
+  "cold_expected_file_persisted_before_production": true,
+  "cold_fixture_producer_reconstruction": true,
+  "not_executed": [
+    "Original survey source execution",
+    "real original U/E independent authentication",
+    "independent candidate adoption",
+    "all35 full estate acceptance",
+    "V3/persona/N9/N10 live service",
+    "full historical suites beyond named selected runtime tests"
+  ],
+  "protected_old_owners_edited": false,
+  "source_permission_issued": false,
+  "raw_respondents_accessed": false,
+  "astra_invoked": false,
+  "paid_overflow": false,
+  "reset_credits_used": false,
+  "canonical_merge": false,
+  "output_sha256": {
+    "repro/first.json": "6d7fd7e50cee5d4d3a651a2ac8b844790cf5c00f4f0d54d56dcbab4471cec835",
+    "repro/successor.log": "333ffc36504daa279a306c270b166c5dac5f37c0a1a33b4a8ee6406e6543ef4e",
+    "repro/cold_first.log": "2ab6c636e6450d0368d49ef5655f4395f459c37d9f66296f17539be3b9ae51e4",
+    "repro/final_successor.xml": "df1d1ef3def74e11e2c47925d5248284bd7586e5fb48a531ecbe7095f2f2e454",
+    "repro/extended.log": "22c1e3fca034f3091c7ae103b8ca15f1c7734a147a8082bbc7a2f4b5bed27465",
+    "repro/emit_successor.py": "5033078d456c7ad1e1054dfaf5cd4b158a24689da60711d095fbbc53aca190b1",
+    "repro/repair1.xml": "e9b134659f64ac0e739f3d9ae04c5a5c9bd48ab0716ed58867d6b977a839860f",
+    "repro/owners.xml": "87f35b09103376142b07c137393031a5461a7fefc2b6bff64668248a19158d1c",
+    "repro/expected_before_production.json": "69d66ae064b4571079b3e16594b1583612648c6cb7987adea229758b5c790ef3",
+    "repro/replay.json": "3ce990da7373afe52884446c155a80c951ecece0abeda6142ea48c7e0cfe079a",
+    "repro/owners_incomplete_archive.xml": "d7730368a03b0b57655758319148267f3794b99b255cfc802df72d20123d3d11",
+    "repro/development.log": "846b2716f76ab782b35fd5f3fafea60622dfc2ff89c8075ab0e3b18f52c09d08",
+    "repro/repair1.log": "ebda1649ea6b4acb66ce65a1132bf121f3610e44ade2936c07f97e634ff1d7b7",
+    "repro/owners.log": "3bd352a412851749ce77f87f55bd1eb70eeb822bbfe72cd8f6facfe2a591450f",
+    "repro/cold_replay.log": "2b0e2788230fdcb7062b57d5c8687130dcf91dcf4684f5a9916b1accc577e24d",
+    "repro/owners_incomplete_archive.log": "3ee78783c2cc72921fce0ac22fc5017aaee07c97a298ea9db53906c65cb9babd",
+    "repro/reproduce.sh": "fe9cdc1c2a116bfdabf497f5037f9c032e6a79e7caa5e7e47dde26b1c01bca68",
+    "repro/development.xml": "3b232ca34577a9a2b2c11fad738a9321427f40b1e0b0b9bde960ffe122ba443f",
+    "repro/successor.xml": "c239554cf6e23dec03c9d762295767b34fa1a217bbba87262765695d70ad759a",
+    "repro/final_successor.log": "0164d2d478305585a28adea4e3b096b705598d316a95ceb45fdcc2f89d427d97",
+    "repro/extended.xml": "15a5759db82f376053edef79f14a6ad6031f9f5582354fcb5cde8b4df0fec337"
+  },
+  "final_fixture_audit_repair": "Held O original identity now retains exact native O, ordered topology and AB/BA option scope; 24 court rerun and fresh cold processes passed."
+}

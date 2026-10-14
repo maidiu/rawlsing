@@ -1,0 +1,884 @@
+.........................FFFFFFFFFFFFFFFFFFFFF..FFFF.F.................. [ 64%]
+.......................................                                  [100%]
+=================================== FAILURES ===================================
+__________ test_h_m00_positive_six_job_outer_join_passes_structurally __________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m00_positive_six_job_ou0')
+
+    def test_h_m00_positive_six_job_outer_join_passes_structurally(tmp_path):
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+>       verdict = _tu_join_against(tmp_path, honest, honest)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:189: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:170: in _tu_join_against
+    _tu_produce(tmp_path, _tu_payload(submitted))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m00_positive_six_job_ou0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...QJ', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'QD', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+________________ test_h_m01_q_family_partial_omission_is_exact _________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m01_q_family_partial_om0')
+
+    def test_h_m01_q_family_partial_omission_is_exact(tmp_path):
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+        submitted = [r for r in honest if r["item"] not in ("Q", "QW", "QC")]
+>       verdict = _tu_join_against(tmp_path, submitted, honest)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:211: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:170: in _tu_join_against
+    _tu_produce(tmp_path, _tu_payload(submitted))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m01_q_family_partial_om0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...H2', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'DN', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+______________ test_h_m02_j2_omission_is_exact_and_rest_verifies _______________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m02_j2_omission_is_exac0')
+
+    def test_h_m02_j2_omission_is_exact_and_rest_verifies(tmp_path):
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+        submitted = [r for r in honest if r["item"] != "QJ"]
+>       verdict = _tu_join_against(tmp_path, submitted, honest)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:231: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:170: in _tu_join_against
+    _tu_produce(tmp_path, _tu_payload(submitted))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m02_j2_omission_is_exac0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...QD', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'H1', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+___________ test_h_m03_same_count_replacement_is_omission_plus_extra ___________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m03_same_count_replacem0')
+
+    def test_h_m03_same_count_replacement_is_omission_plus_extra(tmp_path):
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+        qx = _tu_raw(scope, "QX", "UNARY_DISTRIBUTION", ("BASE",), "Y",
+                     cond=("Y", "X"), query_slot="yx")
+        submitted = [r for r in honest if r["item"] != "QC"] + [qx]
+>       verdict = _tu_join_against(tmp_path, submitted, honest)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:250: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:170: in _tu_join_against
+    _tu_produce(tmp_path, _tu_payload(submitted))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m03_same_count_replacem0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...QD', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'H1', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+_________ test_h_m04_condition_arity_lie_fails_as_omission_plus_extra __________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m04_condition_arity_lie0')
+
+    def test_h_m04_condition_arity_lie_fails_as_omission_plus_extra(tmp_path):
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+        submitted = [dict(r, condition_order=["X", "Y"]) if r["item"] == "QC" else r
+                     for r in honest]
+>       verdict = _tu_join_against(tmp_path, submitted, honest)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:272: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:170: in _tu_join_against
+    _tu_produce(tmp_path, _tu_payload(submitted))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m04_condition_arity_lie0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...QJ', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'QD', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+_______ test_h_m05fwd_weighted_through_raw_query_is_claimed_ref_mismatch _______
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m05fwd_weighted_through0')
+
+    def test_h_m05fwd_weighted_through_raw_query_is_claimed_ref_mismatch(tmp_path):
+        """A WEIGHTED expectation executed through the RAW query is caught by
+        the claimed-key/owner-ref cross-check, not by key identity: the v2 and
+        V2 key grammars bind the owner query ref only through that cross-check."""
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+        qw_via_y = dict(next(r for r in honest if r["item"] == "QW"),
+                        query_slot="y",
+                        query_ref=scope["queries"]["y"].ref.as_dict())
+        submitted = [r for r in honest if r["item"] not in ("Q", "QW")] + [qw_via_y]
+>       verdict = _tu_join_against(tmp_path, submitted, honest)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:296: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:170: in _tu_join_against
+    _tu_produce(tmp_path, _tu_payload(submitted))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m05fwd_weighted_through0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...H1', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'H2', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+_______ test_h_m05rev_raw_through_weighted_query_is_omission_plus_extra ________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m05rev_raw_through_weig0')
+
+    def test_h_m05rev_raw_through_weighted_query_is_omission_plus_extra(tmp_path):
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+        qwr = dict(next(r for r in honest if r["item"] == "QW"),
+                   item="QWR", measure_kind="RAW",
+                   query_ref=scope["queries"]["y_weighted"].ref.as_dict())
+        submitted = [r for r in honest if r["item"] != "QW"] + [qwr]
+>       verdict = _tu_join_against(tmp_path, submitted, honest)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:314: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:170: in _tu_join_against
+    _tu_produce(tmp_path, _tu_payload(submitted))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m05rev_raw_through_weig0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...QD', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'H1', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+_____ test_h_m06_forged_old_key_with_changed_identity_is_key_mismatch_only _____
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m06_forged_old_key_with0')
+
+    def test_h_m06_forged_old_key_with_changed_identity_is_key_mismatch_only(tmp_path):
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+        old_q = next(r for r in honest if r["item"] == "Q")
+        smuggled = dict(old_q, risk_identity="RISK-R-X",
+                        expected_work_key=_tu_key(old_q))
+        submitted = [smuggled if r["item"] == "Q" else r for r in honest]
+>       verdict = _tu_join_against(tmp_path, submitted, submitted)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:332: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:170: in _tu_join_against
+    _tu_produce(tmp_path, _tu_payload(submitted))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m06_forged_old_key_with0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...QJ', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'QD', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+___________ test_h_m07_consumer_only_duplicate_fails_closed_at_bind ____________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m07_consumer_only_dupli0')
+
+    def test_h_m07_consumer_only_duplicate_fails_closed_at_bind(tmp_path):
+        """Two declarations differing ONLY in required_consumer share one
+        semantic identity (consumer is not part of the expected-work key).
+        The producer refuses the collapse at bind time.  By contrast the
+        positive control proves legitimate dispatch-class reuse (one I03 class
+        serving five distinct jobs) binds cleanly."""
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+        dup = dict(next(r for r in honest if r["item"] == "P"),
+                   required_consumer=TU_FF)
+>       _tu_produce_must_refuse(tmp_path, _tu_payload(honest + [dup]),
+                                "duplicate expected_work_key")
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:354: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m07_consumer_only_dupli0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...QJ', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'QD', 'form': 'F1', ...}, ...]}
+pattern = 'duplicate expected_work_key'
+
+    def _tu_produce_must_refuse(tmp_path, payload, pattern):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+        assert r.returncode != 0, r.stdout[-2000:]
+>       assert pattern in (r.stdout + r.stderr), (r.stdout + r.stderr)[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 'duplicate expected_work_key' in ('' + "/Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/priv...NS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n")
+E        +  where '' = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").stdout
+E        +  and   "/Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/priv...NS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n" = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").stderr
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:154: AssertionError
+___________________ test_h_m08_multiplicity_overclaim_fails ____________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m08_multiplicity_overcl0')
+
+    def test_h_m08_multiplicity_overclaim_fails(tmp_path):
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+        submitted = [dict(r, multiplicity=2) if r["item"] == "P" else r
+                     for r in honest]
+>       verdict = _tu_join_against(tmp_path, submitted, submitted)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:366: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:170: in _tu_join_against
+    _tu_produce(tmp_path, _tu_payload(submitted))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m08_multiplicity_overcl0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...QJ', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'QD', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+_________ test_h_m09a_observed_zero_over_zero_denominator_is_not_typed _________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m09a_observed_zero_over0')
+
+    def test_h_m09a_observed_zero_over_zero_denominator_is_not_typed(tmp_path):
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+        qkey = _tu_key(next(r for r in honest if r["item"] == "Q"))
+>       verdict = _tu_forge_unit(tmp_path, honest, qkey,
+                                 result_typed_states=["OBSERVED_ZERO"],
+                                 denominators=[0], reported_success=True)
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:388: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:376: in _tu_forge_unit
+    produced = _tu_produce(tmp_path, _tu_payload(submitted))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m09a_observed_zero_over0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...QJ', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'QD', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+____________ test_h_m09b_measured_null_from_unvisited_is_false_null ____________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m09b_measured_null_from0')
+
+    def test_h_m09b_measured_null_from_unvisited_is_false_null(tmp_path):
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+        qkey = _tu_key(next(r for r in honest if r["item"] == "Q"))
+>       verdict = _tu_forge_unit(tmp_path, honest, qkey,
+                                 result_typed_states=["MEASURED_NULL"],
+                                 null_sources=["UNVISITED"],
+                                 reported_success=False)
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:399: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:376: in _tu_forge_unit
+    produced = _tu_produce(tmp_path, _tu_payload(submitted))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m09b_measured_null_from0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...QJ', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'QD', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+_________ test_h_m10_fabricated_null_for_unexecuted_job_is_false_null __________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m10_fabricated_null_for0')
+
+    def test_h_m10_fabricated_null_for_unexecuted_job_is_false_null(tmp_path):
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+        qkey = _tu_key(next(r for r in honest if r["item"] == "Q"))
+>       verdict = _tu_forge_unit(tmp_path, honest, qkey,
+                                 result_typed_states=["MEASURED_NULL"],
+                                 null_sources=["UNEXECUTED"],
+                                 reported_success=False)
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:411: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:376: in _tu_forge_unit
+    produced = _tu_produce(tmp_path, _tu_payload(submitted))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m10_fabricated_null_for0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...QJ', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'QD', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+___________ test_h_m11a_held_work_executed_via_synthetic_unit_fails ____________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m11a_held_work_executed0')
+
+    def test_h_m11a_held_work_executed_via_synthetic_unit_fails(tmp_path):
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+>       produced = _tu_produce(tmp_path, _tu_payload(honest))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:425: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m11a_held_work_executed0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...QJ', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'QD', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+____________ test_h_m11b_denied_row_dropped_from_export_is_visible _____________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m11b_denied_row_dropped0')
+
+    def test_h_m11b_denied_row_dropped_from_export_is_visible(tmp_path):
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+>       produced = _tu_produce(tmp_path, _tu_payload(honest))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:443: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m11b_denied_row_dropped0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...QJ', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'QD', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+____________ test_h_m12a_unvisited_discovery_unreported_still_fails ____________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m12a_unvisited_discover0')
+
+    def test_h_m12a_unvisited_discovery_unreported_still_fails(tmp_path):
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+        qdkey = _tu_key(next(r for r in honest if r["item"] == "QD"))
+>       verdict = _tu_forge_unit(tmp_path, honest, qdkey,
+                                 result_typed_states=["UNVISITED"],
+                                 reported_success=False)
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:463: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:376: in _tu_forge_unit
+    produced = _tu_produce(tmp_path, _tu_payload(submitted))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m12a_unvisited_discover0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...QJ', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'QD', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+_____________ test_h_m12b_adaptive_partial_unreported_still_fails ______________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m12b_adaptive_partial_u0')
+
+    def test_h_m12b_adaptive_partial_unreported_still_fails(tmp_path):
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+        qdkey = _tu_key(next(r for r in honest if r["item"] == "QD"))
+>       verdict = _tu_forge_unit(tmp_path, honest, qdkey,
+                                 result_typed_states=["ADAPTIVE_PARTIAL"],
+                                 reported_success=False)
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:474: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:376: in _tu_forge_unit
+    produced = _tu_produce(tmp_path, _tu_payload(submitted))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m12b_adaptive_partial_u0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...QJ', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'QD', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+_______________ test_h_m12c_honest_pruned_discovery_is_conserved _______________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m12c_honest_pruned_disc0')
+
+    def test_h_m12c_honest_pruned_discovery_is_conserved(tmp_path):
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+        qdkey = _tu_key(next(r for r in honest if r["item"] == "QD"))
+>       verdict = _tu_forge_unit(tmp_path, honest, qdkey,
+                                 result_typed_states=["PRUNED_BY_AUTHORITY"],
+                                 reported_success=False)
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:485: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:376: in _tu_forge_unit
+    produced = _tu_produce(tmp_path, _tu_payload(submitted))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m12c_honest_pruned_disc0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...QJ', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'QD', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+________ test_h_m13_truncated_expectation_rejected_but_self_consistent _________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m13_truncated_expectati0')
+
+    def test_h_m13_truncated_expectation_rejected_but_self_consistent(tmp_path):
+        """Produce honestly, then rebuild the expectation AFTER the run with two
+        jobs deleted.  The join REJECTS the rewrite (extra jobs), while the
+        custodian self-consistency check on the rewritten pair ACCEPTS it.
+        Both halves are executed here: this is the empirical separation between
+        independent verification and self-consistency."""
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+>       _tu_produce(tmp_path, _tu_payload(honest))
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:503: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m13_truncated_expectati0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...QJ', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'QD', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+______ test_h_m14a_modelled_receipt_relabelled_authenticated_still_holds _______
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m14a_modelled_receipt_r0')
+
+    def test_h_m14a_modelled_receipt_relabelled_authenticated_still_holds(tmp_path):
+        """Even explicitly 'authenticated' receipts cannot satisfy the actual
+        consumer court inside this scope: laundering the label changes nothing."""
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+>       produced = _tu_produce(tmp_path, _tu_payload(honest))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:537: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m14a_modelled_receipt_r0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...QJ', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'QD', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+______________ test_h_m14b_renamed_consumer_is_omitted_obligation ______________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m14b_renamed_consumer_i0')
+
+    def test_h_m14b_renamed_consumer_is_omitted_obligation(tmp_path):
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+>       produced = _tu_produce(tmp_path, _tu_payload(honest))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:559: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m14b_renamed_consumer_i0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...QJ', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'QD', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+____________________ test_h_m16a_form_swap_changes_identity ____________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m16a_form_swap_changes_0')
+
+    def test_h_m16a_form_swap_changes_identity(tmp_path):
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+        submitted = [dict(r, form="F9") if r["item"] == "P" else r
+                     for r in honest]
+>       verdict = _tu_join_against(tmp_path, submitted, honest)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:610: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:170: in _tu_join_against
+    _tu_produce(tmp_path, _tu_payload(submitted))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m16a_form_swap_changes_0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...QJ', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'QD', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+__________________ test_h_m16b_topology_swap_changes_identity __________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m16b_topology_swap_chan0')
+
+    def test_h_m16b_topology_swap_changes_identity(tmp_path):
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+        submitted = [dict(r, topology_identity="SCALAR_2X2") if r["item"] == "P"
+                     else r for r in honest]
+>       verdict = _tu_join_against(tmp_path, submitted, honest)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:623: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:170: in _tu_join_against
+    _tu_produce(tmp_path, _tu_payload(submitted))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m16b_topology_swap_chan0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...QJ', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'QD', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+____________ test_h_m16c_route_swap_reroutes_through_foreign_query _____________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m16c_route_swap_reroute0')
+
+    def test_h_m16c_route_swap_reroutes_through_foreign_query(tmp_path):
+        """Routing P through the (Y,X) query changes its identity: the honest P
+        job is omitted and the rerouted job is an unauthorized extra."""
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+        rerouted = dict(next(r for r in honest if r["item"] == "P"),
+                        condition_order=["Y", "X"],
+                        query_slot="yx",
+                        query_ref=scope["queries"]["yx"].ref.as_dict())
+        submitted = [rerouted if r["item"] == "P" else r for r in honest]
+>       verdict = _tu_join_against(tmp_path, submitted, honest)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:641: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:170: in _tu_join_against
+    _tu_produce(tmp_path, _tu_payload(submitted))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m16c_route_swap_reroute0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...QJ', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'QD', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+____________ test_h_m16d_forged_executed_source_sha_fails_every_job ____________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m16d_forged_executed_so0')
+
+    def test_h_m16d_forged_executed_source_sha_fails_every_job(tmp_path):
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+>       produced = _tu_produce(tmp_path, _tu_payload(honest))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:652: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m16d_forged_executed_so0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...QJ', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'QD', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+______________ test_h_m17_forged_release_and_unmatched_source_lie ______________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m17_forged_release_and_0')
+
+    def test_h_m17_forged_release_and_unmatched_source_lie(tmp_path):
+        scope = _tu_scope()
+        honest = _tu_honest(scope)
+>       produced = _tu_produce(tmp_path, _tu_payload(honest))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:681: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-564/test_h_m17_forged_release_and_0')
+payload = {'schema': 'HQ280_PV3_A04S_CANONICAL_V2@1.0.0', 'declarations': [{'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1'...QJ', 'form': 'F1', ...}, {'source': 'SYNTHETIC-SOURCEFREE-A04TU', 'wave': 'W1', 'item': 'QD', 'form': 'F1', ...}, ...]}
+
+    def _tu_produce(tmp_path, payload):
+        (tmp_path / "payload.json").write_text(json.dumps(payload, sort_keys=True))
+        r = subprocess.run(
+            [sys.executable, str(WORKER), str(tmp_path), "produce"],
+            capture_output=True, text=True, timeout=300, cwd=str(REPO_ROOT))
+>       assert r.returncode == 0, r.stderr[-2000:]
+E       AssertionError: /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python: can't open file '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python3', '/private/tmp/hq295-v2k-p01-3f91dc22/WORKER_RETURNS/PYAT-HQ282-P01-V2...S/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py': [Errno 2] No such file or directory\n").returncode
+
+rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py:144: AssertionError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m00_positive_six_job_outer_join_passes_structurally
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m01_q_family_partial_omission_is_exact
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m02_j2_omission_is_exact_and_rest_verifies
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m03_same_count_replacement_is_omission_plus_extra
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m04_condition_arity_lie_fails_as_omission_plus_extra
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m05fwd_weighted_through_raw_query_is_claimed_ref_mismatch
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m05rev_raw_through_weighted_query_is_omission_plus_extra
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m06_forged_old_key_with_changed_identity_is_key_mismatch_only
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m07_consumer_only_duplicate_fails_closed_at_bind
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m08_multiplicity_overclaim_fails
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m09a_observed_zero_over_zero_denominator_is_not_typed
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m09b_measured_null_from_unvisited_is_false_null
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m10_fabricated_null_for_unexecuted_job_is_false_null
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m11a_held_work_executed_via_synthetic_unit_fails
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m11b_denied_row_dropped_from_export_is_visible
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m12a_unvisited_discovery_unreported_still_fails
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m12b_adaptive_partial_unreported_still_fails
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m12c_honest_pruned_discovery_is_conserved
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m13_truncated_expectation_rejected_but_self_consistent
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m14a_modelled_receipt_relabelled_authenticated_still_holds
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m14b_renamed_consumer_is_omitted_obligation
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m16a_form_swap_changes_identity
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m16b_topology_swap_changes_identity
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m16c_route_swap_reroutes_through_foreign_query
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m16d_forged_executed_source_sha_fails_every_job
+FAILED rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py::test_h_m17_forged_release_and_unmatched_source_lie
+26 failed, 85 passed in 9.86s

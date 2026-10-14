@@ -1,0 +1,93 @@
+{
+  "schema": "HQ295_V2K_EVIDENCE@1",
+  "new_schema": "HQ295_ORIGINAL_EXPECTED_WORK_V2K_CANDIDATE@1.0.0",
+  "status": "SOURCEFREE_SUCCESSOR_CANDIDATE_NOT_ADOPTED",
+  "original_fixture_records": 8,
+  "runnable_original_work_keys": 6,
+  "held_original_records": 2,
+  "actual_namespace_count": 2,
+  "legacy_alias_keys": 3,
+  "actual_consumers": 6,
+  "original_expected_digest": "8b319fffefb0d1a12ab6e9ca63907c808d7faa4411d7eddb610a8219d41628f3",
+  "declared_synthetic_source_refs": [
+    {
+      "kind": "SOURCE_ARTIFACT",
+      "object_id": "SOURCE-m01",
+      "content_hash": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54"
+    },
+    {
+      "kind": "SOURCE_ARTIFACT",
+      "object_id": "SOURCE-m01",
+      "content_hash": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54"
+    },
+    {
+      "kind": "SOURCE_ARTIFACT",
+      "object_id": "SOURCE-m01",
+      "content_hash": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54"
+    },
+    {
+      "kind": "SOURCE_ARTIFACT",
+      "object_id": "SOURCE-m01",
+      "content_hash": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54"
+    },
+    {
+      "kind": "SOURCE_ARTIFACT",
+      "object_id": "SOURCE-m01",
+      "content_hash": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54"
+    },
+    {
+      "kind": "SOURCE_ARTIFACT",
+      "object_id": "SOURCE-m01",
+      "content_hash": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54"
+    }
+  ],
+  "frozen_expectation_file": "repro/expected_before_production.json",
+  "consumer_file": "repro/first.json",
+  "replay_file": "repro/replay.json",
+  "replay_links_identical": true,
+  "replay_durable_calls": [
+    0,
+    0
+  ],
+  "anti_join_cases": [
+    "INDEPENDENT_B_OMITTED",
+    "INDEPENDENT_J_ONLY_OMITTED",
+    "A_ONLY_LOCAL_P01_PASS_BUT_FULL_EXPECTED_FAIL",
+    "SAME_COUNT_FOREIGN_KEY",
+    "DUPLICATE_SELECTED",
+    "P01_EXPECTED_BINDING_SUBSTITUTION"
+  ],
+  "identity_fields_in_key": [
+    "source_release",
+    "universe",
+    "namespace",
+    "unit",
+    "form",
+    "language",
+    "instrument",
+    "occurrence",
+    "option_scope",
+    "native_items_ordered",
+    "routing",
+    "operation_scope",
+    "roles_ordered",
+    "conditions_ordered",
+    "measure",
+    "multiplicity",
+    "risk",
+    "topology",
+    "authority",
+    "query",
+    "predicate",
+    "discovery",
+    "U",
+    "E",
+    "custody"
+  ],
+  "authority_holds": [
+    "ORIGINAL_U_E_CUSTODY_NOT_AUTHENTICATED",
+    "SOURCE_USE_NOT_GRANTED",
+    "SEMANTIC_OWNER_ADOPTION_NOT_GRANTED"
+  ],
+  "held_original_options_and_topology_preserved": true
+}

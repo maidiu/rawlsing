@@ -1,0 +1,11 @@
+# Authority and scientific boundary
+
+The HQ295 launch explicitly authorizes a separate successor candidate and new tests. This is the change in authorization from HQ294's STOP: the candidate may implement a new version without mutating protected existing V2 law. It does not authorize production-owner adoption, original scientific U/E issuance, data access or canonical integration.
+
+Supplied U, E and custody refs are conserved as independent source-free fixture inputs, sealed before production by the fixture/emit script. This worker is the candidate author, not an independent scientific custodian. The refs, their distinctness, hashes and declared origin establish structural identity/integrity only; no signature is invented. A jointly rewritten original roster and expectation cannot be detected as false science without competent external custody. The candidate explicitly retains that hold.
+
+For actual source deployment: an existing source-science principal must supply authenticated original administered item/option/form/language/occurrence, respondent-unit/routing/design scopes; operation principal supplies finite eligible directions/queries/discovery; independent E custodian supplies authentic pre-result roster and custody; semantic owner independently adopts the versioned successor and original-to-C11/query mapping; source-use principal authorizes the exact source/host/retention/use. No such grants are obtained by this run.
+
+The source-free fixture is generalized X/Y and ordered-operation metadata, not Ghana/GT12 original execution. Its two namespace scopes have the same synthetic physical source hash but different actual C11 universe/respondent/query/discovery/batch/result/consumer identities. Language, occurrence and option fields are synthetic original metadata; conservation of their declared identity is proved, their real-source truth is not. Preserved ordered-operation HELD rows do not mean ordered Field Forge production.
+
+All 35 waves and inherited 1,890 requirement cells /151→101 obligations remain in the estate. This bounded fixture does not occupy the estate, create a persona, run V3, serve N9/N10, adopt a CURRENT or claim a nationally weighted/causal result. No original survey/respondent bytes were accessed; output refs and values are synthetic and non-sensitive.
