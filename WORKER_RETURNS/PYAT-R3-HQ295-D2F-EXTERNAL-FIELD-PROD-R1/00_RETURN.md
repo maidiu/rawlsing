@@ -1,0 +1,14 @@
+# PYAT HQ295 D2F — External original aggregate field-production investigation
+
+Commission read in full at sealed branch 9c9ed6d0f33717db924179564b5640d9c7f2f188. Branch agent/rabochii-pyat-r3-hq295-d2f-external-field-prod-r1. Read D02P reports 00-04, D06 R2, source owners and HQ latest validity / whole-machine automation doctrine at 0f4a798fb8d8f10a0afa494cebd8043f1582267d. No self-issuance, production mutation, canonical merge or V3.
+
+Scientific source advancement: direct GSS 2021 PHC Volume 3K original Table 5.10 reveals rural lighting electricity numerator 2,388,192 and rural denominator 3,288,063, 72.6% published rounded. Table excludes secondary/vacant units; main electricity includes mains/secondary grid/generator/solar/wind, not strictly mains. GSS official report released 24 Feb 2022. NCA Q4 2021 Table 10 gives 23,414,527 nationwide active MOBILE DATA SUBSCRIPTIONS, split 23,237,338 prepaid + 177,189 postpaid; reporting definition traffic within prior 90 days, agency bulletin public 8 July 2022. These are 2021 historical observations with different units and publication dates, not rural phone users, personal electrification, or a causal joint. Original PDF bytes/hash/version revision still unknown; public publication does not make a Rawlsing license or field owner.
+
+Deliverables: 01 source/method/archive and limitations; 02 exact machine readable test-only candidate packets, NO issued product; 03 existing callable/real owner and conditional nonpooling EE13/N7→N9 two-ref consumer; 04 ACTUALLY EXECUTED V8 source-free hostile results; 05 single exact issuer decision; 06 resources and verification. Positive documentary original families: 2; competent issued N5/N6 objective fields: 0; EE13 and N7 signed products: 0; actual N9 two-field receipt: 0. OC05 NOT_YET_APPLICABLE.
+
+Tests 32/32 passed in functions.exec V8 (not Node repo tests or real N9), covering count/denominator/revision/asof, national versus rural, units, issuer forgery, fake hashes/signatures and nonpooling. No repository production Python, local test process or original survey source file executed. See 04 for each case.
+
+Precise next action: signed original archived PDF bytes+SHA/edition and published-aggregate permissions/method issued per GSS and NCA, two accepted independently typed field refs from existing owner; separate EE13/N7 scoped nonpooling permission, then one real N9 historical asof two-ref query and invalidation/replay. Independent adoption/reviewer required. These external publisher families do not replace 2 source families in all-35 survey gate.
+
+Disposition: DOCUMENTARY_PRODUCTION_INPUT_READY__SOURCE_ARCHIVE_PERMISSION_FIELD_ISSUER_AND_N7_N9_HOLD.
+Terminal only after verified remote SHA: HQ295_D2F_TWO_EXTERNAL_AGGREGATE_SOURCE_PACKETS__GSS_DENOMINATOR_RECOVERED__AUTHENTIC_FIELDS_EE13_N9_HELD__GITHUB_PUSHED.

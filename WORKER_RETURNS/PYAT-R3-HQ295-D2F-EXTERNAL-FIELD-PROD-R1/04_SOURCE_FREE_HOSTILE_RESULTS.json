@@ -1,0 +1,203 @@
+{
+  "schema": "D2F_DOCUMENTARY_PACKET_V8_HOSTILE_COURT@1",
+  "environment": "functions.exec V8 isolate, NOT Node, Python, or actual N9",
+  "executed": 32,
+  "passed": 32,
+  "failed": 0,
+  "cases": [
+    {
+      "id": "positive_documentary_shape_not_issued",
+      "expected": null,
+      "actual": null,
+      "pass": true
+    },
+    {
+      "id": "corrupt_rural_numerator",
+      "expected": "GSS_COUNT_CORRUPTED",
+      "actual": "GSS_COUNT_CORRUPTED",
+      "pass": true
+    },
+    {
+      "id": "corrupt_rural_denominator",
+      "expected": "GSS_COUNT_CORRUPTED",
+      "actual": "GSS_COUNT_CORRUPTED",
+      "pass": true
+    },
+    {
+      "id": "swap_grid_only_for_all_electric",
+      "expected": "GSS_COUNT_CORRUPTED",
+      "actual": "GSS_COUNT_CORRUPTED",
+      "pass": true
+    },
+    {
+      "id": "wrong_percent",
+      "expected": "GSS_ROUNDING",
+      "actual": "GSS_ROUNDING",
+      "pass": true
+    },
+    {
+      "id": "wrong_electric_subcategory",
+      "expected": "GSS_COMPONENT_SUM",
+      "actual": "GSS_COMPONENT_SUM",
+      "pass": true
+    },
+    {
+      "id": "include_vacant",
+      "expected": "GSS_DENOMINATOR_WIDENED",
+      "actual": "GSS_DENOMINATOR_WIDENED",
+      "pass": true
+    },
+    {
+      "id": "person_instead_of_household",
+      "expected": "NATIVE_UNIT_CORRUPTED",
+      "actual": "NATIVE_UNIT_CORRUPTED",
+      "pass": true
+    },
+    {
+      "id": "nca_total_off_by_one",
+      "expected": "NCA_COUNT_CORRUPTED",
+      "actual": "NCA_COUNT_CORRUPTED",
+      "pass": true
+    },
+    {
+      "id": "nca_prepaid_mismatch",
+      "expected": "NCA_COUNT_CORRUPTED",
+      "actual": "NCA_COUNT_CORRUPTED",
+      "pass": true
+    },
+    {
+      "id": "nca_activity_definition_missing",
+      "expected": "NCA_ACTIVITY_CHANGED",
+      "actual": "NCA_ACTIVITY_CHANGED",
+      "pass": true
+    },
+    {
+      "id": "nca_subscription_to_person",
+      "expected": "PERSON_OR_RURAL_TELECOM_FABRICATED",
+      "actual": "PERSON_OR_RURAL_TELECOM_FABRICATED",
+      "pass": true
+    },
+    {
+      "id": "nca_rural_rate_invented",
+      "expected": "PERSON_OR_RURAL_TELECOM_FABRICATED",
+      "actual": "PERSON_OR_RURAL_TELECOM_FABRICATED",
+      "pass": true
+    },
+    {
+      "id": "nca_penetration_ratio_reused",
+      "expected": "PERSON_OR_RURAL_TELECOM_FABRICATED",
+      "actual": "PERSON_OR_RURAL_TELECOM_FABRICATED",
+      "pass": true
+    },
+    {
+      "id": "source_hash_invented",
+      "expected": "UNVERIFIED_SOURCE_BYTES_HASH",
+      "actual": "UNVERIFIED_SOURCE_BYTES_HASH",
+      "pass": true
+    },
+    {
+      "id": "fake_source_issuer",
+      "expected": "FORGED_FIELD_ISSUANCE",
+      "actual": "FORGED_FIELD_ISSUANCE",
+      "pass": true
+    },
+    {
+      "id": "fake_field_ref",
+      "expected": "FORGED_FIELD_ISSUANCE",
+      "actual": "FORGED_FIELD_ISSUANCE",
+      "pass": true
+    },
+    {
+      "id": "fake_use_permission",
+      "expected": "FORGED_PERMISSION",
+      "actual": "FORGED_PERMISSION",
+      "pass": true
+    },
+    {
+      "id": "wrong_gss_publishing_date",
+      "expected": "PUBLICATION_VERSION_DATE",
+      "actual": "PUBLICATION_VERSION_DATE",
+      "pass": true
+    },
+    {
+      "id": "wrong_nca_publishing_date",
+      "expected": "PUBLICATION_VERSION_DATE",
+      "actual": "PUBLICATION_VERSION_DATE",
+      "pass": true
+    },
+    {
+      "id": "duplicated_underlying_source",
+      "expected": "FALSE_INDEPENDENCE",
+      "actual": "FALSE_INDEPENDENCE",
+      "pass": true
+    },
+    {
+      "id": "missing_second_source",
+      "expected": "MISSING_SOURCE",
+      "actual": "MISSING_SOURCE",
+      "pass": true
+    },
+    {
+      "id": "fake_census_srs_ci",
+      "expected": "FAKE_UNCERTAINTY",
+      "actual": "FAKE_UNCERTAINTY",
+      "pass": true
+    },
+    {
+      "id": "pooled_source_results",
+      "expected": "FALSE_POOLED_OR_PERSON_CLAIM",
+      "actual": "FALSE_POOLED_OR_PERSON_CLAIM",
+      "pass": true
+    },
+    {
+      "id": "false_rural_mobile_ownership",
+      "expected": "FALSE_POOLED_OR_PERSON_CLAIM",
+      "actual": "FALSE_POOLED_OR_PERSON_CLAIM",
+      "pass": true
+    },
+    {
+      "id": "fake_person_electric_lighting",
+      "expected": "FALSE_POOLED_OR_PERSON_CLAIM",
+      "actual": "FALSE_POOLED_OR_PERSON_CLAIM",
+      "pass": true
+    },
+    {
+      "id": "fake_ee13_issuer",
+      "expected": "FORGED_EE13_OR_N9",
+      "actual": "FORGED_EE13_OR_N9",
+      "pass": true
+    },
+    {
+      "id": "fake_n9_receipt",
+      "expected": "FORGED_EE13_OR_N9",
+      "actual": "FORGED_EE13_OR_N9",
+      "pass": true
+    },
+    {
+      "id": "mixed_asof_before_nca_publication",
+      "expected": "MIXED_ASOF_COLLAPSE",
+      "actual": "MIXED_ASOF_COLLAPSE",
+      "pass": true
+    },
+    {
+      "id": "false_identical_observation_time",
+      "expected": "MIXED_ASOF_COLLAPSE",
+      "actual": "MIXED_ASOF_COLLAPSE",
+      "pass": true
+    },
+    {
+      "id": "fake_archive_receipt",
+      "expected": "FORGED_REGISTRY_RECEIPT",
+      "actual": "FORGED_REGISTRY_RECEIPT",
+      "pass": true
+    },
+    {
+      "id": "fake_producer_receipt",
+      "expected": "FORGED_REGISTRY_RECEIPT",
+      "actual": "FORGED_REGISTRY_RECEIPT",
+      "pass": true
+    }
+  ],
+  "independent_review": false,
+  "actual_issuer_product_or_consumer_tests": 0
+}
