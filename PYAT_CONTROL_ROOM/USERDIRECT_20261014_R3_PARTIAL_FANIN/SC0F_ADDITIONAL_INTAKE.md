@@ -1,0 +1,11 @@
+# R3 incremental intake: SC0F returned during verification
+
+After the first partial fan-in snapshot, **SC0F remote advanced** from exact sealed `4d7255e9183fb11d1fd36258ff05429f5cffed40` to `7add9ef5a1a4698d4aed177be8a158b75e220a5d`; diff ahead 1/behind 0, only its owned return directory. This is a SECOND returned worker out of five, in addition to T8F. The earlier inventory was accurate at its check time and is now superseded for SC0F.
+
+Author reports 115 sourcefree tests passing: **10 new repaired-adapter tests**, **56 independently existing N10E/C1 owner tests**, **13 source-backed PE author tests**, and **36 ORIGINAL SC0 port K9/K10**, NOT a full independent validation of repaired SC0F, unchanged original independent reviewer PE13 nor independent I2/RC0 hostiles. Author reports five REDs addressed but independent acceptance remains absent.
+
+Direct code verification exposed three discriminating acceptance weaknesses: `producer_bridge._compute_via_n10e_c1` **imports** accepted producers and logs function names with `sha256(b"imported")` but actually calls only fixture computation, thus actual N10E/C1 owner producer-to-ported reader still unproved; `register_issuer_warrant` permits any caller to insert a grant into module-global registry and thus manufacture its own registry 'authorization'; weak numeric mutation test only checks options nonempty, and schema conformance test uses standalone builders rather than actual adapter.run. Active world permission and time guards are candidate-positive at test grain but not yet independently adversarially executed.
+
+**SC0I independent repair court sealed:** `agent/userdirect-pyat-20261014-r3-sc0i-independent-repair-court-r1@b87fe719dd822ae243e29ddc40b000cf32649fcd` with full commission `WORKER_COMMISSIONS/PYAT-USERDIRECT-20261014-R3-SC0I-INDEPENDENT-REPAIR-COURT-R1/00_COMMISSION.md`. Assign to a distinct **Codex (High max)** independent session, actual Python worktree; no original source, science or model issuer grants; Sorok interface adoption remains separate.
+
+The other R3 court **T8I** remains published `4b0610edd26d3acb7964179558471bdd3fa2d4a8` for Browser. WG0P, D2C, D2P still have no verified published return at their earlier checks. No repeat dispatch for unreturned jobs. No change to canonical or HQ succession.
