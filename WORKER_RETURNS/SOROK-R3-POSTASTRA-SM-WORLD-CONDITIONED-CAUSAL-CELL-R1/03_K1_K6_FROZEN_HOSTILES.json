@@ -82,7 +82,36 @@
         "actor state appears from a demographic label",
         "nondeterministic divergence at identical inputs"
       ],
-      "missing": "DEFER_MISSING_RULE_OR_HISTORY"
+      "missing": "DEFER_MISSING_RULE_OR_HISTORY",
+      "exact_typed_fixture_expectations": {
+        "rule": "LAB_R_K1@proposed",
+        "exact": {
+          "A_HISTORY_SUPPORT": {
+            "response_effect": "REROUTE",
+            "recruitment_contains": [
+              "P-ASK",
+              "TRUST_REL"
+            ]
+          },
+          "B_HISTORY_SANCTION": {
+            "response_effect": "DEFLECT",
+            "recruitment_contains": [
+              "P-WITHHOLD",
+              "DISTRUST_REL"
+            ]
+          }
+        },
+        "must_change": [
+          "response_effect",
+          "recruited_source_refs"
+        ],
+        "must_not_change": [
+          "world_hash",
+          "precipitating_event_hash",
+          "actor_safe_permission_from_unaltered_ADP017"
+        ],
+        "null": "identical history/input exact replay; unadmitted biography note ignored"
+      }
     },
     {
       "id": "K2",
@@ -125,7 +154,31 @@
         "directed relation inferred from text alone",
         "extra latent graph differs only in prose"
       ],
-      "missing": "DEFER_AMBIGUOUS_TOPOLOGY_OR_RULE"
+      "missing": "DEFER_AMBIGUOUS_TOPOLOGY_OR_RULE",
+      "exact_typed_fixture_expectations": {
+        "rule": "LAB_R_K2@proposed",
+        "exact": {
+          "A_DIRECT_AUTHORITY_EDGE": {
+            "relation_role": "BINDING_EVALUATOR",
+            "response_effect": "REROUTE"
+          },
+          "B_OBSERVER_EDGE": {
+            "relation_role": "NONBINDING_OBSERVER",
+            "response_status": "RESPONSE_EFFECTS_VALID_EMPTY"
+          }
+        },
+        "must_change": [
+          "nary_relation_role",
+          "authorized_recruitment",
+          "response_effect_or_valid_empty"
+        ],
+        "must_not_change": [
+          "node_multiset",
+          "world_nonrelational_values",
+          "event_features"
+        ],
+        "null": "bijection ID rename and serializer order permutation preserve isomorphic typed results"
+      }
     },
     {
       "id": "K3",
@@ -177,7 +230,37 @@
         "CAUSAL_TRACE_MEMORY converted to event memory without formation",
         "objective event existence automatically becomes memory"
       ],
-      "missing": "DEFER_MISSING_ADP016_TRACE_USE_RULE"
+      "missing": "DEFER_MISSING_ADP016_TRACE_USE_RULE",
+      "exact_typed_fixture_expectations": {
+        "rule": "LAB_R_K3@proposed",
+        "exact": {
+          "A_CAUSAL_TRACE": {
+            "trace_recruitment": "ADP016_TRACE_T7",
+            "response_effect": "BUFFER",
+            "actor_claim_origin": "DENY_FIRST_PERSON_CLAIM"
+          },
+          "B_NO_TRACE": {
+            "trace_recruitment": "NONE",
+            "response_status": "RESPONSE_EFFECTS_VALID_EMPTY",
+            "actor_claim_origin": "DENY_FIRST_PERSON_CLAIM"
+          },
+          "C_MEMORY_UNAVAILABLE": {
+            "trace_recruitment": "NONE",
+            "response_status": "RESPONSE_EFFECTS_VALID_EMPTY",
+            "actor_claim_origin": "DENY_FIRST_PERSON_CLAIM"
+          }
+        },
+        "must_change": [
+          "trace_recruitment",
+          "A_vs_B_typed_response"
+        ],
+        "must_not_change": [
+          "adult_event_hash",
+          "actor_visible_hidden_origin",
+          "unavailable_source_feature_content"
+        ],
+        "null": "any actor first-person childhood recall FAIL_ACCESS_LEAK; objective-ledger rehydration of UNAVAILABLE BLOCK"
+      }
     },
     {
       "id": "K4",
@@ -228,7 +311,36 @@
         "self-retcon rewrites prior objective event",
         "system inserts ADP017 stance without effect"
       ],
-      "missing": "DEFER_MISSING_SCOPE_COMPARABILITY_OR_EFFECT_RULE"
+      "missing": "DEFER_MISSING_SCOPE_COMPARABILITY_OR_EFFECT_RULE",
+      "exact_typed_fixture_expectations": {
+        "rule": "LAB_R_K4@proposed",
+        "exact": {
+          "A_CREDIBLE_COUNTEREXAMPLE": {
+            "decision": "APPLIED_OWNER_TRANSITION_IF_SEPARATELY_AUTHORIZED",
+            "adp017_operation": "SUPERSEDE_EXACT_RECORD",
+            "original_event_hash": "UNCHANGED"
+          },
+          "B_WEAK_REPETITION": {
+            "decision": "NO_EPISTEMIC_TRANSITION",
+            "owner_effect": "NO_CHANGE",
+            "original_event_hash": "UNCHANGED"
+          },
+          "C_CONFLICT_UNRESOLVED": {
+            "decision": "DEFER_AMBIGUOUS",
+            "owner_effect": "NO_UNLICENSED_CHANGE",
+            "original_event_hash": "UNCHANGED"
+          }
+        },
+        "must_change": [
+          "scoped_latest_owner_effect_if_rule_valid",
+          "later_response_if_lawfully_admitted"
+        ],
+        "must_not_change": [
+          "E_PREV_event_hash",
+          "old_claim_historical_record"
+        ],
+        "null": "unadmitted E2 and noncomparable claim may not cause automatic healing or retrospective rewrite"
+      }
     },
     {
       "id": "K5",
@@ -282,7 +394,36 @@
         "official statement automatically becomes actor belief",
         "private praise manufactures official grant"
       ],
-      "missing": "DEFER_MISSING_INSTITUTIONAL_WORLD_OWNER_OR_UPTAKE_RULE"
+      "missing": "DEFER_MISSING_INSTITUTIONAL_WORLD_OWNER_OR_UPTAKE_RULE",
+      "exact_typed_fixture_expectations": {
+        "rule": "LAB_R_K5@proposed",
+        "exact": {
+          "A_CREDENTIAL_AUTHORITY_FELT_UNSAFE": {
+            "institutional_permission": "PRESENT",
+            "world_effect": "OFFICIAL_RECOGNITION_IF_WORLD_OWNER_ADMITTED",
+            "actor_response_effect": "DEFLECT"
+          },
+          "B_POWERLESS_WITNESS_FELT_VALIDATED": {
+            "institutional_permission": "ABSENT",
+            "world_effect": "NO_INSTITUTIONAL_CHANGE",
+            "actor_response_effect": "AMPLIFY"
+          },
+          "C_AUTHORITY_AND_FELT_VALIDATED": {
+            "institutional_permission": "PRESENT",
+            "world_effect": "OFFICIAL_RECOGNITION_IF_WORLD_OWNER_ADMITTED",
+            "actor_response_effect": "REROUTE"
+          }
+        },
+        "must_change": [
+          "objective_standing_independently_of_actor_uptake",
+          "felt_uptake_independently_of_standing"
+        ],
+        "must_not_change": [
+          "utterance_features",
+          "counterpart_hidden_intention"
+        ],
+        "null": "private witness cannot effect official recognition; official role cannot automatically compel actor belief"
+      }
     },
     {
       "id": "K6",
@@ -333,7 +474,36 @@
         "internalized norm entails action in all contexts",
         "action proposal automatically counted as occurrence"
       ],
-      "missing": "DEFER_MISSING_OWNER_RULE_OR_ACTUAL_ACTION_ROUTE"
+      "missing": "DEFER_MISSING_OWNER_RULE_OR_ACTUAL_ACTION_ROUTE",
+      "exact_typed_fixture_expectations": {
+        "rule": "LAB_R_K6@proposed",
+        "exact": {
+          "A_INTERNALIZED_AND_HAS_ACTION_ROUTE": {
+            "practice_recruited": "YES",
+            "response_effect": "REROUTE",
+            "policing_occurrence": "PENDING_UNTIL_SEPARATE_ADMISSION"
+          },
+          "B_NONINTERNALIZED_AND_HAS_ACTION_ROUTE": {
+            "practice_recruited": "NO",
+            "response_status": "RESPONSE_EFFECTS_VALID_EMPTY",
+            "policing_occurrence": "NONE"
+          },
+          "C_INTERNALIZED_BUT_NO_POWER_OR_OPPORTUNITY": {
+            "practice_recruited": "YES",
+            "response_effect": "BLOCK",
+            "policing_occurrence": "NONE"
+          }
+        },
+        "must_change": [
+          "recruited_practice_where_admitted",
+          "lawful_response_and_action_eligibility"
+        ],
+        "must_not_change": [
+          "label_only_invariant",
+          "unadmitted_policing_occurrence_count_zero"
+        ],
+        "null": "same category label alone invariant; unavailable sanction opportunity blocks actual policing"
+      }
     }
   ],
   "global_no_go": [
@@ -351,5 +521,7 @@
     "inconclusive": "If no authorized concrete rule can express the predicted contrast, record DEFER_MISSING_RULE; this is not a PASS or psychological falsification",
     "threshold": "Each of six well-posed cases and nulls must pass before local K1-K6 gate; all failures and untested variants reported",
     "claim_ceiling": "Proving these synthetically still does not validate open-world psychology"
-  }
+  },
+  "concrete_rule_status": "R-K1..R-K6 are PROPOSED, UNISSUED LAB RULE LABELS. Their outputs are predeclared expected comparisons, not claims that present CAN008 code already implements them. If rule validation or access authority is absent, HOLD, not a fallback answer.",
+  "contrast_governance": "Exact values above are a synthetic hypothetical rule design; they are NOT a built-in predicted human reaction or a surrogate for an actual accepted causal rule. A later independent rule authority may decline these rules, in which case case is HOLD/REDESIGN with predeclared expectation preserved, not secretly edited to PASS."
 }
