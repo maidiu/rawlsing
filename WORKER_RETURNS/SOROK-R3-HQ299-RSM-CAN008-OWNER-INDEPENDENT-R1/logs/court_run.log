@@ -1,0 +1,30 @@
+............................F...............................             [100%]
+=================================== FAILURES ===================================
+___________ test_B_no_can008_coupling_rule_exists_in_runtime_modules ___________
+
+    def test_B_no_can008_coupling_rule_exists_in_runtime_modules():
+        """Exhaustive scan of staged runtime modules: no CAN008 coupling/response
+        rule implementation exists. This is the machine-checked basis of the HOLD."""
+        hits = []
+        for root, _, files in os.walk(os.path.join(STAGE, "rawlsing_next")):
+            if "tests" in root:
+                continue
+            for fn in files:
+                if not fn.endswith(".py"):
+                    continue
+                src = open(os.path.join(root, fn), encoding="utf-8", errors="replace").read()
+                for token in ("CAN008", "CAN_008", "coupling_rule", "response_rule",
+                              "V3ResponseEvaluationReceipt", "PRESSURE_FLOW"):
+                    if token in src:
+                        hits.append((fn, token))
+>       assert hits == [], f"UNEXPECTED_CAN008_RULE_SURFACE:{hits}"
+E       AssertionError: UNEXPECTED_CAN008_RULE_SURFACE:[('gt34_obl031_q69b_comparator_resolver_r2.py', 'CAN008'), ('gt34_adp010_input_authority_acceptance.py', 'CAN_008')]
+E       assert [('gt34_obl03...', 'CAN_008')] == []
+E         
+E         Left contains 2 more items, first extra item: ('gt34_obl031_q69b_comparator_resolver_r2.py', 'CAN008')
+E         Use -v to get more diff
+
+WORKER_RETURNS/SOROK-R3-HQ299-RSM-CAN008-OWNER-INDEPENDENT-R1/reproduction/test_owner_effect_court.py:158: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-R3-HQ299-RSM-CAN008-OWNER-INDEPENDENT-R1/reproduction/test_owner_effect_court.py::test_B_no_can008_coupling_rule_exists_in_runtime_modules
+1 failed, 59 passed in 0.77s

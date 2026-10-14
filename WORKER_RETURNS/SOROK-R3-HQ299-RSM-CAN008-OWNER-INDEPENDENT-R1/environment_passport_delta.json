@@ -1,0 +1,61 @@
+{
+  "schema": "HQ299_RSM_ENVIRONMENT_PASSPORT_DELTA@1",
+  "sanitized": true,
+  "note": "00D-sanitized: no credentials, no home paths, no raw survey bytes, no respondent data",
+  "epoch_marker": "EPOCH_HQ299_RSM_20261014T1745Z_NEW",
+  "observed_at_utc": "2026-10-14T21:50:15Z",
+  "branch": "agent/reviewer-sorok-r3-hq299-rsm-can008-owner-independent-r1",
+  "sealed_startup": "91e521ad26b896ef21dc5dbca187877cf0ae73ab",
+  "runner": {
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "git": "2.39.1",
+    "interpreter_status": "PRESENT"
+  },
+  "permission_grades": {
+    "source_original_survey": "NOT_USED_NOT_SEEKED",
+    "model_behavioral_calls": "NOT_USED_NOT_SEEKED",
+    "actor_runtime": "NOT_USED_NOT_SEEKED",
+    "accepted_owner_edits": "NONE",
+    "canonical_or_premain": "NONE",
+    "private_repo_read": "GRANTED_READONLY"
+  },
+  "imports_verified": {
+    "count": 43,
+    "method": "git-blob-sha1 (NUL header) computed == SM pin == my HEAD tree entry",
+    "module_file_resolved": true,
+    "core_modules": [
+      "rawlsing_next.wsc_gt0_protocol",
+      "rawlsing_next.wsc_gt0_end_to_end",
+      "rawlsing_next.v3_psepf_zero_positive_guard",
+      "rawlsing_next.m6_actor_safe_expression",
+      "rawlsing_next.sdtf_r4_world_response_redrive"
+    ]
+  },
+  "executed_tests": {
+    "pinned_modules": {
+      "tests": 220,
+      "passed": 220,
+      "failed": 0,
+      "junit": "junit/pinned_modules_junit.xml"
+    },
+    "court": {
+      "tests": 60,
+      "passed": 59,
+      "failed": 1,
+      "junit": "junit/court_junit.xml",
+      "failed_test": "test_B_no_can008_coupling_rule_exists_in_runtime_modules"
+    }
+  },
+  "cost_quota": {
+    "model_calls": 0,
+    "actor_runs": 0,
+    "original_survey_operations": 0,
+    "billable_operations": "NONE_OBSERVED",
+    "cash": "UNKNOWN_NOTHING_BILLED"
+  },
+  "next_session_affinity": {
+    "warm_reusable": "43-file pinned closure already verified; reuse for the competent owner's concrete R2 rule + positive-transition-authority registry commission",
+    "do_not_infer": "this passport is not a grant for actor/model/source work"
+  }
+}
