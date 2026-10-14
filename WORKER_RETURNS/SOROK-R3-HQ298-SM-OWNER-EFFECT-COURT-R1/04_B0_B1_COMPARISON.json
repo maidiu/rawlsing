@@ -1,0 +1,38 @@
+{
+  "schema": "HQ298_SM_B0_B1_COMPARISON@1.0.0",
+  "grain": "SOURCEFREE_ISOLATED_COURT__NOT_ADOPTED_CAN008_RUNTIME",
+  "predeclared_config": {
+    "candidates": ["B0_event_relation_derived", "B1_extra_latent_states"],
+    "same_inputs": true,
+    "same_cases": true,
+    "no_extra_llm_calls": true,
+    "heldout_increment_required_for_B1": true,
+    "default_without_lift": "PREFER_B0"
+  },
+  "cases_run": ["CELL_T7_ADULT_SHIFT_REASSIGNMENT", "K3_A_TRACE", "K3_B_NO_TRACE", "K3_C_UNAVAILABLE_NO_TRACE", "K5_A_OFFICIAL_UNSAFE", "K5_B_PEER_TRUSTED", "K5_C_OFFICIAL_TRUSTED", "K5_D_PEER_UNSAFE"],
+  "comparison": {
+    "identical_inputs_per_pair": true,
+    "B0_semantic_results": "complete typed receipt from event/relation-derived inputs only (receivability, uptake projection, recruitment refs, effect kind, target-owner request, claim gate)",
+    "B1_extra_computation": {"recognition_sensitivity": 1, "trace_pressure": 1},
+    "B1_semantic_result_delta_vs_B0": {},
+    "semantic_keys_changed_by_B1": [],
+    "new_results_introduced_by_B1": [],
+    "heldout_independent_typed_discriminant_registered": false,
+    "decision": "PREFER_B0",
+    "decision_reason": "B1 introduces extra hypothesized latent state but no registered held-out independent typed discriminant; per predeclared rule B1 cannot claim incremental lift and must not introduce new semantic results",
+    "test_ref": "test_G_B0_B1_same_inputs_no_new_semantic_result"
+  },
+  "incremental_effects_B0_vs_B1": {
+    "on_target_owner_effect": "NONE",
+    "on_response_effect_kind": "NONE",
+    "on_first_person_claim_permission": "NONE",
+    "on_world_institutional_effect": "NONE",
+    "on_replay_exactness": "BOTH exact",
+    "computation_added_by_B1_only": "latent vector; explicitly labelled B1_extra_computation_not_semantic_authority"
+  },
+  "B1_lift_would_require": [
+    "a separately registered held-out independent typed discriminant",
+    "an accepted empirical or semantic basis showing the latent state is causally operative, not decorative",
+    "independent reviewer adjudication of the discriminant before any lift claim"
+  ]
+}

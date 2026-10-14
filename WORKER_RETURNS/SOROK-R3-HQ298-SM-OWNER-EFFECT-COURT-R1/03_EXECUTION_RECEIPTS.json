@@ -1,0 +1,123 @@
+{
+  "schema": "HQ298_SM_EXECUTION_RECEIPTS@1.0.0",
+  "sealed_startup": "4ea834a8def24493b6370ce34c1e494c3ae1da66",
+  "sealed_startup_supersession_note": "launch message named 076aa9fa7ce8662a01dbbb3e998ec37d17ce6fd1 (commission-creation); commission revision 4ea834a8 supersedes it explicitly; staged blobs byte-identical at both commits",
+  "grain": "SOURCEFREE_ISOLATED_COURT__NOT_ADOPTED_CAN008_RUNTIME__NOT_V3_OPERATION",
+  "environment": {
+    "python": "3.11.3",
+    "pytest": "9.0.2",
+    "git": "2.43.0",
+    "platform": "macOS-13.2.1-x86_64",
+    "authenticated_private_repo_read": true
+  },
+  "actual_commands": [
+    {"command": "python3 --version", "result": "Python 3.11.3", "status": "VERIFIED"},
+    {"command": "python3 -m pytest --version", "result": "pytest 9.0.2", "status": "VERIFIED"},
+    {"command": "git --version", "result": "git version 2.43.0", "status": "VERIFIED"},
+    {"command": "gh api repos/maidiu/rawlsing/git/trees/076aa9fa7ce8662a01dbbb3e998ec37d17ce6fd1?recursive=1", "result": "7552 entries; truncated=false", "status": "VERIFIED"},
+    {"command": "python3 stage_pinned.py (fetch blob via gh api; compute git_blob_sha1 with NUL header; write stage/)", "result": "49 files staged; 49 STAGED_VERIFIED; 0 mismatches", "status": "VERIFIED"},
+    {"command": "PYTHONPATH=stage python3 -c 'import rawlsing_next.wsc_gt0_protocol' (and 13 more core modules)", "result": "14/14 IMPORT_OK with module.__file__", "status": "VERIFIED"},
+    {"command": "python3 -m pytest rawlsing_next/tests/test_wsc_gt0_protocol.py test_wsc_gt0_end_to_end_integrated.py test_wsc_gt0_prev3_bridge.py test_psepf_zero_positive_guard.py", "result": "42 passed in 0.23s", "status": "PASS"},
+    {"command": "python3 -m pytest rawlsing_next/tests/test_sdtf_r4_world_response_redrive.py test_sdtf_r4_mechanism_rule_authority_binding.py test_sdtf_r4_r2_current_rule_admission_seam.py test_sdtf_r4_witness_currentness.py test_sdtf_r4_d1_hosting_replay.py test_m6_actor_safe_expression.py", "result": "178 passed in 0.78s", "status": "PASS"},
+    {"command": "python3 -m pytest court/test_owner_effect_court.py --junitxml=junit/court_junit.xml -q", "result": "60 passed in 0.44s", "status": "PASS"},
+    {"command": "python3 -m pytest <10 pinned test files> --junitxml=junit/pinned_modules_junit.xml -q", "result": "220 passed in 0.48s", "status": "PASS"}
+  ],
+  "test_totals": {
+    "pinned_module_tests": {"tests": 220, "pass": 220, "failures": 0, "errors": 0, "skipped": 0},
+    "court_tests": {"tests": 60, "pass": 60, "failures": 0, "errors": 0, "skipped": 0},
+    "grand_total": {"tests": 280, "pass": 280, "failures": 0, "errors": 0, "skipped": 0},
+    "junit_refs": ["junit/pinned_modules_junit.xml", "junit/court_junit.xml"]
+  },
+  "import_module_file_receipts": {
+    "rawlsing_next.wsc_gt0_protocol": "IMPORT_OK",
+    "rawlsing_next.wsc_gt0_end_to_end": "IMPORT_OK",
+    "rawlsing_next.wsc_gt0_v3_runtime": "IMPORT_OK",
+    "rawlsing_next.wsc_gt0_prev3_bridge": "IMPORT_OK",
+    "rawlsing_next.wsc_gt0_field_forge_ingress": "IMPORT_OK",
+    "rawlsing_next.wsc_gt0_source_preff": "IMPORT_OK",
+    "rawlsing_next.wsc_gt0_v2_mediation": "IMPORT_OK",
+    "rawlsing_next.v3_psepf_zero_positive_guard": "IMPORT_OK",
+    "rawlsing_next.m6_actor_safe_expression": "IMPORT_OK",
+    "rawlsing_next.sdtf_r4_world_response_redrive": "IMPORT_OK",
+    "rawlsing_next.sdtf_r4_mechanism_rule_authority_binding": "IMPORT_OK",
+    "rawlsing_next.sdtf_r4_witness_currentness": "IMPORT_OK",
+    "rawlsing_next.sdtf_r4_d1_hosting_replay": "IMPORT_OK",
+    "rawlsing_next.rabochii_bounded_court": "IMPORT_OK",
+    "K35_comparison": "K35 had ModuleNotFoundError on rawlsing_next.wsc_gt0_protocol and left the import graph unstaged; this commission completed and verified it"
+  },
+  "positive_execution_attempt": {
+    "target": "smallest real pinned CAN008_R2 -> admitted owner effect -> ADP016/017 memory/access -> subsequent typed response",
+    "attempted_call": {
+      "callable": "rawlsing_next.v3_psepf_zero_positive_guard.evaluate_psepf_zero_positive_guard",
+      "request": {"transition_surface_id": "CAN008_R2_RESPONSE_EFFECT_COMMIT", "operation_class": "TARGET_OWNER_EFFECT_COMMIT", "source_class": "ANALYST_TRUTH", "authority": null},
+      "result": {"outcome": "DENY_ZERO_EFFECT", "reason": "ZERO_POSITIVE_REGISTRY", "zero_effect": true, "actor_state_effect": "ZERO", "causal_ledger_appends": 0, "delegated_owner_rule_id": null}
+    },
+    "earliest_hold": "MISSING_IMPLEMENTATION",
+    "missing_producer": "concrete registered CAN008_R2 coupling/response rule + admitted-event->target-owner-effect transition callable + ADP016 trace-commit / ADP017 epistemic transition producers",
+    "mock_transition_claimed": false,
+    "adopted_owner_claimed": false
+  },
+  "k3_k5_execution": {
+    "rule_body_status": "TEST_ONLY_PROPOSED_NOT_ADOPTED (LAB_R_K3 / LAB_R_K5)",
+    "actual_reused_law": ["CAN008_R2 occurrence gate", "CAN008_R2 effect vocabulary", "CAN008_R2 noncollapse laws", "ADP016 trace/access law", "ADP017 knowledge/access law"],
+    "K3_arms": {"A_TRACE": ["ADP016_TRACE_T7", "BUFFER", "DENY_FIRST_PERSON_CLAIM"], "B_NO_TRACE": ["NONE", "RESPONSE_EFFECTS_VALID_EMPTY", "DENY_FIRST_PERSON_CLAIM"], "C_UNAVAILABLE_NO_TRACE": ["NONE", "RESPONSE_EFFECTS_VALID_EMPTY", "DENY_FIRST_PERSON_CLAIM"]},
+    "K5_arms": {"A_OFFICIAL_UNSAFE": ["PRESENT", "OFFICIAL_RECOGNITION", "DEFLECT"], "B_PEER_TRUSTED": ["ABSENT", "NO_INSTITUTIONAL_CHANGE", "AMPLIFY"], "C_OFFICIAL_TRUSTED": ["PRESENT", "OFFICIAL_RECOGNITION", "REROUTE"], "D_PEER_UNSAFE": ["ABSENT", "NO_INSTITUTIONAL_CHANGE", "DEFLECT"]},
+    "nulls_tested": [
+      "changing analyst-only childhood content cannot change actor projection/effect",
+      "unavailable source feature cannot become first-person claim",
+      "unadmitted later event cannot produce effect",
+      "world-only switch changes world effect not felt response",
+      "history-only switch changes felt response not objective effect",
+      "missing world owner grant bars objective change",
+      "peer cannot confer institution status",
+      "official grant cannot compel felt belief",
+      "replay exact"
+    ]
+  },
+  "negative_controls_executed": [
+    {"id": "NEG_REJECTED_DRAFT", "result": "REFUSED: OccurrenceGateViolation BLOCK_NON_OCCURRENCE_KIND", "test": "test_F_rejected_draft_has_no_self_feedback"},
+    {"id": "NEG_WORLDESS_EVENT", "result": "REFUSED: OccurrenceGateViolation BLOCK_NON_OCCURRENCE_KIND:STATIC_STATE_RECORD", "test": "test_F_worldless_event_produces_zero_response"},
+    {"id": "NEG_WRONG_SOURCE_ISSUER", "result": "REFUSED: AuthorityMismatch BLOCK_WRONG_SOURCE_ISSUER", "test": "test_F_wrong_source_issuer_refused"},
+    {"id": "NEG_WRONG_OCCURRENCE", "result": "REFUSED: AuthorityMismatch BLOCK_WRONG_OCCURRENCE", "test": "test_F_wrong_occurrence_refused"},
+    {"id": "NEG_INACCESSIBLE_ORIGIN_FALSE_EXPLANATION", "result": "BLOCKED: AccessLeakBlocked BLOCK_UNAVAILABLE_CHILDHOOD_FEATURE_TO_FIRST_PERSON", "test": "test_F_inaccessible_origin_false_explanatory_answer_blocked"},
+    {"id": "NEG_FORCED_INSTITUTIONAL_RATIFICATION", "result": "REFUSED: AuthorityMismatch BLOCK_PEER_CANNOT_CONFER_INSTITUTIONAL_STATUS", "test": "test_F_forced_institutional_ratification_blocked"},
+    {"id": "NEG_PRIOR_HISTORY_REPLAY", "result": "EXACT_REPLAY: byte-equal receipts", "test": "test_F_prior_history_replay_is_exact"}
+  ],
+  "machine_verified_imported_module_rejections": [
+    {"module": "rawlsing_next.v3_psepf_zero_positive_guard", "fact": "DEFAULT_ACCEPTED_POSITIVE_TRANSITION_AUTHORITIES == {} (empty by design); well-typed positive commit -> DENY_ZERO_EFFECT/ZERO_POSITIVE_REGISTRY; 'a runtime caller cannot manufacture positive authority by passing a mapping'"},
+    {"module": "rawlsing_next.sdtf_r4_d1_hosting_replay", "fact": "host_direct_derivation(rule_admission=None) -> D1HostingIntegrityError; unadmitted rule application fails closed"},
+    {"module": "rawlsing_next.m6_actor_safe_expression", "fact": "ADP017_HASH == git-blob-sha1:eece4f3f2f3f9288ab9bbc645dc81e20a99e1280 (byte-identical to fetched ADP017 AUTHORITY.json); FORBIDDEN_BEHAVIORAL_SOURCE_CLASSES includes PSEPF, ANALYST_ONLY_TRUTH, OPAQUE_UPSTREAM_AUDIT_OR_PROVENANCE"},
+    {"module": "rawlsing_next.wsc_gt0_end_to_end", "fact": "run_gt0_end_to_end().terminal == BLOCKED_POSITIVE_ACTOR_PATH__SEMANTIC_CONSERVATION_PASS"}
+  ],
+  "before_after_target_owner_receipts": {
+    "before": {"owner_state": "CAN010 striving + CAN011 practice + ADP016 T7(UNAVAILABLE, causal-usable) + ADP017 DENY_HIDDEN_ORIGIN_CLAIM + 2 prior CAN008 responses", "hashes_bound": true},
+    "after_test_only_coupling": {"can008_current_response": "BUFFER (NON_DURABLE_CURRENT_CONSEQUENCE)", "adp016_trace_commit": "REQUESTED_NOT_COMMITTED (refusal: MISSING_IMPLEMENTATION:ADP016_OWNER_TRANSITION_PRODUCER)", "adp017_knowledge_change": "NONE (recruitment != access)"},
+    "delayed_response_typed_difference": {"t2_event": "E_T8_PEER_CASUAL_REMARK", "evaluated_against_post_owner_state": ["committed_effect_stream", "adp016_trace"], "typed_effect_stream": "BUFFER", "prior_prose_used_as_occurrence": false, "control_comparison": "a control run lacking the t1 committed effect yields a different typed effect stream; difference is typed, not prose"},
+    "disclosure": {"analyst_only_hidden_origin_disclosed_to_actor": 0, "unadmitted_mutation_count": 0}
+  },
+  "b0_vs_b1": {
+    "B0_event_relation_derived": "produces the full typed receipt at event/relation-derived inputs only",
+    "B1_extra_latent_states": "adds {recognition_sensitivity, trace_pressure} computation; changes ZERO semantic results",
+    "heldout_increment_registered": false,
+    "decision": "PREFER_B0 (default_without_lift honored; B1 has no registered held-out discriminant)",
+    "test": "test_G_B0_B1_same_inputs_no_new_semantic_result"
+  },
+  "cost_and_quota": {
+    "model_calls": 0,
+    "actor_runs": 0,
+    "original_survey_operations": 0,
+    "billable_operations": "NONE_OBSERVED",
+    "cash_observed_or_UNKNOWN": "UNKNOWN (no billable call issued)",
+    "wall_clock": "under 2 seconds of pytest execution; staging dominated by network fetch of 49 blobs"
+  },
+  "invariants_preserved": {
+    "no_pre_v3_parent_object": true,
+    "no_demographic_psyche_mutation": true,
+    "no_self_adoption": true,
+    "no_canonical_merge": true,
+    "no_operative_wake": true,
+    "no_actor_model_run": true,
+    "no_original_source_use": true,
+    "semantic_authority_unchanged": true
+  }
+}

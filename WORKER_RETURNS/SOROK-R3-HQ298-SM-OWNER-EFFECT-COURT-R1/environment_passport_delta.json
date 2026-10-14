@@ -1,0 +1,109 @@
+{
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_DELTA@1.0.0",
+  "environment_id": "ENV_HQ298_SM_LOCAL_SHARED_OPAQUE_7A31",
+  "epoch_id": "EPOCH_HQ298_SM_20261014T1800Z_NEW",
+  "owner_session_alias": "WORKER_HQ298_SM",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "MACHINE_OPAQUE_DARWIN_X86_64_16C",
+  "conversation_or_account_affinity": "gh_cli_account_opaque_maidiu_repo_scope",
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-14T18:05:00Z",
+  "runtime_marker_digest": "sha256:local_stage_tree_49_files_blob_verified",
+  "probe_command_and_result": {
+    "python3 --version": "Python 3.11.3",
+    "python3 -m pytest --version": "pytest 9.0.2",
+    "git --version": "git version 2.43.0",
+    "gh auth status": "logged in, repo scope, private repo read OK",
+    "gh api repos/maidiu/rawlsing": "private=true read OK",
+    "import_rawlsing_next_wsc_gt0_protocol": "IMPORT_OK with module.__file__ under stage/"
+  },
+  "capabilities": {
+    "python": "VERIFIED",
+    "pytest": "VERIFIED",
+    "git": "VERIFIED",
+    "node": "NOT_USED",
+    "filesystem_shell": "VERIFIED",
+    "authenticated_private_repo_read": "VERIFIED",
+    "network_to_github_api": "VERIFIED"
+  },
+  "observed_versions": {
+    "python": "3.11.3",
+    "pytest": "9.0.2",
+    "git": "2.43.0",
+    "platform": "macOS-13.2.1-x86_64"
+  },
+  "git_object_store_alias": "GITHUB_REMOTE_MAIDIU_RAWLSING_READONLY",
+  "worktree_alias": "EPHEMERAL_STAGE_DIR_NO_GIT_WORKTREE",
+  "branch": "agent/rabochii-sorok-r3-hq298-sm-owner-effect-court-r1",
+  "exact_checkout_base": "4ea834a8def24493b6370ce34c1e494c3ae1da66",
+  "checkout_base_note": "operative startup per revised commission startup clause; launch-message SHA 076aa9fa… superseded; 00_COMMISSION.md is the only path differing across the two commits",
+  "checkout_head": "PENDING_PUSH_SEE_00_RETURN",
+  "clean_dirty_state": "WRITE_TERRAIN_ONLY_WORKER_RETURNS_SOROK_R3_HQ298_SM_OWNER_EFFECT_COURT_R1",
+  "source_family": "RAWLSING_DDM_VOZHD_DVA_W0_W1_AUTHORITY_PLUS_RAWLSING_NEXT_GT0_SDTF",
+  "materialized_source_refs": [
+    {"path": "rawlsing_next/wsc_gt0_protocol.py", "git_blob_sha1": "243630dcbcb6", "local_staging_path": "stage/rawlsing_next/wsc_gt0_protocol.py", "imported_module_file": "VERIFIED", "dependency_closure_status": "BOUNDED"},
+    {"path": "rawlsing_next/wsc_gt0_end_to_end.py", "git_blob_sha1": "62b6ea39c605", "local_staging_path": "stage/rawlsing_next/wsc_gt0_end_to_end.py", "imported_module_file": "VERIFIED", "dependency_closure_status": "BOUNDED"},
+    {"path": "rawlsing_next/wsc_gt0_v3_runtime.py", "git_blob_sha1": "6c0494def59f", "local_staging_path": "stage/rawlsing_next/wsc_gt0_v3_runtime.py", "imported_module_file": "VERIFIED", "dependency_closure_status": "BOUNDED"},
+    {"path": "rawlsing_next/wsc_gt0_prev3_bridge.py", "git_blob_sha1": "8f237bd55151", "local_staging_path": "stage/rawlsing_next/wsc_gt0_prev3_bridge.py", "imported_module_file": "VERIFIED", "dependency_closure_status": "BOUNDED"},
+    {"path": "rawlsing_next/wsc_gt0_field_forge_ingress.py", "git_blob_sha1": "08550918a645", "local_staging_path": "stage/rawlsing_next/wsc_gt0_field_forge_ingress.py", "imported_module_file": "VERIFIED", "dependency_closure_status": "BOUNDED"},
+    {"path": "rawlsing_next/wsc_gt0_source_preff.py", "git_blob_sha1": "8c6d82b0e1c7", "local_staging_path": "stage/rawlsing_next/wsc_gt0_source_preff.py", "imported_module_file": "VERIFIED", "dependency_closure_status": "BOUNDED"},
+    {"path": "rawlsing_next/wsc_gt0_v2_mediation.py", "git_blob_sha1": "8a040ffd2718", "local_staging_path": "stage/rawlsing_next/wsc_gt0_v2_mediation.py", "imported_module_file": "VERIFIED", "dependency_closure_status": "BOUNDED"},
+    {"path": "rawlsing_next/v3_psepf_zero_positive_guard.py", "git_blob_sha1": "e0528d65215c", "local_staging_path": "stage/rawlsing_next/v3_psepf_zero_positive_guard.py", "imported_module_file": "VERIFIED", "dependency_closure_status": "BOUNDED"},
+    {"path": "rawlsing_next/m6_actor_safe_expression.py", "git_blob_sha1": "74d9701cdc7d", "local_staging_path": "stage/rawlsing_next/m6_actor_safe_expression.py", "imported_module_file": "VERIFIED", "dependency_closure_status": "BOUNDED", "note": "ADP017_HASH pin == fetched ADP017 AUTHORITY.json blob eece4f3f2f3f9288ab9bbc645dc81e20a99e1280"},
+    {"path": "rawlsing_next/sdtf_r4_world_response_redrive.py", "git_blob_sha1": "9964a24e2546", "local_staging_path": "stage/rawlsing_next/sdtf_r4_world_response_redrive.py", "imported_module_file": "VERIFIED", "dependency_closure_status": "BOUNDED"},
+    {"path": "rawlsing_next/sdtf_r4_mechanism_rule_authority_binding.py", "git_blob_sha1": "c94997f5c7f2", "local_staging_path": "stage/rawlsing_next/sdtf_r4_mechanism_rule_authority_binding.py", "imported_module_file": "VERIFIED", "dependency_closure_status": "BOUNDED"},
+    {"path": "rawlsing_next/sdtf_r4_witness_currentness.py", "git_blob_sha1": "06c8a2259436", "local_staging_path": "stage/rawlsing_next/sdtf_r4_witness_currentness.py", "imported_module_file": "VERIFIED", "dependency_closure_status": "BOUNDED"},
+    {"path": "rawlsing_next/sdtf_r4_d1_hosting_replay.py", "git_blob_sha1": "7f5a2f677e60", "local_staging_path": "stage/rawlsing_next/sdtf_r4_d1_hosting_replay.py", "imported_module_file": "VERIFIED", "dependency_closure_status": "BOUNDED"},
+    {"path": "data/ddm_build_copy/vozhd_dva/.../CAN_008_V3_PRESSURE_FLOW_RESPONSE/AUTHORITY_R2_CANDIDATE.md", "git_blob_sha1": "b80dd6925066510ecbbfec7b427bf9f688475663", "local_staging_path": "pinned/AUTHORITY_R2_CANDIDATE.md", "imported_module_file": "NOT_APPLICABLE_DOCUMENTARY", "dependency_closure_status": "FULL", "science_grade": "accepted owner semantic authority (HQ-adopted, no runtime)"},
+    {"path": "data/ddm_build_copy/vozhd_dva/.../ADP_016_V3_CAUSAL_MEMORY/AUTHORITY.json", "git_blob_sha1": "c6619a286e115d060ab4830889e7fc23762167a5", "local_staging_path": "pinned/ADP016_AUTHORITY.json", "imported_module_file": "NOT_APPLICABLE_DOCUMENTARY", "dependency_closure_status": "FULL", "science_grade": "accepted owner semantic authority"},
+    {"path": "data/ddm_build_copy/vozhd_dva/.../ADP_017_V3_ACTOR_ACCESS/AUTHORITY.json", "git_blob_sha1": "eece4f3f2f3f9288ab9bbc645dc81e20a99e1280", "local_staging_path": "pinned/ADP017_AUTHORITY.json", "imported_module_file": "NOT_APPLICABLE_DOCUMENTARY", "dependency_closure_status": "FULL", "science_grade": "accepted owner semantic authority"}
+  ],
+  "staging_verification": {
+    "method": "git_blob_sha1_NUL_header_per_00D_section_3_step_4",
+    "files_staged": 49,
+    "files_verified_match": 49,
+    "mismatches": 0,
+    "receipt_file": "logs/staging_receipts.json"
+  },
+  "covered_test_suites": [
+    {"suite": "rawlsing_next pinned GT0+SDTF+m6 tests", "command": "python3 -m pytest <10 pinned test files> --junitxml=junit/pinned_modules_junit.xml -q", "result": "PASS", "tests": 220, "failures": 0, "errors": 0, "skipped": 0, "junit": "junit/pinned_modules_junit.xml"},
+    {"suite": "court/test_owner_effect_court.py", "command": "python3 -m pytest court/test_owner_effect_court.py --junitxml=junit/court_junit.xml -q", "result": "PASS", "tests": 60, "failures": 0, "errors": 0, "skipped": 0, "junit": "junit/court_junit.xml"}
+  ],
+  "science_grade": "SOURCEFREE_ISOLATED_COURT; stub = TEST-ONLY NOT ADOPTED; STANDALONE_PYTEST_PASS != accepted owner runtime != integrated V3 person",
+  "model_provider": null,
+  "effort_and_pricing_class": "NO_MODEL_CALLS_THIS_COMMISSION",
+  "observed_credits_or_usage": null,
+  "independent_review_separation": "REQUIRED_NOT_YET_PERFORMED",
+  "privacy_source_grant": "NO_ORIGINAL_SURVEY_DATA_ACCESSED; no raw survey bytes staged; synthetic/test fixtures only",
+  "nearest_expected_slot_or_reset": null,
+  "quota_expense_observed_or_UNKNOWN": "UNKNOWN_cash; no billable model calls; local CPU seconds only",
+  "assignments_completed": ["HQ298_SM_OWNER_EFFECT_COURT"],
+  "next_good_affinity_tags": ["CAN008", "CAN008_R2", "ADP016", "ADP017", "GT0", "SDTF_R4", "OCCURRENCE", "OWNER_EFFECT"],
+  "staged_state_preservation": "STAGE_DIR_EPHEMERAL; all receipts/returns pushed to worker branch; re-stage by replaying staging_receipts.json paths+blobs",
+  "retire_or_rebuild_reason": null,
+  "reusable_next_affinity": {
+    "warm": true,
+    "conditions": "re-verify marker + blob identities on resume; staging is ephemeral and must be rebuilt from pinned refs or the recorded receipts",
+    "missing_for_next_round": "a separately accepted concrete R2 rule + positive transition authority registry entry"
+  },
+  "claims_done_vs_not_run": {
+    "DONE": [
+      "pinned module staging with blob-SHA verification",
+      "GT0 import closure completion (K35 blocker resolved)",
+      "220 pinned module tests + 60 court tests executed",
+      "actual owner-rule seam inventory",
+      "machine-verified zero-positive guard refusal of positive commits",
+      "machine-verified SDTF unadmitted-rule refusal",
+      "K3/K5 arm execution at TEST-ONLY grain with reused law",
+      "7 negative controls executed",
+      "B0 vs B1 comparison"
+    ],
+    "NOT_RUN": [
+      "any actor generation or actor run (MISSING_ACTOR_OR_MODEL_USE_AUTHORITY not sought)",
+      "any model/LLM call",
+      "any original survey/source operation",
+      "any adopted V3 operation or owner-effect commit",
+      "independent reviewer adjudication (REQUIRED, separate person)"
+    ]
+  }
+}
