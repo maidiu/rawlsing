@@ -1,0 +1,83 @@
+{
+  "schema": "PYAT_USERDIRECT_R3_PARTIAL_FANIN@1",
+  "date": "2026-10-14",
+  "status": "ONE_OF_FIVE_BRANCHES_RETURNED__FOUR_NOT_REMOTE_ADVANCED__T8I_INDEPENDENT_COURT_COMMISSIONED",
+  "baseline_previous_fanin": "3b480b2079cd72eeafc9990183f6abf20b543acf",
+  "operative_authority": "USER_DIRECT_DOCUMENTARY_RETURN_INTAKE_ONLY__HQ_ACCESSION_HOLD__NO_ADOPTION",
+  "branches": [
+    {
+      "id": "SC0F",
+      "branch": "agent/userdirect-pyat-20261014-r2-sc0f-two-contract-owner-repair-r1",
+      "sealed": "4d7255e9183fb11d1fd36258ff05429f5cffed40",
+      "observed_remote": "4d7255e9183fb11d1fd36258ff05429f5cffed40",
+      "state": "REMOTE_SEAL_ONLY__NO_RETURN_PUBLISHED__DO_NOT_RELABEL_NOT_STARTED"
+    },
+    {
+      "id": "T8F",
+      "branch": "agent/userdirect-pyat-20261014-r2-t8f-temporal-integrity-r1",
+      "sealed": "7bf38e045fb09253f0b8e15917a28c32c7fcfce0",
+      "observed_remote": "76cbd9b447bf7525a6831b339117870399b1f8f4",
+      "ahead": 1,
+      "behind": 0,
+      "state": "RETURNED__AUTHOR_REPORT_29_TESTS_PASS__INDEPENDENT_ACCEPTANCE_PENDING",
+      "changed_paths_only": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R2-T8F-TEMPORAL-INTEGRITY-R1/",
+      "return": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R2-T8F-TEMPORAL-INTEGRITY-R1/00_RETURN.md",
+      "author_grading": "Three previous T8R REDs reported CLOSED; candidate selftests 29 PASS; 19 original-equivalent tests are rewritten not confirmed unmodified originals; registry is standalone test-only and current N8E/N9 EE12 not proven",
+      "verified_source_blobs": {
+        "code": "0108947afcec5797581e7c0d062c9aa655e6d6e1",
+        "test": "c166280e75925a749d7fd2262bd8f96ff91e75ad"
+      },
+      "independent_court_concerns": [
+        "WaveFact.content_hash omits variance, method, population, selector, sample_identity, category codes and national weight; same ref identity may refer to changed scientific semantics",
+        "WaveFactRegistry.register overwrites an existing ref_id without collision/custody issuance check",
+        "WaveFactRef.year not verified against retrieved fact",
+        "compare and consume do not dereference wave-fact registry refs; consumer digest is recomputable by caller without independent issuer",
+        "consume checks each satisfied_share but does not rederive delta or variance delta from read values; self-rehashed forged delta may pass",
+        "19 original T8C tests not verified run unmodified"
+      ],
+      "adoption": "NOT_ADOPTED"
+    },
+    {
+      "id": "WG0P",
+      "branch": "agent/userdirect-pyat-20261014-r2-wg0p-executable-workload-r1",
+      "sealed": "b183146c52b91bf5dc88d75ada034be097f0b20f",
+      "observed_remote": "b183146c52b91bf5dc88d75ada034be097f0b20f",
+      "state": "REMOTE_SEAL_ONLY__NO_RETURN_PUBLISHED"
+    },
+    {
+      "id": "D2C",
+      "branch": "agent/userdirect-pyat-20261014-r2-d2c-publication-byte-custody-r1",
+      "sealed": "a5ef924a1d9f128a70f1b4b3927c73a1c3e9e4a8",
+      "observed_remote": "a5ef924a1d9f128a70f1b4b3927c73a1c3e9e4a8",
+      "state": "REMOTE_SEAL_ONLY__NO_RETURN_PUBLISHED"
+    },
+    {
+      "id": "D2P",
+      "branch": "agent/userdirect-pyat-20261014-r2-d2p-objective-sourcefree-producer-r1",
+      "sealed": "77e549036002fa97b9af6e5c23208d8440942db0",
+      "observed_remote": "77e549036002fa97b9af6e5c23208d8440942db0",
+      "state": "REMOTE_SEAL_ONLY__NO_RETURN_PUBLISHED"
+    }
+  ],
+  "new_next": {
+    "id": "T8I",
+    "branch": "agent/userdirect-pyat-20261014-r3-t8i-independent-temporal-court-r1",
+    "sealed": "4b0610edd26d3acb7964179558471bdd3fa2d4a8",
+    "commission": "WORKER_COMMISSIONS/PYAT-USERDIRECT-20261014-R3-T8I-INDEPENDENT-TEMPORAL-COURT-R1/00_COMMISSION.md",
+    "platform": "Browser",
+    "model": "GPT-6 High",
+    "state": "COMMISSION_PUBLISHED__NOT_AUTOSTARTED",
+    "purpose": "Distinct independent adversarial consumer/source-integrity court after T8F; no author self-acceptance"
+  },
+  "science": {
+    "original_ghana_issued": false,
+    "ee12_issued": false,
+    "n8e_n9_product": false,
+    "n11": false,
+    "n12": false,
+    "v3": false,
+    "original_sample_data_read": false,
+    "canonical_edit": false
+  },
+  "next_work_rule": "Only reopen four unreturned branches upon actual return; T8I independent court may proceed in parallel; independent RED triggers separate original author repair, no premature adoption."
+}
