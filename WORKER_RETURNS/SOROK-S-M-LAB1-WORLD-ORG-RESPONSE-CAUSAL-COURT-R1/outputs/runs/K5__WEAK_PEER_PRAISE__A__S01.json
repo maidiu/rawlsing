@@ -1,0 +1,216 @@
+{
+  "actor_claim_permission_refs": [
+    {
+      "key": "BELIEF_OWN_WORK_UNCERTAIN",
+      "permission": "OWN_STATE_ONLY"
+    }
+  ],
+  "actor_safe_projection": {
+    "beliefs": [
+      {
+        "belief_key": "BELIEF_OWN_WORK_UNCERTAIN",
+        "claim_permission": "OWN_STATE_ONLY",
+        "confidence": "MODERATE",
+        "content": "MY_WORK_MAY_BE_UNCERTAIN",
+        "parent_event_refs": [],
+        "warrant": "ACTOR_TESTIMONY"
+      }
+    ],
+    "claim_permissions": [
+      {
+        "key": "BELIEF_OWN_WORK_UNCERTAIN",
+        "permission": "OWN_STATE_ONLY"
+      }
+    ],
+    "hidden_origin_refs": [],
+    "invalid_and_hold_codes": [],
+    "memory_view": [],
+    "present_event_id": "EV24_POST_WITNESS_SHIFT",
+    "present_reception": {
+      "act": "SHIFT_ASSIGNMENT",
+      "content": "NEXT_ASSIGNMENT_PROPOSAL"
+    },
+    "schema": "LAB_ACTOR_SAFE_PROJECTION@1",
+    "selected_route": "REMAIN_DOUBTFUL",
+    "uptake_refs": [
+      {
+        "receivable": {
+          "act": "SHIFT_ASSIGNMENT",
+          "content": "NEXT_ASSIGNMENT_PROPOSAL"
+        },
+        "ref": "UPTAKE:EV24_POST_WITNESS_SHIFT"
+      }
+    ]
+  },
+  "admitted_event_hashes": [
+    "6c5ed96462d8e1aa3bc459e52fdb641f35000975a9791db82fa457cfd64148f2",
+    "ea11150ddb9491de3865e0311bfc0b265de07b214bd4e28ab4f407bf01cbb39d"
+  ],
+  "arm": "WEAK_PEER_PRAISE",
+  "authorized_effects": [],
+  "baseline": "A",
+  "case_id": "K5",
+  "committed_effect_receipts": [
+    {
+      "effect_id": "EFF_K5_1",
+      "effect_kind": "BELIEF_FORMED",
+      "owner": "ADP017",
+      "owner_state_after_hash": "a6fd4b515efdc8b78d11849ede88e6008fa1f15834ad2225bc5638959eaab17d",
+      "owner_state_before_hash": "de5611a821625aaf10f6788301964d9c1c04ed4113e6574d790cf33d6d9055c0",
+      "parent_event_refs": [
+        "EV_PRIVATE_SELF_DOUBT"
+      ],
+      "target_key": "BELIEF_OWN_WORK_UNCERTAIN"
+    }
+  ],
+  "full_replay_digest": "03c54a6acc843a605f0641b80c923ce570d3c42553a149c89ee2acecf9d71b2f",
+  "invalid_and_hold_codes": [],
+  "lab_extension": {
+    "candidate_routes": [
+      {
+        "cost_rank": 1,
+        "gate_code": "ROUTE_REQUIREMENT_UNMET",
+        "goal_match": [],
+        "permitted": false,
+        "route_id": "ACCEPT_CERTIFICATE",
+        "support": [],
+        "support_count": 0
+      },
+      {
+        "cost_rank": 0,
+        "gate_code": null,
+        "goal_match": [],
+        "permitted": true,
+        "route_id": "REMAIN_DOUBTFUL",
+        "support": [
+          {
+            "parent_event_refs": [
+              "EV_PRIVATE_SELF_DOUBT"
+            ],
+            "support_key": "BELIEF_OWN_WORK_UNCERTAIN",
+            "support_kind": "belief"
+          }
+        ],
+        "support_count": 1
+      }
+    ],
+    "causal_parent_refs": [
+      "EV_PRIVATE_SELF_DOUBT"
+    ],
+    "cold_replay": {
+      "digest_first": "03c54a6acc843a605f0641b80c923ce570d3c42553a149c89ee2acecf9d71b2f",
+      "digest_second": "03c54a6acc843a605f0641b80c923ce570d3c42553a149c89ee2acecf9d71b2f",
+      "identical": true,
+      "state_hash_first": "a6fd4b515efdc8b78d11849ede88e6008fa1f15834ad2225bc5638959eaab17d",
+      "state_hash_second": "a6fd4b515efdc8b78d11849ede88e6008fa1f15834ad2225bc5638959eaab17d"
+    },
+    "evaluator_metadata": {
+      "event_local_conation": null,
+      "full_causal_parent_refs": [
+        "EV_PRIVATE_SELF_DOUBT"
+      ],
+      "hidden_causal_origin": null,
+      "history_event_ids": [
+        "EV_PRIVATE_SELF_DOUBT",
+        "EV_PEER"
+      ],
+      "recruitment_refs": [
+        {
+          "match_kind": "belief",
+          "matched_key": "BELIEF_OWN_WORK_UNCERTAIN",
+          "parent_event_refs": [
+            "EV_PRIVATE_SELF_DOUBT"
+          ],
+          "stream": "ADP017"
+        }
+      ],
+      "relation_view": null,
+      "schema": "LAB_EVALUATOR_METADATA@1",
+      "trace_records": []
+    },
+    "event_local_conation": null,
+    "history_effect_receipts": [
+      {
+        "effect_id": "EFF_K5_1",
+        "effect_kind": "BELIEF_FORMED",
+        "owner": "ADP017",
+        "owner_state_after_hash": "a6fd4b515efdc8b78d11849ede88e6008fa1f15834ad2225bc5638959eaab17d",
+        "owner_state_before_hash": "de5611a821625aaf10f6788301964d9c1c04ed4113e6574d790cf33d6d9055c0",
+        "parent_event_refs": [
+          "EV_PRIVATE_SELF_DOUBT"
+        ],
+        "target_key": "BELIEF_OWN_WORK_UNCERTAIN"
+      }
+    ],
+    "position_receipt": "POS_SYNTH_01",
+    "present_effect_receipts": [],
+    "present_event_id": "EV24_POST_WITNESS_SHIFT",
+    "public_standing": "UNCERTIFIED",
+    "relation_index_cost": {
+      "edge_lookups": 0,
+      "events_scanned": 2,
+      "mode": "RECONSTRUCT_FROM_ADMITTED_ANCESTRY"
+    },
+    "relation_view": null,
+    "sanction_capacity": "cannot fire supervisor; can decline optional shift",
+    "selected_not_mandatory": false,
+    "selected_route": "REMAIN_DOUBTFUL",
+    "trace_records": []
+  },
+  "latency_ms": 0,
+  "memory_access_and_trace_refs": [],
+  "model_call_count": 0,
+  "model_version": "MODEL_BEHAVIORAL_COMPARISON_HOLD__NO_PINNED_MODEL_SURFACE",
+  "objective_public_standing_effects": [],
+  "owner_state_after_hash": "a6fd4b515efdc8b78d11849ede88e6008fa1f15834ad2225bc5638959eaab17d",
+  "owner_state_before_hash": "a6fd4b515efdc8b78d11849ede88e6008fa1f15834ad2225bc5638959eaab17d",
+  "present_action_and_material_effects": [],
+  "proposed_effects": [],
+  "prose_optional": "MACHINE_FIRST__NO_PROSE_SCORED",
+  "read_evidence_ref_list": [
+    "EV24_POST_WITNESS_SHIFT",
+    "EV_PRIVATE_SELF_DOUBT",
+    "W_PORT_TOWN_1998_TEST"
+  ],
+  "receivability_refs": [
+    {
+      "feature": "act",
+      "ref": "RECV:EV24_POST_WITNESS_SHIFT:act",
+      "value": "SHIFT_ASSIGNMENT"
+    },
+    {
+      "feature": "content",
+      "ref": "RECV:EV24_POST_WITNESS_SHIFT:content",
+      "value": "NEXT_ASSIGNMENT_PROPOSAL"
+    }
+  ],
+  "recruitment_refs": [
+    {
+      "match_kind": "belief",
+      "matched_key": "BELIEF_OWN_WORK_UNCERTAIN",
+      "parent_event_refs": [
+        "EV_PRIVATE_SELF_DOUBT"
+      ],
+      "stream": "ADP017"
+    }
+  ],
+  "retrieval_token_count": 350,
+  "seed": "S01",
+  "transition_rule_ids": [
+    "T0_WORLD_CONTEXT_GATE",
+    "T1_RECEIVABILITY",
+    "T2_SITUATED_RECRUITMENT",
+    "T5_CORRECTIVE_REINTERPRETATION",
+    "T6_NONDECLARATIVE_TRACE"
+  ],
+  "uptake_refs": [
+    {
+      "receivable": {
+        "act": "SHIFT_ASSIGNMENT",
+        "content": "NEXT_ASSIGNMENT_PROPOSAL"
+      },
+      "ref": "UPTAKE:EV24_POST_WITNESS_SHIFT"
+    }
+  ],
+  "world_receipt_hash": "39369d7e6e66cb5280fb07a98adec215839e0c48dbee810a06109a30cafee37d"
+}

@@ -1,0 +1,390 @@
+{
+  "actor_claim_permission_refs": [],
+  "actor_safe_projection": {
+    "beliefs": [],
+    "claim_permissions": [],
+    "hidden_origin_refs": [],
+    "invalid_and_hold_codes": [],
+    "memory_view": [],
+    "present_event_id": "EV21_FEEDBACK_REQUEST_ENCOUNTER",
+    "present_reception": {
+      "feedback": "OPEN_INVITATION_FOR_INPUT",
+      "supervisor_stance": "NEUTRAL"
+    },
+    "schema": "LAB_ACTOR_SAFE_PROJECTION@1",
+    "selected_route": "REQUEST_FEEDBACK",
+    "uptake_refs": [
+      {
+        "receivable": {
+          "feedback": "OPEN_INVITATION_FOR_INPUT",
+          "supervisor_stance": "NEUTRAL"
+        },
+        "ref": "UPTAKE:EV21_FEEDBACK_REQUEST_ENCOUNTER"
+      }
+    ]
+  },
+  "admitted_event_hashes": [
+    "5d5abb458a3218f8461d328a6d34f2beaed03b193cb2cd5c2e8d8d6506a6b471",
+    "97a578b473c8d41818689eb8a493780cc2afa160cdcbf3f7a8af1b9780b003b3"
+  ],
+  "arm": "H_RESPONSIVE",
+  "authorized_effects": [],
+  "baseline": "C",
+  "case_id": "K1",
+  "committed_effect_receipts": [
+    {
+      "effect_id": "EFF_K1_R_1",
+      "effect_kind": "EXPECTATION_FORMED",
+      "owner": "CAN010",
+      "owner_state_after_hash": "61dc38d970c7297c2f111e36df7993f4173b40007b4aa5c92c07e27fa9b85b26",
+      "owner_state_before_hash": "de5611a821625aaf10f6788301964d9c1c04ed4113e6574d790cf33d6d9055c0",
+      "parent_event_refs": [
+        "EV7_FEEDBACK_RESPECTED"
+      ],
+      "target_key": "SCOPE_HELP_POSSIBLE"
+    },
+    {
+      "effect_id": "EFF_K1_R_2",
+      "effect_kind": "PRACTICE_EARNED",
+      "owner": "CAN011",
+      "owner_state_after_hash": "6b12979176a261f502f72faeb11641ac7318389c58402fe5d06b490862646b02",
+      "owner_state_before_hash": "61dc38d970c7297c2f111e36df7993f4173b40007b4aa5c92c07e27fa9b85b26",
+      "parent_event_refs": [
+        "EV7_FEEDBACK_RESPECTED"
+      ],
+      "target_key": "ASK_CLARIFICATION"
+    },
+    {
+      "effect_id": "EFF_K1_R_3",
+      "effect_kind": "STRIVING_FORMED",
+      "owner": "CAN010",
+      "owner_state_after_hash": "225aef9a94c20891671506c561273306bc9db845dc0b836f2b02ed6e981faa1f",
+      "owner_state_before_hash": "6b12979176a261f502f72faeb11641ac7318389c58402fe5d06b490862646b02",
+      "parent_event_refs": [
+        "EV13_FEEDBACK_COLLABORATIVE"
+      ],
+      "target_key": "VERIFY_TOGETHER"
+    },
+    {
+      "effect_id": "EFF_K1_R_4",
+      "effect_kind": "PRACTICE_REINFORCED",
+      "owner": "CAN011",
+      "owner_state_after_hash": "0ec87d4421fd9c01195051a531b637ca9abb83723f46ee691aae0dcaee101a1c",
+      "owner_state_before_hash": "225aef9a94c20891671506c561273306bc9db845dc0b836f2b02ed6e981faa1f",
+      "parent_event_refs": [
+        "EV13_FEEDBACK_COLLABORATIVE"
+      ],
+      "target_key": "ASK_CLARIFICATION"
+    }
+  ],
+  "full_replay_digest": "03048f3212c8bcd346d83116845ae52aaca2581166ef4d7ab8137989e33ba058",
+  "invalid_and_hold_codes": [],
+  "lab_extension": {
+    "candidate_routes": [
+      {
+        "cost_rank": 1,
+        "gate_code": null,
+        "goal_match": [
+          "VERIFY_TOGETHER",
+          "SCOPE_HELP_POSSIBLE"
+        ],
+        "permitted": true,
+        "route_id": "REQUEST_FEEDBACK",
+        "support": [
+          {
+            "parent_event_refs": [
+              "EV13_FEEDBACK_COLLABORATIVE"
+            ],
+            "support_key": "ASK_CLARIFICATION",
+            "support_kind": "practice"
+          },
+          {
+            "parent_event_refs": [
+              "EV7_FEEDBACK_RESPECTED"
+            ],
+            "support_key": "SCOPE_HELP_POSSIBLE",
+            "support_kind": "expectation"
+          },
+          {
+            "parent_event_refs": [
+              "EV13_FEEDBACK_COLLABORATIVE"
+            ],
+            "support_key": "VERIFY_TOGETHER",
+            "support_kind": "striving"
+          }
+        ],
+        "support_count": 3
+      },
+      {
+        "cost_rank": 0,
+        "gate_code": null,
+        "goal_match": [],
+        "permitted": true,
+        "route_id": "SILENCE",
+        "support": [],
+        "support_count": 0
+      },
+      {
+        "cost_rank": 3,
+        "gate_code": null,
+        "goal_match": [],
+        "permitted": true,
+        "route_id": "APPEAL",
+        "support": [],
+        "support_count": 0
+      }
+    ],
+    "causal_parent_refs": [
+      "EV13_FEEDBACK_COLLABORATIVE",
+      "EV7_FEEDBACK_RESPECTED"
+    ],
+    "cold_replay": {
+      "digest_first": "03048f3212c8bcd346d83116845ae52aaca2581166ef4d7ab8137989e33ba058",
+      "digest_second": "03048f3212c8bcd346d83116845ae52aaca2581166ef4d7ab8137989e33ba058",
+      "identical": true,
+      "state_hash_first": "0ec87d4421fd9c01195051a531b637ca9abb83723f46ee691aae0dcaee101a1c",
+      "state_hash_second": "0ec87d4421fd9c01195051a531b637ca9abb83723f46ee691aae0dcaee101a1c"
+    },
+    "evaluator_metadata": {
+      "event_local_conation": {
+        "direction_from_strivings": [
+          "SCOPE_HELP_POSSIBLE",
+          "VERIFY_TOGETHER"
+        ],
+        "event_id": "EV21_FEEDBACK_REQUEST_ENCOUNTER",
+        "persistence": "EVENT_LOCAL_ONLY__NOT_PERSISTED__NOT_EFFECT_PARENT",
+        "pressure_conflict": {},
+        "route_configuration": [
+          {
+            "cost_label": "LOW_TIME",
+            "cost_rank": 1,
+            "desired_end_match": [
+              "VERIFY_TOGETHER",
+              "SCOPE_HELP_POSSIBLE"
+            ],
+            "route_id": "REQUEST_FEEDBACK"
+          },
+          {
+            "cost_label": "NONE",
+            "cost_rank": 0,
+            "desired_end_match": [],
+            "route_id": "SILENCE"
+          },
+          {
+            "cost_label": "HIGH_TIME",
+            "cost_rank": 3,
+            "desired_end_match": [],
+            "route_id": "APPEAL"
+          }
+        ],
+        "witness_stakes": null
+      },
+      "full_causal_parent_refs": [
+        "EV13_FEEDBACK_COLLABORATIVE",
+        "EV7_FEEDBACK_RESPECTED"
+      ],
+      "hidden_causal_origin": null,
+      "history_event_ids": [
+        "EV7_FEEDBACK_RESPECTED",
+        "EV13_FEEDBACK_COLLABORATIVE"
+      ],
+      "recruitment_refs": [
+        {
+          "match_kind": "expectation",
+          "matched_key": "SCOPE_HELP_POSSIBLE",
+          "parent_event_refs": [
+            "EV7_FEEDBACK_RESPECTED"
+          ],
+          "stream": "CAN010"
+        },
+        {
+          "match_kind": "striving",
+          "matched_key": "VERIFY_TOGETHER",
+          "parent_event_refs": [
+            "EV13_FEEDBACK_COLLABORATIVE"
+          ],
+          "stream": "CAN010"
+        },
+        {
+          "match_kind": "practice",
+          "matched_key": "ASK_CLARIFICATION",
+          "parent_event_refs": [
+            "EV13_FEEDBACK_COLLABORATIVE"
+          ],
+          "stream": "CAN011"
+        }
+      ],
+      "relation_view": null,
+      "schema": "LAB_EVALUATOR_METADATA@1",
+      "trace_records": []
+    },
+    "event_local_conation": {
+      "direction_from_strivings": [
+        "SCOPE_HELP_POSSIBLE",
+        "VERIFY_TOGETHER"
+      ],
+      "event_id": "EV21_FEEDBACK_REQUEST_ENCOUNTER",
+      "persistence": "EVENT_LOCAL_ONLY__NOT_PERSISTED__NOT_EFFECT_PARENT",
+      "pressure_conflict": {},
+      "route_configuration": [
+        {
+          "cost_label": "LOW_TIME",
+          "cost_rank": 1,
+          "desired_end_match": [
+            "VERIFY_TOGETHER",
+            "SCOPE_HELP_POSSIBLE"
+          ],
+          "route_id": "REQUEST_FEEDBACK"
+        },
+        {
+          "cost_label": "NONE",
+          "cost_rank": 0,
+          "desired_end_match": [],
+          "route_id": "SILENCE"
+        },
+        {
+          "cost_label": "HIGH_TIME",
+          "cost_rank": 3,
+          "desired_end_match": [],
+          "route_id": "APPEAL"
+        }
+      ],
+      "witness_stakes": null
+    },
+    "history_effect_receipts": [
+      {
+        "effect_id": "EFF_K1_R_1",
+        "effect_kind": "EXPECTATION_FORMED",
+        "owner": "CAN010",
+        "owner_state_after_hash": "61dc38d970c7297c2f111e36df7993f4173b40007b4aa5c92c07e27fa9b85b26",
+        "owner_state_before_hash": "de5611a821625aaf10f6788301964d9c1c04ed4113e6574d790cf33d6d9055c0",
+        "parent_event_refs": [
+          "EV7_FEEDBACK_RESPECTED"
+        ],
+        "target_key": "SCOPE_HELP_POSSIBLE"
+      },
+      {
+        "effect_id": "EFF_K1_R_2",
+        "effect_kind": "PRACTICE_EARNED",
+        "owner": "CAN011",
+        "owner_state_after_hash": "6b12979176a261f502f72faeb11641ac7318389c58402fe5d06b490862646b02",
+        "owner_state_before_hash": "61dc38d970c7297c2f111e36df7993f4173b40007b4aa5c92c07e27fa9b85b26",
+        "parent_event_refs": [
+          "EV7_FEEDBACK_RESPECTED"
+        ],
+        "target_key": "ASK_CLARIFICATION"
+      },
+      {
+        "effect_id": "EFF_K1_R_3",
+        "effect_kind": "STRIVING_FORMED",
+        "owner": "CAN010",
+        "owner_state_after_hash": "225aef9a94c20891671506c561273306bc9db845dc0b836f2b02ed6e981faa1f",
+        "owner_state_before_hash": "6b12979176a261f502f72faeb11641ac7318389c58402fe5d06b490862646b02",
+        "parent_event_refs": [
+          "EV13_FEEDBACK_COLLABORATIVE"
+        ],
+        "target_key": "VERIFY_TOGETHER"
+      },
+      {
+        "effect_id": "EFF_K1_R_4",
+        "effect_kind": "PRACTICE_REINFORCED",
+        "owner": "CAN011",
+        "owner_state_after_hash": "0ec87d4421fd9c01195051a531b637ca9abb83723f46ee691aae0dcaee101a1c",
+        "owner_state_before_hash": "225aef9a94c20891671506c561273306bc9db845dc0b836f2b02ed6e981faa1f",
+        "parent_event_refs": [
+          "EV13_FEEDBACK_COLLABORATIVE"
+        ],
+        "target_key": "ASK_CLARIFICATION"
+      }
+    ],
+    "position_receipt": "POS_SYNTH_01",
+    "present_effect_receipts": [],
+    "present_event_id": "EV21_FEEDBACK_REQUEST_ENCOUNTER",
+    "public_standing": "UNCERTIFIED",
+    "relation_index_cost": {
+      "edge_lookups": 1,
+      "events_scanned": 0,
+      "mode": "C_TYPED_RELATION_INDEX"
+    },
+    "relation_view": null,
+    "sanction_capacity": "cannot fire supervisor; can decline optional shift",
+    "selected_not_mandatory": false,
+    "selected_route": "REQUEST_FEEDBACK",
+    "trace_records": []
+  },
+  "latency_ms": 1,
+  "memory_access_and_trace_refs": [],
+  "model_call_count": 0,
+  "model_version": "MODEL_BEHAVIORAL_COMPARISON_HOLD__NO_PINNED_MODEL_SURFACE",
+  "objective_public_standing_effects": [],
+  "owner_state_after_hash": "0ec87d4421fd9c01195051a531b637ca9abb83723f46ee691aae0dcaee101a1c",
+  "owner_state_before_hash": "0ec87d4421fd9c01195051a531b637ca9abb83723f46ee691aae0dcaee101a1c",
+  "present_action_and_material_effects": [],
+  "proposed_effects": [],
+  "prose_optional": "MACHINE_FIRST__NO_PROSE_SCORED",
+  "read_evidence_ref_list": [
+    "EV13_FEEDBACK_COLLABORATIVE",
+    "EV21_FEEDBACK_REQUEST_ENCOUNTER",
+    "EV7_FEEDBACK_RESPECTED",
+    "W_PORT_TOWN_1998_TEST"
+  ],
+  "receivability_refs": [
+    {
+      "feature": "feedback",
+      "ref": "RECV:EV21_FEEDBACK_REQUEST_ENCOUNTER:feedback",
+      "value": "OPEN_INVITATION_FOR_INPUT"
+    },
+    {
+      "feature": "supervisor_stance",
+      "ref": "RECV:EV21_FEEDBACK_REQUEST_ENCOUNTER:supervisor_stance",
+      "value": "NEUTRAL"
+    }
+  ],
+  "recruitment_refs": [
+    {
+      "match_kind": "expectation",
+      "matched_key": "SCOPE_HELP_POSSIBLE",
+      "parent_event_refs": [
+        "EV7_FEEDBACK_RESPECTED"
+      ],
+      "stream": "CAN010"
+    },
+    {
+      "match_kind": "striving",
+      "matched_key": "VERIFY_TOGETHER",
+      "parent_event_refs": [
+        "EV13_FEEDBACK_COLLABORATIVE"
+      ],
+      "stream": "CAN010"
+    },
+    {
+      "match_kind": "practice",
+      "matched_key": "ASK_CLARIFICATION",
+      "parent_event_refs": [
+        "EV13_FEEDBACK_COLLABORATIVE"
+      ],
+      "stream": "CAN011"
+    }
+  ],
+  "retrieval_token_count": 497,
+  "seed": "S09",
+  "transition_rule_ids": [
+    "T0_WORLD_CONTEXT_GATE",
+    "T1_RECEIVABILITY",
+    "T2_SITUATED_RECRUITMENT",
+    "T3_EVENT_LOCAL_CONATION",
+    "T5_CORRECTIVE_REINTERPRETATION",
+    "T6_NONDECLARATIVE_TRACE",
+    "T8_TYPED_TOPOLOGY_OPTION"
+  ],
+  "uptake_refs": [
+    {
+      "receivable": {
+        "feedback": "OPEN_INVITATION_FOR_INPUT",
+        "supervisor_stance": "NEUTRAL"
+      },
+      "ref": "UPTAKE:EV21_FEEDBACK_REQUEST_ENCOUNTER"
+    }
+  ],
+  "world_receipt_hash": "39369d7e6e66cb5280fb07a98adec215839e0c48dbee810a06109a30cafee37d"
+}

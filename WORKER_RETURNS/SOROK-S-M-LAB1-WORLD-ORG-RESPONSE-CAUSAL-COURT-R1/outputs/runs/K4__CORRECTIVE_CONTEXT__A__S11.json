@@ -1,0 +1,274 @@
+{
+  "actor_claim_permission_refs": [],
+  "actor_safe_projection": {
+    "beliefs": [],
+    "claim_permissions": [],
+    "hidden_origin_refs": [],
+    "invalid_and_hold_codes": [],
+    "memory_view": [],
+    "present_event_id": "EV23_AFTERMATH_CONSULT",
+    "present_reception": {
+      "act": "CONSULT_INVITATION",
+      "content": "PROCEDURE_CONSULT"
+    },
+    "schema": "LAB_ACTOR_SAFE_PROJECTION@1",
+    "selected_route": "NARROWED_CONSULT",
+    "uptake_refs": [
+      {
+        "receivable": {
+          "act": "CONSULT_INVITATION",
+          "content": "PROCEDURE_CONSULT"
+        },
+        "ref": "UPTAKE:EV23_AFTERMATH_CONSULT"
+      }
+    ]
+  },
+  "admitted_event_hashes": [
+    "b1864ef2cd81c6b1c8d337d01ededcdf533da9abfff863460965295f044384bc",
+    "7da7193269919897f104b9a65dfdaf30977b90baafe783707f400c6a12dd91c8"
+  ],
+  "arm": "CORRECTIVE_CONTEXT",
+  "authorized_effects": [],
+  "baseline": "A",
+  "case_id": "K4",
+  "committed_effect_receipts": [
+    {
+      "effect_id": "EFF_K1_P_1",
+      "effect_kind": "EXPECTATION_FORMED",
+      "owner": "CAN010",
+      "owner_state_after_hash": "05eca4c74bbb23781437205c43894abfe372e13d7e5beaad481d251694af8af1",
+      "owner_state_before_hash": "de5611a821625aaf10f6788301964d9c1c04ed4113e6574d790cf33d6d9055c0",
+      "parent_event_refs": [
+        "EV7_QUESTION_PUNISHED"
+      ],
+      "target_key": "SCOPE_SPEAKING_COSTLY"
+    },
+    {
+      "effect_id": "EFF_K1_P_2",
+      "effect_kind": "TENSION_FORMED",
+      "owner": "CAN011",
+      "owner_state_after_hash": "803b2b38b61ab3b5e48f3d50d9be0d84da7bd3e669e6d7434a1b35736baaf092",
+      "owner_state_before_hash": "05eca4c74bbb23781437205c43894abfe372e13d7e5beaad481d251694af8af1",
+      "parent_event_refs": [
+        "EV7_QUESTION_PUNISHED"
+      ],
+      "target_key": "APPROACH_WITHDRAW"
+    },
+    {
+      "effect_id": "EFF_K4_NARROW",
+      "effect_kind": "TENSION_REVISED",
+      "owner": "CAN011",
+      "owner_state_after_hash": "32b983915103e5dae5c99881ef44fdffde76f922059dc0cda125ac5ebd52f7df",
+      "owner_state_before_hash": "803b2b38b61ab3b5e48f3d50d9be0d84da7bd3e669e6d7434a1b35736baaf092",
+      "parent_event_refs": [
+        "EV7_QUESTION_PUNISHED",
+        "EV17_QUESTION_RESPECTED_BY_PEER"
+      ],
+      "target_key": "APPROACH_WITHDRAW"
+    }
+  ],
+  "full_replay_digest": "0364f8c50637ed1702901b452f1904273bdafe10dfc3106b58aaa1328d4eaa05",
+  "invalid_and_hold_codes": [],
+  "lab_extension": {
+    "candidate_routes": [
+      {
+        "cost_rank": 1,
+        "gate_code": null,
+        "goal_match": [],
+        "permitted": true,
+        "route_id": "NARROWED_CONSULT",
+        "support": [
+          {
+            "parent_event_refs": [
+              "EV7_QUESTION_PUNISHED",
+              "EV17_QUESTION_RESPECTED_BY_PEER"
+            ],
+            "support_key": "APPROACH_WITHDRAW#NARROWED",
+            "support_kind": "tension"
+          }
+        ],
+        "support_count": 1
+      },
+      {
+        "cost_rank": 2,
+        "gate_code": null,
+        "goal_match": [],
+        "permitted": true,
+        "route_id": "REPEATED_QUESTION",
+        "support": [],
+        "support_count": 0
+      },
+      {
+        "cost_rank": 0,
+        "gate_code": null,
+        "goal_match": [],
+        "permitted": true,
+        "route_id": "NO_ACTION",
+        "support": [],
+        "support_count": 0
+      }
+    ],
+    "causal_parent_refs": [
+      "EV17_QUESTION_RESPECTED_BY_PEER",
+      "EV7_QUESTION_PUNISHED"
+    ],
+    "cold_replay": {
+      "digest_first": "0364f8c50637ed1702901b452f1904273bdafe10dfc3106b58aaa1328d4eaa05",
+      "digest_second": "0364f8c50637ed1702901b452f1904273bdafe10dfc3106b58aaa1328d4eaa05",
+      "identical": true,
+      "state_hash_first": "32b983915103e5dae5c99881ef44fdffde76f922059dc0cda125ac5ebd52f7df",
+      "state_hash_second": "32b983915103e5dae5c99881ef44fdffde76f922059dc0cda125ac5ebd52f7df"
+    },
+    "evaluator_metadata": {
+      "event_local_conation": null,
+      "full_causal_parent_refs": [
+        "EV17_QUESTION_RESPECTED_BY_PEER",
+        "EV7_QUESTION_PUNISHED"
+      ],
+      "hidden_causal_origin": null,
+      "history_event_ids": [
+        "EV7_QUESTION_PUNISHED",
+        "EV17_QUESTION_RESPECTED_BY_PEER"
+      ],
+      "recruitment_refs": [
+        {
+          "match_kind": "expectation",
+          "matched_key": "SCOPE_SPEAKING_COSTLY",
+          "parent_event_refs": [
+            "EV7_QUESTION_PUNISHED"
+          ],
+          "stream": "CAN010"
+        },
+        {
+          "match_kind": "tension",
+          "matched_key": "APPROACH_WITHDRAW",
+          "parent_event_refs": [
+            "EV7_QUESTION_PUNISHED",
+            "EV17_QUESTION_RESPECTED_BY_PEER"
+          ],
+          "stream": "CAN011"
+        }
+      ],
+      "relation_view": null,
+      "schema": "LAB_EVALUATOR_METADATA@1",
+      "trace_records": []
+    },
+    "event_local_conation": null,
+    "history_effect_receipts": [
+      {
+        "effect_id": "EFF_K1_P_1",
+        "effect_kind": "EXPECTATION_FORMED",
+        "owner": "CAN010",
+        "owner_state_after_hash": "05eca4c74bbb23781437205c43894abfe372e13d7e5beaad481d251694af8af1",
+        "owner_state_before_hash": "de5611a821625aaf10f6788301964d9c1c04ed4113e6574d790cf33d6d9055c0",
+        "parent_event_refs": [
+          "EV7_QUESTION_PUNISHED"
+        ],
+        "target_key": "SCOPE_SPEAKING_COSTLY"
+      },
+      {
+        "effect_id": "EFF_K1_P_2",
+        "effect_kind": "TENSION_FORMED",
+        "owner": "CAN011",
+        "owner_state_after_hash": "803b2b38b61ab3b5e48f3d50d9be0d84da7bd3e669e6d7434a1b35736baaf092",
+        "owner_state_before_hash": "05eca4c74bbb23781437205c43894abfe372e13d7e5beaad481d251694af8af1",
+        "parent_event_refs": [
+          "EV7_QUESTION_PUNISHED"
+        ],
+        "target_key": "APPROACH_WITHDRAW"
+      },
+      {
+        "effect_id": "EFF_K4_NARROW",
+        "effect_kind": "TENSION_REVISED",
+        "owner": "CAN011",
+        "owner_state_after_hash": "32b983915103e5dae5c99881ef44fdffde76f922059dc0cda125ac5ebd52f7df",
+        "owner_state_before_hash": "803b2b38b61ab3b5e48f3d50d9be0d84da7bd3e669e6d7434a1b35736baaf092",
+        "parent_event_refs": [
+          "EV7_QUESTION_PUNISHED",
+          "EV17_QUESTION_RESPECTED_BY_PEER"
+        ],
+        "target_key": "APPROACH_WITHDRAW"
+      }
+    ],
+    "position_receipt": "POS_SYNTH_01",
+    "present_effect_receipts": [],
+    "present_event_id": "EV23_AFTERMATH_CONSULT",
+    "public_standing": "UNCERTIFIED",
+    "relation_index_cost": {
+      "edge_lookups": 0,
+      "events_scanned": 2,
+      "mode": "RECONSTRUCT_FROM_ADMITTED_ANCESTRY"
+    },
+    "relation_view": null,
+    "sanction_capacity": "cannot fire supervisor; can decline optional shift",
+    "selected_not_mandatory": false,
+    "selected_route": "NARROWED_CONSULT",
+    "trace_records": []
+  },
+  "latency_ms": 1,
+  "memory_access_and_trace_refs": [],
+  "model_call_count": 0,
+  "model_version": "MODEL_BEHAVIORAL_COMPARISON_HOLD__NO_PINNED_MODEL_SURFACE",
+  "objective_public_standing_effects": [],
+  "owner_state_after_hash": "32b983915103e5dae5c99881ef44fdffde76f922059dc0cda125ac5ebd52f7df",
+  "owner_state_before_hash": "32b983915103e5dae5c99881ef44fdffde76f922059dc0cda125ac5ebd52f7df",
+  "present_action_and_material_effects": [],
+  "proposed_effects": [],
+  "prose_optional": "MACHINE_FIRST__NO_PROSE_SCORED",
+  "read_evidence_ref_list": [
+    "EV17_QUESTION_RESPECTED_BY_PEER",
+    "EV23_AFTERMATH_CONSULT",
+    "EV7_QUESTION_PUNISHED",
+    "W_PORT_TOWN_1998_TEST"
+  ],
+  "receivability_refs": [
+    {
+      "feature": "act",
+      "ref": "RECV:EV23_AFTERMATH_CONSULT:act",
+      "value": "CONSULT_INVITATION"
+    },
+    {
+      "feature": "content",
+      "ref": "RECV:EV23_AFTERMATH_CONSULT:content",
+      "value": "PROCEDURE_CONSULT"
+    }
+  ],
+  "recruitment_refs": [
+    {
+      "match_kind": "expectation",
+      "matched_key": "SCOPE_SPEAKING_COSTLY",
+      "parent_event_refs": [
+        "EV7_QUESTION_PUNISHED"
+      ],
+      "stream": "CAN010"
+    },
+    {
+      "match_kind": "tension",
+      "matched_key": "APPROACH_WITHDRAW",
+      "parent_event_refs": [
+        "EV7_QUESTION_PUNISHED",
+        "EV17_QUESTION_RESPECTED_BY_PEER"
+      ],
+      "stream": "CAN011"
+    }
+  ],
+  "retrieval_token_count": 347,
+  "seed": "S11",
+  "transition_rule_ids": [
+    "T0_WORLD_CONTEXT_GATE",
+    "T1_RECEIVABILITY",
+    "T2_SITUATED_RECRUITMENT",
+    "T5_CORRECTIVE_REINTERPRETATION",
+    "T6_NONDECLARATIVE_TRACE"
+  ],
+  "uptake_refs": [
+    {
+      "receivable": {
+        "act": "CONSULT_INVITATION",
+        "content": "PROCEDURE_CONSULT"
+      },
+      "ref": "UPTAKE:EV23_AFTERMATH_CONSULT"
+    }
+  ],
+  "world_receipt_hash": "39369d7e6e66cb5280fb07a98adec215839e0c48dbee810a06109a30cafee37d"
+}

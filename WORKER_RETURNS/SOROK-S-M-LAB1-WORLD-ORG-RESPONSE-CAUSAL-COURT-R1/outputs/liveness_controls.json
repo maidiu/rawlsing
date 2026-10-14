@@ -1,0 +1,153 @@
+{
+  "all_mechanisms_live": true,
+  "controls": {
+    "B_MECHANISM": {
+      "a_not_deterministic_on_tie": true,
+      "a_tiebreak_picks": {
+        "S01": "R_PLAIN",
+        "S02": "R_GOAL",
+        "S03": "R_GOAL",
+        "S04": "R_PLAIN",
+        "S05": "R_GOAL",
+        "S06": "R_PLAIN",
+        "S07": "R_GOAL",
+        "S08": "R_GOAL",
+        "S09": "R_GOAL",
+        "S10": "R_PLAIN",
+        "S11": "R_PLAIN",
+        "S12": "R_GOAL"
+      },
+      "b_always_goal_route": true,
+      "b_picks": {
+        "S01": "R_GOAL",
+        "S02": "R_GOAL",
+        "S03": "R_GOAL",
+        "S04": "R_GOAL",
+        "S05": "R_GOAL",
+        "S06": "R_GOAL",
+        "S07": "R_GOAL",
+        "S08": "R_GOAL",
+        "S09": "R_GOAL",
+        "S10": "R_GOAL",
+        "S11": "R_GOAL",
+        "S12": "R_GOAL"
+      },
+      "control": "B_GOAL_MATCH_MECHANISM_LIVENESS",
+      "mechanism_live": true
+    },
+    "C_MECHANISM": {
+      "a_scans_history": true,
+      "a_view": {
+        "edge_id": "RECONSTRUCTED_COMPENSATES_FOR",
+        "formation_event": "EV_RELFORM_A",
+        "formed_by": "EV_RELFORM_A",
+        "from": "EV1_APPROVAL",
+        "scope": "REL_SUP_APP",
+        "to": "EV2_CRITICISM",
+        "type": "COMPENSATES_FOR",
+        "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+      },
+      "c_avoids_history_scan": true,
+      "c_view": {
+        "edge_id": "EDGE_COMPENSATES_FOR",
+        "formation_event": "EV_RELFORM_A",
+        "formed_by": "EV_RELFORM_A",
+        "from": "EV1_APPROVAL",
+        "scope": "REL_SUP_APP",
+        "to": "EV2_CRITICISM",
+        "type": "COMPENSATES_FOR",
+        "view_source": "C_TYPED_RELATION_INDEX"
+      },
+      "control": "C_RELATION_MECHANISM_LIVENESS",
+      "mechanism_live": true,
+      "same_formation_event": true,
+      "same_type": true
+    },
+    "K2_DIAGNOSIS": {
+      "control": "K2_B_C_ROUTE_COLLAPSE_DIAGNOSIS",
+      "diagnosis": "B/C add +goal_match to route score; SCOPE_APPROVAL_CONDITIONAL matches REQUEST_WITH_REPAIR in both topologies, tying the relation-supported route in T_CONDITION; the declared B/C tie-break then prefers goal_match and selects REQUEST_WITH_REPAIR in both topologies, collapsing the typed distinction that A's plain support count preserves",
+      "frozen_scoring_unchanged": true,
+      "per_baseline_T_CONDITION": {
+        "A": {
+          "candidates": [
+            {
+              "goal_match": [
+                "SCOPE_APPROVAL_CONDITIONAL"
+              ],
+              "route_id": "REQUEST_WITH_REPAIR",
+              "score": 1,
+              "support_count": 1
+            },
+            {
+              "goal_match": [],
+              "route_id": "REQUEST_WITH_CONDITIONAL_CAUTION",
+              "score": 2,
+              "support_count": 2
+            },
+            {
+              "goal_match": [],
+              "route_id": "WITHDRAW_REQUEST",
+              "score": 1,
+              "support_count": 1
+            }
+          ],
+          "selected": "REQUEST_WITH_CONDITIONAL_CAUTION"
+        },
+        "B": {
+          "candidates": [
+            {
+              "goal_match": [
+                "SCOPE_APPROVAL_CONDITIONAL"
+              ],
+              "route_id": "REQUEST_WITH_REPAIR",
+              "score": 2,
+              "support_count": 1
+            },
+            {
+              "goal_match": [],
+              "route_id": "REQUEST_WITH_CONDITIONAL_CAUTION",
+              "score": 2,
+              "support_count": 2
+            },
+            {
+              "goal_match": [],
+              "route_id": "WITHDRAW_REQUEST",
+              "score": 1,
+              "support_count": 1
+            }
+          ],
+          "selected": "REQUEST_WITH_REPAIR"
+        },
+        "C": {
+          "candidates": [
+            {
+              "goal_match": [
+                "SCOPE_APPROVAL_CONDITIONAL"
+              ],
+              "route_id": "REQUEST_WITH_REPAIR",
+              "score": 2,
+              "support_count": 1
+            },
+            {
+              "goal_match": [],
+              "route_id": "REQUEST_WITH_CONDITIONAL_CAUTION",
+              "score": 2,
+              "support_count": 2
+            },
+            {
+              "goal_match": [],
+              "route_id": "WITHDRAW_REQUEST",
+              "score": 1,
+              "support_count": 1
+            }
+          ],
+          "selected": "REQUEST_WITH_REPAIR"
+        }
+      }
+    }
+  },
+  "declared_in_preregistration": true,
+  "executed_after_primary_battery": true,
+  "schema": "SOROK_S_M_LAB1_MECHANISM_LIVENESS_CONTROLS@1",
+  "scoring_changed": false
+}

@@ -1,0 +1,156 @@
+{
+  "schema": "SOROK_S_M_LAB1_FROZEN_PREREGISTRATION@1.0.0",
+  "experiment_id": "S_M_LAB1_WORLD_HISTORY_ORGANIZATION_RESPONSE_CAUSAL_COURT",
+  "lab_grade": "SYNTHETIC_SOURCEFREE_LAB__BOUNDED_CAN008_COMPATIBLE_TRANSITION__NO_V3_WAKE__NO_PRODUCTION_MUTATION__ALL_CONSTRUCTS_EXPERIMENTAL",
+  "input": {
+    "sm_branch": "agent/reviewer-sorok-prea0-sm-situated-transition-science-r1",
+    "sm_sha": "6ad748ea985897dc1e93680f0e859b61bf074ed2",
+    "sm_return": "WORKER_RETURNS/SOROK-PREA0-SM-SITUATED-TRANSITION-SCIENCE-R1/",
+    "official_astra_sha": "3b2d9a1b644a9fa024ed1bd895b67be5c8789531"
+  },
+  "grant_scope": {
+    "authorized": [
+      "synthetic world fixtures",
+      "synthetic actor histories",
+      "bounded CAN-008-compatible transition implementation",
+      "source-free K1-K6 experiments",
+      "named seeded RNG",
+      "retained run logs/results",
+      "independent evaluator artifacts"
+    ],
+    "not_authorized": [
+      "operative V3 wake",
+      "original survey execution",
+      "PRE-V3 production mutation",
+      "canonical new psyche authority",
+      "physical weld",
+      "product release"
+    ]
+  },
+  "primary_question": "Can HISTORICAL-MATERIAL WORLD + GENERATED HISTORY produce DURABLE PERSON ORGANIZATION that causes LATER SITUATED RESPONSE in a way that is more than reproducible narrative invention?",
+  "arms": {
+    "A": "MINIMAL_BASELINE: world-conditioned exact events, exact relationships, existing governed owner state (CAN010/CAN011/ADP015/ADP016/ADP017), memory/trace, CAN-008-compatible recruitment; no new durable conation/recognition/attractor graph",
+    "B": "EVENT_LOCAL_ORGANIZATION: A + event-local conation/desire direction, recognition/witness stakes, pressure/conflict, available response routes/costs; never persisted automatically, never its own effect parent",
+    "C": "TYPED_PSYCHIC_RELATIONAL_TOPOLOGY: B + only the minimal preregistered typed relations COMPENSATES_FOR and CONDITIONS_RECOGNITION with exact admitted formation parents; no arbitrary ontology expansion; no C state becomes canonical"
+  },
+  "fairness_law": [
+    "A/B/C receive the same world, admitted history, evidence, retrieval budget, model surface, call count and relevant owner facts",
+    "A is never retrieval-starved: if C receives a derived relation index, A retains equivalent causal ancestry (the admitted formation events) and reconstructs the relation view under RECONSTRUCT_REL_VIEW",
+    "same named seeds across arms and contrasts (paired design)",
+    "identical model settings across arms (model surface absent: MODEL_BEHAVIORAL_COMPARISON_HOLD)"
+  ],
+  "run_order": {
+    "phase1": ["K1", "K3", "K5"],
+    "integrity_gate": "phase1 proceeds to phase2 only if every phase1 trial has identical cold replay and zero hidden-origin leaks",
+    "phase2": ["K2", "K4", "K6"],
+    "note": "K1/K3/K5 attack the central claim most directly"
+  },
+  "seeds": {
+    "names": ["S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12"],
+    "derivation": "random.Random(int(sha256(canonical_json({'seed': name})), 16))",
+    "use": "preregistered tie-breaks among equally recruited permitted routes ONLY; engine is otherwise deterministic"
+  },
+  "machine_first_record": {
+    "rule": "record exact recruited streams, receivability/uptake, candidate response, authorized destination-owner effects, pre/post state hashes, relation effects, memory/access state, external action BEFORE any prose",
+    "schema_fields": "exactly the S-M audit_schema.output_required set in every trial receipt",
+    "prose_scoring": "changed adjectives score ZERO; prose_optional is never scored"
+  },
+  "primary_predicates": {
+    "K1": "H_RESPONSIVE selects REQUEST_FEEDBACK and H_PUNITIVE selects SILENCE-or-APPEAL with different causal parent receipts; identical-history cold replay exact",
+    "K2": "T_COMPENSATION selects REQUEST_WITH_REPAIR and T_CONDITION selects REQUEST_WITH_CONDITIONAL_CAUTION with distinct admitted formation ancestry; A reconstruction must equal C edge content (else free-edge failure)",
+    "K3": "TRACE_ACTIVE and RETAINED_INACCESSIBLE show trace-specific recruitment support for HEIGHTENED_GUARD while TRACE_ABSENT shows none; actor-safe projection contains no origin and grants no recall",
+    "K4": "CORRECTIVE_CONTEXT yields TENSION_REVISED NARROWED and NARROWED_CONSULT; RECURRENCE_SAME_AUTHORITY yields REINFORCED and REPEATED_QUESTION; WEAK_COUNTEREXAMPLE yields NO_CHANGE and NO_ACTION; prior history hashes unchanged",
+    "K5": "objective public standing changes only in REGISTRAR_CERTIFIES; ACCEPT_CERTIFICATE permitted only there; BELIEF_OWN_WORK_UNCERTAIN identical across all three contrasts (belief not automatic)",
+    "K6": "POLICING_CANDIDATE permitted only in PRACTICE_AND_CAPACITY, recorded CANDIDATE_NOT_MANDATORY; PRACTICE_NO_CAPACITY and CATEGORY_ONLY produce NO_SANCTION and no action effect"
+  },
+  "lawful_outcome_sets": {
+    "K1": ["REQUEST_FEEDBACK@H_RESPONSIVE", "SILENCE-or-APPEAL@H_PUNITIVE"],
+    "K2": ["REQUEST_WITH_REPAIR@T_COMPENSATION", "REQUEST_WITH_CONDITIONAL_CAUTION@T_CONDITION"],
+    "K3": ["HEIGHTENED_GUARD@TRACE_ACTIVE", "NEUTRAL_RESPONSE@TRACE_ABSENT", "HEIGHTENED_GUARD@RETAINED_INACCESSIBLE"],
+    "K4": ["NARROWED_CONSULT@CORRECTIVE_CONTEXT", "REPEATED_QUESTION@RECURRENCE_SAME_AUTHORITY", "NO_ACTION@WEAK_COUNTEREXAMPLE"],
+    "K5": ["ACCEPT_CERTIFICATE-or-REMAIN_DOUBTFUL@REGISTRAR with standing change", "REMAIN_DOUBTFUL@supervisor/peer with no standing change"],
+    "K6": ["POLICING_CANDIDATE-not-mandatory@PRACTICE_AND_CAPACITY", "NO_SANCTION@PRACTICE_NO_CAPACITY", "NO_SANCTION@CATEGORY_ONLY"]
+  },
+  "selection_law": {
+    "route_gates": "declared per-route requirements (practice/expectation, sanction capacity, public standing)",
+    "support_score_A": "count of typed recruitment supports (streams: CAN010 expectations/strivings, CAN011 tensions/practices, ADP015 relationships, ADP016 traces, ADP017 beliefs, relation view)",
+    "support_score_BC": "support_count + goal_match count (event-local conation, B/C only)",
+    "default_rule": "if max score is 0 and a declared no-op route exists: DEFAULT_TO_NO_OP_WHEN_NO_RECRUITMENT",
+    "ties": "seeded RNG among tied max-score routes (B/C: goal-match preferred before RNG)"
+  },
+  "scoring": {
+    "primary": "BINARY_PER_K_PRE_REGISTERED_TYPED_EFFECT_DISTINCTION_AND_HARD_INVARIANTS_PASS_ALL",
+    "per_baseline_correctness": "fraction of 12 paired seeds where the K primary predicate holds",
+    "comparison": "paired B-minus-A and C-minus-A correctness differences per K",
+    "mechanism_liveness_controls": "B tie/goal-match mechanism and C relation-index mechanism must be demonstrably live before any null comparison is trusted"
+  },
+  "decision_thresholds_proposed_frozen_for_this_lab": {
+    "minimum_effect": "at least 10 percentage points gain over A on preregistered typed contrast correctness, paired 95% interval excluding zero, replicated",
+    "equivalence_margin": "plus/minus 5 percentage points ONLY with prospective power; otherwise INDETERMINATE not EQUIVALENT",
+    "n": "12 paired deterministic seeds per case per baseline (pilot; not powered for equivalence)",
+    "cost_guard": "no more than 25% p95 latency / token / storage increase without proportionately larger preregistered benefit",
+    "zero_tolerance": [
+      "0 unadmitted-event response commits",
+      "0 hidden actor origin leaks",
+      "0 category-only sanctions",
+      "0 public standing changes from unempowered witnesses",
+      "0 prior-history rewrites",
+      "0 unauthorized C graph edges",
+      "0 worldless-event commits",
+      "REPLAY_SAME_SEED_SAME_STATE"
+    ]
+  },
+  "decision_law": {
+    "A_approx_B_approx_C": "recommend deleting/demoting richer state",
+    "B_gt_A_and_C_no_distinct_gain": "keep the useful organization event-local",
+    "C_only_retrieval_efficiency": "call it a cache/derived index, not new causal ontology",
+    "C_promotion": "ONLY unique held-out causal discrimination + separate lifecycle/intervention value + zero integrity violations + acceptable cost may justify recommending a later narrow authority commission; never self-promote",
+    "all_three_fail": "RETURN THAT; do not add constructs; this is a kill court"
+  },
+  "null_controls": [
+    "IDENTICAL_FULL_INPUT_REPLAY",
+    "UNRELATED_NOISE_EVENT",
+    "UNADMITTED_DRAFT",
+    "REJECTED_EVENT",
+    "CATEGORY_ONLY",
+    "POWERLESS_WITNESS",
+    "INACCESSIBLE_LEDGER_INJECTED_TO_EVALUATOR_ONLY",
+    "IRRELEVANT_RELATION_ORDER",
+    "WEIGHT_OR_SEED_WITHOUT_ISSUER",
+    "ZERO_ACTION_AFFORDANCE",
+    "K1_ADJECTIVE_ONLY_CHANGE",
+    "K2_FREE_EDGE_MUTATION",
+    "K4_PARAPHRASE_ONLY_NO_REVISION",
+    "K5_OFFICIAL_SOUNDING_UTTERANCE",
+    "K6_NOMINAL_TITLE_NO_POWER"
+  ],
+  "actor_opacity_protocol": {
+    "conditions": [
+      "no explanation",
+      "incorrect self-explanation (mistaken, separately admitted as actor testimony)",
+      "confident incorrect self-explanation (only where separately admitted)",
+      "inaccessible trace affecting response without recall"
+    ],
+    "hidden_origin_test": "inject hidden causal origin into evaluator-only metadata; actor-safe payload must be byte-identical; any leak is a hard failure",
+    "rule": "evaluator may know the causal graph; actor may not; testimony is never analyst truth"
+  },
+  "world_primacy": "every event must bind world receipt, position, relationship, opportunity/exposure and relevant history; a worldless event is UNDERSPECIFIED/HOLD, not a personality free-choice opportunity",
+  "cost_telemetry": [
+    "durable bytes/state count",
+    "retrieval refs/tokens",
+    "model calls/tokens",
+    "latency p50/p95",
+    "branching (candidate paths)",
+    "cold replay",
+    "failure rate"
+  ],
+  "model_execution": {
+    "surface_available": false,
+    "policy": "execute all deterministic transition/state machinery; return MODEL_BEHAVIORAL_COMPARISON_HOLD; do NOT fabricate model outputs",
+    "pinned_model": null
+  },
+  "statistics_note": "deterministic engine with tie-break-only seeds: per-seed outcomes may be identical; paired difference intervals may be degenerate; equivalence claims are INDETERMINATE without power; thresholds above are frozen for this lab only and are not adopted scientific standards",
+  "deviation_policy": "no threshold or predicate tuning after this freeze; implementation bug-fixes must be logged as deviations with retained pre-fix outputs; any change to scoring rules voids the affected primary claim",
+  "freeze_declaration": "this trial plan is frozen before primary results; only engine mechanism unit tests existed at freeze time; no K1-K6 primary battery output had been produced",
+  "retention": "every run is retained including ugly failures under outputs/runs/"
+}

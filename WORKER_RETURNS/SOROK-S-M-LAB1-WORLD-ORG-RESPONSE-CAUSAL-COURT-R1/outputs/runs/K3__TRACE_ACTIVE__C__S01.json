@@ -1,0 +1,339 @@
+{
+  "actor_claim_permission_refs": [
+    {
+      "key": "ORIGIN_CLAIM_EARLY_EVENT",
+      "permission": "DENIED"
+    }
+  ],
+  "actor_safe_projection": {
+    "beliefs": [],
+    "claim_permissions": [
+      {
+        "key": "ORIGIN_CLAIM_EARLY_EVENT",
+        "permission": "DENIED"
+      }
+    ],
+    "hidden_origin_refs": [],
+    "invalid_and_hold_codes": [],
+    "memory_view": [
+      {
+        "key": "EPISODIC_EV7_PUBLIC_SHAMING",
+        "kind": "EPISODIC",
+        "origin": "NON_DISCLOSABLE_ORIGIN",
+        "recall_granted": false
+      },
+      {
+        "key": "TRACE_PUBLIC_SHAMING",
+        "kind": "NONDECLARATIVE_TRACE_EFFECT_PRESENT",
+        "origin": "NON_DISCLOSABLE_ORIGIN",
+        "recall_granted": false
+      }
+    ],
+    "present_event_id": "EV22_LATER_SHIFT_REQUEST",
+    "present_reception": {
+      "act": "SHIFT_ASSIGNMENT",
+      "content": "REASSIGNMENT_PROPOSAL"
+    },
+    "schema": "LAB_ACTOR_SAFE_PROJECTION@1",
+    "selected_route": "HEIGHTENED_GUARD",
+    "uptake_refs": [
+      {
+        "receivable": {
+          "act": "SHIFT_ASSIGNMENT",
+          "content": "REASSIGNMENT_PROPOSAL"
+        },
+        "ref": "UPTAKE:EV22_LATER_SHIFT_REQUEST"
+      }
+    ]
+  },
+  "admitted_event_hashes": [
+    "60cc216ff4bf5a442570a47aa79d4a007c0fff622871cbb3a1f63844ccc96c46"
+  ],
+  "arm": "TRACE_ACTIVE",
+  "authorized_effects": [],
+  "baseline": "C",
+  "case_id": "K3",
+  "committed_effect_receipts": [
+    {
+      "effect_id": "EFF_K3_1",
+      "effect_kind": "TRACE_FORMED",
+      "owner": "ADP016",
+      "owner_state_after_hash": "c7b64639232a56f41132b029ee00bdb028cb994a40c2189810990d8a3f4c744e",
+      "owner_state_before_hash": "de5611a821625aaf10f6788301964d9c1c04ed4113e6574d790cf33d6d9055c0",
+      "parent_event_refs": [
+        "EV7_PUBLIC_SHAMING"
+      ],
+      "target_key": "TRACE_PUBLIC_SHAMING"
+    },
+    {
+      "effect_id": "EFF_K3_2",
+      "effect_kind": "EPISODIC_ACCESS_SET",
+      "owner": "ADP016",
+      "owner_state_after_hash": "c263eef85d5f763834748121b96a078a810b5ba42d6bccb8dfc6164b378ca060",
+      "owner_state_before_hash": "c7b64639232a56f41132b029ee00bdb028cb994a40c2189810990d8a3f4c744e",
+      "parent_event_refs": [
+        "EV7_PUBLIC_SHAMING"
+      ],
+      "target_key": "EPISODIC_EV7_PUBLIC_SHAMING"
+    },
+    {
+      "effect_id": "EFF_K3_3",
+      "effect_kind": "CLAIM_PERMISSION_SET",
+      "owner": "ADP017",
+      "owner_state_after_hash": "5c74be142eafdaf93fe6ae40fceb53292849b9390e81aabcec47c3ad4dcff9ef",
+      "owner_state_before_hash": "c263eef85d5f763834748121b96a078a810b5ba42d6bccb8dfc6164b378ca060",
+      "parent_event_refs": [
+        "EV7_PUBLIC_SHAMING"
+      ],
+      "target_key": "ORIGIN_CLAIM_EARLY_EVENT"
+    }
+  ],
+  "full_replay_digest": "bd6e15df0244a3b478b34fcf14dd1579799ed84dd694bfa930530b299c5e738f",
+  "invalid_and_hold_codes": [],
+  "lab_extension": {
+    "candidate_routes": [
+      {
+        "cost_rank": 1,
+        "gate_code": null,
+        "goal_match": [],
+        "permitted": true,
+        "route_id": "HEIGHTENED_GUARD",
+        "support": [
+          {
+            "parent_event_refs": [
+              "EV7_PUBLIC_SHAMING"
+            ],
+            "support_key": "TRACE_PUBLIC_SHAMING",
+            "support_kind": "trace"
+          }
+        ],
+        "support_count": 1
+      },
+      {
+        "cost_rank": 0,
+        "gate_code": null,
+        "goal_match": [],
+        "permitted": true,
+        "route_id": "NEUTRAL_RESPONSE",
+        "support": [],
+        "support_count": 0
+      }
+    ],
+    "causal_parent_refs": [
+      "EV7_PUBLIC_SHAMING"
+    ],
+    "cold_replay": {
+      "digest_first": "bd6e15df0244a3b478b34fcf14dd1579799ed84dd694bfa930530b299c5e738f",
+      "digest_second": "bd6e15df0244a3b478b34fcf14dd1579799ed84dd694bfa930530b299c5e738f",
+      "identical": true,
+      "state_hash_first": "5c74be142eafdaf93fe6ae40fceb53292849b9390e81aabcec47c3ad4dcff9ef",
+      "state_hash_second": "5c74be142eafdaf93fe6ae40fceb53292849b9390e81aabcec47c3ad4dcff9ef"
+    },
+    "evaluator_metadata": {
+      "event_local_conation": {
+        "direction_from_strivings": [],
+        "event_id": "EV22_LATER_SHIFT_REQUEST",
+        "persistence": "EVENT_LOCAL_ONLY__NOT_PERSISTED__NOT_EFFECT_PARENT",
+        "pressure_conflict": {},
+        "route_configuration": [
+          {
+            "cost_label": "LOW_TIME",
+            "cost_rank": 1,
+            "desired_end_match": [],
+            "route_id": "HEIGHTENED_GUARD"
+          },
+          {
+            "cost_label": "NONE",
+            "cost_rank": 0,
+            "desired_end_match": [],
+            "route_id": "NEUTRAL_RESPONSE"
+          }
+        ],
+        "witness_stakes": null
+      },
+      "full_causal_parent_refs": [
+        "EV7_PUBLIC_SHAMING"
+      ],
+      "hidden_causal_origin": null,
+      "history_event_ids": [
+        "EV7_PUBLIC_SHAMING"
+      ],
+      "recruitment_refs": [
+        {
+          "match_kind": "trace",
+          "matched_key": "TRACE_PUBLIC_SHAMING",
+          "parent_event_refs": [
+            "EV7_PUBLIC_SHAMING"
+          ],
+          "stream": "ADP016"
+        }
+      ],
+      "relation_view": null,
+      "schema": "LAB_EVALUATOR_METADATA@1",
+      "trace_records": [
+        {
+          "access_state": "RETAINED_NOT_ACCESSIBLE",
+          "activation": "RECRUITABLE",
+          "effect_id": "EFF_K3_1",
+          "key": "TRACE_PUBLIC_SHAMING",
+          "parent_event_refs": [
+            "EV7_PUBLIC_SHAMING"
+          ],
+          "source_kind": "PUBLIC_SHAMING",
+          "trace_kind": "NONDECLARATIVE_TRACE"
+        }
+      ]
+    },
+    "event_local_conation": {
+      "direction_from_strivings": [],
+      "event_id": "EV22_LATER_SHIFT_REQUEST",
+      "persistence": "EVENT_LOCAL_ONLY__NOT_PERSISTED__NOT_EFFECT_PARENT",
+      "pressure_conflict": {},
+      "route_configuration": [
+        {
+          "cost_label": "LOW_TIME",
+          "cost_rank": 1,
+          "desired_end_match": [],
+          "route_id": "HEIGHTENED_GUARD"
+        },
+        {
+          "cost_label": "NONE",
+          "cost_rank": 0,
+          "desired_end_match": [],
+          "route_id": "NEUTRAL_RESPONSE"
+        }
+      ],
+      "witness_stakes": null
+    },
+    "history_effect_receipts": [
+      {
+        "effect_id": "EFF_K3_1",
+        "effect_kind": "TRACE_FORMED",
+        "owner": "ADP016",
+        "owner_state_after_hash": "c7b64639232a56f41132b029ee00bdb028cb994a40c2189810990d8a3f4c744e",
+        "owner_state_before_hash": "de5611a821625aaf10f6788301964d9c1c04ed4113e6574d790cf33d6d9055c0",
+        "parent_event_refs": [
+          "EV7_PUBLIC_SHAMING"
+        ],
+        "target_key": "TRACE_PUBLIC_SHAMING"
+      },
+      {
+        "effect_id": "EFF_K3_2",
+        "effect_kind": "EPISODIC_ACCESS_SET",
+        "owner": "ADP016",
+        "owner_state_after_hash": "c263eef85d5f763834748121b96a078a810b5ba42d6bccb8dfc6164b378ca060",
+        "owner_state_before_hash": "c7b64639232a56f41132b029ee00bdb028cb994a40c2189810990d8a3f4c744e",
+        "parent_event_refs": [
+          "EV7_PUBLIC_SHAMING"
+        ],
+        "target_key": "EPISODIC_EV7_PUBLIC_SHAMING"
+      },
+      {
+        "effect_id": "EFF_K3_3",
+        "effect_kind": "CLAIM_PERMISSION_SET",
+        "owner": "ADP017",
+        "owner_state_after_hash": "5c74be142eafdaf93fe6ae40fceb53292849b9390e81aabcec47c3ad4dcff9ef",
+        "owner_state_before_hash": "c263eef85d5f763834748121b96a078a810b5ba42d6bccb8dfc6164b378ca060",
+        "parent_event_refs": [
+          "EV7_PUBLIC_SHAMING"
+        ],
+        "target_key": "ORIGIN_CLAIM_EARLY_EVENT"
+      }
+    ],
+    "position_receipt": "POS_SYNTH_01",
+    "present_effect_receipts": [],
+    "present_event_id": "EV22_LATER_SHIFT_REQUEST",
+    "public_standing": "UNCERTIFIED",
+    "relation_index_cost": {
+      "edge_lookups": 1,
+      "events_scanned": 0,
+      "mode": "C_TYPED_RELATION_INDEX"
+    },
+    "relation_view": null,
+    "sanction_capacity": "cannot fire supervisor; can decline optional shift",
+    "selected_not_mandatory": false,
+    "selected_route": "HEIGHTENED_GUARD",
+    "trace_records": [
+      {
+        "access_state": "RETAINED_NOT_ACCESSIBLE",
+        "activation": "RECRUITABLE",
+        "effect_id": "EFF_K3_1",
+        "key": "TRACE_PUBLIC_SHAMING",
+        "parent_event_refs": [
+          "EV7_PUBLIC_SHAMING"
+        ],
+        "source_kind": "PUBLIC_SHAMING",
+        "trace_kind": "NONDECLARATIVE_TRACE"
+      }
+    ]
+  },
+  "latency_ms": 1,
+  "memory_access_and_trace_refs": [
+    {
+      "access_state": "UNAVAILABLE",
+      "key": "EPISODIC_EV7_PUBLIC_SHAMING",
+      "kind": "EPISODIC"
+    },
+    {
+      "access_state": "RETAINED_NOT_ACCESSIBLE",
+      "key": "TRACE_PUBLIC_SHAMING",
+      "kind": "NONDECLARATIVE_TRACE"
+    }
+  ],
+  "model_call_count": 0,
+  "model_version": "MODEL_BEHAVIORAL_COMPARISON_HOLD__NO_PINNED_MODEL_SURFACE",
+  "objective_public_standing_effects": [],
+  "owner_state_after_hash": "5c74be142eafdaf93fe6ae40fceb53292849b9390e81aabcec47c3ad4dcff9ef",
+  "owner_state_before_hash": "5c74be142eafdaf93fe6ae40fceb53292849b9390e81aabcec47c3ad4dcff9ef",
+  "present_action_and_material_effects": [],
+  "proposed_effects": [],
+  "prose_optional": "MACHINE_FIRST__NO_PROSE_SCORED",
+  "read_evidence_ref_list": [
+    "EV22_LATER_SHIFT_REQUEST",
+    "EV7_PUBLIC_SHAMING",
+    "W_PORT_TOWN_1998_TEST"
+  ],
+  "receivability_refs": [
+    {
+      "feature": "act",
+      "ref": "RECV:EV22_LATER_SHIFT_REQUEST:act",
+      "value": "SHIFT_ASSIGNMENT"
+    },
+    {
+      "feature": "content",
+      "ref": "RECV:EV22_LATER_SHIFT_REQUEST:content",
+      "value": "REASSIGNMENT_PROPOSAL"
+    }
+  ],
+  "recruitment_refs": [
+    {
+      "match_kind": "trace",
+      "matched_key": "TRACE_PUBLIC_SHAMING",
+      "parent_event_refs": [
+        "EV7_PUBLIC_SHAMING"
+      ],
+      "stream": "ADP016"
+    }
+  ],
+  "retrieval_token_count": 447,
+  "seed": "S01",
+  "transition_rule_ids": [
+    "T0_WORLD_CONTEXT_GATE",
+    "T1_RECEIVABILITY",
+    "T2_SITUATED_RECRUITMENT",
+    "T3_EVENT_LOCAL_CONATION",
+    "T5_CORRECTIVE_REINTERPRETATION",
+    "T6_NONDECLARATIVE_TRACE",
+    "T8_TYPED_TOPOLOGY_OPTION"
+  ],
+  "uptake_refs": [
+    {
+      "receivable": {
+        "act": "SHIFT_ASSIGNMENT",
+        "content": "REASSIGNMENT_PROPOSAL"
+      },
+      "ref": "UPTAKE:EV22_LATER_SHIFT_REQUEST"
+    }
+  ],
+  "world_receipt_hash": "39369d7e6e66cb5280fb07a98adec215839e0c48dbee810a06109a30cafee37d"
+}

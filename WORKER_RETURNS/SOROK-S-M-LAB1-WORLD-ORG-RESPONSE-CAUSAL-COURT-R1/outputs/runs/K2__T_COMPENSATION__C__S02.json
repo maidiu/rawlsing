@@ -1,0 +1,373 @@
+{
+  "actor_claim_permission_refs": [],
+  "actor_safe_projection": {
+    "beliefs": [],
+    "claim_permissions": [],
+    "hidden_origin_refs": [],
+    "invalid_and_hold_codes": [],
+    "memory_view": [],
+    "present_event_id": "EV3_REQUEST",
+    "present_reception": {
+      "act": "SHIFT_REQUEST",
+      "content": "REQUEST_EXTRA_SHIFT"
+    },
+    "schema": "LAB_ACTOR_SAFE_PROJECTION@1",
+    "selected_route": "REQUEST_WITH_REPAIR",
+    "uptake_refs": [
+      {
+        "receivable": {
+          "act": "SHIFT_REQUEST",
+          "content": "REQUEST_EXTRA_SHIFT"
+        },
+        "ref": "UPTAKE:EV3_REQUEST"
+      }
+    ]
+  },
+  "admitted_event_hashes": [
+    "3a0fe608da303d60a2ae3bacd6890499152f6c63abf8a9184a203073758561e8",
+    "cf031b188ae25a227b8e4f7a21ff72689f41e9d73bc6ee9ff12ecde1a99a27f7",
+    "d756a141a5a1547e9b9e015969d39943048b5fed08a09eb861f3aeccd0f71a27"
+  ],
+  "arm": "T_COMPENSATION",
+  "authorized_effects": [],
+  "baseline": "C",
+  "case_id": "K2",
+  "committed_effect_receipts": [
+    {
+      "effect_id": "EFF_K2_1",
+      "effect_kind": "EXPECTATION_FORMED",
+      "owner": "CAN010",
+      "owner_state_after_hash": "847d4cca3a10ecbc19bc4ce0d3961fa0e09fd6bce0c5e77c4399cd408aa2cf11",
+      "owner_state_before_hash": "de5611a821625aaf10f6788301964d9c1c04ed4113e6574d790cf33d6d9055c0",
+      "parent_event_refs": [
+        "EV1_APPROVAL"
+      ],
+      "target_key": "SCOPE_APPROVAL_CONDITIONAL"
+    },
+    {
+      "effect_id": "EFF_K2_2",
+      "effect_kind": "TENSION_FORMED",
+      "owner": "CAN011",
+      "owner_state_after_hash": "1e7130460b7d9eeee9632b35802cf1aa87dbd8b41729fe9013d97af1b560f64d",
+      "owner_state_before_hash": "847d4cca3a10ecbc19bc4ce0d3961fa0e09fd6bce0c5e77c4399cd408aa2cf11",
+      "parent_event_refs": [
+        "EV2_CRITICISM"
+      ],
+      "target_key": "APPROVAL_CRITICISM_TENSION"
+    }
+  ],
+  "full_replay_digest": "83d7d483d684b6039a8f0926dc41b8f33307aa7d4490f491a7ecc8cd8d8216f5",
+  "invalid_and_hold_codes": [],
+  "lab_extension": {
+    "candidate_routes": [
+      {
+        "cost_rank": 1,
+        "gate_code": null,
+        "goal_match": [
+          "SCOPE_APPROVAL_CONDITIONAL"
+        ],
+        "permitted": true,
+        "route_id": "REQUEST_WITH_REPAIR",
+        "support": [
+          {
+            "parent_event_refs": [
+              "EV2_CRITICISM"
+            ],
+            "support_key": "APPROVAL_CRITICISM_TENSION",
+            "support_kind": "tension"
+          },
+          {
+            "parent_event_refs": [
+              "EV_RELFORM_A"
+            ],
+            "support_key": "COMPENSATES_FOR",
+            "support_kind": "relation_view"
+          }
+        ],
+        "support_count": 2
+      },
+      {
+        "cost_rank": 1,
+        "gate_code": null,
+        "goal_match": [],
+        "permitted": true,
+        "route_id": "REQUEST_WITH_CONDITIONAL_CAUTION",
+        "support": [
+          {
+            "parent_event_refs": [
+              "EV2_CRITICISM"
+            ],
+            "support_key": "APPROVAL_CRITICISM_TENSION",
+            "support_kind": "tension"
+          }
+        ],
+        "support_count": 1
+      },
+      {
+        "cost_rank": 0,
+        "gate_code": null,
+        "goal_match": [],
+        "permitted": true,
+        "route_id": "WITHDRAW_REQUEST",
+        "support": [
+          {
+            "parent_event_refs": [
+              "EV1_APPROVAL"
+            ],
+            "support_key": "SCOPE_APPROVAL_CONDITIONAL",
+            "support_kind": "expectation"
+          }
+        ],
+        "support_count": 1
+      }
+    ],
+    "causal_parent_refs": [
+      "EV1_APPROVAL",
+      "EV2_CRITICISM",
+      "EV_RELFORM_A"
+    ],
+    "cold_replay": {
+      "digest_first": "83d7d483d684b6039a8f0926dc41b8f33307aa7d4490f491a7ecc8cd8d8216f5",
+      "digest_second": "83d7d483d684b6039a8f0926dc41b8f33307aa7d4490f491a7ecc8cd8d8216f5",
+      "identical": true,
+      "state_hash_first": "1e7130460b7d9eeee9632b35802cf1aa87dbd8b41729fe9013d97af1b560f64d",
+      "state_hash_second": "1e7130460b7d9eeee9632b35802cf1aa87dbd8b41729fe9013d97af1b560f64d"
+    },
+    "evaluator_metadata": {
+      "event_local_conation": {
+        "direction_from_strivings": [
+          "SCOPE_APPROVAL_CONDITIONAL"
+        ],
+        "event_id": "EV3_REQUEST",
+        "persistence": "EVENT_LOCAL_ONLY__NOT_PERSISTED__NOT_EFFECT_PARENT",
+        "pressure_conflict": {
+          "APPROVAL_CRITICISM_TENSION": {
+            "poles": [
+              "APPROVAL",
+              "CRITICISM"
+            ],
+            "status": "UNRESOLVED"
+          }
+        },
+        "route_configuration": [
+          {
+            "cost_label": "LOW_TIME",
+            "cost_rank": 1,
+            "desired_end_match": [
+              "SCOPE_APPROVAL_CONDITIONAL"
+            ],
+            "route_id": "REQUEST_WITH_REPAIR"
+          },
+          {
+            "cost_label": "LOW_TIME",
+            "cost_rank": 1,
+            "desired_end_match": [],
+            "route_id": "REQUEST_WITH_CONDITIONAL_CAUTION"
+          },
+          {
+            "cost_label": "NONE",
+            "cost_rank": 0,
+            "desired_end_match": [],
+            "route_id": "WITHDRAW_REQUEST"
+          }
+        ],
+        "witness_stakes": null
+      },
+      "full_causal_parent_refs": [
+        "EV1_APPROVAL",
+        "EV2_CRITICISM",
+        "EV_RELFORM_A"
+      ],
+      "hidden_causal_origin": null,
+      "history_event_ids": [
+        "EV1_APPROVAL",
+        "EV2_CRITICISM",
+        "EV_RELFORM_A"
+      ],
+      "recruitment_refs": [
+        {
+          "match_kind": "expectation",
+          "matched_key": "SCOPE_APPROVAL_CONDITIONAL",
+          "parent_event_refs": [
+            "EV1_APPROVAL"
+          ],
+          "stream": "CAN010"
+        },
+        {
+          "match_kind": "tension",
+          "matched_key": "APPROVAL_CRITICISM_TENSION",
+          "parent_event_refs": [
+            "EV2_CRITICISM"
+          ],
+          "stream": "CAN011"
+        }
+      ],
+      "relation_view": {
+        "edge_id": "EDGE_COMPENSATES_FOR",
+        "formation_event": "EV_RELFORM_A",
+        "formed_by": "EV_RELFORM_A",
+        "from": "EV1_APPROVAL",
+        "scope": "REL_SUP_APP",
+        "to": "EV2_CRITICISM",
+        "type": "COMPENSATES_FOR",
+        "view_source": "C_TYPED_RELATION_INDEX"
+      },
+      "schema": "LAB_EVALUATOR_METADATA@1",
+      "trace_records": []
+    },
+    "event_local_conation": {
+      "direction_from_strivings": [
+        "SCOPE_APPROVAL_CONDITIONAL"
+      ],
+      "event_id": "EV3_REQUEST",
+      "persistence": "EVENT_LOCAL_ONLY__NOT_PERSISTED__NOT_EFFECT_PARENT",
+      "pressure_conflict": {
+        "APPROVAL_CRITICISM_TENSION": {
+          "poles": [
+            "APPROVAL",
+            "CRITICISM"
+          ],
+          "status": "UNRESOLVED"
+        }
+      },
+      "route_configuration": [
+        {
+          "cost_label": "LOW_TIME",
+          "cost_rank": 1,
+          "desired_end_match": [
+            "SCOPE_APPROVAL_CONDITIONAL"
+          ],
+          "route_id": "REQUEST_WITH_REPAIR"
+        },
+        {
+          "cost_label": "LOW_TIME",
+          "cost_rank": 1,
+          "desired_end_match": [],
+          "route_id": "REQUEST_WITH_CONDITIONAL_CAUTION"
+        },
+        {
+          "cost_label": "NONE",
+          "cost_rank": 0,
+          "desired_end_match": [],
+          "route_id": "WITHDRAW_REQUEST"
+        }
+      ],
+      "witness_stakes": null
+    },
+    "history_effect_receipts": [
+      {
+        "effect_id": "EFF_K2_1",
+        "effect_kind": "EXPECTATION_FORMED",
+        "owner": "CAN010",
+        "owner_state_after_hash": "847d4cca3a10ecbc19bc4ce0d3961fa0e09fd6bce0c5e77c4399cd408aa2cf11",
+        "owner_state_before_hash": "de5611a821625aaf10f6788301964d9c1c04ed4113e6574d790cf33d6d9055c0",
+        "parent_event_refs": [
+          "EV1_APPROVAL"
+        ],
+        "target_key": "SCOPE_APPROVAL_CONDITIONAL"
+      },
+      {
+        "effect_id": "EFF_K2_2",
+        "effect_kind": "TENSION_FORMED",
+        "owner": "CAN011",
+        "owner_state_after_hash": "1e7130460b7d9eeee9632b35802cf1aa87dbd8b41729fe9013d97af1b560f64d",
+        "owner_state_before_hash": "847d4cca3a10ecbc19bc4ce0d3961fa0e09fd6bce0c5e77c4399cd408aa2cf11",
+        "parent_event_refs": [
+          "EV2_CRITICISM"
+        ],
+        "target_key": "APPROVAL_CRITICISM_TENSION"
+      }
+    ],
+    "position_receipt": "POS_SYNTH_01",
+    "present_effect_receipts": [],
+    "present_event_id": "EV3_REQUEST",
+    "public_standing": "UNCERTIFIED",
+    "relation_index_cost": {
+      "edge_lookups": 1,
+      "events_scanned": 0,
+      "mode": "C_TYPED_RELATION_INDEX"
+    },
+    "relation_view": {
+      "edge_id": "EDGE_COMPENSATES_FOR",
+      "formation_event": "EV_RELFORM_A",
+      "formed_by": "EV_RELFORM_A",
+      "from": "EV1_APPROVAL",
+      "scope": "REL_SUP_APP",
+      "to": "EV2_CRITICISM",
+      "type": "COMPENSATES_FOR",
+      "view_source": "C_TYPED_RELATION_INDEX"
+    },
+    "sanction_capacity": "cannot fire supervisor; can decline optional shift",
+    "selected_not_mandatory": false,
+    "selected_route": "REQUEST_WITH_REPAIR",
+    "trace_records": []
+  },
+  "latency_ms": 1,
+  "memory_access_and_trace_refs": [],
+  "model_call_count": 0,
+  "model_version": "MODEL_BEHAVIORAL_COMPARISON_HOLD__NO_PINNED_MODEL_SURFACE",
+  "objective_public_standing_effects": [],
+  "owner_state_after_hash": "1e7130460b7d9eeee9632b35802cf1aa87dbd8b41729fe9013d97af1b560f64d",
+  "owner_state_before_hash": "1e7130460b7d9eeee9632b35802cf1aa87dbd8b41729fe9013d97af1b560f64d",
+  "present_action_and_material_effects": [],
+  "proposed_effects": [],
+  "prose_optional": "MACHINE_FIRST__NO_PROSE_SCORED",
+  "read_evidence_ref_list": [
+    "EV1_APPROVAL",
+    "EV2_CRITICISM",
+    "EV3_REQUEST",
+    "EV_RELFORM_A",
+    "W_PORT_TOWN_1998_TEST"
+  ],
+  "receivability_refs": [
+    {
+      "feature": "act",
+      "ref": "RECV:EV3_REQUEST:act",
+      "value": "SHIFT_REQUEST"
+    },
+    {
+      "feature": "content",
+      "ref": "RECV:EV3_REQUEST:content",
+      "value": "REQUEST_EXTRA_SHIFT"
+    }
+  ],
+  "recruitment_refs": [
+    {
+      "match_kind": "expectation",
+      "matched_key": "SCOPE_APPROVAL_CONDITIONAL",
+      "parent_event_refs": [
+        "EV1_APPROVAL"
+      ],
+      "stream": "CAN010"
+    },
+    {
+      "match_kind": "tension",
+      "matched_key": "APPROVAL_CRITICISM_TENSION",
+      "parent_event_refs": [
+        "EV2_CRITICISM"
+      ],
+      "stream": "CAN011"
+    }
+  ],
+  "retrieval_token_count": 560,
+  "seed": "S02",
+  "transition_rule_ids": [
+    "T0_WORLD_CONTEXT_GATE",
+    "T1_RECEIVABILITY",
+    "T2_SITUATED_RECRUITMENT",
+    "T3_EVENT_LOCAL_CONATION",
+    "T5_CORRECTIVE_REINTERPRETATION",
+    "T6_NONDECLARATIVE_TRACE",
+    "T8_TYPED_TOPOLOGY_OPTION"
+  ],
+  "uptake_refs": [
+    {
+      "receivable": {
+        "act": "SHIFT_REQUEST",
+        "content": "REQUEST_EXTRA_SHIFT"
+      },
+      "ref": "UPTAKE:EV3_REQUEST"
+    }
+  ],
+  "world_receipt_hash": "39369d7e6e66cb5280fb07a98adec215839e0c48dbee810a06109a30cafee37d"
+}
