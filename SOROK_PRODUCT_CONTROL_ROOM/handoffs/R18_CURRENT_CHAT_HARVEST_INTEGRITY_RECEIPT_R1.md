@@ -337,6 +337,8 @@ This is an honest currentness boundary, not missing harvest content.
 
 `HQ298_LIVE_WORKER_DELTA = BANKED`
 
+`NEW_CHAT_TAKEOVER_PROMPT = handoffs/R19_NEW_CHAT_FULL_HQ_TAKEOVER_PROMPT_20261014_R1.md`
+
 `NEXT_CHAT_CAN_RECOVER_WITHOUT_CURRENT_CONVERSATION = YES`
 
 Terminal:
