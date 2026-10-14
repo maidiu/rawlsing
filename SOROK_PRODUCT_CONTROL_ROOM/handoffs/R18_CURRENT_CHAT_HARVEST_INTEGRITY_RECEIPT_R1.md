@@ -224,18 +224,33 @@ Preserves:
 - Astra/Omega escalation triggers;
 - invalid-prompt reissue law.
 
-## N. Next-action candidates
+## N. 00D and current HQ298 dispatch state
 
 PASS.
 
-Banked as NOT YET DISPATCHED / verify-before-issue:
-- P-E3 / N9 positive selected-world court;
-- S-M-LAB2 behavioral/model replication;
-- S-GI2 independent genealogy adoption/replication.
+Banked:
+- mandatory `00D_WARM_ENVIRONMENT_PASSPORT_AND_COST_AWARE_AGENT_DISPENSATION_R1.md`;
+- warm-environment passport law;
+- ranked environment verdict law;
+- cost-aware Browser/local routing;
+- six observed HQ298 worker branches;
+- distinction between commission-published, partial-return and terminal-return states.
 
-00C requires live-status reconciliation before prompt issuance.
+The handoff explicitly prevents duplicate relaunch of S-M-LAB2 / S-GI2 and other HQ298 lanes without live reconciliation.
 
-## O. Superseded formulations
+## O. Next-action candidates
+
+PASS.
+
+Banked as verify-before-issue/continue:
+- Pyat P-E3 / N9 positive selected-world work;
+- existing HQ298 S-M-LAB2 behavioral/model replication;
+- existing HQ298 S-GI2 genealogy generalization;
+- existing SC0 / SG / S-M owner-effect / SR lanes.
+
+00C + 00D require live-status/environment reconciliation before prompt issuance.
+
+## P. Superseded formulations
 
 PASS.
 
@@ -317,6 +332,10 @@ This is an honest currentness boundary, not missing harvest content.
 `ASTRA_RECOVERY_AND_SHADOW_INDEPENDENCE = BANKED`
 
 `PROMPT_DISPENSATION_ORCHESTRATION = MANDATORY_AND_WIRED`
+
+`WARM_ENVIRONMENT_00D = MANDATORY_AND_BANKED`
+
+`HQ298_LIVE_WORKER_DELTA = BANKED`
 
 `NEXT_CHAT_CAN_RECOVER_WITHOUT_CURRENT_CONVERSATION = YES`
 
