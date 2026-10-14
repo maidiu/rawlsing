@@ -1,0 +1,28 @@
+{
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_R1",
+  "epoch_id": "NEW_HQ299_RG11_AUTHORITY_REVIEW",
+  "surface": "BROWSER_CONTAINER",
+  "python": "3.13.5 VERIFIED",
+  "pytest": "9.0.2 VERIFIED",
+  "git": "2.47.3 VERIFIED",
+  "node": "22.16.0 VERIFIED",
+  "filesystem": "VERIFIED",
+  "local_checkout": null,
+  "imported_owner_modules": 0,
+  "observed_cash": null,
+  "quota": null,
+  "model_api_calls": 0,
+  "actor_calls": 0,
+  "original_source_reads": 0,
+  "covered": [
+    "python -m pytest -q test_independent_authority_controls.py --junitxml=reviewer_rg11_junit.xml"
+  ],
+  "result": "9 passed, 0 failed, 0.04 seconds",
+  "grade": "SOURCEFREE_STANDALONE_MATH_AND_DOCUMENTARY_ADP_REVIEW",
+  "next_affinity": [
+    "GENEALOGY",
+    "ADP015",
+    "ADP020"
+  ],
+  "continuity": "RECHECK_REQUIRED"
+}
