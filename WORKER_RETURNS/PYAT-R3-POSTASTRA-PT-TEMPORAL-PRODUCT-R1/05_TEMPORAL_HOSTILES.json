@@ -149,5 +149,16 @@
   },
   "model": "GPT-6 High requested; actual provider effort setting independently unverifiable",
   "sealed_startup": "cfbda903900ac4146b7aa639ab63e3ad3d28a79a",
-  "branch": "agent/rabochii-pyat-r3-postastra-pt-temporal-native-positive-r1"
+  "branch": "agent/rabochii-pyat-r3-postastra-pt-temporal-native-positive-r1",
+  "additional_sourcefree_fixture": {
+    "path": "repro/pt_two_anchor_n9_fixture.mjs",
+    "executed_in": "functions.exec V8 (not Node)",
+    "executed": 18,
+    "passed": 18,
+    "failed": 0,
+    "grade": "SYNTHETIC_VALUES_READ_CONTRACT_ONLY",
+    "real_source_reads": 0,
+    "real_n9_receipts": 0
+  },
+  "total_executed_static_and_fixture": 39
 }
