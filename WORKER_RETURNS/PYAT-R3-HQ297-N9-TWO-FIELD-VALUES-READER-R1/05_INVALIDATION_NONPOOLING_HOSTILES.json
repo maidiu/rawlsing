@@ -1,0 +1,72 @@
+{
+  "schema": "HQ297_N9C_NONPOOLING_INVALIDATION_HOSTILES@1.0.0",
+  "grade": "ACTUAL_PYTHON_PYTEST_SOURCEFREE_FIXTURE_ONLY",
+  "positive": {
+    "cases": 47,
+    "pass": 47,
+    "fail": 0
+  },
+  "cases": [
+    {
+      "category": "POSITIVE_VALUES_READ",
+      "assertions": [
+        "GSS numer/denom/rounded percent actually dereferenced",
+        "NCA subscription count and prepaid/postpaid actually dereferenced",
+        "two distinct native source family refs and units in successful values_read",
+        "request contains no caller-controlled numeric values"
+      ]
+    },
+    {
+      "category": "HISTORICAL_CLOCKS",
+      "assertions": [
+        "2021 prior to both 2022 publications refuses",
+        "2022-03 only GSS possible as explicitly nonpositive partial",
+        "NCA 2022-07-07 refused",
+        "after NCA 2022-07-08 historical two values",
+        "2023 historical replay stable",
+        "backdated source publication refused",
+        "observation epoch substitution refused",
+        "CURRENT or operative mode refused"
+      ]
+    },
+    {
+      "category": "MUTATION_INVALIDATION",
+      "assertions": [
+        "GSS revision changes GSS ref and snapshot only, not NCA record",
+        "NCA revision changes NCA ref and snapshot only, not GSS record",
+        "old ref after revision cannot dereference",
+        "revocation fail-closed",
+        "partially revoked stays nonpositive",
+        "readset includes both attempted refs even if one denied",
+        "unchanged cold repeat identical"
+      ]
+    },
+    {
+      "category": "UNIT_AND_ORIGINALITY",
+      "assertions": [
+        "mains electricity not main electric lighting all subtypes",
+        "GSS numerator/denominator and subtype sum conserved",
+        "exclusions required",
+        "NCA count split conserved",
+        "NCA unit is subscriptions not unique persons",
+        "NCA national not invented rural",
+        "independent original source families required",
+        "no duplicate role/ref",
+        "no fake PDF source SHA or issuer",
+        "no real source/use permission",
+        "no EE13 claim from test-only relation",
+        "no actual person exposure",
+        "no population pooling",
+        "no model/actor-use grant"
+      ]
+    }
+  ],
+  "limits": {
+    "import_of_actual_owner_modules": "NOT_EXECUTED",
+    "actual_OC05_consumer": "NOT_EXECUTED",
+    "real_EE13_N7": "NOT_EXECUTED",
+    "original_publisher_pdf_hash": "UNKNOWN",
+    "true_B5_or_D05_invalidation": "NOT_EXECUTED",
+    "independent_review": "NOT_EXECUTED"
+  }
+}

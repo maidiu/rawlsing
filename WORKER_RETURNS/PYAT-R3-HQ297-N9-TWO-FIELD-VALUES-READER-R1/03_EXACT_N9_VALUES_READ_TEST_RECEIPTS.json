@@ -1,0 +1,99 @@
+{
+  "schema": "PYAT_R3_HQ297_N9C_ACTUAL_ISOLATED_PYTHON_VALUES_READ@1",
+  "runtime": "Python 3.13.5, pytest 9.0.2",
+  "executed": true,
+  "commands": [
+    "python -m py_compile rawlsing_next/pre553_hq297_n9c_two_field_reader.py",
+    "python -m compileall -q rawlsing_next/pre553_hq297_n9c_two_field_reader.py",
+    "python -m pytest tests/test_hq297_n9c_two_field_reader.py -q --junitxml=WORKER_RETURNS/PYAT-R3-HQ297-N9-TWO-FIELD-VALUES-READER-R1/repro/pytest_junit.xml"
+  ],
+  "test_count": 47,
+  "passed": 47,
+  "failed": 0,
+  "skipped": 0,
+  "warnings": 0,
+  "elapsed_reported_seconds": 0.07,
+  "actual_tested_module_blob": "03eb46efccadd6880cb34b2e2ac609ffc9b16c59",
+  "actual_tested_tests_blob": "e4fc9dd0317541e714ed8d0750c6dec12145daea",
+  "actual_tested_fixture_blob": "1a1bec6e2fc5a89e2ea1b589832801a43933a632",
+  "independent_reviewer": false,
+  "repo_worktree_integrated_run": false,
+  "sourcefree_reader": true,
+  "real_OC05": false,
+  "actual_issued_fields": false,
+  "EE13_issued": false,
+  "cases": [
+    {
+      "asof": "2021-12-31",
+      "partial_allowed": true,
+      "state": "REFUSED_REQUIRED_FIELD_TEST_ONLY",
+      "actual_values_read": [],
+      "refusal_reasons": [
+        "GSS:NOT_PUBLISHED_AT_SELECTED_ASOF",
+        "NCA:NOT_PUBLISHED_AT_SELECTED_ASOF"
+      ]
+    },
+    {
+      "asof": "2022-03-01",
+      "partial_allowed": true,
+      "state": "PARTIAL_TEST_ONLY_NOT_POSITIVE",
+      "actual_values_read": [
+        {
+          "role": "GSS_RURAL_LIGHTING",
+          "numerator": 2388192,
+          "denominator": 3288063,
+          "published_percent": 72.6
+        }
+      ],
+      "refusal_reasons": [
+        "NCA:NOT_PUBLISHED_AT_SELECTED_ASOF"
+      ]
+    },
+    {
+      "asof": "2022-07-08",
+      "partial_allowed": true,
+      "state": "TWO_VALUES_READ_TEST_ONLY",
+      "actual_values_read": [
+        {
+          "role": "GSS_RURAL_LIGHTING",
+          "numerator": 2388192,
+          "denominator": 3288063,
+          "published_percent": 72.6
+        },
+        {
+          "role": "NCA_NATIONAL_MOBILE_DATA",
+          "active_subscriptions": 23414527,
+          "prepaid": 23237338,
+          "postpaid": 177189
+        }
+      ],
+      "refusal_reasons": []
+    },
+    {
+      "asof": "2023-01-01",
+      "partial_allowed": true,
+      "state": "TWO_VALUES_READ_TEST_ONLY",
+      "actual_values_read_count": 2
+    }
+  ],
+  "deterministic_replay": true,
+  "mutation_receipts": [
+    {
+      "kind": "GSS_NUMERATOR_AND_MAIN_ELECTRIC_SUBTYPE_MINUS_ONE",
+      "result": "GSS_TEST_FIELD_REF_CHANGED__TEST_SNAPSHOT_CHANGED__NCA_FULL_RECORD_EQUIVALENT",
+      "rechecked_pct_rounding": 72.6,
+      "not_B5_invalidation": true
+    },
+    {
+      "kind": "NCA_ACTIVE_AND_PREPAID_PLUS_ONE",
+      "result": "NCA_TEST_FIELD_REF_CHANGED__TEST_SNAPSHOT_CHANGED__GSS_FULL_RECORD_EQUIVALENT",
+      "not_B5_invalidation": true
+    },
+    {
+      "kind": "MISSING_REVOKED_OR_UNPUBLISHED",
+      "result": "NEGATIVE_OR_EXPLICIT_NONPOSITIVE_PARTIAL__TWO_ATTEMPTED_REFS_RETAINED_IN_DEPENDENCY_READSET"
+    }
+  ],
+  "fixture_hashes_not_source_custody": true,
+  "claims": "F3-equivalent technical demonstration at isolated TEST_ONLY Python grain only; no installed OC05"
+}
