@@ -1,0 +1,57 @@
+{
+  "schema": "HQ297_K9E_PE_EXECUTION_RECEIPTS_R1",
+  "root_commit": "92524b8615f281b8a32a57e8bb8c2d05c978c619",
+  "PE_commit": "b497f85713847cecc169d4d71c7629655d562dc0",
+  "suites": [
+    {
+      "suite": "frozen_independent",
+      "expected_cases": 13,
+      "qualified_cases_executed": 0,
+      "pass": 0,
+      "fail": 0,
+      "skipped": 0,
+      "status": "NOT_REACHED_IMPORT_TREE_ABSENT",
+      "attempted_command": "python -m pytest -q --junitxml=missing_pe_13.junit.xml rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py",
+      "actual_exit_code": 4,
+      "actual_log": "ERROR: file or directory not found: rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py\\n\\nno tests ran in 0.00s",
+      "semantic_red_assertions_executed": 0
+    },
+    {
+      "suite": "PE_author",
+      "expected_cases": 21,
+      "qualified_cases_executed": 0,
+      "pass": 0,
+      "fail": 0,
+      "skipped": 0,
+      "status": "NOT_INVOKED_DEPENDENCY_CLOSURE_ABSENT",
+      "path": "rawlsing_next/tests/test_postastra_pe_generic_world_possibility.py"
+    },
+    {
+      "suite": "N10E_regressions",
+      "expected_cases": 43,
+      "qualified_cases_executed": 0,
+      "pass": 0,
+      "fail": 0,
+      "skipped": 0,
+      "status": "NOT_INVOKED_DEPENDENCY_CLOSURE_ABSENT",
+      "path": "rawlsing_next/tests/test_pre553_empirical_possibility_provider.py"
+    }
+  ],
+  "independent_fixture_execution": {
+    "status": "EXECUTED_FIXTURE_ONLY",
+    "command": "python -m pytest -q --junitxml=k9e_port_repro.junit.xml test_hq297_k9e_port_repro.py",
+    "exit_code": 0,
+    "tests_collected": 36,
+    "pass": 36,
+    "fail": 0,
+    "errors": 0,
+    "skipped": 0,
+    "raw_log": "repro/pytest_port_repro.log",
+    "junit": "repro/k9e_port_repro.junit.xml",
+    "source_file": "rawlsing_next/tests/test_hq297_k9e_port_repro.py",
+    "source_git_blob": "08cdfc7574c971f09fadf5b7516120bc47b9ca25",
+    "log_sha256": "a58ff3cb024f7b7c230993d172f6cc839404a25fd8080eb7460523ff087cfc56",
+    "junit_sha256": "922795eccb97e3c71d7466b4df777b2fa1f39de5c13190bff04b85c9e7f61b45"
+  },
+  "prohibition": "Never sum fixture passes with pinned PE, frozen SC0 K9/K10, N9 or N10E results."
+}
