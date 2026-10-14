@@ -1,0 +1,471 @@
+{
+  "schema": "PYAT_R3_HQ295_U04_E_PRE_CUSTODY_HOSTILES_VERSION1@1",
+  "status": "ALL_PROSPECTIVE_SOURCEFREE_TEST_VECTORS__NO_ORIGINAL_SIGNATURES__NO_EXECUTED_SURVEY",
+  "parent_A03U_blob": "0d92b08fb8b78171c50fad08c1e8ade290331c35",
+  "parent_A03U_status": "PRE_RESULT_DOCUMENTARY_ORACLE_PROPOSED_NOT_SIGNED_NOT_EXECUTED",
+  "number_inherited": 29,
+  "number_added": 17,
+  "total": 46,
+  "strict_falsification_principle": "Even if a local D/E/output count/hash comparison is green, any unauthenticated original U, missing J/B, self-signed or result-derived preimage, missing independent chronology, false NA, or unverified delegation fails issuance.",
+  "cases": [
+    {
+      "id": "P01",
+      "kind": "QUALIFIED_POSITIVE_PRE_D",
+      "input": "Two independently issued complete original U refs Q86A,Q86B for every actually fielded form, accepted RAW GT2 operation, and independently sealed E_pre committed before D and result",
+      "expected": "RUNNABLE_GT2_EXPECTED_AND_D_BINDING_ALLOWED_ONLY_IF_ALL_O1_O6_GRANTED",
+      "notes": "no issuer currently; prospective only",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "P02",
+      "kind": "SOURCE_NATIVE_J_ONLY",
+      "input": "A scientifically eligible B→A pair appears in U×operation closure although B has no base unary producer row",
+      "expected": "E_PRE_CONTAINS_J_ONLY_AND_D_HAS_EXACT_MAPPED_PAIR",
+      "notes": "unary prerequisite cannot prune J-only",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "P03",
+      "kind": "SIGNED_HELD_PRESERVED",
+      "input": "GT1 unary has no current P01 FF consumer; original U and operation still exist",
+      "expected": "E_PRE_HELD_OTHER_CONSUMER_GT1_PRESERVED",
+      "notes": "must not mark N/A or remove",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "H01",
+      "kind": "MISSING_ORIGINAL_B",
+      "input": "Issuer supplied U includes both Q86A and Q86B, candidate D includes only Q86A unary",
+      "expected": "ORIGINAL_U_TO_E_MISSING_B_FAIL",
+      "notes": "no downstream GREEN from incomplete D",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "H02",
+      "kind": "MISSING_COUNTRY_FORM",
+      "input": "Any one of BFO,BOT,CVE,KEN,LES,MAU,MLW,MOZ,NAM,SAF,UGA missing original national form/language or unresolved ballot, but claims eleven-country U closure",
+      "expected": "HELD_FORM_COMPLETENESS_AND_NO_EXTERNAL_ISSUER",
+      "notes": "do not treat missing documentary witness as proved NA",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "H03",
+      "kind": "REKEY_DIFFERENT_FORM_SAME_SLOT",
+      "input": "Two different administered original form/language occurrences collide into same V2 source-wave-item-form-slot key or omitted respondent binding",
+      "expected": "LOSSLESS_BINDER_FAIL",
+      "notes": "must prove injectivity or repair under separate owner",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "H04",
+      "kind": "MIXED_PERSON_OR_HOUSEHOLD",
+      "input": "One Q86 response from selected person and another from proxy/household or distinct row key",
+      "expected": "SAME_RESPONDENT_RELATION_HOLD",
+      "notes": "no artificial cotravel",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "H05",
+      "kind": "NOT_ASKED_AS_NO",
+      "input": "997,998,9,-1 converted to substantive 0 or included in conditional 0/1 risk",
+      "expected": "SOURCE_NATIVE_CODING_REFUSAL",
+      "notes": "native category remains typed",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "H06",
+      "kind": "INCOMPLETE_19210_DENOMINATOR",
+      "input": "Treat frozen 19,210 common coexposure as count of substantive Q86A,Q86B 0/1 complete cases or condition Q86B=b without separate risk membership",
+      "expected": "RISK_DENOMINATOR_IDENTITY_REFUSAL",
+      "notes": "19210 not conditional or weighted",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "H07",
+      "kind": "SIGNED_OP_AFTER_RESULT",
+      "input": "O3 operation roster or O4 E_pre constructed after D/results, or no trusted monotonic precommit chronology",
+      "expected": "PRE_RESULT_CUSTODY_FAIL",
+      "notes": "metadata timestamp in same mutable JSON insufficient",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "H08",
+      "kind": "SELF_SIGNED_E",
+      "input": "P01 executor, author or HQ writes a self-styled external seal; custodian equals author or manifest generator",
+      "expected": "INDEPENDENT_CUSTODIAN_FAIL",
+      "notes": "distinct authentic principal and protected preimage required",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "H09",
+      "kind": "SELF_HASH_OR_COPY",
+      "input": "E expected keys/digest recomputed from D or runtime results and then self-labeled EXTERNAL_FROZEN",
+      "expected": "EXTERNAL_EXPECTATION_ORIGIN_FAIL",
+      "notes": "digest equality alone not source/original-science issuance",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "H10",
+      "kind": "EXTRA_UNAUTHORIZED_OP",
+      "input": "D includes reverse Q86A→Q86B without separately issued O3 direction, or weighted estimand without design warrant",
+      "expected": "E_TO_D_EXTRA_UNAUTHORIZED_FAIL",
+      "notes": "no invented operation",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "H11",
+      "kind": "OMITTED_GT1_FROM_E",
+      "input": "To get one P01 FF runnable, remove authorized GT1 unary from overall expected closure",
+      "expected": "ORIGINAL_ELIGIBLE_E_OMISSION_FAIL",
+      "notes": "consumer mismatch must be held typed",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "H12",
+      "kind": "J_ONLY_BASE_INTERSECTION",
+      "input": "Compiler uses old V550 INNER JOIN with known mapped base questions and drops an eligible original J-only op",
+      "expected": "U_OPERATION_TO_E_MULTISET_MISSING_FAIL",
+      "notes": "no expected count inferred from map coverage",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "H13",
+      "kind": "REVERSE_DIRECTION",
+      "input": "P01 reads GT2 Q86A as conditioner and Q86B as target despite original GT2 directed bound",
+      "expected": "OPERATION_ROLE_ORDER_MISMATCH",
+      "notes": "state/source directionality",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "H14",
+      "kind": "SOURCE_CODEBOOK_AS_FORM",
+      "input": "Merged R5 published Q86 codes presented as proof all translations/eleven original editions were fielded",
+      "expected": "SOURCE_ADMINISTERED_U_HOLD",
+      "notes": "merge codebook not complete original-U",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "H15",
+      "kind": "WEIGHTED_PROMOTION",
+      "input": "Use WITHINWT/COMBINWT or TIR national margin of error to claim nationally representative GT2 conditioned weighted estimator without O2+O3 design/estimand",
+      "expected": "DESIGN_ESTIMAND_ISSUER_HOLD",
+      "notes": "RAW only",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "H16",
+      "kind": "EXTERNAL_PUBLIC_USE_SUBSTITUTION",
+      "input": "Public Afrobarometer dataset statement substitutes for user's current host/data-use approval or Rawlsing operation scientific issuer",
+      "expected": "SOURCE_USE_AND_HOST_EXECUTION_HOLD",
+      "notes": "public access rights != specific worker permission",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "H17",
+      "kind": "DURABLE_RESULT_WITHOUT_E",
+      "input": "B01E COMPLETED receipt / consumer profile exists but external frozen E_pre unavailable or points to different source",
+      "expected": "POSTHOC_COMPLETION_CANNOT_AUTHENTICATE_E",
+      "notes": "result ≠ pre-result oracle",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "H18",
+      "kind": "DUPLICATE_OR_COLLISION",
+      "input": "Different country/form/respondent/operation keys map to one BatchUnitSpec or one expected key; counts of D and E still equal",
+      "expected": "MULTISET_KEY_COLLISION_FAIL",
+      "notes": "identity and multiplicity both required",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "H19",
+      "kind": "SOURCE_INTRINSIC_NA_FROM_MISSING_PDF",
+      "input": "Absent country PDF / deleted physical column labeled source-intrinsic not-applicable",
+      "expected": "UNSIGNED_NA_REJECT",
+      "notes": "NA only signed native original observation",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "H20",
+      "kind": "PARTIAL_DISCOVERY_NOT_COMPLETE",
+      "input": "I05 adaptive frontier stops before eligible registered possibility under budget, but calls original E complete",
+      "expected": "UNVISITED_DISCOVERY_REMAINS_OPEN",
+      "notes": "do not shrink denominator",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "H21",
+      "kind": "REAL_CONSUMER_NOT_EXECUTED",
+      "input": "Synthetic P01 FF test or historical GT12 frozen fact used as fake fresh integrated real P01 output",
+      "expected": "REAL_CONSUMER_NOT_EXECUTED",
+      "notes": "one real I03 fact + FF receipt needed",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "H22",
+      "kind": "SOURCEFREE_OPINION_LAW_CONFUSION",
+      "input": "Q86A/B normative citizenship opinion relabeled actual country citizenship law/structural state",
+      "expected": "SEMANTIC_TARGET_USE_DENIED",
+      "notes": "no objective law inference",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "H23",
+      "kind": "FALSE_FULL_ESTATE",
+      "input": "One source GT2 positive or 35 row names claims 35-wave 1890-cell original E closure or 151→101 task fulfillment",
+      "expected": "ALL35_NO_DROP_HOLD",
+      "notes": "positive canary not global completion",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "H24",
+      "kind": "CUSTODIAN_REWRITES_POST_SEAL",
+      "input": "Change signed E_pre keys/roles/expected multiset after D without append-only successor identity and independent time proof",
+      "expected": "IMMUTABLE_PRE_RESULT_SEAL_VIOLATION",
+      "notes": "cannot rewrite original prospective workload",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "P04",
+      "kind": "REAL_POSITIVE_CONSUMER_WHEN_PERMITTED",
+      "input": "If and only if O1-O6 signed, permit canonical RAW GT2 single ordered Q86B conditioner→Q86A target and run exact P01 owner with saved I03 fact",
+      "expected": "NONNEGATIVE_OBSERVED_COUNT_PROFILE_AND_DURABLE_CONSUMER_REPLAY",
+      "notes": "result may be zero/VALID_EMPTY; none claimed now",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "P05",
+      "kind": "EXACT_SOURCE_NA_CERTIFIED",
+      "input": "Original fielded form and routing witness, independent competent signed proof not asked/not relevant in explicit scope",
+      "expected": "ISSUED_SOURCE_INTRINSIC_NA_WITH_WARRANT_ONLY",
+      "notes": "not granted in A03U",
+      "result": "NOT_EXECUTED",
+      "source": "A03U_INHERITED_UNEXECUTED",
+      "runtime_executed": false
+    },
+    {
+      "id": "U04-H30",
+      "kind": "CORRUPT_DELEGATION_VALID_SIG",
+      "input": "signature cryptographically verifies for unrelated issuer lacking appointed O4 delegation",
+      "expected": "DELEGATION_ISSUER_SCOPE_REFUSAL",
+      "result": "NOT_EXECUTED",
+      "source": "U04_NEW_INDEPENDENT_ORACLE",
+      "runtime_executed": false
+    },
+    {
+      "id": "U04-H31",
+      "kind": "UNTRUSTED_NEW_KEY_IN_ENVELOPE",
+      "input": "writer supplies previously unknown public key in its own E envelope and signs digest",
+      "expected": "TRUST_ROOT_NOT_REGISTERED_BEFORE_SEAL",
+      "result": "NOT_EXECUTED",
+      "source": "U04_NEW_INDEPENDENT_ORACLE",
+      "runtime_executed": false
+    },
+    {
+      "id": "U04-H32",
+      "kind": "POSTD_TIME_BACKFILL",
+      "input": "mutable created_at text predates result but independent ledger inclusion occurs after D",
+      "expected": "PRE_RESULT_INDEPENDENT_SEQUENCE_REFUSAL",
+      "result": "NOT_EXECUTED",
+      "source": "U04_NEW_INDEPENDENT_ORACLE",
+      "runtime_executed": false
+    },
+    {
+      "id": "U04-H33",
+      "kind": "REVOKED_CUSTODIAN",
+      "input": "valid original signature under key revoked before seal/effective scope",
+      "expected": "CUSTODIAN_REVOCATION_AT_SEAL_REFUSAL",
+      "result": "NOT_EXECUTED",
+      "source": "U04_NEW_INDEPENDENT_ORACLE",
+      "runtime_executed": false
+    },
+    {
+      "id": "U04-H34",
+      "kind": "SUPERSEDE_MUTATE_IN_PLACE",
+      "input": "E_pre body changed after result under same identity with matching new self-hash",
+      "expected": "APPEND_ONLY_SUCCESSOR_REQUIRED",
+      "result": "NOT_EXECUTED",
+      "source": "U04_NEW_INDEPENDENT_ORACLE",
+      "runtime_executed": false
+    },
+    {
+      "id": "U04-H35",
+      "kind": "B_ONLY_J_WITHOUT_A_BASE",
+      "input": "a native legitimate B→A J-only operation is eligible while unary B not in old mapped base catalog",
+      "expected": "KEEP_J_ONLY_NO_INNER_JOIN",
+      "result": "NOT_EXECUTED",
+      "source": "U04_NEW_INDEPENDENT_ORACLE",
+      "runtime_executed": false
+    },
+    {
+      "id": "U04-H36",
+      "kind": "HELD_AND_DENIED_MULTIPLICITY",
+      "input": "one held and one denied operation duplicate expected key; D only contains permitted",
+      "expected": "PRESERVE_DISTINCT_DECISION_AND_MULTIPLICITY",
+      "result": "NOT_EXECUTED",
+      "source": "U04_NEW_INDEPENDENT_ORACLE",
+      "runtime_executed": false
+    },
+    {
+      "id": "U04-H37",
+      "kind": "SCOPED_NOT_APPLICABLE_FALSE",
+      "input": "one language/form missing original witness promoted to SOURCE_INTRINSIC_NA",
+      "expected": "REQUIRE_POSITIVE_O1_O2_NATIVE_PROOF",
+      "result": "NOT_EXECUTED",
+      "source": "U04_NEW_INDEPENDENT_ORACLE",
+      "runtime_executed": false
+    },
+    {
+      "id": "U04-H38",
+      "kind": "E01_UNDEFINED_AXIS",
+      "input": "EE:undefined repeated 16 times mistaken for adopted EE01–EE16 axes",
+      "expected": "GLOBAL_MATRIX_AXIS_ID_REFUSAL",
+      "result": "NOT_EXECUTED",
+      "source": "U04_NEW_INDEPENDENT_ORACLE",
+      "runtime_executed": false
+    },
+    {
+      "id": "U04-H39",
+      "kind": "TSA_WRONG_EVENT_ORDER",
+      "input": "E_pre time stamp valid but issued request occurs after D or after P01 result",
+      "expected": "EXTERNAL_EVENT_ORDER_REFUSAL",
+      "result": "NOT_EXECUTED",
+      "source": "U04_NEW_INDEPENDENT_ORACLE",
+      "runtime_executed": false
+    },
+    {
+      "id": "U04-H40",
+      "kind": "DELEGATION_AFTER_COMMIT",
+      "input": "custodian appointed effective date after E_pre seal, author backdates appointment in JSON",
+      "expected": "DELEGATION_EFFECTIVE_AT_SEAL_REFUSAL",
+      "result": "NOT_EXECUTED",
+      "source": "U04_NEW_INDEPENDENT_ORACLE",
+      "runtime_executed": false
+    },
+    {
+      "id": "U04-H41",
+      "kind": "OPEN_ENDED_OPERATION_GRAMMAR",
+      "input": "issuer says all possible deeper predicates without bounded source-qualified finite roster",
+      "expected": "OPERATION_FINITE_CLOSURE_HOLD",
+      "result": "NOT_EXECUTED",
+      "source": "U04_NEW_INDEPENDENT_ORACLE",
+      "runtime_executed": false
+    },
+    {
+      "id": "U04-H42",
+      "kind": "WEIGHTED_AND_RAW_ALIAS",
+      "input": "RAW Q86B→Q86A and proposed weighted counterpart share operation identity",
+      "expected": "ESTIMAND_MEASURE_IDENTITY_COLLISION",
+      "result": "NOT_EXECUTED",
+      "source": "U04_NEW_INDEPENDENT_ORACLE",
+      "runtime_executed": false
+    },
+    {
+      "id": "U04-H43",
+      "kind": "GT1_NONFF_DROPPED",
+      "input": "GT1 unary omitted from E because P01 only accepts GT2 FF",
+      "expected": "U_TO_E_MISSING_GT1_FAIL",
+      "result": "NOT_EXECUTED",
+      "source": "U04_NEW_INDEPENDENT_ORACLE",
+      "runtime_executed": false
+    },
+    {
+      "id": "U04-H44",
+      "kind": "UNKNOWN_STATUSES_COLLAPSED",
+      "input": "not asked/refused/missing forced to zero counts or NA state to make D complete",
+      "expected": "ORIGINAL_STATUS_INTEGRITY_FAIL",
+      "result": "NOT_EXECUTED",
+      "source": "U04_NEW_INDEPENDENT_ORACLE",
+      "runtime_executed": false
+    },
+    {
+      "id": "U04-H45",
+      "kind": "E_FROZEN_FROM_OUTPUT_HASH",
+      "input": "E created by deterministically hashing empirical outputs, then pre_result=true set",
+      "expected": "RESULT_ORIGIN_FAIL",
+      "result": "NOT_EXECUTED",
+      "source": "U04_NEW_INDEPENDENT_ORACLE",
+      "runtime_executed": false
+    },
+    {
+      "id": "U04-H46",
+      "kind": "RESULT_USE_BEFORE_E",
+      "input": "independently valid E seal exists but archived source values/result consumed in pipeline before seal",
+      "expected": "NOT_PROSPECTIVE_FOR_THAT_RESULT",
+      "result": "NOT_EXECUTED",
+      "source": "U04_NEW_INDEPENDENT_ORACLE",
+      "runtime_executed": false
+    }
+  ],
+  "independent_positive_requirements": [
+    "O1_O2_O3_ACTUALLY_ISSUED",
+    "O4_INDEPENDENT_VERIFIED_NOT_SELF",
+    "TRUST_ANCHOR_REGISTERED_PRE_D",
+    "CANONICAL_U_X_ISSUED_O_EQ_E_AS_MULTISET",
+    "E_SEALED_BEFORE_ANY_DOWNSTREAM_D_RESULT",
+    "O5_LOSSLESS_BINDING",
+    "O6_OWNER_APPROVAL_BEFORE_ROW_READ"
+  ],
+  "runtime": {
+    "execution": "NOT_EXECUTED",
+    "commands": [],
+    "exits": [],
+    "independent_source_data": false
+  },
+  "nonissuer_statement": "This file has no E_pre object/signature, no trust-store seed and cannot qualify a real signature; pure standalone validators, if used, are code-grain only."
+}
