@@ -1,0 +1,101 @@
+{
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_DELTA@1.0.0",
+  "environment_id": "ENV_LAB2_LOCAL_OPAQUE_9C42",
+  "epoch_id": "EPOCH_LAB2_20261014_LOCAL_NEW",
+  "owner_session_alias": "WORKER_HQ298_S_M_LAB2",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "MACHINE_OPAQUE_DARWIN_X86_64_16C",
+  "conversation_or_account_affinity": "gh_cli_account_opaque_maidiu_repo_scope",
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-14T19:00:00Z",
+  "runtime_marker_digest": "sha256:lab2_predecessor_lab1_vendored_closure_6_files_blob_verified",
+  "probe_command_and_result": {
+    "python3 --version": "Python 3.11.3",
+    "python3 -m pytest --version": "pytest 9.0.2",
+    "git --version": "git version 2.43.0",
+    "gh auth status": "logged in, repo scope, private repo read OK",
+    "pytest lab/test_lab.py (predecessor closure)": "20 passed in 0.10s",
+    "python3 lab/run_lab.py (predecessor frozen plan)": "576 trials; phase1_integrity True; hard_invariants_pass True",
+    "pytest lab2/test_lab2.py": "25 passed in 0.62s"
+  },
+  "capabilities": {
+    "python": "VERIFIED",
+    "pytest": "VERIFIED",
+    "git": "VERIFIED",
+    "node": "NOT_REQUIRED",
+    "filesystem_shell": "VERIFIED",
+    "authenticated_private_repo_read": "VERIFIED",
+    "model_api_for_behavioral_trials": "NOT_GRANTED (MODEL_BEHAVIORAL_HOLD)"
+  },
+  "observed_versions": {
+    "python": "3.11.3",
+    "pytest": "9.0.2",
+    "git": "2.43.0",
+    "platform": "macOS-13.2.1-x86_64"
+  },
+  "git_object_store_alias": "GITHUB_REMOTE_MAIDIU_RAWLSING_READONLY",
+  "worktree_alias": "EPHEMERAL_STAGE_DIR_NO_GIT_WORKTREE",
+  "branch": "agent/rabochii-sorok-r3-hq298-sm-lab2-behavioral-r1",
+  "exact_checkout_base": "3496d21ebc234112ed067c3967825780b7918b88",
+  "checkout_base_note": "operative startup per revised commission startup clause; launch-message SHA d6571991f54771dd9e09b5ae12c1b00bb2a20756 superseded; only 00_COMMISSION.md differs across the two commits",
+  "checkout_head": "PENDING_PUSH_SEE_00_RETURN",
+  "clean_dirty_state": "WRITE_TERRAIN_ONLY_WORKER_RETURNS_SOROK_R3_HQ298_S_M_LAB2_BEHAVIORAL_R1",
+  "source_family": "RAWLSING_S_M_LAB1_SYNTHETIC_WORLD_OWNER_TRANSITION_LAB",
+  "materialized_source_refs": [
+    {"path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/lab/world_fixtures.py", "git_blob_sha1": "51910b01c187", "local_staging_path": "lab2/predecessor_lab1/lab/world_fixtures.py", "verified": true},
+    {"path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/lab/opacity.py", "git_blob_sha1": "b56fb72145d0", "local_staging_path": "lab2/predecessor_lab1/lab/opacity.py", "verified": true},
+    {"path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/lab/transition.py", "git_blob_sha1": "9ce51cb49246", "local_staging_path": "lab2/predecessor_lab1/lab/transition.py", "verified": true},
+    {"path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/lab/owners.py", "git_blob_sha1": "518e6b8e1a2d", "local_staging_path": "lab2/predecessor_lab1/lab/owners.py", "verified": true},
+    {"path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/lab/hashutil.py", "git_blob_sha1": "e948f1d77ccd", "local_staging_path": "lab2/predecessor_lab1/lab/hashutil.py", "verified": true},
+    {"path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/lab/__init__.py", "git_blob_sha1": "30c2af3cada6", "local_staging_path": "lab2/predecessor_lab1/lab/__init__.py", "verified": true}
+  ],
+  "staging_verification": {
+    "method": "git_blob_sha1_NUL_header",
+    "files_staged": 6,
+    "files_verified_match": 6,
+    "mismatches": 0,
+    "receipt_file": "lab2/predecessor_lab1/PROVENANCE.json",
+    "predecessor_commit": "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09"
+  },
+  "covered_test_suites": [
+    {"suite": "S-M-LAB1 lab/test_lab.py (predecessor)", "command": "python3 -m pytest lab/test_lab.py -q", "result": "PASS", "tests": 20, "failures": 0},
+    {"suite": "S-M-LAB1 frozen trial plan lab/run_lab.py", "command": "python3 lab/run_lab.py", "result": "PASS", "tests": 576, "failures": 0, "note": "byte-identical to retained predecessor primary_results.json"},
+    {"suite": "LAB2 lab2/test_lab2.py", "command": "python3 -m pytest lab2/test_lab2.py -q --junitxml=junit/lab2_junit.xml", "result": "PASS", "tests": 25, "failures": 0, "junit": "junit/lab2_junit.xml"}
+  ],
+  "science_grade": "SOURCEFREE_REPLICATION_PLUS_FROZEN_BEHAVIORAL_PROTOCOL; behavioral question UNTESTED (MODEL_BEHAVIORAL_HOLD); synthetic machine results are never behavioral proof",
+  "model_provider": null,
+  "effort_and_pricing_class": "NO_MODEL_CALLS_THIS_COMMISSION (zero paid/actor/external calls)",
+  "observed_credits_or_usage": null,
+  "independent_review_separation": "REQUIRED_NOT_YET_PERFORMED",
+  "privacy_source_grant": "NO_ORIGINAL_SURVEY_DATA_ACCESSED; synthetic lab fixtures only; no packet transmitted to any external model",
+  "nearest_expected_slot_or_reset": null,
+  "quota_expense_observed_or_UNKNOWN": "UNKNOWN_cash; no billable calls; local CPU seconds only (machine replication 1.5s; lab2 0.27s)",
+  "assignments_completed": ["HQ298_S_M_LAB2_BEHAVIORAL_CAUSAL_REPLICATION"],
+  "next_good_affinity_tags": ["BEHAVIORAL", "K1_K6", "BLIND_SCORING", "CAN008", "ADP016", "ADP017", "MODEL_GRANT"],
+  "staged_state_preservation": "predecessor closure vendored and blob-verified in return terrain; lab2 package self-contained; re-runnable offline",
+  "retire_or_rebuild_reason": null,
+  "reusable_next_affinity": {
+    "warm": true,
+    "conditions": "re-verify blob identities on resume; behavioral runs additionally require the 8-field model grant",
+    "missing_for_next_round": "8-field model-call grant (named provider, model pin, privacy permission, experiment-use grant, monetary cap, price/quota, retention permission, per-trial budget)"
+  },
+  "claims_done_vs_not_run": {
+    "DONE": [
+      "predecessor closure rehydration with blob verification (6/6)",
+      "independent 576-trial machine replication byte-identical to LAB1",
+      "behavioral preregistration frozen before any trial (sha256 880fbde4...)",
+      "576 matched held-out trial packets with matched-content invariant across arms",
+      "blind counterbalanced presentation machinery",
+      "pre-typed dual-scorer machinery with prose exclusion",
+      "6 packet-level nulls (paraphrase/label/surface/trace-firewall x2/standing-separation)",
+      "harness dry-run labelled NOT behavioral evidence",
+      "model gate exercised in denial with exact missing fields"
+    ],
+    "NOT_RUN": [
+      "any behavioral model/actor call (MODEL_BEHAVIORAL_HOLD)",
+      "N3 order-null and N7 budget-null at model level (declared; gated)",
+      "free-text secondary elicitation arm (gated)",
+      "any adoption/calibration/actor issuance"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+ "behavioral_evidence_produced": false,
+ "exact_missing_grant_fields": [
+  "named_provider_exact_endpoint",
+  "exact_model_and_version_pin",
+  "privacy_permission_for_synthetic_lab_packets",
+  "experiment_use_grant_behavioral_actor_trials",
+  "explicit_monetary_cap",
+  "price_class_and_quota_observed",
+  "raw_request_response_retention_permission",
+  "per_trial_call_budget"
+ ],
+ "gate": {
+  "allowed": false,
+  "gate_id": "LAB2_MODEL_CALL_AUTHORIZATION_GATE",
+  "gate_version": "1.0.0",
+  "hold_id": "MODEL_BEHAVIORAL_HOLD",
+  "missing_authority_class": "MISSING_ACTOR_OR_MODEL_USE_AUTHORITY",
+  "missing_fields": [
+   "named_provider_exact_endpoint",
+   "exact_model_and_version_pin",
+   "privacy_permission_for_synthetic_lab_packets",
+   "experiment_use_grant_behavioral_actor_trials",
+   "explicit_monetary_cap",
+   "price_class_and_quota_observed",
+   "raw_request_response_retention_permission",
+   "per_trial_call_budget"
+  ],
+  "model_calls_permitted": 0,
+  "reason": "grant incomplete: named provider, exact model/version pin, privacy permission, experiment-use grant, explicit monetary cap and call budget must ALL be present before any paid/actor/external model call; prior authoring-environment use does not license model-actor trials"
+ },
+ "missing_authority_class": "MISSING_ACTOR_OR_MODEL_USE_AUTHORITY",
+ "mode": "HOLD",
+ "model_calls_issued": 0,
+ "note": "no paid/actor/external model call issued; prior authoring-environment use does not license model-actor trials",
+ "runner_version": "LAB2_BEHAVIORAL_RUNNER@1.0.0",
+ "terminal": "MODEL_BEHAVIORAL_HOLD"
+}

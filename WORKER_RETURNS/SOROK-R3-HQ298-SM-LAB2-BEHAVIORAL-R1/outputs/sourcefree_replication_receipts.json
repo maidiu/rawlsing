@@ -1,0 +1,55 @@
+{
+ "discipline": "SYNTHETIC MACHINE-LEVEL RESULT; NOT behavioral proof; never relabel as model/actor evidence",
+ "independent_rerun_command": "python3 lab/run_lab.py (predecessor lab, blob-verified vendored closure)",
+ "independent_rerun_result": {
+  "byte_identical_to_predecessor_primary_results": true,
+  "comparison_section_identical": true,
+  "hard_invariants_pass": true,
+  "null_controls_all_pass": true,
+  "opacity_all_pass": true,
+  "phase1_integrity": true,
+  "scores": {
+   "K1": {
+    "A": 1.0,
+    "B": 1.0,
+    "C": 1.0
+   },
+   "K2": {
+    "A": 1.0,
+    "B": 0.0,
+    "C": 0.0
+   },
+   "K3": {
+    "A": 1.0,
+    "B": 1.0,
+    "C": 1.0
+   },
+   "K4": {
+    "A": 1.0,
+    "B": 1.0,
+    "C": 1.0
+   },
+   "K5": {
+    "A": 1.0,
+    "B": 1.0,
+    "C": 1.0
+   },
+   "K6": {
+    "A": 1.0,
+    "B": 1.0,
+    "C": 1.0
+   }
+  },
+  "trial_count": 576
+ },
+ "predecessor": "S-M-LAB1 d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+ "predecessor_test_suite": "20/20 passed on this host (python3 -m pytest lab/test_lab.py)",
+ "preregistration_hash_reused": "f36d2d31289a6f1544444193689778e352e2e903162f63a578185868e89f4981",
+ "replication_schema": "LAB2_SOURCEFREE_MACHINE_REPLICATION@1.0.0",
+ "vendor_provenance": "lab2/predecessor_lab1/PROVENANCE.json (6 files, git blob SHA-1 verified)",
+ "verdict_preserved": {
+  "A_minimal": "PASSED machine level",
+  "B_ranking_role": "REJECT (K2 destroyed 1.0 -> 0.0; +33.5% tokens, zero gain)",
+  "C_role": "DERIVED_CACHE (reconstruction-equivalent; 0 formation scans vs 1.88)"
+ }
+}
