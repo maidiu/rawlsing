@@ -1,0 +1,39 @@
+{
+  "schema": "PYAT_D2I_20261014_ORIGINAL_EXTERNAL_AGGREGATES_R1",
+  "grade": "OFFICIAL_PDF_WEB_RENDER_TEXT_VERIFIED__BINARY_CUSTODY_UNOBTAINED__SOURCE_METHOD_UNISSUED",
+  "publisher_pdf_bytes_captured": false,
+  "archive_binary_sha256": {"GSS": null,"NCA": null},
+  "binary_attempts": [
+    {"method":"container_python_requests_https","result":"DNS_FAIL_TEMPORARY_FAILURE_IN_NAME_RESOLUTION"},
+    {"method":"container.download_official_NCA_PDF","result":"DOWNLOAD_FAILED"},
+    {"method":"web_pdf_open","result":"BOTH_OFFICIAL_PDFS_PARSED_TEXT_AVAILABLE_NO_RAW_BYTES_EXPOSED"},
+    {"method":"web_pdf_screenshot","result":"GSS_PDF_PAGE75_VISUAL_PASS_NCA_PDF_PAGE29_CACHE_MISS"}
+  ],
+  "edition_revision_chain": "NO_RELIABLE_OFFICIAL_FILE_BYTE_OR_ERRATA_SERIES_CUSTODIED; CANNOT_ASSERT_UNCHANGED_SINCE_2022",
+  "source_rights_and_field_permission": "UNISSUED_PER_PUBLISHER_AND_RAWLSING_ISSUER; publicly visible does not confer field adoption",
+  "observation_vs_knowledge": "BOTH_OBSERVED_2021__GSS_FIRST_REPORTED_PUBLIC_2022_02_24__NCA_FIRST_REPORTED_PUBLIC_2022_07_08",
+  "sources": [
+    {
+      "role":"GSS_RURAL_LIGHTING", "publisher":"Ghana Statistical Service", "family":"GH_GSS_PHC_2021", "title":"2021 PHC General Report Volume 3K: Housing Characteristics", "edition_cover":"FEBRUARY 2022", "published_at":"2022-02-24", "observed":"2021 PHC census", "unit":"OCCUPIED_DWELLING_UNIT_MAIN_LIGHTING", "geography":"GHANA_RURAL", "excluded":["SECONDARY_HOUSING","VACANT_DWELLINGS"],
+      "source_url":"https://census2021.statsghana.gov.gh/gssmain/fileUpload/reportthemesub/Volume%203K_Housing%20Characteristics_240222.pdf",
+      "release_notice_url":"https://census2021.statsghana.gov.gh/newspage.php?GSS-completes-release-of-2021-PHC-General-Reports=&readmorenews=MjM0ODgzNjQxMy41MDg1",
+      "pdf_page_zero_based":75, "printed_page":62,"table":"5.10", "pdf_page_count_observed":86,
+      "values":{"rural_electric_total":2388192,"rural_occupied_total":3288063,"published_pct":72.6,"electric_subtypes":{"mains":2288193,"community_grid":74490,"private_generator":3640,"solar_panel_inverter":21512,"wind":357}},
+      "uncertainty":"FULL_CENSUS_TABULATION__NONSAMPLING_ERROR_UNKNOWN__NO_MEASURED_VARIANCE_SUPPLIED",
+      "official_pdf_text_verified":true,"official_pdf_table_visual_verified":true,
+      "pdf_bytes_captured":false,"source_pdf_sha256":null,"issuer_signature":null,"issued":false,"permission":"NO_FIELD_OR_EE13_GRANT","status":"AVAILABLE_TEST_ONLY","test_only":true
+    },
+    {
+      "role":"NCA_NATIONAL_DATA_SUBSCRIPTIONS", "publisher":"National Communications Authority (Ghana)","family":"GH_NCA_LICENSEE_REPORTS_2021Q4", "title":"Quarterly Statistical Bulletin on Communications in Ghana, Volume 6 Issue 4, Q4 2021", "edition_cover":"OCTOBER - DECEMBER 2021", "published_at":"2022-07-08", "observed":"2021 Q4 Oct-Dec; subscription active when generating traffic within previous 90 days", "unit":"ACTIVE_MOBILE_DATA_SUBSCRIPTIONS_90_DAY_ACTIVITY", "geography":"GHANA_NATIONAL", "unique_persons":false,"rural_breakout":null,
+      "source_url":"https://nca.org.gh/wp-content/uploads/2022/07/Q4-2021-statistical-Bulletin.pdf",
+      "release_notice_url":"https://nca.org.gh/2022/07/08/quarterly-statistical-bulletin-on-communications-2022-q4/",
+      "pdf_page_zero_based":29,"printed_page":17,"table":"10","pdf_page_count_observed":36,
+      "values":{"subscriptions":23414527,"prepaid":23237338,"postpaid":177189},
+      "uncertainty":"LICENSEE_ADMINISTRATIVE_COUNTS__CORRECTION_AND_REPORTING_ERROR_UNQUANTIFIED__NO_UNIQUE_PERSONS",
+      "official_pdf_text_verified":true,"official_pdf_table_visual_verified":false,
+      "pdf_bytes_captured":false,"source_pdf_sha256":null,"issuer_signature":null,"issued":false,"permission":"NO_FIELD_OR_EE13_GRANT","status":"AVAILABLE_TEST_ONLY","test_only":true
+    }
+  ],
+  "relation_proposal":{"relation":"NONPOOLED_CONTEXTUAL_CO_PRESENCE_ONLY","geography":"GHANA__ONE_RURAL_DWELLING_UNIT_TABULATION_PLUS_ONE_NATIONAL_TELECOM_SUBSCRIPTION_TABULATION","observed":"2021_PHC_AND_2021_Q4","minimum_two_source_publication_asof":"2022-07-08","same_population":false,"same_unit":false,"correlation":false,"causal":false,"EE13_issued":false},
+  "original_product_authority":{"N5_N6_field_issuer":null,"GSS_publication_source_issuer":null,"NCA_publication_source_issuer":null,"EE13_N7_relation_issuer":null,"N9_OC05_operative_consumer_issuer":null}
+}
