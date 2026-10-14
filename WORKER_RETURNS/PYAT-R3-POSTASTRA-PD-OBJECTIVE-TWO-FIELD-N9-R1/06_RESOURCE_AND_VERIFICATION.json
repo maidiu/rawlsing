@@ -1,0 +1,58 @@
+{
+  "schema": "POSTASTRA_PD_EXECUTION_RESOURCE@R1",
+  "model": "GPT-6 High",
+  "provider": "ChatGPT Browser/GitHub; native web official PDFs; isolated container public PDF download attempt",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-pyat-r3-postastra-pd-two-field-n9-positive-r1",
+  "startup": "5bb7ee4a60478bdd0dea10f1f55a88db0f9ccfd8",
+  "remote_head_initial": "5bb7ee4a60478bdd0dea10f1f55a88db0f9ccfd8",
+  "source_urls": [
+    "https://census2021.statsghana.gov.gh/gssmain/fileUpload/reportthemesub/Volume%203K_Housing%20Characteristics_240222.pdf",
+    "https://nca.org.gh/wp-content/uploads/2022/07/Q4-2021-statistical-Bulletin.pdf"
+  ],
+  "original_read_grade": {
+    "gss_official_pdf_text": true,
+    "gss_official_pdf_image": true,
+    "nca_official_pdf_text": true,
+    "nca_official_pdf_image": false
+  },
+  "pdf_sha256s": null,
+  "download_attempts": [
+    {
+      "id": "GSS",
+      "result": "FAILED_DNS_RESOLUTION__NO_BYTES_HASHED"
+    },
+    {
+      "id": "NCA",
+      "result": "FAILED_DNS_RESOLUTION__NO_BYTES_HASHED"
+    }
+  ],
+  "testing": {
+    "browser_pure_js_sourcefree_checks": 27,
+    "passed": 27,
+    "failed": 0,
+    "qualified_repo_python": "NOT_EXECUTED",
+    "repo_node_cli": "NOT_EXECUTED",
+    "actual_genuine_owner_callable": "NOT_EXECUTED",
+    "raw_survey_microdata": "NOT_EXECUTED",
+    "official_pdf_full_byte_download_attempted": true,
+    "official_pdf_full_byte_download": "FAILED_NETWORK_DNS_NO_HASH",
+    "official_PDF_GSS_visual_verified": true,
+    "official_PDF_NCA_visual": "FAILED_WEB_CACHE_MISS"
+  },
+  "host_runtime": "No local repository clone qualified; isolated JS only for mocked metadata checks",
+  "codex_used": false,
+  "paid_overflow": false,
+  "raw_respondent_or_operator_records_read": false,
+  "source_use_warrant_issued": false,
+  "ee13_issued": false,
+  "model_use_issued": false,
+  "actor_used": false,
+  "independent_acceptance": false,
+  "quota_readings": null,
+  "cost_usd_measured": null,
+  "time_consumed_measured": null,
+  "current_mac_access": null,
+  "current_worktree": null,
+  "return_only_write": true
+}
