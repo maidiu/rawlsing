@@ -1,0 +1,205 @@
+{
+  "checkpoint_version": "1.0.0",
+  "content_digest": "20e5632f74288b84ffad33c1f9073717491b6d9dde8d152310e7d798aa86a02e",
+  "contract": "PYAT_HQ280_B01C_DURABLE_CHECKPOINT_CANDIDATE@1.0.0",
+  "identity": {
+    "manifest_hash": "2bccebce43ff08cd210e4469db82de838f5479fd1fcde5b50190d298d62bd182",
+    "manifest_ref": {
+      "content_hash": "2bccebce43ff08cd210e4469db82de838f5479fd1fcde5b50190d298d62bd182",
+      "kind": "PRE553BatchManifest@1.0.0",
+      "object_id": "urn:rawlsing:pre553:batch-manifest:sha256:2bccebce43ff08cd210e4469db82de838f5479fd1fcde5b50190d298d62bd182"
+    },
+    "protocol_profile": "DEVELOPMENT_SOURCE_FREE",
+    "release_refs": [
+      {
+        "content_hash": "a790506c7abd3873e221f7318296afc59720deff7d5c3f6c0d24a5ba37373d09",
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-m01"
+      }
+    ],
+    "unit_keys": [
+      "PRE553BatchUnit@1.0.0|urn:rawlsing:pre553:batch-unit:sha256:6e6d85b2f8ac94e185be194341814f1dcb074a23f126e36e1badc6b9d5e2062d|6e6d85b2f8ac94e185be194341814f1dcb074a23f126e36e1badc6b9d5e2062d",
+      "PRE553BatchUnit@1.0.0|urn:rawlsing:pre553:batch-unit:sha256:88ff09cad13d4b5d484a743c29b021b9fcca067c774085776ac29537d763e67c|88ff09cad13d4b5d484a743c29b021b9fcca067c774085776ac29537d763e67c",
+      "PRE553BatchUnit@1.0.0|urn:rawlsing:pre553:batch-unit:sha256:d717d3102e19e3458aaaa11ed7ac19013b2d10dc40001800fb622f6212b8d77f|d717d3102e19e3458aaaa11ed7ac19013b2d10dc40001800fb622f6212b8d77f"
+    ]
+  },
+  "records": [
+    {
+      "attempt_index": 1,
+      "intent_hash": "09fdc9cffdd67f46f1a6a7b6967890b5f30303bbf53e7caad368514e6dd2208d",
+      "prior_attempt_count": 0,
+      "receipt_hash": "80cfde0e7826a4b6297154534537a01257c2faae0d146c7b446e6203010101fd",
+      "receipt_projection": {
+        "attempt_index": 1,
+        "detail_hash": null,
+        "execution_performed": true,
+        "executor_ref": {
+          "content_hash": "3d9dcfa61bc1949ef739062f2e2cbcb2b22cc4cddc863277c9f51bd6dd760052",
+          "kind": "AuthoritySnapshot@1.0.0",
+          "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:3d9dcfa61bc1949ef739062f2e2cbcb2b22cc4cddc863277c9f51bd6dd760052"
+        },
+        "failure_code": null,
+        "manifest_hash": "2bccebce43ff08cd210e4469db82de838f5479fd1fcde5b50190d298d62bd182",
+        "provenance_refs": [
+          {
+            "content_hash": "3d9dcfa61bc1949ef739062f2e2cbcb2b22cc4cddc863277c9f51bd6dd760052",
+            "kind": "AuthoritySnapshot@1.0.0",
+            "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:3d9dcfa61bc1949ef739062f2e2cbcb2b22cc4cddc863277c9f51bd6dd760052"
+          },
+          {
+            "content_hash": "a790506c7abd3873e221f7318296afc59720deff7d5c3f6c0d24a5ba37373d09",
+            "kind": "C11LogicalRelease",
+            "object_id": "REL-m01"
+          },
+          {
+            "content_hash": "4b022ba1138792a8c93f84e953e126aaa095f7935a1fbdb7164f22545da4585c",
+            "kind": "EmpiricalPredicate@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:4b022ba1138792a8c93f84e953e126aaa095f7935a1fbdb7164f22545da4585c"
+          },
+          {
+            "content_hash": "a1f884d0b7b280b03aab8f737020c0996df0b67ae3079a590d96806de65d5202",
+            "kind": "EmpiricalQuerySpec@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:a1f884d0b7b280b03aab8f737020c0996df0b67ae3079a590d96806de65d5202"
+          }
+        ],
+        "result_refs": [
+          {
+            "content_hash": "f306ce6eb695b2b921acc4d701940946e0971f43d4654e26352a570d7c352c67",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:f306ce6eb695b2b921acc4d701940946e0971f43d4654e26352a570d7c352c67"
+          }
+        ],
+        "state": "COMPLETED",
+        "unit_ref": {
+          "content_hash": "6e6d85b2f8ac94e185be194341814f1dcb074a23f126e36e1badc6b9d5e2062d",
+          "kind": "PRE553BatchUnit@1.0.0",
+          "object_id": "urn:rawlsing:pre553:batch-unit:sha256:6e6d85b2f8ac94e185be194341814f1dcb074a23f126e36e1badc6b9d5e2062d"
+        }
+      },
+      "state": "COMMITTED",
+      "unit_key": "PRE553BatchUnit@1.0.0|urn:rawlsing:pre553:batch-unit:sha256:6e6d85b2f8ac94e185be194341814f1dcb074a23f126e36e1badc6b9d5e2062d|6e6d85b2f8ac94e185be194341814f1dcb074a23f126e36e1badc6b9d5e2062d",
+      "unit_ref": {
+        "content_hash": "6e6d85b2f8ac94e185be194341814f1dcb074a23f126e36e1badc6b9d5e2062d",
+        "kind": "PRE553BatchUnit@1.0.0",
+        "object_id": "urn:rawlsing:pre553:batch-unit:sha256:6e6d85b2f8ac94e185be194341814f1dcb074a23f126e36e1badc6b9d5e2062d"
+      }
+    },
+    {
+      "attempt_index": 1,
+      "intent_hash": "89137d10304750619f3db04956c38dea201f43684a3371e9e4495aac01a1c6f0",
+      "prior_attempt_count": 0,
+      "receipt_hash": "5f96fae4c92e6918fd90956db8c4fe7afbcbf23d0711f872e37c3fa7b446a480",
+      "receipt_projection": {
+        "attempt_index": 1,
+        "detail_hash": null,
+        "execution_performed": true,
+        "executor_ref": {
+          "content_hash": "3d9dcfa61bc1949ef739062f2e2cbcb2b22cc4cddc863277c9f51bd6dd760052",
+          "kind": "AuthoritySnapshot@1.0.0",
+          "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:3d9dcfa61bc1949ef739062f2e2cbcb2b22cc4cddc863277c9f51bd6dd760052"
+        },
+        "failure_code": null,
+        "manifest_hash": "2bccebce43ff08cd210e4469db82de838f5479fd1fcde5b50190d298d62bd182",
+        "provenance_refs": [
+          {
+            "content_hash": "3d9dcfa61bc1949ef739062f2e2cbcb2b22cc4cddc863277c9f51bd6dd760052",
+            "kind": "AuthoritySnapshot@1.0.0",
+            "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:3d9dcfa61bc1949ef739062f2e2cbcb2b22cc4cddc863277c9f51bd6dd760052"
+          },
+          {
+            "content_hash": "a790506c7abd3873e221f7318296afc59720deff7d5c3f6c0d24a5ba37373d09",
+            "kind": "C11LogicalRelease",
+            "object_id": "REL-m01"
+          },
+          {
+            "content_hash": "4b022ba1138792a8c93f84e953e126aaa095f7935a1fbdb7164f22545da4585c",
+            "kind": "EmpiricalPredicate@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:4b022ba1138792a8c93f84e953e126aaa095f7935a1fbdb7164f22545da4585c"
+          },
+          {
+            "content_hash": "d91d229ff3db20bb3d89c2f35f52760cf0d826370653b6057e5a788dc4b9c295",
+            "kind": "EmpiricalQuerySpec@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:d91d229ff3db20bb3d89c2f35f52760cf0d826370653b6057e5a788dc4b9c295"
+          }
+        ],
+        "result_refs": [
+          {
+            "content_hash": "0e3f0e89792a91d74aff2cf8a4b6bb87dbb076cf404d4970268a113b0636d1f1",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:0e3f0e89792a91d74aff2cf8a4b6bb87dbb076cf404d4970268a113b0636d1f1"
+          }
+        ],
+        "state": "COMPLETED",
+        "unit_ref": {
+          "content_hash": "88ff09cad13d4b5d484a743c29b021b9fcca067c774085776ac29537d763e67c",
+          "kind": "PRE553BatchUnit@1.0.0",
+          "object_id": "urn:rawlsing:pre553:batch-unit:sha256:88ff09cad13d4b5d484a743c29b021b9fcca067c774085776ac29537d763e67c"
+        }
+      },
+      "state": "COMMITTED",
+      "unit_key": "PRE553BatchUnit@1.0.0|urn:rawlsing:pre553:batch-unit:sha256:88ff09cad13d4b5d484a743c29b021b9fcca067c774085776ac29537d763e67c|88ff09cad13d4b5d484a743c29b021b9fcca067c774085776ac29537d763e67c",
+      "unit_ref": {
+        "content_hash": "88ff09cad13d4b5d484a743c29b021b9fcca067c774085776ac29537d763e67c",
+        "kind": "PRE553BatchUnit@1.0.0",
+        "object_id": "urn:rawlsing:pre553:batch-unit:sha256:88ff09cad13d4b5d484a743c29b021b9fcca067c774085776ac29537d763e67c"
+      }
+    },
+    {
+      "attempt_index": 1,
+      "intent_hash": "571c26d0cb94772ab98323fbeaa8324d7f9e3897ffc7a7f04e0ebc947ebe2b2a",
+      "prior_attempt_count": 0,
+      "receipt_hash": "8cd3c5972f6c930c716e7bd4046476657a5bb0c6fea5ed4db2bc859950aff856",
+      "receipt_projection": {
+        "attempt_index": 1,
+        "detail_hash": null,
+        "execution_performed": true,
+        "executor_ref": {
+          "content_hash": "c252ee5290e03ac7f83357820274b622d2f82915dac8ef4c3a51b3a28ecc6279",
+          "kind": "AuthoritySnapshot@1.0.0",
+          "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:c252ee5290e03ac7f83357820274b622d2f82915dac8ef4c3a51b3a28ecc6279"
+        },
+        "failure_code": null,
+        "manifest_hash": "2bccebce43ff08cd210e4469db82de838f5479fd1fcde5b50190d298d62bd182",
+        "provenance_refs": [
+          {
+            "content_hash": "c252ee5290e03ac7f83357820274b622d2f82915dac8ef4c3a51b3a28ecc6279",
+            "kind": "AuthoritySnapshot@1.0.0",
+            "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:c252ee5290e03ac7f83357820274b622d2f82915dac8ef4c3a51b3a28ecc6279"
+          },
+          {
+            "content_hash": "a790506c7abd3873e221f7318296afc59720deff7d5c3f6c0d24a5ba37373d09",
+            "kind": "C11LogicalRelease",
+            "object_id": "REL-m01"
+          },
+          {
+            "content_hash": "de2b22b73bb066b6f385e3ff8b2c4ac62a171a1985ca6ab3f0241f35eaead5b8",
+            "kind": "DiscoveryAuthority@1.0.0",
+            "object_id": "urn:rawlsing:pre553:DiscoveryAuthority:sha256:de2b22b73bb066b6f385e3ff8b2c4ac62a171a1985ca6ab3f0241f35eaead5b8"
+          }
+        ],
+        "result_refs": [
+          {
+            "content_hash": "f1456097d35eb3548d8b479a2200b4e9ebb82868c0e223eb0deead0b41c685a1",
+            "kind": "DiscoveryResultReceipt@1.0.0",
+            "object_id": "urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:f1456097d35eb3548d8b479a2200b4e9ebb82868c0e223eb0deead0b41c685a1"
+          }
+        ],
+        "state": "COMPLETED",
+        "unit_ref": {
+          "content_hash": "d717d3102e19e3458aaaa11ed7ac19013b2d10dc40001800fb622f6212b8d77f",
+          "kind": "PRE553BatchUnit@1.0.0",
+          "object_id": "urn:rawlsing:pre553:batch-unit:sha256:d717d3102e19e3458aaaa11ed7ac19013b2d10dc40001800fb622f6212b8d77f"
+        }
+      },
+      "state": "COMMITTED",
+      "unit_key": "PRE553BatchUnit@1.0.0|urn:rawlsing:pre553:batch-unit:sha256:d717d3102e19e3458aaaa11ed7ac19013b2d10dc40001800fb622f6212b8d77f|d717d3102e19e3458aaaa11ed7ac19013b2d10dc40001800fb622f6212b8d77f",
+      "unit_ref": {
+        "content_hash": "d717d3102e19e3458aaaa11ed7ac19013b2d10dc40001800fb622f6212b8d77f",
+        "kind": "PRE553BatchUnit@1.0.0",
+        "object_id": "urn:rawlsing:pre553:batch-unit:sha256:d717d3102e19e3458aaaa11ed7ac19013b2d10dc40001800fb622f6212b8d77f"
+      }
+    }
+  ],
+  "schema": "PYAT_HQ280_B01C_DURABLE_CHECKPOINT@1.0.0",
+  "sequence": 6
+}

@@ -1,0 +1,536 @@
+{
+  "schema": "HQ297_V2R_ACTUAL_EXECUTION_RESULTS@1",
+  "junit": [
+    {
+      "file": "repro/green.xml",
+      "tests": 25,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "repro/held_refs_fixed_green.xml",
+      "tests": 25,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "repro/initial_green.xml",
+      "tests": 22,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "repro/red.xml",
+      "tests": 6,
+      "failures": 5,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "repro/regressions.xml",
+      "tests": 156,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "exact_commands": [
+    {
+      "artifact": "repro/cold_execution.json",
+      "runs": [
+        {
+          "command": [
+            "/usr/local/bin/python3",
+            "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq297-v2r-role-binding/WORKER_RETURNS/PYAT-R3-HQ297-V2-ROLE-QUERY-SEMANTIC-BINDING-R1/repro/cold_replay.py",
+            "first",
+            "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-green-8cgg0z00/cold-v2r"
+          ],
+          "cwd": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-green-8cgg0z00",
+          "exit_code": 0,
+          "seconds": 0.8733088970184326
+        },
+        {
+          "command": [
+            "/usr/local/bin/python3",
+            "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq297-v2r-role-binding/WORKER_RETURNS/PYAT-R3-HQ297-V2-ROLE-QUERY-SEMANTIC-BINDING-R1/repro/cold_replay.py",
+            "replay",
+            "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-green-8cgg0z00/cold-v2r"
+          ],
+          "cwd": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-green-8cgg0z00",
+          "exit_code": 0,
+          "seconds": 0.7479550838470459
+        }
+      ]
+    },
+    {
+      "artifact": "repro/green_execution.json",
+      "runs": {
+        "stage": "green",
+        "command": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "-q",
+          "--import-mode=importlib",
+          "rawlsing_next/tests/test_hq297_v2r_role_query_binding.py",
+          "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq297-v2r-role-binding/WORKER_RETURNS/PYAT-R3-HQ297-V2-ROLE-QUERY-SEMANTIC-BINDING-R1/repro/green.xml"
+        ],
+        "cwd": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-green-8cgg0z00",
+        "environment": {
+          "PYTHONPATH": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-green-8cgg0z00",
+          "PV_RUNTIME": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-green-8cgg0z00",
+          "PV_RETURN": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-green-8cgg0z00/WORKER_RETURNS/PYAT-R3-POSTASTRA-PV-V2K-INDEPENDENT-COURT-R1",
+          "PV_SUITE": "green",
+          "V2R_STAGE": "green",
+          "V2R_RETURN": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq297-v2r-role-binding/WORKER_RETURNS/PYAT-R3-HQ297-V2-ROLE-QUERY-SEMANTIC-BINDING-R1"
+        },
+        "exit_code": 0,
+        "seconds": 7.333564043045044,
+        "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+        "executable": "/usr/local/bin/python3",
+        "host": "MacBook-Pro.lan"
+      }
+    },
+    {
+      "artifact": "repro/held_refs_fixed_green_execution.json",
+      "runs": {
+        "stage": "green",
+        "command": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "-q",
+          "--import-mode=importlib",
+          "rawlsing_next/tests/test_hq297_v2r_role_query_binding.py",
+          "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq297-v2r-role-binding/WORKER_RETURNS/PYAT-R3-HQ297-V2-ROLE-QUERY-SEMANTIC-BINDING-R1/repro/green.xml"
+        ],
+        "cwd": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-green-i81mhzme",
+        "environment": {
+          "PYTHONPATH": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-green-i81mhzme",
+          "PV_RUNTIME": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-green-i81mhzme",
+          "PV_RETURN": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-green-i81mhzme/WORKER_RETURNS/PYAT-R3-POSTASTRA-PV-V2K-INDEPENDENT-COURT-R1",
+          "PV_SUITE": "green",
+          "V2R_STAGE": "green",
+          "V2R_RETURN": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq297-v2r-role-binding/WORKER_RETURNS/PYAT-R3-HQ297-V2-ROLE-QUERY-SEMANTIC-BINDING-R1"
+        },
+        "exit_code": 0,
+        "seconds": 7.617751121520996,
+        "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+        "executable": "/usr/local/bin/python3",
+        "host": "MacBook-Pro.lan"
+      }
+    },
+    {
+      "artifact": "repro/initial_green_execution.json",
+      "runs": {
+        "stage": "green",
+        "command": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "-q",
+          "--import-mode=importlib",
+          "rawlsing_next/tests/test_hq297_v2r_role_query_binding.py",
+          "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq297-v2r-role-binding/WORKER_RETURNS/PYAT-R3-HQ297-V2-ROLE-QUERY-SEMANTIC-BINDING-R1/repro/green.xml"
+        ],
+        "cwd": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-green-qc8dwclr",
+        "environment": {
+          "PYTHONPATH": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-green-qc8dwclr",
+          "PV_RUNTIME": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-green-qc8dwclr",
+          "PV_RETURN": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-green-qc8dwclr/WORKER_RETURNS/PYAT-R3-POSTASTRA-PV-V2K-INDEPENDENT-COURT-R1",
+          "PV_SUITE": "green",
+          "V2R_STAGE": "green",
+          "V2R_RETURN": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq297-v2r-role-binding/WORKER_RETURNS/PYAT-R3-HQ297-V2-ROLE-QUERY-SEMANTIC-BINDING-R1"
+        },
+        "exit_code": 1,
+        "seconds": 6.369794845581055,
+        "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+        "executable": "/usr/local/bin/python3",
+        "host": "MacBook-Pro.lan"
+      }
+    },
+    {
+      "artifact": "repro/red_execution.json",
+      "runs": {
+        "stage": "red",
+        "command": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "-q",
+          "--import-mode=importlib",
+          "rawlsing_next/tests/test_hq297_v2r_role_query_binding.py",
+          "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq297-v2r-role-binding/WORKER_RETURNS/PYAT-R3-HQ297-V2-ROLE-QUERY-SEMANTIC-BINDING-R1/repro/red.xml"
+        ],
+        "cwd": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-red-jsrd_kci",
+        "environment": {
+          "PYTHONPATH": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-red-jsrd_kci",
+          "PV_RUNTIME": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-red-jsrd_kci",
+          "PV_RETURN": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-red-jsrd_kci/WORKER_RETURNS/PYAT-R3-POSTASTRA-PV-V2K-INDEPENDENT-COURT-R1",
+          "PV_SUITE": "red",
+          "V2R_STAGE": "red",
+          "V2R_RETURN": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq297-v2r-role-binding/WORKER_RETURNS/PYAT-R3-HQ297-V2-ROLE-QUERY-SEMANTIC-BINDING-R1"
+        },
+        "exit_code": 1,
+        "seconds": 3.2215280532836914,
+        "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+        "executable": "/usr/local/bin/python3",
+        "host": "MacBook-Pro.lan"
+      }
+    },
+    {
+      "artifact": "repro/regressions_execution.json",
+      "runs": {
+        "stage": "regressions",
+        "command": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "-q",
+          "--import-mode=importlib",
+          "rawlsing_next/tests/test_postastra_pv_v2k_independent.py",
+          "rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py",
+          "rawlsing_next/tests/test_pre553_v2_durable_consumer_integration_candidate.py",
+          "rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py",
+          "rawlsing_next/tests/test_pre553_route_b_production.py",
+          "rawlsing_next/tests/test_pre553_empirical_query.py",
+          "rawlsing_next/tests/test_pre553_discovery_exact.py",
+          "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq297-v2r-role-binding/WORKER_RETURNS/PYAT-R3-HQ297-V2-ROLE-QUERY-SEMANTIC-BINDING-R1/repro/regressions.xml"
+        ],
+        "cwd": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-regressions-kkj_sam_",
+        "environment": {
+          "PYTHONPATH": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-regressions-kkj_sam_",
+          "PV_RUNTIME": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-regressions-kkj_sam_",
+          "PV_RETURN": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-regressions-kkj_sam_/WORKER_RETURNS/PYAT-R3-POSTASTRA-PV-V2K-INDEPENDENT-COURT-R1",
+          "PV_SUITE": "regressions",
+          "V2R_STAGE": "green",
+          "V2R_RETURN": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq297-v2r-role-binding/WORKER_RETURNS/PYAT-R3-HQ297-V2-ROLE-QUERY-SEMANTIC-BINDING-R1"
+        },
+        "exit_code": 0,
+        "seconds": 34.273433208465576,
+        "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+        "executable": "/usr/local/bin/python3",
+        "host": "MacBook-Pro.lan"
+      }
+    },
+    {
+      "artifact": "repro/probe_execution.json",
+      "runs": {
+        "command": [
+          "/usr/local/bin/python3",
+          "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq297-v2r-role-binding/WORKER_RETURNS/PYAT-R3-HQ297-V2-ROLE-QUERY-SEMANTIC-BINDING-R1/repro/probe_refusals.py"
+        ],
+        "cwd": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-green-8cgg0z00",
+        "exit_code": 0,
+        "seconds": 2.3667640686035156
+      }
+    }
+  ],
+  "unchanged_regression_counts": {
+    "rawlsing_next.tests.test_postastra_pv_v2k_independent": 21,
+    "rawlsing_next.tests.test_hq295_v2k_original_identity_successor": 24,
+    "rawlsing_next.tests.test_pre553_v2_durable_consumer_integration_candidate": 25,
+    "rawlsing_next.tests.test_pre553_original_workload_v2_mutation_hostiles_candidate": 29,
+    "rawlsing_next.tests.test_pre553_route_b_production": 11,
+    "rawlsing_next.tests.test_pre553_empirical_query": 32,
+    "rawlsing_next.tests.test_pre553_discovery_exact": 14
+  },
+  "source_audits": {
+    "red": {
+      "processes": 1,
+      "verified_paths": [
+        "rawlsing_next/_pre553_query_common.py",
+        "rawlsing_next/_pre553_query_eval.py",
+        "rawlsing_next/_pre553_query_predicate.py",
+        "rawlsing_next/field_forge_conditional_support.py",
+        "rawlsing_next/pre553_batch_durable_checkpoint_candidate.py",
+        "rawlsing_next/pre553_batch_runner.py",
+        "rawlsing_next/pre553_c11_ingest.py",
+        "rawlsing_next/pre553_c11_integrity.py",
+        "rawlsing_next/pre553_c11_repository.py",
+        "rawlsing_next/pre553_carrier_execution.py",
+        "rawlsing_next/pre553_discovery_exact.py",
+        "rawlsing_next/pre553_empirical_authority.py",
+        "rawlsing_next/pre553_empirical_objects.py",
+        "rawlsing_next/pre553_empirical_query.py",
+        "rawlsing_next/pre553_governed_batch_checkpoint_integration_candidate.py",
+        "rawlsing_next/pre553_original_identity_v2k_successor_candidate.py",
+        "rawlsing_next/pre553_original_workload_binder_candidate.py",
+        "rawlsing_next/pre553_original_workload_contract_v2_candidate.py",
+        "rawlsing_next/pre553_original_workload_v2_verifier_candidate.py",
+        "rawlsing_next/pre553_physical_c11_bridge.py",
+        "rawlsing_next/pre553_physical_decoder.py",
+        "rawlsing_next/pre553_r5_codec.py",
+        "rawlsing_next/pre553_route_b_production.py",
+        "rawlsing_next/pre553_runtime_authority.py",
+        "rawlsing_next/pre553_runtime_context.py",
+        "rawlsing_next/pre553_source_backed_c11_facade.py",
+        "rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py",
+        "rawlsing_next/tests/conftest.py",
+        "rawlsing_next/tests/test_hq297_v2r_role_query_binding.py",
+        "rawlsing_next/tests/test_postastra_pv_v2k_independent.py",
+        "rawlsing_next/tests/test_pre553_discovery_exact.py",
+        "rawlsing_next/tests/test_pre553_empirical_query.py",
+        "rawlsing_next/tests/test_pre553_route_b_production.py"
+      ],
+      "helper": []
+    },
+    "green": {
+      "processes": 1,
+      "verified_paths": [
+        "rawlsing_next/_pre553_query_common.py",
+        "rawlsing_next/_pre553_query_eval.py",
+        "rawlsing_next/_pre553_query_predicate.py",
+        "rawlsing_next/field_forge_conditional_support.py",
+        "rawlsing_next/pre553_batch_durable_checkpoint_candidate.py",
+        "rawlsing_next/pre553_batch_runner.py",
+        "rawlsing_next/pre553_c11_ingest.py",
+        "rawlsing_next/pre553_c11_integrity.py",
+        "rawlsing_next/pre553_c11_repository.py",
+        "rawlsing_next/pre553_carrier_execution.py",
+        "rawlsing_next/pre553_discovery_exact.py",
+        "rawlsing_next/pre553_empirical_authority.py",
+        "rawlsing_next/pre553_empirical_objects.py",
+        "rawlsing_next/pre553_empirical_query.py",
+        "rawlsing_next/pre553_governed_batch_checkpoint_integration_candidate.py",
+        "rawlsing_next/pre553_hq297_v2r_role_query_binding_candidate.py",
+        "rawlsing_next/pre553_original_identity_v2k_successor_candidate.py",
+        "rawlsing_next/pre553_original_workload_binder_candidate.py",
+        "rawlsing_next/pre553_original_workload_contract_v2_candidate.py",
+        "rawlsing_next/pre553_original_workload_v2_verifier_candidate.py",
+        "rawlsing_next/pre553_physical_c11_bridge.py",
+        "rawlsing_next/pre553_physical_decoder.py",
+        "rawlsing_next/pre553_r5_codec.py",
+        "rawlsing_next/pre553_route_b_production.py",
+        "rawlsing_next/pre553_runtime_authority.py",
+        "rawlsing_next/pre553_runtime_context.py",
+        "rawlsing_next/pre553_source_backed_c11_facade.py",
+        "rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py",
+        "rawlsing_next/tests/conftest.py",
+        "rawlsing_next/tests/test_hq297_v2r_role_query_binding.py",
+        "rawlsing_next/tests/test_postastra_pv_v2k_independent.py",
+        "rawlsing_next/tests/test_pre553_discovery_exact.py",
+        "rawlsing_next/tests/test_pre553_empirical_query.py",
+        "rawlsing_next/tests/test_pre553_route_b_production.py"
+      ],
+      "helper": []
+    },
+    "regressions": {
+      "processes": 53,
+      "verified_paths": [
+        "WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py",
+        "rawlsing_next/_pre553_query_common.py",
+        "rawlsing_next/_pre553_query_eval.py",
+        "rawlsing_next/_pre553_query_predicate.py",
+        "rawlsing_next/field_forge_conditional_support.py",
+        "rawlsing_next/pre553_batch_durable_checkpoint_candidate.py",
+        "rawlsing_next/pre553_batch_runner.py",
+        "rawlsing_next/pre553_c11_ingest.py",
+        "rawlsing_next/pre553_c11_integrity.py",
+        "rawlsing_next/pre553_c11_repository.py",
+        "rawlsing_next/pre553_carrier_execution.py",
+        "rawlsing_next/pre553_discovery_exact.py",
+        "rawlsing_next/pre553_empirical_authority.py",
+        "rawlsing_next/pre553_empirical_objects.py",
+        "rawlsing_next/pre553_empirical_query.py",
+        "rawlsing_next/pre553_governed_batch_checkpoint_integration_candidate.py",
+        "rawlsing_next/pre553_original_identity_v2k_successor_candidate.py",
+        "rawlsing_next/pre553_original_workload_binder_candidate.py",
+        "rawlsing_next/pre553_original_workload_contract_v2_candidate.py",
+        "rawlsing_next/pre553_original_workload_v2_verifier_candidate.py",
+        "rawlsing_next/pre553_physical_c11_bridge.py",
+        "rawlsing_next/pre553_physical_decoder.py",
+        "rawlsing_next/pre553_r5_codec.py",
+        "rawlsing_next/pre553_route_b_production.py",
+        "rawlsing_next/pre553_runtime_authority.py",
+        "rawlsing_next/pre553_runtime_context.py",
+        "rawlsing_next/pre553_source_backed_c11_facade.py",
+        "rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py",
+        "rawlsing_next/tests/conftest.py",
+        "rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py",
+        "rawlsing_next/tests/test_postastra_pv_v2k_independent.py",
+        "rawlsing_next/tests/test_pre553_discovery_exact.py",
+        "rawlsing_next/tests/test_pre553_empirical_query.py",
+        "rawlsing_next/tests/test_pre553_original_workload_contract_v2_candidate.py",
+        "rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py",
+        "rawlsing_next/tests/test_pre553_route_b_production.py",
+        "rawlsing_next/tests/test_pre553_v2_durable_consumer_integration_candidate.py"
+      ],
+      "helper": [
+        {
+          "module": "__main__",
+          "path": "WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py",
+          "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-regressions-kkj_sam_/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py",
+          "sha256": "404d00c2ea33717c300a2ee44a6856551ebc6d59fe581f9211b177065da35f1f",
+          "git_blob": "84926e049d1879e48e9dcda7b1283de9d6cfc34d",
+          "commit": "3f91dc22d2eb863bc1d2facccfd33e6c05349503",
+          "match": true
+        }
+      ]
+    },
+    "cold": {
+      "processes": 2,
+      "verified_paths": [
+        "rawlsing_next/_pre553_query_common.py",
+        "rawlsing_next/_pre553_query_eval.py",
+        "rawlsing_next/_pre553_query_predicate.py",
+        "rawlsing_next/field_forge_conditional_support.py",
+        "rawlsing_next/pre553_batch_durable_checkpoint_candidate.py",
+        "rawlsing_next/pre553_batch_runner.py",
+        "rawlsing_next/pre553_c11_ingest.py",
+        "rawlsing_next/pre553_c11_integrity.py",
+        "rawlsing_next/pre553_c11_repository.py",
+        "rawlsing_next/pre553_carrier_execution.py",
+        "rawlsing_next/pre553_discovery_exact.py",
+        "rawlsing_next/pre553_empirical_authority.py",
+        "rawlsing_next/pre553_empirical_objects.py",
+        "rawlsing_next/pre553_empirical_query.py",
+        "rawlsing_next/pre553_governed_batch_checkpoint_integration_candidate.py",
+        "rawlsing_next/pre553_hq297_v2r_role_query_binding_candidate.py",
+        "rawlsing_next/pre553_original_identity_v2k_successor_candidate.py",
+        "rawlsing_next/pre553_original_workload_binder_candidate.py",
+        "rawlsing_next/pre553_original_workload_contract_v2_candidate.py",
+        "rawlsing_next/pre553_original_workload_v2_verifier_candidate.py",
+        "rawlsing_next/pre553_physical_c11_bridge.py",
+        "rawlsing_next/pre553_physical_decoder.py",
+        "rawlsing_next/pre553_r5_codec.py",
+        "rawlsing_next/pre553_route_b_production.py",
+        "rawlsing_next/pre553_runtime_authority.py",
+        "rawlsing_next/pre553_runtime_context.py",
+        "rawlsing_next/pre553_source_backed_c11_facade.py",
+        "rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py",
+        "rawlsing_next/tests/conftest.py",
+        "rawlsing_next/tests/test_hq297_v2r_role_query_binding.py",
+        "rawlsing_next/tests/test_postastra_pv_v2k_independent.py",
+        "rawlsing_next/tests/test_pre553_discovery_exact.py",
+        "rawlsing_next/tests/test_pre553_empirical_query.py",
+        "rawlsing_next/tests/test_pre553_route_b_production.py"
+      ],
+      "helper": []
+    }
+  },
+  "cold": {
+    "first_calls": [
+      3,
+      3
+    ],
+    "replay_calls": [
+      0,
+      0
+    ],
+    "six_identical_links": true,
+    "four_exact_held_records": true,
+    "prospective_register_digest_identical": true,
+    "fixture_producer_reconstruction_executed": true
+  },
+  "resource": {
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "telemetry": "own session turn_context inherited and read in this chat",
+    "host": "MacBook-Pro.lan",
+    "secondary_mac_B": "UNKNOWN",
+    "runner": "qualified independent local Python",
+    "quota": {
+      "ordinaryUsageAllowed": true,
+      "five_hour_used_percent": 42,
+      "weekly_used_percent": 22
+    },
+    "source_data": "NO_SAV_DTA_ORIGINAL_RESPONDENTS",
+    "primary_astra": false,
+    "paid_overflow": false,
+    "quota_reset": false
+  },
+  "failures": {
+    "red": "5 intended false-positive rejection assertions failed; 1 positive passed, before repair implementation",
+    "initial_green": "1 fixture failure: non-RUNNABLE B/J retained executable refs; 21 passed",
+    "held_refs_fixed_green": "25 passed; held denominator policy then finalized to explicit unknown in final fixtures",
+    "final_green": "25 passed zero failures/errors/skips",
+    "regressions": "156 passed zero failures/errors/skips"
+  },
+  "not_executed": [
+    "competent original U/O3/E_pre signatures and custody chronology",
+    "real original source/risk and O6 use",
+    "independent semantic owner adoption",
+    "original SAV/DTA execution",
+    "all35 full F1-F8/N11 acceptance",
+    "N9/N10E/N10W operative joined service",
+    "N12 wake/V3 actor/V2 persona",
+    "canonical merge"
+  ],
+  "actual_refusal_effects": [
+    {
+      "case": "role",
+      "diagnostic": "ORIGINAL_REGISTER_MULTISET_MISMATCH",
+      "durable_calls": [
+        0,
+        0
+      ],
+      "ledger_root": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-refusal-d799qp90",
+      "qualified_product_returned": false
+    },
+    {
+      "case": "form",
+      "diagnostic": "ORIGINAL_REGISTER_MULTISET_MISMATCH",
+      "durable_calls": [
+        0,
+        0
+      ],
+      "ledger_root": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-refusal-wsn8abqw",
+      "qualified_product_returned": false
+    },
+    {
+      "case": "unit",
+      "diagnostic": "ORIGINAL_REGISTER_MULTISET_MISMATCH",
+      "durable_calls": [
+        0,
+        0
+      ],
+      "ledger_root": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-refusal-ynf14pul",
+      "qualified_product_returned": false
+    },
+    {
+      "case": "held",
+      "diagnostic": "ORIGINAL_REGISTER_MULTISET_MISMATCH",
+      "durable_calls": [
+        0,
+        0
+      ],
+      "ledger_root": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-refusal-ysn_o0mo",
+      "qualified_product_returned": false
+    },
+    {
+      "case": "subset",
+      "diagnostic": "ORIGINAL_REGISTER_MULTISET_MISMATCH",
+      "durable_calls": [
+        0,
+        0
+      ],
+      "ledger_root": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-refusal-z1g3dwlo",
+      "qualified_product_returned": false
+    },
+    {
+      "case": "raw_denominator",
+      "diagnostic": "SAVED_FACT_RAW_DENOMINATOR_MISMATCH",
+      "durable_calls": [
+        3,
+        0
+      ],
+      "ledger_root": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-refusal-1l4n6zrx",
+      "qualified_product_returned": false
+    },
+    {
+      "case": "profile",
+      "diagnostic": "ACTUAL_CONSUMER_PROFILE_DENOMINATOR_MISMATCH",
+      "durable_calls": [
+        3,
+        3
+      ],
+      "ledger_root": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-refusal-odpq1xyi",
+      "qualified_product_returned": false
+    }
+  ],
+  "probe_is_extra_test_count": false
+}

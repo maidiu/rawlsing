@@ -1,0 +1,99 @@
+FFFFF.                                                                   [100%]
+=================================== FAILURES ===================================
+_____________________ test_precommitted_red_to_green[role] _____________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-27/test_precommitted_red_to_green0')
+kind = 'role'
+
+    @pytest.mark.parametrize('kind',['role','form','unit','held','subset'])
+    def test_precommitted_red_to_green(tmp_path,kind):
+        records,expected,plans,calls,register=fixture(tmp_path)
+        changed,selected=changed_case(records,expected,plans,kind)
+        frozen=K.FrozenOriginalExpected.from_records(changed,input_origin=K.ORIGIN)
+        if STAGE=='red':
+            report=K.run_sourcefree(expected=frozen,selected_scopes=selected)
+            (RET/'repro'/('RED_'+kind+'.json')).write_text(json.dumps(dict(candidate_ok=report['ok'],calls=[len(c) for c in calls],report=report),indent=2))
+>           assert not report['ok'], 'PV_RED_FALSE_POSITIVE_'+kind
+E           AssertionError: PV_RED_FALSE_POSITIVE_role
+E           assert not True
+
+rawlsing_next/tests/test_hq297_v2r_role_query_binding.py:68: AssertionError
+_____________________ test_precommitted_red_to_green[form] _____________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-27/test_precommitted_red_to_green1')
+kind = 'form'
+
+    @pytest.mark.parametrize('kind',['role','form','unit','held','subset'])
+    def test_precommitted_red_to_green(tmp_path,kind):
+        records,expected,plans,calls,register=fixture(tmp_path)
+        changed,selected=changed_case(records,expected,plans,kind)
+        frozen=K.FrozenOriginalExpected.from_records(changed,input_origin=K.ORIGIN)
+        if STAGE=='red':
+            report=K.run_sourcefree(expected=frozen,selected_scopes=selected)
+            (RET/'repro'/('RED_'+kind+'.json')).write_text(json.dumps(dict(candidate_ok=report['ok'],calls=[len(c) for c in calls],report=report),indent=2))
+>           assert not report['ok'], 'PV_RED_FALSE_POSITIVE_'+kind
+E           AssertionError: PV_RED_FALSE_POSITIVE_form
+E           assert not True
+
+rawlsing_next/tests/test_hq297_v2r_role_query_binding.py:68: AssertionError
+_____________________ test_precommitted_red_to_green[unit] _____________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-27/test_precommitted_red_to_green2')
+kind = 'unit'
+
+    @pytest.mark.parametrize('kind',['role','form','unit','held','subset'])
+    def test_precommitted_red_to_green(tmp_path,kind):
+        records,expected,plans,calls,register=fixture(tmp_path)
+        changed,selected=changed_case(records,expected,plans,kind)
+        frozen=K.FrozenOriginalExpected.from_records(changed,input_origin=K.ORIGIN)
+        if STAGE=='red':
+            report=K.run_sourcefree(expected=frozen,selected_scopes=selected)
+            (RET/'repro'/('RED_'+kind+'.json')).write_text(json.dumps(dict(candidate_ok=report['ok'],calls=[len(c) for c in calls],report=report),indent=2))
+>           assert not report['ok'], 'PV_RED_FALSE_POSITIVE_'+kind
+E           AssertionError: PV_RED_FALSE_POSITIVE_unit
+E           assert not True
+
+rawlsing_next/tests/test_hq297_v2r_role_query_binding.py:68: AssertionError
+_____________________ test_precommitted_red_to_green[held] _____________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-27/test_precommitted_red_to_green3')
+kind = 'held'
+
+    @pytest.mark.parametrize('kind',['role','form','unit','held','subset'])
+    def test_precommitted_red_to_green(tmp_path,kind):
+        records,expected,plans,calls,register=fixture(tmp_path)
+        changed,selected=changed_case(records,expected,plans,kind)
+        frozen=K.FrozenOriginalExpected.from_records(changed,input_origin=K.ORIGIN)
+        if STAGE=='red':
+            report=K.run_sourcefree(expected=frozen,selected_scopes=selected)
+            (RET/'repro'/('RED_'+kind+'.json')).write_text(json.dumps(dict(candidate_ok=report['ok'],calls=[len(c) for c in calls],report=report),indent=2))
+>           assert not report['ok'], 'PV_RED_FALSE_POSITIVE_'+kind
+E           AssertionError: PV_RED_FALSE_POSITIVE_held
+E           assert not True
+
+rawlsing_next/tests/test_hq297_v2r_role_query_binding.py:68: AssertionError
+____________________ test_precommitted_red_to_green[subset] ____________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-27/test_precommitted_red_to_green4')
+kind = 'subset'
+
+    @pytest.mark.parametrize('kind',['role','form','unit','held','subset'])
+    def test_precommitted_red_to_green(tmp_path,kind):
+        records,expected,plans,calls,register=fixture(tmp_path)
+        changed,selected=changed_case(records,expected,plans,kind)
+        frozen=K.FrozenOriginalExpected.from_records(changed,input_origin=K.ORIGIN)
+        if STAGE=='red':
+            report=K.run_sourcefree(expected=frozen,selected_scopes=selected)
+            (RET/'repro'/('RED_'+kind+'.json')).write_text(json.dumps(dict(candidate_ok=report['ok'],calls=[len(c) for c in calls],report=report),indent=2))
+>           assert not report['ok'], 'PV_RED_FALSE_POSITIVE_'+kind
+E           AssertionError: PV_RED_FALSE_POSITIVE_subset
+E           assert not True
+
+rawlsing_next/tests/test_hq297_v2r_role_query_binding.py:68: AssertionError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_hq297_v2r_role_query_binding.py::test_precommitted_red_to_green[role]
+FAILED rawlsing_next/tests/test_hq297_v2r_role_query_binding.py::test_precommitted_red_to_green[form]
+FAILED rawlsing_next/tests/test_hq297_v2r_role_query_binding.py::test_precommitted_red_to_green[unit]
+FAILED rawlsing_next/tests/test_hq297_v2r_role_query_binding.py::test_precommitted_red_to_green[held]
+FAILED rawlsing_next/tests/test_hq297_v2r_role_query_binding.py::test_precommitted_red_to_green[subset]
+5 failed, 1 passed in 2.45s

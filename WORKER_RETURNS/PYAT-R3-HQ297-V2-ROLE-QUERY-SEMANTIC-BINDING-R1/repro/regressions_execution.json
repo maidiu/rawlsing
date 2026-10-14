@@ -1,0 +1,32 @@
+{
+  "stage": "regressions",
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "-q",
+    "--import-mode=importlib",
+    "rawlsing_next/tests/test_postastra_pv_v2k_independent.py",
+    "rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py",
+    "rawlsing_next/tests/test_pre553_v2_durable_consumer_integration_candidate.py",
+    "rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py",
+    "rawlsing_next/tests/test_pre553_route_b_production.py",
+    "rawlsing_next/tests/test_pre553_empirical_query.py",
+    "rawlsing_next/tests/test_pre553_discovery_exact.py",
+    "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq297-v2r-role-binding/WORKER_RETURNS/PYAT-R3-HQ297-V2-ROLE-QUERY-SEMANTIC-BINDING-R1/repro/regressions.xml"
+  ],
+  "cwd": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-regressions-kkj_sam_",
+  "environment": {
+    "PYTHONPATH": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-regressions-kkj_sam_",
+    "PV_RUNTIME": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-regressions-kkj_sam_",
+    "PV_RETURN": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq297-v2r-regressions-kkj_sam_/WORKER_RETURNS/PYAT-R3-POSTASTRA-PV-V2K-INDEPENDENT-COURT-R1",
+    "PV_SUITE": "regressions",
+    "V2R_STAGE": "green",
+    "V2R_RETURN": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq297-v2r-role-binding/WORKER_RETURNS/PYAT-R3-HQ297-V2-ROLE-QUERY-SEMANTIC-BINDING-R1"
+  },
+  "exit_code": 0,
+  "seconds": 34.273433208465576,
+  "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "executable": "/usr/local/bin/python3",
+  "host": "MacBook-Pro.lan"
+}

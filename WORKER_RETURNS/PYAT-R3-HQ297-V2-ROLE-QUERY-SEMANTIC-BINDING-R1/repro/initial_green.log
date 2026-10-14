@@ -1,0 +1,82 @@
+......F...............                                                   [100%]
+=================================== FAILURES ===================================
+_________________ test_complete_held_B_J_and_ordered_multiset __________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-28/test_complete_held_B_J_and_ord0')
+
+    def test_complete_held_B_J_and_ordered_multiset(tmp_path):
+>       records,expected,plans,calls,register=fixture(tmp_path,held_bj=True)
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_hq297_v2r_role_query_binding.py:89: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_hq297_v2r_role_query_binding.py:19: in fixture
+    extras=tuple(replace(w,legacy=replace(w.legacy,state='HELD',hold_reason='TEST_ONLY_OPERATION_OWNER_NOT_ISSUED'),
+rawlsing_next/tests/test_hq297_v2r_role_query_binding.py:19: in <genexpr>
+    extras=tuple(replace(w,legacy=replace(w.legacy,state='HELD',hold_reason='TEST_ONLY_OPERATION_OWNER_NOT_ISSUED'),
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/dataclasses.py:1494: in replace
+    return obj.__class__(**changes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+<string>:25: in __init__
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = V2ExpectedWorkDeclaration(source='PV-INDEPENDENT-SYNTHETIC', wave='W1', item='Y', form='F1', slot='B', semantic_op_cla...aaa095f7935a1fbdb7164f22545da4585c'), discovery_authority_ref=None, schema_version='HQ280_PV3_A04S_CANONICAL_V2@1.0.0')
+
+    def __post_init__(self) -> None:
+        if self.state not in EXPECTED_STATES:
+            raise V2ContractError(f"invalid expected state {self.state!r}")
+        if self.semantic_op_class not in SEMANTIC_OP_CLASSES:
+            raise V2ContractError(f"unsupported semantic_op_class {self.semantic_op_class!r}")
+        if self.measure_kind not in MEASURE_KINDS:
+            raise V2ContractError(f"unsupported measure_kind {self.measure_kind!r}")
+        if not self.semantic_roles:
+            raise V2ContractError("semantic roles must be nonempty")
+        if (
+            not isinstance(self.multiplicity, int)
+            or isinstance(self.multiplicity, bool)
+            or self.multiplicity < 1
+        ):
+            raise V2ContractError("multiplicity must be a positive integer")
+        if self.state in NON_RUNNABLE_STATES and not self.hold_reason:
+            raise V2ContractError(
+                f"{self.state} obligation must carry an exact hold/denial reason"
+            )
+        if self.state == "RUNNABLE" and self.hold_reason is not None:
+            raise V2ContractError("RUNNABLE expected work cannot carry a hold reason")
+        if self.state == "RUNNABLE":
+            dispatch = SEMANTIC_TO_DISPATCH[self.semantic_op_class]
+            if dispatch == "I03_UNARY_OR_JOINT_QUERY":
+                if self.query_ref is None or self.predicate_ref is None:
+                    raise V2ContractError(
+                        "I03 expected work requires exact query_ref and predicate_ref"
+                    )
+                if self.discovery_authority_ref is not None:
+                    raise V2ContractError(
+                        "I03 expected work cannot also carry a discovery authority"
+                    )
+            else:
+                if self.discovery_authority_ref is None:
+                    raise V2ContractError(
+                        "I05 expected work requires exact discovery_authority_ref"
+                    )
+                if self.query_ref is not None or self.predicate_ref is not None:
+                    raise V2ContractError(
+                        "I05 expected work cannot also carry I03 refs"
+                    )
+        else:
+            if (
+                self.query_ref is not None
+                or self.predicate_ref is not None
+                or self.discovery_authority_ref is not None
+            ):
+>               raise V2ContractError(
+                    "non-RUNNABLE obligations must not carry executable owner refs"
+                )
+E               rawlsing_next.pre553_original_workload_contract_v2_candidate.V2ContractError: non-RUNNABLE obligations must not carry executable owner refs
+
+rawlsing_next/pre553_original_workload_contract_v2_candidate.py:401: V2ContractError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_hq297_v2r_role_query_binding.py::test_complete_held_B_J_and_ordered_multiset
+1 failed, 21 passed in 5.90s
