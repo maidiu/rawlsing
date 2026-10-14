@@ -1,0 +1,175 @@
+{
+  "schema": "PYAT_HQ295_T8E_NATIVE_WAVE_PREIMAGE@1",
+  "evidence_grade": "DOCUMENTARY_NATIVE_INPUTS_NOT_MEASURED",
+  "source_count_conserved": 35,
+  "temporal_candidate_edges_conserved": 63,
+  "temporal_graph_blob": "8870545724d2b3353e4cb4125bc06c041d463954",
+  "pair_grants": 0,
+  "source_operation_grants": 0,
+  "respondent_reads": 0,
+  "real_temporal_products": 0,
+  "structural_N8S": "HELD_NO_TWO_AUTHENTIC_OBJECTIVE_EPOCH_FACTS",
+  "cases": [
+    {
+      "id": "GHA_R5_Q43_R9_Q31",
+      "role": "CONDITIONED_FIRST_PRODUCTION_DOCKET",
+      "country": "Ghana",
+      "family": "AFROBAROMETER",
+      "native_wave_inputs": [
+        {
+          "source": "SRC02",
+          "year": 2012,
+          "item": "GHA Q43",
+          "retained_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+          "categories": {
+            "0": "respondent says Ghana not democracy",
+            "1": "not at all satisfied",
+            "2": "not very satisfied",
+            "3": "fairly satisfied",
+            "4": "very satisfied",
+            "9": "DK",
+            "998": "refused merged"
+          },
+          "intent": "Ghanaian adult citizens 18+ national",
+          "fieldwork": "2012-05-08/2012-05-27",
+          "observed": null
+        },
+        {
+          "source": "SRC03",
+          "year": 2022,
+          "item": "GHA Q31",
+          "retained_sha256": "3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8",
+          "categories": {
+            "0": "respondent says Ghana not democracy",
+            "1": "not at all satisfied",
+            "2": "not very satisfied",
+            "3": "fairly satisfied",
+            "4": "very satisfied",
+            "8": "refused merged",
+            "9": "DK"
+          },
+          "intent": "Ghanaian adult citizens 18+ national",
+          "fieldwork": "2022-04-04/2022-04-20",
+          "observed": null
+        }
+      ],
+      "held": [
+        "official original release-to-retained SHA join",
+        "exact Ghana selector, language/form and asked-risk",
+        "PSU/strata/weight/variance and changed frames/mode",
+        "measurement invariance",
+        "two source-operation grants",
+        "pair-specific EE12 and N9-use grant",
+        "actual adopted N8E comparator and actual N9 consumer"
+      ],
+      "source_docket": "WORKER_RETURNS/PYAT-HQ281-D07-FIRST-TEMPORAL-PRODUCT-R1/00_RETURN.md @bab16899f4c2d7137aba95debbce5410ea0dd74d"
+    },
+    {
+      "id": "UGA_R5_Q7_R9_Q3",
+      "role": "INDEPENDENT_NATIVE_CONTROL",
+      "country": "Uganda",
+      "family": "AFROBAROMETER",
+      "native_wave_inputs": [
+        {
+          "source": "SRC02",
+          "year": 2012,
+          "item": "R5 Q7",
+          "categories": {
+            "1": "wrong",
+            "2": "right",
+            "9": "DK",
+            "998": "refused",
+            "-1": "missing"
+          },
+          "national_n_documentary": 2400,
+          "supplemental_n_documentary": 3800,
+          "weight_candidate": "withinwt",
+          "observed": null
+        },
+        {
+          "source": "SRC03",
+          "year": 2022,
+          "item": "R9 Q3",
+          "categories": {
+            "1": "wrong",
+            "2": "right",
+            "8": "refused",
+            "9": "DK",
+            "-1": "missing"
+          },
+          "national_n_documentary": 2400,
+          "supplemental_n_documentary": 992,
+          "weight_candidates": [
+            "withinwt_ea",
+            "withinwt_hh"
+          ],
+          "observed": null
+        }
+      ],
+      "held": [
+        "R5 original final country script",
+        "different balancing preamble",
+        "national vs supplemental selectors",
+        "weight/PSU/strata variance",
+        "retained release and original use",
+        "EE12"
+      ],
+      "status": "HELD_NOT_NONCOMPARABLE"
+    },
+    {
+      "id": "AUT_EVS_1990_2008_A048",
+      "role": "HETEROGENEOUS_NATIVE_CONTROL",
+      "country": "Austria",
+      "family": "EVS",
+      "native_wave_inputs": [
+        {
+          "source": "SRC12",
+          "year": 1990,
+          "item": "original Q465C/q467c",
+          "native": {
+            "1": "approve",
+            "2": "disapprove"
+          },
+          "harmonized": {
+            "0": "disapprove",
+            "1": "approve"
+          },
+          "missing_series": "-1 to -5 typed",
+          "population": "1990 national target citizenship/probability/quota unresolved",
+          "observed": null
+        },
+        {
+          "source": "SRC14",
+          "year": 2008,
+          "item": "original Q53A/v184",
+          "native": {
+            "1": "approve",
+            "2": "disapprove"
+          },
+          "harmonized": {
+            "0": "disapprove",
+            "1": "approve"
+          },
+          "missing_series": "-1 to -5 typed",
+          "population": "18+ private-household residents including noncitizens",
+          "observed": null
+        }
+      ],
+      "held": [
+        "1990 sample method/population",
+        "common target domain",
+        "read/card vs list presentation",
+        "original/harmonized recode and typed missing",
+        "release SHA and design/variance",
+        "EE12"
+      ],
+      "status": "HELD_NOT_NONCOMPARABLE"
+    }
+  ],
+  "modeled_2017": {
+    "measured": false,
+    "value": null,
+    "status": "UNKNOWN_GAP",
+    "alternative": "MODEL_INFERRED only after distinct priors/method, uncertainty, gap/rupture/sensitivity, target-use and consumer warrants"
+  }
+}
