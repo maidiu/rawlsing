@@ -4,8 +4,7 @@
 Stdlib only. Imports NO Rawlsing owner. Never reads SAV/DTA. Never issues EE12,
 constructs an N8E product, or calls an N9 implementation. Its positive output
 is a fixture-only arithmetic/retention demonstration, NOT observed history.
-Run: python3 -m unittest -v WORKER_RETURNS/.../repro/test_t8e_temporal_contract.py
-Or: python3 WORKER_RETURNS/.../repro/t8e_temporal_contract.py
+Run: python3 WORKER_RETURNS/PYAT-R3-HQ295-T8E-TEMPORAL-OUTPUT-R1/repro/t8e_temporal_contract.py
 """
 from __future__ import annotations
 from dataclasses import dataclass, replace
