@@ -1,0 +1,593 @@
+{
+  "schema": "HQ297_INDEPENDENT_PREEXECUTION_SC0_FROZEN_EXPECTATIONS@1",
+  "reviewer_start": "c0663827abf3627e8beb13dd3516a495d27c1093",
+  "candidate_ref": "b497f85713847cecc169d4d71c7629655d562dc0",
+  "SC0_ref": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+  "SC0_k9_blob": "9ccb66f9b08a4aa8b96582295bb2966d250fd72d",
+  "SC0_k10_blob": "e78b3ee91da1fb18deaf8d8f226800ad855adbae",
+  "authorship": "SC0 authored independently of PE; HQ297 copies SC0 semantic expectations before any HQ297 candidate execution",
+  "mode": "FROZEN_PROPOSED_TEST_SPEC_UNEXECUTED",
+  "normalization": {
+    "allowed_provider_variant_paths": [
+      "physical_provider_id",
+      "physical_storage_locator",
+      "physical_serialization",
+      "physical_lineage_blob",
+      "nonsemantic_cache_ids"
+    ],
+    "not_allowed_to_normalize": [
+      "source_object_semantic_id",
+      "native_response_value",
+      "native_unit",
+      "absolute_horizon",
+      "roles_order",
+      "nary_participants",
+      "f2_requirement_ref",
+      "time_axes",
+      "permission_ceiling",
+      "query_conditioner_order",
+      "universe",
+      "denominator",
+      "support",
+      "negative_state",
+      "consumer_effect",
+      "replay_semantic_digest"
+    ]
+  },
+  "semantic_projection": {
+    "semantic_ids": [
+      "fx:scope:town2008",
+      "fx:AH:collective-horizon",
+      "fx:route:school_access",
+      "fx:f1:triad_1",
+      "fx:f2:history_prior_1",
+      "fx:predicate:prior_service",
+      "fx:neg:unknown_access"
+    ],
+    "native_coordinates": {
+      "scope": "fictional district X / 2008 / native respondent-unit",
+      "strata": [
+        "native:municipal-role",
+        "native:regional-role"
+      ],
+      "absolute_horizon": "fx:AH:collective-horizon"
+    },
+    "nary": {
+      "relation_id": "fx:f1:triad_1",
+      "participant_roles": [
+        [
+          "authority",
+          0,
+          "institution:school"
+        ],
+        [
+          "applicant",
+          1,
+          "subject:generic"
+        ],
+        [
+          "sponsor",
+          2,
+          "collective:mutual-aid"
+        ]
+      ],
+      "ordered": true,
+      "cardinality": 3,
+      "not_three_independent_dyads": true
+    },
+    "f2": {
+      "id": "fx:f2:history_prior_1",
+      "route_refs": [
+        "fx:route:school_access"
+      ],
+      "f1_refs": [
+        "fx:f1:triad_1"
+      ],
+      "predicate_refs": [
+        "fx:predicate:prior_service"
+      ],
+      "actor_history_requirement_refs": [
+        "fx:req:prior-history"
+      ],
+      "status": "DEFERRED_UNBOUND"
+    },
+    "clocks": {
+      "observation_effective": "2008-01-01/2008-12-31",
+      "publication": "2010-02-01",
+      "knowledge_as_of": "2010-12-31",
+      "actor_event": "2008-07-01",
+      "request": "2026-10-14"
+    },
+    "empirical": {
+      "universe": "fx:universe:single_source",
+      "sampling_unit": "RESPONDENT",
+      "release": "fx:release:v1",
+      "target": "fx:response:access_yes",
+      "direction": "FORWARD_CONDITIONAL",
+      "base_n": 60,
+      "cells": [
+        {
+          "value": "YES",
+          "n": 54
+        },
+        {
+          "value": "NO",
+          "n": 6
+        }
+      ],
+      "condition_chain": [
+        {
+          "index": 0,
+          "ref": "fx:cond:area",
+          "n": 60
+        },
+        {
+          "index": 1,
+          "ref": "fx:cond:school",
+          "n": 30
+        },
+        {
+          "index": 2,
+          "ref": "fx:cond:caretime",
+          "n": 12
+        }
+      ],
+      "minority": "fx:response:access_no",
+      "uncertainty": "fx:uncertainty:sourcefree-not-real",
+      "model_use": "TEST_ONLY"
+    },
+    "downstream_consumers": [
+      {
+        "id": "CONCEPTION_SCENARIO_PROPOSAL_INPUT_ONLY",
+        "input": "generic world conditions and distribution",
+        "output": "eligible scenario constraints and minority alternatives; no parent object, partner selection or biography"
+      },
+      {
+        "id": "NONPARENT_APPRENTICESHIP_ENTRY",
+        "input": "same generic world and distribution",
+        "output": "possible apprenticeship/education access routes and restrictions; no generated learner psyche"
+      }
+    ],
+    "invariant_k10_world_scope": "fx:municipal:2008:respondent-universe",
+    "invariant_k10_native_strata": [
+      "fx:stratum:A",
+      "fx:stratum:B"
+    ],
+    "invariant_k10_absolute_horizon": "fx:AH",
+    "invariant_k10_nary": {
+      "id": "fx:f1:three-party",
+      "roles": [
+        [
+          "institution",
+          "inst:1"
+        ],
+        [
+          "applicant",
+          "selector:opaque"
+        ],
+        [
+          "third-party",
+          "mutual_aid:3"
+        ]
+      ],
+      "order": [
+        0,
+        1,
+        2
+      ],
+      "route_refs": [
+        "fx:r:public",
+        "fx:r:mutual"
+      ],
+      "cardinality": 3
+    },
+    "invariant_k10_f2": {
+      "id": "fx:f2:separate",
+      "v555_routes": [
+        "fx:r:public",
+        "fx:r:mutual"
+      ],
+      "f1": [
+        "fx:f1:three-party"
+      ],
+      "motif": "ORIGINAL_NARY_TOPOLOGY",
+      "predicate": "fx:pred:historical_sponsorship",
+      "history_requirement": "fx:runtime-requirement:unbound",
+      "selection": "DEFERRED_UNBOUND",
+      "not_satisfaction": true
+    },
+    "invariant_k10_statuses": [
+      {
+        "scope": "fx:scope:measured-zero",
+        "state": "OBSERVED_ZERO",
+        "measure": 0
+      },
+      {
+        "scope": "fx:scope:complete-empty",
+        "state": "VALID_EMPTY"
+      },
+      {
+        "scope": "fx:scope:missing",
+        "state": "MISSING",
+        "measure": null
+      },
+      {
+        "scope": "fx:scope:power",
+        "state": "UNDERPOWERED",
+        "measure": null
+      },
+      {
+        "scope": "fx:scope:notasked",
+        "state": "NOT_ASKED",
+        "measure": null
+      },
+      {
+        "scope": "fx:scope:incomparable",
+        "state": "NONCOMPARABLE",
+        "measure": null
+      },
+      {
+        "scope": "fx:scope:held",
+        "state": "HELD_AUTHORITY",
+        "measure": null
+      },
+      {
+        "scope": "fx:scope:denied",
+        "state": "DENIED_USE",
+        "measure": null
+      },
+      {
+        "scope": "fx:scope:nocurrent",
+        "state": "NO_CURRENT",
+        "measure": null
+      },
+      {
+        "scope": "fx:scope:proxy",
+        "state": "PROXY_MODELLED",
+        "measure": null
+      },
+      {
+        "scope": "fx:scope:unknown-gap",
+        "state": "UNKNOWN_UNOBSERVED_GAP",
+        "measure": null
+      },
+      {
+        "scope": "fx:scope:unbound",
+        "state": "UNBOUND_RUNTIME_BINDING",
+        "measure": null
+      }
+    ],
+    "invariant_k10_four_clock_source": {
+      "observation_valid": "2008",
+      "published": "2010",
+      "as_of": "2009",
+      "actor_event": "2008",
+      "requested": "2026"
+    },
+    "invariant_k10_negative_and_alternatives": [
+      {
+        "id": "route_open",
+        "witness": "public rule A",
+        "state": "POSSIBLE"
+      },
+      {
+        "id": "route_closed",
+        "witness": "public rule B",
+        "state": "CONTRADICTORY_SOURCE_SCOPE"
+      }
+    ],
+    "invariant_k10_read_set": [
+      "fx:r:public",
+      "fx:r:mutual",
+      "fx:f1:three-party",
+      "fx:f2:separate",
+      "fx:response:no",
+      "fx:status:incomparable",
+      "fx:source:synthetic"
+    ],
+    "invariant_k10_binding_echo": {
+      "tag": "GENERATED_RUNTIME_FACT_REF",
+      "kind": "LOCATION",
+      "fact": "fx:caller:location-change",
+      "origin": "CALLER_RUNTIME",
+      "may_use_as_filter": true,
+      "may_use_as_source_observation": false
+    },
+    "invariant_k10_native_risk": {
+      "target_yes": 54,
+      "target_no": 6,
+      "denominator": 60,
+      "base_ratio": "54/60",
+      "minority_ratio": "6/60",
+      "risk_set": "fx:risk:asked_eligible",
+      "routing": "fx:routing:asked",
+      "weight": "fx:design_weight:unit",
+      "uncertainty": "fx:u:fixture_no_real_inference"
+    },
+    "invariant_k10_conditioning_chain": [
+      {
+        "step": 0,
+        "condition": "fx:cond:municipal",
+        "raw_n": 60,
+        "denom": 60,
+        "source": "SOURCE_FACT"
+      },
+      {
+        "step": 1,
+        "condition": "fx:cond:education",
+        "raw_n": 24,
+        "denom": 30,
+        "source": "SOURCE_FACT"
+      },
+      {
+        "step": 2,
+        "condition": "fx:cond:location",
+        "raw_n": 7,
+        "denom": 12,
+        "source": "GENERATED_RUNTIME_FACT_REF"
+      }
+    ]
+  },
+  "expected_k9_cases": [
+    {
+      "id": "K9_01_TWO_PROVIDERS_SAME_MEANING",
+      "expected": "EQUIVALENT_EXCEPT_DECLARED_PHYSICAL_LINEAGE",
+      "assertions": [
+        "schema_valid(A) && schema_valid(B)",
+        "semantic_world_projection(A)==semantic_world_projection(B)",
+        "ordered_possibility_projection(A)==ordered_possibility_projection(B)",
+        "both_consumer_effects(A)==both_consumer_effects(B)",
+        "physical_provider_id(A)!=physical_provider_id(B)"
+      ]
+    },
+    {
+      "id": "K9_02_INDEPENDENT_NONPARENT",
+      "expected": "GENERIC_API_CONSUMED_WITHOUT_GENEALOGY",
+      "assertions": [
+        "requires_no_parent_or_coparent_tag",
+        "selected_apprenticeship_routes_equal",
+        "no_person_generation"
+      ]
+    },
+    {
+      "id": "K9_03_ID_REORDER_AND_STAGE_RENAME",
+      "expected": "EQUIVALENT",
+      "assertions": [
+        "no_stage_name_dependency",
+        "all roles/order unchanged",
+        "semantic projections equal"
+      ]
+    },
+    {
+      "id": "K9_04_NOT_EQUIVALENT_CONTRAST",
+      "expected": "FAIL_NON_EQUIVALENT_PROVIDER_NOT_PERMITTED_NORMALIZATION",
+      "assertions": [
+        "world_projection_inequality_detected",
+        "port must reject lost role"
+      ]
+    },
+    {
+      "id": "K9_05_MODELLED_VS_OBSERVED",
+      "expected": "REFUSE_GRADE_PROMOTION",
+      "assertions": [
+        "epistemic_grade_difference_detected",
+        "reject promotion"
+      ]
+    },
+    {
+      "id": "K9_06_FORWARD_REVERSE",
+      "expected": "HELD_AUTHORITY_REVERSE_ROLE",
+      "assertions": [
+        "no_calculation_of_reverse_from_forward",
+        "forward_legal_slice_preserved"
+      ]
+    },
+    {
+      "id": "K9_07_PERMISSIONS",
+      "expected": "DENIED_USE",
+      "assertions": [
+        "denied_requested_slice",
+        "no cached A bypass"
+      ]
+    },
+    {
+      "id": "K9_08_TWO_CHANNEL_REFRESH",
+      "expected": "TWO_INDEPENDENT_SUCCESSORS",
+      "assertions": [
+        "binding_change_causes_new_query",
+        "publication_boundary_causes_separate_successor",
+        "prior_receipts_immutable"
+      ]
+    }
+  ],
+  "expected_k10_cases": [
+    {
+      "id": "K10_01",
+      "mutation": "DROP_AH",
+      "expected": "REJECT_SEMANTIC_LOSS",
+      "oracle": "AH remains distinct; finite native strata still exact"
+    },
+    {
+      "id": "K10_02",
+      "mutation": "STRATUM_TRANSLATION",
+      "expected": "REJECT_NONINJECTIVE_COORDINATE",
+      "oracle": "original native ID remains retrievable"
+    },
+    {
+      "id": "K10_03",
+      "mutation": "DYADIZE_NARY",
+      "expected": "REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS",
+      "oracle": "triad ref, ordered roles and participant cardinality survive"
+    },
+    {
+      "id": "K10_04",
+      "mutation": "DROP_F2_HISTORY_REQUIREMENT",
+      "expected": "REJECT_F2_PREREQUISITE_LOSS",
+      "oracle": "F2 remains producer topology; no upstream satisfaction"
+    },
+    {
+      "id": "K10_05",
+      "mutation": "PREDICATE_BECOMES_EXPERIENCE",
+      "expected": "REJECT_ACTOR_FIREWALL",
+      "oracle": "producer supplies requirement only"
+    },
+    {
+      "id": "K10_06",
+      "mutation": "CONTRADICTION_DOMINANT_ONLY",
+      "expected": "REJECT_ALTERNATIVE_ERASURE",
+      "oracle": "contradiction/group/minority sources preserved"
+    },
+    {
+      "id": "K10_07",
+      "mutation": "MINORITY_ERASE",
+      "expected": "REJECT_SUPPORT_ERASURE",
+      "oracle": "minority fraction 6/60 still present"
+    },
+    {
+      "id": "K10_08",
+      "mutation": "ZERO_MISSING_COLLAPSE",
+      "expected": "REJECT_NEGATIVE_ALGEBRA_COLLAPSE",
+      "oracle": "three distinct exact scoped states"
+    },
+    {
+      "id": "K10_09",
+      "mutation": "UNDERPOWERED_AS_EMPTY",
+      "expected": "REJECT_UNDERPOWERED_ERASURE",
+      "oracle": "uncertainty/recoverability survive"
+    },
+    {
+      "id": "K10_10",
+      "mutation": "NOT_ASKED_AS_NO",
+      "expected": "REJECT_ROUTING_NONRESPONSE_LOSS",
+      "oracle": "risk/routing and ask-state remain"
+    },
+    {
+      "id": "K10_11",
+      "mutation": "CROSS_UNIT_POOL",
+      "expected": "REFUSE_SAMPLING_UNIT_JOINT",
+      "oracle": "lawful individual results still usable"
+    },
+    {
+      "id": "K10_12",
+      "mutation": "DIRECTION_REVERSE",
+      "expected": "HELD_AUTHORITY",
+      "oracle": "forward evidence preserved; reverse not invented"
+    },
+    {
+      "id": "K10_13",
+      "mutation": "CONDITION_SET_SORT",
+      "expected": "REJECT_ORDERED_PATH_LOSS",
+      "oracle": "step 0/1/2 and changed denominators retained"
+    },
+    {
+      "id": "K10_14",
+      "mutation": "UNCERTAIN_TO_POINT",
+      "expected": "REJECT_MODEL_PRECISION_INVENTION",
+      "oracle": "uncertainty and method refs survive"
+    },
+    {
+      "id": "K10_15",
+      "mutation": "CLOCK_CONFLATION",
+      "expected": "NO_CURRENT_OR_NOT_KNOWN_ASOF",
+      "oracle": "historical scene not rewritten by 2010 publication"
+    },
+    {
+      "id": "K10_16",
+      "mutation": "LAG_INTERPOLATION",
+      "expected": "HELD_AUTHORITY",
+      "oracle": "source anchors and unknown gap preserved"
+    },
+    {
+      "id": "K10_17",
+      "mutation": "BINDING_AS_OBSERVATION",
+      "expected": "REJECT_GENERATED_FACT_PROMOTION",
+      "oracle": "echo stays query only"
+    },
+    {
+      "id": "K10_18",
+      "mutation": "CHANGE_BINDING_NO_REFRESH",
+      "expected": "REJECT_STALE_BINDING_CONTEXT",
+      "oracle": "successor world selection required"
+    },
+    {
+      "id": "K10_19",
+      "mutation": "PUBLISH_BOUNDARY_NO_REFRESH",
+      "expected": "REJECT_STALE_REPOSITORY_CONTEXT",
+      "oracle": "channel A successor distinct from channel B"
+    },
+    {
+      "id": "K10_20",
+      "mutation": "PERMISSION_REVOKED",
+      "expected": "DENIED_USE",
+      "oracle": "specific descendant invalidated; unrelated permitted item may remain"
+    },
+    {
+      "id": "K10_21",
+      "mutation": "PARTIAL_AS_COMPLETE",
+      "expected": "PARTIAL_DEFERRED",
+      "oracle": "no positive full-demand snapshot; lawful other subscopes retained"
+    },
+    {
+      "id": "K10_22",
+      "mutation": "PROXY_AS_OBSERVED",
+      "expected": "REJECT_EPISTEMIC_PROMOTION",
+      "oracle": "grade remains fixture or modeled"
+    },
+    {
+      "id": "K10_23",
+      "mutation": "OPAQUE_HASH_NO_VALUES",
+      "expected": "REJECT_UNVERIFIABLE_CONSUMER_USE",
+      "oracle": "exact values-read path required"
+    },
+    {
+      "id": "K10_24",
+      "mutation": "IMPLICIT_MODEL_CROSSPRODUCT",
+      "expected": "REFUSE_UNAUTHORIZED_COMPOSITION",
+      "oracle": "no invented joint, household or event probability"
+    },
+    {
+      "id": "K10_25",
+      "mutation": "UPSTREAM_PSYCHIC_FIELDS",
+      "expected": "REJECT_ACTOR_JURISDICTION",
+      "oracle": "structural public authority/category allowed, actor psyche forbidden"
+    },
+    {
+      "id": "K10_26",
+      "mutation": "F2_PUBLIC_SANCTION",
+      "expected": "REJECT_PUBLIC_RULE_AND_OWNER_LOSS",
+      "oracle": "public objective rule retained, private response not inferred"
+    },
+    {
+      "id": "K10_27",
+      "mutation": "NONPARENT_CONSUMER",
+      "expected": "PRODUCE_GENERIC_OBJECTIVE_POSSIBILITY_ONLY",
+      "oracle": "same raw contract grammar; no genealogy tags"
+    },
+    {
+      "id": "K10_28",
+      "mutation": "NO_ACTOR_WELD",
+      "expected": "REFUSE_UNGRANTED_ACTOR_USE",
+      "oracle": "all actor calls remain absent"
+    }
+  ],
+  "strict_methods": [
+    "provider_A_vs_provider_B physical serialization materially different but semantic projections equal",
+    "deliberate non-equivalent B rejected not normalized",
+    "both conception scenario INPUT ONLY and apprenticeship NONPARENT consumer effect parity",
+    "four-clock individual modes and AH native strata",
+    "F1 nary exact role order and F2 prerequisite history separate from V3 satisfaction",
+    "caller GENERATED_RUNTIME_FACT_REF echo NOT source observation",
+    "N10E ordered conditional fractions no set-only collapse",
+    "source-native denominators 60->30->12 and 54/60,6/60 minority",
+    "two distinct refresh triggers, transitive permission invalidation",
+    "reverse-role new risk/denominator operation use",
+    "no unlicensed actor or N9 adoption"
+  ],
+  "unexecuted_statements": {
+    "candidate_python_runtime": false,
+    "provider_A_physical_runtime": false,
+    "provider_B_physical_runtime": false,
+    "SC0_schema_runtime_validation": false,
+    "PE_regression_rerun": false
+  }
+}
