@@ -1,0 +1,11 @@
+# PYAT HQ295 V2K — original expected-work identity successor
+
+REPO: maidiu/rawlsing (private). Worker NOT HQ or original source issuer.
+BRANCH: agent/rabochii-pyat-r3-hq295-v2k-original-identity-successor-r1
+PARENT: 4576b24f26167845ad5992c394b2ffb105dbcce1
+SEALED STARTUP: post-commission remote SHA in HQ launch.
+RESOURCE: secondary Mac Codex B GPT-6.1 Sol Medium only after quota/privacy/worktree check; reserve primary Mac for Astra.
+Read predecessor A04B 00_RETURN.md and 04_AUTHORITY_AND_KEY_GAPS.md at parent exact SHA, existing P01 @3f91dc22d2eb863bc1d2facccfd33e6c05349503 and modern governed C11→I03/I05→V2 pipeline. Read current persona-first/whole-machine Astra action plan at HQ working 0f4a798fb8d8f10a0afa494cebd8043f1582267d.
+MISSION: Formally review a versioned successor expected-work schema that retains original administered item identity, respondent namespace, release, form, language, routing, occurrence/option, ordered operation roles, risk and independent original U/E custody refs. A04B proved distinct actual C11 universes can produce distinct real downstream consumer receipts while colliding in old V2 expected keys. Keep old published key law immutable. Do not silently alter protected semantics without competent owner authorization. Build a separate candidate and runnable no-drop/positive test if authorization supports; otherwise return exact proposed minimal schema/owner decision and RED falsifier. Preserve both B and J-only expected original obligations even if selected A-only downstream passes, and original namespace conservation, cold replay, typed refusal and all 35-wave scope.
+Writes: only WORKER_RETURNS/PYAT-R3-HQ295-V2K-ORIGINAL-IDENTITY-SUCCESSOR-R1 plus new noncolliding tests/isolated successor candidate if permitted. No original respondent data, new source issuer, E_pre, canonical merge, protected CURRENT, V3 actor or paid overflow.
+Report actual commands/exit/JUnit or NOT_EXECUTED, exact source identities, sourcefree positive and negative, scientific grades, resource usage UNKNOWN if unavailable; push only own branch and direct verify remote SHA.
