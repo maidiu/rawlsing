@@ -1,0 +1,60 @@
+{
+  "schema": "HQ297_K9E_ENVIRONMENT_AND_MATERIALIZATION_R1",
+  "sealed_startup": "92524b8615f281b8a32a57e8bb8c2d05c978c619",
+  "tool_surface": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "git": "2.47.3",
+    "pip": "25.1.1",
+    "jsonschema": "4.26.0",
+    "filesystem_scratch": "writable",
+    "network_error": "fatal: unable to access 'https://github.com/maidiu/rawlsing.git/': Could not resolve host: github.com",
+    "github_connector_private_fetch": "SUCCESS"
+  },
+  "git_preimage": "SHA1(UTF8('blob '+content_byte_length) + 0x00 + exact UTF8 source bytes)",
+  "verified_git_blobs": [
+    {
+      "name": "PE",
+      "ref": "b497f85713847cecc169d4d71c7629655d562dc0",
+      "path": "rawlsing_next/pre553_postastra_pe_generic_world_possibility.py",
+      "sha": "58484f4c3d9aae148d4116dcf00420c432aefcbd",
+      "byte_length": 34731,
+      "computed_sha_matches_repository": true
+    },
+    {
+      "name": "SC0-K9",
+      "ref": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+      "path": "02_K9_PROVIDER_SWAP_ORACLES.json",
+      "sha": "9ccb66f9b08a4aa8b96582295bb2966d250fd72d",
+      "byte_length": 8291,
+      "computed_sha_matches_repository": true
+    },
+    {
+      "name": "SC0-K10",
+      "ref": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+      "path": "03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json",
+      "sha": "e78b3ee91da1fb18deaf8d8f226800ad855adbae",
+      "byte_length": 15914,
+      "computed_sha_matches_repository": true
+    },
+    {
+      "name": "independent-13",
+      "ref": "f515188e2975976c60c4a59ca03cb5e3c6283f90",
+      "path": "rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py",
+      "sha": "d2fe653dadf94893b0fdfd268f36683f8dfed9af",
+      "byte_length": 9490,
+      "computed_sha_matches_repository": true
+    }
+  ],
+  "materialization": {
+    "qualified_pe_tree": false,
+    "attempt": "Connected GitHub exact UTF-8 file fetch and blob verification; isolated container direct Git HTTPS; local filesystem/staging and selected-suite pytest path probe",
+    "transport": "GitHub connector returned textual bytes to chat tooling; these were not an automatic filesystem mount or an authenticated local Git endpoint; no byte-accurate bulk connector-to-Python transfer tool",
+    "reason": "Exact pinned import closure remains absent from isolated runtime; full checkout absence itself is NOT a semantic hold."
+  },
+  "pip_probe": "python -m pip install --no-index --dry-run pytest jsonschema: requirements already satisfied",
+  "external_packages_installed": false,
+  "repro_file": "rawlsing_next/tests/test_hq297_k9e_port_repro.py",
+  "repro_git_blob": "08cdfc7574c971f09fadf5b7516120bc47b9ca25",
+  "repro_local_sha256": "1709a3caa58df50d2848ff88ec74023bd17c20439363f0aea3c9f4cf8ac2091e"
+}
