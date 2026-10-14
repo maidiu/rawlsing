@@ -1,0 +1,3 @@
+# PYAT HQ294 D04P — Temporal research and consumer contract
+
+Read D07 at bab16899f4c2d7137aba95debbce5410ea0dd74d and the current Astra PRE-V3 action plan. Independently compare the inherited V553 temporal methods with N8E/N8S/N9 consumers and return exact original-source method/permission gaps. Preserve historical observed versus model estimates, wave comparability, all 35-wave and 63 candidate pair obligations. Browser/GitHub GPT-6 High, no original respondent rows, no actor run or canonical changes. Own worker return only. Remote-verify branch and SHA. Sourcefree testing is not actual original evidence.
