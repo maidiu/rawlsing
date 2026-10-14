@@ -1,0 +1,114 @@
+{
+  "schema": "HQ297_T8C_NATIVE_FIVE_CATEGORY_ESTIMAND_AND_INPUT@1",
+  "grade": "SOURCEFREE_STANDALONE_ONLY",
+  "target": "Ghana citizens age 18+, national scope, independent repeated cross-sections — synthetic sourcefree algebra, not authentic survey rows",
+  "source_pair": "TEMP_SRC02_SRC03",
+  "original_items": [
+    "GHA R5 Q43",
+    "GHA R9 Q31"
+  ],
+  "original_release_identity_verified": false,
+  "original_retained_file_sha256_inherited_not_read": [
+    "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+    "3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8"
+  ],
+  "native_substantive": {
+    "0": "Ghana is not a democracy (self-reported category)",
+    "1": "not at all satisfied",
+    "2": "not very satisfied",
+    "3": "fairly satisfied",
+    "4": "very satisfied"
+  },
+  "special": {
+    "R5": {
+      "DK": 9,
+      "REFUSED": 998,
+      "MISSING": -1,
+      "NOT_ASKED": "ROUTING_STATE_NOT_RESPONSE"
+    },
+    "R9": {
+      "DK": 9,
+      "REFUSED": 8,
+      "MISSING": -1,
+      "NOT_ASKED": "ROUTING_STATE_NOT_RESPONSE"
+    }
+  },
+  "estimator": "p_t=(sum national permitted w for valid category 3 or 4)/(sum permitted w for valid native categories 0,1,2,3,4), delta=p_2022-p_2012; never reclassify 0 as dissatisfaction, missing, or institutional fact",
+  "sourcefree_fixture": {
+    "earlier": {
+      "year": 2012,
+      "field": [
+        "2012-05-08",
+        "2012-05-27"
+      ],
+      "publication_candidate": "2015-07-16",
+      "question": "Q43",
+      "categories_weight": [
+        "10",
+        "20",
+        "25",
+        "30",
+        "15"
+      ],
+      "special_weight": {
+        "DK": "3",
+        "REFUSED": "2",
+        "MISSING": "1",
+        "NOT_ASKED": "4"
+      },
+      "valid_weight": "100",
+      "asked_weight": "106",
+      "eligible_weight": "110",
+      "weighted_share": "9/20",
+      "hypothetical_variance": "1/2500",
+      "weight_key": "WITHINWT_TEST_ONLY",
+      "design": "HYPOTHETICAL_DESIGN_TEST_ONLY"
+    },
+    "later": {
+      "year": 2022,
+      "field": [
+        "2022-04-04",
+        "2022-04-20"
+      ],
+      "publication_candidate": "2024-10-01",
+      "question": "Q31",
+      "categories_weight": [
+        "12",
+        "18",
+        "20",
+        "35",
+        "25"
+      ],
+      "special_weight": {
+        "DK": "2",
+        "REFUSED": "1",
+        "MISSING": "2",
+        "NOT_ASKED": "5"
+      },
+      "valid_weight": "110",
+      "asked_weight": "115",
+      "eligible_weight": "120",
+      "weighted_share": "6/11",
+      "hypothetical_variance": "1/3000",
+      "weight_key": "WITHINWT_TEST_ONLY",
+      "design": "HYPOTHETICAL_DESIGN_TEST_ONLY"
+    }
+  },
+  "variance_formula": "For properly qualified independent survey wave design estimators Var(delta)=Var(p_2022)+Var(p_2012); covariance/mode/nonresponse sensitivity requires distinct science where present. Here numerical variances are invented test inputs.",
+  "observations": {
+    "year2017": "UNKNOWN_UNOBSERVED_GAP",
+    "same_person_panel": false,
+    "real_Ghana_delta": null,
+    "real_Ghana_SE": null,
+    "real_Ghana_CI": null
+  },
+  "original_authority_holds": [
+    "official publisher merged release edition and retained SRC02/SRC03 byte bridge",
+    "exact national risk/eligible/source column and weight/PSU/strata mapping",
+    "independent measurement/design variance",
+    "source-read operation",
+    "authentic EE12/C7",
+    "independently adopted N8E and world N9 context use"
+  ],
+  "original_national_sample_2400_not_used_as_item_n": true
+}
