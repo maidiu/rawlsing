@@ -1,0 +1,25 @@
+{
+  "commission_id": "PYAT-P-E2",
+  "branch": "agent/rabochii-pyat-r3-pe2-generic-world-possibility-runtime-r1",
+  "input_sha": "ffda4f4da5c83ce7f1e406b8fceb47f4d0cfeb55",
+  "courts": {
+    "A_pe_probes": {"tests": 21, "passed": 21, "failed": 0, "status": "PASS"},
+    "B_owner_regression": {"tests": 373, "passed": 373, "failed": 0, "status": "PASS"},
+    "C_multi_conditioner_gap": {"status": "FACADE_RECOMMENDED", "detail": "GENERIC_WORLD_SITUATED_POSSIBILITY_FACADE@1 routes N10E single + C1 multi"},
+    "D_bidirectionality": {"status": "PASS", "detail": "P(A|D)=54/60 != P(D|A)=54/62; separate target/predicate/denominator/evidence"},
+    "E_world_empirical": {"status": "PASS", "detail": "Empirical change recomputes fractions; world change reselects conditional"},
+    "F_two_consumers": {"status": "PASS", "detail": "Identical API for conception-scenario and non-parent consumers"}
+  },
+  "n9_boundary": "OPERATIVE_N9_HOLD",
+  "verified_numbers": {
+    "at07_forward": {"denominator": 60, "cells": {"yes": 54, "no": 6}},
+    "at07_reverse": {"denominator": 62, "cells": {"P1": 54, "P2": 8}},
+    "c1_xor_single": {"denominator": 2, "cells": {"0": 1, "1": 1}},
+    "c1_xor_multi": {"denominator": 1, "cells": {"0": 0, "1": 1}}
+  },
+  "establishes": ["F0_interface", "F1_evidence", "F2_bidirectionality", "F3_world_interaction", "F4_two_consumers", "F5_multi_conditioner"],
+  "first_remaining_blocker": "N9 selected-world serving not operative",
+  "no_v3": true,
+  "no_parent_generator": true,
+  "no_canonical_adoption": true
+}
