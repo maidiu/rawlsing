@@ -1,0 +1,83 @@
+{
+  "schema": "PYAT_USERDIRECT_T8R_HOSTILE_VERDICT@1",
+  "role": "BOUNDED_REVIEW_AUTHOR_OVERLAP__NOT_ADOPTION",
+  "original_test": {
+    "commit": "059d7ce1b35a08fa4fe735ffccc1a5dddbfe5899",
+    "blob": "7f7e0c713a669951b40787537138db7a0653daea",
+    "size": 10525,
+    "tests": 19,
+    "passed": 19
+  },
+  "execution": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "git": "2.47.3",
+    "original_and_new_command": "PYTHONPATH=$PWD python -m pytest -q test_hq297_t8c.py test_review_hostiles.py --junitxml=t8r_extended_junit.xml",
+    "exit": 0,
+    "passed": 30,
+    "failed": 0,
+    "wall_report": "0.06s",
+    "red_command": "PYTHONPATH=$PWD python -m pytest -q test_review_mandatory_guards_red.py --junitxml=t8r_red_junit.xml",
+    "red_exit": 1,
+    "red_failed": 3,
+    "red_report": "3 failed in 0.08s"
+  },
+  "origin_inspection": {
+    "R5_Q43_country_instrument": "2012 English p8 PDF index: 0 respondent says Ghana not democracy; 1,2 unsatisfied; 3,4 satisfied; DK9",
+    "R9_Q31_country_instrument": "2022 p12 PDF index: substantive 0..4; DK9",
+    "R5_merged_codebook": "Q43 substantive 0..4; DK9, refusal998, missing-1",
+    "R9_merged_codebook": "Q31 substantive 0..4; DK9, refusal8, missing-1",
+    "screenshot": "ATTEMPTED_BOTH__CACHE_MISS",
+    "retained_source_hash_bridge": false
+  },
+  "positive_hostiles": [
+    "exact_authenticated_Git_blob_match",
+    "baseline_21/220_and_read_hash",
+    "native_zero_to_satisfied_numeric_influence",
+    "zero_to_unsatisfied_changes_hash_not_target_share",
+    "2017_unknown_no_fake_anchor",
+    "population_or_wrong_weight_refusal",
+    "historical_publication_cutoff",
+    "swapped_question_and_none_EE12_refusal",
+    "DK_REFUSED_MISSING_NOT_ASKED_still_distinct",
+    "historical_field_and_release_metadata_preserved",
+    "hypothetical_design_variance_not_reified"
+  ],
+  "negative_reproductions": [
+    {
+      "id": "RED-T8R-01",
+      "case": "delta=999 with unchanged original product_digest",
+      "expected": "REFUSE_CONTENT_INTEGRITY",
+      "actual": "ACCEPTED_SELECTED_NUMERIC_VALUE_999",
+      "grade": "REAL_SOURCEFREE_RED"
+    },
+    {
+      "id": "RED-T8R-02",
+      "case": "later categories['0']=999 without changing product_digest",
+      "expected": "REFUSE_CONTENT_INTEGRITY",
+      "actual": "ACCEPTED_TAMPERED_FIVE_CATEGORY_NATIVE_VALUE",
+      "grade": "REAL_SOURCEFREE_RED"
+    },
+    {
+      "id": "RED-T8R-03",
+      "case": "asof not-a-date",
+      "expected": "TYPED_REFUSAL",
+      "actual": "UNTYPED_VALUEERROR",
+      "grade": "REAL_SOURCEFREE_RED"
+    }
+  ],
+  "design_holds": {
+    "source_release": "NOT_VERIFIED",
+    "correct_national_weight": "NOT_VERIFIED",
+    "PSU_strata": "NOT_VERIFIED",
+    "real_variance": "NOT_VERIFIED",
+    "per_wave_fact_refs": [
+      null,
+      null
+    ],
+    "EE12": null,
+    "N8E": null,
+    "N9": null
+  },
+  "status": "SOURCEFREE_METHOD_POSITIVE_THREE_REDS_NO_ADOPTION"
+}
