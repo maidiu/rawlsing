@@ -1,0 +1,188 @@
+{
+  "schema": "PYAT_POSTASTRA_PA_O1_O6_BINDING_GRAPH@1",
+  "status": "ISSUER_READY_ONLY__NO_GRANTS_OR_E_PRE",
+  "startup": "6b2a6e5d2da612e6d0aaab89f4dd07a1c2ef738c",
+  "source_ancestry": {
+    "U04": "4768122c1fa985c00d2dda6fb50c288e9801ae7d",
+    "A03U": "ae3d2780d3c7356d87f919e2997f85cd06d0a492",
+    "UEL": "102fb3d3942e55e7575ee396b567d5e05b4dc6ed",
+    "V2K": "d1283fb53b543471fe825e78d64bf5bd19efbf11",
+    "ASTRA_ADVICE": "3b2d9a1b644a9fa024ed1bd895b67be5c8789531"
+  },
+  "owners": [
+    {
+      "id": "O0",
+      "competence": "RAWLSING_OWNER",
+      "concrete_person": "USER_MUST_DECIDE",
+      "requires": "authorize outreach, designate independent O3 and O4, not source data read",
+      "grant": null,
+      "status": "REQUEST_READY"
+    },
+    {
+      "id": "O1",
+      "competence": "ACTUAL_CURRENT_R5_COUNTRY_FORM_CUSTODIAN_AND_ARCHIVE_SUCCESSOR",
+      "concrete_person": null,
+      "requires": "all original administered forms, editions, language and split/battery rosters and closed-world completion; national partner with actual delegation",
+      "grant": null,
+      "status": "HELD"
+    },
+    {
+      "id": "O2",
+      "competence": "CURRENT_R5_RELEASE_PERSON_RISK_DESIGN_CUSTODIAN",
+      "concrete_person": null,
+      "requires": "source SHA/version, selected adult same-person namespace, routing/exposure, risk, raw/weighted design and original nonresponse",
+      "grant": null,
+      "status": "HELD"
+    },
+    {
+      "id": "O3",
+      "competence": "ACTUALLY_DELEGATED_RAWLSING_EE01_EE04_GT12_A03_SCIENCE_ISSUER",
+      "concrete_person": null,
+      "requires": "complete bounded scientific operation grammar with GT1/GT2/J-only/reverse and HELD/DENIED/NA",
+      "grant": null,
+      "status": "HELD"
+    },
+    {
+      "id": "O4",
+      "competence": "DISTINCT_APPOINTED_INDEPENDENT_APPEND_ONLY_CUSTODIAN_NOT_O1_O2_O3_O5_O6",
+      "concrete_person": null,
+      "requires": "authenticated signed U/O preimages; full E_pre multiset and independent seal before new D/results; externally governed key/clock/revocation",
+      "grant": null,
+      "status": "HELD"
+    },
+    {
+      "id": "O5",
+      "competence": "C11_V2K_P01_OWNER_PLUS_INDEPENDENT_REVIEWER",
+      "concrete_person": null,
+      "requires": "injective original source/form/selected-person/role/query→real job; E↔D multiset anti-join",
+      "grant": null,
+      "status": "UNADOPTED_V2K_SOURCEFREE_POSITIVE"
+    },
+    {
+      "id": "O6",
+      "competence": "AFROBAROMETER_APPLICABLE_RIGHTS_AUTHORITY_PLUS_SEPARATELY_USER_AUTHORIZED_HOST_OPERATOR",
+      "concrete_person": null,
+      "requires": "document rights DISTINCT from respondent-data rights, privacy/attribution/retention, exact approved machine/code/output",
+      "grant": null,
+      "status": "NOT_GRANTED"
+    }
+  ],
+  "edges": [
+    [
+      "O0",
+      "O1",
+      "CONTACT_PERMISSION_ONLY"
+    ],
+    [
+      "O0",
+      "O2",
+      "CONTACT_PERMISSION_ONLY"
+    ],
+    [
+      "O0",
+      "O3",
+      "COMPETENT_SCIENTIST_DESIGNATION_ONLY"
+    ],
+    [
+      "O0",
+      "O4",
+      "INDEPENDENT_CUSTODIAN_APPOINTMENT_ONLY"
+    ],
+    [
+      "O1",
+      "O4",
+      "SIGNED_ORIGINAL_FORM_ROSTER"
+    ],
+    [
+      "O2",
+      "O4",
+      "SIGNED_RELEASE_RESPONDENT_RISK"
+    ],
+    [
+      "O3",
+      "O4",
+      "SIGNED_FINITE_ELIGIBLE_OPERATIONS"
+    ],
+    [
+      "O4",
+      "O5",
+      "EXTERNAL_PRE_RESULT_E_PRE"
+    ],
+    [
+      "O1",
+      "O5",
+      "INJECTIVE_SOURCE_OCCURRENCE"
+    ],
+    [
+      "O2",
+      "O5",
+      "SAME_PERSON_RISK"
+    ],
+    [
+      "O3",
+      "O5",
+      "EXACT_ROLE_MEASURE_TARGET_CONSUMER"
+    ],
+    [
+      "O5",
+      "D",
+      "ONLY_PERMITTED_RUNNABLE_EXPECTED_MEMBERS"
+    ],
+    [
+      "O6",
+      "SOURCE_READ",
+      "OWNER_AND_RIGHTS_USE_GRANT"
+    ],
+    [
+      "D",
+      "I03",
+      "AFTER_PRE_RESULT_E_PRE"
+    ],
+    [
+      "I03",
+      "FF",
+      "SAVED_SOURCE_NATIVE_COUNT_PROFILE"
+    ]
+  ],
+  "requires_distinct_authenticated_principals": [
+    "O4!=O3",
+    "O4!=O5.compiler",
+    "O4!=O6.executor_or_result_reader",
+    "O4 not self-controlled same-process manifest author",
+    "O1 and O2 distinct jurisdiction even if authorized archive institution overlaps"
+  ],
+  "pre_result_order": "EXTERNAL_WITNESSED(O1_O2_O3_AUTH) <= EXTERNAL_WITNESSED(O4_E_PRE) < FIRST_NEW_D_AND_SOURCE_RESULT",
+  "revocation": "ISSUER_KEY_EFFECTIVE_AT_SEAL_AND_STILL_PERMITS_EXECUTION; POST_SEAL_REVOKE_BLOCKS_NEW_USE; HISTORICAL_SEAL_NOT_REWRITTEN; NEW_O3_SCOPE_REQUIRES_NEW_O4_SUCCESSOR",
+  "identity": "CANONICAL_VERSIONED_SOURCE_COUNTRY_FORM_LANGUAGE_OCCURRENCE_RESPONDENT_RISK_NATIVE_ROLE_OPERATION_MEASURE_QUERY_CONSUMER_DISPOSITION_PLUS_MULTIPLICITY",
+  "pre_D_antijoins": [
+    "U×O3_signed_original_minus_E_pre",
+    "E_pre_minus_U×O3_signed_original",
+    "E_pre_PERMITTED_RUNNABLE_minus_D",
+    "D_minus_E_pre_PERMITTED_RUNNABLE",
+    "all_E_pre_NONRUNNABLE_minus_retained_negative_register",
+    "two_originals_to_one_job_key_collision"
+  ],
+  "negative_states": [
+    "HELD",
+    "DENIED",
+    "SOURCE_INTRINSIC_NA_PROVED",
+    "UNVISITED_DISCOVERY",
+    "VALID_EMPTY_AS_POST_RESULT_ONLY"
+  ],
+  "exact_real_consumer": {
+    "producer": "wave1_gt12_i03_positive_facts.py",
+    "source_operation": "RAW Q86B conditioner → Q86A target",
+    "consumer": "field_forge_conditional_support.py / EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+    "P01": "pre553_v2_durable_consumer_integration_candidate.py",
+    "product": null,
+    "receipt": null
+  },
+  "authority_states": {
+    "original_U": "NOT_ISSUED",
+    "O3": "NOT_ISSUED",
+    "O4_E_pre": "NOT_ISSUED",
+    "V2K": "SOURCEFREE_TESTED_NOT_ADOPTED",
+    "O6_source_use": "NOT_GRANTED",
+    "real_I03_FF": "NOT_EXECUTED"
+  }
+}
