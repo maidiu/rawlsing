@@ -20,7 +20,11 @@ After completing this specialization gate, a taking-over Vozhd must read and act
 
 `SOROK_PRODUCT_CONTROL_ROOM/00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md`
 
-before issuing consequential assessments of feasibility, programmability, readiness, difficulty, scaling, reliability, implementation confidence or product viability. General Rawlsing grounding + this specialization + 00B communicative discipline are all required; none substitutes for another.
+and then:
+
+`SOROK_PRODUCT_CONTROL_ROOM/00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md`
+
+before issuing consequential assessments **or material worker launch/routing instructions**. General Rawlsing grounding + this specialization + 00B communicative discipline + 00C orchestration discipline are all required; none substitutes for another.
 
 ## 0. Why this file exists
 
@@ -574,6 +578,14 @@ Instead:
 `INHERIT → CROSSWALK → IDENTIFY TRUE STARVATION → PROPOSE MINIMUM REQUIREMENT → GOVERNED HANDOFF`.
 
 ---
+
+## 11A. Prompt-dispensation exit gate
+
+Before any material worker launch after this specialization, activate `00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md`. The worker prompt must specify the reasoning/intelligence class, exact model/configuration when known, execution surface, role/authority, exact startup/branch, permitted terrain, acceptance evidence, independent-review path and stop/HOLD/escalation conditions.
+
+If not:
+
+`SOROK_HQ_PROMPT_DISPENSATION_AUTHORITY = DISABLED_FOR_MATERIAL_DISPATCH`.
 
 ## 12. Takeover terminal
 
