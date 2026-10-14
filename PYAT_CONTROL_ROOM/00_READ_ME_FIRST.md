@@ -1,5 +1,9 @@
 # NEW PYAT HQ: INVALID UNTIL FULL PERSONA-FIRST + INHERITED-METHOD ACCESSION
 
+## Mandatory new worker dispensation — 14 October 2026
+
+Read [00D warm execution passports and money-first routing](00D_WARM_EXECUTION_PASSPORT_AND_MONEY_FIRST_AGENT_DISPENSATION_R1.md) before new/resumed Pyat dispatch. Verify live environment/session epoch/import provenance, select cheapest qualified warm model/host, use a lawful shared sparse worktree or smallest Browser sourcefree staging, and return a sanitized environment passport. Same chat or usage window does not establish persistent Python; missing clone does not establish absence of pytest. No scientific adoption, original source, model/actor, N12 or accession grant.
+
 ## Mandatory Astra R3 and reciprocal HQ progress — 14 October 2026
 
 As part of every fresh/resumed HQ grok and continuing material work, follow the [shared grok and publication protocol](https://github.com/maidiu/rawlsing/blob/integration/pre-main-reconciliation-r1/CROSS_HQ_CONTROL_ROOM/HQ_GROK_AND_PROGRESS_PROTOCOL_R1.md). Read the [completed fixed Astra advisory and controlling amendment16](https://github.com/maidiu/rawlsing/blob/integration/pre-main-reconciliation-r1/CROSS_HQ_CONTROL_ROOM/ASTRA_R3_ADVISORY_INDEX_R1.md), [your current trajectory/finish-line report](https://github.com/maidiu/rawlsing/blob/integration/pre-main-reconciliation-r1/PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md) and the [other HQ's current progress](https://github.com/maidiu/rawlsing/blob/integration/pre-main-reconciliation-r1/SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md) ([structured counterpart](https://github.com/maidiu/rawlsing/blob/integration/pre-main-reconciliation-r1/SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.json)). Record the exact other-report commit/revision, live working cut, implications for your own next steps and unresolved cross-owner issues; then maintain your own MD/JSON report pair at those predictable PRE-MAIN locations.
