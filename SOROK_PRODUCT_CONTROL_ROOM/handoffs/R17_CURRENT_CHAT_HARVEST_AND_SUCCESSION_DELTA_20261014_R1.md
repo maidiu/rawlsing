@@ -982,6 +982,154 @@ Do not erase this provenance by narrating the shadow as an input to official Ast
 
 ---
 
-# 14. TERMINAL
 
-`R17_CHAT_VALUE_HARVEST_COMPLETE__RECOVERY_PROVENANCE_INCLUDED__AFFIRMED_PROVISIONAL_EXECUTED_REJECTED_AND_INDEPENDENCE_BOUNDARIES_SEPARATED__READY_FOR_NO_LOSS_HQ_SUCCESSION`
+# 14. LIVE HQ298 ORCHESTRATION DELTA DISCOVERED DURING HANDOFF
+
+Status:
+`LIVE_WORKER_LEDGER_DELTA__VERIFY_ON_TAKEOVER`
+
+A newer Sorok resource-routing supplement and six HQ298 worker branches exist in the same ancestry as this PRE-A0 branch.
+
+## 14.1 00D warm-environment / cost-aware routing
+
+Mandatory file:
+`SOROK_PRODUCT_CONTROL_ROOM/00D_WARM_ENVIRONMENT_PASSPORT_AND_COST_AWARE_AGENT_DISPENSATION_R1.md`
+
+00D supplements 00C.
+
+Core additions:
+- choose cheapest **qualified warm** execution surface plus minimum sufficient reasoning class;
+- money first, then quota/retries/human intervention, then elapsed time, subject to scientific correctness and authority;
+- distinguish Browser container from GitHub connector;
+- Browser may have Python/pytest but private GitHub is not automatically mounted;
+- local Codex/OpenCode should reuse a canonical Git object store and governed sparse worktrees;
+- every executable return should carry/update a sanitized environment passport;
+- verify runtime continuity rather than infer it from an open tab/chat/branch;
+- HQ must issue a ranked environment verdict:
+  - `BROWSER_NATIVE`
+  - `BROWSER_AMORTIZED`
+  - `LOCAL_DOMINANT`
+  - `SPECIALIZED_REQUIRED`
+- prompt must state Browser sufficiency/setup cost, warm reuse plan, primary host/model, fallback trigger and why not the alternative.
+
+Incoming Sorok HQ must activate **both 00C and 00D** before material prompt dispensation.
+
+## 14.2 HQ298 worker ledger at discovery cut
+
+These are not all "running" merely because branches exist.
+
+### SC0 value-bearing port
+
+Branch:
+`agent/rabochii-sorok-r3-hq298-sc0-value-bearing-port-r1`
+
+Observed HEAD:
+`ac3e7a9922f86d14dd946db3d8d5606a4106015b`
+
+State:
+`COMMISSION_PUBLISHED__NO_00_RETURN_OBSERVED`
+
+Environment verdict in commission:
+`LOCAL_DOMINANT`.
+
+Do not duplicate-launch without live owner/session check.
+
+### SG choice/authority
+
+Branch:
+`agent/rabochii-sorok-r3-hq298-sg-choice-authority-r1`
+
+Observed HEAD:
+`f245e1a5aacc04eef85a9478154f151e88bafabf`
+
+State:
+`PARTIAL_RETURN_ARTIFACTS_PRESENT__NO_TERMINAL_00_RETURN_OBSERVED`
+
+Observed latest artifact:
+`WORKER_RETURNS/SOROK-R3-HQ298-SG-CHOICE-AUTHORITY-R1/02_ISSUER_DECISION_AND_PRIOR_COURTS.json`.
+
+Do not call it returned/accepted until terminal return and review.
+
+Environment verdict:
+`BROWSER_NATIVE`.
+
+### SGI2 forward generalization
+
+Branch:
+`agent/rabochii-sorok-r3-hq298-sgi2-forward-generalization-r1`
+
+Observed HEAD:
+`fe37db19cd5990d180fb197b8a00c709080b7f81`
+
+State:
+`COMMISSION_PUBLISHED__NO_00_RETURN_OBSERVED`.
+
+Environment verdict:
+`BROWSER_AMORTIZED` if a real same-runtime K11 queue exists; otherwise qualified local reuse is preferred.
+
+### S-M-LAB2 behavioral replication
+
+Branch:
+`agent/rabochii-sorok-r3-hq298-sm-lab2-behavioral-r1`
+
+Observed HEAD:
+`3496d21ebc234112ed067c3967825780b7918b88`
+
+State:
+`COMMISSION_PUBLISHED__NO_00_RETURN_OBSERVED`.
+
+Environment verdict:
+`LOCAL_DOMINANT`.
+
+Model behavioral trials still require a separate exact provider/model/privacy/use/monetary grant.
+
+### S-M owner-effect court
+
+Branch:
+`agent/rabochii-sorok-r3-hq298-sm-owner-effect-court-r1`
+
+Observed HEAD:
+`4ea834a8def24493b6370ce34c1e494c3ae1da66`
+
+State:
+`COMMISSION_PUBLISHED__NO_00_RETURN_OBSERVED`.
+
+Environment verdict:
+`LOCAL_DOMINANT`.
+
+Mission:
+actual pinned CAN008→target-owner positive transition or exact first missing physical/semantic producer.
+
+### SR outbox/occurrence
+
+Branch:
+`agent/rabochii-sorok-r3-hq298-sr-outbox-execution-r1`
+
+Observed HEAD:
+`badd1768df4cb5a4377ee25ba9b0a7ffbd103cda`
+
+State:
+`COMMISSION_PUBLISHED__NO_00_RETURN_OBSERVED`.
+
+Environment verdict:
+`BROWSER_NATIVE`.
+
+Mission:
+bounded deterministic occurrence/outbox crash-retry court.
+
+## 14.3 Orchestration consequence
+
+The previously listed "next candidates" P-E3 / S-M-LAB2 / S-GI2 must NOT be blindly relaunched.
+
+At takeover:
+1. resolve current branch heads;
+2. inspect actual return presence;
+3. inspect live environment/resource ledger/passports;
+4. continue existing HQ298 commissions where valid;
+5. separately determine Pyat-owned P-E3/N9 status.
+
+---
+
+# 15. TERMINAL
+
+`R17_CHAT_VALUE_HARVEST_COMPLETE__HQ298_AND_00D_DELTA_INCLUDED__AFFIRMED_PROVISIONAL_EXECUTED_REJECTED_AND_INDEPENDENCE_BOUNDARIES_SEPARATED__READY_FOR_NO_LOSS_HQ_SUCCESSION`
