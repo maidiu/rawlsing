@@ -1,0 +1,355 @@
+{
+  "schema": "SOROK_SM_K1_K6_FROZEN_MACHINE_OUTCOME_COURT@1.0.0",
+  "fixture_label": "LABORATORY_STRUCTURAL_FIXTURE__NOT_PREV3_OUTPUT",
+  "freeze_status": "FROZEN_BEFORE_ANY_TRIAL__NOT_EXECUTED",
+  "permitted_source_types": [
+    "synthetic, explicitly labelled world snapshots",
+    "synthetic exact V3 event IDs and owner states authored as test fixtures ONLY"
+  ],
+  "required_receipt": [
+    "test_id",
+    "world_hash",
+    "actor_history_hash",
+    "event_id_and_hash",
+    "precipitating_vs_conditioning_ref_types",
+    "coupling_rule_id_version_hash",
+    "target_owner_rule_id_version_hash",
+    "pre_and_post_state_hashes",
+    "receivability",
+    "uptake",
+    "recruited_source_owner_refs",
+    "ordered_multistream_effects",
+    "memory_trace_feature_state",
+    "actor_claim_permission",
+    "status",
+    "exact_causal_ancestry"
+  ],
+  "assertion_semantics": {
+    "equal": "identity/order-sensitive equality after canonical serialization, ignoring only declared audit wall-clock fields",
+    "different": "at least one predeclared typed response/effect or permission field differs, and ancestry accounts for it",
+    "hidden": "evaluator-only origin may be inspected in analyst receipts only; not in any actor-visible prompt, claim or render",
+    "missing": "a missing accepted rule/effect authority returns an exact DEFER/HOLD, never an invented value"
+  },
+  "run_status": "NOT_EXECUTED",
+  "independent_expected": "Cases and expected typed outcomes specified here before evaluation; an independent reviewer must seal fixture and rule versions and score without rewriting the expectations.",
+  "cases": [
+    {
+      "id": "K1",
+      "title": "Same world / divergent histories",
+      "world": "W_CLASS_ROOM_V1 same institution/period and lawful opportunity field",
+      "held": [
+        "world hash",
+        "actor current event E1 exact praise/correction features",
+        "same current institutional affordances",
+        "no hidden person label"
+      ],
+      "arms": [
+        {
+          "name": "A_HISTORY_SUPPORT",
+          "history": "admitted long-run history of safe collaborative critique with this supervisor; CAN011 practice P-ASK; ADP015 warranted trust",
+          "expected": {
+            "receivability": "RECEIVABLE",
+            "recruitment": [
+              "P-ASK",
+              "TRUST_REL"
+            ],
+            "response_effect": "REROUTE_TO_CLARIFICATION",
+            "owner_effect": "CAN011 practice explicitly authorized update or NO_CHANGE"
+          }
+        },
+        {
+          "name": "B_HISTORY_SANCTION",
+          "history": "admitted repeated actual punishment after asking; CAN011 practice P-WITHHOLD; ADP015 perceived unreliable supervisor",
+          "expected": {
+            "receivability": "RECEIVABLE",
+            "recruitment": [
+              "P-WITHHOLD",
+              "DISTRUST_REL"
+            ],
+            "response_effect": "BUFFER_OR_DEFLECT_VIA_REGISTERED_RULE",
+            "owner_effect": "NO_CHANGE_ALLOWED"
+          }
+        }
+      ],
+      "positive": "Different versioned recruitment and typed CAN008 response across arms, causally grounded in admissible prior owner effects, not biography adjectives. Exact predictions require fixture rule R-K1 naming its distinct outputs; otherwise DEFER_MISSING_RULE.",
+      "nulls": [
+        "replay A with identical pre-state/parent hashes: identical typed output",
+        "alter unadmitted biography annotation only: exact output unchanged",
+        "same seed+rule versions+inputs reproduce receipts"
+      ],
+      "failure": [
+        "history divergence visible only in V2 prose",
+        "actor state appears from a demographic label",
+        "nondeterministic divergence at identical inputs"
+      ],
+      "missing": "DEFER_MISSING_RULE_OR_HISTORY"
+    },
+    {
+      "id": "K2",
+      "title": "Same nodes / altered n-ary directed relation topology",
+      "world": "W_COMMITTEE_V1 resources, actors, declared world facts identical",
+      "held": [
+        "node identity/value multiset",
+        "event words/features",
+        "individual nodes' actor traits and memories",
+        "time and available powers"
+      ],
+      "arms": [
+        {
+          "name": "A_DIRECT_AUTHORITY_EDGE",
+          "topology": "(committee,chair,actor,review,role_order) grants chair binding evaluative authority",
+          "expected": {
+            "relation_route": "CHAIR_TO_ACTOR_AUTHORIZED_EVALUATION",
+            "recruitment": "RECRUIT_AUTHORITY_SCOPED_PRACTICE",
+            "response_effect": "REGISTERED_PUBLIC_COMPLIANCE_OR_EXPLANATION"
+          }
+        },
+        {
+          "name": "B_OBSERVER_EDGE",
+          "topology": "same members/roles present but speaker linked as nonvoting observer without decision role",
+          "expected": {
+            "relation_route": "OBSERVER_TO_ACTOR_NONBINDING_COMMENT",
+            "recruitment": "NO_AUTHORITY_SCOPED_RECRUITMENT",
+            "response_effect": "REGISTERED_INFORMAL_RESPONSE_OR_VALID_EMPTY"
+          }
+        }
+      ],
+      "positive": "Typed relation query distinguishes role order, direction, validity and contingent authority; different recruitment/effect under frozen R-K2, no automatic psychological intimidation.",
+      "nulls": [
+        "rename nonsemantic IDs with bijection preserving typed relation: isomorphic output",
+        "permute serialized unordered node list only: identical output",
+        "insert unrelated edge outside actor's rule scope: identical output"
+      ],
+      "failure": [
+        "bag-of-nodes produces same response although R-K2 declares topology intervention",
+        "directed relation inferred from text alone",
+        "extra latent graph differs only in prose"
+      ],
+      "missing": "DEFER_AMBIGUOUS_TOPOLOGY_OR_RULE"
+    },
+    {
+      "id": "K3",
+      "title": "Age-seven causal residue without recovered autobiographical memory",
+      "world": "W_CHILD_INSTITUTION_V1 world at childhood and W_ADULT_V1 adult world explicitly separate versions",
+      "held": [
+        "adult admitted E_ADULT comment",
+        "adult authorized world route",
+        "ADP017 adult first-person envelope",
+        "no accessible childhood episode feature"
+      ],
+      "arms": [
+        {
+          "name": "A_CAUSAL_TRACE",
+          "child_basis": "E_CHILD_AGE7 admitted actual exposure plus authorized trace formation T7; original event-referential feature UNAVAILABLE and trace NOT_APPLICABLE_CAUSAL_TRACE",
+          "expected": {
+            "recruitment": "ADP016_TRACE_T7_IN_CAUSAL_ONLY_ROLE",
+            "response_effect": "R_K3_TRACE_CONDITIONED_EFFECT",
+            "claim_permission": "NO_ORIGIN_CLAIM"
+          }
+        },
+        {
+          "name": "B_NO_TRACE",
+          "child_basis": "E_CHILD_AGE7 occurred but no memory/trace effect under authorized rule; never infer trace from event alone",
+          "expected": {
+            "recruitment": "NO_TRACE_T7",
+            "response_effect": "R_K3_NONTRACE_EFFECT_OR_VALID_EMPTY",
+            "claim_permission": "NO_ORIGIN_CLAIM"
+          }
+        },
+        {
+          "name": "C_MEMORY_UNAVAILABLE",
+          "child_basis": "episodic feature retained as UNAVAILABLE without lawful causal trace",
+          "expected": {
+            "recruitment": "NO_ORIGIN_CONTENT_READ",
+            "response_effect": "BASELINE_NONTRACE",
+            "claim_permission": "NO_ORIGIN_CLAIM"
+          }
+        }
+      ],
+      "positive": "If and only if exact trace-use authority exists, A and B differ in typed recruitment/effect; A, B, C never claim source event or its hidden content. No automatic reason the actor names childhood.",
+      "nulls": [
+        "change evaluator-only hidden origin text with same admitted trace ID/hash and sealed authorized effect: same actor projection",
+        "force memory retrieval of UNAVAILABLE feature: DEFER_FEATURE_UNAVAILABLE, no objective-ledger lookup",
+        "change unrelated accessible adult memory: no origin claim"
+      ],
+      "failure": [
+        "actor-facing words expose hidden childhood details",
+        "CAUSAL_TRACE_MEMORY converted to event memory without formation",
+        "objective event existence automatically becomes memory"
+      ],
+      "missing": "DEFER_MISSING_ADP016_TRACE_USE_RULE"
+    },
+    {
+      "id": "K4",
+      "title": "Correction and recurrence without compulsory therapeutic repair",
+      "world": "W_WORKPLACE_V1 same institutional evaluation regime",
+      "held": [
+        "original historic E_PREV remains immutable",
+        "first learned interpretation's exact owner state",
+        "precipitating time order"
+      ],
+      "arms": [
+        {
+          "name": "A_CREDIBLE_COUNTEREXAMPLE",
+          "later_event": "new admitted independently corroborated cross-role counterexample E2 valid for same scoped belief",
+          "expected": {
+            "epistemic_effect": "EXACT_ADP017_WITHDRAW_OR_SUPERSEDE_ONLY_IF_RULE_AUTHORIZED",
+            "mediator_effect": "CAN011_NARROW_SCOPE_OR_CONTEXT_SPLIT_IF_RULE_AUTHORIZED",
+            "history": "ORIGINAL_EVENT_UNCHANGED"
+          }
+        },
+        {
+          "name": "B_WEAK_REPETITION",
+          "later_event": "later trivial or unrelated comment E2_WEAK under same world",
+          "expected": {
+            "epistemic_effect": "NO_CHANGE",
+            "mediator_effect": "NO_CHANGE_OR_VALID_EMPTY",
+            "history": "ORIGINAL_EVENT_UNCHANGED"
+          }
+        },
+        {
+          "name": "C_CONFLICT_UNRESOLVED",
+          "later_event": "later genuinely conflicting but not comparable evidence E2_MIXED",
+          "expected": {
+            "epistemic_effect": "UNCERTAINTY_ONLY_IF_GENERATED_EFFECT_ELSE_DEFER",
+            "mediator_effect": "KEEP_MULTIPLE_MEDIATORS",
+            "history": "ORIGINAL_EVENT_UNCHANGED"
+          }
+        }
+      ],
+      "positive": "R-K4 distinguishes independently qualified new event evidence and scopes; A can narrow/split/supersede under separate owner rules; B no causal repair; C may remain unresolved. Difference must appear in typed later state and response, not just 'growth' narration.",
+      "nulls": [
+        "same old E1 with changed later prose but unadmitted event: no update",
+        "noncomparable claim scope: DEFER_AMBIGUOUS, not automatic contradiction",
+        "replay does not alter predecessor ledger entries"
+      ],
+      "failure": [
+        "all counterexamples force integration/healing",
+        "self-retcon rewrites prior objective event",
+        "system inserts ADP017 stance without effect"
+      ],
+      "missing": "DEFER_MISSING_SCOPE_COMPARABILITY_OR_EFFECT_RULE"
+    },
+    {
+      "id": "K5",
+      "title": "Institutional standing versus felt recognition",
+      "world": "W_PUBLIC_CERTIFICATION_V1 with institution/recognition power and historical status regimes",
+      "held": [
+        "same audible utterance E_SAME_TEXT",
+        "identical proposition content",
+        "no inferred sincerity"
+      ],
+      "arms": [
+        {
+          "name": "A_CREDENTIAL_AUTHORITY_FELT_UNSAFE",
+          "standing": "authorized officer has objective conferral jurisdiction",
+          "prior_history": "actor has prior nonreception/negative experience with officer",
+          "expected": {
+            "objective_effect": "INSTITUTIONAL_STATUS_CHANGE_IF_SEPARATE_WORLD_OWNER_ADMITS",
+            "actor_uptake": "FELT_DISBELIEF_OR_THREAT_IF_RULE_EARNS",
+            "response": "DEFLECT_OR_BUFFER"
+          }
+        },
+        {
+          "name": "B_POWERLESS_WITNESS_FELT_VALIDATED",
+          "standing": "peer has no institutional authority",
+          "prior_history": "trusted sustained peer relation",
+          "expected": {
+            "objective_effect": "NO_INSTITUTIONAL_STATUS_CHANGE",
+            "actor_uptake": "FELT_RECOGNIZED_IF_RULE_EARNS",
+            "response": "RECEIVE_OR_RESPOND_WITH_ENGAGEMENT"
+          }
+        },
+        {
+          "name": "C_AUTHORITY_AND_FELT_VALIDATED",
+          "standing": "same officer authorized",
+          "prior_history": "credible positive officer history",
+          "expected": {
+            "objective_effect": "INSTITUTIONAL_STATUS_CHANGE_IF_WORLD_OWNER",
+            "actor_uptake": "POSITIVE_RECOGNITION_IF_RULE_EARNS",
+            "response": "ENGAGEMENT_ALLOWED"
+          }
+        }
+      ],
+      "positive": "Two separately owned axes: objective standing/effect and CAN008 actor uptake may cross rather than collapse. B positive feeling cannot confer institutional authority; A objective recognition need not yield felt endorsement.",
+      "nulls": [
+        "same words by powerless witness cannot change institution",
+        "speaker's institutional power with actor nonreception cannot force felt acceptance",
+        "no granted world effect owner yields DEFER, never invented certification"
+      ],
+      "failure": [
+        "one recognition scalar drives both axes",
+        "official statement automatically becomes actor belief",
+        "private praise manufactures official grant"
+      ],
+      "missing": "DEFER_MISSING_INSTITUTIONAL_WORLD_OWNER_OR_UPTAKE_RULE"
+    },
+    {
+      "id": "K6",
+      "title": "Internal category construal versus outward policing and no-action",
+      "world": "W_ASSOCIATION_RULE_V1 category sanctions and enforcement opportunities with bounded official scope",
+      "held": [
+        "same externally attested institutional category rule",
+        "same surface category label",
+        "same event opportunity declaration"
+      ],
+      "arms": [
+        {
+          "name": "A_INTERNALIZED_AND_HAS_ACTION_ROUTE",
+          "history": "generated actor previously received, accepted and practiced specific norm with counterpart relation and access to sanction power",
+          "expected": {
+            "recruitment": "EXACT_INTERNALIZED_PRACTICE_IF_OWNED",
+            "external_action": "POLICING_EVENT_ONLY_IF_SEPARATE_ADMISSION",
+            "response_effect": "R_K6_CONDITIONED_ACTION_PROPOSAL"
+          }
+        },
+        {
+          "name": "B_NONINTERNALIZED_AND_HAS_ACTION_ROUTE",
+          "history": "generated actor retains nonendorsement, despite same membership label and action opportunity",
+          "expected": {
+            "recruitment": "NO_INTERNALIZED_PRACTICE",
+            "external_action": "NO_FORCED_POLICING_EVENT",
+            "response_effect": "CONTEST_OR_VALID_EMPTY"
+          }
+        },
+        {
+          "name": "C_INTERNALIZED_BUT_NO_POWER_OR_OPPORTUNITY",
+          "history": "same internalization as A; sanction opportunity absent/world route blocked",
+          "expected": {
+            "recruitment": "PRACTICE_MAY_RECRUIT",
+            "external_action": "NO_POLICING_OCCURRENCE",
+            "response_effect": "NO_ACTION_OR_NONPOLICING_RESPONSE"
+          }
+        }
+      ],
+      "positive": "Action occurs only after an actual separate admission under the world opportunity and exact sanction capacity; actor's learned norm/predicate must be source-bound. A-versus-B reflects earned uptake/history and C blocks action despite internalization.",
+      "nulls": [
+        "swap only an actor's demographic/category label absent generated uptake/history: exact output unchanged",
+        "no real action occurrence when model merely drafts action",
+        "no lawful sanction route means no outward policing"
+      ],
+      "failure": [
+        "category identity by itself emits policing",
+        "internalized norm entails action in all contexts",
+        "action proposal automatically counted as occurrence"
+      ],
+      "missing": "DEFER_MISSING_OWNER_RULE_OR_ACTUAL_ACTION_ROUTE"
+    }
+  ],
+  "global_no_go": [
+    "Any analyst-only hidden origin enters actor prompt or first-person envelope",
+    "Any draft/unemitted candidate counted as event",
+    "Any target-owner effect committed without owner authority",
+    "Any identity/replay/null mismatch",
+    "Any profile/category directly maps to psychology",
+    "Any test output claimed executed without actual accepted logged execution"
+  ],
+  "evaluator_protocol": {
+    "pre_registration": "Seal this artifact/blob, fixed rule/fixture hashes, case arms and status map before trials",
+    "blindness": "Evaluator sees typed claims and world-owner changes without arm-narrative prose; actor projection receives no hidden controls",
+    "comparability": "Both options consume identical allowed evidence and matched model/call/retrieval budget",
+    "inconclusive": "If no authorized concrete rule can express the predicted contrast, record DEFER_MISSING_RULE; this is not a PASS or psychological falsification",
+    "threshold": "Each of six well-posed cases and nulls must pass before local K1-K6 gate; all failures and untested variants reported",
+    "claim_ceiling": "Proving these synthetically still does not validate open-world psychology"
+  }
+}
