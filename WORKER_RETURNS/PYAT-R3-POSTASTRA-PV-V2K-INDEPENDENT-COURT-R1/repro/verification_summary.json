@@ -1,0 +1,133 @@
+{
+  "junit": [
+    {
+      "file": "repro/candidate.xml",
+      "tests": 24,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "repro/independent.xml",
+      "tests": 21,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "repro/initial_independent.xml",
+      "tests": 21,
+      "failures": 7,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "repro/owners.xml",
+      "tests": 111,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "repro/pre_child_owners.xml",
+      "tests": 111,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "repro/pre_profile_candidate.xml",
+      "tests": 24,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "repro/pre_profile_independent.xml",
+      "tests": 21,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "repro/pre_profile_owners.xml",
+      "tests": 111,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "repro/pre_trace_candidate.xml",
+      "tests": 24,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "repro/pre_trace_independent.xml",
+      "tests": 21,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "repro/pre_trace_owners.xml",
+      "tests": 111,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "repro/second_independent.xml",
+      "tests": 21,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "repro/third_independent.xml",
+      "tests": 21,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "actual_executed_source_counts": {
+    "independent": 32,
+    "candidate": 32,
+    "owners": 33,
+    "cold_first": 31,
+    "cold_replay": 31
+  },
+  "all_imported_and_executed_pinned_sources_match": true,
+  "child_process_audit_count": 53,
+  "actual_helper_executed": [
+    {
+      "path": "WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py",
+      "file": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/postastra-pv-runtime-vgp53lc6/WORKER_RETURNS/PYAT-HQ282-P01-V2-DURABLE-CONSUMER-INTEGRATION-R1/repro/a04t_join_worker.py",
+      "sha256": "404d00c2ea33717c300a2ee44a6856551ebc6d59fe581f9211b177065da35f1f",
+      "git_blob": "84926e049d1879e48e9dcda7b1283de9d6cfc34d",
+      "commit": "3f91dc22d2eb863bc1d2facccfd33e6c05349503",
+      "match": true
+    }
+  ],
+  "candidate_source": {
+    "path": "rawlsing_next/pre553_original_identity_v2k_successor_candidate.py",
+    "commit": "d1283fb53b543471fe825e78d64bf5bd19efbf11",
+    "git_blob": "e3ef9a2469966b8ecfbcd178b971f54c687aef22",
+    "sha256": "d1e5e3693f91b94ce934f6765fda90bc88aed22392fb06966742db9633be4d46",
+    "byte_verified": true
+  },
+  "cold": {
+    "first_calls": [
+      3,
+      3
+    ],
+    "replay_calls": [
+      0,
+      0
+    ],
+    "identical_links": true,
+    "producer_setup_reconstructed": true
+  }
+}

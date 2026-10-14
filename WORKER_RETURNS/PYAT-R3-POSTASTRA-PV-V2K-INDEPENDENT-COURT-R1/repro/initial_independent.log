@@ -1,0 +1,432 @@
+F.......FFFFF.....F..                                                    [100%]
+=================================== FAILURES ===================================
+______________ test_independent_positive_denominators_and_replay _______________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-13/test_independent_positive_deno0')
+
+    def test_independent_positive_denominators_and_replay(tmp_path):
+        records,expected,plans,calls=court(tmp_path)
+>       report=K.run_sourcefree(expected=expected,selected_scopes=plans)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py:151: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_original_identity_v2k_successor_candidate.py:312: in run_sourcefree
+    report = P.run_integrated(**kwargs); owner_reports.append(report)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py:313: in run_integrated
+    return _run_integrated_locked(session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _run_integrated_locked(
+        *, expected: FrozenExpected,
+        session: G.GovernedBatchCheckpointSession,
+        runtime_catalog: Any,
+        resolve_fact: Callable[[ExactRef], Any],
+        producer_permission_ceiling: tuple[str, ...],
+        prior_consumer_refs: Mapping[str, ExactRef] | None = None,
+        resolve_discovery: Callable[[ExactRef], Any] | None = None,
+    ) -> dict:
+        """Run the real durable owner adapter and consume exact saved result refs.
+    
+        resolve_fact must resolve the owner-produced object identified by the saved
+        receipt. Field Forge independently validates semantic hashes and query,
+        risk, universe, authority, replay and provenance closure. A stale consumer
+        identity is refused by its actual replay API. Missing or unsupported
+        consumers are explicit holds, never fabricated successful receipts.
+        """
+        frozen = expected.checked()  # before ANY execution in this adapter
+        rows = {r['recomputed']['expected_work_key']: r for r in frozen['records']}
+        by_dispatch = {}
+        for key, row in rows.items():
+            if not row['runnable']:
+                continue
+            raw = row['raw']
+            ref = raw.get('query_ref', raw.get('discovery_authority_ref'))
+            dispatch = _canonical(ref)
+            if dispatch in by_dispatch:
+                raise ValueError('DUPLICATE_OWNER_JOB_REF')
+            by_dispatch[dispatch] = key
+        # Full outer join before execution: missing original work cannot disappear.
+        units_by_key = {}
+        for unit in session.manifest.units:
+            key = by_dispatch.get(_canonical(unit.job_ref.as_dict()))
+            if key is None or key in units_by_key:
+>               raise ValueError('FOREIGN_OR_COLLIDING_MANIFEST_UNIT')
+E               ValueError: FOREIGN_OR_COLLIDING_MANIFEST_UNIT
+
+rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py:101: ValueError
+___________ test_foreign_issuer_is_not_authenticated[original_U_ref] ___________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-13/test_foreign_issuer_is_not_aut0')
+field = 'original_U_ref'
+
+    @pytest.mark.parametrize('field',['original_U_ref','independent_E_ref','independent_custody_ref','original_operation_scope_ref'])
+    def test_foreign_issuer_is_not_authenticated(tmp_path,field):
+        records,expected,plans,calls=court(tmp_path);old=records[0]
+        new=replace(old,**{field:_ref('FOREIGN_SELF_ISSUED',field)})
+        changed=tuple(new if w is old else w for w in records)
+        with pytest.raises(AssertionError,match='INDEPENDENT_ORIGINAL_MULTISET_MISMATCH'):external_check(changed,records)
+>       report=K.run_sourcefree(expected=K.FrozenOriginalExpected.from_records(changed,input_origin=K.ORIGIN),selected_scopes=remap(plans,old,new))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py:219: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_original_identity_v2k_successor_candidate.py:312: in run_sourcefree
+    report = P.run_integrated(**kwargs); owner_reports.append(report)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py:313: in run_integrated
+    return _run_integrated_locked(session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _run_integrated_locked(
+        *, expected: FrozenExpected,
+        session: G.GovernedBatchCheckpointSession,
+        runtime_catalog: Any,
+        resolve_fact: Callable[[ExactRef], Any],
+        producer_permission_ceiling: tuple[str, ...],
+        prior_consumer_refs: Mapping[str, ExactRef] | None = None,
+        resolve_discovery: Callable[[ExactRef], Any] | None = None,
+    ) -> dict:
+        """Run the real durable owner adapter and consume exact saved result refs.
+    
+        resolve_fact must resolve the owner-produced object identified by the saved
+        receipt. Field Forge independently validates semantic hashes and query,
+        risk, universe, authority, replay and provenance closure. A stale consumer
+        identity is refused by its actual replay API. Missing or unsupported
+        consumers are explicit holds, never fabricated successful receipts.
+        """
+        frozen = expected.checked()  # before ANY execution in this adapter
+        rows = {r['recomputed']['expected_work_key']: r for r in frozen['records']}
+        by_dispatch = {}
+        for key, row in rows.items():
+            if not row['runnable']:
+                continue
+            raw = row['raw']
+            ref = raw.get('query_ref', raw.get('discovery_authority_ref'))
+            dispatch = _canonical(ref)
+            if dispatch in by_dispatch:
+                raise ValueError('DUPLICATE_OWNER_JOB_REF')
+            by_dispatch[dispatch] = key
+        # Full outer join before execution: missing original work cannot disappear.
+        units_by_key = {}
+        for unit in session.manifest.units:
+            key = by_dispatch.get(_canonical(unit.job_ref.as_dict()))
+            if key is None or key in units_by_key:
+>               raise ValueError('FOREIGN_OR_COLLIDING_MANIFEST_UNIT')
+E               ValueError: FOREIGN_OR_COLLIDING_MANIFEST_UNIT
+
+rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py:101: ValueError
+_________ test_foreign_issuer_is_not_authenticated[independent_E_ref] __________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-13/test_foreign_issuer_is_not_aut1')
+field = 'independent_E_ref'
+
+    @pytest.mark.parametrize('field',['original_U_ref','independent_E_ref','independent_custody_ref','original_operation_scope_ref'])
+    def test_foreign_issuer_is_not_authenticated(tmp_path,field):
+        records,expected,plans,calls=court(tmp_path);old=records[0]
+        new=replace(old,**{field:_ref('FOREIGN_SELF_ISSUED',field)})
+        changed=tuple(new if w is old else w for w in records)
+        with pytest.raises(AssertionError,match='INDEPENDENT_ORIGINAL_MULTISET_MISMATCH'):external_check(changed,records)
+>       report=K.run_sourcefree(expected=K.FrozenOriginalExpected.from_records(changed,input_origin=K.ORIGIN),selected_scopes=remap(plans,old,new))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py:219: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_original_identity_v2k_successor_candidate.py:312: in run_sourcefree
+    report = P.run_integrated(**kwargs); owner_reports.append(report)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py:313: in run_integrated
+    return _run_integrated_locked(session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _run_integrated_locked(
+        *, expected: FrozenExpected,
+        session: G.GovernedBatchCheckpointSession,
+        runtime_catalog: Any,
+        resolve_fact: Callable[[ExactRef], Any],
+        producer_permission_ceiling: tuple[str, ...],
+        prior_consumer_refs: Mapping[str, ExactRef] | None = None,
+        resolve_discovery: Callable[[ExactRef], Any] | None = None,
+    ) -> dict:
+        """Run the real durable owner adapter and consume exact saved result refs.
+    
+        resolve_fact must resolve the owner-produced object identified by the saved
+        receipt. Field Forge independently validates semantic hashes and query,
+        risk, universe, authority, replay and provenance closure. A stale consumer
+        identity is refused by its actual replay API. Missing or unsupported
+        consumers are explicit holds, never fabricated successful receipts.
+        """
+        frozen = expected.checked()  # before ANY execution in this adapter
+        rows = {r['recomputed']['expected_work_key']: r for r in frozen['records']}
+        by_dispatch = {}
+        for key, row in rows.items():
+            if not row['runnable']:
+                continue
+            raw = row['raw']
+            ref = raw.get('query_ref', raw.get('discovery_authority_ref'))
+            dispatch = _canonical(ref)
+            if dispatch in by_dispatch:
+                raise ValueError('DUPLICATE_OWNER_JOB_REF')
+            by_dispatch[dispatch] = key
+        # Full outer join before execution: missing original work cannot disappear.
+        units_by_key = {}
+        for unit in session.manifest.units:
+            key = by_dispatch.get(_canonical(unit.job_ref.as_dict()))
+            if key is None or key in units_by_key:
+>               raise ValueError('FOREIGN_OR_COLLIDING_MANIFEST_UNIT')
+E               ValueError: FOREIGN_OR_COLLIDING_MANIFEST_UNIT
+
+rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py:101: ValueError
+______ test_foreign_issuer_is_not_authenticated[independent_custody_ref] _______
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-13/test_foreign_issuer_is_not_aut2')
+field = 'independent_custody_ref'
+
+    @pytest.mark.parametrize('field',['original_U_ref','independent_E_ref','independent_custody_ref','original_operation_scope_ref'])
+    def test_foreign_issuer_is_not_authenticated(tmp_path,field):
+        records,expected,plans,calls=court(tmp_path);old=records[0]
+        new=replace(old,**{field:_ref('FOREIGN_SELF_ISSUED',field)})
+        changed=tuple(new if w is old else w for w in records)
+        with pytest.raises(AssertionError,match='INDEPENDENT_ORIGINAL_MULTISET_MISMATCH'):external_check(changed,records)
+>       report=K.run_sourcefree(expected=K.FrozenOriginalExpected.from_records(changed,input_origin=K.ORIGIN),selected_scopes=remap(plans,old,new))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py:219: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_original_identity_v2k_successor_candidate.py:312: in run_sourcefree
+    report = P.run_integrated(**kwargs); owner_reports.append(report)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py:313: in run_integrated
+    return _run_integrated_locked(session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _run_integrated_locked(
+        *, expected: FrozenExpected,
+        session: G.GovernedBatchCheckpointSession,
+        runtime_catalog: Any,
+        resolve_fact: Callable[[ExactRef], Any],
+        producer_permission_ceiling: tuple[str, ...],
+        prior_consumer_refs: Mapping[str, ExactRef] | None = None,
+        resolve_discovery: Callable[[ExactRef], Any] | None = None,
+    ) -> dict:
+        """Run the real durable owner adapter and consume exact saved result refs.
+    
+        resolve_fact must resolve the owner-produced object identified by the saved
+        receipt. Field Forge independently validates semantic hashes and query,
+        risk, universe, authority, replay and provenance closure. A stale consumer
+        identity is refused by its actual replay API. Missing or unsupported
+        consumers are explicit holds, never fabricated successful receipts.
+        """
+        frozen = expected.checked()  # before ANY execution in this adapter
+        rows = {r['recomputed']['expected_work_key']: r for r in frozen['records']}
+        by_dispatch = {}
+        for key, row in rows.items():
+            if not row['runnable']:
+                continue
+            raw = row['raw']
+            ref = raw.get('query_ref', raw.get('discovery_authority_ref'))
+            dispatch = _canonical(ref)
+            if dispatch in by_dispatch:
+                raise ValueError('DUPLICATE_OWNER_JOB_REF')
+            by_dispatch[dispatch] = key
+        # Full outer join before execution: missing original work cannot disappear.
+        units_by_key = {}
+        for unit in session.manifest.units:
+            key = by_dispatch.get(_canonical(unit.job_ref.as_dict()))
+            if key is None or key in units_by_key:
+>               raise ValueError('FOREIGN_OR_COLLIDING_MANIFEST_UNIT')
+E               ValueError: FOREIGN_OR_COLLIDING_MANIFEST_UNIT
+
+rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py:101: ValueError
+____ test_foreign_issuer_is_not_authenticated[original_operation_scope_ref] ____
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-13/test_foreign_issuer_is_not_aut3')
+field = 'original_operation_scope_ref'
+
+    @pytest.mark.parametrize('field',['original_U_ref','independent_E_ref','independent_custody_ref','original_operation_scope_ref'])
+    def test_foreign_issuer_is_not_authenticated(tmp_path,field):
+        records,expected,plans,calls=court(tmp_path);old=records[0]
+        new=replace(old,**{field:_ref('FOREIGN_SELF_ISSUED',field)})
+        changed=tuple(new if w is old else w for w in records)
+        with pytest.raises(AssertionError,match='INDEPENDENT_ORIGINAL_MULTISET_MISMATCH'):external_check(changed,records)
+>       report=K.run_sourcefree(expected=K.FrozenOriginalExpected.from_records(changed,input_origin=K.ORIGIN),selected_scopes=remap(plans,old,new))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py:219: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_original_identity_v2k_successor_candidate.py:312: in run_sourcefree
+    report = P.run_integrated(**kwargs); owner_reports.append(report)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py:313: in run_integrated
+    return _run_integrated_locked(session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _run_integrated_locked(
+        *, expected: FrozenExpected,
+        session: G.GovernedBatchCheckpointSession,
+        runtime_catalog: Any,
+        resolve_fact: Callable[[ExactRef], Any],
+        producer_permission_ceiling: tuple[str, ...],
+        prior_consumer_refs: Mapping[str, ExactRef] | None = None,
+        resolve_discovery: Callable[[ExactRef], Any] | None = None,
+    ) -> dict:
+        """Run the real durable owner adapter and consume exact saved result refs.
+    
+        resolve_fact must resolve the owner-produced object identified by the saved
+        receipt. Field Forge independently validates semantic hashes and query,
+        risk, universe, authority, replay and provenance closure. A stale consumer
+        identity is refused by its actual replay API. Missing or unsupported
+        consumers are explicit holds, never fabricated successful receipts.
+        """
+        frozen = expected.checked()  # before ANY execution in this adapter
+        rows = {r['recomputed']['expected_work_key']: r for r in frozen['records']}
+        by_dispatch = {}
+        for key, row in rows.items():
+            if not row['runnable']:
+                continue
+            raw = row['raw']
+            ref = raw.get('query_ref', raw.get('discovery_authority_ref'))
+            dispatch = _canonical(ref)
+            if dispatch in by_dispatch:
+                raise ValueError('DUPLICATE_OWNER_JOB_REF')
+            by_dispatch[dispatch] = key
+        # Full outer join before execution: missing original work cannot disappear.
+        units_by_key = {}
+        for unit in session.manifest.units:
+            key = by_dispatch.get(_canonical(unit.job_ref.as_dict()))
+            if key is None or key in units_by_key:
+>               raise ValueError('FOREIGN_OR_COLLIDING_MANIFEST_UNIT')
+E               ValueError: FOREIGN_OR_COLLIDING_MANIFEST_UNIT
+
+rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py:101: ValueError
+_________________ test_missing_all_held_rows_exposes_outer_gap _________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-13/test_missing_all_held_rows_exp0')
+
+    def test_missing_all_held_rows_exposes_outer_gap(tmp_path):
+        records,expected,plans,calls=court(tmp_path)
+        reduced=tuple(w for w in records if w.legacy.is_runnable)
+        with pytest.raises(AssertionError,match='INDEPENDENT_ORIGINAL_MULTISET_MISMATCH'): external_check(reduced,records)
+>       report=K.run_sourcefree(expected=K.FrozenOriginalExpected.from_records(reduced,input_origin=K.ORIGIN),selected_scopes=plans)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py:228: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_original_identity_v2k_successor_candidate.py:312: in run_sourcefree
+    report = P.run_integrated(**kwargs); owner_reports.append(report)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py:313: in run_integrated
+    return _run_integrated_locked(session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _run_integrated_locked(
+        *, expected: FrozenExpected,
+        session: G.GovernedBatchCheckpointSession,
+        runtime_catalog: Any,
+        resolve_fact: Callable[[ExactRef], Any],
+        producer_permission_ceiling: tuple[str, ...],
+        prior_consumer_refs: Mapping[str, ExactRef] | None = None,
+        resolve_discovery: Callable[[ExactRef], Any] | None = None,
+    ) -> dict:
+        """Run the real durable owner adapter and consume exact saved result refs.
+    
+        resolve_fact must resolve the owner-produced object identified by the saved
+        receipt. Field Forge independently validates semantic hashes and query,
+        risk, universe, authority, replay and provenance closure. A stale consumer
+        identity is refused by its actual replay API. Missing or unsupported
+        consumers are explicit holds, never fabricated successful receipts.
+        """
+        frozen = expected.checked()  # before ANY execution in this adapter
+        rows = {r['recomputed']['expected_work_key']: r for r in frozen['records']}
+        by_dispatch = {}
+        for key, row in rows.items():
+            if not row['runnable']:
+                continue
+            raw = row['raw']
+            ref = raw.get('query_ref', raw.get('discovery_authority_ref'))
+            dispatch = _canonical(ref)
+            if dispatch in by_dispatch:
+                raise ValueError('DUPLICATE_OWNER_JOB_REF')
+            by_dispatch[dispatch] = key
+        # Full outer join before execution: missing original work cannot disappear.
+        units_by_key = {}
+        for unit in session.manifest.units:
+            key = by_dispatch.get(_canonical(unit.job_ref.as_dict()))
+            if key is None or key in units_by_key:
+>               raise ValueError('FOREIGN_OR_COLLIDING_MANIFEST_UNIT')
+E               ValueError: FOREIGN_OR_COLLIDING_MANIFEST_UNIT
+
+rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py:101: ValueError
+_______________________ test_foreign_replay_ref_rejected _______________________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-13/test_foreign_replay_ref_reject0')
+
+    def test_foreign_replay_ref_rejected(tmp_path):
+        _,expected,plans,calls=court(tmp_path)
+>       report=K.run_sourcefree(expected=expected,selected_scopes=plans)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py:269: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/pre553_original_identity_v2k_successor_candidate.py:312: in run_sourcefree
+    report = P.run_integrated(**kwargs); owner_reports.append(report)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py:313: in run_integrated
+    return _run_integrated_locked(session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _run_integrated_locked(
+        *, expected: FrozenExpected,
+        session: G.GovernedBatchCheckpointSession,
+        runtime_catalog: Any,
+        resolve_fact: Callable[[ExactRef], Any],
+        producer_permission_ceiling: tuple[str, ...],
+        prior_consumer_refs: Mapping[str, ExactRef] | None = None,
+        resolve_discovery: Callable[[ExactRef], Any] | None = None,
+    ) -> dict:
+        """Run the real durable owner adapter and consume exact saved result refs.
+    
+        resolve_fact must resolve the owner-produced object identified by the saved
+        receipt. Field Forge independently validates semantic hashes and query,
+        risk, universe, authority, replay and provenance closure. A stale consumer
+        identity is refused by its actual replay API. Missing or unsupported
+        consumers are explicit holds, never fabricated successful receipts.
+        """
+        frozen = expected.checked()  # before ANY execution in this adapter
+        rows = {r['recomputed']['expected_work_key']: r for r in frozen['records']}
+        by_dispatch = {}
+        for key, row in rows.items():
+            if not row['runnable']:
+                continue
+            raw = row['raw']
+            ref = raw.get('query_ref', raw.get('discovery_authority_ref'))
+            dispatch = _canonical(ref)
+            if dispatch in by_dispatch:
+                raise ValueError('DUPLICATE_OWNER_JOB_REF')
+            by_dispatch[dispatch] = key
+        # Full outer join before execution: missing original work cannot disappear.
+        units_by_key = {}
+        for unit in session.manifest.units:
+            key = by_dispatch.get(_canonical(unit.job_ref.as_dict()))
+            if key is None or key in units_by_key:
+>               raise ValueError('FOREIGN_OR_COLLIDING_MANIFEST_UNIT')
+E               ValueError: FOREIGN_OR_COLLIDING_MANIFEST_UNIT
+
+rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py:101: ValueError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_independent_positive_denominators_and_replay
+FAILED rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_foreign_issuer_is_not_authenticated[original_U_ref]
+FAILED rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_foreign_issuer_is_not_authenticated[independent_E_ref]
+FAILED rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_foreign_issuer_is_not_authenticated[independent_custody_ref]
+FAILED rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_foreign_issuer_is_not_authenticated[original_operation_scope_ref]
+FAILED rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_missing_all_held_rows_exposes_outer_gap
+FAILED rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_foreign_replay_ref_rejected
+7 failed, 14 passed in 5.51s

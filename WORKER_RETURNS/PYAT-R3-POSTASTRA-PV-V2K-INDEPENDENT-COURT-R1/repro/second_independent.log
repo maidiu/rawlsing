@@ -1,0 +1,27 @@
+F....................                                                    [100%]
+=================================== FAILURES ===================================
+______________ test_independent_positive_denominators_and_replay _______________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-16/test_independent_positive_deno0')
+
+    def test_independent_positive_denominators_and_replay(tmp_path):
+        records,expected,plans,calls=court(tmp_path)
+        report=K.run_sourcefree(expected=expected,selected_scopes=plans)
+        assert report['ok'] and len(report['links'])==6 and len(report['nonrunnable'])==2
+        assert [len(c) for c in calls]==[3,3]
+        assert len({l['legacy_expected_work_key'] for l in report['links']})==3
+        assert len({json.dumps(l['consumer_ref'],sort_keys=True) for l in report['links']})==6
+        for link in report['links']:
+            slot=link['original_identity']['operation']['slot']
+            if slot not in ORACLE['expected_consumer_counts']: continue
+            mat=link['consumer_material']
+            profile={str(r['condition_state']):dict(denominator=r['condition_denominator_support'],targets={str(t['target_state']):t['joint_support_count'] for t in r['target_counts']}) for r in mat['conditional_count_profile']}
+            assert profile==ORACLE['expected_consumer_counts'][slot]
+>           assert mat['conditioner_ref']==link['original_identity']['original']['native_item_refs'][0]
+                   ^^^^^^^^^^^^^^^^^^^^^^
+E           KeyError: 'conditioner_ref'
+
+rawlsing_next/tests/test_postastra_pv_v2k_independent.py:162: KeyError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_postastra_pv_v2k_independent.py::test_independent_positive_denominators_and_replay
+1 failed, 20 passed in 6.09s

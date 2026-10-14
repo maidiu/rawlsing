@@ -1,0 +1,119 @@
+{
+  "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "executable": "/usr/local/bin/python3",
+  "host": "MacBook-Pro.lan",
+  "suites": [
+    {
+      "suite": "independent",
+      "command": [
+        "/usr/local/bin/python3",
+        "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/postastra-pv-runtime-uywnr_k9/pv_pytest.py",
+        "-q",
+        "rawlsing_next/tests/test_postastra_pv_v2k_independent.py",
+        "--import-mode=importlib",
+        "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/postastra-pv-v2k-independent/WORKER_RETURNS/PYAT-R3-POSTASTRA-PV-V2K-INDEPENDENT-COURT-R1/repro/independent.xml"
+      ],
+      "cwd": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/postastra-pv-runtime-uywnr_k9",
+      "exit_code": 1,
+      "seconds": 6.522892951965332
+    },
+    {
+      "suite": "candidate",
+      "command": [
+        "/usr/local/bin/python3",
+        "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/postastra-pv-runtime-uywnr_k9/pv_pytest.py",
+        "-q",
+        "rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py",
+        "--import-mode=importlib",
+        "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/postastra-pv-v2k-independent/WORKER_RETURNS/PYAT-R3-POSTASTRA-PV-V2K-INDEPENDENT-COURT-R1/repro/candidate.xml"
+      ],
+      "cwd": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/postastra-pv-runtime-uywnr_k9",
+      "exit_code": 0,
+      "seconds": 3.6755211353302
+    },
+    {
+      "suite": "owners",
+      "command": [
+        "/usr/local/bin/python3",
+        "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/postastra-pv-runtime-uywnr_k9/pv_pytest.py",
+        "-q",
+        "rawlsing_next/tests/test_pre553_v2_durable_consumer_integration_candidate.py",
+        "rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py",
+        "rawlsing_next/tests/test_pre553_route_b_production.py",
+        "rawlsing_next/tests/test_pre553_empirical_query.py",
+        "rawlsing_next/tests/test_pre553_discovery_exact.py",
+        "--import-mode=importlib",
+        "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/postastra-pv-v2k-independent/WORKER_RETURNS/PYAT-R3-POSTASTRA-PV-V2K-INDEPENDENT-COURT-R1/repro/owners.xml"
+      ],
+      "cwd": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/postastra-pv-runtime-uywnr_k9",
+      "exit_code": 0,
+      "seconds": 23.57855486869812
+    },
+    {
+      "suite": "independent_corrected_fixture",
+      "command": [
+        "/usr/local/bin/python3",
+        "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/postastra-pv-runtime-uywnr_k9/pv_pytest.py",
+        "-q",
+        "rawlsing_next/tests/test_postastra_pv_v2k_independent.py",
+        "--import-mode=importlib",
+        "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/postastra-pv-v2k-independent/WORKER_RETURNS/PYAT-R3-POSTASTRA-PV-V2K-INDEPENDENT-COURT-R1/repro/independent.xml"
+      ],
+      "cwd": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/postastra-pv-runtime-uywnr_k9",
+      "exit_code": 1,
+      "seconds": 6.461653232574463
+    },
+    {
+      "suite": "independent_corrected_fixture",
+      "command": [
+        "/usr/local/bin/python3",
+        "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/postastra-pv-runtime-uywnr_k9/pv_pytest.py",
+        "-q",
+        "rawlsing_next/tests/test_postastra_pv_v2k_independent.py",
+        "--import-mode=importlib",
+        "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/postastra-pv-v2k-independent/WORKER_RETURNS/PYAT-R3-POSTASTRA-PV-V2K-INDEPENDENT-COURT-R1/repro/independent.xml"
+      ],
+      "cwd": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/postastra-pv-runtime-uywnr_k9",
+      "exit_code": 0,
+      "seconds": 6.558609247207642
+    },
+    {
+      "suite": "cold_first",
+      "command": [
+        "/usr/local/bin/python3",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/postastra-pv-v2k-independent/WORKER_RETURNS/PYAT-R3-POSTASTRA-PV-V2K-INDEPENDENT-COURT-R1/repro/cold_independent.py",
+        "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/postastra-pv-runtime-uywnr_k9/cold-independent-ledger",
+        "first"
+      ],
+      "cwd": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/postastra-pv-runtime-uywnr_k9",
+      "exit_code": 0,
+      "seconds": 0.8989429473876953
+    },
+    {
+      "suite": "cold_replay",
+      "command": [
+        "/usr/local/bin/python3",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/postastra-pv-v2k-independent/WORKER_RETURNS/PYAT-R3-POSTASTRA-PV-V2K-INDEPENDENT-COURT-R1/repro/cold_independent.py",
+        "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/postastra-pv-runtime-uywnr_k9/cold-independent-ledger",
+        "replay"
+      ],
+      "cwd": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/postastra-pv-runtime-uywnr_k9",
+      "exit_code": 0,
+      "seconds": 0.6580369472503662
+    },
+    {
+      "suite": "independent_corrected_fixture",
+      "command": [
+        "/usr/local/bin/python3",
+        "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/postastra-pv-runtime-uywnr_k9/pv_pytest.py",
+        "-q",
+        "rawlsing_next/tests/test_postastra_pv_v2k_independent.py",
+        "--import-mode=importlib",
+        "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/postastra-pv-v2k-independent/WORKER_RETURNS/PYAT-R3-POSTASTRA-PV-V2K-INDEPENDENT-COURT-R1/repro/independent.xml"
+      ],
+      "cwd": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/postastra-pv-runtime-uywnr_k9",
+      "exit_code": 0,
+      "seconds": 6.712518930435181
+    }
+  ]
+}
