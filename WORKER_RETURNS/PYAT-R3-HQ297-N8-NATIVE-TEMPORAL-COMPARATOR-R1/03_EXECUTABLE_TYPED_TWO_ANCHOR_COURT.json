@@ -1,0 +1,171 @@
+{
+  "schema": "HQ297_T8C_EXECUTED_SOURCEFREE_COURT@1",
+  "grade": "SOURCEFREE_STANDALONE_ONLY",
+  "sourcefree_test_only": true,
+  "actual_hq214_import": false,
+  "actual_original_source_reads": 0,
+  "issued_EE12": 0,
+  "adopted_N8E": 0,
+  "real_N9": 0,
+  "verified_git_blob_sha1": "7f7e0c713a669951b40787537138db7a0653daea",
+  "byte_size": 10525,
+  "original_hq214_pinned_blob": "feb097decbd160c5f259cde0a36f5033a7085fd2",
+  "command": "cd /mnt/data/hq297_t8c && PYTHONPATH=$PWD python -m pytest -q test_hq297_t8c.py --junitxml=pytest_junit.xml",
+  "actual_environment": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "git": "2.47.3",
+    "module_file": "/mnt/data/hq297_t8c/test_hq297_t8c.py",
+    "hostname_or_provider": "UNKNOWN",
+    "cpu_seconds": "UNKNOWN",
+    "network_to_github": "DNS_BLOCKED",
+    "quota": "UNKNOWN"
+  },
+  "exit_code": 0,
+  "stdout": "...................                                                      [100%]\n19 passed in 0.24s\n",
+  "stderr": "",
+  "tests_executed": 19,
+  "pass": 19,
+  "fail": 0,
+  "frozen_positive_expected": {
+    "r5_share": "9/20",
+    "r9_share": "6/11",
+    "delta": "21/220",
+    "variance_of_delta": "11/15000",
+    "category0_2012": "10",
+    "category0_2022": "12",
+    "mutated_r9_delta": "23/220"
+  },
+  "observed": {
+    "r5_share": "9/20",
+    "r9_share": "6/11",
+    "delta": "21/220",
+    "variance_of_delta": "11/15000",
+    "category0_2012": "10",
+    "category0_2022": "12",
+    "mutated_r9_delta": "23/220"
+  },
+  "actual_consumer": {
+    "kind": "STANDALONE_HISTORICAL_ASOF_TEST_READER__NOT_REAL_N9",
+    "asof": "2025-01-01",
+    "read_values_not_just_refs": true,
+    "baseline_selected_numeric_temporal_value": "21/220",
+    "perturbed_selected_numeric_temporal_value": "23/220",
+    "baseline_values_read_digest": "f43a2abac609ae25810dcbb2cddc5350f5d74b770772ef3b1da5a758b9471138",
+    "perturbed_values_read_digest": "8581c34e1338b1dd55ba8bc20d34147dc96e3514d2a93166290da4faca0adcf7",
+    "baseline_product_digest": "c74fc711131c355c85e84f87adde6709789180b69bef8f0634a636ba64dbe0a4"
+  },
+  "native_categories": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "native_zero_retained": true,
+  "special_states": [
+    "DK",
+    "REFUSED",
+    "MISSING",
+    "NOT_ASKED"
+  ],
+  "test_results": [
+    {
+      "name": "test_positive_and_changed_consumer",
+      "status": "PASS"
+    },
+    {
+      "name": "test_zero_drop",
+      "status": "PASS"
+    },
+    {
+      "name": "test_category_zero_as_missing",
+      "status": "PASS"
+    },
+    {
+      "name": "test_question_version_swap",
+      "status": "PASS"
+    },
+    {
+      "name": "test_denominator_risk",
+      "status": "PASS"
+    },
+    {
+      "name": "test_wrong_weights",
+      "status": "PASS"
+    },
+    {
+      "name": "test_non_national_selector",
+      "status": "PASS"
+    },
+    {
+      "name": "test_temporal_inversion",
+      "status": "PASS"
+    },
+    {
+      "name": "test_mixed_asof",
+      "status": "PASS"
+    },
+    {
+      "name": "test_asof_earlier_than_publication",
+      "status": "PASS"
+    },
+    {
+      "name": "test_same_person_claim",
+      "status": "PASS"
+    },
+    {
+      "name": "test_dependent_source_circular_estimator",
+      "status": "PASS"
+    },
+    {
+      "name": "test_unissued_EE12",
+      "status": "PASS"
+    },
+    {
+      "name": "test_2017_not_observed",
+      "status": "PASS"
+    },
+    {
+      "name": "test_false_2017_anchor",
+      "status": "PASS"
+    },
+    {
+      "name": "test_missing_design_uncertainty",
+      "status": "PASS"
+    },
+    {
+      "name": "test_structural_causal_laundering",
+      "status": "PASS"
+    },
+    {
+      "name": "test_wrong_population",
+      "status": "PASS"
+    },
+    {
+      "name": "test_refusal_is_not_substantive",
+      "status": "PASS"
+    }
+  ],
+  "authority_summary": {
+    "original_release_version_binding": null,
+    "national_native_weight_keys": null,
+    "psu_strata_variance": null,
+    "per_wave_measured_fact_refs": [
+      null,
+      null
+    ],
+    "ee12_issuer": null,
+    "n8e_production_issuer": null,
+    "real_n9_values_read_receipt": null,
+    "real_world_selection": null,
+    "model_or_actor_use": null
+  },
+  "nonclaims": [
+    "no survey respondents or actual Ghana trend",
+    "no real measured SE/interval",
+    "no original-source category equivalence or 2017 measured observation",
+    "no N8S structural change",
+    "no current adopted N9, N11 or PRE-V3 acceptance"
+  ]
+}
