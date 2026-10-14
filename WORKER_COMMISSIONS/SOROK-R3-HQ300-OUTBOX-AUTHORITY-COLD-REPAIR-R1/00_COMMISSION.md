@@ -1,6 +1,6 @@
 # SOROK HQ300 OUT — SOURCEFREE OUTBOX AUTHORITY, IMMUTABILITY, AND COLD-CRASH REPAIR
 
-**STATUS:** COMMISSION_BANKED__UNLAUNCHED__NO_ADOPTION.
+**STATUS:** COMMISSION_BANKED__ROUTING_ERRATUM_R1__NO_ADOPTION.  Earlier launch SHA is an immutable ancestor; a worker genuinely already started may finish under the prior commission without reset.
 **REPOSITORY:** `maidiu/rawlsing` (private).
 **ROLE:** Independent sourcefree bounded implementer/experimenter, NOT HQ, competent accepted-law issuer, real V3 actor or acceptance reviewer.
 **BRANCH:** `agent/rabochii-sorok-r3-hq300-outbox-authority-cold-repair-r1`
@@ -10,15 +10,23 @@
 **ALLOWED WRITES:** `WORKER_RETURNS/SOROK-R3-HQ300-OUTBOX-AUTHORITY-COLD-REPAIR-R1/` and nothing else.
 **MISSION / ONE OUTCOME:** Repair sourcefree event admission/outbox/client projection to address RSR's actual 12 independent REDs while preserving valid original-SR tests, then demonstrate bounded authentic cold-process recovery and fail-closed event/physical/knowledge boundaries. Do not claim production ADP019 atomicity or human perception.
 
+## OWNER-SELECTED SINGLE-EDITOR ROUTING — BINDING CLARIFICATION
+
+**PRIMARY EDITOR/HARNESS:** Browser + Python.
+**PRIMARY CODING/REASONING MODEL:** GPT-6 Medium.
+**ONE_WORKER_FULL_JOB:** ONE worker in the selected editor does the full commissioned task from investigation to published remote return. No sub-agent, helper, duplicate editor session or model handoff is required or authorized by this commission. An independent scientific I2 review is a **subsequent HQ action after return**, not a launch prerequisite or a task delegated to this worker.
+**MODEL/HARNESS NONCONFLATION:** The editor/runtime and underlying configured model are separate. `MiMo-V2.6 Pro` in `OpenCode` is not `DeepSeek-Harness`. This commission MUST NOT route the user to a different harness merely because a model could theoretically be available there.
+**STARTUP COMPATIBILITY:** For a NEW launch, the operative sealed startup is this routing-revised commission's new remote HEAD communicated by HQ. The original commit `0dc74e65057df6edfc69893abfae0fd25187ec71` remains an immutable ancestor and custody evidence. If the user already launched an agent from that original commit, do not reset/relaunch it; the user-level host selection above governs interpretation, and the worker may complete its original sealed work unless directed otherwise.
+
 ## Nonoptional ranked host + phase/model routing
 `HQ_ENVIRONMENT_VERDICT=BROWSER_NATIVE`; `BROWSER_SUFFICIENCY=FULL_AT_SOURCEFREE_PROTOTYPE_GRADE`; `BROWSER_SETUP_COST=LIGHT`.
-**PRIMARY MODEL/HOST & MINIMUM INTELLIGENCE:** Primary Browser GPT-6 Medium for I1 constrained Python implementation/testing, provided actual Browser Python/pytest. Independent GPT-6 High I2 review of occurrence/phenomenological authority afterward, not automatically the same worker.
+**PRIMARY MODEL/HOST & MINIMUM INTELLIGENCE:** Primary GPT-6 Medium in one Browser/GitHub + available Python/pytest conversation. ONE Browser agent executes the full source-free repair and verifies the remote return. Independent I2 reviewer is a later HQ commission, not an additional worker to summon during execution.
 **WHY PREFERRED:** Original SR sourcefree prototype is two small files and 28 authored tests; RSR executed independent 5 PASS/12 RED and two actual cold subprocess tests in Browser Python. There is no owner-module import closure for this next scoped sourcefree court, so Browser is preferable.
 **WARM REUSE PLAN:** Prefer a truly live existing RSR Browser Python runtime if marker, exact files and permissions reverified; otherwise fresh Browser Python epoch, exact two files plus frozen S01–S28 and 12 reviewer counterexamples. No benefit to enormous local worktree.
-**OBJECTIVE FALLBACK TRIGGER:** After one bounded preflight if Browser cannot actually execute pytest/cold subprocess/JUnit, reroute to an authorized local inexpensive Python runner; do not claim Browser-grade execution on document read alone.
+**OBJECTIVE FALLBACK TRIGGER:** If Browser Python/pytest/cold subprocess/JUnit cannot execute after bounded preflight, return precise MISSING_RUNNER/CAPABILITY evidence to HQ; do not autonomously launch local OpenCode, DeepSeek-Harness or a second agent. HQ can explicitly reassign only after a decision.
 **WHY NOT ALTERNATIVE:** Alternate may accomplish a scoped documentary or isolated test subset but is not equally suitable for the entire intended grain. Model availability/provider privacy must be actually verified; no fabricated cost or quota claims.
 **PHASE_MODEL_ASSIGNMENT:** I0 hashes/sourcefree runner; I1 bounded code/test machinery; I2 review of full scientific meaning/authority independently after author return; I3 only true accepted authority collision. No automatic GPT-6.1 High for routine imports/tests.
-**PRIMARY_MODEL_ECONOMICS:** Prefer verified capable MiMo/DeepSeek-Harness for fixed repairs; use I2 High where measurement/semantic reasoning materially justifies it. No model pricing inferred from version number; cache/allowance/usage recorded if available.
+**PRIMARY_MODEL_ECONOMICS:** Use this assigned GPT-6 Medium Browser worker to complete the entire bounded job; no MiMo, DeepSeek-Harness or second-model involvement. Any independent scientific acceptance review is a later separate HQ action.
 **REVIEW_INDEPENDENCE_AND_ESCALATION:** distinct competent I2 reviewer after candidate; author cannot accept or self-adopt. No duplicate full rewrite of original oracles.
 **ACTIVE_WORKER_NO_DISTURBANCE:** new HQ300 commission, NOT a relaunch or modification of completed HQ299 worker branches.
 
