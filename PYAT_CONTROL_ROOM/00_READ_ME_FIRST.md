@@ -1,5 +1,10 @@
 # NEW PYAT HQ: INVALID UNTIL FULL PERSONA-FIRST + INHERITED-METHOD ACCESSION
 
+## Completed official Astra R3 advisory — 14 October 2026
+
+Read [ASTRA_R3_JOINT_WELD_ADVISORY_HANDOFF_20261014_R1](ASTRA_R3_JOINT_WELD_ADVISORY_HANDOFF_20261014_R1.md) during incoming-HQ grokking. Exact frozen return: `3b2d9a1b644a9fa024ed1bd895b67be5c8789531`. All 18 deliverables and the structural-world/genealogy corrective amendment are complete. **Ready for HQ intake; advisory only, not adopted law, implementation permission or wake.** Read FINAL_RETURN and amendment16 before recovered 00–06. Earlier statements below that the Pyat/Astra reviews are still the next pending action are historical at their original cut; competent adjudication of the returned advisory is now the relevant intake step.
+
+
 Read `PYAT_CONTROL_ROOM/00_INCOMING_HQ_VALIDITY_AND_PERSONA_END_PRODUCT_GATE_R1.md` immediately. Every new/resumed/transferred HQ starts `CANDIDATE__READ_ONLY_GROK`, **not operative HQ**, regardless of earlier R2.1 completion token. Verify the last sealed immutable HQ_HANDOFF checkpoint then demonstrate PRE-MAIN/Pyat currentness, the user-authored final persona demand, Dva/Trii/Chetiri/Long Memory and previous implementation capital, actual crosswave/driver/facet/empirical/temporal current successors, and best-available science/approximation methods. **Critically adjudicate whether inherited methods are fit to reuse, should be integrated/improved/completed, or replaced after comparative proof; old code is neither automatically best nor automatically obsolete.** Require a concrete persona-changing consumer/evaluation and independent or user-reviewed accession evidence before any new commissions, scientific/semantic adoption or global program change. Preserves all 35-wave machine and PRE-V3→V3 boundaries. No new source/model-use authorizations.
 
 ---
