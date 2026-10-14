@@ -1,4 +1,6 @@
 # Pyat HQ operating requirements — effective delivery
+
+> **MANDATORY 2026-10-14 RESOURCE UPDATE:** Apply [00D warm execution passport/money-first agent dispensation](00D_WARM_EXECUTION_PASSPORT_AND_MONEY_FIRST_AGENT_DISPENSATION_R1.md) alongside this file. Supersede a reflexive Browser High/Browser Economy assignment with the cheapest qualified existing host and a verified warm session where lawful, avoiding repeat repository downloads and import setup; respect shared-store worktrees, scientific and actor-source boundaries.
 Status: USER_DIRECTED_OPERATING_REFINEMENT
 Record: USER_DIRECTED_PYAT_HQ_EFFECTIVENESS_20260930
 Applies to: operating HQ, Sub-Vozdhi, implementers and reviewers.
