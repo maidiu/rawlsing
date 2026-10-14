@@ -14,6 +14,7 @@ from dataclasses import dataclass
 from typing import Any, Mapping
 
 from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
+from rawlsing_next.pre553_analytical_composition import AnalyticalCompositionResult
 from rawlsing_next.pre553_empirical_possibility_provider import (
     EmpiricalPossibilitySliceProviderResult,
     PROVIDER_STATE_EXACT,
@@ -107,15 +108,18 @@ class WorldCondition:
 class EmpiricalOption:
     option_id: str
     consumer_query: PositionedSubjectPossibilityQuery
-    computed_provider: EmpiricalPossibilitySliceProviderResult
+    computed_provider: EmpiricalPossibilitySliceProviderResult | None
     world_conditions: tuple[WorldCondition, ...]
     generated_binding_echo_ref: ExactRef | None = None
+    computed_c1: AnalyticalCompositionResult | None = None
 
     def __post_init__(self) -> None:
         _require(bool(self.option_id), "OPTION_ID_REQUIRED")
         _require(bool(self.world_conditions), "WORLD_CONDITION_REQUIRED")
         _require(len({c.condition_id for c in self.world_conditions}) ==
                  len(self.world_conditions), "DUPLICATE_WORLD_CONDITION")
+        _require((self.computed_provider is None) != (self.computed_c1 is None),
+                 "ONE_COMPUTED_OWNER_PATH_REQUIRED")
 
 
 @dataclass(frozen=True)
@@ -130,9 +134,82 @@ class GenericRequest:
     claim_current_n9: bool = False
 
 
-def _check_producer(option: EmpiricalOption) -> Mapping[str, Any]:
-    p = option.computed_provider
+def _checked_material(
+    *,
+    option: EmpiricalOption,
+    evidence: Any,
+    result: Any,
+    producer_fact_ref: ExactRef,
+    receipt_ref: ExactRef | None,
+    producer_route: str,
+) -> Mapping[str, Any]:
     query = option.consumer_query
+    _require(evidence is not None and result is not None,
+             "ONLY_PRODUCER_GENERATED_EVIDENCE_ALLOWED")
+    _require(result.result_state == "EXACT_SUPPORTED" and
+             result.exact_geometry is not None,
+             "NO_EXACT_SUPPORTED_CONDITIONAL")
+    _require(evidence.evidence_ref == result.exact_evidence_ref,
+             "EVIDENCE_CONSUMER_RESULT_IDENTITY_MISMATCH")
+    _require(evidence.target_ref == query.target_ref and
+             evidence.source_universe_ref == query.source_universe_ref and
+             evidence.release_ref == query.release_ref,
+             "SOURCE_TARGET_RELEASE_MISMATCH")
+    _require(evidence.retained_conditioner_ids == query.conditioner_ids,
+             "CONDITIONER_GRAIN_MISMATCH")
+    _require(evidence.raw_support is not None and evidence.raw_support > 0,
+             "NO_POSITIVE_SOURCE_SUPPORT")
+    return {
+        "query_ref": query.ref.as_dict(),
+        "producer_route": producer_route,
+        "provider_receipt_ref": None if receipt_ref is None else receipt_ref.as_dict(),
+        "producer_fact_ref": producer_fact_ref.as_dict(),
+        "evidence_ref": evidence.evidence_ref.as_dict(),
+        "source_universe_ref": query.source_universe_ref.as_dict(),
+        "release_ref": query.release_ref.as_dict(),
+        "target_ref": query.target_ref.as_dict(),
+        "conditioner_ids": list(query.conditioner_ids),
+        "raw_support": evidence.raw_support,
+        "uncertainty_state": evidence.uncertainty_state,
+        "geometry": result.exact_geometry,
+        "result_hash": result.result_hash,
+        "epistemic_ceiling": "SOURCE_FREE_FIXTURE_ONLY__NOT_PERSONAL_PREDICTION",
+    }
+
+
+def _check_producer(option: EmpiricalOption) -> Mapping[str, Any]:
+    """Reuse existing N10E single-binding or C1 exact multi-binding producer.
+
+    Never infer C1 authorization from a schema: in an operative successor the
+    competent source/operation issuer must supply exact C1 target/risk/weight,
+    same-respondent/joint and model-use authority. This probe is TEST_ONLY.
+    """
+    query = option.consumer_query
+    if option.computed_c1 is not None:
+        c = option.computed_c1
+        _require(isinstance(c, AnalyticalCompositionResult),
+                 "ONLY_REAL_C1_COMPOSITION_RESULT_ACCEPTED")
+        _require(c.analytical_state == "SUPPORTED" and
+                 c.producer_fact_state == "SUPPORTED",
+                 "C1_FACT_NOT_SUPPORTED")
+        _require(c.consumer_query_ref == query.ref,
+                 "QUERY_C1_IDENTITY_MISMATCH")
+        _require(query.release_ref in c.release_refs and
+                 query.source_universe_ref in c.source_universe_refs,
+                 "C1_RELEASE_UNIVERSE_MISMATCH")
+        evidence = c.possibility_slice_evidence_or_null
+        _require(evidence is not None and
+                 c.raw_denominator_support == evidence.raw_support,
+                 "C1_DENOMINATOR_IDENTITY_MISMATCH")
+        return _checked_material(
+            option=option, evidence=evidence,
+            result=c.consumer_result_or_null,
+            producer_fact_ref=c.producer_fact_ref,
+            receipt_ref=None,
+            producer_route=c.producer_route,
+        )
+
+    p = option.computed_provider
     _require(isinstance(p, EmpiricalPossibilitySliceProviderResult),
              "ONLY_REAL_N10E_PROVIDER_RESULT_ACCEPTED")
     _require(p.provider_state == PROVIDER_STATE_EXACT and
@@ -149,35 +226,12 @@ def _check_producer(option: EmpiricalOption) -> Mapping[str, Any]:
     _require(p.provider_receipt.consumer_result_identity_hash ==
              p.consumer_result_or_null.result_hash,
              "CONSUMER_PROVIDER_IDENTITY_MISMATCH")
-    _require(p.consumer_result_or_null.result_state == "EXACT_SUPPORTED",
-             "NO_EXACT_SUPPORTED_CONDITIONAL")
-    _require(p.generated_evidence_or_null.target_ref == query.target_ref and
-             p.generated_evidence_or_null.source_universe_ref == query.source_universe_ref and
-             p.generated_evidence_or_null.release_ref == query.release_ref,
-             "SOURCE_TARGET_RELEASE_MISMATCH")
-    _require(p.generated_evidence_or_null.retained_conditioner_ids ==
-             query.conditioner_ids, "CONDITIONER_GRAIN_MISMATCH")
-    _require(p.generated_evidence_or_null.raw_support is not None and
-             p.generated_evidence_or_null.raw_support > 0,
-             "NO_POSITIVE_SOURCE_SUPPORT")
-    _require(p.consumer_result_or_null.exact_geometry is not None,
-             "NO_PRODUCER_GEOMETRY")
-    # Read numeric values ONLY from produced evidence, never supply them here.
-    return {
-        "query_ref": query.ref.as_dict(),
-        "provider_receipt_ref": p.receipt_ref.as_dict(),
-        "producer_fact_ref": p.provider_receipt.producer_fact_ref.as_dict(),
-        "evidence_ref": p.generated_evidence_or_null.evidence_ref.as_dict(),
-        "source_universe_ref": query.source_universe_ref.as_dict(),
-        "release_ref": query.release_ref.as_dict(),
-        "target_ref": query.target_ref.as_dict(),
-        "conditioner_ids": list(query.conditioner_ids),
-        "raw_support": p.generated_evidence_or_null.raw_support,
-        "uncertainty_state": p.generated_evidence_or_null.uncertainty_state,
-        "geometry": p.consumer_result_or_null.exact_geometry,
-        "result_hash": p.consumer_result_or_null.result_hash,
-        "epistemic_ceiling": "SOURCE_FREE_FIXTURE_ONLY__NOT_PERSONAL_PREDICTION",
-    }
+    return _checked_material(
+        option=option, evidence=p.generated_evidence_or_null,
+        result=p.consumer_result_or_null,
+        producer_fact_ref=p.provider_receipt.producer_fact_ref,
+        receipt_ref=p.receipt_ref, producer_route=p.provider_receipt.provider_route,
+    )
 
 
 def _world_facts(world: WorldSnapshot) -> Mapping[str, WorldFact]:
