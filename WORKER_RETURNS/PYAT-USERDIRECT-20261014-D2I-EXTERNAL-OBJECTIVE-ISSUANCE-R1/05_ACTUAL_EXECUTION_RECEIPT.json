@@ -1,0 +1,89 @@
+{
+  "schema": "PYAT_D2I_20261014_EXECUTED_SOURCEFREE_EXTERNAL_DOCUMENTARY_NUMERIC_COURT",
+  "sealed_start": "13e1403c75a9c2404fdfd05bf23f3fa6fd3a8b36",
+  "status": "SOURCEFREE_TEST_ONLY_40_PASS__ORIGINAL_BINARY_AND_ISSUER_HOLD",
+  "host": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "git": "2.47.3",
+    "workdir": "/mnt/data/d2i_workspace",
+    "network_git_ls_remote": "FAILED_DNS_128",
+    "public_pdf_container_fetch": "FAILED_DNS_OR_DOWNLOAD_ERROR",
+    "github_connector_pinned_code_reads": "PASS",
+    "quota": "UNKNOWN"
+  },
+  "actual_commands": [
+    "python -m py_compile /mnt/data/d2i_workspace/d2i_sourcefree.py",
+    "cd /mnt/data/d2i_workspace && python -m pytest -q --junitxml=pytest_receipt.xml",
+    "cd /mnt/data/d2i_workspace && python -c 'from d2i_sourcefree import *; ...'"
+  ],
+  "pytest": {
+    "stdout": "........................................                                 [100%]\n40 passed in 0.11s\n",
+    "exit_code": 0,
+    "passed": 40,
+    "failed": 0,
+    "skipped": 0,
+    "junit_local_exists": true
+  },
+  "tested_exact_git_blobs": {
+    "d2i_sourcefree.py": "0c902b55fed2508d3890e58e3ffae6b2237cd39b",
+    "test_d2i_sourcefree.py": "ee5dbb188aaad2a013225767fe66b1d8372e18ab",
+    "01_ORIGINAL_EDITION_BINARY_AND_METHOD.json": "d714ab12157e5d17e8e164c78b260743ebbe09d9"
+  },
+  "official_published_numbers_verified": {
+    "GSS": {
+      "numerator": 2388192,
+      "denominator": 3288063,
+      "pct_rounded": 72.6,
+      "printed_page": 62,
+      "pdf_zero_page": 75,
+      "subtypes": [
+        2288193,
+        74490,
+        3640,
+        21512,
+        357
+      ]
+    },
+    "NCA": {
+      "total": 23414527,
+      "prepaid": 23237338,
+      "postpaid": 177189,
+      "printed_page": 17,
+      "pdf_zero_page": 29
+    }
+  },
+  "testonly_run": {
+    "as_of": "2022-07-08",
+    "status": "TWO_VALUES_DEREFERENCED_TEST_ONLY",
+    "GSS_fixture_ref": "D2I_TEST_ONLY_FIELD:0ef2f616679ce0efde9e27cd0ed89cbb6f0643a169bcfaaff4df98502b6d1f5c",
+    "NCA_fixture_ref": "D2I_TEST_ONLY_FIELD:19bc9aa38688bf72466a4753b36d6a41be85c0cc8a22e67d3a53cd5d23c70433",
+    "snapshot_hash": "af980cf64a82546fea4481928dca1a86b2b68138fefca190cd5c8f694ba25896",
+    "GSS_change_only": [
+      "GSS_RURAL_LIGHTING"
+    ],
+    "NCA_change_only": [
+      "NCA_NATIONAL_DATA_SUBSCRIPTIONS"
+    ],
+    "revoked_source": "REQUIRED_SOURCE_UNAVAILABLE_HOLD",
+    "before_second_publication": "REQUIRED_SOURCE_UNAVAILABLE_HOLD"
+  },
+  "no_original_document_sha_claim": true,
+  "original_pdf_sha256": {
+    "GSS": null,
+    "NCA": null
+  },
+  "permissions": {
+    "source_method_issuers": 0,
+    "N5_N6_external_published_fields_issued": 0,
+    "N7_EE13_issued": false,
+    "operative_OC05": false,
+    "original_respondent_rows": 0,
+    "LLM_or_actor_calls": 0
+  },
+  "runtime_limit": "AN_ISOLATED_STANDALONE_TEST_NOT_AN_IMPORTED_OWNER_ORIGINAL_SOURCE_REGRESSION",
+  "source_citations": [
+    "https://census2021.statsghana.gov.gh/gssmain/fileUpload/reportthemesub/Volume%203K_Housing%20Characteristics_240222.pdf",
+    "https://nca.org.gh/wp-content/uploads/2022/07/Q4-2021-statistical-Bulletin.pdf"
+  ]
+}
