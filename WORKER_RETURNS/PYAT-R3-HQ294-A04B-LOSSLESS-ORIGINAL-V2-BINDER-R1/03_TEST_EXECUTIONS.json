@@ -1,0 +1,88 @@
+{
+  "schema": "HQ294_A04B_EXECUTIONS@1",
+  "model": "gpt-6.1-sol",
+  "effort": "medium",
+  "model_evidence": "session turn_context",
+  "host": "Matthews-MBP.lan",
+  "secondary_mac_designation": "UNKNOWN",
+  "account_B_designation": "UNKNOWN",
+  "quota_preflight": {
+    "ordinaryUsageAllowed": true,
+    "five_hour_used_percent": 19,
+    "weekly_used_percent": 13,
+    "reset_credits_used": false,
+    "paid_overflow_used": false
+  },
+  "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "executable": "/usr/local/bin/python3",
+  "pytest": "9.1.1",
+  "sealed_startup": "95ff7b1f613d485eb1c22b87104bbd9858922219",
+  "execution_tree": "/tmp/hq294-a04b-p01-3f91dc22",
+  "execution_tree_commit": "3f91dc22d2eb863bc1d2facccfd33e6c05349503",
+  "owner_blobs": {
+    "pre553_original_workload_contract_v2_candidate.py": "08bb75c431d3352cb0d17e9a65f7d855b4d35e59",
+    "pre553_original_workload_v2_verifier_candidate.py": "996c8e907f2befde93af09b60154b610c1ffeb63",
+    "pre553_v2_durable_consumer_integration_candidate.py": "dc146e920909c8577b5c3c316cd9a8631e96ffd8",
+    "pre553_route_b_production.py": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+    "pre553_batch_runner.py": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+    "field_forge_conditional_support.py": "a70decb20747d84cbcbe27d1280babc6de88ef33"
+  },
+  "suites": [
+    {
+      "name": "identity",
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 18.056,
+      "exit_code": 0
+    },
+    {
+      "name": "owners",
+      "tests": 111,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 98.442,
+      "exit_code": 0
+    }
+  ],
+  "cold_processes": [
+    {
+      "mode": "first",
+      "exit_code": 0,
+      "durable_executor_calls": 3
+    },
+    {
+      "mode": "replay",
+      "exit_code": 0,
+      "durable_executor_calls": 0
+    }
+  ],
+  "cold_producer_reconstruction": true,
+  "commands": "repro/reproduce.sh contains exact test and cold-process entrypoints; initial extraction was Python git archive/tarfile",
+  "file_sha256": {
+    "repro/first.json": "69c30f5a0dcabde96fada59af24c44183d3552a91c4ba18f0d19b42ecb2bcef0",
+    "repro/cold_first.log": "e5902c6b4afab9c25d488c68ecc94287e1471d9da30f06c28ca6fbd0be9211cd",
+    "repro/expected_replay.json": "9ae0751972b27d1e6ce2f38409236d7fb3147be47d8234570215b8de079a0e4a",
+    "repro/owners.xml": "b0a3acf54e74b41cde9c59c0f07306bf7f6a25f04cdd29f02a183e67673707b6",
+    "repro/replay.json": "e5e8e509836fb5d2bdb8a080a5062a1ea8ffb800f92824bc2a332597fe04485c",
+    "repro/identity.log": "115ba4aacb6160359746cd04561c0547050f085ead137eba209af08ecb615f2a",
+    "repro/owners.log": "757eb151169e6efbb70ee707abae1273fc556a81ff4d045df14187916cb341df",
+    "repro/cold_replay.log": "11587b0106f922e12f0c03d99680588870d25981cb88d7fb0bb31c2c0a159cff",
+    "repro/reproduce.sh": "e990e689d9eff8bbb65568ddb1c08d84c06bde85fe62551db71a4bf8f73ef598",
+    "repro/identity.xml": "5cb0d5d92f5ad8987594deb378afcb98d610e0b2685380bb14c3ae6d61deb07e",
+    "repro/expected_first.json": "9ae0751972b27d1e6ce2f38409236d7fb3147be47d8234570215b8de079a0e4a",
+    "repro/emit_cold.py": "6bf5794541be01fb2086681c33b68cb2846d164fd6c5ada14fa250dbb1efc38e"
+  },
+  "not_executed": [
+    "original SAV/DTA read or survey execution",
+    "all35 full estate court",
+    "external U/E/source-use authentication",
+    "new V3 actor or N9/N10 service",
+    "full legacy V2 integrity suite"
+  ],
+  "source_privacy": "only named sourcefree fixtures; no original respondent bytes accessed",
+  "semantic_authority_modified": false,
+  "independent_acceptance": "REQUIRED_NOT_PERFORMED_BY_THIS_WORKER"
+}
