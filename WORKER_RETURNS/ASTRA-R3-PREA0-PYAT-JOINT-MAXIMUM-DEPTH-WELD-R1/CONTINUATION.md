@@ -60,3 +60,13 @@ Every Sorok/Pyat mirror was independently downloaded from its fixed commit and i
 ## Resumption method
 
 Start with current usage and git status/HEAD/direct remote tip. Read this checkpoint, commission and manifests; reuse retained evidence instead of redownloading or rerunning. Separate retrieved from read. Continue incomplete primary readings and analysis. Use gh api at fixed commit for missing documentary files; hash raw bytes with Git blob format. No raw survey reads and no Python/pytest/model/actor execution is needed. Do not treat this checkpoint's hypotheses as accepted conclusions.
+
+## Recovery bank 2 increment
+
+- Usage reached 82% five-hour and 13% weekly at continuation. User was asked whether to pause for account switch or continue; no answer received when this increment was written. Do not infer pause authorization from silence.
+- Verified bank 1 at 5b1384ba98782b14074f2e58f67de72f9da5ee26: all 72 manifest entries match SHA-256, all 73 changed paths inside commissioned terrain, clean worktree and direct remote match.
+- Fully read three current source files statically: GT0, NON_EVENT_ADAPTER, OC05. Primary full reads now 30 (27 documents plus 3 code files); no code executed.
+- GT0 run_gt0_end_to_end is deliberately a blocked-path conservation harness: it asserts PRE-V3 UNDEFINED_FOR_OBJECT, no V3 state change, no V2 actor claim/render, final BLOCKED_NAMED_AUTHORITY_REQUIRED. Its code presence cannot establish a positive actor path.
+- Non-event adapter's make/validate_objective_non_event_serving_receipt requires actual D05 receipt plus repository/query/resolution/exact authority and basis for CURRENT, rejects ref-only currentness, and forbids attaching CURRENT receipts to HISTORICAL. This is bounded concrete validation, not whole N9 atomicity or knowledge-as-of proof. Legacy implementation and D05 validator remain to inspect if their stronger behavior matters.
+- OC05 POLICY_BINDINGS explicitly has NOT_YET_APPLICABLE and no seam; evaluate_current_consumer raises before evaluating it. Only OC01/OC02 are current in this module. NON_EMPIRICAL_MODEL inputs have version/authority metadata but cannot satisfy _satisfies as empirical evidence. Thus this module is not proof of an operative generic modeled-world fallback. Preserve separate model service/permission requirements.
+- Next substantive work remains the unread primary historical law, remaining five named source files, and worker/currentness reconciliation; do not repeat completed inputs.
