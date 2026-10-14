@@ -1,0 +1,20 @@
+# R2 T8F — content-verified native temporal product and historical values reader
+
+**Authority:** user-direct narrow sourcefree repair commission. No Pyat HQ accession, no original Afrobarometer/EE12/N8E issuer, no V3.
+**Repository:** `maidiu/rawlsing` private.
+**Branch:** `agent/userdirect-pyat-20261014-r2-t8f-temporal-integrity-r1`
+**SEALED STARTUP:** exact 40-char SHA in launch; verify direct origin first. Parent canonical `0d551d36ff19dc9806e0ad490ff33a1e4c25e381`.
+**Role:** temporal data/authority integrity implementation engineer (NOT independent T8R/T8C reviewer).
+**Resource:** inexpensive qualified sourcefree Python/pytest and GitHub code; OpenCode Go local preferred if live privacy/quota/isolated worktree verified; Browser for original public questionnaires, but do not claim local actor/retained respondents. Primary Astra reserve unaffected, no paid overflow.
+**Write scope:** `WORKER_RETURNS/PYAT-USERDIRECT-20261014-R2-T8F-TEMPORAL-INTEGRITY-R1/` only (versioned test-only candidate+repro).
+**First exact sources:** T8R `agent/userdirect-pyat-20261014-t8r-native-temporal-independent-r1@6f4706b703124993dacab86cbfa3d41428ca3a25` full `00_INDEPENDENT_VERDICT.md`, `01_NATIVE_AND_TEMPORAL_HOSTILES.json`, `02_OWNER_REUSE_AND_RUN_PROOF.md`, `03_N8_TO_N9_POSITIVE_EDGE_OR_HOLD.md`, `repro/test_review_mandatory_guards_red.py`; T8C original `059d7ce1b35a08fa4fe735ffccc1a5dddbfe5899`, exact original 19 tests blob `7f7e0c713a669951b40787537138db7a0653daea`; HQ214 comparator `rawlsing_next/pre553_temporal_comparability.py@a93352512aa9290112bff1eb680c54d43345078f` blob `feb097decbd160c5f259cde0a36f5033a7085fd2`; N9C `9ab4a0192b7c951bb0b387637e6c74333246766c`. Preserve T8R disclosure SAME CHAT AUTHOR OVERLAP, not independent admission.
+
+**Productive repair:**
+1. Version a strict test-only native 5-category two-anchor producer→historical context reader over **immutable, defensive-copy, content-addressed independently held wave fact references**, not caller-supplied mutable delta. Recompute canonical product hash and arithmetic when reading; reject stale `product_digest` tampering of delta=999 or altered native category zero, and reject malformed asof with typed refusal rather than Python ValueError.
+2. Original Ghana 0 is a substantive distinct response; refused (R5 998, R9 8), DK9, not-asked and selected population/routing/weight/design do not get conflated. Explicit fixture-only weighted fractions vs REAL MEASURED; no unqualified trend, no same-person crosswave joins. Preserve changed 21/220→23/220 and data-plane read hash, but it is hypothetical.
+3. Preserve field observation vs publication/knowledge-asof cutoff; 2017 gap UNKNOWN unless an independently versioned model-inference issuer exists; no invented source release or source grant.
+4. Authenticate every input ref and exact temporal comparator receipt; identify whether HQ214 import/reuse from correct pinned version is possible, and if not document real blocking dependencies. A substitute test double may prove only local method. Never duplicate adopted authority or call M4 structural V553 a subjective survey N8E.
+5. Run original 19 unmodified plus T8R 11/3 mandatory REDs against successor plus new invalid issuer, replay, revoked source, wave-one-only change, unmodified other-wave, negative control and version downgrade. Two correct original-wave sample instances must remain separate independent cross-sections.
+6. Trace actual candidate N8E→historical N9 selected-context values receipt, source/version readset, targeted invalidation and 2025 vs 2022 knowledge; do not claim OC05 applied, EE12 issued, N8S objective institutions or V3 actor.
+
+**Return:** `00_RETURN.md`, `01_THREE_INTEGRITY_REDS_CLOSED_OR_HELD.json`, `02_OWNER_REUSE_AND_TEST_RECEIPTS.md`, `03_HISTORY_VALUES_AND_ENDPERSON_COUNTERFACTUAL.md`, code+tests+logs inside return `repro/`. Report commands/exit, code blobs, host identity and exact remote SHA. A reviewer entirely distinct from both earlier T8C/T8R author windows must independently rerun/accept.
