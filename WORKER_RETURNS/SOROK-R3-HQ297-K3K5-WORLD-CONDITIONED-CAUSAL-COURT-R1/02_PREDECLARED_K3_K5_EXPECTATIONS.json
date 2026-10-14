@@ -1,0 +1,83 @@
+{
+  "schema": "K35_NO_ACTOR_CAUSAL_EXPECTATIONS@1.0.0",
+  "status": "FROZEN_PRIOR_TO_ANY_K35_EXECUTION",
+  "grain": "ISOLATED_RULE_PROTOTYPE_ONLY__NOT_REAL_CAN008_RUNTIME",
+  "sm_ref": "7777a06dbd3a8f9dcf2b7ca3241e853dc485e505",
+  "startup": "4efbc1b0bdbb6b1469f72b5756fe1988308adde7",
+  "rule_ids": [
+    "LAB_R_K3@proposed",
+    "LAB_R_K5@proposed"
+  ],
+  "K3": {
+    "A_TRACE": [
+      "ADP016_TRACE_T7",
+      "BUFFER",
+      "DENY_FIRST_PERSON_CLAIM"
+    ],
+    "B_NO_TRACE": [
+      "NONE",
+      "RESPONSE_EFFECTS_VALID_EMPTY",
+      "DENY_FIRST_PERSON_CLAIM"
+    ],
+    "C_UNAVAILABLE_NO_TRACE": [
+      "NONE",
+      "RESPONSE_EFFECTS_VALID_EMPTY",
+      "DENY_FIRST_PERSON_CLAIM"
+    ],
+    "nulls": [
+      "changing analyst-only childhood content cannot change actor projection/effect",
+      "unavailable source feature cannot become first-person claim",
+      "unadmitted later event cannot produce effect",
+      "replay exact"
+    ]
+  },
+  "K5": {
+    "A_OFFICIAL_UNSAFE": [
+      "PRESENT",
+      "OFFICIAL_RECOGNITION",
+      "DEFLECT"
+    ],
+    "B_PEER_TRUSTED": [
+      "ABSENT",
+      "NO_INSTITUTIONAL_CHANGE",
+      "AMPLIFY"
+    ],
+    "C_OFFICIAL_TRUSTED": [
+      "PRESENT",
+      "OFFICIAL_RECOGNITION",
+      "REROUTE"
+    ],
+    "D_PEER_UNSAFE": [
+      "ABSENT",
+      "NO_INSTITUTIONAL_CHANGE",
+      "DEFLECT"
+    ],
+    "nulls": [
+      "world-only switch changes world effect not felt response",
+      "history-only switch changes felt response not objective effect",
+      "missing world owner grant bars objective change",
+      "peer cannot confer institution status",
+      "official grant cannot compel felt belief",
+      "unadmitted event causes zero",
+      "exact replay"
+    ]
+  },
+  "comparison": {
+    "candidates": [
+      "B0_event_relation_derived",
+      "B1_extra_latent_states"
+    ],
+    "same_inputs": true,
+    "same_cases": true,
+    "no_extra_llm_calls": true,
+    "heldout_increment_required_for_B1": true,
+    "default_without_lift": "PREFER_B0"
+  },
+  "statuses": {
+    "K1": "NOT_EXECUTED",
+    "K2": "NOT_EXECUTED",
+    "K4": "NOT_EXECUTED",
+    "K6": "NOT_EXECUTED"
+  },
+  "claim_ceiling": "only self-written synthetic deterministic mechanics, no adopted CAN008 positive runtime or psychological science"
+}
