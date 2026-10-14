@@ -4,7 +4,7 @@ Updated: 2026-10-01
 
 Status: `INTERACTION_IDEATION_R5_CHAT_HARVESTED__PFF_INHERITANCE_RESTORED__RELATIONALIZATION_DELTA_EXPLICIT__ONTOLOGY_PROVISIONAL__ALPHA_NOT_YET_IMPLEMENTATION_SPECIFIED`
 
-## Mandatory three-stage takeover grounding
+## Mandatory four-stage takeover grounding
 
 Any new Sorok Vozhd must first read:
 
@@ -22,6 +22,10 @@ Then read and activate:
 
 `SOROK_PRODUCT_CONTROL_ROOM/00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md`
 
+then activate:
+
+`SOROK_PRODUCT_CONTROL_ROOM/00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md`
+
 for mandatory absolute non-gassing / white-whale protection in consequential feasibility/readiness/programmability/confidence claims. It requires explicit claim-rung, scope, composition-risk, critical-path dependency and falsifier/kill-test discipline; forbids unmeasured readiness percentages; assigns zero positive evidentiary weight to sunk cost/project-preservation pressure; and makes overclaimed assessments invalid pending calibrated reissue.
 
 The three gates together contain:
@@ -32,7 +36,7 @@ The three gates together contain:
 - exact live/historical repo branch/path maps for deep comprehension;
 - takeover comprehension tests.
 
-A Sorok-summary-only understanding is insufficient. So is a technically grounded Vozhd that has not activated the communicative-discipline constitution.
+A Sorok-summary-only understanding is insufficient. So is a technically grounded Vozhd that has not activated the communicative-discipline constitution. A Vozhd that has not activated 00C may not dispense material worker prompts or make worker-routing/status claims.
 
 Current alpha-feasibility strategy: `100_MINIMAL_WHITE_WHALE_ALPHA_AND_FIDELITY_ESCALATION_CONSTITUTION_R1.md`. Alpha should preserve core interactional invariants while explicitly bounding maximal forms of open-world expansion, autonomous life simulation, unlimited actor fidelity, broad current-event coupling and other potential white-whale dimensions. Fidelity escalates only on observed constitutive failure of the bounded form.
 
