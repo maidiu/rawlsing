@@ -1,0 +1,224 @@
+{
+  "schema": "PE_WORLD_EMPIRICAL_PROGRESSIVE_INDEPENDENT_ORACLE_PLAN@1",
+  "proof_grade": "PREDECLARED_SOURCE_FREE_ORACLES_NOT_EXECUTED",
+  "control": {
+    "control_branch": "integration/pre-main-reconciliation-r1",
+    "control_ref": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+    "sealed_checkpoint": "HQD-2026-10-10-280",
+    "handoff_commit": "2936ccaca35d8a0414869efdd2870f1ea244f1c2",
+    "advisory_astra": "3b2d9a1b644a9fa024ed1bd895b67be5c8789531",
+    "shadow": "9879b0d9de97def30be2f111ddc2e614731d4d5c",
+    "w10_worker": "3c36aa1740a008d0b876850ed47057783e820367",
+    "worker_status": "UNADOPTED_TEST_ONLY"
+  },
+  "frozen_synthetic_input": {
+    "AT07": {
+      "respondent_count": 100,
+      "forward": {
+        "condition": "POSITION=P1",
+        "target": "ANSWER",
+        "denominator": 60,
+        "cells": {
+          "yes": 54,
+          "no": 6
+        }
+      },
+      "reverse": {
+        "condition": "ANSWER=yes",
+        "target": "POSITION",
+        "denominator": 62,
+        "cells": {
+          "P1": 54,
+          "P2": 8
+        }
+      },
+      "changed_source": {
+        "respondent_count": 110,
+        "forward_denominator": 70,
+        "forward_cells": {
+          "yes": 54,
+          "no": 16
+        },
+        "reverse_denominator": 62
+      }
+    },
+    "C1_XOR": {
+      "respondent_count": 4,
+      "rows": [
+        {
+          "A": 0,
+          "B": 0,
+          "C": 0
+        },
+        {
+          "A": 0,
+          "B": 1,
+          "C": 1
+        },
+        {
+          "A": 1,
+          "B": 0,
+          "C": 1
+        },
+        {
+          "A": 1,
+          "B": 1,
+          "C": 0
+        }
+      ],
+      "single": {
+        "conditions": {
+          "A": 0
+        },
+        "target": "C",
+        "denominator": 2,
+        "cells": {
+          "0": 1,
+          "1": 1
+        }
+      },
+      "multi": {
+        "conditions": {
+          "A": 0,
+          "B": 1
+        },
+        "target": "C",
+        "denominator": 1,
+        "cells": {
+          "0": 0,
+          "1": 1
+        }
+      }
+    }
+  },
+  "two_consumers": [
+    {
+      "consumer_id": "CONCEPTION_SCENARIO_DOWNSTREAM__NO_PRE_V3_PARENT_SEMANTICS",
+      "role": "V3 hypothetical scenario-support inquiry; no partner, parent, relationship, conception or actor created"
+    },
+    {
+      "consumer_id": "NONPARENT_COMMUNITY_OUTREACH_PLANNING",
+      "role": "Non-parent positioning/outreach possibility context, not individual participant prediction"
+    }
+  ],
+  "independent_perturbations": [
+    {
+      "id": "E1",
+      "variable": "AT07 forward source law canonical vs CHANGED_SOURCE_LAW",
+      "held_constant": [
+        "synthetic world snapshot A",
+        "world route/question-selector premise"
+      ],
+      "expected_change": [
+        "original forward denominator 60 to 70",
+        "no cell support 6 to 16",
+        "yes cell support remains 54",
+        "source/release refs invalidate"
+      ],
+      "expected_invariant": [
+        "world snapshot hash",
+        "world selection stage progression",
+        "selected forward option",
+        "reverse conditional denominator 62"
+      ],
+      "execution": "NOT_EXECUTED_IN_THIS_RETURN"
+    },
+    {
+      "id": "W1",
+      "variable": "synthetic world query-role premise forward vs reverse",
+      "held_constant": [
+        "AT07 100-row synthetic source law",
+        "all precomputed provider results"
+      ],
+      "expected_change": [
+        "selected empirical question forward to separately produced reverse",
+        "selected support 60 to 62",
+        "target ref changes",
+        "world snapshot/receipt hash"
+      ],
+      "expected_invariant": [
+        "all computed provider result identities",
+        "source/universe/release",
+        "no actor execution"
+      ],
+      "important_limit": "different questions, not same-target world-caused individual response change",
+      "execution": "NOT_EXECUTED_IN_THIS_RETURN"
+    },
+    {
+      "id": "W2",
+      "variable": "synthetic world B-known predicate B_UNKNOWN to B1",
+      "held_constant": [
+        "C1 XOR four exact respondents",
+        "same target C",
+        "same source/release"
+      ],
+      "expected_change": [
+        "selected exact C1 query A=0 to A=0 AND B=1",
+        "number of empirical bindings 1 to 2",
+        "denominator 2 to 1",
+        "C=1 share 1/2 to 1/1",
+        "world snapshot/receipt hash"
+      ],
+      "expected_invariant": [
+        "same target and source identity",
+        "both already computed C1 evidence objects unchanged",
+        "minority/zero support cells retained",
+        "actor firewall"
+      ],
+      "important_limit": "C1 original same-respondent synthetic evidence; no real survey/EE14 issuance",
+      "execution": "NOT_EXECUTED_IN_THIS_RETURN"
+    },
+    {
+      "id": "N1",
+      "variable": "world currentness stale",
+      "expected": "WORLD_CURRENTNESS_NOT_CURRENT typed refusal",
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "id": "N2",
+      "variable": "mixed source releases in one option pool",
+      "expected": "CROSS_SOURCE_OR_RELEASE_OPTION_POOL_FORBIDDEN typed refusal",
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "id": "N3",
+      "variable": "actor-output or real-N9 claim",
+      "expected": "ACTOR_OR_FOREIGN_ONTOLOGY_FORBIDDEN or UNISSUED_N9_CURRENT",
+      "execution": "NOT_EXECUTED"
+    },
+    {
+      "id": "N4",
+      "variable": "unissued multi N10E provider request",
+      "expected": "ProviderRequestShapeError; alternative direct accepted C1 composer under exact fixture",
+      "execution": "NOT_EXECUTED"
+    }
+  ],
+  "authority_distinctions": {
+    "schema_generality": "PositionedSubjectPossibilityQuery arbitrary exact refs and tuple bindings does not issue query permission",
+    "forward_reverse": "two separately executed/sourced producers are required; never use Bayes from forward alone without licensed joint population/risk",
+    "multi_condition": "C1 supports exact source-evaluated AND/same-respondent, N10E public R1 single binding; C1 direct service route currently only TEST_ONLY",
+    "world_relation": "world premise selects qualified target/condition operation; it does not reweight empirical geometry or assign behavior to an individual",
+    "clock_model": "world fact effective interval, snapshot as-of, publication year, selection/currentness; empirical fieldwork/source-time join not yet established",
+    "generated_binding_echo": "only opaque already-generated exact fact ref allowed, not upstream generation; no individual inference",
+    "sample_unit": "AT07/C1 same synthetic respondent; no household/dyad inference"
+  },
+  "remaining_operative_gates": [
+    "competent current N9 real-world coherence/authority/dependency closure, actual selected values",
+    "source-release and exact operation/model/estimand grants for reversed target and multi conditioners",
+    "authorized public versioned multi-binding path over existing C1 with independent owner review",
+    "source-qualified minority/support/weight/design/uncertainty and genuine population/grain permissions",
+    "field/effective/publication/as-of lifecycle, currentness and exact invalidation for operative scope",
+    "independent actually executed source-free pytest and then separately permitted real-data service test",
+    "N11 full estate/F1-F8 and N12 wake remain independent, not satisfied here"
+  ],
+  "no_run": {
+    "python_pytest": "NOT_EXECUTED",
+    "original_survey": "NOT_ACCESSED",
+    "N9": "NOT_EXECUTED",
+    "N10W_integrated": "NOT_ESTABLISHED",
+    "N11_N12": "NOT_CLAIMED",
+    "V3": "NOT_WOKEN",
+    "remote_github": "WRITE_SUCCEEDED_ON_WORKER_BRANCH_ONLY",
+    "host": "ChatGPT GitHub connector"
+  }
+}
