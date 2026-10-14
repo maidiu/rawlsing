@@ -1,0 +1,323 @@
+{
+  "assignments_completed": [
+    "HQ299 G12: original S-GI1 24/98 rerun + GI2 12-family/57-predicate direct generalization"
+  ],
+  "branch": "agent/rabochii-sorok-r3-hq299-g12-sgi1-direct-generalization-r1",
+  "capabilities": {
+    "filesystem_shell": "VERIFIED",
+    "git": "VERIFIED 2.39.1",
+    "pytest": "VERIFIED 9.1.1",
+    "python": "VERIFIED 3.11.3"
+  },
+  "checkout_base_head": "3c0270d2b3e09a82459269b42ddc73032caf9b6d",
+  "clean_dirty_state": "return-terrain-only writes; no accepted source mutation",
+  "conversation_or_account_affinity": "opencode-go shared quota (account counters UNKNOWN)",
+  "covered_test_suites": [
+    {
+      "command": "bash repro/run_g12_battery.sh [1] SGI1_MODEL=0 SGI1_REUSE_RECORDS=1 python3 run_k11.py",
+      "result": "24/24 cases, 98/98 predicates, grade K11_LAB_PASS_AT_DECLARED_GRAIN",
+      "stdout": "repro/k11_stdout.txt"
+    },
+    {
+      "command": "bash repro/run_g12_battery.sh [2] python3 -m pytest gi2/test_gi2_on_sgi1.py",
+      "junit": "repro/gi2_57.junit.xml",
+      "result": "57 predicates: 53 PASS, 3 NOT_REACHED_AUTHORITY_GAP, 1 NOT_REACHED_FIXTURE_SCHEMA_GAP"
+    }
+  ],
+  "dependency_closure_status": "FULL_SGI1_14_MODULE_CLOSURE_BOUNDED",
+  "environment_id": "ENV-HQ299-G12-LOCAL-B42C",
+  "epoch_id": "EPOCH-HQ299-G12-20261014-LOCAL-1",
+  "git_object_store_alias": "local-shared-object-store-rawlsing",
+  "imported_module_files": {
+    "construction": {
+      "blob": "8bc7c1a5d8d96112b313326445c4fdbf5b222fe7",
+      "file": "staging/sigi1_src/01_LAB_IMPLEMENTATION/lab_sgi1/construction.py"
+    },
+    "dag": {
+      "blob": "25818e2c1a6131641e3e7a6b73bbff1c6de3d6c2",
+      "file": "staging/sigi1_src/01_LAB_IMPLEMENTATION/lab_sgi1/dag.py"
+    },
+    "k11_runner": {
+      "blob": "90802c8fc95ca8caea34414511eb39a1aec62643",
+      "file": "staging/sigi1_src/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py"
+    },
+    "mother": {
+      "blob": "2f44ce5efd8564c88f0a0a36dcb2b96bde042262",
+      "file": "staging/sigi1_src/01_LAB_IMPLEMENTATION/lab_sgi1/mother.py"
+    },
+    "pipeline": {
+      "blob": "cf91c99b90e485bf3a1d8f4f87fad2e4c7f22f51",
+      "file": "staging/sigi1_src/01_LAB_IMPLEMENTATION/lab_sgi1/pipeline.py"
+    },
+    "world": {
+      "blob": "7212c483a36207951cac9354c18ad4d21e7b2a9f",
+      "file": "staging/sigi1_src/01_LAB_IMPLEMENTATION/lab_sgi1/world.py"
+    }
+  },
+  "independent_review_separation": "IMPLEMENTER_NOT_REVIEWER; reviewer requested in 03",
+  "last_live_probe_at": "2026-10-14",
+  "machine_alias": "local-darwin-host-01",
+  "materialized_source_refs": [
+    {
+      "bytes": 13271,
+      "git_blob_sha1": "edd5b8b98d845b7b0222b9d19f1c4a2b1d28a9f7",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "01_LAB_IMPLEMENTATION/run_k11.py",
+      "staged_relative_path": "staging/sigi1_src/01_LAB_IMPLEMENTATION/run_k11.py"
+    },
+    {
+      "bytes": 796,
+      "git_blob_sha1": "0b5a6dd80f93e6a5d19eb1b6b710d339cb99e45a",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "01_LAB_IMPLEMENTATION/lab_sgi1/__init__.py",
+      "staged_relative_path": "staging/sigi1_src/01_LAB_IMPLEMENTATION/lab_sgi1/__init__.py"
+    },
+    {
+      "bytes": 7955,
+      "git_blob_sha1": "39f0f8503c543171815a5031d20552adc4178f25",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "01_LAB_IMPLEMENTATION/lab_sgi1/core.py",
+      "staged_relative_path": "staging/sigi1_src/01_LAB_IMPLEMENTATION/lab_sgi1/core.py"
+    },
+    {
+      "bytes": 7048,
+      "git_blob_sha1": "7212c483a36207951cac9354c18ad4d21e7b2a9f",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "01_LAB_IMPLEMENTATION/lab_sgi1/world.py",
+      "staged_relative_path": "staging/sigi1_src/01_LAB_IMPLEMENTATION/lab_sgi1/world.py"
+    },
+    {
+      "bytes": 13424,
+      "git_blob_sha1": "2f44ce5efd8564c88f0a0a36dcb2b96bde042262",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "01_LAB_IMPLEMENTATION/lab_sgi1/mother.py",
+      "staged_relative_path": "staging/sigi1_src/01_LAB_IMPLEMENTATION/lab_sgi1/mother.py"
+    },
+    {
+      "bytes": 17651,
+      "git_blob_sha1": "68c9d4520ea4591d750b605a77ffcc2370e367b2",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "01_LAB_IMPLEMENTATION/lab_sgi1/proposal.py",
+      "staged_relative_path": "staging/sigi1_src/01_LAB_IMPLEMENTATION/lab_sgi1/proposal.py"
+    },
+    {
+      "bytes": 7359,
+      "git_blob_sha1": "645b69f56bc07d9c8e78fa12e4b4247e01b11770",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "01_LAB_IMPLEMENTATION/lab_sgi1/qualification.py",
+      "staged_relative_path": "staging/sigi1_src/01_LAB_IMPLEMENTATION/lab_sgi1/qualification.py"
+    },
+    {
+      "bytes": 6502,
+      "git_blob_sha1": "0190587cf938575d488bba0d2c3e177aa3f9c3bd",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "01_LAB_IMPLEMENTATION/lab_sgi1/selection.py",
+      "staged_relative_path": "staging/sigi1_src/01_LAB_IMPLEMENTATION/lab_sgi1/selection.py"
+    },
+    {
+      "bytes": 22637,
+      "git_blob_sha1": "8bc7c1a5d8d96112b313326445c4fdbf5b222fe7",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "01_LAB_IMPLEMENTATION/lab_sgi1/construction.py",
+      "staged_relative_path": "staging/sigi1_src/01_LAB_IMPLEMENTATION/lab_sgi1/construction.py"
+    },
+    {
+      "bytes": 4566,
+      "git_blob_sha1": "15025ea85358c2f91ac0026bd6f2e14c88a4c5de",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "01_LAB_IMPLEMENTATION/lab_sgi1/relation.py",
+      "staged_relative_path": "staging/sigi1_src/01_LAB_IMPLEMENTATION/lab_sgi1/relation.py"
+    },
+    {
+      "bytes": 5782,
+      "git_blob_sha1": "bebccd994cb10a9295400d3286b7f9c04ab0cdfa",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "01_LAB_IMPLEMENTATION/lab_sgi1/continuation.py",
+      "staged_relative_path": "staging/sigi1_src/01_LAB_IMPLEMENTATION/lab_sgi1/continuation.py"
+    },
+    {
+      "bytes": 5085,
+      "git_blob_sha1": "25818e2c1a6131641e3e7a6b73bbff1c6de3d6c2",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "01_LAB_IMPLEMENTATION/lab_sgi1/dag.py",
+      "staged_relative_path": "staging/sigi1_src/01_LAB_IMPLEMENTATION/lab_sgi1/dag.py"
+    },
+    {
+      "bytes": 25210,
+      "git_blob_sha1": "cf91c99b90e485bf3a1d8f4f87fad2e4c7f22f51",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "01_LAB_IMPLEMENTATION/lab_sgi1/pipeline.py",
+      "staged_relative_path": "staging/sigi1_src/01_LAB_IMPLEMENTATION/lab_sgi1/pipeline.py"
+    },
+    {
+      "bytes": 13005,
+      "git_blob_sha1": "00496669e9ed25c610cb44996f16282fa8bf4b97",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "01_LAB_IMPLEMENTATION/lab_sgi1/k11_contract.py",
+      "staged_relative_path": "staging/sigi1_src/01_LAB_IMPLEMENTATION/lab_sgi1/k11_contract.py"
+    },
+    {
+      "bytes": 63262,
+      "git_blob_sha1": "90802c8fc95ca8caea34414511eb39a1aec62643",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py",
+      "staged_relative_path": "staging/sigi1_src/01_LAB_IMPLEMENTATION/lab_sgi1/k11_runner.py"
+    },
+    {
+      "bytes": 3394,
+      "git_blob_sha1": "ec6f72733d52f9758cb4731697f5da28c0bae162",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "08_LLM_PROPOSAL_RECORDS/proposal_index.json",
+      "staged_relative_path": "staging/sigi1_src/08_LLM_PROPOSAL_RECORDS/proposal_index.json"
+    },
+    {
+      "bytes": 16896,
+      "git_blob_sha1": "f63fb3fa04850fbf09d195efe8bab6f481afbdc9",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "08_LLM_PROPOSAL_RECORDS/proposal_M0_GENERAL.json",
+      "staged_relative_path": "staging/sigi1_src/08_LLM_PROPOSAL_RECORDS/proposal_M0_GENERAL.json"
+    },
+    {
+      "bytes": 16146,
+      "git_blob_sha1": "a34d39a7e14bcfa4d74c030e9de0f69ccf0a4419",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "08_LLM_PROPOSAL_RECORDS/proposal_M0_LOCAL.json",
+      "staged_relative_path": "staging/sigi1_src/08_LLM_PROPOSAL_RECORDS/proposal_M0_LOCAL.json"
+    },
+    {
+      "bytes": 15504,
+      "git_blob_sha1": "e18b2288a2cff1ff6613d7c60917ca980ea1e02f",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "08_LLM_PROPOSAL_RECORDS/proposal_M0_INST.json",
+      "staged_relative_path": "staging/sigi1_src/08_LLM_PROPOSAL_RECORDS/proposal_M0_INST.json"
+    },
+    {
+      "bytes": 16814,
+      "git_blob_sha1": "353702b463bf921a61fd00c5332ab919cccfe36e",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "08_LLM_PROPOSAL_RECORDS/proposal_M0_MOBILITY.json",
+      "staged_relative_path": "staging/sigi1_src/08_LLM_PROPOSAL_RECORDS/proposal_M0_MOBILITY.json"
+    },
+    {
+      "bytes": 11246,
+      "git_blob_sha1": "45aebca068d9a44649e87b7fd5cab820e604ae27",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "08_LLM_PROPOSAL_RECORDS/proposal_M0_UNCONVENTIONAL.json",
+      "staged_relative_path": "staging/sigi1_src/08_LLM_PROPOSAL_RECORDS/proposal_M0_UNCONVENTIONAL.json"
+    },
+    {
+      "bytes": 17629,
+      "git_blob_sha1": "385881c3902b50e14d7ceade4420b1d1f794b87a",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "08_LLM_PROPOSAL_RECORDS/proposal_M2_GENERAL.json",
+      "staged_relative_path": "staging/sigi1_src/08_LLM_PROPOSAL_RECORDS/proposal_M2_GENERAL.json"
+    },
+    {
+      "bytes": 17081,
+      "git_blob_sha1": "6638e1e1b19955c816eb9f79c4d73b7b2d7df58a",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "08_LLM_PROPOSAL_RECORDS/proposal_MP_GENERAL.json",
+      "staged_relative_path": "staging/sigi1_src/08_LLM_PROPOSAL_RECORDS/proposal_MP_GENERAL.json"
+    },
+    {
+      "bytes": 13082,
+      "git_blob_sha1": "23bc905c688f5ba3eee8e27f3757b5467ac28929",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "08_LLM_PROPOSAL_RECORDS/proposal_MP_CONFLICTING.json",
+      "staged_relative_path": "staging/sigi1_src/08_LLM_PROPOSAL_RECORDS/proposal_MP_CONFLICTING.json"
+    },
+    {
+      "bytes": 8328,
+      "git_blob_sha1": "5c22d956dd54295b87bcc6dd982a041c6b13653e",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "08_LLM_PROPOSAL_RECORDS/proposal_DEDUPE_CLEAN.json",
+      "staged_relative_path": "staging/sigi1_src/08_LLM_PROPOSAL_RECORDS/proposal_DEDUPE_CLEAN.json"
+    },
+    {
+      "bytes": 23445,
+      "git_blob_sha1": "90eca116a9944a85a2ae61be53bd65e4f5b90f17",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "08_LLM_PROPOSAL_RECORDS/proposal_DEDUPE_DUP.json",
+      "staged_relative_path": "staging/sigi1_src/08_LLM_PROPOSAL_RECORDS/proposal_DEDUPE_DUP.json"
+    },
+    {
+      "bytes": 660,
+      "git_blob_sha1": "00744a3bf81972c6b6cb3215108a2bf70df4f299",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "03_RUN_LOGS/k11_summary.json",
+      "staged_relative_path": "staging/sigi1_reference/03_RUN_LOGS/k11_summary.json"
+    },
+    {
+      "bytes": 8594,
+      "git_blob_sha1": "d1dfa3c52e5b65b18b723687be8f145378c1332e",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "03_RUN_LOGS/k11_run_log.json",
+      "staged_relative_path": "staging/sigi1_reference/03_RUN_LOGS/k11_run_log.json"
+    },
+    {
+      "bytes": 4922,
+      "git_blob_sha1": "d6954e765d082605fdd689103a2279c7ce9d7cd0",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "05_MEASUREMENTS/suite_fingerprints.json",
+      "staged_relative_path": "staging/sigi1_reference/05_MEASUREMENTS/suite_fingerprints.json"
+    },
+    {
+      "bytes": 2869,
+      "git_blob_sha1": "40a991261bc514a311cf772927d92a21fe92db66",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "05_MEASUREMENTS/suite_replay_comparison.json",
+      "staged_relative_path": "staging/sigi1_reference/05_MEASUREMENTS/suite_replay_comparison.json"
+    },
+    {
+      "bytes": 12250,
+      "git_blob_sha1": "0ca58f2bddd434ed3cc463014d631f21b2bb7f8d",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "05_MEASUREMENTS/cost_report.json",
+      "staged_relative_path": "staging/sigi1_reference/05_MEASUREMENTS/cost_report.json"
+    },
+    {
+      "bytes": 13477,
+      "git_blob_sha1": "e82aeaef26a28401038dd5fbf353f9b04781e303",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "05_MEASUREMENTS/feasibility.json",
+      "staged_relative_path": "staging/sigi1_reference/05_MEASUREMENTS/feasibility.json"
+    },
+    {
+      "bytes": 1775,
+      "git_blob_sha1": "7a1f55fdef7a50a8c85d22c7aa9d5235ba71ac2d",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "02_K11_FIXTURES/fixture_manifest.json",
+      "staged_relative_path": "staging/sigi1_reference/02_K11_FIXTURES/fixture_manifest.json"
+    },
+    {
+      "bytes": 14352,
+      "git_blob_sha1": "089b2d455963d9e6bf6679633b07fbc10abacd6f",
+      "git_commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "00_RETURN.md",
+      "staged_relative_path": "staging/sigi1_reference/00_RETURN.md"
+    }
+  ],
+  "model_calls_this_commission": 0,
+  "model_provider": "opencode-go (opencode-go/mimo-v2.6-pro) for implementation/testing only",
+  "next_good_affinity_tags": [
+    "SGI1_K11",
+    "GENEALOGY_CONSTRUCTION",
+    "GI2_HELDOUT",
+    "EMBARGO",
+    "N9_EVIDENCE_CUSTODY"
+  ],
+  "observed_credits_usage": "UNKNOWN",
+  "owner_session_alias": "opencode-go-sorok-g12-worker",
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_DELTA@1",
+  "privacy_source_grant": "no original survey bytes; synthetic lab fixtures only",
+  "probe_command_and_result": "python3 --version -> 3.11.3; pytest -> 9.1.1; git -> 2.39.1; node -> v18.14.2 (unused this round)",
+  "retire_or_rebuild_reason": null,
+  "runtime_marker_digest": "5463ac7d5371be034282718f088302f8375dd10deeb53657eab9e5ff1236b0d1",
+  "science_grade": "SOURCEFREE_PINNED_IMPORTED_OWNER__NOT_ADOPTION__NOT_ORIGINAL_SOURCE__NOT_ACTOR_USE",
+  "session_still_available_for_more_work": true,
+  "source_family": "Sorok HQ lineage + blob-verified S-GI1 original package staging",
+  "staged_state_preservation": "staging/sigi1_src + staging/sigi1_reference + repro/sigi1_run retained; re-runnable via repro/run_g12_battery.sh",
+  "status": "LIVE_VERIFIED",
+  "surface": "LOCAL_SHARED_STORE",
+  "worktree_alias": "governed-sparse-worktree-hq299-g12"
+}

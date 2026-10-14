@@ -1,0 +1,239 @@
+{
+  "n_predicates": 57,
+  "predicates": {
+    "bad_reverse_edge_detected": {
+      "detail": "good=True bad=False inv=1",
+      "verdict": "PASS"
+    },
+    "endpoint_change_does_not_mutate_mother": {
+      "detail": "changed_status=HISTORY_SEARCH_EXHAUSTED",
+      "verdict": "PASS"
+    },
+    "exact_replay:HW01_M0_LOCAL_TWO_FATHERS": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "exact_replay:HW02_M1_OLDER_CHILD": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "exact_replay:HW03_M1_MOBILITY": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "exact_replay:HW08_RETRY_SUCCESS_THIRD": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "exact_replay:HW11_M1_UNCONVENTIONAL": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "exact_replay:HW12_M0_NO_DYAD_BRIDGE": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "forward_causal_independent_life:HW01_M0_LOCAL_TWO_FATHERS": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "forward_causal_independent_life:HW02_M1_OLDER_CHILD": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "forward_causal_independent_life:HW03_M1_MOBILITY": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "forward_causal_independent_life:HW08_RETRY_SUCCESS_THIRD": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "forward_causal_independent_life:HW11_M1_UNCONVENTIONAL": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "forward_causal_independent_life:HW12_M0_NO_DYAD_BRIDGE": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "four_failed_attempts_recorded_and_no_commit": {
+      "detail": "HW07_ENDPOINT_SHIFT:HISTORY_SEARCH_EXHAUSTED:n=4; HW09_RETRY_ALL_FAIL:HISTORY_SEARCH_EXHAUSTED:n=4",
+      "verdict": "PASS"
+    },
+    "frozen_family_outcome:HW01_M0_LOCAL_TWO_FATHERS": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "frozen_family_outcome:HW02_M1_OLDER_CHILD": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "frozen_family_outcome:HW03_M1_MOBILITY": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "frozen_family_outcome:HW04_WORLD_ROUTE_CLOSED": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "frozen_family_outcome:HW05_N9_UNAVAILABLE": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "frozen_family_outcome:HW06_N9_STALE_ASOF": {
+      "detail": "expected WORLD_EVIDENCE_STALE, observed WORLD_EVIDENCE_UNKNOWN (S-GI1 has no as-of/staleness semantics)",
+      "verdict": "NOT_REACHED_AUTHORITY_GAP"
+    },
+    "frozen_family_outcome:HW07_ENDPOINT_SHIFT": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "frozen_family_outcome:HW08_RETRY_SUCCESS_THIRD": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "frozen_family_outcome:HW09_RETRY_ALL_FAIL": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "frozen_family_outcome:HW10_CHILD_FUTURE_DEPENDENT": {
+      "detail": "expected FUTURE_CHILD_INFORMATION_LEAK, observed HISTORY_SEARCH_EXHAUSTED attempts=1",
+      "verdict": "NOT_REACHED_AUTHORITY_GAP"
+    },
+    "frozen_family_outcome:HW11_M1_UNCONVENTIONAL": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "frozen_family_outcome:HW12_M0_NO_DYAD_BRIDGE": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "future_shadow_byte_irrelevance:HW01_M0_LOCAL_TWO_FATHERS": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "future_shadow_byte_irrelevance:HW02_M1_OLDER_CHILD": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "future_shadow_byte_irrelevance:HW03_M1_MOBILITY": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "future_shadow_byte_irrelevance:HW04_WORLD_ROUTE_CLOSED": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "future_shadow_byte_irrelevance:HW05_N9_UNAVAILABLE": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "future_shadow_byte_irrelevance:HW06_N9_STALE_ASOF": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "future_shadow_byte_irrelevance:HW07_ENDPOINT_SHIFT": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "future_shadow_byte_irrelevance:HW08_RETRY_SUCCESS_THIRD": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "future_shadow_byte_irrelevance:HW09_RETRY_ALL_FAIL": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "future_shadow_byte_irrelevance:HW10_CHILD_FUTURE_DEPENDENT": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "future_shadow_byte_irrelevance:HW11_M1_UNCONVENTIONAL": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "future_shadow_byte_irrelevance:HW12_M0_NO_DYAD_BRIDGE": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "no_read_future_to_satisfy_endpoint": {
+      "detail": "observed status=HISTORY_SEARCH_EXHAUSTED attempts=1; S-GI1 FutureChildPartitionGuard audits only mother-anchor visible field names; a declared future-required endpoint has no pre-attempt refusal channel; no future content was read (attempts refused by endpoint replay)",
+      "verdict": "NOT_REACHED_AUTHORITY_GAP"
+    },
+    "no_world_marginal_promotes_to_dyad:HW01_M0_LOCAL_TWO_FATHERS": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "no_world_marginal_promotes_to_dyad:HW02_M1_OLDER_CHILD": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "no_world_marginal_promotes_to_dyad:HW03_M1_MOBILITY": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "no_world_marginal_promotes_to_dyad:HW04_WORLD_ROUTE_CLOSED": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "no_world_marginal_promotes_to_dyad:HW05_N9_UNAVAILABLE": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "no_world_marginal_promotes_to_dyad:HW06_N9_STALE_ASOF": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "no_world_marginal_promotes_to_dyad:HW07_ENDPOINT_SHIFT": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "no_world_marginal_promotes_to_dyad:HW08_RETRY_SUCCESS_THIRD": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "no_world_marginal_promotes_to_dyad:HW09_RETRY_ALL_FAIL": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "no_world_marginal_promotes_to_dyad:HW10_CHILD_FUTURE_DEPENDENT": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "no_world_marginal_promotes_to_dyad:HW11_M1_UNCONVENTIONAL": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "no_world_marginal_promotes_to_dyad:HW12_M0_NO_DYAD_BRIDGE": {
+      "detail": "",
+      "verdict": "PASS"
+    },
+    "older_child_prior_history_survives": {
+      "detail": "GI2 asserts 3 events kind OLDER_CHILD* with facts hours_per_week=22/prior_link=PRIOR_PARTNER; S-GI1's older-child fixture M2 carries ['HOUSEHOLD_STATE', 'CHILD_GENERATED', 'RELATIONSHIP_CHANGE', 'HOUSEHOLD_STATE', 'CARE_ROUTINE'] with different payload schema; exact-field predicates unexpressible",
+      "verdict": "NOT_REACHED_FIXTURE_SCHEMA_GAP"
+    },
+    "retry_success_after_two_failed_attempts": {
+      "detail": "n=3 results=['FAIL', 'FAIL', 'PASS']",
+      "verdict": "PASS"
+    },
+    "two_distinct_fathers_share_endpoint": {
+      "detail": "digests distinct=True",
+      "verdict": "PASS"
+    },
+    "unissued_conception_and_birth_distinct": {
+      "detail": "conception=PENDING_NOT_ADMITTED_CONCEPTION",
+      "verdict": "PASS"
+    },
+    "world_asof_withheld_distinct_from_zero_probability": {
+      "detail": "HW05_N9_UNAVAILABLE:WORLD_EVIDENCE_UNKNOWN:attempts=0; HW06_N9_STALE_ASOF:WORLD_EVIDENCE_UNKNOWN:attempts=0",
+      "verdict": "PASS"
+    }
+  },
+  "schema": "G12_GI2_57_PREDICATES_ON_SGI1@1",
+  "tally": {
+    "NOT_REACHED_AUTHORITY_GAP": 3,
+    "NOT_REACHED_FIXTURE_SCHEMA_GAP": 1,
+    "PASS": 53
+  }
+}

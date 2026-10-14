@@ -1,0 +1,159 @@
+{
+  "family_mappings_frozen": [
+    {
+      "expected": "COMMITTED",
+      "id": "HW01_M0_LOCAL_TWO_FATHERS",
+      "pre_run_prediction": "PASS_EXACT_NAME; two father_seeds produce distinct histories sharing INST_WORKSHOP_A endpoint",
+      "sgi1_fixture_variant": "M0",
+      "sgi1_route": "ROUTE_LOCAL_CLOSED",
+      "sgi1_world_mode": "DEFAULT"
+    },
+    {
+      "expected": "COMMITTED",
+      "id": "HW02_M1_OLDER_CHILD",
+      "pre_run_prediction": "PARTIAL: commit expected; but GI2's exact older-child field assertions (3 events kind OLDER_CHILD*, hours_per_week=22, prior_link=PRIOR_PARTNER) presuppose GI2's surrogate fixture schema, NOT S-GI1's M2 (whose older-child content is CHILD_GENERATED/RELATIONSHIP_CHANGE/CARE_ROUTINE/HOUSEHOLD_STATE with different payloads) -> FIXTURE_SCHEMA_GAP predicted for exact-field predicates; semantic checkpoint-immutability predicate testable",
+      "sgi1_fixture_variant": "M2",
+      "sgi1_route": "ROUTE_LOCAL_CLOSED",
+      "sgi1_world_mode": "DEFAULT"
+    },
+    {
+      "expected": "COMMITTED",
+      "id": "HW03_M1_MOBILITY",
+      "pre_run_prediction": "PASS_EXACT_NAME; M2 checkpoint admits mobility basis (no backdating)",
+      "sgi1_fixture_variant": "M2",
+      "sgi1_route": "ROUTE_MOBILITY",
+      "sgi1_world_mode": "DEFAULT"
+    },
+    {
+      "expected": "WORLD_ROUTE_UNAVAILABLE",
+      "id": "HW04_WORLD_ROUTE_CLOSED",
+      "pre_run_prediction": "PASS_EQUIVALENT_TYPED: S-GI1 emits SCENARIO_INFEASIBLE/SCENARIOS_VALID_EMPTY before construction, 0 attempts",
+      "sgi1_fixture_variant": "M0",
+      "sgi1_route": "ROUTE_LOCAL_CLOSED",
+      "sgi1_world_mode": "FORCED_ROUTES_IMPOSSIBLE"
+    },
+    {
+      "expected": "WORLD_EVIDENCE_UNKNOWN",
+      "id": "HW05_N9_UNAVAILABLE",
+      "pre_run_prediction": "PASS_EQUIVALENT_TYPED: S-GI1 emits NOT_EXECUTED_AUTHORITY_HOLD before selection/construction with 0 attempts and no filler facts",
+      "sgi1_fixture_variant": "M0",
+      "sgi1_route": "ROUTE_LOCAL_CLOSED",
+      "sgi1_world_mode": "HOLD_MISSING_AUTHORITY_N9_UNAVAILABLE"
+    },
+    {
+      "expected": "WORLD_EVIDENCE_STALE",
+      "id": "HW06_N9_STALE_ASOF",
+      "pre_run_prediction": "AUTHORITY_GAP: refusal-before-attempt holds via generic authority hold, but the STALE-vs-UNKNOWN semantic distinction does not exist in S-GI1 -> status-name predicate NOT_REACHED_AUTHORITY_GAP",
+      "sgi1_fixture_variant": "M0",
+      "sgi1_route": "ROUTE_MOBILITY",
+      "sgi1_world_mode": "HOLD_MISSING_AUTHORITY_N9_STALE"
+    },
+    {
+      "endpoint_place_override": "OTHER_PLACE",
+      "expected": "HISTORY_SEARCH_EXHAUSTED",
+      "id": "HW07_ENDPOINT_SHIFT",
+      "pre_run_prediction": "PASS_EXACT_NAME via S-GI1's own endpoint_place_override intervention; 4 attempt receipts persisted",
+      "sgi1_fixture_variant": "M0",
+      "sgi1_route": "ROUTE_LOCAL_CLOSED",
+      "sgi1_world_mode": "DEFAULT"
+    },
+    {
+      "expected": "COMMITTED",
+      "id": "HW08_RETRY_SUCCESS_THIRD",
+      "pre_run_prediction": "PASS_EXACT_NAME if attempt schedule [FAIL,FAIL,PASS] realizable through S-GI1 endpoint predicates over seed-derived independent content (declared test intervention)",
+      "sgi1_fixture_variant": "M2",
+      "sgi1_route": "ROUTE_LOCAL_CLOSED",
+      "sgi1_world_mode": "DEFAULT"
+    },
+    {
+      "endpoint_place_override": "IMPOSSIBLE_UNCONSTRUCTIBLE_PLACE",
+      "expected": "HISTORY_SEARCH_EXHAUSTED",
+      "id": "HW09_RETRY_ALL_FAIL",
+      "pre_run_prediction": "PASS_EXACT_NAME via endpoint_place_override; 4 failed attempts persisted, no silent resample",
+      "sgi1_fixture_variant": "M0",
+      "sgi1_route": "ROUTE_LOCAL_CLOSED",
+      "sgi1_world_mode": "DEFAULT"
+    },
+    {
+      "expected": "FUTURE_CHILD_INFORMATION_LEAK",
+      "id": "HW10_CHILD_FUTURE_DEPENDENT",
+      "pre_run_prediction": "PASS_EXACT_NAME if S-GI1 FutureChildPartitionGuard fires before/at attempt-0; attempt_count must be 0",
+      "sgi1_fixture_variant": "M0",
+      "sgi1_route": "ROUTE_LOCAL_CLOSED",
+      "sgi1_world_mode": "FUTURE_REQUIRED"
+    },
+    {
+      "expected": "COMMITTED",
+      "id": "HW11_M1_UNCONVENTIONAL",
+      "pre_run_prediction": "PASS_EXACT_NAME; water-committee callout route",
+      "sgi1_fixture_variant": "M2",
+      "sgi1_route": "ROUTE_UNCONVENTIONAL",
+      "sgi1_world_mode": "DEFAULT"
+    },
+    {
+      "expected": "COMMITTED",
+      "id": "HW12_M0_NO_DYAD_BRIDGE",
+      "pre_run_prediction": "PASS_EXACT_NAME; S-GI1 world has joint_bridge_available=False natively; joint_dyad_evidence false, population_posterior NOT_ESTIMABLE",
+      "sgi1_fixture_variant": "M0",
+      "sgi1_route": "ROUTE_LOCAL_CLOSED",
+      "sgi1_world_mode": "NO_JOINT"
+    }
+  ],
+  "frozen_before_adapter_implementation": true,
+  "no_repair_pledge": "GI2 oracle strings are preserved verbatim; S-GI1 accepted semantics are not patched; every name difference is declared here before execution; gaps are flagged, not filled",
+  "oracle_preimages": {
+    "gi2_families_expected_sha256": "5b3339d5e28205032e44bd4e614b03e94de8a09bb90a0c66710b9efcf5f948ca",
+    "gi2_families_sha256": "5b3339d5e28205032e44bd4e614b03e94de8a09bb90a0c66710b9efcf5f948ca",
+    "gi2_test_file_sha256": "4b69d9c4ac8f3f809443c0565a6773adb0f61dd01627e40ca1dd5767c55a8899",
+    "sgi1_construction_blob": "8bc7c1a5d8d96112b313326445c4fdbf5b222fe7",
+    "sgi1_pipeline_blob": "cf91c99b90e485bf3a1d8f4f87fad2e4c7f22f51",
+    "sgi1_source_rev": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3"
+  },
+  "predicate_classes_frozen": {
+    "test_bad_reverse_edge_detected": "forged parent order detected; S-GI1 labels it temporal inversion (causal_endpoint_to_childhood_edges) not BAD_PARENT_ORDER -> name-mapping declared",
+    "test_endpoint_change_does_not_mutate_mother": "mother hash invariant + exhausted",
+    "test_exact_replay_across_fresh_calls": "digest equality across two fresh calls",
+    "test_forward_causal_history_and_independent_life": "replay matched, >=1 nonmother project/relationship, DAG passes, independent actions TAKE*/REPAIR*, asymmetric relation views",
+    "test_four_failed_attempts_recorded_and_no_commit": "4 FAIL attempts, no selected history",
+    "test_frozen_family_outcome": "status + mother hash + 0 model calls + NOT_ESTIMABLE + 0 child events + birth NOT_ISSUED + attempt_count<=4",
+    "test_future_shadow_byte_irrelevance": "digest(run with shadow A) == digest(run with shadow B)",
+    "test_no_read_future_to_satisfy_endpoint": "FUTURE_CHILD_INFORMATION_LEAK + 0 attempts",
+    "test_no_world_marginal_promotes_to_dyad_posterior": "joint_dyad_evidence False + NOT_ESTIMABLE",
+    "test_older_child_prior_history_survives": "PREDICTED FIXTURE_SCHEMA_GAP for exact fields; semantic immutability testable",
+    "test_retry_success_after_two_failed_attempts": "[FAIL,FAIL,PASS]",
+    "test_two_distinct_fathers_share_endpoint": "distinct histories, same endpoint matched, differing independent content",
+    "test_unissued_conception_and_birth_distinct": "PENDING_NOT_ADMITTED_CONCEPTION + NOT_ISSUED + 0 child events",
+    "test_world_asof_withheld_distinct_from_zero_probability": "0 attempts + typed refusal; STALE case PREDICTED AUTHORITY_GAP"
+  },
+  "role": "independent source-free genealogy implementation scientist; expectations authored BEFORE any adapter code existed",
+  "schema": "G12_GI2_ON_SGI1_FROZEN_EXPECTATION_LEDGER@1",
+  "status_name_adjudication_frozen": {
+    "COMMITTED": {
+      "class": "EXACT_NAME_PRESENT_IN_SGI1",
+      "sgi1_token": "COMMITTED"
+    },
+    "FUTURE_CHILD_INFORMATION_LEAK": {
+      "class": "EXACT_NAME_PRESENT_IN_SGI1",
+      "sgi1_token": "FUTURE_CHILD_INFORMATION_LEAK"
+    },
+    "HISTORY_SEARCH_EXHAUSTED": {
+      "class": "EXACT_NAME_PRESENT_IN_SGI1",
+      "sgi1_token": "HISTORY_SEARCH_EXHAUSTED"
+    },
+    "WORLD_EVIDENCE_STALE": {
+      "argument": "S-GI1's synthetic world premise has NO N9 evidence-custody layer and NO as-of/staleness model; a STALE-vs-UNKNOWN distinction is inexpressible without new accepted semantics -> AUTHORITY_GAP predicted pre-run",
+      "class": "NO_SEMANTIC_IN_OWNER",
+      "sgi1_token": null
+    },
+    "WORLD_EVIDENCE_UNKNOWN": {
+      "argument": "both are the typed pre-attempt refusal when required world evidence/authority is unavailable; S-GI1 emits NOT_EXECUTED_AUTHORITY_HOLD (status_is_HOLD_not_INFEASIBLE=true, filler_facts_or_events=0); GI2 oracle string preserved unchanged",
+      "class": "EQUIVALENT_TYPED_SEMANTIC_DIFFERENT_NAME",
+      "sgi1_token": "NOT_EXECUTED_AUTHORITY_HOLD"
+    },
+    "WORLD_ROUTE_UNAVAILABLE": {
+      "argument": "both are the typed hard-world refusal that a route is not available/feasible in the immutable world premise; S-GI1 emits SCENARIO_INFEASIBLE from hard_world_court; GI2 oracle string preserved unchanged in receipts",
+      "class": "EQUIVALENT_TYPED_SEMANTIC_DIFFERENT_NAME",
+      "sgi1_token": "SCENARIO_INFEASIBLE"
+    }
+  }
+}

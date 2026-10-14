@@ -1,0 +1,170 @@
+{
+  "families": [
+    {
+      "expected": "COMMITTED",
+      "fail_first": 0,
+      "father_seeds": [
+        "alpha",
+        "beta"
+      ],
+      "id": "HW01_M0_LOCAL_TWO_FATHERS",
+      "mother": "M0",
+      "place": "WORKSHOP",
+      "route": "LOCAL",
+      "world": "W_LOCAL"
+    },
+    {
+      "expected": "COMMITTED",
+      "fail_first": 0,
+      "father_seeds": [
+        "gamma"
+      ],
+      "id": "HW02_M1_OLDER_CHILD",
+      "mother": "M1",
+      "place": "WORKSHOP",
+      "route": "LOCAL",
+      "world": "W_LOCAL"
+    },
+    {
+      "expected": "COMMITTED",
+      "fail_first": 0,
+      "father_seeds": [
+        "delta"
+      ],
+      "id": "HW03_M1_MOBILITY",
+      "mother": "M1",
+      "place": "TRANSIT",
+      "route": "MOBILITY",
+      "world": "W_OPEN"
+    },
+    {
+      "expected": "WORLD_ROUTE_UNAVAILABLE",
+      "fail_first": 0,
+      "father_seeds": [
+        "epsilon"
+      ],
+      "id": "HW04_WORLD_ROUTE_CLOSED",
+      "mother": "M0",
+      "place": "WORKSHOP",
+      "route": "LOCAL",
+      "world": "W_CLOSED"
+    },
+    {
+      "expected": "WORLD_EVIDENCE_UNKNOWN",
+      "fail_first": 0,
+      "father_seeds": [
+        "zeta"
+      ],
+      "id": "HW05_N9_UNAVAILABLE",
+      "mother": "M0",
+      "place": "WORKSHOP",
+      "route": "LOCAL",
+      "world": "W_N9_MISSING"
+    },
+    {
+      "expected": "WORLD_EVIDENCE_STALE",
+      "fail_first": 0,
+      "father_seeds": [
+        "eta"
+      ],
+      "id": "HW06_N9_STALE_ASOF",
+      "mother": "M0",
+      "place": "TRANSIT",
+      "route": "MOBILITY",
+      "world": "W_N9_STALE"
+    },
+    {
+      "expected": "HISTORY_SEARCH_EXHAUSTED",
+      "fail_first": 0,
+      "father_seeds": [
+        "theta",
+        "iota",
+        "kappa",
+        "lambda"
+      ],
+      "id": "HW07_ENDPOINT_SHIFT",
+      "mother": "M0",
+      "place": "OTHER_PLACE",
+      "route": "LOCAL",
+      "world": "W_LOCAL"
+    },
+    {
+      "expected": "COMMITTED",
+      "fail_first": 2,
+      "father_seeds": [
+        "mu",
+        "nu",
+        "xi",
+        "omicron"
+      ],
+      "id": "HW08_RETRY_SUCCESS_THIRD",
+      "mother": "M1",
+      "place": "WORKSHOP",
+      "route": "LOCAL",
+      "world": "W_LOCAL"
+    },
+    {
+      "expected": "HISTORY_SEARCH_EXHAUSTED",
+      "fail_first": 4,
+      "father_seeds": [
+        "pi",
+        "rho",
+        "sigma",
+        "tau"
+      ],
+      "id": "HW09_RETRY_ALL_FAIL",
+      "mother": "M0",
+      "place": "WORKSHOP",
+      "route": "LOCAL",
+      "world": "W_LOCAL"
+    },
+    {
+      "expected": "FUTURE_CHILD_INFORMATION_LEAK",
+      "fail_first": 0,
+      "father_seeds": [
+        "upsilon"
+      ],
+      "future_required": true,
+      "id": "HW10_CHILD_FUTURE_DEPENDENT",
+      "mother": "M0",
+      "place": "WORKSHOP",
+      "route": "LOCAL",
+      "world": "W_LOCAL"
+    },
+    {
+      "expected": "COMMITTED",
+      "fail_first": 0,
+      "father_seeds": [
+        "phi",
+        "chi"
+      ],
+      "id": "HW11_M1_UNCONVENTIONAL",
+      "mother": "M1",
+      "place": "COMMITTEE",
+      "route": "COMMUNITY",
+      "world": "W_OPEN"
+    },
+    {
+      "expected": "COMMITTED",
+      "fail_first": 0,
+      "father_seeds": [
+        "psi"
+      ],
+      "id": "HW12_M0_NO_DYAD_BRIDGE",
+      "mother": "M0",
+      "place": "WORKSHOP",
+      "route": "LOCAL",
+      "world": "W_NO_JOINT"
+    }
+  ],
+  "independent_of_G11": true,
+  "schema": "GI2_HELDOUT_FROZEN@1",
+  "worlds": [
+    "W_LOCAL",
+    "W_OPEN",
+    "W_CLOSED",
+    "W_N9_MISSING",
+    "W_N9_STALE",
+    "W_NO_JOINT"
+  ]
+}
