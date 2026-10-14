@@ -15,7 +15,7 @@
 **ACTIVE MANDATORY HQ 00C (NEWER THAN THIS BRANCH'S STARTUP):** `SOROK_PRODUCT_CONTROL_ROOM/00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md` at Sorok HQ commit `3306586ced81c2a6a4b81ee0d2e235c0c5cefb42` (Git blob `b0d380734889115e03578ca1623c320c9b2e1dfc`). Read this updated file in addition to the 00C copy at sealed branch startup; it mandates a ranked evidence-grounded environment verdict.
 **BRANCH:** `agent/rabochii-sorok-r3-hq298-sgi2-forward-generalization-r1`
 **SOURCE SEALED HQ BASE:** `3c33688506840869e1f05f4230248ce950b78d6c`
-**EXACT SEALED LAUNCH STARTUP:** branch tip of the commission-creation commit. HQ must communicate and verify this 40-hex SHA after file creation; do not use HQ parent as if it already contained this commission.
+**EXACT SEALED LAUNCH STARTUP:** the immutable 40-hex SHA of the LATEST REVISED commission commit given in the HQ launch message, verified against direct remote branch HEAD before work. This file cannot contain the Git SHA of its own commit. The earlier commission-creation SHA is superseded by the HQ environment-routing revision; do NOT launch at the older SHA.
 **COMMISSION:** `WORKER_COMMISSIONS/SOROK-R3-HQ298-SGI2-FORWARD-GENERALIZATION-R1/00_COMMISSION.md`
 **ALLOWED WRITE TERRAIN:** `WORKER_RETURNS/SOROK-R3-HQ298-SGI2-FORWARD-GENERALIZATION-R1/` ONLY; no accepted source or shared HQ file mutation.
 **PREDECESSOR EXPLICIT REFS:** S-GI1 27ca1f2792a5213064c0b5ea2e27b89e8acce0c3; SG ca031ce1d5c56b58b18727f94f41571d6dd763fb; G11 0cb708bbfe522a6c6e359f36d99835d180d5a84d
