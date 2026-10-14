@@ -1,0 +1,545 @@
+{
+  "schema_id": "S_R_GHOST_EVENT_CRASH_RETRY_FALSIFIERS",
+  "schema_version": "0.1.0-TEST_ONLY",
+  "read_cut": "b6753dbb6a8993b50702a3fe6fbad6496fb5c98a",
+  "execution_status": "NOT_EXECUTED__NO_MODEL_OR_ACTOR_LAB_GRANT",
+  "scientific_evidence_grade": "F1_TEST_SPECIFICATION_ONLY",
+  "fixture": {
+    "name": "ARTIFICIAL_FIXED_KITCHEN_SURROGATE",
+    "source_kind": "SYNTHETIC_HAND_SPECIFIED_NOT_GENERATED_PERSON",
+    "before_state": {
+      "world": "world:fixed_kitchen@v1",
+      "object": {
+        "mug": {
+          "id": "obj:mug-1",
+          "position": "counter-near-elbow",
+          "tipped": false
+        }
+      },
+      "actor": {
+        "id": "actor:N",
+        "words_history": [],
+        "memories": [],
+        "secret": "PRIVATE_RED"
+      },
+      "ledger": [],
+      "v3_cursor": 17,
+      "causal_session_cursor": 9,
+      "outbox": [],
+      "user_knowledge": []
+    },
+    "rule_authority": "SIMULATED_DETERMINISTIC_LOGIC_NOT_ADOPTED_V3",
+    "restrictions": [
+      "no provider/model calls",
+      "no source files",
+      "no new V3 actor runtime"
+    ]
+  },
+  "independent_test_protocol": {
+    "freeze": [
+      "before_state_and_hash",
+      "input_proposal",
+      "admission_envelope_and_rule_version",
+      "allowed_atom_kinds",
+      "renderer_or_injected_candidate",
+      "expectation_file_hash",
+      "crash_checkpoint"
+    ],
+    "observe": [
+      "candidate_identity_and_status",
+      "CAN025_packaging_id_status_cursor",
+      "ADP019_decision_event_hash_cursor",
+      "world_version_delta",
+      "actor_memory_changed_events",
+      "client_delivery_id_ack",
+      "two_user_projection_hashes_and_allowlists"
+    ],
+    "mutation_controls": [
+      "same candidate+same ID replay",
+      "identical visible text different candidate hash",
+      "inject hidden-cause sentinel",
+      "swap one user lens only",
+      "delete one world permission",
+      "drop send ACK",
+      "crash immediately after ADMIT",
+      "alter a nonsemantic ID"
+    ],
+    "oracle": "Only a deterministic fixture can prove its own state-transition logic. Exact accepted owner implementation/model quality requires independently authorized follow-on tests.",
+    "pass_threshold": "Every applicable invariant exact; any ghost event, extra cursor step, phantom object mutation, user-private leakage or artifact-admission inheritance blocks promotion."
+  },
+  "cases": [
+    {
+      "id": "S01",
+      "title": "Candidate draft is not occurrence",
+      "stimulus": {
+        "candidate": "N says Hello",
+        "admission": null
+      },
+      "expected_observations": [
+        "ledger_count=0",
+        "cursor_unchanged",
+        "user_knowledge_unchanged"
+      ],
+      "decisive_failure": "FAIL if candidate text becomes an event or a memory",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S02",
+      "title": "CAN025 package READY is not event",
+      "stimulus": {
+        "packaging": "READY",
+        "admission": null
+      },
+      "expected_observations": [
+        "ledger_count=0",
+        "no_user_emission"
+      ],
+      "decisive_failure": "FAIL if package cursor mistaken for causal cursor",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S03",
+      "title": "ADP019 exact admission precedes emission",
+      "stimulus": {
+        "admission": "ADMIT",
+        "delivery": "NOT_SENT"
+      },
+      "expected_observations": [
+        "exactly_one_ledger_event",
+        "outbox_ADMITTED_UNDELIVERED",
+        "no_user_perceived_claim"
+      ],
+      "decisive_failure": "FAIL if actor/user knowledge assumes hearing",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S04",
+      "title": "Two user lenses share identical admitted occurrence",
+      "stimulus": {
+        "occurrence": "gaze->carton; words='Do I?'",
+        "user_A": "clear_view",
+        "user_B": "partly_occluded"
+      },
+      "expected_observations": [
+        "identical_objective_occurrence_hash",
+        "different_allowed_surface",
+        "neither_surface_adds_actions"
+      ],
+      "decisive_failure": "FAIL if user prior bends Nadia behavior",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S05",
+      "title": "Private origin never becomes a behavioral tell by default",
+      "stimulus": {
+        "hidden_cause": "PRIVATE_RED",
+        "authorized_expression": "neutral"
+      },
+      "expected_observations": [
+        "no_hidden_sentinel_in_actor_output",
+        "no_forced_tell"
+      ],
+      "decisive_failure": "FAIL if narrator says secret or invents sigh",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S06",
+      "title": "Lawful false testimony remains a true utterance",
+      "stimulus": {
+        "world_truth": "fired",
+        "actor_knows": "fired",
+        "utterance": "I quit."
+      },
+      "expected_observations": [
+        "ledger_asserts_spoke_I_quit",
+        "world_truth_remains_fired",
+        "user_not_given_truth_by_narrator"
+      ],
+      "decisive_failure": "FAIL if speech assertion updates objective employment history",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S07",
+      "title": "Sincere misremembering is not historical edit",
+      "stimulus": {
+        "world_truth": "gift_received_2010",
+        "actor_belief": "bought_2012",
+        "utterance": "I bought these in 2012"
+      },
+      "expected_observations": [
+        "utterance_admitted_if_lawful",
+        "history_unchanged",
+        "belief_not_rewritten_as_truth"
+      ],
+      "decisive_failure": "FAIL if testimony makes purchase fact",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S08",
+      "title": "Unlicensed extra gesture requires HOLD",
+      "stimulus": {
+        "CAN022_plan": "words only",
+        "candidate": "words plus touches user's shoulder"
+      },
+      "expected_observations": [
+        "HOLD_MISSING_EMBODIED_OWNER",
+        "zero_causal_publication"
+      ],
+      "decisive_failure": "FAIL if wording permission authorizes touch",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S09",
+      "title": "Material effect needs stable existing object",
+      "stimulus": {
+        "scene_object_ids": [
+          "obj:mug-1"
+        ],
+        "candidate": "moves obj:mug-999"
+      },
+      "expected_observations": [
+        "REJECT_UNBOUND_OBJECT",
+        "scene_unchanged"
+      ],
+      "decisive_failure": "FAIL if new mug appears from candidate",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S10",
+      "title": "Material transition incompatible with affordance",
+      "stimulus": {
+        "mug_position": "locked_cabinet",
+        "candidate": "catches mug at elbow"
+      },
+      "expected_observations": [
+        "REJECT_PHYSICAL_PRECONDITION",
+        "no_scene_mutation"
+      ],
+      "decisive_failure": "FAIL if story overrides physical state",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S11",
+      "title": "Structured atoms and prose mismatch",
+      "stimulus": {
+        "atoms": [
+          "N says Wait"
+        ],
+        "prose": "N says Wait and slams door"
+      },
+      "expected_observations": [
+        "REJECT_SIDE_CAR_MISMATCH",
+        "no_ledger_write"
+      ],
+      "decisive_failure": "FAIL if undeclared slam becomes real",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S12",
+      "title": "No-output operational retry remains same request",
+      "stimulus": {
+        "first_attempt": "NO_USABLE_OUTPUT",
+        "retry": true
+      },
+      "expected_observations": [
+        "same_render_request_identity",
+        "retry_ordinal_increments",
+        "no_candidate_or_event_from_failed_attempt"
+      ],
+      "decisive_failure": "FAIL if new semantic candidate minted as retry",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S13",
+      "title": "Usable but rejected output rerender needs new artifact",
+      "stimulus": {
+        "first_output": "INVALID_OUTPUT_EXISTS",
+        "second_call": true
+      },
+      "expected_observations": [
+        "new_render_artifact_hash_and_request",
+        "prior_rejection_audit_only",
+        "no_automatic_admission_inheritance"
+      ],
+      "decisive_failure": "FAIL if classified as retry",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S14",
+      "title": "Identical visible words do not imply same artifact identity",
+      "stimulus": {
+        "candidate_A": "hello",
+        "candidate_B": "hello",
+        "different_render_request": true
+      },
+      "expected_observations": [
+        "different_candidate_artifact_identity",
+        "admission_requires_own_exact_receipt"
+      ],
+      "decisive_failure": "FAIL if content hash reused as causal grant",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S15",
+      "title": "Terminal admission replay is idempotent",
+      "stimulus": {
+        "proposal_id": "p1",
+        "proposal_hash": "h1",
+        "two_submissions": true
+      },
+      "expected_observations": [
+        "exactly_one_admitted_event",
+        "cursor_advances_once",
+        "same_receipt_on_replay"
+      ],
+      "decisive_failure": "FAIL if two entries created",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S16",
+      "title": "Proposal ID plus different hash fails integrity",
+      "stimulus": {
+        "proposal_id": "p1",
+        "proposal_hashes": [
+          "h1",
+          "h2"
+        ]
+      },
+      "expected_observations": [
+        "INVALID_PROPOSAL_ID_CONTENT_COLLISION",
+        "no_new_event"
+      ],
+      "decisive_failure": "FAIL if second changes first event",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S17",
+      "title": "Crash after admit before emission",
+      "stimulus": {
+        "checkpoint": "AFTER_ADMIT_BEFORE_SEND"
+      },
+      "expected_observations": [
+        "one_committed_event",
+        "stable_outbox_event_id",
+        "no_false_user_heard_claim",
+        "recovery_same_delivery_identity"
+      ],
+      "decisive_failure": "FAIL if ghost heard memory or second utterance",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S18",
+      "title": "Crash after client display before ACK",
+      "stimulus": {
+        "checkpoint": "AFTER_SEND_BEFORE_ACK"
+      },
+      "expected_observations": [
+        "same_delivery_id_on_retry",
+        "no_second_actor_event",
+        "HUMAN_PERCEPTION_UNPROVEN"
+      ],
+      "decisive_failure": "FAIL if server claims perception as certainty",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S19",
+      "title": "Actor memory may update only after admission and own perceptual/encoding rule",
+      "stimulus": {
+        "rejected": "draft_A",
+        "admitted": "utterance_B",
+        "actor_event": "hears_B"
+      },
+      "expected_observations": [
+        "no_memory_of_A",
+        "memory_B_only_if_ADP016_effect_valid"
+      ],
+      "decisive_failure": "FAIL if rejected draft influences later actor response",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S20",
+      "title": "User access blocked by closed door",
+      "stimulus": {
+        "actor_words": "I quit.",
+        "door": "closed",
+        "hearing": "none"
+      },
+      "expected_observations": [
+        "objective_speech_can_exist",
+        "user_surface_omits_exact_words",
+        "no_user_knowledge_from_speech"
+      ],
+      "decisive_failure": "FAIL if private words transcribed to user",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S21",
+      "title": "Noncausal presentation is never V3 history",
+      "stimulus": {
+        "interaction_mode": "PRESENTATION_NONCAUSAL",
+        "ui_text": "sample"
+      },
+      "expected_observations": [
+        "ui_may_display_noncausally",
+        "no_ADP019_causal_event",
+        "no_causal_memory"
+      ],
+      "decisive_failure": "FAIL if transcript row becomes ledger event",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S22",
+      "title": "Unbound third party cannot be created by prose",
+      "stimulus": {
+        "candidate": "a neighbor enters",
+        "third_party_ref": null
+      },
+      "expected_observations": [
+        "HOLD_MISSING_ACTOR_AND_WORLD_EVENT_AUTHORITY",
+        "no_actor_added"
+      ],
+      "decisive_failure": "FAIL if room population changes from plausible narrative",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S23",
+      "title": "VALID_EMPTY is not missing authority",
+      "stimulus": {
+        "CAN008": "VALID_EMPTY",
+        "other_case": "UNAUTHORIZED"
+      },
+      "expected_observations": [
+        "valid_empty_no_forced_model_call",
+        "missing_authority_HOLD_not_silence"
+      ],
+      "decisive_failure": "FAIL if unknown is normalized into no-op",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S24",
+      "title": "ATTEND changes disclosure/materialization demand not predetermined truth",
+      "stimulus": {
+        "action": "ATTEND obj:shoe",
+        "user_access": "marking_not_legible"
+      },
+      "expected_observations": [
+        "no_model_label_VITAMIX_from_hidden_ID",
+        "further_truth_materialization_may_remain_hidden"
+      ],
+      "decisive_failure": "FAIL if user receives omniscient label",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S25",
+      "title": "Reemission must not create new independent history",
+      "stimulus": {
+        "outbox": "admitted_evt1",
+        "attempts": 3
+      },
+      "expected_observations": [
+        "same_event_id",
+        "same_delivery_identity",
+        "zero_new_CAUSAL_EVENTS"
+      ],
+      "decisive_failure": "FAIL if each delivery increments ledger",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S26",
+      "title": "Different actor-specific access to one event",
+      "stimulus": {
+        "N_perception": "cabinet_sound",
+        "child_perception": "user_joke",
+        "user_perception": "face"
+      },
+      "expected_observations": [
+        "separate_actor_packets",
+        "no_unseen_object_to_actor_memory",
+        "no_joined_mind"
+      ],
+      "decisive_failure": "FAIL if all actors omniscient",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S27",
+      "title": "Material move commits only with world owner and exact occurrence",
+      "stimulus": {
+        "candidate": "mug from counter to shelf",
+        "world_authority": "MISSING"
+      },
+      "expected_observations": [
+        "HOLD_MISSING_MATERIALIZATION_OWNER",
+        "mug_remains_counter",
+        "no_emitted_move"
+      ],
+      "decisive_failure": "FAIL if renderer mutates mug",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    },
+    {
+      "id": "S28",
+      "title": "Temporal/outbox crash cannot be patched by wall clock",
+      "stimulus": {
+        "admission_window": "UNRESOLVED",
+        "current_time": "available"
+      },
+      "expected_observations": [
+        "DEFER_MISSING_CAUSAL_TIME",
+        "no_hidden_wall_clock_fill"
+      ],
+      "decisive_failure": "FAIL if implicit time injected",
+      "execution_status": "NOT_EXECUTED",
+      "actual_observations": null
+    }
+  ],
+  "accounting": {
+    "specified_cases": 28,
+    "executed_cases": 0,
+    "passed_cases": 0,
+    "failed_cases": 0,
+    "unreached_cases": 28,
+    "qualification": "UNKNOWN; specification is not a pass"
+  },
+  "failure_policy": {
+    "missing_authority": "HOLD_OR_DEFER_NOT_VALID_EMPTY",
+    "event_double_write": "FAIL_INTEGRITY",
+    "unresolved_human_perception": "UNKNOWN_NOT_FALSE_ASSERTION",
+    "material_object_unknown": "MATERIALIZATION_OWNER_REQUIRED"
+  },
+  "source_evidence": [
+    "SOROK101",
+    "SOROK102",
+    "ADP019",
+    "CAN025",
+    "CAN022",
+    "ADP025",
+    "CAN008_R2",
+    "RFA_R"
+  ]
+}
