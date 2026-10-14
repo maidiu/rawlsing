@@ -1,6 +1,6 @@
 # Pyat — current progress toward its finish lines
 
-**INITIAL_DOCUMENTARY_BASELINE__OWNER_REFRESH_REQUIRED · revision 1.** Source verification: 2026-10-14T13:46:32.880Z. Last owner update: unknown. This initial projection does not claim that Pyat has performed the new mutual grok cycle.
+**INITIAL_DOCUMENTARY_BASELINE__OWNER_REFRESH_REQUIRED · revision 2.** Source verification: 2026-10-14T13:53:10.447Z. Last owner update: unknown. This initial projection does not claim that Pyat has performed the new mutual grok cycle.
 
 [Shared update/grok protocol](../CROSS_HQ_CONTROL_ROOM/HQ_GROK_AND_PROGRESS_PROTOCOL_R1.md) · [fixed Astra advisory](../CROSS_HQ_CONTROL_ROOM/ASTRA_R3_ADVISORY_INDEX_R1.md) · [Sorok current progress](../SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md) · [own machine-readable report](CURRENT_PROGRESS.json)
 
@@ -17,13 +17,15 @@ Preserve trajectory identities: **N0, N1, N2, N3, N4, N5, N6, N7, N8E, N8S, N9, 
 
 ## Verified read cut and actual known movement
 
-Own working HQ: agent/vozhd-pyat-r3-hq-accession-reconstruction-20261013-r1 at **2a353ed9e8422eee8f9935f47bd1238a1ccefedd**. Canonical before this documentary update: 7f29aec36d24f16da52d84f17c00f08db3a55434. Fixed completed advisory: 3b2d9a1b644a9fa024ed1bd895b67be5c8789531. Direct refs and selected records were inspected; no complete worker/source re-audit was performed.
+Own working HQ: agent/vozhd-pyat-r3-hq-accession-reconstruction-20261013-r1 at **5abdc72336ad4e14b69fd07b2cf808a9124fc268**. Canonical before this documentary update: 7f29aec36d24f16da52d84f17c00f08db3a55434. Fixed completed advisory: 3b2d9a1b644a9fa024ed1bd895b67be5c8789531. Direct refs and selected records were inspected; no complete worker/source re-audit was performed.
 
 - HQ296 records completed Astra documentary intake at the exact final pin, with no architecture/science adoption.
 - HQ296 still lists original U/E_pre and real source-to-work binding, issued objective/multifield N9, measured temporal N9, generic authorized progressive consumer use, and N11/N12 as concrete gaps.
 - Existing STATUS.json retains older program language; it is not by itself a fresh summary of HQ296.
 
 Active commissions: refresh from the existing working-HQ worker and dispatch ledgers; this bootstrap does not invent a complete live inventory.
+
+The working tip now includes the reciprocal grounding directives. Progress evidence remains pinned to 2a353ed9e8422eee8f9935f47bd1238a1ccefedd; that documentary wiring is not a new productive/scientific result.
 
 ## Last recorded trajectory position
 

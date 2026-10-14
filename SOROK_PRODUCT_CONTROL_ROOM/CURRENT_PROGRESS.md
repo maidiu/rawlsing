@@ -1,6 +1,6 @@
 # Sorok — current progress toward its finish lines
 
-**INITIAL_DOCUMENTARY_BASELINE__OWNER_REFRESH_REQUIRED · revision 1.** Source verification: 2026-10-14T13:46:32.880Z. Last owner update: unknown. This initial projection does not claim that Sorok has performed the new mutual grok cycle.
+**INITIAL_DOCUMENTARY_BASELINE__OWNER_REFRESH_REQUIRED · revision 2.** Source verification: 2026-10-14T13:53:10.447Z. Last owner update: unknown. This initial projection does not claim that Sorok has performed the new mutual grok cycle.
 
 [Shared update/grok protocol](../CROSS_HQ_CONTROL_ROOM/HQ_GROK_AND_PROGRESS_PROTOCOL_R1.md) · [fixed Astra advisory](../CROSS_HQ_CONTROL_ROOM/ASTRA_R3_ADVISORY_INDEX_R1.md) · [Pyat current progress](../PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md) · [own machine-readable report](CURRENT_PROGRESS.json)
 
@@ -17,7 +17,7 @@ Preserve trajectory identities: **C0, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C
 
 ## Verified read cut and actual known movement
 
-Own working HQ: agent/sorok-prea0-psyche-architecture-r1 at **48d9f0559d35c23e605d1dc0c0021a252f14b3cc**. Canonical before this documentary update: 7f29aec36d24f16da52d84f17c00f08db3a55434. Fixed completed advisory: 3b2d9a1b644a9fa024ed1bd895b67be5c8789531. Direct refs and selected records were inspected; no complete worker/source re-audit was performed.
+Own working HQ: agent/sorok-prea0-psyche-architecture-r1 at **6275cd86b7864da830ef8044e1a4f234ca9ce2c3**. Canonical before this documentary update: 7f29aec36d24f16da52d84f17c00f08db3a55434. Fixed completed advisory: 3b2d9a1b644a9fa024ed1bd895b67be5c8789531. Direct refs and selected records were inspected; no complete worker/source re-audit was performed.
 
 - The working front door has received the completed advisory and explicitly qualifies older pending-Astra language.
 - Four post-Astra branch tips publish documentary commission scopes SC0, SG, SM and SR; their execution, local work, returns and independent acceptance were not checked by this bootstrap.
@@ -29,6 +29,8 @@ Published post-Astra scopes (execution/return/independent acceptance unknown):
 - SG (C4/C6): agent/rabochii-sorok-r3-postastra-sg-genealogy-k11-authority-r1 at 1767ba41625025a0423a980f9fb4be390900dcbd.
 - SM (C1/C2/C3): agent/rabochii-sorok-r3-postastra-sm-situated-causal-cell-r1 at 3e5e5cdc04a1d026bb23922210ad0a47d74fe721.
 - SR (C8): agent/rabochii-sorok-r3-postastra-sr-occurrence-surface-r1 at b6753dbb6a8993b50702a3fe6fbad6496fb5c98a.
+
+The working tip now includes the reciprocal grounding directives. Progress evidence remains pinned to 48d9f0559d35c23e605d1dc0c0021a252f14b3cc; that documentary wiring is not a new productive/scientific result.
 
 ## Last recorded trajectory position
 
