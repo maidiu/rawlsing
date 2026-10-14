@@ -1,6 +1,6 @@
 # SOROK HQ300 CAN — FIRST ACCEPTED-LAW CAN008 SOURCEFREE POSITIVE OWNER-EFFECT PRODUCER
 
-**STATUS:** COMMISSION_BANKED__UNLAUNCHED__NO_ADOPTION.
+**STATUS:** COMMISSION_BANKED__ROUTING_ERRATUM_R1__NO_ADOPTION.  Earlier launch SHA is an immutable ancestor; a worker genuinely already started may finish under the prior commission without reset.
 **REPOSITORY:** `maidiu/rawlsing` (private).
 **ROLE:** Independent sourcefree bounded implementer/experimenter, NOT HQ, competent accepted-law issuer, real V3 actor or acceptance reviewer.
 **BRANCH:** `agent/rabochii-sorok-r3-hq300-can008-first-positive-sourcefree-r1`
@@ -10,15 +10,23 @@
 **ALLOWED WRITES:** `WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/` and nothing else.
 **MISSION / ONE OUTCOME:** Advance RSM's earliest MISSING_IMPLEMENTATION beyond another documentary memo by implementing in isolated sourcefree candidate terrain the smallest admitted-event→accepted CAN008 coupling/response rule→target-owner effect→ADP016 durable trace→ADP017 epistemic update→later situation-dependent response sequence under exact adopted semantics, without any real V3 actor or production mutation.
 
+## OWNER-SELECTED SINGLE-EDITOR ROUTING — BINDING CLARIFICATION
+
+**PRIMARY EDITOR/HARNESS:** OpenCode.
+**PRIMARY CODING/REASONING MODEL:** MiMo-V2.6 Pro.
+**ONE_WORKER_FULL_JOB:** ONE worker in the selected editor does the full commissioned task from investigation to published remote return. No sub-agent, helper, duplicate editor session or model handoff is required or authorized by this commission. An independent scientific I2 review is a **subsequent HQ action after return**, not a launch prerequisite or a task delegated to this worker.
+**MODEL/HARNESS NONCONFLATION:** The editor/runtime and underlying configured model are separate. `MiMo-V2.6 Pro` in `OpenCode` is not `DeepSeek-Harness`. This commission MUST NOT route the user to a different harness merely because a model could theoretically be available there.
+**STARTUP COMPATIBILITY:** For a NEW launch, the operative sealed startup is this routing-revised commission's new remote HEAD communicated by HQ. The original commit `d7d40270068d258600ee57f62bd27199f1689b92` remains an immutable ancestor and custody evidence. If the user already launched an agent from that original commit, do not reset/relaunch it; the user-level host selection above governs interpretation, and the worker may complete its original sealed work unless directed otherwise.
+
 ## Nonoptional ranked host + phase/model routing
 `HQ_ENVIRONMENT_VERDICT=LOCAL_DOMINANT`; `BROWSER_SUFFICIENCY=SCOPED_ONLY`; `BROWSER_SETUP_COST=HEAVY`.
-**PRIMARY MODEL/HOST & MINIMUM INTELLIGENCE:** Primary local qualified MiMo-V2.6 Pro in approved DeepSeek-Harness / economical OpenCode coding environment, provided exact privacy/source permissions; I1/I2 implementation under existing adopted CAN008_R2 semantics, separate independent GPT-6 High I2 semantic court on the returned code. Escalate worker reasoning only if ambiguity cannot be resolved from accepted law.
+**PRIMARY MODEL/HOST & MINIMUM INTELLIGENCE:** Primary MiMo-V2.6 Pro in the user's existing OpenCode local editor and governed worktree. ONE OpenCode agent completes the whole investigation, implementation, regression, reproduction and return. Independent I2 review is subsequent HQ intake, not a second editor or another model call during execution.
 **WHY PREFERRED:** Reviewer RSM independently staged 43 distinct pinned files, 220 pinned tests and a 59/60 diagnostic court; GT0 zero-positive guard plus ADP016/017 imported seam require owner-grain test loop and a persistent governed worktree. Browser small fixtures cannot prove those callables.
 **WARM REUSE PLAN:** Separate sparse worktree on same authorized local Git store as RSM; first verify accepted CAN008_R2/ADP016/017 module signatures, 43 blob references and exact registered positive law vocabulary. Save closure for later separately authorized downstream response producer.
-**OBJECTIVE FALLBACK TRIGGER:** If complete accepted signatures/owner jurisdiction absent, return typed MISSING_SEMANTIC_INTERFACE and best permitted candidate test-only packet; do not fabricate a registration permit or new CAN rule. Browser only if actual pinned 43-file closure and positive transition runner already live.
+**OBJECTIVE FALLBACK TRIGGER:** If complete accepted signatures/owner jurisdiction are absent, return typed MISSING_SEMANTIC_INTERFACE after doing all permitted in-scope work. If OpenCode+MiMo or private repo access is unavailable, report the exact environment/permission HOLD; NEVER silently switch to DeepSeek-Harness, another model or another editor.
 **WHY NOT ALTERNATIVE:** Alternate may accomplish a scoped documentary or isolated test subset but is not equally suitable for the entire intended grain. Model availability/provider privacy must be actually verified; no fabricated cost or quota claims.
 **PHASE_MODEL_ASSIGNMENT:** I0 hashes/sourcefree runner; I1 bounded code/test machinery; I2 review of full scientific meaning/authority independently after author return; I3 only true accepted authority collision. No automatic GPT-6.1 High for routine imports/tests.
-**PRIMARY_MODEL_ECONOMICS:** Prefer verified capable MiMo/DeepSeek-Harness for fixed repairs; use I2 High where measurement/semantic reasoning materially justifies it. No model pricing inferred from version number; cache/allowance/usage recorded if available.
+**PRIMARY_MODEL_ECONOMICS:** Use the existing OpenCode+MiMo-V2.6 Pro configuration; it is a complete accountable implementation worker, not merely an I0/I1 helper. Stronger independent semantic review comes afterward under HQ. Do not spawn additional paid models to replicate the same task.
 **REVIEW_INDEPENDENCE_AND_ESCALATION:** distinct competent I2 reviewer after candidate; author cannot accept or self-adopt. No duplicate full rewrite of original oracles.
 **ACTIVE_WORKER_NO_DISTURBANCE:** new HQ300 commission, NOT a relaunch or modification of completed HQ299 worker branches.
 
