@@ -1,5 +1,12 @@
 # SOROK VOZHD — Full Rawlsing Grounding Gate R1
 
+## Mandatory Astra R3 and reciprocal HQ progress — 14 October 2026
+
+As part of every fresh/resumed HQ grok and continuing material work, follow the [shared grok and publication protocol](https://github.com/maidiu/rawlsing/blob/integration/pre-main-reconciliation-r1/CROSS_HQ_CONTROL_ROOM/HQ_GROK_AND_PROGRESS_PROTOCOL_R1.md). Read the [completed fixed Astra advisory and controlling amendment16](https://github.com/maidiu/rawlsing/blob/integration/pre-main-reconciliation-r1/CROSS_HQ_CONTROL_ROOM/ASTRA_R3_ADVISORY_INDEX_R1.md), [your current trajectory/finish-line report](https://github.com/maidiu/rawlsing/blob/integration/pre-main-reconciliation-r1/SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md) and the [other HQ's current progress](https://github.com/maidiu/rawlsing/blob/integration/pre-main-reconciliation-r1/PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md) ([structured counterpart](https://github.com/maidiu/rawlsing/blob/integration/pre-main-reconciliation-r1/PYAT_CONTROL_ROOM/CURRENT_PROGRESS.json)). Record the exact other-report commit/revision, live working cut, implications for your own next steps and unresolved cross-owner issues; then maintain your own MD/JSON report pair at those predictable PRE-MAIN locations.
+
+Refresh after material results/decisions/blockers, before dependent planning/dispatch and at handoff; verify at least once per active day. Initial reports are explicitly owner-refresh-required. Old or unavailable reports require scoped reconciliation; they do not establish stopped workers or block unrelated lawful lanes. Documentary read/report publication is distinct from advisory adoption, full grok acceptance, source/model/actor rights, N11/N12 or physical weld. The protocol records the user's narrow authorization for each HQ to publish its own report pair in PRE-MAIN.
+
+
 Status: `MANDATORY_GENERAL_HQ_GROUNDING_BEFORE_SOROK_SPECIALIZATION_AND_COMMUNICATIVE_DISCIPLINE`
 
 Date: 2026-09-29

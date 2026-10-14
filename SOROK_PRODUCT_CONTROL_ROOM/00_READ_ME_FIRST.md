@@ -1,5 +1,12 @@
 # SOROK PRODUCT CONTROL ROOM — READ ME FIRST
 
+## Mandatory Astra R3 and reciprocal HQ progress — 14 October 2026
+
+As part of every fresh/resumed HQ grok and continuing material work, follow the [shared grok and publication protocol](https://github.com/maidiu/rawlsing/blob/integration/pre-main-reconciliation-r1/CROSS_HQ_CONTROL_ROOM/HQ_GROK_AND_PROGRESS_PROTOCOL_R1.md). Read the [completed fixed Astra advisory and controlling amendment16](https://github.com/maidiu/rawlsing/blob/integration/pre-main-reconciliation-r1/CROSS_HQ_CONTROL_ROOM/ASTRA_R3_ADVISORY_INDEX_R1.md), [your current trajectory/finish-line report](https://github.com/maidiu/rawlsing/blob/integration/pre-main-reconciliation-r1/SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md) and the [other HQ's current progress](https://github.com/maidiu/rawlsing/blob/integration/pre-main-reconciliation-r1/PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md) ([structured counterpart](https://github.com/maidiu/rawlsing/blob/integration/pre-main-reconciliation-r1/PYAT_CONTROL_ROOM/CURRENT_PROGRESS.json)). Record the exact other-report commit/revision, live working cut, implications for your own next steps and unresolved cross-owner issues; then maintain your own MD/JSON report pair at those predictable PRE-MAIN locations.
+
+Refresh after material results/decisions/blockers, before dependent planning/dispatch and at handoff; verify at least once per active day. Initial reports are explicitly owner-refresh-required. Old or unavailable reports require scoped reconciliation; they do not establish stopped workers or block unrelated lawful lanes. Documentary read/report publication is distinct from advisory adoption, full grok acceptance, source/model/actor rights, N11/N12 or physical weld. The protocol records the user's narrow authorization for each HQ to publish its own report pair in PRE-MAIN.
+
+
 ## Completed official Astra R3 advisory — 14 October 2026
 
 Read [ASTRA_R3_JOINT_WELD_ADVISORY_HANDOFF_20261014_R1](ASTRA_R3_JOINT_WELD_ADVISORY_HANDOFF_20261014_R1.md) during incoming-HQ grokking. Exact frozen return: `3b2d9a1b644a9fa024ed1bd895b67be5c8789531`. All 18 deliverables and the structural-world/genealogy corrective amendment are complete. **Ready for HQ intake; advisory only, not adopted law, implementation permission or wake.** Read FINAL_RETURN and amendment16 before recovered 00–06. Earlier statements below that the Pyat/Astra reviews are still the next pending action are historical at their original cut; competent adjudication of the returned advisory is now the relevant intake step.
