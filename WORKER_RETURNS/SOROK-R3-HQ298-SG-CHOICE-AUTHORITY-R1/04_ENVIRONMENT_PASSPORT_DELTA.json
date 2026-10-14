@@ -1,0 +1,201 @@
+{
+  "passport_schema": "SOROK_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "SG298-S0-GITHUB-CONNECTOR-ONLY",
+  "epoch_id": "SG298-20261014-DOCUMENTARY-NEW-SESSION",
+  "owner_session_alias": "SOROK-HQ298-SG-INDEPENDENT-WORKER",
+  "surface": "BROWSER_GITHUB_S0",
+  "machine_alias": null,
+  "conversation_or_account_affinity": "SAME_CHAT_ONLY_NOT_DURABLE_RUNTIME",
+  "status": "NOT_ACCESSIBLE",
+  "status_explanation": "No local persistent Python/runtime marker or private-repository worktree claimed. Browser/GitHub connector reads and writes verified; this identity labels a documentary working epoch, not a persistent executable environment.",
+  "last_live_probe_at": null,
+  "runtime_marker_digest": null,
+  "probe_command_and_result": [
+    {
+      "interface": "GitHub REST connector",
+      "action": "GET /repos/maidiu/rawlsing/git/ref/heads/agent/rabochii-sorok-r3-hq298-sg-choice-authority-r1",
+      "result": "SUCCESS: preexisting remote head 49022fd755fe25bda0208bcfbbd6cb751cad322f, two commits beyond user-sealed startup ddee3b3656142933b785cfb84c189b8e2b8d04ac"
+    },
+    {
+      "interface": "GitHub repository connector",
+      "action": "Fetch commission at user sealed ddee3b3656142933b785cfb84c189b8e2b8d04ac and advanced branch head",
+      "result": "SUCCESS; prior advanced commits only change WORKER_COMMISSIONS/.../00_COMMISSION.md; user sealed origin preserved as source read cut"
+    },
+    {
+      "interface": "GitHub repository connector",
+      "action": "Fetch exact accepted ADP015/ADP020 authority source; SG, SGI1, G11 pinned worker returns",
+      "result": "SUCCESS, original pinned source blobs obtained"
+    },
+    {
+      "interface": "GitHub repository connector",
+      "action": "Create sourcefree documentary return files on assigned branch only",
+      "result": "SUCCESS; per-write commit response; final verification separate"
+    }
+  ],
+  "capabilities": {
+    "github_remote_content_read": {
+      "status": "VERIFIED",
+      "details": "Private repository files/commits/refs and blob hashes from connector"
+    },
+    "github_branch_commit_write": {
+      "status": "VERIFIED",
+      "details": "Accepted worker-return-only text/JSON writes"
+    },
+    "python": {
+      "status": "UNKNOWN",
+      "version": null,
+      "reason": "Not required for documentary authority packet; no process execution"
+    },
+    "pytest": {
+      "status": "UNKNOWN",
+      "version": null,
+      "reason": "G11 25-test finite court already executed elsewhere; no rerun commissioned"
+    },
+    "git_cli": {
+      "status": "UNKNOWN",
+      "version": null,
+      "reason": "GitHub connector remote Git reads/writes verified, not local git CLI"
+    },
+    "node": {
+      "status": "UNKNOWN",
+      "version": null
+    },
+    "filesystem_shell": {
+      "status": "UNKNOWN",
+      "details": "No checked-out repository or local subprocess used"
+    },
+    "ci": {
+      "status": "NOT_USED"
+    }
+  },
+  "git_object_store_alias": null,
+  "worktree_alias": null,
+  "branch": "agent/rabochii-sorok-r3-hq298-sg-choice-authority-r1",
+  "user_sealed_startup": "ddee3b3656142933b785cfb84c189b8e2b8d04ac",
+  "direct_observed_remote_before_worker": "49022fd755fe25bda0208bcfbbd6cb751cad322f",
+  "latest_checkout_base": null,
+  "latest_checkout_head": null,
+  "worktree_clean_state": "NOT_APPLICABLE_NO_CHECKOUT",
+  "source_family": "PROPOSAL_ONLY_ADP015_ADP020_GENEALOGY",
+  "materialized_source_refs": [
+    {
+      "commit": "3c33688506840869e1f05f4230248ce950b78d6c",
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W2_AUTHORITY_CONTRACT_COMPLETION/ADP_015_V3_RELATIONSHIP_GENEALOGY/AUTHORITY.md",
+      "git_blob_sha1": "a4dab0a12102aaa0b584ef6ff4fdc9206a28d456",
+      "local_relative_staging_path": null,
+      "module_file_import": null,
+      "verified": "GITHUB_EXACT_READ"
+    },
+    {
+      "commit": "3c33688506840869e1f05f4230248ce950b78d6c",
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W0_AUTHORITY_FOUNDATION/ADP_020_V3_CAUSAL_RNG/AUTHORITY.md",
+      "git_blob_sha1": "1911352f4bd5b04dfeaa0f26930e6702998bb76d",
+      "local_relative_staging_path": null,
+      "module_file_import": null,
+      "verified": "GITHUB_EXACT_READ"
+    },
+    {
+      "commit": "ca031ce1d5c56b58b18727f94f41571d6dd763fb",
+      "path": "WORKER_RETURNS/SOROK-R3-POSTASTRA-SG-ADP015-K11-GENEALOGY-R1/01_ADP015_020_MINIMAL_PROPOSED_EXTENSION.md",
+      "git_blob_sha1": "dbda02dfa0f28904c98e83ff23922a429513064b",
+      "local_relative_staging_path": null,
+      "module_file_import": null,
+      "verified": "GITHUB_EXACT_READ"
+    },
+    {
+      "commit": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "path": "WORKER_RETURNS/SOROK-SGI1-SOURCEFREE-K11-LAB-R1/09_SCIENTIFIC_INTERPRETATION.md",
+      "git_blob_sha1": "c125e7024d9dd364841e8157e93698f9d834657d",
+      "local_relative_staging_path": null,
+      "module_file_import": null,
+      "verified": "GITHUB_EXACT_READ"
+    },
+    {
+      "commit": "0cb708bbfe522a6c6e359f36d99835d180d5a84d",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ297-GENEALOGY-K11-INDEPENDENT-COURT-R1/00_INDEPENDENT_COURT.md",
+      "git_blob_sha1": "05e4a60c1d6fc60014d51c1f65cc5b1682febe4b",
+      "local_relative_staging_path": null,
+      "module_file_import": null,
+      "verified": "GITHUB_EXACT_READ"
+    },
+    {
+      "commit": "3306586ced81c2a6a4b81ee0d2e235c0c5cefb42",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md",
+      "git_blob_sha1": "b0d380734889115e03578ca1623c320c9b2e1dfc",
+      "local_relative_staging_path": null,
+      "module_file_import": null,
+      "verified": "GITHUB_EXACT_READ"
+    },
+    {
+      "commit": "3c33688506840869e1f05f4230248ce950b78d6c",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/00D_WARM_ENVIRONMENT_PASSPORT_AND_COST_AWARE_AGENT_DISPENSATION_R1.md",
+      "git_blob_sha1": "7f134bd8652dcb7bc3193767799275f83a69bb93",
+      "local_relative_staging_path": null,
+      "module_file_import": null,
+      "verified": "GITHUB_EXACT_READ"
+    }
+  ],
+  "dependency_closure_status": "DOCUMENTARY_EXACT_SOURCES_ONLY_NO_RUNTIME_IMPORT",
+  "covered_test_suites": [
+    {
+      "name": "HQ297 G11 independent finite constraints",
+      "commands": "PINNED_AUTHOR_REPORT: PYTHONPATH=. python -m pytest -q --junitxml=06_PYTEST_JUNIT.xml",
+      "result": "AUTHOR_REPORTED_25_PASSED_AT_HQ297__NOT_RERUN",
+      "run_artifact": "WORKER_RETURNS/SOROK-R3-HQ297-GENEALOGY-K11-INDEPENDENT-COURT-R1/06_PYTEST_JUNIT.xml"
+    },
+    {
+      "name": "S-GI1 sourcefree K11 lab",
+      "commands": "Prior author execution described in 00_RETURN and K11 receipts",
+      "result": "AUTHOR_REPORTED_24_CASES_98_PREDICATES__NOT_RERUN",
+      "run_artifact": "WORKER_RETURNS/SOROK-SGI1-SOURCEFREE-K11-LAB-R1/03_RUN_LOGS/k11_summary.json"
+    },
+    {
+      "name": "HQ298 SG tests",
+      "commands": null,
+      "result": "NOT_RUN_DOCUMENTARY_RULE_COURT_NO_NEW_SOLVER",
+      "run_artifact": null
+    }
+  ],
+  "science_grade": "DOCUMENTARY_OWNER_AUTHORITY_PROPOSAL_NONADOPTED",
+  "model_provider": "OpenAI ChatGPT",
+  "model_family": "GPT-6",
+  "model_effort": "High requested by user, not independently verifiable",
+  "pricing_class": "UNKNOWN",
+  "observed_credits": null,
+  "observed_usage": null,
+  "observed_cash": null,
+  "expected_reset": null,
+  "paid_overflow_policy": "NO_UNAUTHORIZED_BILLABLE_EXTERNAL_CALLS",
+  "privacy_source_grants": {
+    "source_original": "NONE_FOR_THIS_WORK",
+    "synthetic_fixture": "READ_ONLY_DOCUMENTARY",
+    "model_actor_lab": "NONE",
+    "canonical_merge": "NONE"
+  },
+  "independent_review": {
+    "worker_is_review_authority": false,
+    "required": "DIFFERENT_I2_ADP015_ADP020_SCIENTIFIC_REVIEWER_PLUS_COMPETENT_OWNERS",
+    "status": "PENDING"
+  },
+  "assignments_completed": [
+    "SG-HQ298-DOCUMENTARY-CHOICE-RULE-AND-ISSUER-PROPOSAL"
+  ],
+  "next_good_affinity_tags": [
+    "GENEALOGY",
+    "ADP015",
+    "ADP020",
+    "CONCEPTION_SELECTION",
+    "K11_AUTHORITY_REVIEW"
+  ],
+  "staged_state_preservation": "NO_PORTABLE_LOCAL_RUNTIME_TO_RESUME",
+  "retire_or_rebuild_reason": "NEW_DOCUMENTARY_EPOCH; next executable K11 case requires independently verified sourcefree runtime + source/actor/model grants",
+  "cash_and_time_claim": "No separate charge/rate/quota observable in this ChatGPT session; no paid model API trial or process test executed.",
+  "environment_suitability": {
+    "verdict": "BROWSER_NATIVE",
+    "sufficiency": "FULL_FOR_DOCUMENTARY_SEMANTIC_OWNER_PROPOSAL",
+    "setup_cost": "LIGHT",
+    "reason": "Commission primarily clause/issuer analysis and previous G11 already executed independent finite court. Rerunning synthetic solver is not necessary for this grade.",
+    "alternative_s1": "Only if competent reviewer independently commissions new executable discriminating test.",
+    "alternative_s2": "Not required and no unverified warm local worktree reused."
+  }
+}
