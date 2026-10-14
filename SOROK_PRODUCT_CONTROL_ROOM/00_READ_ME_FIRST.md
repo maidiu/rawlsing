@@ -15,6 +15,18 @@ Refresh after material results/decisions/blockers, before dependent planning/dis
 
 Read [ASTRA_R3_JOINT_WELD_ADVISORY_HANDOFF_20261014_R1](ASTRA_R3_JOINT_WELD_ADVISORY_HANDOFF_20261014_R1.md) during incoming-HQ grokking. Exact frozen return: `3b2d9a1b644a9fa024ed1bd895b67be5c8789531`. All 18 deliverables and the structural-world/genealogy corrective amendment are complete. **Ready for HQ intake; advisory only, not adopted law, implementation permission or wake.** Read FINAL_RETURN and amendment16 before recovered 00–06. Earlier statements below that the Pyat/Astra reviews are still the next pending action are historical at their original cut; competent adjudication of the returned advisory is now the relevant intake step.
 
+## Current no-loss succession packet — 14 October 2026
+
+For fresh/resumed HQ takeover, also read in order:
+
+1. `handoffs/R16_PREMAIN_PYAT_ASTRA_SOROK_HQ_SUCCESSION_20261014_R1.md`;
+2. `handoffs/R17_CURRENT_CHAT_HARVEST_AND_SUCCESSION_DELTA_20261014_R1.md`;
+3. `handoffs/R18_CURRENT_CHAT_HARVEST_INTEGRITY_RECEIPT_R1.md`.
+
+R16 carries PRE-MAIN→Pyat→Astra→Sorok succession. R17 separates user-affirmed constraints, rolled-with working assumptions, bounded executed evidence, superseded/rejected formulations, current next-action candidates and Astra recovery/shadow independence provenance. R18 verifies that the current conversation's material value was harvested rather than left chat-dependent.
+
+These handoffs do not replace direct live-ref verification or the mandatory grounding gates.
+
 
 Status: `PROVISIONAL_PRODUCT_ONTOLOGY_AND_ALPHA_PROGRAM__NON_DISPOSITIVE_TO_GOVERNED_EXECUTION`
 
