@@ -64,16 +64,23 @@
   "file_sha256": {
     "repro/first.json": "69c30f5a0dcabde96fada59af24c44183d3552a91c4ba18f0d19b42ecb2bcef0",
     "repro/cold_first.log": "e5902c6b4afab9c25d488c68ecc94287e1471d9da30f06c28ca6fbd0be9211cd",
+    "repro/final_identity.xml": "70718ca540e6f49071d1d5b131c7043c5d1cf4d5605f7548e5554ef02962744f",
     "repro/expected_replay.json": "9ae0751972b27d1e6ce2f38409236d7fb3147be47d8234570215b8de079a0e4a",
     "repro/owners.xml": "b0a3acf54e74b41cde9c59c0f07306bf7f6a25f04cdd29f02a183e67673707b6",
+    "repro/actual_scopes.log": "c0c4ec786b2ee2f7ae86615662dd7c4d525d6f1d1af8019708309f459d8d62c2",
     "repro/replay.json": "e5e8e509836fb5d2bdb8a080a5062a1ea8ffb800f92824bc2a332597fe04485c",
     "repro/identity.log": "115ba4aacb6160359746cd04561c0547050f085ead137eba209af08ecb615f2a",
+    "repro/actual_namespace_receipts.json": "01687c6a7626556810558c3ad9c0a87555d42dcb9cc6f6217c2522ee50deab55",
     "repro/owners.log": "757eb151169e6efbb70ee707abae1273fc556a81ff4d045df14187916cb341df",
     "repro/cold_replay.log": "11587b0106f922e12f0c03d99680588870d25981cb88d7fb0bb31c2c0a159cff",
-    "repro/reproduce.sh": "e990e689d9eff8bbb65568ddb1c08d84c06bde85fe62551db71a4bf8f73ef598",
+    "repro/actual_scopes.xml": "9a669721bd3caab094ac0babf75fb6e9bf77b8743fc1efe7d1d3140a71247e02",
+    "repro/reproduce.sh": "d05e489012e99460e71fc8e6ae02bc8cdb496897bf1b49ada1aa69b58aa9c5e4",
     "repro/identity.xml": "5cb0d5d92f5ad8987594deb378afcb98d610e0b2685380bb14c3ae6d61deb07e",
     "repro/expected_first.json": "9ae0751972b27d1e6ce2f38409236d7fb3147be47d8234570215b8de079a0e4a",
-    "repro/emit_cold.py": "6bf5794541be01fb2086681c33b68cb2846d164fd6c5ada14fa250dbb1efc38e"
+    "repro/final_identity.log": "7da396dd6e360d88c599ce03874eec877952ce8437244a0130998120efdbbef1",
+    "repro/actual_namespace_receipts.log": "a979bb0e6660e63ce86243af75864e211caa83872faaf8d0ae9193a0a619528b",
+    "repro/emit_cold.py": "6bf5794541be01fb2086681c33b68cb2846d164fd6c5ada14fa250dbb1efc38e",
+    "repro/emit_actual_scopes.py": "1d20fb02e610220e39c052aa8ea5e166076e378daa8aea709607735c67892c4c"
   },
   "not_executed": [
     "original SAV/DTA read or survey execution",
@@ -84,5 +91,47 @@
   ],
   "source_privacy": "only named sourcefree fixtures; no original respondent bytes accessed",
   "semantic_authority_modified": false,
-  "independent_acceptance": "REQUIRED_NOT_PERFORMED_BY_THIS_WORKER"
+  "independent_acceptance": "REQUIRED_NOT_PERFORMED_BY_THIS_WORKER",
+  "final_new_identity_court": {
+    "tests": 18,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 3.004,
+    "exit_code": 0,
+    "supersedes_overlapping_initial_identity_suite": true
+  },
+  "scope_fixture_development_runs": [
+    {
+      "tests": 2,
+      "failures": 2,
+      "cause": "missing source_auth in new fixture stub",
+      "owner_edits": false
+    },
+    {
+      "tests": 2,
+      "failures": 1,
+      "cause": "new test used manifest.ref instead of manifest.manifest_ref",
+      "log": "repro/actual_scopes.log",
+      "exit_code": 1,
+      "owner_edits": false
+    },
+    {
+      "tests": 17,
+      "failures": 0,
+      "superseded_by_final_18": true
+    }
+  ],
+  "actual_scope_receipt_process": {
+    "exit_code": 0,
+    "variants": 2,
+    "products_per_variant": 2,
+    "actual_owner_scope_refs_changed": true,
+    "V2_keys_alias": true
+  },
+  "quota_continuation": {
+    "ordinaryUsageAllowed": true,
+    "five_hour_used_percent": 27,
+    "weekly_used_percent": 15
+  }
 }

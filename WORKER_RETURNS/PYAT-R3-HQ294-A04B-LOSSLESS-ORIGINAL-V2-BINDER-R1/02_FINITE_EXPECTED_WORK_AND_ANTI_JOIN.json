@@ -708,5 +708,23 @@
     "original_U_count": null,
     "issued_E_count": null,
     "occupancy": "NOT_PROVED"
+  },
+  "actual_C11_namespace_variants": {
+    "fixture": "actual_scope_fixture",
+    "variants": [
+      "A04B-ACTUAL-NAMESPACE-A",
+      "A04B-ACTUAL-NAMESPACE-B"
+    ],
+    "same_physical_source_hash": true,
+    "distinct_universe_refs": true,
+    "distinct_respondent_refs": true,
+    "distinct_batch_manifests": true,
+    "distinct_actual_consumer_products": true,
+    "same_V2_expected_work_keys": true,
+    "operations_per_scope": 2,
+    "occurrences_per_scope": 18,
+    "receipt_file": "repro/actual_namespace_receipts.json",
+    "wrong_namespace_inventory": "REJECTED_BEFORE_DURABLE_EXECUTION",
+    "actual_form_instrument_successor": "DISTINCT_EXPECTED_KEYS__SYNTHETIC_NOT_SOURCE_ISSUED"
   }
 }

@@ -1,0 +1,24 @@
+F.                                                                       [100%]
+=================================== FAILURES ===================================
+_ test_actual_c11_namespace_changes_owner_jobs_results_and_consumers_but_not_v2_keys _
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-557/test_actual_c11_namespace_chan0')
+
+    def test_actual_c11_namespace_changes_owner_jobs_results_and_consumers_but_not_v2_keys(tmp_path):
+        reports = []
+        scopes = []
+        for namespace in ('A04B-ACTUAL-NAMESPACE-A', 'A04B-ACTUAL-NAMESPACE-B'):
+            kwargs, calls, universe = actual_scope_fixture(tmp_path / namespace, namespace)
+            report = P.run_integrated(**kwargs)
+            assert report['ok'] and len(calls) == 2 and len(report['consumer_products']) == 2
+            assert len(report['source_inventory']) == 18
+            reports.append(report); scopes.append((kwargs, universe))
+        assert scopes[0][1].ref != scopes[1][1].ref
+>       assert scopes[0][0]['session'].manifest.ref != scopes[1][0]['session'].manifest.ref
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'BatchManifest' object has no attribute 'ref'
+
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq294_a04b_actual_scope_variants.py:148: AttributeError
+=========================== short test summary info ============================
+FAILED ../../../Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq294_a04b_actual_scope_variants.py::test_actual_c11_namespace_changes_owner_jobs_results_and_consumers_but_not_v2_keys
+1 failed, 1 passed in 6.13s

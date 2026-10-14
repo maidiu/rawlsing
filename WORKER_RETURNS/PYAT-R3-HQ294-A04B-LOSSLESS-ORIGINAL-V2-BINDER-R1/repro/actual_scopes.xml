@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="2" time="5.990" timestamp="2026-10-13T20:31:09.762767-04:00" hostname="Matthews-MBP.lan"><testcase classname="test_hq294_a04b_actual_scope_variants" name="test_actual_c11_namespace_changes_owner_jobs_results_and_consumers_but_not_v2_keys" time="1.514"><failure message="AttributeError: 'BatchManifest' object has no attribute 'ref'">tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-557/test_actual_c11_namespace_chan0')
+
+    def test_actual_c11_namespace_changes_owner_jobs_results_and_consumers_but_not_v2_keys(tmp_path):
+        reports = []
+        scopes = []
+        for namespace in ('A04B-ACTUAL-NAMESPACE-A', 'A04B-ACTUAL-NAMESPACE-B'):
+            kwargs, calls, universe = actual_scope_fixture(tmp_path / namespace, namespace)
+            report = P.run_integrated(**kwargs)
+            assert report['ok'] and len(calls) == 2 and len(report['consumer_products']) == 2
+            assert len(report['source_inventory']) == 18
+            reports.append(report); scopes.append((kwargs, universe))
+        assert scopes[0][1].ref != scopes[1][1].ref
+&gt;       assert scopes[0][0]['session'].manifest.ref != scopes[1][0]['session'].manifest.ref
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'BatchManifest' object has no attribute 'ref'
+
+/Users/matthewsmith/.codex/worktrees/1037/Rawlsing/rawlsing_next/tests/test_hq294_a04b_actual_scope_variants.py:148: AttributeError</failure></testcase><testcase classname="test_hq294_a04b_actual_scope_variants" name="test_actual_scoped_form_successor_has_distinct_expected_identity" time="2.326" /></testsuite></testsuites>
