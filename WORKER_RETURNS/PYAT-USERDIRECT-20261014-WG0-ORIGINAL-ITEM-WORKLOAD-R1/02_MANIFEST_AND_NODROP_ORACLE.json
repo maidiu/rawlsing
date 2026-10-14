@@ -1,0 +1,25 @@
+{
+  "commission_id": "PYAT-USERDIRECT-20261014-WG0-ORIGINAL-ITEM-WORKLOAD-R1",
+  "branch": "agent/userdirect-pyat-20261014-wg0-original-item-workload-r1",
+  "sealed_startup": "01c6f77dfa755fdc932d2ab6b92abf2382ae8926",
+  "no_drop_oracle": {
+    "total_items": 2,
+    "total_operations": 2,
+    "total_dispositions": 4,
+    "missing_items": [],
+    "missing_operations": [],
+    "no_drop": true
+  },
+  "test_results": {
+    "test_wg0_workload_builder": {"exit": 0, "pass": 11, "fail": 0}
+  },
+  "items_tested": [
+    {"id": "ITEM-ORDINAL-001", "kind": "ORDINAL", "unit": "respondent"},
+    {"id": "ITEM-HOUSEHOLD-MR-002", "kind": "HOUSEHOLD", "unit": "household"}
+  ],
+  "producer_engine_consumer_route": "WorkloadBuilder -> execute_route_b_production -> BatchExecutionRunner",
+  "remaining_obstruction": "Real source metadata requires exact source/E/model issuer authority",
+  "no_all35_claim": true,
+  "no_v3": true,
+  "no_canonical_changes": true
+}
