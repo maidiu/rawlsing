@@ -1,0 +1,59 @@
+# 01 — Reused authority, exact occurrence proposal wire, and missing producers
+
+Status: INDEPENDENT_DOCUMENTARY_DESIGN__NOT_ADOPTED__NO_ACTOR_OR_MODEL_EXECUTION
+Read cut: b6753dbb6a8993b50702a3fe6fbad6496fb5c98a; frozen Astra return: 3b2d9a1b644a9fa024ed1bd895b67be5c8789531.
+
+## 1. Precedence and recovered fact
+
+Sorok 101 (blob 51f0fd1fa95da641d40ec5fb94e879fcbf0ae7a1) is a provisional product requirement for objective occurrence before user-specific phenomenalization; 102 (blob 3f1647a3256e7005bcebfdd02bbd188d65e09231) certifies banking, not implementation. Astra FINAL_RETURN (blob 4b450389795d863f064c8e2bb7824957fcd97a75) and corrective 16 (blob 202e754aebc4e984fa84e5ab194ea5bb110dad3c) are nonadopted advice. World-conditioned life, independent actor history and owner-specific transition constraints precede realization. No synthetic lab Nadia counts as an A0 pipeline-produced mother.
+
+Adopted CAN008_R2 semantic blob b80dd6925066510ecbbfec7b427bf9f688475663 is explicitly adopted by HQ document blob a6bc1555489271e1adb2271ed02d46bb7f888170. CAN-008 governs actor-specific receivability, uptake/appraisal, recruitment and immediate response; it does not own durable memories or external-event occurrence. ADP-016 owns causal/episodic memory, ADP-017 actor access, ADP-015 relationship, V3 owners durable effects; PFF retains narrow non-durable interaction specialization. No shadow personality is permitted.
+
+Current CAN-022 (blob 5b85c67f74112c19fa72acf2cd4de226f73ecf47) says renderer is WORDING ONLY over final admitted semantic units: it forbids creation of new gaze, hand action, pause, object, causal effect or biography. ADP-025 (blob 9601b2e0ccb0c6adc0eff8c789baf0a834486291) governs immutable model binding, separate render RNG, artifact identity, retry/rerender and replay. CAN-025 (blob 7bf380f5e6cef1f7a0d28d5ecc1ae65e5fde9ebb) packages exact causal-mode candidate; ADP-019 (blob 5c38772ea193e5a3f20da23c16df086a153ab2f2) alone admits an external event. Packaging is never admission or occurrence. Current rawlsing_next/render_bounded_expression.py (blob eef88095d1d647b5332aa5186a3a5df218fcf9f8) implements bounded wording against authorized variants and blocks absent positive plan authority. This is NOT a live actor/world surface implementation.
+
+Historical RFA-01/02/03/04 reports and RFA-R reconciliation (RFA-R blob 684e9a4680c9fd03cac3ff7b0c4c61ac7c1f5ab8 at e65846bbb1c38a366d79b54bb89be47da0f8502e) are documentary target reconstruction, expressly no provider execution, V3 actor or F3 evidence. RFA-03 identifies the same wording-only versus embodied occurrence gap. A later model trial was described in discussion but no exact raw model-call inputs/outputs, token charges, latency receipt, provider-version or independent adjudication was recovered in this read cut. Thus no trial reliability/cost is asserted.
+
+## 2. Minimal proposed independent observable occurrence (NOT a current adopted V2 schema)
+
+Provisional schema S_R_OBJECTIVE_OCCURRENCE_PROPOSAL@0.1.0 is in 02_ACTOR_USER_PROJECTION_MEMBRANE.json. This is a *proposed adapter/laboratory target*, not an ADP-019/CAN-025 replacement. It wraps exact borrowed authority refs; it cannot manufacture them.
+
+Identity: occurrence_proposal_id / proposed_body_hash, render_request_id and exact candidate_artifact_id/hash (ADP-025), subject_actor_id, branch/root history hash, admitted inbound predecessor, expected V3 event/casual-session cursors, canonical effective event time and time ordering, V2 plan/render and interaction-mode receipts. Hash profiles must be those of each exact adopted authority; any S_R diagnostic hash is test-only and must not be passed off as ADP-019 artifact identity.
+
+Each atom has atom_id, kind, subject and target refs, event-time order, source/authority permission, precondition object/state binding, proposed result, perceptual channels, language and surface identity, and epistemic assertion class. Categories:
+
+- WORDS: exact uttered UTF-8 bytes and language/speaker, lexical span, start/order/duration and source/delivery conditions. Distinguish spoken proposition from its truth. If user can hear, downstream projection must not rewrite quoted words; partial/misheard segments require physical access evidence.
+- BODY: pose/location, effort, gaze, hand/limb action, silence/timing, gesture, facial and gaze change, start/end and reachable targets. Claims like she deliberately conceals annoyance or remembers her childhood are not body atoms. No inferred mandatory tell.
+- MATERIAL: stable object ID, owner of material semantics, prior state/version, location/access/affordance, permitted operation/force, signed consequence receipt or PENDING status, final physical state/trace, sound/third-party causal effects, conflicts/time. No object appears merely because prose mentions it. No world-mutation slot is interpreted as authorized by the renderer.
+- TESTIMONY: typed attribution that the speaker said/believed/claimed p with truth_value distinct, possibly false/unknown; never world truth or user knowledge by direct promotion.
+- PHENOMENAL_DESCRIPTION: downstream observer-specific descriptors are NOT proposed objective atoms and cannot claim new changes to the objective body/world.
+
+Admission depends on exact accepted event-kind and parent rights, exact CAN-024 IN_WORLD_CAUSAL receipt, CAN-025 package and ADP-019 transaction. Material and embodied slots require their own competently adopted transition/materialization owner, not merely ADP-019 permission to attach an event. Without this owner, the broadened surface is HOLD / DEFER; the existing wording-only path may be used only within its already-admitted scope. No generic fallback event kind or default physics. Hidden incomplete truth remains UNKNOWN, not free scenic invention.
+
+## 3. Required stage separation and transaction order
+
+A. USER_ATTEMPT / input stimulus (not guaranteed realized action); route to lawful world operations and actor-specific perception.
+B. Actor-time CAN-008/person-world current state and expression owners; assemble actor-safe positive allowlist. Include effect-bearing expressive constraints rather than declarative hidden causes, inaccessible memories or audit-only provenance.
+C. A model may propose typed atoms + exactly matching surface prose/words. This is CANDIDATE_NONCAUSAL_PENDING_V3_ADMISSION, not speech and not user experience. Structured/prose extensional mismatch is a rejection, not self-certified truth. The old V2 wording-only contract governs until replaced through independent owner adoption.
+D. Verify physical preconditions, event-kind, actor/turn/surface lineage, source-rights, exact language member, time/order, no hidden or object creation and authorized source owner. Stage prospective material transitions under a transactional competent owner; never mutate canonical objects before an admitted event. CAN-025 packaging READY alone is noncausal.
+E. ADP-019 ADMIT atomically appends exactly one event, unique ID/hash, receipt and applicable causal-session cursor; separately bound world effects must commit consistently with that event or fail closed. REJECT/INVALID has zero durable causal mutation; DEFER remains pending without event. A later different rendering needs different candidate identity, new package and new admission.
+F. Deliver the exact admitted outward artifact through a durable publication outbox; projection is a separately versioned presentation record over the *same* immutable occurrence. Bind each filtered atom, language span, physical access and user recognition provenance. No actor-private or privileged objective material is in the compositor allowlist.
+G. Distinguish OBJECTIVE_OCCURRENCE_ADMITTED, CLIENT_SURFACE_EMITTED, CLIENT_DELIVERY_ACKNOWLEDGED, IN_WORLD_USER_SENSORY_ACCESS_POSSIBLE and HUMAN_USER_ACTUALLY_PERCEIVED (normally UNPROVEN). A delivery ACK is not mind-reading. User inference is a separately tagged inferred hypothesis. Do not insert all observable atoms into user knowledge.
+H. Feedback path: only committed objective event and lawfully actor-perceived components return to CAN-008 / competent V3 effects. The rejected model output, invisible draft and unpresented private source are never actor perception or memory. An actor may later hear herself speak and reinterpret the real utterance; that is a new event-time process, not same-call self-feedback on a draft.
+
+## 4. Crash/retry frontier
+
+Persistent keys must include branch/event cursor, exact proposal/package and candidate hashes, admitted event/receipt, effect transaction ID, stable delivery_id, projection_hash/lens_version and delivery attempt/ack status. Replay stored artifacts, never silently call the model again. ADP-025 RETRY is only a no-usable-output operational failure with unchanged request identity; output exists followed by any new model call is RERENDER with new artifact identity. CAN-025 submission retries reuse package/proposal ID/hash and submission cursor. ADP-019 replays terminal decisions for same proposal/hash and blocks artifact re-admission.
+
+An admit-before-display crash creates an admitted objective occurrence but no *evidence* user saw it. Recovery must redeliver the same event/projection ID (or explicitly reconcile an undelivered in-world event under a separately adopted time/visibility policy). Never mint new actor words and never assert user heard unseen speech. After display-before-ACK, exactly-once human perception is not mechanically provable: deduplicate by delivery ID, display clear recovery status, do not append a second event, and preserve unknown perception if no evidence exists. Failing to atomically coordinate causal event + physical consequences is a distinct missing transaction-owner issue. In a pure same-turn lab, freeze all keys and deliberate failure points to expose this problem.
+
+## 5. Earliest positive consumer and residual owner court
+
+Earliest independent consumer: a source-free synthetic fixed-world, single-actor S-R fixture with (1) exact world/actor before state, (2) authorized surrogate transition policy, (3) injected typed candidate, (4) deterministic admission simulator faithfully enforcing ADP-019 identity without calling it V3, (5) objective event store and append-only effect ledger, (6) two simultaneous positive user projection allowlists, (7) stable outbox and crash checkpoints. This can test logical noncollapse and recovery; it does not claim V3/PFF/V2 runtime or psychometric science.
+
+First missing authority for *actual broader output*: owner-adopted V2 expression extension beyond CAN-022 plus an independently governed material/embodied transition/materialization slot contract, event-kind and exact V3 external admission implementation. After those, producer must supply actual whole-person actor-safe pre-event projection and source/world/historical semantics. The actor-safe source must not be reconstructed from the renderer itself. Further missing: robust user-access/recognition compositor and real-user reciprocal agency/identity bridge. Headline: NEW SURFACE SEMANTICS REQUIRE AN OWNER; A DOCUMENT CANNOT SELF-ISSUE IT.
+
+Science/product ceiling remains F1 specification and F2 boundedly prototypeable *hypothesis*; no F3 at renderer/model, no general longitudinal stability, no F5 production or empirical cost proof. No current PRE-V3 to V3 wake, N12, raw source issuance, unapproved model access or canonical merge is requested/used.
+
+## 6. Source index
+
+Exact base/current files and blob identities are pinned in the machine-readable 02 file under source_evidence. Frozen Astra 07 K8 (event vs rejected draft), 10 (Sorok occurrence gap), 15 S-R and 19 (wake/permissions) supplied advisory framing only. Sorok D002/09, D002/10, 80 ATTEND, 87 recognition and the RFA-R frozen historical review supplied product scenarios, not superseding V2 semantic authority.
