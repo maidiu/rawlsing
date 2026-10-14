@@ -1,0 +1,443 @@
+{
+  "schema": "RC0_8_PLUS_28_REPRODUCTION_AND_FIDELITY@1",
+  "cases": [
+    {
+      "id": "K9_01_TWO_PROVIDERS_SAME_MEANING",
+      "frozen_expected": "EQUIVALENT_EXCEPT_DECLARED_PHYSICAL_LINEAGE",
+      "author_test": "test_k9_01_two_providers_same_meaning",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Original schema_valid assertions not executed by author test; independent JSON Schema validation RED. A/B equality is independently reproduced."
+      ],
+      "frozen_required_predicate_status": "RED",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K9_02_INDEPENDENT_NONPARENT",
+      "frozen_expected": "GENERIC_API_CONSUMED_WITHOUT_GENEALOGY",
+      "author_test": "test_k9_02_independent_nonparent_consumer",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Targeted assertion/class reproduction; original required affected-descendant/unrelated-consumer receipts are not all individually proved by this test."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K9_03_ID_REORDER_AND_STAGE_RENAME",
+      "frozen_expected": "EQUIVALENT",
+      "author_test": "test_k9_03_id_reorder_and_stage_rename_equivalent",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Targeted assertion/class reproduction; original required affected-descendant/unrelated-consumer receipts are not all individually proved by this test."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K9_04_NOT_EQUIVALENT_CONTRAST",
+      "frozen_expected": "FAIL_NON_EQUIVALENT_PROVIDER_NOT_PERMITTED_NORMALIZATION",
+      "author_test": "test_k9_04_not_equivalent_contrast_rejected",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Targeted assertion/class reproduction; original required affected-descendant/unrelated-consumer receipts are not all individually proved by this test."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K9_05_MODELLED_VS_OBSERVED",
+      "frozen_expected": "REFUSE_GRADE_PROMOTION",
+      "author_test": "test_k9_05_modelled_vs_observed_refuses_grade_promotion",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Targeted assertion/class reproduction; original required affected-descendant/unrelated-consumer receipts are not all individually proved by this test."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K9_06_FORWARD_REVERSE",
+      "frozen_expected": "HELD_AUTHORITY_REVERSE_ROLE",
+      "author_test": "test_k9_06_forward_reverse_held_without_scoped_issuer",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "None/obvious forged issuer are held; matching issuer with foreign scope/target is accepted by both port providers in new independent cases."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "NO_ISSUER_HELD_PASS; POSITIVE_SCOPED_GRANT_TARGET_SCOPE_NOT_QUALIFIED",
+      "broader_scoped_grant_claim_status": "RED"
+    },
+    {
+      "id": "K9_07_PERMISSIONS",
+      "frozen_expected": "DENIED_USE",
+      "author_test": "test_k9_07_permissions_denied_use_no_cached_bypass",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Test explicitly invokes revoked_use only after adapter has returned consumer values; adapter-level denied-use RED."
+      ],
+      "frozen_required_predicate_status": "RED",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K9_08_TWO_CHANNEL_REFRESH",
+      "frozen_expected": "TWO_INDEPENDENT_SUCCESSORS",
+      "author_test": "test_k9_08_two_channel_refresh_two_independent_successors",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Targeted assertion/class reproduction; original required affected-descendant/unrelated-consumer receipts are not all individually proved by this test."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_01",
+      "frozen_expected": "REJECT_SEMANTIC_LOSS",
+      "author_test": "test_k10_01_drop_ah",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Targeted assertion/class reproduction; original required affected-descendant/unrelated-consumer receipts are not all individually proved by this test."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_02",
+      "frozen_expected": "REJECT_NONINJECTIVE_COORDINATE",
+      "author_test": "test_k10_02_stratum_translation_noninjective",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Targeted assertion/class reproduction; original required affected-descendant/unrelated-consumer receipts are not all individually proved by this test.",
+        "Author mutation duplicates display labels, not the frozen original native-ID replacement; this is a proxy assertion and not a direct independent native-ID substitution experiment."
+      ],
+      "frozen_required_predicate_status": "NOT_REACHED",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED",
+      "not_reached_reason": "The named original ID-to-display-label mutation was not executed literally; author test ran label-collision proxy only."
+    },
+    {
+      "id": "K10_03",
+      "frozen_expected": "REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS",
+      "author_test": "test_k10_03_dyadize_nary",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Targeted assertion/class reproduction; original required affected-descendant/unrelated-consumer receipts are not all individually proved by this test."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_04",
+      "frozen_expected": "REJECT_F2_PREREQUISITE_LOSS",
+      "author_test": "test_k10_04_drop_f2_history_requirement",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Targeted assertion/class reproduction; original required affected-descendant/unrelated-consumer receipts are not all individually proved by this test."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_05",
+      "frozen_expected": "REJECT_ACTOR_FIREWALL",
+      "author_test": "test_k10_05_predicate_becomes_experience",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Targeted assertion/class reproduction; original required affected-descendant/unrelated-consumer receipts are not all individually proved by this test."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_06",
+      "frozen_expected": "REJECT_ALTERNATIVE_ERASURE",
+      "author_test": "test_k10_06_contradiction_dominant_only",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Targeted assertion/class reproduction; original required affected-descendant/unrelated-consumer receipts are not all individually proved by this test."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_07",
+      "frozen_expected": "REJECT_SUPPORT_ERASURE",
+      "author_test": "test_k10_07_minority_erase",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Targeted assertion/class reproduction; original required affected-descendant/unrelated-consumer receipts are not all individually proved by this test."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_08",
+      "frozen_expected": "REJECT_NEGATIVE_ALGEBRA_COLLAPSE",
+      "author_test": "test_k10_08_zero_missing_collapse",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Author baseline has eight states, not original twelve, and changes DENIED_USE to DENIED. Full-roster independent RED."
+      ],
+      "frozen_required_predicate_status": "RED",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_09",
+      "frozen_expected": "REJECT_UNDERPOWERED_ERASURE",
+      "author_test": "test_k10_09_underpowered_as_empty",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Author baseline has eight states, not original twelve, and changes DENIED_USE to DENIED. Full-roster independent RED."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_10",
+      "frozen_expected": "REJECT_ROUTING_NONRESPONSE_LOSS",
+      "author_test": "test_k10_10_not_asked_as_no",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Author baseline has eight states, not original twelve, and changes DENIED_USE to DENIED. Full-roster independent RED."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_11",
+      "frozen_expected": "REFUSE_SAMPLING_UNIT_JOINT",
+      "author_test": "test_k10_11_cross_unit_pool",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Targeted assertion/class reproduction; original required affected-descendant/unrelated-consumer receipts are not all individually proved by this test."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_12",
+      "frozen_expected": "HELD_AUTHORITY",
+      "author_test": "test_k10_12_direction_reverse_held",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Targeted assertion/class reproduction; original required affected-descendant/unrelated-consumer receipts are not all individually proved by this test."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_13",
+      "frozen_expected": "REJECT_ORDERED_PATH_LOSS",
+      "author_test": "test_k10_13_condition_set_sort",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Targeted assertion/class reproduction; original required affected-descendant/unrelated-consumer receipts are not all individually proved by this test."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_14",
+      "frozen_expected": "REJECT_MODEL_PRECISION_INVENTION",
+      "author_test": "test_k10_14_uncertain_to_point",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Targeted assertion/class reproduction; original required affected-descendant/unrelated-consumer receipts are not all individually proved by this test."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_15",
+      "frozen_expected": "NO_CURRENT_OR_NOT_KNOWN_ASOF",
+      "author_test": "test_k10_15_clock_conflation",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Author mutates as_of to equal published. Frozen procedure is future publication as known at earlier as_of; baseline published2010/asof2009 is accepted in independent RED."
+      ],
+      "frozen_required_predicate_status": "RED",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_16",
+      "frozen_expected": "HELD_AUTHORITY",
+      "author_test": "test_k10_16_lag_interpolation_held",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Targeted assertion/class reproduction; original required affected-descendant/unrelated-consumer receipts are not all individually proved by this test."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_17",
+      "frozen_expected": "REJECT_GENERATED_FACT_PROMOTION",
+      "author_test": "test_k10_17_binding_as_observation",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Targeted assertion/class reproduction; original required affected-descendant/unrelated-consumer receipts are not all individually proved by this test."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_18",
+      "frozen_expected": "REJECT_STALE_BINDING_CONTEXT",
+      "author_test": "test_k10_18_change_binding_no_refresh",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Direct freshness helper is tested; adapter does not invoke it. New resolution changes selection digest, so no stale-digest reuse was demonstrated by the additional binding probe."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_19",
+      "frozen_expected": "REJECT_STALE_REPOSITORY_CONTEXT",
+      "author_test": "test_k10_19_publish_boundary_no_refresh",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Direct freshness helper is tested; adapter does not invoke it. New resolution changes selection digest, so no stale-digest reuse was demonstrated by the additional binding probe."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_20",
+      "frozen_expected": "DENIED_USE",
+      "author_test": "test_k10_20_permission_revoked",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Explicit provider.revoked_use guard passes; full adapter does not apply it before values-read."
+      ],
+      "frozen_required_predicate_status": "RED",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_21",
+      "frozen_expected": "PARTIAL_DEFERRED",
+      "author_test": "test_k10_21_partial_as_complete",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Error is manually raised in test body, not candidate implementation. Foreign demand is independently labelled COMPLETE."
+      ],
+      "frozen_required_predicate_status": "RED",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_22",
+      "frozen_expected": "REJECT_EPISTEMIC_PROMOTION",
+      "author_test": "test_k10_22_proxy_as_observed",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Targeted assertion/class reproduction; original required affected-descendant/unrelated-consumer receipts are not all individually proved by this test."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_23",
+      "frozen_expected": "REJECT_UNVERIFIABLE_CONSUMER_USE",
+      "author_test": "test_k10_23_opaque_hash_no_values",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Targeted assertion/class reproduction; original required affected-descendant/unrelated-consumer receipts are not all individually proved by this test."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_24",
+      "frozen_expected": "REFUSE_UNAUTHORIZED_COMPOSITION",
+      "author_test": "test_k10_24_implicit_model_crossproduct",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Targeted assertion/class reproduction; original required affected-descendant/unrelated-consumer receipts are not all individually proved by this test."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_25",
+      "frozen_expected": "REJECT_ACTOR_JURISDICTION",
+      "author_test": "test_k10_25_upstream_psychic_fields",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Targeted assertion/class reproduction; original required affected-descendant/unrelated-consumer receipts are not all individually proved by this test."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_26",
+      "frozen_expected": "REJECT_PUBLIC_RULE_AND_OWNER_LOSS",
+      "author_test": "test_k10_26_f2_public_sanction_loss",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Targeted assertion/class reproduction; original required affected-descendant/unrelated-consumer receipts are not all individually proved by this test."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_27",
+      "frozen_expected": "PRODUCE_GENERIC_OBJECTIVE_POSSIBILITY_ONLY",
+      "author_test": "test_k10_27_nonparent_consumer_produces_generic_objective_only",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Targeted assertion/class reproduction; original required affected-descendant/unrelated-consumer receipts are not all individually proved by this test."
+      ],
+      "frozen_required_predicate_status": "PASS",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED"
+    },
+    {
+      "id": "K10_28",
+      "frozen_expected": "REFUSE_UNGRANTED_ACTOR_USE",
+      "author_test": "test_k10_28_no_actor_weld",
+      "executed_status": "PASS",
+      "test_coverage_grade": "EXECUTED_AUTHOR_ASSERTION; NOT_FULL_FROZEN_CONTRACT_ACCEPTANCE",
+      "limitations": [
+        "Provider has no actor-weld method; test fallback manually raises. Actor calls truly absent, but no implemented weld-refusal API is proved."
+      ],
+      "frozen_required_predicate_status": "NOT_REACHED",
+      "predicate_grade": "TARGETED_SOURCEFREE_MECHANISM_ONLY; FULL_FROZEN_RUNNER_RECEIPT_SET_NOT_ESTABLISHED",
+      "not_reached_reason": "No provider actor-weld method exists; test fallback raises its own error. No actual actor call was attempted or permitted."
+    }
+  ],
+  "port_fields_not_source_or_model_issuance": true,
+  "full_strict_freeze": "CHANGES_REQUIRED"
+}

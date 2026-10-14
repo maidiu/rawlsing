@@ -1,0 +1,34 @@
+{
+  "case": "negative_states",
+  "expected": {
+    "fx:scope:measured-zero": "OBSERVED_ZERO",
+    "fx:scope:complete-empty": "VALID_EMPTY",
+    "fx:scope:missing": "MISSING",
+    "fx:scope:power": "UNDERPOWERED",
+    "fx:scope:notasked": "NOT_ASKED",
+    "fx:scope:incomparable": "NONCOMPARABLE",
+    "fx:scope:held": "HELD_AUTHORITY",
+    "fx:scope:denied": "DENIED_USE",
+    "fx:scope:nocurrent": "NO_CURRENT",
+    "fx:scope:proxy": "PROXY_MODELLED",
+    "fx:scope:unknown-gap": "UNKNOWN_UNOBSERVED_GAP",
+    "fx:scope:unbound": "UNBOUND_RUNTIME_BINDING"
+  },
+  "actual": {
+    "fx:scope:measured-zero": "OBSERVED_ZERO",
+    "fx:scope:complete-empty": "VALID_EMPTY",
+    "fx:scope:missing": "MISSING",
+    "fx:scope:power": "UNDERPOWERED",
+    "fx:scope:notasked": "NOT_ASKED",
+    "fx:scope:incomparable": "NONCOMPARABLE",
+    "fx:scope:held": "HELD_AUTHORITY",
+    "fx:scope:denied": "DENIED"
+  },
+  "missing": {
+    "fx:scope:denied": "DENIED_USE",
+    "fx:scope:nocurrent": "NO_CURRENT",
+    "fx:scope:proxy": "PROXY_MODELLED",
+    "fx:scope:unknown-gap": "UNKNOWN_UNOBSERVED_GAP",
+    "fx:scope:unbound": "UNBOUND_RUNTIME_BINDING"
+  }
+}

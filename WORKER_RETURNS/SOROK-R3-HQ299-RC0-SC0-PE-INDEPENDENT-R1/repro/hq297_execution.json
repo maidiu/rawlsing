@@ -1,0 +1,22 @@
+{
+  "suite": "hq297",
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/staging/ns/rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=$RC0_RETURN/repro/hq297.xml"
+  ],
+  "cwd": "$RC0_RUNTIME",
+  "exit_code": 1,
+  "seconds": 2.5370800495147705,
+  "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "pytest": "9.0.2",
+  "raw_stdout_sha256": "0f9081857ded1391a40ad7a87913b3a5bcc369919b4cb9d25c0dde79b98b9cf3",
+  "stdout_path": "repro/hq297.log",
+  "junit_path": "repro/hq297.xml",
+  "path_normalization_only": true
+}
