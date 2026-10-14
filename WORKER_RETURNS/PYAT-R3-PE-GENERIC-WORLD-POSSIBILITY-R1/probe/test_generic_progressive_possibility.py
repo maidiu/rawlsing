@@ -262,3 +262,11 @@ def test_no_multiconditioner_n10e_issuer_inferred():
             consumer_query=q2, model_rule=case["model_rule"],
             condition_binding_witness=case["condition_binding_witness"],
         )
+
+
+def test_cross_release_option_pool_refused_without_ee_issuance():
+    a = option("forward")
+    b = option("reverse", variant=fx.CHANGED_SOURCE_VARIANT)
+    request_broken = replace(request(), options=(a, b))
+    with pytest.raises(GenericPossibilityRefusal, match="CROSS_SOURCE_OR_RELEASE_OPTION_POOL_FORBIDDEN"):
+        evaluate_generic_progressive(request_broken)
