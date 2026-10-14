@@ -93,29 +93,29 @@ The deepest longitudinal mirror is the user's own relational praxis.
 3. `00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md` — **mandatory absolute non-gassing / white-whale-protection / assessment-calibration gate; required before consequential feasibility/readiness/confidence claims**
 4. `00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md` — **mandatory worker-orchestration / prompt-dispensation gate; required before material dispatch, replacement, continuation or worker-status claims**
 5. `01_PRODUCT_CHARTER.md`
-5. `02_PROVISIONAL_RELATIONAL_ONTOLOGY.md`
-6. `03_REAL_ALPHA_SPINE.md`
-7. `04_CURRENT_SYSTEM_TO_PRODUCT_CROSSWALK.md`
-8. `05_PROGRAM_MAP.md`
-9. `06_OPERATING_METHOD.md`
-10. `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md` — current cross-cutting interaction synthesis
-11. `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md` — second-pass corrections
-12. `10_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R3.md` — third-pass corrections
-13. `11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md` — prior causal-mechanics completeness audit
-14. `12_CHAT_EXHAUSTIVE_HARVEST_AUDIT_R5.md` — current exhaustive chat-harvest audit
-15. `13_R5_CHAT_HARVEST_INTEGRITY_RECEIPT.md` — mechanical + semantic closure receipt
-16. `dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md` — inherited mediation genealogy
-17. `dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/03_SOROK_RELATIONALIZATION_DELTA_OVER_INHERITED_PFF_R1.md` — current novel ontology frontier
-18. `state/CURRENT_STATE.md`
-19. machine-readable ledgers in `registers/`
-20. `15_SOROK_WIDE_OPEN_FRONTIER_PROGRAM_R1.md` — current open-question dependency/program map
-21. `16_COURT1_COURT2_PLAYER_ENCOUNTER_RELATIONSHIP_SYNTHESIS_R1.md` — player/encounter + relationship-state ideation
-22. `18_COURT3_COURT4_LIFE_PROGRESS_SYNTHESIS_R1.md` — life outside user + progress-without-score ideation
-23. `17_FULL_RAWLSING_VOZHD_GROUNDING_INTEGRITY_R1.md` — takeover grounding verification
-24. `100_MINIMAL_WHITE_WHALE_ALPHA_AND_FIDELITY_ESCALATION_CONSTITUTION_R1.md` — bounded alpha/fidelity-frontier strategy; preserve constitutive Rawlsing while deferring maximal white-whale forms
-25. `101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md` — current live-render architecture: whole-person Nadia continuity, objective observable occurrence before user phenomenalization, hard epistemic membrane, binding emitted surface, and normal two-model-call target
-26. `102_BINDING_SURFACE_TWO_CALL_DEVELOPMENT_BANKING_INTEGRITY_R1.md` — integrity receipt proving the recent renderer / phenomenal-segregation / binding-surface developments are serialized and routed
-27. open scoped investigations in `dockets/`
+6. `02_PROVISIONAL_RELATIONAL_ONTOLOGY.md`
+7. `03_REAL_ALPHA_SPINE.md`
+8. `04_CURRENT_SYSTEM_TO_PRODUCT_CROSSWALK.md`
+9. `05_PROGRAM_MAP.md`
+10. `06_OPERATING_METHOD.md`
+11. `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md` — current cross-cutting interaction synthesis
+12. `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md` — second-pass corrections
+13. `10_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R3.md` — third-pass corrections
+14. `11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md` — prior causal-mechanics completeness audit
+15. `12_CHAT_EXHAUSTIVE_HARVEST_AUDIT_R5.md` — current exhaustive chat-harvest audit
+16. `13_R5_CHAT_HARVEST_INTEGRITY_RECEIPT.md` — mechanical + semantic closure receipt
+17. `dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md` — inherited mediation genealogy
+18. `dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/03_SOROK_RELATIONALIZATION_DELTA_OVER_INHERITED_PFF_R1.md` — current novel ontology frontier
+19. `state/CURRENT_STATE.md`
+20. machine-readable ledgers in `registers/`
+21. `15_SOROK_WIDE_OPEN_FRONTIER_PROGRAM_R1.md` — current open-question dependency/program map
+22. `16_COURT1_COURT2_PLAYER_ENCOUNTER_RELATIONSHIP_SYNTHESIS_R1.md` — player/encounter + relationship-state ideation
+23. `18_COURT3_COURT4_LIFE_PROGRESS_SYNTHESIS_R1.md` — life outside user + progress-without-score ideation
+24. `17_FULL_RAWLSING_VOZHD_GROUNDING_INTEGRITY_R1.md` — takeover grounding verification
+25. `100_MINIMAL_WHITE_WHALE_ALPHA_AND_FIDELITY_ESCALATION_CONSTITUTION_R1.md` — bounded alpha/fidelity-frontier strategy; preserve constitutive Rawlsing while deferring maximal white-whale forms
+26. `101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md` — current live-render architecture: whole-person Nadia continuity, objective observable occurrence before user phenomenalization, hard epistemic membrane, binding emitted surface, and normal two-model-call target
+27. `102_BINDING_SURFACE_TWO_CALL_DEVELOPMENT_BANKING_INTEGRITY_R1.md` — integrity receipt proving the recent renderer / phenomenal-segregation / binding-surface developments are serialized and routed
+28. open scoped investigations in `dockets/`
 
 ## 4. Anti-sprawl law
 
