@@ -1,0 +1,51 @@
+# Sorok HQ301 RCP — INDEPENDENT CAN008/ADP016/017 POSITIVE OWNER-EFFECT CANDIDATE COURT
+
+**STATUS:** `BANKED_UNLAUNCHED__INDEPENDENT_I2_REVIEW__NO_ADOPTION`.
+**REPOSITORY:** `maidiu/rawlsing` (private).
+**ROLE:** Independent I2 reviewer, NOT candidate author, Sorok HQ, competent semantic issuer or V3 actor.
+**BRANCH:** `agent/reviewer-sorok-r3-hq301-rcp-can008-positive-court-r1`.
+**SEALED HQ301 PARENT:** `896d8bcbfb9257c190fc9e4241b3a0176594d08e`.
+**EXACT SEALED WORKER STARTUP:** The commission-creation commit SHA communicated by HQ in the external launch prompt, directly matched to remote HEAD before any work. This file cannot self-refer to its future commit SHA. Preserve any earlier commission ancestry and don't reset live workers.
+**COMMISSION:** `WORKER_COMMISSIONS/SOROK-R3-HQ301-RCP-CAN008-POSITIVE-INDEPENDENT-R1/00_COMMISSION.md`.
+**WRITE TERRAIN ONLY:** `WORKER_RETURNS/SOROK-R3-HQ301-RCP-CAN008-POSITIVE-INDEPENDENT-R1/`.
+
+## Binding editor/model pair and ranked environment (§3A/§3B/§5A)
+`HQ_RECOMMENDED_PAIR_IF_UNSPECIFIED = Codex, in one authorized LOCAL_DOMINANT independent sparse local worktree + GPT-6.1 High`.
+`SINGLE_AGENT_FULL_DELIVERABLE = YES`. `NO_AUTONOMOUS_MODEL_OR_HARNESS_SWITCH = YES`. `POST_RETURN_INDEPENDENT_REVIEW_OWNER = HQ` (HQ controls adjudication; this reviewer IS the independent court for the prior candidate).
+`HQ_ENVIRONMENT_VERDICT = LOCAL_DOMINANT`; `BROWSER_SUFFICIENCY = SCOPED_ONLY`; `BROWSER_SETUP_COST = HEAVY`.
+**PRIMARY MODEL_AND_HOST:** GPT-6.1 High in Codex, in one authorized LOCAL_DOMINANT independent sparse local worktree.
+**WHY QUALIFIED AND ECONOMIC:** The intended acceptance requires original CAN008/GT0/SDTF/M6 import closure, 43+ pinned file blobs, 220 imported module tests, candidate 37 and corrected RSM 60, plus independent causal/epistemic interpretation. Reviewer must own the full test+reasoning loop, not rely on browser documentary read or the author's worktree. The worker has already been selected for substantive I2 judgment; routine hash/import/test steps are completed by this same agent and do NOT require another lower-tier assistant.
+**WARM_ENVIRONMENT_PLAN:** Verify any actually available same-host source-free epoch and import closure, then isolate a fresh reviewer worktree/runtime if candidate author's environment would compromise independence. Reuse shared Git object store/caches only with verified version/permissions; don't clone a huge second repository or reset the author's worktree.
+**FALLBACK_TRIGGER:** If qualified Codex local worktree or exact imports are unavailable after verified preflight, return an import/permission/runner HOLD and successful bounded evidence; do not switch to MiMo/OpenCode/DeepSeek-Harness or Browser without HQ reassignment.
+**WHY NOT ALTERNATIVE:** Browser can only meet the exact scope described by BROWSER_SUFFICIENCY; local code work does not automatically make a reviewer more competent for authority. The editor and model must never be conflated; no invented DeepSeek-Harness routing or helper.
+**INTELLIGENCE:** I0 deterministic program execution performed as part of this one I2 reviewer assignment; I2 HIGH needed for independent scientific interpretation; I3 only on demonstrated accepted-law contradiction.
+**CASH/QUOTA:** UNKNOWN unless genuinely visible; no speculative GPT-6 vs GPT-6.1 token discount or external API authorization.
+**ACTIVE_WORKER_NO_DISTURBANCE:** HQ300 CAN/OUT/BEH authors have returned. HQ300 C0 has NOT pushed a return at the HQ301 read cut; do not touch, restart, or fold C0 into this review.
+
+## Exact candidate and prior evidence
+CAN candidate `189da3b54307d8731132c9a7f7baf578fee8bc96`; HQ299 RSM `00f5d9a66f5f641c1f88376994272bc570a625ef`; HQ298 SM `9ba40aabea9773ba9d2f3cf32248347f2b0f7e18`; adopted CAN008_R2 `b80dd692…`, ADP016 `c6619a28…`, ADP017 `eece4f3f…` (resolve exact blobs in `02_ADOPTED_INTERFACE_DERIVATION.md`). Read CAN `01_FROZEN_EXPECTED_MATRIX.json`, `02_ADOPTED_INTERFACE_DERIVATION.md`, `03_EXECUTION_RECEIPTS.json`, `04_DISC01_DETECTOR_CORRECTION.md`, `05_REVIEWER_REQUEST.md`, candidate code, untouched pinned suites/JUnit.
+
+## One coherent outcome
+Independently adjudicate whether the reported 317/317 sourcefree positive chain is true executed CAN008_R2→target owner effect→ADP016 trace→ADP017 epistemic change→later typed response under existing adopted rules, while production zero-positive guard and nonadopted candidate registry remain genuinely separate.
+
+## Concrete independent court
+Freeze an independent expected matrix BEFORE candidate test observation. Validate all 23 CAN008 §16 bindings against pinned law rather than copied fixture vocabulary; ADP016 source/legal-memory 7 gates, ADP017 truth/access/first-person and K3/K5 separation. Reproduce candidate 37, imported 220, corrected RSM 60 with logs/JUnit and per-case failures. Probe same well-typed event against candidate registry and imported production guard, verify `DEFAULT_ACCEPTED_POSITIVE_TRANSITION_AUTHORITIES` empty and byte-unchanged. Execute actual two-step causal event with target effect material stored, later event reads it; compare absent-effect control and replay. Independently adversarially falsify forged authority, cross-actor effect, stale world, hidden future, duplicate, unadmitted event, trace fabrication, origin self-explanation, public-standing/private-belief leakage, later response bypass and registry leakage. Diagnose semantic derivation deviations separately from mere cloned hard-coded expected labels. No operator self-registered production rule.
+
+## Acceptance criterion and earliest stop
+`REVIEW_PASS` only for precisely reproduced and independently meaningful SOURCEFREE_CANDIDATE_GRAIN, not operative person. Fail closed for registry mutation, illegitimate accepted-law extension, fake causality or failed negative. Return exact independently reproduced 317 and new hostile statuses; separate ready-for-competent-owner review vs production issuance HOLD. Cost/quota as actually observed.
+
+## Binding reads and operating controls
+MUST_READ_NOW at HQ301 parent `896d8bcbfb9257c190fc9e4241b3a0176594d08e`: `SOROK_PRODUCT_CONTROL_ROOM/HQ301_HQ300_PARTIAL_FANIN_AND_REVIEW_DISPATCH_R1.md`, Sorok `00_READ_ME_FIRST.md`, `00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md`, `00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md` (§3A, §3B, §5A, reviewer independence), `00D_WARM_ENVIRONMENT_PASSPORT_AND_COST_AWARE_AGENT_DISPENSATION_R1.md`; the exact candidate `00_RETURN.md`, independent-review-request and the named frozen test/oracle artifacts at pinned return SHAs below. READ_IF_TRIGGERED: adopted CAN/ADP/Pyat source/blob authority or earlier court evidence only when exact test/predicate requires. BACKGROUND_LINK_ONLY: entire historical corpus, Astra program, unrelated Pyat 35-source work. No false full-HQ accession claim.
+
+## Fixed one-editor complete-worker instruction
+The **one commissioned reviewer** is responsible for reading, independent expected-outcome freezing, local sourcefree staging, running tests, authoring adversarial checks, interpreting evidence, writing the reviewer verdict/receipt, committing, pushing, and verifying its exact remote SHA. Do **not** create a helper-agent, invoke another coding model, switch harnesses, or tell the user to open another editor. Subsequent scientific acceptance/adoption remains HQ/competent-owner business, not the reviewer's self-issuance. If a genuine runner/environment/permission blocker occurs, return the exact typed HOLD and completed permitted subwork; do not silently change platform.
+
+## 00D host and evidence gates
+Direct remote branch SHA must equal the commission-creation commit given separately in the launch prompt (a file cannot include its own future commit identity). Record exact original/revised parent lineage, chosen actual editor+model (not unverified version claims), repo rights, warm marker/session vs new epoch, worktree isolation, Python/pytest/subprocess where necessary, exact native Git blob SHA-1 via `blob <len>\0` and module `__file__` imports when real Python closure matters. If a previous runtime is only user-reported open, probe it; do not infer persistence from a chat tab. First discriminating hostile test early; rerun all actual requisite suites. Record use/price/cash/quota if verifiable, otherwise UNKNOWN. No private materials sent to a new provider without prior authorization.
+
+## Stop and no-invention laws
+Only source-free synthetic/pinned imported-owner tests within assigned review; **no external experimental model/actor calls, original survey sources, live V3 person/renderer, production/accepted-owner patches, protected CURRENT/PRE-MAIN, canonical merge, N12 wake, human-perception claim, physical world assertion or adoption/issuer action**. Preserve original frozen oracles, even when their authored Python tests differ; all executed REDs remain RED until actual scoped repairs are independently observed. Accepted law and candidates, deterministic fixture and empirical science, user opportunity and human perception, test runner and competent owner authority must not collapse. No I3 solely because an ordinary test fails; flag exact accepted-authority collision if discovered.
+
+## Required reviewer return
+Write only within your own `WORKER_RETURNS` path: `00_RETURN.md`, frozen reviewer expectations/counterexamples, execution/JUnit/stdout (or lossless scoped artifact archive), absolute Git blob and relative import provenance, typed PASS/RED/NOT_REACHED matrix, clear recommendation `REVIEW_PASS | REVIEW_REVISE | REVIEW_REJECT | REVIEW_HOLD`, independent owner-action register, sanitized `environment_passport_delta.json`, changed-path audit and final direct remote SHA readback. Reviewer PASS grants **no** production/semantic authority. Commit/push assigned branch only; no self-adoption or forced rewrite of existing branch history.
+
