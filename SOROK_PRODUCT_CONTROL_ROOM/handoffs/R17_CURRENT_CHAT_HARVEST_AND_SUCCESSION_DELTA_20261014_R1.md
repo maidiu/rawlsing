@@ -908,6 +908,80 @@ It must NOT ask the user to restate:
 
 ---
 
-# 12. TERMINAL
 
-`R17_CHAT_VALUE_HARVEST_COMPLETE__AFFIRMED_PROVISIONAL_EXECUTED_AND_REJECTED_SEPARATED__READY_FOR_NO_LOSS_HQ_SUCCESSION`
+# 13. ASTRA RECOVERY / INDEPENDENCE PROVENANCE
+
+Status:
+`PROVENANCE__DO_NOT_USE_AS_SEMANTIC_AUTHORITY`
+
+This current conversation also contained a recovery episode that is scientifically/procedurally valuable because it establishes authorship separation behind the later convergence court.
+
+## 13.1 Recovered Astra continuation point
+
+Official Astra branch:
+`agent/astra-r3-prea0-prev3-v3-joint-weld-advisory-r1`
+
+Recovered exact checkpoint:
+`66cad80088d05e32ecd0e8d37741b96ac8faafab`
+
+That checkpoint was produced by a recovery-only operation after the original Codex/Astra session hit its usage limit.
+
+Recovered Codex-authored work included:
+- modified `00_RETURN.md`;
+- substantive deliverables `01` through `06`;
+- continuation/evidence manifest work;
+- primary evidence files.
+
+The recovery record established that these files existed on disk as-authored before the usage-limit failure; they were not silently regenerated.
+
+## 13.2 MiMo quarantine
+
+MiMo V2.6 Pro was used only as a recovery/archival worker after the user clarified that it must NOT finish the substantive Astra advisory.
+
+MiMo-authored substantive content was quarantined:
+
+`WORKER_RETURNS/ASTRA-R3-PREA0-PYAT-JOINT-MAXIMUM-DEPTH-WELD-R1/mimo_recovery_scratch/07_KILL_TEST_PROGRAM.md`
+
+marked:
+
+`MIMO_RECOVERY_DRAFT__NOT_ASTRA_ADVISORY`.
+
+MiMo also authored the recovery section in `CONTINUATION.md`.
+
+No recovered Codex 00–06 file was overwritten by MiMo.
+
+This matters for provenance only; MiMo scratch was excluded from official Astra substantive evidence.
+
+## 13.3 Independent shadow completion
+
+To avoid impersonating Astra, a separate independent shadow completion was created from the recovered Astra checkpoint.
+
+Branch:
+`agent/vozhd-shadow-astra-r3-prev3-v3-weld-completion-r1`
+
+Final SHA:
+`42e348f1d2e430a04615d8c4fdea2177f42a5e2d`
+
+It completed a second-opinion tail on a separate branch and did NOT modify official Astra.
+
+Official Astra was explicitly instructed not to inspect the shadow before finishing.
+
+## 13.4 Why the convergence court is meaningful
+
+Official Astra later completed independently at:
+`3b2d9a1b644a9fa024ed1bd895b67be5c8789531`.
+
+Only after official completion were Astra and shadow compared.
+
+Therefore the convergence court at:
+`9879b0d9de97def30be2f111ddc2e614731d4d5c`
+
+has genuine independent-continuation value at the architectural/advisory grain.
+
+Do not erase this provenance by narrating the shadow as an input to official Astra.
+
+---
+
+# 14. TERMINAL
+
+`R17_CHAT_VALUE_HARVEST_COMPLETE__RECOVERY_PROVENANCE_INCLUDED__AFFIRMED_PROVISIONAL_EXECUTED_REJECTED_AND_INDEPENDENCE_BOUNDARIES_SEPARATED__READY_FOR_NO_LOSS_HQ_SUCCESSION`
