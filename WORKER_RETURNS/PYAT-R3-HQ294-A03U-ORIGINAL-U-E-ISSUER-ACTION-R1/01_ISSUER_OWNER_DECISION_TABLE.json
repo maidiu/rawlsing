@@ -1,0 +1,141 @@
+{
+  "schema": "PYAT_R3_HQ294_A03U_COMPETENT_OWNER_DECISION_TABLE@1.0.0",
+  "scientific_status": "DECISION_REQUESTS_READY__ZERO_ISSUED_NEW_GRANTS",
+  "commission": "eaee307a61add4b22eb81e01359a4a20ca1e0116",
+  "previous_e01": "39c5245d11a2775445a0102a83061887055240de",
+  "previous_n01": "003bff1c6265df2234791a9d3df6687618d4143b",
+  "previous_a02": "837ba126a213b7d93f37e58d0d56d24d9b8d26b3",
+  "authority_rule": "Afrobarometer archive source rights, Rawlsing internal science operation competence, external independent pre-result E custody and machine access are non-substitutable; no model or worker self-signature.",
+  "owners": [
+    {
+      "id": "O1",
+      "role": "ORIGINAL_ADMINISTERED_U_DOCUMENT_AND_VERSION_CUSTODIAN",
+      "competent_external": "Afrobarometer Round 5 National Investigator/National Partner for each national instrument; relevant Round 5 Core Partner Project Manager with review/translation authorisation; network archive/data custodian for archived versions",
+      "documentary_basis": [
+        "https://www.afrobarometer.org/wp-content/uploads/migrated/files/survey_manual_r5_english.pdf",
+        "https://www.afrobarometer.org/surveys-and-methods/survey-resources/",
+        "https://www.afrobarometer.org/contact-us/"
+      ],
+      "current_person_or_delegation": null,
+      "not_automatically_competent_for": "Rawlsing complete original-U adoption or E_pre seal",
+      "decision": "Provide/certify eleven distinct country/edition/language/form/ballot Q86A/B administered occurrences and translations, respondent wording, options, routing, source version and signed inventory closure; explicitly list omitted/inaccessible forms",
+      "artifact": "O1_COUNTRY_ADMINISTERED_ORIGINAL_U_SIGNED@1 + document hashes + form ledger + delegation proof",
+      "status": "NOT_ISSUED",
+      "missing_essential": "COUNTRY_FORM_LANGUAGE_CENSUS_AND_ACTUAL_SOURCE_CUSTODIAN_SIGNATURE",
+      "parallelizable": true
+    },
+    {
+      "id": "O2",
+      "role": "SOURCE_RESPONDENT_RISK_AND_DESIGN_ISSUER",
+      "competent_external": "Afrobarometer Round 5 National Partner/technical information report custodian and relevant Network Data Manager/Core Partner or documented successor for source release, sampling, weights, original selected-person and country release lineage",
+      "documentary_basis": [
+        "https://www.afrobarometer.org/surveys-and-methods/sampling/",
+        "https://www.afrobarometer.org/wp-content/uploads/migrated/files/survey_manual_r5_english.pdf",
+        "https://www.afrobarometer.org/data/codebooks/"
+      ],
+      "current_person_or_delegation": null,
+      "not_automatically_competent_for": "Independent Rawlsing operation grammar, population estimand or E_pre",
+      "decision": "Certify exact merged/country source release compatibility, source person namespace, single-person/household role, Q86A/B exposure/routing, 19,210 coexposure risk definition and signed original RAW sampling/risk rules; make explicit whether and where design weights/PSUs/strata may be used; do not silently upgrade RAW",
+      "artifact": "O2_RELEASE_RESPONDENT_RISK_RAW_DESIGN_WARRANT@1 + national TIRs + release crosswalk",
+      "status": "NOT_ISSUED",
+      "missing_essential": "ORIGINAL_RELEASE_VERSION_AND_RESPONDENT_ROUTE_DESIGN_SIGNOFF",
+      "parallelizable": true
+    },
+    {
+      "id": "O3",
+      "role": "RAWLSING_SOURCE_NATIVE_OPERATION_SCIENCE_ISSUER",
+      "competent_internal": "Existing independently governed EE01–EE04/GT12/A03 competent scientific source-operation authority, after explicit owner/delegation identification and independent review; neither this worker nor HQ is issuer by commission",
+      "documentary_basis": [
+        "WORKER_RETURNS/PYAT-HQ280-PV3-A02-NATIVE-SCIENCE-EDGE-BINDING-R1/04_COMPETENT_ISSUER_GRAPH.md",
+        "PYAT_CONTROL_ROOM/WHOLE_MACHINE_ASSESSMENT_AND_PLAN_20261011_R1/ACTION_PLAN.md"
+      ],
+      "current_person_or_delegation": null,
+      "not_automatically_competent_for": "Afrobarometer copyright/source grant, original administered forms not supplied by O1, O4 independent pre-result custody",
+      "decision": "Adopt finite source-native grammar and exact eligible/held/denied/NA operation closure before seeing outcomes; include GT1 unary and GT2 Q86B(conditioner)->Q86A(target), both directions only if separately qualified, J-only, unknown other original work; permit RAW sample count only here",
+      "artifact": "O3_GT2_SOURCE_NATIVE_SIGNED_OPERATION_CLOSURE@1 + decision ledger + omitted-known proof + scope warrant",
+      "status": "NOT_ISSUED",
+      "missing_essential": "IDENTIFIED_COMPETENT_INTERNAL_ISSUER_AND_ACCEPTED_COMPLETE_OPERATION_SCOPE",
+      "parallelizable": true
+    },
+    {
+      "id": "O4",
+      "role": "INDEPENDENT_PRE_RESULT_E_PRE_CUSTODIAN",
+      "competent_internal": "Distinct appointed archive/reviewer/custody principal, credential and immutable append-only/WORM or protected committed ledger independent from A03 operation author, candidate compiler, P01 executor and outcome reader",
+      "documentary_basis": [
+        "WORKER_RETURNS/PYAT-R3-HQ283-E01-ORIGINAL-E-REAL-BRIDGE-R1/01_PROSPECTIVE_SOURCE_TO_E_P01_MANIFEST.json",
+        "PYAT_CONTROL_ROOM/WHOLE_MACHINE_ASSESSMENT_AND_PLAN_20261011_R1/ACTION_PLAN.md"
+      ],
+      "current_person_or_delegation": null,
+      "not_automatically_competent_for": "Issuing original survey facts or operation law; independent E seal alone does not grant source reads",
+      "decision": "Independently take authenticated O1/O2/O3 signed originals, freeze finite full expected work (including HELD/DENIED/PROVEN_INTRINSIC_NA), canonical preimage/digest/time order BEFORE D batch manifest and any empirical result, receipt and identity under custody principal distinct from author/compiler/executor",
+      "artifact": "O4_E_PRE_INDEPENDENT_APPEND_ONLY_COMMITMENT@1 + signed digest + independent chronology + authenticated original input refs",
+      "status": "NOT_ISSUED",
+      "missing_essential": "SEPARATE_AUTHENTICATED_CUSTODIAN_PRINCIPAL_AND_PRE_RESULT_IMMUTABLE_STORE",
+      "parallelizable": false,
+      "prerequisites": [
+        "O1",
+        "O2",
+        "O3"
+      ]
+    },
+    {
+      "id": "O5",
+      "role": "SOURCE_ORIGINAL_TO_V2_NONLOSSY_TECHNICAL_BINDER",
+      "competent_internal": "Existing C11 governed projection, GT12/I03/Route B, V2 verifier/A04, P01 integrated owner and independent binding reviewer; no delegated right to invent original U or operation permission",
+      "documentary_basis": [
+        "WORKER_RETURNS/PYAT-R3-HQ283-E01-ORIGINAL-E-REAL-BRIDGE-R1/00_RETURN.md",
+        "WORKER_RETURNS/PYAT-HQ282-N01-FIRST-REAL-ORIGINAL-E-B02-R1/02_SHORTEST_PATH_ISSUERS_AND_HOLDS.md"
+      ],
+      "current_person_or_delegation": null,
+      "not_automatically_competent_for": "Original source/operation issuer or changing frozen V2 semantic key without review",
+      "decision": "Against issued source canonical keys, prove injective original country/form/language/source/selected-person/route/item occurrence/ordered-operation mapping to C11 slot/event, I03 predicate/query, V2 expected identity and P01 BatchUnitSpec; adversarial same-slot different form/respondent collisions; if original namespace absent in V2 key, binding proof must include independently checked owner request and explicit discriminability",
+      "artifact": "O5_ORIGINAL_U_OPERATION_TO_V2_LOSSLESS_BINDING_REVIEW@1 + machine joins + counterexamples",
+      "status": "UNPROVED",
+      "missing_essential": "CANDIDATE_BINDING_COMPLETENESS_AND_INDEPENDENT_NO_COLLISION_REVIEW",
+      "parallelizable": true
+    },
+    {
+      "id": "O6",
+      "role": "SOURCE_DATA_USE_AND_GOVERNED_EXECUTION_HOST_PRINCIPAL",
+      "competent_external": "Afrobarometer rights/access principal for relevant public/restricted/early source and user-approved data handling; distinct Rawlsing owner/operator authorized to access exact licensed source copy, machine and retention surface",
+      "documentary_basis": [
+        "https://www.afrobarometer.org/data/data-usage-and-access-policy/",
+        "https://www.afrobarometer.org/data/",
+        "https://www.afrobarometer.org/contact-us/"
+      ],
+      "current_person_or_delegation": null,
+      "not_automatically_competent_for": "Independent scientific source-original/operation/E_pre issuance; general public availability is not owner-local execution consent",
+      "decision": "Determine if exact archived merged SAV and source country original documentation fall under released public usage or restricted terms; record attribution/copyright/privacy/allowed use, explicit user host execution approval, code pin, row access/output retention and authorized source-to-P01 launch. AFTER O1–O5 positive, run only an actually issued runnable E via P01 integrated owner and capture durable receipt, saved fact, FF profile, anti-join. No emails/reads now.",
+      "artifact": "O6_EXACT_DATA_ACCESS_USE_HOST_EXECUTION_APPROVAL@1 + REAL_P01_GT2_EXECUTION_RECEIPT@1 (future)",
+      "status": "NOT_GRANTED_FOR_THIS_WORKER",
+      "missing_essential": "SPECIFIC_USE_PERMISSION_AND_EXECUTION_HOST_APPROVAL_AND_REAL_CONSUMER",
+      "parallelizable": true
+    }
+  ],
+  "externally_verified_public_process": {
+    "rights": "Afrobarometer released data stated free to use subject to citation/copyright; restricted geocoded or early access requires online data request and personal secure-use commitment.",
+    "official_data": "https://www.afrobarometer.org/data/",
+    "data_policy": "https://www.afrobarometer.org/data/data-usage-and-access-policy/",
+    "data_request": "https://www.afrobarometer.org/data/data-sets/",
+    "general_contact": "https://www.afrobarometer.org/contact-us/",
+    "r5_manual": "https://www.afrobarometer.org/wp-content/uploads/migrated/files/survey_manual_r5_english.pdf",
+    "codebook": "https://afrobarometer.org/wp-content/uploads/migrated/files/data/round-5/merged_r5_codebook.pdf",
+    "general_sampling": "https://www.afrobarometer.org/surveys-and-methods/sampling/",
+    "r5_manual_2011_roles": "National Investigators prepare indigenized questionnaires; Core Partner project managers review; Network Data Manager/Operations Manager review and released-country source custodians may hold originals; named historic personnel are NOT assumed current."
+  },
+  "decision_summary": {
+    "source_original": false,
+    "operation_issuer": false,
+    "independent_E_pre_custodian": false,
+    "source_use_fresh_run": false,
+    "real_P01_GT2_consumed": false
+  },
+  "prohibitions": [
+    "NO_CONTACT",
+    "NO_RAW_READ",
+    "NO_SOURCE_SELF_SIGNATURE",
+    "NO_E_PRE_SELF_ISSUE",
+    "NO_CANONICAL_MERGE",
+    "NO_V3"
+  ]
+}
