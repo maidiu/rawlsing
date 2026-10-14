@@ -70,3 +70,44 @@ Start with current usage and git status/HEAD/direct remote tip. Read this checkp
 - Non-event adapter's make/validate_objective_non_event_serving_receipt requires actual D05 receipt plus repository/query/resolution/exact authority and basis for CURRENT, rejects ref-only currentness, and forbids attaching CURRENT receipts to HISTORICAL. This is bounded concrete validation, not whole N9 atomicity or knowledge-as-of proof. Legacy implementation and D05 validator remain to inspect if their stronger behavior matters.
 - OC05 POLICY_BINDINGS explicitly has NOT_YET_APPLICABLE and no seam; evaluate_current_consumer raises before evaluating it. Only OC01/OC02 are current in this module. NON_EMPIRICAL_MODEL inputs have version/authority metadata but cannot satisfy _satisfies as empirical evidence. Thus this module is not proof of an operative generic modeled-world fallback. Preserve separate model service/permission requirements.
 - Next substantive work remains the unread primary historical law, remaining five named source files, and worker/currentness reconciliation; do not repeat completed inputs.
+
+## MiMo recovery session record (2026-10-14) — recovery/banking only
+
+Authority: MiMo V2.6 Pro was authorized for RECOVERY/BANKING ONLY after the Codex session hit its usage limit. MiMo was explicitly NOT authorized to author or decide any remaining Astra advisory judgment. All substantive advisory authorship remains Astra's. Primary repository evidence and the sealed commission remain controlling; nothing below is an advisory conclusion.
+
+### Exact recovered Codex-authored files (post-bank, preserved NOT regenerated)
+
+These files existed on disk from the interrupted Codex session after bank `5e15a0734f360da726721aa9eb80568cfae9bf5e`. They were inspected for truncation/basic integrity (all end in complete sentences; no mid-token truncation), then committed unchanged in recovery checkpoint `fd10ad4ded6c173dfbe0251e9a209a1700e634f6` and pushed:
+
+- `00_RETURN.md` (Codex-modified working copy; diff was 8292 bytes of Codex-authored content)
+- `01_CONFLICTS_AND_ALTERNATIVES.md`
+- `02_STRUCTURAL_WORLD_PORT.md`
+- `03_PERSON_ARCHITECTURE.md`
+- `04_SCIENTIFIC_AUTHORITY.md`
+- `05_ENGINEERING_ARCHITECTURE.md`
+- `06_FEASIBILITY.md`
+- `evidence/continuation_primary_manifest.json`
+- `evidence/primary/A03U_RETURN.md`, `A04B_RETURN.md`, `AUTOMATION.md`, `CAN008_R2.md`, `D02P_RETURN.md`, `D04P_RETURN.md`, `PFF_ADOPTION.md`, `PFF_FREEZE.md`, `PFF_HOSTILE.md`, `PFF_UNIFIED.md`, `RELATIONAL_FIELD.md`, `RENDERER_REVIEW.md`, `SOROK_74.md`, `SOROK_100.md`, `SOROK_101.md`, `SOROK_102.md`, `UEL_RETURN.md`, `W10_ADAPTER.py`, `W10_EXECUTION.md`, `W10_RETURN.md`
+
+Codex session continuity was recovered from `~/.codex/sessions/2026/10/13/rollout-2026-10-13T22-45-56-01a1384d-5e01-77e1-b932-8fae73fc975c.jsonl` (403 lines) by narrow metadata inspection. The session verified all pinned refs, read both commission files and all primary inputs, wrote deliverables 00–06 plus the continuation evidence above, and terminated with `usage_limit_exceeded` before writing deliverables 07–19 or the final manifests. Its last user-visible note: "I'm turning the findings into the final packet."
+
+### Exact MiMo-authored files (NONAUTHORITATIVE)
+
+MiMo wrote exactly one substantive draft before being stopped:
+
+- `mimo_recovery_scratch/07_KILL_TEST_PROGRAM.md` — marked `MIMO_RECOVERY_DRAFT__NOT_ASTRA_ADVISORY`, moved out of the numbered deliverable path into `mimo_recovery_scratch/`. It is NOT an Astra deliverable and must not be adopted or cited as Astra judgment.
+
+No other file was authored or substantively edited by MiMo. No Codex-authored file was overwritten. This CONTINUATION.md recovery record is the only other MiMo edit.
+
+### Exact remaining Astra work (unauthorized to MiMo; for Astra continuation)
+
+Deliverables 08–16 and 17–18 of the sealed 18-deliverable list remain UNWRITTEN: `08_JOINT_PROGRAM.md`, `09_PYAT_PRODUCTIVE_PROGRAM.md`, `10_SOROK_PROGRAM.md`, `11_STOP_DOING.md`, `12_FREEZE_DECISIONS.md`, `13_IMPLEMENTATION_NOW.md`, `14_DEFERRED_FRONTIER.md`, `15_NEXT_BOUNDED_COMMISSIONS.md`, `17_EVIDENCE_AND_ADJUDICATION.md`, `19_WAKE_AND_WELD_CONDITIONS.md`. Also remaining: final rewrite of `18_DELIVERABLE_COVERAGE.json` (currently the bank-2 PENDING placeholder), `FINAL_FREEZE_MANIFEST.json`, `evidence/FINAL_SOURCE_INDEX.json`, `evidence/FINAL_REMOTE_READ_CUT.json`, and the requirement-by-requirement final audit with terminal `ASTRA_JOINT_WELD_ADVISORY_COMPLETE__NO_ADOPTION_OR_WAKE` verdict. The numbered `07_KILL_TEST_PROGRAM.md` slot is empty pending Astra authorship (the MiMo draft is scratch only).
+
+### Git status at this checkpoint
+
+- Branch: `agent/astra-r3-prea0-prev3-v3-joint-weld-advisory-r1`.
+- Bank `5e15a0734f360da726721aa9eb80568cfae9bf5e` (remote-verified).
+- MiMo recovery checkpoint `fd10ad4ded6c173dfbe0251e9a209a1700e634f6` pushed; contains only the Codex post-bank files above (changed paths all inside `WORKER_RETURNS/ASTRA-R3-PREA0-PYAT-JOINT-MAXIMUM-DEPTH-WELD-R1/`).
+- This increment adds only the MiMo recovery record (this section), `mimo_recovery_scratch/`, and no advisory content.
+- Input tips reverified unchanged at recovery: Sorok `990d317f3c989493abe4aa0a253b0bd9f4bae0ff`, Pyat independent `8e1beddf0d79118afec9c601c3b02f60a1b2b9a3`, canonical `7f29aec36d24f16da52d84f17c00f08db3a55434`, operational working `b2b07acd0c3637e725236250e6d06f5aa651b978`, W10 `3c36aa1740a008d0b876850ed47057783e820367`.
+- No source/actor/model execution, implementation, canonical adoption or seam wake performed. Document recovery only.
