@@ -15,7 +15,7 @@
   "actual_commands": [
     "python -m py_compile /mnt/data/d2i_workspace/d2i_sourcefree.py",
     "cd /mnt/data/d2i_workspace && python -m pytest -q --junitxml=pytest_receipt.xml",
-    "cd /mnt/data/d2i_workspace && python -c 'from d2i_sourcefree import *; ...'"
+    "cd /mnt/data/d2i_workspace && python - <<'PY' [heredoc imported Registry, read documentary source JSON, called historical_read and printed output]"
   ],
   "pytest": {
     "stdout": "........................................                                 [100%]\n40 passed in 0.11s\n",
