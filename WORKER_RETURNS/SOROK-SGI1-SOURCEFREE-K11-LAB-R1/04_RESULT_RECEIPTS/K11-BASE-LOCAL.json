@@ -1,0 +1,105 @@
+{
+ "actual_evidence_refs": [
+  "ledger:sha256:5d85ea2dd7084e6e5a22a3d07bf7275fc61d81ad0fa886a77d571d6553d959a6",
+  "proposal:sha256:e5728da3758c7e7b1db8d721ff279d878723f6b9cea0a05df71dc7dc3ca5eacd"
+ ],
+ "assertion_names_contract": [
+  "mother_checkpoint_byte_identity_unchanged",
+  "proposal_set_finite",
+  "generic_query_receipts_exact",
+  "selection_policy_labeled",
+  "father_whole_domains_valid",
+  "forward_endpoint_match",
+  "shared_occurrence_once",
+  "post_conception_both_continue",
+  "child_exposure_changes_only_after_admission",
+  "exact_replay_hash_equal"
+ ],
+ "assertion_results": {
+  "child_exposure_changes_only_after_admission": true,
+  "exact_replay_hash_equal": true,
+  "father_whole_domains_valid": true,
+  "forward_endpoint_match": true,
+  "generic_query_receipts_exact": true,
+  "mother_checkpoint_byte_identity_unchanged": true,
+  "post_conception_both_continue": true,
+  "proposal_set_finite": true,
+  "selection_policy_labeled": true,
+  "shared_occurrence_once": true
+ },
+ "authority_versions": {
+  "contract": "V3_CONCEPTION_CONDITIONED_RETROSPECTIVE_CONSTRUCTION_RULE@0.1-PROPOSAL",
+  "k11_contract": "SOROK_SG_K11_GENEALOGY_EXECUTION_CONTRACT@1.0.0",
+  "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+  "read_cuts": {
+   "astra_official": "3b2d9a1b644a9fa024ed1bd895b67be5c8789531",
+   "s_g_return": "aec8fecc1ae2e3438ff70c44ce5ce7845d1a4829",
+   "sorok_corrected": "bace7640777098732d425e9368cf28ada0e57aeb"
+  }
+ },
+ "case_id": "K11-BASE-LOCAL",
+ "case_wall_seconds": 0.006789,
+ "cost_report": {
+  "actor_events": 19,
+  "causal_state_changes": 0,
+  "completion_tokens": 0,
+  "generic_queries": 5,
+  "history_attempts": 1,
+  "model_calls": 0,
+  "prompt_tokens": 0,
+  "rejected_candidates": 0,
+  "replay_ledger_bytes": 3614,
+  "replay_seconds": 1.6e-05,
+  "rng_draws": 1,
+  "total_tokens": 0,
+  "wall_seconds": 0.002626
+ },
+ "expected_status": "PASS_IF_AUTHORIZED_RUN",
+ "fixture_hash": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
+ "input_hashes": {
+  "mother_anchor": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
+  "proposal": "sha256:e5728da3758c7e7b1db8d721ff279d878723f6b9cea0a05df71dc7dc3ca5eacd"
+ },
+ "intervention": {
+  "route_filter": "ROUTE_LOCAL_CLOSED",
+  "seed": "R0"
+ },
+ "intervention_hash": "sha256:3944bac8c763ecb79211a050bb390250a5647dc3f85460bc9dd926b82367cb09",
+ "missing_authority": [],
+ "model_version_if_used": "gpt-4o-2024-08-06",
+ "n_assertions": 10,
+ "observed_state": {
+  "dad_event_hash": "sha256:6b032afe10939af68645688e14a53272f9a6fc0b7d34b9f268c7a8b57bc242df",
+  "dad_event_hash_replay": "sha256:6b032afe10939af68645688e14a53272f9a6fc0b7d34b9f268c7a8b57bc242df",
+  "guard": true,
+  "selection": {
+   "candidate_set_hash": "sha256:06fd5ec3b14c71b189e4e7a6450605a6a3ca498b07d3ddf9e926c735e195ddd5",
+   "draw_mode": "SCOPED_DETERMINISTIC_STREAM",
+   "n_draws": 1,
+   "policy_hash": "sha256:bb8fff7da303849fc090918ddb1f2458edeca5f424a2ce70d1998c9f61d028b7",
+   "scope_hash": "sha256:3310ea1c3be47b218997595afd2c7eea4b041c44142872f5632484564201750c",
+   "selected_class_key": "sha256:e40965c5cd025a1d837ae6553d31212c75b0543c9193c0a26e04435d651c86f0"
+  },
+  "terminal": {
+   "child_generated_events": 0,
+   "conception_admitted": false,
+   "contract_version": "V3_CONCEPTION_CONDITIONED_RETROSPECTIVE_CONSTRUCTION_RULE@0.1-PROPOSAL",
+   "k11_contract": "SOROK_SG_K11_GENEALOGY_EXECUTION_CONTRACT@1.0.0",
+   "lab_conception_boundary": "LAB_CONCEPTION_BOUNDARY__NO_ADOPTED_BIOLOGICAL_SEMANTICS",
+   "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+   "lab_terminal": "LAB_PASS_AT_DECLARED_GRAIN",
+   "mother_checkpoint_byte_identity_unchanged": true,
+   "pipeline_version": "SGI1_LAB_PIPELINE@1.0.0",
+   "status": "COMMITTED",
+   "target_status": "TARGET_PENDING"
+  }
+ },
+ "receipt_hash": "sha256:9050580436e0955fab84d8817bdf95da49b1bb2dec22bf8423c9b178e0137395",
+ "replay_result": {
+  "dad_hash_1": "sha256:6b032afe10939af68645688e14a53272f9a6fc0b7d34b9f268c7a8b57bc242df",
+  "dad_hash_2": "sha256:6b032afe10939af68645688e14a53272f9a6fc0b7d34b9f268c7a8b57bc242df",
+  "exact_replay": true
+ },
+ "source_use_scope": "SOURCE_FREE_SYNTHETIC_LAB_ONLY__NO_ORIGINAL_SURVEY__NO_REAL_PERSON__NO_PRODUCTION_CURRENTNESS",
+ "terminal_grade": "K11_CASE_PASS"
+}
