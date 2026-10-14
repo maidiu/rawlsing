@@ -309,6 +309,33 @@ Before issuing the prompt, HQ should answer:
 
 ---
 
+# 5A. BINDING EVIDENCE-GROUNDED ENVIRONMENT SUITABILITY VERDICT (USER DIRECTION 2026-10-14)
+
+**A launch cannot replace HQ's environment judgment with an unranked menu.** User preference is Browser when it is technically and economically sensible. HQ MUST state, in plain language, which environment is genuinely the best execution host, not just which ones are theoretically able to run Python. Use exact earlier import/runner evidence, known source/dependency size and test-loop nature, distinct model-grant needs, and realistic session continuity.
+
+Every material prompt MUST have the following standalone fields **BEFORE** the worker is launched. Each field must contain a substantive answer rather than "Browser or local whichever works":
+
+1. `HQ_ENVIRONMENT_VERDICT` — choose EXACTLY ONE primary class:
+   - `BROWSER_NATIVE`: Browser/GitHub plus currently available independent/small runner is the **preferred** way to perform the *entire stated proof*. No substantial private owner import graph; setup is light or documentary only. Browser-first; do not use local simply because sourcefree code exists.
+   - `BROWSER_AMORTIZED`: Browser is the **preferred investment only under a specified continuation queue** (default at least two further same-domain operations sharing verified files/imports). Initial staging is material; declare the actual dependency burden and run the first decisive test before continuing. If no coherent follow-on queue or warm continuity, prefer an identified local executor.
+   - `LOCAL_DOMINANT`: For the **stated acceptance grade**, an authorized persistent Codex/OpenCode/DeepSeek-Harness worktree is substantively better than Browser because of transitive imports, test/repair loops, source transport, model/provider controls or large output. Say "LOCAL RECOMMENDED" plainly. Browser may be a bounded fallback, never described as an equally good option merely because it has Python.
+   - `SPECIALIZED_REQUIRED`: Authorized source/model/actor environment is intrinsic; choose only with explicit permission and cost policy, and identify sourcefree preparatory work separately.
+
+2. `BROWSER_SUFFICIENCY` — `FULL` / `SCOPED_ONLY` / `NOT_QUALIFIED`, with *which* actual discriminating proofs Browser can and cannot reach. Qualify unknown imported dependencies by attempted earlier evidence: observed inability to materialize != general Browser impossibility.
+3. `BROWSER_SETUP_COST` — `LIGHT` / `MATERIAL` / `HEAVY`, grounded in observed imports, file/module closure and test-loop requirements. Explicitly say whether it is likely to struggle, why, and whether initial source staging is worth doing.
+4. `WARM_REUSE_PLAN` — name the exact observed/user-reported prior window and domain affinity, what live marker/import paths/permissions need probing, how many **related** follow-on jobs could amortize source staging, and how to respond if the runtime vanished. User-open != verified live. Neither a branch SHA nor a portable passport proves persistence.
+5. `PRIMARY_MODEL_AND_HOST` — selected model and effort plus host/account if truly known, or explicitly state user-selectable preference among verified permissible options; explain why class suffices. Never infer cash price from model name.
+6. `FALLBACK_TRIGGER` — one objective condition for changing host (e.g. exact missing transitive import after a bounded staged-closure attempt; no grant for model API; no same-domain continuation queue). State what is **not** an excuse to switch (missing full clone alone, general discomfort with Browser, or an open tab implying warm imports).
+7. `WHY_NOT_ALTERNATIVE` — a short decisive comparative statement distinguishing preferred Browser, amortized Browser, or local.
+
+**Hard law:** when the user prefers Browser, do not route Browser-native tasks to local by reflex. Do not route LOCAL_DOMINANT work to Browser for its full acceptance proof because it is "technically possible" unless a new evidence-based comparison actually overturns the classification. An individual worker can perform its first cheap capability probe and report a change, but must not silently replace an explicit HQ routing decision with an agnostic menu. Under `BROWSER_AMORTIZED`, HQ must say *whether the contemplated sequential work warrants the initial cost*, not delegate that decision to the user in vague wording.
+
+**Acceptance-grade discipline:** static document review, isolated sourcefree fixture PASS, pinned imported-owner PASS, real model behavior, real-source science, actor use, and governed deployment are distinct. Routing is relative to the specific proof sought. When only a smaller isolated proof runs in Browser, classify `SCOPED_ONLY`; do not sell it as full fitness. Source materialization from the GitHub connector into a browser Python container is a separate actual operation; inspect real data path and earlier failures, not stereotypes of Browser capability.
+
+**Invalidity:** a new consequential commission that gives `Browser / Codex / OpenCode, whichever is available` without ONE class, clear comparative judgment, setup burden, continuation economics and fallback is `SOROK_ENVIRONMENT_ROUTING_INVALID__REISSUE_REQUIRED`. This is an HQ-level nondelegable decision and supplements all sections below, including the mandatory prompt fields in §9. Only explicit new live evidence may override the documented HQ verdict, with reasons recorded.
+
+---
+
 # 6. Live worker ledger before dispatch
 
 Before:
@@ -427,6 +454,15 @@ INTELLIGENCE:
 
 EXECUTION SURFACE:
 <S0 Browser/GitHub | S1 Browser+runner/CI | S2 Local/Codex/OpenCode | S3 specialized>
+
+HQ_ENVIRONMENT_VERDICT:
+<BROWSER_NATIVE | BROWSER_AMORTIZED | LOCAL_DOMINANT | SPECIALIZED_REQUIRED — choose exactly one>
+BROWSER_SUFFICIENCY / SETUP_COST:
+<FULL | SCOPED_ONLY | NOT_QUALIFIED> / <LIGHT | MATERIAL | HEAVY>, with grounded reason
+PRIMARY_MODEL_AND_HOST / WHY_NOT_ALTERNATIVE:
+<one ranked recommendation; not an unranked menu>
+WARM_REUSE_PLAN / FALLBACK_TRIGGER:
+<exact window affinity, marker probe, consecutive-commission economics and objective switch condition>
 
 BRANCH:
 <exact assigned branch>
@@ -803,6 +839,7 @@ A consequential Sorok worker prompt that omits materially required:
 - role;
 - intelligence/model;
 - execution surface;
+- HQ's explicit environment-suitability verdict, Browser setup/reuse economics, and objective fallback;
 - authority;
 - write terrain;
 - acceptance evidence;
