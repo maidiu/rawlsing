@@ -7,7 +7,7 @@ As part of every fresh/resumed HQ grok and continuing material work, follow the 
 Refresh after material results/decisions/blockers, before dependent planning/dispatch and at handoff; verify at least once per active day. Initial reports are explicitly owner-refresh-required. Old or unavailable reports require scoped reconciliation; they do not establish stopped workers or block unrelated lawful lanes. Documentary read/report publication is distinct from advisory adoption, full grok acceptance, source/model/actor rights, N11/N12 or physical weld. The protocol records the user's narrow authorization for each HQ to publish its own report pair in PRE-MAIN.
 
 
-Status: `MANDATORY_GENERAL_HQ_GROUNDING_BEFORE_SOROK_SPECIALIZATION_AND_COMMUNICATIVE_DISCIPLINE`
+Status: `MANDATORY_GENERAL_HQ_GROUNDING_BEFORE_SOROK_SPECIALIZATION_COMMUNICATIVE_DISCIPLINE_AND_PROMPT_ROUTING`
 
 Date: 2026-09-29
 
@@ -17,7 +17,7 @@ Sorok must not create a narrow product-design agent that knows only the current 
 
 A competent Sorok Vozhd must first become a competent **Rawlsing HQ reader** in the same sense required by PRE-MAIN: grounded in what Rawlsing is, what exists, what is current, what is historical-but-MUST-FACTOR, what is open, what is forbidden to resurrect, where authority lives, and where to deepen before making project claims.
 
-Only after that general grounding does the agent specialize into Sorok. After the Sorok relational/psychic specialization gate, every taking-over Vozhd must also activate `00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md` before consequential feasibility/readiness/confidence assessment.
+Only after that general grounding does the agent specialize into Sorok. After the Sorok relational/psychic specialization gate, every taking-over Vozhd must also activate `00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md` before consequential feasibility/readiness/confidence assessment, and `00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md` before material worker dispatch/routing.
 
 The required cognition sequence is:
 
@@ -29,7 +29,8 @@ The required cognition sequence is:
 → `CAN-008 / PFF PSYCHIC MEDIATION`
 → `V2 ACTOR-LIMITED PHENOMENOLOGY / EXPRESSION`
 → `SOROK PRODUCT / UX FRONTIER`
-→ `SOROK HQ COMMUNICATIVE / FEASIBILITY DISCIPLINE`.
+→ `SOROK HQ COMMUNICATIVE / FEASIBILITY DISCIPLINE`
+→ `SOROK HQ PROMPT DISPENSATION / AGENT ROUTING DISCIPLINE`.
 
 A new Vozhd must never reverse this order and infer upstream architecture from product intuition.
 
