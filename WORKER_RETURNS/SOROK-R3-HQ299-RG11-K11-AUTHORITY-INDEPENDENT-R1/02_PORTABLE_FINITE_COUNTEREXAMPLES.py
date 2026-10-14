@@ -1,27 +1,66 @@
-"""RG11 independently executed finite authority counterexamples. Not real genealogy."""
+"""Independent finite counterexamples for RG11. NOT accepted ADP implementation."""
 from fractions import Fraction
-import hashlib,json,pytest
-def posterior(p):return p/(p+(1-p))
-def survivor(q,a):return [q[i]*a[i]/sum(q[j]*a[j] for j in range(2)) for i in range(2)]
-def stable(x):return hashlib.sha256(json.dumps(x,sort_keys=True).encode()).hexdigest()
-def test_feasibility_not_posterior():assert posterior(Fraction(9,10))!=posterior(Fraction(1,10))
-def test_attrition_bias():assert survivor([Fraction(1,2)]*2,[Fraction(1),Fraction(1,4)])==[Fraction(4,5),Fraction(1,5)]
-def test_no_choice_rule_no_draw():
- domain_rule=None;draws=[]
- assert domain_rule is None and draws==[]
-def test_singleton_no_draw():assert len(['one'])==1
-def test_dedup_no_mass_inflation():assert len(set(['rare','rare','rare','common']))==2
-def test_future_child_embargo():
- mother={'checkpoint':'M1','older_child':'older'}
- def proposal(label):return stable({'mother':mother,'classes':['A','B']})
- assert proposal('good')==proposal('bad')
-def test_construction_not_causal():
- planning=[('endpoint','history_search','NONCAUSAL')];causal=[('parent_history','encounter'),('encounter','conception_IF_ISSUED')]
- assert planning[0][2]=='NONCAUSAL' and all(a!='endpoint' for a,b in causal)
-def test_no_dyad_join_from_respondent():
- sampling_unit='RESPONDENT';dyad_authority=None
- with pytest.raises(PermissionError,match='NO_DYAD_AUTHORITY'):
-  if sampling_unit!='DYAD' or dyad_authority is None:raise PermissionError('NO_DYAD_AUTHORITY')
-def test_pending_not_child_or_birth():
- events={'pending':True,'conception':None,'child_generated':None,'birth':None}
- assert events['pending'] and all(events[k] is None for k in ('conception','child_generated','birth'))
+import hashlib, json
+import pytest
+
+def posterior_from_boolean_feasibility(prior_a):
+    assert 0 < prior_a < 1
+    like_a=like_b=Fraction(1)
+    return prior_a*like_a/(prior_a*like_a+(1-prior_a)*like_b)
+
+def survivor_weights(q_a,q_b,a_a,a_b):
+    z=q_a*a_a+q_b*a_b
+    return q_a*a_a/z,q_b*a_b/z
+
+def h(v):return hashlib.sha256(json.dumps(v,sort_keys=True).encode()).hexdigest()
+
+def ordered_construction(mother, candidates, future_label=None):
+    # The frozen child label is NOT an input to the legitimate planning function.
+    del future_label
+    return {'mother_ref':h(mother),'candidates':tuple(sorted(set(candidates))),
+            'dag_edges':[('endpoint','history_search','NONCAUSAL')], 'draws':0}
+
+def test_same_feasible_histories_nonunique_posterior():
+    assert posterior_from_boolean_feasibility(Fraction(9,10))==Fraction(9,10)
+    assert posterior_from_boolean_feasibility(Fraction(1,10))==Fraction(1,10)
+    assert posterior_from_boolean_feasibility(Fraction(9,10))!=posterior_from_boolean_feasibility(Fraction(1,10))
+
+def test_silent_retry_changes_simulation_law():
+    assert survivor_weights(Fraction(1,2),Fraction(1,2),Fraction(1),Fraction(1,4))==(Fraction(4,5),Fraction(1,5))
+
+def test_selection_without_owner_rule_must_not_draw():
+    policy=None; candidates=['A','B']; draws=[]
+    result='SELECTION_AUTHORITY_UNBOUND' if policy is None else 'ALLOW'
+    assert result=='SELECTION_AUTHORITY_UNBOUND' and draws==[] and len(candidates)==2
+
+def test_qualified_singleton_has_no_draw():
+    selected=('A',0) if len(['A'])==1 else ('N/A',1)
+    assert selected==('A',0)
+
+def test_dedup_does_not_increase_selection_mass():
+    classes=['rare|A','rare|A','rare|A','common|B']
+    assert len(set(classes))==2 and len(classes)==4
+    assert Fraction(1,len(set(classes)))==Fraction(1,2)
+
+def test_child_embargo_changed_hidden_label():
+    mother={'pre_event':'sha-m','older_child':'child:older'}
+    x=ordered_construction(mother,['x','y','x'],future_label='future-good')
+    y=ordered_construction(mother,['x','y','x'],future_label='future-poor')
+    assert h(x)==h(y) and x['mother_ref']==h(mother) and x['draws']==0
+
+def test_construction_edge_is_not_causal_ancestor():
+    construction=[('endpoint','history_search','NONCAUSAL')]
+    chronological=[('parent_history','encounter','CAUSAL'),('encounter','conception_if_issued','CAUSAL')]
+    assert all(e[2]!='CAUSAL' for e in construction)
+    assert all(e[0]!='endpoint' for e in chronological)
+
+def test_no_inferred_dyad_posterior_from_respondent_marginal():
+    unit='RESPONDENT'; observation={'religion':'A','attitude':'agree'}
+    dyad_authority=None
+    assert observation and unit=='RESPONDENT' and dyad_authority is None
+    with pytest.raises(PermissionError,match='UNISSUED_DYAD_DISTRIBUTION'):
+        if dyad_authority is None:raise PermissionError('UNISSUED_DYAD_DISTRIBUTION')
+
+def test_pending_conception_distinct_from_child_generated_and_birth():
+    x={'pending':True,'conception_occurrence':None,'child_generated_event':None,'birth_event':None}
+    assert x['pending'] and sum(x[z] is not None for z in ['conception_occurrence','child_generated_event','birth_event'])==0
