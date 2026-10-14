@@ -236,6 +236,16 @@ def evaluate_generic_progressive(request: GenericRequest) -> Mapping[str, Any]:
     candidate_ids = {o.option_id for o in request.options}
     option_map = {o.option_id: o for o in request.options}
     all_evidence = {o.option_id: _check_producer(o) for o in request.options}
+    # Different competing queries may have different target or condition roles,
+    # but source-universe/release crossjoins are NEVER implicit. Separate
+    # candidate products from distinct releases require their own EE authority.
+    exact_source_releases = {
+        (o.consumer_query.source_universe_ref.key,
+         o.consumer_query.release_ref.key)
+        for o in request.options
+    }
+    _require(len(exact_source_releases) == 1,
+             "CROSS_SOURCE_OR_RELEASE_OPTION_POOL_FORBIDDEN")
     # The consumer supplies its *own* actor-owned criterion as an echo if needed;
     # this service does not create it or infer that a person's survey answer exists.
     for o in request.options:
