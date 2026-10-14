@@ -4,6 +4,8 @@
 
 Pyat and Sorok now additionally read their respective [Pyat 00D](../PYAT_CONTROL_ROOM/00D_WARM_EXECUTION_PASSPORT_AND_MONEY_FIRST_AGENT_DISPENSATION_R1.md) and [Sorok 00D](../SOROK_PRODUCT_CONTROL_ROOM/00D_WARM_ENVIRONMENT_PASSPORT_AND_COST_AWARE_AGENT_DISPENSATION_R1.md) before issuing new worker prompts. Maintain only non-sensitive environment passport/epoch/source-import references; distinguish user-open tabs from verified live runtimes and actual sourcefree implementation from accepted scientific world/actor gates. Prefer least expensive qualified warm execution, preserve separate reviewers and exact sparse worktrees. This is operational dispensation only; no source/model/actor/adoption rights changed.
 
+**Portable warm-runner artifacts:** [environment passport schema](EXECUTION_ENVIRONMENT_PASSPORT_R1.schema.json) and [bounded resume/bootstrap quickstart](WARM_ENVIRONMENT_QUICKSTART_R1.md). Sorok and Pyat dispatchers SHOULD link these directly in worker prompts and attach an observed passport delta on return; a schema-valid passport does not attest live runtime, source permission or scientific adoption.
+
 **User-directed control-room procedure, effective 14 October 2026.** Applies to fresh, resumed and transferred Pyat and Sorok HQs and their continuing material work. It adds mutual grounding and narrow documentary publishing duties to their existing validity/grounding procedures. Existing competent-owner, source, model, implementation, adoption, privacy and wake rules still govern their substantive work.
 
 ## Stable locations and ownership
