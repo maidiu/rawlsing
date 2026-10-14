@@ -15,7 +15,7 @@
 **ACTIVE MANDATORY HQ 00C (NEWER THAN THIS BRANCH'S STARTUP):** `SOROK_PRODUCT_CONTROL_ROOM/00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md` at Sorok HQ commit `3306586ced81c2a6a4b81ee0d2e235c0c5cefb42` (Git blob `b0d380734889115e03578ca1623c320c9b2e1dfc`). Read this updated file in addition to the 00C copy at sealed branch startup; it mandates a ranked evidence-grounded environment verdict.
 **BRANCH:** `agent/rabochii-sorok-r3-hq298-sc0-value-bearing-port-r1`
 **SOURCE SEALED HQ BASE:** `3c33688506840869e1f05f4230248ce950b78d6c`
-**EXACT SEALED LAUNCH STARTUP:** branch tip of the commission-creation commit. HQ must communicate and verify this 40-hex SHA after file creation; do not use HQ parent as if it already contained this commission.
+**EXACT SEALED LAUNCH STARTUP:** the immutable 40-hex SHA of the LATEST REVISED commission commit given in the HQ launch message, verified against direct remote branch HEAD before work. This file cannot contain the Git SHA of its own commit. The earlier commission-creation SHA is superseded by the HQ environment-routing revision; do NOT launch at the older SHA.
 **COMMISSION:** `WORKER_COMMISSIONS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/00_COMMISSION.md`
 **ALLOWED WRITE TERRAIN:** `WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/` ONLY; no accepted source or shared HQ file mutation.
 **PREDECESSOR EXPLICIT REFS:** SC0 241d35fa8a13ea03c68fbe55554ce81c210b745f; Pyat PE2 b94f0f9813dda34c4707e5e13b38d24e92b4d8f8; K9 independent f515188e2975976c60c4a59ca03cb5e3c6283f90; K9 recovery e61a26ce24f023a53d6b116bb9eca2fb7b6f8e65
