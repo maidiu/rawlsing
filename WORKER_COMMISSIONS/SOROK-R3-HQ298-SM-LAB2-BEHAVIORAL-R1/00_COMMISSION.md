@@ -1,0 +1,43 @@
+# HQ298 LAB2 — CAUSAL BEHAVIORAL REPLICATION AFTER S-M-LAB1
+
+**STATUS:** COMMISSION_PREPARED__SOURCEFREE_OR_DOCUMENTARY_ONLY__NOT_YET_EXECUTED__NO_ADOPTION
+**REPOSITORY:** `maidiu/rawlsing` (PRIVATE)
+**ROLE:** Independent bounded behavioral causal experimenter; not V3 actor issuer or behavioral calibration adopter
+**INTELLIGENCE:** I2 HIGH for preregistration, typed scoring, matched controlled comparisons; use a verified qualified cheaper warm local OpenCode Go session for mechanics, no model or paid upgrade by default
+**EXECUTION SURFACE:** S2 previously authorized LAB1 local Python/Node if environment survives; S1 Browser Python viable after verified rehydrate; S3 model provider ONLY if independently authorized/pinned/privacy-safe
+**BRANCH:** `agent/rabochii-sorok-r3-hq298-sm-lab2-behavioral-r1`
+**SOURCE SEALED HQ BASE:** `3c33688506840869e1f05f4230248ce950b78d6c`
+**EXACT SEALED LAUNCH STARTUP:** branch tip of the commission-creation commit. HQ must communicate and verify this 40-hex SHA after file creation; do not use HQ parent as if it already contained this commission.
+**COMMISSION:** `WORKER_COMMISSIONS/SOROK-R3-HQ298-SM-LAB2-BEHAVIORAL-R1/00_COMMISSION.md`
+**ALLOWED WRITE TERRAIN:** `WORKER_RETURNS/SOROK-R3-HQ298-SM-LAB2-BEHAVIORAL-R1/` ONLY; no accepted source or shared HQ file mutation.
+**PREDECESSOR EXPLICIT REFS:** S-M-LAB1 d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09; SM 7777a06dbd3a8f9dcf2b7ca3241e853dc485e505; HQ297 K35 12c65e0ed0a82ebe6a843182990e8b8586b85341
+**LIVE RESOURCE REGISTRY STATUS:** no actual worker runtime passports independently verified by HQ; environment/session affinity initially UNKNOWN. Do not claim old local process alive based on these documentary returns.
+
+## Mission (one coherent outcome and expected grade)
+One outcome: test whether the previously passing minimal world→admitted history→owner organization→situated response discrimination actually survives independently preregistered *behavioral* model trials at matched resource/call budgets; do not republish 576 scripted synthetic PASS as LLM evidence. Existing LAB1 A baseline, B ranking rejection, C derived-cache finding remain intact.
+Claim grade ceiling: explicitly bounded documentary/isolated source-free prototype or authorized exact model lab ONLY if independently granted; no new semantic law or original-source/actor use.
+
+## Required operations and discriminators
+First verify or rehydrate exact LAB1 machine/fixture/regression closure, run one deterministic smoke and preserve prior results. Freeze heldout K1/K3/K5 primary, K2 topology, K4 revision and K6 policing controls; specify behavioral response pre-typed scoring independent of prose/surface and evaluate A vs admissible richer B/C using identical world, exposure and allowed actor-info packets, matched model/seed/temperature/max tokens, blind counterbalanced presentation, accessible trace firewall and objective standing separation. **Model-call gate:** prior LAB1 having used OpenCode does NOT license model-actor trials. Confirm named provider, exact model/version, privacy permission, use grant and explicit monetary cap BEFORE any paid, actor or external model call. If missing, execute only sourcefree heldout/negative invariants and return MODEL_BEHAVIORAL_HOLD with exact missing grant; do not submit extra calls by inference. Establish experimental nulls and retry policy ex ante; no unexplained extra latent psychology owners.
+
+## Acceptance, stop and independent review
+Frozen preregistration hash predates behavioral test, exact model/provider/price/quota/grant, raw request/response where permitted (no secrets), pretyped scoring receipts, observed costs and regressions, effect uncertainty, strict behavior vs scripted sourcefree labels, blind independent I2 behavioral reviewer. If no legal model calls, output a finished executable authorized lab protocol + owner-level regressions and typed HOLD, not a fictive behavioral PASS.
+Do not conclude unexecutability from absence of full clone. A clean runnable source-free test may be built in Browser/CI/container with authenticated source staging. If accepted imported owner modules are missing, make exact failed attempt and do not counterfeit owner-grain PASS. Stop and request HQ when new semantic authority/permission is essential. Escalation to I3/Astra only for a specific accepted-authority conflict or genuine whole-machine seam change.
+## Binding law and read bands
+MUST_READ_NOW: SOROK_PRODUCT_CONTROL_ROOM/00_READ_ME_FIRST.md, /00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md, /00D_WARM_ENVIRONMENT_PASSPORT_AND_COST_AWARE_AGENT_DISPENSATION_R1.md at Sorok HQ 3c33688506840869e1f05f4230248ce950b78d6c; exact predecessor worker return(s) cited below. Read Astra amendment16 at frozen 3b2d9a1b644a9fa024ed1bd895b67be5c8789531 only to the extent material to this job. READ_IF_TRIGGERED: original accepted owner documents and pinned source module dependencies ONLY if exact implementation or rule usage requires them. BACKGROUND_LINK_ONLY: entire Rawlsing historical corpus, old questionnaires and Sorok ideation transcripts; do not regrok without a specifically named discrepancy.
+Scientific law: world constitutes possibilities rather than choosing psyche; actor/source/model/occurrence issuer distinctions remain intact. PRE-V3 does not own generated mother/father/household. Source-free synthetic demonstration never becomes original population calibration, actor truth, ADP/CAN adoption, N11/N12, physical weld or readiness.
+
+## 00D seven-step resumption and environmental passport (MANDATORY)
+1. Inspect live worker ledger, current branch and prior worker session. If an actually surviving, permitted, scientifically qualified same-session/worktree exists, preserve/reuse it; NEVER infer continuity from an open Browser tab, previous 5-hour window or returned Git branch.
+2. Validate live runtime marker/digest, Python/pytest/Node/git only as required, exact local imports via module.__file__, pinned Git blob SHA-1 (actual NUL blob header), dependencies, branch cleanliness, permissions and quota.
+3. Without qualified continuity, record NEW or RECONSTRUCTED environment epoch; run ONE bounded capability preflight, then stage only exact missing authorized sourcefree files/fixtures. Browser GitHub connector does not auto-mount code; Browser Python might still run. Local host uses one canonical Git object store and a governed separate sparse worktree for simultaneous branches.
+4. First actual discriminating pytest/test early; then exact affected regressions. Missing checkout != no possible isolated execution.
+5. Record true attempted command/import/collection and blockers distinctly: MISSING_RUNNER / MISSING_DEPENDENCY / MISSING_IMPLEMENTATION / MISSING_SOURCE_AUTHORITY / MISSING_ACTOR_MODEL_AUTHORITY / REVIEW_INDEPENDENCE.
+6. Produce sanitized portable environment_passport_delta.json (or equivalent schema-complete return section): opaque environment/epoch IDs, verified/unverified capabilities, precise relative module/blob/import refs, real commands/JUnit, quota/expense observed or UNKNOWN, granted privacy/source/model rights, reusable next affinity. No credentials, full home paths or raw survey bytes.
+7. Return files only on this worker branch; exact final remote SHA + direct ref readback, changed-path list, claims done versus NOT_RUN, scientific ceiling and independent reviewer request. No self-adoption.
+
+## Cost and review guardrails
+Money first, then finite quotas/retries/human touch, then elapsed time, always subject to competent intelligence and lawful authority. Reuse a warm qualified economical Codex/OpenCode/DeepSeek-Harness session only AFTER live continuity and provider/privacy checks. Never assume that a model shown in an older return is presently accessible or cheap. No unapproved billable calls, premium upgrades, external private-source export, source-original operations, actor model run, owner/canonical code mutation, HQ CURRENT edits or V3 wake. Independent I2 review is required before scientific/semantic acceptance; implementer cannot serve as independent reviewer. Local fixture tests are not owner-level proof. After two equivalent unproductive loops stop for root cause rather than repeat.
+
+## Return contract
+Write `WORKER_RETURNS/SOROK-R3-HQ298-SM-LAB2-BEHAVIORAL-R1/00_RETURN.md` and associated sourcefree artifacts/passport under that directory, on your isolated branch only. State direct sealed startup, live environment verification, exact pinned blobs/imports, changed paths, actual commands/logs and executed vs NOT_REACHED cases, cash/quota observed or UNKNOWN, remaining work and separate reviewer; push and verify exact direct remote SHA. No self-adoption.
