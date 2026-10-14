@@ -227,6 +227,16 @@ Do not silently upgrade paid/finite resources.
 
 ---
 
+## 3B. OWNER-SELECTED EDITOR AND MODEL PAIR — HARD NO-CONFLATION LAW (USER CORRECTION 2026-10-14)
+
+Before every launch and every model recommendation, Sorok HQ MUST resolve **four separately typed values**: (1) editor/harness actually installed and chosen by the user, (2) model actually selected *inside that editor*, (3) account/provider and permissions, and (4) execution machine/worktree. An installed model does **not** imply a particular harness. Explicit example: **MiMo-V2.6 Pro in OpenCode remains MiMo-V2.6 Pro in OpenCode; it is NOT "MiMo in DeepSeek-Harness."** DeepSeek-Harness is a distinct platform, not a synonym for OpenCode or for a model family. GPT-6.1 High in Codex remains in Codex unless the user explicitly chooses another environment.
+
+**USER_SELECTED_EDITOR_MODEL_PAIR is binding for the current assignment.** Do NOT invent an editor switch, multi-harness fallback, helper/coagent, cross-provider model transport or "recommended" integration that the user did not request. If the selected environment actually fails, report the precise capability HOLD and ask HQ/owner to reassign; do not silently route elsewhere. Do not infer private repository disclosure permission to another model/provider. If the user did not supply a pair, make ONE ranked recommendation based on actual verified context and availability, and distinguish it from a user selection.
+
+**ONE_EDITOR_ONE_ACCOUNTABLE_AGENT_PER_COMMISSION:** The ONE selected editor agent is responsible for the **whole assigned outcome**: read, reason, implement, test, debug, produce artifacts, commit, push and verify. The cost-optimized phase analysis in §3A is internal work selection, not an instruction to split the job into several workers. An independent I2 acceptance reviewer is **a distinct later HQ commission after the complete return**; wording such as "with separate I2 reviewer" MUST NOT imply that the owner must launch two agents now. Specialized real actor/model access remains a separate permission question, not a second agent inherent in ordinary code work.
+
+**Four mandatory launch declarations:** `USER_SELECTED_EDITOR_MODEL_PAIR` (or `HQ_RECOMMENDED_PAIR_IF_UNSPECIFIED`), `SINGLE_AGENT_FULL_DELIVERABLE`, `NO_AUTONOMOUS_MODEL_OR_HARNESS_SWITCH`, `POST_RETURN_INDEPENDENT_REVIEW_OWNER=HQ`. Omission/misidentification is `ROUTING_PAIR_INVALID__REISSUE_REQUIRED` before launch. If already launched, avoid resetting or disturbing live work; issue a non-disruptive correction.
+
 # 3A. TASK-PHASE MODEL ECONOMICS, EVIDENCE-FIRST ROUTING AND EXPLICIT ESCALATION (USER DIRECTIVE 2026-10-14)
 
 **Binding refinement to I0/I1/I2/I3, the §5A environment verdict and 00D:** Scientific *importance* is NOT identical to the reasoning needed in every phase of a scientific job. HQ MUST pre-decide where the cheap agent can **produce hard evidence** and where an I2+ independent scientist must **interpret contested evidence**. Do not burn GPT-6.1 High/GPT-6 High for mechanical Python dependency staging, hashes, frozen-oracle pytest, JUnit packaging, deterministic diff or already-specified repair simply because the overall field is difficult.
@@ -484,6 +494,11 @@ maidiu/rawlsing
 
 ROLE:
 <exact role; candidate / reviewer / scientist / executor; NOT HQ unless actually HQ>
+
+USER_SELECTED_EDITOR_MODEL_PAIR / SINGLE_AGENT_FULL_DELIVERABLE:
+<one editor/harness and its exact model; whole job performed by this one agent>
+NO_AUTONOMOUS_MODEL_OR_HARNESS_SWITCH / POST_RETURN_INDEPENDENT_REVIEW_OWNER:
+<no switching or delegation; HQ owns subsequent independent review>
 
 INTELLIGENCE:
 <capability class I0/I1/I2/I3>
