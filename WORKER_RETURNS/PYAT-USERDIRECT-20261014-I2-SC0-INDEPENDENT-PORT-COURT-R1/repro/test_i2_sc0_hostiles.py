@@ -44,7 +44,7 @@ def test_00_pinned_oracles_real_git_blob_preimages():
     }
     for name, expected in pins.items():
         raw = (ROOT / "oracles" / name).read_bytes()
-        assert hashlib.sha1(b"blob " + str(len(raw)).encode() + b"\\0" + raw).hexdigest() == expected
+        assert hashlib.sha1(b"blob " + str(len(raw)).encode() + b"\0" + raw).hexdigest() == expected
 
 
 def test_01_two_exact_frozen_receipt_shapes_not_just_same_names():
