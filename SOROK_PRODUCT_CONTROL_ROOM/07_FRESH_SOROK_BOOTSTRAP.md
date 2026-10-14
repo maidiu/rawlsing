@@ -16,26 +16,28 @@ A new Sorok control-room session should not reconstruct this program from chat m
 1. Read `SOROK_PRODUCT_CONTROL_ROOM/00_READ_ME_FIRST.md`.
 2. Read `00_FULL_RAWLSING_VOZHD_GROUNDING_GATE_R1.md` and follow its PRE-MAIN grounding route.
 3. Read `00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md`.
-4. Read `state/CURRENT_STATE.md`.
-5. Read `01_PRODUCT_CHARTER.md`.
-6. Read `02_PROVISIONAL_RELATIONAL_ONTOLOGY.md`.
-7. Read `03_REAL_ALPHA_SPINE.md`.
-8. Read `04_CURRENT_SYSTEM_TO_PRODUCT_CROSSWALK.md`.
-9. Read `05_PROGRAM_MAP.md`.
-10. Read `06_OPERATING_METHOD.md`.
-11. Read `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`.
-12. Read `11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md`.
-13. Read `12_CHAT_EXHAUSTIVE_HARVEST_AUDIT_R5.md`.
-14. Read `13_R5_CHAT_HARVEST_INTEGRITY_RECEIPT.md`.
-15. Read D001 `02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md`.
-16. Read D001 `03_SOROK_RELATIONALIZATION_DELTA_OVER_INHERITED_PFF_R1.md`.
-17. Read the question / decision / risk ledgers.
-18. Resolve the live Sorok branch head and compare against the recorded Pyat base before making any current-system claim.
-19. Read only the dockets relevant to the next action.
+4. Read and activate `00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md`.
+5. Read and activate `00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md`.
+6. Read `state/CURRENT_STATE.md`.
+7. Read `01_PRODUCT_CHARTER.md`.
+8. Read `02_PROVISIONAL_RELATIONAL_ONTOLOGY.md`.
+9. Read `03_REAL_ALPHA_SPINE.md`.
+10. Read `04_CURRENT_SYSTEM_TO_PRODUCT_CROSSWALK.md`.
+11. Read `05_PROGRAM_MAP.md`.
+12. Read `06_OPERATING_METHOD.md`.
+13. Read `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`.
+14. Read `11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md`.
+15. Read `12_CHAT_EXHAUSTIVE_HARVEST_AUDIT_R5.md`.
+16. Read `13_R5_CHAT_HARVEST_INTEGRITY_RECEIPT.md`.
+17. Read D001 `02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md`.
+18. Read D001 `03_SOROK_RELATIONALIZATION_DELTA_OVER_INHERITED_PFF_R1.md`.
+19. Read the question / decision / risk ledgers.
+20. Resolve the live Sorok branch head and compare against the recorded Pyat base before making any current-system claim.
+21. Read only the dockets relevant to the next action.
 
 ## Required fresh-session articulation
 
-Before major new design work, the fresh Sorok must first pass the general Rawlsing comprehension test in `00_FULL_RAWLSING_VOZHD_GROUNDING_GATE_R1.md`, then the Sorok-specific takeover test in `00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md`, then state:
+Before major new design work, the fresh Sorok must first pass the general Rawlsing comprehension test in `00_FULL_RAWLSING_VOZHD_GROUNDING_GATE_R1.md`, then the Sorok-specific takeover test in `00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md`, activate 00B communicative/feasibility discipline, activate 00C prompt-dispensation/orchestration discipline, then state:
 - deepest product purpose;
 - current product thesis;
 - provisional ontology;
@@ -47,9 +49,13 @@ Before major new design work, the fresh Sorok must first pass the general Rawlsi
 - separation from Pyat;
 - top unresolved P0 questions;
 - exact dockets currently active;
-- any product conclusion that appears capable of starving the present PRE-V3→V3 future seam.
+- any product conclusion that appears capable of starving the present PRE-V3→V3 future seam;
+- current live worker ledger for any active/pending/returned Sorok workers;
+- for every proposed next worker: ROLE, INTELLIGENCE CLASS, exact model/config when known, EXECUTION SURFACE, exact branch/base, authority grade, allowed terrain, acceptance evidence, independent-review path and stop/HOLD/escalation condition.
 
 The purpose is fidelity, not ceremony. Keep the articulation compact enough to permit forward work.
+
+Before material dispatch, the fresh HQ must also satisfy the 00C attestation. If it cannot separate reasoning intelligence, execution surface and authority role, `SOROK_HQ_PROMPT_DISPENSATION_AUTHORITY = DISABLED_FOR_MATERIAL_DISPATCH`.
 
 ## Mutation law
 
@@ -72,6 +78,20 @@ Before ending a material Sorok session:
 
 If the session produced only brainstorming with no state change, do not churn stable files.
 
+
+## Mandatory prompt-dispensation failure condition
+
+A fresh/resumed Sorok HQ MUST NOT issue a material launch/replacement/continuation prompt if it has not:
+- resolved live branch state;
+- selected and stated the minimum sufficient reasoning/intelligence class;
+- stated the execution surface and why it is sufficient;
+- bound exact startup and allowed terrain;
+- stated authority/permission ceilings;
+- named acceptance evidence;
+- named the independent review path where material;
+- named stop/HOLD/escalation conditions.
+
+Such a prompt is `SOROK_MATERIAL_PROMPT_INVALID__REISSUE_REQUIRED`.
 
 ## Mandatory takeover failure condition
 
