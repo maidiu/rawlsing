@@ -1,0 +1,170 @@
+{
+  "schema": "PYAT_R3_HQ295_UEL_TWO_SIDED_ANTI_JOIN_AND_HOSTILES@1.0.0",
+  "inputs": {
+    "E01_blob": "2927eae72302db70eeb91ccd9cceb0d0ce3f284d",
+    "canonical_blob": "2ad9a001aefef4889d8ac48a2a81cd806dec50d6",
+    "historical_151_blob": "7fb47b5d57d4d207847aec347734f5888f70b75e",
+    "normalized_101_blob": "45be0f82e72ab37bcb972236b1ef3a827b1f95ac"
+  },
+  "original_repeated_EE_undefined": {
+    "per_wave": 16,
+    "waves": 35,
+    "total": 560
+  },
+  "actual_execution": {
+    "runtime": "functions.exec V8 JavaScript over exact fetched original blob data",
+    "cases": 24,
+    "passed": 24,
+    "failed": 0,
+    "source_free": true,
+    "node_cli": "NOT_EXECUTED",
+    "python": "NOT_EXECUTED",
+    "github_ci": "NOT_EXECUTED",
+    "raw_source": "NOT_EXECUTED"
+  },
+  "base": {
+    "ok": true,
+    "errors": [],
+    "anti_join": {
+      "missing": [],
+      "extra": [],
+      "missing_count": 0,
+      "extra_count": 0,
+      "source_missing_count": 0,
+      "source_extra_count": 0
+    },
+    "counts": {
+      "waves": 35,
+      "cells": 1890,
+      "unique": 1890,
+      "S": 1050,
+      "EE": 560,
+      "F": 280
+    }
+  },
+  "cases": [
+    {
+      "id": "P00",
+      "kind": "valid 35x54",
+      "result": "PASS"
+    },
+    {
+      "id": "H01_missing_EE16",
+      "expected_failure": "PER_WAVE_AXIS_COUNT_NOT_54",
+      "result": "PASS"
+    },
+    {
+      "id": "H02_duplicate_EE01",
+      "expected_failure": "LEDGER_TO_CANONICAL_EXTRA_OR_DUPLICATE",
+      "result": "PASS"
+    },
+    {
+      "id": "H03_invent_EE17",
+      "expected_failure": "MISSING_INVENTED_OR_SUBSTITUTED_AXIS",
+      "result": "PASS"
+    },
+    {
+      "id": "H04_undefined",
+      "expected_failure": "UNDEFINED_AXIS_SURVIVED",
+      "result": "PASS"
+    },
+    {
+      "id": "H05_wave_swap",
+      "expected_failure": "WAVE_NAME_SWAP",
+      "result": "PASS"
+    },
+    {
+      "id": "H06_wave_id_duplicate",
+      "expected_failure": "SOURCE_ID_MISSING_DUPLICATE_OR_INVENTED",
+      "result": "PASS"
+    },
+    {
+      "id": "H07_drop_wave",
+      "expected_failure": "SOURCE_ID_MISSING_DUPLICATE_OR_INVENTED",
+      "result": "PASS"
+    },
+    {
+      "id": "H08_invent_SRC36",
+      "expected_failure": "SOURCE_ID_MISSING_DUPLICATE_OR_INVENTED",
+      "result": "PASS"
+    },
+    {
+      "id": "H09_drop_S",
+      "expected_failure": "PER_WAVE_AXIS_COUNT_NOT_54",
+      "result": "PASS"
+    },
+    {
+      "id": "H10_sub_F",
+      "expected_failure": "LEDGER_TO_CANONICAL_EXTRA_OR_DUPLICATE",
+      "result": "PASS"
+    },
+    {
+      "id": "H11_upgrade_EE",
+      "expected_failure": "CANONICAL_PER_AXIS_STATUS_OR_RECORD_MUTATED",
+      "result": "PASS"
+    },
+    {
+      "id": "H12_upgrade_F",
+      "expected_failure": "CANONICAL_PER_AXIS_STATUS_OR_RECORD_MUTATED",
+      "result": "PASS"
+    },
+    {
+      "id": "H13_remove_E01_hold",
+      "expected_failure": "E01_UNRESOLVED_STATUS_OR_CUSTODY_LOST",
+      "result": "PASS"
+    },
+    {
+      "id": "H14_remove_151",
+      "expected_failure": "151_TO_101_CLASSES_LOST",
+      "result": "PASS"
+    },
+    {
+      "id": "H15_remove_101",
+      "expected_failure": "151_TO_101_CLASSES_LOST",
+      "result": "PASS"
+    },
+    {
+      "id": "H16_fake_151_mapping",
+      "expected_failure": "151_TO_101_MAPPING_FABRICATED",
+      "result": "PASS"
+    },
+    {
+      "id": "H17_fake_Epre",
+      "expected_failure": "SCIENTIFIC_SELF_ISSUANCE",
+      "result": "PASS"
+    },
+    {
+      "id": "H18_fake_source_read",
+      "expected_failure": "SCIENTIFIC_SELF_ISSUANCE",
+      "result": "PASS"
+    },
+    {
+      "id": "H19_source_meta",
+      "expected_failure": "SOURCE_METADATA_CHANGED",
+      "result": "PASS"
+    },
+    {
+      "id": "H20_axis_dict",
+      "expected_failure": "AXIS_DEFINITIONS_CHANGED",
+      "result": "PASS"
+    },
+    {
+      "id": "H21_F6global",
+      "expected_failure": "GLOBAL_F6_F7_F8_SCOPE_CHANGED",
+      "result": "PASS"
+    },
+    {
+      "id": "H22_count_preserving_name_swap",
+      "expected_failure": "WAVE_NAME_SWAP",
+      "result": "PASS"
+    },
+    {
+      "id": "P01",
+      "kind": "deterministic JSON roundtrip",
+      "result": "PASS"
+    }
+  ],
+  "science_issued": false,
+  "E_pre_issued": false,
+  "independent_review": false
+}

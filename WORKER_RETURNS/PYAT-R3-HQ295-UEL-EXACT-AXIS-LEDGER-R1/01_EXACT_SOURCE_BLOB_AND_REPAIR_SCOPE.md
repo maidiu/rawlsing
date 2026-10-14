@@ -1,0 +1,11 @@
+# Exact original blobs and narrow repair jurisdiction
+
+- Defective E01: original prospective 01_PROSPECTIVE_SOURCE_TO_E_P01_MANIFEST.json blob 2927eae72302db70eeb91ccd9cceb0d0ce3f284d. Both canonical_matrix.axis_ids and all coverage_conservation.wave_rows[].axis_identities contain 16 literal EE:undefined strings. Immutable old evidence is NOT edited or silently overwritten.
+- True canonical: PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/ESTATE_35X_REQUIREMENTS_MATRIX.json blob 2ad9a001aefef4889d8ac48a2a81cd806dec50d6, documentary WORKING_EVIDENCE_INVENTORY__NOT_OPERATIVE_SOURCE_GRANT. Each of 35 source IDs SRC01–SRC35 stores 30 source_native_axes objects, 16 empirical_engine_axes objects and 8 f1_f8_axes objects with identity, native status, evidence and consumer/negative proof fields.
+- Historical class universe: GLOBAL_WORK_REGISTER.json blob 7fb47b5d57d4d207847aec347734f5888f70b75e, 151 tasks; normalized TASK_LEDGER_101_MACHINE.json blob 45be0f82e72ab37bcb972236b1ef3a827b1f95ac, 101 task rows.
+
+Generate exact axis labels from canonical id properties, not the E01 malformed projection or inferred array indexes. Compose each key from exact source_id, kind prefix S:/EE:/F: and original axis id. Preserve each canonical per-axis object byte-equivalent under JSON representation; preserve E01 non-axis scientific HOLD and custody fields as untouched values. Copy canonical F6/F7/F8 global relation text; per-wave accounting F6/F7/F8 does not create independent scalar world/temporal/service successes.
+
+No new 151→101 mapping is offered: both sides' complete IDs survive with unresolved pointers and no invented positional equivalence. A later separately qualified crosswalk may attach many-to-many exact edges with reasoned issuer/adoption; neither 151 nor 101 is a completed-work count.
+
+Current browser source-free V8 checks actually executed 24 cases; independently replayable Node helper supplied but NOT_EXECUTED by Node. No source SAV/DTA opened; no original E_pre, original respondent inventory, model authority, canonical merge, CURRENT or actor.
