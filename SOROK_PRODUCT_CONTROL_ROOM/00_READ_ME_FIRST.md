@@ -91,7 +91,8 @@ The deepest longitudinal mirror is the user's own relational praxis.
 1. `00_FULL_RAWLSING_VOZHD_GROUNDING_GATE_R1.md` — **mandatory general Rawlsing HQ grounding; read before Sorok specialization**
 2. `00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md` — **mandatory Sorok/V3/PFF specialization gate**
 3. `00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md` — **mandatory absolute non-gassing / white-whale-protection / assessment-calibration gate; required before consequential feasibility/readiness/confidence claims**
-4. `01_PRODUCT_CHARTER.md`
+4. `00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md` — **mandatory worker-orchestration / prompt-dispensation gate; required before material dispatch, replacement, continuation or worker-status claims**
+5. `01_PRODUCT_CHARTER.md`
 5. `02_PROVISIONAL_RELATIONAL_ONTOLOGY.md`
 6. `03_REAL_ALPHA_SPINE.md`
 7. `04_CURRENT_SYSTEM_TO_PRODUCT_CROSSWALK.md`
@@ -251,7 +252,7 @@ Read D001/03 before proposing new person/dyad ontology.
 "Everything is relational" must not be interpreted as "everything belongs to a dyad object." Preserve person, relation-class prior, role-conditioned organization, specific dyad, network context and current person×event configuration as potentially distinct grains.
 
 
-## 12. Mandatory three-stage Vozhd grounding
+## 12. Mandatory four-stage Vozhd grounding
 
 Any agent taking over Sorok as Vozhd must first read:
 
@@ -265,7 +266,11 @@ and then read and activate:
 
 `00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md`
 
-before making consequential feasibility, readiness, difficulty, implementation, scalability, confidence, or "doable" assessments, and before adjudicating:
+and then read and activate:
+
+`00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md`
+
+before making consequential feasibility/readiness assessments **or dispensing material worker prompts / worker-routing instructions**, and before adjudicating:
 - D001 ontology;
 - V3 relational sufficiency;
 - PFF semantics;
@@ -285,6 +290,8 @@ The full Rawlsing gate creates the general HQ-level grounding. The 00A specializ
 A new Vozhd is not considered sufficiently grokked for D001 if it only knows the Sorok summary and has not understood where the inherited material lives and how its authority levels differ.
 
 The 00B communicative-discipline constitution is independently mandatory. A Vozhd who has not passed its claim-ladder, scope, composition, falsifier, numerical-confidence, LLM-authority and technical-vs-experience comprehension checks is not competent to issue consequential Sorok HQ feasibility/readiness assessments. Violating assessments are `COMMUNICATIVE_ASSESSMENT_INVALID__REISSUE_REQUIRED`. HQ must privilege truthful stop/narrow/redesign judgments over preserving momentum, must treat irreducible unproved critical-path capabilities as whole-system feasibility risks, and must prefer cheap kill-tests over persuasive demos where white-whale risk is material.
+
+The 00C prompt-dispensation/orchestration constitution is separately mandatory before material worker dispatch. It imports Pyat's live-worker-ledger, capability-routing, one-outcome/one-owner, independent-review, knowledge-band, model/intelligence, execution-surface and Astra/Omega escalation discipline into Sorok. A Vozhd that has not activated 00C may not lawfully dispense a material Sorok worker launch. Missing required role/intelligence/surface/startup/authority/acceptance/HOLD/review fields yields `SOROK_MATERIAL_PROMPT_INVALID__REISSUE_REQUIRED`.
 
 
 ## Current forward Sorok courts
