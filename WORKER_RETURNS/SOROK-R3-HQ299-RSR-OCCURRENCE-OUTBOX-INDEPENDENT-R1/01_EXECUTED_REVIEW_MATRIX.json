@@ -1,0 +1,273 @@
+{
+  "schema": "SOROK_HQ299_RSR_EXECUTED_INDEPENDENT_REVIEW_RECEIPT_R1",
+  "status": "SCOPED_REPRODUCTION_COMPLETE__ACCEPTANCE_HOLD_12_EXECUTED_REDS",
+  "grade": "F2_SOURCEFREE_STANDALONE__NOT_OWNER_F3_OR_REAL_CLIENT",
+  "sealed_startup": "8cebf47b1706fc2f86d055632a43cc8cfdc3b601",
+  "candidate_commit": "8da45605c267ea60b664d00fc8444d8c9b007628",
+  "frozen_oracle_commit": "99f2e7128a8417dfeaa39468c45ba65f6958c061",
+  "staged_source_blobs": {
+    "outbox_prototype.py": "fe429516e48f63035457bcff5431d2da4f26f8d3",
+    "test_sr_28_falsifier_court.py": "a6263f8903f22da2b1cde3999d950328d19c9e21",
+    "test_rsr_independent.py": "044b9cb48c2e4e3d825e7a2cbb52bb412d1366d7",
+    "rsr_cold_replay.py": "0c8676aaa3ff6605f3fb7a987e29f88d26fafb03",
+    "test_rsr_cold_replay.py": "ad132e7e852d3873597276b51afda86b8296f891",
+    "FROZEN_S01_S28_ORACLES.json": "782ba75ee94f24908100b1f3464e7035497d546c"
+  },
+  "process_run_results": [
+    {
+      "id": "FIRST_S27",
+      "command": "python -m pytest -q test_sr_28_falsifier_court.py::test_s27_material_move_needs_world_owner --junitxml=first_s27.xml",
+      "exit_code": 0,
+      "tests": 1,
+      "passed": 1,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "actual_stdout": "1 passed in 0.09s",
+      "raw_xml_sha256": null
+    },
+    {
+      "id": "FROZEN_ORIGINAL",
+      "command": "python -m pytest -q test_sr_28_falsifier_court.py --junitxml=original_28_junit.xml",
+      "exit_code": 0,
+      "tests": 28,
+      "passed": 28,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "actual_stdout": "28 passed in 0.06s",
+      "raw_xml_sha256": "6f3fe907e53fc8aa86895e3eb55fa214396fd89088c9f0d07743d69fa2b73ced"
+    },
+    {
+      "id": "INDEPENDENT_REDS",
+      "command": "python -m pytest test_rsr_independent.py -q --junitxml=independent_raw_junit.xml",
+      "exit_code": 1,
+      "tests": 17,
+      "passed": 5,
+      "failed": 12,
+      "errors": 0,
+      "skipped": 0,
+      "actual_stdout_tail": "12 failed, 5 passed in 0.65s",
+      "raw_xml_sha256": "5b4bb8c219c1741b0371fce0121540064ac2db610f935382bd0f346c5fe0a648"
+    },
+    {
+      "id": "COLD_PROCESSES",
+      "command": "python -m pytest -q test_rsr_cold_replay.py --junitxml=cold_junit.xml",
+      "exit_code": 0,
+      "tests": 2,
+      "passed": 2,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "actual_stdout": "2 passed in 6.74s",
+      "raw_xml_sha256": "9153d855fe0caa3d6b7e956f9de388841fcad8de7f24a069fca2a406ea3b28e7"
+    }
+  ],
+  "local_replay_artifacts": {
+    "run_evidence_tar_gz_sha256": "6be368ac0ba6abc172ee20ec6bdd8e54800bc5bda5190af6fece8a5a07d33744",
+    "executed_source_bundle_sha256": "528fcb1e9f9323d4015b695c7e664a98f8f8e14cbed265c8eb7738c23f261350",
+    "raw_stdout_sha256": {
+      "original_28_stdout.txt": null,
+      "independent_raw_stdout.txt": "690ce60619e86a2db7ef8334ada2eecc95676557d462e1a74f4eb20092f3d06c"
+    }
+  },
+  "independent_exact_case_results": {
+    "passed": [
+      "test_positive_same_candidate_replay_returns_same_event_no_extra_admit",
+      "test_positive_false_testimony_does_not_directly_mutate_world_truth",
+      "test_positive_delivery_ack_does_not_automatically_call_perceive",
+      "test_positive_same_admitted_event_can_be_differently_offered",
+      "test_red_display_ack_does_not_authorize_ghost_offer_to_other_viewers"
+    ],
+    "failed": [
+      {
+        "name": "test_red_perceive_without_offer_or_delivery_must_refuse",
+        "code": "PERCEPTION_UNGATED"
+      },
+      {
+        "name": "test_red_offer_unknown_unadmitted_event_must_refuse",
+        "code": "GHOST_OPPORTUNITY"
+      },
+      {
+        "name": "test_red_emit_unknown_unadmitted_event_must_refuse",
+        "code": "GHOST_OUTBOX"
+      },
+      {
+        "name": "test_red_snapshot_restore_must_revert_user_opportunity",
+        "code": "RESTORE_OPPORTUNITY_LEAK"
+      },
+      {
+        "name": "test_red_snapshot_restore_must_preserve_committed_opportunity",
+        "code": "COLD_OPPORTUNITY_LOSS"
+      },
+      {
+        "name": "test_red_mutable_candidate_payload_cannot_rewrite_committed_event",
+        "code": "MUTABLE_ADMISSION"
+      },
+      {
+        "name": "test_red_mutable_external_event_view_cannot_edit_ledger",
+        "code": "MUTABLE_EVENT_READ"
+      },
+      {
+        "name": "test_red_snapshot_is_immutable_against_subsequent_nested_event_mutation",
+        "code": "SHALLOW_SNAPSHOT"
+      },
+      {
+        "name": "test_red_source_refs_are_part_of_admission_identity",
+        "code": "SOURCE_REF_ALIAS"
+      },
+      {
+        "name": "test_red_untyped_world_fact_claim_in_actor_utterance_cannot_be_admitted_as_event",
+        "code": "UNISSUED_WORLD_CLAIM"
+      },
+      {
+        "name": "test_red_missing_causal_time_requires_hold_not_occurrence",
+        "code": "UNBOUND_CAUSAL_TIME"
+      },
+      {
+        "name": "test_red_missing_admission_source_must_not_be_assumed_adp019",
+        "code": "UNBOUND_ADMISSION_RULE"
+      }
+    ]
+  },
+  "findings": [
+    {
+      "code": "PERCEPTION_UNGATED",
+      "test_name": "test_red_perceive_without_offer_or_delivery_must_refuse",
+      "explanation": "UserProjection.perceive records human perception absent opportunity/delivery.",
+      "evidence": "INDEPENDENT_SOURCEFREE_EXECUTED_RED",
+      "grade": "CANDIDATE_INTERFACE_ONLY"
+    },
+    {
+      "code": "GHOST_OPPORTUNITY",
+      "test_name": "test_red_offer_unknown_unadmitted_event_must_refuse",
+      "explanation": "UserProjection.offer records opportunity for an event unknown to OccurrenceLedger.",
+      "evidence": "INDEPENDENT_SOURCEFREE_EXECUTED_RED",
+      "grade": "CANDIDATE_INTERFACE_ONLY"
+    },
+    {
+      "code": "GHOST_OUTBOX",
+      "test_name": "test_red_emit_unknown_unadmitted_event_must_refuse",
+      "explanation": "Outbox.emit creates delivery for an unadmitted occurrence ID.",
+      "evidence": "INDEPENDENT_SOURCEFREE_EXECUTED_RED",
+      "grade": "CANDIDATE_INTERFACE_ONLY"
+    },
+    {
+      "code": "RESTORE_OPPORTUNITY_LEAK",
+      "test_name": "test_red_snapshot_restore_must_revert_user_opportunity",
+      "explanation": "Snapshot/restore omits opportunity state and leaves post-snapshot in-memory opportunity live.",
+      "evidence": "INDEPENDENT_SOURCEFREE_EXECUTED_RED",
+      "grade": "CANDIDATE_INTERFACE_ONLY"
+    },
+    {
+      "code": "COLD_OPPORTUNITY_LOSS",
+      "test_name": "test_red_snapshot_restore_must_preserve_committed_opportunity",
+      "explanation": "Snapshot/restore of a new object loses previously offered opportunities.",
+      "evidence": "INDEPENDENT_SOURCEFREE_EXECUTED_RED",
+      "grade": "CANDIDATE_INTERFACE_ONLY"
+    },
+    {
+      "code": "MUTABLE_ADMISSION",
+      "test_name": "test_red_mutable_candidate_payload_cannot_rewrite_committed_event",
+      "explanation": "Input nested dictionary aliases admitted ledger payload.",
+      "evidence": "INDEPENDENT_SOURCEFREE_EXECUTED_RED",
+      "grade": "CANDIDATE_INTERFACE_ONLY"
+    },
+    {
+      "code": "MUTABLE_EVENT_READ",
+      "test_name": "test_red_mutable_external_event_view_cannot_edit_ledger",
+      "explanation": "Admit return is the same mutable dictionary as stored; event content hash becomes inconsistent.",
+      "evidence": "INDEPENDENT_SOURCEFREE_EXECUTED_RED",
+      "grade": "CANDIDATE_INTERFACE_ONLY"
+    },
+    {
+      "code": "SHALLOW_SNAPSHOT",
+      "test_name": "test_red_snapshot_is_immutable_against_subsequent_nested_event_mutation",
+      "explanation": "Shallow event copy does not freeze nested payload.",
+      "evidence": "INDEPENDENT_SOURCEFREE_EXECUTED_RED",
+      "grade": "CANDIDATE_INTERFACE_ONLY"
+    },
+    {
+      "code": "SOURCE_REF_ALIAS",
+      "test_name": "test_red_source_refs_are_part_of_admission_identity",
+      "explanation": "Same candidate ID and payload with changed source_refs is admitted replay rather than identity conflict.",
+      "evidence": "INDEPENDENT_SOURCEFREE_EXECUTED_RED",
+      "grade": "CANDIDATE_INTERFACE_ONLY"
+    },
+    {
+      "code": "UNISSUED_WORLD_CLAIM",
+      "test_name": "test_red_untyped_world_fact_claim_in_actor_utterance_cannot_be_admitted_as_event",
+      "explanation": "Utterance proposal with objective_employment_transition field is admitted with no schema/owner gate.",
+      "evidence": "INDEPENDENT_SOURCEFREE_EXECUTED_RED",
+      "grade": "CANDIDATE_INTERFACE_ONLY"
+    },
+    {
+      "code": "UNBOUND_CAUSAL_TIME",
+      "test_name": "test_red_missing_causal_time_requires_hold_not_occurrence",
+      "explanation": "OccurrenceLedger.admit does not validate causal-time authority.",
+      "evidence": "INDEPENDENT_SOURCEFREE_EXECUTED_RED",
+      "grade": "CANDIDATE_INTERFACE_ONLY"
+    },
+    {
+      "code": "UNBOUND_ADMISSION_RULE",
+      "test_name": "test_red_missing_admission_source_must_not_be_assumed_adp019",
+      "explanation": "OccurrenceLedger.admit accepts missing source_refs as admitted event.",
+      "evidence": "INDEPENDENT_SOURCEFREE_EXECUTED_RED",
+      "grade": "CANDIDATE_INTERFACE_ONLY"
+    }
+  ],
+  "frozen_oracle_discrepancies": [
+    {
+      "id": "S27",
+      "oracle": "HOLD_MISSING_MATERIALIZATION_OWNER; mug remains counter; no emitted move",
+      "test": "Explicit payload world_owner='NADIA' causes mug_position='hand'; test asserts changed world; contradicts missing-world-authority stimulus.",
+      "status": "ORACLE_TEST_CONTRADICTION"
+    },
+    {
+      "id": "S17",
+      "oracle": "crash after admit before emission stable durable event/outbox recovery",
+      "test": "No process crash or durable transaction/recovery; only checks in-memory admission and absence of delivery.",
+      "status": "PARTIAL_TEST_ONLY"
+    },
+    {
+      "id": "S28",
+      "oracle": "missing causal time => DEFER; no hidden wall-clock fill",
+      "test": "Admits event and emits, then restores pre-admit snapshot and observes zero; no missing causal-time admissibility gate.",
+      "status": "ORACLE_TEST_MISMATCH"
+    },
+    {
+      "id": "S19",
+      "oracle": "memory only after separate ADP016 perception and encoding rule",
+      "test": "Unconditionally appends admitted occurrence ID into world_state actor_memory without ADP016 effect",
+      "status": "MISSING_RULE_TEST"
+    },
+    {
+      "id": "S23",
+      "oracle": "VALID_EMPTY not missing authority",
+      "test": "Empty payload accepted as occurrence; does not exercise missing-authority contrast.",
+      "status": "MISSING_DISCRIMINATION"
+    }
+  ],
+  "cold_replay_custody": {
+    "verified": "TWO_NEW_PYTHON_SUBPROCESS_TESTS_EXECUTED",
+    "os_exit_status": 79,
+    "case_one": "Explicit harness atomic JSON write before os._exit; new process loads same event and outbox, retransmits same ID, ACK does not imply perception. This proves manually staged snapshot replay only.",
+    "case_two": "No harness write after in-memory OccurrenceLedger.admit -> os._exit -> new process recovers zero events from persisted baseline. Demonstrates prototype has NO intrinsic atomic durability.",
+    "not_proved": [
+      "durable filesystem fsync",
+      "atomic ADP019 event/outbox commit",
+      "cross-worker serialization",
+      "idempotent transport across real clients",
+      "user actually perceived presentation",
+      "any physical occurrence"
+    ]
+  },
+  "permissions": {
+    "source_original": "NONE_READ",
+    "model_calls": 0,
+    "actor_execution": 0,
+    "renderer_calls": 0,
+    "physical_world_mutation": "NONE",
+    "semantic_adoption": "NONE"
+  }
+}
