@@ -213,13 +213,9 @@ def test_unissued_world_fact_permission_excludes_both_options():
 
 def test_producer_identity_not_handwritten_geometry():
     opt = option("forward")
-    tampered = replace(
-        opt.computed_provider,
-        generated_evidence_or_null=None,
-    )
-    # The existing provider result own constructor refuses before the facade.
+    # The existing provider result's own constructor refuses before the facade.
     with pytest.raises(Exception):
-        replace(opt, computed_provider=tampered)
+        replace(opt.computed_provider, generated_evidence_or_null=None)
 
 
 def test_no_inference_from_reverse_direction():
