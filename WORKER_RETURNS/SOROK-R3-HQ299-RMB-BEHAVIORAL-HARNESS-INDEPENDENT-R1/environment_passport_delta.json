@@ -1,0 +1,239 @@
+{
+  "assignments_completed": [
+    "HQ299_RMB_INDEPENDENT_COURT"
+  ],
+  "branch": "agent/reviewer-sorok-r3-hq299-rmb-behavioral-harness-independent-r1",
+  "capabilities": {
+    "actor_model_use_authority": "NOT_GRANTED",
+    "behavioral_model_transport": "UNAVAILABLE_NOT_IMPLEMENTED",
+    "filesystem_shell": "VERIFIED",
+    "git": "VERIFIED",
+    "node": "UNKNOWN_NOT_REQUIRED",
+    "private_remote_read": "VERIFIED",
+    "pytest": "VERIFIED",
+    "python": "VERIFIED"
+  },
+  "cash": "UNKNOWN",
+  "checkout_head_at_probe": "24173c46b4130bc080955087082cb4e864bcb70c",
+  "clean_dirty_state": "DIRTY_ALLOWED_RETURN_ADDITIONS_ONLY",
+  "complete_file_manifest": "source_manifest.json",
+  "conversation_or_account_affinity": "THIS_REVIEW_SESSION_ONLY",
+  "covered_test_suites": [
+    {
+      "command_stdout": "receipts/lab1_suite.txt",
+      "failures": 0,
+      "junit": "receipts/lab1_junit.xml",
+      "result": "PASS",
+      "suite": "lab1",
+      "tests": 20
+    },
+    {
+      "command_stdout": "receipts/lab2_suite.txt",
+      "failures": 0,
+      "junit": "receipts/lab2_junit.xml",
+      "result": "PASS",
+      "suite": "lab2",
+      "tests": 25
+    },
+    {
+      "command_stdout": "receipts/independent_contracts.txt",
+      "failures": 23,
+      "junit": "receipts/independent_junit.xml",
+      "result": "FAIL",
+      "suite": "independent",
+      "tests": 36
+    },
+    {
+      "receipt": "receipts/replication_diff.json",
+      "result": "PASS_DETERMINISTIC_EQUIVALENCE",
+      "suite": "LAB1 machine",
+      "tests": 576
+    }
+  ],
+  "dependency_closure_status": "FULL_FOR_LAB1_LAB2; NOT_ACCEPTED_OWNER_RUNTIME",
+  "environment_id": "ENV_RMB_5fffc3b8-91d4-41ed-9c4b-3b93094beaab",
+  "epoch_id": "5fffc3b8-91d4-41ed-9c4b-3b93094beaab",
+  "exact_checkout_base": "24173c46b4130bc080955087082cb4e864bcb70c",
+  "expected_reset": null,
+  "fixture_source_permission": "COMMISSION_AUTHORIZED_SYNTHETIC_ONLY",
+  "git_object_store_alias": "EXISTING_CANONICAL_RAWLSING_STORE",
+  "independent_review_separation": "Distinct reviewer session/worktree and branch; candidate inputs unmodified; no self-adoption",
+  "last_live_probe_at": "2026-10-14T21:49:18.429992+00:00",
+  "machine_alias": "LOCAL_DARWIN_REVIEWER",
+  "materialized_source_refs": [
+    {
+      "commit": "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+      "git_blob_sha1": "30c2af3cada62db9b3bbeaa6ff92f0e684009f18",
+      "local_relative_staging_path": "imports/LAB1/lab/__init__.py",
+      "module": "lab",
+      "path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/lab/__init__.py",
+      "verified_module_file": "<RETURN>/imports/LAB1/lab/__init__.py"
+    },
+    {
+      "commit": "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+      "git_blob_sha1": "04251259b1e0fe220ff74456e541a43544dadd97",
+      "local_relative_staging_path": "imports/LAB1/lab/experiment.py",
+      "module": "lab.experiment",
+      "path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/lab/experiment.py",
+      "verified_module_file": "<RETURN>/imports/LAB1/lab/experiment.py"
+    },
+    {
+      "commit": "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+      "git_blob_sha1": "e948f1d77ccd6dd87f28b06e4c5d9257feb636bc",
+      "local_relative_staging_path": "imports/LAB1/lab/hashutil.py",
+      "module": "lab.hashutil",
+      "path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/lab/hashutil.py",
+      "verified_module_file": "<RETURN>/imports/LAB1/lab/hashutil.py"
+    },
+    {
+      "commit": "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+      "git_blob_sha1": "b56fb72145d08b1172d82288b49e05a3942d5574",
+      "local_relative_staging_path": "imports/LAB1/lab/opacity.py",
+      "module": "lab.opacity",
+      "path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/lab/opacity.py",
+      "verified_module_file": "<RETURN>/imports/LAB1/lab/opacity.py"
+    },
+    {
+      "commit": "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+      "git_blob_sha1": "518e6b8e1a2d36b29a35be7defeab9b6633ccac3",
+      "local_relative_staging_path": "imports/LAB1/lab/owners.py",
+      "module": "lab.owners",
+      "path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/lab/owners.py",
+      "verified_module_file": "<RETURN>/imports/LAB1/lab/owners.py"
+    },
+    {
+      "commit": "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+      "git_blob_sha1": "6a1c07796204208135a7486c61936084e2d94bd1",
+      "local_relative_staging_path": "imports/LAB1/lab/runner.py",
+      "module": "lab.runner",
+      "path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/lab/runner.py",
+      "verified_module_file": "<RETURN>/imports/LAB1/lab/runner.py"
+    },
+    {
+      "commit": "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+      "git_blob_sha1": "9ce51cb49246a6a379ba1389448ef82c1c9b03b1",
+      "local_relative_staging_path": "imports/LAB1/lab/transition.py",
+      "module": "lab.transition",
+      "path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/lab/transition.py",
+      "verified_module_file": "<RETURN>/imports/LAB1/lab/transition.py"
+    },
+    {
+      "commit": "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+      "git_blob_sha1": "51910b01c1876b2b2474e6d5bf2b30402762a2cb",
+      "local_relative_staging_path": "imports/LAB1/lab/world_fixtures.py",
+      "module": "lab.world_fixtures",
+      "path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/lab/world_fixtures.py",
+      "verified_module_file": "<RETURN>/imports/LAB1/lab/world_fixtures.py"
+    },
+    {
+      "commit": "bf5fda102f4bced41a0f18f71c4c380d5d099462",
+      "git_blob_sha1": "30c2af3cada62db9b3bbeaa6ff92f0e684009f18",
+      "local_relative_staging_path": "imports/LAB2/lab2/predecessor_lab1/lab/__init__.py",
+      "module": "lab",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-LAB2-BEHAVIORAL-R1/lab2/predecessor_lab1/lab/__init__.py",
+      "verified_module_file": "<RETURN>/imports/LAB2/lab2/predecessor_lab1/lab/__init__.py"
+    },
+    {
+      "commit": "bf5fda102f4bced41a0f18f71c4c380d5d099462",
+      "git_blob_sha1": "e948f1d77ccd6dd87f28b06e4c5d9257feb636bc",
+      "local_relative_staging_path": "imports/LAB2/lab2/predecessor_lab1/lab/hashutil.py",
+      "module": "lab.hashutil",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-LAB2-BEHAVIORAL-R1/lab2/predecessor_lab1/lab/hashutil.py",
+      "verified_module_file": "<RETURN>/imports/LAB2/lab2/predecessor_lab1/lab/hashutil.py"
+    },
+    {
+      "commit": "bf5fda102f4bced41a0f18f71c4c380d5d099462",
+      "git_blob_sha1": "b56fb72145d08b1172d82288b49e05a3942d5574",
+      "local_relative_staging_path": "imports/LAB2/lab2/predecessor_lab1/lab/opacity.py",
+      "module": "lab.opacity",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-LAB2-BEHAVIORAL-R1/lab2/predecessor_lab1/lab/opacity.py",
+      "verified_module_file": "<RETURN>/imports/LAB2/lab2/predecessor_lab1/lab/opacity.py"
+    },
+    {
+      "commit": "bf5fda102f4bced41a0f18f71c4c380d5d099462",
+      "git_blob_sha1": "51910b01c1876b2b2474e6d5bf2b30402762a2cb",
+      "local_relative_staging_path": "imports/LAB2/lab2/predecessor_lab1/lab/world_fixtures.py",
+      "module": "lab.world_fixtures",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-LAB2-BEHAVIORAL-R1/lab2/predecessor_lab1/lab/world_fixtures.py",
+      "verified_module_file": "<RETURN>/imports/LAB2/lab2/predecessor_lab1/lab/world_fixtures.py"
+    },
+    {
+      "commit": "bf5fda102f4bced41a0f18f71c4c380d5d099462",
+      "git_blob_sha1": "554bfc9463968e05c50ba534c3f375cecb6121d7",
+      "local_relative_staging_path": "imports/LAB2/lab2/behavioral_runner.py",
+      "module": "lab2.behavioral_runner",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-LAB2-BEHAVIORAL-R1/lab2/behavioral_runner.py",
+      "verified_module_file": "<RETURN>/imports/LAB2/lab2/behavioral_runner.py"
+    },
+    {
+      "commit": "bf5fda102f4bced41a0f18f71c4c380d5d099462",
+      "git_blob_sha1": "4684ad42bf3e91fb34cc0f1c7c3a4c069e9fe45c",
+      "local_relative_staging_path": "imports/LAB2/lab2/model_gate.py",
+      "module": "lab2.model_gate",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-LAB2-BEHAVIORAL-R1/lab2/model_gate.py",
+      "verified_module_file": "<RETURN>/imports/LAB2/lab2/model_gate.py"
+    },
+    {
+      "commit": "bf5fda102f4bced41a0f18f71c4c380d5d099462",
+      "git_blob_sha1": "41b921f83f6397928ebc91fafce3f5d566c473e0",
+      "local_relative_staging_path": "imports/LAB2/lab2/packets.py",
+      "module": "lab2.packets",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-LAB2-BEHAVIORAL-R1/lab2/packets.py",
+      "verified_module_file": "<RETURN>/imports/LAB2/lab2/packets.py"
+    },
+    {
+      "commit": "bf5fda102f4bced41a0f18f71c4c380d5d099462",
+      "git_blob_sha1": "e81c71efff0bc152b653c7cb1cbf5664ec8acf65",
+      "local_relative_staging_path": "imports/LAB2/lab2/scoring.py",
+      "module": "lab2.scoring",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-LAB2-BEHAVIORAL-R1/lab2/scoring.py",
+      "verified_module_file": "<RETURN>/imports/LAB2/lab2/scoring.py"
+    }
+  ],
+  "missing_actor_model_authority": true,
+  "missing_behavioral_implementation": true,
+  "missing_dependency": false,
+  "missing_original_source_authority": "OUT_OF_SCOPE_NOT_NEEDED_FOR_SYNTHETIC_REVIEW",
+  "missing_runner": false,
+  "model_provider": null,
+  "next_good_affinity_tags": [
+    "BEHAVIORAL_ASSAY_REPAIR_REVIEW",
+    "OPAQUE_IDS",
+    "TRACE_FIREWALL",
+    "K6_CAPACITY",
+    "SCORER_VALIDITY",
+    "GRANT_GATE"
+  ],
+  "next_session_conditions": "Re-probe marker/imports/blob identities/branch before warm reuse. Revised assay and competent grant required before any model use.",
+  "observed_credits_or_usage": null,
+  "observed_versions": {
+    "git": "git version 2.39.1",
+    "platform": "Darwin",
+    "pytest": "pytest 9.1.1",
+    "python": "3.11.3"
+  },
+  "owner_session_alias": "INDEPENDENT_HQ299_RMB",
+  "paid_overflow_authorized": false,
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_DELTA@1.0.0",
+  "price_class": "UNKNOWN",
+  "privacy_source_grant": "Synthetic local review only; no original respondent bytes or external packet submission",
+  "probe_command_and_result": {
+    "git branch": "agent/reviewer-sorok-r3-hq299-rmb-behavioral-harness-independent-r1",
+    "imports": "Actual module.__file__ paths verified in isolated LAB1 and LAB2 Python processes; full Git blob identities match pinned files",
+    "runtime_marker": "local .runtime_marker exists; opaque epoch digest verified",
+    "startup_ancestor": "verified; startup direct parent HQ299",
+    "worktree_before": "clean detached worktree; switched to assigned sealed branch",
+    "worktree_now": "return-directory additions only; no other changes"
+  },
+  "retire_or_rebuild_reason": null,
+  "review_independence": true,
+  "reviewer_exact_model_effort_observed": null,
+  "reviewer_model_requested": "Codex GPT-6 High where available",
+  "runtime_marker_digest": "2e66a2bc6b22b5c55b0ffbab62d2250db2e30b1ed8cc66d43114d86392b93d69",
+  "science_grade": "INDEPENDENT_BOUNDED_SOURCEFREE_REPLICATION; REVIEW_REVISE_FOR_BEHAVIORAL_ASSAY",
+  "source_family": "PINNED_SYNTHETIC_LAB1_LAB2",
+  "staged_state_preservation": "Ignored local imports and marker verified now; reproducible from pinned existing Git objects; new raw receipts retained on worker branch",
+  "status": "LIVE_VERIFIED",
+  "surface": "LOCAL_SHARED_STORE",
+  "worktree_alias": "SEPARATE_RMB_REVIEW_WORKTREE"
+}

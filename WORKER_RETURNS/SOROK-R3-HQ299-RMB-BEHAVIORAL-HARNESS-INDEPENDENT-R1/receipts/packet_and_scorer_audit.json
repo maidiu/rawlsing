@@ -1,0 +1,718 @@
+{
+  "attack_label": "DETERMINISTIC_METADATA_ONLY_COUNTEREXAMPLE__NOT_BEHAVIORAL_EVIDENCE",
+  "attack_n": 576,
+  "content_collisions": [
+    {
+      "conflicting_expected_codes": false,
+      "contrasts": [
+        {
+          "contrast": "RETAINED_INACCESSIBLE",
+          "expected_codes": [
+            "HEIGHTENED_GUARD"
+          ],
+          "k": "K3"
+        },
+        {
+          "contrast": "TRACE_ACTIVE",
+          "expected_codes": [
+            "HEIGHTENED_GUARD"
+          ],
+          "k": "K3"
+        }
+      ],
+      "matched_content_hash": "bf70e902fec3c451890553d27456179fee132ed20e49b731ab73e63e06df7a5c"
+    },
+    {
+      "conflicting_expected_codes": true,
+      "contrasts": [
+        {
+          "contrast": "PRACTICE_AND_CAPACITY",
+          "expected_codes": [
+            "POLICING_CANDIDATE"
+          ],
+          "k": "K6"
+        },
+        {
+          "contrast": "PRACTICE_NO_CAPACITY",
+          "expected_codes": [
+            "NO_SANCTION"
+          ],
+          "k": "K6"
+        }
+      ],
+      "matched_content_hash": "3329a758de2aaac80a7cebf789e4a24ee5e28d5a69441db5ff97d14c995c2af7"
+    }
+  ],
+  "first_menu_only_comparison": {
+    "A_correctness_fraction": 0.489583,
+    "comparisons": {
+      "B_admissible": {
+        "correctness_fraction": 0.442708,
+        "delta_vs_A_pp": -4.688,
+        "equivalence_5pp": "INDETERMINATE_WITHOUT_PROSPECTIVE_POWER",
+        "meets_plus_10pp_screen": false
+      },
+      "C_admissible": {
+        "correctness_fraction": 0.5,
+        "delta_vs_A_pp": 1.042,
+        "equivalence_5pp": "INDETERMINATE_WITHOUT_PROSPECTIVE_POWER",
+        "meets_plus_10pp_screen": false
+      }
+    }
+  },
+  "first_menu_only_per_k": {
+    "K1": {
+      "A_correctness_fraction": 0.666667,
+      "comparisons": {
+        "B_admissible": {
+          "correctness_fraction": 0.333333,
+          "delta_vs_A_pp": -33.333,
+          "equivalence_5pp": "DIFFERENTIATED",
+          "meets_plus_10pp_screen": false
+        },
+        "C_admissible": {
+          "correctness_fraction": 0.666667,
+          "delta_vs_A_pp": 0.0,
+          "equivalence_5pp": "INDETERMINATE_WITHOUT_PROSPECTIVE_POWER",
+          "meets_plus_10pp_screen": false
+        }
+      }
+    },
+    "K2": {
+      "A_correctness_fraction": 0.458333,
+      "comparisons": {
+        "B_admissible": {
+          "correctness_fraction": 0.541667,
+          "delta_vs_A_pp": 8.333,
+          "equivalence_5pp": "DIFFERENTIATED",
+          "meets_plus_10pp_screen": false
+        },
+        "C_admissible": {
+          "correctness_fraction": 0.458333,
+          "delta_vs_A_pp": 0.0,
+          "equivalence_5pp": "INDETERMINATE_WITHOUT_PROSPECTIVE_POWER",
+          "meets_plus_10pp_screen": false
+        }
+      }
+    },
+    "K3": {
+      "A_correctness_fraction": 0.388889,
+      "comparisons": {
+        "B_admissible": {
+          "correctness_fraction": 0.611111,
+          "delta_vs_A_pp": 22.222,
+          "equivalence_5pp": "DIFFERENTIATED",
+          "meets_plus_10pp_screen": true
+        },
+        "C_admissible": {
+          "correctness_fraction": 0.388889,
+          "delta_vs_A_pp": 0.0,
+          "equivalence_5pp": "INDETERMINATE_WITHOUT_PROSPECTIVE_POWER",
+          "meets_plus_10pp_screen": false
+        }
+      }
+    },
+    "K4": {
+      "A_correctness_fraction": 0.305556,
+      "comparisons": {
+        "B_admissible": {
+          "correctness_fraction": 0.333333,
+          "delta_vs_A_pp": 2.778,
+          "equivalence_5pp": "INDETERMINATE_WITHOUT_PROSPECTIVE_POWER",
+          "meets_plus_10pp_screen": false
+        },
+        "C_admissible": {
+          "correctness_fraction": 0.361111,
+          "delta_vs_A_pp": 5.556,
+          "equivalence_5pp": "DIFFERENTIATED",
+          "meets_plus_10pp_screen": false
+        }
+      }
+    },
+    "K5": {
+      "A_correctness_fraction": 0.583333,
+      "comparisons": {
+        "B_admissible": {
+          "correctness_fraction": 0.416667,
+          "delta_vs_A_pp": -16.667,
+          "equivalence_5pp": "DIFFERENTIATED",
+          "meets_plus_10pp_screen": false
+        },
+        "C_admissible": {
+          "correctness_fraction": 0.583333,
+          "delta_vs_A_pp": 0.0,
+          "equivalence_5pp": "INDETERMINATE_WITHOUT_PROSPECTIVE_POWER",
+          "meets_plus_10pp_screen": false
+        }
+      }
+    },
+    "K6": {
+      "A_correctness_fraction": 0.583333,
+      "comparisons": {
+        "B_admissible": {
+          "correctness_fraction": 0.416667,
+          "delta_vs_A_pp": -16.667,
+          "equivalence_5pp": "DIFFERENTIATED",
+          "meets_plus_10pp_screen": false
+        },
+        "C_admissible": {
+          "correctness_fraction": 0.583333,
+          "delta_vs_A_pp": 0.0,
+          "equivalence_5pp": "INDETERMINATE_WITHOUT_PROSPECTIVE_POWER",
+          "meets_plus_10pp_screen": false
+        }
+      }
+    }
+  },
+  "freeze": {
+    "behavioral_trials_at_freeze_time": 0,
+    "bytes": 15498,
+    "freeze_schema": "HQ298_S_M_LAB2_PREREG_FREEZE_RECEIPT@1.0.0",
+    "frozen_before_any_model_call": true,
+    "frozen_before_any_trial": true,
+    "model_calls_at_freeze_time": 0,
+    "note": "freeze recorded prior to harness dry-run, source-free invariants, and any future behavioral call",
+    "preregistration_file": "01_PREREGISTRATION_FROZEN.json",
+    "preregistration_sha256": "880fbde407654cf847e72f9cc58f7884470973072e99c0964b8d33e17e0bb330"
+  },
+  "gate": {
+    "allowed": false,
+    "gate_id": "LAB2_MODEL_CALL_AUTHORIZATION_GATE",
+    "gate_version": "1.0.0",
+    "hold_id": "MODEL_BEHAVIORAL_HOLD",
+    "missing_authority_class": "MISSING_ACTOR_OR_MODEL_USE_AUTHORITY",
+    "missing_fields": [
+      "named_provider_exact_endpoint",
+      "exact_model_and_version_pin",
+      "privacy_permission_for_synthetic_lab_packets",
+      "experiment_use_grant_behavioral_actor_trials",
+      "explicit_monetary_cap",
+      "price_class_and_quota_observed",
+      "raw_request_response_retention_permission",
+      "per_trial_call_budget"
+    ],
+    "model_calls_permitted": 0,
+    "reason": "grant incomplete: named provider, exact model/version pin, privacy permission, experiment-use grant, explicit monetary cap and call budget must ALL be present before any paid/actor/external model call; prior authoring-environment use does not license model-actor trials"
+  },
+  "independent_full_core_equal_blocks": 192,
+  "manifest_hash": "f9c4dc6af3c40b88453338a4510c5361c4475a59e775941f28bbf238800701df",
+  "matched_ok": true,
+  "menu_position_counts": [
+    {
+      "arm": "A",
+      "contrast": "H_RESPONSIVE",
+      "expected_position_counts": {
+        "0": 7,
+        "1": 5
+      },
+      "k": "K1"
+    },
+    {
+      "arm": "B_admissible",
+      "contrast": "H_RESPONSIVE",
+      "expected_position_counts": {
+        "0": 5,
+        "1": 7
+      },
+      "k": "K1"
+    },
+    {
+      "arm": "C_admissible",
+      "contrast": "H_RESPONSIVE",
+      "expected_position_counts": {
+        "0": 7,
+        "1": 5
+      },
+      "k": "K1"
+    },
+    {
+      "arm": "A",
+      "contrast": "H_PUNITIVE",
+      "expected_position_counts": {
+        "0": 9,
+        "1": 3
+      },
+      "k": "K1"
+    },
+    {
+      "arm": "B_admissible",
+      "contrast": "H_PUNITIVE",
+      "expected_position_counts": {
+        "0": 3,
+        "1": 9
+      },
+      "k": "K1"
+    },
+    {
+      "arm": "C_admissible",
+      "contrast": "H_PUNITIVE",
+      "expected_position_counts": {
+        "0": 9,
+        "1": 3
+      },
+      "k": "K1"
+    },
+    {
+      "arm": "A",
+      "contrast": "EV_RELFORM_A_COMPENSATION",
+      "expected_position_counts": {
+        "0": 4,
+        "1": 8
+      },
+      "k": "K2"
+    },
+    {
+      "arm": "B_admissible",
+      "contrast": "EV_RELFORM_A_COMPENSATION",
+      "expected_position_counts": {
+        "0": 8,
+        "1": 4
+      },
+      "k": "K2"
+    },
+    {
+      "arm": "C_admissible",
+      "contrast": "EV_RELFORM_A_COMPENSATION",
+      "expected_position_counts": {
+        "0": 4,
+        "1": 8
+      },
+      "k": "K2"
+    },
+    {
+      "arm": "A",
+      "contrast": "EV_RELFORM_B_CONDITIONAL",
+      "expected_position_counts": {
+        "0": 7,
+        "1": 5
+      },
+      "k": "K2"
+    },
+    {
+      "arm": "B_admissible",
+      "contrast": "EV_RELFORM_B_CONDITIONAL",
+      "expected_position_counts": {
+        "0": 5,
+        "1": 7
+      },
+      "k": "K2"
+    },
+    {
+      "arm": "C_admissible",
+      "contrast": "EV_RELFORM_B_CONDITIONAL",
+      "expected_position_counts": {
+        "0": 7,
+        "1": 5
+      },
+      "k": "K2"
+    },
+    {
+      "arm": "A",
+      "contrast": "TRACE_ACTIVE",
+      "expected_position_counts": {
+        "0": 6,
+        "1": 6
+      },
+      "k": "K3"
+    },
+    {
+      "arm": "B_admissible",
+      "contrast": "TRACE_ACTIVE",
+      "expected_position_counts": {
+        "0": 6,
+        "1": 6
+      },
+      "k": "K3"
+    },
+    {
+      "arm": "C_admissible",
+      "contrast": "TRACE_ACTIVE",
+      "expected_position_counts": {
+        "0": 6,
+        "1": 6
+      },
+      "k": "K3"
+    },
+    {
+      "arm": "A",
+      "contrast": "TRACE_ABSENT",
+      "expected_position_counts": {
+        "0": 2,
+        "1": 10
+      },
+      "k": "K3"
+    },
+    {
+      "arm": "B_admissible",
+      "contrast": "TRACE_ABSENT",
+      "expected_position_counts": {
+        "0": 10,
+        "1": 2
+      },
+      "k": "K3"
+    },
+    {
+      "arm": "C_admissible",
+      "contrast": "TRACE_ABSENT",
+      "expected_position_counts": {
+        "0": 2,
+        "1": 10
+      },
+      "k": "K3"
+    },
+    {
+      "arm": "A",
+      "contrast": "RETAINED_INACCESSIBLE",
+      "expected_position_counts": {
+        "0": 6,
+        "1": 6
+      },
+      "k": "K3"
+    },
+    {
+      "arm": "B_admissible",
+      "contrast": "RETAINED_INACCESSIBLE",
+      "expected_position_counts": {
+        "0": 6,
+        "1": 6
+      },
+      "k": "K3"
+    },
+    {
+      "arm": "C_admissible",
+      "contrast": "RETAINED_INACCESSIBLE",
+      "expected_position_counts": {
+        "0": 6,
+        "1": 6
+      },
+      "k": "K3"
+    },
+    {
+      "arm": "A",
+      "contrast": "CORRECTIVE_CONTEXT",
+      "expected_position_counts": {
+        "0": 2,
+        "1": 4,
+        "2": 6
+      },
+      "k": "K4"
+    },
+    {
+      "arm": "B_admissible",
+      "contrast": "CORRECTIVE_CONTEXT",
+      "expected_position_counts": {
+        "0": 4,
+        "1": 6,
+        "2": 2
+      },
+      "k": "K4"
+    },
+    {
+      "arm": "C_admissible",
+      "contrast": "CORRECTIVE_CONTEXT",
+      "expected_position_counts": {
+        "0": 6,
+        "1": 2,
+        "2": 4
+      },
+      "k": "K4"
+    },
+    {
+      "arm": "A",
+      "contrast": "RECURRENCE_SAME_AUTHORITY",
+      "expected_position_counts": {
+        "0": 4,
+        "1": 4,
+        "2": 4
+      },
+      "k": "K4"
+    },
+    {
+      "arm": "B_admissible",
+      "contrast": "RECURRENCE_SAME_AUTHORITY",
+      "expected_position_counts": {
+        "0": 4,
+        "1": 4,
+        "2": 4
+      },
+      "k": "K4"
+    },
+    {
+      "arm": "C_admissible",
+      "contrast": "RECURRENCE_SAME_AUTHORITY",
+      "expected_position_counts": {
+        "0": 4,
+        "1": 4,
+        "2": 4
+      },
+      "k": "K4"
+    },
+    {
+      "arm": "A",
+      "contrast": "WEAK_COUNTEREXAMPLE",
+      "expected_position_counts": {
+        "0": 5,
+        "1": 4,
+        "2": 3
+      },
+      "k": "K4"
+    },
+    {
+      "arm": "B_admissible",
+      "contrast": "WEAK_COUNTEREXAMPLE",
+      "expected_position_counts": {
+        "0": 4,
+        "1": 3,
+        "2": 5
+      },
+      "k": "K4"
+    },
+    {
+      "arm": "C_admissible",
+      "contrast": "WEAK_COUNTEREXAMPLE",
+      "expected_position_counts": {
+        "0": 3,
+        "1": 5,
+        "2": 4
+      },
+      "k": "K4"
+    },
+    {
+      "arm": "A",
+      "contrast": "WITNESS_REGISTRAR",
+      "expected_position_counts": {
+        "0": 8,
+        "1": 4
+      },
+      "k": "K5"
+    },
+    {
+      "arm": "B_admissible",
+      "contrast": "WITNESS_REGISTRAR",
+      "expected_position_counts": {
+        "0": 4,
+        "1": 8
+      },
+      "k": "K5"
+    },
+    {
+      "arm": "C_admissible",
+      "contrast": "WITNESS_REGISTRAR",
+      "expected_position_counts": {
+        "0": 8,
+        "1": 4
+      },
+      "k": "K5"
+    },
+    {
+      "arm": "A",
+      "contrast": "WITNESS_SUPERVISOR",
+      "expected_position_counts": {
+        "0": 5,
+        "1": 7
+      },
+      "k": "K5"
+    },
+    {
+      "arm": "B_admissible",
+      "contrast": "WITNESS_SUPERVISOR",
+      "expected_position_counts": {
+        "0": 7,
+        "1": 5
+      },
+      "k": "K5"
+    },
+    {
+      "arm": "C_admissible",
+      "contrast": "WITNESS_SUPERVISOR",
+      "expected_position_counts": {
+        "0": 5,
+        "1": 7
+      },
+      "k": "K5"
+    },
+    {
+      "arm": "A",
+      "contrast": "WITNESS_PEER",
+      "expected_position_counts": {
+        "0": 8,
+        "1": 4
+      },
+      "k": "K5"
+    },
+    {
+      "arm": "B_admissible",
+      "contrast": "WITNESS_PEER",
+      "expected_position_counts": {
+        "0": 4,
+        "1": 8
+      },
+      "k": "K5"
+    },
+    {
+      "arm": "C_admissible",
+      "contrast": "WITNESS_PEER",
+      "expected_position_counts": {
+        "0": 8,
+        "1": 4
+      },
+      "k": "K5"
+    },
+    {
+      "arm": "A",
+      "contrast": "PRACTICE_AND_CAPACITY",
+      "expected_position_counts": {
+        "0": 7,
+        "1": 5
+      },
+      "k": "K6"
+    },
+    {
+      "arm": "B_admissible",
+      "contrast": "PRACTICE_AND_CAPACITY",
+      "expected_position_counts": {
+        "0": 5,
+        "1": 7
+      },
+      "k": "K6"
+    },
+    {
+      "arm": "C_admissible",
+      "contrast": "PRACTICE_AND_CAPACITY",
+      "expected_position_counts": {
+        "0": 7,
+        "1": 5
+      },
+      "k": "K6"
+    },
+    {
+      "arm": "A",
+      "contrast": "PRACTICE_NO_CAPACITY",
+      "expected_position_counts": {
+        "0": 7,
+        "1": 5
+      },
+      "k": "K6"
+    },
+    {
+      "arm": "B_admissible",
+      "contrast": "PRACTICE_NO_CAPACITY",
+      "expected_position_counts": {
+        "0": 5,
+        "1": 7
+      },
+      "k": "K6"
+    },
+    {
+      "arm": "C_admissible",
+      "contrast": "PRACTICE_NO_CAPACITY",
+      "expected_position_counts": {
+        "0": 7,
+        "1": 5
+      },
+      "k": "K6"
+    },
+    {
+      "arm": "A",
+      "contrast": "CATEGORY_ONLY",
+      "expected_position_counts": {
+        "0": 7,
+        "1": 5
+      },
+      "k": "K6"
+    },
+    {
+      "arm": "B_admissible",
+      "contrast": "CATEGORY_ONLY",
+      "expected_position_counts": {
+        "0": 5,
+        "1": 7
+      },
+      "k": "K6"
+    },
+    {
+      "arm": "C_admissible",
+      "contrast": "CATEGORY_ONLY",
+      "expected_position_counts": {
+        "0": 7,
+        "1": 5
+      },
+      "k": "K6"
+    }
+  ],
+  "minimum_iid_n_for_zero_discordance_upper_below_5pp": 59,
+  "n_trials": 576,
+  "opaque_id_attack_correct": 576,
+  "packet_nulls": {
+    "K5_STANDING_SEPARATION": {
+      "pass": true,
+      "standing_effects_not_in_actor_info": true
+    },
+    "N1_PARAPHRASE": {
+      "expected_codes_invariant": true,
+      "pass": true,
+      "typed_menu_invariant": true
+    },
+    "N2_LABEL": {
+      "expected_codes_invariant": true,
+      "pass": true,
+      "typed_menu_invariant": true
+    },
+    "N4_SURFACE": {
+      "expected_codes_invariant": true,
+      "pass": true,
+      "typed_menu_invariant": true
+    },
+    "N5_TRACE_FIREWALL": {
+      "actor_visible_fingerprint_equal": true,
+      "hidden_origin_in_actor_packet": false,
+      "hidden_origin_in_evaluator_only_metadata": true,
+      "pass": true
+    },
+    "N5_TRACE_FIREWALL_K3": {
+      "actor_visible_fingerprint_equal": true,
+      "hidden_origin_absent_from_actor_info": true,
+      "pass": true
+    },
+    "all_pass": true,
+    "matched_content_across_arms_ok": true,
+    "matched_content_violations": []
+  },
+  "preregistration_sha256": "880fbde407654cf847e72f9cc58f7884470973072e99c0964b8d33e17e0bb330",
+  "unique_matched_content_hashes": 14,
+  "unique_trial_ids": 192,
+  "unit_caveat": "Binomial illustration assumes IID discordances. Paired +/-1 outcomes and clustered scenario inference require a predeclared actual design; this is not power certification.",
+  "vendor_original_equality": [
+    {
+      "equal": true,
+      "file": "__init__.py",
+      "sha256": "acb4250a2fa4607b9ccb1d1ee5dc59d216e9d0313aca1fb85b81821160a185a0"
+    },
+    {
+      "equal": true,
+      "file": "hashutil.py",
+      "sha256": "edddd8773b06207af2d68980031a3a29cdd3578bb569ac7e482d28383e4ad28b"
+    },
+    {
+      "equal": true,
+      "file": "opacity.py",
+      "sha256": "056fd0ba56f95c5554af1940de3a9431d6223a9ecec20202feab6e25a5d94506"
+    },
+    {
+      "equal": true,
+      "file": "owners.py",
+      "sha256": "7fa6e773ca92d0ea2bc01633b7720a4d1ca8af6411623b7ac2928cc794dc677b"
+    },
+    {
+      "equal": true,
+      "file": "transition.py",
+      "sha256": "e95180fde439885982f16d50dcb1db325741c8e70958a05f88e4b909c80c2674"
+    },
+    {
+      "equal": true,
+      "file": "world_fixtures.py",
+      "sha256": "8f91d49f2108b3626ef46e9a1e154888012cf5968fa5a851c23f9b811f6f6a0a"
+    }
+  ],
+  "zero_discordance_one_sided_95_upper_at_n12": 0.22092219194555585
+}
