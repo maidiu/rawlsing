@@ -1,0 +1,1247 @@
+{
+  "schema": "SOROK_SM_SITUATED_TRANSITION_EXECUTABLE_COURT@1.0.0",
+  "source_state": "DESIGN_ONLY",
+  "start_sha": "bace7640777098732d425e9368cf28ada0e57aeb",
+  "astra_advisory_sha": "3b2d9a1b644a9fa024ed1bd895b67be5c8789531",
+  "can008_adopted_blob": "b80dd6925066510ecbbfec7b427bf9f688475663",
+  "world_requirement": "EVERY_LAB_ARM_REQUIRES_WORLD+POSITION+RELATIONSHIP+ANCESTRY+OPPORTUNITY+EXACT_OCCURRENCE",
+  "authority_status": "LAB_OWNER_TRANSITION_AND_MODEL_GRANT_MISSING",
+  "baselines": {
+    "A": {
+      "label": "MINIMAL_WORLD_CONDITIONED_EVENT_RELATION_HISTORY",
+      "persisted": "ONLY_EXISTING_ADP015_ADP016_ADP017_CAN010_CAN011_STATE_WITH_EXACT_OWNER_EFFECTS",
+      "event_local": "CAN008_R2_OWNED_RECEPTION_RECRUITMENT_RESPONSE",
+      "no_new_store": true,
+      "history": "FULL_CONSISTENT_ADMITTED_HISTORY_CAN_BE_RETRIEVED",
+      "baseline_advantage": "NOT_RETRIEVAL_STARVED"
+    },
+    "B": {
+      "label": "A_PLUS_EVENT_LOCAL_CONATIVE_RECOGNITION",
+      "persisted": "SAME_AS_A",
+      "event_local": "BOUNDED_INTENTION_WITNESS_STAKES_CONFLICT_ROUTE_CONFIGURATION",
+      "no_new_store": true,
+      "novelty": "STRUCTURED_EVALUATION_FEATURES_ONLY"
+    },
+    "C": {
+      "label": "B_PLUS_TYPED_RELATIONAL_TOPOLOGY_CANDIDATE",
+      "persisted": "ONLY_SEPARATELY_LICENSED_TARGET_OWNER_EDGE_OR_REBUILDABLE_CACHE",
+      "event_local": "EXACT_NARY_RELATION_DIRECTION_CONTEXT_AND_CONFLICT",
+      "no_new_store": "UNTIL_INDEPENDENT_HOLDOUT_PROMOTION",
+      "novelty": "PROPOSED_CAUSAL_EDGE_SEMANTICS_WITH_EXPLICIT_LIFECYCLE_NOT_GRANTED"
+    }
+  },
+  "fixed_budgets": {
+    "actors": "SYNTHETIC_LAB_ACTORS_NON_REAL",
+    "worlds": "1 primary world + 2 held-out alternative worlds only after grant",
+    "K_cases": 6,
+    "seeds_per_case_per_baseline": 12,
+    "arms": "2-3 declared arm variants plus nulls",
+    "model_calls_per_arm": 1,
+    "max_evidence_input_tokens": 6000,
+    "max_retrieval_items": 24,
+    "retrieval_contract": "SAME_ELIGIBLE_CAUSAL_EVIDENCE_AND_GRAPH_REPRESENTATION_BYTES; IF_C_INDEXES_EDGE_GIVE_A_ANCESTRY_EQUIVALENT; MATCH_INPUT_TOKEN_COST",
+    "output_format": "STRICT_MACHINE_JSON_BEFORE_PROSE",
+    "fixed_model_version": "TO_BE_PINNED_BY_AUTHORIZED_ISSUER",
+    "stochastic_seed": "TO_BE_PINNED_BY_ISSUER",
+    "external_model_budget_authorization": "NOT_GRANTED",
+    "rule_parameters": "NOT_CALIBRATED",
+    "scope_note": "numeric limits are preregistration proposals, not measured or adopted grants"
+  },
+  "rules": [
+    {
+      "id": "T0_WORLD_CONTEXT_GATE",
+      "owner": "LAB_ADAPTER_PROPOSED_CHECK_NOT_NEW_LAW",
+      "trigger": "ANY_EVALUATED_EVENT",
+      "parents": [
+        "world_receipt",
+        "actor_position",
+        "relationship",
+        "opportunity",
+        "exact_ancestry",
+        "admitted_occurrence"
+      ],
+      "transition": "IF_REQUIRED_CONTEXT_MISSING_THEN_HOLD_UNDERSPECIFIED_NO_RESPONSE_COMMIT",
+      "effect_owner": "NONE",
+      "reversibility": "NO_MUTATION",
+      "uncertainty": "world snapshot relevance requires independent lab court"
+    },
+    {
+      "id": "T1_RECEIVABILITY",
+      "owner": "CAN008_R2",
+      "trigger": "EXACT_ADMITTED_OCCURRENCE",
+      "parents": [
+        "world_context",
+        "ADP010_exposure",
+        "CAN009_embodied_condition",
+        "ADP017_access_constraints"
+      ],
+      "transition": "PROJECT_ONLY_ACTOR_RECEIVABLE_FEATURES_NO_KNOWLEDGE_PROMOTION",
+      "effect_owner": "CAN008_CURRENT_NON_DURABLE",
+      "counterfactual": "ADMITTED_BUT_NOT_RECEIVED->VALID_EMPTY",
+      "calibration": "NO_NUMERIC_RECEIVABILITY_RULE_GRANTED"
+    },
+    {
+      "id": "T2_SITUATED_RECRUITMENT",
+      "owner": "CAN008_R2",
+      "trigger": "T1_RECEIVED_EVENT",
+      "parents": [
+        "CAN010_expectations_strivings",
+        "CAN011_mediator_tension_practice",
+        "ADP015_perceived_relationship",
+        "ADP016_trace_with_access_ceiling"
+      ],
+      "transition": "COMPOSE_MULTIPLE_INDEPENDENT_STREAMS_NEVER_WINNER_TAKE_ALL",
+      "effect_owner": "CAN008_RESPONSE_CANDIDATE",
+      "counterfactual": "NO_MATCH_OR_UNKNOWN->VALID_EMPTY_OR_HOLD",
+      "calibration": "RULE_PARAMETERS_NOT_ISSUED"
+    },
+    {
+      "id": "T3_EVENT_LOCAL_CONATION",
+      "owner": "CAN008_R2_CANDIDATE_RULE_EXTENSION_ONLY",
+      "trigger": "T2",
+      "parents": [
+        "specific_striving_ref",
+        "cost_affordance",
+        "witness_stakes",
+        "available_routes"
+      ],
+      "transition": "DERIVE_EVENT_LOCAL_GOAL_PRESSURE_AND_ROUTE_CANDIDATES; DO_NOT_PERSIST",
+      "effect_owner": "CAN008_NON_DURABLE",
+      "counterfactual": "no_stake->no_added_output",
+      "calibration": "NO_NEW_AUTHORITY"
+    },
+    {
+      "id": "T4_RECOGNITION",
+      "owner": "ADP015_PLUS_ADP017_PLUS_CAN008_R2_AND_WORLD_AUTHORITY",
+      "trigger": "ADMITTED_WITNESS_OR_RATIFICATION",
+      "parents": [
+        "claim_ref",
+        "witness_identity",
+        "ratification_capacity",
+        "public_rule",
+        "actor_prior_expectations",
+        "perceived_relationship"
+      ],
+      "transition": "PUBLIC_STANDING_IF_RATIFIED != ACTOR_UPTAKE != PERSISTENT_BELIEF",
+      "effect_owner": "SEPARATELY_AUTHORIZED_WORLD_AND_ADP017",
+      "counterfactual": "powerless_witness->no_public_effect",
+      "calibration": "NO_UNIVERSAL_RECOGNITION_SCORE"
+    },
+    {
+      "id": "T5_CORRECTIVE_REINTERPRETATION",
+      "owner": "CAN010_CAN011_ADP016_ADP017_TARGET_OWNERS",
+      "trigger": "ADMITTED_CONTRASTING_EVENT",
+      "parents": [
+        "unchanged_prior_history",
+        "current_scope",
+        "witness_relation",
+        "new_admitted_parent"
+      ],
+      "transition": "CANDIDATE_NARROW_SPLIT_REVISE_REINFORCE_OR_NO_CHANGE_IF_EXACT_OWNER_RULE; NEVER_EDIT_PAST",
+      "effect_owner": "COMPETENT_DESTINATION_OWNER_ONLY",
+      "counterfactual": "similarity_of_words_only->NO_CHANGE",
+      "calibration": "NOT_YET_SCIENTIFICALLY_VALIDATED"
+    },
+    {
+      "id": "T6_NONDECLARATIVE_TRACE",
+      "owner": "ADP016",
+      "trigger": "ADMITTED_PAST_EVENT_WITH_TRACE_FORMATION_RULE",
+      "parents": [
+        "exact_event_parent",
+        "trace_rule",
+        "retention/access_states"
+      ],
+      "transition": "FORM_OR_CHANGE_CAUSAL_TRACE_WITHOUT_AUTOMATIC_EPISODIC_MEMORY; ENFORCE_UNAVAILABLE",
+      "effect_owner": "ADP016",
+      "counterfactual": "trace_absent->no_trace_specific_recruitment",
+      "calibration": "FORMATION_LAW_REQUIRED"
+    },
+    {
+      "id": "T7_CATEGORY_ENFORCEMENT",
+      "owner": "CAN011_PRACTICE_PLUS_CAN008_AND_WORLD_ACTION_OWNER",
+      "trigger": "ADMITTED_ACTUAL_ENFORCEMENT_OPPORTUNITY",
+      "parents": [
+        "CAN011_earned_practice",
+        "institutional_sanction_power",
+        "ADP015_relationship",
+        "exact_appropriate_target"
+      ],
+      "transition": "CANDIDATE_DISCIPLINE_ONLY_IF_PRACTICE_RECRUITED_AND_ACTION_AUTHORIZED; CATEGORY_LABEL_ALONE_VALID_EMPTY",
+      "effect_owner": "SEPARATELY_AUTHORIZED_ACTION_AND_IF_NEEDED_RELATIONSHIP_OWNER",
+      "counterfactual": "no_power_or_label_only->NO_DISCIPLINARY_ACTION",
+      "calibration": "NO_FREQUENCY_OR_INEVITABILITY_CLAIM"
+    },
+    {
+      "id": "T8_TYPED_TOPOLOGY_OPTION",
+      "owner": "ADP015_CAN011_MUST018_AS_APPLICABLE_NEW_RULE_HELD",
+      "trigger": "C_ONLY_WITH_SEPARATELY_ADMITTED_RELATIONAL_EFFECT",
+      "parents": [
+        "edge_type",
+        "arity",
+        "direction",
+        "scope",
+        "source_event_refs",
+        "issuer",
+        "validity_interval"
+      ],
+      "transition": "RELATION_EDGE_ONLY_WHEN_FORMATION_LAW; GRAPH_VIEW_RECONSTRUCTIBLE_FROM_HISTORY_UNLESS_PROVEN_DISTINCT",
+      "effect_owner": "TARGET_OWNER_NOT_NEW_PARALLEL_GRAPH",
+      "counterfactual": "free_edge_mutation->INVALID",
+      "calibration": "C_NOT_PROVEN"
+    }
+  ],
+  "cases": [
+    {
+      "id": "K1",
+      "title": "Same world, different admitted developmental histories",
+      "primary": "HISTORY_TO_RESPONSE_SENSITIVITY",
+      "world": {
+        "fixture_scope": "SYNTHETIC_LAB_TEST_ONLY_NOT_ADMITTED_V3_REALITY",
+        "world_receipt": {
+          "world_id": "W_PORT_TOWN_1998_TEST",
+          "world_version": "W1",
+          "historical_epoch": "synthetic late-1990s municipal apprenticeship system",
+          "legal_rules": [
+            "public_apprenticeship_records_exist",
+            "supervisor_can_certify_training_only_on_signed_check",
+            "worker_can_refuse_extra_shift_without_automatic_disqualification"
+          ],
+          "institutional_enforcement": "local registrar honors signed apprenticeship reports only",
+          "material_conditions": {
+            "labor_market": "scarce training places",
+            "housing": "shared rented rooms",
+            "transport": "night bus",
+            "safety": "current workshop is safe in fixture"
+          },
+          "inequality_and_position_constraints": [
+            "supervisor_controls_shift_assignments",
+            "registrar_controls_certification",
+            "shop_peers_do_not_control_register"
+          ],
+          "uncertainty": "THIS_IS_AN_INVENTED_WORLDFIXTURE_NOT_HISTORICAL_FACT",
+          "clock": "1998-10-03T16:00:00Z",
+          "hash": "W_SYNTH_001",
+          "source_authority": "LAB_WORLD_FIXTURE_NOT_PREV3_N9"
+        },
+        "actor_position": {
+          "actor_ref": "A_TEST",
+          "positions": [
+            "junior_apprentice",
+            "income_dependent_worker"
+          ],
+          "material_resources": [
+            "bus_ticket",
+            "paid_shift"
+          ],
+          "sanction_capacity": "cannot fire supervisor; can decline optional shift",
+          "mobility_exit": "limited but available",
+          "position_receipt": "POS_SYNTH_01"
+        },
+        "relationship": {
+          "rel_ref": "REL_SUP_APP",
+          "participants": [
+            "A_TEST",
+            "SUPERVISOR_C"
+          ],
+          "history_anchor": "RELH_SYNTH_01",
+          "public_role": "supervisor_apprentice",
+          "actor_perception": "requires specific admitted actor history; not inferred from title",
+          "reciprocity": "NOT_ASSUMED"
+        },
+        "opportunity": {
+          "opportunity_id": "OP_ASK_CHECK",
+          "available_routes": [
+            "request_signed_feedback",
+            "remain_silent",
+            "decline_extra_shift",
+            "appeal_to_registrar"
+          ],
+          "excluded_routes": [
+            "issue_certificate_self",
+            "sanction_supervisor"
+          ],
+          "exposure": "admitted in each specific arm",
+          "power_capacity": "SUPERVISOR_C_CAN_SIGN_NOT_REGISTRAR_AUTHORITY"
+        },
+        "event": {
+          "event_kind": "SUPERVISOR_FEEDBACK_PUBLIC",
+          "event_id": "EV_PRESENT_COMMON",
+          "objective_content": "supervisor says 'Your report needs review' before peers",
+          "status": "ADMITTED_ONLY_IN_FUTURE_LAB",
+          "time": "1998-10-03T16:00:00Z",
+          "proposal_not_occurrence": false
+        },
+        "ancestry": {
+          "allowed": "EXPLICIT_PRIOR_EVENT_IDS_AND_OWNER_EFFECT_REFS_REQUIRED",
+          "actor_family_and_community_history": "not implied by demographic labels",
+          "adult_memory_access": "arm-specific ADP016/017 hypothetical fixtures"
+        },
+        "world_context_completeness": "COMPLETE_FOR_DECLARED_SYNTHETIC_MECHANISMS_NOT_THE_REAL_WORLD"
+      },
+      "baseline": {
+        "world_receipt": "W_SYNTH_001",
+        "actor_position": "POS_SYNTH_01",
+        "relationship": "REL_SUP_APP",
+        "opportunity": "OP_ASK_CHECK",
+        "present_event": "EV_PRESENT_COMMON",
+        "person_owner_state_precommit": "ARM_SPECIFIC_FROM_PRIOR_EVENTS",
+        "ancestry": "ARM_SPECIFIC_EXACT_EVENTS",
+        "actor_visible_projection": "ONLY_ACTOR_ACCESSIBLE_AT_EVENT_TIME",
+        "evaluator_only": "FULL_ADMITTED_CAUSAL_LINEAGE"
+      },
+      "interventions": [
+        {
+          "arm": "H_RESPONSIVE",
+          "prior_events": [
+            "EV7_FEEDBACK_RESPECTED",
+            "EV13_FEEDBACK_COLLABORATIVE"
+          ],
+          "owner_state": [
+            "CAN010_SCOPE_EXPECTATION_HELP_POSSIBLE",
+            "CAN011_PRACTICE_ASK_CLARIFICATION"
+          ],
+          "expected": "REQUEST_FEEDBACK_ALLOWED"
+        },
+        {
+          "arm": "H_PUNITIVE",
+          "prior_events": [
+            "EV7_QUESTION_PUNISHED",
+            "EV13_REQUEST_SANCTIONED"
+          ],
+          "owner_state": [
+            "CAN010_SCOPE_EXPECTATION_SPEAKING_COSTLY",
+            "CAN011_TENSION_APPROACH_WITHDRAW"
+          ],
+          "expected": "SILENCE_OR_APPEAL_ALLOWED"
+        }
+      ],
+      "primary_predicate": "permitted output choices can differ across histories while causal parent receipts differ; identical input must replay exactly",
+      "negative_controls": [
+        "identical history replay",
+        "swap arbitrary actor_ref labels but preserve reference equality",
+        "change noncausal adjective only"
+      ],
+      "kill": [
+        "category-driven response without owner ancestry",
+        "identical-state paraphrase-driven machine mutation"
+      ],
+      "uncertainties": [
+        "difference is not logically mandatory; fixture prequalify histories with contrasting CAN010/CAN011 permitted pathways"
+      ]
+    },
+    {
+      "id": "K2",
+      "title": "Same nodes, differing admitted temporal relational topology",
+      "world": {
+        "fixture_scope": "SYNTHETIC_LAB_TEST_ONLY_NOT_ADMITTED_V3_REALITY",
+        "world_receipt": {
+          "world_id": "W_PORT_TOWN_1998_TEST",
+          "world_version": "W1",
+          "historical_epoch": "synthetic late-1990s municipal apprenticeship system",
+          "legal_rules": [
+            "public_apprenticeship_records_exist",
+            "supervisor_can_certify_training_only_on_signed_check",
+            "worker_can_refuse_extra_shift_without_automatic_disqualification"
+          ],
+          "institutional_enforcement": "local registrar honors signed apprenticeship reports only",
+          "material_conditions": {
+            "labor_market": "scarce training places",
+            "housing": "shared rented rooms",
+            "transport": "night bus",
+            "safety": "current workshop is safe in fixture"
+          },
+          "inequality_and_position_constraints": [
+            "supervisor_controls_shift_assignments",
+            "registrar_controls_certification",
+            "shop_peers_do_not_control_register"
+          ],
+          "uncertainty": "THIS_IS_AN_INVENTED_WORLDFIXTURE_NOT_HISTORICAL_FACT",
+          "clock": "1998-10-03T16:00:00Z",
+          "hash": "W_SYNTH_001",
+          "source_authority": "LAB_WORLD_FIXTURE_NOT_PREV3_N9"
+        },
+        "actor_position": {
+          "actor_ref": "A_TEST",
+          "positions": [
+            "junior_apprentice",
+            "income_dependent_worker"
+          ],
+          "material_resources": [
+            "bus_ticket",
+            "paid_shift"
+          ],
+          "sanction_capacity": "cannot fire supervisor; can decline optional shift",
+          "mobility_exit": "limited but available",
+          "position_receipt": "POS_SYNTH_01"
+        },
+        "relationship": {
+          "rel_ref": "REL_SUP_APP",
+          "participants": [
+            "A_TEST",
+            "SUPERVISOR_C"
+          ],
+          "history_anchor": "RELH_SYNTH_01",
+          "public_role": "supervisor_apprentice",
+          "actor_perception": "requires specific admitted actor history; not inferred from title",
+          "reciprocity": "NOT_ASSUMED"
+        },
+        "opportunity": {
+          "opportunity_id": "OP_ASK_CHECK",
+          "available_routes": [
+            "request_signed_feedback",
+            "remain_silent",
+            "decline_extra_shift",
+            "appeal_to_registrar"
+          ],
+          "excluded_routes": [
+            "issue_certificate_self",
+            "sanction_supervisor"
+          ],
+          "exposure": "admitted in each specific arm",
+          "power_capacity": "SUPERVISOR_C_CAN_SIGN_NOT_REGISTRAR_AUTHORITY"
+        },
+        "event": {
+          "event_kind": "SUPERVISOR_FEEDBACK_PUBLIC",
+          "event_id": "EV_PRESENT_COMMON",
+          "objective_content": "supervisor says 'Your report needs review' before peers",
+          "status": "ADMITTED_ONLY_IN_FUTURE_LAB",
+          "time": "1998-10-03T16:00:00Z",
+          "proposal_not_occurrence": false
+        },
+        "ancestry": {
+          "allowed": "EXPLICIT_PRIOR_EVENT_IDS_AND_OWNER_EFFECT_REFS_REQUIRED",
+          "actor_family_and_community_history": "not implied by demographic labels",
+          "adult_memory_access": "arm-specific ADP016/017 hypothetical fixtures"
+        },
+        "world_context_completeness": "COMPLETE_FOR_DECLARED_SYNTHETIC_MECHANISMS_NOT_THE_REAL_WORLD"
+      },
+      "baseline": {
+        "world_receipt": "W_SYNTH_001",
+        "actor_position": "POS_SYNTH_01",
+        "relationship": "REL_SUP_APP",
+        "opportunity": "OP_ASK_CHECK",
+        "present_event": "EV_PRESENT_COMMON",
+        "person_owner_state_precommit": "ARM_SPECIFIC_FROM_PRIOR_EVENTS",
+        "ancestry": "ARM_SPECIFIC_EXACT_EVENTS",
+        "actor_visible_projection": "ONLY_ACTOR_ACCESSIBLE_AT_EVENT_TIME",
+        "evaluator_only": "FULL_ADMITTED_CAUSAL_LINEAGE"
+      },
+      "primary": "C_BETTER_THAN_A_HISTORY_EQUIVALENT_NOT_JUST_CONTEXT_COMPRESSION",
+      "interventions": [
+        {
+          "arm": "T_COMPENSATION",
+          "nodes": [
+            "approval",
+            "criticism",
+            "request"
+          ],
+          "event_ids": [
+            "EV1_APPROVAL",
+            "EV2_CRITICISM"
+          ],
+          "link": {
+            "type": "COMPENSATES_FOR",
+            "from": "EV1_APPROVAL",
+            "to": "EV2_CRITICISM",
+            "scope": "SUPERVISOR_C",
+            "formed_by": "REL_EFFECT_A"
+          },
+          "expect": "request permitted but relationship response may seek repair"
+        },
+        {
+          "arm": "T_CONDITION",
+          "nodes": [
+            "approval",
+            "criticism",
+            "request"
+          ],
+          "event_ids": [
+            "EV1_APPROVAL",
+            "EV2_CRITICISM"
+          ],
+          "link": {
+            "type": "CONDITIONS_RECOGNITION",
+            "from": "EV1_APPROVAL",
+            "to": "EV2_CRITICISM",
+            "scope": "SUPERVISOR_C",
+            "formed_by": "REL_EFFECT_B"
+          },
+          "expect": "approval may be recruited as conditional pressure"
+        }
+      ],
+      "primary_predicate": "all candidate graphs must be admitted from distinct lawful histories; C must exceed matched A using same original full history or earn caching only; no free graph mutation",
+      "negative_controls": [
+        "same exact history and same authorized owner effects yields same reconstructed topology",
+        "nonsemantic ref order shuffled",
+        "graph relabel without lawful edge formation must fail"
+      ],
+      "kill": [
+        "topology inserted by test label alone",
+        "new graph advantage disappears when A gets full equivalent ancestry"
+      ]
+    },
+    {
+      "id": "K3",
+      "title": "Inaccessible early causal residue with wrong or absent self explanation",
+      "world": {
+        "fixture_scope": "SYNTHETIC_LAB_TEST_ONLY_NOT_ADMITTED_V3_REALITY",
+        "world_receipt": {
+          "world_id": "W_PORT_TOWN_1998_TEST",
+          "world_version": "W1",
+          "historical_epoch": "synthetic late-1990s municipal apprenticeship system",
+          "legal_rules": [
+            "public_apprenticeship_records_exist",
+            "supervisor_can_certify_training_only_on_signed_check",
+            "worker_can_refuse_extra_shift_without_automatic_disqualification"
+          ],
+          "institutional_enforcement": "local registrar honors signed apprenticeship reports only",
+          "material_conditions": {
+            "labor_market": "scarce training places",
+            "housing": "shared rented rooms",
+            "transport": "night bus",
+            "safety": "current workshop is safe in fixture"
+          },
+          "inequality_and_position_constraints": [
+            "supervisor_controls_shift_assignments",
+            "registrar_controls_certification",
+            "shop_peers_do_not_control_register"
+          ],
+          "uncertainty": "THIS_IS_AN_INVENTED_WORLDFIXTURE_NOT_HISTORICAL_FACT",
+          "clock": "1998-10-03T16:00:00Z",
+          "hash": "W_SYNTH_001",
+          "source_authority": "LAB_WORLD_FIXTURE_NOT_PREV3_N9"
+        },
+        "actor_position": {
+          "actor_ref": "A_TEST",
+          "positions": [
+            "junior_apprentice",
+            "income_dependent_worker"
+          ],
+          "material_resources": [
+            "bus_ticket",
+            "paid_shift"
+          ],
+          "sanction_capacity": "cannot fire supervisor; can decline optional shift",
+          "mobility_exit": "limited but available",
+          "position_receipt": "POS_SYNTH_01"
+        },
+        "relationship": {
+          "rel_ref": "REL_SUP_APP",
+          "participants": [
+            "A_TEST",
+            "SUPERVISOR_C"
+          ],
+          "history_anchor": "RELH_SYNTH_01",
+          "public_role": "supervisor_apprentice",
+          "actor_perception": "requires specific admitted actor history; not inferred from title",
+          "reciprocity": "NOT_ASSUMED"
+        },
+        "opportunity": {
+          "opportunity_id": "OP_ASK_CHECK",
+          "available_routes": [
+            "request_signed_feedback",
+            "remain_silent",
+            "decline_extra_shift",
+            "appeal_to_registrar"
+          ],
+          "excluded_routes": [
+            "issue_certificate_self",
+            "sanction_supervisor"
+          ],
+          "exposure": "admitted in each specific arm",
+          "power_capacity": "SUPERVISOR_C_CAN_SIGN_NOT_REGISTRAR_AUTHORITY"
+        },
+        "event": {
+          "event_kind": "SUPERVISOR_FEEDBACK_PUBLIC",
+          "event_id": "EV_PRESENT_COMMON",
+          "objective_content": "supervisor says 'Your report needs review' before peers",
+          "status": "ADMITTED_ONLY_IN_FUTURE_LAB",
+          "time": "1998-10-03T16:00:00Z",
+          "proposal_not_occurrence": false
+        },
+        "ancestry": {
+          "allowed": "EXPLICIT_PRIOR_EVENT_IDS_AND_OWNER_EFFECT_REFS_REQUIRED",
+          "actor_family_and_community_history": "not implied by demographic labels",
+          "adult_memory_access": "arm-specific ADP016/017 hypothetical fixtures"
+        },
+        "world_context_completeness": "COMPLETE_FOR_DECLARED_SYNTHETIC_MECHANISMS_NOT_THE_REAL_WORLD"
+      },
+      "baseline": {
+        "world_receipt": "W_SYNTH_001",
+        "actor_position": "POS_SYNTH_01",
+        "relationship": "REL_SUP_APP",
+        "opportunity": "OP_ASK_CHECK",
+        "present_event": "EV_PRESENT_COMMON",
+        "person_owner_state_precommit": "ARM_SPECIFIC_FROM_PRIOR_EVENTS",
+        "ancestry": "ARM_SPECIFIC_EXACT_EVENTS",
+        "actor_visible_projection": "ONLY_ACTOR_ACCESSIBLE_AT_EVENT_TIME",
+        "evaluator_only": "FULL_ADMITTED_CAUSAL_LINEAGE"
+      },
+      "primary": "TRACE_EFFECT_WITH_ZERO_HIDDEN_CONTENT_LEAK",
+      "interventions": [
+        {
+          "arm": "TRACE_ACTIVE",
+          "prior_events": [
+            "EV7_PUBLIC_SHAMING"
+          ],
+          "memory": {
+            "ADP016": "EPISODIC_CONTENT_UNAVAILABLE",
+            "causal_trace": "PERSISTENT_TRACE_ACTIVATED_IF_OWNER_RULE",
+            "ADP017": "NO_FIRST_PERSON_ORIGIN_CLAIM"
+          },
+          "expected": "later reception may differ; no recalled origin"
+        },
+        {
+          "arm": "TRACE_ABSENT",
+          "prior_events": [
+            "EV7_NEUTRAL_COUNTERFACT"
+          ],
+          "memory": {
+            "ADP016": "EPISODIC_CONTENT_UNAVAILABLE",
+            "causal_trace": "NONE",
+            "ADP017": "NO_FIRST_PERSON_ORIGIN_CLAIM"
+          },
+          "expected": "no trace-specific recruitment"
+        },
+        {
+          "arm": "RETAINED_INACCESSIBLE",
+          "prior_events": [
+            "EV7_PUBLIC_SHAMING"
+          ],
+          "memory": {
+            "ADP016": "RETAINED_NOT_ACCESSIBLE",
+            "causal_trace": "PERSISTENT_TRACE_IF_ADMITTED",
+            "ADP017": "NO_ORIGIN_CLAIM"
+          },
+          "expected": "trace permitted; no event rehydration"
+        }
+      ],
+      "primary_predicate": "trace-ref mutation may change a typed CAN008 recruitment/effect, even when ADP017 actor origin permission absent",
+      "negative_controls": [
+        "inject hidden origin into evaluator metadata and verify actor projection unchanged",
+        "propose incorrect self explanation as epistemic belief only with separate ADP017 warrant",
+        "no explanation required"
+      ],
+      "kill": [
+        "actor recites seven-year-old event without recall grant",
+        "ledger history copied to actor-visible context"
+      ]
+    },
+    {
+      "id": "K4",
+      "title": "Similar-but-different corrective recurrence without obligatory healing",
+      "world": {
+        "fixture_scope": "SYNTHETIC_LAB_TEST_ONLY_NOT_ADMITTED_V3_REALITY",
+        "world_receipt": {
+          "world_id": "W_PORT_TOWN_1998_TEST",
+          "world_version": "W1",
+          "historical_epoch": "synthetic late-1990s municipal apprenticeship system",
+          "legal_rules": [
+            "public_apprenticeship_records_exist",
+            "supervisor_can_certify_training_only_on_signed_check",
+            "worker_can_refuse_extra_shift_without_automatic_disqualification"
+          ],
+          "institutional_enforcement": "local registrar honors signed apprenticeship reports only",
+          "material_conditions": {
+            "labor_market": "scarce training places",
+            "housing": "shared rented rooms",
+            "transport": "night bus",
+            "safety": "current workshop is safe in fixture"
+          },
+          "inequality_and_position_constraints": [
+            "supervisor_controls_shift_assignments",
+            "registrar_controls_certification",
+            "shop_peers_do_not_control_register"
+          ],
+          "uncertainty": "THIS_IS_AN_INVENTED_WORLDFIXTURE_NOT_HISTORICAL_FACT",
+          "clock": "1998-10-03T16:00:00Z",
+          "hash": "W_SYNTH_001",
+          "source_authority": "LAB_WORLD_FIXTURE_NOT_PREV3_N9"
+        },
+        "actor_position": {
+          "actor_ref": "A_TEST",
+          "positions": [
+            "junior_apprentice",
+            "income_dependent_worker"
+          ],
+          "material_resources": [
+            "bus_ticket",
+            "paid_shift"
+          ],
+          "sanction_capacity": "cannot fire supervisor; can decline optional shift",
+          "mobility_exit": "limited but available",
+          "position_receipt": "POS_SYNTH_01"
+        },
+        "relationship": {
+          "rel_ref": "REL_SUP_APP",
+          "participants": [
+            "A_TEST",
+            "SUPERVISOR_C"
+          ],
+          "history_anchor": "RELH_SYNTH_01",
+          "public_role": "supervisor_apprentice",
+          "actor_perception": "requires specific admitted actor history; not inferred from title",
+          "reciprocity": "NOT_ASSUMED"
+        },
+        "opportunity": {
+          "opportunity_id": "OP_ASK_CHECK",
+          "available_routes": [
+            "request_signed_feedback",
+            "remain_silent",
+            "decline_extra_shift",
+            "appeal_to_registrar"
+          ],
+          "excluded_routes": [
+            "issue_certificate_self",
+            "sanction_supervisor"
+          ],
+          "exposure": "admitted in each specific arm",
+          "power_capacity": "SUPERVISOR_C_CAN_SIGN_NOT_REGISTRAR_AUTHORITY"
+        },
+        "event": {
+          "event_kind": "SUPERVISOR_FEEDBACK_PUBLIC",
+          "event_id": "EV_PRESENT_COMMON",
+          "objective_content": "supervisor says 'Your report needs review' before peers",
+          "status": "ADMITTED_ONLY_IN_FUTURE_LAB",
+          "time": "1998-10-03T16:00:00Z",
+          "proposal_not_occurrence": false
+        },
+        "ancestry": {
+          "allowed": "EXPLICIT_PRIOR_EVENT_IDS_AND_OWNER_EFFECT_REFS_REQUIRED",
+          "actor_family_and_community_history": "not implied by demographic labels",
+          "adult_memory_access": "arm-specific ADP016/017 hypothetical fixtures"
+        },
+        "world_context_completeness": "COMPLETE_FOR_DECLARED_SYNTHETIC_MECHANISMS_NOT_THE_REAL_WORLD"
+      },
+      "baseline": {
+        "world_receipt": "W_SYNTH_001",
+        "actor_position": "POS_SYNTH_01",
+        "relationship": "REL_SUP_APP",
+        "opportunity": "OP_ASK_CHECK",
+        "present_event": "EV_PRESENT_COMMON",
+        "person_owner_state_precommit": "ARM_SPECIFIC_FROM_PRIOR_EVENTS",
+        "ancestry": "ARM_SPECIFIC_EXACT_EVENTS",
+        "actor_visible_projection": "ONLY_ACTOR_ACCESSIBLE_AT_EVENT_TIME",
+        "evaluator_only": "FULL_ADMITTED_CAUSAL_LINEAGE"
+      },
+      "primary": "CONTEXT_SENSITIVE_REVISION_NO_SCALAR_WOUND_INCREMENT",
+      "interventions": [
+        {
+          "arm": "CORRECTIVE_CONTEXT",
+          "prior_events": [
+            "EV7_QUESTION_PUNISHED"
+          ],
+          "later_events": [
+            "EV17_QUESTION_RESPECTED_BY_PEER"
+          ],
+          "relationship_context": "PEER_NOT_SUPERVISOR",
+          "expected": [
+            "SCOPE_NARROWING",
+            "UNRESOLVED"
+          ]
+        },
+        {
+          "arm": "RECURRENCE_SAME_AUTHORITY",
+          "prior_events": [
+            "EV7_QUESTION_PUNISHED"
+          ],
+          "later_events": [
+            "EV17_QUESTION_PUNISHED_BY_SUPERVISOR"
+          ],
+          "relationship_context": "SUPERVISOR",
+          "expected": [
+            "REINFORCE_IF_RULE",
+            "UNRESOLVED"
+          ]
+        },
+        {
+          "arm": "WEAK_COUNTEREXAMPLE",
+          "prior_events": [
+            "EV7_QUESTION_PUNISHED"
+          ],
+          "later_events": [
+            "EV17_KIND_GLANCE_UNRELATED"
+          ],
+          "relationship_context": "OTHER",
+          "expected": [
+            "NO_CHANGE"
+          ]
+        }
+      ],
+      "primary_predicate": "only exact later admitted event, relational context and admissible destination-owner effect change the next-state view; original event never rewritten",
+      "negative_controls": [
+        "no event",
+        "same event merely paraphrased",
+        "unrelated minor kindness"
+      ],
+      "kill": [
+        "fixed global wound-counter increment on every similar word",
+        "forced recovery or autobiographical revelation"
+      ]
+    },
+    {
+      "id": "K5",
+      "title": "Recognition and institutional/public vs private conflict",
+      "world": {
+        "fixture_scope": "SYNTHETIC_LAB_TEST_ONLY_NOT_ADMITTED_V3_REALITY",
+        "world_receipt": {
+          "world_id": "W_PORT_TOWN_1998_TEST",
+          "world_version": "W1",
+          "historical_epoch": "synthetic late-1990s municipal apprenticeship system",
+          "legal_rules": [
+            "public_apprenticeship_records_exist",
+            "supervisor_can_certify_training_only_on_signed_check",
+            "worker_can_refuse_extra_shift_without_automatic_disqualification"
+          ],
+          "institutional_enforcement": "local registrar honors signed apprenticeship reports only",
+          "material_conditions": {
+            "labor_market": "scarce training places",
+            "housing": "shared rented rooms",
+            "transport": "night bus",
+            "safety": "current workshop is safe in fixture"
+          },
+          "inequality_and_position_constraints": [
+            "supervisor_controls_shift_assignments",
+            "registrar_controls_certification",
+            "shop_peers_do_not_control_register"
+          ],
+          "uncertainty": "THIS_IS_AN_INVENTED_WORLDFIXTURE_NOT_HISTORICAL_FACT",
+          "clock": "1998-10-03T16:00:00Z",
+          "hash": "W_SYNTH_001",
+          "source_authority": "LAB_WORLD_FIXTURE_NOT_PREV3_N9"
+        },
+        "actor_position": {
+          "actor_ref": "A_TEST",
+          "positions": [
+            "junior_apprentice",
+            "income_dependent_worker"
+          ],
+          "material_resources": [
+            "bus_ticket",
+            "paid_shift"
+          ],
+          "sanction_capacity": "cannot fire supervisor; can decline optional shift",
+          "mobility_exit": "limited but available",
+          "position_receipt": "POS_SYNTH_01"
+        },
+        "relationship": {
+          "rel_ref": "REL_SUP_APP",
+          "participants": [
+            "A_TEST",
+            "SUPERVISOR_C"
+          ],
+          "history_anchor": "RELH_SYNTH_01",
+          "public_role": "supervisor_apprentice",
+          "actor_perception": "requires specific admitted actor history; not inferred from title",
+          "reciprocity": "NOT_ASSUMED"
+        },
+        "opportunity": {
+          "opportunity_id": "OP_ASK_CHECK",
+          "available_routes": [
+            "request_signed_feedback",
+            "remain_silent",
+            "decline_extra_shift",
+            "appeal_to_registrar"
+          ],
+          "excluded_routes": [
+            "issue_certificate_self",
+            "sanction_supervisor"
+          ],
+          "exposure": "admitted in each specific arm",
+          "power_capacity": "SUPERVISOR_C_CAN_SIGN_NOT_REGISTRAR_AUTHORITY"
+        },
+        "event": {
+          "event_kind": "SUPERVISOR_FEEDBACK_PUBLIC",
+          "event_id": "EV_PRESENT_COMMON",
+          "objective_content": "supervisor says 'Your report needs review' before peers",
+          "status": "ADMITTED_ONLY_IN_FUTURE_LAB",
+          "time": "1998-10-03T16:00:00Z",
+          "proposal_not_occurrence": false
+        },
+        "ancestry": {
+          "allowed": "EXPLICIT_PRIOR_EVENT_IDS_AND_OWNER_EFFECT_REFS_REQUIRED",
+          "actor_family_and_community_history": "not implied by demographic labels",
+          "adult_memory_access": "arm-specific ADP016/017 hypothetical fixtures"
+        },
+        "world_context_completeness": "COMPLETE_FOR_DECLARED_SYNTHETIC_MECHANISMS_NOT_THE_REAL_WORLD"
+      },
+      "baseline": {
+        "world_receipt": "W_SYNTH_001",
+        "actor_position": "POS_SYNTH_01",
+        "relationship": "REL_SUP_APP",
+        "opportunity": "OP_ASK_CHECK",
+        "present_event": "EV_PRESENT_COMMON",
+        "person_owner_state_precommit": "ARM_SPECIFIC_FROM_PRIOR_EVENTS",
+        "ancestry": "ARM_SPECIFIC_EXACT_EVENTS",
+        "actor_visible_projection": "ONLY_ACTOR_ACCESSIBLE_AT_EVENT_TIME",
+        "evaluator_only": "FULL_ADMITTED_CAUSAL_LINEAGE"
+      },
+      "primary": "PUBLIC_STANDING_NOT_EQUAL_PRIVATE_UPTAKE",
+      "interventions": [
+        {
+          "arm": "REGISTRAR_CERTIFIES",
+          "event_override": {
+            "event_id": "EV_CERTIFICATION",
+            "speaker": "REGISTRAR",
+            "institutional_power": "CAN_RATIFY",
+            "effect": "OBJECTIVE_CERTIFICATE_IF_ADMITTED"
+          },
+          "actor_history": [
+            "EV_PRIVATE_SELF_DOUBT"
+          ],
+          "expected": [
+            "PUBLIC_STANDING_CHANGES",
+            "ACTOR_BELIEF_NOT_AUTOMATIC"
+          ]
+        },
+        {
+          "arm": "POWERFUL_SUPERVISOR_PRAISE",
+          "event_override": {
+            "event_id": "EV_PRAISE",
+            "speaker": "SUPERVISOR_C",
+            "institutional_power": "CAN_SIGN_SHIFT_NOT_RATIFY",
+            "effect": "NO_AUTOMATIC_PUBLIC_CERTIFICATE"
+          },
+          "actor_history": [
+            "EV_PRIVATE_SELF_DOUBT"
+          ],
+          "expected": [
+            "PUBLIC_STANDING_UNCHANGED",
+            "UPTAKE_MAY_DIFFER"
+          ]
+        },
+        {
+          "arm": "WEAK_PEER_PRAISE",
+          "event_override": {
+            "event_id": "EV_PEER",
+            "speaker": "PEER",
+            "institutional_power": "NONE",
+            "effect": "NO_PUBLIC_CHANGE"
+          },
+          "actor_history": [
+            "EV_PRIVATE_SELF_DOUBT"
+          ],
+          "expected": [
+            "PUBLIC_STANDING_UNCHANGED",
+            "NO_FORCED_UPTAKE"
+          ]
+        }
+      ],
+      "primary_predicate": "objective ratification is event/authority-specific; uptake and private belief require separate actor conditions; confidence of resistance is not objective truth",
+      "negative_controls": [
+        "same public standing with changed actor history",
+        "invalid badge/official-sounding utterance",
+        "evaluator knowledge of truth never copied to actor"
+      ],
+      "kill": [
+        "witness praise overwrites belief",
+        "powerful witness utterance fabricates registry event"
+      ]
+    },
+    {
+      "id": "K6",
+      "title": "Historically internalized norm to external sanction only with opportunity and capacity",
+      "world": {
+        "fixture_scope": "SYNTHETIC_LAB_TEST_ONLY_NOT_ADMITTED_V3_REALITY",
+        "world_receipt": {
+          "world_id": "W_PORT_TOWN_1998_TEST",
+          "world_version": "W1",
+          "historical_epoch": "synthetic late-1990s municipal apprenticeship system",
+          "legal_rules": [
+            "public_apprenticeship_records_exist",
+            "supervisor_can_certify_training_only_on_signed_check",
+            "worker_can_refuse_extra_shift_without_automatic_disqualification"
+          ],
+          "institutional_enforcement": "local registrar honors signed apprenticeship reports only",
+          "material_conditions": {
+            "labor_market": "scarce training places",
+            "housing": "shared rented rooms",
+            "transport": "night bus",
+            "safety": "current workshop is safe in fixture"
+          },
+          "inequality_and_position_constraints": [
+            "supervisor_controls_shift_assignments",
+            "registrar_controls_certification",
+            "shop_peers_do_not_control_register"
+          ],
+          "uncertainty": "THIS_IS_AN_INVENTED_WORLDFIXTURE_NOT_HISTORICAL_FACT",
+          "clock": "1998-10-03T16:00:00Z",
+          "hash": "W_SYNTH_001",
+          "source_authority": "LAB_WORLD_FIXTURE_NOT_PREV3_N9"
+        },
+        "actor_position": {
+          "actor_ref": "A_TEST",
+          "positions": [
+            "junior_apprentice",
+            "income_dependent_worker"
+          ],
+          "material_resources": [
+            "bus_ticket",
+            "paid_shift"
+          ],
+          "sanction_capacity": "cannot fire supervisor; can decline optional shift",
+          "mobility_exit": "limited but available",
+          "position_receipt": "POS_SYNTH_01"
+        },
+        "relationship": {
+          "rel_ref": "REL_SUP_APP",
+          "participants": [
+            "A_TEST",
+            "SUPERVISOR_C"
+          ],
+          "history_anchor": "RELH_SYNTH_01",
+          "public_role": "supervisor_apprentice",
+          "actor_perception": "requires specific admitted actor history; not inferred from title",
+          "reciprocity": "NOT_ASSUMED"
+        },
+        "opportunity": {
+          "opportunity_id": "OP_ASK_CHECK",
+          "available_routes": [
+            "request_signed_feedback",
+            "remain_silent",
+            "decline_extra_shift",
+            "appeal_to_registrar"
+          ],
+          "excluded_routes": [
+            "issue_certificate_self",
+            "sanction_supervisor"
+          ],
+          "exposure": "admitted in each specific arm",
+          "power_capacity": "SUPERVISOR_C_CAN_SIGN_NOT_REGISTRAR_AUTHORITY"
+        },
+        "event": {
+          "event_kind": "SUPERVISOR_FEEDBACK_PUBLIC",
+          "event_id": "EV_PRESENT_COMMON",
+          "objective_content": "supervisor says 'Your report needs review' before peers",
+          "status": "ADMITTED_ONLY_IN_FUTURE_LAB",
+          "time": "1998-10-03T16:00:00Z",
+          "proposal_not_occurrence": false
+        },
+        "ancestry": {
+          "allowed": "EXPLICIT_PRIOR_EVENT_IDS_AND_OWNER_EFFECT_REFS_REQUIRED",
+          "actor_family_and_community_history": "not implied by demographic labels",
+          "adult_memory_access": "arm-specific ADP016/017 hypothetical fixtures"
+        },
+        "world_context_completeness": "COMPLETE_FOR_DECLARED_SYNTHETIC_MECHANISMS_NOT_THE_REAL_WORLD"
+      },
+      "baseline": {
+        "world_receipt": "W_SYNTH_001",
+        "actor_position": "POS_SYNTH_01",
+        "relationship": "REL_SUP_APP",
+        "opportunity": "OP_ASK_CHECK",
+        "present_event": "EV_PRESENT_COMMON",
+        "person_owner_state_precommit": "ARM_SPECIFIC_FROM_PRIOR_EVENTS",
+        "ancestry": "ARM_SPECIFIC_EXACT_EVENTS",
+        "actor_visible_projection": "ONLY_ACTOR_ACCESSIBLE_AT_EVENT_TIME",
+        "evaluator_only": "FULL_ADMITTED_CAUSAL_LINEAGE"
+      },
+      "primary": "INTERNAL_NORM_AND_ACTUAL_CAPACITY_REQUIRED_FOR_POLICING",
+      "interventions": [
+        {
+          "arm": "PRACTICE_AND_CAPACITY",
+          "prior_events": [
+            "EV_NORM_REPEATED_WITH_SANCTION",
+            "EV_ACTOR_ENFORCEMENT_LEARNED"
+          ],
+          "opportunity_override": {
+            "actor_role": "foreperson_at_later_date",
+            "sanction_capacity": "VALID_SMALL_SCHEDULE_POWER"
+          },
+          "expected": [
+            "POLICING_CANDIDATE_ALLOWED_NOT_MANDATORY"
+          ],
+          "event_override": {
+            "event_id": "EV_LATER_SANCTION_OPPORTUNITY",
+            "time": "1999-06-10T10:00:00Z",
+            "kind": "WORK_ASSIGNMENT_ENCOUNTER",
+            "world_snapshot_ref": "W_PORT_TOWN_1999_POSITION_VARIANT",
+            "status": "SYNTHETIC_LAB_ONLY"
+          },
+          "world_context_variant_required": "1999_FOREPERSON_OR_APPRENTICE_SNAPSHOT_BOUND_AT_EVENT_TIME"
+        },
+        {
+          "arm": "PRACTICE_NO_CAPACITY",
+          "prior_events": [
+            "EV_NORM_REPEATED_WITH_SANCTION",
+            "EV_ACTOR_ENFORCEMENT_LEARNED"
+          ],
+          "opportunity_override": {
+            "actor_role": "apprentice",
+            "sanction_capacity": "NONE"
+          },
+          "expected": [
+            "NO_ACTUAL_SANCTION_ALLOWED"
+          ],
+          "event_override": {
+            "event_id": "EV_LATER_SANCTION_OPPORTUNITY",
+            "time": "1999-06-10T10:00:00Z",
+            "kind": "WORK_ASSIGNMENT_ENCOUNTER",
+            "world_snapshot_ref": "W_PORT_TOWN_1999_POSITION_VARIANT",
+            "status": "SYNTHETIC_LAB_ONLY"
+          },
+          "world_context_variant_required": "1999_FOREPERSON_OR_APPRENTICE_SNAPSHOT_BOUND_AT_EVENT_TIME"
+        },
+        {
+          "arm": "CATEGORY_ONLY",
+          "prior_events": [
+            "EV_CATEGORY_MEMBERSHIP_ONLY"
+          ],
+          "opportunity_override": {
+            "actor_role": "foreperson_at_later_date",
+            "sanction_capacity": "VALID_SMALL_SCHEDULE_POWER"
+          },
+          "expected": [
+            "NO_NORM_RECRUITMENT_FROM_LABEL_ALONE"
+          ],
+          "event_override": {
+            "event_id": "EV_LATER_SANCTION_OPPORTUNITY",
+            "time": "1999-06-10T10:00:00Z",
+            "kind": "WORK_ASSIGNMENT_ENCOUNTER",
+            "world_snapshot_ref": "W_PORT_TOWN_1999_POSITION_VARIANT",
+            "status": "SYNTHETIC_LAB_ONLY"
+          },
+          "world_context_variant_required": "1999_FOREPERSON_OR_APPRENTICE_SNAPSHOT_BOUND_AT_EVENT_TIME"
+        }
+      ],
+      "primary_predicate": "policing path requires historically earned practice/norm recruitment AND present sanction opportunity; membership alone has no effect",
+      "negative_controls": [
+        "same category different practice history",
+        "same internalization but zero sanction routes",
+        "nominal title without exercised/authorized power"
+      ],
+      "kill": [
+        "demographic category triggers disciplinary act",
+        "event-local wish creates sanction capacity"
+      ],
+      "world_variant_fixtures_are_conditional": true
+    }
+  ],
+  "audit_schema": {
+    "input_required": [
+      "world_receipt",
+      "position_receipt",
+      "relationship_ref",
+      "history_refs",
+      "opportunity_ref",
+      "occurrence_ref",
+      "actor_specific_state_asof",
+      "lawful_permissions"
+    ],
+    "output_required": [
+      "case_id",
+      "baseline",
+      "arm",
+      "seed",
+      "model_version",
+      "world_receipt_hash",
+      "admitted_event_hashes",
+      "owner_state_before_hash",
+      "read_evidence_ref_list",
+      "retrieval_token_count",
+      "model_call_count",
+      "latency_ms",
+      "transition_rule_ids",
+      "receivability_refs",
+      "uptake_refs",
+      "recruitment_refs",
+      "proposed_effects",
+      "authorized_effects",
+      "committed_effect_receipts",
+      "owner_state_after_hash",
+      "actor_safe_projection",
+      "actor_claim_permission_refs",
+      "memory_access_and_trace_refs",
+      "objective_public_standing_effects",
+      "present_action_and_material_effects",
+      "invalid_and_hold_codes",
+      "full_replay_digest",
+      "prose_optional"
+    ],
+    "hard_invariants": [
+      "NO_UNADMITTED_EVENT_RESPONSE_COMMIT",
+      "NO_WORLD_CONTEXTLESS_EVENT",
+      "NO_OWNER_BOUNDARY_SEIZURE",
+      "NO_ACTOR_INACCESSIBLE_LINEAGE_LEAK",
+      "NO_OBJECTIVE_PUBLIC_STANDING_FROM_UNEMPOWERED_WITNESS",
+      "NO_CATEGORY_TO_BEHAVIOR_DIRECT_EDGE",
+      "NO_REWRITE_PRIOR_EVENTS",
+      "NO_UNAUTHORIZED_C_GRAPH_EDGE",
+      "NO_PROSE_AS_CAUSAL_EVIDENCE",
+      "REPLAY_SAME_SEED_SAME_STATE"
+    ],
+    "primary_score": "BINARY_PER_K_PRE_REGISTERED_TYPED_EFFECT_DISTINCTION_AND_HARD_INVARIANTS_PASS_ALL",
+    "comparison": "PAIRED_SEEDS_DIFFERENCE_C_MINUS_A_AND_B_MINUS_A_WITH_BOOTSTRAP_INTERVAL_ONLY_AFTER_EXECUTION",
+    "promote_if": "INDEPENDENT_HELDOUT_MECHANISM_REQUIRES_EXPLICIT_NEW_LIFECYCLE_NOT_RECONSTRUCTIBLE_FROM_A_AND_PASSES_EQUAL_BUDGET_COST_AND_ACCESS_GATES"
+  },
+  "negative_controls": [
+    "IDENTICAL_FULL_INPUT_REPLAY",
+    "UNRELATED_NOISE_EVENT",
+    "UNADMITTED_DRAFT",
+    "REJECTED_EVENT",
+    "CATEGORY_ONLY",
+    "POWERLESS_WITNESS",
+    "INACCESSIBLE_LEDGER_INJECTED_TO_EVALUATOR_ONLY",
+    "IRRELEVANT_RELATION_ORDER",
+    "WEIGHT_OR_SEED_WITHOUT_ISSUER",
+    "ZERO_ACTION_AFFORDANCE"
+  ],
+  "epistemic_status": {
+    "authorities_mapped": true,
+    "fixture_synthetic_only": true,
+    "generated_actor_transition_runtime_executed": false,
+    "model_calls_executed": 0,
+    "candidate_outcomes": "ALL_UNMEASURED",
+    "A_B_C_empirical_comparison": "NOT_EXECUTED",
+    "source_or_PREV3_access": "NOT_USED",
+    "real_psychological_causality": "NOT_DEMONSTRATED"
+  },
+  "preregistered_hypotheses": {
+    "H0_general": "at matched exact world, admitted history, owner effects, and evidence budgets, A equals or exceeds B/C in held-out machine-level discriminating recruitment/effect correctness; C new durable state is redundant",
+    "H1_K1": "history-induced response distribution differences occur for designated authorized pathways without different world/route defaults; identical history replay exact",
+    "H2_K2": "C typed topology adds independently tested machine-level discrimination beyond A full equivalent event/owner ancestry, not merely shorter retrieval, under legal edge intervention",
+    "H3_K3": "an independently admitted causal trace can change CAN008 recruitment with inaccessible episodic memory while all origin information remains nonclaimable",
+    "H4_K4": "context-sensitive corrective recurrence admits differentiate/revise/narrow/hold/no-change outcomes; neutral recurrence does not mutate prior event",
+    "H5_K5": "institutional fact, witness power, subjective uptake, and self-belief may move separately; witness status alone cannot commit belief",
+    "H6_K6": "only historically generated practice and actually licensed sanction route can create an external disciplinary action; actor category has null direct effect",
+    "promotion_order": [
+      "constitutional_integrity_ZERO_VIOLATIONS",
+      "precommitted_machine_level_distinction_WITH_INDEPENDENT_HOLDOUT",
+      "incremental_lifecycle_or_intervention_not_recoverable_FROM_A_EVENT_HISTORY",
+      "equal_budget_and_provenance",
+      "cost_effectiveness_and_replication"
+    ],
+    "method": "blocked paired seed and case design, two independent held-out synthetic world variants after lab approval, exact typed effects compared before prose",
+    "decision_thresholds_proposed_not_adopted": {
+      "minimum_effect": "10 percentage point gain over A on preregistered correct causal contrast score for C or B, paired 95% interval excluding zero",
+      "equivalence_margin": "within ±5 percentage points on correctness if sample size/power support equivalence; otherwise INDETERMINATE not EQUIVALENT",
+      "n": "12 paired deterministic/stochastic seeds per case per baseline for pilot; not sufficient for strong equivalence without power analysis",
+      "cost_guard": "no more than 25% p95 latency / token / storage increase without a larger preregistered benefit or separately justified efficiency benefit",
+      "zero_tolerance": "0 unauthorized event commits; 0 hidden actor origin leaks; 0 category-only sanctions; 0 new unlicensed durable effects",
+      "interpretation": "pilot rules not calibrated metrics; thresholds to be frozen independently before first authorized run"
+    }
+  },
+  "cost_telemetry_design": {
+    "state_complexity": "count persisted record families, owner records, edge objects, cached views and byte size before/after",
+    "retrieval": "exact read refs, read-byte and token count incl indexes, context exclusions",
+    "llm": "model name/version, seed, prompt+completion tokens, call count, retries",
+    "latency": "wall_ms p50 p95 if authorized host; do not invent values",
+    "branches": "intervention arms, accepted/rejected branch receipts, divergence and replay",
+    "replay": "cold reload deterministic semantic hashes and count of owner reconstruction operations",
+    "failure": "permission holds, invalid effects, actor-access leaks, no-op and timeouts",
+    "prospective_cost": "UNKNOWN_WITHOUT_RUNTIME"
+  },
+  "next_commission_if_granted": {
+    "name": "SOROK S-M-LAB1 existing owner response transition and destination-effect fixture integration",
+    "issuer": "existing V3 CAN008 R2 and ADP015/016/017 CAN010/011 effect authorities and independently appointed science assessor; explicit lab/model host use signer",
+    "scope": "synthetic-only world fixture, K1 K3 K5 minimal then K2 K4 K6, A/B/C matched budgets, no production integration",
+    "required_grants": [
+      "synthetic generated-actor lab event admission",
+      "existing destination-owner effect transitions or narrowly issued temporary lab rules",
+      "model/use and deterministic stochastic receipt authority",
+      "world/structural fixture context authority",
+      "independent preregistered evaluator and trial custody",
+      "run host and retention/privacy approval"
+    ],
+    "acceptance": "actual structured owner receipts and typed response effects, zero access leak, independent held-out adjudication, cost report; do not promote without demonstrated unique causal value"
+  }
+}
