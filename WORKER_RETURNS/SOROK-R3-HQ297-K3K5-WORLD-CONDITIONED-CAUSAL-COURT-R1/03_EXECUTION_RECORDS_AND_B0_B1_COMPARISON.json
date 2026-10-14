@@ -1,0 +1,173 @@
+{
+  "schema": "SOROK_HQ297_K35_ACTUAL_EXECUTION_RECORD@1.0.0",
+  "observed_status": "EXECUTED_ISOLATED_RULE_PROTOTYPE_ONLY__NO_CAN008_ACTOR_RUNTIME",
+  "sourcefree_level": "author-written executable fixture; no accepted CAN008/ADP016/ADP017 calls",
+  "sealed_startup": "4efbc1b0bdbb6b1469f72b5756fe1988308adde7",
+  "preexecution_freeze_commit": "51165a413947eab58cab520783598f68df7cba38",
+  "lab_environment": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "git": "2.47.3",
+    "filesystem_import_probe": "PASS"
+  },
+  "run": {
+    "command": "python -m pytest -q --junitxml=execution_junit.xml test_k35_sourcefree_court.py",
+    "cwd": "/mnt/data/k35_court_local",
+    "exit_code": 0,
+    "stdout": "......................................                                   [100%]\n38 passed in 0.05s\n",
+    "stderr": "",
+    "test_count": 38,
+    "passed": 38,
+    "failed": 0,
+    "skipped": 0,
+    "junit_written": true
+  },
+  "actual_fixture_script": {
+    "path": "/mnt/data/k35_court_local/k35_sourcefree_court.py",
+    "sha256": "4137884d41d83d4cfb4a1023fb6bd58f77d19dea98d68956671eb41e0086d9fa",
+    "sourcefree_unissued": true
+  },
+  "actual_results": [
+    {
+      "id": "K3_A_TRACE",
+      "expected_and_observed": {
+        "trace_recruitment": "ADP016_TRACE_T7",
+        "effect": "BUFFER",
+        "claim": "DENY_FIRST_PERSON_CLAIM"
+      },
+      "B0": "MATCH_PREDECLARED",
+      "B1": "MATCH_PREDECLARED",
+      "world_mutation": false
+    },
+    {
+      "id": "K3_B_NO_TRACE",
+      "expected_and_observed": {
+        "trace_recruitment": "NONE",
+        "effect": "RESPONSE_EFFECTS_VALID_EMPTY",
+        "claim": "DENY_FIRST_PERSON_CLAIM"
+      },
+      "B0": "MATCH_PREDECLARED",
+      "B1": "MATCH_PREDECLARED",
+      "world_mutation": false
+    },
+    {
+      "id": "K3_C_UNAVAILABLE_NO_TRACE",
+      "expected_and_observed": {
+        "trace_recruitment": "NONE",
+        "effect": "RESPONSE_EFFECTS_VALID_EMPTY",
+        "claim": "DENY_FIRST_PERSON_CLAIM"
+      },
+      "B0": "MATCH_PREDECLARED",
+      "B1": "MATCH_PREDECLARED",
+      "world_mutation": false
+    },
+    {
+      "id": "K5_A_OFFICIAL_UNSAFE",
+      "expected_and_observed": {
+        "institutional_permission": "PRESENT",
+        "world_effect_request_not_commit": "OFFICIAL_RECOGNITION",
+        "actor_response_effect": "DEFLECT"
+      },
+      "B0": "MATCH_PREDECLARED",
+      "B1": "MATCH_PREDECLARED",
+      "world_mutation": false
+    },
+    {
+      "id": "K5_B_PEER_TRUSTED",
+      "expected_and_observed": {
+        "institutional_permission": "ABSENT",
+        "world_effect_request_not_commit": "NO_INSTITUTIONAL_CHANGE",
+        "actor_response_effect": "AMPLIFY"
+      },
+      "B0": "MATCH_PREDECLARED",
+      "B1": "MATCH_PREDECLARED",
+      "world_mutation": false
+    },
+    {
+      "id": "K5_C_OFFICIAL_TRUSTED",
+      "expected_and_observed": {
+        "institutional_permission": "PRESENT",
+        "world_effect_request_not_commit": "OFFICIAL_RECOGNITION",
+        "actor_response_effect": "REROUTE"
+      },
+      "B0": "MATCH_PREDECLARED",
+      "B1": "MATCH_PREDECLARED",
+      "world_mutation": false
+    },
+    {
+      "id": "K5_D_PEER_UNSAFE",
+      "expected_and_observed": {
+        "institutional_permission": "ABSENT",
+        "world_effect_request_not_commit": "NO_INSTITUTIONAL_CHANGE",
+        "actor_response_effect": "DEFLECT"
+      },
+      "B0": "MATCH_PREDECLARED",
+      "B1": "MATCH_PREDECLARED",
+      "world_mutation": false
+    }
+  ],
+  "negative_controls": [
+    "K3 analyst-only origin altered: typed/visible invariant",
+    "K3 UNAVAILABLE feature: AccessLeakBlocked",
+    "K5 world role only: objective effect changes but unsafe actor response stays DEFLECT",
+    "K5 actor history only: felt response changes but official request stays",
+    "missing world owner grant: no official effect request",
+    "peer never official grant",
+    "unadmitted event: BLOCK_UNADMITTED_EVENT and no effect",
+    "identical input replay equality",
+    "unadmitted biography annotation ignored",
+    "B0 vs B1 same typed outcome all seven arms"
+  ],
+  "b0_b1": {
+    "matched_fixture_arms": 7,
+    "sourcefree_no_model_comparison": true,
+    "identical_input_budget": true,
+    "measured_repetitions_per_candidate": 4,
+    "evaluations_per_repetition": 35000,
+    "median_seconds_for_35000_evals": {
+      "B0": 0.1043503425,
+      "B1": 0.1089289655
+    },
+    "B1_uniquely_correct_heldout_typed_outcomes": 0,
+    "preferred": "B0_SIMPLE_EVENT_RELATION_BASELINE",
+    "caveat": "These are CPU timings for synthetic interpreter work, not provider pricing or valid human behavioral discriminants."
+  },
+  "pinned_import_attempt": {
+    "path": "rawlsing_next/wsc_gt0_end_to_end.py",
+    "expected_git_blob_sha1": "62b6ea39c605874af6d7aef85693472f88087f57",
+    "computed_git_blob_sha1": "62b6ea39c605874af6d7aef85693472f88087f57",
+    "PYTHONPATH": "/mnt/data/k35_court_local/staged_pinned",
+    "error": "ModuleNotFoundError: No module named 'rawlsing_next.wsc_gt0_protocol'",
+    "status": "BLOCKED_AFTER_ATTEMPT_MISSING_PINNED_IMPORT_GRAPH",
+    "gt0_not_executed": true
+  },
+  "external_repo_git_attempt": {
+    "command": "git ls-remote https://github.com/maidiu/rawlsing.git HEAD",
+    "result": "fatal: unable to access 'https://github.com/maidiu/rawlsing.git/': Could not resolve host: github.com",
+    "not_a_general_connector_failure": true
+  },
+  "auth_and_cost": {
+    "llm_calls": 0,
+    "v3_actor_runs": 0,
+    "original_survey_reads": 0,
+    "world_state_commits": 0,
+    "actor_memory_or_epistemic_commits": 0,
+    "provider_billing": "NO_PROVIDER_CALL",
+    "original_source_science": "NOT_ATTEMPTED_NO_PERMISSION",
+    "adoption": "NONE"
+  },
+  "independent_statuses": {
+    "K1": "NOT_EXECUTED",
+    "K2": "NOT_EXECUTED",
+    "K3": "SYNTHETIC_PROTOTYPE_PASS__ACTUAL_RUNTIME_HOLD",
+    "K4": "NOT_EXECUTED",
+    "K5": "SYNTHETIC_PROTOTYPE_PASS__ACTUAL_RUNTIME_HOLD",
+    "K6": "NOT_EXECUTED"
+  },
+  "limits": [
+    "The 38 tests check code authored by the same court, not independently implemented/adopted owner behavior.",
+    "B1 adds speculative latent derivation only and shows no independent benefit in this fixed scope.",
+    "No accepted CAN008 transition effect was committed; typed response is a hypothetical label.",
+    "Test code is not a genuine V3 actor, source-qualified world, or independent blinded psychology experiment."
+  ]
+}
