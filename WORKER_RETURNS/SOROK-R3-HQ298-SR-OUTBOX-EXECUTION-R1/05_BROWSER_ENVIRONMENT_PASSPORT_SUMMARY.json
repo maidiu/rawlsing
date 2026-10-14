@@ -1,0 +1,38 @@
+{
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_R1_SUMMARY",
+  "surface": "BROWSER_CONTAINER",
+  "epoch": "NEW_UNNAMED_LOCAL_EPOCH__NO_PREVIOUS_MARKER",
+  "status": "VERIFIED_DURING_EXECUTION__RECHECK_REQUIRED",
+  "python": "3.13.5",
+  "pytest": "9.0.2",
+  "node": "22.16.0",
+  "git": "2.47.3",
+  "shell_filesystem": "VERIFIED_WRITABLE",
+  "local_private_repository_checkout": "ABSENT",
+  "imported_authoritative_modules": 0,
+  "run_commands": [
+    "python -m pytest test_sr_court.py -q --junitxml=junit.xml",
+    "python run_court.py"
+  ],
+  "outcomes": {
+    "pytest_passed": 31,
+    "case_executed": 28,
+    "case_pass": 28,
+    "case_fail": 0,
+    "case_unreached": 0
+  },
+  "source_original_grants": "NONE",
+  "actor_model_grants": "NONE",
+  "renderer_calls": 0,
+  "external_model_api_calls": 0,
+  "paid_cash_observed": null,
+  "quota_observed": null,
+  "reusable_affinity": [
+    "OCCURRENCE",
+    "OUTBOX",
+    "CLIENT_PROJECTION"
+  ],
+  "private_source_bytes_included": false,
+  "independent_review": "NOT_PERFORMED__I2_REQUIRED",
+  "science_grade": "ISOLATED_SOURCEFREE_F2_ONLY"
+}
