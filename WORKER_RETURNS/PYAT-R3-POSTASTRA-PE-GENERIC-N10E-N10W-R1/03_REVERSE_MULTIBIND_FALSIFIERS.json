@@ -1,0 +1,113 @@
+{
+  "schema": "POSTASTRA_PE_REVERSE_MULTIBIND_FALSIFIERS@1",
+  "status": "EXECUTED_SOURCE_FREE_TEST_ONLY__NOT_SCIENCE__NOT_OPERATIVE_N9__NOT_V3",
+  "executed_at_utc": "2026-10-14T14:35:42Z",
+  "falsifier_count": 8,
+  "all_pass": true,
+  "negative_falsifiers": [
+    {
+      "id": "NEG_01_REVERSED_UNAUTHORIZED_ROLE",
+      "description": "REVERSE direction claimed without positively scoped role-reversal authority (P(A|D) is not P(D|A))",
+      "mechanism": "typed refusal at generic boundary",
+      "expected_refusal_state": "REVERSED_UNAUTHORIZED_ROLE",
+      "observed_result_state": "TYPED_REFUSAL",
+      "observed_refusal_state": "REVERSED_UNAUTHORIZED_ROLE",
+      "geometry_produced": false,
+      "PASS": true
+    },
+    {
+      "id": "NEG_02_NEW_UNIT_NOT_AUTHORIZED",
+      "description": "analysis unit rebound to household/dyad without source operation authority; same-respondent joint is not household dependence",
+      "mechanism": "typed refusal at generic boundary",
+      "expected_refusal_state": "NEW_UNIT_NOT_AUTHORIZED",
+      "observed_result_state": "TYPED_REFUSAL",
+      "observed_refusal_state": "NEW_UNIT_NOT_AUTHORIZED",
+      "geometry_produced": false,
+      "PASS": true
+    },
+    {
+      "id": "NEG_03_ARTIFICIAL_PARENT_SAMPLING",
+      "description": "parent-assignment/type token smuggled into the generic request projection",
+      "mechanism": "construction-time law error (fail closed before any computation)",
+      "expected": "GenericWorldRequestLawError with ARTIFICIAL_PARENT_SAMPLING_REFUSED",
+      "observed_result_state": "GenericWorldRequestLawError",
+      "observed_error": "ARTIFICIAL_PARENT_SAMPLING_REFUSED: forbidden token 'IS_PARENT' in request",
+      "PASS": true
+    },
+    {
+      "id": "NEG_04_FAKE_MODEL_USE",
+      "description": "request model-use ref does not match the governed model-rule authority",
+      "mechanism": "typed refusal at generic boundary",
+      "expected_refusal_state": "FAKE_MODEL_USE_REFUSED",
+      "observed_result_state": "TYPED_REFUSAL",
+      "observed_refusal_state": "FAKE_MODEL_USE_REFUSED",
+      "geometry_produced": false,
+      "PASS": true
+    },
+    {
+      "id": "NEG_05_SOURCE_HASH_FORGERY",
+      "description": "self-consistent forged producer-predicate hash in the custody witness (structural hash integrity holds, semantic identity does not)",
+      "mechanism": "owner-typed custody witness rejection (fail closed)",
+      "expected": "typed owner error, no geometry",
+      "observed_result_state": "ConditionValueRelationMismatch",
+      "observed_error": "CONDITION_VALUE_RELATION_MISMATCH: witness field mismatch: producer_predicate_hash",
+      "PASS": true
+    },
+    {
+      "id": "NEG_06_MISSING_CONDITIONAL_DENOMINATOR",
+      "description": "denominator basis does not match the producer risk set / conditional denominator",
+      "mechanism": "typed refusal at generic boundary",
+      "expected_refusal_state": "MISSING_CONDITIONAL_DENOMINATOR",
+      "observed_result_state": "TYPED_REFUSAL",
+      "observed_refusal_state": "MISSING_CONDITIONAL_DENOMINATOR",
+      "geometry_produced": false,
+      "PASS": true
+    },
+    {
+      "id": "NEG_07_INVALIDATED_CURRENT",
+      "description": "N9 selected snapshot marked INVALIDATED; no stale positive service permitted",
+      "mechanism": "typed refusal at generic boundary",
+      "expected_refusal_state": "INVALIDATED_CURRENT_REFUSED",
+      "observed_result_state": "TYPED_REFUSAL",
+      "observed_refusal_state": "INVALIDATED_CURRENT_REFUSED",
+      "geometry_produced": false,
+      "PASS": true
+    },
+    {
+      "id": "NEG_08_FUTURE_TIME_AVAILABILITY",
+      "description": "as-of at/after the request time treated as available knowledge; later publication is not earlier knowledge",
+      "mechanism": "typed refusal at generic boundary",
+      "expected_refusal_state": "FUTURE_TIME_AVAILABILITY_REFUSED",
+      "observed_result_state": "TYPED_REFUSAL",
+      "observed_refusal_state": "FUTURE_TIME_AVAILABILITY_REFUSED",
+      "geometry_produced": false,
+      "PASS": true
+    }
+  ],
+  "reverse_and_multibind_positive_controls": {
+    "reverse_role_control": {
+      "role_direction": "REVERSE_TARGET_VALUE_TO_SUBJECT",
+      "with_authority": "computed P(POSITION|ANSWER=yes) = 3/4 on law A",
+      "without_authority": "NEG_01 refused"
+    },
+    "multibind_control": {
+      "role_direction": "MULTI_CONDITION_INTERSECTION",
+      "conditioners": [
+        "position",
+        "cohort"
+      ],
+      "law_a_fraction_yes": {
+        "$exact_fraction": [
+          9,
+          10
+        ]
+      },
+      "law_b_fraction_yes": {
+        "$exact_fraction": [
+          37,
+          40
+        ]
+      }
+    }
+  }
+}
