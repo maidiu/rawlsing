@@ -1,0 +1,205 @@
+{
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "RSR299-S1-1d4bb671a107",
+  "epoch_id": "RSR299-COLD-352d6842b968",
+  "owner_session_alias": "SOROK-HQ299-RSR-INDEPENDENT-I2-REVIEW",
+  "surface": "BROWSER_CONTAINER",
+  "machine_alias": "ISOLATED_BROWSER_EXECUTION_RUNTIME",
+  "conversation_or_account_affinity": "THIS_CONVERSATION_ONLY; LATER_SESSION_NEEDS_RECHECK",
+  "status": "LIVE_VERIFIED_AT_LAST_PROBE__FUTURE_RECHECK_REQUIRED",
+  "last_live_probe_at": "2026-10-14T21:44:25.568969+00:00",
+  "runtime_marker_digest": "sha256:b843526222f3869a8ab2f898f59830fe2742503691cbc1c51cba6459414c4778",
+  "probe_command_and_result": [
+    {
+      "command": "python --version",
+      "status": "SUCCESS",
+      "stdout": "Python 3.13.5"
+    },
+    {
+      "command": "python -m pytest --version",
+      "status": "SUCCESS",
+      "stdout": "pytest 9.0.2"
+    },
+    {
+      "command": "git --version",
+      "status": "SUCCESS",
+      "stdout": "git version 2.47.3"
+    },
+    {
+      "command": "node --version",
+      "status": "SUCCESS",
+      "stdout": "v22.16.0"
+    },
+    {
+      "command": "python import outbox_prototype; print(Path(outbox_prototype.__file__).name)",
+      "status": "SUCCESS",
+      "stdout": "outbox_prototype.py"
+    },
+    {
+      "command": "Raw GitHub URL via anonymous urllib",
+      "status": "DNS_UNAVAILABLE",
+      "stdout": null,
+      "stderr": "URLError(gaierror(-3, 'Temporary failure in name resolution'))",
+      "consequence": "Exactly staged two source files from connector content with independent Git blob preimage hash."
+    }
+  ],
+  "capabilities": {
+    "python": {
+      "status": "VERIFIED",
+      "version": "3.13.5"
+    },
+    "pytest": {
+      "status": "VERIFIED",
+      "version": "9.0.2"
+    },
+    "git_cli": {
+      "status": "VERIFIED",
+      "version": "2.47.3"
+    },
+    "node": {
+      "status": "VERIFIED",
+      "version": "22.16.0"
+    },
+    "shell_filesystem": {
+      "status": "VERIFIED",
+      "details": "writable runtime staging and subprocess process control"
+    },
+    "github_connector": {
+      "status": "VERIFIED",
+      "details": "read/commit/direct remote refs, independent original blob verification"
+    },
+    "private_checkout": {
+      "status": "UNAVAILABLE",
+      "details": "No full repo staged; not required for standalone pinned sourcefree suite"
+    },
+    "original_survey": {
+      "status": "NOT_GRANTED"
+    },
+    "renderer_model": {
+      "status": "NOT_GRANTED"
+    },
+    "physical_world": {
+      "status": "NOT_GRANTED"
+    }
+  },
+  "git_object_store_alias": null,
+  "worktree_alias": null,
+  "branch": "agent/reviewer-sorok-r3-hq299-rsr-occurrence-outbox-independent-r1",
+  "sealed_startup": "8cebf47b1706fc2f86d055632a43cc8cfdc3b601",
+  "checkout_commit": null,
+  "working_tree_clean_state": "NOT_APPLICABLE_ISOLATED_FILES_NOT_GIT_CHECKOUT",
+  "source_family": "SOROK_SR_HQ298_OCCURRENCE_OUTBOX_SOURCEFREE",
+  "materialized_source_refs": [
+    {
+      "commit": "8da45605c267ea60b664d00fc8444d8c9b007628",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SR-OUTBOX-EXECUTION-R1/outbox_prototype.py",
+      "git_blob_sha1": "fe429516e48f63035457bcff5431d2da4f26f8d3",
+      "local_relative_staging_path": "outbox_prototype.py",
+      "module_import_file": "outbox_prototype.py",
+      "verified": "GITHUB_READ_AND_LOCAL_NATIVE_NUL_GIT_BLOB_HASH_EXACT"
+    },
+    {
+      "commit": "8da45605c267ea60b664d00fc8444d8c9b007628",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SR-OUTBOX-EXECUTION-R1/test_sr_28_falsifier_court.py",
+      "git_blob_sha1": "a6263f8903f22da2b1cde3999d950328d19c9e21",
+      "local_relative_staging_path": "test_sr_28_falsifier_court.py",
+      "module_import_file": "test_sr_28_falsifier_court.py",
+      "verified": "GITHUB_READ_AND_LOCAL_NATIVE_NUL_GIT_BLOB_HASH_EXACT"
+    },
+    {
+      "commit": "99f2e7128a8417dfeaa39468c45ba65f6958c061",
+      "path": "WORKER_RETURNS/SOROK-R3-POSTASTRA-SR-BINDING-OCCURRENCE-SURFACE-R1/03_CRASH_RETRY_GHOST_EVENT_FALSIFIERS.json",
+      "git_blob_sha1": "782ba75ee94f24908100b1f3464e7035497d546c",
+      "local_relative_staging_path": null,
+      "module_import_file": null,
+      "verified": "DIRECT_GITHUB_FROZEN_REFERENCE_AND_COPIED_UNCHANGED_TO_REVIEW_BRANCH"
+    },
+    {
+      "commit": "REVIEWER_BRANCH_SEE_VERIFIED_REMOTE_HEAD",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ299-RSR-OCCURRENCE-OUTBOX-INDEPENDENT-R1/test_rsr_independent.py",
+      "git_blob_sha1": "044b9cb48c2e4e3d825e7a2cbb52bb412d1366d7",
+      "local_relative_staging_path": "test_rsr_independent.py",
+      "module_import_file": "test_rsr_independent.py",
+      "verified": "LOCAL_NATIVE_NUL_GIT_BLOB_SHA1_EQUALS_DIRECT_GITHUB_REF"
+    },
+    {
+      "commit": "REVIEWER_BRANCH_SEE_VERIFIED_REMOTE_HEAD",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ299-RSR-OCCURRENCE-OUTBOX-INDEPENDENT-R1/rsr_cold_replay.py",
+      "git_blob_sha1": "0c8676aaa3ff6605f3fb7a987e29f88d26fafb03",
+      "local_relative_staging_path": "rsr_cold_replay.py",
+      "module_import_file": "rsr_cold_replay.py",
+      "verified": "LOCAL_NATIVE_NUL_GIT_BLOB_SHA1_EQUALS_DIRECT_GITHUB_REF"
+    },
+    {
+      "commit": "REVIEWER_BRANCH_SEE_VERIFIED_REMOTE_HEAD",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ299-RSR-OCCURRENCE-OUTBOX-INDEPENDENT-R1/test_rsr_cold_replay.py",
+      "git_blob_sha1": "ad132e7e852d3873597276b51afda86b8296f891",
+      "local_relative_staging_path": "test_rsr_cold_replay.py",
+      "module_import_file": "test_rsr_cold_replay.py",
+      "verified": "LOCAL_NATIVE_NUL_GIT_BLOB_SHA1_EQUALS_DIRECT_GITHUB_REF"
+    }
+  ],
+  "dependency_closure_status": "FULL_FOR_PINNED_STANDALONE_SR_F2__NO_ACCEPTED_OWNER_RUNTIME",
+  "covered_test_suites": [
+    {
+      "command": "python -m pytest -q test_sr_28_falsifier_court.py::test_s27_material_move_needs_world_owner --junitxml=first_s27.xml",
+      "result": "1_PASS__EXIT_0",
+      "raw_junit_sha256": "081496859004776ee27a8e4c0bf7a51913acd4f8fc849b495c9e23851f268248"
+    },
+    {
+      "command": "python -m pytest -q test_sr_28_falsifier_court.py --junitxml=original_28_junit.xml",
+      "result": "28_PASS__EXIT_0",
+      "raw_junit_sha256": "6f3fe907e53fc8aa86895e3eb55fa214396fd89088c9f0d07743d69fa2b73ced"
+    },
+    {
+      "command": "python -m pytest test_rsr_independent.py -q --junitxml=independent_raw_junit.xml",
+      "result": "5_PASS_12_FAIL__EXIT_1",
+      "raw_junit_sha256": "5b4bb8c219c1741b0371fce0121540064ac2db610f935382bd0f346c5fe0a648"
+    },
+    {
+      "command": "python -m pytest -q test_rsr_cold_replay.py --junitxml=cold_junit.xml",
+      "result": "2_PASS__EXIT_0",
+      "raw_junit_sha256": "9153d855fe0caa3d6b7e956f9de388841fcad8de7f24a069fca2a406ea3b28e7"
+    }
+  ],
+  "science_grade": "F2_EXECUTED_ISOLATED_SOURCEFREE_PROTOCOL_AND_FAILURE_COURT__NOT_OWNER_F3",
+  "model_provider": "OpenAI ChatGPT",
+  "model_family": "GPT-6",
+  "requested_effort": "High",
+  "actual_product_effort": "NOT_INDEPENDENTLY_VISIBLE",
+  "pricing_class": "UNKNOWN",
+  "observed_credits": null,
+  "observed_cash": null,
+  "observed_quota": null,
+  "expected_reset": null,
+  "paid_overflow": "NONE_USED_OR_GRANTED",
+  "privacy_source_grant": {
+    "source_original": "NONE",
+    "actor_model": "NONE",
+    "renderer": "NONE",
+    "physical": "NONE",
+    "worker_return_only": "GRANTED"
+  },
+  "independent_review": {
+    "role": "independent_of_SR_implementer",
+    "recommendation": "ACCEPT_REPRODUCTION_GRAIN_ONLY__HOLD_STRONGER_ADOPTION",
+    "self_adoption": "NONE",
+    "future_owner": "COMPETENT_ADP019_CAN022_CAN025_AND_OUTBOX_TRANSACTION_OWNERS"
+  },
+  "assignments_completed": [
+    "HQ299-RSR-EXACT_SR_28_CASES",
+    "HQ299-RSR-12_EXECUTED_FAILURES",
+    "HQ299-RSR-TWO_FRESH_PROCESS_COLD_REPLAY"
+  ],
+  "next_good_affinity_tags": [
+    "OCCURRENCE",
+    "OUTBOX",
+    "CLIENT_PROJECTION",
+    "TRANSACTION_ATOMICITY",
+    "ACCESS_MEMBRANE"
+  ],
+  "staged_state_preservation": "LOCAL_RUNTIME_CURRENTLY_AVAILABLE_BUT_NOT_GUARANTEED_AFTER_TURN",
+  "retire_or_rebuild_reason": "NEXT_SESSION_REVALIDATE_MARKER_AND_GIT_BLOBS",
+  "run_evidence_archive_sha256": "6be368ac0ba6abc172ee20ec6bdd8e54800bc5bda5190af6fece8a5a07d33744",
+  "executed_sourcefree_archive_sha256": "528fcb1e9f9323d4015b695c7e664a98f8f8e14cbed265c8eb7738c23f261350"
+}
