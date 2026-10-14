@@ -1,0 +1,169 @@
+{
+  "schema": "HQ300_CAN008_FIRST_POSITIVE_SOURCEFREE_EXECUTION_RECEIPTS@1.0.0",
+  "grain": "SOURCEFREE_CANDIDATE__NOT_ADOPTED__NOT_PRODUCTION__NOT_V3_ACTOR",
+  "exact_sealed_worker_startup": "d7d40270068d258600ee57f62bd27199f1689b92",
+  "startup_verified_against_remote_branch_head_at_dispatch": true,
+  "midflight_commission_erratum": "bdec09f600bc33ac23c2293c00f4d380f70277a1 (routing erratum R1; explicitly permits a genuinely-started worker to finish under the prior commission without reset; commits placed on top as fast-forward)",
+  "matrix_freeze_sha256": "38226170254da35ae077c0e04fe87d0d5397d6cfcc63b16c53c1279892ada331",
+  "frozen_before_any_execution": true,
+
+  "environment": {
+    "python": "3.11.3", "pytest": "9.0.2", "platform": "macOS-13.2.1-x86_64",
+    "authenticated_private_repo_read": true,
+    "pinned_closure_from_prior_session": "HQ298 SM stage: GT0/SDTF/M6 closure alive and re-verified"
+  },
+
+  "test_totals": {
+    "hq300_candidate_court": {"tests": 37, "pass": 37, "failures": 0, "errors": 0, "skipped": 0, "junit": "junit/court_junit.xml"},
+    "preserved_owner_tests": {"tests": 220, "pass": 220, "failures": 0, "errors": 0, "skipped": 0, "junit": "junit/pinned_modules_junit.xml", "note": "preexisting pinned owner suite, unmodified files"},
+    "rsm_court_disc01_corrected": {"tests": 60, "pass": 60, "failures": 0, "errors": 0, "skipped": 0, "junit": "junit/rsm_court_junit.xml", "note": "RSM's exact 60-case court with detector DISC_01 corrected; 59/60 before correction per RSM"},
+    "grand_total": {"tests": 317, "pass": 317, "failures": 0, "errors": 0}
+  },
+
+  "positive_chain_result": {
+    "chain_id": "POS_CHAIN_ADMITTED_EVENT_TO_LATER_RESPONSE",
+    "terminal": "CHAIN_COMPLETE",
+    "sequence_executed": [
+      "1 admitted synthetic world event EV1_FEEDBACK_WINDOW_ENCOUNTER (issuer ISSUER_AUTH_WORLD_SCHED, effective 1998-10-03T16:00:00Z)",
+      "2 CAN008 coupling: receivability=RECEIVABLE, uptake appraisal projection (not durable belief), situated recruitment (ADP016/CAN011/CAN010 refs, recruitment != access)",
+      "3 candidate response rule CAND_R_CAN008_COUPLING_RESPONSE@1.0.0-candidate emits effect BUFFER + target-owner effect request",
+      "4 target-owner effect committed in causal order (ChainEventLedger, hash-chained, non-decreasing effective time)",
+      "5 ADP016 CAUSAL_TRACE_MEMORY committed from admitted basis (7 formation gates)",
+      "6 ADP017 ActorEpistemicEffect APPLIED (BELIEF/ADD) from actor-facing basis",
+      "7 later admitted event EV2_LATER_SHIFT_CHANGE_REQUEST reads prior effect -> typed response DEFLECT vs control AMPLIFY"
+    ],
+    "frozen_expectations_all_met": true,
+    "occurrence_gate": "ADMITTED_OCCURRENCE",
+    "coupling_decision_state": "COUPLING_EVALUATED",
+    "receivability": "RECEIVABLE",
+    "response_effect_kind": "BUFFER",
+    "response_durability": "NON_DURABLE_CURRENT_CONSEQUENCE",
+    "target_owner_effect_committed": true,
+    "target_owner_effect_is_request_not_seizure": true,
+    "causal_order_enforced": true,
+    "adp016_trace": {
+      "status": "ADP016_TRACE_COMMITTED",
+      "memory_id": "2eaaed7c5485525467f1765ae95df71da00536afa8ce43c82541d750e7d5ec1a",
+      "representation_kind": "CAUSAL_TRACE_MEMORY",
+      "retention_state": "RETAINED",
+      "memory_accessibility_state": "NOT_APPLICABLE_CAUSAL_TRACE",
+      "content_first_person_readable": false,
+      "must_not_output": ["actor_knows", "actor_believes", "may_claim_first_person", "V2_may_render_as_fact"]
+    },
+    "adp017_epistemic": {
+      "decision_state": "APPLIED_EPISTEMIC_TRANSITION",
+      "stance_kind": "BELIEF", "stance_operation": "ADD",
+      "accessible_memory_auto_creates_stance": false
+    },
+    "later_event_response": {
+      "event2_id": "EV2_LATER_SHIFT_CHANGE_REQUEST",
+      "effect_kind": "DEFLECT", "prior_effect_read": true,
+      "commit": "COMMITTED_IN_CAUSAL_ORDER"
+    },
+    "later_response_typed_difference": {
+      "with_prior_effect": "DEFLECT",
+      "control_without_prior_effect": "AMPLIFY",
+      "typed_difference": true
+    },
+    "n_ledger_entries": 4,
+    "full_replay_digest": "24e7e7f61334a64a628e8e0fca0fb65a...",
+    "ledger_hash": "05a4904c7dffa714f64573cf2adc9189...",
+    "wall_seconds": 0.0005,
+    "replay_exact": true
+  },
+
+  "K3_result": {
+    "trace_recruits_response": true,
+    "trace_first_person_claim": "DENY_FIRST_PERSON_CLAIM",
+    "self_explanation_of_hidden_origin": "BLOCKED",
+    "analyst_only_causal_trace_actor_claimable": false,
+    "causal_trace_not_recallable": "UNAUTHORIZED_RECALL_CUE",
+    "sole_memory_basis_failclosed_when_basis_dead": "DENY_FIRST_PERSON_CLAIM",
+    "memory_inaccessibility_auto_erases_stance": false
+  },
+
+  "K5_result": {
+    "belief_state_identical_across_witness_power_arms": true,
+    "knowledge_gate_truth_necessary_not_sufficient": true,
+    "objective_supported_without_actor_basis": "DEFERRED_MISSING_EPISTEMIC_BASIS",
+    "accessible_memory_auto_creates_stance": false,
+    "automatic_implications_forbidden_transcribed": 8
+  },
+
+  "hostile_results": [
+    {"id": "H1_NO_ADMISSION", "expected_code": "BLOCK_UNADMITTED_EVENT", "observed": "BLOCK_UNADMITTED_EVENT", "committed": false, "result": "PASS"},
+    {"id": "H2_FORGED_ISSUER", "expected_code": "BLOCK_FORGED_OR_MISMATCHED_ISSUER", "observed": "BLOCK_FORGED_OR_MISMATCHED_ISSUER", "result": "PASS"},
+    {"id": "H3_STALE_ASOF_WORLD", "expected_code": "BLOCK_STALE_OR_MISMATCHED_WORLD_ASOF", "observed": "BLOCK_STALE_OR_MISMATCHED_WORLD_ASOF", "result": "PASS"},
+    {"id": "H4_WRONG_ACTOR_SCOPE", "expected_code": "BLOCK_WRONG_ACTOR_SCOPE", "observed": "BLOCK_WRONG_ACTOR_SCOPE", "result": "PASS"},
+    {"id": "H5_HIDDEN_FUTURE_LEAK", "expected_code": "BLOCK_HIDDEN_FUTURE_LEAK", "observed": "BLOCK_HIDDEN_FUTURE_LEAK", "result": "PASS"},
+    {"id": "H6_DUPLICATE_EVENT", "expected_code": "BLOCK_DUPLICATE_EVENT_IDENTITY", "observed": "BLOCK_DUPLICATE_EVENT_IDENTITY", "result": "PASS"},
+    {"id": "H7_DISALLOWED_MEMORY", "expected_code": "INELIGIBLE_NONCAUSAL_SOURCE", "observed": "INELIGIBLE_NONCAUSAL_SOURCE (5 ineligible source classes)", "result": "PASS"},
+    {"id": "H8_INVALID_TRACE", "expected_code": "PARENT_EVENT_HASH_MISMATCH_or_MISSING_PARENT_EVENT", "observed": "PARENT_EVENT_HASH_MISMATCH + PRE_STATE_HASH_MISMATCH", "result": "PASS"},
+    {"id": "H9_REVERSE_CHRONOLOGY", "expected_code": "BLOCK_REVERSE_CHRONOLOGY_CAUSAL_PARENT", "observed": "BLOCK_REVERSE_CHRONOLOGY_CAUSAL_PARENT (ledger + coupling gate)", "result": "PASS"}
+  ],
+
+  "preserved_negative_guards": {
+    "imported_zero_positive_guard_registry": "EMPTY (mappingproxy({})) before and after candidate registration",
+    "imported_zero_positive_guard_probe": "DENY_ZERO_EFFECT / ZERO_POSITIVE_REGISTRY on well-typed positive request",
+    "gt0_end_to_end": "BLOCKED_POSITIVE_ACTOR_PATH__SEMANTIC_CONSERVATION_PASS (unchanged)",
+    "production_registry_mutated_by_candidate": false,
+    "guard_code_modified": false,
+    "dual_result": "candidate chain CHAIN_COMPLETE through the WORKER fixture registry AND production guard still DENIES the identical transition"
+  },
+
+  "disc01_correction": {
+    "rsm_finding": "whole-repo text scan conflated string constants with implementation surface",
+    "correction": "implementation-surface (class/def) detector + classified string mentions + declared scope",
+    "rsm_court_before": "59/60 (DISC_01 FAIL in fuller trees)",
+    "rsm_court_after": "60/60",
+    "production_implementation_surface_hits": 0,
+    "candidate_implementation_surface_confined_to": "candidate/ package only"
+  },
+
+  "dev_loop_defects_found_and_fixed": [
+    "candidate rule binding: empty modality-evidence tuple failed the 23-obligation completeness gate; fixed by explicit NONE_USED binding (R2 §16 binds 'where applicable')",
+    "shared registry singleton polluted cross-run replay; fixed by fresh fixture registry per chain run",
+    "hostile refusal codes were split across decision_state/code fields; normalized so the frozen typed code is in both"
+  ],
+
+  "forbidden_untouched": {
+    "production_positive_authority_registered": false,
+    "zero_positive_guard_changed": false,
+    "v3_wake": false, "actor_run": false, "adopted_rule_claimed": false,
+    "original_survey_access": false, "paid_model_call": false,
+    "canonical_merge": false, "physical_weld": false
+  },
+
+  "cost_quota": {
+    "model_calls": 0, "billable_operations": "NONE_OBSERVED",
+    "cash": "UNKNOWN (nothing billed)",
+    "chain_wall_seconds": 0.0005,
+    "full_court_wall_seconds": 0.27,
+    "pinned_suite_wall_seconds": 0.53,
+    "rsm_court_wall_seconds": 0.31
+  },
+
+  "claims_done_vs_not_reached": {
+    "DONE": [
+      "frozen expected matrix before any execution",
+      "actual pinned zero-positive/GT0 red state executed (no bypass)",
+      "adopted-interface derivation (R2 §6/§11/§14/§16/§17 + ADP016 + ADP017 at pinned blobs)",
+      "candidate rule module with complete 23-item binding",
+      "ADP016 durable trace commit from admitted basis (7 gates, fail-closed states)",
+      "ADP017 epistemic update with knowledge/belief gates + first-person permission",
+      "full positive chain: admitted event -> coupling -> owner effect (causal order) -> trace -> epistemic -> later event typed response difference",
+      "K3 inaccessible origin denies self-explanation",
+      "K5 public status vs private belief do not collapse",
+      "9 hostile negatives all REFUSED with frozen typed codes",
+      "220 preserved owner tests PASS unmodified",
+      "RSM court 60/60 with DISC_01 detector corrected",
+      "dual registry distinction proven (candidate fixture vs production guard)"
+    ],
+    "NOT_REACHED": [
+      "accepted-rule promotion of CAND_R_CAN008_COUPLING_RESPONSE (owner decision)",
+      "production positive-transition-authority registry entry (owner decision; guard awaits it)",
+      "real V3 actor operation, ADP019 admission producer, ADP020 stochastic binding",
+      "any adopted semantic rule claim"
+    ]
+  }
+}
