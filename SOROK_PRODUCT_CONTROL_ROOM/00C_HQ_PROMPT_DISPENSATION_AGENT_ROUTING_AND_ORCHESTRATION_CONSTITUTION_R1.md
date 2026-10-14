@@ -227,6 +227,43 @@ Do not silently upgrade paid/finite resources.
 
 ---
 
+# 3A. TASK-PHASE MODEL ECONOMICS, EVIDENCE-FIRST ROUTING AND EXPLICIT ESCALATION (USER DIRECTIVE 2026-10-14)
+
+**Binding refinement to I0/I1/I2/I3, the §5A environment verdict and 00D:** Scientific *importance* is NOT identical to the reasoning needed in every phase of a scientific job. HQ MUST pre-decide where the cheap agent can **produce hard evidence** and where an I2+ independent scientist must **interpret contested evidence**. Do not burn GPT-6.1 High/GPT-6 High for mechanical Python dependency staging, hashes, frozen-oracle pytest, JUnit packaging, deterministic diff or already-specified repair simply because the overall field is difficult.
+
+## Nondelegable HQ per-commission analysis
+
+Before naming a specific model in a NEW material commission, identify and justify these separate operations and their minimum sufficient intelligence:
+
+1. **Mechanical execution / custody:** repo object verification, Python module imports, sourcefree fixture materialization, frozen suite execution, exact PASS/RED/NOT_REACHED tables, replay, hashes, JUnit. Prefer an authenticated economical **DeepSeek-Harness with a qualified MiMo/DeepSeek model**, OpenCode economical tier, local Codex at a lower qualified effort, or existing warm Browser Python. Select a *verified* route, not a speculative option menu. This is generally I0/I1 when fully specified.
+2. **Bounded implementation under fixed contracts:** writing an adapter, preserving pinned invariants, adding heldout tests, debugging a small closure, or reproducing an existing executable sourcefree implementation. Qualified MiMo-V2.6-Pro/DeepSeek-Harness, economical OpenCode, or GPT-6/GPT-6.1 at Medium may be appropriate depending on demonstrated ability, private-data permissions and available allowance; I2 *oversight* may still be required. A cheap model is not automatically scientifically competent.
+3. **Substantive independent I2 science/authority review:** causal or relational inference validity, genealogical selection/posterior claims, accepted owner scope, assay leakage/tautology, nine PE boundary RED meanings, actual world/consumer/actor grant interpretation. Choose a *competent independent I2 reviewer*, typically Browser GPT-6 High or another demonstrated I2-equivalent model. Do not replace with I1 merely because it can execute the tests; do not automatically require GPT-6.1 High where GPT-6 High suffices.
+4. **I3 escalation:** only the explicit §3 I3 triggers, not high commit count, model choice, task length, import burden, or a failed ordinary test. Existing competent owner and Astra/Omega escalation law remains.
+
+**One accountable owner / no gratuitous splitting:** Phase routing is NOT an order to turn every single commission into multiple agents. If the same economical qualified agent can do the bounded entire job to the intended evidence grade, use one worker + distinct acceptance reviewer. If an independent I2 court requires a local mechanical execution helper, specify the helper's scope and single accountable reviewer. Never claim a mechanical worker independently adjudicated a high-stakes authority issue.
+
+## Model/version economy discipline
+
+- **Distinguish harness, underlying model, host, provider/account and grants.** `DeepSeek-Harness` is a runtime/harness, not by itself the model. `MiMo-V2.6-Pro` is a model that may be used through an appropriately configured harness/provider. Neither grants private-repository disclosure, model-actor trial authority or external API spend by implication.
+- **Do not assume newer GPT-6.1 High costs more, older GPT-6 High uses fewer tokens, or High reasoning is always optimal.** Evaluate *actual* Work/Codex allowance, caching, model-specific price per uncached/cached input and output, output/reasoning tokens, retries, bug-fix iterations, and demonstrated test outcome. Newer model may consume less allowance or have better cached pricing; it may also use more tokens on a particular job. Official rate card/usage guide is a CURRENTNESS INPUT, not a timeless fixed ratio. Do not conflate a 5-hour subscription window with API billing.
+- For GPT-6 versus GPT-6.1, prefer the option **actually justified by task-and-setting evidence**; never downgrade a user-selected, already dispatched GPT-6.1 High worker solely on a conjecture that GPT-6 High would be cheaper. Higher reasoning is justified when it measurably reduces false starts/reviews or when true high-stakes judgment requires it, and is not a proxy for authority.
+- **User selections and active workers are respected.** This amendment is prospective: DO NOT relaunch, replace, prompt-edit, reset, or change model/host of a running job purely because a cheaper alternative is identified. A live job changes only on a specific failure, authority issue or user direction and with separate custody protection.
+- Record `cash_known`, `quota_known`, `context_cache_reuse`, `retries` and `estimated_total_evidence_cost` as observed or explicitly UNKNOWN. "More messages per window" and "lower cached-input rate" are different measures; neither proves fewer generated tokens. Do not invent output-token data or model scores.
+
+## Additional mandatory launch fields
+
+`PHASE_MODEL_ASSIGNMENT`: for mechanical execution; bounded implementation; substantive independent science review; and possible I3 escalation — each with I-class, actual model/effort/host when known, and N/A where irrelevant.
+
+`PRIMARY_MODEL_ECONOMICS`: why the named model/effort is **cheapest qualified for the whole assigned claim grade**, including actual previously observed runner/quality/cost data versus UNKNOWN; don't put an unranked list here.
+
+`REVIEW_INDEPENDENCE_AND_ESCALATION`: distinct scientific reviewer (when required), exact disagreement/defect triggers for High or I3, and whether a cheaper agent may continue a mechanical subtask without changing semantic authority.
+
+`ACTIVE_WORKER_NO_DISTURBANCE`: new dispatch vs previously launched; when active, preserve the currently assigned model/host/branch and return window unless separately directed.
+
+**Invalidity for NEW prompts:** giving every multi-step worker GPT-6.1 High merely because its topic is scientific, or routing every independent court to a cheap coding model without preserving I2 science, is `SOROK_MODEL_PHASE_ROUTING_INVALID__REISSUE_REQUIRED`. A job may legitimately require High end to end; document the **specific** continuing high-level reasoning burden rather than asserting all tasks are the same.
+
+---
+
 # 4. Execution-surface routing
 
 After intelligence is chosen, select the surface independently.
@@ -451,6 +488,11 @@ ROLE:
 INTELLIGENCE:
 <capability class I0/I1/I2/I3>
 <exact model + thinking configuration if known>
+
+PHASE_MODEL_ASSIGNMENT / PRIMARY_MODEL_ECONOMICS:
+<mechanical I0/I1, implementation, I2 review and possible I3 escalation, with named model+effort and evidence-based cost; mark N/A where applicable>
+REVIEW_INDEPENDENCE_AND_ESCALATION / ACTIVE_WORKER_NO_DISTURBANCE:
+<distinct reviewer and concrete escalation trigger; confirm new commission vs already-launched worker>
 
 EXECUTION SURFACE:
 <S0 Browser/GitHub | S1 Browser+runner/CI | S2 Local/Codex/OpenCode | S3 specialized>
