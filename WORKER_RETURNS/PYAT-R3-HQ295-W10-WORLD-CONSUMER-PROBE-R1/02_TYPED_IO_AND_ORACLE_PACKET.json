@@ -1,0 +1,291 @@
+{
+  "baseline_sealed_startup": "1616b299f97ae3b4e2b8003659f59439fcc0c77a",
+  "grade": "TEST_ONLY_INTERFACE_COURT__NOT_INTEGRATED_PASS",
+  "hostile_oracles": [
+    {
+      "evidence_ref": "outputs/hostile_oracle_results.json#hostile_oracles.H01",
+      "expected": "REJECT_REAL_WORLD_AUTHORITY_PROMOTION",
+      "id": "H01",
+      "observed": "REJECT_REAL_WORLD_AUTHORITY_PROMOTION",
+      "pass": true,
+      "runtime": "EXECUTED"
+    },
+    {
+      "evidence_ref": "outputs/hostile_oracle_results.json#hostile_oracles.H02",
+      "expected": "REJECT_DIRECT_STATIC_TYPE_ASSIGNMENT",
+      "id": "H02",
+      "observed": "REJECT_DIRECT_STATIC_TYPE_ASSIGNMENT",
+      "pass": true,
+      "runtime": "EXECUTED"
+    },
+    {
+      "evidence_ref": "outputs/hostile_oracle_results.json#hostile_oracles.H03",
+      "expected": "REJECT_UNLICENSED_DYAD_OR_RESPONSE_JOIN",
+      "id": "H03",
+      "observed": "REJECT_UNLICENSED_DYAD_OR_RESPONSE_JOIN",
+      "pass": true,
+      "runtime": "EXECUTED"
+    },
+    {
+      "evidence_ref": "outputs/hostile_oracle_results.json#hostile_oracles.H04",
+      "expected": "REJECT_UNSUPPORTED_PRECISION",
+      "id": "H04",
+      "observed": "REJECT_UNSUPPORTED_PRECISION",
+      "pass": true,
+      "runtime": "EXECUTED"
+    },
+    {
+      "evidence_ref": "outputs/hostile_oracle_results.json#hostile_oracles.H05",
+      "expected": "REJECT_UNISSUED_TEMPORAL_COMPARABILITY",
+      "id": "H05",
+      "observed": "REJECT_UNISSUED_TEMPORAL_COMPARABILITY",
+      "pass": true,
+      "runtime": "EXECUTED"
+    },
+    {
+      "evidence_ref": "outputs/hostile_oracle_results.json#hostile_oracles.H06",
+      "expected": "REJECT_HANDWRITTEN_PROVIDER_INPUT",
+      "id": "H06",
+      "observed": "H06_REJECT_HANDWRITTEN_PROVIDER_INPUT",
+      "pass": true,
+      "runtime": "EXECUTED"
+    },
+    {
+      "evidence_ref": "outputs/hostile_oracle_results.json#hostile_oracles.H07",
+      "expected": "REJECT_MISSING_CURRENTNESS_OR_ISSUER",
+      "id": "H07",
+      "observed": "REJECT_MISSING_CURRENTNESS_OR_ISSUER",
+      "pass": true,
+      "runtime": "EXECUTED"
+    },
+    {
+      "evidence_ref": "outputs/hostile_oracle_results.json#hostile_oracles.H08",
+      "expected": "NO_ACTOR_RUN_OR_MODEL_INVOCATION",
+      "id": "H08",
+      "observed": "NO_ACTOR_RUN_OR_MODEL_INVOCATION",
+      "pass": true,
+      "runtime": "EXECUTED"
+    },
+    {
+      "evidence_ref": "outputs/hostile_oracle_results.json#hostile_oracles.H09",
+      "expected": "REJECT_MINOR_ROUTE_ERASURE",
+      "id": "H09",
+      "observed": "REJECT_MINOR_ROUTE_ERASURE",
+      "pass": true,
+      "runtime": "EXECUTED"
+    },
+    {
+      "evidence_ref": "outputs/hostile_oracle_results.json#hostile_oracles.H10",
+      "expected": "household support variation must not silently alter the unrelated institution rule; institution variation must not rewrite care routes",
+      "id": "H10",
+      "observed": "REJECT_NONLOCAL_COUNTERFACTUAL_CONTAMINATION",
+      "pass": true,
+      "runtime": "EXECUTED"
+    }
+  ],
+  "measured_metrics": {
+    "actor_or_stereotype_leak_count": 0,
+    "constraint_grade_change_count": 3,
+    "counterfactual_selectivity": {
+      "household_only_contamination": [],
+      "institution_only_contamination": [],
+      "unchanged_controls_invariant": true
+    },
+    "minority_path_retention_exact": [
+      5,
+      5
+    ],
+    "persona_quality_effect": "TEST_HYPOTHESIS_NOT_MEASURED",
+    "semantic_currentness_integrity": 0,
+    "source_backed_successor_quality": "NOT_MEASURED__NO_SOURCE_OR_MODEL_USE_ISSUER",
+    "typed_route_change_count_eligibility": 1,
+    "unmeasured_probability_fraction_exact": [
+      5,
+      5
+    ]
+  },
+  "positive_oracles": [
+    {
+      "evidence_ref": "outputs/hostile_oracle_results.json#positive_oracles.AT34_SAMPLING_UNIT_FIREWALL",
+      "id": "AT34_SAMPLING_UNIT_FIREWALL",
+      "pass": true,
+      "runtime": "EXECUTED",
+      "type": "household/coparent-dyad claim refused at its grain; individual possibility remains lawful"
+    },
+    {
+      "evidence_ref": "outputs/hostile_oracle_results.json#positive_oracles.CONTROLLED_EMPIRICAL_LAW_VARIATION",
+      "id": "CONTROLLED_EMPIRICAL_LAW_VARIATION",
+      "pass": true,
+      "runtime": "EXECUTED",
+      "type": "computed N10E lane identity changes with the empirical law; modeled route table does not"
+    },
+    {
+      "evidence_ref": "outputs/hostile_oracle_results.json#positive_oracles.V01_MODELED_CONTEXT_DIFFERENTIATION",
+      "id": "V01_MODELED_CONTEXT_DIFFERENTIATION",
+      "pass": true,
+      "runtime": "EXECUTED",
+      "type": "A and B differ on formal schooling under declared fee/administrative rules; typed reason emitted"
+    },
+    {
+      "evidence_ref": "outputs/hostile_oracle_results.json#positive_oracles.V02_STEPWISE_WORLD_CONDITIONING",
+      "id": "V02_STEPWISE_WORLD_CONDITIONING",
+      "pass": true,
+      "runtime": "EXECUTED",
+      "type": "C0->C1 changes world-access eligibility; C1->C2 changes care/time tradeoff conditionality; unique conditioner witness per step"
+    },
+    {
+      "evidence_ref": "outputs/hostile_oracle_results.json#positive_oracles.V03_UNALTERED_CONTROL",
+      "id": "V03_UNALTERED_CONTROL",
+      "pass": true,
+      "runtime": "EXECUTED",
+      "type": "identical subject/model/world/as-of reproduces byte-stable canonical output"
+    },
+    {
+      "evidence_ref": "outputs/hostile_oracle_results.json#positive_oracles.V04_MINORITY_AND_CONTRADICTION",
+      "id": "V04_MINORITY_AND_CONTRADICTION",
+      "pass": true,
+      "runtime": "EXECUTED",
+      "type": "B preserves nonformal study, mutual aid and conditional apprenticeship despite formal schooling block; no enforced bleak deterministic life"
+    },
+    {
+      "evidence_ref": "outputs/hostile_oracle_results.json#positive_oracles.V05_COUNTERFACTUAL_REVERSAL",
+      "id": "V05_COUNTERFACTUAL_REVERSAL",
+      "pass": true,
+      "runtime": "EXECUTED",
+      "type": "replacing only B institutional and care variables by A restores exactly A-specific route supports, no static residue"
+    },
+    {
+      "evidence_ref": "outputs/hostile_oracle_results.json#positive_oracles.V06_SOURCEFREE_EPISTEMIC_LABELS",
+      "id": "V06_SOURCEFREE_EPISTEMIC_LABELS",
+      "pass": true,
+      "runtime": "EXECUTED",
+      "type": "all routes tagged modeled, no OBSERVED tags, numeric probability absent rather than fabricated; only computed N10E cells carry numbers"
+    }
+  ],
+  "replay_and_invalidation": {
+    "currentness_invalidation": {
+      "evidence_ref": "outputs/hostile_oracle_results.json#replay_and_invalidation.currentness_invalidation",
+      "pass": true
+    },
+    "n10e_cold_replay": {
+      "evidence_ref": "outputs/hostile_oracle_results.json#replay_and_invalidation.n10e_cold_replay",
+      "pass": true
+    },
+    "progressive_receipt_recompute_identity": {
+      "evidence_ref": "outputs/hostile_oracle_results.json#replay_and_invalidation.progressive_receipt_recompute_identity",
+      "pass": true
+    },
+    "public_consumer_replay": {
+      "evidence_ref": "outputs/hostile_oracle_results.json#replay_and_invalidation.public_consumer_replay",
+      "pass": true
+    },
+    "world_selection_determinism": {
+      "evidence_ref": "outputs/hostile_oracle_results.json#replay_and_invalidation.world_selection_determinism",
+      "pass": true
+    }
+  },
+  "role": "independent N9/N10E/N10W integration investigator (product-first PRE-V3)",
+  "schema": "PYAT_R3_HQ295_W10_TYPED_IO_AND_ORACLE_PACKET@1",
+  "scientific_ceilings": [
+    "TEST_ONLY modeled world only; no N9 operative current token",
+    "no source issuer, no model-use issuer, no self-granted permission/CURRENT",
+    "computed N10E lane at synthetic fixture universe grain; never merged into route probabilities",
+    "N10W consumer is an unadopted adapter candidate; interface court only",
+    "persona quality effect is a test hypothesis, not measured",
+    "AT33/AT34/AT35 remain proposed acceptance cases at estate grade",
+    "35-wave / 1890-cell / F1-F8 / AT01-AT35 estate unchanged"
+  ],
+  "typed_io": {
+    "consumer_receipt": {
+      "fields": {
+        "actor_firewall": "actor_executions=0, v3_invoked=False, v2_invoked=False, model_calls=0, expressive_generator_invoked=False",
+        "adapter_contract_id": "W10_N10W_PROGRESSIVE_PARENT_COPARENT_ADAPTER@1.0.0",
+        "adapter_grade": "TEST_ONLY_INTERFACE_COURT__NOT_OPERATIVE_N9_WORLD__NOT_INTEGRATED_N10W_OWNER__NO_ACTOR__NO_MODEL_USE_ISSUER",
+        "consumer_id": "urn:rawlsing:hq295-w10:consumer:E05_VERTICAL_WORLD_N10E_N10W_PROBE@1",
+        "dyad_firewall": "requested grain, dyad_claim_state (REFUSED_NO_HOUSEHOLD_SAMPLING_UNIT_AUTHORITY at dyad grain), dyad_sampling_unit_authority=ABSENT, household_unit_semantics=STRUCTURAL_PREMISE_ONLY__NO_GENERATED_PARENT__NO_DYAD_JOINT, individual_possibility_state=PRODUCED_RETAINED",
+        "n10e_lane": "provider receipt ref/hash, evidence ref, computed cells (raw support + $exact_fraction), denominator, consumer result hash, cross_grain_route_probability_merge=FORBIDDEN",
+        "replay_hash": "sha256 of canonical receipt material",
+        "stages": "[C0_UNCONDITIONED_SUBJECT_AND_TIME, C1_WORLD_INSTITUTIONAL_ACCESS_CONDITIONING, C2_PARENT_COPARENT_HOUSEHOLD_CARE_TIME_CONDITIONING]; each: conditioner_witness_id + typed_route_support(5 routes) + n10e_empirical_lane_bound + route_probability_merging=FORBIDDEN_CROSS_GRAIN",
+        "typed_route_support_entry": "route_id, stage_id, state, eligibility, epistemic_label=MODELED__NOT_OBSERVED__NOT_MEASURED, probability=None, probability_null_reason, non_response_state=UNKNOWN_NOT_MEASURED, type_belief_voice_state=UNKNOWN_NOT_ASSIGNED, personal_experience_state=UNKNOWN_NOT_ASSIGNED, modeled_rule_id, witness_premises, minority_alternatives_preserved",
+        "unknowns": "enneagram_type/personality/beliefs/personal_experience/psychological_state=UNKNOWN_NOT_ASSIGNED; voice=NOT_APPLICABLE_PRE_V3; non_response=UNKNOWN_NOT_MEASURED; route_probabilities=NULL_NO_MODEL_USE_ISSUER; persona_quality_effect=TEST_HYPOTHESIS_NOT_MEASURED",
+        "world_identity / world_dependency_refs": "repository ref, context query id/hash, resolution receipt ref, selection record refs, RSC ref, currentness receipt ref/state, validation receipt ref, world replay hash, world fact digest"
+      },
+      "schema": "W10_N10W_PROGRESSIVE_WORLD_CONSUMER_RECEIPT@1",
+      "type": "probe.n10w_progressive_adapter.N10WProgressiveReceipt"
+    },
+    "consumer_request": {
+      "fields": {
+        "as_of_year": "int (=2008 required)",
+        "claim_grain": "INDIVIDUAL_SELECTOR | HOUSEHOLD_COPARENT_DYAD",
+        "cross_universe_joint": "False required",
+        "erase_routes": "empty required",
+        "impute_missing_probability": "NONE required",
+        "interpret_as_observed_temporal_change": "False required",
+        "invoke_v3_actor / invoke_v2_expression": "False required",
+        "model_use_issuer_ref": "None required (any issuer -> REJECT_MISSING_CURRENTNESS_OR_ISSUER)",
+        "n10e_product": "probe.n10e_computed_edge.N10EComputedProduct (provider-derived computed cells)",
+        "promote_fixture_current": "False required",
+        "query_id": "str",
+        "request_unit_scope": "str (=declared synthetic unit required)",
+        "requested_outputs": "tuple[str] (forbidden: ENNEAGRAM_TYPE/PERSONALITY_TYPE/HEALTH_SCORE/BELIEFS/VOICE/BIOGRAPHY/PERSONAL_EXPERIENCE/PSYCHE_STATE/DEVELOPMENTAL_PATHOLOGY/FINAL_TYPE)",
+        "requested_world_uses": "('CONTEXT',) maximum",
+        "subject_selector": "Mapping (UNINSTANTIATED_POSITIONED_SUBJECT_SELECTOR; index=synthetic_eligibility_case_001; year=2008; age=14; unit=INDIVIDUAL_POSITION_SELECTOR; real_subject=False)",
+        "world": "probe.modeled_selected_world.ModeledSelectedWorld (M4 resolve_v558 + M5 RSC; grade TEST_ONLY_MODELED_SELECTED_WORLD)",
+        "world_grade_claim": "str (=TEST_ONLY_MODELED_SELECTED_WORLD__NOT_N9_OPERATIVE_CURRENT__NOT_OBSERVED required)"
+      },
+      "type": "probe.n10w_progressive_adapter.N10WProgressiveRequest"
+    },
+    "typed_refusal_codes": [
+      "REJECT_REAL_WORLD_AUTHORITY_PROMOTION",
+      "REJECT_DIRECT_STATIC_TYPE_ASSIGNMENT",
+      "REJECT_UNLICENSED_DYAD_OR_RESPONSE_JOIN",
+      "REJECT_UNSUPPORTED_PRECISION",
+      "REJECT_UNISSUED_TEMPORAL_COMPARABILITY",
+      "REJECT_HANDWRITTEN_PROVIDER_INPUT",
+      "REJECT_MISSING_CURRENTNESS_OR_ISSUER",
+      "NO_ACTOR_RUN_OR_MODEL_INVOCATION",
+      "REJECT_MINOR_ROUTE_ERASURE",
+      "REJECT_NONLOCAL_COUNTERFACTUAL_CONTAMINATION",
+      "WORLD_SUBJECT_UNIT_MISMATCH",
+      "WORLD_AS_OF_YEAR_MISMATCH",
+      "WORLD_SCOPE_NOT_AUTHORIZED",
+      "WORLD_CURRENTNESS_NOT_CURRENT__NO_STALE_SELECTED_TRUTH",
+      "WORLD_SELECTION_INCOMPLETE",
+      "MODELED_RULE_INDETERMINATE"
+    ]
+  },
+  "typed_refusal_probes": [
+    {
+      "expected": "WORLD_SUBJECT_UNIT_MISMATCH",
+      "id": "wrong_original_unit_scope",
+      "observed": "WORLD_SUBJECT_UNIT_MISMATCH",
+      "pass": true,
+      "reason": "requested unit/scope does not match the declared original synthetic unit scope",
+      "runtime": "EXECUTED"
+    },
+    {
+      "expected": "WORLD_AS_OF_YEAR_MISMATCH",
+      "id": "wrong_original_year",
+      "observed": "WORLD_AS_OF_YEAR_MISMATCH",
+      "pass": true,
+      "reason": "as_of year 2009 does not match the declared original year 2008",
+      "runtime": "EXECUTED"
+    },
+    {
+      "expected": "WORLD_SCOPE_NOT_AUTHORIZED",
+      "id": "revoked_or_never_granted_scope_uses",
+      "observed": "WORLD_SCOPE_NOT_AUTHORIZED",
+      "pass": true,
+      "reason": "requested world uses ['ACTIVE_CAUSAL'] exceed the granted CONTEXT-only modeled-world scope ['CONTEXT']; revoked/never-granted scope refuses",
+      "runtime": "EXECUTED"
+    },
+    {
+      "expected": "RESOLUTION_DENIED_OR_NOT_APPLICABLE",
+      "id": "m4_selected_service_revoked_scope_resolution",
+      "observed": "RESOLUTION_DENIED_OR_NOT_APPLICABLE",
+      "pass": true,
+      "reason": "actual M4 resolver denies uses beyond the granted CONTEXT atom",
+      "runtime": "EXECUTED"
+    }
+  ]
+}
