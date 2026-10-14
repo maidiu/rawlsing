@@ -1,0 +1,40 @@
+// Independent synthetic temporal contract arithmetic court. No original survey, Python or production runtime.
+// The same pure court() was executed once in ChatGPT functions.exec JS sandbox.
+const court=function(){
+  const frac=(a,b=1n)=>{if(typeof a==="string" && a.includes("/")){const p=a.split("/");return frac(BigInt(p[0]),BigInt(p[1]));}a=BigInt(a);b=BigInt(b);if(!b)throw Error("ZERO_DIV");if(b<0n){a=-a;b=-b}let u=a<0n?-a:a,v=b;while(v){let t=u%v;u=v;v=t;}return [a/u,b/u];};
+  const sub=(x,y)=>frac(x[0]*y[1]-y[0]*x[1],x[1]*y[1]);
+  const plus=(x,y)=>frac(x[0]*y[1]+y[0]*x[1],x[1]*y[1]);
+  const multiply=(x,y)=>frac(x[0]*y[0],x[1]*y[1]);
+  const div=(x,y)=>frac(x[0]*y[1],x[1]*y[0]);
+  const val=x=>frac(x);
+  const fmt=x=>x[1]===1n?String(x[0]):x[0]+"/"+x[1];
+  const tests=[];
+  const check=(id,obs,exp)=>tests.push({id,status:obs===exp?"PASS":"FAIL",observed:obs,expected:exp});
+  const direct=(a,b,g)=>!g.sourceA||!g.sourceB?"HOLD_SOURCE_FACTS":!g.permission?"HOLD_EE12_PERMISSION":!g.sameEstimand?"REFUSE_ESTIMAND":!g.samePop?"HOLD_POPULATION_BRIDGE":{mode:"MEASURED_INPUT_SYNTHETIC",delta:fmt(sub(val(b),val(a)))};
+  const infer=(left,right,year,opts)=>!opts.modelUse?"HOLD_MODEL_PERMISSION":year<left.year||year>right.year?"REFUSE_EXTRAPOLATION":right.year-left.year>opts.maxGap?"UNKNOWN_GAP":opts.rupture?"UNKNOWN_BREAK":{mode:"INFERRED_ONLY",prob:fmt(plus(val(left.p),multiply(sub(val(right.p),val(left.p)),frac(BigInt(year-left.year),BigInt(right.year-left.year)))))};
+  const struct=(a,b,g)=>!a.objective||!b.objective?"REFUSE_ATTITUDE_TO_INSTITUTION":!g.rule||!g.comparability?"HOLD_STRUCTURAL_RULE":{state:"AUTHORIZED_STRUCTURAL_CANDIDATE",not_measured_without_real_refs:true};
+  const n9=(receipt)=>!receipt.n8eRef||!receipt.ee12Ref||!receipt.selectedQuery||!receipt.valuesReadHash?"N9_NO_REAL_CONSUMPTION":"N9_CONTRACT_SHAPE_ONLY";
+  check("direct_no_wave_facts",direct("1/2","7/10",{sourceA:false,sourceB:false,permission:true}),"HOLD_SOURCE_FACTS");
+  check("direct_no_EE12",direct("1/2","7/10",{sourceA:true,sourceB:true,permission:false}),"HOLD_EE12_PERMISSION");
+  check("direct_mismatch_estimand",direct("1/2","7/10",{sourceA:true,sourceB:true,permission:true,sameEstimand:false}),"REFUSE_ESTIMAND");
+  check("direct_mismatch_pop",direct("1/2","7/10",{sourceA:true,sourceB:true,permission:true,sameEstimand:true,samePop:false}),"HOLD_POPULATION_BRIDGE");
+  const synthetic=direct("1/2","7/10",{sourceA:true,sourceB:true,permission:true,sameEstimand:true,samePop:true});
+  check("synthetic_arithmetic_exact_delta",synthetic.delta,"1/5");
+  check("synthetic_not_real_trend",synthetic.mode,"MEASURED_INPUT_SYNTHETIC");
+  const left={year:2000,p:"1/5"},right={year:2010,p:"4/5"};
+  check("interpolation_no_model_rights",infer(left,right,2005,{modelUse:false,maxGap:10}),"HOLD_MODEL_PERMISSION");
+  check("interpolation_horizon",infer(left,right,1999,{modelUse:true,maxGap:10}),"REFUSE_EXTRAPOLATION");
+  check("interpolation_max_gap",infer(left,right,2005,{modelUse:true,maxGap:5}),"UNKNOWN_GAP");
+  check("interpolation_rupture",infer(left,right,2005,{modelUse:true,maxGap:10,rupture:true}),"UNKNOWN_BREAK");
+  const scenario=infer(left,right,2005,{modelUse:true,maxGap:10});
+  check("interpolation_is_explicitly_modeled",scenario.mode,"INFERRED_ONLY");
+  check("interpolation_midpoint_synthetic",scenario.prob,"1/2");
+  check("N8S_attitudes_refused",struct({objective:false},{objective:false},{rule:true,comparability:true}),"REFUSE_ATTITUDE_TO_INSTITUTION");
+  check("N8S_missing_rule",struct({objective:true},{objective:true},{rule:false,comparability:true}),"HOLD_STRUCTURAL_RULE");
+  check("N9_missing_dereference",n9({n8eRef:"r",ee12Ref:"r",selectedQuery:"q"}),"N9_NO_REAL_CONSUMPTION");
+  check("N9_fake_positive_never_claimed",n9({n8eRef:"test",ee12Ref:"test",selectedQuery:"test",valuesReadHash:"test"}),"N9_CONTRACT_SHAPE_ONLY");
+  return {schema:"HQ294_D04P_INDEPENDENT_JS_SOURCE_FREE_COURT@1",origin:"SYNTHETIC_SOURCE_FREE_ONLY",project_python_run:false,real_survey_ops:false,ee12_issued:false,n8_n9_run:false,tests,passed:tests.filter(x=>x.status==="PASS").length,failed:tests.filter(x=>x.status==="FAIL").length};
+};
+const result=court();
+console.log(JSON.stringify(result,null,2));
+if(result.failed)process.exitCode=1;

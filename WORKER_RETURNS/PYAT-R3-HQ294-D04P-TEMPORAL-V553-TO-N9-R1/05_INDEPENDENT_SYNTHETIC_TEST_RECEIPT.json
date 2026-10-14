@@ -1,0 +1,114 @@
+{
+  "schema": "HQ294_D04P_INDEPENDENT_JS_SOURCE_FREE_COURT@1",
+  "origin": "SYNTHETIC_SOURCE_FREE_ONLY",
+  "project_python_run": false,
+  "real_survey_ops": false,
+  "ee12_issued": false,
+  "n8_n9_run": false,
+  "tests": [
+    {
+      "id": "direct_no_wave_facts",
+      "status": "PASS",
+      "observed": "HOLD_SOURCE_FACTS",
+      "expected": "HOLD_SOURCE_FACTS"
+    },
+    {
+      "id": "direct_no_EE12",
+      "status": "PASS",
+      "observed": "HOLD_EE12_PERMISSION",
+      "expected": "HOLD_EE12_PERMISSION"
+    },
+    {
+      "id": "direct_mismatch_estimand",
+      "status": "PASS",
+      "observed": "REFUSE_ESTIMAND",
+      "expected": "REFUSE_ESTIMAND"
+    },
+    {
+      "id": "direct_mismatch_pop",
+      "status": "PASS",
+      "observed": "HOLD_POPULATION_BRIDGE",
+      "expected": "HOLD_POPULATION_BRIDGE"
+    },
+    {
+      "id": "synthetic_arithmetic_exact_delta",
+      "status": "PASS",
+      "observed": "1/5",
+      "expected": "1/5"
+    },
+    {
+      "id": "synthetic_not_real_trend",
+      "status": "PASS",
+      "observed": "MEASURED_INPUT_SYNTHETIC",
+      "expected": "MEASURED_INPUT_SYNTHETIC"
+    },
+    {
+      "id": "interpolation_no_model_rights",
+      "status": "PASS",
+      "observed": "HOLD_MODEL_PERMISSION",
+      "expected": "HOLD_MODEL_PERMISSION"
+    },
+    {
+      "id": "interpolation_horizon",
+      "status": "PASS",
+      "observed": "REFUSE_EXTRAPOLATION",
+      "expected": "REFUSE_EXTRAPOLATION"
+    },
+    {
+      "id": "interpolation_max_gap",
+      "status": "PASS",
+      "observed": "UNKNOWN_GAP",
+      "expected": "UNKNOWN_GAP"
+    },
+    {
+      "id": "interpolation_rupture",
+      "status": "PASS",
+      "observed": "UNKNOWN_BREAK",
+      "expected": "UNKNOWN_BREAK"
+    },
+    {
+      "id": "interpolation_is_explicitly_modeled",
+      "status": "PASS",
+      "observed": "INFERRED_ONLY",
+      "expected": "INFERRED_ONLY"
+    },
+    {
+      "id": "interpolation_midpoint_synthetic",
+      "status": "PASS",
+      "observed": "1/2",
+      "expected": "1/2"
+    },
+    {
+      "id": "N8S_attitudes_refused",
+      "status": "PASS",
+      "observed": "REFUSE_ATTITUDE_TO_INSTITUTION",
+      "expected": "REFUSE_ATTITUDE_TO_INSTITUTION"
+    },
+    {
+      "id": "N8S_missing_rule",
+      "status": "PASS",
+      "observed": "HOLD_STRUCTURAL_RULE",
+      "expected": "HOLD_STRUCTURAL_RULE"
+    },
+    {
+      "id": "N9_missing_dereference",
+      "status": "PASS",
+      "observed": "N9_NO_REAL_CONSUMPTION",
+      "expected": "N9_NO_REAL_CONSUMPTION"
+    },
+    {
+      "id": "N9_fake_positive_never_claimed",
+      "status": "PASS",
+      "observed": "N9_CONTRACT_SHAPE_ONLY",
+      "expected": "N9_CONTRACT_SHAPE_ONLY"
+    }
+  ],
+  "passed": 16,
+  "failed": 0,
+  "host": "ChatGPT functions.exec JavaScript V8 isolate",
+  "observed_execution": "YES_JS_PURE_SYNTHETIC_ONLY",
+  "model": "GPT-6",
+  "ui_effort": "NOT_INDEPENDENTLY_VERIFIED",
+  "code_and_fixture": "all invented independent toy numbers; 0 actual survey rows or service responses",
+  "basis": "method contract challenge, not proof modern N8E/N8S/N9 integration"
+}

@@ -1,0 +1,166 @@
+{
+  "schema": "HQ294_D04P_TEMPORAL_FALSIFIERS@1",
+  "commission": "PYAT-R3-HQ294-D04P-TEMPORAL-V553-TO-N9-R1",
+  "sealed_head": "37bcccd704b58cd977ace5e4d1d2d01ecb3b3b8b",
+  "test_class": "INDEPENDENT_STATIC_DOCUMENTARY_HOSTILES_NOT_RAW_OR_PYTEST",
+  "python_executed": false,
+  "original_survey_executed": false,
+  "positive_pair_EE12": false,
+  "machine_claims_not_graded_as_test_pass": true,
+  "cases": [
+    {
+      "id": "H01_GLOBAL_PAIR_LEDGER",
+      "challenge": "All 63 candidate edges remain accounted; none automatically becomes a trend",
+      "expected_defensible_response": "Do not convert 63 syntactic pairs to 63 measured trends",
+      "observed_scientific_basis": "STATIC_CODE_DOC_HOLD",
+      "status": "STATIC_REVIEW_ASSERTION__RUNTIME_UNVERIFIED"
+    },
+    {
+      "id": "H02_UGANDA_R5_SUPPLEMENT",
+      "challenge": "R5 2400 national + 3800 special sample; all 6200 cannot be national weight without approved selector",
+      "expected_defensible_response": "REFUSE_NATIONAL_ESTIMATE",
+      "observed_scientific_basis": "ORIGINAL_DOCUMENTARY",
+      "status": "STATIC_REVIEW_ASSERTION__RUNTIME_UNVERIFIED"
+    },
+    {
+      "id": "H03_UGANDA_R9_SUPPLEMENT",
+      "challenge": "R9 2400 national + 992 new-city extra; all 3392 cannot be national basis by row count alone",
+      "expected_defensible_response": "REFUSE_NATIONAL_ESTIMATE",
+      "observed_scientific_basis": "ORIGINAL_DOCUMENTARY",
+      "status": "STATIC_REVIEW_ASSERTION__RUNTIME_UNVERIFIED"
+    },
+    {
+      "id": "H04_UGANDA_NATIVE_MISSING",
+      "challenge": "998 R5 refusal != 8 R9 refusal; both separate from 1 wrong, 2 right and DK9",
+      "expected_defensible_response": "MISSINGNESS_TYPED; NEVER_POOL_CODES",
+      "observed_scientific_basis": "ORIGINAL_DOCUMENTARY",
+      "status": "STATIC_REVIEW_ASSERTION__RUNTIME_UNVERIFIED"
+    },
+    {
+      "id": "H05_UGANDA_PROMPT_SHIFT",
+      "challenge": "R9 introduces balancing preamble not found in indexed R5 country codebook",
+      "expected_defensible_response": "INVARIANCE_UNKNOWN_NOT_NONCOMPARABLE",
+      "observed_scientific_basis": "ORIGINAL_DOCUMENTARY",
+      "status": "STATIC_REVIEW_ASSERTION__RUNTIME_UNVERIFIED"
+    },
+    {
+      "id": "H06_EVS_NATIVE_RECODE",
+      "challenge": "Austria original 1 approve,2 disapprove; trend 1 approve,0 disapprove; -1..-5 missing states remain distinct",
+      "expected_defensible_response": "FAIL_IF_NATIVE_2_TREATED_AS_TREND_2",
+      "observed_scientific_basis": "ORIGINAL_DOCUMENTARY",
+      "status": "STATIC_REVIEW_ASSERTION__RUNTIME_UNVERIFIED"
+    },
+    {
+      "id": "H07_EVS_POPULATION",
+      "challenge": "Austria 2008 includes noncitizen private-household residents; 1990 national eligibility unresolved",
+      "expected_defensible_response": "NO_COMMON_TARGET_CLAIM",
+      "observed_scientific_basis": "ORIGINAL_DOCUMENTARY",
+      "status": "STATIC_REVIEW_ASSERTION__RUNTIME_UNVERIFIED"
+    },
+    {
+      "id": "H08_EVS_WEIGHT",
+      "challenge": "weight_g existence is not a 1990 probability design or valid design-based SE",
+      "expected_defensible_response": "NO_DESIGN_CI_FROM_WEIGHT_ALONE",
+      "observed_scientific_basis": "ORIGINAL_DOCUMENTARY",
+      "status": "STATIC_REVIEW_ASSERTION__RUNTIME_UNVERIFIED"
+    },
+    {
+      "id": "H09_EVS_PRESENTATION",
+      "challenge": "1990 read/card versus 2008 Liste 53/read: protocol bias outside sampling SE",
+      "expected_defensible_response": "NO_FORCED_ZERO_MEASUREMENT_BIAS",
+      "observed_scientific_basis": "ORIGINAL_DOCUMENTARY",
+      "status": "STATIC_REVIEW_ASSERTION__RUNTIME_UNVERIFIED"
+    },
+    {
+      "id": "H10_GHANA_ZERO",
+      "challenge": "D07 Ghana satisfaction: 0 says Ghana not democracy; not response DK or positive country no democracy fact",
+      "expected_defensible_response": "DO_NOT_DELETE_OR_OBJECTIFY",
+      "observed_scientific_basis": "ORIGINAL_DOCUMENTARY",
+      "status": "STATIC_REVIEW_ASSERTION__RUNTIME_UNVERIFIED"
+    },
+    {
+      "id": "H11_V553_READINESS",
+      "challenge": "Shared overlay columns and complete wave surfaces do not certify EE12 original sample measurement/estimand",
+      "expected_defensible_response": "RETAIN_CANDIDATE_ONLY",
+      "observed_scientific_basis": "STATIC_CODE",
+      "status": "STATIC_REVIEW_ASSERTION__RUNTIME_UNVERIFIED"
+    },
+    {
+      "id": "H12_V553_PROBE_DELTA",
+      "challenge": "A V553 row can emit probe delta/direction while delta_interpretation_permission=false",
+      "expected_defensible_response": "PROHIBIT_N8S_OR_N9_POSITIVE_INTERPRETATION",
+      "observed_scientific_basis": "STATIC_CODE",
+      "status": "STATIC_REVIEW_ASSERTION__RUNTIME_UNVERIFIED"
+    },
+    {
+      "id": "H13_V553_FLAT",
+      "challenge": "Magnitude |delta|≤0.05 classified flat, not statistically measured zero change",
+      "expected_defensible_response": "NO_NOCHANGE_CLAIM",
+      "observed_scientific_basis": "STATIC_CODE",
+      "status": "STATIC_REVIEW_ASSERTION__RUNTIME_UNVERIFIED"
+    },
+    {
+      "id": "H14_V553_GAP",
+      "challenge": "Missing year old temporal segment unknown_gap_preserved; no observed period interpolation",
+      "expected_defensible_response": "MODEL_ONLY_IF_FUTURE_AUTHORITY",
+      "observed_scientific_basis": "STATIC_CODE",
+      "status": "STATIC_REVIEW_ASSERTION__RUNTIME_UNVERIFIED"
+    },
+    {
+      "id": "H15_F7_BRANCH_LOCAL",
+      "challenge": "HQ214 repaired comparator at a933..., absent from 37bcc sealed tree",
+      "expected_defensible_response": "NOT_CURRENT_ADOPTED_BY_NAME",
+      "observed_scientific_basis": "STATIC_CODE",
+      "status": "STATIC_REVIEW_ASSERTION__RUNTIME_UNVERIFIED"
+    },
+    {
+      "id": "H16_N8E_NOT_N8S",
+      "challenge": "Survey respondent political perception change cannot supply objective institution change",
+      "expected_defensible_response": "KEEP_N8E_N8S_SEPARATE",
+      "observed_scientific_basis": "ARCHITECTURAL_METHOD",
+      "status": "STATIC_REVIEW_ASSERTION__RUNTIME_UNVERIFIED"
+    },
+    {
+      "id": "H17_SOURCE_PERMISSION",
+      "challenge": "Original document/country summary not a respondent-data source-operation warrant",
+      "expected_defensible_response": "HOLD_SOURCE_READ_AND_TWO_WAVE_ESTIMATES",
+      "observed_scientific_basis": "AUTHORITY",
+      "status": "STATIC_REVIEW_ASSERTION__RUNTIME_UNVERIFIED"
+    },
+    {
+      "id": "H18_FALSE_INCOMPATIBILITY",
+      "challenge": "Absent 1990 sample method or Uganda script is ignorance; not proof intrinsic noncomparability",
+      "expected_defensible_response": "HELD_NOT_NONCOMPARABLE",
+      "observed_scientific_basis": "AUTHORITY",
+      "status": "STATIC_REVIEW_ASSERTION__RUNTIME_UNVERIFIED"
+    },
+    {
+      "id": "H19_MODEL_PRIOR",
+      "challenge": "Interpolation/partial pool/proxy values do not receive MEASURED origin or design CI by naming a model",
+      "expected_defensible_response": "MODELED_WITH_PRIOR_UNCERTAINTY_SENSITIVITY",
+      "observed_scientific_basis": "METHOD",
+      "status": "STATIC_REVIEW_ASSERTION__RUNTIME_UNVERIFIED"
+    },
+    {
+      "id": "H20_N9_OCCUPANCY",
+      "challenge": "No actual N9 read response, no observed input-to-output hash; schema alone not an actual consumer",
+      "expected_defensible_response": "N9_REAL_USE_UNPROVED",
+      "observed_scientific_basis": "INTEGRATION",
+      "status": "STATIC_REVIEW_ASSERTION__RUNTIME_UNVERIFIED"
+    },
+    {
+      "id": "H21_WAVE_RESPONDENT_JOIN",
+      "challenge": "Repeated cross-sectional waves never silently joined by respondent identity or denominator",
+      "expected_defensible_response": "NO_PERSON_LEVEL_JOIN",
+      "observed_scientific_basis": "METHOD",
+      "status": "STATIC_REVIEW_ASSERTION__RUNTIME_UNVERIFIED"
+    },
+    {
+      "id": "H22_VALID_ISSUED_NULL",
+      "challenge": "Measured no-change has to derive authorized estimand and uncertainty; missing evidence is not null",
+      "expected_defensible_response": "UNKNOWN_NOT_ZERO",
+      "observed_scientific_basis": "METHOD",
+      "status": "STATIC_REVIEW_ASSERTION__RUNTIME_UNVERIFIED"
+    }
+  ]
+}

@@ -1,0 +1,217 @@
+{
+  "schema": "PYAT_HQ294_D04P_ORIGINAL_PAIR_METHOD_COMPARISON@1",
+  "reviewed_at": "2026-10-13",
+  "sealed_startup": "37bcccd704b58cd977ace5e4d1d2d01ecb3b3b8b",
+  "source_count_conserved": 35,
+  "within_family_pair_candidate_count_conserved": 63,
+  "pair_status_semantics": "63 syntactic graph edges; original claim-specific item/population/estimand EE12 grants not implied",
+  "cases": [
+    {
+      "id": "UGA_R5_R9",
+      "families": [
+        "AFROBAROMETER"
+      ],
+      "sources": [
+        "SRC02",
+        "SRC03"
+      ],
+      "country": "Uganda",
+      "theme": "Respondent appraisal of whether country moving right or wrong",
+      "wave_a": {
+        "wave": "R5",
+        "item": "UGA Q7",
+        "fieldwork": "2011-12-02/2012-02-27",
+        "native": {
+          "1": "wrong",
+          "2": "right",
+          "9": "DK",
+          "998": "refused",
+          "-1": "missing"
+        },
+        "national_n_documentary": 2400,
+        "supplemental_n_documentary": 3800,
+        "weight_candidate": "withinwt",
+        "frame": "UBOS 2002 census forward projection"
+      },
+      "wave_b": {
+        "wave": "R9",
+        "item": "UGA Q3",
+        "fieldwork": "2022-01-07/2022-01-25",
+        "native": {
+          "1": "wrong",
+          "2": "right",
+          "8": "refused",
+          "9": "DK",
+          "-1": "missing"
+        },
+        "national_n_documentary": 2400,
+        "supplemental_n_documentary": 992,
+        "weight_candidates": [
+          "withinwt_ea",
+          "withinwt_hh"
+        ],
+        "frame": "UBOS 2014 census"
+      },
+      "evidence_grade": "COUNTRY_CODEBOOK_R5_AND_ORIGINAL_R9_INDEXED__RETAINED_BYTES_AND_FIELD_VERSION_UNPROVED",
+      "original_documentary": [
+        "https://www.afrobarometer.org/wp-content/uploads/2022/02/uga_r5_codebook.pdf",
+        "https://www.afrobarometer.org/wp-content/uploads/2022/02/uga_r5_sor.pdf",
+        "https://www.afrobarometer.org/wp-content/uploads/2023/06/UGA_R9.Indigenized-questionnaire_29Dec21-Final.docx.pdf",
+        "https://www.afrobarometer.org/wp-content/uploads/2024/05/UGA_R9.Codebook_16Apr24.final_.pdf"
+      ],
+      "estimand_candidate": "Each wave separately, design-weighted Pr(native response=2 | actually nationally sampled adult citizen, item eligible+asked, substantive {1,2}), then p_R9-p_R5 if separate EE12 permits.",
+      "exact_holds": [
+        "R5 country-original final fielded question script/translations absent",
+        "R9 balancing preamble versus R5 response-process effect unvalidated",
+        "National/supplemental record selectors unverified for both retained releases",
+        "R5 withinwt and R9 withinwt_ea versus withinwt_hh design selection unissued",
+        "PSU/stratum and variance construction unqualified",
+        "Retained original SHA to national archive/release/item dictionary not bridged",
+        "Operation-specific source permission and pair-specific EE12 not issued"
+      ],
+      "grade": "HELD_NOT_NONCOMPARABLE",
+      "value_sign": null,
+      "confidence_interval": null,
+      "actual_trend": false,
+      "next_custodian": "Afrobarometer Uganda R5/R9 Data Management + national survey owners, governed Rawlsing retained-source custody, independent survey statistician, separate EE12 issuer",
+      "documentary_court": "WORKER_RETURNS/PYAT-HQ270-U01-UGANDA-R5-R9-ORIGINAL-NATIONAL-INSTRUMENT-AND-DESIGN-R1 @7ff4a9dd5dbecfd070fbd72e69f0765213f28416"
+    },
+    {
+      "id": "AUT_EVS_1990_2008_A048",
+      "families": [
+        "EVS"
+      ],
+      "sources": [
+        "SRC12",
+        "SRC14"
+      ],
+      "country": "Austria",
+      "theme": "Approval/disapproval of abortion when woman unmarried, not legal abortion behavior or institution",
+      "wave_a": {
+        "wave": "1990",
+        "item": "q467c / original Q465C (master Q467C)",
+        "fieldwork": "1990-04-09/1990-06-01",
+        "native": {
+          "1": "approve",
+          "2": "disapprove"
+        },
+        "national_n_documentary": 1460,
+        "source_release": "GESIS ZA4460 v3.0.0; official country study ZA4479 (country report missing)",
+        "weight_candidate": "weight_g age-sex calibration",
+        "population": "18+ national description; citizenship/private-household exact national universe unresolved",
+        "administration": "read/card Z"
+      },
+      "wave_b": {
+        "wave": "2008",
+        "item": "v184 / original Q53A",
+        "fieldwork": "2008-07-21/2008-10-22",
+        "native": {
+          "1": "approve",
+          "2": "disapprove"
+        },
+        "national_n_documentary": 1510,
+        "source_release": "ZA4800 v5.0.0; Austria national ZA4754",
+        "weight_candidates": [
+          "EVS age-sex calibration",
+          "Austria original weight (distinct)"
+        ],
+        "population": "18+ private-household residents irrespective citizenship",
+        "design": "multistage stratified clustered probability, 375 points",
+        "administration": "Liste 53 displayed plus row read"
+      },
+      "trend_file": {
+        "source": "GESIS ZA7503 v3.0.0 A048",
+        "recode": "1 approve ->1; 2 disapprove ->0; missing/not-asked -1..-5 typed"
+      },
+      "evidence_grade": "ORIGINAL_NATIONAL_ADMIN_INSTRUMENT_AND_TREND_DOCUMENTARY__RETAINED_SHA_RELEASE_BINDING_UNPROVED",
+      "original_documentary": [
+        "https://access.gesis.org/dbk/50678",
+        "https://access.gesis.org/dbk/17933",
+        "https://access.gesis.org/dbk/70780",
+        "https://www.gesis.org/en/european-values-study/data-and-documentation/evs-trend-file-1981-2017"
+      ],
+      "estimand_candidate": "Per-wave valid-item approval proportion in independently proven common 18+ (or corrected age) Austrian citizen private-household domain, design-aware where available; temporal difference only after population/method/EE12 positive. If impossible retain separate native wave descriptives.",
+      "exact_holds": [
+        "Primary Austrian 1990 Fessel/GfK probability versus quota frame/selection/PSU/strata not obtained",
+        "1990 citizenship and age frame not proven from combined-series metadata",
+        "2008 resident-including-noncitizen universe differs; common-target subset not authenticated",
+        "1990 versus 2008 show/list-read administration comparability and nonsampling bias unknown",
+        "retained SRC12/SRC14 SAV SHA-to-archive version/country column binding absent",
+        "weight_g and Austria original/EVS 2008 weight selection and design variance unknown",
+        "item-risk and -1..-5 missingness bridge unissued",
+        "operation-specific source read and EE12 not issued"
+      ],
+      "grade": "HELD_NOT_NONCOMPARABLE",
+      "value_sign": null,
+      "confidence_interval": null,
+      "actual_trend": false,
+      "next_custodian": "GESIS/EVS, AUSSDA Austria 1990 national method/ZA4479 custodian, Rawlsing retained custody, independent survey statistician and separate EE12 issuer",
+      "documentary_court": "WORKER_RETURNS/PYAT-HQ254-E01-EVS-A048-AUSTRIA-DESIGN-AND-VERSION-R1 @111adb35cac4a04041f20422c4593a2feee3d1d4 and HQ257 @fa0335a6401d467a1ef63f7ed1b85014adeea69e"
+    }
+  ],
+  "methods": [
+    {
+      "id": "M0_SOURCE_NATIVE_SEPARATE_WAVES",
+      "method": "Per-wave source-native categorical distribution, raw item risk, separate DK/refusal/nonresponse",
+      "upside": "Useful documentary and eventual observed profile without false trend",
+      "prerequisites": "Original-release binding, source-use and risk/weight authority per wave",
+      "claim_ceiling": "At most wave-local measured/sample description until separate population/design grant",
+      "missing_data": "UNMEASURED not zero"
+    },
+    {
+      "id": "M1_DIRECT_CATEGORICAL_HARMONIZATION",
+      "method": "Versioned explicit mapping of native category→common target category with 0/DK/refusal/not-asked preserved; retain original unmapped mass",
+      "upside": "Transparent item-level exact repeated cross-section if eligible domains and response process qualified",
+      "prerequisites": "Original administration, instrument and release bridge; EE12 instrument/coding, common estimand, valid denominator; documented weights/design",
+      "claim_ceiling": "Direct MEASURED per-wave probability; delta only on positive EE12",
+      "validation": "original-language/wording/version and negative control for response-process change"
+    },
+    {
+      "id": "M2_REPEATED_CROSS_SECTION_STANDARDIZATION",
+      "method": "Separate country-wave estimators p_t; standardize each to explicitly admitted common age/sex/region/other covariate composition only if shared crosswave measurements",
+      "upside": "Composition sensitivity and a coherent population contrast; no respondent join",
+      "prerequisites": "joint strata and weights in each wave, overlap/positivity, target demographic counts and design covariance",
+      "claim_ceiling": "MEASURED_INPUT_MODEL_STANDARDIZED; difference INFERRED (if transporting beyond design domain); label separately",
+      "validation": "raw vs adjusted delta, covariate omission and overlap bounds"
+    },
+    {
+      "id": "M3_BOUNDED_PARTIAL_POOLING",
+      "method": "Hierarchical survey response model with source/wave effects, differing measured instrument-mode effects and explicit priors, shrinkage calibrated by authorized repeated wave/country evidence",
+      "upside": "Stabilizes weak small cells and may learn temporal continuity",
+      "prerequisites": "enough licensed measured anchors, exchangeability/tested invariance, locked hyperpriors/validation",
+      "claim_ceiling": "MODELED_PARTIAL_POOL, never OBSERVED",
+      "validation": "leave-wave/country-out, minority/subgroup retention, prior-scale/variance sensitivity, design-robust comparisons"
+    },
+    {
+      "id": "M4_INTERPOLATION_SMOOTHING",
+      "method": "No interpolation by default; when two authorized anchor quantities and explicit historical continuity/break law exist, piecewise interpolation or state-space smoothing only for bounded within-horizon periods",
+      "upside": "Historically usable intervening-year context without false observed wave",
+      "prerequisites": "ordered valid compatible anchors, typed gap, explicit model/use grant and uncertainty increasing with gap/break uncertainty",
+      "claim_ceiling": "MODELED_INTERVENING_CONTEXT, no spurious observed year",
+      "validation": "nearest-anchor and unknown-gap baselines, holdout existing third wave, rupture sensitivity, max gap and support ceiling"
+    },
+    {
+      "id": "M5_HISTORICAL_PROXY_PRIOR",
+      "method": "Separate objective source-backed historical period proxy or broad prior for an otherwise empty interval, explicitly not a measured attitude trajectory",
+      "upside": "Allows bounded period-level conditioning for persona world even with unavailable survey comparison",
+      "prerequisites": "independently sourced relevant structural observations, original validity dates and compatible proxy-to-target model permission",
+      "claim_ceiling": "PROXY_MODEL/PRIOR_ONLY",
+      "validation": "perturb proxy/period boundaries, leave proxy out, guard against ecological fallacy and actor determinism"
+    }
+  ],
+  "scientific_rule": "No new signs, confidence intervals, measures, sample linking or EE12 grants computed. Positive modeled context is only after independent model-use/producer authority. Negative comparison requires proven necessary-condition contradiction, not missing paperwork.",
+  "selected_smallest_path": {
+    "id": "GHA_D07_Q43_Q31_TO_N8E_TO_N9",
+    "type": "CONDITIONED_PRODUCER_PATH_NOT_ISSUED",
+    "why": "D07 already recovered both country-original English instruments, shared adult-citizen national designs and explicitly mapped 0/1/2/3/4/9 categories; shifts effort from another Ghana questionnaire search to retained-release and design bridge then actual producers. Uganda and Austria reviewed here as independent alternative test cases; Ghana not estate-global prerequisite.",
+    "source_pair": "AFROBAROMETER SRC02 Ghana R5 2012 Q43 → SRC03 Ghana R9 2022 Q31 (TEMP_SRC02_SRC03)",
+    "next_missing": "exact retained SAV↔country release/field mapping, nationally valid item risk and weight/variance, source-operation rights plus independent EE12, before any measured delta",
+    "consumer": "N8E measured separately released wave proportions/delta → N9 historical selected scope world context query → optional N10E/N10W possibility conditioning subject to independent G0b/EE14; no actor/V3 activation",
+    "success_test": "Actual selected N9 query dereferences product ref and return demonstrates value/read hash and changed historically labeled output for a real temporal input without trend invented; replay and alternative zero/no-change case."
+  },
+  "distinct_structural_target": {
+    "id": "N8S_OBJECTIVE_TEMPORAL",
+    "status": "HOLD_NO_AUTHENTIC_TWO_EPOCH_STRUCTURAL_FACT_PAIR_IDENTIFIED",
+    "requires": "two independently admitted N5/V552J objective structural facts, same authored structural estimand and time-indexed rule, V553 sparse exact semantic key, positive structural temporal-use authority, separate N8S calculated structural delta and actual N9 use; survey opinion change cannot stand in as institution change."
+  }
+}
