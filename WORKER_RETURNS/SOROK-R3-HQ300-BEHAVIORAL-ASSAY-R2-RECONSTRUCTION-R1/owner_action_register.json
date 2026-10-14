@@ -1,0 +1,44 @@
+{
+  "schema": "HQ300_BEH_SEPARATE_OWNER_ACTION@1",
+  "author_role": "BOUNDED_SOURCEFREE_IMPLEMENTER_NOT_ISSUER_OR_REVIEWER",
+  "accepted_authority_collision": false,
+  "I3_escalation": "NOT_TRIGGERED",
+  "actions": [
+    {
+      "owner": "HQ independent I2 reviewer",
+      "status": "NOT_PERFORMED",
+      "requirement": "Review exact final candidate, original 23 REDs, all R2 raw captures, construct/estimand meaning, lawful sets and prospective inferential scope.",
+      "evidence": "03_INDEPENDENT_REVIEW_REQUEST.md"
+    },
+    {
+      "owner": "Independent oracle/scenario custodian and competent semantic owners",
+      "status": "HOLD",
+      "requirement": "Independently adjudicate proposed action sets and private-report semantics, author/custody heldout worlds, and approve an exploratory or powered design.",
+      "evidence": "01_DESIGN.md; 02_VALIDITY_AND_HOLDS.md; data/oracle.json"
+    },
+    {
+      "owner": "Prospective experimental-design owner",
+      "status": "HOLD",
+      "requirement": "Establish sampling units, cross-scenario heterogeneity, family independence, power and multiplicity before promotion/equivalence claims. Six convenience settings are not a population sample.",
+      "evidence": "assay/scoring.py; preregistration_v6.json"
+    },
+    {
+      "owner": "Competent provider/model/privacy/spend grant issuer",
+      "status": "NOT_GRANTED",
+      "requirement": "Exact immutable provider/model/endpoint, affirmative packet privacy and behavioral use, observed price/quota, raw retention/access duration, integer per-trial/total/retry/null/free-text budgets and spend cap bound to accepted freeze/code/schema.",
+      "evidence": "02_VALIDITY_AND_HOLDS.md"
+    },
+    {
+      "owner": "Separately commissioned provider adapter implementer and independent reviewer",
+      "status": "NOT_IMPLEMENTED_NOT_AUTHORIZED",
+      "requirement": "Actual provider adapter and provider-level validation under a distinct later commission; this package permits only inert mock dispatch and rejects live mode unconditionally.",
+      "evidence": "assay/transport.py"
+    },
+    {
+      "owner": "HQ acceptance/adoption authority",
+      "status": "NO_ADOPTION",
+      "requirement": "Accept only independently reviewed measured sourcefree scope. No original-source calibration, actor issuance, wake, release, merge or physical weld follows from mocks.",
+      "evidence": "00_RETURN.md; read_cut.json"
+    }
+  ]
+}

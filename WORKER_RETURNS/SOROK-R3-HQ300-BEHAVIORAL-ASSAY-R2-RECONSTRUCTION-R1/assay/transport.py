@@ -11,6 +11,7 @@ import json
 import os
 from pathlib import Path
 import secrets
+import re
 from datetime import datetime,timezone
 from .architecture import canonical,digest
 from .architecture import build_packet,variants,DerivedCache
@@ -33,9 +34,15 @@ class Frozen:
         rows=json.loads((self.root/self.manifest['schedule_file']).read_text())
         self.rows={x['id']:x for x in rows}
         if len(self.rows)!=len(rows):raise Denied('DUPLICATE_FROZEN_TRIAL')
+        self.cache=DerivedCache();self.intervention_receipts={}
 
     def approved(self,trial):
-        row=self.rows[trial];packet,_=build_packet(self.cases[row['case']],row,DerivedCache())
+        row=self.rows[trial];packet,receipt=build_packet(self.cases[row['case']],row,self.cache)
+        previous=self.intervention_receipts.get(trial,{})
+        receipt['evaluations']=previous.get('evaluations',0)+1
+        receipt['total_history_scans']=previous.get('total_history_scans',0)+receipt['history_scans']
+        receipt['cache_hits']=previous.get('cache_hits',0)+int(bool(receipt['cache'] and receipt['cache']['cache_hit']))
+        self.intervention_receipts[trial]=receipt
         if row.get('variant'):packet=variants(packet,row['variant'])
         return packet,row
 
@@ -51,6 +58,7 @@ class MockIssuer:
     """Ephemeral test authority. Keys never written or returned in captures."""
     def __init__(self):
         self.identity='LOCAL_MOCK_AUTHORITY_ONLY';self._key=secrets.token_bytes(32)
+        self._ledger_paths={};self._heads={};self._validated={};self._revoked=set()
 
     def sign(self,value):
         return hmac.new(self._key,canonical(value),hashlib.sha256).hexdigest()
@@ -72,6 +80,15 @@ def validate(grant,issuer,frozen,now=None):
     if type(issuer) is not MockIssuer:raise Denied('UNTRUSTED_ISSUER_CLASS')
     if not isinstance(grant,dict) or set(grant)!={'body','signature'}:raise Denied('NO_SIGNED_GRANT')
     g=grant['body']
+    identity=digest(grant)
+    if identity in issuer._revoked:raise Denied('GRANT_REVOKED')
+    # Memoize only validation of identical signed bytes; expiry, issuer identity,
+    # revocation, full freeze bytes and every consumption limit remain live.
+    if issuer._validated.get(identity)==frozen.identity and g['issuer']==issuer.identity:
+        current=now or datetime.now(timezone.utc)
+        if datetime.fromisoformat(g['expires_at'])<=current:raise Denied('EXPIRED')
+        frozen.verify()
+        return g
     if not isinstance(g,dict) or set(g)!=FIELDS:raise Denied('GRANT_SCHEMA')
     if not hmac.compare_digest(str(grant['signature']),issuer.sign(g)):raise Denied('BAD_ISSUER_SIGNATURE')
     if g['mode']!='MOCK_ONLY' or g['issuer']!=issuer.identity:raise Denied('LIVE_MODE_OR_ISSUER_DENIED')
@@ -85,7 +102,7 @@ def validate(grant,issuer,frozen,now=None):
     for field in ('per_attempt_cost_bound_micro','per_trial_call_budget','total_call_budget'):
         if not positive_int(g[field]):raise Denied('INTEGER_REQUIRED:'+field)
     if g['per_trial_call_budget']>2:raise Denied('AT_MOST_ONE_TRANSPORT_RETRY')
-    if not isinstance(g['allowed_trials'],list) or not g['allowed_trials'] or len(set(g['allowed_trials']))!=len(g['allowed_trials']) or any(not isinstance(x,str) or len(x)!=32 or any(c not in '0123456789abcdef' for c in x) for x in g['allowed_trials']):raise Denied('INVALID_TRIAL_SCOPE')
+    if not isinstance(g['allowed_trials'],list) or not g['allowed_trials'] or len(set(g['allowed_trials']))!=len(g['allowed_trials']) or any(not isinstance(x,str) or not re.fullmatch('[0-9a-f]{32}',x) for x in g['allowed_trials']):raise Denied('INVALID_TRIAL_SCOPE')
     if not set(g['allowed_trials'])<=set(frozen.rows):raise Denied('UNFROZEN_TRIAL_SCOPE')
     now=now or datetime.now(timezone.utc)
     try:
@@ -93,6 +110,7 @@ def validate(grant,issuer,frozen,now=None):
         if expiry.tzinfo is None or retention.tzinfo is None or expiry<=now or retention<expiry:raise ValueError()
     except (TypeError,ValueError):raise Denied('EXPIRY_OR_RETENTION')
     frozen.verify()
+    issuer._validated[identity]=frozen.identity
     return g
 
 
@@ -117,6 +135,9 @@ class Runner:
         self.grant=copy.deepcopy(grant);self.issuer=issuer;self.frozen=frozen;self.transport=transport
         self.g=validate(self.grant,issuer,frozen);self.grant_hash=digest(self.grant)
         self.journal=Path(journal);self.journal.parent.mkdir(parents=True,exist_ok=True)
+        existing=issuer._ledger_paths.get(self.grant_hash)
+        if existing is not None and (existing!=self.journal.resolve() or not self.journal.exists()):raise Denied('LEDGER_RELOCATION_OR_REMOVAL')
+        issuer._ledger_paths[self.grant_hash]=self.journal.resolve()
         self.lock=open(str(self.journal)+'.lock','a')
         try:fcntl.flock(self.lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
         except BlockingIOError:
@@ -128,6 +149,7 @@ class Runner:
                     entry=json.loads(line);body=entry['body']
                     if entry['signature']!=issuer.sign(body) or body['previous']!=(digest(self.entries[-1]) if self.entries else 'GENESIS') or body['grant_hash']!=self.grant_hash:raise Denied('CORRUPT_OR_DIFFERENT_GRANT_LEDGER')
                     self.entries.append(entry);self._apply(body)
+                if not self.entries or issuer._heads.get(self.grant_hash)!=digest(self.entries[-1]):raise Denied('LEDGER_ROLLBACK')
             else:self._append(dict(op='START'))
         except Exception:
             self.close();raise
@@ -145,12 +167,14 @@ class Runner:
     def _append(self,body):
         b=body|dict(previous=digest(self.entries[-1]) if self.entries else 'GENESIS',grant_hash=self.grant_hash,evidence_label=LABEL)
         entry={'body':b,'signature':self.issuer.sign(b)}
-        with open(self.journal,'ab') as stream:
+        fd=os.open(self.journal,os.O_WRONLY|os.O_APPEND|os.O_CREAT,0o600)
+        with os.fdopen(fd,'ab') as stream:
             stream.write(canonical(entry)+b'\n');stream.flush();os.fsync(stream.fileno())
+        self.issuer._heads[self.grant_hash]=digest(entry)
         self.entries.append(entry);self._apply(b)
 
     def call(self,trial,packet,max_tokens=256,response_format='typed'):
-        g=validate(self.grant,self.issuer,self.frozen)
+        g=self.g
         if trial not in g['allowed_trials'] or packet.get('response_id')!=trial:raise Denied('TRIAL_SCOPE')
         if trial in self.done:raise Denied('UNREPORTED_REDRAW_FORBIDDEN')
         if not positive_int(max_tokens) or max_tokens>256:raise Denied('TOKEN_BUDGET')

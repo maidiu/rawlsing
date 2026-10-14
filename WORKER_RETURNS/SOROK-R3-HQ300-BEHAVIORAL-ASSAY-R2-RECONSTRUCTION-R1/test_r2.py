@@ -63,7 +63,7 @@ def test_rmb_03_real_arm_mechanisms(frozen):
  _,hot=build_packet(case,row|{'arm':'C'},cache);assert hot['cache']['cache_hit']
  cache.entries[next(iter(cache.entries))]['state']['asking_cost']='forged'
  with pytest.raises(Hold,match='CACHE_REBUILD'):build_packet(case,row|{'arm':'C'},cache)
- altered=copy.deepcopy(case);altered['history'][0]['value']='high'
+ altered=copy.deepcopy(case);altered['history'][0]['value']='low' if case['history'][0]['value']=='high' else 'high'
  changed,_=build_packet(altered,row)
  assert changed['facts']['organization']!=packets[0]['facts']['organization']
 
@@ -73,6 +73,7 @@ def test_rmb_04_trace_origin_firewall(frozen):
   row=next(r for r in frozen.rows.values() if r['case']==case['id']);p,_=build_packet(case,row)
   text=canonical(p).decode()
   assert not any(secret in text for secret in case['hidden'].values())
+  assert 'mistaken' not in text and 'testimony' not in text
   assert all(h['field']!='alertness' for h in p['facts']['accessible_history'])
   injected=copy.deepcopy(case);injected['hidden']['origin']='ANOTHER_PRIVATE_ORIGIN'
   other,_=build_packet(injected,row);assert other==p
@@ -219,3 +220,99 @@ def test_extra_state_intervention_and_no_past_rewrite(frozen):
  c['history'][-1]['value']='same_authority';second=form_owner(c)
  assert first['state']['tension_scope']!=second['state']['tension_scope']
  assert canonical(c['history'][0])==past
+
+
+def test_extra_ledger_relocation_and_truncation_denied(frozen,tmp_path):
+ row,case,p=sample(frozen);issuer=MockIssuer();g=mock_permit(issuer,frozen,[row]);t=MockTransport()
+ path=tmp_path/'journal'
+ with Runner(g,issuer,frozen,t,path) as r:r.call(row['id'],p)
+ with pytest.raises(Denied,match='RELOCATION'):Runner(g,issuer,frozen,t,tmp_path/'new_journal')
+ path.write_text(path.read_text().splitlines()[0]+'\n')
+ with pytest.raises(Denied,match='ROLLBACK'):Runner(g,issuer,frozen,t,path)
+
+def test_extra_actual_entrypoint_reuses_cache(frozen,tmp_path):
+ rows=[r for r in frozen.rows.values() if r['arm']=='C' and r.get('phase','primary')=='primary']
+ first=rows[0];second=next(r for r in rows[1:] if r['case']==first['case'])
+ issuer=MockIssuer();g=mock_permit(issuer,frozen,[first,second]);t=MockTransport()
+ with Runner(g,issuer,frozen,t,tmp_path/'journal') as runner:
+  for row in [first,second]:
+   p,_=frozen.approved(row['id']);runner.call(row['id'],p)
+ assert frozen.intervention_receipts[second['id']]['cache']['cache_hit']
+ assert frozen.cache.entries
+
+def test_extra_consecutive_transport_failure_stop(frozen,tmp_path):
+ rows=list(frozen.rows.values())[:2];issuer=MockIssuer();g=mock_permit(issuer,frozen,rows);t=MockTransport(fail_first=99)
+ with Runner(g,issuer,frozen,t,tmp_path/'journal') as r:
+  p,_=frozen.approved(rows[0]['id']);assert r.call(rows[0]['id'],p,rows[0].get('max_tokens',256),rows[0].get('response_format','typed')) is None
+  p,_=frozen.approved(rows[1]['id'])
+  with pytest.raises(Denied,match='CONSECUTIVE'):r.call(rows[1]['id'],p,rows[1].get('max_tokens',256),rows[1].get('response_format','typed'))
+ assert len(t.requests)==3
+
+def test_extra_semantic_failure_never_retried(frozen,tmp_path):
+ row,case,p=sample(frozen);issuer=MockIssuer();g=mock_permit(issuer,frozen,[row]);t=MockTransport('malformed')
+ with Runner(g,issuer,frozen,t,tmp_path/'journal') as r:
+  assert r.call(row['id'],p)=='not-json'
+  with pytest.raises(Denied,match='REDRAW'):r.call(row['id'],p)
+ assert len(t.requests)==1
+
+def test_extra_revoke_immediately_before_dispatch(frozen,tmp_path):
+ row,case,p=sample(frozen);issuer=MockIssuer();g=mock_permit(issuer,frozen,[row]);t=MockTransport()
+ with Runner(g,issuer,frozen,t,tmp_path/'journal') as r:
+  issuer._revoked.add(digest(g))
+  with pytest.raises(Denied,match='REVOKED'):r.call(row['id'],p)
+ assert not t.requests
+
+def test_extra_permission_change_after_constructor(frozen,tmp_path):
+ row,case,p=sample(frozen);issuer=MockIssuer();g=mock_permit(issuer,frozen,[row]);t=MockTransport()
+ with Runner(g,issuer,frozen,t,tmp_path/'journal') as r:
+  r.grant['body']['privacy']='DENIED'
+  with pytest.raises(Denied):r.call(row['id'],p)
+ assert not t.requests
+
+def test_extra_freeze_mutation_after_constructor(frozen,tmp_path):
+ for name in frozen.manifest['files']:
+  p=tmp_path/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes((ROOT/name).read_bytes())
+ (tmp_path/'manifest.json').write_bytes(frozen.manifest_bytes)
+ clone=Frozen(tmp_path,tmp_path/'manifest.json');row,case,p=sample(clone)
+ issuer=MockIssuer();g=mock_permit(issuer,clone,[row]);t=MockTransport()
+ with Runner(g,issuer,clone,t,tmp_path/'journal') as runner:
+  target=tmp_path/clone.manifest['corpus_file'];target.write_text(target.read_text()+' ')
+  with pytest.raises(Denied,match='FROZEN_BYTES'):runner.call(row['id'],p)
+ assert not t.requests
+
+def test_extra_duplicate_pairs_and_prior_rejection():
+ a=dict(id='a',block='a',case='x',family='f',k='K1',arm='A',correct=True)
+ b=a|{'id':'b','arm':'B'}
+ with pytest.raises(IntegrityError):paired([a,a,b])
+
+def test_extra_position_scope_and_negative_capacity(frozen):
+ case=copy.deepcopy(next(c for c in frozen.cases.values() if c['k']=='K6'))
+ case['position']['scope']='future_shift'
+ with pytest.raises(Hold):form_owner(case)
+
+def test_extra_all_cells_equal_facts_distinct_treatments(frozen):
+ for case in frozen.cases.values():
+  row=next(r for r in frozen.rows.values() if r['case']==case['id']);views=[];cache=DerivedCache()
+  for arm in ['A','B','C']:
+   p,receipt=build_packet(case,row|{'arm':arm},cache);views.append(p)
+  assert len({digest(v['facts']) for v in views})==1
+  assert len({digest(v['representation']) for v in views})==3
+  index=views[2]['representation']['evidence_index']
+  assert set(index)==set(views[2]['facts']['organization'])
+  assert 'links' not in views[2]['representation']
+
+def test_extra_cache_scan_accounting_includes_rebuild(frozen):
+ row,case,p=sample(frozen);cache=DerivedCache();n=len(case['history'])
+ _,cold=build_packet(case,row|{'arm':'C'},cache)
+ _,hot=build_packet(case,row|{'arm':'C'},cache)
+ assert cold['history_scans']==2*n and hot['history_scans']==n
+ assert cold['cache']['formation_scans']==n and hot['cache']['formation_scans']==0
+ assert hot['cache']['verification_scans']==n
+
+def test_extra_paraphrase_changes_accessible_surface_not_owner_facts(frozen):
+ from assay.architecture import variants
+ row,case,p=sample(frozen)
+ v=variants(p,'N1_PARAPHRASE')
+ assert v['facts']['accessible_history']!=p['facts']['accessible_history']
+ assert v['facts']['organization']==p['facts']['organization']
+ assert v['representation']==p['representation']

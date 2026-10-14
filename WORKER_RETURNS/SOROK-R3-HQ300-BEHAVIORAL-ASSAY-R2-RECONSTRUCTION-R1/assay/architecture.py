@@ -66,13 +66,18 @@ class DerivedCache:
         owner=copy.deepcopy(self.entries[key])
         # Exact rebuild equivalence is compulsory; forged cache never used.
         if owner!=form_owner(case): raise Hold('CACHE_REBUILD_MISMATCH')
-        return owner,dict(cache_hit=not cold,lookup_scans=0,verification_scans=len(case['history']))
+        return owner,dict(cache_hit=not cold,lookup_scans=0,formation_scans=len(case['history']) if cold else 0,verification_scans=len(case['history']))
 
 
 def actor_facts(case,owner):
     """Whitelisted projection; current trace effect is visible, its origin isn't."""
     state=copy.deepcopy(owner['state'])
-    safe_history=[dict(field=e['field'],value=e['value']) for e in case['history'] if e['accessible']]
+    # Mistaken/confident-mistaken are evaluator conditions, not self-knowledge.
+    if 'testimony' in state:
+        condition=state.pop('testimony')
+        state['self_explanation']={'claim':None if condition=='none' else 'current workload explains my feeling',
+                                   'confidence':'UNSTATED' if condition=='none' else ('HIGH' if condition=='confident_mistaken' else 'LOW')}
+    safe_history=[dict(field=e['field'],value=e['value']) for e in case['history'] if e['accessible'] and e['field']!='testimony']
     return dict(place=case['context']['setting'],person=case['context']['person'],counterpart=case['context']['counterpart'],
                 accessible_history=safe_history,organization=state,
                 public_notice=('record entered by registrar' if owner['public']['recorded'] else 'no certification record published') if case['world'] else 'not relevant',
@@ -82,23 +87,33 @@ def actor_facts(case,owner):
 def build_packet(case,row,cache=None):
     if row['case']!=case['id']:raise Hold('CASE_BINDING_MISMATCH')
     before=digest(case)
-    owner=form_owner(case)
     scans=len(case['history']);cache_receipt=None
     if row['arm']=='C':
         if cache is None:cache=DerivedCache()
         owner,cache_receipt=cache.obtain(case)
+        scans=cache_receipt['formation_scans']+cache_receipt['verification_scans']
+    else:owner=form_owner(case)
     facts=actor_facts(case,owner);s=facts['organization']
     if row['arm']=='A':
         representation={'entries':[{'field':k,'value':v} for k,v in sorted(s.items())]}
     elif row['arm']=='B':
         representation={'streams':{
             'resources':{k:v for k,v in s.items() if k in ('capacity','practiced')},
-            'current_experience':{k:v for k,v in s.items() if k in ('alertness','testimony','belief')},
-            'relational_context':{k:v for k,v in s.items() if k not in ('capacity','practiced','alertness','testimony','belief')},
+            'current_experience':{k:v for k,v in s.items() if k in ('alertness','self_explanation','belief')},
+            'relational_context':{k:v for k,v in s.items() if k not in ('capacity','practiced','alertness','self_explanation','belief')},
         }}
     elif row['arm']=='C':
+        visible=[e for e in case['history'] if e['accessible'] and e['field']!='testimony']
+        slots={e['id']:i for i,e in enumerate(visible)}
+        index={}
+        for field in s:
+            parents=owner['parents'].get('testimony' if field=='self_explanation' else field,[])
+            index[field]={'accessible_parent_slots':[slots[p] for p in parents if p in slots],
+                          'source_kind':('current_self_report' if field=='self_explanation' else
+                                         'position_receipt' if field=='capacity' else
+                                         'nondisclosable_origin' if any(p not in slots for p in parents) else 'admitted_accessible_history')}
         representation={'retrieved_context':dict(sorted(s.items())),
-                        'links':[[a,b] for a,b in zip(sorted(s),sorted(s)[1:])]}
+                        'evidence_index':index}
     else:raise Hold('UNKNOWN_ARM')
     packet=dict(response_id=row['id'],instruction='Select one offered action and report current belief, public record and origin-claim status. Use accessible evidence only. Output the exact response schema.',
                 facts=facts,representation=representation,menu=list(row['menu']),
@@ -118,7 +133,18 @@ def build_packet(case,row,cache=None):
 
 def variants(packet,name):
     p=copy.deepcopy(packet)
-    if name=='N1_PARAPHRASE':p['instruction']=p['instruction'].replace('Select one offered action','Choose one listed action')
+    if name=='N1_PARAPHRASE':
+        p['instruction']=p['instruction'].replace('Select one offered action','Choose one listed action')
+        p['facts']['present']='In this encounter, use the available evidence to choose a situated response.'
+        vocabulary={'low':'questions have usually been safe','high':'questions have often been costly',
+                    'repair_after_criticism':'reassurance followed criticism as a repair',
+                    'approval_conditional_on_agreement':'approval depended on agreement',
+                    'approach_withdraw':'both approach and withdrawal pressures',
+                    'peer_corrective':'corrective reception from a peer','same_authority':'recurrence from the same authority',
+                    'unrelated_kindness':'kindness in a separate context','UNCERTAIN':'uncertain about own work','CONFIDENT':'confident about own work'}
+        for event in p['facts']['accessible_history']:
+            if type(event['value']) is bool:event['value']='practice earned' if event['value'] else 'practice not earned'
+            else:event['value']=vocabulary.get(event['value'],event['value'])
     elif name=='N2_LABEL':
         p['facts']['person']='Jordan';p['facts']['counterpart']='Taylor'
     elif name=='N3_ORDER':p['menu']=list(reversed(p['menu']))

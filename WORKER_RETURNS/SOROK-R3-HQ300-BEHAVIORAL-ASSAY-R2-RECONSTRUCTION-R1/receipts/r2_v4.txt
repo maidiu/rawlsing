@@ -1,0 +1,11 @@
+python3 -m pytest test_r2.py -q --tb=short --junitxml=receipts/r2_v4.xml
+exit=1
+..F.............................................                         [100%]
+=================================== FAILURES ===================================
+_______________________ test_rmb_03_real_arm_mechanisms ________________________
+test_r2.py:68: in test_rmb_03_real_arm_mechanisms
+    assert changed['facts']['organization']!=packets[0]['facts']['organization']
+E   AssertionError: assert {'asking_cost': 'high'} != {'asking_cost': 'high'}
+=========================== short test summary info ============================
+FAILED test_r2.py::test_rmb_03_real_arm_mechanisms - AssertionError: assert {...
+1 failed, 47 passed in 5.08s

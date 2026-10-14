@@ -2,6 +2,7 @@
 import itertools
 import json
 import uuid
+import random
 from pathlib import Path
 
 ARMS = ('A', 'B', 'C')
@@ -70,7 +71,14 @@ def make_schedule(cases):
                     schedule.append(dict(id=opaque(),block=block,case=case['id'],family=case['family'],
                                          k=case['k'],arm=arm,execution_index=index,
                                          menu=base[rotation:]+base[:rotation],model_seed=17))
-    return schedule
+    return shuffle_blocks(schedule)
+
+
+def shuffle_blocks(schedule):
+    groups={}
+    for row in schedule:groups.setdefault(row['block'],[]).append(row)
+    blocks=list(groups.values());random.Random(942011).shuffle(blocks)
+    return [row for block in blocks for row in sorted(block,key=lambda r:r['execution_index'])]
 
 
 def create_files(root):

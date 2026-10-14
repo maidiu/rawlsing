@@ -36,12 +36,14 @@ def main(version):
   semantic_status='Proposed lawful sets preserving predecessor possibilities; competent owner and separate I2 review pending',
   oracle_custody='Separate files/code paths; all authored here, NOT independent science acceptance',
   real_model_calls_permitted=0,live_mode='UNCONDITIONAL_DENIAL',review='Subsequent HQ I2 action per routing erratum, unless human user directs otherwise')
- prepath=R/'preregistration.json'
+ if version not in ('v1','v2','v3'):
+  pre['execution_randomization']='Whole matched blocks shuffled using Random(942011), independent of outcomes and arms; all six within-block permutations crossed.'
+ prepath=R/('preregistration.json' if version in ('v1','v2','v3') else f'preregistration_{version}.json')
  if prepath.exists():assert json.loads(prepath.read_text())==pre
  else:prepath.write_text(json.dumps(pre,indent=2)+'\n')
  files=[R/'01_DESIGN.md',prepath,R/'freeze_candidate.py',R/'test_r2.py']+list((R/'assay').glob('*.py'))+list(data.glob('*.json'))
  manifest=dict(schema='R2_SOURCE_CORPUS_FREEZE@2',version=version,created_at=datetime.now(timezone.utc).isoformat(),
-  corpus_file='data/corpus.json',schedule_file='data/schedule.json',oracle_file='data/oracle.json',
+  corpus_file='data/corpus.json',schedule_file='data/schedule.json',oracle_file='data/oracle.json',preregistration_file=str(prepath.relative_to(R)),
   behavioral_mock_calls_before_initial_freeze=0 if version=='v1' else 'SEE_PRESERVED_PRIOR_VERSION_RECEIPTS',
   files={str(p.relative_to(R)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files)})
  (R/'freezes').mkdir(exist_ok=True);path=R/'freezes'/f'{version}.json'
