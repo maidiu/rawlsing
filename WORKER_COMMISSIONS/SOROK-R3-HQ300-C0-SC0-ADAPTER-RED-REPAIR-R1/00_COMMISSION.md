@@ -1,6 +1,6 @@
 # SOROK HQ300 C0 — VALUE-BEARING SC0 ADAPTER RED REPAIR + ACTUAL PINNED CONSUMER CONNECTION
 
-**STATUS:** COMMISSION_BANKED__UNLAUNCHED__NO_ADOPTION.
+**STATUS:** COMMISSION_BANKED__ROUTING_ERRATUM_R1__NO_ADOPTION.  Earlier launch SHA is an immutable ancestor; a worker genuinely already started may finish under the prior commission without reset.
 **REPOSITORY:** `maidiu/rawlsing` (private).
 **ROLE:** Independent sourcefree bounded implementer/experimenter, NOT HQ, competent accepted-law issuer, real V3 actor or acceptance reviewer.
 **BRANCH:** `agent/rabochii-sorok-r3-hq300-c0-sc0-adapter-red-repair-r1`
@@ -10,15 +10,23 @@
 **ALLOWED WRITES:** `WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/` and nothing else.
 **MISSION / ONE OUTCOME:** Produce an actual sourcefree adapter candidate that survives independent RC0's 12 REDs while retaining K9 8/K10 28 and true A/B value consumer read, and demonstrate a newly executed call trace from candidate adapter into exact pinned PE/C1/N10E producer(s), or type exact missing competent integration boundary. Preserve distinction sourcefree vs operative N9/N10W.
 
+## OWNER-SELECTED SINGLE-EDITOR ROUTING — BINDING CLARIFICATION
+
+**PRIMARY EDITOR/HARNESS:** OpenCode.
+**PRIMARY CODING/REASONING MODEL:** MiMo-V2.6 Pro.
+**ONE_WORKER_FULL_JOB:** ONE worker in the selected editor does the full commissioned task from investigation to published remote return. No sub-agent, helper, duplicate editor session or model handoff is required or authorized by this commission. An independent scientific I2 review is a **subsequent HQ action after return**, not a launch prerequisite or a task delegated to this worker.
+**MODEL/HARNESS NONCONFLATION:** The editor/runtime and underlying configured model are separate. `MiMo-V2.6 Pro` in `OpenCode` is not `DeepSeek-Harness`. This commission MUST NOT route the user to a different harness merely because a model could theoretically be available there.
+**STARTUP COMPATIBILITY:** For a NEW launch, the operative sealed startup is this routing-revised commission's new remote HEAD communicated by HQ. The original commit `74d85639f54deebf38eac6b334034c417cf5831d` remains an immutable ancestor and custody evidence. If the user already launched an agent from that original commit, do not reset/relaunch it; the user-level host selection above governs interpretation, and the worker may complete its original sealed work unless directed otherwise.
+
 ## Nonoptional ranked host + phase/model routing
 `HQ_ENVIRONMENT_VERDICT=LOCAL_DOMINANT`; `BROWSER_SUFFICIENCY=SCOPED_ONLY`; `BROWSER_SETUP_COST=HEAVY`.
-**PRIMARY MODEL/HOST & MINIMUM INTELLIGENCE:** Primary local DeepSeek-Harness using qualified MiMo-V2.6 Pro if the model/provider is already approved for the private repository and verified usable; alternatively the existing economical authorized OpenCode coding tier. I1 bounded implementation with explicit I2 High independent scientific reviewer of cross-owner semantics, not I1 self-adoption.
+**PRIMARY MODEL/HOST & MINIMUM INTELLIGENCE:** Primary MiMo-V2.6 Pro in the user's existing authorized OpenCode editor and local worktree. ONE OpenCode agent performs investigation, implementation, tests, documentation, commit/push and SHA verification. A separate independent I2 reviewer is an HQ follow-up AFTER return, not a co-executor or required separate editor during this task.
 **WHY PREFERRED:** Reviewer RC0 staged 61 blob-verified objects and ran sourcefree port, PE, N10E/C1 and hostile laws. Full import and repeated repair loops make local worktree decidedly more effective than Browser Python. MiMo can implement fixed negative validations and call trace but must not decide issuer law.
 **WARM REUSE PLAN:** Use existing single canonical Git object store, a new governed sparse worktree, verified Python/pytest+PE/N10E/C1 closure. Never reuse reviewer RC0's live write tree. A warm local repo save matters for further N9 generic port work.
-**OBJECTIVE FALLBACK TRIGGER:** If no approved MiMo/DeepSeek provider/privacy, use qualified local Codex Medium/OpenCode tier; escalate to I2 High only for exact disputed owner contract, not routine failing tests. Browser remains a scoped-only fallback if 61-file closure proven live.
+**OBJECTIVE FALLBACK TRIGGER:** If the existing OpenCode+MiMo configuration or authorized worktree cannot execute, return a precise environment/permission HOLD to HQ; do NOT autonomously move MiMo into DeepSeek-Harness, switch providers/models, open another editor or delegate. A different host needs explicit owner reassignment.
 **WHY NOT ALTERNATIVE:** Alternate may accomplish a scoped documentary or isolated test subset but is not equally suitable for the entire intended grain. Model availability/provider privacy must be actually verified; no fabricated cost or quota claims.
 **PHASE_MODEL_ASSIGNMENT:** I0 hashes/sourcefree runner; I1 bounded code/test machinery; I2 review of full scientific meaning/authority independently after author return; I3 only true accepted authority collision. No automatic GPT-6.1 High for routine imports/tests.
-**PRIMARY_MODEL_ECONOMICS:** Prefer verified capable MiMo/DeepSeek-Harness for fixed repairs; use I2 High where measurement/semantic reasoning materially justifies it. No model pricing inferred from version number; cache/allowance/usage recorded if available.
+**PRIMARY_MODEL_ECONOMICS:** Use the user's configured OpenCode+MiMo-V2.6 Pro as the already-chosen qualified local implementation route. Record actual use if visible; do not invoke another model or harness to optimize presumed expense. Independent I2 scientific interpretation occurs only after the worker's complete return.
 **REVIEW_INDEPENDENCE_AND_ESCALATION:** distinct competent I2 reviewer after candidate; author cannot accept or self-adopt. No duplicate full rewrite of original oracles.
 **ACTIVE_WORKER_NO_DISTURBANCE:** new HQ300 commission, NOT a relaunch or modification of completed HQ299 worker branches.
 
