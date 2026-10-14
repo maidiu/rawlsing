@@ -1,0 +1,105 @@
+{
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "OUT300-BROWSER-a7c589838fbe",
+  "epoch_id": "OUT300-COLD-4897a72bfc91",
+  "owner_session_alias": "HQ300_OUT_SINGLE_EDITOR",
+  "surface": "BROWSER_CONTAINER",
+  "machine_alias": null,
+  "conversation_or_account_affinity": null,
+  "status": "LIVE_VERIFIED_AT_RUN__RECHECK_ON_NEXT_CHAT",
+  "last_live_probe_at": "2026-10-14T23:09:34.401701+00:00",
+  "runtime_marker_digest": "3241e400ee45a89138d97e1f41d4fad04697872fe76fc55554baae2620eac5e6",
+  "probe_command_and_result": {
+    "python": "3.13.5",
+    "pytest": "pytest 9.0.2",
+    "git": "git version 2.47.3",
+    "node": "v22.16.0",
+    "subprocess_os_exit_79": "VERIFIED",
+    "writable_tempfs": "VERIFIED"
+  },
+  "git_object_store_alias": null,
+  "worktree_alias": null,
+  "branch": "agent/rabochii-sorok-r3-hq300-outbox-authority-cold-repair-r1",
+  "checkout_base": null,
+  "remote_sealed_startup": "0dc74e65057df6edfc69893abfae0fd25187ec71",
+  "observed_prior_remote_tip": "3f8759107f96cffc4503a2e92328f5267753ddf6",
+  "materialized_source_refs": [
+    {
+      "path": "test_sr_28_falsifier_court.py",
+      "pinned_blob": "a6263f8903f22da2b1cde3999d950328d19c9e21",
+      "observed_git_blob": "a6263f8903f22da2b1cde3999d950328d19c9e21",
+      "local_relative_path": "test_sr_28_falsifier_court.py",
+      "grade": "FROZEN_SOURCEFREE_REPRODUCTION"
+    },
+    {
+      "path": "test_rsr_independent.py",
+      "pinned_blob": "044b9cb48c2e4e3d825e7a2cbb52bb412d1366d7",
+      "observed_git_blob": "044b9cb48c2e4e3d825e7a2cbb52bb412d1366d7",
+      "local_relative_path": "test_rsr_independent.py",
+      "grade": "FROZEN_SOURCEFREE_REPRODUCTION"
+    },
+    {
+      "path": "rsr_cold_replay.py",
+      "pinned_blob": "0c8676aaa3ff6605f3fb7a987e29f88d26fafb03",
+      "observed_git_blob": "0c8676aaa3ff6605f3fb7a987e29f88d26fafb03",
+      "local_relative_path": "rsr_cold_replay.py",
+      "grade": "FROZEN_SOURCEFREE_REPRODUCTION"
+    },
+    {
+      "path": "test_rsr_cold_replay.py",
+      "pinned_blob": "ad132e7e852d3873597276b51afda86b8296f891",
+      "observed_git_blob": "ad132e7e852d3873597276b51afda86b8296f891",
+      "local_relative_path": "test_rsr_cold_replay.py",
+      "grade": "FROZEN_SOURCEFREE_REPRODUCTION"
+    },
+    {
+      "path": "candidate/outbox_prototype.py",
+      "pinned_blob": null,
+      "observed_git_blob": "76a0b2bb8f6161e6807789f88a1a35cc9e93e968",
+      "local_relative_path": "outbox_prototype.py",
+      "imported_module_file": "outbox_prototype.py",
+      "grade": "NEW_SOURCEFREE_CANDIDATE"
+    }
+  ],
+  "dependency_closure_status": "FULL_SOURCEFREE_ONLY",
+  "covered_test_suites": {
+    "original_s01_s28": {
+      "passed": 27,
+      "failed": 1,
+      "expected_conflicting_test": "S27",
+      "exit": 1
+    },
+    "independent_rsr17": {
+      "passed": 17,
+      "failed": 0,
+      "exit": 0
+    },
+    "prior_rsr_cold2": {
+      "passed": 2,
+      "failed": 0,
+      "exit": 0
+    },
+    "new_hq300_repair9": {
+      "passed": 9,
+      "failed": 0,
+      "exit": 0
+    }
+  },
+  "science_grade": "SOURCEFREE_F2_PYTEST_EXECUTED__NOT_OWNER",
+  "model_provider": "OpenAI GPT-6; exact effort setting not inspectable",
+  "pricing_class": "UNKNOWN",
+  "observed_incremental_cash": null,
+  "observed_quota": null,
+  "privacy_source_grant": "ONLY_PRIVATE_REPO_AUTHORIZED_SOURCEFREE_SYNTHETICS_NO_ORIGINAL_SURVEY",
+  "independent_review_separation": "I2_REQUESTED_POST_RETURN_NOT_SATISFIED",
+  "assignments_completed": [
+    "HQ300 OUT sourcefree bounded author execution"
+  ],
+  "next_good_affinity_tags": [
+    "OCCURRENCE",
+    "OUTBOX",
+    "SOURCEFREE_COLD_JOURNAL"
+  ],
+  "staged_state_preservation": "LOCAL_RUNTIME_CURRENT_ONLY_NOT_PROMISED_NEXT_CHAT",
+  "retire_or_rebuild_reason": null
+}

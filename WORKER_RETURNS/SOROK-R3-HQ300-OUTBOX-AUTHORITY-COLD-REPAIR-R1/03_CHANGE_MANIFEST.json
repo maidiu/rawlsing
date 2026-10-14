@@ -1,0 +1,33 @@
+{
+  "schema": "HQ300_OUT_CHANGED_PATHS_R1",
+  "allowed_prefix": "WORKER_RETURNS/SOROK-R3-HQ300-OUTBOX-AUTHORITY-COLD-REPAIR-R1/",
+  "files": [
+    "00_RETURN.md",
+    "01_EVIDENCE_MATRIX.json",
+    "02_REVIEW_REQUEST.md",
+    "03_CHANGE_MANIFEST.json",
+    "environment_passport_delta.json",
+    "CANDIDATE_EXECUTED_BUNDLE.tar.xz"
+  ],
+  "source_test_and_log_bundle_contents": [
+    "outbox_prototype.py",
+    "cold_repair.py",
+    "test_cold_repair.py",
+    "test_sr_28_falsifier_court.py",
+    "test_rsr_independent.py",
+    "rsr_cold_replay.py",
+    "test_rsr_cold_replay.py",
+    "REPRODUCE.md",
+    "original_28_junit.xml",
+    "independent_17_junit.xml",
+    "prior_cold_2_junit.xml",
+    "repair_cold_junit.xml",
+    "all_56_junit.xml",
+    "original_28_stdout.txt",
+    "independent_17_stdout.txt",
+    "prior_cold_2_stdout.txt",
+    "repair_cold_stdout.txt",
+    "all_56_stdout.txt"
+  ],
+  "status": "CANDIDATE_ONLY__NO_ADOPTION"
+}

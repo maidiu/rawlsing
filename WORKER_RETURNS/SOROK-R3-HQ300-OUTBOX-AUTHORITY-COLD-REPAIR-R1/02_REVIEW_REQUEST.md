@@ -1,0 +1,7 @@
+# HQ300 OUT — separate I2 request, no self-adoption
+
+**Reviewer:** distinct GPT-6 High independent I2 scientific/authority reviewer, commissioned by HQ after verified author return. **Base:** exact author remote tip, not this document's predicted hash. **Terrain:** separate reviewer branch, no shared branch writes, no original-oracle edits, no accepted ADP/CAN production changes.
+
+Check the original RSR 12 REDs by replaying pinned unchanged 17 cases; inspect candidate source and all raw JUnit. Demand real `os._exit(79)` before/after candidate Journal's *own* commit and a cold retry/ACK. Reject any semantic reading of the 27/28 original authored suite as 28 frozen-law PASS; S27 intentionally remains RED because it attempted material authority by a payload string. Verify S28 test's deferral mismatch, S19 absence of ADP016 memory owner, S23 VALID_EMPTY versus missing authority, and whether sourcefree fixture defaults are quarantined sufficiently. Hostile checks must include forged `source_refs`, changed artifact/issuer/release/participant/parent, stale authorization and causal-time inversion, per-viewer denial, lost ACK and replay identity, and human-perception nonassertion.
+
+**I2 disposition sought:** `SOURCEFREE_CANDIDATE_ACCEPT / CHANGES_REQUIRED / HOLD` with each tested grade and owner blocker explicit. **No self-issuance:** neither this reviewer nor the author can independently grant ADP019/ADP016/ADP017/CAN authority, physical world authority, accepted V3 event producer, actual user perception or model/actor execution.
