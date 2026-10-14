@@ -1,0 +1,59 @@
+# PYAT R3 HQ294 E05 — end-product vertical consumer and inheritance court
+
+STATUS: COMMISSIONED_INDEPENDENT_REVIEW__DOCUMENTARY_CODE_INSPECTION_COMPLETE__VERTICAL_EXPERIMENT_SPECIFIED_NOT_EXECUTED__NO_NEW_AUTHORITY.
+Branch: agent/rabochii-pyat-r3-hq294-e05-consumer-interface-r1
+Exact sealed Git remote startup: 1837a14896c1f29d761a6d503ca62855285f2921 (direct origin tip inspected before edits).
+Commission: WORKER_COMMISSIONS/PYAT-R3-HQ294-E05-ENDPRODUCT-VERTICAL-CONSUMER-R1/00_COMMISSION.md (blob 8ede68933af504eb03bdac887c9750dbba15b7c4).
+Write scope: only this WORKER_RETURNS directory. No owner code, survey source, permission, canonical integration, protected CURRENT, G0b or V3 actor mutation.
+
+## 1. Bottom line: the terminal criterion changes the engineering priority
+
+Rawlsing's governing question is not whether a well-typed source packet was filed, but whether material/historical differences alter the **available pathways through which a person could lawfully develop**, with histories and psyche subsequently belonging to V3. The original governing spirit (blob 588cf3954c33417665c5f9bac04e8b27e75d7f7c) says that the world must make the person causally intelligible **without making them inevitable**. This review does NOT evaluate persona quality by hallucinating a persona or replacing survey inference with an Enneagram type.
+
+Positive inherited code capital exists. On the sealed tree, a public N10E entrypoint calls accepted analytical C1 composition and the source-backed exact/walkback positioned-subject possibility consumer. Objective position publication, a governed M4 selected-repository resolver and M5 structurally eligible peer-prior materializer also exist. An actual integrated N9 snapshot **coupled to both** N10E and world-conditioned progressive parent/coparent N10W has NOT been demonstrated by this read-only investigation. The existing GT0 harness deliberately terminates at a blocked actor path. Treat the missing integrated receipt/permission as a scoped proof deficit, not as a claim that all component code is absent.
+
+Proposed first vertical: two transparent, source-free **modeled historical context variants** with identical known subject selectors and no actor state, differing in institution/household opportunity and care exposure; measure differentiated eligibility/conditional possibility outputs, majority/minority conservation, matched-control invariance, context swap, invalidation and no stereotype/type leakage. It is a **specified test, NOT an executed scientific result**. The experiment is in 02_FIRST_PERSONA_RELEVANT_NO_ACTOR_EVALUATION.json.
+
+## 2. What the primary sources establish (and do not)
+
+Original Full Rawlsing Vector Pipeline (user-supplied three-page PDF) proposes CIA/WID/ICOW/Hofstede/WVS -> demographics -> 22-axis drivers -> softmax 9-type probabilities/health -> v3.4 recursive psychology -> GPT voice. Original Cross Cultural Enneagram Model (user-supplied five-page PDF) describes drivers as full-range sense-making strategies (flourishing, accommodation, impunity, consolation, transcendence), not simply survival reactions. Rawlsing v3.4 framework (user-supplied eight-page PDF) specifies developmental epochs 0-3, 3-7, 7-11, 11-14, 14-17, adult, PI, DRTS, IAI, TT, AAF and RMT; these remain design/creative ancestry, **not survey-calibrated causal algorithms**. User-supplied driverSchema.json defines 22 contextual proxies and expression glosses; driverTypeWeights.js encodes a deterministic 22×9 weight lookup. Neither those weights nor threshold archetypes carry measured external predictive validity merely by existing. Do NOT turn a country's average, colonial label, religion or class into an actor's inner life or mental state.
+
+Historical atlas validation on the sealed repo: data/ddm_build_copy/manifests/crosswave_atlas_validation_report.yaml (blob 7f5a8df50e1d3d3435ad2bddd2aa6abab2941ad4) records historical 9 families / 36 waves, 417 item mappings, 177 driver mappings, 135 content-key rows; no all-family shared drivers or all-family shared content; 57 mappings without codebook. Its own truth law: coverage/lineage, **not respondent measurements**. It cites local absolute-path CSV/XLSX/JSON/scale-transform artifacts; the recursively enumerated sealed Git tree contains the manifest, not those original full data/final_codebooks or outputs/crosswave_driver_atlas payloads. The historical 36 may NOT enlarge the governed contemporary all-35 estate. Reconcile wave membership one-to-one before application; missing mounted payload is a custody/access distinction, not data-negative science.
+
+Historical V553 harmonization and time machinery (data/ddm_build_copy/ddm_v553_harmonization.py, canonical_harmonization.py, temporal_pressure.py) can classify semantic/directional/position overlap, compatible wave bundles, authorized structural deltas, probes, interpolation policy and absent/noncomparable intervals. Its historical ability to construct PROBE_ONLY temporal differences is not a right to interpret any two waves as a temporal effect. Current accepted EE12 source-native comparable measurement, population, weights and design and claim-grain issuer remain separate. The two-wave Uganda/EVS historic methods are adversarial cases, not whole-estate temporal strategy or a global hold.
+
+## 3. Product-first court dispositions
+
+A. REUSE/INTEGRATE: source-native respondent topology; validated original response options, risk sets, weighting/design/estimand; current C11/I03/I05/C1 compositional code; exact N10E provider, refusal and specificity walkback. Preserve exact source, model, release, negative and replay identity. C1/N10E currently forbids caller-supplied slice geometry: this is a GOOD boundary.
+
+B. INTEGRATE_OR_ADAPT / IMPROVE_OR_COMPLETE: atlas and semantic driver/facet/content correspondences as **candidate feature hypotheses** only; hierarchical source/population conditioning, design-aware variance, partial pooling and missing-domain treatment; temporal V553 as a comparison-audit and policy ancestor; V554/555/556 as affordance, mediator and flow *precondition* contracts, not ready actor dynamics. Require comparative evaluation before replacement or actual model use.
+
+C. REPLACE_AFTER_COMPARATIVE_PROOF only: direct country-driver->Enneagram softmax/health as final-type decision rule, broad ecological stereotypes, unsupported 'collective trauma' phenotype and deterministic PI/DRTS thresholds. Compare transparent null, source-backed conditional, and explicit uncertainty-aware hierarchical model on held-out source/country/time and persona-relevant route coherence. Do not assert a superior model before data/adjudication.
+
+D. NO_DECISION__NEEDS_EVIDENCE: original PDF claims about quality of generated people, the availability/accuracy of full atlas artifacts in current custody, codebook-grain 35-wave portability, historical vignette validity, actual production N9+N10W consumer receipts, and calibration of any approximate prior.
+
+See 03_INHERITED_METHOD_REUSE_VS_IMPROVE.md for full function-by-function scorecard and falsifiers.
+
+## 4. The first actual missing link — precise owner and seam
+
+Already coded: rawlsing_next/pre553_empirical_possibility_provider.py::provide_empirical_possibility_slice -> rawlsing_next/pre553_analytical_composition.py::compose_positioned_subject_possibility -> rawlsing_next/source_backed_positioned_subject_possibility.py::evaluate_positioned_subject_possibility. Separately, rawlsing_next/m4_v557_v558_publication_repository.py::resolve_v558, rawlsing_next/prev3_objective_position_v557_v558_publication.py::resolve_bound_objective_position_context, and rawlsing_next/m5_runtime_rsc_peer_prior.py::materialize_resolved_structural_context give structural currentness/selected use capital. N9 ASTRA node demands coherent current/as-of whole-world dependency closure; N10W node demands **N9 + N10E**, two progressive conditioner steps and parent/coparent admissible distributions.
+
+Unproved first consumer edge: a competent **selected-world snapshot + the exact N10E computed evidence** jointly enter a world-conditioned **progressive N10W service**, with declared source/model/use authority, age/place/time/population and household-unit semantics, exact evidence/version/denominator and consumer receipt, uncertainty and alternatives, replay/invalidation. Neither local objective eligibility nor N10E-only empirical slices prove this joint edge. A proxy may expose a declared TEST_ONLY modeled world for an **interface court**, but this cannot serve as an operative empirically measured world. See 01 and 04.
+
+Downstream V3: the source-free rawlsing_next/v3_adp010_oee_executor.py only implements bounded BASIS->AVAILABLE->OPPORTUNITY->ENCOUNTER and refuses inferred contact/state mutation; it does NOT constitute annual developmental/personality generation. rawlsing_next/wsc_gt0_end_to_end.py declares BLOCKED_POSITIVE_ACTOR_PATH__SEMANTIC_CONSERVATION_PASS; V2 rawlsing_next/m6_actor_safe_expression.py is a strict actor-accessible claim firewall, not a persona voice engine. Historical v3.4 phases and V555/V556 contracts are therefore requirements/capital, not a completed end product.
+
+## 5. Minimum experiment outcome / gate
+
+Proposed exact test PASS requires (a) a genuine lawful source-free contract input under explicit TEST_ONLY authority; (b) controlled context variation changes at least one **typed route availability / conditional support** for the expected reason; (c) unchanged inputs give same output identity; (d) the other surviving minority/community routes remain visible; (e) no final type/health/belief/voice, biography, invented personal parent, or actor execution; (f) no context can silently create a probability unsupported by either an explicitly modeled synthetic rule OR adopted measurement/model; (g) a cold replay/invalidation receipt when the actual code can be run. Source-backed PASS additionally requires competent original source/design, model/use issuer, N9 current/as-of evidence and producer-to-consumer receipt. At present: **SPECIFIED_NOT_EXECUTED; NO_V3_ACTOR; NO_MODEL_USE_GRANT; NO_PERSONA_QUALITY_PROOF**.
+
+## 6. HQ fan-in and program reach
+
+E05 can inform E01 exact use/consumer envelope immediately; E02's N9 coherent snapshot; E03's N10E/N10W progressive service; E04 replay/invalidation; D02/F6 non-pooled complementary fields; D03/D04 F7 native comparable temporality; A02/A03 original source/operation permissions; C02/C03 trusted product selection; Q01/Q02 independent F8 adjudication. Parallel A03U, A04B, D02P are independent: their pending science/implementation does not invalidate this read-only review. Do not claim these returns or any adoption merely because a route is proposed.
+
+Inherited full obligations remain ALL 35, 35×54=1,890 scaffold, 151↔101 class crosswalk, F1–F8, AT01–AT35, source/use/actor barriers and acceptance grades. This report is one E05 interface/specification return, not M3 integration or M5 acceptance. No reviewer has independently adjudicated it.
+
+## 7. Evidence-method note
+
+Directly fetched pinned original law, commission, Pyat entry law, Action Plan, ASTRA N9/N10E/N10W/N12, atlas manifest, current Python code and legacy V553–V558 implementations from sealed Git SHA. The three original PDFs and local driver JSON/JS were read as user-provided artifacts; they were not described as checked-in source or copied into the return. No private respondents/raw survey rows were fetched, read or executed; no Python/pytest/Node test was run; no code behavior or persona effect was empirically measured. Git inspection establishes presence and static call shape, **not** current deployment/owner adoption of every component. Independent reproduction is required.
+
+TERMINAL: HQ294_E05_TERMINAL_CONSUMER_INHERITANCE_COURT__DESIGN_COMPLETE__NO_ACTOR__NO_MODEL_ISSUER__PUSHED_ONLY_ASSIGNED_BRANCH_PENDING_REMOTE_VERIFICATION.
