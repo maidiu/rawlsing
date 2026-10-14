@@ -1,0 +1,15 @@
+# HQ297 K9E — independent execution recovery, bounded return
+
+**Disposition:** EXECUTION_TERRAIN_RECOVERED_FOR_ISOLATED_SOURCEFREE_FIXTURES; EXACT_PE_DEPENDENCY_IMPORT_NOT_QUALIFIED; FULL_SC0_K9_K10_NOT_REACHED. **NOT ADOPTED**.
+
+* Sealed assigned startup and verified branch: `92524b8615f281b8a32a57e8bb8c2d05c978c619`. Original K9 frozen return and thirteen reviewer assertions preserved without edits.
+* Runtime actually available: Python 3.13.5, pytest 9.0.2, git 2.47.3, pip 25.1.1, jsonschema 4.26.0, writable scratch.
+* Private GitHub connector fetch succeeded for exact PE module, frozen SC0 K9 and K10 JSON, and thirteen-test reviewer source. Each SHA-1 recomputed using the correct actual NUL Git-blob preimage and matched GitHub's immutable blob SHA. These bytes were accessible to the connector **but not automatically mounted in the execution container**.
+* Container direct `git ls-remote https://github.com/maidiu/rawlsing.git HEAD` failed: `Could not resolve host: github.com`. Attempts to execute exact 13-test file in local scratch returned pytest exit **4** (path absent; **zero cases collected**, not a scientific RED). PE 21 and N10E 43 were not invoked against substituted imports. The exact 34,731-byte PE candidate and its large transitive import graph were **not materialized** in a qualified filesystem.
+* Created and executed `rawlsing_next/tests/test_hq297_k9e_port_repro.py` in isolated source-free scratch: **36/36 PASS** (eight K9-labelled fixture probes and 28 K10-labelled semantic-mutation detection probes). Test Git blob `08cdfc7574c971f09fadf5b7516120bc47b9ca25` verified identical to local executed bytes. Actual JUnit, log and source SHA-256 in `repro/`.
+* Distinct supplementary local source-free probes (37/37 and 36/36) existed in transient scratch; these are **not** counted as separately accepted contractual results and are not substitutes for the pinned PE test families.
+* **Full SC0 K9 8 and K10 28 remain NOT_REACHED**: no accepted two-contract adapter and no two qualified, value-bearing independent N9 world providers. The passing helper intentionally checks a small independently encoded **fixture** subset, not full draft-2020-12 validation, structural issuer permissions, N10E or N10W.
+* PE at pinned module lines 354–358 shape-checks a non-null `role_reversal_authority_ref`; lines 660–673 only refuse if it is `None`. Lines 685–695 separately require the ordinary producer risk ref to match request denominator but do **not** qualify supplied reversal issuer, target, reverse-risk basis or allowed operation. The original strict forged-scope reviewer case therefore remains an **expected source-level defect, NOT an executed PE RED**.
+* New SC0 provider semantics, PE owner repair, and review adoption require independent owner authorization. No original survey data, source grant, accepted owner code, operative N9, canonical branch, V3 actor or paid external model call touched.
+
+See receipts 01–06; all 36 `pytest` names and true outcomes are in raw JUnit. No self-adoption claimed.
