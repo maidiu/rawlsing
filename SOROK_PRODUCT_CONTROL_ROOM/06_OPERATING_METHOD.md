@@ -166,10 +166,12 @@ Anything we would regret forgetting must be serialized into Sorok before the ses
 
 A new Sorok Vozhd must not begin major ontology or architecture work from summaries alone.
 
-Mandatory two-stage grounding:
+Mandatory four-stage grounding:
 
 1. `00_FULL_RAWLSING_VOZHD_GROUNDING_GATE_R1.md` — become a grounded Rawlsing HQ reader through the live PRE-MAIN cognition stack.
 2. `00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md` — specialize into the PFF/CAN-008/relational frontier.
+3. `00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md` — activate claim calibration, anti-gassing, white-whale and falsifier discipline.
+4. `00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md` — activate worker-routing, intelligence/model, execution-surface, prompt-format, review and escalation discipline.
 
 For D001/V3/PFF work, the agent must distinguish:
 - historical implementation continuity;
@@ -194,7 +196,11 @@ For any proposed new psychology owner:
 
 `INHERIT → CROSSWALK → IDENTIFY TRUE STARVATION → PROPOSE MINIMUM REQUIREMENT → GOVERNED HANDOFF`.
 
-The two gates contain exact live PRE-MAIN and historical/current branch/path references for deep reading. Sorok agents should know where to deepen instead of guessing from summaries.
+The grounding gates contain exact live PRE-MAIN and historical/current branch/path references for deep reading. Sorok agents should know where to deepen instead of guessing from summaries.
+
+Before any material worker dispatch, 00C controls prompt dispensation. HQ must choose the reasoner for the reasoning, the surface for the operations and the authority for the claim; record a live worker ledger; specify exact role/intelligence/model, execution surface, startup/branch, write terrain, permissions, acceptance, reviewer and stop/HOLD/escalation conditions; and use MUST_READ_NOW / READ_IF_TRIGGERED / BACKGROUND_LINK_ONLY context bands.
+
+A worker prompt lacking materially required routing fields is `SOROK_MATERIAL_PROMPT_INVALID__REISSUE_REQUIRED`.
 
 ## 11. Architecture compression / kernel-sifting law
 
@@ -275,3 +281,25 @@ Future hostile architecture reviews must return two layers:
 
 A review that only adds propositions without attempting Layer B is incomplete.
 
+
+## 12. Worker orchestration / prompt-dispensation law
+
+The full controlling procedure is:
+
+`00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md`.
+
+Sorok inherits Pyat's mature orchestration principles at process grain:
+
+- capability, access, authority and evidence remain noncollapsed;
+- reasoning intelligence, execution surface and authority role are separately selected;
+- substantive Sorok work defaults to HIGH reasoning unless the job is mechanically bounded;
+- maximum/Omega reasoning is reserved for named semantic/authority/readiness triggers, not difficulty or shell requirements;
+- Browser/GitHub is preferred for documentary/authority/science/review work when its tools suffice;
+- executable runtime work uses an actual verified runner, with bounded local/Codex/OpenCode fallback when needed;
+- one coherent outcome has one accountable owner and one independent material acceptance review;
+- live remote branch state is resolved before launch/relaunch/status claims;
+- safe orthogonal work may run concurrently, while overlapping semantic/file owners serialize;
+- every material launch uses the mandatory 00C prompt schema and return contract;
+- after two substantively unchanged failed loops, HQ diagnoses the mechanism before issuing another equivalent prompt.
+
+The orchestration objective is accepted evidence-producing progress, not maximum agent count or maximum model strength.
