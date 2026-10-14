@@ -1,5 +1,10 @@
 # PRE-A0 PSYCHIC ARCHITECTURE R1 — START HERE
 
+## Completed official Astra R3 advisory — 14 October 2026
+
+Read [ASTRA_R3_JOINT_WELD_ADVISORY_HANDOFF_20261014_R1](../ASTRA_R3_JOINT_WELD_ADVISORY_HANDOFF_20261014_R1.md) during incoming-HQ grokking. Exact frozen return: `3b2d9a1b644a9fa024ed1bd895b67be5c8789531`. All 18 deliverables and the structural-world/genealogy corrective amendment are complete. **Ready for HQ intake; advisory only, not adopted law, implementation permission or wake.** Read FINAL_RETURN and amendment16 before recovered 00–06. Earlier statements below that the Pyat/Astra reviews are still the next pending action are historical at their original cut; competent adjudication of the returned advisory is now the relevant intake step.
+
+
 **Branch:** `agent/sorok-prea0-psyche-architecture-r1`
 
 **Status:** `BANKED_FOR_PYAT_INDEPENDENT_REVIEW__THEN_ASTRA_JOINT_ADVISORY`
