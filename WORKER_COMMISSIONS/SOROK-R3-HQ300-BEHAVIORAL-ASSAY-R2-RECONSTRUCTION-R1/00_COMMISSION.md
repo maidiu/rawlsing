@@ -1,6 +1,6 @@
 # SOROK HQ300 BEH — BEHAVIORAL ASSAY R2 MEASUREMENT-VALIDITY RECONSTRUCTION
 
-**STATUS:** COMMISSION_BANKED__UNLAUNCHED__NO_ADOPTION.
+**STATUS:** COMMISSION_BANKED__ROUTING_ERRATUM_R1__NO_ADOPTION.  Earlier launch SHA is an immutable ancestor; a worker genuinely already started may finish under the prior commission without reset.
 **REPOSITORY:** `maidiu/rawlsing` (private).
 **ROLE:** Independent sourcefree bounded implementer/experimenter, NOT HQ, competent accepted-law issuer, real V3 actor or acceptance reviewer.
 **BRANCH:** `agent/rabochii-sorok-r3-hq300-behavioral-assay-r2-reconstruction-r1`
@@ -10,15 +10,23 @@
 **ALLOWED WRITES:** `WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/` and nothing else.
 **MISSION / ONE OUTCOME:** Design and implement a genuinely discriminating PRE-REGISTERED sourcefree R2 behavioral assay architecture with repaired actor-safe independent interventions, scoring and secure grant transport mocks. Do NOT perform real behavioral model calls or claim any observed human/LLM response.
 
+## OWNER-SELECTED SINGLE-EDITOR ROUTING — BINDING CLARIFICATION
+
+**PRIMARY EDITOR/HARNESS:** Codex.
+**PRIMARY CODING/REASONING MODEL:** GPT-6.1 High.
+**ONE_WORKER_FULL_JOB:** ONE worker in the selected editor does the full commissioned task from investigation to published remote return. No sub-agent, helper, duplicate editor session or model handoff is required or authorized by this commission. An independent scientific I2 review is a **subsequent HQ action after return**, not a launch prerequisite or a task delegated to this worker.
+**MODEL/HARNESS NONCONFLATION:** The editor/runtime and underlying configured model are separate. `MiMo-V2.6 Pro` in `OpenCode` is not `DeepSeek-Harness`. This commission MUST NOT route the user to a different harness merely because a model could theoretically be available there.
+**STARTUP COMPATIBILITY:** For a NEW launch, the operative sealed startup is this routing-revised commission's new remote HEAD communicated by HQ. The original commit `f5ad6e6477e9a0d2e7ab2b8c4ec578e5586a4146` remains an immutable ancestor and custody evidence. If the user already launched an agent from that original commit, do not reset/relaunch it; the user-level host selection above governs interpretation, and the worker may complete its original sealed work unless directed otherwise.
+
 ## Nonoptional ranked host + phase/model routing
 `HQ_ENVIRONMENT_VERDICT=LOCAL_DOMINANT`; `BROWSER_SUFFICIENCY=SCOPED_ONLY`; `BROWSER_SETUP_COST=HEAVY`.
-**PRIMARY MODEL/HOST & MINIMUM INTELLIGENCE:** GPT-6.1 High or GPT-6 High I2 for independent experimental/scientific assay redesign in an authorized local Codex worktree (user's existing GPT-6.1 High selection acceptable; do not downgrade on speculative usage). Deterministic coding may use an approved economical MiMo/OpenCode helper under one accountable scientist and separate reviewer; do not ask I1 to decide behavioral estimand validity.
+**PRIMARY MODEL/HOST & MINIMUM INTELLIGENCE:** Primary GPT-6.1 High in the user's authorized local Codex editor/worktree for I2 experimental validity and implementation. ONE Codex agent completes the full R2 science/design/code/tests/receipts/push. Do not invoke MiMo/OpenCode/DeepSeek-Harness helpers or another agent. Independent I2 acceptance review is afterward under HQ, not a second agent during this job.
 **WHY PREFERRED:** RMB measured 23 real independent validity REDs across 576 packets, menu/ID leakage, no arm manipulation and missing executable transport. A substantive intervention/measurement redesign demands strong I2 reasoning plus local rapid iterations and actual archive tests; Browser-only documentary analysis cannot validate completed assay.
 **WARM REUSE PLAN:** New separate governed worktree sharing authorized Git store with LAB1/LAB2; verify 20 + 25 + 576 original sourcefree baseline and RMB 13 PASS/23 RED first. Keep original R1 preregistration immutable, issue new versioned R2 freeze only.
-**OBJECTIVE FALLBACK TRIGGER:** If no local authorized runner, only documentary independent R2 scientific design in Browser GPT-6 High (NOT an executable lab readiness PASS). Never call live model regardless of installed credentials; future grant separately issued after R2 review.
+**OBJECTIVE FALLBACK TRIGGER:** If this Codex GPT-6.1 High editor or its authorized local runner is unavailable, report a precise capability/permission HOLD. Do not switch editor/model, delegate, or substitute a Browser-only scientific design for the commissioned executable proof without owner direction. Never make behavioral model calls regardless of local credentials.
 **WHY NOT ALTERNATIVE:** Alternate may accomplish a scoped documentary or isolated test subset but is not equally suitable for the entire intended grain. Model availability/provider privacy must be actually verified; no fabricated cost or quota claims.
 **PHASE_MODEL_ASSIGNMENT:** I0 hashes/sourcefree runner; I1 bounded code/test machinery; I2 review of full scientific meaning/authority independently after author return; I3 only true accepted authority collision. No automatic GPT-6.1 High for routine imports/tests.
-**PRIMARY_MODEL_ECONOMICS:** Prefer verified capable MiMo/DeepSeek-Harness for fixed repairs; use I2 High where measurement/semantic reasoning materially justifies it. No model pricing inferred from version number; cache/allowance/usage recorded if available.
+**PRIMARY_MODEL_ECONOMICS:** GPT-6.1 High in existing Codex is user-selected for I2 scientific assay redesign; it executes its own implementation and tests in the same session. Do not infer that a MiMo/DeepSeek helper is required or economical, and do not launch one. Record usage if actually observable.
 **REVIEW_INDEPENDENCE_AND_ESCALATION:** distinct competent I2 reviewer after candidate; author cannot accept or self-adopt. No duplicate full rewrite of original oracles.
 **ACTIVE_WORKER_NO_DISTURBANCE:** new HQ300 commission, NOT a relaunch or modification of completed HQ299 worker branches.
 
