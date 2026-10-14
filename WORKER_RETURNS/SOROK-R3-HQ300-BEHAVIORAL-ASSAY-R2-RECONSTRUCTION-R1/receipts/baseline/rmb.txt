@@ -1,0 +1,186 @@
+python3 -m pytest test_independent.py -q --tb=short --junitxml=../../receipts/baseline/rmb.xml
+exit=1
+............FFFFFFFFFFFF.FFFFFFFFFFF                                     [100%]
+=================================== FAILURES ===================================
+________________ test_contract_scorer_ids_hide_contrast_labels _________________
+test_independent.py:88: in test_contract_scorer_ids_hide_contrast_labels
+    assert t['prereg_contrast'] not in t['trial_id'], 'Contrast leaks through scorer trial_id'
+E   AssertionError: Contrast leaks through scorer trial_id
+E   assert 'H_RESPONSIVE' not in 'K1__H_RESPONSIVE__S01'
+E     
+E     'H_RESPONSIVE' is contained here:
+E       K1__H_RESPONSIVE__S01
+____________ test_contract_counterbalance_is_exact_within_each_cell ____________
+test_independent.py:99: in test_contract_counterbalance_is_exact_within_each_cell
+    assert len(set(counts)) == 1, (k,c,arm,counts)
+E   AssertionError: ('K1', 'H_RESPONSIVE', 'A', [7, 5])
+E   assert 2 == 1
+E    +  where 2 = len({5, 7})
+E    +    where {5, 7} = set([7, 5])
+_____________ test_contract_arm_manipulation_survives_menu_removal _____________
+test_independent.py:103: in test_contract_arm_manipulation_survives_menu_removal
+    assert core(packet(arm='A')) != core(packet(arm='B_admissible')), 'No A/B machinery manipulation'
+E   AssertionError: No A/B machinery manipulation
+E   assert {'packet_schema': 'LAB2_BEHAVIORAL_TRIAL_PACKET@1.0.0', 'trial_id': 'K3__TRACE_ACTIVE__S01', 'seed': 'S01', 'k_id': 'K3', ...} != {'packet_schema': 'LAB2_BEHAVIORAL_TRIAL_PACKET@1.0.0', 'trial_id': 'K3__TRACE_ACTIVE__S01', 'seed': 'S01', 'k_id': 'K3', ...}
+E    +  where {'packet_schema': 'LAB2_BEHAVIORAL_TRIAL_PACKET@1.0.0', 'trial_id': 'K3__TRACE_ACTIVE__S01', 'seed': 'S01', 'k_id': 'K3', ...} = core({'packet_schema': 'LAB2_BEHAVIORAL_TRIAL_PACKET@1.0.0', 'trial_id': 'K3__TRACE_ACTIVE__S01', 'seed': 'S01', 'presentation_code': 'PC_0667c06ede7a', ...})
+E    +    where {'packet_schema': 'LAB2_BEHAVIORAL_TRIAL_PACKET@1.0.0', 'trial_id': 'K3__TRACE_ACTIVE__S01', 'seed': 'S01', 'presentation_code': 'PC_0667c06ede7a', ...} = packet(arm='A')
+E    +  and   {'packet_schema': 'LAB2_BEHAVIORAL_TRIAL_PACKET@1.0.0', 'trial_id': 'K3__TRACE_ACTIVE__S01', 'seed': 'S01', 'k_id': 'K3', ...} = core({'packet_schema': 'LAB2_BEHAVIORAL_TRIAL_PACKET@1.0.0', 'trial_id': 'K3__TRACE_ACTIVE__S01', 'seed': 'S01', 'presentation_code': 'PC_c97ac270fbcf', ...})
+E    +    where {'packet_schema': 'LAB2_BEHAVIORAL_TRIAL_PACKET@1.0.0', 'trial_id': 'K3__TRACE_ACTIVE__S01', 'seed': 'S01', 'presentation_code': 'PC_c97ac270fbcf', ...} = packet(arm='B_admissible')
+_______ test_contract_k3_allowed_actor_packet_hides_inaccessible_origin ________
+test_independent.py:108: in test_contract_k3_allowed_actor_packet_hides_inaccessible_origin
+    assert 'PUBLIC_SHAMING' not in text and 'SHAMED_FOR_QUESTION' not in text
+E   assert ('PUBLIC_SHAMING' not in '{"packet_ki...ded": false}'
+E     
+E     'PUBLIC_SHAMING' is contained here:
+E     ?           ^^
+E       id": "EV7_PUBLIC_SHAMING", "actor_receivable_features": {"act": "PUBLIC_SHAMING", "content": "SHAMED_FOR_QUESTION"}}], "trace_markers": [{"trace_marker": "TRACE_PUBLIC_SHAMING", "access_state": "RETAINED_NOT_ACCESSIBLE", "origin_content": null}, {"trace_marker": "EPISODIC_EV7_PUBLIC_SHAMING", "access_state": "UNAVAILABLE", "origin_content": null}], "first_person_origin_claims_permitted": false, "hidden_origin_content_included": false}
+E     ?           ^^^^^^^^^^^^^^^^)
+_________ test_contract_k5_actor_view_excludes_objective_owner_effects _________
+test_independent.py:115: in test_contract_k5_actor_view_excludes_objective_owner_effects
+    assert 'PUBLIC_STANDING_CHANGE' not in json.dumps(visible)
+E   assert 'PUBLIC_STANDING_CHANGE' not in '{"packet_sc...a60b294a02"}'
+E     
+E     'PUBLIC_STANDING_CHANGE' is contained here:
+E     ?           ^^
+E       t_kind": "PUBLIC_STANDING_CHANGE", "target_key": "STANDING_A_TEST", "payload": {"standing": "CERTIFIED", "witness": "REGISTRAR"}, "parent_event_refs": ["EV_CERTIFICATION"]}, {"effect_id": "EFF_K5_CERT_RECEPTION", "owner": "ADP017", "effect_kind": "RECEPTION_RECORDED", "target_key": "RECEPTION_CERTIFICATION", "payload": {"content": "CERTIFICATION_WAS_RECEPTION", "warrant": "ACTOR_RECEPTION", "claim_permission": "OWN_STATE_ONLY"}, "parent_event_refs": ["EV_CERTIFICATION"]}]}, "allowed_actor_info_packet": {"packet_kind...
+E     
+E     ...Full output truncated (2 lines hidden), use '-vv' to show
+___________ test_contract_candidate_packet_refuses_unadmitted_event ____________
+test_independent.py:126: in test_contract_candidate_packet_refuses_unadmitted_event
+    assert p.get('invalid_and_hold_codes'), 'DRAFT ancestry accepted into packet without INVALID/HOLD'
+E   AssertionError: DRAFT ancestry accepted into packet without INVALID/HOLD
+E   assert None
+E    +  where None = <built-in method get of dict object at 0x107522480>('invalid_and_hold_codes')
+E    +    where <built-in method get of dict object at 0x107522480> = {'packet_schema': 'LAB2_BEHAVIORAL_TRIAL_PACKET@1.0.0', 'trial_id': 'K1__H_RESPONSIVE__S01', 'seed': 'S01', 'presentation_code': 'PC_7f36e7136469', ...}.get
+____________ test_contract_primary_denominator_includes_unscorable _____________
+test_independent.py:132: in test_contract_primary_denominator_includes_unscorable
+    assert correctness_fraction(recs) == .5, 'Unscorable silently removed from denominator'
+E   AssertionError: Unscorable silently removed from denominator
+E   assert 1.0 == 0.5
+E    +  where 1.0 = correctness_fraction([ScoreRecord(trial_id='a', counterbalance_code='p', selected_typed_code='SILENCE', expected_typed_codes=['SILENCE'], c...nce_code='p', selected_typed_code='OTHER_UNSCORABLE', expected_typed_codes=['SILENCE'], correct=False, scorable=False)])
+_____________ test_contract_dual_scorers_refuse_corrupt_answer_key _____________
+test_independent.py:138: in test_contract_dual_scorers_refuse_corrupt_answer_key
+    assert not out['records'][0]['correct'], 'Both scorers accept same invalid answer-key code'
+E   AssertionError: Both scorers accept same invalid answer-key code
+E   assert not True
+___________________ test_contract_pairing_requires_same_ids ____________________
+test_independent.py:144: in test_contract_pairing_requires_same_ids
+    with pytest.raises(scoring.ScorerIntegrityError):
+E   Failed: DID NOT RAISE ScorerIntegrityError
+___________ test_contract_interval_required_before_promotion_screen ____________
+test_independent.py:152: in test_contract_interval_required_before_promotion_screen
+    assert 'paired_interval' in out, 'No paired interval computed'
+E   AssertionError: No paired interval computed
+E   assert 'paired_interval' in {'correctness_fraction': 1.0, 'delta_vs_A_pp': 100.0, 'meets_plus_10pp_screen': True, 'equivalence_5pp': 'DIFFERENTIATED'}
+________ test_contract_gate_refuses_semantically_invalid_grant[change0] ________
+test_independent.py:165: in test_contract_gate_refuses_semantically_invalid_grant
+    assert not evaluate_gate(synthetic_grant(**change)).allowed, change
+E   AssertionError: {'privacy_permission_for_synthetic_lab_packets': 'DENIED'}
+E   assert not True
+E    +  where True = GateDecision(gate_id='LAB2_MODEL_CALL_AUTHORIZATION_GATE', gate_version='1.0.0', allowed=True, hold_id=None, missing_f...sing_authority_class='NONE', model_calls_permitted=1, reason='complete grant; re-verify immediately before first call').allowed
+E    +    where GateDecision(gate_id='LAB2_MODEL_CALL_AUTHORIZATION_GATE', gate_version='1.0.0', allowed=True, hold_id=None, missing_f...sing_authority_class='NONE', model_calls_permitted=1, reason='complete grant; re-verify immediately before first call') = evaluate_gate(Grant(named_provider_exact_endpoint='https://example.invalid/no-call', exact_model_and_version_pin='test-only@immutabl..._and_quota_observed='TEST_ONLY', raw_request_response_retention_permission='LOCAL_TEST_DATUM', per_trial_call_budget=1))
+E    +      where Grant(named_provider_exact_endpoint='https://example.invalid/no-call', exact_model_and_version_pin='test-only@immutabl..._and_quota_observed='TEST_ONLY', raw_request_response_retention_permission='LOCAL_TEST_DATUM', per_trial_call_budget=1) = synthetic_grant(**{'privacy_permission_for_synthetic_lab_packets': 'DENIED'})
+________ test_contract_gate_refuses_semantically_invalid_grant[change1] ________
+test_independent.py:165: in test_contract_gate_refuses_semantically_invalid_grant
+    assert not evaluate_gate(synthetic_grant(**change)).allowed, change
+E   AssertionError: {'experiment_use_grant_behavioral_actor_trials': 'DENIED'}
+E   assert not True
+E    +  where True = GateDecision(gate_id='LAB2_MODEL_CALL_AUTHORIZATION_GATE', gate_version='1.0.0', allowed=True, hold_id=None, missing_f...sing_authority_class='NONE', model_calls_permitted=1, reason='complete grant; re-verify immediately before first call').allowed
+E    +    where GateDecision(gate_id='LAB2_MODEL_CALL_AUTHORIZATION_GATE', gate_version='1.0.0', allowed=True, hold_id=None, missing_f...sing_authority_class='NONE', model_calls_permitted=1, reason='complete grant; re-verify immediately before first call') = evaluate_gate(Grant(named_provider_exact_endpoint='https://example.invalid/no-call', exact_model_and_version_pin='test-only@immutabl..._and_quota_observed='TEST_ONLY', raw_request_response_retention_permission='LOCAL_TEST_DATUM', per_trial_call_budget=1))
+E    +      where Grant(named_provider_exact_endpoint='https://example.invalid/no-call', exact_model_and_version_pin='test-only@immutabl..._and_quota_observed='TEST_ONLY', raw_request_response_retention_permission='LOCAL_TEST_DATUM', per_trial_call_budget=1) = synthetic_grant(**{'experiment_use_grant_behavioral_actor_trials': 'DENIED'})
+________ test_contract_gate_refuses_semantically_invalid_grant[change3] ________
+test_independent.py:165: in test_contract_gate_refuses_semantically_invalid_grant
+    assert not evaluate_gate(synthetic_grant(**change)).allowed, change
+E   AssertionError: {'exact_model_and_version_pin': 'latest'}
+E   assert not True
+E    +  where True = GateDecision(gate_id='LAB2_MODEL_CALL_AUTHORIZATION_GATE', gate_version='1.0.0', allowed=True, hold_id=None, missing_f...sing_authority_class='NONE', model_calls_permitted=1, reason='complete grant; re-verify immediately before first call').allowed
+E    +    where GateDecision(gate_id='LAB2_MODEL_CALL_AUTHORIZATION_GATE', gate_version='1.0.0', allowed=True, hold_id=None, missing_f...sing_authority_class='NONE', model_calls_permitted=1, reason='complete grant; re-verify immediately before first call') = evaluate_gate(Grant(named_provider_exact_endpoint='https://example.invalid/no-call', exact_model_and_version_pin='latest', privacy_p..._and_quota_observed='TEST_ONLY', raw_request_response_retention_permission='LOCAL_TEST_DATUM', per_trial_call_budget=1))
+E    +      where Grant(named_provider_exact_endpoint='https://example.invalid/no-call', exact_model_and_version_pin='latest', privacy_p..._and_quota_observed='TEST_ONLY', raw_request_response_retention_permission='LOCAL_TEST_DATUM', per_trial_call_budget=1) = synthetic_grant(**{'exact_model_and_version_pin': 'latest'})
+________ test_contract_gate_refuses_semantically_invalid_grant[change4] ________
+test_independent.py:165: in test_contract_gate_refuses_semantically_invalid_grant
+    assert not evaluate_gate(synthetic_grant(**change)).allowed, change
+E   AssertionError: {'explicit_monetary_cap': 'USD -1'}
+E   assert not True
+E    +  where True = GateDecision(gate_id='LAB2_MODEL_CALL_AUTHORIZATION_GATE', gate_version='1.0.0', allowed=True, hold_id=None, missing_f...sing_authority_class='NONE', model_calls_permitted=1, reason='complete grant; re-verify immediately before first call').allowed
+E    +    where GateDecision(gate_id='LAB2_MODEL_CALL_AUTHORIZATION_GATE', gate_version='1.0.0', allowed=True, hold_id=None, missing_f...sing_authority_class='NONE', model_calls_permitted=1, reason='complete grant; re-verify immediately before first call') = evaluate_gate(Grant(named_provider_exact_endpoint='https://example.invalid/no-call', exact_model_and_version_pin='test-only@immutabl..._and_quota_observed='TEST_ONLY', raw_request_response_retention_permission='LOCAL_TEST_DATUM', per_trial_call_budget=1))
+E    +      where Grant(named_provider_exact_endpoint='https://example.invalid/no-call', exact_model_and_version_pin='test-only@immutabl..._and_quota_observed='TEST_ONLY', raw_request_response_retention_permission='LOCAL_TEST_DATUM', per_trial_call_budget=1) = synthetic_grant(**{'explicit_monetary_cap': 'USD -1'})
+________ test_contract_gate_refuses_semantically_invalid_grant[change5] ________
+test_independent.py:165: in test_contract_gate_refuses_semantically_invalid_grant
+    assert not evaluate_gate(synthetic_grant(**change)).allowed, change
+E   AssertionError: {'per_trial_call_budget': True}
+E   assert not True
+E    +  where True = GateDecision(gate_id='LAB2_MODEL_CALL_AUTHORIZATION_GATE', gate_version='1.0.0', allowed=True, hold_id=None, missing_f...g_authority_class='NONE', model_calls_permitted=True, reason='complete grant; re-verify immediately before first call').allowed
+E    +    where GateDecision(gate_id='LAB2_MODEL_CALL_AUTHORIZATION_GATE', gate_version='1.0.0', allowed=True, hold_id=None, missing_f...g_authority_class='NONE', model_calls_permitted=True, reason='complete grant; re-verify immediately before first call') = evaluate_gate(Grant(named_provider_exact_endpoint='https://example.invalid/no-call', exact_model_and_version_pin='test-only@immutabl...d_quota_observed='TEST_ONLY', raw_request_response_retention_permission='LOCAL_TEST_DATUM', per_trial_call_budget=True))
+E    +      where Grant(named_provider_exact_endpoint='https://example.invalid/no-call', exact_model_and_version_pin='test-only@immutabl...d_quota_observed='TEST_ONLY', raw_request_response_retention_permission='LOCAL_TEST_DATUM', per_trial_call_budget=True) = synthetic_grant(**{'per_trial_call_budget': True})
+________ test_contract_gate_refuses_semantically_invalid_grant[change6] ________
+test_independent.py:165: in test_contract_gate_refuses_semantically_invalid_grant
+    assert not evaluate_gate(synthetic_grant(**change)).allowed, change
+E   AssertionError: {'per_trial_call_budget': 1.5}
+E   assert not True
+E    +  where True = GateDecision(gate_id='LAB2_MODEL_CALL_AUTHORIZATION_GATE', gate_version='1.0.0', allowed=True, hold_id=None, missing_f...ng_authority_class='NONE', model_calls_permitted=1.5, reason='complete grant; re-verify immediately before first call').allowed
+E    +    where GateDecision(gate_id='LAB2_MODEL_CALL_AUTHORIZATION_GATE', gate_version='1.0.0', allowed=True, hold_id=None, missing_f...ng_authority_class='NONE', model_calls_permitted=1.5, reason='complete grant; re-verify immediately before first call') = evaluate_gate(Grant(named_provider_exact_endpoint='https://example.invalid/no-call', exact_model_and_version_pin='test-only@immutabl...nd_quota_observed='TEST_ONLY', raw_request_response_retention_permission='LOCAL_TEST_DATUM', per_trial_call_budget=1.5))
+E    +      where Grant(named_provider_exact_endpoint='https://example.invalid/no-call', exact_model_and_version_pin='test-only@immutabl...nd_quota_observed='TEST_ONLY', raw_request_response_retention_permission='LOCAL_TEST_DATUM', per_trial_call_budget=1.5) = synthetic_grant(**{'per_trial_call_budget': 1.5})
+________________ test_contract_grant_alone_is_not_unimplemented ________________
+test_independent.py:172: in test_contract_grant_alone_is_not_unimplemented
+    r.run_granted()
+imports/LAB2/lab2/behavioral_runner.py:143: in run_granted
+    raise NotImplementedError(
+E   NotImplementedError: GRANTED mode transport is intentionally not wired in this return: no grant exists, so no transport may be exercised. When a grant is issued, this method is the single sanctioned call site; it must capture exact request/response and obey the frozen budgets.
+
+During handling of the above exception, another exception occurred:
+test_independent.py:174: in test_contract_grant_alone_is_not_unimplemented
+    pytest.fail('Filled test fields reach NotImplementedError; grant alone cannot run assay')
+E   Failed: Filled test fields reach NotImplementedError; grant alone cannot run assay
+____________ test_contract_null_runner_has_order_and_budget_result _____________
+test_independent.py:181: in test_contract_null_runner_has_order_and_budget_result
+    assert 'N3_ORDER' in out and 'N7_BUDGET' in out, 'N3/N7 are declarations only'
+E   AssertionError: N3/N7 are declarations only
+E   assert ('N3_ORDER' in {'matched_content_across_arms_ok': True, 'matched_content_violations': [], 'N1_PARAPHRASE': {'typed_menu_invariant': T...: True, 'pass': True}, 'N2_LABEL': {'typed_menu_invariant': True, 'expected_codes_invariant': True, 'pass': True}, ...})
+____________ test_contract_secondary_free_text_capture_implemented _____________
+test_independent.py:185: in test_contract_secondary_free_text_capture_implemented
+    assert hasattr(behavioral_runner.BehavioralRunner, 'run_free_text_validation')
+E   AssertionError: assert False
+E    +  where False = hasattr(<class 'lab2.behavioral_runner.BehavioralRunner'>, 'run_free_text_validation')
+E    +    where <class 'lab2.behavioral_runner.BehavioralRunner'> = behavioral_runner.BehavioralRunner
+_____________ test_contract_k1_preserves_predecessor_lawful_appeal _____________
+test_independent.py:189: in test_contract_k1_preserves_predecessor_lawful_appeal
+    assert 'APPEAL' in packets.MENU_ORDER['K1']
+E   AssertionError: assert 'APPEAL' in ['REQUEST_FEEDBACK', 'SILENCE']
+______________ test_contract_k5_preserves_remain_doubtful_outcome ______________
+test_independent.py:194: in test_contract_k5_preserves_remain_doubtful_outcome
+    assert 'REMAIN_DOUBTFUL' in packets.MENU_ORDER['K5']
+E   AssertionError: assert 'REMAIN_DOUBTFUL' in ['ACCEPT_CERTIFICATE', 'NO_STANDING_CHANGE_ACTION']
+_____________ test_contract_k6_candidate_does_not_become_mandatory _____________
+test_independent.py:199: in test_contract_k6_candidate_does_not_become_mandatory
+    assert 'NO_SANCTION' in packets.EXPECTED_TYPED_CODES['K6']['PRACTICE_AND_CAPACITY']
+E   AssertionError: assert 'NO_SANCTION' in ['POLICING_CANDIDATE']
+________ test_contract_k6_capacity_contrast_contains_capacity_evidence _________
+test_independent.py:206: in test_contract_k6_capacity_contrast_contains_capacity_evidence
+    assert {k:yes[k] for k in facts} != {k:no[k] for k in facts}, 'Opposite expected codes, identical factual input; position/capacity omitted'
+E   AssertionError: Opposite expected codes, identical factual input; position/capacity omitted
+E   assert {'world_snapshot': {'world_id': 'W_PORT_TOWN_1999_POSITION_VARIANT', 'world_version': 'W2', 'fixture_hash': 'W_SYNTH_0...d': 'W_PORT_TOWN_1999_POSITION_VARIANT', 'fixture_hash': 'W_SYNTH_002'}, 'position_receipt_ref': 'POS_SYNTH_02F', ...}} != {'world_snapshot': {'world_id': 'W_PORT_TOWN_1999_POSITION_VARIANT', 'world_version': 'W2', 'fixture_hash': 'W_SYNTH_0...d': 'W_PORT_TOWN_1999_POSITION_VARIANT', 'fixture_hash': 'W_SYNTH_002'}, 'position_receipt_ref': 'POS_SYNTH_02F', ...}}
+=========================== short test summary info ============================
+FAILED test_independent.py::test_contract_scorer_ids_hide_contrast_labels - A...
+FAILED test_independent.py::test_contract_counterbalance_is_exact_within_each_cell
+FAILED test_independent.py::test_contract_arm_manipulation_survives_menu_removal
+FAILED test_independent.py::test_contract_k3_allowed_actor_packet_hides_inaccessible_origin
+FAILED test_independent.py::test_contract_k5_actor_view_excludes_objective_owner_effects
+FAILED test_independent.py::test_contract_candidate_packet_refuses_unadmitted_event
+FAILED test_independent.py::test_contract_primary_denominator_includes_unscorable
+FAILED test_independent.py::test_contract_dual_scorers_refuse_corrupt_answer_key
+FAILED test_independent.py::test_contract_pairing_requires_same_ids - Failed:...
+FAILED test_independent.py::test_contract_interval_required_before_promotion_screen
+FAILED test_independent.py::test_contract_gate_refuses_semantically_invalid_grant[change0]
+FAILED test_independent.py::test_contract_gate_refuses_semantically_invalid_grant[change1]
+FAILED test_independent.py::test_contract_gate_refuses_semantically_invalid_grant[change3]
+FAILED test_independent.py::test_contract_gate_refuses_semantically_invalid_grant[change4]
+FAILED test_independent.py::test_contract_gate_refuses_semantically_invalid_grant[change5]
+FAILED test_independent.py::test_contract_gate_refuses_semantically_invalid_grant[change6]
+FAILED test_independent.py::test_contract_grant_alone_is_not_unimplemented - ...
+FAILED test_independent.py::test_contract_null_runner_has_order_and_budget_result
+FAILED test_independent.py::test_contract_secondary_free_text_capture_implemented
+FAILED test_independent.py::test_contract_k1_preserves_predecessor_lawful_appeal
+FAILED test_independent.py::test_contract_k5_preserves_remain_doubtful_outcome
+FAILED test_independent.py::test_contract_k6_candidate_does_not_become_mandatory
+FAILED test_independent.py::test_contract_k6_capacity_contrast_contains_capacity_evidence
+23 failed, 13 passed in 0.43s
