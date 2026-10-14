@@ -1,0 +1,43 @@
+# HQ298 SM — ACTUAL CAN008-TO-TARGET-OWNER MINIMUM POSITIVE TRANSITION
+
+**STATUS:** COMMISSION_PREPARED__SOURCEFREE_OR_DOCUMENTARY_ONLY__NOT_YET_EXECUTED__NO_ADOPTION
+**REPOSITORY:** `maidiu/rawlsing` (PRIVATE)
+**ROLE:** Independent bounded causal implementation scientist; no new CAN008 authority or actor grant
+**INTELLIGENCE:** I2 HIGH for rule/owner admissibility; mechanical staging/test on cheapest competent approved warm OpenCode Go or Codex Medium, no upgrade without specific reasoning limit
+**EXECUTION SURFACE:** S1 Browser Python or S2 local where existing verified CAN008/CAN010/ADP016 files physically import, otherwise minimal pinned sourcefree closure
+**BRANCH:** `agent/rabochii-sorok-r3-hq298-sm-owner-effect-court-r1`
+**SOURCE SEALED HQ BASE:** `3c33688506840869e1f05f4230248ce950b78d6c`
+**EXACT SEALED LAUNCH STARTUP:** branch tip of the commission-creation commit. HQ must communicate and verify this 40-hex SHA after file creation; do not use HQ parent as if it already contained this commission.
+**COMMISSION:** `WORKER_COMMISSIONS/SOROK-R3-HQ298-SM-OWNER-EFFECT-COURT-R1/00_COMMISSION.md`
+**ALLOWED WRITE TERRAIN:** `WORKER_RETURNS/SOROK-R3-HQ298-SM-OWNER-EFFECT-COURT-R1/` ONLY; no accepted source or shared HQ file mutation.
+**PREDECESSOR EXPLICIT REFS:** SM 7777a06dbd3a8f9dcf2b7ca3241e853dc485e505; S-M-LAB1 d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09; HQ297 K35 12c65e0ed0a82ebe6a843182990e8b8586b85341
+**LIVE RESOURCE REGISTRY STATUS:** no actual worker runtime passports independently verified by HQ; environment/session affinity initially UNKNOWN. Do not claim old local process alive based on these documentary returns.
+
+## Mission (one coherent outcome and expected grade)
+One outcome: move beyond synthetic stipulated K3/K5 results to the smallest actual pinned CAN008_R2 → exact target-owner-effect → ADP016/017 later-response *sourcefree executable* path, or prove precise first missing physical/semantic producer. DO NOT re-run K35's 38 isolated lab assertions as an owner PASS.
+Claim grade ceiling: explicitly bounded documentary/isolated source-free prototype or authorized exact model lab ONLY if independently granted; no new semantic law or original-source/actor use.
+
+## Required operations and discriminators
+Inspect accepted CAN008_R2 adoption and actual GT0/SDTF/etc modules with Git blob SHA/import tree; host preflight and incremental staging up to first valid test. Fix routine in-scope package/import plumbing only in isolated worker candidate; do not forge an accepted positive rule. Predeclare positive admitted world event, lawful owner prestate, issued coupling rule and target effect, committed memory trace vs actor first-person access and next-event response. Execute K3 hidden childhood trace and K5 official power × felt recognition with actual reused rules if and ONLY if separately competent authorities exist. Include rejected draft, worldless event, wrong source issuer, wrong occurrence, inaccessible origin/false explanatory answer, forced institutional ratification, prior-history replay. If owner rule is absent, record precise missing source/module/authority; produce minimal executable stub only as LABELLED TEST-ONLY, not adopted owner.
+
+## Acceptance, stop and independent review
+Provide actual import __file__, blob identities, commands/JUnit and exact selected CAN008/owner coverage (not just fake JSON), before/after target-owner receipts and delayed response typed difference, 0 disclosure and 0 unadmitted mutations, B0 vs B1 incremental effects; if only isolation PASS, state operative actor positive HOLD. Distinct independent I2 CAN008/owner reviewer. No actor/model runs; no canonical rule implementation merge without new assignment.
+Do not conclude unexecutability from absence of full clone. A clean runnable source-free test may be built in Browser/CI/container with authenticated source staging. If accepted imported owner modules are missing, make exact failed attempt and do not counterfeit owner-grain PASS. Stop and request HQ when new semantic authority/permission is essential. Escalation to I3/Astra only for a specific accepted-authority conflict or genuine whole-machine seam change.
+## Binding law and read bands
+MUST_READ_NOW: SOROK_PRODUCT_CONTROL_ROOM/00_READ_ME_FIRST.md, /00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md, /00D_WARM_ENVIRONMENT_PASSPORT_AND_COST_AWARE_AGENT_DISPENSATION_R1.md at Sorok HQ 3c33688506840869e1f05f4230248ce950b78d6c; exact predecessor worker return(s) cited below. Read Astra amendment16 at frozen 3b2d9a1b644a9fa024ed1bd895b67be5c8789531 only to the extent material to this job. READ_IF_TRIGGERED: original accepted owner documents and pinned source module dependencies ONLY if exact implementation or rule usage requires them. BACKGROUND_LINK_ONLY: entire Rawlsing historical corpus, old questionnaires and Sorok ideation transcripts; do not regrok without a specifically named discrepancy.
+Scientific law: world constitutes possibilities rather than choosing psyche; actor/source/model/occurrence issuer distinctions remain intact. PRE-V3 does not own generated mother/father/household. Source-free synthetic demonstration never becomes original population calibration, actor truth, ADP/CAN adoption, N11/N12, physical weld or readiness.
+
+## 00D seven-step resumption and environmental passport (MANDATORY)
+1. Inspect live worker ledger, current branch and prior worker session. If an actually surviving, permitted, scientifically qualified same-session/worktree exists, preserve/reuse it; NEVER infer continuity from an open Browser tab, previous 5-hour window or returned Git branch.
+2. Validate live runtime marker/digest, Python/pytest/Node/git only as required, exact local imports via module.__file__, pinned Git blob SHA-1 (actual NUL blob header), dependencies, branch cleanliness, permissions and quota.
+3. Without qualified continuity, record NEW or RECONSTRUCTED environment epoch; run ONE bounded capability preflight, then stage only exact missing authorized sourcefree files/fixtures. Browser GitHub connector does not auto-mount code; Browser Python might still run. Local host uses one canonical Git object store and a governed separate sparse worktree for simultaneous branches.
+4. First actual discriminating pytest/test early; then exact affected regressions. Missing checkout != no possible isolated execution.
+5. Record true attempted command/import/collection and blockers distinctly: MISSING_RUNNER / MISSING_DEPENDENCY / MISSING_IMPLEMENTATION / MISSING_SOURCE_AUTHORITY / MISSING_ACTOR_MODEL_AUTHORITY / REVIEW_INDEPENDENCE.
+6. Produce sanitized portable environment_passport_delta.json (or equivalent schema-complete return section): opaque environment/epoch IDs, verified/unverified capabilities, precise relative module/blob/import refs, real commands/JUnit, quota/expense observed or UNKNOWN, granted privacy/source/model rights, reusable next affinity. No credentials, full home paths or raw survey bytes.
+7. Return files only on this worker branch; exact final remote SHA + direct ref readback, changed-path list, claims done versus NOT_RUN, scientific ceiling and independent reviewer request. No self-adoption.
+
+## Cost and review guardrails
+Money first, then finite quotas/retries/human touch, then elapsed time, always subject to competent intelligence and lawful authority. Reuse a warm qualified economical Codex/OpenCode/DeepSeek-Harness session only AFTER live continuity and provider/privacy checks. Never assume that a model shown in an older return is presently accessible or cheap. No unapproved billable calls, premium upgrades, external private-source export, source-original operations, actor model run, owner/canonical code mutation, HQ CURRENT edits or V3 wake. Independent I2 review is required before scientific/semantic acceptance; implementer cannot serve as independent reviewer. Local fixture tests are not owner-level proof. After two equivalent unproductive loops stop for root cause rather than repeat.
+
+## Return contract
+Write `WORKER_RETURNS/SOROK-R3-HQ298-SM-OWNER-EFFECT-COURT-R1/00_RETURN.md` and associated sourcefree artifacts/passport under that directory, on your isolated branch only. State direct sealed startup, live environment verification, exact pinned blobs/imports, changed paths, actual commands/logs and executed vs NOT_REACHED cases, cash/quota observed or UNKNOWN, remaining work and separate reviewer; push and verify exact direct remote SHA. No self-adoption.
