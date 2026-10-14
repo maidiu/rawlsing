@@ -14,26 +14,29 @@ A new Sorok control-room session should not reconstruct this program from chat m
 ## Startup order
 
 1. Read `SOROK_PRODUCT_CONTROL_ROOM/00_READ_ME_FIRST.md`.
-2. Read `00_FULL_RAWLSING_VOZHD_GROUNDING_GATE_R1.md` and follow its PRE-MAIN grounding route.
-3. Read `00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md`.
-4. Read and activate `00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md`.
-5. Read and activate `00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md`.
-6. Read `state/CURRENT_STATE.md`.
-7. Read `01_PRODUCT_CHARTER.md`.
-8. Read `02_PROVISIONAL_RELATIONAL_ONTOLOGY.md`.
-9. Read `03_REAL_ALPHA_SPINE.md`.
-10. Read `04_CURRENT_SYSTEM_TO_PRODUCT_CROSSWALK.md`.
-11. Read `05_PROGRAM_MAP.md`.
-12. Read `06_OPERATING_METHOD.md`.
-13. Read `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`.
-14. Read `11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md`.
-15. Read `12_CHAT_EXHAUSTIVE_HARVEST_AUDIT_R5.md`.
-16. Read `13_R5_CHAT_HARVEST_INTEGRITY_RECEIPT.md`.
-17. Read D001 `02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md`.
-18. Read D001 `03_SOROK_RELATIONALIZATION_DELTA_OVER_INHERITED_PFF_R1.md`.
-19. Read the question / decision / risk ledgers.
-20. Resolve the live Sorok branch head and compare against the recorded Pyat base before making any current-system claim.
-21. Read only the dockets relevant to the next action.
+5. Read `handoffs/R16_PREMAIN_PYAT_ASTRA_SOROK_HQ_SUCCESSION_20261014_R1.md`.
+6. Read `handoffs/R17_CURRENT_CHAT_HARVEST_AND_SUCCESSION_DELTA_20261014_R1.md`.
+7. Read `handoffs/R18_CURRENT_CHAT_HARVEST_INTEGRITY_RECEIPT_R1.md`.
+5. Read `00_FULL_RAWLSING_VOZHD_GROUNDING_GATE_R1.md` and follow its PRE-MAIN grounding route.
+6. Read `00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md`.
+7. Read and activate `00B_HQ_COMMUNICATIVE_DISCIPLINE_AND_FEASIBILITY_CLAIM_CONSTITUTION_R1.md`.
+8. Read and activate `00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md`.
+9. Read `state/CURRENT_STATE.md`.
+10. Read `01_PRODUCT_CHARTER.md`.
+11. Read `02_PROVISIONAL_RELATIONAL_ONTOLOGY.md`.
+12. Read `03_REAL_ALPHA_SPINE.md`.
+13. Read `04_CURRENT_SYSTEM_TO_PRODUCT_CROSSWALK.md`.
+14. Read `05_PROGRAM_MAP.md`.
+15. Read `06_OPERATING_METHOD.md`.
+16. Read `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`.
+17. Read `11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md`.
+18. Read `12_CHAT_EXHAUSTIVE_HARVEST_AUDIT_R5.md`.
+19. Read `13_R5_CHAT_HARVEST_INTEGRITY_RECEIPT.md`.
+20. Read D001 `02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md`.
+21. Read D001 `03_SOROK_RELATIONALIZATION_DELTA_OVER_INHERITED_PFF_R1.md`.
+22. Read the question / decision / risk ledgers.
+23. Resolve the live Sorok branch head and compare against the recorded Pyat base before making any current-system claim.
+24. Read only the dockets relevant to the next action.
 
 ## Required fresh-session articulation
 
