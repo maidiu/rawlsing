@@ -1,0 +1,146 @@
+{
+  "schema": "POST_ASTRA_PT_FIRST_NATIVE_RELEASE_AND_DESIGN@1",
+  "evidence_grade": "ORIGINAL_PUBLISHER_WEB_DOCUMENTATION_PLUS_INHERITED_PROJECT_DOCUMENTS__NOT_SURVEY_ROWS",
+  "verified_from_public_official": {
+    "round5_merged": "2015-07-16, 34 countries, last updated July 2015",
+    "round9_merged": "2024-10-01, 39 countries; codebook page 2024-10-31",
+    "round5_country_native_codebook": "June 2012 Ghana codebook documents sample/census/survey languages and response rate",
+    "weights_rule": "Afrobarometer general Withinwt nationally; Combinwt for cross-national only"
+  },
+  "selected": {
+    "schema": "POST_ASTRA_PT_GHA_ORIGINAL_NATIVE_PAIR@1",
+    "state": "DOCUMENTARY_PUBLISHED_RELEASE_CANDIDATES_ONLY__NOT_MEASURED",
+    "id": "TEMP_SRC02_SRC03__GHA_R5_Q43_R9_Q31",
+    "source_family": "Afrobarometer",
+    "original_pair": "GHANA_R5_2012_Q43__GHANA_R9_2022_Q31",
+    "target": "ghana adult citizens 18+ nationally, eligible/asked substantive responses 0..4, independently drawn 2012/2022 samples",
+    "measure": "design-weighted native satisfaction share 3 or 4 among substantive 0,1,2,3,4; report all five native categories and typed nonresponses; delta=p_2022-p_2012",
+    "sources": [
+      {
+        "root": "SRC02",
+        "retained_SHA256_inherited_not_rechecked": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+        "wave": "R5",
+        "year": 2012,
+        "original_country_item": "GHA Q43",
+        "country_original_questionnaire": "https://www.afrobarometer.org/wp-content/uploads/2022/02/gha_r5_questionnaire.pdf",
+        "native_country_codebook": "https://www.afrobarometer.org/wp-content/uploads/2022/02/gha_r5_codebook.pdf",
+        "public_official_merged_release": "https://www.afrobarometer.org/survey-resource/merged-round-5-data-34-countries-2011-2013-last-update-july-2015/",
+        "public_merged_release_date": "2015-07-16",
+        "public_merged_release_version": "34_COUNTRIES__LAST_UPDATED_JULY_2015",
+        "original_country_codebook_date": "2012-06",
+        "fieldwork": "2012-05-08/2012-05-27",
+        "country_selected_rows": null,
+        "country_release_exact_columns": null,
+        "official_to_retained_byte_match": null,
+        "expected_national_sample_size_documentary": 2400,
+        "sample_frame": "pre-2010 census EAs; weight reportedly calibrated to 2010 population distribution",
+        "native_substantive": {
+          "0": "Ghana is not a democracy",
+          "1": "not at all satisfied",
+          "2": "not very satisfied",
+          "3": "fairly satisfied",
+          "4": "very satisfied"
+        },
+        "native_special": {
+          "9": "dont know",
+          "998": "refused",
+          "-1": "missing"
+        },
+        "original_survey_languages": [
+          "English",
+          "Akan",
+          "Ga",
+          "Ewe",
+          "Dagbani"
+        ],
+        "selection": "card-based within-household, gender alternation",
+        "general_weighting_hint": "WITHINWT for national summaries, actual column/release verification needed",
+        "country_filter_ref": null,
+        "question_routing_ref": null,
+        "weights_and_PSU_strata_refs": null,
+        "variance_method_issued": null,
+        "source_read_grant": null,
+        "native_distribution_product": null
+      },
+      {
+        "root": "SRC03",
+        "retained_SHA256_inherited_not_rechecked": "3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8",
+        "wave": "R9",
+        "year": 2022,
+        "original_country_item": "GHA Q31",
+        "country_original_questionnaire": "https://www.afrobarometer.org/wp-content/uploads/2023/06/GHA_R9.Indigenized-Questionnaire-_30mar22-FINAL.docx.pdf",
+        "native_country_codebook": "https://www.afrobarometer.org/survey-resource/ghana-round-9-codebook-2022/",
+        "public_official_merged_release": "https://www.afrobarometer.org/data/merged-data/",
+        "public_merged_release_date": "2024-10-01",
+        "public_merged_release_version": "39_COUNTRIES__2023_WAVES__PUBLISHED_2024-10-01",
+        "public_official_merged_codebook": "https://www.afrobarometer.org/survey-resource/merged-round-9-codebook-39-countries-2023/",
+        "public_merged_codebook_date": "2024-10-31",
+        "fieldwork": "2022-04-04/2022-04-20",
+        "country_selected_rows": null,
+        "country_release_exact_columns": null,
+        "official_to_retained_byte_match": null,
+        "expected_national_sample_size_documentary": 2400,
+        "sample_frame": "2021 Ghana census frame",
+        "native_substantive": {
+          "0": "Ghana is not a democracy",
+          "1": "not at all satisfied",
+          "2": "not very satisfied",
+          "3": "fairly satisfied",
+          "4": "very satisfied"
+        },
+        "native_special": {
+          "8": "refused",
+          "9": "dont know",
+          "-1": "missing"
+        },
+        "selection": "computer-selected person with gender alternation",
+        "general_weighting_hint": "WITHINWT for national summaries, actual column/release verification needed",
+        "country_filter_ref": null,
+        "question_routing_ref": null,
+        "weights_and_PSU_strata_refs": null,
+        "variance_method_issued": null,
+        "source_read_grant": null,
+        "native_distribution_product": null
+      }
+    ],
+    "population_measurability": "CANDIDATE_ONLY__HOLD_DESIGN_SOURCE_N8E_ISSUER",
+    "pair_EE12_grant": null,
+    "adopted_comparator": null,
+    "n8e_result": null,
+    "n9_values_read_receipt": null,
+    "unknown_2017": {
+      "state": "UNOBSERVED_GAP",
+      "measured_value": null
+    },
+    "N8S": "SEPARATE_OBJECTIVE_FACTS_AND_RULE_REQUIRED"
+  },
+  "independent_alternatives": [
+    {
+      "id": "UGA_AFRO_R5_Q7_R9_Q3",
+      "status": "HELD_NATIVE_COMPARABILITY_NOT_INHERENTLY_NONCOMPARABLE",
+      "evidence_grade": "D03_D04P_T8E_DOCUMENTARY",
+      "why_not_nearer": "R5 original Uganda country field script not located; R5 2400+3800 supplemental vs R9 2400+992 extra districts; R9 longer preamble, national selector/weight design not authenticated",
+      "still_useful": "Independent same-family, different country/question adversarial bridge test"
+    },
+    {
+      "id": "AUT_EVS_1990_2008_A048",
+      "status": "HELD_NATIVE_METHOD_NOT_SCIENTIFICALLY_REJECTED",
+      "evidence_grade": "D03_D04P_T8E_DOCUMENTARY",
+      "why_not_nearer": "1990 Austria citizenship and probability/quota sampling unresolved; 2008 private-household adult including noncitizens; method/card differences; signed original release and variance missing",
+      "still_useful": "Heterogeneous family/native approval 1/2 vs harmonized 1/0 probe"
+    }
+  ],
+  "global": {
+    "original_waves": 35,
+    "survey_families": 9,
+    "syntactic_edges": 63,
+    "scope_cells": 1890,
+    "claims_of_positive_EE12": 0
+  },
+  "legal_science_scope": {
+    "authorized_raw_reads": 0,
+    "source_sha_computed_now": false,
+    "competent_comparison_issuer": false,
+    "world_consumer_run": false
+  }
+}

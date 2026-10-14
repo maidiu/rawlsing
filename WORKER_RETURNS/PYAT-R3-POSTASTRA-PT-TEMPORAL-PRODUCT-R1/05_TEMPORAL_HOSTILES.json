@@ -1,0 +1,153 @@
+{
+  "schema": "POST_ASTRA_PT_FIXED_NATIVE_PACKET_HOSTILE_COURT@1",
+  "execution_environment": "functions.exec in-memory JavaScript V8, NOT project Node/Python/pytest or original survey",
+  "executed": 21,
+  "passed": 21,
+  "failed": 0,
+  "grade": "SOURCEFREE_STATIC_LITERAL_PACKET_NEGATIVE_ASSERTIONS_ONLY",
+  "tests": [
+    {
+      "id": "baseline_proposed_unissued_court",
+      "expected": null,
+      "observed": null,
+      "pass": true
+    },
+    {
+      "id": "R5_release_date_corruption",
+      "expected": "RELEASE_DATE_CHANGED",
+      "observed": "RELEASE_DATE_CHANGED",
+      "pass": true
+    },
+    {
+      "id": "R9_release_2023_vs_2024_conflation",
+      "expected": "RELEASE_DATE_CHANGED",
+      "observed": "RELEASE_DATE_CHANGED",
+      "pass": true
+    },
+    {
+      "id": "R5_wrong_retained_hash",
+      "expected": "SHA_PROVENANCE_MISMATCH",
+      "observed": "SHA_PROVENANCE_MISMATCH",
+      "pass": true
+    },
+    {
+      "id": "public_merged_link_claims_private_SHA_match",
+      "expected": "FAKE_SOURCE_CUSTODY",
+      "observed": "FAKE_SOURCE_CUSTODY",
+      "pass": true
+    },
+    {
+      "id": "delete_one_source",
+      "expected": "REQUIRES_TWO",
+      "observed": "REQUIRES_TWO",
+      "pass": true
+    },
+    {
+      "id": "swap_wave_order",
+      "expected": "REVERSED_OR_UNBOUND_SOURCE",
+      "observed": "REVERSED_OR_UNBOUND_SOURCE",
+      "pass": true
+    },
+    {
+      "id": "category_zero_collapsed_with_dissatisfaction",
+      "expected": "CATEGORY_0_COLLAPSE",
+      "observed": "CATEGORY_0_COLLAPSE",
+      "pass": true
+    },
+    {
+      "id": "R5_998_refusal_deleted",
+      "expected": "SPECIAL_CODE_CONFUSION",
+      "observed": "SPECIAL_CODE_CONFUSION",
+      "pass": true
+    },
+    {
+      "id": "R9_8_confused_as_valid_response",
+      "expected": "SPECIAL_CODE_CONFUSION",
+      "observed": "SPECIAL_CODE_CONFUSION",
+      "pass": true
+    },
+    {
+      "id": "missing_Ghana_country_selector_faked",
+      "expected": "FAKE_ORIGIN_DESIGN",
+      "observed": "FAKE_ORIGIN_DESIGN",
+      "pass": true
+    },
+    {
+      "id": "guess_PSU_or_weight",
+      "expected": "FAKE_ORIGIN_DESIGN",
+      "observed": "FAKE_ORIGIN_DESIGN",
+      "pass": true
+    },
+    {
+      "id": "source_use_selfgrant",
+      "expected": "FAKE_SOURCE_OR_EE12_GRANT",
+      "observed": "FAKE_SOURCE_OR_EE12_GRANT",
+      "pass": true
+    },
+    {
+      "id": "EE12_selfgrant",
+      "expected": "FAKE_SOURCE_OR_EE12_GRANT",
+      "observed": "FAKE_SOURCE_OR_EE12_GRANT",
+      "pass": true
+    },
+    {
+      "id": "HQ214_candidate_selfadopt",
+      "expected": "FAKE_SOURCE_OR_EE12_GRANT",
+      "observed": "FAKE_SOURCE_OR_EE12_GRANT",
+      "pass": true
+    },
+    {
+      "id": "synthetic_number_faked_as_actual",
+      "expected": "FAKE_N8_OR_N9_OR_GAP",
+      "observed": "FAKE_N8_OR_N9_OR_GAP",
+      "pass": true
+    },
+    {
+      "id": "fabricated_N9_value_read",
+      "expected": "FAKE_N8_OR_N9_OR_GAP",
+      "observed": "FAKE_N8_OR_N9_OR_GAP",
+      "pass": true
+    },
+    {
+      "id": "2017_measured_value_fabricated",
+      "expected": "FAKE_N8_OR_N9_OR_GAP",
+      "observed": "FAKE_N8_OR_N9_OR_GAP",
+      "pass": true
+    },
+    {
+      "id": "estate_35_to_one_wave",
+      "expected": "GLOBAL_SCOPE_ERASURE",
+      "observed": "GLOBAL_SCOPE_ERASURE",
+      "pass": true
+    },
+    {
+      "id": "syntactic_pairs_laundered",
+      "expected": "GLOBAL_SCOPE_ERASURE",
+      "observed": "GLOBAL_SCOPE_ERASURE",
+      "pass": true
+    },
+    {
+      "id": "cross_section_as_panel",
+      "expected": "FALSE_PANEL",
+      "observed": "FALSE_PANEL",
+      "pass": true
+    }
+  ],
+  "source_microdata_reads": 0,
+  "original_source_issuer_grants": 0,
+  "real_ee12_issuances": 0,
+  "actual_n8e_products": 0,
+  "actual_n8s_products": 0,
+  "real_n9_values_read_receipts": 0,
+  "source_version_binary_hashes_verified_now": false,
+  "independent_review": false,
+  "host_computing_resources": {
+    "CPU_seconds": null,
+    "RAM": null,
+    "quota": null,
+    "paid_overflow": false
+  },
+  "model": "GPT-6 High requested; actual provider effort setting independently unverifiable",
+  "sealed_startup": "cfbda903900ac4146b7aa639ab63e3ad3d28a79a",
+  "branch": "agent/rabochii-pyat-r3-postastra-pt-temporal-native-positive-r1"
+}
