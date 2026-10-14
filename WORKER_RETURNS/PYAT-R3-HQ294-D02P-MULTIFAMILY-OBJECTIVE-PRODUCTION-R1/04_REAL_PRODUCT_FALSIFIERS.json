@@ -1,0 +1,132 @@
+{
+  "schema": "PYAT_R3_HQ294_D02P_REAL_PRODUCT_FALSIFIERS@1",
+  "startup": "719e19574abd4b28caa3b015267d4f57b682b9c9",
+  "actual_executed_tests": [],
+  "tests_not_executed": true,
+  "extra_js_contract_suite_rerun": false,
+  "historic_D06_R2_40_JS_hostiles": "INHERITED_FIXTURE_EVIDENCE_ONLY_NOT_REEXECUTED",
+  "cases": [
+    {
+      "id": "AT26_POSITIVE_TWO_FIELDS",
+      "expected": "ACCEPT_ONLY_WITH_TWO_DISTINCT_AUTHENTICATED_SOURCE_FIELD_PRODUCTS_AND_EE13_BINDING_AND_ONE_CONSUMING_N9_RECEIPT",
+      "current": "HOLD_NO_ISSUED_FIELDS_NO_N9",
+      "requirements": [
+        "GSS_SOURCE_ISSUER",
+        "NCA_SOURCE_ISSUER",
+        "EACH_OWNER_PRODUCER_RECEIPT",
+        "EE13_AUTHORIZED",
+        "OC05_ACTIVE",
+        "N9_OWNER_QUERY_USED_BOTH"
+      ]
+    },
+    {
+      "id": "A_SOURCE_DATA_MISLABEL",
+      "mutation": "Substitute 10-percent Ghana microdata catalog variable-frequency as whole-census rural house-lighting share",
+      "expected": "REJECT_POPULATION_DENOMINATOR_UNPROVED"
+    },
+    {
+      "id": "A_WRONG_VARIABLE",
+      "mutation": "Substitute house electricity access or power reliability for MAIN_SOURCE_OF_LIGHTING",
+      "expected": "REJECT_DIFFERENT_MEASUREMENT"
+    },
+    {
+      "id": "B_SUBSCRIPTION_PERSON_CONFUSION",
+      "mutation": "Coerce 23,414,527 active subscriptions to unique mobile data using people or rural population rate",
+      "expected": "REJECT_UNIT_AND_DENOMINATOR_LIE"
+    },
+    {
+      "id": "B_CIRCULAR_INDEPENDENCE",
+      "mutation": "Use NCA 76.04-percent penetration as independent population coverage without underlying GSS denominator dependency",
+      "expected": "REJECT_HIDDEN_DEPENDENCY_CROSSSOURCE"
+    },
+    {
+      "id": "PAIR_SAME_CUSTODY_FORGED",
+      "mutation": "Assign different source-family labels and hashes to identical origin archival bytes/licensee returns",
+      "expected": "REJECT_DUPLICATE_SOURCE_CUSTODY"
+    },
+    {
+      "id": "WORLD_TIME_SLIP",
+      "mutation": "Treat Q4 2021 NCA publication posted in 2022 as observed continuously since January 2021",
+      "expected": "REJECT_TEMPORAL_VALIDITY_PUBLICATION_LEAK"
+    },
+    {
+      "id": "WORLD_REGION_TRANSPORT",
+      "mutation": "Assign national NCA subscriptions to Ghana rural household-specific smartphone coverage without geography/transport model",
+      "expected": "REJECT_UNISSUED_EXPOSURE_OR_TRANSPORT"
+    },
+    {
+      "id": "WORLD_POPULATION_EQUALITY_TEST",
+      "mutation": "Two sources share same named Ghana national target population but retain distinct custody and method",
+      "expected": "DO_NOT_REJECT_ONLY_BECAUSE_NAMED_POPULATION_EQUAL; STILL_REQUIRE_COMPATIBILITY_ISSUER"
+    },
+    {
+      "id": "WORLD_SPATIAL_NONIDENTITY",
+      "mutation": "One observed rural scope and one national scope with actual signed co-presence decision",
+      "expected": "PERMIT_SEPARATE_INDEXED_CONTEXT_ONLY_NOT_COMPARABLE_RATE"
+    },
+    {
+      "id": "EE13_SCOPE_FORGERY",
+      "mutation": "Client supplies self-signed EE13 compatible=true hash without competent science issuer",
+      "expected": "REJECT_UNAUTHENTICATED_ISSUER"
+    },
+    {
+      "id": "N9_MANIFEST_NOT_CONSUMPTION",
+      "mutation": "Report merely lists A/B source refs but makes no two-field data dereference through actual OC05 owner",
+      "expected": "HOLD_NO_ACTUAL_N9_CONSUMER"
+    },
+    {
+      "id": "NO_SELECTED_CURRENT",
+      "mutation": "Reclassify 2021 historical co-presence as CURRENT without actual lifecycle and selected-world roots",
+      "expected": "REJECT_PROTECTED_CURRENT_LAUNDERING"
+    },
+    {
+      "id": "N9_RELEASE_MUTATION",
+      "mutation": "Replace one underlying source publication with amended version after selection",
+      "expected": "SELECTIVE_INVALIDATION_AND_NEW_EE13_COMPATIBILITY_AND_REPLAY_REQUIRED"
+    },
+    {
+      "id": "MISSING_ONE_FAMILY",
+      "mutation": "Remove B but preserve original consumer demand requiring both",
+      "expected": "REJECT_REQUIRED_FIELD_OMISSION__NOT_AUTOMATIC_OPTIONAL_DROP"
+    },
+    {
+      "id": "INVALID_NULL",
+      "mutation": "Replace NCA missing subscription tally with zero",
+      "expected": "REJECT_MISSING_AS_OBSERVED_ZERO"
+    },
+    {
+      "id": "PERSON_CENSUS_TO_FACT",
+      "mutation": "Mark generated rural Ghanaian household electrified because GSS share is 72.6 percent",
+      "expected": "REJECT_INDIVIDUAL_FACT_FROM_AGGREGATE"
+    },
+    {
+      "id": "PERSON_CELLULAR_AS_FACT",
+      "mutation": "Give generated rural child a data subscription/phone based on NCA total",
+      "expected": "REJECT_INDIVIDUAL_TRAIT_FROM_COUNTRY_TOTAL"
+    },
+    {
+      "id": "PERSON_HYPOTHETICAL_WORLDS",
+      "mutation": "Conditional model with explicit household-lighting scenario values, while NCA national count remains non-personal",
+      "expected": "ALLOW_ONLY_AS_UNISSUED_SOURCEFREE_PROXY_TEST; NO_ACTOR_OR_MODEL_CLAIM"
+    },
+    {
+      "id": "CAUSAL_CONFUSION",
+      "mutation": "Claim electricity caused school success/personality or telecom subscriptions caused beliefs",
+      "expected": "REJECT_NO_IDENTIFIED_CAUSAL_OPERATION"
+    },
+    {
+      "id": "ADAPT_EXISTING_DIRECT_ROUTE",
+      "mutation": "Invoke I4 direct_producer contract without producer owner/consumer acceptance",
+      "expected": "BLOCK_DIRECT_ROUTE_AUTHORITY_OR_GRAIN"
+    },
+    {
+      "id": "ALL35_FALSE_CLOSURE",
+      "mutation": "Treat selected two Ghana public aggregations as occupancy of the full 35 wave, 1890-cell F6 estate",
+      "expected": "REJECT_SCOPE_PROMOTION"
+    }
+  ],
+  "review_class": "PROPOSED_REAL_HOSTILES_WITH_EXACT_EXPECTED_STATES",
+  "runtime_verdict": "NOT_EXECUTED__NO_PRODUCTION_RECEIPTS",
+  "actual_gh2021_n9_positive": false,
+  "release_or_model_permission": false
+}

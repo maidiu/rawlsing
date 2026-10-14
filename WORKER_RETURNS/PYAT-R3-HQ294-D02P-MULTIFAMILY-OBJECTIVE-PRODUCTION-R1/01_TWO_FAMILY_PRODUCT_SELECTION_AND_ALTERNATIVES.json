@@ -1,0 +1,164 @@
+{
+  "schema": "PYAT_R3_HQ294_D02P_TWO_FAMILY_PRODUCT_SELECTION@1",
+  "initial_commission_ref": "719e19574abd4b28caa3b015267d4f57b682b9c9",
+  "science_disposition": "PUBLIC_DOCUMENTARY_OBSERVED_AGGREGATES__PRODUCER_READY_NOT_OWNER_ISSUED",
+  "source_family_count_documentary": 2,
+  "source_family_count_owner_issued_objective": 0,
+  "objective_n9_receipts": 0,
+  "chosen_pair": {
+    "id": "GH_2021_GSS_CENSUS_LIGHTING__NCA_Q4_SUBSCRIPTIONS",
+    "world_demand": "HISTORICAL_GHANA_2021_RURAL_HOUSEHOLD_MILIEU_WITH_NATIONAL_COMMUNICATIONS_SERVICE_CONTEXT",
+    "field_A": {
+      "proposed_field_id": "GSS_2021_PH_CENSUS_VOL3K_RURAL_ELECTRICITY_MAIN_LIGHTING_SHARE",
+      "publisher": "Ghana Statistical Service",
+      "origin_kind": "POPULATION_HOUSING_CENSUS_AGGREGATE",
+      "source_family": "GHANA_GSS_2021_PHC",
+      "custody_identifier_candidate": "GSS_PHC_2021_V3K__NOT_CRYPTOGRAPHIC_CUSTODY",
+      "official_document_title": "2021 Population and Housing Census General Report Volume 3K: Housing Characteristics",
+      "official_document_url": "https://census2021.statsghana.gov.gh/subreport.php?Volume-3K-Housing-Characteristics=&readreport=NTU0MjE5ODI3LjkwNjU%3D",
+      "locator": "Housing Characteristics > Main source of lighting > Figure 10",
+      "observed_reported_value": 72.6,
+      "observed_reported_unit": "PERCENT_OF_RURAL_HOUSEHOLDS",
+      "rounding": "PUBLISHED_ONE_DECIMAL_PERCENT_NOT_UNROUNDED_COUNT",
+      "variable": "HOUSEHOLD_MAIN_SOURCE_OF_LIGHTING_IS_ELECTRICITY",
+      "population": "RURAL_PRIVATE_HOUSEHOLDS_BY_GSS_PHC_2021_DEFINITION__EXACT_FRAME_REQUIRES_CUSTODIAN_CONFIRMATION",
+      "scope_country": "Ghana",
+      "native_geography": "GSS_2021_RURAL",
+      "observation_time": "2021_PHC",
+      "publication_time": "REPORT_POST_OBSERVATION__EXACT_RELEASE_ASOF_TO_VERIFY",
+      "estimation_kind": "PUBLISHED_CENSUS_TABULATION_NOT_NEW_RAW_ESTIMATE",
+      "raw_respondent_use": false,
+      "weight_design_not_inferred": true,
+      "unverified": [
+        "EXACT_CENSUS_BASE_POPULATION_AND_RURAL_CODING",
+        "TABLE_NUMERATOR_DENOMINATOR",
+        "COMPLETE_SOURCE_BYTES_SHA256",
+        "ARCHIVE_VERSION_CURRENT_REPLACEMENT",
+        "EXTERNAL_ORIGINAL_SOURCE_ISSUER",
+        "RAWLSING_MODEL_USE_PERMISSION"
+      ],
+      "forbidden": [
+        "POWER_RELIABILITY",
+        "GRID_ACCESS_CAUSAL",
+        "INDIVIDUAL_OWNERSHIP",
+        "CHILD_STUDY_CAUSAL_EFFECT"
+      ]
+    },
+    "field_B": {
+      "proposed_field_id": "NCA_2021_Q4_ACTIVE_MOBILE_DATA_SUBSCRIPTIONS_COUNT",
+      "publisher": "National Communications Authority",
+      "source_family": "GHANA_NCA_LICENSEE_TELECOM_ADMIN_REPORTING",
+      "origin_kind": "REGULATOR_QUARTERLY_AGGREGATED_LICENSEE_SUBMISSION",
+      "custody_identifier_candidate": "NCA_Q4_2021_STATISTICAL_BULLETIN__NOT_CRYPTOGRAPHIC_CUSTODY",
+      "official_document_title": "Quarterly Statistical Bulletin on Communications in Ghana, Volume 6 Issue 4: Fourth Quarter 2021",
+      "official_document_url": "https://nca.org.gh/wp-content/uploads/2022/07/Q4-2021-statistical-Bulletin.pdf",
+      "locator": "Section 1.4 (printed p.4); Appendix Table 10 (printed p.17, physical PDF p.29)",
+      "observed_reported_value": 23414527,
+      "observed_reported_unit": "ACTIVE_MOBILE_DATA_SUBSCRIPTIONS_NOT_DISTINCT_PEOPLE",
+      "measurement_definition": "MOBILE_DATA_SUBSCRIPTIONS_WITH_UPLOADED_OR_DOWNLOADED_TRAFFIC_WITHIN_LAST_90_DAYS",
+      "components": {
+        "prepaid": 23237338,
+        "postpaid": 177189
+      },
+      "population": "ACTIVE_REPORTED_LICENSEE_SUBSCRIPTIONS_GHANA_NOT_PERSONS",
+      "scope_country": "Ghana",
+      "native_geography": "NATIONAL",
+      "observation_time": "2021_Q4_END",
+      "publication_time": "2022_PUBLISHED_COPY__EXACT_DATE_AND_REVISION_TO_VERIFY",
+      "estimation_kind": "REPORTED_AGGREGATE_OPERATOR_ADMINISTRATIVE_COUNT",
+      "raw_respondent_use": false,
+      "persons_join": false,
+      "unverified": [
+        "LICENSEE_RAW_SUBMISSION_CUSTODY",
+        "NCA_REVISION_AND_ARCHIVED_SHA256",
+        "DISAGGREGATED_GEOGRAPHY",
+        "EXTERNAL_ORIGINAL_SOURCE_ISSUER",
+        "RAWLSING_MODEL_USE_PERMISSION"
+      ],
+      "forbidden": [
+        "UNIQUE_PEOPLE",
+        "INDIVIDUAL_OWNERSHIP",
+        "RURAL_DATA_ACCESS_RATE",
+        "SUBSCRIPTION_PENETRATION_EQUALS_PERSON_PREVALENCE",
+        "SCHOOL_AGE_PHONE_POSSESSION"
+      ]
+    },
+    "independence": {
+      "separate_named_publishers": true,
+      "separate_native_collection_roots": true,
+      "independent_custody_authenticated": false,
+      "observation_dimensions_orthogonal": true,
+      "denominator_circularity_guard": "USE_NCA_RAW_SUBSCRIPTION_COUNT_ONLY_NOT_NCA_POPULATION_PENETRATION_RATE",
+      "overlap_person_linkage": "PROHIBITED_NO_LINKAGE_ISSUER",
+      "common_named_target_population_labels": "NOT_REQUIRED_FOR_INDEPENDENCE",
+      "compatible_world_scope_decision": "REQUIRES_SEPARATE_EE13_ISSUER"
+    },
+    "proposed_composition": {
+      "op_id": "EE13_HISTORICAL_CONTEXTUAL_COPRESENCE_NONPOOLING_R1",
+      "claim_grade": "TWO_SEPARATE_PUBLISHED_OBSERVATIONS__WORLD_CONTEXUAL_CO_PRESENTATION_PENDING_ISSUER",
+      "requested_world_scope": {
+        "country": "Ghana",
+        "year": 2021,
+        "locality": "RURAL_FOR_FIELD_A",
+        "national_field_B": "NATIONAL_ONLY",
+        "temporal_bridge": "2021_CENSUS_TO_2021_Q4_COUNTRY_CONTEXT_NOT_IDENTICAL_INSTANT"
+      },
+      "native_scopes_must_remain_separate": true,
+      "formula": "NO_NUMERIC_FORMULA__RETURN_TWO_SOURCE_INDEXED_FIELDS",
+      "relationship": "SIMULTANEOUS_HISTORICAL_BACKGROUND_ONLY__NO_ASSOCIATION_ESTIMAND",
+      "native_uncertainty": {
+        "A": "ROUNDING_AND_GEOGRAPHIC_DEFINITION_PENDING",
+        "B": "ADMINISTRATIVE_REPORTING_AND_SUBSCRIPTION_DUPLICATION_PENDING"
+      },
+      "issue_required": "EXPLICIT_COMPETENT_N7_EE13_AND_N9_USE_CEILING",
+      "material_world_effect": "CONTEXT_INPUTS_FOR_HYPOTHETICAL_EVENING_LIGHTING_AND_NATIONAL_CONNECTIVITY_OPPORTUNITY__NOT_ACTOR_CAUSATION"
+    },
+    "fields_emitted_actual": [],
+    "n7_composition_receipt": null,
+    "n9_world_snapshot_receipt": null,
+    "n10w_persona_receipt": null
+  },
+  "alternatives": [
+    {
+      "id": "ENERGY_COMMISSION_DISTRICT_PLUS_NCA",
+      "rank": 2,
+      "status": "PROMISING_DOCUMENTARY__NEEDS_DISTRICT_EVIDENCE_AND_VINTAGE",
+      "strength": "LOCAL_PHYSICAL_GRID_CONTEXT",
+      "risk": "2020_HOUSEHOLD_DEMAND_PROJECTED_NOT_DIRECTLY_OBSERVED_2021",
+      "source_url": "https://energycom.gov.gh/index.php/planning/energy-district-profile"
+    },
+    {
+      "id": "GHANA_STATUTORY_RULE_PLUS_GSS_HOUSING",
+      "rank": 3,
+      "status": "DOCUMENTARY_RULE__NO_OWNER_ISSUED_INSTITUTIONAL_EFFECT",
+      "strength": "FORMAL_NORMATIVE_ELIGIBILITY_IF_EXACT_VERSION",
+      "risk": "ENFORCEMENT_OR_PERSON_APPLICABILITY_NOT_OBSERVED"
+    },
+    {
+      "id": "MODELED_HETEROGENEOUS_SYNTHESIS",
+      "rank": 4,
+      "status": "PERMITTED_AS_METHOD_CANDIDATE_ONLY",
+      "strength": "UNCERTAINTY_AWARE_LOCAL_BRIDGE_WITH_NEW_INPUTS",
+      "risk": "NCA_NATIONAL_COUNT_UNIDENTIFIABLE_FOR_RURAL_PERSON_ACCESS_WITHOUT_ADDITIONAL_DATA_OR_MODEL_ISSUER"
+    },
+    {
+      "id": "AFRO_LITS_SOURCE_LOCAL_EMPIRICAL",
+      "rank": 5,
+      "status": "EXISTING_POSITIVE_CONTEXT_NOT_EXTERNAL_MATERIAL_PAIR",
+      "strength": "ATTITUDINAL_DIVERSITY_AND_SAME_SOURCE_RESPONDENT_RELATIONS",
+      "risk": "RECLASSIFYING_OPINIONS_AS_INSTITUTION"
+    }
+  ],
+  "chosen_pair_reasons": [
+    "DIFFERENT_PUBLIC_CUSTODIAL_INSTITUTIONS",
+    "TWO_GENUINELY_NONOPINION_EXTERNAL_OBSERVED_AGGREGATES",
+    "2021_HISTORICAL_GHANA_CONTEXT",
+    "IMMEDIATELY_DOCUMENTABLE_NATIVE_UNITS",
+    "NO_FALSE_SOURCE_OR_PERSON_JOINS",
+    "DISTINCT_PERSONA_RELEVANT_AFFORDANCE_DIMENSIONS"
+  ],
+  "all35_preserved": true,
+  "requirements_cells_preserved": 1890,
+  "mapping_151_to_101_preserved": true,
+  "release_grants_created": 0
+}
