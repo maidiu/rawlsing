@@ -1,0 +1,70 @@
+{
+  "schema": "PYAT_T8R_REAL_PYTEST_EXECUTION_RECEIPT@1",
+  "run_date": "2026-10-14",
+  "role": "ADVERSARIAL_METHOD_REVIEW_WITH_PRIOR_AUTHOR_OVERLAP_NOT_INDEPENDENT_ACCEPTANCE",
+  "host": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "git": "2.47.3",
+    "cwd": "/mnt/data/t8r_independent",
+    "network_to_github": "DNS_UNRESOLVED",
+    "remote_source_retrieval": "AUTHENTICATED_GITHUB_CONNECTOR_ONLY"
+  },
+  "inputs": [
+    {
+      "path": "test_hq297_t8c.py",
+      "origin": "candidate repo pinned 059d7ce1b35a08fa4fe735ffccc1a5dddbfe5899",
+      "byte_length": 10525,
+      "git_blob": "7f7e0c713a669951b40787537138db7a0653daea"
+    },
+    {
+      "path": "test_review_hostiles.py",
+      "source": "this return repro/test_review_hostiles.py",
+      "byte_length": 4212,
+      "git_blob": "236d6cb7a1382e18427863d8c38c4f0c4ad8b18e"
+    },
+    {
+      "path": "test_review_mandatory_guards_red.py",
+      "source": "this return repro/test_review_mandatory_guards_red.py",
+      "byte_length": 912,
+      "git_blob": "83db68fd705372b62778d81f96687a50b744ecca"
+    }
+  ],
+  "runs": [
+    {
+      "command": "PYTHONPATH=$PWD python -m pytest -q test_hq297_t8c.py test_review_hostiles.py --junitxml=t8r_extended_junit.xml",
+      "exit": 0,
+      "tests_collected": 30,
+      "passed": 30,
+      "failed": 0,
+      "stdout": "..............................                                           [100%]\n30 passed in 0.06s\n",
+      "junit_sha256": "a3fdd60645fbe44da6d237a93e7effa203636258beef0a555c3499b3f96d6409"
+    },
+    {
+      "command": "PYTHONPATH=$PWD python -m pytest -q test_review_mandatory_guards_red.py --junitxml=t8r_red_junit.xml",
+      "exit": 1,
+      "tests_collected": 3,
+      "passed": 0,
+      "failed": 3,
+      "stdout_last_lines": [
+        "FAILED test_review_mandatory_guards_red.py::test_REQUIRES_rejection_of_tampered_delta_with_stale_producer_digest - Failed: DID NOT RAISE <class 'test_hq297_t8c.Refusal'>",
+        "FAILED test_review_mandatory_guards_red.py::test_REQUIRES_rejection_of_tampered_native_zero_with_stale_producer_digest - Failed: DID NOT RAISE <class 'test_hq297_t8c.Refusal'>",
+        "FAILED test_review_mandatory_guards_red.py::test_REQUIRES_typed_refusal_on_invalid_asof - ValueError: Invalid isoformat string: 'not-a-date'",
+        "3 failed in 0.08s"
+      ],
+      "junit_sha256": "82e609696bea95fd3270c5b1a5c7677f26e70c37c0d1c24367c8270fe4624b87",
+      "stdout_sha256": "6a4c612ab350371fe4e38b6c21c5d775823634d4db95e43bed352d3701e373fd"
+    }
+  ],
+  "identity_notes": "GitHub blob SHA1 is calculated over b'blob '+len+b'\\0'+bytes. This receipt records exact source and results; local JUnit XML was generated and hashed but was not separately pushed as an XML artifact. No actual HQ214 owner-import test performed.",
+  "ceilings": {
+    "real_original_survey_records": 0,
+    "source_issuer_grants": 0,
+    "real_EE12": null,
+    "original_HQ214_import": "NOT_EXECUTED_AFTER_NETWORK_AND_MODULE_STAGE_PROBE",
+    "real_N8E": null,
+    "real_N9": null,
+    "model_use": null,
+    "V3": null
+  }
+}
