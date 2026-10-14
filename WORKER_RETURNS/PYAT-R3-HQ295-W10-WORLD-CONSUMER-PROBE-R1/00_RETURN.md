@@ -85,6 +85,7 @@ Typed I/O and the independent hostile/oracle packet are in `02_TYPED_IO_AND_ORAC
 - Executed tests (this return): probe harness `17 passed in 1.64s`; owner suites `111 passed in 16.59s` (`test_pre553_empirical_possibility_provider`, `test_pre553_analytical_composition`, `test_m4_v557_v558_publication_repository`, `test_m5_runtime_rsc_peer_prior`, `test_source_backed_positioned_subject_possibility`, `test_wsc_gt0_end_to_end_integrated`, `test_wsc_gt0_prev3_bridge`). Probe CLI `python3 .../probe/run_probe.py` exit 0.
 - Original respondent SAV/DTA: none read. Model calls: 0. Actor runs: 0. Paid overflows/reset credits: none.
 - Exact unique changed paths (only): `WORKER_RETURNS/PYAT-R3-HQ295-W10-WORLD-CONSUMER-PROBE-R1/` (`00_RETURN.md`, `01_SOURCE_OWNER_AUTHORITY_TREE.md`, `02_TYPED_IO_AND_ORACLE_PACKET.json`, `03_EXECUTED_OUTPUTS_AND_RECEIPTS.md`, `probe/*.py`, `outputs/*`).
+- Push: only `agent/rabochii-pyat-r3-hq295-w10-world-consumer-probe-r1` was pushed. Product commit verified on the remote by direct `git ls-remote origin agent/rabochii-pyat-r3-hq295-w10-world-consumer-probe-r1` = `17f23a4ad06791085cba99b12699eeef00dd9b3a` (identical to local HEAD at verification time). This verification-record commit follows on the same assigned branch only; its exact remote HEAD 40-hex is reported in the worker's final report and re-verifiable with the same `git ls-remote` command.
 
 ## 6. Scientific ceilings (all binding)
 
@@ -96,4 +97,4 @@ Typed I/O and the independent hostile/oracle packet are in `02_TYPED_IO_AND_ORAC
 6. No V3 actor, no V2 expressive generator, no M2/B5/PRE-MAIN/canonical/G0b mutation; no fake external source permission.
 7. Author output requires separate independent review for adoption.
 
-TERMINAL: HQ295_W10_EXECUTED_SOURCEFREE_WORLD_N10E_N10W_INTERFACE_COURT__ONE_DECLARED_ELIGIBILITY_ROUTE_CHANGE_WITH_PRESERVED_ALTERNATIVES__REPLAY_AND_INVALIDATION_PASS__NO_ACTOR__NO_MODEL_ISSUER__NOT_INTEGRATED_PASS__PUSHED_ONLY_ASSIGNED_BRANCH_PENDING_REMOTE_VERIFICATION.
+TERMINAL: HQ295_W10_EXECUTED_SOURCEFREE_WORLD_N10E_N10W_INTERFACE_COURT__ONE_DECLARED_ELIGIBILITY_ROUTE_CHANGE_WITH_PRESERVED_ALTERNATIVES__REPLAY_AND_INVALIDATION_PASS__NO_ACTOR__NO_MODEL_ISSUER__NOT_INTEGRATED_PASS__PUSHED_ONLY_ASSIGNED_BRANCH__REMOTE_HEAD_VERIFIED_BY_LS_REMOTE.
