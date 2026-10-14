@@ -1,0 +1,43 @@
+# HQ298 SG — MOTHER-FIRST SELECTION, STOCHASTIC CHOICE AND ADP AUTHORITY COURT
+
+**STATUS:** COMMISSION_PREPARED__SOURCEFREE_OR_DOCUMENTARY_ONLY__NOT_YET_EXECUTED__NO_ADOPTION
+**REPOSITORY:** `maidiu/rawlsing` (PRIVATE)
+**ROLE:** Independent ADP015/020 candidate rule-and-issuer scientist, NOT issuing authority or V3 actor
+**INTELLIGENCE:** I2 HIGH — semantic genealogy, selection/causal chronology authority; exact default GPT-6 High on S0 for this reasoning. Mechanical finite checks may be I0/I1 in an already qualified authorized Python session
+**EXECUTION SURFACE:** S0 Browser/GitHub authority; optional S1 warm sourcefree Python only for finite constraint validation; no reason to purchase specialized runtime
+**BRANCH:** `agent/rabochii-sorok-r3-hq298-sg-choice-authority-r1`
+**SOURCE SEALED HQ BASE:** `3c33688506840869e1f05f4230248ce950b78d6c`
+**EXACT SEALED LAUNCH STARTUP:** branch tip of the commission-creation commit. HQ must communicate and verify this 40-hex SHA after file creation; do not use HQ parent as if it already contained this commission.
+**COMMISSION:** `WORKER_COMMISSIONS/SOROK-R3-HQ298-SG-CHOICE-AUTHORITY-R1/00_COMMISSION.md`
+**ALLOWED WRITE TERRAIN:** `WORKER_RETURNS/SOROK-R3-HQ298-SG-CHOICE-AUTHORITY-R1/` ONLY; no accepted source or shared HQ file mutation.
+**PREDECESSOR EXPLICIT REFS:** SG ca031ce1d5c56b58b18727f94f41571d6dd763fb; S-GI1 27ca1f2792a5213064c0b5ea2e27b89e8acce0c3; HQ297 G11 0cb708bbfe522a6c6e359f36d99835d180d5a84d; accepted ADP015/020 exact pinned refs in SG
+**LIVE RESOURCE REGISTRY STATUS:** no actual worker runtime passports independently verified by HQ; environment/session affinity initially UNKNOWN. Do not claim old local process alive based on these documentary returns.
+
+## Mission (one coherent outcome and expected grade)
+One outcome: deliver a competent, narrowly scoped *proposed* ADP015/020 mother-first scenario/selection issuance packet, separating admissible finite constraint search from population posterior and arbitrary LLM choice. This is NOT a repeat of SG's K11 specification or G11's 25 finite-feasibility tests; no worker may sign adoption.
+Claim grade ceiling: explicitly bounded documentary/isolated source-free prototype or authorized exact model lab ONLY if independently granted; no new semantic law or original-source/actor use.
+
+## Required operations and discriminators
+Read G11 independent satisfiability/counterexamples and S-GI1 execution. Audit current accepted two-parent/ADP015 base law; show exactly what a proposed changed construction schedule must amend versus preserve. Specify candidate proposal (not weight), world/source/model observation grades, scenario-rejection outcomes, independently issued finite selection rule/stream/seed/law and replay, forward whole second-parent history validation, relations after independent origins, actual conception/birth separate event gates, older-child mother prehistory. Produce signed-authority-missing matrix and tiny finite counterexample proving constraint feasibility does not imply P(history | endpoint), demographic psyche likelihood, or V3 person completeness. Cost white-whale: quantify candidate attempts/hostile attrition and a kill threshold, or mark unknown. Preserve no false claim of actual conception or generated actor.
+
+## Acceptance, stop and independent review
+Deliver explicit proposed amendment diff clauses with unchanged accepted owner clauses, causal vs construction DAG and embargo oracle, issuer-by-issuer approval checklist, pass/fail/HOLD for G11 and S-GI1 covered vs missing cases, at least one hostile selector that fails leakage/normalization, genuine consumption and scientific grade. Independent I2 ADP015/020 semantic owner reviewer with no self-issuance; direct branch remote readback. STOP when a new owner right or meaning cannot be resolved without competent source/original model issuer; mark proposed not adopted.
+Do not conclude unexecutability from absence of full clone. A clean runnable source-free test may be built in Browser/CI/container with authenticated source staging. If accepted imported owner modules are missing, make exact failed attempt and do not counterfeit owner-grain PASS. Stop and request HQ when new semantic authority/permission is essential. Escalation to I3/Astra only for a specific accepted-authority conflict or genuine whole-machine seam change.
+## Binding law and read bands
+MUST_READ_NOW: SOROK_PRODUCT_CONTROL_ROOM/00_READ_ME_FIRST.md, /00C_HQ_PROMPT_DISPENSATION_AGENT_ROUTING_AND_ORCHESTRATION_CONSTITUTION_R1.md, /00D_WARM_ENVIRONMENT_PASSPORT_AND_COST_AWARE_AGENT_DISPENSATION_R1.md at Sorok HQ 3c33688506840869e1f05f4230248ce950b78d6c; exact predecessor worker return(s) cited below. Read Astra amendment16 at frozen 3b2d9a1b644a9fa024ed1bd895b67be5c8789531 only to the extent material to this job. READ_IF_TRIGGERED: original accepted owner documents and pinned source module dependencies ONLY if exact implementation or rule usage requires them. BACKGROUND_LINK_ONLY: entire Rawlsing historical corpus, old questionnaires and Sorok ideation transcripts; do not regrok without a specifically named discrepancy.
+Scientific law: world constitutes possibilities rather than choosing psyche; actor/source/model/occurrence issuer distinctions remain intact. PRE-V3 does not own generated mother/father/household. Source-free synthetic demonstration never becomes original population calibration, actor truth, ADP/CAN adoption, N11/N12, physical weld or readiness.
+
+## 00D seven-step resumption and environmental passport (MANDATORY)
+1. Inspect live worker ledger, current branch and prior worker session. If an actually surviving, permitted, scientifically qualified same-session/worktree exists, preserve/reuse it; NEVER infer continuity from an open Browser tab, previous 5-hour window or returned Git branch.
+2. Validate live runtime marker/digest, Python/pytest/Node/git only as required, exact local imports via module.__file__, pinned Git blob SHA-1 (actual NUL blob header), dependencies, branch cleanliness, permissions and quota.
+3. Without qualified continuity, record NEW or RECONSTRUCTED environment epoch; run ONE bounded capability preflight, then stage only exact missing authorized sourcefree files/fixtures. Browser GitHub connector does not auto-mount code; Browser Python might still run. Local host uses one canonical Git object store and a governed separate sparse worktree for simultaneous branches.
+4. First actual discriminating pytest/test early; then exact affected regressions. Missing checkout != no possible isolated execution.
+5. Record true attempted command/import/collection and blockers distinctly: MISSING_RUNNER / MISSING_DEPENDENCY / MISSING_IMPLEMENTATION / MISSING_SOURCE_AUTHORITY / MISSING_ACTOR_MODEL_AUTHORITY / REVIEW_INDEPENDENCE.
+6. Produce sanitized portable environment_passport_delta.json (or equivalent schema-complete return section): opaque environment/epoch IDs, verified/unverified capabilities, precise relative module/blob/import refs, real commands/JUnit, quota/expense observed or UNKNOWN, granted privacy/source/model rights, reusable next affinity. No credentials, full home paths or raw survey bytes.
+7. Return files only on this worker branch; exact final remote SHA + direct ref readback, changed-path list, claims done versus NOT_RUN, scientific ceiling and independent reviewer request. No self-adoption.
+
+## Cost and review guardrails
+Money first, then finite quotas/retries/human touch, then elapsed time, always subject to competent intelligence and lawful authority. Reuse a warm qualified economical Codex/OpenCode/DeepSeek-Harness session only AFTER live continuity and provider/privacy checks. Never assume that a model shown in an older return is presently accessible or cheap. No unapproved billable calls, premium upgrades, external private-source export, source-original operations, actor model run, owner/canonical code mutation, HQ CURRENT edits or V3 wake. Independent I2 review is required before scientific/semantic acceptance; implementer cannot serve as independent reviewer. Local fixture tests are not owner-level proof. After two equivalent unproductive loops stop for root cause rather than repeat.
+
+## Return contract
+Write `WORKER_RETURNS/SOROK-R3-HQ298-SG-CHOICE-AUTHORITY-R1/00_RETURN.md` and associated sourcefree artifacts/passport under that directory, on your isolated branch only. State direct sealed startup, live environment verification, exact pinned blobs/imports, changed paths, actual commands/logs and executed vs NOT_REACHED cases, cash/quota observed or UNKNOWN, remaining work and separate reviewer; push and verify exact direct remote SHA. No self-adoption.
