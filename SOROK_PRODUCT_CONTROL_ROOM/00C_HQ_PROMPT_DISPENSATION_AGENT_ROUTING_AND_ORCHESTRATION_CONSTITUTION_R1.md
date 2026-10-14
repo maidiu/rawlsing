@@ -1,5 +1,7 @@
 # SOROK HQ PROMPT DISPENSATION, AGENT ROUTING AND ORCHESTRATION CONSTITUTION R1
 
+> **MANDATORY 14 OCT 2026 LIVE DISPENSATION SUPPLEMENT:** Read and apply `00D_WARM_ENVIRONMENT_PASSPORT_AND_COST_AWARE_AGENT_DISPENSATION_R1.md` BEFORE assigning any new worker/model/surface. Cost-aware routing, warm-session actual continuity checks, sourcefree Git staging, environment passport updates, independent review and return-affinity allocation now supplement §§3–11, 14–17 below. A Browser session can have Python/pytest, while a GitHub connector alone does not mount the checkout. A user-open window is **not** a verified persistent runtime. Prefer cheapest qualified established environment subject to actual science/permission; do not force an expensive Browser High scientist to do routine module staging/pytest when a competent warmer economical coding agent can do it. This is operating law, not source/actor/semantic adoption.
+
 Status:
 `MANDATORY_SOROK_HQ_GOVERNANCE__PROMPT_DISPENSATION__AGENT_MODEL_RUNTIME_ROUTING__NON_DISPOSITIVE_TO_PREMAIN_SEMANTIC_AUTHORITY`
 
