@@ -7,7 +7,7 @@
   "machine_alias": "LOCAL_M01",
   "conversation_or_account_affinity": "USER_SELECTED_CODEX",
   "status": "LIVE_VERIFIED",
-  "last_live_probe_at": "2026-10-15T20:34:52.065998+00:00",
+  "last_live_probe_at": "2026-10-15T20:35:48.400226+00:00",
   "runtime_marker_digest": "eaf8f3f9c32882f941ab53273836604923f2d7aac651c4030ddfa3084dd969ea",
   "probe_command_and_result": {
     "python": "3.11.3",
@@ -27,8 +27,8 @@
   "worktree_alias": "AUTHORIZED_4327",
   "branch": "agent/rabochii-sorok-r3-hq310-m01-memory-mediation-causal-cell-r1",
   "checkout_base": "d3b7c7d7cf52ac8572f2d271bfe9cb97468660c8",
-  "head_at_probe": "845edf5d7c9c48b192b631dacf295afa6f587137",
-  "clean_dirty": "RETURN_FILES_PENDING_COMMIT",
+  "head_at_probe": "88a08925803a40eb3324da3013635ace6456f7e9",
+  "clean_dirty": "CLEAN_AT_PROBE_BEFORE_THIS_CUSTODY_METADATA",
   "source_family": "SOURCEFREE_ONLY",
   "materialized_source_refs": [
     {
@@ -634,6 +634,7 @@
     "K5",
     "CAUSAL_MEDIATION"
   ],
-  "staged_state_preservation": "SOURCE_AND_RECEIPTS_LOCAL; synchronous owner state per test; no cross-process state durability claim",
-  "retire_or_rebuild_reason": null
+  "staged_state_preservation": "Verified runtime marker and source/receipts still locally present; synchronous owner state per test; no cross-process durability claim",
+  "retire_or_rebuild_reason": null,
+  "git_push": "VERIFIED evidence commit matches direct remote SHA"
 }
