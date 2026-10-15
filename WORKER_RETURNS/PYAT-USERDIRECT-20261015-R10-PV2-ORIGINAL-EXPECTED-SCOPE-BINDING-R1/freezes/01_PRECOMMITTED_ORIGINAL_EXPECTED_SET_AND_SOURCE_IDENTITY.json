@@ -1,0 +1,1109 @@
+{
+  "committed_root": "49f0f51866d3327aca2b7d8910517c0317a85c6b7fd3f011c9ffd6634c6218bf",
+  "expected_consumer": "FIELD_FORGE_CONDITIONAL_SUPPORT",
+  "fixture_use_grant": {
+    "ceiling": [
+      "SOURCE_FREE_DEV"
+    ],
+    "grant": "TEST_ONLY_FIXTURE_GRANT",
+    "issuer": "R10-PV2-TEST-ONLY-FIXTURE-ISSUER",
+    "revocation_reason": null,
+    "revoked": false,
+    "scope": "sourcefree synthetic native rows only; no survey microdata"
+  },
+  "held_multiset": [
+    [
+      [
+        "PV2-ADULT-A",
+        "ORDERED"
+      ],
+      1
+    ],
+    [
+      [
+        "PV2-ADULT-B",
+        "ORDERED"
+      ],
+      1
+    ]
+  ],
+  "obligation_multiset": [
+    [
+      [
+        "PV2-ADULT-A",
+        "B"
+      ],
+      1
+    ],
+    [
+      [
+        "PV2-ADULT-A",
+        "DISCOVERY"
+      ],
+      1
+    ],
+    [
+      [
+        "PV2-ADULT-A",
+        "ORDERED"
+      ],
+      1
+    ],
+    [
+      [
+        "PV2-ADULT-A",
+        "PAIR"
+      ],
+      1
+    ],
+    [
+      [
+        "PV2-ADULT-B",
+        "B"
+      ],
+      1
+    ],
+    [
+      [
+        "PV2-ADULT-B",
+        "DISCOVERY"
+      ],
+      1
+    ],
+    [
+      [
+        "PV2-ADULT-B",
+        "ORDERED"
+      ],
+      1
+    ],
+    [
+      [
+        "PV2-ADULT-B",
+        "PAIR"
+      ],
+      1
+    ]
+  ],
+  "obligations": [
+    {
+      "administered_occurrence": "PV2-FIRST-ADMINISTRATION",
+      "condition_order": [
+        "Y",
+        "X"
+      ],
+      "form": "F1",
+      "hold_reason": null,
+      "instrument_release": "INST-PV2-ADULT-A/F1",
+      "issuer_refs": {
+        "independent_E_ref": {
+          "content_hash": "bf77f8df573e3935304f067bbf3fc7af4a42f8d3a62d826367d233318d4d7a81",
+          "kind": "R10_PV2_PROSPECTIVE_E",
+          "object_id": "urn:r10:pv2:r10_pv2_prospective_e:PV2-ADULT-A-B"
+        },
+        "independent_custody_ref": {
+          "content_hash": "33d9cb9475490d137271190e48da4659c6f333510bc972148bf19b6f08875168",
+          "kind": "R10_PV2_CUSTODY_WITNESS",
+          "object_id": "urn:r10:pv2:r10_pv2_custody_witness:PV2-ADULT-A-B"
+        },
+        "original_U_ref": {
+          "content_hash": "00574475f0e8eb185b82f280ae51fb7000d822ab1bb35ebc0e0be7e13b341661",
+          "kind": "R10_PV2_ORIGINAL_U",
+          "object_id": "urn:r10:pv2:r10_pv2_original_u:PV2-ADULT-A-B"
+        },
+        "original_operation_scope_ref": {
+          "content_hash": "c2dacf1938dab56a90b4585cf2a0124ac005b2c73470ce196bc3822ad3958156",
+          "kind": "R10_PV2_OPERATION_SCOPE",
+          "object_id": "urn:r10:pv2:r10_pv2_operation_scope:PV2-ADULT-A-B"
+        }
+      },
+      "item": "Y",
+      "language": "PV2-LANGUAGE",
+      "option_scope": [
+        "0",
+        "1"
+      ],
+      "respondent_keys": [
+        "R1",
+        "R2",
+        "R3"
+      ],
+      "respondent_namespace": "PV2-ADULT-A",
+      "respondent_unit": "TEST_ONLY_ADULT",
+      "semantic_op_class": "PAIR_RESPONSE_COTRAVEL",
+      "semantic_roles": [
+        "CONDITIONER",
+        "TARGET"
+      ],
+      "slot": "B",
+      "source_native_items": [
+        "Y",
+        "X"
+      ],
+      "state": "RUNNABLE",
+      "target": "YX"
+    },
+    {
+      "administered_occurrence": "PV2-FIRST-ADMINISTRATION",
+      "condition_order": [],
+      "form": "F1",
+      "hold_reason": null,
+      "instrument_release": "INST-PV2-ADULT-A/F1",
+      "issuer_refs": {
+        "independent_E_ref": {
+          "content_hash": "4ab5debf6da70f64b1961e0eed2b94f772bdbe103b8db45f912e3740516e6777",
+          "kind": "R10_PV2_PROSPECTIVE_E",
+          "object_id": "urn:r10:pv2:r10_pv2_prospective_e:PV2-ADULT-A-DISCOVERY"
+        },
+        "independent_custody_ref": {
+          "content_hash": "6116b0afa27ccec18622d8d289143aefef8f43dc3a13508685c38eaaa796e6a7",
+          "kind": "R10_PV2_CUSTODY_WITNESS",
+          "object_id": "urn:r10:pv2:r10_pv2_custody_witness:PV2-ADULT-A-DISCOVERY"
+        },
+        "original_U_ref": {
+          "content_hash": "55db25c091b2f00cce53661391f9b1247744edb5a4d54dc81fcd84bd3a2d79d9",
+          "kind": "R10_PV2_ORIGINAL_U",
+          "object_id": "urn:r10:pv2:r10_pv2_original_u:PV2-ADULT-A-DISCOVERY"
+        },
+        "original_operation_scope_ref": {
+          "content_hash": "4eac1b246bd2582728bc8ae1c942dc8ff08a085117bbfd9a1964a301f3703a22",
+          "kind": "R10_PV2_OPERATION_SCOPE",
+          "object_id": "urn:r10:pv2:r10_pv2_operation_scope:PV2-ADULT-A-DISCOVERY"
+        }
+      },
+      "item": "X",
+      "language": "PV2-LANGUAGE",
+      "option_scope": [
+        "0",
+        "1"
+      ],
+      "respondent_keys": [
+        "R1",
+        "R2",
+        "R3"
+      ],
+      "respondent_namespace": "PV2-ADULT-A",
+      "respondent_unit": "TEST_ONLY_ADULT",
+      "semantic_op_class": "BOUNDED_DISCOVERY",
+      "semantic_roles": [
+        "BASE"
+      ],
+      "slot": "DISCOVERY",
+      "source_native_items": [
+        "X",
+        "Y"
+      ],
+      "state": "RUNNABLE",
+      "target": "XY"
+    },
+    {
+      "administered_occurrence": "PV2-FIRST-ADMINISTRATION",
+      "condition_order": [],
+      "form": "F1",
+      "hold_reason": "ORDERED_OWNER_NOT_ISSUED",
+      "instrument_release": "INST-PV2-ADULT-A/F1",
+      "issuer_refs": {
+        "independent_E_ref": {
+          "content_hash": "3c3f18cdee4945509b1da5232cabfa0df323a9cd6af26b0cd168e1d5558df60e",
+          "kind": "R10_PV2_PROSPECTIVE_E",
+          "object_id": "urn:r10:pv2:r10_pv2_prospective_e:PV2-ADULT-A-ORDERED"
+        },
+        "independent_custody_ref": {
+          "content_hash": "b5954f2c2a7980b9dcc57ab71e1efa02ac66dd44ac7f507c1667cef61f73254d",
+          "kind": "R10_PV2_CUSTODY_WITNESS",
+          "object_id": "urn:r10:pv2:r10_pv2_custody_witness:PV2-ADULT-A-ORDERED"
+        },
+        "original_U_ref": {
+          "content_hash": "590f16ad1ee5acd51ae2e85840a196dc02e8372ce353c2975be98687ed34f399",
+          "kind": "R10_PV2_ORIGINAL_U",
+          "object_id": "urn:r10:pv2:r10_pv2_original_u:PV2-ADULT-A-ORDERED"
+        },
+        "original_operation_scope_ref": {
+          "content_hash": "c8cd79a5c2bf6a7d2ddc559e28a41c19e4dc3faa9c0dcc9075baabaaa7d58c81",
+          "kind": "R10_PV2_OPERATION_SCOPE",
+          "object_id": "urn:r10:pv2:r10_pv2_operation_scope:PV2-ADULT-A-ORDERED"
+        }
+      },
+      "item": "O",
+      "language": "PV2-LANGUAGE",
+      "option_scope": [
+        "AB",
+        "BA"
+      ],
+      "respondent_keys": [
+        "R1",
+        "R2",
+        "R3"
+      ],
+      "respondent_namespace": "PV2-ADULT-A",
+      "respondent_unit": "TEST_ONLY_ADULT",
+      "semantic_op_class": "NONSCALAR_TOPOLOGY_PRESERVATION",
+      "semantic_roles": [
+        "BASE"
+      ],
+      "slot": "ORDERED",
+      "source_native_items": [
+        "O"
+      ],
+      "state": "HELD",
+      "target": "O"
+    },
+    {
+      "administered_occurrence": "PV2-FIRST-ADMINISTRATION",
+      "condition_order": [
+        "X",
+        "Y"
+      ],
+      "form": "F1",
+      "hold_reason": null,
+      "instrument_release": "INST-PV2-ADULT-A/F1",
+      "issuer_refs": {
+        "independent_E_ref": {
+          "content_hash": "f4de845c2d87185d6a93714b8e0e5d55ad9cf61a9d0de8089b474e1c5a330923",
+          "kind": "R10_PV2_PROSPECTIVE_E",
+          "object_id": "urn:r10:pv2:r10_pv2_prospective_e:PV2-ADULT-A-PAIR"
+        },
+        "independent_custody_ref": {
+          "content_hash": "13ba52a58641dc5334d369ee4d0d3d6d39c021b3fcb2d4102307f934abc4af7d",
+          "kind": "R10_PV2_CUSTODY_WITNESS",
+          "object_id": "urn:r10:pv2:r10_pv2_custody_witness:PV2-ADULT-A-PAIR"
+        },
+        "original_U_ref": {
+          "content_hash": "7e46fb072f6534999480dd5aeb31a866530ca62bfffc06d226c3ba52faa392c5",
+          "kind": "R10_PV2_ORIGINAL_U",
+          "object_id": "urn:r10:pv2:r10_pv2_original_u:PV2-ADULT-A-PAIR"
+        },
+        "original_operation_scope_ref": {
+          "content_hash": "8e8649169181eb2f69535750365067a03adff4b2baae2f189d8b1b73d78de8aa",
+          "kind": "R10_PV2_OPERATION_SCOPE",
+          "object_id": "urn:r10:pv2:r10_pv2_operation_scope:PV2-ADULT-A-PAIR"
+        }
+      },
+      "item": "X",
+      "language": "PV2-LANGUAGE",
+      "option_scope": [
+        "0",
+        "1"
+      ],
+      "respondent_keys": [
+        "R1",
+        "R2",
+        "R3"
+      ],
+      "respondent_namespace": "PV2-ADULT-A",
+      "respondent_unit": "TEST_ONLY_ADULT",
+      "semantic_op_class": "PAIR_RESPONSE_COTRAVEL",
+      "semantic_roles": [
+        "CONDITIONER",
+        "TARGET"
+      ],
+      "slot": "PAIR",
+      "source_native_items": [
+        "X",
+        "Y"
+      ],
+      "state": "RUNNABLE",
+      "target": "XY"
+    },
+    {
+      "administered_occurrence": "PV2-FIRST-ADMINISTRATION",
+      "condition_order": [
+        "Y",
+        "X"
+      ],
+      "form": "F1",
+      "hold_reason": null,
+      "instrument_release": "INST-PV2-ADULT-B/F1",
+      "issuer_refs": {
+        "independent_E_ref": {
+          "content_hash": "3cdc312a94b93a38cb1c596831845f21367438672badce79630aa60798e4fa83",
+          "kind": "R10_PV2_PROSPECTIVE_E",
+          "object_id": "urn:r10:pv2:r10_pv2_prospective_e:PV2-ADULT-B-B"
+        },
+        "independent_custody_ref": {
+          "content_hash": "a5dead0c9a20d4f71e8020185f4421c5f901ae39c20feb4ac92df94b4d24e1fa",
+          "kind": "R10_PV2_CUSTODY_WITNESS",
+          "object_id": "urn:r10:pv2:r10_pv2_custody_witness:PV2-ADULT-B-B"
+        },
+        "original_U_ref": {
+          "content_hash": "241c68ef770d89c3f83c7784412f38dd120ebbda7c6600ac4c62b7d7626e43bf",
+          "kind": "R10_PV2_ORIGINAL_U",
+          "object_id": "urn:r10:pv2:r10_pv2_original_u:PV2-ADULT-B-B"
+        },
+        "original_operation_scope_ref": {
+          "content_hash": "eb37640c2aae7a6530f78f466d6430b8ea95a95d25ac563209e73ee3cdfe4fd1",
+          "kind": "R10_PV2_OPERATION_SCOPE",
+          "object_id": "urn:r10:pv2:r10_pv2_operation_scope:PV2-ADULT-B-B"
+        }
+      },
+      "item": "Y",
+      "language": "PV2-LANGUAGE",
+      "option_scope": [
+        "0",
+        "1"
+      ],
+      "respondent_keys": [
+        "R1",
+        "R2",
+        "R3"
+      ],
+      "respondent_namespace": "PV2-ADULT-B",
+      "respondent_unit": "TEST_ONLY_ADULT",
+      "semantic_op_class": "PAIR_RESPONSE_COTRAVEL",
+      "semantic_roles": [
+        "CONDITIONER",
+        "TARGET"
+      ],
+      "slot": "B",
+      "source_native_items": [
+        "Y",
+        "X"
+      ],
+      "state": "RUNNABLE",
+      "target": "YX"
+    },
+    {
+      "administered_occurrence": "PV2-FIRST-ADMINISTRATION",
+      "condition_order": [],
+      "form": "F1",
+      "hold_reason": null,
+      "instrument_release": "INST-PV2-ADULT-B/F1",
+      "issuer_refs": {
+        "independent_E_ref": {
+          "content_hash": "ab4e3db4df997b436307837fe50c86aae1b1e4a76e6e5e22ee3558b97c798803",
+          "kind": "R10_PV2_PROSPECTIVE_E",
+          "object_id": "urn:r10:pv2:r10_pv2_prospective_e:PV2-ADULT-B-DISCOVERY"
+        },
+        "independent_custody_ref": {
+          "content_hash": "e36a26700e7cc831e1a2164bbd97731f785c267cd40762ab9e5e6e9c1f947abf",
+          "kind": "R10_PV2_CUSTODY_WITNESS",
+          "object_id": "urn:r10:pv2:r10_pv2_custody_witness:PV2-ADULT-B-DISCOVERY"
+        },
+        "original_U_ref": {
+          "content_hash": "7cf91ea3e2d2b664f168098b483841c0e5bbaf5852f59d83c4702a0d7e2fd96c",
+          "kind": "R10_PV2_ORIGINAL_U",
+          "object_id": "urn:r10:pv2:r10_pv2_original_u:PV2-ADULT-B-DISCOVERY"
+        },
+        "original_operation_scope_ref": {
+          "content_hash": "b69cc9a062c0b3bad9c56ff6ce18b166254a4208620f5239287d1548c824edc3",
+          "kind": "R10_PV2_OPERATION_SCOPE",
+          "object_id": "urn:r10:pv2:r10_pv2_operation_scope:PV2-ADULT-B-DISCOVERY"
+        }
+      },
+      "item": "X",
+      "language": "PV2-LANGUAGE",
+      "option_scope": [
+        "0",
+        "1"
+      ],
+      "respondent_keys": [
+        "R1",
+        "R2",
+        "R3"
+      ],
+      "respondent_namespace": "PV2-ADULT-B",
+      "respondent_unit": "TEST_ONLY_ADULT",
+      "semantic_op_class": "BOUNDED_DISCOVERY",
+      "semantic_roles": [
+        "BASE"
+      ],
+      "slot": "DISCOVERY",
+      "source_native_items": [
+        "X",
+        "Y"
+      ],
+      "state": "RUNNABLE",
+      "target": "XY"
+    },
+    {
+      "administered_occurrence": "PV2-FIRST-ADMINISTRATION",
+      "condition_order": [],
+      "form": "F1",
+      "hold_reason": "ORDERED_OWNER_NOT_ISSUED",
+      "instrument_release": "INST-PV2-ADULT-B/F1",
+      "issuer_refs": {
+        "independent_E_ref": {
+          "content_hash": "96bf8b2773b70b9fcc48f6296aa6d83b93ba32008f61ef1ee8f2df525cf7996c",
+          "kind": "R10_PV2_PROSPECTIVE_E",
+          "object_id": "urn:r10:pv2:r10_pv2_prospective_e:PV2-ADULT-B-ORDERED"
+        },
+        "independent_custody_ref": {
+          "content_hash": "508ddacaecdf38566079de528e47ac3997ba8f84ef97835d778d9279484c869c",
+          "kind": "R10_PV2_CUSTODY_WITNESS",
+          "object_id": "urn:r10:pv2:r10_pv2_custody_witness:PV2-ADULT-B-ORDERED"
+        },
+        "original_U_ref": {
+          "content_hash": "26712692bb39a7a3e123e6d27592852415863cd5e2c8f6baaad49614331ee19e",
+          "kind": "R10_PV2_ORIGINAL_U",
+          "object_id": "urn:r10:pv2:r10_pv2_original_u:PV2-ADULT-B-ORDERED"
+        },
+        "original_operation_scope_ref": {
+          "content_hash": "35aa62867ef4ffeb0e4a27aa85ed73861241a0a65041c7f7ec345d28bfe7881f",
+          "kind": "R10_PV2_OPERATION_SCOPE",
+          "object_id": "urn:r10:pv2:r10_pv2_operation_scope:PV2-ADULT-B-ORDERED"
+        }
+      },
+      "item": "O",
+      "language": "PV2-LANGUAGE",
+      "option_scope": [
+        "AB",
+        "BA"
+      ],
+      "respondent_keys": [
+        "R1",
+        "R2",
+        "R3"
+      ],
+      "respondent_namespace": "PV2-ADULT-B",
+      "respondent_unit": "TEST_ONLY_ADULT",
+      "semantic_op_class": "NONSCALAR_TOPOLOGY_PRESERVATION",
+      "semantic_roles": [
+        "BASE"
+      ],
+      "slot": "ORDERED",
+      "source_native_items": [
+        "O"
+      ],
+      "state": "HELD",
+      "target": "O"
+    },
+    {
+      "administered_occurrence": "PV2-FIRST-ADMINISTRATION",
+      "condition_order": [
+        "X",
+        "Y"
+      ],
+      "form": "F1",
+      "hold_reason": null,
+      "instrument_release": "INST-PV2-ADULT-B/F1",
+      "issuer_refs": {
+        "independent_E_ref": {
+          "content_hash": "f271b2f7936769c875f0a8f01f18910b71f364b007402126c2785947feab2069",
+          "kind": "R10_PV2_PROSPECTIVE_E",
+          "object_id": "urn:r10:pv2:r10_pv2_prospective_e:PV2-ADULT-B-PAIR"
+        },
+        "independent_custody_ref": {
+          "content_hash": "b29d09355697edc302f662ce00df1234730b94bb7bac3e597d32494f77b87557",
+          "kind": "R10_PV2_CUSTODY_WITNESS",
+          "object_id": "urn:r10:pv2:r10_pv2_custody_witness:PV2-ADULT-B-PAIR"
+        },
+        "original_U_ref": {
+          "content_hash": "8f1c9058c836a8e8826e836d96d145cf2da2dca97e9d27db9096369198c85af6",
+          "kind": "R10_PV2_ORIGINAL_U",
+          "object_id": "urn:r10:pv2:r10_pv2_original_u:PV2-ADULT-B-PAIR"
+        },
+        "original_operation_scope_ref": {
+          "content_hash": "1c2c69c73da889e05de4f192b763442a5cac55a25a2f41bf1dbc1a40e7034191",
+          "kind": "R10_PV2_OPERATION_SCOPE",
+          "object_id": "urn:r10:pv2:r10_pv2_operation_scope:PV2-ADULT-B-PAIR"
+        }
+      },
+      "item": "X",
+      "language": "PV2-LANGUAGE",
+      "option_scope": [
+        "0",
+        "1"
+      ],
+      "respondent_keys": [
+        "R1",
+        "R2",
+        "R3"
+      ],
+      "respondent_namespace": "PV2-ADULT-B",
+      "respondent_unit": "TEST_ONLY_ADULT",
+      "semantic_op_class": "PAIR_RESPONSE_COTRAVEL",
+      "semantic_roles": [
+        "CONDITIONER",
+        "TARGET"
+      ],
+      "slot": "PAIR",
+      "source_native_items": [
+        "X",
+        "Y"
+      ],
+      "state": "RUNNABLE",
+      "target": "XY"
+    }
+  ],
+  "origin": "INDEPENDENT_SOURCEFREE_BEFORE_EXECUTION",
+  "register_binding": {
+    "expected_consumer": "FIELD_FORGE_CONDITIONAL_SUPPORT",
+    "fixture_use_grant": {
+      "ceiling": [
+        "SOURCE_FREE_DEV"
+      ],
+      "grant": "TEST_ONLY_FIXTURE_GRANT",
+      "issuer": "R10-PV2-TEST-ONLY-FIXTURE-ISSUER",
+      "revocation_reason": null,
+      "revoked": false,
+      "scope": "sourcefree synthetic native rows only; no survey microdata"
+    },
+    "held_multiset": [
+      [
+        [
+          "PV2-ADULT-A",
+          "ORDERED"
+        ],
+        1
+      ],
+      [
+        [
+          "PV2-ADULT-B",
+          "ORDERED"
+        ],
+        1
+      ]
+    ],
+    "obligation_multiset": [
+      [
+        [
+          "PV2-ADULT-A",
+          "B"
+        ],
+        1
+      ],
+      [
+        [
+          "PV2-ADULT-A",
+          "DISCOVERY"
+        ],
+        1
+      ],
+      [
+        [
+          "PV2-ADULT-A",
+          "ORDERED"
+        ],
+        1
+      ],
+      [
+        [
+          "PV2-ADULT-A",
+          "PAIR"
+        ],
+        1
+      ],
+      [
+        [
+          "PV2-ADULT-B",
+          "B"
+        ],
+        1
+      ],
+      [
+        [
+          "PV2-ADULT-B",
+          "DISCOVERY"
+        ],
+        1
+      ],
+      [
+        [
+          "PV2-ADULT-B",
+          "ORDERED"
+        ],
+        1
+      ],
+      [
+        [
+          "PV2-ADULT-B",
+          "PAIR"
+        ],
+        1
+      ]
+    ],
+    "obligations": [
+      {
+        "administered_occurrence": "PV2-FIRST-ADMINISTRATION",
+        "condition_order": [
+          "Y",
+          "X"
+        ],
+        "form": "F1",
+        "hold_reason": null,
+        "instrument_release": "INST-PV2-ADULT-A/F1",
+        "issuer_refs": {
+          "independent_E_ref": {
+            "content_hash": "bf77f8df573e3935304f067bbf3fc7af4a42f8d3a62d826367d233318d4d7a81",
+            "kind": "R10_PV2_PROSPECTIVE_E",
+            "object_id": "urn:r10:pv2:r10_pv2_prospective_e:PV2-ADULT-A-B"
+          },
+          "independent_custody_ref": {
+            "content_hash": "33d9cb9475490d137271190e48da4659c6f333510bc972148bf19b6f08875168",
+            "kind": "R10_PV2_CUSTODY_WITNESS",
+            "object_id": "urn:r10:pv2:r10_pv2_custody_witness:PV2-ADULT-A-B"
+          },
+          "original_U_ref": {
+            "content_hash": "00574475f0e8eb185b82f280ae51fb7000d822ab1bb35ebc0e0be7e13b341661",
+            "kind": "R10_PV2_ORIGINAL_U",
+            "object_id": "urn:r10:pv2:r10_pv2_original_u:PV2-ADULT-A-B"
+          },
+          "original_operation_scope_ref": {
+            "content_hash": "c2dacf1938dab56a90b4585cf2a0124ac005b2c73470ce196bc3822ad3958156",
+            "kind": "R10_PV2_OPERATION_SCOPE",
+            "object_id": "urn:r10:pv2:r10_pv2_operation_scope:PV2-ADULT-A-B"
+          }
+        },
+        "item": "Y",
+        "language": "PV2-LANGUAGE",
+        "option_scope": [
+          "0",
+          "1"
+        ],
+        "respondent_keys": [
+          "R1",
+          "R2",
+          "R3"
+        ],
+        "respondent_namespace": "PV2-ADULT-A",
+        "respondent_unit": "TEST_ONLY_ADULT",
+        "semantic_op_class": "PAIR_RESPONSE_COTRAVEL",
+        "semantic_roles": [
+          "CONDITIONER",
+          "TARGET"
+        ],
+        "slot": "B",
+        "source_native_items": [
+          "Y",
+          "X"
+        ],
+        "state": "RUNNABLE",
+        "target": "YX"
+      },
+      {
+        "administered_occurrence": "PV2-FIRST-ADMINISTRATION",
+        "condition_order": [],
+        "form": "F1",
+        "hold_reason": null,
+        "instrument_release": "INST-PV2-ADULT-A/F1",
+        "issuer_refs": {
+          "independent_E_ref": {
+            "content_hash": "4ab5debf6da70f64b1961e0eed2b94f772bdbe103b8db45f912e3740516e6777",
+            "kind": "R10_PV2_PROSPECTIVE_E",
+            "object_id": "urn:r10:pv2:r10_pv2_prospective_e:PV2-ADULT-A-DISCOVERY"
+          },
+          "independent_custody_ref": {
+            "content_hash": "6116b0afa27ccec18622d8d289143aefef8f43dc3a13508685c38eaaa796e6a7",
+            "kind": "R10_PV2_CUSTODY_WITNESS",
+            "object_id": "urn:r10:pv2:r10_pv2_custody_witness:PV2-ADULT-A-DISCOVERY"
+          },
+          "original_U_ref": {
+            "content_hash": "55db25c091b2f00cce53661391f9b1247744edb5a4d54dc81fcd84bd3a2d79d9",
+            "kind": "R10_PV2_ORIGINAL_U",
+            "object_id": "urn:r10:pv2:r10_pv2_original_u:PV2-ADULT-A-DISCOVERY"
+          },
+          "original_operation_scope_ref": {
+            "content_hash": "4eac1b246bd2582728bc8ae1c942dc8ff08a085117bbfd9a1964a301f3703a22",
+            "kind": "R10_PV2_OPERATION_SCOPE",
+            "object_id": "urn:r10:pv2:r10_pv2_operation_scope:PV2-ADULT-A-DISCOVERY"
+          }
+        },
+        "item": "X",
+        "language": "PV2-LANGUAGE",
+        "option_scope": [
+          "0",
+          "1"
+        ],
+        "respondent_keys": [
+          "R1",
+          "R2",
+          "R3"
+        ],
+        "respondent_namespace": "PV2-ADULT-A",
+        "respondent_unit": "TEST_ONLY_ADULT",
+        "semantic_op_class": "BOUNDED_DISCOVERY",
+        "semantic_roles": [
+          "BASE"
+        ],
+        "slot": "DISCOVERY",
+        "source_native_items": [
+          "X",
+          "Y"
+        ],
+        "state": "RUNNABLE",
+        "target": "XY"
+      },
+      {
+        "administered_occurrence": "PV2-FIRST-ADMINISTRATION",
+        "condition_order": [],
+        "form": "F1",
+        "hold_reason": "ORDERED_OWNER_NOT_ISSUED",
+        "instrument_release": "INST-PV2-ADULT-A/F1",
+        "issuer_refs": {
+          "independent_E_ref": {
+            "content_hash": "3c3f18cdee4945509b1da5232cabfa0df323a9cd6af26b0cd168e1d5558df60e",
+            "kind": "R10_PV2_PROSPECTIVE_E",
+            "object_id": "urn:r10:pv2:r10_pv2_prospective_e:PV2-ADULT-A-ORDERED"
+          },
+          "independent_custody_ref": {
+            "content_hash": "b5954f2c2a7980b9dcc57ab71e1efa02ac66dd44ac7f507c1667cef61f73254d",
+            "kind": "R10_PV2_CUSTODY_WITNESS",
+            "object_id": "urn:r10:pv2:r10_pv2_custody_witness:PV2-ADULT-A-ORDERED"
+          },
+          "original_U_ref": {
+            "content_hash": "590f16ad1ee5acd51ae2e85840a196dc02e8372ce353c2975be98687ed34f399",
+            "kind": "R10_PV2_ORIGINAL_U",
+            "object_id": "urn:r10:pv2:r10_pv2_original_u:PV2-ADULT-A-ORDERED"
+          },
+          "original_operation_scope_ref": {
+            "content_hash": "c8cd79a5c2bf6a7d2ddc559e28a41c19e4dc3faa9c0dcc9075baabaaa7d58c81",
+            "kind": "R10_PV2_OPERATION_SCOPE",
+            "object_id": "urn:r10:pv2:r10_pv2_operation_scope:PV2-ADULT-A-ORDERED"
+          }
+        },
+        "item": "O",
+        "language": "PV2-LANGUAGE",
+        "option_scope": [
+          "AB",
+          "BA"
+        ],
+        "respondent_keys": [
+          "R1",
+          "R2",
+          "R3"
+        ],
+        "respondent_namespace": "PV2-ADULT-A",
+        "respondent_unit": "TEST_ONLY_ADULT",
+        "semantic_op_class": "NONSCALAR_TOPOLOGY_PRESERVATION",
+        "semantic_roles": [
+          "BASE"
+        ],
+        "slot": "ORDERED",
+        "source_native_items": [
+          "O"
+        ],
+        "state": "HELD",
+        "target": "O"
+      },
+      {
+        "administered_occurrence": "PV2-FIRST-ADMINISTRATION",
+        "condition_order": [
+          "X",
+          "Y"
+        ],
+        "form": "F1",
+        "hold_reason": null,
+        "instrument_release": "INST-PV2-ADULT-A/F1",
+        "issuer_refs": {
+          "independent_E_ref": {
+            "content_hash": "f4de845c2d87185d6a93714b8e0e5d55ad9cf61a9d0de8089b474e1c5a330923",
+            "kind": "R10_PV2_PROSPECTIVE_E",
+            "object_id": "urn:r10:pv2:r10_pv2_prospective_e:PV2-ADULT-A-PAIR"
+          },
+          "independent_custody_ref": {
+            "content_hash": "13ba52a58641dc5334d369ee4d0d3d6d39c021b3fcb2d4102307f934abc4af7d",
+            "kind": "R10_PV2_CUSTODY_WITNESS",
+            "object_id": "urn:r10:pv2:r10_pv2_custody_witness:PV2-ADULT-A-PAIR"
+          },
+          "original_U_ref": {
+            "content_hash": "7e46fb072f6534999480dd5aeb31a866530ca62bfffc06d226c3ba52faa392c5",
+            "kind": "R10_PV2_ORIGINAL_U",
+            "object_id": "urn:r10:pv2:r10_pv2_original_u:PV2-ADULT-A-PAIR"
+          },
+          "original_operation_scope_ref": {
+            "content_hash": "8e8649169181eb2f69535750365067a03adff4b2baae2f189d8b1b73d78de8aa",
+            "kind": "R10_PV2_OPERATION_SCOPE",
+            "object_id": "urn:r10:pv2:r10_pv2_operation_scope:PV2-ADULT-A-PAIR"
+          }
+        },
+        "item": "X",
+        "language": "PV2-LANGUAGE",
+        "option_scope": [
+          "0",
+          "1"
+        ],
+        "respondent_keys": [
+          "R1",
+          "R2",
+          "R3"
+        ],
+        "respondent_namespace": "PV2-ADULT-A",
+        "respondent_unit": "TEST_ONLY_ADULT",
+        "semantic_op_class": "PAIR_RESPONSE_COTRAVEL",
+        "semantic_roles": [
+          "CONDITIONER",
+          "TARGET"
+        ],
+        "slot": "PAIR",
+        "source_native_items": [
+          "X",
+          "Y"
+        ],
+        "state": "RUNNABLE",
+        "target": "XY"
+      },
+      {
+        "administered_occurrence": "PV2-FIRST-ADMINISTRATION",
+        "condition_order": [
+          "Y",
+          "X"
+        ],
+        "form": "F1",
+        "hold_reason": null,
+        "instrument_release": "INST-PV2-ADULT-B/F1",
+        "issuer_refs": {
+          "independent_E_ref": {
+            "content_hash": "3cdc312a94b93a38cb1c596831845f21367438672badce79630aa60798e4fa83",
+            "kind": "R10_PV2_PROSPECTIVE_E",
+            "object_id": "urn:r10:pv2:r10_pv2_prospective_e:PV2-ADULT-B-B"
+          },
+          "independent_custody_ref": {
+            "content_hash": "a5dead0c9a20d4f71e8020185f4421c5f901ae39c20feb4ac92df94b4d24e1fa",
+            "kind": "R10_PV2_CUSTODY_WITNESS",
+            "object_id": "urn:r10:pv2:r10_pv2_custody_witness:PV2-ADULT-B-B"
+          },
+          "original_U_ref": {
+            "content_hash": "241c68ef770d89c3f83c7784412f38dd120ebbda7c6600ac4c62b7d7626e43bf",
+            "kind": "R10_PV2_ORIGINAL_U",
+            "object_id": "urn:r10:pv2:r10_pv2_original_u:PV2-ADULT-B-B"
+          },
+          "original_operation_scope_ref": {
+            "content_hash": "eb37640c2aae7a6530f78f466d6430b8ea95a95d25ac563209e73ee3cdfe4fd1",
+            "kind": "R10_PV2_OPERATION_SCOPE",
+            "object_id": "urn:r10:pv2:r10_pv2_operation_scope:PV2-ADULT-B-B"
+          }
+        },
+        "item": "Y",
+        "language": "PV2-LANGUAGE",
+        "option_scope": [
+          "0",
+          "1"
+        ],
+        "respondent_keys": [
+          "R1",
+          "R2",
+          "R3"
+        ],
+        "respondent_namespace": "PV2-ADULT-B",
+        "respondent_unit": "TEST_ONLY_ADULT",
+        "semantic_op_class": "PAIR_RESPONSE_COTRAVEL",
+        "semantic_roles": [
+          "CONDITIONER",
+          "TARGET"
+        ],
+        "slot": "B",
+        "source_native_items": [
+          "Y",
+          "X"
+        ],
+        "state": "RUNNABLE",
+        "target": "YX"
+      },
+      {
+        "administered_occurrence": "PV2-FIRST-ADMINISTRATION",
+        "condition_order": [],
+        "form": "F1",
+        "hold_reason": null,
+        "instrument_release": "INST-PV2-ADULT-B/F1",
+        "issuer_refs": {
+          "independent_E_ref": {
+            "content_hash": "ab4e3db4df997b436307837fe50c86aae1b1e4a76e6e5e22ee3558b97c798803",
+            "kind": "R10_PV2_PROSPECTIVE_E",
+            "object_id": "urn:r10:pv2:r10_pv2_prospective_e:PV2-ADULT-B-DISCOVERY"
+          },
+          "independent_custody_ref": {
+            "content_hash": "e36a26700e7cc831e1a2164bbd97731f785c267cd40762ab9e5e6e9c1f947abf",
+            "kind": "R10_PV2_CUSTODY_WITNESS",
+            "object_id": "urn:r10:pv2:r10_pv2_custody_witness:PV2-ADULT-B-DISCOVERY"
+          },
+          "original_U_ref": {
+            "content_hash": "7cf91ea3e2d2b664f168098b483841c0e5bbaf5852f59d83c4702a0d7e2fd96c",
+            "kind": "R10_PV2_ORIGINAL_U",
+            "object_id": "urn:r10:pv2:r10_pv2_original_u:PV2-ADULT-B-DISCOVERY"
+          },
+          "original_operation_scope_ref": {
+            "content_hash": "b69cc9a062c0b3bad9c56ff6ce18b166254a4208620f5239287d1548c824edc3",
+            "kind": "R10_PV2_OPERATION_SCOPE",
+            "object_id": "urn:r10:pv2:r10_pv2_operation_scope:PV2-ADULT-B-DISCOVERY"
+          }
+        },
+        "item": "X",
+        "language": "PV2-LANGUAGE",
+        "option_scope": [
+          "0",
+          "1"
+        ],
+        "respondent_keys": [
+          "R1",
+          "R2",
+          "R3"
+        ],
+        "respondent_namespace": "PV2-ADULT-B",
+        "respondent_unit": "TEST_ONLY_ADULT",
+        "semantic_op_class": "BOUNDED_DISCOVERY",
+        "semantic_roles": [
+          "BASE"
+        ],
+        "slot": "DISCOVERY",
+        "source_native_items": [
+          "X",
+          "Y"
+        ],
+        "state": "RUNNABLE",
+        "target": "XY"
+      },
+      {
+        "administered_occurrence": "PV2-FIRST-ADMINISTRATION",
+        "condition_order": [],
+        "form": "F1",
+        "hold_reason": "ORDERED_OWNER_NOT_ISSUED",
+        "instrument_release": "INST-PV2-ADULT-B/F1",
+        "issuer_refs": {
+          "independent_E_ref": {
+            "content_hash": "96bf8b2773b70b9fcc48f6296aa6d83b93ba32008f61ef1ee8f2df525cf7996c",
+            "kind": "R10_PV2_PROSPECTIVE_E",
+            "object_id": "urn:r10:pv2:r10_pv2_prospective_e:PV2-ADULT-B-ORDERED"
+          },
+          "independent_custody_ref": {
+            "content_hash": "508ddacaecdf38566079de528e47ac3997ba8f84ef97835d778d9279484c869c",
+            "kind": "R10_PV2_CUSTODY_WITNESS",
+            "object_id": "urn:r10:pv2:r10_pv2_custody_witness:PV2-ADULT-B-ORDERED"
+          },
+          "original_U_ref": {
+            "content_hash": "26712692bb39a7a3e123e6d27592852415863cd5e2c8f6baaad49614331ee19e",
+            "kind": "R10_PV2_ORIGINAL_U",
+            "object_id": "urn:r10:pv2:r10_pv2_original_u:PV2-ADULT-B-ORDERED"
+          },
+          "original_operation_scope_ref": {
+            "content_hash": "35aa62867ef4ffeb0e4a27aa85ed73861241a0a65041c7f7ec345d28bfe7881f",
+            "kind": "R10_PV2_OPERATION_SCOPE",
+            "object_id": "urn:r10:pv2:r10_pv2_operation_scope:PV2-ADULT-B-ORDERED"
+          }
+        },
+        "item": "O",
+        "language": "PV2-LANGUAGE",
+        "option_scope": [
+          "AB",
+          "BA"
+        ],
+        "respondent_keys": [
+          "R1",
+          "R2",
+          "R3"
+        ],
+        "respondent_namespace": "PV2-ADULT-B",
+        "respondent_unit": "TEST_ONLY_ADULT",
+        "semantic_op_class": "NONSCALAR_TOPOLOGY_PRESERVATION",
+        "semantic_roles": [
+          "BASE"
+        ],
+        "slot": "ORDERED",
+        "source_native_items": [
+          "O"
+        ],
+        "state": "HELD",
+        "target": "O"
+      },
+      {
+        "administered_occurrence": "PV2-FIRST-ADMINISTRATION",
+        "condition_order": [
+          "X",
+          "Y"
+        ],
+        "form": "F1",
+        "hold_reason": null,
+        "instrument_release": "INST-PV2-ADULT-B/F1",
+        "issuer_refs": {
+          "independent_E_ref": {
+            "content_hash": "f271b2f7936769c875f0a8f01f18910b71f364b007402126c2785947feab2069",
+            "kind": "R10_PV2_PROSPECTIVE_E",
+            "object_id": "urn:r10:pv2:r10_pv2_prospective_e:PV2-ADULT-B-PAIR"
+          },
+          "independent_custody_ref": {
+            "content_hash": "b29d09355697edc302f662ce00df1234730b94bb7bac3e597d32494f77b87557",
+            "kind": "R10_PV2_CUSTODY_WITNESS",
+            "object_id": "urn:r10:pv2:r10_pv2_custody_witness:PV2-ADULT-B-PAIR"
+          },
+          "original_U_ref": {
+            "content_hash": "8f1c9058c836a8e8826e836d96d145cf2da2dca97e9d27db9096369198c85af6",
+            "kind": "R10_PV2_ORIGINAL_U",
+            "object_id": "urn:r10:pv2:r10_pv2_original_u:PV2-ADULT-B-PAIR"
+          },
+          "original_operation_scope_ref": {
+            "content_hash": "1c2c69c73da889e05de4f192b763442a5cac55a25a2f41bf1dbc1a40e7034191",
+            "kind": "R10_PV2_OPERATION_SCOPE",
+            "object_id": "urn:r10:pv2:r10_pv2_operation_scope:PV2-ADULT-B-PAIR"
+          }
+        },
+        "item": "X",
+        "language": "PV2-LANGUAGE",
+        "option_scope": [
+          "0",
+          "1"
+        ],
+        "respondent_keys": [
+          "R1",
+          "R2",
+          "R3"
+        ],
+        "respondent_namespace": "PV2-ADULT-B",
+        "respondent_unit": "TEST_ONLY_ADULT",
+        "semantic_op_class": "PAIR_RESPONSE_COTRAVEL",
+        "semantic_roles": [
+          "CONDITIONER",
+          "TARGET"
+        ],
+        "slot": "PAIR",
+        "source_native_items": [
+          "X",
+          "Y"
+        ],
+        "state": "RUNNABLE",
+        "target": "XY"
+      }
+    ],
+    "origin": "INDEPENDENT_SOURCEFREE_BEFORE_EXECUTION",
+    "schema": "R10_PV2_ORIGINAL_SCOPE_REGISTER@1.0.0",
+    "source_artifact_identity": "PV2-SOURCEFREE-SYNTHETIC-NOT-OBSERVED",
+    "source_inventory_root": "904f30758890a1a68e6f1ef943e01cd80434ebe6c261e16406a54e19a21ddb16",
+    "source_kind": "TEST_ONLY_SYNTHETIC_NOT_OBSERVED"
+  },
+  "runnable_multiset": [
+    [
+      [
+        "PV2-ADULT-A",
+        "B"
+      ],
+      1
+    ],
+    [
+      [
+        "PV2-ADULT-A",
+        "DISCOVERY"
+      ],
+      1
+    ],
+    [
+      [
+        "PV2-ADULT-A",
+        "PAIR"
+      ],
+      1
+    ],
+    [
+      [
+        "PV2-ADULT-B",
+        "B"
+      ],
+      1
+    ],
+    [
+      [
+        "PV2-ADULT-B",
+        "DISCOVERY"
+      ],
+      1
+    ],
+    [
+      [
+        "PV2-ADULT-B",
+        "PAIR"
+      ],
+      1
+    ]
+  ],
+  "schema": "R10_PV2_ORIGINAL_SCOPE_REGISTER@1.0.0",
+  "source_artifact_identity": "PV2-SOURCEFREE-SYNTHETIC-NOT-OBSERVED",
+  "source_inventory_root": "904f30758890a1a68e6f1ef943e01cd80434ebe6c261e16406a54e19a21ddb16",
+  "source_kind": "TEST_ONLY_SYNTHETIC_NOT_OBSERVED"
+}
