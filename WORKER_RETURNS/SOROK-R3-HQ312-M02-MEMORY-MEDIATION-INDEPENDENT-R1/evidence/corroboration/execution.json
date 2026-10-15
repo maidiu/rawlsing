@@ -1,0 +1,23 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "-p",
+    "reviewer_observer",
+    "-vv",
+    "--tb=short",
+    "--import-mode=importlib",
+    "-p",
+    "no:cacheprovider",
+    "--rootdir=<RETURN>",
+    "--confcutdir=<RETURN>",
+    "--basetemp=<RETURN>/runtime/tmp/independent",
+    "--junitxml=<RETURN>/evidence/corroboration/junit.xml",
+    "<RETURN>/repro/test_independent.py::test_lawful_future_claim_cannot_condition_an_earlier_response",
+    "<RETURN>/repro/test_independent.py::test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence"
+  ],
+  "cwd": "<RETURN>",
+  "exit": 1,
+  "seconds": 1.8439350128173828
+}

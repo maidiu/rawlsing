@@ -1,0 +1,26 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: <RETURN>
+collecting ... collected 2 items
+
+repro/test_independent.py::test_lawful_future_claim_cannot_condition_an_earlier_response FAILED [ 50%]
+repro/test_independent.py::test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence FAILED [100%]
+
+=================================== FAILURES ===================================
+________ test_lawful_future_claim_cannot_condition_an_earlier_response _________
+repro/test_independent.py:505: in test_lawful_future_claim_cannot_condition_an_earlier_response
+    assert (
+E   AssertionError: Earlier response consumed future claim/epistemic state after Cell metadata rebinding
+E   assert None is not None
+__ test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence __
+repro/test_independent.py:550: in test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence
+    assert (
+E   AssertionError: Unresolved selected claim silently converted an actually stored accessible BELIEF into no stance
+E   assert None is not None
+- generated xml file: <RETURN>/evidence/corroboration/junit.xml -
+=========================== short test summary info ============================
+FAILED repro/test_independent.py::test_lawful_future_claim_cannot_condition_an_earlier_response - AssertionError: Earlier response consumed future claim/epistemic state after Cell metadata rebinding
+assert None is not None
+FAILED repro/test_independent.py::test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence - AssertionError: Unresolved selected claim silently converted an actually stored accessible BELIEF into no stance
+assert None is not None
+============================== 2 failed in 1.21s ===============================

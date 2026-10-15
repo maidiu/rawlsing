@@ -1,0 +1,91 @@
+{
+  "verdict": "REVIEW_REVISE",
+  "authority_blobs": [
+    {
+      "authority": "CAN008_R2",
+      "git_blob_sha1": "b80dd6925066510ecbbfec7b427bf9f688475663",
+      "sha256": "f7ffb746a01bff6ed9554ceb4a344355e65332a37312388544c33044c45a7382",
+      "local": "runtime/m01/runtime/can3/runtime/law/CAN008_R2.txt",
+      "authority_scope": "accepted normative semantics, not operative production implementation"
+    },
+    {
+      "authority": "ADP016",
+      "git_blob_sha1": "c6619a286e115d060ab4830889e7fc23762167a5",
+      "sha256": "9c798989454ed196368103719dfe2ada6399f9410c07a1d794c1ac65081c7026",
+      "local": "runtime/m01/runtime/can3/runtime/law/ADP016.txt",
+      "authority_scope": "accepted normative semantics, not operative production implementation"
+    },
+    {
+      "authority": "ADP017",
+      "git_blob_sha1": "eece4f3f2f3f9288ab9bbc645dc81e20a99e1280",
+      "sha256": "2fb5935dc8b3f6f1353ba1dcb71f0123a6edf80c8bfb5570963f21b98c7d5a6b",
+      "local": "runtime/m01/runtime/can3/runtime/law/ADP017.txt",
+      "authority_scope": "accepted normative semantics, not operative production implementation"
+    }
+  ],
+  "CAN008_adoption_blob": "a6bc1555489271e1adb2271ed02d46bb7f888170",
+  "nine_original_RED_cases": [
+    {
+      "name": "test_C_target_owner_effect_is_request_not_seizure",
+      "state": "FAILURE",
+      "message": "KeyError: 'target_owner_effect_requests'"
+    },
+    {
+      "name": "test_D_K3_hidden_origin_content_not_first_person_readable",
+      "state": "FAILURE",
+      "message": "candidate.owner_transitions.OwnerTransitionError: UNAUTHORIZED_TRANSITION:exact candidate rule/authority required"
+    },
+    {
+      "name": "test_D_K3_causal_trace_not_recallable",
+      "state": "FAILURE",
+      "message": "candidate.owner_transitions.OwnerTransitionError: UNAUTHORIZED_TRANSITION:exact candidate rule/authority required"
+    },
+    {
+      "name": "test_D_K3_sole_memory_basis_failclosed",
+      "state": "FAILURE",
+      "message": "candidate.owner_transitions.OwnerTransitionError: UNAUTHORIZED_TRANSITION:exact candidate rule/authority required"
+    },
+    {
+      "name": "test_F_H6_duplicate_event",
+      "state": "FAILURE",
+      "message": "AssertionError: assert 'PARENT_EVENT_HASH_MISMATCH' == 'BLOCK_DUPLICATE_EVENT_IDENTITY'\n  \n  - BLOCK_DUPLICATE_EVENT_IDENTITY\n  + PARENT_EVENT_HASH_MISMATCH"
+    },
+    {
+      "name": "test_F_H8_invalid_trace",
+      "state": "FAILURE",
+      "message": "candidate.owner_transitions.OwnerTransitionError: UNAUTHORIZED_TRANSITION:exact candidate rule/authority required"
+    },
+    {
+      "name": "test_H_delete_memory_forbidden",
+      "state": "FAILURE",
+      "message": "candidate.owner_transitions.OwnerTransitionError: UNAUTHORIZED_TRANSITION:exact candidate rule/authority required"
+    },
+    {
+      "name": "test_H_rehydration_forbidden",
+      "state": "FAILURE",
+      "message": "candidate.owner_transitions.OwnerTransitionError: UNAUTHORIZED_TRANSITION:exact candidate rule/authority required"
+    },
+    {
+      "name": "test_target_owner_validation_precedes_committed_effect",
+      "state": "FAILURE",
+      "message": "AssertionError: Only unvalidated/uncommitted owner requests accompany reported target commit\nassert False\n +  where False = all(<generator object test_target_owner_validation_precedes_committed_effect.<locals>.<genexpr> at 0x10995f1d0>)"
+    }
+  ],
+  "nine_original_adjudication_custody": "ef12349defe22a50e053a7a8080a67ab45673417:WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/04_NINE_RED_ADJUDICATION.md",
+  "new_RED_cases": [
+    {
+      "name": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "state": "FAILURE",
+      "message": "AssertionError: Earlier response consumed future claim/epistemic state after Cell metadata rebinding\nassert None is not None"
+    },
+    {
+      "name": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "state": "FAILURE",
+      "message": "AssertionError: Unresolved selected claim silently converted an actually stored accessible BELIEF into no stance\nassert None is not None"
+    }
+  ],
+  "operative_rule_issuer_registry_conditioning_and_target_owners": "NOT_ISSUED",
+  "serial_memory_content_to_belief": "MECHANISM_IDENTIFICATION_HOLD",
+  "real_actor_model_V3_permission": "NOT_GRANTED",
+  "production_guard_empty": true
+}

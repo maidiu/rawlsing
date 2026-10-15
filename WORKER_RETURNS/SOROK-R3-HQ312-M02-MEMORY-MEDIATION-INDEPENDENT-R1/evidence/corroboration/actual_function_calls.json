@@ -1,0 +1,924 @@
+{
+  "actual_function_events": [
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "call",
+      "function": "coupline_evaluate",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+      "line": 185
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "call",
+      "function": "admit_event",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+      "line": 64
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "return",
+      "function": "admit_event",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+      "line": 64,
+      "status": "EVENT_IDENTITY_ADMITTED_IN_FIXTURE"
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "return",
+      "function": "coupline_evaluate",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+      "line": 185,
+      "decision_state": "COUPLING_EVALUATED"
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "call",
+      "function": "response_rule_apply",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+      "line": 213
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "return",
+      "function": "response_rule_apply",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+      "line": 213,
+      "decision_state": "RESPONSE_EFFECTS_PRODUCED"
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "call",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "effective_causal_time": "1998-10-03T16:00:00Z",
+      "kind": "CAN008_CURRENT_RESPONSE_EFFECT"
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "return",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "status": "COMMITTED_IN_CAUSAL_ORDER",
+      "committed_entry_hash": "aced8c364eb0fbb415d7e1f4c92a39bb88467dfbbc58baf033a4ac85f42f07ec"
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "call",
+      "function": "adp016_form_causal_trace",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 98,
+      "actor_id": "ACTOR_SYNTH_1",
+      "content_state": "AVAILABLE_SOURCE_BOUND"
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "return",
+      "function": "adp016_form_causal_trace",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 98,
+      "status": "ADP016_FORMATION_VALIDATED_IN_FIXTURE",
+      "memory_id": "ddcf4de0936e3a6bd972bc3d689b789e068756d6888562edcc3e00970468a473"
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "call",
+      "function": "commit_memory",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 80
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "return",
+      "function": "commit_memory",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 80,
+      "status": "ADP016_TRACE_COMMITTED_IN_FIXTURE",
+      "state_hash": "db3d06ca5e091fef55a30fa0b8db6a04eff69d1e0bc2fd02e0e361bfef00a6f8"
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "call",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "effective_causal_time": "1998-10-03T16:00:00Z",
+      "kind": "ADP016_COMMIT"
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "return",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "status": "COMMITTED_IN_CAUSAL_ORDER",
+      "committed_entry_hash": "6b9bd2b968b1dd5a5d9755ea49e11590ad242194faba92130e64bfbf8bdd8872"
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "call",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "effective_causal_time": "1998-10-03T16:00:00Z",
+      "kind": "FIRST_EVENT_COMPLETE"
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "return",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "status": "COMMITTED_IN_CAUSAL_ORDER",
+      "committed_entry_hash": "2f988e6e6684e673e63329d5cecc20f043c63f8edd24ebe11bd10dd5c4f64a65"
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "call",
+      "function": "admit_event",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+      "line": 64
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "return",
+      "function": "admit_event",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+      "line": 64,
+      "status": "EVENT_IDENTITY_ADMITTED_IN_FIXTURE"
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "call",
+      "function": "adp017_apply_epistemic_effect",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 148,
+      "actor_id": "ACTOR_SYNTH_1",
+      "effective_causal_time": "1999-01-20T10:00:00Z",
+      "claim_ref": "dc6e4583f9ecb20821a9bc69a55def590187f58c5a7d47c925154b4a8118631d",
+      "claim_accessibility": "CLAIM_ACCESSIBLE",
+      "stance_kind": "BELIEF"
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "return",
+      "function": "adp017_apply_epistemic_effect",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 148,
+      "decision_state": "APPLIED_EPISTEMIC_TRANSITION",
+      "state_hash": "d90dc0b479eb7d20b2a50e887c4b158d437aeaecb0e68675a96b7b417b864e08"
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "call",
+      "function": "later",
+      "file": "runtime/m01/repro/cell.py",
+      "line": 127,
+      "expected_state": "d90dc0b479eb7d20b2a50e887c4b158d437aeaecb0e68675a96b7b417b864e08",
+      "rule_version": "1.0.0-TEST_ONLY",
+      "authority": "TEST_ONLY_M01_LOCAL_GRANT"
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "call",
+      "function": "admit_event",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+      "line": 64
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "return",
+      "function": "admit_event",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+      "line": 64,
+      "status": "EVENT_IDENTITY_ADMITTED_IN_FIXTURE"
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "call",
+      "function": "read_owner",
+      "file": "runtime/m01/repro/cell.py",
+      "line": 90,
+      "expected_state": "d90dc0b479eb7d20b2a50e887c4b158d437aeaecb0e68675a96b7b417b864e08",
+      "at": "1998-11-20T09:00:00Z"
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "call",
+      "function": "adp017_first_person_check",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 187,
+      "claim_ref": "dc6e4583f9ecb20821a9bc69a55def590187f58c5a7d47c925154b4a8118631d",
+      "claim_accessibility": "CLAIM_ACCESSIBLE",
+      "stance_kind": "BELIEF"
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "return",
+      "function": "adp017_first_person_check",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 187,
+      "first_person_permission": "DENY_FIRST_PERSON_CLAIM"
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "call",
+      "function": "adp017_first_person_check",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 187,
+      "claim_ref": "dc6e4583f9ecb20821a9bc69a55def590187f58c5a7d47c925154b4a8118631d",
+      "claim_accessibility": "CLAIM_ACCESSIBLE",
+      "stance_kind": "BELIEF"
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "return",
+      "function": "adp017_first_person_check",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 187,
+      "first_person_permission": "PERMIT_FIRST_PERSON_BELIEF"
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "return",
+      "function": "read_owner",
+      "file": "runtime/m01/repro/cell.py",
+      "line": 90,
+      "state_hash": "d90dc0b479eb7d20b2a50e887c4b158d437aeaecb0e68675a96b7b417b864e08",
+      "streams": {
+        "memory": "BUFFER",
+        "epistemic": "REROUTE"
+      }
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "call",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "effective_causal_time": "1998-11-20T09:00:00Z",
+      "kind": "M01_CAN008_CURRENT_RESPONSE_GRAPH"
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "return",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "status": "COMMITTED_IN_CAUSAL_ORDER",
+      "committed_entry_hash": "6080f138e9d5478554ea0f66c7a7dca036f5b98b79d7dbdeb91f64235b5d4a21"
+    },
+    {
+      "case": "test_lawful_future_claim_cannot_condition_an_earlier_response",
+      "event": "return",
+      "function": "later",
+      "file": "runtime/m01/repro/cell.py",
+      "line": 127,
+      "status": "COMMITTED_TEST_ONLY",
+      "state_hash": "d90dc0b479eb7d20b2a50e887c4b158d437aeaecb0e68675a96b7b417b864e08",
+      "streams": {
+        "memory": "BUFFER",
+        "epistemic": "REROUTE"
+      }
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "coupline_evaluate",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+      "line": 185
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "admit_event",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+      "line": 64
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "admit_event",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+      "line": 64,
+      "status": "EVENT_IDENTITY_ADMITTED_IN_FIXTURE"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "coupline_evaluate",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+      "line": 185,
+      "decision_state": "COUPLING_EVALUATED"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "response_rule_apply",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+      "line": 213
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "response_rule_apply",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+      "line": 213,
+      "decision_state": "RESPONSE_EFFECTS_PRODUCED"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "effective_causal_time": "1998-10-03T16:00:00Z",
+      "kind": "CAN008_CURRENT_RESPONSE_EFFECT"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "status": "COMMITTED_IN_CAUSAL_ORDER",
+      "committed_entry_hash": "aced8c364eb0fbb415d7e1f4c92a39bb88467dfbbc58baf033a4ac85f42f07ec"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "adp016_form_causal_trace",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 98,
+      "actor_id": "ACTOR_SYNTH_1",
+      "content_state": "AVAILABLE_SOURCE_BOUND"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "adp016_form_causal_trace",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 98,
+      "status": "ADP016_FORMATION_VALIDATED_IN_FIXTURE",
+      "memory_id": "ddcf4de0936e3a6bd972bc3d689b789e068756d6888562edcc3e00970468a473"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "commit_memory",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 80
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "commit_memory",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 80,
+      "status": "ADP016_TRACE_COMMITTED_IN_FIXTURE",
+      "state_hash": "db3d06ca5e091fef55a30fa0b8db6a04eff69d1e0bc2fd02e0e361bfef00a6f8"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "effective_causal_time": "1998-10-03T16:00:00Z",
+      "kind": "ADP016_COMMIT"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "status": "COMMITTED_IN_CAUSAL_ORDER",
+      "committed_entry_hash": "6b9bd2b968b1dd5a5d9755ea49e11590ad242194faba92130e64bfbf8bdd8872"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "adp017_apply_epistemic_effect",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 148,
+      "actor_id": "ACTOR_SYNTH_1",
+      "effective_causal_time": "1998-10-03T16:00:00Z",
+      "claim_ref": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
+      "claim_accessibility": "CLAIM_ACCESSIBLE",
+      "stance_kind": "BELIEF"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "adp017_apply_epistemic_effect",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 148,
+      "decision_state": "APPLIED_EPISTEMIC_TRANSITION",
+      "state_hash": "0072a674ea5da61f7556ea76a387a4fcd8de9fb2e17b7721c01c202e5ac0edfc"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "effective_causal_time": "1998-10-03T16:00:00Z",
+      "kind": "ADP017_COMMIT"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "status": "COMMITTED_IN_CAUSAL_ORDER",
+      "committed_entry_hash": "6d9d2b403aa0bf1b8f5d6c432d48ca9312464c99fee6a91740a942d4a8a00c6a"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "effective_causal_time": "1998-10-03T16:00:00Z",
+      "kind": "FIRST_EVENT_COMPLETE"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "status": "COMMITTED_IN_CAUSAL_ORDER",
+      "committed_entry_hash": "6bddd5ddd9d58f0487930c23abfee88ac714f2b6baee0e0302b0c169b915be1d"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "coupline_evaluate",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+      "line": 185
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "admit_event",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+      "line": 64
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "admit_event",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+      "line": 64,
+      "status": "EVENT_IDENTITY_ADMITTED_IN_FIXTURE"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "coupline_evaluate",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+      "line": 185,
+      "decision_state": "COUPLING_EVALUATED"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "response_rule_apply",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+      "line": 213
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "response_rule_apply",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+      "line": 213,
+      "decision_state": "RESPONSE_EFFECTS_PRODUCED"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "effective_causal_time": "1998-10-03T16:00:00Z",
+      "kind": "CAN008_CURRENT_RESPONSE_EFFECT"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "status": "COMMITTED_IN_CAUSAL_ORDER",
+      "committed_entry_hash": "aced8c364eb0fbb415d7e1f4c92a39bb88467dfbbc58baf033a4ac85f42f07ec"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "adp016_form_causal_trace",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 98,
+      "actor_id": "ACTOR_SYNTH_1",
+      "content_state": "AVAILABLE_SOURCE_BOUND"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "adp016_form_causal_trace",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 98,
+      "status": "ADP016_FORMATION_VALIDATED_IN_FIXTURE",
+      "memory_id": "ddcf4de0936e3a6bd972bc3d689b789e068756d6888562edcc3e00970468a473"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "commit_memory",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 80
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "commit_memory",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 80,
+      "status": "ADP016_TRACE_COMMITTED_IN_FIXTURE",
+      "state_hash": "db3d06ca5e091fef55a30fa0b8db6a04eff69d1e0bc2fd02e0e361bfef00a6f8"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "effective_causal_time": "1998-10-03T16:00:00Z",
+      "kind": "ADP016_COMMIT"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "status": "COMMITTED_IN_CAUSAL_ORDER",
+      "committed_entry_hash": "6b9bd2b968b1dd5a5d9755ea49e11590ad242194faba92130e64bfbf8bdd8872"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "adp017_apply_epistemic_effect",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 148,
+      "actor_id": "ACTOR_SYNTH_1",
+      "effective_causal_time": "1998-10-03T16:00:00Z",
+      "claim_ref": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
+      "claim_accessibility": "CLAIM_ACCESSIBLE",
+      "stance_kind": "BELIEF"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "adp017_apply_epistemic_effect",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 148,
+      "decision_state": "APPLIED_EPISTEMIC_TRANSITION",
+      "state_hash": "0072a674ea5da61f7556ea76a387a4fcd8de9fb2e17b7721c01c202e5ac0edfc"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "effective_causal_time": "1998-10-03T16:00:00Z",
+      "kind": "ADP017_COMMIT"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "status": "COMMITTED_IN_CAUSAL_ORDER",
+      "committed_entry_hash": "6d9d2b403aa0bf1b8f5d6c432d48ca9312464c99fee6a91740a942d4a8a00c6a"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "effective_causal_time": "1998-10-03T16:00:00Z",
+      "kind": "FIRST_EVENT_COMPLETE"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "status": "COMMITTED_IN_CAUSAL_ORDER",
+      "committed_entry_hash": "6bddd5ddd9d58f0487930c23abfee88ac714f2b6baee0e0302b0c169b915be1d"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "later",
+      "file": "runtime/m01/repro/cell.py",
+      "line": 127,
+      "expected_state": "0072a674ea5da61f7556ea76a387a4fcd8de9fb2e17b7721c01c202e5ac0edfc",
+      "rule_version": "1.0.0-TEST_ONLY",
+      "authority": "TEST_ONLY_M01_LOCAL_GRANT"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "admit_event",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+      "line": 64
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "admit_event",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+      "line": 64,
+      "status": "EVENT_IDENTITY_ADMITTED_IN_FIXTURE"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "read_owner",
+      "file": "runtime/m01/repro/cell.py",
+      "line": 90,
+      "expected_state": "0072a674ea5da61f7556ea76a387a4fcd8de9fb2e17b7721c01c202e5ac0edfc",
+      "at": "1998-11-20T09:00:00Z"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "adp017_first_person_check",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 187,
+      "claim_ref": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
+      "claim_accessibility": "CLAIM_ACCESSIBLE",
+      "stance_kind": "BELIEF"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "adp017_first_person_check",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 187,
+      "first_person_permission": "DENY_FIRST_PERSON_CLAIM"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "adp017_first_person_check",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 187,
+      "claim_ref": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
+      "claim_accessibility": "CLAIM_ACCESSIBLE",
+      "stance_kind": "BELIEF"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "adp017_first_person_check",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 187,
+      "first_person_permission": "PERMIT_FIRST_PERSON_BELIEF"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "read_owner",
+      "file": "runtime/m01/repro/cell.py",
+      "line": 90,
+      "state_hash": "0072a674ea5da61f7556ea76a387a4fcd8de9fb2e17b7721c01c202e5ac0edfc",
+      "streams": {
+        "memory": "BUFFER",
+        "epistemic": "REROUTE"
+      }
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "effective_causal_time": "1998-11-20T09:00:00Z",
+      "kind": "M01_CAN008_CURRENT_RESPONSE_GRAPH"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "status": "COMMITTED_IN_CAUSAL_ORDER",
+      "committed_entry_hash": "058fd205a89c70e910a90a224df5cffaaf01d4e8ba50b77e63ed11e74b1bd45e"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "later",
+      "file": "runtime/m01/repro/cell.py",
+      "line": 127,
+      "status": "COMMITTED_TEST_ONLY",
+      "state_hash": "0072a674ea5da61f7556ea76a387a4fcd8de9fb2e17b7721c01c202e5ac0edfc",
+      "streams": {
+        "memory": "BUFFER",
+        "epistemic": "REROUTE"
+      }
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "later",
+      "file": "runtime/m01/repro/cell.py",
+      "line": 127,
+      "expected_state": "0072a674ea5da61f7556ea76a387a4fcd8de9fb2e17b7721c01c202e5ac0edfc",
+      "rule_version": "1.0.0-TEST_ONLY",
+      "authority": "TEST_ONLY_M01_LOCAL_GRANT"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "admit_event",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+      "line": 64
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "admit_event",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+      "line": 64,
+      "status": "EVENT_IDENTITY_ADMITTED_IN_FIXTURE"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "read_owner",
+      "file": "runtime/m01/repro/cell.py",
+      "line": 90,
+      "expected_state": "0072a674ea5da61f7556ea76a387a4fcd8de9fb2e17b7721c01c202e5ac0edfc",
+      "at": "1998-11-20T09:00:00Z"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "adp017_first_person_check",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 187,
+      "claim_ref": "M02_UNKNOWN_SELECTED_CLAIM",
+      "claim_accessibility": "CLAIM_ACCESSIBLE",
+      "stance_kind": "BELIEF"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "adp017_first_person_check",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "line": 187,
+      "first_person_permission": "DENY_FIRST_PERSON_CLAIM"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "read_owner",
+      "file": "runtime/m01/repro/cell.py",
+      "line": 90,
+      "state_hash": "0072a674ea5da61f7556ea76a387a4fcd8de9fb2e17b7721c01c202e5ac0edfc",
+      "streams": {
+        "memory": "BUFFER",
+        "epistemic": "AMPLIFY"
+      }
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "call",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "effective_causal_time": "1998-11-20T09:00:00Z",
+      "kind": "M01_CAN008_CURRENT_RESPONSE_GRAPH"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "commit",
+      "file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "line": 28,
+      "status": "COMMITTED_IN_CAUSAL_ORDER",
+      "committed_entry_hash": "6181e3c4bc549e4296513d422f20892df7b7ef0ae790a228a44edf79d4a2fa88"
+    },
+    {
+      "case": "test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence",
+      "event": "return",
+      "function": "later",
+      "file": "runtime/m01/repro/cell.py",
+      "line": 127,
+      "status": "COMMITTED_TEST_ONLY",
+      "state_hash": "0072a674ea5da61f7556ea76a387a4fcd8de9fb2e17b7721c01c202e5ac0edfc",
+      "streams": {
+        "memory": "BUFFER",
+        "epistemic": "AMPLIFY"
+      }
+    }
+  ],
+  "physical_function_sources": {
+    "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py": {
+      "git_blob_sha1": "61d933d98ffb39d553a0dbc670388fc2bd3e89d3",
+      "sha256": "c5a4b271346fe045e5a54522926795e7514ad3bacbbed04fbb60a2183348c27e"
+    },
+    "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py": {
+      "git_blob_sha1": "0d978f89fb3c5e836a52f25849240db360f97f8f",
+      "sha256": "1c2e2e0c4375a15b9f1bd55376a550834d001b7b7577cb2b8183caccbdfac768"
+    },
+    "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py": {
+      "git_blob_sha1": "226cd42f81538f1b81ea7ea2e494776069142405",
+      "sha256": "0a288c5ffd1e92f0b29a2bf41ce99b50ebd05bf912c12d5efb18fd6fbc372657"
+    },
+    "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py": {
+      "git_blob_sha1": "ac943d07459f68ba2e27baf05b442d9ecbddefd5",
+      "sha256": "fcdc073693f781607dd6a7ec25e5fa1a79ce3cccd5071005773b2ca7a8a5017d"
+    },
+    "runtime/m01/repro/cell.py": {
+      "git_blob_sha1": "4d78a6333c7f696913b826107fd4bf9598b2ce4a",
+      "sha256": "f5c4e9af7cc979f63ffee03e06580f0ca45c83b305dd210d4796278e2bc4b428"
+    }
+  },
+  "module_imports": [
+    {
+      "module": "bootstrap",
+      "module_file": "runtime/m01/repro/bootstrap.py",
+      "git_blob_sha1": "19b0376a064d4cb6fb2d11caba5ecfd23878c633",
+      "sha256": "8cd0a4a1684b5e120e8f7ff4411d1a235ace1ed37aa5c9a067a2510d0cd46e78"
+    },
+    {
+      "module": "candidate",
+      "module_file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/__init__.py",
+      "git_blob_sha1": "0581aff4ac0ea45c07387e5340e219566ce7330d",
+      "sha256": "be2b6eff83a8a5af687456545477856ec438cee29f25481ff58636556f745083"
+    },
+    {
+      "module": "candidate.adopted_contract",
+      "module_file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/adopted_contract.py",
+      "git_blob_sha1": "259ff9da129f7d644f8ac9fd8f739ad6041a3edf",
+      "sha256": "eec78079b8adc82b28a608ec7dd3fbf3947a53a98447fcf3d4c82db98becf0ae"
+    },
+    {
+      "module": "candidate.can008_candidate_rule",
+      "module_file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+      "git_blob_sha1": "61d933d98ffb39d553a0dbc670388fc2bd3e89d3",
+      "sha256": "c5a4b271346fe045e5a54522926795e7514ad3bacbbed04fbb60a2183348c27e"
+    },
+    {
+      "module": "candidate.candidate_registry_fixture",
+      "module_file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+      "git_blob_sha1": "0d978f89fb3c5e836a52f25849240db360f97f8f",
+      "sha256": "1c2e2e0c4375a15b9f1bd55376a550834d001b7b7577cb2b8183caccbdfac768"
+    },
+    {
+      "module": "candidate.owner_transitions",
+      "module_file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "git_blob_sha1": "ac943d07459f68ba2e27baf05b442d9ecbddefd5",
+      "sha256": "fcdc073693f781607dd6a7ec25e5fa1a79ce3cccd5071005773b2ca7a8a5017d"
+    },
+    {
+      "module": "candidate.positive_chain",
+      "module_file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "git_blob_sha1": "226cd42f81538f1b81ea7ea2e494776069142405",
+      "sha256": "0a288c5ffd1e92f0b29a2bf41ce99b50ebd05bf912c12d5efb18fd6fbc372657"
+    },
+    {
+      "module": "cell",
+      "module_file": "runtime/m01/repro/cell.py",
+      "git_blob_sha1": "4d78a6333c7f696913b826107fd4bf9598b2ce4a",
+      "sha256": "f5c4e9af7cc979f63ffee03e06580f0ca45c83b305dd210d4796278e2bc4b428"
+    },
+    {
+      "module": "rawlsing_next.v3_psepf_zero_positive_guard",
+      "module_file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "git_blob_sha1": "e0528d65215cb431196570c38bac4eae94217a1b",
+      "sha256": "12b2c49f664662cbfe993fc4817751ed9edfff3ce89c44cac489a00cb5e42177"
+    }
+  ],
+  "production_guard": {
+    "module_file": "runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/v3_psepf_zero_positive_guard.py",
+    "blob_sha1": "e0528d65215cb431196570c38bac4eae94217a1b",
+    "byte_unchanged": true,
+    "registry_empty": true
+  },
+  "no_response_monkeypatch": true,
+  "observer": "sys.setprofile only"
+}

@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="1.220" timestamp="2026-10-15T19:29:47.359877-04:00"><testcase classname="repro.test_independent" name="test_lawful_future_claim_cannot_condition_an_earlier_response" time="0.189"><failure message="AssertionError: Earlier response consumed future claim/epistemic state after Cell metadata rebinding&#10;assert None is not None">repro/test_independent.py:505: in test_lawful_future_claim_cannot_condition_an_earlier_response
+    assert (
+E   AssertionError: Earlier response consumed future claim/epistemic state after Cell metadata rebinding
+E   assert None is not None</failure></testcase><testcase classname="repro.test_independent" name="test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence" time="0.351"><failure message="AssertionError: Unresolved selected claim silently converted an actually stored accessible BELIEF into no stance&#10;assert None is not None">repro/test_independent.py:550: in test_checkpoint_claim_selector_cannot_downgrade_existing_belief_to_absence
+    assert (
+E   AssertionError: Unresolved selected claim silently converted an actually stored accessible BELIEF into no stance
+E   assert None is not None</failure></testcase></testsuite></testsuites>
