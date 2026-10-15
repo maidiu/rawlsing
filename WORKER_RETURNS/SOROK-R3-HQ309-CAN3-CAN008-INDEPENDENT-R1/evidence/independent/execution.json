@@ -1,0 +1,55 @@
+{
+  "command": [
+    "python3",
+    "repro/run.py",
+    "independent"
+  ],
+  "pytest_args": [
+    "-q",
+    "--tb=short",
+    "--rootdir=<RETURN>",
+    "--confcutdir=<RETURN>",
+    "<RETURN>/repro/test_can3.py",
+    "--junitxml=<RETURN>/evidence/independent/junit.xml"
+  ],
+  "exit_code": 0,
+  "imports": [
+    {
+      "module": "candidate",
+      "file": "runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/__init__.py",
+      "blob_sha1": "0581aff4ac0ea45c07387e5340e219566ce7330d"
+    },
+    {
+      "module": "candidate.adopted_contract",
+      "file": "runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/adopted_contract.py",
+      "blob_sha1": "259ff9da129f7d644f8ac9fd8f739ad6041a3edf"
+    },
+    {
+      "module": "candidate.can008_candidate_rule",
+      "file": "runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+      "blob_sha1": "61d933d98ffb39d553a0dbc670388fc2bd3e89d3"
+    },
+    {
+      "module": "candidate.candidate_registry_fixture",
+      "file": "runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+      "blob_sha1": "0d978f89fb3c5e836a52f25849240db360f97f8f"
+    },
+    {
+      "module": "candidate.owner_transitions",
+      "file": "runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "blob_sha1": "ac943d07459f68ba2e27baf05b442d9ecbddefd5"
+    },
+    {
+      "module": "candidate.positive_chain",
+      "file": "runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "blob_sha1": "226cd42f81538f1b81ea7ea2e494776069142405"
+    },
+    {
+      "module": "rawlsing_next.v3_psepf_zero_positive_guard",
+      "file": "runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "blob_sha1": "e0528d65215cb431196570c38bac4eae94217a1b"
+    }
+  ],
+  "guard_byte_unchanged": true,
+  "guard_empty": true
+}

@@ -1,0 +1,36 @@
+{
+  "chain_version": "CAN2_SOURCEFREE_CHAIN@2",
+  "terminal": "FIRST_EVENT_REFUSED",
+  "code": "TEST_FAULT_AFTER_OWNER_JOURNAL",
+  "n_ledger_entries": 0,
+  "state": {
+    "actor_id": "ACTOR_SYNTH_1",
+    "memories": {},
+    "memory_transitions": {},
+    "claims": {},
+    "emissions": {},
+    "stances": {},
+    "epistemic_transitions": [],
+    "state_sets": {},
+    "permissions": {}
+  },
+  "ledger_entries": [],
+  "registry": {
+    "fixture_id": "WORKER_CANDIDATE_REGISTRY_FIXTURE",
+    "fixture_grain": "SOURCEFREE_CANDIDATE_FIXTURE__NOT_ACCEPTED_AUTHORIZATION",
+    "production_registry_untouched": true,
+    "registered_rules": [
+      "CAND_R_CAN008_COUPLING_RESPONSE@2.0.0-candidate"
+    ],
+    "ledger": [
+      {
+        "status": "CANDIDATE_REGISTERED_IN_FIXTURE",
+        "rule_key": "CAND_R_CAN008_COUPLING_RESPONSE@2.0.0-candidate",
+        "fixture_id": "WORKER_CANDIDATE_REGISTRY_FIXTURE",
+        "fixture_grain": "SOURCEFREE_CANDIDATE_FIXTURE__NOT_ACCEPTED_AUTHORIZATION",
+        "production_registry_mutated": false
+      }
+    ]
+  },
+  "production_owner_hold": true
+}

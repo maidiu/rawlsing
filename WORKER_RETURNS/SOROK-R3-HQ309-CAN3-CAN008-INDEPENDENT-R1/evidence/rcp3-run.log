@@ -1,0 +1,36 @@
+....F................................................F...........F...... [ 87%]
+..........                                                               [100%]
+=================================== FAILURES ===================================
+____________ test_target_owner_validation_precedes_committed_effect ____________
+WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/runtime/author/runtime_root/court_repaired/repro/test_independent.py:92: in test_target_owner_validation_precedes_committed_effect
+    assert all(x['validated'] and x['committed'] for x in response['target_owner_effect_requests']), 'Only unvalidated/uncommitted owner requests accompany reported target commit'
+E   AssertionError: Only unvalidated/uncommitted owner requests accompany reported target commit
+E   assert False
+E    +  where False = all(<generator object test_target_owner_validation_precedes_committed_effect.<locals>.<genexpr> at 0x1087d72a0>)
+___________ test_memory_causal_trace_and_complete_transition_schema ____________
+WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/runtime/author/runtime_root/court_repaired/repro/test_independent.py:200: in test_memory_causal_trace_and_complete_transition_schema
+    b=trace();law=json.loads((RET/'runtime_root/law/ADP016.txt').read_text())
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1058: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1044: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '<WORKTREE>/WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/runtime/author/runtime_root/court_repaired/runtime_root/law/ADP016.txt'
+_________________ test_epistemic_12_fields_and_all_operations __________________
+WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/runtime/author/runtime_root/court_repaired/repro/test_independent.py:267: in test_epistemic_12_fields_and_all_operations
+    law=json.loads((RET/'runtime_root/law/ADP017.txt').read_text())
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1058: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1044: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '<WORKTREE>/WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/runtime/author/runtime_root/court_repaired/runtime_root/law/ADP017.txt'
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/runtime/author/runtime_root/court_repaired/repro/test_independent.py::test_target_owner_validation_precedes_committed_effect
+FAILED WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/runtime/author/runtime_root/court_repaired/repro/test_independent.py::test_memory_causal_trace_and_complete_transition_schema
+FAILED WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/runtime/author/runtime_root/court_repaired/repro/test_independent.py::test_epistemic_12_fields_and_all_operations
+3 failed, 79 passed in 1.29s

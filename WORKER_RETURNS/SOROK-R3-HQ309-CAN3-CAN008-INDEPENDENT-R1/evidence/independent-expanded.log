@@ -1,0 +1,15 @@
+........................................................................ [ 82%]
+...F...........                                                          [100%]
+=================================== FAILURES ===================================
+______ test_17_adopted_negative_or_unknown_behaviors[MEMORY_ID_COLLISION] ______
+WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/repro/test_can3.py:251: in test_17_adopted_negative_or_unknown_behaviors
+    assert ctx.checkpoint()==before
+E   AssertionError: assert {'state': {'a...4dafd': True}} == {'state': {'a...13b00': True}}
+E
+E     Omitting 1 identical items, use -vv to show
+E     Differing items:
+E     {'pending': {'4f01940f69554834934e5010f1ef03c168ae772c8d5872746748bd5563813b00': True, '9100857b47ce66c6b3ebaea12074f41bf3dc9ea6b15195db3495741ba564dafd': True}} != {'pending': {'4f01940f69554834934e5010f1ef03c168ae772c8d5872746748bd5563813b00': True}}
+E     Use -v to get more diff
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/repro/test_can3.py::test_17_adopted_negative_or_unknown_behaviors[MEMORY_ID_COLLISION]
+1 failed, 86 passed in 1.37s

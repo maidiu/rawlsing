@@ -1,0 +1,22 @@
+...........................FF.................................           [100%]
+=================================== FAILURES ===================================
+_____________ test_genuine_state_and_history_ablation[memory_refs] _____________
+WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/repro/test_can3.py:92: in test_genuine_state_and_history_ablation
+    assert out['terminal']=='CHAIN_COMPLETE';expected='AMPLIFY' if mode in ('withheld_history','absent_history','both_refs_and_history') else 'DEFLECT'
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: assert 'LATER_EVENT_REFUSED' == 'CHAIN_COMPLETE'
+E
+E     - CHAIN_COMPLETE
+E     + LATER_EVENT_REFUSED
+___________ test_genuine_state_and_history_ablation[epistemic_refs] ____________
+WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/repro/test_can3.py:92: in test_genuine_state_and_history_ablation
+    assert out['terminal']=='CHAIN_COMPLETE';expected='AMPLIFY' if mode in ('withheld_history','absent_history','both_refs_and_history') else 'DEFLECT'
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: assert 'LATER_EVENT_REFUSED' == 'CHAIN_COMPLETE'
+E
+E     - CHAIN_COMPLETE
+E     + LATER_EVENT_REFUSED
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/repro/test_can3.py::test_genuine_state_and_history_ablation[memory_refs]
+FAILED WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/repro/test_can3.py::test_genuine_state_and_history_ablation[epistemic_refs]
+2 failed, 60 passed in 1.16s

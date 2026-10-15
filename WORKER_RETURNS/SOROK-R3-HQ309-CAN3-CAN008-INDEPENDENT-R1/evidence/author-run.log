@@ -1,0 +1,40 @@
+......................................................................F. [ 80%]
+....F.........F..                                                        [100%]
+=================================== FAILURES ===================================
+__ test_epistemic_operations_change_only_exact_record_and_permission_snapshot __
+WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/runtime/author/repro/test_repair.py:198: in test_epistemic_operations_change_only_exact_record_and_permission_snapshot
+    law=json.loads((RET/'runtime_root/law/ADP017.txt').read_text())
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1058: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1044: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '<WORKTREE>/WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/runtime/author/runtime_root/law/ADP017.txt'
+_____ test_law_17_negative_classes_keep_unknown_distinct_from_unauthorized _____
+WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/runtime/author/repro/test_repair.py:233: in test_law_17_negative_classes_keep_unknown_distinct_from_unauthorized
+    law=json.loads((RET/'runtime_root/law/ADP016.txt').read_text());rows={x['state']:x['behavior'] for x in law['fail_closed_states']}
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1058: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1044: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '<WORKTREE>/WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/runtime/author/runtime_root/law/ADP016.txt'
+___ test_state_ref_ablation_does_not_falsely_claim_memory_mediated_contrast ____
+WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/runtime/author/repro/test_repair.py:348: in test_state_ref_ablation_does_not_falsely_claim_memory_mediated_contrast
+    (RET/'evidence/state_ref_ablation.json').write_text(json.dumps(dict(baseline=baseline,ablated=ablated,conclusion='No independently identified ADP016/017 mediation of typed response; accepted destination owner HOLD remains'),indent=2)+'\n')
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1078: in write_text
+    with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1044: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '<WORKTREE>/WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/runtime/author/evidence/state_ref_ablation.json'
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/runtime/author/repro/test_repair.py::test_epistemic_operations_change_only_exact_record_and_permission_snapshot
+FAILED WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/runtime/author/repro/test_repair.py::test_law_17_negative_classes_keep_unknown_distinct_from_unauthorized
+FAILED WORKER_RETURNS/SOROK-R3-HQ309-CAN3-CAN008-INDEPENDENT-R1/runtime/author/repro/test_repair.py::test_state_ref_ablation_does_not_falsely_claim_memory_mediated_contrast
+3 failed, 86 passed in 1.53s

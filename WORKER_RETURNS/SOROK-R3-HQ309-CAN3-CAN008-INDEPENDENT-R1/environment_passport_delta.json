@@ -1,0 +1,126 @@
+{
+  "passport_schema": "SOROK_00D_R1",
+  "environment_id": "5db1bc0ce6cd2e764e7a351b",
+  "epoch_id": "CAN3_FRESH_INDEPENDENT_R1",
+  "owner_session_alias": "CAN3_SOLE_REVIEWER",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "LOCAL_REVIEW_HOST",
+  "conversation_or_account_affinity": "FRESH_CAN3_CHAT; independent of RCP3/CAN2",
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-15T18:00:54.734033+00:00",
+  "runtime_marker_digest": "5db1bc0ce6cd2e764e7a351b74ebe31ff8288fa66acbe2e67c28d9f270626e28",
+  "probe_command_and_result": "python3 repro/stage.py; python3 repro/run.py; exact 585-case court reproduced after removing own ignored runtime",
+  "capabilities": {
+    "python": "VERIFIED 3.11.3",
+    "pytest": "VERIFIED 9.1.1",
+    "git": "VERIFIED git version 2.39.1",
+    "subprocess": "VERIFIED",
+    "filesystem_shell": "VERIFIED",
+    "github_authenticated_remote_read": "VERIFIED",
+    "node": "UNKNOWN_NOT_REQUIRED"
+  },
+  "git_object_store_alias": "EXISTING_REPOSITORY_SHARED_STORE",
+  "worktree_alias": "ASSIGNED_ISOLATED_CAN3",
+  "branch": "agent/reviewer-sorok-r3-hq309-can3-can008-independent-r1",
+  "exact_checkout_base": "4605c939cba25addc5b888f07a33218891c0cd52",
+  "checkout_head_at_probe": "4605c939cba25addc5b888f07a33218891c0cd52",
+  "worktree_state": "DIRTY_ONLY_ASSIGNED_REVIEW_RETURN_BEFORE_COMMIT",
+  "source_family": "PINNED_CAN008_ADP016_ADP017_SOURCEFREE",
+  "materialized_source_refs": "01_SOURCE_RECEIPTS.json",
+  "verified_imported_module_files": [
+    "evidence/owners/execution.json",
+    "evidence/rsm/execution.json",
+    "evidence/candidate/execution.json",
+    "evidence/rcp3/execution.json",
+    "evidence/author/execution.json",
+    "evidence/independent/execution.json"
+  ],
+  "dependency_closure_status": "BOUNDED_REQUIRED_64_OBJECT_CLOSURE_PLUS_6_REPAIRED_MODULES",
+  "fixture_query_permission": "COMMISSION_SOURCEFREE_TEST_ONLY",
+  "covered_test_suites": [
+    {
+      "suite": "owners",
+      "exit_code": 0,
+      "counts": {
+        "tests": 220,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "suite": "rsm",
+      "exit_code": 0,
+      "counts": {
+        "tests": 60,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "suite": "candidate",
+      "exit_code": 1,
+      "counts": {
+        "tests": 37,
+        "failures": 8,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "suite": "rcp3",
+      "exit_code": 1,
+      "counts": {
+        "tests": 82,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "suite": "author",
+      "exit_code": 0,
+      "counts": {
+        "tests": 89,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "suite": "independent",
+      "exit_code": 0,
+      "counts": {
+        "tests": 97,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    }
+  ],
+  "science_grade": "INDEPENDENT_SOURCEFREE_FINITE_HISTORY_REVIEW; not accepted owner/actor operation",
+  "model_provider": "OpenAI/Codex per commission; underlying account telemetry UNKNOWN",
+  "user_selected_editor_model_pair": "Codex + GPT-6.1 High (commission/user-reported)",
+  "effort": "High (commission/user-selected)",
+  "pricing_class": "UNKNOWN",
+  "observed_credits_usage": null,
+  "cash_known": false,
+  "quota_known": false,
+  "context_cache_reuse": "UNKNOWN",
+  "retry_history": "Local staging correction and documented independent test-hypothesis corrections; no provider retries measured",
+  "independent_review_separation": "Fresh sole reviewer; no author chat contact or helper",
+  "privacy_source_grant": "Private repo sourcefree test closure under commission; no outside provider export",
+  "nearest_expected_slot_reset": null,
+  "assignments_completed": [
+    "CAN3 full independent review"
+  ],
+  "next_good_affinity_tags": [
+    "CAN008",
+    "HISTORY_CAUSALITY",
+    "ADP016_ADP017_BOUNDARIES"
+  ],
+  "staged_state_preservation": "RECONSTRUCTED_FROM_NATIVE_GIT; fresh marker live at return; next session must probe again",
+  "session_available_for_more_work": "UNKNOWN_AFTER_RETURN; no persistence asserted",
+  "retire_or_rebuild_reason": null
+}
