@@ -1,0 +1,73 @@
+{
+  "schema": "SOROK_OC4_MATRIX_INDEX_R1",
+  "sourcefree": true,
+  "original_source_test_blobs_verified": true,
+  "original_test_sources_unchanged": true,
+  "pre_inherited95": {
+    "pass": 89,
+    "red": 6,
+    "total": 95,
+    "exit": 1
+  },
+  "pre_OC3": {
+    "pass": 26,
+    "red": 10,
+    "total": 36,
+    "exit": 1
+  },
+  "pre_combined131": {
+    "pass": 115,
+    "red": 16,
+    "total": 131,
+    "exit": 1
+  },
+  "post_OC3": {
+    "pass": 34,
+    "red": 2,
+    "total": 36,
+    "exit": 1
+  },
+  "post_combined131": {
+    "pass": 121,
+    "red": 10,
+    "total": 131,
+    "exit": 1
+  },
+  "OC4_new36": {
+    "pass": 36,
+    "red": 0,
+    "total": 36,
+    "exit": 0
+  },
+  "ten_independent_new_reds_closed": [
+    "B02",
+    "B03",
+    "B04",
+    "C05",
+    "C06",
+    "D04",
+    "D05",
+    "E05",
+    "E06",
+    "E07"
+  ],
+  "six_historical_retained": [
+    "OC1_h13_rollback",
+    "OC1_h15_missing_capsule",
+    "OC1_positive_ID_only",
+    "OCR1_A01_revoked_commit_early",
+    "OCR1_A02_expired_commit_early",
+    "OCR1_A03_bad_purpose_commit_early"
+  ],
+  "four_new_content_signature_conflicts": [
+    "OCR1_A08_mismatched_holder_unblind_test_setup",
+    "OC2_signature_binds_content_positive",
+    "OC3_B01_valid_content_signature_positive",
+    "OC3_Z03_public_mock_credential_positive"
+  ],
+  "OC3_remote_archive_sha256": "7a3d7913a5c388569f654aaf83a0a64c9b16de28065551a3e7a7d3749be33837",
+  "original_OC2_blob": "f117f380c524db5b1eae0ce280be23f1c4bf2c23",
+  "OC4_candidate_blob": "af2b7e943018077cb36808b5af1cd67704624bec",
+  "new_OC4_test_blob": "c139a877aa4586ec5ab729d333c40037840721d4",
+  "disposition": "REVIEW_REVISE__NO_ISSUANCE"
+}
