@@ -1,0 +1,163 @@
+{
+  "schema": "HQ298_SM_POSITIVE_CELL_AND_ARMS_PREDECLARATION@1.0.0",
+  "status": "FROZEN_PRIOR_TO_ANY_COURT_EXECUTION",
+  "grain": "SOURCEFREE_ISOLATED_COURT__NOT_ADOPTED_CAN008_RUNTIME__NOT_V3_OPERATION",
+  "sealed_startup": "4ea834a8def24493b6370ce34c1e494c3ae1da66",
+  "sealed_startup_note": {
+    "launch_message_named": "076aa9fa7ce8662a01dbbb3e998ec37d17ce6fd1",
+    "operative_per_revised_commission": "4ea834a8def24493b6370ce34c1e494c3ae1da66",
+    "reason": "commission revision 4ea834a8 changed the startup clause: 'The earlier commission-creation SHA is superseded by the HQ environment-routing revision; do NOT launch at the older SHA'; 4ea834a8 is direct remote branch HEAD and the latest revised commission commit",
+    "staged_blob_validity": "only 00_COMMISSION.md differs between the two commits; all 49 staged module/authority paths byte-identical at both (machine-checked)",
+    "frozen_content_unchanged": "positive cell, arms, negative controls, B0/B1 config below are the original frozen predeclaration"
+  },
+  "commission": "WORKER_COMMISSIONS/SOROK-R3-HQ298-SM-OWNER-EFFECT-COURT-R1/00_COMMISSION.md",
+  "predecessors": {
+    "SM": "7777a06dbd3a8f9dcf2b7ca3241e853dc485e505",
+    "S_M_LAB1": "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+    "HQ297_K35": "12c65e0ed0a82ebe6a843182990e8b8586b85341"
+  },
+  "authority_pins": {
+    "CAN008_R2_adoption_pointer": "a6bc1555489271e1adb2271ed02d46bb7f888170",
+    "CAN008_R2_adopted_blob": "b80dd6925066510ecbbfec7b427bf9f688475663",
+    "CAN008_R2_contract": "V3_ACTOR_RESPONSE_PRESSURE_FLOW_TRANSACTION_RULESET@2.0.0-CANDIDATE.R1",
+    "CAN008_R2_adoption_status": "HQ_ADOPTED__EXACT_CAN008_R2_SHARED_PERSON_EVENT_COUPLING_SEMANTICS__NO_RUNTIME_IMPLEMENTATION",
+    "ADP016_authority_md_blob": "0b7bbe29f6509e31ac7d842962a2bf3d636daa2c",
+    "ADP016_authority_json_blob": "c6619a286e115d060ab4830889e7fc23762167a5",
+    "ADP017_authority_md_blob": "6b4162df27003bec413074178c46fea6360d71a0",
+    "ADP017_authority_json_blob": "eece4f3f2f3f9288ab9bbc645dc81e20a99e1280",
+    "ADP017_pin_reused_by_imported_module": {
+      "module": "rawlsing_next.m6_actor_safe_expression",
+      "constant": "ADP017_HASH",
+      "value": "git-blob-sha1:eece4f3f2f3f9288ab9bbc645dc81e20a99e1280",
+      "matches_fetched_authority_blob": true
+    }
+  },
+  "positive_cell": {
+    "id": "CELL_T7_ADULT_SHIFT_REASSIGNMENT",
+    "positive_admitted_world_event": {
+      "event_id": "E_T7_ADULT_SHIFT_REASSIGNMENT",
+      "kind": "EXTERNAL_RUNTIME_EVENT",
+      "admission_authority": "ADP019_EXTERNALLY_ADMITTED_OCCURRENCE",
+      "issuer": "WORLD_SCHEDULE_OFFICE",
+      "effective_time": "t1",
+      "public_event_features": ["shift_reassigned", "posted_on_official_board"],
+      "analyst_only_hidden_origin": {
+        "childhood_trace_id": "T7",
+        "origin_event": "E_CHILDHOOD_LOSS_OF_CAREGIVER_ROUTINE",
+        "content_state": "UNAVAILABLE_TO_FIRST_PERSON",
+        "note": "analyst-only causal basis; NOT an actor claim, NOT a readable memory"
+      }
+    },
+    "lawful_owner_prestates": {
+      "CAN010": {"striving": "keep_stable_shift_for_household_care", "authority": "CAN_010_V3_NEED_EXPECTATION_STRIVING"},
+      "CAN011": {"mediator": "routine_stability_practice", "tension": "care_vs_wage", "authority": "CAN_011"},
+      "ADP016": {"causal_trace": "T7", "formed_from": "E_CHILDHOOD_LOSS_OF_CAREGIVER_ROUTINE", "content_state": "UNAVAILABLE", "trace_usable_in_causal_role": true, "authority": "ADP_016_V3_CAUSAL_MEMORY"},
+      "ADP017": {"first_person_claim_permission": "DENY_HIDDEN_ORIGIN_CLAIM", "objective_truth_separate_from_knowledge": true, "authority": "ADP_017_V3_ACTOR_ACCESS"},
+      "prior_CAN008_history": {"n_prior_responses": 2, "authority": "CAN008_R2"}
+    },
+    "issued_coupling_rule_and_target_effect": {
+      "rule_id": "LAB_R_K3",
+      "rule_status": "TEST_ONLY_PROPOSED_NOT_ADOPTED",
+      "rule_provenance": "SM proposed LAB_R_K3 label at 7777a06dbd3a8f9dcf2b7ca3241e853dc485e505; never accepted as a project rule",
+      "coupling": {
+        "receivability": "event material 'shift_reassigned' is receivable",
+        "uptake_appraisal": "disruption_appraisal_under_routine_stability_striving",
+        "situated_recruitment": ["ADP016:T7(as_causal_role_only)", "CAN011:routine_stability_practice", "CAN010:keep_stable_shift"]
+      },
+      "target_owner_effect": {
+        "can008_current_response": {"effect_kind": "BUFFER", "durability": "NON_DURABLE_CURRENT_CONSEQUENCE"},
+        "adp016_durable_request": {"kind": "TRACE_REINFORCEMENT_REQUEST", "target_owner": "ADP016", "commit_requires_separate_owner_authority": true},
+        "adp017_effect": {"kind": "NO_NEW_FIRST_PERSON_KNOWLEDGE", "reason": "trace content UNAVAILABLE; recruitment != access"}
+      }
+    },
+    "committed_memory_trace_vs_actor_first_person_access": {
+      "trace_T7_committed_in_ADP016": true,
+      "trace_T7_content_first_person_readable": false,
+      "recruitment_permitted_in_causal_role": true,
+      "first_person_origin_claim": "DENIED",
+      "null": "changing analyst-only childhood content cannot change actor projection/effect; unavailable source feature cannot become first-person claim"
+    },
+    "next_event_response": {
+      "event_id": "E_T8_PEER_CASUAL_REMARK",
+      "effective_time": "t2",
+      "expected_typed_difference": "response at t2 evaluated against post-t1 owner state differs in typed effect stream from a control run lacking the t1 committed effect; difference must be typed, not prose",
+      "constraint": "never uses prior response prose as a synthetic occurrence"
+    }
+  },
+  "K3_hidden_childhood_trace_arms": {
+    "rule_id": "LAB_R_K3",
+    "rule_status": "TEST_ONLY_PROPOSED_NOT_ADOPTED",
+    "reuse_boundary": "occurrence gate, receivability/uptake/recruitment noncollapse, effect vocabulary, hidden-cause firewall and ADP016/017 noncollapse laws are reused from accepted CAN008_R2/ADP016/ADP017 semantic authority; the concrete rule BODY is a labelled TEST-ONLY stub because no registered concrete R2 rule exists",
+    "A_TRACE": {"trace_formed": true, "trace_use_rule": true, "expected": ["ADP016_TRACE_T7", "BUFFER", "DENY_FIRST_PERSON_CLAIM"]},
+    "B_NO_TRACE": {"trace_formed": false, "trace_use_rule": false, "expected": ["NONE", "RESPONSE_EFFECTS_VALID_EMPTY", "DENY_FIRST_PERSON_CLAIM"]},
+    "C_UNAVAILABLE_NO_TRACE": {"child_feature_state": "UNAVAILABLE", "expected": ["NONE", "RESPONSE_EFFECTS_VALID_EMPTY", "DENY_FIRST_PERSON_CLAIM"]},
+    "nulls": [
+      "changing analyst-only childhood content cannot change actor projection/effect",
+      "unavailable source feature cannot become first-person claim",
+      "unadmitted later event cannot produce effect",
+      "replay exact"
+    ]
+  },
+  "K5_official_power_x_felt_recognition_arms": {
+    "rule_id": "LAB_R_K5",
+    "rule_status": "TEST_ONLY_PROPOSED_NOT_ADOPTED",
+    "same_public_event_text": "E_OFFICIAL_SAME_TEXT",
+    "axes": {"world_axis": "OFFICIAL vs PEER issuer", "felt_axis": "UNSAFE vs TRUSTED prior relationship history"},
+    "A_OFFICIAL_UNSAFE": {"world_role": "OFFICIAL", "history": "UNSAFE", "world_owner_grant": true, "expected": ["PRESENT", "OFFICIAL_RECOGNITION", "DEFLECT"]},
+    "B_PEER_TRUSTED": {"world_role": "PEER", "history": "TRUSTED", "world_owner_grant": true, "expected": ["ABSENT", "NO_INSTITUTIONAL_CHANGE", "AMPLIFY"]},
+    "C_OFFICIAL_TRUSTED": {"world_role": "OFFICIAL", "history": "TRUSTED", "world_owner_grant": true, "expected": ["PRESENT", "OFFICIAL_RECOGNITION", "REROUTE"]},
+    "D_PEER_UNSAFE": {"world_role": "PEER", "history": "UNSAFE", "world_owner_grant": true, "expected": ["ABSENT", "NO_INSTITUTIONAL_CHANGE", "DEFLECT"]},
+    "nulls": [
+      "world-only switch changes world effect not felt response",
+      "history-only switch changes felt response not objective effect",
+      "missing world owner grant bars objective change",
+      "peer cannot confer institution status",
+      "official grant cannot compel felt belief",
+      "unadmitted event causes zero",
+      "exact replay"
+    ]
+  },
+  "negative_controls": [
+    {"id": "NEG_REJECTED_DRAFT", "input": "V2 render candidate / rejected draft", "expected": "NO_SELF_FEEDBACK; draft is not an occurrence; zero effect", "law": "CAN008_R2 occurrence gate; DRAFT_RESPONSE -> NO_SELF_FEEDBACK"},
+    {"id": "NEG_WORLDESS_EVENT", "input": "state record with no precipitating occurrence", "expected": "zero response; static state may condition but may not be relabeled occurrence", "law": "CAN008_R2 occurrence gate"},
+    {"id": "NEG_WRONG_SOURCE_ISSUER", "input": "coupling rule bound to wrong issuer authority", "expected": "refused; issuer/authority signature mismatch", "law": "CAN008_R2 rule obligation item 2 + SDTF rule admission seam"},
+    {"id": "NEG_WRONG_OCCURRENCE", "input": "effect requested against different occurrence identity", "expected": "refused; occurrence identity mismatch", "law": "CAN008_R2 occurrence gate + event custody"},
+    {"id": "NEG_INACCESSIBLE_ORIGIN_FALSE_EXPLANATION", "input": "actor claims hidden childhood origin as explanation", "expected": "DENY; UNAVAILABLE feature cannot become first-person claim; false explanatory answer refused", "law": "ADP017 + CAN008_R2 hidden-cause firewall + M6 actor-safe ingress"},
+    {"id": "NEG_FORCED_INSTITUTIONAL_RATIFICATION", "input": "peer-conferral of official status / official grant compelling felt belief", "expected": "world effect barred without world-owner grant; felt effect unchanged by official grant", "law": "CAN008_R2 owner preservation + K5 nulls"},
+    {"id": "NEG_PRIOR_HISTORY_REPLAY", "input": "replay of identical admitted inputs/versions/receipts", "expected": "exact typed replay; divergence classes typed if inputs differ", "law": "CAN008_R2 section 17 replay and provenance"}
+  ],
+  "B0_B1_comparison": {
+    "candidates": ["B0_event_relation_derived", "B1_extra_latent_states"],
+    "same_inputs": true,
+    "same_cases": true,
+    "no_extra_llm_calls": true,
+    "heldout_increment_required_for_B1": true,
+    "default_without_lift": "PREFER_B0",
+    "rule": "B1 must not introduce new semantic results unless a held-out independent typed discriminant is separately registered"
+  },
+  "positive_execution_attempt_expectation": {
+    "target": "smallest real pinned CAN008_R2 -> admitted owner effect -> ADP016/017 memory/access -> subsequent typed response",
+    "known_from_predecessors": "K35 recorded the positive seam as missing: 'A concrete current admitted-event -> owned-effect callable plus authorized transition'; CAN008_R2 adoption is semantics only (explicit NO_RUNTIME_IMPLEMENTATION); ADP016/017 are authority documents without callables",
+    "predeclared_terminal_if_absent": "MISSING_IMPLEMENTATION at the concrete registered R2 coupling rule + target-owner effect transition callable; exact earliest HOLD to be located at the first attempted import/call of a nonexistent producer",
+    "discipline": "do NOT manufacture the missing producer; do NOT count a mock transition as adopted V3 operation; stub is LABELLED TEST-ONLY"
+  },
+  "noncollapse_laws_reused_from_adopted_authority": [
+    "interpretation / expectation / striving != present-effect occurrence",
+    "scar / need activation / attractor state != current causal evidence",
+    "PFF receivability / matching / facilitation != occurrence or causal evidence",
+    "machine reading != actor uptake",
+    "uptake != durable belief",
+    "recruitment != actor access",
+    "actor access != focality or self-explanation",
+    "precheck failure or negative simulation forces causal neutrality",
+    "transient causal_trace is overwrite-only and is not durable memory",
+    "current CAN-008 response authority does not seize durable source-owner jurisdictions",
+    "DRAFT_RESPONSE -> NO_SELF_FEEDBACK",
+    "REJECTED_RENDER -> NO_SELF_FEEDBACK",
+    "UNEMITTED_CANDIDATE -> NO_SELF_FEEDBACK"
+  ],
+  "effect_vocabulary_reused_from_adopted_authority": ["BUFFER", "AMPLIFY", "DEFLECT", "REROUTE", "TRANSFORM", "BLOCK"],
+  "claim_ceiling": "SOURCEFREE_ISOLATED_COURT_OR_DOCUMENTARY_ONLY; no new semantic law; no original-source/actor use; STANDALONE_PYTEST_PASS != accepted owner runtime != integrated V3 person",
+  "reviewer_requirement": "distinct independent I2 CAN008/owner reviewer required before any scientific/semantic acceptance; implementer cannot serve as independent reviewer",
+  "command_receipts_discipline": "actual attempted commands/imports recorded distinctly: MISSING_RUNNER / MISSING_DEPENDENCY / MISSING_IMPLEMENTATION / MISSING_SOURCE_AUTHORITY / MISSING_ACTOR_MODEL_AUTHORITY / REVIEW_INDEPENDENCE"
+}

@@ -1,0 +1,121 @@
+{
+  "schema": "HQ300_CAN008_FIRST_POSITIVE_SOURCEFREE_EXPECTED_MATRIX@1.0.0",
+  "status": "FROZEN_PRIOR_TO_ANY_EXECUTION",
+  "freeze_discipline": "sha256 of this file is recorded in outputs/matrix_freeze.json before any court execution; frozen expected outcomes must NOT be edited to fit code",
+  "grain": "SOURCEFREE_CANDIDATE_IMPLEMENTATION__NOT_ADOPTED_RULE__NOT_PRODUCTION__NOT_V3_ACTOR",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-sorok-r3-hq300-can008-first-positive-sourcefree-r1",
+  "exact_sealed_worker_startup": "d7d40270068d258600ee57f62bd27199f1689b92",
+  "startup_verification": "branch tip == commission creation commit == communicated launch SHA (no supersession this commission)",
+  "hq300_parent": "28d791df05b4d24ebe48b4298101af6951035a36",
+  "frozen_inputs": {
+    "HQ298_SM_candidate": "9ba40aabea9773ba9d2f3cf32248347f2b0f7e18",
+    "HQ299_RSM_independent_review": "00f5d9a66f5f641c1f88376994272bc570a625ef",
+    "CAN008_R2_adopted_blob": "b80dd6925066510ecbbfec7b427bf9f688475663",
+    "CAN008_R2_contract": "V3_ACTOR_RESPONSE_PRESSURE_FLOW_TRANSACTION_RULESET@2.0.0-CANDIDATE.R1",
+    "CAN008_V1_md_blob": "976c59086b938992114f68621f149687670e306d",
+    "CAN008_V1_json_blob": "7bd28360ec6a74975bb7eb809f6ad397529491b3",
+    "ADP016_md_blob": "0b7bbe29f6509e31ac7d842962a2bf3d636daa2c",
+    "ADP016_json_blob": "c6619a286e115d060ab4830889e7fc23762167a5",
+    "ADP017_md_blob": "6b4162df27003bec413074178c46fea6360d71a0",
+    "ADP017_json_blob": "eece4f3f2f3f9288ab9bbc645dc81e20a99e1280",
+    "zero_positive_guard_blob": "e0528d65215cb431196570c38bac4eae94217a1b",
+    "m6_blob": "74d9701cdc7dabccf61eb5089498db290c1efd9c"
+  },
+
+  "governing_boundary": {
+    "worker_candidate_registry_fixture": "a registry fixture LOCAL to the candidate package, used only to exercise the candidate positive chain; explicitly NOT accepted authorization",
+    "accepted_zero_positive_guard_registry": "EMPTY by design and MUST REMAIN EMPTY; the imported guard must continue to DENY every production positive transition; changing the guard or granting real owner positive authority is FORBIDDEN",
+    "required_dual_result": "candidate chain SUCCEEDS through the candidate registry fixture AND the imported production guard still DENIES the identical transition request"
+  },
+
+  "positive_chain_frozen_expectations": {
+    "id": "POS_CHAIN_ADMITTED_EVENT_TO_LATER_RESPONSE",
+    "sequence": [
+      "1 admit synthetic world event with exact issuer/authority/effective time (admitted occurrence)",
+      "2 CAN008 coupling evaluation (receivability -> uptake -> recruitment) against owner prestate",
+      "3 registered candidate response rule emits effect kind + target-owner effect request",
+      "4 target-owner effect committed in causal order (stored, hash-chained, replayable)",
+      "5 ADP016 durable trace commit from admitted causal basis (CAUSAL_TRACE_MEMORY, content RETAINED_NOT_ACCESSIBLE)",
+      "6 ADP017 epistemic update from actor-facing basis (exact ActorEpistemicEffect)",
+      "7 one LATER admitted event reads the stored owner effect and produces a SITUATION-DEPENDENT response (different typed response than a control run lacking the earlier effect)"
+    ],
+    "expected": {
+      "event_admitted": "ADMITTED_OCCURRENCE",
+      "coupling_decision_state": "COUPLING_EVALUATED",
+      "response_effect_kind": "BUFFER",
+      "target_owner_effect_committed": true,
+      "causal_order_enforced": true,
+      "adp016_trace": {"representation_kind": "CAUSAL_TRACE_MEMORY", "memory_accessibility_state": "NOT_APPLICABLE_CAUSAL_TRACE", "retention_state": "RETAINED", "content_first_person_readable": false},
+      "adp017_epistemic": {"stance_kind": "BELIEF", "stance_operation": "ADD", "decision_state": "APPLIED_EPISTEMIC_TRANSITION"},
+      "later_event_response": "typed response differs from control run lacking the earlier committed effect",
+      "full_replay_exact": true
+    }
+  },
+
+  "K3_frozen_expectations": {
+    "id": "K3_INACCESSIBLE_ORIGIN_NO_SELF_EXPLANATION",
+    "setup": "ADP016 CAUSAL_TRACE_MEMORY formed from admitted childhood-basis event; content state UNAVAILABLE to first person; ADP017 origin claim requested",
+    "expected": {
+      "trace_recruits_response": true,
+      "trace_first_person_claim": "DENY_FIRST_PERSON_CLAIM",
+      "self_explanation_of_hidden_origin": "BLOCKED",
+      "analyst_only_causal_trace_never_actor_claimable": true,
+      "memory_inaccessibility_does_not_erase_stance": true
+    },
+    "adopted_basis": "ADP016 actor_accessibility_boundary (no actor_knows/may_claim_first_person export) + ADP017 analyst_only_exclusions ANALYST_ONLY_CAUSAL_TRACE + memory_interaction causal_trace_memory_first_person_basis=false"
+  },
+
+  "K5_frozen_expectations": {
+    "id": "K5_PUBLIC_STATUS_VS_PRIVATE_BELIEF_NO_COLLAPSE",
+    "setup": "same actor private belief state; witness power varies (registrar CAN_RATIFY vs supervisor CAN_SIGN_NOT_RATIFY vs peer NONE)",
+    "expected": {
+      "objective_public_standing_changes_only_with_admitted_ratification": true,
+      "belief_state_byte_identical_across_witness_power_arms": true,
+      "objective_truth_sufficient_for_knowledge": false,
+      "accessible_memory_auto_creates_stance": false,
+      "no_automatic_implication_OBJECTIVE_SUPPORTED_to_KNOWLEDGE": true
+    },
+    "adopted_basis": "ADP017 knowledge_gate (objective_truth_necessary=true, objective_truth_sufficient=false) + epistemic_state_model.automatic_implications_forbidden"
+  },
+
+  "hostile_frozen_expectations": [
+    {"id": "H1_NO_ADMISSION", "input": "unadmitted/proposed event presented as precipitating occurrence", "expected_terminal": "REFUSED", "expected_code": "BLOCK_UNADMITTED_EVENT", "law": "CAN008_R2 occurrence gate: no committed causal response without exact generated/admitted occurrence"},
+    {"id": "H2_FORGED_ISSUER", "input": "effect/rule request presenting forged or mismatched issuer authority", "expected_terminal": "REFUSED", "expected_code": "BLOCK_FORGED_OR_MISMATCHED_ISSUER", "law": "CAN008_R2 rule obligation item 2 (event authority signatures) + registry admission"},
+    {"id": "H3_STALE_ASOF_WORLD", "input": "world snapshot / as-of time stale or mismatched against event effective time", "expected_terminal": "REFUSED", "expected_code": "BLOCK_STALE_OR_MISMATCHED_WORLD_ASOF", "law": "CAN008_R2 exact world/context/version binding; ADP017 temporal_scope"},
+    {"id": "H4_WRONG_ACTOR_SCOPE", "input": "owner effect targeted at an actor outside the rule's actor scope", "expected_terminal": "REFUSED", "expected_code": "BLOCK_WRONG_ACTOR_SCOPE", "law": "CAN008_R2 rule obligation item 3 (exact actor and temporal scope)"},
+    {"id": "H5_HIDDEN_FUTURE_LEAK", "input": "candidate input derived from future/hidden outcome partition", "expected_terminal": "REFUSED", "expected_code": "BLOCK_HIDDEN_FUTURE_LEAK", "law": "no future result may be an input or seed salt; embargo discipline"},
+    {"id": "H6_DUPLICATE_EVENT", "input": "same occurrence identity admitted/committed twice", "expected_terminal": "REFUSED", "expected_code": "BLOCK_DUPLICATE_EVENT_IDENTITY", "law": "exact event identity once; no duplicate shared event"},
+    {"id": "H7_DISALLOWED_MEMORY", "input": "ADP016 formation from ineligible direct source (persona prose / render / structural object)", "expected_terminal": "REFUSED", "expected_code": "INELIGIBLE_NONCAUSAL_SOURCE", "law": "ADP016 formation_rule.ineligible_direct_sources + fail_closed_states"},
+    {"id": "H8_INVALID_TRACE", "input": "ADP016 trace transition with missing/mismatched parent or pre-state", "expected_terminal": "REFUSED", "expected_code": "PARENT_EVENT_HASH_MISMATCH_or_MISSING_PARENT_EVENT", "law": "ADP016 fail_closed_states + transition_record integrity"},
+    {"id": "H9_REVERSE_CHRONOLOGY", "input": "causal parent effective time strictly later than child event", "expected_terminal": "REFUSED", "expected_code": "BLOCK_REVERSE_CHRONOLOGY_CAUSAL_PARENT", "law": "only past/current causal events may be parents; CAUSAL_TEMPORAL_INVERSION"}
+  ],
+
+  "disc01_detector_correction": {
+    "defect": "HQ298 test_B_no_can008_coupling_rule_exists_in_runtime_modules conflated string-constant mentions with implementation surface (whole-repo text scan)",
+    "rsm_finding": "two string constants exist in unrelated modules (gt34_obl031_q69b_comparator_resolver_r2.py: PSEPF_V3_MUTATION_METABOLISM_CAN008_V2 denylist entry; gt34_adp010_input_authority_acceptance.py: NO_CAN_008 rejection code); neither is a coupling/response rule implementation",
+    "correction_required": "detector must scan IMPLEMENTATION SURFACE (class/def names for coupling/response-rule/owner-effect/target-effect/transition-producer) and separately ENUMERATE string-constant mentions with classification; must NOT assert estate-wide text absence",
+    "frozen_expected_corrected_detector": {
+      "implementation_surface_hits_pre_candidate": 0,
+      "string_constant_mentions_classified": "denylist/rejection codes only, NOT implementations",
+      "post_candidate_implementation_surface_hits": "only the worker candidate module names, never rawlsing_next production modules"
+    }
+  },
+
+  "preserved_negative_guards": {
+    "imported_zero_positive_guard": "must continue DENY_ZERO_EFFECT for production positive transitions (registry stays empty)",
+    "gt0_end_to_end": "must remain BLOCKED_POSITIVE_ACTOR_PATH__SEMANTIC_CONSERVATION_PASS",
+    "sdtf_rule_admission_seam": "unadmitted rule application must still raise D1HostingIntegrityError",
+    "m6_forbidden_sources": "PSEPF/ANALYST_ONLY_TRUTH/OPAQUE_UPSTREAM_AUDIT classes still rejected",
+    "preexisting_owner_tests": "220 pinned owner tests must remain PASS (unmodified)",
+    "rsm_court": "60-case court reproduced with DISC_01 detector corrected"
+  },
+
+  "forbidden": [
+    "registering any production positive transition authority",
+    "mutating the imported zero-positive guard or its registry",
+    "claiming a V3 operation, actor run, or adopted semantic rule",
+    "changing frozen expected outcomes to fit code",
+    "claiming full-repo text match proves producer absence"
+  ]
+}

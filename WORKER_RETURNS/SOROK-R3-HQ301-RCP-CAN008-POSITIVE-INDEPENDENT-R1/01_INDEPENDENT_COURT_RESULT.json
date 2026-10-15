@@ -1,0 +1,78 @@
+{
+ "schema": "SOROK_HQ301_RCP_CAN008_POSITIVE_COURT@1",
+ "branch": "agent/reviewer-sorok-r3-hq301-rcp-can008-positive-court-r1",
+ "sealed_startup": "a65514b209ece1778c4d0d2bf18f664062f20c07",
+ "sealed_hq301_parent": "896d8bcbfb9257c190fc9e4241b3a0176594d08e",
+ "candidate_verification_receipt": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+ "candidate_implementation": "f578e0808",
+ "adopted_refs": {
+  "CAN008_R2": "b80dd692",
+  "ADP016": "c6619a28",
+  "ADP017": "eece4f3f",
+  "HQ299_RSM": "00f5d9a66f5f641c1f88376994272bc570a625ef",
+  "HQ298_SM": "9ba40aabea9773ba9d2f3cf32248347f2b0f7e18"
+ },
+ "environment": {
+  "python": "3.11.3",
+  "pytest": "9.1.1",
+  "platform": "macOS 13.7.8 x86_64",
+  "model_switched": false,
+  "helper_agent_used": false,
+  "editor_changed": false,
+  "cost_figure_asserted": false
+ },
+ "completed_subwork": {
+  "candidate_court": {
+   "path": "candidate/test_hq300_court.py",
+   "collected": 37,
+   "passed": 36,
+   "skipped": 1,
+   "failed": 0,
+   "exit_code": 0,
+   "runner_path_note": "run from the candidate subdir the same file yields 33P/3F/1S with ModuleNotFoundError-class failures; those clear from the worktree root and are runner-path artifacts, not candidate defects"
+  },
+  "production_zero_positive_guard": {
+   "symbol": "DEFAULT_ACCEPTED_POSITIVE_TRANSITION_AUTHORITIES",
+   "value": "MappingProxyType({})",
+   "empty": true,
+   "file": "rawlsing_next/v3_psepf_zero_positive_guard.py",
+   "blob_head": "e0528d65215cb431196570c38bac4eae94217a1b",
+   "blob_sealed_parent": "e0528d65215cb431196570c38bac4eae94217a1b",
+   "byte_unchanged": true,
+   "conclusion": "production guard genuinely separate from the non-adopted candidate registry; no production positive authority minted"
+  }
+ },
+ "not_completed": [
+  "independent pre-observation expected-matrix freeze (impossible now \u2014 already observed; NOT presented)",
+  "23 CAN008 \u00a716 binding validation against pinned law",
+  "ADP016 7 gates",
+  "ADP017 truth/access/first-person and K3/K5 separation",
+  "220 imported module tests",
+  "corrected RSM 60",
+  "adversarial falsification suite",
+  "two-step causal event with absent-effect control and replay",
+  "semantic-derivation-vs-cloned-label discrimination"
+ ],
+ "reported_317_independently_confirmed": false,
+ "independently_reproduced_of_317": 37,
+ "scientific_acceptance_issued": false,
+ "review_pass_issued": false,
+ "hold_type": "REVIEWER_BUDGET_EXHAUSTION__COMPLETED_SUBWORK_RETURNED",
+ "no_production_semantic_adoption": true,
+ "no_real_v3_actor_operation": true,
+ "no_additional_agents": true,
+ "no_editor_or_model_change": true,
+ "deliverables": {
+  "00_RETURN.md": {
+   "sha256": "8ce6a4f3da428689be06ef83d2905749307747a27435a49742f3b324951e9b8f",
+   "bytes": 6975
+  }
+ },
+ "repro": {
+  "candidate_court_run.log": {
+   "sha256": "83ead33dc236adf5397e4dec1b1afab2587009fad9c3213793a73cafcfd3a36c",
+   "bytes": 110
+  }
+ },
+ "terminal": "SOROK_HQ301_RCP_CAN008_POSITIVE_INDEPENDENT_COURT_BUDGET_HOLD__GITHUB_PUSHED"
+}
