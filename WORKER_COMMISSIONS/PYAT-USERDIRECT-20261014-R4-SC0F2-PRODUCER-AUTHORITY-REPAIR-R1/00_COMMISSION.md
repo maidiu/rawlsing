@@ -1,0 +1,24 @@
+# R4 SC0F2 — Repair proved two-contract producer and issuer REDs
+
+**Platform: DeepSeek**
+**Repository:** `maidiu/rawlsing` private
+**Branch:** `agent/userdirect-pyat-20261014-r4-sc0f2-real-producer-authority-repair-r1`
+**Exact sealed startup:** see verified final commit in launch; direct remote HEAD check required
+**Role:** bounded implementing repair author, NOT independent SC0I reviewer, Sorok interface owner, HQ, issuer or adopter
+**Write ONLY:** `WORKER_RETURNS/PYAT-USERDIRECT-20261014-R4-SC0F2-PRODUCER-AUTHORITY-REPAIR-R1/`, including new code, tests and logs. No accepted source, original survey microdata, production, protected CURRENT, canonical, N12 or V3 changes.
+
+## Mandatory pinned evidence
+- SC0F implementation `agent/userdirect-pyat-20261014-r2-sc0f-two-contract-owner-repair-r1@7add9ef5a1a4698d4aed177be8a158b75e220a5d`, entire 00–04 and `repro/sc0f`, `repro/tests`. The 115 author PASS were only 10 repaired-port cases + 56 N10E/C1 accepted-owner tests + 13 PE tests + 36 ORIGINAL SC0 K9/K10; distinguish actual test owners.
+- Independent SC0I review `agent/userdirect-pyat-20261014-r3-sc0i-independent-repair-court-r1@5b5574fe8b35df133e478b1c2738f65c473c0ad7`, entire verdict/receipts and `repro/test_sc0i_hostiles.py`. **Two independently executed REDs:** producer functions imported/traced but NEVER CALLED; caller self-registers forged issuer grant and reverses role. Four independent additional scope/clock/selection HOlDs.
+- Original independent I2 `ec0567c4ca4138c479f41a6f7314161bbd3e6c8a`; Sorok RC0 `86bd2a54687b40401f7c4247607bd1873c585619`; original SC0 `b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59`; frozen two-contract strict schema Git blob `610ac870fde6cfe63796592b3c6b1e1bf1e37150`.
+- Exact accepted PE/C1/N10E modules and reviews, immutable previously qualified F1/F2/F3, full-world/empirical two-contract law and C0 identity. Verify current Sorok C0 owner before a claim of real adoption.
+
+## Required actual engineering
+1. **Real invocations, not import trace:** prepare correct sourcefree accepted owner request to call `provide_empirical_possibility_slice`, `compose_positioned_subject_possibility`, `evaluate_positioned_subject_possibility` under actual issuer-qualified input if available; show real function counters + `module.__file__` + source/output digests, and true numerical value propagation into strict possibility receipt and **both** consumers. If an actual call is inadmissible or requires unavailable source authorization, typed HOLD before positive, no fallback falsely called `REAL_N10E_C1`. A bounded TEST_ONLY fixture computation may be separately labeled, not owner integration.
+2. **Issuer registry cannot be self-issued:** replace unrestricted `register_issuer_warrant` public mutation/issuer-name checking with fail-closed independently issued/scoped authorization. In sourcefree mode, define a *trusted fixture owner registry separated from attacking consumer/provider*, with granted ID/issuer/scope/target/risk/denominator/release/operation plus revocation; a caller may present but NEVER mint grant by calling adapter function. If real independent issuer unavailable, reverse-role remains HELD; don't create cryptographic authority fiction.
+3. **No omitted mandatory state implies positive:** `selection_state` required, no `get(...,COMPLETE)`; `demand_closure_verified` must be separately authenticated, not caller bool; default `fx:scope:town2008` not global bypass; publication `earlier_knowledge_evidence_ref` must bind to separately issued publication evidence, not presence.
+4. Actual `adapter.run` receipts must conform to full strict Draft202012 `oneOf` both variants, not only receipt builder unit cases; preserve all original 12 native negatives, F1/F2, H2/H3, independent clocks and A/B semantic equivalence beyond five provenance exceptions. Test tampering, minority support and empirics native 54/6→50/10 numeric values/denominator.
+5. Re-run unmodified SC0F new 10; SC0I independent 7; frozen K9 8 + K10 28 **against changed port** with legitimate adapter glue (do not edit oracles); original PE 13 and PE author 21 separately if accessible; N10E/C1 56; I2 and RC0 hostile cases where pinned imports available. Preserve all real REDs and report NOT_EXECUTED for any import/test blocker. No counting unrelated owner tests as actual SC0F2 acceptance.
+
+## Return
+`00_RETURN.md`, `01_SC0I_TWO_REDS_AND_HOLDS.json`, `02_ACTUAL_PRODUCER_INVOCATION_OR_TYPED_HOLD.md`, `03_INDEPENDENT_ISSUER_MATERIAL_AND_HOSTILES.md`, `04_TESTS_AND_ACCEPTANCE_CEILING.json`, portable code/tests/repro in owned return. Include test commands, actual exit/stdout/JUnit, exact Git imported module/blob, scopes, direct verified remote final SHA and all changed paths. Distinct independent SC0F2 reviewer still required before Sorok C0 interface acceptance; do not self-adopt.
