@@ -1,0 +1,52 @@
+{
+  "suite": "reviewer__initial",
+  "exit_code": 1,
+  "seconds": 0.6159982681274414,
+  "imports": [
+    {
+      "module": "candidate",
+      "file": "runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/__init__.py",
+      "blob_sha1": "0581aff4ac0ea45c07387e5340e219566ce7330d",
+      "sha256": "be2b6eff83a8a5af687456545477856ec438cee29f25481ff58636556f745083"
+    },
+    {
+      "module": "candidate.adopted_contract",
+      "file": "runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/adopted_contract.py",
+      "blob_sha1": "259ff9da129f7d644f8ac9fd8f739ad6041a3edf",
+      "sha256": "eec78079b8adc82b28a608ec7dd3fbf3947a53a98447fcf3d4c82db98becf0ae"
+    },
+    {
+      "module": "candidate.can008_candidate_rule",
+      "file": "runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+      "blob_sha1": "e411dfcff41ffb51bcfab35a476980bde199684e",
+      "sha256": "7cb0e7989a3d9535ce51d784779aaf499885d0dd9d7556e7461ae8400accb553"
+    },
+    {
+      "module": "candidate.candidate_registry_fixture",
+      "file": "runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+      "blob_sha1": "0d978f89fb3c5e836a52f25849240db360f97f8f",
+      "sha256": "1c2e2e0c4375a15b9f1bd55376a550834d001b7b7577cb2b8183caccbdfac768"
+    },
+    {
+      "module": "candidate.owner_transitions",
+      "file": "runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "blob_sha1": "684c3390e5ffac15d80d45961a3d40605b9f253b",
+      "sha256": "ba7613ce97907d5c8f8ec8f5099c9ac4ca91dfa1fc96706e0a3ddb06421eef72"
+    },
+    {
+      "module": "candidate.positive_chain",
+      "file": "runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "blob_sha1": "3657de465c703b368a685b27282a734a3af96845",
+      "sha256": "b2c2fbc7babcc0ac81cd26409d190795633a245fe820c902dc17da47d595c5b4"
+    },
+    {
+      "module": "rawlsing_next.v3_psepf_zero_positive_guard",
+      "file": "runtime_root/source/rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "blob_sha1": "e0528d65215cb431196570c38bac4eae94217a1b",
+      "sha256": "12b2c49f664662cbfe993fc4817751ed9edfff3ce89c44cac489a00cb5e42177"
+    }
+  ],
+  "guard_before_after": "mappingproxy({}) unchanged",
+  "guard_blob": "e0528d65215cb431196570c38bac4eae94217a1b",
+  "command": "python3 repro/run_suite.py reviewer__initial"
+}

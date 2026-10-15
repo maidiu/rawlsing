@@ -1,0 +1,499 @@
+{
+  "schema": "CAN2_ORACLE_TRANSITIONS@1",
+  "predecessor_prereview_source": "a11982e6cf135a8ecc72b6152ec796b4a4707093",
+  "note": "Not all passes are positive-path proofs: old opaque hash fixtures may refuse earlier. New89 author controls carry valid baseline checks; stronger mediation remains unproved",
+  "transitions": [
+    {
+      "name": "test_inherited_prereg_exact_and_not_replaced",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_actual_two_event_read_ablation_and_replay",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_published_control_actually_has_no_prior_effect",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_later_response_consumes_durable_target_owner_state",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_target_owner_validation_precedes_committed_effect",
+      "RCP3": "RED",
+      "CAN2": "RED",
+      "CAN2_message": "AssertionError: Only unvalidated/uncommitted owner requests accompany reported target commit\nassert False\n +  where False = all(<generator object test_target_owner_validation_precedes_committed_effect.<locals>.<genexpr> at 0x1073ca740>)"
+    },
+    {
+      "name": "test_invalid_first_event_is_failure_atomic[forged_issuer]",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_invalid_first_event_is_failure_atomic[unadmitted]",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_invalid_first_event_is_failure_atomic[fake_event_hash]",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_corrupted_persisted_effect_is_refused_on_actual_read",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_ledger_payload_cannot_mutate_after_commit",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_hash_chain_binds_predecessor",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_basic_occurrence_guards[change0]",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_basic_occurrence_guards[change1]",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_basic_occurrence_guards[change2]",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_basic_occurrence_guards[change3]",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_basic_occurrence_guards[change4]",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_basic_occurrence_guards[change5]",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_basic_occurrence_guards[change6]",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_duplicate_event_refuses",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_unregistered_rule_cannot_evaluate_positive",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_foreign_rule_identity_cannot_evaluate_positive",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_registered_actor_scope_cannot_be_rewritten",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_borrowed_prestate_actor_refuses",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_temporal_scope_actually_enforced_without_flag",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_unreceivable_event_does_not_become_positive_response",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_all_23_binding_omissions_on_active_path[1-rule_id-]",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_all_23_binding_omissions_on_active_path[2-eligible_event_authority_signatures-value1]",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_all_23_binding_omissions_on_active_path[3-actor_scope-]",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_all_23_binding_omissions_on_active_path[4-receivability_semantics-]",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_all_23_binding_omissions_on_active_path[5-eligible_conditioning_owner_signatures-value4]",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_all_23_binding_omissions_on_active_path[6-conditioning_causal_use_roles-value5]",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_all_23_binding_omissions_on_active_path[7-counterpart_scoping-]",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_all_23_binding_omissions_on_active_path[8-modality_evidence_authorities-value7]",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_all_23_binding_omissions_on_active_path[9-uptake_appraisal_semantics-]",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_all_23_binding_omissions_on_active_path[10-recruitment_semantics-]",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_all_23_binding_omissions_on_active_path[11-multiplicity_handling-]",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_all_23_binding_omissions_on_active_path[12-co_determination_closure-]",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_all_23_binding_omissions_on_active_path[13-prior_response_history_predicates-]",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_all_23_binding_omissions_on_active_path[14-current_condition_effort_role-]",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_all_23_binding_omissions_on_active_path[15-effect_kinds-value14]",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_all_23_binding_omissions_on_active_path[16-target_validation-]",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_all_23_binding_omissions_on_active_path[17-pff_current_consequence_projection-]",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_all_23_binding_omissions_on_active_path[18-valid_empty_behavior-]",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_all_23_binding_omissions_on_active_path[19-missing_deferred_ambiguous_behavior-]",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_all_23_binding_omissions_on_active_path[20-quantitative_contract-]",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_all_23_binding_omissions_on_active_path[21-adp020_binding-]",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_all_23_binding_omissions_on_active_path[22-atomic_commit_behavior-]",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_all_23_binding_omissions_on_active_path[23-provenance_replay_requirements-]",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_memory_noncausal_source_refusals[V2_TRANSCRIPT]",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_memory_noncausal_source_refusals[RENDERED_DIALOGUE]",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_memory_noncausal_source_refusals[STRUCTURAL_OBJECT]",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_memory_noncausal_source_refusals[ANALYST_ANNOTATION]",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_memory_noncausal_source_refusals[MEMORY_DISTILLATION_PROSE]",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_memory_causal_trace_and_complete_transition_schema",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_memory_rejects_missing_prestate_integrity",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_memory_refuses_fake_rule_and_authority",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_memory_transition_identity_binds_prestate",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_memory_transition_requires_exact_parent",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_memory_explicit_mismatches_are_typed[parent-PARENT_EVENT_HASH_MISMATCH]",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_memory_explicit_mismatches_are_typed[state-PRE_STATE_HASH_MISMATCH]",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_k3_trace_recall_and_first_person_are_denied",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_k3_sole_trace_cannot_be_first_person_basis",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_k3_dead_basis_denies_without_erasing_stance[CONTENT_UNAVAILABLE-INACCESSIBLE]",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_k3_dead_basis_denies_without_erasing_stance[RETAINED-INACCESSIBLE]",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_access_unknown_does_not_become_known_denial",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_epistemic_12_fields_and_all_operations",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_k5_objective_relation_does_not_automatically_edit_private_belief",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_knowledge_requires_actual_actor_basis_and_truth",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_forged_actor_basis_is_not_verified_knowledge",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_empty_belief_claim_rule_and_parent_are_not_positive",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_epistemic_effect_identity_binds_rule_and_parents",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_no_stance_is_not_nonknowledge_and_trace_cannot_be_exported",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_production_registry_stays_zero_positive_and_exact",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_fake_effect_kind_is_refused",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_fake_coupling_dictionary_is_not_admitted_causality",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_memory_missing_basis_is_typed_owner_refusal",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_memory_integrity_marker_is_enforced",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_memory_id_collision_does_not_alias_distinct_sources",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_empty_rule_version_is_refused",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_known_inaccessible_event_memory_cannot_permit_first_person",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_physical_absent_effect_control_executes_actual_later_response",
+      "RCP3": "PASS",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    },
+    {
+      "name": "test_event_authority_version_is_refused_or_bound_to_receipt_identity",
+      "RCP3": "RED",
+      "CAN2": "PASS",
+      "CAN2_message": ""
+    }
+  ]
+}

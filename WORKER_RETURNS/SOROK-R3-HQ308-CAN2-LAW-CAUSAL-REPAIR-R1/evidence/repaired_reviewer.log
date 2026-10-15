@@ -1,0 +1,20 @@
+....F................................................................... [ 87%]
+.F........                                                               [100%]
+=================================== FAILURES ===================================
+____________ test_target_owner_validation_precedes_committed_effect ____________
+WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/runtime_root/court_repaired/repro/test_independent.py:92: in test_target_owner_validation_precedes_committed_effect
+    assert all(x['validated'] and x['committed'] for x in response['target_owner_effect_requests']), 'Only unvalidated/uncommitted owner requests accompany reported target commit'
+E   AssertionError: Only unvalidated/uncommitted owner requests accompany reported target commit
+E   assert False
+E    +  where False = all(<generator object test_target_owner_validation_precedes_committed_effect.<locals>.<genexpr> at 0x1030ae400>)
+_______________________ test_fake_effect_kind_is_refused _______________________
+WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/runtime_root/court_repaired/repro/test_independent.py:319: in test_fake_effect_kind_is_refused
+    assert rule.response_rule_apply(c,s,b,'FORGED_RESPONSE_KIND')['decision_state']=='RESPONSE_COUPLING_RULE_MISSING'
+E   AssertionError: assert 'PARENT_EVENT_HASH_MISMATCH' == 'RESPONSE_COU..._RULE_MISSING'
+E     
+E     - RESPONSE_COUPLING_RULE_MISSING
+E     + PARENT_EVENT_HASH_MISMATCH
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/runtime_root/court_repaired/repro/test_independent.py::test_target_owner_validation_precedes_committed_effect
+FAILED WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/runtime_root/court_repaired/repro/test_independent.py::test_fake_effect_kind_is_refused
+2 failed, 80 passed in 0.55s

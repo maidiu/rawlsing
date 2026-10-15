@@ -1,0 +1,12 @@
+....F................................................................... [ 87%]
+..........                                                               [100%]
+=================================== FAILURES ===================================
+____________ test_target_owner_validation_precedes_committed_effect ____________
+WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/runtime_root/court_repaired/repro/test_independent.py:92: in test_target_owner_validation_precedes_committed_effect
+    assert all(x['validated'] and x['committed'] for x in response['target_owner_effect_requests']), 'Only unvalidated/uncommitted owner requests accompany reported target commit'
+E   AssertionError: Only unvalidated/uncommitted owner requests accompany reported target commit
+E   assert False
+E    +  where False = all(<generator object test_target_owner_validation_precedes_committed_effect.<locals>.<genexpr> at 0x108a581e0>)
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/runtime_root/court_repaired/repro/test_independent.py::test_target_owner_validation_precedes_committed_effect
+1 failed, 81 passed in 0.82s

@@ -1,0 +1,54 @@
+{
+  "exact_replay": true,
+  "digest": "0cab0d9241712c10a35668bc46dd3bf139bdf846dc6bfeff9bdd2ea601d07e06",
+  "baseline": {
+    "event2_id": "EV2_LATER_SHIFT_CHANGE_REQUEST",
+    "effect_kind": "DEFLECT",
+    "prior_effect_read": true,
+    "prior_effect_refs": [
+      "e1ffc7bd327fed31f3a8ae4b993de80d46b74fb0c9d988dc3fc4dab8628b59be"
+    ],
+    "candidate_state_read_hash": "a734e1557e12e6c941d3571aaf8cbd15c331048a1a417f7bf42587b34b9b6c0e",
+    "commit": "COMMITTED_IN_CAUSAL_ORDER",
+    "receipt2_hash": "676b72b7827f6b2df645bde836b9b870b95d4fa753bb158581e52454cdbe8376"
+  },
+  "controls": {
+    "published_control": {
+      "event2_id": "EV2_LATER_SHIFT_CHANGE_REQUEST",
+      "effect_kind": "AMPLIFY",
+      "prior_effect_read": false,
+      "prior_effect_refs": [],
+      "candidate_state_read_hash": "a734e1557e12e6c941d3571aaf8cbd15c331048a1a417f7bf42587b34b9b6c0e",
+      "commit": "COMMITTED_IN_CAUSAL_ORDER",
+      "receipt2_hash": "b9f4a3dc8ebbe4024616fa118997a96f7245521be6ac47b27e081ceea987f8aa"
+    },
+    "actual_absent_effect": {
+      "event2_id": "EV2_LATER_SHIFT_CHANGE_REQUEST",
+      "effect_kind": "AMPLIFY",
+      "prior_effect_read": false,
+      "prior_effect_refs": [],
+      "candidate_state_read_hash": "a734e1557e12e6c941d3571aaf8cbd15c331048a1a417f7bf42587b34b9b6c0e",
+      "commit": "COMMITTED_IN_CAUSAL_ORDER",
+      "receipt2_hash": "b9f4a3dc8ebbe4024616fa118997a96f7245521be6ac47b27e081ceea987f8aa"
+    },
+    "physical_absent_effect": {
+      "event2_id": "EV2_LATER_SHIFT_CHANGE_REQUEST",
+      "effect_kind": "AMPLIFY",
+      "prior_effect_read": false,
+      "prior_effect_refs": [],
+      "candidate_state_read_hash": "a734e1557e12e6c941d3571aaf8cbd15c331048a1a417f7bf42587b34b9b6c0e",
+      "commit": "COMMITTED_IN_CAUSAL_ORDER",
+      "receipt2_hash": "b9f4a3dc8ebbe4024616fa118997a96f7245521be6ac47b27e081ceea987f8aa"
+    }
+  },
+  "refusals": {
+    "corrupt_stored_effect": "LEDGER_CONTENT_MUTATED",
+    "forged_issuer": "BLOCK_FORGED_OR_MISMATCHED_ISSUER",
+    "unadmitted": "BLOCK_UNADMITTED_EVENT",
+    "fake_event_hash": "MISSING_PARENT_EVENT"
+  },
+  "actual_candidate_state": "a734e1557e12e6c941d3571aaf8cbd15c331048a1a417f7bf42587b34b9b6c0e",
+  "owner_hold": "HOLD_NO_ACCEPTED_DESTINATION_OWNER_AUTHORITY",
+  "public_hold": "HOLD_NO_PUBLIC_RATIFICATION_OWNER",
+  "sourcefree_only": true
+}
