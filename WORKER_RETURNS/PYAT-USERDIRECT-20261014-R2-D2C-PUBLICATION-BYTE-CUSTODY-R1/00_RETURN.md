@@ -1,0 +1,47 @@
+# PYAT R2 D2C — official publication byte and scientific source custody
+
+**Final scientific disposition:** `OFFICIAL_GSS_AND_NCA_PUBLISHED_TABLES_VERIFIED__ORIGINAL_BINARY_BYTE_CUSTODY_HOLD__REVISION_AND_REUSE_HOLD__TWO_DOCUMENTARY_SOURCE_PACKETS_PREPARED__NO_SOURCE_ISSUANCE`.
+
+**Commission:** User-direct narrow independent external-document custodian; sealed branch tip `a5ef924a1d9f128a70f1b4b3927c73a1c3e9e4a8` verified directly from GitHub. Commission read in full at `WORKER_COMMISSIONS/PYAT-USERDIRECT-20261014-R2-D2C-PUBLICATION-BYTE-CUSTODY-R1/00_COMMISSION.md`; predecessor D2I `2653fff57ac59fe2eaeffd24a0611c45f16f3b54` 00–07 read, including original sourcefree 40/40 and its exact binary custody HOLD. D2C does **not** duplicate D2P producer or any source/EE13/N9 owner implementation.
+
+## 1. Original publisher confirmation — two documentary sources
+
+**A. GSS — `GSS_2021_PHC_V3K_RURAL_LIGHTING`.** GSS original publisher URL:
+https://census2021.statsghana.gov.gh/gssmain/fileUpload/reportthemesub/Volume%203K_Housing%20Characteristics_240222.pdf
+
+GSS 2021 Population and Housing Census General Report Volume 3K, *Housing Characteristics*, cover February 2022 (web PDF 86 pages, pages 0/1 visually inspected). GSS [official release report](https://census2021.statsghana.gov.gh/newspage.php?GSS-completes-release-of-2021-PHC-General-Reports=&readmorenews=MjM0ODgzNjQxMy41MDg1), posted 26 February 2022, unambiguously records **24 February 2022** as the release of Volume 3K. **Table 5.10 printed p.62, PDF zero p.75** visually and textually checked: **2,388,192** rural occupied dwelling units with electricity as *main source of lighting*, denominator **3,288,063**, **72.6%** reported. Five electric categories exactly sum: **2,288,193** mains + **74,490** community grid + **3,640** private generator + **21,512** solar panel/invertor + **357** wind = **2,388,192**. Mains alone is **69.6%**, not all-electric 72.6%. The separately tabulated 123,903 rural **solar lamp** records cannot be smuggled into electricity. Table note expressly **excludes secondary housing and vacant dwelling units**; the method is census household-reported **occupied dwelling-unit** main lighting, not residents or individual access.
+
+**B. NCA — `NCA_2021Q4_ACTIVE_MOBILE_DATA_SUBSCRIPTIONS`.** NCA original publisher URL:
+https://nca.org.gh/wp-content/uploads/2022/07/Q4-2021-statistical-Bulletin.pdf
+
+NCA *Quarterly Statistical Bulletin on Communications in Ghana*, **Volume 6 Issue 4, Fourth Quarter October–December 2021** (web PDF 36 pages; official PDF text cover verified). NCA [official announcement](https://nca.org.gh/2022/07/08/quarterly-statistical-bulletin-on-communications-2022-q4/) dated **8 July 2022** links the bulletin with headline **2021 Q4**. The web URL slug includes `2022-q4` but is NOT a substantive alternative edition. **Table 10 printed p.17, PDF zero p.29**, read from original publisher PDF: **23,414,527 national mobile-data subscriptions** = **23,237,338 prepaid** + **177,189 postpaid**. The bulletin's *Definition of Terms* PDF p.10 identifies **active subscriptions** as those that generated uploaded and/or downloaded traffic within the previous **90 days**. It is licensee administrative subscription accounting, *not* unique humans or a rural household/per-person access measure. Browser screenshot of NCA PDF page 29 produced **cache miss**; official text reader and publisher release PDF link worked. No false visual verification is claimed.
+
+**Precise historical/publication difference:** Ghana 2021 PHC reference period/census night 27 June 2021 versus the telecom reporting quarter October–December 2021 and preceding 90-day subscription activity. GSS public report Feb 24 **2022**; NCA public report July 8 **2022**. Before the NCA July release, two-source contemporary-known publication context is not positive, even when later retrospective reconstruction describes the 2021 observations. Minimum documentary **both-source as-of** is **2022-07-08**, and real service would additionally require issued archive, rights and field authority.
+
+## 2. Actual binary custody result — **not recovered**
+
+Browser/web tools parsed both official PDFs and screenshots rendered the GSS original-cover and table surfaces. But **web-parsed PDF text, rendered images and the publisher's URL do not contain the downloaded binary byte stream**. Independent terminal tests for each exact official PDF failed **before HTTP**, with `curl` exit **6**, message `Could not resolve host: census2021.statsghana.gov.gh` and `Could not resolve host: nca.org.gh`; `curl http_code=000` is NOT an official publisher 000 response. Both `container.download` attempts returned `ERROR download failed`. No PDF file was created and no raw PDF length or PDF metadata was read. Prior/alternate `www.statsghana.gov.gh/gssmain/fileUpload/pressrelease/Volume%203K_Housing%20Characteristics_240222.pdf` returned 404 via web; it does **not** prove current census2021 PDF disappeared, was revised or never published.
+
+| Exact official PDF | Raw full-file SHA-256 | Byte length | Archived original vs current revision |
+|---|---|---|---|
+| GSS General Report 3K, February 2022 | **NULL** | **NULL** | **UNVERIFIED** |
+| NCA Bulletin Volume 6 Issue 4, Q4 2021 | **NULL** | **NULL** | **UNVERIFIED** |
+
+`sha256sum` and Python 3.13.5 exist, but **no official bytes entered their input**. D2I's Git SHA-1, test-only fixture SHA-256, text-reader contents and URLs are **not** substituted for official document hashes. External publisher original-edition archive/object signatures, errata, replaced PDF versions, any current file modification and true download response headers remain unknown. Detailed actual attempts and the authorized future binary hash commands are in `04_HTTP_DOWNLOAD_OR_CUSTODY_BLOCKER.json`.
+
+## 3. Rights and science do not follow from visibility
+
+Official GSS [Statistical Service Act](https://www.statsghana.gov.gh/about/statistical-service-act) requires statistical publication, correction of significant errors and microdata confidentiality. The public 2021 PHC website is copyright-marked *all rights reserved*. The GSS [microdata access conditions](https://microdata.statsghana.gov.gh/index.php/policies-and-procedures) are not blanket licensing terms for a published aggregate report, nor a license for automated future use. NCA's 2022 bulletin announcement invokes its **statutory permission to publish** under Act 775 §26(2)(a); that cannot itself settle third-party redistribution, automated extraction/retention or model-use rights. NCA site's footer also says *all rights reserved*. Both specific published-aggregate automated reuse and any full-PDF republication decisions **remain unsigned**, not assumed forbidden or granted.
+
+GSS and NCA each need a separate **original-document custodian** and method authority to authenticate the source/edition, table and corrections. The Rawlsing field-use and owner science issuer decisions are distinct and not delegated to D2C. The issuer docket `03_SOURCE_USE_AND_ISSUER_REQUEST.md` has precise archive/science/reuse questions to GSS **2021phc@statsghana.gov.gh** and NCA **rips@nca.org.gh** / **info@nca.org.gh**. No private survey respondent records, licensee account records, source grant or paid overflow used.
+
+## 4. Two source packets delivered — **candidate documentary inputs, not issuance**
+
+1. `05_GSS_DOCUMENTARY_PACKET.json`: original publisher, official URL/notice, printed and PDF page/table, native census rural occupied-unit definition, all five electricity values/denominator/integrity, reporting/knowledge clocks, exclusions, unquantified uncertainties, exact NULL byte-root and unissued rights.
+2. `06_NCA_DOCUMENTARY_PACKET.json`: original publisher, Volume 6 Issue 4, original quarter versus later release, Table 10 and 90-day source definition, prepaid/postpaid native subscription units, no regional or unique-person denominator, NULL root/revision/rights and unissued authority.
+
+Required named core return files: `01_EXACT_BINARY_CUSTODY_AND_EDITION.json`, `02_NATIVE_MEASUREMENT_AND_ASOF_COURT.md`, `03_SOURCE_USE_AND_ISSUER_REQUEST.md`, `04_HTTP_DOWNLOAD_OR_CUSTODY_BLOCKER.json`. No original full PDFs placed in Git. No signed `ExternalPublishedAggregateField` is made here.
+
+**Smallest actual next productive edge:** An archival source custodian obtains the **complete original issue binaries** through publisher-approved transport, computes SHA-256 and byte size on whole binary streams, records HTTP/ETag/version, identifies corrections, and obtains method + bounded automated aggregate-use approvals. Then a **separate accepted N5/N6 field owner** issues two immutable, differently typed and as-of-bound aggregate products using proper producer/replay/route contracts. An independent N7/EE13 issuer may authorize **NONPOOLED_CONTEXTUAL_CO_PRESENCE_ONLY**, followed by a distinct historical N9/OC05 consumer owner who dereferences two numeric source receipts with source-specific replay/revocation and refuses publication leakage. The D2I 40/40 SOURCEFREE result is an adversarial test aid, not that accepted edge.
+
+**No N5/N6, EE13, OC05, N12 wake, production code/CURRENT/canonical edit, physical weld, personhood inference, original survey microdata or V3 execution.** This is bounded original-documentary custody work, preserving genuine scientific provenance even where raw byte custody fails.
