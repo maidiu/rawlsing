@@ -18,7 +18,7 @@ Used actual Python **3.13.5**, pytest **9.0.2**, writable container, actual sour
 
 Tests were **actually run**, with locally generated original JUnit XML files, per-run sha256, stdout excerpts, exact commands, module import location and failure names in `02_INDEPENDENT_HOSTILE_EXECUTION.json`. JUnit bytes remain in local container and are NOT represented as GitHub-uploaded. No full project checkout/owner import or true source suite run is claimed.
 
-**Independently frozen expectations:** `04_FROZEN_INDEPENDENT_EXPECTATIONS.json` was committed separately at `ccc7e539edf643be6c94d40a3fa3005e3bc0191c` **before inspecting author 29 test outcomes or running candidate**. The resulting adverse run is a genuine executable court, not merely an LLM code prediction. Repro harness is committed unchanged at verified Git blob `3911420...`.
+**Independently frozen expectations:** `04_FROZEN_INDEPENDENT_EXPECTATIONS.json` was committed separately at `ccc7e539edf643be6c94d40a3fa3005e3bc0191c` **before running the author suite or candidate hostiles**. The resulting adverse run is a genuine executable court, not merely an LLM code prediction. Repro harness is committed unchanged at verified Git blob `3911420...`.
 
 ## Three advertised narrow T8F repairs — yes, with important ceiling
 
@@ -44,7 +44,7 @@ HQ214 historical `rawlsing_next/pre553_temporal_comparability.py` blob `feb097de
 
 - `00_VERDICT.md` — this scoped RED.
 - `01_EXACT_BLOB_AND_ORACLE_CUSTODY.json` — exact source/test identities, original vs substitute oracles, native science and fixture divergence.
-- `02_INDEPENDENT_HOSTILE_EXECUTION.json` — four actual Python runs, exact imports, JUnit digests, eleven-digit distinct pass/fail counts and observed failures.
+- `02_INDEPENDENT_HOSTILE_EXECUTION.json` — four actual Python runs, exact imports, JUnit digests, distinct pass/fail counts and observed failures.
 - `03_SCOPED_REPAIR_AND_REAL_ISSUANCE_CEILING.md` — bounded T8F2 requirements and real source/EE12/N9 ceilings.
 - `04_FROZEN_INDEPENDENT_EXPECTATIONS.json` — expectations committed **before author-suite execution**.
 - `repro/test_t8i_independent_hostiles.py` — exactly executed 16-case hostile/positive court.
