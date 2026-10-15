@@ -1,0 +1,131 @@
+{
+  "schema": "PYAT_R3_T8I_EXACT_BLOB_AND_FROZEN_ORACLE_CUSTODY_R1",
+  "disposition": "EXACT_PINNED_LOCAL_SOURCE_AND_HISTORICAL_TEST_FILES_EXECUTED__NEW_REVIEW_REDS",
+  "role": "Separate user-direct T8I review; not author of T8C/T8R/T8F in this session; independent of author branch but NOT an authorized source/EE12/N9/HQ adoption signature",
+  "sealed_start": "4b0610edd26d3acb7964179558471bdd3fa2d4a8",
+  "frozen_expectations_commit": "ccc7e539edf643be6c94d40a3fa3005e3bc0191c",
+  "frozen_expectations_file": "04_FROZEN_INDEPENDENT_EXPECTATIONS.json",
+  "expectations_frozen_before_candidate_author_test_results": true,
+  "source_blobs": {
+    "T8F": {
+      "branch_commit": "76cbd9b447bf7525a6831b339117870399b1f8f4",
+      "code_path": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R2-T8F-TEMPORAL-INTEGRITY-R1/repro/t8f_temporal_integrity.py",
+      "code_blob": "0108947afcec5797581e7c0d062c9aa655e6d6e1",
+      "code_bytes": 10508,
+      "author_test_path": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R2-T8F-TEMPORAL-INTEGRITY-R1/repro/test_t8f_temporal_integrity.py",
+      "author_test_blob": "c166280e75925a749d7fd2262bd8f96ff91e75ad",
+      "author_test_bytes": 7033,
+      "locally_reconstituted_exact_git_blob": true
+    },
+    "T8C": {
+      "branch_commit": "059d7ce1b35a08fa4fe735ffccc1a5dddbfe5899",
+      "original_path": "WORKER_RETURNS/PYAT-R3-HQ297-N8-NATIVE-TEMPORAL-COMPARATOR-R1/repro/test_hq297_t8c.py",
+      "original_blob": "7f7e0c713a669951b40787537138db7a0653daea",
+      "original_bytes": 10525,
+      "locally_reconstituted_exact_git_blob": true,
+      "original_tests": 19
+    },
+    "T8R": {
+      "branch_commit": "6f4706b703124993dacab86cbfa3d41428ca3a25",
+      "mandatory_path": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-T8R-NATIVE-TEMPORAL-INDEPENDENT-R1/repro/test_review_mandatory_guards_red.py",
+      "mandatory_blob": "83db68fd705372b62778d81f96687a50b744ecca",
+      "mandatory_bytes": 912,
+      "locally_reconstituted_exact_git_blob": true,
+      "original_tests": 3,
+      "source_was_same_conversation_as_T8C_author": true
+    },
+    "T8I": {
+      "repro_path": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R3-T8I-INDEPENDENT-TEMPORAL-COURT-R1/repro/test_t8i_independent_hostiles.py",
+      "repro_blob": "3911420d94659d6fa89cbd0e89769959b0eb6ff6",
+      "repro_bytes": 6054,
+      "test_count": 16,
+      "locally_tested_exact_blob": true
+    },
+    "HQ214": {
+      "commit": "a93352512aa9290112bff1eb680c54d43345078f",
+      "path": "rawlsing_next/pre553_temporal_comparability.py",
+      "blob": "feb097decbd160c5f259cde0a36f5033a7085fd2",
+      "read_exact_via_connector": true,
+      "owner_import_executed": false
+    },
+    "N9C": {
+      "commit": "9ab4a0192b7c951bb0b387637e6c74333246766c",
+      "path": "rawlsing_next/pre553_hq297_n9c_two_field_reader.py",
+      "blob": "03eb46efccadd6880cb34b2e2ac609ffc9b16c59",
+      "read_exact_via_connector": true,
+      "owner_import_executed": false
+    }
+  },
+  "test_lineage": {
+    "t8c_original_tests": "The original 19 tests are code embedded in the original test_hq297_t8c.py; run unchanged against their ORIGINAL T8C sourcefree implementation, NOT dynamically substituted to target T8F.",
+    "t8f_author_29": "Entire separately written T8F suite; includes 3 narrow repairs + 19 reimplemented analogous scenarios + 3 registry + 4 propagation tests. These are NOT the unchanged original T8C 19 or T8R 3 original test functions.",
+    "t8r_original_3": "Original unmodified tests import the original T8C self-contained module. Running them against original T8C produces the original three REDs. T8F 3 repair assertions were exercised separately via the author 29 and T8I controls.",
+    "red_criterion": "Executable hostile tests assert mandatory refusal/immutability, so FAILURES signal actual missing integrity guards, not random flaky runtime."
+  },
+  "science_semantics": {
+    "r5": {
+      "year": 2012,
+      "question": "Q43",
+      "native_codes": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "refused_native": 998,
+      "publication_fixture": "2015-07-16"
+    },
+    "r9": {
+      "year": 2022,
+      "question": "Q31",
+      "native_codes": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "refused_native": 8,
+      "publication_fixture": "2024-10-01"
+    },
+    "four_specials": [
+      "DK",
+      "REFUSED",
+      "MISSING",
+      "NOT_ASKED"
+    ],
+    "gap_2017": "UNKNOWN_UNOBSERVED_GAP",
+    "relationship": "INDEPENDENT_CROSS_SECTION_TEST_ONLY; no same-person transition",
+    "facts": "HYPOTHETICAL TEST FIXTURES; no raw survey data or measured Ghana trend",
+    "fixture_drift": {
+      "original_T8C_R9_category_weights": [
+        12,
+        18,
+        20,
+        35,
+        25
+      ],
+      "T8F_R9_category_weights": [
+        8,
+        15,
+        30,
+        35,
+        22
+      ],
+      "original_T8C_delta": "21/220",
+      "T8F_fixture_delta": "3/44",
+      "note": "T8F 19 equivalent scenarios do not retain same exact original T8C numeric fixture or untouched original test code"
+    }
+  },
+  "scope": {
+    "real_source_issuer": false,
+    "EE12_issued": false,
+    "N8E_issued": false,
+    "N9_issued": false,
+    "HQ214_owner_import": false,
+    "N9C_owner_import": false,
+    "actor_V3": false,
+    "original_respondent_data": false
+  }
+}
