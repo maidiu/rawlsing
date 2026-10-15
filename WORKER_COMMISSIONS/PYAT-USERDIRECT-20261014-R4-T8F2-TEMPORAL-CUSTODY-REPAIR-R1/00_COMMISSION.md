@@ -1,0 +1,25 @@
+# R4 T8F2 — Repair original-wave-fact identity and historical consumer trust
+
+**Platform: OpenCode**
+**Repository:** `maidiu/rawlsing` (private)
+**Branch:** `agent/userdirect-pyat-20261014-r4-t8f2-temporal-custody-repair-r1`
+**Exact sealed startup:** from the verified final branch commit in launch, not a moving ref
+**Role:** temporal sourcefree method repair implementer, NOT T8I reviewer/source/EE12/N9 issuer
+**Write only:** `WORKER_RETURNS/PYAT-USERDIRECT-20261014-R4-T8F2-TEMPORAL-CUSTODY-REPAIR-R1/`. Original SAV/DTA never read, canonical/owners/CURRENT/V3 untouched.
+
+## First reads
+- T8I separate independent court `agent/userdirect-pyat-20261014-r3-t8i-independent-temporal-court-r1@cbbaf051cf5df72f6d32b8de6755b5eec0c10a51`: `00_VERDICT.md`, independent 10 RED/6 PASS over 16 test cases, `03_SCOPED_REPAIR_AND_REAL_ISSUANCE_CEILING.md`, frozen `04_FROZEN_INDEPENDENT_EXPECTATIONS.json` and `repro/test_t8i_independent_hostiles.py` blob `3911420d94659d6fa89cbd0e89769959b0eb6ff6`. Actual T8I 29 T8F author PASS; T8C original 19 PASS separately; T8R original 3 REDs reproduced against original T8C. Do not claim original T8C frozen tests tested T8F when hard-import T8C.
+- T8F author `agent/userdirect-pyat-20261014-r2-t8f-temporal-integrity-r1@76cbd9b447bf7525a6831b339117870399b1f8f4` 00–03, module `0108947afcec5797581e7c0d062c9aa655e6d6e1`, 29 tests `c166280e75925a749d7fd2262bd8f96ff91e75ad`.
+- Original T8C `059d7ce1b35a08fa4fe735ffccc1a5dddbfe5899` original 19 test blob `7f7e0c713a669951b40787537138db7a0653daea`, original T8R `6f4706b703124993dacab86cbfa3d41428ca3a25` mandatory 3 blob `83db68fd705372b62778d81f96687a50b744ecca`.
+- HQ214 original temporal scalar comparison `rawlsing_next/pre553_temporal_comparability.py@a93352512aa9290112bff1eb680c54d43345078f`; N9C earlier pattern, but neither is a Ghana source issuer.
+
+## Requirements
+1. **Fix all ten independently executed T8I REDs**, not only the original three T8R stale-digest checks. Freeze T8I test expectations before your repair; never edit independent tests/original oracles. T8I independent observed: valid variance changes have identical ref hash; second register silently overwrites previous fact; forged WaveFactRef.year accepted; mutable list alias corrupts registered fact; caller rehashes delta=999 and consumer accepts; caller rehashes variance delta=999; coherent source-data mutation accepted without registry; forged historical publication accepted; inconsistent eligible denominator accepted; native category zero removed and rehashed accepted.
+2. Registry uses **all scientifically relevant WaveFact fields** in canonical typed digest, deep immutable snapshot/frozen collection or reject mutable data, no overwriting different facts under same identity, binding `ref.year`/source/version/issuer/test-only use. A new valid variance yields a distinct immutable reference; old reference still returns exactly its old wave. Revocation and asof checked at consumer read, not copied self-declared tokens.
+3. The actual historical `consume` dereferences *two independently stored immutable refs* and recomputes all primitive 5-category + 4-special arithmetic, asked/eligible risk sets, satisfied shares, true delta and independent variance; no positive based on the caller's recomputed digest alone. Reconcile product receipt content with registry-held refs + issued *test-only* trusted registry authority; never manufacture real EE12.
+4. Keep 2012 R5 Q43 vs 2022 R9 Q31 source-native category 0, R5 refusal=998/R9=8, independently sampled respondents, original public 2015/2024 release clock fixtures and unknown 2017 gap. No retrospective person-level transition, no source-less trend or N8S reclassification.
+5. Execute all exact 29 T8F author tests (adapted interface separate), all 16 independently frozen T8I hostiles, 19 original T8C **untouched** as historical control, T8R 3 untouched against T8C control (RED expected) and explicitly versioned adapted T8F2 oracles; add year/ref tamper, variance change targeted invalidation, self-resigned product, publication forgery, revoked permission and real two-ref registry consumer. Report exact pass/failed/NOT_EXECUTED; do not count 19 against unchanged T8C as a T8F2 acceptance suite.
+6. Identify allowed HQ214 sourcefree reusable scalar comparator and whether exact import closure can physically execute; if blocked classify authority/tech separately. End-to-end fixture→temporal source-product→selected historical values-reader numeric proof, stable unrelated inputs; distinct real N8E/EE12/N9 grants remain HOLDS.
+
+## Return
+`00_RETURN.md`, `01_T8I_TEN_RED_CLOSURE.json`, `02_IMMUTABLE_SOURCE_REFS_AND_CONSUMER_CUSTODY.md`, `03_EXECUTION_AND_FROZEN_ORACLES.md`, `04_SCIENTIFIC_ISSUER_CEILING.md`, new code and complete logs/repro; verify direct final remote SHA. Separate truly independent reviewer for any method acceptance; no self-adoption.
