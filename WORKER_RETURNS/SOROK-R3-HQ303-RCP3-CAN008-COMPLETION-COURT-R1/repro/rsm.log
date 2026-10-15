@@ -1,0 +1,40 @@
+...................F....F.................................F.             [100%]
+=================================== FAILURES ===================================
+_ test_A_pinned_module_imports_with_verified_file[rawlsing_next/wsc_gt0_end_to_end.py] _
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/rsm_court_reproduction/test_owner_effect_court.py:93: in test_A_pinned_module_imports_with_verified_file
+    mod, file, blob = _load_staged_module(rel)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/rsm_court_reproduction/test_owner_effect_court.py:54: in _load_staged_module
+    spec.loader.exec_module(mod)
+<frozen importlib._bootstrap_external>:940: in exec_module
+    ???
+<frozen importlib._bootstrap>:241: in _call_with_frames_removed
+    ???
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/runtime_root/source/rawlsing_next/wsc_gt0_end_to_end.py:11: in <module>
+    from rawlsing_next.wsc_gt0_v2_mediation import run_gt0_v3_v2
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/runtime_root/source/rawlsing_next/wsc_gt0_v2_mediation.py:14: in <module>
+    from rawlsing_next import render_bounded_expression as bounded_render
+E   ImportError: cannot import name 'render_bounded_expression' from 'rawlsing_next' (unknown location)
+_ test_A_pinned_module_imports_with_verified_file[rawlsing_next/wsc_gt0_v2_mediation.py] _
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/rsm_court_reproduction/test_owner_effect_court.py:93: in test_A_pinned_module_imports_with_verified_file
+    mod, file, blob = _load_staged_module(rel)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/rsm_court_reproduction/test_owner_effect_court.py:54: in _load_staged_module
+    spec.loader.exec_module(mod)
+<frozen importlib._bootstrap_external>:940: in exec_module
+    ???
+<frozen importlib._bootstrap>:241: in _call_with_frames_removed
+    ???
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/runtime_root/source/rawlsing_next/wsc_gt0_v2_mediation.py:14: in <module>
+    from rawlsing_next import render_bounded_expression as bounded_render
+E   ImportError: cannot import name 'render_bounded_expression' from 'rawlsing_next' (unknown location)
+_______________ test_H_gt0_end_to_end_blocks_positive_actor_path _______________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/rsm_court_reproduction/test_owner_effect_court.py:630: in test_H_gt0_end_to_end_blocks_positive_actor_path
+    assert e2e.TERMINAL == "BLOCKED_POSITIVE_ACTOR_PATH__SEMANTIC_CONSERVATION_PASS"
+           ^^^^^^^^^^^^
+E   AttributeError: module 'rawlsing_next.wsc_gt0_end_to_end' has no attribute 'TERMINAL'
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/rsm_court_reproduction/test_owner_effect_court.py::test_A_pinned_module_imports_with_verified_file[rawlsing_next/wsc_gt0_end_to_end.py]
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/rsm_court_reproduction/test_owner_effect_court.py::test_A_pinned_module_imports_with_verified_file[rawlsing_next/wsc_gt0_v2_mediation.py]
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/rsm_court_reproduction/test_owner_effect_court.py::test_H_gt0_end_to_end_blocks_positive_actor_path
+3 failed, 57 passed in 0.43s

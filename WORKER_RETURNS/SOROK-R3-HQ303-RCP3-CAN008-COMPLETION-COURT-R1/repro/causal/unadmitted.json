@@ -1,0 +1,324 @@
+{
+  "mode": "unadmitted",
+  "result": {
+    "chain_version": "HQ300_POSITIVE_CHAIN@1.0.0",
+    "terminal": "ADP016_REFUSED",
+    "code": "INELIGIBLE_NONCAUSAL_SOURCE",
+    "detail": "basis event not admitted"
+  },
+  "calls": [
+    {
+      "function": "coupline_evaluate",
+      "args": [
+        {
+          "event_id": "EV1_FEEDBACK_WINDOW_ENCOUNTER",
+          "event_hash": "e87ec7d9db15e986cef1839c57003bbeffcad215eb907e899d37f19be318f70f",
+          "issuer_authority_id": "ISSUER_AUTH_WORLD_SCHED",
+          "issuer_authority_version": "1",
+          "event_kind": "EXTERNAL_RUNTIME_EVENT",
+          "effective_causal_time": "1998-10-03T16:00:00Z",
+          "actor_scope": "ACTOR_SYNTH_1",
+          "world_ref": "W_SYNTH_1998",
+          "world_as_of": "1998-10-03T16:00:00Z",
+          "admission_state": "REJECTED",
+          "public_features": [
+            "shift_feedback_window_open",
+            "supervisor_solicits_comment"
+          ],
+          "causal_parent_event_ids": [],
+          "derived_from_future_partition": false,
+          "reverse_chronology_flag": false
+        },
+        {
+          "actor_id": "ACTOR_SYNTH_1",
+          "can010_expectations": [],
+          "can010_strivings": [
+            "KEEP_STABLE_SHIFT"
+          ],
+          "can011_practices": [
+            "ASK_CLARIFICATION"
+          ],
+          "can011_tensions": [],
+          "adp016_memory_refs": [],
+          "adp017_claim_refs": [],
+          "prior_can008_response_count": 0,
+          "world_ref": "W_SYNTH_1998",
+          "world_as_of": "1998-10-03T16:00:00Z"
+        },
+        {
+          "rule_id": "CAND_R_CAN008_COUPLING_RESPONSE",
+          "rule_version": "1.0.0-candidate",
+          "rule_content_hash": "f27ae80d3cbb3d1137f7bb6d0e0a39171b26262526fbb3a132ec63972b3ebf6f",
+          "eligible_event_authority_signatures": [
+            "ISSUER_AUTH_WORLD_SCHED",
+            "ISSUER_AUTH_INSTITUTION"
+          ],
+          "eligible_event_roles": [
+            "PRECIPITATING_EVENT_STREAM"
+          ],
+          "actor_scope": "ACTOR_SYNTH_1",
+          "temporal_scope": "T_1998_2000",
+          "receivability_semantics": "event public features receivable to actor scope",
+          "eligible_conditioning_owner_signatures": [
+            "CAN010",
+            "CAN011",
+            "ADP015",
+            "ADP016",
+            "ADP017"
+          ],
+          "conditioning_causal_use_roles": [
+            "RECRUITMENT_ONLY"
+          ],
+          "counterpart_scoping": "none-required",
+          "modality_evidence_authorities": [
+            "NONE_USED:rule-uses-no-modality-evidence"
+          ],
+          "uptake_appraisal_semantics": "appraisal projection; NOT durable belief",
+          "recruitment_semantics": "situated recruitment refs; recruitment != actor access",
+          "multiplicity_handling": "all paths preserved; no winner-take-all",
+          "co_determination_closure": "deterministic single-pass closure",
+          "prior_response_history_predicates": "none",
+          "current_condition_effort_role": "none",
+          "effect_kinds": [
+            "BUFFER",
+            "AMPLIFY",
+            "DEFLECT",
+            "REROUTE",
+            "TRANSFORM",
+            "BLOCK"
+          ],
+          "target_authority_kind": "CAN008_CURRENT_PLUS_SEPARATE_OWNER_REQUEST",
+          "target_validation": "atomic precheck then commit or rollback",
+          "pff_current_consequence_projection": "not-emitted",
+          "valid_empty_behavior": "RESPONSE_EFFECTS_VALID_EMPTY lawful and distinct",
+          "missing_deferred_ambiguous_behavior": "typed nonpositive state; never silent conversion",
+          "quantitative_contract": "none",
+          "adp020_binding": "none (deterministic)",
+          "atomic_commit_behavior": "validate-all-then-commit; rollback on any failure",
+          "provenance_replay_requirements": "\u00a717 receipt content bound and replay-exact",
+          "obligation_coverage": [
+            "rule_id_version_content_hash",
+            "eligible_precipitating_event_authority_signatures_and_roles",
+            "exact_actor_and_temporal_scope",
+            "receivability_semantics",
+            "eligible_conditioning_owner_signatures",
+            "conditioning_causal_use_roles",
+            "counterpart_relationship_scoping",
+            "permitted_modality_evidence_authorities_and_roles",
+            "actor_uptake_appraisal_relation_semantics",
+            "situated_recruitment_relation_semantics",
+            "multiplicity_contradiction_handling",
+            "permitted_co_determination_and_deterministic_closure",
+            "prior_response_history_predicates_if_used",
+            "current_condition_effort_role_if_used",
+            "effect_graph_and_existing_can008_effect_kinds",
+            "target_authority_kind_and_target_validation",
+            "pff_current_consequence_projection_if_emitted",
+            "valid_empty_behavior",
+            "missing_deferred_ambiguous_failure_behavior",
+            "quantitative_contract_if_numeric",
+            "adp020_binding_if_stochastic",
+            "atomic_validation_commit_behavior",
+            "provenance_replay_requirements"
+          ]
+        },
+        {
+          "_rules": {
+            "CAND_R_CAN008_COUPLING_RESPONSE@1.0.0-candidate": {
+              "rule_id": "CAND_R_CAN008_COUPLING_RESPONSE",
+              "rule_version": "1.0.0-candidate",
+              "rule_content_hash": "f27ae80d3cbb3d1137f7bb6d0e0a39171b26262526fbb3a132ec63972b3ebf6f",
+              "issuer_authority_id": "ISSUER_AUTH_CANDIDATE_FIXTURE",
+              "issuer_authority_version": "1",
+              "actor_scope": "ACTOR_SYNTH_1",
+              "temporal_scope": "T_1998_2000",
+              "effect_kinds": [
+                "BUFFER",
+                "AMPLIFY",
+                "DEFLECT",
+                "REROUTE",
+                "TRANSFORM",
+                "BLOCK"
+              ],
+              "target_owner_kind": "CAN008_CURRENT",
+              "admission_state": "CANDIDATE_ADMITTED_IN_FIXTURE"
+            }
+          },
+          "_admissions": [
+            {
+              "status": "CANDIDATE_REGISTERED_IN_FIXTURE",
+              "rule_key": "CAND_R_CAN008_COUPLING_RESPONSE@1.0.0-candidate",
+              "fixture_id": "WORKER_CANDIDATE_REGISTRY_FIXTURE",
+              "fixture_grain": "SOURCEFREE_CANDIDATE_FIXTURE__NOT_ACCEPTED_AUTHORIZATION",
+              "production_registry_mutated": false
+            }
+          ]
+        }
+      ],
+      "kwargs": {},
+      "returned": {
+        "decision_state": "BLOCK_UNADMITTED_EVENT",
+        "gate": {
+          "status": "REFUSED",
+          "code": "BLOCK_UNADMITTED_EVENT",
+          "event_id": "EV1_FEEDBACK_WINDOW_ENCOUNTER"
+        },
+        "committed": false
+      }
+    },
+    {
+      "function": "response_rule_apply",
+      "args": [
+        {
+          "decision_state": "BLOCK_UNADMITTED_EVENT",
+          "gate": {
+            "status": "REFUSED",
+            "code": "BLOCK_UNADMITTED_EVENT",
+            "event_id": "EV1_FEEDBACK_WINDOW_ENCOUNTER"
+          },
+          "committed": false
+        },
+        {
+          "actor_id": "ACTOR_SYNTH_1",
+          "can010_expectations": [],
+          "can010_strivings": [
+            "KEEP_STABLE_SHIFT"
+          ],
+          "can011_practices": [
+            "ASK_CLARIFICATION"
+          ],
+          "can011_tensions": [],
+          "adp016_memory_refs": [],
+          "adp017_claim_refs": [],
+          "prior_can008_response_count": 0,
+          "world_ref": "W_SYNTH_1998",
+          "world_as_of": "1998-10-03T16:00:00Z"
+        },
+        {
+          "rule_id": "CAND_R_CAN008_COUPLING_RESPONSE",
+          "rule_version": "1.0.0-candidate",
+          "rule_content_hash": "f27ae80d3cbb3d1137f7bb6d0e0a39171b26262526fbb3a132ec63972b3ebf6f",
+          "eligible_event_authority_signatures": [
+            "ISSUER_AUTH_WORLD_SCHED",
+            "ISSUER_AUTH_INSTITUTION"
+          ],
+          "eligible_event_roles": [
+            "PRECIPITATING_EVENT_STREAM"
+          ],
+          "actor_scope": "ACTOR_SYNTH_1",
+          "temporal_scope": "T_1998_2000",
+          "receivability_semantics": "event public features receivable to actor scope",
+          "eligible_conditioning_owner_signatures": [
+            "CAN010",
+            "CAN011",
+            "ADP015",
+            "ADP016",
+            "ADP017"
+          ],
+          "conditioning_causal_use_roles": [
+            "RECRUITMENT_ONLY"
+          ],
+          "counterpart_scoping": "none-required",
+          "modality_evidence_authorities": [
+            "NONE_USED:rule-uses-no-modality-evidence"
+          ],
+          "uptake_appraisal_semantics": "appraisal projection; NOT durable belief",
+          "recruitment_semantics": "situated recruitment refs; recruitment != actor access",
+          "multiplicity_handling": "all paths preserved; no winner-take-all",
+          "co_determination_closure": "deterministic single-pass closure",
+          "prior_response_history_predicates": "none",
+          "current_condition_effort_role": "none",
+          "effect_kinds": [
+            "BUFFER",
+            "AMPLIFY",
+            "DEFLECT",
+            "REROUTE",
+            "TRANSFORM",
+            "BLOCK"
+          ],
+          "target_authority_kind": "CAN008_CURRENT_PLUS_SEPARATE_OWNER_REQUEST",
+          "target_validation": "atomic precheck then commit or rollback",
+          "pff_current_consequence_projection": "not-emitted",
+          "valid_empty_behavior": "RESPONSE_EFFECTS_VALID_EMPTY lawful and distinct",
+          "missing_deferred_ambiguous_behavior": "typed nonpositive state; never silent conversion",
+          "quantitative_contract": "none",
+          "adp020_binding": "none (deterministic)",
+          "atomic_commit_behavior": "validate-all-then-commit; rollback on any failure",
+          "provenance_replay_requirements": "\u00a717 receipt content bound and replay-exact",
+          "obligation_coverage": [
+            "rule_id_version_content_hash",
+            "eligible_precipitating_event_authority_signatures_and_roles",
+            "exact_actor_and_temporal_scope",
+            "receivability_semantics",
+            "eligible_conditioning_owner_signatures",
+            "conditioning_causal_use_roles",
+            "counterpart_relationship_scoping",
+            "permitted_modality_evidence_authorities_and_roles",
+            "actor_uptake_appraisal_relation_semantics",
+            "situated_recruitment_relation_semantics",
+            "multiplicity_contradiction_handling",
+            "permitted_co_determination_and_deterministic_closure",
+            "prior_response_history_predicates_if_used",
+            "current_condition_effort_role_if_used",
+            "effect_graph_and_existing_can008_effect_kinds",
+            "target_authority_kind_and_target_validation",
+            "pff_current_consequence_projection_if_emitted",
+            "valid_empty_behavior",
+            "missing_deferred_ambiguous_failure_behavior",
+            "quantitative_contract_if_numeric",
+            "adp020_binding_if_stochastic",
+            "atomic_validation_commit_behavior",
+            "provenance_replay_requirements"
+          ]
+        },
+        "BUFFER"
+      ],
+      "kwargs": {},
+      "returned": {
+        "decision_state": "BLOCK_UNADMITTED_EVENT",
+        "committed": false
+      }
+    },
+    {
+      "function": "ChainEventLedger.commit",
+      "kind": "CAN008_CURRENT_RESPONSE_EFFECT",
+      "payload": {
+        "effect_kind": "BUFFER",
+        "receipt_hash": "d9a7fdda4c7add49ee6b6841e4b1a0d9405989ecf4f46598be1740df80163d67"
+      },
+      "returned": {
+        "status": "COMMITTED_IN_CAUSAL_ORDER",
+        "entry": {
+          "seq": 0,
+          "kind": "CAN008_CURRENT_RESPONSE_EFFECT",
+          "payload": {
+            "effect_kind": "BUFFER",
+            "receipt_hash": "d9a7fdda4c7add49ee6b6841e4b1a0d9405989ecf4f46598be1740df80163d67"
+          },
+          "effective_causal_time": "1998-10-03T16:00:00Z",
+          "causal_parent_refs": [
+            "EV1_FEEDBACK_WINDOW_ENCOUNTER"
+          ],
+          "entry_hash": "25ae55ff2b1ec70331b314bdc4df137edefe704c571d6c62743f819b3e10acd4"
+        }
+      }
+    }
+  ],
+  "ledger_entries": [
+    [
+      {
+        "seq": 0,
+        "kind": "CAN008_CURRENT_RESPONSE_EFFECT",
+        "payload": {
+          "effect_kind": "BUFFER",
+          "receipt_hash": "d9a7fdda4c7add49ee6b6841e4b1a0d9405989ecf4f46598be1740df80163d67"
+        },
+        "effective_causal_time": "1998-10-03T16:00:00Z",
+        "causal_parent_refs": [
+          "EV1_FEEDBACK_WINDOW_ENCOUNTER"
+        ],
+        "entry_hash": "25ae55ff2b1ec70331b314bdc4df137edefe704c571d6c62743f819b3e10acd4"
+      }
+    ]
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "inherited_sha256": "056ebe78a4240a6123abcf4f1b390d90d1cf31c077e9085ddf9d0904dc473700",
+  "inherited_file_changed": false,
+  "positive": [
+    {
+      "original_expectation": "two ADMITTED events in order; the FIRST causes an ordered target-owner effect persisted as an ADP016 MemoryTransitionRecord",
+      "status": "PARTIAL_SCHEMA_NOT_OWNER_COMMIT",
+      "observation": "Actual trace and20-field record exist; destination request remains unvalidated/uncommitted.",
+      "evidence": "repro/observations/target_validation.json"
+    },
+    {
+      "original_expectation": "the SECOND event READS that persisted effect and produces a DISTINCT TYPED response (not a re-derivation from scratch)",
+      "status": "PARTIAL_CURRENT_HISTORY_ONLY",
+      "observation": "Later event really reads priorCAN008 effect and changes response; no ADP016/017 state read.",
+      "evidence": "repro/observations/durable_owner_chain.json"
+    },
+    {
+      "original_expectation": "ADP016 record carries all 20 required fields with deterministic identity = SHA-256 over actor/memory/kind/parents/rule/pre-post",
+      "status": "REVISE_IDENTITY_ALIAS",
+      "observation": "Twenty fields present; changed prestate does not change formation transition identity.",
+      "evidence": "repro/observations/memory_transition_collision.json"
+    },
+    {
+      "original_expectation": "all 7 formation gates enforced on the positive path",
+      "status": "REVISE_GATES_NOT_ENFORCED",
+      "observation": "Forged authority and missing prestate accepted; all7 gates mapped separately.",
+      "evidence": "02_ADP016_ADP017_LAW_GATES.json"
+    },
+    {
+      "original_expectation": "ADP017 ActorEpistemicEffect carries all 12 required fields with stance_operation in {ADD,WITHDRAW,SUPERSEDE_EXACT_RECORD,NO_CHANGE}",
+      "status": "PARTIAL_EFFECT_FIELDS_ONLY",
+      "observation": "Twelve fields and4 operation labels execute; exact claim/parent/rule validation and persisted state absent.",
+      "evidence": "repro/observations/forged_knowledge.json"
+    },
+    {
+      "original_expectation": "ABSENT-EFFECT CONTROL: with the first effect absent the second event must not produce the same distinct typed response",
+      "status": "PASS_SCOPED_PHYSICAL_ABLATION",
+      "observation": "First current-effect row genuinely absent; actual later responseAMPLIFY vs baselineDEFLECT.",
+      "evidence": "repro/causal/physical_absent_effect.json"
+    },
+    {
+      "original_expectation": "EXACT REPLAY: identical inputs reproduce identical identities",
+      "status": "PASS_SCOPED_EXACT_REPLAY",
+      "observation": "Actual full replay digest matches; does not cure semantic omissions.",
+      "evidence": "repro/causal/summary.json"
+    }
+  ],
+  "negative": [
+    {
+      "original_expectation": "forged issuer -> REFUSE",
+      "status": "REVISE",
+      "observation": "Direct issuer gate refuses but whole forged-first-event chain commits4 rows.",
+      "evidence": "repro/causal/forged_issuer.json"
+    },
+    {
+      "original_expectation": "hidden-future knowledge -> REFUSE",
+      "status": "PASS_SCOPED",
+      "observation": "Explicit derived_from_future_partition flag refuses; temporal2099 scope test separately fails.",
+      "evidence": "repro/observations/future_scope.json"
+    },
+    {
+      "original_expectation": "wrong actor -> REFUSE",
+      "status": "REVISE",
+      "observation": "Event/binding actor mismatch refuses; borrowed prestate actor and rewritten registration scope accept.",
+      "evidence": "repro/observations/borrowed_actor.json"
+    },
+    {
+      "original_expectation": "stale world / as-of -> REFUSE",
+      "status": "PASS_SCOPED",
+      "observation": "Direct world/asof mismatch refuses; no real-world currentness service claimed.",
+      "evidence": "repro/test_independent.py::test_basic_occurrence_guards"
+    },
+    {
+      "original_expectation": "duplicate event -> REFUSE",
+      "status": "PASS_SCOPED",
+      "observation": "Repeat event identity refuses.",
+      "evidence": "repro/test_independent.py::test_duplicate_event_refuses"
+    },
+    {
+      "original_expectation": "trace corruption -> REFUSE",
+      "status": "REVISE",
+      "observation": "Explicit declared hash mismatch refuses; corrupt memory marker and persisted effect accepted.",
+      "evidence": "repro/observations/corrupt_memory_state.json"
+    },
+    {
+      "original_expectation": "reverse chronology -> REFUSE",
+      "status": "PASS_SCOPED",
+      "observation": "Flagged causal inversion and monotonically ordered ledger check refuse; not independent lookup of arbitrary parent times.",
+      "evidence": "repro/test_independent.py::test_basic_occurrence_guards; candidate37"
+    },
+    {
+      "original_expectation": "registry contamination -> REFUSE",
+      "status": "PASS_SCOPED_PRODUCTION",
+      "observation": "Mappingproxy mutation raises TypeError; no record inserted. Candidate authorization holes remain separate.",
+      "evidence": "repro/test_independent.py::test_production_registry_stays_zero_positive_and_exact"
+    },
+    {
+      "original_expectation": "unauthorized origin self-explanation or memory -> REFUSE",
+      "status": "REVISE",
+      "observation": "Explicit trace check denies but sole-trace helper permits first-person BELIEF.",
+      "evidence": "repro/observations/sole_trace_access.json"
+    },
+    {
+      "original_expectation": "fake response -> REFUSE",
+      "status": "REVISE",
+      "observation": "Out-of-grammar kind refuses; bare forged COUPLING_EVALUATED dict produces effects in response helper.",
+      "evidence": "repro/observations/fake_coupling.json"
+    }
+  ],
+  "failclosed_adjudication": "Exact adopted ADP016 JSON has17 entries, not inherited16; UNKNOWN states remain UNKNOWN rather than always raising. Original freeze preserved, discrepancy disclosed in02.",
+  "source_aware_tests": "Authored after law, candidate source and first causal observation; not falsely claimed blind/pre-observation."
+}

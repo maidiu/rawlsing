@@ -1,0 +1,245 @@
+{
+  "schema": "RCP3_INDEPENDENT_CAN008_LAW_MAP@1",
+  "derivation": "Exact adopted \u00a716 text, not author obligation tuple",
+  "rows": [
+    {
+      "ordinal": 1,
+      "adopted_requirement": "exact rule ID/version/content hash",
+      "candidate_fields": "rule_id/version/content_hash",
+      "law": "CAN008_R2 b80dd692 \u00a716 item1",
+      "status": "REVISE_SEMANTIC_BINDING_NOT_ESTABLISHED",
+      "independent_assessment": "Presence-only helper is not called on active evaluation. Empty or foreign rule identity and an empty fixture registry still permit positive evaluation; no registration lookup.",
+      "active_omission_output": "RESPONSE_EFFECTS_PRODUCED",
+      "observation": "repro/observations/binding_01.json"
+    },
+    {
+      "ordinal": 2,
+      "adopted_requirement": "eligible precipitating event authority signatures and event roles",
+      "candidate_fields": "eligible_event_authority_signatures + eligible_event_roles",
+      "law": "CAN008_R2 b80dd692 \u00a716 item2",
+      "status": "REVISE_SEMANTIC_BINDING_NOT_ESTABLISHED",
+      "independent_assessment": "Issuer-ID membership rejects missing/foreign ID. Issuer version and event-role signature are not bound; changing issuer version leaves the receipt hash unchanged.",
+      "active_omission_output": "BLOCK_FORGED_OR_MISMATCHED_ISSUER",
+      "observation": "repro/observations/binding_02.json"
+    },
+    {
+      "ordinal": 3,
+      "adopted_requirement": "exact actor and temporal scope",
+      "candidate_fields": "actor_scope + temporal_scope",
+      "law": "CAN008_R2 b80dd692 \u00a716 item3",
+      "status": "REVISE_SEMANTIC_BINDING_NOT_ESTABLISHED",
+      "independent_assessment": "Event actor label is checked against binding, but registered actor scope, prestate actor and temporal_scope are not enforced. A future2099 event is accepted without the helper flag.",
+      "active_omission_output": "BLOCK_WRONG_ACTOR_SCOPE",
+      "observation": "repro/observations/binding_03.json"
+    },
+    {
+      "ordinal": 4,
+      "adopted_requirement": "receivability semantics for event material the rule uses",
+      "candidate_fields": "receivability_semantics",
+      "law": "CAN008_R2 b80dd692 \u00a716 item4",
+      "status": "REVISE_SEMANTIC_BINDING_NOT_ESTABLISHED",
+      "independent_assessment": "Empty public features label receivability UNRESOLVED but still allow response effects; omission of semantics is accepted on active path.",
+      "active_omission_output": "RESPONSE_EFFECTS_PRODUCED",
+      "observation": "repro/observations/binding_04.json"
+    },
+    {
+      "ordinal": 5,
+      "adopted_requirement": "eligible conditioning owner signatures",
+      "candidate_fields": "eligible_conditioning_owner_signatures",
+      "law": "CAN008_R2 b80dd692 \u00a716 item5",
+      "status": "REVISE_SEMANTIC_BINDING_NOT_ESTABLISHED",
+      "independent_assessment": "Striving/practice/memory strings are recruited without dereferencing exact owner/authority/version/state hashes. Removing eligible owner signatures does not block.",
+      "active_omission_output": "RESPONSE_EFFECTS_PRODUCED",
+      "observation": "repro/observations/binding_05.json"
+    },
+    {
+      "ordinal": 6,
+      "adopted_requirement": "conditioning causal-use roles",
+      "candidate_fields": "conditioning_causal_use_roles",
+      "law": "CAN008_R2 b80dd692 \u00a716 item6",
+      "status": "REVISE_SEMANTIC_BINDING_NOT_ESTABLISHED",
+      "independent_assessment": "Declared roles are copied into receipt but not checked against consumed state. Removing them leaves a positive response.",
+      "active_omission_output": "RESPONSE_EFFECTS_PRODUCED",
+      "observation": "repro/observations/binding_06.json"
+    },
+    {
+      "ordinal": 7,
+      "adopted_requirement": "counterpart/relationship scoping rules where relevant",
+      "candidate_fields": "counterpart_scoping",
+      "law": "CAN008_R2 b80dd692 \u00a716 item7",
+      "status": "NOT_APPLICABLE_IN_THIS_CELL",
+      "independent_assessment": "No counterpart/relationship input participates in this narrow cell. Conditional obligation is N/A, not a proved general scoping mechanism.",
+      "active_omission_output": "RESPONSE_EFFECTS_PRODUCED",
+      "observation": "repro/observations/binding_07.json"
+    },
+    {
+      "ordinal": 8,
+      "adopted_requirement": "permitted modality evidence authorities and roles",
+      "candidate_fields": "modality_evidence_authorities",
+      "law": "CAN008_R2 b80dd692 \u00a716 item8",
+      "status": "NOT_APPLICABLE_IN_THIS_CELL",
+      "independent_assessment": "No modality evidence is consumed. NONE_USED declaration is not implementation of future modality authority or roles.",
+      "active_omission_output": "RESPONSE_EFFECTS_PRODUCED",
+      "observation": "repro/observations/binding_08.json"
+    },
+    {
+      "ordinal": 9,
+      "adopted_requirement": "actor-uptake/appraisal relation semantics",
+      "candidate_fields": "uptake_appraisal_semantics",
+      "law": "CAN008_R2 b80dd692 \u00a716 item9",
+      "status": "REVISE_SEMANTIC_BINDING_NOT_ESTABLISHED",
+      "independent_assessment": "A constant appraisal template is emitted. No exact registered event-to-appraisal semantic binding is verified; omission still produces effects.",
+      "active_omission_output": "RESPONSE_EFFECTS_PRODUCED",
+      "observation": "repro/observations/binding_09.json"
+    },
+    {
+      "ordinal": 10,
+      "adopted_requirement": "situated-recruitment relation semantics",
+      "candidate_fields": "recruitment_semantics",
+      "law": "CAN008_R2 b80dd692 \u00a716 item10",
+      "status": "REVISE_SEMANTIC_BINDING_NOT_ESTABLISHED",
+      "independent_assessment": "String references are appended to recruitment without owner-state validation; missing recruitment semantics still produces effects.",
+      "active_omission_output": "RESPONSE_EFFECTS_PRODUCED",
+      "observation": "repro/observations/binding_10.json"
+    },
+    {
+      "ordinal": 11,
+      "adopted_requirement": "multiplicity/contradiction handling",
+      "candidate_fields": "multiplicity_handling",
+      "law": "CAN008_R2 b80dd692 \u00a716 item11",
+      "status": "REVISE_SEMANTIC_BINDING_NOT_ESTABLISHED",
+      "independent_assessment": "Selected lists preserve some order; tensions/expectations and contradictory owner states are not exercised. No active multiplicity binding check.",
+      "active_omission_output": "RESPONSE_EFFECTS_PRODUCED",
+      "observation": "repro/observations/binding_11.json"
+    },
+    {
+      "ordinal": 12,
+      "adopted_requirement": "any permitted co-determining/iterative evaluation and deterministic closure",
+      "candidate_fields": "co_determination_closure",
+      "law": "CAN008_R2 b80dd692 \u00a716 item12",
+      "status": "REVISE_SEMANTIC_BINDING_NOT_ESTABLISHED",
+      "independent_assessment": "One straight deterministic pass has finite execution and exact fixture replay. Its declared closure binding can be omitted; no iterative semantics are established.",
+      "active_omission_output": "RESPONSE_EFFECTS_PRODUCED",
+      "observation": "repro/observations/binding_12.json"
+    },
+    {
+      "ordinal": 13,
+      "adopted_requirement": "prior response-history predicates if used",
+      "candidate_fields": "prior_response_history_predicates",
+      "law": "CAN008_R2 b80dd692 \u00a716 item13",
+      "status": "REVISE_SEMANTIC_BINDING_NOT_ESTABLISHED",
+      "independent_assessment": "Default binding declares prior history NONE, but chain directly branches on prior BUFFER row. No exact history predicate/hash/actor scope is validated.",
+      "active_omission_output": "RESPONSE_EFFECTS_PRODUCED",
+      "observation": "repro/observations/binding_13.json"
+    },
+    {
+      "ordinal": 14,
+      "adopted_requirement": "current condition/effort role if used",
+      "candidate_fields": "current_condition_effort_role",
+      "law": "CAN008_R2 b80dd692 \u00a716 item14",
+      "status": "NOT_APPLICABLE_IN_THIS_CELL",
+      "independent_assessment": "No current condition/effort input is used. N/A for this cell; no capacity scalar or general effort claim inferred.",
+      "active_omission_output": "RESPONSE_EFFECTS_PRODUCED",
+      "observation": "repro/observations/binding_14.json"
+    },
+    {
+      "ordinal": 15,
+      "adopted_requirement": "effect graph and existing CAN-008 effect kinds",
+      "candidate_fields": "effect_kinds",
+      "law": "CAN008_R2 b80dd692 \u00a716 item15",
+      "status": "PARTIAL_GRAMMAR_ONLY",
+      "independent_assessment": "Requested effect outside six inherited kinds refuses. This establishes enum guarding only; caller still chooses allowed effect and target request remains unvalidated.",
+      "active_omission_output": "RESPONSE_COUPLING_RULE_MISSING",
+      "observation": "repro/observations/binding_15.json"
+    },
+    {
+      "ordinal": 16,
+      "adopted_requirement": "target authority/kind and target validation",
+      "candidate_fields": "target_authority_kind + target_validation",
+      "law": "CAN008_R2 b80dd692 \u00a716 item16",
+      "status": "REVISE_SEMANTIC_BINDING_NOT_ESTABLISHED",
+      "independent_assessment": "Target requests explicitly have validated=False and committed=False; chain nonetheless reports target owner effect committed. Target validation binding is not executed.",
+      "active_omission_output": "RESPONSE_EFFECTS_PRODUCED",
+      "observation": "repro/observations/binding_16.json"
+    },
+    {
+      "ordinal": 17,
+      "adopted_requirement": "PFF-current consequence projection, if emitted",
+      "candidate_fields": "pff_current_consequence_projection",
+      "law": "CAN008_R2 b80dd692 \u00a716 item17",
+      "status": "REVISE_SEMANTIC_BINDING_NOT_ESTABLISHED",
+      "independent_assessment": "Binding says current projection NOT_EMITTED but response emits NON_DURABLE_CURRENT_CONSEQUENCE. No governed PFF consumer envelope; current row is later history, not proof of durable owner state.",
+      "active_omission_output": "RESPONSE_EFFECTS_PRODUCED",
+      "observation": "repro/observations/binding_17.json"
+    },
+    {
+      "ordinal": 18,
+      "adopted_requirement": "valid-empty behavior",
+      "candidate_fields": "valid_empty_behavior",
+      "law": "CAN008_R2 b80dd692 \u00a716 item18",
+      "status": "REVISE_SEMANTIC_BINDING_NOT_ESTABLISHED",
+      "independent_assessment": "No public features still produces positive response. Declared valid-empty behavior is text; omit it and active path continues.",
+      "active_omission_output": "RESPONSE_EFFECTS_PRODUCED",
+      "observation": "repro/observations/binding_18.json"
+    },
+    {
+      "ordinal": 19,
+      "adopted_requirement": "missing/deferred/ambiguous/failure behavior",
+      "candidate_fields": "missing_deferred_ambiguous_behavior",
+      "law": "CAN008_R2 b80dd692 \u00a716 item19",
+      "status": "REVISE_SEMANTIC_BINDING_NOT_ESTABLISHED",
+      "independent_assessment": "Some simple refusal codes work, but after a rejected coupling the chain can continue to commits or leave partial effects. Failure behavior string not enforced.",
+      "active_omission_output": "RESPONSE_EFFECTS_PRODUCED",
+      "observation": "repro/observations/binding_19.json"
+    },
+    {
+      "ordinal": 20,
+      "adopted_requirement": "quantitative contract if numeric",
+      "candidate_fields": "quantitative_contract",
+      "law": "CAN008_R2 b80dd692 \u00a716 item20",
+      "status": "NOT_APPLICABLE_IN_THIS_CELL",
+      "independent_assessment": "No numeric semantic operation is used; conditional numeric contract N/A. No quantitative validity is certified.",
+      "active_omission_output": "RESPONSE_EFFECTS_PRODUCED",
+      "observation": "repro/observations/binding_20.json"
+    },
+    {
+      "ordinal": 21,
+      "adopted_requirement": "ADP-020 binding if stochastic",
+      "candidate_fields": "adp020_binding",
+      "law": "CAN008_R2 b80dd692 \u00a716 item21",
+      "status": "NOT_APPLICABLE_IN_THIS_CELL",
+      "independent_assessment": "No stochastic operation is used; conditional ADP020 binding N/A. No stochastic grant or RNG success inferred.",
+      "active_omission_output": "RESPONSE_EFFECTS_PRODUCED",
+      "observation": "repro/observations/binding_21.json"
+    },
+    {
+      "ordinal": 22,
+      "adopted_requirement": "atomic validation/commit behavior",
+      "candidate_fields": "atomic_commit_behavior",
+      "law": "CAN008_R2 b80dd692 \u00a716 item22",
+      "status": "REVISE_SEMANTIC_BINDING_NOT_ESTABLISHED",
+      "independent_assessment": "Whole-chain forged issuer completes; unadmitted/missing hash returns ADP016_REFUSED after a CAN008 row has committed. No rollback; mutable payload and broken predecessor hash binding.",
+      "active_omission_output": "RESPONSE_EFFECTS_PRODUCED",
+      "observation": "repro/observations/binding_22.json"
+    },
+    {
+      "ordinal": 23,
+      "adopted_requirement": "provenance/replay requirements",
+      "candidate_fields": "provenance_replay_requirements",
+      "law": "CAN008_R2 b80dd692 \u00a716 item23",
+      "status": "REVISE_SEMANTIC_BINDING_NOT_ESTABLISHED",
+      "independent_assessment": "Fixture replay matches exactly. Version/owner state provenance omitted or unchecked; corrupt stored effect is read, and formation/epistemic IDs alias changed provenance.",
+      "active_omission_output": "RESPONSE_EFFECTS_PRODUCED",
+      "observation": "repro/observations/binding_23.json"
+    }
+  ],
+  "disposition": "REVIEW_REVISE",
+  "conditional_NA_items": [
+    7,
+    8,
+    14,
+    20,
+    21
+  ],
+  "note": "Tests are source-aware new reviewer controls, not a new or retroactive pre-observation freeze"
+}

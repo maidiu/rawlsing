@@ -1,0 +1,75 @@
+{
+  "verdict": "REVIEW_REVISE",
+  "actions": [
+    {
+      "id": "RCP3-CONTROL",
+      "finding": "Published absent-effect control does not remove effect",
+      "owner": "Candidate implementer and competent CAN008/ADP016/ADP017 owner; independent reviewer/HQ for acceptance",
+      "required_action": "Use an actual first-commit or later-read intervention, record the empty read and execute the same second-event response. Reviewer already supplies both discriminating controls; repair author control."
+    },
+    {
+      "id": "RCP3-ATOMICITY",
+      "finding": "Blocked first coupling still commits, or trace failure leaves partial state",
+      "owner": "Candidate implementer and competent CAN008/ADP016/ADP017 owner; independent reviewer/HQ for acceptance",
+      "required_action": "Precheck every required destination effect and registry/parent/context before commit; stage working views; rollback the failing event transaction; return nonpositive terminal on refused later commit."
+    },
+    {
+      "id": "RCP3-RULE_CUSTODY",
+      "finding": "Active path ignores registered binding and owner scope",
+      "owner": "Candidate implementer and competent CAN008/ADP016/ADP017 owner; independent reviewer/HQ for acceptance",
+      "required_action": "Dereference immutable fixture rule registration/body hash, issuer/version/event role, actor/prestate/time and exact conditioning refs. Do not enable production registry."
+    },
+    {
+      "id": "RCP3-HISTORY_TARGET",
+      "finding": "Target validation flags false and later path uses only current history",
+      "owner": "Candidate implementer and competent CAN008/ADP016/ADP017 owner; independent reviewer/HQ for acceptance",
+      "required_action": "Either explicitly narrow to an authorized exact priorCAN008-history predicate, or implement the commissioned validated destination-owner state transition and make the later event consume its exact state/effect identity. Do not present summary booleans as persistence."
+    },
+    {
+      "id": "RCP3-LEDGER",
+      "finding": "Mutable payloads, unbound predecessor hash and unchecked corrupted reads",
+      "owner": "Candidate implementer and competent CAN008/ADP016/ADP017 owner; independent reviewer/HQ for acceptance",
+      "required_action": "Seal/deep-copy committed records, hash full predecessor/content/actor/time provenance and verify records before causal read. No distributed DB redesign is implied."
+    },
+    {
+      "id": "RCP3-ADP016",
+      "finding": "Formation and transition gates do not verify source/rule/prestate/integrity",
+      "owner": "Candidate implementer and competent CAN008/ADP016/ADP017 owner; independent reviewer/HQ for acceptance",
+      "required_action": "Implement all applicable7 gates against exact source/parent and candidate owner state; distinguish unavailable/unknown; bind memory/transition identity to authoritative complete pre/post inputs and reject collisions."
+    },
+    {
+      "id": "RCP3-ADP017",
+      "finding": "Forged knowledge, empty belief and returned-effect ID aliases",
+      "owner": "Candidate implementer and competent CAN008/ADP016/ADP017 owner; independent reviewer/HQ for acceptance",
+      "required_action": "Verify CanonicalClaimRef, admitted acquisition/recognition basis, actor/time/rule/prestate and scope. Implement explicit state-set/transition persistence for any applied claim, with deterministic provenance-bound identities."
+    },
+    {
+      "id": "RCP3-K3_ACCESS",
+      "finding": "Sole-trace and known inaccessible memory can permit first-person",
+      "owner": "Candidate implementer and competent CAN008/ADP016/ADP017 owner; independent reviewer/HQ for acceptance",
+      "required_action": "Use exact basis refs and one non-bypassable permission path; trace never first-person basis; dead basis denies without erasing stance; UNKNOWN defers rather than becomes known denial."
+    },
+    {
+      "id": "RCP3-K5_SCOPE",
+      "finding": "Bounded belief invariance is not public-ratification causal implementation",
+      "owner": "Candidate implementer and competent CAN008/ADP016/ADP017 owner; independent reviewer/HQ for acceptance",
+      "required_action": "Preserve correct belief/objective-status noncollapse; identify separately owned public standing and actor uptake if that broader contrast is claimed. Do not force coherence from public status."
+    },
+    {
+      "id": "RCP3-PRIOR_COUNT",
+      "finding": "Inherited ADP016 count/blanket raise text differs from exact law",
+      "owner": "Candidate implementer and competent CAN008/ADP016/ADP017 owner; independent reviewer/HQ for acceptance",
+      "required_action": "HQ/reviewer note17 authoritative entries and two UNKNOWN behaviors; retain original RCP2 freeze byte-identically. No semantic amendment or I3 conflict is needed."
+    },
+    {
+      "id": "RCP3-PROMOTION",
+      "finding": "Candidate science does not qualify production authority",
+      "owner": "Candidate implementer and competent CAN008/ADP016/ADP017 owner; independent reviewer/HQ for acceptance",
+      "required_action": "Repair in an authorized author return, then obtain distinct independent I2 review. Competent HQ/owners alone decide candidate adoption/positive rule registration; real V3/source/model grants remain outside this court."
+    }
+  ],
+  "I3": "NOT_TRIGGERED; concrete candidate defects, no competing adopted-law contradiction",
+  "production_registry": "MUST_REMAIN_EMPTY",
+  "semantic_issuer_created": false,
+  "adoption_issued": false
+}

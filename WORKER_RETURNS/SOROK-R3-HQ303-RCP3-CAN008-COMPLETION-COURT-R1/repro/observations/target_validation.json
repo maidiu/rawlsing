@@ -1,0 +1,81 @@
+{
+  "response": {
+    "decision_state": "RESPONSE_EFFECTS_PRODUCED",
+    "current_response_consequence": {
+      "effect_kind": "BUFFER",
+      "durability": "NON_DURABLE_CURRENT_CONSEQUENCE"
+    },
+    "target_owner_effect_requests": [
+      {
+        "target_owner_kind": "CAN008_CURRENT_PLUS_SEPARATE_OWNER_REQUEST",
+        "validated": false,
+        "committed": false,
+        "request_kind": "SEPARATELY_OWNED_EFFECT_REQUEST"
+      }
+    ],
+    "committed": false
+  },
+  "ledger": [
+    [
+      {
+        "seq": 0,
+        "kind": "CAN008_CURRENT_RESPONSE_EFFECT",
+        "payload": {
+          "effect_kind": "BUFFER",
+          "receipt_hash": "a0b1ceaeb18359abf311eba1a387ef9b7e181111f422582e945361ae16ee176d"
+        },
+        "effective_causal_time": "1998-10-03T16:00:00Z",
+        "causal_parent_refs": [
+          "EV1_FEEDBACK_WINDOW_ENCOUNTER"
+        ],
+        "entry_hash": "63044f23c4c85c01f1665a7aa2ddf8b350194dc41e0ad751a97b93c730bcc913"
+      },
+      {
+        "seq": 1,
+        "kind": "ADP016_TRACE_COMMIT",
+        "payload": {
+          "memory_id": "2eaaed7c5485525467f1765ae95df71da00536afa8ce43c82541d750e7d5ec1a",
+          "representation_kind": "CAUSAL_TRACE_MEMORY",
+          "retention_state": "RETAINED",
+          "accessibility": "NOT_APPLICABLE_CAUSAL_TRACE"
+        },
+        "effective_causal_time": "1998-10-03T16:00:00Z",
+        "causal_parent_refs": [
+          "EV1_FEEDBACK_WINDOW_ENCOUNTER"
+        ],
+        "entry_hash": "45b9b99fcd287bce8c797001c8f6786aef0b076b01b96c1e32778d06ead23238",
+        "prev_entry_hash": "63044f23c4c85c01f1665a7aa2ddf8b350194dc41e0ad751a97b93c730bcc913"
+      },
+      {
+        "seq": 2,
+        "kind": "ADP017_EPISTEMIC_UPDATE",
+        "payload": {
+          "decision_state": "APPLIED_EPISTEMIC_TRANSITION",
+          "stance": "BELIEF"
+        },
+        "effective_causal_time": "1998-10-03T16:00:00Z",
+        "causal_parent_refs": [
+          "EV1_FEEDBACK_WINDOW_ENCOUNTER"
+        ],
+        "entry_hash": "837024ec6f4ab9b707e7b99db5349576af5adcc9c6881b0fe8edf8d29c6e6399",
+        "prev_entry_hash": "45b9b99fcd287bce8c797001c8f6786aef0b076b01b96c1e32778d06ead23238"
+      },
+      {
+        "seq": 3,
+        "kind": "CAN008_CURRENT_RESPONSE_EFFECT",
+        "payload": {
+          "effect_kind": "DEFLECT",
+          "receipt_hash": "baeabb1d2ec43f497585d992f0a6d0001cb933094e3678874d52ca161a7d112d",
+          "conditions_prior_effect": true
+        },
+        "effective_causal_time": "1998-11-20T09:00:00Z",
+        "causal_parent_refs": [
+          "EV2_LATER_SHIFT_CHANGE_REQUEST",
+          "EV1_FEEDBACK_WINDOW_ENCOUNTER"
+        ],
+        "entry_hash": "748c5c85158c5acfa073da0cb6eb97475177f7f916a36daac344851af663a63f",
+        "prev_entry_hash": "837024ec6f4ab9b707e7b99db5349576af5adcc9c6881b0fe8edf8d29c6e6399"
+      }
+    ]
+  ]
+}

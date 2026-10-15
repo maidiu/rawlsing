@@ -1,0 +1,14 @@
+{
+  "input": {
+    "admission_state": "REJECTED"
+  },
+  "output": {
+    "decision_state": "BLOCK_UNADMITTED_EVENT",
+    "gate": {
+      "status": "REFUSED",
+      "code": "BLOCK_UNADMITTED_EVENT",
+      "event_id": "REVIEW_EVENT_A"
+    },
+    "committed": false
+  }
+}

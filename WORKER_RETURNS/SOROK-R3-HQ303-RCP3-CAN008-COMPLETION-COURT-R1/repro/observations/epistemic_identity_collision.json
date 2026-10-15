@@ -1,0 +1,48 @@
+{
+  "a": {
+    "decision_state": "APPLIED_EPISTEMIC_TRANSITION",
+    "effect": {
+      "effect_id": "e472b163136cf5b32fe7353d8d21a74ece7695b8310bdf65f9040afa5b80afea",
+      "actor_id": "ACTOR_SYNTH_1",
+      "claim_ref": "REVIEW_CANONICAL_CLAIM",
+      "stance_kind": "BELIEF",
+      "stance_operation": "ADD",
+      "causal_parent_refs": [
+        "REVIEW_EVENT_A"
+      ],
+      "actor_facing_basis_refs": [
+        "REVIEW_EVENT_A:public"
+      ],
+      "memory_basis_refs": [],
+      "owning_rule_id": "CAND_R_CAN008_COUPLING_RESPONSE",
+      "owning_rule_version": "1.0.0-candidate",
+      "owning_rule_hash": "f27ae80d3cbb3d1137f7bb6d0e0a39171b26262526fbb3a132ec63972b3ebf6f",
+      "effective_causal_time": "1998-10-03T16:00:00Z"
+    },
+    "stance_persisted": true,
+    "accessible_memory_auto_creates_stance": false
+  },
+  "b": {
+    "decision_state": "APPLIED_EPISTEMIC_TRANSITION",
+    "effect": {
+      "effect_id": "e472b163136cf5b32fe7353d8d21a74ece7695b8310bdf65f9040afa5b80afea",
+      "actor_id": "ACTOR_SYNTH_1",
+      "claim_ref": "REVIEW_CANONICAL_CLAIM",
+      "stance_kind": "BELIEF",
+      "stance_operation": "ADD",
+      "causal_parent_refs": [
+        "DIFFERENT_PARENT"
+      ],
+      "actor_facing_basis_refs": [
+        "REVIEW_EVENT_A:public"
+      ],
+      "memory_basis_refs": [],
+      "owning_rule_id": "CAND_R_CAN008_COUPLING_RESPONSE",
+      "owning_rule_version": "1.0.0-candidate",
+      "owning_rule_hash": "DIFFERENT_RULE",
+      "effective_causal_time": "1998-10-03T16:00:00Z"
+    },
+    "stance_persisted": true,
+    "accessible_memory_auto_creates_stance": false
+  }
+}

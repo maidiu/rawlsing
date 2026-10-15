@@ -1,0 +1,30 @@
+{
+  "field": "effect_kinds",
+  "coupling": {
+    "decision_state": "COUPLING_EVALUATED",
+    "gate": {
+      "status": "ADMITTED_OCCURRENCE",
+      "event_id": "REVIEW_EVENT_A",
+      "event_hash": "a973117dfc88ea6f201d07147a6007d03bf3ed5a3c94ebb789c19a14726446ca"
+    },
+    "receivability": "RECEIVABLE",
+    "uptake_appraisal_projection": {
+      "projection": "appraisal_projection_under_appraisal projection; NOT durable belief",
+      "is_durable_belief": false,
+      "is_machine_reading": false,
+      "basis": "event public features + conditioning recruitment"
+    },
+    "situated_recruitment": [
+      "CAN011:PRACTICE:ASK_CLARIFICATION",
+      "CAN010:STRIVING:KEEP_STABLE_SHIFT"
+    ],
+    "recruitment_is_not_access": true,
+    "committed": false
+  },
+  "response": {
+    "decision_state": "RESPONSE_COUPLING_RULE_MISSING",
+    "detail": "effect kind outside registered rule effect graph",
+    "committed": false
+  },
+  "helper_validation": "RESPONSE_COUPLING_RULE_MISSING:effect_graph_and_existing_can008_effect_kinds"
+}

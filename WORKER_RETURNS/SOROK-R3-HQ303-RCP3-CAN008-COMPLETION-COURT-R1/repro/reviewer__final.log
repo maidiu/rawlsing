@@ -1,0 +1,382 @@
+..FFFFFFFFF........FFFFFFF..FFF..FFFFF..FFFF..FF......FFFF...F..F...FFF. [ 87%]
+..FFFF.F.F                                                               [100%]
+=================================== FAILURES ===================================
+_____________ test_published_control_actually_has_no_prior_effect ______________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:80: in test_published_control_actually_has_no_prior_effect
+    assert reads[0]['returned']==[], 'Named absent-effect control still reads BUFFER'
+E   AssertionError: Named absent-effect control still reads BUFFER
+E   assert [{'seq': 0, '...00:00Z', ...}] == []
+E     
+E     Left contains one more item: {'seq': 0, 'kind': 'CAN008_CURRENT_RESPONSE_EFFECT', 'payload': {'effect_kind': 'BUFFER', 'receipt_hash': 'a0b1ceaeb18359abf311eba1a387ef9b7e181111f422582e945361ae16ee176d'}, 'effective_causal_time': '1998-10-03T16:00:00Z', ...}
+E     Use -v to get more diff
+___________ test_later_response_consumes_durable_target_owner_state ____________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:86: in test_later_response_consumes_durable_target_owner_state
+    assert calls[1]['args'][1]['adp016_memory_refs'] or calls[1]['args'][1]['adp017_claim_refs'], 'Later prestate contains neither committed memory nor epistemic state'
+E   AssertionError: Later prestate contains neither committed memory nor epistemic state
+E   assert ([] or [])
+____________ test_target_owner_validation_precedes_committed_effect ____________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:92: in test_target_owner_validation_precedes_committed_effect
+    assert all(x['validated'] and x['committed'] for x in response['target_owner_effect_requests']), 'Only unvalidated/uncommitted owner requests accompany reported target commit'
+E   AssertionError: Only unvalidated/uncommitted owner requests accompany reported target commit
+E   assert False
+E    +  where False = all(<generator object test_target_owner_validation_precedes_committed_effect.<locals>.<genexpr> at 0x111173440>)
+__________ test_invalid_first_event_is_failure_atomic[forged_issuer] ___________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:98: in test_invalid_first_event_is_failure_atomic
+    assert b['ledger_entries'][0]==[], 'Invalid first event left a committed CAN008 effect before failure/continued completion'
+E   AssertionError: Invalid first event left a committed CAN008 effect before failure/continued completion
+E   assert [{'seq': 0, '...00:00Z', ...}] == []
+E     
+E     Left contains 4 more items, first extra item: {'seq': 0, 'kind': 'CAN008_CURRENT_RESPONSE_EFFECT', 'payload': {'effect_kind': 'BUFFER', 'receipt_hash': '45d53eff2f1967ff6772a857078409592f03fbf7d3f75ededf355e92f48667d1'}, 'effective_causal_time': '1998-10-03T16:00:00Z', ...}
+E     Use -v to get more diff
+____________ test_invalid_first_event_is_failure_atomic[unadmitted] ____________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:98: in test_invalid_first_event_is_failure_atomic
+    assert b['ledger_entries'][0]==[], 'Invalid first event left a committed CAN008 effect before failure/continued completion'
+E   AssertionError: Invalid first event left a committed CAN008 effect before failure/continued completion
+E   assert [{'seq': 0, '...00:00Z', ...}] == []
+E     
+E     Left contains one more item: {'seq': 0, 'kind': 'CAN008_CURRENT_RESPONSE_EFFECT', 'payload': {'effect_kind': 'BUFFER', 'receipt_hash': 'd9a7fdda4c7add49ee6b6841e4b1a0d9405989ecf4f46598be1740df80163d67'}, 'effective_causal_time': '1998-10-03T16:00:00Z', ...}
+E     Use -v to get more diff
+_________ test_invalid_first_event_is_failure_atomic[fake_event_hash] __________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:98: in test_invalid_first_event_is_failure_atomic
+    assert b['ledger_entries'][0]==[], 'Invalid first event left a committed CAN008 effect before failure/continued completion'
+E   AssertionError: Invalid first event left a committed CAN008 effect before failure/continued completion
+E   assert [{'seq': 0, '...00:00Z', ...}] == []
+E     
+E     Left contains one more item: {'seq': 0, 'kind': 'CAN008_CURRENT_RESPONSE_EFFECT', 'payload': {'effect_kind': 'BUFFER', 'receipt_hash': 'a0573903afdfc69edb46e479cb3077bc18e52e268ab4520579e52e978f6a38ab'}, 'effective_causal_time': '1998-10-03T16:00:00Z', ...}
+E     Use -v to get more diff
+__________ test_corrupted_persisted_effect_is_refused_on_actual_read ___________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:103: in test_corrupted_persisted_effect_is_refused_on_actual_read
+    assert b['result']['terminal']!='CHAIN_COMPLETE', 'Stale entry hash does not block later response/commit'
+E   AssertionError: Stale entry hash does not block later response/commit
+E   assert 'CHAIN_COMPLETE' != 'CHAIN_COMPLETE'
+________________ test_ledger_payload_cannot_mutate_after_commit ________________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:109: in test_ledger_payload_cannot_mutate_after_commit
+    assert l.entries==before,'Ledger stores caller mutable payload by reference'
+E   AssertionError: Ledger stores caller mutable payload by reference
+E   assert [{'seq': 0, '... '1998', ...}] == [{'seq': 0, '... '1998', ...}]
+E     
+E     At index 0 diff: {'seq': 0, 'kind': 'EFFECT', 'payload': {'effect_kind': 'AMPLIFY'}, 'effective_causal_time': '1998', 'causal_parent_refs': [], 'entry_hash': '5a3569723b8de2a1adce5daa818c88f5bbb9c7597a4f259c2207342cf47f114c'} != {'seq': 0, 'kind': 'EFFECT', 'payload': {'effect_kind': 'BUFFER'}, 'effective_causal_time': '1998', 'causal_parent_refs': [], 'entry_hash': '5a3569723b8de2a1adce5daa818c88f5bbb9c7597a4f259c2207342cf47f114c'}
+E     Use -v to get more diff
+______________________ test_hash_chain_binds_predecessor _______________________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:117: in test_hash_chain_binds_predecessor
+    assert row['entry_hash']==wanted,'Entry was hashed before prev_entry_hash was added'
+E   AssertionError: Entry was hashed before prev_entry_hash was added
+E   assert '065b0f527634...d69ddf3e4c996' == '290fa9abaf40...a722bcc48dcd8'
+E     
+E     - 290fa9abaf40e9c5ef96d612f4d8a2853036b222d4bb879057fa722bcc48dcd8
+E     + 065b0f527634997e0b2fba6ea2d7a72a2c52909e0834e0a7f10d69ddf3e4c996
+_______________ test_unregistered_rule_cannot_evaluate_positive ________________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:138: in test_unregistered_rule_cannot_evaluate_positive
+    record('unregistered_rule',output=out);assert rejected(out)
+                                           ^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: assert False
+E    +  where False = rejected({'decision_state': 'COUPLING_EVALUATED', 'gate': {'status': 'ADMITTED_OCCURRENCE', 'event_id': 'REVIEW_EVENT_A', 'even...durable_belief': False, 'is_machine_reading': False, 'basis': 'event public features + conditioning recruitment'}, ...})
+_____________ test_foreign_rule_identity_cannot_evaluate_positive ______________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:144: in test_foreign_rule_identity_cannot_evaluate_positive
+    record('foreign_rule',binding=vars(binding),output=out);assert rejected(out)
+                                                            ^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: assert False
+E    +  where False = rejected({'decision_state': 'COUPLING_EVALUATED', 'gate': {'status': 'ADMITTED_OCCURRENCE', 'event_id': 'REVIEW_EVENT_A', 'even...durable_belief': False, 'is_machine_reading': False, 'basis': 'event public features + conditioning recruitment'}, ...})
+_______________ test_registered_actor_scope_cannot_be_rewritten ________________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:150: in test_registered_actor_scope_cannot_be_rewritten
+    record('registry_scope',binding=vars(binding),output=out);assert rejected(out)
+                                                              ^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: assert False
+E    +  where False = rejected({'decision_state': 'COUPLING_EVALUATED', 'gate': {'status': 'ADMITTED_OCCURRENCE', 'event_id': 'REVIEW_EVENT_A', 'even...durable_belief': False, 'is_machine_reading': False, 'basis': 'event public features + conditioning recruitment'}, ...})
+_____________________ test_borrowed_prestate_actor_refuses _____________________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:155: in test_borrowed_prestate_actor_refuses
+    record('borrowed_actor',output=out);assert rejected(out)
+                                        ^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: assert False
+E    +  where False = rejected({'decision_state': 'COUPLING_EVALUATED', 'gate': {'status': 'ADMITTED_OCCURRENCE', 'event_id': 'REVIEW_EVENT_A', 'even...durable_belief': False, 'is_machine_reading': False, 'basis': 'event public features + conditioning recruitment'}, ...})
+______________ test_temporal_scope_actually_enforced_without_flag ______________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:160: in test_temporal_scope_actually_enforced_without_flag
+    record('future_scope',output=out);assert rejected(out)
+                                      ^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: assert False
+E    +  where False = rejected({'decision_state': 'COUPLING_EVALUATED', 'gate': {'status': 'ADMITTED_OCCURRENCE', 'event_id': 'REVIEW_EVENT_A', 'even...durable_belief': False, 'is_machine_reading': False, 'basis': 'event public features + conditioning recruitment'}, ...})
+__________ test_unreceivable_event_does_not_become_positive_response ___________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:166: in test_unreceivable_event_does_not_become_positive_response
+    assert out.get('decision_state')!='RESPONSE_EFFECTS_PRODUCED'
+E   AssertionError: assert 'RESPONSE_EFFECTS_PRODUCED' != 'RESPONSE_EFFECTS_PRODUCED'
+E    +  where 'RESPONSE_EFFECTS_PRODUCED' = <built-in method get of dict object at 0x11113b500>('decision_state')
+E    +    where <built-in method get of dict object at 0x11113b500> = {'decision_state': 'RESPONSE_EFFECTS_PRODUCED', 'current_response_consequence': {'effect_kind': 'BUFFER', 'durability'...UEST', 'validated': False, 'committed': False, 'request_kind': 'SEPARATELY_OWNED_EFFECT_REQUEST'}], 'committed': False}.get
+___________ test_all_23_binding_omissions_on_active_path[1-rule_id-] ___________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:191: in test_all_23_binding_omissions_on_active_path
+    assert c.get('decision_state')!='COUPLING_EVALUATED' or r.get('decision_state')!='RESPONSE_EFFECTS_PRODUCED', 'Active path accepted missing binding '+field
+E   AssertionError: Active path accepted missing binding rule_id
+E   assert ('COUPLING_EVALUATED' != 'COUPLING_EVALUATED' or 'RESPONSE_EFFECTS_PRODUCED' != 'RESPONSE_EFFECTS_PRODUCED')
+E    +  where 'COUPLING_EVALUATED' = <built-in method get of dict object at 0x1113a03c0>('decision_state')
+E    +    where <built-in method get of dict object at 0x1113a03c0> = {'decision_state': 'COUPLING_EVALUATED', 'gate': {'status': 'ADMITTED_OCCURRENCE', 'event_id': 'REVIEW_EVENT_A', 'even...durable_belief': False, 'is_machine_reading': False, 'basis': 'event public features + conditioning recruitment'}, ...}.get
+E    +  and   'RESPONSE_EFFECTS_PRODUCED' = <built-in method get of dict object at 0x111362980>('decision_state')
+E    +    where <built-in method get of dict object at 0x111362980> = {'decision_state': 'RESPONSE_EFFECTS_PRODUCED', 'current_response_consequence': {'effect_kind': 'BUFFER', 'durability'...UEST', 'validated': False, 'committed': False, 'request_kind': 'SEPARATELY_OWNED_EFFECT_REQUEST'}], 'committed': False}.get
+___ test_all_23_binding_omissions_on_active_path[4-receivability_semantics-] ___
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:191: in test_all_23_binding_omissions_on_active_path
+    assert c.get('decision_state')!='COUPLING_EVALUATED' or r.get('decision_state')!='RESPONSE_EFFECTS_PRODUCED', 'Active path accepted missing binding '+field
+E   AssertionError: Active path accepted missing binding receivability_semantics
+E   assert ('COUPLING_EVALUATED' != 'COUPLING_EVALUATED' or 'RESPONSE_EFFECTS_PRODUCED' != 'RESPONSE_EFFECTS_PRODUCED')
+E    +  where 'COUPLING_EVALUATED' = <built-in method get of dict object at 0x1113a3780>('decision_state')
+E    +    where <built-in method get of dict object at 0x1113a3780> = {'decision_state': 'COUPLING_EVALUATED', 'gate': {'status': 'ADMITTED_OCCURRENCE', 'event_id': 'REVIEW_EVENT_A', 'even...durable_belief': False, 'is_machine_reading': False, 'basis': 'event public features + conditioning recruitment'}, ...}.get
+E    +  and   'RESPONSE_EFFECTS_PRODUCED' = <built-in method get of dict object at 0x1110e0680>('decision_state')
+E    +    where <built-in method get of dict object at 0x1110e0680> = {'decision_state': 'RESPONSE_EFFECTS_PRODUCED', 'current_response_consequence': {'effect_kind': 'BUFFER', 'durability'...UEST', 'validated': False, 'committed': False, 'request_kind': 'SEPARATELY_OWNED_EFFECT_REQUEST'}], 'committed': False}.get
+_ test_all_23_binding_omissions_on_active_path[5-eligible_conditioning_owner_signatures-value4] _
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:191: in test_all_23_binding_omissions_on_active_path
+    assert c.get('decision_state')!='COUPLING_EVALUATED' or r.get('decision_state')!='RESPONSE_EFFECTS_PRODUCED', 'Active path accepted missing binding '+field
+E   AssertionError: Active path accepted missing binding eligible_conditioning_owner_signatures
+E   assert ('COUPLING_EVALUATED' != 'COUPLING_EVALUATED' or 'RESPONSE_EFFECTS_PRODUCED' != 'RESPONSE_EFFECTS_PRODUCED')
+E    +  where 'COUPLING_EVALUATED' = <built-in method get of dict object at 0x1113ae300>('decision_state')
+E    +    where <built-in method get of dict object at 0x1113ae300> = {'decision_state': 'COUPLING_EVALUATED', 'gate': {'status': 'ADMITTED_OCCURRENCE', 'event_id': 'REVIEW_EVENT_A', 'even...durable_belief': False, 'is_machine_reading': False, 'basis': 'event public features + conditioning recruitment'}, ...}.get
+E    +  and   'RESPONSE_EFFECTS_PRODUCED' = <built-in method get of dict object at 0x110ed4c80>('decision_state')
+E    +    where <built-in method get of dict object at 0x110ed4c80> = {'decision_state': 'RESPONSE_EFFECTS_PRODUCED', 'current_response_consequence': {'effect_kind': 'BUFFER', 'durability'...UEST', 'validated': False, 'committed': False, 'request_kind': 'SEPARATELY_OWNED_EFFECT_REQUEST'}], 'committed': False}.get
+_ test_all_23_binding_omissions_on_active_path[6-conditioning_causal_use_roles-value5] _
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:191: in test_all_23_binding_omissions_on_active_path
+    assert c.get('decision_state')!='COUPLING_EVALUATED' or r.get('decision_state')!='RESPONSE_EFFECTS_PRODUCED', 'Active path accepted missing binding '+field
+E   AssertionError: Active path accepted missing binding conditioning_causal_use_roles
+E   assert ('COUPLING_EVALUATED' != 'COUPLING_EVALUATED' or 'RESPONSE_EFFECTS_PRODUCED' != 'RESPONSE_EFFECTS_PRODUCED')
+E    +  where 'COUPLING_EVALUATED' = <built-in method get of dict object at 0x111360740>('decision_state')
+E    +    where <built-in method get of dict object at 0x111360740> = {'decision_state': 'COUPLING_EVALUATED', 'gate': {'status': 'ADMITTED_OCCURRENCE', 'event_id': 'REVIEW_EVENT_A', 'even...durable_belief': False, 'is_machine_reading': False, 'basis': 'event public features + conditioning recruitment'}, ...}.get
+E    +  and   'RESPONSE_EFFECTS_PRODUCED' = <built-in method get of dict object at 0x1110f3200>('decision_state')
+E    +    where <built-in method get of dict object at 0x1110f3200> = {'decision_state': 'RESPONSE_EFFECTS_PRODUCED', 'current_response_consequence': {'effect_kind': 'BUFFER', 'durability'...UEST', 'validated': False, 'committed': False, 'request_kind': 'SEPARATELY_OWNED_EFFECT_REQUEST'}], 'committed': False}.get
+_ test_all_23_binding_omissions_on_active_path[9-uptake_appraisal_semantics-] __
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:191: in test_all_23_binding_omissions_on_active_path
+    assert c.get('decision_state')!='COUPLING_EVALUATED' or r.get('decision_state')!='RESPONSE_EFFECTS_PRODUCED', 'Active path accepted missing binding '+field
+E   AssertionError: Active path accepted missing binding uptake_appraisal_semantics
+E   assert ('COUPLING_EVALUATED' != 'COUPLING_EVALUATED' or 'RESPONSE_EFFECTS_PRODUCED' != 'RESPONSE_EFFECTS_PRODUCED')
+E    +  where 'COUPLING_EVALUATED' = <built-in method get of dict object at 0x110f03580>('decision_state')
+E    +    where <built-in method get of dict object at 0x110f03580> = {'decision_state': 'COUPLING_EVALUATED', 'gate': {'status': 'ADMITTED_OCCURRENCE', 'event_id': 'REVIEW_EVENT_A', 'even...durable_belief': False, 'is_machine_reading': False, 'basis': 'event public features + conditioning recruitment'}, ...}.get
+E    +  and   'RESPONSE_EFFECTS_PRODUCED' = <built-in method get of dict object at 0x11137be40>('decision_state')
+E    +    where <built-in method get of dict object at 0x11137be40> = {'decision_state': 'RESPONSE_EFFECTS_PRODUCED', 'current_response_consequence': {'effect_kind': 'BUFFER', 'durability'...UEST', 'validated': False, 'committed': False, 'request_kind': 'SEPARATELY_OWNED_EFFECT_REQUEST'}], 'committed': False}.get
+___ test_all_23_binding_omissions_on_active_path[10-recruitment_semantics-] ____
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:191: in test_all_23_binding_omissions_on_active_path
+    assert c.get('decision_state')!='COUPLING_EVALUATED' or r.get('decision_state')!='RESPONSE_EFFECTS_PRODUCED', 'Active path accepted missing binding '+field
+E   AssertionError: Active path accepted missing binding recruitment_semantics
+E   assert ('COUPLING_EVALUATED' != 'COUPLING_EVALUATED' or 'RESPONSE_EFFECTS_PRODUCED' != 'RESPONSE_EFFECTS_PRODUCED')
+E    +  where 'COUPLING_EVALUATED' = <built-in method get of dict object at 0x11136e600>('decision_state')
+E    +    where <built-in method get of dict object at 0x11136e600> = {'decision_state': 'COUPLING_EVALUATED', 'gate': {'status': 'ADMITTED_OCCURRENCE', 'event_id': 'REVIEW_EVENT_A', 'even...durable_belief': False, 'is_machine_reading': False, 'basis': 'event public features + conditioning recruitment'}, ...}.get
+E    +  and   'RESPONSE_EFFECTS_PRODUCED' = <built-in method get of dict object at 0x110ede700>('decision_state')
+E    +    where <built-in method get of dict object at 0x110ede700> = {'decision_state': 'RESPONSE_EFFECTS_PRODUCED', 'current_response_consequence': {'effect_kind': 'BUFFER', 'durability'...UEST', 'validated': False, 'committed': False, 'request_kind': 'SEPARATELY_OWNED_EFFECT_REQUEST'}], 'committed': False}.get
+___ test_all_23_binding_omissions_on_active_path[11-multiplicity_handling-] ____
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:191: in test_all_23_binding_omissions_on_active_path
+    assert c.get('decision_state')!='COUPLING_EVALUATED' or r.get('decision_state')!='RESPONSE_EFFECTS_PRODUCED', 'Active path accepted missing binding '+field
+E   AssertionError: Active path accepted missing binding multiplicity_handling
+E   assert ('COUPLING_EVALUATED' != 'COUPLING_EVALUATED' or 'RESPONSE_EFFECTS_PRODUCED' != 'RESPONSE_EFFECTS_PRODUCED')
+E    +  where 'COUPLING_EVALUATED' = <built-in method get of dict object at 0x11136f780>('decision_state')
+E    +    where <built-in method get of dict object at 0x11136f780> = {'decision_state': 'COUPLING_EVALUATED', 'gate': {'status': 'ADMITTED_OCCURRENCE', 'event_id': 'REVIEW_EVENT_A', 'even...durable_belief': False, 'is_machine_reading': False, 'basis': 'event public features + conditioning recruitment'}, ...}.get
+E    +  and   'RESPONSE_EFFECTS_PRODUCED' = <built-in method get of dict object at 0x110ed7940>('decision_state')
+E    +    where <built-in method get of dict object at 0x110ed7940> = {'decision_state': 'RESPONSE_EFFECTS_PRODUCED', 'current_response_consequence': {'effect_kind': 'BUFFER', 'durability'...UEST', 'validated': False, 'committed': False, 'request_kind': 'SEPARATELY_OWNED_EFFECT_REQUEST'}], 'committed': False}.get
+__ test_all_23_binding_omissions_on_active_path[12-co_determination_closure-] __
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:191: in test_all_23_binding_omissions_on_active_path
+    assert c.get('decision_state')!='COUPLING_EVALUATED' or r.get('decision_state')!='RESPONSE_EFFECTS_PRODUCED', 'Active path accepted missing binding '+field
+E   AssertionError: Active path accepted missing binding co_determination_closure
+E   assert ('COUPLING_EVALUATED' != 'COUPLING_EVALUATED' or 'RESPONSE_EFFECTS_PRODUCED' != 'RESPONSE_EFFECTS_PRODUCED')
+E    +  where 'COUPLING_EVALUATED' = <built-in method get of dict object at 0x11136d4c0>('decision_state')
+E    +    where <built-in method get of dict object at 0x11136d4c0> = {'decision_state': 'COUPLING_EVALUATED', 'gate': {'status': 'ADMITTED_OCCURRENCE', 'event_id': 'REVIEW_EVENT_A', 'even...durable_belief': False, 'is_machine_reading': False, 'basis': 'event public features + conditioning recruitment'}, ...}.get
+E    +  and   'RESPONSE_EFFECTS_PRODUCED' = <built-in method get of dict object at 0x11110de00>('decision_state')
+E    +    where <built-in method get of dict object at 0x11110de00> = {'decision_state': 'RESPONSE_EFFECTS_PRODUCED', 'current_response_consequence': {'effect_kind': 'BUFFER', 'durability'...UEST', 'validated': False, 'committed': False, 'request_kind': 'SEPARATELY_OWNED_EFFECT_REQUEST'}], 'committed': False}.get
+_ test_all_23_binding_omissions_on_active_path[13-prior_response_history_predicates-] _
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:191: in test_all_23_binding_omissions_on_active_path
+    assert c.get('decision_state')!='COUPLING_EVALUATED' or r.get('decision_state')!='RESPONSE_EFFECTS_PRODUCED', 'Active path accepted missing binding '+field
+E   AssertionError: Active path accepted missing binding prior_response_history_predicates
+E   assert ('COUPLING_EVALUATED' != 'COUPLING_EVALUATED' or 'RESPONSE_EFFECTS_PRODUCED' != 'RESPONSE_EFFECTS_PRODUCED')
+E    +  where 'COUPLING_EVALUATED' = <built-in method get of dict object at 0x1110782c0>('decision_state')
+E    +    where <built-in method get of dict object at 0x1110782c0> = {'decision_state': 'COUPLING_EVALUATED', 'gate': {'status': 'ADMITTED_OCCURRENCE', 'event_id': 'REVIEW_EVENT_A', 'even...durable_belief': False, 'is_machine_reading': False, 'basis': 'event public features + conditioning recruitment'}, ...}.get
+E    +  and   'RESPONSE_EFFECTS_PRODUCED' = <built-in method get of dict object at 0x11135c840>('decision_state')
+E    +    where <built-in method get of dict object at 0x11135c840> = {'decision_state': 'RESPONSE_EFFECTS_PRODUCED', 'current_response_consequence': {'effect_kind': 'BUFFER', 'durability'...UEST', 'validated': False, 'committed': False, 'request_kind': 'SEPARATELY_OWNED_EFFECT_REQUEST'}], 'committed': False}.get
+_____ test_all_23_binding_omissions_on_active_path[16-target_validation-] ______
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:191: in test_all_23_binding_omissions_on_active_path
+    assert c.get('decision_state')!='COUPLING_EVALUATED' or r.get('decision_state')!='RESPONSE_EFFECTS_PRODUCED', 'Active path accepted missing binding '+field
+E   AssertionError: Active path accepted missing binding target_validation
+E   assert ('COUPLING_EVALUATED' != 'COUPLING_EVALUATED' or 'RESPONSE_EFFECTS_PRODUCED' != 'RESPONSE_EFFECTS_PRODUCED')
+E    +  where 'COUPLING_EVALUATED' = <built-in method get of dict object at 0x111365a40>('decision_state')
+E    +    where <built-in method get of dict object at 0x111365a40> = {'decision_state': 'COUPLING_EVALUATED', 'gate': {'status': 'ADMITTED_OCCURRENCE', 'event_id': 'REVIEW_EVENT_A', 'even...durable_belief': False, 'is_machine_reading': False, 'basis': 'event public features + conditioning recruitment'}, ...}.get
+E    +  and   'RESPONSE_EFFECTS_PRODUCED' = <built-in method get of dict object at 0x1110f5600>('decision_state')
+E    +    where <built-in method get of dict object at 0x1110f5600> = {'decision_state': 'RESPONSE_EFFECTS_PRODUCED', 'current_response_consequence': {'effect_kind': 'BUFFER', 'durability'...UEST', 'validated': False, 'committed': False, 'request_kind': 'SEPARATELY_OWNED_EFFECT_REQUEST'}], 'committed': False}.get
+_ test_all_23_binding_omissions_on_active_path[17-pff_current_consequence_projection-] _
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:191: in test_all_23_binding_omissions_on_active_path
+    assert c.get('decision_state')!='COUPLING_EVALUATED' or r.get('decision_state')!='RESPONSE_EFFECTS_PRODUCED', 'Active path accepted missing binding '+field
+E   AssertionError: Active path accepted missing binding pff_current_consequence_projection
+E   assert ('COUPLING_EVALUATED' != 'COUPLING_EVALUATED' or 'RESPONSE_EFFECTS_PRODUCED' != 'RESPONSE_EFFECTS_PRODUCED')
+E    +  where 'COUPLING_EVALUATED' = <built-in method get of dict object at 0x111369540>('decision_state')
+E    +    where <built-in method get of dict object at 0x111369540> = {'decision_state': 'COUPLING_EVALUATED', 'gate': {'status': 'ADMITTED_OCCURRENCE', 'event_id': 'REVIEW_EVENT_A', 'even...durable_belief': False, 'is_machine_reading': False, 'basis': 'event public features + conditioning recruitment'}, ...}.get
+E    +  and   'RESPONSE_EFFECTS_PRODUCED' = <built-in method get of dict object at 0x110edcc00>('decision_state')
+E    +    where <built-in method get of dict object at 0x110edcc00> = {'decision_state': 'RESPONSE_EFFECTS_PRODUCED', 'current_response_consequence': {'effect_kind': 'BUFFER', 'durability'...UEST', 'validated': False, 'committed': False, 'request_kind': 'SEPARATELY_OWNED_EFFECT_REQUEST'}], 'committed': False}.get
+____ test_all_23_binding_omissions_on_active_path[18-valid_empty_behavior-] ____
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:191: in test_all_23_binding_omissions_on_active_path
+    assert c.get('decision_state')!='COUPLING_EVALUATED' or r.get('decision_state')!='RESPONSE_EFFECTS_PRODUCED', 'Active path accepted missing binding '+field
+E   AssertionError: Active path accepted missing binding valid_empty_behavior
+E   assert ('COUPLING_EVALUATED' != 'COUPLING_EVALUATED' or 'RESPONSE_EFFECTS_PRODUCED' != 'RESPONSE_EFFECTS_PRODUCED')
+E    +  where 'COUPLING_EVALUATED' = <built-in method get of dict object at 0x11136b900>('decision_state')
+E    +    where <built-in method get of dict object at 0x11136b900> = {'decision_state': 'COUPLING_EVALUATED', 'gate': {'status': 'ADMITTED_OCCURRENCE', 'event_id': 'REVIEW_EVENT_A', 'even...durable_belief': False, 'is_machine_reading': False, 'basis': 'event public features + conditioning recruitment'}, ...}.get
+E    +  and   'RESPONSE_EFFECTS_PRODUCED' = <built-in method get of dict object at 0x11128f280>('decision_state')
+E    +    where <built-in method get of dict object at 0x11128f280> = {'decision_state': 'RESPONSE_EFFECTS_PRODUCED', 'current_response_consequence': {'effect_kind': 'BUFFER', 'durability'...UEST', 'validated': False, 'committed': False, 'request_kind': 'SEPARATELY_OWNED_EFFECT_REQUEST'}], 'committed': False}.get
+_ test_all_23_binding_omissions_on_active_path[19-missing_deferred_ambiguous_behavior-] _
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:191: in test_all_23_binding_omissions_on_active_path
+    assert c.get('decision_state')!='COUPLING_EVALUATED' or r.get('decision_state')!='RESPONSE_EFFECTS_PRODUCED', 'Active path accepted missing binding '+field
+E   AssertionError: Active path accepted missing binding missing_deferred_ambiguous_behavior
+E   assert ('COUPLING_EVALUATED' != 'COUPLING_EVALUATED' or 'RESPONSE_EFFECTS_PRODUCED' != 'RESPONSE_EFFECTS_PRODUCED')
+E    +  where 'COUPLING_EVALUATED' = <built-in method get of dict object at 0x11136a8c0>('decision_state')
+E    +    where <built-in method get of dict object at 0x11136a8c0> = {'decision_state': 'COUPLING_EVALUATED', 'gate': {'status': 'ADMITTED_OCCURRENCE', 'event_id': 'REVIEW_EVENT_A', 'even...durable_belief': False, 'is_machine_reading': False, 'basis': 'event public features + conditioning recruitment'}, ...}.get
+E    +  and   'RESPONSE_EFFECTS_PRODUCED' = <built-in method get of dict object at 0x110eab180>('decision_state')
+E    +    where <built-in method get of dict object at 0x110eab180> = {'decision_state': 'RESPONSE_EFFECTS_PRODUCED', 'current_response_consequence': {'effect_kind': 'BUFFER', 'durability'...UEST', 'validated': False, 'committed': False, 'request_kind': 'SEPARATELY_OWNED_EFFECT_REQUEST'}], 'committed': False}.get
+___ test_all_23_binding_omissions_on_active_path[22-atomic_commit_behavior-] ___
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:191: in test_all_23_binding_omissions_on_active_path
+    assert c.get('decision_state')!='COUPLING_EVALUATED' or r.get('decision_state')!='RESPONSE_EFFECTS_PRODUCED', 'Active path accepted missing binding '+field
+E   AssertionError: Active path accepted missing binding atomic_commit_behavior
+E   assert ('COUPLING_EVALUATED' != 'COUPLING_EVALUATED' or 'RESPONSE_EFFECTS_PRODUCED' != 'RESPONSE_EFFECTS_PRODUCED')
+E    +  where 'COUPLING_EVALUATED' = <built-in method get of dict object at 0x1113add00>('decision_state')
+E    +    where <built-in method get of dict object at 0x1113add00> = {'decision_state': 'COUPLING_EVALUATED', 'gate': {'status': 'ADMITTED_OCCURRENCE', 'event_id': 'REVIEW_EVENT_A', 'even...durable_belief': False, 'is_machine_reading': False, 'basis': 'event public features + conditioning recruitment'}, ...}.get
+E    +  and   'RESPONSE_EFFECTS_PRODUCED' = <built-in method get of dict object at 0x111360a00>('decision_state')
+E    +    where <built-in method get of dict object at 0x111360a00> = {'decision_state': 'RESPONSE_EFFECTS_PRODUCED', 'current_response_consequence': {'effect_kind': 'BUFFER', 'durability'...UEST', 'validated': False, 'committed': False, 'request_kind': 'SEPARATELY_OWNED_EFFECT_REQUEST'}], 'committed': False}.get
+_ test_all_23_binding_omissions_on_active_path[23-provenance_replay_requirements-] _
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:191: in test_all_23_binding_omissions_on_active_path
+    assert c.get('decision_state')!='COUPLING_EVALUATED' or r.get('decision_state')!='RESPONSE_EFFECTS_PRODUCED', 'Active path accepted missing binding '+field
+E   AssertionError: Active path accepted missing binding provenance_replay_requirements
+E   assert ('COUPLING_EVALUATED' != 'COUPLING_EVALUATED' or 'RESPONSE_EFFECTS_PRODUCED' != 'RESPONSE_EFFECTS_PRODUCED')
+E    +  where 'COUPLING_EVALUATED' = <built-in method get of dict object at 0x1113acdc0>('decision_state')
+E    +    where <built-in method get of dict object at 0x1113acdc0> = {'decision_state': 'COUPLING_EVALUATED', 'gate': {'status': 'ADMITTED_OCCURRENCE', 'event_id': 'REVIEW_EVENT_A', 'even...durable_belief': False, 'is_machine_reading': False, 'basis': 'event public features + conditioning recruitment'}, ...}.get
+E    +  and   'RESPONSE_EFFECTS_PRODUCED' = <built-in method get of dict object at 0x110edcf80>('decision_state')
+E    +    where <built-in method get of dict object at 0x110edcf80> = {'decision_state': 'RESPONSE_EFFECTS_PRODUCED', 'current_response_consequence': {'effect_kind': 'BUFFER', 'durability'...UEST', 'validated': False, 'committed': False, 'request_kind': 'SEPARATELY_OWNED_EFFECT_REQUEST'}], 'committed': False}.get
+________________ test_memory_rejects_missing_prestate_integrity ________________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:210: in test_memory_rejects_missing_prestate_integrity
+    record('memory_empty_prestate',output=r);pytest.fail('Formation committed with empty pre-state hash')
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: Formation committed with empty pre-state hash
+_________________ test_memory_refuses_fake_rule_and_authority __________________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:216: in test_memory_refuses_fake_rule_and_authority
+    record('memory_forged_authority',output=r);pytest.fail('Presence of forged rule strings authorized formation')
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: Presence of forged rule strings authorized formation
+________________ test_memory_transition_identity_binds_prestate ________________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:222: in test_memory_transition_identity_binds_prestate
+    assert a['transition']['memory_transition_id']!=b['transition']['memory_transition_id']
+E   AssertionError: assert '26ab4c8d4ec6cb41876fc8d850adba547fbca296840d1defdbba195f37ef6ecb' != '26ab4c8d4ec6cb41876fc8d850adba547fbca296840d1defdbba195f37ef6ecb'
+_________________ test_memory_transition_requires_exact_parent _________________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:229: in test_memory_transition_requires_exact_parent
+    record('memory_no_parent',output=r);pytest.fail('Transition accepted without parent/prestate verification')
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: Transition accepted without parent/prestate verification
+_______________ test_k3_sole_trace_cannot_be_first_person_basis ________________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:249: in test_k3_sole_trace_cannot_be_first_person_basis
+    record('sole_trace_access',output=out);assert out['first_person_permission']=='DENY_FIRST_PERSON_CLAIM'
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: assert 'PERMIT_FIRST_PERSON_BELIEF' == 'DENY_FIRST_PERSON_CLAIM'
+E     
+E     - DENY_FIRST_PERSON_CLAIM
+E     + PERMIT_FIRST_PERSON_BELIEF
+_______________ test_access_unknown_does_not_become_known_denial _______________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:263: in test_access_unknown_does_not_become_known_denial
+    record('access_unknown',output=out);assert out['first_person_permission']=='DEFER_MISSING_AUTHORITY'
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: assert 'DENY_FIRST_PERSON_CLAIM' == 'DEFER_MISSING_AUTHORITY'
+E     
+E     - DEFER_MISSING_AUTHORITY
+E     + DENY_FIRST_PERSON_CLAIM
+______________ test_forged_actor_basis_is_not_verified_knowledge _______________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:286: in test_forged_actor_basis_is_not_verified_knowledge
+    record('forged_knowledge',output=out);assert rejected(out)
+                                          ^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: assert False
+E    +  where False = rejected({'decision_state': 'APPLIED_EPISTEMIC_TRANSITION', 'effect': {'effect_id': 'b5bdfdc242984aa7c02ace0c3d4fe88a87bfad59e0...CAL_CLAIM', 'stance_kind': 'KNOWLEDGE', ...}, 'stance_persisted': True, 'accessible_memory_auto_creates_stance': False})
+___________ test_empty_belief_claim_rule_and_parent_are_not_positive ___________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:291: in test_empty_belief_claim_rule_and_parent_are_not_positive
+    record('empty_belief',output=out);assert rejected(out)
+                                      ^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: assert False
+E    +  where False = rejected({'decision_state': 'APPLIED_EPISTEMIC_TRANSITION', 'effect': {'effect_id': '67a5fe1cac5da475e36cabfb772e74d4e5082a7500...laim_ref': '', 'stance_kind': 'BELIEF', ...}, 'stance_persisted': True, 'accessible_memory_auto_creates_stance': False})
+____________ test_epistemic_effect_identity_binds_rule_and_parents _____________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:296: in test_epistemic_effect_identity_binds_rule_and_parents
+    record('epistemic_identity_collision',a=a,b=b);assert a['effect']['effect_id']!=b['effect']['effect_id']
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: assert 'e472b163136cf5b32fe7353d8d21a74ece7695b8310bdf65f9040afa5b80afea' != 'e472b163136cf5b32fe7353d8d21a74ece7695b8310bdf65f9040afa5b80afea'
+___________ test_fake_coupling_dictionary_is_not_admitted_causality ____________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:325: in test_fake_coupling_dictionary_is_not_admitted_causality
+    assert out['decision_state']!='RESPONSE_EFFECTS_PRODUCED'
+E   AssertionError: assert 'RESPONSE_EFFECTS_PRODUCED' != 'RESPONSE_EFFECTS_PRODUCED'
+_______________ test_memory_missing_basis_is_typed_owner_refusal _______________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:329: in test_memory_missing_basis_is_typed_owner_refusal
+    try:out=trace(basis_event=None)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:45: in trace
+    data.update(kw);return owner.adp016_form_causal_trace(**data)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py:91: in adp016_form_causal_trace
+    if basis_event.admission_state != "ADMITTED":
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'NoneType' object has no attribute 'admission_state'
+
+During handling of the above exception, another exception occurred:
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:332: in test_memory_missing_basis_is_typed_owner_refusal
+    assert isinstance(e,owner.OwnerTransitionError)
+E   assert False
+E    +  where False = isinstance(AttributeError("'NoneType' object has no attribute 'admission_state'"), <class 'candidate.owner_transitions.OwnerTransitionError'>)
+E    +    where <class 'candidate.owner_transitions.OwnerTransitionError'> = owner.OwnerTransitionError
+___________________ test_memory_integrity_marker_is_enforced ___________________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:342: in test_memory_integrity_marker_is_enforced
+    record('corrupt_memory_state',output=out);pytest.fail('Corrupt memory accepted for commit')
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: Corrupt memory accepted for commit
+___________ test_memory_id_collision_does_not_alias_distinct_sources ___________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:350: in test_memory_id_collision_does_not_alias_distinct_sources
+    assert a['memory']['memory_id']!=b['memory']['memory_id'],'Same memory/state identity accepted for different source events'
+E   AssertionError: Same memory/state identity accepted for different source events
+E   assert 'REVIEW_COLLISION' != 'REVIEW_COLLISION'
+_______ test_known_inaccessible_event_memory_cannot_permit_first_person ________
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:360: in test_known_inaccessible_event_memory_cannot_permit_first_person
+    assert out['first_person_permission']=='DENY_FIRST_PERSON_CLAIM'
+E   AssertionError: assert 'PERMIT_FIRST_PERSON_BELIEF' == 'DENY_FIRST_PERSON_CLAIM'
+E     
+E     - DENY_FIRST_PERSON_CLAIM
+E     + PERMIT_FIRST_PERSON_BELIEF
+_____ test_event_authority_version_is_refused_or_bound_to_receipt_identity _____
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py:381: in test_event_authority_version_is_refused_or_bound_to_receipt_identity
+    assert rejected(c2) or r1['receipt_hash']!=r2['receipt_hash'],'Authority version is neither checked nor included in receipt identity'
+E   AssertionError: Authority version is neither checked nor included in receipt identity
+E   assert (False or '19f4946ccd16beea180a79259019d7c27626081a0f02bac324534b3daa84214b' != '19f4946ccd16beea180a79259019d7c27626081a0f02bac324534b3daa84214b')
+E    +  where False = rejected({'decision_state': 'COUPLING_EVALUATED', 'gate': {'status': 'ADMITTED_OCCURRENCE', 'event_id': 'REVIEW_EVENT_A', 'even...durable_belief': False, 'is_machine_reading': False, 'basis': 'event public features + conditioning recruitment'}, ...})
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_published_control_actually_has_no_prior_effect
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_later_response_consumes_durable_target_owner_state
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_target_owner_validation_precedes_committed_effect
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_invalid_first_event_is_failure_atomic[forged_issuer]
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_invalid_first_event_is_failure_atomic[unadmitted]
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_invalid_first_event_is_failure_atomic[fake_event_hash]
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_corrupted_persisted_effect_is_refused_on_actual_read
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_ledger_payload_cannot_mutate_after_commit
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_hash_chain_binds_predecessor
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_unregistered_rule_cannot_evaluate_positive
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_foreign_rule_identity_cannot_evaluate_positive
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_registered_actor_scope_cannot_be_rewritten
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_borrowed_prestate_actor_refuses
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_temporal_scope_actually_enforced_without_flag
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_unreceivable_event_does_not_become_positive_response
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_all_23_binding_omissions_on_active_path[1-rule_id-]
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_all_23_binding_omissions_on_active_path[4-receivability_semantics-]
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_all_23_binding_omissions_on_active_path[5-eligible_conditioning_owner_signatures-value4]
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_all_23_binding_omissions_on_active_path[6-conditioning_causal_use_roles-value5]
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_all_23_binding_omissions_on_active_path[9-uptake_appraisal_semantics-]
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_all_23_binding_omissions_on_active_path[10-recruitment_semantics-]
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_all_23_binding_omissions_on_active_path[11-multiplicity_handling-]
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_all_23_binding_omissions_on_active_path[12-co_determination_closure-]
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_all_23_binding_omissions_on_active_path[13-prior_response_history_predicates-]
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_all_23_binding_omissions_on_active_path[16-target_validation-]
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_all_23_binding_omissions_on_active_path[17-pff_current_consequence_projection-]
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_all_23_binding_omissions_on_active_path[18-valid_empty_behavior-]
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_all_23_binding_omissions_on_active_path[19-missing_deferred_ambiguous_behavior-]
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_all_23_binding_omissions_on_active_path[22-atomic_commit_behavior-]
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_all_23_binding_omissions_on_active_path[23-provenance_replay_requirements-]
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_memory_rejects_missing_prestate_integrity
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_memory_refuses_fake_rule_and_authority
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_memory_transition_identity_binds_prestate
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_memory_transition_requires_exact_parent
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_k3_sole_trace_cannot_be_first_person_basis
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_access_unknown_does_not_become_known_denial
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_forged_actor_basis_is_not_verified_knowledge
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_empty_belief_claim_rule_and_parent_are_not_positive
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_epistemic_effect_identity_binds_rule_and_parents
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_fake_coupling_dictionary_is_not_admitted_causality
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_memory_missing_basis_is_typed_owner_refusal
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_memory_integrity_marker_is_enforced
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_memory_id_collision_does_not_alias_distinct_sources
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_known_inaccessible_event_memory_cannot_permit_first_person
+FAILED WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/repro/test_independent.py::test_event_authority_version_is_refused_or_bound_to_receipt_identity
+45 failed, 37 passed in 0.75s

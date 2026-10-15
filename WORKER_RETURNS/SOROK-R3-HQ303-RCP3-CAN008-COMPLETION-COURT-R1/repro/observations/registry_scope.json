@@ -1,0 +1,100 @@
+{
+  "binding": {
+    "rule_id": "CAND_R_CAN008_COUPLING_RESPONSE",
+    "rule_version": "1.0.0-candidate",
+    "rule_content_hash": "f27ae80d3cbb3d1137f7bb6d0e0a39171b26262526fbb3a132ec63972b3ebf6f",
+    "eligible_event_authority_signatures": [
+      "ISSUER_AUTH_WORLD_SCHED",
+      "ISSUER_AUTH_INSTITUTION"
+    ],
+    "eligible_event_roles": [
+      "PRECIPITATING_EVENT_STREAM"
+    ],
+    "actor_scope": "OTHER_ACTOR",
+    "temporal_scope": "T_1998_2000",
+    "receivability_semantics": "event public features receivable to actor scope",
+    "eligible_conditioning_owner_signatures": [
+      "CAN010",
+      "CAN011",
+      "ADP015",
+      "ADP016",
+      "ADP017"
+    ],
+    "conditioning_causal_use_roles": [
+      "RECRUITMENT_ONLY"
+    ],
+    "counterpart_scoping": "none-required",
+    "modality_evidence_authorities": [
+      "NONE_USED:rule-uses-no-modality-evidence"
+    ],
+    "uptake_appraisal_semantics": "appraisal projection; NOT durable belief",
+    "recruitment_semantics": "situated recruitment refs; recruitment != actor access",
+    "multiplicity_handling": "all paths preserved; no winner-take-all",
+    "co_determination_closure": "deterministic single-pass closure",
+    "prior_response_history_predicates": "none",
+    "current_condition_effort_role": "none",
+    "effect_kinds": [
+      "BUFFER",
+      "AMPLIFY",
+      "DEFLECT",
+      "REROUTE",
+      "TRANSFORM",
+      "BLOCK"
+    ],
+    "target_authority_kind": "CAN008_CURRENT_PLUS_SEPARATE_OWNER_REQUEST",
+    "target_validation": "atomic precheck then commit or rollback",
+    "pff_current_consequence_projection": "not-emitted",
+    "valid_empty_behavior": "RESPONSE_EFFECTS_VALID_EMPTY lawful and distinct",
+    "missing_deferred_ambiguous_behavior": "typed nonpositive state; never silent conversion",
+    "quantitative_contract": "none",
+    "adp020_binding": "none (deterministic)",
+    "atomic_commit_behavior": "validate-all-then-commit; rollback on any failure",
+    "provenance_replay_requirements": "\u00a717 receipt content bound and replay-exact",
+    "obligation_coverage": [
+      "rule_id_version_content_hash",
+      "eligible_precipitating_event_authority_signatures_and_roles",
+      "exact_actor_and_temporal_scope",
+      "receivability_semantics",
+      "eligible_conditioning_owner_signatures",
+      "conditioning_causal_use_roles",
+      "counterpart_relationship_scoping",
+      "permitted_modality_evidence_authorities_and_roles",
+      "actor_uptake_appraisal_relation_semantics",
+      "situated_recruitment_relation_semantics",
+      "multiplicity_contradiction_handling",
+      "permitted_co_determination_and_deterministic_closure",
+      "prior_response_history_predicates_if_used",
+      "current_condition_effort_role_if_used",
+      "effect_graph_and_existing_can008_effect_kinds",
+      "target_authority_kind_and_target_validation",
+      "pff_current_consequence_projection_if_emitted",
+      "valid_empty_behavior",
+      "missing_deferred_ambiguous_failure_behavior",
+      "quantitative_contract_if_numeric",
+      "adp020_binding_if_stochastic",
+      "atomic_validation_commit_behavior",
+      "provenance_replay_requirements"
+    ]
+  },
+  "output": {
+    "decision_state": "COUPLING_EVALUATED",
+    "gate": {
+      "status": "ADMITTED_OCCURRENCE",
+      "event_id": "REVIEW_EVENT_A",
+      "event_hash": "a973117dfc88ea6f201d07147a6007d03bf3ed5a3c94ebb789c19a14726446ca"
+    },
+    "receivability": "RECEIVABLE",
+    "uptake_appraisal_projection": {
+      "projection": "appraisal_projection_under_appraisal projection; NOT durable belief",
+      "is_durable_belief": false,
+      "is_machine_reading": false,
+      "basis": "event public features + conditioning recruitment"
+    },
+    "situated_recruitment": [
+      "CAN011:PRACTICE:ASK_CLARIFICATION",
+      "CAN010:STRIVING:KEEP_STABLE_SHIFT"
+    ],
+    "recruitment_is_not_access": true,
+    "committed": false
+  }
+}

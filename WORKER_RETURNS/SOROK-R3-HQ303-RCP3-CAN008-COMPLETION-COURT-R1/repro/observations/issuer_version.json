@@ -1,0 +1,155 @@
+{
+  "canonical": {
+    "receipt_kind": "V3ResponseEvaluationReceipt",
+    "contract": "V3_ACTOR_RESPONSE_PRESSURE_FLOW_TRANSACTION_RULESET@2.0.0-CANDIDATE.R1",
+    "rule_id": "CAND_R_CAN008_COUPLING_RESPONSE",
+    "rule_version": "1.0.0-candidate",
+    "rule_content_hash": "f27ae80d3cbb3d1137f7bb6d0e0a39171b26262526fbb3a132ec63972b3ebf6f",
+    "precipitating_event": {
+      "event_id": "REVIEW_EVENT_A",
+      "event_hash": "a973117dfc88ea6f201d07147a6007d03bf3ed5a3c94ebb789c19a14726446ca",
+      "issuer_authority_id": "ISSUER_AUTH_WORLD_SCHED",
+      "effective_causal_time": "1998-10-03T16:00:00Z",
+      "role": "PRECIPITATING_EVENT_STREAM"
+    },
+    "conditioning_owner_refs": [
+      "CAN010",
+      "CAN011",
+      "ADP015",
+      "ADP016",
+      "ADP017"
+    ],
+    "conditioning_causal_use_roles": [
+      "RECRUITMENT_ONLY"
+    ],
+    "receivability": "RECEIVABLE",
+    "uptake_appraisal_projection": {
+      "projection": "appraisal_projection_under_appraisal projection; NOT durable belief",
+      "is_durable_belief": false,
+      "is_machine_reading": false,
+      "basis": "event public features + conditioning recruitment"
+    },
+    "situated_recruitment": [
+      "CAN011:PRACTICE:ASK_CLARIFICATION",
+      "CAN010:STRIVING:KEEP_STABLE_SHIFT"
+    ],
+    "effect_kind": "BUFFER",
+    "current_response_consequence": {
+      "effect_kind": "BUFFER",
+      "durability": "NON_DURABLE_CURRENT_CONSEQUENCE"
+    },
+    "target_owner_effects": [
+      {
+        "target_owner_kind": "CAN008_CURRENT_PLUS_SEPARATE_OWNER_REQUEST",
+        "validated": false,
+        "committed": false,
+        "request_kind": "SEPARATELY_OWNED_EFFECT_REQUEST"
+      }
+    ],
+    "decision_state": "RESPONSE_EFFECTS_PRODUCED",
+    "noncollapse_laws_bound": [
+      "interpretation/expectation/striving != present-effect occurrence",
+      "scar/need activation/attractor state != current causal evidence",
+      "PFF receivability/matching/facilitation != occurrence or causal evidence",
+      "machine reading != actor uptake",
+      "uptake != durable belief",
+      "recruitment != actor access",
+      "actor access != focality or self-explanation",
+      "precheck failure or negative simulation forces causal neutrality",
+      "transient causal_trace is overwrite-only and is not durable memory",
+      "current CAN-008 response authority does not seize durable source-owner jurisdictions",
+      "DRAFT_RESPONSE -> NO_SELF_FEEDBACK",
+      "REJECTED_RENDER -> NO_SELF_FEEDBACK",
+      "UNEMITTED_CANDIDATE -> NO_SELF_FEEDBACK"
+    ],
+    "is_durable_actor_state": false,
+    "receipt_hash": "19f4946ccd16beea180a79259019d7c27626081a0f02bac324534b3daa84214b"
+  },
+  "forged": {
+    "receipt_kind": "V3ResponseEvaluationReceipt",
+    "contract": "V3_ACTOR_RESPONSE_PRESSURE_FLOW_TRANSACTION_RULESET@2.0.0-CANDIDATE.R1",
+    "rule_id": "CAND_R_CAN008_COUPLING_RESPONSE",
+    "rule_version": "1.0.0-candidate",
+    "rule_content_hash": "f27ae80d3cbb3d1137f7bb6d0e0a39171b26262526fbb3a132ec63972b3ebf6f",
+    "precipitating_event": {
+      "event_id": "REVIEW_EVENT_A",
+      "event_hash": "a973117dfc88ea6f201d07147a6007d03bf3ed5a3c94ebb789c19a14726446ca",
+      "issuer_authority_id": "ISSUER_AUTH_WORLD_SCHED",
+      "effective_causal_time": "1998-10-03T16:00:00Z",
+      "role": "PRECIPITATING_EVENT_STREAM"
+    },
+    "conditioning_owner_refs": [
+      "CAN010",
+      "CAN011",
+      "ADP015",
+      "ADP016",
+      "ADP017"
+    ],
+    "conditioning_causal_use_roles": [
+      "RECRUITMENT_ONLY"
+    ],
+    "receivability": "RECEIVABLE",
+    "uptake_appraisal_projection": {
+      "projection": "appraisal_projection_under_appraisal projection; NOT durable belief",
+      "is_durable_belief": false,
+      "is_machine_reading": false,
+      "basis": "event public features + conditioning recruitment"
+    },
+    "situated_recruitment": [
+      "CAN011:PRACTICE:ASK_CLARIFICATION",
+      "CAN010:STRIVING:KEEP_STABLE_SHIFT"
+    ],
+    "effect_kind": "BUFFER",
+    "current_response_consequence": {
+      "effect_kind": "BUFFER",
+      "durability": "NON_DURABLE_CURRENT_CONSEQUENCE"
+    },
+    "target_owner_effects": [
+      {
+        "target_owner_kind": "CAN008_CURRENT_PLUS_SEPARATE_OWNER_REQUEST",
+        "validated": false,
+        "committed": false,
+        "request_kind": "SEPARATELY_OWNED_EFFECT_REQUEST"
+      }
+    ],
+    "decision_state": "RESPONSE_EFFECTS_PRODUCED",
+    "noncollapse_laws_bound": [
+      "interpretation/expectation/striving != present-effect occurrence",
+      "scar/need activation/attractor state != current causal evidence",
+      "PFF receivability/matching/facilitation != occurrence or causal evidence",
+      "machine reading != actor uptake",
+      "uptake != durable belief",
+      "recruitment != actor access",
+      "actor access != focality or self-explanation",
+      "precheck failure or negative simulation forces causal neutrality",
+      "transient causal_trace is overwrite-only and is not durable memory",
+      "current CAN-008 response authority does not seize durable source-owner jurisdictions",
+      "DRAFT_RESPONSE -> NO_SELF_FEEDBACK",
+      "REJECTED_RENDER -> NO_SELF_FEEDBACK",
+      "UNEMITTED_CANDIDATE -> NO_SELF_FEEDBACK"
+    ],
+    "is_durable_actor_state": false,
+    "receipt_hash": "19f4946ccd16beea180a79259019d7c27626081a0f02bac324534b3daa84214b"
+  },
+  "coupling": {
+    "decision_state": "COUPLING_EVALUATED",
+    "gate": {
+      "status": "ADMITTED_OCCURRENCE",
+      "event_id": "REVIEW_EVENT_A",
+      "event_hash": "a973117dfc88ea6f201d07147a6007d03bf3ed5a3c94ebb789c19a14726446ca"
+    },
+    "receivability": "RECEIVABLE",
+    "uptake_appraisal_projection": {
+      "projection": "appraisal_projection_under_appraisal projection; NOT durable belief",
+      "is_durable_belief": false,
+      "is_machine_reading": false,
+      "basis": "event public features + conditioning recruitment"
+    },
+    "situated_recruitment": [
+      "CAN011:PRACTICE:ASK_CLARIFICATION",
+      "CAN010:STRIVING:KEEP_STABLE_SHIFT"
+    ],
+    "recruitment_is_not_access": true,
+    "committed": false
+  }
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="1" failures="0" skipped="0" tests="1" time="0.584" timestamp="2026-10-15T02:34:16.117022-04:00" hostname="LOCAL_HOST"><testcase classname="" name="runtime_root.source.rawlsing_next.tests.test_wsc_gt0_end_to_end_integrated" time="0.000"><error message="collection failure">ImportError while importing test module 'REVIEW_ROOT/runtime_root/source/rawlsing_next/tests/test_wsc_gt0_end_to_end_integrated.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/runtime_root/source/rawlsing_next/tests/test_wsc_gt0_end_to_end_integrated.py:1: in &lt;module&gt;
+    from rawlsing_next.wsc_gt0_end_to_end import TERMINAL, run_gt0_end_to_end
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/runtime_root/source/rawlsing_next/wsc_gt0_end_to_end.py:11: in &lt;module&gt;
+    from rawlsing_next.wsc_gt0_v2_mediation import run_gt0_v3_v2
+WORKER_RETURNS/SOROK-R3-HQ303-RCP3-CAN008-COMPLETION-COURT-R1/runtime_root/source/rawlsing_next/wsc_gt0_v2_mediation.py:14: in &lt;module&gt;
+    from rawlsing_next import render_bounded_expression as bounded_render
+E   ImportError: cannot import name 'render_bounded_expression' from 'rawlsing_next' (unknown location)</error></testcase></testsuite></testsuites>

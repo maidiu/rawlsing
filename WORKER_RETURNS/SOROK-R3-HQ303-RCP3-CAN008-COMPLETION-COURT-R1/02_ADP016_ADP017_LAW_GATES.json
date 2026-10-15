@@ -1,0 +1,280 @@
+{
+  "schema": "RCP3_ADP016_ADP017_INDEPENDENT_LAW_MAP@1",
+  "inherited_prereg_count_correction": {
+    "inherited_text": "16 ADP016 fail-closed states",
+    "adopted_JSON_actual_entries": 17,
+    "inherited_freeze_changed": false,
+    "interpretation": "17 entries are authoritative. RETENTION_UNKNOWN/ACCESS_UNKNOWN remain unknown; the prior blanket must-raise wording is stronger than law. This is a disclosed law-vs-prior discrepancy, not a rewritten freeze."
+  },
+  "adp016_formation_gates": [
+    {
+      "ordinal": 1,
+      "adopted_gate": "exact V3 generated/admitted causal event or governed V3 causal transition exists",
+      "status": "PARTIAL",
+      "assessment": "Admission string and future-derived flag are checked. Source owner/event-kind issuance is not verified by formation."
+    },
+    {
+      "ordinal": 2,
+      "adopted_gate": "parent event/transition ID and immutable hash verify",
+      "status": "REVISE",
+      "assessment": "ID/hash nonempty only; no source-ledger hash verification in formation. Explicit mismatch helper separately rejects when supplied."
+    },
+    {
+      "ordinal": 3,
+      "adopted_gate": "actor has governed experiencer/participant/subject relation to remembered material OR output is lawful CAUSAL_TRACE_MEMORY",
+      "status": "SCOPED_CAUSAL_TRACE_EXCEPTION",
+      "assessment": "CAUSAL_TRACE_MEMORY may be formed without declarative experience; this does not grant actor knowledge or arbitrary actor/rule authority."
+    },
+    {
+      "ordinal": 4,
+      "adopted_gate": "every remembered feature is exact-source-bound generated causal material",
+      "status": "UNPROVED_FEATURE_CUSTODY",
+      "assessment": "A content-state enum is stored as source_feature_bindings; exact source feature identities/hashes are not verified."
+    },
+    {
+      "ordinal": 5,
+      "adopted_gate": "owning V3 event/rule requests or authorizes a typed ADP-016 memory effect",
+      "status": "REVISE",
+      "assessment": "Nonempty rule strings suffice; forged rule/authority forms memory."
+    },
+    {
+      "ordinal": 6,
+      "adopted_gate": "pre-state/provenance integrity passes",
+      "status": "REVISE",
+      "assessment": "Empty prestate accepted; formation ID does not bind prestate; corrupt memory marker accepted by transition helper."
+    },
+    {
+      "ordinal": 7,
+      "adopted_gate": "any stochastic operation has separately accepted causal-RNG authority and replay receipt",
+      "status": "NOT_APPLICABLE_DETERMINISTIC",
+      "assessment": "No stochastic operation in this cell; no ADP020/RNG grant inferred."
+    }
+  ],
+  "adp016_failclosed": [
+    {
+      "adopted": {
+        "state": "INELIGIBLE_NONCAUSAL_SOURCE",
+        "behavior": "Reject formation; create no memory."
+      },
+      "assessment": "Admitted flag false and five noncausal content kinds refuse; behavior positively observed."
+    },
+    {
+      "adopted": {
+        "state": "DEFERRED_MISSING_MEMORY_BASIS",
+        "behavior": "No mutation; preserve exact missing basis/authority reason."
+      },
+      "assessment": "Missing basis None raises untyped AttributeError; expected typed owner refusal not implemented."
+    },
+    {
+      "adopted": {
+        "state": "MISSING_PARENT_EVENT",
+        "behavior": "Block transition."
+      },
+      "assessment": "Empty event ID/hash formation guard raises; transition helper permits parent=None."
+    },
+    {
+      "adopted": {
+        "state": "PARENT_EVENT_HASH_MISMATCH",
+        "behavior": "Integrity failure; no mutation."
+      },
+      "assessment": "Explicit declared hash mismatch in transition helper raises correct typed error; formation has no authoritative lookup."
+    },
+    {
+      "adopted": {
+        "state": "UNKNOWN_MEMORY_ID",
+        "behavior": "Reject transition; no mutation."
+      },
+      "assessment": "No owner memory registry to verify existence; dataclass/enum shape validation only. Not established."
+    },
+    {
+      "adopted": {
+        "state": "MEMORY_ID_COLLISION",
+        "behavior": "Integrity failure."
+      },
+      "assessment": "Explicit override aliases different source events to same memory ID/current state hash; no collision check."
+    },
+    {
+      "adopted": {
+        "state": "PRE_STATE_HASH_MISMATCH",
+        "behavior": "Integrity failure; no mutation."
+      },
+      "assessment": "Explicit supplied mismatch rejects; omitted transition prestate or blank formation prestate accepts."
+    },
+    {
+      "adopted": {
+        "state": "UNAUTHORIZED_TRANSITION",
+        "behavior": "Reject; no mutation."
+      },
+      "assessment": "DELETE_MEMORY and unrecognized kind refuse. Forged formation rule/authority still accepts."
+    },
+    {
+      "adopted": {
+        "state": "UNAUTHORIZED_RECALL_CUE",
+        "behavior": "Reject V2/session/render/keyword or other noncausal cue."
+      },
+      "assessment": "CAUSAL_TRACE RECALL refuses; broader cue registry/slow-process authority not implemented."
+    },
+    {
+      "adopted": {
+        "state": "UNAUTHORIZED_OBJECTIVE_HISTORY_REHYDRATION",
+        "behavior": "Reject restoration of lost actor content from analyst-only ledger without new actor-facing event."
+      },
+      "assessment": "Dedicated helper always raises this typed refusal; no actual rehydration allowed."
+    },
+    {
+      "adopted": {
+        "state": "UNAUTHORIZED_V2_SESSION_PROMOTION",
+        "behavior": "Reject transcript/session/summary promotion into memory."
+      },
+      "assessment": "V2 transcript content-state refuses through generic INELIGIBLE_NONCAUSAL_SOURCE, not this distinct handler."
+    },
+    {
+      "adopted": {
+        "state": "UNSUPPORTED_CONFABULATION",
+        "behavior": "Reject invented substitute detail."
+      },
+      "assessment": "Unknown content-state enum refuses. Exact source-feature graph not verified; no broad confabulation safety claim."
+    },
+    {
+      "adopted": {
+        "state": "MISSING_RULE_VERSION",
+        "behavior": "Block/defer; no default."
+      },
+      "assessment": "Empty formation version refuses using UNAUTHORIZED_TRANSITION; exact version authority dereference missing."
+    },
+    {
+      "adopted": {
+        "state": "MISSING_RNG_AUTHORITY",
+        "behavior": "Block/defer requested stochastic transition."
+      },
+      "assessment": "No stochastic input or transition executed. N/A, not a separately exercised missing-RNG gate."
+    },
+    {
+      "adopted": {
+        "state": "RETENTION_UNKNOWN",
+        "behavior": "Remain unknown; no plausible default."
+      },
+      "assessment": "Law says remain UNKNOWN, not universally raise. Dataclass admits unknown enum; no governed mutation/persistence engine demonstrated."
+    },
+    {
+      "adopted": {
+        "state": "ACCESS_UNKNOWN",
+        "behavior": "Remain unknown; no plausible default."
+      },
+      "assessment": "Law says remain UNKNOWN. Sole-basis helper collapses permission to known DENY instead of DEFER_MISSING_AUTHORITY."
+    },
+    {
+      "adopted": {
+        "state": "INTEGRITY_FAILURE",
+        "behavior": "Block mutation and downstream causal use of disputed memory state."
+      },
+      "assessment": "Explicit corrupt memory integrity marker is accepted for commit; state-content hash validation absent."
+    }
+  ],
+  "memory_transition_fields": {
+    "required": [
+      "memory_transition_id",
+      "memory_id",
+      "actor_id",
+      "transition_kind",
+      "effective_causal_time",
+      "authority_id",
+      "authority_version",
+      "authority_or_rule_hash",
+      "memory_rule_id",
+      "memory_rule_version",
+      "memory_rule_hash",
+      "objective_source_event_refs",
+      "causal_parent_event_refs",
+      "cue_or_trigger_refs",
+      "pre_state_hash",
+      "post_state_hash",
+      "feature_state_before_hash",
+      "feature_state_after_hash",
+      "decision_state",
+      "integrity_state"
+    ],
+    "observed": "All20 named fields present in actual return",
+    "identity": "REVISE: changed prestate produces same memory_transition_id"
+  },
+  "adp017": {
+    "effect_fields": [
+      "effect_id",
+      "actor_id",
+      "claim_ref",
+      "stance_kind",
+      "stance_operation",
+      "causal_parent_refs",
+      "actor_facing_basis_refs",
+      "memory_basis_refs",
+      "owning_rule_id",
+      "owning_rule_version",
+      "owning_rule_hash",
+      "effective_causal_time"
+    ],
+    "field_presence": "All12 fields and four operation labels execute; no exact canonical claim registry or actor/state/parent authority validation",
+    "canonical_claim_required": [
+      "claim_id",
+      "claim_schema_version",
+      "subject_ref",
+      "predicate_ref",
+      "object_or_value",
+      "polarity",
+      "temporal_scope",
+      "subject_scope",
+      "referent_refs",
+      "canonical_content_hash",
+      "integrity_state"
+    ],
+    "knowledge_gates": [
+      {
+        "ordinal": 1,
+        "adopted": "exact canonical claim verifies",
+        "assessment": "Not independently verified against canonical claim/rule/actor/prestate/authority registry; forged positive knowledge observed."
+      },
+      {
+        "ordinal": 2,
+        "adopted": "claim is OBJECTIVE_SUPPORTED in same temporal/subject scope",
+        "assessment": "Objective relation gate rejects contradicted knowledge."
+      },
+      {
+        "ordinal": 3,
+        "adopted": "exact generated/admitted actor-facing acquisition or recognition basis exists",
+        "assessment": "Nonempty actor-facing string check only; forged string accepted."
+      },
+      {
+        "ordinal": 4,
+        "adopted": "owning V3 rule explicitly emits KNOWLEDGE ActorEpistemicEffect for exact claim",
+        "assessment": "Not independently verified against canonical claim/rule/actor/prestate/authority registry; forged positive knowledge observed."
+      },
+      {
+        "ordinal": 5,
+        "adopted": "actor role under owning rule is sufficient",
+        "assessment": "Not independently verified against canonical claim/rule/actor/prestate/authority registry; forged positive knowledge observed."
+      },
+      {
+        "ordinal": 6,
+        "adopted": "causal parent and pre-state integrity verifies",
+        "assessment": "Not independently verified against canonical claim/rule/actor/prestate/authority registry; forged positive knowledge observed."
+      },
+      {
+        "ordinal": 7,
+        "adopted": "all required authority exists",
+        "assessment": "Not independently verified against canonical claim/rule/actor/prestate/authority registry; forged positive knowledge observed."
+      }
+    ],
+    "belief_gates": [
+      "exact canonical claim",
+      "exact generated/admitted V3 causal parent or actor-state transition",
+      "owning V3 rule explicitly emits exact belief content/polarity",
+      "verified actor/time/rule/pre-state/provenance",
+      "no prohibited source promotion"
+    ],
+    "belief_assessment": "Empty claim, parents and rule identity still emit APPLIED. No state-set/transition store exists; stance_persisted is a boolean assertion.",
+    "K3": "Explicit trace representation denies first-person and recall; sole-trace helper nevertheless permits BELIEF; known inaccessible event memory is also permitted by direct first-person helper.",
+    "K5": "BELIEF effect identical when objective relation flips SUPPORTED/CONTRADICTED; bounded invariance verified. No public-standing ratification owner or real actor state is executed; do not claim a full standing-to-belief causal system.",
+    "first_person": "Ordinary accessible stance mapping and no-stance denial work. Unknown sole-memory basis is collapsed to DENY instead of DEFER; no complete actor-safe envelope producer in this candidate.",
+    "production_boundary": "M6 owner tests separately pass; candidate chain does not thereby become an integrated M6/V2/V3 actor path."
+  },
+  "disposition": "REVIEW_REVISE"
+}
