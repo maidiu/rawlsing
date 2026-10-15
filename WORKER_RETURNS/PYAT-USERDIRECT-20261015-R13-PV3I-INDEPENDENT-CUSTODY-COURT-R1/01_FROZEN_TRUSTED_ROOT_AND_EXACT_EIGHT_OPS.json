@@ -1,0 +1,255 @@
+{
+  "schema": "R13_PV3I_PRE_EXECUTION_FROZEN_INDEPENDENT_ORIGINAL_ROOT@1",
+  "sealed_startup": "a5beb6b542f4689f8ddd757deba79d76b2cfbdf5",
+  "candidate": "5c70c7d347998907c1c8a865f833dad581777a0e",
+  "previously_independent_oracle_blob": "677c259324bbb32f9cefeb33e87c6dc16b97efbf",
+  "previous_oracle_sha256": "321681bb0918e4119e3053aef8f0a6cb0d9db434eadc0a3225f897a686a55f79",
+  "freeze_scope": "FROZEN BEFORE PV3 CANDIDATE SOURCE IMPORT/EXECUTION; commission+PV2I prior independent inventory read",
+  "root_not_request_authorized": true,
+  "original_exact_eight": [
+    {
+      "key": "PV2-ADULT-A-PAIR",
+      "namespace": "PV2-ADULT-A",
+      "slot": "PAIR",
+      "source_native_items": [
+        "X",
+        "Y"
+      ],
+      "state": "RUNNABLE",
+      "reason": null,
+      "role": "X conditioner / Y target",
+      "form": "F1",
+      "unit": "TEST_ONLY_ADULT",
+      "instrument": "INST-PV2-ADULT-A/F1",
+      "occurrence": "PV2-FIRST-ADMINISTRATION",
+      "language": "PV2-LANGUAGE",
+      "options": [
+        "0",
+        "1"
+      ]
+    },
+    {
+      "key": "PV2-ADULT-A-B",
+      "namespace": "PV2-ADULT-A",
+      "slot": "B",
+      "source_native_items": [
+        "Y",
+        "X"
+      ],
+      "state": "RUNNABLE",
+      "reason": null,
+      "role": "Y conditioner / X target",
+      "form": "F1",
+      "unit": "TEST_ONLY_ADULT",
+      "instrument": "INST-PV2-ADULT-A/F1",
+      "occurrence": "PV2-FIRST-ADMINISTRATION",
+      "language": "PV2-LANGUAGE",
+      "options": [
+        "0",
+        "1"
+      ]
+    },
+    {
+      "key": "PV2-ADULT-A-DISCOVERY",
+      "namespace": "PV2-ADULT-A",
+      "slot": "DISCOVERY",
+      "source_native_items": [
+        "X",
+        "Y"
+      ],
+      "state": "RUNNABLE",
+      "reason": null,
+      "role": "bounded I05 discovery",
+      "form": "F1",
+      "unit": "TEST_ONLY_ADULT",
+      "instrument": "INST-PV2-ADULT-A/F1",
+      "occurrence": "PV2-FIRST-ADMINISTRATION",
+      "language": "PV2-LANGUAGE",
+      "options": [
+        "0",
+        "1"
+      ]
+    },
+    {
+      "key": "PV2-ADULT-A-ORDERED",
+      "namespace": "PV2-ADULT-A",
+      "slot": "ORDERED",
+      "source_native_items": [
+        "O"
+      ],
+      "state": "HELD",
+      "reason": "ORDERED_OWNER_NOT_ISSUED",
+      "role": "non-scalar ordered, held",
+      "form": "F1",
+      "unit": "TEST_ONLY_ADULT",
+      "instrument": "INST-PV2-ADULT-A/F1",
+      "occurrence": "PV2-FIRST-ADMINISTRATION",
+      "language": "PV2-LANGUAGE",
+      "options": [
+        "AB",
+        "BA"
+      ]
+    },
+    {
+      "key": "PV2-ADULT-B-PAIR",
+      "namespace": "PV2-ADULT-B",
+      "slot": "PAIR",
+      "source_native_items": [
+        "X",
+        "Y"
+      ],
+      "state": "RUNNABLE",
+      "reason": null,
+      "role": "X conditioner / Y target",
+      "form": "F1",
+      "unit": "TEST_ONLY_ADULT",
+      "instrument": "INST-PV2-ADULT-B/F1",
+      "occurrence": "PV2-FIRST-ADMINISTRATION",
+      "language": "PV2-LANGUAGE",
+      "options": [
+        "0",
+        "1"
+      ]
+    },
+    {
+      "key": "PV2-ADULT-B-B",
+      "namespace": "PV2-ADULT-B",
+      "slot": "B",
+      "source_native_items": [
+        "Y",
+        "X"
+      ],
+      "state": "RUNNABLE",
+      "reason": null,
+      "role": "Y conditioner / X target",
+      "form": "F1",
+      "unit": "TEST_ONLY_ADULT",
+      "instrument": "INST-PV2-ADULT-B/F1",
+      "occurrence": "PV2-FIRST-ADMINISTRATION",
+      "language": "PV2-LANGUAGE",
+      "options": [
+        "0",
+        "1"
+      ]
+    },
+    {
+      "key": "PV2-ADULT-B-DISCOVERY",
+      "namespace": "PV2-ADULT-B",
+      "slot": "DISCOVERY",
+      "source_native_items": [
+        "X",
+        "Y"
+      ],
+      "state": "RUNNABLE",
+      "reason": null,
+      "role": "bounded I05 discovery",
+      "form": "F1",
+      "unit": "TEST_ONLY_ADULT",
+      "instrument": "INST-PV2-ADULT-B/F1",
+      "occurrence": "PV2-FIRST-ADMINISTRATION",
+      "language": "PV2-LANGUAGE",
+      "options": [
+        "0",
+        "1"
+      ]
+    },
+    {
+      "key": "PV2-ADULT-B-ORDERED",
+      "namespace": "PV2-ADULT-B",
+      "slot": "ORDERED",
+      "source_native_items": [
+        "O"
+      ],
+      "state": "HELD",
+      "reason": "ORDERED_OWNER_NOT_ISSUED",
+      "role": "non-scalar ordered, held",
+      "form": "F1",
+      "unit": "TEST_ONLY_ADULT",
+      "instrument": "INST-PV2-ADULT-B/F1",
+      "occurrence": "PV2-FIRST-ADMINISTRATION",
+      "language": "PV2-LANGUAGE",
+      "options": [
+        "AB",
+        "BA"
+      ]
+    }
+  ],
+  "counts": {
+    "total": 8,
+    "run": 6,
+    "held": 2,
+    "namespaces": 2,
+    "actual_field_forge_consumers": 6,
+    "distinct_legacy_keys": 3
+  },
+  "physical_native_semantics": "Specialized GT2 Q86B/Q86A Field Forge relation. X/Y are test fixture participant placeholders, NOT authorized generic native labels.",
+  "row_expectations": {
+    "A": {
+      "R1": {
+        "X": 1,
+        "Y": 0
+      },
+      "R2": {
+        "X": 0,
+        "Y": 0
+      },
+      "R3": {
+        "X": 1,
+        "Y": "NOT_ELIGIBLE"
+      }
+    },
+    "B": "identical separate namespace under pinned fixture",
+    "joint_eligible_ids": [
+      "R1",
+      "R2"
+    ],
+    "baseline_forward": {
+      "X0": {
+        "Y0": 1,
+        "Y1": 0
+      },
+      "X1": {
+        "Y0": 0,
+        "Y1": 1
+      }
+    },
+    "baseline_reverse": {
+      "Y0": {
+        "X0": 1,
+        "X1": 0
+      },
+      "Y1": {
+        "X0": 0,
+        "X1": 1
+      }
+    },
+    "supported_opposite_zero_distinct_from_no_risk": true
+  },
+  "mandatory_hostiles": [
+    "request-coherent rewritten U/E/register/expected root denied by independent deployment",
+    "untrusted secondary forged fixture owner cannot install runtime authority",
+    "same-count swap of held original obligation forbidden",
+    "unknown original item/form/edition and role refused",
+    "current namespace A withdrawn, namespace B exact output unchanged",
+    "self-rehashed original fact support=999 refused at consumer read",
+    "returned material nested alias cannot overwrite stored past",
+    "journal result_refs mismatch and digest-forged checkpoint fail before changed result",
+    "real cold separate process [3,3] original six receipt identity, replay [0,0] under live original source reattestation",
+    "offline cached fact read cannot be promoted to fresh accepted source if no source",
+    "generic native semantics refused but original specialized GT2 six value-bearing positives remain"
+  ],
+  "original_suites_expected": {
+    "PV2": 33,
+    "V2K": 24,
+    "PV": 21,
+    "owners": 111,
+    "PV2I_frozen": 48,
+    "PV2I_raw_previous_pass": 26,
+    "PV2I_raw_previous_red": 22,
+    "PV3_author_new": 28,
+    "PV3_author_adapter_expected_pass": 47,
+    "PV3_author_adapter_expected_raw_fail": 1
+  },
+  "user_authority_ceiling": "TEST_ONLY only; no O1–O6 original U/Epre, no generic X/Y Field Forge semantic issuance, no all35/N11/N12/canonical/current/V3.",
+  "execution_status": "NOT_EXECUTED_AT_FREEZE"
+}
