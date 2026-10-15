@@ -1,0 +1,409 @@
+{
+  "schema": "M02_REVIEWER_PRE_EXECUTION_FREEZE@1",
+  "frozen_at_utc": "2026-10-15T23:13:42.999735+00:00",
+  "source_status": "source-inspected; no candidate/owner imports or executions",
+  "M01": "02187a14e75ff30dd953d3c7185d689b80e62304",
+  "M01_prereg": "845edf5d7c9c48b192b631dacf295afa6f587137",
+  "arms": [
+    {
+      "memory": "NONE",
+      "epistemic": "NONE",
+      "history": "STORED",
+      "expected_streams": {
+        "memory": "AMPLIFY",
+        "epistemic": "AMPLIFY"
+      },
+      "history_stored": true,
+      "history_delivered": true
+    },
+    {
+      "memory": "NONE",
+      "epistemic": "NONE",
+      "history": "OMITTED",
+      "expected_streams": {
+        "memory": "AMPLIFY",
+        "epistemic": "AMPLIFY"
+      },
+      "history_stored": false,
+      "history_delivered": false
+    },
+    {
+      "memory": "NONE",
+      "epistemic": "NONE",
+      "history": "WITHHELD",
+      "expected_streams": {
+        "memory": "AMPLIFY",
+        "epistemic": "AMPLIFY"
+      },
+      "history_stored": true,
+      "history_delivered": false
+    },
+    {
+      "memory": "NONE",
+      "epistemic": "BELIEF",
+      "history": "STORED",
+      "expected_streams": {
+        "memory": "AMPLIFY",
+        "epistemic": "REROUTE"
+      },
+      "history_stored": true,
+      "history_delivered": true
+    },
+    {
+      "memory": "NONE",
+      "epistemic": "BELIEF",
+      "history": "OMITTED",
+      "expected_streams": {
+        "memory": "AMPLIFY",
+        "epistemic": "REROUTE"
+      },
+      "history_stored": false,
+      "history_delivered": false
+    },
+    {
+      "memory": "NONE",
+      "epistemic": "BELIEF",
+      "history": "WITHHELD",
+      "expected_streams": {
+        "memory": "AMPLIFY",
+        "epistemic": "REROUTE"
+      },
+      "history_stored": true,
+      "history_delivered": false
+    },
+    {
+      "memory": "NONE",
+      "epistemic": "INACCESSIBLE",
+      "history": "STORED",
+      "expected_streams": {
+        "memory": "AMPLIFY",
+        "epistemic": "BLOCK"
+      },
+      "history_stored": true,
+      "history_delivered": true
+    },
+    {
+      "memory": "NONE",
+      "epistemic": "INACCESSIBLE",
+      "history": "OMITTED",
+      "expected_streams": {
+        "memory": "AMPLIFY",
+        "epistemic": "BLOCK"
+      },
+      "history_stored": false,
+      "history_delivered": false
+    },
+    {
+      "memory": "NONE",
+      "epistemic": "INACCESSIBLE",
+      "history": "WITHHELD",
+      "expected_streams": {
+        "memory": "AMPLIFY",
+        "epistemic": "BLOCK"
+      },
+      "history_stored": true,
+      "history_delivered": false
+    },
+    {
+      "memory": "CERTAIN",
+      "epistemic": "NONE",
+      "history": "STORED",
+      "expected_streams": {
+        "memory": "BUFFER",
+        "epistemic": "AMPLIFY"
+      },
+      "history_stored": true,
+      "history_delivered": true
+    },
+    {
+      "memory": "CERTAIN",
+      "epistemic": "NONE",
+      "history": "OMITTED",
+      "expected_streams": {
+        "memory": "BUFFER",
+        "epistemic": "AMPLIFY"
+      },
+      "history_stored": false,
+      "history_delivered": false
+    },
+    {
+      "memory": "CERTAIN",
+      "epistemic": "NONE",
+      "history": "WITHHELD",
+      "expected_streams": {
+        "memory": "BUFFER",
+        "epistemic": "AMPLIFY"
+      },
+      "history_stored": true,
+      "history_delivered": false
+    },
+    {
+      "memory": "CERTAIN",
+      "epistemic": "BELIEF",
+      "history": "STORED",
+      "expected_streams": {
+        "memory": "BUFFER",
+        "epistemic": "REROUTE"
+      },
+      "history_stored": true,
+      "history_delivered": true
+    },
+    {
+      "memory": "CERTAIN",
+      "epistemic": "BELIEF",
+      "history": "OMITTED",
+      "expected_streams": {
+        "memory": "BUFFER",
+        "epistemic": "REROUTE"
+      },
+      "history_stored": false,
+      "history_delivered": false
+    },
+    {
+      "memory": "CERTAIN",
+      "epistemic": "BELIEF",
+      "history": "WITHHELD",
+      "expected_streams": {
+        "memory": "BUFFER",
+        "epistemic": "REROUTE"
+      },
+      "history_stored": true,
+      "history_delivered": false
+    },
+    {
+      "memory": "CERTAIN",
+      "epistemic": "INACCESSIBLE",
+      "history": "STORED",
+      "expected_streams": {
+        "memory": "BUFFER",
+        "epistemic": "BLOCK"
+      },
+      "history_stored": true,
+      "history_delivered": true
+    },
+    {
+      "memory": "CERTAIN",
+      "epistemic": "INACCESSIBLE",
+      "history": "OMITTED",
+      "expected_streams": {
+        "memory": "BUFFER",
+        "epistemic": "BLOCK"
+      },
+      "history_stored": false,
+      "history_delivered": false
+    },
+    {
+      "memory": "CERTAIN",
+      "epistemic": "INACCESSIBLE",
+      "history": "WITHHELD",
+      "expected_streams": {
+        "memory": "BUFFER",
+        "epistemic": "BLOCK"
+      },
+      "history_stored": true,
+      "history_delivered": false
+    },
+    {
+      "memory": "UNCERTAIN",
+      "epistemic": "NONE",
+      "history": "STORED",
+      "expected_streams": {
+        "memory": "DEFLECT",
+        "epistemic": "AMPLIFY"
+      },
+      "history_stored": true,
+      "history_delivered": true
+    },
+    {
+      "memory": "UNCERTAIN",
+      "epistemic": "NONE",
+      "history": "OMITTED",
+      "expected_streams": {
+        "memory": "DEFLECT",
+        "epistemic": "AMPLIFY"
+      },
+      "history_stored": false,
+      "history_delivered": false
+    },
+    {
+      "memory": "UNCERTAIN",
+      "epistemic": "NONE",
+      "history": "WITHHELD",
+      "expected_streams": {
+        "memory": "DEFLECT",
+        "epistemic": "AMPLIFY"
+      },
+      "history_stored": true,
+      "history_delivered": false
+    },
+    {
+      "memory": "UNCERTAIN",
+      "epistemic": "BELIEF",
+      "history": "STORED",
+      "expected_streams": {
+        "memory": "DEFLECT",
+        "epistemic": "REROUTE"
+      },
+      "history_stored": true,
+      "history_delivered": true
+    },
+    {
+      "memory": "UNCERTAIN",
+      "epistemic": "BELIEF",
+      "history": "OMITTED",
+      "expected_streams": {
+        "memory": "DEFLECT",
+        "epistemic": "REROUTE"
+      },
+      "history_stored": false,
+      "history_delivered": false
+    },
+    {
+      "memory": "UNCERTAIN",
+      "epistemic": "BELIEF",
+      "history": "WITHHELD",
+      "expected_streams": {
+        "memory": "DEFLECT",
+        "epistemic": "REROUTE"
+      },
+      "history_stored": true,
+      "history_delivered": false
+    },
+    {
+      "memory": "UNCERTAIN",
+      "epistemic": "INACCESSIBLE",
+      "history": "STORED",
+      "expected_streams": {
+        "memory": "DEFLECT",
+        "epistemic": "BLOCK"
+      },
+      "history_stored": true,
+      "history_delivered": true
+    },
+    {
+      "memory": "UNCERTAIN",
+      "epistemic": "INACCESSIBLE",
+      "history": "OMITTED",
+      "expected_streams": {
+        "memory": "DEFLECT",
+        "epistemic": "BLOCK"
+      },
+      "history_stored": false,
+      "history_delivered": false
+    },
+    {
+      "memory": "UNCERTAIN",
+      "epistemic": "INACCESSIBLE",
+      "history": "WITHHELD",
+      "expected_streams": {
+        "memory": "DEFLECT",
+        "epistemic": "BLOCK"
+      },
+      "history_stored": true,
+      "history_delivered": false
+    },
+    {
+      "memory": "UNAVAILABLE",
+      "epistemic": "NONE",
+      "history": "STORED",
+      "expected_streams": {
+        "memory": "AMPLIFY",
+        "epistemic": "AMPLIFY"
+      },
+      "history_stored": true,
+      "history_delivered": true
+    },
+    {
+      "memory": "UNAVAILABLE",
+      "epistemic": "NONE",
+      "history": "OMITTED",
+      "expected_streams": {
+        "memory": "AMPLIFY",
+        "epistemic": "AMPLIFY"
+      },
+      "history_stored": false,
+      "history_delivered": false
+    },
+    {
+      "memory": "UNAVAILABLE",
+      "epistemic": "NONE",
+      "history": "WITHHELD",
+      "expected_streams": {
+        "memory": "AMPLIFY",
+        "epistemic": "AMPLIFY"
+      },
+      "history_stored": true,
+      "history_delivered": false
+    },
+    {
+      "memory": "UNAVAILABLE",
+      "epistemic": "BELIEF",
+      "history": "STORED",
+      "expected_streams": {
+        "memory": "AMPLIFY",
+        "epistemic": "REROUTE"
+      },
+      "history_stored": true,
+      "history_delivered": true
+    },
+    {
+      "memory": "UNAVAILABLE",
+      "epistemic": "BELIEF",
+      "history": "OMITTED",
+      "expected_streams": {
+        "memory": "AMPLIFY",
+        "epistemic": "REROUTE"
+      },
+      "history_stored": false,
+      "history_delivered": false
+    },
+    {
+      "memory": "UNAVAILABLE",
+      "epistemic": "BELIEF",
+      "history": "WITHHELD",
+      "expected_streams": {
+        "memory": "AMPLIFY",
+        "epistemic": "REROUTE"
+      },
+      "history_stored": true,
+      "history_delivered": false
+    },
+    {
+      "memory": "UNAVAILABLE",
+      "epistemic": "INACCESSIBLE",
+      "history": "STORED",
+      "expected_streams": {
+        "memory": "AMPLIFY",
+        "epistemic": "BLOCK"
+      },
+      "history_stored": true,
+      "history_delivered": true
+    },
+    {
+      "memory": "UNAVAILABLE",
+      "epistemic": "INACCESSIBLE",
+      "history": "OMITTED",
+      "expected_streams": {
+        "memory": "AMPLIFY",
+        "epistemic": "BLOCK"
+      },
+      "history_stored": false,
+      "history_delivered": false
+    },
+    {
+      "memory": "UNAVAILABLE",
+      "epistemic": "INACCESSIBLE",
+      "history": "WITHHELD",
+      "expected_streams": {
+        "memory": "AMPLIFY",
+        "epistemic": "BLOCK"
+      },
+      "history_stored": true,
+      "history_delivered": false
+    }
+  ],
+  "serial_M_to_B": "MECHANISM_IDENTIFICATION_HOLD; memory basis refs absent in original arms",
+  "future_state_claim": "Refuse/hold state/claim not causally available at response time; accepted future use is a material RED",
+  "production_positive_registry_expected": [],
+  "original_CAN3_historical_RED_count": 9
+}
