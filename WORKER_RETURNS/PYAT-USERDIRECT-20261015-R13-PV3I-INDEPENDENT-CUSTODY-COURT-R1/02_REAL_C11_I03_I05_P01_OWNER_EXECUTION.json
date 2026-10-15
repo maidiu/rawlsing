@@ -1,0 +1,170 @@
+{
+  "schema": "PV3I_PHYSICAL_EXECUTION_RECEIPT_R1",
+  "sealed_startup": "a5beb6b542f4689f8ddd757deba79d76b2cfbdf5",
+  "reviewed_candidate": "5c70c7d347998907c1c8a865f833dad581777a0e",
+  "evidence_grade": "INDEPENDENT_NATIVE_ORACLE_AND_ARCHIVED_PV3_OUTPUT_AUDIT__FULL_PV3_OWNER_RUNTIME_NOT_EXECUTED",
+  "host": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "git": "2.47.3",
+    "workdir": "/mnt/data/pv3i_court",
+    "git_private_repo_cli": "DNS_ERROR Could not resolve host github.com",
+    "github_connector": "Private authenticated exact Git source and original artifact fetch SUCCESS; source files not mounted into independent Python interpreter",
+    "reconstructed_full_74_blob_owner_tree": false,
+    "PV3_candidate_python_imported": false,
+    "FixtureOwnerControl_exact_module_imported": false,
+    "PV2I_48_direct_executed": false
+  },
+  "independent_python_runs": [
+    {
+      "suite": "Independent original native 8-op expectation/oracle",
+      "command": "python -m pytest -q test_pv3i_independent_oracle.py --junitxml=oracle.junit.xml",
+      "exit": 0,
+      "tests": 24,
+      "passed": 24,
+      "failed": 0,
+      "junit_sha256": "18cf39f16ac4a2bdd00b7e053fe8bc2cf8e24bc8d9925ee9e192b1d42fd75855",
+      "stdout_sha256": "00df58b6591991ab88a047cac6ac84b216c17cf8205a76386963a8563abe3cdb",
+      "test_sha256": "5421f27728fd464f9a025712ef247f82d40f6acd6bc194801acb6ce2dbe92ef5",
+      "evidence": "original three native X/Y rows, R3 ineligible, six runnable+two held, equal-count swaps, forward/reverse zero vs support, A-only real row changes, source B stability as frozen science, a subprocess writing/reopening a sourcefree checkpoint with 6 surrogate receipt IDs",
+      "qualification": "INDEPENDENT SOURCEFREE REFERENCE LAW, no accepted owner module or actual PV3 checkpoint/journal"
+    },
+    {
+      "suite": "GitHub committed minimal independent oracle",
+      "command": "python -m pytest -q test_pv3i_minimal_oracle.py --junitxml=minimal.junit.xml",
+      "exit": 0,
+      "tests": 9,
+      "passed": 9,
+      "failed": 0,
+      "junit_sha256": "ad73db1b6a772d99459e3e48d24ac652e9732ce10da191717cc93bad8910018f",
+      "stdout_sha256": "1af40c49f25815cc43199390723eca0ea305a38da96d85981d7ae68d66a97f6f",
+      "exact_local_git_blob": "eef0fcc0788baed89f87a26437433b78f29e8bf1",
+      "exact_committed_git_blob": "eef0fcc0788baed89f87a26437433b78f29e8bf1",
+      "qualification": "An overlapping subset of the independent 24-case native reference court, not nine additional scientific constructs"
+    },
+    {
+      "suite": "Exact source-extracted FixtureOwnerControl._load_policy/_resolve logic under isolated test host",
+      "command": "python -m pytest -q test_pv3i_policy_excerpt.py --junitxml=policy.junit.xml",
+      "exit": 1,
+      "tests": 6,
+      "passed": 5,
+      "failed": 1,
+      "junit_sha256": "13173602014d2252ce1c270a9f1b2d65cbf7c24f242dd1298656b9d257b37410",
+      "stdout_sha256": "aa885d99aeab4a4d3f79e427c56d7e4276db4dae6afa268b35a7fce36fede7b7",
+      "test_sha256": "9c92e33d4f8aba27f6847ce9917fb69945e0e4d7a83a378250a543d47487627c",
+      "passed_guards": [
+        "persisted trusted A withdrawal observed",
+        "unchanged B source decision observed",
+        "forged policy production ceiling refuses",
+        "changed policy expected root refuses",
+        "missing current owner store refuses"
+      ],
+      "failed_guard": "Attacker granted *OS-level write access to trusted policy file* can rewrite withdrawn A to unrevoked A with a higher clock and correct string labels; source-extracted method accepts. This exceeds declared trusted-host threat; do not count as a PV3 accepted-owner failure or as request-argument forgery.",
+      "qualification": "SOURCE-EXTRACTED POLICY METHODS, NOT imported original FixtureOwnerControl or real original source issuer"
+    }
+  ],
+  "independent_archived_original_artifact_audit": {
+    "first_version": "02A_ARCHIVED_ORIGINAL_PROJECTION_INDEPENDENT_AUDIT.json 14/15 because naive JSON.stringify property ordering",
+    "key_order_correction": "02B_ARCHIVED_AUDIT_ORDER_ERRATUM.json 15/15 using canonical object key order",
+    "original_expected_records": 8,
+    "positive_links": 6,
+    "held_records": 2,
+    "first_vs_replay_links_bitwise_equal": true,
+    "first_vs_retained_original_six_bitwise_equal": true,
+    "journal_proofs": [
+      3,
+      3
+    ],
+    "full_6_receipt_journal_values_after_canonical_key_sort": "PASS",
+    "actual_owner_execution_from_archived_receipts": "NO, historical author machine generated files"
+  },
+  "author_original_suite_receipts": {
+    "PV2_33": {
+      "blob": "e97921f5c7e1decd63ab0965fb7645438423dbc3",
+      "tests": 33,
+      "failed": 0
+    },
+    "V2K_24": {
+      "blob": "87de8db3ff74810f799d3e181b93783a90998202",
+      "tests": 24,
+      "failed": 0
+    },
+    "PV_21": {
+      "blob": "44f189f17983107f0eb8136da5f216d946bd5a44",
+      "tests": 21,
+      "failed": 0
+    },
+    "owner_111": {
+      "blob": "4a8eaa9b295d0d7cdf1457887eabcce16cb4f88d",
+      "tests": 111,
+      "failed": 0
+    },
+    "PV2I_historical_48": {
+      "blob": "07d55578934e0bbb749edfe61a4dbf6b5b29bdec",
+      "tests": 48,
+      "failed": 22,
+      "passed": 26
+    },
+    "PV3_PV2I_adapter_48": {
+      "blob": "b7dba2826333facb19d19a1b3aafb9b2259dbe05",
+      "tests": 48,
+      "passed": 47,
+      "failed": 1,
+      "raw_failing_node": "test_generic_native_labels_not_specialized_Q86"
+    },
+    "PV3_new_28": {
+      "blob": "e5a5456fdad9de209eac3dd7ebf546206863d8a0",
+      "tests": 28,
+      "passed": 28,
+      "failed": 0
+    },
+    "author_imports_independently_qualified": false
+  },
+  "candidate_pinned_blobs": {
+    "fixture_owner": "c05ec3b96d69e393de03f4dc76f59c79ed50b965",
+    "pv3_candidate": "ae7cae7fb8849d0014b1d53ddd08777a9da30cdf",
+    "deployment": "8fe3705bb6181dec4e7acc03d3ff18a62aa710c9",
+    "pv2i_adapter": "d568264ad21a279164ab9105fe4657ca3b406f54",
+    "author_28_tests": "2a77edb948cf45ce3d7efa9f3e674317d82198b2",
+    "authority_expected": "53307f8b749f5f692dc62b299e2b9e391c52c943",
+    "authority_original_six": "9a7f97b13ea8dfe8dca00daa2febc5d2f769c255",
+    "owner_source_manifest": "23ba96cd0923b6ac239d298deebf689043c0c052",
+    "frozen_independent_PV2I_oracle": "677c259324bbb32f9cefeb33e87c6dc16b97efbf"
+  },
+  "original_science": {
+    "valid_gt2_specific": true,
+    "respondent_scope": "TEST_ONLY_ADULT",
+    "namespaces": [
+      "PV2-ADULT-A",
+      "PV2-ADULT-B"
+    ],
+    "held": "ORDERED two, no promoted scalar values",
+    "r1": "X1,Y1 both eligible",
+    "r2": "X0,Y0 both eligible",
+    "r3": "X1,Y1 but NOT_ELIGIBLE for Y",
+    "forward_Y_given_X": {
+      "X0_Y0": 1,
+      "X1_Y1": 1
+    },
+    "reverse_X_given_Y": {
+      "Y0_X0": 1,
+      "Y1_X1": 1
+    },
+    "real_source_issuer": false
+  },
+  "held_execution": {
+    "original_C11_I03_I05_P01_modules_in_independent_runtime": false,
+    "source_actual_native_job_dispatch": false,
+    "source_new_journal_cold_process": false,
+    "current_read_original_fixture_owner_runtime": false,
+    "independent_PV2I_frozen_full_reexecution": false,
+    "real_U_Epre_original_grants": false,
+    "generic_XY_native_semantics": false
+  },
+  "file_artifact": {
+    "local_zip": "/mnt/data/pv3i_execution_evidence.zip",
+    "sha256": "03299445d929107ed435b6abace82049f2a3e9fe1f539c7195709804dadbe8b6",
+    "zip_includes": "24-case test and JUnit, committed 9-case test and JUnit, 6-case extracted policy test and JUnit, stdout/stderr/manifest; NOT GitHub binary"
+  },
+  "overall": "HOLD independent full accepted owner qualification; positive reference audit with sourcefree GT2 scope, one extra perimeter stress RED beyond sourcefree trusted host, no adoption"
+}
