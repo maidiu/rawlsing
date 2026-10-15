@@ -1,0 +1,18 @@
+# SOROK HQ311 OC5 — independent OC4 custody capsule and escrow court
+
+REPOSITORY maidiu/rawlsing (private).
+ROLE Fresh independent I2 reviewer of test-only custody repair, NOT OC4 author, old OC3 reviewer, semantic issuer, HQ, or real human custodian.
+BRANCH agent/reviewer-sorok-r3-hq311-oc5-oc4-independent-r1
+PARENT 95dc53cdc2d1adc7465d5e50915599dceddf9dde
+SEALED STARTUP Publication commit SHA supplied by HQ and directly verified before work.
+WRITES ONLY WORKER_RETURNS/SOROK-R3-HQ311-OC5-OC4-INDEPENDENT-R1/
+
+MODEL GPT-6 High. EDITOR one Browser/GitHub worker with actual Python/pytest and exact source staging. One independent agent performs full review and pushes own return, no helpers or model switches. Browser qualified by OC1/OCR1/OC2/OC3 actual tests; no institutional custody/real grants inferred. Missing source/runner yields typed HOLD.
+
+READ full Sorok HQ311 intake, 00_READ_ME_FIRST, 00B, 00C §§3A/3B/5A and 00D. Pinned OC4 verified author return 0caaec590f6a8bf6744f22dc9c948c5fe233bc94; repaired module Git blob af2b7e943018077cb36808b5af1cd67704624bec. Pinned OC3 independent 9cd47a829473a6e92392582b4f01f2c564aa5dce (new 36 hostile source), OC2 a61d5794271038fb20c94a75eaee401a66613ce9 (19), OC1 19438890e43153e2bc4a1ad271b5e19bcef33e1e (31), OCR1 aba637265bea2358790fea50d0e7abc98141e472 (45). OC4 authored new36 controls and 131 case full expected source retained in exact prior repos. Read 00_RETURN and provenance. All original tests unchanged.
+
+MISSION: independent scientific acceptance or REVISE at honest sourcefree test-only grain. Stage and execute exact OC1 31 + OCR1 45 + OC2 19 + OC3 36 =131 inherited and OC4 new36. Expected author original 131 =121 PASS/10 RED; ten previous OC3 hostiles now PASS, and six original historical RED plus four older content-only signature positives remain literal FAILS. No rewriting old tests to improve grade; independently adjudicate that stricter canonical capsule signature binding correctly invalidates bare digest/ID-only/None-cap authorization rather than permitting a regression.
+
+NEW adversarial court: mutate capsule_id, purpose, lawful_set_digest, content digest, version/freeze/coder/split and signing context while retaining signature; require verified exact canonical binding at actual entrypoint. Probe state mutation after UNBLIND including timestamp/holder/capsule_id and full local ledger/state congruence; test stale/revoked holder, strict nonce/arm scalar types and exact trial joining; packet recursive schema, Unicode U+034F and other combining aliases, false positives including harmless 'charming'. Distinguish typed refusals from uncontrolled TypeErrors, passing controls from actual negative falsifiers. All signatures publicly reproducible TEST_ONLY, no accepted independent holder/oracle/signer registry or externally anchored ledger. Cross-process C07 NOT_REACHED absent API.
+
+Check OC4 report's local full archive not necessarily published; stage source from remote and run actual pytest/JUnit; do not claim archive bytes verified without access. Produce new reviewer-authored tests with frozen expectations, full matrix and candid sourcefree grade. Verdict REVIEW_PASS_SCOPED_TESTONLY_CUSTODY or REVIEW_REVISE/HOLD, with actual executed evidence, old10 RED independent adjudication, owner actions, native Git source identity/imports, environmental passport, changed-path report and direct pushed remote SHA. No model/provider calls, real user data, semantic issuance, production/CURRENT/PRE-MAIN changes or V3.
