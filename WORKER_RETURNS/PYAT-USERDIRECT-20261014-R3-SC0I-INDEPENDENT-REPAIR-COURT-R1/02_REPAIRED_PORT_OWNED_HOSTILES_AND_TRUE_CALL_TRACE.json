@@ -1,0 +1,18 @@
+{
+  "sc0f_author_suite": {"command": "pytest .sc0i_tmp/tests/test_sc0f_repair.py", "exit": 0, "passed": 10, "failed": 0},
+  "sc0i_independent_hostiles": {
+    "command": "pytest WORKER_RETURNS/.../repro/test_sc0i_hostiles.py",
+    "exit": 0, "passed": 7, "failed": 0,
+    "findings": {
+      "h01_n10e_c1_imported_never_invoked": "RED_CONFIRMED",
+      "h02_import_trace_sha256_of_imported": "RED_CONFIRMED",
+      "h03_forged_warrant_self_registration_accepted": "RED_CONFIRMED",
+      "h04_test06_options_not_numeric": "HOLD_CONFIRMED",
+      "h05_selection_state_defaults_complete": "HOLD_CONFIRMED",
+      "h06_fx_scope_allowlist": "HOLD_CONFIRMED",
+      "h07_earlier_evidence_presence_not_issuer": "HOLD_CONFIRMED"
+    }
+  },
+  "true_call_trace": "monkeypatch counters record zero real-function invocations; tracer holds sha256(b'imported') digests only",
+  "module_file": "isolated /tmp/wg0p/.sc0i_tmp copy; candidate bytes verified by git blob SHA-1"
+}
