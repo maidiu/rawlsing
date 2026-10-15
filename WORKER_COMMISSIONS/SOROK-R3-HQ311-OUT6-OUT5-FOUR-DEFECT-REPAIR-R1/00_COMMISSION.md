@@ -1,0 +1,20 @@
+# SOROK HQ311 OUT6 — bounded sourcefree outbox defect repair
+
+REPOSITORY maidiu/rawlsing (private).
+ROLE Candidate implementation worker, not independent reviewer, HQ, S27 material-world owner or ADP019 issuer.
+BRANCH agent/rabochii-sorok-r3-hq311-out6-out5-sourcefree-four-defect-repair-r1
+PARENT 95dc53cdc2d1adc7465d5e50915599dceddf9dde
+SEALED STARTUP Creation SHA supplied by HQ after publication. Verify exact remote HEAD before changes.
+WRITE ONLY WORKER_RETURNS/SOROK-R3-HQ311-OUT6-OUT5-FOUR-DEFECT-REPAIR-R1/
+
+MODEL GPT-6 Medium. EDITOR one Browser/GitHub Python/pytest/subprocess worker. One accountable agent completes all implementation, execution, evidence and remote push verification. No helpers or provider/harness switch. If source/runner unavailable, return precise HOLD. Economical Browser justified by small sourcefree Python and prior successful outbox cold tests; actual cost UNKNOWN.
+
+READ IN FULL Sorok 00_READ_ME_FIRST, 00B, 00C (3A/3B/5A), 00D and HQ311 intake at parent. Exact pinned OUT4 author 2afa3022e5551df71b739cf8689e832db85e1196 with return source blob c7bb4169d43c715de7dd113b24d3ce897e37beab. Exact OUT3 published reviewer 0ab31e4198299708e700840c1b68e0d94a2ced06, archive Git blob a9c4ee7344526fa335605d76d08def2ac5dcba2a, SHA256 fc876b665bd9af6328deec86aa66e93ec0eebf9048ca7a5a0d7d0630cd48bddd. Exact OUT2 original b1004a43eb0309af99e1b7ce9d5290df3c07f3cd and frozen S01–S28 semantic oracle blob 782ba75ee94f24908100b1f3464e7035497d546c.
+
+OUT5 SCIENCE REPORT IS NOT PUBLISHED: branch e576e405e50e1bd91be5c839d8c33b69fa851fd9 unchanged. Owner supplied locally completed OUT5 report: unchanged baseline 135P/2RED, unchanged exact OUT3 22P, OUT4 authored 29P, new OUT5 14=8P/6RED. FOUR of six are concrete candidate defects grouped as acknowledged receipts regressing into invalid failed states; global retry after sole viewer revocation; restored client delivery for unauthorized viewer. Exact fourth case name/individual source unavailable. Do NOT claim exact OUT5 14 test source was fetched/run, do not invent it or work around prior platform blocking.
+
+MISSION: independently create and run actual-entrypoint sourcefree regression tests for these three described mechanism groups (four reported failure cases), reproduce and repair reproducible violations in the OUT4 candidate, preserving valid pre-existing single-writer positive behavior and strict fail-closed admission. Specifically, prohibit illegal ACK-to-failed-state transitions under receipt invariants, require authorization for global retry when sole viewer revoked, and refuse persisted client delivery for an unauthorized viewer with failed-restore atomicity. Validate all related viewer state, revocation and event receipts at real API, and add complementary counterexamples. No invented actual human perception or ADP019 grant.
+
+Run unchanged original 137 (135P + 2 historical REDs), unchanged recovered OUT3 22, OUT4 29 plus NEW genuine OUT6 reviewer-informed tests. S27 conflicting authored mug movement and multiwriter lost-update remain untouched and separately owned. If exact OUT3 tar source can't materialize, return precise source transport HOLD for that suite, never substitute author lookalikes as exact reproduction. TWO OUT5 policy questions (legacy-fixture envelope admission and ACK projection-opportunity prerequisite) are explicit OWNER_HOLD for separate OUTP court, do not silently decide them to force green. Preserve original law/test bytes.
+
+RETURN only own return terrain: runnable sourcefree repair, independent self-authored regressions and full actual JUnit/stdout, source Git/hash/import provenance and lineages, case matrix with original failures unchanged, exact local-only OUT5 evidence limitation, remaining policy owners, reviewer request, environment passport, changed paths, pushed remote SHA. Candidate grade only; independent I2 after return. No original survey/real model/provider, production/CURRENT/PRE-MAIN change, V3, human witness or semantic adoption.
