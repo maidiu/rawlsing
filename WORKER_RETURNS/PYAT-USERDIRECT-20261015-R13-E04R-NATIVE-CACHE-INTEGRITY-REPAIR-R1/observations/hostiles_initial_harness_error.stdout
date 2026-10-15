@@ -1,0 +1,53 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.0.2, pluggy-1.6.0 -- /usr/local/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r13-e04r-repair/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R13-E04R-NATIVE-CACHE-INTEGRITY-REPAIR-R1
+collecting ... collected 34 items
+
+../../tests/test_cache_repair_hostiles.py::test_999_with_stale_or_coherent_digest_refused_before_client_read[False-nonparent] PASSED [  2%]
+../../tests/test_cache_repair_hostiles.py::test_999_with_stale_or_coherent_digest_refused_before_client_read[False-scenario] PASSED [  5%]
+../../tests/test_cache_repair_hostiles.py::test_999_with_stale_or_coherent_digest_refused_before_client_read[True-nonparent] PASSED [  8%]
+../../tests/test_cache_repair_hostiles.py::test_999_with_stale_or_coherent_digest_refused_before_client_read[True-scenario] PASSED [ 11%]
+../../tests/test_cache_repair_hostiles.py::test_same_counts_foreign_native_identity_with_recomputed_digest_refuses[source_universe_ref] PASSED [ 14%]
+../../tests/test_cache_repair_hostiles.py::test_same_counts_foreign_native_identity_with_recomputed_digest_refuses[release_ref] PASSED [ 17%]
+../../tests/test_cache_repair_hostiles.py::test_same_counts_foreign_native_identity_with_recomputed_digest_refuses[risk_set_ref] PASSED [ 20%]
+../../tests/test_cache_repair_hostiles.py::test_same_counts_foreign_native_identity_with_recomputed_digest_refuses[target_ref] PASSED [ 23%]
+../../tests/test_cache_repair_hostiles.py::test_same_counts_foreign_native_identity_with_recomputed_digest_refuses[evidence_ref] PASSED [ 26%]
+../../tests/test_cache_repair_hostiles.py::test_same_counts_foreign_native_identity_with_recomputed_digest_refuses[condition_witness_ref] PASSED [ 29%]
+../../tests/test_cache_repair_hostiles.py::test_same_counts_foreign_native_identity_with_recomputed_digest_refuses[producer_query_ref] PASSED [ 32%]
+../../tests/test_cache_repair_hostiles.py::test_same_counts_foreign_native_identity_with_recomputed_digest_refuses[producer_fact_ref] PASSED [ 35%]
+../../tests/test_cache_repair_hostiles.py::test_partial_or_whole_projection_substitution_refuses[minority] PASSED [ 38%]
+../../tests/test_cache_repair_hostiles.py::test_partial_or_whole_projection_substitution_refuses[denominator] PASSED [ 41%]
+../../tests/test_cache_repair_hostiles.py::test_partial_or_whole_projection_substitution_refuses[fraction] PASSED [ 44%]
+../../tests/test_cache_repair_hostiles.py::test_partial_or_whole_projection_substitution_refuses[partial_geometry] PASSED [ 47%]
+../../tests/test_cache_repair_hostiles.py::test_partial_or_whole_projection_substitution_refuses[zero] PASSED [ 50%]
+../../tests/test_cache_repair_hostiles.py::test_partial_or_whole_projection_substitution_refuses[order] PASSED [ 52%]
+../../tests/test_cache_repair_hostiles.py::test_partial_or_whole_projection_substitution_refuses[F8_state] PASSED [ 55%]
+../../tests/test_cache_repair_hostiles.py::test_partial_or_whole_projection_substitution_refuses[permission] PASSED [ 58%]
+../../tests/test_cache_repair_hostiles.py::test_partial_or_whole_projection_substitution_refuses[authority] PASSED [ 61%]
+../../tests/test_cache_repair_hostiles.py::test_partial_or_whole_projection_substitution_refuses[provenance] PASSED [ 64%]
+../../tests/test_cache_repair_hostiles.py::test_same_key_conflicting_valid_other_query_is_refused PASSED [ 67%]
+../../tests/test_cache_repair_hostiles.py::test_cold_service_does_not_accept_even_valid_foreign_process_cache PASSED [ 70%]
+../../tests/test_cache_repair_hostiles.py::test_stale_native_owner_repository_cannot_authorize_old_cache PASSED [ 73%]
+../../tests/test_cache_repair_hostiles.py::test_same_value_new_release_instance_requires_fresh_native_production PASSED [ 76%]
+../../tests/test_cache_repair_hostiles.py::test_reissued_query_issuer_and_permits_do_not_certify_cached_values FAILED [ 79%]
+../../tests/test_cache_repair_hostiles.py::test_returned_step_store_read_and_nested_client_readsets_are_isolated PASSED [ 82%]
+../../tests/test_cache_repair_hostiles.py::test_owner_anchor_has_no_mutable_descendants_and_captures_actual_owners PASSED [ 85%]
+../../tests/test_cache_repair_hostiles.py::test_source_clock_or_rows_reissue_refuses_cache[rows_hash] PASSED [ 88%]
+../../tests/test_cache_repair_hostiles.py::test_source_clock_or_rows_reissue_refuses_cache[publication] PASSED [ 91%]
+../../tests/test_cache_repair_hostiles.py::test_deep_corruption_is_atomic_for_empirical_reads_selective_for_structure PASSED [ 94%]
+../../tests/test_cache_repair_hostiles.py::test_source_release_intervention_changes_only_empirical_descendants PASSED [ 97%]
+../../tests/test_cache_repair_hostiles.py::test_uncached_ZERO_SUPPORT_cannot_be_overridden_by_complete_cached_projection PASSED [100%]
+
+=================================== FAILURES ===================================
+_____ test_reissued_query_issuer_and_permits_do_not_certify_cached_values ______
+../../tests/test_cache_repair_hostiles.py:66: in test_reissued_query_issuer_and_permits_do_not_certify_cached_values
+    fields.update(authority_id='E04R_SELF_REISSUED_QUERY_ISSUER',authority_content_hash=semantic_hash('E04R_FAKE_ISSUER'))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/dataclasses.py:1465: in replace
+    raise TypeError("replace() should be called on dataclass instances")
+E   TypeError: replace() should be called on dataclass instances
+- generated xml file: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r13-e04r-repair/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R13-E04R-NATIVE-CACHE-INTEGRITY-REPAIR-R1/observations/hostiles.xml -
+=========================== short test summary info ============================
+FAILED ../../tests/test_cache_repair_hostiles.py::test_reissued_query_issuer_and_permits_do_not_certify_cached_values - TypeError: replace() should be called on dataclass instances
+=================== 1 failed, 33 passed in 71.03s (0:01:11) ====================

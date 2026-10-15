@@ -1,0 +1,46 @@
+{
+  "actual_fresh_native_service": true,
+  "controls": [
+    {
+      "mutation": "source_universe_ref",
+      "coherent_exact_ref": {
+        "kind": "EmpiricalUniverse@1.0.0",
+        "object_id": "urn:e04n:coherent-foreign-source_universe_ref",
+        "content_hash": "36a234e5df58f6a1823f9ef576048683cda834eac9a069a01e5077b793147539"
+      },
+      "snapshot_hash_recomputed": true,
+      "refused": "UNREGISTERED_SELECTED_SNAPSHOT"
+    },
+    {
+      "mutation": "release_ref",
+      "coherent_exact_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "urn:e04n:coherent-foreign-release_ref",
+        "content_hash": "7f9765509dee8556b4a4c7c692f11a588bf8cfe6024871682c5ae8af8578f745"
+      },
+      "snapshot_hash_recomputed": true,
+      "refused": "UNREGISTERED_SELECTED_SNAPSHOT"
+    },
+    {
+      "mutation": "risk_set_ref",
+      "coherent_exact_ref": {
+        "kind": "RISK_SET",
+        "object_id": "urn:e04n:coherent-foreign-risk_set_ref",
+        "content_hash": "9aebd14fc1921465d22e87f3a44e63624644661426b517e3f7f473e96cea12b9"
+      },
+      "snapshot_hash_recomputed": true,
+      "refused": "UNREGISTERED_SELECTED_SNAPSHOT"
+    },
+    {
+      "mutation": "self_created_query_issuer",
+      "new_authority_ref": {
+        "authority_id": "E04N_SELF_CREATED_ISSUER",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "cf3f22479de1bf492a52093cbcb23b667b3878dc734b1118394a44a1d5d348da"
+      },
+      "refused": "SOURCE_QUERY_PERMISSION_BINDING_CHANGED"
+    }
+  ],
+  "result": "FOUR_TYPED_SOURCE_AUTHORITY_FORGERIES_REFUSED",
+  "note": "This does not issue original or operative authority; exact TEST_ONLY fixture bounds only."
+}

@@ -1,0 +1,34 @@
+{
+  "schema": "E04R_IMPLEMENTER_TWO_RED_CLOSURES@1",
+  "verdict": "TWO_PRIOR_RED_CASES_CLOSED_IN_IMPLEMENTER_RUNTIME_REQUIRES_DISTINCT_REVIEW",
+  "prior": {
+    "commit": "644a68b76042309be71f0eb65fabc4a6903f15b8",
+    "independent51": "49PASS_2FAIL"
+  },
+  "now": {
+    "independent51": "51PASS_0FAIL",
+    "original_test_and_common_bytes_unchanged": true,
+    "oracle_sha256": "9f872f75e128530b8ade0103c11fad5f02a418961acf0cb008bdc37872f4269c"
+  },
+  "findings": [
+    {
+      "id": "E04N_F1",
+      "attack": "18 replaced by999, stale and recomputed local hash",
+      "closure": "Both original independent guard and both real clients refuse before empirical read",
+      "evidence": "observations/two_RED_closure_probe.json"
+    },
+    {
+      "id": "E04N_F2",
+      "attack": "Same values, foreign well-formed C11 release ref, stale and recomputed local hash",
+      "closure": "Original independent guard and both real clients refuse before empirical read",
+      "evidence": "observations/two_RED_closure_probe.json"
+    }
+  ],
+  "additional_hostiles": {
+    "PASS": 37,
+    "FAIL": 0,
+    "errors": 0,
+    "skips": 0
+  },
+  "adoption": false
+}

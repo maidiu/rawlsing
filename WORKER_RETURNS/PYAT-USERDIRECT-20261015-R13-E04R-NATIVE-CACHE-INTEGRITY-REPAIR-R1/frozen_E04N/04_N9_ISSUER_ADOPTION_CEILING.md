@@ -1,0 +1,13 @@
+# N9, issuer and adoption ceiling
+
+**Full-native technical execution is now independently proved; sourcefree overall acceptance is RED pending candidate cache repair.** E04I's previous inability to materialize original empirical/world/native sources is not a remaining environment HOLD. This does not grant any institutional, source or operative authority.
+
+The selected snapshot is `E04_TEST_ONLY_SELECTED_WORLD_SNAPSHOT@1`. Its five structural fields are modeled boolean/token values, not observed institutions. Source facts are58 synthetic individual rows under corrected2026/2027 fixture clocks, not original respondent data or actual future observations. M4/M5 currentness is relative to the explicit local test selection; the output says CURRENT_TO_TEST_SELECTION_NOT_OPERATIVE_N9. AS_OF/HISTORICAL and explicit TEST_CURRENT are not operative world CURRENT.
+
+The original author408-call packet and OC05 result were read as historical author evidence. Its OC05 applicability is NOT_YET_APPLICABLE with consumer seam null. This review does not install, issue, current-select or adopt any N9/OC05 object. E03 eighteen-case and E05 historical evidence are not E04 acceptance signatures. E05I runs in a separate commission and receives no adoption or message from this court.
+
+Competent source/field principals must separately issue real source identity, lawful use, native population/risk/role and publication/clock semantics before any real empirical or structural source claim. A proper N9/OC05 owner must separately establish installed dependency closure, currentness and per-use revocation for actual service occupancy. N10W/EE14 role/model/person-use and any actor/world integration remain distinct owner decisions. The new E04 generic facade does not silently widen the adopted single-binding N10E API; it invokes existing C1 for multiple bindings while remaining a candidate.
+
+Both nonparent and conception-scenario outputs remain proposal/evidence consumers. They create no mother/father, child outcome, family/genealogy, actual conception, person, selection weight, unsupported dyad likelihood or empirical×structural route probability. No model or actor call is made. Real original source permission, all35/1,890/N11/N12, canonical adoption and V3 are unissued.
+
+The smallest next productive edge is an authorized return-only E04 cache-integrity repair that preserves native owners/oracles and all scoped-history behavior, followed by a distinct full-native re-court. Do not rebuild or replace the inherited machinery because this candidate projection cache is defective. This reviewer neither repairs the candidate nor adopts it.
