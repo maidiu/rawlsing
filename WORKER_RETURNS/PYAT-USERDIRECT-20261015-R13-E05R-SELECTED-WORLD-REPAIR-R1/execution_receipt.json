@@ -1,0 +1,131 @@
+{
+  "verified_at_utc": "2026-10-15T23:20:20.586008+00:00",
+  "original_staged_objects": 401,
+  "unchanged_runtime_objects": 400,
+  "versioned_adapter_sha256": "9fdd3797a989c916f472f801000df6f5fcf515fc8f41174757d8309b9373d03f",
+  "frozen_test_bytes_unchanged": true,
+  "junit": {
+    "e05": {
+      "tests": 38,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "e04": {
+      "tests": 37,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "n9c": {
+      "tests": 47,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "m4_m5": {
+      "tests": 30,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "empirical": {
+      "tests": 101,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "e03": {
+      "tests": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "independent_55": {
+      "tests": 55,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "additional_32": {
+      "tests": 32,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "final_total": 358,
+  "baseline_independent": {
+    "tests": 55,
+    "failures": 11,
+    "errors": 0,
+    "skipped": 0
+  },
+  "baseline_independent_exit": 1,
+  "final_independent_exit": 0,
+  "additional_exit": 0,
+  "original_suite_exits": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "independent_command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_independent_court.py",
+    "--import-mode=importlib",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=observations/repaired_independent.xml"
+  ],
+  "independent_cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r13-e05r-repair/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R13-E05R-SELECTED-WORLD-REPAIR-R1",
+  "independent_env": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "additional_command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_e05r_repair.py",
+    "--noconftest",
+    "--import-mode=importlib",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=observations/e05r_additional.xml"
+  ],
+  "cold_exits": [
+    {
+      "mode": "first",
+      "command": [
+        "/usr/local/bin/python3",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r13-e05r-repair/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R13-E05R-SELECTED-WORLD-REPAIR-R1/repro/cold.py",
+        "first"
+      ],
+      "exit": 0
+    },
+    {
+      "mode": "replay",
+      "command": [
+        "/usr/local/bin/python3",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r13-e05r-repair/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R13-E05R-SELECTED-WORLD-REPAIR-R1/repro/cold.py",
+        "replay"
+      ],
+      "exit": 0
+    }
+  ],
+  "cold_distinct_pids": [
+    36122,
+    36681
+  ],
+  "cold_bit_identical": true,
+  "imported_profile_modules": 33,
+  "disposition": "REPAIRED_SOURCEFREE_CANDIDATE_EXECUTED_AWAITING_DISTINCT_E05R_REVIEW",
+  "operative_OC05": false,
+  "new_issuer": false
+}

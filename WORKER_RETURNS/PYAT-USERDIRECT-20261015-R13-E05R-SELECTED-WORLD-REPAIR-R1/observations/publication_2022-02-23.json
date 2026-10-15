@@ -1,0 +1,37 @@
+{
+  "schema": "PRE553_HQ297_N9C_SOURCEFREE_VALUES_READER@1",
+  "execution_grade": "ISOLATED_SOURCEFREE_TEST_ONLY",
+  "operative_OC05": false,
+  "real_N9_consumer": false,
+  "issued_N5N6": false,
+  "issued_EE13": false,
+  "world_clock": "HISTORICAL_PUBLICATION_AWARE",
+  "as_of": "2022-02-23",
+  "state": "REFUSED_REQUIRED_FIELD_TEST_ONLY",
+  "values_read": [],
+  "refusals": [
+    {
+      "role": "GSS_RURAL_LIGHTING",
+      "fixture_ref": "TESTONLY_FIELD:83b0b3fdf1fa2a3e346c95211987b32fc5ff646d053a3577d1f695fd62507d45",
+      "reason": "NOT_PUBLISHED_AT_SELECTED_ASOF"
+    },
+    {
+      "role": "NCA_NATIONAL_MOBILE_DATA",
+      "fixture_ref": "TESTONLY_FIELD:d21dc005bdc40b56f0641dc75982880f74405f89691c55e532c87798f527b106",
+      "reason": "NOT_PUBLISHED_AT_SELECTED_ASOF"
+    }
+  ],
+  "selected_fixture_refs": [
+    "TESTONLY_FIELD:83b0b3fdf1fa2a3e346c95211987b32fc5ff646d053a3577d1f695fd62507d45",
+    "TESTONLY_FIELD:d21dc005bdc40b56f0641dc75982880f74405f89691c55e532c87798f527b106"
+  ],
+  "dependency_readset": [
+    "TESTONLY_FIELD:83b0b3fdf1fa2a3e346c95211987b32fc5ff646d053a3577d1f695fd62507d45",
+    "TESTONLY_FIELD:d21dc005bdc40b56f0641dc75982880f74405f89691c55e532c87798f527b106"
+  ],
+  "successful_value_refset": [],
+  "pooling": false,
+  "person_exposure": false,
+  "model_use": false,
+  "test_snapshot_ref": "TESTONLY_SNAPSHOT:55f6013259a853c8fe156b8f64aa8e42435a4eb9b760e2c4d1a71b63da63fb6d"
+}

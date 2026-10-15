@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="11" skipped="0" tests="55" time="120.278" timestamp="2026-10-15T19:13:53.887930-04:00" hostname="MacBook-Pro.lan"><testcase classname="tests.test_independent_court" name="test_original_positive_values_and_actual_same_snapshot_clients[CURRENT_TEST_CLOCK-False-8]" time="2.444" /><testcase classname="tests.test_independent_court" name="test_original_positive_values_and_actual_same_snapshot_clients[HISTORICAL_AS_OF-True-2]" time="2.268" /><testcase classname="tests.test_independent_court" name="test_original_publication_boundary[2022-02-23-False-False]" time="0.024" /><testcase classname="tests.test_independent_court" name="test_original_publication_boundary[2022-02-24-True-False]" time="0.003" /><testcase classname="tests.test_independent_court" name="test_original_publication_boundary[2022-07-07-True-False]" time="0.003" /><testcase classname="tests.test_independent_court" name="test_original_publication_boundary[2022-07-08-True-True]" time="0.003" /><testcase classname="tests.test_independent_court" name="test_typed_partial_preserves_exact_failed_arm" time="1.156" /><testcase classname="tests.test_independent_court" name="test_effective_and_publication_are_separate[2027-05-31-2027-05-31-True]" time="2.215" /><testcase classname="tests.test_independent_court" name="test_effective_and_publication_are_separate[2027-01-01-2027-06-01-False]" time="2.221" /><testcase classname="tests.test_independent_court" name="test_effective_and_publication_are_separate[2026-12-31-2027-06-01-True]" time="2.249" /><testcase classname="tests.test_independent_court" name="test_effective_and_publication_are_separate[2028-01-01-2028-01-01-None]" time="2.137" /><testcase classname="tests.test_independent_court" name="test_empirical_Y_mutation_and_both_clients_actual_values" time="4.666" /><testcase classname="tests.test_independent_court" name="test_structural_alone_changes_eligibility_only" time="4.509" /><testcase classname="tests.test_independent_court" name="test_separately_native_mutation_changes_only_that_field[GSS_RURAL_LIGHTING]" time="4.785" /><testcase classname="tests.test_independent_court" name="test_separately_native_mutation_changes_only_that_field[NCA_NATIONAL_MOBILE_DATA]" time="4.946" /><testcase classname="tests.test_independent_court" name="test_null_bit_identical" time="5.563" /><testcase classname="tests.test_independent_court" name="test_zero_support_stays_typed_without_numeric_fabrication" time="3.316"><failure message="KeyError: 'binding_order'">def test_zero_support_stays_typed_without_numeric_fabrication():
+     a=adapter(support_loss=True);q=E.standard_request(label='CURRENT_TEST_CLOCK');s=a.build_snapshot(q);acc=a.accept(q,s);cs=clients(a,s);emp=a.service.possibilities(s);save('zero_support_before_adapter',dict(empirical=emp,consumers=cs));assert [x['denominator'] for x in emp['steps']]==[24,8,0];assert emp['steps'][-1]['state']=='ZERO_SUPPORT'
+&gt;    r=a.serve(q,acc,s,consumers=cs);assert r['state']=='TYPED_PARTIAL_SELECTED_WORLD';assert r['empirical_state']!='PRODUCTIVE_TEST_ONLY'
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_independent_court.py:63: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;e05_n9_selected_world_adapter.N9SelectedWorldAdapter object at 0x10749db50&gt;
+request = N9SelectedWorldRequest(contract='R11_E05_N9_SELECTED_WORLD_INTERFACE@1', purpose='TEST_ONLY_CONTEXT', structural_keys=...27-09-01', test_now='2027-09-01'), requested_pooling=False, requested_person_exposure=False, requested_model_use=False)
+acceptance = N9SelectedWorldAcceptance(request_hash='4b30d2b774addaf09c7270c2b0460d28bdf1f114be52525ba97cf2b1fb78b983', snapshot_ha...'publication': '2026-03-01', 'revision': 1}}, acceptance_state='ACCEPTED_ATOMIC_SELECTED_SNAPSHOT', inconsistencies=())
+snapshot = SelectedSnapshot(material={'schema': 'E04_TEST_ONLY_SELECTED_WORLD_SNAPSHOT@1', 'catalog_hash': 'aa71f4da8c73e73b4b7bd...: False, 'operative_CURRENT': False}, snapshot_hash='d6ca4f77dbf9d95a41f876725365a56e3ae3225476d1b171ecc82e88b04a7593')
+
+    def serve(self, request: N9SelectedWorldRequest, acceptance,
+              snapshot, *, consumers=()) -&gt; dict:
+        """Read the actual result-bearing selected-world values.
+    
+        Every channel is read through the accepted atomic snapshot.  The two
+        native fields are carried separately with their own native units and
+        are never pooled, converted or combined.
+        """
+        entry = self.acceptances.get(acceptance.acceptance_hash)
+        if entry is None:
+            raise SelectedWorldInconsistency('ACCEPTANCE_BINDING_MISMATCH')
+        snapshot.verify()
+        if entry['snapshot_material'] != snapshot.material:
+            raise SelectedWorldInconsistency('ACCEPTED_SNAPSHOT_SUBSTITUTION')
+        if entry['acceptance'] != acceptance:
+            raise SelectedWorldInconsistency('ACCEPTANCE_BINDING_MISMATCH')
+    
+        native = entry['native']
+        structural_values = {}
+        structural_refs = {}
+        for key in request.structural_keys:
+            read = self.service.structural(snapshot, key, 'N9_SELECTED_WORLD')
+            structural_refs[key] = (read.get('field_ref'), read.get('requested_ref'))
+            if read['state'] == 'SUPPORTED_TEST_ONLY':
+                structural_values[key] = dict(
+                    value=read['value'], unit=read['payload']['unit'],
+                    field_ref=read['field_ref'], revision=read['payload']['revision'],
+                    publication=read['payload']['publication'],
+                    effective_from=read['payload']['effective_from'],
+                    epistemic_class=read['payload']['epistemic_class'],
+                    currentness_grade=read.get('currentness_grade'),
+                    rsc_ref=read.get('rsc_ref'), validation_ref=read.get('validation_ref'))
+            else:
+                structural_values[key] = dict(
+                    state=read['state'], requested_ref=read.get('requested_ref'))
+    
+        empirical = self.service.possibilities(
+            snapshot, target=request.empirical_target,
+            conditions=request.empirical_conditions, consumer='N9_SELECTED_WORLD')
+        empirical_steps = []
+        for step in empirical['steps']:
+            empirical_steps.append(dict(
+                target=step['target'], conditioners=[list(c) for c in step['conditioners']],
+&gt;               binding_order=step['binding_order'], route=step['route'],
+                              ^^^^^^^^^^^^^^^^^^^^^
+                denominator=step['denominator'],
+                cells=[dict(cell=c['cell'], cell_state=c['cell_state'],
+                            raw_numerator_support=c['raw_numerator_support'],
+                            raw_probability_exact_fraction=
+                            c.get('raw_probability_exact_fraction'))
+                       for c in step['cells']],
+                release_ref=step['release_ref'], risk_set_ref=step['risk_set_ref'],
+                source_universe_ref=step['source_universe_ref'],
+                permission_root=step['permission_root'],
+                evidence_ref=step.get('evidence_ref'),
+                uncertainty=step.get('uncertainty'),
+                measure=step.get('measure')))
+E           KeyError: 'binding_order'
+
+runtime/e05_n9_selected_world_adapter.py:462: KeyError</failure></testcase><testcase classname="tests.test_independent_court" name="test_forged_source_permission_unit_publication_refused[issuer_ref-FAKE_SIGNER-EXTERNAL_CUSTODY_OR_ISSUER_FORGERY]" time="0.002" /><testcase classname="tests.test_independent_court" name="test_forged_source_permission_unit_publication_refused[permission-GRANTED_BY_REQUESTER-REAL_USE_PERMISSION_NOT_ISSUED]" time="0.002" /><testcase classname="tests.test_independent_court" name="test_forged_source_permission_unit_publication_refused[issued-True-FIELD_ISSUANCE_LAUNDERING]" time="0.003" /><testcase classname="tests.test_independent_court" name="test_forged_source_permission_unit_publication_refused[source_pdf_sha256-ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff-EXTERNAL_CUSTODY_OR_ISSUER_FORGERY]" time="0.003" /><testcase classname="tests.test_independent_court" name="test_forged_source_permission_unit_publication_refused[family-WRONG_SOURCE-NCA_NATIVE_UNIT_GEOGRAPHY_MEASURE_CONFLICT]" time="0.003" /><testcase classname="tests.test_independent_court" name="test_forged_source_permission_unit_publication_refused[native_unit-UNIQUE_PERSONS-NCA_NATIVE_UNIT_GEOGRAPHY_MEASURE_CONFLICT]" time="0.002" /><testcase classname="tests.test_independent_court" name="test_forged_source_permission_unit_publication_refused[native_geography-GHANA_RURAL-NCA_NATIVE_UNIT_GEOGRAPHY_MEASURE_CONFLICT]" time="0.002" /><testcase classname="tests.test_independent_court" name="test_forged_source_permission_unit_publication_refused[unique_persons-True-NCA_RURAL_OR_UNIQUE_PERSON_INFERENCE]" time="0.002" /><testcase classname="tests.test_independent_court" name="test_forged_source_permission_unit_publication_refused[publication_date-2022-02-24-PUBLICATION_OR_OBSERVATION_CLOCK_SUBSTITUTION]" time="0.002" /><testcase classname="tests.test_independent_court" name="test_explicit_inference_request_refused[requested_pooling]" time="0.001" /><testcase classname="tests.test_independent_court" name="test_explicit_inference_request_refused[requested_person_exposure]" time="0.001" /><testcase classname="tests.test_independent_court" name="test_explicit_inference_request_refused[requested_model_use]" time="0.002" /><testcase classname="tests.test_independent_court" name="test_native_role_swap_refused" time="3.155" /><testcase classname="tests.test_independent_court" name="test_acceptance_substitution_refused" time="2.842" /><testcase classname="tests.test_independent_court" name="test_serve_must_bind_actual_request_to_acceptance[target]" time="3.057"><failure message="AssertionError: UNACCEPTED_REQUEST_SERVED_UNDER_OLD_REQUEST_HASH&#10;assert ('SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED' or '4b30d2b774ad...cf2b1fb78b983' == 'ffd21e46a084...602f6b0c37507'&#10;  &#10;  - ffd21e46a084999097d02f5b094af17677e2bf65de379fbafb9602f6b0c37507&#10;  + 4b30d2b774addaf09c7270c2b0460d28bdf1f114be52525ba97cf2b1fb78b983)">alter = 'target'
+
+    @pytest.mark.parametrize('alter',['target','readset','clock'])
+    def test_serve_must_bind_actual_request_to_acceptance(alter):
+     a,q,s,acc,_=run()
+     if alter=='target':foreign=dataclasses.replace(q,empirical_target='A',empirical_conditions=(('Y',1),))
+     elif alter=='readset':foreign=dataclasses.replace(q,structural_keys=('civil_open',))
+     else:foreign=dataclasses.replace(q,clock=E.SelectedWorldClock(mode='AS_OF',valid_at='2026-06-01',published_asof='2026-03-01'))
+     try:r=a.serve(foreign,acc,s)
+     except E.N9SelectedWorldRefusal:return
+     save('DEFECT_request_substitution_'+alter,dict(original_request=q.binding(),foreign_request=foreign.binding(),acceptance=acc.binding(),receipt=r))
+&gt;    assert r['state']!='SELECTED_WORLD_VALUES_SERVED' or r['request_hash']==foreign.request_hash,'UNACCEPTED_REQUEST_SERVED_UNDER_OLD_REQUEST_HASH'
+E    AssertionError: UNACCEPTED_REQUEST_SERVED_UNDER_OLD_REQUEST_HASH
+E    assert ('SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED' or '4b30d2b774ad...cf2b1fb78b983' == 'ffd21e46a084...602f6b0c37507'
+E      
+E      - ffd21e46a084999097d02f5b094af17677e2bf65de379fbafb9602f6b0c37507
+E      + 4b30d2b774addaf09c7270c2b0460d28bdf1f114be52525ba97cf2b1fb78b983)
+
+tests/test_independent_court.py:91: AssertionError</failure></testcase><testcase classname="tests.test_independent_court" name="test_serve_must_bind_actual_request_to_acceptance[readset]" time="2.807"><failure message="AssertionError: UNACCEPTED_REQUEST_SERVED_UNDER_OLD_REQUEST_HASH&#10;assert ('SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED' or '4b30d2b774ad...cf2b1fb78b983' == '1ed964e24d7a...52ef992a1c730'&#10;  &#10;  - 1ed964e24d7a7dfc1730c9ed6e5ff532bb66852ad4f5d0e692c52ef992a1c730&#10;  + 4b30d2b774addaf09c7270c2b0460d28bdf1f114be52525ba97cf2b1fb78b983)">alter = 'readset'
+
+    @pytest.mark.parametrize('alter',['target','readset','clock'])
+    def test_serve_must_bind_actual_request_to_acceptance(alter):
+     a,q,s,acc,_=run()
+     if alter=='target':foreign=dataclasses.replace(q,empirical_target='A',empirical_conditions=(('Y',1),))
+     elif alter=='readset':foreign=dataclasses.replace(q,structural_keys=('civil_open',))
+     else:foreign=dataclasses.replace(q,clock=E.SelectedWorldClock(mode='AS_OF',valid_at='2026-06-01',published_asof='2026-03-01'))
+     try:r=a.serve(foreign,acc,s)
+     except E.N9SelectedWorldRefusal:return
+     save('DEFECT_request_substitution_'+alter,dict(original_request=q.binding(),foreign_request=foreign.binding(),acceptance=acc.binding(),receipt=r))
+&gt;    assert r['state']!='SELECTED_WORLD_VALUES_SERVED' or r['request_hash']==foreign.request_hash,'UNACCEPTED_REQUEST_SERVED_UNDER_OLD_REQUEST_HASH'
+E    AssertionError: UNACCEPTED_REQUEST_SERVED_UNDER_OLD_REQUEST_HASH
+E    assert ('SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED' or '4b30d2b774ad...cf2b1fb78b983' == '1ed964e24d7a...52ef992a1c730'
+E      
+E      - 1ed964e24d7a7dfc1730c9ed6e5ff532bb66852ad4f5d0e692c52ef992a1c730
+E      + 4b30d2b774addaf09c7270c2b0460d28bdf1f114be52525ba97cf2b1fb78b983)
+
+tests/test_independent_court.py:91: AssertionError</failure></testcase><testcase classname="tests.test_independent_court" name="test_serve_must_bind_actual_request_to_acceptance[clock]" time="5.594"><failure message="AssertionError: UNACCEPTED_REQUEST_SERVED_UNDER_OLD_REQUEST_HASH&#10;assert ('SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED' or '4b30d2b774ad...cf2b1fb78b983' == '6f178168c4ca...528858751d642'&#10;  &#10;  - 6f178168c4ca24abf0b62e4e966b3e2e50427111145b186cdcb528858751d642&#10;  + 4b30d2b774addaf09c7270c2b0460d28bdf1f114be52525ba97cf2b1fb78b983)">alter = 'clock'
+
+    @pytest.mark.parametrize('alter',['target','readset','clock'])
+    def test_serve_must_bind_actual_request_to_acceptance(alter):
+     a,q,s,acc,_=run()
+     if alter=='target':foreign=dataclasses.replace(q,empirical_target='A',empirical_conditions=(('Y',1),))
+     elif alter=='readset':foreign=dataclasses.replace(q,structural_keys=('civil_open',))
+     else:foreign=dataclasses.replace(q,clock=E.SelectedWorldClock(mode='AS_OF',valid_at='2026-06-01',published_asof='2026-03-01'))
+     try:r=a.serve(foreign,acc,s)
+     except E.N9SelectedWorldRefusal:return
+     save('DEFECT_request_substitution_'+alter,dict(original_request=q.binding(),foreign_request=foreign.binding(),acceptance=acc.binding(),receipt=r))
+&gt;    assert r['state']!='SELECTED_WORLD_VALUES_SERVED' or r['request_hash']==foreign.request_hash,'UNACCEPTED_REQUEST_SERVED_UNDER_OLD_REQUEST_HASH'
+E    AssertionError: UNACCEPTED_REQUEST_SERVED_UNDER_OLD_REQUEST_HASH
+E    assert ('SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED' or '4b30d2b774ad...cf2b1fb78b983' == '6f178168c4ca...528858751d642'
+E      
+E      - 6f178168c4ca24abf0b62e4e966b3e2e50427111145b186cdcb528858751d642
+E      + 4b30d2b774addaf09c7270c2b0460d28bdf1f114be52525ba97cf2b1fb78b983)
+
+tests/test_independent_court.py:91: AssertionError</failure></testcase><testcase classname="tests.test_independent_court" name="test_accept_must_bind_snapshot_clocks_to_request" time="11.685"><failure message="AssertionError: HISTORICAL_REQUEST_ACCEPTED_AGAINST_CURRENT_SNAPSHOT&#10;assert ('SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED' or '2027-09-01' == '2026-03-01'&#10;  &#10;  - 2026-03-01&#10;  ?    ^  ^&#10;  + 2027-09-01&#10;  ?    ^  ^)">def test_accept_must_bind_snapshot_clocks_to_request():
+     a=adapter();current=E.standard_request(label='CURRENT_TEST_CLOCK');historical=E.standard_request(label='HISTORICAL_AS_OF');s=a.build_snapshot(current)
+     try:acc=a.accept(historical,s);r=a.serve(historical,acc,s)
+     except E.N9SelectedWorldRefusal:return
+     save('DEFECT_accept_clock_substitution',dict(request=historical.binding(),acceptance=acc.binding(),receipt=r))
+&gt;    assert r['state']!='SELECTED_WORLD_VALUES_SERVED' or r['selection']['published_asof']==historical.clock.published_asof,'HISTORICAL_REQUEST_ACCEPTED_AGAINST_CURRENT_SNAPSHOT'
+E    AssertionError: HISTORICAL_REQUEST_ACCEPTED_AGAINST_CURRENT_SNAPSHOT
+E    assert ('SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED' or '2027-09-01' == '2026-03-01'
+E      
+E      - 2026-03-01
+E      ?    ^  ^
+E      + 2027-09-01
+E      ?    ^  ^)
+
+tests/test_independent_court.py:98: AssertionError</failure></testcase><testcase classname="tests.test_independent_court" name="test_late_world_revocation_remains_typed[training_access]" time="2.868" /><testcase classname="tests.test_independent_court" name="test_late_world_revocation_remains_typed[empirical]" time="1.970" /><testcase classname="tests.test_independent_court" name="test_late_native_revocation_must_be_reread" time="3.546"><failure message="AssertionError: CACHED_NATIVE_VALUE_SERVED_AFTER_WITHDRAWAL&#10;assert ('SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED')">def test_late_native_revocation_must_be_reread():
+     a=adapter();q=E.standard_request(label='CURRENT_TEST_CLOCK');s=a.build_snapshot(q);acc=a.accept(q,s)
+     data=rows();next(x for x in data if x['role']==NCA)['status']='REVOKED_TEST_ONLY';a.registry=TestOnlyRegistry(data);fresh=fresh_read(a.registry);r=a.serve(q,acc,s,consumers=clients(a,s))
+     save('DEFECT_late_native_revocation',dict(fresh_native_read=fresh,receipt=r,acceptance=acc.binding()))
+&gt;    assert r['state']!='SELECTED_WORLD_VALUES_SERVED' and NCA not in native(r),'CACHED_NATIVE_VALUE_SERVED_AFTER_WITHDRAWAL'
+E    AssertionError: CACHED_NATIVE_VALUE_SERVED_AFTER_WITHDRAWAL
+E    assert ('SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED')
+
+tests/test_independent_court.py:108: AssertionError</failure></testcase><testcase classname="tests.test_independent_court" name="test_native_invalidate_scope_supported" time="3.466"><failure message="Failed: NATIVE_FIELD_PERMISSION_SCOPE_NOT_SUPPORTED:UNKNOWN_PERMISSION_SCOPE">def test_native_invalidate_scope_supported():
+     a,q,s,acc,r=run()
+&gt;    try:out=a.invalidate(NCA)
+             ^^^^^^^^^^^^^^^^^
+
+tests/test_independent_court.py:112: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+runtime/e05_n9_selected_world_adapter.py:569: in invalidate
+    revocation = self.service.catalog.revoke(scope, reason)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;product.world.SelectedWorldCatalog object at 0x1074c7850&gt;
+scope = 'NCA_NATIONAL_MOBILE_DATA', reason = 'TEST_ONLY_PERMISSION_REVOCATION'
+
+    def revoke(self,scope,reason='TEST_ONLY_PERMISSION_REVOCATION'):
+&gt;       if scope!='empirical' and scope not in {r['key'] for r in self.records}:raise ValueError('UNKNOWN_PERMISSION_SCOPE')
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ValueError: UNKNOWN_PERMISSION_SCOPE
+
+runtime/product/world.py:56: ValueError
+
+During handling of the above exception, another exception occurred:
+
+    def test_native_invalidate_scope_supported():
+     a,q,s,acc,r=run()
+     try:out=a.invalidate(NCA)
+&gt;    except ValueError as e:save('DEFECT_native_invalidation_scope',dict(error=str(e)));pytest.fail('NATIVE_FIELD_PERMISSION_SCOPE_NOT_SUPPORTED:'+str(e))
+                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    Failed: NATIVE_FIELD_PERMISSION_SCOPE_NOT_SUPPORTED:UNKNOWN_PERMISSION_SCOPE
+
+tests/test_independent_court.py:113: Failed</failure></testcase><testcase classname="tests.test_independent_court" name="test_consumer_material_must_be_bound_not_copied[foreign_snapshot]" time="3.723"><failure message="AssertionError: UNVERIFIED_CONSUMER_PAYLOAD_ENDORSED_AS_COMPLETE&#10;assert 'SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED'">alter = 'foreign_snapshot'
+
+    @pytest.mark.parametrize('alter',['foreign_snapshot','partial_as_complete','forged_joint_probability'])
+    def test_consumer_material_must_be_bound_not_copied(alter):
+     a,q,s,acc,r=run();cs=clients(a,s)
+     if alter=='foreign_snapshot':cs[0]['snapshot_ref']='FOREIGN_SNAPSHOT'
+     elif alter=='partial_as_complete':cs[0]['state']='PARTIAL_OPTIONS_OR_EMPIRICAL_SUPPORT'
+     else:cs[0]['route_probability']={'$exact_fraction':[1,1]};cs[1]['scenarios'][0]['selection_weight']={'$exact_fraction':[1,1]}
+     try:out=a.serve(q,acc,s,consumers=cs)
+     except E.N9SelectedWorldRefusal:return
+     save('DEFECT_consumer_'+alter,out)
+&gt;    assert out['state']!='SELECTED_WORLD_VALUES_SERVED','UNVERIFIED_CONSUMER_PAYLOAD_ENDORSED_AS_COMPLETE'
+E    AssertionError: UNVERIFIED_CONSUMER_PAYLOAD_ENDORSED_AS_COMPLETE
+E    assert 'SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED'
+
+tests/test_independent_court.py:125: AssertionError</failure></testcase><testcase classname="tests.test_independent_court" name="test_consumer_material_must_be_bound_not_copied[partial_as_complete]" time="3.535"><failure message="AssertionError: UNVERIFIED_CONSUMER_PAYLOAD_ENDORSED_AS_COMPLETE&#10;assert 'SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED'">alter = 'partial_as_complete'
+
+    @pytest.mark.parametrize('alter',['foreign_snapshot','partial_as_complete','forged_joint_probability'])
+    def test_consumer_material_must_be_bound_not_copied(alter):
+     a,q,s,acc,r=run();cs=clients(a,s)
+     if alter=='foreign_snapshot':cs[0]['snapshot_ref']='FOREIGN_SNAPSHOT'
+     elif alter=='partial_as_complete':cs[0]['state']='PARTIAL_OPTIONS_OR_EMPIRICAL_SUPPORT'
+     else:cs[0]['route_probability']={'$exact_fraction':[1,1]};cs[1]['scenarios'][0]['selection_weight']={'$exact_fraction':[1,1]}
+     try:out=a.serve(q,acc,s,consumers=cs)
+     except E.N9SelectedWorldRefusal:return
+     save('DEFECT_consumer_'+alter,out)
+&gt;    assert out['state']!='SELECTED_WORLD_VALUES_SERVED','UNVERIFIED_CONSUMER_PAYLOAD_ENDORSED_AS_COMPLETE'
+E    AssertionError: UNVERIFIED_CONSUMER_PAYLOAD_ENDORSED_AS_COMPLETE
+E    assert 'SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED'
+
+tests/test_independent_court.py:125: AssertionError</failure></testcase><testcase classname="tests.test_independent_court" name="test_consumer_material_must_be_bound_not_copied[forged_joint_probability]" time="3.394"><failure message="AssertionError: UNVERIFIED_CONSUMER_PAYLOAD_ENDORSED_AS_COMPLETE&#10;assert 'SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED'">alter = 'forged_joint_probability'
+
+    @pytest.mark.parametrize('alter',['foreign_snapshot','partial_as_complete','forged_joint_probability'])
+    def test_consumer_material_must_be_bound_not_copied(alter):
+     a,q,s,acc,r=run();cs=clients(a,s)
+     if alter=='foreign_snapshot':cs[0]['snapshot_ref']='FOREIGN_SNAPSHOT'
+     elif alter=='partial_as_complete':cs[0]['state']='PARTIAL_OPTIONS_OR_EMPIRICAL_SUPPORT'
+     else:cs[0]['route_probability']={'$exact_fraction':[1,1]};cs[1]['scenarios'][0]['selection_weight']={'$exact_fraction':[1,1]}
+     try:out=a.serve(q,acc,s,consumers=cs)
+     except E.N9SelectedWorldRefusal:return
+     save('DEFECT_consumer_'+alter,out)
+&gt;    assert out['state']!='SELECTED_WORLD_VALUES_SERVED','UNVERIFIED_CONSUMER_PAYLOAD_ENDORSED_AS_COMPLETE'
+E    AssertionError: UNVERIFIED_CONSUMER_PAYLOAD_ENDORSED_AS_COMPLETE
+E    assert 'SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED'
+
+tests/test_independent_court.py:125: AssertionError</failure></testcase><testcase classname="tests.test_independent_court" name="test_decimal_literal_change_invalidates_both_hashes" time="3.545" /><testcase classname="tests.test_independent_court" name="test_same_value_native_coherent_rekey_is_fixture_only_not_signer_authority" time="6.205" /><testcase classname="tests.test_independent_court" name="test_actual_oc05_disabled" time="0.002" /><testcase classname="tests.test_independent_court" name="test_empirical_identity_and_permission_changes_not_silently_reauthorized[release]" time="1.529" /><testcase classname="tests.test_independent_court" name="test_empirical_identity_and_permission_changes_not_silently_reauthorized[source]" time="1.669" /><testcase classname="tests.test_independent_court" name="test_empirical_identity_and_permission_changes_not_silently_reauthorized[risk_set]" time="1.646" /><testcase classname="tests.test_independent_court" name="test_empirical_identity_and_permission_changes_not_silently_reauthorized[permission_root]" time="2.187" /><testcase classname="tests.test_independent_court" name="test_empirical_identity_and_permission_changes_not_silently_reauthorized[query_permit]" time="1.760" /><testcase classname="tests.test_independent_court" name="test_direct_ungranted_target_remains_refused" time="1.685" /><testcase classname="tests.test_independent_court" name="test_fresh_provider_with_self_minted_permit_is_not_signer_proof" time="1.944" /><testcase classname="tests.test_independent_court" name="test_native_stale_content_ref_cannot_be_dereferenced" time="0.002" /><testcase classname="tests.test_independent_court" name="test_native_same_value_new_release_registry_must_not_silently_use_old_acceptance" time="2.649"><failure message="AssertionError: STALE_NATIVE_ACCEPTANCE_WITH_NEW_RELEASE&#10;assert ('SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED' or 'TESTONLY_FIE...87798f527b106' == 'TESTONLY_FIE...29d4c2ea9c71c'&#10;  &#10;  - TESTONLY_FIELD:6ee94064770d1c17d76967317f68cde64bc5420aec8492720ac29d4c2ea9c71c&#10;  + TESTONLY_FIELD:d21dc005bdc40b56f0641dc75982880f74405f89691c55e532c87798f527b106)">def test_native_same_value_new_release_registry_must_not_silently_use_old_acceptance():
+     a=adapter();q=E.standard_request(label='CURRENT_TEST_CLOCK');s=a.build_snapshot(q);acc=a.accept(q,s);data=rows();data[1]['release_nonce']='NEW_SAME_VALUE_RELEASE';a.registry=TestOnlyRegistry(data)
+     r=a.serve(q,acc,s);save('DEFECT_native_rekey_after_acceptance',dict(fresh_native_read=fresh_read(a.registry),receipt=r))
+&gt;    assert r['state']!='SELECTED_WORLD_VALUES_SERVED' or native(r)[NCA]['fixture_ref']==a.registry.refs_by_role()[NCA],'STALE_NATIVE_ACCEPTANCE_WITH_NEW_RELEASE'
+E    AssertionError: STALE_NATIVE_ACCEPTANCE_WITH_NEW_RELEASE
+E    assert ('SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED' or 'TESTONLY_FIE...87798f527b106' == 'TESTONLY_FIE...29d4c2ea9c71c'
+E      
+E      - TESTONLY_FIELD:6ee94064770d1c17d76967317f68cde64bc5420aec8492720ac29d4c2ea9c71c
+E      + TESTONLY_FIELD:d21dc005bdc40b56f0641dc75982880f74405f89691c55e532c87798f527b106)
+
+tests/test_independent_court.py:180: AssertionError</failure></testcase><testcase classname="tests.test_independent_court" name="test_native_row_oracle_independent_reaggregation" time="0.039" /></testsuite></testsuites>

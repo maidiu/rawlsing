@@ -1,0 +1,301 @@
+{
+  "committed_root": "d14e8cef198f4720e8b007738ef801199d4d6abf670e6da469e183f95543e833",
+  "contract": "R11_E05_N9_SELECTED_WORLD_INTERFACE@1",
+  "empirical_intervened_source_balance": [
+    6,
+    6,
+    6
+  ],
+  "empirical_intervention": [
+    {
+      "denominator": 32,
+      "fraction": {
+        "1": [
+          19,
+          32
+        ]
+      },
+      "numerator": {
+        "0": 13,
+        "1": 19
+      },
+      "target": "Y"
+    },
+    {
+      "denominator": 16,
+      "fraction": {
+        "1": [
+          11,
+          16
+        ]
+      },
+      "numerator": {
+        "0": 5,
+        "1": 11
+      },
+      "target": "Y"
+    },
+    {
+      "denominator": 8,
+      "fraction": {
+        "1": [
+          7,
+          8
+        ]
+      },
+      "numerator": {
+        "0": 1,
+        "1": 7
+      },
+      "target": "Y"
+    }
+  ],
+  "empirical_source_balance": [
+    4,
+    4,
+    4
+  ],
+  "empirical_steps": [
+    {
+      "binding_order": [
+        "a"
+      ],
+      "conditioners": [
+        [
+          "A",
+          1
+        ]
+      ],
+      "denominator": 32,
+      "fraction": {
+        "1": [
+          9,
+          16
+        ]
+      },
+      "numerator": {
+        "0": 14,
+        "1": 18
+      },
+      "route": "N10E_PUBLIC_SINGLE",
+      "target": "Y"
+    },
+    {
+      "binding_order": [
+        "a",
+        "b"
+      ],
+      "conditioners": [
+        [
+          "A",
+          1
+        ],
+        [
+          "B",
+          1
+        ]
+      ],
+      "denominator": 16,
+      "fraction": {
+        "1": [
+          5,
+          8
+        ]
+      },
+      "numerator": {
+        "0": 6,
+        "1": 10
+      },
+      "route": "C1_PUBLIC_MULTI_BINDING",
+      "target": "Y"
+    },
+    {
+      "binding_order": [
+        "a",
+        "b",
+        "c"
+      ],
+      "conditioners": [
+        [
+          "A",
+          1
+        ],
+        [
+          "B",
+          1
+        ],
+        [
+          "C",
+          1
+        ]
+      ],
+      "denominator": 8,
+      "fraction": {
+        "1": [
+          3,
+          4
+        ]
+      },
+      "numerator": {
+        "0": 2,
+        "1": 6
+      },
+      "route": "C1_PUBLIC_MULTI_BINDING",
+      "target": "Y"
+    }
+  ],
+  "holds": {
+    "issued_EE13": false,
+    "issued_N5N6": false,
+    "model_use": false,
+    "new_issuer": false,
+    "operative_N9": false,
+    "operative_OC05": false,
+    "person_exposure": false,
+    "pooling": false
+  },
+  "native_fields": {
+    "gss": {
+      "denominator": 3288063,
+      "exclusions": [
+        "SECONDARY_HOUSING",
+        "VACANT_DWELLINGS"
+      ],
+      "native_geography": "GHANA_RURAL",
+      "native_measure": "ELECTRICITY_MAIN_LIGHTING_ALL_SUBTYPES",
+      "native_unit": "RURAL_OCCUPIED_HOUSEHOLD_MAIN_LIGHTING",
+      "numerator": 2388192,
+      "observation_period": "2021 PHC",
+      "publication_date": "2022-02-24",
+      "published_percent": 72.6,
+      "role": "GSS_RURAL_LIGHTING",
+      "source_family": "GH_GSS_PHC_2021",
+      "subtypes": {
+        "community_grid": 74490,
+        "generator": 3640,
+        "mains": 2288193,
+        "solar_inverter": 21512,
+        "wind": 357
+      }
+    },
+    "nca": {
+      "active_subscriptions": 23414527,
+      "native_geography": "GHANA_NATIONAL",
+      "native_measure": "ACTIVE_MOBILE_DATA_90_DAY_TRAFFIC",
+      "native_unit": "ACTIVE_MOBILE_DATA_SUBSCRIPTIONS_NOT_UNIQUE_PERSONS",
+      "observation_period": "2021-Q4 (90-day activity definition)",
+      "postpaid": 177189,
+      "prepaid": 23237338,
+      "publication_date": "2022-07-08",
+      "role": "NCA_NATIONAL_MOBILE_DATA",
+      "source_family": "GH_NCA_LICENSEE_REPORTS_2021Q4"
+    }
+  },
+  "origin": "INDEPENDENT_SOURCEFREE_BEFORE_EXECUTION",
+  "snapshots": {
+    "CURRENT_TEST_CLOCK": {
+      "empirical_state": "PRODUCTIVE_TEST_ONLY",
+      "feasibility": {
+        "civil": "FEASIBLE_MODELED_PREMISE",
+        "institutional": "INFEASIBLE_MODELED_PREMISE"
+      },
+      "field_read_state": "TWO_VALUES_READ_TEST_ONLY",
+      "label": "CURRENT_TEST_CLOCK",
+      "mode": "TEST_CURRENT",
+      "published_asof": "2027-09-01",
+      "routes": {
+        "civil": "ELIGIBLE",
+        "exit_constraint": "RESOURCE_CONSTRAINED",
+        "training": "BLOCKED_BY_MODELED_RULE"
+      },
+      "service_options": {
+        "structural_revision": true
+      },
+      "structural_revisions": {
+        "civil_open": 1,
+        "civil_sanction": 1,
+        "exit_cost": 2,
+        "training_access": 2,
+        "training_fee": 1
+      },
+      "structural_values": {
+        "civil_open": true,
+        "civil_sanction": false,
+        "exit_cost": 8,
+        "training_access": false,
+        "training_fee": 2
+      },
+      "valid_at": "2027-09-01"
+    },
+    "HISTORICAL_AS_OF": {
+      "empirical_state": "PRODUCTIVE_TEST_ONLY",
+      "feasibility": {
+        "civil": "FEASIBLE_MODELED_PREMISE",
+        "institutional": "FEASIBLE_MODELED_PREMISE"
+      },
+      "field_read_state": "TWO_VALUES_READ_TEST_ONLY",
+      "label": "HISTORICAL_AS_OF",
+      "mode": "AS_OF",
+      "published_asof": "2026-03-01",
+      "routes": {
+        "civil": "ELIGIBLE",
+        "exit_constraint": "WITHIN_MODELED_BUDGET",
+        "training": "ELIGIBLE"
+      },
+      "service_options": {
+        "structural_revision": true
+      },
+      "structural_revisions": {
+        "civil_open": 1,
+        "civil_sanction": 1,
+        "exit_cost": 1,
+        "training_access": 1,
+        "training_fee": 1
+      },
+      "structural_values": {
+        "civil_open": true,
+        "civil_sanction": false,
+        "exit_cost": 2,
+        "training_access": true,
+        "training_fee": 2
+      },
+      "valid_at": "2026-06-01"
+    },
+    "TYPED_PARTIAL_PRE_NCA_PUBLICATION": {
+      "empirical_state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+      "feasibility": {
+        "civil": "UNKNOWN_PREMISE",
+        "institutional": "UNKNOWN_PREMISE"
+      },
+      "field_read_state": "PARTIAL_TEST_ONLY_NOT_POSITIVE",
+      "field_refusal_reasons": [
+        "NOT_PUBLISHED_AT_SELECTED_ASOF"
+      ],
+      "field_roles_read": [
+        "GSS_RURAL_LIGHTING"
+      ],
+      "label": "TYPED_PARTIAL_PRE_NCA_PUBLICATION",
+      "mode": "AS_OF",
+      "published_asof": "2022-06-01",
+      "routes": {
+        "civil": "UNAVAILABLE_AUTHORITY_OR_CLOCK",
+        "exit_constraint": "UNAVAILABLE_AUTHORITY_OR_CLOCK",
+        "training": "UNAVAILABLE_AUTHORITY_OR_CLOCK"
+      },
+      "service_options": {
+        "structural_revision": true
+      },
+      "structural_revisions": {},
+      "structural_values": {},
+      "valid_at": "2022-06-01"
+    }
+  },
+  "source_kind": "TEST_ONLY_SYNTHETIC_NOT_OBSERVED",
+  "structural_units": {
+    "civil_open": "modeled route eligibility boolean",
+    "civil_sanction": "modeled sanction boolean",
+    "exit_cost": "modeled resource tokens",
+    "training_access": "modeled policy eligibility boolean",
+    "training_fee": "modeled resource tokens"
+  }
+}

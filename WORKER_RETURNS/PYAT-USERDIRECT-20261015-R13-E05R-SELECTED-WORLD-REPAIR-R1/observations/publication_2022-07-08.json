@@ -1,0 +1,71 @@
+{
+  "schema": "PRE553_HQ297_N9C_SOURCEFREE_VALUES_READER@1",
+  "execution_grade": "ISOLATED_SOURCEFREE_TEST_ONLY",
+  "operative_OC05": false,
+  "real_N9_consumer": false,
+  "issued_N5N6": false,
+  "issued_EE13": false,
+  "world_clock": "HISTORICAL_PUBLICATION_AWARE",
+  "as_of": "2022-07-08",
+  "state": "TWO_VALUES_READ_TEST_ONLY",
+  "values_read": [
+    {
+      "role": "GSS_RURAL_LIGHTING",
+      "fixture_ref": "TESTONLY_FIELD:83b0b3fdf1fa2a3e346c95211987b32fc5ff646d053a3577d1f695fd62507d45",
+      "source_family": "GH_GSS_PHC_2021",
+      "publisher": "Ghana Statistical Service",
+      "observation_period": "2021 PHC",
+      "publication_date": "2022-02-24",
+      "native_unit": "RURAL_OCCUPIED_HOUSEHOLD_MAIN_LIGHTING",
+      "native_geography": "GHANA_RURAL",
+      "native_measure": "ELECTRICITY_MAIN_LIGHTING_ALL_SUBTYPES",
+      "uncertainty": "CENSUS_NONSAMPLING_UNQUANTIFIED",
+      "values": {
+        "numerator": 2388192,
+        "denominator": 3288063,
+        "published_percent": 72.6,
+        "electricity_subtypes": {
+          "mains": 2288193,
+          "community_grid": 74490,
+          "generator": 3640,
+          "solar_inverter": 21512,
+          "wind": 357
+        }
+      }
+    },
+    {
+      "role": "NCA_NATIONAL_MOBILE_DATA",
+      "fixture_ref": "TESTONLY_FIELD:d21dc005bdc40b56f0641dc75982880f74405f89691c55e532c87798f527b106",
+      "source_family": "GH_NCA_LICENSEE_REPORTS_2021Q4",
+      "publisher": "National Communications Authority",
+      "observation_period": "2021-Q4 (90-day activity definition)",
+      "publication_date": "2022-07-08",
+      "native_unit": "ACTIVE_MOBILE_DATA_SUBSCRIPTIONS_NOT_UNIQUE_PERSONS",
+      "native_geography": "GHANA_NATIONAL",
+      "native_measure": "ACTIVE_MOBILE_DATA_90_DAY_TRAFFIC",
+      "uncertainty": "LICENSEE_REPORTING_ERROR_UNQUANTIFIED",
+      "values": {
+        "active_subscriptions": 23414527,
+        "prepaid": 23237338,
+        "postpaid": 177189
+      }
+    }
+  ],
+  "refusals": [],
+  "selected_fixture_refs": [
+    "TESTONLY_FIELD:83b0b3fdf1fa2a3e346c95211987b32fc5ff646d053a3577d1f695fd62507d45",
+    "TESTONLY_FIELD:d21dc005bdc40b56f0641dc75982880f74405f89691c55e532c87798f527b106"
+  ],
+  "dependency_readset": [
+    "TESTONLY_FIELD:83b0b3fdf1fa2a3e346c95211987b32fc5ff646d053a3577d1f695fd62507d45",
+    "TESTONLY_FIELD:d21dc005bdc40b56f0641dc75982880f74405f89691c55e532c87798f527b106"
+  ],
+  "successful_value_refset": [
+    "TESTONLY_FIELD:83b0b3fdf1fa2a3e346c95211987b32fc5ff646d053a3577d1f695fd62507d45",
+    "TESTONLY_FIELD:d21dc005bdc40b56f0641dc75982880f74405f89691c55e532c87798f527b106"
+  ],
+  "pooling": false,
+  "person_exposure": false,
+  "model_use": false,
+  "test_snapshot_ref": "TESTONLY_SNAPSHOT:5dcca1a642eea3841a1a3cb7abf9d69b12095a7797173cdab0738319fddf0b42"
+}
