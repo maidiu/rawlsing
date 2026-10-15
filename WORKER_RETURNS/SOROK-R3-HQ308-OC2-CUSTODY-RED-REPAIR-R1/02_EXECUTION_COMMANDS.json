@@ -1,0 +1,39 @@
+{
+  "cwd": "isolated source-free Python workspace",
+  "observed_versions": {
+    "python": "3.13.5",
+    "pytest": "9.0.2"
+  },
+  "test_commands": [
+    {
+      "type": "baseline_original",
+      "cmd": "python -m pytest -q test_custody_hostiles.py test_positive_lifecycle.py --junitxml=../baseline_original.xml",
+      "exit": 0
+    },
+    {
+      "type": "baseline_ocr1",
+      "cmd": "python -m pytest -q test_ocr1_independent_hostile.py --junitxml=../baseline_ocr1.xml",
+      "exit": 1
+    },
+    {
+      "type": "post_original",
+      "cmd": "python -m pytest -q test_custody_hostiles.py test_positive_lifecycle.py --junitxml=../oc2_r2_original.xml",
+      "exit": 1
+    },
+    {
+      "type": "post_ocr1",
+      "cmd": "python -m pytest -q test_ocr1_independent_hostile.py --junitxml=../oc2_r2_ocr1.xml",
+      "exit": 1
+    },
+    {
+      "type": "new_regression",
+      "cmd": "python -m pytest -q test_oc2_regressions.py --junitxml=../oc2_regression.xml",
+      "exit": 0
+    },
+    {
+      "type": "combined",
+      "cmd": "python -m pytest -q test_custody_hostiles.py test_positive_lifecycle.py test_ocr1_independent_hostile.py test_oc2_regressions.py --junitxml=../oc2_combined.xml",
+      "exit": 1
+    }
+  ]
+}

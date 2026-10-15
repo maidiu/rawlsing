@@ -1,0 +1,105 @@
+{
+  "schema": "SOROK_HQ308_OC2_EXECUTION_MATRIX_INDEX_R1",
+  "case_matrix_source": "OC2_EXECUTED_EVIDENCE_COMPACT.tar.xz:oc2_combined.xml",
+  "baseline": {
+    "original": {
+      "total": 31,
+      "pass": 31,
+      "red": 0,
+      "exit": 0
+    },
+    "ocr1": {
+      "total": 45,
+      "pass": 15,
+      "red": 30,
+      "exit": 1
+    }
+  },
+  "after": {
+    "original": {
+      "total": 31,
+      "pass": 28,
+      "red": 3
+    },
+    "ocr1": {
+      "total": 45,
+      "pass": 42,
+      "red": 3
+    },
+    "new_regressions": {
+      "total": 19,
+      "pass": 19,
+      "red": 0,
+      "exit": 0
+    },
+    "combined": {
+      "total": 95,
+      "pass": 89,
+      "red": 6,
+      "skip": 0,
+      "exit": 1
+    }
+  },
+  "retained_reds": [
+    {
+      "name": "test_h13_ledger_rollback_detected",
+      "kind": "ORIGINAL_SEMANTIC_CONFLICT",
+      "actual": "LedgerRollbackError at rollback: append-only invariant"
+    },
+    {
+      "name": "test_h15_missing_signature_in_capsule_refused",
+      "kind": "ORIGINAL_SEMANTIC_CONFLICT",
+      "actual": "SignatureError on missing capsule"
+    },
+    {
+      "name": "test_positive_full_role_separated_lifecycle",
+      "kind": "ORIGINAL_SEMANTIC_CONFLICT",
+      "actual": "SignatureError when signing ID-only rather than content digest"
+    },
+    {
+      "name": "test_A_capsule_unblind_permission[mod0-A01_revoked_unblind]",
+      "kind": "OCR1_PRECONDITION_GATE",
+      "actual": "RevocationError at commit, before unblind"
+    },
+    {
+      "name": "test_A_capsule_unblind_permission[mod1-A02_expired_unblind]",
+      "kind": "OCR1_PRECONDITION_GATE",
+      "actual": "RevocationError at commit, before unblind"
+    },
+    {
+      "name": "test_A_capsule_unblind_permission[mod2-A03_illegal_purpose_unblind]",
+      "kind": "OCR1_PRECONDITION_GATE",
+      "actual": "PurposeViolationError at commit, before unblind"
+    }
+  ],
+  "archive": {
+    "name": "OC2_EXECUTED_EVIDENCE_COMPACT.tar.xz",
+    "git_blob_sha1": "57d5fcd5587dff9323cdfcc188ead35033eef70a",
+    "sha256": "60fd3dff8ff2578e34b8697418d9c7f1db0d59a6c9015668cd0cd610ce9a49ba",
+    "bytes": 4784,
+    "members": [
+      "oc2_combined.xml",
+      "oc2_combined.log",
+      "oc2_regression.xml",
+      "oc2_regression.log"
+    ]
+  },
+  "supplementary_original_courts": "actual per-case baseline and individual repaired suite JUnit in local owner evidence archive; frozen source tests at OC1 and OCR1 referenced commits",
+  "original_blob_ids": {
+    "test_custody_hostiles": "94ad944997cb9d1a8d6527e91c17416120c5108d",
+    "test_positive_lifecycle": "4b665a2a9d6999071624d580f2d2ae193daf59f4",
+    "test_ocr1_independent_hostile": "ef997cab7205df53256b66a5695deeb9c082394f"
+  },
+  "candidate_blob": "f117f380c524db5b1eae0ce280be23f1c4bf2c23",
+  "regression_blob": "402f04ef7d6b8119f72df9355b554e797b9a501e",
+  "science_grade": "SOURCEFREE_TEST_ONLY_NOT_INDEPENDENT_ACCEPTANCE",
+  "not_reached": [
+    "C07_cross_process_persistence",
+    "trusted_role_registry",
+    "external_rollback_anchor",
+    "live_model_grants",
+    "real_human_custody",
+    "population_inference",
+    "V3"
+  ]
+}
