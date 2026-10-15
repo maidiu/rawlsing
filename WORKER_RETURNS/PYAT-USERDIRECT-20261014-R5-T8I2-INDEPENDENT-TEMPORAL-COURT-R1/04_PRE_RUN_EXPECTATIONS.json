@@ -1,0 +1,67 @@
+{
+  "schema": "PYAT_R5_T8I2_EXPECTATIONS_FROZEN_BEFORE_T8F2_CODE_OR_AUTHOR_TEST_OBSERVATION",
+  "sealed": "a6d55e2921c862c74d438b3cf1f4540d1da5eb30",
+  "candidate_commit": "40845430f77baf2af86533b4825b60199ee8990a",
+  "expected_code_blob": "9a654b55274b2e8052b1cfaa0eef1a079c079f59",
+  "expected_test_blob": "22248899d4fba505a2ff9459491a0d726b3ef75c",
+  "independence_caveat": "This same ChatGPT conversation previously authored T8I return. Therefore it is a separately frozen adversarial regression effort but CANNOT honestly be a truly independent T8I2 reviewer from T8I, as commission requires. No independent ACCEPT signature; any RED is bounded and reproducible, any positive is conditional.",
+  "tests": [
+    {
+      "id": "I01",
+      "required": "All 18 claim-bearing fields uniquely content-bound including variance and native codes. New variance creates new ref and preserves old ref."
+    },
+    {
+      "id": "I02",
+      "required": "Immutable deep snapshot: mutable caller-provided source primitives cannot corrupt historical ref after registration."
+    },
+    {
+      "id": "I03",
+      "required": "Ref source/version/year must be checked on retrieve and consumer; falsified version or source cannot pass with same full digest."
+    },
+    {
+      "id": "I04",
+      "required": "Extra fields on reference and caller self-issued arbitrary authority string must not upgrade evidence grade."
+    },
+    {
+      "id": "I05",
+      "required": "Caller-rehashed product delta/variance cannot override independently recomputed registered wave values."
+    },
+    {
+      "id": "I06",
+      "required": "Native category 0, DK REFUSED MISSING NOT_ASKED and denominators rechecked on read; 2012 Q43 2022 Q31 remain independent."
+    },
+    {
+      "id": "I07",
+      "required": "Rehashed changes to time_order, historical_requested/intervening, query_asof, issued_EE12, registry_authority must refuse or derive canonical values."
+    },
+    {
+      "id": "I08",
+      "required": "Publisher release/asof chronology comes from trusted facts, not caller product."
+    },
+    {
+      "id": "I09",
+      "required": "Previously completed read fails after wave source revocation; revocation enforced at actual consumer dereference."
+    },
+    {
+      "id": "I10",
+      "required": "Two different wave sources must have valid distinct immutable registry refs and permission scope; no source issuer manufactured from test-only authority."
+    },
+    {
+      "id": "I11",
+      "required": "Single-category shift changes delta and read digest, variance-only shift changes variance and registry ref but leaves delta stable."
+    },
+    {
+      "id": "I12",
+      "required": "Cold-process replay must rehydrate authenticated roots; in-memory strings alone are not original source custody."
+    },
+    {
+      "id": "I13",
+      "required": "Unchanged original T8C19 and original T8R3 must be distinguished from author's T8F2 21 and adapted T8I16; no renaming equivalent tests as originals."
+    },
+    {
+      "id": "I14",
+      "required": "No original Afrobarometer rows, source issuer, EE12, N8E, historical N9 or V3 permission."
+    }
+  ],
+  "status": "FROZEN_BEFORE_ANY_CANDIDATE_TEST_EXECUTION"
+}
