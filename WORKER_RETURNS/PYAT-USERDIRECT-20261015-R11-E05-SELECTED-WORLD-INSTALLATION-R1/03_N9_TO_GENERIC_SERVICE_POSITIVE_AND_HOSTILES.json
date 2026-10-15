@@ -1,0 +1,104 @@
+{
+  "r11_e05_n9_to_generic_service_positive_and_hostiles": {
+    "contract": "R11_E05_N9_SELECTED_WORLD_INTERFACE@1",
+    "precommit": {
+      "file": "freezes/01_PRECOMMITTED_SELECTED_WORLD_EXPECTED_VALUES.json",
+      "committed_before_execution": true,
+      "authored_independently": true,
+      "committed_root": "d14e8cef198f4720e8b007738ef801199d4d6abf670e6da469e183f95543e833"
+    },
+    "positives": [
+      {
+        "test": "test_current_snapshot_positive_selected_world_values",
+        "sink": "CURRENT_TEST_CLOCK",
+        "asserts": "SELECTED_WORLD_VALUES_SERVED, zero inconsistencies, structural revision 2, empirical 9/16+5/8+3/4 over 32/16/8, both native values dereferenced, both real E04 consumers positive"
+      },
+      {
+        "test": "test_historical_asof_snapshot_positive_selected_world_values",
+        "sink": "HISTORICAL_AS_OF",
+        "asserts": "SELECTED_WORLD_VALUES_SERVED, structural revision 1, identical empirical geometry, both native values"
+      },
+      {
+        "test": "test_current_snapshot_consumer_routes_and_feasibility",
+        "asserts": "NONPARENT_OPTIONS routes and CONCEPTION_SCENARIO_PROPOSALS feasibility exactly as precommitted; no route probability and no scenario weight"
+      },
+      {
+        "test": "test_historical_snapshot_consumer_routes_are_the_unrevised_premises",
+        "asserts": "the unrevised premises differ from the current clock while the empirical channel does not"
+      },
+      {
+        "test": "test_current_and_historical_are_structurally_distinct_but_empirically_identical",
+        "asserts": "current vs historical structural differ; native field records and empirical steps byte-identical"
+      },
+      {
+        "test": "test_receipt_carries_real_result_bearing_values_not_promises",
+        "asserts": "exit_cost==8, 9/16, GSS numerator 2388192, NCA 23414527; every value a concrete number, not a ref"
+      },
+      {
+        "test": "test_replay_is_bitwise_deterministic",
+        "asserts": "receipt_hash and payload digest identical across independent runs"
+      }
+    ],
+    "typed_partials_that_must_not_pass_as_positive": [
+      {
+        "test": "test_typed_partial_snapshot_is_not_served_as_positive",
+        "asserts": "TYPED_PARTIAL_SELECTED_WORLD with NCA NOT_PUBLISHED_AT_SELECTED_ASOF; both arms in the dependency readset; no fabricated structural value"
+      },
+      {
+        "test": "test_missing_positive_path_cannot_hide_behind_a_typed_hold",
+        "asserts": "exactly two positive sinks and one typed-partial sink"
+      },
+      {
+        "test": "test_world_access_rule_changes_only_the_world_route",
+        "asserts": "revoked training_access is typed REVOKED while the empirical and native channels stay served"
+      }
+    ],
+    "channel_separation": [
+      {
+        "test": "test_empirical_source_mutation_changes_only_empirical",
+        "asserts": "19/32, 11/16, 7/8; structural values, native field records and refs byte-identical"
+      },
+      {
+        "test": "test_structural_revision_changes_only_structural",
+        "asserts": "empirical steps and native records byte-identical; training_access True->False, exit_cost 2->8"
+      },
+      {
+        "test": "test_irrelevant_field_perturbation_changes_nothing",
+        "asserts": "no dependency, no value read and no consumer state changes"
+      }
+    ],
+    "hostiles": [
+      {"name": "wrong_source_or_release_binding", "test": "test_wrong_source_or_release_binding_refused", "code": "ACCEPTANCE_BINDING_MISMATCH"},
+      {"name": "snapshot_substitution", "test": "test_snapshot_publication_clock_tamper_refused", "code": "ACCEPTED_SNAPSHOT_SUBSTITUTION"},
+      {"name": "publication_clock_ahead_of_selection", "test": "test_publication_clock_ahead_of_selection_is_refused", "code": "FIELD_PUBLICATION_CLOCK_OUTSIDE_SELECTION"},
+      {"name": "swapped_native_field_role", "test": "test_swapped_native_field_role_refused", "code": "ROLE_REF_SUBSTITUTION"},
+      {"name": "foreign_native_field_ref", "test": "test_foreign_native_field_ref_refused", "code": "UNKNOWN_EXACT_FIELD_REF"},
+      {"name": "source_class_collision", "test": "test_source_class_collision_refused", "code": "NCA_NATIVE_UNIT_GEOGRAPHY_MEASURE_CONFLICT"},
+      {"name": "wrong_native_unit_or_geography", "test": "test_wrong_native_unit_or_geography_refused", "code": "GSS_NATIVE_UNIT_GEOGRAPHY_MEASURE_CONFLICT"},
+      {"name": "person_inference_labels", "test": "test_person_inference_labels_refused", "code": "NCA_RURAL_OR_UNIQUE_PERSON_INFERENCE"},
+      {"name": "wall_clock_and_non_historical_clocks", "test": "test_wrong_clock_mode_and_wall_clock_refused", "code": "CURRENT_OR_OTHER_CLOCK_NOT_AUTHORIZED / EXPLICIT_TEST_CURRENT_CLOCK_REQUIRED"},
+      {"name": "pooling_request", "test": "test_pooling_person_exposure_and_model_requests_refused", "code": "PERSON_POOLING_OR_MODEL_PROMOTION_FORBIDDEN"},
+      {"name": "unknown_structural_field", "test": "test_unknown_structural_field_and_native_role_refused", "code": "UNKNOWN_STRUCTURAL_FIELD_KEY"},
+      {"name": "unknown_or_duplicate_native_role", "test": "test_unknown_structural_field_and_native_role_refused", "code": "UNKNOWN_NATIVE_FIELD_ROLE / DUPLICATE_NATIVE_FIELD_ROLE_REQUIRED"},
+      {"name": "request_grammar", "test": "test_request_grammar_refusals", "code": "six typed grammar refusals"},
+      {"name": "request_binding_round_trip", "test": "test_request_binding_round_trip_is_exact", "code": "REQUEST_RECORD_FIELDS_MISSING_OR_UNKNOWN / REQUEST_SCHEMA_VERSION_MISMATCH"},
+      {"name": "native_field_mutation_invalidation", "test": "test_native_field_mutation_invalidates_only_that_field", "code": "TEST_ONLY_DEPENDENCY_DIFF_NOT_B5; only GSS changes"},
+      {"name": "revocation_of_receipt", "test": "test_historical_receipt_is_archival_only_after_invalidation", "code": "historical_receipts_retained; archival_only, fresh_use_authorized false"},
+      {"name": "readset_arm_exactness", "test": "test_accepted_native_readset_arms_are_exact", "code": "two refs, two dependency arms, two successful arms"},
+      {"name": "empirical_provider_not_candidate_math", "test": "test_empirical_provider_trace_is_native_owner_math_not_candidate_math", "code": "route N10E_PUBLIC_SINGLE / C1_PUBLIC_MULTI_BINDING, binding order a/ab/abc"}
+    ],
+    "graded_suites": [
+      {"label": "e05_adapter_tests", "cases": 38, "grade": "newly authored sourcefree", "pass": 38, "fail": 0},
+      {"label": "e04_candidate_baseline", "cases": 37, "grade": "sealed E04 candidate, immutable, NOT independently accepted", "pass": 37, "fail": 0},
+      {"label": "n9c_owner_reader", "cases": 47, "grade": "exact accepted-owner reader contract", "pass": 47, "fail": 0},
+      {"label": "m4_m5_owner_publication", "cases": 30, "grade": "accepted owners, unmodified", "pass": 30, "fail": 0},
+      {"label": "empirical_owner_chains", "cases": 101, "grade": "accepted owners, unmodified", "pass": 101, "fail": 0},
+      {"label": "e03_n9_n10w_progressive", "cases": 18, "grade": "sealed candidate", "pass": 18, "fail": 0}
+    ],
+    "totals": {"tests": 271, "pass": 271, "fail": 0, "errors": 0, "skipped": 0},
+    "cold_process": {"first_exit": 0, "replay_exit": 0, "separate_processes": 2,
+                     "receipt_hashes_identical": true, "payload_digests_identical": true},
+    "false_xfails": 0,
+    "not_executed_conversions": 0
+  }
+}
