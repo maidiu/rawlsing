@@ -1,0 +1,19 @@
+# SOROK HQ312 OUT7 — Independent sourcefree OUT6 outbox acceptance court
+
+REPOSITORY maidiu/rawlsing (private). ROLE fresh independent I2 reviewer, NOT OUT6 author, HQ or ADP019 authority.
+BRANCH agent/reviewer-sorok-r3-hq312-out7-out6-independent-r1
+PARENT 50d9c762c48a99cd0d41bd811219087d96dc4bc0
+EXACT SEALED STARTUP: new commission-creation Git SHA supplied by HQ and verified against direct remote branch tip before edits.
+ALLOWED WRITES ONLY WORKER_RETURNS/SOROK-R3-HQ312-OUT7-OUT6-INDEPENDENT-R1/.
+
+MODEL GPT-6 High. EDITOR/HOST one Browser/GitHub worker with actual Python, pytest, subprocess and sourcefree Git materialization. BROWSER_NATIVE qualified conditional on authentic source/archive transfer; connector alone does NOT mount private files into Python. One fresh reviewer completes entire job including pytest, hostiles, documentation, commit/push/readback; no helpers, model/editor switching. CHEAPEST QUALIFIED evaluated; actual cost/quota UNKNOWN unless telemetry observed; verify 00D passport or bootstrap minimum. On missing runtime/archive return precise HOLD and do other authorized bounded work.
+
+READ Sorok control 00_READ_ME_FIRST / 00B / 00C sections 3A, 3B, 5A / 00D and HQ312 intake at parent. Exact OUT6 return 673233571b7d899c309dd26f9b9cd2508404c0b6 with patched source native blob aa002cb634e81cb980820c14220a1ab55bc5e015, original OUT4 2afa3022e5551df71b739cf8689e832db85e1196, OUT3 independent 0ab31e4198299708e700840c1b68e0d94a2ced06 with exact published 22-test archive blob a9c4ee7344526fa335605d76d08def2ac5dcba2a SHA256 fc876b665bd9af6328deec86aa66e93ec0eebf9048ca7a5a0d7d0630cd48bddd, OUT2 b1004a43eb0309af99e1b7ce9d5290df3c07f3cd, frozen S01–S28 oracle blob 782ba75ee94f24908100b1f3464e7035497d546c; OUTP policy court 521edf0c8ef31f6248ed8d8b1fcc4fa5cd0dd687.
+
+MISSION: independently reconstruct the exact imported source/test bytes, verify native Git blob hashes and actual module __file__, and run ORIGINAL 137 (135 PASS, two retained historical RED), exact unchanged OUT3 22, OUT4 29, OUT6 18 = expected 204 PASS/2 RED across 206. Do NOT infer results from author JUnit. Keep two old REDs literal: S27 authored mug move contradicts world-owner=MISSING; two-writer stale journal concurrency outside single-writer authority.
+
+FREEZE new hostile expectations before new execution (disclose that author results are known). Test ACTUAL entrypoints and true cold processes: ACKNOWLEDGED receipt never regresses into FAILED, ordinary non-ACK failed receipt can retry, sole viewer revocation blocks new global emit/retry including after recovery, a remaining authorized viewer permits lawful continuation, unauthorized viewer delivery cannot be restored from forged rehashed snapshot, state restoration fails atomically, duplicate ACK/replay/counter corruption do not counterfeit human perception. Test positive and negative admissions without granting actor/material/perception authority.
+
+OUT5 remains LOCAL_REPORTED_UNPUBLISHED at e576e405e50e1bd91be5c839d8c33b69fa851fd9: never claim the 14 original OUT5 new tests were fetched or re-executed. OUTP establishes two explicit competent-owner HOLDS: implicit legacy sourcefree minimal fixture L1 versus explicit fixture mode L2, and transport ACK A1 versus viewer-opportunity ACK A2. Do not invent a policy to force PASS, distinguish transport and opportunity from human perception.
+
+RETURN only assigned reviewer directory with immutable original-test identities, complete actual JUnit/stdout/source, independent hostile results and full matrix, cold crash receipts, scoped verdict REVIEW_PASS_SCOPED_SOURCEFREE_SINGLE_WRITER or REVIEW_REVISE/HOLD, environment passport, owner policy HOLDS, changed-path audit, and direct pushed remote SHA verification. No provider/model experiments, real respondent data, ADP019 live issuer, multiwriter claim, semantic/CURRENT/PRE-MAIN edits, V3/N12 or adoption.
