@@ -1,0 +1,173 @@
+{
+  "schema": "PYAT_R5_T8I2_TRUE_PYTHON_HOSTILE_EXECUTION_R1",
+  "overall": "SOURCEFREE_T8F2_RED_WITH_REVIEWER_LINEAGE_LIMITATION",
+  "host": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "git": "2.47.3",
+    "workdir": "/mnt/data/t8i2_court",
+    "import_module": "t8f2_temporal_custody",
+    "import_file": "/mnt/data/t8i2_court/t8f2_temporal_custody.py",
+    "git_hash_object": "9a654b55274b2e8052b1cfaa0eef1a079c079f59",
+    "source_bytes": 16165,
+    "dependency_profile": "stdlib only: dataclasses,json,hashlib,datetime,fractions,typing; exact module and tests really copied into Python workspace",
+    "private_git_cli": "COULD_NOT_RESOLVE_HOST_GITHUB_COM",
+    "github_connector_exact_code_download": "YES; locally reconstructed byte-for-byte and git hash-object verified"
+  },
+  "runs": [
+    {
+      "label": "T8F2_AUTHOR_21_UNCHANGED",
+      "command": "python -m pytest -q test_t8f2_temporal_custody.py --junitxml=author21.junit.xml > author21.stdout 2>author21.stderr",
+      "exit": 0,
+      "pass": 21,
+      "fail": 0,
+      "errors": 0,
+      "junit_sha256": "a0ce6e593aadd5813717d31730c7f295929b5f657ca0263403604bed2d652319",
+      "junit_bytes": 2783,
+      "actual_xml_time": "0.099",
+      "test_git_blob": "22248899d4fba505a2ff9459491a0d726b3ef75c"
+    },
+    {
+      "label": "T8I2_NEW_24_CANDIDATE_HOSTILES",
+      "command": "python -m pytest -q test_t8i2_hostiles.py --junitxml=t8i2_hostiles.junit.xml > t8i2_hostiles.stdout 2>t8i2_hostiles.stderr",
+      "exit": 1,
+      "pass": 7,
+      "fail": 17,
+      "errors": 0,
+      "junit_sha256": "712e51dcc04fc2e2f441e9eaabb8f6c4559adafc50e5017f7215c2363451a54d",
+      "junit_bytes": 17287,
+      "actual_xml_time": "0.204",
+      "test_git_blob": "9b2d6b0d3121988c89f36ff3e43d066e87f80c39",
+      "stdout_sha256": "d8cf9c9832eb12907713e58efed7f353e83c98bcee23f873162aa3b065260067",
+      "stdout_bytes": 16204
+    },
+    {
+      "label": "T8C_ORIGINAL_UNCHANGED_19",
+      "command": "python -m pytest -q test_hq297_t8c.py --junitxml=t8c19.junit.xml",
+      "exit": 0,
+      "pass": 19,
+      "fail": 0,
+      "errors": 0,
+      "junit_sha256": "79eccd1fcbd4835832749dbe9787cd5ca0478a0b356701a71d7282f686bfd3a3",
+      "junit_bytes": 1869,
+      "actual_xml_time": "0.092",
+      "test_git_blob": "7f7e0c713a669951b40787537138db7a0653daea",
+      "acceptance_for_T8F2": false
+    },
+    {
+      "label": "T8R_UNCHANGED_HISTORICAL_3_AGAINST_ORIGINAL_T8C",
+      "command": "python -m pytest -q test_review_mandatory_guards_red.py --junitxml=t8r3.junit.xml >t8r3.stdout 2>t8r3.stderr",
+      "exit": 1,
+      "pass": 0,
+      "fail": 3,
+      "errors": 0,
+      "junit_sha256": "cba01caafa038fe211399e4df098af6802dcf922e432b752160c32a992c7a0b5",
+      "junit_bytes": 3168,
+      "actual_xml_time": "0.080",
+      "test_git_blob": "83db68fd705372b62778d81f96687a50b744ecca",
+      "note": "Expected historical RED; not T8F2 failure"
+    }
+  ],
+  "cold_process": {
+    "method": "Two separate fresh Python subprocess interpreters each import pinned module, construct new test-only registry, register fixtures and compare/consume historical_year=2017; deterministic stdout compared exactly; no persisted trusted registry state was restored",
+    "result": "IDENTICAL",
+    "stdout_sha256": "0569dc3dfc542b1dc85c41bc5d413a26885275ac31abc084ade42679dd2f20f5",
+    "stdout_bytes": 327,
+    "selected_test_delta": "3/44",
+    "historical_intervening": "UNKNOWN_UNOBSERVED_GAP",
+    "read_digest": "0d0810e366bb8f3031b08591adaf42db738b2d1b92c0ef1e1fe9c0ebc49cf2bf",
+    "ra_hash": "ec518ed9a93b492b052c0db1da035214a2b7a2735dd888c4f481f7229e2b862a",
+    "rb_hash": "55a160b02951b5eecbb6c327ac91f16cf904b20a96a2f1b98c214b709172a49e",
+    "caveat": "No historical original-source custody, cryptographic external issuer, release snapshot persistence or owner N9 integration"
+  },
+  "positive_controls_7": [
+    "sourcefree grade and not-EE12/N9 consumer marker",
+    "variance-only new ref changes variance and preserves signed delta and other-wave ref",
+    "native 0→3 redistributive cell changes delta and values-read digest while unrelated ref stable",
+    "year/hash ref tamper typed REFUSAL and revocation denies existing consumer",
+    "native code0/refusal 998/8, 2017 unknown, publication/asof cutoff/unauthorized 2018 at producer",
+    "self-rehashed forged numeric delta=999 refused TEMPORAL_DELTA_ARITHMETIC_MISMATCH",
+    "forged historical publisher clock and explicit issued_EE12=true rejected"
+  ],
+  "failed_acceptance_assertions_17": [
+    {
+      "code": "SOURCE_REF_FORGERY",
+      "tests": [
+        "test_red_forged_ref_source_retrieve",
+        "test_red_blank_source_version_in_ref_retrieve",
+        "test_red_consumer_source_forgery_resigned"
+      ],
+      "result": "ref.source ignored on registry retrieval; consume_registered rebuilds ref using only ref_id/content_hash/year, allowing malicious source to survive self-rehashed product"
+    },
+    {
+      "code": "VERSION_REF_FORGERY",
+      "tests": [
+        "test_red_forged_ref_version_retrieve",
+        "test_red_consumer_version_forgery_resigned"
+      ],
+      "result": "ref.version ignored by retrieve and consumer reconstruction; version claim inconsistent with stored WaveFact accepted"
+    },
+    {
+      "code": "CLOSED_REF_SCHEMA",
+      "tests": [
+        "test_red_consumer_ref_unknown_extra_field_resigned"
+      ],
+      "result": "arbitrary nested wave_refs extra issuer/permission field ignored, no strict exact schema"
+    },
+    {
+      "code": "REGISTRY_AUTHORITY_SELF_GRANT",
+      "tests": [
+        "test_red_arbitrary_registry_authority_constructor"
+      ],
+      "result": "caller WaveFactRegistry(authority='ARBITRARY_SELF_GRANTED_REAL_AUTHORITY') registers and consumes; string equality masquerades as trusted authority"
+    },
+    {
+      "code": "TEMPORAL_METADATA_TRUST",
+      "tests": [
+        "test_red_self_rehashed_time_order_inversion",
+        "test_red_self_rehashed_historical_request_outside_allowed",
+        "test_red_forged_2017_gap_resigned"
+      ],
+      "result": "self-rehashed claim can invert years, ask historical_year 2018 not permitted by compare(), or report 2017 OBSERVED_2017_PROVEN, while numeric delta remains valid"
+    },
+    {
+      "code": "GRADE_AND_ISSUANCE_METADATA_LAUNDERING",
+      "tests": [
+        "test_red_self_rehashed_measured_original_data_upgrade",
+        "test_red_self_rehashed_fixture_authorization_upgrade",
+        "test_red_self_rehashed_n8s_objective_claim",
+        "test_red_malformed_history_authority_metadata_not_validated"
+      ],
+      "result": "self-rehashed measured_original_data=true, fixture_authorization ACTUAL_EE12_GRANTED, objective N8S or real design_uncertainty labels accepted and carried in product; consumer checks only issued_EE12 false, grade literal and selected_context input"
+    },
+    {
+      "code": "REVOKE_BY_FORGED_REF",
+      "tests": [
+        "test_red_revocation_invalid_ref_must_not_revoke_authentic"
+      ],
+      "result": "revoke checks only ref_id exists, does not authenticate supplied content hash/source/version, and revokes real ref on forged token"
+    },
+    {
+      "code": "STRONGER_CUSTODY_EXPECTATION_NOT_NECESSARILY_SOURCEFREE_BUG",
+      "tests": [
+        "test_red_consumer_different_valid_registry_same_authority_must_be_bound",
+        "test_red_cold_replay_unissued_authority_is_not_cryptographic_signature"
+      ],
+      "result": "separately constructed identical sourcefree registries with same unsigned source facts/authority string accept each other's product. This is decisive evidence against authenticated issuer-instance custody, but content-addressed deterministic sourcefree replay MAY legitimately permit identical independent fixtures; do NOT count these as required failures of a strictly content-addressed test-only method."
+    }
+  ],
+  "honesty": {
+    "fail_total": 17,
+    "method_core_red_count_at_least": 15,
+    "additional_stronger_custody_challenges": 2,
+    "real_Afrobarometer_rows_run": false,
+    "EE12_issued": false,
+    "N8E_owner_run": false,
+    "N9_owner_run": false,
+    "HQ214_owner_full_import": false,
+    "independence_status": "SAME_CONVERSATION_AS_T8I__CANNOT_SIGN_TRUE_INDEPENDENT_ACCEPT",
+    "junit_generated_locally": true,
+    "junit_committed_as_raw_bytes": false,
+    "source_original_files_committed_to_return": false
+  }
+}
