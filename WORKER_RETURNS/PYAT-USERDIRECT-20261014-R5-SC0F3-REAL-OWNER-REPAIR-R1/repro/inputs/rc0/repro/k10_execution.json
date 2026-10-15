@@ -1,0 +1,22 @@
+{
+  "suite": "k10",
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/test_k10_structural_conservation.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=$RC0_RETURN/repro/k10.xml"
+  ],
+  "cwd": "$RC0_RUNTIME",
+  "exit_code": 0,
+  "seconds": 0.46176695823669434,
+  "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "pytest": "9.0.2",
+  "raw_stdout_sha256": "c0a990de1055355825db98d6b4719664334d43654fbed47ff93fe0f2b348c3e1",
+  "stdout_path": "repro/k10.log",
+  "junit_path": "repro/k10.xml",
+  "path_normalization_only": true
+}

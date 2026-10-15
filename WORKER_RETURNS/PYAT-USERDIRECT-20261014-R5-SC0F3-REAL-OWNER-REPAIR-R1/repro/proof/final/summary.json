@@ -1,0 +1,105 @@
+{
+  "schema": "SC0F3_ACTUAL_NATIVE_ENTRYPOINT_PROOF@1",
+  "runs": [
+    {
+      "name": "baseline_A",
+      "artifact": "baseline_A.json.gz",
+      "uncompressed_sha256": "be65132a436ec2ae35ea2194a12bb2472890109d11562be920da556399e2bcb3",
+      "compressed_sha256": "c188ae67cb4d0d7ff81aaf23f1a6af51c7f69b032f8352db03b24a44cf7017df",
+      "native_support": {
+        "cells": {
+          "no": 6,
+          "yes": 54
+        },
+        "denominator": 60
+      },
+      "native_completed_calls": {
+        "evaluate_positioned_subject_possibility": 1,
+        "compose_positioned_subject_possibility": 1,
+        "provide_empirical_possibility_slice": 1
+      },
+      "actual_source_values_read": 262
+    },
+    {
+      "name": "baseline_B",
+      "artifact": "baseline_B.json.gz",
+      "uncompressed_sha256": "be65132a436ec2ae35ea2194a12bb2472890109d11562be920da556399e2bcb3",
+      "compressed_sha256": "c188ae67cb4d0d7ff81aaf23f1a6af51c7f69b032f8352db03b24a44cf7017df",
+      "native_support": {
+        "cells": {
+          "no": 6,
+          "yes": 54
+        },
+        "denominator": 60
+      },
+      "native_completed_calls": {
+        "evaluate_positioned_subject_possibility": 1,
+        "compose_positioned_subject_possibility": 1,
+        "provide_empirical_possibility_slice": 1
+      },
+      "actual_source_values_read": 262
+    },
+    {
+      "name": "changed_A",
+      "artifact": "changed_A.json.gz",
+      "uncompressed_sha256": "092ecfd730cedb85dbe0ce7bef8a52d136f7d77246b91ef905ec362f3fe194f0",
+      "compressed_sha256": "8e7131f52048c2e5d1057cfb42c451e5a40ee1f1e1db1acd5f26f6cb196ae930",
+      "native_support": {
+        "cells": {
+          "no": 10,
+          "yes": 50
+        },
+        "denominator": 60
+      },
+      "native_completed_calls": {
+        "evaluate_positioned_subject_possibility": 1,
+        "compose_positioned_subject_possibility": 1,
+        "provide_empirical_possibility_slice": 1
+      },
+      "actual_source_values_read": 262
+    },
+    {
+      "name": "reverse_A",
+      "artifact": "reverse_A.json.gz",
+      "uncompressed_sha256": "82853e997e287e5735585767c02c62a3ffeb5ee118feb9c11a8cb3178fd25505",
+      "compressed_sha256": "fe46255f47fe192c5e1470062ce9a18afb1eb870bd92388de5eb2e69c6568a07",
+      "native_support": {
+        "cells": {
+          "P1": 54,
+          "P2": 8
+        },
+        "denominator": 62
+      },
+      "native_completed_calls": {
+        "evaluate_positioned_subject_possibility": 1,
+        "compose_positioned_subject_possibility": 1,
+        "provide_empirical_possibility_slice": 1
+      },
+      "actual_source_values_read": 264
+    },
+    {
+      "name": "reverse_changed_A",
+      "artifact": "reverse_changed_A.json.gz",
+      "uncompressed_sha256": "508af3ba3c47c9cba71b08d366a2856e8292181a5de664de3e2474419951ba07",
+      "compressed_sha256": "d041ee683df7ba1d597fedb375d56e3f1b26eb779e157c9087848eb0de90a1f6",
+      "native_support": {
+        "cells": {
+          "P1": 50,
+          "P2": 8
+        },
+        "denominator": 58
+      },
+      "native_completed_calls": {
+        "evaluate_positioned_subject_possibility": 1,
+        "compose_positioned_subject_possibility": 1,
+        "provide_empirical_possibility_slice": 1
+      },
+      "actual_source_values_read": 260
+    }
+  ],
+  "full_AB_equivalence": true,
+  "real_source_operations": 0,
+  "model_calls": 0,
+  "actor_calls": 0,
+  "grade": "SOURCEFREE_INTERFACE_CANDIDATE"
+}

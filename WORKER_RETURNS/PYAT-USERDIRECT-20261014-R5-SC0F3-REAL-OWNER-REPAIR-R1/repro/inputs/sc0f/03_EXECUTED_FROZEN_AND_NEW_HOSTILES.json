@@ -1,0 +1,75 @@
+{
+  "schema": "PYAT_R2_SC0F_EXECUTED_FROZEN_AND_NEW_HOSTILES@1",
+  "status": "EXECUTED__SOURCEFREE__NOT_ADOPTION__NOT_V3__NOT_N9_CURRENT",
+  "executed_at_utc": "2026-10-14T23:39:16Z",
+  "sealed_startup": "4d7255e9183fb11d1fd36258ff05429f5cffed40",
+  "environment": {
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "jsonschema": "4.26.0",
+    "model_calls": 0,
+    "actor_runs": 0,
+    "original_survey_operations": 0
+  },
+  "suites": [
+    {
+      "name": "SC0F repair verification (10 cases)",
+      "command": "python3 -m pytest repro/tests/test_sc0f_repair.py -q",
+      "passed": 10,
+      "failed": 0,
+      "exit": 0,
+      "note": "RED-01 schema, RED-02 reversal, RED-03 revocation, RED-04 clocks, RED-05 PARTIAL, I2#1 empirical, mission mutation, RC0#5 negatives, integration call-trace, conservation"
+    },
+    {
+      "name": "N10E+C1 (56 tests)",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pre553_empirical_possibility_provider.py rawlsing_next/tests/test_pre553_analytical_composition.py -q",
+      "passed": 56,
+      "failed": 0,
+      "exit": 0,
+      "note": "accepted owner suites, unmodified"
+    },
+    {
+      "name": "PE author suite (13 tests)",
+      "command": "python3 -m pytest rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py -q",
+      "passed": 13,
+      "failed": 0,
+      "exit": 0,
+      "note": "accepted PE consumer, unmodified"
+    },
+    {
+      "name": "K9 8 + K10 28 frozen port suites (36 tests)",
+      "command": "python3 -m pytest port/test_k9_provider_swap.py port/test_k10_structural_conservation.py -q",
+      "passed": 36,
+      "failed": 0,
+      "exit": 0,
+      "note": "unmodified frozen oracles, original SC0 port at b15dbbc4"
+    }
+  ],
+  "total_passed": 115,
+  "total_failed": 0,
+  "red_closures": {
+    "RED_01_SCHEMA_CONTRACT": "CLOSED \u2014 strict Draft 2020-12 WorldReceipt+PossibilityReceipt pass Draft202012Validator",
+    "RED_02_FORGED_REVERSAL": "CLOSED \u2014 issuer-registry dereference; forged/foreign-scope grants refused",
+    "RED_03_WORLD_READ_BYPASS": "CLOSED \u2014 active revocation gate in adapter.run",
+    "RED_04_RETROACTIVE_KNOWLEDGE": "CLOSED \u2014 KNOWLEDGE_AS_OF clock ordering enforced",
+    "RED_05_PARTIAL_AS_POSITIVE": "CLOSED \u2014 PARTIAL/NO_CURRENT never positive",
+    "I2_01_STATIC_SUPPORT": "CLOSED \u2014 empirical support from cells not static WORLD",
+    "I2_02_EQUIVALENCE_WHITELIST": "PARTIAL \u2014 full semantic comparison needs owner-qualified A/B",
+    "I2_03_H2_COUNTER_ONLY": "PARTIAL \u2014 refresh carries boundary refs; real source boundary crossing needs owner",
+    "I2_04_K10_28_ACTOR_API": "NOTED \u2014 absence of actor API is appropriate firewall",
+    "I2_05_READER_EDGE": "CLOSED \u2014 numerical mutation affects both consumers; unrelated stable",
+    "RC0_05_NEGATIVE_ALGEBRA": "CLOSED \u2014 full 12-state vocabulary enforced"
+  },
+  "call_trace_evidence": {
+    "old_port_calls_to_n10e_c1": 0,
+    "sc0f_calls_traced": "SC0F_FIXTURE_EMPIRICAL_COMPUTATION + N10E/C1 import availability",
+    "note": "real N10E/C1 computation wired via producer_bridge; sourcefree fixture computes from empirical cells"
+  },
+  "invariants": {
+    "frozen_oracles_modified": "NO",
+    "xfail_relabelled_pass": "NO",
+    "original_owner_code_modified": "NO",
+    "new_actor_rule_introduced": "NO",
+    "canonical_wake_weld": "NONE"
+  }
+}

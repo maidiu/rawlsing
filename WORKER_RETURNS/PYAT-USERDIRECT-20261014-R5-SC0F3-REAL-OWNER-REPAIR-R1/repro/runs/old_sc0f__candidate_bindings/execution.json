@@ -1,0 +1,85 @@
+{
+  "suite": "old_sc0f__candidate_bindings",
+  "candidate_import_bindings": true,
+  "exit_code": 2,
+  "seconds": 0.5751149654388428,
+  "imports": [
+    {
+      "module": "port.adapter",
+      "file": "sc0f3/adapter.py",
+      "sha256": "19d801fc5ebf09fa79c97957e54da5cfd61b17f7a71b8cd0d65b0f244d9dbbf7",
+      "git_blob_sha1": "a154091f5d3b55ef90615f146d6b3d107a5e5cf7"
+    },
+    {
+      "module": "port.contracts",
+      "file": "inputs/port/port/contracts.py",
+      "sha256": "b611fb6d03f22afa1303471fbdf7b200426e0d9dc2d4bd947f05d0440f2b7f72",
+      "git_blob_sha1": "0d7217ebb70acf0fd7616ba34ba318842775303e"
+    },
+    {
+      "module": "sc0f.producer_bridge",
+      "file": "sc0f3/producer.py",
+      "sha256": "1f8949d0696eb7e20db5a5d5e525448c4c7907afe942fed6641d7da951020d8b",
+      "git_blob_sha1": "70fb0a1a08df27e678f59ccf6dbf4562b3425f81"
+    },
+    {
+      "module": "sc0f.strict_receipts",
+      "file": "inputs/sc0f/repro/sc0f/strict_receipts.py",
+      "sha256": "6856fcef997b4ca38ab2225487051363e96fae2fb32f16272c35e95a3bd47395",
+      "git_blob_sha1": "10de6bae66fd35adc26bfda70d363c41497fed79"
+    },
+    {
+      "module": "sc0f.world_laws_ext",
+      "file": "inputs/sc0f/repro/sc0f/world_laws_ext.py",
+      "sha256": "e8fecff1a44d0996df6bfc90a22734a86b212256c29069fb8a03294627d97b41",
+      "git_blob_sha1": "d43db05b62c6f4738f1d6f826c583eb7fa918eea"
+    },
+    {
+      "module": "sc0f3.adapter",
+      "file": "sc0f3/adapter.py",
+      "sha256": "19d801fc5ebf09fa79c97957e54da5cfd61b17f7a71b8cd0d65b0f244d9dbbf7",
+      "git_blob_sha1": "a154091f5d3b55ef90615f146d6b3d107a5e5cf7"
+    },
+    {
+      "module": "sc0f3.common",
+      "file": "sc0f3/common.py",
+      "sha256": "fc69010f497249513179bf8f5018ca842446204f8b761a5562ded897e8b540b8",
+      "git_blob_sha1": "05581639a920bb0b77f322f990444cabd2de3a26"
+    },
+    {
+      "module": "sc0f3.fixture_owner",
+      "file": "sc0f3/fixture_owner.py",
+      "sha256": "dac444179982f379a803294832c9be204bcad5f1cb9965479c2bce367d7add3b",
+      "git_blob_sha1": "631262244e727b028ac62f5d37e6d06f9f5e0a15"
+    },
+    {
+      "module": "sc0f3.gates",
+      "file": "sc0f3/gates.py",
+      "sha256": "174569b4bd4598943662e81485c7e2dcaeb78f8f347ceee99c95d13e7c2dd410",
+      "git_blob_sha1": "5168a88c43320870941df44d51749d238963933f"
+    },
+    {
+      "module": "sc0f3.producer",
+      "file": "sc0f3/producer.py",
+      "sha256": "1f8949d0696eb7e20db5a5d5e525448c4c7907afe942fed6641d7da951020d8b",
+      "git_blob_sha1": "70fb0a1a08df27e678f59ccf6dbf4562b3425f81"
+    },
+    {
+      "module": "sc0f3.providers",
+      "file": "sc0f3/providers.py",
+      "sha256": "92293db7808ff0713bc1d37f14e980d3c39e15c67a6954c45dc7316a1082319d",
+      "git_blob_sha1": "eae30bf034b496cb4b86bc1b4fe745076234ea6d"
+    },
+    {
+      "module": "sc0f3.receipts",
+      "file": "sc0f3/receipts.py",
+      "sha256": "d53d700de031d6f29825c4844d505250918be1d75acfab151238d9825390fe56",
+      "git_blob_sha1": "aa8b659bf43e7a4e2f7160abad0526a0bd99369d"
+    }
+  ],
+  "relocations": {
+    "/tmp/wg0p/.sc0i_tmp/tests/test_sc0f_repair.py": "inputs/sc0f/repro/tests/test_sc0f_repair.py",
+    "<REPRO>/runs/old_sc0f__candidate_bindings/runtime_root/WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json": "inputs/port/oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json",
+    "<REPRO>/runs/old_sc0f__candidate_bindings/runtime_root/WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/oracles/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json": "inputs/port/oracles/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json"
+  }
+}

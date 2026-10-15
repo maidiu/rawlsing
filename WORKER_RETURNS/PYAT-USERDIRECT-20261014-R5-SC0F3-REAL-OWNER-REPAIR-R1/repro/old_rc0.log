@@ -1,0 +1,86 @@
+..FFFFFF..FFFFFF.........                                                [100%]
+=================================== FAILURES ===================================
+___ test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderA] ____
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:50: in test_adapter_denied_world_read_must_not_emit_consumer_values
+    pytest.fail('RC0_DENIED_PROVIDER_EMITTED_WORLD_VALUES_AND_CONSUMER_EFFECTS')
+E   Failed: RC0_DENIED_PROVIDER_EMITTED_WORLD_VALUES_AND_CONSUMER_EFFECTS
+___ test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderB] ____
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:50: in test_adapter_denied_world_read_must_not_emit_consumer_values
+    pytest.fail('RC0_DENIED_PROVIDER_EMITTED_WORLD_VALUES_AND_CONSUMER_EFFECTS')
+E   Failed: RC0_DENIED_PROVIDER_EMITTED_WORLD_VALUES_AND_CONSUMER_EFFECTS
+__________ test_foreign_demand_cannot_be_labelled_complete[ProviderA] __________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:60: in test_foreign_demand_cannot_be_labelled_complete
+    assert result['world_receipt']['selection_state']!='COMPLETE','RC0_FOREIGN_DEMAND_FALSE_COMPLETE'
+E   AssertionError: RC0_FOREIGN_DEMAND_FALSE_COMPLETE
+E   assert 'COMPLETE' != 'COMPLETE'
+__________ test_foreign_demand_cannot_be_labelled_complete[ProviderB] __________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:60: in test_foreign_demand_cannot_be_labelled_complete
+    assert result['world_receipt']['selection_state']!='COMPLETE','RC0_FOREIGN_DEMAND_FALSE_COMPLETE'
+E   AssertionError: RC0_FOREIGN_DEMAND_FALSE_COMPLETE
+E   assert 'COMPLETE' != 'COMPLETE'
+_______ test_knowledge_asof_cannot_consume_future_publication[ProviderA] _______
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:73: in test_knowledge_asof_cannot_consume_future_publication
+    assert int(clock['published'])<=int(clock['as_of']),'RC0_KNOWLEDGE_ASOF_LOOKAHEAD_ACCEPTED'
+E   AssertionError: RC0_KNOWLEDGE_ASOF_LOOKAHEAD_ACCEPTED
+E   assert 2010 <= 2009
+E    +  where 2010 = int('2010')
+E    +  and   2009 = int('2009')
+_______ test_knowledge_asof_cannot_consume_future_publication[ProviderB] _______
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:73: in test_knowledge_asof_cannot_consume_future_publication
+    assert int(clock['published'])<=int(clock['as_of']),'RC0_KNOWLEDGE_ASOF_LOOKAHEAD_ACCEPTED'
+E   AssertionError: RC0_KNOWLEDGE_ASOF_LOOKAHEAD_ACCEPTED
+E   assert 2010 <= 2009
+E    +  where 2010 = int('2010')
+E    +  and   2009 = int('2009')
+_ test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderA] _
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:88: in test_matching_issuer_string_cannot_authorize_foreign_scope_or_target
+    pytest.fail('RC0_FOREIGN_REVERSAL_BINDING_PERMITTED_'+field)
+E   Failed: RC0_FOREIGN_REVERSAL_BINDING_PERMITTED_scope
+_ test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderB] _
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:88: in test_matching_issuer_string_cannot_authorize_foreign_scope_or_target
+    pytest.fail('RC0_FOREIGN_REVERSAL_BINDING_PERMITTED_'+field)
+E   Failed: RC0_FOREIGN_REVERSAL_BINDING_PERMITTED_scope
+_ test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderA] _
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:88: in test_matching_issuer_string_cannot_authorize_foreign_scope_or_target
+    pytest.fail('RC0_FOREIGN_REVERSAL_BINDING_PERMITTED_'+field)
+E   Failed: RC0_FOREIGN_REVERSAL_BINDING_PERMITTED_target
+_ test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderB] _
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:88: in test_matching_issuer_string_cannot_authorize_foreign_scope_or_target
+    pytest.fail('RC0_FOREIGN_REVERSAL_BINDING_PERMITTED_'+field)
+E   Failed: RC0_FOREIGN_REVERSAL_BINDING_PERMITTED_target
+_________ test_direct_receipts_satisfy_original_frozen_envelope_schema _________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:98: in test_direct_receipts_satisfy_original_frozen_envelope_schema
+    assert not any(all_errors.values()),'RC0_ORIGINAL_SC0_SCHEMA_NOT_IMPLEMENTED_BY_RAW_RECEIPTS'
+E   AssertionError: RC0_ORIGINAL_SC0_SCHEMA_NOT_IMPLEMENTED_BY_RAW_RECEIPTS
+E   assert not True
+E    +  where True = any(dict_values([[{'path': [], 'message': "{'contract': 'GENERIC_WORLD_SELECTION@1.0.0', 'selection_digest': 'fd766322a85c...state' is a required property", "'values_read_refs' is a required property", "'replay_ref' is a required property"]}]]))
+E    +    where dict_values([[{'path': [], 'message': "{'contract': 'GENERIC_WORLD_SELECTION@1.0.0', 'selection_digest': 'fd766322a85c...state' is a required property", "'values_read_refs' is a required property", "'replay_ref' is a required property"]}]]) = <built-in method values of dict object at 0x10c65df40>()
+E    +      where <built-in method values of dict object at 0x10c65df40> = {'world_receipt': [{'path': [], 'message': "{'contract': 'GENERIC_WORLD_SELECTION@1.0.0', 'selection_digest': 'fd76632...ef' is a required property", "'demand_ref' is a required property", "'repository_refs' is a required property", ...]}]}.values
+____________ test_full_original_negative_state_distinctions_survive ____________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:106: in test_full_original_negative_state_distinctions_survive
+    assert expected==observed,'RC0_ORIGINAL_NEGATIVE_SCOPES_OR_CODES_LOST'
+E   AssertionError: RC0_ORIGINAL_NEGATIVE_SCOPES_OR_CODES_LOST
+E   assert {'fx:scope:me...POWERED', ...} == {'fx:scope:me...POWERED', ...}
+E     
+E     Omitting 7 identical items, use -vv to show
+E     Differing items:
+E     {'fx:scope:denied': 'DENIED_USE'} != {'fx:scope:denied': 'DENIED'}
+E     Left contains 4 more items:
+E     {'fx:scope:nocurrent': 'NO_CURRENT',
+E      'fx:scope:proxy': 'PROXY_MODELLED',...
+E     
+E     ...Full output truncated (3 lines hidden), use '-vv' to show
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderA]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderB]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_foreign_demand_cannot_be_labelled_complete[ProviderA]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_foreign_demand_cannot_be_labelled_complete[ProviderB]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_knowledge_asof_cannot_consume_future_publication[ProviderA]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_knowledge_asof_cannot_consume_future_publication[ProviderB]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderA]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderB]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderA]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderB]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_direct_receipts_satisfy_original_frozen_envelope_schema
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_full_original_negative_state_distinctions_survive
+12 failed, 13 passed in 1.61s

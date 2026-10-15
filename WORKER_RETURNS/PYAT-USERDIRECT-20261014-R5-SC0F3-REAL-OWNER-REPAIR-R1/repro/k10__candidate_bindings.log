@@ -1,0 +1,57 @@
+..........FFFF.F.FF....F..F.                                             [100%]
+=================================== FAILURES ===================================
+_________________________ test_k10_11_cross_unit_pool __________________________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k10_structural_conservation.py:124: in test_k10_11_cross_unit_pool
+    provider.ordered_possibility(selection, {"sampling_unit": "HOUSEHOLD_DYAD"})
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'ProviderA' object has no attribute 'ordered_possibility'
+______________________ test_k10_12_direction_reverse_held ______________________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k10_structural_conservation.py:134: in test_k10_12_direction_reverse_held
+    provider.request_role_reversal(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'ProviderA' object has no attribute 'request_role_reversal'
+________________________ test_k10_13_condition_set_sort ________________________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k10_structural_conservation.py:143: in test_k10_13_condition_set_sort
+    receipt = provider.ordered_possibility(selection, {})
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'ProviderA' object has no attribute 'ordered_possibility'
+________________________ test_k10_14_uncertain_to_point ________________________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k10_structural_conservation.py:158: in test_k10_14_uncertain_to_point
+    receipt = copy.deepcopy(provider.ordered_possibility(selection, {}))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'ProviderA' object has no attribute 'ordered_possibility'
+______________________ test_k10_16_lag_interpolation_held ______________________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k10_structural_conservation.py:177: in test_k10_16_lag_interpolation_held
+    provider.ordered_possibility(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'ProviderA' object has no attribute 'ordered_possibility'
+____________________ test_k10_18_change_binding_no_refresh _____________________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k10_structural_conservation.py:200: in test_k10_18_change_binding_no_refresh
+    provider._store["stage_two"]["generated_binding_echo"]["caller_fact"] = "tampered-binding"
+    ^^^^^^^^^^^^^^^
+E   AttributeError: 'ProviderA' object has no attribute '_store'
+___________________ test_k10_19_publish_boundary_no_refresh ____________________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k10_structural_conservation.py:216: in test_k10_19_publish_boundary_no_refresh
+    provider._store["stage_one"]["time_axes"]["published"] = "2012"
+    ^^^^^^^^^^^^^^^
+E   AttributeError: 'ProviderA' object has no attribute '_store'
+___________________ test_k10_24_implicit_model_crossproduct ____________________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k10_structural_conservation.py:271: in test_k10_24_implicit_model_crossproduct
+    receipt = copy.deepcopy(provider.ordered_possibility(selection, {}))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'ProviderA' object has no attribute 'ordered_possibility'
+________ test_k10_27_nonparent_consumer_produces_generic_objective_only ________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k10_structural_conservation.py:293: in test_k10_27_nonparent_consumer_produces_generic_objective_only
+    bundle = TwoContractAdapter(ProviderA()).run(
+E   TypeError: TwoContractAdapter.run() got an unexpected keyword argument 'consumer_ids'
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k10_structural_conservation.py::test_k10_11_cross_unit_pool
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k10_structural_conservation.py::test_k10_12_direction_reverse_held
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k10_structural_conservation.py::test_k10_13_condition_set_sort
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k10_structural_conservation.py::test_k10_14_uncertain_to_point
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k10_structural_conservation.py::test_k10_16_lag_interpolation_held
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k10_structural_conservation.py::test_k10_18_change_binding_no_refresh
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k10_structural_conservation.py::test_k10_19_publish_boundary_no_refresh
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k10_structural_conservation.py::test_k10_24_implicit_model_crossproduct
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k10_structural_conservation.py::test_k10_27_nonparent_consumer_produces_generic_objective_only
+9 failed, 19 passed in 5.33s

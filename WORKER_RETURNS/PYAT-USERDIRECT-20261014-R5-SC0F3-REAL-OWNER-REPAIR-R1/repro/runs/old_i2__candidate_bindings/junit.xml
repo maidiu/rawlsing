@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="10" time="9.360" timestamp="2026-10-14T22:47:10.880837-04:00" hostname="Matthews-MBP.lan"><testcase classname="inputs.i2.repro.test_i2_sc0_hostiles" name="test_00_pinned_oracles_real_git_blob_preimages" time="0.002" /><testcase classname="inputs.i2.repro.test_i2_sc0_hostiles" name="test_01_two_exact_frozen_receipt_shapes_not_just_same_names" time="2.013" /><testcase classname="inputs.i2.repro.test_i2_sc0_hostiles" name="test_02_demand_asof_2009_must_not_serve_rule_published_2010_as_known" time="0.002" /><testcase classname="inputs.i2.repro.test_i2_sc0_hostiles" name="test_03_revoked_world_read_must_block_actual_adapter_consumer" time="0.001" /><testcase classname="inputs.i2.repro.test_i2_sc0_hostiles" name="test_04_partial_selected_world_must_not_become_positive_bundle" time="0.002" /><testcase classname="inputs.i2.repro.test_i2_sc0_hostiles" name="test_05_caller_forged_issuer_name_and_wrong_target_scope_must_refuse" time="1.036"><failure message="KeyError: 'world'">WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/i2/repro/test_i2_sc0_hostiles.py:97: in test_05_caller_forged_issuer_name_and_wrong_target_scope_must_refuse
+    forged["issuer"] = bundle["world_receipt"]["world"]["authority_ref"]
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'world'</failure></testcase><testcase classname="inputs.i2.repro.test_i2_sc0_hostiles" name="test_06_empirical_cells_cannot_silently_inherit_independent_world_support" time="0.000"><failure message="TypeError: ProviderOperations.__init__() got an unexpected keyword argument 'empirical'">WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/i2/repro/test_i2_sc0_hostiles.py:108: in test_06_empirical_cells_cannot_silently_inherit_independent_world_support
+    provider = ProviderA(empirical=empirical)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: ProviderOperations.__init__() got an unexpected keyword argument 'empirical'</failure></testcase><testcase classname="inputs.i2.repro.test_i2_sc0_hostiles" name="test_07_numeric_world_route_value_changes_both_readers_not_unrelated_route" time="1.169"><failure message="sc0f3.common.Hold: NO_CURRENT_OR_NOT_KNOWN_ASOF: Earlier evidence not in owner fixture">WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/i2/repro/test_i2_sc0_hostiles.py:123: in test_07_numeric_world_route_value_changes_both_readers_not_unrelated_route
+    second = TwoContractAdapter(ProviderA(world=changed)).run()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/sc0f3/adapter.py:27: in run
+    selection=validate(selection,demand,self._prior)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/sc0f3/gates.py:57: in validate
+    check_earlier_knowledge(w,w.get('earlier_knowledge_evidence_ref'),asof)
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/sc0f3/fixture_owner.py:96: in check_earlier_knowledge
+    require(evidence_id == 'TEST_ONLY:earlier-publication:2008',
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/sc0f3/common.py:43: in require
+    raise Hold(code, detail)
+E   sc0f3.common.Hold: NO_CURRENT_OR_NOT_KNOWN_ASOF: Earlier evidence not in owner fixture</failure></testcase><testcase classname="inputs.i2.repro.test_i2_sc0_hostiles" name="test_08_an_unchecked_new_semantic_field_cannot_disappear_in_equivalence" time="2.741" /><testcase classname="inputs.i2.repro.test_i2_sc0_hostiles" name="test_09_publication_successor_must_rebind_to_actual_changed_source_boundary" time="2.235"><failure message="KeyError: 'world'">WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/i2/repro/test_i2_sc0_hostiles.py:151: in test_09_publication_successor_must_rebind_to_actual_changed_source_boundary
+    assert (newer["world_receipt"]["world"]["source_release_ref"] !=
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'world'</failure></testcase></testsuite></testsuites>

@@ -1,0 +1,54 @@
+{
+  "expected": "HELD_AUTHORITY_STRICT_INTEGER_WARRANT",
+  "actual": "TEST_ONLY_NATIVE_REVERSE_QUERY_COMPUTED",
+  "defect_present": true,
+  "presented_grant": {
+    "grant_id": "TEST_ONLY:reverse:54_6",
+    "issuer": "TEST_ONLY:SC0F3_OWNER",
+    "world_source": "fx:source:synthetic",
+    "world_release": "fx:release:fixture1",
+    "native_case": "54_6",
+    "target": "POSITION",
+    "risk": "R_ALL_100",
+    "native_source": {
+      "content_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+      "kind": "EmpiricalUniverse@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2"
+    },
+    "native_release": {
+      "content_hash": "dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3",
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-c1-at07"
+    },
+    "native_target": {
+      "content_hash": "df6d11b23fb0494ebb9ad89a1e173012b8225bafc0b62d3c4a7a3eae5aaf6bf5",
+      "kind": "QUESTION_NATIVE",
+      "object_id": "urn:test:i03:question_native:c1-at07-POSITION"
+    },
+    "native_risk": {
+      "content_hash": "704b0dc18f64d14cb4b4188a35dbfbe58d136f2ca5ef174c8048285334a515ad",
+      "kind": "RISK_SET",
+      "object_id": "urn:test:i03:risk_set:c1-at07-R_ALL_100"
+    },
+    "denominator": 62.0,
+    "operation": "ROLE_REVERSAL_CONDITIONAL_QUERY",
+    "knowledge_as_of": "2011",
+    "not_before": "2026-10-01",
+    "expires": "2026-11-01",
+    "revoked_at": "2026-10-25",
+    "grade": "TEST_ONLY"
+  },
+  "result_support": {
+    "cells": {
+      "P1": 54,
+      "P2": 8
+    },
+    "denominator": 62
+  },
+  "completed_calls": [
+    "evaluate_positioned_subject_possibility",
+    "compose_positioned_subject_possibility",
+    "provide_empirical_possibility_slice"
+  ],
+  "candidate_freeze_sha256": "6f56fca46b70c7f736d94980d9115b24b08524067881853ce20937725c340d3a"
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="1" failures="0" skipped="0" tests="1" time="0.383" timestamp="2026-10-14T22:47:10.880837-04:00" hostname="Matthews-MBP.lan"><testcase classname="" name="inputs.sc0f.repro.tests.test_sc0f_repair" time="0.000"><error message="collection failure">ImportError while importing test module '/Users/matthewsmith/.codex/worktrees/38cb/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/sc0f/repro/tests/test_sc0f_repair.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/sc0f/repro/tests/test_sc0f_repair.py:27: in &lt;module&gt;
+    from sc0f.adapter import (
+E   ImportError: cannot import name 'register_issuer_warrant' from 'sc0f.adapter' (unknown location)</error></testcase></testsuite></testsuites>

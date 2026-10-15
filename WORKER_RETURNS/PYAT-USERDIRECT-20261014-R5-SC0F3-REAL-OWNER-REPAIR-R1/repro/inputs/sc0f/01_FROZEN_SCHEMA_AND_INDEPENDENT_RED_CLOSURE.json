@@ -1,0 +1,69 @@
+{
+  "schema": "PYAT_R2_SC0F_FROZEN_SCHEMA_AND_RED_CLOSURE@1",
+  "frozen_envelope_blob": "610ac870fde6cfe63796592b3c6b1e1bf1e37150",
+  "frozen_schema": "Draft 2020-12, oneOf WorldReceipt(17 fields)+PossibilityReceipt(20 fields), additionalProperties:false",
+  "validator": "jsonschema 4.26.0 Draft202012Validator",
+  "world_receipt_conformant": true,
+  "possibility_receipt_conformant": true,
+  "red_closures": {
+    "RED_01_SCHEMA_CONTRACT_INCOMPATIBLE": {
+      "status": "CLOSED",
+      "evidence": "WorldReceipt 0 errors, PossibilityReceipt 0 errors under Draft202012Validator",
+      "fields_emitted_world": 17,
+      "fields_emitted_possibility": 20
+    },
+    "RED_02_UNISSUED_REVERSE_ROLE_SCOPE": {
+      "status": "CLOSED",
+      "evidence": "issuer-registry dereference; forged grant_id refused; foreign scope refused; foreign target refused; registered grant with correct scope/target permitted"
+    },
+    "RED_03_TRANSITIVE_USE_PERMISSION_BYPASS": {
+      "status": "CLOSED",
+      "evidence": "adapter.run actively checks WORLD_READ in revoked_atoms and use_atoms before serving; DENIED_USE raised"
+    },
+    "RED_04_HISTORICAL_KNOWLEDGE_LEAKAGE": {
+      "status": "CLOSED",
+      "evidence": "KNOWLEDGE_AS_OF: published > as_of without earlier_knowledge_evidence_ref raises NO_CURRENT_OR_NOT_KNOWN_ASOF"
+    },
+    "RED_05_PARTIAL_DEFERRED_NOT_ENFORCED": {
+      "status": "CLOSED",
+      "evidence": "selection_state != COMPLETE raises INCOMPLETE_SELECTION_NOT_POSITIVE in adapter.run"
+    }
+  },
+  "additional_i2_issues": {
+    "I2_01_static_world_support": {
+      "status": "CLOSED",
+      "evidence": "empirical support computed from empirical cells, not static WORLD support block; mutation test proves reader effect"
+    },
+    "I2_02_provider_equivalence_whitelist": {
+      "status": "PARTIAL",
+      "note": "full semantic value-domain comparison needs owner-qualified A/B fixture; current comparison uses declared projection"
+    },
+    "I2_03_h2_counter_only_refresh": {
+      "status": "PARTIAL",
+      "note": "refresh carries repository_predictable_boundaries + requery_on_binding_change; real source-boundary crossing needs owner release"
+    },
+    "I2_04_k10_28_actor_api_absence": {
+      "status": "NOTED",
+      "note": "absence of actor API is appropriate firewall; not a defect"
+    },
+    "I2_05_reader_edge_unexecuted": {
+      "status": "CLOSED",
+      "evidence": "numerical mutation test: changing public rule min_age 14\u219218 changes both consumer outputs; mutual-aid values invariant"
+    }
+  },
+  "rc0_negative_algebra": {
+    "status": "CLOSED",
+    "evidence": "full 12-state vocabulary enforced: OBSERVED_ZERO, VALID_EMPTY, MISSING, UNDERPOWERED, NOT_ASKED, NONCOMPARABLE, HELD_AUTHORITY, DENIED_USE, NO_CURRENT, PROXY_MODELLED, UNKNOWN_UNOBSERVED_GAP, UNBOUND_RUNTIME_BINDING",
+    "note": "DENIED renamed to DENIED_USE per frozen vocabulary; missing 4 states added"
+  },
+  "preservation": {
+    "f1_nary_roles": "preserved in payloads[].participant_roles",
+    "f2_history_references": "preserved in payloads[].f2_prerequisites",
+    "four_clocks": "observation_effective, publication_knowledge, actor_event, request_currentness all present",
+    "h2_dual_refresh": "repository_predictable_boundaries + requery_on_binding_change + successor_only",
+    "h3_query_echo": "generated_criteria_echo with GENERATED_RUNTIME_FACT_REF, FILTER_ONLY kind",
+    "native_negatives": "12-state negative algebra in selection records",
+    "alternatives_minority": "minority_refs + contradiction_refs in PossibilityReceipt.alternatives",
+    "actor_firewall": "FORBIDDEN_OUTPUT_TOKENS scan in consumers"
+  }
+}

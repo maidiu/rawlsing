@@ -1,0 +1,54 @@
+{
+  "suite": "old_i2",
+  "exit_code": 1,
+  "seconds": 1.9249720573425293,
+  "imports": [
+    {
+      "module": "port.adapter",
+      "file": "inputs/port/port/adapter.py",
+      "sha256": "6711c0ef0101b9587f2a8cfcbe03c24c00632538c2de012b1425084021f7fe3d",
+      "git_blob_sha1": "78ef0d4f9eff39192c52de5dcf3723ff6f8a8107"
+    },
+    {
+      "module": "port.consumers",
+      "file": "inputs/port/port/consumers.py",
+      "sha256": "9b4a5c62c87318c9bbd2fa244d7079fd01259ef68e3f1e42109c5de7e856c6bb",
+      "git_blob_sha1": "02e3a4375475783e204a8fa7def9b1511a8db856"
+    },
+    {
+      "module": "port.contracts",
+      "file": "inputs/port/port/contracts.py",
+      "sha256": "b611fb6d03f22afa1303471fbdf7b200426e0d9dc2d4bd947f05d0440f2b7f72",
+      "git_blob_sha1": "0d7217ebb70acf0fd7616ba34ba318842775303e"
+    },
+    {
+      "module": "port.provider_a",
+      "file": "inputs/port/port/provider_a.py",
+      "sha256": "6d5d7e7cc8c9f8ed574fa74f77e16f86881119f3a53c47d99d849f3bbdb92022",
+      "git_blob_sha1": "15e01b2752fdc3c0d7293fcb685005c34cfb9640"
+    },
+    {
+      "module": "port.provider_b",
+      "file": "inputs/port/port/provider_b.py",
+      "sha256": "e424299c9d31f800765d07a70b671ba7a0eed3d40719b0c4facefed1c6ab884f",
+      "git_blob_sha1": "56e4a6c8ec80bb9a804fd2a1ddb5694a1354e3fb"
+    },
+    {
+      "module": "port.world_baseline",
+      "file": "inputs/port/port/world_baseline.py",
+      "sha256": "bea9f83c93ad865ac0b73e2d8eab5d082a576f9eb865d4b355a8951a5a023e0c",
+      "git_blob_sha1": "a03f1697ba1be6cfd463c5e9a6c96aab1b65d205"
+    },
+    {
+      "module": "port.world_laws",
+      "file": "inputs/port/port/world_laws.py",
+      "sha256": "91621925516d44f65b4278856f2c77a1603c150daafd9f442f953274369aea59",
+      "git_blob_sha1": "ba3271f0a476b7afbb20f5815515878337ffa2f3"
+    }
+  ],
+  "relocations": {
+    "/tmp/wg0p/.sc0i_tmp/tests/test_sc0f_repair.py": "inputs/sc0f/repro/tests/test_sc0f_repair.py",
+    "<REPRO>/runs/old_i2/runtime_root/WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json": "inputs/port/oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json",
+    "<REPRO>/runs/old_i2/runtime_root/WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/oracles/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json": "inputs/port/oracles/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json"
+  }
+}

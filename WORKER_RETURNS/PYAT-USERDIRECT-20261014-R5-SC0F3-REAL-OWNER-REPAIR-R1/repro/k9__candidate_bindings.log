@@ -1,0 +1,47 @@
+FFFF.FFF                                                                 [100%]
+=================================== FAILURES ===================================
+____________________ test_k9_01_two_providers_same_meaning _____________________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k9_provider_swap.py:43: in test_k9_01_two_providers_same_meaning
+    assert report["world_projection_diffs"] == []
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'world_projection_diffs'
+__________________ test_k9_02_independent_nonparent_consumer ___________________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k9_provider_swap.py:55: in test_k9_02_independent_nonparent_consumer
+    bundle = TwoContractAdapter(build_provider_a()).run(
+E   TypeError: TwoContractAdapter.run() got an unexpected keyword argument 'consumer_ids'
+______________ test_k9_03_id_reorder_and_stage_rename_equivalent _______________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k9_provider_swap.py:81: in test_k9_03_id_reorder_and_stage_rename_equivalent
+    assert provider_b.physical_lineage["stage_names"] == ["renamed_data", "join_index"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'stage_names'
+_________________ test_k9_04_not_equivalent_contrast_rejected __________________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k9_provider_swap.py:99: in test_k9_04_not_equivalent_contrast_rejected
+    assert exc.value.code == "REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS"
+E   AssertionError: assert 'NO_CURRENT_OR_NOT_KNOWN_ASOF' == 'REJECT_CARDI...TOPOLOGY_LOSS'
+E     
+E     - REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS
+E     + NO_CURRENT_OR_NOT_KNOWN_ASOF
+____________ test_k9_06_forward_reverse_held_without_scoped_issuer _____________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k9_provider_swap.py:131: in test_k9_06_forward_reverse_held_without_scoped_issuer
+    provider.request_role_reversal(selection, possibility, None)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'ProviderA' object has no attribute 'request_role_reversal'
+______________ test_k9_07_permissions_denied_use_no_cached_bypass ______________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k9_provider_swap.py:153: in test_k9_07_permissions_denied_use_no_cached_bypass
+    assert permitted["state"] == "PERMITTED"
+           ^^^^^^^^^^^^^^^^^^
+E   TypeError: 'NoneType' object is not subscriptable
+__________ test_k9_08_two_channel_refresh_two_independent_successors ___________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k9_provider_swap.py:174: in test_k9_08_two_channel_refresh_two_independent_successors
+    first_digest = first["world_receipt"]["selection_digest"]
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'selection_digest'
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k9_provider_swap.py::test_k9_01_two_providers_same_meaning
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k9_provider_swap.py::test_k9_02_independent_nonparent_consumer
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k9_provider_swap.py::test_k9_03_id_reorder_and_stage_rename_equivalent
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k9_provider_swap.py::test_k9_04_not_equivalent_contrast_rejected
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k9_provider_swap.py::test_k9_06_forward_reverse_held_without_scoped_issuer
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k9_provider_swap.py::test_k9_07_permissions_denied_use_no_cached_bypass
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k9_provider_swap.py::test_k9_08_two_channel_refresh_two_independent_successors
+7 failed, 1 passed in 7.99s

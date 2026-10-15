@@ -1,0 +1,23 @@
+{
+  "case": "reverse_ProviderA_scope",
+  "grant": {
+    "grant_id": "fx:grant:scoped-reversal-v1",
+    "issuer": "fx:issuer:fixture_only",
+    "binds": {
+      "target": "fx:response:access_yes",
+      "reverse_target": "fx:response:access_yes",
+      "risk_set": "fx:risk:asked_eligible",
+      "denominator": 60,
+      "operation": "ROLE_REVERSAL_CONDITIONAL_QUERY"
+    },
+    "scope": "rc0:foreign-scope"
+  },
+  "result": {
+    "state": "REVERSAL_PERMITTED_UNDER_SCOPED_GRANT",
+    "grant_id": "fx:grant:scoped-reversal-v1",
+    "bound_target": "fx:response:access_yes",
+    "bound_risk_set": "fx:risk:asked_eligible",
+    "bound_denominator": 60,
+    "computed_from_forward": false
+  }
+}

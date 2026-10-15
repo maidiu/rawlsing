@@ -1,0 +1,23 @@
+{
+  "suite": "n10e_c1",
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/staging/ns/rawlsing_next/tests/test_pre553_empirical_possibility_provider.py",
+    "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/staging/ns/rawlsing_next/tests/test_pre553_analytical_composition.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=$RC0_RETURN/repro/n10e_c1.xml"
+  ],
+  "cwd": "$RC0_RUNTIME",
+  "exit_code": 0,
+  "seconds": 18.282769918441772,
+  "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "pytest": "9.0.2",
+  "raw_stdout_sha256": "cc7b939738585d99b85eb903f79a5ab646b16ed90de8d52d794aa1ad9497775c",
+  "stdout_path": "repro/n10e_c1.log",
+  "junit_path": "repro/n10e_c1.xml",
+  "path_normalization_only": true
+}

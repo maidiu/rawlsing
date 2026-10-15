@@ -1,0 +1,3096 @@
+{
+  "schema": "SC0F3_EXECUTED_SUITE_SCOPE@1",
+  "suites": [
+    {
+      "suite": "candidate",
+      "scope": "NEW_SC0F3_CANDIDATE",
+      "counts": {
+        "tests": 60,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 60
+      },
+      "junit": "repro/runs/candidate/junit.xml",
+      "exit_code": 0,
+      "cases": [
+        {
+          "name": "test_real_owners_completed_with_actual_args_results_and_values",
+          "status": "PASS"
+        },
+        {
+          "name": "test_full_oneof_schema_and_all_refs_resolve[ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_full_oneof_schema_and_all_refs_resolve[ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_50_10_native_numeric_propagation_both_consumers_and_cell_carriers",
+          "status": "PASS"
+        },
+        {
+          "name": "test_no_register_or_mutable_issuer_store_and_forgery_stays_held",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[issuer-FORGED]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[world_source-OTHER]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[world_release-OTHER]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[target-ANSWER]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[risk-FOREIGN]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[denominator-60]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[operation-WORLD_READ]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[expires-2999-01-01]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[not_before-2000-01-01]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[revoked_at-2999-01-01]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_authentic_test_only_reverse_executes_distinct_query_and_denominator[54_6-54-62]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_authentic_test_only_reverse_executes_distinct_query_and_denominator[50_10-50-58]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_active_reverse_notbefore_revocation_and_expiry[2026-09-30]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_active_reverse_notbefore_revocation_and_expiry[2026-10-25]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_active_reverse_notbefore_revocation_and_expiry[2026-11-01]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_or_revoked_permission_blocks_before_producer[WORLD_READ-ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_or_revoked_permission_blocks_before_producer[WORLD_READ-ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_or_revoked_permission_blocks_before_producer[POSSIBILITY_QUERY-ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_or_revoked_permission_blocks_before_producer[POSSIBILITY_QUERY-ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_revocation_on_actual_read_prevents_return",
+          "status": "PASS"
+        },
+        {
+          "name": "test_selection_state_mandatory_and_active_before_producer[None]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_selection_state_mandatory_and_active_before_producer[PARTIAL]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_selection_state_mandatory_and_active_before_producer[NO_CURRENT]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_selection_state_mandatory_and_active_before_producer[DEFERRED]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand0]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand1]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand2]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand3]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand4]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand5]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand6]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand7]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand8]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_town_scope_cannot_bypass_missing_stratum",
+          "status": "PASS"
+        },
+        {
+          "name": "test_2009_2010_refuses_and_arbitrary_earlier_evidence_cannot_bypass",
+          "status": "PASS"
+        },
+        {
+          "name": "test_scoped_earlier_fixture_evidence_and_content_scope_check",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[AH-REJECT_SEMANTIC_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[F2-REJECT_F2_PREREQUISITE_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[negative-REJECT_NEGATIVE_ALGEBRA_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[minority-REJECT_SUPPORT_ERASURE]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[contradiction-REJECT_ALTERNATIVE_ERASURE]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[echo-REJECT_GENERATED_FACT_PROMOTION]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[public-REJECT_PUBLIC_RULE_AND_OWNER_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_world_value_changes_both_readers_unrelated_route_and_empirics_stable",
+          "status": "PASS"
+        },
+        {
+          "name": "test_whole_provider_equivalence_and_semantic_extension_not_whitelisted",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h2_real_source_boundary_separate_binding_successor_prior_unchanged",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h2_unmarked_drift_active_in_entrypoint[binding]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h2_unmarked_drift_active_in_entrypoint[publication]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h2_unmarked_drift_active_in_entrypoint[counter_only]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_receipts_values_and_complete_consumer_effects_reject_tamper[output]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_receipts_values_and_complete_consumer_effects_reject_tamper[carrier]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_receipts_values_and_complete_consumer_effects_reject_tamper[receipt]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_receipts_values_and_complete_consumer_effects_reject_tamper[remove_effect]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_explicit_actor_denial",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "suite": "candidate__final",
+      "scope": "NEW_SC0F3_CANDIDATE",
+      "counts": {
+        "tests": 64,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 64
+      },
+      "junit": "repro/runs/candidate__final/junit.xml",
+      "exit_code": 0,
+      "cases": [
+        {
+          "name": "test_real_owners_completed_with_actual_args_results_and_values",
+          "status": "PASS"
+        },
+        {
+          "name": "test_full_oneof_schema_and_all_refs_resolve[ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_full_oneof_schema_and_all_refs_resolve[ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_50_10_native_numeric_propagation_both_consumers_and_cell_carriers",
+          "status": "PASS"
+        },
+        {
+          "name": "test_no_register_or_mutable_issuer_store_and_forgery_stays_held",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[issuer-FORGED]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[world_source-OTHER]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[world_release-OTHER]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[target-ANSWER]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[risk-FOREIGN]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[denominator-60]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[operation-WORLD_READ]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[expires-2999-01-01]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[not_before-2000-01-01]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[revoked_at-2999-01-01]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_authentic_test_only_reverse_executes_distinct_query_and_denominator[54_6-54-62]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_authentic_test_only_reverse_executes_distinct_query_and_denominator[50_10-50-58]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_active_reverse_notbefore_revocation_and_expiry[2026-09-30]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_active_reverse_notbefore_revocation_and_expiry[2026-10-25]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_active_reverse_notbefore_revocation_and_expiry[2026-11-01]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_or_revoked_permission_blocks_before_producer[WORLD_READ-ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_or_revoked_permission_blocks_before_producer[WORLD_READ-ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_or_revoked_permission_blocks_before_producer[POSSIBILITY_QUERY-ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_or_revoked_permission_blocks_before_producer[POSSIBILITY_QUERY-ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_revocation_on_actual_read_prevents_return",
+          "status": "PASS"
+        },
+        {
+          "name": "test_selection_state_mandatory_and_active_before_producer[None]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_selection_state_mandatory_and_active_before_producer[PARTIAL]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_selection_state_mandatory_and_active_before_producer[NO_CURRENT]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_selection_state_mandatory_and_active_before_producer[DEFERRED]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand0]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand1]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand2]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand3]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand4]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand5]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand6]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand7]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand8]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_town_scope_cannot_bypass_missing_stratum",
+          "status": "PASS"
+        },
+        {
+          "name": "test_2009_2010_refuses_and_arbitrary_earlier_evidence_cannot_bypass",
+          "status": "PASS"
+        },
+        {
+          "name": "test_scoped_earlier_fixture_evidence_and_content_scope_check",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[AH-REJECT_SEMANTIC_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[F2-REJECT_F2_PREREQUISITE_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[negative-REJECT_NEGATIVE_ALGEBRA_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[minority-REJECT_SUPPORT_ERASURE]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[contradiction-REJECT_ALTERNATIVE_ERASURE]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[echo-REJECT_GENERATED_FACT_PROMOTION]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[public-REJECT_PUBLIC_RULE_AND_OWNER_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_world_value_changes_both_readers_unrelated_route_and_empirics_stable",
+          "status": "PASS"
+        },
+        {
+          "name": "test_whole_provider_equivalence_and_semantic_extension_not_whitelisted",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h2_real_source_boundary_separate_binding_successor_prior_unchanged",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h2_unmarked_drift_active_in_entrypoint[binding]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h2_unmarked_drift_active_in_entrypoint[publication]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h2_unmarked_drift_active_in_entrypoint[counter_only]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_receipts_values_and_complete_consumer_effects_reject_tamper[output]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_receipts_values_and_complete_consumer_effects_reject_tamper[carrier]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_receipts_values_and_complete_consumer_effects_reject_tamper[receipt]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_receipts_values_and_complete_consumer_effects_reject_tamper[remove_effect]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_explicit_actor_denial",
+          "status": "PASS"
+        },
+        {
+          "name": "test_sourcefree_ceiling_original_source_is_typed_hold",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_owner_refusal_never_falls_back",
+          "status": "PASS"
+        },
+        {
+          "name": "test_actor_fields_cannot_enter_world_payload",
+          "status": "PASS"
+        },
+        {
+          "name": "test_deleted_consumer_rehashed_container_still_refuses",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "suite": "candidate__r2",
+      "scope": "NEW_SC0F3_CANDIDATE",
+      "counts": {
+        "tests": 67,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 67
+      },
+      "junit": "repro/runs/candidate__r2/junit.xml",
+      "exit_code": 0,
+      "cases": [
+        {
+          "name": "test_real_owners_completed_with_actual_args_results_and_values",
+          "status": "PASS"
+        },
+        {
+          "name": "test_full_oneof_schema_and_all_refs_resolve[ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_full_oneof_schema_and_all_refs_resolve[ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_50_10_native_numeric_propagation_both_consumers_and_cell_carriers",
+          "status": "PASS"
+        },
+        {
+          "name": "test_no_register_or_mutable_issuer_store_and_forgery_stays_held",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[issuer-FORGED]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[world_source-OTHER]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[world_release-OTHER]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[target-ANSWER]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[risk-FOREIGN]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[denominator-60]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[operation-WORLD_READ]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[expires-2999-01-01]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[not_before-2000-01-01]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[revoked_at-2999-01-01]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[knowledge_as_of-2012]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_authentic_test_only_reverse_executes_distinct_query_and_denominator[54_6-54-62]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_authentic_test_only_reverse_executes_distinct_query_and_denominator[50_10-50-58]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_active_reverse_notbefore_revocation_and_expiry[2026-09-30]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_active_reverse_notbefore_revocation_and_expiry[2026-10-25]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_active_reverse_notbefore_revocation_and_expiry[2026-11-01]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_or_revoked_permission_blocks_before_producer[WORLD_READ-ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_or_revoked_permission_blocks_before_producer[WORLD_READ-ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_or_revoked_permission_blocks_before_producer[POSSIBILITY_QUERY-ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_or_revoked_permission_blocks_before_producer[POSSIBILITY_QUERY-ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_revocation_on_actual_read_prevents_return",
+          "status": "PASS"
+        },
+        {
+          "name": "test_selection_state_mandatory_and_active_before_producer[None]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_selection_state_mandatory_and_active_before_producer[PARTIAL]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_selection_state_mandatory_and_active_before_producer[NO_CURRENT]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_selection_state_mandatory_and_active_before_producer[DEFERRED]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand0]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand1]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand2]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand3]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand4]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand5]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand6]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand7]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand8]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_town_scope_cannot_bypass_missing_stratum",
+          "status": "PASS"
+        },
+        {
+          "name": "test_2009_2010_refuses_and_arbitrary_earlier_evidence_cannot_bypass",
+          "status": "PASS"
+        },
+        {
+          "name": "test_scoped_earlier_fixture_evidence_and_content_scope_check",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[AH-REJECT_SEMANTIC_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[F2-REJECT_F2_PREREQUISITE_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[negative-REJECT_NEGATIVE_ALGEBRA_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[minority-REJECT_SUPPORT_ERASURE]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[contradiction-REJECT_ALTERNATIVE_ERASURE]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[echo-REJECT_GENERATED_FACT_PROMOTION]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[public-REJECT_PUBLIC_RULE_AND_OWNER_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_world_value_changes_both_readers_unrelated_route_and_empirics_stable",
+          "status": "PASS"
+        },
+        {
+          "name": "test_whole_provider_equivalence_and_semantic_extension_not_whitelisted",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h2_real_source_boundary_separate_binding_successor_prior_unchanged",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h2_unmarked_drift_active_in_entrypoint[binding]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h2_unmarked_drift_active_in_entrypoint[publication]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h2_unmarked_drift_active_in_entrypoint[counter_only]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_receipts_values_and_complete_consumer_effects_reject_tamper[output]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_receipts_values_and_complete_consumer_effects_reject_tamper[carrier]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_receipts_values_and_complete_consumer_effects_reject_tamper[receipt]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_receipts_values_and_complete_consumer_effects_reject_tamper[remove_effect]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_explicit_actor_denial",
+          "status": "PASS"
+        },
+        {
+          "name": "test_sourcefree_ceiling_original_source_is_typed_hold",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_owner_refusal_never_falls_back",
+          "status": "PASS"
+        },
+        {
+          "name": "test_actor_fields_cannot_enter_world_payload",
+          "status": "PASS"
+        },
+        {
+          "name": "test_deleted_consumer_rehashed_container_still_refuses",
+          "status": "PASS"
+        },
+        {
+          "name": "test_reversal_knowledge_cut_must_match_owner_warrant",
+          "status": "PASS"
+        },
+        {
+          "name": "test_all_twelve_native_negative_scopes_and_measures_survive",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "suite": "candidate__r3",
+      "scope": "NEW_SC0F3_CANDIDATE",
+      "counts": {
+        "tests": 72,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 72
+      },
+      "junit": "repro/runs/candidate__r3/junit.xml",
+      "exit_code": 0,
+      "cases": [
+        {
+          "name": "test_real_owners_completed_with_actual_args_results_and_values",
+          "status": "PASS"
+        },
+        {
+          "name": "test_full_oneof_schema_and_all_refs_resolve[ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_full_oneof_schema_and_all_refs_resolve[ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_50_10_native_numeric_propagation_both_consumers_and_cell_carriers",
+          "status": "PASS"
+        },
+        {
+          "name": "test_no_register_or_mutable_issuer_store_and_forgery_stays_held",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[issuer-FORGED]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[world_source-OTHER]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[world_release-OTHER]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[target-ANSWER]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[risk-FOREIGN]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[denominator-60]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[operation-WORLD_READ]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[expires-2999-01-01]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[not_before-2000-01-01]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[revoked_at-2999-01-01]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[knowledge_as_of-2012]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_authentic_test_only_reverse_executes_distinct_query_and_denominator[54_6-54-62]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_authentic_test_only_reverse_executes_distinct_query_and_denominator[50_10-50-58]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_active_reverse_notbefore_revocation_and_expiry[2026-09-30]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_active_reverse_notbefore_revocation_and_expiry[2026-10-25]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_active_reverse_notbefore_revocation_and_expiry[2026-11-01]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_or_revoked_permission_blocks_before_producer[WORLD_READ-ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_or_revoked_permission_blocks_before_producer[WORLD_READ-ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_or_revoked_permission_blocks_before_producer[POSSIBILITY_QUERY-ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_or_revoked_permission_blocks_before_producer[POSSIBILITY_QUERY-ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_revocation_on_actual_read_prevents_return",
+          "status": "PASS"
+        },
+        {
+          "name": "test_selection_state_mandatory_and_active_before_producer[None]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_selection_state_mandatory_and_active_before_producer[PARTIAL]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_selection_state_mandatory_and_active_before_producer[NO_CURRENT]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_selection_state_mandatory_and_active_before_producer[DEFERRED]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand0]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand1]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand2]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand3]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand4]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand5]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand6]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand7]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand8]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_town_scope_cannot_bypass_missing_stratum",
+          "status": "PASS"
+        },
+        {
+          "name": "test_2009_2010_refuses_and_arbitrary_earlier_evidence_cannot_bypass",
+          "status": "PASS"
+        },
+        {
+          "name": "test_scoped_earlier_fixture_evidence_and_content_scope_check",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[AH-REJECT_SEMANTIC_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[F2-REJECT_F2_PREREQUISITE_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[negative-REJECT_NEGATIVE_ALGEBRA_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[minority-REJECT_SUPPORT_ERASURE]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[contradiction-REJECT_ALTERNATIVE_ERASURE]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[echo-REJECT_GENERATED_FACT_PROMOTION]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[public-REJECT_PUBLIC_RULE_AND_OWNER_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_world_value_changes_both_readers_unrelated_route_and_empirics_stable",
+          "status": "PASS"
+        },
+        {
+          "name": "test_whole_provider_equivalence_and_semantic_extension_not_whitelisted",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h2_real_source_boundary_separate_binding_successor_prior_unchanged",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h2_unmarked_drift_active_in_entrypoint[binding]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h2_unmarked_drift_active_in_entrypoint[publication]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h2_unmarked_drift_active_in_entrypoint[counter_only]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_receipts_values_and_complete_consumer_effects_reject_tamper[output]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_receipts_values_and_complete_consumer_effects_reject_tamper[carrier]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_receipts_values_and_complete_consumer_effects_reject_tamper[receipt]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_receipts_values_and_complete_consumer_effects_reject_tamper[remove_effect]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_explicit_actor_denial",
+          "status": "PASS"
+        },
+        {
+          "name": "test_sourcefree_ceiling_original_source_is_typed_hold",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_owner_refusal_never_falls_back",
+          "status": "PASS"
+        },
+        {
+          "name": "test_actor_fields_cannot_enter_world_payload",
+          "status": "PASS"
+        },
+        {
+          "name": "test_deleted_consumer_rehashed_container_still_refuses",
+          "status": "PASS"
+        },
+        {
+          "name": "test_reversal_knowledge_cut_must_match_owner_warrant",
+          "status": "PASS"
+        },
+        {
+          "name": "test_all_twelve_native_negative_scopes_and_measures_survive",
+          "status": "PASS"
+        },
+        {
+          "name": "test_each_route_retains_public_owner_refs[sanction_refs]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_each_route_retains_public_owner_refs[category_refs]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_each_route_retains_public_owner_refs[rule_ref]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_route_cannot_promote_fixture_grade",
+          "status": "PASS"
+        },
+        {
+          "name": "test_opaque_selected_values_are_typed_refusal",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "suite": "candidate__r4",
+      "scope": "NEW_SC0F3_CANDIDATE",
+      "counts": {
+        "tests": 75,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 75
+      },
+      "junit": "repro/runs/candidate__r4/junit.xml",
+      "exit_code": 0,
+      "cases": [
+        {
+          "name": "test_real_owners_completed_with_actual_args_results_and_values",
+          "status": "PASS"
+        },
+        {
+          "name": "test_full_oneof_schema_and_all_refs_resolve[ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_full_oneof_schema_and_all_refs_resolve[ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_50_10_native_numeric_propagation_both_consumers_and_cell_carriers",
+          "status": "PASS"
+        },
+        {
+          "name": "test_no_register_or_mutable_issuer_store_and_forgery_stays_held",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[issuer-FORGED]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[world_source-OTHER]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[world_release-OTHER]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[target-ANSWER]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[risk-FOREIGN]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[denominator-60]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[operation-WORLD_READ]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[expires-2999-01-01]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[not_before-2000-01-01]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[revoked_at-2999-01-01]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[knowledge_as_of-2012]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_authentic_test_only_reverse_executes_distinct_query_and_denominator[54_6-54-62]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_authentic_test_only_reverse_executes_distinct_query_and_denominator[50_10-50-58]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_active_reverse_notbefore_revocation_and_expiry[2026-09-30]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_active_reverse_notbefore_revocation_and_expiry[2026-10-25]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_active_reverse_notbefore_revocation_and_expiry[2026-11-01]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_or_revoked_permission_blocks_before_producer[WORLD_READ-ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_or_revoked_permission_blocks_before_producer[WORLD_READ-ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_or_revoked_permission_blocks_before_producer[POSSIBILITY_QUERY-ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_or_revoked_permission_blocks_before_producer[POSSIBILITY_QUERY-ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_revocation_on_actual_read_prevents_return",
+          "status": "PASS"
+        },
+        {
+          "name": "test_selection_state_mandatory_and_active_before_producer[None]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_selection_state_mandatory_and_active_before_producer[PARTIAL]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_selection_state_mandatory_and_active_before_producer[NO_CURRENT]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_selection_state_mandatory_and_active_before_producer[DEFERRED]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand0]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand1]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand2]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand3]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand4]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand5]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand6]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand7]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand8]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_town_scope_cannot_bypass_missing_stratum",
+          "status": "PASS"
+        },
+        {
+          "name": "test_2009_2010_refuses_and_arbitrary_earlier_evidence_cannot_bypass",
+          "status": "PASS"
+        },
+        {
+          "name": "test_scoped_earlier_fixture_evidence_and_content_scope_check",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[AH-REJECT_SEMANTIC_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[F2-REJECT_F2_PREREQUISITE_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[negative-REJECT_NEGATIVE_ALGEBRA_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[minority-REJECT_SUPPORT_ERASURE]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[contradiction-REJECT_ALTERNATIVE_ERASURE]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[echo-REJECT_GENERATED_FACT_PROMOTION]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[public-REJECT_PUBLIC_RULE_AND_OWNER_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_world_value_changes_both_readers_unrelated_route_and_empirics_stable",
+          "status": "PASS"
+        },
+        {
+          "name": "test_whole_provider_equivalence_and_semantic_extension_not_whitelisted",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h2_real_source_boundary_separate_binding_successor_prior_unchanged",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h2_unmarked_drift_active_in_entrypoint[binding]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h2_unmarked_drift_active_in_entrypoint[publication]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h2_unmarked_drift_active_in_entrypoint[counter_only]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_receipts_values_and_complete_consumer_effects_reject_tamper[output]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_receipts_values_and_complete_consumer_effects_reject_tamper[carrier]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_receipts_values_and_complete_consumer_effects_reject_tamper[receipt]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_receipts_values_and_complete_consumer_effects_reject_tamper[remove_effect]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_explicit_actor_denial",
+          "status": "PASS"
+        },
+        {
+          "name": "test_sourcefree_ceiling_original_source_is_typed_hold",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_owner_refusal_never_falls_back",
+          "status": "PASS"
+        },
+        {
+          "name": "test_actor_fields_cannot_enter_world_payload",
+          "status": "PASS"
+        },
+        {
+          "name": "test_deleted_consumer_rehashed_container_still_refuses",
+          "status": "PASS"
+        },
+        {
+          "name": "test_reversal_knowledge_cut_must_match_owner_warrant",
+          "status": "PASS"
+        },
+        {
+          "name": "test_all_twelve_native_negative_scopes_and_measures_survive",
+          "status": "PASS"
+        },
+        {
+          "name": "test_each_route_retains_public_owner_refs[sanction_refs]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_each_route_retains_public_owner_refs[category_refs]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_each_route_retains_public_owner_refs[rule_ref]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_route_cannot_promote_fixture_grade",
+          "status": "PASS"
+        },
+        {
+          "name": "test_opaque_selected_values_are_typed_refusal",
+          "status": "PASS"
+        },
+        {
+          "name": "test_warrant_denominator_requires_exact_integer_type[62.0]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_warrant_denominator_requires_exact_integer_type[True]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_warrant_denominator_requires_exact_integer_type[62]",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "suite": "candidate__r5",
+      "scope": "NEW_SC0F3_CANDIDATE",
+      "counts": {
+        "tests": 76,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 76
+      },
+      "junit": "repro/runs/candidate__r5/junit.xml",
+      "exit_code": 0,
+      "cases": [
+        {
+          "name": "test_real_owners_completed_with_actual_args_results_and_values",
+          "status": "PASS"
+        },
+        {
+          "name": "test_full_oneof_schema_and_all_refs_resolve[ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_full_oneof_schema_and_all_refs_resolve[ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_50_10_native_numeric_propagation_both_consumers_and_cell_carriers",
+          "status": "PASS"
+        },
+        {
+          "name": "test_no_register_or_mutable_issuer_store_and_forgery_stays_held",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[issuer-FORGED]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[world_source-OTHER]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[world_release-OTHER]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[target-ANSWER]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[risk-FOREIGN]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[denominator-60]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[operation-WORLD_READ]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[expires-2999-01-01]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[not_before-2000-01-01]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[revoked_at-2999-01-01]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_warrant_exact_scope_cannot_be_altered[knowledge_as_of-2012]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_authentic_test_only_reverse_executes_distinct_query_and_denominator[54_6-54-62]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_authentic_test_only_reverse_executes_distinct_query_and_denominator[50_10-50-58]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_active_reverse_notbefore_revocation_and_expiry[2026-09-30]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_active_reverse_notbefore_revocation_and_expiry[2026-10-25]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_active_reverse_notbefore_revocation_and_expiry[2026-11-01]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_or_revoked_permission_blocks_before_producer[WORLD_READ-ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_or_revoked_permission_blocks_before_producer[WORLD_READ-ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_or_revoked_permission_blocks_before_producer[POSSIBILITY_QUERY-ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_or_revoked_permission_blocks_before_producer[POSSIBILITY_QUERY-ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_revocation_on_actual_read_prevents_return",
+          "status": "PASS"
+        },
+        {
+          "name": "test_selection_state_mandatory_and_active_before_producer[None]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_selection_state_mandatory_and_active_before_producer[PARTIAL]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_selection_state_mandatory_and_active_before_producer[NO_CURRENT]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_selection_state_mandatory_and_active_before_producer[DEFERRED]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand0]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand1]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand2]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand3]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand4]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand5]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand6]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand7]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_demand_relative_source_stratum_target_and_no_global_scope_bypass[demand8]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_town_scope_cannot_bypass_missing_stratum",
+          "status": "PASS"
+        },
+        {
+          "name": "test_2009_2010_refuses_and_arbitrary_earlier_evidence_cannot_bypass",
+          "status": "PASS"
+        },
+        {
+          "name": "test_scoped_earlier_fixture_evidence_and_content_scope_check",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[AH-REJECT_SEMANTIC_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[F2-REJECT_F2_PREREQUISITE_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[negative-REJECT_NEGATIVE_ALGEBRA_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[minority-REJECT_SUPPORT_ERASURE]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[contradiction-REJECT_ALTERNATIVE_ERASURE]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[echo-REJECT_GENERATED_FACT_PROMOTION]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_conservation_through_real_adapter[public-REJECT_PUBLIC_RULE_AND_OWNER_LOSS]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_world_value_changes_both_readers_unrelated_route_and_empirics_stable",
+          "status": "PASS"
+        },
+        {
+          "name": "test_whole_provider_equivalence_and_semantic_extension_not_whitelisted",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h2_real_source_boundary_separate_binding_successor_prior_unchanged",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h2_unmarked_drift_active_in_entrypoint[binding]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h2_unmarked_drift_active_in_entrypoint[publication]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h2_unmarked_drift_active_in_entrypoint[counter_only]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_receipts_values_and_complete_consumer_effects_reject_tamper[output]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_receipts_values_and_complete_consumer_effects_reject_tamper[carrier]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_receipts_values_and_complete_consumer_effects_reject_tamper[receipt]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bound_receipts_values_and_complete_consumer_effects_reject_tamper[remove_effect]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_explicit_actor_denial",
+          "status": "PASS"
+        },
+        {
+          "name": "test_sourcefree_ceiling_original_source_is_typed_hold",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_owner_refusal_never_falls_back",
+          "status": "PASS"
+        },
+        {
+          "name": "test_actor_fields_cannot_enter_world_payload",
+          "status": "PASS"
+        },
+        {
+          "name": "test_deleted_consumer_rehashed_container_still_refuses",
+          "status": "PASS"
+        },
+        {
+          "name": "test_reversal_knowledge_cut_must_match_owner_warrant",
+          "status": "PASS"
+        },
+        {
+          "name": "test_all_twelve_native_negative_scopes_and_measures_survive",
+          "status": "PASS"
+        },
+        {
+          "name": "test_each_route_retains_public_owner_refs[sanction_refs]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_each_route_retains_public_owner_refs[category_refs]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_each_route_retains_public_owner_refs[rule_ref]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_route_cannot_promote_fixture_grade",
+          "status": "PASS"
+        },
+        {
+          "name": "test_opaque_selected_values_are_typed_refusal",
+          "status": "PASS"
+        },
+        {
+          "name": "test_warrant_denominator_requires_exact_integer_type[62.0]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_warrant_denominator_requires_exact_integer_type[True]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_warrant_denominator_requires_exact_integer_type[62]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_reverse_checks_selected_ceiling_before_native_computation",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "suite": "k10",
+      "scope": "UNCHANGED_PINNED_PREDECESSOR",
+      "counts": {
+        "tests": 28,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 28
+      },
+      "junit": "repro/runs/k10/junit.xml",
+      "exit_code": 0,
+      "cases": [
+        {
+          "name": "test_k10_01_drop_ah",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_02_stratum_translation_noninjective",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_03_dyadize_nary",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_04_drop_f2_history_requirement",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_05_predicate_becomes_experience",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_06_contradiction_dominant_only",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_07_minority_erase",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_08_zero_missing_collapse",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_09_underpowered_as_empty",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_10_not_asked_as_no",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_11_cross_unit_pool",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_12_direction_reverse_held",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_13_condition_set_sort",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_14_uncertain_to_point",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_15_clock_conflation",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_16_lag_interpolation_held",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_17_binding_as_observation",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_18_change_binding_no_refresh",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_19_publish_boundary_no_refresh",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_20_permission_revoked",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_21_partial_as_complete",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_22_proxy_as_observed",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_23_opaque_hash_no_values",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_24_implicit_model_crossproduct",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_25_upstream_psychic_fields",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_26_f2_public_sanction_loss",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_27_nonparent_consumer_produces_generic_objective_only",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_28_no_actor_weld",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "suite": "k10__candidate_bindings",
+      "scope": "MIXED_LEGACY_ASSERTIONS_WITH_EXPLICIT_NEW_ENTRYPOINT_BINDINGS",
+      "counts": {
+        "tests": 28,
+        "failures": 9,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 19
+      },
+      "junit": "repro/runs/k10__candidate_bindings/junit.xml",
+      "exit_code": 1,
+      "cases": [
+        {
+          "name": "test_k10_01_drop_ah",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_02_stratum_translation_noninjective",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_03_dyadize_nary",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_04_drop_f2_history_requirement",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_05_predicate_becomes_experience",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_06_contradiction_dominant_only",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_07_minority_erase",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_08_zero_missing_collapse",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_09_underpowered_as_empty",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_10_not_asked_as_no",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_11_cross_unit_pool",
+          "status": "RED"
+        },
+        {
+          "name": "test_k10_12_direction_reverse_held",
+          "status": "RED"
+        },
+        {
+          "name": "test_k10_13_condition_set_sort",
+          "status": "RED"
+        },
+        {
+          "name": "test_k10_14_uncertain_to_point",
+          "status": "RED"
+        },
+        {
+          "name": "test_k10_15_clock_conflation",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_16_lag_interpolation_held",
+          "status": "RED"
+        },
+        {
+          "name": "test_k10_17_binding_as_observation",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_18_change_binding_no_refresh",
+          "status": "RED"
+        },
+        {
+          "name": "test_k10_19_publish_boundary_no_refresh",
+          "status": "RED"
+        },
+        {
+          "name": "test_k10_20_permission_revoked",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_21_partial_as_complete",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_22_proxy_as_observed",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_23_opaque_hash_no_values",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_24_implicit_model_crossproduct",
+          "status": "RED"
+        },
+        {
+          "name": "test_k10_25_upstream_psychic_fields",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_26_f2_public_sanction_loss",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k10_27_nonparent_consumer_produces_generic_objective_only",
+          "status": "RED"
+        },
+        {
+          "name": "test_k10_28_no_actor_weld",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "suite": "k9",
+      "scope": "UNCHANGED_PINNED_PREDECESSOR",
+      "counts": {
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 8
+      },
+      "junit": "repro/runs/k9/junit.xml",
+      "exit_code": 0,
+      "cases": [
+        {
+          "name": "test_k9_01_two_providers_same_meaning",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k9_02_independent_nonparent_consumer",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k9_03_id_reorder_and_stage_rename_equivalent",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k9_04_not_equivalent_contrast_rejected",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k9_05_modelled_vs_observed_refuses_grade_promotion",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k9_06_forward_reverse_held_without_scoped_issuer",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k9_07_permissions_denied_use_no_cached_bypass",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k9_08_two_channel_refresh_two_independent_successors",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "suite": "k9__candidate_bindings",
+      "scope": "MIXED_LEGACY_ASSERTIONS_WITH_EXPLICIT_NEW_ENTRYPOINT_BINDINGS",
+      "counts": {
+        "tests": 8,
+        "failures": 7,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 1
+      },
+      "junit": "repro/runs/k9__candidate_bindings/junit.xml",
+      "exit_code": 1,
+      "cases": [
+        {
+          "name": "test_k9_01_two_providers_same_meaning",
+          "status": "RED"
+        },
+        {
+          "name": "test_k9_02_independent_nonparent_consumer",
+          "status": "RED"
+        },
+        {
+          "name": "test_k9_03_id_reorder_and_stage_rename_equivalent",
+          "status": "RED"
+        },
+        {
+          "name": "test_k9_04_not_equivalent_contrast_rejected",
+          "status": "RED"
+        },
+        {
+          "name": "test_k9_05_modelled_vs_observed_refuses_grade_promotion",
+          "status": "PASS"
+        },
+        {
+          "name": "test_k9_06_forward_reverse_held_without_scoped_issuer",
+          "status": "RED"
+        },
+        {
+          "name": "test_k9_07_permissions_denied_use_no_cached_bypass",
+          "status": "RED"
+        },
+        {
+          "name": "test_k9_08_two_channel_refresh_two_independent_successors",
+          "status": "RED"
+        }
+      ]
+    },
+    {
+      "suite": "n10e_c1",
+      "scope": "UNCHANGED_PINNED_PREDECESSOR",
+      "counts": {
+        "tests": 56,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 56
+      },
+      "junit": "repro/runs/n10e_c1/junit.xml",
+      "exit_code": 0,
+      "cases": [
+        {
+          "name": "test_p1_forward_slice_is_actually_computed_and_producer_derived",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p1_evidence_identity_is_the_producer_generated_object_not_handwritten",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p1_receipt_binds_producer_and_consumer_identities_exactly",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p1_provider_does_not_recompute_or_duplicate_owner_geometry",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p2_reverse_slice_preserves_target_topology_risk_support_and_exact_fraction",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p2_forward_and_reverse_share_no_receipt_or_slice_identity",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p3_identity_bearing_conditioner_determinant_reidentifies_provider_output",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p3_model_rule_determinant_reidentifies_receipt_and_result",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p3_unconsumed_irrelevant_material_is_not_a_determinant",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p3_receipt_declares_exact_dependency_closure_over_producer_evidence",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p4_public_api_exposes_no_precomputed_slice_channel",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p4_provider_recomputes_and_ignores_attacker_evidence_in_scope",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p4_provider_result_cannot_claim_evidence_it_did_not_generate",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p5_source_release_mismatch_fails_closed_with_owner_typed_error",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p5_target_topology_mismatch_fails_closed_with_owner_typed_error",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p5_consumer_query_rejects_implicit_universe_bridge_at_construction",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p5_foreign_universe_consumer_query_fails_closed_against_producer",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p5_foreign_universe_producer_fails_closed_when_consumer_matches_source",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p5_model_source_universe_out_of_scope_returns_fail_closed_result",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p6_non_supported_slice_returns_typed_refusal_without_invented_geometry",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p6_exact_result_shape_guards_reject_refusal_and_substituted_evidence",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p6_zero_support_predicate_mutation_is_caught_by_custody_witness",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p6_geometry_is_recomputed_not_fixed_when_the_empirical_slice_changes",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p6_exact_supported_evidence_stays_exact_and_unweighted",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p6_provider_declares_no_new_proxy_or_actor_authority",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p6_no_float_or_approximate_geometry_anywhere_in_provider_output",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p7_receipt_and_result_identity_replay_deterministically",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p7_replay_detects_a_different_result_identity",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p7_fresh_process_replay_reproduces_provider_receipt",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p7_historical_fixture_law_bindings_still_hold",
+          "status": "PASS"
+        },
+        {
+          "name": "test_p7_historical_r8_composed_identity_is_preserved_as_historical_only",
+          "status": "PASS"
+        },
+        {
+          "name": "test_s1_historical_r8_forward_identity_preserved_as_historical",
+          "status": "PASS"
+        },
+        {
+          "name": "test_s2_historical_r8_reverse_identity_preserved_as_historical",
+          "status": "PASS"
+        },
+        {
+          "name": "test_s3_current_forward_complete_preimage_equals_adopted_successor",
+          "status": "PASS"
+        },
+        {
+          "name": "test_s4_current_reverse_complete_preimage_equals_adopted_successor",
+          "status": "PASS"
+        },
+        {
+          "name": "test_s5_current_forward_digest_equals_adopted_successor",
+          "status": "PASS"
+        },
+        {
+          "name": "test_s6_current_reverse_digest_equals_adopted_successor",
+          "status": "PASS"
+        },
+        {
+          "name": "test_s7_wrong_successor_direction_fails",
+          "status": "PASS"
+        },
+        {
+          "name": "test_s8_one_six_field_omission_fails",
+          "status": "PASS"
+        },
+        {
+          "name": "test_s9_one_six_field_wrong_value_fails",
+          "status": "PASS"
+        },
+        {
+          "name": "test_s10_old_r8_digest_cannot_masquerade_as_current_c1_02_digest",
+          "status": "PASS"
+        },
+        {
+          "name": "test_s11_production_six_successor_values_are_the_direct_path_law",
+          "status": "PASS"
+        },
+        {
+          "name": "test_s12_both_directions_reach_the_named_consumer_and_refuse_geometry",
+          "status": "PASS"
+        },
+        {
+          "name": "test_r8_queries_supersede_documentary_r6_hashes",
+          "status": "PASS"
+        },
+        {
+          "name": "test_at07_r6_executes_public_producer_adapter_consumer[forward-60-numerators0]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_at07_r6_executes_public_producer_adapter_consumer[reverse-62-numerators1]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_r6_witness_mutation_reidentifies_and_stale_ref_fails_closed",
+          "status": "PASS"
+        },
+        {
+          "name": "test_r7_closed_16_key_witness_rejects_matching_hash_with_extra_field",
+          "status": "PASS"
+        },
+        {
+          "name": "test_at19_valid_relation_determinant_reidentifies_composed_result",
+          "status": "PASS"
+        },
+        {
+          "name": "test_r7_denominator_member_identity_hostile_preserves_visible_54_over_60",
+          "status": "PASS"
+        },
+        {
+          "name": "test_r7_geometry_cell_identity_hostile_reidentifies_evidence",
+          "status": "PASS"
+        },
+        {
+          "name": "test_r7_fixture_pairing_authority_reidentifies_witness_evidence_and_composed_result",
+          "status": "PASS"
+        },
+        {
+          "name": "test_relation_mismatch_fails_before_evidence_and_consumer",
+          "status": "PASS"
+        },
+        {
+          "name": "test_composer_has_no_preconstructed_possibility_slice_input",
+          "status": "PASS"
+        },
+        {
+          "name": "test_relation_guard_is_before_evidence_construction_and_consumer_invocation",
+          "status": "PASS"
+        },
+        {
+          "name": "test_supported_evidence_uses_raw_denominator_not_target_numerator",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "suite": "old_i2",
+      "scope": "UNCHANGED_PINNED_PREDECESSOR",
+      "counts": {
+        "tests": 10,
+        "failures": 8,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 2
+      },
+      "junit": "repro/runs/old_i2/junit.xml",
+      "exit_code": 1,
+      "cases": [
+        {
+          "name": "test_00_pinned_oracles_real_git_blob_preimages",
+          "status": "PASS"
+        },
+        {
+          "name": "test_01_two_exact_frozen_receipt_shapes_not_just_same_names",
+          "status": "RED"
+        },
+        {
+          "name": "test_02_demand_asof_2009_must_not_serve_rule_published_2010_as_known",
+          "status": "RED"
+        },
+        {
+          "name": "test_03_revoked_world_read_must_block_actual_adapter_consumer",
+          "status": "RED"
+        },
+        {
+          "name": "test_04_partial_selected_world_must_not_become_positive_bundle",
+          "status": "RED"
+        },
+        {
+          "name": "test_05_caller_forged_issuer_name_and_wrong_target_scope_must_refuse",
+          "status": "RED"
+        },
+        {
+          "name": "test_06_empirical_cells_cannot_silently_inherit_independent_world_support",
+          "status": "RED"
+        },
+        {
+          "name": "test_07_numeric_world_route_value_changes_both_readers_not_unrelated_route",
+          "status": "PASS"
+        },
+        {
+          "name": "test_08_an_unchecked_new_semantic_field_cannot_disappear_in_equivalence",
+          "status": "RED"
+        },
+        {
+          "name": "test_09_publication_successor_must_rebind_to_actual_changed_source_boundary",
+          "status": "RED"
+        }
+      ]
+    },
+    {
+      "suite": "old_i2__candidate_bindings",
+      "scope": "MIXED_LEGACY_ASSERTIONS_WITH_EXPLICIT_NEW_ENTRYPOINT_BINDINGS",
+      "counts": {
+        "tests": 10,
+        "failures": 4,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 6
+      },
+      "junit": "repro/runs/old_i2__candidate_bindings/junit.xml",
+      "exit_code": 1,
+      "cases": [
+        {
+          "name": "test_00_pinned_oracles_real_git_blob_preimages",
+          "status": "PASS"
+        },
+        {
+          "name": "test_01_two_exact_frozen_receipt_shapes_not_just_same_names",
+          "status": "PASS"
+        },
+        {
+          "name": "test_02_demand_asof_2009_must_not_serve_rule_published_2010_as_known",
+          "status": "PASS"
+        },
+        {
+          "name": "test_03_revoked_world_read_must_block_actual_adapter_consumer",
+          "status": "PASS"
+        },
+        {
+          "name": "test_04_partial_selected_world_must_not_become_positive_bundle",
+          "status": "PASS"
+        },
+        {
+          "name": "test_05_caller_forged_issuer_name_and_wrong_target_scope_must_refuse",
+          "status": "RED"
+        },
+        {
+          "name": "test_06_empirical_cells_cannot_silently_inherit_independent_world_support",
+          "status": "RED"
+        },
+        {
+          "name": "test_07_numeric_world_route_value_changes_both_readers_not_unrelated_route",
+          "status": "RED"
+        },
+        {
+          "name": "test_08_an_unchecked_new_semantic_field_cannot_disappear_in_equivalence",
+          "status": "PASS"
+        },
+        {
+          "name": "test_09_publication_successor_must_rebind_to_actual_changed_source_boundary",
+          "status": "RED"
+        }
+      ]
+    },
+    {
+      "suite": "old_rc0",
+      "scope": "UNCHANGED_PINNED_PREDECESSOR",
+      "counts": {
+        "tests": 25,
+        "failures": 12,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 13
+      },
+      "junit": "repro/runs/old_rc0/junit.xml",
+      "exit_code": 1,
+      "cases": [
+        {
+          "name": "test_actual_value_intervention_changes_both_consumers_and_only_affected_route[ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_actual_value_intervention_changes_both_consumers_and_only_affected_route[ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderA]",
+          "status": "RED"
+        },
+        {
+          "name": "test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderB]",
+          "status": "RED"
+        },
+        {
+          "name": "test_foreign_demand_cannot_be_labelled_complete[ProviderA]",
+          "status": "RED"
+        },
+        {
+          "name": "test_foreign_demand_cannot_be_labelled_complete[ProviderB]",
+          "status": "RED"
+        },
+        {
+          "name": "test_knowledge_asof_cannot_consume_future_publication[ProviderA]",
+          "status": "RED"
+        },
+        {
+          "name": "test_knowledge_asof_cannot_consume_future_publication[ProviderB]",
+          "status": "RED"
+        },
+        {
+          "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[issuer-ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[issuer-ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderA]",
+          "status": "RED"
+        },
+        {
+          "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderB]",
+          "status": "RED"
+        },
+        {
+          "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderA]",
+          "status": "RED"
+        },
+        {
+          "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderB]",
+          "status": "RED"
+        },
+        {
+          "name": "test_direct_receipts_satisfy_original_frozen_envelope_schema",
+          "status": "RED"
+        },
+        {
+          "name": "test_full_original_negative_state_distinctions_survive",
+          "status": "RED"
+        },
+        {
+          "name": "test_h1_f1_f2_h3_and_both_h2_successors_preserve_explicit_deferral",
+          "status": "PASS"
+        },
+        {
+          "name": "test_changed_binding_guard_is_real_but_adapter_recomputes_new_selection",
+          "status": "PASS"
+        },
+        {
+          "name": "test_baseline_providers_equal_without_using_candidate_comparison_function",
+          "status": "PASS"
+        },
+        {
+          "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[AH-REJECT_SEMANTIC_LOSS-ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[AH-REJECT_SEMANTIC_LOSS-ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS-ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS-ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[F2-REJECT_F2_PREREQUISITE_LOSS-ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[F2-REJECT_F2_PREREQUISITE_LOSS-ProviderB]",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "suite": "old_rc0__candidate_bindings",
+      "scope": "MIXED_LEGACY_ASSERTIONS_WITH_EXPLICIT_NEW_ENTRYPOINT_BINDINGS",
+      "counts": {
+        "tests": 25,
+        "failures": 18,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 7
+      },
+      "junit": "repro/runs/old_rc0__candidate_bindings/junit.xml",
+      "exit_code": 1,
+      "cases": [
+        {
+          "name": "test_actual_value_intervention_changes_both_consumers_and_only_affected_route[ProviderA]",
+          "status": "RED"
+        },
+        {
+          "name": "test_actual_value_intervention_changes_both_consumers_and_only_affected_route[ProviderB]",
+          "status": "RED"
+        },
+        {
+          "name": "test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_foreign_demand_cannot_be_labelled_complete[ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_foreign_demand_cannot_be_labelled_complete[ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_knowledge_asof_cannot_consume_future_publication[ProviderA]",
+          "status": "RED"
+        },
+        {
+          "name": "test_knowledge_asof_cannot_consume_future_publication[ProviderB]",
+          "status": "RED"
+        },
+        {
+          "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[issuer-ProviderA]",
+          "status": "RED"
+        },
+        {
+          "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[issuer-ProviderB]",
+          "status": "RED"
+        },
+        {
+          "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderA]",
+          "status": "RED"
+        },
+        {
+          "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderB]",
+          "status": "RED"
+        },
+        {
+          "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderA]",
+          "status": "RED"
+        },
+        {
+          "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderB]",
+          "status": "RED"
+        },
+        {
+          "name": "test_direct_receipts_satisfy_original_frozen_envelope_schema",
+          "status": "PASS"
+        },
+        {
+          "name": "test_full_original_negative_state_distinctions_survive",
+          "status": "RED"
+        },
+        {
+          "name": "test_h1_f1_f2_h3_and_both_h2_successors_preserve_explicit_deferral",
+          "status": "RED"
+        },
+        {
+          "name": "test_changed_binding_guard_is_real_but_adapter_recomputes_new_selection",
+          "status": "RED"
+        },
+        {
+          "name": "test_baseline_providers_equal_without_using_candidate_comparison_function",
+          "status": "RED"
+        },
+        {
+          "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[AH-REJECT_SEMANTIC_LOSS-ProviderA]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[AH-REJECT_SEMANTIC_LOSS-ProviderB]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS-ProviderA]",
+          "status": "RED"
+        },
+        {
+          "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS-ProviderB]",
+          "status": "RED"
+        },
+        {
+          "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[F2-REJECT_F2_PREREQUISITE_LOSS-ProviderA]",
+          "status": "RED"
+        },
+        {
+          "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[F2-REJECT_F2_PREREQUISITE_LOSS-ProviderB]",
+          "status": "RED"
+        }
+      ]
+    },
+    {
+      "suite": "old_sc0f",
+      "scope": "UNCHANGED_PINNED_PREDECESSOR",
+      "counts": {
+        "tests": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 10
+      },
+      "junit": "repro/runs/old_sc0f/junit.xml",
+      "exit_code": 0,
+      "cases": [
+        {
+          "name": "test_01_strict_draft_202012_schema",
+          "status": "PASS"
+        },
+        {
+          "name": "test_02_knowledge_as_of_clock_ordering",
+          "status": "PASS"
+        },
+        {
+          "name": "test_03_world_read_revocation_active_gate",
+          "status": "PASS"
+        },
+        {
+          "name": "test_04_partial_selection_never_positive",
+          "status": "PASS"
+        },
+        {
+          "name": "test_05_role_reversal_requires_registered_issuer",
+          "status": "PASS"
+        },
+        {
+          "name": "test_06_empirical_support_from_cells_not_static_world",
+          "status": "PASS"
+        },
+        {
+          "name": "test_07_numerical_mutation_affects_readers_unrelated_stable",
+          "status": "PASS"
+        },
+        {
+          "name": "test_08_full_negative_algebra",
+          "status": "PASS"
+        },
+        {
+          "name": "test_09_call_trace_shows_producer_references",
+          "status": "PASS"
+        },
+        {
+          "name": "test_10_conservation_invariants",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "suite": "old_sc0f__candidate_bindings",
+      "scope": "MIXED_LEGACY_ASSERTIONS_WITH_EXPLICIT_NEW_ENTRYPOINT_BINDINGS",
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 1,
+        "skipped": 0,
+        "passed": 0
+      },
+      "junit": "repro/runs/old_sc0f__candidate_bindings/junit.xml",
+      "exit_code": 2,
+      "cases": [
+        {
+          "name": "inputs.sc0f.repro.tests.test_sc0f_repair",
+          "status": "ERROR"
+        }
+      ]
+    },
+    {
+      "suite": "old_sc0i",
+      "scope": "UNCHANGED_PINNED_PREDECESSOR",
+      "counts": {
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 7
+      },
+      "junit": "repro/runs/old_sc0i/junit.xml",
+      "exit_code": 0,
+      "cases": [
+        {
+          "name": "test_h01_n10e_c1_imported_never_invoked",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h02_import_trace_uses_sha256_of_imported",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h03_forged_warrant_accepted_after_self_registration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h04_test06_options_nonempty_not_numeric",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h05_selection_state_defaults_complete",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h06_fx_scope_allowlist_unconditional",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h07_earlier_evidence_presence_not_issuer",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "suite": "old_sc0i__candidate_bindings",
+      "scope": "MIXED_LEGACY_ASSERTIONS_WITH_EXPLICIT_NEW_ENTRYPOINT_BINDINGS",
+      "counts": {
+        "tests": 7,
+        "failures": 5,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 2
+      },
+      "junit": "repro/runs/old_sc0i__candidate_bindings/junit.xml",
+      "exit_code": 1,
+      "cases": [
+        {
+          "name": "test_h01_n10e_c1_imported_never_invoked",
+          "status": "RED"
+        },
+        {
+          "name": "test_h02_import_trace_uses_sha256_of_imported",
+          "status": "RED"
+        },
+        {
+          "name": "test_h03_forged_warrant_accepted_after_self_registration",
+          "status": "RED"
+        },
+        {
+          "name": "test_h04_test06_options_nonempty_not_numeric",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h05_selection_state_defaults_complete",
+          "status": "RED"
+        },
+        {
+          "name": "test_h06_fx_scope_allowlist_unconditional",
+          "status": "PASS"
+        },
+        {
+          "name": "test_h07_earlier_evidence_presence_not_issuer",
+          "status": "RED"
+        }
+      ]
+    },
+    {
+      "suite": "pe_author",
+      "scope": "UNCHANGED_PINNED_PREDECESSOR",
+      "counts": {
+        "tests": 21,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 21
+      },
+      "junit": "repro/runs/pe_author/junit.xml",
+      "exit_code": 0,
+      "cases": [
+        {
+          "name": "test_law_a_consumer_computes_exact_fraction_at_declared_grain[multi_binding_parent_context]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_law_a_consumer_computes_exact_fraction_at_declared_grain[nonparent_reverse]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_law_a_consumer_computes_exact_fraction_at_declared_grain[conception_scenario]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_law_b_consumer_computes_exact_fraction_at_declared_grain[multi_binding_parent_context]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_law_b_consumer_computes_exact_fraction_at_declared_grain[nonparent_reverse]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_law_b_consumer_computes_exact_fraction_at_declared_grain[conception_scenario]",
+          "status": "PASS"
+        },
+        {
+          "name": "test_two_independent_laws_are_empirically_discriminating",
+          "status": "PASS"
+        },
+        {
+          "name": "test_law_a_and_law_b_oracles_match_independent_arithmetic",
+          "status": "PASS"
+        },
+        {
+          "name": "test_role_direction_reversal_preserves_target_condition_semantics",
+          "status": "PASS"
+        },
+        {
+          "name": "test_request_schema_carries_no_parent_nouns",
+          "status": "PASS"
+        },
+        {
+          "name": "test_receipt_binds_immutable_n9_selected_and_asof_dependency_ids",
+          "status": "PASS"
+        },
+        {
+          "name": "test_inference_lane_is_declared_n10e_conditioned_not_world_only",
+          "status": "PASS"
+        },
+        {
+          "name": "test_replay_reproduces_exactly_the_same_receipt_identity",
+          "status": "PASS"
+        },
+        {
+          "name": "test_negative_reversed_unauthorized_role",
+          "status": "PASS"
+        },
+        {
+          "name": "test_negative_new_unit_not_authorized",
+          "status": "PASS"
+        },
+        {
+          "name": "test_negative_artificial_parent_sampling_refused_at_boundary",
+          "status": "PASS"
+        },
+        {
+          "name": "test_negative_fake_model_use_refused",
+          "status": "PASS"
+        },
+        {
+          "name": "test_negative_source_hash_forgery_rejected_by_custody_witness",
+          "status": "PASS"
+        },
+        {
+          "name": "test_negative_missing_conditional_denominator_refused",
+          "status": "PASS"
+        },
+        {
+          "name": "test_negative_invalidated_current_refused",
+          "status": "PASS"
+        },
+        {
+          "name": "test_negative_future_time_availability_refused",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "suite": "pe_independent",
+      "scope": "UNCHANGED_PINNED_PREDECESSOR",
+      "counts": {
+        "tests": 13,
+        "failures": 0,
+        "errors": 13,
+        "skipped": 0,
+        "passed": 0
+      },
+      "junit": "repro/runs/pe_independent/junit.xml",
+      "exit_code": 1,
+      "cases": [
+        {
+          "name": "test_independent_pe_multi_condition_n100_n110_and_null_control",
+          "status": "ERROR"
+        },
+        {
+          "name": "test_independent_nonparent_reverse_has_its_own_denominator",
+          "status": "ERROR"
+        },
+        {
+          "name": "test_world_ref_change_is_only_carry_not_joint_computation",
+          "status": "ERROR"
+        },
+        {
+          "name": "test_invalidated_snapshot_refuses_without_reusing_cached_geometry",
+          "status": "ERROR"
+        },
+        {
+          "name": "test_strict_reverse_scoped_issuer_forgery_must_refuse",
+          "status": "ERROR"
+        },
+        {
+          "name": "test_strict_selected_world_nary_F2_AH_strata_roundtrip",
+          "status": "ERROR"
+        },
+        {
+          "name": "test_strict_generated_runtime_fact_echo_not_source_promotion",
+          "status": "ERROR"
+        },
+        {
+          "name": "test_strict_two_distinct_world_refresh_receipts",
+          "status": "ERROR"
+        },
+        {
+          "name": "test_strict_four_clocks_historical_knowledge",
+          "status": "ERROR"
+        },
+        {
+          "name": "test_strict_negative_status_algebra_and_source_risk",
+          "status": "ERROR"
+        },
+        {
+          "name": "test_strict_values_read_not_only_hash_or_inferred_label",
+          "status": "ERROR"
+        },
+        {
+          "name": "test_strict_nonparent_apprenticeship_world_effect",
+          "status": "ERROR"
+        },
+        {
+          "name": "test_strict_parent_scenario_remains_input_only",
+          "status": "ERROR"
+        }
+      ]
+    },
+    {
+      "suite": "pe_independent__qualified",
+      "scope": "UNCHANGED_PINNED_PREDECESSOR",
+      "counts": {
+        "tests": 13,
+        "failures": 9,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 4
+      },
+      "junit": "repro/runs/pe_independent__qualified/junit.xml",
+      "exit_code": 1,
+      "cases": [
+        {
+          "name": "test_independent_pe_multi_condition_n100_n110_and_null_control",
+          "status": "PASS"
+        },
+        {
+          "name": "test_independent_nonparent_reverse_has_its_own_denominator",
+          "status": "PASS"
+        },
+        {
+          "name": "test_world_ref_change_is_only_carry_not_joint_computation",
+          "status": "PASS"
+        },
+        {
+          "name": "test_invalidated_snapshot_refuses_without_reusing_cached_geometry",
+          "status": "PASS"
+        },
+        {
+          "name": "test_strict_reverse_scoped_issuer_forgery_must_refuse",
+          "status": "RED"
+        },
+        {
+          "name": "test_strict_selected_world_nary_F2_AH_strata_roundtrip",
+          "status": "RED"
+        },
+        {
+          "name": "test_strict_generated_runtime_fact_echo_not_source_promotion",
+          "status": "RED"
+        },
+        {
+          "name": "test_strict_two_distinct_world_refresh_receipts",
+          "status": "RED"
+        },
+        {
+          "name": "test_strict_four_clocks_historical_knowledge",
+          "status": "RED"
+        },
+        {
+          "name": "test_strict_negative_status_algebra_and_source_risk",
+          "status": "RED"
+        },
+        {
+          "name": "test_strict_values_read_not_only_hash_or_inferred_label",
+          "status": "RED"
+        },
+        {
+          "name": "test_strict_nonparent_apprenticeship_world_effect",
+          "status": "RED"
+        },
+        {
+          "name": "test_strict_parent_scenario_remains_input_only",
+          "status": "RED"
+        }
+      ]
+    }
+  ],
+  "old_sc0i_passes_mean": "Seven assertions confirming defects in old SC0F; not seven repaired outcomes",
+  "legacy_tests_against_new_candidate": "NOT_CLAIMED: unchanged sources import old packages and assume old wire/private storage; new semantic predicates run through actual sc0f3 entrypoint instead",
+  "initial_PE_13_errors": "Harness env HQ297_EXACT_PE_ROOT was missing; retained original run, then qualified rerun reached all13 bodies with4PASS9RED",
+  "relabelled_xfail": 0,
+  "original_owner_or_oracle_edits": false,
+  "final_candidate_suite": "candidate__r5",
+  "final_candidate_counts": {
+    "tests": 76,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 76
+  },
+  "additional_executed_attacks": [
+    "repro/legacy_enrollment_attack_receipt.json",
+    "repro/red_float_warrant.json"
+  ],
+  "candidate_binding_attempts": {
+    "source_tests_modified": false,
+    "unsafe_registration_stub_supplied": false,
+    "pinned_old_helpers": "Retained; helper-only greens are not new candidate evidence",
+    "collection_error": "SC0F: removed registration import stops all10 bodies; JUnit records one collection error, not10 executed failures",
+    "raw_failures": "RETAINED; no xfail, no normalization to PASS",
+    "triage": "legacy_binding_failure_triage.json"
+  }
+}

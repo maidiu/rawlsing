@@ -1,0 +1,286 @@
+{
+  "assignments_completed": [
+    "HQ298 SC0 value-bearing two-contract port prototype + K9/K10 executed court"
+  ],
+  "branch": "agent/rabochii-sorok-r3-hq298-sc0-value-bearing-port-r1",
+  "capabilities": {
+    "filesystem_shell": "VERIFIED",
+    "git": "VERIFIED 2.39.1",
+    "node": "VERIFIED v18.14.2 (used only for nothing this round; listed for completeness)",
+    "pytest": "VERIFIED 9.1.1",
+    "python": "VERIFIED 3.11.3 /usr/local/bin/python3"
+  },
+  "checkout_base_head": "ac3e7a9922f86d14dd946db3d8d5606a4106015b",
+  "clean_dirty_state": "return-terrain-only writes; no accepted source mutation",
+  "conversation_or_account_affinity": "opencode-go shared quota (account counters UNKNOWN)",
+  "covered_test_suites": [
+    {
+      "command": "bash repro/run_battery.sh [1] pytest port/",
+      "junit": "repro/port_k9_k10.junit.xml",
+      "result": "36 passed"
+    },
+    {
+      "command": "bash repro/run_battery.sh [2] pytest test_pre553_empirical_possibility_provider.py + test_pre553_analytical_composition.py",
+      "junit": "repro/n10e_c1.junit.xml",
+      "result": "56 passed"
+    },
+    {
+      "command": "bash repro/run_battery.sh [3] pytest test_postastra_pe_generic_world_possibility.py",
+      "junit": "repro/pe_21.junit.xml",
+      "result": "21 passed"
+    },
+    {
+      "command": "bash repro/run_battery.sh [4] pytest test_hq297_k9k10_sc0_pe_independent.py",
+      "junit": "repro/reviewer_13.junit.xml",
+      "result": "4 passed, 9 failed (executed PE REDs)"
+    }
+  ],
+  "dependency_closure_status": "BOUNDED_SOURCEFREE",
+  "environment_id": "ENV-HQ298-SC0-LOCAL-A7F3",
+  "epoch_id": "EPOCH-HQ298-SC0-20261014-LOCAL-1",
+  "git_object_store_alias": "local-shared-object-store-rawlsing",
+  "independent_review_separation": "IMPLEMENTER_NOT_REVIEWER; reviewer proposed in 05",
+  "last_live_probe_at": "2026-10-14",
+  "machine_alias": "local-darwin-host-01",
+  "materialized_source_refs": [
+    {
+      "git_blob_sha1": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "imported_module_file": "staging/ns/rawlsing_next/pre553_analytical_composition.py",
+      "match": true,
+      "path": "rawlsing_next/pre553_analytical_composition.py",
+      "staged_relative_path": "rawlsing_next/pre553_analytical_composition.py"
+    },
+    {
+      "git_blob_sha1": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "imported_module_file": "staging/ns/rawlsing_next/pre553_empirical_possibility_provider.py",
+      "match": true,
+      "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+      "staged_relative_path": "rawlsing_next/pre553_empirical_possibility_provider.py"
+    },
+    {
+      "git_blob_sha1": "58484f4c3d9aae148d4116dcf00420c432aefcbd",
+      "git_commit": "b497f85713847cecc169d4d71c7629655d562dc0",
+      "imported_module_file": "staging/ns/rawlsing_next/pre553_postastra_pe_generic_world_possibility.py",
+      "match": true,
+      "path": "rawlsing_next/pre553_postastra_pe_generic_world_possibility.py",
+      "staged_relative_path": "rawlsing_next/pre553_postastra_pe_generic_world_possibility.py"
+    },
+    {
+      "git_blob_sha1": "0e384f72fa615dc72a0dcb08a36472a64b7b1e4a",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "imported_module_file": "staging/ns/rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+      "match": true,
+      "path": "rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+      "staged_relative_path": "rawlsing_next/tests/n10e_empirical_slice_fixture.py"
+    },
+    {
+      "git_blob_sha1": "35b2427c0c5ef97bcd53d20f5dee9d365228459b",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "imported_module_file": "staging/ns/rawlsing_next/tests/n10e_at17_successor_requal.py",
+      "match": true,
+      "path": "rawlsing_next/tests/n10e_at17_successor_requal.py",
+      "staged_relative_path": "rawlsing_next/tests/n10e_at17_successor_requal.py"
+    },
+    {
+      "git_blob_sha1": "0393cc8c17a313b7944b2a5287d0406d6cbe3849",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "imported_module_file": "staging/ns/rawlsing_next/tests/c1_at08_at13_fixture.py",
+      "match": true,
+      "path": "rawlsing_next/tests/c1_at08_at13_fixture.py",
+      "staged_relative_path": "rawlsing_next/tests/c1_at08_at13_fixture.py"
+    },
+    {
+      "git_blob_sha1": "f776cc2b26be222132d86abbcb1ad429991fa61d",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "imported_module_file": "staging/ns/rawlsing_next/tests/test_pre553_empirical_possibility_provider.py",
+      "match": true,
+      "path": "rawlsing_next/tests/test_pre553_empirical_possibility_provider.py",
+      "staged_relative_path": "rawlsing_next/tests/test_pre553_empirical_possibility_provider.py"
+    },
+    {
+      "git_blob_sha1": "2210fc1b4cb99552aafc8797c12d780a78e7983b",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "imported_module_file": "staging/ns/rawlsing_next/tests/test_pre553_analytical_composition.py",
+      "match": true,
+      "path": "rawlsing_next/tests/test_pre553_analytical_composition.py",
+      "staged_relative_path": "rawlsing_next/tests/test_pre553_analytical_composition.py"
+    },
+    {
+      "git_blob_sha1": "c9674d5fe9d01621eda0fdb4a999391eba422d92",
+      "git_commit": "b497f85713847cecc169d4d71c7629655d562dc0",
+      "imported_module_file": "staging/ns/rawlsing_next/tests/test_postastra_pe_fixture.py",
+      "match": true,
+      "path": "rawlsing_next/tests/test_postastra_pe_fixture.py",
+      "staged_relative_path": "rawlsing_next/tests/test_postastra_pe_fixture.py"
+    },
+    {
+      "git_blob_sha1": "92f59875583bf513c6fdbcd3ad7fe2b49e45e212",
+      "git_commit": "b497f85713847cecc169d4d71c7629655d562dc0",
+      "imported_module_file": "staging/ns/rawlsing_next/tests/test_postastra_pe_generic_world_possibility.py",
+      "match": true,
+      "path": "rawlsing_next/tests/test_postastra_pe_generic_world_possibility.py",
+      "staged_relative_path": "rawlsing_next/tests/test_postastra_pe_generic_world_possibility.py"
+    },
+    {
+      "git_blob_sha1": "19e8d47084ebb5763037a83c4afbc2036f30c49a",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "imported_module_file": "staging/ns/rawlsing_next/tests/n10e_empirical_slice_fresh_process_runner.py",
+      "match": true,
+      "path": "rawlsing_next/tests/n10e_empirical_slice_fresh_process_runner.py",
+      "staged_relative_path": "rawlsing_next/tests/n10e_empirical_slice_fresh_process_runner.py"
+    },
+    {
+      "git_blob_sha1": "39ddca69e171143e2a539d5494bc2c94de6f9762",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "imported_module_file": "staging/ns/rawlsing_next/tests/c1_at08_at13_fresh_process_runner.py",
+      "match": true,
+      "path": "rawlsing_next/tests/c1_at08_at13_fresh_process_runner.py",
+      "staged_relative_path": "rawlsing_next/tests/c1_at08_at13_fresh_process_runner.py"
+    },
+    {
+      "git_blob_sha1": "d843132330e2a92f7ea7a6aa31e39566559963d0",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "imported_module_file": "staging/ns/rawlsing_next/tests/mx01r2_fresh_process_runner.py",
+      "match": true,
+      "path": "rawlsing_next/tests/mx01r2_fresh_process_runner.py",
+      "staged_relative_path": "rawlsing_next/tests/mx01r2_fresh_process_runner.py"
+    },
+    {
+      "git_blob_sha1": "99a65b681c9a570541a44beae33537821f0739f3",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "imported_module_file": "staging/ns/rawlsing_next/tests/c1_at18_at19_fresh_process_runner.py",
+      "match": true,
+      "path": "rawlsing_next/tests/c1_at18_at19_fresh_process_runner.py",
+      "staged_relative_path": "rawlsing_next/tests/c1_at18_at19_fresh_process_runner.py"
+    },
+    {
+      "git_blob_sha1": "d2fe653dadf94893b0fdfd268f36683f8dfed9af",
+      "git_commit": "4fb21a8108d29f4c820326204bfcfee41500788c",
+      "imported_module_file": "staging/ns/rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py",
+      "match": true,
+      "path": "rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py",
+      "staged_relative_path": "rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py"
+    },
+    {
+      "git_blob_sha1": "c6acafae820c065215fdbe7a703480a8b19fbc57",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "imported_module_file": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json",
+      "match": true,
+      "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json",
+      "staged_relative_path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json"
+    },
+    {
+      "git_blob_sha1": "333989fa7b57c221d6aa5ebfc25d9d76e0acad32",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "imported_module_file": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json",
+      "match": true,
+      "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json",
+      "staged_relative_path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json"
+    },
+    {
+      "git_blob_sha1": "8e5bd3d23db1e39aebee0a55d49934a0d400dd48",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "imported_module_file": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/04_SLICE_PROJECTION.json",
+      "match": true,
+      "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/04_SLICE_PROJECTION.json",
+      "staged_relative_path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/04_SLICE_PROJECTION.json"
+    },
+    {
+      "git_blob_sha1": "5d1583dc31c837282ea40448285109a31bb1db41",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "imported_module_file": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json",
+      "match": true,
+      "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json",
+      "staged_relative_path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json"
+    },
+    {
+      "git_blob_sha1": "462bb282ddc2cc9667f1890f2d65f2fae9a3a72c",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "imported_module_file": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json",
+      "match": true,
+      "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json",
+      "staged_relative_path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json"
+    },
+    {
+      "git_blob_sha1": "2d725dc592291ac7e8da4e4b0fb90f96dbeacec4",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "imported_module_file": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_HISTORICAL_CANONICAL.json",
+      "match": true,
+      "path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_HISTORICAL_CANONICAL.json",
+      "staged_relative_path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_HISTORICAL_CANONICAL.json"
+    },
+    {
+      "git_blob_sha1": "8143c96ed8ebdf3b87632d193a30e9924cbd1ced",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "imported_module_file": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_SUCCESSOR_CANONICAL.json",
+      "match": true,
+      "path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_SUCCESSOR_CANONICAL.json",
+      "staged_relative_path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_SUCCESSOR_CANONICAL.json"
+    },
+    {
+      "git_blob_sha1": "634d4dd6c6c90e6c02220b17071795e9b7bdbd3e",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "imported_module_file": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_HISTORICAL_CANONICAL.json",
+      "match": true,
+      "path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_HISTORICAL_CANONICAL.json",
+      "staged_relative_path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_HISTORICAL_CANONICAL.json"
+    },
+    {
+      "git_blob_sha1": "712455f3b84a0685d0876dc5218421edf7dae724",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "imported_module_file": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_SUCCESSOR_CANONICAL.json",
+      "match": true,
+      "path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_SUCCESSOR_CANONICAL.json",
+      "staged_relative_path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_SUCCESSOR_CANONICAL.json"
+    },
+    {
+      "git_blob_sha1": "9ccb66f9b08a4aa8b96582295bb2966d250fd72d",
+      "git_commit": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+      "imported_module_file": "oracles/02_K9_PROVIDER_SWAP_ORACLES.json",
+      "match": true,
+      "path": "WORKER_RETURNS/SOROK-R3-POSTASTRA-SC0-WORLD-PORT-CONTRACT-R1/02_K9_PROVIDER_SWAP_ORACLES.json",
+      "staged_relative_path": "oracles/02_K9_PROVIDER_SWAP_ORACLES.json"
+    },
+    {
+      "git_blob_sha1": "e78b3ee91da1fb18deaf8d8f226800ad855adbae",
+      "git_commit": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+      "imported_module_file": "oracles/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json",
+      "match": true,
+      "path": "WORKER_RETURNS/SOROK-R3-POSTASTRA-SC0-WORLD-PORT-CONTRACT-R1/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json",
+      "staged_relative_path": "oracles/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json"
+    },
+    {
+      "git_blob_sha1": "610ac870fde6cfe63796592b3c6b1e1bf1e37150",
+      "git_commit": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+      "imported_module_file": "oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json",
+      "match": true,
+      "path": "WORKER_RETURNS/SOROK-R3-POSTASTRA-SC0-WORLD-PORT-CONTRACT-R1/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json",
+      "staged_relative_path": "oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json"
+    }
+  ],
+  "model_provider": "opencode-go (model id opencode-go/mimo-v2.6-pro) for implementation/testing only",
+  "next_good_affinity_tags": [
+    "N9_PORT",
+    "SC0_TWO_CONTRACT",
+    "N10E",
+    "K9_K10",
+    "PE_BOUNDARY",
+    "ROLE_REVERSAL_SCOPE"
+  ],
+  "observed_credits_usage": "UNKNOWN",
+  "owner_session_alias": "opencode-go-sorok-sc0-worker",
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_DELTA@1",
+  "privacy_source_grant": "no original survey bytes read or written; synthetic fixtures only",
+  "probe_command_and_result": "python3 --version -> 3.11.3; pytest -> 9.1.1; git --version -> 2.39.1; node --version -> v18.14.2",
+  "retire_or_rebuild_reason": null,
+  "runtime_marker_digest": "d084e6c3b19fc5b2d05f2156a24bd2b093e0e7c9cce0d3aa17bab2da44eb1753",
+  "science_grade": "SOURCEFREE_PROTOTYPE__NOT_ACCEPTED_OWNER__NOT_ORIGINAL_RELEASE__NOT_ACTOR_USE",
+  "session_still_available_for_more_work": true,
+  "source_family": "Sorok HQ lineage + blob-verified Pyat/PE sourcefree staging",
+  "staged_state_preservation": "staging/ns + repro/ retained on worker branch; re-runnable via repro/run_battery.sh",
+  "status": "LIVE_VERIFIED",
+  "surface": "LOCAL_SHARED_STORE",
+  "worktree_alias": "governed-sparse-worktree-hq298-sc0"
+}

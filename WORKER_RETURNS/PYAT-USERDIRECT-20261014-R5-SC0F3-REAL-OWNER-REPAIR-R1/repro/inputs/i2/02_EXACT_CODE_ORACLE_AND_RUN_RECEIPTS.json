@@ -1,0 +1,384 @@
+{
+  "schema": "USERDIRECT_I2_INDEPENDENT_EXACT_CODE_ORACLE_AND_RUN_RECEIPTS_R1",
+  "verdict": "RED_SOURCE_LEVEL_FROZEN_CONTRACT_AND_SERVING_SEMANTICS",
+  "reviewer_role": "Independent hostile Pyat/Sorok I2; not an issuer or adopter",
+  "commission": {
+    "branch": "agent/userdirect-pyat-20261014-i2-sc0-independent-port-court-r1",
+    "sealed_startup": "cf26a03e6e3ece8dc783e6068aab1f1c3ac518d5",
+    "source_path": "WORKER_COMMISSIONS/PYAT-USERDIRECT-20261014-I2-SC0-INDEPENDENT-PORT-COURT-R1/00_COMMISSION.md",
+    "source_blob": "8c88f8fcb68b1b8c14d3f4eaf35acdfca3e6b10c",
+    "remote_ref_verified": true
+  },
+  "candidate": {
+    "branch": "agent/rabochii-sorok-r3-hq298-sc0-value-bearing-port-r1",
+    "commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+    "remote_ref_verified": true,
+    "source_grain": "SOURCEFREE_TEST_FIXTURE_ONLY_NOT_ACCEPTED_N9"
+  },
+  "chronology": {
+    "expectations_committed_before_implementation_inspection": "02904b0055bd4304f9a5c36244c613732b2f86f2",
+    "author_port_inspected_after_freeze": true
+  },
+  "original_frozen": {
+    "commit": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+    "blobs": [
+      {
+        "path": "WORKER_RETURNS/SOROK-R3-POSTASTRA-SC0-WORLD-PORT-CONTRACT-R1/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json",
+        "git_blob": "610ac870fde6cfe63796592b3c6b1e1bf1e37150"
+      },
+      {
+        "path": "WORKER_RETURNS/SOROK-R3-POSTASTRA-SC0-WORLD-PORT-CONTRACT-R1/02_K9_PROVIDER_SWAP_ORACLES.json",
+        "git_blob": "9ccb66f9b08a4aa8b96582295bb2966d250fd72d"
+      },
+      {
+        "path": "WORKER_RETURNS/SOROK-R3-POSTASTRA-SC0-WORLD-PORT-CONTRACT-R1/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json",
+        "git_blob": "e78b3ee91da1fb18deaf8d8f226800ad855adbae"
+      }
+    ],
+    "k9_case_count": 8,
+    "k10_case_count": 28,
+    "independent_expected_classes_committed_to": "01_EXPECTATIONS_AND_HOSTILES.json"
+  },
+  "verified_candidate_port_git_blobs": [
+    {
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/adapter.py",
+      "blob_sha1": "78ef0d4f9eff39192c52de5dcf3723ff6f8a8107",
+      "read_from_candidate_commit": true
+    },
+    {
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/contracts.py",
+      "blob_sha1": "0d7217ebb70acf0fd7616ba34ba318842775303e",
+      "read_from_candidate_commit": true
+    },
+    {
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/world_laws.py",
+      "blob_sha1": "ba3271f0a476b7afbb20f5815515878337ffa2f3",
+      "read_from_candidate_commit": true
+    },
+    {
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/provider_a.py",
+      "blob_sha1": "15e01b2752fdc3c0d7293fcb685005c34cfb9640",
+      "read_from_candidate_commit": true
+    },
+    {
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/provider_b.py",
+      "blob_sha1": "56e4a6c8ec80bb9a804fd2a1ddb5694a1354e3fb",
+      "read_from_candidate_commit": true
+    },
+    {
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/consumers.py",
+      "blob_sha1": "02e3a4375475783e204a8fa7def9b1511a8db856",
+      "read_from_candidate_commit": true
+    },
+    {
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/world_baseline.py",
+      "blob_sha1": "a03f1697ba1be6cfd463c5e9a6c96aab1b65d205",
+      "read_from_candidate_commit": true
+    },
+    {
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/test_k9_provider_swap.py",
+      "blob_sha1": "1e25d7951411c1d33c2185f88496c453adbc194e",
+      "read_from_candidate_commit": true
+    },
+    {
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/test_k10_structural_conservation.py",
+      "blob_sha1": "44c725bd1a18e22c5314bf73b7a9dc538c5b08aa",
+      "read_from_candidate_commit": true
+    }
+  ],
+  "staging": {
+    "path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/staging/staging_manifest.json",
+    "manifest_blob": "a0e280e5cd37b7f0094ed72afdbff2f3d7f9af16",
+    "entries_declared": 27,
+    "independently_fetched_individual_at_candidate_commit": 27,
+    "exact_git_blob_matches": 27,
+    "exact_git_blob_mismatches": 0,
+    "method": "27 separate GitHub connector fetch_file results returned SHA; compared to staged manifest expected_blob_sha1, independent of manifest self-reported match property",
+    "limitations": "Did NOT independently compute local git hash-object over an installed runnable closure; connector remote Git blob identity only."
+  },
+  "frozen_schema_source_level_incompatibility": {
+    "schema_git_blob": "610ac870fde6cfe63796592b3c6b1e1bf1e37150",
+    "draft": "2020-12",
+    "oneOf": true,
+    "additionalProperties": false,
+    "world": {
+      "required_count": 17,
+      "candidate_literal_keys": [
+        "contract",
+        "selection_digest",
+        "provider",
+        "world",
+        "selection_state",
+        "binding_generation",
+        "publication_generation",
+        "grade"
+      ],
+      "missing_required": [
+        "request_id",
+        "receipt_ref",
+        "snapshot_ref",
+        "demand_ref",
+        "repository_refs",
+        "native_scopes",
+        "clock",
+        "selection",
+        "payloads",
+        "dependency_closure",
+        "generated_criteria_echo",
+        "refresh",
+        "issuer_and_use",
+        "state",
+        "values_read_refs"
+      ],
+      "missing_required_count": 15,
+      "disallowed_extra_keys": [
+        "selection_digest",
+        "provider",
+        "world",
+        "selection_state",
+        "binding_generation",
+        "publication_generation"
+      ],
+      "source": "port/adapter.py:47-55",
+      "classification": "RED_SCHEMA_CONTRACT_INCOMPATIBLE"
+    },
+    "possibility": {
+      "required_count": 20,
+      "candidate_emitted_keys": [
+        "contract",
+        "universe",
+        "sampling_unit",
+        "release",
+        "target",
+        "direction",
+        "ordered_condition_chain",
+        "support",
+        "minority",
+        "routing",
+        "risk_set",
+        "weight",
+        "uncertainty",
+        "model_use",
+        "permission_ceiling",
+        "walkback",
+        "values_read",
+        "values_read_by_consumers",
+        "n9_snapshot_ref",
+        "replay_digest"
+      ],
+      "missing_required": [
+        "receipt_ref",
+        "world_snapshot_ref",
+        "world_binding_requirement",
+        "target_ref",
+        "source_universe_ref",
+        "release_ref",
+        "same_respondent_joint_ref",
+        "sampling_unit_ref",
+        "response_routing_ref",
+        "options",
+        "ordered_steps",
+        "model_and_use",
+        "composition_mode",
+        "alternatives",
+        "epistemic_grade",
+        "state",
+        "values_read_refs",
+        "replay_ref"
+      ],
+      "missing_required_count": 18,
+      "source": "port/provider_a.py:160-193; port/adapter.py:57-62",
+      "classification": "RED_SCHEMA_CONTRACT_INCOMPATIBLE"
+    },
+    "qualification": "Independent source-literal/static schema comparison; full Draft202012Validator against actual produced Python objects NOT_EXECUTED, but missing required fields evident from complete literal constructors."
+  },
+  "independently_derived_source_witnesses": [
+    {
+      "id": "I2_01",
+      "class": "RED_SCHEMA_CONTRACT_INCOMPATIBLE",
+      "witness": "Both emitted receipts are not the original frozen Draft 2020-12 strict oneOf wire shapes.",
+      "hostile": "test_01_two_exact_frozen_receipt_shapes_not_just_same_names",
+      "status": "SOURCE_LEVEL_RED_NOT_EXECUTED"
+    },
+    {
+      "id": "I2_02",
+      "class": "RED_UNISSUED_REVERSE_ROLE_SCOPE",
+      "witness": "Caller copies permitted synthetic issuer string, inserts forged grant_id, wrong scope and target; provider checks only issuer string, forward risk/denominator and operation.",
+      "source": "port/provider_a.py:195-225",
+      "hostile": "test_05_caller_forged_issuer_name_and_wrong_target_scope_must_refuse",
+      "status": "SOURCE_LEVEL_RED_NOT_EXECUTED"
+    },
+    {
+      "id": "I2_03",
+      "class": "RED_TRANSITIVE_USE_PERMISSION_BYPASS",
+      "witness": "Adapter.run never calls provider.revoked_use; revocation enforced only in tests explicitly invoking method.",
+      "source": "port/adapter.py:34-84; port/provider_a.py:241-251",
+      "hostile": "test_03_revoked_world_read_must_block_actual_adapter_consumer",
+      "status": "SOURCE_LEVEL_RED_NOT_EXECUTED"
+    },
+    {
+      "id": "I2_04",
+      "class": "RED_HISTORICAL_KNOWLEDGE_LEAKAGE",
+      "witness": "Published 2010, as_of 2009, mode KNOWLEDGE_AS_OF, and adapter serves the rule; validation only checks axes distinctness.",
+      "source": "port/world_baseline.py:44-52; port/world_laws.py:183-193",
+      "hostile": "test_02_demand_asof_2009_must_not_serve_rule_published_2010_as_known",
+      "status": "SOURCE_LEVEL_RED_NOT_EXECUTED"
+    },
+    {
+      "id": "I2_05",
+      "class": "RED_PARTIAL_DEFERRED_NOT_ENFORCED",
+      "witness": "Partial selection_state still served by adapter; K10_21 manually raises in test.",
+      "source": "port/adapter.py:34-83; port/test_k10_structural_conservation.py:239",
+      "hostile": "test_04_partial_selected_world_must_not_become_positive_bundle",
+      "status": "SOURCE_LEVEL_RED_NOT_EXECUTED"
+    },
+    {
+      "id": "I2_06",
+      "class": "RED_EMPIRICAL_WORLD_SUPPORT_AUTHORITY",
+      "witness": "Possibility support taken from WORLD, not empirical cells; changing empirical YES/NO 54/6 to 50/10 is unreflected.",
+      "source": "port/provider_a.py:160-195",
+      "hostile": "test_06_empirical_cells_cannot_silently_inherit_independent_world_support",
+      "status": "SOURCE_LEVEL_RED_NOT_EXECUTED"
+    },
+    {
+      "id": "I2_07",
+      "class": "RED_SEMANTIC_EQUIVALENCE_PROJECTION_INCOMPLETE",
+      "witness": "Only projection key whitelist compared; new semantically meaningful fields ignored.",
+      "source": "port/contracts.py:121-198",
+      "hostile": "test_08_an_unchecked_new_semantic_field_cannot_disappear_in_equivalence",
+      "status": "SOURCE_LEVEL_RED_NOT_EXECUTED"
+    },
+    {
+      "id": "I2_08",
+      "class": "RED_PUBLICATION_REFRESH_WITHOUT_SOURCE_BOUNDARY",
+      "witness": "H2 publication increments counter but not source-release or effective/pub boundary.",
+      "source": "port/provider_a.py:237-239",
+      "hostile": "test_09_publication_successor_must_rebind_to_actual_changed_source_boundary",
+      "status": "SOURCE_LEVEL_RED_NOT_EXECUTED"
+    },
+    {
+      "id": "I2_09",
+      "class": "POSITIVE_PATH_SOURCE_LEVEL_ONLY",
+      "witness": "Both consumers copy public-route quota from selected world values, mutual route independently unchanged under public quota mutation.",
+      "source": "port/consumers.py; port/world_baseline.py",
+      "hostile": "test_07_numeric_world_route_value_changes_both_readers_not_unrelated_route",
+      "status": "POSITIVE_PREDICTION_NOT_EXECUTED"
+    }
+  ],
+  "host_probe_file": {
+    "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-I2-SC0-INDEPENDENT-PORT-COURT-R1/repro/test_i2_sc0_hostiles.py",
+    "status": "AUTHORED_NOT_EXECUTED",
+    "required_command": "SC0_PORT_ROOT=/absolute/pinned/candidate/WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1 python -m pytest -q repro/test_i2_sc0_hostiles.py --junitxml=i2_hostiles.junit.xml",
+    "is_frozen_original_K9_K10": false
+  },
+  "independent_execution": {
+    "runtime_probe": "Python, pytest, git and jsonschema observed available; no isolated exact private GitHub code filesystem; private github.com inaccessible to container direct clone; connector text cannot be handed to runtime as qualified import closure.",
+    "python_version": "3.13.5",
+    "pytest_version": "9.0.2",
+    "git_version": "2.47.3",
+    "jsonschema_version": "4.26.0",
+    "private_clone": "NOT_AVAILABLE_UNRESOLVED_HOST",
+    "staged_import_closure": "NOT_MATERIALIZED",
+    "qualified_imported_module_file_paths": [],
+    "qualified_recomputed_local_git_sha1": 0,
+    "suites": [
+      {
+        "name": "frozen K9 provider swap 8",
+        "independently_executed": 0,
+        "expected_count": 8,
+        "state": "NOT_EXECUTED",
+        "stdout": null,
+        "stderr": null,
+        "junit": null,
+        "exit_code": null
+      },
+      {
+        "name": "frozen K10 structural 28",
+        "independently_executed": 0,
+        "expected_count": 28,
+        "state": "NOT_EXECUTED",
+        "stdout": null,
+        "stderr": null,
+        "junit": null,
+        "exit_code": null
+      },
+      {
+        "name": "original independent HQ297 PE reviewer 13",
+        "independently_executed": 0,
+        "expected_count": 13,
+        "state": "NOT_EXECUTED",
+        "stdout": null,
+        "stderr": null,
+        "junit": null,
+        "exit_code": null
+      },
+      {
+        "name": "PE author 21",
+        "independently_executed": 0,
+        "expected_count": 21,
+        "state": "NOT_EXECUTED",
+        "stdout": null,
+        "stderr": null,
+        "junit": null,
+        "exit_code": null
+      },
+      {
+        "name": "N10E 43 plus C1 13",
+        "independently_executed": 0,
+        "expected_count": 56,
+        "state": "NOT_EXECUTED",
+        "stdout": null,
+        "stderr": null,
+        "junit": null,
+        "exit_code": null
+      },
+      {
+        "name": "I2 hostile 10",
+        "independently_executed": 0,
+        "expected_count": 10,
+        "state": "NOT_EXECUTED",
+        "stdout": null,
+        "stderr": null,
+        "junit": null,
+        "exit_code": null
+      }
+    ],
+    "owner_quota": "UNKNOWN",
+    "paid_execution": false
+  },
+  "author_artifact_inspection_not_independent_execution": [
+    {
+      "family": "SC0 K9 8 and K10 28",
+      "reported": "36 passed, 0 failed",
+      "junit_blob": "2d9c3350eef73ca1263371a01761eb41ca631a23",
+      "basis": "Author GitHub JUnit testcases and counters; not re-executed by I2"
+    },
+    {
+      "family": "PE-boundary reviewer 13",
+      "reported": "4 passed, 9 failed against original PE candidate",
+      "junit_blob": "4dfa3c194d00e9a2f97a07c342f12d5084a011e4",
+      "basis": "Author GitHub JUnit 13 tests/9 failures inspected; cannot map these as SC0 acceptance"
+    },
+    {
+      "family": "N10E 43 + C1 13",
+      "reported": "56 passed author execution; not independent",
+      "junit_blob": "1267fd9ac91c0c5de672736ce8dbb5c93c2a5557"
+    },
+    {
+      "family": "PE author 21",
+      "reported": "21 passed author execution; not independent",
+      "junit_blob": "70118bd679ff6b52964608769fa2510b3d8cb56a"
+    }
+  ],
+  "owner_stage_limits": [
+    "NOT_OPERATIVE_N9",
+    "NOT_ISSUED_N10W_MODEL_USE",
+    "NOT_SOURCE_AUTHORIZED_REVERSE_ROLE",
+    "NOT_ORIGINAL_SURVEY_DATA_EXECUTION",
+    "NO_CANONICAL_ADOPTION",
+    "NO_ACTOR",
+    "NO_N12_WAKE",
+    "NO_PHYSICAL_WELD"
+  ],
+  "disposition_qualification": "RED despite no independently executed full battery because original strict schema and multiple guard non-calls are inspectable against pinned exact code. A qualified runtime remains a separate evidence deficit; do not pretend fail counts for unrun hostiles."
+}

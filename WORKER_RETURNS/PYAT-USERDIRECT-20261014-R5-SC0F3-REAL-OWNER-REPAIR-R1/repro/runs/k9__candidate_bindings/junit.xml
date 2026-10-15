@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="7" skipped="0" tests="8" time="7.991" timestamp="2026-10-14T22:47:10.881922-04:00" hostname="Matthews-MBP.lan"><testcase classname="inputs.port.port.test_k9_provider_swap" name="test_k9_01_two_providers_same_meaning" time="3.042"><failure message="KeyError: 'world_projection_diffs'">WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k9_provider_swap.py:43: in test_k9_01_two_providers_same_meaning
+    assert report["world_projection_diffs"] == []
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'world_projection_diffs'</failure></testcase><testcase classname="inputs.port.port.test_k9_provider_swap" name="test_k9_02_independent_nonparent_consumer" time="0.001"><failure message="TypeError: TwoContractAdapter.run() got an unexpected keyword argument 'consumer_ids'">WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k9_provider_swap.py:55: in test_k9_02_independent_nonparent_consumer
+    bundle = TwoContractAdapter(build_provider_a()).run(
+E   TypeError: TwoContractAdapter.run() got an unexpected keyword argument 'consumer_ids'</failure></testcase><testcase classname="inputs.port.port.test_k9_provider_swap" name="test_k9_03_id_reorder_and_stage_rename_equivalent" time="1.174"><failure message="KeyError: 'stage_names'">WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k9_provider_swap.py:81: in test_k9_03_id_reorder_and_stage_rename_equivalent
+    assert provider_b.physical_lineage["stage_names"] == ["renamed_data", "join_index"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'stage_names'</failure></testcase><testcase classname="inputs.port.port.test_k9_provider_swap" name="test_k9_04_not_equivalent_contrast_rejected" time="0.010"><failure message="AssertionError: assert 'NO_CURRENT_OR_NOT_KNOWN_ASOF' == 'REJECT_CARDI...TOPOLOGY_LOSS'&#10;  &#10;  - REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS&#10;  + NO_CURRENT_OR_NOT_KNOWN_ASOF">WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k9_provider_swap.py:99: in test_k9_04_not_equivalent_contrast_rejected
+    assert exc.value.code == "REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS"
+E   AssertionError: assert 'NO_CURRENT_OR_NOT_KNOWN_ASOF' == 'REJECT_CARDI...TOPOLOGY_LOSS'
+E     
+E     - REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS
+E     + NO_CURRENT_OR_NOT_KNOWN_ASOF</failure></testcase><testcase classname="inputs.port.port.test_k9_provider_swap" name="test_k9_05_modelled_vs_observed_refuses_grade_promotion" time="0.002" /><testcase classname="inputs.port.port.test_k9_provider_swap" name="test_k9_06_forward_reverse_held_without_scoped_issuer" time="1.308"><failure message="AttributeError: 'ProviderA' object has no attribute 'request_role_reversal'">WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k9_provider_swap.py:131: in test_k9_06_forward_reverse_held_without_scoped_issuer
+    provider.request_role_reversal(selection, possibility, None)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'ProviderA' object has no attribute 'request_role_reversal'</failure></testcase><testcase classname="inputs.port.port.test_k9_provider_swap" name="test_k9_07_permissions_denied_use_no_cached_bypass" time="1.049"><failure message="TypeError: 'NoneType' object is not subscriptable">WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k9_provider_swap.py:153: in test_k9_07_permissions_denied_use_no_cached_bypass
+    assert permitted["state"] == "PERMITTED"
+           ^^^^^^^^^^^^^^^^^^
+E   TypeError: 'NoneType' object is not subscriptable</failure></testcase><testcase classname="inputs.port.port.test_k9_provider_swap" name="test_k9_08_two_channel_refresh_two_independent_successors" time="1.284"><failure message="KeyError: 'selection_digest'">WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/port/port/test_k9_provider_swap.py:174: in test_k9_08_two_channel_refresh_two_independent_successors
+    first_digest = first["world_receipt"]["selection_digest"]
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'selection_digest'</failure></testcase></testsuite></testsuites>

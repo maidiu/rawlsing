@@ -1,0 +1,89 @@
+{
+  "schema": "RC0_SEPARATE_REVIEW_AND_CROSS_OWNER_ACTIONS@1",
+  "overall_recommendation": "CHANGES_REQUIRED",
+  "adoption_issued": false,
+  "reviewer_role": "Independent RC0 interface reviewer, not HQ/issuer/author/adopter",
+  "independence": {
+    "candidate_author": "Separate HQ298 SC0 implementation worker",
+    "PE_and_HQ297_K9_authors": "Separate predecessor workers",
+    "this_chat_prior_work": "PV identity review and unadopted V2R identity/role repair, neither imported nor reviewed here",
+    "current_candidate_edits": false,
+    "method": "Source-aware independent frozen-expectation and executable hostile review; not claimed blind to source code",
+    "promotion_owner": "Competent Pyat/Sorok interface owners and HQ intake, distinct from implementer; this recommendation is not adoption"
+  },
+  "actions": [
+    {
+      "id": "RC0-A01",
+      "severity": "BLOCKS_STRICT_SC0_INTERFACE_ACCEPTANCE",
+      "accountable_owner": "SC0 adapter plus provider permission owner",
+      "finding": "Both adapter entrypoints return world values and both consumers after WORLD_READ revocation, although explicit revoked_use guard can refuse.",
+      "evidence": ["repro/observations/denied_ProviderA.json", "repro/observations/denied_ProviderB.json", "repro/independent.xml"],
+      "required_next_evidence": "Guard the actual selection/values-read/consumer path; preserve lawful separately permitted empirical-only scope without serving forbidden world values. Independently re-run K9_07/K10_20 and adapter-level tests.",
+      "disposition": "OPEN_IMPLEMENTATION_DEFECT"
+    },
+    {
+      "id": "RC0-A02",
+      "severity": "BLOCKS_DEMAND_RELATIVE_COMPLETE_CLAIM",
+      "accountable_owner": "SC0 demand/selection adapter owner, eventual N9 issuer",
+      "finding": "An unavailable foreign scope is returned as COMPLETE with the same municipality world. Demand is recorded by provider but not resolved or conserved into the compact world receipt.",
+      "evidence": ["repro/observations/demand_ProviderA.json", "repro/observations/demand_ProviderB.json"],
+      "required_next_evidence": "Bind declared demand to selected source closure and explicit missing/partial states; no test-body manual raise substituted for the candidate gate.",
+      "disposition": "OPEN_IMPLEMENTATION_AND_CONTRACT_GAP"
+    },
+    {
+      "id": "RC0-A03",
+      "severity": "BLOCKS_KNOWLEDGE_ASOF_CLAIM",
+      "accountable_owner": "SC0 clock/currentness contract and provider owners",
+      "finding": "Baseline KNOWLEDGE_AS_OF=2009 consumes publication=2010 values. Existing validator tests unequal timestamp labels, not availability ordering. Original K10_15 hostile procedure was not reproduced by the author's equality mutation.",
+      "evidence": ["repro/observations/clocks_ProviderA.json", "repro/observations/clocks_ProviderB.json", "04_FROZEN_CASE_COVERAGE.json"],
+      "required_next_evidence": "Declare source availability/knowledge rules and any independently warranted prior-knowledge exception; check the genuine historical lookahead. Keep coincident timestamps semantically distinct without inventing a universal unequal-values rule.",
+      "disposition": "OPEN_FIXTURE_AND_IMPLEMENTATION_SEMANTIC_DEFECT"
+    },
+    {
+      "id": "RC0-A04",
+      "severity": "BLOCKS_ROLE_REVERSAL_QUALIFICATION",
+      "accountable_owner": "Pyat PE and SC0 role/query/operation owners with independent scientific reviewer",
+      "finding": "PE accepts arbitrary non-null reversal AuthorityRef. Port rejects an obvious foreign issuer but accepts matching issuer with foreign scope/target; scope is not dereferenced and no reversed calculation occurs.",
+      "evidence": ["03_NINE_PE_REDS_ADJUDICATED.json", "repro/observations/reverse_ProviderA_scope.json", "repro/observations/reverse_ProviderB_target.json"],
+      "required_next_evidence": "Bind a separately competent reversed request/target topology/risk/denominator and release/use scope; test forged references, not only None and wrong issuer labels. Sourcefree grants remain hypothetical; no new scientific reversal grant is issued.",
+      "disposition": "OPEN_CANDIDATE_VALIDATION_DEFECT; REAL_SOURCE_AUTHORITY_SEPARATELY_UNISSUED"
+    },
+    {
+      "id": "RC0-A05",
+      "severity": "BLOCKS_FROZEN_ENVELOPE_AND_ZERO_LOSS_CLAIM",
+      "accountable_owner": "SC0 contract/adapter and original-oracle owner",
+      "finding": "Both raw receipts fail the pinned draft-2020-12 envelope. Four original negative scopes are absent and DENIED_USE is renamed DENIED. Current tests reproduce selected error classes, not complete original contract conservation.",
+      "evidence": ["repro/observations/schema.json", "repro/observations/negative_states.json", "04_FROZEN_CASE_COVERAGE.json"],
+      "required_next_evidence": "Provide a documented lossless versioned mapping or conforming receipt; restore complete negative identities/recoverability, explicit currentness/proxy/unknown/unbound states and original role/source/clock metadata. Do not silently edit frozen oracles to match implementation.",
+      "disposition": "OPEN_CONTRACT_AND_INFORMATION_LOSS_GAP"
+    },
+    {
+      "id": "RC0-A06",
+      "severity": "BLOCKS_IMPORTED_OWNER_COMPOSITION_CLAIM",
+      "accountable_owner": "SC0/PE/N10E-C1 cross-owner adapter owners",
+      "finding": "Both fixture port runs make zero calls into the pinned PE/C1/N10E modules. Separate PE control calls C1. Running owner suites alongside a static empirical-hint port is not a connected imported-owner witness.",
+      "evidence": ["repro/connection_probe.json", "repro/connection_probe_execution.json"],
+      "required_next_evidence": "Add an explicitly commissioned TEST_ONLY producer-to-port bridge with actual computed empirical geometry/ref/value consumption; preserve source/wave/risk/conditioner/denominator lineage. No substitute estimator or inferred operative N9/N10W authority.",
+      "disposition": "OPEN_INTEGRATION_DEPENDENCY"
+    },
+    {
+      "id": "RC0-A07",
+      "severity": "PROOF_LIMIT_AND_TEST_REPAIR",
+      "accountable_owner": "SC0 acceptance-test owner and independent reviewer",
+      "finding": "K10_21 and K10_28 raise their own fallback errors. Explicit freshness helper is distinct from adapter integration. Two-receipt round-trip does not validate outer consumer-effect transport. Some strict PE tests incorrectly treat broader SC0 integration obligations as PE unit defects.",
+      "evidence": ["04_FROZEN_CASE_COVERAGE.json", "03_NINE_PE_REDS_ADJUDICATED.json", "repro/facade_probe.json", "repro/observations/refresh_guard.json"],
+      "required_next_evidence": "Assert candidate entrypoints and exact semantic outcomes; keep original classes and all required predicates visible as PASS/RED/NOT_REACHED. Correct unit-level blame without waiving full-port dependencies. No stale-digest reuse was demonstrated where adapter recomputed a new digest.",
+      "disposition": "OPEN_TEST_AND_CLAIM_REPAIR"
+    },
+    {
+      "id": "RC0-A08",
+      "severity": "AUTHORITY_CEILING",
+      "accountable_owner": "Competent original-source/N9/model-use/N11/N12/actor owners",
+      "finding": "Only synthetic worlds/fixtures and pinned owner code were executed. No operative N9 issuer, N10W joint-use/calibration authority, original survey, model behavior, V3 actor or full-estate completion is established.",
+      "evidence": ["00_RETURN.md", "environment_passport_delta.json"],
+      "required_next_evidence": "Separate actual source/use and operative service grants/products, distinct N11/N12 and actor/weld permissions. Current local environment capability is not authority.",
+      "disposition": "HELD_DEPENDENT_PROMOTION_ONLY; UNAFFECTED_SOURCEFREE_WORK_MAY_CONTINUE"
+    }
+  ],
+  "escalation": "No accepted-authority contradiction or whole-machine seam rewrite proved; ordinary candidate repairs and cross-owner decisions remain at I2. I3/Astra not invoked."
+}

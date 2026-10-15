@@ -1,0 +1,138 @@
+FF....FFFFFFFF.FFFF..FFFF                                                [100%]
+=================================== FAILURES ===================================
+_ test_actual_value_intervention_changes_both_consumers_and_only_affected_route[ProviderA] _
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:24: in test_actual_value_intervention_changes_both_consumers_and_only_affected_route
+    after=TwoContractAdapter(provider(world=world)).run()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/sc0f3/adapter.py:27: in run
+    selection=validate(selection,demand,self._prior)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/sc0f3/gates.py:57: in validate
+    check_earlier_knowledge(w,w.get('earlier_knowledge_evidence_ref'),asof)
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/sc0f3/fixture_owner.py:96: in check_earlier_knowledge
+    require(evidence_id == 'TEST_ONLY:earlier-publication:2008',
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/sc0f3/common.py:43: in require
+    raise Hold(code, detail)
+E   sc0f3.common.Hold: NO_CURRENT_OR_NOT_KNOWN_ASOF: Earlier evidence not in owner fixture
+_ test_actual_value_intervention_changes_both_consumers_and_only_affected_route[ProviderB] _
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:24: in test_actual_value_intervention_changes_both_consumers_and_only_affected_route
+    after=TwoContractAdapter(provider(world=world)).run()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/sc0f3/adapter.py:27: in run
+    selection=validate(selection,demand,self._prior)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/sc0f3/gates.py:57: in validate
+    check_earlier_knowledge(w,w.get('earlier_knowledge_evidence_ref'),asof)
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/sc0f3/fixture_owner.py:96: in check_earlier_knowledge
+    require(evidence_id == 'TEST_ONLY:earlier-publication:2008',
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/sc0f3/common.py:43: in require
+    raise Hold(code, detail)
+E   sc0f3.common.Hold: NO_CURRENT_OR_NOT_KNOWN_ASOF: Earlier evidence not in owner fixture
+_______ test_knowledge_asof_cannot_consume_future_publication[ProviderA] _______
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:71: in test_knowledge_asof_cannot_consume_future_publication
+    clock=result['world_receipt']['world']['time_axes']
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'world'
+_______ test_knowledge_asof_cannot_consume_future_publication[ProviderB] _______
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:71: in test_knowledge_asof_cannot_consume_future_publication
+    clock=result['world_receipt']['world']['time_axes']
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'world'
+_ test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[issuer-ProviderA] _
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:82: in test_matching_issuer_string_cannot_authorize_foreign_scope_or_target
+    try:result=p.request_role_reversal(bundle['world_receipt'],bundle['possibility_receipt'],grant)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'ProviderA' object has no attribute 'request_role_reversal'
+_ test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[issuer-ProviderB] _
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:82: in test_matching_issuer_string_cannot_authorize_foreign_scope_or_target
+    try:result=p.request_role_reversal(bundle['world_receipt'],bundle['possibility_receipt'],grant)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'ProviderB' object has no attribute 'request_role_reversal'
+_ test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderA] _
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:82: in test_matching_issuer_string_cannot_authorize_foreign_scope_or_target
+    try:result=p.request_role_reversal(bundle['world_receipt'],bundle['possibility_receipt'],grant)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'ProviderA' object has no attribute 'request_role_reversal'
+_ test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderB] _
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:82: in test_matching_issuer_string_cannot_authorize_foreign_scope_or_target
+    try:result=p.request_role_reversal(bundle['world_receipt'],bundle['possibility_receipt'],grant)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'ProviderB' object has no attribute 'request_role_reversal'
+_ test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderA] _
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:82: in test_matching_issuer_string_cannot_authorize_foreign_scope_or_target
+    try:result=p.request_role_reversal(bundle['world_receipt'],bundle['possibility_receipt'],grant)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'ProviderA' object has no attribute 'request_role_reversal'
+_ test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderB] _
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:82: in test_matching_issuer_string_cannot_authorize_foreign_scope_or_target
+    try:result=p.request_role_reversal(bundle['world_receipt'],bundle['possibility_receipt'],grant)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'ProviderB' object has no attribute 'request_role_reversal'
+____________ test_full_original_negative_state_distinctions_survive ____________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:103: in test_full_original_negative_state_distinctions_survive
+    result=TwoContractAdapter(ProviderA()).run();actual=result['world_receipt']['world']['negative_states']
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'world'
+______ test_h1_f1_f2_h3_and_both_h2_successors_preserve_explicit_deferral ______
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:110: in test_h1_f1_f2_h3_and_both_h2_successors_preserve_explicit_deferral
+    p=ProviderA();a=TwoContractAdapter(p).run();w=a['world_receipt']['world']
+                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'world'
+___ test_changed_binding_guard_is_real_but_adapter_recomputes_new_selection ____
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:124: in test_changed_binding_guard_is_real_but_adapter_recomputes_new_selection
+    p._store['stage_two']['generated_binding_echo']['caller_fact']='RC0_CHANGED'
+    ^^^^^^^^
+E   AttributeError: 'ProviderA' object has no attribute '_store'
+__ test_baseline_providers_equal_without_using_candidate_comparison_function ___
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:135: in test_baseline_providers_equal_without_using_candidate_comparison_function
+    wa=copy.deepcopy(a['world_receipt']);wb=copy.deepcopy(b['world_receipt']);wa.pop('provider');wb.pop('provider')
+                                                                              ^^^^^^^^^^^^^^^^^^
+E   KeyError: 'provider'
+_ test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS-ProviderA] _
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:153: in test_three_frozen_mutation_classes_at_adapter_without_expected_class_import
+    assert e.value.code==code
+E   AssertionError: assert 'NO_CURRENT_OR_NOT_KNOWN_ASOF' == 'REJECT_CARDI...TOPOLOGY_LOSS'
+E     
+E     - REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS
+E     + NO_CURRENT_OR_NOT_KNOWN_ASOF
+_ test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS-ProviderB] _
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:153: in test_three_frozen_mutation_classes_at_adapter_without_expected_class_import
+    assert e.value.code==code
+E   AssertionError: assert 'NO_CURRENT_OR_NOT_KNOWN_ASOF' == 'REJECT_CARDI...TOPOLOGY_LOSS'
+E     
+E     - REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS
+E     + NO_CURRENT_OR_NOT_KNOWN_ASOF
+_ test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[F2-REJECT_F2_PREREQUISITE_LOSS-ProviderA] _
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:153: in test_three_frozen_mutation_classes_at_adapter_without_expected_class_import
+    assert e.value.code==code
+E   AssertionError: assert 'NO_CURRENT_OR_NOT_KNOWN_ASOF' == 'REJECT_F2_PREREQUISITE_LOSS'
+E     
+E     - REJECT_F2_PREREQUISITE_LOSS
+E     + NO_CURRENT_OR_NOT_KNOWN_ASOF
+_ test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[F2-REJECT_F2_PREREQUISITE_LOSS-ProviderB] _
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py:153: in test_three_frozen_mutation_classes_at_adapter_without_expected_class_import
+    assert e.value.code==code
+E   AssertionError: assert 'NO_CURRENT_OR_NOT_KNOWN_ASOF' == 'REJECT_F2_PREREQUISITE_LOSS'
+E     
+E     - REJECT_F2_PREREQUISITE_LOSS
+E     + NO_CURRENT_OR_NOT_KNOWN_ASOF
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_actual_value_intervention_changes_both_consumers_and_only_affected_route[ProviderA]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_actual_value_intervention_changes_both_consumers_and_only_affected_route[ProviderB]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_knowledge_asof_cannot_consume_future_publication[ProviderA]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_knowledge_asof_cannot_consume_future_publication[ProviderB]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[issuer-ProviderA]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[issuer-ProviderB]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderA]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderB]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderA]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderB]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_full_original_negative_state_distinctions_survive
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_h1_f1_f2_h3_and_both_h2_successors_preserve_explicit_deferral
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_changed_binding_guard_is_real_but_adapter_recomputes_new_selection
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_baseline_providers_equal_without_using_candidate_comparison_function
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS-ProviderA]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS-ProviderB]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[F2-REJECT_F2_PREREQUISITE_LOSS-ProviderA]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/rc0/reviewer_tests/test_rc0_hostile.py::test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[F2-REJECT_F2_PREREQUISITE_LOSS-ProviderB]
+18 failed, 7 passed in 18.55s

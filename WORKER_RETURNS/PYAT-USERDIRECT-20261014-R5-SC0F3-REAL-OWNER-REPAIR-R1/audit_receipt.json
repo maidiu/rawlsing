@@ -1,0 +1,473 @@
+{
+  "frozen_input_files": 208,
+  "import_rows_checked": 418,
+  "final_candidate_tests": 76,
+  "full_native_proof_runs": 6,
+  "proof_pass": true,
+  "original_bytes_unchanged": true,
+  "superseded_candidate_imports": [
+    {
+      "run": "k10__candidate_bindings",
+      "module": "sc0f3.adapter",
+      "recorded_sha256": "19d801fc5ebf09fa79c97957e54da5cfd61b17f7a71b8cd0d65b0f244d9dbbf7",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "k10__candidate_bindings",
+      "module": "sc0f3.common",
+      "recorded_sha256": "fc69010f497249513179bf8f5018ca842446204f8b761a5562ded897e8b540b8",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "k10__candidate_bindings",
+      "module": "sc0f3.fixture_owner",
+      "recorded_sha256": "dac444179982f379a803294832c9be204bcad5f1cb9965479c2bce367d7add3b",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "k10__candidate_bindings",
+      "module": "sc0f3.gates",
+      "recorded_sha256": "174569b4bd4598943662e81485c7e2dcaeb78f8f347ceee99c95d13e7c2dd410",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "k10__candidate_bindings",
+      "module": "sc0f3.producer",
+      "recorded_sha256": "1f8949d0696eb7e20db5a5d5e525448c4c7907afe942fed6641d7da951020d8b",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "k10__candidate_bindings",
+      "module": "sc0f3.providers",
+      "recorded_sha256": "92293db7808ff0713bc1d37f14e980d3c39e15c67a6954c45dc7316a1082319d",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "k10__candidate_bindings",
+      "module": "sc0f3.receipts",
+      "recorded_sha256": "d53d700de031d6f29825c4844d505250918be1d75acfab151238d9825390fe56",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate",
+      "module": "sc0f3.adapter",
+      "recorded_sha256": "05c8f846a00ead47eb3dfb1f433609da75eac2db074e9b4b30b4013644e0bdd7",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate",
+      "module": "sc0f3.common",
+      "recorded_sha256": "fc69010f497249513179bf8f5018ca842446204f8b761a5562ded897e8b540b8",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate",
+      "module": "sc0f3.fixture_owner",
+      "recorded_sha256": "2d48f0d972912c817f20ff4147a3e7f683dd2203094e80c5abf0cc957ee241a9",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate",
+      "module": "sc0f3.gates",
+      "recorded_sha256": "80448e720cdd0294fa8c5a744eeff001a47d94d52b5aead878b3c28e6b3d6340",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate",
+      "module": "sc0f3.producer",
+      "recorded_sha256": "1f8949d0696eb7e20db5a5d5e525448c4c7907afe942fed6641d7da951020d8b",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate",
+      "module": "sc0f3.providers",
+      "recorded_sha256": "92293db7808ff0713bc1d37f14e980d3c39e15c67a6954c45dc7316a1082319d",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate",
+      "module": "sc0f3.receipts",
+      "recorded_sha256": "fc0fa98d61fdc8039cbf2acef7fa7d3510b59ad5fab56cdaa65541c8ef0dc8c7",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_i2__candidate_bindings",
+      "module": "sc0f3.adapter",
+      "recorded_sha256": "19d801fc5ebf09fa79c97957e54da5cfd61b17f7a71b8cd0d65b0f244d9dbbf7",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_i2__candidate_bindings",
+      "module": "sc0f3.common",
+      "recorded_sha256": "fc69010f497249513179bf8f5018ca842446204f8b761a5562ded897e8b540b8",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_i2__candidate_bindings",
+      "module": "sc0f3.fixture_owner",
+      "recorded_sha256": "dac444179982f379a803294832c9be204bcad5f1cb9965479c2bce367d7add3b",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_i2__candidate_bindings",
+      "module": "sc0f3.gates",
+      "recorded_sha256": "174569b4bd4598943662e81485c7e2dcaeb78f8f347ceee99c95d13e7c2dd410",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_i2__candidate_bindings",
+      "module": "sc0f3.producer",
+      "recorded_sha256": "1f8949d0696eb7e20db5a5d5e525448c4c7907afe942fed6641d7da951020d8b",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_i2__candidate_bindings",
+      "module": "sc0f3.providers",
+      "recorded_sha256": "92293db7808ff0713bc1d37f14e980d3c39e15c67a6954c45dc7316a1082319d",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_i2__candidate_bindings",
+      "module": "sc0f3.receipts",
+      "recorded_sha256": "d53d700de031d6f29825c4844d505250918be1d75acfab151238d9825390fe56",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__r3",
+      "module": "sc0f3.adapter",
+      "recorded_sha256": "303acb2a32d59799e006105fb5c9a0a8d5caa8d00d0ede100d6fa402a7f3cc6f",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__r3",
+      "module": "sc0f3.common",
+      "recorded_sha256": "fc69010f497249513179bf8f5018ca842446204f8b761a5562ded897e8b540b8",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__r3",
+      "module": "sc0f3.fixture_owner",
+      "recorded_sha256": "789f97971d6da64cef7ed150dbe271a72565ab63fe6161a157fdb698687cce5f",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__r3",
+      "module": "sc0f3.gates",
+      "recorded_sha256": "174569b4bd4598943662e81485c7e2dcaeb78f8f347ceee99c95d13e7c2dd410",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__r3",
+      "module": "sc0f3.producer",
+      "recorded_sha256": "1f8949d0696eb7e20db5a5d5e525448c4c7907afe942fed6641d7da951020d8b",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__r3",
+      "module": "sc0f3.providers",
+      "recorded_sha256": "92293db7808ff0713bc1d37f14e980d3c39e15c67a6954c45dc7316a1082319d",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__r3",
+      "module": "sc0f3.receipts",
+      "recorded_sha256": "d53d700de031d6f29825c4844d505250918be1d75acfab151238d9825390fe56",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__r4",
+      "module": "sc0f3.adapter",
+      "recorded_sha256": "303acb2a32d59799e006105fb5c9a0a8d5caa8d00d0ede100d6fa402a7f3cc6f",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__r4",
+      "module": "sc0f3.common",
+      "recorded_sha256": "fc69010f497249513179bf8f5018ca842446204f8b761a5562ded897e8b540b8",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__r4",
+      "module": "sc0f3.fixture_owner",
+      "recorded_sha256": "dac444179982f379a803294832c9be204bcad5f1cb9965479c2bce367d7add3b",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__r4",
+      "module": "sc0f3.gates",
+      "recorded_sha256": "174569b4bd4598943662e81485c7e2dcaeb78f8f347ceee99c95d13e7c2dd410",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__r4",
+      "module": "sc0f3.producer",
+      "recorded_sha256": "1f8949d0696eb7e20db5a5d5e525448c4c7907afe942fed6641d7da951020d8b",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__r4",
+      "module": "sc0f3.providers",
+      "recorded_sha256": "92293db7808ff0713bc1d37f14e980d3c39e15c67a6954c45dc7316a1082319d",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__r4",
+      "module": "sc0f3.receipts",
+      "recorded_sha256": "d53d700de031d6f29825c4844d505250918be1d75acfab151238d9825390fe56",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_rc0__candidate_bindings",
+      "module": "sc0f3.adapter",
+      "recorded_sha256": "19d801fc5ebf09fa79c97957e54da5cfd61b17f7a71b8cd0d65b0f244d9dbbf7",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_rc0__candidate_bindings",
+      "module": "sc0f3.common",
+      "recorded_sha256": "fc69010f497249513179bf8f5018ca842446204f8b761a5562ded897e8b540b8",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_rc0__candidate_bindings",
+      "module": "sc0f3.fixture_owner",
+      "recorded_sha256": "dac444179982f379a803294832c9be204bcad5f1cb9965479c2bce367d7add3b",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_rc0__candidate_bindings",
+      "module": "sc0f3.gates",
+      "recorded_sha256": "174569b4bd4598943662e81485c7e2dcaeb78f8f347ceee99c95d13e7c2dd410",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_rc0__candidate_bindings",
+      "module": "sc0f3.producer",
+      "recorded_sha256": "1f8949d0696eb7e20db5a5d5e525448c4c7907afe942fed6641d7da951020d8b",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_rc0__candidate_bindings",
+      "module": "sc0f3.providers",
+      "recorded_sha256": "92293db7808ff0713bc1d37f14e980d3c39e15c67a6954c45dc7316a1082319d",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_rc0__candidate_bindings",
+      "module": "sc0f3.receipts",
+      "recorded_sha256": "d53d700de031d6f29825c4844d505250918be1d75acfab151238d9825390fe56",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__r2",
+      "module": "sc0f3.adapter",
+      "recorded_sha256": "303acb2a32d59799e006105fb5c9a0a8d5caa8d00d0ede100d6fa402a7f3cc6f",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__r2",
+      "module": "sc0f3.common",
+      "recorded_sha256": "fc69010f497249513179bf8f5018ca842446204f8b761a5562ded897e8b540b8",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__r2",
+      "module": "sc0f3.fixture_owner",
+      "recorded_sha256": "789f97971d6da64cef7ed150dbe271a72565ab63fe6161a157fdb698687cce5f",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__r2",
+      "module": "sc0f3.gates",
+      "recorded_sha256": "95a26b2fa6d3655ef0b8b99b1e8571334e4cc9414425e57f23c05d4f2c775a6b",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__r2",
+      "module": "sc0f3.producer",
+      "recorded_sha256": "1f8949d0696eb7e20db5a5d5e525448c4c7907afe942fed6641d7da951020d8b",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__r2",
+      "module": "sc0f3.providers",
+      "recorded_sha256": "92293db7808ff0713bc1d37f14e980d3c39e15c67a6954c45dc7316a1082319d",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__r2",
+      "module": "sc0f3.receipts",
+      "recorded_sha256": "d53d700de031d6f29825c4844d505250918be1d75acfab151238d9825390fe56",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__final",
+      "module": "sc0f3.adapter",
+      "recorded_sha256": "303acb2a32d59799e006105fb5c9a0a8d5caa8d00d0ede100d6fa402a7f3cc6f",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__final",
+      "module": "sc0f3.common",
+      "recorded_sha256": "fc69010f497249513179bf8f5018ca842446204f8b761a5562ded897e8b540b8",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__final",
+      "module": "sc0f3.fixture_owner",
+      "recorded_sha256": "92ee2756f0eddf9d8169d5cb8605fb0a2173dc527387b307eb1878a4085cec97",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__final",
+      "module": "sc0f3.gates",
+      "recorded_sha256": "95a26b2fa6d3655ef0b8b99b1e8571334e4cc9414425e57f23c05d4f2c775a6b",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__final",
+      "module": "sc0f3.producer",
+      "recorded_sha256": "1f8949d0696eb7e20db5a5d5e525448c4c7907afe942fed6641d7da951020d8b",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__final",
+      "module": "sc0f3.providers",
+      "recorded_sha256": "92293db7808ff0713bc1d37f14e980d3c39e15c67a6954c45dc7316a1082319d",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "candidate__final",
+      "module": "sc0f3.receipts",
+      "recorded_sha256": "d53d700de031d6f29825c4844d505250918be1d75acfab151238d9825390fe56",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_sc0i__candidate_bindings",
+      "module": "sc0f3.adapter",
+      "recorded_sha256": "19d801fc5ebf09fa79c97957e54da5cfd61b17f7a71b8cd0d65b0f244d9dbbf7",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_sc0i__candidate_bindings",
+      "module": "sc0f3.common",
+      "recorded_sha256": "fc69010f497249513179bf8f5018ca842446204f8b761a5562ded897e8b540b8",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_sc0i__candidate_bindings",
+      "module": "sc0f3.fixture_owner",
+      "recorded_sha256": "dac444179982f379a803294832c9be204bcad5f1cb9965479c2bce367d7add3b",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_sc0i__candidate_bindings",
+      "module": "sc0f3.gates",
+      "recorded_sha256": "174569b4bd4598943662e81485c7e2dcaeb78f8f347ceee99c95d13e7c2dd410",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_sc0i__candidate_bindings",
+      "module": "sc0f3.producer",
+      "recorded_sha256": "1f8949d0696eb7e20db5a5d5e525448c4c7907afe942fed6641d7da951020d8b",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_sc0i__candidate_bindings",
+      "module": "sc0f3.providers",
+      "recorded_sha256": "92293db7808ff0713bc1d37f14e980d3c39e15c67a6954c45dc7316a1082319d",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_sc0i__candidate_bindings",
+      "module": "sc0f3.receipts",
+      "recorded_sha256": "d53d700de031d6f29825c4844d505250918be1d75acfab151238d9825390fe56",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "k9__candidate_bindings",
+      "module": "sc0f3.adapter",
+      "recorded_sha256": "19d801fc5ebf09fa79c97957e54da5cfd61b17f7a71b8cd0d65b0f244d9dbbf7",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "k9__candidate_bindings",
+      "module": "sc0f3.common",
+      "recorded_sha256": "fc69010f497249513179bf8f5018ca842446204f8b761a5562ded897e8b540b8",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "k9__candidate_bindings",
+      "module": "sc0f3.fixture_owner",
+      "recorded_sha256": "dac444179982f379a803294832c9be204bcad5f1cb9965479c2bce367d7add3b",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "k9__candidate_bindings",
+      "module": "sc0f3.gates",
+      "recorded_sha256": "174569b4bd4598943662e81485c7e2dcaeb78f8f347ceee99c95d13e7c2dd410",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "k9__candidate_bindings",
+      "module": "sc0f3.producer",
+      "recorded_sha256": "1f8949d0696eb7e20db5a5d5e525448c4c7907afe942fed6641d7da951020d8b",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "k9__candidate_bindings",
+      "module": "sc0f3.providers",
+      "recorded_sha256": "92293db7808ff0713bc1d37f14e980d3c39e15c67a6954c45dc7316a1082319d",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "k9__candidate_bindings",
+      "module": "sc0f3.receipts",
+      "recorded_sha256": "d53d700de031d6f29825c4844d505250918be1d75acfab151238d9825390fe56",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_sc0f__candidate_bindings",
+      "module": "sc0f3.adapter",
+      "recorded_sha256": "19d801fc5ebf09fa79c97957e54da5cfd61b17f7a71b8cd0d65b0f244d9dbbf7",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_sc0f__candidate_bindings",
+      "module": "sc0f3.common",
+      "recorded_sha256": "fc69010f497249513179bf8f5018ca842446204f8b761a5562ded897e8b540b8",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_sc0f__candidate_bindings",
+      "module": "sc0f3.fixture_owner",
+      "recorded_sha256": "dac444179982f379a803294832c9be204bcad5f1cb9965479c2bce367d7add3b",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_sc0f__candidate_bindings",
+      "module": "sc0f3.gates",
+      "recorded_sha256": "174569b4bd4598943662e81485c7e2dcaeb78f8f347ceee99c95d13e7c2dd410",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_sc0f__candidate_bindings",
+      "module": "sc0f3.producer",
+      "recorded_sha256": "1f8949d0696eb7e20db5a5d5e525448c4c7907afe942fed6641d7da951020d8b",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_sc0f__candidate_bindings",
+      "module": "sc0f3.providers",
+      "recorded_sha256": "92293db7808ff0713bc1d37f14e980d3c39e15c67a6954c45dc7316a1082319d",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    },
+    {
+      "run": "old_sc0f__candidate_bindings",
+      "module": "sc0f3.receipts",
+      "recorded_sha256": "d53d700de031d6f29825c4844d505250918be1d75acfab151238d9825390fe56",
+      "status": "SUPERSEDED_DIAGNOSTIC_NOT_CURRENT_CODE_PROOF"
+    }
+  ],
+  "initial_audit_correction": "Initial audit incorrectly compared superseded candidate import hashes to current bytes and failed; only final76 own modules certify current code. Prior67 source archive and all pinned predecessor imports remain checked separately."
+}

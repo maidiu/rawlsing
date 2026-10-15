@@ -1,0 +1,37 @@
+.....FFF.F                                                               [100%]
+=================================== FAILURES ===================================
+_____ test_05_caller_forged_issuer_name_and_wrong_target_scope_must_refuse _____
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/i2/repro/test_i2_sc0_hostiles.py:97: in test_05_caller_forged_issuer_name_and_wrong_target_scope_must_refuse
+    forged["issuer"] = bundle["world_receipt"]["world"]["authority_ref"]
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'world'
+__ test_06_empirical_cells_cannot_silently_inherit_independent_world_support ___
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/i2/repro/test_i2_sc0_hostiles.py:108: in test_06_empirical_cells_cannot_silently_inherit_independent_world_support
+    provider = ProviderA(empirical=empirical)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: ProviderOperations.__init__() got an unexpected keyword argument 'empirical'
+__ test_07_numeric_world_route_value_changes_both_readers_not_unrelated_route __
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/i2/repro/test_i2_sc0_hostiles.py:123: in test_07_numeric_world_route_value_changes_both_readers_not_unrelated_route
+    second = TwoContractAdapter(ProviderA(world=changed)).run()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/sc0f3/adapter.py:27: in run
+    selection=validate(selection,demand,self._prior)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/sc0f3/gates.py:57: in validate
+    check_earlier_knowledge(w,w.get('earlier_knowledge_evidence_ref'),asof)
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/sc0f3/fixture_owner.py:96: in check_earlier_knowledge
+    require(evidence_id == 'TEST_ONLY:earlier-publication:2008',
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/sc0f3/common.py:43: in require
+    raise Hold(code, detail)
+E   sc0f3.common.Hold: NO_CURRENT_OR_NOT_KNOWN_ASOF: Earlier evidence not in owner fixture
+_ test_09_publication_successor_must_rebind_to_actual_changed_source_boundary __
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/i2/repro/test_i2_sc0_hostiles.py:151: in test_09_publication_successor_must_rebind_to_actual_changed_source_boundary
+    assert (newer["world_receipt"]["world"]["source_release_ref"] !=
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'world'
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/i2/repro/test_i2_sc0_hostiles.py::test_05_caller_forged_issuer_name_and_wrong_target_scope_must_refuse
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/i2/repro/test_i2_sc0_hostiles.py::test_06_empirical_cells_cannot_silently_inherit_independent_world_support
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/i2/repro/test_i2_sc0_hostiles.py::test_07_numeric_world_route_value_changes_both_readers_not_unrelated_route
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/i2/repro/test_i2_sc0_hostiles.py::test_09_publication_successor_must_rebind_to_actual_changed_source_boundary
+4 failed, 6 passed in 9.38s

@@ -1,0 +1,32 @@
+FFF.F.F                                                                  [100%]
+=================================== FAILURES ===================================
+___________________ test_h01_n10e_c1_imported_never_invoked ____________________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/sc0i/repro/test_sc0i_hostiles.py:26: in test_h01_n10e_c1_imported_never_invoked
+    bridge = pb.SC0FProducerBridge(mode="N10E_C1_IF_AVAILABLE")
+             ^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: module 'sc0f3.producer' has no attribute 'SC0FProducerBridge'
+________________ test_h02_import_trace_uses_sha256_of_imported _________________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/sc0i/repro/test_sc0i_hostiles.py:44: in test_h02_import_trace_uses_sha256_of_imported
+    bridge = pbmod.SC0FProducerBridge(mode="N10E_C1_IF_AVAILABLE")
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: module 'sc0f3.producer' has no attribute 'SC0FProducerBridge'
+___________ test_h03_forged_warrant_accepted_after_self_registration ___________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/sc0i/repro/test_sc0i_hostiles.py:55: in test_h03_forged_warrant_accepted_after_self_registration
+    admod.clear_issuer_registry()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: module 'sc0f.adapter' has no attribute 'clear_issuer_registry'
+__________________ test_h05_selection_state_defaults_complete __________________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/sc0i/repro/test_sc0i_hostiles.py:81: in test_h05_selection_state_defaults_complete
+    assert 'selection.get("selection_state", "COMPLETE")' in src or \
+E   assert ('selection.get("selection_state", "COMPLETE")' in "    def run(self,demand=None):\n        demand=copy.deepcopy({'scope':'fx:scope:town2008'} if demand is None else dem...ssibility)\n        self._permission(selection)\n        self._prior=copy.deepcopy(selection)\n        return bundle\n" or "selection.get('selection_state', 'COMPLETE')" in "    def run(self,demand=None):\n        demand=copy.deepcopy({'scope':'fx:scope:town2008'} if demand is None else dem...ssibility)\n        self._permission(selection)\n        self._prior=copy.deepcopy(selection)\n        return bundle\n")
+________________ test_h07_earlier_evidence_presence_not_issuer _________________
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/sc0i/repro/test_sc0i_hostiles.py:96: in test_h07_earlier_evidence_presence_not_issuer
+    assert "earlier_knowledge_evidence_ref" in src
+E   assert 'earlier_knowledge_evidence_ref' in "    def run(self,demand=None):\n        demand=copy.deepcopy({'scope':'fx:scope:town2008'} if demand is None else dem...ssibility)\n        self._permission(selection)\n        self._prior=copy.deepcopy(selection)\n        return bundle\n"
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/sc0i/repro/test_sc0i_hostiles.py::test_h01_n10e_c1_imported_never_invoked
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/sc0i/repro/test_sc0i_hostiles.py::test_h02_import_trace_uses_sha256_of_imported
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/sc0i/repro/test_sc0i_hostiles.py::test_h03_forged_warrant_accepted_after_self_registration
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/sc0i/repro/test_sc0i_hostiles.py::test_h05_selection_state_defaults_complete
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-SC0F3-REAL-OWNER-REPAIR-R1/repro/inputs/sc0i/repro/test_sc0i_hostiles.py::test_h07_earlier_evidence_presence_not_issuer
+5 failed, 2 passed in 0.25s

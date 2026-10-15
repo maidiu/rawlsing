@@ -1,0 +1,22 @@
+{
+  "suite": "independent",
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "independent/test_rc0_hostile.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=$RC0_RETURN/repro/independent.xml"
+  ],
+  "cwd": "$RC0_RUNTIME",
+  "exit_code": 1,
+  "seconds": 1.7557258605957031,
+  "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "pytest": "9.0.2",
+  "raw_stdout_sha256": "966036bfd835c3461c2adaf409066d1be13695ac8eaf47d7f9403921a541eaf0",
+  "stdout_path": "repro/independent.log",
+  "junit_path": "repro/independent.xml",
+  "path_normalization_only": true
+}

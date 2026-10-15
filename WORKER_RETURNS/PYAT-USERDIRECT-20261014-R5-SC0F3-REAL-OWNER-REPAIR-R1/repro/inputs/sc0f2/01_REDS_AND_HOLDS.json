@@ -1,0 +1,68 @@
+{
+ "schema": "R4_SC0F2_PRODUCER_AUTHORITY_REPAIR@1",
+ "branch": "agent/userdirect-pyat-20261014-r4-sc0f2-real-producer-authority-repair-r1",
+ "sealed_startup": "62782758534d7e1a48e70c6f67eb3bb6ebf0c548",
+ "pinned": {
+  "sc0f": "7add9ef5a1a4698d4aed177be8a158b75e220a5d",
+  "sc0i": "5b5574fe8b35df133e478b1c2738f65c473c0ad7",
+  "strict_schema_blob": "610ac870fde6cfe63796592b3c6b1e1bf1e37150"
+ },
+ "reds_reproduced": {
+  "red1_imported_never_called": {
+   "reproduced": true,
+   "method": "independent execution of SC0I hostiles",
+   "case": "test_h02_import_trace_uses_sha256_of_imported",
+   "evidence": "AssertionError: assert '5f54227b74fbba7743c47cd286b4873f2e17331518d56facfc03e34cde4a0950' in {''} \u2014 traced digest set is EMPTY, so no real invocation occurred",
+   "run": "2 failed, 5 passed"
+  },
+  "red2_attacker_writable_authority": {
+   "reproduced": true,
+   "method": "direct source read",
+   "site": "WORKER_RETURNS/PYAT-...-R2-SC0F-.../repro/sc0f/adapter.py:42 register_issuer_warrant",
+   "evidence": "ISSUER_REGISTRY[grant_id] = copy.deepcopy(dict(grant)) with no authorization check; caller mints its own grant"
+  }
+ },
+ "producer_functions_located": {
+  "provide_empirical_possibility_slice": "rawlsing_next/pre553_empirical_possibility_provider.py:531",
+  "compose_positioned_subject_possibility": "rawlsing_next/pre553_analytical_composition.py:1008",
+  "evaluate_positioned_subject_possibility": "rawlsing_next/source_backed_positioned_subject_possibility.py:417"
+ },
+ "author_port_cases": {
+  "suite": "repro/tests/test_sc0f_repair.py",
+  "passed": 9,
+  "skipped": 1,
+  "note": "author port cases only, NOT independent SC0F2 acceptance; no owner tests counted"
+ },
+ "repair_implemented": false,
+ "real_producer_invocation_achieved": false,
+ "issuer_registry_replaced": false,
+ "strict_oneOf_conformance_verified": false,
+ "sc0f2_acceptance_ceiling_claimed": false,
+ "false_real_n10e_c1_label_used": false,
+ "issuer_authority_fiction_created": false,
+ "not_completed": [
+  "real producer invocation with issuer-qualified input",
+  "issuer registry fail-closed replacement",
+  "selection_state / demand_closure_verified / scope / earlier_knowledge_evidence_ref repairs",
+  "actual adapter.run strict Draft202012 oneOf conformance",
+  "tampering and minority-support empirics 54/6 to 50/10",
+  "re-run of SC0F 10, SC0I 7, K9 8, K10 28, PE 13, PE author 21, N10E/C1 56, I2 and RC0 hostiles",
+  "A/B semantic equivalence beyond five provenance exceptions"
+ ],
+ "hold_type": "REVIEWER_BUDGET_EXHAUSTION__REDS_AND_REPAIR_SITES_DELIVERED",
+ "no_self_adoption": true,
+ "distinct_sc0f2_reviewer_still_required": true,
+ "deliverables": {
+  "00_RETURN.md": {
+   "sha256": "97eb512cac63b7459686393a78f66bcbc8a55050d38306591fd2e5e518cd8dcf",
+   "bytes": 6543
+  }
+ },
+ "repro": {
+  "sc0i_hostiles.log": {
+   "sha256": "9c507a9af08b51526ac4f81508e166af12a6c1b8b8667b5a91641f9ab569bacf",
+   "bytes": 1889
+  }
+ },
+ "terminal": "R4_SC0F2_PRODUCER_AUTHORITY_REPAIR_TYPED_HOLD__GITHUB_PUSHED"
+}
