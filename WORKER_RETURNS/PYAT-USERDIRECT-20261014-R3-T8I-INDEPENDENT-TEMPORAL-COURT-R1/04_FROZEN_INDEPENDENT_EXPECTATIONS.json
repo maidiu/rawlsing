@@ -1,0 +1,71 @@
+{
+  "schema": "PYAT_T8I_INDEPENDENT_FROZEN_HOSTILE_EXPECTATIONS_R1",
+  "status": "FROZEN_BEFORE_STAGING_AND_EXECUTING_AUTHOR_29_TESTS",
+  "sealed": "4b0610edd26d3acb7964179558471bdd3fa2d4a8",
+  "candidate": "76cbd9b447bf7525a6831b339117870399b1f8f4",
+  "source_scope": "Independent expectations derive from user commission, author returned source excerpt, semantics of cryptographic attestations and reference aliasing, not outcomes of any local test run",
+  "hypotheses": [
+    {
+      "case": "T8I-01",
+      "mutation": "Change variance only on valid WaveFact while preserving all fields hashed by content_hash",
+      "expected": "SAME_CONTENT_HASH_AND_REF_ID_DANGEROUS; register overwrites old identity; retrieve old ref returns replacement variance"
+    },
+    {
+      "case": "T8I-02",
+      "mutation": "Modify valid WaveFact variance_method or sample/selector/native-code fields when method permits",
+      "expected": "HASH_NO_CHANGE_FOR_CLAIM_FIELDS; validation may independently reject invalid variants"
+    },
+    {
+      "case": "T8I-03",
+      "mutation": "Tamper WaveFactRef.year to another year with unchanged ref_id and content_hash",
+      "expected": "retrieve() returns stored fact with no year match refusal"
+    },
+    {
+      "case": "T8I-04",
+      "mutation": "Attach extraneous fields to reference by crafting or forcing object state",
+      "expected": "No strict ref schema check beyond used fields"
+    },
+    {
+      "case": "T8I-05",
+      "mutation": "Supply aliasable list for category_weights despite tuple typing",
+      "expected": "If validate accepts and registrar doesn't normalize, later caller mutation changes stored state"
+    },
+    {
+      "case": "T8I-06",
+      "mutation": "Replace product.delta_later_minus_earlier with arbitrary Fraction(999), recompute product_digest",
+      "expected": "consume() ACCEPTS arithmetic-inconsistent delta because no independent total recomputation"
+    },
+    {
+      "case": "T8I-07",
+      "mutation": "Replace product.variance_delta_independent with arbitrary value and recompute product_digest",
+      "expected": "consume() ACCEPTS inconsistent variance sum"
+    },
+    {
+      "case": "T8I-08",
+      "mutation": "Alter numerical category/weights/share coherently, recompute product_digest, maintain syntactic fields",
+      "expected": "consume() ACCEPTS UNISSUED self-signed altered source without comparing registry/issuer"
+    },
+    {
+      "case": "T8I-09",
+      "mutation": "Change publication to earlier date and rehash product; use earlier asof",
+      "expected": "consumer only compares to supplied publication; no authoritative clock registry"
+    },
+    {
+      "case": "T8I-10",
+      "mutation": "Old T8R cases: stale digest delta, stale digest native category and malformed asof",
+      "expected": "T8F SHOULD REFUSE first two and use typed INVALID_ASOF_DATE; finite repair does not imply full integrity"
+    },
+    {
+      "case": "T8I-11",
+      "mutation": "Execute unchanged 19 original T8C tests and unchanged T8R 3 mandatory cases separately from T8F 29",
+      "expected": "Report exact paths, source blobs, actual PASS/FAIL separately"
+    },
+    {
+      "case": "T8I-12",
+      "mutation": "Native category 0 / four specials / denominator / independent waves / 2017 gap / 2012 and 2022 issuance clocks",
+      "expected": "Preserve original semantics, no original Ghana measurement inference"
+    }
+  ],
+  "acceptance_threshold": "Do not accept full SOURCEFREE_METHOD_ONLY unless all claim-affecting fields bound to collision-resistant verified registry identity, existing refs immutable, issued external authority distinguished from digest, delta/variance recomputed, unchanged frozen regressions satisfied; never imply source or EE12 issuance.",
+  "run_status_at_freeze": "NOT_EXECUTED"
+}
