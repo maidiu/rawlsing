@@ -1,0 +1,116 @@
+{
+  "schema": "PYAT_R2_D2C_DOCUMENTARY_EXTERNAL_PUBLISHED_AGGREGATE_PACKET_R1",
+  "packet_id": "D2C_GSS_2021_PHC_3K_RURAL_ELECTRIC_MAIN_LIGHTING",
+  "status": "DOCUMENTARY_FIELD_CANDIDATE__NOT_ISSUED__BINARY_CUSTODY_HOLD",
+  "product_type_proposed": "ExternalPublishedAggregateField",
+  "is_n5_n6_product": false,
+  "scientific_source": {
+    "publisher": "Ghana Statistical Service",
+    "title": "Ghana 2021 Population and Housing Census: General Report Volume 3K — Housing Characteristics",
+    "edition_cover": "February 2022",
+    "release_date": "2022-02-24",
+    "release_notice_date": "2022-02-26",
+    "source_kind": "Full population and housing census aggregated dwelling-unit table",
+    "census_night": "2021-06-27",
+    "observation_scope": "2021 census observations, precise per-dwelling interview timing not separately issued",
+    "source_url": "https://census2021.statsghana.gov.gh/gssmain/fileUpload/reportthemesub/Volume%203K_Housing%20Characteristics_240222.pdf",
+    "official_notice_url": "https://census2021.statsghana.gov.gh/newspage.php?GSS-completes-release-of-2021-PHC-General-Reports=&readmorenews=MjM0ODgzNjQxMy41MDg1",
+    "printed_page": 62,
+    "pdf_page_zero_based": 75,
+    "table": "5.10",
+    "pdf_pages_web_parsed": 86,
+    "source_web_evidence": [
+      "official GSS PDF P75 Table 5.10 rural section",
+      "official GSS 2022-02-26 news page: February 24 release"
+    ]
+  },
+  "original_binary": {
+    "downloaded": false,
+    "sha256": null,
+    "byte_length": null,
+    "pdf_metadata": null,
+    "raw_mime_verified": false,
+    "archive_sha": null,
+    "immutable_edition_root": null,
+    "version_revision_chain": "UNKNOWN_UNVERIFIED",
+    "no_hash_claim": true
+  },
+  "values": {
+    "geography": "GHANA_RURAL",
+    "unit": "OCCUPIED_DWELLING_UNIT_MAIN_SOURCE_OF_LIGHTING",
+    "denominator": {
+      "count": 3288063,
+      "definition": "All rural occupied dwelling units in table, excluding secondary housing and vacant units; report based on household responses, excludes homeless households"
+    },
+    "electricity_main_source_total": 2388192,
+    "electricity_main_lighting_fraction_exact": "2388192/3288063",
+    "published_percent_1dp": 72.6,
+    "calculated_percent_unrounded": 72.63218496725884,
+    "subtypes": [
+      {
+        "type": "Electricity (mains)",
+        "count": 2288193
+      },
+      {
+        "type": "Electricity (community-based Grid)",
+        "count": 74490
+      },
+      {
+        "type": "Electricity (private generator)",
+        "count": 3640
+      },
+      {
+        "type": "Electricity (solar panel/invertor)",
+        "count": 21512
+      },
+      {
+        "type": "Electricity (wind energy)",
+        "count": 357
+      }
+    ],
+    "subtypes_sum_check": 2388192,
+    "mains_only_percent_rounded": 69.6,
+    "not_electricity_category": "Solar lamp",
+    "not_electricity_category_rural_count": 123903
+  },
+  "definitions": {
+    "dwelling_unit": "One or more rooms in a housing unit occupied by a household; entire or part of structure",
+    "occupancy_status": "Occupied, secondary or vacant",
+    "lighting": "Main and secondary light sources used by household in dwelling unit; table tabulates MAIN",
+    "not_equivalent_to": [
+      "Persons enjoying electricity",
+      "stable electric supply",
+      "grid connections",
+      "ownership of electrical equipment",
+      "all rural buildings or vacant structures",
+      "continuously available electricity"
+    ]
+  },
+  "clocks": {
+    "observation_reference": "2021_PHC",
+    "published_first_known": "2022-02-24",
+    "first_safe_documentary_asof": "2022-02-24",
+    "future_corrections_require_versioned_successor": true,
+    "knowledge_asof_2021": "NOT_YET_PUBLISHED"
+  },
+  "quality": {
+    "design": "CENSUS_ENUMERATION_AGGREGATE",
+    "sampling_variance_reported": null,
+    "nonsampling_error_reported": null,
+    "classification_and_coverage_bias": "NOT_INDEPENDENTLY_QUANTIFIED",
+    "table_source": "GSS 2021 PHC household dwelling response",
+    "official_errata_check": "UNRESOLVED"
+  },
+  "legal_authority": {
+    "publisher_publication_right": true,
+    "readable_public": true,
+    "license_for_automated_aggregate_reuse": null,
+    "redistribution_permission": null,
+    "rawlsing_source_issuer": null,
+    "n5_n6_field_issuer": null,
+    "owner_adoption": false
+  },
+  "allowed_court_use": "DOCUMENTARY_REVIEW_ONLY; no modeled individual exposure, no N5/N6 issuance, no EE13, no OC05/V3",
+  "cross_source_relation": "Do not combine denominator with NCA national subscription total; no joint geography/unit/risk set",
+  "issuer_request_ref": "03_SOURCE_USE_AND_ISSUER_REQUEST.md"
+}
