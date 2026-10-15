@@ -1,0 +1,92 @@
+{
+  "schema": "SOROK_HQ309_OC3_EXECUTION_INDEX_R1",
+  "status": "REVIEW_REVISE",
+  "sourcefree": true,
+  "reviewer_sealed_startup": "324d63070a47dea920c4fbca433d0177c16ce9cf",
+  "candidate_pin": "a61d5794271038fb20c94a75eaee401a66613ce9",
+  "original_OC1": {
+    "total": 31,
+    "passed": 28,
+    "failed": 3
+  },
+  "original_OCR1": {
+    "total": 45,
+    "passed": 42,
+    "failed": 3
+  },
+  "original_OC2": {
+    "total": 19,
+    "passed": 19,
+    "failed": 0
+  },
+  "inherited_total": {
+    "total": 95,
+    "passed": 89,
+    "failed": 6,
+    "skipped": 0,
+    "pytest_exit": 1
+  },
+  "new_OC3": {
+    "total": 36,
+    "passed": 26,
+    "failed": 10,
+    "skipped": 0,
+    "pytest_exit": 1
+  },
+  "all": {
+    "total": 131,
+    "passed": 115,
+    "failed": 16,
+    "skipped": 0,
+    "pytest_exit": 1
+  },
+  "six_retained_original_reds": [
+    "test_h13_ledger_rollback_detected",
+    "test_h15_missing_signature_in_capsule_refused",
+    "test_positive_full_role_separated_lifecycle",
+    "A01_revoked_unblind",
+    "A02_expired_unblind",
+    "A03_illegal_purpose_unblind"
+  ],
+  "ten_new_reds": [
+    "B02_same_digest_distinct_capsule_id_replay",
+    "B03_signature_reuse_after_purpose_change",
+    "B04_signature_reuse_after_lawful_digest_change",
+    "C05_unblind_timestamp_mutation_invisible",
+    "C06_unblind_capsule_field_mutation_invisible",
+    "D04_whitespace_nonce_rejected",
+    "D05_unhashable_arm_bad_exception",
+    "E05_menu_wrong_value_type_admitted",
+    "E06_context_wrong_value_type_admitted",
+    "E07_U034F_note_alias_bypass"
+  ],
+  "provenance": [
+    "original source and test blobs verified against pinned native Git SHA1",
+    "original tests untouched",
+    "new test source and combined JUnit retained inside core remote evidence archive",
+    "full local evidence archive also available to user"
+  ],
+  "core_remote_archive": {
+    "file": "OC3_REMOTE_CORE_EVIDENCE.tar.xz",
+    "git_blob_sha1": "068b158363b96d5a7cdc03eb059efb8a8d159b26",
+    "sha256": "7a3d7913a5c388569f654aaf83a0a64c9b16de28065551a3e7a7d3749be33837",
+    "bytes": 9648,
+    "contents": [
+      "full 131-case JUnit XML",
+      "new 36-case JUnit XML",
+      "OC3 independently authored real-entrypoint test source",
+      "pre-execution expectations",
+      "source Git/SHA receipts",
+      "combined/new stdout available only in full local archive"
+    ]
+  },
+  "not_reached": [
+    "C07 cross-process persisted custody",
+    "external protected ledger",
+    "trusted signers and delegated role issuer",
+    "model-use/private-source grants",
+    "population inference",
+    "V3 actor use"
+  ],
+  "grade": "REVIEW_REVISE__NO_ADOPTION"
+}
