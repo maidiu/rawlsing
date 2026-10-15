@@ -1,7 +1,32 @@
 {
   "schema": "SC0F3_DIRECT_REMOTE_VERIFICATION@1",
-  "status": "PENDING_FIRST_PUSH",
+  "verified_at": "2026-10-15T02:51:51.241906+00:00",
+  "repository": "maidiu/rawlsing",
   "branch": "agent/userdirect-pyat-20261014-r5-sc0f3-real-owner-repair-r1",
   "startup": "cb4559717c3612e5e5d88c6c8ac8a04de02c02d0",
-  "note": "Updated after evidence push; final receipt commit SHA is independently read outside its own bytes"
+  "evidence_commit_sha": "9831293f9fd53813db04d33be5bbdc177542f8ce",
+  "direct_remote_sha_at_evidence_verification": "9831293f9fd53813db04d33be5bbdc177542f8ce",
+  "direct_stdout": "9831293f9fd53813db04d33be5bbdc177542f8ce\trefs/heads/agent/userdirect-pyat-20261014-r5-sc0f3-real-owner-repair-r1",
+  "sha_match": true,
+  "authorized_changed_paths": 382,
+  "out_of_scope_paths": [],
+  "artifact_hashes_verified": 380,
+  "tracked_tree_clean": true,
+  "final_candidate_suite": {
+    "pass_count": 76,
+    "red": 0,
+    "error": 0,
+    "skip": 0
+  },
+  "proof_runs": 6,
+  "completed_required_native_calls_in_full_captures": 18,
+  "legacy_original_REDs": "Preserved",
+  "legacy_candidate_binding_results": "Non-green raw failures and unreached predicates retained; no full compatibility acceptance claimed",
+  "original_source_operations": 0,
+  "real_model_calls": 0,
+  "actor_calls": 0,
+  "adoption": false,
+  "original_source_permission": "HOLD_ORIGINAL_SOURCE_NATIVE_RELEASE_AND_OPERATION_GRANT_UNAVAILABLE",
+  "independent_sc0f3_and_C0_acceptance": "REQUIRED_NOT_PERFORMED",
+  "note": "This receipt records the preceding evidence commit. The receipt commit is pushed and its exact final remote SHA is read independently outside its own hashed bytes."
 }
