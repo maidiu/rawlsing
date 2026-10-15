@@ -1,0 +1,98 @@
+{
+  "wg0j_twenty_red_closure": {
+    "total_failures": 20,
+    "repaired": 20,
+    "remaining": 0,
+    "tests_covering": 36,
+    "all_pass": true
+  },
+  "failure_clusters": [
+    {
+      "id": 1,
+      "cluster": "native_identity_binding",
+      "wg0j_failure": "Changing options/metadata silently computed original values",
+      "repair": "Freeze hash + full_identity binding; form_id/response_kind validated at plan admission",
+      "tests": ["test_native_options_must_affect_computation_or_hold", "test_native_metadata_must_bind_release_or_hold"],
+      "status": "REPAIRED"
+    },
+    {
+      "id": 2,
+      "cluster": "operation_identity_incomplete",
+      "wg0j_failure": "Same ID with altered semantics accepted",
+      "repair": "_validate_op_identity rejects duplicate IDs with altered conditioner/class/reason/target",
+      "tests": ["test_same_operation_id_changed_semantics_rejected", "test_same_key_altered_target_must_not_execute_original_source"],
+      "status": "REPAIRED"
+    },
+    {
+      "id": 3,
+      "cluster": "source_binding_at_callback",
+      "wg0j_failure": "A-W1 unit could run A-W2",
+      "repair": "Executor compares unit.release_refs to immutable spec.release_tag",
+      "tests": ["test_wrong_release_bound_to_unit_is_rejected", "test_swapped_release_identity_rejected"],
+      "status": "REPAIRED"
+    },
+    {
+      "id": 4,
+      "cluster": "no_drop_frontier_enforcement",
+      "wg0j_failure": "Dropped HELD/INADMISSIBLE not detected",
+      "repair": "validate_frontier enforces 3/16/6=25; validate_frontier_receipts exact set/status/reason match",
+      "tests": ["test_missing_nonproduced_operation_rejected", "test_frontier_enforcement_rejects_injected_status", "test_frontier_receipts_must_match_expected", "test_stripped_held_frontier_rejected"],
+      "status": "REPAIRED"
+    },
+    {
+      "id": 5,
+      "cluster": "late_revocation_and_read_integrity",
+      "wg0j_failure": "Current grant not validated; mutable fact_registry posthoc injection",
+      "repair": "consumer_effects checks grant state; FactCustody hash-verified immutable reads",
+      "tests": ["test_late_revocation_blocks_current_read", "test_fact_payload_is_bound_at_read", "test_stale_permission_at_consumer_read"],
+      "status": "REPAIRED"
+    },
+    {
+      "id": 6,
+      "cluster": "native_source_admission",
+      "wg0j_failure": "None/-1/foreign values accepted; MR sets inconsistent; missing 9 counted substantive",
+      "repair": "admit_native_rows rejects invalid; validate_mr_native_sets; missing 9 not substantive",
+      "tests": ["test_inconsistent_mr_native_sets_rejected", "test_invalid_native_response_rejected", "test_missing_special_9_not_substantive", "test_mr_inconsistency_rejected"],
+      "status": "REPAIRED"
+    },
+    {
+      "id": 7,
+      "cluster": "source_artifact_custody",
+      "wg0j_failure": "Source bytes mutation not detected",
+      "repair": "source_bytes_hash from actual rows; row mutation changes artifact identity",
+      "tests": ["test_source_bytes_mutation_changes_source_artifact_identity", "test_data_leaf_mutation_changes_source"],
+      "status": "REPAIRED"
+    },
+    {
+      "id": 8,
+      "cluster": "cold_process_checkpoint_resume",
+      "wg0j_failure": "Cold restart did not restore previously computed facts",
+      "repair": "ColdCheckpoint with fact custody snapshot + hash verification; forged/stale rejected",
+      "tests": ["test_cold_checkpoint_resume_restores_facts", "test_forged_checkpoint_rejected", "test_stale_checkpoint_rejected", "test_cold_payload_forgery_rejected"],
+      "status": "REPAIRED"
+    }
+  ],
+  "preserved_values": {
+    "ord_01": {"0": 1, "1": 2, "2": 2, "3": 1, "9": 0, "denominator": 6},
+    "ord_05": {"0": 0, "1": 2, "2": 1, "3": 1, "9": 0, "denominator": 4},
+    "mr_02_profiles": {
+      "(yes,yes,no,no,no)": 1,
+      "(no,yes,yes,no,no)": 1,
+      "(yes,no,yes,yes,no)": 1,
+      "(no,no,no,no,yes)": 1
+    },
+    "mr_02_denominator": 4,
+    "mr_02_indicator_totals": {"food": 2, "rent": 2, "health": 2, "education": 1, "none": 1}
+  },
+  "frontier_counts": {
+    "produced": 3,
+    "held": 16,
+    "inadmissible": 6,
+    "total": 25
+  },
+  "positive_conditional": {
+    "risk_set": "R_JOINT_ORD_RT",
+    "result": {"yes": 1, "no": 1, "denominator": 2},
+    "path": "ordinary batch product path"
+  }
+}
