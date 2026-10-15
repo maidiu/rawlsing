@@ -1,0 +1,103 @@
+{
+  "first": {
+    "mode": "first",
+    "path": "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/pv3_final_cold",
+    "pid_record": "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/observations/cold_first.audit.json",
+    "exit": 0,
+    "stdout": "{\n  \"mode\": \"first\",\n  \"ok\": true,\n  \"committed_register_root\": \"49f0f51866d3327aca2b7d8910517c0317a85c6b7fd3f011c9ffd6634c6218bf\",\n  \"source_inventory_root\": \"904f30758890a1a68e6f1ef943e01cd80434ebe6c261e16406a54e19a21ddb16\",\n  \"original_expected_work_keys\": 6,\n  \"distinct_legacy_v2_keys\": 3,\n  \"distinct_field_forge_consumers\": 6,\n  \"durable_executor_calls\": [\n    3,\n    3\n  ],\n  \"held_original_records\": 2,\n  \"expected_payload_sha256\": \"4d83bf57f8cd12c3492eb42f6d14094c53a6c33cc5e4178f1594ce6a469548f2\",\n  \"source_grade\": \"SOURCEFREE_TEST_ONLY_NOT_ISSUED\",\n  \"schema\": \"R10_PV2_ORIGINAL_SCOPE_REGISTER@1.0.0\"\n}\n",
+    "stderr": ""
+  },
+  "replay": {
+    "mode": "replay",
+    "path": "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/pv3_final_cold",
+    "pid_record": "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/observations/cold_replay.audit.json",
+    "exit": 0,
+    "stdout": "{\n  \"mode\": \"replay\",\n  \"ok\": true,\n  \"committed_register_root\": \"49f0f51866d3327aca2b7d8910517c0317a85c6b7fd3f011c9ffd6634c6218bf\",\n  \"source_inventory_root\": \"904f30758890a1a68e6f1ef943e01cd80434ebe6c261e16406a54e19a21ddb16\",\n  \"original_expected_work_keys\": 6,\n  \"distinct_legacy_v2_keys\": 3,\n  \"distinct_field_forge_consumers\": 6,\n  \"durable_executor_calls\": [\n    0,\n    0\n  ],\n  \"held_original_records\": 2,\n  \"expected_payload_sha256\": \"4d83bf57f8cd12c3492eb42f6d14094c53a6c33cc5e4178f1594ce6a469548f2\",\n  \"source_grade\": \"SOURCEFREE_TEST_ONLY_NOT_ISSUED\",\n  \"schema\": \"R10_PV2_ORIGINAL_SCOPE_REGISTER@1.0.0\"\n}\n",
+    "stderr": ""
+  },
+  "actual_owner_calls_first": {
+    "execute_route_b_production": 2,
+    "validate_c11_source_release": 2,
+    "execute_empirical_query": 16,
+    "execute_exact_bounded_discovery": 4,
+    "run_integrated": 2,
+    "produce_exact_conditional_support_profile": 18,
+    "replay_exact_conditional_support_profile": 6
+  },
+  "actual_owner_calls_replay": {
+    "execute_route_b_production": 2,
+    "validate_c11_source_release": 2,
+    "execute_empirical_query": 8,
+    "execute_exact_bounded_discovery": 2,
+    "run_integrated": 2,
+    "produce_exact_conditional_support_profile": 18,
+    "replay_exact_conditional_support_profile": 6
+  },
+  "distinct_pids": true,
+  "same_ledger_bytes": true,
+  "ledger_before": {
+    "ledger/0/b01e_checkpoint.json": "7a6ca6bb66ea47917cf28f49a41fe3c19a396139fa20ebb78bfdc1e5d8ac83ec",
+    "ledger/0/b01e_side_effects.jsonl": "6abc5416a9067b5d082a01a8001ed2f418be86088bfc57bb8bd7b8eb93aa02ee",
+    "ledger/0/.p01.integration.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ledger/0/.b01e_checkpoint.json.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ledger/1/b01e_checkpoint.json": "dd87a7dfcb9d6c76112d8d1d7314dedb36f811cb12f3589947970aa72c654fda",
+    "ledger/1/b01e_side_effects.jsonl": "d461414557c0af4562c8133c29c63c740a758b2c01299d255e2708eca5e22659",
+    "ledger/1/.p01.integration.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ledger/1/.b01e_checkpoint.json.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "ledger_after": {
+    "ledger/0/b01e_checkpoint.json": "7a6ca6bb66ea47917cf28f49a41fe3c19a396139fa20ebb78bfdc1e5d8ac83ec",
+    "ledger/0/b01e_side_effects.jsonl": "6abc5416a9067b5d082a01a8001ed2f418be86088bfc57bb8bd7b8eb93aa02ee",
+    "ledger/0/.p01.integration.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ledger/0/.b01e_checkpoint.json.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ledger/1/b01e_checkpoint.json": "dd87a7dfcb9d6c76112d8d1d7314dedb36f811cb12f3589947970aa72c654fda",
+    "ledger/1/b01e_side_effects.jsonl": "d461414557c0af4562c8133c29c63c740a758b2c01299d255e2708eca5e22659",
+    "ledger/1/.p01.integration.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ledger/1/.b01e_checkpoint.json.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "links_exact": true,
+  "held_exact": true,
+  "register_exact": true,
+  "no_new_durable_units": true,
+  "original_expected_persisted_before_first_owner": false,
+  "fresh_forged_current_grant": {
+    "pid": 29635,
+    "grant": {
+      "grant": "FAKE_SIGNED_ORIGINAL_SOURCE",
+      "issuer": "PV2I-SELF-ISSUED-COLD",
+      "ceiling": [
+        "PRODUCTION"
+      ],
+      "scope": "sourcefree synthetic native rows only; no survey microdata",
+      "revoked": false,
+      "revocation_reason": null
+    },
+    "committed_root": "73283cfbfcbd8560b65d5b0876ed5967b3a0c72e9a8e9fce40ac058946926abf",
+    "servable": false,
+    "links": 0
+  },
+  "missing_source": {
+    "mode": "missing_source",
+    "path": "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/pv3_final_cold",
+    "pid_record": "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/observations/cold_missing_source.audit.json",
+    "exit": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro/cold_child.py\", line 40, in <module>\n    exec(\n  File \"/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro/cold_child.py\", line 33, in <module>\n    try:\n         \n  File \"<frozen runpy>\", line 291, in run_path\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro/pv2_cold_process.py\", line 53, in <module>\n    fx = fixture.pv2_sourcefree_fixture(ROOT / 'ledger')\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro/pv2_sourcefree_fixture.py\", line 260, in pv2_sourcefree_fixture\n    inputs = [sourcefree_original_inputs(ns) for ns in NAMESPACES]\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro/pv2_sourcefree_fixture.py\", line 260, in <listcomp>\n    inputs = [sourcefree_original_inputs(ns) for ns in NAMESPACES]\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro/pv2_sourcefree_fixture.py\", line 72, in sourcefree_original_inputs\n    fx = physical_fixture()\n         ^^^^^^^^^^^^^^^^^^\n  File \"/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro/cold_child.py\", line 12, in missing\n    (R / \"observations\" / (sys.argv[3] + \".installation.json\")).write_text(\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: PV2I_INDEPENDENT_SOURCE_MISSING\n"
+  },
+  "changed_edition": {
+    "mode": "changed_edition",
+    "path": "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/pv3_final_cold",
+    "pid_record": "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/observations/cold_changed_edition.audit.json",
+    "exit": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/rawlsing_next/pre553_governed_batch_checkpoint_integration_candidate.py\", line 230, in open_session\n    store.load(identity=identity)\n  File \"/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/rawlsing_next/pre553_batch_durable_checkpoint_candidate.py\", line 543, in load\n    checkpoint.assert_bound_to(identity)\n  File \"/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/rawlsing_next/pre553_batch_durable_checkpoint_candidate.py\", line 402, in assert_bound_to\n    raise CheckpointForeignError(\nrawlsing_next.pre553_batch_durable_checkpoint_candidate.CheckpointForeignError: checkpoint is bound to a different manifest/release/scope; refusing foreign checkpoint\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro/cold_child.py\", line 40, in <module>\n    exec(\n  File \"/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro/cold_child.py\", line 33, in <module>\n    try:\n         \n  File \"<frozen runpy>\", line 291, in run_path\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro/pv2_cold_process.py\", line 53, in <module>\n    fx = fixture.pv2_sourcefree_fixture(ROOT / 'ledger')\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro/pv2_sourcefree_fixture.py\", line 264, in pv2_sourcefree_fixture\n    prepared = [prepare_owner_scope(root / str(i), data, group, ns)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro/pv2_sourcefree_fixture.py\", line 264, in <listcomp>\n    prepared = [prepare_owner_scope(root / str(i), data, group, ns)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro/pv2_sourcefree_fixture.py\", line 241, in prepare_owner_scope\n    session = G.open_session(\n              ^^^^^^^^^^^^^^^\n  File \"/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/rawlsing_next/pre553_governed_batch_checkpoint_integration_candidate.py\", line 232, in open_session\n    raise IntegrationForeignError(\nrawlsing_next.pre553_governed_batch_checkpoint_integration_candidate.IntegrationForeignError: existing durable checkpoint is foreign or torn: checkpoint is bound to a different manifest/release/scope; refusing foreign checkpoint\n"
+  },
+  "tampered_receipt": {
+    "mode": "replay",
+    "path": "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/pv3_final_cold_receipt_tamper",
+    "pid_record": "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/observations/cold_tampered_receipt.audit.json",
+    "exit": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro/cold_child.py\", line 40, in <module>\n    exec(\n  File \"/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro/cold_child.py\", line 33, in <module>\n    try:\n         \n  File \"<frozen runpy>\", line 291, in run_path\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro/pv2_cold_process.py\", line 73, in <module>\n    report = PV2.run_sourcefree_with_register(\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro/pv3_candidate.py\", line 164, in run_sourcefree_with_register\n    reconcile_journal(scope.p01_kwargs[\"session\"])\n  File \"/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro/pv3_candidate.py\", line 93, in reconcile_journal\n    raise CustodyError(\"JOURNAL_RECEIPT_PROVENANCE_MISMATCH\")\npv3_candidate.CustodyError: JOURNAL_RECEIPT_PROVENANCE_MISMATCH\n"
+  }
+}

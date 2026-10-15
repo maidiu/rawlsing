@@ -1,0 +1,24 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "/usr/local/bin/python3",
+        "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/staging_check3/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro/stage.py"
+      ],
+      "exit": 0,
+      "stdout": "SEPARATELY_PROVISIONED_TEST_ONLY_OWNER 4d83bf57f8cd12c3492eb42f6d14094c53a6c33cc5e4178f1594ce6a469548f2\nSTAGED 73\nEXACT_RETAINED_WORKER 84926e049d1879e48e9dcda7b1283de9d6cfc34d\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/local/bin/python3",
+        "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/staging_check3/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro/run.py",
+        "pv3"
+      ],
+      "exit": 0,
+      "stdout": "pv3 EXIT 0\n../tests/test_pv3_custody.py::test_separate_journal_fields_must_match_actual_owner_receipt[journal_seq] PASSED [ 71%]\n../tests/test_pv3_custody.py::test_separate_journal_fields_must_match_actual_owner_receipt[receipt_state] PASSED [ 75%]\n../tests/test_pv3_custody.py::test_changed_checkpoint_identity_is_refused_before_any_new_unit PASSED [ 78%]\n../tests/test_pv3_custody.py::test_generic_label_red_is_contained_by_explicit_hold PASSED [ 82%]\n../tests/test_pv3_custody.py::test_true_fresh_process_does_not_claim_offline_fact_restoration PASSED [ 85%]\n../tests/test_pv3_custody.py::test_owner_withdrawal_persists_in_true_fresh_process PASSED [ 89%]\n../tests/test_pv3_custody.py::test_missing_owner_store_fails_closed_and_is_not_reprovisioned PASSED [ 92%]\n../tests/test_pv3_custody.py::test_two_service_clients_resolve_the_same_current_owner_decision PASSED [ 96%]\n../tests/test_pv3_custody.py::test_current_read_binds_receipt_and_journal_proof_content PASSED [100%]\n\n- generated xml file: /Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/staging_check3/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/observations/pv3.xml -\n============================= 28 passed in 12.53s ==============================\n",
+      "stderr": ""
+    }
+  ],
+  "no_existing_runtime_or_frozen_inputs": true
+}

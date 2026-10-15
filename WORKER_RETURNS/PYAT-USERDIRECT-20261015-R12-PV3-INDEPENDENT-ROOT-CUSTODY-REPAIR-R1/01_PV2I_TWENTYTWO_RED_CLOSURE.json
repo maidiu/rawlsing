@@ -1,0 +1,2414 @@
+{
+  "schema": "PV3_PV2I_RED_CLOSURE@1",
+  "scope": "TEST_ONLY sourcefree implementation, not independent acceptance/adoption",
+  "independent_oracle_sha256": "321681bb0918e4119e3053aef8f0a6cb0d9db434eadc0a3225f897a686a55f79",
+  "summary": {
+    "original_red": 22,
+    "repaired_raw_guards": 21,
+    "mandated_semantic_hold": 1,
+    "raw_pv2i_pass": 47,
+    "raw_pv2i_fail": 1,
+    "all_22_original_assertions_green": false,
+    "all_22_edges_have_explicit_disposition": true
+  },
+  "cases": [
+    {
+      "case": "test_coherently_reissued_register_cannot_authenticate_itself[original_U_ref]",
+      "predecessor_observed": {
+        "name": "test_coherently_reissued_register_cannot_authenticate_itself[original_U_ref]",
+        "state": "FAILURE",
+        "message": "Failed: DID NOT RAISE ValueError"
+      },
+      "pv3_raw_observed": {
+        "name": "test_coherently_reissued_register_cannot_authenticate_itself[original_U_ref]",
+        "state": "PASS",
+        "message": null
+      },
+      "disposition": "REPAIRED_OBSERVED_PASS",
+      "strict_frozen_assertion_passes": true,
+      "observed_execution": {
+        "name": "test_coherently_reissued_register_cannot_authenticate_itself[original_U_ref]",
+        "raw_outcome": "passed",
+        "api_events": [
+          {
+            "case": "test_coherently_reissued_register_cannot_authenticate_itself[original_U_ref]",
+            "operation": "run",
+            "outcome": "REFUSED",
+            "error_type": "CustodyError",
+            "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+          }
+        ]
+      },
+      "additional_guard_evidence": null
+    },
+    {
+      "case": "test_coherently_reissued_register_cannot_authenticate_itself[independent_E_ref]",
+      "predecessor_observed": {
+        "name": "test_coherently_reissued_register_cannot_authenticate_itself[independent_E_ref]",
+        "state": "FAILURE",
+        "message": "Failed: DID NOT RAISE ValueError"
+      },
+      "pv3_raw_observed": {
+        "name": "test_coherently_reissued_register_cannot_authenticate_itself[independent_E_ref]",
+        "state": "PASS",
+        "message": null
+      },
+      "disposition": "REPAIRED_OBSERVED_PASS",
+      "strict_frozen_assertion_passes": true,
+      "observed_execution": {
+        "name": "test_coherently_reissued_register_cannot_authenticate_itself[independent_E_ref]",
+        "raw_outcome": "passed",
+        "api_events": [
+          {
+            "case": "test_coherently_reissued_register_cannot_authenticate_itself[independent_E_ref]",
+            "operation": "run",
+            "outcome": "REFUSED",
+            "error_type": "CustodyError",
+            "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+          }
+        ]
+      },
+      "additional_guard_evidence": null
+    },
+    {
+      "case": "test_coherently_reissued_register_cannot_authenticate_itself[independent_custody_ref]",
+      "predecessor_observed": {
+        "name": "test_coherently_reissued_register_cannot_authenticate_itself[independent_custody_ref]",
+        "state": "FAILURE",
+        "message": "Failed: DID NOT RAISE ValueError"
+      },
+      "pv3_raw_observed": {
+        "name": "test_coherently_reissued_register_cannot_authenticate_itself[independent_custody_ref]",
+        "state": "PASS",
+        "message": null
+      },
+      "disposition": "REPAIRED_OBSERVED_PASS",
+      "strict_frozen_assertion_passes": true,
+      "observed_execution": {
+        "name": "test_coherently_reissued_register_cannot_authenticate_itself[independent_custody_ref]",
+        "raw_outcome": "passed",
+        "api_events": [
+          {
+            "case": "test_coherently_reissued_register_cannot_authenticate_itself[independent_custody_ref]",
+            "operation": "run",
+            "outcome": "REFUSED",
+            "error_type": "CustodyError",
+            "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+          }
+        ]
+      },
+      "additional_guard_evidence": null
+    },
+    {
+      "case": "test_coherently_reissued_register_cannot_authenticate_itself[original_operation_scope_ref]",
+      "predecessor_observed": {
+        "name": "test_coherently_reissued_register_cannot_authenticate_itself[original_operation_scope_ref]",
+        "state": "FAILURE",
+        "message": "Failed: DID NOT RAISE ValueError"
+      },
+      "pv3_raw_observed": {
+        "name": "test_coherently_reissued_register_cannot_authenticate_itself[original_operation_scope_ref]",
+        "state": "PASS",
+        "message": null
+      },
+      "disposition": "REPAIRED_OBSERVED_PASS",
+      "strict_frozen_assertion_passes": true,
+      "observed_execution": {
+        "name": "test_coherently_reissued_register_cannot_authenticate_itself[original_operation_scope_ref]",
+        "raw_outcome": "passed",
+        "api_events": [
+          {
+            "case": "test_coherently_reissued_register_cannot_authenticate_itself[original_operation_scope_ref]",
+            "operation": "run",
+            "outcome": "REFUSED",
+            "error_type": "CustodyError",
+            "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+          }
+        ]
+      },
+      "additional_guard_evidence": null
+    },
+    {
+      "case": "test_equal_count_held_relabel_with_self_reissued_register_refused",
+      "predecessor_observed": {
+        "name": "test_equal_count_held_relabel_with_self_reissued_register_refused",
+        "state": "FAILURE",
+        "message": "Failed: DID NOT RAISE ValueError"
+      },
+      "pv3_raw_observed": {
+        "name": "test_equal_count_held_relabel_with_self_reissued_register_refused",
+        "state": "PASS",
+        "message": null
+      },
+      "disposition": "REPAIRED_OBSERVED_PASS",
+      "strict_frozen_assertion_passes": true,
+      "observed_execution": {
+        "name": "test_equal_count_held_relabel_with_self_reissued_register_refused",
+        "raw_outcome": "passed",
+        "api_events": [
+          {
+            "case": "test_equal_count_held_relabel_with_self_reissued_register_refused",
+            "operation": "run",
+            "outcome": "REFUSED",
+            "error_type": "CustodyError",
+            "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+          }
+        ]
+      },
+      "additional_guard_evidence": null
+    },
+    {
+      "case": "test_complete_original_source_binding[original_item_scope_ref]",
+      "predecessor_observed": {
+        "name": "test_complete_original_source_binding[original_item_scope_ref]",
+        "state": "FAILURE",
+        "message": "Failed: DID NOT RAISE ValueError"
+      },
+      "pv3_raw_observed": {
+        "name": "test_complete_original_source_binding[original_item_scope_ref]",
+        "state": "PASS",
+        "message": null
+      },
+      "disposition": "REPAIRED_OBSERVED_PASS",
+      "strict_frozen_assertion_passes": true,
+      "observed_execution": {
+        "name": "test_complete_original_source_binding[original_item_scope_ref]",
+        "raw_outcome": "passed",
+        "api_events": [
+          {
+            "case": "test_complete_original_source_binding[original_item_scope_ref]",
+            "operation": "run",
+            "outcome": "REFUSED",
+            "error_type": "CustodyError",
+            "message": "ORIGINAL_EXPECTED_NOT_INSTALLED_ROOT"
+          }
+        ]
+      },
+      "additional_guard_evidence": null
+    },
+    {
+      "case": "test_current_read_refuses_foreign_or_widened_fixture_grant[issuer-PV2I-SELF-ISSUER]",
+      "predecessor_observed": {
+        "name": "test_current_read_refuses_foreign_or_widened_fixture_grant[issuer-PV2I-SELF-ISSUER]",
+        "state": "FAILURE",
+        "message": "AssertionError"
+      },
+      "pv3_raw_observed": {
+        "name": "test_current_read_refuses_foreign_or_widened_fixture_grant[issuer-PV2I-SELF-ISSUER]",
+        "state": "PASS",
+        "message": null
+      },
+      "disposition": "REPAIRED_OBSERVED_PASS",
+      "strict_frozen_assertion_passes": true,
+      "observed_execution": {
+        "name": "test_current_read_refuses_foreign_or_widened_fixture_grant[issuer-PV2I-SELF-ISSUER]",
+        "raw_outcome": "passed",
+        "api_events": [
+          {
+            "case": "test_current_read_refuses_foreign_or_widened_fixture_grant[issuer-PV2I-SELF-ISSUER]",
+            "operation": "current_read",
+            "outcome": "REFUSED",
+            "error_type": "CustodyError",
+            "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+          }
+        ]
+      },
+      "additional_guard_evidence": null
+    },
+    {
+      "case": "test_current_read_refuses_foreign_or_widened_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT]",
+      "predecessor_observed": {
+        "name": "test_current_read_refuses_foreign_or_widened_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT]",
+        "state": "FAILURE",
+        "message": "AssertionError"
+      },
+      "pv3_raw_observed": {
+        "name": "test_current_read_refuses_foreign_or_widened_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT]",
+        "state": "PASS",
+        "message": null
+      },
+      "disposition": "REPAIRED_OBSERVED_PASS",
+      "strict_frozen_assertion_passes": true,
+      "observed_execution": {
+        "name": "test_current_read_refuses_foreign_or_widened_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT]",
+        "raw_outcome": "passed",
+        "api_events": [
+          {
+            "case": "test_current_read_refuses_foreign_or_widened_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT]",
+            "operation": "current_read",
+            "outcome": "REFUSED",
+            "error_type": "CustodyError",
+            "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+          }
+        ]
+      },
+      "additional_guard_evidence": null
+    },
+    {
+      "case": "test_current_read_refuses_foreign_or_widened_fixture_grant[ceiling-value2]",
+      "predecessor_observed": {
+        "name": "test_current_read_refuses_foreign_or_widened_fixture_grant[ceiling-value2]",
+        "state": "FAILURE",
+        "message": "AssertionError"
+      },
+      "pv3_raw_observed": {
+        "name": "test_current_read_refuses_foreign_or_widened_fixture_grant[ceiling-value2]",
+        "state": "PASS",
+        "message": null
+      },
+      "disposition": "REPAIRED_OBSERVED_PASS",
+      "strict_frozen_assertion_passes": true,
+      "observed_execution": {
+        "name": "test_current_read_refuses_foreign_or_widened_fixture_grant[ceiling-value2]",
+        "raw_outcome": "passed",
+        "api_events": [
+          {
+            "case": "test_current_read_refuses_foreign_or_widened_fixture_grant[ceiling-value2]",
+            "operation": "current_read",
+            "outcome": "REFUSED",
+            "error_type": "CustodyError",
+            "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+          }
+        ]
+      },
+      "additional_guard_evidence": null
+    },
+    {
+      "case": "test_execution_refuses_self_rehashed_fixture_grant[issuer-PV2I-SELF-ISSUER]",
+      "predecessor_observed": {
+        "name": "test_execution_refuses_self_rehashed_fixture_grant[issuer-PV2I-SELF-ISSUER]",
+        "state": "FAILURE",
+        "message": "Failed: DID NOT RAISE ValueError"
+      },
+      "pv3_raw_observed": {
+        "name": "test_execution_refuses_self_rehashed_fixture_grant[issuer-PV2I-SELF-ISSUER]",
+        "state": "PASS",
+        "message": null
+      },
+      "disposition": "REPAIRED_OBSERVED_PASS",
+      "strict_frozen_assertion_passes": true,
+      "observed_execution": {
+        "name": "test_execution_refuses_self_rehashed_fixture_grant[issuer-PV2I-SELF-ISSUER]",
+        "raw_outcome": "passed",
+        "api_events": [
+          {
+            "case": "test_execution_refuses_self_rehashed_fixture_grant[issuer-PV2I-SELF-ISSUER]",
+            "operation": "run",
+            "outcome": "REFUSED",
+            "error_type": "CustodyError",
+            "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+          }
+        ]
+      },
+      "additional_guard_evidence": null
+    },
+    {
+      "case": "test_execution_refuses_self_rehashed_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT]",
+      "predecessor_observed": {
+        "name": "test_execution_refuses_self_rehashed_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT]",
+        "state": "FAILURE",
+        "message": "Failed: DID NOT RAISE ValueError"
+      },
+      "pv3_raw_observed": {
+        "name": "test_execution_refuses_self_rehashed_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT]",
+        "state": "PASS",
+        "message": null
+      },
+      "disposition": "REPAIRED_OBSERVED_PASS",
+      "strict_frozen_assertion_passes": true,
+      "observed_execution": {
+        "name": "test_execution_refuses_self_rehashed_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT]",
+        "raw_outcome": "passed",
+        "api_events": [
+          {
+            "case": "test_execution_refuses_self_rehashed_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT]",
+            "operation": "run",
+            "outcome": "REFUSED",
+            "error_type": "CustodyError",
+            "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+          }
+        ]
+      },
+      "additional_guard_evidence": null
+    },
+    {
+      "case": "test_execution_refuses_self_rehashed_fixture_grant[ceiling-value2]",
+      "predecessor_observed": {
+        "name": "test_execution_refuses_self_rehashed_fixture_grant[ceiling-value2]",
+        "state": "FAILURE",
+        "message": "Failed: DID NOT RAISE ValueError"
+      },
+      "pv3_raw_observed": {
+        "name": "test_execution_refuses_self_rehashed_fixture_grant[ceiling-value2]",
+        "state": "PASS",
+        "message": null
+      },
+      "disposition": "REPAIRED_OBSERVED_PASS",
+      "strict_frozen_assertion_passes": true,
+      "observed_execution": {
+        "name": "test_execution_refuses_self_rehashed_fixture_grant[ceiling-value2]",
+        "raw_outcome": "passed",
+        "api_events": [
+          {
+            "case": "test_execution_refuses_self_rehashed_fixture_grant[ceiling-value2]",
+            "operation": "run",
+            "outcome": "REFUSED",
+            "error_type": "CustodyError",
+            "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+          }
+        ]
+      },
+      "additional_guard_evidence": null
+    },
+    {
+      "case": "test_historical_register_cannot_restore_current_authorization",
+      "predecessor_observed": {
+        "name": "test_historical_register_cannot_restore_current_authorization",
+        "state": "FAILURE",
+        "message": "AssertionError: Old unrevoked snapshot reauthorizes after revocation; no independent current registry"
+      },
+      "pv3_raw_observed": {
+        "name": "test_historical_register_cannot_restore_current_authorization",
+        "state": "PASS",
+        "message": null
+      },
+      "disposition": "REPAIRED_OBSERVED_PASS",
+      "strict_frozen_assertion_passes": true,
+      "observed_execution": {
+        "name": "test_historical_register_cannot_restore_current_authorization",
+        "raw_outcome": "passed",
+        "api_events": [
+          {
+            "case": "test_historical_register_cannot_restore_current_authorization",
+            "operation": "current_read",
+            "outcome": "RETURNED",
+            "servable": false,
+            "links": 0,
+            "held": 0,
+            "claim": "PV3_TEST_ONLY_CURRENT_SOURCE_RESOLVED"
+          }
+        ]
+      },
+      "additional_guard_evidence": null
+    },
+    {
+      "case": "test_current_consumer_rejects_payload_tamper_same_ref",
+      "predecessor_observed": {
+        "name": "test_current_consumer_rejects_payload_tamper_same_ref",
+        "state": "FAILURE",
+        "message": "AssertionError: Current read serves changed payload under unchanged consumer reference"
+      },
+      "pv3_raw_observed": {
+        "name": "test_current_consumer_rejects_payload_tamper_same_ref",
+        "state": "PASS",
+        "message": null
+      },
+      "disposition": "REPAIRED_OBSERVED_PASS",
+      "strict_frozen_assertion_passes": true,
+      "observed_execution": {
+        "name": "test_current_consumer_rejects_payload_tamper_same_ref",
+        "raw_outcome": "passed",
+        "api_events": [
+          {
+            "case": "test_current_consumer_rejects_payload_tamper_same_ref",
+            "operation": "current_read",
+            "outcome": "REFUSED",
+            "error_type": "ValueError",
+            "message": "CONSUMER_CUSTODY_CONTENT_MISMATCH"
+          }
+        ]
+      },
+      "additional_guard_evidence": null
+    },
+    {
+      "case": "test_current_read_does_not_alias_historical_report",
+      "predecessor_observed": {
+        "name": "test_current_read_does_not_alias_historical_report",
+        "state": "FAILURE",
+        "message": "AssertionError: Read result aliases original historical material"
+      },
+      "pv3_raw_observed": {
+        "name": "test_current_read_does_not_alias_historical_report",
+        "state": "PASS",
+        "message": null
+      },
+      "disposition": "REPAIRED_OBSERVED_PASS",
+      "strict_frozen_assertion_passes": true,
+      "observed_execution": {
+        "name": "test_current_read_does_not_alias_historical_report",
+        "raw_outcome": "passed",
+        "api_events": [
+          {
+            "case": "test_current_read_does_not_alias_historical_report",
+            "operation": "current_read",
+            "outcome": "RETURNED",
+            "servable": true,
+            "links": 6,
+            "held": 0,
+            "claim": "PV3_TEST_ONLY_CURRENT_SOURCE_RESOLVED"
+          }
+        ]
+      },
+      "additional_guard_evidence": null
+    },
+    {
+      "case": "test_role_validation_fails_closed_on_incomplete_material[missing_material]",
+      "predecessor_observed": {
+        "name": "test_role_validation_fails_closed_on_incomplete_material[missing_material]",
+        "state": "FAILURE",
+        "message": "Failed: DID NOT RAISE ValueError"
+      },
+      "pv3_raw_observed": {
+        "name": "test_role_validation_fails_closed_on_incomplete_material[missing_material]",
+        "state": "PASS",
+        "message": null
+      },
+      "disposition": "REPAIRED_OBSERVED_PASS",
+      "strict_frozen_assertion_passes": true,
+      "observed_execution": {
+        "name": "test_role_validation_fails_closed_on_incomplete_material[missing_material]",
+        "raw_outcome": "passed",
+        "api_events": [
+          {
+            "case": "test_role_validation_fails_closed_on_incomplete_material[missing_material]",
+            "operation": "roles",
+            "outcome": "REFUSED",
+            "error_type": "CustodyError",
+            "message": "MISSING_CONSUMER_MATERIAL"
+          }
+        ]
+      },
+      "additional_guard_evidence": null
+    },
+    {
+      "case": "test_role_validation_fails_closed_on_incomplete_material[missing_roles]",
+      "predecessor_observed": {
+        "name": "test_role_validation_fails_closed_on_incomplete_material[missing_roles]",
+        "state": "FAILURE",
+        "message": "Failed: DID NOT RAISE ValueError"
+      },
+      "pv3_raw_observed": {
+        "name": "test_role_validation_fails_closed_on_incomplete_material[missing_roles]",
+        "state": "PASS",
+        "message": null
+      },
+      "disposition": "REPAIRED_OBSERVED_PASS",
+      "strict_frozen_assertion_passes": true,
+      "observed_execution": {
+        "name": "test_role_validation_fails_closed_on_incomplete_material[missing_roles]",
+        "raw_outcome": "passed",
+        "api_events": [
+          {
+            "case": "test_role_validation_fails_closed_on_incomplete_material[missing_roles]",
+            "operation": "roles",
+            "outcome": "REFUSED",
+            "error_type": "CustodyError",
+            "message": "MISSING_REQUIRED_ROLES"
+          }
+        ]
+      },
+      "additional_guard_evidence": null
+    },
+    {
+      "case": "test_role_validation_fails_closed_on_incomplete_material[missing_conditioner]",
+      "predecessor_observed": {
+        "name": "test_role_validation_fails_closed_on_incomplete_material[missing_conditioner]",
+        "state": "FAILURE",
+        "message": "Failed: DID NOT RAISE ValueError"
+      },
+      "pv3_raw_observed": {
+        "name": "test_role_validation_fails_closed_on_incomplete_material[missing_conditioner]",
+        "state": "PASS",
+        "message": null
+      },
+      "disposition": "REPAIRED_OBSERVED_PASS",
+      "strict_frozen_assertion_passes": true,
+      "observed_execution": {
+        "name": "test_role_validation_fails_closed_on_incomplete_material[missing_conditioner]",
+        "raw_outcome": "passed",
+        "api_events": [
+          {
+            "case": "test_role_validation_fails_closed_on_incomplete_material[missing_conditioner]",
+            "operation": "roles",
+            "outcome": "REFUSED",
+            "error_type": "CustodyError",
+            "message": "MISSING_REQUIRED_ROLES"
+          }
+        ]
+      },
+      "additional_guard_evidence": null
+    },
+    {
+      "case": "test_generic_native_labels_not_specialized_Q86",
+      "predecessor_observed": {
+        "name": "test_generic_native_labels_not_specialized_Q86",
+        "state": "FAILURE",
+        "message": "AssertionError"
+      },
+      "pv3_raw_observed": {
+        "name": "test_generic_native_labels_not_specialized_Q86",
+        "state": "FAILURE",
+        "message": "AssertionError"
+      },
+      "disposition": "MANDATED_SEMANTIC_HOLD__GENERIC_READ_DENIED",
+      "strict_frozen_assertion_passes": false,
+      "observed_execution": {
+        "name": "test_generic_native_labels_not_specialized_Q86",
+        "raw_outcome": "failed",
+        "api_events": [],
+        "actual_baseline_evidence": "4083e1dab2c179b349fcfd56090f39752c8b09f1a157ccd767292da4c1c5aabd"
+      },
+      "additional_guard_evidence": "observations/generic_semantics_hold.json"
+    },
+    {
+      "case": "test_coherent_household_relabel_cannot_reuse_respondent_fact",
+      "predecessor_observed": {
+        "name": "test_coherent_household_relabel_cannot_reuse_respondent_fact",
+        "state": "FAILURE",
+        "message": "Failed: DID NOT RAISE ValueError"
+      },
+      "pv3_raw_observed": {
+        "name": "test_coherent_household_relabel_cannot_reuse_respondent_fact",
+        "state": "PASS",
+        "message": null
+      },
+      "disposition": "REPAIRED_OBSERVED_PASS",
+      "strict_frozen_assertion_passes": true,
+      "observed_execution": {
+        "name": "test_coherent_household_relabel_cannot_reuse_respondent_fact",
+        "raw_outcome": "passed",
+        "api_events": [
+          {
+            "case": "test_coherent_household_relabel_cannot_reuse_respondent_fact",
+            "operation": "run",
+            "outcome": "REFUSED",
+            "error_type": "CustodyError",
+            "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+          }
+        ]
+      },
+      "additional_guard_evidence": null
+    },
+    {
+      "case": "test_changed_actual_journal_result_reference_is_not_ignored",
+      "predecessor_observed": {
+        "name": "test_changed_actual_journal_result_reference_is_not_ignored",
+        "state": "FAILURE",
+        "message": "AssertionError: Changed result_refs in actual side-effect journal ignored by successful replay"
+      },
+      "pv3_raw_observed": {
+        "name": "test_changed_actual_journal_result_reference_is_not_ignored",
+        "state": "PASS",
+        "message": null
+      },
+      "disposition": "REPAIRED_OBSERVED_PASS",
+      "strict_frozen_assertion_passes": true,
+      "observed_execution": {
+        "name": "test_changed_actual_journal_result_reference_is_not_ignored",
+        "raw_outcome": "passed",
+        "api_events": [],
+        "separate_process_evidence": {
+          "cold_court.json": "ecff9c6abbb95bedcc9319437018b3901b8424915ac47c473662bf7cdf53ecff",
+          "cold_actual_result_ref_tamper.json": "ca489e1a313e6f16e6e5edf7f35329a9728e961713dff1f28211b7f99ade8b9a",
+          "cold_checkpoint_payload_tamper.json": "9e13311d59a5bcace57252aecb2a1c4c22521da3ec76cc76b861f8fe2e2810b7",
+          "cold_forged_current_grant.json": "5dce636ee18f6dc5a6b17c0b738298369945376b087534c838ddf0ebca8d711a"
+        }
+      },
+      "additional_guard_evidence": null
+    },
+    {
+      "case": "test_fresh_process_current_read_refuses_self_issued_grant",
+      "predecessor_observed": {
+        "name": "test_fresh_process_current_read_refuses_self_issued_grant",
+        "state": "FAILURE",
+        "message": "AssertionError: Fresh process serves persisted history under requester-created production-ceiling grant"
+      },
+      "pv3_raw_observed": {
+        "name": "test_fresh_process_current_read_refuses_self_issued_grant",
+        "state": "PASS",
+        "message": null
+      },
+      "disposition": "REPAIRED_OBSERVED_PASS",
+      "strict_frozen_assertion_passes": true,
+      "observed_execution": {
+        "name": "test_fresh_process_current_read_refuses_self_issued_grant",
+        "raw_outcome": "passed",
+        "api_events": [],
+        "separate_process_evidence": {
+          "cold_court.json": "ecff9c6abbb95bedcc9319437018b3901b8424915ac47c473662bf7cdf53ecff",
+          "cold_actual_result_ref_tamper.json": "ca489e1a313e6f16e6e5edf7f35329a9728e961713dff1f28211b7f99ade8b9a",
+          "cold_checkpoint_payload_tamper.json": "9e13311d59a5bcace57252aecb2a1c4c22521da3ec76cc76b861f8fe2e2810b7",
+          "cold_forged_current_grant.json": "5dce636ee18f6dc5a6b17c0b738298369945376b087534c838ddf0ebca8d711a"
+        }
+      },
+      "additional_guard_evidence": null
+    }
+  ],
+  "suites": {
+    "pv2_33": {
+      "counts": {
+        "PASS": 33
+      },
+      "cases": [
+        {
+          "name": "test_register_is_precommitted_and_independently_reproducible",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_register_refuses_all_held_or_insufficient_held_scope",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_positive_original_to_field_forge_consumer_witness",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_positive_replay_is_exact_with_zero_additional_durable_calls",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherent_foreign_issuer_ref_refused[original_U_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherent_foreign_issuer_ref_refused[independent_E_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherent_foreign_issuer_ref_refused[independent_custody_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherent_foreign_issuer_ref_refused[original_operation_scope_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_issuer_ref_changes_the_original_key",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_dropping_all_held_obligations_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_dropping_one_held_obligation_with_identical_runnable_output_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_cherry_picked_single_obligation_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_cherry_picked_namespace_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_reversed_semantic_role_mask_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_reversed_role_mask_also_fails_the_owner_topology_check",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_declared_roles_bind_the_actual_producer_topology",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_masked_role_label_rejected_at_consumer_material",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_form_or_respondent_unit_refused[form-FOREIGN-FORM]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_form_or_respondent_unit_refused[respondent_unit-HOUSEHOLD]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_other_relabelled_identity_labels_refused[language-FOREIGN-LANGUAGE]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_other_relabelled_identity_labels_refused[instrument_release-INST-FOREIGN]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_other_relabelled_identity_labels_refused[administered_occurrence-FOREIGN-OCCURRENCE]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_other_relabelled_identity_labels_refused[option_scope-value3]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_form_and_unit_labels_discriminate_the_original_key",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_same_count_swapped_source_native_item_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_replay_ref_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_stale_precommitted_register_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_caller_supplied_inventory_relabel_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_revoked_fixture_use_blocks_execution_and_current_read",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_cold_process_replay_restores_all_six_values",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_altered_expected_digest_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_unregistered_scope_key_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_real_owner_artifacts_are_actual_c11_and_field_forge",
+          "state": "PASS",
+          "message": null
+        }
+      ],
+      "terminal": {
+        "argv": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/tests/test_pv2_original_scope_binding.py",
+          "-vv",
+          "--tb=short",
+          "--assert=plain",
+          "--import-mode=importlib",
+          "-p",
+          "no:cacheprovider",
+          "--basetemp=/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/tmp/pv2_33",
+          "--junitxml=/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/observations/pv2_33.xml"
+        ],
+        "cwd": "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root",
+        "PYTHONPATH": "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro:/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root:/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro:/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/frozen_pv2i/repro",
+        "exit": 0,
+        "seconds": 1.793536901473999
+      }
+    },
+    "v2k_24": {
+      "counts": {
+        "PASS": 24
+      },
+      "cases": [
+        {
+          "name": "test_actual_two_namespace_original_successor_consumes_all_B_and_J_only",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_independent_B_or_J_only_omission_rejected_before_any_durable_call[B]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_independent_B_or_J_only_omission_rejected_before_any_durable_call[DISCOVERY]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_original_identity_fields_distinguish_successor_keys[respondent_namespace-OTHER]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_original_identity_fields_distinguish_successor_keys[respondent_unit-HOUSEHOLD]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_original_identity_fields_distinguish_successor_keys[form-F2]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_original_identity_fields_distinguish_successor_keys[language-OTHER]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_original_identity_fields_distinguish_successor_keys[administered_occurrence-SECOND]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_original_identity_fields_distinguish_successor_keys[option_scope-value5]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_exact_query_predicate_routing_and_custody_refs_bind_successor_identity",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_actual_wrong_namespace_or_routing_rejected_before_first_scope_execution",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_local_selected_A_only_pass_cannot_replace_independent_original_B_and_J",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_original_key_same_count_and_duplicate_are_rejected",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_original_payload_digest_preimage_and_origin_tampering_rejected",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_real_source_permission_and_foreign_replay_keys_never_granted",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_legacy_original_direction_source_and_form_mismatch_rejected",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_source_release_item_operation_and_measure_identity_changes_keys",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_no_false_productive_pass_for_all_held_original_expectation",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_original_item_order_cannot_claim_other_actual_query",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_incomplete_or_unknown_original_schema_cannot_be_laundered_by_digest[missing_namespace]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_incomplete_or_unknown_original_schema_cannot_be_laundered_by_digest[unknown_original_field]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_incomplete_or_unknown_original_schema_cannot_be_laundered_by_digest[unknown_top_field]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_old_V2_schema_cannot_be_silently_rebranded_or_made_mutable",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_distinct_original_language_cannot_double_count_same_actual_owner_unit",
+          "state": "PASS",
+          "message": null
+        }
+      ],
+      "terminal": {
+        "argv": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "rawlsing_next/tests/test_hq295_v2k_original_identity_successor.py",
+          "-vv",
+          "--tb=short",
+          "--assert=plain",
+          "--import-mode=importlib",
+          "-p",
+          "no:cacheprovider",
+          "--basetemp=/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/tmp/v2k_24",
+          "--junitxml=/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/observations/v2k_24.xml"
+        ],
+        "cwd": "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root",
+        "PYTHONPATH": "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro:/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root:/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro:/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/frozen_pv2i/repro",
+        "exit": 0,
+        "seconds": 3.6766490936279297
+      }
+    },
+    "pv_21": {
+      "counts": {
+        "PASS": 21
+      },
+      "cases": [
+        {
+          "name": "test_independent_positive_denominators_and_replay",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_independent_omission[B]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_independent_omission[DISCOVERY]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_same_count_foreign_substitution",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_wrong_c11_binding[respondent_namespace-FOREIGN]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_wrong_c11_binding[native_item_refs-None]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_wrong_c11_binding[routing_refs-None]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_changed_preimage_and_foreign_query",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_issuer_is_not_authenticated[original_U_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_issuer_is_not_authenticated[independent_E_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_issuer_is_not_authenticated[independent_custody_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_issuer_is_not_authenticated[original_operation_scope_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_missing_all_held_rows_exposes_outer_gap",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_cherry_picked_A_only_exposes_outer_gap",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherent_semantic_rekey[wrong_role]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherent_semantic_rekey[wrong_direction]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherent_semantic_rekey[foreign_form]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherent_semantic_rekey[foreign_unit]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_replay_ref_rejected",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_all_held_no_productive_pass",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_original_namespace_and_form_key_discrimination",
+          "state": "PASS",
+          "message": null
+        }
+      ],
+      "terminal": {
+        "argv": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "rawlsing_next/tests/test_postastra_pv_v2k_independent.py",
+          "-vv",
+          "--tb=short",
+          "--assert=plain",
+          "--import-mode=importlib",
+          "-p",
+          "no:cacheprovider",
+          "--basetemp=/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/tmp/pv_21",
+          "--junitxml=/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/observations/pv_21.xml"
+        ],
+        "cwd": "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root",
+        "PYTHONPATH": "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro:/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root:/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro:/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/frozen_pv2i/repro",
+        "exit": 0,
+        "seconds": 6.506279945373535
+      }
+    },
+    "owners_111": {
+      "counts": {
+        "PASS": 111
+      },
+      "cases": [
+        {
+          "name": "test_actual_field_forge_consumes_saved_durable_results_and_replays",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_missing_original_operation_refused_before_execution",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_source_mismatch_refused_before_execution",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_output_derived_expectation_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_stale_consumer_ref_refused_by_real_owner",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_job_ref_and_release_ref_are_refused_before_execution",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_duplicate_expected_dispatch_is_refused_before_execution",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_deferred_and_failed_units_remain_pinned[DEFERRED]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_deferred_and_failed_units_remain_pinned[FAILED]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_custodian_hash_claim_never_grants_external_authentication",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_real_interruption_after_effect_holds_pending_head_and_never_duplicates",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_original_respondent_item_and_configuration_are_required",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_minority_values_all_item_keys_and_nonscalar_configurations_survive",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_respondent_and_incomplete_saved_input_are_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_wrong_condition_order_is_refused_before_execution",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_multiple_results_are_explicitly_unsupported",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_second_integrated_writer_is_refused_before_execution",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_extra_manifest_predicate_cannot_substitute_frozen_query_predicate",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_saved_fact_must_use_frozen_predicate_and_release[predicate]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_saved_fact_must_use_frozen_predicate_and_release[release]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_field_forge_measure_is_bound_for_queries_and_discovery[QUERY]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_field_forge_measure_is_bound_for_queries_and_discovery[DISCOVERY]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_nonexistent_frozen_authority_is_refused_before_execution[QUERY]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_nonexistent_frozen_authority_is_refused_before_execution[DISCOVERY]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_different_existing_authority_cannot_replace_dispatch_authority",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m00_positive_six_job_outer_join_passes_structurally",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m01_q_family_partial_omission_is_exact",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m02_j2_omission_is_exact_and_rest_verifies",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m03_same_count_replacement_is_omission_plus_extra",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m04_condition_arity_lie_fails_as_omission_plus_extra",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m05fwd_weighted_through_raw_query_is_claimed_ref_mismatch",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m05rev_raw_through_weighted_query_is_omission_plus_extra",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m06_forged_old_key_with_changed_identity_is_key_mismatch_only",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m07_consumer_only_duplicate_fails_closed_at_bind",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m08_multiplicity_overclaim_fails",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m09a_observed_zero_over_zero_denominator_is_not_typed",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m09b_measured_null_from_unvisited_is_false_null",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m10_fabricated_null_for_unexecuted_job_is_false_null",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m11a_held_work_executed_via_synthetic_unit_fails",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m11b_denied_row_dropped_from_export_is_visible",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m12a_unvisited_discovery_unreported_still_fails",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m12b_adaptive_partial_unreported_still_fails",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m12c_honest_pruned_discovery_is_conserved",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m13_truncated_expectation_rejected_but_self_consistent",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m14a_modelled_receipt_relabelled_authenticated_still_holds",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m14b_renamed_consumer_is_omitted_obligation",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m15a_forward_dated_consistent_custodian_still_holds",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m15b_custodian_without_timestamp_still_holds",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m16a_form_swap_changes_identity",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m16b_topology_swap_changes_identity",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m16c_route_swap_reroutes_through_foreign_query",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m16d_forged_executed_source_sha_fails_every_job",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m16e_respondent_field_is_inert_and_collapses",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_h_m17_forged_release_and_unmatched_source_lie",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_direct_composition_parity_and_complete_object_graph",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_source_projection_mismatch_fails_closed_before_execution",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_missing_or_substituted_projection_authority_fails_closed",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_catalog_query_predicate_and_discovery_substitution_fail_closed",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_catalog_order_invariance",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_cache_drop_rebuild_is_semantically_invariant",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_valid_empty_and_typed_absences_survive_packaging",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_raw_and_weighted_are_distinct_and_missing_weight_never_defaults_to_one",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_risk_set_identity_and_ordered_repeated_topology_are_preserved",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_exact_replay_identity_and_tamper_fail_closed",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_no_currentness_structural_causal_v3_or_historical_stage_resurrection",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_unary_distribution_and_observed_zero_are_exact",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_observed_zero_is_not_zero_support",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_arbitrary_coordinate_conjunction_and_response_position_condition",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_response_response_xor_uses_same_respondent_incidence",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_k_way_parity_full_joint_is_not_pairwise_or_unary_synthesis",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_same_marginals_different_joint_are_distinct_source_indexed_facts",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_equal_denominator_counts_different_risk_member_sets_do_not_collapse",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_routed_common_eligibility_zero_overlap_is_typed",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_raw_and_authorized_weighted_measure_are_distinct_exact_facts",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_missing_or_invalid_weight_fails_closed_without_default_one",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_branch_cohort_membership_is_exact_and_replayable",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_simpson_reversal_preserves_pooled_and_conditioned_query_identity",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_storage_order_permutations_replay_identically",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_tampered_query_predicate_or_replay_reference_fails_closed",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_diagnostic_score_cannot_masquerade_as_empirical_fact",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_query_execution_has_zero_structural_actor_v3_v2_effect",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_authorized_composite_without_exact_relation_bundle_is_noncomparable",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_unsupported_response_topology_is_typed_unresolved_not_collapsed",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_realized_cell_outside_exact_declared_domain_is_integrity_failure",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_missing_exact_c11_release_is_typed_unavailable_without_latest_fallback",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_scalar_query_cannot_collapse_multiselect_carrier_even_with_one_event",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_exact_empty_target_domain_is_valid_empty_not_zero_support",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_exact_all_inapplicable_routing_is_not_applicable_not_zero_support",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_authorized_composite_requires_and_uses_operation_specific_positive_authority",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_sealed_release_semantic_bodies_are_deeply_immutable_and_exports_detached",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_astra002_shared_i03_rejects_allow_authority_missing_fact_family",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_astra002_shared_i03_rejects_allow_authority_excluding_actual_universe",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_astra002_shared_i03_rejects_wrong_target_use_even_with_positive_authorities",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_astra002_shared_i03_preserves_exact_lawful_target_use",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_astra002_shared_i03_preserves_nonpositive_authority_as_nonpositive[DENY]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_astra002_shared_i03_preserves_nonpositive_authority_as_nonpositive[OUT_OF_SCOPE]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_astra002_shared_i03_preserves_nonpositive_authority_as_nonpositive[SUPERSEDED_NOT_REPLAYABLE]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_rules_only_validation_authority_is_exact_and_fail_closed",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_rules_only_validation_authority_executes_only_its_literal_kind",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_xor_zero_unary_signal_is_reached_without_unary_screen",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_simpson_reversal_is_detected_from_exact_pooled_and_stratified_facts",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_supported_non_top_minority_is_not_prevalence_pruned",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_recursive_subgroup_fork_preserves_exact_parent_ancestry",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_same_respondent_cotravel_and_branch_conditioned_cotravel_both_work",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_bounded_response_x_position_cartesian_frontier_is_fully_evaluated",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_higher_order_parity_uses_exact_joint_not_lower_order_signal",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_bounded_higher_order_configuration_cells_are_individually_covered",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_valid_empty_frontier_is_typed_and_complete",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_catalog_order_does_not_change_frontier_or_receipt_identity",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_frontier_hash_mismatch_adaptive_and_score_pruning_fail_closed",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_diagnostic_validation_cannot_become_canonical_empirical_truth",
+          "state": "PASS",
+          "message": null
+        }
+      ],
+      "terminal": {
+        "argv": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "rawlsing_next/tests/test_pre553_v2_durable_consumer_integration_candidate.py",
+          "rawlsing_next/tests/test_pre553_original_workload_v2_mutation_hostiles_candidate.py",
+          "rawlsing_next/tests/test_pre553_route_b_production.py",
+          "rawlsing_next/tests/test_pre553_empirical_query.py",
+          "rawlsing_next/tests/test_pre553_discovery_exact.py",
+          "-vv",
+          "--tb=short",
+          "--assert=plain",
+          "--import-mode=importlib",
+          "-p",
+          "no:cacheprovider",
+          "--basetemp=/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/tmp/owners_111",
+          "--junitxml=/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/observations/owners_111.xml"
+        ],
+        "cwd": "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root",
+        "PYTHONPATH": "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro:/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root:/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro:/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/frozen_pv2i/repro",
+        "exit": 0,
+        "seconds": 50.60490083694458
+      }
+    },
+    "pv2i_historical": {
+      "counts": {
+        "PASS": 26,
+        "FAILURE": 22
+      },
+      "cases": [
+        {
+          "name": "test_exact_independent_inventory_and_six_real_consumers",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_reference_with_fixed_register_refused[original_U_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_reference_with_fixed_register_refused[independent_E_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_reference_with_fixed_register_refused[independent_custody_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_reference_with_fixed_register_refused[original_operation_scope_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherently_reissued_register_cannot_authenticate_itself[original_U_ref]",
+          "state": "FAILURE",
+          "message": "Failed: DID NOT RAISE ValueError"
+        },
+        {
+          "name": "test_coherently_reissued_register_cannot_authenticate_itself[independent_E_ref]",
+          "state": "FAILURE",
+          "message": "Failed: DID NOT RAISE ValueError"
+        },
+        {
+          "name": "test_coherently_reissued_register_cannot_authenticate_itself[independent_custody_ref]",
+          "state": "FAILURE",
+          "message": "Failed: DID NOT RAISE ValueError"
+        },
+        {
+          "name": "test_coherently_reissued_register_cannot_authenticate_itself[original_operation_scope_ref]",
+          "state": "FAILURE",
+          "message": "Failed: DID NOT RAISE ValueError"
+        },
+        {
+          "name": "test_fixed_register_rejects_original_metadata_mutation[form-PV2I-FOREIGN-FORM]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_fixed_register_rejects_original_metadata_mutation[respondent_unit-HOUSEHOLD]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_fixed_register_rejects_original_metadata_mutation[language-PV2I-OTHER]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_fixed_register_rejects_original_metadata_mutation[instrument_release-EDITION2]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_fixed_register_rejects_original_metadata_mutation[administered_occurrence-SECOND]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_fixed_register_rejects_original_metadata_mutation[option_scope-value5]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_two_held_omission_same_six_runnable_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_A_only_scope_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_equal_count_held_relabel_with_fixed_register_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_equal_count_held_relabel_with_self_reissued_register_refused",
+          "state": "FAILURE",
+          "message": "Failed: DID NOT RAISE ValueError"
+        },
+        {
+          "name": "test_complete_original_source_binding[source_release_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_complete_original_source_binding[empirical_universe_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_complete_original_source_binding[original_item_scope_ref]",
+          "state": "FAILURE",
+          "message": "Failed: DID NOT RAISE ValueError"
+        },
+        {
+          "name": "test_complete_original_source_binding[routing_refs]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_swapped_actual_query_target_conditioner_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_reversed_role_mask_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_current_read_refuses_foreign_or_widened_fixture_grant[issuer-PV2I-SELF-ISSUER]",
+          "state": "FAILURE",
+          "message": "AssertionError"
+        },
+        {
+          "name": "test_current_read_refuses_foreign_or_widened_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT]",
+          "state": "FAILURE",
+          "message": "AssertionError"
+        },
+        {
+          "name": "test_current_read_refuses_foreign_or_widened_fixture_grant[ceiling-value2]",
+          "state": "FAILURE",
+          "message": "AssertionError"
+        },
+        {
+          "name": "test_execution_refuses_self_rehashed_fixture_grant[issuer-PV2I-SELF-ISSUER]",
+          "state": "FAILURE",
+          "message": "Failed: DID NOT RAISE ValueError"
+        },
+        {
+          "name": "test_execution_refuses_self_rehashed_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT]",
+          "state": "FAILURE",
+          "message": "Failed: DID NOT RAISE ValueError"
+        },
+        {
+          "name": "test_execution_refuses_self_rehashed_fixture_grant[ceiling-value2]",
+          "state": "FAILURE",
+          "message": "Failed: DID NOT RAISE ValueError"
+        },
+        {
+          "name": "test_explicit_revoked_register_blocks",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_historical_register_cannot_restore_current_authorization",
+          "state": "FAILURE",
+          "message": "AssertionError: Old unrevoked snapshot reauthorizes after revocation; no independent current registry"
+        },
+        {
+          "name": "test_current_consumer_rejects_payload_tamper_same_ref",
+          "state": "FAILURE",
+          "message": "AssertionError: Current read serves changed payload under unchanged consumer reference"
+        },
+        {
+          "name": "test_current_read_does_not_alias_historical_report",
+          "state": "FAILURE",
+          "message": "AssertionError: Read result aliases original historical material"
+        },
+        {
+          "name": "test_role_validation_fails_closed_on_incomplete_material[missing_material]",
+          "state": "FAILURE",
+          "message": "Failed: DID NOT RAISE ValueError"
+        },
+        {
+          "name": "test_role_validation_fails_closed_on_incomplete_material[missing_roles]",
+          "state": "FAILURE",
+          "message": "Failed: DID NOT RAISE ValueError"
+        },
+        {
+          "name": "test_role_validation_fails_closed_on_incomplete_material[missing_conditioner]",
+          "state": "FAILURE",
+          "message": "Failed: DID NOT RAISE ValueError"
+        },
+        {
+          "name": "test_generic_native_labels_not_specialized_Q86",
+          "state": "FAILURE",
+          "message": "AssertionError"
+        },
+        {
+          "name": "test_independent_row_mutation_reaches_actual_consumers",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherent_household_relabel_cannot_reuse_respondent_fact",
+          "state": "FAILURE",
+          "message": "Failed: DID NOT RAISE ValueError"
+        },
+        {
+          "name": "test_genuine_cold_process_preserves_journal_and_no_new_durable_units",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_changed_actual_journal_result_reference_is_not_ignored",
+          "state": "FAILURE",
+          "message": "AssertionError: Changed result_refs in actual side-effect journal ignored by successful replay"
+        },
+        {
+          "name": "test_changed_checkpoint_receipt_payload_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_fresh_process_current_read_refuses_self_issued_grant",
+          "state": "FAILURE",
+          "message": "AssertionError: Fresh process serves persisted history under requester-created production-ceiling grant"
+        },
+        {
+          "name": "test_missing_source_and_changed_edition_never_fake_cold_success",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_real_empty_risk_I03_and_Field_Forge_typed_states",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_second_independent_row_mutation_changes_I05_winning_consumer",
+          "state": "PASS",
+          "message": null
+        }
+      ],
+      "terminal": {
+        "argv": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/frozen_pv2i/tests/test_independent.py",
+          "-p",
+          "historical_plugin",
+          "-vv",
+          "--tb=short",
+          "--assert=plain",
+          "--import-mode=importlib",
+          "-p",
+          "no:cacheprovider",
+          "--basetemp=/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/tmp/pv2i_historical",
+          "--junitxml=/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/observations/pv2i_historical.xml"
+        ],
+        "cwd": "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root",
+        "PYTHONPATH": "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro:/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root:/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro:/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/frozen_pv2i/repro",
+        "exit": 1,
+        "seconds": 3.87288498878479
+      }
+    },
+    "pv2i_adapter": {
+      "counts": {
+        "PASS": 47,
+        "FAILURE": 1
+      },
+      "cases": [
+        {
+          "name": "test_exact_independent_inventory_and_six_real_consumers",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_reference_with_fixed_register_refused[original_U_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_reference_with_fixed_register_refused[independent_E_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_reference_with_fixed_register_refused[independent_custody_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_foreign_reference_with_fixed_register_refused[original_operation_scope_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherently_reissued_register_cannot_authenticate_itself[original_U_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherently_reissued_register_cannot_authenticate_itself[independent_E_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherently_reissued_register_cannot_authenticate_itself[independent_custody_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherently_reissued_register_cannot_authenticate_itself[original_operation_scope_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_fixed_register_rejects_original_metadata_mutation[form-PV2I-FOREIGN-FORM]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_fixed_register_rejects_original_metadata_mutation[respondent_unit-HOUSEHOLD]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_fixed_register_rejects_original_metadata_mutation[language-PV2I-OTHER]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_fixed_register_rejects_original_metadata_mutation[instrument_release-EDITION2]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_fixed_register_rejects_original_metadata_mutation[administered_occurrence-SECOND]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_fixed_register_rejects_original_metadata_mutation[option_scope-value5]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_two_held_omission_same_six_runnable_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_A_only_scope_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_equal_count_held_relabel_with_fixed_register_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_equal_count_held_relabel_with_self_reissued_register_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_complete_original_source_binding[source_release_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_complete_original_source_binding[empirical_universe_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_complete_original_source_binding[original_item_scope_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_complete_original_source_binding[routing_refs]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_swapped_actual_query_target_conditioner_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_reversed_role_mask_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_current_read_refuses_foreign_or_widened_fixture_grant[issuer-PV2I-SELF-ISSUER]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_current_read_refuses_foreign_or_widened_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_current_read_refuses_foreign_or_widened_fixture_grant[ceiling-value2]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_execution_refuses_self_rehashed_fixture_grant[issuer-PV2I-SELF-ISSUER]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_execution_refuses_self_rehashed_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_execution_refuses_self_rehashed_fixture_grant[ceiling-value2]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_explicit_revoked_register_blocks",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_historical_register_cannot_restore_current_authorization",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_current_consumer_rejects_payload_tamper_same_ref",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_current_read_does_not_alias_historical_report",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_role_validation_fails_closed_on_incomplete_material[missing_material]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_role_validation_fails_closed_on_incomplete_material[missing_roles]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_role_validation_fails_closed_on_incomplete_material[missing_conditioner]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_generic_native_labels_not_specialized_Q86",
+          "state": "FAILURE",
+          "message": "AssertionError"
+        },
+        {
+          "name": "test_independent_row_mutation_reaches_actual_consumers",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherent_household_relabel_cannot_reuse_respondent_fact",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_genuine_cold_process_preserves_journal_and_no_new_durable_units",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_changed_actual_journal_result_reference_is_not_ignored",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_changed_checkpoint_receipt_payload_refused",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_fresh_process_current_read_refuses_self_issued_grant",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_missing_source_and_changed_edition_never_fake_cold_success",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_real_empty_risk_I03_and_Field_Forge_typed_states",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_second_independent_row_mutation_changes_I05_winning_consumer",
+          "state": "PASS",
+          "message": null
+        }
+      ],
+      "terminal": {
+        "argv": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/frozen_pv2i/tests/test_independent.py",
+          "-p",
+          "adapter_plugin",
+          "-vv",
+          "--tb=short",
+          "--assert=plain",
+          "--import-mode=importlib",
+          "-p",
+          "no:cacheprovider",
+          "--basetemp=/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/tmp/pv2i_adapter",
+          "--junitxml=/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/observations/pv2i_adapter.xml"
+        ],
+        "cwd": "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root",
+        "PYTHONPATH": "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro:/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root:/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro:/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/frozen_pv2i/repro",
+        "exit": 1,
+        "seconds": 2.3840439319610596
+      }
+    },
+    "pv3": {
+      "counts": {
+        "PASS": 28
+      },
+      "cases": [
+        {
+          "name": "test_source_selective_withdrawal_preserves_exact_other_namespace",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_old_request_snapshot_does_not_undo_owner_withdrawal",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_each_read_resolves_owner_edition_clock_asof[clock]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_each_read_resolves_owner_edition_clock_asof[asof]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_each_read_resolves_owner_edition_clock_asof[edition]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_request_grant_never_controls_owner_state[scope-self-issued unrestricted]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_request_grant_never_controls_owner_state[revoked-True]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_request_grant_never_controls_owner_state[ceiling-value2]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_request_grant_never_controls_owner_state[issuer-FORGED_FIXTURE_OWNER]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_forged_fixture_owner_cannot_be_installed_in_request",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_coherent_renamed_report_ref_cannot_mint_custody",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_missing_query_risk_and_fact_material_fail_closed[producer_query_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_missing_query_risk_and_fact_material_fail_closed[risk_set_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_missing_query_risk_and_fact_material_fail_closed[producer_fact_ref]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_deep_read_mutation_does_not_corrupt_service_or_historical_report",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_separate_journal_fields_must_match_actual_owner_receipt[result_refs]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_separate_journal_fields_must_match_actual_owner_receipt[manifest_hash]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_separate_journal_fields_must_match_actual_owner_receipt[unit_key]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_separate_journal_fields_must_match_actual_owner_receipt[attempt_index]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_separate_journal_fields_must_match_actual_owner_receipt[journal_seq]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_separate_journal_fields_must_match_actual_owner_receipt[receipt_state]",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_changed_checkpoint_identity_is_refused_before_any_new_unit",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_generic_label_red_is_contained_by_explicit_hold",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_true_fresh_process_does_not_claim_offline_fact_restoration",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_owner_withdrawal_persists_in_true_fresh_process",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_missing_owner_store_fails_closed_and_is_not_reprovisioned",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_two_service_clients_resolve_the_same_current_owner_decision",
+          "state": "PASS",
+          "message": null
+        },
+        {
+          "name": "test_current_read_binds_receipt_and_journal_proof_content",
+          "state": "PASS",
+          "message": null
+        }
+      ],
+      "terminal": {
+        "argv": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/tests",
+          "-vv",
+          "--tb=short",
+          "--assert=plain",
+          "--import-mode=importlib",
+          "-p",
+          "no:cacheprovider",
+          "--basetemp=/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/tmp/pv3",
+          "--junitxml=/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/observations/pv3.xml"
+        ],
+        "cwd": "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root",
+        "PYTHONPATH": "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro:/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root:/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro:/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/frozen_pv2i/repro",
+        "exit": 0,
+        "seconds": 13.26331090927124
+      }
+    }
+  },
+  "adapter_contract": "repro/pv2i_adapter.py; repro/adapter_plugin.py. Legacy revocation test input is explicitly translated into a trusted fixture-owner control event; direct PV3 treats supplied registers as untrusted and never mutates owner state from them. No original assertion is replaced, skipped, xfailed or reauthored."
+}

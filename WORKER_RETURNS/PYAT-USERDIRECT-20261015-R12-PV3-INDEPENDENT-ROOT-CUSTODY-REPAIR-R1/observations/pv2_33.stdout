@@ -1,0 +1,41 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: /Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root
+collecting ... collected 33 items
+
+candidate/tests/test_pv2_original_scope_binding.py::test_register_is_precommitted_and_independently_reproducible PASSED [  3%]
+candidate/tests/test_pv2_original_scope_binding.py::test_register_refuses_all_held_or_insufficient_held_scope PASSED [  6%]
+candidate/tests/test_pv2_original_scope_binding.py::test_positive_original_to_field_forge_consumer_witness PASSED [  9%]
+candidate/tests/test_pv2_original_scope_binding.py::test_positive_replay_is_exact_with_zero_additional_durable_calls PASSED [ 12%]
+candidate/tests/test_pv2_original_scope_binding.py::test_coherent_foreign_issuer_ref_refused[original_U_ref] PASSED [ 15%]
+candidate/tests/test_pv2_original_scope_binding.py::test_coherent_foreign_issuer_ref_refused[independent_E_ref] PASSED [ 18%]
+candidate/tests/test_pv2_original_scope_binding.py::test_coherent_foreign_issuer_ref_refused[independent_custody_ref] PASSED [ 21%]
+candidate/tests/test_pv2_original_scope_binding.py::test_coherent_foreign_issuer_ref_refused[original_operation_scope_ref] PASSED [ 24%]
+candidate/tests/test_pv2_original_scope_binding.py::test_foreign_issuer_ref_changes_the_original_key PASSED [ 27%]
+candidate/tests/test_pv2_original_scope_binding.py::test_dropping_all_held_obligations_refused PASSED [ 30%]
+candidate/tests/test_pv2_original_scope_binding.py::test_dropping_one_held_obligation_with_identical_runnable_output_refused PASSED [ 33%]
+candidate/tests/test_pv2_original_scope_binding.py::test_cherry_picked_single_obligation_refused PASSED [ 36%]
+candidate/tests/test_pv2_original_scope_binding.py::test_cherry_picked_namespace_refused PASSED [ 39%]
+candidate/tests/test_pv2_original_scope_binding.py::test_reversed_semantic_role_mask_refused PASSED [ 42%]
+candidate/tests/test_pv2_original_scope_binding.py::test_reversed_role_mask_also_fails_the_owner_topology_check PASSED [ 45%]
+candidate/tests/test_pv2_original_scope_binding.py::test_declared_roles_bind_the_actual_producer_topology PASSED [ 48%]
+candidate/tests/test_pv2_original_scope_binding.py::test_masked_role_label_rejected_at_consumer_material PASSED [ 51%]
+candidate/tests/test_pv2_original_scope_binding.py::test_foreign_form_or_respondent_unit_refused[form-FOREIGN-FORM] PASSED [ 54%]
+candidate/tests/test_pv2_original_scope_binding.py::test_foreign_form_or_respondent_unit_refused[respondent_unit-HOUSEHOLD] PASSED [ 57%]
+candidate/tests/test_pv2_original_scope_binding.py::test_other_relabelled_identity_labels_refused[language-FOREIGN-LANGUAGE] PASSED [ 60%]
+candidate/tests/test_pv2_original_scope_binding.py::test_other_relabelled_identity_labels_refused[instrument_release-INST-FOREIGN] PASSED [ 63%]
+candidate/tests/test_pv2_original_scope_binding.py::test_other_relabelled_identity_labels_refused[administered_occurrence-FOREIGN-OCCURRENCE] PASSED [ 66%]
+candidate/tests/test_pv2_original_scope_binding.py::test_other_relabelled_identity_labels_refused[option_scope-value3] PASSED [ 69%]
+candidate/tests/test_pv2_original_scope_binding.py::test_form_and_unit_labels_discriminate_the_original_key PASSED [ 72%]
+candidate/tests/test_pv2_original_scope_binding.py::test_same_count_swapped_source_native_item_refused PASSED [ 75%]
+candidate/tests/test_pv2_original_scope_binding.py::test_foreign_replay_ref_refused PASSED [ 78%]
+candidate/tests/test_pv2_original_scope_binding.py::test_stale_precommitted_register_refused PASSED [ 81%]
+candidate/tests/test_pv2_original_scope_binding.py::test_caller_supplied_inventory_relabel_refused PASSED [ 84%]
+candidate/tests/test_pv2_original_scope_binding.py::test_revoked_fixture_use_blocks_execution_and_current_read PASSED [ 87%]
+candidate/tests/test_pv2_original_scope_binding.py::test_cold_process_replay_restores_all_six_values PASSED [ 90%]
+candidate/tests/test_pv2_original_scope_binding.py::test_altered_expected_digest_refused PASSED [ 93%]
+candidate/tests/test_pv2_original_scope_binding.py::test_unregistered_scope_key_refused PASSED [ 96%]
+candidate/tests/test_pv2_original_scope_binding.py::test_real_owner_artifacts_are_actual_c11_and_field_forge PASSED [100%]
+
+- generated xml file: /Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/observations/pv2_33.xml -
+============================== 33 passed in 1.54s ==============================

@@ -1,0 +1,34 @@
+Traceback (most recent call last):
+  File "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/rawlsing_next/pre553_governed_batch_checkpoint_integration_candidate.py", line 230, in open_session
+    store.load(identity=identity)
+  File "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/rawlsing_next/pre553_batch_durable_checkpoint_candidate.py", line 541, in load
+    checkpoint = DurableCheckpoint.from_projection(document)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/rawlsing_next/pre553_batch_durable_checkpoint_candidate.py", line 395, in from_projection
+    raise CheckpointTornError(
+rawlsing_next.pre553_batch_durable_checkpoint_candidate.CheckpointTornError: checkpoint document digest does not match its content
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro/cold_child.py", line 18, in <module>
+    exec(compile((R/'frozen_pv2i/repro/cold_child.py').read_text(),str(__file__),'exec'))
+  File "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro/cold_child.py", line 33, in <module>
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro/pv2_cold_process.py", line 53, in <module>
+    fx = fixture.pv2_sourcefree_fixture(ROOT / 'ledger')
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro/pv2_sourcefree_fixture.py", line 264, in pv2_sourcefree_fixture
+    prepared = [prepare_owner_scope(root / str(i), data, group, ns)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro/pv2_sourcefree_fixture.py", line 264, in <listcomp>
+    prepared = [prepare_owner_scope(root / str(i), data, group, ns)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro/pv2_sourcefree_fixture.py", line 241, in prepare_owner_scope
+    session = G.open_session(
+              ^^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/rawlsing_next/pre553_governed_batch_checkpoint_integration_candidate.py", line 232, in open_session
+    raise IntegrationForeignError(
+rawlsing_next.pre553_governed_batch_checkpoint_integration_candidate.IntegrationForeignError: existing durable checkpoint is foreign or torn: checkpoint document digest does not match its content

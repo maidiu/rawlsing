@@ -1,0 +1,989 @@
+{
+  "pid": 29680,
+  "installed_before_caller_fixture": true,
+  "expected_root": "4d83bf57f8cd12c3492eb42f6d14094c53a6c33cc5e4178f1594ce6a469548f2",
+  "register_root": "49f0f51866d3327aca2b7d8910517c0317a85c6b7fd3f011c9ffd6634c6218bf",
+  "full_expected_preimage": {
+    "input_origin": "INDEPENDENT_SOURCEFREE_BEFORE_EXECUTION",
+    "records": [
+      {
+        "expected_work_key": "20136e61b5e197b3aadfe3dba75a18fd96b0190d4c11da21038f1f142dfe0830",
+        "independent_E_ref": {
+          "content_hash": "bf77f8df573e3935304f067bbf3fc7af4a42f8d3a62d826367d233318d4d7a81",
+          "kind": "R10_PV2_PROSPECTIVE_E",
+          "object_id": "urn:r10:pv2:r10_pv2_prospective_e:PV2-ADULT-A-B"
+        },
+        "independent_custody_ref": {
+          "content_hash": "33d9cb9475490d137271190e48da4659c6f333510bc972148bf19b6f08875168",
+          "kind": "R10_PV2_CUSTODY_WITNESS",
+          "object_id": "urn:r10:pv2:r10_pv2_custody_witness:PV2-ADULT-A-B"
+        },
+        "legacy": {
+          "authority_ref": "I03-AUTH-m01-query|1.0.0|6b35c996e3e483476b1d9b6dc5b29987c0b490a2b3655207f885db240b45c738",
+          "condition_order": [
+            "Y",
+            "X"
+          ],
+          "discovery_authority_ref": null,
+          "form": "F1",
+          "hold_reason": null,
+          "item": "Y",
+          "measure_kind": "RAW",
+          "multiplicity": 1,
+          "predicate_ref": {
+            "content_hash": "ba4e9ff8bc8207b1c2afb3ac4d807f4b4411438be5c4b27b930c9e81cc476107",
+            "kind": "EmpiricalPredicate@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:ba4e9ff8bc8207b1c2afb3ac4d807f4b4411438be5c4b27b930c9e81cc476107"
+          },
+          "query_ref": {
+            "content_hash": "3aa599fd56bc0cffba3ff41d128835d78ffad05160d7bc3df9414a89a2aa89f4",
+            "kind": "EmpiricalQuerySpec@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:3aa599fd56bc0cffba3ff41d128835d78ffad05160d7bc3df9414a89a2aa89f4"
+          },
+          "required_consumer": "FIELD_FORGE_CONDITIONAL_SUPPORT",
+          "risk_identity": "RISK_SET|urn:test:i03:risk_set:m01-risk|958262fce1818f80876384b5db08b74e1dc04749700d70f239a05bb2b8bf2898",
+          "schema_version": "HQ280_PV3_A04S_CANONICAL_V2@1.0.0",
+          "semantic_op_class": "PAIR_RESPONSE_COTRAVEL",
+          "semantic_roles": [
+            "CONDITIONER",
+            "TARGET"
+          ],
+          "slot": "B",
+          "source": "PV2-ACTUAL-SCOPE-SOURCEFREE",
+          "source_identity": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54",
+          "state": "RUNNABLE",
+          "target": "YX",
+          "topology_identity": "SCALAR_2X2_JOINT",
+          "wave": "W1"
+        },
+        "original": {
+          "administered_occurrence": "PV2-FIRST-ADMINISTRATION",
+          "empirical_universe_ref": {
+            "content_hash": "9207538b6aa1cb81b6b1dc35b327245aa0a09ef307d94eec60fa9b0ac031cdbe",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:9207538b6aa1cb81b6b1dc35b327245aa0a09ef307d94eec60fa9b0ac031cdbe"
+          },
+          "form": "F1",
+          "instrument_release": "INST-PV2-ADULT-A/F1",
+          "language": "PV2-LANGUAGE",
+          "native_item_refs": [
+            {
+              "content_hash": "7b1a9fa41dc1170104fa71c15d94aca9bc3b639f50d77e85350db952613379a6",
+              "kind": "QUESTION_NATIVE",
+              "object_id": "urn:test:i03:question_native:m01-Y"
+            },
+            {
+              "content_hash": "e8fd4d7969c753914b87a8a0135521c4eb8076a04438920a85ef83c645057d94",
+              "kind": "QUESTION_NATIVE",
+              "object_id": "urn:test:i03:question_native:m01-X"
+            }
+          ],
+          "option_scope": [
+            "0",
+            "1"
+          ],
+          "original_item_scope_ref": {
+            "content_hash": "84ec9917d08e2db7fe87b3c21bdc20be7df7a3e1e85244733d42bfd2f3939d51",
+            "kind": "PV2_ORIGINAL_ITEM_SCOPE",
+            "object_id": "urn:test:i03:pv2_original_item_scope:pv2-items-B"
+          },
+          "respondent_namespace": "PV2-ADULT-A",
+          "respondent_unit": "TEST_ONLY_ADULT",
+          "routing_refs": [
+            {
+              "content_hash": "0a8ce38a8c3497335c1d4fc8f40a073149bc8a7b09766581ccf3f53e118e7a82",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:0a8ce38a8c3497335c1d4fc8f40a073149bc8a7b09766581ccf3f53e118e7a82"
+            },
+            {
+              "content_hash": "2ecb00b8ffcfb42bbcd8db25a3d80881a61aeb72c1918dc36b7b16c7aeb41629",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:2ecb00b8ffcfb42bbcd8db25a3d80881a61aeb72c1918dc36b7b16c7aeb41629"
+            },
+            {
+              "content_hash": "43c12e3f4d7524ffde620625d12d904a77de6a384e684867230b122924f354a5",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:43c12e3f4d7524ffde620625d12d904a77de6a384e684867230b122924f354a5"
+            },
+            {
+              "content_hash": "cefa4cf406d5319cd21845e180749eaa0fadc5ba7976eb7eb7dd43ef933bc0ed",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:cefa4cf406d5319cd21845e180749eaa0fadc5ba7976eb7eb7dd43ef933bc0ed"
+            },
+            {
+              "content_hash": "d5cb748002205b569e37a87809b429358f23c7c1eb974dce47cfc582b4187171",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:d5cb748002205b569e37a87809b429358f23c7c1eb974dce47cfc582b4187171"
+            },
+            {
+              "content_hash": "d7ef6f254b8116758f21d10b87d5a4a49afa27efa1b14d844c81ec055a84eaaa",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:d7ef6f254b8116758f21d10b87d5a4a49afa27efa1b14d844c81ec055a84eaaa"
+            }
+          ],
+          "source_release_ref": {
+            "content_hash": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54",
+            "kind": "SOURCE_ARTIFACT",
+            "object_id": "SOURCE-m01"
+          }
+        },
+        "original_U_ref": {
+          "content_hash": "00574475f0e8eb185b82f280ae51fb7000d822ab1bb35ebc0e0be7e13b341661",
+          "kind": "R10_PV2_ORIGINAL_U",
+          "object_id": "urn:r10:pv2:r10_pv2_original_u:PV2-ADULT-A-B"
+        },
+        "original_operation_scope_ref": {
+          "content_hash": "c2dacf1938dab56a90b4585cf2a0124ac005b2c73470ce196bc3822ad3958156",
+          "kind": "R10_PV2_OPERATION_SCOPE",
+          "object_id": "urn:r10:pv2:r10_pv2_operation_scope:PV2-ADULT-A-B"
+        }
+      },
+      {
+        "expected_work_key": "3b1ca98feb9c8b34be6f277743894405b1db69104d507d1a82a74c223e321142",
+        "independent_E_ref": {
+          "content_hash": "4ab5debf6da70f64b1961e0eed2b94f772bdbe103b8db45f912e3740516e6777",
+          "kind": "R10_PV2_PROSPECTIVE_E",
+          "object_id": "urn:r10:pv2:r10_pv2_prospective_e:PV2-ADULT-A-DISCOVERY"
+        },
+        "independent_custody_ref": {
+          "content_hash": "6116b0afa27ccec18622d8d289143aefef8f43dc3a13508685c38eaaa796e6a7",
+          "kind": "R10_PV2_CUSTODY_WITNESS",
+          "object_id": "urn:r10:pv2:r10_pv2_custody_witness:PV2-ADULT-A-DISCOVERY"
+        },
+        "legacy": {
+          "authority_ref": "I03-AUTH-m01-discovery|1.0.0|f4d24f46e4e1c553265c8bee20015a71f9e6671e3380b813b6a65c6e1320b32a",
+          "condition_order": [],
+          "discovery_authority_ref": {
+            "content_hash": "f8d7ce1ecc7437fc2e809a4c51ce4dea4e4a26276d9ab0cae00baa3d08519899",
+            "kind": "DiscoveryAuthority@1.0.0",
+            "object_id": "urn:rawlsing:pre553:DiscoveryAuthority:sha256:f8d7ce1ecc7437fc2e809a4c51ce4dea4e4a26276d9ab0cae00baa3d08519899"
+          },
+          "form": "F1",
+          "hold_reason": null,
+          "item": "X",
+          "measure_kind": "RAW",
+          "multiplicity": 1,
+          "predicate_ref": null,
+          "query_ref": null,
+          "required_consumer": "FIELD_FORGE_CONDITIONAL_SUPPORT",
+          "risk_identity": "RISK_SET|urn:test:i03:risk_set:m01-risk|958262fce1818f80876384b5db08b74e1dc04749700d70f239a05bb2b8bf2898",
+          "schema_version": "HQ280_PV3_A04S_CANONICAL_V2@1.0.0",
+          "semantic_op_class": "BOUNDED_DISCOVERY",
+          "semantic_roles": [
+            "BASE"
+          ],
+          "slot": "DISCOVERY",
+          "source": "PV2-ACTUAL-SCOPE-SOURCEFREE",
+          "source_identity": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54",
+          "state": "RUNNABLE",
+          "target": "XY",
+          "topology_identity": "SCALAR_2X2_JOINT",
+          "wave": "W1"
+        },
+        "original": {
+          "administered_occurrence": "PV2-FIRST-ADMINISTRATION",
+          "empirical_universe_ref": {
+            "content_hash": "9207538b6aa1cb81b6b1dc35b327245aa0a09ef307d94eec60fa9b0ac031cdbe",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:9207538b6aa1cb81b6b1dc35b327245aa0a09ef307d94eec60fa9b0ac031cdbe"
+          },
+          "form": "F1",
+          "instrument_release": "INST-PV2-ADULT-A/F1",
+          "language": "PV2-LANGUAGE",
+          "native_item_refs": [
+            {
+              "content_hash": "e8fd4d7969c753914b87a8a0135521c4eb8076a04438920a85ef83c645057d94",
+              "kind": "QUESTION_NATIVE",
+              "object_id": "urn:test:i03:question_native:m01-X"
+            },
+            {
+              "content_hash": "7b1a9fa41dc1170104fa71c15d94aca9bc3b639f50d77e85350db952613379a6",
+              "kind": "QUESTION_NATIVE",
+              "object_id": "urn:test:i03:question_native:m01-Y"
+            }
+          ],
+          "option_scope": [
+            "0",
+            "1"
+          ],
+          "original_item_scope_ref": {
+            "content_hash": "a361209136ebaaf4d49eefd839f50bc39a2af4689cd876088955aa890be5cc2b",
+            "kind": "PV2_ORIGINAL_ITEM_SCOPE",
+            "object_id": "urn:test:i03:pv2_original_item_scope:pv2-items-DISCOVERY"
+          },
+          "respondent_namespace": "PV2-ADULT-A",
+          "respondent_unit": "TEST_ONLY_ADULT",
+          "routing_refs": [
+            {
+              "content_hash": "0a8ce38a8c3497335c1d4fc8f40a073149bc8a7b09766581ccf3f53e118e7a82",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:0a8ce38a8c3497335c1d4fc8f40a073149bc8a7b09766581ccf3f53e118e7a82"
+            },
+            {
+              "content_hash": "2ecb00b8ffcfb42bbcd8db25a3d80881a61aeb72c1918dc36b7b16c7aeb41629",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:2ecb00b8ffcfb42bbcd8db25a3d80881a61aeb72c1918dc36b7b16c7aeb41629"
+            },
+            {
+              "content_hash": "43c12e3f4d7524ffde620625d12d904a77de6a384e684867230b122924f354a5",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:43c12e3f4d7524ffde620625d12d904a77de6a384e684867230b122924f354a5"
+            },
+            {
+              "content_hash": "cefa4cf406d5319cd21845e180749eaa0fadc5ba7976eb7eb7dd43ef933bc0ed",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:cefa4cf406d5319cd21845e180749eaa0fadc5ba7976eb7eb7dd43ef933bc0ed"
+            },
+            {
+              "content_hash": "d5cb748002205b569e37a87809b429358f23c7c1eb974dce47cfc582b4187171",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:d5cb748002205b569e37a87809b429358f23c7c1eb974dce47cfc582b4187171"
+            },
+            {
+              "content_hash": "d7ef6f254b8116758f21d10b87d5a4a49afa27efa1b14d844c81ec055a84eaaa",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:d7ef6f254b8116758f21d10b87d5a4a49afa27efa1b14d844c81ec055a84eaaa"
+            }
+          ],
+          "source_release_ref": {
+            "content_hash": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54",
+            "kind": "SOURCE_ARTIFACT",
+            "object_id": "SOURCE-m01"
+          }
+        },
+        "original_U_ref": {
+          "content_hash": "55db25c091b2f00cce53661391f9b1247744edb5a4d54dc81fcd84bd3a2d79d9",
+          "kind": "R10_PV2_ORIGINAL_U",
+          "object_id": "urn:r10:pv2:r10_pv2_original_u:PV2-ADULT-A-DISCOVERY"
+        },
+        "original_operation_scope_ref": {
+          "content_hash": "4eac1b246bd2582728bc8ae1c942dc8ff08a085117bbfd9a1964a301f3703a22",
+          "kind": "R10_PV2_OPERATION_SCOPE",
+          "object_id": "urn:r10:pv2:r10_pv2_operation_scope:PV2-ADULT-A-DISCOVERY"
+        }
+      },
+      {
+        "expected_work_key": "3bb1e2f3fb763d7fca78e61f867eba42b95baa0145d9ea9c1b488054cf170bf9",
+        "independent_E_ref": {
+          "content_hash": "3c3f18cdee4945509b1da5232cabfa0df323a9cd6af26b0cd168e1d5558df60e",
+          "kind": "R10_PV2_PROSPECTIVE_E",
+          "object_id": "urn:r10:pv2:r10_pv2_prospective_e:PV2-ADULT-A-ORDERED"
+        },
+        "independent_custody_ref": {
+          "content_hash": "b5954f2c2a7980b9dcc57ab71e1efa02ac66dd44ac7f507c1667cef61f73254d",
+          "kind": "R10_PV2_CUSTODY_WITNESS",
+          "object_id": "urn:r10:pv2:r10_pv2_custody_witness:PV2-ADULT-A-ORDERED"
+        },
+        "legacy": {
+          "authority_ref": "I03-AUTH-m01-query|1.0.0|6b35c996e3e483476b1d9b6dc5b29987c0b490a2b3655207f885db240b45c738",
+          "condition_order": [],
+          "discovery_authority_ref": null,
+          "form": "F1",
+          "hold_reason": "ORDERED_OWNER_NOT_ISSUED",
+          "item": "O",
+          "measure_kind": "RAW",
+          "multiplicity": 1,
+          "predicate_ref": null,
+          "query_ref": null,
+          "required_consumer": "FIELD_FORGE_CONDITIONAL_SUPPORT",
+          "risk_identity": "RISK_SET|urn:test:i03:risk_set:m01-risk|958262fce1818f80876384b5db08b74e1dc04749700d70f239a05bb2b8bf2898",
+          "schema_version": "HQ280_PV3_A04S_CANONICAL_V2@1.0.0",
+          "semantic_op_class": "NONSCALAR_TOPOLOGY_PRESERVATION",
+          "semantic_roles": [
+            "BASE"
+          ],
+          "slot": "ORDERED",
+          "source": "PV2-ACTUAL-SCOPE-SOURCEFREE",
+          "source_identity": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54",
+          "state": "HELD",
+          "target": "O",
+          "topology_identity": "ORDERED_SEQUENCE",
+          "wave": "W1"
+        },
+        "original": {
+          "administered_occurrence": "PV2-FIRST-ADMINISTRATION",
+          "empirical_universe_ref": {
+            "content_hash": "9207538b6aa1cb81b6b1dc35b327245aa0a09ef307d94eec60fa9b0ac031cdbe",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:9207538b6aa1cb81b6b1dc35b327245aa0a09ef307d94eec60fa9b0ac031cdbe"
+          },
+          "form": "F1",
+          "instrument_release": "INST-PV2-ADULT-A/F1",
+          "language": "PV2-LANGUAGE",
+          "native_item_refs": [
+            {
+              "content_hash": "666fa44dff132c29acc02b3939222e8e16e84b42c642e7f372a8c75e411a12a1",
+              "kind": "QUESTION_NATIVE",
+              "object_id": "urn:test:i03:question_native:m01-O"
+            }
+          ],
+          "option_scope": [
+            "AB",
+            "BA"
+          ],
+          "original_item_scope_ref": {
+            "content_hash": "d1e5fa3b8b15b2ee6e3d81bcffb838e048882bcf2b7557afd2bbc1cfb61f3585",
+            "kind": "PV2_ORIGINAL_ITEM_SCOPE",
+            "object_id": "urn:test:i03:pv2_original_item_scope:pv2-items-ORDERED"
+          },
+          "respondent_namespace": "PV2-ADULT-A",
+          "respondent_unit": "TEST_ONLY_ADULT",
+          "routing_refs": [
+            {
+              "content_hash": "442c97349368db5e4b739584285c148d0159cd8028de5ec15883560c7ba08d91",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:442c97349368db5e4b739584285c148d0159cd8028de5ec15883560c7ba08d91"
+            },
+            {
+              "content_hash": "ad406477b00e062f6c7f36abcb269ca1070546a9670222026e5813894a044b9e",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:ad406477b00e062f6c7f36abcb269ca1070546a9670222026e5813894a044b9e"
+            },
+            {
+              "content_hash": "c48c410addcb9b4aece97e1cc0f61cbb6ea28a3ef203c8cea5a32e606ba0780b",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:c48c410addcb9b4aece97e1cc0f61cbb6ea28a3ef203c8cea5a32e606ba0780b"
+            }
+          ],
+          "source_release_ref": {
+            "content_hash": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54",
+            "kind": "SOURCE_ARTIFACT",
+            "object_id": "SOURCE-m01"
+          }
+        },
+        "original_U_ref": {
+          "content_hash": "590f16ad1ee5acd51ae2e85840a196dc02e8372ce353c2975be98687ed34f399",
+          "kind": "R10_PV2_ORIGINAL_U",
+          "object_id": "urn:r10:pv2:r10_pv2_original_u:PV2-ADULT-A-ORDERED"
+        },
+        "original_operation_scope_ref": {
+          "content_hash": "c8cd79a5c2bf6a7d2ddc559e28a41c19e4dc3faa9c0dcc9075baabaaa7d58c81",
+          "kind": "R10_PV2_OPERATION_SCOPE",
+          "object_id": "urn:r10:pv2:r10_pv2_operation_scope:PV2-ADULT-A-ORDERED"
+        }
+      },
+      {
+        "expected_work_key": "481bb22e24b496251d44084ea40e0b95d266a33353502a5b41c38b41c009587c",
+        "independent_E_ref": {
+          "content_hash": "ab4e3db4df997b436307837fe50c86aae1b1e4a76e6e5e22ee3558b97c798803",
+          "kind": "R10_PV2_PROSPECTIVE_E",
+          "object_id": "urn:r10:pv2:r10_pv2_prospective_e:PV2-ADULT-B-DISCOVERY"
+        },
+        "independent_custody_ref": {
+          "content_hash": "e36a26700e7cc831e1a2164bbd97731f785c267cd40762ab9e5e6e9c1f947abf",
+          "kind": "R10_PV2_CUSTODY_WITNESS",
+          "object_id": "urn:r10:pv2:r10_pv2_custody_witness:PV2-ADULT-B-DISCOVERY"
+        },
+        "legacy": {
+          "authority_ref": "I03-AUTH-m01-discovery|1.0.0|f4d24f46e4e1c553265c8bee20015a71f9e6671e3380b813b6a65c6e1320b32a",
+          "condition_order": [],
+          "discovery_authority_ref": {
+            "content_hash": "d7c45be1db560b36e8e6e643fce2944ba575020ed6cbd8c7a113d3e29e081838",
+            "kind": "DiscoveryAuthority@1.0.0",
+            "object_id": "urn:rawlsing:pre553:DiscoveryAuthority:sha256:d7c45be1db560b36e8e6e643fce2944ba575020ed6cbd8c7a113d3e29e081838"
+          },
+          "form": "F1",
+          "hold_reason": null,
+          "item": "X",
+          "measure_kind": "RAW",
+          "multiplicity": 1,
+          "predicate_ref": null,
+          "query_ref": null,
+          "required_consumer": "FIELD_FORGE_CONDITIONAL_SUPPORT",
+          "risk_identity": "RISK_SET|urn:test:i03:risk_set:m01-risk|958262fce1818f80876384b5db08b74e1dc04749700d70f239a05bb2b8bf2898",
+          "schema_version": "HQ280_PV3_A04S_CANONICAL_V2@1.0.0",
+          "semantic_op_class": "BOUNDED_DISCOVERY",
+          "semantic_roles": [
+            "BASE"
+          ],
+          "slot": "DISCOVERY",
+          "source": "PV2-ACTUAL-SCOPE-SOURCEFREE",
+          "source_identity": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54",
+          "state": "RUNNABLE",
+          "target": "XY",
+          "topology_identity": "SCALAR_2X2_JOINT",
+          "wave": "W1"
+        },
+        "original": {
+          "administered_occurrence": "PV2-FIRST-ADMINISTRATION",
+          "empirical_universe_ref": {
+            "content_hash": "f9da0697e8f4d58f4042e471e3174e78db44b9ca0fba6652d7801f4179d838d5",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f9da0697e8f4d58f4042e471e3174e78db44b9ca0fba6652d7801f4179d838d5"
+          },
+          "form": "F1",
+          "instrument_release": "INST-PV2-ADULT-B/F1",
+          "language": "PV2-LANGUAGE",
+          "native_item_refs": [
+            {
+              "content_hash": "e8fd4d7969c753914b87a8a0135521c4eb8076a04438920a85ef83c645057d94",
+              "kind": "QUESTION_NATIVE",
+              "object_id": "urn:test:i03:question_native:m01-X"
+            },
+            {
+              "content_hash": "7b1a9fa41dc1170104fa71c15d94aca9bc3b639f50d77e85350db952613379a6",
+              "kind": "QUESTION_NATIVE",
+              "object_id": "urn:test:i03:question_native:m01-Y"
+            }
+          ],
+          "option_scope": [
+            "0",
+            "1"
+          ],
+          "original_item_scope_ref": {
+            "content_hash": "a361209136ebaaf4d49eefd839f50bc39a2af4689cd876088955aa890be5cc2b",
+            "kind": "PV2_ORIGINAL_ITEM_SCOPE",
+            "object_id": "urn:test:i03:pv2_original_item_scope:pv2-items-DISCOVERY"
+          },
+          "respondent_namespace": "PV2-ADULT-B",
+          "respondent_unit": "TEST_ONLY_ADULT",
+          "routing_refs": [
+            {
+              "content_hash": "0e2cbafdf1250c721f5ed45af001c36d42e4ae76ce412eb9b1d0c659673b0cd7",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:0e2cbafdf1250c721f5ed45af001c36d42e4ae76ce412eb9b1d0c659673b0cd7"
+            },
+            {
+              "content_hash": "834857f38dcf7a286152b1ac55489e256bd87d11daf5a772a79f31c13242c80e",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:834857f38dcf7a286152b1ac55489e256bd87d11daf5a772a79f31c13242c80e"
+            },
+            {
+              "content_hash": "8c9678ee3d4d4437dec0dd33fb5ce923882c09b374b62c2fd9588413b6988ec9",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:8c9678ee3d4d4437dec0dd33fb5ce923882c09b374b62c2fd9588413b6988ec9"
+            },
+            {
+              "content_hash": "d481b5e071cea3f6c578c213652533c360474e2672cfe4a8f69a76deb8f41155",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:d481b5e071cea3f6c578c213652533c360474e2672cfe4a8f69a76deb8f41155"
+            },
+            {
+              "content_hash": "d70a5672e7031fc7c9067d5bb8e3749fe8434d8b1e3c2acbace3780f7fa0fbb1",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:d70a5672e7031fc7c9067d5bb8e3749fe8434d8b1e3c2acbace3780f7fa0fbb1"
+            },
+            {
+              "content_hash": "f45099a22ceeb091ad3cb410cd30106cb2d0bcbe289a68cd63bf3a75c72e5f57",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:f45099a22ceeb091ad3cb410cd30106cb2d0bcbe289a68cd63bf3a75c72e5f57"
+            }
+          ],
+          "source_release_ref": {
+            "content_hash": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54",
+            "kind": "SOURCE_ARTIFACT",
+            "object_id": "SOURCE-m01"
+          }
+        },
+        "original_U_ref": {
+          "content_hash": "7cf91ea3e2d2b664f168098b483841c0e5bbaf5852f59d83c4702a0d7e2fd96c",
+          "kind": "R10_PV2_ORIGINAL_U",
+          "object_id": "urn:r10:pv2:r10_pv2_original_u:PV2-ADULT-B-DISCOVERY"
+        },
+        "original_operation_scope_ref": {
+          "content_hash": "b69cc9a062c0b3bad9c56ff6ce18b166254a4208620f5239287d1548c824edc3",
+          "kind": "R10_PV2_OPERATION_SCOPE",
+          "object_id": "urn:r10:pv2:r10_pv2_operation_scope:PV2-ADULT-B-DISCOVERY"
+        }
+      },
+      {
+        "expected_work_key": "9fb3f6c645377703bf08f538f318d44d4d886512545a726ca0493c9c9f826c8e",
+        "independent_E_ref": {
+          "content_hash": "f4de845c2d87185d6a93714b8e0e5d55ad9cf61a9d0de8089b474e1c5a330923",
+          "kind": "R10_PV2_PROSPECTIVE_E",
+          "object_id": "urn:r10:pv2:r10_pv2_prospective_e:PV2-ADULT-A-PAIR"
+        },
+        "independent_custody_ref": {
+          "content_hash": "13ba52a58641dc5334d369ee4d0d3d6d39c021b3fcb2d4102307f934abc4af7d",
+          "kind": "R10_PV2_CUSTODY_WITNESS",
+          "object_id": "urn:r10:pv2:r10_pv2_custody_witness:PV2-ADULT-A-PAIR"
+        },
+        "legacy": {
+          "authority_ref": "I03-AUTH-m01-query|1.0.0|6b35c996e3e483476b1d9b6dc5b29987c0b490a2b3655207f885db240b45c738",
+          "condition_order": [
+            "X",
+            "Y"
+          ],
+          "discovery_authority_ref": null,
+          "form": "F1",
+          "hold_reason": null,
+          "item": "X",
+          "measure_kind": "RAW",
+          "multiplicity": 1,
+          "predicate_ref": {
+            "content_hash": "ba4e9ff8bc8207b1c2afb3ac4d807f4b4411438be5c4b27b930c9e81cc476107",
+            "kind": "EmpiricalPredicate@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:ba4e9ff8bc8207b1c2afb3ac4d807f4b4411438be5c4b27b930c9e81cc476107"
+          },
+          "query_ref": {
+            "content_hash": "f1434efa94f2503391c83012f83874ae3e1dddb7e5c5385f00172ecf96a3d3d3",
+            "kind": "EmpiricalQuerySpec@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:f1434efa94f2503391c83012f83874ae3e1dddb7e5c5385f00172ecf96a3d3d3"
+          },
+          "required_consumer": "FIELD_FORGE_CONDITIONAL_SUPPORT",
+          "risk_identity": "RISK_SET|urn:test:i03:risk_set:m01-risk|958262fce1818f80876384b5db08b74e1dc04749700d70f239a05bb2b8bf2898",
+          "schema_version": "HQ280_PV3_A04S_CANONICAL_V2@1.0.0",
+          "semantic_op_class": "PAIR_RESPONSE_COTRAVEL",
+          "semantic_roles": [
+            "CONDITIONER",
+            "TARGET"
+          ],
+          "slot": "PAIR",
+          "source": "PV2-ACTUAL-SCOPE-SOURCEFREE",
+          "source_identity": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54",
+          "state": "RUNNABLE",
+          "target": "XY",
+          "topology_identity": "SCALAR_2X2_JOINT",
+          "wave": "W1"
+        },
+        "original": {
+          "administered_occurrence": "PV2-FIRST-ADMINISTRATION",
+          "empirical_universe_ref": {
+            "content_hash": "9207538b6aa1cb81b6b1dc35b327245aa0a09ef307d94eec60fa9b0ac031cdbe",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:9207538b6aa1cb81b6b1dc35b327245aa0a09ef307d94eec60fa9b0ac031cdbe"
+          },
+          "form": "F1",
+          "instrument_release": "INST-PV2-ADULT-A/F1",
+          "language": "PV2-LANGUAGE",
+          "native_item_refs": [
+            {
+              "content_hash": "e8fd4d7969c753914b87a8a0135521c4eb8076a04438920a85ef83c645057d94",
+              "kind": "QUESTION_NATIVE",
+              "object_id": "urn:test:i03:question_native:m01-X"
+            },
+            {
+              "content_hash": "7b1a9fa41dc1170104fa71c15d94aca9bc3b639f50d77e85350db952613379a6",
+              "kind": "QUESTION_NATIVE",
+              "object_id": "urn:test:i03:question_native:m01-Y"
+            }
+          ],
+          "option_scope": [
+            "0",
+            "1"
+          ],
+          "original_item_scope_ref": {
+            "content_hash": "05104e6964db2bc75fdc8a4d6a37db7cfa4d50022bcbb75e4329933b94d2e105",
+            "kind": "PV2_ORIGINAL_ITEM_SCOPE",
+            "object_id": "urn:test:i03:pv2_original_item_scope:pv2-items-PAIR"
+          },
+          "respondent_namespace": "PV2-ADULT-A",
+          "respondent_unit": "TEST_ONLY_ADULT",
+          "routing_refs": [
+            {
+              "content_hash": "0a8ce38a8c3497335c1d4fc8f40a073149bc8a7b09766581ccf3f53e118e7a82",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:0a8ce38a8c3497335c1d4fc8f40a073149bc8a7b09766581ccf3f53e118e7a82"
+            },
+            {
+              "content_hash": "2ecb00b8ffcfb42bbcd8db25a3d80881a61aeb72c1918dc36b7b16c7aeb41629",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:2ecb00b8ffcfb42bbcd8db25a3d80881a61aeb72c1918dc36b7b16c7aeb41629"
+            },
+            {
+              "content_hash": "43c12e3f4d7524ffde620625d12d904a77de6a384e684867230b122924f354a5",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:43c12e3f4d7524ffde620625d12d904a77de6a384e684867230b122924f354a5"
+            },
+            {
+              "content_hash": "cefa4cf406d5319cd21845e180749eaa0fadc5ba7976eb7eb7dd43ef933bc0ed",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:cefa4cf406d5319cd21845e180749eaa0fadc5ba7976eb7eb7dd43ef933bc0ed"
+            },
+            {
+              "content_hash": "d5cb748002205b569e37a87809b429358f23c7c1eb974dce47cfc582b4187171",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:d5cb748002205b569e37a87809b429358f23c7c1eb974dce47cfc582b4187171"
+            },
+            {
+              "content_hash": "d7ef6f254b8116758f21d10b87d5a4a49afa27efa1b14d844c81ec055a84eaaa",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:d7ef6f254b8116758f21d10b87d5a4a49afa27efa1b14d844c81ec055a84eaaa"
+            }
+          ],
+          "source_release_ref": {
+            "content_hash": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54",
+            "kind": "SOURCE_ARTIFACT",
+            "object_id": "SOURCE-m01"
+          }
+        },
+        "original_U_ref": {
+          "content_hash": "7e46fb072f6534999480dd5aeb31a866530ca62bfffc06d226c3ba52faa392c5",
+          "kind": "R10_PV2_ORIGINAL_U",
+          "object_id": "urn:r10:pv2:r10_pv2_original_u:PV2-ADULT-A-PAIR"
+        },
+        "original_operation_scope_ref": {
+          "content_hash": "8e8649169181eb2f69535750365067a03adff4b2baae2f189d8b1b73d78de8aa",
+          "kind": "R10_PV2_OPERATION_SCOPE",
+          "object_id": "urn:r10:pv2:r10_pv2_operation_scope:PV2-ADULT-A-PAIR"
+        }
+      },
+      {
+        "expected_work_key": "b34af625c138ff2eea0ed1983b7498f19511674f041fc5c257ddadc26c4a7d55",
+        "independent_E_ref": {
+          "content_hash": "96bf8b2773b70b9fcc48f6296aa6d83b93ba32008f61ef1ee8f2df525cf7996c",
+          "kind": "R10_PV2_PROSPECTIVE_E",
+          "object_id": "urn:r10:pv2:r10_pv2_prospective_e:PV2-ADULT-B-ORDERED"
+        },
+        "independent_custody_ref": {
+          "content_hash": "508ddacaecdf38566079de528e47ac3997ba8f84ef97835d778d9279484c869c",
+          "kind": "R10_PV2_CUSTODY_WITNESS",
+          "object_id": "urn:r10:pv2:r10_pv2_custody_witness:PV2-ADULT-B-ORDERED"
+        },
+        "legacy": {
+          "authority_ref": "I03-AUTH-m01-query|1.0.0|6b35c996e3e483476b1d9b6dc5b29987c0b490a2b3655207f885db240b45c738",
+          "condition_order": [],
+          "discovery_authority_ref": null,
+          "form": "F1",
+          "hold_reason": "ORDERED_OWNER_NOT_ISSUED",
+          "item": "O",
+          "measure_kind": "RAW",
+          "multiplicity": 1,
+          "predicate_ref": null,
+          "query_ref": null,
+          "required_consumer": "FIELD_FORGE_CONDITIONAL_SUPPORT",
+          "risk_identity": "RISK_SET|urn:test:i03:risk_set:m01-risk|958262fce1818f80876384b5db08b74e1dc04749700d70f239a05bb2b8bf2898",
+          "schema_version": "HQ280_PV3_A04S_CANONICAL_V2@1.0.0",
+          "semantic_op_class": "NONSCALAR_TOPOLOGY_PRESERVATION",
+          "semantic_roles": [
+            "BASE"
+          ],
+          "slot": "ORDERED",
+          "source": "PV2-ACTUAL-SCOPE-SOURCEFREE",
+          "source_identity": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54",
+          "state": "HELD",
+          "target": "O",
+          "topology_identity": "ORDERED_SEQUENCE",
+          "wave": "W1"
+        },
+        "original": {
+          "administered_occurrence": "PV2-FIRST-ADMINISTRATION",
+          "empirical_universe_ref": {
+            "content_hash": "f9da0697e8f4d58f4042e471e3174e78db44b9ca0fba6652d7801f4179d838d5",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f9da0697e8f4d58f4042e471e3174e78db44b9ca0fba6652d7801f4179d838d5"
+          },
+          "form": "F1",
+          "instrument_release": "INST-PV2-ADULT-B/F1",
+          "language": "PV2-LANGUAGE",
+          "native_item_refs": [
+            {
+              "content_hash": "666fa44dff132c29acc02b3939222e8e16e84b42c642e7f372a8c75e411a12a1",
+              "kind": "QUESTION_NATIVE",
+              "object_id": "urn:test:i03:question_native:m01-O"
+            }
+          ],
+          "option_scope": [
+            "AB",
+            "BA"
+          ],
+          "original_item_scope_ref": {
+            "content_hash": "d1e5fa3b8b15b2ee6e3d81bcffb838e048882bcf2b7557afd2bbc1cfb61f3585",
+            "kind": "PV2_ORIGINAL_ITEM_SCOPE",
+            "object_id": "urn:test:i03:pv2_original_item_scope:pv2-items-ORDERED"
+          },
+          "respondent_namespace": "PV2-ADULT-B",
+          "respondent_unit": "TEST_ONLY_ADULT",
+          "routing_refs": [
+            {
+              "content_hash": "438de9a6209f9f5c51d7a01d73de199840e227437e6b0baf1e6adaba8db4f3b2",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:438de9a6209f9f5c51d7a01d73de199840e227437e6b0baf1e6adaba8db4f3b2"
+            },
+            {
+              "content_hash": "acbd326cdd90d7da5c930e866909aadaf68671e1d8173e433d4c128b362c212d",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:acbd326cdd90d7da5c930e866909aadaf68671e1d8173e433d4c128b362c212d"
+            },
+            {
+              "content_hash": "def74e7ce2f31ea8386c61693d822035effe90d2b52e61b78604190d86440fec",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:def74e7ce2f31ea8386c61693d822035effe90d2b52e61b78604190d86440fec"
+            }
+          ],
+          "source_release_ref": {
+            "content_hash": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54",
+            "kind": "SOURCE_ARTIFACT",
+            "object_id": "SOURCE-m01"
+          }
+        },
+        "original_U_ref": {
+          "content_hash": "26712692bb39a7a3e123e6d27592852415863cd5e2c8f6baaad49614331ee19e",
+          "kind": "R10_PV2_ORIGINAL_U",
+          "object_id": "urn:r10:pv2:r10_pv2_original_u:PV2-ADULT-B-ORDERED"
+        },
+        "original_operation_scope_ref": {
+          "content_hash": "35aa62867ef4ffeb0e4a27aa85ed73861241a0a65041c7f7ec345d28bfe7881f",
+          "kind": "R10_PV2_OPERATION_SCOPE",
+          "object_id": "urn:r10:pv2:r10_pv2_operation_scope:PV2-ADULT-B-ORDERED"
+        }
+      },
+      {
+        "expected_work_key": "d508b44c3db46c091534d9bcc71cfb00bb249e11900b6647a302b8ae71a29aa4",
+        "independent_E_ref": {
+          "content_hash": "3cdc312a94b93a38cb1c596831845f21367438672badce79630aa60798e4fa83",
+          "kind": "R10_PV2_PROSPECTIVE_E",
+          "object_id": "urn:r10:pv2:r10_pv2_prospective_e:PV2-ADULT-B-B"
+        },
+        "independent_custody_ref": {
+          "content_hash": "a5dead0c9a20d4f71e8020185f4421c5f901ae39c20feb4ac92df94b4d24e1fa",
+          "kind": "R10_PV2_CUSTODY_WITNESS",
+          "object_id": "urn:r10:pv2:r10_pv2_custody_witness:PV2-ADULT-B-B"
+        },
+        "legacy": {
+          "authority_ref": "I03-AUTH-m01-query|1.0.0|6b35c996e3e483476b1d9b6dc5b29987c0b490a2b3655207f885db240b45c738",
+          "condition_order": [
+            "Y",
+            "X"
+          ],
+          "discovery_authority_ref": null,
+          "form": "F1",
+          "hold_reason": null,
+          "item": "Y",
+          "measure_kind": "RAW",
+          "multiplicity": 1,
+          "predicate_ref": {
+            "content_hash": "67b839f335f0ac1b43d80b0352ac47ebe97071ba4f80e02528e9ea051d51856d",
+            "kind": "EmpiricalPredicate@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:67b839f335f0ac1b43d80b0352ac47ebe97071ba4f80e02528e9ea051d51856d"
+          },
+          "query_ref": {
+            "content_hash": "c658494d391566ed71f2c0f4959eb83e1fcc3d1c07699f79ee46e02bd75a3f9c",
+            "kind": "EmpiricalQuerySpec@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:c658494d391566ed71f2c0f4959eb83e1fcc3d1c07699f79ee46e02bd75a3f9c"
+          },
+          "required_consumer": "FIELD_FORGE_CONDITIONAL_SUPPORT",
+          "risk_identity": "RISK_SET|urn:test:i03:risk_set:m01-risk|958262fce1818f80876384b5db08b74e1dc04749700d70f239a05bb2b8bf2898",
+          "schema_version": "HQ280_PV3_A04S_CANONICAL_V2@1.0.0",
+          "semantic_op_class": "PAIR_RESPONSE_COTRAVEL",
+          "semantic_roles": [
+            "CONDITIONER",
+            "TARGET"
+          ],
+          "slot": "B",
+          "source": "PV2-ACTUAL-SCOPE-SOURCEFREE",
+          "source_identity": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54",
+          "state": "RUNNABLE",
+          "target": "YX",
+          "topology_identity": "SCALAR_2X2_JOINT",
+          "wave": "W1"
+        },
+        "original": {
+          "administered_occurrence": "PV2-FIRST-ADMINISTRATION",
+          "empirical_universe_ref": {
+            "content_hash": "f9da0697e8f4d58f4042e471e3174e78db44b9ca0fba6652d7801f4179d838d5",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f9da0697e8f4d58f4042e471e3174e78db44b9ca0fba6652d7801f4179d838d5"
+          },
+          "form": "F1",
+          "instrument_release": "INST-PV2-ADULT-B/F1",
+          "language": "PV2-LANGUAGE",
+          "native_item_refs": [
+            {
+              "content_hash": "7b1a9fa41dc1170104fa71c15d94aca9bc3b639f50d77e85350db952613379a6",
+              "kind": "QUESTION_NATIVE",
+              "object_id": "urn:test:i03:question_native:m01-Y"
+            },
+            {
+              "content_hash": "e8fd4d7969c753914b87a8a0135521c4eb8076a04438920a85ef83c645057d94",
+              "kind": "QUESTION_NATIVE",
+              "object_id": "urn:test:i03:question_native:m01-X"
+            }
+          ],
+          "option_scope": [
+            "0",
+            "1"
+          ],
+          "original_item_scope_ref": {
+            "content_hash": "84ec9917d08e2db7fe87b3c21bdc20be7df7a3e1e85244733d42bfd2f3939d51",
+            "kind": "PV2_ORIGINAL_ITEM_SCOPE",
+            "object_id": "urn:test:i03:pv2_original_item_scope:pv2-items-B"
+          },
+          "respondent_namespace": "PV2-ADULT-B",
+          "respondent_unit": "TEST_ONLY_ADULT",
+          "routing_refs": [
+            {
+              "content_hash": "0e2cbafdf1250c721f5ed45af001c36d42e4ae76ce412eb9b1d0c659673b0cd7",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:0e2cbafdf1250c721f5ed45af001c36d42e4ae76ce412eb9b1d0c659673b0cd7"
+            },
+            {
+              "content_hash": "834857f38dcf7a286152b1ac55489e256bd87d11daf5a772a79f31c13242c80e",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:834857f38dcf7a286152b1ac55489e256bd87d11daf5a772a79f31c13242c80e"
+            },
+            {
+              "content_hash": "8c9678ee3d4d4437dec0dd33fb5ce923882c09b374b62c2fd9588413b6988ec9",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:8c9678ee3d4d4437dec0dd33fb5ce923882c09b374b62c2fd9588413b6988ec9"
+            },
+            {
+              "content_hash": "d481b5e071cea3f6c578c213652533c360474e2672cfe4a8f69a76deb8f41155",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:d481b5e071cea3f6c578c213652533c360474e2672cfe4a8f69a76deb8f41155"
+            },
+            {
+              "content_hash": "d70a5672e7031fc7c9067d5bb8e3749fe8434d8b1e3c2acbace3780f7fa0fbb1",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:d70a5672e7031fc7c9067d5bb8e3749fe8434d8b1e3c2acbace3780f7fa0fbb1"
+            },
+            {
+              "content_hash": "f45099a22ceeb091ad3cb410cd30106cb2d0bcbe289a68cd63bf3a75c72e5f57",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:f45099a22ceeb091ad3cb410cd30106cb2d0bcbe289a68cd63bf3a75c72e5f57"
+            }
+          ],
+          "source_release_ref": {
+            "content_hash": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54",
+            "kind": "SOURCE_ARTIFACT",
+            "object_id": "SOURCE-m01"
+          }
+        },
+        "original_U_ref": {
+          "content_hash": "241c68ef770d89c3f83c7784412f38dd120ebbda7c6600ac4c62b7d7626e43bf",
+          "kind": "R10_PV2_ORIGINAL_U",
+          "object_id": "urn:r10:pv2:r10_pv2_original_u:PV2-ADULT-B-B"
+        },
+        "original_operation_scope_ref": {
+          "content_hash": "eb37640c2aae7a6530f78f466d6430b8ea95a95d25ac563209e73ee3cdfe4fd1",
+          "kind": "R10_PV2_OPERATION_SCOPE",
+          "object_id": "urn:r10:pv2:r10_pv2_operation_scope:PV2-ADULT-B-B"
+        }
+      },
+      {
+        "expected_work_key": "d673e586264356f14a19e4adf128dd3ac2b0be5dcaf4d14bbcf849ffd587e4da",
+        "independent_E_ref": {
+          "content_hash": "f271b2f7936769c875f0a8f01f18910b71f364b007402126c2785947feab2069",
+          "kind": "R10_PV2_PROSPECTIVE_E",
+          "object_id": "urn:r10:pv2:r10_pv2_prospective_e:PV2-ADULT-B-PAIR"
+        },
+        "independent_custody_ref": {
+          "content_hash": "b29d09355697edc302f662ce00df1234730b94bb7bac3e597d32494f77b87557",
+          "kind": "R10_PV2_CUSTODY_WITNESS",
+          "object_id": "urn:r10:pv2:r10_pv2_custody_witness:PV2-ADULT-B-PAIR"
+        },
+        "legacy": {
+          "authority_ref": "I03-AUTH-m01-query|1.0.0|6b35c996e3e483476b1d9b6dc5b29987c0b490a2b3655207f885db240b45c738",
+          "condition_order": [
+            "X",
+            "Y"
+          ],
+          "discovery_authority_ref": null,
+          "form": "F1",
+          "hold_reason": null,
+          "item": "X",
+          "measure_kind": "RAW",
+          "multiplicity": 1,
+          "predicate_ref": {
+            "content_hash": "67b839f335f0ac1b43d80b0352ac47ebe97071ba4f80e02528e9ea051d51856d",
+            "kind": "EmpiricalPredicate@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:67b839f335f0ac1b43d80b0352ac47ebe97071ba4f80e02528e9ea051d51856d"
+          },
+          "query_ref": {
+            "content_hash": "8de05c75dfe923052f71a0235a10eabc6b6c75f49e36799f75a0e324b7b7e653",
+            "kind": "EmpiricalQuerySpec@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:8de05c75dfe923052f71a0235a10eabc6b6c75f49e36799f75a0e324b7b7e653"
+          },
+          "required_consumer": "FIELD_FORGE_CONDITIONAL_SUPPORT",
+          "risk_identity": "RISK_SET|urn:test:i03:risk_set:m01-risk|958262fce1818f80876384b5db08b74e1dc04749700d70f239a05bb2b8bf2898",
+          "schema_version": "HQ280_PV3_A04S_CANONICAL_V2@1.0.0",
+          "semantic_op_class": "PAIR_RESPONSE_COTRAVEL",
+          "semantic_roles": [
+            "CONDITIONER",
+            "TARGET"
+          ],
+          "slot": "PAIR",
+          "source": "PV2-ACTUAL-SCOPE-SOURCEFREE",
+          "source_identity": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54",
+          "state": "RUNNABLE",
+          "target": "XY",
+          "topology_identity": "SCALAR_2X2_JOINT",
+          "wave": "W1"
+        },
+        "original": {
+          "administered_occurrence": "PV2-FIRST-ADMINISTRATION",
+          "empirical_universe_ref": {
+            "content_hash": "f9da0697e8f4d58f4042e471e3174e78db44b9ca0fba6652d7801f4179d838d5",
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f9da0697e8f4d58f4042e471e3174e78db44b9ca0fba6652d7801f4179d838d5"
+          },
+          "form": "F1",
+          "instrument_release": "INST-PV2-ADULT-B/F1",
+          "language": "PV2-LANGUAGE",
+          "native_item_refs": [
+            {
+              "content_hash": "e8fd4d7969c753914b87a8a0135521c4eb8076a04438920a85ef83c645057d94",
+              "kind": "QUESTION_NATIVE",
+              "object_id": "urn:test:i03:question_native:m01-X"
+            },
+            {
+              "content_hash": "7b1a9fa41dc1170104fa71c15d94aca9bc3b639f50d77e85350db952613379a6",
+              "kind": "QUESTION_NATIVE",
+              "object_id": "urn:test:i03:question_native:m01-Y"
+            }
+          ],
+          "option_scope": [
+            "0",
+            "1"
+          ],
+          "original_item_scope_ref": {
+            "content_hash": "05104e6964db2bc75fdc8a4d6a37db7cfa4d50022bcbb75e4329933b94d2e105",
+            "kind": "PV2_ORIGINAL_ITEM_SCOPE",
+            "object_id": "urn:test:i03:pv2_original_item_scope:pv2-items-PAIR"
+          },
+          "respondent_namespace": "PV2-ADULT-B",
+          "respondent_unit": "TEST_ONLY_ADULT",
+          "routing_refs": [
+            {
+              "content_hash": "0e2cbafdf1250c721f5ed45af001c36d42e4ae76ce412eb9b1d0c659673b0cd7",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:0e2cbafdf1250c721f5ed45af001c36d42e4ae76ce412eb9b1d0c659673b0cd7"
+            },
+            {
+              "content_hash": "834857f38dcf7a286152b1ac55489e256bd87d11daf5a772a79f31c13242c80e",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:834857f38dcf7a286152b1ac55489e256bd87d11daf5a772a79f31c13242c80e"
+            },
+            {
+              "content_hash": "8c9678ee3d4d4437dec0dd33fb5ce923882c09b374b62c2fd9588413b6988ec9",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:8c9678ee3d4d4437dec0dd33fb5ce923882c09b374b62c2fd9588413b6988ec9"
+            },
+            {
+              "content_hash": "d481b5e071cea3f6c578c213652533c360474e2672cfe4a8f69a76deb8f41155",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:d481b5e071cea3f6c578c213652533c360474e2672cfe4a8f69a76deb8f41155"
+            },
+            {
+              "content_hash": "d70a5672e7031fc7c9067d5bb8e3749fe8434d8b1e3c2acbace3780f7fa0fbb1",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:d70a5672e7031fc7c9067d5bb8e3749fe8434d8b1e3c2acbace3780f7fa0fbb1"
+            },
+            {
+              "content_hash": "f45099a22ceeb091ad3cb410cd30106cb2d0bcbe289a68cd63bf3a75c72e5f57",
+              "kind": "RoutingEligibilityFact@1.0.0",
+              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:f45099a22ceeb091ad3cb410cd30106cb2d0bcbe289a68cd63bf3a75c72e5f57"
+            }
+          ],
+          "source_release_ref": {
+            "content_hash": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54",
+            "kind": "SOURCE_ARTIFACT",
+            "object_id": "SOURCE-m01"
+          }
+        },
+        "original_U_ref": {
+          "content_hash": "8f1c9058c836a8e8826e836d96d145cf2da2dca97e9d27db9096369198c85af6",
+          "kind": "R10_PV2_ORIGINAL_U",
+          "object_id": "urn:r10:pv2:r10_pv2_original_u:PV2-ADULT-B-PAIR"
+        },
+        "original_operation_scope_ref": {
+          "content_hash": "1c2c69c73da889e05de4f192b763442a5cac55a25a2f41bf1dbc1a40e7034191",
+          "kind": "R10_PV2_OPERATION_SCOPE",
+          "object_id": "urn:r10:pv2:r10_pv2_operation_scope:PV2-ADULT-B-PAIR"
+        }
+      }
+    ],
+    "schema": "HQ295_ORIGINAL_EXPECTED_WORK_V2K_CANDIDATE@1.0.0"
+  },
+  "profile": "BASELINE"
+}

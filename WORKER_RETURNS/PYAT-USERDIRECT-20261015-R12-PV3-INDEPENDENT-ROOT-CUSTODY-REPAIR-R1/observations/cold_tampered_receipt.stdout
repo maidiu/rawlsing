@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro/cold_child.py", line 40, in <module>
+    exec(
+  File "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro/cold_child.py", line 33, in <module>
+    try:
+         
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro/pv2_cold_process.py", line 73, in <module>
+    report = PV2.run_sourcefree_with_register(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro/pv3_candidate.py", line 164, in run_sourcefree_with_register
+    reconcile_journal(scope.p01_kwargs["session"])
+  File "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro/pv3_candidate.py", line 93, in reconcile_journal
+    raise CustodyError("JOURNAL_RECEIPT_PROVENANCE_MISMATCH")
+pv3_candidate.CustodyError: JOURNAL_RECEIPT_PROVENANCE_MISMATCH

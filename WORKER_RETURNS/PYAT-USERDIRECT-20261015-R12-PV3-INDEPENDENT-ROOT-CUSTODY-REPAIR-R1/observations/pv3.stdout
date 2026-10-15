@@ -1,0 +1,36 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: /Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1
+collecting ... collected 28 items
+
+../tests/test_pv3_custody.py::test_source_selective_withdrawal_preserves_exact_other_namespace PASSED [  3%]
+../tests/test_pv3_custody.py::test_old_request_snapshot_does_not_undo_owner_withdrawal PASSED [  7%]
+../tests/test_pv3_custody.py::test_each_read_resolves_owner_edition_clock_asof[clock] PASSED [ 10%]
+../tests/test_pv3_custody.py::test_each_read_resolves_owner_edition_clock_asof[asof] PASSED [ 14%]
+../tests/test_pv3_custody.py::test_each_read_resolves_owner_edition_clock_asof[edition] PASSED [ 17%]
+../tests/test_pv3_custody.py::test_request_grant_never_controls_owner_state[scope-self-issued unrestricted] PASSED [ 21%]
+../tests/test_pv3_custody.py::test_request_grant_never_controls_owner_state[revoked-True] PASSED [ 25%]
+../tests/test_pv3_custody.py::test_request_grant_never_controls_owner_state[ceiling-value2] PASSED [ 28%]
+../tests/test_pv3_custody.py::test_request_grant_never_controls_owner_state[issuer-FORGED_FIXTURE_OWNER] PASSED [ 32%]
+../tests/test_pv3_custody.py::test_forged_fixture_owner_cannot_be_installed_in_request PASSED [ 35%]
+../tests/test_pv3_custody.py::test_coherent_renamed_report_ref_cannot_mint_custody PASSED [ 39%]
+../tests/test_pv3_custody.py::test_missing_query_risk_and_fact_material_fail_closed[producer_query_ref] PASSED [ 42%]
+../tests/test_pv3_custody.py::test_missing_query_risk_and_fact_material_fail_closed[risk_set_ref] PASSED [ 46%]
+../tests/test_pv3_custody.py::test_missing_query_risk_and_fact_material_fail_closed[producer_fact_ref] PASSED [ 50%]
+../tests/test_pv3_custody.py::test_deep_read_mutation_does_not_corrupt_service_or_historical_report PASSED [ 53%]
+../tests/test_pv3_custody.py::test_separate_journal_fields_must_match_actual_owner_receipt[result_refs] PASSED [ 57%]
+../tests/test_pv3_custody.py::test_separate_journal_fields_must_match_actual_owner_receipt[manifest_hash] PASSED [ 60%]
+../tests/test_pv3_custody.py::test_separate_journal_fields_must_match_actual_owner_receipt[unit_key] PASSED [ 64%]
+../tests/test_pv3_custody.py::test_separate_journal_fields_must_match_actual_owner_receipt[attempt_index] PASSED [ 67%]
+../tests/test_pv3_custody.py::test_separate_journal_fields_must_match_actual_owner_receipt[journal_seq] PASSED [ 71%]
+../tests/test_pv3_custody.py::test_separate_journal_fields_must_match_actual_owner_receipt[receipt_state] PASSED [ 75%]
+../tests/test_pv3_custody.py::test_changed_checkpoint_identity_is_refused_before_any_new_unit PASSED [ 78%]
+../tests/test_pv3_custody.py::test_generic_label_red_is_contained_by_explicit_hold PASSED [ 82%]
+../tests/test_pv3_custody.py::test_true_fresh_process_does_not_claim_offline_fact_restoration PASSED [ 85%]
+../tests/test_pv3_custody.py::test_owner_withdrawal_persists_in_true_fresh_process PASSED [ 89%]
+../tests/test_pv3_custody.py::test_missing_owner_store_fails_closed_and_is_not_reprovisioned PASSED [ 92%]
+../tests/test_pv3_custody.py::test_two_service_clients_resolve_the_same_current_owner_decision PASSED [ 96%]
+../tests/test_pv3_custody.py::test_current_read_binds_receipt_and_journal_proof_content PASSED [100%]
+
+- generated xml file: /Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/observations/pv3.xml -
+============================= 28 passed in 12.94s ==============================

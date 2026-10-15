@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro/cold_child.py", line 40, in <module>
+    exec(
+  File "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro/cold_child.py", line 33, in <module>
+    try:
+         
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro/pv2_cold_process.py", line 53, in <module>
+    fx = fixture.pv2_sourcefree_fixture(ROOT / 'ledger')
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro/pv2_sourcefree_fixture.py", line 260, in pv2_sourcefree_fixture
+    inputs = [sourcefree_original_inputs(ns) for ns in NAMESPACES]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro/pv2_sourcefree_fixture.py", line 260, in <listcomp>
+    inputs = [sourcefree_original_inputs(ns) for ns in NAMESPACES]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/candidate/repro/pv2_sourcefree_fixture.py", line 72, in sourcefree_original_inputs
+    fx = physical_fixture()
+         ^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro/cold_child.py", line 12, in missing
+    (R / "observations" / (sys.argv[3] + ".installation.json")).write_text(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: PV2I_INDEPENDENT_SOURCE_MISSING

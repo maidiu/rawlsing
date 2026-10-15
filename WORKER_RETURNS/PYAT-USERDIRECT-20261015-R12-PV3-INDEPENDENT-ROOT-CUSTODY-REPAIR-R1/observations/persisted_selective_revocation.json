@@ -1,0 +1,46 @@
+{
+  "argv": [
+    "/usr/local/bin/python3",
+    "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/repro/current_owner_child.py",
+    "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/tmp/pv3/test_owner_withdrawal_persists0/independent_owner/current.json",
+    "/Users/matthewsmith/.codex/worktrees/7531/Rawlsing/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-PV3-INDEPENDENT-ROOT-CUSTODY-REPAIR-R1/runtime_root/tmp/pv3/test_owner_withdrawal_persists0/history.json"
+  ],
+  "exit": 0,
+  "actual": {
+    "pid": 29575,
+    "decisions": {
+      "PV2-ADULT-A": {
+        "namespace": "PV2-ADULT-A",
+        "edition": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54",
+        "clock": 2,
+        "asof": 2,
+        "withdrawn": true,
+        "reason": "PERSISTED_SOURCE_A_WITHDRAWAL",
+        "grant": "TEST_ONLY_FIXTURE_GRANT",
+        "issuer": "PV3_SEPARATELY_INSTALLED_FIXTURE_OWNER",
+        "ceiling": [
+          "SOURCE_FREE_DEV"
+        ]
+      },
+      "PV2-ADULT-B": {
+        "namespace": "PV2-ADULT-B",
+        "edition": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54",
+        "clock": 1,
+        "asof": 1,
+        "withdrawn": false,
+        "reason": null,
+        "grant": "TEST_ONLY_FIXTURE_GRANT",
+        "issuer": "PV3_SEPARATELY_INSTALLED_FIXTURE_OWNER",
+        "ceiling": [
+          "SOURCE_FREE_DEV"
+        ]
+      }
+    },
+    "old_request_read": {
+      "servable": false,
+      "claim": "OFFLINE_FACT_RESTORATION_HOLD"
+    }
+  },
+  "policy_unchanged_in_child": true,
+  "B_current_material_bit_stable_in_live_service": true
+}

@@ -1,0 +1,603 @@
+[
+  {
+    "name": "test_exact_independent_inventory_and_six_real_consumers",
+    "raw_outcome": "passed",
+    "api_events": [],
+    "actual_baseline_evidence": "4083e1dab2c179b349fcfd56090f39752c8b09f1a157ccd767292da4c1c5aabd"
+  },
+  {
+    "name": "test_foreign_reference_with_fixed_register_refused[original_U_ref]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_foreign_reference_with_fixed_register_refused[original_U_ref]",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "ORIGINAL_EXPECTED_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_foreign_reference_with_fixed_register_refused[independent_E_ref]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_foreign_reference_with_fixed_register_refused[independent_E_ref]",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "ORIGINAL_EXPECTED_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_foreign_reference_with_fixed_register_refused[independent_custody_ref]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_foreign_reference_with_fixed_register_refused[independent_custody_ref]",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "ORIGINAL_EXPECTED_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_foreign_reference_with_fixed_register_refused[original_operation_scope_ref]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_foreign_reference_with_fixed_register_refused[original_operation_scope_ref]",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "ORIGINAL_EXPECTED_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_coherently_reissued_register_cannot_authenticate_itself[original_U_ref]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_coherently_reissued_register_cannot_authenticate_itself[original_U_ref]",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_coherently_reissued_register_cannot_authenticate_itself[independent_E_ref]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_coherently_reissued_register_cannot_authenticate_itself[independent_E_ref]",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_coherently_reissued_register_cannot_authenticate_itself[independent_custody_ref]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_coherently_reissued_register_cannot_authenticate_itself[independent_custody_ref]",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_coherently_reissued_register_cannot_authenticate_itself[original_operation_scope_ref]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_coherently_reissued_register_cannot_authenticate_itself[original_operation_scope_ref]",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_fixed_register_rejects_original_metadata_mutation[form-PV2I-FOREIGN-FORM]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_fixed_register_rejects_original_metadata_mutation[form-PV2I-FOREIGN-FORM]",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "ORIGINAL_EXPECTED_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_fixed_register_rejects_original_metadata_mutation[respondent_unit-HOUSEHOLD]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_fixed_register_rejects_original_metadata_mutation[respondent_unit-HOUSEHOLD]",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "ORIGINAL_EXPECTED_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_fixed_register_rejects_original_metadata_mutation[language-PV2I-OTHER]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_fixed_register_rejects_original_metadata_mutation[language-PV2I-OTHER]",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "ORIGINAL_EXPECTED_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_fixed_register_rejects_original_metadata_mutation[instrument_release-EDITION2]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_fixed_register_rejects_original_metadata_mutation[instrument_release-EDITION2]",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "ORIGINAL_EXPECTED_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_fixed_register_rejects_original_metadata_mutation[administered_occurrence-SECOND]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_fixed_register_rejects_original_metadata_mutation[administered_occurrence-SECOND]",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "ORIGINAL_EXPECTED_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_fixed_register_rejects_original_metadata_mutation[option_scope-value5]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_fixed_register_rejects_original_metadata_mutation[option_scope-value5]",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "ORIGINAL_EXPECTED_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_two_held_omission_same_six_runnable_refused",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_two_held_omission_same_six_runnable_refused",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "ORIGINAL_EXPECTED_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_A_only_scope_refused",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_A_only_scope_refused",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "ORIGINAL_EXPECTED_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_equal_count_held_relabel_with_fixed_register_refused",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_equal_count_held_relabel_with_fixed_register_refused",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "ORIGINAL_EXPECTED_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_equal_count_held_relabel_with_self_reissued_register_refused",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_equal_count_held_relabel_with_self_reissued_register_refused",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_complete_original_source_binding[source_release_ref]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_complete_original_source_binding[source_release_ref]",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "ORIGINAL_EXPECTED_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_complete_original_source_binding[empirical_universe_ref]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_complete_original_source_binding[empirical_universe_ref]",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "ORIGINAL_EXPECTED_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_complete_original_source_binding[original_item_scope_ref]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_complete_original_source_binding[original_item_scope_ref]",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "ORIGINAL_EXPECTED_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_complete_original_source_binding[routing_refs]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_complete_original_source_binding[routing_refs]",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "ORIGINAL_EXPECTED_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_swapped_actual_query_target_conditioner_refused",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_swapped_actual_query_target_conditioner_refused",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "ORIGINAL_EXPECTED_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_reversed_role_mask_refused",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_reversed_role_mask_refused",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "ORIGINAL_EXPECTED_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_current_read_refuses_foreign_or_widened_fixture_grant[issuer-PV2I-SELF-ISSUER]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_current_read_refuses_foreign_or_widened_fixture_grant[issuer-PV2I-SELF-ISSUER]",
+        "operation": "current_read",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_current_read_refuses_foreign_or_widened_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_current_read_refuses_foreign_or_widened_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT]",
+        "operation": "current_read",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_current_read_refuses_foreign_or_widened_fixture_grant[ceiling-value2]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_current_read_refuses_foreign_or_widened_fixture_grant[ceiling-value2]",
+        "operation": "current_read",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_execution_refuses_self_rehashed_fixture_grant[issuer-PV2I-SELF-ISSUER]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_execution_refuses_self_rehashed_fixture_grant[issuer-PV2I-SELF-ISSUER]",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_execution_refuses_self_rehashed_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_execution_refuses_self_rehashed_fixture_grant[grant-SIGNED_REAL_SOURCE_GRANT]",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_execution_refuses_self_rehashed_fixture_grant[ceiling-value2]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_execution_refuses_self_rehashed_fixture_grant[ceiling-value2]",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_explicit_revoked_register_blocks",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_explicit_revoked_register_blocks",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_historical_register_cannot_restore_current_authorization",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_historical_register_cannot_restore_current_authorization",
+        "operation": "current_read",
+        "outcome": "RETURNED",
+        "servable": false,
+        "links": 0,
+        "held": 0,
+        "claim": "PV3_TEST_ONLY_CURRENT_SOURCE_RESOLVED"
+      }
+    ]
+  },
+  {
+    "name": "test_current_consumer_rejects_payload_tamper_same_ref",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_current_consumer_rejects_payload_tamper_same_ref",
+        "operation": "current_read",
+        "outcome": "REFUSED",
+        "error_type": "ValueError",
+        "message": "CONSUMER_CUSTODY_CONTENT_MISMATCH"
+      }
+    ]
+  },
+  {
+    "name": "test_current_read_does_not_alias_historical_report",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_current_read_does_not_alias_historical_report",
+        "operation": "current_read",
+        "outcome": "RETURNED",
+        "servable": true,
+        "links": 6,
+        "held": 0,
+        "claim": "PV3_TEST_ONLY_CURRENT_SOURCE_RESOLVED"
+      }
+    ]
+  },
+  {
+    "name": "test_role_validation_fails_closed_on_incomplete_material[missing_material]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_role_validation_fails_closed_on_incomplete_material[missing_material]",
+        "operation": "roles",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "MISSING_CONSUMER_MATERIAL"
+      }
+    ]
+  },
+  {
+    "name": "test_role_validation_fails_closed_on_incomplete_material[missing_roles]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_role_validation_fails_closed_on_incomplete_material[missing_roles]",
+        "operation": "roles",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "MISSING_REQUIRED_ROLES"
+      }
+    ]
+  },
+  {
+    "name": "test_role_validation_fails_closed_on_incomplete_material[missing_conditioner]",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_role_validation_fails_closed_on_incomplete_material[missing_conditioner]",
+        "operation": "roles",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "MISSING_REQUIRED_ROLES"
+      }
+    ]
+  },
+  {
+    "name": "test_generic_native_labels_not_specialized_Q86",
+    "raw_outcome": "failed",
+    "api_events": [],
+    "actual_baseline_evidence": "4083e1dab2c179b349fcfd56090f39752c8b09f1a157ccd767292da4c1c5aabd"
+  },
+  {
+    "name": "test_independent_row_mutation_reaches_actual_consumers",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_independent_row_mutation_reaches_actual_consumers",
+        "operation": "run",
+        "outcome": "RETURNED",
+        "servable": null,
+        "links": 6,
+        "held": 2,
+        "claim": null
+      }
+    ]
+  },
+  {
+    "name": "test_coherent_household_relabel_cannot_reuse_respondent_fact",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_coherent_household_relabel_cannot_reuse_respondent_fact",
+        "operation": "run",
+        "outcome": "REFUSED",
+        "error_type": "CustodyError",
+        "message": "REQUEST_REGISTER_NOT_INSTALLED_ROOT"
+      }
+    ]
+  },
+  {
+    "name": "test_genuine_cold_process_preserves_journal_and_no_new_durable_units",
+    "raw_outcome": "passed",
+    "api_events": [],
+    "separate_process_evidence": {
+      "cold_court.json": "ecff9c6abbb95bedcc9319437018b3901b8424915ac47c473662bf7cdf53ecff",
+      "cold_actual_result_ref_tamper.json": "ca489e1a313e6f16e6e5edf7f35329a9728e961713dff1f28211b7f99ade8b9a",
+      "cold_checkpoint_payload_tamper.json": "9e13311d59a5bcace57252aecb2a1c4c22521da3ec76cc76b861f8fe2e2810b7",
+      "cold_forged_current_grant.json": "5dce636ee18f6dc5a6b17c0b738298369945376b087534c838ddf0ebca8d711a"
+    }
+  },
+  {
+    "name": "test_changed_actual_journal_result_reference_is_not_ignored",
+    "raw_outcome": "passed",
+    "api_events": [],
+    "separate_process_evidence": {
+      "cold_court.json": "ecff9c6abbb95bedcc9319437018b3901b8424915ac47c473662bf7cdf53ecff",
+      "cold_actual_result_ref_tamper.json": "ca489e1a313e6f16e6e5edf7f35329a9728e961713dff1f28211b7f99ade8b9a",
+      "cold_checkpoint_payload_tamper.json": "9e13311d59a5bcace57252aecb2a1c4c22521da3ec76cc76b861f8fe2e2810b7",
+      "cold_forged_current_grant.json": "5dce636ee18f6dc5a6b17c0b738298369945376b087534c838ddf0ebca8d711a"
+    }
+  },
+  {
+    "name": "test_changed_checkpoint_receipt_payload_refused",
+    "raw_outcome": "passed",
+    "api_events": [],
+    "separate_process_evidence": {
+      "cold_court.json": "ecff9c6abbb95bedcc9319437018b3901b8424915ac47c473662bf7cdf53ecff",
+      "cold_actual_result_ref_tamper.json": "ca489e1a313e6f16e6e5edf7f35329a9728e961713dff1f28211b7f99ade8b9a",
+      "cold_checkpoint_payload_tamper.json": "9e13311d59a5bcace57252aecb2a1c4c22521da3ec76cc76b861f8fe2e2810b7",
+      "cold_forged_current_grant.json": "5dce636ee18f6dc5a6b17c0b738298369945376b087534c838ddf0ebca8d711a"
+    }
+  },
+  {
+    "name": "test_fresh_process_current_read_refuses_self_issued_grant",
+    "raw_outcome": "passed",
+    "api_events": [],
+    "separate_process_evidence": {
+      "cold_court.json": "ecff9c6abbb95bedcc9319437018b3901b8424915ac47c473662bf7cdf53ecff",
+      "cold_actual_result_ref_tamper.json": "ca489e1a313e6f16e6e5edf7f35329a9728e961713dff1f28211b7f99ade8b9a",
+      "cold_checkpoint_payload_tamper.json": "9e13311d59a5bcace57252aecb2a1c4c22521da3ec76cc76b861f8fe2e2810b7",
+      "cold_forged_current_grant.json": "5dce636ee18f6dc5a6b17c0b738298369945376b087534c838ddf0ebca8d711a"
+    }
+  },
+  {
+    "name": "test_missing_source_and_changed_edition_never_fake_cold_success",
+    "raw_outcome": "passed",
+    "api_events": [],
+    "separate_process_evidence": {
+      "cold_court.json": "ecff9c6abbb95bedcc9319437018b3901b8424915ac47c473662bf7cdf53ecff",
+      "cold_actual_result_ref_tamper.json": "ca489e1a313e6f16e6e5edf7f35329a9728e961713dff1f28211b7f99ade8b9a",
+      "cold_checkpoint_payload_tamper.json": "9e13311d59a5bcace57252aecb2a1c4c22521da3ec76cc76b861f8fe2e2810b7",
+      "cold_forged_current_grant.json": "5dce636ee18f6dc5a6b17c0b738298369945376b087534c838ddf0ebca8d711a"
+    }
+  },
+  {
+    "name": "test_real_empty_risk_I03_and_Field_Forge_typed_states",
+    "raw_outcome": "passed",
+    "api_events": [],
+    "actual_baseline_evidence": "4083e1dab2c179b349fcfd56090f39752c8b09f1a157ccd767292da4c1c5aabd"
+  },
+  {
+    "name": "test_second_independent_row_mutation_changes_I05_winning_consumer",
+    "raw_outcome": "passed",
+    "api_events": [
+      {
+        "case": "test_second_independent_row_mutation_changes_I05_winning_consumer",
+        "operation": "run",
+        "outcome": "RETURNED",
+        "servable": null,
+        "links": 6,
+        "held": 2,
+        "claim": null
+      }
+    ]
+  }
+]
