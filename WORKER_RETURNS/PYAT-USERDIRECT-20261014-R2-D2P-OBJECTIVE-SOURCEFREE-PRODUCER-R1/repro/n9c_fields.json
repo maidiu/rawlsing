@@ -1,0 +1,79 @@
+{
+  "schema": "PYAT_HQ297_N9C_SOURCEFREE_READER_TEST_INPUT@1",
+  "authority": "TEST_ONLY__NO_EXTERNAL_SOURCE_ISSUER_OR_EE13_OR_REAL_OC05",
+  "selected_world": "HISTORICAL_GHANA_2021__PUBLICATION_AWARE_2022_PLUS",
+  "fields": [
+    {
+      "fixture_only": true,
+      "issued": false,
+      "role": "GSS_RURAL_LIGHTING",
+      "family": "GH_GSS_PHC_2021",
+      "publisher": "Ghana Statistical Service",
+      "source_pdf_sha256": null,
+      "issuer_ref": null,
+      "permission": "TEST_ONLY_NO_EXTERNAL_USE_GRANT",
+      "status": "AVAILABLE_TEST_ONLY",
+      "publication_date": "2022-02-24",
+      "observation_period": "2021 PHC",
+      "native_unit": "RURAL_OCCUPIED_HOUSEHOLD_MAIN_LIGHTING",
+      "native_geography": "GHANA_RURAL",
+      "native_measure": "ELECTRICITY_MAIN_LIGHTING_ALL_SUBTYPES",
+      "uncertainty": "CENSUS_NONSAMPLING_UNQUANTIFIED",
+      "exclusions": [
+        "SECONDARY_HOUSING",
+        "VACANT_DWELLINGS"
+      ],
+      "values": {
+        "numerator": 2388192,
+        "denominator": 3288063,
+        "published_percent": 72.6,
+        "electricity_subtypes": {
+          "mains": 2288193,
+          "community_grid": 74490,
+          "generator": 3640,
+          "solar_inverter": 21512,
+          "wind": 357
+        }
+      }
+    },
+    {
+      "fixture_only": true,
+      "issued": false,
+      "role": "NCA_NATIONAL_MOBILE_DATA",
+      "family": "GH_NCA_LICENSEE_REPORTS_2021Q4",
+      "publisher": "National Communications Authority",
+      "source_pdf_sha256": null,
+      "issuer_ref": null,
+      "permission": "TEST_ONLY_NO_EXTERNAL_USE_GRANT",
+      "status": "AVAILABLE_TEST_ONLY",
+      "publication_date": "2022-07-08",
+      "observation_period": "2021-Q4 (90-day activity definition)",
+      "native_unit": "ACTIVE_MOBILE_DATA_SUBSCRIPTIONS_NOT_UNIQUE_PERSONS",
+      "native_geography": "GHANA_NATIONAL",
+      "native_measure": "ACTIVE_MOBILE_DATA_90_DAY_TRAFFIC",
+      "uncertainty": "LICENSEE_REPORTING_ERROR_UNQUANTIFIED",
+      "unique_persons": false,
+      "rural_split": null,
+      "values": {
+        "active_subscriptions": 23414527,
+        "prepaid": 23237338,
+        "postpaid": 177189
+      }
+    }
+  ],
+  "test_expected_positive_values": {
+    "GSS_RURAL_LIGHTING": {
+      "numerator": 2388192,
+      "denominator": 3288063,
+      "published_percent": 72.6
+    },
+    "NCA_NATIONAL_MOBILE_DATA": {
+      "active_subscriptions": 23414527
+    }
+  },
+  "raw_source_read": false,
+  "publisher_rights_issued": false,
+  "N5_N6_issued": false,
+  "EE13_issued": false,
+  "OC05_current": false
+}

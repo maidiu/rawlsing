@@ -1,0 +1,119 @@
+{
+  "schema": "D2P_COMPUTED_FIELD_AND_READER_RECEIPTS@1",
+  "status": "EXECUTED_SOURCEFREE_TEST_ONLY__NOT_ISSUED__NOT_ADOPTED",
+  "executed_at_utc": "2026-10-15T00:46:06Z",
+  "produced_fields": {
+    "GSS_RURAL_LIGHTING": {
+      "field_ref": "D2P_TESTONLY_FIELD:fa60c7bdb3457f3e903c2709c9a271a6311651bc0f2809d84197790a6de645a1",
+      "field_version": "GH_GSS_PHC_2021_V3K_TABLE5P10@TESTONLY1",
+      "native_unit": "RURAL_OCCUPIED_HOUSEHOLD_MAIN_LIGHTING",
+      "native_geography": "GHANA_RURAL",
+      "observation_clock": "2021 PHC",
+      "publication_clock": "2022-02-24",
+      "authority": {
+        "fixture_only": true,
+        "issued": false,
+        "issuer_signature": null,
+        "source_pdf_sha256": null,
+        "issuer_ref": null,
+        "permission": "TEST_ONLY_NO_EXTERNAL_USE_GRANT"
+      }
+    },
+    "NCA_NATIONAL_MOBILE_DATA": {
+      "field_ref": "D2P_TESTONLY_FIELD:dc825bb9f42d689852a7149d0bbee230b6479e9918ed1bd89365dd55cc7cb1ba",
+      "field_version": "GH_NCA_Q4_2021_BULLETIN_TABLE10@TESTONLY1",
+      "native_unit": "ACTIVE_MOBILE_DATA_SUBSCRIPTIONS_NOT_UNIQUE_PERSONS",
+      "native_geography": "GHANA_NATIONAL",
+      "observation_clock": "2021-Q4 (90-day activity definition)",
+      "publication_clock": "2022-07-08",
+      "authority": {
+        "fixture_only": true,
+        "issued": false,
+        "issuer_signature": null,
+        "source_pdf_sha256": null,
+        "issuer_ref": null,
+        "permission": "TEST_ONLY_NO_EXTERNAL_USE_GRANT"
+      }
+    }
+  },
+  "two_value_read_2022_07_08": {
+    "state": "TWO_VALUES_READ_TEST_ONLY",
+    "as_of": "2022-07-08",
+    "gss_values": {
+      "numerator": 2388192,
+      "denominator": 3288063,
+      "published_percent": 72.6,
+      "electricity_subtypes": {
+        "mains": 2288193,
+        "community_grid": 74490,
+        "generator": 3640,
+        "solar_inverter": 21512,
+        "wind": 357
+      }
+    },
+    "nca_values": {
+      "active_subscriptions": 23414527,
+      "prepaid": 23237338,
+      "postpaid": 177189
+    },
+    "dependency_readset": [
+      "TESTONLY_FIELD:83b0b3fdf1fa2a3e346c95211987b32fc5ff646d053a3577d1f695fd62507d45",
+      "TESTONLY_FIELD:d21dc005bdc40b56f0641dc75982880f74405f89691c55e532c87798f527b106"
+    ],
+    "test_snapshot_ref": "TESTONLY_SNAPSHOT:5dcca1a642eea3841a1a3cb7abf9d69b12095a7797173cdab0738319fddf0b42",
+    "operative_OC05": false,
+    "issued_EE13": false
+  },
+  "cutoffs": {
+    "as_of": "2021-12-31/2022-03-01(partial)/2022-07-07/2022-07-08",
+    "note": "2021 both refused; 2022-03-01 GSS-only partial; 2022-07-07 NCA not yet; 2022-07-08 both (see test suite)"
+  },
+  "directed_mutation": {
+    "gss_minus_one": {
+      "gss_slot": {
+        "numerator": 2388191,
+        "denominator": 3288063,
+        "published_percent": 72.6,
+        "electricity_subtypes": {
+          "mains": 2288192,
+          "community_grid": 74490,
+          "generator": 3640,
+          "solar_inverter": 21512,
+          "wind": 357
+        }
+      },
+      "nca_unchanged": true,
+      "new_snapshot_ref": "TESTONLY_SNAPSHOT:a267cc83dda1c05f3dd80cc9bc4893612f97b70350ff5269bf0f3fbf1e3b62e0"
+    },
+    "nca_plus_one": {
+      "nca_slot": {
+        "active_subscriptions": 23414528,
+        "prepaid": 23237339,
+        "postpaid": 177189
+      },
+      "gss_unchanged": true,
+      "new_snapshot_ref": "TESTONLY_SNAPSHOT:43f82e2f97de2a49d99a249aa9d63d81c778bbe1cdc77d81600b8499e5faa6f1"
+    }
+  },
+  "direct_transport_handoff": {
+    "transport_available": true,
+    "transport_module_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/d2p-objective-producer/rawlsing_next/pre553_learned_world_composition.py",
+    "transport_function": "compose_direct_producer",
+    "receipt_terminal_state": "SOURCEFREE_TEST_ONLY_TWO_FIELDS_BOUND",
+    "receipt_reason_code": "DIRECT_PRODUCER_ROUTE_EXACTLY_AUTHORIZED",
+    "determinant_count": 2
+  },
+  "counterfactual": {
+    "gss_unit_is_dwelling_not_person": true,
+    "gss_excludes_vacant_and_secondary": true,
+    "gss_subtypes_are_dwelling_lighting": true,
+    "nca_unit_is_subscriptions_not_persons": true,
+    "nca_no_unique_persons": true,
+    "nca_no_rural_split": true,
+    "nca_prepaid_postpaid_sum": true,
+    "units_geographies_denominators_distinct": true,
+    "publications_postdate_2021": true,
+    "all_hold": true
+  },
+  "counterfactual_conclusion": "Two aggregates do not determine any 2021 person's electricity/internet exposure or psyche. A world-conditioned context may reference them; no person attribute is licensed."
+}
