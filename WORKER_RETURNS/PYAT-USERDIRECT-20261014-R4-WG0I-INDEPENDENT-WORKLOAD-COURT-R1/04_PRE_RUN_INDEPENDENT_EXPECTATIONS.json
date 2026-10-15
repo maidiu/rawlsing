@@ -1,0 +1,157 @@
+{
+  "schema": "WG0I_PRE_EXECUTION_FROZEN_INDEPENDENT_EXPECTATIONS_20261014",
+  "frozen_before_positive_execution": true,
+  "branch_sealed": "bd91d30efb35c9ad39b45ae81a065e7e1a479b27",
+  "wg0p_pin": "e19099460eed10a4d3da31a917af539aef87e485",
+  "wg0p_code_sha": "c88182bed5c521a05a462778b76ffd40cf87a248",
+  "owner_blobs": {
+    "runner": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+    "empirical_objects": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "c11_repository": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3"
+  },
+  "independent_inventory_construction": "Direct item classification from declared NativeItem tuple under commission, without calling oracle_eligible_operations or WorkloadBuilder.enumerate; not an externally certified original 35-source inventory.",
+  "items": [
+    {
+      "id": "WG0P-ORD-01",
+      "grain": "respondent",
+      "source": "A",
+      "wave": "W1",
+      "kind": "ORDINAL",
+      "source_grant": "GRANTED_FIXTURE",
+      "marginal": "PRODUCED"
+    },
+    {
+      "id": "WG0P-HH-MR-02",
+      "grain": "household",
+      "source": "A",
+      "wave": "W1",
+      "kind": "MULTIPLE_RESPONSE",
+      "source_grant": "GRANTED_FIXTURE",
+      "marginal": "PRODUCED"
+    },
+    {
+      "id": "WG0P-ROUTED-03",
+      "grain": "respondent",
+      "source": "A",
+      "wave": "W1",
+      "kind": "ROUTED",
+      "routing": "NO_EVIDENCE",
+      "marginal": "HELD"
+    },
+    {
+      "id": "WG0P-ORD-04",
+      "grain": "respondent",
+      "source": "B",
+      "wave": "W2",
+      "kind": "ORDINAL",
+      "source_grant": "WITHDRAWN",
+      "marginal": "HELD"
+    },
+    {
+      "id": "WG0P-ORD-05",
+      "grain": "respondent",
+      "source": "A",
+      "wave": "W2",
+      "kind": "ORDINAL",
+      "source_grant": "GRANTED_FIXTURE",
+      "marginal": "PRODUCED"
+    }
+  ],
+  "fixture_arithmetic_expectations": {
+    "marginal_candidates": 5,
+    "produced_marginals": 3,
+    "held_marginals": 2,
+    "eligible_sourcefree_conditional_operations": 0,
+    "ordered_distinct_item_pairs": 20,
+    "ordered_pairs_involving_withdrawn_item": 8,
+    "ordered_pairs_between_remaining_four_items": 12,
+    "ordered_same_source_wave_unit_but_held_route": 2,
+    "remaining_inadmissible_conditionals": 10,
+    "expected_builder_total": 15,
+    "expected_batch_manifest_units": 3,
+    "expected_manifest_excluded_workitems": 12,
+    "expectation_status": "PREDICTION_BEFORE_EXECUTION"
+  },
+  "hostile_expected_contract": [
+    {
+      "id": "H01",
+      "scenario": "remove one executor op numerator/denominator",
+      "correct": "no produced numeric result; explicit missing-data refusal",
+      "suspect": "fallback fraction 1/2"
+    },
+    {
+      "id": "H02",
+      "scenario": "inject fake C11Repository._by_ref[ref.key] = object() with no validated C11LogicalRelease",
+      "correct": "hold as unvalidated",
+      "suspect": "runner treats key presence sufficient"
+    },
+    {
+      "id": "H03",
+      "scenario": "construct same unit/wave/source items with explicitly disjoint respondent carriers",
+      "correct": "not positive conditional; preserve risk/joint-basis hold",
+      "suspect": "builder produces conditionals"
+    },
+    {
+      "id": "H04",
+      "scenario": "withdrawn grant paired with eligible item",
+      "correct": "explicit held candidate per required frontier",
+      "suspect": "pair omitted entirely"
+    },
+    {
+      "id": "H05",
+      "scenario": "routed-without-evidence paired with eligible item",
+      "correct": "explicit held candidate",
+      "suspect": "pair omitted entirely or inadmissible without adequate reason"
+    },
+    {
+      "id": "H06",
+      "scenario": "complete batch manifest with artificial fraction callback",
+      "correct": "sourcefree occupancy only, not source-backed I03",
+      "suspect": "full manifest coverage language inflated"
+    },
+    {
+      "id": "H07",
+      "scenario": "revocation after existing completed receipts",
+      "correct": "invalidate affected result and descendants/emit held",
+      "suspect": "old receipts persist"
+    },
+    {
+      "id": "H08",
+      "scenario": "mutate an original NativeItem's options and missing/routing metadata, retaining canonical identity",
+      "correct": "semantic manifest and read-set change or refuse",
+      "suspect": "same hashes for semantically changed items"
+    },
+    {
+      "id": "H09",
+      "scenario": "duplicate source/wave/form/version with different native item id and actual semantic content",
+      "correct": "typed conflict with retained provenance",
+      "suspect": "duplicate silently dropped"
+    },
+    {
+      "id": "H10",
+      "scenario": "inject non-original duplicate op ID with conflicting semantics",
+      "correct": "typed refusal",
+      "suspect": "dict map clobber"
+    },
+    {
+      "id": "H11",
+      "scenario": "async shard and resume with stale authority or changed source release",
+      "correct": "immutable same release+permissions for old receipts or forced requalification",
+      "suspect": "opaque test slot permits stale completions"
+    },
+    {
+      "id": "H12",
+      "scenario": "native source respondent rows accessible through actual accepted I03/I05",
+      "correct": "must be called and document their output under valid grant",
+      "suspect": "WG0P calls no I03/I05"
+    },
+    {
+      "id": "H13",
+      "scenario": "minority and observed zero",
+      "correct": "retain genuine computed 0 and minority; no fallback on missing/invalid denominator",
+      "suspect": "synthetic ratio only"
+    }
+  ],
+  "authority_ceiling": "No owner issuance, no original rows, no source E authority; no all35/1890/101 acceptance by a five-item fixture",
+  "test_run_at_freeze": "NOT_RUN"
+}
