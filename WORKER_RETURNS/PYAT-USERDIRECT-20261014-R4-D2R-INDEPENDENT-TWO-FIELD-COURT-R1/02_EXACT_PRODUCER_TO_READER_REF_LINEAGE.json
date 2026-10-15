@@ -1,0 +1,36 @@
+{
+  "schema": "PYAT_R4_D2R_TESTED_REF_LINEAGE@1",
+  "grade": "BYTE_VERIFIED_SOURCEFREE_DIRECT_IMPORTS",
+  "inputs": {
+    "D2P_candidate_commit": "af128002ddc334ab5f3494a3b9488fd5b53e90d8",
+    "producer_blob": "583f60559bb04232a1165e85b708079247ceb5f6",
+    "reader_blob": "03eb46efccadd6880cb34b2e2ac609ffc9b16c59",
+    "fixture_blob": "1a1bec6e2fc5a89e2ea1b589832801a43933a632",
+    "identities_verified_with_local_git_object_sha1": true
+  },
+  "producer_call": "produce_two_fields(rows)",
+  "consumer_call": "TestOnlyRegistry(rows).refs_by_role() -> read_historical_test_only(...)",
+  "GSS": {
+    "producer_ref": "D2P_TESTONLY_FIELD:fa60c7bdb3457f3e903c2709c9a271a6311651bc0f2809d84197790a6de645a1",
+    "reader_ref": "TESTONLY_FIELD:83b0b3fdf1fa2a3e346c95211987b32fc5ff646d053a3577d1f695fd62507d45",
+    "actual_passing_of_producer_ref_into_reader": "REFUSED_UNKNOWN_EXACT_FIELD_REF",
+    "native_numerator": 2388192
+  },
+  "NCA": {
+    "producer_ref": "D2P_TESTONLY_FIELD:dc825bb9f42d689852a7149d0bbee230b6479e9918ed1bd89365dd55cc7cb1ba",
+    "reader_ref": "TESTONLY_FIELD:d21dc005bdc40b56f0641dc75982880f74405f89691c55e532c87798f527b106",
+    "actual_passing_of_producer_ref_into_reader": "REFUSED_UNKNOWN_EXACT_FIELD_REF",
+    "native_active_subscriptions": 23414527
+  },
+  "overlap_count": 0,
+  "reader_dependency_readset_contains_original_producer_refs": false,
+  "mutation_experiment": {
+    "GSS_minus_one": "BOTH_PARALLEL_HASHES_CHANGE_ONLY_GSS_WHEN_SAME_INPUT_ROWS_CHANGED",
+    "NCA_plus_one": "BOTH_PARALLEL_HASHES_CHANGE_ONLY_NCA_WHEN_SAME_INPUT_ROWS_CHANGED",
+    "proves": "TWO_INDEPENDENT_DETERMINISTIC_COMPUTATIONS_NOT_PRODUCER_TO_READER_HANDOFF"
+  },
+  "stale_export_red": "field_content_ref returns existing field_ref without verifying hash over current payload",
+  "sourcefree_status": "RED_END_TO_END_IDENTITY_INTEGRITY",
+  "minimum_fix": "ONE_PRODUCER_OWNED_IMMUTABLE_REGISTRY_AND_READER_ACCEPTED_EXACT_FIELD_REF_OR_CRYPTOGRAPHICALLY_VERIFIED_BRIDGE_WITH_REF_PRESERVING_READSET",
+  "real_field_issuance": null
+}
