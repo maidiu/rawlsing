@@ -1,0 +1,162 @@
+{
+  "schema": "PYAT_R3_T8I_EXECUTED_INDEPENDENT_TEMPORAL_RED_COURT_R1",
+  "verdict": "RED_SOURCEFREE_METHOD_NOT_ACCEPTABLE",
+  "actual_execution": true,
+  "host": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "git": "2.47.3",
+    "cwd": "/mnt/data/t8i_court",
+    "exec_host": "Isolated container-backed Python; GitHub private repository connector fetched pinned file texts, each locally reconstructed to EXACT remote blob SHA before imports/runs",
+    "git_cli_remote": "DNS_BLOCKED: Could not resolve host github.com",
+    "sourcefree_only": true
+  },
+  "local_code": {
+    "module": "/mnt/data/t8i_court/t8f_temporal_integrity.py",
+    "module_import_file": "/mnt/data/t8i_court/t8f_temporal_integrity.py",
+    "module_blob": "0108947afcec5797581e7c0d062c9aa655e6d6e1",
+    "module_raw_sha256": "ef067042baa783d2968f2fb3759ad6cd745e825f26d60cb4ea8b5f6b5f99e140",
+    "author_tests_blob": "c166280e75925a749d7fd2262bd8f96ff91e75ad",
+    "original_t8c_blob": "7f7e0c713a669951b40787537138db7a0653daea",
+    "original_t8r_mandatory_blob": "83db68fd705372b62778d81f96687a50b744ecca",
+    "new_t8i_test_blob": "3911420d94659d6fa89cbd0e89769959b0eb6ff6"
+  },
+  "observed_runs": [
+    {
+      "label": "T8F_AUTHOR_NEW_29",
+      "command": "cd /mnt/data/t8i_court && python -m pytest -q test_t8f_temporal_integrity.py --junitxml=t8f_author_29.junit.xml",
+      "exit": 0,
+      "passed": 29,
+      "failed": 0,
+      "skipped": 0,
+      "stdout_exact": ".............................                                            [100%]\n29 passed in 0.08s\n",
+      "stderr_bytes": 0,
+      "junit_local_file": "/mnt/data/t8i_court/t8f_author_29.junit.xml",
+      "junit_bytes": 3272,
+      "junit_sha256": "8739de417438559d99e4048b8b3fa9e61baeb8006df2f3ad2c5a312e30223642",
+      "note": "T8F newly rewritten suite including equivalents, NOT frozen original 19"
+    },
+    {
+      "label": "T8C_UNCHANGED_ORIGINAL_19",
+      "command": "cd /mnt/data/t8i_court && python -m pytest -q test_hq297_t8c.py --junitxml=t8c_original_19.junit.xml",
+      "exit": 0,
+      "passed": 19,
+      "failed": 0,
+      "skipped": 0,
+      "stdout_exact": "...................                                                      [100%]\n19 passed in 0.08s\n",
+      "stderr_bytes": 0,
+      "junit_local_file": "/mnt/data/t8i_court/t8c_original_19.junit.xml",
+      "junit_bytes": 1869,
+      "junit_sha256": "f31b107d488d0e8b4ed43d60418fb08ae1fd364a0d9347d3f37a16aeedc812c4",
+      "note": "Exact original file executed against its own original class and functions; not T8F"
+    },
+    {
+      "label": "T8R_UNCHANGED_ORIGINAL_3_AGAINST_T8C",
+      "command": "cd /mnt/data/t8i_court && python -m pytest -q test_review_mandatory_guards_red.py --junitxml=t8r_original_3_against_t8c.junit.xml",
+      "exit": 1,
+      "passed": 0,
+      "failed": 3,
+      "skipped": 0,
+      "stderr_bytes": 0,
+      "junit_local_file": "/mnt/data/t8i_court/t8r_original_3_against_t8c.junit.xml",
+      "junit_bytes": 3168,
+      "junit_sha256": "62e3d904764795165c2c542aa3f88c3b4fcb8a1817125e399dfb34f524ad72e0",
+      "failed_cases": [
+        "test_REQUIRES_rejection_of_tampered_delta_with_stale_producer_digest: DID_NOT_RAISE",
+        "test_REQUIRES_rejection_of_tampered_native_zero_with_stale_producer_digest: DID_NOT_RAISE",
+        "test_REQUIRES_typed_refusal_on_invalid_asof: ValueError rather than typed Refusal"
+      ],
+      "note": "FROZEN T8R file hard-imports test_hq297_t8c; legitimate historical RED reproduction, NOT a direct unmodified T8F run"
+    },
+    {
+      "label": "T8I_NEW_INDEPENDENT_ACCEPTANCE_16_AGAINST_T8F",
+      "command": "cd /mnt/data/t8i_court && python -m pytest -q test_t8i_independent_hostiles.py --junitxml=t8i_hostiles.junit.xml",
+      "exit": 1,
+      "passed": 6,
+      "failed": 10,
+      "skipped": 0,
+      "stderr_bytes": 0,
+      "junit_local_file": "/mnt/data/t8i_court/t8i_hostiles.junit.xml",
+      "junit_bytes": 13379,
+      "junit_sha256": "a056bc9226e0aee43dba3fa722d278a06733a8919425d67f8de49a8ae979ffef",
+      "test_blob": "3911420d94659d6fa89cbd0e89769959b0eb6ff6",
+      "note": "Independent expectations frozen in ccc7e539... before candidate author suite observation/execution; 10 acceptance violations, 6 functional controls PASS."
+    }
+  ],
+  "independent_control_passes": [
+    "valid two-wave test-only compare and consume",
+    "stale digest delta rejected PRODUCT_DIGEST_MISMATCH",
+    "stale native category rejected PRODUCT_DIGEST_MISMATCH",
+    "changed category with rehashed digest but stale share rejected SATISFIED_SHARE_ARITHMETIC_MISMATCH_LATER",
+    "invalid asof typed Refusal and mixed-asof typed policy when asof differs",
+    "native category 0 and special codes remain visible, original required risk denominator and 2017 unknown gap, EE12 and same-person holds"
+  ],
+  "independent_red_cases": [
+    {
+      "id": "T8I-RED-01",
+      "test": "test_red_registry_distinct_valid_variance_no_identity_collision",
+      "observed": "Two valid WaveFact variants with variance 1/2500 vs 1/1250 produce IDENTICAL full 64-character content hash"
+    },
+    {
+      "id": "T8I-RED-02",
+      "test": "test_red_registry_old_ref_retains_original_fact",
+      "observed": "Second registration gives identical WFACT ref and overwrites previous saved fact; first ref now dereferences variance 1/1250 instead of 1/2500"
+    },
+    {
+      "id": "T8I-RED-03",
+      "test": "test_red_wave_ref_year_bound_to_fact",
+      "observed": "WaveFactRef.year forged to 2022 for originally 2012 fact; retrieve() accepts because only ref_id/hash validated"
+    },
+    {
+      "id": "T8I-RED-04",
+      "test": "test_red_mutable_category_list_defensively_copied_on_registration",
+      "observed": "Although declared tuple, valid mutable list passes register; mutating aliased list afterwards changes stored object, triggering FACT_HASH_MISMATCH on retrieve rather than preserving immutable snapshot; no defensive copy actually made"
+    },
+    {
+      "id": "T8I-RED-05",
+      "test": "test_red_self_resigned_forged_delta_refused",
+      "observed": "Caller substitutes Fraction(999), recomputes product_digest, consume returns selected_numeric_temporal_value=999; actual preforgery delta 3/44"
+    },
+    {
+      "id": "T8I-RED-06",
+      "test": "test_red_self_resigned_forged_variance_delta_refused",
+      "observed": "Caller sets variance_delta_independent=999 and recomputes digest, consumer returns false variance=999"
+    },
+    {
+      "id": "T8I-RED-07",
+      "test": "test_red_consistent_numerical_source_rewrite_refused_without_verified_refs",
+      "observed": "Alter later category3, valid/asked/eligible weights and satisfied share coherently and recompute delta+digest; consumer accepts altered data without issued or registry-backed identities"
+    },
+    {
+      "id": "T8I-RED-08",
+      "test": "test_red_rewritten_historical_publication_and_asof_refused",
+      "observed": "Rewritten later publication 2000-01-01 and product asof 2001-01-01, rehashed; consumer accepts even though test-only 2022 wave actual publication fixture is 2024-10-01 and earlier wave's publication is 2015-07-16"
+    },
+    {
+      "id": "T8I-RED-09",
+      "test": "test_red_rewritten_eligible_risk_refused",
+      "observed": "Later eligible_weight increased by 30 without matching asked+notasked; caller rehash accepted by consumer"
+    },
+    {
+      "id": "T8I-RED-10",
+      "test": "test_red_forged_semantics_native_code_omission_refused",
+      "observed": "Remove substantive category '0' from earlier input, recompute own satisfied share/delta and digest; consumer accepts despite five-category native meaning loss"
+    }
+  ],
+  "additional_exact_stdout_excerpts": [
+    "FAILED ...::test_red_registry_old_ref_retains_original_fact - AssertionError: Registry reuses a colliding content ref",
+    "FAILED ...::test_red_mutable_category_list_defensively_copied_on_registration - t8f_temporal_integrity.Refusal: FACT_HASH_MISMATCH",
+    "FAILED ...::test_red_self_resigned_forged_delta_refused - Failed: DID NOT RAISE <class 't8f_temporal_integrity.Refusal'>",
+    "10 failed, 6 passed in 0.19s"
+  ],
+  "raw_junit_scope": "Four JUnit XML files and complete stdout/stderr were physically generated locally, SHA256 and exact lengths above. They are not represented as copied into GitHub; repro test and this receipt are committed. Independently rerun commands to regenerate.",
+  "execution_limits": {
+    "owner_HQ214_import": "NOT_EXECUTED_FULL_IMPORT",
+    "N9C_owner_import": "NOT_EXECUTED_FULL_IMPORT",
+    "real_source": "NOT_EXECUTED_NO_PERMISSION",
+    "EE12": "UNISSUED",
+    "N8E": "UNISSUED",
+    "N9": "UNISSUED",
+    "V3": "NOT_EXECUTED"
+  }
+}
