@@ -1,0 +1,91 @@
+{
+  "argv": [
+    "$LOCAL_PYTHON_USER_SITE/pytest/__main__.py",
+    "$BL3_RUNTIME/rba/exec/lab2/lab2/test_lab2.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=$BL3_RETURN/repro/lab2.xml"
+  ],
+  "modules": [
+    {
+      "module": "lab",
+      "file": "$BL3_RUNTIME/rba/exec/lab1/lab/__init__.py",
+      "git_blob_sha1": "30c2af3cada62db9b3bbeaa6ff92f0e684009f18",
+      "sha256": "acb4250a2fa4607b9ccb1d1ee5dc59d216e9d0313aca1fb85b81821160a185a0",
+      "pinned_original": true
+    },
+    {
+      "module": "lab.hashutil",
+      "file": "$BL3_RUNTIME/rba/exec/lab1/lab/hashutil.py",
+      "git_blob_sha1": "e948f1d77ccd6dd87f28b06e4c5d9257feb636bc",
+      "sha256": "edddd8773b06207af2d68980031a3a29cdd3578bb569ac7e482d28383e4ad28b",
+      "pinned_original": true
+    },
+    {
+      "module": "lab.opacity",
+      "file": "$BL3_RUNTIME/rba/exec/lab1/lab/opacity.py",
+      "git_blob_sha1": "b56fb72145d08b1172d82288b49e05a3942d5574",
+      "sha256": "056fd0ba56f95c5554af1940de3a9431d6223a9ecec20202feab6e25a5d94506",
+      "pinned_original": true
+    },
+    {
+      "module": "lab.world_fixtures",
+      "file": "$BL3_RUNTIME/rba/exec/lab1/lab/world_fixtures.py",
+      "git_blob_sha1": "51910b01c1876b2b2474e6d5bf2b30402762a2cb",
+      "sha256": "8f91d49f2108b3626ef46e9a1e154888012cf5968fa5a851c23f9b811f6f6a0a",
+      "pinned_original": true
+    },
+    {
+      "module": "lab2",
+      "file": "$BL3_RUNTIME/rba/exec/lab2/lab2/__init__.py",
+      "git_blob_sha1": "bd9927a4bc1f35808ea536a7482a8165ac4f11f0",
+      "sha256": "c885bdf1efd472d97b3017021a3e217f755ee5c4d349dbe9b281feb114fc00ff",
+      "pinned_original": true
+    },
+    {
+      "module": "lab2.behavioral_runner",
+      "file": "$BL3_RUNTIME/rba/exec/lab2/lab2/behavioral_runner.py",
+      "git_blob_sha1": "554bfc9463968e05c50ba534c3f375cecb6121d7",
+      "sha256": "86fe3beb3e1d18de43e861b04d09ef40ffa2059074ed97e377911178a7147faa",
+      "pinned_original": true
+    },
+    {
+      "module": "lab2.model_gate",
+      "file": "$BL3_RUNTIME/rba/exec/lab2/lab2/model_gate.py",
+      "git_blob_sha1": "4684ad42bf3e91fb34cc0f1c7c3a4c069e9fe45c",
+      "sha256": "6d2b42b9270fec95102faa32806e33bc3df6a9b4ca09b4f1ec4508aa552c36b0",
+      "pinned_original": true
+    },
+    {
+      "module": "lab2.packets",
+      "file": "$BL3_RUNTIME/rba/exec/lab2/lab2/packets.py",
+      "git_blob_sha1": "41b921f83f6397928ebc91fafce3f5d566c473e0",
+      "sha256": "81674aed7d11e4dc8475066c3d01a73e9b0bd63454aa6276d06a804328da5aa1",
+      "pinned_original": true
+    },
+    {
+      "module": "lab2.scoring",
+      "file": "$BL3_RUNTIME/rba/exec/lab2/lab2/scoring.py",
+      "git_blob_sha1": "e81c71efff0bc152b653c7cb1cbf5664ec8acf65",
+      "sha256": "21770edd0ff5edfa5ecc59d9c770a02f32b9ffcbefd8cdedec5d50e8d3798939",
+      "pinned_original": true
+    },
+    {
+      "module": "lab2.test_lab2",
+      "file": "$BL3_RUNTIME/rba/exec/lab2/lab2/test_lab2.py",
+      "git_blob_sha1": "6cea4edda9f2c073e5f96071bf5b40b53273dc42",
+      "sha256": "82c817c37483cd3cae9faee8982dc0821be1963fd8f721c91a2a6bb0c140f09f",
+      "pinned_original": true
+    },
+    {
+      "module": "sitecustomize",
+      "file": "$BL3_RUNTIME/sitecustomize.py",
+      "git_blob_sha1": "c1fdb3ca2eeead7f957ebf05675a165e56bce90f",
+      "sha256": "4673851504607f41763075cf7d337932b4d54faf19a4defbb78e15c432753d16",
+      "pinned_original": false
+    }
+  ],
+  "blocked_network_events": [],
+  "external_dispatches": 0
+}

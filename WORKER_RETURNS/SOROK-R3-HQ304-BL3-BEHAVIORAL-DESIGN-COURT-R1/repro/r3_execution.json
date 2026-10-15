@@ -1,0 +1,21 @@
+{
+  "suite": "r3",
+  "started_at": "2026-10-15T02:34:42.042872+00:00",
+  "finished_at": "2026-10-15T02:34:44.416948+00:00",
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "$BL3_RETURN/tests/test_r3.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=$BL3_RETURN/repro/r3.xml"
+  ],
+  "cwd": "$BL3_RETURN",
+  "exit_code": 0,
+  "raw_stdout_sha256": "5a2a86bd45ea1f285a458dd5dff7c4e6c07d10f55cc3ec19a70b5cb234d2a33c",
+  "stdout": "repro/r3.log",
+  "junit": "repro/r3.xml",
+  "sanitization": "runtime/return/worktree path aliases only"
+}

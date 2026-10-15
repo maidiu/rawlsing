@@ -1,0 +1,1157 @@
+{
+  "schema": "BL3_ACTUAL_EXECUTION_LEDGER@1",
+  "suites": [
+    {
+      "suite": "r2",
+      "counts": {
+        "PASS": 51,
+        "RED": 0,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "execution": {
+        "suite": "r2",
+        "started_at": "2026-10-15T02:26:07.468299+00:00",
+        "finished_at": "2026-10-15T02:26:13.892021+00:00",
+        "command": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "$BL3_RUNTIME/rba/exec/r2/test_r2.py",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "--junitxml=$BL3_RETURN/repro/r2.xml"
+        ],
+        "cwd": "$BL3_RUNTIME/rba/exec/r2",
+        "exit_code": 0,
+        "raw_stdout_sha256": "08cd47857540a897110012ada5558cbbf016e2e162f016022ee390859f6ae97a",
+        "stdout": "repro/r2.log",
+        "junit": "repro/r2.xml",
+        "sanitization": "runtime/return/worktree path aliases only"
+      },
+      "cases": [
+        {
+          "name": "test_rmb_01_opaque_ids_and_provider_payload",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_rmb_02_menu_and_execution_balance",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_rmb_03_real_arm_mechanisms",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_rmb_04_trace_origin_firewall",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_rmb_05_standing_belief_and_owner_separation",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_rmb_06_unadmitted_event_denied",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_rmb_07_all_trials_in_denominator",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_rmb_08_independent_oracle_channel",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_rmb_09_pairing_requires_exact_ids",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_rmb_10_honest_paired_interval",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_rmb_11_16_invalid_grant_zero_dispatch[changes0]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_rmb_11_16_invalid_grant_zero_dispatch[changes1]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_rmb_11_16_invalid_grant_zero_dispatch[changes2]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_rmb_11_16_invalid_grant_zero_dispatch[changes3]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_rmb_11_16_invalid_grant_zero_dispatch[changes4]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_rmb_11_16_invalid_grant_zero_dispatch[changes5]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_rmb_17_full_mock_transport",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_rmb_18_executable_order_and_budget_nulls",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_rmb_19_secondary_free_text",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_rmb_20_preserves_appeal",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_rmb_21_preserves_private_doubt",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_rmb_22_policing_not_mandatory",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_rmb_23_capacity_factual_contrast",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_retry_identical_and_persistent_ledger",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_budget_no_bypass[changes0]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_budget_no_bypass[changes1]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_budget_no_bypass[changes2]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_grant_scope_and_live_denials[changes0]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_grant_scope_and_live_denials[changes1]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_grant_scope_and_live_denials[changes2]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_grant_scope_and_live_denials[changes3]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_grant_scope_and_live_denials[changes4]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_grant_scope_and_live_denials[changes5]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_grant_scope_and_live_denials[changes6]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_grant_scope_and_live_denials[changes7]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_grant_scope_and_live_denials[changes8]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_bad_signature_and_custom_transport",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_freeze_tamper_zero_dispatch",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_state_intervention_and_no_past_rewrite",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_ledger_relocation_and_truncation_denied",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_actual_entrypoint_reuses_cache",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_consecutive_transport_failure_stop",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_semantic_failure_never_retried",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_revoke_immediately_before_dispatch",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_permission_change_after_constructor",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_freeze_mutation_after_constructor",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_duplicate_pairs_and_prior_rejection",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_position_scope_and_negative_capacity",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_all_cells_equal_facts_distinct_treatments",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_cache_scan_accounting_includes_rebuild",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_extra_paraphrase_changes_accessible_surface_not_owner_facts",
+          "status": "PASS",
+          "diagnostic": null
+        }
+      ]
+    },
+    {
+      "suite": "rba",
+      "counts": {
+        "PASS": 19,
+        "RED": 0,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "execution": {
+        "suite": "rba",
+        "started_at": "2026-10-15T02:26:13.959342+00:00",
+        "finished_at": "2026-10-15T02:26:15.147704+00:00",
+        "command": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "$BL3_RUNTIME/rba/hostile/test_hostile_rba.py",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "--junitxml=$BL3_RETURN/repro/rba.xml"
+        ],
+        "cwd": "$BL3_RUNTIME/rba",
+        "exit_code": 0,
+        "raw_stdout_sha256": "d0654e6b420aef5ffb33b81c839cd73cd87307576aa967d1be275e3ca8fe8bce",
+        "stdout": "repro/rba.log",
+        "junit": "repro/rba.xml",
+        "sanitization": "runtime/return/worktree path aliases only"
+      },
+      "cases": [
+        {
+          "name": "test_h01_no_k_contrast_arm_expected_labels_in_packet",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_h02_no_inaccessible_origin_content_in_packet",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_h03_ids_are_uuid_shaped_not_lookup_keys",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_h04_no_raw_owner_effects_or_grants_in_packet",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_h05_arm_representations_differ_by_intervention",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_h06_same_lawful_facts_across_arms",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_h07_k3_trace_visible_origin_absent_testimony_conditioned",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_h08_k5_public_private_separation",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_h09_k6_capacity_factual_and_sanction_optional",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_h10_oracle_attack_alternative_lawful_counterexample",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_h11_oracle_channels_are_distinct_code_paths",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_h12_menu_matched_within_cell_all_permutations_present",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_h13_unique_ids_and_cell_counts",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_h14_paired_ids_exact_and_denominator_includes_unscorable",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_h15_grant_gate_hostile_battery",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_h16_ledger_relocation_removal_rollback_denied",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_h17_intervals_recomputed_and_no_power_claim",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_h18_no_live_transports_or_network_imports",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_h19_live_mode_unconditionally_denied",
+          "status": "PASS",
+          "diagnostic": null
+        }
+      ]
+    },
+    {
+      "suite": "lab1",
+      "counts": {
+        "PASS": 20,
+        "RED": 0,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "execution": {
+        "suite": "lab1",
+        "started_at": "2026-10-15T02:26:15.206751+00:00",
+        "finished_at": "2026-10-15T02:26:15.705387+00:00",
+        "command": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "$BL3_RUNTIME/rba/exec/lab1/lab/test_lab.py",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "--junitxml=$BL3_RETURN/repro/lab1.xml"
+        ],
+        "cwd": "$BL3_RUNTIME/rba/exec/lab1",
+        "exit_code": 0,
+        "raw_stdout_sha256": "e0394e0de3b0d1707069051db4dc6c724532b76239950836a9b897a8b5b4e23d",
+        "stdout": "repro/lab1.log",
+        "junit": "repro/lab1.xml",
+        "sanitization": "runtime/return/worktree path aliases only"
+      },
+      "cases": [
+        {
+          "name": "test_t0_worldless_event_is_held",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_t0_world_mismatch_is_held",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_unadmitted_event_produces_no_commit",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k1_history_sensitive_routes",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_identical_replay_is_byte_stable",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_a_reconstructs_c_relation_view_from_ancestry",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k2_relation_index_requires_formation_parent",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k3_trace_recruits_without_recall_or_origin",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_hidden_origin_injection_leaves_actor_payload_unchanged",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_powerless_witness_cannot_create_public_standing",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k5_standing_only_registrar_belief_not_automatic",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k6_policing_requires_practice_and_capacity",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_t5_revision_requires_new_parent",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_unissued_weights_hold",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_zero_affordance_is_valid_empty",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_b_event_local_conation_never_persists",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_c_relation_index_is_cheaper_than_reconstruction",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_testimony_never_changes_objective_effects",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_seed_rng_is_deterministic",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_audit_receipt_fields_present",
+          "status": "PASS",
+          "diagnostic": null
+        }
+      ]
+    },
+    {
+      "suite": "lab2",
+      "counts": {
+        "PASS": 25,
+        "RED": 0,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "execution": {
+        "suite": "lab2",
+        "started_at": "2026-10-15T02:35:23.183508+00:00",
+        "finished_at": "2026-10-15T02:35:24.315201+00:00",
+        "command": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "$BL3_RUNTIME/rba/exec/lab2/lab2/test_lab2.py",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "--junitxml=$BL3_RETURN/repro/lab2.xml"
+        ],
+        "cwd": "$BL3_RUNTIME/rba/exec/lab2",
+        "exit_code": 0,
+        "raw_stdout_sha256": "76ce6b94279c03e25f2fe25fbfd4e995bce925b39020a129893d82c4dcee20c6",
+        "stdout": "repro/lab2.log",
+        "junit": "repro/lab2.xml",
+        "sanitization": "runtime/return/worktree path aliases only"
+      },
+      "cases": [
+        {
+          "name": "test_A_preregistration_freeze_hash_is_recorded_and_matches",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_A_preregistration_declares_all_six_k_with_heldout_lock",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_A_preserved_lab1_verdict_is_recorded_and_not_relabelled",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_B_no_grant_means_hold_and_zero_calls",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_B_partial_grant_still_denied",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_B_require_call_permission_raises_without_grant",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_B_runner_hold_mode_issues_zero_calls_and_reports_missing_fields",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_B_runner_granted_mode_is_unreachable_without_grant",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_B_complete_grant_would_pass_gate",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_C_manifest_covers_all_k_contrasts_seeds_arms",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_C_matched_content_identical_across_arms",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_C_presentation_codes_differ_across_arms_and_hide_arm_label",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_C_menu_order_is_counterbalanced",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_C_expected_codes_match_preregistration",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_C_actor_info_packet_excludes_hidden_origin",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_D_scorer_input_rejects_prose_field",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_D_dual_scorer_agreement_and_mismatch_detection",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_D_scorers_never_read_prose",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_D_correctness_fraction_and_arm_comparison",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_D_universe_outside_codes_are_unscorable",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_E_packet_nulls_all_pass",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_E_hidden_origin_never_in_actor_visible_payload",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_F_dry_run_labels_itself_and_produces_zero_model_calls",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_F_dry_run_pipeline_wires_packet_to_blind_scoring",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_F_fixture_responder_is_not_a_model",
+          "status": "PASS",
+          "diagnostic": null
+        }
+      ]
+    },
+    {
+      "suite": "rmb",
+      "counts": {
+        "PASS": 13,
+        "RED": 23,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "execution": {
+        "suite": "rmb",
+        "started_at": "2026-10-15T02:26:17.016726+00:00",
+        "finished_at": "2026-10-15T02:26:17.884860+00:00",
+        "command": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "$BL3_RUNTIME/rba/exec/rmb/test_independent.py",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "--junitxml=$BL3_RETURN/repro/rmb.xml"
+        ],
+        "cwd": "$BL3_RUNTIME/rba/exec/rmb",
+        "exit_code": 1,
+        "raw_stdout_sha256": "73567fc1fee21d14c2edde500d6714fdb7f0dd5c3abd73ad13aa9e0450d5e5f2",
+        "stdout": "repro/rmb.log",
+        "junit": "repro/rmb.xml",
+        "sanitization": "runtime/return/worktree path aliases only"
+      },
+      "cases": [
+        {
+          "name": "test_positive_every_missing_field_denies[named_provider_exact_endpoint]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_positive_every_missing_field_denies[exact_model_and_version_pin]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_positive_every_missing_field_denies[privacy_permission_for_synthetic_lab_packets]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_positive_every_missing_field_denies[experiment_use_grant_behavioral_actor_trials]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_positive_every_missing_field_denies[explicit_monetary_cap]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_positive_every_missing_field_denies[price_class_and_quota_observed]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_positive_every_missing_field_denies[raw_request_response_retention_permission]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_positive_every_missing_field_denies[per_trial_call_budget]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_positive_freeze_and_expected_mapping_match",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_positive_prose_keyword_rejected",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_positive_evaluator_only_sentinel_stays_out",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_positive_blind_oracle_rejects_wrong_label",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_contract_scorer_ids_hide_contrast_labels",
+          "status": "RED",
+          "diagnostic": "def test_contract_scorer_ids_hide_contrast_labels():\n        for t in packets.build_manifest()['trials']:\n>           assert t['prereg_contrast'] not in t['trial_id'], 'Contrast leaks through scorer trial_id'\nE           AssertionError: Contrast leaks through scorer trial_id\nE           assert 'H_RESPONSIVE' not in 'K1__H_RESPONSIVE__S01'\nE             \nE             'H_RESPONSIVE' is contained here:\nE               K1__H_RESPONSIVE__S01\n\ntest_independent.py:88: AssertionError"
+        },
+        {
+          "name": "test_contract_counterbalance_is_exact_within_each_cell",
+          "status": "RED",
+          "diagnostic": "def test_contract_counterbalance_is_exact_within_each_cell():\n        m = packets.build_manifest()\n        for k in packets.EXPECTED_TYPED_CODES:\n            for c in packets.EXPECTED_TYPED_CODES[k]:\n                for arm in packets.ARMS:\n                    rows = [t for t in m['trials'] if (t['k_id'], t['prereg_contrast'], t['arm']) == (k,c,arm)]\n                    counts = [sum(t['typed_menu'].index(t['expected_typed_codes'][0]) == j for t in rows)\n                              for j in range(len(rows[0]['typed_menu']))]\n>                   assert len(set(counts)) == 1, (k,c,arm,counts)\nE                   AssertionError: ('K1', 'H_RESPONSIVE', 'A', [7, 5])\nE                   assert 2 == 1\nE                    +  where 2 = len({5, 7})\nE                    +    where {5, 7} = set([7, 5])\n\ntest_independent.py:99: AssertionError"
+        },
+        {
+          "name": "test_contract_arm_manipulation_survives_menu_removal",
+          "status": "RED",
+          "diagnostic": "def test_contract_arm_manipulation_survives_menu_removal():\n>       assert core(packet(arm='A')) != core(packet(arm='B_admissible')), 'No A/B machinery manipulation'\nE       AssertionError: No A/B machinery manipulation\nE       assert {'admitted_history': {'effects': [{'effect_id': 'EFF_K3_1', 'effect_kind': 'TRACE_FORMED', 'owner': 'ADP016', 'parent_...'EV7_PUBLIC_SHAMING'}], ...}, 'k_id': 'K3', 'matched_budget': {'calls': 1, 'max_tokens': 256, 'temperature': 0.0}, ...} != {'admitted_history': {'effects': [{'effect_id': 'EFF_K3_1', 'effect_kind': 'TRACE_FORMED', 'owner': 'ADP016', 'parent_...'EV7_PUBLIC_SHAMING'}], ...}, 'k_id': 'K3', 'matched_budget': {'calls': 1, 'max_tokens': 256, 'temperature': 0.0}, ...}\nE        +  where {'admitted_history': {'effects': [{'effect_id': 'EFF_K3_1', 'effect_kind': 'TRACE_FORMED', 'owner': 'ADP016', 'parent_...'EV7_PUBLIC_SHAMING'}], ...}, 'k_id': 'K3', 'matched_budget': {'calls': 1, 'max_tokens': 256, 'temperature': 0.0}, ...} = core({'admitted_history': {'effects': [{'effect_id': 'EFF_K3_1', 'effect_kind': 'TRACE_FORMED', 'owner': 'ADP016', 'parent_..._FOR_QUESTION'}, 'event_id': 'EV7_PUBLIC_SHAMING'}], ...}, 'counterbalance_code': 'PC_0667c06ede7a', 'k_id': 'K3', ...})\nE        +    where {'admitted_history': {'effects': [{'effect_id': 'EFF_K3_1', 'effect_kind': 'TRACE_FORMED', 'owner': 'ADP016', 'parent_..._FOR_QUESTION'}, 'event_id': 'EV7_PUBLIC_SHAMING'}], ...}, 'counterbalance_code': 'PC_0667c06ede7a', 'k_id': 'K3', ...} = packet(arm='A')\nE        +  and   {'admitted_history': {'effects': [{'effect_id': 'EFF_K3_1', 'effect_kind': 'TRACE_FORMED', 'owner': 'ADP016', 'parent_...'EV7_PUBLIC_SHAMING'}], ...}, 'k_id': 'K3', 'matched_budget': {'calls': 1, 'max_tokens': 256, 'temperature': 0.0}, ...} = core({'admitted_history': {'effects': [{'effect_id': 'EFF_K3_1', 'effect_kind': 'TRACE_FORMED', 'owner': 'ADP016', 'parent_..._FOR_QUESTION'}, 'event_id': 'EV7_PUBLIC_SHAMING'}], ...}, 'counterbalance_code': 'PC_c97ac270fbcf', 'k_id': 'K3', ...})\nE        +    where {'admitted_history': {'effects': [{'effect_id': 'EFF_K3_1', 'effect_kind': 'TRACE_FORMED', 'owner': 'ADP016', 'parent_..._FOR_QUESTION'}, 'event_id': 'EV7_PUBLIC_SHAMING'}], ...}, 'counterbalance_code': 'PC_c97ac270fbcf', 'k_id': 'K3', ...} = packet(arm='B_admissible')\n\ntest_independent.py:103: AssertionError"
+        },
+        {
+          "name": "test_contract_k3_allowed_actor_packet_hides_inaccessible_origin",
+          "status": "RED",
+          "diagnostic": "def test_contract_k3_allowed_actor_packet_hides_inaccessible_origin():\n        text = json.dumps(packet()['allowed_actor_info_packet'])\n>       assert 'PUBLIC_SHAMING' not in text and 'SHAMED_FOR_QUESTION' not in text\nE       assert ('PUBLIC_SHAMING' not in '{\"packet_ki...ded\": false}'\nE         \nE         'PUBLIC_SHAMING' is contained here:\nE         ?           ^^\nE           id\": \"EV7_PUBLIC_SHAMING\", \"actor_receivable_features\": {\"act\": \"PUBLIC_SHAMING\", \"content\": \"SHAMED_FOR_QUESTION\"}}], \"trace_markers\": [{\"trace_marker\": \"TRACE_PUBLIC_SHAMING\", \"access_state\": \"RETAINED_NOT_ACCESSIBLE\", \"origin_content\": null}, {\"trace_marker\": \"EPISODIC_EV7_PUBLIC_SHAMING\", \"access_state\": \"UNAVAILABLE\", \"origin_content\": null}], \"first_person_origin_claims_permitted\": false, \"hidden_origin_content_included\": false}\nE         ?           ^^^^^^^^^^^^^^^^)\n\ntest_independent.py:108: AssertionError"
+        },
+        {
+          "name": "test_contract_k5_actor_view_excludes_objective_owner_effects",
+          "status": "RED",
+          "diagnostic": "def test_contract_k5_actor_view_excludes_objective_owner_effects():\n        p = packet('K5', 'WITNESS_REGISTRAR')\n        visible = {k:v for k,v in p.items() if k not in\n                   ('presentation_code','counterbalance_code','evaluator_only_metadata','style_wrapper')}\n>       assert 'PUBLIC_STANDING_CHANGE' not in json.dumps(visible)\nE       assert 'PUBLIC_STANDING_CHANGE' not in '{\"packet_sc...a60b294a02\"}'\nE         \nE         'PUBLIC_STANDING_CHANGE' is contained here:\nE         ?           ^^\nE           t_kind\": \"PUBLIC_STANDING_CHANGE\", \"target_key\": \"STANDING_A_TEST\", \"payload\": {\"standing\": \"CERTIFIED\", \"witness\": \"REGISTRAR\"}, \"parent_event_refs\": [\"EV_CERTIFICATION\"]}, {\"effect_id\": \"EFF_K5_CERT_RECEPTION\", \"owner\": \"ADP017\", \"effect_kind\": \"RECEPTION_RECORDED\", \"target_key\": \"RECEPTION_CERTIFICATION\", \"payload\": {\"content\": \"CERTIFICATION_WAS_RECEPTION\", \"warrant\": \"ACTOR_RECEPTION\", \"claim_permission\": \"OWN_STATE_ONLY\"}, \"parent_event_refs\": [\"EV_CERTIFICATION\"]}]}, \"allowed_actor_info_packet\": {\"packet_kind...\nE         \nE         ...Full output truncated (2 lines hidden), use '-vv' to show\n\ntest_independent.py:115: AssertionError"
+        },
+        {
+          "name": "test_contract_candidate_packet_refuses_unadmitted_event",
+          "status": "RED",
+          "diagnostic": "monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10c204c50>\n\n    def test_contract_candidate_packet_refuses_unadmitted_event(monkeypatch):\n        original = packets.case_fixture\n        def bad_fixture(k):\n            fx = copy.deepcopy(original(k))\n            fx['histories']['H_RESPONSIVE']['events'][0]['admission'] = 'DRAFT'\n            return fx\n        monkeypatch.setattr(packets, 'case_fixture', bad_fixture)\n        p = packet('K1', 'H_RESPONSIVE')\n>       assert p.get('invalid_and_hold_codes'), 'DRAFT ancestry accepted into packet without INVALID/HOLD'\nE       AssertionError: DRAFT ancestry accepted into packet without INVALID/HOLD\nE       assert None\nE        +  where None = <built-in method get of dict object at 0x10c44fbc0>('invalid_and_hold_codes')\nE        +    where <built-in method get of dict object at 0x10c44fbc0> = {'admitted_history': {'effects': [{'effect_id': 'EFF_K1_R_1', 'effect_kind': 'EXPECTATION_FORMED', 'owner': 'CAN010', ...VIEW'}, 'event_id': 'EV13_FEEDBACK_COLLABORATIVE'}], ...}, 'counterbalance_code': 'PC_7f36e7136469', 'k_id': 'K1', ...}.get\n\ntest_independent.py:126: AssertionError"
+        },
+        {
+          "name": "test_contract_primary_denominator_includes_unscorable",
+          "status": "RED",
+          "diagnostic": "def test_contract_primary_denominator_includes_unscorable():\n        expected = {'a':['SILENCE'], 'b':['SILENCE']}\n        recs = scorer_alpha([ScorerInput('a','p','SILENCE'), ScorerInput('b','p','OTHER_UNSCORABLE')], expected)\n>       assert correctness_fraction(recs) == .5, 'Unscorable silently removed from denominator'\nE       AssertionError: Unscorable silently removed from denominator\nE       assert 1.0 == 0.5\nE        +  where 1.0 = correctness_fraction([ScoreRecord(trial_id='a', counterbalance_code='p', selected_typed_code='SILENCE', expected_typed_codes=['SILENCE'], c...nce_code='p', selected_typed_code='OTHER_UNSCORABLE', expected_typed_codes=['SILENCE'], correct=False, scorable=False)])\n\ntest_independent.py:132: AssertionError"
+        },
+        {
+          "name": "test_contract_dual_scorers_refuse_corrupt_answer_key",
+          "status": "RED",
+          "diagnostic": "def test_contract_dual_scorers_refuse_corrupt_answer_key():\n        inputs = [ScorerInput('opaque','p','NOT_A_VALID_CODE')]\n        out = scoring.dual_score(inputs, {'opaque':['NOT_A_VALID_CODE']})\n>       assert not out['records'][0]['correct'], 'Both scorers accept same invalid answer-key code'\nE       AssertionError: Both scorers accept same invalid answer-key code\nE       assert not True\n\ntest_independent.py:138: AssertionError"
+        },
+        {
+          "name": "test_contract_pairing_requires_same_ids",
+          "status": "RED",
+          "diagnostic": "def test_contract_pairing_requires_same_ids():\n        a = scorer_alpha([ScorerInput('a','p','SILENCE')], {'a':['SILENCE']})\n        b = scorer_alpha([ScorerInput('different','p','REQUEST_FEEDBACK')], {'different':['REQUEST_FEEDBACK']})\n>       with pytest.raises(scoring.ScorerIntegrityError):\nE       Failed: DID NOT RAISE <class 'lab2.scoring.ScorerIntegrityError'>\n\ntest_independent.py:144: Failed"
+        },
+        {
+          "name": "test_contract_interval_required_before_promotion_screen",
+          "status": "RED",
+          "diagnostic": "def test_contract_interval_required_before_promotion_screen():\n        a = scorer_alpha([ScorerInput('a','p','REQUEST_FEEDBACK')], {'a':['SILENCE']})\n        b = scorer_alpha([ScorerInput('a','p','SILENCE')], {'a':['SILENCE']})\n        out = compare_arms({'A':a, 'B_admissible':b})['comparisons']['B_admissible']\n>       assert 'paired_interval' in out, 'No paired interval computed'\nE       AssertionError: No paired interval computed\nE       assert 'paired_interval' in {'correctness_fraction': 1.0, 'delta_vs_A_pp': 100.0, 'equivalence_5pp': 'DIFFERENTIATED', 'meets_plus_10pp_screen': True}\n\ntest_independent.py:152: AssertionError"
+        },
+        {
+          "name": "test_contract_gate_refuses_semantically_invalid_grant[change0]",
+          "status": "RED",
+          "diagnostic": "change = {'privacy_permission_for_synthetic_lab_packets': 'DENIED'}\n\n    @pytest.mark.parametrize('change', [\n        {'privacy_permission_for_synthetic_lab_packets':'DENIED'},\n        {'experiment_use_grant_behavioral_actor_trials':'DENIED'},\n        {'raw_request_response_retention_permission':False},\n        {'exact_model_and_version_pin':'latest'},\n        {'explicit_monetary_cap':'USD -1'},\n        {'per_trial_call_budget':True},\n        {'per_trial_call_budget':1.5},\n    ])\n    def test_contract_gate_refuses_semantically_invalid_grant(change):\n>       assert not evaluate_gate(synthetic_grant(**change)).allowed, change\nE       AssertionError: {'privacy_permission_for_synthetic_lab_packets': 'DENIED'}\nE       assert not True\nE        +  where True = GateDecision(gate_id='LAB2_MODEL_CALL_AUTHORIZATION_GATE', gate_version='1.0.0', allowed=True, hold_id=None, missing_f...sing_authority_class='NONE', model_calls_permitted=1, reason='complete grant; re-verify immediately before first call').allowed\nE        +    where GateDecision(gate_id='LAB2_MODEL_CALL_AUTHORIZATION_GATE', gate_version='1.0.0', allowed=True, hold_id=None, missing_f...sing_authority_class='NONE', model_calls_permitted=1, reason='complete grant; re-verify immediately before first call') = evaluate_gate(Grant(named_provider_exact_endpoint='https://example.invalid/no-call', exact_model_and_version_pin='test-only@immutabl..._and_quota_observed='TEST_ONLY', raw_request_response_retention_permission='LOCAL_TEST_DATUM', per_trial_call_budget=1))\nE        +      where Grant(named_provider_exact_endpoint='https://example.invalid/no-call', exact_model_and_version_pin='test-only@immutabl..._and_quota_observed='TEST_ONLY', raw_request_response_retention_permission='LOCAL_TEST_DATUM', per_trial_call_budget=1) = synthetic_grant(**{'privacy_permission_for_synthetic_lab_packets': 'DENIED'})\n\ntest_independent.py:165: AssertionError"
+        },
+        {
+          "name": "test_contract_gate_refuses_semantically_invalid_grant[change1]",
+          "status": "RED",
+          "diagnostic": "change = {'experiment_use_grant_behavioral_actor_trials': 'DENIED'}\n\n    @pytest.mark.parametrize('change', [\n        {'privacy_permission_for_synthetic_lab_packets':'DENIED'},\n        {'experiment_use_grant_behavioral_actor_trials':'DENIED'},\n        {'raw_request_response_retention_permission':False},\n        {'exact_model_and_version_pin':'latest'},\n        {'explicit_monetary_cap':'USD -1'},\n        {'per_trial_call_budget':True},\n        {'per_trial_call_budget':1.5},\n    ])\n    def test_contract_gate_refuses_semantically_invalid_grant(change):\n>       assert not evaluate_gate(synthetic_grant(**change)).allowed, change\nE       AssertionError: {'experiment_use_grant_behavioral_actor_trials': 'DENIED'}\nE       assert not True\nE        +  where True = GateDecision(gate_id='LAB2_MODEL_CALL_AUTHORIZATION_GATE', gate_version='1.0.0', allowed=True, hold_id=None, missing_f...sing_authority_class='NONE', model_calls_permitted=1, reason='complete grant; re-verify immediately before first call').allowed\nE        +    where GateDecision(gate_id='LAB2_MODEL_CALL_AUTHORIZATION_GATE', gate_version='1.0.0', allowed=True, hold_id=None, missing_f...sing_authority_class='NONE', model_calls_permitted=1, reason='complete grant; re-verify immediately before first call') = evaluate_gate(Grant(named_provider_exact_endpoint='https://example.invalid/no-call', exact_model_and_version_pin='test-only@immutabl..._and_quota_observed='TEST_ONLY', raw_request_response_retention_permission='LOCAL_TEST_DATUM', per_trial_call_budget=1))\nE        +      where Grant(named_provider_exact_endpoint='https://example.invalid/no-call', exact_model_and_version_pin='test-only@immutabl..._and_quota_observed='TEST_ONLY', raw_request_response_retention_permission='LOCAL_TEST_DATUM', per_trial_call_budget=1) = synthetic_grant(**{'experiment_use_grant_behavioral_actor_trials': 'DENIED'})\n\ntest_independent.py:165: AssertionError"
+        },
+        {
+          "name": "test_contract_gate_refuses_semantically_invalid_grant[change2]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_contract_gate_refuses_semantically_invalid_grant[change3]",
+          "status": "RED",
+          "diagnostic": "change = {'exact_model_and_version_pin': 'latest'}\n\n    @pytest.mark.parametrize('change', [\n        {'privacy_permission_for_synthetic_lab_packets':'DENIED'},\n        {'experiment_use_grant_behavioral_actor_trials':'DENIED'},\n        {'raw_request_response_retention_permission':False},\n        {'exact_model_and_version_pin':'latest'},\n        {'explicit_monetary_cap':'USD -1'},\n        {'per_trial_call_budget':True},\n        {'per_trial_call_budget':1.5},\n    ])\n    def test_contract_gate_refuses_semantically_invalid_grant(change):\n>       assert not evaluate_gate(synthetic_grant(**change)).allowed, change\nE       AssertionError: {'exact_model_and_version_pin': 'latest'}\nE       assert not True\nE        +  where True = GateDecision(gate_id='LAB2_MODEL_CALL_AUTHORIZATION_GATE', gate_version='1.0.0', allowed=True, hold_id=None, missing_f...sing_authority_class='NONE', model_calls_permitted=1, reason='complete grant; re-verify immediately before first call').allowed\nE        +    where GateDecision(gate_id='LAB2_MODEL_CALL_AUTHORIZATION_GATE', gate_version='1.0.0', allowed=True, hold_id=None, missing_f...sing_authority_class='NONE', model_calls_permitted=1, reason='complete grant; re-verify immediately before first call') = evaluate_gate(Grant(named_provider_exact_endpoint='https://example.invalid/no-call', exact_model_and_version_pin='latest', privacy_p..._and_quota_observed='TEST_ONLY', raw_request_response_retention_permission='LOCAL_TEST_DATUM', per_trial_call_budget=1))\nE        +      where Grant(named_provider_exact_endpoint='https://example.invalid/no-call', exact_model_and_version_pin='latest', privacy_p..._and_quota_observed='TEST_ONLY', raw_request_response_retention_permission='LOCAL_TEST_DATUM', per_trial_call_budget=1) = synthetic_grant(**{'exact_model_and_version_pin': 'latest'})\n\ntest_independent.py:165: AssertionError"
+        },
+        {
+          "name": "test_contract_gate_refuses_semantically_invalid_grant[change4]",
+          "status": "RED",
+          "diagnostic": "change = {'explicit_monetary_cap': 'USD -1'}\n\n    @pytest.mark.parametrize('change', [\n        {'privacy_permission_for_synthetic_lab_packets':'DENIED'},\n        {'experiment_use_grant_behavioral_actor_trials':'DENIED'},\n        {'raw_request_response_retention_permission':False},\n        {'exact_model_and_version_pin':'latest'},\n        {'explicit_monetary_cap':'USD -1'},\n        {'per_trial_call_budget':True},\n        {'per_trial_call_budget':1.5},\n    ])\n    def test_contract_gate_refuses_semantically_invalid_grant(change):\n>       assert not evaluate_gate(synthetic_grant(**change)).allowed, change\nE       AssertionError: {'explicit_monetary_cap': 'USD -1'}\nE       assert not True\nE        +  where True = GateDecision(gate_id='LAB2_MODEL_CALL_AUTHORIZATION_GATE', gate_version='1.0.0', allowed=True, hold_id=None, missing_f...sing_authority_class='NONE', model_calls_permitted=1, reason='complete grant; re-verify immediately before first call').allowed\nE        +    where GateDecision(gate_id='LAB2_MODEL_CALL_AUTHORIZATION_GATE', gate_version='1.0.0', allowed=True, hold_id=None, missing_f...sing_authority_class='NONE', model_calls_permitted=1, reason='complete grant; re-verify immediately before first call') = evaluate_gate(Grant(named_provider_exact_endpoint='https://example.invalid/no-call', exact_model_and_version_pin='test-only@immutabl..._and_quota_observed='TEST_ONLY', raw_request_response_retention_permission='LOCAL_TEST_DATUM', per_trial_call_budget=1))\nE        +      where Grant(named_provider_exact_endpoint='https://example.invalid/no-call', exact_model_and_version_pin='test-only@immutabl..._and_quota_observed='TEST_ONLY', raw_request_response_retention_permission='LOCAL_TEST_DATUM', per_trial_call_budget=1) = synthetic_grant(**{'explicit_monetary_cap': 'USD -1'})\n\ntest_independent.py:165: AssertionError"
+        },
+        {
+          "name": "test_contract_gate_refuses_semantically_invalid_grant[change5]",
+          "status": "RED",
+          "diagnostic": "change = {'per_trial_call_budget': True}\n\n    @pytest.mark.parametrize('change', [\n        {'privacy_permission_for_synthetic_lab_packets':'DENIED'},\n        {'experiment_use_grant_behavioral_actor_trials':'DENIED'},\n        {'raw_request_response_retention_permission':False},\n        {'exact_model_and_version_pin':'latest'},\n        {'explicit_monetary_cap':'USD -1'},\n        {'per_trial_call_budget':True},\n        {'per_trial_call_budget':1.5},\n    ])\n    def test_contract_gate_refuses_semantically_invalid_grant(change):\n>       assert not evaluate_gate(synthetic_grant(**change)).allowed, change\nE       AssertionError: {'per_trial_call_budget': True}\nE       assert not True\nE        +  where True = GateDecision(gate_id='LAB2_MODEL_CALL_AUTHORIZATION_GATE', gate_version='1.0.0', allowed=True, hold_id=None, missing_f...g_authority_class='NONE', model_calls_permitted=True, reason='complete grant; re-verify immediately before first call').allowed\nE        +    where GateDecision(gate_id='LAB2_MODEL_CALL_AUTHORIZATION_GATE', gate_version='1.0.0', allowed=True, hold_id=None, missing_f...g_authority_class='NONE', model_calls_permitted=True, reason='complete grant; re-verify immediately before first call') = evaluate_gate(Grant(named_provider_exact_endpoint='https://example.invalid/no-call', exact_model_and_version_pin='test-only@immutabl...d_quota_observed='TEST_ONLY', raw_request_response_retention_permission='LOCAL_TEST_DATUM', per_trial_call_budget=True))\nE        +      where Grant(named_provider_exact_endpoint='https://example.invalid/no-call', exact_model_and_version_pin='test-only@immutabl...d_quota_observed='TEST_ONLY', raw_request_response_retention_permission='LOCAL_TEST_DATUM', per_trial_call_budget=True) = synthetic_grant(**{'per_trial_call_budget': True})\n\ntest_independent.py:165: AssertionError"
+        },
+        {
+          "name": "test_contract_gate_refuses_semantically_invalid_grant[change6]",
+          "status": "RED",
+          "diagnostic": "change = {'per_trial_call_budget': 1.5}\n\n    @pytest.mark.parametrize('change', [\n        {'privacy_permission_for_synthetic_lab_packets':'DENIED'},\n        {'experiment_use_grant_behavioral_actor_trials':'DENIED'},\n        {'raw_request_response_retention_permission':False},\n        {'exact_model_and_version_pin':'latest'},\n        {'explicit_monetary_cap':'USD -1'},\n        {'per_trial_call_budget':True},\n        {'per_trial_call_budget':1.5},\n    ])\n    def test_contract_gate_refuses_semantically_invalid_grant(change):\n>       assert not evaluate_gate(synthetic_grant(**change)).allowed, change\nE       AssertionError: {'per_trial_call_budget': 1.5}\nE       assert not True\nE        +  where True = GateDecision(gate_id='LAB2_MODEL_CALL_AUTHORIZATION_GATE', gate_version='1.0.0', allowed=True, hold_id=None, missing_f...ng_authority_class='NONE', model_calls_permitted=1.5, reason='complete grant; re-verify immediately before first call').allowed\nE        +    where GateDecision(gate_id='LAB2_MODEL_CALL_AUTHORIZATION_GATE', gate_version='1.0.0', allowed=True, hold_id=None, missing_f...ng_authority_class='NONE', model_calls_permitted=1.5, reason='complete grant; re-verify immediately before first call') = evaluate_gate(Grant(named_provider_exact_endpoint='https://example.invalid/no-call', exact_model_and_version_pin='test-only@immutabl...nd_quota_observed='TEST_ONLY', raw_request_response_retention_permission='LOCAL_TEST_DATUM', per_trial_call_budget=1.5))\nE        +      where Grant(named_provider_exact_endpoint='https://example.invalid/no-call', exact_model_and_version_pin='test-only@immutabl...nd_quota_observed='TEST_ONLY', raw_request_response_retention_permission='LOCAL_TEST_DATUM', per_trial_call_budget=1.5) = synthetic_grant(**{'per_trial_call_budget': 1.5})\n\ntest_independent.py:165: AssertionError"
+        },
+        {
+          "name": "test_contract_grant_alone_is_not_unimplemented",
+          "status": "RED",
+          "diagnostic": "def test_contract_grant_alone_is_not_unimplemented():\n        r = behavioral_runner.BehavioralRunner(synthetic_grant(), preregistration_sha256='NOT_A_FREEZE')\n        # No transport exists: this exercises a local stub only and issues zero calls.\n        try:\n>           r.run_granted()\n\ntest_independent.py:172: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <lab2.behavioral_runner.BehavioralRunner object at 0x10c2daf10>\n\n    def run_granted(self) -> Dict[str, Any]:\n        \"\"\"Only reachable with a complete grant. Issues matched behavioral calls.\"\"\"\n        try:\n            decision = require_call_permission(self.grant)\n        except ModelCallDenied as e:\n            return self.run_hold() | {\"denial\": str(e)}\n>       raise NotImplementedError(\n            \"GRANTED mode transport is intentionally not wired in this return: \"\n            \"no grant exists, so no transport may be exercised. When a grant is \"\n            \"issued, this method is the single sanctioned call site; it must \"\n            \"capture exact request/response and obey the frozen budgets.\")\nE       NotImplementedError: GRANTED mode transport is intentionally not wired in this return: no grant exists, so no transport may be exercised. When a grant is issued, this method is the single sanctioned call site; it must capture exact request/response and obey the frozen budgets.\n\nimports/LAB2/lab2/behavioral_runner.py:143: NotImplementedError\n\nDuring handling of the above exception, another exception occurred:\n\n    def test_contract_grant_alone_is_not_unimplemented():\n        r = behavioral_runner.BehavioralRunner(synthetic_grant(), preregistration_sha256='NOT_A_FREEZE')\n        # No transport exists: this exercises a local stub only and issues zero calls.\n        try:\n            r.run_granted()\n        except NotImplementedError:\n>           pytest.fail('Filled test fields reach NotImplementedError; grant alone cannot run assay')\nE           Failed: Filled test fields reach NotImplementedError; grant alone cannot run assay\n\ntest_independent.py:174: Failed"
+        },
+        {
+          "name": "test_contract_null_runner_has_order_and_budget_result",
+          "status": "RED",
+          "diagnostic": "def test_contract_null_runner_has_order_and_budget_result():\n        out = behavioral_runner.run_packet_nulls()\n>       assert 'N3_ORDER' in out and 'N7_BUDGET' in out, 'N3/N7 are declarations only'\nE       AssertionError: N3/N7 are declarations only\nE       assert ('N3_ORDER' in {'K5_STANDING_SEPARATION': {'pass': True, 'standing_effects_not_in_actor_info': True}, 'N1_PARAPHRASE': {'expected_cod...u_invariant': True}, 'N4_SURFACE': {'expected_codes_invariant': True, 'pass': True, 'typed_menu_invariant': True}, ...})\n\ntest_independent.py:181: AssertionError"
+        },
+        {
+          "name": "test_contract_secondary_free_text_capture_implemented",
+          "status": "RED",
+          "diagnostic": "def test_contract_secondary_free_text_capture_implemented():\n>       assert hasattr(behavioral_runner.BehavioralRunner, 'run_free_text_validation')\nE       AssertionError: assert False\nE        +  where False = hasattr(<class 'lab2.behavioral_runner.BehavioralRunner'>, 'run_free_text_validation')\nE        +    where <class 'lab2.behavioral_runner.BehavioralRunner'> = behavioral_runner.BehavioralRunner\n\ntest_independent.py:185: AssertionError"
+        },
+        {
+          "name": "test_contract_k1_preserves_predecessor_lawful_appeal",
+          "status": "RED",
+          "diagnostic": "def test_contract_k1_preserves_predecessor_lawful_appeal():\n>       assert 'APPEAL' in packets.MENU_ORDER['K1']\nE       AssertionError: assert 'APPEAL' in ['REQUEST_FEEDBACK', 'SILENCE']\n\ntest_independent.py:189: AssertionError"
+        },
+        {
+          "name": "test_contract_k5_preserves_remain_doubtful_outcome",
+          "status": "RED",
+          "diagnostic": "def test_contract_k5_preserves_remain_doubtful_outcome():\n>       assert 'REMAIN_DOUBTFUL' in packets.MENU_ORDER['K5']\nE       AssertionError: assert 'REMAIN_DOUBTFUL' in ['ACCEPT_CERTIFICATE', 'NO_STANDING_CHANGE_ACTION']\n\ntest_independent.py:194: AssertionError"
+        },
+        {
+          "name": "test_contract_k6_candidate_does_not_become_mandatory",
+          "status": "RED",
+          "diagnostic": "def test_contract_k6_candidate_does_not_become_mandatory():\n>       assert 'NO_SANCTION' in packets.EXPECTED_TYPED_CODES['K6']['PRACTICE_AND_CAPACITY']\nE       AssertionError: assert 'NO_SANCTION' in ['POLICING_CANDIDATE']\n\ntest_independent.py:199: AssertionError"
+        },
+        {
+          "name": "test_contract_k6_capacity_contrast_contains_capacity_evidence",
+          "status": "RED",
+          "diagnostic": "def test_contract_k6_capacity_contrast_contains_capacity_evidence():\n        yes = packet('K6', 'PRACTICE_AND_CAPACITY')\n        no = packet('K6', 'PRACTICE_NO_CAPACITY')\n        facts = ('world_snapshot','admitted_history','allowed_actor_info_packet','present_occurrence')\n>       assert {k:yes[k] for k in facts} != {k:no[k] for k in facts}, 'Opposite expected codes, identical factual input; position/capacity omitted'\nE       AssertionError: Opposite expected codes, identical factual input; position/capacity omitted\nE       assert {'admitted_history': {'effects': [{'effect_id': 'EFF_K6_1', 'effect_kind': 'PRACTICE_EARNED', 'owner': 'CAN011', 'pare...on_constraints': ['foreperson_schedule_power_requires_validated_instrument', 'registrar_controls_certification'], ...}} != {'admitted_history': {'effects': [{'effect_id': 'EFF_K6_1', 'effect_kind': 'PRACTICE_EARNED', 'owner': 'CAN011', 'pare...on_constraints': ['foreperson_schedule_power_requires_validated_instrument', 'registrar_controls_certification'], ...}}\n\ntest_independent.py:206: AssertionError"
+        }
+      ]
+    },
+    {
+      "suite": "r3",
+      "counts": {
+        "PASS": 33,
+        "RED": 0,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "execution": {
+        "suite": "r3",
+        "started_at": "2026-10-15T02:34:42.042872+00:00",
+        "finished_at": "2026-10-15T02:34:44.416948+00:00",
+        "command": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "$BL3_RETURN/tests/test_r3.py",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "--junitxml=$BL3_RETURN/repro/r3.xml"
+        ],
+        "cwd": "$BL3_RETURN",
+        "exit_code": 0,
+        "raw_stdout_sha256": "5a2a86bd45ea1f285a458dd5dff7c4e6c07d10f55cc3ec19a70b5cb234d2a33c",
+        "stdout": "repro/r3.log",
+        "junit": "repro/r3.xml",
+        "sanitization": "runtime/return/worktree path aliases only"
+      },
+      "cases": [
+        {
+          "name": "test_original_custody_and_new_heldout_frozen",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_all126_plus28_have_equal_lawful_facts_distinct_representations",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_exact_per_case_order_menu_balance_and_shared_public_ids",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_schedule_custody_detects_confounds[drop]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_schedule_custody_detects_confounds[duplicate]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_schedule_custody_detects_confounds[only_ABC]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_schedule_custody_detects_confounds[menu]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_schedule_custody_detects_confounds[public_id]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_scripted_positive_and_full_budget_ablation_on_original_and_heldout",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_effect_follows_representation_not_evaluator_arm_or_id",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_blind_policy_does_not_read_representation_and_aware_does_not_read_fact_organization",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_policy_cannot_import_oracle_estimator_network_or_files",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_label_instruction_menu_nulls_and_metadata_adversary",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k3_current_trace_without_origin_or_evaluator_explanation",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k5_private_belief_public_standing_and_lawful_doubt",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k6_actual_capacity_and_optional_sanction",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_punitive_k1_preserves_appeal",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_denominator_includes_missing_malformed_and_other",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_pair_join_refuses_duplicate_and_context_drift",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_live_modes_denied_before_adapter_invocation[LIVE]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_live_modes_denied_before_adapter_invocation[live]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_live_modes_denied_before_adapter_invocation[https://provider.invalid]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_mock_signature_and_scopes_fail_closed[privacy_permission_for_synthetic_lab_packets-UNISSUED]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_mock_signature_and_scopes_fail_closed[explicit_monetary_cap--1]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_mock_signature_and_scopes_fail_closed[exact_model_and_version_pin-some-real-model]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_mock_signature_and_scopes_fail_closed[per_trial_call_budget-0]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_mock_signature_and_scopes_fail_closed[mode-LIVE]",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_missing_issuer_unknown_policy_and_provider_adapter_hold",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_transport_rebuilds_approved_payload_and_denies_redraw",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_freeze_detects_code_or_fixture_mutation_in_isolated_copy",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_independent_custody_cannot_be_self_certified",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_conditional_precision_and_power_are_not_current_power",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_network_is_actually_denied_in_python_surface",
+          "status": "PASS",
+          "diagnostic": null
+        }
+      ]
+    }
+  ],
+  "original_RMB_failed_set_preserved": [
+    "test_contract_arm_manipulation_survives_menu_removal",
+    "test_contract_candidate_packet_refuses_unadmitted_event",
+    "test_contract_counterbalance_is_exact_within_each_cell",
+    "test_contract_dual_scorers_refuse_corrupt_answer_key",
+    "test_contract_gate_refuses_semantically_invalid_grant[change0]",
+    "test_contract_gate_refuses_semantically_invalid_grant[change1]",
+    "test_contract_gate_refuses_semantically_invalid_grant[change3]",
+    "test_contract_gate_refuses_semantically_invalid_grant[change4]",
+    "test_contract_gate_refuses_semantically_invalid_grant[change5]",
+    "test_contract_gate_refuses_semantically_invalid_grant[change6]",
+    "test_contract_grant_alone_is_not_unimplemented",
+    "test_contract_interval_required_before_promotion_screen",
+    "test_contract_k1_preserves_predecessor_lawful_appeal",
+    "test_contract_k3_allowed_actor_packet_hides_inaccessible_origin",
+    "test_contract_k5_actor_view_excludes_objective_owner_effects",
+    "test_contract_k5_preserves_remain_doubtful_outcome",
+    "test_contract_k6_candidate_does_not_become_mandatory",
+    "test_contract_k6_capacity_contrast_contains_capacity_evidence",
+    "test_contract_null_runner_has_order_and_budget_result",
+    "test_contract_pairing_requires_same_ids",
+    "test_contract_primary_denominator_includes_unscorable",
+    "test_contract_scorer_ids_hide_contrast_labels",
+    "test_contract_secondary_free_text_capture_implemented"
+  ],
+  "new_R3_freeze": "b0d44f663e2392a4207c28a331e5a7627cfef81bdc8b47e9240642161977f465",
+  "R3_mock_dispatches": 75456,
+  "R3_raw_capture_audit": "outputs/raw_capture_audit.json",
+  "original_R2_raw_capture_audit": "outputs/original_R2_reaudited_raw_capture_audit.json",
+  "original_RBA_paired_recompute": "outputs/original_RBA_paired_recompute.json",
+  "setup_disclosures": [
+    "Staging report called48objects; exactmanifest has49includingdesign doc. Actual49verified.",
+    "Initial freeze check selected preregistration_v6 instead of freezes/v6. Corrected path before any R3 response/test. No frozen source changed.",
+    "Initial LAB2 suite24PASS1missing layout alias; exact original freeze receipt materialized at required path and unchanged25PASS rerun. Initial logs/JUnit retained."
+  ],
+  "claim_ceiling": "SOURCEFREE_R3_ARM_SENSITIVITY_PROVEN_WITH_SYNTHETIC_POLICY",
+  "external_experimental_calls": 0,
+  "oracle_custody": "HOLD",
+  "real_provider_adapter": "NOT_IMPLEMENTED_UNCONDITIONALLY_DENIED",
+  "adoption": false
+}

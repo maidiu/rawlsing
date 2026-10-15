@@ -1,0 +1,21 @@
+{
+  "suite": "lab2",
+  "started_at": "2026-10-15T02:35:23.183508+00:00",
+  "finished_at": "2026-10-15T02:35:24.315201+00:00",
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "$BL3_RUNTIME/rba/exec/lab2/lab2/test_lab2.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=$BL3_RETURN/repro/lab2.xml"
+  ],
+  "cwd": "$BL3_RUNTIME/rba/exec/lab2",
+  "exit_code": 0,
+  "raw_stdout_sha256": "76ce6b94279c03e25f2fe25fbfd4e995bce925b39020a129893d82c4dcee20c6",
+  "stdout": "repro/lab2.log",
+  "junit": "repro/lab2.xml",
+  "sanitization": "runtime/return/worktree path aliases only"
+}

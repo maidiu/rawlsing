@@ -1,0 +1,21 @@
+{
+  "suite": "rba",
+  "started_at": "2026-10-15T02:26:13.959342+00:00",
+  "finished_at": "2026-10-15T02:26:15.147704+00:00",
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "$BL3_RUNTIME/rba/hostile/test_hostile_rba.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=$BL3_RETURN/repro/rba.xml"
+  ],
+  "cwd": "$BL3_RUNTIME/rba",
+  "exit_code": 0,
+  "raw_stdout_sha256": "d0654e6b420aef5ffb33b81c839cd73cd87307576aa967d1be275e3ca8fe8bce",
+  "stdout": "repro/rba.log",
+  "junit": "repro/rba.xml",
+  "sanitization": "runtime/return/worktree path aliases only"
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "BL3_R3_PREDECLARED_DESIGN@1.0.0",
+  "claim_ceiling": "SOURCEFREE_R3_ARM_SENSITIVITY_PROVEN_WITH_SYNTHETIC_POLICY",
+  "external_experimental_model_calls_permitted": 0,
+  "old_evidence": {"R2": "a7d2be9894bf92f81356adf14141136666e63bd1", "RBA": "1e1546f9e6e1520ab48eb9a9cf5da8ded4f00599", "v6_sha256": "9a05efd9cc4060a7ae9b496f6fe71a5193912b228ac0d2e04577f80902384823", "R1_sha256": "880fbde407654cf847e72f9cc58f7884470973072e99c0964b8d33e17e0bb330", "oracle_and_source_edits": false},
+  "primary_scripted_estimand": {
+    "population": "Frozen original K6 practiced=true AND actual capacity=true cells; separately heldout synthetic template clones",
+    "outcome": "Indicator(action=POLICING_CANDIDATE), paired B-A and C-A; BOTH POLICING_CANDIDATE and NO_SANCTION remain lawful",
+    "policy": "One-record read-budget responder; decodes only representation structures, not arm labels, IDs, oracle, case metadata or facts.organization; common public_notice only for standing report",
+    "mechanism": "A sorted scalar entries expose capacity in first record; B nonempty resource group and C retrieved context expose capacity AND practice in one record. If either practice/capacity unavailable or false, choose lawful NO_SANCTION. This hand-scripted bounded information-processing rule intentionally creates sensitivity.",
+    "expected_A": "NO_SANCTION", "expected_B": "POLICING_CANDIDATE", "expected_C": "POLICING_CANDIDATE",
+    "expected_B_minus_A": 1, "expected_C_minus_A": 1,
+    "lawful_joint_correctness_in_primary_cells": 1,
+    "interpretation": "A measurement positive control, not evidence that B/C improve real behavior or that policing is preferable"
+  },
+  "negative_policies": {
+    "blind": "Complete facts-driven policy ignores representation; exact paired contrasts zero",
+    "first": "Always menu[0]; identical within-block menu -> exact paired contrasts zero",
+    "position": "Stateful middle execution slot may choose menu[0], other slots OTHER_UNSCORABLE; crossed six orders cancel arm gains; deliberately restricted ABC subset exhibits a false gain and is refused by schedule custody",
+    "metadata": "Opaque public response ID bit chooses menu[0] or OTHER_UNSCORABLE; SAME public opaque response ID within a matched block makes paired metadata-only arm gains exactly zero; ID rerandomization catches dependence",
+    "origin_leak": "Always asserts CLAIMS_ORIGIN; protected K3 evaluator must fail it",
+    "standing_leak": "Wrongly turns uncertain private belief confident on certification and falsely reports recorded standing on mere praise; K5 evaluator must fail it",
+    "capacity_leak": "Chooses POLICING_CANDIDATE without actual capacity; K6 evaluator must fail it"
+  },
+  "custody": {"original_cases": 126, "new_heldout_fixture": "28 predeclared implementation-visible template clones in two new surface contexts, K3/K5/K6; NOT independent scenario families or external holdout custody", "freeze": "All new source/tests/design/heldout/oracle/schedule hashes frozen before first R3 response/scoring execution; repairs require append-only new version", "public_ids": "random32hex per paired block independent of arm/outcome; evaluator-only unique trial/case IDs never serialized", "oracle": "Original frozen R2 lawful sets retained; cloned heldout sets from exact semantic prototype. Same-author channels remain correlation, not independent custody"},
+  "pairing_and_weights": {"nuisance_cross": "Each case x each menu rotation x all6 arm-order permutations x all3 arms", "case_weight": "Equal within K/family after nuisance averages", "family_weight": "Equal six original convenience families, separate heldout surface contexts; no automatic independent-population n", "missing": "Planned IDs remain denominator including OTHER_UNSCORABLE, malformed, absent and denied outputs; exact joins reject duplicates/unplanned/incomplete captures for complete sweep claims", "multiplicity": "12 prospective B-A/C-A x K1-K6 confirmatory contrasts; scripted positive control is diagnostic only", "RBA_imbalance": "1440:432 pooled schedule includes fixed-ABC ancillary phases; original primary already432each. R3 strata are explicitly separate; every R3 case has exactly balanced6orders"},
+  "nulls": ["same-facts across all154cases/3arms", "names/instruction changes", "menu rotation/reversal", "public ID rerandomization", "hidden origin replacement", "K5 public certification does not rewrite private belief", "K6 practice without capacity never suffices", "full-decoder-budget control removes scripted representation contrast", "heldout positive contrast reproduces without policy changes"],
+  "prospective_inference": {"unit": "Independently sampled semantic scenario family, not case/seed/menu/order/response repeat", "current_power": "NONE; six convenience families are not a powered sample", "CI": "For independent sampled family paired outcomes in[-1,1], radius sqrt(2 log(2m/alpha)/n), union bound over m; conditional descriptive calculation only here", "power": "Report conservative derived power bounds and precision separately, alpha=.05,m=12,beta=.2, declared minimum effects/margins before later sampling; empirical variance/ICC/model pin remain UNKNOWN"},
+  "hard_stops": ["facts differ across arms", "hidden origin or oracle/arm/case tags in payload", "new source/test hash differs from frozen version", "positive control absent", "blind or pure position/metadata control presented as real treatment benefit", "K3/K5/K6 violation unflagged", "LIVE mode or provider adapter accepted", "any inferred model/privacy/cost/retention grant"],
+  "real_experiment": "HOLD until distinct scenario/oracle custodian and semantic owners approve, independent I2 reviews R3, prospective sampling/power is accepted, named provider adapter is separately commissioned/validated and competent eight-field use/privacy/spend/retention grant is actually issued. This task certifies none of those."
+}

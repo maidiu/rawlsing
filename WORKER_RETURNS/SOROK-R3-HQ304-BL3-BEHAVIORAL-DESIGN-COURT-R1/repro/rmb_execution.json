@@ -1,0 +1,21 @@
+{
+  "suite": "rmb",
+  "started_at": "2026-10-15T02:26:17.016726+00:00",
+  "finished_at": "2026-10-15T02:26:17.884860+00:00",
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "$BL3_RUNTIME/rba/exec/rmb/test_independent.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=$BL3_RETURN/repro/rmb.xml"
+  ],
+  "cwd": "$BL3_RUNTIME/rba/exec/rmb",
+  "exit_code": 1,
+  "raw_stdout_sha256": "73567fc1fee21d14c2edde500d6714fdb7f0dd5c3abd73ad13aa9e0450d5e5f2",
+  "stdout": "repro/rmb.log",
+  "junit": "repro/rmb.xml",
+  "sanitization": "runtime/return/worktree path aliases only"
+}

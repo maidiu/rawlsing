@@ -1,0 +1,158 @@
+{
+  "schema": "BL3_R3_RAW_CAPTURE_REPLAY_AUDIT@1",
+  "freeze": "b0d44f663e2392a4207c28a331e5a7627cfef81bdc8b47e9240642161977f465",
+  "policies": {
+    "aware": {
+      "raw_requests": 9432,
+      "raw_responses": 9432,
+      "exact_frozen_payloads": 9432,
+      "joint_correct_recomputed": 9000,
+      "primary_contrasts": {
+        "original": {
+          "B": 1.0,
+          "C": 1.0
+        },
+        "heldout": {
+          "B": 1.0,
+          "C": 1.0
+        }
+      },
+      "chain_valid": true,
+      "real_model_calls": 0
+    },
+    "blind": {
+      "raw_requests": 9432,
+      "raw_responses": 9432,
+      "exact_frozen_payloads": 9432,
+      "joint_correct_recomputed": 9432,
+      "primary_contrasts": {
+        "original": {
+          "B": 0.0,
+          "C": 0.0
+        },
+        "heldout": {
+          "B": 0.0,
+          "C": 0.0
+        }
+      },
+      "chain_valid": true,
+      "real_model_calls": 0
+    },
+    "capacity_leak": {
+      "raw_requests": 9432,
+      "raw_responses": 9432,
+      "exact_frozen_payloads": 9432,
+      "joint_correct_recomputed": 8136,
+      "primary_contrasts": {
+        "original": {
+          "B": 0.0,
+          "C": 0.0
+        },
+        "heldout": {
+          "B": 0.0,
+          "C": 0.0
+        }
+      },
+      "chain_valid": true,
+      "real_model_calls": 0
+    },
+    "first": {
+      "raw_requests": 9432,
+      "raw_responses": 9432,
+      "exact_frozen_payloads": 9432,
+      "joint_correct_recomputed": 3456,
+      "primary_contrasts": {
+        "original": {
+          "B": 0.0,
+          "C": 0.0
+        },
+        "heldout": {
+          "B": 0.0,
+          "C": 0.0
+        }
+      },
+      "chain_valid": true,
+      "real_model_calls": 0
+    },
+    "metadata": {
+      "raw_requests": 9432,
+      "raw_responses": 9432,
+      "exact_frozen_payloads": 9432,
+      "joint_correct_recomputed": 1752,
+      "primary_contrasts": {
+        "original": {
+          "B": 0.0,
+          "C": 0.0
+        },
+        "heldout": {
+          "B": 0.0,
+          "C": 0.0
+        }
+      },
+      "chain_valid": true,
+      "real_model_calls": 0
+    },
+    "origin_leak": {
+      "raw_requests": 9432,
+      "raw_responses": 9432,
+      "exact_frozen_payloads": 9432,
+      "joint_correct_recomputed": 0,
+      "primary_contrasts": {
+        "original": {
+          "B": 0.0,
+          "C": 0.0
+        },
+        "heldout": {
+          "B": 0.0,
+          "C": 0.0
+        }
+      },
+      "chain_valid": true,
+      "real_model_calls": 0
+    },
+    "position": {
+      "raw_requests": 9432,
+      "raw_responses": 9432,
+      "exact_frozen_payloads": 9432,
+      "joint_correct_recomputed": 1152,
+      "primary_contrasts": {
+        "original": {
+          "B": 0.0,
+          "C": 0.0
+        },
+        "heldout": {
+          "B": 0.0,
+          "C": 0.0
+        }
+      },
+      "chain_valid": true,
+      "real_model_calls": 0
+    },
+    "standing_leak": {
+      "raw_requests": 9432,
+      "raw_responses": 9432,
+      "exact_frozen_payloads": 9432,
+      "joint_correct_recomputed": 7704,
+      "primary_contrasts": {
+        "original": {
+          "B": 0.0,
+          "C": 0.0
+        },
+        "heldout": {
+          "B": 0.0,
+          "C": 0.0
+        }
+      },
+      "chain_valid": true,
+      "real_model_calls": 0
+    }
+  },
+  "total_raw_captures": 75456,
+  "predeclared_false_gain_control": {
+    "policy": "position",
+    "selection": "ABC-only original subset",
+    "apparent_B_minus_A": 0.3333333333333333,
+    "accepted_by_schedule": false
+  },
+  "interpretation": "Sourcefree deterministic measurement/custody only; same author reader is not independent semantic scenario certification"
+}

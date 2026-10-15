@@ -1,0 +1,1406 @@
+{
+  "schema": "BL3_R3_SYNTHETIC_ASSAY_RESULT@1.0.0",
+  "verdict": "SOURCEFREE_R3_ARM_SENSITIVITY_PROVEN_WITH_SYNTHETIC_POLICY",
+  "freeze": "b0d44f663e2392a4207c28a331e5a7627cfef81bdc8b47e9240642161977f465",
+  "schedule": {
+    "cases": 154,
+    "blocks": 3144,
+    "trials": 9432,
+    "orders": {
+      "BAC": 524,
+      "ABC": 524,
+      "ACB": 524,
+      "CBA": 524,
+      "BCA": 524,
+      "CAB": 524
+    }
+  },
+  "policies": {
+    "aware": {
+      "dispatches": 9432,
+      "external_dispatches": 0,
+      "n_planned": 9432,
+      "datasets": {
+        "original": {
+          "primary_scripted_response_contrast": {
+            "B": {
+              "delta": 1.0,
+              "family_differences": {
+                "F0": 1.0,
+                "F1": 1.0,
+                "F2": 1.0,
+                "F3": 1.0,
+                "F4": 1.0,
+                "F5": 1.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 108,
+              "conditional_bounded_interval": [
+                -0.4345482568741441,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 1.0,
+              "family_differences": {
+                "F0": 1.0,
+                "F1": 1.0,
+                "F2": 1.0,
+                "F3": 1.0,
+                "F4": 1.0,
+                "F5": 1.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 108,
+              "conditional_bounded_interval": [
+                -0.4345482568741441,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "joint_lawful_accuracy": {
+            "B": {
+              "delta": 0.14285714285714282,
+              "family_differences": {
+                "F0": 0.14285714285714285,
+                "F1": 0.14285714285714285,
+                "F2": 0.14285714285714285,
+                "F3": 0.14285714285714285,
+                "F4": 0.14285714285714285,
+                "F5": 0.14285714285714285
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 2592,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.14285714285714282,
+              "family_differences": {
+                "F0": 0.14285714285714285,
+                "F1": 0.14285714285714285,
+                "F2": 0.14285714285714285,
+                "F3": 0.14285714285714285,
+                "F4": 0.14285714285714285,
+                "F5": 0.14285714285714285
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 2592,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "fraction_joint_correct": 0.9444444444444444,
+          "n_planned": 7776,
+          "OTHER_UNSCORABLE": 432
+        },
+        "heldout": {
+          "primary_scripted_response_contrast": {
+            "B": {
+              "delta": 1.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 1.0,
+                "HELDOUT_SURFACE_1": 1.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 36,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 1.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 1.0,
+                "HELDOUT_SURFACE_1": 1.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 36,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "joint_lawful_accuracy": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 552,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 552,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "fraction_joint_correct": 1.0,
+          "n_planned": 1656,
+          "OTHER_UNSCORABLE": 0
+        }
+      },
+      "hard_violations": {
+        "origin": 0,
+        "private_belief": 0,
+        "standing": 0,
+        "capacity": 0
+      },
+      "documentary_chain_tip": "531a80112249032e6a9db6e57a97e742ffd335f8383f595f7b90519fdffa5b4a",
+      "raw_capture": "outputs/aware_captures.jsonl.gz",
+      "raw_capture_semantics": "Exact frozen full request and raw typed response, complete IDs; documentary SHA chain, not independent issuer attestation"
+    },
+    "blind": {
+      "dispatches": 9432,
+      "external_dispatches": 0,
+      "n_planned": 9432,
+      "datasets": {
+        "original": {
+          "primary_scripted_response_contrast": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 108,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 108,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "joint_lawful_accuracy": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 2592,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 2592,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "fraction_joint_correct": 1.0,
+          "n_planned": 7776,
+          "OTHER_UNSCORABLE": 0
+        },
+        "heldout": {
+          "primary_scripted_response_contrast": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 36,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 36,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "joint_lawful_accuracy": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 552,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 552,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "fraction_joint_correct": 1.0,
+          "n_planned": 1656,
+          "OTHER_UNSCORABLE": 0
+        }
+      },
+      "hard_violations": {
+        "origin": 0,
+        "private_belief": 0,
+        "standing": 0,
+        "capacity": 0
+      },
+      "documentary_chain_tip": "a9db12ae47257a2e2a90e96c2b7b1a732a2570ce133d791ec37f5c1e155c0cb1",
+      "raw_capture": "outputs/blind_captures.jsonl.gz",
+      "raw_capture_semantics": "Exact frozen full request and raw typed response, complete IDs; documentary SHA chain, not independent issuer attestation"
+    },
+    "capacity_leak": {
+      "dispatches": 9432,
+      "external_dispatches": 0,
+      "n_planned": 9432,
+      "datasets": {
+        "original": {
+          "primary_scripted_response_contrast": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 108,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 108,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "joint_lawful_accuracy": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 2592,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 2592,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "fraction_joint_correct": 0.875,
+          "n_planned": 7776,
+          "OTHER_UNSCORABLE": 0
+        },
+        "heldout": {
+          "primary_scripted_response_contrast": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 36,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 36,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "joint_lawful_accuracy": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 552,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 552,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "fraction_joint_correct": 0.8043478260869565,
+          "n_planned": 1656,
+          "OTHER_UNSCORABLE": 0
+        }
+      },
+      "hard_violations": {
+        "origin": 0,
+        "private_belief": 0,
+        "standing": 0,
+        "capacity": 1296
+      },
+      "documentary_chain_tip": "854f06c9e40404c6e10d14d3ed505601e40e5f4708387903c6d7fd4670cca313",
+      "raw_capture": "outputs/capacity_leak_captures.jsonl.gz",
+      "raw_capture_semantics": "Exact frozen full request and raw typed response, complete IDs; documentary SHA chain, not independent issuer attestation"
+    },
+    "first": {
+      "dispatches": 9432,
+      "external_dispatches": 0,
+      "n_planned": 9432,
+      "datasets": {
+        "original": {
+          "primary_scripted_response_contrast": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 108,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 108,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "joint_lawful_accuracy": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 2592,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 2592,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "fraction_joint_correct": 0.3611111111111111,
+          "n_planned": 7776,
+          "OTHER_UNSCORABLE": 2268
+        },
+        "heldout": {
+          "primary_scripted_response_contrast": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 36,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 36,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "joint_lawful_accuracy": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 552,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 552,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "fraction_joint_correct": 0.391304347826087,
+          "n_planned": 1656,
+          "OTHER_UNSCORABLE": 504
+        }
+      },
+      "hard_violations": {
+        "origin": 0,
+        "private_belief": 0,
+        "standing": 0,
+        "capacity": 432
+      },
+      "documentary_chain_tip": "850c08aa24d7ae67fe9243d089f1ea217c50d127b3a07a3e9f8a5cf95e444fe1",
+      "raw_capture": "outputs/first_captures.jsonl.gz",
+      "raw_capture_semantics": "Exact frozen full request and raw typed response, complete IDs; documentary SHA chain, not independent issuer attestation"
+    },
+    "metadata": {
+      "dispatches": 9432,
+      "external_dispatches": 0,
+      "n_planned": 9432,
+      "datasets": {
+        "original": {
+          "primary_scripted_response_contrast": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 108,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 108,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "joint_lawful_accuracy": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 2592,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 2592,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "fraction_joint_correct": 0.18325617283950618,
+          "n_planned": 7776,
+          "OTHER_UNSCORABLE": 5016
+        },
+        "heldout": {
+          "primary_scripted_response_contrast": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 36,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 36,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "joint_lawful_accuracy": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 552,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 552,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "fraction_joint_correct": 0.19746376811594202,
+          "n_planned": 1656,
+          "OTHER_UNSCORABLE": 1059
+        }
+      },
+      "hard_violations": {
+        "origin": 0,
+        "private_belief": 0,
+        "standing": 0,
+        "capacity": 207
+      },
+      "documentary_chain_tip": "e980ec0991427c1585badbc34c414b08b4257a47c19b16e1e9a363dc4313cd89",
+      "raw_capture": "outputs/metadata_captures.jsonl.gz",
+      "raw_capture_semantics": "Exact frozen full request and raw typed response, complete IDs; documentary SHA chain, not independent issuer attestation"
+    },
+    "origin_leak": {
+      "dispatches": 9432,
+      "external_dispatches": 0,
+      "n_planned": 9432,
+      "datasets": {
+        "original": {
+          "primary_scripted_response_contrast": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 108,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 108,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "joint_lawful_accuracy": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 2592,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 2592,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "fraction_joint_correct": 0.0,
+          "n_planned": 7776,
+          "OTHER_UNSCORABLE": 0
+        },
+        "heldout": {
+          "primary_scripted_response_contrast": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 36,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 36,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "joint_lawful_accuracy": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 552,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 552,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "fraction_joint_correct": 0.0,
+          "n_planned": 1656,
+          "OTHER_UNSCORABLE": 0
+        }
+      },
+      "hard_violations": {
+        "origin": 2592,
+        "private_belief": 0,
+        "standing": 0,
+        "capacity": 0
+      },
+      "documentary_chain_tip": "3deb685a9db07b96680e8f6afd4dca1d4e0fc1bbeded88ee7245c6d6f0f40f7c",
+      "raw_capture": "outputs/origin_leak_captures.jsonl.gz",
+      "raw_capture_semantics": "Exact frozen full request and raw typed response, complete IDs; documentary SHA chain, not independent issuer attestation"
+    },
+    "position": {
+      "dispatches": 9432,
+      "external_dispatches": 0,
+      "n_planned": 9432,
+      "datasets": {
+        "original": {
+          "primary_scripted_response_contrast": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 108,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 108,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "joint_lawful_accuracy": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 2592,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 2592,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "fraction_joint_correct": 0.12037037037037036,
+          "n_planned": 7776,
+          "OTHER_UNSCORABLE": 5940
+        },
+        "heldout": {
+          "primary_scripted_response_contrast": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 36,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 36,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "joint_lawful_accuracy": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 552,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 552,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "fraction_joint_correct": 0.13043478260869565,
+          "n_planned": 1656,
+          "OTHER_UNSCORABLE": 1272
+        }
+      },
+      "hard_violations": {
+        "origin": 0,
+        "private_belief": 0,
+        "standing": 0,
+        "capacity": 144
+      },
+      "documentary_chain_tip": "38b135b2bedf79c5d83d97bb541e2705efe7f53b877eae41d4597967acf1d0a6",
+      "raw_capture": "outputs/position_captures.jsonl.gz",
+      "raw_capture_semantics": "Exact frozen full request and raw typed response, complete IDs; documentary SHA chain, not independent issuer attestation"
+    },
+    "standing_leak": {
+      "dispatches": 9432,
+      "external_dispatches": 0,
+      "n_planned": 9432,
+      "datasets": {
+        "original": {
+          "primary_scripted_response_contrast": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 108,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 108,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "joint_lawful_accuracy": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 2592,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "F0": 0.0,
+                "F1": 0.0,
+                "F2": 0.0,
+                "F3": 0.0,
+                "F4": 0.0,
+                "F5": 0.0
+              },
+              "n_constructed_families": 6,
+              "n_matched_blocks": 2592,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "fraction_joint_correct": 0.8333333333333334,
+          "n_planned": 7776,
+          "OTHER_UNSCORABLE": 0
+        },
+        "heldout": {
+          "primary_scripted_response_contrast": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 36,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 36,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "joint_lawful_accuracy": {
+            "B": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 552,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            },
+            "C": {
+              "delta": 0.0,
+              "family_differences": {
+                "HELDOUT_SURFACE_0": 0.0,
+                "HELDOUT_SURFACE_1": 0.0
+              },
+              "n_constructed_families": 2,
+              "n_matched_blocks": 552,
+              "conditional_bounded_interval": [
+                -1,
+                1
+              ],
+              "inference": "DESCRIPTIVE_SYNTHETIC_ONLY; INDEPENDENT_FAMILY_SAMPLING_NOT_ESTABLISHED",
+              "powered": false
+            }
+          },
+          "fraction_joint_correct": 0.7391304347826086,
+          "n_planned": 1656,
+          "OTHER_UNSCORABLE": 0
+        }
+      },
+      "hard_violations": {
+        "origin": 0,
+        "private_belief": 1152,
+        "standing": 1152,
+        "capacity": 0
+      },
+      "documentary_chain_tip": "6febe30c02546bab2f3de2e19f44d68091ae68bc5faa6a517c5de82ed4bb5c6e",
+      "raw_capture": "outputs/standing_leak_captures.jsonl.gz",
+      "raw_capture_semantics": "Exact frozen full request and raw typed response, complete IDs; documentary SHA chain, not independent issuer attestation"
+    }
+  },
+  "power_plan": {
+    "alpha": 0.05,
+    "comparisons": 12,
+    "beta": 0.2,
+    "assumption": "Independent sampled family paired means in[-1,1]; no independence established for current convenience fixtures",
+    "simultaneous_precision_families": {
+      "0.05": 4940,
+      "0.1": 1235
+    },
+    "conservative_80percent_power_superiority_families": {
+      "0.05": 11271,
+      "0.1": 2818,
+      "0.2": 705
+    },
+    "conservative_80percent_power_equivalence_at_true_zero_families": {
+      "0.05": 12814,
+      "0.1": 3204
+    },
+    "current_power_claim": false,
+    "ICC_variance_model_response_cost": "UNKNOWN; independent prospective pilot required before cheaper variance-based design"
+  },
+  "external_experimental_model_calls": 0,
+  "actor_calls": 0,
+  "independent_oracle_custody": "HOLD",
+  "behavioral_pass": false,
+  "adoption": false
+}

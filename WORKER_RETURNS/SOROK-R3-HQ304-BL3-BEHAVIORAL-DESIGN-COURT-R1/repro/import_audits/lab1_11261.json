@@ -1,0 +1,77 @@
+{
+  "argv": [
+    "$LOCAL_PYTHON_USER_SITE/pytest/__main__.py",
+    "$BL3_RUNTIME/rba/exec/lab1/lab/test_lab.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=$BL3_RETURN/repro/lab1.xml"
+  ],
+  "modules": [
+    {
+      "module": "lab",
+      "file": "$BL3_RUNTIME/rba/exec/lab1/lab/__init__.py",
+      "git_blob_sha1": "30c2af3cada62db9b3bbeaa6ff92f0e684009f18",
+      "sha256": "acb4250a2fa4607b9ccb1d1ee5dc59d216e9d0313aca1fb85b81821160a185a0",
+      "pinned_original": true
+    },
+    {
+      "module": "lab.hashutil",
+      "file": "$BL3_RUNTIME/rba/exec/lab1/lab/hashutil.py",
+      "git_blob_sha1": "e948f1d77ccd6dd87f28b06e4c5d9257feb636bc",
+      "sha256": "edddd8773b06207af2d68980031a3a29cdd3578bb569ac7e482d28383e4ad28b",
+      "pinned_original": true
+    },
+    {
+      "module": "lab.opacity",
+      "file": "$BL3_RUNTIME/rba/exec/lab1/lab/opacity.py",
+      "git_blob_sha1": "b56fb72145d08b1172d82288b49e05a3942d5574",
+      "sha256": "056fd0ba56f95c5554af1940de3a9431d6223a9ecec20202feab6e25a5d94506",
+      "pinned_original": true
+    },
+    {
+      "module": "lab.owners",
+      "file": "$BL3_RUNTIME/rba/exec/lab1/lab/owners.py",
+      "git_blob_sha1": "518e6b8e1a2d36b29a35be7defeab9b6633ccac3",
+      "sha256": "7fa6e773ca92d0ea2bc01633b7720a4d1ca8af6411623b7ac2928cc794dc677b",
+      "pinned_original": true
+    },
+    {
+      "module": "lab.runner",
+      "file": "$BL3_RUNTIME/rba/exec/lab1/lab/runner.py",
+      "git_blob_sha1": "6a1c07796204208135a7486c61936084e2d94bd1",
+      "sha256": "20ff77ee1c17d03cf99d5f6651bde777eaefb6f7e6bcfea2b0844cb36b0ec6a2",
+      "pinned_original": true
+    },
+    {
+      "module": "lab.test_lab",
+      "file": "$BL3_RUNTIME/rba/exec/lab1/lab/test_lab.py",
+      "git_blob_sha1": "fb456f7bf4f9796a34e4ddd96ac574ef2e548bfa",
+      "sha256": "5dc32c51651e16d03f66ffc02ef609e73505c016cd056cd265c7a5c2673e2ce8",
+      "pinned_original": true
+    },
+    {
+      "module": "lab.transition",
+      "file": "$BL3_RUNTIME/rba/exec/lab1/lab/transition.py",
+      "git_blob_sha1": "9ce51cb49246a6a379ba1389448ef82c1c9b03b1",
+      "sha256": "e95180fde439885982f16d50dcb1db325741c8e70958a05f88e4b909c80c2674",
+      "pinned_original": true
+    },
+    {
+      "module": "lab.world_fixtures",
+      "file": "$BL3_RUNTIME/rba/exec/lab1/lab/world_fixtures.py",
+      "git_blob_sha1": "51910b01c1876b2b2474e6d5bf2b30402762a2cb",
+      "sha256": "8f91d49f2108b3626ef46e9a1e154888012cf5968fa5a851c23f9b811f6f6a0a",
+      "pinned_original": true
+    },
+    {
+      "module": "sitecustomize",
+      "file": "$BL3_RUNTIME/sitecustomize.py",
+      "git_blob_sha1": "c1fdb3ca2eeead7f957ebf05675a165e56bce90f",
+      "sha256": "4673851504607f41763075cf7d337932b4d54faf19a4defbb78e15c432753d16",
+      "pinned_original": false
+    }
+  ],
+  "blocked_network_events": [],
+  "external_dispatches": 0
+}

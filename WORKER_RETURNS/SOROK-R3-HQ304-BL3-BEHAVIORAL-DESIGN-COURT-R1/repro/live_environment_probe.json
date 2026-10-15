@@ -1,0 +1,70 @@
+{
+  "schema": "BL3_LIVE_ENVIRONMENT_PROBE@1",
+  "at": "2026-10-15T02:51:15.718417+00:00",
+  "marker": {
+    "environment_id": "2ac88895-f242-493b-9cae-0cbef04cdf28",
+    "epoch_id": "ddd7d8db-fd6c-413c-b87d-ae973167a713",
+    "created_at": "2026-10-15T02:21:58.475394+00:00",
+    "source_permission": "SYNTHETIC_ONLY_ZERO_EXTERNAL_EXPERIMENTAL_CALLS",
+    "role": "BL3_SOURCEFREE_DESIGN"
+  },
+  "marker_sha256": "68cd93a8b6558a54596eb0b52dfe1d11636f4c4d46b710b898ee40efeff07962",
+  "python": "3.11.3",
+  "pytest": "9.0.2",
+  "git": "git version 2.43.0",
+  "branch": "agent/reviewer-sorok-r3-hq304-bl3-behavioral-design-court-r1",
+  "head": "e924b2d9327b636cdc91731dde9c2aad1f52d226",
+  "original_files_verified": 100,
+  "actual_imports": {
+    "assay.architecture": {
+      "file": "$BL3_RETURN/runtime_root/rba/exec/r2/assay/architecture.py",
+      "sha256": "7fb3c8373e182d5164eb28d17d7a1b1c52ea039de13c473dc939da8902f0694b",
+      "git_blob_sha1": "5afb173c91c2312d3931677289d562d6bcdf5c5d"
+    },
+    "assay.mock_policy": {
+      "file": "$BL3_RETURN/runtime_root/rba/exec/r2/assay/mock_policy.py",
+      "sha256": "97bd0931a168064f3edbfcae35c4df12151ec11b74fdd20e93edff73a29bfae0",
+      "git_blob_sha1": "e5287d4aca7402c2618cbc2385a180cfc4d3d95b"
+    },
+    "assay.scoring": {
+      "file": "$BL3_RETURN/runtime_root/rba/exec/r2/assay/scoring.py",
+      "sha256": "bb2d09f37cce9823a52eca42f60baa7cb9c9867776c8edaec288a4f4c1f3e6ae",
+      "git_blob_sha1": "d2e823b3e5e6aa1326b09739c375f5f395c90634"
+    },
+    "assay.transport": {
+      "file": "$BL3_RETURN/runtime_root/rba/exec/r2/assay/transport.py",
+      "sha256": "1ddb5fc0d151d74dc71cdcbb8e7245d16b6174a1ee85b7cb5b580c62d3c2a1f6",
+      "git_blob_sha1": "6e3af0f010befad8909ee92c9fa79e1cfa055889"
+    },
+    "r3.data": {
+      "file": "$BL3_RETURN/r3/data.py",
+      "sha256": "fa2f5264b555d33438dc7e9a80cc4b6b46b3fe8c3d5f25af303ef06cb9b04943",
+      "git_blob_sha1": "57abe9810d2db7865e1c1da884291da768ff1ffc"
+    },
+    "r3.policies": {
+      "file": "$BL3_RETURN/r3/policies.py",
+      "sha256": "fb9905b4c928658f291419ae1bda6f02e43b77d9784c01abf11e33d02083887d",
+      "git_blob_sha1": "9cd06095e164abfb51412f961f44375040a89827"
+    },
+    "r3.transport": {
+      "file": "$BL3_RETURN/r3/transport.py",
+      "sha256": "99a323412a2edad968521b2146bd87873b55164fab721d02385dc9da38e219f6",
+      "git_blob_sha1": "3bc72ee8438235a2e82ccc51387ee27e0766296e"
+    },
+    "r3.analysis": {
+      "file": "$BL3_RETURN/r3/analysis.py",
+      "sha256": "5633c483030632398409120a9a7b6eb9988e628671da85013359ec5d874345c1",
+      "git_blob_sha1": "413a0fd4d66ad16f83bf3f4e5169ae3d4401f419"
+    },
+    "r3.audit": {
+      "file": "$BL3_RETURN/r3/audit.py",
+      "sha256": "f0c99cbc330c9bc644e762e8b819730aba3aa68c947ec9f75a2d75b84112a80c",
+      "git_blob_sha1": "97e22b74a045b2e8b70569b55d698bbd58fad681"
+    }
+  },
+  "R3_freeze": "b0d44f663e2392a4207c28a331e5a7627cfef81bdc8b47e9240642161977f465",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "model_evidence": "Own current-session turn_context verified before tests; no personal session path exported",
+  "external_experimental_model_calls": 0
+}

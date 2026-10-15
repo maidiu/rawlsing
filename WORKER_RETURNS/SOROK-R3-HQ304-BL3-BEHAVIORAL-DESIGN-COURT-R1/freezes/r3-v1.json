@@ -1,0 +1,35 @@
+{
+  "schema": "BL3_R3_CANDIDATE_FREEZE@1.0.0",
+  "frozen_at": "2026-10-15T02:34:41.476574+00:00",
+  "generation_only_no_responder_or_scoring_executed": true,
+  "files": {
+    "01_PREDECLARED_R3_DESIGN.json": "5c1c90a23911c09f0e3fad5015dec1587387c6208b7752a181e1bf996f52367c",
+    "fixtures/heldout_cases.json": "8a9aae53d898ff9f65c5675b5118a5149996be81470060cdd7e6b228b3158377",
+    "fixtures/heldout_key.json": "bf4b0baad56844d0078ce84f32b619362f04945625cd6245c140e532a5b0c78a",
+    "fixtures/heldout_prototype_custody.json": "82f8e6bde4b2d7eca22a9900dda3234612eaf415fac7327b8eb2f6d533fb3a51",
+    "fixtures/schedule.json.gz": "c90edf1fcdbd2d9d8f7428a7c979fe081c551cdec82889a7d19729625d1dec6d",
+    "r3/__init__.py": "2d16544418a522dcc43414caf6d1413cf5ec0e4be0bccda72fef0026c516274c",
+    "r3/analysis.py": "5633c483030632398409120a9a7b6eb9988e628671da85013359ec5d874345c1",
+    "r3/audit.py": "f0c99cbc330c9bc644e762e8b819730aba3aa68c947ec9f75a2d75b84112a80c",
+    "r3/data.py": "fa2f5264b555d33438dc7e9a80cc4b6b46b3fe8c3d5f25af303ef06cb9b04943",
+    "r3/experiment.py": "85c3d79fd6fdfdd629fb3090a4eb9ad56542daa4362faee220852c982a3e7974",
+    "r3/policies.py": "fb9905b4c928658f291419ae1bda6f02e43b77d9784c01abf11e33d02083887d",
+    "r3/transport.py": "99a323412a2edad968521b2146bd87873b55164fab721d02385dc9da38e219f6",
+    "repro/freeze_candidate.py": "5d4064a14de57f6a635c3a70081157a897a407e3bb81021e7c70ee5a9d4f284f",
+    "tests/test_r3.py": "78be687cfcdd408ffbf9b5ce712e8e5b939677d20c14db8fd1a1c5861f981cc9"
+  },
+  "original_frozen_files": {
+    "freezes/v6.json": "9a05efd9cc4060a7ae9b496f6fe71a5193912b228ac0d2e04577f80902384823",
+    "preregistration_v6.json": "754b224a8bb450dbdff3e74119a1c8bbc5af34150788593b5509df8b389f0ee8",
+    "original_R1_preregistration.json": "880fbde407654cf847e72f9cc58f7884470973072e99c0964b8d33e17e0bb330",
+    "data/corpus.json": "e96c730840de9698aa86e332c86e2fdcd0e19086cda08c501cf8c2d5e5b81cef",
+    "data/oracle.json": "a43dbb2c57e629f4fb8b515ad7e620ed5ff2b6e669d6dbab4a7cd6bd3f19fd21",
+    "data/schedule.json": "b68b0b1d884b9367c22233e80b40584c8e4c2180eb3bf68db4daf41e8e93c4cf"
+  },
+  "original_cases": 126,
+  "heldout_cases": 28,
+  "trials": 9432,
+  "schedule_uncompressed_sha256": "62a0d19ad54d337c016ee232241b876b6df28cbfdacaebcef72627b2ca80335a",
+  "oracle_independence": "NOT_CERTIFIED; distinct custodian required",
+  "revision_rule": "Any source/test/design/fixture repair after first execution requires append-only new freeze and prior output/source preservation"
+}

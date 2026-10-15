@@ -1,0 +1,15 @@
+F........................                                                [100%]
+=================================== FAILURES ===================================
+__________ test_A_preregistration_freeze_hash_is_recorded_and_matches __________
+
+    def test_A_preregistration_freeze_hash_is_recorded_and_matches():
+        raw = open(PREREG, "rb").read()
+        h = hashlib.sha256(raw).hexdigest()
+>       freeze = json.load(open(FREEZE))
+                           ^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '$BL3_RUNTIME/rba/exec/lab2/outputs/preregistration_freeze.json'
+
+lab2/test_lab2.py:45: FileNotFoundError
+=========================== short test summary info ============================
+FAILED lab2/test_lab2.py::test_A_preregistration_freeze_hash_is_recorded_and_matches
+1 failed, 24 passed in 0.72s

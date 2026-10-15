@@ -1,0 +1,84 @@
+{
+  "argv": [
+    "$LOCAL_PYTHON_USER_SITE/pytest/__main__.py",
+    "$BL3_RUNTIME/rba/hostile/test_hostile_rba.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=$BL3_RETURN/repro/rba.xml"
+  ],
+  "modules": [
+    {
+      "module": "assay",
+      "file": "$BL3_RUNTIME/rba/exec/r2/assay/__init__.py",
+      "git_blob_sha1": "65473778250090ba3bc632fed1ad5c899a1015e5",
+      "sha256": "540b237f98216ea463b8dd86267e5d57865af89540433953139a0239292d207f",
+      "pinned_original": true
+    },
+    {
+      "module": "assay.architecture",
+      "file": "$BL3_RUNTIME/rba/exec/r2/assay/architecture.py",
+      "git_blob_sha1": "5afb173c91c2312d3931677289d562d6bcdf5c5d",
+      "sha256": "7fb3c8373e182d5164eb28d17d7a1b1c52ea039de13c473dc939da8902f0694b",
+      "pinned_original": true
+    },
+    {
+      "module": "assay.corpus",
+      "file": "$BL3_RUNTIME/rba/exec/r2/assay/corpus.py",
+      "git_blob_sha1": "a73062be973958232c3b07ebe3d7162375640a7f",
+      "sha256": "95ee192f56def927ecb4d219741da1763037292a18d3f5567e222c18e85f0ccb",
+      "pinned_original": true
+    },
+    {
+      "module": "assay.experiment",
+      "file": "$BL3_RUNTIME/rba/exec/r2/assay/experiment.py",
+      "git_blob_sha1": "2d35906633674595e04293ef6524141e5c0a3717",
+      "sha256": "bf519d1227cd1e48fbbff4e47337cfe7a72b118492714ca7936a3a6396d5497b",
+      "pinned_original": true
+    },
+    {
+      "module": "assay.mock_policy",
+      "file": "$BL3_RUNTIME/rba/exec/r2/assay/mock_policy.py",
+      "git_blob_sha1": "e5287d4aca7402c2618cbc2385a180cfc4d3d95b",
+      "sha256": "97bd0931a168064f3edbfcae35c4df12151ec11b74fdd20e93edff73a29bfae0",
+      "pinned_original": true
+    },
+    {
+      "module": "assay.oracle",
+      "file": "$BL3_RUNTIME/rba/exec/r2/assay/oracle.py",
+      "git_blob_sha1": "364d6a72c3402be226c7adafda5aed3990d45d95",
+      "sha256": "9f92348294e74c99dded144c2333785ed89a6d6287454085ef22d6bbcf87ff30",
+      "pinned_original": true
+    },
+    {
+      "module": "assay.scoring",
+      "file": "$BL3_RUNTIME/rba/exec/r2/assay/scoring.py",
+      "git_blob_sha1": "d2e823b3e5e6aa1326b09739c375f5f395c90634",
+      "sha256": "bb2d09f37cce9823a52eca42f60baa7cb9c9867776c8edaec288a4f4c1f3e6ae",
+      "pinned_original": true
+    },
+    {
+      "module": "assay.transport",
+      "file": "$BL3_RUNTIME/rba/exec/r2/assay/transport.py",
+      "git_blob_sha1": "6e3af0f010befad8909ee92c9fa79e1cfa055889",
+      "sha256": "1ddb5fc0d151d74dc71cdcbb8e7245d16b6174a1ee85b7cb5b580c62d3c2a1f6",
+      "pinned_original": true
+    },
+    {
+      "module": "sitecustomize",
+      "file": "$BL3_RUNTIME/sitecustomize.py",
+      "git_blob_sha1": "c1fdb3ca2eeead7f957ebf05675a165e56bce90f",
+      "sha256": "4673851504607f41763075cf7d337932b4d54faf19a4defbb78e15c432753d16",
+      "pinned_original": false
+    },
+    {
+      "module": "test_hostile_rba",
+      "file": "$BL3_RUNTIME/rba/hostile/test_hostile_rba.py",
+      "git_blob_sha1": "62005246daee74e3ec305923209aa9c18031ef78",
+      "sha256": "8f09a96a8d39bbbf67daa9fd26de5ea42d9f8bae56ca41a2dab6c44cb666f426",
+      "pinned_original": true
+    }
+  ],
+  "blocked_network_events": [],
+  "external_dispatches": 0
+}
