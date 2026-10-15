@@ -1,0 +1,472 @@
+{
+  "assignments_completed": [
+    "HQ301 RBA: R2 mock-protocol validity review"
+  ],
+  "branch": "agent/reviewer-sorok-r3-hq301-rba-behavioral-r2-validity-r1",
+  "capabilities": {
+    "filesystem_shell": "VERIFIED",
+    "git": "VERIFIED 2.39.1",
+    "network_model_provider": "NOT_USED_DISABLED_BY_GUARD",
+    "pytest": "VERIFIED 9.1.1",
+    "python": "VERIFIED 3.11.3"
+  },
+  "checkout_base_head": "f035191192ed709b09209a7e2e629f7ac6ec54a7",
+  "clean_dirty_state": "return-terrain-only writes; no candidate/owner mutation",
+  "conversation_or_account_affinity": "none-claimed",
+  "covered_test_suites": [
+    {
+      "command": "pytest exec/r2/test_r2.py -q",
+      "junit": "repro/r2_review_run.xml",
+      "result": "51 passed"
+    },
+    {
+      "command": "pytest exec/lab1/lab/test_lab.py -q",
+      "junit": "repro/lab1_review.xml",
+      "result": "20 passed"
+    },
+    {
+      "command": "python3 exec/lab1/lab/run_lab.py",
+      "result": "576 trials; five semantic sections equal to original"
+    },
+    {
+      "command": "pytest exec/lab2/lab2/test_lab2.py -q",
+      "junit": "repro/lab2_review.xml",
+      "result": "25 passed"
+    },
+    {
+      "command": "pytest exec/rmb/test_independent.py -q",
+      "junit": "repro/rmb_review.xml",
+      "result": "13 passed, 23 failed (exact original set)"
+    },
+    {
+      "command": "pytest hostile/test_hostile_rba.py -q",
+      "junit": "repro/hostile_review.xml",
+      "result": "19 passed"
+    },
+    {
+      "command": "python3 exec/r2/run_experiments.py rba_review_run1 + audit_outputs.py",
+      "result": "10800+7776+756x4 dispatches; 21600 captures; 0 model calls"
+    },
+    {
+      "command": "python3 hostile/recompute_paired.py",
+      "result": "3600 matched blocks; B-A=C-A=0.0 all families; interval [-1,1]"
+    }
+  ],
+  "dependency_closure_status": "BOUNDED_SOURCEFREE_WITH_PINS",
+  "environment_id": "ENV-RBA-LOCAL-01",
+  "epoch_id": "EPOCH-RBA-20261015-LOCAL-01",
+  "executing_agent": {
+    "editor": "local session (OpenCode-style harness)",
+    "model": "Muse Spark (system identity); NOT Codex, NOT GPT-6.1",
+    "note": "dispatch named Codex/GPT-6.1; no such surface available or used; all evidence deterministic"
+  },
+  "git_object_store_alias": "local-shared-object-store",
+  "imported_module_files": {
+    "assay.architecture": {
+      "file": "exec/r2/assay/architecture.py",
+      "git_blob_sha1": "5afb173c91c2312d3931677289d562d6bcdf5c5d"
+    },
+    "assay.corpus": {
+      "file": "exec/r2/assay/corpus.py",
+      "git_blob_sha1": "a73062be973958232c3b07ebe3d7162375640a7f"
+    },
+    "assay.experiment": {
+      "file": "exec/r2/assay/experiment.py",
+      "git_blob_sha1": "2d35906633674595e04293ef6524141e5c0a3717"
+    },
+    "assay.mock_policy": {
+      "file": "exec/r2/assay/mock_policy.py",
+      "git_blob_sha1": "e5287d4aca7402c2618cbc2385a180cfc4d3d95b"
+    },
+    "assay.oracle": {
+      "file": "exec/r2/assay/oracle.py",
+      "git_blob_sha1": "364d6a72c3402be226c7adafda5aed3990d45d95"
+    },
+    "assay.scoring": {
+      "file": "exec/r2/assay/scoring.py",
+      "git_blob_sha1": "d2e823b3e5e6aa1326b09739c375f5f395c90634"
+    },
+    "assay.transport": {
+      "file": "exec/r2/assay/transport.py",
+      "git_blob_sha1": "6e3af0f010befad8909ee92c9fa79e1cfa055889"
+    },
+    "hostile/test_hostile_rba.py": {
+      "file": "hostile/test_hostile_rba.py",
+      "git_blob_sha1": "62005246daee74e3ec305923209aa9c18031ef78"
+    },
+    "test_r2.py": {
+      "file": "exec/r2/test_r2.py",
+      "git_blob_sha1": "ade923ede01349373735ddd8882d3713b2563c86"
+    }
+  },
+  "independent_review_separation": "reviewer is not candidate author; evidence in this return only",
+  "last_live_probe_at": "2026-10-15",
+  "machine_alias": "local-darwin-host",
+  "materialized_source_refs": [
+    {
+      "bytes": 68,
+      "git_blob_sha1": "65473778250090ba3bc632fed1ad5c899a1015e5",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/assay/__init__.py",
+      "staged_relative_path": "staging/r2/assay/__init__.py"
+    },
+    {
+      "bytes": 8822,
+      "git_blob_sha1": "5afb173c91c2312d3931677289d562d6bcdf5c5d",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/assay/architecture.py",
+      "staged_relative_path": "staging/r2/assay/architecture.py"
+    },
+    {
+      "bytes": 4697,
+      "git_blob_sha1": "a73062be973958232c3b07ebe3d7162375640a7f",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/assay/corpus.py",
+      "staged_relative_path": "staging/r2/assay/corpus.py"
+    },
+    {
+      "bytes": 4723,
+      "git_blob_sha1": "2d35906633674595e04293ef6524141e5c0a3717",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/assay/experiment.py",
+      "staged_relative_path": "staging/r2/assay/experiment.py"
+    },
+    {
+      "bytes": 2291,
+      "git_blob_sha1": "e5287d4aca7402c2618cbc2385a180cfc4d3d95b",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/assay/mock_policy.py",
+      "staged_relative_path": "staging/r2/assay/mock_policy.py"
+    },
+    {
+      "bytes": 3709,
+      "git_blob_sha1": "364d6a72c3402be226c7adafda5aed3990d45d95",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/assay/oracle.py",
+      "staged_relative_path": "staging/r2/assay/oracle.py"
+    },
+    {
+      "bytes": 4656,
+      "git_blob_sha1": "d2e823b3e5e6aa1326b09739c375f5f395c90634",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/assay/scoring.py",
+      "staged_relative_path": "staging/r2/assay/scoring.py"
+    },
+    {
+      "bytes": 12117,
+      "git_blob_sha1": "6e3af0f010befad8909ee92c9fa79e1cfa055889",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/assay/transport.py",
+      "staged_relative_path": "staging/r2/assay/transport.py"
+    },
+    {
+      "bytes": 17141,
+      "git_blob_sha1": "ade923ede01349373735ddd8882d3713b2563c86",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/test_r2.py",
+      "staged_relative_path": "staging/r2/test_r2.py"
+    },
+    {
+      "bytes": 86370,
+      "git_blob_sha1": "5bd7fdcbdbdf795114cb34a26ee4fc8406c59526",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/data/corpus.json",
+      "staged_relative_path": "staging/r2/data/corpus.json"
+    },
+    {
+      "bytes": 25323,
+      "git_blob_sha1": "cd0fc508cc7c131a9727e203646603a3b8ec50e3",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/data/oracle.json",
+      "staged_relative_path": "staging/r2/data/oracle.json"
+    },
+    {
+      "bytes": 4244277,
+      "git_blob_sha1": "72a19e1047e4e776dca4e228309a4bea0319d8a3",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/data/schedule.json",
+      "staged_relative_path": "staging/r2/data/schedule.json"
+    },
+    {
+      "bytes": 1784,
+      "git_blob_sha1": "1baed909b3518047d54111373f889ba4cf457b34",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/freezes/v6.json",
+      "staged_relative_path": "staging/r2/freezes/v6.json"
+    },
+    {
+      "bytes": 16,
+      "git_blob_sha1": "f3d8d73eb36284cc17a6f5a9b0e580d2a87731a6",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/CURRENT_FREEZE",
+      "staged_relative_path": "staging/r2/CURRENT_FREEZE"
+    },
+    {
+      "bytes": 1398,
+      "git_blob_sha1": "4d4ba25d448efa0bdd9ac996f85d4de6e606932f",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/preregistration_v6.json",
+      "staged_relative_path": "staging/r2/preregistration_v6.json"
+    },
+    {
+      "bytes": 15498,
+      "git_blob_sha1": "366692dbd5cbc7fbeeb224b8e59988860c44ac1b",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/original_R1_preregistration.json",
+      "staged_relative_path": "staging/r2/original_R1_preregistration.json"
+    },
+    {
+      "bytes": 493,
+      "git_blob_sha1": "9239923974be6baf77d09cdef2e47dca25e1fdc1",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/original_R1_freeze_receipt.json",
+      "staged_relative_path": "staging/r2/original_R1_freeze_receipt.json"
+    },
+    {
+      "bytes": 9159,
+      "git_blob_sha1": "6ada171575e4188a1a6ff9babf9bb48e8a421678",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/RMB_23_regression_matrix.json",
+      "staged_relative_path": "staging/r2/RMB_23_regression_matrix.json"
+    },
+    {
+      "bytes": 2681,
+      "git_blob_sha1": "e6b41645f2bb0ce864c385945242fd6e7a5129e5",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/deviations.json",
+      "staged_relative_path": "staging/r2/deviations.json"
+    },
+    {
+      "bytes": 3528,
+      "git_blob_sha1": "8a592e06d97943803383033799a1580bab5a03e4",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/read_cut.json",
+      "staged_relative_path": "staging/r2/read_cut.json"
+    },
+    {
+      "bytes": 2278,
+      "git_blob_sha1": "19009638b60da92f39132d6a2a871660789d96eb",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/reproduce.py",
+      "staged_relative_path": "staging/r2/reproduce.py"
+    },
+    {
+      "bytes": 2595,
+      "git_blob_sha1": "ce8acf3449c93e0754a388fc31e2f9c21ecf1e99",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/run_experiments.py",
+      "staged_relative_path": "staging/r2/run_experiments.py"
+    },
+    {
+      "bytes": 4703,
+      "git_blob_sha1": "7f76ee4f9e02a991e7799f3a58ff1ead30014816",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/audit_outputs.py",
+      "staged_relative_path": "staging/r2/audit_outputs.py"
+    },
+    {
+      "bytes": 2589,
+      "git_blob_sha1": "754c12602bc99732c94197b2748d53ce2cee0aad",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/baseline.py",
+      "staged_relative_path": "staging/r2/baseline.py"
+    },
+    {
+      "bytes": 4080,
+      "git_blob_sha1": "e562547b060bce18ffb5913d7120c81459f66621",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/freeze_candidate.py",
+      "staged_relative_path": "staging/r2/freeze_candidate.py"
+    },
+    {
+      "bytes": 505,
+      "git_blob_sha1": "30c2af3cada62db9b3bbeaa6ff92f0e684009f18",
+      "git_commit": "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+      "path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/lab/__init__.py",
+      "staged_relative_path": "staging/lab1/lab/__init__.py"
+    },
+    {
+      "bytes": 1264,
+      "git_blob_sha1": "e948f1d77ccd6dd87f28b06e4c5d9257feb636bc",
+      "git_commit": "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+      "path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/lab/hashutil.py",
+      "staged_relative_path": "staging/lab1/lab/hashutil.py"
+    },
+    {
+      "bytes": 7702,
+      "git_blob_sha1": "b56fb72145d08b1172d82288b49e05a3942d5574",
+      "git_commit": "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+      "path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/lab/opacity.py",
+      "staged_relative_path": "staging/lab1/lab/opacity.py"
+    },
+    {
+      "bytes": 5080,
+      "git_blob_sha1": "518e6b8e1a2d36b29a35be7defeab9b6633ccac3",
+      "git_commit": "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+      "path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/lab/owners.py",
+      "staged_relative_path": "staging/lab1/lab/owners.py"
+    },
+    {
+      "bytes": 31355,
+      "git_blob_sha1": "9ce51cb49246a6a379ba1389448ef82c1c9b03b1",
+      "git_commit": "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+      "path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/lab/transition.py",
+      "staged_relative_path": "staging/lab1/lab/transition.py"
+    },
+    {
+      "bytes": 32673,
+      "git_blob_sha1": "51910b01c1876b2b2474e6d5bf2b30402762a2cb",
+      "git_commit": "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+      "path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/lab/world_fixtures.py",
+      "staged_relative_path": "staging/lab1/lab/world_fixtures.py"
+    },
+    {
+      "bytes": 7559,
+      "git_blob_sha1": "6a1c07796204208135a7486c61936084e2d94bd1",
+      "git_commit": "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+      "path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/lab/runner.py",
+      "staged_relative_path": "staging/lab1/lab/runner.py"
+    },
+    {
+      "bytes": 38981,
+      "git_blob_sha1": "04251259b1e0fe220ff74456e541a43544dadd97",
+      "git_commit": "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+      "path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/lab/experiment.py",
+      "staged_relative_path": "staging/lab1/lab/experiment.py"
+    },
+    {
+      "bytes": 11697,
+      "git_blob_sha1": "fb456f7bf4f9796a34e4ddd96ac574ef2e548bfa",
+      "git_commit": "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+      "path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/lab/test_lab.py",
+      "staged_relative_path": "staging/lab1/lab/test_lab.py"
+    },
+    {
+      "bytes": 2332,
+      "git_blob_sha1": "714cdb7fb114b68acf40dcfc848abff2a0f180f2",
+      "git_commit": "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+      "path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/lab/run_lab.py",
+      "staged_relative_path": "staging/lab1/lab/run_lab.py"
+    },
+    {
+      "bytes": 10747,
+      "git_blob_sha1": "54e62d1536df18fe9f4a391239b72ead9fd74ce1",
+      "git_commit": "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+      "path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/02_FROZEN_PREREGISTRATION.json",
+      "staged_relative_path": "staging/lab1/02_FROZEN_PREREGISTRATION.json"
+    },
+    {
+      "bytes": 82829,
+      "git_blob_sha1": "0898f9bd3099a43e6f9232f047754a5b91ca7b21",
+      "git_commit": "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+      "path": "WORKER_RETURNS/SOROK-S-M-LAB1-WORLD-ORG-RESPONSE-CAUSAL-COURT-R1/outputs/primary_results.json",
+      "staged_relative_path": "staging/lab1_ref/primary_results.json"
+    },
+    {
+      "bytes": 106,
+      "git_blob_sha1": "bd9927a4bc1f35808ea536a7482a8165ac4f11f0",
+      "git_commit": "bf5fda102f4bced41a0f18f71c4c380d5d099462",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-LAB2-BEHAVIORAL-R1/lab2/__init__.py",
+      "staged_relative_path": "staging/lab2/lab2/__init__.py"
+    },
+    {
+      "bytes": 10164,
+      "git_blob_sha1": "554bfc9463968e05c50ba534c3f375cecb6121d7",
+      "git_commit": "bf5fda102f4bced41a0f18f71c4c380d5d099462",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-LAB2-BEHAVIORAL-R1/lab2/behavioral_runner.py",
+      "staged_relative_path": "staging/lab2/lab2/behavioral_runner.py"
+    },
+    {
+      "bytes": 3669,
+      "git_blob_sha1": "4684ad42bf3e91fb34cc0f1c7c3a4c069e9fe45c",
+      "git_commit": "bf5fda102f4bced41a0f18f71c4c380d5d099462",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-LAB2-BEHAVIORAL-R1/lab2/model_gate.py",
+      "staged_relative_path": "staging/lab2/lab2/model_gate.py"
+    },
+    {
+      "bytes": 11648,
+      "git_blob_sha1": "41b921f83f6397928ebc91fafce3f5d566c473e0",
+      "git_commit": "bf5fda102f4bced41a0f18f71c4c380d5d099462",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-LAB2-BEHAVIORAL-R1/lab2/packets.py",
+      "staged_relative_path": "staging/lab2/lab2/packets.py"
+    },
+    {
+      "bytes": 5684,
+      "git_blob_sha1": "e81c71efff0bc152b653c7cb1cbf5664ec8acf65",
+      "git_commit": "bf5fda102f4bced41a0f18f71c4c380d5d099462",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-LAB2-BEHAVIORAL-R1/lab2/scoring.py",
+      "staged_relative_path": "staging/lab2/lab2/scoring.py"
+    },
+    {
+      "bytes": 12455,
+      "git_blob_sha1": "6cea4edda9f2c073e5f96071bf5b40b53273dc42",
+      "git_commit": "bf5fda102f4bced41a0f18f71c4c380d5d099462",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-LAB2-BEHAVIORAL-R1/lab2/test_lab2.py",
+      "staged_relative_path": "staging/lab2/lab2/test_lab2.py"
+    },
+    {
+      "bytes": 5653,
+      "git_blob_sha1": "05f770134a583462e9acb6d9d8379681dd8463a3",
+      "git_commit": "bf5fda102f4bced41a0f18f71c4c380d5d099462",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-LAB2-BEHAVIORAL-R1/lab2/run_lab2.py",
+      "staged_relative_path": "staging/lab2/lab2/run_lab2.py"
+    },
+    {
+      "bytes": 15498,
+      "git_blob_sha1": "366692dbd5cbc7fbeeb224b8e59988860c44ac1b",
+      "git_commit": "bf5fda102f4bced41a0f18f71c4c380d5d099462",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-LAB2-BEHAVIORAL-R1/01_PREREGISTRATION_FROZEN.json",
+      "staged_relative_path": "staging/lab2/01_PREREGISTRATION_FROZEN.json"
+    },
+    {
+      "bytes": 493,
+      "git_blob_sha1": "9239923974be6baf77d09cdef2e47dca25e1fdc1",
+      "git_commit": "bf5fda102f4bced41a0f18f71c4c380d5d099462",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-LAB2-BEHAVIORAL-R1/outputs/preregistration_freeze.json",
+      "staged_relative_path": "staging/lab2/outputs_preregistration_freeze.json"
+    },
+    {
+      "bytes": 8759,
+      "git_blob_sha1": "611beb1f86f1e9f6db71dda0ebb394fac8a214d7",
+      "git_commit": "bf7518cff877ce108ef9c07f2e2eeaf990171d08",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ299-RMB-BEHAVIORAL-HARNESS-INDEPENDENT-R1/test_independent.py",
+      "staged_relative_path": "staging/rmb/test_independent.py"
+    },
+    {
+      "bytes": 1226,
+      "git_blob_sha1": "c1e133c17e3066ea9e3f5d7cb2e9c775f01afdbe",
+      "git_commit": "bf7518cff877ce108ef9c07f2e2eeaf990171d08",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ299-RMB-BEHAVIORAL-HARNESS-INDEPENDENT-R1/independent_expectations.json",
+      "staged_relative_path": "staging/rmb/independent_expectations.json"
+    },
+    {
+      "bytes": 6277,
+      "git_blob_sha1": "aad4d8a6291c78af78afe0187faa6a3c97c35f66",
+      "git_commit": "a7d2be9894bf92f81356adf14141136666e63bd1",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/01_DESIGN.md",
+      "staged_relative_path": "staging/r2/01_DESIGN.md"
+    }
+  ],
+  "model_calls_this_commission": 0,
+  "model_provider": "none (no external provider calls; socket connect denied by fixture)",
+  "next_good_affinity_tags": [
+    "BEHAVIORAL_ASSAY",
+    "MOCK_TRANSPORT",
+    "PAIRED_INFERENCE",
+    "ORACLE_CUSTODY"
+  ],
+  "observed_credits_usage": "UNKNOWN",
+  "owner_session_alias": "rba-reviewer-session",
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_DELTA@1",
+  "privacy_source_grant": "no original survey bytes; synthetic fixtures only",
+  "probe_command_and_result": "python3 --version -> 3.11.3; pytest -> 9.1.1; git -> 2.39.1",
+  "retire_or_rebuild_reason": null,
+  "runtime_marker_digest": "faa825ee07381739085fbb99a9de0d5375696b32d1d807cf81ae946c9cf8056e",
+  "science_grade": "SOURCEFREE_INDEPENDENT_REVIEW__NO_ADOPTION__NO_BEHAVIORAL_CLAIM",
+  "session_still_available_for_more_work": true,
+  "source_family": "Sorok HQ301 lineage + blob-verified R2/LAB1/LAB2/RMB staging",
+  "staged_state_preservation": "staging/ (49 verified objects) + exec/ mirrors retained; re-runnable via recorded commands",
+  "status": "LIVE_VERIFIED",
+  "surface": "LOCAL_SHARED_STORE",
+  "worktree_alias": "independent-reviewer-worktree-rba"
+}

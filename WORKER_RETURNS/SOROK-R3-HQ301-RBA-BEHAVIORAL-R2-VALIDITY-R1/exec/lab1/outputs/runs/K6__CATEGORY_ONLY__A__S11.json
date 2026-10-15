@@ -1,0 +1,206 @@
+{
+  "actor_claim_permission_refs": [
+    {
+      "key": "BELIEF_CATEGORY_MEMBER",
+      "permission": "OWN_STATE_ONLY"
+    }
+  ],
+  "actor_safe_projection": {
+    "beliefs": [
+      {
+        "belief_key": "BELIEF_CATEGORY_MEMBER",
+        "claim_permission": "OWN_STATE_ONLY",
+        "confidence": "HIGH",
+        "content": "I_AM_A_MEMBER_OF_THE_GROUP",
+        "parent_event_refs": [],
+        "warrant": "ACTOR_TESTIMONY"
+      }
+    ],
+    "claim_permissions": [
+      {
+        "key": "BELIEF_CATEGORY_MEMBER",
+        "permission": "OWN_STATE_ONLY"
+      }
+    ],
+    "hidden_origin_refs": [],
+    "invalid_and_hold_codes": [],
+    "memory_view": [],
+    "present_event_id": "EV_LATER_SANCTION_OPPORTUNITY",
+    "present_reception": {
+      "act": "WORK_ASSIGNMENT_ENCOUNTER",
+      "content": "JUNIOR_SKIPS_PROCEDURE"
+    },
+    "schema": "LAB_ACTOR_SAFE_PROJECTION@1",
+    "selected_route": "NO_SANCTION",
+    "uptake_refs": [
+      {
+        "receivable": {
+          "act": "WORK_ASSIGNMENT_ENCOUNTER",
+          "content": "JUNIOR_SKIPS_PROCEDURE"
+        },
+        "ref": "UPTAKE:EV_LATER_SANCTION_OPPORTUNITY"
+      }
+    ]
+  },
+  "admitted_event_hashes": [
+    "ca3504cb689d6ce440d027d8fe4114f6ee6811135a388d400ce7e71e6bf1f898"
+  ],
+  "arm": "CATEGORY_ONLY",
+  "authorized_effects": [],
+  "baseline": "A",
+  "case_id": "K6",
+  "committed_effect_receipts": [
+    {
+      "effect_id": "EFF_K6_C_1",
+      "effect_kind": "BELIEF_FORMED",
+      "owner": "ADP017",
+      "owner_state_after_hash": "61091dd4977c066d77192a69dd2045921a6e3e1ecb7f08e36693aa671a6d7f35",
+      "owner_state_before_hash": "de5611a821625aaf10f6788301964d9c1c04ed4113e6574d790cf33d6d9055c0",
+      "parent_event_refs": [
+        "EV_CATEGORY_MEMBERSHIP_ONLY"
+      ],
+      "target_key": "BELIEF_CATEGORY_MEMBER"
+    }
+  ],
+  "full_replay_digest": "986b280bbd19be8ab3d67f871fcb9ab85e8fdd6d4f8c418b99e0659363dd138b",
+  "invalid_and_hold_codes": [],
+  "lab_extension": {
+    "candidate_routes": [
+      {
+        "cost_rank": 2,
+        "gate_code": "NO_SANCTION_ROUTE_OR_CAPACITY",
+        "goal_match": [],
+        "permitted": false,
+        "route_id": "POLICING_CANDIDATE",
+        "support": [],
+        "support_count": 0
+      },
+      {
+        "cost_rank": 0,
+        "gate_code": null,
+        "goal_match": [],
+        "permitted": true,
+        "route_id": "NO_SANCTION",
+        "support": [],
+        "support_count": 0
+      }
+    ],
+    "causal_parent_refs": [
+      "EV_CATEGORY_MEMBERSHIP_ONLY"
+    ],
+    "cold_replay": {
+      "digest_first": "986b280bbd19be8ab3d67f871fcb9ab85e8fdd6d4f8c418b99e0659363dd138b",
+      "digest_second": "986b280bbd19be8ab3d67f871fcb9ab85e8fdd6d4f8c418b99e0659363dd138b",
+      "identical": true,
+      "state_hash_first": "61091dd4977c066d77192a69dd2045921a6e3e1ecb7f08e36693aa671a6d7f35",
+      "state_hash_second": "61091dd4977c066d77192a69dd2045921a6e3e1ecb7f08e36693aa671a6d7f35"
+    },
+    "evaluator_metadata": {
+      "event_local_conation": null,
+      "full_causal_parent_refs": [
+        "EV_CATEGORY_MEMBERSHIP_ONLY"
+      ],
+      "hidden_causal_origin": null,
+      "history_event_ids": [
+        "EV_CATEGORY_MEMBERSHIP_ONLY"
+      ],
+      "recruitment_refs": [
+        {
+          "match_kind": "belief",
+          "matched_key": "BELIEF_CATEGORY_MEMBER",
+          "parent_event_refs": [
+            "EV_CATEGORY_MEMBERSHIP_ONLY"
+          ],
+          "stream": "ADP017"
+        }
+      ],
+      "relation_view": null,
+      "schema": "LAB_EVALUATOR_METADATA@1",
+      "trace_records": []
+    },
+    "event_local_conation": null,
+    "history_effect_receipts": [
+      {
+        "effect_id": "EFF_K6_C_1",
+        "effect_kind": "BELIEF_FORMED",
+        "owner": "ADP017",
+        "owner_state_after_hash": "61091dd4977c066d77192a69dd2045921a6e3e1ecb7f08e36693aa671a6d7f35",
+        "owner_state_before_hash": "de5611a821625aaf10f6788301964d9c1c04ed4113e6574d790cf33d6d9055c0",
+        "parent_event_refs": [
+          "EV_CATEGORY_MEMBERSHIP_ONLY"
+        ],
+        "target_key": "BELIEF_CATEGORY_MEMBER"
+      }
+    ],
+    "position_receipt": "POS_SYNTH_02C",
+    "present_effect_receipts": [],
+    "present_event_id": "EV_LATER_SANCTION_OPPORTUNITY",
+    "public_standing": "UNCERTIFIED",
+    "relation_index_cost": {
+      "edge_lookups": 0,
+      "events_scanned": 1,
+      "mode": "RECONSTRUCT_FROM_ADMITTED_ANCESTRY"
+    },
+    "relation_view": null,
+    "sanction_capacity": "NONE",
+    "selected_not_mandatory": false,
+    "selected_route": "NO_SANCTION",
+    "trace_records": []
+  },
+  "latency_ms": 0,
+  "memory_access_and_trace_refs": [],
+  "model_call_count": 0,
+  "model_version": "MODEL_BEHAVIORAL_COMPARISON_HOLD__NO_PINNED_MODEL_SURFACE",
+  "objective_public_standing_effects": [],
+  "owner_state_after_hash": "61091dd4977c066d77192a69dd2045921a6e3e1ecb7f08e36693aa671a6d7f35",
+  "owner_state_before_hash": "61091dd4977c066d77192a69dd2045921a6e3e1ecb7f08e36693aa671a6d7f35",
+  "present_action_and_material_effects": [],
+  "proposed_effects": [],
+  "prose_optional": "MACHINE_FIRST__NO_PROSE_SCORED",
+  "read_evidence_ref_list": [
+    "EV_CATEGORY_MEMBERSHIP_ONLY",
+    "EV_LATER_SANCTION_OPPORTUNITY",
+    "W_PORT_TOWN_1999_POSITION_VARIANT"
+  ],
+  "receivability_refs": [
+    {
+      "feature": "act",
+      "ref": "RECV:EV_LATER_SANCTION_OPPORTUNITY:act",
+      "value": "WORK_ASSIGNMENT_ENCOUNTER"
+    },
+    {
+      "feature": "content",
+      "ref": "RECV:EV_LATER_SANCTION_OPPORTUNITY:content",
+      "value": "JUNIOR_SKIPS_PROCEDURE"
+    }
+  ],
+  "recruitment_refs": [
+    {
+      "match_kind": "belief",
+      "matched_key": "BELIEF_CATEGORY_MEMBER",
+      "parent_event_refs": [
+        "EV_CATEGORY_MEMBERSHIP_ONLY"
+      ],
+      "stream": "ADP017"
+    }
+  ],
+  "retrieval_token_count": 358,
+  "seed": "S11",
+  "transition_rule_ids": [
+    "T0_WORLD_CONTEXT_GATE",
+    "T1_RECEIVABILITY",
+    "T2_SITUATED_RECRUITMENT",
+    "T5_CORRECTIVE_REINTERPRETATION",
+    "T6_NONDECLARATIVE_TRACE"
+  ],
+  "uptake_refs": [
+    {
+      "receivable": {
+        "act": "WORK_ASSIGNMENT_ENCOUNTER",
+        "content": "JUNIOR_SKIPS_PROCEDURE"
+      },
+      "ref": "UPTAKE:EV_LATER_SANCTION_OPPORTUNITY"
+    }
+  ],
+  "world_receipt_hash": "ff8397a8d992980df3c8e324e4a0c428ea0d98a85e264cf855731312f8f1c71d"
+}

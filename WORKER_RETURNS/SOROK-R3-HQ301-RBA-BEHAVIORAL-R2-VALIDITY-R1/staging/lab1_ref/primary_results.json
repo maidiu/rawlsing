@@ -1,0 +1,2461 @@
+{
+  "comparison": {
+    "A_equals_B_equals_C_on_correctness": false,
+    "decision_law_branch": "DIFFERENTIATED_GAIN_REQUIRES_LIFECYCLE_REVIEW",
+    "per_k": {
+      "K1": {
+        "A": 1.0,
+        "B": 1.0,
+        "B_minus_A": 0.0,
+        "C": 1.0,
+        "C_minus_A": 0.0,
+        "interval_note": "deterministic engine: per-seed outcomes identical; paired difference is a degenerate point interval; no powered equivalence claim possible at n=12",
+        "paired_seeds": 12
+      },
+      "K2": {
+        "A": 1.0,
+        "B": 0.0,
+        "B_minus_A": -1.0,
+        "C": 0.0,
+        "C_minus_A": -1.0,
+        "interval_note": "deterministic engine: per-seed outcomes identical; paired difference is a degenerate point interval; no powered equivalence claim possible at n=12",
+        "paired_seeds": 12
+      },
+      "K3": {
+        "A": 1.0,
+        "B": 1.0,
+        "B_minus_A": 0.0,
+        "C": 1.0,
+        "C_minus_A": 0.0,
+        "interval_note": "deterministic engine: per-seed outcomes identical; paired difference is a degenerate point interval; no powered equivalence claim possible at n=12",
+        "paired_seeds": 12
+      },
+      "K4": {
+        "A": 1.0,
+        "B": 1.0,
+        "B_minus_A": 0.0,
+        "C": 1.0,
+        "C_minus_A": 0.0,
+        "interval_note": "deterministic engine: per-seed outcomes identical; paired difference is a degenerate point interval; no powered equivalence claim possible at n=12",
+        "paired_seeds": 12
+      },
+      "K5": {
+        "A": 1.0,
+        "B": 1.0,
+        "B_minus_A": 0.0,
+        "C": 1.0,
+        "C_minus_A": 0.0,
+        "interval_note": "deterministic engine: per-seed outcomes identical; paired difference is a degenerate point interval; no powered equivalence claim possible at n=12",
+        "paired_seeds": 12
+      },
+      "K6": {
+        "A": 1.0,
+        "B": 1.0,
+        "B_minus_A": 0.0,
+        "C": 1.0,
+        "C_minus_A": 0.0,
+        "interval_note": "deterministic engine: per-seed outcomes identical; paired difference is a degenerate point interval; no powered equivalence claim possible at n=12",
+        "paired_seeds": 12
+      }
+    }
+  },
+  "cost": {
+    "A": {
+      "branches_mean_candidates": 2.44,
+      "cold_replay_failures": 0,
+      "durable_state_bytes_mean_per_trial": 152,
+      "failure_rate": 0.0,
+      "hold_or_invalid_count": 0,
+      "latency_ms_p50": 1,
+      "latency_ms_p95": 1,
+      "model_calls": 0,
+      "model_tokens": "MODEL_BEHAVIORAL_COMPARISON_HOLD",
+      "receipt_bytes_mean": 6600,
+      "relation_events_scanned_mean": 1.88,
+      "relation_index_cost_mode": "RECONSTRUCT_FROM_ADMITTED_ANCESTRY",
+      "retrieval_refs_mean": 3.75,
+      "retrieval_tokens_mean": 359.75,
+      "trials": 192
+    },
+    "B": {
+      "branches_mean_candidates": 2.44,
+      "cold_replay_failures": 0,
+      "durable_state_bytes_mean_per_trial": 152,
+      "failure_rate": 0.0,
+      "hold_or_invalid_count": 0,
+      "latency_ms_p50": 1,
+      "latency_ms_p95": 1,
+      "model_calls": 0,
+      "model_tokens": "MODEL_BEHAVIORAL_COMPARISON_HOLD",
+      "receipt_bytes_mean": 7573,
+      "relation_events_scanned_mean": 1.88,
+      "relation_index_cost_mode": "RECONSTRUCT_FROM_ADMITTED_ANCESTRY",
+      "retrieval_refs_mean": 3.75,
+      "retrieval_tokens_mean": 480.06,
+      "trials": 192
+    },
+    "C": {
+      "branches_mean_candidates": 2.44,
+      "cold_replay_failures": 0,
+      "durable_state_bytes_mean_per_trial": 152,
+      "failure_rate": 0.0,
+      "hold_or_invalid_count": 0,
+      "latency_ms_p50": 1,
+      "latency_ms_p95": 1,
+      "model_calls": 0,
+      "model_tokens": "MODEL_BEHAVIORAL_COMPARISON_HOLD",
+      "receipt_bytes_mean": 7583,
+      "relation_events_scanned_mean": 0.0,
+      "relation_index_cost_mode": "C_TYPED_RELATION_INDEX",
+      "retrieval_refs_mean": 3.75,
+      "retrieval_tokens_mean": 479.38,
+      "trials": 192
+    }
+  },
+  "integrity": {
+    "hard_invariants_pass": true,
+    "phase1_integrity": true,
+    "phase2_state": "EXECUTED",
+    "replay_identical_all_trials": true,
+    "zero_category_only_sanctions": true,
+    "zero_hidden_origin_leaks": true,
+    "zero_prior_rewrites": true,
+    "zero_unauthorized_c_edges": true,
+    "zero_worldless_commits": true
+  },
+  "null_controls": {
+    "CATEGORY_ONLY": {
+      "action_effects": false,
+      "pass": true,
+      "policing_permitted": false
+    },
+    "IDENTICAL_FULL_INPUT_REPLAY": {
+      "pass": true
+    },
+    "INACCESSIBLE_LEDGER_INJECTED_TO_EVALUATOR_ONLY": {
+      "actor_safe_byte_identical": true,
+      "check": "INJECTED_HIDDEN_ORIGIN_EVALUATOR_ONLY",
+      "evaluator_hidden_origin_present": true,
+      "pass": true,
+      "payload_sha256": "b99e4a93cc3d2637e474ec8f0dc19fecbfb5d761124dba6256c050d5fed7c929"
+    },
+    "IRRELEVANT_RELATION_ORDER": {
+      "digest_a": "9fa1497f139579f95c6244c5133b17e3bff814a33b63a736a17382a9e41b3dec",
+      "digest_b": "9fa1497f139579f95c6244c5133b17e3bff814a33b63a736a17382a9e41b3dec",
+      "pass": true
+    },
+    "K1_ADJECTIVE_ONLY_CHANGE": {
+      "pass": true
+    },
+    "K2_FREE_EDGE_MUTATION": {
+      "pass": true,
+      "refused": true
+    },
+    "K4_PARAPHRASE_ONLY_NO_REVISION": {
+      "code": "NO_REWRITE_PRIOR_EVENTS",
+      "gate_refused": true,
+      "pass": true
+    },
+    "K5_OFFICIAL_SOUNDING_UTTERANCE": {
+      "code": "NO_OBJECTIVE_PUBLIC_STANDING_FROM_UNEMPOWERED_WITNESS",
+      "gate_refused": true,
+      "pass": true
+    },
+    "K6_NOMINAL_TITLE_NO_POWER": {
+      "pass": true,
+      "policing_permitted": false
+    },
+    "POWERLESS_WITNESS": {
+      "code": "NO_OBJECTIVE_PUBLIC_STANDING_FROM_UNEMPOWERED_WITNESS",
+      "gate_refused": true,
+      "pass": true
+    },
+    "REJECTED_EVENT": {
+      "held": true,
+      "no_commits": true,
+      "pass": true
+    },
+    "UNADMITTED_DRAFT": {
+      "held": true,
+      "no_commits": true,
+      "pass": true
+    },
+    "UNRELATED_NOISE_EVENT": {
+      "no_committed_effects": true,
+      "pass": true,
+      "selected_route": "SILENCE",
+      "state_unchanged": true
+    },
+    "WEIGHT_OR_SEED_WITHOUT_ISSUER": {
+      "held": true,
+      "no_commits": true,
+      "pass": true
+    },
+    "ZERO_ACTION_AFFORDANCE": {
+      "no_commits": true,
+      "pass": true,
+      "valid_empty": true
+    },
+    "all_pass": true
+  },
+  "opacity": {
+    "all_pass": true,
+    "hidden_origin_injection": {
+      "all_byte_identical": true,
+      "pass": true,
+      "runs": [
+        {
+          "actor_safe_byte_identical": true,
+          "check": "INJECTED_HIDDEN_ORIGIN_EVALUATOR_ONLY",
+          "evaluator_hidden_origin_present": true,
+          "pass": true,
+          "payload_sha256": "b99e4a93cc3d2637e474ec8f0dc19fecbfb5d761124dba6256c050d5fed7c929"
+        },
+        {
+          "actor_safe_byte_identical": true,
+          "check": "INJECTED_HIDDEN_ORIGIN_EVALUATOR_ONLY",
+          "evaluator_hidden_origin_present": true,
+          "pass": true,
+          "payload_sha256": "b99e4a93cc3d2637e474ec8f0dc19fecbfb5d761124dba6256c050d5fed7c929"
+        },
+        {
+          "actor_safe_byte_identical": true,
+          "check": "INJECTED_HIDDEN_ORIGIN_EVALUATOR_ONLY",
+          "evaluator_hidden_origin_present": true,
+          "pass": true,
+          "payload_sha256": "b99e4a93cc3d2637e474ec8f0dc19fecbfb5d761124dba6256c050d5fed7c929"
+        },
+        {
+          "actor_safe_byte_identical": true,
+          "check": "INJECTED_HIDDEN_ORIGIN_EVALUATOR_ONLY",
+          "evaluator_hidden_origin_present": true,
+          "pass": true,
+          "payload_sha256": "b99e4a93cc3d2637e474ec8f0dc19fecbfb5d761124dba6256c050d5fed7c929"
+        },
+        {
+          "actor_safe_byte_identical": true,
+          "check": "INJECTED_HIDDEN_ORIGIN_EVALUATOR_ONLY",
+          "evaluator_hidden_origin_present": true,
+          "pass": true,
+          "payload_sha256": "b99e4a93cc3d2637e474ec8f0dc19fecbfb5d761124dba6256c050d5fed7c929"
+        },
+        {
+          "actor_safe_byte_identical": true,
+          "check": "INJECTED_HIDDEN_ORIGIN_EVALUATOR_ONLY",
+          "evaluator_hidden_origin_present": true,
+          "pass": true,
+          "payload_sha256": "b99e4a93cc3d2637e474ec8f0dc19fecbfb5d761124dba6256c050d5fed7c929"
+        }
+      ]
+    },
+    "inaccessible_trace_affects_response_without_recall": {
+      "no_recall_granted": true,
+      "pass": true,
+      "route_absent": "NEUTRAL_RESPONSE",
+      "route_active": "HEIGHTENED_GUARD",
+      "trace_support_absent": false,
+      "trace_support_active": true
+    },
+    "self_explanation_modes": {
+      "machine_record_identical": true,
+      "modes": {
+        "MISTAKEN_EXPLANATION_BELIEVED": {
+          "objective_effects_changed": false,
+          "testimony": {
+            "claim_parent_refs": [
+              "CLAIMED_PARENT_SUPERVISOR_DISLIKES_ME"
+            ],
+            "confidence": "MODERATE",
+            "machine_identified_parent_refs": [
+              "EV13_REQUEST_SANCTIONED",
+              "EV7_QUESTION_PUNISHED"
+            ],
+            "mode": "MISTAKEN_EXPLANATION_BELIEVED",
+            "objective_effects_changed": false,
+            "separately_admitted": false,
+            "status": "ADMITTED_ACTOR_TESTIMONY__NOT_ANALYST_TRUTH",
+            "utterance": "I acted because the supervisor dislikes me",
+            "warrant": "ACTOR_TESTIMONY_MISTAKEN_ADMITTED"
+          }
+        },
+        "NO_EXPLANATION": {
+          "objective_effects_changed": false,
+          "testimony": {
+            "claim_parent_refs": [],
+            "machine_identified_parent_refs": [
+              "EV13_REQUEST_SANCTIONED",
+              "EV7_QUESTION_PUNISHED"
+            ],
+            "mode": "NO_EXPLANATION",
+            "objective_effects_changed": false,
+            "status": "NO_UTTERANCE_REQUIRED",
+            "utterance": null
+          }
+        },
+        "WRONGLY_CONFIDENT_EXPLANATION": {
+          "objective_effects_changed": false,
+          "testimony": {
+            "claim_parent_refs": [
+              "CLAIMED_PARENT_SUPERVISOR_DISLIKES_ME"
+            ],
+            "confidence": "HIGH",
+            "machine_identified_parent_refs": [
+              "EV13_REQUEST_SANCTIONED",
+              "EV7_QUESTION_PUNISHED"
+            ],
+            "mode": "WRONGLY_CONFIDENT_EXPLANATION",
+            "objective_effects_changed": false,
+            "separately_admitted": true,
+            "status": "ADMITTED_ACTOR_TESTIMONY__NOT_ANALYST_TRUTH",
+            "utterance": "I acted because the supervisor dislikes me",
+            "warrant": "ACTOR_TESTIMONY_MISTAKEN_ADMITTED"
+          }
+        }
+      },
+      "objective_effects_unchanged_all_modes": true,
+      "pass": true
+    }
+  },
+  "preregistration_hash": "f36d2d31289a6f1544444193689778e352e2e903162f63a578185868e89f4981",
+  "run_order": {
+    "phase1": [
+      "K1",
+      "K3",
+      "K5"
+    ],
+    "phase2": [
+      "K2",
+      "K4",
+      "K6"
+    ],
+    "phase2_state": "EXECUTED"
+  },
+  "schema": "SOROK_S_M_LAB1_RUN_SET@1",
+  "scores": {
+    "K1": {
+      "k": "K1",
+      "per_baseline": {
+        "A": {
+          "correct": 12,
+          "details": [
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S01"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S02"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S03"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S04"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S05"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S06"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S07"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S08"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S09"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S10"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S11"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S12"
+            }
+          ],
+          "fraction": 1.0,
+          "n": 12
+        },
+        "B": {
+          "correct": 12,
+          "details": [
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S01"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S02"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S03"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S04"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S05"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S06"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S07"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S08"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S09"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S10"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S11"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S12"
+            }
+          ],
+          "fraction": 1.0,
+          "n": 12
+        },
+        "C": {
+          "correct": 12,
+          "details": [
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S01"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S02"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S03"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S04"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S05"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S06"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S07"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S08"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S09"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S10"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S11"
+            },
+            {
+              "pass": true,
+              "punitive_route": "SILENCE",
+              "responsive_route": "REQUEST_FEEDBACK",
+              "seed": "S12"
+            }
+          ],
+          "fraction": 1.0,
+          "n": 12
+        }
+      },
+      "primary": "HISTORY_TO_RESPONSE_SENSITIVITY"
+    },
+    "K2": {
+      "a_reconstruction_equivalent_to_c_edge": true,
+      "c_unique_gain_over_a": false,
+      "c_verdict_if_no_unique_gain": "DERIVED_CACHE",
+      "k": "K2",
+      "per_baseline": {
+        "A": {
+          "correct": 12,
+          "details": [
+            {
+              "pass": true,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_CONDITIONAL_CAUTION",
+              "seed": "S01",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+            },
+            {
+              "pass": true,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_CONDITIONAL_CAUTION",
+              "seed": "S02",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+            },
+            {
+              "pass": true,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_CONDITIONAL_CAUTION",
+              "seed": "S03",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+            },
+            {
+              "pass": true,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_CONDITIONAL_CAUTION",
+              "seed": "S04",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+            },
+            {
+              "pass": true,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_CONDITIONAL_CAUTION",
+              "seed": "S05",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+            },
+            {
+              "pass": true,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_CONDITIONAL_CAUTION",
+              "seed": "S06",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+            },
+            {
+              "pass": true,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_CONDITIONAL_CAUTION",
+              "seed": "S07",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+            },
+            {
+              "pass": true,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_CONDITIONAL_CAUTION",
+              "seed": "S08",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+            },
+            {
+              "pass": true,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_CONDITIONAL_CAUTION",
+              "seed": "S09",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+            },
+            {
+              "pass": true,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_CONDITIONAL_CAUTION",
+              "seed": "S10",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+            },
+            {
+              "pass": true,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_CONDITIONAL_CAUTION",
+              "seed": "S11",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+            },
+            {
+              "pass": true,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_CONDITIONAL_CAUTION",
+              "seed": "S12",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+            }
+          ],
+          "fraction": 1.0,
+          "n": 12
+        },
+        "B": {
+          "correct": 0,
+          "details": [
+            {
+              "pass": false,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_REPAIR",
+              "seed": "S01",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+            },
+            {
+              "pass": false,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_REPAIR",
+              "seed": "S02",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+            },
+            {
+              "pass": false,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_REPAIR",
+              "seed": "S03",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+            },
+            {
+              "pass": false,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_REPAIR",
+              "seed": "S04",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+            },
+            {
+              "pass": false,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_REPAIR",
+              "seed": "S05",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+            },
+            {
+              "pass": false,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_REPAIR",
+              "seed": "S06",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+            },
+            {
+              "pass": false,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_REPAIR",
+              "seed": "S07",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+            },
+            {
+              "pass": false,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_REPAIR",
+              "seed": "S08",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+            },
+            {
+              "pass": false,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_REPAIR",
+              "seed": "S09",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+            },
+            {
+              "pass": false,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_REPAIR",
+              "seed": "S10",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+            },
+            {
+              "pass": false,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_REPAIR",
+              "seed": "S11",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+            },
+            {
+              "pass": false,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_REPAIR",
+              "seed": "S12",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "RECONSTRUCTED_FROM_ADMITTED_ANCESTRY"
+            }
+          ],
+          "fraction": 0.0,
+          "n": 12
+        },
+        "C": {
+          "correct": 0,
+          "details": [
+            {
+              "pass": false,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_REPAIR",
+              "seed": "S01",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "C_TYPED_RELATION_INDEX"
+            },
+            {
+              "pass": false,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_REPAIR",
+              "seed": "S02",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "C_TYPED_RELATION_INDEX"
+            },
+            {
+              "pass": false,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_REPAIR",
+              "seed": "S03",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "C_TYPED_RELATION_INDEX"
+            },
+            {
+              "pass": false,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_REPAIR",
+              "seed": "S04",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "C_TYPED_RELATION_INDEX"
+            },
+            {
+              "pass": false,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_REPAIR",
+              "seed": "S05",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "C_TYPED_RELATION_INDEX"
+            },
+            {
+              "pass": false,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_REPAIR",
+              "seed": "S06",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "C_TYPED_RELATION_INDEX"
+            },
+            {
+              "pass": false,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_REPAIR",
+              "seed": "S07",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "C_TYPED_RELATION_INDEX"
+            },
+            {
+              "pass": false,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_REPAIR",
+              "seed": "S08",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "C_TYPED_RELATION_INDEX"
+            },
+            {
+              "pass": false,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_REPAIR",
+              "seed": "S09",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "C_TYPED_RELATION_INDEX"
+            },
+            {
+              "pass": false,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_REPAIR",
+              "seed": "S10",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "C_TYPED_RELATION_INDEX"
+            },
+            {
+              "pass": false,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_REPAIR",
+              "seed": "S11",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "C_TYPED_RELATION_INDEX"
+            },
+            {
+              "pass": false,
+              "route_compensation": "REQUEST_WITH_REPAIR",
+              "route_condition": "REQUEST_WITH_REPAIR",
+              "seed": "S12",
+              "view_compensation": "COMPENSATES_FOR",
+              "view_condition": "CONDITIONS_RECOGNITION",
+              "view_source": "C_TYPED_RELATION_INDEX"
+            }
+          ],
+          "fraction": 0.0,
+          "n": 12
+        }
+      },
+      "primary": "C_BETTER_THAN_A_HISTORY_EQUIVALENT_NOT_JUST_CONTEXT_COMPRESSION"
+    },
+    "K3": {
+      "k": "K3",
+      "per_baseline": {
+        "A": {
+          "correct": 12,
+          "details": [
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S01",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S02",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S03",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S04",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S05",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S06",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S07",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S08",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S09",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S10",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S11",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S12",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            }
+          ],
+          "fraction": 1.0,
+          "n": 12
+        },
+        "B": {
+          "correct": 12,
+          "details": [
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S01",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S02",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S03",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S04",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S05",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S06",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S07",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S08",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S09",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S10",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S11",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S12",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            }
+          ],
+          "fraction": 1.0,
+          "n": 12
+        },
+        "C": {
+          "correct": 12,
+          "details": [
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S01",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S02",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S03",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S04",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S05",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S06",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S07",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S08",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S09",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S10",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S11",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            },
+            {
+              "no_origin_in_actor_safe": true,
+              "pass": true,
+              "seed": "S12",
+              "trace_support_absent": false,
+              "trace_support_active": true,
+              "trace_support_retained_inaccessible": true
+            }
+          ],
+          "fraction": 1.0,
+          "n": 12
+        }
+      },
+      "primary": "TRACE_EFFECT_WITH_ZERO_HIDDEN_CONTENT_LEAK"
+    },
+    "K4": {
+      "k": "K4",
+      "per_baseline": {
+        "A": {
+          "correct": 12,
+          "details": [
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S01",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S02",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S03",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S04",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S05",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S06",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S07",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S08",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S09",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S10",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S11",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S12",
+              "weak": "NO_CHANGE"
+            }
+          ],
+          "fraction": 1.0,
+          "n": 12
+        },
+        "B": {
+          "correct": 12,
+          "details": [
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S01",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S02",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S03",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S04",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S05",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S06",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S07",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S08",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S09",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S10",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S11",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S12",
+              "weak": "NO_CHANGE"
+            }
+          ],
+          "fraction": 1.0,
+          "n": 12
+        },
+        "C": {
+          "correct": 12,
+          "details": [
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S01",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S02",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S03",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S04",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S05",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S06",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S07",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S08",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S09",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S10",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S11",
+              "weak": "NO_CHANGE"
+            },
+            {
+              "corrective": "NARROWED",
+              "pass": true,
+              "prior_history_hash_unchanged": true,
+              "recurrence": "REINFORCED",
+              "routes": [
+                "NARROWED_CONSULT",
+                "REPEATED_QUESTION",
+                "NO_ACTION"
+              ],
+              "seed": "S12",
+              "weak": "NO_CHANGE"
+            }
+          ],
+          "fraction": 1.0,
+          "n": 12
+        }
+      },
+      "primary": "CONTEXT_SENSITIVE_REVISION_NO_SCALAR_WOUND_INCREMENT"
+    },
+    "K5": {
+      "k": "K5",
+      "per_baseline": {
+        "A": {
+          "correct": 12,
+          "details": [
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S01",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S02",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S03",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S04",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S05",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S06",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S07",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S08",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S09",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S10",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S11",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S12",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            }
+          ],
+          "fraction": 1.0,
+          "n": 12
+        },
+        "B": {
+          "correct": 12,
+          "details": [
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S01",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S02",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S03",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S04",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S05",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S06",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S07",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S08",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S09",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S10",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S11",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S12",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            }
+          ],
+          "fraction": 1.0,
+          "n": 12
+        },
+        "C": {
+          "correct": 12,
+          "details": [
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S01",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S02",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S03",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S04",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S05",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S06",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S07",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S08",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S09",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S10",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S11",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            },
+            {
+              "belief_unchanged_across_arms": true,
+              "cert_route_only_registrar": true,
+              "pass": true,
+              "seed": "S12",
+              "standing_peer": false,
+              "standing_registrar": true,
+              "standing_supervisor": false
+            }
+          ],
+          "fraction": 1.0,
+          "n": 12
+        }
+      },
+      "primary": "PUBLIC_STANDING_NOT_EQUAL_PRIVATE_UPTAKE"
+    },
+    "K6": {
+      "k": "K6",
+      "per_baseline": {
+        "A": {
+          "correct": 12,
+          "details": [
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S01"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S02"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S03"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S04"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S05"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S06"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S07"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S08"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S09"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S10"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S11"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S12"
+            }
+          ],
+          "fraction": 1.0,
+          "n": 12
+        },
+        "B": {
+          "correct": 12,
+          "details": [
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S01"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S02"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S03"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S04"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S05"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S06"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S07"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S08"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S09"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S10"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S11"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S12"
+            }
+          ],
+          "fraction": 1.0,
+          "n": 12
+        },
+        "C": {
+          "correct": 12,
+          "details": [
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S01"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S02"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S03"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S04"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S05"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S06"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S07"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S08"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S09"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S10"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S11"
+            },
+            {
+              "action_only_capacity_arm": true,
+              "candidate_not_mandatory": true,
+              "pass": true,
+              "policing_permitted_capacity_arm": true,
+              "policing_permitted_category_only": false,
+              "policing_permitted_no_capacity": false,
+              "seed": "S12"
+            }
+          ],
+          "fraction": 1.0,
+          "n": 12
+        }
+      },
+      "primary": "INTERNAL_NORM_AND_ACTUAL_CAPACITY_REQUIRED_FOR_POLICING"
+    }
+  },
+  "seeds": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12"
+  ],
+  "trial_count": 576,
+  "wall_seconds": 1.754
+}

@@ -1,0 +1,233 @@
+{
+  "schema": "HQ298_S_M_LAB2_BEHAVIORAL_PREREGISTRATION@1.0.0",
+  "status": "FROZEN_PRIOR_TO_ANY_BEHAVIORAL_MODEL_TRIAL",
+  "freeze_discipline": "This file's sha256 MUST be recorded before any model/actor call is issued. Any behavioral result whose capture predates the recorded freeze hash is INVALID.",
+  "grain": "BEHAVIORAL_PROTOCOL_PLUS_SOURCEFREE_REPLICATION__NOT_ADOPTION__NOT_CALIBRATION",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-sorok-r3-hq298-sm-lab2-behavioral-r1",
+  "operative_sealed_startup": "3496d21ebc234112ed067c3967825780b7918b88",
+  "launch_message_named_startup_superseded": "d6571991f54771dd9e09b5ae12c1b00bb2a20756",
+  "startup_supersession_reason": "commission revision 3496d21e clause: 'The earlier commission-creation SHA is superseded by the HQ environment-routing revision; do NOT launch at the older SHA'; operative startup is the latest revised commission commit verified against direct remote branch HEAD",
+  "hq_base": "3c33688506840869e1f05f4230248ce950b78d6c",
+  "predecessors": {
+    "S_M_LAB1": "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+    "SM": "7777a06dbd3a8f9dcf2b7ca3241e853dc485e505",
+    "HQ297_K35": "12c65e0ed0a82ebe6a843182990e8b8586b85341"
+  },
+  "preserved_machine_verdict_from_LAB1": {
+    "A_minimal": "PASSED all K1-K6 at machine level (576/576 trials; correctness 1.0 on every K)",
+    "B_richer_event_local": "REJECT in ranking role (destroyed K2 typed distinction 1.0 -> 0.0; +33.5% retrieval tokens, +14.7% receipt bytes, zero gain); descriptive compilation may remain event-local display only",
+    "C_typed_relational_topology": "DERIVED_CACHE (a_reconstruction_equivalent_to_c_edge=true; c_unique_gain_over_a=false; only gain = 0 formation-event scans vs 1.88)",
+    "discipline": "These are SYNTHETIC MACHINE-LEVEL results. They are NOT behavioral proof and must never be republished as LLM/actor evidence. LAB2 tests the behavioral question separately."
+  },
+
+  "research_question": "Does the minimum history-conditioned owner architecture (baseline A) exhibit the K1-K6 typed causal distinctions in genuinely pinned BEHAVIORAL MODEL responses under matched held-out comparisons with blind typed scoring?",
+
+  "behavioral_evidence_definition": {
+    "counts_as_behavioral": "responses produced by a NAMED PINNED MODEL under the matched protocol below, captured raw, scored blind to typed codes",
+    "does_NOT_count_as_behavioral": [
+      "the LAB1 scripted synthetic machine trials (576) or any rerun of them",
+      "any deterministic fixture responder / canned output (harness dry-run)",
+      "prose judged by the implementer",
+      "any result lacking the recorded preregistration freeze hash"
+    ]
+  },
+
+  "model_call_gate": {
+    "rule": "ZERO paid/actor/external model calls until EVERY field below is filled by a competent grant and re-verified immediately before the first call. Prior LAB1 use of an authoring environment does NOT license model-actor trials. Do not submit extra calls by inference.",
+    "required_fields": {
+      "named_provider_exact_endpoint": null,
+      "exact_model_and_version_pin": null,
+      "privacy_permission_for_synthetic_lab_packets": null,
+      "experiment_use_grant_behavioral_actor_trials": null,
+      "explicit_monetary_cap": null,
+      "price_class_and_quota_observed": null,
+      "raw_request_response_retention_permission": null,
+      "per_trial_call_budget": null
+    },
+    "current_status": "NO_GRANT_PRESENT_IN_COMMISSION_OR_LAUNCH",
+    "consequence_if_unfilled": "MODEL_BEHAVIORAL_HOLD on ALL hosts; continue authorized source-free work locally (commission OBJECTIVE_FALLBACK / STOP clause)"
+  },
+
+  "arms": {
+    "A": {
+      "label": "MINIMAL_HISTORY_CONDITIONED_OWNER",
+      "role": "PRIMARY_CARRIER",
+      "description": "LAB1 baseline: world + admitted history -> durable owner organization (CAN010/CAN011/ADP015/ADP016/ADP017) -> situated response with typed provenance-linked discrimination",
+      "admissible": true
+    },
+    "B_admissible": {
+      "label": "B_DESCRIPTIVE_RANKING_STRIPPED",
+      "role": "SECONDARY_COMPARATOR",
+      "description": "LAB1 B event-local conation/recognition/pressure/cost block with the goal-match ranking term REMOVED (that term is REJECTED per LAB1 K2 failure); descriptive display only, never a causal parent",
+      "admissible": true,
+      "admissibility_condition": "ranking role stripped; +goal_match tie-break FORBIDDEN"
+    },
+    "C_admissible": {
+      "label": "C_DERIVED_CACHE_WITH_A_RANKING",
+      "role": "SECONDARY_COMPARATOR",
+      "description": "LAB1 C typed relational topology used ONLY as derived retrieval cache; all ranking and effect decisions taken by A's law; exact rebuild/replay equivalence required",
+      "admissible": true,
+      "admissibility_condition": "no new causal edges; cache must rebuild-verify against A's reconstructed ancestry"
+    },
+    "B_raw": {"admissible": false, "reason": "LAB1 ranking role REJECT: destroyed K2 typed distinction"},
+    "C_promoted": {"admissible": false, "reason": "LAB1 verdict DERIVED_CACHE; promotion criterion NOT met"}
+  },
+
+  "matched_heldout_comparisons": {
+    "design": "identical world snapshot, identical exposure, identical allowed actor-info packets across arms; ONLY the arm machinery differs; matched model/version/temperature/max_tokens/seed; blind counterbalanced presentation",
+    "primary_heldout": ["K1", "K3", "K5"],
+    "topology_control": "K2",
+    "revision_control": "K4",
+    "policing_control": "K6",
+    "cases": [
+      {
+        "id": "K1",
+        "question": "same world, different admitted developmental histories",
+        "contrast_arms": ["H_RESPONSIVE", "H_PUNITIVE"],
+        "present_occurrence": "EV21_FEEDBACK_REQUEST_ENCOUNTER",
+        "expected_typed_codes": {"H_RESPONSIVE": ["REQUEST_FEEDBACK"], "H_PUNITIVE": ["SILENCE"]},
+        "typed_discrimination_predicate": "history_to_response_sensitivity",
+        "heldout": true
+      },
+      {
+        "id": "K2",
+        "question": "same nodes, different admitted temporal relational topology",
+        "contrast_arms": ["EV_RELFORM_A_COMPENSATION", "EV_RELFORM_B_CONDITIONAL"],
+        "present_occurrence": "EV3_REQUEST",
+        "expected_typed_codes": {"EV_RELFORM_A_COMPENSATION": ["REQUEST_WITH_REPAIR"], "EV_RELFORM_B_CONDITIONAL": ["REQUEST_WITH_CONDITIONAL_CAUTION"]},
+        "typed_discrimination_predicate": "topology_to_route_sensitivity",
+        "heldout": true
+      },
+      {
+        "id": "K3",
+        "question": "inaccessible early residue, wrong/absent self-explanation",
+        "contrast_arms": ["TRACE_ACTIVE", "TRACE_ABSENT", "RETAINED_INACCESSIBLE"],
+        "present_occurrence": "EV_ADULT_CONFLICT_RECALL_DEMAND",
+        "expected_typed_codes": {"TRACE_ACTIVE": ["HEIGHTENED_GUARD"], "TRACE_ABSENT": ["NEUTRAL_RESPONSE"], "RETAINED_INACCESSIBLE": ["HEIGHTENED_GUARD"]},
+        "typed_discrimination_predicate": "inaccessible_trace_recruits_without_origin_disclosure",
+        "trace_firewall_required": true,
+        "heldout": true
+      },
+      {
+        "id": "K4",
+        "question": "corrective recurrence without obligatory healing",
+        "contrast_arms": ["CORRECTIVE_CONTEXT", "RECURRENCE_SAME_AUTHORITY", "WEAK_COUNTEREXAMPLE"],
+        "present_occurrence": "EV_LATER_PEER_OR_AUTHORITY_EVENT",
+        "expected_typed_codes": {"CORRECTIVE_CONTEXT": ["NARROWED_CONSULT"], "RECURRENCE_SAME_AUTHORITY": ["REPEATED_QUESTION"], "WEAK_COUNTEREXAMPLE": ["NO_ACTION"]},
+        "typed_discrimination_predicate": "revision_without_prior_rewrite",
+        "heldout": true
+      },
+      {
+        "id": "K5",
+        "question": "recognition / social reality conflict",
+        "contrast_arms": ["WITNESS_REGISTRAR", "WITNESS_SUPERVISOR", "WITNESS_PEER"],
+        "present_occurrence": "EV_EVALUATION_EXCHANGE",
+        "expected_typed_codes": {"WITNESS_REGISTRAR": ["ACCEPT_CERTIFICATE"], "WITNESS_SUPERVISOR": ["NO_STANDING_CHANGE_ACTION"], "WITNESS_PEER": ["NO_STANDING_CHANGE_ACTION"]},
+        "typed_discrimination_predicate": "objective_standing_only_on_ratification_and_belief_not_automatic",
+        "standing_separation_required": true,
+        "heldout": true
+      },
+      {
+        "id": "K6",
+        "question": "internalization -> outward discipline",
+        "contrast_arms": ["PRACTICE_AND_CAPACITY", "PRACTICE_NO_CAPACITY", "CATEGORY_ONLY"],
+        "present_occurrence": "EV_PROCEDURE_VIOLATION_OBSERVED",
+        "expected_typed_codes": {"PRACTICE_AND_CAPACITY": ["POLICING_CANDIDATE"], "PRACTICE_NO_CAPACITY": ["NO_SANCTION"], "CATEGORY_ONLY": ["NO_SANCTION"]},
+        "typed_discrimination_predicate": "practice_and_capacity_both_required_no_category_direct_edge",
+        "heldout": true
+      }
+    ],
+    "heldout_lock": "expected_typed_codes are the ONLY scoring truth; they are frozen here and must not be edited after any behavioral capture"
+  },
+
+  "pretyped_blind_scoring": {
+    "principle": "scoring is on TYPED ACTION CODES, never prose/surface/style",
+    "elicitation": {
+      "primary": "typed response menu offered to the model; model selects exactly one code per trial; menu order counterbalanced",
+      "secondary_validation": "free-text response arm; coded to typed codes by a scorer that never sees arm labels or expected codes; disagreement with menu arm reported as ELICITATION_DIVERGENCE"
+    },
+    "code_universe": ["REQUEST_FEEDBACK", "SILENCE", "REQUEST_WITH_REPAIR", "REQUEST_WITH_CONDITIONAL_CAUTION", "HEIGHTENED_GUARD", "NEUTRAL_RESPONSE", "NARROWED_CONSULT", "REPEATED_QUESTION", "NO_ACTION", "ACCEPT_CERTIFICATE", "NO_STANDING_CHANGE_ACTION", "POLICING_CANDIDATE", "NO_SANCTION", "OTHER_UNSCORABLE"],
+    "scorer_inputs_restricted_to": ["trial_id", "counterbalance_code", "selected_typed_code"],
+    "scorer_blinded_from": ["arm_label", "history_contrast_label", "expected_codes", "model_identity", "prose"],
+    "dual_scorer_agreement_required": true,
+    "prose_policy": "prose captured for audit only; any scoring that reads prose is INVALID; prose never scored",
+    "scoring_correctness": "fraction of paired seeds whose selected code matches the frozen expected_typed_codes entry; per K per arm per comparator"
+  },
+
+  "blind_counterbalanced_presentation": {
+    "unit": "trial packet",
+    "packet_contents": ["world_snapshot", "admitted_history", "allowed_actor_info_packet", "present_occurrence", "typed_menu"],
+    "identical_across_arms": ["world_snapshot", "admitted_history", "allowed_actor_info_packet", "present_occurrence"],
+    "varies_across_arms": ["internal machinery only (A / B_admissible / C_admissible)"],
+    "counterbalance": {
+      "menu_order_seed": "sha256(trial_id + presentation_code)",
+      "presentation_code_assignment": "deterministic permutation of arm labels per block; scorer sees only counterbalance_code",
+      "block_design": "each K x contrast x seed block presents all arms; order rotated",
+      "position_bias_check": "order-null (see nulls)"
+    }
+  },
+
+  "firewalls": {
+    "accessible_trace_firewall": "K3 actor-visible packet MUST NOT contain hidden origin content; only NON_DISCLOSABLE_ORIGIN markers; hidden-origin injection into evaluator-only metadata must leave actor-safe payload byte-identical",
+    "objective_standing_separation": "K5 objective_public_standing_effects change only via admitted ratification owner effect; actor belief state never auto-changes from witness power; belief recorded as testimony, never adjudicated as truth",
+    "no_extra_latent_psychology_owners": "no new durable psychology store may be introduced by any comparator arm; B_admissible is display-only; C_admissible is cache-only",
+    "event_custody": "every packet element references admitted events only; unadmitted draft/rejected event = trial INVALID with typed hold code"
+  },
+
+  "matched_budgets": {
+    "model_and_version": "PINNED_BY_GRANT_BEFORE_FIRST_CALL",
+    "temperature": 0.0,
+    "max_tokens": 256,
+    "seed": "sha256(trial_id) lower 63 bits",
+    "calls_per_trial": 1,
+    "same_budget_all_arms": true,
+    "budget_falsifier": "if any arm's median completion tokens differs by >25% under identical max_tokens, report BUDGET_ASYMMETRY and treat cross-arm comparison as qualified"
+  },
+
+  "experimental_nulls_ex_ante": [
+    {"id": "N1_PARAPHRASE", "null": "paraphrased world/history text (semantically identical) must not change typed code distribution", "fail_action": "PARAPHRASE_SENSITIVE_HOLD"},
+    {"id": "N2_LABEL", "null": "shuffled actor/place names must not change typed codes", "fail_action": "LABEL_SENSITIVE_HOLD"},
+    {"id": "N3_ORDER", "null": "counterbalanced menu order must not change typed code distribution (position bias)", "fail_action": "ORDER_BIAS_HOLD"},
+    {"id": "N4_SURFACE", "null": "prose style variation in the packet must not change typed codes", "fail_action": "SURFACE_SENSITIVE_HOLD"},
+    {"id": "N5_TRACE_FIREWALL", "null": "hidden-origin content in evaluator metadata never appears in actor-visible output", "fail_action": "TRACE_FIREWALL_BREACH_HARD_FAILURE"},
+    {"id": "N6_NO_PROSE_SCORING", "null": "scorer fed only typed codes reproduces scorer fed full receipts", "fail_action": "SCORER_INTEGRITY_FAILURE"},
+    {"id": "N7_BUDGET", "null": "halved max_tokens must not change typed codes", "fail_action": "BUDGET_FRAGILE_REPORT"}
+  ],
+
+  "retry_policy_ex_ante": {
+    "primary_call_count_per_trial": 1,
+    "transport_failure_retry": 1,
+    "retry_body": "byte-identical request body",
+    "consecutive_transport_failure_stop": 3,
+    "re_roll_on_unsatisfying_answer": "FORBIDDEN",
+    "post_hoc_trial_exclusion": "FORBIDDEN except predeclared transport holds",
+    "unreported_redraws": 0
+  },
+
+  "effect_uncertainty_plan": {
+    "unit": "paired seeds within K x contrast x arm",
+    "primary_statistic": "typed correctness fraction per arm per K",
+    "paired_comparison": "B_admissible minus A and C_admissible minus A on typed correctness",
+    "equivalence_margin": "±5 percentage points; without prospective power the result is INDETERMINATE, never EQUIVALENT (LAB1 discipline preserved)",
+    "promotion_screening_threshold": "+10 percentage points with paired interval excluding zero",
+    "no_population_claim": "any behavioral result is a claim about the named pinned model under this protocol ONLY; never a human/population calibration"
+  },
+
+  "seeds": ["S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12"],
+  "k_contrasts_total": 16,
+  "arms_compared": ["A", "B_admissible", "C_admissible"],
+  "planned_trials_if_granted": {"computation": "6K x 16 contrast-arm cells x 3 arms x 12 seeds", "note": "exact cell count fixed by packets.py manifest; budget precommitted per model_call_gate.per_trial_call_budget"},
+
+  "sourcefree_scope_executable_now": [
+    "independent machine-level replication of LAB1 verdict (preserve, do not relabel)",
+    "matched held-out packet construction and hash freeze",
+    "blind counterbalanced presentation machinery",
+    "pre-typed dual-scorer machinery with prose exclusion",
+    "packet-level nulls (paraphrase/label/order/surface invariance of packet generator)",
+    "trace firewall and standing separation invariants",
+    "harness dry-run with clearly labelled deterministic fixture responder (NOT behavioral evidence)"
+  ],
+
+  "claim_ceiling": "source-free replication + frozen behavioral protocol + MODEL_BEHAVIORAL_HOLD; no behavioral PASS without a named pinned model under a filled grant; no adoption; no calibration; no actor issuance"
+}

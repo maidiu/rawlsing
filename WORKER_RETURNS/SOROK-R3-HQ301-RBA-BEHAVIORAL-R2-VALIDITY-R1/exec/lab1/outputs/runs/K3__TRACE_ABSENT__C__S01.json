@@ -1,0 +1,242 @@
+{
+  "actor_claim_permission_refs": [],
+  "actor_safe_projection": {
+    "beliefs": [],
+    "claim_permissions": [],
+    "hidden_origin_refs": [],
+    "invalid_and_hold_codes": [],
+    "memory_view": [
+      {
+        "key": "EPISODIC_EV7_NEUTRAL",
+        "kind": "EPISODIC",
+        "origin": "NON_DISCLOSABLE_ORIGIN",
+        "recall_granted": true
+      }
+    ],
+    "present_event_id": "EV22_LATER_SHIFT_REQUEST",
+    "present_reception": {
+      "act": "SHIFT_ASSIGNMENT",
+      "content": "REASSIGNMENT_PROPOSAL"
+    },
+    "schema": "LAB_ACTOR_SAFE_PROJECTION@1",
+    "selected_route": "NEUTRAL_RESPONSE",
+    "uptake_refs": [
+      {
+        "receivable": {
+          "act": "SHIFT_ASSIGNMENT",
+          "content": "REASSIGNMENT_PROPOSAL"
+        },
+        "ref": "UPTAKE:EV22_LATER_SHIFT_REQUEST"
+      }
+    ]
+  },
+  "admitted_event_hashes": [
+    "893bc3bbc1e52af13c282bcd58430c0f10bf2b3b739f1d0fc20c7361f67d5174"
+  ],
+  "arm": "TRACE_ABSENT",
+  "authorized_effects": [],
+  "baseline": "C",
+  "case_id": "K3",
+  "committed_effect_receipts": [
+    {
+      "effect_id": "EFF_K3_N_1",
+      "effect_kind": "EPISODIC_ACCESS_SET",
+      "owner": "ADP016",
+      "owner_state_after_hash": "78ee06437b65ea6cd42f882835918b20b42c3c3030f147a06ca5dd157b048e5c",
+      "owner_state_before_hash": "de5611a821625aaf10f6788301964d9c1c04ed4113e6574d790cf33d6d9055c0",
+      "parent_event_refs": [
+        "EV7_NEUTRAL_COUNTERFACT"
+      ],
+      "target_key": "EPISODIC_EV7_NEUTRAL"
+    }
+  ],
+  "full_replay_digest": "2ed55267e750c5d00635a64e5462c0472dc2a2fb06b981c5c84714c12f067d96",
+  "invalid_and_hold_codes": [],
+  "lab_extension": {
+    "candidate_routes": [
+      {
+        "cost_rank": 1,
+        "gate_code": null,
+        "goal_match": [],
+        "permitted": true,
+        "route_id": "HEIGHTENED_GUARD",
+        "support": [],
+        "support_count": 0
+      },
+      {
+        "cost_rank": 0,
+        "gate_code": null,
+        "goal_match": [],
+        "permitted": true,
+        "route_id": "NEUTRAL_RESPONSE",
+        "support": [],
+        "support_count": 0
+      }
+    ],
+    "causal_parent_refs": [
+      "EV7_NEUTRAL_COUNTERFACT"
+    ],
+    "cold_replay": {
+      "digest_first": "2ed55267e750c5d00635a64e5462c0472dc2a2fb06b981c5c84714c12f067d96",
+      "digest_second": "2ed55267e750c5d00635a64e5462c0472dc2a2fb06b981c5c84714c12f067d96",
+      "identical": true,
+      "state_hash_first": "78ee06437b65ea6cd42f882835918b20b42c3c3030f147a06ca5dd157b048e5c",
+      "state_hash_second": "78ee06437b65ea6cd42f882835918b20b42c3c3030f147a06ca5dd157b048e5c"
+    },
+    "evaluator_metadata": {
+      "event_local_conation": {
+        "direction_from_strivings": [],
+        "event_id": "EV22_LATER_SHIFT_REQUEST",
+        "persistence": "EVENT_LOCAL_ONLY__NOT_PERSISTED__NOT_EFFECT_PARENT",
+        "pressure_conflict": {},
+        "route_configuration": [
+          {
+            "cost_label": "LOW_TIME",
+            "cost_rank": 1,
+            "desired_end_match": [],
+            "route_id": "HEIGHTENED_GUARD"
+          },
+          {
+            "cost_label": "NONE",
+            "cost_rank": 0,
+            "desired_end_match": [],
+            "route_id": "NEUTRAL_RESPONSE"
+          }
+        ],
+        "witness_stakes": null
+      },
+      "full_causal_parent_refs": [
+        "EV7_NEUTRAL_COUNTERFACT"
+      ],
+      "hidden_causal_origin": null,
+      "history_event_ids": [
+        "EV7_NEUTRAL_COUNTERFACT"
+      ],
+      "recruitment_refs": [
+        {
+          "match_kind": "episodic",
+          "matched_key": "EPISODIC_EV7_NEUTRAL",
+          "parent_event_refs": [
+            "EV7_NEUTRAL_COUNTERFACT"
+          ],
+          "stream": "ADP016"
+        }
+      ],
+      "relation_view": null,
+      "schema": "LAB_EVALUATOR_METADATA@1",
+      "trace_records": []
+    },
+    "event_local_conation": {
+      "direction_from_strivings": [],
+      "event_id": "EV22_LATER_SHIFT_REQUEST",
+      "persistence": "EVENT_LOCAL_ONLY__NOT_PERSISTED__NOT_EFFECT_PARENT",
+      "pressure_conflict": {},
+      "route_configuration": [
+        {
+          "cost_label": "LOW_TIME",
+          "cost_rank": 1,
+          "desired_end_match": [],
+          "route_id": "HEIGHTENED_GUARD"
+        },
+        {
+          "cost_label": "NONE",
+          "cost_rank": 0,
+          "desired_end_match": [],
+          "route_id": "NEUTRAL_RESPONSE"
+        }
+      ],
+      "witness_stakes": null
+    },
+    "history_effect_receipts": [
+      {
+        "effect_id": "EFF_K3_N_1",
+        "effect_kind": "EPISODIC_ACCESS_SET",
+        "owner": "ADP016",
+        "owner_state_after_hash": "78ee06437b65ea6cd42f882835918b20b42c3c3030f147a06ca5dd157b048e5c",
+        "owner_state_before_hash": "de5611a821625aaf10f6788301964d9c1c04ed4113e6574d790cf33d6d9055c0",
+        "parent_event_refs": [
+          "EV7_NEUTRAL_COUNTERFACT"
+        ],
+        "target_key": "EPISODIC_EV7_NEUTRAL"
+      }
+    ],
+    "position_receipt": "POS_SYNTH_01",
+    "present_effect_receipts": [],
+    "present_event_id": "EV22_LATER_SHIFT_REQUEST",
+    "public_standing": "UNCERTIFIED",
+    "relation_index_cost": {
+      "edge_lookups": 1,
+      "events_scanned": 0,
+      "mode": "C_TYPED_RELATION_INDEX"
+    },
+    "relation_view": null,
+    "sanction_capacity": "cannot fire supervisor; can decline optional shift",
+    "selected_not_mandatory": false,
+    "selected_route": "NEUTRAL_RESPONSE",
+    "trace_records": []
+  },
+  "latency_ms": 0,
+  "memory_access_and_trace_refs": [
+    {
+      "access_state": "RECALLABLE",
+      "key": "EPISODIC_EV7_NEUTRAL",
+      "kind": "EPISODIC"
+    }
+  ],
+  "model_call_count": 0,
+  "model_version": "MODEL_BEHAVIORAL_COMPARISON_HOLD__NO_PINNED_MODEL_SURFACE",
+  "objective_public_standing_effects": [],
+  "owner_state_after_hash": "78ee06437b65ea6cd42f882835918b20b42c3c3030f147a06ca5dd157b048e5c",
+  "owner_state_before_hash": "78ee06437b65ea6cd42f882835918b20b42c3c3030f147a06ca5dd157b048e5c",
+  "present_action_and_material_effects": [],
+  "proposed_effects": [],
+  "prose_optional": "MACHINE_FIRST__NO_PROSE_SCORED",
+  "read_evidence_ref_list": [
+    "EV22_LATER_SHIFT_REQUEST",
+    "EV7_NEUTRAL_COUNTERFACT",
+    "W_PORT_TOWN_1998_TEST"
+  ],
+  "receivability_refs": [
+    {
+      "feature": "act",
+      "ref": "RECV:EV22_LATER_SHIFT_REQUEST:act",
+      "value": "SHIFT_ASSIGNMENT"
+    },
+    {
+      "feature": "content",
+      "ref": "RECV:EV22_LATER_SHIFT_REQUEST:content",
+      "value": "REASSIGNMENT_PROPOSAL"
+    }
+  ],
+  "recruitment_refs": [
+    {
+      "match_kind": "episodic",
+      "matched_key": "EPISODIC_EV7_NEUTRAL",
+      "parent_event_refs": [
+        "EV7_NEUTRAL_COUNTERFACT"
+      ],
+      "stream": "ADP016"
+    }
+  ],
+  "retrieval_token_count": 447,
+  "seed": "S01",
+  "transition_rule_ids": [
+    "T0_WORLD_CONTEXT_GATE",
+    "T1_RECEIVABILITY",
+    "T2_SITUATED_RECRUITMENT",
+    "T3_EVENT_LOCAL_CONATION",
+    "T5_CORRECTIVE_REINTERPRETATION",
+    "T6_NONDECLARATIVE_TRACE",
+    "T8_TYPED_TOPOLOGY_OPTION"
+  ],
+  "uptake_refs": [
+    {
+      "receivable": {
+        "act": "SHIFT_ASSIGNMENT",
+        "content": "REASSIGNMENT_PROPOSAL"
+      },
+      "ref": "UPTAKE:EV22_LATER_SHIFT_REQUEST"
+    }
+  ],
+  "world_receipt_hash": "39369d7e6e66cb5280fb07a98adec215839e0c48dbee810a06109a30cafee37d"
+}
