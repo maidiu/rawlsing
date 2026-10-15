@@ -1,0 +1,124 @@
+{
+  "schema": "WG0I_ACTUAL_EXECUTION_RECEIPT_R1",
+  "verdict": "RED_FOR_SOURCEFREE_WG0P_CANDIDATE__FULL_ACCEPTED_OWNER_HOLD",
+  "host": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "git": "2.47.3",
+    "cwd": "/mnt/data/wg0i_court",
+    "exact_candidate_import_file": "/mnt/data/wg0i_court/wg0p_executable_workload.py",
+    "exact_candidate_blob": "c88182bed5c521a05a462778b76ffd40cf87a248",
+    "hostile_test_blob": "ed41a46c9300dcad2b8128020368b744f3093807",
+    "github_git_remote": "DNS_FAILURE_COULD_NOT_RESOLVE_GITHUB_COM",
+    "connector_exact_source_reads": "SUCCESS"
+  },
+  "import_grade": {
+    "candidate_original_exact_bytes": true,
+    "real_pre553_batch_runner_import": false,
+    "real_pre553_empirical_objects_import": false,
+    "real_pre553_c11_repository_import": false,
+    "dependency_injection": "EXPLICIT UNQUALIFIED TEST_ONLY STUBS for ExactRef, BatchManifest, BatchUnitSpec, ExecutionOutcome, C11Repository; BatchExecutionRunner stub raises NOT_QUALIFIED_ACCEPTED_OWNER_RUNTIME",
+    "sourcefree_candidates_actually_executed": true,
+    "original_WG0P_author_14_independently_executed": false,
+    "real_batch_owner_executed": false,
+    "real_I03_I05_executed": false
+  },
+  "run": {
+    "command": "cd /mnt/data/wg0i_court && python -m pytest -q test_wg0i_hostiles.py --junitxml=wg0i_hostiles.junit.xml > wg0i_hostiles.stdout 2> wg0i_hostiles.stderr",
+    "exit_code": 1,
+    "tests": 20,
+    "passed": 5,
+    "failed": 15,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 0.17,
+    "stdout_summary": ".....FFFFFFFFFFFFFFF [100%] / 15 failed, 5 passed in 0.17s",
+    "stderr_bytes": 0,
+    "junit_local_path": "/mnt/data/wg0i_court/wg0i_hostiles.junit.xml",
+    "junit_sha256": "0d4f0fe5b53e1fef98545df1ab557e6b04c08b1dbc5004e31b8cfd54abda2b79",
+    "junit_executed_generated_locally": true,
+    "junit_uploaded_to_repository": false
+  },
+  "positive_controls": [
+    "exact sourcefree five-item count: 3 marginal PRODUCED, 2 marginal HELD, 10 conditional INADMISSIBLE, 0 PRODUCED conditionals",
+    "sourcefree plan has 3 marginals with built-in object() C11 placeholder",
+    "exact artificial 1/2 fallback occurs",
+    "synthetic 0/16 and 1/16 result refs occur",
+    "post-freeze add_item returns FRONTIER_FROZEN"
+  ],
+  "independent_red_tests": [
+    [
+      "missing_operation_payload_must_fail_closed",
+      "no refusal; fallback 1/2"
+    ],
+    [
+      "invalid_negative_observation_must_fail_closed",
+      "negative numerator becomes Fraction result"
+    ],
+    [
+      "no_c11_release_without_validated_c11logicalrelease",
+      "object() inserted into internal C11 _by_ref"
+    ],
+    [
+      "no_condition_without_joined_respondent_risk_set",
+      "same respondent-grain + source + wave falsely sufficient for conditioning"
+    ],
+    [
+      "unknown_source_rights_must_hold",
+      "WITHHELD treated PRODUCED"
+    ],
+    [
+      "arbitrary_grant_token_must_not_be_permission",
+      "NO_SOURCE_ISSUER_OR_LICENSE treated PRODUCED"
+    ],
+    [
+      "freeze_must_bind_original_native_options",
+      "options mutation yields same frontier digest"
+    ],
+    [
+      "freeze_must_bind_source_permission_status",
+      "WITHDRAWN mutation yields same frontier digest"
+    ],
+    [
+      "withdrawn_conditioning_pair_must_retained_as_held",
+      "eligible-given-withdrawn pair absent"
+    ],
+    [
+      "routed_unknown_pair_must_retain_as_held",
+      "eligible-given-routed held pair absent"
+    ],
+    [
+      "conflicting_source_same_canonical_identity_not_silently_dropped",
+      "different carrier/content collapses to DUPLICATE_IDENTITY"
+    ],
+    [
+      "duplicate_op_id_with_conflicting_semantics_refused",
+      "op ID conflict silently overwrites plan.units_by_op (test-only BatchManifest)"
+    ],
+    [
+      "no_drop_full_frontier_in_execution_plan",
+      "plan has no frozen held/inadmissible frontier receipt ledger"
+    ],
+    [
+      "original_native_category_mutation_propagates_source_value",
+      "changed original category options leave unit reference unchanged under test-only identity"
+    ],
+    [
+      "original_publisher_custody_hold_must_block_result",
+      "executable plan carries no signed source-use grant"
+    ]
+  ],
+  "limitation": "These 15 failed assertions are SOURCEFREE_WG0P candidate checks under declared substitute dependencies. Do NOT report them as proof of 15 failures of accepted PRE553 BatchExecutionRunner. Accepted source read shows runner itself explicitly sets populated_data_execution_claim=False.",
+  "preserved_claims": {
+    "author_14_tests": "14 PASS reported by author; independently NOT_EXECUTED with exact accepted-owner closure",
+    "native_fixtures": 5,
+    "manifest_batch_units": 3,
+    "original_native_respondent_items_read": 0,
+    "original_estimates_computed": 0,
+    "issued_permissions": 0,
+    "all35": false,
+    "N11": false,
+    "N12": false,
+    "V3": false
+  }
+}
