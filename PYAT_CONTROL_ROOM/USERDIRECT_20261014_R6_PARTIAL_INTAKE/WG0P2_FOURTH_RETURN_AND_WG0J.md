@@ -1,0 +1,19 @@
+# R6 incremental intake — WG0P2 fourth R5 return, review dispatched
+
+**Checked on 2026-10-14 local.** The prior three-worker R6 intake at `ba5d61912e84fdd4fe004a11b22499799be1c21a` remains as frozen earlier time-slice; this file updates it to **four of four R5 workers returned**. New R6 assignments SC0J, T8F3, D2P3 checked separately and still at sealed startups `72406a71055854070f46703ce79d57c6403d3222`, `8079f69778eb4a2e6f30b246e3ec445dc161ae15`, `d6a184ed0f430cd008163c41756f032f7d79d292`. No worker sessions were started by this intake.
+
+## Actual returned branch
+
+**WG0P2** `agent/userdirect-pyat-20261014-r5-wg0p2-source-true-workload-repair-r1@56098540bd36f22aef66db24913722aec808e3e9` is remote verified (sealed `0d551d36ff19dc9806e0ad490ff33a1e4c25e381`; ahead 1, behind 0). Nine added files, all in exclusively assigned `WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-WG0P2-WORKLOAD-PRODUCTIVE-REPAIR-R1/`. Author implementation Git blob `repro/wg0p2_workload.py`; exact tests Git blob `d25863a32ce88edecc65db08257a78c25deb4b67`; committed pytest JUnit Git blob `af3f1208a96ed6d134c3f02a56fcf94e9f709e28` with actual XML header `tests=29 errors=0 failures=0 skipped=0`. Those are **author-executed**, not a new independent reviewer test.
+
+The author code calls accepted `ingest_c11_source_release`, accepted `execute_empirical_query`, and `BatchExecutionRunner` rather than fake C11 `_by_ref` occupancy or caller-provided fractions. Three sourcefree C11 release records reported validated; 3 PRODUCED marginals complete, ordinary values from synthetic respondent fixtures and household multiresponse indicators, 25 total classified opportunities, missing-result refusal, zero and minority preserved. Same-grain conditionals HELD without joint evidence, a **separate** real I03 joint predicate proof is reported; no qualified frozen conditional is actually produced in the 25-op batch. No I05 or full Route B execution or original survey source/C11 model grant.
+
+**Ledger reconciliation defect to independently adjudicate:** In `01_FULL_OPPORTUNITY_AND_DISPOSITION_LEDGER.json`, top-level `counts` says `inadmissible=10`, `held=16`, `produced=3`, `total=25`; 10+16+3=29. Its own item/op list and tests support 3 PRODUCED marginals, 2 HELD marginals, 14 HELD conditionals and 6 INADMISSIBLE conditionals = exactly 25. The top-level 10 is inconsistent with its operation list; do not quietly correct or claim no-drop ledger accepted.
+
+Other independent concerns to test: source_issuer_grant is synthetic FIXTURE authority, no real signed source; one revocation test rebuilds a new plan and retains old receipts but may not prove read-time invalidation in an existing historical consumer; formal batch produces zero conditional jobs despite a separate standalone conditional demonstration; source/native item inventory derives from five synthetic items; accepted BatchSummary marks `populated_data_execution_claim=False`. All genuine original-source, all35 1,890, 101 classes, N11/N12/V3 limits remain.
+
+## Next exact review
+
+Independent **WG0J**, Codex GPT-6.1 Sol Medium max, commission `WORKER_COMMISSIONS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/00_COMMISSION.md` sealed at `agent/userdirect-pyat-20261014-r6-wg0j-independent-workload-court-r1@328fd01473f50872e77d5325936713c2946609c1`. Challenge all 15 earlier WG0I requirements without adapting defects away; independently rerun actual pinned C11/I03/batch and original-native risk/no-drop, reconcile ledger, verify raw row-to-value and cold/revoke behavior. Result only sourcefree **ACCEPT/RED/HOLD** with independent test evidence, not science or model issuer/adoption. No restart of completed WG0P2. Existing R6 three successors remain open unchanged.
+
+**Authority:** user-direct documentary banking only, not Pyat/Sorok HQ accession, original source authority, real sampling wave E, N11/N12 or V3.
