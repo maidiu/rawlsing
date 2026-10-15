@@ -1,0 +1,47 @@
+{
+  "commission_id": "PYAT-USERDIRECT-20261014-R2-WG0P-EXECUTABLE-WORKLOAD-R1",
+  "branch": "agent/userdirect-pyat-20261014-r2-wg0p-executable-workload-r1",
+  "sealed_startup": "b183146c52b91bf5dc88d75ada034be097f0b20f",
+  "predecessor_wg0": "5e11d186a5ccd74faa13687adafda3942834a475",
+  "independent_oracle": {
+    "items": 5,
+    "kinds": ["ORDINAL", "MULTIPLE_RESPONSE", "ROUTED"],
+    "units": ["respondent", "household"],
+    "builder_match": "EXACT_SET_EQUALITY_WITH_REASONS"
+  },
+  "wg0_hostiles": {
+    "produced_label_not_result": "PASS",
+    "self_oracle_not_coverage": "PASS",
+    "cross_wave_inadmissible": "PASS",
+    "cross_unit_inadmissible": "PASS",
+    "routed_no_evidence_held": "PASS",
+    "withdrawn_held": "PASS",
+    "duplicate_identity_single": "PASS"
+  },
+  "owner_imports": {
+    "pre553_batch_runner": {
+      "file": "rawlsing_next/pre553_batch_runner.py",
+      "git_blob": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829"
+    },
+    "pre553_empirical_objects": {
+      "file": "rawlsing_next/pre553_empirical_objects.py",
+      "git_blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6"
+    },
+    "pre553_c11_repository": {
+      "file": "rawlsing_next/pre553_c11_repository.py",
+      "git_blob": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3"
+    }
+  },
+  "execution": {
+    "runner": "BatchExecutionRunner.run",
+    "coverage": "FULL_MANIFEST_COVERAGE",
+    "receipts_completed": "ALL",
+    "numeric_evidence": "CHANGED_INPUT_CHANGES_OUTPUT__IRRELEVANT_STABLE",
+    "resume": "INCOMPLETE_THEN_FULL",
+    "revoke_stable": true
+  },
+  "test_results": {"exit": 0, "pass": 14, "fail": 0},
+  "no_all35_claim": true,
+  "no_v3": true,
+  "no_canonical_changes": true
+}
