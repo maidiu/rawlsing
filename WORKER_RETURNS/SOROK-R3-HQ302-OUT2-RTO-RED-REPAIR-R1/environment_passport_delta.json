@@ -1,0 +1,98 @@
+{
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "OUT2-302-b3ff83481a34",
+  "epoch_id": "OUT2-302-ISOLATED-R1",
+  "owner_session_alias": "HQ302_OUT2_SINGLE_BROWSER_AGENT",
+  "surface": "BROWSER_CONTAINER",
+  "status": "LIVE_VERIFIED_AT_RUN__RECHECK_ON_NEXT_CHAT",
+  "last_live_probe_at": "2026-10-15T01:37:43.874362+00:00",
+  "runtime_marker_digest": "1365ee595edce1f6a8f2782a040cdfc48cf06fab0f18da184265a417d4283e6d",
+  "probe_command_and_result": {
+    "python": "3.13.5",
+    "pytest": "pytest 9.0.2",
+    "git": "git version 2.47.3",
+    "filesystem": "VERIFIED_WRITABLE",
+    "subprocess_os_exit_79": "VERIFIED",
+    "direct_unauthenticated_git_dns": "UNAVAILABLE__GITHUB_CONNECTOR_USED"
+  },
+  "git_object_store_alias": null,
+  "worktree_alias": null,
+  "branch": "agent/rabochii-sorok-r3-hq302-out2-rto-red-repair-r1",
+  "checkout_base": null,
+  "remote_sealed_startup": "3944ea001a9f946745c2142c223e4d5b856b40d4",
+  "materialized_source_refs": [
+    {
+      "path": "outbox_prototype.py",
+      "git_blob_sha1": "d40f532a2f9c4ee12a7f99f0ef37164fe997518b",
+      "relative_staged_path": "outbox_prototype.py",
+      "imported_module_file": "outbox_prototype.py"
+    },
+    {
+      "path": "test_sr_28_falsifier_court.py",
+      "git_blob_sha1": "a6263f8903f22da2b1cde3999d950328d19c9e21",
+      "relative_staged_path": "test_sr_28_falsifier_court.py",
+      "imported_module_file": null
+    },
+    {
+      "path": "test_rsr_independent.py",
+      "git_blob_sha1": "044b9cb48c2e4e3d825e7a2cbb52bb412d1366d7",
+      "relative_staged_path": "test_rsr_independent.py",
+      "imported_module_file": null
+    },
+    {
+      "path": "test_rto_hostile.py",
+      "git_blob_sha1": "72f4602703928a90f4f4b820201153255ea917b1",
+      "relative_staged_path": "test_rto_hostile.py",
+      "imported_module_file": null
+    }
+  ],
+  "dependency_closure_status": "FULL_SOURCEFREE_ONLY",
+  "covered_test_suites": {
+    "test_sr_28_falsifier_court": {
+      "passed": 27,
+      "failed": 1,
+      "total": 28
+    },
+    "test_rsr_independent": {
+      "passed": 17,
+      "failed": 0,
+      "total": 17
+    },
+    "test_rsr_cold_replay": {
+      "passed": 2,
+      "failed": 0,
+      "total": 2
+    },
+    "test_cold_repair": {
+      "passed": 9,
+      "failed": 0,
+      "total": 9
+    },
+    "test_rto_hostile": {
+      "passed": 56,
+      "failed": 1,
+      "total": 57
+    },
+    "test_out2_cross": {
+      "passed": 24,
+      "failed": 0,
+      "total": 24
+    }
+  },
+  "science_grade": "SOURCEFREE_F2_CANDIDATE_NO_OWNER",
+  "model_provider": "OpenAI GPT-6, user-selected Medium effort; exact runtime selector not independently introspectable",
+  "observed_incremental_cash": null,
+  "observed_quota": null,
+  "privacy_source_grant": "PRIVATE_REPO_PINNED_SOURCEFREE_FIXTURES_ONLY",
+  "independent_review_separation": "HQ_POST_RETURN_I2_PENDING",
+  "assignments_completed": [
+    "HQ302 OUT2 bounded RTO red repairs"
+  ],
+  "next_good_affinity_tags": [
+    "OCCURRENCE",
+    "OUTBOX",
+    "SOURCEFREE_COLD_JOURNAL"
+  ],
+  "staged_state_preservation": "LOCAL_RUNTIME_NOW_ONLY_NOT_GUARANTEED_FUTURE",
+  "retire_or_rebuild_reason": null
+}
