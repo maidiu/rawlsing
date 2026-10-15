@@ -1,0 +1,100 @@
+{
+  "schema": "PYAT_R2_D2C_OFFICIAL_PUBLICATION_BYTE_CUSTODY_AND_EDITION_R1",
+  "date_utc": "2026-10-15 (UTC container date at investigation; 2026-10-14 America/New_York user day)",
+  "commission_head": "a5ef924a1d9f128a70f1b4b3927c73a1c3e9e4a8",
+  "d2i_predecessor": "2653fff57ac59fe2eaeffd24a0611c45f16f3b54",
+  "overall_disposition": "OFFICIAL_PUBLISHER_DOCUMENT_AND_NUMERIC_TABLES_VERIFIED__EXACT_BINARY_BYTE_CUSTODY_HOLD__SOURCE_ISSUER_UNISSUED",
+  "official_bytes_recovered": 0,
+  "raw_official_sha256_count": 0,
+  "official_web_pdf_parsed_count": 2,
+  "sources": [
+    {
+      "packet": "05_GSS_DOCUMENTARY_PACKET.json",
+      "id": "GSS-2021-PHC-V3K",
+      "publisher": "Ghana Statistical Service",
+      "title_exact_cover": "Ghana 2021 Population and Housing Census. General Report Volume 3K. Housing Characteristics",
+      "edition_label_on_cover": "February 2022",
+      "publication_release_date": "2022-02-24",
+      "release_notice_posted": "2022-02-26",
+      "official_url": "https://census2021.statsghana.gov.gh/gssmain/fileUpload/reportthemesub/Volume%203K_Housing%20Characteristics_240222.pdf",
+      "official_notice_url": "https://census2021.statsghana.gov.gh/newspage.php?GSS-completes-release-of-2021-PHC-General-Reports=&readmorenews=MjM0ODgzNjQxMy41MDg1",
+      "edition_identity_evidence": [
+        "official GSS PDF cover February 2022",
+        "GSS official notice says Feb 24 release included Volume 3K",
+        "PDF 86 pages web parser; Table 5.10 printed page 62/PDF zero page 75",
+        "Original filename indicates 240222 but is not an independent archival timestamp"
+      ],
+      "pdf_pages_observed_web": 86,
+      "table": {
+        "number": "5.10",
+        "printed_page": 62,
+        "web_pdf_page_index_zero": 75
+      },
+      "byte_length": null,
+      "sha256": null,
+      "bytes_obtained": false,
+      "document_pdf_metadata": null,
+      "original_edition_sha256": null,
+      "current_official_pdf_sha256": null,
+      "first_issue_vs_current_replacement": "UNKNOWN",
+      "revision_errata_history": "UNVERIFIED_NULL",
+      "http_direct_download_status": null,
+      "http_failure": "DNS_NO_REQUEST_SENT",
+      "note": "Web-extracted text and screenshots were viewed; neither is an official original binary. PDF rendered browser title 'POPULATION OF REGIONS AND DISTRICTS REPORT' is discordant with official cover; treat parser metadata as untrusted, not as an edition revision."
+    },
+    {
+      "packet": "06_NCA_DOCUMENTARY_PACKET.json",
+      "id": "NCA-2021-Q4-V6-I4",
+      "publisher": "National Communications Authority",
+      "title_exact_cover": "Quarterly Statistical Bulletin on Communications in Ghana",
+      "quarter": "Q4 2021",
+      "volume": "6",
+      "issue": "4",
+      "edition_label_on_cover": "Fourth Quarter October - December 2021",
+      "publication_release_date": "2022-07-08",
+      "official_url": "https://nca.org.gh/wp-content/uploads/2022/07/Q4-2021-statistical-Bulletin.pdf",
+      "official_notice_url": "https://nca.org.gh/2022/07/08/quarterly-statistical-bulletin-on-communications-2022-q4/",
+      "edition_identity_evidence": [
+        "NCA official PDF cover Volume 6 Issue 4 Q4 2021",
+        "NCA July 8 2022 release page explicitly says 2021 Q4 and points to same PDF URL",
+        "PDF 36 pages web parser; Table 10 printed page 17/PDF zero page 29",
+        "The notice URL slug includes 2022-q4 but is contradicted by page title/content and PDF cover; do not reinterpret edition"
+      ],
+      "pdf_pages_observed_web": 36,
+      "table": {
+        "number": "10",
+        "printed_page": 17,
+        "web_pdf_page_index_zero": 29
+      },
+      "byte_length": null,
+      "sha256": null,
+      "bytes_obtained": false,
+      "document_pdf_metadata": null,
+      "original_edition_sha256": null,
+      "current_official_pdf_sha256": null,
+      "first_issue_vs_current_replacement": "UNKNOWN",
+      "revision_errata_history": "UNVERIFIED_NULL",
+      "http_direct_download_status": null,
+      "http_failure": "DNS_NO_REQUEST_SENT",
+      "nca_screenshot": "CACHE_MISS; TEXT_OF_OFFICIAL_TABLE_AND_DEFINITION_VERIFIED",
+      "note": "No download bytes; NCA source pages and document text accessible through web parser only."
+    }
+  ],
+  "chain_cautions": [
+    "A 2021 census or 2021-Q4 observation does not imply those exact tables were publicly available in 2021.",
+    "Official release notice is proof of intended publication date/identity, not proof that the URL currently serves identical 2022 bytes.",
+    "Publication-specific errata/replacement audit cannot be closed without original archival copies, any corrected issue, and server upload/history records.",
+    "No content_sha256 has been inferred from downloaded textual representation, original file name, table numbers, fixture, Git blob or URL."
+  ],
+  "minimum_historical_publication_asof_nonpooled_pair": "2022-07-08",
+  "source_issuance_proposed": "TWO_SEPARATE_EXTERNAL_PUBLISHED_AGGREGATE_FIELDS_UNISSUED",
+  "license_and_science_issuers": {
+    "GSS": "UNISSUED",
+    "NCA": "UNISSUED",
+    "Rawlsing_N5_N6": "UNISSUED",
+    "EE13_N7": "UNISSUED",
+    "N9_OC05": "UNISSUED"
+  },
+  "original_survey_microdata_fetched": false,
+  "private_licensee_filing_fetched": false
+}
