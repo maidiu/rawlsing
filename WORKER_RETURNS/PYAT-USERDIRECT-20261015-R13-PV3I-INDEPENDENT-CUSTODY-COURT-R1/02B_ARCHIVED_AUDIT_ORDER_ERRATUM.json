@@ -1,0 +1,55 @@
+{
+  "schema": "PV3I_ARCHIVED_JOURNAL_PROJECTION_AUDIT_ORDER_NORMALIZATION_ERRATUM@1",
+  "previous_report_commit": "934743852ebea05f3fd8f5efd4b0b5e0a3268351",
+  "prior_false_check": "journal_source_ref_identity false because JSON.stringify saw object property insertion order differences: journal refs were serialized as {content_hash,kind,object_id}, original receipt refs as {kind,object_id,content_hash}. No actual ref-field discrepancy.",
+  "correction_method": "Canonically sort object keys recursively; arrays retain scientific sequence; comparison uses complete ref kind/object_id/content_hash",
+  "proof_count": 6,
+  "all_six_canonical_ref_and_journal_identity_pass": true,
+  "per_proof": [
+    {
+      "same_refs": true,
+      "same_manifest": true,
+      "same_unit": true,
+      "same_attempt": true,
+      "same_state": true
+    },
+    {
+      "same_refs": true,
+      "same_manifest": true,
+      "same_unit": true,
+      "same_attempt": true,
+      "same_state": true
+    },
+    {
+      "same_refs": true,
+      "same_manifest": true,
+      "same_unit": true,
+      "same_attempt": true,
+      "same_state": true
+    },
+    {
+      "same_refs": true,
+      "same_manifest": true,
+      "same_unit": true,
+      "same_attempt": true,
+      "same_state": true
+    },
+    {
+      "same_refs": true,
+      "same_manifest": true,
+      "same_unit": true,
+      "same_attempt": true,
+      "same_state": true
+    },
+    {
+      "same_refs": true,
+      "same_manifest": true,
+      "same_unit": true,
+      "same_attempt": true,
+      "same_state": true
+    }
+  ],
+  "prior_14_nonjournal_checks": "all passed",
+  "corrected_full_archived_artifact_court": "15/15 PASS",
+  "qualifier": "Only historical pinned PV3 author-produced JSON byte audit; not independent Python owner execution or independent semantically signed source/issuer proof"
+}
