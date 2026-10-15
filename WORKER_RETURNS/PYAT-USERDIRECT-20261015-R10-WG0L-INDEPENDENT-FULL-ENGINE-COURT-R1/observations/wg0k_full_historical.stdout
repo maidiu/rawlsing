@@ -1,0 +1,82 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.0.2, pluggy-1.6.0 -- /usr/local/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/runtime_root
+collecting ... collected 11 items
+
+WG0K/repro/test_wg0k_full_module_hostiles.py::test_positive_25_frozen_count_unchanged PASSED [  9%]
+WG0K/repro/test_wg0k_full_module_hostiles.py::test_red_equal_count_held_identity_substitution FAILED [ 18%]
+WG0K/repro/test_wg0k_full_module_hostiles.py::test_red_equal_count_changed_reason FAILED [ 27%]
+WG0K/repro/test_wg0k_full_module_hostiles.py::test_red_circular_expected_ops_cannot_be_source_oracle FAILED [ 36%]
+WG0K/repro/test_wg0k_full_module_hostiles.py::test_red_store_alias_cannot_corrupt_immutable_published_fact FAILED [ 45%]
+WG0K/repro/test_wg0k_full_module_hostiles.py::test_red_read_alias_cannot_corrupt_immutable_published_fact FAILED [ 54%]
+WG0K/repro/test_wg0k_full_module_hostiles.py::test_red_snapshot_alias_cannot_corrupt_immutable_published_fact FAILED [ 63%]
+WG0K/repro/test_wg0k_full_module_hostiles.py::test_red_key_cannot_be_rebound_to_different_fact FAILED [ 72%]
+WG0K/repro/test_wg0k_full_module_hostiles.py::test_red_checkpoint_is_not_caller_issued_grant FAILED [ 81%]
+WG0K/repro/test_wg0k_full_module_hostiles.py::test_red_cold_checkpoint_contains_full_batch_receipts FAILED [ 90%]
+WG0K/repro/test_wg0k_full_module_hostiles.py::test_red_positive_conditional_compiles_via_common_builder FAILED [100%]
+
+=================================== FAILURES ===================================
+_______________ test_red_equal_count_held_identity_substitution ________________
+WG0K/repro/test_wg0k_full_module_hostiles.py:53: in test_red_equal_count_held_identity_substitution
+    with pytest.raises(FrontierError):
+E   Failed: DID NOT RAISE <class 'wg0p3_workload.FrontierError'>
+_____________________ test_red_equal_count_changed_reason ______________________
+WG0K/repro/test_wg0k_full_module_hostiles.py:62: in test_red_equal_count_changed_reason
+    with pytest.raises(FrontierError):
+E   Failed: DID NOT RAISE <class 'wg0p3_workload.FrontierError'>
+____________ test_red_circular_expected_ops_cannot_be_source_oracle ____________
+WG0K/repro/test_wg0k_full_module_hostiles.py:70: in test_red_circular_expected_ops_cannot_be_source_oracle
+    with pytest.raises(FrontierError):
+E   Failed: DID NOT RAISE <class 'wg0p3_workload.FrontierError'>
+_________ test_red_store_alias_cannot_corrupt_immutable_published_fact _________
+WG0K/repro/test_wg0k_full_module_hostiles.py:79: in test_red_store_alias_cannot_corrupt_immutable_published_fact
+    assert custody.read("exact-real-fact-ref")["cells"][0]["n"]==2
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WG0P3/repro/wg0p3_workload.py:910: in read
+    raise IdentityError(f"fact hash mismatch for {fact_ref_key}: tampered")
+E   wg0p3_workload.IdentityError: fact hash mismatch for exact-real-fact-ref: tampered
+_________ test_red_read_alias_cannot_corrupt_immutable_published_fact __________
+WG0K/repro/test_wg0k_full_module_hostiles.py:87: in test_red_read_alias_cannot_corrupt_immutable_published_fact
+    assert custody.read("exact-real-fact-ref")["cells"][0]["n"]==2
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WG0P3/repro/wg0p3_workload.py:910: in read
+    raise IdentityError(f"fact hash mismatch for {fact_ref_key}: tampered")
+E   wg0p3_workload.IdentityError: fact hash mismatch for exact-real-fact-ref: tampered
+_______ test_red_snapshot_alias_cannot_corrupt_immutable_published_fact ________
+WG0K/repro/test_wg0k_full_module_hostiles.py:95: in test_red_snapshot_alias_cannot_corrupt_immutable_published_fact
+    assert custody.read("exact-real-fact-ref")["cells"][0]["n"]==2
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+WG0P3/repro/wg0p3_workload.py:910: in read
+    raise IdentityError(f"fact hash mismatch for {fact_ref_key}: tampered")
+E   wg0p3_workload.IdentityError: fact hash mismatch for exact-real-fact-ref: tampered
+_______________ test_red_key_cannot_be_rebound_to_different_fact _______________
+WG0K/repro/test_wg0k_full_module_hostiles.py:101: in test_red_key_cannot_be_rebound_to_different_fact
+    with pytest.raises(IdentityError):
+E   Failed: DID NOT RAISE <class 'wg0p3_workload.IdentityError'>
+________________ test_red_checkpoint_is_not_caller_issued_grant ________________
+WG0K/repro/test_wg0k_full_module_hostiles.py:112: in test_red_checkpoint_is_not_caller_issued_grant
+    assert opened.grant_state=="GRANTED_FIXTURE", "untrusted string was accepted as upgraded permission"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: untrusted string was accepted as upgraded permission
+____________ test_red_cold_checkpoint_contains_full_batch_receipts _____________
+WG0K/repro/test_wg0k_full_module_hostiles.py:119: in test_red_cold_checkpoint_contains_full_batch_receipts
+    assert hasattr(cp,"prior_receipts"), "completed unit name alone cannot replay immutable original UnitExecutionReceipt"
+E   AssertionError: completed unit name alone cannot replay immutable original UnitExecutionReceipt
+__________ test_red_positive_conditional_compiles_via_common_builder ___________
+WG0K/repro/test_wg0k_full_module_hostiles.py:128: in test_red_positive_conditional_compiles_via_common_builder
+    assert hasattr(WorkloadBuilder,"add_joint_risk_authority"), "no ordinary conditional compiler admission API"
+E   AssertionError: no ordinary conditional compiler admission API
+- generated xml file: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r10-wg0l-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/observations/wg0k_full_historical.xml -
+=========================== short test summary info ============================
+FAILED WG0K/repro/test_wg0k_full_module_hostiles.py::test_red_equal_count_held_identity_substitution - Failed: DID NOT RAISE <class 'wg0p3_workload.FrontierError'>
+FAILED WG0K/repro/test_wg0k_full_module_hostiles.py::test_red_equal_count_changed_reason - Failed: DID NOT RAISE <class 'wg0p3_workload.FrontierError'>
+FAILED WG0K/repro/test_wg0k_full_module_hostiles.py::test_red_circular_expected_ops_cannot_be_source_oracle - Failed: DID NOT RAISE <class 'wg0p3_workload.FrontierError'>
+FAILED WG0K/repro/test_wg0k_full_module_hostiles.py::test_red_store_alias_cannot_corrupt_immutable_published_fact - wg0p3_workload.IdentityError: fact hash mismatch for exact-real-fact-ref: tampered
+FAILED WG0K/repro/test_wg0k_full_module_hostiles.py::test_red_read_alias_cannot_corrupt_immutable_published_fact - wg0p3_workload.IdentityError: fact hash mismatch for exact-real-fact-ref: tampered
+FAILED WG0K/repro/test_wg0k_full_module_hostiles.py::test_red_snapshot_alias_cannot_corrupt_immutable_published_fact - wg0p3_workload.IdentityError: fact hash mismatch for exact-real-fact-ref: tampered
+FAILED WG0K/repro/test_wg0k_full_module_hostiles.py::test_red_key_cannot_be_rebound_to_different_fact - Failed: DID NOT RAISE <class 'wg0p3_workload.IdentityError'>
+FAILED WG0K/repro/test_wg0k_full_module_hostiles.py::test_red_checkpoint_is_not_caller_issued_grant - AssertionError: untrusted string was accepted as upgraded permission
+FAILED WG0K/repro/test_wg0k_full_module_hostiles.py::test_red_cold_checkpoint_contains_full_batch_receipts - AssertionError: completed unit name alone cannot replay immutable original UnitExecutionReceipt
+FAILED WG0K/repro/test_wg0k_full_module_hostiles.py::test_red_positive_conditional_compiles_via_common_builder - AssertionError: no ordinary conditional compiler admission API
+========================= 10 failed, 1 passed in 0.28s =========================
