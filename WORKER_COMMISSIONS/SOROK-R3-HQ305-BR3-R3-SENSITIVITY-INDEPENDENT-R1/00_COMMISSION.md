@@ -9,12 +9,16 @@
 **COMMISSION:** `WORKER_COMMISSIONS/SOROK-R3-HQ305-BR3-R3-SENSITIVITY-INDEPENDENT-R1/00_COMMISSION.md`.
 **ALLOWED WRITES ONLY:** `WORKER_RETURNS/SOROK-R3-HQ305-BR3-R3-SENSITIVITY-INDEPENDENT-R1/`.
 
+## USER-SELECTED ROUTING REVISION (2026-10-14)
+
+The initial BR3 commission seal `aa2f2f4b4f90485b19d506aa36186b1a12b25a47` recommended Codex + GPT-6.1 High. HQ now records the user's explicit selection of Muse instead. This is an **editor/model routing change only**, not a change to BL3 frozen oracles, review standards, claim grade or model-use permissions. For NEW launch use the **new** sealed SHA of this amended commission. For an agent already genuinely started from the original seal, do not reset or disturb. One Muse agent executes all review work in the user's actual already-configured editor; no Codex requirement and no inferred DeepSeek-Harness.
+
 ## One model / one editor / full job (binding 00C §3B)
 
-**MODEL:** GPT-6.1 High.
-**EDITOR:** Codex in a separately authorized LOCAL_DOMINANT sparse worktree; the user may explicitly select a different configured editor+qualified model before launch, but the worker must never switch or recruit helpers.
+**MODEL:** Muse Spark — the user's selected, existing Muse model; record the actually exposed version/effort, do not invent a version.
+**EDITOR:** The user's already-configured code editor for Muse Spark, with an authorized LOCAL_DOMINANT independent sparse worktree and real Python/pytest. This model choice does NOT imply Codex, DeepSeek-Harness, or a new editor. The user selects Muse for the full job; no model/editor switching or recruited helper.
 **ACCOUNTABLE AGENT:** ONE agent completes this entire **independent review**, including law/experiment inspection, true sourcefree Python tests, independent adversarial controls, scientific interpretation, documentation, commit, push and direct remote SHA verification. Do NOT delegate mechanical execution to another coding model or suggest a second editor. HQ handles post-return scientific adoption/issuer decisions, not a helper.
-**HOST VERDICT:** LOCAL_DOMINANT; Browser sufficiency SCOPED_ONLY; expected staging HEAVY (100 source/data/evidence files and 75,456 archived mock captures). Codex+GPT-6.1 High is a qualified I2 independent science reviewer with actual local Python capability, not a claim that all phases inherently need the expensive model. Preserve warm object store if verified, but separate prior BL3 author's worktree from reviewer.
+**HOST VERDICT:** LOCAL_DOMINANT; Browser sufficiency SCOPED_ONLY; expected staging HEAVY (100 source/data/evidence files and 75,456 archived mock captures). User-selected Muse in its existing editor is provisionally qualified for this bounded sourcefree I2 review because Muse executed the earlier RBA court (51 R2, 19 hostiles and full deterministic mock review). This is NOT evidence Muse necessarily has the same qualitative scientific judgment as GPT-6.1 High: independently examine statistical/causal and oracle-custody limits, and return a precise REVIEW_HOLD if they cannot be adjudicated. Preserve the verified warm Git store if available, but use a reviewer worktree distinct from BL3 author.
 **FALLBACK:** If current editor/model/import/permissions or actual Python runner unavailable, return exact MISSING_ENVIRONMENT/IMPORT/budget HOLD with completed bounded evidence; do not autonomously change harness or use any experimental model API.
 **COST:** Observe and report exact model/quota telemetry if available, otherwise UNKNOWN. No speculative token-efficiency claims.
 
