@@ -1,0 +1,82 @@
+{
+  "passport_schema": "SOROK_ENVIRONMENT_PASSPORT_DELTA_R1",
+  "environment_id": "out3-478cf812f5d8",
+  "epoch_id": "out3-fresh-isolated-stage",
+  "owner_session_alias": "HQ303_OUT3_SINGLE_REVIEWER",
+  "surface": "BROWSER_CONTAINER",
+  "status": "LIVE_VERIFIED_AT_RETURN_ONLY",
+  "last_live_probe_at": "2026-10-15T06:41:57.009243+00:00",
+  "runtime_marker_digest": "fe812059192144c3c84b24e04b2f5ffb18cd7486cab56f71b4e560fb67c01c09",
+  "python": {
+    "status": "VERIFIED",
+    "version": "3.13.5"
+  },
+  "pytest": {
+    "status": "VERIFIED",
+    "version": "pytest 9.0.2"
+  },
+  "git": {
+    "status": "VERIFIED",
+    "version": "git version 2.47.3"
+  },
+  "filesystem_and_subprocess": "VERIFIED including os._exit(79) cold process",
+  "github_authenticated_connector": "VERIFIED",
+  "private_git_checkout": "UNAVAILABLE_IN_CONTAINER_DNS__AUTHENTICATED_CONNECTOR_USED",
+  "git_object_store_alias": null,
+  "worktree_alias": null,
+  "branch": "agent/reviewer-sorok-r3-hq303-out3-outbox-independent-r1",
+  "exact_checkout_base": "65125e8c64aba28b79e49e64b24b2350f77a2f10",
+  "materialized_source_refs": [
+    {
+      "path": "OUT2_EXECUTED_EVIDENCE.tar.xz",
+      "commit": "b1004a43eb0309af99e1b7ce9d5290df3c07f3cd",
+      "sha256": "812070f33567fbac5ebada32cfa18fdc190e855230f87cc6108bfc4941b5a2f5",
+      "local_relative_staging_path": "stage/",
+      "import_module": "outbox_prototype",
+      "verified_import_module_relative_path": "stage/outbox_prototype.py",
+      "blob_sha1": "d40f532a2f9c4ee12a7f99f0ef37164fe997518b"
+    }
+  ],
+  "dependency_closure_status": "FULL_FOR_SOURCEFREE_137_AND_22_HOSTILES",
+  "source_permission": "SOURCEFREE_ONLY",
+  "covered_test_suites": [
+    {
+      "name": "original",
+      "pass": 135,
+      "red": 2,
+      "skip": 0,
+      "exit": 1
+    },
+    {
+      "name": "new_hostile",
+      "pass": 5,
+      "red": 17,
+      "skip": 0,
+      "exit": 1
+    },
+    {
+      "name": "combined",
+      "pass": 140,
+      "red": 19,
+      "skip": 0,
+      "exit": 1
+    }
+  ],
+  "science_grade": "SOURCEFREE_F2_SINGLE_WRITER_REVIEW_REVISE",
+  "model_provider": "OpenAI",
+  "model": "GPT-6",
+  "effort": "High",
+  "monetary_usage_observed": null,
+  "quota_usage_observed": null,
+  "independent_review_separation": "DIFFERENT_REVIEWER_BRANCH_AND_TEST_BANK",
+  "assignments_completed": [
+    "HQ303_OUT3_INDEPENDENT_COURT"
+  ],
+  "next_good_affinity_tags": [
+    "OCCURRENCE",
+    "OUTBOX",
+    "COLD_JOURNAL"
+  ],
+  "staged_state_preservation": "EPHEMERAL_CONTAINER__NO_CROSS_CONVERSATION_PERSISTENCE_PROMISED",
+  "sensitive_data_present": false
+}
