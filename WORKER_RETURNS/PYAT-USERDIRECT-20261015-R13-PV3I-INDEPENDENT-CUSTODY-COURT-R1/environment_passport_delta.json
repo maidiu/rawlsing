@@ -1,0 +1,54 @@
+{
+  "schema": "PV3I_SOURCEFREE_EXECUTION_ENVIRONMENT_DELTA_R1",
+  "sealed_sha": "a5beb6b542f4689f8ddd757deba79d76b2cfbdf5",
+  "candidate": "5c70c7d347998907c1c8a865f833dad581777a0e",
+  "browser_git_connector": "AVAILABLE; read private repository exact pinned sources, tests, manifests and JUnit successfully",
+  "container_private_git_network": "UNAVAILABLE, git ls-remote HTTPS cannot resolve github.com",
+  "python": "3.13.5",
+  "pytest": "9.0.2",
+  "git": "2.47.3",
+  "working_dir": "/mnt/data/pv3i_court",
+  "accepted_owner_tree_pinned_74_sources_staged": false,
+  "original_PV3_modules_physically_imported": false,
+  "actual_native_owner_imports": [],
+  "actual_selected_PV3_files_directly_executed": [],
+  "executed_courts": [
+    {
+      "source": "test_pv3i_independent_oracle.py",
+      "run": "python -m pytest -q test_pv3i_independent_oracle.py --junitxml=oracle.junit.xml",
+      "pass": 24,
+      "fail": 0,
+      "exit": 0,
+      "junit_sha256": "18cf39f16ac4a2bdd00b7e053fe8bc2cf8e24bc8d9925ee9e192b1d42fd75855"
+    },
+    {
+      "source": "test_pv3i_minimal_oracle.py",
+      "git_blob": "eef0fcc0788baed89f87a26437433b78f29e8bf1",
+      "run": "python -m pytest -q test_pv3i_minimal_oracle.py --junitxml=minimal.junit.xml",
+      "pass": 9,
+      "fail": 0,
+      "exit": 0,
+      "overlaps_24": true,
+      "junit_sha256": "ad73db1b6a772d99459e3e48d24ac652e9732ce10da191717cc93bad8910018f"
+    },
+    {
+      "source": "test_pv3i_policy_excerpt.py",
+      "run": "python -m pytest -q test_pv3i_policy_excerpt.py --junitxml=policy.junit.xml",
+      "pass": 5,
+      "fail": 1,
+      "exit": 1,
+      "grade": "narrow source-extracted policy parser, attack has OS write to trusted owner policy, outside local PV3 threat boundary",
+      "junit_sha256": "13173602014d2252ce1c270a9f1b2d65cbf7c24f242dd1298656b9d257b37410"
+    }
+  ],
+  "archive_audit": "15 canonicalized archived PV3 author artifact assertions PASS; original key-order diagnostic false preserved, see 02A/02B",
+  "local_zip": "/mnt/data/pv3i_execution_evidence.zip",
+  "local_zip_sha256": "03299445d929107ed435b6abace82049f2a3e9fe1f539c7195709804dadbe8b6",
+  "zip_uploaded_as_repo_binary": false,
+  "original_author_JUnits_not_executed_here": "PV2 33, V2K24, PV21, owners111, PV3 new28, PV2I historical 26/22, PV3 adapter47/1",
+  "original_owner_source_issuance": false,
+  "source_microdata_read": false,
+  "unissued_GT2_native_alias": true,
+  "canonical_edited": false,
+  "model_actual_usage_and_effort_telemetry": "UNKNOWN"
+}
