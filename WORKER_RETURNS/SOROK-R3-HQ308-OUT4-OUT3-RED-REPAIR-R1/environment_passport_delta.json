@@ -1,24 +1,70 @@
 {
   "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_DELTA_R1",
+  "environment_id": "OUT4-BROWSER-ISOLATED",
+  "epoch_id": "OUT4-NEW-20261015",
+  "owner_session_alias": "HQ308_OUT4_SINGLE_WORKER",
   "surface": "BROWSER_CONTAINER",
+  "status": "LIVE_VERIFIED_AT_RUN_ONLY_RECHECK_ON_NEW_CHAT",
+  "last_live_probe_at": "2026-10-15T15:45:11.212194+00:00",
+  "runtime_marker_digest": "fe4f003c46f413e4347368166a3f704c49eaad87c48685c37ea379372d1a70b9",
+  "probe_command_and_result": {
+    "python": "3.13.5",
+    "pytest": "pytest 9.0.2",
+    "git": "git version 2.47.3",
+    "filesystem_shell": "VERIFIED",
+    "cold_os_exit_79": "VERIFIED",
+    "github_connector": "VERIFIED_READ_WRITE",
+    "private_git_checkout": "NOT_MOUNTED__AUTHENTICATED_CONNECTOR"
+  },
   "branch": "agent/rabochii-sorok-r3-hq308-out4-out3-red-repair-r1",
-  "start_sha": "b9c43dad31771b97cc1a2a8fffd25fae77bbbe55",
-  "python": "3.13.5 VERIFIED",
-  "pytest": "9.0.2 VERIFIED",
-  "subprocess": "VERIFIED_REAL_OS_EXIT_79",
-  "git": "2.47.3 VERIFIED",
-  "github_authenticated_connector": "VERIFIED_READ_WRITE",
-  "git_checkout": "UNAVAILABLE_DNS",
-  "materialized_source_sha1": "c7bb4169d43c715de7dd113b24d3ce897e37beab",
-  "source_grade": "SOURCEFREE_SINGLE_WRITER_ONLY",
-  "original_137": "135 PASS 2 RED BOTH BEFORE_AFTER",
-  "new_author_29": "29 PASS 0 RED",
-  "original_out3_22": "NOT_EXECUTED",
-  "real_actor_model_calls": 0,
-  "model": "GPT-6 user-dispatched Medium",
-  "actual_effort_telemetry": "UNKNOWN",
-  "cash": "UNKNOWN",
-  "quota": "UNKNOWN",
-  "independent_review": "PENDING_HQ",
-  "status": "CUSTODY_PARTIAL_REMOTE_REPORT"
+  "exact_checkout_base": "b9c43dad31771b97cc1a2a8fffd25fae77bbbe55",
+  "materialized_source_refs": {
+    "outbox_prototype.py": {
+      "git_blob_sha1": "c7bb4169d43c715de7dd113b24d3ce897e37beab",
+      "relative_path": "stage/outbox_prototype.py",
+      "imported_module_file": "stage/outbox_prototype.py"
+    },
+    "original_immutable_tests": {
+      "test_sr_28_falsifier_court.py": "a6263f8903f22da2b1cde3999d950328d19c9e21",
+      "test_rsr_independent.py": "044b9cb48c2e4e3d825e7a2cbb52bb412d1366d7",
+      "rsr_cold_replay.py": "0c8676aaa3ff6605f3fb7a987e29f88d26fafb03",
+      "test_rsr_cold_replay.py": "ad132e7e852d3873597276b51afda86b8296f891",
+      "cold_repair.py": "f62fabb4efb9c0adef54fd2315607761432e058b",
+      "test_cold_repair.py": "7045ae4541c26a275ccb904d1cee6adb93609669",
+      "test_rto_hostile.py": "72f4602703928a90f4f4b820201153255ea917b1",
+      "rto_cold_driver.py": "6202bd40ed18b32e56fe1bb2ba9c07caf27eb517"
+    }
+  },
+  "dependency_closure_status": "FULL_FOR_SOURCEFREE_ORIGINAL_137_PLUS_29_AUTHOR_NEW__PARTIAL_FOR_OUT3_22",
+  "covered_test_suites": {
+    "original_before": {
+      "passed": 135,
+      "red": 2,
+      "exit": 1
+    },
+    "original_after": {
+      "passed": 135,
+      "red": 2,
+      "exit": 1
+    },
+    "new_hostiles": {
+      "passed": 29,
+      "red": 0,
+      "exit": 0
+    },
+    "out3_22": {
+      "status": "NOT_EXECUTED_SOURCE_TRANSPORT_BLOCKER"
+    }
+  },
+  "science_grade": "SOURCEFREE_F2_SINGLE_WRITER_CANDIDATE__UNREVIEWED",
+  "model_provider": "OpenAI",
+  "model": "GPT-6",
+  "effort": "MEDIUM_USER_DISPATCH__ACTUAL_VISIBLE_UNKNOWN",
+  "cash_usage": null,
+  "quota_usage": null,
+  "source_permission": "AUTHORIZED_SOURCEFREE_ONLY",
+  "original_survey_bytes": 0,
+  "actor_model_calls": 0,
+  "independent_review": "HQ_TO_DISPATCH_AFTER_AUTHOR_RETURN",
+  "staged_state_preservation": "EPHEMERAL__RECHECK_NEXT_SESSION"
 }

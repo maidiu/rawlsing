@@ -1,0 +1,89 @@
+{
+  "schema": "HQ308_OUT4_CUSTODY_HASH_MANIFEST_R1",
+  "sealed_startup": "b9c43dad31771b97cc1a2a8fffd25fae77bbbe55",
+  "source_test_hashes": {
+    "outbox_prototype.py": {
+      "git_blob_sha1": "c7bb4169d43c715de7dd113b24d3ce897e37beab",
+      "sha256": "0a090e6e42192bfaf7f7c12d9a72649b84814764cc717ddc806cade3a391dee6",
+      "bytes": 30825
+    },
+    "test_sr_28_falsifier_court.py": {
+      "git_blob_sha1": "a6263f8903f22da2b1cde3999d950328d19c9e21",
+      "sha256": "7d9ec29d29dc95b85c0085cac86a648f0a1fb7e716f2fec81c15caa3314ea709",
+      "bytes": 9513
+    },
+    "test_rsr_independent.py": {
+      "git_blob_sha1": "044b9cb48c2e4e3d825e7a2cbb52bb412d1366d7",
+      "sha256": "51b9fba19153240a3535837230231f96e10f2408e52e701c1546963f5c8cb907",
+      "bytes": 5957
+    },
+    "rsr_cold_replay.py": {
+      "git_blob_sha1": "0c8676aaa3ff6605f3fb7a987e29f88d26fafb03",
+      "sha256": "b3d6eff4681875291a94d5445e776e99851a6915e386d1f60fae6dd331ca0060",
+      "bytes": 2984
+    },
+    "test_rsr_cold_replay.py": {
+      "git_blob_sha1": "ad132e7e852d3873597276b51afda86b8296f891",
+      "sha256": "cd826c78ee2610cdba700f70dc8e96c99642bf114a41f67419f143ca4c8effa0",
+      "bytes": 1253
+    },
+    "cold_repair.py": {
+      "git_blob_sha1": "f62fabb4efb9c0adef54fd2315607761432e058b",
+      "sha256": "989b244328da9558a359f51d04fedf1235a6bcdec614f6e9b0a13d84b01d85af",
+      "bytes": 2927
+    },
+    "test_cold_repair.py": {
+      "git_blob_sha1": "7045ae4541c26a275ccb904d1cee6adb93609669",
+      "sha256": "6cbd4c71d4ae43cfe77209552266c2e77edf78e86ee66cd869f552e53b10e20c",
+      "bytes": 5675
+    },
+    "test_rto_hostile.py": {
+      "git_blob_sha1": "72f4602703928a90f4f4b820201153255ea917b1",
+      "sha256": "ca89bec09b8a903aab8f25f8ea077412491ad7c688171ab9444044335ca56b37",
+      "bytes": 13498
+    },
+    "rto_cold_driver.py": {
+      "git_blob_sha1": "6202bd40ed18b32e56fe1bb2ba9c07caf27eb517",
+      "sha256": "1929953a5fe937fe56fc9635dd00c859b24804a95b69539516deb4f5e974c4cc",
+      "bytes": 1543
+    },
+    "test_out2_cross.py": {
+      "git_blob_sha1": "24ed528829db3895aa5d293aaa35fb1e0005e54b",
+      "sha256": "ab4f4b7eb22982f70767634dd0bf131439ab73b0daee6555feeb703db8275f1a",
+      "bytes": 6456
+    },
+    "out2_cold_driver.py": {
+      "git_blob_sha1": "22d1fe01888f6d48b4d15a93a9dfc5bb64c5c7d3",
+      "sha256": "07a85816bba0e12fb2c90496241149099001a2cc01e35f9f88e1d859ff302cd7",
+      "bytes": 1695
+    },
+    "test_out4_independent_harness.py": {
+      "git_blob_sha1": "337b109885097e5eeb864dddd339c82597258511",
+      "sha256": "def17c8b30426e1f9be5b8c79d1a3bcfcff5d32cda75d9da39528bd7b911bcc5",
+      "bytes": 7281
+    }
+  },
+  "unchanged_blobs": {
+    "test_sr_28_falsifier_court.py": "a6263f8903f22da2b1cde3999d950328d19c9e21",
+    "test_rsr_independent.py": "044b9cb48c2e4e3d825e7a2cbb52bb412d1366d7",
+    "rsr_cold_replay.py": "0c8676aaa3ff6605f3fb7a987e29f88d26fafb03",
+    "test_rsr_cold_replay.py": "ad132e7e852d3873597276b51afda86b8296f891",
+    "cold_repair.py": "f62fabb4efb9c0adef54fd2315607761432e058b",
+    "test_cold_repair.py": "7045ae4541c26a275ccb904d1cee6adb93609669",
+    "test_rto_hostile.py": "72f4602703928a90f4f4b820201153255ea917b1",
+    "rto_cold_driver.py": "6202bd40ed18b32e56fe1bb2ba9c07caf27eb517"
+  },
+  "inbound_author_archive_sha256": "812070f33567fbac5ebada32cfa18fdc190e855230f87cc6108bfc4941b5a2f5",
+  "inbound_independent_review_archive": {
+    "git_blob": "a9c4ee7344526fa335605d76d08def2ac5dcba2a",
+    "sha256": "fc876b665bd9af6328deec86aa66e93ec0eebf9048ca7a5a0d7d0630cd48bddd",
+    "exact_tests_reexecuted": false
+  },
+  "execution_archive": {
+    "git_blob_sha1": "705dd846ec10ff695c6dd3ea5a3ae24f4b902f58",
+    "sha256": "1bf92aae19ca40f6d059f22312ab7b369373efe9f79b94ea69e574a958bbae16",
+    "bytes": 27216
+  },
+  "changed_path_prefix": "WORKER_RETURNS/SOROK-R3-HQ308-OUT4-OUT3-RED-REPAIR-R1/",
+  "grade": "SOURCEFREE_CANDIDATE__PARTIAL_GATE"
+}
