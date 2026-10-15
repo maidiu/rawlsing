@@ -1,0 +1,188 @@
+{
+  "schema": "PYAT_R11_E04I_ACTUAL_EXECUTION_RECEIPTS_AND_OWNER_SEPARATION_R1",
+  "sealed": "ca500dbda08faa1f35fc21502c751e1d0c2d2b83",
+  "candidate": "9c96f201f3530d2dae321201e9a913bb7a61800f",
+  "precommitted_expectations_commit": "836a5af81840ae8d5bb3441e2f8424c2ac9b5a2c",
+  "grade": "INDEPENDENT_PARTIAL_SOURCEFREE_PYTHON_EXECUTION_POSITIVE__FULL_ACCEPTED_OWNER_NOT_EXECUTED",
+  "host": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "git": "2.47.3",
+    "working_directory": "/mnt/data/e04i_court",
+    "private_git_cli": "git ls-remote https://github.com/maidiu/rawlsing.git HEAD -> Could not resolve host github.com",
+    "live_github_connector": "Read exact private GitHub candidate and E04 author binary-text source files and manifests; direct private source file text not mounted through Git connector into container Python",
+    "real_source_tree": "NOT_AVAILABLE_AS_AUTHORIZED_EXECUTABLE_IMPORT_CLOSURE",
+    "tool_execution": "Actual Python/pytest subprocess and JUnit, not claims generated from prose"
+  },
+  "original_pinned_source": {
+    "product_empirical": {
+      "blob": "475feb9f9aea495c11c40a56b083f0b628c34e15",
+      "bytes": 9448,
+      "read": true,
+      "imported": false
+    },
+    "product_world": {
+      "blob": "06a74caebda69f7d1baa8719a99138ef57d9c07b",
+      "bytes": 10960,
+      "read": true,
+      "imported": false
+    },
+    "product_service": {
+      "blob": "facf1c86911a8a4c37db112be51d8c7109cd9f3b",
+      "bytes": 4520,
+      "sha256": "e87049107c1de433fce81b8c45a8f31f5bd226608a2cfe8e960b96ebe0bfd868",
+      "locally_exact_git_blob_verified": true,
+      "imported_and_executed": true,
+      "empirical_dependency": "EXPLICIT SYNTHETIC PROVIDER TEST DOUBLE",
+      "selected_world_dependency": "EXPLICIT SYNTHETIC CATALOG TEST DOUBLE",
+      "semantic_hash_dependency": "EXPLICIT CANONICAL HASH TEST DOUBLE"
+    },
+    "product_nonparent": {
+      "blob": "2181b832d3c4376d4b9428e13f4354f273be8f32",
+      "bytes": 2966,
+      "sha256": "3635f0f6ad4891718c26c99f0f9860263d5e054517059f3dfe0409ec66d6287e",
+      "locally_exact_git_blob_verified": true,
+      "imported_and_executed": true
+    },
+    "product_scenario": {
+      "blob": "b7e568166cd277c1ba127374ea1a350d1b3841a2",
+      "bytes": 3412,
+      "sha256": "f60169b2076f32cd34b5495b570cef24984d2bd2c6e4678fe1f5710cf41cbca6",
+      "locally_exact_git_blob_verified": true,
+      "imported_and_executed": true
+    }
+  },
+  "independent_actual_runs": [
+    {
+      "court": "58-ROW INDEPENDENT NATIVE SCIENCE",
+      "command": "python -m pytest -q test_e04i_independent_oracles.py --junitxml=evidence/independent_oracle.junit.xml",
+      "tests": 15,
+      "passed": 15,
+      "failed": 0,
+      "errors": 0,
+      "exit": 0,
+      "source_sha256": "cfee530ac2fbb1c7adf6783a8638ca77f1fdd9a9e144eb2af9e3f0095a919f46",
+      "junit_sha256": "bc6b27e79a4f5b3dca934e76282b907e3d7788b6886adaf2ac962fc51e6c25f6",
+      "stdout_sha256": "aab22d039fd0e6d49eb81310d11623a71a520c02f90da1e8b8d2d8917810f9f8",
+      "qualification": "INDEPENDENT ORACLE, not any E04 owner implementation"
+    },
+    {
+      "court": "EXACT TWO ORIGINAL DOWNSTREAM CLIENTS",
+      "command": "python -m pytest -q test_e04i_exact_consumer_clients.py --junitxml=evidence/exact_consumers.junit.xml",
+      "tests": 9,
+      "passed": 9,
+      "failed": 0,
+      "errors": 0,
+      "exit": 0,
+      "source_sha256": "cef0edd41e92faf28d3f074d01bb546af0d0cd98887f5fd225f3eea69f98de99",
+      "junit_sha256": "e72a7d41a9951a506af0a87329afacf457632e1775cda41ac3425c500d3841f4",
+      "stdout_sha256": "e45be053ce2b0b4919c09cf65ab4c43793d6c53be59d06c06af9c1360414e1f6",
+      "qualification": "Exact original nonparent.py/scenario.py; independent synthetic source SERVICE DOUBLE, no accepted native owners"
+    },
+    {
+      "court": "EXACT ORIGINAL SERVICE + EXACT TWO CLIENTS",
+      "command": "python -m pytest -q test_e04i_exact_service_boundary.py --junitxml=evidence/exact_service_boundary.junit.xml",
+      "tests": 8,
+      "passed": 8,
+      "failed": 0,
+      "errors": 0,
+      "exit": 0,
+      "source_sha256": "32b070ac2e023fa39ec5e7204a3b21c123b03311b65de2360c7e033cd21187dc",
+      "junit_sha256": "4d8bbfdf12b868c2076a08374e26fbe9891270b9e92387ebd2579e387393607a",
+      "stdout_sha256": "58745d8011883213acd6d3ad00c73a2860f68e432f60fc956b8cb2a8bb6d8181",
+      "qualification": "Actual E04 service.py and both exact consumers imported; synthetic test substitutes for unavailable E04 empirical/world and PRE553 semantic_hash. Initial 7-pass/1-fail stub mismatch was repaired by correcting independently authored stub test, not candidate/source changes."
+    },
+    {
+      "court": "EXACT GH-COMMITTED MINIMAL REPRO",
+      "command": "python -m pytest -q test_e04i_return_repro.py --junitxml=evidence/return_repro.junit.xml",
+      "tests": 9,
+      "passed": 9,
+      "failed": 0,
+      "errors": 0,
+      "exit": 0,
+      "source_git_blob": "c19a73e2db4b62d12e916d6820c14c38164f695a",
+      "qualification": "Identical GitHub-committed 9-test independent native oracle, not PRE553"
+    }
+  ],
+  "independent_total_tests": 41,
+  "independent_passed": 41,
+  "independent_failed": 0,
+  "independent_distinct_cases_excluding_minimal_repro_overlap": 32,
+  "identical_minimal_repro_court_is_a_subset_not_an_additional_accepted_native_suite": true,
+  "original_author_evidence": {
+    "product_junit_blob": "05c281016cceda411e966b81a3bc4ba9399bfce9",
+    "product_reported_tests": 37,
+    "product_passed": 37,
+    "product_host": "LOCAL_HOST",
+    "native_junit_blob": "7a64fbc2d7980d0b857ea8c0005827a062008dd2",
+    "native_reported_tests": 231,
+    "native_passed": 231,
+    "author_report_total": 268,
+    "independently_executed": false,
+    "experiment_summary_blob": "b5076b3ab542deac8fe06411b93a07958a97d65d",
+    "author_reported_actual_owner_calls": 408,
+    "owner_call_trace_independently_reexecuted": false,
+    "source_manifest_blob": "6aa8c5bb30089375d7e25e5e53d303f790ea4130",
+    "source_manifest_staged_imports_here": false
+  },
+  "native_positive": {
+    "row_count": 58,
+    "strata": 8,
+    "forward_numerators": [
+      18,
+      10,
+      6
+    ],
+    "forward_denominators": [
+      32,
+      16,
+      8
+    ],
+    "forward_proportions": [
+      "9/16",
+      "5/8",
+      "3/4"
+    ],
+    "authorized_reverse": "18/29",
+    "counterfactual_forward": [
+      "19/32",
+      "11/16",
+      "7/8"
+    ],
+    "support_loss_denominators": [
+      24,
+      8,
+      0
+    ],
+    "partial_final_typed_state": "ZERO_SUPPORT",
+    "observed_zero_and_minority_preserved": true,
+    "model_issuer_claims": 0
+  },
+  "two_clients_positive": {
+    "nonparent_exact_source": true,
+    "scenario_exact_source": true,
+    "same_synthetic_source_and_intervention_stability": true,
+    "no_generated_parents_or_children": true,
+    "forged_desired_child_or_weight_rejected": true,
+    "structural_only_and_empirical_only_independent": true,
+    "permission_revocation_test_double_only": true,
+    "archival_receipt_copied": true,
+    "source_root_mismatch_refused_by_exact_service": true,
+    "real_m4_m5_selected_world_import": false
+  },
+  "qualified_missing": {
+    "N10E_c1_f8_owner_import": "NOT_EXECUTED",
+    "C11_I03_integration": "NOT_EXECUTED",
+    "M4_M5": "NOT_EXECUTED",
+    "E04_empirical_py": "NOT_EXECUTED",
+    "E04_world_py": "NOT_EXECUTED",
+    "author_37_reexecution": "NOT_EXECUTED",
+    "original_native_231_reexecution": "NOT_EXECUTED",
+    "real_408_owner_function_calls": "NOT_REPRODUCED",
+    "cold_persistent_current_N9": "NOT_EXECUTED__OC05_NOT_YET_APPLICABLE",
+    "real_source_issuance": false
+  },
+  "local_evidence_zip": "/mnt/data/e04i_execution_evidence.zip",
+  "zip_sha256": "c1921f147487dbc90c680c40a63c8e3ac9244b23a524e9dec5041805a9051154",
+  "notice": "ZIP genuinely generated in this tool runtime with all four locally generated JUnit XML and stdout files, 3 exact Git-blob original consumer/service source files, and independent tests; NOT uploaded as GitHub binary. Repo return includes 9-case executable repro plus hashes and limitations."
+}
