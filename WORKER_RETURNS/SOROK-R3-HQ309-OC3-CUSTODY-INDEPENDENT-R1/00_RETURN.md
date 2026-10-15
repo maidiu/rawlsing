@@ -19,7 +19,7 @@
 | **New OC3 actual-API hostiles** | **26** | **10** | **36** |
 | **Combined** | **115** | **16** | **131** |
 
-All 131 executed; 0 skips, 0 xfails, pytest exit 1. The complete archive contains exact JUnit and stdout for separate 95/36/131 runs and case-level matrix, pinned source, new 36-case source and source SHA receipts. **No posthoc 95/95 green.**
+All 131 executed; 0 skips, 0 xfails, pytest exit 1. The pushed `OC3_REMOTE_CORE_EVIDENCE.tar.xz` contains exact JUnit XML for the 131-case combined and 36-case new courts, new 36-case test source, frozen pre-execution expectations, SHA receipts and reproducer. A separate full local evidence bundle includes the three original 95/36/131 stdout and JUnit files, the 131-case JSON matrix and six pinned source files, available as a direct user download; it is NOT asserted to be present in the pushed compact archive. **No posthoc 95/95 green.**
 
 ## Six historical REDs: correct refusal at the wrong old assertion
 
@@ -46,4 +46,4 @@ The new court also includes **three PASS ceiling demonstrations**, not grant evi
 
 **`REVIEW_REVISE__TEN_EXECUTED_NEW_SOURCEFREE_REDS__SIX_HISTORICAL_CONFLICTS_PRESERVED__NO_ISSUANCE`.** In particular B02–B04, C05–C06, E05–E06 require test-only implementation repair before scoped scientific acceptance; D04–D05 and E07 belong in the same bounded repair. Do not edit, skip or xfail any inherited OC1 31, OCR1 45 or OC2 19. Preserve test-only mock disclaimers, no external calls or grants. Future OC4 reviewer must independently execute all 131 plus its own falsifiers, not self-adopt.
 
-C07 persisted/cold-process custody remains `NOT_REACHED` (no API); no external durable monotonic proof, semantic signer/role issuer, real holdout, population inference, provider/model-use/privacy/spend grant or V3 authorization. Full machine-readable evidence, reproducer and manifest live inside `OC3_EXECUTED_EVIDENCE.tar.xz`. Return cannot contain its own future commit SHA; exact remote verification is performed after push.
+C07 persisted/cold-process custody remains `NOT_REACHED` (no API); no external durable monotonic proof, semantic signer/role issuer, real holdout, population inference, provider/model-use/privacy/spend grant or V3 authorization. Remote independently reproducible core evidence and reproducer are in `OC3_REMOTE_CORE_EVIDENCE.tar.xz`; the separately downloadable full local archive also contains the baseline and all raw logs and the complete matrix. Return cannot contain its own future commit SHA; exact remote verification is performed after push.
