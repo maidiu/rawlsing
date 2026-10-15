@@ -1,5 +1,5 @@
 {
-  "schema": "E04_PRODUCT_SOURCE_FREEZE@1",
+  "schema": "E04_PRODUCT_SOURCE_FREEZE@2",
   "sources": [
     {
       "path": "product/__init__.py",
@@ -13,18 +13,18 @@
     },
     {
       "path": "product/nonparent.py",
-      "sha256": "6417bac7eca3b9ee1244e13cb2efef4c8b5eb8b53d16ce254e4663329fe44663",
-      "blob_sha1": "e976c648805efb91a2779f8438087e50559d7fa7"
+      "sha256": "3635f0f6ad4891718c26c99f0f9860263d5e054517059f3dfe0409ec66d6287e",
+      "blob_sha1": "2181b832d3c4376d4b9428e13f4354f273be8f32"
     },
     {
       "path": "product/scenario.py",
-      "sha256": "32e001fe31e6ccfe12a1ad3633ac62f2e948127562dbe8873828881b7f761016",
-      "blob_sha1": "6bde58533924a38ac218933e58b57a1b147ec6a7"
+      "sha256": "f60169b2076f32cd34b5495b570cef24984d2bd2c6e4678fe1f5710cf41cbca6",
+      "blob_sha1": "b7e568166cd277c1ba127374ea1a350d1b3841a2"
     },
     {
       "path": "product/service.py",
-      "sha256": "85f815547002f93e003cb83ecf6840f067f24f7984c8484e2cd4d22b7534164f",
-      "blob_sha1": "3839402f053c5905cf0027d780366f5349832ab2"
+      "sha256": "f4d3ac304163eb2b28389f66c8acfd899e2220d5de0f52ea2b1043522c966c46",
+      "blob_sha1": "7427e6ef7bb3b5d468fc581a53813b254c5caa70"
     },
     {
       "path": "product/world.py",
@@ -33,5 +33,7 @@
     }
   ],
   "oracles": "00_PREDECLARED_EXPECTATIONS + explicit native-clock correction; additional author controls source-aware",
-  "independent_acceptance": false
+  "independent_acceptance": false,
+  "previous_source_commit": "500e01932e352da97f6aa3cb9798687d50904a26",
+  "audit_change": "Partial upstream/zero support is reported as partial, not full productive completion; empty structural readsets refuse"
 }

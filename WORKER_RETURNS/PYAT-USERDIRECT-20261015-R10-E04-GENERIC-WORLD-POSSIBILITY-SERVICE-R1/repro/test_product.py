@@ -209,3 +209,30 @@ def test_invalid_whole_progressive_request_and_proposal_do_not_read_partial_valu
     assert s.provider.trace==[] and s.value_reads==[]
     with pytest.raises(ValueError):evaluate(s,snap,[dict(scenario_id='S',route='civil',mother='UNAUTHORIZED')])
     assert s.provider.trace==[] and s.value_reads==[]
+
+
+def test_generic_facade_uses_explicit_native_role_data_not_abc_names():
+    from product import empirical as e
+    aliases={'A':'POSITION_CODE','B':'GROUP_CODE','C':'CONTEXT_CODE','Y':'RESPONSE_CODE'}
+    rows=e.e03.synthetic_world_rows()
+    for row in rows:row['responses']={aliases[k]:v for k,v in row['responses'].items()}
+    tag='e04-generic-renamed-native';source=e.fx._build_source(tag,rows,question_namespace=tag,risk_sets={'R_ALL':{q:{r['id'] for r in rows} for q in aliases.values()}},risk_namespace=tag);source['risk_refs']['R']=source['risk_refs']['R_ALL']
+    authority=e.fx._query_authority(tag)
+    world=dict(tag=tag,source=source,qauth=authority,registry=e.fx._registry(source,authority),pairing=e.c1.make_pairing_authority(tag),model_rule=e.c1.make_model_rule(source['universe'].ref,tag),permission_root='TEST_ONLY_E04_SOURCE_ROOT')
+    world['query_permits']={target:dict(target_ref=source['qrefs'][target].as_dict(),conditioner_refs={q:source['qrefs'][q].as_dict() for q in conditions},allowed_values=[0,1],max_conditioners=len(conditions),scope='TEST_ONLY_EXACT_QUERY_ROLES') for target,conditions in [('RESPONSE_CODE',['POSITION_CODE','GROUP_CODE','CONTEXT_CODE']),('POSITION_CODE',['RESPONSE_CODE'])]}
+    provider=GenericProgressiveProvider(world)
+    forward=provider.step('RESPONSE_CODE',[('POSITION_CODE',1),('GROUP_CODE',1)])
+    reverse=provider.step('POSITION_CODE',[('RESPONSE_CODE',1)])
+    assert forward['state']=='EXACT_SUPPORTED' and forward['denominator']==16 and cells(forward)=={'0':6,'1':10}
+    assert reverse['denominator']==29 and cells(reverse)=={'0':11,'1':18}
+    assert forward['target_ref']==source['qrefs']['RESPONSE_CODE'].as_dict()
+
+
+def test_partial_upstream_is_not_reported_as_complete_product():
+    s=GenericSelectedWorldService();snap=s.select();s.invalidate('empirical')
+    assert consume(s,snap)['material']['state']=='PARTIAL_OPTIONS_OR_EMPIRICAL_SUPPORT'
+    assert evaluate(s,snap,PROPOSALS)['material']['state']=='PARTIAL_PROPOSALS_EVALUATED'
+    t=GenericSelectedWorldService(support_loss=True);part=consume(t,t.select())['material']
+    assert part['state']=='PARTIAL_OPTIONS_OR_EMPIRICAL_SUPPORT'
+    assert part['source_balance_reads'][-1]['source_balance_count'] is None and part['source_balance_reads'][-1]['source_balance_null_reason']
+    with pytest.raises(ValueError):t.structural_product(t.select(),keys=())

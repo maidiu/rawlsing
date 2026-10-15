@@ -29,6 +29,7 @@ class GenericSelectedWorldService:
         material=deepcopy(material);material.update(service_contract=CONTRACT,grade='TEST_ONLY_SOURCEFREE_CANDIDATE',operative_N9=False,operative_N10W=False,new_issuer=False,actor_executions=0,model_calls=0)
         h=semantic_hash(material);self.receipts[h]=deepcopy(material);return dict(receipt_hash=h,material=material)
     def structural_product(self,snapshot,keys=('civil_open',)):
+        if not isinstance(keys,(tuple,list)) or not keys or len(set(keys))!=len(keys):raise ValueError('NONEMPTY_EXACT_STRUCTURAL_READSET_REQUIRED')
         values={key:self.structural(snapshot,key,'GENERIC_STRUCTURAL_READER') for key in keys}
         return self._record(dict(consumer='GENERIC_STRUCTURAL_READER',state='VALUES_READ' if all(v['state']=='SUPPORTED_TEST_ONLY' for v in values.values()) else 'PARTIAL_TYPED_VALUES_READ',values=values,dependencies=list(keys),snapshot_ref=snapshot.snapshot_hash))
     def invalidate(self,scope):
