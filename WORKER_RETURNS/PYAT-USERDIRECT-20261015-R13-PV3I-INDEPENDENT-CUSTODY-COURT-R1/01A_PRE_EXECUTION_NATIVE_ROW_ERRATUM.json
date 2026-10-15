@@ -1,0 +1,50 @@
+{
+  "schema": "PV3I_NATIVE_ROW_ORACLE_ERRATUM_PRE_EXECUTION@1",
+  "original_freeze_commit": "12402553a8a9f90f08172ceb75c22504835f7cc9",
+  "timing": "After independent expected obligation set, BEFORE any sourcefree Python execution; preserve original freeze immutable.",
+  "correction": "Freeze row_expectations erroneously transcribed the preceding PV2I mutation statement as if R1's baseline Y were 0. Pinned C11 source reconstruction unambiguously has R1=(X1,Y1), R2=(X0,Y0), R3=(X1,Y1) but R3 ineligible for Y. No reinterpretation of owner semantics or new authority.",
+  "authority": "PV3 pinned retained independent_C11_provenance_reconstruction.json blob fdea05209429548c99eda955b10b21d0d7c32ae8; PV2I original numeric baseline also mandates joint (0,0)=1,(1,1)=1.",
+  "corrected_baseline_per_namespace": {
+    "R1": {
+      "X": "1",
+      "Y": "1",
+      "Y_eligible": true
+    },
+    "R2": {
+      "X": "0",
+      "Y": "0",
+      "Y_eligible": true
+    },
+    "R3": {
+      "X": "1",
+      "Y": "1",
+      "Y_eligible": false
+    }
+  },
+  "corrected_joint": {
+    "person_ids": [
+      "R1",
+      "R2"
+    ],
+    "N": 2,
+    "cell_00": 1,
+    "cell_11": 1,
+    "observed_zero_01": 0,
+    "observed_zero_10": 0,
+    "not_eligible_R3_not_a_third_Y_observation": true
+  },
+  "interventions": {
+    "A_R2_Y0_to1": {
+      "joint_01": 1,
+      "joint_11": 1,
+      "reverse_Y1_denominator": 2
+    },
+    "A_R1_Y1_to0": {
+      "joint_10": 1,
+      "joint_00": 1,
+      "discovery_winner_may_change": true
+    },
+    "namespace_B": "UNMODIFIED, exact release and six-field consumer material must not change"
+  },
+  "no_ontological_claim": true
+}
