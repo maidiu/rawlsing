@@ -1,18 +1,10 @@
 --- E04@9c96f201/product/empirical.py
 +++ E04R/product/empirical.py
-@@ -1,5 +1,8 @@
- """Versioned generic facade over native N10E/C1/F8; no parallel estimator."""
- from copy import deepcopy
+@@ -2,0 +3,3 @@
 +from dataclasses import dataclass,fields
 +import json
 +from rawlsing_next.pre553_empirical_objects import canonical_json
- from rawlsing_next.pre553_empirical_objects import ExactRef,canonicalize,semantic_hash
- from rawlsing_next.pre553_empirical_possibility_provider import provide_empirical_possibility_slice
- from rawlsing_next.pre553_analytical_composition import compose_positioned_subject_possibility
-@@ -26,6 +29,23 @@
-     world['query_permits']={name:dict(target_ref=source['qrefs'][name].as_dict(),conditioner_refs={q:source['qrefs'][q].as_dict() for q in allowed},allowed_values=[0,1],max_conditioners=len(allowed),scope='TEST_ONLY_EXACT_QUERY_ROLES') for name,allowed in [('Y',('A','B','C')),('A',('Y',))]}
-     return world
- 
+@@ -28,0 +32,17 @@
 +@dataclass(frozen=True)
 +class _AcceptedOwnerEntry:
 +    """Private process-local trust record. Contains no mutable descendants.
@@ -30,37 +22,19 @@
 +    return canonical_json(value).encode('utf-8')
 +
 +
- class GenericProgressiveProvider:
-     """Only source-backed exact target/condition requests, ordered by caller.
- 
-@@ -34,15 +54,22 @@
-     """
-     def __init__(self,world):
-         self.world=world;self.cache={};self.trace=[];self._binding=self._identity()
+@@ -36,0 +57,4 @@
 +        self._accepted={}
 +        # Native C11 releases and their records are immutable. Pin the actual
 +        # accepted release object as well as its exact ref, not inventory alone.
 +        self._source_release=world['source']['repo'].resolve_release_exact(world['source']['release_ref'])
-     def _identity(self):
-         w=self.world;s=w['source']
+@@ -39 +63 @@
 -        return semantic_hash(dict(universe=s['universe'].ref.as_dict(),release=s['release_ref'].as_dict(),risk=canonicalize(s['risk_refs']['R']),model=w['model_rule'].rule_hash,query_authority=w['qauth'].authority_ref.as_dict(),pairing=w['pairing'].as_dict(),permission_root=w['permission_root'],query_permits=w['query_permits'],coordinates={k:v.as_dict() for k,v in s['qrefs'].items()}))
 +        return semantic_hash(dict(universe=s['universe'].ref.as_dict(),release=s['release_ref'].as_dict(),risk=canonicalize(s['risk_refs']['R']),model=w['model_rule'].rule_hash,query_authority=w['qauth'].authority_ref.as_dict(),pairing=w['pairing'].as_dict(),permission_root=w['permission_root'],rows_hash=w.get('rows_hash'),publication=w.get('publication'),query_permits=w['query_permits'],coordinates={k:v.as_dict() for k,v in s['qrefs'].items()}))
-     def _validate(self,target,conditions):
-         if not isinstance(target,str):raise ValueError('EXACT_NATIVE_TARGET_REQUIRED')
-         if not isinstance(conditions,(tuple,list)) or any(not isinstance(c,(tuple,list)) or len(c)!=2 or not isinstance(c[0],str) or type(c[1]) is not int for c in conditions):raise ValueError('ORDERED_EXACT_NATIVE_VALUE_BINDINGS_REQUIRED')
-         conditions=tuple(tuple(c) for c in conditions)
-         if not conditions or len(set(q for q,v in conditions))!=len(conditions):raise ValueError('EXACT_NONEMPTY_UNIQUE_ORDERED_CONDITIONERS_REQUIRED')
-         if self._identity()!=self._binding:raise ValueError('SOURCE_QUERY_PERMISSION_BINDING_CHANGED')
+@@ -45,0 +70,3 @@
 +        try:release=self.world['source']['repo'].resolve_release_exact(self.world['source']['release_ref'])
 +        except (KeyError,TypeError):raise ValueError('ACCEPTED_NATIVE_SOURCE_UNAVAILABLE') from None
 +        if release is not self._source_release:raise ValueError('ACCEPTED_NATIVE_SOURCE_REPLACED')
-         permit=self.world['query_permits'].get(target)
-         coordinates=self.world['source']['qrefs']
-         if permit is None or permit['target_ref']!=coordinates[target].as_dict() or len(conditions)>permit['max_conditioners'] or any(q not in permit['conditioner_refs'] or permit['conditioner_refs'][q]!=coordinates[q].as_dict() or v not in permit['allowed_values'] for q,v in conditions):raise ValueError('TARGET_CONDITION_ROLE_AUTHORITY_UNAVAILABLE')
-@@ -51,8 +78,20 @@
-         conditions=self._validate(target,conditions)
-         key=(target,conditions)
-         if key in self.cache:
+@@ -54,2 +81,14 @@
 -            self.trace.append(dict(call='PROVIDER_CACHE_READ',query=repr(key),evidence_ref=self.cache[key]['evidence_ref']))
 -            return deepcopy(self.cache[key])
 +            accepted=self._accepted.get(key)
@@ -77,13 +51,7 @@
 +            result=json.loads(accepted.projection)
 +            self.trace.append(dict(call='PROVIDER_CACHE_READ',query=repr(key),evidence_ref=result['evidence_ref'],verified_native_owner=True))
 +            return result
-         w=self.world;s=w['source'];step=semantic_hash([target,conditions])[:16]
-         pred=e03._joint_predicate(w,conditions);query=e03._producer_query(w,pred,target)
-         bindings=[c1.make_conditioner_binding(binding_id=q.lower(),subject_fact_ref=ExactRef(**c1.subject_fact_ref(s,q,v)),empirical_coordinate_ref=s['qrefs'][q],comparability_authority_ref=w['pairing'],source_universe_ref=s['universe'].ref,release_ref=s['release_ref']) for q,v in conditions]
-@@ -71,7 +110,16 @@
-         consumed=evaluate_positioned_subject_possibility(query=consumer,rule=w['model_rule'],evidence=(evidence,))
-         self.trace.append(dict(call='evaluate_positioned_subject_possibility',produced_evidence_ref=evidence.evidence_ref.as_dict(),consumed_evidence_ref=consumed.exact_evidence_ref.as_dict() if consumed.exact_evidence_ref else None,result_state=consumed.result_state,same_evidence_object=True,consumer_result_hash=consumed.result_hash))
-         result=dict(schema=CONTRACT,state=consumed.result_state,route=route,target=target,target_ref=s['qrefs'][target].as_dict(),conditioners=[list(c) for c in conditions],binding_order=[b.binding_id for b in bindings],source_universe_ref=s['universe'].ref.as_dict(),release_ref=s['release_ref'].as_dict(),risk_set_ref=canonicalize(query.risk_set_ref),permission_root=w['permission_root'],denominator=composition.raw_denominator_support,cells=canonicalize(composition.complete_cell_geometry),geometry=canonicalize(evidence.geometry),evidence_ref=evidence.evidence_ref.as_dict(),uncertainty=evidence.uncertainty_state,model_rule_hash=w['model_rule'].rule_hash,condition_witness_ref=witness.witness_ref.as_dict(),producer_query_ref=query.ref.as_dict(),producer_fact_ref=composition.producer_fact_ref.as_dict(),authority_refs=[a.as_dict() for a in evidence.authority_refs],provenance_refs=[r.as_dict() for r in evidence.provenance_refs],measure='RAW; unweighted; no causal inference',dependencies=['empirical'])
+@@ -74 +113,10 @@
 -        result['content_hash']=semantic_hash(result);self.cache[key]=deepcopy(result);return result
 +        result['content_hash']=semantic_hash(result)
 +        owner_material=dict(composition=composition.identity_material(),
@@ -95,6 +63,3 @@
 +        self._accepted[key]=_AcceptedOwnerEntry(self._binding,key,_sealed(result),_sealed(owner_material))
 +        self.cache[key]=deepcopy(result)
 +        return deepcopy(result)
-     def progressive(self,target,conditions):
-         conditions=self._validate(target,conditions)
-         return [self.step(target,tuple(conditions[:depth])) for depth in range(1,len(conditions)+1)]
