@@ -31,13 +31,14 @@ class SelectedSnapshot:
         if semantic_hash(self.material)!=self.snapshot_hash:raise ValueError('SNAPSHOT_CONTENT_HASH_MISMATCH')
 
 class SelectedWorldCatalog:
-    def __init__(self,empirical,*,structural_revision=False,extra_field=None):
+    def __init__(self,empirical,*,structural_revision=False,extra_field=None,sanction_revision=False):
         self.empirical=empirical;self.revoked=set();self.revocations=[];self.trace=[]
         self.records=[];self.handles={};self._snapshots={}
         for key,value in BASE.items():self._publish(key,value,'2026-01-01','2028-01-01','2026-03-01',revision=1)
         if structural_revision:
             self._publish('training_access',False,'2027-01-01','2028-01-01','2027-06-01',revision=2)
             self._publish('exit_cost',8,'2027-01-01','2028-01-01','2027-06-01',revision=2)
+        if sanction_revision:self._publish('civil_sanction',True,'2027-01-01','2028-01-01','2027-06-01',revision=2)
         if extra_field is not None:self._publish('unrelated_stock',extra_field,'2026-01-01','2028-01-01','2026-03-01',revision=1,unit='modeled inventory units')
         self.catalog_hash=semantic_hash(dict(records=self.records,empirical=self.empirical_identity()))
     def empirical_identity(self):

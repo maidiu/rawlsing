@@ -6,8 +6,8 @@ from .world import SelectedWorldCatalog
 CONTRACT='E04_GENERIC_SELECTED_WORLD_POSSIBILITY_SERVICE_CANDIDATE@1'
 
 class GenericSelectedWorldService:
-    def __init__(self,*,empirical_changed=False,structural_revision=False,extra_field=None,support_loss=False,same_marginals=False):
-        self.catalog=SelectedWorldCatalog(build_source(changed=empirical_changed,support_loss=support_loss,same_marginals=same_marginals),structural_revision=structural_revision,extra_field=extra_field)
+    def __init__(self,*,empirical_changed=False,structural_revision=False,extra_field=None,support_loss=False,same_marginals=False,sanction_revision=False):
+        self.catalog=SelectedWorldCatalog(build_source(changed=empirical_changed,support_loss=support_loss,same_marginals=same_marginals),structural_revision=structural_revision,extra_field=extra_field,sanction_revision=sanction_revision)
         self.provider=GenericProgressiveProvider(self.catalog.empirical);self.value_reads=[];self.receipts={}
     def select(self,**kwargs):return self.catalog.select(**kwargs)
     def structural(self,snapshot,key,consumer):

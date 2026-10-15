@@ -236,3 +236,13 @@ def test_partial_upstream_is_not_reported_as_complete_product():
     assert part['state']=='PARTIAL_OPTIONS_OR_EMPIRICAL_SUPPORT'
     assert part['source_balance_reads'][-1]['source_balance_count'] is None and part['source_balance_reads'][-1]['source_balance_null_reason']
     with pytest.raises(ValueError):t.structural_product(t.select(),keys=())
+
+
+def test_sanction_only_intervention_is_selective_and_not_empirical():
+    _,_,base,proposals=run();_,_,changed,other=run(sanction_revision=True)
+    a=base['material'];b=changed['material']
+    assert a['empirical']==b['empirical']
+    assert a['structural_routes']['training']==b['structural_routes']['training'] and a['structural_routes']['exit_constraint']==b['structural_routes']['exit_constraint']
+    assert a['structural_routes']['civil']['state']=='ELIGIBLE' and b['structural_routes']['civil']['state']=='BLOCKED_BY_MODELED_RULE'
+    assert proposals['material']['scenarios'][0]==other['material']['scenarios'][0]
+    assert other['material']['scenarios'][1]['feasibility']=='INFEASIBLE_MODELED_PREMISE'

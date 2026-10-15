@@ -1,5 +1,5 @@
 {
-  "schema": "E04_PRODUCT_SOURCE_FREEZE@2",
+  "schema": "E04_PRODUCT_SOURCE_FREEZE@3",
   "sources": [
     {
       "path": "product/__init__.py",
@@ -23,17 +23,17 @@
     },
     {
       "path": "product/service.py",
-      "sha256": "f4d3ac304163eb2b28389f66c8acfd899e2220d5de0f52ea2b1043522c966c46",
-      "blob_sha1": "7427e6ef7bb3b5d468fc581a53813b254c5caa70"
+      "sha256": "e87049107c1de433fce81b8c45a8f31f5bd226608a2cfe8e960b96ebe0bfd868",
+      "blob_sha1": "facf1c86911a8a4c37db112be51d8c7109cd9f3b"
     },
     {
       "path": "product/world.py",
-      "sha256": "94c0c52686fe695a05c8fcd295ca725320155b19e52fbcb29bbf9f9e71cd8e86",
-      "blob_sha1": "58df1cbc48b88b7dcbaef39b66008154f977216d"
+      "sha256": "40955b11bcd4872d00b4682d4b89975162559b1e4637bc7c021c56e37bbe1e65",
+      "blob_sha1": "06a74caebda69f7d1baa8719a99138ef57d9c07b"
     }
   ],
   "oracles": "00_PREDECLARED_EXPECTATIONS + explicit native-clock correction; additional author controls source-aware",
   "independent_acceptance": false,
-  "previous_source_commit": "500e01932e352da97f6aa3cb9798687d50904a26",
-  "audit_change": "Partial upstream/zero support is reported as partial, not full productive completion; empty structural readsets refuse"
+  "previous_source_commit": "283da2c3309ec8645f8413e034a381aed5566df7",
+  "audit_change": "Add isolated modeled sanction-only intervention, preserving training/exit and empirical invariants"
 }
