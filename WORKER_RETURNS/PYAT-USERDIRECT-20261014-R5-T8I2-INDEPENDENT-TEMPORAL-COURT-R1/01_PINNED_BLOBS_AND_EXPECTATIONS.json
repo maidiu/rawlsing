@@ -1,0 +1,105 @@
+{
+  "schema": "PYAT_R5_T8I2_PINNED_TEMPORAL_COURT_SOURCE_AND_FROZEN_EXPECTATIONS_R1",
+  "sealed": "a6d55e2921c862c74d438b3cf1f4540d1da5eb30",
+  "base_canonical": "0d551d36ff19dc9806e0ad490ff33a1e4c25e381",
+  "expectations_committed_before_source_execution": "ef85a876639927b32e50235de95a044f85a60042",
+  "author_candidate": "40845430f77baf2af86533b4825b60199ee8990a",
+  "paths": [
+    {
+      "role": "T8F2 implementation",
+      "commit": "40845430f77baf2af86533b4825b60199ee8990a",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R4-T8F2-TEMPORAL-CUSTODY-REPAIR-R1/repro/t8f2_temporal_custody.py",
+      "git_blob": "9a654b55274b2e8052b1cfaa0eef1a079c079f59",
+      "bytes": 16165,
+      "sha256": "177c04b1d45c4817225cd4c50f8f9a7b15772954231ddd8c682252e26ebc74f4",
+      "git_hash_object_verified": true,
+      "import_file": "/mnt/data/t8i2_court/t8f2_temporal_custody.py"
+    },
+    {
+      "role": "T8F2 21-case unchanged author suite",
+      "commit": "40845430f77baf2af86533b4825b60199ee8990a",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R4-T8F2-TEMPORAL-CUSTODY-REPAIR-R1/repro/test_t8f2_temporal_custody.py",
+      "git_blob": "22248899d4fba505a2ff9459491a0d726b3ef75c",
+      "bytes": 7885,
+      "sha256": "4c085359a517092af7362185e257280479e2bdbee1d328fb3f859be6f0841564",
+      "git_hash_object_verified": true
+    },
+    {
+      "role": "T8C original 19 unchanged",
+      "commit": "059d7ce1b35a08fa4fe735ffccc1a5dddbfe5899",
+      "path": "WORKER_RETURNS/PYAT-R3-HQ297-N8-NATIVE-TEMPORAL-COMPARATOR-R1/repro/test_hq297_t8c.py",
+      "git_blob": "7f7e0c713a669951b40787537138db7a0653daea",
+      "bytes": 10525,
+      "sha256": "7f57947dbbd9c7ef3a78c04fcb623281ddb4e9278cdb3f197cc3987fa2371417",
+      "git_hash_object_verified": true
+    },
+    {
+      "role": "T8R original 3 unchanged",
+      "commit": "6f4706b703124993dacab86cbfa3d41428ca3a25",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-T8R-NATIVE-TEMPORAL-INDEPENDENT-R1/repro/test_review_mandatory_guards_red.py",
+      "git_blob": "83db68fd705372b62778d81f96687a50b744ecca",
+      "bytes": 912,
+      "sha256": "d07c554ba2313be8d46f874c662a6920a4b8d172d108297c7a73a4f59b8882a1",
+      "git_hash_object_verified": true
+    },
+    {
+      "role": "T8I former frozen 16, interface-incompatible with new T8F2",
+      "commit": "cbbaf051cf5df72f6d32b8de6755b5eec0c10a51",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R3-T8I-INDEPENDENT-TEMPORAL-COURT-R1/repro/test_t8i_independent_hostiles.py",
+      "git_blob": "3911420d94659d6fa89cbd0e89769959b0eb6ff6",
+      "bytes": 6054,
+      "source_inspected": true,
+      "original_run_against_T8F2": "NOT_EXECUTED_UNCHANGED_INTERFACE_INCOMPATIBLE",
+      "adapted_expectation_runner": "T8F2 author 21 suite explicitly adapts 16 original T8I expectations; 21 exact untouched run separately; additional T8I2 24-case separately authored"
+    },
+    {
+      "role": "T8I2 24-case newly written hostile suite",
+      "commit": "SELF_RETURN",
+      "path": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R5-T8I2-INDEPENDENT-TEMPORAL-COURT-R1/repro/test_t8i2_hostiles.py",
+      "git_blob": "9b2d6b0d3121988c89f36ff3e43d066e87f80c39",
+      "bytes": 7533,
+      "sha256": "c67448e72a13af5461e5df35d93f9137264daa936470d2f28005613727820226",
+      "git_hash_object_verified": true
+    },
+    {
+      "role": "HQ214 historical comparator source",
+      "commit": "a93352512aa9290112bff1eb680c54d43345078f",
+      "path": "rawlsing_next/pre553_temporal_comparability.py",
+      "git_blob": "feb097decbd160c5f259cde0a36f5033a7085fd2",
+      "exists_at_exact_pin": true,
+      "complete_owner_import_executed": false
+    }
+  ],
+  "independence": "LIMITATION: This same ChatGPT conversation authored prior T8I. This T8I2 cannot independently sign acceptance against its own lineage. Even when executable RED, status is reproducible SAME_CONVERSATION_ADVERSARIAL_REVIEW, not an institutionally independent adoption/adjudication.",
+  "scientific_native": {
+    "first_wave": "2012 R5 Ghana Q43 (test instrument), codes 0-4 substantive, refused native 998",
+    "second_wave": "2022 R9 Ghana Q31 (test instrument), codes 0-4 substantive, refused native 8",
+    "separately_typed_specials": [
+      "DK",
+      "REFUSED",
+      "MISSING",
+      "NOT_ASKED"
+    ],
+    "relationship": "INDEPENDENT_CROSS_SECTION_TEST_ONLY",
+    "historical_gap": "2017 UNKNOWN_UNOBSERVED_GAP",
+    "observation_years": [
+      2012,
+      2022
+    ],
+    "fixture_publication_dates": [
+      "2015-07-16",
+      "2024-10-01"
+    ],
+    "fake_fixture_delta": "3/44",
+    "real_Ghana_trend_issued": false
+  },
+  "model_issuance": {
+    "source": false,
+    "EE12": false,
+    "N8E": false,
+    "N9": false,
+    "OC05": false,
+    "N8S": false,
+    "V3": false
+  }
+}
