@@ -1,0 +1,76 @@
+{
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_DELTA@1.0.0",
+  "environment_id": "ENV_HQ300_LOCAL_OPAQUE_4F17",
+  "epoch_id": "EPOCH_HQ300_20261014_LOCAL_CONTINUITY_FROM_HQ298",
+  "owner_session_alias": "WORKER_HQ300_CAN008",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "MACHINE_OPAQUE_DARWIN_X86_64_16C",
+  "conversation_or_account_affinity": "gh_cli_account_opaque_maidiu_repo_scope",
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-14T22:40:00Z",
+  "runtime_marker_digest": "sha256:hq298_stage_closure_alive_blob_verified_plus_hq300_candidate_package",
+  "probe_command_and_result": {
+    "python3 --version": "Python 3.11.3",
+    "python3 -m pytest --version": "pytest 9.0.2",
+    "gh auth status": "logged in, repo scope, private repo read OK",
+    "HQ298 stage closure": "GT0/SDTF/M6 modules alive; authority pins identical at HQ300 parent",
+    "pytest candidate/test_hq300_court.py": "37 passed",
+    "pytest <10 pinned owner test files>": "220 passed",
+    "pytest rsm_court_reproduction/test_owner_effect_court.py": "60 passed (DISC_01 corrected)"
+  },
+  "capabilities": {
+    "python": "VERIFIED", "pytest": "VERIFIED", "git": "VERIFIED",
+    "filesystem_shell": "VERIFIED", "authenticated_private_repo_read": "VERIFIED",
+    "node": "NOT_REQUIRED",
+    "model_api": "NOT_USED (zero calls this commission)"
+  },
+  "observed_versions": {"python": "3.11.3", "pytest": "9.0.2", "git": "2.43.0", "platform": "macOS-13.2.1-x86_64"},
+  "git_object_store_alias": "GITHUB_REMOTE_MAIDIU_RAWLSING_READONLY",
+  "worktree_alias": "EPHEMERAL_STAGE_DIR_NO_GIT_WORKTREE",
+  "branch": "agent/rabochii-sorok-r3-hq300-can008-first-positive-sourcefree-r1",
+  "exact_checkout_base": "d7d40270068d258600ee57f62bd27199f1689b92",
+  "checkout_base_note": "launch SHA verified as branch tip at dispatch; mid-flight routing erratum bdec09f6... permits finishing without reset; return commits fast-forward on top of bdec09f6",
+  "checkout_head": "PENDING_PUSH_SEE_00_RETURN",
+  "clean_dirty_state": "WRITE_TERRAIN_ONLY_WORKER_RETURNS_SOROK_R3_HQ300_CAN008_FIRST_POSITIVE_SOURCEFREE_R1",
+  "source_family": "RAWLSING_CAN008_R2_PLUS_ADP016_017_ADOPTED_AUTHORITY_PLUS_RAWLSING_NEXT_OWNER_MODULES",
+  "materialized_source_refs": [
+    {"path": "data/.../CAN_008_V3_PRESSURE_FLOW_RESPONSE/AUTHORITY.md", "git_blob_sha1": "976c59086b938992114f68621f149687670e306d", "role": "CAN008 v1 adopted authority", "verified": true},
+    {"path": "data/.../CAN_008_V3_PRESSURE_FLOW_RESPONSE/AUTHORITY.json", "git_blob_sha1": "7bd28360ec6a74975bb7eb809f6ad397529491b3", "role": "CAN008 v1 adopted authority", "verified": true},
+    {"path": "data/.../CAN_008_V3_PRESSURE_FLOW_RESPONSE/AUTHORITY_R2_CANDIDATE.md", "git_blob_sha1": "b80dd6925066510ecbbfec7b427bf9f688475663", "role": "CAN008_R2 HQ-adopted semantics", "verified": true},
+    {"path": "data/.../ADP_016_V3_CAUSAL_MEMORY/AUTHORITY.md", "git_blob_sha1": "0b7bbe29f6509e31ac7d842962a2bf3d636daa2c", "role": "ADP016 adopted authority", "verified": true},
+    {"path": "data/.../ADP_016_V3_CAUSAL_MEMORY/AUTHORITY.json", "git_blob_sha1": "c6619a286e115d060ab4830889e7fc23762167a5", "role": "ADP016 adopted machine-readable interfaces", "verified": true},
+    {"path": "data/.../ADP_017_V3_ACTOR_ACCESS/AUTHORITY.md", "git_blob_sha1": "6b4162df27003bec413074178c46fea6360d71a0", "role": "ADP017 adopted authority", "verified": true},
+    {"path": "data/.../ADP_017_V3_ACTOR_ACCESS/AUTHORITY.json", "git_blob_sha1": "eece4f3f2f3f9288ab9bbc645dc81e20a99e1280", "role": "ADP017 adopted machine-readable interfaces (pin reused by imported M6)", "verified": true},
+    {"path": "rawlsing_next/v3_psepf_zero_positive_guard.py", "git_blob_sha1": "e0528d65215cb431196570c38bac4eae94217a1b", "role": "imported production zero-positive guard (untouched)", "verified": true},
+    {"path": "rawlsing_next/m6_actor_safe_expression.py", "git_blob_sha1": "74d9701cdc7dabccf61eb5089498db290c1efd9c", "role": "imported actor-safe ingress (untouched)", "verified": true},
+    {"path": "rawlsing_next/wsc_gt0_end_to_end.py", "git_blob_sha1": "62b6ea39c605874af6d7aef85693472f88087f57", "role": "imported GT0 blocked-path harness (untouched)", "verified": true},
+    {"path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-OWNER-EFFECT-COURT-R1/court/test_owner_effect_court.py", "git_blob_sha1": "65acd6be6361", "role": "RSM-court vendored source (DISC_01 detector-only patch)", "verified": true},
+    {"path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-OWNER-EFFECT-COURT-R1/court/owner_effect_stub_TEST_ONLY.py", "git_blob_sha1": "440eb1719553", "role": "vendored unmodified", "verified": true},
+    {"path": "WORKER_RETURNS/SOROK-R3-HQ298-SM-OWNER-EFFECT-COURT-R1/01_PREDECLARED_POSITIVE_CELL_AND_ARMS.json", "git_blob_sha1": "d96941c66cf9", "role": "vendored frozen predeclaration (court dependency)", "verified": true}
+  ],
+  "covered_test_suites": [
+    {"suite": "candidate/test_hq300_court.py", "command": "HQ300_STAGE=<stage> python3 -m pytest candidate/test_hq300_court.py -q --junitxml=junit/court_junit.xml", "result": "PASS", "tests": 37},
+    {"suite": "preserved pinned owner tests", "command": "python3 -m pytest <10 test files> -q", "result": "PASS", "tests": 220},
+    {"suite": "rsm_court_reproduction/test_owner_effect_court.py", "command": "python3 -m pytest test_owner_effect_court.py -q", "result": "PASS", "tests": 60}
+  ],
+  "science_grade": "SOURCEFREE_CANDIDATE_IMPLEMENTATION; positive chain demonstrated at candidate grain against a worker fixture registry; NOT adopted owner operation; production guard preserved",
+  "model_provider": null,
+  "effort_and_pricing_class": "NO_MODEL_CALLS_THIS_COMMISSION",
+  "observed_credits_or_usage": null,
+  "independent_review_separation": "REQUIRED_NOT_YET_PERFORMED",
+  "privacy_source_grant": "NO_ORIGINAL_SURVEY_DATA_ACCESSED; synthetic fixtures only; no secrets or absolute home paths in artifacts",
+  "quota_expense_observed_or_UNKNOWN": "UNKNOWN_cash; no billable calls; local CPU seconds only",
+  "assignments_completed": ["HQ300_CAN008_FIRST_POSITIVE_SOURCEFREE"],
+  "next_good_affinity_tags": ["CAN008", "CAN008_R2", "ADP016", "ADP017", "POSITIVE_TRANSITION_REGISTRY", "OWNER_EFFECT"],
+  "staged_state_preservation": "candidate package self-contained; imported owner closure referenced by blob pins; re-runnable offline given HQ300_STAGE",
+  "retire_or_rebuild_reason": null,
+  "reusable_next_affinity": {
+    "warm": true,
+    "conditions": "re-verify blob identities and the two-suite preserved baseline on resume",
+    "missing_for_next_round": "owner decision on candidate-rule promotion and the production positive-transition-authority registry entry"
+  },
+  "claims_done_vs_not_run": {
+    "DONE": ["positive chain at candidate grain", "K3/K5", "9 hostiles", "DISC_01 correction", "220 preserved", "60/60 RSM court", "dual-registry distinction"],
+    "NOT_RUN": ["accepted-rule promotion", "production registry entry", "V3 actor operation", "adopted-rule claim"]
+  }
+}

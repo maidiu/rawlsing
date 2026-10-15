@@ -1,0 +1,91 @@
+{
+ "schema": "SOROK_HQ302_RCP2_CAN008_CLEAN_ACCEPTANCE@1",
+ "branch": "agent/reviewer-sorok-r3-hq302-rcp2-can008-clean-acceptance-r1",
+ "sealed_startup": "9ec98d5f7539e2093d516070df18224d35eb85c3",
+ "sealed_hq302_parent": "75341803ace63da30dfcd66273b6e3d75ad87132",
+ "environment": {
+  "model_switch": false,
+  "helper_agent": false,
+  "editor_change": false,
+  "cost_figure_asserted": false
+ },
+ "adopted_law": {
+  "CAN008_R2": "b80dd6925066510ecbbfec7b427bf9f688475663",
+  "ADP016": "c6619a286e115d060ab4830889e7fc23762167a5",
+  "ADP017": "eece4f3f2f3f9288ab9bbc645dc81e20a99e1280",
+  "guard_blob": "e0528d65215cb431196570c38bac4eae94217a1b"
+ },
+ "ordering": {
+  "freeze_commit": "ac64affeb4af922dea1b1d0088afe7acfeafaee9",
+  "freeze_sha256": "056ebe78a4240a6123abcf4f1b390d90d1cf31c077e9085ddf9d0904dc473700",
+  "frozen_before_candidate_observation": true,
+  "corrects_hq301_ordering_defect": true
+ },
+ "candidate37": {
+  "correct_pythonpath_no_stage": {
+   "passed": 36,
+   "skipped": 1,
+   "failed": 0
+  },
+  "correct_pythonpath_with_HQ300_STAGE": {
+   "passed": 37,
+   "skipped": 0,
+   "failed": 0
+  },
+  "skip_gate": "test_G_disc01_corrected_detector_production_surface_zero skips explicitly when HQ300_STAGE is unset; it is a production implementation-surface scan and PASSES when the stage root is supplied"
+ },
+ "author_junit_evidence_read_not_executed": {
+  "pinned_modules": 220,
+  "rsm_court": 60,
+  "court": 37,
+  "total": 317,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "note": "220 and 60 are AUTHOR-ISSUED JUnit, read after the freeze \u2014 NOT independently reproduced by this reviewer"
+ },
+ "independently_executed_by_reviewer": {
+  "candidate_37": true,
+  "pinned_220": false,
+  "rsm_60": false
+ },
+ "verdict": "REVIEW_HOLD",
+ "review_pass_available": false,
+ "review_pass_blockers": [
+  "220 pinned not independently executed",
+  "60 corrected RSM not independently executed",
+  "23 CAN008 section-16 bindings not derived against law",
+  "ADP016 7 gates + 16 fail-closed classes not verified",
+  "ADP017 K3/K5 + 12-field ActorEpistemicEffect not verified",
+  "two-admitted-event causality not observed",
+  "absent-effect control and exact replay not run",
+  "own hostility suite not run",
+  "guard not re-verified byte-unchanged at this HEAD"
+ ],
+ "not_claimed": [
+  "scientific acceptance of the CAN008 positive owner-effect chain",
+  "any semantic issuance",
+  "any V3 actor operation",
+  "any live registry permit",
+  "production positive transition authority"
+ ],
+ "candidate_registry": "FIXTURE_ONLY",
+ "no_semantic_adoption": true,
+ "deliverables": {
+  "00_RETURN.md": {
+   "sha256": "067c618b754423fa5823d716337bde5474dc2dd85aa82551c224687abeb3ab02",
+   "bytes": 6518
+  },
+  "00_FROZEN_LAW_DERIVED_PREREG.json": {
+   "sha256": "056ebe78a4240a6123abcf4f1b390d90d1cf31c077e9085ddf9d0904dc473700",
+   "bytes": 2539
+  }
+ },
+ "repro": {
+  "candidate37.log": {
+   "sha256": "8125a418ec5391a7ed6de2abca5dcdda16d02e7d31ba09ce969ca9745eed653d",
+   "bytes": 324
+  }
+ },
+ "terminal": "SOROK_HQ302_RCP2_CAN008_CLEAN_ACCEPTANCE_HOLD__GITHUB_PUSHED"
+}
