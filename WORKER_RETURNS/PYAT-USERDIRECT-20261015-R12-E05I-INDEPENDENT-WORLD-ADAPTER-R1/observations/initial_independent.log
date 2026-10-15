@@ -1,0 +1,271 @@
+................F..............FFFF..FFFFF...                            [100%]
+=================================== FAILURES ===================================
+__________ test_zero_support_stays_typed_without_numeric_fabrication ___________
+
+    def test_zero_support_stays_typed_without_numeric_fabrication():
+>    _,_,_,_,r=run(adapter(support_loss=True));save('zero_support',r);assert r['state']=='TYPED_PARTIAL_SELECTED_WORLD';assert r['empirical_state']!='PRODUCTIVE_TEST_ONLY';assert any(not s['cells'] for s in r['empirical_steps'])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/tests/test_independent_court.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/repro/court_support.py:14: in run
+    a=adapter() if a is None else a;q=request or E.standard_request(label=label);s=a.build_snapshot(q);acc=a.accept(q,s);cs=clients(a,s);r=a.serve(q,acc,s,consumers=cs);return a,q,s,acc,r
+                                                                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <e05_n9_selected_world_adapter.N9SelectedWorldAdapter object at 0x10629c590>
+request = N9SelectedWorldRequest(contract='R11_E05_N9_SELECTED_WORLD_INTERFACE@1', purpose='TEST_ONLY_CONTEXT', structural_keys=...27-09-01', test_now='2027-09-01'), requested_pooling=False, requested_person_exposure=False, requested_model_use=False)
+acceptance = N9SelectedWorldAcceptance(request_hash='4b30d2b774addaf09c7270c2b0460d28bdf1f114be52525ba97cf2b1fb78b983', snapshot_ha...'publication': '2026-03-01', 'revision': 1}}, acceptance_state='ACCEPTED_ATOMIC_SELECTED_SNAPSHOT', inconsistencies=())
+snapshot = SelectedSnapshot(material={'schema': 'E04_TEST_ONLY_SELECTED_WORLD_SNAPSHOT@1', 'catalog_hash': 'aa71f4da8c73e73b4b7bd...: False, 'operative_CURRENT': False}, snapshot_hash='d6ca4f77dbf9d95a41f876725365a56e3ae3225476d1b171ecc82e88b04a7593')
+
+    def serve(self, request: N9SelectedWorldRequest, acceptance,
+              snapshot, *, consumers=()) -> dict:
+        """Read the actual result-bearing selected-world values.
+    
+        Every channel is read through the accepted atomic snapshot.  The two
+        native fields are carried separately with their own native units and
+        are never pooled, converted or combined.
+        """
+        entry = self.acceptances.get(acceptance.acceptance_hash)
+        if entry is None:
+            raise SelectedWorldInconsistency('ACCEPTANCE_BINDING_MISMATCH')
+        snapshot.verify()
+        if entry['snapshot_material'] != snapshot.material:
+            raise SelectedWorldInconsistency('ACCEPTED_SNAPSHOT_SUBSTITUTION')
+        if entry['acceptance'] != acceptance:
+            raise SelectedWorldInconsistency('ACCEPTANCE_BINDING_MISMATCH')
+    
+        native = entry['native']
+        structural_values = {}
+        structural_refs = {}
+        for key in request.structural_keys:
+            read = self.service.structural(snapshot, key, 'N9_SELECTED_WORLD')
+            structural_refs[key] = (read.get('field_ref'), read.get('requested_ref'))
+            if read['state'] == 'SUPPORTED_TEST_ONLY':
+                structural_values[key] = dict(
+                    value=read['value'], unit=read['payload']['unit'],
+                    field_ref=read['field_ref'], revision=read['payload']['revision'],
+                    publication=read['payload']['publication'],
+                    effective_from=read['payload']['effective_from'],
+                    epistemic_class=read['payload']['epistemic_class'],
+                    currentness_grade=read.get('currentness_grade'),
+                    rsc_ref=read.get('rsc_ref'), validation_ref=read.get('validation_ref'))
+            else:
+                structural_values[key] = dict(
+                    state=read['state'], requested_ref=read.get('requested_ref'))
+    
+        empirical = self.service.possibilities(
+            snapshot, target=request.empirical_target,
+            conditions=request.empirical_conditions, consumer='N9_SELECTED_WORLD')
+        empirical_steps = []
+        for step in empirical['steps']:
+            empirical_steps.append(dict(
+                target=step['target'], conditioners=[list(c) for c in step['conditioners']],
+>               binding_order=step['binding_order'], route=step['route'],
+                              ^^^^^^^^^^^^^^^^^^^^^
+                denominator=step['denominator'],
+                cells=[dict(cell=c['cell'], cell_state=c['cell_state'],
+                            raw_numerator_support=c['raw_numerator_support'],
+                            raw_probability_exact_fraction=
+                            c.get('raw_probability_exact_fraction'))
+                       for c in step['cells']],
+                release_ref=step['release_ref'], risk_set_ref=step['risk_set_ref'],
+                source_universe_ref=step['source_universe_ref'],
+                permission_root=step['permission_root'],
+                evidence_ref=step.get('evidence_ref'),
+                uncertainty=step.get('uncertainty'),
+                measure=step.get('measure')))
+E           KeyError: 'binding_order'
+
+WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/runtime/e05_n9_selected_world_adapter.py:462: KeyError
+__________ test_serve_must_bind_actual_request_to_acceptance[target] ___________
+
+alter = 'target'
+
+    @pytest.mark.parametrize('alter',['target','readset','clock'])
+    def test_serve_must_bind_actual_request_to_acceptance(alter):
+     a,q,s,acc,_=run()
+     if alter=='target':foreign=dataclasses.replace(q,empirical_target='A',empirical_conditions=(('Y',1),))
+     elif alter=='readset':foreign=dataclasses.replace(q,structural_keys=('civil_open',))
+     else:foreign=dataclasses.replace(q,clock=E.SelectedWorldClock(mode='AS_OF',valid_at='2026-06-01',published_asof='2026-03-01'))
+     try:r=a.serve(foreign,acc,s)
+     except E.N9SelectedWorldRefusal:return
+     save('DEFECT_request_substitution_'+alter,dict(original_request=q.binding(),foreign_request=foreign.binding(),acceptance=acc.binding(),receipt=r))
+>    assert r['state']!='SELECTED_WORLD_VALUES_SERVED' or r['request_hash']==foreign.request_hash,'UNACCEPTED_REQUEST_SERVED_UNDER_OLD_REQUEST_HASH'
+E    AssertionError: UNACCEPTED_REQUEST_SERVED_UNDER_OLD_REQUEST_HASH
+E    assert ('SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED' or '4b30d2b774ad...cf2b1fb78b983' == 'ffd21e46a084...602f6b0c37507'
+E      
+E      - ffd21e46a084999097d02f5b094af17677e2bf65de379fbafb9602f6b0c37507
+E      + 4b30d2b774addaf09c7270c2b0460d28bdf1f114be52525ba97cf2b1fb78b983)
+
+WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/tests/test_independent_court.py:90: AssertionError
+__________ test_serve_must_bind_actual_request_to_acceptance[readset] __________
+
+alter = 'readset'
+
+    @pytest.mark.parametrize('alter',['target','readset','clock'])
+    def test_serve_must_bind_actual_request_to_acceptance(alter):
+     a,q,s,acc,_=run()
+     if alter=='target':foreign=dataclasses.replace(q,empirical_target='A',empirical_conditions=(('Y',1),))
+     elif alter=='readset':foreign=dataclasses.replace(q,structural_keys=('civil_open',))
+     else:foreign=dataclasses.replace(q,clock=E.SelectedWorldClock(mode='AS_OF',valid_at='2026-06-01',published_asof='2026-03-01'))
+     try:r=a.serve(foreign,acc,s)
+     except E.N9SelectedWorldRefusal:return
+     save('DEFECT_request_substitution_'+alter,dict(original_request=q.binding(),foreign_request=foreign.binding(),acceptance=acc.binding(),receipt=r))
+>    assert r['state']!='SELECTED_WORLD_VALUES_SERVED' or r['request_hash']==foreign.request_hash,'UNACCEPTED_REQUEST_SERVED_UNDER_OLD_REQUEST_HASH'
+E    AssertionError: UNACCEPTED_REQUEST_SERVED_UNDER_OLD_REQUEST_HASH
+E    assert ('SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED' or '4b30d2b774ad...cf2b1fb78b983' == '1ed964e24d7a...52ef992a1c730'
+E      
+E      - 1ed964e24d7a7dfc1730c9ed6e5ff532bb66852ad4f5d0e692c52ef992a1c730
+E      + 4b30d2b774addaf09c7270c2b0460d28bdf1f114be52525ba97cf2b1fb78b983)
+
+WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/tests/test_independent_court.py:90: AssertionError
+___________ test_serve_must_bind_actual_request_to_acceptance[clock] ___________
+
+alter = 'clock'
+
+    @pytest.mark.parametrize('alter',['target','readset','clock'])
+    def test_serve_must_bind_actual_request_to_acceptance(alter):
+     a,q,s,acc,_=run()
+     if alter=='target':foreign=dataclasses.replace(q,empirical_target='A',empirical_conditions=(('Y',1),))
+     elif alter=='readset':foreign=dataclasses.replace(q,structural_keys=('civil_open',))
+     else:foreign=dataclasses.replace(q,clock=E.SelectedWorldClock(mode='AS_OF',valid_at='2026-06-01',published_asof='2026-03-01'))
+     try:r=a.serve(foreign,acc,s)
+     except E.N9SelectedWorldRefusal:return
+     save('DEFECT_request_substitution_'+alter,dict(original_request=q.binding(),foreign_request=foreign.binding(),acceptance=acc.binding(),receipt=r))
+>    assert r['state']!='SELECTED_WORLD_VALUES_SERVED' or r['request_hash']==foreign.request_hash,'UNACCEPTED_REQUEST_SERVED_UNDER_OLD_REQUEST_HASH'
+E    AssertionError: UNACCEPTED_REQUEST_SERVED_UNDER_OLD_REQUEST_HASH
+E    assert ('SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED' or '4b30d2b774ad...cf2b1fb78b983' == '6f178168c4ca...528858751d642'
+E      
+E      - 6f178168c4ca24abf0b62e4e966b3e2e50427111145b186cdcb528858751d642
+E      + 4b30d2b774addaf09c7270c2b0460d28bdf1f114be52525ba97cf2b1fb78b983)
+
+WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/tests/test_independent_court.py:90: AssertionError
+_______________ test_accept_must_bind_snapshot_clocks_to_request _______________
+
+    def test_accept_must_bind_snapshot_clocks_to_request():
+     a=adapter();current=E.standard_request(label='CURRENT_TEST_CLOCK');historical=E.standard_request(label='HISTORICAL_AS_OF');s=a.build_snapshot(current)
+     try:acc=a.accept(historical,s);r=a.serve(historical,acc,s)
+     except E.N9SelectedWorldRefusal:return
+     save('DEFECT_accept_clock_substitution',dict(request=historical.binding(),acceptance=acc.binding(),receipt=r))
+>    assert r['state']!='SELECTED_WORLD_VALUES_SERVED' or r['selection']['published_asof']==historical.clock.published_asof,'HISTORICAL_REQUEST_ACCEPTED_AGAINST_CURRENT_SNAPSHOT'
+E    AssertionError: HISTORICAL_REQUEST_ACCEPTED_AGAINST_CURRENT_SNAPSHOT
+E    assert ('SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED' or '2027-09-01' == '2026-03-01'
+E      
+E      - 2026-03-01
+E      ?    ^  ^
+E      + 2027-09-01
+E      ?    ^  ^)
+
+WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/tests/test_independent_court.py:97: AssertionError
+__________________ test_late_native_revocation_must_be_reread __________________
+
+    def test_late_native_revocation_must_be_reread():
+     a=adapter();q=E.standard_request(label='CURRENT_TEST_CLOCK');s=a.build_snapshot(q);acc=a.accept(q,s)
+     data=rows();next(x for x in data if x['role']==NCA)['status']='REVOKED_TEST_ONLY';a.registry=TestOnlyRegistry(data);fresh=fresh_read(a.registry);r=a.serve(q,acc,s,consumers=clients(a,s))
+     save('DEFECT_late_native_revocation',dict(fresh_native_read=fresh,receipt=r,acceptance=acc.binding()))
+>    assert r['state']!='SELECTED_WORLD_VALUES_SERVED' and NCA not in native(r),'CACHED_NATIVE_VALUE_SERVED_AFTER_WITHDRAWAL'
+E    AssertionError: CACHED_NATIVE_VALUE_SERVED_AFTER_WITHDRAWAL
+E    assert ('SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED')
+
+WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/tests/test_independent_court.py:107: AssertionError
+____________________ test_native_invalidate_scope_supported ____________________
+
+    def test_native_invalidate_scope_supported():
+     a,q,s,acc,r=run()
+>    try:out=a.invalidate(NCA)
+             ^^^^^^^^^^^^^^^^^
+
+WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/tests/test_independent_court.py:111: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/runtime/e05_n9_selected_world_adapter.py:569: in invalidate
+    revocation = self.service.catalog.revoke(scope, reason)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <product.world.SelectedWorldCatalog object at 0x10588e1d0>
+scope = 'NCA_NATIONAL_MOBILE_DATA', reason = 'TEST_ONLY_PERMISSION_REVOCATION'
+
+    def revoke(self,scope,reason='TEST_ONLY_PERMISSION_REVOCATION'):
+>       if scope!='empirical' and scope not in {r['key'] for r in self.records}:raise ValueError('UNKNOWN_PERMISSION_SCOPE')
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ValueError: UNKNOWN_PERMISSION_SCOPE
+
+WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/runtime/product/world.py:56: ValueError
+
+During handling of the above exception, another exception occurred:
+
+    def test_native_invalidate_scope_supported():
+     a,q,s,acc,r=run()
+     try:out=a.invalidate(NCA)
+>    except ValueError as e:save('DEFECT_native_invalidation_scope',dict(error=str(e)));pytest.fail('NATIVE_FIELD_PERMISSION_SCOPE_NOT_SUPPORTED:'+str(e))
+                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    Failed: NATIVE_FIELD_PERMISSION_SCOPE_NOT_SUPPORTED:UNKNOWN_PERMISSION_SCOPE
+
+WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/tests/test_independent_court.py:112: Failed
+______ test_consumer_material_must_be_bound_not_copied[foreign_snapshot] _______
+
+alter = 'foreign_snapshot'
+
+    @pytest.mark.parametrize('alter',['foreign_snapshot','partial_as_complete','forged_joint_probability'])
+    def test_consumer_material_must_be_bound_not_copied(alter):
+     a,q,s,acc,r=run();cs=clients(a,s)
+     if alter=='foreign_snapshot':cs[0]['snapshot_ref']='FOREIGN_SNAPSHOT'
+     elif alter=='partial_as_complete':cs[0]['state']='PARTIAL_OPTIONS_OR_EMPIRICAL_SUPPORT'
+     else:cs[0]['route_probability']={'$exact_fraction':[1,1]};cs[1]['scenarios'][0]['selection_weight']={'$exact_fraction':[1,1]}
+     try:out=a.serve(q,acc,s,consumers=cs)
+     except E.N9SelectedWorldRefusal:return
+     save('DEFECT_consumer_'+alter,out)
+>    assert out['state']!='SELECTED_WORLD_VALUES_SERVED','UNVERIFIED_CONSUMER_PAYLOAD_ENDORSED_AS_COMPLETE'
+E    AssertionError: UNVERIFIED_CONSUMER_PAYLOAD_ENDORSED_AS_COMPLETE
+E    assert 'SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED'
+
+WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/tests/test_independent_court.py:124: AssertionError
+_____ test_consumer_material_must_be_bound_not_copied[partial_as_complete] _____
+
+alter = 'partial_as_complete'
+
+    @pytest.mark.parametrize('alter',['foreign_snapshot','partial_as_complete','forged_joint_probability'])
+    def test_consumer_material_must_be_bound_not_copied(alter):
+     a,q,s,acc,r=run();cs=clients(a,s)
+     if alter=='foreign_snapshot':cs[0]['snapshot_ref']='FOREIGN_SNAPSHOT'
+     elif alter=='partial_as_complete':cs[0]['state']='PARTIAL_OPTIONS_OR_EMPIRICAL_SUPPORT'
+     else:cs[0]['route_probability']={'$exact_fraction':[1,1]};cs[1]['scenarios'][0]['selection_weight']={'$exact_fraction':[1,1]}
+     try:out=a.serve(q,acc,s,consumers=cs)
+     except E.N9SelectedWorldRefusal:return
+     save('DEFECT_consumer_'+alter,out)
+>    assert out['state']!='SELECTED_WORLD_VALUES_SERVED','UNVERIFIED_CONSUMER_PAYLOAD_ENDORSED_AS_COMPLETE'
+E    AssertionError: UNVERIFIED_CONSUMER_PAYLOAD_ENDORSED_AS_COMPLETE
+E    assert 'SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED'
+
+WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/tests/test_independent_court.py:124: AssertionError
+__ test_consumer_material_must_be_bound_not_copied[forged_joint_probability] ___
+
+alter = 'forged_joint_probability'
+
+    @pytest.mark.parametrize('alter',['foreign_snapshot','partial_as_complete','forged_joint_probability'])
+    def test_consumer_material_must_be_bound_not_copied(alter):
+     a,q,s,acc,r=run();cs=clients(a,s)
+     if alter=='foreign_snapshot':cs[0]['snapshot_ref']='FOREIGN_SNAPSHOT'
+     elif alter=='partial_as_complete':cs[0]['state']='PARTIAL_OPTIONS_OR_EMPIRICAL_SUPPORT'
+     else:cs[0]['route_probability']={'$exact_fraction':[1,1]};cs[1]['scenarios'][0]['selection_weight']={'$exact_fraction':[1,1]}
+     try:out=a.serve(q,acc,s,consumers=cs)
+     except E.N9SelectedWorldRefusal:return
+     save('DEFECT_consumer_'+alter,out)
+>    assert out['state']!='SELECTED_WORLD_VALUES_SERVED','UNVERIFIED_CONSUMER_PAYLOAD_ENDORSED_AS_COMPLETE'
+E    AssertionError: UNVERIFIED_CONSUMER_PAYLOAD_ENDORSED_AS_COMPLETE
+E    assert 'SELECTED_WORLD_VALUES_SERVED' != 'SELECTED_WORLD_VALUES_SERVED'
+
+WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/tests/test_independent_court.py:124: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/tests/test_independent_court.py::test_zero_support_stays_typed_without_numeric_fabrication
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/tests/test_independent_court.py::test_serve_must_bind_actual_request_to_acceptance[target]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/tests/test_independent_court.py::test_serve_must_bind_actual_request_to_acceptance[readset]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/tests/test_independent_court.py::test_serve_must_bind_actual_request_to_acceptance[clock]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/tests/test_independent_court.py::test_accept_must_bind_snapshot_clocks_to_request
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/tests/test_independent_court.py::test_late_native_revocation_must_be_reread
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/tests/test_independent_court.py::test_native_invalidate_scope_supported
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/tests/test_independent_court.py::test_consumer_material_must_be_bound_not_copied[foreign_snapshot]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/tests/test_independent_court.py::test_consumer_material_must_be_bound_not_copied[partial_as_complete]
+FAILED WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/tests/test_independent_court.py::test_consumer_material_must_be_bound_not_copied[forged_joint_probability]
+10 failed, 35 passed in 69.23s (0:01:09)

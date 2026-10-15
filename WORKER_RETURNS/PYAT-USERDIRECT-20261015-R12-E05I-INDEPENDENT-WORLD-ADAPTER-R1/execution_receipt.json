@@ -1,0 +1,98 @@
+{
+  "verified_at_utc": "2026-10-15T20:48:15.035164+00:00",
+  "staged_objects": 401,
+  "final_runtime_paths": 401,
+  "all_materialized_git_blobs_verified": true,
+  "independent_freeze_sha256": "d43c5d02baf8419a79b022b55bf2f35d9777113f0f2d9d0f2845ad0aa48cb1cc",
+  "junit": {
+    "e05": {
+      "tests": 38,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "e04": {
+      "tests": 37,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "n9c": {
+      "tests": 47,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "m4_m5": {
+      "tests": 30,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "empirical": {
+      "tests": 101,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "e03": {
+      "tests": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "independent": {
+      "tests": 55,
+      "failures": 11,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "independent_exit": 1,
+  "independent_command": [
+    "python3",
+    "-m",
+    "pytest",
+    "-q",
+    "WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/tests",
+    "--import-mode=importlib",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/observations/independent.xml"
+  ],
+  "independent_env": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "independent_cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r12-e05i-court",
+  "independent_stdout": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r12-e05i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/observations/independent.log",
+  "cold_exits": [
+    {
+      "mode": "first",
+      "command": [
+        "/usr/local/bin/python3",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r12-e05i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/repro/cold.py",
+        "first"
+      ],
+      "exit": 0
+    },
+    {
+      "mode": "replay",
+      "command": [
+        "/usr/local/bin/python3",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r12-e05i-court/WORKER_RETURNS/PYAT-USERDIRECT-20261015-R12-E05I-INDEPENDENT-WORLD-ADAPTER-R1/repro/cold.py",
+        "replay"
+      ],
+      "exit": 0
+    }
+  ],
+  "cold_distinct_pids": [
+    1274,
+    1567
+  ],
+  "cold_bit_identical": true,
+  "verdict": "RED_SOURCEFREE_NONINSTALLING_E05_ADAPTER",
+  "harness_errors_excluded": [
+    "initial cold tuple/list comparison",
+    "expanded initial wrong universe/ref constructors"
+  ]
+}

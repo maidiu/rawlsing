@@ -1,0 +1,88 @@
+{
+  "frozen_at_utc": "2026-10-15T20:37:37.785504+00:00",
+  "basis": "Reviewer authored from commissioned original values before candidate import; not computed using adapter",
+  "startup": "e2f1b96a860d1555e072f1538eea5d913eef3b37",
+  "candidate": "257dfaf41be7d2a88c11741851e9dc89363b5386",
+  "current": {
+    "valid_at": "2027-09-01",
+    "published_asof": "2027-09-01",
+    "training_access": false,
+    "exit_cost": 8
+  },
+  "historical": {
+    "valid_at": "2026-06-01",
+    "published_asof": "2026-03-01",
+    "training_access": true,
+    "exit_cost": 2
+  },
+  "empirical": [
+    [
+      18,
+      32
+    ],
+    [
+      10,
+      16
+    ],
+    [
+      6,
+      8
+    ]
+  ],
+  "empirical_Y0_to_1": [
+    [
+      19,
+      32
+    ],
+    [
+      11,
+      16
+    ],
+    [
+      7,
+      8
+    ]
+  ],
+  "native_fields": {
+    "GSS": {
+      "numerator": 2388192,
+      "denominator": 3288063,
+      "published_percent": "72.6",
+      "source": "GSS 2021 PHC",
+      "native_unit": "occupied dwelling",
+      "geography": "Ghana rural",
+      "published_at": "2022-02-24",
+      "poolable": false
+    },
+    "NCA": {
+      "active_subscriptions": 23414527,
+      "source": "NCA Q4 2021",
+      "native_unit": "active data subscription",
+      "geography": "Ghana national",
+      "window": "90 days",
+      "published_at": "2022-07-08",
+      "unique_persons": false,
+      "poolable": false
+    }
+  },
+  "pre_NCA_publication": {
+    "GSS": "available",
+    "NCA": "NOT_PUBLISHED_AT_SELECTED_ASOF",
+    "dependency_readset_count": 2,
+    "successful_refset_count": 1
+  },
+  "metamorphic": {
+    "null": "bit-identical",
+    "empirical": "both clients and all three empirical fractions change; structural and two native fields identical",
+    "structural": "only structural eligibility changes",
+    "GSS": "only GSS native dependency changes",
+    "NCA": "only NCA native dependency changes"
+  },
+  "authority_ceiling": {
+    "operative_OC05": false,
+    "N5N6": "UNISSUED",
+    "EE13": "UNISSUED",
+    "V3": false
+  },
+  "full_dependency_binding": "exact original refs plus source/release/issuer/permission/unit/geography/role/clock; freeze exact identities in supplement before execution after reading original registries"
+}

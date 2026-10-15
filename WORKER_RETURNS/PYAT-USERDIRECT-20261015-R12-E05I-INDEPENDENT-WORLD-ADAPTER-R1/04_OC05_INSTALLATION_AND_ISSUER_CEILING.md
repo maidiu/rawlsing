@@ -1,0 +1,11 @@
+# Actual installation and issuer ceiling
+
+The original `rawlsing_next/objective_consumer_bounded_evidence.py` blob is `f30fca20e7b56e00348e82765d95f974b4b6a195`. It was imported from the exact staged Git object. Its actual `installation_manifest()` reports OC05 `NOT_YET_APPLICABLE`, `consumer_seam=None`; direct `evaluate_current_consumer` raises `NotYetApplicableConsumer`. See `observations/actual_oc05_manifest.json` and the independent installation test.
+
+No operative OC05 was installed or claimed. All executed E05 receipts remain `NONINSTALLING_SOURCEFREE_ADAPTER_CANDIDATE`, `operative_N9=False`, `operative_OC05=False`, `issued_N5N6=False`, `issued_EE13=False`, `new_issuer=False`. Negative findings here concern the candidate's source-free interface, not an operative production service.
+
+The GSS values preserve rural occupied dwelling/household main-lighting semantics, exclusions, five electricity subtypes and documentary February 24, 2022 publication. NCA values preserve national active data **subscriptions**, the 90-day definition, July 8, 2022 publication, and no unique-person or rural split inference. The N9C contract literal `RURAL_OCCUPIED_HOUSEHOLD_MAIN_LIGHTING` is retained exactly; it does not settle a new real-source unit decision. Their exact frozen registry records remain `fixture_only=True`, `issued=False`, `source_pdf_sha256=None`, `issuer_ref=None`, `TEST_ONLY_NO_EXTERNAL_USE_GRANT`.
+
+Content digests establish fixture integrity. They do not establish competent signing, archived PDF edition/custody, licensing, real original source/operation rights, or EE13. Direct forged issuer, PDF hash, permission and issuance metadata are refused. Fresh fixture constructors can construct a new content-consistent test identity; reconstruction is not real signer or renewal authority. Local world revocation is in memory and a newly constructed fixture root restores test-only use; cold replay explicitly records this limit rather than claiming durable revocation.
+
+No original raw survey or publisher PDFs were accessed. N5/N6, EE13/N7 and real N9/N10W/EE14 remain unissued/unadmitted. This review grants no all35/N11/N12, canonical/CURRENT, source adoption, actor or V3 authority. E04N retains its separate commission; the native E04 calls executed here establish only this E05 court's execution evidence and do not adopt or supersede E04N.
