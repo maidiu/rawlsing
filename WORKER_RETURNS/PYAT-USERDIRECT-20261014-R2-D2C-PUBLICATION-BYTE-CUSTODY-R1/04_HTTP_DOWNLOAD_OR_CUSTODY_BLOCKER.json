@@ -1,0 +1,124 @@
+{
+  "schema": "PYAT_R2_D2C_HTTP_DOWNLOAD_CUSTODY_BLOCKER_R1",
+  "outcome": "NO_PUBLICATION_BINARY_STAGED__SHA256_AND_BYTE_LENGTH_NULL",
+  "network_host": "Browser PDF text retrieval available; container-backed executable curl and container.download could not fetch official binaries",
+  "verified_local_environment": {
+    "python": "Python 3.13.5",
+    "hash_command": "/usr/bin/sha256sum",
+    "staging_directory": "/mnt/data/d2c_official",
+    "pdf_files_created": [],
+    "header_files_created": [
+      "gss.headers (0 bytes)",
+      "nca.headers (0 bytes)"
+    ],
+    "raw_file_signature_check": "NOT_APPLICABLE_NO_FILES",
+    "local_SHA256_commands_executed_over_official_PDFs": 0
+  },
+  "attempts": [
+    {
+      "id": "gss-curl",
+      "url": "https://census2021.statsghana.gov.gh/gssmain/fileUpload/reportthemesub/Volume%203K_Housing%20Characteristics_240222.pdf",
+      "method": "curl -L --retry 1 --connect-timeout 10 --max-time 60 -D gss.headers -o gss.pdf -w 'http_code=%{http_code} ...'",
+      "exit_code": 6,
+      "curl_reported_http_code": "000",
+      "true_http_response_status": null,
+      "bytes_received": 0,
+      "final_publisher_url": null,
+      "dns_error": "Could not resolve host: census2021.statsghana.gov.gh",
+      "result": "NO_HTTP_REQUEST_REACHED_ORIGIN"
+    },
+    {
+      "id": "nca-curl",
+      "url": "https://nca.org.gh/wp-content/uploads/2022/07/Q4-2021-statistical-Bulletin.pdf",
+      "method": "curl -L --retry 1 --connect-timeout 10 --max-time 60 -D nca.headers -o nca.pdf -w 'http_code=%{http_code} ...'",
+      "exit_code": 6,
+      "curl_reported_http_code": "000",
+      "true_http_response_status": null,
+      "bytes_received": 0,
+      "final_publisher_url": null,
+      "dns_error": "Could not resolve host: nca.org.gh",
+      "result": "NO_HTTP_REQUEST_REACHED_ORIGIN"
+    },
+    {
+      "id": "gss-container-download",
+      "url": "https://census2021.statsghana.gov.gh/gssmain/fileUpload/reportthemesub/Volume%203K_Housing%20Characteristics_240222.pdf",
+      "method": "container.download",
+      "result": "ERROR_DOWNLOAD_FAILED",
+      "bytes_received": null,
+      "http_status": null,
+      "final_url": null
+    },
+    {
+      "id": "nca-container-download",
+      "url": "https://nca.org.gh/wp-content/uploads/2022/07/Q4-2021-statistical-Bulletin.pdf",
+      "method": "container.download",
+      "result": "ERROR_DOWNLOAD_FAILED",
+      "bytes_received": null,
+      "http_status": null,
+      "final_url": null
+    },
+    {
+      "id": "gss-web-official-pdf",
+      "url": "https://census2021.statsghana.gov.gh/gssmain/fileUpload/reportthemesub/Volume%203K_Housing%20Characteristics_240222.pdf",
+      "method": "web official source PDF parser and screenshot",
+      "result": "HTTP_PDF_TEXT_PRESENT_IN_WEB_READER_86_PAGES; P0/P1/P74/P75_SCREENSHOT_PASS",
+      "raw_bytes_available": false,
+      "sha256": null,
+      "content_length_header": null
+    },
+    {
+      "id": "nca-web-official-pdf",
+      "url": "https://nca.org.gh/wp-content/uploads/2022/07/Q4-2021-statistical-Bulletin.pdf",
+      "method": "web official source PDF parser and direct publisher notice link",
+      "result": "HTTP_PDF_TEXT_PRESENT_IN_WEB_READER_36_PAGES; SCREENSHOT_P29_CACHE_MISS",
+      "raw_bytes_available": false,
+      "sha256": null,
+      "content_length_header": null
+    },
+    {
+      "id": "gss-alternate-official-referenced-in-academic-citations",
+      "url": "https://www.statsghana.gov.gh/gssmain/fileUpload/pressrelease/Volume%203K_Housing%20Characteristics_240222.pdf",
+      "method": "web.open",
+      "result": "404_NOT_FOUND",
+      "raw_bytes_available": false,
+      "source_status": "NOT_AN_OFFICIAL_EDITION_VERSUS_REVISION_COMPARISON"
+    }
+  ],
+  "blocked_proof_obligations": [
+    "Actual binary SHA-256 over entire PDF using local hashlib.sha256(open(path,'rb').read()) or sha256sum, with byte length from stat.",
+    "Exact final publisher URL and true HTTP 200/206 chain including redirect and Last-Modified/ETag/Content-Length; response header evidence.",
+    "Magic bytes %PDF-, PDF trailer/structure, page count and original PDF creation/modification metadata; metadata not authoritative alone.",
+    "Original 2022 immutable server archive object or certified file, revisions, published errata, any corrected/replaced editions.",
+    "Independent rights/automated aggregate-reuse signoff."
+  ],
+  "minimum_archive_request": {
+    "GSS": {
+      "contact": "2021phc@statsghana.gov.gh",
+      "request": "Provide byte-identical original 24 Feb 2022 issued General Report Volume 3K Housing Characteristics PDF; any replacement/errata copies; issue-upload/update chronology, original/current SHA-256 and lengths or certified transfer, archived original source URL; table 5.10 native data and classification method; reuse permission for two aggregate values in Rawlsing.",
+      "do_not_request": "Respondent microdata."
+    },
+    "NCA": {
+      "contact": "rips@nca.org.gh; info@nca.org.gh",
+      "request": "Provide byte-identical original 8 Jul 2022 Volume 6 Issue 4 Q4 2021 PDF; current and archival copies with hashes/length, full revision/correction notes and original issue/publication dates; definition/measurement and reporting reconciliation for Q4 end active 90-day mobile-data subscriptions; reuse scope for aggregate values.",
+      "do_not_request": "Subscriber identities, SIM-level, licensee confidential filings."
+    }
+  },
+  "repro_on_qualified_host": [
+    "set -euo pipefail",
+    "curl --fail --location --show-error --dump-header headers.txt --output official.pdf 'OFFICIAL_SOURCE_URL'",
+    "file official.pdf",
+    "python -c 'import hashlib,pathlib; p=pathlib.Path(\"official.pdf\"); b=p.read_bytes(); assert b.startswith(b\"%PDF-\"); print(\"bytes\",len(b),\"sha256\",hashlib.sha256(b).hexdigest())'",
+    "pdfinfo official.pdf",
+    "sha256sum official.pdf",
+    "record header URL/status/ETag/Last-Modified, publication date, archive identity, exactly matched bytes and read-only custody receipt"
+  ],
+  "no_hash_as_document_from": [
+    "URL",
+    "browser extracted text",
+    "table transcription",
+    "rendered screenshot",
+    "cached HTML",
+    "Git SHA-1 of fixtures",
+    "D2I sourcefree snapshot SHA-256"
+  ]
+}
