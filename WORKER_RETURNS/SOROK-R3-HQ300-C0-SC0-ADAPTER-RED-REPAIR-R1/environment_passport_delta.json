@@ -1,0 +1,292 @@
+{
+  "assignments_completed": [
+    "HQ300 C0: RC0 12 RED repair + PE/C1/N10E actual call path"
+  ],
+  "branch": "agent/rabochii-sorok-r3-hq300-c0-sc0-adapter-red-repair-r1",
+  "capabilities": {
+    "filesystem_shell": "VERIFIED",
+    "git": "VERIFIED 2.39.1",
+    "jsonschema": "VERIFIED 4.26.0",
+    "pytest": "VERIFIED 9.1.1",
+    "python": "VERIFIED 3.11.3"
+  },
+  "checkout_base_head": "74d85639f54deebf38eac6b334034c417cf5831d",
+  "clean_dirty_state": "return-terrain-only writes; no accepted source/owner mutation",
+  "conversation_or_account_affinity": "OpenCode MiMo-V2.6 Pro (configured session; unchanged per dispatch)",
+  "covered_test_suites": [
+    {
+      "command": "bash repro/run_hq300_battery.sh [1]",
+      "junit": "repro/k9_k10.junit.xml",
+      "result": "36 passed (K9 8 + K10 28)"
+    },
+    {
+      "command": "bash repro/run_hq300_battery.sh [2] (RC0 frozen source unchanged)",
+      "junit": "repro/rc0_25.junit.xml",
+      "result": "25 passed (12 repaired REDs + 13 preserved)"
+    },
+    {
+      "command": "bash repro/run_hq300_battery.sh [3]",
+      "junit": "repro/connection.junit.xml",
+      "result": "6 passed (PE/C1/N10E call trace)"
+    },
+    {
+      "command": "bash repro/run_hq300_battery.sh [4]",
+      "junit": "repro/n10e_c1.junit.xml",
+      "result": "56 passed (N10E 43 + C1 13)"
+    },
+    {
+      "command": "bash repro/run_hq300_battery.sh [5]",
+      "junit": "repro/pe_21.junit.xml",
+      "result": "21 passed"
+    }
+  ],
+  "dependency_closure_status": "BOUNDED_SOURCEFREE_WITH_PINS",
+  "environment_id": "ENV-HQ300-C0-LOCAL-D5E1",
+  "epoch_id": "EPOCH-HQ300-C0-20261014-LOCAL-1",
+  "git_object_store_alias": "local-shared-object-store-rawlsing",
+  "imported_module_files": {
+    "C1": {
+      "file": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_analytical_composition.py",
+      "git_blob_sha1": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b"
+    },
+    "N10E": {
+      "file": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_empirical_possibility_provider.py",
+      "git_blob_sha1": "23167aa25291fb148b1e3cf210ac33fe7769b783"
+    },
+    "PE": {
+      "file": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_postastra_pe_generic_world_possibility.py",
+      "git_blob_sha1": "58484f4c3d9aae148d4116dcf00420c432aefcbd"
+    }
+  },
+  "independent_review_separation": "IMPLEMENTER_NOT_REVIEWER; reviewer requested in 03",
+  "last_live_probe_at": "2026-10-14",
+  "machine_alias": "local-darwin-host-01",
+  "materialized_source_refs": [
+    {
+      "bytes": 17569,
+      "git_blob_sha1": "def0253226f68ab38168705a4002626d9ef0261a",
+      "git_commit": "86bd2a54687b40401f7c4247607bd1873c585619",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/01_FROZEN_INDEPENDENT_EXPECTATIONS.json",
+      "staged_relative_path": "staging/rc0/01_FROZEN_INDEPENDENT_EXPECTATIONS.json"
+    },
+    {
+      "bytes": 97006,
+      "git_blob_sha1": "6c742acf0d4e2abdd01a1fc726852dff902b5b2f",
+      "git_commit": "86bd2a54687b40401f7c4247607bd1873c585619",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/02_EXECUTION_PER_CASE.json",
+      "staged_relative_path": "staging/rc0/02_EXECUTION_PER_CASE.json"
+    },
+    {
+      "bytes": 17104,
+      "git_blob_sha1": "f728d6f048fafb9c50525d67d739d6af4609e4e3",
+      "git_commit": "86bd2a54687b40401f7c4247607bd1873c585619",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/03_NINE_PE_REDS_ADJUDICATED.json",
+      "staged_relative_path": "staging/rc0/03_NINE_PE_REDS_ADJUDICATED.json"
+    },
+    {
+      "bytes": 7891,
+      "git_blob_sha1": "17ef8ce9a46709c689a1a48a69ad408c21fb5857",
+      "git_commit": "86bd2a54687b40401f7c4247607bd1873c585619",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/05_OWNER_ACTION_REGISTER.json",
+      "staged_relative_path": "staging/rc0/05_OWNER_ACTION_REGISTER.json"
+    },
+    {
+      "bytes": 10173,
+      "git_blob_sha1": "aab792e9d1f46935b57640d959219e8bf8dc4a02",
+      "git_commit": "86bd2a54687b40401f7c4247607bd1873c585619",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/reviewer_tests/test_rc0_hostile.py",
+      "staged_relative_path": "staging/rc0/test_rc0_hostile.py"
+    },
+    {
+      "bytes": 108094,
+      "git_blob_sha1": "610ac870fde6cfe63796592b3c6b1e1bf1e37150",
+      "git_commit": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+      "path": "WORKER_RETURNS/SOROK-R3-POSTASTRA-SC0-WORLD-PORT-CONTRACT-R1/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json",
+      "staged_relative_path": "staging/oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json"
+    },
+    {
+      "bytes": 8291,
+      "git_blob_sha1": "9ccb66f9b08a4aa8b96582295bb2966d250fd72d",
+      "git_commit": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+      "path": "WORKER_RETURNS/SOROK-R3-POSTASTRA-SC0-WORLD-PORT-CONTRACT-R1/02_K9_PROVIDER_SWAP_ORACLES.json",
+      "staged_relative_path": "staging/oracles/02_K9_PROVIDER_SWAP_ORACLES.json"
+    },
+    {
+      "bytes": 15914,
+      "git_blob_sha1": "e78b3ee91da1fb18deaf8d8f226800ad855adbae",
+      "git_commit": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+      "path": "WORKER_RETURNS/SOROK-R3-POSTASTRA-SC0-WORLD-PORT-CONTRACT-R1/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json",
+      "staged_relative_path": "staging/oracles/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json"
+    },
+    {
+      "bytes": 34731,
+      "git_blob_sha1": "58484f4c3d9aae148d4116dcf00420c432aefcbd",
+      "git_commit": "b497f85713847cecc169d4d71c7629655d562dc0",
+      "path": "rawlsing_next/pre553_postastra_pe_generic_world_possibility.py",
+      "staged_relative_path": "staging/ns/rawlsing_next/pre553_postastra_pe_generic_world_possibility.py"
+    },
+    {
+      "bytes": 59605,
+      "git_blob_sha1": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "rawlsing_next/pre553_analytical_composition.py",
+      "staged_relative_path": "staging/ns/rawlsing_next/pre553_analytical_composition.py"
+    },
+    {
+      "bytes": 28005,
+      "git_blob_sha1": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+      "staged_relative_path": "staging/ns/rawlsing_next/pre553_empirical_possibility_provider.py"
+    },
+    {
+      "bytes": 27637,
+      "git_blob_sha1": "c9674d5fe9d01621eda0fdb4a999391eba422d92",
+      "git_commit": "b497f85713847cecc169d4d71c7629655d562dc0",
+      "path": "rawlsing_next/tests/test_postastra_pe_fixture.py",
+      "staged_relative_path": "staging/ns/rawlsing_next/tests/test_postastra_pe_fixture.py"
+    },
+    {
+      "bytes": 21271,
+      "git_blob_sha1": "0e384f72fa615dc72a0dcb08a36472a64b7b1e4a",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+      "staged_relative_path": "staging/ns/rawlsing_next/tests/n10e_empirical_slice_fixture.py"
+    },
+    {
+      "bytes": 3015,
+      "git_blob_sha1": "35b2427c0c5ef97bcd53d20f5dee9d365228459b",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "rawlsing_next/tests/n10e_at17_successor_requal.py",
+      "staged_relative_path": "staging/ns/rawlsing_next/tests/n10e_at17_successor_requal.py"
+    },
+    {
+      "bytes": 33012,
+      "git_blob_sha1": "0393cc8c17a313b7944b2a5287d0406d6cbe3849",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "rawlsing_next/tests/c1_at08_at13_fixture.py",
+      "staged_relative_path": "staging/ns/rawlsing_next/tests/c1_at08_at13_fixture.py"
+    },
+    {
+      "bytes": 14199,
+      "git_blob_sha1": "c6acafae820c065215fdbe7a703480a8b19fbc57",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json",
+      "staged_relative_path": "staging/ns/WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json"
+    },
+    {
+      "bytes": 16335,
+      "git_blob_sha1": "333989fa7b57c221d6aa5ebfc25d9d76e0acad32",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json",
+      "staged_relative_path": "staging/ns/WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json"
+    },
+    {
+      "bytes": 7195,
+      "git_blob_sha1": "8e5bd3d23db1e39aebee0a55d49934a0d400dd48",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/04_SLICE_PROJECTION.json",
+      "staged_relative_path": "staging/ns/WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/04_SLICE_PROJECTION.json"
+    },
+    {
+      "bytes": 12394,
+      "git_blob_sha1": "5d1583dc31c837282ea40448285109a31bb1db41",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json",
+      "staged_relative_path": "staging/ns/WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json"
+    },
+    {
+      "bytes": 5683,
+      "git_blob_sha1": "462bb282ddc2cc9667f1890f2d65f2fae9a3a72c",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json",
+      "staged_relative_path": "staging/ns/WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json"
+    },
+    {
+      "bytes": 9889,
+      "git_blob_sha1": "47c0a267298be42f64538952fe9358356a566d96",
+      "git_commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/00_RETURN.md",
+      "staged_relative_path": "staging/hq298/00_RETURN.md"
+    },
+    {
+      "bytes": 50174,
+      "git_blob_sha1": "f776cc2b26be222132d86abbcb1ad429991fa61d",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "rawlsing_next/tests/test_pre553_empirical_possibility_provider.py",
+      "staged_relative_path": "staging/ns/rawlsing_next/tests/test_pre553_empirical_possibility_provider.py"
+    },
+    {
+      "bytes": 29204,
+      "git_blob_sha1": "2210fc1b4cb99552aafc8797c12d780a78e7983b",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "rawlsing_next/tests/test_pre553_analytical_composition.py",
+      "staged_relative_path": "staging/ns/rawlsing_next/tests/test_pre553_analytical_composition.py"
+    },
+    {
+      "bytes": 22168,
+      "git_blob_sha1": "92f59875583bf513c6fdbcd3ad7fe2b49e45e212",
+      "git_commit": "b497f85713847cecc169d4d71c7629655d562dc0",
+      "path": "rawlsing_next/tests/test_postastra_pe_generic_world_possibility.py",
+      "staged_relative_path": "staging/ns/rawlsing_next/tests/test_postastra_pe_generic_world_possibility.py"
+    },
+    {
+      "bytes": 2460,
+      "git_blob_sha1": "19e8d47084ebb5763037a83c4afbc2036f30c49a",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "rawlsing_next/tests/n10e_empirical_slice_fresh_process_runner.py",
+      "staged_relative_path": "staging/ns/rawlsing_next/tests/n10e_empirical_slice_fresh_process_runner.py"
+    },
+    {
+      "bytes": 175753,
+      "git_blob_sha1": "2d725dc592291ac7e8da4e4b0fb90f96dbeacec4",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_HISTORICAL_CANONICAL.json",
+      "staged_relative_path": "staging/ns/WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_HISTORICAL_CANONICAL.json"
+    },
+    {
+      "bytes": 175936,
+      "git_blob_sha1": "8143c96ed8ebdf3b87632d193a30e9924cbd1ced",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_SUCCESSOR_CANONICAL.json",
+      "staged_relative_path": "staging/ns/WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_SUCCESSOR_CANONICAL.json"
+    },
+    {
+      "bytes": 177208,
+      "git_blob_sha1": "634d4dd6c6c90e6c02220b17071795e9b7bdbd3e",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_HISTORICAL_CANONICAL.json",
+      "staged_relative_path": "staging/ns/WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_HISTORICAL_CANONICAL.json"
+    },
+    {
+      "bytes": 177391,
+      "git_blob_sha1": "712455f3b84a0685d0876dc5218421edf7dae724",
+      "git_commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_SUCCESSOR_CANONICAL.json",
+      "staged_relative_path": "staging/ns/WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_SUCCESSOR_CANONICAL.json"
+    }
+  ],
+  "model_calls_this_commission": 0,
+  "model_provider": "OpenCode MiMo-V2.6 Pro (dispatch-fixed; no model switch)",
+  "next_good_affinity_tags": [
+    "SC0_PORT",
+    "RC0_REPAIR",
+    "PE_C1_N10E_CONNECTION",
+    "ENVELOPE_SCHEMA",
+    "N9_PORT"
+  ],
+  "observed_credits_usage": "UNKNOWN",
+  "owner_session_alias": "opencode-go-sorok-hq300-c0-worker",
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_DELTA@1",
+  "privacy_source_grant": "no original survey bytes; synthetic fixtures only",
+  "probe_command_and_result": "python3 --version -> 3.11.3; pytest -> 9.1.1; git -> 2.39.1; jsonschema -> 4.26.0",
+  "retire_or_rebuild_reason": null,
+  "runtime_marker_digest": "01c4e3d149bb07d46a55ad5e067678c9923a2e8b587bc526867d932f36877c0c",
+  "science_grade": "SOURCEFREE_REPAIRED_ADAPTER_CANDIDATE_WITH_PINNED_PRODUCER_CONNECTION__NOT_ADOPTION__NOT_OPERATIVE_N9_N10W",
+  "session_still_available_for_more_work": true,
+  "source_family": "Sorok HQ lineage + blob-verified SC0 oracles + RC0 frozen evidence + pinned PE/C1/N10E closure",
+  "staged_state_preservation": "staging/ (29 verified objects) + repro/ retained; re-runnable via repro/run_hq300_battery.sh",
+  "status": "LIVE_VERIFIED",
+  "surface": "LOCAL_SHARED_STORE",
+  "worktree_alias": "governed-sparse-worktree-hq300-c0"
+}

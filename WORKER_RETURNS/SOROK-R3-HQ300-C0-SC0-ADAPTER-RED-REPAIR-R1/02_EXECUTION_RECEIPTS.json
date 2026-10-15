@@ -1,0 +1,277 @@
+{
+  "battery": {
+    "command": "bash repro/run_hq300_battery.sh",
+    "suites": {
+      "K9_8_plus_K10_28": {
+        "failed": 0,
+        "junit": "repro/k9_k10.junit.xml",
+        "passed": 36
+      },
+      "RC0_frozen_25": {
+        "failed": 0,
+        "junit": "repro/rc0_25.junit.xml",
+        "passed": 25,
+        "source": "staging/rc0/test_rc0_hostile.py (byte-identical reviewer source)"
+      },
+      "connection_oracle": {
+        "failed": 0,
+        "junit": "repro/connection.junit.xml",
+        "passed": 6
+      },
+      "pinned_N10E_43_plus_C1_13": {
+        "failed": 0,
+        "junit": "repro/n10e_c1.junit.xml",
+        "passed": 56
+      },
+      "pinned_PE_21": {
+        "failed": 0,
+        "junit": "repro/pe_21.junit.xml",
+        "passed": 21
+      }
+    }
+  },
+  "candidate_base": "HQ298 SC0 b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59 (author predecessor)",
+  "connection_oracle": {
+    "call_total_during_run": 5861,
+    "key_calls": [
+      {
+        "calls": 2,
+        "function": "compose_positioned_subject_possibility",
+        "module": "C1"
+      },
+      {
+        "calls": 1,
+        "function": "provide_empirical_possibility_slice",
+        "module": "N10E"
+      },
+      {
+        "calls": 1,
+        "function": "serve_generic_world_situated_possibility",
+        "module": "PE"
+      }
+    ],
+    "modules_touched_during_run": [
+      "C1",
+      "N10E",
+      "PE"
+    ],
+    "pinned_provenance": {
+      "C1": {
+        "file": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_analytical_composition.py",
+        "git_blob_sha1": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b"
+      },
+      "N10E": {
+        "file": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_empirical_possibility_provider.py",
+        "git_blob_sha1": "23167aa25291fb148b1e3cf210ac33fe7769b783"
+      },
+      "PE": {
+        "file": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_postastra_pe_generic_world_possibility.py",
+        "git_blob_sha1": "58484f4c3d9aae148d4116dcf00420c432aefcbd"
+      }
+    },
+    "requirement": "actual call trace from adapter into pinned PE/C1/N10E; static hints cannot satisfy",
+    "served_support": {
+      "base_ratio": "54/60",
+      "denominator": 60,
+      "minority_ratio": "6/60",
+      "risk_set": "fx:risk:asked_eligible",
+      "routing": "fx:routing:asked",
+      "target_no": 6,
+      "target_yes": 54,
+      "uncertainty": "fx:u:fixture_no_real_inference",
+      "weight": "fx:design_weight:unit"
+    },
+    "static_hint_adversarial": "test_lane_cannot_be_satisfied_by_declared_hint_alone PASS (unconnected lane raises INTEGRITY_FAILURE)",
+    "support_is_producer_derived": true
+  },
+  "fixture_correction_disclosure": {
+    "field": "world_baseline.time_axes.as_of",
+    "now": "2011",
+    "oracle_files_modified": false,
+    "rationale": "the frozen oracle baseline's KNOWLEDGE_AS_OF=2009 with a 2010 publication is internally inconsistent (lookahead); the gate forbids consuming it, so the candidate fixture is corrected to a consistent knowledge cut. The frozen oracle FILES remain byte-identical and the 2009/2010 pair is retained as the hostile lookahead case (RC0 clock test + validate_knowledge_clock).",
+    "was": "2009 (frozen oracle baseline pair published=2010/as_of=2009)"
+  },
+  "frozen_ledger_sha256": "8eda5d91acb852429e7890bb0bef949bb6c324ebc47d13a9042720c8b4f52246",
+  "negative_algebra_12_states": [
+    "OBSERVED_ZERO",
+    "VALID_EMPTY",
+    "MISSING",
+    "UNDERPOWERED",
+    "NOT_ASKED",
+    "NONCOMPARABLE",
+    "HELD_AUTHORITY",
+    "DENIED_USE",
+    "NO_CURRENT",
+    "PROXY_MODELLED",
+    "UNKNOWN_UNOBSERVED_GAP",
+    "UNBOUND_RUNTIME_BINDING"
+  ],
+  "rc0_12_reds_repair_matrix": [
+    {
+      "hq300_status": "PASS",
+      "rc0_case": "test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderA]",
+      "rc0_status": "RED",
+      "repaired": true
+    },
+    {
+      "hq300_status": "PASS",
+      "rc0_case": "test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderB]",
+      "rc0_status": "RED",
+      "repaired": true
+    },
+    {
+      "hq300_status": "PASS",
+      "rc0_case": "test_foreign_demand_cannot_be_labelled_complete[ProviderA]",
+      "rc0_status": "RED",
+      "repaired": true
+    },
+    {
+      "hq300_status": "PASS",
+      "rc0_case": "test_foreign_demand_cannot_be_labelled_complete[ProviderB]",
+      "rc0_status": "RED",
+      "repaired": true
+    },
+    {
+      "hq300_status": "PASS",
+      "rc0_case": "test_knowledge_asof_cannot_consume_future_publication[ProviderA]",
+      "rc0_status": "RED",
+      "repaired": true
+    },
+    {
+      "hq300_status": "PASS",
+      "rc0_case": "test_knowledge_asof_cannot_consume_future_publication[ProviderB]",
+      "rc0_status": "RED",
+      "repaired": true
+    },
+    {
+      "hq300_status": "PASS",
+      "rc0_case": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderA]",
+      "rc0_status": "RED",
+      "repaired": true
+    },
+    {
+      "hq300_status": "PASS",
+      "rc0_case": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderB]",
+      "rc0_status": "RED",
+      "repaired": true
+    },
+    {
+      "hq300_status": "PASS",
+      "rc0_case": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderA]",
+      "rc0_status": "RED",
+      "repaired": true
+    },
+    {
+      "hq300_status": "PASS",
+      "rc0_case": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderB]",
+      "rc0_status": "RED",
+      "repaired": true
+    },
+    {
+      "hq300_status": "PASS",
+      "rc0_case": "test_direct_receipts_satisfy_original_frozen_envelope_schema",
+      "rc0_status": "RED",
+      "repaired": true
+    },
+    {
+      "hq300_status": "PASS",
+      "rc0_case": "test_full_original_negative_state_distinctions_survive",
+      "rc0_status": "RED",
+      "repaired": true
+    }
+  ],
+  "rc0_13_passes_preserved": [
+    {
+      "hq300_status": "PASS",
+      "preserved": true,
+      "rc0_case": "test_actual_value_intervention_changes_both_consumers_and_only_affected_route[ProviderA]",
+      "rc0_status": "PASS"
+    },
+    {
+      "hq300_status": "PASS",
+      "preserved": true,
+      "rc0_case": "test_actual_value_intervention_changes_both_consumers_and_only_affected_route[ProviderB]",
+      "rc0_status": "PASS"
+    },
+    {
+      "hq300_status": "PASS",
+      "preserved": true,
+      "rc0_case": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[issuer-ProviderA]",
+      "rc0_status": "PASS"
+    },
+    {
+      "hq300_status": "PASS",
+      "preserved": true,
+      "rc0_case": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[issuer-ProviderB]",
+      "rc0_status": "PASS"
+    },
+    {
+      "hq300_status": "PASS",
+      "preserved": true,
+      "rc0_case": "test_h1_f1_f2_h3_and_both_h2_successors_preserve_explicit_deferral",
+      "rc0_status": "PASS"
+    },
+    {
+      "hq300_status": "PASS",
+      "preserved": true,
+      "rc0_case": "test_changed_binding_guard_is_real_but_adapter_recomputes_new_selection",
+      "rc0_status": "PASS"
+    },
+    {
+      "hq300_status": "PASS",
+      "preserved": true,
+      "rc0_case": "test_baseline_providers_equal_without_using_candidate_comparison_function",
+      "rc0_status": "PASS"
+    },
+    {
+      "hq300_status": "PASS",
+      "preserved": true,
+      "rc0_case": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[AH-REJECT_SEMANTIC_LOSS-ProviderA]",
+      "rc0_status": "PASS"
+    },
+    {
+      "hq300_status": "PASS",
+      "preserved": true,
+      "rc0_case": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[AH-REJECT_SEMANTIC_LOSS-ProviderB]",
+      "rc0_status": "PASS"
+    },
+    {
+      "hq300_status": "PASS",
+      "preserved": true,
+      "rc0_case": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS-ProviderA]",
+      "rc0_status": "PASS"
+    },
+    {
+      "hq300_status": "PASS",
+      "preserved": true,
+      "rc0_case": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS-ProviderB]",
+      "rc0_status": "PASS"
+    },
+    {
+      "hq300_status": "PASS",
+      "preserved": true,
+      "rc0_case": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[F2-REJECT_F2_PREREQUISITE_LOSS-ProviderA]",
+      "rc0_status": "PASS"
+    },
+    {
+      "hq300_status": "PASS",
+      "preserved": true,
+      "rc0_case": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[F2-REJECT_F2_PREREQUISITE_LOSS-ProviderB]",
+      "rc0_status": "PASS"
+    }
+  ],
+  "rc0_reds_repaired_count": 12,
+  "rc0_review_commit": "86bd2a54687b40401f7c4247607bd1873c585619",
+  "repair_evidence": {
+    "RC0_CLOCK_LOOKAHEAD": "validate_knowledge_clock refuses KNOWLEDGE_AS_OF<publication without declared prior knowledge; fixture clock corrected to consistent as_of=2011; frozen 2009/2010 pair retained as hostile lookahead case",
+    "RC0_EXTRA_NEGATIVES": "12-state negative algebra with original codes (DENIED_USE, NO_CURRENT, PROXY_MODELLED, UNKNOWN_UNOBSERVED_GAP, UNBOUND_RUNTIME_BINDING) validated by world_laws and serialized via ScopedStatus",
+    "RC0_FACADE_SCOPE": "facade binds consumer_effects_lineage (digests + value keys); round_trip_two_contracts rejects lineage loss",
+    "RC0_FROZEN_ENVELOPE": "true serializer (port/envelope.py) emits exactly the pinned draft-2020-12 fields; both receipts validate with 0 jsonschema errors",
+    "RC0_PARTIAL_ENTRYPOINT": "validate_demand_closure: foreign demand served PARTIAL_DEFERRED with is_demand_complete=false; candidate gate assert_complete_claim raises PARTIAL_DEFERRED (K10_21)",
+    "RC0_PERMISSION_ENTRYPOINT": "adapter._fail_closed_entry refuses DENIED_USE on revoked/absent WORLD_READ before any value or consumer emission (RC0 test_adapter_denied_world_read... PASS both providers)",
+    "RC0_REVERSAL_SCOPE": "request_role_reversal dereferences issuer+scope+target+reverse_target+direction and computes the reverse slice from the grant's own bindings (independently_issued=true, computed_from_forward=false)"
+  },
+  "schema": "HQ300_C0_EXECUTION_RECEIPTS@1",
+  "staging_manifest_sha256": "a4f92b377bcdf15221e66ffbde725409dff5e36f9e1526e51ac876498b26f19c",
+  "startup_sha": "74d85639f54deebf38eac6b334034c417cf5831d"
+}

@@ -1,0 +1,275 @@
+{
+  "custody": {
+    "envelope_sha256": "6c7d02d1eac88fd1da0f54b480d5a109a7f8f4886768af9b454cabe6494ecfa9",
+    "hq298_candidate_commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+    "k10_oracle_sha256": "2fdd90c9caace1b434ef0199401607bf955e7f6e788ee4b3f7631cdde6688a01",
+    "k9_oracle_sha256": "77dadf8dfad44133bbb01dd627d126cdaf9ca08bb7751da1500d957618220689",
+    "rc0_execution_sha256": "9454fa2514399676722b9c5ae6f71215c4dfe1a5915d55c5ce68b3945b00ebe5",
+    "rc0_expectations_declared_sha256": "c9abb1c6fae3d32d7c0f725b107e9fb9169782785ac3ea36bfd40c0278413492",
+    "rc0_expectations_sha256": "c9abb1c6fae3d32d7c0f725b107e9fb9169782785ac3ea36bfd40c0278413492",
+    "rc0_hostile_test_sha256": "2b218d0c61f6d251b7e4b8ac8d10718d4f99ded98da6c1bfae829e5209e28792",
+    "rc0_review_commit": "86bd2a54687b40401f7c4247607bd1873c585619"
+  },
+  "frozen_before_any_repair": true,
+  "no_waiver": "RC0 test source and all frozen oracles stay byte-identical; no expected class rewritten to fit code",
+  "rc0_10_independent_invariants": [
+    {
+      "hypothesis": "Revoked WORLD_READ must not allow selected values or consumer effects through adapter.run",
+      "id": "RC0_PERMISSION_ENTRYPOINT"
+    },
+    {
+      "hypothesis": "A genuinely partial/dropped demanded selection must not be served COMPLETE through adapter.run",
+      "id": "RC0_PARTIAL_ENTRYPOINT"
+    },
+    {
+      "hypothesis": "KNOWLEDGE_AS_OF 2009 must not consume source publication 2010 as known without separately declared prior knowledge",
+      "id": "RC0_CLOCK_LOOKAHEAD"
+    },
+    {
+      "hypothesis": "Changed binding without H2 successor should not silently be accepted by adapter after prior use",
+      "id": "RC0_REFRESH_ENTRYPOINT"
+    },
+    {
+      "hypothesis": "F2 reference, DEFERRED_UNBOUND status and not_satisfaction flag must survive; no actor satisfaction inferred",
+      "id": "RC0_F2_H1"
+    },
+    {
+      "hypothesis": "Change public min_age from14to18 must change both consumer route values while leaving mutual route and empirical counts invariant",
+      "id": "RC0_TRUE_VALUES"
+    },
+    {
+      "hypothesis": "Matching issuer string does not authorize a foreign target or foreign universe/release scope",
+      "id": "RC0_REVERSAL_SCOPE"
+    },
+    {
+      "hypothesis": "Preserve original NO_CURRENT, PROXY_MODELLED, UNKNOWN_UNOBSERVED_GAP and UNBOUND_RUNTIME_BINDING without silent omission",
+      "id": "RC0_EXTRA_NEGATIVES"
+    },
+    {
+      "hypothesis": "Two receipt round-trip must not silently discard consumer values/effects lineage",
+      "id": "RC0_FACADE_SCOPE"
+    },
+    {
+      "hypothesis": "Direct fixture-port use is not proof that its possibility receipt was computed through pinned N10E/C1/PE",
+      "id": "RC0_PE_PORT_SEAM"
+    }
+  ],
+  "rc0_12_reds_frozen": [
+    {
+      "name": "test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderA]",
+      "status": "RED"
+    },
+    {
+      "name": "test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderB]",
+      "status": "RED"
+    },
+    {
+      "name": "test_foreign_demand_cannot_be_labelled_complete[ProviderA]",
+      "status": "RED"
+    },
+    {
+      "name": "test_foreign_demand_cannot_be_labelled_complete[ProviderB]",
+      "status": "RED"
+    },
+    {
+      "name": "test_knowledge_asof_cannot_consume_future_publication[ProviderA]",
+      "status": "RED"
+    },
+    {
+      "name": "test_knowledge_asof_cannot_consume_future_publication[ProviderB]",
+      "status": "RED"
+    },
+    {
+      "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderA]",
+      "status": "RED"
+    },
+    {
+      "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderB]",
+      "status": "RED"
+    },
+    {
+      "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderA]",
+      "status": "RED"
+    },
+    {
+      "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderB]",
+      "status": "RED"
+    },
+    {
+      "name": "test_direct_receipts_satisfy_original_frozen_envelope_schema",
+      "status": "RED"
+    },
+    {
+      "name": "test_full_original_negative_state_distinctions_survive",
+      "status": "RED"
+    }
+  ],
+  "rc0_13_passes_frozen": [
+    {
+      "name": "test_actual_value_intervention_changes_both_consumers_and_only_affected_route[ProviderA]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_actual_value_intervention_changes_both_consumers_and_only_affected_route[ProviderB]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[issuer-ProviderA]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[issuer-ProviderB]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_h1_f1_f2_h3_and_both_h2_successors_preserve_explicit_deferral",
+      "status": "PASS"
+    },
+    {
+      "name": "test_changed_binding_guard_is_real_but_adapter_recomputes_new_selection",
+      "status": "PASS"
+    },
+    {
+      "name": "test_baseline_providers_equal_without_using_candidate_comparison_function",
+      "status": "PASS"
+    },
+    {
+      "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[AH-REJECT_SEMANTIC_LOSS-ProviderA]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[AH-REJECT_SEMANTIC_LOSS-ProviderB]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS-ProviderA]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS-ProviderB]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[F2-REJECT_F2_PREREQUISITE_LOSS-ProviderA]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[F2-REJECT_F2_PREREQUISITE_LOSS-ProviderB]",
+      "status": "PASS"
+    }
+  ],
+  "rc0_25_cases": [
+    {
+      "name": "test_actual_value_intervention_changes_both_consumers_and_only_affected_route[ProviderA]",
+      "rc0_status": "PASS"
+    },
+    {
+      "name": "test_actual_value_intervention_changes_both_consumers_and_only_affected_route[ProviderB]",
+      "rc0_status": "PASS"
+    },
+    {
+      "name": "test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderA]",
+      "rc0_status": "RED"
+    },
+    {
+      "name": "test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderB]",
+      "rc0_status": "RED"
+    },
+    {
+      "name": "test_foreign_demand_cannot_be_labelled_complete[ProviderA]",
+      "rc0_status": "RED"
+    },
+    {
+      "name": "test_foreign_demand_cannot_be_labelled_complete[ProviderB]",
+      "rc0_status": "RED"
+    },
+    {
+      "name": "test_knowledge_asof_cannot_consume_future_publication[ProviderA]",
+      "rc0_status": "RED"
+    },
+    {
+      "name": "test_knowledge_asof_cannot_consume_future_publication[ProviderB]",
+      "rc0_status": "RED"
+    },
+    {
+      "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[issuer-ProviderA]",
+      "rc0_status": "PASS"
+    },
+    {
+      "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[issuer-ProviderB]",
+      "rc0_status": "PASS"
+    },
+    {
+      "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderA]",
+      "rc0_status": "RED"
+    },
+    {
+      "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderB]",
+      "rc0_status": "RED"
+    },
+    {
+      "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderA]",
+      "rc0_status": "RED"
+    },
+    {
+      "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderB]",
+      "rc0_status": "RED"
+    },
+    {
+      "name": "test_direct_receipts_satisfy_original_frozen_envelope_schema",
+      "rc0_status": "RED"
+    },
+    {
+      "name": "test_full_original_negative_state_distinctions_survive",
+      "rc0_status": "RED"
+    },
+    {
+      "name": "test_h1_f1_f2_h3_and_both_h2_successors_preserve_explicit_deferral",
+      "rc0_status": "PASS"
+    },
+    {
+      "name": "test_changed_binding_guard_is_real_but_adapter_recomputes_new_selection",
+      "rc0_status": "PASS"
+    },
+    {
+      "name": "test_baseline_providers_equal_without_using_candidate_comparison_function",
+      "rc0_status": "PASS"
+    },
+    {
+      "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[AH-REJECT_SEMANTIC_LOSS-ProviderA]",
+      "rc0_status": "PASS"
+    },
+    {
+      "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[AH-REJECT_SEMANTIC_LOSS-ProviderB]",
+      "rc0_status": "PASS"
+    },
+    {
+      "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS-ProviderA]",
+      "rc0_status": "PASS"
+    },
+    {
+      "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS-ProviderB]",
+      "rc0_status": "PASS"
+    },
+    {
+      "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[F2-REJECT_F2_PREREQUISITE_LOSS-ProviderA]",
+      "rc0_status": "PASS"
+    },
+    {
+      "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[F2-REJECT_F2_PREREQUISITE_LOSS-ProviderB]",
+      "rc0_status": "PASS"
+    }
+  ],
+  "repair_targets": {
+    "RC0_CLOCK_LOOKAHEAD": "KNOWLEDGE_AS_OF must not consume publication later than knowledge cut without declared prior knowledge",
+    "RC0_EXTRA_NEGATIVES": "all 12 frozen negative states with ORIGINAL codes (DENIED_USE not DENIED; NO_CURRENT, PROXY_MODELLED, UNKNOWN_UNOBSERVED_GAP, UNBOUND_RUNTIME_BINDING retained)",
+    "RC0_FACADE_SCOPE": "two-receipt round-trip must not silently discard consumer values/effects lineage",
+    "RC0_FROZEN_ENVELOPE": "world_receipt and possibility_receipt must satisfy the pinned draft-2020-12 envelope schema",
+    "RC0_PARTIAL_ENTRYPOINT": "foreign/unavailable demand must not be served COMPLETE; candidate partial-selection gate must emit PARTIAL_DEFERRED (K10_21 real gate)",
+    "RC0_PERMISSION_ENTRYPOINT": "adapter.run must fail-closed DENIED_USE when WORLD_READ revoked, before any value/consumer emission",
+    "RC0_PE_PORT_SEAM": "actual adapter->pinned PE/C1/N10E call trace with call counter; static hints may not satisfy the connection oracle",
+    "RC0_REVERSAL_SCOPE": "reverse grant must dereference scope, target and independent direction, not issuer string alone"
+  },
+  "role": "bounded sourcefree implementer; RC0 evidence copied verbatim before candidate edits",
+  "schema": "HQ300_C0_FROZEN_RC0_INPUTS@1"
+}

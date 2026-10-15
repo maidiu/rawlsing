@@ -1,0 +1,129 @@
+{
+  "schema": "RC0_NINE_EXECUTED_PE_REDS_ADJUDICATION@1",
+  "counts": {
+    "VERIFIED_CANDIDATE_CODE_DEFECT": 1,
+    "UNPROVED_DEPENDENCY": 5,
+    "REVIEWER_EXPECTATION_PROBLEM": 3
+  },
+  "cases": [
+    {
+      "name": "test_strict_reverse_scoped_issuer_forgery_must_refuse",
+      "classname": "WORKER_RETURNS.SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1.staging.ns.rawlsing_next.tests.test_hq297_k9k10_sc0_pe_independent",
+      "status": "RED",
+      "seconds": "0.061",
+      "failure_message": "AssertionError: STATIC_EXPECTED_FAILURE__PE_ACCEPTS_ANY_NON_NULL_REVERSAL_AUTHORITY\nassert 'EXACT_SUPPORTED' == 'TYPED_REFUSAL'\n  \n  - TYPED_REFUSAL\n  + EXACT_SUPPORTED",
+      "full_failure": "worlds = {'A': {'_arithmetic': {'multi_a': {'denominator': 30, 'no': 3, 'yes': 27}, 'multi_b': {'denominator': 30, 'no': 9, 'ye...77c0f29f5e49702d1512bb19e906625752a55adfad4460617978a6e672730c74', typed_state='PREDICATE_RESOLVED_AUTHORIZED'), ...}}}\n\n    def test_strict_reverse_scoped_issuer_forgery_must_refuse(worlds):\n        \"\"\"Expected SC0 rejection: merely non-null *caller* authority is not science.\"\"\"\n        case = worlds[\"A\"][\"nonparent_reverse\"]\n        old = case[\"request\"].role_reversal_authority_ref\n        false = type(old)(authority_id=\"urn:test:unissued:reversal:WRONG_TOPOLOGY\",\n            authority_version=\"999.0.0\",\n            authority_content_hash=\"f\" * 64)\n        req = replace(case[\"request\"], role_reversal_authority_ref=false)\n        result = _serve(case, request=req)\n>       assert result.result_state == \"TYPED_REFUSAL\", (\n            \"STATIC_EXPECTED_FAILURE__PE_ACCEPTS_ANY_NON_NULL_REVERSAL_AUTHORITY\"\n        )\nE       AssertionError: STATIC_EXPECTED_FAILURE__PE_ACCEPTS_ANY_NON_NULL_REVERSAL_AUTHORITY\nE       assert 'EXACT_SUPPORTED' == 'TYPED_REFUSAL'\nE         \nE         - TYPED_REFUSAL\nE         + EXACT_SUPPORTED\n\nWORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/staging/ns/rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py:139: AssertionError",
+      "classification": "VERIFIED_CANDIDATE_CODE_DEFECT",
+      "scientific_adjudication": "PE explicitly promises positively scoped reversal authority but checks non-null shape only. Forged issuer/version/hash still returns EXACT_SUPPORTED; it is neither dereferenced nor passed as scientific authority to C1. Correct computed reverse fractions do not qualify this supplied grant.",
+      "accountable_owner_action": "Pyat PE/source-operation owner plus independent reviewer; bind competent exact reversed target/risk/denominator/use, preserve native C1 computation.",
+      "expanded_SC0_demand": "UNSATISFIED_OR_UNPROVED; NOT_WAIVED",
+      "independent_adoption": false
+    },
+    {
+      "name": "test_strict_selected_world_nary_F2_AH_strata_roundtrip",
+      "classname": "WORKER_RETURNS.SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1.staging.ns.rawlsing_next.tests.test_hq297_k9k10_sc0_pe_independent",
+      "status": "RED",
+      "seconds": "0.062",
+      "failure_message": "AssertionError: SC0_REQUIRED_N9_VALUE_ABSENT:absolute_horizon\nassert 'absolute_horizon' in {'asof_dependency_refs': [{'content_hash': '7cde192bc586d22ec992e859292cc27c0aaf0ac44ae1632a08a0ce6294371b30', 'kind':...ra_pe_n9_test_snapshot@1:law-a-snapshot:sha256:1832ab88f652c4c8d0a1384f88eea941c82b8c34018a33c2f43d44f78aed53bf'}, ...}",
+      "full_failure": "worlds = {'A': {'_arithmetic': {'multi_a': {'denominator': 30, 'no': 3, 'yes': 27}, 'multi_b': {'denominator': 30, 'no': 9, 'ye...77c0f29f5e49702d1512bb19e906625752a55adfad4460617978a6e672730c74', typed_state='PREDICATE_RESOLVED_AUTHORIZED'), ...}}}\n\n    def test_strict_selected_world_nary_F2_AH_strata_roundtrip(worlds):\n        \"\"\"SC0 two-owner world contract, NOT a claim generic PE already implements it.\"\"\"\n        receipt = _serve(worlds[\"A\"][\"multi_binding_parent_context\"]).receipt\n        world = receipt.material()[\"n9_world\"]\n        for name in (\n            \"absolute_horizon\", \"native_strata\", \"nary\", \"f2\",\n            \"public_sanctions\", \"public_categories\", \"contradictory_alternatives\",\n        ):\n>           assert name in world, \"SC0_REQUIRED_N9_VALUE_ABSENT:\" + name\nE           AssertionError: SC0_REQUIRED_N9_VALUE_ABSENT:absolute_horizon\nE           assert 'absolute_horizon' in {'asof_dependency_refs': [{'content_hash': '7cde192bc586d22ec992e859292cc27c0aaf0ac44ae1632a08a0ce6294371b30', 'kind':...ra_pe_n9_test_snapshot@1:law-a-snapshot:sha256:1832ab88f652c4c8d0a1384f88eea941c82b8c34018a33c2f43d44f78aed53bf'}, ...}\n\nWORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/staging/ns/rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py:153: AssertionError",
+      "classification": "UNPROVED_DEPENDENCY",
+      "scientific_adjudication": "N9WorldDependency is explicitly an opaque reference carrier, not a value-bearing N9 resolver. Missing absolute_horizon is a real full-SC0 contract gap, not evidence of incorrect empirical C1 arithmetic.",
+      "accountable_owner_action": "N9 selected-world owner and SC0 adapter owner must supply and version a qualified value-bearing receipt.",
+      "expanded_SC0_demand": "UNSATISFIED_OR_UNPROVED; NOT_WAIVED",
+      "independent_adoption": false
+    },
+    {
+      "name": "test_strict_generated_runtime_fact_echo_not_source_promotion",
+      "classname": "WORKER_RETURNS.SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1.staging.ns.rawlsing_next.tests.test_hq297_k9k10_sc0_pe_independent",
+      "status": "RED",
+      "seconds": "0.062",
+      "failure_message": "KeyError: 'binding_echo'",
+      "full_failure": "worlds = {'A': {'_arithmetic': {'multi_a': {'denominator': 30, 'no': 3, 'yes': 27}, 'multi_b': {'denominator': 30, 'no': 9, 'ye...77c0f29f5e49702d1512bb19e906625752a55adfad4460617978a6e672730c74', typed_state='PREDICATE_RESOLVED_AUTHORIZED'), ...}}}\n\n    def test_strict_generated_runtime_fact_echo_not_source_promotion(worlds):\n        receipt = _serve(worlds[\"A\"][\"multi_binding_parent_context\"]).receipt\n        world = receipt.material()[\"n9_world\"]\n>       assert world[\"binding_echo\"][\"tag\"] == \"GENERATED_RUNTIME_FACT_REF\"\n               ^^^^^^^^^^^^^^^^^^^^^\nE       KeyError: 'binding_echo'\n\nWORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/staging/ns/rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py:159: KeyError",
+      "classification": "UNPROVED_DEPENDENCY",
+      "scientific_adjudication": "No N9 binding_echo object is supplied. This assertion does not demonstrate that PE promoted a generated fact into an original observation; the intended H3 integration is unproved.",
+      "accountable_owner_action": "N9/caller-binding and adapter owners; conserve opaque filter echo and ownership through the versioned boundary.",
+      "expanded_SC0_demand": "UNSATISFIED_OR_UNPROVED; NOT_WAIVED",
+      "independent_adoption": false
+    },
+    {
+      "name": "test_strict_two_distinct_world_refresh_receipts",
+      "classname": "WORKER_RETURNS.SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1.staging.ns.rawlsing_next.tests.test_hq297_k9k10_sc0_pe_independent",
+      "status": "RED",
+      "seconds": "0.062",
+      "failure_message": "KeyError: 'structural_publication_refresh_receipt'",
+      "full_failure": "worlds = {'A': {'_arithmetic': {'multi_a': {'denominator': 30, 'no': 3, 'yes': 27}, 'multi_b': {'denominator': 30, 'no': 9, 'ye...77c0f29f5e49702d1512bb19e906625752a55adfad4460617978a6e672730c74', typed_state='PREDICATE_RESOLVED_AUTHORIZED'), ...}}}\n\n    def test_strict_two_distinct_world_refresh_receipts(worlds):\n        receipt = _serve(worlds[\"A\"][\"multi_binding_parent_context\"]).receipt\n        mat = receipt.material()\n>       assert mat[\"structural_publication_refresh_receipt\"][\"world_result_ref\"]\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE       KeyError: 'structural_publication_refresh_receipt'\n\nWORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/staging/ns/rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py:166: KeyError",
+      "classification": "UNPROVED_DEPENDENCY",
+      "scientific_adjudication": "The PE receipt binds selected/as-of IDs and rejects INVALIDATED, but contains no two producer H2 refresh receipts. Issuance and binding of these separate successors is a cross-owner dependency.",
+      "accountable_owner_action": "Publication/currentness and generated-binding owners plus adapter; preserve separate receipts and targeted invalidation.",
+      "expanded_SC0_demand": "UNSATISFIED_OR_UNPROVED; NOT_WAIVED",
+      "independent_adoption": false
+    },
+    {
+      "name": "test_strict_four_clocks_historical_knowledge",
+      "classname": "WORKER_RETURNS.SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1.staging.ns.rawlsing_next.tests.test_hq297_k9k10_sc0_pe_independent",
+      "status": "RED",
+      "seconds": "0.061",
+      "failure_message": "KeyError: 'clocks'",
+      "full_failure": "worlds = {'A': {'_arithmetic': {'multi_a': {'denominator': 30, 'no': 3, 'yes': 27}, 'multi_b': {'denominator': 30, 'no': 9, 'ye...77c0f29f5e49702d1512bb19e906625752a55adfad4460617978a6e672730c74', typed_state='PREDICATE_RESOLVED_AUTHORIZED'), ...}}}\n\n    def test_strict_four_clocks_historical_knowledge(worlds):\n        receipt = _serve(worlds[\"A\"][\"multi_binding_parent_context\"]).receipt\n>       c = receipt.material()[\"n9_world\"][\"clocks\"]\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE       KeyError: 'clocks'\n\nWORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/staging/ns/rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py:174: KeyError",
+      "classification": "UNPROVED_DEPENDENCY",
+      "scientific_adjudication": "The demanded nested clocks object is absent. KeyError proves missing SC0 clock representation, not failure of PE future-time guards already covered by its native suite.",
+      "accountable_owner_action": "N9 temporal/currentness owner and adapter; declare exact four-clock mapping without actor-state or source authority inference.",
+      "expanded_SC0_demand": "UNSATISFIED_OR_UNPROVED; NOT_WAIVED",
+      "independent_adoption": false
+    },
+    {
+      "name": "test_strict_negative_status_algebra_and_source_risk",
+      "classname": "WORKER_RETURNS.SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1.staging.ns.rawlsing_next.tests.test_hq297_k9k10_sc0_pe_independent",
+      "status": "RED",
+      "seconds": "0.061",
+      "failure_message": "KeyError: 'scoped_status_rows'",
+      "full_failure": "worlds = {'A': {'_arithmetic': {'multi_a': {'denominator': 30, 'no': 3, 'yes': 27}, 'multi_b': {'denominator': 30, 'no': 9, 'ye...77c0f29f5e49702d1512bb19e906625752a55adfad4460617978a6e672730c74', typed_state='PREDICATE_RESOLVED_AUTHORIZED'), ...}}}\n\n    def test_strict_negative_status_algebra_and_source_risk(worlds):\n        mat = _serve(worlds[\"A\"][\"conception_scenario\"]).receipt.material()\n        world = mat[\"n9_world\"]\n>       statuses = {s[\"state\"] for s in world[\"scoped_status_rows\"]}\n                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE       KeyError: 'scoped_status_rows'\n\nWORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/staging/ns/rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py:183: KeyError",
+      "classification": "UNPROVED_DEPENDENCY",
+      "scientific_adjudication": "No world.scoped_status_rows supplied. PE has its own typed refusal states and native empirical risk, but does not supply the full scoped N9 negative roster.",
+      "accountable_owner_action": "N9 status/selection owner and adapter; retain original twelve scoped states and independent native risk/routing, not a generic result-null substitute.",
+      "expanded_SC0_demand": "UNSATISFIED_OR_UNPROVED; NOT_WAIVED",
+      "independent_adoption": false
+    },
+    {
+      "name": "test_strict_values_read_not_only_hash_or_inferred_label",
+      "classname": "WORKER_RETURNS.SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1.staging.ns.rawlsing_next.tests.test_hq297_k9k10_sc0_pe_independent",
+      "status": "RED",
+      "seconds": "0.062",
+      "failure_message": "KeyError: 'n9_values_read_receipt'",
+      "full_failure": "worlds = {'A': {'_arithmetic': {'multi_a': {'denominator': 30, 'no': 3, 'yes': 27}, 'multi_b': {'denominator': 30, 'no': 9, 'ye...77c0f29f5e49702d1512bb19e906625752a55adfad4460617978a6e672730c74', typed_state='PREDICATE_RESOLVED_AUTHORIZED'), ...}}}\n\n    def test_strict_values_read_not_only_hash_or_inferred_label(worlds):\n        mat = _serve(worlds[\"A\"][\"nonparent_reverse\"]).receipt.material()\n>       assert mat[\"n9_values_read_receipt\"][\"exact_owner_value_refs\"]\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE       KeyError: 'n9_values_read_receipt'\n\nWORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/staging/ns/rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py:193: KeyError",
+      "classification": "REVIEWER_EXPECTATION_PROBLEM",
+      "scientific_adjudication": "First failing key is n9_values_read_receipt. The subsequent N10E numerator/denominator assertions were not reached. PE actually computes and consumes C1 geometry in executed positive controls; calling all PE evidence opaque hashes is false. N9 values-read remains an unproved integration dependency.",
+      "accountable_owner_action": "Correct the unit-level diagnosis; separately require N9 values-read and an actual producer-to-port witness.",
+      "expanded_SC0_demand": "UNSATISFIED_OR_UNPROVED; NOT_WAIVED",
+      "independent_adoption": false
+    },
+    {
+      "name": "test_strict_nonparent_apprenticeship_world_effect",
+      "classname": "WORKER_RETURNS.SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1.staging.ns.rawlsing_next.tests.test_hq297_k9k10_sc0_pe_independent",
+      "status": "RED",
+      "seconds": "0.060",
+      "failure_message": "KeyError: 'generic_consumers'",
+      "full_failure": "worlds = {'A': {'_arithmetic': {'multi_a': {'denominator': 30, 'no': 3, 'yes': 27}, 'multi_b': {'denominator': 30, 'no': 9, 'ye...77c0f29f5e49702d1512bb19e906625752a55adfad4460617978a6e672730c74', typed_state='PREDICATE_RESOLVED_AUTHORIZED'), ...}}}\n\n    def test_strict_nonparent_apprenticeship_world_effect(worlds):\n        mat = _serve(worlds[\"A\"][\"nonparent_reverse\"]).receipt.material()\n>       effects = mat[\"generic_consumers\"][\"NONPARENT_APPRENTICESHIP_ENTRY\"]\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\nE       KeyError: 'generic_consumers'\n\nWORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/staging/ns/rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py:200: KeyError",
+      "classification": "REVIEWER_EXPECTATION_PROBLEM",
+      "scientific_adjudication": "generic_consumers and the SC0-specific apprenticeship output map are not PE public receipt fields. PE native generic nonparent reverse computations execute correctly. Absence of this named downstream consumer is a legitimate whole-port gap, not proof that PE has no generic nonparent use.",
+      "accountable_owner_action": "SC0/nonparent application adapter owner with PE owner contract; avoid forcing downstream application results into an empirical producer.",
+      "expanded_SC0_demand": "UNSATISFIED_OR_UNPROVED; NOT_WAIVED",
+      "independent_adoption": false
+    },
+    {
+      "name": "test_strict_parent_scenario_remains_input_only",
+      "classname": "WORKER_RETURNS.SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1.staging.ns.rawlsing_next.tests.test_hq297_k9k10_sc0_pe_independent",
+      "status": "RED",
+      "seconds": "0.066",
+      "failure_message": "KeyError: 'generic_consumers'",
+      "full_failure": "worlds = {'A': {'_arithmetic': {'multi_a': {'denominator': 30, 'no': 3, 'yes': 27}, 'multi_b': {'denominator': 30, 'no': 9, 'ye...77c0f29f5e49702d1512bb19e906625752a55adfad4460617978a6e672730c74', typed_state='PREDICATE_RESOLVED_AUTHORIZED'), ...}}}\n\n    def test_strict_parent_scenario_remains_input_only(worlds):\n        mat = _serve(worlds[\"A\"][\"conception_scenario\"]).receipt.material()\n>       effects = mat[\"generic_consumers\"][\"CONCEPTION_SCENARIO_PROPOSAL_INPUT_ONLY\"]\n                  ^^^^^^^^^^^^^^^^^^^^^^^^\nE       KeyError: 'generic_consumers'\n\nWORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/staging/ns/rawlsing_next/tests/test_hq297_k9k10_sc0_pe_independent.py:207: KeyError",
+      "classification": "REVIEWER_EXPECTATION_PROBLEM",
+      "scientific_adjudication": "The strict assertion fails on absent generic_consumers, before checking no_parent_actor_created. It neither shows an actor was created nor tests the existing PE actor firewall. The SC0 scenario adapter remains a separate input-only application dependency.",
+      "accountable_owner_action": "SC0 scenario-input adapter owner; preserve PE no-parent semantics and separate any eventual V3 authority.",
+      "expanded_SC0_demand": "UNSATISFIED_OR_UNPROVED; NOT_WAIVED",
+      "independent_adoption": false
+    }
+  ],
+  "all_nine_remain_executed_red": true,
+  "scope_correction": "Eight missing-key failures are not nine distinct demonstrated PE computational bugs; do not waive full-port requirements."
+}
