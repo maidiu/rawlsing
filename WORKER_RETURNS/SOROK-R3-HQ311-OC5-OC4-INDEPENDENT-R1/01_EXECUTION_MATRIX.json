@@ -1,0 +1,51 @@
+{
+  "schema": "SOROK_OC5_REVIEW_MATRIX_R1",
+  "sourcefree": true,
+  "exact_review_startup": "57fff604dd88836cfa6d929b02b20d68f6557cda",
+  "candidate_commit": "0caaec590f6a8bf6744f22dc9c948c5fe233bc94",
+  "candidate_git_blob": "af2b7e943018077cb36808b5af1cd67704624bec",
+  "author_claims_not_oc5_reproductions": {
+    "inherited131": {
+      "pass": 121,
+      "red": 10
+    },
+    "oc4_new36": {
+      "pass": 36,
+      "red": 0
+    }
+  },
+  "oc5_actual_full_candidate": {
+    "inherited131": "NOT_EXECUTED_STAGING_BRIDGE",
+    "oc4_new36": "NOT_EXECUTED_STAGING_BRIDGE",
+    "oc5_new": "NOT_EXECUTED_STAGING_BRIDGE"
+  },
+  "oc5_isolated_leak_excerpt": {
+    "executed": 6,
+    "pass": 2,
+    "fail": 4,
+    "exit": 1,
+    "scope": "manually_copied_function_excerpt_not_native_full_module",
+    "junit_sha256": "f4c8de3707553e8c5e3037fec28d2226131e59a43b68364dfa33ba448d7167fc",
+    "stdout_sha256": "156145797913158faac3d49fdbe2ed2a3914a7e4e4be5e7e9942b156ba90f60c"
+  },
+  "new_predicted_hostiles": [
+    "canonicalized_public_context_key_duplicate",
+    "canonicalized_top_note_key_duplicate",
+    "malformed_primary_signature_untyped_exception"
+  ],
+  "historic_six": [
+    "OC1_h13_rollback",
+    "OC1_h15_missing_capsule",
+    "OC1_positive_ID_only",
+    "OCR1_A01_revoked_commit_early",
+    "OCR1_A02_expired_commit_early",
+    "OCR1_A03_bad_purpose_commit_early"
+  ],
+  "new_four_signature_oracle_conflicts": [
+    "OCR1_A08_mismatched_holder_unblind_test_setup",
+    "OC2_signature_binds_content_positive",
+    "OC3_B01_valid_content_signature_positive",
+    "OC3_Z03_public_mock_credential_positive"
+  ],
+  "verdict": "REVIEW_REVISE__EXECUTION_HOLD__NO_ISSUANCE"
+}
