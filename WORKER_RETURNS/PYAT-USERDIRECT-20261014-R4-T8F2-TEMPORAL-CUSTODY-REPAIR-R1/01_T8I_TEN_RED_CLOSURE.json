@@ -1,0 +1,26 @@
+{
+  "commission_id": "PYAT-USERDIRECT-20261014-R4-T8F2-TEMPORAL-CUSTODY-REPAIR-R1",
+  "branch": "agent/userdirect-pyat-20261014-r4-t8f2-temporal-custody-repair-r1",
+  "sealed_startup": "4c2adb8717f9f2679fba5f53b1ffc56ccf1fc17a",
+  "ten_reds": {
+    "R1_variance_identity_collision": "CLOSED",
+    "R2_claim_fields_outside_digest": "CLOSED",
+    "R3_forged_ref_year": "CLOSED",
+    "R4_ref_schema": "CLOSED",
+    "R5_mutable_alias": "CLOSED",
+    "R6_self_resigned_delta": "CLOSED",
+    "R7_self_resigned_variance_delta": "CLOSED",
+    "R8_coherent_rewrite_no_refs": "CLOSED",
+    "R9_forged_publication": "CLOSED",
+    "R10_rewritten_eligible_risk": "CLOSED",
+    "plus_native_zero_omission": "CLOSED"
+  },
+  "execution": {
+    "t8f2_custody": {"pass": 21, "fail": 0},
+    "t8c_original_untouched": {"pass": 19, "fail": 0, "counts_as_acceptance": false},
+    "t8r_3_untouched": {"failed": 3, "expected": "RED"}
+  },
+  "hq214": "TECH_BLOCKER_MISSING_IMPLEMENTATION",
+  "holds": ["EE12", "N8E", "N9", "N8S", "V3"],
+  "no_invented_ghana_trend": true
+}
