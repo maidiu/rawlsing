@@ -51,7 +51,7 @@ class FixtureOwnerState:
     """
     def __init__(self,registry,actor_id='ACTOR_SYNTH_1'):
         self.registry=registry;self.actor_id=actor_id;self.memories={};self.memory_transitions={};self.claims={};self.emissions={};self.stances={};self.epistemic_transitions=[];self.state_sets={};self.permissions={};self._pending_memory={};self._seal()
-    def data(self):return dict(actor_id=self.actor_id,memories=self.memories,memory_transitions=self.memory_transitions,claims=self.claims,emissions=self.emissions,stances=self.stances,epistemic_transitions=self.epistemic_transitions,state_sets=self.state_sets,permissions=self.permissions)
+    def data(self):return deepcopy(dict(actor_id=self.actor_id,memories=self.memories,memory_transitions=self.memory_transitions,claims=self.claims,emissions=self.emissions,stances=self.stances,epistemic_transitions=self.epistemic_transitions,state_sets=self.state_sets,permissions=self.permissions))
     def _seal(self):self.state_hash=digest(self.data())
     def verify(self):
         from .can008_candidate_rule import build_default_binding
@@ -181,7 +181,7 @@ def adp017_apply_epistemic_effect(*,actor_id,claim_ref,stance_kind,stance_operat
     permission=first_person_permission(stance_kind if state['active_stance_records'] else None,claim_accessibility)
     context.permissions[claim_ref]=dict(actor_id=actor_id,claim_id=claim_ref,permission=permission,epistemic_state_hash=state['current_state_hash'],basis_refs=list(actor_facing_basis_refs),permission_source='TEST_ONLY_CANDIDATE_STATE; NOT_ACCEPTED_OWNER',hidden_origin_claimable=False)
     record['post_state_set_hash']=state['current_state_hash'];record['authority_hash']=PINS['ADP017_JSON'];context.epistemic_transitions.append(record);context._seal()
-    return dict(decision_state='APPLIED_EPISTEMIC_TRANSITION',effect=effect,transition=record,state_hash=context.state_hash,stance_persisted=stance_operation in ('ADD','SUPERSEDE_EXACT_RECORD'),accessible_memory_auto_creates_stance=False,production_owner_commit=False,grade='TEST_ONLY_CANDIDATE_STATE',public_ratification='HOLD_NO_PUBLIC_STANDING_OWNER')
+    return dict(decision_state='APPLIED_EPISTEMIC_TRANSITION',effect=deepcopy(effect),transition=deepcopy(record),state_hash=context.state_hash,stance_persisted=stance_operation in ('ADD','SUPERSEDE_EXACT_RECORD'),accessible_memory_auto_creates_stance=False,production_owner_commit=False,grade='TEST_ONLY_CANDIDATE_STATE',public_ratification='HOLD_NO_PUBLIC_STANDING_OWNER')
 
 
 def adp017_first_person_check(stance_kind,claim_accessibility,memory_representation_kind=None,memory_accessibility=None,*,context=None,claim_ref=None,state_hash=None):

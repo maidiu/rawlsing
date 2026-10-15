@@ -333,3 +333,32 @@ print('BODY_CHANGE_REFUSED; original and changed digests distinct')
 """
     result=subprocess.run([sys.executable,'-c',script],cwd=target,env={'PATH':__import__('os').environ['PATH'],'PYTHONPATH':str(target.resolve())},text=True,capture_output=True)
     assert result.returncode==0,(result.stdout,result.stderr)
+
+
+def test_state_ref_ablation_does_not_falsely_claim_memory_mediated_contrast():
+    baseline=pc.run_positive_chain(_comparison=False);original=pc.coupline_evaluate
+    def withhold(event,pre,binding,registry):
+        if event.event_id.startswith('EV2'):
+            pre.adp016_memory_refs=();pre.adp017_claim_refs=()
+        return original(event,pre,binding,registry)
+    with patch.object(pc,'coupline_evaluate',withhold):ablated=pc.run_positive_chain(_comparison=False)
+    assert baseline['later_event_response']['effect_kind']==ablated['later_event_response']['effect_kind']=='DEFLECT'
+    # This limits the conclusion: the typed effect contrast is caused by exact
+    # CAN008 response history. Merely loading ADP state refs is not mediation.
+    (RET/'evidence/state_ref_ablation.json').write_text(json.dumps(dict(baseline=baseline,ablated=ablated,conclusion='No independently identified ADP016/017 mediation of typed response; accepted destination owner HOLD remains'),indent=2)+'\n')
+
+
+def test_response_receipt_has_no_mutable_alias_to_working_response():
+    reg,e,p,b=fixture();c=r.coupline_evaluate(e,p,b,reg);response=r.response_rule_apply(c,p,b,'BUFFER')
+    receipt=r.build_response_receipt(e,p,b,c,response);before=copy.deepcopy(receipt)
+    response['target_owner_effect_requests'][0]['committed']=True
+    response['current_response_consequence']['effect_kind']='AMPLIFY'
+    assert receipt==before
+    assert receipt['receipt_hash']==hashlib.sha256(json.dumps({k:v for k,v in receipt.items() if k!='receipt_hash'},sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()).hexdigest()
+
+
+def test_returned_epistemic_transition_and_state_view_do_not_alias_live_store():
+    ctx,args=epistemic_setup();out=o.adp017_apply_epistemic_effect(**args);before=ctx.state_hash
+    out['transition']['pre_state_hash']='MUTATED_CALLER_COPY';out['effect']['stance_kind']='KNOWLEDGE'
+    view=ctx.data();view['memories'].clear();view['stances'].clear()
+    assert ctx.verify() and ctx.state_hash==before and ctx.memories and ctx.stances

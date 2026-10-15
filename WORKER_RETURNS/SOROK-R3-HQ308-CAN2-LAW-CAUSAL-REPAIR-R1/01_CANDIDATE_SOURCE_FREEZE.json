@@ -1,6 +1,6 @@
 {
-  "schema": "CAN2_CANDIDATE_SOURCE_FREEZE@1",
-  "grain": "TEST_ONLY_SOURCEFREE; no independent acceptance",
+  "schema": "CAN2_CANDIDATE_SOURCE_FREEZE@2",
+  "grain": "TEST_ONLY_SOURCEFREE; independent acceptance pending",
   "sources": [
     {
       "path": "candidate/__init__.py",
@@ -16,9 +16,9 @@
     },
     {
       "path": "candidate/can008_candidate_rule.py",
-      "sha256": "a4879b415e49599bcd99215c12ee7b8f832e052392f22eb8a2e8cc29eef2a3a6",
-      "blob_sha1": "e7c945f89190b9163d3f468d60032ba725731ed9",
-      "bytes": 16037
+      "sha256": "c5a4b271346fe045e5a54522926795e7514ad3bacbbed04fbb60a2183348c27e",
+      "blob_sha1": "61d933d98ffb39d553a0dbc670388fc2bd3e89d3",
+      "bytes": 16095
     },
     {
       "path": "candidate/candidate_registry_fixture.py",
@@ -28,9 +28,9 @@
     },
     {
       "path": "candidate/owner_transitions.py",
-      "sha256": "d1c2ff292d82e6aec8078afb1283d3a01050e0d3963e59f2d12f876b48c52400",
-      "blob_sha1": "57a36e3b6b42d1ec0bd925c245567daf789fb52f",
-      "bytes": 21556
+      "sha256": "fcdc073693f781607dd6a7ec25e5fa1a79ce3cccd5071005773b2ca7a8a5017d",
+      "blob_sha1": "ac943d07459f68ba2e27baf05b442d9ecbddefd5",
+      "bytes": 21586
     },
     {
       "path": "candidate/positive_chain.py",
@@ -39,5 +39,7 @@
       "bytes": 14655
     }
   ],
-  "source_oracle": "Original317 and RCP3_82 remain byte-identical; new author controls supplemental"
+  "previous_source_commit": "15988d76ad6804c7921898a96e6fb0287ab40a97",
+  "reason": "Audit found caller response/transition aliases; now defensive snapshots with new adversarial controls",
+  "source_oracle": "Original317 and RCP3_82 unchanged; new89 author controls supplemental"
 }

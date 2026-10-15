@@ -8,6 +8,7 @@ must not be promoted into production or empirical psychological validity.
 """
 from __future__ import annotations
 
+from copy import deepcopy
 from pathlib import Path
 import hashlib
 import json
@@ -254,6 +255,7 @@ def build_response_receipt(event: AdmittedEvent, prestate: OwnerPrestate,
         "is_durable_actor_state": False,
         "prestate":asdict(prestate),"coupling_event":coupling.get("event"),
     }
+    receipt = deepcopy(receipt)
     receipt["receipt_hash"] = _sha(_canon(receipt))
     return receipt
 
