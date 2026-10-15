@@ -1,0 +1,49 @@
+{
+  "schema": "BR3_STATISTICAL_AND_CUSTODY_CRITIQUE@1",
+  "statistical_design": {
+    "alpha": 0.05,
+    "m_contrasts": 12,
+    "beta": 0.2,
+    "families_5pp_half_width": 4940,
+    "families_10pp_superiority_80pct": 2818,
+    "families_5pp_equivalence_80pct": 12814,
+    "recalculated": "consistent_with_standard_formulas",
+    "caveats": [
+      "6_convenience_families_plus_28_clones_do_not_establish_independent_sampling",
+      "no_ICC_or_variance_estimates_from_pilot",
+      "no_cost_model",
+      "numbers_are_model_assumptions_not_authorized_targets_or_budget_recommendations",
+      "multiplicity_correctly_bonferroni_adjusted"
+    ]
+  },
+  "oracle_custody": {
+    "protocol_specified": true,
+    "protocol_issued": false,
+    "custody_status": "HOLD",
+    "reasons": [
+      "DISTINCT_SEMANTIC_CUSTODIAN_MISSING",
+      "COMPETENT_LAWFUL_SET_APPROVAL_MISSING",
+      "TRUSTED_CONTEXT_BOUND_SIGNATURES_MISSING",
+      "EXTERNAL_CUSTODY_VERIFICATION_NOT_IMPLEMENTED_OR_ISSUED"
+    ],
+    "same_author_not_independent": true,
+    "future_actions": [
+      "independent_oracle_custodian_appointment",
+      "prospective_sampling_power_owner_adoption",
+      "separate_statistician_verification"
+    ]
+  },
+  "scientific_ceiling": {
+    "established": "sourcefree_R3_assay_detects_arm_aware_synthetic_sensitivity_and_false_controls",
+    "not_established": [
+      "real_LLM_behavioral_effect",
+      "treatment_superiority",
+      "psychological_ontology",
+      "population_inference",
+      "model_use_permission",
+      "scenario_independence",
+      "actual_human_experience",
+      "V3_readiness"
+    ]
+  }
+}

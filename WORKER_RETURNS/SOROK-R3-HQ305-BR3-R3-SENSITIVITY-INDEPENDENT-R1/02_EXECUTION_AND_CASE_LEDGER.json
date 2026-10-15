@@ -1,0 +1,30 @@
+{
+  "schema": "BR3_EXECUTION_AND_CASE_LEDGER@1",
+  "suites": {
+    "r3_tests": {"command": "pytest tests/test_r3.py -q", "exit": 0, "passed": 33, "failed": 0},
+    "r2_suite": {"command": "pytest exec/r2/test_r2.py -q", "exit": 0, "passed": 51, "failed": 0},
+    "rba_hostiles": {"command": "pytest hostile/test_hostile_rba.py -q", "exit": 0, "passed": 19, "failed": 0},
+    "lab1": {"command": "pytest exec/lab1/lab/test_lab.py -q", "exit": 0, "passed": 20, "failed": 0},
+    "lab2": {"command": "pytest exec/lab2/lab2/test_lab2.py -q", "exit": 0, "passed": 25, "failed": 0},
+    "rmb": {"command": "pytest exec/rmb/test_independent.py -q", "exit": 1, "passed": 13, "failed": 23, "note": "original failing set preserved"},
+    "br3_attacks": {"command": "pytest test_br3_attacks.py -q", "exit": 0, "passed": 15, "failed": 0}
+  },
+  "schedule": {
+    "trials": 9432,
+    "blocks": 3144,
+    "orders": {"ABC": 524, "ACB": 524, "BAC": 524, "BCA": 524, "CAB": 524, "CBA": 524},
+    "balanced": true
+  },
+  "captures": {
+    "aware": 9432,
+    "blind": 9432,
+    "integrity_check": "no_unplanned_ids"
+  },
+  "ablation_result": "representation_removal_kills_contrast",
+  "metadata_only": "zero_contrast",
+  "menu_first": "zero_contrast",
+  "position_only": "zero_systematic_positive",
+  "k3_detection": true,
+  "k5_detection": true,
+  "k6_detection": true
+}

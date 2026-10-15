@@ -1,0 +1,21 @@
+{
+  "schema": "BR3_ARTIFACT_MANIFEST@1",
+  "commission_id": "SOROK-R3-HQ305-BR3-R3-SENSITIVITY-INDEPENDENT-R1",
+  "sealed_startup": "4085cb26be27977c0ec9afc5fc1b7ef96f400029",
+  "verdict": "REVIEW_PASS_SCOPED_R3_SYNTHETIC_SENSITIVITY",
+  "files": [
+    "00_RETURN.md",
+    "01_FROZEN_REQUIREMENTS_AND_BLOB_IDENTITIES.json",
+    "02_EXECUTION_AND_CASE_LEDGER.json",
+    "03_STATISTICAL_AND_CUSTODY_CRITIQUE.json",
+    "04_INDEPENDENT_ATTACKS.json",
+    "environment_passport_delta.json",
+    "repro/stage_br3_runtime.py",
+    "repro/test_br3_attacks.py"
+  ],
+  "self_exclusion": "Manifest excludes itself; exact final Git commit identifies manifest bytes.",
+  "scope": "Only assigned BR3 return; BL3 candidate code and runtime staged in ignored host-local workspace",
+  "no_adoption": true,
+  "no_v3": true,
+  "no_model_calls": true
+}

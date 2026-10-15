@@ -1,0 +1,38 @@
+{
+  "schema": "BR3_ENVIRONMENT_PASSPORT_DELTA@1",
+  "environment_id": "br3-muse-spark-local",
+  "epoch_id": "br3-2026-10-14",
+  "surface": "LOCAL_SHARED_STORE",
+  "status": "LIVE_VERIFIED",
+  "python": "3.11.3",
+  "pytest": "9.0.2",
+  "git": "2.43.0",
+  "platform": "darwin",
+  "model_provider": "OpenCode",
+  "model": "Muse Spark",
+  "effort": "standard",
+  "quota": "UNKNOWN",
+  "independent_review_separation": "distinct_from_BL3_author_and_RBA_author",
+  "privacy_source_grant": "SOURCEFREE_ONLY_ZERO_EXTERNAL_EXPERIMENTAL_CALLS",
+  "git_object_store_alias": "canonical_local",
+  "worktree_alias": "br3_reviewer_isolated",
+  "branch": "agent/reviewer-sorok-r3-hq305-br3-synthetic-sensitivity-independent-r1",
+  "checkout_base": "4085cb26be27977c0ec9afc5fc1b7ef96f400029",
+  "materialized_source_refs": {
+    "staging_script": "WORKER_RETURNS/SOROK-R3-HQ305-BR3-R3-SENSITIVITY-INDEPENDENT-R1/repro/stage_br3_runtime.py",
+    "staged_entries": 70,
+    "all_blobs_verified": true
+  },
+  "covered_test_suites": {
+    "r3": "33/33 PASS",
+    "r2": "51/51 PASS",
+    "rba_hostiles": "19/19 PASS",
+    "lab1": "20/20 PASS",
+    "lab2": "25/25 PASS",
+    "rmb": "13/23 (original split)",
+    "br3_attacks": "15/15 PASS"
+  },
+  "science_grade": "SOURCEFREE_SYNTHETIC_SENSITIVITY_ONLY",
+  "assignments_completed": ["BR3 independent R3 synthetic sensitivity court"],
+  "next_good_affinity_tags": ["ORACLE_CUSTODY", "PROSPECTIVE_POWER", "BEHAVIORAL_EXPERIMENT"]
+}
