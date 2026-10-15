@@ -1,0 +1,760 @@
+{
+  "schema": "WG0J_ACTUAL_EXECUTED_COURT@1",
+  "verdict": "RED",
+  "candidate": "56098540bd36f22aef66db24913722aec808e3e9",
+  "oracle_sha256": "5144c481300e8f8c158cfe67fbcf2ee2746f66529fc5ac2757f1a65b5f330f58",
+  "author_suite": {
+    "cases": [
+      {
+        "name": "test_control_exact_candidate_file_and_frozen_inventory",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_control_validated_c11_releases_no_manual_injection",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_control_no_fallback_missing_payload_fails_closed",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_control_real_computed_values_not_caller_fractions",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_control_frozen_builder_rejects_new_item",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_red_missing_operation_payload_must_fail_closed",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_red_invalid_negative_observation_must_fail_closed",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_red_no_c11_release_without_validated_c11logicalrelease",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_red_no_condition_without_joined_respondent_risk_set",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_red_unknown_source_rights_must_hold",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_red_arbitrary_grant_token_must_not_be_permission",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_red_freeze_must_bind_original_native_options",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_red_freeze_must_bind_source_permission_status",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_red_withdrawn_conditioning_pair_must_retained_as_held",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_red_routed_unknown_pair_must_retain_as_held",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_red_conflicting_source_same_canonical_identity_not_silently_dropped",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_red_duplicate_op_id_with_conflicting_semantics_refused",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_red_no_drop_full_frontier_in_execution_plan",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_red_original_native_category_mutation_propagates_source_value",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_red_original_publisher_custody_hold_must_block_result",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_repair_oracle_matches_builder_exactly",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_repair_joint_respondent_risk_set_produces_real_conditional",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_repair_missing_evidence_yields_typed_zero_support_not_number",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_repair_revoke_source_supersedes_receipt_and_keeps_waves_stable",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_repair_resume_and_shard_determinism",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_repair_changed_input_changes_output_unrelated_stable",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_repair_weak_small_n_exact_counts_no_smoothing",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_repair_unknown_grant_variants_all_hold",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_repair_mr_option_profile_derived_from_computed_joint",
+        "state": "PASS",
+        "message": null
+      }
+    ],
+    "pass": 29,
+    "fail": 0,
+    "total": 29,
+    "skip": 0,
+    "error": 0,
+    "terminal": {
+      "argv": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/candidate/repro/test_wg0p2_repair.py",
+        "-vv",
+        "--tb=short",
+        "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/observations/author.xml"
+      ],
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root",
+      "PYTHONPATH": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root:/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/candidate/repro:/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/repro",
+      "exit": 0,
+      "seconds": 3.587160110473633
+    }
+  },
+  "independent_suite": {
+    "cases": [
+      {
+        "name": "test_exact_frozen_25_operations",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_actual_owners_and_source_record_numerics",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_independent_mr_profiles_and_indicator_totals",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_native_options_must_affect_computation_or_hold",
+        "state": "FAIL",
+        "message": "AssertionError: Changed options rotate identity but unchanged 0/1/2/3/9 cells still COMPUTED"
+      },
+      {
+        "name": "test_native_metadata_must_bind_release_or_hold[wave-W99]",
+        "state": "FAIL",
+        "message": "AssertionError: wave mutation silently computes original hardcoded source"
+      },
+      {
+        "name": "test_native_metadata_must_bind_release_or_hold[unit-household]",
+        "state": "FAIL",
+        "message": "AssertionError: unit mutation silently computes original hardcoded source"
+      },
+      {
+        "name": "test_native_metadata_must_bind_release_or_hold[source_id-FOREIGN]",
+        "state": "FAIL",
+        "message": "AssertionError: source_id mutation silently computes original hardcoded source"
+      },
+      {
+        "name": "test_native_metadata_must_bind_release_or_hold[form_id-Q-FOREIGN]",
+        "state": "FAIL",
+        "message": "AssertionError: form_id mutation silently computes original hardcoded source"
+      },
+      {
+        "name": "test_native_metadata_must_bind_release_or_hold[response_kind-MULTIPLE_RESPONSE]",
+        "state": "FAIL",
+        "message": "AssertionError: response_kind mutation silently computes original hardcoded source"
+      },
+      {
+        "name": "test_same_operation_id_changed_semantics_rejected[conditioners-value0]",
+        "state": "FAIL",
+        "message": "Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'KeyError'>, <class 'RuntimeError'>)"
+      },
+      {
+        "name": "test_same_operation_id_changed_semantics_rejected[op_class-CONDITIONAL]",
+        "state": "FAIL",
+        "message": "Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'KeyError'>, <class 'RuntimeError'>)"
+      },
+      {
+        "name": "test_same_operation_id_changed_semantics_rejected[disposition_reason-UNPROVED]",
+        "state": "FAIL",
+        "message": "Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'KeyError'>, <class 'RuntimeError'>)"
+      },
+      {
+        "name": "test_missing_nonproduced_operation_rejected[HELD]",
+        "state": "FAIL",
+        "message": "Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'KeyError'>, <class 'RuntimeError'>)"
+      },
+      {
+        "name": "test_missing_nonproduced_operation_rejected[INADMISSIBLE]",
+        "state": "FAIL",
+        "message": "Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'KeyError'>, <class 'RuntimeError'>)"
+      },
+      {
+        "name": "test_same_key_altered_target_must_not_execute_original_source",
+        "state": "FAIL",
+        "message": "Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'KeyError'>, <class 'RuntimeError'>)"
+      },
+      {
+        "name": "test_unknown_operation_has_no_fallback",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_unknown_withdrawn_grants_hold[UNKNOWN]",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_unknown_withdrawn_grants_hold[WITHDRAWN]",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_unknown_withdrawn_grants_hold[]",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_unknown_withdrawn_grants_hold[forged-license]",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_late_revocation_blocks_current_read",
+        "state": "FAIL",
+        "message": "Failed: DID NOT RAISE any of (<class 'PermissionError'>, <class 'ValueError'>, <class 'KeyError'>)"
+      },
+      {
+        "name": "test_fact_payload_is_bound_at_read",
+        "state": "FAIL",
+        "message": "AssertionError: Same exact result ref reads caller-mutated 999 support"
+      },
+      {
+        "name": "test_wrong_release_bound_to_unit_is_rejected",
+        "state": "FAIL",
+        "message": "AssertionError: COMPLETED unit pinned A-W1 computed A-W2 denominator 4"
+      },
+      {
+        "name": "test_inconsistent_mr_native_sets_rejected",
+        "state": "FAIL",
+        "message": "Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'KeyError'>, <class 'RuntimeError'>)"
+      },
+      {
+        "name": "test_invalid_native_response_rejected[None]",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_invalid_native_response_rejected[-1]",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_invalid_native_response_rejected[foreign]",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_missing_special_9_not_substantive",
+        "state": "FAIL",
+        "message": "AssertionError: Declared missing 9 ingested and counted SUBSTANTIVE_RESPONSE"
+      },
+      {
+        "name": "test_zero_risk_and_positive_conditional_actual_i03",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_absent_joint_split_ballot_holds",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_source_bytes_mutation_changes_source_artifact_identity",
+        "state": "FAIL",
+        "message": "AssertionError: Changed source bytes retain identical source artifact hash"
+      },
+      {
+        "name": "test_unavailable_unit_release_ref_rejected",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_freeze_binds_native_fields[options-value0]",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_freeze_binds_native_fields[missing_codes-value1]",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_freeze_binds_native_fields[grant-WITHDRAWN]",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_freeze_binds_native_fields[route_evidence-new-route]",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_freeze_binds_native_fields[version-v2]",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_conflicting_carrier_and_changed_target_duplicate_refused",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_positive_conditional_through_independent_qualified_manifest",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_frozen_product_path_has_no_positive_conditionals",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_typed_owner_authority_deny_fails_closed",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_cold_replay_and_shard_values",
+        "state": "PASS",
+        "message": null
+      },
+      {
+        "name": "test_cold_resume_restores_published_fact_custody",
+        "state": "FAIL",
+        "message": "AssertionError: Completed checkpoint skips old unit but its result payload is lost in fresh process"
+      },
+      {
+        "name": "test_wave2_source_universe_has_correct_wave",
+        "state": "FAIL",
+        "message": "AssertionError: Source universe hardcodes raw_wave W1 for W2 fixture"
+      }
+    ],
+    "pass": 24,
+    "fail": 20,
+    "total": 44,
+    "skip": 0,
+    "error": 0,
+    "terminal": {
+      "argv": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/tests",
+        "-vv",
+        "--tb=short",
+        "--assert=plain",
+        "--junitxml=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/observations/independent.xml"
+      ],
+      "cwd": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root",
+      "PYTHONPATH": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root:/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/candidate/repro:/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/repro",
+      "exit": 1,
+      "seconds": 4.819102048873901
+    }
+  },
+  "all15_claimed_repairs": [
+    {
+      "previous_test": "test_red_missing_operation_payload_must_fail_closed",
+      "author_replay": "PASS",
+      "independent_judgment": "CLOSED_FIXTURE",
+      "basis": "Missing operation raises; unknown operation independent guard PASS. No 1/2 fallback."
+    },
+    {
+      "previous_test": "test_red_invalid_negative_observation_must_fail_closed",
+      "author_replay": "PASS",
+      "independent_judgment": "CLOSED_FIXTURE",
+      "basis": "None, negative -1, foreign values independently rejected. Other missing event accepted with typed incomplete output; inspect experiments."
+    },
+    {
+      "previous_test": "test_red_no_c11_release_without_validated_c11logicalrelease",
+      "author_replay": "PASS",
+      "independent_judgment": "CLOSED_SOURCEFREE_OWNER",
+      "basis": "Three real ingest and commit calls; sealed C11LogicalRelease resolved in one repository; no candidate private injection."
+    },
+    {
+      "previous_test": "test_red_no_condition_without_joined_respondent_risk_set",
+      "author_replay": "PASS",
+      "independent_judgment": "CLOSED_NEGATIVE_ONLY",
+      "basis": "No automatically produced same-grain pair; split-ballot held. Frozen product positive conditional still unproved."
+    },
+    {
+      "previous_test": "test_red_unknown_source_rights_must_hold",
+      "author_replay": "PASS",
+      "independent_judgment": "CLOSED_TOKEN_GATE_TEST_ONLY",
+      "basis": "Unknown rights tokens hold; not independent issuer/currentness proof."
+    },
+    {
+      "previous_test": "test_red_arbitrary_grant_token_must_not_be_permission",
+      "author_replay": "PASS",
+      "independent_judgment": "CLOSED_TOKEN_GATE_TEST_ONLY",
+      "basis": "Arbitrary grant token holds. Literal GRANTED_FIXTURE remains locally authored test authorization."
+    },
+    {
+      "previous_test": "test_red_freeze_must_bind_original_native_options",
+      "author_replay": "PASS",
+      "independent_judgment": "CLOSED_HASH_ONLY",
+      "basis": "Options change freeze; actual source/query domain remains hardcoded. Wider source-native semantic closure RED."
+    },
+    {
+      "previous_test": "test_red_freeze_must_bind_source_permission_status",
+      "author_replay": "PASS",
+      "independent_judgment": "CLOSED_HASH_ONLY",
+      "basis": "Permission string changes freeze; late read does not consult current grant."
+    },
+    {
+      "previous_test": "test_red_withdrawn_conditioning_pair_must_retained_as_held",
+      "author_replay": "PASS",
+      "independent_judgment": "CLOSED_BASELINE",
+      "basis": "Withdrawn conditioning pair retained HELD in independently exact25 oracle."
+    },
+    {
+      "previous_test": "test_red_routed_unknown_pair_must_retain_as_held",
+      "author_replay": "PASS",
+      "independent_judgment": "CLOSED_BASELINE",
+      "basis": "Unrouteable conditioning pair retained HELD in independently exact25 oracle."
+    },
+    {
+      "previous_test": "test_red_conflicting_source_same_canonical_identity_not_silently_dropped",
+      "author_replay": "PASS",
+      "independent_judgment": "CLOSED_FIXTURE",
+      "basis": "Conflicting same-form carrier explicitly refused; independent guard PASS."
+    },
+    {
+      "previous_test": "test_red_duplicate_op_id_with_conflicting_semantics_refused",
+      "author_replay": "PASS",
+      "independent_judgment": "PARTIAL_RED",
+      "basis": "Changed item_ids/target duplicate refused, but changed conditioners/op_class/reason accepted under same ID."
+    },
+    {
+      "previous_test": "test_red_no_drop_full_frontier_in_execution_plan",
+      "author_replay": "PASS",
+      "independent_judgment": "PARTIAL_RED",
+      "basis": "Baseline25 retained; omitted HELD or INADMISSIBLE produces24 and identical full 3-unit manifest/receipts. No independently enforced expected frontier."
+    },
+    {
+      "previous_test": "test_red_original_native_category_mutation_propagates_source_value",
+      "author_replay": "PASS",
+      "independent_judgment": "PARTIAL_RED",
+      "basis": "Author test checks unit identity only; actual changed options still compute identical original cells. Source row changes compute different values but retain source artifact hash."
+    },
+    {
+      "previous_test": "test_red_original_publisher_custody_hold_must_block_result",
+      "author_replay": "PASS",
+      "independent_judgment": "TEST_ONLY_HOLD",
+      "basis": "Plan carries local string and fixture issuer, not a separately trustworthy issued source grant; read revocation fails."
+    }
+  ],
+  "actual_owner_calls": [
+    {
+      "function": "ingest_c11_source_release",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/rawlsing_next/pre553_c11_ingest.py",
+      "line": 791
+    },
+    {
+      "function": "_commit_validated",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/rawlsing_next/pre553_c11_repository.py",
+      "line": 89
+    },
+    {
+      "function": "ingest_c11_source_release",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/rawlsing_next/pre553_c11_ingest.py",
+      "line": 791
+    },
+    {
+      "function": "_commit_validated",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/rawlsing_next/pre553_c11_repository.py",
+      "line": 89
+    },
+    {
+      "function": "ingest_c11_source_release",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/rawlsing_next/pre553_c11_ingest.py",
+      "line": 791
+    },
+    {
+      "function": "_commit_validated",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/rawlsing_next/pre553_c11_repository.py",
+      "line": 89
+    },
+    {
+      "function": "run",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/rawlsing_next/pre553_batch_runner.py",
+      "line": 536
+    },
+    {
+      "function": "execute_empirical_query",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/rawlsing_next/pre553_empirical_query.py",
+      "line": 373
+    },
+    {
+      "function": "execute_empirical_query",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/rawlsing_next/pre553_empirical_query.py",
+      "line": 373
+    },
+    {
+      "function": "execute_empirical_query",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/rawlsing_next/pre553_empirical_query.py",
+      "line": 373
+    }
+  ],
+  "actual_imports": [
+    {
+      "module": "rawlsing_next._pre553_query_common",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/rawlsing_next/_pre553_query_common.py",
+      "sha256": "496320f7e089e4cc73b1a55023ed906d3f016e939f548cebc4ec59bddd4847b2",
+      "git_blob_sha1": "938a6b03a63dd34ef4f0f63655ed8f11f65c5d92"
+    },
+    {
+      "module": "rawlsing_next._pre553_query_eval",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/rawlsing_next/_pre553_query_eval.py",
+      "sha256": "c72d7d35bfa5d3cb4b406bdd90530b2822416850bba48cdd12ce784ba10cd670",
+      "git_blob_sha1": "f808dfcd2008cc71e9203de3cadf1abe14223974"
+    },
+    {
+      "module": "rawlsing_next._pre553_query_predicate",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/rawlsing_next/_pre553_query_predicate.py",
+      "sha256": "f6e5484371ce1bf15abea25a7db408ab00cf4194154358e995608e67b833cbd7",
+      "git_blob_sha1": "8590bacf464b2c61f319f581820a3af76ed1e60c"
+    },
+    {
+      "module": "rawlsing_next.pre553_batch_runner",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/rawlsing_next/pre553_batch_runner.py",
+      "sha256": "5071bde0180db05f59386884d5de2bdea503cd26db2024806a92887d2a5a1e04",
+      "git_blob_sha1": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829"
+    },
+    {
+      "module": "rawlsing_next.pre553_c11_ingest",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/rawlsing_next/pre553_c11_ingest.py",
+      "sha256": "0c56a0f6f656547a096982a6adab21c9b47d749385411a5d159f2b5390eec8bf",
+      "git_blob_sha1": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba"
+    },
+    {
+      "module": "rawlsing_next.pre553_c11_integrity",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/rawlsing_next/pre553_c11_integrity.py",
+      "sha256": "3963facef5c8ae2981991ffa8c5c5c9b717fb4e09f342eec277198fc5cf38a33",
+      "git_blob_sha1": "7c59aa13a2b7c8e3ab0dc90a1400df645b0b4bbd"
+    },
+    {
+      "module": "rawlsing_next.pre553_c11_repository",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/rawlsing_next/pre553_c11_repository.py",
+      "sha256": "84a71fe43307cca30f9eeaaedb269d8390468a4744a0fac251aebc2cda7b498e",
+      "git_blob_sha1": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3"
+    },
+    {
+      "module": "rawlsing_next.pre553_empirical_authority",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/rawlsing_next/pre553_empirical_authority.py",
+      "sha256": "c32b96cd67274d2bcb44ca509afd87e085748bd2e32565716c10313b0609a29a",
+      "git_blob_sha1": "ca65a7fd4d52f0c44447434559b1d09412e7aa39"
+    },
+    {
+      "module": "rawlsing_next.pre553_empirical_objects",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/rawlsing_next/pre553_empirical_objects.py",
+      "sha256": "9cd1d71440a7e8c1861dda73274529e07211edc14335583e93ad91c0833e9ab4",
+      "git_blob_sha1": "a61365b994e5c3c50de0f598fcf40e90abf757b6"
+    },
+    {
+      "module": "rawlsing_next.pre553_empirical_query",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/rawlsing_next/pre553_empirical_query.py",
+      "sha256": "d45ad313bc57e94c8c3652b4123c7cb03b0fc18d38d577aaaae94435664ef4cb",
+      "git_blob_sha1": "03facecf70890bfd13b80418620d274cbcd69d02"
+    },
+    {
+      "module": "rawlsing_next.pre553_runtime_authority",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/rawlsing_next/pre553_runtime_authority.py",
+      "sha256": "027aa551973b3ba6a560b322c9a704c4577f250d57a0c5564b8d9de71cbbb1d2",
+      "git_blob_sha1": "896c7094124a4aaea23eec550178e4bf8e73ac68"
+    },
+    {
+      "module": "rawlsing_next.pre553_runtime_context",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/rawlsing_next/pre553_runtime_context.py",
+      "sha256": "e37b8d16ea2636ad78bcd8239b3ebdc498d0528605bf32353b65415739c0de1e",
+      "git_blob_sha1": "4fc50793871e176f164442c04ef2501eba9d5dfa"
+    },
+    {
+      "module": "wg0p2_workload",
+      "file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/candidate/repro/wg0p2_workload.py",
+      "sha256": "b168f032f28fcbfccf028444521f6c14b089bbee61084c42d6c19d27a6b11dc9",
+      "git_blob_sha1": "99cd007d62bb1882b1bca9a05214905f1277ff4b"
+    }
+  ],
+  "source_integrity_post_execution": {
+    "all29_staged_files_unchanged": true,
+    "actual_NUL_git_preimages_verified": true
+  },
+  "actual_releases": [
+    {
+      "tag": "REL-A-W1",
+      "class": "C11LogicalRelease",
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-REL-A-W1",
+        "content_hash": "6c7626a709c4d9e0e1329b851e245dbc72eaa1cae8fdb45e936d9a12e34ddc04"
+      },
+      "source_artifact_ref": {
+        "kind": "SOURCE_ARTIFACT",
+        "object_id": "SOURCE-WG0P2-REL-A-W1",
+        "content_hash": "d2f24ae8d9e56239bad8129bebb398e9dd6979a5a6fcdee308f6a8b7116a9f30"
+      }
+    },
+    {
+      "tag": "REL-A-W2",
+      "class": "C11LogicalRelease",
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-REL-A-W2",
+        "content_hash": "44d128e24c898483de89f5d7b8ad58b01edc30a3b0966086b1f3ddea97962280"
+      },
+      "source_artifact_ref": {
+        "kind": "SOURCE_ARTIFACT",
+        "object_id": "SOURCE-WG0P2-REL-A-W2",
+        "content_hash": "1e4d7704cb97a7d84a63a6df429cbd286b1148ad520a5ec41f56e15acd67483e"
+      }
+    },
+    {
+      "tag": "REL-B-W2",
+      "class": "C11LogicalRelease",
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-REL-B-W2",
+        "content_hash": "26e90544a72769e5147db0943bdcc3e7af66aeb106b84ae997f4166c42f447d1"
+      },
+      "source_artifact_ref": {
+        "kind": "SOURCE_ARTIFACT",
+        "object_id": "SOURCE-WG0P2-REL-B-W2",
+        "content_hash": "5700a77a33940301471669fe66207ae66f0dbb9891326e0cbe3a5c40c920c750"
+      }
+    }
+  ],
+  "batch_summary": {
+    "manifest_ref": {
+      "kind": "PRE553BatchManifest@1.0.0",
+      "object_id": "urn:rawlsing:pre553:batch-manifest:sha256:8d7c1ce960899799666b661f2be85403af5ef83e03632eec920a0046bebb14ab",
+      "content_hash": "8d7c1ce960899799666b661f2be85403af5ef83e03632eec920a0046bebb14ab"
+    },
+    "batch_state": "COMPLETED",
+    "coverage_state": "FULL_MANIFEST_COVERAGE",
+    "full_coverage": true,
+    "total_units": 3,
+    "completed_units": 3,
+    "failed_units": 0,
+    "deferred_units": 0,
+    "pending_units": 0,
+    "actual_execution_receipts": 3,
+    "receipt_set_hash": "855d5b6136add5273d720265041296c9b8c59c9c3c0ad6262bba11b25108184c",
+    "populated_data_execution_claim": false
+  },
+  "numeric_evidence": "observations/independent_native_reconstruction.json",
+  "full_baseline_evidence": "observations/baseline.json",
+  "hostile_counterexamples": "observations/experiments.json",
+  "documentary_count_audit": {
+    "declared": {
+      "directed_pairs": 20,
+      "held": 16,
+      "inadmissible": 10,
+      "marginals": 5,
+      "produced": 3,
+      "produced_conditionals": 0,
+      "total": 25
+    },
+    "actual": {
+      "INADMISSIBLE": 6,
+      "HELD": 16,
+      "PRODUCED": 3
+    },
+    "record_count": 25,
+    "used_by_runtime": false
+  },
+  "positive_conditional": "Independent qualified manifest ran real I03 via accepted batch; observations/positive_conditional_batch.json. This is separate mechanism, zero positive conditionals in frozen25.",
+  "cold_replay": {
+    "identical_receipts": true,
+    "identical_values": true,
+    "frontier25": true,
+    "shard_values": true,
+    "checkpoint_exit": 23,
+    "resume_summary": {
+      "manifest_ref": {
+        "kind": "PRE553BatchManifest@1.0.0",
+        "object_id": "urn:rawlsing:pre553:batch-manifest:sha256:8d7c1ce960899799666b661f2be85403af5ef83e03632eec920a0046bebb14ab",
+        "content_hash": "8d7c1ce960899799666b661f2be85403af5ef83e03632eec920a0046bebb14ab"
+      },
+      "batch_state": "COMPLETED",
+      "coverage_state": "FULL_MANIFEST_COVERAGE",
+      "full_coverage": true,
+      "total_units": 3,
+      "completed_units": 3,
+      "failed_units": 0,
+      "deferred_units": 0,
+      "pending_units": 0,
+      "actual_execution_receipts": 3,
+      "receipt_set_hash": "855d5b6136add5273d720265041296c9b8c59c9c3c0ad6262bba11b25108184c",
+      "populated_data_execution_claim": false
+    },
+    "resume_consumer_error": "KeyError: \"consumer cannot resolve uncomputed result 'EmpiricalFact@1.0.0|urn:rawlsing:pre553:EmpiricalFact:sha256:6ed0a1ddd07ef34404c1472ac02fec19310f18dfb90c6252a8b1b771c22bc15e|6ed0a1ddd07ef34404c1472ac02fec19310f18dfb90c6252a8b1b771c22bc15e'\""
+  },
+  "permission_grade": "TEST_ONLY synthetic snapshots; original source/E/C11 issuer/model-use remain HOLD",
+  "harness_corrections": "Initial independent run had reviewer record-envelope extraction error; corrected. Intermediate DENY test expected exception; accepted owner law returns typed UNAVAILABLE, now PASS. Two probe serialization errors retained separately. These are not candidate failures; final44 has no errors/skips. Candidate files never edited."
+}

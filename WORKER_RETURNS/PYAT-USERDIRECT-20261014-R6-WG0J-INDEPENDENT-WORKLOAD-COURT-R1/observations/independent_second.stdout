@@ -1,0 +1,175 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.0.2, pluggy-1.6.0 -- /usr/local/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1
+collecting ... collected 44 items
+
+../tests/test_independent.py::test_exact_frozen_25_operations PASSED     [  2%]
+../tests/test_independent.py::test_actual_owners_and_source_record_numerics PASSED [  4%]
+../tests/test_independent.py::test_independent_mr_profiles_and_indicator_totals PASSED [  6%]
+../tests/test_independent.py::test_native_options_must_affect_computation_or_hold FAILED [  9%]
+../tests/test_independent.py::test_native_metadata_must_bind_release_or_hold[wave-W99] FAILED [ 11%]
+../tests/test_independent.py::test_native_metadata_must_bind_release_or_hold[unit-household] FAILED [ 13%]
+../tests/test_independent.py::test_native_metadata_must_bind_release_or_hold[source_id-FOREIGN] FAILED [ 15%]
+../tests/test_independent.py::test_native_metadata_must_bind_release_or_hold[form_id-Q-FOREIGN] FAILED [ 18%]
+../tests/test_independent.py::test_native_metadata_must_bind_release_or_hold[response_kind-MULTIPLE_RESPONSE] FAILED [ 20%]
+../tests/test_independent.py::test_same_operation_id_changed_semantics_rejected[conditioners-value0] FAILED [ 22%]
+../tests/test_independent.py::test_same_operation_id_changed_semantics_rejected[op_class-CONDITIONAL] FAILED [ 25%]
+../tests/test_independent.py::test_same_operation_id_changed_semantics_rejected[disposition_reason-UNPROVED] FAILED [ 27%]
+../tests/test_independent.py::test_missing_nonproduced_operation_rejected[HELD] FAILED [ 29%]
+../tests/test_independent.py::test_missing_nonproduced_operation_rejected[INADMISSIBLE] FAILED [ 31%]
+../tests/test_independent.py::test_same_key_altered_target_must_not_execute_original_source FAILED [ 34%]
+../tests/test_independent.py::test_unknown_operation_has_no_fallback PASSED [ 36%]
+../tests/test_independent.py::test_unknown_withdrawn_grants_hold[UNKNOWN] PASSED [ 38%]
+../tests/test_independent.py::test_unknown_withdrawn_grants_hold[WITHDRAWN] PASSED [ 40%]
+../tests/test_independent.py::test_unknown_withdrawn_grants_hold[] PASSED [ 43%]
+../tests/test_independent.py::test_unknown_withdrawn_grants_hold[forged-license] PASSED [ 45%]
+../tests/test_independent.py::test_late_revocation_blocks_current_read FAILED [ 47%]
+../tests/test_independent.py::test_fact_payload_is_bound_at_read FAILED  [ 50%]
+../tests/test_independent.py::test_wrong_release_bound_to_unit_is_rejected FAILED [ 52%]
+../tests/test_independent.py::test_inconsistent_mr_native_sets_rejected FAILED [ 54%]
+../tests/test_independent.py::test_invalid_native_response_rejected[None] PASSED [ 56%]
+../tests/test_independent.py::test_invalid_native_response_rejected[-1] PASSED [ 59%]
+../tests/test_independent.py::test_invalid_native_response_rejected[foreign] PASSED [ 61%]
+../tests/test_independent.py::test_missing_special_9_not_substantive FAILED [ 63%]
+../tests/test_independent.py::test_zero_risk_and_positive_conditional_actual_i03 PASSED [ 65%]
+../tests/test_independent.py::test_absent_joint_split_ballot_holds PASSED [ 68%]
+../tests/test_independent.py::test_source_bytes_mutation_changes_source_artifact_identity FAILED [ 70%]
+../tests/test_independent.py::test_unavailable_unit_release_ref_rejected PASSED [ 72%]
+../tests/test_independent.py::test_freeze_binds_native_fields[options-value0] PASSED [ 75%]
+../tests/test_independent.py::test_freeze_binds_native_fields[missing_codes-value1] PASSED [ 77%]
+../tests/test_independent.py::test_freeze_binds_native_fields[grant-WITHDRAWN] PASSED [ 79%]
+../tests/test_independent.py::test_freeze_binds_native_fields[route_evidence-new-route] PASSED [ 81%]
+../tests/test_independent.py::test_freeze_binds_native_fields[version-v2] PASSED [ 84%]
+../tests/test_independent.py::test_conflicting_carrier_and_changed_target_duplicate_refused PASSED [ 86%]
+../tests/test_independent.py::test_positive_conditional_through_independent_qualified_manifest PASSED [ 88%]
+../tests/test_independent.py::test_frozen_product_path_has_no_positive_conditionals PASSED [ 90%]
+../tests/test_independent.py::test_typed_owner_authority_deny_fails_closed FAILED [ 93%]
+../tests/test_independent.py::test_cold_replay_and_shard_values PASSED   [ 95%]
+../tests/test_independent.py::test_cold_resume_restores_published_fact_custody FAILED [ 97%]
+../tests/test_independent.py::test_wave2_source_universe_has_correct_wave FAILED [100%]
+
+=================================== FAILURES ===================================
+_____________ test_native_options_must_affect_computation_or_hold ______________
+../tests/test_independent.py:50: in test_native_options_must_affect_computation_or_hold
+    assert OP not in e or values(e)[OP]!=values(baseline[3])[OP], 'Changed options rotate identity but unchanged 0/1/2/3/9 cells still COMPUTED'
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: Changed options rotate identity but unchanged 0/1/2/3/9 cells still COMPUTED
+___________ test_native_metadata_must_bind_release_or_hold[wave-W99] ___________
+../tests/test_independent.py:56: in test_native_metadata_must_bind_release_or_hold
+    assert OP not in e or values(e)[OP]!=values(baseline[3])[OP], f'{field} mutation silently computes original hardcoded source'
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: wave mutation silently computes original hardcoded source
+________ test_native_metadata_must_bind_release_or_hold[unit-household] ________
+../tests/test_independent.py:56: in test_native_metadata_must_bind_release_or_hold
+    assert OP not in e or values(e)[OP]!=values(baseline[3])[OP], f'{field} mutation silently computes original hardcoded source'
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: unit mutation silently computes original hardcoded source
+______ test_native_metadata_must_bind_release_or_hold[source_id-FOREIGN] _______
+../tests/test_independent.py:56: in test_native_metadata_must_bind_release_or_hold
+    assert OP not in e or values(e)[OP]!=values(baseline[3])[OP], f'{field} mutation silently computes original hardcoded source'
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: source_id mutation silently computes original hardcoded source
+______ test_native_metadata_must_bind_release_or_hold[form_id-Q-FOREIGN] _______
+../tests/test_independent.py:56: in test_native_metadata_must_bind_release_or_hold
+    assert OP not in e or values(e)[OP]!=values(baseline[3])[OP], f'{field} mutation silently computes original hardcoded source'
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: form_id mutation silently computes original hardcoded source
+_ test_native_metadata_must_bind_release_or_hold[response_kind-MULTIPLE_RESPONSE] _
+../tests/test_independent.py:56: in test_native_metadata_must_bind_release_or_hold
+    assert OP not in e or values(e)[OP]!=values(baseline[3])[OP], f'{field} mutation silently computes original hardcoded source'
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: response_kind mutation silently computes original hardcoded source
+____ test_same_operation_id_changed_semantics_rejected[conditioners-value0] ____
+../tests/test_independent.py:61: in test_same_operation_id_changed_semantics_rejected
+    with pytest.raises((ValueError,KeyError,RuntimeError)):
+E   Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'KeyError'>, <class 'RuntimeError'>)
+___ test_same_operation_id_changed_semantics_rejected[op_class-CONDITIONAL] ____
+../tests/test_independent.py:61: in test_same_operation_id_changed_semantics_rejected
+    with pytest.raises((ValueError,KeyError,RuntimeError)):
+E   Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'KeyError'>, <class 'RuntimeError'>)
+_ test_same_operation_id_changed_semantics_rejected[disposition_reason-UNPROVED] _
+../tests/test_independent.py:61: in test_same_operation_id_changed_semantics_rejected
+    with pytest.raises((ValueError,KeyError,RuntimeError)):
+E   Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'KeyError'>, <class 'RuntimeError'>)
+______________ test_missing_nonproduced_operation_rejected[HELD] _______________
+../tests/test_independent.py:67: in test_missing_nonproduced_operation_rejected
+    with pytest.raises((ValueError,KeyError,RuntimeError)):
+E   Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'KeyError'>, <class 'RuntimeError'>)
+__________ test_missing_nonproduced_operation_rejected[INADMISSIBLE] ___________
+../tests/test_independent.py:67: in test_missing_nonproduced_operation_rejected
+    with pytest.raises((ValueError,KeyError,RuntimeError)):
+E   Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'KeyError'>, <class 'RuntimeError'>)
+________ test_same_key_altered_target_must_not_execute_original_source _________
+../tests/test_independent.py:72: in test_same_key_altered_target_must_not_execute_original_source
+    with pytest.raises((ValueError,KeyError,RuntimeError)):
+E   Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'KeyError'>, <class 'RuntimeError'>)
+___________________ test_late_revocation_blocks_current_read ___________________
+../tests/test_independent.py:88: in test_late_revocation_blocks_current_read
+    with pytest.raises((PermissionError,ValueError,KeyError)):
+E   Failed: DID NOT RAISE any of (<class 'PermissionError'>, <class 'ValueError'>, <class 'KeyError'>)
+______________________ test_fact_payload_is_bound_at_read ______________________
+../tests/test_independent.py:97: in test_fact_payload_is_bound_at_read
+    assert after[OP][0]['denominator']!=999, 'Same exact result ref reads caller-mutated 999 support'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: Same exact result ref reads caller-mutated 999 support
+_________________ test_wrong_release_bound_to_unit_is_rejected _________________
+../tests/test_independent.py:102: in test_wrong_release_bound_to_unit_is_rejected
+    assert OP not in e, 'COMPLETED unit pinned A-W1 computed A-W2 denominator 4'
+           ^^^^^^^^^^^
+E   AssertionError: COMPLETED unit pinned A-W1 computed A-W2 denominator 4
+__________________ test_inconsistent_mr_native_sets_rejected ___________________
+../tests/test_independent.py:107: in test_inconsistent_mr_native_sets_rejected
+    with pytest.raises((ValueError,KeyError,RuntimeError)): execute(plan())
+E   Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'KeyError'>, <class 'RuntimeError'>)
+____________________ test_missing_special_9_not_substantive ____________________
+../tests/test_independent.py:119: in test_missing_special_9_not_substantive
+    assert next(c for c in e[OP][0]['cells'] if c['cell']=='9')['n']==0, 'Declared missing 9 ingested and counted SUBSTANTIVE_RESPONSE'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: Declared missing 9 ingested and counted SUBSTANTIVE_RESPONSE
+_________ test_source_bytes_mutation_changes_source_artifact_identity __________
+../tests/test_independent.py:147: in test_source_bytes_mutation_changes_source_artifact_identity
+    assert new.source_artifact_ref!=old.source_artifact_ref, 'Changed source bytes retain identical source artifact hash'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: Changed source bytes retain identical source artifact hash
+_________________ test_typed_owner_authority_deny_fails_closed _________________
+../tests/test_independent.py:190: in test_typed_owner_authority_deny_fails_closed
+    rel=baseline[0].releases['REL-A-W1'];bad=replace(rel,qauth=replace(rel.qauth,typed_state='DENY',decision_state='DENY'))
+                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/dataclasses.py:1465: in replace
+    raise TypeError("replace() should be called on dataclass instances")
+E   TypeError: replace() should be called on dataclass instances
+_______________ test_cold_resume_restores_published_fact_custody _______________
+../tests/test_independent.py:204: in test_cold_resume_restores_published_fact_custody
+    assert 'consumer_error' not in d['resume'], 'Completed checkpoint skips old unit but its result payload is lost in fresh process'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: Completed checkpoint skips old unit but its result payload is lost in fresh process
+_________________ test_wave2_source_universe_has_correct_wave __________________
+../tests/test_independent.py:210: in test_wave2_source_universe_has_correct_wave
+    assert universe.raw_wave=='W2', 'Source universe hardcodes raw_wave W1 for W2 fixture'
+           ^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: Source universe hardcodes raw_wave W1 for W2 fixture
+- generated xml file: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/observations/independent.xml -
+=========================== short test summary info ============================
+FAILED ../tests/test_independent.py::test_native_options_must_affect_computation_or_hold - AssertionError: Changed options rotate identity but unchanged 0/1/2/3/9 cells still COMPUTED
+FAILED ../tests/test_independent.py::test_native_metadata_must_bind_release_or_hold[wave-W99] - AssertionError: wave mutation silently computes original hardcoded source
+FAILED ../tests/test_independent.py::test_native_metadata_must_bind_release_or_hold[unit-household] - AssertionError: unit mutation silently computes original hardcoded source
+FAILED ../tests/test_independent.py::test_native_metadata_must_bind_release_or_hold[source_id-FOREIGN] - AssertionError: source_id mutation silently computes original hardcoded source
+FAILED ../tests/test_independent.py::test_native_metadata_must_bind_release_or_hold[form_id-Q-FOREIGN] - AssertionError: form_id mutation silently computes original hardcoded source
+FAILED ../tests/test_independent.py::test_native_metadata_must_bind_release_or_hold[response_kind-MULTIPLE_RESPONSE] - AssertionError: response_kind mutation silently computes original hardcoded source
+FAILED ../tests/test_independent.py::test_same_operation_id_changed_semantics_rejected[conditioners-value0] - Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'KeyError'>, <class 'RuntimeError'>)
+FAILED ../tests/test_independent.py::test_same_operation_id_changed_semantics_rejected[op_class-CONDITIONAL] - Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'KeyError'>, <class 'RuntimeError'>)
+FAILED ../tests/test_independent.py::test_same_operation_id_changed_semantics_rejected[disposition_reason-UNPROVED] - Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'KeyError'>, <class 'RuntimeError'>)
+FAILED ../tests/test_independent.py::test_missing_nonproduced_operation_rejected[HELD] - Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'KeyError'>, <class 'RuntimeError'>)
+FAILED ../tests/test_independent.py::test_missing_nonproduced_operation_rejected[INADMISSIBLE] - Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'KeyError'>, <class 'RuntimeError'>)
+FAILED ../tests/test_independent.py::test_same_key_altered_target_must_not_execute_original_source - Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'KeyError'>, <class 'RuntimeError'>)
+FAILED ../tests/test_independent.py::test_late_revocation_blocks_current_read - Failed: DID NOT RAISE any of (<class 'PermissionError'>, <class 'ValueError'>, <class 'KeyError'>)
+FAILED ../tests/test_independent.py::test_fact_payload_is_bound_at_read - AssertionError: Same exact result ref reads caller-mutated 999 support
+FAILED ../tests/test_independent.py::test_wrong_release_bound_to_unit_is_rejected - AssertionError: COMPLETED unit pinned A-W1 computed A-W2 denominator 4
+FAILED ../tests/test_independent.py::test_inconsistent_mr_native_sets_rejected - Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'KeyError'>, <class 'RuntimeError'>)
+FAILED ../tests/test_independent.py::test_missing_special_9_not_substantive - AssertionError: Declared missing 9 ingested and counted SUBSTANTIVE_RESPONSE
+FAILED ../tests/test_independent.py::test_source_bytes_mutation_changes_source_artifact_identity - AssertionError: Changed source bytes retain identical source artifact hash
+FAILED ../tests/test_independent.py::test_typed_owner_authority_deny_fails_closed - TypeError: replace() should be called on dataclass instances
+FAILED ../tests/test_independent.py::test_cold_resume_restores_published_fact_custody - AssertionError: Completed checkpoint skips old unit but its result payload is lost in fresh process
+FAILED ../tests/test_independent.py::test_wave2_source_universe_has_correct_wave - AssertionError: Source universe hardcodes raw_wave W1 for W2 fixture
+======================== 21 failed, 23 passed in 4.64s =========================

@@ -1,0 +1,44 @@
+{
+  "schema": "WG0J_REQUIREMENT_EVIDENCE_CROSSWALK@1",
+  "commission": "WORKER_COMMISSIONS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/00_COMMISSION.md",
+  "requirements": [
+    {
+      "number": "1",
+      "work": "Exact25 manual oracle compared to enumeration/frontier; wrong count object preserved; omission witnesses runtime24 accepted",
+      "evidence": "observations/frontier_comparison.json; observations/experiments.json"
+    },
+    {
+      "number": "2",
+      "work": "29 exact author PASS; five pins; actual ingest3/I033/batch1; source identities and completed refs",
+      "evidence": "source_selector.json; observations/baseline.json; observations/author.xml"
+    },
+    {
+      "number": "3",
+      "work": "Independent sealed-record/routing reconstruction of01/05 and four MR profiles; RAW typed weight absence",
+      "evidence": "observations/independent_native_reconstruction.json"
+    },
+    {
+      "number": "4",
+      "work": "44 independent guards: permission/identity/native/missing/negative/foreign/MR/wrong-source/unknown/zero scope",
+      "evidence": "tests/test_independent.py; observations/independent.xml; observations/experiments.json"
+    },
+    {
+      "number": "5",
+      "work": "Frozen25 contains0 positive conditional; independent qualified-manifest actual positive proof is separate mechanism",
+      "evidence": "observations/positive_conditional_batch.json"
+    },
+    {
+      "number": "6",
+      "work": "Late revocation read failure, source replacement and unrelated A-W2 exact stability, cold identical runs, checkpoint exit23/resume lost fact, shard values",
+      "evidence": "observations/cold_comparison.json; observations/experiments.json"
+    },
+    {
+      "number": "7",
+      "work": "No full I05/RouteB/original35/N11/N12/V3; TEST_ONLY permissions and distinct adoption; RED repair specification",
+      "evidence": "00_INDEPENDENT_VERDICT.md; 03_COMPLETE_FRONTIER_REPLAY_AND_AUTHORITY_CEILING.md"
+    }
+  ],
+  "all_required_work_performed": true,
+  "scientific_verdict": "RED",
+  "source_issuer_and_semantic_adoption": "HOLD; not granted by reviewer"
+}

@@ -1,0 +1,692 @@
+{
+  "oracle": [
+    {
+      "op_id": "OP-WG0P-ORD-01-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [],
+      "item_ids": [
+        "WG0P-ORD-01"
+      ],
+      "disposition": "PRODUCED",
+      "disposition_reason": "ELIGIBLE"
+    },
+    {
+      "op_id": "OP-WG0P-HH-MR-02-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [],
+      "item_ids": [
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "PRODUCED",
+      "disposition_reason": "ELIGIBLE"
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [],
+      "item_ids": [
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [],
+      "item_ids": [
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [],
+      "item_ids": [
+        "WG0P-ORD-05"
+      ],
+      "disposition": "PRODUCED",
+      "disposition_reason": "ELIGIBLE"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-01-GIVEN-WG0P-HH-MR-02",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [
+        "WG0P-HH-MR-02"
+      ],
+      "item_ids": [
+        "WG0P-ORD-01",
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_UNIT_NOT_SAME_PERSON"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-01-GIVEN-WG0P-ROUTED-03",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [
+        "WG0P-ROUTED-03"
+      ],
+      "item_ids": [
+        "WG0P-ORD-01",
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-01-GIVEN-WG0P-ORD-04",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [
+        "WG0P-ORD-04"
+      ],
+      "item_ids": [
+        "WG0P-ORD-01",
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-01-GIVEN-WG0P-ORD-05",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [
+        "WG0P-ORD-05"
+      ],
+      "item_ids": [
+        "WG0P-ORD-01",
+        "WG0P-ORD-05"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_WAVE_NOT_SAME_PERSON"
+    },
+    {
+      "op_id": "OP-WG0P-HH-MR-02-GIVEN-WG0P-ORD-01",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [
+        "WG0P-ORD-01"
+      ],
+      "item_ids": [
+        "WG0P-HH-MR-02",
+        "WG0P-ORD-01"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_UNIT_NOT_SAME_PERSON"
+    },
+    {
+      "op_id": "OP-WG0P-HH-MR-02-GIVEN-WG0P-ROUTED-03",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [
+        "WG0P-ROUTED-03"
+      ],
+      "item_ids": [
+        "WG0P-HH-MR-02",
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "op_id": "OP-WG0P-HH-MR-02-GIVEN-WG0P-ORD-04",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [
+        "WG0P-ORD-04"
+      ],
+      "item_ids": [
+        "WG0P-HH-MR-02",
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-HH-MR-02-GIVEN-WG0P-ORD-05",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [
+        "WG0P-ORD-05"
+      ],
+      "item_ids": [
+        "WG0P-HH-MR-02",
+        "WG0P-ORD-05"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_UNIT_NOT_SAME_PERSON"
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-GIVEN-WG0P-ORD-01",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [
+        "WG0P-ORD-01"
+      ],
+      "item_ids": [
+        "WG0P-ROUTED-03",
+        "WG0P-ORD-01"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-GIVEN-WG0P-HH-MR-02",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [
+        "WG0P-HH-MR-02"
+      ],
+      "item_ids": [
+        "WG0P-ROUTED-03",
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-GIVEN-WG0P-ORD-04",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [
+        "WG0P-ORD-04"
+      ],
+      "item_ids": [
+        "WG0P-ROUTED-03",
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-GIVEN-WG0P-ORD-05",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [
+        "WG0P-ORD-05"
+      ],
+      "item_ids": [
+        "WG0P-ROUTED-03",
+        "WG0P-ORD-05"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-GIVEN-WG0P-ORD-01",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [
+        "WG0P-ORD-01"
+      ],
+      "item_ids": [
+        "WG0P-ORD-04",
+        "WG0P-ORD-01"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-GIVEN-WG0P-HH-MR-02",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [
+        "WG0P-HH-MR-02"
+      ],
+      "item_ids": [
+        "WG0P-ORD-04",
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-GIVEN-WG0P-ROUTED-03",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [
+        "WG0P-ROUTED-03"
+      ],
+      "item_ids": [
+        "WG0P-ORD-04",
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-GIVEN-WG0P-ORD-05",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [
+        "WG0P-ORD-05"
+      ],
+      "item_ids": [
+        "WG0P-ORD-04",
+        "WG0P-ORD-05"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_GRANT_WITHDRAWN"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-GIVEN-WG0P-ORD-01",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [
+        "WG0P-ORD-01"
+      ],
+      "item_ids": [
+        "WG0P-ORD-05",
+        "WG0P-ORD-01"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_WAVE_NOT_SAME_PERSON"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-GIVEN-WG0P-HH-MR-02",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [
+        "WG0P-HH-MR-02"
+      ],
+      "item_ids": [
+        "WG0P-ORD-05",
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_UNIT_NOT_SAME_PERSON"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-GIVEN-WG0P-ROUTED-03",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [
+        "WG0P-ROUTED-03"
+      ],
+      "item_ids": [
+        "WG0P-ORD-05",
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-GIVEN-WG0P-ORD-04",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [
+        "WG0P-ORD-04"
+      ],
+      "item_ids": [
+        "WG0P-ORD-05",
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_GRANT_WITHDRAWN"
+    }
+  ],
+  "runtime_frontier": [
+    {
+      "op_id": "OP-WG0P-HH-MR-02-GIVEN-WG0P-ORD-01",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [
+        "WG0P-ORD-01"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_UNIT_NOT_SAME_PERSON",
+      "item_ids": [
+        "WG0P-HH-MR-02",
+        "WG0P-ORD-01"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-HH-MR-02-GIVEN-WG0P-ORD-04",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_GRANT_WITHDRAWN",
+      "item_ids": [
+        "WG0P-HH-MR-02",
+        "WG0P-ORD-04"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-HH-MR-02-GIVEN-WG0P-ORD-05",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [
+        "WG0P-ORD-05"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_UNIT_NOT_SAME_PERSON",
+      "item_ids": [
+        "WG0P-HH-MR-02",
+        "WG0P-ORD-05"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-HH-MR-02-GIVEN-WG0P-ROUTED-03",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_ROUTE_EVIDENCE_MISSING",
+      "item_ids": [
+        "WG0P-HH-MR-02",
+        "WG0P-ROUTED-03"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-HH-MR-02-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-HH-MR-02",
+      "conditioners": [],
+      "disposition": "PRODUCED",
+      "disposition_reason": "ELIGIBLE",
+      "item_ids": [
+        "WG0P-HH-MR-02"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-01-GIVEN-WG0P-HH-MR-02",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_UNIT_NOT_SAME_PERSON",
+      "item_ids": [
+        "WG0P-ORD-01",
+        "WG0P-HH-MR-02"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-01-GIVEN-WG0P-ORD-04",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_GRANT_WITHDRAWN",
+      "item_ids": [
+        "WG0P-ORD-01",
+        "WG0P-ORD-04"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-01-GIVEN-WG0P-ORD-05",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [
+        "WG0P-ORD-05"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_WAVE_NOT_SAME_PERSON",
+      "item_ids": [
+        "WG0P-ORD-01",
+        "WG0P-ORD-05"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-01-GIVEN-WG0P-ROUTED-03",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_ROUTE_EVIDENCE_MISSING",
+      "item_ids": [
+        "WG0P-ORD-01",
+        "WG0P-ROUTED-03"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-01-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-ORD-01",
+      "conditioners": [],
+      "disposition": "PRODUCED",
+      "disposition_reason": "ELIGIBLE",
+      "item_ids": [
+        "WG0P-ORD-01"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-GIVEN-WG0P-HH-MR-02",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_GRANT_WITHDRAWN",
+      "item_ids": [
+        "WG0P-ORD-04",
+        "WG0P-HH-MR-02"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-GIVEN-WG0P-ORD-01",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [
+        "WG0P-ORD-01"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_GRANT_WITHDRAWN",
+      "item_ids": [
+        "WG0P-ORD-04",
+        "WG0P-ORD-01"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-GIVEN-WG0P-ORD-05",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [
+        "WG0P-ORD-05"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_GRANT_WITHDRAWN",
+      "item_ids": [
+        "WG0P-ORD-04",
+        "WG0P-ORD-05"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-GIVEN-WG0P-ROUTED-03",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_GRANT_WITHDRAWN",
+      "item_ids": [
+        "WG0P-ORD-04",
+        "WG0P-ROUTED-03"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-04-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-ORD-04",
+      "conditioners": [],
+      "disposition": "HELD",
+      "disposition_reason": "GRANT_WITHDRAWN",
+      "item_ids": [
+        "WG0P-ORD-04"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-GIVEN-WG0P-HH-MR-02",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_UNIT_NOT_SAME_PERSON",
+      "item_ids": [
+        "WG0P-ORD-05",
+        "WG0P-HH-MR-02"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-GIVEN-WG0P-ORD-01",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [
+        "WG0P-ORD-01"
+      ],
+      "disposition": "INADMISSIBLE",
+      "disposition_reason": "CROSS_WAVE_NOT_SAME_PERSON",
+      "item_ids": [
+        "WG0P-ORD-05",
+        "WG0P-ORD-01"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-GIVEN-WG0P-ORD-04",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_GRANT_WITHDRAWN",
+      "item_ids": [
+        "WG0P-ORD-05",
+        "WG0P-ORD-04"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-GIVEN-WG0P-ROUTED-03",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [
+        "WG0P-ROUTED-03"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_ROUTE_EVIDENCE_MISSING",
+      "item_ids": [
+        "WG0P-ORD-05",
+        "WG0P-ROUTED-03"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ORD-05-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-ORD-05",
+      "conditioners": [],
+      "disposition": "PRODUCED",
+      "disposition_reason": "ELIGIBLE",
+      "item_ids": [
+        "WG0P-ORD-05"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-GIVEN-WG0P-HH-MR-02",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [
+        "WG0P-HH-MR-02"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_ROUTE_EVIDENCE_MISSING",
+      "item_ids": [
+        "WG0P-ROUTED-03",
+        "WG0P-HH-MR-02"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-GIVEN-WG0P-ORD-01",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [
+        "WG0P-ORD-01"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_ROUTE_EVIDENCE_MISSING",
+      "item_ids": [
+        "WG0P-ROUTED-03",
+        "WG0P-ORD-01"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-GIVEN-WG0P-ORD-04",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [
+        "WG0P-ORD-04"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "CONDITIONER_GRANT_WITHDRAWN",
+      "item_ids": [
+        "WG0P-ROUTED-03",
+        "WG0P-ORD-04"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-GIVEN-WG0P-ORD-05",
+      "op_class": "CONDITIONAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [
+        "WG0P-ORD-05"
+      ],
+      "disposition": "HELD",
+      "disposition_reason": "TARGET_ROUTE_EVIDENCE_MISSING",
+      "item_ids": [
+        "WG0P-ROUTED-03",
+        "WG0P-ORD-05"
+      ]
+    },
+    {
+      "op_id": "OP-WG0P-ROUTED-03-MARGINAL",
+      "op_class": "MARGINAL",
+      "target": "WG0P-ROUTED-03",
+      "conditioners": [],
+      "disposition": "HELD",
+      "disposition_reason": "ROUTE_EVIDENCE_MISSING",
+      "item_ids": [
+        "WG0P-ROUTED-03"
+      ]
+    }
+  ],
+  "equal": true,
+  "expected_counts": {
+    "produced": 3,
+    "held": 16,
+    "inadmissible": 6,
+    "total": 25
+  },
+  "candidate_original_count_object": {
+    "directed_pairs": 20,
+    "held": 16,
+    "inadmissible": 10,
+    "marginals": 5,
+    "produced": 3,
+    "produced_conditionals": 0,
+    "total": 25
+  }
+}

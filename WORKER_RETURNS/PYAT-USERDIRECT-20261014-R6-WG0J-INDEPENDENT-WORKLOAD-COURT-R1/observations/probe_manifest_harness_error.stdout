@@ -1,0 +1,35 @@
+Traceback (most recent call last):
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/repro/probe.py", line 15, in <module>
+    sys.settrace(trace);p=plan();runner,rs,e=execute(p);sys.settrace(None)
+                          ^^^^^^
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/repro/common.py", line 14, in plan
+    return w.build_executable_plan(b.enumerate() if ops is None else ops,w.build_all_releases() if releases is None else releases,freeze_hash=freeze,items_by_id={i.item_id:i for i in items})
+                                                                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/candidate/repro/wg0p2_workload.py", line 663, in build_all_releases
+    out[tag] = build_release(tag, ns, repo=shared)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/candidate/repro/wg0p2_workload.py", line 630, in build_release
+    result = ingest_c11_source_release(candidate, repo)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/rawlsing_next/pre553_c11_ingest.py", line 791, in ingest_c11_source_release
+    def ingest_c11_source_release(
+    
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/runtime_root/rawlsing_next/pre553_c11_ingest.py", line 791, in ingest_c11_source_release
+    def ingest_c11_source_release(
+    
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/repro/probe.py", line 11, in trace
+    c=frame.f_locals['candidate'];ingests.append({'source_manifest':asdict(c.source_release_manifest),'weight_absence':asdict(c.weight_measure_facts_or_typed_absence)})
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/dataclasses.py", line 1277, in asdict
+    return _asdict_inner(obj, dict_factory)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/dataclasses.py", line 1284, in _asdict_inner
+    value = _asdict_inner(getattr(obj, f.name), dict_factory)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/dataclasses.py", line 1318, in _asdict_inner
+    return copy.deepcopy(obj)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/copy.py", line 161, in deepcopy
+    rv = reductor(4)
+         ^^^^^^^^^^^
+TypeError: cannot pickle 'mappingproxy' object

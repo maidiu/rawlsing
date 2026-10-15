@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r6-wg0j-court/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-WG0J-INDEPENDENT-WORKLOAD-COURT-R1/repro/probe.py", line 22, in <module>
+    dump('baseline.json',{'versions':{'python':sys.version,'pytest':pytest.__version__,'platform':platform.platform()},'imports':imports,'owner_calls':calls,'owner_query_returns':returned,'one_repository':len({id(r.repo) for r in p.releases.values()})==1,'releases':releases,'frontier':p.frontier_receipts,'consumer':e,'receipts':[asdict(r) for r in rs],'summary':runner.summary().projection()})
+                                                                                                                                                                                                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'BatchSummary' object has no attribute 'projection'
