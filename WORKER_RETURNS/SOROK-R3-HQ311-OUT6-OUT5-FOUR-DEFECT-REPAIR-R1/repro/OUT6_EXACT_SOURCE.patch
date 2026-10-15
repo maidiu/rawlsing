@@ -1,0 +1,66 @@
+--- a/outbox_prototype.py
++++ b/outbox_prototype.py
+@@ -234,13 +234,21 @@
+         if viewer_id not in self.viewers.get(occurrence_id,set()):return None
+         e=self.client_deliveries.get(durable_delivery_id(occurrence_id,viewer_id))
+         if not e:return None
+-        e['state']=DeliveryState.FAILED.value
++        # Acknowledgment is a terminal source-free receipt; a failure callback
++        # cannot erase it or fabricate a second retry opportunity.
++        if e['state'] in (DeliveryState.ADMITTED_UNDELIVERED.value,
++                          DeliveryState.DELIVERED_UNACKED.value):
++            e['state']=DeliveryState.FAILED.value
+         return copy.deepcopy(e)
+     def emit(self,occurrence_id,viewer_id=None):
+         if self.ledger is None or self.ledger.get(occurrence_id) is None:return DeliveryState.NOT_SENT
+         admitted=self.ledger.get(occurrence_id)
+         if admitted['admission_grade']=='SOURCEFREE_BOUND_DECIDER_NOT_OWNER' and viewer_id is None:return DeliveryState.NOT_SENT
+         if viewer_id is not None and viewer_id not in self.viewers.get(occurrence_id,set()):return DeliveryState.NOT_SENT
++        # A formerly authorized sole viewer cannot be bypassed by retrying
++        # through the no-viewer legacy scalar path after revocation.
++        if self.revoked_viewers.get(occurrence_id) and not self.viewers.get(occurrence_id):
++            return DeliveryState.NOT_SENT
+         entry=self.deliveries.setdefault(occurrence_id,{'state':DeliveryState.NOT_SENT.value,'ack_count':0,'attempts':0})
+         if entry['state'] in (DeliveryState.NOT_SENT.value,DeliveryState.FAILED.value):
+             entry['state']=DeliveryState.ADMITTED_UNDELIVERED.value;entry['attempts']+=1
+@@ -277,11 +285,25 @@
+         return DeliveryState(e['state']) if e else DeliveryState.NOT_SENT
+     def fail(self,occurrence_id):
+         e=self.deliveries.get(occurrence_id)
+-        if e:e['state']=DeliveryState.FAILED.value
++        # FAILED cannot replace a terminal ACK, or manufacture a failed
++        # attempt out of a never-sent delivery. The original ACK remains.
++        if e and e['state'] in (DeliveryState.ADMITTED_UNDELIVERED.value,
++                                 DeliveryState.DELIVERED_UNACKED.value):
++            e['state']=DeliveryState.FAILED.value
+         return DeliveryState(e['state']) if e else DeliveryState.NOT_SENT
+     def retry(self,occurrence_id):
+         e=self.deliveries.get(occurrence_id)
+-        if e and e['state']==DeliveryState.FAILED.value:e['state']=DeliveryState.ADMITTED_UNDELIVERED.value;e['attempts']+=1
++        if e and e['state']==DeliveryState.FAILED.value:
++            admitted=self.ledger.get(occurrence_id) if self.ledger else None
++            if not admitted:return DeliveryState.NOT_SENT
++            linked=self.viewers.get(occurrence_id,set())
++            # Refuse the global bypass when the last holder of delivery
++            # opportunity has been revoked, even on legacy fixtures.
++            if self.revoked_viewers.get(occurrence_id) and not linked:
++                return DeliveryState.NOT_SENT
++            if admitted['admission_grade']=='SOURCEFREE_BOUND_DECIDER_NOT_OWNER' and not linked:
++                return DeliveryState.NOT_SENT
++            e['state']=DeliveryState.ADMITTED_UNDELIVERED.value;e['attempts']+=1
+         return DeliveryState(e['state']) if e else DeliveryState.NOT_SENT
+ 
+ @dataclass
+@@ -402,6 +424,12 @@
+             # be exercised or assert opportunity once authorization is revoked.
+             if eid not in ids or not isinstance(viewer,str) or key!=durable_delivery_id(eid,viewer):
+                 raise ValueError('GHOST_CLIENT_DELIVERY')
++            # Existing revoked viewer receipts remain historical evidence; a
++            # fabricated delivery for a never-authorized viewer does not.
++            active=self.outbox.viewers.get(eid,set())
++            revoked=self.outbox.revoked_viewers.get(eid,set())
++            if viewer not in active and viewer not in revoked:
++                raise ValueError('UNAUTHORIZED_CLIENT_DELIVERY')
+             n=d.get('attempts');ack=d.get('ack_count');state=d.get('state')
+             if (d.get('delivery_id')!=key or type(n) is not int or n<0 or type(ack) is not int or ack<0 or ack>1
+                     or state not in valid_states or not viewer.strip()):

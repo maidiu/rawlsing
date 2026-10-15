@@ -1,0 +1,70 @@
+{
+  "schema": "SOROK_HQ311_OUT6_EXECUTION_INDEX_R1",
+  "seal": "065d3aabf0bada9d6c8fe8d8d9a4dee07bba1e92",
+  "candidate_git_blob": "aa002cb634e81cb980820c14220a1ab55bc5e015",
+  "original_OUT4_blob": "c7bb4169d43c715de7dd113b24d3ce897e37beab",
+  "tests_git_blob": "c1bbfdddf0cffe9a5988aaa11b13e5065dc01406",
+  "before_original137": {
+    "pass": 135,
+    "red": 2,
+    "skip": 0,
+    "exit": 1
+  },
+  "after_original137": {
+    "pass": 135,
+    "red": 2,
+    "skip": 0,
+    "exit": 1
+  },
+  "before_OUT3_22": {
+    "pass": 22,
+    "red": 0,
+    "skip": 0,
+    "exit": 0
+  },
+  "after_OUT3_22": {
+    "pass": 22,
+    "red": 0,
+    "skip": 0,
+    "exit": 0
+  },
+  "before_OUT4_29": {
+    "pass": 29,
+    "red": 0,
+    "skip": 0,
+    "exit": 0
+  },
+  "after_OUT4_29": {
+    "pass": 29,
+    "red": 0,
+    "skip": 0,
+    "exit": 0
+  },
+  "before_new_initial13": {
+    "pass": 4,
+    "red": 9,
+    "exit": 1
+  },
+  "after_new_expanded18": {
+    "pass": 18,
+    "red": 0,
+    "exit": 0
+  },
+  "after_combined206": {
+    "pass": 204,
+    "red": 2,
+    "skip": 0,
+    "error": 0,
+    "exit": 1
+  },
+  "red_ids": [
+    "test_s27_material_move_needs_world_owner",
+    "test_replay_manual_two_writers_can_lose_first_committed_event"
+  ],
+  "OUT5_14_exact": "UNPUBLISHED_NOT_EXECUTED",
+  "OUTP": [
+    "LEGACY_MODE_ADMISSION",
+    "ACK_PROJECTION_OPPORTUNITY"
+  ],
+  "sourcefree_grade": "ISOLATED_SINGLE_WRITER_REPAIR_CANDIDATE_NOT_I2_ACCEPTED"
+}
