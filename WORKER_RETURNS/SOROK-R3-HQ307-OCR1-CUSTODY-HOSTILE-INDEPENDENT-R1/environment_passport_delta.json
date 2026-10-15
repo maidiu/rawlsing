@@ -1,0 +1,93 @@
+{
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "OCR1-BROWSER-c8238bd534a8",
+  "epoch_id": "OCR1-90c2a23170af",
+  "owner_session_alias": "HQ307_OCR1_INDEPENDENT_ONE_AGENT",
+  "surface": "BROWSER_CONTAINER",
+  "machine_alias": null,
+  "conversation_or_account_affinity": null,
+  "status": "LIVE_VERIFIED_AT_RUN__RECHECK_LATER",
+  "last_live_probe_at": "2026-10-15T06:27:18.517029+00:00",
+  "runtime_marker_digest": "f6d1d312e6e5c178cf02a0b4f6025a575c7499cdc62e72eec929d33af35e6f03",
+  "probe_command_and_result": {
+    "python": "3.13.5",
+    "pytest": "pytest 9.0.2",
+    "git": "git version 2.47.3",
+    "subprocess": "VERIFIED",
+    "fs": "VERIFIED"
+  },
+  "git_object_store_alias": null,
+  "worktree_alias": null,
+  "remote_branch": "agent/reviewer-sorok-r3-hq307-ocr1-custody-hostile-r1",
+  "sealed_startup": "07130e9a96944dc852a7ddf38c11cc38cf14f75c",
+  "checkout_base": null,
+  "materialized_source_refs": [
+    {
+      "source_path": "custody_protocol.py",
+      "exact_author_commit": "19438890e43153e2bc4a1ad271b5e19bcef33e1e",
+      "git_blob_sha1": "487a6e5bc40a1d366a375d4916eb759bb997eb2a",
+      "local_relative_path": "source/custody_protocol.py",
+      "imported_module_file": "source/custody_protocol.py"
+    },
+    {
+      "source_path": "dummy_corpus.py",
+      "exact_author_commit": "19438890e43153e2bc4a1ad271b5e19bcef33e1e",
+      "git_blob_sha1": "770efe72190e35d1bc34065b5a55c183bf1320f5",
+      "local_relative_path": "source/dummy_corpus.py",
+      "imported_module_file": "source/dummy_corpus.py"
+    },
+    {
+      "source_path": "test_custody_hostiles.py",
+      "exact_author_commit": "19438890e43153e2bc4a1ad271b5e19bcef33e1e",
+      "git_blob_sha1": "94ad944997cb9d1a8d6527e91c17416120c5108d",
+      "local_relative_path": "source/test_custody_hostiles.py",
+      "imported_module_file": null
+    },
+    {
+      "source_path": "test_ocr1_independent_hostile.py",
+      "exact_author_commit": "19438890e43153e2bc4a1ad271b5e19bcef33e1e",
+      "git_blob_sha1": "ef997cab7205df53256b66a5695deeb9c082394f",
+      "local_relative_path": "source/test_ocr1_independent_hostile.py",
+      "imported_module_file": null
+    },
+    {
+      "source_path": "test_positive_lifecycle.py",
+      "exact_author_commit": "19438890e43153e2bc4a1ad271b5e19bcef33e1e",
+      "git_blob_sha1": "4b665a2a9d6999071624d580f2d2ae193daf59f4",
+      "local_relative_path": "source/test_positive_lifecycle.py",
+      "imported_module_file": null
+    }
+  ],
+  "dependency_closure_status": "FULL_SOURCEFREE_ONLY",
+  "covered_test_suites": {
+    "original_31": {
+      "tests": 31,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "independent_hostile_45": {
+      "tests": 45,
+      "failures": 30,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "science_grade": "SOURCEFREE_TEST_ONLY_INDEPENDENT_REVIEW__NOT_ADOPTED",
+  "model_provider": "OpenAI GPT-6; effort requested High, actual runtime effort not introspectable",
+  "pricing_class": "UNKNOWN",
+  "observed_incremental_cash": null,
+  "observed_quota": null,
+  "privacy_source_grant": "PRIVATE_GITHUB_PINNED_SOURCEFREE_TEST_ONLY",
+  "independent_review_separation": "DIFFERENT_FROM_HQ306_OC1_AUTHOR",
+  "next_good_affinity_tags": [
+    "SOROK_ORACLE_CUSTODY",
+    "SOURCEFREE_ESCROW",
+    "ADVERSARIAL_ROLE_GATES"
+  ],
+  "staged_state_preservation": "CURRENT_CONTAINER_ONLY_NOT_PROMISED_NEXT_CHAT",
+  "assignments_completed": [
+    "HQ307 OCR1 independent hostile review"
+  ],
+  "retire_or_rebuild_reason": null
+}

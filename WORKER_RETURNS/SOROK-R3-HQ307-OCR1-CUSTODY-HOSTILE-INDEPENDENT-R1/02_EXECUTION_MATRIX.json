@@ -1,0 +1,628 @@
+{
+  "schema": "SOROK_HQ307_OCR1_INDEPENDENT_EXECUTION_MATRIX_R1",
+  "reviewer_startup": "07130e9a96944dc852a7ddf38c11cc38cf14f75c",
+  "candidate_pin": "19438890e43153e2bc4a1ad271b5e19bcef33e1e",
+  "author_original_pytest": {
+    "tests": 31,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "reviewer_new_pytest": {
+    "tests": 45,
+    "failures": 30,
+    "errors": 0,
+    "skipped": 0
+  },
+  "all_76": {
+    "tests": 76,
+    "passed": 46,
+    "failed": 30,
+    "errors": 0,
+    "skipped": 0
+  },
+  "grade": "SOURCEFREE_TEST_ONLY__REVIEW_REVISE",
+  "reviewer_known_prior_findings": true,
+  "preobservation_freeze_sha256": "6bd32493ccf65601a21be40f2aea8a290c6e2049285f01291c3036415655953d",
+  "source_file_manifest": {
+    "custody_protocol.py": {
+      "git_blob_sha1": "487a6e5bc40a1d366a375d4916eb759bb997eb2a",
+      "sha256": "7c843fc084b4237ee61cdd84bb57b0d4671e9627fbc5d07b1c4e1071e63fd46b",
+      "bytes": 10661,
+      "pinned_original": true,
+      "original_match": true
+    },
+    "dummy_corpus.py": {
+      "git_blob_sha1": "770efe72190e35d1bc34065b5a55c183bf1320f5",
+      "sha256": "143137d985826aad185c8081d4f62094345cd46b693a6f9f3e521535c99c4c58",
+      "bytes": 4869,
+      "pinned_original": true,
+      "original_match": true
+    },
+    "test_custody_hostiles.py": {
+      "git_blob_sha1": "94ad944997cb9d1a8d6527e91c17416120c5108d",
+      "sha256": "5075b3a40efec6d05b5e734d2d2fed8934fe429982168724b6e91ee10def128d",
+      "bytes": 13072,
+      "pinned_original": true,
+      "original_match": true
+    },
+    "test_ocr1_independent_hostile.py": {
+      "git_blob_sha1": "ef997cab7205df53256b66a5695deeb9c082394f",
+      "sha256": "ed73f0721ae0ff8b93da97043e1d12eb7658a360f3e03f1ea4a4919230437865",
+      "bytes": 11108,
+      "pinned_original": false,
+      "original_match": null
+    },
+    "test_positive_lifecycle.py": {
+      "git_blob_sha1": "4b665a2a9d6999071624d580f2d2ae193daf59f4",
+      "sha256": "f231bf42a23d5e82bbdddef1a95b1aef2d6b11e217e553de3df0f156d0bef064",
+      "bytes": 4251,
+      "pinned_original": true,
+      "original_match": true
+    }
+  },
+  "original_test_results": [
+    {
+      "name": "test_h01_forged_custodian_refused",
+      "class": "test_custody_hostiles",
+      "status": "PASS",
+      "time_seconds": "0.076"
+    },
+    {
+      "name": "test_h02_same_person_cannot_hold_conflicting_roles",
+      "class": "test_custody_hostiles",
+      "status": "PASS",
+      "time_seconds": "0.001"
+    },
+    {
+      "name": "test_h02b_same_person_second_signature_refused",
+      "class": "test_custody_hostiles",
+      "status": "PASS",
+      "time_seconds": "0.000"
+    },
+    {
+      "name": "test_h02c_conflicting_role_second_signature_refused",
+      "class": "test_custody_hostiles",
+      "status": "PASS",
+      "time_seconds": "0.000"
+    },
+    {
+      "name": "test_h03_scenario_oracle_identity_mismatch_refused",
+      "class": "test_custody_hostiles",
+      "status": "PASS",
+      "time_seconds": "0.001"
+    },
+    {
+      "name": "test_h04_wrong_purpose_refused",
+      "class": "test_custody_hostiles",
+      "status": "PASS",
+      "time_seconds": "0.001"
+    },
+    {
+      "name": "test_h05_stale_or_revoked_capsule_refused",
+      "class": "test_custody_hostiles",
+      "status": "PASS",
+      "time_seconds": "0.001"
+    },
+    {
+      "name": "test_h06_revised_answer_after_freeze_refused",
+      "class": "test_custody_hostiles",
+      "status": "PASS",
+      "time_seconds": "0.000"
+    },
+    {
+      "name": "test_h07_clone_family_detected",
+      "class": "test_custody_hostiles",
+      "status": "PASS",
+      "time_seconds": "0.000"
+    },
+    {
+      "name": "test_h08_blind_id_pairing_break_detected",
+      "class": "test_custody_hostiles",
+      "status": "PASS",
+      "time_seconds": "0.000"
+    },
+    {
+      "name": "test_h09_hidden_origin_leak_detected",
+      "class": "test_custody_hostiles",
+      "status": "PASS",
+      "time_seconds": "0.001"
+    },
+    {
+      "name": "test_h10_answer_key_leak_detected",
+      "class": "test_custody_hostiles",
+      "status": "PASS",
+      "time_seconds": "0.001"
+    },
+    {
+      "name": "test_h11_premature_reveal_detected",
+      "class": "test_custody_hostiles",
+      "status": "PASS",
+      "time_seconds": "0.000"
+    },
+    {
+      "name": "test_h12_null_signature_refused",
+      "class": "test_custody_hostiles",
+      "status": "PASS",
+      "time_seconds": "0.000"
+    },
+    {
+      "name": "test_h13_ledger_rollback_detected",
+      "class": "test_custody_hostiles",
+      "status": "PASS",
+      "time_seconds": "0.002"
+    },
+    {
+      "name": "test_h14_response_coding_leak_detected",
+      "class": "test_custody_hostiles",
+      "status": "PASS",
+      "time_seconds": "0.000"
+    },
+    {
+      "name": "test_h15_missing_signature_in_capsule_refused",
+      "class": "test_custody_hostiles",
+      "status": "PASS",
+      "time_seconds": "0.000"
+    },
+    {
+      "name": "test_h16_capsule_wrong_purpose_refused",
+      "class": "test_custody_hostiles",
+      "status": "PASS",
+      "time_seconds": "0.001"
+    },
+    {
+      "name": "test_h17_model_visible_packet_no_leak",
+      "class": "test_custody_hostiles",
+      "status": "PASS",
+      "time_seconds": "0.001"
+    },
+    {
+      "name": "test_h18_exposure_log_recorded",
+      "class": "test_custody_hostiles",
+      "status": "PASS",
+      "time_seconds": "0.000"
+    },
+    {
+      "name": "test_h19_non_test_only_signature_rejected",
+      "class": "test_custody_hostiles",
+      "status": "PASS",
+      "time_seconds": "0.000"
+    },
+    {
+      "name": "test_h20_family_graph_digest_binds_families",
+      "class": "test_custody_hostiles",
+      "status": "PASS",
+      "time_seconds": "0.000"
+    },
+    {
+      "name": "test_positive_full_role_separated_lifecycle",
+      "class": "test_positive_lifecycle",
+      "status": "PASS",
+      "time_seconds": "0.001"
+    },
+    {
+      "name": "test_positive_no_leakage_in_model_packets",
+      "class": "test_positive_lifecycle",
+      "status": "PASS",
+      "time_seconds": "0.001"
+    },
+    {
+      "name": "test_positive_coder_input_no_arm_leak",
+      "class": "test_positive_lifecycle",
+      "status": "PASS",
+      "time_seconds": "0.001"
+    },
+    {
+      "name": "test_positive_role_separation_enforced",
+      "class": "test_positive_lifecycle",
+      "status": "PASS",
+      "time_seconds": "0.000"
+    },
+    {
+      "name": "test_positive_lawful_sets_contain_other_unscorable",
+      "class": "test_positive_lifecycle",
+      "status": "PASS",
+      "time_seconds": "0.000"
+    },
+    {
+      "name": "test_positive_capsule_deterministic_digest",
+      "class": "test_positive_lifecycle",
+      "status": "PASS",
+      "time_seconds": "0.001"
+    },
+    {
+      "name": "test_positive_verifiable_mock_signature",
+      "class": "test_positive_lifecycle",
+      "status": "PASS",
+      "time_seconds": "0.000"
+    },
+    {
+      "name": "test_positive_purpose_gate",
+      "class": "test_positive_lifecycle",
+      "status": "PASS",
+      "time_seconds": "0.000"
+    },
+    {
+      "name": "test_positive_blind_id_pairing_ok",
+      "class": "test_positive_lifecycle",
+      "status": "PASS",
+      "time_seconds": "0.000"
+    }
+  ],
+  "hostile_test_results": [
+    {
+      "name": "test_A_capsule_unblind_permission[mod0-A01_revoked_unblind]",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.019",
+      "review_id": "A01_revoked_unblind",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_A_capsule_unblind_permission[mod1-A02_expired_unblind]",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.001",
+      "review_id": "A02_expired_unblind",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_A_capsule_unblind_permission[mod2-A03_illegal_purpose_unblind]",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.001",
+      "review_id": "A03_illegal_purpose_unblind",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_A04_arbitrary_holder_unblind",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.000",
+      "review_id": "A04_arbitrary_holder_unblind",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_A05_forbidden_role_unblind",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.000",
+      "review_id": "A05_forbidden_role_unblind",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_A_release_after_revocation[A06_revoked_release]",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.001",
+      "review_id": "A06_revoked_release",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_A_release_after_revocation[A07_expired_release]",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.001",
+      "review_id": "A07_expired_release",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_A08_mismatched_holder_unblind",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.001",
+      "review_id": "A08_mismatched_holder_unblind",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_A09_uncommitted_release",
+      "class": "test_ocr1_independent_hostile",
+      "status": "PASS",
+      "time_seconds": "0.000",
+      "review_id": "A09_uncommitted_release",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_A10_duplicate_release",
+      "class": "test_ocr1_independent_hostile",
+      "status": "PASS",
+      "time_seconds": "0.000",
+      "review_id": "A10_duplicate_release",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_A11_exposure_uncommitted",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.000",
+      "review_id": "A11_exposure_uncommitted",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_A12_exposure_illegal_purpose",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.001",
+      "review_id": "A12_exposure_illegal_purpose",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_B01_none_capsule",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.001",
+      "review_id": "B01_none_capsule",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_B02_unrelated_capsule_digest",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.001",
+      "review_id": "B02_unrelated_capsule_digest",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_B_wrong_context_or_nonce[B03_wrong_signature_context]",
+      "class": "test_ocr1_independent_hostile",
+      "status": "PASS",
+      "time_seconds": "0.001",
+      "review_id": "B03_wrong_signature_context",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_B_wrong_context_or_nonce[B04_wrong_signature_nonce]",
+      "class": "test_ocr1_independent_hostile",
+      "status": "PASS",
+      "time_seconds": "0.000",
+      "review_id": "B04_wrong_signature_nonce",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_B05_same_person_signatures",
+      "class": "test_ocr1_independent_hostile",
+      "status": "PASS",
+      "time_seconds": "0.000",
+      "review_id": "B05_same_person_signatures",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_B06_conflicting_signatures",
+      "class": "test_ocr1_independent_hostile",
+      "status": "PASS",
+      "time_seconds": "0.000",
+      "review_id": "B06_conflicting_signatures",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_B07_inconsistent_signature_digest",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.000",
+      "review_id": "B07_inconsistent_signature_digest",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_B08_mock_role_impersonation",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.001",
+      "review_id": "B08_mock_role_impersonation",
+      "reviewer_preobservation_expected": "REFUSE_AS_ROLE_AUTHORIZATION__TEST_ONLY_CREDENTIAL_LIMIT"
+    },
+    {
+      "name": "test_C01_valid_range_rollback_detected",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.001",
+      "review_id": "C01_valid_range_rollback_detected",
+      "reviewer_preobservation_expected": "REFUSE_ROLLBACK_OR_VERIFY_FALSE"
+    },
+    {
+      "name": "test_C02_ledger_history_deletion_detected",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.001",
+      "review_id": "C02_ledger_history_deletion_detected",
+      "reviewer_preobservation_expected": "VERIFY_FALSE"
+    },
+    {
+      "name": "test_C03_ledger_op_tampering_detected",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.001",
+      "review_id": "C03_ledger_op_tampering_detected",
+      "reviewer_preobservation_expected": "VERIFY_FALSE"
+    },
+    {
+      "name": "test_C04_ledger_duplicate_event_detected",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.001",
+      "review_id": "C04_ledger_duplicate_event_detected",
+      "reviewer_preobservation_expected": "VERIFY_FALSE"
+    },
+    {
+      "name": "test_C05_state_ledger_divergence_detected",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.001",
+      "review_id": "C05_state_ledger_divergence_detected",
+      "reviewer_preobservation_expected": "VERIFY_FALSE"
+    },
+    {
+      "name": "test_C06_ledger_full_normal",
+      "class": "test_ocr1_independent_hostile",
+      "status": "PASS",
+      "time_seconds": "0.000",
+      "review_id": "C06_ledger_full_normal",
+      "reviewer_preobservation_expected": "VERIFY_TRUE"
+    },
+    {
+      "name": "test_D_invalid_arms[D01_duplicate_arm_AABC]",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.000",
+      "review_id": "D01_duplicate_arm_AABC",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_D_invalid_arms[D02_unknown_arms_XYZ]",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.000",
+      "review_id": "D02_unknown_arms_XYZ",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_D_invalid_arms[D06_missing_arm]",
+      "class": "test_ocr1_independent_hostile",
+      "status": "PASS",
+      "time_seconds": "0.000",
+      "review_id": "D06_missing_arm",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_D_invalid_arms[D08_empty_input]",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.000",
+      "review_id": "D08_empty_input",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_D03_duplicate_trial_id",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.000",
+      "review_id": "D03_duplicate_trial_id",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_D04_mixed_case_join",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.000",
+      "review_id": "D04_mixed_case_join",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_D05_mixed_family_join",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.000",
+      "review_id": "D05_mixed_family_join",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_D07_valid_ABC",
+      "class": "test_ocr1_independent_hostile",
+      "status": "PASS",
+      "time_seconds": "0.000",
+      "review_id": "D07_valid_ABC",
+      "reviewer_preobservation_expected": "PASS"
+    },
+    {
+      "name": "test_E01_hidden_origin_token",
+      "class": "test_ocr1_independent_hostile",
+      "status": "PASS",
+      "time_seconds": "0.000",
+      "review_id": "E01_hidden_origin_token",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_E02_encoded_key_injection",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.000",
+      "review_id": "E02_encoded_key_injection",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_E03_nested_semantic_answer_leak",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.000",
+      "review_id": "E03_nested_semantic_answer_leak",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_E04_harmless_arm_substring",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.000",
+      "review_id": "E04_harmless_arm_substring",
+      "reviewer_preobservation_expected": "ALLOW"
+    },
+    {
+      "name": "test_E05_safe_generated_packet",
+      "class": "test_ocr1_independent_hostile",
+      "status": "PASS",
+      "time_seconds": "0.000",
+      "review_id": "E05_safe_generated_packet",
+      "reviewer_preobservation_expected": "ALLOW"
+    },
+    {
+      "name": "test_E06_coder_encoded_hint",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.000",
+      "review_id": "E06_coder_encoded_hint",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_F01_capsule_recommit_edit",
+      "class": "test_ocr1_independent_hostile",
+      "status": "PASS",
+      "time_seconds": "0.000",
+      "review_id": "F01_capsule_recommit_edit",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_F02_capsule_undetected_digest_corruption",
+      "class": "test_ocr1_independent_hostile",
+      "status": "RED",
+      "time_seconds": "0.001",
+      "review_id": "F02_capsule_undetected_digest_corruption",
+      "reviewer_preobservation_expected": "REFUSE"
+    },
+    {
+      "name": "test_F03_family_exact_clone",
+      "class": "test_ocr1_independent_hostile",
+      "status": "PASS",
+      "time_seconds": "0.000",
+      "review_id": "F03_family_exact_clone",
+      "reviewer_preobservation_expected": "DETECT"
+    },
+    {
+      "name": "test_F04_family_semantic_paraphrase_is_not_proof",
+      "class": "test_ocr1_independent_hostile",
+      "status": "PASS",
+      "time_seconds": "0.000",
+      "review_id": "F04_family_semantic_paraphrase",
+      "reviewer_preobservation_expected": "LIMITED_SEMANTIC_FINGERPRINT__NOT_PROOF_OF_INDEPENDENCE"
+    },
+    {
+      "name": "test_F05_mock_signature_test_only",
+      "class": "test_ocr1_independent_hostile",
+      "status": "PASS",
+      "time_seconds": "0.001",
+      "review_id": "F05_mock_signature_test_only",
+      "reviewer_preobservation_expected": "TEST_ONLY_PASS"
+    }
+  ],
+  "not_reached": [
+    {
+      "id": "C07_cross_process_persistence",
+      "reason": "EscrowState offers no persistence/reload interface; no source-free cross-process custody to execute"
+    }
+  ],
+  "owner_holds": [
+    "real external registrar and nonselfissued role",
+    "external signer keys and trust registry",
+    "independent tamper-evident ledger anchor",
+    "semantically validated model-visible packet schema",
+    "real independent family sampling",
+    "provider/retention/privacy/spend grant"
+  ]
+}

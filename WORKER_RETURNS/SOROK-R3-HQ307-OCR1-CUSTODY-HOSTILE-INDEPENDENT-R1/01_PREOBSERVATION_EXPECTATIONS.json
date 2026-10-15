@@ -1,0 +1,16 @@
+{
+  "schema": "SOROK_HQ307_OCR1_REVIEWER_PREOBSERVATION_EXPECTATIONS_R1",
+  "commission_startup": "07130e9a96944dc852a7ddf38c11cc38cf14f75c",
+  "candidate_commit": "19438890e43153e2bc4a1ad271b5e19bcef33e1e",
+  "prior_source_inspection_acknowledged": true,
+  "note": "Frozen after examining governing HQ307 source inspection and exact candidate, before executing any newly authored OCR1 adversarial tests. Not prospectively blind to HQ's previously identified deficits. Negative expectation is actual entrypoint refusal, not an exception manufactured in a test.",
+  "expected": {
+    "A01_revoked_unblind": "REFUSE", "A02_expired_unblind": "REFUSE", "A03_illegal_purpose_unblind": "REFUSE", "A04_arbitrary_holder_unblind": "REFUSE", "A05_forbidden_role_unblind": "REFUSE", "A06_revoked_release": "REFUSE", "A07_expired_release": "REFUSE", "A08_mismatched_holder_unblind": "REFUSE", "A09_uncommitted_release": "REFUSE", "A10_duplicate_release": "REFUSE", "A11_exposure_uncommitted": "REFUSE", "A12_exposure_illegal_purpose": "REFUSE",
+    "B01_none_capsule": "REFUSE", "B02_unrelated_capsule_digest": "REFUSE", "B03_wrong_signature_context": "REFUSE", "B04_wrong_signature_nonce": "REFUSE", "B05_same_person_signatures": "REFUSE", "B06_conflicting_signatures": "REFUSE", "B07_inconsistent_signature_digest": "REFUSE", "B08_mock_role_impersonation": "REFUSE_AS_ROLE_AUTHORIZATION__TEST_ONLY_CREDENTIAL_LIMIT",
+    "C01_valid_range_rollback_detected": "REFUSE_ROLLBACK_OR_VERIFY_FALSE", "C02_ledger_history_deletion_detected": "VERIFY_FALSE", "C03_ledger_op_tampering_detected": "VERIFY_FALSE", "C04_ledger_duplicate_event_detected": "VERIFY_FALSE", "C05_state_ledger_divergence_detected": "VERIFY_FALSE", "C06_ledger_full_normal": "VERIFY_TRUE", "C07_cross_process_persistence": "NOT_REACHED_INTERFACE_ABSENT",
+    "D01_duplicate_arm_AABC": "REFUSE", "D02_unknown_arms_XYZ": "REFUSE", "D03_duplicate_trial_id": "REFUSE", "D04_mixed_case_join": "REFUSE", "D05_mixed_family_join": "REFUSE", "D06_missing_arm": "REFUSE", "D07_valid_ABC": "PASS", "D08_empty_input": "REFUSE",
+    "E01_hidden_origin_token": "REFUSE", "E02_encoded_key_injection": "REFUSE", "E03_nested_semantic_answer_leak": "REFUSE", "E04_harmless_arm_substring": "ALLOW", "E05_safe_generated_packet": "ALLOW", "E06_coder_encoded_hint": "REFUSE",
+    "F01_capsule_recommit_edit": "REFUSE", "F02_capsule_undetected_digest_corruption": "REFUSE", "F03_family_exact_clone": "DETECT", "F04_family_semantic_paraphrase": "LIMITED_SEMANTIC_FINGERPRINT__NOT_PROOF_OF_INDEPENDENCE", "F05_mock_signature_test_only": "TEST_ONLY_PASS"
+  },
+  "authority_ceiling": "SOURCEFREE_TEST_ONLY; external signer registry, protected rollback anchor, real role issuer, semantic noninterference, trial-family sampler and model-use grants NOT_ISSUED"
+}
