@@ -1,0 +1,37 @@
+{
+  "schema": "CAN2_DIRECT_REMOTE_VERIFICATION@1",
+  "branch": "agent/rabochii-sorok-r3-hq308-can2-can008-law-causal-repair-r1",
+  "sealed_startup": "79b22aea1254aefc191fedcf737c4f52ce5f8135",
+  "evidence_commit": "8fa5b159b0ac5bb2ba3aee4259228f9607f24b08",
+  "source_commit": "f9ff05197fb2837c733f8b453c678043e90c77d8",
+  "direct_remote_sha": "8fa5b159b0ac5bb2ba3aee4259228f9607f24b08",
+  "direct_output": "8fa5b159b0ac5bb2ba3aee4259228f9607f24b08\trefs/heads/agent/rabochii-sorok-r3-hq308-can2-can008-law-causal-repair-r1",
+  "exact_match": true,
+  "observed_at_utc": "2026-10-15T16:00:55.621210+00:00",
+  "command": [
+    "git",
+    "ls-remote",
+    "origin",
+    "refs/heads/agent/rabochii-sorok-r3-hq308-can2-can008-law-causal-repair-r1"
+  ],
+  "changed_paths": 135,
+  "only_authorized_return": true,
+  "final_counts": {
+    "owners": "220PASS",
+    "rsm": "60PASS",
+    "candidate": "29PASS/8RED",
+    "RCP3": "81PASS/1RED",
+    "author_controls": "89PASS"
+  },
+  "disposition": "AUTHOR_REPAIR_RETURN_WITH_TYPED_OWNER_HOLDS",
+  "independent_acceptance": false,
+  "memory_mediated_contrast": false,
+  "history_contrast_and_actual_absent_controls": true,
+  "production_guard": "EMPTY mappingproxy exact e0528d65215cb431196570c38bac4eae94217a1b",
+  "real_model_trials": 0,
+  "original_data": 0,
+  "V3_operation": 0,
+  "semantic_issuance": 0,
+  "adoption": false,
+  "final_commit_rule": "Receipt attests evidence commit; containing metadata commit is directly verified after push and returned in chat. No self-hash claimed."
+}
