@@ -1,0 +1,41 @@
+{
+  "direct_producer_dereference_errors": {
+    "GSS_RURAL_LIGHTING": "UNKNOWN_EXACT_FIELD_REF",
+    "NCA_NATIONAL_MOBILE_DATA": "UNKNOWN_EXACT_FIELD_REF"
+  },
+  "disposition": "RED_EXACT_PRODUCER_FIELD_REF_NOT_DOWNSTREAM_DEREFERENCED",
+  "downstream_readset": [
+    "TESTONLY_FIELD:83b0b3fdf1fa2a3e346c95211987b32fc5ff646d053a3577d1f695fd62507d45",
+    "TESTONLY_FIELD:d21dc005bdc40b56f0641dc75982880f74405f89691c55e532c87798f527b106"
+  ],
+  "downstream_refs": {
+    "GSS_RURAL_LIGHTING": "TESTONLY_FIELD:83b0b3fdf1fa2a3e346c95211987b32fc5ff646d053a3577d1f695fd62507d45",
+    "NCA_NATIONAL_MOBILE_DATA": "TESTONLY_FIELD:d21dc005bdc40b56f0641dc75982880f74405f89691c55e532c87798f527b106"
+  },
+  "issued_EE13": false,
+  "issued_N5N6": false,
+  "numbers_read_from_parallel_rows": {
+    "GSS_RURAL_LIGHTING": {
+      "denominator": 3288063,
+      "electricity_subtypes": {
+        "community_grid": 74490,
+        "generator": 3640,
+        "mains": 2288193,
+        "solar_inverter": 21512,
+        "wind": 357
+      },
+      "numerator": 2388192,
+      "published_percent": 72.6
+    },
+    "NCA_NATIONAL_MOBILE_DATA": {
+      "active_subscriptions": 23414527,
+      "postpaid": 177189,
+      "prepaid": 23237338
+    }
+  },
+  "operative_OC05": false,
+  "producer_refs": {
+    "GSS_RURAL_LIGHTING": "D2P_TESTONLY_FIELD:fa60c7bdb3457f3e903c2709c9a271a6311651bc0f2809d84197790a6de645a1",
+    "NCA_NATIONAL_MOBILE_DATA": "D2P_TESTONLY_FIELD:dc825bb9f42d689852a7149d0bbee230b6479e9918ed1bd89365dd55cc7cb1ba"
+  }
+}
