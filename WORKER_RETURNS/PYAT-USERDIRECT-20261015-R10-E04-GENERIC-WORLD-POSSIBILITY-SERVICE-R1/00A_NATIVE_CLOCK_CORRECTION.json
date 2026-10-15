@@ -1,0 +1,16 @@
+{
+  "schema": "E04_NATIVE_CLOCK_CORRECTION_BEFORE_IMPLEMENTATION@1",
+  "original_freeze_preserved": "00_PREDECLARED_EXPECTATIONS.json",
+  "reason": "Accepted synthetic source factory hardcodes field_or_reference_time2026-01 and US-NATIONAL. A2008 selected world would silently misstate native time. Align E04 clocks to declared synthetic2026/2027; do not relabel native evidence or infer empirical historical comparability.",
+  "empirical_native_field_time": "2026-01",
+  "native_geography": "US-NATIONAL synthetic fixture, not observed US population",
+  "effective_from": "2026-01-01",
+  "effective_to": "2028-01-01",
+  "publication": "2026-03-01",
+  "revision_effective": "2027-01-01",
+  "revision_publication": "2027-06-01",
+  "test_now": "2027-09-01",
+  "clock_grade": "Explicit TEST_ONLY clock, no realCURRENT or future observation claim",
+  "empirical_counterfactual_revision_publication": "2026-04-01",
+  "frozen_before_E04_implementation": true
+}

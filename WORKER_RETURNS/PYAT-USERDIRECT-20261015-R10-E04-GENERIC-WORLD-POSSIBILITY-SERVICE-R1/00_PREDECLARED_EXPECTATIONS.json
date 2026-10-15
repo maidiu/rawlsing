@@ -1,0 +1,94 @@
+{
+  "schema": "E04_PREDECLARED_PRODUCT_CONTRACT@1",
+  "grade": "TEST_ONLY_SOURCEFREE; not operative N9/N10W or CURRENT",
+  "world_id": "E04_SYNTHETIC_REGION_R1",
+  "unit": "synthetic individual respondent (empirical); separate modeled route predicates with native resource units",
+  "stable_source_permission_root": "TEST_ONLY_E04_SOURCE_ROOT; no external grant",
+  "clock_modes": [
+    "TEST_CURRENT",
+    "HISTORICAL",
+    "AS_OF"
+  ],
+  "clocks": {
+    "effective_from": "2008-01-01",
+    "effective_to": "2010-01-01",
+    "publication": "2009-03-01",
+    "second_structural_revision_effective": "2009-01-01",
+    "second_structural_publication": "2009-06-01",
+    "test_now": "2009-09-01"
+  },
+  "empirical_cell_counts_Y1_Y0": {
+    "111": [
+      6,
+      2
+    ],
+    "110": [
+      4,
+      4
+    ],
+    "101": [
+      5,
+      3
+    ],
+    "100": [
+      3,
+      5
+    ],
+    "011": [
+      4,
+      2
+    ],
+    "010": [
+      2,
+      4
+    ],
+    "001": [
+      3,
+      3
+    ],
+    "000": [
+      2,
+      6
+    ]
+  },
+  "progressive_oracle": {
+    "Y|A1": {
+      "denominator": 32,
+      "counts": {
+        "1": 18,
+        "0": 14
+      }
+    },
+    "Y|A1B1": {
+      "denominator": 16,
+      "counts": {
+        "1": 10,
+        "0": 6
+      }
+    },
+    "Y|A1B1C1": {
+      "denominator": 8,
+      "counts": {
+        "1": 6,
+        "0": 2
+      }
+    }
+  },
+  "empirical_intervention": "Change one 111 Y0 response to Y1; expected19/32,11/16,7/8; denominators unchanged, structural predicates byte-identical",
+  "structural_intervention": "Change only training access to false and exit cost to8 native resource tokens; empirical geometry byte-identical, affected route blocked and exit constraint changes; alternative civil route remains possible",
+  "null": "Identical content/order -> identical result; unrelated field -> no dependent consumer result change",
+  "reverse": "New target A, conditionY1 requires new valid query/binding/witness/role permit; never invert Y|A. Denominator29, A1 count18",
+  "consumers": [
+    "generic nonparent institutional-route option reader",
+    "generic conception-scenario proposal evaluator, no parent/actor construction or event occurrence"
+  ],
+  "selective_invalidation": "Empirical revocation invalidates empirical evidence readsets, structural-only remains; structural fact revocation invalidates only dependent routes, empirical exact slices remain; asof filters publication/effective time; old receipts immutable but historical not-current",
+  "prohibited": [
+    "original respondent sources",
+    "model/actor calls",
+    "joint empirical-times-structural route probability",
+    "parent-specific upstream API",
+    "source/model issuer",
+    "canonical/operativeCURRENT/V3 adoption"
+  ]
+}
