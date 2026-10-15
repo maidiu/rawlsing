@@ -1,0 +1,24 @@
+# R10 WG0L — Parallel precommitted full-engine WG0P4 independent court
+
+**Platform:** Codex · GPT-6.1 Sol Medium. **Runtime:** governed separate local sparse worktree and actual pytest/subprocess, not the WG0P4 author's worktree. **Role:** independent reviewer, no HQ/source/semantic-issuer/adopter rights. **Repository:** maidiu/rawlsing private.
+**Branch:** agent/userdirect-pyat-20261015-r10-wg0l-precommitted-full-engine-court-r1
+**EXACT SEALED STARTUP:** verify full branch SHA from launch and direct remote; scope remains branch return-only.
+**WRITE ONLY:** WORKER_RETURNS/PYAT-USERDIRECT-20261015-R10-WG0L-INDEPENDENT-FULL-ENGINE-COURT-R1/
+**No** original source SAV/DTA, other worker/canonical/CURRENT/adopted owner code, V3 actor/weld.
+
+## Independent two-phase parallel mandate
+
+**PHASE A STARTS NOW and DOES NOT WAIT FOR WG0P4 PUSH.** Read the original independent WG0J court @b62b02702b08f71adcba25e214fbddcb6ccec566 (44 tests 24 PASS/20 RED against WG0P2, full accepted I02/I03/Batch staged), WG0K @c506293e31ea8f9e490de0369169005f52f81033 (5 PASS/10 method acceptance FAIL + 3 PASS/1 cold grant RED, original full PRE553 imports NOT_EXECUTED), original independent 25-op oracle, original 29 WG0P2 tests and 36 WG0P3 tests, and WG0P4 commission @c1e88fb26f3ef757f13bad7cf901cd6529a368c8. Actually stage the minimal authorized exact original accepted owner closure with `git hash-object` and `__file__`, verify real Python/pytest/subprocess and independent build/run permissions. Freeze an independently authored EXPECTATION-FIRST sourcefree original 25-op identity inventory incl 3 PRODUCED/16 HELD/6 INADMISSIBLE, all expected reason/source/risk/provenance and read-state distinctions. Prepare a standalone exact hostile battery, *before candidate exists*, including:
+- equal-cardinality source-native substitutions and forged reasons while still 3/16/6/25;
+- source-native options, missing codes, routing, wave and MR topology altered while op ID unchanged;
+- original C11/I03 query/source/result authority and data-leaf mutation, correct values 01 over6, 05 over4 and household four profiles;
+- fact aliases on store/read/snapshot/restore and same-key hash collision/overwrite, self-rehashed forged source/issuer, revocation at consumer read;
+- signed/test-only source grant independent of requester; historical snapshot != current authorization;
+- *actual separate Python processes* original accepted UnitExecutionReceipt and same original manifest resume: 1 unit completed then abrupt exit, durable exact prior receipt, other 2 only in new child; three original results reachable and no false full coverage;
+- one lawful same-respondent conditional yes1/no1 denom2 through NORMAL builder→plan→executor→accepted batch→consumer, plus unqualified pairs remain HELD.
+
+Phase A return checkpoint is a `PHASE_A_ORACLE_READY_NOT_CANDIDATE_ADJUDICATED` commit in owned return folder; verify remote SHA. **Do not fabricate WG0P4 final SHA, do not mutate WG0P4.** On completion of Phase A, if exact WG0P4 branch still at startup `c1e88fb26f3ef757f13bad7cf901cd6529a368c8`, stop at a typed WAIT_FOR_CANDIDATE_PUSH checkpoint and return; the test court work itself is useful. If branch has real candidate return, independently resolve full final remote SHA, diff own-dir-only, freeze a candidate read cut and continue Phase B in the same authorized live session. No automatic scheduling assumption.
+
+**PHASE B after physical WG0P4 published return:** import exact final candidate and accepted modules into separate clean executable worktree. Rerun original WG0P2 29, WG0P3 36, WG0J 44 with explicit changed-interface adapters (never edit independent original test sources), WG0K extracted-method hostiles, and precommitted new Phase A hostiles. Capture commands, modules, git blobs, actual caller/callee identity and fully independent JUnit. Distinguish tested full sourcefree owner chain from method-only and from original respondent science. Failures RED by exact candidate field; irreducible authorizations HOLD. No issuer/adoption; full original source all35/1890/101/N11/N12 and V3 remain separately unissued.
+
+**Return:** `00_VERDICT_OR_PHASE_A.md`, `01_FROZEN_EXPECTATIONS_BEFORE_WG0P4.json`, `02_ACTUAL_FULL_OWNER_EXECUTION_OR_PRECISE_ENV_HOLD.json`, `03_ORIGINAL_RECEIPT_COLD_AND_PROVENANCE_COURT.md`, `04_ADOPTION_CEILING_AND_NEXT_EDGE.md`, independent tests/logs/JUnit and environment_passport_delta.json. Exact pushed SHA and changed path proof. Independence means separate execution and independently precommitted expectations, not a new institutional authority. **No phase B PASS until actual final candidate imported/executed.**
