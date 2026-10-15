@@ -1,0 +1,10 @@
+# HQ301 RTO — owner-specific follow-up, no adoption
+
+| Owner | Evidence | Action / HOLD |
+|---|---|---|
+| Sourcefree OUT candidate | 29 independent hostile REDs: unknown mode, forbidden directives, top-level effect metadata, revived viewer delivery, unvalidated perceived/attempt fields, incomplete sourcefree identity; failure-atomic restore | `REVIEW_REVISE`: implement explicit fixture eligibility and strict fail-closed schema; independent retest all new hostiles without modifying frozen 56; no new semantic grants |
+| Frozen S01–S28 oracle custodian + objective world owner | Original Python S27 expects an unlicensed move, frozen S27 specifies no move; separate S19/S23/S28 coverage holes | Resolve oracle-code contradiction as independent specification ruling; do NOT make unlicensed move green; add exact new tests alongside frozen originals |
+| Accepted ADP019/V3 causality owner | Eight ADP019 relevant metadata identities omitted by sourcefree digest; no RFC8785 JCS, exact schema/cursor, authorized event/effect issuer | HOLD accepted event admission and real owner run; bind complete producer/context/parent/time/artifact/permission state when owner supplies implementation |
+| ADP016/017 + CAN015 client actor/user perception owners | Caller-provided boolean decider can mark perceived; global outbox used where per-viewer delivery should be validated | HOLD actual human perception and generated actor memory claims; approve viewer permission, witness/trust, opportunity and knowledge/cognition mapping independently |
+| Transport/transaction authority | Verified two cold kill boundaries at single-writer sourcefree grain; independent stale writer overwrite; forged unkeyed integrity digest | Restrict claim to local single-writer fsync+rename; production power-loss/multiwriter CAS, authenticated state/transport and external ACK need independent owner proof |
+| HQ | New independent I2 review after actual pinned source/tests, positives and REDs preserved | Adjudicate scoped partial accept vs CHANGES_REQUIRED; no protected integration, V3 execution, or issuer transfer |

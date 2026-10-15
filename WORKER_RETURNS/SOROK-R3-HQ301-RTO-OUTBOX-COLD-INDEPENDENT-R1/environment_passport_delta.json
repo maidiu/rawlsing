@@ -1,0 +1,56 @@
+{
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_R1",
+  "owner_session_alias": "HQ301_RTO_INDEPENDENT_I2",
+  "environment_id": "RTO301-BROWSER-ISOLATED-20261014",
+  "epoch_id": "RTO301-ISOLATED-EPOCH1",
+  "surface": "BROWSER_CONTAINER",
+  "status": "LIVE_VERIFIED_AT_RUN__RECHECK_NEXT_CHAT",
+  "last_live_probe_at": "2026-10-15T00:53:47.327764+00:00",
+  "runtime_marker_digest": "d7a1bd2dfa7352558676df5822d26dfa8b8b00eb16a4f99ed1b504df45e4cfdc",
+  "python": "Python 3.13.5 VERIFIED",
+  "pytest": "pytest 9.0.2 VERIFIED",
+  "git": "git 2.47.3 VERIFIED",
+  "subprocess_forced_exit_79": "VERIFIED",
+  "filesystem": "writable isolated reviewer directory VERIFIED",
+  "branch": "agent/reviewer-sorok-r3-hq301-rto-outbox-cold-court-r1",
+  "remote_sealed_startup": "9df61e0279b996a61ce13ac862c9e4614d2f98ea",
+  "git_object_store_alias": null,
+  "worktree_alias": "isolated reviewer container staging, not full git checkout",
+  "candidate_bundle_git_blob": "61f5b960ef05a74d10db11b0fae2bca703ae0ae4",
+  "imported_module_relative": "candidate/outbox_prototype.py",
+  "imported_module_blob_sha1": "76a0b2bb8f6161e6807789f88a1a35cc9e93e968",
+  "dependency_closure_status": "FULL_SOURCEFREE_ONLY",
+  "covered_test_suites": {
+    "baseline56": {
+      "passed": 55,
+      "failed": 1,
+      "tests": 56
+    },
+    "hostile_full": {
+      "passed": 28,
+      "failed": 29,
+      "tests": 57
+    },
+    "combined_113": {
+      "passed": 83,
+      "failed": 30,
+      "tests": 113
+    }
+  },
+  "science_grade": "SOURCEFREE_F2_RERUN_NOT_ACCEPTED_OWNER",
+  "model_provider": "OpenAI GPT-6 (High requested; configured reasoning setting not readable)",
+  "pricing_class": "UNKNOWN",
+  "observed_incremental_cash": null,
+  "observed_quota": null,
+  "privacy_source_grant": "PRIVATE_REPO_PINNED_SOURCEFREE_ONLY_NO_SURVEY_NO_LLM_ACTOR",
+  "independent_review_separation": "DISTINCT_ROLE_AND_NEW_ISOLATED_STAGING",
+  "assignments_completed": [
+    "HQ301 RTO independent I2 reproduction and hostile review"
+  ],
+  "next_good_affinity_tags": [
+    "OCCURRENCE",
+    "OUTBOX",
+    "COLD_JOURNAL"
+  ],
+  "staged_state_preservation": "CURRENT_RUNTIME_ONLY_NO_FUTURE_ASSUMPTION"
+}
