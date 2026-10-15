@@ -1,0 +1,78 @@
+{
+  "schema": "OC1_PROSPECTIVE_STATISTICS_CRITIQUE@1",
+  "review_of": "BL3/BR3 conditional Hoeffding/Bonferroni planning bounds",
+  "formula_verification": {
+    "half_width_epsilon_5pp": {
+      "formula": "n >= ceil(2*log(2*m/alpha)/epsilon^2)",
+      "inputs": {"alpha": 0.05, "m": 12, "epsilon": 0.05},
+      "computed_n": 4940,
+      "bl3_claimed_n": 4940,
+      "verified": true
+    },
+    "superiority_10pp_80pct": {
+      "formula": "n >= ceil(2*(sqrt(log(2*m/alpha))+sqrt(log(1/beta)))^2/g^2)",
+      "inputs": {"alpha": 0.05, "m": 12, "beta": 0.2, "g": 0.10},
+      "computed_n": 2818,
+      "bl3_claimed_n": 2818,
+      "verified": true
+    },
+    "equivalence_5pp_80pct": {
+      "formula": "n >= ceil(2*(sqrt(log(2*m/alpha))+sqrt(log(2/beta)))^2/epsilon^2)",
+      "inputs": {"alpha": 0.05, "m": 12, "beta": 0.2, "epsilon": 0.05},
+      "computed_n": 12814,
+      "bl3_claimed_n": 12814,
+      "verified": true
+    }
+  },
+  "caveats": [
+    "All figures are conditional worst-case sufficient bounds under independent-family sampling and range-2 ([-1,1]) concentration assumptions.",
+    "These are NOT approved sample sizes, NOT achieved power, NOT spending recommendations.",
+    "6 convenience families and 28 template clones do NOT establish independent sampling.",
+    "No ICC, variance pilot, or actual provider cost has been measured.",
+    "Bonferroni correction for m=12 is correctly applied; contrasts need not be independent for Bonferroni validity, but family-level concentration still requires independent units.",
+    "Any cheaper variance-based plan needs an independent prospective pilot, justified ICC/dependence model, and separately checked simulation — all currently UNKNOWN."
+  ],
+  "family_unit_crisis": {
+    "issue": "The independent sampling unit is the family, not the trial. Families generated from the same template, author, or causal structure are correlated and cannot be treated as independent draws.",
+    "evidence": "6 original convenience families + 28 template-clone surface contexts",
+    "consequence": "Population inference remains HOLD. Current intervals are descriptive only."
+  },
+  "strata_order_balance": {
+    "r2_pooled_note": "R2 pooled order counts (1440:432) include fixed-ABC ancillary phases; the R3 primary design already has all six orders at 432 each. R3 does not reinterpret pooled counts as an imbalanced primary experiment.",
+    "r3_primary_order_balance": "all six arm-order permutations 524 each (9432 trials / 3144 matched blocks)"
+  },
+  "per_provider_cost": {
+    "status": "UNKNOWN",
+    "reason": "No live provider call has been made. No price/quota/cost data exists.",
+    "requirement": "A separate provider-adapter commission must measure and report actual costs under an issued grant before any spending decision."
+  },
+  "stopping_and_power_requirements": [
+    "Fix n and stopping rules before unblinding.",
+    "A blinded independent pilot may inform variance/cost and predeclared sample-size re-estimation; it cannot be pooled into a held-out confirmatory bank.",
+    "No outcome-dependent retries, response shopping, or exclusions.",
+    "Planned missing/denied/malformed/unscorable outcomes remain in the denominator."
+  ],
+  "proposed_economical_pilot": {
+    "description": "A bounded pilot with ~50 independently sourced families could provide an ICC/variance estimate for a more realistic sample-size calculation. This is a PROPOSAL requiring owner consent, not an approved design.",
+    "n_families_pilot": 50,
+    "icc_model_needed": true,
+    "cost_model_needed": true,
+    "owner_consent_required": true
+  },
+  "model_use_grant_frontier": {
+    "required_fields": [
+      "named_provider_exact_endpoint",
+      "exact_model_and_version_pin",
+      "privacy_permission_for_synthetic_lab_packets",
+      "experiment_use_grant_behavioral_actor_trials",
+      "explicit_monetary_cap",
+      "price_class_and_quota_observed",
+      "raw_request_response_retention_permission",
+      "per_trial_call_budget"
+    ],
+    "current_status": "ALL_FIELDS_NOT_ISSUED",
+    "provider_adapter": "NOT_IMPLEMENTED",
+    "external_experiment_calls": 0,
+    "note": "Mere nonempty strings are insufficient. The competent issuer must actually authorize exact purpose, packet disclosure, retention, maximum attempts/retries and cost under a current pin/expiry/revocation policy."
+  }
+}

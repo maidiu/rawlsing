@@ -1,0 +1,53 @@
+{
+  "schema": "OC1_LAWFUL_SET_AND_CODING_GOVERNANCE@1",
+  "status": "PROPOSED_NOT_ISSUED",
+  "principle": "This worker constructs examples but MUST NOT self-issue accepted law, independent scenario validity, or a protected real test corpus.",
+  "lawful_set_adjudication": {
+    "multi_valued_permissible_answers": {
+      "rule": "Lawful answer sets contain multiple permissible options. A choice between lawful options is NOT automatically a quality improvement.",
+      "example": "K6: POLICING_CANDIDATE and NO_SANCTION are both lawful under practiced+capacity. The scoring measures response-rate differences, not which action is 'correct'.",
+      "schema": {"case_id": "str", "lawful_answers": ["str"], "other_unscorable": true}
+    },
+    "other_unscorable": {
+      "rule": "OTHER_UNSCORABLE is always present in every lawful set. Ambiguous output is OTHER_UNSCORABLE, never a guessed canonical action.",
+      "rationale": "Preserves denominator integrity and prevents scorer bias toward forced-choice."
+    },
+    "contested_lawful_choices": {
+      "rule": "A disputed key goes to its competent semantic owner with blinded alternatives and provenance, not to the model or implementer.",
+      "resolution_timeline": "Prospective and versioned. Confirmatory treatment analyses stay HOLD for an unresolved key.",
+      "example": "K3: whether a given trace effect is 'accessible' vs 'inaccessible origin' may be contested between scenario author and semantic adjudicator. The adjudicator's decision is final and versioned."
+    }
+  },
+  "k3_origin_secrecy": {
+    "rule": "Hidden origin content must NEVER appear in model-visible packets or coder inputs.",
+    "mechanism": "assert_no_leakage() on every packet and coder input before dispatch.",
+    "violation": "Hard fail: LeakageError."
+  },
+  "k5_public_vs_private": {
+    "rule": "Public standing/position and private belief are separate typed fields. A public position change does NOT overwrite private belief. A coder sees the response but not the arm or expected answer.",
+    "mechanism": "Coders receive response + schema_rubric + menu. No arm, provider, expected answer, or desired result labels."
+  },
+  "k6_position_capacity": {
+    "rule": "K6 requires actual position/capacity evidence, not just a label. POLICING_CANDIDATE and NO_SANCTION are both lawful when practiced+capacity is present.",
+    "mechanism": "Capacity is a typed field in the scenario facts. The scorer checks factual capacity, not a single mandatory action."
+  },
+  "blind_prose_coding": {
+    "rule": "Arbitrary prose requires a separately reviewed, key-blind rubric and competent adjudicators. Typed coding is deterministic. Ambiguous output is OTHER_UNSCORABLE.",
+    "mechanism": "build_coder_input() strips all arm/expected/result labels. Coder rubric is frozen before coding begins."
+  },
+  "appeal_mechanism": {
+    "rule": "Any player or participant may appeal a coding decision. The appeal goes to the ACCEPTANCE_REVIEWER (distinct from BLIND_CODER and EXPERIMENT_RUNNER).",
+    "resolution_timeline": "30 days from appeal submission. The reviewer's decision is binding and versioned.",
+    "no_self_adoption": "The ACCEPTANCE_REVIEWER cannot be the BLIND_CODER or EXPERIMENT_RUNNER."
+  },
+  "semantic_owner_rights_boundaries": {
+    "nonnegotiable": [
+      "The semantic owner alone may approve or reject lawful sets.",
+      "The semantic owner alone may resolve contested lawful choices.",
+      "The custodian alone may unblind and release holdout capsules.",
+      "The experiment runner may not edit capsule content after freeze.",
+      "The blind coder may not see arm, provider, expected answer or desired result."
+    ],
+    "self_issued_law_prohibited": "This worker constructs examples and tests. It does NOT issue accepted law, independent scenario validity, or a protected real test corpus."
+  }
+}
