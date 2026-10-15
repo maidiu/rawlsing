@@ -1,0 +1,64 @@
+..............FF.........                                                [100%]
+=================================== FAILURES ===================================
+_________ test_direct_receipts_satisfy_original_frozen_envelope_schema _________
+
+    def test_direct_receipts_satisfy_original_frozen_envelope_schema():
+>       schema=json.loads((CP/'oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json').read_text());Draft202012Validator.check_schema(schema)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+staging/rc0/test_rc0_hostile.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1058: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('$REVIEW_WORKTREE/WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CO..._root/WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '$RSC0_RUNTIME/runtime_root/WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json'
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1044: FileNotFoundError
+____________ test_full_original_negative_state_distinctions_survive ____________
+
+    def test_full_original_negative_state_distinctions_survive():
+>       source=json.loads((CP/'oracles/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json').read_text())['baseline']['status_rows']
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+staging/rc0/test_rc0_hostile.py:102: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1058: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('$REVIEW_WORKTREE/WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CO...runtime_root/WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/oracles/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '$RSC0_RUNTIME/runtime_root/WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/oracles/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json'
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1044: FileNotFoundError
+=========================== short test summary info ============================
+FAILED staging/rc0/test_rc0_hostile.py::test_direct_receipts_satisfy_original_frozen_envelope_schema
+FAILED staging/rc0/test_rc0_hostile.py::test_full_original_negative_state_distinctions_survive
+2 failed, 23 passed in 55.69s

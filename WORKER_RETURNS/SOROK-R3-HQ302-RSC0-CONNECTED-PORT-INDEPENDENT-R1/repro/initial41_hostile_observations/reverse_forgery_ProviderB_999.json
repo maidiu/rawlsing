@@ -1,0 +1,37 @@
+{
+  "grant": {
+    "grant_id": "fx:grant:scoped-reversal-v1",
+    "issuer": "fx:issuer:fixture_only",
+    "binds": {
+      "target": "fx:response:access_yes",
+      "reverse_target": "fx:response:access_yes",
+      "risk_set": "fx:risk:asked_eligible",
+      "denominator": 60,
+      "operation": "ROLE_REVERSAL_CONDITIONAL_QUERY",
+      "direction": "REVERSE",
+      "reverse_risk_set": "foreign:unissued-risk",
+      "reverse_numerator": 1,
+      "reverse_denominator": 999
+    },
+    "scope": "fx:universe:single_source|fx:release:v1"
+  },
+  "result": {
+    "state": "REVERSAL_PERMITTED_UNDER_SCOPED_GRANT",
+    "grant_id": "fx:grant:scoped-reversal-v1",
+    "bound_target": "fx:response:access_yes",
+    "bound_risk_set": "fx:risk:asked_eligible",
+    "bound_denominator": 60,
+    "bound_scope": "fx:universe:single_source|fx:release:v1",
+    "bound_direction": "REVERSE",
+    "reverse_slice": {
+      "risk_set": "foreign:unissued-risk",
+      "numerator": 1,
+      "denominator": 999,
+      "target": "fx:response:access_yes",
+      "direction": "REVERSE_CONDITIONAL"
+    },
+    "reverse_issuance_ref": "217601b0e9b2aa31f6a39c421b523cd1b644191b2bed19d62768371620c2dc83",
+    "computed_from_forward": false,
+    "independently_issued": true
+  }
+}

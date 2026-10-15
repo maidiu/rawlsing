@@ -1,0 +1,58 @@
+{
+  "grade": "TEST_FIXTURE_ONLY",
+  "model_and_use": {
+    "model_rule_ref": {
+      "kind": "MODEL_RULE",
+      "id": "fx:model:test-only-rule",
+      "hash": "a2425f18c7fb2588ef787e967f31afb76eb6587a8e11dafb409780975d782b4c"
+    },
+    "model_authority_ref": {
+      "kind": "MODEL_AUTHORITY_TEST_ONLY",
+      "id": "fx:model-authority:test-only",
+      "hash": "65d2531349e13a66721fc6f25257ac499e05ce3476e8f1837f6335e88c5caa8e"
+    },
+    "use_grant_ref": {
+      "kind": "USE_GRANT_TEST_ONLY",
+      "id": "fx:use-grant:test-only",
+      "hash": "37345f0e64198dcc5b19de11392311d340e87d98f72f240c041830b8635c2b97"
+    },
+    "estimand_ref": {
+      "kind": "ESTIMAND",
+      "id": "FORWARD_CONDITIONAL",
+      "hash": "e4324569cd12c52ed5550f10055041c54a7d6b693fae5fdf178edd3308a116d2"
+    },
+    "nonresponse_ref": {
+      "kind": "NONRESPONSE",
+      "id": "fx:routing:asked",
+      "hash": "6298b33c77f7ac9571ef81fae5802ebaf099f9286856942ca8e53e874aa5e8c7"
+    },
+    "uncertainty_ref": {
+      "kind": "UNCERTAINTY",
+      "id": "fx:uncertainty:sourcefree-not-real",
+      "hash": "30d74cc292956a4b9c9a5a85ec892c9f6dde5925396c44bd0cc3b84191c4a9d9"
+    }
+  },
+  "issuer_and_use": {
+    "issuer_refs": [
+      {
+        "kind": "ISSUER",
+        "id": "fx:issuer:fixture_only",
+        "hash": "9bfd22ea8b313d479bafc9c2e73765b3750a9654fe5624e55bd464eb4cd07360"
+      }
+    ],
+    "source_allowed_use_atoms": [
+      "WORLD_READ",
+      "POSSIBILITY_QUERY"
+    ],
+    "requested_use_atoms": [
+      "WORLD_READ",
+      "POSSIBILITY_QUERY",
+      "ACTOR_GENERATION"
+    ],
+    "effective_use_atoms": [
+      "WORLD_READ",
+      "POSSIBILITY_QUERY"
+    ],
+    "model_use_ref": null
+  }
+}

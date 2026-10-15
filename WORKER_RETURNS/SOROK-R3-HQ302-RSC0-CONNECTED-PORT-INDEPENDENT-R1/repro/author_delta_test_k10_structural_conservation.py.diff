@@ -1,0 +1,14 @@
+diff --git a/WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/test_k10_structural_conservation.py b/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/test_k10_structural_conservation.py
+index 44c725bd1..751f916da 100644
+--- a/WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/test_k10_structural_conservation.py
++++ b/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/test_k10_structural_conservation.py
+@@ -243,8 +243,7 @@ def test_k10_21_partial_as_complete():
+     selection["selection_state"] = "PARTIAL"
+     raised = None
+     try:
+-        if selection["selection_state"] != "COMPLETE":
+-            raise PortContractError("PARTIAL_DEFERRED", "partial selection cannot be served as complete")
++        TwoContractAdapter.assert_complete(selection["selection_state"], context="K10_21")
+     except PortContractError as exc:
+         raised = exc
+     assert raised is not None

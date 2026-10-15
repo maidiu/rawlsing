@@ -1,0 +1,80 @@
+{
+  "schema": "RSC0_LIVE_ENVIRONMENT_PROBE@1",
+  "at": "2026-10-15T01:49:06.399964+00:00",
+  "marker": {
+    "environment_id": "26699eb4-bd02-4e26-9391-a6c42f105859",
+    "epoch_id": "24872a07-fbd6-4fcf-a5fc-eff28b65e0c8",
+    "created_at": "2026-10-15T01:32:24.442918+00:00",
+    "role": "RSC0_INDEPENDENT_C0_AUTHOR; PRIOR_RC0_REVIEWER_CONTINUITY",
+    "permissions": "TEST_ONLY_NO_SURVEY_MODEL_OR_ACTOR",
+    "candidate": "49992b28becfdbecbd41d9dbead47532bf0b6af9"
+  },
+  "marker_digest": "8fcecdbeb06c57d805812b952af4119d50a877856946dc4801f568ff3c9f556b",
+  "python": "3.11.3",
+  "pytest": "9.0.2",
+  "jsonschema": "4.26.0",
+  "git": "git version 2.43.0",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "model_verification": "Own current-session turn_context; no model/harness changes",
+  "modules": {
+    "port.adapter": {
+      "file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/adapter.py",
+      "git_blob_sha1": "706475c927432c52599e6b603feb18ee9d716839",
+      "sha256": "eb8b83049a5ae4e3db9c470de0a3d21698aa11eeef36b9195293abfe450d1649",
+      "verified": true
+    },
+    "port.envelope": {
+      "file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/envelope.py",
+      "git_blob_sha1": "5846ee2175d573292952a664f69da3d92537ecda",
+      "sha256": "651f8a1ff95285ae45e75257c553666e1e38adb1989daa4db3ee9d2bef60cdd5",
+      "verified": true
+    },
+    "port.provider_a": {
+      "file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_a.py",
+      "git_blob_sha1": "11033926aa703b242b307102f11b53432f8f6474",
+      "sha256": "603fee9a50d08541c2ca3f21219189bd41403573360df628580393beed971912",
+      "verified": true
+    },
+    "port.provider_b": {
+      "file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_b.py",
+      "git_blob_sha1": "9f40cfbc0910d5db270980b2576a0fa4c9b5ba70",
+      "sha256": "2291910739d973b1fccb4faf3a39f4b7b132a008c764720c3b4639c49457777d",
+      "verified": true
+    },
+    "port.pinned_producer": {
+      "file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/pinned_producer.py",
+      "git_blob_sha1": "5a809fcf0fb806e190475c3887f90ec454cb6cd7",
+      "sha256": "f74963fb061b1481c395d040e9a854ab06ccd78aad9b50bf589b03cd04d74b5c",
+      "verified": true
+    },
+    "rawlsing_next.pre553_analytical_composition": {
+      "file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_analytical_composition.py",
+      "git_blob_sha1": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "sha256": "d83bf9fba14ab7a3c5bb2a4fad30e4746345f29f4d10c16fbc1d2b5d0030bcfe",
+      "verified": true
+    },
+    "rawlsing_next.pre553_empirical_possibility_provider": {
+      "file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_empirical_possibility_provider.py",
+      "git_blob_sha1": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "sha256": "99d716051f23e1ef75990a5184afec612aa7855078a67893f6436b44f57b4697",
+      "verified": true
+    },
+    "rawlsing_next.pre553_postastra_pe_generic_world_possibility": {
+      "file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_postastra_pe_generic_world_possibility.py",
+      "git_blob_sha1": "58484f4c3d9aae148d4116dcf00420c432aefcbd",
+      "sha256": "9671b509c5a7e28d256f42361ca23b4c57bac3150d444273a2fada502f458b86",
+      "verified": true
+    },
+    "rawlsing_next.tests.n10e_empirical_slice_fixture": {
+      "file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+      "git_blob_sha1": "0e384f72fa615dc72a0dcb08a36472a64b7b1e4a",
+      "sha256": "786c065612382b40b32f26410a6a6ccef1051e970f66a756ec2ec6582eac4481",
+      "verified": true
+    }
+  },
+  "verified_source_files": 85,
+  "branch": "agent/reviewer-sorok-r3-hq302-rsc0-connected-port-independent-r1",
+  "head": "cdd1f1c9eb74b02abe2ed23ccc5278bcfaad684c",
+  "source_grade": "TEST_ONLY_SYNTHETIC; NO_SURVEY_MODEL_OR_ACTOR_CALLS"
+}

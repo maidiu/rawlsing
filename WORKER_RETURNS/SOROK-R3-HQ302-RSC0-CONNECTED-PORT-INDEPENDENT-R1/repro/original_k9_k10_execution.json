@@ -1,0 +1,22 @@
+{
+  "suite": "original_k9_k10",
+  "started_at": "2026-10-15T01:34:50.561512+00:00",
+  "finished_at": "2026-10-15T01:35:34.565474+00:00",
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "original_tests/test_k9_provider_swap.py",
+    "original_tests/test_k10_structural_conservation.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=$RSC0_RETURN/repro/original_k9_k10.xml"
+  ],
+  "cwd": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1",
+  "exit_code": 1,
+  "raw_stdout_sha256": "801977871cacb205622fef196af93759fc1f7f08da3d9f8ef39ada75dd33234c",
+  "sanitization": "runtime/return/worktree paths only",
+  "log": "repro/original_k9_k10.log",
+  "junit": "repro/original_k9_k10.xml"
+}

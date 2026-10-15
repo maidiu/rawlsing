@@ -1,0 +1,21 @@
+{
+  "suite": "hostile",
+  "started_at": "2026-10-15T01:39:52.606397+00:00",
+  "finished_at": "2026-10-15T01:42:20.793956+00:00",
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "$RSC0_RETURN/reviewer_tests/test_rsc0_hostile.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=$RSC0_RETURN/repro/hostile.xml"
+  ],
+  "cwd": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1",
+  "exit_code": 1,
+  "raw_stdout_sha256": "7852538eeda560d49f59e50b95b49b280ad1c95c154296c14d827ea1deaea176",
+  "sanitization": "runtime/return/worktree paths only",
+  "log": "repro/hostile.log",
+  "junit": "repro/hostile.xml"
+}

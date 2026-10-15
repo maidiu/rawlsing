@@ -1,0 +1,21 @@
+{
+  "suite": "connection",
+  "started_at": "2026-10-15T01:35:34.627773+00:00",
+  "finished_at": "2026-10-15T01:35:45.656145+00:00",
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "port/test_connection.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=$RSC0_RETURN/repro/connection.xml"
+  ],
+  "cwd": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1",
+  "exit_code": 0,
+  "raw_stdout_sha256": "c6f063e7d5b762f8e7db4ca5ae26b877d61d2199900d999caf3335938ca0ad97",
+  "sanitization": "runtime/return/worktree paths only",
+  "log": "repro/connection.log",
+  "junit": "repro/connection.xml"
+}

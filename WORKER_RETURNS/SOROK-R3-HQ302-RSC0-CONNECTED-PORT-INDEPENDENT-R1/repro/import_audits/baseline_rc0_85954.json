@@ -1,0 +1,186 @@
+{
+  "pid": 85954,
+  "argv": [
+    "$LOCAL_PYTHON_USER_SITE/pytest/__main__.py",
+    "$RSC0_RUNTIME/baseline/test_rc0_hostile.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=$RSC0_RETURN/repro/baseline_rc0.xml"
+  ],
+  "executed": [
+    {
+      "staging_path": "baseline/test_rc0_hostile.py",
+      "imported_file": "$RSC0_RUNTIME/baseline/test_rc0_hostile.py",
+      "git_blob_sha1": "aab792e9d1f46935b57640d959219e8bf8dc4a02",
+      "sha256": "2b218d0c61f6d251b7e4b8ac8d10718d4f99ded98da6c1bfae829e5209e28792",
+      "source_commit": "86bd2a54687b40401f7c4247607bd1873c585619",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/reviewer_tests/test_rc0_hostile.py",
+      "match": true
+    },
+    {
+      "staging_path": "baseline/port/__init__.py",
+      "imported_file": "$RSC0_RUNTIME/baseline/port/__init__.py",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/__init__.py",
+      "match": true
+    },
+    {
+      "staging_path": "baseline/port/adapter.py",
+      "imported_file": "$RSC0_RUNTIME/baseline/port/adapter.py",
+      "git_blob_sha1": "78ef0d4f9eff39192c52de5dcf3723ff6f8a8107",
+      "sha256": "6711c0ef0101b9587f2a8cfcbe03c24c00632538c2de012b1425084021f7fe3d",
+      "source_commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/adapter.py",
+      "match": true
+    },
+    {
+      "staging_path": "baseline/port/contracts.py",
+      "imported_file": "$RSC0_RUNTIME/baseline/port/contracts.py",
+      "git_blob_sha1": "0d7217ebb70acf0fd7616ba34ba318842775303e",
+      "sha256": "b611fb6d03f22afa1303471fbdf7b200426e0d9dc2d4bd947f05d0440f2b7f72",
+      "source_commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/contracts.py",
+      "match": true
+    },
+    {
+      "staging_path": "baseline/port/consumers.py",
+      "imported_file": "$RSC0_RUNTIME/baseline/port/consumers.py",
+      "git_blob_sha1": "02e3a4375475783e204a8fa7def9b1511a8db856",
+      "sha256": "9b4a5c62c87318c9bbd2fa244d7079fd01259ef68e3f1e42109c5de7e856c6bb",
+      "source_commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/consumers.py",
+      "match": true
+    },
+    {
+      "staging_path": "baseline/port/world_baseline.py",
+      "imported_file": "$RSC0_RUNTIME/baseline/port/world_baseline.py",
+      "git_blob_sha1": "a03f1697ba1be6cfd463c5e9a6c96aab1b65d205",
+      "sha256": "bea9f83c93ad865ac0b73e2d8eab5d082a576f9eb865d4b355a8951a5a023e0c",
+      "source_commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/world_baseline.py",
+      "match": true
+    },
+    {
+      "staging_path": "baseline/port/world_laws.py",
+      "imported_file": "$RSC0_RUNTIME/baseline/port/world_laws.py",
+      "git_blob_sha1": "ba3271f0a476b7afbb20f5815515878337ffa2f3",
+      "sha256": "91621925516d44f65b4278856f2c77a1603c150daafd9f442f953274369aea59",
+      "source_commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/world_laws.py",
+      "match": true
+    },
+    {
+      "staging_path": "baseline/port/provider_a.py",
+      "imported_file": "$RSC0_RUNTIME/baseline/port/provider_a.py",
+      "git_blob_sha1": "15e01b2752fdc3c0d7293fcb685005c34cfb9640",
+      "sha256": "6d5d7e7cc8c9f8ed574fa74f77e16f86881119f3a53c47d99d849f3bbdb92022",
+      "source_commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/provider_a.py",
+      "match": true
+    },
+    {
+      "staging_path": "baseline/port/provider_b.py",
+      "imported_file": "$RSC0_RUNTIME/baseline/port/provider_b.py",
+      "git_blob_sha1": "56e4a6c8ec80bb9a804fd2a1ddb5694a1354e3fb",
+      "sha256": "e424299c9d31f800765d07a70b671ba7a0eed3d40719b0c4facefed1c6ab884f",
+      "source_commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/provider_b.py",
+      "match": true
+    }
+  ],
+  "imports": [
+    {
+      "module": "port",
+      "staging_path": "baseline/port/__init__.py",
+      "imported_file": "$RSC0_RUNTIME/baseline/port/__init__.py",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/__init__.py",
+      "match": true
+    },
+    {
+      "module": "port.adapter",
+      "staging_path": "baseline/port/adapter.py",
+      "imported_file": "$RSC0_RUNTIME/baseline/port/adapter.py",
+      "git_blob_sha1": "78ef0d4f9eff39192c52de5dcf3723ff6f8a8107",
+      "sha256": "6711c0ef0101b9587f2a8cfcbe03c24c00632538c2de012b1425084021f7fe3d",
+      "source_commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/adapter.py",
+      "match": true
+    },
+    {
+      "module": "port.consumers",
+      "staging_path": "baseline/port/consumers.py",
+      "imported_file": "$RSC0_RUNTIME/baseline/port/consumers.py",
+      "git_blob_sha1": "02e3a4375475783e204a8fa7def9b1511a8db856",
+      "sha256": "9b4a5c62c87318c9bbd2fa244d7079fd01259ef68e3f1e42109c5de7e856c6bb",
+      "source_commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/consumers.py",
+      "match": true
+    },
+    {
+      "module": "port.contracts",
+      "staging_path": "baseline/port/contracts.py",
+      "imported_file": "$RSC0_RUNTIME/baseline/port/contracts.py",
+      "git_blob_sha1": "0d7217ebb70acf0fd7616ba34ba318842775303e",
+      "sha256": "b611fb6d03f22afa1303471fbdf7b200426e0d9dc2d4bd947f05d0440f2b7f72",
+      "source_commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/contracts.py",
+      "match": true
+    },
+    {
+      "module": "port.provider_a",
+      "staging_path": "baseline/port/provider_a.py",
+      "imported_file": "$RSC0_RUNTIME/baseline/port/provider_a.py",
+      "git_blob_sha1": "15e01b2752fdc3c0d7293fcb685005c34cfb9640",
+      "sha256": "6d5d7e7cc8c9f8ed574fa74f77e16f86881119f3a53c47d99d849f3bbdb92022",
+      "source_commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/provider_a.py",
+      "match": true
+    },
+    {
+      "module": "port.provider_b",
+      "staging_path": "baseline/port/provider_b.py",
+      "imported_file": "$RSC0_RUNTIME/baseline/port/provider_b.py",
+      "git_blob_sha1": "56e4a6c8ec80bb9a804fd2a1ddb5694a1354e3fb",
+      "sha256": "e424299c9d31f800765d07a70b671ba7a0eed3d40719b0c4facefed1c6ab884f",
+      "source_commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/provider_b.py",
+      "match": true
+    },
+    {
+      "module": "port.world_baseline",
+      "staging_path": "baseline/port/world_baseline.py",
+      "imported_file": "$RSC0_RUNTIME/baseline/port/world_baseline.py",
+      "git_blob_sha1": "a03f1697ba1be6cfd463c5e9a6c96aab1b65d205",
+      "sha256": "bea9f83c93ad865ac0b73e2d8eab5d082a576f9eb865d4b355a8951a5a023e0c",
+      "source_commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/world_baseline.py",
+      "match": true
+    },
+    {
+      "module": "port.world_laws",
+      "staging_path": "baseline/port/world_laws.py",
+      "imported_file": "$RSC0_RUNTIME/baseline/port/world_laws.py",
+      "git_blob_sha1": "ba3271f0a476b7afbb20f5815515878337ffa2f3",
+      "sha256": "91621925516d44f65b4278856f2c77a1603c150daafd9f442f953274369aea59",
+      "source_commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/world_laws.py",
+      "match": true
+    },
+    {
+      "module": "test_rc0_hostile",
+      "staging_path": "baseline/test_rc0_hostile.py",
+      "imported_file": "$RSC0_RUNTIME/baseline/test_rc0_hostile.py",
+      "git_blob_sha1": "aab792e9d1f46935b57640d959219e8bf8dc4a02",
+      "sha256": "2b218d0c61f6d251b7e4b8ac8d10718d4f99ded98da6c1bfae829e5209e28792",
+      "source_commit": "86bd2a54687b40401f7c4247607bd1873c585619",
+      "source_path": "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/reviewer_tests/test_rc0_hostile.py",
+      "match": true
+    }
+  ]
+}

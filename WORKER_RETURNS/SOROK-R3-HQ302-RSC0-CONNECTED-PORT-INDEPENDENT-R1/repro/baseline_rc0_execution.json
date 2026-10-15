@@ -1,0 +1,21 @@
+{
+  "suite": "baseline_rc0",
+  "started_at": "2026-10-15T01:40:29.912907+00:00",
+  "finished_at": "2026-10-15T01:40:31.315118+00:00",
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "$RSC0_RUNTIME/baseline/test_rc0_hostile.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=$RSC0_RETURN/repro/baseline_rc0.xml"
+  ],
+  "cwd": "$RSC0_RUNTIME/baseline",
+  "exit_code": 1,
+  "raw_stdout_sha256": "e6f2e7545a93f3fbb8a400223491db524ff346008321b71331831cc6094834ef",
+  "sanitization": "runtime/return/worktree paths only",
+  "log": "repro/baseline_rc0.log",
+  "junit": "repro/baseline_rc0.xml"
+}

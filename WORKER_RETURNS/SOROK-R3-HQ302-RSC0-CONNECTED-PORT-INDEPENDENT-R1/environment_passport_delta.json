@@ -1,0 +1,3712 @@
+{
+  "passport_schema": "RAWLSING_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "26699eb4-bd02-4e26-9391-a6c42f105859",
+  "epoch_id": "24872a07-fbd6-4fcf-a5fc-eff28b65e0c8",
+  "owner_session_alias": "RSC0_COURT_CODEX",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "LOCAL_REVIEW_HOST_B",
+  "conversation_or_account_affinity": "LOCAL_CODEX_CONTINUATION_PRIOR_RC0",
+  "status": "LIVE_VERIFIED",
+  "startup_mode": "NEW_INDEPENDENT_WORKTREE_NEW_RUNTIME_EPOCH; REUSED_EXISTING_PACKAGE_AND_GIT_CACHE",
+  "last_live_probe_at": "2026-10-15T01:49:06.399964+00:00",
+  "runtime_marker_digest": "8fcecdbeb06c57d805812b952af4119d50a877856946dc4801f568ff3c9f556b",
+  "probe_command_and_result": {
+    "command": "python3 $RSC0_RETURN/repro/run.py probe",
+    "result": "LIVE_VERIFIED9PRIMARY_IMPORTS85SOURCE_DATA_FILES",
+    "evidence": "repro/live_environment_probe.json"
+  },
+  "capabilities": {
+    "python": {
+      "status": "VERIFIED",
+      "version": "3.11.3"
+    },
+    "pytest": {
+      "status": "VERIFIED",
+      "version": "9.0.2"
+    },
+    "git": {
+      "status": "VERIFIED",
+      "version": "git version 2.43.0"
+    },
+    "jsonschema": {
+      "status": "VERIFIED",
+      "version": "4.26.0"
+    },
+    "node": {
+      "status": "UNKNOWN",
+      "reason": "Not required; not probed"
+    },
+    "filesystem": {
+      "status": "VERIFIED",
+      "scope": "Own isolated sparse worktree/return; runtime ignored"
+    },
+    "shell": {
+      "status": "VERIFIED",
+      "name": "bash"
+    },
+    "private_repository_read": {
+      "status": "VERIFIED",
+      "evidence": "Direct remote branch before writes and genuine exactGit object reads"
+    },
+    "imports": {
+      "status": "VERIFIED",
+      "primary": {
+        "port.adapter": {
+          "file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/adapter.py",
+          "git_blob_sha1": "706475c927432c52599e6b603feb18ee9d716839",
+          "sha256": "eb8b83049a5ae4e3db9c470de0a3d21698aa11eeef36b9195293abfe450d1649",
+          "verified": true
+        },
+        "port.envelope": {
+          "file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/envelope.py",
+          "git_blob_sha1": "5846ee2175d573292952a664f69da3d92537ecda",
+          "sha256": "651f8a1ff95285ae45e75257c553666e1e38adb1989daa4db3ee9d2bef60cdd5",
+          "verified": true
+        },
+        "port.provider_a": {
+          "file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_a.py",
+          "git_blob_sha1": "11033926aa703b242b307102f11b53432f8f6474",
+          "sha256": "603fee9a50d08541c2ca3f21219189bd41403573360df628580393beed971912",
+          "verified": true
+        },
+        "port.provider_b": {
+          "file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_b.py",
+          "git_blob_sha1": "9f40cfbc0910d5db270980b2576a0fa4c9b5ba70",
+          "sha256": "2291910739d973b1fccb4faf3a39f4b7b132a008c764720c3b4639c49457777d",
+          "verified": true
+        },
+        "port.pinned_producer": {
+          "file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/pinned_producer.py",
+          "git_blob_sha1": "5a809fcf0fb806e190475c3887f90ec454cb6cd7",
+          "sha256": "f74963fb061b1481c395d040e9a854ab06ccd78aad9b50bf589b03cd04d74b5c",
+          "verified": true
+        },
+        "rawlsing_next.pre553_analytical_composition": {
+          "file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_analytical_composition.py",
+          "git_blob_sha1": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+          "sha256": "d83bf9fba14ab7a3c5bb2a4fad30e4746345f29f4d10c16fbc1d2b5d0030bcfe",
+          "verified": true
+        },
+        "rawlsing_next.pre553_empirical_possibility_provider": {
+          "file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_empirical_possibility_provider.py",
+          "git_blob_sha1": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+          "sha256": "99d716051f23e1ef75990a5184afec612aa7855078a67893f6436b44f57b4697",
+          "verified": true
+        },
+        "rawlsing_next.pre553_postastra_pe_generic_world_possibility": {
+          "file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_postastra_pe_generic_world_possibility.py",
+          "git_blob_sha1": "58484f4c3d9aae148d4116dcf00420c432aefcbd",
+          "sha256": "9671b509c5a7e28d256f42361ca23b4c57bac3150d444273a2fada502f458b86",
+          "verified": true
+        },
+        "rawlsing_next.tests.n10e_empirical_slice_fixture": {
+          "file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+          "git_blob_sha1": "0e384f72fa615dc72a0dcb08a36472a64b7b1e4a",
+          "sha256": "786c065612382b40b32f26410a6a6ccef1051e970f66a756ec2ec6582eac4481",
+          "verified": true
+        }
+      },
+      "audit_directory": "repro/import_audits"
+    }
+  },
+  "git_object_store_alias": "$SHARED_RAWLSING_OBJECT_STORE",
+  "worktree_alias": "$RSC0_REVIEW_WORKTREE",
+  "branch": "agent/reviewer-sorok-r3-hq302-rsc0-connected-port-independent-r1",
+  "exact_checkout_base": "cdd1f1c9eb74b02abe2ed23ccc5278bcfaad684c",
+  "head_at_live_probe": "cdd1f1c9eb74b02abe2ed23ccc5278bcfaad684c",
+  "clean_dirty_state": "Clean at startup; only own return additions at publication preparation",
+  "source_family": "C0_REPAIRED_SOURCEFREE_PORT_AND_ORIGINAL_RC0_BASELINE_PLUS_PINNED_OWNERS",
+  "materialized_source_refs": [
+    {
+      "commit": "86bd2a54687b40401f7c4247607bd1873c585619",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/01_FROZEN_INDEPENDENT_EXPECTATIONS.json",
+      "git_blob_sha1": "def0253226f68ab38168705a4002626d9ef0261a",
+      "content_sha256": "c9abb1c6fae3d32d7c0f725b107e9fb9169782785ac3ea36bfd40c0278413492",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/rc0/01_FROZEN_INDEPENDENT_EXPECTATIONS.json",
+      "family": "original_29",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "86bd2a54687b40401f7c4247607bd1873c585619",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/02_EXECUTION_PER_CASE.json",
+      "git_blob_sha1": "6c742acf0d4e2abdd01a1fc726852dff902b5b2f",
+      "content_sha256": "9454fa2514399676722b9c5ae6f71215c4dfe1a5915d55c5ce68b3945b00ebe5",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/rc0/02_EXECUTION_PER_CASE.json",
+      "family": "original_29",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "86bd2a54687b40401f7c4247607bd1873c585619",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/03_NINE_PE_REDS_ADJUDICATED.json",
+      "git_blob_sha1": "f728d6f048fafb9c50525d67d739d6af4609e4e3",
+      "content_sha256": "379984ab526fd2c3e9d6187fb1d9d4df30188a8babff61e295457dbd12d42173",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/rc0/03_NINE_PE_REDS_ADJUDICATED.json",
+      "family": "original_29",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "86bd2a54687b40401f7c4247607bd1873c585619",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/05_OWNER_ACTION_REGISTER.json",
+      "git_blob_sha1": "17ef8ce9a46709c689a1a48a69ad408c21fb5857",
+      "content_sha256": "2ed94cccb8829c6b8247362c6421bc8a8c71b509d95585455fc40c4cba6fb353",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/rc0/05_OWNER_ACTION_REGISTER.json",
+      "family": "original_29",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "86bd2a54687b40401f7c4247607bd1873c585619",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/reviewer_tests/test_rc0_hostile.py",
+      "git_blob_sha1": "aab792e9d1f46935b57640d959219e8bf8dc4a02",
+      "content_sha256": "2b218d0c61f6d251b7e4b8ac8d10718d4f99ded98da6c1bfae829e5209e28792",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/rc0/test_rc0_hostile.py",
+      "family": "original_29",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/rc0/test_rc0_hostile.py",
+      "actual_imports": [
+        {
+          "module": "test_rc0_hostile",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/rc0/test_rc0_hostile.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "test_rc0_hostile",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/rc0/test_rc0_hostile.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "test_rc0_hostile",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/rc0/test_rc0_hostile.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+      "path": "WORKER_RETURNS/SOROK-R3-POSTASTRA-SC0-WORLD-PORT-CONTRACT-R1/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json",
+      "git_blob_sha1": "610ac870fde6cfe63796592b3c6b1e1bf1e37150",
+      "content_sha256": "6c7d02d1eac88fd1da0f54b480d5a109a7f8f4886768af9b454cabe6494ecfa9",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json",
+      "family": "original_29",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+      "path": "WORKER_RETURNS/SOROK-R3-POSTASTRA-SC0-WORLD-PORT-CONTRACT-R1/02_K9_PROVIDER_SWAP_ORACLES.json",
+      "git_blob_sha1": "9ccb66f9b08a4aa8b96582295bb2966d250fd72d",
+      "content_sha256": "77dadf8dfad44133bbb01dd627d126cdaf9ca08bb7751da1500d957618220689",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/oracles/02_K9_PROVIDER_SWAP_ORACLES.json",
+      "family": "original_29",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+      "path": "WORKER_RETURNS/SOROK-R3-POSTASTRA-SC0-WORLD-PORT-CONTRACT-R1/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json",
+      "git_blob_sha1": "e78b3ee91da1fb18deaf8d8f226800ad855adbae",
+      "content_sha256": "2fdd90c9caace1b434ef0199401607bf955e7f6e788ee4b3f7631cdde6688a01",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/oracles/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json",
+      "family": "original_29",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "b497f85713847cecc169d4d71c7629655d562dc0",
+      "path": "rawlsing_next/pre553_postastra_pe_generic_world_possibility.py",
+      "git_blob_sha1": "58484f4c3d9aae148d4116dcf00420c432aefcbd",
+      "content_sha256": "9671b509c5a7e28d256f42361ca23b4c57bac3150d444273a2fada502f458b86",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_postastra_pe_generic_world_possibility.py",
+      "family": "original_29",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_postastra_pe_generic_world_possibility.py",
+      "actual_imports": [
+        {
+          "module": "rawlsing_next.pre553_postastra_pe_generic_world_possibility",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_postastra_pe_generic_world_possibility.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_postastra_pe_generic_world_possibility",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_postastra_pe_generic_world_possibility.py",
+          "audit": "repro/import_audits/pe_84192.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_postastra_pe_generic_world_possibility",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_postastra_pe_generic_world_possibility.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_postastra_pe_generic_world_possibility",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_postastra_pe_generic_world_possibility.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_postastra_pe_generic_world_possibility",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_postastra_pe_generic_world_possibility.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_postastra_pe_generic_world_possibility",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_postastra_pe_generic_world_possibility.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_postastra_pe_generic_world_possibility",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_postastra_pe_generic_world_possibility.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_postastra_pe_generic_world_possibility",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_postastra_pe_generic_world_possibility.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_postastra_pe_generic_world_possibility",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_postastra_pe_generic_world_possibility.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_postastra_pe_generic_world_possibility",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_postastra_pe_generic_world_possibility.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_postastra_pe_generic_world_possibility",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_postastra_pe_generic_world_possibility.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_postastra_pe_generic_world_possibility",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_postastra_pe_generic_world_possibility.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_postastra_pe_generic_world_possibility",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_postastra_pe_generic_world_possibility.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "rawlsing_next/pre553_analytical_composition.py",
+      "git_blob_sha1": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "content_sha256": "d83bf9fba14ab7a3c5bb2a4fad30e4746345f29f4d10c16fbc1d2b5d0030bcfe",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_analytical_composition.py",
+      "family": "original_29",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_analytical_composition.py",
+      "actual_imports": [
+        {
+          "module": "rawlsing_next.pre553_analytical_composition",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_analytical_composition.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_analytical_composition",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_analytical_composition.py",
+          "audit": "repro/import_audits/pe_84192.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_analytical_composition",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_analytical_composition.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_analytical_composition",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_analytical_composition.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_analytical_composition",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_analytical_composition.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_analytical_composition",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_analytical_composition.py",
+          "audit": "repro/import_audits/n10e_c1_84179.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_analytical_composition",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_analytical_composition.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_analytical_composition",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_analytical_composition.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_analytical_composition",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_analytical_composition.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_analytical_composition",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_analytical_composition.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_analytical_composition",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_analytical_composition.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_analytical_composition",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_analytical_composition.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_analytical_composition",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_analytical_composition.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_analytical_composition",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_analytical_composition.py",
+          "audit": "repro/import_audits/n10e_c1_84184.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_analytical_composition",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_analytical_composition.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+      "git_blob_sha1": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "content_sha256": "99d716051f23e1ef75990a5184afec612aa7855078a67893f6436b44f57b4697",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_empirical_possibility_provider.py",
+      "family": "original_29",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_empirical_possibility_provider.py",
+      "actual_imports": [
+        {
+          "module": "rawlsing_next.pre553_empirical_possibility_provider",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_empirical_possibility_provider.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_possibility_provider",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_empirical_possibility_provider.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_possibility_provider",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_empirical_possibility_provider.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_possibility_provider",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_empirical_possibility_provider.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_possibility_provider",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_empirical_possibility_provider.py",
+          "audit": "repro/import_audits/n10e_c1_84179.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_possibility_provider",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_empirical_possibility_provider.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_possibility_provider",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_empirical_possibility_provider.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_possibility_provider",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_empirical_possibility_provider.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_possibility_provider",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_empirical_possibility_provider.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_possibility_provider",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_empirical_possibility_provider.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_possibility_provider",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_empirical_possibility_provider.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_possibility_provider",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_empirical_possibility_provider.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_possibility_provider",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_empirical_possibility_provider.py",
+          "audit": "repro/import_audits/n10e_c1_84184.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_possibility_provider",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/pre553_empirical_possibility_provider.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "b497f85713847cecc169d4d71c7629655d562dc0",
+      "path": "rawlsing_next/tests/test_postastra_pe_fixture.py",
+      "git_blob_sha1": "c9674d5fe9d01621eda0fdb4a999391eba422d92",
+      "content_sha256": "e9fdef523095799cda0732c613df2056efa00cff79c060148efbac200a3d00ee",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/test_postastra_pe_fixture.py",
+      "family": "original_29",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/test_postastra_pe_fixture.py",
+      "actual_imports": [
+        {
+          "module": "rawlsing_next.tests.test_postastra_pe_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/test_postastra_pe_fixture.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "rawlsing_next.tests.test_postastra_pe_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/test_postastra_pe_fixture.py",
+          "audit": "repro/import_audits/pe_84192.json"
+        },
+        {
+          "module": "rawlsing_next.tests.test_postastra_pe_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/test_postastra_pe_fixture.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "rawlsing_next.tests.test_postastra_pe_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/test_postastra_pe_fixture.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "rawlsing_next.tests.test_postastra_pe_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/test_postastra_pe_fixture.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "rawlsing_next.tests.test_postastra_pe_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/test_postastra_pe_fixture.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "rawlsing_next.tests.test_postastra_pe_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/test_postastra_pe_fixture.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "rawlsing_next.tests.test_postastra_pe_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/test_postastra_pe_fixture.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "rawlsing_next.tests.test_postastra_pe_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/test_postastra_pe_fixture.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "rawlsing_next.tests.test_postastra_pe_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/test_postastra_pe_fixture.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "rawlsing_next.tests.test_postastra_pe_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/test_postastra_pe_fixture.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+      "git_blob_sha1": "0e384f72fa615dc72a0dcb08a36472a64b7b1e4a",
+      "content_sha256": "786c065612382b40b32f26410a6a6ccef1051e970f66a756ec2ec6582eac4481",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+      "family": "original_29",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+      "actual_imports": [
+        {
+          "module": "rawlsing_next.tests.n10e_empirical_slice_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "rawlsing_next.tests.n10e_empirical_slice_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+          "audit": "repro/import_audits/pe_84192.json"
+        },
+        {
+          "module": "rawlsing_next.tests.n10e_empirical_slice_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "rawlsing_next.tests.n10e_empirical_slice_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "rawlsing_next.tests.n10e_empirical_slice_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "rawlsing_next.tests.n10e_empirical_slice_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+          "audit": "repro/import_audits/n10e_c1_84179.json"
+        },
+        {
+          "module": "rawlsing_next.tests.n10e_empirical_slice_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "rawlsing_next.tests.n10e_empirical_slice_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "rawlsing_next.tests.n10e_empirical_slice_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "rawlsing_next.tests.n10e_empirical_slice_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "rawlsing_next.tests.n10e_empirical_slice_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "rawlsing_next.tests.n10e_empirical_slice_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "rawlsing_next.tests.n10e_empirical_slice_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "rawlsing_next.tests.n10e_empirical_slice_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+          "audit": "repro/import_audits/n10e_c1_84184.json"
+        },
+        {
+          "module": "rawlsing_next.tests.n10e_empirical_slice_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "rawlsing_next/tests/n10e_at17_successor_requal.py",
+      "git_blob_sha1": "35b2427c0c5ef97bcd53d20f5dee9d365228459b",
+      "content_sha256": "72cc9e1c785148514cbfa1b962cbf1e6e4e0549e0d5417fb15ef3b0fb67bee0d",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_at17_successor_requal.py",
+      "family": "original_29",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_at17_successor_requal.py",
+      "actual_imports": [
+        {
+          "module": "n10e_at17_successor_requal",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_at17_successor_requal.py",
+          "audit": "repro/import_audits/n10e_c1_84179.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "rawlsing_next/tests/c1_at08_at13_fixture.py",
+      "git_blob_sha1": "0393cc8c17a313b7944b2a5287d0406d6cbe3849",
+      "content_sha256": "ce88e393d107eada13e37bdceb8f956789452281a54563cf5e5aee3304337332",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/c1_at08_at13_fixture.py",
+      "family": "original_29",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/c1_at08_at13_fixture.py",
+      "actual_imports": [
+        {
+          "module": "rawlsing_next.tests.c1_at08_at13_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/c1_at08_at13_fixture.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "rawlsing_next.tests.c1_at08_at13_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/c1_at08_at13_fixture.py",
+          "audit": "repro/import_audits/pe_84192.json"
+        },
+        {
+          "module": "rawlsing_next.tests.c1_at08_at13_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/c1_at08_at13_fixture.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "rawlsing_next.tests.c1_at08_at13_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/c1_at08_at13_fixture.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "rawlsing_next.tests.c1_at08_at13_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/c1_at08_at13_fixture.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "rawlsing_next.tests.c1_at08_at13_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/c1_at08_at13_fixture.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "rawlsing_next.tests.c1_at08_at13_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/c1_at08_at13_fixture.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "rawlsing_next.tests.c1_at08_at13_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/c1_at08_at13_fixture.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "rawlsing_next.tests.c1_at08_at13_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/c1_at08_at13_fixture.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "rawlsing_next.tests.c1_at08_at13_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/c1_at08_at13_fixture.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "rawlsing_next.tests.c1_at08_at13_fixture",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/c1_at08_at13_fixture.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json",
+      "git_blob_sha1": "c6acafae820c065215fdbe7a703480a8b19fbc57",
+      "content_sha256": "b8a29223ebe55e74dceb4ea2b5b304c7a8e49d25e81d30f986e6ba077d055e2b",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json",
+      "family": "original_29",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json",
+      "git_blob_sha1": "333989fa7b57c221d6aa5ebfc25d9d76e0acad32",
+      "content_sha256": "ae159afe90987e16ca5b21b1531bc2405aced5fc28fef01abfd31ccb47a4f930",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json",
+      "family": "original_29",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/04_SLICE_PROJECTION.json",
+      "git_blob_sha1": "8e5bd3d23db1e39aebee0a55d49934a0d400dd48",
+      "content_sha256": "bab72cebbac4d3055db0f86dc10306c6d0195b6b9a8889cc2312f95d67e99a45",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/04_SLICE_PROJECTION.json",
+      "family": "original_29",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json",
+      "git_blob_sha1": "5d1583dc31c837282ea40448285109a31bb1db41",
+      "content_sha256": "838c76ddf238ccef310608ed2f9ccd9fee9d6cf147ae59bb669465664ccb1fa9",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json",
+      "family": "original_29",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json",
+      "git_blob_sha1": "462bb282ddc2cc9667f1890f2d65f2fae9a3a72c",
+      "content_sha256": "a4416c481206590116ac233a73832131fdd4ddb2dcbdde29c166d5f26772c449",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json",
+      "family": "original_29",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/00_RETURN.md",
+      "git_blob_sha1": "47c0a267298be42f64538952fe9358356a566d96",
+      "content_sha256": "95d0ac0205b1d62914618caeaa2e02dc874cb6d03dc8efe144533935fec602ef",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/hq298/00_RETURN.md",
+      "family": "original_29",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "rawlsing_next/tests/test_pre553_empirical_possibility_provider.py",
+      "git_blob_sha1": "f776cc2b26be222132d86abbcb1ad429991fa61d",
+      "content_sha256": "2bf79393e180321eec3670994ce4acfe4609e7da54d788deeef30452122c866d",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/test_pre553_empirical_possibility_provider.py",
+      "family": "original_29",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/test_pre553_empirical_possibility_provider.py",
+      "actual_imports": [
+        {
+          "module": "test_pre553_empirical_possibility_provider",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/test_pre553_empirical_possibility_provider.py",
+          "audit": "repro/import_audits/n10e_c1_84179.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "rawlsing_next/tests/test_pre553_analytical_composition.py",
+      "git_blob_sha1": "2210fc1b4cb99552aafc8797c12d780a78e7983b",
+      "content_sha256": "ed1e521cf5aefe7b2c6d1f696fff1c10233a2e590efd653167887420d0cc7c25",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/test_pre553_analytical_composition.py",
+      "family": "original_29",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/test_pre553_analytical_composition.py",
+      "actual_imports": [
+        {
+          "module": "test_pre553_analytical_composition",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/test_pre553_analytical_composition.py",
+          "audit": "repro/import_audits/n10e_c1_84179.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "b497f85713847cecc169d4d71c7629655d562dc0",
+      "path": "rawlsing_next/tests/test_postastra_pe_generic_world_possibility.py",
+      "git_blob_sha1": "92f59875583bf513c6fdbcd3ad7fe2b49e45e212",
+      "content_sha256": "9498999397be229cc42ea5e4a2488572902e974d52699b125a64df3dcaa87d0a",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/test_postastra_pe_generic_world_possibility.py",
+      "family": "original_29",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/test_postastra_pe_generic_world_possibility.py",
+      "actual_imports": [
+        {
+          "module": "test_postastra_pe_generic_world_possibility",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/test_postastra_pe_generic_world_possibility.py",
+          "audit": "repro/import_audits/pe_84192.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "rawlsing_next/tests/n10e_empirical_slice_fresh_process_runner.py",
+      "git_blob_sha1": "19e8d47084ebb5763037a83c4afbc2036f30c49a",
+      "content_sha256": "3442be7d66c068ed36261e34fd73876f3f685f5e6f4d03a956f90b972882fcad",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_empirical_slice_fresh_process_runner.py",
+      "family": "original_29",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_empirical_slice_fresh_process_runner.py",
+      "actual_imports": [
+        {
+          "module": "__main__",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/rawlsing_next/tests/n10e_empirical_slice_fresh_process_runner.py",
+          "audit": "repro/import_audits/n10e_c1_84184.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_HISTORICAL_CANONICAL.json",
+      "git_blob_sha1": "2d725dc592291ac7e8da4e4b0fb90f96dbeacec4",
+      "content_sha256": "03610f9d91b23cfb6f862dc91b5de92c7f4e4b8e44a53b9efdacb1cf73af6b9e",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_HISTORICAL_CANONICAL.json",
+      "family": "original_29",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_SUCCESSOR_CANONICAL.json",
+      "git_blob_sha1": "8143c96ed8ebdf3b87632d193a30e9924cbd1ced",
+      "content_sha256": "01c381d3f3c386cfc22fd2f57b8e2c244771ddf1529d4f8ab8c7b1cf41bd50dd",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_SUCCESSOR_CANONICAL.json",
+      "family": "original_29",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_HISTORICAL_CANONICAL.json",
+      "git_blob_sha1": "634d4dd6c6c90e6c02220b17071795e9b7bdbd3e",
+      "content_sha256": "1202822cf98d802c04440328496dc64ee02e6d6030a3da6c9bf10ef1a6490a3c",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_HISTORICAL_CANONICAL.json",
+      "family": "original_29",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "7f29aec36d24f16da52d84f17c00f08db3a55434",
+      "path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_SUCCESSOR_CANONICAL.json",
+      "git_blob_sha1": "712455f3b84a0685d0876dc5218421edf7dae724",
+      "content_sha256": "a3bd7e85ae14babb5ac5a12b0bcc57a8cdf3eccf8f43394895903dc43aca40ca",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/ns/WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_SUCCESSOR_CANONICAL.json",
+      "family": "original_29",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/conftest.py",
+      "git_blob_sha1": "f2cf89ea015d3b5f4bf66d5ab7db36b574b6e8ce",
+      "content_sha256": "2c1954e72529475d3619de2064ec94819b91016f768d1d1aa7df3af3b153ed39",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/conftest.py",
+      "family": "C0_candidate",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/conftest.py",
+      "actual_imports": [
+        {
+          "module": "conftest",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/conftest.py",
+          "audit": "repro/import_audits/pe_84192.json"
+        },
+        {
+          "module": "conftest",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/conftest.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "conftest",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/conftest.py",
+          "audit": "repro/import_audits/n10e_c1_84179.json"
+        },
+        {
+          "module": "conftest",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/conftest.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "conftest",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/conftest.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "conftest",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/conftest.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "conftest",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/conftest.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "conftest",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/conftest.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "conftest",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/conftest.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/__init__.py",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/__init__.py",
+      "family": "C0_candidate",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/__init__.py",
+      "actual_imports": [
+        {
+          "module": "port",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/__init__.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "port",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/__init__.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "port",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/__init__.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "port",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/__init__.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "port",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/__init__.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "port",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/__init__.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "port",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/__init__.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "port",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/__init__.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "port",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/__init__.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "port",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/__init__.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "port",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/__init__.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "port",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/__init__.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/adapter.py",
+      "git_blob_sha1": "706475c927432c52599e6b603feb18ee9d716839",
+      "content_sha256": "eb8b83049a5ae4e3db9c470de0a3d21698aa11eeef36b9195293abfe450d1649",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/adapter.py",
+      "family": "C0_candidate",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/adapter.py",
+      "actual_imports": [
+        {
+          "module": "port.adapter",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/adapter.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "port.adapter",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/adapter.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "port.adapter",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/adapter.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "port.adapter",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/adapter.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "port.adapter",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/adapter.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "port.adapter",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/adapter.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "port.adapter",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/adapter.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "port.adapter",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/adapter.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "port.adapter",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/adapter.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "port.adapter",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/adapter.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "port.adapter",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/adapter.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "port.adapter",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/adapter.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/consumers.py",
+      "git_blob_sha1": "02e3a4375475783e204a8fa7def9b1511a8db856",
+      "content_sha256": "9b4a5c62c87318c9bbd2fa244d7079fd01259ef68e3f1e42109c5de7e856c6bb",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/consumers.py",
+      "family": "C0_candidate",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/consumers.py",
+      "actual_imports": [
+        {
+          "module": "port.consumers",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/consumers.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "port.consumers",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/consumers.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "port.consumers",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/consumers.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "port.consumers",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/consumers.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "port.consumers",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/consumers.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "port.consumers",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/consumers.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "port.consumers",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/consumers.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "port.consumers",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/consumers.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "port.consumers",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/consumers.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "port.consumers",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/consumers.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "port.consumers",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/consumers.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "port.consumers",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/consumers.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/contracts.py",
+      "git_blob_sha1": "15b35a7452b59d57adbdce2afb49e501cd588c4c",
+      "content_sha256": "7732f6510c6e3b2ed354ce27b2d7a4c4f496917fbc03c8fd5f0be81195e5a280",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/contracts.py",
+      "family": "C0_candidate",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/contracts.py",
+      "actual_imports": [
+        {
+          "module": "port.contracts",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/contracts.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "port.contracts",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/contracts.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "port.contracts",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/contracts.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "port.contracts",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/contracts.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "port.contracts",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/contracts.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "port.contracts",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/contracts.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "port.contracts",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/contracts.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "port.contracts",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/contracts.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "port.contracts",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/contracts.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "port.contracts",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/contracts.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "port.contracts",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/contracts.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "port.contracts",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/contracts.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/envelope.py",
+      "git_blob_sha1": "5846ee2175d573292952a664f69da3d92537ecda",
+      "content_sha256": "651f8a1ff95285ae45e75257c553666e1e38adb1989daa4db3ee9d2bef60cdd5",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/envelope.py",
+      "family": "C0_candidate",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/envelope.py",
+      "actual_imports": [
+        {
+          "module": "port.envelope",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/envelope.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "port.envelope",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/envelope.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "port.envelope",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/envelope.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "port.envelope",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/envelope.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "port.envelope",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/envelope.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "port.envelope",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/envelope.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "port.envelope",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/envelope.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "port.envelope",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/envelope.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "port.envelope",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/envelope.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "port.envelope",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/envelope.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "port.envelope",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/envelope.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "port.envelope",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/envelope.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/pinned_producer.py",
+      "git_blob_sha1": "5a809fcf0fb806e190475c3887f90ec454cb6cd7",
+      "content_sha256": "f74963fb061b1481c395d040e9a854ab06ccd78aad9b50bf589b03cd04d74b5c",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/pinned_producer.py",
+      "family": "C0_candidate",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/pinned_producer.py",
+      "actual_imports": [
+        {
+          "module": "port.pinned_producer",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/pinned_producer.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "port.pinned_producer",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/pinned_producer.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "port.pinned_producer",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/pinned_producer.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "port.pinned_producer",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/pinned_producer.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "port.pinned_producer",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/pinned_producer.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "port.pinned_producer",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/pinned_producer.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "port.pinned_producer",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/pinned_producer.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "port.pinned_producer",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/pinned_producer.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "port.pinned_producer",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/pinned_producer.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "port.pinned_producer",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/pinned_producer.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "port.pinned_producer",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/pinned_producer.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "port.pinned_producer",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/pinned_producer.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_a.py",
+      "git_blob_sha1": "11033926aa703b242b307102f11b53432f8f6474",
+      "content_sha256": "603fee9a50d08541c2ca3f21219189bd41403573360df628580393beed971912",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_a.py",
+      "family": "C0_candidate",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_a.py",
+      "actual_imports": [
+        {
+          "module": "port.provider_a",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_a.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "port.provider_a",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_a.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "port.provider_a",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_a.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "port.provider_a",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_a.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "port.provider_a",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_a.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "port.provider_a",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_a.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "port.provider_a",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_a.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "port.provider_a",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_a.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "port.provider_a",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_a.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "port.provider_a",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_a.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "port.provider_a",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_a.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "port.provider_a",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_a.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_b.py",
+      "git_blob_sha1": "9f40cfbc0910d5db270980b2576a0fa4c9b5ba70",
+      "content_sha256": "2291910739d973b1fccb4faf3a39f4b7b132a008c764720c3b4639c49457777d",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_b.py",
+      "family": "C0_candidate",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_b.py",
+      "actual_imports": [
+        {
+          "module": "port.provider_b",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_b.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "port.provider_b",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_b.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "port.provider_b",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_b.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "port.provider_b",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_b.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "port.provider_b",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_b.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "port.provider_b",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_b.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "port.provider_b",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_b.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "port.provider_b",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_b.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "port.provider_b",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_b.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "port.provider_b",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_b.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "port.provider_b",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_b.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "port.provider_b",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/provider_b.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/test_connection.py",
+      "git_blob_sha1": "772817f6eb3e8f4a9aca01f99a197edfd13789d8",
+      "content_sha256": "b534a693ad2d0fd97c0d9306ab601b39236fca426675d7c7987c9580a69c1c68",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/test_connection.py",
+      "family": "C0_candidate",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/test_connection.py",
+      "actual_imports": [
+        {
+          "module": "port.test_connection",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/test_connection.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "port.test_connection",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/test_connection.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/test_k10_structural_conservation.py",
+      "git_blob_sha1": "751f916dac3e1fb5fc98b73a3d825c467f6e4ab3",
+      "content_sha256": "cdd7d192d26db27a8c0706773039df1544758339b8bf9762a0ea6539319cf4c5",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/test_k10_structural_conservation.py",
+      "family": "C0_candidate",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/test_k10_structural_conservation.py",
+      "actual_imports": [
+        {
+          "module": "port.test_k10_structural_conservation",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/test_k10_structural_conservation.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/test_k9_provider_swap.py",
+      "git_blob_sha1": "6fc4e821a0bd7bedd72867b4a0383753a89dd7c2",
+      "content_sha256": "92f0e1609a0b35c994500dfbc60f55abd33e50637e4128988db31f83ad4bb1ec",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/test_k9_provider_swap.py",
+      "family": "C0_candidate",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/test_k9_provider_swap.py",
+      "actual_imports": [
+        {
+          "module": "port.test_k9_provider_swap",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/test_k9_provider_swap.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_baseline.py",
+      "git_blob_sha1": "a73c21ff80f63cd56160cff37831b8824ceb061c",
+      "content_sha256": "5b722af23bec3f36a3f3b3b101d3462cfd24084c4aad9ac2bb2b2abd3d3a7c98",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_baseline.py",
+      "family": "C0_candidate",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_baseline.py",
+      "actual_imports": [
+        {
+          "module": "port.world_baseline",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_baseline.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "port.world_baseline",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_baseline.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "port.world_baseline",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_baseline.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "port.world_baseline",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_baseline.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "port.world_baseline",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_baseline.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "port.world_baseline",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_baseline.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "port.world_baseline",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_baseline.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "port.world_baseline",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_baseline.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "port.world_baseline",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_baseline.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "port.world_baseline",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_baseline.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "port.world_baseline",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_baseline.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "port.world_baseline",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_baseline.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_laws.py",
+      "git_blob_sha1": "bde91824eeb7692599260de3e2e04244f47e6fee",
+      "content_sha256": "3403c1b113867f0a5cbf053c5e72726e8ef570d6faf9bde3ad5bae6263c57060",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_laws.py",
+      "family": "C0_candidate",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_laws.py",
+      "actual_imports": [
+        {
+          "module": "port.world_laws",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_laws.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "port.world_laws",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_laws.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "port.world_laws",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_laws.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "port.world_laws",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_laws.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "port.world_laws",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_laws.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "port.world_laws",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_laws.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "port.world_laws",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_laws.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "port.world_laws",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_laws.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "port.world_laws",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_laws.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "port.world_laws",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_laws.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "port.world_laws",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_laws.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "port.world_laws",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/world_laws.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+      "path": "WORKER_RETURNS/SOROK-R3-POSTASTRA-SC0-WORLD-PORT-CONTRACT-R1/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json",
+      "git_blob_sha1": "610ac870fde6cfe63796592b3c6b1e1bf1e37150",
+      "content_sha256": "6c7d02d1eac88fd1da0f54b480d5a109a7f8f4886768af9b454cabe6494ecfa9",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json",
+      "family": "RC0_oracle_layout",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+      "path": "WORKER_RETURNS/SOROK-R3-POSTASTRA-SC0-WORLD-PORT-CONTRACT-R1/02_K9_PROVIDER_SWAP_ORACLES.json",
+      "git_blob_sha1": "9ccb66f9b08a4aa8b96582295bb2966d250fd72d",
+      "content_sha256": "77dadf8dfad44133bbb01dd627d126cdaf9ca08bb7751da1500d957618220689",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/oracles/02_K9_PROVIDER_SWAP_ORACLES.json",
+      "family": "RC0_oracle_layout",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+      "path": "WORKER_RETURNS/SOROK-R3-POSTASTRA-SC0-WORLD-PORT-CONTRACT-R1/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json",
+      "git_blob_sha1": "e78b3ee91da1fb18deaf8d8f226800ad855adbae",
+      "content_sha256": "2fdd90c9caace1b434ef0199401607bf955e7f6e788ee4b3f7631cdde6688a01",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/oracles/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json",
+      "family": "RC0_oracle_layout",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/test_k9_provider_swap.py",
+      "git_blob_sha1": "1e25d7951411c1d33c2185f88496c453adbc194e",
+      "content_sha256": "71f2c62b380118f380c1dfbf3e2504db6a37a7d35cf8ab7fdf654d3ed95d9f74",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/original_tests/test_k9_provider_swap.py",
+      "family": "unchanged_HQ298_K9K10",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/original_tests/test_k9_provider_swap.py",
+      "actual_imports": [
+        {
+          "module": "test_k9_provider_swap",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/original_tests/test_k9_provider_swap.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/test_k10_structural_conservation.py",
+      "git_blob_sha1": "44c725bd1a18e22c5314bf73b7a9dc538c5b08aa",
+      "content_sha256": "23d274ac56a9376df6dfec3ddea75e7f5180a71348abfb25cf33c1b8e92a561b",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/original_tests/test_k10_structural_conservation.py",
+      "family": "unchanged_HQ298_K9K10",
+      "verified_imported_module_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/original_tests/test_k10_structural_conservation.py",
+      "actual_imports": [
+        {
+          "module": "test_k10_structural_conservation",
+          "verified_file": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/original_tests/test_k10_structural_conservation.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "rawlsing_next/m4_v557_v558_publication_repository.py",
+      "git_blob_sha1": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360",
+      "content_sha256": "b35581669d8a75d70972d9a6aecee9caa94e6bcef950595acc17a6c16e85f9e7",
+      "local_relative_staging_path": "runtime_root/rawlsing_next/m4_v557_v558_publication_repository.py",
+      "family": "transitive_import",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "rawlsing_next/m5_runtime_rsc_peer_prior.py",
+      "git_blob_sha1": "18735bdb31a220aed032aa722574d685e2bdddf5",
+      "content_sha256": "ffac990688f3e4596c129787f236f1c26cf4f38f829c4f9a141fc05b1611e518",
+      "local_relative_staging_path": "runtime_root/rawlsing_next/m5_runtime_rsc_peer_prior.py",
+      "family": "transitive_import",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "git_blob_sha1": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "content_sha256": "9c041cb134a7b9198d12f75a1eb82a7e37cdb781adf5f68033b5ad21e62dbc01",
+      "local_relative_staging_path": "runtime_root/rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "family": "transitive_import",
+      "verified_imported_module_file": "$RSC0_RUNTIME/rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "actual_imports": [
+        {
+          "module": "rawlsing_next.source_backed_positioned_subject_possibility",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/source_backed_positioned_subject_possibility.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "rawlsing_next.source_backed_positioned_subject_possibility",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/source_backed_positioned_subject_possibility.py",
+          "audit": "repro/import_audits/pe_84192.json"
+        },
+        {
+          "module": "rawlsing_next.source_backed_positioned_subject_possibility",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/source_backed_positioned_subject_possibility.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "rawlsing_next.source_backed_positioned_subject_possibility",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/source_backed_positioned_subject_possibility.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "rawlsing_next.source_backed_positioned_subject_possibility",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/source_backed_positioned_subject_possibility.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "rawlsing_next.source_backed_positioned_subject_possibility",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/source_backed_positioned_subject_possibility.py",
+          "audit": "repro/import_audits/n10e_c1_84179.json"
+        },
+        {
+          "module": "rawlsing_next.source_backed_positioned_subject_possibility",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/source_backed_positioned_subject_possibility.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "rawlsing_next.source_backed_positioned_subject_possibility",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/source_backed_positioned_subject_possibility.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "rawlsing_next.source_backed_positioned_subject_possibility",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/source_backed_positioned_subject_possibility.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "rawlsing_next.source_backed_positioned_subject_possibility",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/source_backed_positioned_subject_possibility.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "rawlsing_next.source_backed_positioned_subject_possibility",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/source_backed_positioned_subject_possibility.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "rawlsing_next.source_backed_positioned_subject_possibility",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/source_backed_positioned_subject_possibility.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "rawlsing_next.source_backed_positioned_subject_possibility",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/source_backed_positioned_subject_possibility.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "rawlsing_next.source_backed_positioned_subject_possibility",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/source_backed_positioned_subject_possibility.py",
+          "audit": "repro/import_audits/n10e_c1_84184.json"
+        },
+        {
+          "module": "rawlsing_next.source_backed_positioned_subject_possibility",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/source_backed_positioned_subject_possibility.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "rawlsing_next/pre553_empirical_objects.py",
+      "git_blob_sha1": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "content_sha256": "9cd1d71440a7e8c1861dda73274529e07211edc14335583e93ad91c0833e9ab4",
+      "local_relative_staging_path": "runtime_root/rawlsing_next/pre553_empirical_objects.py",
+      "family": "transitive_import",
+      "verified_imported_module_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_objects.py",
+      "actual_imports": [
+        {
+          "module": "rawlsing_next.pre553_empirical_objects",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_objects.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_objects",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_objects.py",
+          "audit": "repro/import_audits/pe_84192.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_objects",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_objects.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_objects",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_objects.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_objects",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_objects.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_objects",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_objects.py",
+          "audit": "repro/import_audits/n10e_c1_84179.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_objects",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_objects.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_objects",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_objects.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_objects",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_objects.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_objects",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_objects.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_objects",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_objects.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_objects",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_objects.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_objects",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_objects.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_objects",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_objects.py",
+          "audit": "repro/import_audits/n10e_c1_84184.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_objects",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_objects.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "rawlsing_next/m1_temporal_v554_admission_dedup.py",
+      "git_blob_sha1": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+      "content_sha256": "5f6bf653d287dab8063696f2b81a79ab4083e44eaa9b901cfb5aa4589a098ec0",
+      "local_relative_staging_path": "runtime_root/rawlsing_next/m1_temporal_v554_admission_dedup.py",
+      "family": "transitive_import",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "rawlsing_next/m2_v555_atomic_route.py",
+      "git_blob_sha1": "deef8a60613635a10faf7d89cd8cdf0c3b8a0710",
+      "content_sha256": "71fcd8b2acb0f9ce4fbed470420b38131a3b9246028b7e764bfda8ca4d04582c",
+      "local_relative_staging_path": "runtime_root/rawlsing_next/m2_v555_atomic_route.py",
+      "family": "transitive_import",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "rawlsing_next/m3_v556_higher_order_structural.py",
+      "git_blob_sha1": "9a4b26b214686364a43d108dabf0d57dac0ed3b2",
+      "content_sha256": "736c17d8d6b6792e9befd3792f3754f7b8153fb415a2070b5628a030d44b00ed",
+      "local_relative_staging_path": "runtime_root/rawlsing_next/m3_v556_higher_order_structural.py",
+      "family": "transitive_import",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "rawlsing_next/tests/test_pre553_empirical_query.py",
+      "git_blob_sha1": "cc7d93db1f87d9c311170c229dbe3506937b404a",
+      "content_sha256": "eacc63ca9a067ebde53005fec9c859ce304cbedcf42b1b338b4fece49158b720",
+      "local_relative_staging_path": "runtime_root/rawlsing_next/tests/test_pre553_empirical_query.py",
+      "family": "transitive_import",
+      "verified_imported_module_file": "$RSC0_RUNTIME/rawlsing_next/tests/test_pre553_empirical_query.py",
+      "actual_imports": [
+        {
+          "module": "rawlsing_next.tests.test_pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/tests/test_pre553_empirical_query.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "rawlsing_next.tests.test_pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/tests/test_pre553_empirical_query.py",
+          "audit": "repro/import_audits/pe_84192.json"
+        },
+        {
+          "module": "rawlsing_next.tests.test_pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/tests/test_pre553_empirical_query.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "rawlsing_next.tests.test_pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/tests/test_pre553_empirical_query.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "rawlsing_next.tests.test_pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/tests/test_pre553_empirical_query.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "rawlsing_next.tests.test_pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/tests/test_pre553_empirical_query.py",
+          "audit": "repro/import_audits/n10e_c1_84179.json"
+        },
+        {
+          "module": "rawlsing_next.tests.test_pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/tests/test_pre553_empirical_query.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "rawlsing_next.tests.test_pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/tests/test_pre553_empirical_query.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "rawlsing_next.tests.test_pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/tests/test_pre553_empirical_query.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "rawlsing_next.tests.test_pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/tests/test_pre553_empirical_query.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "rawlsing_next.tests.test_pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/tests/test_pre553_empirical_query.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "rawlsing_next.tests.test_pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/tests/test_pre553_empirical_query.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "rawlsing_next.tests.test_pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/tests/test_pre553_empirical_query.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "rawlsing_next.tests.test_pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/tests/test_pre553_empirical_query.py",
+          "audit": "repro/import_audits/n10e_c1_84184.json"
+        },
+        {
+          "module": "rawlsing_next.tests.test_pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/tests/test_pre553_empirical_query.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "rawlsing_next/pre553_empirical_authority.py",
+      "git_blob_sha1": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+      "content_sha256": "c32b96cd67274d2bcb44ca509afd87e085748bd2e32565716c10313b0609a29a",
+      "local_relative_staging_path": "runtime_root/rawlsing_next/pre553_empirical_authority.py",
+      "family": "transitive_import",
+      "verified_imported_module_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_authority.py",
+      "actual_imports": [
+        {
+          "module": "rawlsing_next.pre553_empirical_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_authority.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_authority.py",
+          "audit": "repro/import_audits/pe_84192.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_authority.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_authority.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_authority.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_authority.py",
+          "audit": "repro/import_audits/n10e_c1_84179.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_authority.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_authority.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_authority.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_authority.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_authority.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_authority.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_authority.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_authority.py",
+          "audit": "repro/import_audits/n10e_c1_84184.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_authority.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "rawlsing_next/pre553_runtime_context.py",
+      "git_blob_sha1": "4fc50793871e176f164442c04ef2501eba9d5dfa",
+      "content_sha256": "e37b8d16ea2636ad78bcd8239b3ebdc498d0528605bf32353b65415739c0de1e",
+      "local_relative_staging_path": "runtime_root/rawlsing_next/pre553_runtime_context.py",
+      "family": "transitive_import",
+      "verified_imported_module_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_context.py",
+      "actual_imports": [
+        {
+          "module": "rawlsing_next.pre553_runtime_context",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_context.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_context",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_context.py",
+          "audit": "repro/import_audits/pe_84192.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_context",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_context.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_context",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_context.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_context",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_context.py",
+          "audit": "repro/import_audits/n10e_c1_84179.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_context",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_context.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_context",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_context.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_context",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_context.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_context",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_context.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_context",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_context.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_context",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_context.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_context",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_context.py",
+          "audit": "repro/import_audits/n10e_c1_84184.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_context",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_context.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "rawlsing_next/pre553_c11_repository.py",
+      "git_blob_sha1": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+      "content_sha256": "84a71fe43307cca30f9eeaaedb269d8390468a4744a0fac251aebc2cda7b498e",
+      "local_relative_staging_path": "runtime_root/rawlsing_next/pre553_c11_repository.py",
+      "family": "transitive_import",
+      "verified_imported_module_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_repository.py",
+      "actual_imports": [
+        {
+          "module": "rawlsing_next.pre553_c11_repository",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_repository.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_repository",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_repository.py",
+          "audit": "repro/import_audits/pe_84192.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_repository",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_repository.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_repository",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_repository.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_repository",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_repository.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_repository",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_repository.py",
+          "audit": "repro/import_audits/n10e_c1_84179.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_repository",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_repository.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_repository",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_repository.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_repository",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_repository.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_repository",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_repository.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_repository",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_repository.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_repository",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_repository.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_repository",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_repository.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_repository",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_repository.py",
+          "audit": "repro/import_audits/n10e_c1_84184.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_repository",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_repository.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "rawlsing_next/pre553_runtime_authority.py",
+      "git_blob_sha1": "896c7094124a4aaea23eec550178e4bf8e73ac68",
+      "content_sha256": "027aa551973b3ba6a560b322c9a704c4577f250d57a0c5564b8d9de71cbbb1d2",
+      "local_relative_staging_path": "runtime_root/rawlsing_next/pre553_runtime_authority.py",
+      "family": "transitive_import",
+      "verified_imported_module_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_authority.py",
+      "actual_imports": [
+        {
+          "module": "rawlsing_next.pre553_runtime_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_authority.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_authority.py",
+          "audit": "repro/import_audits/pe_84192.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_authority.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_authority.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_authority.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_authority.py",
+          "audit": "repro/import_audits/n10e_c1_84179.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_authority.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_authority.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_authority.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_authority.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_authority.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_authority.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_authority.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_authority.py",
+          "audit": "repro/import_audits/n10e_c1_84184.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_runtime_authority",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_runtime_authority.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "git_blob_sha1": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "content_sha256": "d45ad313bc57e94c8c3652b4123c7cb03b0fc18d38d577aaaae94435664ef4cb",
+      "local_relative_staging_path": "runtime_root/rawlsing_next/pre553_empirical_query.py",
+      "family": "transitive_import",
+      "verified_imported_module_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_query.py",
+      "actual_imports": [
+        {
+          "module": "rawlsing_next.pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_query.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_query.py",
+          "audit": "repro/import_audits/pe_84192.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_query.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_query.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_query.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_query.py",
+          "audit": "repro/import_audits/n10e_c1_84179.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_query.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_query.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_query.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_query.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_query.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_query.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_query.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_query.py",
+          "audit": "repro/import_audits/n10e_c1_84184.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_empirical_query",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_empirical_query.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "rawlsing_next/pre553_discovery_exact.py",
+      "git_blob_sha1": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "content_sha256": "808fd0bd8e2423c047268285c00ca43f0f4cdbff80ed1ad286e3c6c56b8f7217",
+      "local_relative_staging_path": "runtime_root/rawlsing_next/pre553_discovery_exact.py",
+      "family": "transitive_import",
+      "verified_imported_module_file": "$RSC0_RUNTIME/rawlsing_next/pre553_discovery_exact.py",
+      "actual_imports": [
+        {
+          "module": "rawlsing_next.pre553_discovery_exact",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_discovery_exact.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_discovery_exact",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_discovery_exact.py",
+          "audit": "repro/import_audits/pe_84192.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_discovery_exact",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_discovery_exact.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_discovery_exact",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_discovery_exact.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_discovery_exact",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_discovery_exact.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_discovery_exact",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_discovery_exact.py",
+          "audit": "repro/import_audits/n10e_c1_84179.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_discovery_exact",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_discovery_exact.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_discovery_exact",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_discovery_exact.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_discovery_exact",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_discovery_exact.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_discovery_exact",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_discovery_exact.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_discovery_exact",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_discovery_exact.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_discovery_exact",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_discovery_exact.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_discovery_exact",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_discovery_exact.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_discovery_exact",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_discovery_exact.py",
+          "audit": "repro/import_audits/n10e_c1_84184.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_discovery_exact",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_discovery_exact.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "rawlsing_next/_pre553_query_common.py",
+      "git_blob_sha1": "938a6b03a63dd34ef4f0f63655ed8f11f65c5d92",
+      "content_sha256": "496320f7e089e4cc73b1a55023ed906d3f016e939f548cebc4ec59bddd4847b2",
+      "local_relative_staging_path": "runtime_root/rawlsing_next/_pre553_query_common.py",
+      "family": "transitive_import",
+      "verified_imported_module_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_common.py",
+      "actual_imports": [
+        {
+          "module": "rawlsing_next._pre553_query_common",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_common.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_common",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_common.py",
+          "audit": "repro/import_audits/pe_84192.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_common",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_common.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_common",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_common.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_common",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_common.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_common",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_common.py",
+          "audit": "repro/import_audits/n10e_c1_84179.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_common",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_common.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_common",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_common.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_common",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_common.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_common",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_common.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_common",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_common.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_common",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_common.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_common",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_common.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_common",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_common.py",
+          "audit": "repro/import_audits/n10e_c1_84184.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_common",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_common.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "rawlsing_next/pre553_runtime_composition.py",
+      "git_blob_sha1": "3753c183ddb25b1b0eb0ce84db1868f39f50d3fa",
+      "content_sha256": "25d84acf3b14f85b0ec146c3272275b1e0a5d54d665c44213806120eaa93e1da",
+      "local_relative_staging_path": "runtime_root/rawlsing_next/pre553_runtime_composition.py",
+      "family": "transitive_import",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "rawlsing_next/pre553_c11_integrity.py",
+      "git_blob_sha1": "7c59aa13a2b7c8e3ab0dc90a1400df645b0b4bbd",
+      "content_sha256": "3963facef5c8ae2981991ffa8c5c5c9b717fb4e09f342eec277198fc5cf38a33",
+      "local_relative_staging_path": "runtime_root/rawlsing_next/pre553_c11_integrity.py",
+      "family": "transitive_import",
+      "verified_imported_module_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_integrity.py",
+      "actual_imports": [
+        {
+          "module": "rawlsing_next.pre553_c11_integrity",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_integrity.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_integrity",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_integrity.py",
+          "audit": "repro/import_audits/pe_84192.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_integrity",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_integrity.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_integrity",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_integrity.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_integrity",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_integrity.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_integrity",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_integrity.py",
+          "audit": "repro/import_audits/n10e_c1_84179.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_integrity",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_integrity.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_integrity",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_integrity.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_integrity",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_integrity.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_integrity",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_integrity.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_integrity",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_integrity.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_integrity",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_integrity.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_integrity",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_integrity.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_integrity",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_integrity.py",
+          "audit": "repro/import_audits/n10e_c1_84184.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_integrity",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_integrity.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "rawlsing_next/_pre553_query_eval.py",
+      "git_blob_sha1": "f808dfcd2008cc71e9203de3cadf1abe14223974",
+      "content_sha256": "c72d7d35bfa5d3cb4b406bdd90530b2822416850bba48cdd12ce784ba10cd670",
+      "local_relative_staging_path": "runtime_root/rawlsing_next/_pre553_query_eval.py",
+      "family": "transitive_import",
+      "verified_imported_module_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_eval.py",
+      "actual_imports": [
+        {
+          "module": "rawlsing_next._pre553_query_eval",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_eval.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_eval",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_eval.py",
+          "audit": "repro/import_audits/pe_84192.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_eval",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_eval.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_eval",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_eval.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_eval",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_eval.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_eval",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_eval.py",
+          "audit": "repro/import_audits/n10e_c1_84179.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_eval",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_eval.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_eval",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_eval.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_eval",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_eval.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_eval",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_eval.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_eval",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_eval.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_eval",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_eval.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_eval",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_eval.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_eval",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_eval.py",
+          "audit": "repro/import_audits/n10e_c1_84184.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_eval",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_eval.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "rawlsing_next/_pre553_query_predicate.py",
+      "git_blob_sha1": "8590bacf464b2c61f319f581820a3af76ed1e60c",
+      "content_sha256": "f6e5484371ce1bf15abea25a7db408ab00cf4194154358e995608e67b833cbd7",
+      "local_relative_staging_path": "runtime_root/rawlsing_next/_pre553_query_predicate.py",
+      "family": "transitive_import",
+      "verified_imported_module_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_predicate.py",
+      "actual_imports": [
+        {
+          "module": "rawlsing_next._pre553_query_predicate",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_predicate.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_predicate",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_predicate.py",
+          "audit": "repro/import_audits/pe_84192.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_predicate",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_predicate.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_predicate",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_predicate.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_predicate",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_predicate.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_predicate",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_predicate.py",
+          "audit": "repro/import_audits/n10e_c1_84179.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_predicate",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_predicate.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_predicate",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_predicate.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_predicate",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_predicate.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_predicate",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_predicate.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_predicate",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_predicate.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_predicate",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_predicate.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_predicate",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_predicate.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_predicate",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_predicate.py",
+          "audit": "repro/import_audits/n10e_c1_84184.json"
+        },
+        {
+          "module": "rawlsing_next._pre553_query_predicate",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/_pre553_query_predicate.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "rawlsing_next/pre553_c11_ingest.py",
+      "git_blob_sha1": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+      "content_sha256": "0c56a0f6f656547a096982a6adab21c9b47d749385411a5d159f2b5390eec8bf",
+      "local_relative_staging_path": "runtime_root/rawlsing_next/pre553_c11_ingest.py",
+      "family": "transitive_import",
+      "verified_imported_module_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_ingest.py",
+      "actual_imports": [
+        {
+          "module": "rawlsing_next.pre553_c11_ingest",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_ingest.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_ingest",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_ingest.py",
+          "audit": "repro/import_audits/pe_84192.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_ingest",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_ingest.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_ingest",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_ingest.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_ingest",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_ingest.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_ingest",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_ingest.py",
+          "audit": "repro/import_audits/n10e_c1_84179.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_ingest",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_ingest.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_ingest",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_ingest.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_ingest",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_ingest.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_ingest",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_ingest.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_ingest",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_ingest.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_ingest",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_ingest.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_ingest",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_ingest.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_ingest",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_ingest.py",
+          "audit": "repro/import_audits/n10e_c1_84184.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_c11_ingest",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_c11_ingest.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "rawlsing_next/tests/pre553_query_frontier_fixtures.py",
+      "git_blob_sha1": "597b0189029d98535ecd3ee16d738cf43124d98e",
+      "content_sha256": "0f5c86d1169a3f9cde32012dff1685fb0a6fb6f42219b8db04395917e8f6540f",
+      "local_relative_staging_path": "runtime_root/rawlsing_next/tests/pre553_query_frontier_fixtures.py",
+      "family": "transitive_import",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "rawlsing_next/pre553_recursive_handoff.py",
+      "git_blob_sha1": "868f43bf9869af5501fd67c3de7a2703ba4cb1b4",
+      "content_sha256": "15474ae325a1712c497d473eef30aebeb2b924718a7044ef962f6ac317709185",
+      "local_relative_staging_path": "runtime_root/rawlsing_next/pre553_recursive_handoff.py",
+      "family": "transitive_import",
+      "verified_imported_module_file": "$RSC0_RUNTIME/rawlsing_next/pre553_recursive_handoff.py",
+      "actual_imports": [
+        {
+          "module": "rawlsing_next.pre553_recursive_handoff",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_recursive_handoff.py",
+          "audit": "repro/import_audits/hostile_88879.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_recursive_handoff",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_recursive_handoff.py",
+          "audit": "repro/import_audits/pe_84192.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_recursive_handoff",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_recursive_handoff.py",
+          "audit": "repro/import_audits/reverse_probe_90463.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_recursive_handoff",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_recursive_handoff.py",
+          "audit": "repro/import_audits/probe_90130.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_recursive_handoff",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_recursive_handoff.py",
+          "audit": "repro/import_audits/k9_k10_82190.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_recursive_handoff",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_recursive_handoff.py",
+          "audit": "repro/import_audits/n10e_c1_84179.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_recursive_handoff",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_recursive_handoff.py",
+          "audit": "repro/import_audits/rc0_79935.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_recursive_handoff",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_recursive_handoff.py",
+          "audit": "repro/import_audits/probe_81626.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_recursive_handoff",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_recursive_handoff.py",
+          "audit": "repro/import_audits/original_k9_k10_83591.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_recursive_handoff",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_recursive_handoff.py",
+          "audit": "repro/import_audits/smoke_79645.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_recursive_handoff",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_recursive_handoff.py",
+          "audit": "repro/import_audits/hostile_85064.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_recursive_handoff",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_recursive_handoff.py",
+          "audit": "repro/import_audits/connection_84169.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_recursive_handoff",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_recursive_handoff.py",
+          "audit": "repro/import_audits/rc0_84764.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_recursive_handoff",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_recursive_handoff.py",
+          "audit": "repro/import_audits/n10e_c1_84184.json"
+        },
+        {
+          "module": "rawlsing_next.pre553_recursive_handoff",
+          "verified_file": "$RSC0_RUNTIME/rawlsing_next/pre553_recursive_handoff.py",
+          "audit": "repro/import_audits/rc0_89459.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/staging_manifest.json",
+      "git_blob_sha1": "5706c42a045fe91bbe9909ed4bb388a64aa3b0bd",
+      "content_sha256": "a4f92b377bcdf15221e66ffbde725409dff5e36f9e1526e51ac876498b26f19c",
+      "local_relative_staging_path": "runtime_root/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/staging/staging_manifest.json",
+      "family": "candidate_manifest_metadata",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/__init__.py",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "local_relative_staging_path": "runtime_root/baseline/port/__init__.py",
+      "family": "frozen_original_RC0_baseline",
+      "verified_imported_module_file": "$RSC0_RUNTIME/baseline/port/__init__.py",
+      "actual_imports": [
+        {
+          "module": "port",
+          "verified_file": "$RSC0_RUNTIME/baseline/port/__init__.py",
+          "audit": "repro/import_audits/baseline_rc0_89179.json"
+        },
+        {
+          "module": "port",
+          "verified_file": "$RSC0_RUNTIME/baseline/port/__init__.py",
+          "audit": "repro/import_audits/baseline_rc0_85954.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/adapter.py",
+      "git_blob_sha1": "78ef0d4f9eff39192c52de5dcf3723ff6f8a8107",
+      "content_sha256": "6711c0ef0101b9587f2a8cfcbe03c24c00632538c2de012b1425084021f7fe3d",
+      "local_relative_staging_path": "runtime_root/baseline/port/adapter.py",
+      "family": "frozen_original_RC0_baseline",
+      "verified_imported_module_file": "$RSC0_RUNTIME/baseline/port/adapter.py",
+      "actual_imports": [
+        {
+          "module": "port.adapter",
+          "verified_file": "$RSC0_RUNTIME/baseline/port/adapter.py",
+          "audit": "repro/import_audits/baseline_rc0_89179.json"
+        },
+        {
+          "module": "port.adapter",
+          "verified_file": "$RSC0_RUNTIME/baseline/port/adapter.py",
+          "audit": "repro/import_audits/baseline_rc0_85954.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/consumers.py",
+      "git_blob_sha1": "02e3a4375475783e204a8fa7def9b1511a8db856",
+      "content_sha256": "9b4a5c62c87318c9bbd2fa244d7079fd01259ef68e3f1e42109c5de7e856c6bb",
+      "local_relative_staging_path": "runtime_root/baseline/port/consumers.py",
+      "family": "frozen_original_RC0_baseline",
+      "verified_imported_module_file": "$RSC0_RUNTIME/baseline/port/consumers.py",
+      "actual_imports": [
+        {
+          "module": "port.consumers",
+          "verified_file": "$RSC0_RUNTIME/baseline/port/consumers.py",
+          "audit": "repro/import_audits/baseline_rc0_89179.json"
+        },
+        {
+          "module": "port.consumers",
+          "verified_file": "$RSC0_RUNTIME/baseline/port/consumers.py",
+          "audit": "repro/import_audits/baseline_rc0_85954.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/contracts.py",
+      "git_blob_sha1": "0d7217ebb70acf0fd7616ba34ba318842775303e",
+      "content_sha256": "b611fb6d03f22afa1303471fbdf7b200426e0d9dc2d4bd947f05d0440f2b7f72",
+      "local_relative_staging_path": "runtime_root/baseline/port/contracts.py",
+      "family": "frozen_original_RC0_baseline",
+      "verified_imported_module_file": "$RSC0_RUNTIME/baseline/port/contracts.py",
+      "actual_imports": [
+        {
+          "module": "port.contracts",
+          "verified_file": "$RSC0_RUNTIME/baseline/port/contracts.py",
+          "audit": "repro/import_audits/baseline_rc0_89179.json"
+        },
+        {
+          "module": "port.contracts",
+          "verified_file": "$RSC0_RUNTIME/baseline/port/contracts.py",
+          "audit": "repro/import_audits/baseline_rc0_85954.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/provider_a.py",
+      "git_blob_sha1": "15e01b2752fdc3c0d7293fcb685005c34cfb9640",
+      "content_sha256": "6d5d7e7cc8c9f8ed574fa74f77e16f86881119f3a53c47d99d849f3bbdb92022",
+      "local_relative_staging_path": "runtime_root/baseline/port/provider_a.py",
+      "family": "frozen_original_RC0_baseline",
+      "verified_imported_module_file": "$RSC0_RUNTIME/baseline/port/provider_a.py",
+      "actual_imports": [
+        {
+          "module": "port.provider_a",
+          "verified_file": "$RSC0_RUNTIME/baseline/port/provider_a.py",
+          "audit": "repro/import_audits/baseline_rc0_89179.json"
+        },
+        {
+          "module": "port.provider_a",
+          "verified_file": "$RSC0_RUNTIME/baseline/port/provider_a.py",
+          "audit": "repro/import_audits/baseline_rc0_85954.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/provider_b.py",
+      "git_blob_sha1": "56e4a6c8ec80bb9a804fd2a1ddb5694a1354e3fb",
+      "content_sha256": "e424299c9d31f800765d07a70b671ba7a0eed3d40719b0c4facefed1c6ab884f",
+      "local_relative_staging_path": "runtime_root/baseline/port/provider_b.py",
+      "family": "frozen_original_RC0_baseline",
+      "verified_imported_module_file": "$RSC0_RUNTIME/baseline/port/provider_b.py",
+      "actual_imports": [
+        {
+          "module": "port.provider_b",
+          "verified_file": "$RSC0_RUNTIME/baseline/port/provider_b.py",
+          "audit": "repro/import_audits/baseline_rc0_89179.json"
+        },
+        {
+          "module": "port.provider_b",
+          "verified_file": "$RSC0_RUNTIME/baseline/port/provider_b.py",
+          "audit": "repro/import_audits/baseline_rc0_85954.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/test_k10_structural_conservation.py",
+      "git_blob_sha1": "44c725bd1a18e22c5314bf73b7a9dc538c5b08aa",
+      "content_sha256": "23d274ac56a9376df6dfec3ddea75e7f5180a71348abfb25cf33c1b8e92a561b",
+      "local_relative_staging_path": "runtime_root/baseline/port/test_k10_structural_conservation.py",
+      "family": "frozen_original_RC0_baseline",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/test_k9_provider_swap.py",
+      "git_blob_sha1": "1e25d7951411c1d33c2185f88496c453adbc194e",
+      "content_sha256": "71f2c62b380118f380c1dfbf3e2504db6a37a7d35cf8ab7fdf654d3ed95d9f74",
+      "local_relative_staging_path": "runtime_root/baseline/port/test_k9_provider_swap.py",
+      "family": "frozen_original_RC0_baseline",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/world_baseline.py",
+      "git_blob_sha1": "a03f1697ba1be6cfd463c5e9a6c96aab1b65d205",
+      "content_sha256": "bea9f83c93ad865ac0b73e2d8eab5d082a576f9eb865d4b355a8951a5a023e0c",
+      "local_relative_staging_path": "runtime_root/baseline/port/world_baseline.py",
+      "family": "frozen_original_RC0_baseline",
+      "verified_imported_module_file": "$RSC0_RUNTIME/baseline/port/world_baseline.py",
+      "actual_imports": [
+        {
+          "module": "port.world_baseline",
+          "verified_file": "$RSC0_RUNTIME/baseline/port/world_baseline.py",
+          "audit": "repro/import_audits/baseline_rc0_89179.json"
+        },
+        {
+          "module": "port.world_baseline",
+          "verified_file": "$RSC0_RUNTIME/baseline/port/world_baseline.py",
+          "audit": "repro/import_audits/baseline_rc0_85954.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/world_laws.py",
+      "git_blob_sha1": "ba3271f0a476b7afbb20f5815515878337ffa2f3",
+      "content_sha256": "91621925516d44f65b4278856f2c77a1603c150daafd9f442f953274369aea59",
+      "local_relative_staging_path": "runtime_root/baseline/port/world_laws.py",
+      "family": "frozen_original_RC0_baseline",
+      "verified_imported_module_file": "$RSC0_RUNTIME/baseline/port/world_laws.py",
+      "actual_imports": [
+        {
+          "module": "port.world_laws",
+          "verified_file": "$RSC0_RUNTIME/baseline/port/world_laws.py",
+          "audit": "repro/import_audits/baseline_rc0_89179.json"
+        },
+        {
+          "module": "port.world_laws",
+          "verified_file": "$RSC0_RUNTIME/baseline/port/world_laws.py",
+          "audit": "repro/import_audits/baseline_rc0_85954.json"
+        }
+      ],
+      "blob_match": true
+    },
+    {
+      "commit": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+      "path": "WORKER_RETURNS/SOROK-R3-POSTASTRA-SC0-WORLD-PORT-CONTRACT-R1/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json",
+      "git_blob_sha1": "610ac870fde6cfe63796592b3c6b1e1bf1e37150",
+      "content_sha256": "6c7d02d1eac88fd1da0f54b480d5a109a7f8f4886768af9b454cabe6494ecfa9",
+      "local_relative_staging_path": "runtime_root/baseline/oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json",
+      "family": "frozen_original_RC0_baseline",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+      "path": "WORKER_RETURNS/SOROK-R3-POSTASTRA-SC0-WORLD-PORT-CONTRACT-R1/02_K9_PROVIDER_SWAP_ORACLES.json",
+      "git_blob_sha1": "9ccb66f9b08a4aa8b96582295bb2966d250fd72d",
+      "content_sha256": "77dadf8dfad44133bbb01dd627d126cdaf9ca08bb7751da1500d957618220689",
+      "local_relative_staging_path": "runtime_root/baseline/oracles/02_K9_PROVIDER_SWAP_ORACLES.json",
+      "family": "frozen_original_RC0_baseline",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+      "path": "WORKER_RETURNS/SOROK-R3-POSTASTRA-SC0-WORLD-PORT-CONTRACT-R1/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json",
+      "git_blob_sha1": "e78b3ee91da1fb18deaf8d8f226800ad855adbae",
+      "content_sha256": "2fdd90c9caace1b434ef0199401607bf955e7f6e788ee4b3f7631cdde6688a01",
+      "local_relative_staging_path": "runtime_root/baseline/oracles/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json",
+      "family": "frozen_original_RC0_baseline",
+      "verified_imported_module_file": null,
+      "actual_imports": [],
+      "blob_match": true
+    },
+    {
+      "commit": "86bd2a54687b40401f7c4247607bd1873c585619",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ299-RC0-SC0-PE-INDEPENDENT-R1/reviewer_tests/test_rc0_hostile.py",
+      "git_blob_sha1": "aab792e9d1f46935b57640d959219e8bf8dc4a02",
+      "content_sha256": "2b218d0c61f6d251b7e4b8ac8d10718d4f99ded98da6c1bfae829e5209e28792",
+      "local_relative_staging_path": "runtime_root/baseline/test_rc0_hostile.py",
+      "family": "frozen_original_RC0_baseline",
+      "verified_imported_module_file": "$RSC0_RUNTIME/baseline/test_rc0_hostile.py",
+      "actual_imports": [
+        {
+          "module": "test_rc0_hostile",
+          "verified_file": "$RSC0_RUNTIME/baseline/test_rc0_hostile.py",
+          "audit": "repro/import_audits/baseline_rc0_89179.json"
+        },
+        {
+          "module": "test_rc0_hostile",
+          "verified_file": "$RSC0_RUNTIME/baseline/test_rc0_hostile.py",
+          "audit": "repro/import_audits/baseline_rc0_85954.json"
+        }
+      ],
+      "blob_match": true
+    }
+  ],
+  "dependency_closure_status": "BOUNDED",
+  "closure_explanation": "85 exact source/data/metadata/layout files; original29 exact objects independently verified; no whole-repository or original-survey closure claim",
+  "required_suite_closure": "FULL_ACTUAL_EXECUTION",
+  "fixture_query_source_permission": "TEST_ONLY_SYNTHETIC; NO_ORIGINAL_SURVEY_RESPONDENT_BYTES; NO_EXPERIMENTAL_MODEL_OR_ACTOR_CALLS",
+  "science_grade": "F3_BOUNDED_SOURCEFREE_REAL_BASELINE_PRODUCER_EXECUTION_WITH_EXECUTED_COUNTEREXAMPLES; REVIEW_REVISE",
+  "covered_test_suites": [
+    {
+      "suite": "smoke",
+      "actual_command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "port/test_connection.py::test_adapter_run_calls_pinned_pe_c1_n10e",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml=$RSC0_RETURN/repro/smoke.xml"
+      ],
+      "counts": {
+        "PASS": 2,
+        "RED": 0,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "exit_code": 0,
+      "junit": "repro/smoke.xml",
+      "stdout": "repro/smoke.log",
+      "status": "PASS"
+    },
+    {
+      "suite": "baseline_rc0",
+      "actual_command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "$RSC0_RUNTIME/baseline/test_rc0_hostile.py",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml=$RSC0_RETURN/repro/baseline_rc0.xml"
+      ],
+      "counts": {
+        "PASS": 13,
+        "RED": 12,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "exit_code": 1,
+      "junit": "repro/baseline_rc0.xml",
+      "stdout": "repro/baseline_rc0.log",
+      "status": "EXECUTED_RED"
+    },
+    {
+      "suite": "rc0",
+      "actual_command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "staging/rc0/test_rc0_hostile.py",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml=$RSC0_RETURN/repro/rc0.xml"
+      ],
+      "counts": {
+        "PASS": 25,
+        "RED": 0,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "exit_code": 0,
+      "junit": "repro/rc0.xml",
+      "stdout": "repro/rc0.log",
+      "status": "PASS"
+    },
+    {
+      "suite": "k9_k10",
+      "actual_command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "port/test_k9_provider_swap.py",
+        "port/test_k10_structural_conservation.py",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml=$RSC0_RETURN/repro/k9_k10.xml"
+      ],
+      "counts": {
+        "PASS": 36,
+        "RED": 0,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "exit_code": 0,
+      "junit": "repro/k9_k10.xml",
+      "stdout": "repro/k9_k10.log",
+      "status": "PASS"
+    },
+    {
+      "suite": "original_k9_k10",
+      "actual_command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "original_tests/test_k9_provider_swap.py",
+        "original_tests/test_k10_structural_conservation.py",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml=$RSC0_RETURN/repro/original_k9_k10.xml"
+      ],
+      "counts": {
+        "PASS": 34,
+        "RED": 2,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "exit_code": 1,
+      "junit": "repro/original_k9_k10.xml",
+      "stdout": "repro/original_k9_k10.log",
+      "status": "EXECUTED_RED"
+    },
+    {
+      "suite": "connection",
+      "actual_command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "port/test_connection.py",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml=$RSC0_RETURN/repro/connection.xml"
+      ],
+      "counts": {
+        "PASS": 6,
+        "RED": 0,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "exit_code": 0,
+      "junit": "repro/connection.xml",
+      "stdout": "repro/connection.log",
+      "status": "PASS"
+    },
+    {
+      "suite": "n10e_c1",
+      "actual_command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "staging/ns/rawlsing_next/tests/test_pre553_empirical_possibility_provider.py",
+        "staging/ns/rawlsing_next/tests/test_pre553_analytical_composition.py",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml=$RSC0_RETURN/repro/n10e_c1.xml"
+      ],
+      "counts": {
+        "PASS": 56,
+        "RED": 0,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "exit_code": 0,
+      "junit": "repro/n10e_c1.xml",
+      "stdout": "repro/n10e_c1.log",
+      "status": "PASS"
+    },
+    {
+      "suite": "pe",
+      "actual_command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "staging/ns/rawlsing_next/tests/test_postastra_pe_generic_world_possibility.py",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml=$RSC0_RETURN/repro/pe.xml"
+      ],
+      "counts": {
+        "PASS": 21,
+        "RED": 0,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "exit_code": 0,
+      "junit": "repro/pe.xml",
+      "stdout": "repro/pe.log",
+      "status": "PASS"
+    },
+    {
+      "suite": "hostile",
+      "actual_command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "$RSC0_RETURN/reviewer_tests/test_rsc0_hostile.py",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml=$RSC0_RETURN/repro/hostile.xml"
+      ],
+      "counts": {
+        "PASS": 16,
+        "RED": 31,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "exit_code": 1,
+      "junit": "repro/hostile.xml",
+      "stdout": "repro/hostile.log",
+      "status": "EXECUTED_RED"
+    }
+  ],
+  "additional_probe": "repro/reverse_probe_execution.json",
+  "editor_harness": "Codex",
+  "model_provider": "OpenAI_via_Codex",
+  "selected_model": "gpt-6.1-sol",
+  "effort": "high",
+  "model_identity_verification": "Own current session turn_context model/effort, before tests; no personal session path exported",
+  "pricing_class": "SUBSCRIPTION_ALLOWANCE_OBSERVED; CASH_UNKNOWN",
+  "usage": {
+    "cash_known": false,
+    "incremental_cash": null,
+    "quota_known": true,
+    "quota_is_account_shared_not_task_specific": true,
+    "start": {
+      "primary_used_percent": 34,
+      "weekly_used_percent": 31
+    },
+    "later_observation": {
+      "primary_used_percent": 48,
+      "weekly_used_percent": 33
+    },
+    "primary_reset_unix": 1792031650,
+    "weekly_reset_unix": 1792548417,
+    "ordinary_usage_allowed": true,
+    "paid_overflow": false,
+    "quota_reset_used": false,
+    "token_cost": null,
+    "context_cache_reuse": "UNKNOWN",
+    "retries": "One corrected path layout, isolated RC0 reruns to separate observation destinations, final hostile revision; all retained",
+    "estimated_total_evidence_cost": "UNKNOWN"
+  },
+  "phase_model_assignment": {
+    "mechanical": "USER_SELECTED_CODEX_GPT6.1_HIGH_SINGLE_AGENT",
+    "implementation": "N/A_NO_CANDIDATE_REPAIRS",
+    "scientific_review": "I2_SAME_AGENT_GPT6.1_HIGH",
+    "I3": "NOT_TRIGGERED"
+  },
+  "independent_review_separation": {
+    "distinct_from_C0_author": true,
+    "distinct_from_PE_N10E_C1_authors": true,
+    "distinct_from_prior_RC0_reviewer": false,
+    "formal_new_reviewer_requirement": "HOLD; prior RC0 chat continuity disclosed; HQ owns subsequent acceptance",
+    "additional_agents": 0
+  },
+  "privacy_source_grant": "Private repo read via existing authenticated Git; sourcefree Python only; no external source/model transport",
+  "assignments_completed": [
+    "HQ302_RSC0_EXECUTED_SCIENTIFIC_REVIEW_REVISE"
+  ],
+  "next_good_affinity_tags": [
+    "SC0_PORT",
+    "N9_INTERFACE",
+    "N10E_C1_PE_CUSTODY",
+    "TEMPORAL",
+    "HOSTILE_INTERFACE_REVIEW"
+  ],
+  "staged_state_preservation": "HOST_LOCAL_IGNORED_RUNTIME_ROOT_PRESERVED; NO_SOURCE_OR_DEPENDENCY_EXPORT",
+  "retire_or_rebuild_reason": null,
+  "resume_requirements": [
+    "Verify marker digest and actual module hashes/paths live",
+    "Verify branch/HEAD and authorized write scope",
+    "Recheck source/model/actor permissions and quota",
+    "Do not treat portable passport as future runtime liveness",
+    "Do not use same prior reviewer to certify fresh-reviewer separation"
+  ],
+  "authority_ceiling": {
+    "adoption": false,
+    "N9_issuance": false,
+    "N10W_operative": false,
+    "model_api_calls": 0,
+    "actor_calls": 0,
+    "original_survey_reads": 0,
+    "canonical_merge": false
+  }
+}

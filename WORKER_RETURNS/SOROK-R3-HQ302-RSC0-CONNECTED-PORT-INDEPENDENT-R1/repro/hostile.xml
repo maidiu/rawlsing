@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="31" skipped="0" tests="47" time="147.719" timestamp="2026-10-14T21:39:52.885769-04:00" hostname="MacBook-Pro.lan"><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_actual_code_object_calls_and_consumed_support[ProviderA]" time="6.830" /><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_actual_code_object_calls_and_consumed_support[ProviderB]" time="6.775" /><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_world_read_denied_before_producer_or_consumer[absent-ProviderA]" time="0.005" /><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_world_read_denied_before_producer_or_consumer[absent-ProviderB]" time="0.005" /><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_world_read_denied_before_producer_or_consumer[revoked-ProviderA]" time="0.005" /><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_world_read_denied_before_producer_or_consumer[revoked-ProviderB]" time="0.004" /><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_possibility_query_permission_cannot_be_fabricated[absent-ProviderA]" time="6.760"><failure message="Failed: POSSIBILITY_QUERY_NOT_AUTHORIZED_BUT_EFFECTIVE_AND_CONSUMED">provider = &lt;class 'port.provider_a.ProviderA'&gt;, mode = 'absent'
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    @pytest.mark.parametrize('mode',['absent','revoked'])
+    def test_possibility_query_permission_cannot_be_fabricated(provider,mode):
+     w=copy.deepcopy(BASELINE_WORLD);w['permission_ceiling']['use_atoms'].remove('POSSIBILITY_QUERY')
+     if mode=='revoked':w['permission_ceiling']['revoked_atoms']=['POSSIBILITY_QUERY']
+     with independent_trace() as (calls,_):
+      try:b=A.TwoContractAdapter(provider(world=w)).run()
+      except PortContractError as e:
+       record('query_deny_'+provider.__name__+'_'+mode,error=e.code,calls=calls);assert e.code=='DENIED_USE';return
+     record('query_deny_'+provider.__name__+'_'+mode,issuer_and_use=b['world_receipt']['issuer_and_use'],calls=calls,consumer_output=b['consumer_effects'][CID]['output'])
+&gt;    pytest.fail('POSSIBILITY_QUERY_NOT_AUTHORIZED_BUT_EFFECTIVE_AND_CONSUMED')
+E    Failed: POSSIBILITY_QUERY_NOT_AUTHORIZED_BUT_EFFECTIVE_AND_CONSUMED
+
+../../../reviewer_tests/test_rsc0_hostile.py:72: Failed</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_possibility_query_permission_cannot_be_fabricated[absent-ProviderB]" time="6.988"><failure message="Failed: POSSIBILITY_QUERY_NOT_AUTHORIZED_BUT_EFFECTIVE_AND_CONSUMED">provider = &lt;class 'port.provider_b.ProviderB'&gt;, mode = 'absent'
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    @pytest.mark.parametrize('mode',['absent','revoked'])
+    def test_possibility_query_permission_cannot_be_fabricated(provider,mode):
+     w=copy.deepcopy(BASELINE_WORLD);w['permission_ceiling']['use_atoms'].remove('POSSIBILITY_QUERY')
+     if mode=='revoked':w['permission_ceiling']['revoked_atoms']=['POSSIBILITY_QUERY']
+     with independent_trace() as (calls,_):
+      try:b=A.TwoContractAdapter(provider(world=w)).run()
+      except PortContractError as e:
+       record('query_deny_'+provider.__name__+'_'+mode,error=e.code,calls=calls);assert e.code=='DENIED_USE';return
+     record('query_deny_'+provider.__name__+'_'+mode,issuer_and_use=b['world_receipt']['issuer_and_use'],calls=calls,consumer_output=b['consumer_effects'][CID]['output'])
+&gt;    pytest.fail('POSSIBILITY_QUERY_NOT_AUTHORIZED_BUT_EFFECTIVE_AND_CONSUMED')
+E    Failed: POSSIBILITY_QUERY_NOT_AUTHORIZED_BUT_EFFECTIVE_AND_CONSUMED
+
+../../../reviewer_tests/test_rsc0_hostile.py:72: Failed</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_possibility_query_permission_cannot_be_fabricated[revoked-ProviderA]" time="7.243"><failure message="Failed: POSSIBILITY_QUERY_NOT_AUTHORIZED_BUT_EFFECTIVE_AND_CONSUMED">provider = &lt;class 'port.provider_a.ProviderA'&gt;, mode = 'revoked'
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    @pytest.mark.parametrize('mode',['absent','revoked'])
+    def test_possibility_query_permission_cannot_be_fabricated(provider,mode):
+     w=copy.deepcopy(BASELINE_WORLD);w['permission_ceiling']['use_atoms'].remove('POSSIBILITY_QUERY')
+     if mode=='revoked':w['permission_ceiling']['revoked_atoms']=['POSSIBILITY_QUERY']
+     with independent_trace() as (calls,_):
+      try:b=A.TwoContractAdapter(provider(world=w)).run()
+      except PortContractError as e:
+       record('query_deny_'+provider.__name__+'_'+mode,error=e.code,calls=calls);assert e.code=='DENIED_USE';return
+     record('query_deny_'+provider.__name__+'_'+mode,issuer_and_use=b['world_receipt']['issuer_and_use'],calls=calls,consumer_output=b['consumer_effects'][CID]['output'])
+&gt;    pytest.fail('POSSIBILITY_QUERY_NOT_AUTHORIZED_BUT_EFFECTIVE_AND_CONSUMED')
+E    Failed: POSSIBILITY_QUERY_NOT_AUTHORIZED_BUT_EFFECTIVE_AND_CONSUMED
+
+../../../reviewer_tests/test_rsc0_hostile.py:72: Failed</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_possibility_query_permission_cannot_be_fabricated[revoked-ProviderB]" time="7.759"><failure message="Failed: POSSIBILITY_QUERY_NOT_AUTHORIZED_BUT_EFFECTIVE_AND_CONSUMED">provider = &lt;class 'port.provider_b.ProviderB'&gt;, mode = 'revoked'
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    @pytest.mark.parametrize('mode',['absent','revoked'])
+    def test_possibility_query_permission_cannot_be_fabricated(provider,mode):
+     w=copy.deepcopy(BASELINE_WORLD);w['permission_ceiling']['use_atoms'].remove('POSSIBILITY_QUERY')
+     if mode=='revoked':w['permission_ceiling']['revoked_atoms']=['POSSIBILITY_QUERY']
+     with independent_trace() as (calls,_):
+      try:b=A.TwoContractAdapter(provider(world=w)).run()
+      except PortContractError as e:
+       record('query_deny_'+provider.__name__+'_'+mode,error=e.code,calls=calls);assert e.code=='DENIED_USE';return
+     record('query_deny_'+provider.__name__+'_'+mode,issuer_and_use=b['world_receipt']['issuer_and_use'],calls=calls,consumer_output=b['consumer_effects'][CID]['output'])
+&gt;    pytest.fail('POSSIBILITY_QUERY_NOT_AUTHORIZED_BUT_EFFECTIVE_AND_CONSUMED')
+E    Failed: POSSIBILITY_QUERY_NOT_AUTHORIZED_BUT_EFFECTIVE_AND_CONSUMED
+
+../../../reviewer_tests/test_rsc0_hostile.py:72: Failed</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_original_2009_2010_lookahead_rejected[ProviderA]" time="0.002" /><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_original_2009_2010_lookahead_rejected[ProviderB]" time="0.002" /><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_prior_knowledge_requires_actual_scope_and_chronology[forgery0]" time="0.001"><failure message="Failed: PRIOR_KNOWLEDGE_ACCEPTS_NONEMPTY_REF_WITHOUT_DEREFERENCE_OR_DATE">forgery = {'bound_authority_ref': 'foreign:any-nonempty-string'}
+
+    @pytest.mark.parametrize('forgery',[
+     {'bound_authority_ref':'foreign:any-nonempty-string'},
+     {'bound_authority_ref':'fx:issuer:fixture_only','source_ref':'foreign:source','known_at':'2025'},
+     {'bound_authority_ref':{'kind':'TEST_ONLY','id':'forged','hash':'0'*64},'known_at':'2026','scope':'foreign:scope'},
+    ])
+    def test_prior_knowledge_requires_actual_scope_and_chronology(forgery):
+     w=copy.deepcopy(BASELINE_WORLD);w['time_axes']['as_of']='2009';w['prior_knowledge_declaration']=forgery
+     try:result=validate_knowledge_clock(w)
+     except PortContractError as e:assert e.code=='NO_CURRENT_OR_NOT_KNOWN_ASOF';return
+     record('prior_forgery_'+str(len(forgery)),declaration=forgery,result=result)
+&gt;    pytest.fail('PRIOR_KNOWLEDGE_ACCEPTS_NONEMPTY_REF_WITHOUT_DEREFERENCE_OR_DATE')
+E    Failed: PRIOR_KNOWLEDGE_ACCEPTS_NONEMPTY_REF_WITHOUT_DEREFERENCE_OR_DATE
+
+../../../reviewer_tests/test_rsc0_hostile.py:90: Failed</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_prior_knowledge_requires_actual_scope_and_chronology[forgery1]" time="0.001"><failure message="Failed: PRIOR_KNOWLEDGE_ACCEPTS_NONEMPTY_REF_WITHOUT_DEREFERENCE_OR_DATE">forgery = {'bound_authority_ref': 'fx:issuer:fixture_only', 'known_at': '2025', 'source_ref': 'foreign:source'}
+
+    @pytest.mark.parametrize('forgery',[
+     {'bound_authority_ref':'foreign:any-nonempty-string'},
+     {'bound_authority_ref':'fx:issuer:fixture_only','source_ref':'foreign:source','known_at':'2025'},
+     {'bound_authority_ref':{'kind':'TEST_ONLY','id':'forged','hash':'0'*64},'known_at':'2026','scope':'foreign:scope'},
+    ])
+    def test_prior_knowledge_requires_actual_scope_and_chronology(forgery):
+     w=copy.deepcopy(BASELINE_WORLD);w['time_axes']['as_of']='2009';w['prior_knowledge_declaration']=forgery
+     try:result=validate_knowledge_clock(w)
+     except PortContractError as e:assert e.code=='NO_CURRENT_OR_NOT_KNOWN_ASOF';return
+     record('prior_forgery_'+str(len(forgery)),declaration=forgery,result=result)
+&gt;    pytest.fail('PRIOR_KNOWLEDGE_ACCEPTS_NONEMPTY_REF_WITHOUT_DEREFERENCE_OR_DATE')
+E    Failed: PRIOR_KNOWLEDGE_ACCEPTS_NONEMPTY_REF_WITHOUT_DEREFERENCE_OR_DATE
+
+../../../reviewer_tests/test_rsc0_hostile.py:90: Failed</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_prior_knowledge_requires_actual_scope_and_chronology[forgery2]" time="0.001"><failure message="Failed: PRIOR_KNOWLEDGE_ACCEPTS_NONEMPTY_REF_WITHOUT_DEREFERENCE_OR_DATE">forgery = {'bound_authority_ref': {'hash': '0000000000000000000000000000000000000000000000000000000000000000', 'id': 'forged', 'kind': 'TEST_ONLY'}, 'known_at': '2026', 'scope': 'foreign:scope'}
+
+    @pytest.mark.parametrize('forgery',[
+     {'bound_authority_ref':'foreign:any-nonempty-string'},
+     {'bound_authority_ref':'fx:issuer:fixture_only','source_ref':'foreign:source','known_at':'2025'},
+     {'bound_authority_ref':{'kind':'TEST_ONLY','id':'forged','hash':'0'*64},'known_at':'2026','scope':'foreign:scope'},
+    ])
+    def test_prior_knowledge_requires_actual_scope_and_chronology(forgery):
+     w=copy.deepcopy(BASELINE_WORLD);w['time_axes']['as_of']='2009';w['prior_knowledge_declaration']=forgery
+     try:result=validate_knowledge_clock(w)
+     except PortContractError as e:assert e.code=='NO_CURRENT_OR_NOT_KNOWN_ASOF';return
+     record('prior_forgery_'+str(len(forgery)),declaration=forgery,result=result)
+&gt;    pytest.fail('PRIOR_KNOWLEDGE_ACCEPTS_NONEMPTY_REF_WITHOUT_DEREFERENCE_OR_DATE')
+E    Failed: PRIOR_KNOWLEDGE_ACCEPTS_NONEMPTY_REF_WITHOUT_DEREFERENCE_OR_DATE
+
+../../../reviewer_tests/test_rsc0_hostile.py:90: Failed</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_declared_prior_knowledge_is_not_silently_dropped[ProviderA]" time="0.002"><failure message="AssertionError: PROVIDER_DROPS_THE_ONLY_PRIOR_KNOWLEDGE_EXCEPTION_CARRIER&#10;assert None == {'bound_authority_ref': 'fx:issuer:fixture_only', 'known_at': '2008', 'scope': 'fx:universe:single_source|fx:release:v1', 'source_ref': 'fx:source:synthetic', ...}&#10; +  where None = &lt;built-in method get of dict object at 0x102c9ce00&gt;('prior_knowledge_declaration')&#10; +    where &lt;built-in method get of dict object at 0x102c9ce00&gt; = {'absolute_horizon': 'fx:AH', 'authority_ref': 'fx:issuer:fixture_only', 'clock_mode': 'KNOWLEDGE_AS_OF', 'contradicto...ss': 'public rule A'}, {'id': 'route_closed', 'state': 'CONTRADICTORY_SOURCE_SCOPE', 'witness': 'public rule B'}], ...}.get">provider = &lt;class 'port.provider_a.ProviderA'&gt;
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    def test_declared_prior_knowledge_is_not_silently_dropped(provider):
+     w=copy.deepcopy(BASELINE_WORLD);w['time_axes']['as_of']='2009'
+     # Fixture-bound candidate declaration; no real authority issuance is asserted.
+     d={'bound_authority_ref':w['authority_ref'],'source_ref':w['source_ref'],'source_release_ref':w['source_release_ref'],'scope':w['permission_ceiling']['scope_binding'],'known_at':'2008'}
+     w['prior_knowledge_declaration']=d
+     assert validate_knowledge_clock(w)['state']=='KNOWLEDGE_ORDERING_OK'
+     selected=provider(world=w).resolve_world_selection({'scope':w['permission_ceiling']['scope_binding']})
+     record('prior_dropped_'+provider.__name__,submitted=d,selected=selected['world'].get('prior_knowledge_declaration'))
+&gt;    assert selected['world'].get('prior_knowledge_declaration')==d,'PROVIDER_DROPS_THE_ONLY_PRIOR_KNOWLEDGE_EXCEPTION_CARRIER'
+E    AssertionError: PROVIDER_DROPS_THE_ONLY_PRIOR_KNOWLEDGE_EXCEPTION_CARRIER
+E    assert None == {'bound_authority_ref': 'fx:issuer:fixture_only', 'known_at': '2008', 'scope': 'fx:universe:single_source|fx:release:v1', 'source_ref': 'fx:source:synthetic', ...}
+E     +  where None = &lt;built-in method get of dict object at 0x102c9ce00&gt;('prior_knowledge_declaration')
+E     +    where &lt;built-in method get of dict object at 0x102c9ce00&gt; = {'absolute_horizon': 'fx:AH', 'authority_ref': 'fx:issuer:fixture_only', 'clock_mode': 'KNOWLEDGE_AS_OF', 'contradicto...ss': 'public rule A'}, {'id': 'route_closed', 'state': 'CONTRADICTORY_SOURCE_SCOPE', 'witness': 'public rule B'}], ...}.get
+
+../../../reviewer_tests/test_rsc0_hostile.py:101: AssertionError</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_declared_prior_knowledge_is_not_silently_dropped[ProviderB]" time="0.002"><failure message="AssertionError: PROVIDER_DROPS_THE_ONLY_PRIOR_KNOWLEDGE_EXCEPTION_CARRIER&#10;assert None == {'bound_authority_ref': 'fx:issuer:fixture_only', 'known_at': '2008', 'scope': 'fx:universe:single_source|fx:release:v1', 'source_ref': 'fx:source:synthetic', ...}&#10; +  where None = &lt;built-in method get of dict object at 0x1034299c0&gt;('prior_knowledge_declaration')&#10; +    where &lt;built-in method get of dict object at 0x1034299c0&gt; = {'absolute_horizon': 'fx:AH', 'authority_ref': 'fx:issuer:fixture_only', 'clock_mode': 'KNOWLEDGE_AS_OF', 'contradicto...ss': 'public rule A'}, {'id': 'route_closed', 'state': 'CONTRADICTORY_SOURCE_SCOPE', 'witness': 'public rule B'}], ...}.get">provider = &lt;class 'port.provider_b.ProviderB'&gt;
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    def test_declared_prior_knowledge_is_not_silently_dropped(provider):
+     w=copy.deepcopy(BASELINE_WORLD);w['time_axes']['as_of']='2009'
+     # Fixture-bound candidate declaration; no real authority issuance is asserted.
+     d={'bound_authority_ref':w['authority_ref'],'source_ref':w['source_ref'],'source_release_ref':w['source_release_ref'],'scope':w['permission_ceiling']['scope_binding'],'known_at':'2008'}
+     w['prior_knowledge_declaration']=d
+     assert validate_knowledge_clock(w)['state']=='KNOWLEDGE_ORDERING_OK'
+     selected=provider(world=w).resolve_world_selection({'scope':w['permission_ceiling']['scope_binding']})
+     record('prior_dropped_'+provider.__name__,submitted=d,selected=selected['world'].get('prior_knowledge_declaration'))
+&gt;    assert selected['world'].get('prior_knowledge_declaration')==d,'PROVIDER_DROPS_THE_ONLY_PRIOR_KNOWLEDGE_EXCEPTION_CARRIER'
+E    AssertionError: PROVIDER_DROPS_THE_ONLY_PRIOR_KNOWLEDGE_EXCEPTION_CARRIER
+E    assert None == {'bound_authority_ref': 'fx:issuer:fixture_only', 'known_at': '2008', 'scope': 'fx:universe:single_source|fx:release:v1', 'source_ref': 'fx:source:synthetic', ...}
+E     +  where None = &lt;built-in method get of dict object at 0x1034299c0&gt;('prior_knowledge_declaration')
+E     +    where &lt;built-in method get of dict object at 0x1034299c0&gt; = {'absolute_horizon': 'fx:AH', 'authority_ref': 'fx:issuer:fixture_only', 'clock_mode': 'KNOWLEDGE_AS_OF', 'contradicto...ss': 'public rule A'}, {'id': 'route_closed', 'state': 'CONTRADICTORY_SOURCE_SCOPE', 'witness': 'public rule B'}], ...}.get
+
+../../../reviewer_tests/test_rsc0_hostile.py:101: AssertionError</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_reverse_fixture_matches_real_reverse_owner_geometry[ProviderA]" time="2.919" /><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_reverse_fixture_matches_real_reverse_owner_geometry[ProviderB]" time="2.884" /><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_reverse_claim_not_issued_by_hashing_caller_numbers[bad0-ProviderA]" time="2.655"><failure message="Failed: CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED">provider = &lt;class 'port.provider_a.ProviderA'&gt;
+bad = {'reverse_denominator': 0, 'reverse_numerator': 999}
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    @pytest.mark.parametrize('bad',[{'reverse_numerator':999,'reverse_denominator':0},{'reverse_numerator':54,'reverse_denominator':61},{'reverse_risk_set':'foreign:unissued-risk','reverse_numerator':1,'reverse_denominator':999}])
+    def test_reverse_claim_not_issued_by_hashing_caller_numbers(provider,bad):
+     b=A.TwoContractAdapter(provider()).run();g=copy.deepcopy(REVERSAL_GRANT_SCOPED);g['binds'].update(bad)
+     try:result=provider().request_role_reversal(b['world_receipt'],b['possibility_receipt'],g)
+     except PortContractError as e:assert e.code=='HELD_AUTHORITY';return
+     record('reverse_forgery_'+provider.__name__+'_'+str(bad.get('reverse_denominator')),grant=g,result=result)
+&gt;    pytest.fail('CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED')
+E    Failed: CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED
+
+../../../reviewer_tests/test_rsc0_hostile.py:120: Failed</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_reverse_claim_not_issued_by_hashing_caller_numbers[bad0-ProviderB]" time="2.653"><failure message="Failed: CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED">provider = &lt;class 'port.provider_b.ProviderB'&gt;
+bad = {'reverse_denominator': 0, 'reverse_numerator': 999}
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    @pytest.mark.parametrize('bad',[{'reverse_numerator':999,'reverse_denominator':0},{'reverse_numerator':54,'reverse_denominator':61},{'reverse_risk_set':'foreign:unissued-risk','reverse_numerator':1,'reverse_denominator':999}])
+    def test_reverse_claim_not_issued_by_hashing_caller_numbers(provider,bad):
+     b=A.TwoContractAdapter(provider()).run();g=copy.deepcopy(REVERSAL_GRANT_SCOPED);g['binds'].update(bad)
+     try:result=provider().request_role_reversal(b['world_receipt'],b['possibility_receipt'],g)
+     except PortContractError as e:assert e.code=='HELD_AUTHORITY';return
+     record('reverse_forgery_'+provider.__name__+'_'+str(bad.get('reverse_denominator')),grant=g,result=result)
+&gt;    pytest.fail('CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED')
+E    Failed: CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED
+
+../../../reviewer_tests/test_rsc0_hostile.py:120: Failed</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_reverse_claim_not_issued_by_hashing_caller_numbers[bad1-ProviderA]" time="2.709"><failure message="Failed: CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED">provider = &lt;class 'port.provider_a.ProviderA'&gt;
+bad = {'reverse_denominator': 61, 'reverse_numerator': 54}
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    @pytest.mark.parametrize('bad',[{'reverse_numerator':999,'reverse_denominator':0},{'reverse_numerator':54,'reverse_denominator':61},{'reverse_risk_set':'foreign:unissued-risk','reverse_numerator':1,'reverse_denominator':999}])
+    def test_reverse_claim_not_issued_by_hashing_caller_numbers(provider,bad):
+     b=A.TwoContractAdapter(provider()).run();g=copy.deepcopy(REVERSAL_GRANT_SCOPED);g['binds'].update(bad)
+     try:result=provider().request_role_reversal(b['world_receipt'],b['possibility_receipt'],g)
+     except PortContractError as e:assert e.code=='HELD_AUTHORITY';return
+     record('reverse_forgery_'+provider.__name__+'_'+str(bad.get('reverse_denominator')),grant=g,result=result)
+&gt;    pytest.fail('CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED')
+E    Failed: CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED
+
+../../../reviewer_tests/test_rsc0_hostile.py:120: Failed</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_reverse_claim_not_issued_by_hashing_caller_numbers[bad1-ProviderB]" time="2.705"><failure message="Failed: CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED">provider = &lt;class 'port.provider_b.ProviderB'&gt;
+bad = {'reverse_denominator': 61, 'reverse_numerator': 54}
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    @pytest.mark.parametrize('bad',[{'reverse_numerator':999,'reverse_denominator':0},{'reverse_numerator':54,'reverse_denominator':61},{'reverse_risk_set':'foreign:unissued-risk','reverse_numerator':1,'reverse_denominator':999}])
+    def test_reverse_claim_not_issued_by_hashing_caller_numbers(provider,bad):
+     b=A.TwoContractAdapter(provider()).run();g=copy.deepcopy(REVERSAL_GRANT_SCOPED);g['binds'].update(bad)
+     try:result=provider().request_role_reversal(b['world_receipt'],b['possibility_receipt'],g)
+     except PortContractError as e:assert e.code=='HELD_AUTHORITY';return
+     record('reverse_forgery_'+provider.__name__+'_'+str(bad.get('reverse_denominator')),grant=g,result=result)
+&gt;    pytest.fail('CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED')
+E    Failed: CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED
+
+../../../reviewer_tests/test_rsc0_hostile.py:120: Failed</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_reverse_claim_not_issued_by_hashing_caller_numbers[bad2-ProviderA]" time="2.787"><failure message="Failed: CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED">provider = &lt;class 'port.provider_a.ProviderA'&gt;
+bad = {'reverse_denominator': 999, 'reverse_numerator': 1, 'reverse_risk_set': 'foreign:unissued-risk'}
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    @pytest.mark.parametrize('bad',[{'reverse_numerator':999,'reverse_denominator':0},{'reverse_numerator':54,'reverse_denominator':61},{'reverse_risk_set':'foreign:unissued-risk','reverse_numerator':1,'reverse_denominator':999}])
+    def test_reverse_claim_not_issued_by_hashing_caller_numbers(provider,bad):
+     b=A.TwoContractAdapter(provider()).run();g=copy.deepcopy(REVERSAL_GRANT_SCOPED);g['binds'].update(bad)
+     try:result=provider().request_role_reversal(b['world_receipt'],b['possibility_receipt'],g)
+     except PortContractError as e:assert e.code=='HELD_AUTHORITY';return
+     record('reverse_forgery_'+provider.__name__+'_'+str(bad.get('reverse_denominator')),grant=g,result=result)
+&gt;    pytest.fail('CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED')
+E    Failed: CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED
+
+../../../reviewer_tests/test_rsc0_hostile.py:120: Failed</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_reverse_claim_not_issued_by_hashing_caller_numbers[bad2-ProviderB]" time="2.676"><failure message="Failed: CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED">provider = &lt;class 'port.provider_b.ProviderB'&gt;
+bad = {'reverse_denominator': 999, 'reverse_numerator': 1, 'reverse_risk_set': 'foreign:unissued-risk'}
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    @pytest.mark.parametrize('bad',[{'reverse_numerator':999,'reverse_denominator':0},{'reverse_numerator':54,'reverse_denominator':61},{'reverse_risk_set':'foreign:unissued-risk','reverse_numerator':1,'reverse_denominator':999}])
+    def test_reverse_claim_not_issued_by_hashing_caller_numbers(provider,bad):
+     b=A.TwoContractAdapter(provider()).run();g=copy.deepcopy(REVERSAL_GRANT_SCOPED);g['binds'].update(bad)
+     try:result=provider().request_role_reversal(b['world_receipt'],b['possibility_receipt'],g)
+     except PortContractError as e:assert e.code=='HELD_AUTHORITY';return
+     record('reverse_forgery_'+provider.__name__+'_'+str(bad.get('reverse_denominator')),grant=g,result=result)
+&gt;    pytest.fail('CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED')
+E    Failed: CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED
+
+../../../reviewer_tests/test_rsc0_hostile.py:120: Failed</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_testonly_operational_request_never_promotes_grade[ProviderA]" time="2.732" /><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_testonly_operational_request_never_promotes_grade[ProviderB]" time="2.724" /><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_operative_empirical_model_ref_rejected[ProviderA]" time="0.002" /><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_operative_empirical_model_ref_rejected[ProviderB]" time="0.002" /><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_real_pe_producer_cannot_be_replaced_by_none[ProviderA]" time="6.503"><failure message="AssertionError: PE_ABSENT_BUT_CONNECTED_CLAIM_AND_CONSUMERS_SURVIVE&#10;assert not True">provider = &lt;class 'port.provider_a.ProviderA'&gt;
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x1029d7050&gt;
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    def test_real_pe_producer_cannot_be_replaced_by_none(provider,monkeypatch):
+     monkeypatch.setattr(P._PE,'serve_generic_world_situated_possibility',lambda **kw:None)
+     with independent_trace() as (calls,_):
+      try:b=A.TwoContractAdapter(provider()).run()
+      except PortContractError:return
+     record('pe_removed_'+provider.__name__,actual_calls=calls,lane=b['empirical_lane'],consumed=b['consumer_effects'][CID]['output'])
+&gt;    assert not b['empirical_lane']['connected'],'PE_ABSENT_BUT_CONNECTED_CLAIM_AND_CONSUMERS_SURVIVE'
+E    AssertionError: PE_ABSENT_BUT_CONNECTED_CLAIM_AND_CONSUMERS_SURVIVE
+E    assert not True
+
+../../../reviewer_tests/test_rsc0_hostile.py:146: AssertionError</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_real_pe_producer_cannot_be_replaced_by_none[ProviderB]" time="6.562"><failure message="AssertionError: PE_ABSENT_BUT_CONNECTED_CLAIM_AND_CONSUMERS_SURVIVE&#10;assert not True">provider = &lt;class 'port.provider_b.ProviderB'&gt;
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10307b7d0&gt;
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    def test_real_pe_producer_cannot_be_replaced_by_none(provider,monkeypatch):
+     monkeypatch.setattr(P._PE,'serve_generic_world_situated_possibility',lambda **kw:None)
+     with independent_trace() as (calls,_):
+      try:b=A.TwoContractAdapter(provider()).run()
+      except PortContractError:return
+     record('pe_removed_'+provider.__name__,actual_calls=calls,lane=b['empirical_lane'],consumed=b['consumer_effects'][CID]['output'])
+&gt;    assert not b['empirical_lane']['connected'],'PE_ABSENT_BUT_CONNECTED_CLAIM_AND_CONSUMERS_SURVIVE'
+E    AssertionError: PE_ABSENT_BUT_CONNECTED_CLAIM_AND_CONSUMERS_SURVIVE
+E    assert not True
+
+../../../reviewer_tests/test_rsc0_hostile.py:146: AssertionError</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_fake_profile_events_cannot_replace_actual_producer_execution[ProviderA]" time="2.726"><failure message="Failed: FAKE_PROFILE_EVENTS_PLUS_CACHED_HINT_SATISFY_ADAPTER_CONNECTION_GATE">provider = &lt;class 'port.provider_a.ProviderA'&gt;
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10357b3d0&gt;
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    def test_fake_profile_events_cannot_replace_actual_producer_execution(provider,monkeypatch):
+     prior=A.TwoContractAdapter(provider()).run()['empirical_lane']
+     def fake_setprofile(callback):
+      if callback:
+       for f in TARGETS.values():callback(types.SimpleNamespace(f_code=f.__code__),'call',None)
+     def cached(*,counter=None):
+      lane=copy.deepcopy(prior);lane.update(calls=counter.summary(),call_total=counter.total(),modules_touched=counter.modules_touched());return lane
+     monkeypatch.setattr(sys,'setprofile',fake_setprofile)
+     monkeypatch.setattr(A,'compute_pinned_empirical_lane',cached)
+     with independent_trace() as (calls,_):
+      try:b=A.TwoContractAdapter(provider()).run()
+      except PortContractError:return
+     record('fake_profile_'+provider.__name__,actual_calls=calls,claimed_calls=b['empirical_lane']['calls'],connected=b['empirical_lane']['connected'])
+     assert not any(calls.values())
+&gt;    pytest.fail('FAKE_PROFILE_EVENTS_PLUS_CACHED_HINT_SATISFY_ADAPTER_CONNECTION_GATE')
+E    Failed: FAKE_PROFILE_EVENTS_PLUS_CACHED_HINT_SATISFY_ADAPTER_CONNECTION_GATE
+
+../../../reviewer_tests/test_rsc0_hostile.py:163: Failed</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_fake_profile_events_cannot_replace_actual_producer_execution[ProviderB]" time="2.624"><failure message="Failed: FAKE_PROFILE_EVENTS_PLUS_CACHED_HINT_SATISFY_ADAPTER_CONNECTION_GATE">provider = &lt;class 'port.provider_b.ProviderB'&gt;
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x102fc5910&gt;
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    def test_fake_profile_events_cannot_replace_actual_producer_execution(provider,monkeypatch):
+     prior=A.TwoContractAdapter(provider()).run()['empirical_lane']
+     def fake_setprofile(callback):
+      if callback:
+       for f in TARGETS.values():callback(types.SimpleNamespace(f_code=f.__code__),'call',None)
+     def cached(*,counter=None):
+      lane=copy.deepcopy(prior);lane.update(calls=counter.summary(),call_total=counter.total(),modules_touched=counter.modules_touched());return lane
+     monkeypatch.setattr(sys,'setprofile',fake_setprofile)
+     monkeypatch.setattr(A,'compute_pinned_empirical_lane',cached)
+     with independent_trace() as (calls,_):
+      try:b=A.TwoContractAdapter(provider()).run()
+      except PortContractError:return
+     record('fake_profile_'+provider.__name__,actual_calls=calls,claimed_calls=b['empirical_lane']['calls'],connected=b['empirical_lane']['connected'])
+     assert not any(calls.values())
+&gt;    pytest.fail('FAKE_PROFILE_EVENTS_PLUS_CACHED_HINT_SATISFY_ADAPTER_CONNECTION_GATE')
+E    Failed: FAKE_PROFILE_EVENTS_PLUS_CACHED_HINT_SATISFY_ADAPTER_CONNECTION_GATE
+
+../../../reviewer_tests/test_rsc0_hostile.py:163: Failed</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_changed_real_source_is_detected_not_silently_static[ProviderA]" time="7.591" /><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_changed_real_source_is_detected_not_silently_static[ProviderB]" time="7.780" /><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_schema_pass_and_serialized_negative_dereference_gap[ProviderA]" time="2.765"><failure message="Failed: NEGATIVE_DEPENDENCY_REFS_NOT_DEREFERENCEABLE_THROUGH_PORT_READ_API">provider = &lt;class 'port.provider_a.ProviderA'&gt;
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    def test_schema_pass_and_serialized_negative_dereference_gap(provider):
+     b=A.TwoContractAdapter(provider()).run();schema=json.loads((CP/'staging/oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json').read_text())
+     v=Draft202012Validator(schema)
+     for name in ['world_receipt','possibility_receipt']:assert not list(v.iter_errors(json.loads(json.dumps(b[name]))))
+     serialized=json.loads(json.dumps(b['world_receipt']))
+     refs=serialized['dependency_closure']['negative_dependencies']
+     record('serialized_negative_'+provider.__name__,legacy_states=b['world_receipt']['world']['negative_states'],serialized_refs=refs,dereference_capability=serialized['dependency_closure']['dereference_capability_ref'],serialized_values_read_refs=b['possibility_receipt']['values_read_refs'])
+     # Ref-only representation is schema-lawful; test the port's actual read surface.
+     p=provider();selection=p.resolve_world_selection({'scope':BASELINE_WORLD['permission_ceiling']['scope_binding']})
+&gt;    try:restored=p.read_values(selection,[ref['id'] for ref in refs])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../../../reviewer_tests/test_rsc0_hostile.py:183: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;port.provider_a.ProviderA object at 0x103530050&gt;
+selection = {'binding_generation': 0, 'contract': 'GENERIC_WORLD_SELECTION@1.0.0', 'demand': {'scope': 'fx:universe:single_source|...': 'fx:cond:school'}, {'index': 2, 'n': 12, 'ref': 'fx:cond:caretime'}], 'direction': 'FORWARD_CONDITIONAL', ...}, ...}
+keys = ['fx:scope:measured-zero', 'fx:scope:complete-empty', 'fx:scope:missing', 'fx:scope:power', 'fx:scope:notasked', 'fx:scope:incomparable', ...]
+
+    def read_values(self, selection: Mapping[str, Any], keys: list[str]) -&gt; dict[str, Any]:
+        # the selected value surface includes rules/AH/strata AND route objects
+        values = {**selection["world"]["values"], **selection["world"]["routes"]}
+        out: dict[str, Any] = {}
+        for key in keys:
+            if key not in values:
+&gt;               raise PortContractError("REJECT_UNVERIFIABLE_CONSUMER_USE", f"value key absent: {key}")
+E               port.contracts.PortContractError: REJECT_UNVERIFIABLE_CONSUMER_USE: value key absent: fx:scope:measured-zero
+
+port/provider_a.py:149: PortContractError
+
+During handling of the above exception, another exception occurred:
+
+provider = &lt;class 'port.provider_a.ProviderA'&gt;
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    def test_schema_pass_and_serialized_negative_dereference_gap(provider):
+     b=A.TwoContractAdapter(provider()).run();schema=json.loads((CP/'staging/oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json').read_text())
+     v=Draft202012Validator(schema)
+     for name in ['world_receipt','possibility_receipt']:assert not list(v.iter_errors(json.loads(json.dumps(b[name]))))
+     serialized=json.loads(json.dumps(b['world_receipt']))
+     refs=serialized['dependency_closure']['negative_dependencies']
+     record('serialized_negative_'+provider.__name__,legacy_states=b['world_receipt']['world']['negative_states'],serialized_refs=refs,dereference_capability=serialized['dependency_closure']['dereference_capability_ref'],serialized_values_read_refs=b['possibility_receipt']['values_read_refs'])
+     # Ref-only representation is schema-lawful; test the port's actual read surface.
+     p=provider();selection=p.resolve_world_selection({'scope':BASELINE_WORLD['permission_ceiling']['scope_binding']})
+     try:restored=p.read_values(selection,[ref['id'] for ref in refs])
+     except PortContractError as e:
+      record('negative_dereference_'+provider.__name__,error=e.code,message=str(e),ref_only_is_schema_lawful=True,claim_limit='No executable negative-ref dereference through the port read API; not a schema syntax failure')
+&gt;     pytest.fail('NEGATIVE_DEPENDENCY_REFS_NOT_DEREFERENCEABLE_THROUGH_PORT_READ_API')
+E     Failed: NEGATIVE_DEPENDENCY_REFS_NOT_DEREFERENCEABLE_THROUGH_PORT_READ_API
+
+../../../reviewer_tests/test_rsc0_hostile.py:186: Failed</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_schema_pass_and_serialized_negative_dereference_gap[ProviderB]" time="2.775"><failure message="Failed: NEGATIVE_DEPENDENCY_REFS_NOT_DEREFERENCEABLE_THROUGH_PORT_READ_API">provider = &lt;class 'port.provider_b.ProviderB'&gt;
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    def test_schema_pass_and_serialized_negative_dereference_gap(provider):
+     b=A.TwoContractAdapter(provider()).run();schema=json.loads((CP/'staging/oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json').read_text())
+     v=Draft202012Validator(schema)
+     for name in ['world_receipt','possibility_receipt']:assert not list(v.iter_errors(json.loads(json.dumps(b[name]))))
+     serialized=json.loads(json.dumps(b['world_receipt']))
+     refs=serialized['dependency_closure']['negative_dependencies']
+     record('serialized_negative_'+provider.__name__,legacy_states=b['world_receipt']['world']['negative_states'],serialized_refs=refs,dereference_capability=serialized['dependency_closure']['dereference_capability_ref'],serialized_values_read_refs=b['possibility_receipt']['values_read_refs'])
+     # Ref-only representation is schema-lawful; test the port's actual read surface.
+     p=provider();selection=p.resolve_world_selection({'scope':BASELINE_WORLD['permission_ceiling']['scope_binding']})
+&gt;    try:restored=p.read_values(selection,[ref['id'] for ref in refs])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../../../reviewer_tests/test_rsc0_hostile.py:183: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;port.provider_b.ProviderB object at 0x10349df10&gt;
+selection = {'binding_generation': 0, 'contract': 'GENERIC_WORLD_SELECTION@1.0.0', 'demand': {'scope': 'fx:universe:single_source|...': 'fx:cond:school'}, {'index': 2, 'n': 12, 'ref': 'fx:cond:caretime'}], 'direction': 'FORWARD_CONDITIONAL', ...}, ...}
+keys = ['fx:scope:measured-zero', 'fx:scope:complete-empty', 'fx:scope:missing', 'fx:scope:power', 'fx:scope:notasked', 'fx:scope:incomparable', ...]
+
+    def read_values(self, selection: Mapping[str, Any], keys: list[str]) -&gt; dict[str, Any]:
+        # the selected value surface includes rules/AH/strata AND route objects
+        values = {**selection["world"]["values"], **selection["world"]["routes"]}
+        out: dict[str, Any] = {}
+        for key in keys:
+            if key not in values:
+&gt;               raise PortContractError("REJECT_UNVERIFIABLE_CONSUMER_USE", f"value key absent: {key}")
+E               port.contracts.PortContractError: REJECT_UNVERIFIABLE_CONSUMER_USE: value key absent: fx:scope:measured-zero
+
+port/provider_b.py:163: PortContractError
+
+During handling of the above exception, another exception occurred:
+
+provider = &lt;class 'port.provider_b.ProviderB'&gt;
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    def test_schema_pass_and_serialized_negative_dereference_gap(provider):
+     b=A.TwoContractAdapter(provider()).run();schema=json.loads((CP/'staging/oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json').read_text())
+     v=Draft202012Validator(schema)
+     for name in ['world_receipt','possibility_receipt']:assert not list(v.iter_errors(json.loads(json.dumps(b[name]))))
+     serialized=json.loads(json.dumps(b['world_receipt']))
+     refs=serialized['dependency_closure']['negative_dependencies']
+     record('serialized_negative_'+provider.__name__,legacy_states=b['world_receipt']['world']['negative_states'],serialized_refs=refs,dereference_capability=serialized['dependency_closure']['dereference_capability_ref'],serialized_values_read_refs=b['possibility_receipt']['values_read_refs'])
+     # Ref-only representation is schema-lawful; test the port's actual read surface.
+     p=provider();selection=p.resolve_world_selection({'scope':BASELINE_WORLD['permission_ceiling']['scope_binding']})
+     try:restored=p.read_values(selection,[ref['id'] for ref in refs])
+     except PortContractError as e:
+      record('negative_dereference_'+provider.__name__,error=e.code,message=str(e),ref_only_is_schema_lawful=True,claim_limit='No executable negative-ref dereference through the port read API; not a schema syntax failure')
+&gt;     pytest.fail('NEGATIVE_DEPENDENCY_REFS_NOT_DEREFERENCEABLE_THROUGH_PORT_READ_API')
+E     Failed: NEGATIVE_DEPENDENCY_REFS_NOT_DEREFERENCEABLE_THROUGH_PORT_READ_API
+
+../../../reviewer_tests/test_rsc0_hostile.py:186: Failed</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_receipt_identity_changes_on_h2_successors[ProviderA]" time="8.094"><failure message="AssertionError: WORLD_BOUND_POSSIBILITY_RECEIPT_IDENTITY_IGNORES_NEW_WORLD_BINDING&#10;assert 1 == 3&#10; +  where 1 = len({'4279116eaa4a84d557c5f26b27fa46889863192b4a41d2fbbfa0f99268062501'})">provider = &lt;class 'port.provider_a.ProviderA'&gt;
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    def test_receipt_identity_changes_on_h2_successors(provider):
+     p=provider();a=A.TwoContractAdapter(p).run();frozen=copy.deepcopy(a)
+     p.refresh_binding_generation();b=A.TwoContractAdapter(p).run()
+     if isinstance(p,ProviderA):p._store['stage_one']['time_axes'].update(published='2012',as_of='2013')
+     else:
+      for row in p._table_temporal:
+       if row['axis']=='published':row['val']='2012'
+       elif row['axis']=='as_of':row['val']='2013'
+     p.refresh_publication_generation();c=A.TwoContractAdapter(p).run()
+     record('h2_refs_'+provider.__name__,world_refs=[x['world_receipt']['receipt_ref'] for x in [a,b,c]],world_digests=[x['world_receipt']['selection_digest'] for x in [a,b,c]],possibility_refs=[x['possibility_receipt']['receipt_ref'] for x in [a,b,c]])
+     assert a==frozen
+     assert len({x['world_receipt']['selection_digest'] for x in [a,b,c]})==3
+     assert len({x['world_receipt']['receipt_ref']['hash'] for x in [a,b,c]})==3
+&gt;    assert len({x['possibility_receipt']['receipt_ref']['hash'] for x in [a,b,c]})==3,'WORLD_BOUND_POSSIBILITY_RECEIPT_IDENTITY_IGNORES_NEW_WORLD_BINDING'
+E    AssertionError: WORLD_BOUND_POSSIBILITY_RECEIPT_IDENTITY_IGNORES_NEW_WORLD_BINDING
+E    assert 1 == 3
+E     +  where 1 = len({'4279116eaa4a84d557c5f26b27fa46889863192b4a41d2fbbfa0f99268062501'})
+
+../../../reviewer_tests/test_rsc0_hostile.py:203: AssertionError</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_receipt_identity_changes_on_h2_successors[ProviderB]" time="8.040"><failure message="AssertionError: WORLD_BOUND_POSSIBILITY_RECEIPT_IDENTITY_IGNORES_NEW_WORLD_BINDING&#10;assert 1 == 3&#10; +  where 1 = len({'4279116eaa4a84d557c5f26b27fa46889863192b4a41d2fbbfa0f99268062501'})">provider = &lt;class 'port.provider_b.ProviderB'&gt;
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    def test_receipt_identity_changes_on_h2_successors(provider):
+     p=provider();a=A.TwoContractAdapter(p).run();frozen=copy.deepcopy(a)
+     p.refresh_binding_generation();b=A.TwoContractAdapter(p).run()
+     if isinstance(p,ProviderA):p._store['stage_one']['time_axes'].update(published='2012',as_of='2013')
+     else:
+      for row in p._table_temporal:
+       if row['axis']=='published':row['val']='2012'
+       elif row['axis']=='as_of':row['val']='2013'
+     p.refresh_publication_generation();c=A.TwoContractAdapter(p).run()
+     record('h2_refs_'+provider.__name__,world_refs=[x['world_receipt']['receipt_ref'] for x in [a,b,c]],world_digests=[x['world_receipt']['selection_digest'] for x in [a,b,c]],possibility_refs=[x['possibility_receipt']['receipt_ref'] for x in [a,b,c]])
+     assert a==frozen
+     assert len({x['world_receipt']['selection_digest'] for x in [a,b,c]})==3
+     assert len({x['world_receipt']['receipt_ref']['hash'] for x in [a,b,c]})==3
+&gt;    assert len({x['possibility_receipt']['receipt_ref']['hash'] for x in [a,b,c]})==3,'WORLD_BOUND_POSSIBILITY_RECEIPT_IDENTITY_IGNORES_NEW_WORLD_BINDING'
+E    AssertionError: WORLD_BOUND_POSSIBILITY_RECEIPT_IDENTITY_IGNORES_NEW_WORLD_BINDING
+E    assert 1 == 3
+E     +  where 1 = len({'4279116eaa4a84d557c5f26b27fa46889863192b4a41d2fbbfa0f99268062501'})
+
+../../../reviewer_tests/test_rsc0_hostile.py:203: AssertionError</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_facade_cannot_hide_changed_output_behind_unchanged_digest[ProviderA]" time="2.642"><failure message="Failed: FACADE_CHECKS_COPIED_DIGEST_FIELDS_WITHOUT_RECOMPUTING_EFFECT">provider = &lt;class 'port.provider_a.ProviderA'&gt;
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    def test_facade_cannot_hide_changed_output_behind_unchanged_digest(provider):
+     b=A.TwoContractAdapter(provider()).run();changed=copy.deepcopy(b)
+     changed['facade']['consumer_effects'][CID]['output']['empirical_access_support']['base_ratio']='0/60'
+     try:result=A.TwoContractAdapter.round_trip_two_contracts(changed)
+     except PortContractError:return
+     record('facade_forged_'+provider.__name__,result=result,forged_output=changed['facade']['consumer_effects'][CID]['output'])
+&gt;    pytest.fail('FACADE_CHECKS_COPIED_DIGEST_FIELDS_WITHOUT_RECOMPUTING_EFFECT')
+E    Failed: FACADE_CHECKS_COPIED_DIGEST_FIELDS_WITHOUT_RECOMPUTING_EFFECT
+
+../../../reviewer_tests/test_rsc0_hostile.py:212: Failed</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_facade_cannot_hide_changed_output_behind_unchanged_digest[ProviderB]" time="2.726"><failure message="Failed: FACADE_CHECKS_COPIED_DIGEST_FIELDS_WITHOUT_RECOMPUTING_EFFECT">provider = &lt;class 'port.provider_b.ProviderB'&gt;
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    def test_facade_cannot_hide_changed_output_behind_unchanged_digest(provider):
+     b=A.TwoContractAdapter(provider()).run();changed=copy.deepcopy(b)
+     changed['facade']['consumer_effects'][CID]['output']['empirical_access_support']['base_ratio']='0/60'
+     try:result=A.TwoContractAdapter.round_trip_two_contracts(changed)
+     except PortContractError:return
+     record('facade_forged_'+provider.__name__,result=result,forged_output=changed['facade']['consumer_effects'][CID]['output'])
+&gt;    pytest.fail('FACADE_CHECKS_COPIED_DIGEST_FIELDS_WITHOUT_RECOMPUTING_EFFECT')
+E    Failed: FACADE_CHECKS_COPIED_DIGEST_FIELDS_WITHOUT_RECOMPUTING_EFFECT
+
+../../../reviewer_tests/test_rsc0_hostile.py:212: Failed</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_producer_geometry_cannot_be_relabelled_to_unbound_target_or_release[target-ProviderA]" time="2.777"><failure message="Failed: PINNED_DEFAULT_GEOMETRY_SERVED_UNDER_UNBOUND_CALLER_TARGET_OR_RELEASE">provider = &lt;class 'port.provider_a.ProviderA'&gt;, field = 'target'
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    @pytest.mark.parametrize('field',['target','release'])
+    def test_producer_geometry_cannot_be_relabelled_to_unbound_target_or_release(provider,field):
+     empirical=copy.deepcopy(EMPIRICAL);empirical[field]='rsc0:foreign:'+field
+     try:b=A.TwoContractAdapter(provider(empirical=empirical)).run()
+     except PortContractError:return
+     record('producer_relabel_'+provider.__name__+'_'+field,changed=field,possibility_target=b['possibility_receipt']['target_ref'],release=b['possibility_receipt']['release_ref'],computed_evidence=b['empirical_lane']['evidence_digest'],consumed=b['consumer_effects'][CID]['output']['empirical_access_support'])
+&gt;    pytest.fail('PINNED_DEFAULT_GEOMETRY_SERVED_UNDER_UNBOUND_CALLER_TARGET_OR_RELEASE')
+E    Failed: PINNED_DEFAULT_GEOMETRY_SERVED_UNDER_UNBOUND_CALLER_TARGET_OR_RELEASE
+
+../../../reviewer_tests/test_rsc0_hostile.py:221: Failed</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_producer_geometry_cannot_be_relabelled_to_unbound_target_or_release[target-ProviderB]" time="2.629"><failure message="Failed: PINNED_DEFAULT_GEOMETRY_SERVED_UNDER_UNBOUND_CALLER_TARGET_OR_RELEASE">provider = &lt;class 'port.provider_b.ProviderB'&gt;, field = 'target'
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    @pytest.mark.parametrize('field',['target','release'])
+    def test_producer_geometry_cannot_be_relabelled_to_unbound_target_or_release(provider,field):
+     empirical=copy.deepcopy(EMPIRICAL);empirical[field]='rsc0:foreign:'+field
+     try:b=A.TwoContractAdapter(provider(empirical=empirical)).run()
+     except PortContractError:return
+     record('producer_relabel_'+provider.__name__+'_'+field,changed=field,possibility_target=b['possibility_receipt']['target_ref'],release=b['possibility_receipt']['release_ref'],computed_evidence=b['empirical_lane']['evidence_digest'],consumed=b['consumer_effects'][CID]['output']['empirical_access_support'])
+&gt;    pytest.fail('PINNED_DEFAULT_GEOMETRY_SERVED_UNDER_UNBOUND_CALLER_TARGET_OR_RELEASE')
+E    Failed: PINNED_DEFAULT_GEOMETRY_SERVED_UNDER_UNBOUND_CALLER_TARGET_OR_RELEASE
+
+../../../reviewer_tests/test_rsc0_hostile.py:221: Failed</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_producer_geometry_cannot_be_relabelled_to_unbound_target_or_release[release-ProviderA]" time="2.763"><failure message="Failed: PINNED_DEFAULT_GEOMETRY_SERVED_UNDER_UNBOUND_CALLER_TARGET_OR_RELEASE">provider = &lt;class 'port.provider_a.ProviderA'&gt;, field = 'release'
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    @pytest.mark.parametrize('field',['target','release'])
+    def test_producer_geometry_cannot_be_relabelled_to_unbound_target_or_release(provider,field):
+     empirical=copy.deepcopy(EMPIRICAL);empirical[field]='rsc0:foreign:'+field
+     try:b=A.TwoContractAdapter(provider(empirical=empirical)).run()
+     except PortContractError:return
+     record('producer_relabel_'+provider.__name__+'_'+field,changed=field,possibility_target=b['possibility_receipt']['target_ref'],release=b['possibility_receipt']['release_ref'],computed_evidence=b['empirical_lane']['evidence_digest'],consumed=b['consumer_effects'][CID]['output']['empirical_access_support'])
+&gt;    pytest.fail('PINNED_DEFAULT_GEOMETRY_SERVED_UNDER_UNBOUND_CALLER_TARGET_OR_RELEASE')
+E    Failed: PINNED_DEFAULT_GEOMETRY_SERVED_UNDER_UNBOUND_CALLER_TARGET_OR_RELEASE
+
+../../../reviewer_tests/test_rsc0_hostile.py:221: Failed</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_producer_geometry_cannot_be_relabelled_to_unbound_target_or_release[release-ProviderB]" time="2.737"><failure message="Failed: PINNED_DEFAULT_GEOMETRY_SERVED_UNDER_UNBOUND_CALLER_TARGET_OR_RELEASE">provider = &lt;class 'port.provider_b.ProviderB'&gt;, field = 'release'
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    @pytest.mark.parametrize('field',['target','release'])
+    def test_producer_geometry_cannot_be_relabelled_to_unbound_target_or_release(provider,field):
+     empirical=copy.deepcopy(EMPIRICAL);empirical[field]='rsc0:foreign:'+field
+     try:b=A.TwoContractAdapter(provider(empirical=empirical)).run()
+     except PortContractError:return
+     record('producer_relabel_'+provider.__name__+'_'+field,changed=field,possibility_target=b['possibility_receipt']['target_ref'],release=b['possibility_receipt']['release_ref'],computed_evidence=b['empirical_lane']['evidence_digest'],consumed=b['consumer_effects'][CID]['output']['empirical_access_support'])
+&gt;    pytest.fail('PINNED_DEFAULT_GEOMETRY_SERVED_UNDER_UNBOUND_CALLER_TARGET_OR_RELEASE')
+E    Failed: PINNED_DEFAULT_GEOMETRY_SERVED_UNDER_UNBOUND_CALLER_TARGET_OR_RELEASE
+
+../../../reviewer_tests/test_rsc0_hostile.py:221: Failed</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_f2_f1_reference_mismatch_cannot_be_silently_replaced[ProviderA]" time="2.757"><failure message="AssertionError: F2_DEPENDENCY_REFERENCE_REPLACED_WITH_DIFFERENT_H1_ID&#10;assert ['fx:f1:three-party'] == ['rsc0:foreign:f1']&#10;  &#10;  At index 0 diff: 'fx:f1:three-party' != 'rsc0:foreign:f1'&#10;  Use -v to get more diff">provider = &lt;class 'port.provider_a.ProviderA'&gt;
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    def test_f2_f1_reference_mismatch_cannot_be_silently_replaced(provider):
+     w=copy.deepcopy(BASELINE_WORLD);w['f2']['f1_refs']=['rsc0:foreign:f1']
+     try:b=A.TwoContractAdapter(provider(world=w)).run()
+     except PortContractError:return
+     payloads=[x for x in b['world_receipt']['payloads'] if x['object_family']=='ROUTE']
+     record('f1_f2_mismatch_'+provider.__name__,submitted=w['f2']['f1_refs'],emitted=payloads[0]['f2_prerequisites']['f1_refs'])
+&gt;    assert [x['id'] for x in payloads[0]['f2_prerequisites']['f1_refs']]==w['f2']['f1_refs'],'F2_DEPENDENCY_REFERENCE_REPLACED_WITH_DIFFERENT_H1_ID'
+E    AssertionError: F2_DEPENDENCY_REFERENCE_REPLACED_WITH_DIFFERENT_H1_ID
+E    assert ['fx:f1:three-party'] == ['rsc0:foreign:f1']
+E      
+E      At index 0 diff: 'fx:f1:three-party' != 'rsc0:foreign:f1'
+E      Use -v to get more diff
+
+../../../reviewer_tests/test_rsc0_hostile.py:230: AssertionError</failure></testcase><testcase classname="reviewer_tests.test_rsc0_hostile" name="test_f2_f1_reference_mismatch_cannot_be_silently_replaced[ProviderB]" time="2.701"><failure message="AssertionError: F2_DEPENDENCY_REFERENCE_REPLACED_WITH_DIFFERENT_H1_ID&#10;assert ['fx:f1:three-party'] == ['rsc0:foreign:f1']&#10;  &#10;  At index 0 diff: 'fx:f1:three-party' != 'rsc0:foreign:f1'&#10;  Use -v to get more diff">provider = &lt;class 'port.provider_b.ProviderB'&gt;
+
+    @pytest.mark.parametrize('provider',PROVIDERS)
+    def test_f2_f1_reference_mismatch_cannot_be_silently_replaced(provider):
+     w=copy.deepcopy(BASELINE_WORLD);w['f2']['f1_refs']=['rsc0:foreign:f1']
+     try:b=A.TwoContractAdapter(provider(world=w)).run()
+     except PortContractError:return
+     payloads=[x for x in b['world_receipt']['payloads'] if x['object_family']=='ROUTE']
+     record('f1_f2_mismatch_'+provider.__name__,submitted=w['f2']['f1_refs'],emitted=payloads[0]['f2_prerequisites']['f1_refs'])
+&gt;    assert [x['id'] for x in payloads[0]['f2_prerequisites']['f1_refs']]==w['f2']['f1_refs'],'F2_DEPENDENCY_REFERENCE_REPLACED_WITH_DIFFERENT_H1_ID'
+E    AssertionError: F2_DEPENDENCY_REFERENCE_REPLACED_WITH_DIFFERENT_H1_ID
+E    assert ['fx:f1:three-party'] == ['rsc0:foreign:f1']
+E      
+E      At index 0 diff: 'fx:f1:three-party' != 'rsc0:foreign:f1'
+E      Use -v to get more diff
+
+../../../reviewer_tests/test_rsc0_hostile.py:230: AssertionError</failure></testcase></testsuite></testsuites>

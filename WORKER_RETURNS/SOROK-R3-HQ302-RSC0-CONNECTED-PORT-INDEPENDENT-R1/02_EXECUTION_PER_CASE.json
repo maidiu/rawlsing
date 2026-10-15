@@ -1,0 +1,2296 @@
+{
+  "schema": "RSC0_ACTUAL_EXECUTION_PER_CASE@1",
+  "results": [
+    {
+      "suite": "smoke",
+      "counts": {
+        "PASS": 2,
+        "RED": 0,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "total": 2,
+      "execution": {
+        "suite": "smoke",
+        "started_at": "2026-10-15T01:32:57.272974+00:00",
+        "finished_at": "2026-10-15T01:33:03.445572+00:00",
+        "command": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "port/test_connection.py::test_adapter_run_calls_pinned_pe_c1_n10e",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "--junitxml=$RSC0_RETURN/repro/smoke.xml"
+        ],
+        "cwd": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1",
+        "exit_code": 0,
+        "raw_stdout_sha256": "530470c5fdf632a1b53da8c4a2da5c20e62f326813f833bce77837f427873deb",
+        "sanitization": "runtime/return/worktree paths only",
+        "log": "repro/smoke.log",
+        "junit": "repro/smoke.xml"
+      },
+      "cases": [
+        {
+          "name": "test_adapter_run_calls_pinned_pe_c1_n10e[ProviderA]",
+          "classname": "port.test_connection",
+          "seconds": "2.730",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_adapter_run_calls_pinned_pe_c1_n10e[ProviderB]",
+          "classname": "port.test_connection",
+          "seconds": "2.595",
+          "status": "PASS",
+          "diagnostic": null
+        }
+      ]
+    },
+    {
+      "suite": "baseline_rc0",
+      "counts": {
+        "PASS": 13,
+        "RED": 12,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "total": 25,
+      "execution": {
+        "suite": "baseline_rc0",
+        "started_at": "2026-10-15T01:40:29.912907+00:00",
+        "finished_at": "2026-10-15T01:40:31.315118+00:00",
+        "command": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "$RSC0_RUNTIME/baseline/test_rc0_hostile.py",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "--junitxml=$RSC0_RETURN/repro/baseline_rc0.xml"
+        ],
+        "cwd": "$RSC0_RUNTIME/baseline",
+        "exit_code": 1,
+        "raw_stdout_sha256": "e6f2e7545a93f3fbb8a400223491db524ff346008321b71331831cc6094834ef",
+        "sanitization": "runtime/return/worktree paths only",
+        "log": "repro/baseline_rc0.log",
+        "junit": "repro/baseline_rc0.xml"
+      },
+      "cases": [
+        {
+          "name": "test_actual_value_intervention_changes_both_consumers_and_only_affected_route[ProviderA]",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.008",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_actual_value_intervention_changes_both_consumers_and_only_affected_route[ProviderB]",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.007",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderA]",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.003",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_a.ProviderA'>\n\n    @pytest.mark.parametrize('provider',[ProviderA,ProviderB])\n    def test_adapter_denied_world_read_must_not_emit_consumer_values(provider):\n        world=copy.deepcopy(BASELINE_WORLD);world['permission_ceiling']['revoked_atoms']=['WORLD_READ'];world['permission_ceiling']['use_atoms']=['POSSIBILITY_QUERY']\n        p=provider(world=world)\n        try:result=TwoContractAdapter(p).run()\n        except PortContractError as e:\n            record('denied_'+provider.__name__,diagnostic=e.code,consumer_output_returned=False)\n            assert e.code=='DENIED_USE'\n        else:\n            record('denied_'+provider.__name__,consumer_output_returned=True,world_permission=result['world_receipt']['world']['permission_ceiling'],consumer_effects=result['consumer_effects'])\n>           pytest.fail('RC0_DENIED_PROVIDER_EMITTED_WORLD_VALUES_AND_CONSUMER_EFFECTS')\nE           Failed: RC0_DENIED_PROVIDER_EMITTED_WORLD_VALUES_AND_CONSUMER_EFFECTS\n\ntest_rc0_hostile.py:50: Failed"
+        },
+        {
+          "name": "test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderB]",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.004",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_b.ProviderB'>\n\n    @pytest.mark.parametrize('provider',[ProviderA,ProviderB])\n    def test_adapter_denied_world_read_must_not_emit_consumer_values(provider):\n        world=copy.deepcopy(BASELINE_WORLD);world['permission_ceiling']['revoked_atoms']=['WORLD_READ'];world['permission_ceiling']['use_atoms']=['POSSIBILITY_QUERY']\n        p=provider(world=world)\n        try:result=TwoContractAdapter(p).run()\n        except PortContractError as e:\n            record('denied_'+provider.__name__,diagnostic=e.code,consumer_output_returned=False)\n            assert e.code=='DENIED_USE'\n        else:\n            record('denied_'+provider.__name__,consumer_output_returned=True,world_permission=result['world_receipt']['world']['permission_ceiling'],consumer_effects=result['consumer_effects'])\n>           pytest.fail('RC0_DENIED_PROVIDER_EMITTED_WORLD_VALUES_AND_CONSUMER_EFFECTS')\nE           Failed: RC0_DENIED_PROVIDER_EMITTED_WORLD_VALUES_AND_CONSUMER_EFFECTS\n\ntest_rc0_hostile.py:50: Failed"
+        },
+        {
+          "name": "test_foreign_demand_cannot_be_labelled_complete[ProviderA]",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.004",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_a.ProviderA'>\n\n    @pytest.mark.parametrize('provider',[ProviderA,ProviderB])\n    def test_foreign_demand_cannot_be_labelled_complete(provider):\n        demand={'scope':'rc0:unavailable:foreign-world-scope'}\n        try:result=TwoContractAdapter(provider()).run(demand)\n        except PortContractError as e:record('demand_'+provider.__name__,refused=e.code)\n        else:\n            record('demand_'+provider.__name__,request=demand,selection_state=result['world_receipt']['selection_state'],served_world=result['world_receipt']['world']['semantic_world_id'])\n>           assert result['world_receipt']['selection_state']!='COMPLETE','RC0_FOREIGN_DEMAND_FALSE_COMPLETE'\nE           AssertionError: RC0_FOREIGN_DEMAND_FALSE_COMPLETE\nE           assert 'COMPLETE' != 'COMPLETE'\n\ntest_rc0_hostile.py:60: AssertionError"
+        },
+        {
+          "name": "test_foreign_demand_cannot_be_labelled_complete[ProviderB]",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.003",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_b.ProviderB'>\n\n    @pytest.mark.parametrize('provider',[ProviderA,ProviderB])\n    def test_foreign_demand_cannot_be_labelled_complete(provider):\n        demand={'scope':'rc0:unavailable:foreign-world-scope'}\n        try:result=TwoContractAdapter(provider()).run(demand)\n        except PortContractError as e:record('demand_'+provider.__name__,refused=e.code)\n        else:\n            record('demand_'+provider.__name__,request=demand,selection_state=result['world_receipt']['selection_state'],served_world=result['world_receipt']['world']['semantic_world_id'])\n>           assert result['world_receipt']['selection_state']!='COMPLETE','RC0_FOREIGN_DEMAND_FALSE_COMPLETE'\nE           AssertionError: RC0_FOREIGN_DEMAND_FALSE_COMPLETE\nE           assert 'COMPLETE' != 'COMPLETE'\n\ntest_rc0_hostile.py:60: AssertionError"
+        },
+        {
+          "name": "test_knowledge_asof_cannot_consume_future_publication[ProviderA]",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.004",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_a.ProviderA'>\n\n    @pytest.mark.parametrize('provider',[ProviderA,ProviderB])\n    def test_knowledge_asof_cannot_consume_future_publication(provider):\n        # The original preserved fixture itself has published=2010 and as_of=2009.\n        try:result=TwoContractAdapter(provider()).run()\n        except PortContractError as e:\n            record('clocks_'+provider.__name__,refused=e.code)\n            assert e.code=='NO_CURRENT_OR_NOT_KNOWN_ASOF'\n        else:\n            clock=result['world_receipt']['world']['time_axes']\n            record('clocks_'+provider.__name__,clocks=clock,read_values=result['consumer_effects']['NONPARENT_APPRENTICESHIP_ENTRY']['values_read'])\n>           assert int(clock['published'])<=int(clock['as_of']),'RC0_KNOWLEDGE_ASOF_LOOKAHEAD_ACCEPTED'\nE           AssertionError: RC0_KNOWLEDGE_ASOF_LOOKAHEAD_ACCEPTED\nE           assert 2010 <= 2009\nE            +  where 2010 = int('2010')\nE            +  and   2009 = int('2009')\n\ntest_rc0_hostile.py:73: AssertionError"
+        },
+        {
+          "name": "test_knowledge_asof_cannot_consume_future_publication[ProviderB]",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.004",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_b.ProviderB'>\n\n    @pytest.mark.parametrize('provider',[ProviderA,ProviderB])\n    def test_knowledge_asof_cannot_consume_future_publication(provider):\n        # The original preserved fixture itself has published=2010 and as_of=2009.\n        try:result=TwoContractAdapter(provider()).run()\n        except PortContractError as e:\n            record('clocks_'+provider.__name__,refused=e.code)\n            assert e.code=='NO_CURRENT_OR_NOT_KNOWN_ASOF'\n        else:\n            clock=result['world_receipt']['world']['time_axes']\n            record('clocks_'+provider.__name__,clocks=clock,read_values=result['consumer_effects']['NONPARENT_APPRENTICESHIP_ENTRY']['values_read'])\n>           assert int(clock['published'])<=int(clock['as_of']),'RC0_KNOWLEDGE_ASOF_LOOKAHEAD_ACCEPTED'\nE           AssertionError: RC0_KNOWLEDGE_ASOF_LOOKAHEAD_ACCEPTED\nE           assert 2010 <= 2009\nE            +  where 2010 = int('2010')\nE            +  and   2009 = int('2009')\n\ntest_rc0_hostile.py:73: AssertionError"
+        },
+        {
+          "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[issuer-ProviderA]",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.003",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[issuer-ProviderB]",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.004",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderA]",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.005",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_a.ProviderA'>, field = 'scope'\n\n    @pytest.mark.parametrize('provider',[ProviderA,ProviderB])\n    @pytest.mark.parametrize('field',['issuer','scope','target'])\n    def test_matching_issuer_string_cannot_authorize_foreign_scope_or_target(provider,field):\n        p=provider();bundle=TwoContractAdapter(p).run();grant=copy.deepcopy(REVERSAL_GRANT_SCOPED)\n        if field=='target':grant['binds']['target']='rc0:foreign-target';grant['binds']['reverse_target']='rc0:foreign-target'\n        else:grant[field]='rc0:foreign-'+field\n        try:result=p.request_role_reversal(bundle['world_receipt'],bundle['possibility_receipt'],grant)\n        except PortContractError as e:\n            record('reverse_'+provider.__name__+'_'+field,refused=e.code)\n            assert e.code=='HELD_AUTHORITY'\n        else:\n            record('reverse_'+provider.__name__+'_'+field,grant=grant,result=result)\n>           pytest.fail('RC0_FOREIGN_REVERSAL_BINDING_PERMITTED_'+field)\nE           Failed: RC0_FOREIGN_REVERSAL_BINDING_PERMITTED_scope\n\ntest_rc0_hostile.py:88: Failed"
+        },
+        {
+          "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderB]",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.005",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_b.ProviderB'>, field = 'scope'\n\n    @pytest.mark.parametrize('provider',[ProviderA,ProviderB])\n    @pytest.mark.parametrize('field',['issuer','scope','target'])\n    def test_matching_issuer_string_cannot_authorize_foreign_scope_or_target(provider,field):\n        p=provider();bundle=TwoContractAdapter(p).run();grant=copy.deepcopy(REVERSAL_GRANT_SCOPED)\n        if field=='target':grant['binds']['target']='rc0:foreign-target';grant['binds']['reverse_target']='rc0:foreign-target'\n        else:grant[field]='rc0:foreign-'+field\n        try:result=p.request_role_reversal(bundle['world_receipt'],bundle['possibility_receipt'],grant)\n        except PortContractError as e:\n            record('reverse_'+provider.__name__+'_'+field,refused=e.code)\n            assert e.code=='HELD_AUTHORITY'\n        else:\n            record('reverse_'+provider.__name__+'_'+field,grant=grant,result=result)\n>           pytest.fail('RC0_FOREIGN_REVERSAL_BINDING_PERMITTED_'+field)\nE           Failed: RC0_FOREIGN_REVERSAL_BINDING_PERMITTED_scope\n\ntest_rc0_hostile.py:88: Failed"
+        },
+        {
+          "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderA]",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.003",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_a.ProviderA'>, field = 'target'\n\n    @pytest.mark.parametrize('provider',[ProviderA,ProviderB])\n    @pytest.mark.parametrize('field',['issuer','scope','target'])\n    def test_matching_issuer_string_cannot_authorize_foreign_scope_or_target(provider,field):\n        p=provider();bundle=TwoContractAdapter(p).run();grant=copy.deepcopy(REVERSAL_GRANT_SCOPED)\n        if field=='target':grant['binds']['target']='rc0:foreign-target';grant['binds']['reverse_target']='rc0:foreign-target'\n        else:grant[field]='rc0:foreign-'+field\n        try:result=p.request_role_reversal(bundle['world_receipt'],bundle['possibility_receipt'],grant)\n        except PortContractError as e:\n            record('reverse_'+provider.__name__+'_'+field,refused=e.code)\n            assert e.code=='HELD_AUTHORITY'\n        else:\n            record('reverse_'+provider.__name__+'_'+field,grant=grant,result=result)\n>           pytest.fail('RC0_FOREIGN_REVERSAL_BINDING_PERMITTED_'+field)\nE           Failed: RC0_FOREIGN_REVERSAL_BINDING_PERMITTED_target\n\ntest_rc0_hostile.py:88: Failed"
+        },
+        {
+          "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderB]",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.003",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_b.ProviderB'>, field = 'target'\n\n    @pytest.mark.parametrize('provider',[ProviderA,ProviderB])\n    @pytest.mark.parametrize('field',['issuer','scope','target'])\n    def test_matching_issuer_string_cannot_authorize_foreign_scope_or_target(provider,field):\n        p=provider();bundle=TwoContractAdapter(p).run();grant=copy.deepcopy(REVERSAL_GRANT_SCOPED)\n        if field=='target':grant['binds']['target']='rc0:foreign-target';grant['binds']['reverse_target']='rc0:foreign-target'\n        else:grant[field]='rc0:foreign-'+field\n        try:result=p.request_role_reversal(bundle['world_receipt'],bundle['possibility_receipt'],grant)\n        except PortContractError as e:\n            record('reverse_'+provider.__name__+'_'+field,refused=e.code)\n            assert e.code=='HELD_AUTHORITY'\n        else:\n            record('reverse_'+provider.__name__+'_'+field,grant=grant,result=result)\n>           pytest.fail('RC0_FOREIGN_REVERSAL_BINDING_PERMITTED_'+field)\nE           Failed: RC0_FOREIGN_REVERSAL_BINDING_PERMITTED_target\n\ntest_rc0_hostile.py:88: Failed"
+        },
+        {
+          "name": "test_direct_receipts_satisfy_original_frozen_envelope_schema",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.292",
+          "status": "RED",
+          "diagnostic": "def test_direct_receipts_satisfy_original_frozen_envelope_schema():\n        schema=json.loads((CP/'oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json').read_text());Draft202012Validator.check_schema(schema)\n        validator=Draft202012Validator(schema);bundle=TwoContractAdapter(ProviderA()).run();all_errors={}\n        for key in ['world_receipt','possibility_receipt']:\n            errors=list(validator.iter_errors(bundle[key]))\n            all_errors[key]=[dict(path=list(e.absolute_path),message=e.message,context=[x.message for x in e.context]) for e in errors]\n        record('schema',errors=all_errors)\n>       assert not any(all_errors.values()),'RC0_ORIGINAL_SC0_SCHEMA_NOT_IMPLEMENTED_BY_RAW_RECEIPTS'\nE       AssertionError: RC0_ORIGINAL_SC0_SCHEMA_NOT_IMPLEMENTED_BY_RAW_RECEIPTS\nE       assert not True\nE        +  where True = any(dict_values([[{'path': [], 'message': \"{'contract': 'GENERIC_WORLD_SELECTION@1.0.0', 'selection_digest': 'fd766322a85c...state' is a required property\", \"'values_read_refs' is a required property\", \"'replay_ref' is a required property\"]}]]))\nE        +    where dict_values([[{'path': [], 'message': \"{'contract': 'GENERIC_WORLD_SELECTION@1.0.0', 'selection_digest': 'fd766322a85c...state' is a required property\", \"'values_read_refs' is a required property\", \"'replay_ref' is a required property\"]}]]) = <built-in method values of dict object at 0x1093e2580>()\nE        +      where <built-in method values of dict object at 0x1093e2580> = {'possibility_receipt': [{'context': [\"Additional properties are not allowed ('direction', 'minority', 'model_use', 'n...FIXTURE_ONLY__SOURCEFREE__NOT_OPERATIVE_N9__NOT_MODEL_USE'} is not valid under any of the given schemas\", 'path': []}]}.values\n\ntest_rc0_hostile.py:98: AssertionError"
+        },
+        {
+          "name": "test_full_original_negative_state_distinctions_survive",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.004",
+          "status": "RED",
+          "diagnostic": "def test_full_original_negative_state_distinctions_survive():\n        source=json.loads((CP/'oracles/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json').read_text())['baseline']['status_rows']\n        result=TwoContractAdapter(ProviderA()).run();actual=result['world_receipt']['world']['negative_states']\n        expected={r['scope']:r['state'] for r in source};observed={r['scope']:r['state'] for r in actual}\n        record('negative_states',expected=expected,actual=observed,missing={k:v for k,v in expected.items() if observed.get(k)!=v})\n>       assert expected==observed,'RC0_ORIGINAL_NEGATIVE_SCOPES_OR_CODES_LOST'\nE       AssertionError: RC0_ORIGINAL_NEGATIVE_SCOPES_OR_CODES_LOST\nE       assert {'fx:scope:co...PARABLE', ...} == {'fx:scope:co...PARABLE', ...}\nE         \nE         Omitting 7 identical items, use -vv to show\nE         Differing items:\nE         {'fx:scope:denied': 'DENIED_USE'} != {'fx:scope:denied': 'DENIED'}\nE         Left contains 4 more items:\nE         {'fx:scope:nocurrent': 'NO_CURRENT',\nE          'fx:scope:proxy': 'PROXY_MODELLED',...\nE         \nE         ...Full output truncated (3 lines hidden), use '-vv' to show\n\ntest_rc0_hostile.py:106: AssertionError"
+        },
+        {
+          "name": "test_h1_f1_f2_h3_and_both_h2_successors_preserve_explicit_deferral",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.011",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_changed_binding_guard_is_real_but_adapter_recomputes_new_selection",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.004",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_baseline_providers_equal_without_using_candidate_comparison_function",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.005",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[AH-REJECT_SEMANTIC_LOSS-ProviderA]",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.002",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[AH-REJECT_SEMANTIC_LOSS-ProviderB]",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.002",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS-ProviderA]",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.003",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS-ProviderB]",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.002",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[F2-REJECT_F2_PREREQUISITE_LOSS-ProviderA]",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.002",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[F2-REJECT_F2_PREREQUISITE_LOSS-ProviderB]",
+          "classname": "test_rc0_hostile",
+          "seconds": "0.002",
+          "status": "PASS",
+          "diagnostic": null
+        }
+      ]
+    },
+    {
+      "suite": "rc0",
+      "counts": {
+        "PASS": 25,
+        "RED": 0,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "total": 25,
+      "execution": {
+        "suite": "rc0",
+        "started_at": "2026-10-15T01:40:31.465416+00:00",
+        "finished_at": "2026-10-15T01:41:34.871254+00:00",
+        "command": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "staging/rc0/test_rc0_hostile.py",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "--junitxml=$RSC0_RETURN/repro/rc0.xml"
+        ],
+        "cwd": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1",
+        "exit_code": 0,
+        "raw_stdout_sha256": "24e5397f8c5acb2e3f6b94ead85bd495b780f1ed8ca3421a3c189a55f2d92a9e",
+        "sanitization": "runtime/return/worktree paths only",
+        "log": "repro/rc0.log",
+        "junit": "repro/rc0.xml"
+      },
+      "cases": [
+        {
+          "name": "test_actual_value_intervention_changes_both_consumers_and_only_affected_route[ProviderA]",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "5.525",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_actual_value_intervention_changes_both_consumers_and_only_affected_route[ProviderB]",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "5.310",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderA]",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "0.003",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderB]",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "0.002",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_foreign_demand_cannot_be_labelled_complete[ProviderA]",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "2.632",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_foreign_demand_cannot_be_labelled_complete[ProviderB]",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "2.728",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_knowledge_asof_cannot_consume_future_publication[ProviderA]",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "2.712",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_knowledge_asof_cannot_consume_future_publication[ProviderB]",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "2.767",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[issuer-ProviderA]",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "2.686",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[issuer-ProviderB]",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "2.725",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderA]",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "2.758",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderB]",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "2.731",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderA]",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "2.683",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderB]",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "2.645",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_direct_receipts_satisfy_original_frozen_envelope_schema",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "3.018",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_full_original_negative_state_distinctions_survive",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "2.667",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_h1_f1_f2_h3_and_both_h2_successors_preserve_explicit_deferral",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "7.987",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_changed_binding_guard_is_real_but_adapter_recomputes_new_selection",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "5.414",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_baseline_providers_equal_without_using_candidate_comparison_function",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "5.600",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[AH-REJECT_SEMANTIC_LOSS-ProviderA]",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "0.005",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[AH-REJECT_SEMANTIC_LOSS-ProviderB]",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "0.004",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS-ProviderA]",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "0.004",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS-ProviderB]",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "0.004",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[F2-REJECT_F2_PREREQUISITE_LOSS-ProviderA]",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "0.003",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[F2-REJECT_F2_PREREQUISITE_LOSS-ProviderB]",
+          "classname": "staging.rc0.test_rc0_hostile",
+          "seconds": "0.003",
+          "status": "PASS",
+          "diagnostic": null
+        }
+      ]
+    },
+    {
+      "suite": "k9_k10",
+      "counts": {
+        "PASS": 36,
+        "RED": 0,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "total": 36,
+      "execution": {
+        "suite": "k9_k10",
+        "started_at": "2026-10-15T01:34:07.887744+00:00",
+        "finished_at": "2026-10-15T01:34:50.495897+00:00",
+        "command": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "port/test_k9_provider_swap.py",
+          "port/test_k10_structural_conservation.py",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "--junitxml=$RSC0_RETURN/repro/k9_k10.xml"
+        ],
+        "cwd": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1",
+        "exit_code": 0,
+        "raw_stdout_sha256": "ddff165d1a7d4e6c039ef5adf07197690cd3136932760a0274e722ca7f043ca0",
+        "sanitization": "runtime/return/worktree paths only",
+        "log": "repro/k9_k10.log",
+        "junit": "repro/k9_k10.xml"
+      },
+      "cases": [
+        {
+          "name": "test_k9_01_two_providers_same_meaning",
+          "classname": "port.test_k9_provider_swap",
+          "seconds": "5.442",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k9_02_independent_nonparent_consumer",
+          "classname": "port.test_k9_provider_swap",
+          "seconds": "5.264",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k9_03_id_reorder_and_stage_rename_equivalent",
+          "classname": "port.test_k9_provider_swap",
+          "seconds": "5.253",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k9_04_not_equivalent_contrast_rejected",
+          "classname": "port.test_k9_provider_swap",
+          "seconds": "0.005",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k9_05_modelled_vs_observed_refuses_grade_promotion",
+          "classname": "port.test_k9_provider_swap",
+          "seconds": "0.003",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k9_06_forward_reverse_held_without_scoped_issuer",
+          "classname": "port.test_k9_provider_swap",
+          "seconds": "2.531",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k9_07_permissions_denied_use_no_cached_bypass",
+          "classname": "port.test_k9_provider_swap",
+          "seconds": "2.586",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k9_08_two_channel_refresh_two_independent_successors",
+          "classname": "port.test_k9_provider_swap",
+          "seconds": "7.728",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_01_drop_ah",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_02_stratum_translation_noninjective",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_03_dyadize_nary",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_04_drop_f2_history_requirement",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_05_predicate_becomes_experience",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_06_contradiction_dominant_only",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_07_minority_erase",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_08_zero_missing_collapse",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_09_underpowered_as_empty",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_10_not_asked_as_no",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_11_cross_unit_pool",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "2.594",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_12_direction_reverse_held",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "2.638",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_13_condition_set_sort",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_14_uncertain_to_point",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_15_clock_conflation",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_16_lag_interpolation_held",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_17_binding_as_observation",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_18_change_binding_no_refresh",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "2.640",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_19_publish_boundary_no_refresh",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "2.487",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_20_permission_revoked",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_21_partial_as_complete",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_22_proxy_as_observed",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_23_opaque_hash_no_values",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_24_implicit_model_crossproduct",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_25_upstream_psychic_fields",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_26_f2_public_sanction_loss",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_27_nonparent_consumer_produces_generic_objective_only",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "2.609",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_28_no_actor_weld",
+          "classname": "port.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        }
+      ]
+    },
+    {
+      "suite": "original_k9_k10",
+      "counts": {
+        "PASS": 34,
+        "RED": 2,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "total": 36,
+      "execution": {
+        "suite": "original_k9_k10",
+        "started_at": "2026-10-15T01:34:50.561512+00:00",
+        "finished_at": "2026-10-15T01:35:34.565474+00:00",
+        "command": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "original_tests/test_k9_provider_swap.py",
+          "original_tests/test_k10_structural_conservation.py",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "--junitxml=$RSC0_RETURN/repro/original_k9_k10.xml"
+        ],
+        "cwd": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1",
+        "exit_code": 1,
+        "raw_stdout_sha256": "801977871cacb205622fef196af93759fc1f7f08da3d9f8ef39ada75dd33234c",
+        "sanitization": "runtime/return/worktree paths only",
+        "log": "repro/original_k9_k10.log",
+        "junit": "repro/original_k9_k10.xml"
+      },
+      "cases": [
+        {
+          "name": "test_k9_01_two_providers_same_meaning",
+          "classname": "original_tests.test_k9_provider_swap",
+          "seconds": "5.454",
+          "status": "RED",
+          "diagnostic": "def test_k9_01_two_providers_same_meaning():\n        \"\"\"K9_01 \u2014 A and B equivalent except declared physical lineage.\"\"\"\n    \n        bundle_a = TwoContractAdapter(build_provider_a()).run()\n        bundle_b = TwoContractAdapter(build_provider_b()).run()\n        report = provider_equivalence_report(bundle_a, bundle_b)\n        assert report[\"world_projection_diffs\"] == []\n        assert report[\"possibility_projection_diffs\"] == []\n        assert report[\"consumer_effect_diffs\"] == []\n        assert report[\"physical_provider_ids_differ\"] is True\n        assert report[\"equivalent_except_physical_lineage\"] is True\n>       assert TwoContractAdapter.round_trip_two_contracts(bundle_a)[\"state\"] == \"LOSSLESS_TWO_CONTRACT_ROUNDTRIP\"\nE       AssertionError: assert 'LOSSLESS_TWO...SUMER_LINEAGE' == 'LOSSLESS_TWO...ACT_ROUNDTRIP'\nE         \nE         - LOSSLESS_TWO_CONTRACT_ROUNDTRIP\nE         + LOSSLESS_TWO_CONTRACT_ROUNDTRIP_WITH_CONSUMER_LINEAGE\n\noriginal_tests/test_k9_provider_swap.py:48: AssertionError",
+          "scientific_classification": "RETURN_STATE_COMPATIBILITY_DRIFT"
+        },
+        {
+          "name": "test_k9_02_independent_nonparent_consumer",
+          "classname": "original_tests.test_k9_provider_swap",
+          "seconds": "5.211",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k9_03_id_reorder_and_stage_rename_equivalent",
+          "classname": "original_tests.test_k9_provider_swap",
+          "seconds": "6.461",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k9_04_not_equivalent_contrast_rejected",
+          "classname": "original_tests.test_k9_provider_swap",
+          "seconds": "0.004",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k9_05_modelled_vs_observed_refuses_grade_promotion",
+          "classname": "original_tests.test_k9_provider_swap",
+          "seconds": "0.003",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k9_06_forward_reverse_held_without_scoped_issuer",
+          "classname": "original_tests.test_k9_provider_swap",
+          "seconds": "2.848",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k9_07_permissions_denied_use_no_cached_bypass",
+          "classname": "original_tests.test_k9_provider_swap",
+          "seconds": "2.586",
+          "status": "RED",
+          "diagnostic": "def test_k9_07_permissions_denied_use_no_cached_bypass():\n        \"\"\"K9_07 \u2014 dropping the dependency use atom denies the slice; no A bypass.\"\"\"\n    \n        provider_a = build_provider_a()\n        bundle_a = TwoContractAdapter(provider_a).run()\n        permitted = provider_a.revoked_use(bundle_a[\"world_receipt\"], \"WORLD_READ\")\n        assert permitted[\"state\"] == \"PERMITTED\"\n    \n        mutated = copy.deepcopy(BASELINE_WORLD)\n        mutated[\"permission_ceiling\"][\"revoked_atoms\"] = [\"WORLD_READ\"]\n        mutated[\"permission_ceiling\"][\"use_atoms\"] = [\"POSSIBILITY_QUERY\"]\n        provider_b = ProviderB(world=mutated)\n>       bundle_b = TwoContractAdapter(provider_b).run()\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\noriginal_tests/test_k9_provider_swap.py:159: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nport/adapter.py:111: in run\n    self._fail_closed_entry(selection, demand)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <port.adapter.TwoContractAdapter object at 0x105312b10>\nselection = {'binding_generation': 0, 'contract': 'GENERIC_WORLD_SELECTION@1.0.0', 'demand': {'scope': 'fx:universe:single_source|...': 'fx:cond:school'}, {'index': 2, 'n': 12, 'ref': 'fx:cond:caretime'}], 'direction': 'FORWARD_CONDITIONAL', ...}, ...}\ndemand = {'scope': 'fx:universe:single_source|fx:release:v1'}\n\n    def _fail_closed_entry(self, selection: Mapping[str, Any], demand: Mapping[str, Any]) -> None:\n        \"\"\"RC0_PERMISSION_ENTRYPOINT + RC0_CLOCK_LOOKAHEAD, before any value read.\"\"\"\n    \n        ceiling = selection[\"world\"].get(\"permission_ceiling\") or {}\n        revoked = set(ceiling.get(\"revoked_atoms\") or [])\n        allowed = set(ceiling.get(\"use_atoms\") or [])\n        if \"WORLD_READ\" in revoked or \"WORLD_READ\" not in allowed:\n>           raise PermissionDenied(\n                \"DENIED_USE\",\n                \"WORLD_READ is revoked or absent from the source use ceiling; \"\n                \"no selected values or consumer effects may be emitted\",\n            )\nE           port.contracts.PermissionDenied: DENIED_USE: WORLD_READ is revoked or absent from the source use ceiling; no selected values or consumer effects may be emitted\n\nport/adapter.py:70: PermissionDenied",
+          "scientific_classification": "ORIGINAL_TEST_EXPECTS_DENIED_ADAPTER_TO_RETURN; REPAIR_FAILS_CLOSED_EARLIER"
+        },
+        {
+          "name": "test_k9_08_two_channel_refresh_two_independent_successors",
+          "classname": "original_tests.test_k9_provider_swap",
+          "seconds": "7.708",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_01_drop_ah",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_02_stratum_translation_noninjective",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_03_dyadize_nary",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_04_drop_f2_history_requirement",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_05_predicate_becomes_experience",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_06_contradiction_dominant_only",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_07_minority_erase",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_08_zero_missing_collapse",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_09_underpowered_as_empty",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_10_not_asked_as_no",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_11_cross_unit_pool",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "2.626",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_12_direction_reverse_held",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "2.609",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_13_condition_set_sort",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_14_uncertain_to_point",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_15_clock_conflation",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_16_lag_interpolation_held",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_17_binding_as_observation",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_18_change_binding_no_refresh",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "2.510",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_19_publish_boundary_no_refresh",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "2.602",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_20_permission_revoked",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "0.002",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_21_partial_as_complete",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_22_proxy_as_observed",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_23_opaque_hash_no_values",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "0.000",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_24_implicit_model_crossproduct",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_25_upstream_psychic_fields",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_26_f2_public_sanction_loss",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_27_nonparent_consumer_produces_generic_objective_only",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "2.647",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_k10_28_no_actor_weld",
+          "classname": "original_tests.test_k10_structural_conservation",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        }
+      ]
+    },
+    {
+      "suite": "connection",
+      "counts": {
+        "PASS": 6,
+        "RED": 0,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "total": 6,
+      "execution": {
+        "suite": "connection",
+        "started_at": "2026-10-15T01:35:34.627773+00:00",
+        "finished_at": "2026-10-15T01:35:45.656145+00:00",
+        "command": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "port/test_connection.py",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "--junitxml=$RSC0_RETURN/repro/connection.xml"
+        ],
+        "cwd": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1",
+        "exit_code": 0,
+        "raw_stdout_sha256": "c6f063e7d5b762f8e7db4ca5ae26b877d61d2199900d999caf3335938ca0ad97",
+        "sanitization": "runtime/return/worktree paths only",
+        "log": "repro/connection.log",
+        "junit": "repro/connection.xml"
+      },
+      "cases": [
+        {
+          "name": "test_adapter_run_calls_pinned_pe_c1_n10e[ProviderA]",
+          "classname": "port.test_connection",
+          "seconds": "2.760",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_adapter_run_calls_pinned_pe_c1_n10e[ProviderB]",
+          "classname": "port.test_connection",
+          "seconds": "2.593",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_served_support_is_producer_derived_not_static_hint[ProviderA]",
+          "classname": "port.test_connection",
+          "seconds": "2.549",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_served_support_is_producer_derived_not_static_hint[ProviderB]",
+          "classname": "port.test_connection",
+          "seconds": "2.452",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_lane_cannot_be_satisfied_by_declared_hint_alone",
+          "classname": "port.test_connection",
+          "seconds": "0.002",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_pinned_module_blobs_match_manifest",
+          "classname": "port.test_connection",
+          "seconds": "0.002",
+          "status": "PASS",
+          "diagnostic": null
+        }
+      ]
+    },
+    {
+      "suite": "n10e_c1",
+      "counts": {
+        "PASS": 56,
+        "RED": 0,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "total": 56,
+      "execution": {
+        "suite": "n10e_c1",
+        "started_at": "2026-10-15T01:35:45.738341+00:00",
+        "finished_at": "2026-10-15T01:36:04.495784+00:00",
+        "command": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "staging/ns/rawlsing_next/tests/test_pre553_empirical_possibility_provider.py",
+          "staging/ns/rawlsing_next/tests/test_pre553_analytical_composition.py",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "--junitxml=$RSC0_RETURN/repro/n10e_c1.xml"
+        ],
+        "cwd": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1",
+        "exit_code": 0,
+        "raw_stdout_sha256": "2af9e70fb3ce3fa80a72113e9998ccfbc33925b74d9b006914bdd7f124429dbe",
+        "sanitization": "runtime/return/worktree paths only",
+        "log": "repro/n10e_c1.log",
+        "junit": "repro/n10e_c1.xml"
+      },
+      "cases": [
+        {
+          "name": "test_p1_forward_slice_is_actually_computed_and_producer_derived",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.272",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p1_evidence_identity_is_the_producer_generated_object_not_handwritten",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.263",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p1_receipt_binds_producer_and_consumer_identities_exactly",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.267",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p1_provider_does_not_recompute_or_duplicate_owner_geometry",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p2_reverse_slice_preserves_target_topology_risk_support_and_exact_fraction",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.535",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p2_forward_and_reverse_share_no_receipt_or_slice_identity",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.550",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p3_identity_bearing_conditioner_determinant_reidentifies_provider_output",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.318",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p3_model_rule_determinant_reidentifies_receipt_and_result",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.308",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p3_unconsumed_irrelevant_material_is_not_a_determinant",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.315",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p3_receipt_declares_exact_dependency_closure_over_producer_evidence",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.332",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p4_public_api_exposes_no_precomputed_slice_channel",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p4_provider_recomputes_and_ignores_attacker_evidence_in_scope",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.323",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p4_provider_result_cannot_claim_evidence_it_did_not_generate",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.325",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p5_source_release_mismatch_fails_closed_with_owner_typed_error",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.240",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p5_target_topology_mismatch_fails_closed_with_owner_typed_error",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.431",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p5_consumer_query_rejects_implicit_universe_bridge_at_construction",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.216",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p5_foreign_universe_consumer_query_fails_closed_against_producer",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.218",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p5_foreign_universe_producer_fails_closed_when_consumer_matches_source",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.226",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p5_model_source_universe_out_of_scope_returns_fail_closed_result",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.258",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p6_non_supported_slice_returns_typed_refusal_without_invented_geometry",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.259",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p6_exact_result_shape_guards_reject_refusal_and_substituted_evidence",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.271",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p6_zero_support_predicate_mutation_is_caught_by_custody_witness",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.244",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p6_geometry_is_recomputed_not_fixed_when_the_empirical_slice_changes",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "1.191",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p6_exact_supported_evidence_stays_exact_and_unweighted",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.312",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p6_provider_declares_no_new_proxy_or_actor_authority",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p6_no_float_or_approximate_geometry_anywhere_in_provider_output",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.291",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p7_receipt_and_result_identity_replay_deterministically",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.338",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p7_replay_detects_a_different_result_identity",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.614",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p7_fresh_process_replay_reproduces_provider_receipt",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.938",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p7_historical_fixture_law_bindings_still_hold",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.271",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_p7_historical_r8_composed_identity_is_preserved_as_historical_only",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.533",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_s1_historical_r8_forward_identity_preserved_as_historical",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.006",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_s2_historical_r8_reverse_identity_preserved_as_historical",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.006",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_s3_current_forward_complete_preimage_equals_adopted_successor",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.366",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_s4_current_reverse_complete_preimage_equals_adopted_successor",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.379",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_s5_current_forward_digest_equals_adopted_successor",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.359",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_s6_current_reverse_digest_equals_adopted_successor",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.334",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_s7_wrong_successor_direction_fails",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.641",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_s8_one_six_field_omission_fails",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.012",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_s9_one_six_field_wrong_value_fails",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.014",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_s10_old_r8_digest_cannot_masquerade_as_current_c1_02_digest",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.661",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_s11_production_six_successor_values_are_the_direct_path_law",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.650",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_s12_both_directions_reach_the_named_consumer_and_refuse_geometry",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_empirical_possibility_provider",
+          "seconds": "0.652",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_r8_queries_supersede_documentary_r6_hashes",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_analytical_composition",
+          "seconds": "0.238",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_at07_r6_executes_public_producer_adapter_consumer[forward-60-numerators0]",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_analytical_composition",
+          "seconds": "0.322",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_at07_r6_executes_public_producer_adapter_consumer[reverse-62-numerators1]",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_analytical_composition",
+          "seconds": "0.314",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_r6_witness_mutation_reidentifies_and_stale_ref_fails_closed",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_analytical_composition",
+          "seconds": "0.326",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_r7_closed_16_key_witness_rejects_matching_hash_with_extra_field",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_analytical_composition",
+          "seconds": "0.306",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_at19_valid_relation_determinant_reidentifies_composed_result",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_analytical_composition",
+          "seconds": "0.327",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_r7_denominator_member_identity_hostile_preserves_visible_54_over_60",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_analytical_composition",
+          "seconds": "0.292",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_r7_geometry_cell_identity_hostile_reidentifies_evidence",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_analytical_composition",
+          "seconds": "0.268",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_r7_fixture_pairing_authority_reidentifies_witness_evidence_and_composed_result",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_analytical_composition",
+          "seconds": "0.307",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_relation_mismatch_fails_before_evidence_and_consumer",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_analytical_composition",
+          "seconds": "0.258",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_composer_has_no_preconstructed_possibility_slice_input",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_analytical_composition",
+          "seconds": "0.000",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_relation_guard_is_before_evidence_construction_and_consumer_invocation",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_analytical_composition",
+          "seconds": "0.006",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_supported_evidence_uses_raw_denominator_not_target_numerator",
+          "classname": "staging.ns.rawlsing_next.tests.test_pre553_analytical_composition",
+          "seconds": "0.002",
+          "status": "PASS",
+          "diagnostic": null
+        }
+      ]
+    },
+    {
+      "suite": "pe",
+      "counts": {
+        "PASS": 21,
+        "RED": 0,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "total": 21,
+      "execution": {
+        "suite": "pe",
+        "started_at": "2026-10-15T01:36:04.559786+00:00",
+        "finished_at": "2026-10-15T01:36:07.141090+00:00",
+        "command": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "staging/ns/rawlsing_next/tests/test_postastra_pe_generic_world_possibility.py",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "--junitxml=$RSC0_RETURN/repro/pe.xml"
+        ],
+        "cwd": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1",
+        "exit_code": 0,
+        "raw_stdout_sha256": "3d386d4c9b9d56591bbb7035a3b48ba7802c67d51b2fd400cf88448d330912de",
+        "sanitization": "runtime/return/worktree paths only",
+        "log": "repro/pe.log",
+        "junit": "repro/pe.xml"
+      },
+      "cases": [
+        {
+          "name": "test_law_a_consumer_computes_exact_fraction_at_declared_grain[multi_binding_parent_context]",
+          "classname": "staging.ns.rawlsing_next.tests.test_postastra_pe_generic_world_possibility",
+          "seconds": "0.386",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_law_a_consumer_computes_exact_fraction_at_declared_grain[nonparent_reverse]",
+          "classname": "staging.ns.rawlsing_next.tests.test_postastra_pe_generic_world_possibility",
+          "seconds": "0.061",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_law_a_consumer_computes_exact_fraction_at_declared_grain[conception_scenario]",
+          "classname": "staging.ns.rawlsing_next.tests.test_postastra_pe_generic_world_possibility",
+          "seconds": "0.070",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_law_b_consumer_computes_exact_fraction_at_declared_grain[multi_binding_parent_context]",
+          "classname": "staging.ns.rawlsing_next.tests.test_postastra_pe_generic_world_possibility",
+          "seconds": "0.527",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_law_b_consumer_computes_exact_fraction_at_declared_grain[nonparent_reverse]",
+          "classname": "staging.ns.rawlsing_next.tests.test_postastra_pe_generic_world_possibility",
+          "seconds": "0.079",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_law_b_consumer_computes_exact_fraction_at_declared_grain[conception_scenario]",
+          "classname": "staging.ns.rawlsing_next.tests.test_postastra_pe_generic_world_possibility",
+          "seconds": "0.075",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_two_independent_laws_are_empirically_discriminating",
+          "classname": "staging.ns.rawlsing_next.tests.test_postastra_pe_generic_world_possibility",
+          "seconds": "0.270",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_law_a_and_law_b_oracles_match_independent_arithmetic",
+          "classname": "staging.ns.rawlsing_next.tests.test_postastra_pe_generic_world_possibility",
+          "seconds": "0.000",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_role_direction_reversal_preserves_target_condition_semantics",
+          "classname": "staging.ns.rawlsing_next.tests.test_postastra_pe_generic_world_possibility",
+          "seconds": "0.114",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_request_schema_carries_no_parent_nouns",
+          "classname": "staging.ns.rawlsing_next.tests.test_postastra_pe_generic_world_possibility",
+          "seconds": "0.000",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_receipt_binds_immutable_n9_selected_and_asof_dependency_ids",
+          "classname": "staging.ns.rawlsing_next.tests.test_postastra_pe_generic_world_possibility",
+          "seconds": "0.063",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_inference_lane_is_declared_n10e_conditioned_not_world_only",
+          "classname": "staging.ns.rawlsing_next.tests.test_postastra_pe_generic_world_possibility",
+          "seconds": "0.065",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_replay_reproduces_exactly_the_same_receipt_identity",
+          "classname": "staging.ns.rawlsing_next.tests.test_postastra_pe_generic_world_possibility",
+          "seconds": "0.132",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_negative_reversed_unauthorized_role",
+          "classname": "staging.ns.rawlsing_next.tests.test_postastra_pe_generic_world_possibility",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_negative_new_unit_not_authorized",
+          "classname": "staging.ns.rawlsing_next.tests.test_postastra_pe_generic_world_possibility",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_negative_artificial_parent_sampling_refused_at_boundary",
+          "classname": "staging.ns.rawlsing_next.tests.test_postastra_pe_generic_world_possibility",
+          "seconds": "0.000",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_negative_fake_model_use_refused",
+          "classname": "staging.ns.rawlsing_next.tests.test_postastra_pe_generic_world_possibility",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_negative_source_hash_forgery_rejected_by_custody_witness",
+          "classname": "staging.ns.rawlsing_next.tests.test_postastra_pe_generic_world_possibility",
+          "seconds": "0.046",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_negative_missing_conditional_denominator_refused",
+          "classname": "staging.ns.rawlsing_next.tests.test_postastra_pe_generic_world_possibility",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_negative_invalidated_current_refused",
+          "classname": "staging.ns.rawlsing_next.tests.test_postastra_pe_generic_world_possibility",
+          "seconds": "0.001",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_negative_future_time_availability_refused",
+          "classname": "staging.ns.rawlsing_next.tests.test_postastra_pe_generic_world_possibility",
+          "seconds": "0.002",
+          "status": "PASS",
+          "diagnostic": null
+        }
+      ]
+    },
+    {
+      "suite": "hostile",
+      "counts": {
+        "PASS": 16,
+        "RED": 31,
+        "ERROR": 0,
+        "SKIP": 0
+      },
+      "total": 47,
+      "execution": {
+        "suite": "hostile",
+        "started_at": "2026-10-15T01:39:52.606397+00:00",
+        "finished_at": "2026-10-15T01:42:20.793956+00:00",
+        "command": [
+          "/usr/local/bin/python3",
+          "-m",
+          "pytest",
+          "$RSC0_RETURN/reviewer_tests/test_rsc0_hostile.py",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "--junitxml=$RSC0_RETURN/repro/hostile.xml"
+        ],
+        "cwd": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1",
+        "exit_code": 1,
+        "raw_stdout_sha256": "7852538eeda560d49f59e50b95b49b280ad1c95c154296c14d827ea1deaea176",
+        "sanitization": "runtime/return/worktree paths only",
+        "log": "repro/hostile.log",
+        "junit": "repro/hostile.xml"
+      },
+      "cases": [
+        {
+          "name": "test_actual_code_object_calls_and_consumed_support[ProviderA]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "6.830",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_actual_code_object_calls_and_consumed_support[ProviderB]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "6.775",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_world_read_denied_before_producer_or_consumer[absent-ProviderA]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "0.005",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_world_read_denied_before_producer_or_consumer[absent-ProviderB]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "0.005",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_world_read_denied_before_producer_or_consumer[revoked-ProviderA]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "0.005",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_world_read_denied_before_producer_or_consumer[revoked-ProviderB]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "0.004",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_possibility_query_permission_cannot_be_fabricated[absent-ProviderA]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "6.760",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_a.ProviderA'>, mode = 'absent'\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    @pytest.mark.parametrize('mode',['absent','revoked'])\n    def test_possibility_query_permission_cannot_be_fabricated(provider,mode):\n     w=copy.deepcopy(BASELINE_WORLD);w['permission_ceiling']['use_atoms'].remove('POSSIBILITY_QUERY')\n     if mode=='revoked':w['permission_ceiling']['revoked_atoms']=['POSSIBILITY_QUERY']\n     with independent_trace() as (calls,_):\n      try:b=A.TwoContractAdapter(provider(world=w)).run()\n      except PortContractError as e:\n       record('query_deny_'+provider.__name__+'_'+mode,error=e.code,calls=calls);assert e.code=='DENIED_USE';return\n     record('query_deny_'+provider.__name__+'_'+mode,issuer_and_use=b['world_receipt']['issuer_and_use'],calls=calls,consumer_output=b['consumer_effects'][CID]['output'])\n>    pytest.fail('POSSIBILITY_QUERY_NOT_AUTHORIZED_BUT_EFFECTIVE_AND_CONSUMED')\nE    Failed: POSSIBILITY_QUERY_NOT_AUTHORIZED_BUT_EFFECTIVE_AND_CONSUMED\n\n../../../reviewer_tests/test_rsc0_hostile.py:72: Failed",
+          "scientific_classification": "CANDIDATE_AUTHORIZATION_DEFECT"
+        },
+        {
+          "name": "test_possibility_query_permission_cannot_be_fabricated[absent-ProviderB]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "6.988",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_b.ProviderB'>, mode = 'absent'\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    @pytest.mark.parametrize('mode',['absent','revoked'])\n    def test_possibility_query_permission_cannot_be_fabricated(provider,mode):\n     w=copy.deepcopy(BASELINE_WORLD);w['permission_ceiling']['use_atoms'].remove('POSSIBILITY_QUERY')\n     if mode=='revoked':w['permission_ceiling']['revoked_atoms']=['POSSIBILITY_QUERY']\n     with independent_trace() as (calls,_):\n      try:b=A.TwoContractAdapter(provider(world=w)).run()\n      except PortContractError as e:\n       record('query_deny_'+provider.__name__+'_'+mode,error=e.code,calls=calls);assert e.code=='DENIED_USE';return\n     record('query_deny_'+provider.__name__+'_'+mode,issuer_and_use=b['world_receipt']['issuer_and_use'],calls=calls,consumer_output=b['consumer_effects'][CID]['output'])\n>    pytest.fail('POSSIBILITY_QUERY_NOT_AUTHORIZED_BUT_EFFECTIVE_AND_CONSUMED')\nE    Failed: POSSIBILITY_QUERY_NOT_AUTHORIZED_BUT_EFFECTIVE_AND_CONSUMED\n\n../../../reviewer_tests/test_rsc0_hostile.py:72: Failed",
+          "scientific_classification": "CANDIDATE_AUTHORIZATION_DEFECT"
+        },
+        {
+          "name": "test_possibility_query_permission_cannot_be_fabricated[revoked-ProviderA]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "7.243",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_a.ProviderA'>, mode = 'revoked'\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    @pytest.mark.parametrize('mode',['absent','revoked'])\n    def test_possibility_query_permission_cannot_be_fabricated(provider,mode):\n     w=copy.deepcopy(BASELINE_WORLD);w['permission_ceiling']['use_atoms'].remove('POSSIBILITY_QUERY')\n     if mode=='revoked':w['permission_ceiling']['revoked_atoms']=['POSSIBILITY_QUERY']\n     with independent_trace() as (calls,_):\n      try:b=A.TwoContractAdapter(provider(world=w)).run()\n      except PortContractError as e:\n       record('query_deny_'+provider.__name__+'_'+mode,error=e.code,calls=calls);assert e.code=='DENIED_USE';return\n     record('query_deny_'+provider.__name__+'_'+mode,issuer_and_use=b['world_receipt']['issuer_and_use'],calls=calls,consumer_output=b['consumer_effects'][CID]['output'])\n>    pytest.fail('POSSIBILITY_QUERY_NOT_AUTHORIZED_BUT_EFFECTIVE_AND_CONSUMED')\nE    Failed: POSSIBILITY_QUERY_NOT_AUTHORIZED_BUT_EFFECTIVE_AND_CONSUMED\n\n../../../reviewer_tests/test_rsc0_hostile.py:72: Failed",
+          "scientific_classification": "CANDIDATE_AUTHORIZATION_DEFECT"
+        },
+        {
+          "name": "test_possibility_query_permission_cannot_be_fabricated[revoked-ProviderB]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "7.759",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_b.ProviderB'>, mode = 'revoked'\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    @pytest.mark.parametrize('mode',['absent','revoked'])\n    def test_possibility_query_permission_cannot_be_fabricated(provider,mode):\n     w=copy.deepcopy(BASELINE_WORLD);w['permission_ceiling']['use_atoms'].remove('POSSIBILITY_QUERY')\n     if mode=='revoked':w['permission_ceiling']['revoked_atoms']=['POSSIBILITY_QUERY']\n     with independent_trace() as (calls,_):\n      try:b=A.TwoContractAdapter(provider(world=w)).run()\n      except PortContractError as e:\n       record('query_deny_'+provider.__name__+'_'+mode,error=e.code,calls=calls);assert e.code=='DENIED_USE';return\n     record('query_deny_'+provider.__name__+'_'+mode,issuer_and_use=b['world_receipt']['issuer_and_use'],calls=calls,consumer_output=b['consumer_effects'][CID]['output'])\n>    pytest.fail('POSSIBILITY_QUERY_NOT_AUTHORIZED_BUT_EFFECTIVE_AND_CONSUMED')\nE    Failed: POSSIBILITY_QUERY_NOT_AUTHORIZED_BUT_EFFECTIVE_AND_CONSUMED\n\n../../../reviewer_tests/test_rsc0_hostile.py:72: Failed",
+          "scientific_classification": "CANDIDATE_AUTHORIZATION_DEFECT"
+        },
+        {
+          "name": "test_original_2009_2010_lookahead_rejected[ProviderA]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "0.002",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_original_2009_2010_lookahead_rejected[ProviderB]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "0.002",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_prior_knowledge_requires_actual_scope_and_chronology[forgery0]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "0.001",
+          "status": "RED",
+          "diagnostic": "forgery = {'bound_authority_ref': 'foreign:any-nonempty-string'}\n\n    @pytest.mark.parametrize('forgery',[\n     {'bound_authority_ref':'foreign:any-nonempty-string'},\n     {'bound_authority_ref':'fx:issuer:fixture_only','source_ref':'foreign:source','known_at':'2025'},\n     {'bound_authority_ref':{'kind':'TEST_ONLY','id':'forged','hash':'0'*64},'known_at':'2026','scope':'foreign:scope'},\n    ])\n    def test_prior_knowledge_requires_actual_scope_and_chronology(forgery):\n     w=copy.deepcopy(BASELINE_WORLD);w['time_axes']['as_of']='2009';w['prior_knowledge_declaration']=forgery\n     try:result=validate_knowledge_clock(w)\n     except PortContractError as e:assert e.code=='NO_CURRENT_OR_NOT_KNOWN_ASOF';return\n     record('prior_forgery_'+str(len(forgery)),declaration=forgery,result=result)\n>    pytest.fail('PRIOR_KNOWLEDGE_ACCEPTS_NONEMPTY_REF_WITHOUT_DEREFERENCE_OR_DATE')\nE    Failed: PRIOR_KNOWLEDGE_ACCEPTS_NONEMPTY_REF_WITHOUT_DEREFERENCE_OR_DATE\n\n../../../reviewer_tests/test_rsc0_hostile.py:90: Failed",
+          "scientific_classification": "CANDIDATE_VALIDATION_DEFECT"
+        },
+        {
+          "name": "test_prior_knowledge_requires_actual_scope_and_chronology[forgery1]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "0.001",
+          "status": "RED",
+          "diagnostic": "forgery = {'bound_authority_ref': 'fx:issuer:fixture_only', 'known_at': '2025', 'source_ref': 'foreign:source'}\n\n    @pytest.mark.parametrize('forgery',[\n     {'bound_authority_ref':'foreign:any-nonempty-string'},\n     {'bound_authority_ref':'fx:issuer:fixture_only','source_ref':'foreign:source','known_at':'2025'},\n     {'bound_authority_ref':{'kind':'TEST_ONLY','id':'forged','hash':'0'*64},'known_at':'2026','scope':'foreign:scope'},\n    ])\n    def test_prior_knowledge_requires_actual_scope_and_chronology(forgery):\n     w=copy.deepcopy(BASELINE_WORLD);w['time_axes']['as_of']='2009';w['prior_knowledge_declaration']=forgery\n     try:result=validate_knowledge_clock(w)\n     except PortContractError as e:assert e.code=='NO_CURRENT_OR_NOT_KNOWN_ASOF';return\n     record('prior_forgery_'+str(len(forgery)),declaration=forgery,result=result)\n>    pytest.fail('PRIOR_KNOWLEDGE_ACCEPTS_NONEMPTY_REF_WITHOUT_DEREFERENCE_OR_DATE')\nE    Failed: PRIOR_KNOWLEDGE_ACCEPTS_NONEMPTY_REF_WITHOUT_DEREFERENCE_OR_DATE\n\n../../../reviewer_tests/test_rsc0_hostile.py:90: Failed",
+          "scientific_classification": "CANDIDATE_VALIDATION_DEFECT"
+        },
+        {
+          "name": "test_prior_knowledge_requires_actual_scope_and_chronology[forgery2]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "0.001",
+          "status": "RED",
+          "diagnostic": "forgery = {'bound_authority_ref': {'hash': '0000000000000000000000000000000000000000000000000000000000000000', 'id': 'forged', 'kind': 'TEST_ONLY'}, 'known_at': '2026', 'scope': 'foreign:scope'}\n\n    @pytest.mark.parametrize('forgery',[\n     {'bound_authority_ref':'foreign:any-nonempty-string'},\n     {'bound_authority_ref':'fx:issuer:fixture_only','source_ref':'foreign:source','known_at':'2025'},\n     {'bound_authority_ref':{'kind':'TEST_ONLY','id':'forged','hash':'0'*64},'known_at':'2026','scope':'foreign:scope'},\n    ])\n    def test_prior_knowledge_requires_actual_scope_and_chronology(forgery):\n     w=copy.deepcopy(BASELINE_WORLD);w['time_axes']['as_of']='2009';w['prior_knowledge_declaration']=forgery\n     try:result=validate_knowledge_clock(w)\n     except PortContractError as e:assert e.code=='NO_CURRENT_OR_NOT_KNOWN_ASOF';return\n     record('prior_forgery_'+str(len(forgery)),declaration=forgery,result=result)\n>    pytest.fail('PRIOR_KNOWLEDGE_ACCEPTS_NONEMPTY_REF_WITHOUT_DEREFERENCE_OR_DATE')\nE    Failed: PRIOR_KNOWLEDGE_ACCEPTS_NONEMPTY_REF_WITHOUT_DEREFERENCE_OR_DATE\n\n../../../reviewer_tests/test_rsc0_hostile.py:90: Failed",
+          "scientific_classification": "CANDIDATE_VALIDATION_DEFECT"
+        },
+        {
+          "name": "test_declared_prior_knowledge_is_not_silently_dropped[ProviderA]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "0.002",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_a.ProviderA'>\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    def test_declared_prior_knowledge_is_not_silently_dropped(provider):\n     w=copy.deepcopy(BASELINE_WORLD);w['time_axes']['as_of']='2009'\n     # Fixture-bound candidate declaration; no real authority issuance is asserted.\n     d={'bound_authority_ref':w['authority_ref'],'source_ref':w['source_ref'],'source_release_ref':w['source_release_ref'],'scope':w['permission_ceiling']['scope_binding'],'known_at':'2008'}\n     w['prior_knowledge_declaration']=d\n     assert validate_knowledge_clock(w)['state']=='KNOWLEDGE_ORDERING_OK'\n     selected=provider(world=w).resolve_world_selection({'scope':w['permission_ceiling']['scope_binding']})\n     record('prior_dropped_'+provider.__name__,submitted=d,selected=selected['world'].get('prior_knowledge_declaration'))\n>    assert selected['world'].get('prior_knowledge_declaration')==d,'PROVIDER_DROPS_THE_ONLY_PRIOR_KNOWLEDGE_EXCEPTION_CARRIER'\nE    AssertionError: PROVIDER_DROPS_THE_ONLY_PRIOR_KNOWLEDGE_EXCEPTION_CARRIER\nE    assert None == {'bound_authority_ref': 'fx:issuer:fixture_only', 'known_at': '2008', 'scope': 'fx:universe:single_source|fx:release:v1', 'source_ref': 'fx:source:synthetic', ...}\nE     +  where None = <built-in method get of dict object at 0x102c9ce00>('prior_knowledge_declaration')\nE     +    where <built-in method get of dict object at 0x102c9ce00> = {'absolute_horizon': 'fx:AH', 'authority_ref': 'fx:issuer:fixture_only', 'clock_mode': 'KNOWLEDGE_AS_OF', 'contradicto...ss': 'public rule A'}, {'id': 'route_closed', 'state': 'CONTRADICTORY_SOURCE_SCOPE', 'witness': 'public rule B'}], ...}.get\n\n../../../reviewer_tests/test_rsc0_hostile.py:101: AssertionError",
+          "scientific_classification": "MISSING_DECLARATION_CARRIAGE"
+        },
+        {
+          "name": "test_declared_prior_knowledge_is_not_silently_dropped[ProviderB]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "0.002",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_b.ProviderB'>\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    def test_declared_prior_knowledge_is_not_silently_dropped(provider):\n     w=copy.deepcopy(BASELINE_WORLD);w['time_axes']['as_of']='2009'\n     # Fixture-bound candidate declaration; no real authority issuance is asserted.\n     d={'bound_authority_ref':w['authority_ref'],'source_ref':w['source_ref'],'source_release_ref':w['source_release_ref'],'scope':w['permission_ceiling']['scope_binding'],'known_at':'2008'}\n     w['prior_knowledge_declaration']=d\n     assert validate_knowledge_clock(w)['state']=='KNOWLEDGE_ORDERING_OK'\n     selected=provider(world=w).resolve_world_selection({'scope':w['permission_ceiling']['scope_binding']})\n     record('prior_dropped_'+provider.__name__,submitted=d,selected=selected['world'].get('prior_knowledge_declaration'))\n>    assert selected['world'].get('prior_knowledge_declaration')==d,'PROVIDER_DROPS_THE_ONLY_PRIOR_KNOWLEDGE_EXCEPTION_CARRIER'\nE    AssertionError: PROVIDER_DROPS_THE_ONLY_PRIOR_KNOWLEDGE_EXCEPTION_CARRIER\nE    assert None == {'bound_authority_ref': 'fx:issuer:fixture_only', 'known_at': '2008', 'scope': 'fx:universe:single_source|fx:release:v1', 'source_ref': 'fx:source:synthetic', ...}\nE     +  where None = <built-in method get of dict object at 0x1034299c0>('prior_knowledge_declaration')\nE     +    where <built-in method get of dict object at 0x1034299c0> = {'absolute_horizon': 'fx:AH', 'authority_ref': 'fx:issuer:fixture_only', 'clock_mode': 'KNOWLEDGE_AS_OF', 'contradicto...ss': 'public rule A'}, {'id': 'route_closed', 'state': 'CONTRADICTORY_SOURCE_SCOPE', 'witness': 'public rule B'}], ...}.get\n\n../../../reviewer_tests/test_rsc0_hostile.py:101: AssertionError",
+          "scientific_classification": "MISSING_DECLARATION_CARRIAGE"
+        },
+        {
+          "name": "test_reverse_fixture_matches_real_reverse_owner_geometry[ProviderA]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "2.919",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_reverse_fixture_matches_real_reverse_owner_geometry[ProviderB]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "2.884",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_reverse_claim_not_issued_by_hashing_caller_numbers[bad0-ProviderA]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "2.655",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_a.ProviderA'>\nbad = {'reverse_denominator': 0, 'reverse_numerator': 999}\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    @pytest.mark.parametrize('bad',[{'reverse_numerator':999,'reverse_denominator':0},{'reverse_numerator':54,'reverse_denominator':61},{'reverse_risk_set':'foreign:unissued-risk','reverse_numerator':1,'reverse_denominator':999}])\n    def test_reverse_claim_not_issued_by_hashing_caller_numbers(provider,bad):\n     b=A.TwoContractAdapter(provider()).run();g=copy.deepcopy(REVERSAL_GRANT_SCOPED);g['binds'].update(bad)\n     try:result=provider().request_role_reversal(b['world_receipt'],b['possibility_receipt'],g)\n     except PortContractError as e:assert e.code=='HELD_AUTHORITY';return\n     record('reverse_forgery_'+provider.__name__+'_'+str(bad.get('reverse_denominator')),grant=g,result=result)\n>    pytest.fail('CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED')\nE    Failed: CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED\n\n../../../reviewer_tests/test_rsc0_hostile.py:120: Failed",
+          "scientific_classification": "CANDIDATE_REVERSE_VALIDATION_AND_ISSUANCE_CLAIM_DEFECT"
+        },
+        {
+          "name": "test_reverse_claim_not_issued_by_hashing_caller_numbers[bad0-ProviderB]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "2.653",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_b.ProviderB'>\nbad = {'reverse_denominator': 0, 'reverse_numerator': 999}\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    @pytest.mark.parametrize('bad',[{'reverse_numerator':999,'reverse_denominator':0},{'reverse_numerator':54,'reverse_denominator':61},{'reverse_risk_set':'foreign:unissued-risk','reverse_numerator':1,'reverse_denominator':999}])\n    def test_reverse_claim_not_issued_by_hashing_caller_numbers(provider,bad):\n     b=A.TwoContractAdapter(provider()).run();g=copy.deepcopy(REVERSAL_GRANT_SCOPED);g['binds'].update(bad)\n     try:result=provider().request_role_reversal(b['world_receipt'],b['possibility_receipt'],g)\n     except PortContractError as e:assert e.code=='HELD_AUTHORITY';return\n     record('reverse_forgery_'+provider.__name__+'_'+str(bad.get('reverse_denominator')),grant=g,result=result)\n>    pytest.fail('CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED')\nE    Failed: CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED\n\n../../../reviewer_tests/test_rsc0_hostile.py:120: Failed",
+          "scientific_classification": "CANDIDATE_REVERSE_VALIDATION_AND_ISSUANCE_CLAIM_DEFECT"
+        },
+        {
+          "name": "test_reverse_claim_not_issued_by_hashing_caller_numbers[bad1-ProviderA]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "2.709",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_a.ProviderA'>\nbad = {'reverse_denominator': 61, 'reverse_numerator': 54}\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    @pytest.mark.parametrize('bad',[{'reverse_numerator':999,'reverse_denominator':0},{'reverse_numerator':54,'reverse_denominator':61},{'reverse_risk_set':'foreign:unissued-risk','reverse_numerator':1,'reverse_denominator':999}])\n    def test_reverse_claim_not_issued_by_hashing_caller_numbers(provider,bad):\n     b=A.TwoContractAdapter(provider()).run();g=copy.deepcopy(REVERSAL_GRANT_SCOPED);g['binds'].update(bad)\n     try:result=provider().request_role_reversal(b['world_receipt'],b['possibility_receipt'],g)\n     except PortContractError as e:assert e.code=='HELD_AUTHORITY';return\n     record('reverse_forgery_'+provider.__name__+'_'+str(bad.get('reverse_denominator')),grant=g,result=result)\n>    pytest.fail('CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED')\nE    Failed: CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED\n\n../../../reviewer_tests/test_rsc0_hostile.py:120: Failed",
+          "scientific_classification": "CANDIDATE_REVERSE_VALIDATION_AND_ISSUANCE_CLAIM_DEFECT"
+        },
+        {
+          "name": "test_reverse_claim_not_issued_by_hashing_caller_numbers[bad1-ProviderB]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "2.705",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_b.ProviderB'>\nbad = {'reverse_denominator': 61, 'reverse_numerator': 54}\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    @pytest.mark.parametrize('bad',[{'reverse_numerator':999,'reverse_denominator':0},{'reverse_numerator':54,'reverse_denominator':61},{'reverse_risk_set':'foreign:unissued-risk','reverse_numerator':1,'reverse_denominator':999}])\n    def test_reverse_claim_not_issued_by_hashing_caller_numbers(provider,bad):\n     b=A.TwoContractAdapter(provider()).run();g=copy.deepcopy(REVERSAL_GRANT_SCOPED);g['binds'].update(bad)\n     try:result=provider().request_role_reversal(b['world_receipt'],b['possibility_receipt'],g)\n     except PortContractError as e:assert e.code=='HELD_AUTHORITY';return\n     record('reverse_forgery_'+provider.__name__+'_'+str(bad.get('reverse_denominator')),grant=g,result=result)\n>    pytest.fail('CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED')\nE    Failed: CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED\n\n../../../reviewer_tests/test_rsc0_hostile.py:120: Failed",
+          "scientific_classification": "CANDIDATE_REVERSE_VALIDATION_AND_ISSUANCE_CLAIM_DEFECT"
+        },
+        {
+          "name": "test_reverse_claim_not_issued_by_hashing_caller_numbers[bad2-ProviderA]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "2.787",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_a.ProviderA'>\nbad = {'reverse_denominator': 999, 'reverse_numerator': 1, 'reverse_risk_set': 'foreign:unissued-risk'}\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    @pytest.mark.parametrize('bad',[{'reverse_numerator':999,'reverse_denominator':0},{'reverse_numerator':54,'reverse_denominator':61},{'reverse_risk_set':'foreign:unissued-risk','reverse_numerator':1,'reverse_denominator':999}])\n    def test_reverse_claim_not_issued_by_hashing_caller_numbers(provider,bad):\n     b=A.TwoContractAdapter(provider()).run();g=copy.deepcopy(REVERSAL_GRANT_SCOPED);g['binds'].update(bad)\n     try:result=provider().request_role_reversal(b['world_receipt'],b['possibility_receipt'],g)\n     except PortContractError as e:assert e.code=='HELD_AUTHORITY';return\n     record('reverse_forgery_'+provider.__name__+'_'+str(bad.get('reverse_denominator')),grant=g,result=result)\n>    pytest.fail('CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED')\nE    Failed: CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED\n\n../../../reviewer_tests/test_rsc0_hostile.py:120: Failed",
+          "scientific_classification": "CANDIDATE_REVERSE_VALIDATION_AND_ISSUANCE_CLAIM_DEFECT"
+        },
+        {
+          "name": "test_reverse_claim_not_issued_by_hashing_caller_numbers[bad2-ProviderB]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "2.676",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_b.ProviderB'>\nbad = {'reverse_denominator': 999, 'reverse_numerator': 1, 'reverse_risk_set': 'foreign:unissued-risk'}\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    @pytest.mark.parametrize('bad',[{'reverse_numerator':999,'reverse_denominator':0},{'reverse_numerator':54,'reverse_denominator':61},{'reverse_risk_set':'foreign:unissued-risk','reverse_numerator':1,'reverse_denominator':999}])\n    def test_reverse_claim_not_issued_by_hashing_caller_numbers(provider,bad):\n     b=A.TwoContractAdapter(provider()).run();g=copy.deepcopy(REVERSAL_GRANT_SCOPED);g['binds'].update(bad)\n     try:result=provider().request_role_reversal(b['world_receipt'],b['possibility_receipt'],g)\n     except PortContractError as e:assert e.code=='HELD_AUTHORITY';return\n     record('reverse_forgery_'+provider.__name__+'_'+str(bad.get('reverse_denominator')),grant=g,result=result)\n>    pytest.fail('CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED')\nE    Failed: CALLER_AUTHORED_REVERSE_NUMBERS_LABELLED_INDEPENDENTLY_ISSUED\n\n../../../reviewer_tests/test_rsc0_hostile.py:120: Failed",
+          "scientific_classification": "CANDIDATE_REVERSE_VALIDATION_AND_ISSUANCE_CLAIM_DEFECT"
+        },
+        {
+          "name": "test_testonly_operational_request_never_promotes_grade[ProviderA]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "2.732",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_testonly_operational_request_never_promotes_grade[ProviderB]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "2.724",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_operative_empirical_model_ref_rejected[ProviderA]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "0.002",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_operative_empirical_model_ref_rejected[ProviderB]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "0.002",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_real_pe_producer_cannot_be_replaced_by_none[ProviderA]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "6.503",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_a.ProviderA'>\nmonkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1029d7050>\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    def test_real_pe_producer_cannot_be_replaced_by_none(provider,monkeypatch):\n     monkeypatch.setattr(P._PE,'serve_generic_world_situated_possibility',lambda **kw:None)\n     with independent_trace() as (calls,_):\n      try:b=A.TwoContractAdapter(provider()).run()\n      except PortContractError:return\n     record('pe_removed_'+provider.__name__,actual_calls=calls,lane=b['empirical_lane'],consumed=b['consumer_effects'][CID]['output'])\n>    assert not b['empirical_lane']['connected'],'PE_ABSENT_BUT_CONNECTED_CLAIM_AND_CONSUMERS_SURVIVE'\nE    AssertionError: PE_ABSENT_BUT_CONNECTED_CLAIM_AND_CONSUMERS_SURVIVE\nE    assert not True\n\n../../../reviewer_tests/test_rsc0_hostile.py:146: AssertionError",
+          "scientific_classification": "INCOMPLETE_PE_CONNECTION_GATE"
+        },
+        {
+          "name": "test_real_pe_producer_cannot_be_replaced_by_none[ProviderB]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "6.562",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_b.ProviderB'>\nmonkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10307b7d0>\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    def test_real_pe_producer_cannot_be_replaced_by_none(provider,monkeypatch):\n     monkeypatch.setattr(P._PE,'serve_generic_world_situated_possibility',lambda **kw:None)\n     with independent_trace() as (calls,_):\n      try:b=A.TwoContractAdapter(provider()).run()\n      except PortContractError:return\n     record('pe_removed_'+provider.__name__,actual_calls=calls,lane=b['empirical_lane'],consumed=b['consumer_effects'][CID]['output'])\n>    assert not b['empirical_lane']['connected'],'PE_ABSENT_BUT_CONNECTED_CLAIM_AND_CONSUMERS_SURVIVE'\nE    AssertionError: PE_ABSENT_BUT_CONNECTED_CLAIM_AND_CONSUMERS_SURVIVE\nE    assert not True\n\n../../../reviewer_tests/test_rsc0_hostile.py:146: AssertionError",
+          "scientific_classification": "INCOMPLETE_PE_CONNECTION_GATE"
+        },
+        {
+          "name": "test_fake_profile_events_cannot_replace_actual_producer_execution[ProviderA]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "2.726",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_a.ProviderA'>\nmonkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10357b3d0>\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    def test_fake_profile_events_cannot_replace_actual_producer_execution(provider,monkeypatch):\n     prior=A.TwoContractAdapter(provider()).run()['empirical_lane']\n     def fake_setprofile(callback):\n      if callback:\n       for f in TARGETS.values():callback(types.SimpleNamespace(f_code=f.__code__),'call',None)\n     def cached(*,counter=None):\n      lane=copy.deepcopy(prior);lane.update(calls=counter.summary(),call_total=counter.total(),modules_touched=counter.modules_touched());return lane\n     monkeypatch.setattr(sys,'setprofile',fake_setprofile)\n     monkeypatch.setattr(A,'compute_pinned_empirical_lane',cached)\n     with independent_trace() as (calls,_):\n      try:b=A.TwoContractAdapter(provider()).run()\n      except PortContractError:return\n     record('fake_profile_'+provider.__name__,actual_calls=calls,claimed_calls=b['empirical_lane']['calls'],connected=b['empirical_lane']['connected'])\n     assert not any(calls.values())\n>    pytest.fail('FAKE_PROFILE_EVENTS_PLUS_CACHED_HINT_SATISFY_ADAPTER_CONNECTION_GATE')\nE    Failed: FAKE_PROFILE_EVENTS_PLUS_CACHED_HINT_SATISFY_ADAPTER_CONNECTION_GATE\n\n../../../reviewer_tests/test_rsc0_hostile.py:163: Failed",
+          "scientific_classification": "PROVENANCE_CLAIM_FALSIFIER; NOT_MALICIOUS_RUNTIME_SECURITY_PROOF"
+        },
+        {
+          "name": "test_fake_profile_events_cannot_replace_actual_producer_execution[ProviderB]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "2.624",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_b.ProviderB'>\nmonkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x102fc5910>\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    def test_fake_profile_events_cannot_replace_actual_producer_execution(provider,monkeypatch):\n     prior=A.TwoContractAdapter(provider()).run()['empirical_lane']\n     def fake_setprofile(callback):\n      if callback:\n       for f in TARGETS.values():callback(types.SimpleNamespace(f_code=f.__code__),'call',None)\n     def cached(*,counter=None):\n      lane=copy.deepcopy(prior);lane.update(calls=counter.summary(),call_total=counter.total(),modules_touched=counter.modules_touched());return lane\n     monkeypatch.setattr(sys,'setprofile',fake_setprofile)\n     monkeypatch.setattr(A,'compute_pinned_empirical_lane',cached)\n     with independent_trace() as (calls,_):\n      try:b=A.TwoContractAdapter(provider()).run()\n      except PortContractError:return\n     record('fake_profile_'+provider.__name__,actual_calls=calls,claimed_calls=b['empirical_lane']['calls'],connected=b['empirical_lane']['connected'])\n     assert not any(calls.values())\n>    pytest.fail('FAKE_PROFILE_EVENTS_PLUS_CACHED_HINT_SATISFY_ADAPTER_CONNECTION_GATE')\nE    Failed: FAKE_PROFILE_EVENTS_PLUS_CACHED_HINT_SATISFY_ADAPTER_CONNECTION_GATE\n\n../../../reviewer_tests/test_rsc0_hostile.py:163: Failed",
+          "scientific_classification": "PROVENANCE_CLAIM_FALSIFIER; NOT_MALICIOUS_RUNTIME_SECURITY_PROOF"
+        },
+        {
+          "name": "test_changed_real_source_is_detected_not_silently_static[ProviderA]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "7.591",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_changed_real_source_is_detected_not_silently_static[ProviderB]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "7.780",
+          "status": "PASS",
+          "diagnostic": null
+        },
+        {
+          "name": "test_schema_pass_and_serialized_negative_dereference_gap[ProviderA]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "2.765",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_a.ProviderA'>\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    def test_schema_pass_and_serialized_negative_dereference_gap(provider):\n     b=A.TwoContractAdapter(provider()).run();schema=json.loads((CP/'staging/oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json').read_text())\n     v=Draft202012Validator(schema)\n     for name in ['world_receipt','possibility_receipt']:assert not list(v.iter_errors(json.loads(json.dumps(b[name]))))\n     serialized=json.loads(json.dumps(b['world_receipt']))\n     refs=serialized['dependency_closure']['negative_dependencies']\n     record('serialized_negative_'+provider.__name__,legacy_states=b['world_receipt']['world']['negative_states'],serialized_refs=refs,dereference_capability=serialized['dependency_closure']['dereference_capability_ref'],serialized_values_read_refs=b['possibility_receipt']['values_read_refs'])\n     # Ref-only representation is schema-lawful; test the port's actual read surface.\n     p=provider();selection=p.resolve_world_selection({'scope':BASELINE_WORLD['permission_ceiling']['scope_binding']})\n>    try:restored=p.read_values(selection,[ref['id'] for ref in refs])\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n../../../reviewer_tests/test_rsc0_hostile.py:183: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <port.provider_a.ProviderA object at 0x103530050>\nselection = {'binding_generation': 0, 'contract': 'GENERIC_WORLD_SELECTION@1.0.0', 'demand': {'scope': 'fx:universe:single_source|...': 'fx:cond:school'}, {'index': 2, 'n': 12, 'ref': 'fx:cond:caretime'}], 'direction': 'FORWARD_CONDITIONAL', ...}, ...}\nkeys = ['fx:scope:measured-zero', 'fx:scope:complete-empty', 'fx:scope:missing', 'fx:scope:power', 'fx:scope:notasked', 'fx:scope:incomparable', ...]\n\n    def read_values(self, selection: Mapping[str, Any], keys: list[str]) -> dict[str, Any]:\n        # the selected value surface includes rules/AH/strata AND route objects\n        values = {**selection[\"world\"][\"values\"], **selection[\"world\"][\"routes\"]}\n        out: dict[str, Any] = {}\n        for key in keys:\n            if key not in values:\n>               raise PortContractError(\"REJECT_UNVERIFIABLE_CONSUMER_USE\", f\"value key absent: {key}\")\nE               port.contracts.PortContractError: REJECT_UNVERIFIABLE_CONSUMER_USE: value key absent: fx:scope:measured-zero\n\nport/provider_a.py:149: PortContractError\n\nDuring handling of the above exception, another exception occurred:\n\nprovider = <class 'port.provider_a.ProviderA'>\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    def test_schema_pass_and_serialized_negative_dereference_gap(provider):\n     b=A.TwoContractAdapter(provider()).run();schema=json.loads((CP/'staging/oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json').read_text())\n     v=Draft202012Validator(schema)\n     for name in ['world_receipt','possibility_receipt']:assert not list(v.iter_errors(json.loads(json.dumps(b[name]))))\n     serialized=json.loads(json.dumps(b['world_receipt']))\n     refs=serialized['dependency_closure']['negative_dependencies']\n     record('serialized_negative_'+provider.__name__,legacy_states=b['world_receipt']['world']['negative_states'],serialized_refs=refs,dereference_capability=serialized['dependency_closure']['dereference_capability_ref'],serialized_values_read_refs=b['possibility_receipt']['values_read_refs'])\n     # Ref-only representation is schema-lawful; test the port's actual read surface.\n     p=provider();selection=p.resolve_world_selection({'scope':BASELINE_WORLD['permission_ceiling']['scope_binding']})\n     try:restored=p.read_values(selection,[ref['id'] for ref in refs])\n     except PortContractError as e:\n      record('negative_dereference_'+provider.__name__,error=e.code,message=str(e),ref_only_is_schema_lawful=True,claim_limit='No executable negative-ref dereference through the port read API; not a schema syntax failure')\n>     pytest.fail('NEGATIVE_DEPENDENCY_REFS_NOT_DEREFERENCEABLE_THROUGH_PORT_READ_API')\nE     Failed: NEGATIVE_DEPENDENCY_REFS_NOT_DEREFERENCEABLE_THROUGH_PORT_READ_API\n\n../../../reviewer_tests/test_rsc0_hostile.py:186: Failed",
+          "scientific_classification": "UNPROVED_NEGATIVE_REF_DEREFERENCE; SCHEMA_SYNTAX_PASS"
+        },
+        {
+          "name": "test_schema_pass_and_serialized_negative_dereference_gap[ProviderB]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "2.775",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_b.ProviderB'>\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    def test_schema_pass_and_serialized_negative_dereference_gap(provider):\n     b=A.TwoContractAdapter(provider()).run();schema=json.loads((CP/'staging/oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json').read_text())\n     v=Draft202012Validator(schema)\n     for name in ['world_receipt','possibility_receipt']:assert not list(v.iter_errors(json.loads(json.dumps(b[name]))))\n     serialized=json.loads(json.dumps(b['world_receipt']))\n     refs=serialized['dependency_closure']['negative_dependencies']\n     record('serialized_negative_'+provider.__name__,legacy_states=b['world_receipt']['world']['negative_states'],serialized_refs=refs,dereference_capability=serialized['dependency_closure']['dereference_capability_ref'],serialized_values_read_refs=b['possibility_receipt']['values_read_refs'])\n     # Ref-only representation is schema-lawful; test the port's actual read surface.\n     p=provider();selection=p.resolve_world_selection({'scope':BASELINE_WORLD['permission_ceiling']['scope_binding']})\n>    try:restored=p.read_values(selection,[ref['id'] for ref in refs])\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n../../../reviewer_tests/test_rsc0_hostile.py:183: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <port.provider_b.ProviderB object at 0x10349df10>\nselection = {'binding_generation': 0, 'contract': 'GENERIC_WORLD_SELECTION@1.0.0', 'demand': {'scope': 'fx:universe:single_source|...': 'fx:cond:school'}, {'index': 2, 'n': 12, 'ref': 'fx:cond:caretime'}], 'direction': 'FORWARD_CONDITIONAL', ...}, ...}\nkeys = ['fx:scope:measured-zero', 'fx:scope:complete-empty', 'fx:scope:missing', 'fx:scope:power', 'fx:scope:notasked', 'fx:scope:incomparable', ...]\n\n    def read_values(self, selection: Mapping[str, Any], keys: list[str]) -> dict[str, Any]:\n        # the selected value surface includes rules/AH/strata AND route objects\n        values = {**selection[\"world\"][\"values\"], **selection[\"world\"][\"routes\"]}\n        out: dict[str, Any] = {}\n        for key in keys:\n            if key not in values:\n>               raise PortContractError(\"REJECT_UNVERIFIABLE_CONSUMER_USE\", f\"value key absent: {key}\")\nE               port.contracts.PortContractError: REJECT_UNVERIFIABLE_CONSUMER_USE: value key absent: fx:scope:measured-zero\n\nport/provider_b.py:163: PortContractError\n\nDuring handling of the above exception, another exception occurred:\n\nprovider = <class 'port.provider_b.ProviderB'>\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    def test_schema_pass_and_serialized_negative_dereference_gap(provider):\n     b=A.TwoContractAdapter(provider()).run();schema=json.loads((CP/'staging/oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json').read_text())\n     v=Draft202012Validator(schema)\n     for name in ['world_receipt','possibility_receipt']:assert not list(v.iter_errors(json.loads(json.dumps(b[name]))))\n     serialized=json.loads(json.dumps(b['world_receipt']))\n     refs=serialized['dependency_closure']['negative_dependencies']\n     record('serialized_negative_'+provider.__name__,legacy_states=b['world_receipt']['world']['negative_states'],serialized_refs=refs,dereference_capability=serialized['dependency_closure']['dereference_capability_ref'],serialized_values_read_refs=b['possibility_receipt']['values_read_refs'])\n     # Ref-only representation is schema-lawful; test the port's actual read surface.\n     p=provider();selection=p.resolve_world_selection({'scope':BASELINE_WORLD['permission_ceiling']['scope_binding']})\n     try:restored=p.read_values(selection,[ref['id'] for ref in refs])\n     except PortContractError as e:\n      record('negative_dereference_'+provider.__name__,error=e.code,message=str(e),ref_only_is_schema_lawful=True,claim_limit='No executable negative-ref dereference through the port read API; not a schema syntax failure')\n>     pytest.fail('NEGATIVE_DEPENDENCY_REFS_NOT_DEREFERENCEABLE_THROUGH_PORT_READ_API')\nE     Failed: NEGATIVE_DEPENDENCY_REFS_NOT_DEREFERENCEABLE_THROUGH_PORT_READ_API\n\n../../../reviewer_tests/test_rsc0_hostile.py:186: Failed",
+          "scientific_classification": "UNPROVED_NEGATIVE_REF_DEREFERENCE; SCHEMA_SYNTAX_PASS"
+        },
+        {
+          "name": "test_receipt_identity_changes_on_h2_successors[ProviderA]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "8.094",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_a.ProviderA'>\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    def test_receipt_identity_changes_on_h2_successors(provider):\n     p=provider();a=A.TwoContractAdapter(p).run();frozen=copy.deepcopy(a)\n     p.refresh_binding_generation();b=A.TwoContractAdapter(p).run()\n     if isinstance(p,ProviderA):p._store['stage_one']['time_axes'].update(published='2012',as_of='2013')\n     else:\n      for row in p._table_temporal:\n       if row['axis']=='published':row['val']='2012'\n       elif row['axis']=='as_of':row['val']='2013'\n     p.refresh_publication_generation();c=A.TwoContractAdapter(p).run()\n     record('h2_refs_'+provider.__name__,world_refs=[x['world_receipt']['receipt_ref'] for x in [a,b,c]],world_digests=[x['world_receipt']['selection_digest'] for x in [a,b,c]],possibility_refs=[x['possibility_receipt']['receipt_ref'] for x in [a,b,c]])\n     assert a==frozen\n     assert len({x['world_receipt']['selection_digest'] for x in [a,b,c]})==3\n     assert len({x['world_receipt']['receipt_ref']['hash'] for x in [a,b,c]})==3\n>    assert len({x['possibility_receipt']['receipt_ref']['hash'] for x in [a,b,c]})==3,'WORLD_BOUND_POSSIBILITY_RECEIPT_IDENTITY_IGNORES_NEW_WORLD_BINDING'\nE    AssertionError: WORLD_BOUND_POSSIBILITY_RECEIPT_IDENTITY_IGNORES_NEW_WORLD_BINDING\nE    assert 1 == 3\nE     +  where 1 = len({'4279116eaa4a84d557c5f26b27fa46889863192b4a41d2fbbfa0f99268062501'})\n\n../../../reviewer_tests/test_rsc0_hostile.py:203: AssertionError",
+          "scientific_classification": "WORLD_BOUND_RECEIPT_IDENTITY_DEFECT"
+        },
+        {
+          "name": "test_receipt_identity_changes_on_h2_successors[ProviderB]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "8.040",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_b.ProviderB'>\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    def test_receipt_identity_changes_on_h2_successors(provider):\n     p=provider();a=A.TwoContractAdapter(p).run();frozen=copy.deepcopy(a)\n     p.refresh_binding_generation();b=A.TwoContractAdapter(p).run()\n     if isinstance(p,ProviderA):p._store['stage_one']['time_axes'].update(published='2012',as_of='2013')\n     else:\n      for row in p._table_temporal:\n       if row['axis']=='published':row['val']='2012'\n       elif row['axis']=='as_of':row['val']='2013'\n     p.refresh_publication_generation();c=A.TwoContractAdapter(p).run()\n     record('h2_refs_'+provider.__name__,world_refs=[x['world_receipt']['receipt_ref'] for x in [a,b,c]],world_digests=[x['world_receipt']['selection_digest'] for x in [a,b,c]],possibility_refs=[x['possibility_receipt']['receipt_ref'] for x in [a,b,c]])\n     assert a==frozen\n     assert len({x['world_receipt']['selection_digest'] for x in [a,b,c]})==3\n     assert len({x['world_receipt']['receipt_ref']['hash'] for x in [a,b,c]})==3\n>    assert len({x['possibility_receipt']['receipt_ref']['hash'] for x in [a,b,c]})==3,'WORLD_BOUND_POSSIBILITY_RECEIPT_IDENTITY_IGNORES_NEW_WORLD_BINDING'\nE    AssertionError: WORLD_BOUND_POSSIBILITY_RECEIPT_IDENTITY_IGNORES_NEW_WORLD_BINDING\nE    assert 1 == 3\nE     +  where 1 = len({'4279116eaa4a84d557c5f26b27fa46889863192b4a41d2fbbfa0f99268062501'})\n\n../../../reviewer_tests/test_rsc0_hostile.py:203: AssertionError",
+          "scientific_classification": "WORLD_BOUND_RECEIPT_IDENTITY_DEFECT"
+        },
+        {
+          "name": "test_facade_cannot_hide_changed_output_behind_unchanged_digest[ProviderA]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "2.642",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_a.ProviderA'>\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    def test_facade_cannot_hide_changed_output_behind_unchanged_digest(provider):\n     b=A.TwoContractAdapter(provider()).run();changed=copy.deepcopy(b)\n     changed['facade']['consumer_effects'][CID]['output']['empirical_access_support']['base_ratio']='0/60'\n     try:result=A.TwoContractAdapter.round_trip_two_contracts(changed)\n     except PortContractError:return\n     record('facade_forged_'+provider.__name__,result=result,forged_output=changed['facade']['consumer_effects'][CID]['output'])\n>    pytest.fail('FACADE_CHECKS_COPIED_DIGEST_FIELDS_WITHOUT_RECOMPUTING_EFFECT')\nE    Failed: FACADE_CHECKS_COPIED_DIGEST_FIELDS_WITHOUT_RECOMPUTING_EFFECT\n\n../../../reviewer_tests/test_rsc0_hostile.py:212: Failed",
+          "scientific_classification": "CONSUMER_LINEAGE_CHECKER_SCOPE_LIMIT"
+        },
+        {
+          "name": "test_facade_cannot_hide_changed_output_behind_unchanged_digest[ProviderB]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "2.726",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_b.ProviderB'>\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    def test_facade_cannot_hide_changed_output_behind_unchanged_digest(provider):\n     b=A.TwoContractAdapter(provider()).run();changed=copy.deepcopy(b)\n     changed['facade']['consumer_effects'][CID]['output']['empirical_access_support']['base_ratio']='0/60'\n     try:result=A.TwoContractAdapter.round_trip_two_contracts(changed)\n     except PortContractError:return\n     record('facade_forged_'+provider.__name__,result=result,forged_output=changed['facade']['consumer_effects'][CID]['output'])\n>    pytest.fail('FACADE_CHECKS_COPIED_DIGEST_FIELDS_WITHOUT_RECOMPUTING_EFFECT')\nE    Failed: FACADE_CHECKS_COPIED_DIGEST_FIELDS_WITHOUT_RECOMPUTING_EFFECT\n\n../../../reviewer_tests/test_rsc0_hostile.py:212: Failed",
+          "scientific_classification": "CONSUMER_LINEAGE_CHECKER_SCOPE_LIMIT"
+        },
+        {
+          "name": "test_producer_geometry_cannot_be_relabelled_to_unbound_target_or_release[target-ProviderA]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "2.777",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_a.ProviderA'>, field = 'target'\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    @pytest.mark.parametrize('field',['target','release'])\n    def test_producer_geometry_cannot_be_relabelled_to_unbound_target_or_release(provider,field):\n     empirical=copy.deepcopy(EMPIRICAL);empirical[field]='rsc0:foreign:'+field\n     try:b=A.TwoContractAdapter(provider(empirical=empirical)).run()\n     except PortContractError:return\n     record('producer_relabel_'+provider.__name__+'_'+field,changed=field,possibility_target=b['possibility_receipt']['target_ref'],release=b['possibility_receipt']['release_ref'],computed_evidence=b['empirical_lane']['evidence_digest'],consumed=b['consumer_effects'][CID]['output']['empirical_access_support'])\n>    pytest.fail('PINNED_DEFAULT_GEOMETRY_SERVED_UNDER_UNBOUND_CALLER_TARGET_OR_RELEASE')\nE    Failed: PINNED_DEFAULT_GEOMETRY_SERVED_UNDER_UNBOUND_CALLER_TARGET_OR_RELEASE\n\n../../../reviewer_tests/test_rsc0_hostile.py:221: Failed",
+          "scientific_classification": "UNBOUND_PRODUCER_TARGET_OR_RELEASE"
+        },
+        {
+          "name": "test_producer_geometry_cannot_be_relabelled_to_unbound_target_or_release[target-ProviderB]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "2.629",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_b.ProviderB'>, field = 'target'\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    @pytest.mark.parametrize('field',['target','release'])\n    def test_producer_geometry_cannot_be_relabelled_to_unbound_target_or_release(provider,field):\n     empirical=copy.deepcopy(EMPIRICAL);empirical[field]='rsc0:foreign:'+field\n     try:b=A.TwoContractAdapter(provider(empirical=empirical)).run()\n     except PortContractError:return\n     record('producer_relabel_'+provider.__name__+'_'+field,changed=field,possibility_target=b['possibility_receipt']['target_ref'],release=b['possibility_receipt']['release_ref'],computed_evidence=b['empirical_lane']['evidence_digest'],consumed=b['consumer_effects'][CID]['output']['empirical_access_support'])\n>    pytest.fail('PINNED_DEFAULT_GEOMETRY_SERVED_UNDER_UNBOUND_CALLER_TARGET_OR_RELEASE')\nE    Failed: PINNED_DEFAULT_GEOMETRY_SERVED_UNDER_UNBOUND_CALLER_TARGET_OR_RELEASE\n\n../../../reviewer_tests/test_rsc0_hostile.py:221: Failed",
+          "scientific_classification": "UNBOUND_PRODUCER_TARGET_OR_RELEASE"
+        },
+        {
+          "name": "test_producer_geometry_cannot_be_relabelled_to_unbound_target_or_release[release-ProviderA]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "2.763",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_a.ProviderA'>, field = 'release'\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    @pytest.mark.parametrize('field',['target','release'])\n    def test_producer_geometry_cannot_be_relabelled_to_unbound_target_or_release(provider,field):\n     empirical=copy.deepcopy(EMPIRICAL);empirical[field]='rsc0:foreign:'+field\n     try:b=A.TwoContractAdapter(provider(empirical=empirical)).run()\n     except PortContractError:return\n     record('producer_relabel_'+provider.__name__+'_'+field,changed=field,possibility_target=b['possibility_receipt']['target_ref'],release=b['possibility_receipt']['release_ref'],computed_evidence=b['empirical_lane']['evidence_digest'],consumed=b['consumer_effects'][CID]['output']['empirical_access_support'])\n>    pytest.fail('PINNED_DEFAULT_GEOMETRY_SERVED_UNDER_UNBOUND_CALLER_TARGET_OR_RELEASE')\nE    Failed: PINNED_DEFAULT_GEOMETRY_SERVED_UNDER_UNBOUND_CALLER_TARGET_OR_RELEASE\n\n../../../reviewer_tests/test_rsc0_hostile.py:221: Failed",
+          "scientific_classification": "UNBOUND_PRODUCER_TARGET_OR_RELEASE"
+        },
+        {
+          "name": "test_producer_geometry_cannot_be_relabelled_to_unbound_target_or_release[release-ProviderB]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "2.737",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_b.ProviderB'>, field = 'release'\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    @pytest.mark.parametrize('field',['target','release'])\n    def test_producer_geometry_cannot_be_relabelled_to_unbound_target_or_release(provider,field):\n     empirical=copy.deepcopy(EMPIRICAL);empirical[field]='rsc0:foreign:'+field\n     try:b=A.TwoContractAdapter(provider(empirical=empirical)).run()\n     except PortContractError:return\n     record('producer_relabel_'+provider.__name__+'_'+field,changed=field,possibility_target=b['possibility_receipt']['target_ref'],release=b['possibility_receipt']['release_ref'],computed_evidence=b['empirical_lane']['evidence_digest'],consumed=b['consumer_effects'][CID]['output']['empirical_access_support'])\n>    pytest.fail('PINNED_DEFAULT_GEOMETRY_SERVED_UNDER_UNBOUND_CALLER_TARGET_OR_RELEASE')\nE    Failed: PINNED_DEFAULT_GEOMETRY_SERVED_UNDER_UNBOUND_CALLER_TARGET_OR_RELEASE\n\n../../../reviewer_tests/test_rsc0_hostile.py:221: Failed",
+          "scientific_classification": "UNBOUND_PRODUCER_TARGET_OR_RELEASE"
+        },
+        {
+          "name": "test_f2_f1_reference_mismatch_cannot_be_silently_replaced[ProviderA]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "2.757",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_a.ProviderA'>\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    def test_f2_f1_reference_mismatch_cannot_be_silently_replaced(provider):\n     w=copy.deepcopy(BASELINE_WORLD);w['f2']['f1_refs']=['rsc0:foreign:f1']\n     try:b=A.TwoContractAdapter(provider(world=w)).run()\n     except PortContractError:return\n     payloads=[x for x in b['world_receipt']['payloads'] if x['object_family']=='ROUTE']\n     record('f1_f2_mismatch_'+provider.__name__,submitted=w['f2']['f1_refs'],emitted=payloads[0]['f2_prerequisites']['f1_refs'])\n>    assert [x['id'] for x in payloads[0]['f2_prerequisites']['f1_refs']]==w['f2']['f1_refs'],'F2_DEPENDENCY_REFERENCE_REPLACED_WITH_DIFFERENT_H1_ID'\nE    AssertionError: F2_DEPENDENCY_REFERENCE_REPLACED_WITH_DIFFERENT_H1_ID\nE    assert ['fx:f1:three-party'] == ['rsc0:foreign:f1']\nE      \nE      At index 0 diff: 'fx:f1:three-party' != 'rsc0:foreign:f1'\nE      Use -v to get more diff\n\n../../../reviewer_tests/test_rsc0_hostile.py:230: AssertionError",
+          "scientific_classification": "F1_F2_REFERENCE_SUBSTITUTION"
+        },
+        {
+          "name": "test_f2_f1_reference_mismatch_cannot_be_silently_replaced[ProviderB]",
+          "classname": "reviewer_tests.test_rsc0_hostile",
+          "seconds": "2.701",
+          "status": "RED",
+          "diagnostic": "provider = <class 'port.provider_b.ProviderB'>\n\n    @pytest.mark.parametrize('provider',PROVIDERS)\n    def test_f2_f1_reference_mismatch_cannot_be_silently_replaced(provider):\n     w=copy.deepcopy(BASELINE_WORLD);w['f2']['f1_refs']=['rsc0:foreign:f1']\n     try:b=A.TwoContractAdapter(provider(world=w)).run()\n     except PortContractError:return\n     payloads=[x for x in b['world_receipt']['payloads'] if x['object_family']=='ROUTE']\n     record('f1_f2_mismatch_'+provider.__name__,submitted=w['f2']['f1_refs'],emitted=payloads[0]['f2_prerequisites']['f1_refs'])\n>    assert [x['id'] for x in payloads[0]['f2_prerequisites']['f1_refs']]==w['f2']['f1_refs'],'F2_DEPENDENCY_REFERENCE_REPLACED_WITH_DIFFERENT_H1_ID'\nE    AssertionError: F2_DEPENDENCY_REFERENCE_REPLACED_WITH_DIFFERENT_H1_ID\nE    assert ['fx:f1:three-party'] == ['rsc0:foreign:f1']\nE      \nE      At index 0 diff: 'fx:f1:three-party' != 'rsc0:foreign:f1'\nE      Use -v to get more diff\n\n../../../reviewer_tests/test_rsc0_hostile.py:230: AssertionError",
+          "scientific_classification": "F1_F2_REFERENCE_SUBSTITUTION"
+        }
+      ]
+    }
+  ],
+  "RC0_unchanged25_transitions": [
+    {
+      "case": "test_actual_value_intervention_changes_both_consumers_and_only_affected_route[ProviderA]",
+      "before": "PASS",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    },
+    {
+      "case": "test_actual_value_intervention_changes_both_consumers_and_only_affected_route[ProviderB]",
+      "before": "PASS",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    },
+    {
+      "case": "test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderA]",
+      "before": "RED",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    },
+    {
+      "case": "test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderB]",
+      "before": "RED",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    },
+    {
+      "case": "test_foreign_demand_cannot_be_labelled_complete[ProviderA]",
+      "before": "RED",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    },
+    {
+      "case": "test_foreign_demand_cannot_be_labelled_complete[ProviderB]",
+      "before": "RED",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    },
+    {
+      "case": "test_knowledge_asof_cannot_consume_future_publication[ProviderA]",
+      "before": "RED",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    },
+    {
+      "case": "test_knowledge_asof_cannot_consume_future_publication[ProviderB]",
+      "before": "RED",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    },
+    {
+      "case": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[issuer-ProviderA]",
+      "before": "PASS",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    },
+    {
+      "case": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[issuer-ProviderB]",
+      "before": "PASS",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    },
+    {
+      "case": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderA]",
+      "before": "RED",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    },
+    {
+      "case": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderB]",
+      "before": "RED",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    },
+    {
+      "case": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderA]",
+      "before": "RED",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    },
+    {
+      "case": "test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderB]",
+      "before": "RED",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    },
+    {
+      "case": "test_direct_receipts_satisfy_original_frozen_envelope_schema",
+      "before": "RED",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    },
+    {
+      "case": "test_full_original_negative_state_distinctions_survive",
+      "before": "RED",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    },
+    {
+      "case": "test_h1_f1_f2_h3_and_both_h2_successors_preserve_explicit_deferral",
+      "before": "PASS",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    },
+    {
+      "case": "test_changed_binding_guard_is_real_but_adapter_recomputes_new_selection",
+      "before": "PASS",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    },
+    {
+      "case": "test_baseline_providers_equal_without_using_candidate_comparison_function",
+      "before": "PASS",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    },
+    {
+      "case": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[AH-REJECT_SEMANTIC_LOSS-ProviderA]",
+      "before": "PASS",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    },
+    {
+      "case": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[AH-REJECT_SEMANTIC_LOSS-ProviderB]",
+      "before": "PASS",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    },
+    {
+      "case": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS-ProviderA]",
+      "before": "PASS",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    },
+    {
+      "case": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS-ProviderB]",
+      "before": "PASS",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    },
+    {
+      "case": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[F2-REJECT_F2_PREREQUISITE_LOSS-ProviderA]",
+      "before": "PASS",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    },
+    {
+      "case": "test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[F2-REJECT_F2_PREREQUISITE_LOSS-ProviderB]",
+      "before": "PASS",
+      "after": "PASS",
+      "evidence_before": "repro/baseline_rc0.xml",
+      "evidence_after": "repro/rc0.xml"
+    }
+  ],
+  "oracles_not_edited": true,
+  "setup_errors": "initial_layout_rc0:23PASS2layout failures, corrected RC0_RETURN without test edits; retained. Pre-isolation repeats retained but not independent evidence.",
+  "reviewer_revisions": "initial41 retains25RED16PASS. Two assertions were narrowed: negative refs are schema-lawful so final test probes real read_values dereference; H2 no-op generation is not a publication boundary so final test changes publication/as_of and verifies world-bound possibility identity. Six target/release/F1-F2 cases added. No frozen expected matrix or candidate code changed."
+}

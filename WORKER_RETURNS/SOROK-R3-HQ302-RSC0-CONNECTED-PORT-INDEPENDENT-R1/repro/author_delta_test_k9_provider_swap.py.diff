@@ -1,0 +1,42 @@
+diff --git a/WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/test_k9_provider_swap.py b/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/test_k9_provider_swap.py
+index 1e25d7951..6fc4e821a 100644
+--- a/WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/port/test_k9_provider_swap.py
++++ b/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/test_k9_provider_swap.py
+@@ -45,8 +45,8 @@ def test_k9_01_two_providers_same_meaning():
+     assert report["consumer_effect_diffs"] == []
+     assert report["physical_provider_ids_differ"] is True
+     assert report["equivalent_except_physical_lineage"] is True
+-    assert TwoContractAdapter.round_trip_two_contracts(bundle_a)["state"] == "LOSSLESS_TWO_CONTRACT_ROUNDTRIP"
+-    assert TwoContractAdapter.round_trip_two_contracts(bundle_b)["state"] == "LOSSLESS_TWO_CONTRACT_ROUNDTRIP"
++    assert TwoContractAdapter.round_trip_two_contracts(bundle_a)["state"] == "LOSSLESS_TWO_CONTRACT_ROUNDTRIP_WITH_CONSUMER_LINEAGE"
++    assert TwoContractAdapter.round_trip_two_contracts(bundle_b)["state"] == "LOSSLESS_TWO_CONTRACT_ROUNDTRIP_WITH_CONSUMER_LINEAGE"
+ 
+ 
+ def test_k9_02_independent_nonparent_consumer():
+@@ -145,7 +145,7 @@ def test_k9_06_forward_reverse_held_without_scoped_issuer():
+ 
+ 
+ def test_k9_07_permissions_denied_use_no_cached_bypass():
+-    """K9_07 — dropping the dependency use atom denies the slice; no A bypass."""
++    """K9_07 — revoked dependency use atom DENIES at the integrated adapter entry."""
+ 
+     provider_a = build_provider_a()
+     bundle_a = TwoContractAdapter(provider_a).run()
+@@ -156,10 +156,15 @@ def test_k9_07_permissions_denied_use_no_cached_bypass():
+     mutated["permission_ceiling"]["revoked_atoms"] = ["WORLD_READ"]
+     mutated["permission_ceiling"]["use_atoms"] = ["POSSIBILITY_QUERY"]
+     provider_b = ProviderB(world=mutated)
+-    bundle_b = TwoContractAdapter(provider_b).run()
++    # integrated fail-closed entry: the adapter itself refuses before any value read
+     with pytest.raises(PortContractError) as denied:
+-        provider_b.revoked_use(bundle_b["world_receipt"], "WORLD_READ")
++        TwoContractAdapter(provider_b).run()
+     assert denied.value.code == "DENIED_USE"
++    # the explicit permission method refuses as well
++    selection_b = provider_b.resolve_world_selection({"scope": "fx:universe:single_source|fx:release:v1"})
++    with pytest.raises(PortContractError) as denied2:
++        provider_b.revoked_use(selection_b["world_receipt"] if "world_receipt" in selection_b else selection_b, "WORLD_READ")
++    assert denied2.value.code == "DENIED_USE"
+     # cached A result must not satisfy B's denied request
+     with pytest.raises(PortContractError):
+         provider_b.revoked_use(bundle_a["world_receipt"], "WORLD_READ")

@@ -1,0 +1,22 @@
+{
+  "suite": "n10e_c1",
+  "started_at": "2026-10-15T01:35:45.738341+00:00",
+  "finished_at": "2026-10-15T01:36:04.495784+00:00",
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "staging/ns/rawlsing_next/tests/test_pre553_empirical_possibility_provider.py",
+    "staging/ns/rawlsing_next/tests/test_pre553_analytical_composition.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=$RSC0_RETURN/repro/n10e_c1.xml"
+  ],
+  "cwd": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1",
+  "exit_code": 0,
+  "raw_stdout_sha256": "2af9e70fb3ce3fa80a72113e9998ccfbc33925b74d9b006914bdd7f124429dbe",
+  "sanitization": "runtime/return/worktree paths only",
+  "log": "repro/n10e_c1.log",
+  "junit": "repro/n10e_c1.xml"
+}

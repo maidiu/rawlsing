@@ -1,0 +1,74 @@
+{
+  "issuer_and_use": {
+    "issuer_refs": [
+      {
+        "kind": "ISSUER",
+        "id": "fx:issuer:fixture_only",
+        "hash": "9bfd22ea8b313d479bafc9c2e73765b3750a9654fe5624e55bd464eb4cd07360"
+      }
+    ],
+    "source_allowed_use_atoms": [
+      "WORLD_READ"
+    ],
+    "requested_use_atoms": [
+      "WORLD_READ",
+      "POSSIBILITY_QUERY"
+    ],
+    "effective_use_atoms": [
+      "WORLD_READ",
+      "POSSIBILITY_QUERY"
+    ],
+    "model_use_ref": null
+  },
+  "calls": {
+    "N10E": 1,
+    "C1": 2,
+    "PE": 1
+  },
+  "consumer_output": {
+    "apprenticeship_access_routes": [
+      {
+        "route": "fx:r:public",
+        "kind": "PUBLIC_APPRENTICESHIP_ACCESS",
+        "availability": "OPEN_UNDER_RULE",
+        "entry_values": {
+          "seat_fee": "ABOLISHED_IN_2008_RULE",
+          "min_age": 14,
+          "quota": 30
+        },
+        "rule": "public apprenticeship seats are open to resident applicants aged 14+"
+      },
+      {
+        "route": "fx:r:mutual",
+        "kind": "MUTUAL_AID_APPRENTICESHIP",
+        "availability": "AVAILABLE_WITH_SPONSOR",
+        "entry_values": {
+          "sponsor_required": true,
+          "quota": 12
+        },
+        "rule": "mutual-aid apprenticeship requires an acknowledged sponsor"
+      }
+    ],
+    "empirical_access_support": {
+      "base_ratio": "54/60",
+      "minority_ratio": "6/60",
+      "ordered_condition_chain": [
+        {
+          "index": 0,
+          "ref": "fx:cond:area",
+          "n": 60
+        },
+        {
+          "index": 1,
+          "ref": "fx:cond:school",
+          "n": 30
+        },
+        {
+          "index": 2,
+          "ref": "fx:cond:caretime",
+          "n": 12
+        }
+      ]
+    }
+  }
+}

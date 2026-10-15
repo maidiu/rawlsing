@@ -1,0 +1,62 @@
+{
+  "case": "clocks_ProviderA",
+  "clocks": {
+    "observation_valid": "2008",
+    "published": "2010",
+    "as_of": "2009",
+    "actor_event": "2008",
+    "requested": "2026"
+  },
+  "read_values": {
+    "kind": "VALUES_READ",
+    "provider_id": "fx:A:tuple-store",
+    "keys": [
+      "fx:rule:public_access_2008",
+      "fx:rule:mutual_aid",
+      "fx:r:public",
+      "fx:r:mutual"
+    ],
+    "values": {
+      "fx:rule:public_access_2008": {
+        "text": "public apprenticeship seats are open to resident applicants aged 14+",
+        "effective": "2008"
+      },
+      "fx:rule:mutual_aid": {
+        "text": "mutual-aid apprenticeship requires an acknowledged sponsor",
+        "effective": "2008"
+      },
+      "fx:r:public": {
+        "kind": "PUBLIC_APPRENTICESHIP_ACCESS",
+        "availability": "OPEN_UNDER_RULE",
+        "values": {
+          "seat_fee": "ABOLISHED_IN_2008_RULE",
+          "min_age": 14,
+          "quota": 30
+        },
+        "rule_ref": "fx:rule:public_access_2008",
+        "sanction_refs": [
+          "fx:sanction:fine"
+        ],
+        "category_refs": [
+          "fx:category:license"
+        ]
+      },
+      "fx:r:mutual": {
+        "kind": "MUTUAL_AID_APPRENTICESHIP",
+        "availability": "AVAILABLE_WITH_SPONSOR",
+        "values": {
+          "sponsor_required": true,
+          "quota": 12
+        },
+        "rule_ref": "fx:rule:mutual_aid",
+        "sanction_refs": [
+          "fx:sanction:exclusion"
+        ],
+        "category_refs": [
+          "fx:category:recognized-club"
+        ]
+      }
+    },
+    "digest": "c5fd82a946e309280ba56acaa63555ce7bb8968aba9d08b5a15b8300c5194080"
+  }
+}

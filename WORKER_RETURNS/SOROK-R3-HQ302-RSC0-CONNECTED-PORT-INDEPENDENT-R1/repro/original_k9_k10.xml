@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="36" time="43.559" timestamp="2026-10-14T21:34:50.841613-04:00" hostname="MacBook-Pro.lan"><testcase classname="original_tests.test_k9_provider_swap" name="test_k9_01_two_providers_same_meaning" time="5.454"><failure message="AssertionError: assert 'LOSSLESS_TWO...SUMER_LINEAGE' == 'LOSSLESS_TWO...ACT_ROUNDTRIP'&#10;  &#10;  - LOSSLESS_TWO_CONTRACT_ROUNDTRIP&#10;  + LOSSLESS_TWO_CONTRACT_ROUNDTRIP_WITH_CONSUMER_LINEAGE">def test_k9_01_two_providers_same_meaning():
+        """K9_01 — A and B equivalent except declared physical lineage."""
+    
+        bundle_a = TwoContractAdapter(build_provider_a()).run()
+        bundle_b = TwoContractAdapter(build_provider_b()).run()
+        report = provider_equivalence_report(bundle_a, bundle_b)
+        assert report["world_projection_diffs"] == []
+        assert report["possibility_projection_diffs"] == []
+        assert report["consumer_effect_diffs"] == []
+        assert report["physical_provider_ids_differ"] is True
+        assert report["equivalent_except_physical_lineage"] is True
+&gt;       assert TwoContractAdapter.round_trip_two_contracts(bundle_a)["state"] == "LOSSLESS_TWO_CONTRACT_ROUNDTRIP"
+E       AssertionError: assert 'LOSSLESS_TWO...SUMER_LINEAGE' == 'LOSSLESS_TWO...ACT_ROUNDTRIP'
+E         
+E         - LOSSLESS_TWO_CONTRACT_ROUNDTRIP
+E         + LOSSLESS_TWO_CONTRACT_ROUNDTRIP_WITH_CONSUMER_LINEAGE
+
+original_tests/test_k9_provider_swap.py:48: AssertionError</failure></testcase><testcase classname="original_tests.test_k9_provider_swap" name="test_k9_02_independent_nonparent_consumer" time="5.211" /><testcase classname="original_tests.test_k9_provider_swap" name="test_k9_03_id_reorder_and_stage_rename_equivalent" time="6.461" /><testcase classname="original_tests.test_k9_provider_swap" name="test_k9_04_not_equivalent_contrast_rejected" time="0.004" /><testcase classname="original_tests.test_k9_provider_swap" name="test_k9_05_modelled_vs_observed_refuses_grade_promotion" time="0.003" /><testcase classname="original_tests.test_k9_provider_swap" name="test_k9_06_forward_reverse_held_without_scoped_issuer" time="2.848" /><testcase classname="original_tests.test_k9_provider_swap" name="test_k9_07_permissions_denied_use_no_cached_bypass" time="2.586"><failure message="port.contracts.PermissionDenied: DENIED_USE: WORLD_READ is revoked or absent from the source use ceiling; no selected values or consumer effects may be emitted">def test_k9_07_permissions_denied_use_no_cached_bypass():
+        """K9_07 — dropping the dependency use atom denies the slice; no A bypass."""
+    
+        provider_a = build_provider_a()
+        bundle_a = TwoContractAdapter(provider_a).run()
+        permitted = provider_a.revoked_use(bundle_a["world_receipt"], "WORLD_READ")
+        assert permitted["state"] == "PERMITTED"
+    
+        mutated = copy.deepcopy(BASELINE_WORLD)
+        mutated["permission_ceiling"]["revoked_atoms"] = ["WORLD_READ"]
+        mutated["permission_ceiling"]["use_atoms"] = ["POSSIBILITY_QUERY"]
+        provider_b = ProviderB(world=mutated)
+&gt;       bundle_b = TwoContractAdapter(provider_b).run()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+original_tests/test_k9_provider_swap.py:159: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+port/adapter.py:111: in run
+    self._fail_closed_entry(selection, demand)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;port.adapter.TwoContractAdapter object at 0x105312b10&gt;
+selection = {'binding_generation': 0, 'contract': 'GENERIC_WORLD_SELECTION@1.0.0', 'demand': {'scope': 'fx:universe:single_source|...': 'fx:cond:school'}, {'index': 2, 'n': 12, 'ref': 'fx:cond:caretime'}], 'direction': 'FORWARD_CONDITIONAL', ...}, ...}
+demand = {'scope': 'fx:universe:single_source|fx:release:v1'}
+
+    def _fail_closed_entry(self, selection: Mapping[str, Any], demand: Mapping[str, Any]) -&gt; None:
+        """RC0_PERMISSION_ENTRYPOINT + RC0_CLOCK_LOOKAHEAD, before any value read."""
+    
+        ceiling = selection["world"].get("permission_ceiling") or {}
+        revoked = set(ceiling.get("revoked_atoms") or [])
+        allowed = set(ceiling.get("use_atoms") or [])
+        if "WORLD_READ" in revoked or "WORLD_READ" not in allowed:
+&gt;           raise PermissionDenied(
+                "DENIED_USE",
+                "WORLD_READ is revoked or absent from the source use ceiling; "
+                "no selected values or consumer effects may be emitted",
+            )
+E           port.contracts.PermissionDenied: DENIED_USE: WORLD_READ is revoked or absent from the source use ceiling; no selected values or consumer effects may be emitted
+
+port/adapter.py:70: PermissionDenied</failure></testcase><testcase classname="original_tests.test_k9_provider_swap" name="test_k9_08_two_channel_refresh_two_independent_successors" time="7.708" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_01_drop_ah" time="0.001" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_02_stratum_translation_noninjective" time="0.001" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_03_dyadize_nary" time="0.001" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_04_drop_f2_history_requirement" time="0.001" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_05_predicate_becomes_experience" time="0.001" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_06_contradiction_dominant_only" time="0.001" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_07_minority_erase" time="0.001" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_08_zero_missing_collapse" time="0.001" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_09_underpowered_as_empty" time="0.001" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_10_not_asked_as_no" time="0.001" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_11_cross_unit_pool" time="2.626" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_12_direction_reverse_held" time="2.609" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_13_condition_set_sort" time="0.001" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_14_uncertain_to_point" time="0.001" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_15_clock_conflation" time="0.001" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_16_lag_interpolation_held" time="0.001" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_17_binding_as_observation" time="0.001" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_18_change_binding_no_refresh" time="2.510" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_19_publish_boundary_no_refresh" time="2.602" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_20_permission_revoked" time="0.002" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_21_partial_as_complete" time="0.001" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_22_proxy_as_observed" time="0.001" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_23_opaque_hash_no_values" time="0.000" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_24_implicit_model_crossproduct" time="0.001" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_25_upstream_psychic_fields" time="0.001" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_26_f2_public_sanction_loss" time="0.001" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_27_nonparent_consumer_produces_generic_objective_only" time="2.647" /><testcase classname="original_tests.test_k10_structural_conservation" name="test_k10_28_no_actor_weld" time="0.001" /></testsuite></testsuites>

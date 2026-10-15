@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="25" time="55.688" timestamp="2026-10-14T21:33:11.976891-04:00" hostname="MacBook-Pro.lan"><testcase classname="staging.rc0.test_rc0_hostile" name="test_actual_value_intervention_changes_both_consumers_and_only_affected_route[ProviderA]" time="5.517" /><testcase classname="staging.rc0.test_rc0_hostile" name="test_actual_value_intervention_changes_both_consumers_and_only_affected_route[ProviderB]" time="5.213" /><testcase classname="staging.rc0.test_rc0_hostile" name="test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderA]" time="0.003" /><testcase classname="staging.rc0.test_rc0_hostile" name="test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderB]" time="0.002" /><testcase classname="staging.rc0.test_rc0_hostile" name="test_foreign_demand_cannot_be_labelled_complete[ProviderA]" time="2.618" /><testcase classname="staging.rc0.test_rc0_hostile" name="test_foreign_demand_cannot_be_labelled_complete[ProviderB]" time="2.511" /><testcase classname="staging.rc0.test_rc0_hostile" name="test_knowledge_asof_cannot_consume_future_publication[ProviderA]" time="2.610" /><testcase classname="staging.rc0.test_rc0_hostile" name="test_knowledge_asof_cannot_consume_future_publication[ProviderB]" time="2.631" /><testcase classname="staging.rc0.test_rc0_hostile" name="test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[issuer-ProviderA]" time="2.573" /><testcase classname="staging.rc0.test_rc0_hostile" name="test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[issuer-ProviderB]" time="2.610" /><testcase classname="staging.rc0.test_rc0_hostile" name="test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderA]" time="2.612" /><testcase classname="staging.rc0.test_rc0_hostile" name="test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderB]" time="2.571" /><testcase classname="staging.rc0.test_rc0_hostile" name="test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderA]" time="2.801" /><testcase classname="staging.rc0.test_rc0_hostile" name="test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderB]" time="2.633" /><testcase classname="staging.rc0.test_rc0_hostile" name="test_direct_receipts_satisfy_original_frozen_envelope_schema" time="0.000"><failure message="FileNotFoundError: [Errno 2] No such file or directory: '$RSC0_RUNTIME/runtime_root/WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json'">def test_direct_receipts_satisfy_original_frozen_envelope_schema():
+&gt;       schema=json.loads((CP/'oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json').read_text());Draft202012Validator.check_schema(schema)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+staging/rc0/test_rc0_hostile.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1058: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('$REVIEW_WORKTREE/WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CO..._root/WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+&gt;       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '$RSC0_RUNTIME/runtime_root/WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json'
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1044: FileNotFoundError</failure></testcase><testcase classname="staging.rc0.test_rc0_hostile" name="test_full_original_negative_state_distinctions_survive" time="0.001"><failure message="FileNotFoundError: [Errno 2] No such file or directory: '$RSC0_RUNTIME/runtime_root/WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/oracles/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json'">def test_full_original_negative_state_distinctions_survive():
+&gt;       source=json.loads((CP/'oracles/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json').read_text())['baseline']['status_rows']
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+staging/rc0/test_rc0_hostile.py:102: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1058: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('$REVIEW_WORKTREE/WORKER_RETURNS/SOROK-R3-HQ302-RSC0-CO...runtime_root/WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/oracles/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+&gt;       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '$RSC0_RUNTIME/runtime_root/WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/oracles/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json'
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1044: FileNotFoundError</failure></testcase><testcase classname="staging.rc0.test_rc0_hostile" name="test_h1_f1_f2_h3_and_both_h2_successors_preserve_explicit_deferral" time="7.750" /><testcase classname="staging.rc0.test_rc0_hostile" name="test_changed_binding_guard_is_real_but_adapter_recomputes_new_selection" time="5.287" /><testcase classname="staging.rc0.test_rc0_hostile" name="test_baseline_providers_equal_without_using_candidate_comparison_function" time="5.217" /><testcase classname="staging.rc0.test_rc0_hostile" name="test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[AH-REJECT_SEMANTIC_LOSS-ProviderA]" time="0.003" /><testcase classname="staging.rc0.test_rc0_hostile" name="test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[AH-REJECT_SEMANTIC_LOSS-ProviderB]" time="0.003" /><testcase classname="staging.rc0.test_rc0_hostile" name="test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS-ProviderA]" time="0.013" /><testcase classname="staging.rc0.test_rc0_hostile" name="test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[nary-REJECT_CARDINALITY_ROLE_TOPOLOGY_LOSS-ProviderB]" time="0.003" /><testcase classname="staging.rc0.test_rc0_hostile" name="test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[F2-REJECT_F2_PREREQUISITE_LOSS-ProviderA]" time="0.003" /><testcase classname="staging.rc0.test_rc0_hostile" name="test_three_frozen_mutation_classes_at_adapter_without_expected_class_import[F2-REJECT_F2_PREREQUISITE_LOSS-ProviderB]" time="0.003" /></testsuite></testsuites>

@@ -1,0 +1,68 @@
+F.....F.............................                                     [100%]
+=================================== FAILURES ===================================
+____________________ test_k9_01_two_providers_same_meaning _____________________
+
+    def test_k9_01_two_providers_same_meaning():
+        """K9_01 — A and B equivalent except declared physical lineage."""
+    
+        bundle_a = TwoContractAdapter(build_provider_a()).run()
+        bundle_b = TwoContractAdapter(build_provider_b()).run()
+        report = provider_equivalence_report(bundle_a, bundle_b)
+        assert report["world_projection_diffs"] == []
+        assert report["possibility_projection_diffs"] == []
+        assert report["consumer_effect_diffs"] == []
+        assert report["physical_provider_ids_differ"] is True
+        assert report["equivalent_except_physical_lineage"] is True
+>       assert TwoContractAdapter.round_trip_two_contracts(bundle_a)["state"] == "LOSSLESS_TWO_CONTRACT_ROUNDTRIP"
+E       AssertionError: assert 'LOSSLESS_TWO...SUMER_LINEAGE' == 'LOSSLESS_TWO...ACT_ROUNDTRIP'
+E         
+E         - LOSSLESS_TWO_CONTRACT_ROUNDTRIP
+E         + LOSSLESS_TWO_CONTRACT_ROUNDTRIP_WITH_CONSUMER_LINEAGE
+
+original_tests/test_k9_provider_swap.py:48: AssertionError
+______________ test_k9_07_permissions_denied_use_no_cached_bypass ______________
+
+    def test_k9_07_permissions_denied_use_no_cached_bypass():
+        """K9_07 — dropping the dependency use atom denies the slice; no A bypass."""
+    
+        provider_a = build_provider_a()
+        bundle_a = TwoContractAdapter(provider_a).run()
+        permitted = provider_a.revoked_use(bundle_a["world_receipt"], "WORLD_READ")
+        assert permitted["state"] == "PERMITTED"
+    
+        mutated = copy.deepcopy(BASELINE_WORLD)
+        mutated["permission_ceiling"]["revoked_atoms"] = ["WORLD_READ"]
+        mutated["permission_ceiling"]["use_atoms"] = ["POSSIBILITY_QUERY"]
+        provider_b = ProviderB(world=mutated)
+>       bundle_b = TwoContractAdapter(provider_b).run()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+original_tests/test_k9_provider_swap.py:159: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+port/adapter.py:111: in run
+    self._fail_closed_entry(selection, demand)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <port.adapter.TwoContractAdapter object at 0x105312b10>
+selection = {'binding_generation': 0, 'contract': 'GENERIC_WORLD_SELECTION@1.0.0', 'demand': {'scope': 'fx:universe:single_source|...': 'fx:cond:school'}, {'index': 2, 'n': 12, 'ref': 'fx:cond:caretime'}], 'direction': 'FORWARD_CONDITIONAL', ...}, ...}
+demand = {'scope': 'fx:universe:single_source|fx:release:v1'}
+
+    def _fail_closed_entry(self, selection: Mapping[str, Any], demand: Mapping[str, Any]) -> None:
+        """RC0_PERMISSION_ENTRYPOINT + RC0_CLOCK_LOOKAHEAD, before any value read."""
+    
+        ceiling = selection["world"].get("permission_ceiling") or {}
+        revoked = set(ceiling.get("revoked_atoms") or [])
+        allowed = set(ceiling.get("use_atoms") or [])
+        if "WORLD_READ" in revoked or "WORLD_READ" not in allowed:
+>           raise PermissionDenied(
+                "DENIED_USE",
+                "WORLD_READ is revoked or absent from the source use ceiling; "
+                "no selected values or consumer effects may be emitted",
+            )
+E           port.contracts.PermissionDenied: DENIED_USE: WORLD_READ is revoked or absent from the source use ceiling; no selected values or consumer effects may be emitted
+
+port/adapter.py:70: PermissionDenied
+=========================== short test summary info ============================
+FAILED original_tests/test_k9_provider_swap.py::test_k9_01_two_providers_same_meaning
+FAILED original_tests/test_k9_provider_swap.py::test_k9_07_permissions_denied_use_no_cached_bypass
+2 failed, 34 passed in 43.56s

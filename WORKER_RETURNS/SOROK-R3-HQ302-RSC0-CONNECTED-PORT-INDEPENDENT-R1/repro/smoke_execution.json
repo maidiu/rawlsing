@@ -1,0 +1,21 @@
+{
+  "suite": "smoke",
+  "started_at": "2026-10-15T01:32:57.272974+00:00",
+  "finished_at": "2026-10-15T01:33:03.445572+00:00",
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "port/test_connection.py::test_adapter_run_calls_pinned_pe_c1_n10e",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=$RSC0_RETURN/repro/smoke.xml"
+  ],
+  "cwd": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1",
+  "exit_code": 0,
+  "raw_stdout_sha256": "530470c5fdf632a1b53da8c4a2da5c20e62f326813f833bce77837f427873deb",
+  "sanitization": "runtime/return/worktree paths only",
+  "log": "repro/smoke.log",
+  "junit": "repro/smoke.xml"
+}

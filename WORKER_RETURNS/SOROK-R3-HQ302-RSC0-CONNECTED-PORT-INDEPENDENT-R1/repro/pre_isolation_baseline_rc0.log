@@ -1,0 +1,244 @@
+..FFFFFF..FFFFFF.........                                                [100%]
+=================================== FAILURES ===================================
+___ test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderA] ____
+
+provider = <class 'port.provider_a.ProviderA'>
+
+    @pytest.mark.parametrize('provider',[ProviderA,ProviderB])
+    def test_adapter_denied_world_read_must_not_emit_consumer_values(provider):
+        world=copy.deepcopy(BASELINE_WORLD);world['permission_ceiling']['revoked_atoms']=['WORLD_READ'];world['permission_ceiling']['use_atoms']=['POSSIBILITY_QUERY']
+        p=provider(world=world)
+        try:result=TwoContractAdapter(p).run()
+        except PortContractError as e:
+            record('denied_'+provider.__name__,diagnostic=e.code,consumer_output_returned=False)
+            assert e.code=='DENIED_USE'
+        else:
+            record('denied_'+provider.__name__,consumer_output_returned=True,world_permission=result['world_receipt']['world']['permission_ceiling'],consumer_effects=result['consumer_effects'])
+>           pytest.fail('RC0_DENIED_PROVIDER_EMITTED_WORLD_VALUES_AND_CONSUMER_EFFECTS')
+E           Failed: RC0_DENIED_PROVIDER_EMITTED_WORLD_VALUES_AND_CONSUMER_EFFECTS
+
+test_rc0_hostile.py:50: Failed
+___ test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderB] ____
+
+provider = <class 'port.provider_b.ProviderB'>
+
+    @pytest.mark.parametrize('provider',[ProviderA,ProviderB])
+    def test_adapter_denied_world_read_must_not_emit_consumer_values(provider):
+        world=copy.deepcopy(BASELINE_WORLD);world['permission_ceiling']['revoked_atoms']=['WORLD_READ'];world['permission_ceiling']['use_atoms']=['POSSIBILITY_QUERY']
+        p=provider(world=world)
+        try:result=TwoContractAdapter(p).run()
+        except PortContractError as e:
+            record('denied_'+provider.__name__,diagnostic=e.code,consumer_output_returned=False)
+            assert e.code=='DENIED_USE'
+        else:
+            record('denied_'+provider.__name__,consumer_output_returned=True,world_permission=result['world_receipt']['world']['permission_ceiling'],consumer_effects=result['consumer_effects'])
+>           pytest.fail('RC0_DENIED_PROVIDER_EMITTED_WORLD_VALUES_AND_CONSUMER_EFFECTS')
+E           Failed: RC0_DENIED_PROVIDER_EMITTED_WORLD_VALUES_AND_CONSUMER_EFFECTS
+
+test_rc0_hostile.py:50: Failed
+__________ test_foreign_demand_cannot_be_labelled_complete[ProviderA] __________
+
+provider = <class 'port.provider_a.ProviderA'>
+
+    @pytest.mark.parametrize('provider',[ProviderA,ProviderB])
+    def test_foreign_demand_cannot_be_labelled_complete(provider):
+        demand={'scope':'rc0:unavailable:foreign-world-scope'}
+        try:result=TwoContractAdapter(provider()).run(demand)
+        except PortContractError as e:record('demand_'+provider.__name__,refused=e.code)
+        else:
+            record('demand_'+provider.__name__,request=demand,selection_state=result['world_receipt']['selection_state'],served_world=result['world_receipt']['world']['semantic_world_id'])
+>           assert result['world_receipt']['selection_state']!='COMPLETE','RC0_FOREIGN_DEMAND_FALSE_COMPLETE'
+E           AssertionError: RC0_FOREIGN_DEMAND_FALSE_COMPLETE
+E           assert 'COMPLETE' != 'COMPLETE'
+
+test_rc0_hostile.py:60: AssertionError
+__________ test_foreign_demand_cannot_be_labelled_complete[ProviderB] __________
+
+provider = <class 'port.provider_b.ProviderB'>
+
+    @pytest.mark.parametrize('provider',[ProviderA,ProviderB])
+    def test_foreign_demand_cannot_be_labelled_complete(provider):
+        demand={'scope':'rc0:unavailable:foreign-world-scope'}
+        try:result=TwoContractAdapter(provider()).run(demand)
+        except PortContractError as e:record('demand_'+provider.__name__,refused=e.code)
+        else:
+            record('demand_'+provider.__name__,request=demand,selection_state=result['world_receipt']['selection_state'],served_world=result['world_receipt']['world']['semantic_world_id'])
+>           assert result['world_receipt']['selection_state']!='COMPLETE','RC0_FOREIGN_DEMAND_FALSE_COMPLETE'
+E           AssertionError: RC0_FOREIGN_DEMAND_FALSE_COMPLETE
+E           assert 'COMPLETE' != 'COMPLETE'
+
+test_rc0_hostile.py:60: AssertionError
+_______ test_knowledge_asof_cannot_consume_future_publication[ProviderA] _______
+
+provider = <class 'port.provider_a.ProviderA'>
+
+    @pytest.mark.parametrize('provider',[ProviderA,ProviderB])
+    def test_knowledge_asof_cannot_consume_future_publication(provider):
+        # The original preserved fixture itself has published=2010 and as_of=2009.
+        try:result=TwoContractAdapter(provider()).run()
+        except PortContractError as e:
+            record('clocks_'+provider.__name__,refused=e.code)
+            assert e.code=='NO_CURRENT_OR_NOT_KNOWN_ASOF'
+        else:
+            clock=result['world_receipt']['world']['time_axes']
+            record('clocks_'+provider.__name__,clocks=clock,read_values=result['consumer_effects']['NONPARENT_APPRENTICESHIP_ENTRY']['values_read'])
+>           assert int(clock['published'])<=int(clock['as_of']),'RC0_KNOWLEDGE_ASOF_LOOKAHEAD_ACCEPTED'
+E           AssertionError: RC0_KNOWLEDGE_ASOF_LOOKAHEAD_ACCEPTED
+E           assert 2010 <= 2009
+E            +  where 2010 = int('2010')
+E            +  and   2009 = int('2009')
+
+test_rc0_hostile.py:73: AssertionError
+_______ test_knowledge_asof_cannot_consume_future_publication[ProviderB] _______
+
+provider = <class 'port.provider_b.ProviderB'>
+
+    @pytest.mark.parametrize('provider',[ProviderA,ProviderB])
+    def test_knowledge_asof_cannot_consume_future_publication(provider):
+        # The original preserved fixture itself has published=2010 and as_of=2009.
+        try:result=TwoContractAdapter(provider()).run()
+        except PortContractError as e:
+            record('clocks_'+provider.__name__,refused=e.code)
+            assert e.code=='NO_CURRENT_OR_NOT_KNOWN_ASOF'
+        else:
+            clock=result['world_receipt']['world']['time_axes']
+            record('clocks_'+provider.__name__,clocks=clock,read_values=result['consumer_effects']['NONPARENT_APPRENTICESHIP_ENTRY']['values_read'])
+>           assert int(clock['published'])<=int(clock['as_of']),'RC0_KNOWLEDGE_ASOF_LOOKAHEAD_ACCEPTED'
+E           AssertionError: RC0_KNOWLEDGE_ASOF_LOOKAHEAD_ACCEPTED
+E           assert 2010 <= 2009
+E            +  where 2010 = int('2010')
+E            +  and   2009 = int('2009')
+
+test_rc0_hostile.py:73: AssertionError
+_ test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderA] _
+
+provider = <class 'port.provider_a.ProviderA'>, field = 'scope'
+
+    @pytest.mark.parametrize('provider',[ProviderA,ProviderB])
+    @pytest.mark.parametrize('field',['issuer','scope','target'])
+    def test_matching_issuer_string_cannot_authorize_foreign_scope_or_target(provider,field):
+        p=provider();bundle=TwoContractAdapter(p).run();grant=copy.deepcopy(REVERSAL_GRANT_SCOPED)
+        if field=='target':grant['binds']['target']='rc0:foreign-target';grant['binds']['reverse_target']='rc0:foreign-target'
+        else:grant[field]='rc0:foreign-'+field
+        try:result=p.request_role_reversal(bundle['world_receipt'],bundle['possibility_receipt'],grant)
+        except PortContractError as e:
+            record('reverse_'+provider.__name__+'_'+field,refused=e.code)
+            assert e.code=='HELD_AUTHORITY'
+        else:
+            record('reverse_'+provider.__name__+'_'+field,grant=grant,result=result)
+>           pytest.fail('RC0_FOREIGN_REVERSAL_BINDING_PERMITTED_'+field)
+E           Failed: RC0_FOREIGN_REVERSAL_BINDING_PERMITTED_scope
+
+test_rc0_hostile.py:88: Failed
+_ test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderB] _
+
+provider = <class 'port.provider_b.ProviderB'>, field = 'scope'
+
+    @pytest.mark.parametrize('provider',[ProviderA,ProviderB])
+    @pytest.mark.parametrize('field',['issuer','scope','target'])
+    def test_matching_issuer_string_cannot_authorize_foreign_scope_or_target(provider,field):
+        p=provider();bundle=TwoContractAdapter(p).run();grant=copy.deepcopy(REVERSAL_GRANT_SCOPED)
+        if field=='target':grant['binds']['target']='rc0:foreign-target';grant['binds']['reverse_target']='rc0:foreign-target'
+        else:grant[field]='rc0:foreign-'+field
+        try:result=p.request_role_reversal(bundle['world_receipt'],bundle['possibility_receipt'],grant)
+        except PortContractError as e:
+            record('reverse_'+provider.__name__+'_'+field,refused=e.code)
+            assert e.code=='HELD_AUTHORITY'
+        else:
+            record('reverse_'+provider.__name__+'_'+field,grant=grant,result=result)
+>           pytest.fail('RC0_FOREIGN_REVERSAL_BINDING_PERMITTED_'+field)
+E           Failed: RC0_FOREIGN_REVERSAL_BINDING_PERMITTED_scope
+
+test_rc0_hostile.py:88: Failed
+_ test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderA] _
+
+provider = <class 'port.provider_a.ProviderA'>, field = 'target'
+
+    @pytest.mark.parametrize('provider',[ProviderA,ProviderB])
+    @pytest.mark.parametrize('field',['issuer','scope','target'])
+    def test_matching_issuer_string_cannot_authorize_foreign_scope_or_target(provider,field):
+        p=provider();bundle=TwoContractAdapter(p).run();grant=copy.deepcopy(REVERSAL_GRANT_SCOPED)
+        if field=='target':grant['binds']['target']='rc0:foreign-target';grant['binds']['reverse_target']='rc0:foreign-target'
+        else:grant[field]='rc0:foreign-'+field
+        try:result=p.request_role_reversal(bundle['world_receipt'],bundle['possibility_receipt'],grant)
+        except PortContractError as e:
+            record('reverse_'+provider.__name__+'_'+field,refused=e.code)
+            assert e.code=='HELD_AUTHORITY'
+        else:
+            record('reverse_'+provider.__name__+'_'+field,grant=grant,result=result)
+>           pytest.fail('RC0_FOREIGN_REVERSAL_BINDING_PERMITTED_'+field)
+E           Failed: RC0_FOREIGN_REVERSAL_BINDING_PERMITTED_target
+
+test_rc0_hostile.py:88: Failed
+_ test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderB] _
+
+provider = <class 'port.provider_b.ProviderB'>, field = 'target'
+
+    @pytest.mark.parametrize('provider',[ProviderA,ProviderB])
+    @pytest.mark.parametrize('field',['issuer','scope','target'])
+    def test_matching_issuer_string_cannot_authorize_foreign_scope_or_target(provider,field):
+        p=provider();bundle=TwoContractAdapter(p).run();grant=copy.deepcopy(REVERSAL_GRANT_SCOPED)
+        if field=='target':grant['binds']['target']='rc0:foreign-target';grant['binds']['reverse_target']='rc0:foreign-target'
+        else:grant[field]='rc0:foreign-'+field
+        try:result=p.request_role_reversal(bundle['world_receipt'],bundle['possibility_receipt'],grant)
+        except PortContractError as e:
+            record('reverse_'+provider.__name__+'_'+field,refused=e.code)
+            assert e.code=='HELD_AUTHORITY'
+        else:
+            record('reverse_'+provider.__name__+'_'+field,grant=grant,result=result)
+>           pytest.fail('RC0_FOREIGN_REVERSAL_BINDING_PERMITTED_'+field)
+E           Failed: RC0_FOREIGN_REVERSAL_BINDING_PERMITTED_target
+
+test_rc0_hostile.py:88: Failed
+_________ test_direct_receipts_satisfy_original_frozen_envelope_schema _________
+
+    def test_direct_receipts_satisfy_original_frozen_envelope_schema():
+        schema=json.loads((CP/'oracles/01_VERSIONED_GENERIC_TWO_CONTRACT_ENVELOPE.json').read_text());Draft202012Validator.check_schema(schema)
+        validator=Draft202012Validator(schema);bundle=TwoContractAdapter(ProviderA()).run();all_errors={}
+        for key in ['world_receipt','possibility_receipt']:
+            errors=list(validator.iter_errors(bundle[key]))
+            all_errors[key]=[dict(path=list(e.absolute_path),message=e.message,context=[x.message for x in e.context]) for e in errors]
+        record('schema',errors=all_errors)
+>       assert not any(all_errors.values()),'RC0_ORIGINAL_SC0_SCHEMA_NOT_IMPLEMENTED_BY_RAW_RECEIPTS'
+E       AssertionError: RC0_ORIGINAL_SC0_SCHEMA_NOT_IMPLEMENTED_BY_RAW_RECEIPTS
+E       assert not True
+E        +  where True = any(dict_values([[{'path': [], 'message': "{'contract': 'GENERIC_WORLD_SELECTION@1.0.0', 'selection_digest': 'fd766322a85c...state' is a required property", "'values_read_refs' is a required property", "'replay_ref' is a required property"]}]]))
+E        +    where dict_values([[{'path': [], 'message': "{'contract': 'GENERIC_WORLD_SELECTION@1.0.0', 'selection_digest': 'fd766322a85c...state' is a required property", "'values_read_refs' is a required property", "'replay_ref' is a required property"]}]]) = <built-in method values of dict object at 0x10da57680>()
+E        +      where <built-in method values of dict object at 0x10da57680> = {'possibility_receipt': [{'context': ["Additional properties are not allowed ('direction', 'minority', 'model_use', 'n...FIXTURE_ONLY__SOURCEFREE__NOT_OPERATIVE_N9__NOT_MODEL_USE'} is not valid under any of the given schemas", 'path': []}]}.values
+
+test_rc0_hostile.py:98: AssertionError
+____________ test_full_original_negative_state_distinctions_survive ____________
+
+    def test_full_original_negative_state_distinctions_survive():
+        source=json.loads((CP/'oracles/03_K10_STRUCTURAL_INFO_LOSS_ORACLES.json').read_text())['baseline']['status_rows']
+        result=TwoContractAdapter(ProviderA()).run();actual=result['world_receipt']['world']['negative_states']
+        expected={r['scope']:r['state'] for r in source};observed={r['scope']:r['state'] for r in actual}
+        record('negative_states',expected=expected,actual=observed,missing={k:v for k,v in expected.items() if observed.get(k)!=v})
+>       assert expected==observed,'RC0_ORIGINAL_NEGATIVE_SCOPES_OR_CODES_LOST'
+E       AssertionError: RC0_ORIGINAL_NEGATIVE_SCOPES_OR_CODES_LOST
+E       assert {'fx:scope:co...PARABLE', ...} == {'fx:scope:co...PARABLE', ...}
+E         
+E         Omitting 7 identical items, use -vv to show
+E         Differing items:
+E         {'fx:scope:denied': 'DENIED_USE'} != {'fx:scope:denied': 'DENIED'}
+E         Left contains 4 more items:
+E         {'fx:scope:nocurrent': 'NO_CURRENT',
+E          'fx:scope:proxy': 'PROXY_MODELLED',...
+E         
+E         ...Full output truncated (3 lines hidden), use '-vv' to show
+
+test_rc0_hostile.py:106: AssertionError
+=========================== short test summary info ============================
+FAILED test_rc0_hostile.py::test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderA]
+FAILED test_rc0_hostile.py::test_adapter_denied_world_read_must_not_emit_consumer_values[ProviderB]
+FAILED test_rc0_hostile.py::test_foreign_demand_cannot_be_labelled_complete[ProviderA]
+FAILED test_rc0_hostile.py::test_foreign_demand_cannot_be_labelled_complete[ProviderB]
+FAILED test_rc0_hostile.py::test_knowledge_asof_cannot_consume_future_publication[ProviderA]
+FAILED test_rc0_hostile.py::test_knowledge_asof_cannot_consume_future_publication[ProviderB]
+FAILED test_rc0_hostile.py::test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderA]
+FAILED test_rc0_hostile.py::test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[scope-ProviderB]
+FAILED test_rc0_hostile.py::test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderA]
+FAILED test_rc0_hostile.py::test_matching_issuer_string_cannot_authorize_foreign_scope_or_target[target-ProviderB]
+FAILED test_rc0_hostile.py::test_direct_receipts_satisfy_original_frozen_envelope_schema
+FAILED test_rc0_hostile.py::test_full_original_negative_state_distinctions_survive
+12 failed, 13 passed in 0.53s

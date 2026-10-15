@@ -1,0 +1,338 @@
+{
+  "actual_calls": {
+    "N10E": 1,
+    "C1": 2,
+    "PE": 1
+  },
+  "returns": [
+    {
+      "module": "C1",
+      "return_type": "AnalyticalCompositionResult",
+      "state": null
+    },
+    {
+      "module": "N10E",
+      "return_type": "EmpiricalPossibilitySliceProviderResult",
+      "state": "EXACT_SUPPORTED_SLICE_PRODUCED"
+    },
+    {
+      "module": "C1",
+      "return_type": "AnalyticalCompositionResult",
+      "state": null
+    },
+    {
+      "module": "PE",
+      "return_type": "GenericWorldSituatedResult",
+      "state": "EXACT_SUPPORTED"
+    }
+  ],
+  "lane": {
+    "connected": true,
+    "producer": "PINNED_N10E_C1_CONSUMER_PLUS_PE_SEAM",
+    "n10e_result_state": "EXACT_SUPPORTED_SLICE_PRODUCED",
+    "pe_result_state": "EXACT_SUPPORTED",
+    "cells": [
+      {
+        "value": "no",
+        "n": 6,
+        "fraction": [
+          1,
+          10
+        ],
+        "cell_state": "OBSERVED_POSITIVE"
+      },
+      {
+        "value": "yes",
+        "n": 54,
+        "fraction": [
+          9,
+          10
+        ],
+        "cell_state": "OBSERVED_POSITIVE"
+      }
+    ],
+    "support": {
+      "target_yes": 54,
+      "target_no": 6,
+      "denominator": 60,
+      "base_ratio": "54/60",
+      "minority_ratio": "6/60",
+      "risk_set": "fx:risk:asked_eligible",
+      "routing": "fx:routing:asked",
+      "weight": "fx:design_weight:unit",
+      "uncertainty": "fx:u:fixture_no_real_inference"
+    },
+    "denominator": 60,
+    "evidence_digest": "b2407eeb3d22cc0d71e5d13308b0149338761efc4ef40921ab363c3cd9c78307",
+    "lane_digest": "991cdf7f347d1731210d2e69e494c8ee223df034792244eab6eb1ef47430f2d5",
+    "calls": [
+      {
+        "module": "C1",
+        "function": "<genexpr>",
+        "calls": 1864
+      },
+      {
+        "module": "C1",
+        "function": "<lambda>",
+        "calls": 1828
+      },
+      {
+        "module": "C1",
+        "function": "<listcomp>",
+        "calls": 54
+      },
+      {
+        "module": "C1",
+        "function": "__init__",
+        "calls": 4
+      },
+      {
+        "module": "C1",
+        "function": "_actual_leaves",
+        "calls": 2
+      },
+      {
+        "module": "C1",
+        "function": "_all_bindings",
+        "calls": 2
+      },
+      {
+        "module": "C1",
+        "function": "_authority",
+        "calls": 18
+      },
+      {
+        "module": "C1",
+        "function": "_auths",
+        "calls": 4
+      },
+      {
+        "module": "C1",
+        "function": "_binding_fingerprint",
+        "calls": 1
+      },
+      {
+        "module": "C1",
+        "function": "_build_evidence",
+        "calls": 2
+      },
+      {
+        "module": "C1",
+        "function": "_exact",
+        "calls": 1838
+      },
+      {
+        "module": "C1",
+        "function": "_exact_fraction",
+        "calls": 4
+      },
+      {
+        "module": "C1",
+        "function": "_leaf_semantic_ref",
+        "calls": 7
+      },
+      {
+        "module": "C1",
+        "function": "_multi_binding_fingerprint",
+        "calls": 1
+      },
+      {
+        "module": "C1",
+        "function": "_refs",
+        "calls": 30
+      },
+      {
+        "module": "C1",
+        "function": "_selected_fact",
+        "calls": 2
+      },
+      {
+        "module": "C1",
+        "function": "_supported_geometry",
+        "calls": 2
+      },
+      {
+        "module": "C1",
+        "function": "_validate_direct_grain",
+        "calls": 2
+      },
+      {
+        "module": "C1",
+        "function": "_verify_witness",
+        "calls": 2
+      },
+      {
+        "module": "C1",
+        "function": "collect",
+        "calls": 4
+      },
+      {
+        "module": "C1",
+        "function": "compose_positioned_subject_possibility",
+        "calls": 2
+      },
+      {
+        "module": "C1",
+        "function": "identity_material",
+        "calls": 2
+      },
+      {
+        "module": "C1",
+        "function": "verify_identity",
+        "calls": 2
+      },
+      {
+        "module": "N10E",
+        "function": "<genexpr>",
+        "calls": 2
+      },
+      {
+        "module": "N10E",
+        "function": "<lambda>",
+        "calls": 1
+      },
+      {
+        "module": "N10E",
+        "function": "__post_init__",
+        "calls": 3
+      },
+      {
+        "module": "N10E",
+        "function": "_build_receipt",
+        "calls": 1
+      },
+      {
+        "module": "N10E",
+        "function": "_public_signature",
+        "calls": 1
+      },
+      {
+        "module": "N10E",
+        "function": "_require",
+        "calls": 33
+      },
+      {
+        "module": "N10E",
+        "function": "_single_binding",
+        "calls": 1
+      },
+      {
+        "module": "N10E",
+        "function": "assert_provider_public_api_excludes_handwritten_slice",
+        "calls": 1
+      },
+      {
+        "module": "N10E",
+        "function": "provide_empirical_possibility_slice",
+        "calls": 1
+      },
+      {
+        "module": "PE",
+        "function": "<genexpr>",
+        "calls": 25
+      },
+      {
+        "module": "PE",
+        "function": "<lambda>",
+        "calls": 15
+      },
+      {
+        "module": "PE",
+        "function": "<listcomp>",
+        "calls": 15
+      },
+      {
+        "module": "PE",
+        "function": "__post_init__",
+        "calls": 6
+      },
+      {
+        "module": "PE",
+        "function": "_auth",
+        "calls": 7
+      },
+      {
+        "module": "PE",
+        "function": "_exact",
+        "calls": 29
+      },
+      {
+        "module": "PE",
+        "function": "_future_time",
+        "calls": 1
+      },
+      {
+        "module": "PE",
+        "function": "_refs",
+        "calls": 7
+      },
+      {
+        "module": "PE",
+        "function": "_scan_forbidden_tokens",
+        "calls": 3
+      },
+      {
+        "module": "PE",
+        "function": "_text",
+        "calls": 12
+      },
+      {
+        "module": "PE",
+        "function": "conditioner_ids",
+        "calls": 1
+      },
+      {
+        "module": "PE",
+        "function": "derived_positioned_query",
+        "calls": 4
+      },
+      {
+        "module": "PE",
+        "function": "material",
+        "calls": 8
+      },
+      {
+        "module": "PE",
+        "function": "ref",
+        "calls": 2
+      },
+      {
+        "module": "PE",
+        "function": "request_hash",
+        "calls": 4
+      },
+      {
+        "module": "PE",
+        "function": "serve_generic_world_situated_possibility",
+        "calls": 1
+      }
+    ],
+    "call_total": 5861,
+    "modules_touched": [
+      "C1",
+      "N10E",
+      "PE"
+    ]
+  },
+  "consumed": {
+    "base_ratio": "54/60",
+    "minority_ratio": "6/60",
+    "ordered_condition_chain": [
+      {
+        "index": 0,
+        "ref": "fx:cond:area",
+        "n": 60
+      },
+      {
+        "index": 1,
+        "ref": "fx:cond:school",
+        "n": 30
+      },
+      {
+        "index": 2,
+        "ref": "fx:cond:caretime",
+        "n": 12
+      }
+    ]
+  }
+}

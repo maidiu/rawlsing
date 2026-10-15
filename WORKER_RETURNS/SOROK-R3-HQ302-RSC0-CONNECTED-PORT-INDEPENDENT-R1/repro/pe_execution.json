@@ -1,0 +1,21 @@
+{
+  "suite": "pe",
+  "started_at": "2026-10-15T01:36:04.559786+00:00",
+  "finished_at": "2026-10-15T01:36:07.141090+00:00",
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "staging/ns/rawlsing_next/tests/test_postastra_pe_generic_world_possibility.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=$RSC0_RETURN/repro/pe.xml"
+  ],
+  "cwd": "$RSC0_RUNTIME/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1",
+  "exit_code": 0,
+  "raw_stdout_sha256": "3d386d4c9b9d56591bbb7035a3b48ba7802c67d51b2fd400cf88448d330912de",
+  "sanitization": "runtime/return/worktree paths only",
+  "log": "repro/pe.log",
+  "junit": "repro/pe.xml"
+}
