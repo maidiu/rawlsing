@@ -1,0 +1,48 @@
+{
+ "schema": "SOROK_HQ302_RCP2_LAW_DERIVED_FROZEN_PREREG@1",
+ "frozen_at": "BEFORE_OPENING_ANY_HQ300_CANDIDATE_EXPECTATION_TEST_OR_RESULT",
+ "ordering_attestation": "authored from ADOPTED LAW ONLY (CAN008_R2 + ADP016 + ADP017 transcripts and the accepted guard blob); the candidate's 01_FROZEN_EXPECTED_MATRIX.json, test_hq300_court.py and 03_EXECUTION_RECEIPTS.json were NOT opened before this freeze",
+ "adopted_law": {
+  "CAN008_R2": {
+   "blob": "b80dd6925066510ecbbfec7b427bf9f688475663",
+   "contract": "V3_ACTOR_RESPONSE_PRESSURE_FLOW_TRANSACTION_RULESET@2.0.0-CANDIDATE.R1"
+  },
+  "ADP016": {
+   "blob": "c6619a286e115d060ab4830889e7fc23762167a5"
+  },
+  "ADP017": {
+   "blob": "eece4f3f2f3f9288ab9bbc645dc81e20a99e1280"
+  },
+  "production_guard": {
+   "file": "rawlsing_next/v3_psepf_zero_positive_guard.py",
+   "blob": "e0528d65215cb431196570c38bac4eae94217a1b",
+   "required": "DEFAULT_ACCEPTED_POSITIVE_TRANSITION_AUTHORITIES == mappingproxy({}) EMPTY and byte-unchanged"
+  }
+ },
+ "law_derived_positive_expectations": [
+  "two ADMITTED events in order; the FIRST causes an ordered target-owner effect persisted as an ADP016 MemoryTransitionRecord",
+  "the SECOND event READS that persisted effect and produces a DISTINCT TYPED response (not a re-derivation from scratch)",
+  "ADP016 record carries all 20 required fields with deterministic identity = SHA-256 over actor/memory/kind/parents/rule/pre-post",
+  "all 7 formation gates enforced on the positive path",
+  "ADP017 ActorEpistemicEffect carries all 12 required fields with stance_operation in {ADD,WITHDRAW,SUPERSEDE_EXACT_RECORD,NO_CHANGE}",
+  "ABSENT-EFFECT CONTROL: with the first effect absent the second event must not produce the same distinct typed response",
+  "EXACT REPLAY: identical inputs reproduce identical identities"
+ ],
+ "law_derived_negative_expectations": [
+  "forged issuer -> REFUSE",
+  "hidden-future knowledge -> REFUSE",
+  "wrong actor -> REFUSE",
+  "stale world / as-of -> REFUSE",
+  "duplicate event -> REFUSE",
+  "trace corruption -> REFUSE",
+  "reverse chronology -> REFUSE",
+  "registry contamination -> REFUSE",
+  "unauthorized origin self-explanation or memory -> REFUSE",
+  "fake response -> REFUSE"
+ ],
+ "law_derived_failclosed": [
+  "ADP016 fail_closed_states (16) must raise typed OwnerTransitionError, incl. PARENT_EVENT_HASH_MISMATCH and PRE_STATE_HASH_MISMATCH",
+  "ADP017 memory_interaction noncollapse (4) + sole_memory_basis_rule: dead basis -> deny, stance NOT erased"
+ ],
+ "candidate_observation_status": "NONE_AT_FREEZE_TIME"
+}

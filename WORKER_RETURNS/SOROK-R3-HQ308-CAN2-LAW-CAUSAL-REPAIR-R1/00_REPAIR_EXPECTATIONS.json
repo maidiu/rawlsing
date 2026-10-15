@@ -1,0 +1,29 @@
+{
+  "schema": "CAN2_REPAIR_BASELINE_FREEZE@1",
+  "startup": "79b22aea1254aefc191fedcf737c4f52ce5f8135",
+  "reviewer": "a11982e6cf135a8ecc72b6152ec796b4a4707093",
+  "inherited_baseline": {
+    "owners": 220,
+    "rsm": 60,
+    "candidate": 37,
+    "rcp3": {
+      "total": 82,
+      "pass": 37,
+      "red": 45
+    }
+  },
+  "oracle_policy": "Original tests unchanged; repair expected to satisfy enforced gates. Stronger unavailable destination owner proof remains explicit HOLD; no weakening or fake PASS. Some original tests may encode prior unsafe claims; execute unchanged, report conflicts.",
+  "test_source_sha256": "718cdb944bacdcfc64ba918666d64ce78c2917f8119a4a935daf6a680b493238",
+  "inherited_prereg_sha256": "056ebe78a4240a6123abcf4f1b390d90d1cf31c077e9085ddf9d0904dc473700",
+  "frozen_before_repair": true,
+  "new_controls_expected": [
+    "cross-field authority mutations refuse",
+    "transaction rollback at every stage",
+    "history corruption and alias mutation refuse",
+    "real absence and read ablation change response",
+    "exact replay",
+    "UNKNOWN epistemic access defers",
+    "zero production authority",
+    "unavailable destination/public owner emits HOLD"
+  ]
+}
