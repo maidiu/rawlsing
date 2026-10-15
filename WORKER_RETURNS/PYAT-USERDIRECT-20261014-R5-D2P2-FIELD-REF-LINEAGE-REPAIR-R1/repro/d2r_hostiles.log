@@ -1,0 +1,38 @@
+EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE                                      [100%]
+=========================== short test summary info ============================
+ERROR test_d2r_sourcefree_hostiles.py::test_01_independently_computed_official_gss_and_nca_fixture_numbers
+ERROR test_d2r_sourcefree_hostiles.py::test_02_producer_internal_content_hash_is_consistent
+ERROR test_d2r_sourcefree_hostiles.py::test_03_two_roles_have_different_real_native_units
+ERROR test_d2r_sourcefree_hostiles.py::test_04_actual_produced_and_reader_ref_namespaces_disjoint
+ERROR test_d2r_sourcefree_hostiles.py::test_05_real_reader_registry_rejects_produced_field_ref
+ERROR test_d2r_sourcefree_hostiles.py::test_06_reader_ref_points_to_row_not_producer_contract
+ERROR test_d2r_sourcefree_hostiles.py::test_07_publication_clock_cutoff[2021-12-31-REFUSED_REQUIRED_FIELD_TEST_ONLY]
+ERROR test_d2r_sourcefree_hostiles.py::test_07_publication_clock_cutoff[2022-02-23-REFUSED_REQUIRED_FIELD_TEST_ONLY]
+ERROR test_d2r_sourcefree_hostiles.py::test_07_publication_clock_cutoff[2022-03-01-REFUSED_REQUIRED_FIELD_TEST_ONLY]
+ERROR test_d2r_sourcefree_hostiles.py::test_07_publication_clock_cutoff[2022-07-07-REFUSED_REQUIRED_FIELD_TEST_ONLY]
+ERROR test_d2r_sourcefree_hostiles.py::test_07_publication_clock_cutoff[2022-07-08-TWO_VALUES_READ_TEST_ONLY]
+ERROR test_d2r_sourcefree_hostiles.py::test_08_partial_is_nonpositive - FileN...
+ERROR test_d2r_sourcefree_hostiles.py::test_09_gss_mutation_isolated_at_reader_row_refs
+ERROR test_d2r_sourcefree_hostiles.py::test_10_nca_mutation_isolated_at_reader_row_refs
+ERROR test_d2r_sourcefree_hostiles.py::test_11_revocation_refused_preserves_attempted_readset
+ERROR test_d2r_sourcefree_hostiles.py::test_12_producer_forgery_refusal[issuer_signature-fake signer-ISSUER_FORGERY]
+ERROR test_d2r_sourcefree_hostiles.py::test_12_producer_forgery_refusal[issued-True-ISSUER_FORGERY]
+ERROR test_d2r_sourcefree_hostiles.py::test_12_producer_forgery_refusal[source_pdf_sha256-fakepdfsha-UNVERIFIED_BINARY_CUSTODY]
+ERROR test_d2r_sourcefree_hostiles.py::test_12_producer_forgery_refusal[issuer_ref-fake-source-grant-EXTERNAL_CUSTODY_OR_ISSUER_FORGERY]
+ERROR test_d2r_sourcefree_hostiles.py::test_12_producer_forgery_refusal[permission-REAL_USE_GRANT-REAL_USE_PERMISSION_NOT_ISSUED]
+ERROR test_d2r_sourcefree_hostiles.py::test_12_producer_forgery_refusal[fixture_only-False-FIELD_ISSUANCE_LAUNDERING]
+ERROR test_d2r_sourcefree_hostiles.py::test_13_nca_wrong_unit_and_individual_inference_refuses_reader[native_unit-RURAL_PHONE_PEOPLE-NCA_NATIVE_UNIT_GEOGRAPHY_MEASURE_CONFLICT]
+ERROR test_d2r_sourcefree_hostiles.py::test_13_nca_wrong_unit_and_individual_inference_refuses_reader[native_geography-GHANA_RURAL-NCA_NATIVE_UNIT_GEOGRAPHY_MEASURE_CONFLICT]
+ERROR test_d2r_sourcefree_hostiles.py::test_13_nca_wrong_unit_and_individual_inference_refuses_reader[native_measure-UNIQUE_PERSONS_WITH_PHONE-NCA_NATIVE_UNIT_GEOGRAPHY_MEASURE_CONFLICT]
+ERROR test_d2r_sourcefree_hostiles.py::test_13_nca_wrong_unit_and_individual_inference_refuses_reader[unique_persons-True-NCA_RURAL_OR_UNIQUE_PERSON_INFERENCE]
+ERROR test_d2r_sourcefree_hostiles.py::test_13_nca_wrong_unit_and_individual_inference_refuses_reader[rural_split-27-NCA_RURAL_OR_UNIQUE_PERSON_INFERENCE]
+ERROR test_d2r_sourcefree_hostiles.py::test_14_gss_wrong_individual_unit_refuses_reader
+ERROR test_d2r_sourcefree_hostiles.py::test_15_mains_only_numerator_refused_as_all_electricity
+ERROR test_d2r_sourcefree_hostiles.py::test_16_missing_exclusions_refused - F...
+ERROR test_d2r_sourcefree_hostiles.py::test_17_individual_pooling_model_inference_refused[requested_person_exposure]
+ERROR test_d2r_sourcefree_hostiles.py::test_17_individual_pooling_model_inference_refused[requested_pooling]
+ERROR test_d2r_sourcefree_hostiles.py::test_17_individual_pooling_model_inference_refused[requested_model_use]
+ERROR test_d2r_sourcefree_hostiles.py::test_18_claim_issued_EE13_is_refused
+ERROR test_d2r_sourcefree_hostiles.py::test_19_wrong_asof_and_current_refused
+ERROR test_d2r_sourcefree_hostiles.py::test_20_deterministic_replay_selected_snapshot
+35 errors in 0.46s

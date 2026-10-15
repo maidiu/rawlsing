@@ -1,0 +1,68 @@
+{
+ "schema": "R5_D2P2_FIELD_REF_LINEAGE_REPAIR@1",
+ "branch": "agent/userdirect-pyat-20261014-r5-d2p2-ref-lineage-repair-r1",
+ "sealed_startup": "7a4576f83df59f1122d5aa5407a19afd26b5bc3a",
+ "base_canonical": "0d551d36ff19dc9806e0ad490ff33a1e4c25e381",
+ "pinned": {
+  "d2r": "119c25f3f60d46ba752aab3b8623767669a118f3",
+  "d2p": "af128002ddc334ab5f3494a3b9488fd5b53e90d8",
+  "n9c_reader": "9ab4a0192b7c951bb0b387637e6c74333246766c",
+  "direct_transport_blob": "4a8e27a226a9c06606f5ba493d2cc7356d491a7b",
+  "oc05": "f30fca20e7b56e00348e82765d95f974b4b6a195"
+ },
+ "lineage_red": {
+  "confirmed": true,
+  "producer_site": "repro/d2p/external_fields.py:119  field_ref = D2P_TESTONLY_FIELD: + hash(field)",
+  "reader_site": "repro/d2p/n9c_reader.py:112  ref = TESTONLY_FIELD: + hash(row)",
+  "identity_counts_in_committed_receipts": {
+   "D2P_TESTONLY_FIELD": 2,
+   "TESTONLY_FIELD": 2
+  },
+  "conclusion": "four distinct hashes across two unrelated namespaces; identical numeric values are not lineage",
+  "parallel_identity_duality": "produce_two_fields(rows) AND TestOnlyRegistry(rows)"
+ },
+ "seven_reds": {
+  "suite": "test_d2r_required_integrity_red.py",
+  "result": "7 failed in 0.13s",
+  "reproduced": "7/7",
+  "xfail": false,
+  "oracle_edited": false
+ },
+ "thirty_five_positives": {
+  "suite": "test_d2r_sourcefree_hostiles.py",
+  "result": "35 errors in 0.46s",
+  "classification": "HARNESS_IMPORT_TERRAIN_NOT_CANDIDATE_FAILURE",
+  "status": "NOT_EXECUTED_IN_THIS_STAGING"
+ },
+ "repair_implemented": false,
+ "single_producer_registry_built": false,
+ "ref_binding_repaired": false,
+ "reds_rerun_against_repaired_provider": false,
+ "independent_new_interface_adapter_built": false,
+ "invented_original_pdf_hash": false,
+ "n5_n6_issued": false,
+ "ee13_claimed": false,
+ "oc05_operative": false,
+ "v3_claimed": false,
+ "source_authority_ceiling": "PDF SHA/length/edition and reuse permissions NULL/HOLD; source-use/method/edition custody ISSUER HOLD",
+ "hold_type": "REVIEWER_BUDGET_EXHAUSTION__REDS_AND_REPAIR_SITES_DELIVERED",
+ "no_self_adoption": true,
+ "distinct_d2p2_review_required": true,
+ "deliverables": {
+  "00_RETURN.md": {
+   "sha256": "c817c3cfb3497145ce22820f0932a1ef0e614e851b75345f823e8f8a6c3d6fdd",
+   "bytes": 6077
+  }
+ },
+ "repro": {
+  "d2r_7reds.log": {
+   "sha256": "ef19e55d8daf904148d98a40460645c93dbbb1d8318131cb38110c7869963980",
+   "bytes": 970
+  },
+  "d2r_hostiles.log": {
+   "sha256": "59f270c96139874e4a4fcf840b792a4245c638ed9096932c903da3e1553299f9",
+   "bytes": 4110
+  }
+ },
+ "terminal": "R5_D2P2_FIELD_REF_LINEAGE_REPAIR_TYPED_HOLD__GITHUB_PUSHED"
+}
