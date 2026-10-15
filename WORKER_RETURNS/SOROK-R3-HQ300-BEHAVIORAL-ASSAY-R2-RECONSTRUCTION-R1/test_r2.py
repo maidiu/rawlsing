@@ -316,3 +316,73 @@ def test_extra_paraphrase_changes_accessible_surface_not_owner_facts(frozen):
  assert v['facts']['accessible_history']!=p['facts']['accessible_history']
  assert v['facts']['organization']==p['facts']['organization']
  assert v['representation']==p['representation']
+
+@pytest.mark.parametrize('fault',['remove','truncate','replace','overwrite_preserve_metadata','append','symlink'])
+def test_extra_active_ledger_fault_denies_before_dispatch(frozen,tmp_path,fault):
+ import os
+ row,case,p=sample(frozen);issuer=MockIssuer();g=mock_permit(issuer,frozen,[row]);t=MockTransport();path=tmp_path/'journal'
+ with Runner(g,issuer,frozen,t,path) as runner:
+  before=path.stat();original=path.read_bytes()
+  if fault=='remove':path.unlink()
+  if fault=='truncate':path.write_bytes(b'')
+  if fault=='replace':
+   other=tmp_path/'replacement';other.write_bytes(original);other.replace(path)
+  if fault=='overwrite_preserve_metadata':
+   changed=original.replace(b'"START"',b'"PAUSE"',1);assert changed!=original and len(changed)==len(original)
+   path.write_bytes(changed);os.utime(path,ns=(before.st_atime_ns,before.st_mtime_ns))
+  if fault=='append':path.write_bytes(original+b'UNAUTHORIZED_APPEND\n')
+  if fault=='symlink':
+   other=tmp_path/'linked';other.write_bytes(original);path.unlink();path.symlink_to(other)
+  with pytest.raises(Denied):runner.call(row['id'],p)
+  assert runner.used==0 and runner.spent==0
+ assert not t.requests
+
+def test_extra_active_ledger_loss_preserves_charged_attempt(frozen,tmp_path):
+ rows=[r for r in frozen.rows.values() if r.get('phase','primary')=='primary'][:2]
+ issuer=MockIssuer();g=mock_permit(issuer,frozen,rows);t=MockTransport();path=tmp_path/'journal'
+ with Runner(g,issuer,frozen,t,path) as runner:
+  packet,_=frozen.approved(rows[0]['id']);runner.call(rows[0]['id'],packet)
+  path.unlink();packet,_=frozen.approved(rows[1]['id'])
+  with pytest.raises(Denied):runner.call(rows[1]['id'],packet)
+  assert runner.used==1 and runner.spent==1
+ assert len(t.requests)==1
+
+def test_extra_same_ledger_concurrent_writer_denied(frozen,tmp_path):
+ row,case,p=sample(frozen);issuer=MockIssuer();g=mock_permit(issuer,frozen,[row]);t=MockTransport();path=tmp_path/'journal'
+ with Runner(g,issuer,frozen,t,path) as runner:
+  with pytest.raises(Denied,match='LEDGER_BUSY'):Runner(g,issuer,frozen,t,path)
+  assert runner.call(row['id'],p)
+ assert len(t.requests)==1
+
+@pytest.mark.parametrize('reopen',[False,True])
+def test_extra_uncaptured_response_holds_without_redraw(frozen,tmp_path,reopen):
+ row,case,p=sample(frozen);issuer=MockIssuer();g=mock_permit(issuer,frozen,[row]);t=MockTransport();path=tmp_path/'journal'
+ with Runner(g,issuer,frozen,t,path) as runner:
+  original=runner._append
+  def capture_failure(body):
+   if body['op']=='CAPTURE':raise Denied('INJECTED_CAPTURE_WRITE_FAILURE')
+   return original(body)
+  runner._append=capture_failure
+  with pytest.raises(Denied,match='CAPTURE_WRITE'):runner.call(row['id'],p)
+  runner._append=original
+  if not reopen:
+   with pytest.raises(Denied,match='UNRESOLVED'):runner.call(row['id'],p)
+  assert runner.used==1 and row['id'] in runner.pending
+ if reopen:
+  with Runner(g,issuer,frozen,t,path) as runner:
+   with pytest.raises(Denied,match='UNRESOLVED'):runner.call(row['id'],p)
+   assert runner.used==1
+ assert len(t.requests)==1
+
+def test_extra_same_runner_concurrent_calls_obey_total_cap(frozen,tmp_path):
+ from concurrent.futures import ThreadPoolExecutor
+ rows=[r for r in frozen.rows.values() if r.get('phase','primary')=='primary'][:2]
+ packets=[frozen.approved(r['id'])[0] for r in rows];issuer=MockIssuer();g=mock_permit(issuer,frozen,rows,total_call_budget=1,spend_cap_micro=1);t=MockTransport()
+ with Runner(g,issuer,frozen,t,tmp_path/'journal') as runner:
+  def attempt(i):
+   try:return runner.call(rows[i]['id'],packets[i])
+   except Denied:return None
+  with ThreadPoolExecutor(max_workers=2) as pool:results=list(pool.map(attempt,[0,1]))
+  assert sum(x is not None for x in results)==1
+  assert runner.used==1 and runner.spent==1
+ assert len(t.requests)==1

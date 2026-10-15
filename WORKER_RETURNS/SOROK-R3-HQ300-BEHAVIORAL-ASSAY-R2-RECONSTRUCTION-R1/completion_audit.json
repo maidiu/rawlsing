@@ -24,17 +24,17 @@
     {
       "id": "new_versioned_R2_freeze_before_mocks",
       "status": "VERIFIED",
-      "evidence": "freezes/v6.json; earlier freezes/source archives/deviations retained"
+      "evidence": "freezes/v8.json; earlier freezes/source archives/deviations retained"
     },
     {
       "id": "opaque_ids_actor_safety_and_factual_contrasts",
       "status": "VERIFIED_SOURCEFREE_ONLY",
-      "evidence": "51/51 current tests; all21,600 raw requests/responses read back against frozen plan; receipts/r2_full_v6/raw_capture_audit.json"
+      "evidence": "62/62 current tests; all21,600 raw requests/responses read back against frozen plan; receipts/r2_full_v8/raw_capture_audit.json"
     },
     {
       "id": "distinct_A_B_C_and_live_cache",
       "status": "SOURCEFREE_TESTED",
-      "evidence": "51 PASS including all-cell equivalence and live entrypoint/cache scan accounting"
+      "evidence": "62 PASS including all-cell equivalence and live entrypoint/cache scan accounting"
     },
     {
       "id": "scoring_lawful_sets_full_denominator_oracle_channels",
@@ -49,12 +49,12 @@
     {
       "id": "mock_gate_transport_caps_raw_capture",
       "status": "VERIFIED_SOURCEFREE_ONLY",
-      "evidence": "51/51 current tests; all21,600 raw requests/responses read back against frozen plan; receipts/r2_full_v6/raw_capture_audit.json"
+      "evidence": "62/62 current tests; all21,600 raw requests/responses read back against frozen plan; receipts/r2_full_v8/raw_capture_audit.json"
     },
     {
       "id": "all_nulls_free_text_and_superficial_adversaries",
       "status": "VERIFIED_SOURCEFREE_ONLY",
-      "evidence": "51/51 current tests; all21,600 raw requests/responses read back against frozen plan; receipts/r2_full_v6/raw_capture_audit.json"
+      "evidence": "62/62 current tests; all21,600 raw requests/responses read back against frozen plan; receipts/r2_full_v8/raw_capture_audit.json"
     },
     {
       "id": "independent_I2_scientific_review_obtained",
@@ -74,5 +74,12 @@
   ],
   "goal_completion_proven": false,
   "candidate_commission_deliverables_verified": true,
-  "unresolved_required_edge": "Independent I2 scientific review not performed; latest commission assigns this to HQ after return and forbids delegation during implementation"
+  "unresolved_required_edge": "Independent I2 scientific review not performed; latest commission assigns this to HQ after return and forbids delegation during implementation",
+  "post_return_transport_correction": {
+    "old_actual_RED_probes": 2,
+    "current_tests_PASS": 62,
+    "full_mock_dispatches_and_exact_captures": 21600,
+    "exact_repair_probes": "receipts/transport_repair_v8/result.json",
+    "scientific_review": "NOT_PERFORMED"
+  }
 }

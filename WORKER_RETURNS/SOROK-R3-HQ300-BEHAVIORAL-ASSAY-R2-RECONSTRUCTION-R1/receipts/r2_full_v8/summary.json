@@ -1,0 +1,1993 @@
+{
+  "complete_lawful": {
+    "evidence_label": "MOCK_ONLY_NOT_BEHAVIORAL_EVIDENCE",
+    "freeze": "58aa322c132eca6b47cb0be4d0eb04aeebf410b099e94511927e00e40c46d0ce",
+    "policy": "lawful",
+    "n_planned": 10800,
+    "mock_dispatches": 10800,
+    "real_model_calls": 0,
+    "actor_runs": 0,
+    "reserved_mock_micro_units": 10800,
+    "transport_attempts": 10800,
+    "holds": [],
+    "correctness_fraction_plumbing_only": 1.0,
+    "per_phase": {
+      "N1_PARAPHRASE": {
+        "n": 378,
+        "fraction": 1.0
+      },
+      "N2_LABEL": {
+        "n": 378,
+        "fraction": 1.0
+      },
+      "N3_ORDER": {
+        "n": 378,
+        "fraction": 1.0
+      },
+      "N4_SURFACE": {
+        "n": 378,
+        "fraction": 1.0
+      },
+      "N5_TRACE_FIREWALL": {
+        "n": 378,
+        "fraction": 1.0
+      },
+      "N6_NO_PROSE_SCORING": {
+        "n": 378,
+        "fraction": 1.0
+      },
+      "N7_BUDGET": {
+        "n": 378,
+        "fraction": 1.0
+      },
+      "free_text": {
+        "n": 378,
+        "fraction": 1.0
+      },
+      "primary": {
+        "n": 7776,
+        "fraction": 1.0
+      }
+    },
+    "nulls": {
+      "N1_PARAPHRASE": {
+        "n_pairs": 378,
+        "code_disagreements": 0,
+        "missing": 0,
+        "pass_mock_null": true
+      },
+      "N2_LABEL": {
+        "n_pairs": 378,
+        "code_disagreements": 0,
+        "missing": 0,
+        "pass_mock_null": true
+      },
+      "N3_ORDER": {
+        "n_pairs": 378,
+        "code_disagreements": 0,
+        "missing": 0,
+        "pass_mock_null": true
+      },
+      "N4_SURFACE": {
+        "n_pairs": 378,
+        "code_disagreements": 0,
+        "missing": 0,
+        "pass_mock_null": true
+      },
+      "N5_TRACE_FIREWALL": {
+        "n_pairs": 378,
+        "code_disagreements": 0,
+        "missing": 0,
+        "pass_mock_null": true
+      },
+      "N6_NO_PROSE_SCORING": {
+        "n_pairs": 378,
+        "code_disagreements": 0,
+        "missing": 0,
+        "pass_mock_null": true
+      },
+      "N7_BUDGET": {
+        "n_pairs": 378,
+        "code_disagreements": 0,
+        "missing": 0,
+        "pass_mock_null": true
+      },
+      "free_text": {
+        "n_pairs": 378,
+        "code_disagreements": 0,
+        "missing": 0,
+        "pass_mock_null": true
+      }
+    },
+    "paired_primary": {
+      "K1": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 288,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 288,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K2": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 216,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 216,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K3": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 648,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 648,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K4": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 432,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 432,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K5": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 576,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 576,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K6": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 432,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 432,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      }
+    },
+    "wall_seconds": 213.313
+  },
+  "all_first_option": {
+    "evidence_label": "MOCK_ONLY_NOT_BEHAVIORAL_EVIDENCE",
+    "freeze": "58aa322c132eca6b47cb0be4d0eb04aeebf410b099e94511927e00e40c46d0ce",
+    "policy": "first",
+    "n_planned": 7776,
+    "mock_dispatches": 7776,
+    "real_model_calls": 0,
+    "actor_runs": 0,
+    "reserved_mock_micro_units": 7776,
+    "transport_attempts": 7776,
+    "holds": [],
+    "correctness_fraction_plumbing_only": 0.3611111111111111,
+    "per_phase": {
+      "primary": {
+        "n": 7776,
+        "fraction": 0.3611111111111111
+      }
+    },
+    "nulls": {},
+    "paired_primary": {
+      "K1": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 288,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 288,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K2": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 216,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 216,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K3": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 648,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 648,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K4": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 432,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 432,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K5": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 576,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 576,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K6": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 432,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 432,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      }
+    },
+    "wall_seconds": 150.559
+  },
+  "metadata_attack": {
+    "evidence_label": "MOCK_ONLY_NOT_BEHAVIORAL_EVIDENCE",
+    "freeze": "58aa322c132eca6b47cb0be4d0eb04aeebf410b099e94511927e00e40c46d0ce",
+    "policy": "metadata",
+    "n_planned": 756,
+    "mock_dispatches": 756,
+    "real_model_calls": 0,
+    "actor_runs": 0,
+    "reserved_mock_micro_units": 756,
+    "transport_attempts": 756,
+    "holds": [],
+    "correctness_fraction_plumbing_only": 0.0,
+    "per_phase": {
+      "N5_TRACE_FIREWALL": {
+        "n": 378,
+        "fraction": 0.0
+      },
+      "primary": {
+        "n": 378,
+        "fraction": 0.0
+      }
+    },
+    "nulls": {
+      "N5_TRACE_FIREWALL": {
+        "n_pairs": 378,
+        "code_disagreements": 0,
+        "missing": 0,
+        "pass_mock_null": true
+      }
+    },
+    "paired_primary": {
+      "K1": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 12,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 12,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K2": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 12,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 12,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K3": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 36,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 36,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K4": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 18,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 18,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K5": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 24,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 24,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K6": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 24,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 24,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      }
+    },
+    "wall_seconds": 14.993
+  },
+  "budget_falsifier": {
+    "evidence_label": "MOCK_ONLY_NOT_BEHAVIORAL_EVIDENCE",
+    "freeze": "58aa322c132eca6b47cb0be4d0eb04aeebf410b099e94511927e00e40c46d0ce",
+    "policy": "budget_fragile",
+    "n_planned": 756,
+    "mock_dispatches": 756,
+    "real_model_calls": 0,
+    "actor_runs": 0,
+    "reserved_mock_micro_units": 756,
+    "transport_attempts": 756,
+    "holds": [],
+    "correctness_fraction_plumbing_only": 0.5,
+    "per_phase": {
+      "N7_BUDGET": {
+        "n": 378,
+        "fraction": 0.0
+      },
+      "primary": {
+        "n": 378,
+        "fraction": 1.0
+      }
+    },
+    "nulls": {
+      "N7_BUDGET": {
+        "n_pairs": 378,
+        "code_disagreements": 378,
+        "missing": 0,
+        "pass_mock_null": false
+      }
+    },
+    "paired_primary": {
+      "K1": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 12,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 12,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K2": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 12,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 12,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K3": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 36,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 36,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K4": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 18,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 18,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K5": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 24,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 24,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K6": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 24,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 24,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      }
+    },
+    "wall_seconds": 13.327
+  },
+  "origin_falsifier": {
+    "evidence_label": "MOCK_ONLY_NOT_BEHAVIORAL_EVIDENCE",
+    "freeze": "58aa322c132eca6b47cb0be4d0eb04aeebf410b099e94511927e00e40c46d0ce",
+    "policy": "origin_leak",
+    "n_planned": 756,
+    "mock_dispatches": 756,
+    "real_model_calls": 0,
+    "actor_runs": 0,
+    "reserved_mock_micro_units": 756,
+    "transport_attempts": 756,
+    "holds": [],
+    "correctness_fraction_plumbing_only": 0.0,
+    "per_phase": {
+      "N5_TRACE_FIREWALL": {
+        "n": 378,
+        "fraction": 0.0
+      },
+      "primary": {
+        "n": 378,
+        "fraction": 0.0
+      }
+    },
+    "nulls": {
+      "N5_TRACE_FIREWALL": {
+        "n_pairs": 378,
+        "code_disagreements": 0,
+        "missing": 0,
+        "pass_mock_null": true
+      }
+    },
+    "paired_primary": {
+      "K1": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 12,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 12,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K2": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 12,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 12,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K3": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 36,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 36,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K4": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 18,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 18,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K5": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 24,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 24,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K6": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 24,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 24,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      }
+    },
+    "wall_seconds": 12.129
+  },
+  "belief_falsifier": {
+    "evidence_label": "MOCK_ONLY_NOT_BEHAVIORAL_EVIDENCE",
+    "freeze": "58aa322c132eca6b47cb0be4d0eb04aeebf410b099e94511927e00e40c46d0ce",
+    "policy": "belief_overwrite",
+    "n_planned": 756,
+    "mock_dispatches": 756,
+    "real_model_calls": 0,
+    "actor_runs": 0,
+    "reserved_mock_micro_units": 756,
+    "transport_attempts": 756,
+    "holds": [],
+    "correctness_fraction_plumbing_only": 0.9523809523809523,
+    "per_phase": {
+      "N5_TRACE_FIREWALL": {
+        "n": 378,
+        "fraction": 0.9523809523809523
+      },
+      "primary": {
+        "n": 378,
+        "fraction": 0.9523809523809523
+      }
+    },
+    "nulls": {
+      "N5_TRACE_FIREWALL": {
+        "n_pairs": 378,
+        "code_disagreements": 0,
+        "missing": 0,
+        "pass_mock_null": true
+      }
+    },
+    "paired_primary": {
+      "K1": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 12,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 12,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K2": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 12,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 12,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K3": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 36,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 36,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K4": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 18,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 18,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K5": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 24,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 24,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      },
+      "K6": {
+        "B": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 24,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        },
+        "C": {
+          "delta": 0.0,
+          "paired_interval": [
+            -1,
+            1
+          ],
+          "n_families": 6,
+          "n_matched_blocks": 24,
+          "family_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sign_flip_p_diagnostic": 1.0,
+          "interval_assumption": "Independent sampled family means bounded [-1,1]; NOT established by this convenience corpus",
+          "minimum_clusters_for_5pp_precision": 4940,
+          "inference": "INDETERMINATE_NO_PROSPECTIVE_SAMPLING_POWER",
+          "promotion": false,
+          "equivalence": false
+        }
+      }
+    },
+    "wall_seconds": 12.21
+  }
+}

@@ -28,5 +28,17 @@
     "freeze": "9411eb5f94762684f2d3b7fa32710a3a67ab92ce1e9d21414cb3a1b9b8acea87",
     "execution": "48/48 tests PASS; full run interrupted at 5654 captures, raw partial journal retained",
     "repair": "Replace non-ancestral alphabetical field links with exact accessible-parent-slot/nondisclosable-origin evidence index. Remove redundant C owner formation and count formation/rebuild scans and repeated projection evaluations. Expand N1 to paraphrase accessible history/present wording, with factual owner content invariant. Add all-cell treatment/factual equivalence and scan-accounting tests. Corpus facts, proposed key and randomized schedule unchanged."
+  },
+  {
+    "version": "v6",
+    "freeze": "9a05efd9cc4060a7ae9b496f6fe71a5193912b228ac0d2e04577f80902384823",
+    "execution": "51 PASS, all21,600 frozen mocks audited; later actual active-journal removal probe RED (one inert dispatch)",
+    "repair": "Add active journal identity/size/mtime/tail continuity checks before every append, never recreate a missing active journal, and type filesystem/replay failures as Denied. Add zero-dispatch fault probes for removal, truncation, inode replacement, metadata-preserving overwrite, append and symlink; test already-charged attempts and concurrent writers. No corpus facts, lawful outcomes, treatment code or schedule changes."
+  },
+  {
+    "version": "v7",
+    "freeze": "a2792dc37cb2212a9782ae7286bc6ff27f6d6072868ff836c46eaebbea879a91",
+    "execution": "59 PASS; active-journal removal fixed; additional capture-write boundary probe RED with a second inert dispatch",
+    "repair": "Persist an unresolved-attempt state at reservation, clear it only after successful capture or explicitly retryable TransportError, and deny unknown-outcome retries both while open and after re-entry. Serialize same-runner calls to protect budget checks. Corpus, proposed key and schedule unchanged."
   }
 ]

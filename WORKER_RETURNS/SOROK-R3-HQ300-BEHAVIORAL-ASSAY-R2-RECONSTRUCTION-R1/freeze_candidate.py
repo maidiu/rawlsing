@@ -38,6 +38,10 @@ def main(version):
   real_model_calls_permitted=0,live_mode='UNCONDITIONAL_DENIAL',review='Subsequent HQ I2 action per routing erratum, unless human user directs otherwise')
  if version not in ('v1','v2','v3'):
   pre['execution_randomization']='Whole matched blocks shuffled using Random(942011), independent of outcomes and arms; all six within-block permutations crossed.'
+ if version not in ('v1','v2','v3','v4','v5','v6'):
+  pre['active_ledger_continuity']='Verify regular-file inode, size, mtime and exact committed tail before append; no recreation after active removal; preserve charged attempts and deny concurrent writers.'
+ if version not in ('v1','v2','v3','v4','v5','v6','v7'):
+  pre['unresolved_outcomes']='Reserve marks a trial pending; only a captured response or typed retryable transport error clears it. Unknown response/capture outcomes HOLD without redraw after re-entry. Same-runner calls serialized.'
  prepath=R/('preregistration.json' if version in ('v1','v2','v3') else f'preregistration_{version}.json')
  if prepath.exists():assert json.loads(prepath.read_text())==pre
  else:prepath.write_text(json.dumps(pre,indent=2)+'\n')

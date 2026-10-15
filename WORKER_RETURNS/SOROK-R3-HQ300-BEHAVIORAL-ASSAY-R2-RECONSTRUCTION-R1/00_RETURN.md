@@ -2,7 +2,7 @@
 
 **Terminal: SOURCEFREE_R2_CANDIDATE_EXECUTED__INDEPENDENT_I2_REVIEW_PENDING__MODEL_USE_HOLD__ZERO_REAL_MODEL_OR_ACTOR_CALLS__NO_ADOPTION.**
 
-The reconstruction is runnable and its final sourcefree courts pass. It is **not independently scientifically accepted** and supplies no observed model/human behavior. A future grant alone cannot activate live calls: this package accepts only its registered in-process mock transport. Independent I2 review, oracle/scenario custody and prospective design decisions remain separate gates.
+The reconstruction is runnable and its final sourcefree courts pass. This supersedes the v6 return at `a7d2be9894bf92f81356adf14141136666e63bd1` after two additional executed transport RED probes; see `04_TRANSPORT_CONTINUITY_CORRECTION.md`. It is **not independently scientifically accepted** and supplies no observed model/human behavior. A future grant alone cannot activate live calls: this package accepts only its registered in-process mock transport. Independent I2 review, oracle/scenario custody and prospective design decisions remain separate gates.
 
 ## Custody, routing and scope
 
@@ -22,13 +22,13 @@ The reconstruction is runnable and its final sourcefree courts pass. It is **not
 | Original LAB2 suite | **25 PASS** | `receipts/baseline/lab2.txt`, `.xml` |
 | Original LAB1 frozen machine plan | **576 trials**, five declared semantic sections identical to retained original; integrity/nulls/opacity/replay pass | `receipts/baseline/summary.json`, `primary_results.json.gz` |
 | Unmodified RMB independent suite | **13 PASS / 23 RED**, preserved | `receipts/baseline/rmb.txt`, `.xml` |
-| Final R2 entrypoint suite | **51 PASS / 0 RED / 0 SKIP** | `receipts/r2_v6.txt`, `.xml` |
+| Final R2 entrypoint suite | **62 PASS / 0 RED / 0 SKIP** | `receipts/r2_v8.txt`, `.xml` |
 | R2 counterparts of all 23 RMB failures | **23 sourcefree PASS**, originals remain RED | `RMB_23_regression_matrix.json` |
-| Full lawful mock plan | **10,800 requests/responses**: 7,776 primary + 2,646 null + 378 free-text; no missing captures; all seven mock nulls and fixture free-text comparison agree | `receipts/r2_full_v6/complete_lawful/` |
-| All-first-option control | **7,776 requests**, **zero B−A and C−A differences on every K** despite 36.111% overall fixture correctness | `receipts/r2_full_v6/all_first_option/` |
-| Metadata-only R1 lookup adversary | **756 requests**, 0 correctness, all trials retained in denominator | `receipts/r2_full_v6/metadata_attack/` |
-| Half-budget fragility control | **378/378 paired disagreements detected** | `receipts/r2_full_v6/budget_falsifier/` |
-| Origin / belief corruption controls | **756 origin-claim violations** and **36 improper private-belief report changes** detected as hard invariant failures | `receipts/r2_full_v6/raw_capture_audit.json` |
+| Full lawful mock plan | **10,800 requests/responses**: 7,776 primary + 2,646 null + 378 free-text; no missing captures; all seven mock nulls and fixture free-text comparison agree | `receipts/r2_full_v8/complete_lawful/` |
+| All-first-option control | **7,776 requests**, **zero B−A and C−A differences on every K** despite 36.111% overall fixture correctness | `receipts/r2_full_v8/all_first_option/` |
+| Metadata-only R1 lookup adversary | **756 requests**, 0 correctness, all trials retained in denominator | `receipts/r2_full_v8/metadata_attack/` |
+| Half-budget fragility control | **378/378 paired disagreements detected** | `receipts/r2_full_v8/budget_falsifier/` |
+| Origin / belief corruption controls | **756 origin-claim violations** and **36 improper private-belief report changes** detected as hard invariant failures | `receipts/r2_full_v8/raw_capture_audit.json` |
 | Whole raw-capture audit | **21,600 exact frozen request matches and responses**, documentary hash chains, all menu positions present/equal, exact execution-position balance, live cache hits verified | same audit plus raw `.jsonl.gz` and intervention receipts |
 
 All mock scores are **MOCK_ONLY_NOT_BEHAVIORAL_EVIDENCE**. A scripted policy's 1.0 score validates plumbing against a stipulated key; it is not an assay-validity or behavioral PASS. Hard origin/belief violations are separate from average correctness and from null invariance. An always-unsafe policy can be invariant under a null; it still fails the hard gate. No equivalence, promotion or population inference is issued.
@@ -43,15 +43,15 @@ All rotations of each menu cross all six execution permutations; whole blocks ar
 
 Paired analysis averages nuisance repetitions within family/K, validates exact joins and reports conservative bounded intervals plus sign-flip diagnostics with 12-comparison multiplicity. Six convenience families are not certified independent sampled units. The prospective precision calculation is not achieved power; ±5pp equivalence and architectural promotion remain **INDETERMINATE**.
 
-The mock-only transport checks exact issuer/signature, immutable mock model/endpoint, affirmative local privacy/use/retention, expiry/revocation, freeze/code/schema binding, strict integer caps and allowed trial scope. It reserves attempts/cost durably before dispatch, captures exact request/response bytes, rejects redraw, uses identical-byte transport retry, stops after three consecutive transport failures, and rejects ledger relocation/removal/rollback on re-entry under the live mock issuer. Ephemeral test keys are not archived and confer no real authority; archived journals are documentary receipts, not provider or issuer attestations. Live mode and custom/HTTP transports are unconditionally denied.
+The mock-only transport checks exact issuer/signature, immutable mock model/endpoint, affirmative local privacy/use/retention, expiry/revocation, freeze/code/schema binding, strict integer caps and allowed trial scope. It reserves attempts/cost durably before dispatch, captures exact request/response bytes, rejects redraw, uses identical-byte transport retry, stops after three consecutive transport failures, and rejects ledger relocation/removal/rollback on re-entry under the live mock issuer. Active journal removal, truncation, replacement, changed tail and symlink faults deny before dispatch. Unknown response/capture outcomes persist as a no-redraw HOLD across re-entry; same-runner calls are serialized. Ephemeral test keys are not archived and confer no real authority; archived journals are documentary receipts, not provider or issuer attestations. Live mode and custom/HTTP transports are unconditionally denied.
 
 ## Freeze integrity and retained repairs
 
 Original R1 bytes are retained unchanged as `original_R1_preregistration.json`; SHA-256 **`880fbde407654cf847e72f9cc58f7884470973072e99c0964b8d33e17e0bb330`**.
 
-Active R2 freeze: `freezes/v6.json`, SHA-256 **`9a05efd9cc4060a7ae9b496f6fe71a5193912b228ac0d2e04577f80902384823`**; protocol `preregistration_v6.json`. Corpus, proposed key, code and test contracts were frozen before its mocks. No corpus facts or expected outcome sets changed across development versions; v4 changed schedule ordering only.
+Active R2 freeze: `freezes/v8.json`, SHA-256 **`58aa322c132eca6b47cb0be4d0eb04aeebf410b099e94511927e00e40c46d0ce`**; protocol `preregistration_v8.json`. Corpus, proposed key, code and test contracts were frozen before its mocks. No corpus facts or expected outcome sets changed across development versions; v4 changed schedule ordering only.
 
-Earlier freezes, failed JUnit and two interrupted raw journals remain preserved: v2 had 39 PASS/1 helper-argument failure; v4 had 47 PASS/1 mechanism-test assumption failure; v3 and v5 partial runs retained 1,557 and 5,654 captures before identified cache/index repairs. `deviations.json` explains every revision. V1 exact source is in ancestor `13028e1c7`; v2–v5 exact source/corpus archives are checked against their freeze hashes in `archives/`. Old oracles were not greenwashed and partial runs are not represented as complete experiments.
+Earlier freezes, failed JUnit and two interrupted raw journals remain preserved: v2 had 39 PASS/1 helper-argument failure; v4 had 47 PASS/1 mechanism-test assumption failure; v3 and v5 partial runs retained 1,557 and 5,654 captures before identified cache/index repairs. `deviations.json` explains every revision. V1 exact source is in ancestor `13028e1c7`; v2–v7 exact source/corpus archives are checked against their freeze hashes in `archives/`. Old oracles were not greenwashed and partial runs are not represented as complete experiments. V6 subsequently allowed one mock dispatch after active journal removal, and v7 allowed a second dispatch after an injected capture-write failure. Both REDs are retained. V8 passes their exact repair probes with zero dispatches after removal and only the original charged dispatch after capture failure, including re-entry. Facts, proposed key and schedule are unchanged from v6.
 
 ## Remaining holds and owner actions
 
@@ -67,6 +67,6 @@ ZERO real experimental model calls, actor runs, original-source operations, acce
 python3 WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/reproduce.py fresh_review_run
 ```
 
-This stages exact pinned inputs from the existing Git store, reruns unchanged 20+25/576/RMB, verifies the active freeze, runs the 51 R2 contracts, executes the full mock/falsifier sweeps under a new non-overwriting run ID, and audits every raw capture. Python/pytest are required; no network/provider credentials are used. The baseline RMB exit 1 is expected and retained; R2 acceptance commands exit 0 when their contracts hold.
+This stages exact pinned inputs from the existing Git store, reruns unchanged 20+25/576/RMB, verifies the active freeze, runs the 62 R2 contracts, executes the full mock/falsifier sweeps under a new non-overwriting run ID, and audits every raw capture. Python/pytest are required; no network/provider credentials are used. The baseline RMB exit 1 is expected and retained; R2 acceptance commands exit 0 when their contracts hold.
 
 Evidence/code hashes and changed paths: `artifact_manifest.json`, `changed_paths.json`. Portable runtime/source/cost receipt: `environment_passport_delta.json`; next session must re-probe marker/imports and rights. Only the assigned worker branch is pushed without force. `remote_verification.json` records direct read-back of the preceding evidence commit; the exact final remote SHA is queried after the final receipt push and reported outside its own hashed file in chat. **No self-acceptance or self-adoption.**

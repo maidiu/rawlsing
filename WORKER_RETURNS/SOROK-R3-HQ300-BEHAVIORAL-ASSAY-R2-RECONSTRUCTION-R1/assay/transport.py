@@ -12,6 +12,8 @@ import os
 from pathlib import Path
 import secrets
 import re
+import stat
+import threading
 from datetime import datetime,timezone
 from .architecture import canonical,digest
 from .architecture import build_packet,variants,DerivedCache
@@ -142,41 +144,81 @@ class Runner:
         try:fcntl.flock(self.lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
         except BlockingIOError:
             self.lock.close();raise Denied('LEDGER_BUSY')
-        self.entries=[];self.used=0;self.spent=0;self.retries=0;self.attempts={};self.request_hashes={};self.done=set();self.consecutive=0
+        self.entries=[];self.used=0;self.spent=0;self.retries=0;self.attempts={};self.request_hashes={};self.done=set();self.pending=set();self.consecutive=0;self._journal_state=None;self._call_lock=threading.RLock()
         try:
             if self.journal.exists():
-                for line in self.journal.read_text().splitlines():
+                journal_raw=self.journal.read_bytes()
+                if not journal_raw.endswith(b'\n'):raise Denied('LEDGER_INCOMPLETE_RECORD')
+                for line in journal_raw.splitlines():
                     entry=json.loads(line);body=entry['body']
                     if entry['signature']!=issuer.sign(body) or body['previous']!=(digest(self.entries[-1]) if self.entries else 'GENESIS') or body['grant_hash']!=self.grant_hash:raise Denied('CORRUPT_OR_DIFFERENT_GRANT_LEDGER')
                     self.entries.append(entry);self._apply(body)
                 if not self.entries or issuer._heads.get(self.grant_hash)!=digest(self.entries[-1]):raise Denied('LEDGER_ROLLBACK')
+                self._remember(self.journal.stat(),journal_raw.splitlines(keepends=True)[-1])
             else:self._append(dict(op='START'))
-        except Exception:
-            self.close();raise
+        except Exception as exc:
+            self.close()
+            if isinstance(exc,Denied):raise
+            raise Denied('CORRUPT_LEDGER_REPLAY') from exc
+
+    def _remember(self,info,tail):
+        self._journal_state=dict(device=info.st_dev,inode=info.st_ino,size=info.st_size,mtime=info.st_mtime_ns,tail=tail)
 
     def _apply(self,b):
         if b['op']=='RESERVE':
             tid=b['trial'];self.used+=1;self.spent+=b['reserved_micro']
+            self.pending.add(tid)
             if tid in self.attempts:self.retries+=1
             self.attempts[tid]=self.attempts.get(tid,0)+1;self.request_hashes[tid]=b['request_hash']
         elif b['op']=='CAPTURE':
-            self.done.add(b['trial']);self.consecutive=0
-        elif b['op']=='ERROR':self.consecutive+=1
+            self.done.add(b['trial']);self.pending.discard(b['trial']);self.consecutive=0
+        elif b['op']=='ERROR':
+            self.consecutive+=1
+            if b.get('retryable') is True:self.pending.discard(b['trial'])
         elif b['op']!='START':raise Denied('UNKNOWN_LEDGER_OPERATION')
 
     def _append(self,body):
         b=body|dict(previous=digest(self.entries[-1]) if self.entries else 'GENESIS',grant_hash=self.grant_hash,evidence_label=LABEL)
         entry={'body':b,'signature':self.issuer.sign(b)}
-        fd=os.open(self.journal,os.O_WRONLY|os.O_APPEND|os.O_CREAT,0o600)
-        with os.fdopen(fd,'ab') as stream:
-            stream.write(canonical(entry)+b'\n');stream.flush();os.fsync(stream.fileno())
+        payload=canonical(entry)+b'\n'
+        starting=body['op']=='START' and not self.entries
+        flags=os.O_RDWR|os.O_APPEND|getattr(os,'O_NOFOLLOW',0)
+        if starting:flags|=os.O_CREAT|os.O_EXCL
+        fd=None
+        try:
+            fd=os.open(self.journal,flags,0o600)
+            info=os.fstat(fd);named=os.stat(self.journal,follow_symlinks=False)
+            if not stat.S_ISREG(named.st_mode) or (info.st_dev,info.st_ino)!=(named.st_dev,named.st_ino):raise Denied('LEDGER_IDENTITY_CHANGED')
+            if not starting:
+                previous=self._journal_state
+                if previous is None or (info.st_dev,info.st_ino,info.st_size,info.st_mtime_ns)!=(previous['device'],previous['inode'],previous['size'],previous['mtime']):raise Denied('ACTIVE_LEDGER_CHANGED')
+                os.lseek(fd,-len(previous['tail']),os.SEEK_END)
+                if os.read(fd,len(previous['tail']))!=previous['tail']:raise Denied('ACTIVE_LEDGER_TAIL_CHANGED')
+            offset=0
+            while offset<len(payload):
+                written=os.write(fd,payload[offset:])
+                if written<=0:raise Denied('LEDGER_WRITE_INCOMPLETE')
+                offset+=written
+            os.fsync(fd)
+            after=os.fstat(fd);named=os.stat(self.journal,follow_symlinks=False)
+            if (after.st_dev,after.st_ino)!=(named.st_dev,named.st_ino) or after.st_size!=info.st_size+len(payload):raise Denied('LEDGER_CHANGED_DURING_APPEND')
+            self._remember(after,payload)
+        except OSError as exc:
+            raise Denied('ACTIVE_LEDGER_UNAVAILABLE') from exc
+        finally:
+            if fd is not None:os.close(fd)
         self.issuer._heads[self.grant_hash]=digest(entry)
         self.entries.append(entry);self._apply(b)
 
     def call(self,trial,packet,max_tokens=256,response_format='typed'):
+        with self._call_lock:
+            return self._call(trial,packet,max_tokens,response_format)
+
+    def _call(self,trial,packet,max_tokens=256,response_format='typed'):
         g=self.g
         if trial not in g['allowed_trials'] or packet.get('response_id')!=trial:raise Denied('TRIAL_SCOPE')
         if trial in self.done:raise Denied('UNREPORTED_REDRAW_FORBIDDEN')
+        if trial in self.pending:raise Denied('UNRESOLVED_ATTEMPT_OUTCOME_HOLD')
         if not positive_int(max_tokens) or max_tokens>256:raise Denied('TOKEN_BUDGET')
         approved,row=self.frozen.approved(trial)
         if packet!=approved or max_tokens!=row.get('max_tokens',256) or response_format!=row.get('response_format','typed'):raise Denied('UNFROZEN_REQUEST')
@@ -195,11 +237,11 @@ class Runner:
                 response=self.transport.send(raw)
                 if not isinstance(response,str):raise TypeError('Mock response must be raw text')
             except TransportError as exc:
-                self._append(dict(op='ERROR',trial=trial,error=str(exc),request_hash=request_hash))
+                self._append(dict(op='ERROR',trial=trial,error=str(exc),request_hash=request_hash,retryable=True))
                 if self.attempts[trial]>=g['per_trial_call_budget']:return None
                 continue
             except Exception as exc:
-                self._append(dict(op='ERROR',trial=trial,error=type(exc).__name__,request_hash=request_hash))
+                self._append(dict(op='ERROR',trial=trial,error=type(exc).__name__,request_hash=request_hash,retryable=False))
                 raise Denied('UNTYPED_PROVIDER_ERROR_NO_RETRY') from exc
             self._append(dict(op='CAPTURE',trial=trial,response_raw=response,request_hash=request_hash))
             return response
