@@ -13,7 +13,7 @@
 | New 19 OC2 real-entrypoint regressions | Not applicable | **19 PASS / 0 RED** |
 | **Combined all 95 (actual pytest)** | — | **89 PASS / 6 FAIL / 0 SKIP, exit 1** |
 
-All 31 original source tests are preserved byte-identically to their pinned inputs: `test_custody_hostiles.py` original Git blob `94ad944997cb9d1a8d6527e91c17416120c5108d`, `test_positive_lifecycle.py` `4b665a2a9d6999071624d580f2d2ae193daf59f4`. All 45 OCR1 test source cases unchanged, Git blob `ef997cab7205df53256b66a5695deeb9c082394f`. Executed JUnit/stdout and executable new regression code are retained in `OC2_EXECUTED_EVIDENCE_COMPACT.tar.xz`; actual statuses, not substituted tests.
+All 31 original source tests are preserved byte-identically to their pinned inputs: `test_custody_hostiles.py` original Git blob `94ad944997cb9d1a8d6527e91c17416120c5108d`, `test_positive_lifecycle.py` `4b665a2a9d6999071624d580f2d2ae193daf59f4`. All 45 OCR1 test source cases unchanged, Git blob `ef997cab7205df53256b66a5695deeb9c082394f`. The pushed `OC2_EXECUTED_EVIDENCE_COMPACT.tar.xz` retains combined 95-case and new-regression JUnit/stdout, while the additional independently executed baseline and separate post-repair suite JUnit/stdout remain in the full local downloadable evidence bundle. The executable 19-case regression source is committed separately under `repro/`; actual statuses, not substituted tests.
 
 ## Six retained REDs — do not conceal
 
@@ -31,7 +31,7 @@ All 31 original source tests are preserved byte-identically to their pinned inpu
 
 ## Evidence, limits, owner action
 
-The real execution bundle includes JUnit and stdout for original and OCR1 baseline, post-repair courts, 19 new regression tests, and combined 95 tests; plus the new executable regression source, environment passport, exact commands/exits. `01_EXECUTION_MATRIX.json` carries counts and the six exact reds; JUnit contains every executed case and traceback. No xfail, no skip, no original-test modification, no tests manufacturing expected exceptions.
+The pushed compact archive contains exact actual JUnit/stdout for combined 95 cases and 19 regression cases. The full local evidence archive additionally contains actual baseline 31/45 and separately executed post-repair 31/45 JUnit/stdout and pinned unchanged source copies. Committed `repro/test_oc2_regressions.py`, `01_EXECUTION_MATRIX.json`, `02_EXECUTION_COMMANDS.json` and `environment_passport_delta.json` carry executable regressions, measured counts/six RED identities, commands/exits and environment scope. Combined JUnit lists all 95 test cases and failures. No xfail, no skip, no original-test modification, no tests manufacturing expected exceptions.
 
 OCR1 `C07` persisted cross-process state recovery remains **NOT_REACHED** (no persistence API). Separate **HOLD** on trusted institutional signer registry, real independent sealed custody, external ledger anchor, actual provider/model-use/privacy/spending grants, semantic ownership, population inference and all V3 use. This implementation does **not** accept itself. HQ must resolve six historic test-contract conflicts and commission a distinct independent I2 review.
 
