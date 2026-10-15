@@ -1,0 +1,639 @@
+{
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "eaf8f3f9c32882f941ab5327",
+  "epoch_id": "M01_LOCAL_BOOTSTRAP_20261015",
+  "owner_session_alias": "M01_SOLE_AUTHOR",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "LOCAL_M01",
+  "conversation_or_account_affinity": "USER_SELECTED_CODEX",
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-15T20:34:52.065998+00:00",
+  "runtime_marker_digest": "eaf8f3f9c32882f941ab53273836604923f2d7aac651c4030ddfa3084dd969ea",
+  "probe_command_and_result": {
+    "python": "3.11.3",
+    "pytest": "pytest 9.1.1",
+    "git": "git version 2.39.1",
+    "filesystem_shell": "VERIFIED zsh, read/write/execute within assigned return",
+    "node": "NOT_NEEDED_NOT_PROBED"
+  },
+  "capabilities": {
+    "python": "VERIFIED",
+    "pytest": "VERIFIED",
+    "git": "VERIFIED",
+    "authenticated_remote": "VERIFIED ls-remote",
+    "model": "USER_REPORTED"
+  },
+  "git_object_store_alias": "EXISTING_SHARED_RAWLSING_STORE",
+  "worktree_alias": "AUTHORIZED_4327",
+  "branch": "agent/rabochii-sorok-r3-hq310-m01-memory-mediation-causal-cell-r1",
+  "checkout_base": "d3b7c7d7cf52ac8572f2d271bfe9cb97468660c8",
+  "head_at_probe": "845edf5d7c9c48b192b631dacf295afa6f587137",
+  "clean_dirty": "RETURN_FILES_PENDING_COMMIT",
+  "source_family": "SOURCEFREE_ONLY",
+  "materialized_source_refs": [
+    {
+      "module": "bootstrap",
+      "local_staging_path": "repro/bootstrap.py",
+      "verified_imported_module_file": "repro/bootstrap.py",
+      "blob_sha1": "19b0376a064d4cb6fb2d11caba5ecfd23878c633",
+      "source_refs": []
+    },
+    {
+      "module": "candidate",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/__init__.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/__init__.py",
+      "blob_sha1": "0581aff4ac0ea45c07387e5340e219566ce7330d",
+      "source_refs": [
+        {
+          "commit": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+          "path": "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/__init__.py",
+          "blob_sha1": "0581aff4ac0ea45c07387e5340e219566ce7330d",
+          "sha256": "be2b6eff83a8a5af687456545477856ec438cee29f25481ff58636556f745083"
+        },
+        {
+          "commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+          "path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/__init__.py",
+          "blob_sha1": "0581aff4ac0ea45c07387e5340e219566ce7330d",
+          "sha256": "be2b6eff83a8a5af687456545477856ec438cee29f25481ff58636556f745083"
+        }
+      ]
+    },
+    {
+      "module": "candidate.adopted_contract",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/adopted_contract.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/adopted_contract.py",
+      "blob_sha1": "259ff9da129f7d644f8ac9fd8f739ad6041a3edf",
+      "source_refs": [
+        {
+          "commit": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+          "path": "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/adopted_contract.py",
+          "blob_sha1": "259ff9da129f7d644f8ac9fd8f739ad6041a3edf",
+          "sha256": "eec78079b8adc82b28a608ec7dd3fbf3947a53a98447fcf3d4c82db98becf0ae"
+        },
+        {
+          "commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+          "path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/adopted_contract.py",
+          "blob_sha1": "259ff9da129f7d644f8ac9fd8f739ad6041a3edf",
+          "sha256": "eec78079b8adc82b28a608ec7dd3fbf3947a53a98447fcf3d4c82db98becf0ae"
+        }
+      ]
+    },
+    {
+      "module": "candidate.can008_candidate_rule",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+      "blob_sha1": "61d933d98ffb39d553a0dbc670388fc2bd3e89d3",
+      "source_refs": [
+        {
+          "commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+          "path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/can008_candidate_rule.py",
+          "blob_sha1": "61d933d98ffb39d553a0dbc670388fc2bd3e89d3",
+          "sha256": "c5a4b271346fe045e5a54522926795e7514ad3bacbbed04fbb60a2183348c27e"
+        }
+      ]
+    },
+    {
+      "module": "candidate.candidate_registry_fixture",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+      "blob_sha1": "0d978f89fb3c5e836a52f25849240db360f97f8f",
+      "source_refs": [
+        {
+          "commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+          "path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/candidate_registry_fixture.py",
+          "blob_sha1": "0d978f89fb3c5e836a52f25849240db360f97f8f",
+          "sha256": "1c2e2e0c4375a15b9f1bd55376a550834d001b7b7577cb2b8183caccbdfac768"
+        }
+      ]
+    },
+    {
+      "module": "candidate.owner_transitions",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "blob_sha1": "ac943d07459f68ba2e27baf05b442d9ecbddefd5",
+      "source_refs": [
+        {
+          "commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+          "path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/owner_transitions.py",
+          "blob_sha1": "ac943d07459f68ba2e27baf05b442d9ecbddefd5",
+          "sha256": "fcdc073693f781607dd6a7ec25e5fa1a79ce3cccd5071005773b2ca7a8a5017d"
+        }
+      ]
+    },
+    {
+      "module": "candidate.positive_chain",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "blob_sha1": "226cd42f81538f1b81ea7ea2e494776069142405",
+      "source_refs": [
+        {
+          "commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+          "path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/positive_chain.py",
+          "blob_sha1": "226cd42f81538f1b81ea7ea2e494776069142405",
+          "sha256": "0a288c5ffd1e92f0b29a2bf41ce99b50ebd05bf912c12d5efb18fd6fbc372657"
+        }
+      ]
+    },
+    {
+      "module": "cell",
+      "local_staging_path": "repro/cell.py",
+      "verified_imported_module_file": "repro/cell.py",
+      "blob_sha1": "4d78a6333c7f696913b826107fd4bf9598b2ce4a",
+      "source_refs": []
+    },
+    {
+      "module": "rawlsing_next.v3_psepf_zero_positive_guard",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "blob_sha1": "e0528d65215cb431196570c38bac4eae94217a1b",
+      "source_refs": [
+        {
+          "commit": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+          "path": "rawlsing_next/v3_psepf_zero_positive_guard.py",
+          "blob_sha1": "e0528d65215cb431196570c38bac4eae94217a1b",
+          "sha256": "12b2c49f664662cbfe993fc4817751ed9edfff3ce89c44cac489a00cb5e42177"
+        }
+      ]
+    },
+    {
+      "module": "bootstrap",
+      "local_staging_path": "repro/bootstrap.py",
+      "verified_imported_module_file": "repro/bootstrap.py",
+      "blob_sha1": "19b0376a064d4cb6fb2d11caba5ecfd23878c633",
+      "source_refs": []
+    },
+    {
+      "module": "candidate",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/__init__.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/__init__.py",
+      "blob_sha1": "0581aff4ac0ea45c07387e5340e219566ce7330d",
+      "source_refs": [
+        {
+          "commit": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+          "path": "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/__init__.py",
+          "blob_sha1": "0581aff4ac0ea45c07387e5340e219566ce7330d",
+          "sha256": "be2b6eff83a8a5af687456545477856ec438cee29f25481ff58636556f745083"
+        },
+        {
+          "commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+          "path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/__init__.py",
+          "blob_sha1": "0581aff4ac0ea45c07387e5340e219566ce7330d",
+          "sha256": "be2b6eff83a8a5af687456545477856ec438cee29f25481ff58636556f745083"
+        }
+      ]
+    },
+    {
+      "module": "candidate.adopted_contract",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/adopted_contract.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/adopted_contract.py",
+      "blob_sha1": "259ff9da129f7d644f8ac9fd8f739ad6041a3edf",
+      "source_refs": [
+        {
+          "commit": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+          "path": "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/adopted_contract.py",
+          "blob_sha1": "259ff9da129f7d644f8ac9fd8f739ad6041a3edf",
+          "sha256": "eec78079b8adc82b28a608ec7dd3fbf3947a53a98447fcf3d4c82db98becf0ae"
+        },
+        {
+          "commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+          "path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/adopted_contract.py",
+          "blob_sha1": "259ff9da129f7d644f8ac9fd8f739ad6041a3edf",
+          "sha256": "eec78079b8adc82b28a608ec7dd3fbf3947a53a98447fcf3d4c82db98becf0ae"
+        }
+      ]
+    },
+    {
+      "module": "candidate.can008_candidate_rule",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+      "blob_sha1": "61d933d98ffb39d553a0dbc670388fc2bd3e89d3",
+      "source_refs": [
+        {
+          "commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+          "path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/can008_candidate_rule.py",
+          "blob_sha1": "61d933d98ffb39d553a0dbc670388fc2bd3e89d3",
+          "sha256": "c5a4b271346fe045e5a54522926795e7514ad3bacbbed04fbb60a2183348c27e"
+        }
+      ]
+    },
+    {
+      "module": "candidate.candidate_registry_fixture",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+      "blob_sha1": "0d978f89fb3c5e836a52f25849240db360f97f8f",
+      "source_refs": [
+        {
+          "commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+          "path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/candidate_registry_fixture.py",
+          "blob_sha1": "0d978f89fb3c5e836a52f25849240db360f97f8f",
+          "sha256": "1c2e2e0c4375a15b9f1bd55376a550834d001b7b7577cb2b8183caccbdfac768"
+        }
+      ]
+    },
+    {
+      "module": "candidate.owner_transitions",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "blob_sha1": "ac943d07459f68ba2e27baf05b442d9ecbddefd5",
+      "source_refs": [
+        {
+          "commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+          "path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/owner_transitions.py",
+          "blob_sha1": "ac943d07459f68ba2e27baf05b442d9ecbddefd5",
+          "sha256": "fcdc073693f781607dd6a7ec25e5fa1a79ce3cccd5071005773b2ca7a8a5017d"
+        }
+      ]
+    },
+    {
+      "module": "candidate.positive_chain",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "blob_sha1": "226cd42f81538f1b81ea7ea2e494776069142405",
+      "source_refs": [
+        {
+          "commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+          "path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/positive_chain.py",
+          "blob_sha1": "226cd42f81538f1b81ea7ea2e494776069142405",
+          "sha256": "0a288c5ffd1e92f0b29a2bf41ce99b50ebd05bf912c12d5efb18fd6fbc372657"
+        }
+      ]
+    },
+    {
+      "module": "rawlsing_next.v3_psepf_zero_positive_guard",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "blob_sha1": "e0528d65215cb431196570c38bac4eae94217a1b",
+      "source_refs": [
+        {
+          "commit": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+          "path": "rawlsing_next/v3_psepf_zero_positive_guard.py",
+          "blob_sha1": "e0528d65215cb431196570c38bac4eae94217a1b",
+          "sha256": "12b2c49f664662cbfe993fc4817751ed9edfff3ce89c44cac489a00cb5e42177"
+        }
+      ]
+    },
+    {
+      "module": "bootstrap",
+      "local_staging_path": "repro/bootstrap.py",
+      "verified_imported_module_file": "repro/bootstrap.py",
+      "blob_sha1": "19b0376a064d4cb6fb2d11caba5ecfd23878c633",
+      "source_refs": []
+    },
+    {
+      "module": "candidate",
+      "local_staging_path": "runtime/can3/runtime/author/candidate/__init__.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/candidate/__init__.py",
+      "blob_sha1": "0581aff4ac0ea45c07387e5340e219566ce7330d",
+      "source_refs": [
+        {
+          "commit": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+          "path": "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/__init__.py",
+          "blob_sha1": "0581aff4ac0ea45c07387e5340e219566ce7330d",
+          "sha256": "be2b6eff83a8a5af687456545477856ec438cee29f25481ff58636556f745083"
+        },
+        {
+          "commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+          "path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/__init__.py",
+          "blob_sha1": "0581aff4ac0ea45c07387e5340e219566ce7330d",
+          "sha256": "be2b6eff83a8a5af687456545477856ec438cee29f25481ff58636556f745083"
+        }
+      ]
+    },
+    {
+      "module": "candidate.adopted_contract",
+      "local_staging_path": "runtime/can3/runtime/author/candidate/adopted_contract.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/candidate/adopted_contract.py",
+      "blob_sha1": "259ff9da129f7d644f8ac9fd8f739ad6041a3edf",
+      "source_refs": [
+        {
+          "commit": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+          "path": "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/adopted_contract.py",
+          "blob_sha1": "259ff9da129f7d644f8ac9fd8f739ad6041a3edf",
+          "sha256": "eec78079b8adc82b28a608ec7dd3fbf3947a53a98447fcf3d4c82db98becf0ae"
+        },
+        {
+          "commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+          "path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/adopted_contract.py",
+          "blob_sha1": "259ff9da129f7d644f8ac9fd8f739ad6041a3edf",
+          "sha256": "eec78079b8adc82b28a608ec7dd3fbf3947a53a98447fcf3d4c82db98becf0ae"
+        }
+      ]
+    },
+    {
+      "module": "candidate.can008_candidate_rule",
+      "local_staging_path": "runtime/can3/runtime/author/candidate/can008_candidate_rule.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/candidate/can008_candidate_rule.py",
+      "blob_sha1": "61d933d98ffb39d553a0dbc670388fc2bd3e89d3",
+      "source_refs": [
+        {
+          "commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+          "path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/can008_candidate_rule.py",
+          "blob_sha1": "61d933d98ffb39d553a0dbc670388fc2bd3e89d3",
+          "sha256": "c5a4b271346fe045e5a54522926795e7514ad3bacbbed04fbb60a2183348c27e"
+        }
+      ]
+    },
+    {
+      "module": "candidate.candidate_registry_fixture",
+      "local_staging_path": "runtime/can3/runtime/author/candidate/candidate_registry_fixture.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/candidate/candidate_registry_fixture.py",
+      "blob_sha1": "0d978f89fb3c5e836a52f25849240db360f97f8f",
+      "source_refs": [
+        {
+          "commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+          "path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/candidate_registry_fixture.py",
+          "blob_sha1": "0d978f89fb3c5e836a52f25849240db360f97f8f",
+          "sha256": "1c2e2e0c4375a15b9f1bd55376a550834d001b7b7577cb2b8183caccbdfac768"
+        }
+      ]
+    },
+    {
+      "module": "candidate.owner_transitions",
+      "local_staging_path": "runtime/can3/runtime/author/candidate/owner_transitions.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/candidate/owner_transitions.py",
+      "blob_sha1": "ac943d07459f68ba2e27baf05b442d9ecbddefd5",
+      "source_refs": [
+        {
+          "commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+          "path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/owner_transitions.py",
+          "blob_sha1": "ac943d07459f68ba2e27baf05b442d9ecbddefd5",
+          "sha256": "fcdc073693f781607dd6a7ec25e5fa1a79ce3cccd5071005773b2ca7a8a5017d"
+        }
+      ]
+    },
+    {
+      "module": "candidate.positive_chain",
+      "local_staging_path": "runtime/can3/runtime/author/candidate/positive_chain.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/candidate/positive_chain.py",
+      "blob_sha1": "226cd42f81538f1b81ea7ea2e494776069142405",
+      "source_refs": [
+        {
+          "commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+          "path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/positive_chain.py",
+          "blob_sha1": "226cd42f81538f1b81ea7ea2e494776069142405",
+          "sha256": "0a288c5ffd1e92f0b29a2bf41ce99b50ebd05bf912c12d5efb18fd6fbc372657"
+        }
+      ]
+    },
+    {
+      "module": "rawlsing_next.v3_psepf_zero_positive_guard",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "blob_sha1": "e0528d65215cb431196570c38bac4eae94217a1b",
+      "source_refs": [
+        {
+          "commit": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+          "path": "rawlsing_next/v3_psepf_zero_positive_guard.py",
+          "blob_sha1": "e0528d65215cb431196570c38bac4eae94217a1b",
+          "sha256": "12b2c49f664662cbfe993fc4817751ed9edfff3ce89c44cac489a00cb5e42177"
+        }
+      ]
+    },
+    {
+      "module": "bootstrap",
+      "local_staging_path": "repro/bootstrap.py",
+      "verified_imported_module_file": "repro/bootstrap.py",
+      "blob_sha1": "19b0376a064d4cb6fb2d11caba5ecfd23878c633",
+      "source_refs": []
+    },
+    {
+      "module": "rawlsing_next.m1_temporal_v554_admission_dedup",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/m1_temporal_v554_admission_dedup.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/m1_temporal_v554_admission_dedup.py",
+      "blob_sha1": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+      "source_refs": [
+        {
+          "commit": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+          "path": "rawlsing_next/m1_temporal_v554_admission_dedup.py",
+          "blob_sha1": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+          "sha256": "5f6bf653d287dab8063696f2b81a79ab4083e44eaa9b901cfb5aa4589a098ec0"
+        }
+      ]
+    },
+    {
+      "module": "rawlsing_next.m2_v555_atomic_route",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/m2_v555_atomic_route.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/m2_v555_atomic_route.py",
+      "blob_sha1": "deef8a60613635a10faf7d89cd8cdf0c3b8a0710",
+      "source_refs": [
+        {
+          "commit": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+          "path": "rawlsing_next/m2_v555_atomic_route.py",
+          "blob_sha1": "deef8a60613635a10faf7d89cd8cdf0c3b8a0710",
+          "sha256": "71fcd8b2acb0f9ce4fbed470420b38131a3b9246028b7e764bfda8ca4d04582c"
+        }
+      ]
+    },
+    {
+      "module": "rawlsing_next.m3_v556_higher_order_structural",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/m3_v556_higher_order_structural.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/m3_v556_higher_order_structural.py",
+      "blob_sha1": "9a4b26b214686364a43d108dabf0d57dac0ed3b2",
+      "source_refs": [
+        {
+          "commit": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+          "path": "rawlsing_next/m3_v556_higher_order_structural.py",
+          "blob_sha1": "9a4b26b214686364a43d108dabf0d57dac0ed3b2",
+          "sha256": "736c17d8d6b6792e9befd3792f3754f7b8153fb415a2070b5628a030d44b00ed"
+        }
+      ]
+    },
+    {
+      "module": "rawlsing_next.m4_v557_v558_publication_repository",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/m4_v557_v558_publication_repository.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/m4_v557_v558_publication_repository.py",
+      "blob_sha1": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360",
+      "source_refs": [
+        {
+          "commit": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+          "path": "rawlsing_next/m4_v557_v558_publication_repository.py",
+          "blob_sha1": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360",
+          "sha256": "b35581669d8a75d70972d9a6aecee9caa94e6bcef950595acc17a6c16e85f9e7"
+        }
+      ]
+    },
+    {
+      "module": "rawlsing_next.m5_runtime_rsc_peer_prior",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/m5_runtime_rsc_peer_prior.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/m5_runtime_rsc_peer_prior.py",
+      "blob_sha1": "18735bdb31a220aed032aa722574d685e2bdddf5",
+      "source_refs": [
+        {
+          "commit": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+          "path": "rawlsing_next/m5_runtime_rsc_peer_prior.py",
+          "blob_sha1": "18735bdb31a220aed032aa722574d685e2bdddf5",
+          "sha256": "ffac990688f3e4596c129787f236f1c26cf4f38f829c4f9a141fc05b1611e518"
+        }
+      ]
+    },
+    {
+      "module": "rawlsing_next.m6_actor_safe_expression",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/m6_actor_safe_expression.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/m6_actor_safe_expression.py",
+      "blob_sha1": "74d9701cdc7dabccf61eb5089498db290c1efd9c",
+      "source_refs": [
+        {
+          "commit": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+          "path": "rawlsing_next/m6_actor_safe_expression.py",
+          "blob_sha1": "74d9701cdc7dabccf61eb5089498db290c1efd9c",
+          "sha256": "b8df4e17fdcb4fbc51aae76524fdf3179f322b8ae38b5a52b799f748c64b9662"
+        }
+      ]
+    },
+    {
+      "module": "rawlsing_next.pre553_empirical_authority",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/pre553_empirical_authority.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/pre553_empirical_authority.py",
+      "blob_sha1": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+      "source_refs": [
+        {
+          "commit": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+          "path": "rawlsing_next/pre553_empirical_authority.py",
+          "blob_sha1": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+          "sha256": "c32b96cd67274d2bcb44ca509afd87e085748bd2e32565716c10313b0609a29a"
+        }
+      ]
+    },
+    {
+      "module": "rawlsing_next.pre553_empirical_objects",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/pre553_empirical_objects.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/pre553_empirical_objects.py",
+      "blob_sha1": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "source_refs": [
+        {
+          "commit": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+          "path": "rawlsing_next/pre553_empirical_objects.py",
+          "blob_sha1": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+          "sha256": "9cd1d71440a7e8c1861dda73274529e07211edc14335583e93ad91c0833e9ab4"
+        }
+      ]
+    },
+    {
+      "module": "rawlsing_next.sdtf_r4_d1_hosting_replay",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/sdtf_r4_d1_hosting_replay.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/sdtf_r4_d1_hosting_replay.py",
+      "blob_sha1": "7f5a2f677e60cd4d218737faa61140dddc55cc28",
+      "source_refs": [
+        {
+          "commit": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+          "path": "rawlsing_next/sdtf_r4_d1_hosting_replay.py",
+          "blob_sha1": "7f5a2f677e60cd4d218737faa61140dddc55cc28",
+          "sha256": "dd79c26b90ab88307c7dda72ba82cc1f7dfdceb2b59eac0ecf84ab8326fe88a6"
+        }
+      ]
+    },
+    {
+      "module": "rawlsing_next.sdtf_r4_mechanism_rule_authority_binding",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/sdtf_r4_mechanism_rule_authority_binding.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/sdtf_r4_mechanism_rule_authority_binding.py",
+      "blob_sha1": "c94997f5c7f2bbee9cd99c570554fd48c0f47556",
+      "source_refs": [
+        {
+          "commit": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+          "path": "rawlsing_next/sdtf_r4_mechanism_rule_authority_binding.py",
+          "blob_sha1": "c94997f5c7f2bbee9cd99c570554fd48c0f47556",
+          "sha256": "ab9f2089e4d5470efaeb43d165b3380ce8553c109d7fa5af4a66027683b52c1c"
+        }
+      ]
+    },
+    {
+      "module": "rawlsing_next.tests.test_sdtf_r4_mechanism_rule_authority_binding",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/tests/test_sdtf_r4_mechanism_rule_authority_binding.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/tests/test_sdtf_r4_mechanism_rule_authority_binding.py",
+      "blob_sha1": "7a63dae14a6d3bf95f70e8b92d7f18e8b27f0538",
+      "source_refs": [
+        {
+          "commit": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+          "path": "rawlsing_next/tests/test_sdtf_r4_mechanism_rule_authority_binding.py",
+          "blob_sha1": "7a63dae14a6d3bf95f70e8b92d7f18e8b27f0538",
+          "sha256": "86dd080945ad3ce40cd71a20153726b0704dab74f6726c7db9c5e625435708db"
+        }
+      ]
+    },
+    {
+      "module": "rawlsing_next.v3_psepf_zero_positive_guard",
+      "local_staging_path": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "verified_imported_module_file": "runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "blob_sha1": "e0528d65215cb431196570c38bac4eae94217a1b",
+      "source_refs": [
+        {
+          "commit": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+          "path": "rawlsing_next/v3_psepf_zero_positive_guard.py",
+          "blob_sha1": "e0528d65215cb431196570c38bac4eae94217a1b",
+          "sha256": "12b2c49f664662cbfe993fc4817751ed9edfff3ce89c44cac489a00cb5e42177"
+        }
+      ]
+    }
+  ],
+  "dependency_closure_status": "BOUNDED",
+  "fixture_query_source_permission": "COMMISSION_TEST_ONLY",
+  "covered_test_suites": [
+    {
+      "suite": "new",
+      "returncode": 0,
+      "counts": {
+        "tests": 94,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "suite": "can3",
+      "returncode": 0,
+      "counts": {
+        "tests": 97,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "suite": "author",
+      "returncode": 0,
+      "counts": {
+        "tests": 89,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "suite": "owners",
+      "returncode": 0,
+      "counts": {
+        "tests": 133,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    }
+  ],
+  "science_grade": "SOURCEFREE_NEW_MEMORY_MEDIATION_CANDIDATE_REQUIRES_I2",
+  "model_provider": "OpenAI Codex user-selected; billing UNKNOWN",
+  "model": "GPT-6.1",
+  "effort": "High (USER_REPORTED assignment; no switch)",
+  "pricing_class": "UNKNOWN",
+  "credits_usage": null,
+  "cash_known": false,
+  "quota_known": false,
+  "context_cache_reuse": "UNKNOWN",
+  "retries": 0,
+  "estimated_total_evidence_cost": "UNKNOWN",
+  "independent_review_separation": "No helper/reviewer launched; HQ commissions fresh I2 after return",
+  "privacy_source_grant": "Private repo local sourcefree commission only",
+  "nearest_expected_reset": null,
+  "assignments_completed": [
+    "M01"
+  ],
+  "next_good_affinity_tags": [
+    "CAN008",
+    "ADP016",
+    "ADP017",
+    "K3",
+    "K5",
+    "CAUSAL_MEDIATION"
+  ],
+  "staged_state_preservation": "SOURCE_AND_RECEIPTS_LOCAL; synchronous owner state per test; no cross-process state durability claim",
+  "retire_or_rebuild_reason": null
+}

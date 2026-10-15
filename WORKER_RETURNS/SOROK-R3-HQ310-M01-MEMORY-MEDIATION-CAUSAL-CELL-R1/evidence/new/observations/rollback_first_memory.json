@@ -1,0 +1,92 @@
+{
+  "owner_state": {
+    "actor_id": "ACTOR_SYNTH_1",
+    "memories": {},
+    "memory_transitions": {},
+    "claims": {},
+    "emissions": {},
+    "stances": {},
+    "epistemic_transitions": [],
+    "state_sets": {},
+    "permissions": {}
+  },
+  "owner_hash": "8cc61c5d9b64d375c2c59a69d695d6b4b65358d7864a5d2da4c595445c122440",
+  "events": {},
+  "history": [],
+  "journal": [],
+  "reads": [],
+  "rule": {
+    "id": "M01_PARALLEL_OWNER_READ",
+    "version": "1.0.0-TEST_ONLY",
+    "authority": "TEST_ONLY_M01_LOCAL_GRANT",
+    "law": {
+      "CAN008_R2": "b80dd6925066510ecbbfec7b427bf9f688475663",
+      "CAN008_V1_MD": "976c59086b938992114f68621f149687670e306d",
+      "CAN008_V1_JSON": "7bd28360ec6a74975bb7eb809f6ad397529491b3",
+      "ADP016_MD": "0b7bbe29f6509e31ac7d842962a2bf3d636daa2c",
+      "ADP016_JSON": "c6619a286e115d060ab4830889e7fc23762167a5",
+      "ADP017_MD": "6b4162df27003bec413074178c46fea6360d71a0",
+      "ADP017_JSON": "eece4f3f2f3f9288ab9bbc645dc81e20a99e1280"
+    },
+    "eligible_issuers": [
+      "ISSUER_AUTH_WORLD_SCHED@1",
+      "ISSUER_AUTH_INSTITUTION@1"
+    ],
+    "roles": [
+      "PRECIPITATING_EVENT_STREAM"
+    ],
+    "actor": "ACTOR_SYNTH_1",
+    "world": "W_SYNTH_1998",
+    "as_of": "1998-10-03T16:00:00Z",
+    "temporal": "1998 through 2000",
+    "receivability": "exact feedback then exact shift request features",
+    "owners": [
+      "ADP016",
+      "ADP017"
+    ],
+    "use_roles": [
+      "HIDDEN_CAUSAL_TRACE_SOURCE_FEATURE_READ",
+      "PRIVATE_BELIEF_AND_CURRENT_PERMISSION_READ"
+    ],
+    "counterpart": "NONE_USED",
+    "modality": "NONE_USED",
+    "uptake": "evaluation-local shift request; no durable belief",
+    "recruitment": "retain distinct memory and epistemic paths",
+    "multiplicity": "two independent streams preserved",
+    "closure": "one finite pass",
+    "history_predicate": "verified read only, no output dependence",
+    "effort": "NONE_USED",
+    "effects": [
+      "BUFFER",
+      "AMPLIFY",
+      "DEFLECT",
+      "REROUTE",
+      "BLOCK"
+    ],
+    "target": "TEST_ONLY_CAN008_CURRENT",
+    "validation": "all streams before atomic synchronous commit",
+    "pff": "NOT_EMITTED",
+    "valid_empty": "not used in this finite cell",
+    "failure": "typed refusal; unknown access HOLD",
+    "quantity": "NONE_USED",
+    "rng": "NONE_USED",
+    "atomicity": "rollback owner+registry+journals",
+    "provenance": "complete source/event/owner transition/read hashes, deterministic replay",
+    "formation_variants": {
+      "NONE": null,
+      "CERTAIN": "AVAILABLE_SOURCE_BOUND",
+      "UNCERTAIN": "AVAILABLE_UNCERTAIN",
+      "UNAVAILABLE": "UNAVAILABLE"
+    },
+    "epistemic_variants": {
+      "NONE": null,
+      "BELIEF": "CLAIM_ACCESSIBLE",
+      "INACCESSIBLE": "CLAIM_INACCESSIBLE",
+      "UNKNOWN": "CLAIM_ACCESS_UNKNOWN"
+    },
+    "production": "MECHANISM_IDENTIFICATION_HOLD_NO_OPERATIVE_OWNER_AUTHORITY",
+    "serial": "MECHANISM_IDENTIFICATION_HOLD_NO_CONTENT_SENSITIVE_MEMORY_TO_BELIEF_RULE"
+  },
+  "rule_hash": "9563b22d5e90a6d0efc4b311e565907bf69d087d547b0a03fce08af698f9ac37",
+  "initial_owner_hash": "8cc61c5d9b64d375c2c59a69d695d6b4b65358d7864a5d2da4c595445c122440"
+}

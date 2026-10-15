@@ -1,0 +1,142 @@
+{
+  "adopted_law": [
+    {
+      "name": "CAN008_R2",
+      "blob_sha1": "b80dd6925066510ecbbfec7b427bf9f688475663",
+      "sha256": "f7ffb746a01bff6ed9554ceb4a344355e65332a37312388544c33044c45a7382"
+    },
+    {
+      "name": "CAN008_R2_ADOPTION",
+      "blob_sha1": "a6bc1555489271e1adb2271ed02d46bb7f888170",
+      "sha256": "b54766c41967ee6278b8c8e6784d485ca5ef78f475fc9faf5eab29a4a9196fde"
+    },
+    {
+      "name": "ADP016",
+      "blob_sha1": "c6619a286e115d060ab4830889e7fc23762167a5",
+      "sha256": "9c798989454ed196368103719dfe2ada6399f9410c07a1d794c1ac65081c7026"
+    },
+    {
+      "name": "ADP017",
+      "blob_sha1": "eece4f3f2f3f9288ab9bbc645dc81e20a99e1280",
+      "sha256": "2fb5935dc8b3f6f1353ba1dcb71f0123a6edf80c8bfb5570963f21b98c7d5a6b"
+    },
+    {
+      "name": "production_guard",
+      "blob_sha1": "e0528d65215cb431196570c38bac4eae94217a1b",
+      "sha256": "12b2c49f664662cbfe993fc4817751ed9edfff3ce89c44cac489a00cb5e42177"
+    }
+  ],
+  "new_source_bodies": [
+    {
+      "path": "repro/audit.py",
+      "blob_sha1": "d4839f909aca574bcc170d802a651734a1227828",
+      "sha256": "3942de368b9a18f240676be2d1f8bfc052f1b44577eaa38133d391b8a1f333d2"
+    },
+    {
+      "path": "repro/bootstrap.py",
+      "blob_sha1": "19b0376a064d4cb6fb2d11caba5ecfd23878c633",
+      "sha256": "8cd0a4a1684b5e120e8f7ff4411d1a235ace1ed37aa5c9a067a2510d0cd46e78"
+    },
+    {
+      "path": "repro/cell.py",
+      "blob_sha1": "4d78a6333c7f696913b826107fd4bf9598b2ce4a",
+      "sha256": "f5c4e9af7cc979f63ffee03e06580f0ca45c83b305dd210d4796278e2bc4b428"
+    },
+    {
+      "path": "repro/run.py",
+      "blob_sha1": "d765b88853dd4f401531b1a7253281cd82dc7355",
+      "sha256": "15380b4726daea2bd42de66af774bac0d6a37ba982c0d8b2dce0ac2d333ce86b"
+    },
+    {
+      "path": "repro/stage.py",
+      "blob_sha1": "de314cdc4fdf39953a16ebcc592578be4b41955d",
+      "sha256": "ba714b07c2c916818ac196f78bbdb67b8c6e6e7b2bf06064b821ec0fbb36050b"
+    },
+    {
+      "path": "repro/summarize.py",
+      "blob_sha1": "eee25f3deae735f3045ba61b3ba0589af583258e",
+      "sha256": "780555a0ec04f7550c92231ffb098e14e82b885db991b9e3b80e150431b8785f"
+    },
+    {
+      "path": "repro/test_m01.py",
+      "blob_sha1": "fcb193541c0f8b56b834e3c4e3a8906b39ad801f",
+      "sha256": "260f9c33d49f4cf28946729301ef7396dc1ab08e1d0a0a95a9909addf92bece3"
+    }
+  ],
+  "local_response_rule": {
+    "id": "M01_PARALLEL_OWNER_READ",
+    "version": "1.0.0-TEST_ONLY",
+    "authority": "TEST_ONLY_M01_LOCAL_GRANT",
+    "law": {
+      "CAN008_R2": "b80dd6925066510ecbbfec7b427bf9f688475663",
+      "CAN008_V1_MD": "976c59086b938992114f68621f149687670e306d",
+      "CAN008_V1_JSON": "7bd28360ec6a74975bb7eb809f6ad397529491b3",
+      "ADP016_MD": "0b7bbe29f6509e31ac7d842962a2bf3d636daa2c",
+      "ADP016_JSON": "c6619a286e115d060ab4830889e7fc23762167a5",
+      "ADP017_MD": "6b4162df27003bec413074178c46fea6360d71a0",
+      "ADP017_JSON": "eece4f3f2f3f9288ab9bbc645dc81e20a99e1280"
+    },
+    "eligible_issuers": [
+      "ISSUER_AUTH_WORLD_SCHED@1",
+      "ISSUER_AUTH_INSTITUTION@1"
+    ],
+    "roles": [
+      "PRECIPITATING_EVENT_STREAM"
+    ],
+    "actor": "ACTOR_SYNTH_1",
+    "world": "W_SYNTH_1998",
+    "as_of": "1998-10-03T16:00:00Z",
+    "temporal": "1998 through 2000",
+    "receivability": "exact feedback then exact shift request features",
+    "owners": [
+      "ADP016",
+      "ADP017"
+    ],
+    "use_roles": [
+      "HIDDEN_CAUSAL_TRACE_SOURCE_FEATURE_READ",
+      "PRIVATE_BELIEF_AND_CURRENT_PERMISSION_READ"
+    ],
+    "counterpart": "NONE_USED",
+    "modality": "NONE_USED",
+    "uptake": "evaluation-local shift request; no durable belief",
+    "recruitment": "retain distinct memory and epistemic paths",
+    "multiplicity": "two independent streams preserved",
+    "closure": "one finite pass",
+    "history_predicate": "verified read only, no output dependence",
+    "effort": "NONE_USED",
+    "effects": [
+      "BUFFER",
+      "AMPLIFY",
+      "DEFLECT",
+      "REROUTE",
+      "BLOCK"
+    ],
+    "target": "TEST_ONLY_CAN008_CURRENT",
+    "validation": "all streams before atomic synchronous commit",
+    "pff": "NOT_EMITTED",
+    "valid_empty": "not used in this finite cell",
+    "failure": "typed refusal; unknown access HOLD",
+    "quantity": "NONE_USED",
+    "rng": "NONE_USED",
+    "atomicity": "rollback owner+registry+journals",
+    "provenance": "complete source/event/owner transition/read hashes, deterministic replay",
+    "formation_variants": {
+      "NONE": null,
+      "CERTAIN": "AVAILABLE_SOURCE_BOUND",
+      "UNCERTAIN": "AVAILABLE_UNCERTAIN",
+      "UNAVAILABLE": "UNAVAILABLE"
+    },
+    "epistemic_variants": {
+      "NONE": null,
+      "BELIEF": "CLAIM_ACCESSIBLE",
+      "INACCESSIBLE": "CLAIM_INACCESSIBLE",
+      "UNKNOWN": "CLAIM_ACCESS_UNKNOWN"
+    },
+    "production": "MECHANISM_IDENTIFICATION_HOLD_NO_OPERATIVE_OWNER_AUTHORITY",
+    "serial": "MECHANISM_IDENTIFICATION_HOLD_NO_CONTENT_SENSITIVE_MEMORY_TO_BELIEF_RULE"
+  },
+  "local_response_source_hash": "9563b22d5e90a6d0efc4b311e565907bf69d087d547b0a03fce08af698f9ac37",
+  "trusted_operative_owner_grants": false,
+  "production_registry_adoption": false,
+  "reviewer": "HQ subsequent independent I2"
+}
