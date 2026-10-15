@@ -1,0 +1,29 @@
+{
+  "schema": "RCP3_DIRECT_REMOTE_VERIFICATION@1",
+  "branch": "agent/reviewer-sorok-r3-hq303-rcp3-can008-completion-court-r1",
+  "evidence_commit": "379f7c0fcdc0b5af6c0bbd86162a33a61921eb63",
+  "direct_remote_sha": "379f7c0fcdc0b5af6c0bbd86162a33a61921eb63",
+  "exact_match": true,
+  "observed_at_utc": "2026-10-15T06:59:27.347311+00:00",
+  "command": [
+    "git",
+    "ls-remote",
+    "origin",
+    "refs/heads/agent/reviewer-sorok-r3-hq303-rcp3-can008-completion-court-r1"
+  ],
+  "direct_output": "379f7c0fcdc0b5af6c0bbd86162a33a61921eb63\trefs/heads/agent/reviewer-sorok-r3-hq303-rcp3-can008-completion-court-r1",
+  "sealed_startup": "0f626834be2727e2e90161a1bdb76fbfaf4de9f2",
+  "changed_paths_count_at_evidence_commit": 132,
+  "changed_paths_only_authorized_return": true,
+  "source_copies_staged": false,
+  "artifact_manifest_verified_files": 130,
+  "disposition": "REVIEW_REVISE",
+  "legacy_suites": "317 PASS independently rerun",
+  "reviewer_predicates": "82 = 37 PASS /45 RED, overlapping findings; no errors/skips",
+  "production_guard": "empty and exact blob e0528d65215cb431196570c38bac4eae94217a1b",
+  "real_model_trials": 0,
+  "original_data": 0,
+  "real_V3_actors": 0,
+  "semantic_adoption": false,
+  "final_commit_rule": "This receipt attests the evidence commit; its containing metadata commit is verified by a final direct ls-remote returned in chat. No recursive self-hash is claimed."
+}
