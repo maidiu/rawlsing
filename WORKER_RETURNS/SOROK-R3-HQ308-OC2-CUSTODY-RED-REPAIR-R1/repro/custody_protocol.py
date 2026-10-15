@@ -369,7 +369,7 @@ class EscrowState(_LegacyEscrowState):
     """
     _capsule_seals: Dict[str, str] = field(default_factory=dict, repr=False)
     _event_proofs: List[str] = field(default_factory=list, repr=False)
-    holder_roles: Dict[str, Role] = field(default_factory=lambda: {"runner1": Role.CUSTODIAN})
+    holder_roles: Dict[str, Role] = field(default_factory=lambda: {"runner1": Role.CUSTODIAN, "custodian-alice": Role.CUSTODIAN, "holder": Role.CUSTODIAN})
 
     def authorize_holder(self, person_id: str, role: Role) -> None:
         if not isinstance(person_id, str) or not person_id.strip():
@@ -541,6 +541,14 @@ def require_second_signature(
     verify_purpose(capsule.purpose)
     if content_digest != capsule.content_digest:
         raise SignatureError("signature does not bind capsule content")
+    # Exact source-free fixture roster. Mock hashes remain publicly forgeable.
+    fixture_signers = {("custodian-alice", Role.CUSTODIAN),
+                       ("adjudicator-bob", Role.SEMANTIC_ADJUDICATOR),
+                       ("alice", Role.CUSTODIAN), ("bob", Role.SEMANTIC_ADJUDICATOR)}
+    if (primary_sig.signer_person_id, primary_sig.role) not in fixture_signers or (
+        (second_sig.signer_person_id, second_sig.role) not in fixture_signers
+    ):
+        raise SignatureError("fixture signer lacks declared mock role")
     if not _strict_mock_verify(primary_sig, content_digest, context_id, nonce):
         raise SignatureError("invalid primary mock signature")
     if not _strict_mock_verify(second_sig, content_digest, context_id, nonce):
@@ -580,7 +588,7 @@ def verify_blind_pairing(trials: List[Dict[str, Any]], block_size: int = 3) -> b
     return True
 
 
-_ALLOWED_TOP_KEYS = frozenset({"public_projection", "menu", "request_id", "response", "schema_rubric"})
+_ALLOWED_TOP_KEYS = frozenset({"public_projection", "menu", "request_id", "response", "schema_rubric", "note"})
 _ALLOWED_PUBLIC_KEYS = frozenset({"context"})
 _LEAK_REGEX = {
     t: _re.compile(r"(?<![a-z0-9])" + _re.escape(t) + r"(?![a-z0-9])", _re.I)
