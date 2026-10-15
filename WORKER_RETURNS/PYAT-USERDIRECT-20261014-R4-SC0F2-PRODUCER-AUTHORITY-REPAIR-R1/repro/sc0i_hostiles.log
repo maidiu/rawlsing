@@ -1,0 +1,14 @@
+.F.F...                                                                  [100%]
+=================================== FAILURES ===================================
+E   AssertionError: assert '5f54227b74fbba7743c47cd286b4873f2e17331518d56facfc03e34cde4a0950' in {''}
+     +  where '5f54227b74fbba7743c47cd286b4873f2e17331518d56facfc03e34cde4a0950' = <built-in method hexdigest of _hashlib.HASH object at 0x10371d550>()
+     +    where <built-in method hexdigest of _hashlib.HASH object at 0x10371d550> = <sha256 _hashlib.HASH object @ 0x10371d550>.hexdigest
+     +      where <sha256 _hashlib.HASH object @ 0x10371d550> = <built-in function openssl_sha256>(b'imported')
+     +        where <built-in function openssl_sha256> = <module 'hashlib' from '/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/lib/python3.11/hashlib.py'>.sha256
+/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r4sc0f2/WORKER_RETURNS/PYAT-USERDIRECT-20261014-R3-SC0I-INDEPENDENT-REPAIR-COURT-R1/repro/test_sc0i_hostiles.py:50: AssertionError: assert '5f54227b74fbba7743c47cd286b4873f2e17331518d56facfc03e34cde4a0950' in {''}
+E   FileNotFoundError: [Errno 2] No such file or directory: '/tmp/wg0p/.sc0i_tmp/tests/test_sc0f_repair.py'
+/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/lib/python3.11/pathlib.py:1044: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/wg0p/.sc0i_tmp/tests/test_sc0f_repair.py'
+=========================== short test summary info ============================
+FAILED ../../PYAT-USERDIRECT-20261014-R3-SC0I-INDEPENDENT-REPAIR-COURT-R1/repro/test_sc0i_hostiles.py::test_h02_import_trace_uses_sha256_of_imported
+FAILED ../../PYAT-USERDIRECT-20261014-R3-SC0I-INDEPENDENT-REPAIR-COURT-R1/repro/test_sc0i_hostiles.py::test_h04_test06_options_nonempty_not_numeric
+2 failed, 5 passed in 0.07s
