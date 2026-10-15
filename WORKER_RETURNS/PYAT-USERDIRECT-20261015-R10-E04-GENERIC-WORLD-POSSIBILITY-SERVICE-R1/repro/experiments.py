@@ -3,7 +3,7 @@
 Author experiment at predeclared synthetic grain; not independent adoption.
 """
 from pathlib import Path
-import sys,json,copy
+import sys,json,copy,re
 RET=Path(__file__).resolve().parents[1];sys.path[:0]=[str(RET),str(RET/'runtime_root/source')]
 from product.service import GenericSelectedWorldService
 from product.nonparent import consume
@@ -30,8 +30,12 @@ def pair(**options):
     return s,snap,dict(nonparent=worker,conception_proposals=scenario)
 
 def main():
-    out=RET/'outputs';out.mkdir(exist_ok=True);sys.setprofile(profiler)
-    base,snap,a=pair();emp,es,b=pair(empirical_changed=True);struct,ss,c=pair(structural_revision=True);null,ns,d=pair();irrelevant,irs,e=pair(extra_field=999)
+    tag=sys.argv[1] if len(sys.argv)>1 else ''
+    if tag and not re.fullmatch('[A-Za-z0-9_-]+',tag):raise SystemExit('Use a fresh alphanumeric tag')
+    target=RET/'outputs'/('replication_'+tag) if tag else RET
+    if tag:target.mkdir(parents=True,exist_ok=False)
+    out=target/'outputs';out.mkdir(exist_ok=True);sys.setprofile(profiler)
+    base,snap,a=pair();sanction,sanction_snapshot,sanction_pair=pair(sanction_revision=True);emp,es,b=pair(empirical_changed=True);struct,ss,c=pair(structural_revision=True);null,ns,d=pair();irrelevant,irs,e=pair(extra_field=999)
     reverse=base.possibilities(snap,target='A',conditions=[('Y',1)],consumer='GENERIC_REVERSE')
     loss=GenericSelectedWorldService(support_loss=True);loss_product=loss.possibilities(loss.select())
     marginal=GenericSelectedWorldService(same_marginals=True);same_marginal_reverse=marginal.possibilities(marginal.select(),target='A',conditions=[('Y',1)])
@@ -46,6 +50,10 @@ def main():
     assert worker(a)['empirical']==worker(c)['empirical']
     assert worker(a)['structural_routes']['training']['state']!=worker(c)['structural_routes']['training']['state']
     assert worker(a)['structural_routes']['civil']==worker(c)['structural_routes']['civil']
+    assert worker(a)['empirical']==worker(sanction_pair)['empirical']
+    assert worker(a)['structural_routes']['training']==worker(sanction_pair)['structural_routes']['training']
+    assert worker(sanction_pair)['structural_routes']['civil']['state']=='BLOCKED_BY_MODELED_RULE'
+    assert scenarios(sanction_pair)[1]['feasibility']=='INFEASIBLE_MODELED_PREMISE'
     assert a==d
     assert worker(a)['empirical']==worker(e)['empirical'] and scenarios(a)==scenarios(e)
     assert [x['source_balance_count'] for x in worker(a)['source_balance_reads']]==[4,4,4]
@@ -54,10 +62,10 @@ def main():
     assert loss_product['steps'][-1]['state']=='ZERO_SUPPORT' and loss_product['steps'][-1]['denominator']==0
     assert archived['material']==history['material'] and archived['fresh_use_authorized'] is False
     assert civil['receipt_hash'] in invalidation['unaffected'] and civil['receipt_hash'] in rev_emp['unaffected']
-    packet=dict(schema='E04_EXECUTED_INDEPENDENT_INTERVENTION_PACKET@1',grade='AUTHOR_SOURCEFREE_INTERFACE_PROOF_NOT_ADOPTION',baseline=a,empirical_source_cell_intervention=b,structural_access_exit_intervention=c,null_control=d,irrelevant_field_control=e,legal_reverse=reverse,same_marginal_different_conditional=same_marginal_reverse,measured_support_loss=loss_product,structural_permission_invalidation=invalidation,after_structural_revoke=after_revoke,empirical_permission_invalidation=rev_emp,after_empirical_revoke=emp_after_revoke,historical_receipt_retained=archived,publication_clock_selections=clocks,native_owner_trace=observed,adapter_traces=dict(empirical=base.provider.trace,selected_world=base.catalog.trace),values_read=base.value_reads)
-    (RET/'03_TWO_GENERIC_CONSUMERS_AND_INDEPENDENT_INTERVENTIONS.json').write_text(json.dumps(packet,indent=2)+'\n')
-    (RET/'01_COHERENT_WORLD_SNAPSHOT_AND_CLOCKS.json').write_text(json.dumps(dict(snapshot_ref=snap.snapshot_hash,material=snap.material,native_clock_correction='00A_NATIVE_CLOCK_CORRECTION.json',clock_selections=clocks,grade='TEST_ONLY; no operative N9/CURRENT or issuer'),indent=2)+'\n')
+    packet=dict(schema='E04_EXECUTED_INDEPENDENT_INTERVENTION_PACKET@1',grade='AUTHOR_SOURCEFREE_INTERFACE_PROOF_NOT_ADOPTION',baseline=a,empirical_source_cell_intervention=b,structural_access_exit_intervention=c,structural_sanction_only_intervention=sanction_pair,null_control=d,irrelevant_field_control=e,legal_reverse=reverse,same_marginal_different_conditional=same_marginal_reverse,measured_support_loss=loss_product,structural_permission_invalidation=invalidation,after_structural_revoke=after_revoke,empirical_permission_invalidation=rev_emp,after_empirical_revoke=emp_after_revoke,historical_receipt_retained=archived,publication_clock_selections=clocks,native_owner_trace=observed,adapter_traces=dict(empirical=base.provider.trace,selected_world=base.catalog.trace),values_read=base.value_reads)
+    (target/'03_TWO_GENERIC_CONSUMERS_AND_INDEPENDENT_INTERVENTIONS.json').write_text(json.dumps(packet,indent=2)+'\n')
+    (target/'01_COHERENT_WORLD_SNAPSHOT_AND_CLOCKS.json').write_text(json.dumps(dict(snapshot_ref=snap.snapshot_hash,material=snap.material,native_clock_correction='00A_NATIVE_CLOCK_CORRECTION.json',clock_selections=clocks,grade='TEST_ONLY; no operative N9/CURRENT or issuer'),indent=2)+'\n')
     policy=next(p for p in installation_manifest() if p['policy_id']==OC05)
-    summary=dict(empirical_denominators=[x['denominator'] for x in worker(a)['empirical']['steps']],baseline_balances=[x['source_balance_count'] for x in worker(a)['source_balance_reads']],changed_balances=[x['source_balance_count'] for x in worker(b)['source_balance_reads']],reverse_denominator=reverse['steps'][0]['denominator'],support_loss_denominators=[x['denominator'] for x in loss_product['steps']],same_marginal_reverse_denominator=same_marginal_reverse['steps'][0]['denominator'],actual_native_calls=len(observed),native_functions=sorted({r['function'] for r in observed}),OC05_actual_installation=policy,packet_sha256=__import__('hashlib').sha256((RET/'03_TWO_GENERIC_CONSUMERS_AND_INDEPENDENT_INTERVENTIONS.json').read_bytes()).hexdigest(),null_replay_identical=True,source_original_reads=0,model_calls=0,actor_calls=0)
+    summary=dict(empirical_denominators=[x['denominator'] for x in worker(a)['empirical']['steps']],baseline_balances=[x['source_balance_count'] for x in worker(a)['source_balance_reads']],changed_balances=[x['source_balance_count'] for x in worker(b)['source_balance_reads']],reverse_denominator=reverse['steps'][0]['denominator'],support_loss_denominators=[x['denominator'] for x in loss_product['steps']],same_marginal_reverse_denominator=same_marginal_reverse['steps'][0]['denominator'],actual_native_calls=len(observed),native_functions=sorted({r['function'] for r in observed}),OC05_actual_installation=policy,packet_sha256=__import__('hashlib').sha256((target/'03_TWO_GENERIC_CONSUMERS_AND_INDEPENDENT_INTERVENTIONS.json').read_bytes()).hexdigest(),null_replay_identical=True,source_original_reads=0,model_calls=0,actor_calls=0)
     (out/'experiment_summary.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary,indent=2))
 if __name__=='__main__':main()

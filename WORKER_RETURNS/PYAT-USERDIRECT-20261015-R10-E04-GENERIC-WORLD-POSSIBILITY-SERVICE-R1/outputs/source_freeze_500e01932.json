@@ -1,0 +1,37 @@
+{
+  "schema": "E04_PRODUCT_SOURCE_FREEZE@1",
+  "sources": [
+    {
+      "path": "product/__init__.py",
+      "sha256": "bb8eda74a6d4f1bbff9127a72e058968a8c4ea01e8ace8592fc7525a6c1746c3",
+      "blob_sha1": "59a7e3c47435f944193ec10e82fe0e5e0fb5585f"
+    },
+    {
+      "path": "product/empirical.py",
+      "sha256": "90b98e2dda3eed535162d5115b3c2ab7597d09e46f316917bdbf2de8a7da2918",
+      "blob_sha1": "475feb9f9aea495c11c40a56b083f0b628c34e15"
+    },
+    {
+      "path": "product/nonparent.py",
+      "sha256": "6417bac7eca3b9ee1244e13cb2efef4c8b5eb8b53d16ce254e4663329fe44663",
+      "blob_sha1": "e976c648805efb91a2779f8438087e50559d7fa7"
+    },
+    {
+      "path": "product/scenario.py",
+      "sha256": "32e001fe31e6ccfe12a1ad3633ac62f2e948127562dbe8873828881b7f761016",
+      "blob_sha1": "6bde58533924a38ac218933e58b57a1b147ec6a7"
+    },
+    {
+      "path": "product/service.py",
+      "sha256": "85f815547002f93e003cb83ecf6840f067f24f7984c8484e2cd4d22b7534164f",
+      "blob_sha1": "3839402f053c5905cf0027d780366f5349832ab2"
+    },
+    {
+      "path": "product/world.py",
+      "sha256": "94c0c52686fe695a05c8fcd295ca725320155b19e52fbcb29bbf9f9e71cd8e86",
+      "blob_sha1": "58df1cbc48b88b7dcbaef39b66008154f977216d"
+    }
+  ],
+  "oracles": "00_PREDECLARED_EXPECTATIONS + explicit native-clock correction; additional author controls source-aware",
+  "independent_acceptance": false
+}
