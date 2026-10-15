@@ -1,0 +1,94 @@
+{
+  "schema": "PYAT_R2_D2C_DOCUMENTARY_EXTERNAL_PUBLISHED_AGGREGATE_PACKET_R1",
+  "packet_id": "D2C_NCA_2021Q4_ACTIVE_MOBILE_DATA_SUBSCRIPTIONS",
+  "status": "DOCUMENTARY_FIELD_CANDIDATE__NOT_ISSUED__BINARY_CUSTODY_HOLD",
+  "product_type_proposed": "ExternalPublishedAggregateField",
+  "is_n5_n6_product": false,
+  "scientific_source": {
+    "publisher": "National Communications Authority (Ghana)",
+    "title": "Quarterly Statistical Bulletin on Communications in Ghana, Volume 6 Issue 4",
+    "quarter": "Q4 2021",
+    "cover_interval": "October–December 2021",
+    "release_date": "2022-07-08",
+    "notice_path_has_misleading_year": "...communications-2022-q4/ is a slug only; page actual headline and PDF identify 2021 Q4",
+    "source_kind": "Mobile service licensee administrative reporting, monthly and quarterly data",
+    "source_url": "https://nca.org.gh/wp-content/uploads/2022/07/Q4-2021-statistical-Bulletin.pdf",
+    "official_notice_url": "https://nca.org.gh/2022/07/08/quarterly-statistical-bulletin-on-communications-2022-q4/",
+    "printed_page": 17,
+    "pdf_page_zero_based": 29,
+    "table": "10",
+    "pdf_pages_web_parsed": 36,
+    "method_definition_page_pdf_zero": 10
+  },
+  "original_binary": {
+    "downloaded": false,
+    "sha256": null,
+    "byte_length": null,
+    "pdf_metadata": null,
+    "raw_mime_verified": false,
+    "archive_sha": null,
+    "immutable_edition_root": null,
+    "version_revision_chain": "UNKNOWN_UNVERIFIED",
+    "no_hash_claim": true
+  },
+  "values": {
+    "geography": "GHANA_NATIONAL",
+    "unit": "ACTIVE_MOBILE_DATA_SUBSCRIPTIONS",
+    "population": "Licensee-reported active mobile-data subscription records, not unique persons",
+    "quarter_end": "2021-12-31",
+    "subscriptions_total": 23414527,
+    "prepaid": 23237338,
+    "postpaid": 177189,
+    "additive_check": 23414527,
+    "activity_window_days": 90,
+    "activity_condition": "Mobile data connection of named technologies must have generated internet traffic uploaded and/or downloaded in prior 90 days",
+    "network_types_in_definition": [
+      "GPRS",
+      "EDGE",
+      "HSPA",
+      "UMTS",
+      "EV-DO",
+      "3G",
+      "LTE"
+    ],
+    "rural_breakout": null,
+    "household_breakout": null,
+    "unique_user_deduplicated_count": null
+  },
+  "clocks": {
+    "observation": "2021 Q4 reporting (Oct-Dec), snapshot values end of Q4 as described",
+    "activity_trailing_window": "last 90 days for eligibility",
+    "published_first_known": "2022-07-08",
+    "first_safe_documentary_asof": "2022-07-08",
+    "knowledge_asof_2021": "NOT_YET_PUBLISHED",
+    "future_corrections_require_versioned_successor": true
+  },
+  "quality": {
+    "design": "ADMINISTRATIVE_PROVIDER_REPORTED_AGGREGATE",
+    "providers_reporting_note": "NCA says bulletin prepared from monthly/quarterly data received from licensees; official PDF introduction footnote lists MTN, Vodafone, AirtelTigo, Glo, Surfline, BBH, Telesol, Busy, BLU",
+    "individual_deduplication_method": "NOT_PRESENT_IN_PUBLISHED_TABLE",
+    "reporting_error_estimate": null,
+    "revisions_and_backfills": "UNKNOWN_UNVERIFIED",
+    "uncertainty": "Non-sampling administrative counting and reporting uncertainty not quantified in table"
+  },
+  "forbidden_conversions": [
+    "Subscriptions→unique people",
+    "Subscriptions→rural persons",
+    "Subscriptions→rural occupied dwelling units",
+    "Subscriptions→household internet use",
+    "Nationwide subscription count→any particular person's access or knowledge",
+    "Telephone ownership/coverage or perceived connectivity from subscription register"
+  ],
+  "legal_authority": {
+    "publisher_publication_right": true,
+    "readable_public": true,
+    "license_for_automated_aggregate_reuse": null,
+    "redistribution_permission": null,
+    "rawlsing_source_issuer": null,
+    "n5_n6_field_issuer": null,
+    "owner_adoption": false
+  },
+  "allowed_court_use": "DOCUMENTARY_REVIEW_ONLY; no modeled person-level connectivity, no issued N5/N6, no EE13, no OC05/V3",
+  "cross_source_relation": "Do not denominator-join or merge with GSS rural occupied dwellings; non-pooled contextual co-presence only, separately authorized",
+  "issuer_request_ref": "03_SOURCE_USE_AND_ISSUER_REQUEST.md"
+}
