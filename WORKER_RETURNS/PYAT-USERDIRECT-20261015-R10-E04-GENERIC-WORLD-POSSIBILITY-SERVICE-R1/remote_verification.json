@@ -1,0 +1,30 @@
+{
+  "schema": "E04_DIRECT_REMOTE_READBACK@1",
+  "branch": "agent/userdirect-pyat-20261015-r10-e04-generic-selected-world-service-r1",
+  "sealed_startup": "47c7d3e77413e8fe3c83cbf70b371597cfb96e38",
+  "source_commit": "c2bc29af1128ff550b2ab61a876e1c97076e7b1f",
+  "evidence_commit": "ac1c76f34096679dc88681dbd355ddc519848c4f",
+  "direct_remote_sha": "ac1c76f34096679dc88681dbd355ddc519848c4f",
+  "direct_output": "ac1c76f34096679dc88681dbd355ddc519848c4f\trefs/heads/agent/userdirect-pyat-20261015-r10-e04-generic-selected-world-service-r1",
+  "command": [
+    "git",
+    "ls-remote",
+    "origin",
+    "refs/heads/agent/userdirect-pyat-20261015-r10-e04-generic-selected-world-service-r1"
+  ],
+  "observed_at_utc": "2026-10-15T16:57:56.473920+00:00",
+  "exact_match": true,
+  "changed_paths": 65,
+  "authorized_return_only": true,
+  "primary_tests": "37+231=268PASS;0failures/errors/skips",
+  "native_profile_calls": 408,
+  "disposition": "AUTHOR_PASS_AT_DECLARED_SOURCEFREE_CANDIDATE_GRAIN",
+  "independent_acceptance": false,
+  "operative_N9_OC05_N10W": "NOT_ISSUED_OR_ADOPTED",
+  "new_source_model_issuer": false,
+  "original_respondent_reads": 0,
+  "external_model_calls": 0,
+  "parent_actor_generation": 0,
+  "canonical_adoption": false,
+  "final_metadata_commit_rule": "This receipt attests evidence commit. Containing metadata commit is directly read after final push and reported in chat; no self-referential commit hash is claimed."
+}
