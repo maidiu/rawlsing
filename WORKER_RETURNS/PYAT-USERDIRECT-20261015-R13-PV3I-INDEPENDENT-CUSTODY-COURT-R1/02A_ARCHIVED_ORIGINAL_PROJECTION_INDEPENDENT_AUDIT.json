@@ -1,0 +1,30 @@
+{
+  "schema": "PV3I_INDEPENDENT_PINNED_ARCHIVED_ARTIFACT_COURT_R1",
+  "source_commit": "5c70c7d347998907c1c8a865f833dad581777a0e",
+  "pin_blobs": {
+    "authority/expected.json": "53307f8b749f5f692dc62b299e2b9e391c52c943",
+    "authority/original_six_consumers.json": "9a7f97b13ea8dfe8dca00daa2febc5d2f769c255",
+    "observations/cold_full_first.json": "0c12be9ad49ad6f751059f8a6a4dbe132bc2fd7a",
+    "observations/cold_full_replay.json": "0f2311e4d158ffd556ce094f7a198f90f8c3346b"
+  },
+  "checks": {
+    "eight_exact_opportunity_keys": true,
+    "six_positive_two_held": true,
+    "non_drop_exact_key_partition": true,
+    "six_unique_original_consumers": true,
+    "first_vs_original_consumers": true,
+    "first_vs_replay_consumer_content": true,
+    "first_vs_replay_held": true,
+    "replay_expected_root_stable": true,
+    "GT2_specialized_relation_preserved": true,
+    "roles_two_exact": true,
+    "consumer_self_material_ref_consistent": true,
+    "source_fact_ref_matches_material": true,
+    "receipt_proofs_six_total": true,
+    "journal_source_ref_identity": false,
+    "preserved_sourcefree_no_adoption": true
+  },
+  "meaning": "Executable JS comparisons of exact fetched archived JSON bytes; no independent C11/I03/I05/P01 Python execution, no cryptographic rehash of accepted semantic projection. Original facts/receipt objects are preexisting PV3 author output.",
+  "total_checks": 15,
+  "passed_checks": 14
+}
