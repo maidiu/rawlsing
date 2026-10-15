@@ -1,0 +1,42 @@
+# PV3I — independent current-source and persisted receipt court
+
+**Strict evidence grade:** verified pinned PV3 source-level control flow, direct independent comparisons of actual archived PV3 author output, 24 independent sourcefree native-oracle Python PASS, and an extracted-code 5 PASS / 1 out-of-perimeter RED. **The original PV3/C11/I03/I05/P01 modules were NOT imported or executed in this review runtime.** Never describe an archived PV3 author JUnit, verified JSON, or method-excerpt test as a fresh owner call.
+
+## Complete independently frozen original opportunities
+
+The distinct first commit `12402553a8a9f90f08172ceb75c22504835f7cc9` fixed two TEST_ONLY_ADULT namespaces × four slots: **PAIR X→Y**, **B Y→X**, **DISCOVERY I05**, and **ORDERED non-scalar HELD**, yielding eight exact source-native obligations, six runnable and two HELD. Each has original F1, instrument release, occurrence, language, respondent grain, native option/routing/role and namespace-specific U/E/custody/operation refs. Neither omission of the two HELD entries nor same-count foreign substitutions can satisfy that independent inventory. The original PV2I complete frozen oracle Git blob is `677c259324bbb32f9cefeb33e87c6dc16b97efbf` and literal SHA256 `321681bb0918e4119e3053aef8f0a6cb0d9db434eadc0a3225f897a686a55f79`.
+
+A pre-execution source-correction `01A_PRE_EXECUTION_NATIVE_ROW_ERRATUM.json` separately restores the true pinned native R1 Y=1, not Y=0 as initially copied from a contradictory mutation note. The actual C11 preimage is R1 (X1,Y1), R2 (X0,Y0), R3 (X1,Y1) but **R3 is NOT_ELIGIBLE on Y**. The same-person joint risk is only R1 and R2, counts (0,0)=1 and (1,1)=1; the two opposite joint cells are **observed zero at supported denominator**, not ZERO_SUPPORT. The R2 Y0→1 real counterfactual changes A's forward counts and creates two Y1 respondents in the A reverse risk; B remains independently intact. The independent Python 24/24 and its Git-blob-verified 9/9 subset tested these values, but not the accepted original empirical query implementation.
+
+## Installed fixture owner and coherent authority reissuance
+
+PV3 source `repro/fixture_owner.py` Git blob `c05ec3b96d69e393de03f4dc76f59c79ed50b965` freezes `FixtureInstallation` and checks four byte-pinned local installer files, including unchanged independent oracle. The sourcefree known installer expected root is `4d83bf57f8cd12c3492eb42f6d14094c53a6c33cc5e4178f1594ce6a469548f2`; register root `49f0f51866d3327aca2b7d8910517c0317a85c6b7fd3f011c9ffd6634c6218bf`. `RequestAPI._register` checks both committed root and the installed register's whole `binding()`; the request path also tests exact expected payload JSON/root and original topology. Ordinary request-provided coherent replacement U/E/register/HELDS cannot make a new owner installation: **supported by direct source review and PV3 author 47/1 receipt, but not freshly executed against exact original module here.**
+
+For current reads the owner uses a separately provisioned local file, checks named namespaces, fixed TEST_ONLY issuer, grant, ceiling, increasing clock minimum and expected root, re-reads on each native source read, and checks current source edition/clock/asof. The PV3 author `persisted_selective_revocation.json` shows A withdrawn at clock/asof2, B clock/asof1 still positive in a fresh PID; the archived A history cannot mint a fresh read and B's live material remains bit-identical. Independently inspected **as an author artifact**, not a new privileged owner execution.
+
+### Stronger-than-declared file integrity stress: 5 PASS / 1 RED
+
+A true Python source-extracted `_load_policy/_resolve` court (exact methods' substantive predicates reproduced, **not** import of the PV3 module) ran six assertions with original JUnit XML:
+- positive A withdrawal and unchanged B read PASS;
+- fake issuer-grade `['PRODUCTION']`, changed installation root and absent policy file all FAIL CLOSED — three PASS controls;
+- one **intentionally failed acceptance assertion**: an attacker already able to **rewrite the trusted current-policy file on disk** can set `withdrawn=false`, `clock=3`, `asof=3`, retain expected-root/issuer/grant/ceiling labels, and the locally extracted loader accepts it.
+
+This is an **actual narrower failure under an OS-filesystem-writer attacker**, not a proved ordinary PV3 request-argument self-issuance. The implementer explicitly excludes hostile arbitrary Python/filesystem code from its local TEST_ONLY threat boundary and asserts neither real signed policy nor external issuer. Therefore label it **REAL ORIGINAL-ISSUER/PERSISTENT TRUST HOLD**, not `RED` against scoped PV3 host/trusted-policy execution or any accepted native owner. Any competent original O2/O4/O6 authority would need signed, independent, durable monotonic current decision custody, not merely coherent local labels and a stable expected-root string.
+
+## Actual six archived consumer and journal preimages: independent artifact comparisons
+
+The PV3 cold first and replay JSON blobs are respectively `0c12be9ad49ad6f751059f8a6a4dbe132bc2fd7a` and `0f2311e4d158ffd556ce094f7a198f90f8c3346b`. Comparison with eight expected records (`53307f8b749f5f692dc62b299e2b9e391c52c943`) and original six Field Forge consumer records (`9a7f97b13ea8dfe8dca00daa2febc5d2f769c255`) independently found:
+- complete 8-key partition into six distinct emitted original consumer keys + two retained HELD entries;
+- identical six **full** original consumer records before and after author cold replay, identical two HELD records and unchanged original expected digest;
+- original consumer ref/content_hash/object_id equals full Field Forge relation material; actual producer result ref equals consumer material's original producer fact ref; sourcefree specialized relation family unchanged;
+- actual six prior `UnitExecutionReceipt` projections, three in each namespace, carry `COMPLETED` state, matching original journal unit_key/manifest_hash/attempt/receipt state and **full result refs**.
+
+Initial author-independent JSON comparison used insertion-order `JSON.stringify` and falsely reported the last check failing (same refs serialized in different property ordering). The original failed audit is preserved `02A`; `02B` explicitly corrects **canonical key ordering** and yields **15/15 valid archived artifact checks**, not a scientific RED. These fresh comparisons interrogate the **original author-produced JSON artifacts**, not the original C11 or Field Forge implementation at runtime, and do not rehash or independently authorize producer `EmpiricalFact` semantic projections.
+
+### Cold-process source/replay ownership: remaining physical execution hold
+
+PV3's author `cold_court.json` preserves **two distinct PIDs**, first durable dispatch [3,3], replay [0,0], byte-identical two journals/checkpoints, six original consumer links and two HELD obligations. Critically, replay's **zero NEW DURABLE jobs is not zero empirical computation**: author's profiler reports **two C11 validations, eight I03, two I05 and Field Forge regeneration/replay** during reattestation. Fresh missing original source must refuse or return `OFFLINE_FACT_RESTORATION_HOLD`; raw source rights are never minted by saved hash artifacts. Original journal result_refs forgery and checkpoint byte tamper are reported refused by PV3 author separate-process runs; historical PV2I control recorded the predecessor allowing a journal-side substituted ref. Actual independent PV3 execution of this full graph, including receipt object hashes and current-source grant, is **NOT_EXECUTED** here: isolated runtime cannot authenticate/download the 74 pinned private Git objects from its local git transport.
+
+Minimal next physical court: fresh owner-capable Browser runtime stage original Git blobs with `git hash-object` and module `__file__`, re-run all PV2I frozen 48 unchanged, original PV2/V2K/PV owner suites and PV3 28; independently provision fixture owner then produce six actual Field Forge links; real SIGKILL/os._exit after [3,3] dispatch and same-manifest cold restoration with zero new durable callbacks but full live I03/I05 source reattestation. Separately mutate journal result_refs, Field Forge payload support to999, native form/routing/edition, self-rehashed expected U/E/register, and owner A grant, preserving B. A generic X/Y relation must remain typed `GENERIC_NATIVE_SEMANTICS_HOLD`.
+
+**No original data bytes, real U/Epre/O1–O6 issuer, generic semantic owner, all35/1890/101, N11/N12 or V3.**
