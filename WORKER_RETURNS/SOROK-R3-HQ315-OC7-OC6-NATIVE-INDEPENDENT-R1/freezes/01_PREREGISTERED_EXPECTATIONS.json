@@ -1,0 +1,45 @@
+{
+  "schema": "SOROK_OC7_PREREGISTERED_EXPECTATIONS_R1",
+  "status": "FROZEN_BEFORE_FIRST_EXECUTION",
+  "author": "HQ315 OC7 independent I2 reviewer (not OC6 author, not OC5E author)",
+  "suite_repo_path": "WORKER_RETURNS/SOROK-R3-HQ315-OC7-OC6-NATIVE-INDEPENDENT-R1/tests/test_oc7_independent_adversarial.py",
+  "suite_git_blob_sha1": "4ca9028d84a8093e9756db2f2b99737d183b100a",
+  "suite_sha256": "db65d3b72d97f83f828a1e097b78b4074f36da3df44b92d230094700171298e2",
+  "suite_bytes": 26898,
+  "test_functions": 61,
+  "groups": [
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "A5",
+    "A6",
+    "G10",
+    "G6",
+    "G7",
+    "G8",
+    "G9"
+  ],
+  "expected_outcome": "ALL PASS if OC6 A1-A6 closures are genuine; any RED is an independent finding",
+  "preregistered_claims": {
+    "A1": "every normalization-equivalent alias of an allowed field is refused at top level and inside public_projection; aliasing an unapproved key is not laundered",
+    "A2": "correctly spelled NFKC-invisible homoglyph spellings of denied tokens are denied; 14 safe multilingual/near-miss strings produce zero false positives; the two disputed OC5E inputs fold to lowful_answers and anseers_key and are NOT denied",
+    "A3": "malformed primary/secondary signature objects (None, object(), dict, str, int, list) raise the typed SignatureError, never AttributeError",
+    "A4": "a bare string role raises the typed SignatureError before re-derivation",
+    "A5": "nonhashable and blank holders raise the typed IdentityMismatchError, never TypeError",
+    "A6": "all 14 string fields, version (bool-as-int, zero, negative, float), timestamp (nan, inf, neginf, bool) and both lifecycle flags are validated before commitment or commit; fingerprint rejects heterogeneous coerced keys",
+    "G6": "the full-envelope commitment binds all 18 declared capsule fields",
+    "G7": "three-arm blinded pairing accepts exactly A/B/C per nonce with coherent joins and typed refusals otherwise",
+    "G8": "strict packet projection allowlist admits wellformed fixtures and refuses malformed ones",
+    "G9": "escrow is append-only; post-commit mutation, ledger tamper/truncation, rollback, double commit/unblind are refused",
+    "G10": "semantic fingerprint determinism and family clone detection intact"
+  },
+  "explicit_non_claims": [
+    "no real institutional signer or custodian",
+    "no universal semantic non-leakage or noninterference",
+    "no externally anchored ledger (integrity anchor is in-process only)",
+    "no cross-process persistence API",
+    "no production, V3, N12, CURRENT or PRE-MAIN admission",
+    "no adoption; verdict is scoped TEST_ONLY"
+  ]
+}
