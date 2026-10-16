@@ -38,7 +38,7 @@ for p in sorted(E.rglob('*')):
  b=p.read_bytes()
  try:s=b.decode()
  except UnicodeDecodeError:continue
- changed=s.replace(str(R),'<RETURN>')
+ changed=s.replace(str(R),'<RETURN>').replace(str(Path.home()),'<LOCAL_HOME>')
  if p.suffix=='.xml':
   root=ET.fromstring(changed)
   for t in root.iter('testsuite'):t.attrib.pop('hostname',None)
@@ -46,7 +46,10 @@ for p in sorted(E.rglob('*')):
  if changed!=s:
   dest=R/'runtime/raw_published_evidence'/p.relative_to(E);dest.parent.mkdir(parents=True,exist_ok=True)
   if not dest.exists():dest.write_bytes(b)
-  raw.append(dict(path=str(p.relative_to(R)),raw_sha256=hashlib.sha256(b).hexdigest(),published_sha256=hashlib.sha256(changed.encode()).hexdigest()))
+  raw.append(dict(path=str(p.relative_to(R)),raw_sha256=hashlib.sha256(dest.read_bytes()).hexdigest(),published_sha256=hashlib.sha256(changed.encode()).hexdigest()))
   p.write_text(changed)
-if raw:write('07_PORTABILITY_RECEIPT.json',dict(scope='Replace own absolute return path with <RETURN> and remove JUnit hostname only. Original scientific refs/values, testcase names, ordering and outcomes unchanged; raw evidence remains in ignored runtime.',files=raw))
+if raw:
+ prior=read(R/'07_PORTABILITY_RECEIPT.json')['files'] if (R/'07_PORTABILITY_RECEIPT.json').exists() else []
+ merged={x['path']:x for x in prior};merged.update({x['path']:x for x in raw})
+ write('07_PORTABILITY_RECEIPT.json',dict(scope='Replace own absolute return path with <RETURN>, local home prefix with <LOCAL_HOME>, and remove JUnit hostname. Original scientific refs/values, testcase names, ordering and outcomes unchanged; raw evidence remains in ignored runtime.',files=list(merged.values())))
 print('COMPLETION AUDIT PASS: all commission gates evidenced, 349 final cases = 326 PASS + 23 preserved raw FAIL')

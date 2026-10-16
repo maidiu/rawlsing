@@ -45,6 +45,7 @@ python3 WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-PV3N-FULL-OWNER-INDEPENDENT-
 python3 WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-PV3N-FULL-OWNER-INDEPENDENT-R1/repro/abrupt_cold.py
 python3 WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-PV3N-FULL-OWNER-INDEPENDENT-R1/repro/run_extra.py
 python3 WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-PV3N-FULL-OWNER-INDEPENDENT-R1/repro/adjudicate.py
+python3 WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-PV3N-FULL-OWNER-INDEPENDENT-R1/repro/package.py
 ```
 
 Staging and abrupt first-run roots refuse existing runtime rather than silently reusing old outputs. `execute_inherited.py` deliberately preserves and reports expected nonzero historical/generic-label exits; its orchestration success is not an all-tests-pass claim. Every actual original suite's terminal JSON/JUnit/stdout is copied from the fresh runtime into `evidence/original_runs/`, including all 53 owner-suite child audits. The interface adapter is byte-exact PV3 source; original PV2I assertions and oracle are unchanged. Its legacy revocation test-input translation is disclosed: a particular old revoked register input becomes a trusted test-owner withdrawal; direct reviewer API/policy tests separately establish the new boundary.

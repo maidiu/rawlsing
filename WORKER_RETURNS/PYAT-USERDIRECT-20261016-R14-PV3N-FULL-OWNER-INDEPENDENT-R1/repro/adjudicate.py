@@ -44,7 +44,7 @@ for l in base['report']['links']:
 # Direct process imports with physical source and exact Git identities.
 imports=[]
 def verify_import(row,pkey,hkey):
- p=Path(row[pkey]);p=p if p.is_absolute() else R/p
+ p=Path(row[pkey].replace('<RETURN>',str(R)));p=p if p.is_absolute() else R/p
  b=p.read_bytes();assert bh(b)==row[hkey];assert row[hkey] in known,(str(p),row[hkey])
  rel=str(p.relative_to(RT)) if p.is_relative_to(RT) else None
  source=next((x for x in manifest if x['staged_path']==rel),known[row[hkey]])
