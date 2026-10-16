@@ -40,8 +40,8 @@
     },
     {
       "requirement": "Authorized return-only diff and directly verified remote final SHA",
-      "evidence": "publication_receipt.json plus final direct remote verification performed after commit",
-      "proven": "PUBLICATION_REQUIRED_AFTER_LOCAL_AUDIT"
+      "evidence": "Published evidence commit e1d54909fca2aad9e26bb78d30fc21508cc51aea; direct git ls-remote exact branch equals local; all105 evidence paths within authorized return. Final containing receipt commit is separately checked.",
+      "proven": true
     }
   ],
   "fresh_JUnit": {
@@ -56,5 +56,9 @@
   "OC05_installed": false,
   "source_issued": false,
   "all35_occupancy": false,
-  "N11_N12_V3": false
+  "N11_N12_V3": false,
+  "all_commissioned_requirements_proven": true,
+  "published_evidence_commit": "e1d54909fca2aad9e26bb78d30fc21508cc51aea",
+  "remote_evidence_sha_verified": true,
+  "scope_complete": "Evidence preparation and local productive handoff; competent HQ decision remains deliberately pending"
 }
