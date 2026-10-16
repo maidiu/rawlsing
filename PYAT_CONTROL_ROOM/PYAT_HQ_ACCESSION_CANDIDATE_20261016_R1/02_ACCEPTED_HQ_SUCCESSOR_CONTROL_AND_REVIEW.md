@@ -1,10 +1,12 @@
 # PYAT R3 — reviewed and accepted successor HQ (post-frozen accession overlay)
 
+**Formal attestation publication status (2026-10-16):** An attempted write of `03_POST_REVIEW_ACCEPTED_ATTESTATION.json` was BLOCKED by publishing safety checks and did not land. The existing reviewer decision is affirmative at the bounded conceptual working-HQ scope, but **the structural verifier has not passed and operative successor activation under that formal gate is NOT YET RECORDED**. The frozen `01_ATTESTATION.json` remains CANDIDATE/NOT_VALID; this document is not a replacement. Do not assert the successor is formally operative until its required accepted attestation is lawfully published and verified.
+
 **ACCEPTANCE:** `ACCEPTED_INCOMING_PYAT_HQ_AT_EXISTING_WORKING_HQ_AUTHORITY_SCOPE_WITH_DECLARED_GROK_AND_SOURCE_RESIDUALS`.
 **Frozen reviewed candidate, immutable:** `agent/vozhd-pyat-hq-candidate-20261016-full-grok-r1@9e06e0d6515a9c0cff4b6fb704f73af83b9617d6`. Its original `00_ACCESSION_REPORT.md` and `01_ATTESTATION.json` remain exactly as submitted, including `NOT_VALID_AS_OPERATIVE_HQ` *before review*. This overlay records the separate later independent acceptance; do not rewrite that historical pre-review fact.
 **Independent predecessor-HQ reviewer/decision:** existing user-accepted `agent/vozhd-pyat-r3-hq-accession-reconstruction-20261013-r1@5286fba50a65549f9e47586b7f4c8a8265eef84d`, file `PYAT_CONTROL_ROOM/PYAT_R3_HQ_ACCESSION_20261013_R1/HQ_R19_AUTHORIZED_INDEPENDENT_REVIEW_AND_SUCCESSOR_ACCESSION_20261016.md`.
 **Authority basis:** current user explicitly delegated to the presently accepted Vozhd HQ the power to review and grant accession to the next HQ, 2026-10-16. The predecessor is a distinct reviewer of this fresh candidate's substantive scientific and whole-machine packet, **not candidate self-acceptance**.
-**Successor working control branch:** `agent/vozhd-pyat-r3-hq-successor-20261016-r1`. This branch was created from the exact frozen candidate SHA. This branch's `03_POST_REVIEW_ACCEPTED_ATTESTATION.json` is the verifier-compatible accession record; it records the full reviewer SHA and retains declared uncertainties. Do not describe the original `01_ATTESTATION.json` as retrospectively passing independent-review checks.
+**Successor working control branch:** `agent/vozhd-pyat-r3-hq-successor-20261016-r1`. This branch was created from the exact frozen candidate SHA. The planned `03_POST_REVIEW_ACCEPTED_ATTESTATION.json` has not been published; see the publication-status notice above. Only a future lawfully verified accepted attestation could complete this formal control. Do not describe the original `01_ATTESTATION.json` as retrospectively passing independent-review checks.
 
 ## Operative working-HQ succession
 
