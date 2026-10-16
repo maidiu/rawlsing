@@ -1,0 +1,71 @@
+{
+  "imports": [
+    {
+      "module": "candidate",
+      "module_file": "staging/ms1/runtime/candidate/__init__.py",
+      "blob_sha1": "0581aff4ac0ea45c07387e5340e219566ce7330d",
+      "sha256": "be2b6eff83a8a5af687456545477856ec438cee29f25481ff58636556f745083"
+    },
+    {
+      "module": "candidate.adopted_contract",
+      "module_file": "staging/ms1/runtime/candidate/adopted_contract.py",
+      "blob_sha1": "259ff9da129f7d644f8ac9fd8f739ad6041a3edf",
+      "sha256": "eec78079b8adc82b28a608ec7dd3fbf3947a53a98447fcf3d4c82db98becf0ae"
+    },
+    {
+      "module": "candidate.can008_candidate_rule",
+      "module_file": "staging/ms1/runtime/candidate/can008_candidate_rule.py",
+      "blob_sha1": "61d933d98ffb39d553a0dbc670388fc2bd3e89d3",
+      "sha256": "c5a4b271346fe045e5a54522926795e7514ad3bacbbed04fbb60a2183348c27e"
+    },
+    {
+      "module": "candidate.candidate_registry_fixture",
+      "module_file": "staging/ms1/runtime/candidate/candidate_registry_fixture.py",
+      "blob_sha1": "0d978f89fb3c5e836a52f25849240db360f97f8f",
+      "sha256": "1c2e2e0c4375a15b9f1bd55376a550834d001b7b7577cb2b8183caccbdfac768"
+    },
+    {
+      "module": "candidate.owner_transitions",
+      "module_file": "staging/ms1/runtime/candidate/owner_transitions.py",
+      "blob_sha1": "ac943d07459f68ba2e27baf05b442d9ecbddefd5",
+      "sha256": "fcdc073693f781607dd6a7ec25e5fa1a79ce3cccd5071005773b2ca7a8a5017d"
+    },
+    {
+      "module": "candidate.positive_chain",
+      "module_file": "staging/ms1/runtime/candidate/positive_chain.py",
+      "blob_sha1": "226cd42f81538f1b81ea7ea2e494776069142405",
+      "sha256": "0a288c5ffd1e92f0b29a2bf41ce99b50ebd05bf912c12d5efb18fd6fbc372657"
+    },
+    {
+      "module": "ms1_serial",
+      "module_file": "staging/ms1/runtime/ms1_serial.py",
+      "blob_sha1": "3f43fbf6e277bcc0121396f29df2ebc4334d560d",
+      "sha256": "cf46362375690e16f12c9a614e5acb9c5720d6a2a03dce190beb47fe1ef8a000"
+    },
+    {
+      "module": "rawlsing_next",
+      "module_file": "staging/ms1/runtime/rawlsing_next/__init__.py",
+      "blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "module": "rawlsing_next.v3_psepf_zero_positive_guard",
+      "module_file": "staging/ms1/runtime/rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "blob_sha1": "e0528d65215cb431196570c38bac4eae94217a1b",
+      "sha256": "12b2c49f664662cbfe993fc4817751ed9edfff3ce89c44cac489a00cb5e42177"
+    }
+  ],
+  "pytest_args": [
+    "[MS2_RETURN]/repro/test_ms2.py",
+    "-vv",
+    "--tb=short",
+    "--noconftest",
+    "-p",
+    "no:cacheprovider",
+    "--import-mode=importlib",
+    "--rootdir=[MS2_RETURN]",
+    "--junitxml=[MS2_RETURN]/evidence/new/junit.xml"
+  ],
+  "guard_empty": true,
+  "guard_unchanged": true
+}

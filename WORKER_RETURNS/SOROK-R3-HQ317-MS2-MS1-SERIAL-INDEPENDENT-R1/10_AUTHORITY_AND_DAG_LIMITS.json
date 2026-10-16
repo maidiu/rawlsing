@@ -1,0 +1,55 @@
+{
+  "verdict": "REVIEW_REVISE",
+  "authority_quote_correction": {
+    "author_F7_attribution": "Accepted ADP017 blobeece4f3f; alleged quote may condition a private update",
+    "actual_source": "CAN2 candidate/owner_transitions.py lines163-164; blobac943d07459f68ba2e27baf05b442d9ecbddefd5",
+    "exact_sentence_absent_from_pinned_accepted_ADP017_JSON_and_MD": true,
+    "accepted_belief_gate": {
+      "all_required": [
+        "exact canonical claim",
+        "exact generated/admitted V3 causal parent or actor-state transition",
+        "owning V3 rule explicitly emits exact belief content/polarity",
+        "verified actor/time/rule/pre-state/provenance",
+        "no prohibited source promotion"
+      ],
+      "objective_relation_allowed": [
+        "OBJECTIVE_SUPPORTED",
+        "OBJECTIVE_CONTRADICTED",
+        "OBJECTIVE_UNRESOLVED"
+      ],
+      "objective_status_auto_creates_or_edits_belief": false
+    },
+    "accepted_memory_interaction": {
+      "memory_owner": "ADP-016",
+      "adp017_consumes": [
+        "memory_id",
+        "representation_kind",
+        "source-bound feature states",
+        "retention state",
+        "current memory-accessibility state",
+        "uncertainty state",
+        "provenance/integrity",
+        "analyst-only causal-trace designation"
+      ],
+      "noncollapse": [
+        "MEMORY_EXISTS != CLAIM_EXISTS",
+        "CLAIM_EXISTS != ACTOR_KNOWS",
+        "ACTOR_KNOWS != ACTOR_BELIEVES",
+        "ACTOR_BELIEVES != ACTOR_MAY_CLAIM"
+      ],
+      "accessible_memory_auto_creates_stance": false,
+      "causal_trace_memory_first_person_basis": false,
+      "memory_inaccessibility_auto_erases_stance": false,
+      "stance_persistence_guarantees_current_access": false,
+      "accessibility_requires_exact_basis_refs": true,
+      "sole_memory_basis_rule": "If the only lawful claim-accessibility basis becomes INACCESSIBLE or UNAVAILABLE under ADP-016, claim permission from that basis fails closed until another exact actor-facing generated basis exists.",
+      "analyst_rehydration_forbidden": true,
+      "reacquisition_requires_new_actor_facing_generated_or_admitted_event": true
+    }
+  },
+  "consumer_exclusion": "Full ctx contains memory; choice map authored to read permission. No explicit memory argument is not capability isolation. Hash/provenance may directly depend on memory.",
+  "history_control": "MS1 prior_history is a tuple whose length enters prestate, not an independently verified prior-response journal; native CAN3 comparator remains separate",
+  "journal_limit": "MS1 consume constructs receipt; committed=False. No verified response journal commit in this construct, despite prereg wording.",
+  "unknown_access_limit": "A flat active/withdrawal contrast at UNKNOWN does not prove the structural graph has no mediated edge. Original F_B nevertheless fires by the frozen gate.",
+  "production": "NO_ADOPTION; hypothetical mediator/consumer UNISSUED; issuer/destination authority and empirical psychology unproved"
+}

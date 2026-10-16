@@ -1,0 +1,18 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: [MS2_RETURN]
+collecting ... collected 1 item
+
+WORKER_RETURNS/SOROK-R3-HQ317-MS2-MS1-SERIAL-INDEPENDENT-R1/repro/test_literal_p3b.py::test_original_P3b_C2_must_differ_from_C4 FAILED [100%]
+
+=================================== FAILURES ===================================
+___________________ test_original_P3b_C2_must_differ_from_C4 ___________________
+WORKER_RETURNS/SOROK-R3-HQ317-MS2-MS1-SERIAL-INDEPENDENT-R1/repro/test_literal_p3b.py:11: in test_original_P3b_C2_must_differ_from_C4
+    assert a!=b,'Original prospective P3b is FALSIFIED: native UNKNOWN masks stance withdrawal'
+E   AssertionError: Original prospective P3b is FALSIFIED: native UNKNOWN masks stance withdrawal
+E   assert ('DEFER_MISSING_AUTHORITY', None) != ('DEFER_MISSING_AUTHORITY', None)
+- generated xml file: [MS2_RETURN]/evidence/literal_p3b/junit.xml -
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-R3-HQ317-MS2-MS1-SERIAL-INDEPENDENT-R1/repro/test_literal_p3b.py::test_original_P3b_C2_must_differ_from_C4 - AssertionError: Original prospective P3b is FALSIFIED: native UNKNOWN masks stance withdrawal
+assert ('DEFER_MISSING_AUTHORITY', None) != ('DEFER_MISSING_AUTHORITY', None)
+============================== 1 failed in 0.10s ===============================
