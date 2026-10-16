@@ -1,0 +1,191 @@
+{
+  "passport_schema": "SOROK_WARM_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "SOROK-HQ315-OC7-INDEPENDENT-CUSTODY-REVIEW",
+  "epoch_id": "OC7-EPOCH-1",
+  "owner_session_alias": "HQ315-OC7-I2-REVIEWER",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "MBP-LOCAL-DOMINANT",
+  "conversation_or_account_affinity": "OPENCODE_STEP_5_PREVIEW_USER_SELECTED_PAIR",
+  "status": "LIVE_VERIFIED",
+  "generated_at": "2026-10-16T15:59:22",
+  "role": "fresh independent I2 sourcefree custody reviewer; NOT OC6 author, NOT OC5E author, NOT HQ, NOT institutional custodian, NOT semantic oracle issuer",
+  "sealed_startup": {
+    "commit": "2f9118cd5a0a920a6a4f729289ff2798ca8fbaa3",
+    "branch": "agent/reviewer-sorok-r3-hq315-oc7-oc6-native-independent-r1",
+    "verified_against_direct_remote_head": true
+  },
+  "last_live_probe_at": "2026-10-16T15:59:22",
+  "runtime_marker_digest": "a66194363af20bea35eb46a87d38b2d0631b122c1b1cb0a6f4029cbadc8700c9",
+  "probe_command_and_result": "python3 -m pytest --version; git hash-object of staged custody_protocol.py; reviewer conftest asserted absolute path, SHA-256 and Git blob SHA-1 of the ACTUALLY imported module at every pytest session start, aborting the session on mismatch",
+  "capabilities": {
+    "python": {
+      "observed": "3.11.3",
+      "status": "VERIFIED"
+    },
+    "pytest": {
+      "observed": "9.1.1",
+      "status": "VERIFIED"
+    },
+    "git": {
+      "observed": "git version 2.39.1",
+      "status": "VERIFIED"
+    },
+    "node": {
+      "observed": null,
+      "status": "NOT_NEEDED_FOR_THIS_COMMISSION"
+    },
+    "filesystem_shell": {
+      "observed": "available",
+      "status": "VERIFIED"
+    }
+  },
+  "git_object_store_alias": "RAWLSING-SINGLE-SHARED-STORE",
+  "worktree_alias": "OC7-WT (authorized isolated sparse worktree, pre-approved temp path)",
+  "branch": "agent/reviewer-sorok-r3-hq315-oc7-oc6-native-independent-r1",
+  "materialized_source_refs": {
+    "before_variant": {
+      "imported_module_file": "/private/tmp/oc7-before/source/custody_protocol.py",
+      "git_blob_sha1": "af2b7e943018077cb36808b5af1cd67704624bec",
+      "sha256": "447e5bb738fc49c946a39ca438126e9c2a69d93025600f053662e56f846f9e3a",
+      "source_commit": "0caaec590f6a8bf6744f22dc9c948c5fe233bc94",
+      "bytes": 29004
+    },
+    "after_variant": {
+      "imported_module_file": "/private/tmp/oc7-after/source/custody_protocol.py",
+      "git_blob_sha1": "4c185c18dbee57603038e97886da8fc4aa834082",
+      "sha256": "ca85b844994e5ce6fd9e7a21c0f210d08b6d5e7519c63ac09d7dd8a9516fd90b",
+      "source_commit": "c6cb15d7417595c359571e4525dd0f0fd6c59d1f",
+      "bytes": 36648
+    }
+  },
+  "dependency_closure_status": "FULL",
+  "fixture_query_source_permission": "sourcefree synthetic fixtures only; NO original respondent source, NO protected holdout, NO real institutional roster",
+  "science_grade": "sourcefree prototype",
+  "staging_verification": {
+    "method": "Git blob SHA-1 recomputed from the true binary preimage (b'blob ' + decimal length + NUL + bytes), cross-checked against git rev-parse of the pinned commit:path, plus SHA-256. Two closure members are .tar.xz archive members, extracted from the pinned archive blob rather than transcribed.",
+    "closure_objects_verified": 12,
+    "failures": [],
+    "ledger": "observations/_stage_ledger.json, observations/_stage_oc6_ledger.json"
+  },
+  "covered_test_suites": [
+    {
+      "suite": "inherited_131",
+      "before_cases": 131,
+      "before_PASS": 121,
+      "before_RED": 10,
+      "after_cases": 131,
+      "after_PASS": 121,
+      "after_RED": 10
+    },
+    {
+      "suite": "oc4_new_36",
+      "before_cases": 36,
+      "before_PASS": 36,
+      "before_RED": 0,
+      "after_cases": 36,
+      "after_PASS": 36,
+      "after_RED": 0
+    },
+    {
+      "suite": "oc5_prior_23",
+      "before_cases": 23,
+      "before_PASS": 16,
+      "before_RED": 7,
+      "after_cases": 23,
+      "after_PASS": 23,
+      "after_RED": 0
+    },
+    {
+      "suite": "oc5e_native_159",
+      "before_cases": 159,
+      "before_PASS": 110,
+      "before_RED": 49,
+      "after_cases": 159,
+      "after_PASS": 148,
+      "after_RED": 11
+    },
+    {
+      "suite": "oc6_author_273",
+      "before_cases": 0,
+      "before_PASS": 0,
+      "before_RED": 0,
+      "after_cases": 273,
+      "after_PASS": 273,
+      "after_RED": 0
+    },
+    {
+      "suite": "oc7_adversarial_v1_frozen",
+      "files": [
+        "test_oc7_independent_adversarial.py"
+      ],
+      "before_cases": 0,
+      "before_PASS": 0,
+      "before_RED": 0,
+      "after_cases": 274,
+      "after_PASS": 269,
+      "after_RED": 5
+    },
+    {
+      "suite": "oc7_adversarial_v2_amended",
+      "files": [
+        "test_oc7_adversarial_v2_amended.py"
+      ],
+      "before_cases": 276,
+      "before_PASS": 107,
+      "before_RED": 169,
+      "after_cases": 276,
+      "after_PASS": 276,
+      "after_RED": 0
+    }
+  ],
+  "independent_reproduction": {
+    "before_unchanged_349": {
+      "cases": 349,
+      "PASS": 283,
+      "RED": 66
+    },
+    "after_unchanged_349": {
+      "cases": 349,
+      "PASS": 328,
+      "RED": 21
+    },
+    "after_with_273_author_controls": {
+      "cases": 622,
+      "PASS": 601,
+      "RED": 21
+    }
+  },
+  "model_provider": "user-selected: Step 5 Preview in OpenCode",
+  "effort": "as configured by the owner; not inferred",
+  "observed_credits_or_usage": null,
+  "cash_known": "UNKNOWN",
+  "quota_known": "UNKNOWN",
+  "context_cache_reuse": "fresh separate review conversation; the OC6 author session was NOT reused",
+  "retries": "one correction round on the reviewer's OWN preregistered suite, fully disclosed in 04_REVIEWER_SUITE_CORRECTION_LEDGER.json",
+  "independent_review_separation": "THIS RETURN IS THE INDEPENDENT REVIEW, produced by a separate reviewer from both the OC6 author and the OC5E author. The reviewer does NOT accept its own work; adoption and any further gate remain with the competent owner.",
+  "privacy_source_grant": "private repository access granted to the owner-selected editor/model pair only",
+  "assignments_completed": [
+    "HQ315 OC7 independent OC6 native custody court"
+  ],
+  "next_good_affinity_tags": [
+    "CUSTODY",
+    "ESCROW",
+    "BLIND_PAIRING",
+    "UNICODE_CONFUSABLE",
+    "INPUT_CONTRACT",
+    "APPEND_ONLY_LEDGER"
+  ],
+  "staged_state_preservation": "runtime under /tmp/oc7-* is scratch and disposable; the committed return tree is the durable artifact",
+  "retire_or_rebuild_reason": null,
+  "no_claims": [
+    "no real institutional signer or custodian",
+    "no original respondent source",
+    "no protected holdout",
+    "no universal semantic non-leakage or noninterference",
+    "no externally anchored ledger (integrity anchor is in-process only)",
+    "no cross-process persistence API",
+    "no external model-use grant",
+    "no production, V3, N12, CURRENT or PRE-MAIN admission",
+    "no adoption"
+  ]
+}

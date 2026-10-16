@@ -1,0 +1,79 @@
+{
+  "schema": "SOROK_OC7_REVIEWER_SUITE_CORRECTION_LEDGER_R1",
+  "generated_at": "2026-10-16T15:58:00",
+  "principle": "The reviewer froze v1 BEFORE execution and it produced 5 literal REDs. Those 5 REDs are PRESERVED in observations/after/oc7_adversarial_v1.{xml,log} and are NOT deleted or suppressed. Each was adjudicated individually. All 5 were found to be REVIEWER EXPECTATION ERRORS about the module's declared contract, not OC6 defects. Only those 5 expectations were changed. No OC5E/OC6/original test source was edited, xfailed or skipped at any point.",
+  "v1": {
+    "suite": "tests/test_oc7_independent_adversarial.py",
+    "git_blob_sha1": "4ca9028d84a8093e9756db2f2b99737d183b100a",
+    "sha256": "db65d3b72d97f83f828a1e097b78b4074f36da3df44b92d230094700171298e2",
+    "frozen_at_commit": "4475403ea366b7637fb22f3875efaf1e43b4919f",
+    "frozen_before_first_execution": true,
+    "result": "5 failed, 269 passed (274 cases)"
+  },
+  "v2": {
+    "suite": "tests/test_oc7_adversarial_v2_amended.py",
+    "git_blob_sha1": "aa1c44779a2d5b121dc0acf73c46120df9610991",
+    "sha256": "5e9afb9572057c393ae7010948416f9ceaaf3236425f63005c45e313e5d02a50",
+    "bytes": 27838,
+    "result": "276 passed (276 cases)"
+  },
+  "corrections": [
+    {
+      "n": 1,
+      "case": "test_A1_alias_of_allowed_field_is_refused[enclosed_alphanumeric]",
+      "reviewer_expected": "'note\\u2460' is an alias of allowed field 'note' and is refused as a duplicate",
+      "actual_module_behaviour": "unicodedata.normalize('NFKC','note\\u2460') == 'note1'; the module reported ['unapproved_field:note1']",
+      "adjudication": "REVIEWER_EXPECTATION_ERROR",
+      "reasoning": "U+2460 CIRCLED DIGIT ONE is NFKC-compatible with the ASCII digit '1'. It is therefore NOT a normalization-equivalent spelling of 'note' but of the distinct name 'note1'. The module's fail-closed refusal of the derived name 'note1' is correct behaviour. My alias list wrongly included it.",
+      "change": "removed the enclosed_alphanumeric case from the alias parametrization"
+    },
+    {
+      "n": 2,
+      "case": "test_A1_alias_alone_without_canonical_is_still_unapproved",
+      "reviewer_expected": "a lone fullwidth alias is reported as unapproved_field",
+      "actual_module_behaviour": "detect_leakage({fullwidth 'request_id': 'r'}) == []",
+      "adjudication": "REVIEWER_EXPECTATION_ERROR",
+      "reasoning": "_normalized(fullwidth 'request_id') == 'request_id', which IS an allowed top-level key. The A1 contract constrains the NORMALIZED key, never the raw spelling, so a lone fullwidth spelling is a legitimate instance of that allowed field and is not a duplicate (no collision exists). The module is correct.",
+      "change": "replaced with test_A1_lone_alias_of_allowed_field_is_admitted_as_that_allowed_field (asserts equivalence with the canonical spelling) plus test_A1_alias_that_normalizes_to_a_DIFFERENT_name_is_unapproved"
+    },
+    {
+      "n": 3,
+      "case": "test_G8_deep_nesting_is_refused",
+      "reviewer_expected": "a deeply nested packet raises excess_nesting",
+      "actual_module_behaviour": "my constructed packet was only 2 levels deep because the loop reassigned the same dict",
+      "adjudication": "REVIEWER_TEST_BUG",
+      "reasoning": "My builder never increased depth, so I asserted against a valid shallow packet that correctly returned []. The excess_nesting guard was never actually exercised.",
+      "change": "added a correct _nest(depth) builder; test_G8_excessive_nesting_is_refused (depth 12 must raise excess_nesting) and test_G8_reasonable_nesting_is_admitted (depth 2 must not)"
+    },
+    {
+      "n": 4,
+      "case": "test_G9_mutation_after_commit_is_detected",
+      "reviewer_expected": "mutating a committed capsule is refused",
+      "actual_module_behaviour": "dataclasses.FrozenInstanceError on plain attribute assignment",
+      "adjudication": "REVIEWER_TEST_BUG",
+      "reasoning": "CustodyCapsule is a frozen dataclass, so plain assignment never reached the seal comparison I intended to probe. A hostile in-process tamper must bypass the freeze.",
+      "change": "used object.__setattr__ to model the real hostile mutation, which then correctly raised EditAfterFreezeError"
+    },
+    {
+      "n": 5,
+      "case": "test_G10_role_conflict_matrix_is_intact",
+      "reviewer_expected": "roles_conflict(CUSTODIAN, SEMANTIC_ADJUDICATOR) is True",
+      "actual_module_behaviour": "False; CONFLICT_PAIRS declares SEMANTIC_ADJUDICATOR x SCENARIO_AUTHOR but not CUSTODIAN x SEMANTIC_ADJUDICATOR",
+      "adjudication": "REVIEWER_EXPECTATION_ERROR",
+      "reasoning": "I asserted a pair the module never declared. The effective contract IS the CONFLICT_PAIRS frozenset itself, which require_second_signature relies on. Declaring an undeclared conflict would have been my own unsanctioned policy change.",
+      "change": "replaced with test_G10_role_conflict_matrix_matches_the_declared_pairs plus test_G10_conflict_matrix_is_symmetric (permutation sweep over all Role pairs)"
+    }
+  ],
+  "not_done": [
+    "no OC5E test edited, xfailed, skipped or replaced",
+    "no original OC1/OCR1/OC2/OC3/OC4/OC5 test edited, xfailed or skipped",
+    "no OC6 author control edited, xfailed or skipped",
+    "no expectation relaxed to accept weaker behaviour; each correction asserts the STRONGER accurate contract"
+  ],
+  "discrimination_proof": {
+    "suite": "v2",
+    "against_OC6_repaired_blob_4c185c18": "276 PASS / 0 RED",
+    "against_unrepaired_OC4_blob_af2b7e94": "107 PASS / 169 RED",
+    "conclusion": "The amended suite discriminates strongly; it is not trivially green and its PASS results are informative."
+  }
+}

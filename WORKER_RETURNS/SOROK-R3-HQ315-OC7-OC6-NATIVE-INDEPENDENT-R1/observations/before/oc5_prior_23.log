@@ -1,0 +1,102 @@
+$ /usr/local/bin/python3 -m pytest -p no:cacheprovider --junitxml /tmp/oc7-before/evidence/oc5_prior_23.xml -v --tb=short -rA test_oc5_prior_predictions.py
+# cwd=/tmp/oc7-before/source
+# exit=1
+
+[OC7 IMPORT AUTHENTICATED] variant=before file=/private/tmp/oc7-before/source/custody_protocol.py
+[OC7 IMPORT AUTHENTICATED] sha256=447e5bb738fc49c946a39ca438126e9c2a69d93025600f053662e56f846f9e3a git_blob=af2b7e943018077cb36808b5af1cd67704624bec bytes=29004
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: /private/tmp/oc7-before/source
+collecting ... collected 23 items
+
+test_oc5_prior_predictions.py::test_full_envelope_positive PASSED        [  4%]
+test_oc5_prior_predictions.py::test_full_envelope_replay_refused[capsule_id-other] PASSED [  8%]
+test_oc5_prior_predictions.py::test_full_envelope_replay_refused[purpose-PROSPECTIVE_DESIGN_REVIEW] PASSED [ 13%]
+test_oc5_prior_predictions.py::test_full_envelope_replay_refused[lawful_set_digest-other] PASSED [ 17%]
+test_oc5_prior_predictions.py::test_full_envelope_replay_refused[content_digest-other] PASSED [ 21%]
+test_oc5_prior_predictions.py::test_full_envelope_replay_refused[version-2] PASSED [ 26%]
+test_oc5_prior_predictions.py::test_full_envelope_replay_refused[schema_version-changed] PASSED [ 30%]
+test_oc5_prior_predictions.py::test_full_envelope_replay_refused[freeze_timestamp-1.0] PASSED [ 34%]
+test_oc5_prior_predictions.py::test_full_envelope_replay_refused[coder_rubric_digest-other] PASSED [ 39%]
+test_oc5_prior_predictions.py::test_full_envelope_replay_refused[split_assignment_digest-other] PASSED [ 43%]
+test_oc5_prior_predictions.py::test_full_envelope_replay_refused[hidden_projection_digest-other] PASSED [ 47%]
+test_oc5_prior_predictions.py::test_bare_digest_signatures_refused PASSED [ 52%]
+test_oc5_prior_predictions.py::test_malformed_signature_fails_typed[bad0] FAILED [ 56%]
+test_oc5_prior_predictions.py::test_malformed_signature_fails_typed[12] FAILED [ 60%]
+test_oc5_prior_predictions.py::test_malformed_signature_fails_typed[bad2] FAILED [ 65%]
+test_oc5_prior_predictions.py::test_duplicate_normalized_keys_refused[packet0] FAILED [ 69%]
+test_oc5_prior_predictions.py::test_duplicate_normalized_keys_refused[packet1] FAILED [ 73%]
+test_oc5_prior_predictions.py::test_duplicate_normalized_keys_refused[packet2] FAILED [ 78%]
+test_oc5_prior_predictions.py::test_duplicate_normalized_keys_refused[packet3] FAILED [ 82%]
+test_oc5_prior_predictions.py::test_benign_and_unicode_positive PASSED   [ 86%]
+test_oc5_prior_predictions.py::test_escrow_unblind_timestamp_and_holder_integrity PASSED [ 91%]
+test_oc5_prior_predictions.py::test_escrow_holder_revoked_before_release PASSED [ 95%]
+test_oc5_prior_predictions.py::test_strict_blind_pairing PASSED          [100%]
+
+=================================== FAILURES ===================================
+__________________ test_malformed_signature_fails_typed[bad0] __________________
+test_oc5_prior_predictions.py:45: in test_malformed_signature_fails_typed
+    require_second_signature(c,bad,b,c.content_digest,"ctx","n")
+custody_protocol.py:573: in require_second_signature
+    if primary_sig.signer_person_id == second_sig.signer_person_id:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'object' object has no attribute 'signer_person_id'
+___________________ test_malformed_signature_fails_typed[12] ___________________
+test_oc5_prior_predictions.py:45: in test_malformed_signature_fails_typed
+    require_second_signature(c,bad,b,c.content_digest,"ctx","n")
+custody_protocol.py:573: in require_second_signature
+    if primary_sig.signer_person_id == second_sig.signer_person_id:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'int' object has no attribute 'signer_person_id'
+__________________ test_malformed_signature_fails_typed[bad2] __________________
+test_oc5_prior_predictions.py:45: in test_malformed_signature_fails_typed
+    require_second_signature(c,bad,b,c.content_digest,"ctx","n")
+custody_protocol.py:573: in require_second_signature
+    if primary_sig.signer_person_id == second_sig.signer_person_id:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'dict' object has no attribute 'signer_person_id'
+_______________ test_duplicate_normalized_keys_refused[packet0] ________________
+test_oc5_prior_predictions.py:53: in test_duplicate_normalized_keys_refused
+    with pytest.raises(LeakageError): assert_no_leakage(packet)
+E   Failed: DID NOT RAISE LeakageError
+_______________ test_duplicate_normalized_keys_refused[packet1] ________________
+test_oc5_prior_predictions.py:53: in test_duplicate_normalized_keys_refused
+    with pytest.raises(LeakageError): assert_no_leakage(packet)
+E   Failed: DID NOT RAISE LeakageError
+_______________ test_duplicate_normalized_keys_refused[packet2] ________________
+test_oc5_prior_predictions.py:53: in test_duplicate_normalized_keys_refused
+    with pytest.raises(LeakageError): assert_no_leakage(packet)
+E   Failed: DID NOT RAISE LeakageError
+_______________ test_duplicate_normalized_keys_refused[packet3] ________________
+test_oc5_prior_predictions.py:53: in test_duplicate_normalized_keys_refused
+    with pytest.raises(LeakageError): assert_no_leakage(packet)
+E   Failed: DID NOT RAISE LeakageError
+==================================== PASSES ====================================
+-------- generated xml file: /tmp/oc7-before/evidence/oc5_prior_23.xml ---------
+=========================== short test summary info ============================
+PASSED test_oc5_prior_predictions.py::test_full_envelope_positive
+PASSED test_oc5_prior_predictions.py::test_full_envelope_replay_refused[capsule_id-other]
+PASSED test_oc5_prior_predictions.py::test_full_envelope_replay_refused[purpose-PROSPECTIVE_DESIGN_REVIEW]
+PASSED test_oc5_prior_predictions.py::test_full_envelope_replay_refused[lawful_set_digest-other]
+PASSED test_oc5_prior_predictions.py::test_full_envelope_replay_refused[content_digest-other]
+PASSED test_oc5_prior_predictions.py::test_full_envelope_replay_refused[version-2]
+PASSED test_oc5_prior_predictions.py::test_full_envelope_replay_refused[schema_version-changed]
+PASSED test_oc5_prior_predictions.py::test_full_envelope_replay_refused[freeze_timestamp-1.0]
+PASSED test_oc5_prior_predictions.py::test_full_envelope_replay_refused[coder_rubric_digest-other]
+PASSED test_oc5_prior_predictions.py::test_full_envelope_replay_refused[split_assignment_digest-other]
+PASSED test_oc5_prior_predictions.py::test_full_envelope_replay_refused[hidden_projection_digest-other]
+PASSED test_oc5_prior_predictions.py::test_bare_digest_signatures_refused
+PASSED test_oc5_prior_predictions.py::test_benign_and_unicode_positive
+PASSED test_oc5_prior_predictions.py::test_escrow_unblind_timestamp_and_holder_integrity
+PASSED test_oc5_prior_predictions.py::test_escrow_holder_revoked_before_release
+PASSED test_oc5_prior_predictions.py::test_strict_blind_pairing
+FAILED test_oc5_prior_predictions.py::test_malformed_signature_fails_typed[bad0]
+FAILED test_oc5_prior_predictions.py::test_malformed_signature_fails_typed[12]
+FAILED test_oc5_prior_predictions.py::test_malformed_signature_fails_typed[bad2]
+FAILED test_oc5_prior_predictions.py::test_duplicate_normalized_keys_refused[packet0]
+FAILED test_oc5_prior_predictions.py::test_duplicate_normalized_keys_refused[packet1]
+FAILED test_oc5_prior_predictions.py::test_duplicate_normalized_keys_refused[packet2]
+FAILED test_oc5_prior_predictions.py::test_duplicate_normalized_keys_refused[packet3]
+========================= 7 failed, 16 passed in 0.14s =========================
+
+--- STDERR ---

@@ -1,0 +1,2579 @@
+{
+  "variant": "after",
+  "src": "/tmp/oc7-after/source",
+  "suites": [
+    {
+      "suite": "inherited_131",
+      "files": [
+        "test_custody_hostiles.py",
+        "test_positive_lifecycle.py",
+        "test_ocr1_independent_hostile.py",
+        "test_oc2_regressions.py",
+        "test_oc3_independent_hostile.py"
+      ],
+      "exit": 1,
+      "tests": 131,
+      "PASS": 121,
+      "RED": 10,
+      "SKIP": 0,
+      "junit": "inherited_131.xml",
+      "log": "inherited_131.log",
+      "cases": [
+        {
+          "id": "test_custody_hostiles::test_h01_forged_custodian_refused",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_custody_hostiles::test_h02_same_person_cannot_hold_conflicting_roles",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_custody_hostiles::test_h02b_same_person_second_signature_refused",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_custody_hostiles::test_h02c_conflicting_role_second_signature_refused",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_custody_hostiles::test_h03_scenario_oracle_identity_mismatch_refused",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_custody_hostiles::test_h04_wrong_purpose_refused",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_custody_hostiles::test_h05_stale_or_revoked_capsule_refused",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_custody_hostiles::test_h06_revised_answer_after_freeze_refused",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_custody_hostiles::test_h07_clone_family_detected",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_custody_hostiles::test_h08_blind_id_pairing_break_detected",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_custody_hostiles::test_h09_hidden_origin_leak_detected",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_custody_hostiles::test_h10_answer_key_leak_detected",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_custody_hostiles::test_h11_premature_reveal_detected",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_custody_hostiles::test_h12_null_signature_refused",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_custody_hostiles::test_h13_ledger_rollback_detected",
+          "verdict": "RED"
+        },
+        {
+          "id": "test_custody_hostiles::test_h14_response_coding_leak_detected",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_custody_hostiles::test_h15_missing_signature_in_capsule_refused",
+          "verdict": "RED"
+        },
+        {
+          "id": "test_custody_hostiles::test_h16_capsule_wrong_purpose_refused",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_custody_hostiles::test_h17_model_visible_packet_no_leak",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_custody_hostiles::test_h18_exposure_log_recorded",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_custody_hostiles::test_h19_non_test_only_signature_rejected",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_custody_hostiles::test_h20_family_graph_digest_binds_families",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_positive_lifecycle::test_positive_full_role_separated_lifecycle",
+          "verdict": "RED"
+        },
+        {
+          "id": "test_positive_lifecycle::test_positive_no_leakage_in_model_packets",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_positive_lifecycle::test_positive_coder_input_no_arm_leak",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_positive_lifecycle::test_positive_role_separation_enforced",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_positive_lifecycle::test_positive_lawful_sets_contain_other_unscorable",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_positive_lifecycle::test_positive_capsule_deterministic_digest",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_positive_lifecycle::test_positive_verifiable_mock_signature",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_positive_lifecycle::test_positive_purpose_gate",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_positive_lifecycle::test_positive_blind_id_pairing_ok",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_A_capsule_unblind_permission[mod0-A01_revoked_unblind]",
+          "verdict": "RED"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_A_capsule_unblind_permission[mod1-A02_expired_unblind]",
+          "verdict": "RED"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_A_capsule_unblind_permission[mod2-A03_illegal_purpose_unblind]",
+          "verdict": "RED"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_A04_arbitrary_holder_unblind",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_A05_forbidden_role_unblind",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_A_release_after_revocation[A06_revoked_release]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_A_release_after_revocation[A07_expired_release]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_A08_mismatched_holder_unblind",
+          "verdict": "RED"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_A09_uncommitted_release",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_A10_duplicate_release",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_A11_exposure_uncommitted",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_A12_exposure_illegal_purpose",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_B01_none_capsule",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_B02_unrelated_capsule_digest",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_B_wrong_context_or_nonce[B03_wrong_signature_context]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_B_wrong_context_or_nonce[B04_wrong_signature_nonce]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_B05_same_person_signatures",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_B06_conflicting_signatures",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_B07_inconsistent_signature_digest",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_B08_mock_role_impersonation",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_C01_valid_range_rollback_detected",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_C02_ledger_history_deletion_detected",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_C03_ledger_op_tampering_detected",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_C04_ledger_duplicate_event_detected",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_C05_state_ledger_divergence_detected",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_C06_ledger_full_normal",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_D_invalid_arms[D01_duplicate_arm_AABC]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_D_invalid_arms[D02_unknown_arms_XYZ]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_D_invalid_arms[D06_missing_arm]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_D_invalid_arms[D08_empty_input]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_D03_duplicate_trial_id",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_D04_mixed_case_join",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_D05_mixed_family_join",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_D07_valid_ABC",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_E01_hidden_origin_token",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_E02_encoded_key_injection",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_E03_nested_semantic_answer_leak",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_E04_harmless_arm_substring",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_E05_safe_generated_packet",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_E06_coder_encoded_hint",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_F01_capsule_recommit_edit",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_F02_capsule_undetected_digest_corruption",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_F03_family_exact_clone",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_F04_family_semantic_paraphrase_is_not_proof",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_ocr1_independent_hostile::test_F05_mock_signature_test_only",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc2_regressions::test_inactive_revoked_capsule_refused_at_commit",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc2_regressions::test_inactive_expired_capsule_refused_at_commit",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc2_regressions::test_unauthorized_purpose_refused_at_commit",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc2_regressions::test_unissued_holder_rejected_via_actual_unblind",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc2_regressions::test_explicit_mock_holder_grant_and_revocation_at_release",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc2_regressions::test_signature_binds_content_and_rejects_alien_capsule",
+          "verdict": "RED"
+        },
+        {
+          "id": "test_oc2_regressions::test_mock_signature_no_capsule_refused",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc2_regressions::test_public_credential_not_a_role_assignment",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc2_regressions::test_no_rollback_even_with_valid_seq",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc2_regressions::test_ledger_op_tamper_visible",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc2_regressions::test_ledger_state_divergence_visible",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc2_regressions::test_committed_capsule_replaced_detection",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc2_regressions::test_exposure_uncommitted_is_refused",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc2_regressions::test_exact_abc_and_duplicate_refusal",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc2_regressions::test_join_mismatch_refusal",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc2_regressions::test_encoded_hidden_origin_refused",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc2_regressions::test_nested_unknown_packet_field_refused",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc2_regressions::test_benign_substring_not_false_positive",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc2_regressions::test_generator_public_packets_remain_safe",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_A01_unissued_holder_refused",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_A02_forbidden_role_registration_refused",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_A03_empty_holder_registration_refused",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_A04_revoked_holder_cannot_release",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_A05_invalid_commits_refuse_at_entrypoint",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_A06_postcommit_inactivation_refused_at_unblind_without_ledger_change",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_B01_valid_countersignatures_bind_content",
+          "verdict": "RED"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_B02_same_digest_distinct_capsule_id_replay",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_B03_signature_reuse_after_purpose_change",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_B04_signature_reuse_after_lawful_digest_change",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_B05_context_nonce_forgery_denied",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_B06_forged_signature_metadata_denied",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_C01_valid_append_only_ledger_coherent",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_C02_rollback_refused_without_state_damage",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_C03_ledger_mutation_detected",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_C04_released_state_mutation_detected",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_C05_unblind_timestamp_mutation_invisible",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_C06_unblind_capsule_field_mutation_invisible",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_D01_exact_ABC_and_coherent_joins",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_D02_duplicate_AABC_refused",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_D03_duplicate_trial_ids_refused",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_D04_whitespace_nonce_rejected",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_D05_unhashable_arm_bad_exception",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_E01_generated_projection_allowed",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_E02_direct_hidden_field_refused",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_E03_invisible_format_character_key_refused",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_E04_benign_word_not_blocked",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_E05_menu_wrong_value_type_admitted",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_E06_context_wrong_value_type_admitted",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_E07_U034F_note_alias_bypass",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_F01_original_cap_deepcopy_after_commit",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_F02_internal_frozen_capsule_mutation_detected",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_F03_recommit_same_id_rejected",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_Z01_any_fixture_caller_can_self_grant_custodian",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_Z02_unsigned_fixture_capsule_can_be_released",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc3_independent_hostile::test_Z03_declared_mock_roster_uses_public_derived_credentials",
+          "verdict": "RED"
+        }
+      ]
+    },
+    {
+      "suite": "oc4_new_36",
+      "files": [
+        "test_oc4_repair_controls.py"
+      ],
+      "exit": 0,
+      "tests": 36,
+      "PASS": 36,
+      "RED": 0,
+      "SKIP": 0,
+      "junit": "oc4_new_36.xml",
+      "log": "oc4_new_36.log",
+      "cases": [
+        {
+          "id": "test_oc4_repair_controls::test_bounded_full_capsule_pair_positive",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_original_full_capsule_signatures_reject_field_replay[capsule_id-other-id]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_original_full_capsule_signatures_reject_field_replay[purpose-PROSPECTIVE_DESIGN_REVIEW]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_original_full_capsule_signatures_reject_field_replay[lawful_set_digest-other-law]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_original_full_capsule_signatures_reject_field_replay[freeze_timestamp-42.0]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_original_full_capsule_signatures_reject_field_replay[version-2]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_original_full_capsule_signatures_reject_field_replay[content_digest-other-content]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_original_full_capsule_signatures_reject_field_replay[schema_version-NEW]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_original_full_capsule_signatures_reject_field_replay[scenario_frame-other-frame]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_original_full_capsule_signatures_reject_field_replay[family_graph_digest-different-family]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_original_full_capsule_signatures_reject_field_replay[public_projection_digest-changed-visible]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_original_full_capsule_signatures_reject_field_replay[hidden_projection_digest-changed-hidden]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_original_full_capsule_signatures_reject_field_replay[contribution_digest-changed-contrib]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_original_full_capsule_signatures_reject_field_replay[coder_rubric_digest-changed-rubric]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_original_full_capsule_signatures_reject_field_replay[split_assignment_digest-changed-split]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_original_full_capsule_signatures_reject_field_replay[generation_history_digest-changed-history]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_original_full_capsule_signatures_reject_field_replay[rejected_alternatives_digest-changed-rejected]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_raw_content_signature_cannot_claim_envelope",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_wrong_full_capsule_signer_nonce_rejected",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_materialized_unblind_changes_invisible_before_patch_now_refused",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_unblind_return_alias_does_not_change_retained_integrity",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_no_blank_or_whitespace_nonce[]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_no_blank_or_whitespace_nonce[ ]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_no_blank_or_whitespace_nonce[\\t\\n]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_invalid_arm_typed_exception[arm0]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_invalid_arm_typed_exception[arm1]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_invalid_arm_typed_exception[42]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_invalid_arm_typed_exception[None]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_malformed_or_unicode_leaking_visible_projection_refused[packet0]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_malformed_or_unicode_leaking_visible_projection_refused[packet1]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_malformed_or_unicode_leaking_visible_projection_refused[packet2]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_malformed_or_unicode_leaking_visible_projection_refused[packet3]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_malformed_or_unicode_leaking_visible_projection_refused[packet4]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_malformed_or_unicode_leaking_visible_projection_refused[packet5]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_malformed_or_unicode_leaking_visible_projection_refused[packet6]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc4_repair_controls::test_valid_generated_visible_and_coder_packets_stay_safe",
+          "verdict": "PASS"
+        }
+      ]
+    },
+    {
+      "suite": "oc5_prior_23",
+      "files": [
+        "test_oc5_prior_predictions.py"
+      ],
+      "exit": 0,
+      "tests": 23,
+      "PASS": 23,
+      "RED": 0,
+      "SKIP": 0,
+      "junit": "oc5_prior_23.xml",
+      "log": "oc5_prior_23.log",
+      "cases": [
+        {
+          "id": "test_oc5_prior_predictions::test_full_envelope_positive",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5_prior_predictions::test_full_envelope_replay_refused[capsule_id-other]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5_prior_predictions::test_full_envelope_replay_refused[purpose-PROSPECTIVE_DESIGN_REVIEW]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5_prior_predictions::test_full_envelope_replay_refused[lawful_set_digest-other]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5_prior_predictions::test_full_envelope_replay_refused[content_digest-other]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5_prior_predictions::test_full_envelope_replay_refused[version-2]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5_prior_predictions::test_full_envelope_replay_refused[schema_version-changed]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5_prior_predictions::test_full_envelope_replay_refused[freeze_timestamp-1.0]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5_prior_predictions::test_full_envelope_replay_refused[coder_rubric_digest-other]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5_prior_predictions::test_full_envelope_replay_refused[split_assignment_digest-other]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5_prior_predictions::test_full_envelope_replay_refused[hidden_projection_digest-other]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5_prior_predictions::test_bare_digest_signatures_refused",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5_prior_predictions::test_malformed_signature_fails_typed[bad0]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5_prior_predictions::test_malformed_signature_fails_typed[12]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5_prior_predictions::test_malformed_signature_fails_typed[bad2]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5_prior_predictions::test_duplicate_normalized_keys_refused[packet0]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5_prior_predictions::test_duplicate_normalized_keys_refused[packet1]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5_prior_predictions::test_duplicate_normalized_keys_refused[packet2]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5_prior_predictions::test_duplicate_normalized_keys_refused[packet3]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5_prior_predictions::test_benign_and_unicode_positive",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5_prior_predictions::test_escrow_unblind_timestamp_and_holder_integrity",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5_prior_predictions::test_escrow_holder_revoked_before_release",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5_prior_predictions::test_strict_blind_pairing",
+          "verdict": "PASS"
+        }
+      ]
+    },
+    {
+      "suite": "oc5e_native_159",
+      "files": [
+        "test_oc5e_native_hostiles.py"
+      ],
+      "exit": 1,
+      "tests": 159,
+      "PASS": 148,
+      "RED": 11,
+      "SKIP": 0,
+      "junit": "oc5e_native_159.xml",
+      "log": "oc5e_native_159.log",
+      "cases": [
+        {
+          "id": "test_oc5e_native_hostiles::test_imported_module_is_the_pinned_oc4_blob",
+          "verdict": "RED"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-context]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-context]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-context]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-note]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-menu]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-public-projection]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-note]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-request-id]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-response]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_normalization_equivalent_allowed_field_alias_must_be_refused[double-context-alias]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_alias_holes_are_observed_not_theorised",
+          "verdict": "RED"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_genuinely_other_or_invalid_packets_still_refused[alias-only-no-sibling]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_genuinely_other_or_invalid_packets_still_refused[acute-i-context]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_genuinely_other_or_invalid_packets_still_refused[underscore-differs]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_genuinely_other_or_invalid_packets_still_refused[note-non-str]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_genuinely_other_or_invalid_packets_still_refused[menu-non-list]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_genuinely_other_or_invalid_packets_still_refused[context-non-str]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_genuinely_other_or_invalid_packets_still_refused[extra-public-key]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_genuinely_other_or_invalid_packets_still_refused[value-cgj]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_genuinely_other_or_invalid_packets_still_refused[value-zwsp]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_genuinely_other_or_invalid_packets_still_refused[value-fullwidth]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_alias_values_are_still_type_checked_at_top_level",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_valid_generated_packets_still_pass",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_confusable_leak_token_substitution_must_be_flagged[cyrillic-a]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_confusable_leak_token_substitution_must_be_flagged[cyrillic-e]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_confusable_leak_token_substitution_must_be_flagged[armenian-h]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_confusable_leak_token_substitution_must_be_flagged[greek-o]",
+          "verdict": "RED"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_confusable_leak_token_substitution_must_be_flagged[cyrillic-s]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_confusable_leak_token_substitution_must_be_flagged[mixed-cyrillic]",
+          "verdict": "RED"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_confusable_holes_are_observed_only_for_nfkc_invisible_scripts",
+          "verdict": "RED"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_genuinely_different_confusable_string_is_correctly_admitted",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_malformed_signature_object_must_fail_typed[primary-object]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_malformed_signature_object_must_fail_typed[primary-int]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_malformed_signature_object_must_fail_typed[primary-dict]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_malformed_signature_object_must_fail_typed[primary-list]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_malformed_signature_object_must_fail_typed[primary-str]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_malformed_signature_object_must_fail_typed[primary-bool]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_malformed_signature_object_must_fail_typed[primary-bytes]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_malformed_signature_object_must_fail_typed[primary-float]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_malformed_signature_object_must_fail_typed[primary-tuple]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_malformed_signature_object_must_fail_typed[second-object]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_malformed_signature_object_must_fail_typed[second-int]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_malformed_signature_object_must_fail_typed[second-dict]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_malformed_signature_object_must_fail_typed[second-list]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_malformed_signature_object_must_fail_typed[second-str]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_malformed_signature_object_must_fail_typed[second-bool]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_malformed_signature_object_must_fail_typed[second-bytes]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_malformed_signature_object_must_fail_typed[second-float]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_malformed_signature_object_must_fail_typed[second-tuple]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_none_is_the_only_typed_malformed_signature",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_malformed_signature_holes_are_observed_as_attributeerror",
+          "verdict": "RED"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_non_enum_role_string_must_fail_typed",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_non_enum_role_string_hole_is_observed_as_attributeerror",
+          "verdict": "RED"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_unblind_unhashable_holder_must_fail_typed[list]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_unblind_unhashable_holder_must_fail_typed[dict]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_unblind_unhashable_holder_must_fail_typed[set]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_unblind_unhashable_holder_hole_is_observed_as_typeerror[list]",
+          "verdict": "RED"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_unblind_unhashable_holder_hole_is_observed_as_typeerror[dict]",
+          "verdict": "RED"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_unblind_unhashable_holder_hole_is_observed_as_typeerror[set]",
+          "verdict": "RED"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_unblind_scalar_holder_types_are_typed",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_capsule_identity_field_types_must_be_validated[version-str]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_capsule_identity_field_types_must_be_validated[version-none]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_capsule_identity_field_types_must_be_validated[version-injection]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_capsule_identity_field_types_must_be_validated[freeze-none]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_capsule_identity_field_types_must_be_validated[freeze-dict]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_capsule_identity_field_types_must_be_validated[freeze-str]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_capsule_identity_field_types_must_be_validated[schema-none]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_capsule_identity_field_types_must_be_validated[content-none]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_capsule_identity_field_types_must_be_validated[lawful-none]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_capsule_identity_field_types_must_be_validated[rubric-none]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_capsule_identity_field_types_must_be_validated[split-none]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_capsule_identity_field_type_hole_is_observed",
+          "verdict": "RED"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_mixed_type_capsule_digest_dict_must_fail_typed",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_mixed_type_capsule_digest_dict_hole_is_observed_as_typeerror",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_semantic_fingerprint_mixed_keys_must_fail_typed[mixed-int-str]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_semantic_fingerprint_mixed_keys_must_fail_typed[none-with-str]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_semantic_fingerprint_mixed_keys_must_fail_typed[tuple-key]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_semantic_fingerprint_hole_is_observed_as_typeerror[mixed-int-str]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_semantic_fingerprint_hole_is_observed_as_typeerror[none-with-str]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_semantic_fingerprint_hole_is_observed_as_typeerror[tuple-key]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_capsule_field_binds_the_envelope_commitment[capsule_id]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_capsule_field_binds_the_envelope_commitment[schema_version]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_capsule_field_binds_the_envelope_commitment[purpose]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_capsule_field_binds_the_envelope_commitment[scenario_frame]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_capsule_field_binds_the_envelope_commitment[family_graph_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_capsule_field_binds_the_envelope_commitment[content_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_capsule_field_binds_the_envelope_commitment[contribution_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_capsule_field_binds_the_envelope_commitment[public_projection_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_capsule_field_binds_the_envelope_commitment[hidden_projection_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_capsule_field_binds_the_envelope_commitment[lawful_set_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_capsule_field_binds_the_envelope_commitment[coder_rubric_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_capsule_field_binds_the_envelope_commitment[split_assignment_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_capsule_field_binds_the_envelope_commitment[generation_history_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_capsule_field_binds_the_envelope_commitment[rejected_alternatives_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_capsule_field_binds_the_envelope_commitment[freeze_timestamp]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_capsule_field_binds_the_envelope_commitment[version]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_capsule_field_binds_the_envelope_commitment[expired]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_capsule_field_binds_the_envelope_commitment[revoked]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_full_capsule_pair_positive_still_holds",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_signature_context_and_nonce_binding[wrong-context]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_signature_context_and_nonce_binding[wrong-nonce]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_signature_context_and_nonce_binding[empty-nonce]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_signature_context_and_nonce_binding[blank-nonce]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_signature_payload_tampering_refused[test-only]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_signature_payload_tampering_refused[root]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_signature_payload_tampering_refused[signer]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_signature_payload_tampering_refused[content]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_signature_payload_tampering_refused[context]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_signature_payload_tampering_refused[nonce]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_signature_payload_tampering_refused[signature-hash]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_mock_verify_never_raises_and_fails_closed",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_escrow_event_mutation_is_detected[unblind-id]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_escrow_event_mutation_is_detected[unblind-at]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_escrow_event_mutation_is_detected[unblind-holder]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_escrow_event_mutation_is_detected[unblind-lawful]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_escrow_event_mutation_is_detected[committed-swap]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_escrow_event_mutation_is_detected[committed-key]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_escrow_event_mutation_is_detected[exposure]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_escrow_event_mutation_is_detected[ledger-add]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_escrow_event_mutation_is_detected[ledger-drop]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_escrow_event_mutation_is_detected[ledger-seq]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_escrow_event_mutation_is_detected[seals]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_every_escrow_event_mutation_is_detected[proofs]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_holder_grant_registry_is_outside_the_event_seal",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_unblind_receipt_alias_does_not_change_retained_integrity",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_escrow_lifecycle_early_refusals[revoked]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_escrow_lifecycle_early_refusals[expired]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_escrow_lifecycle_early_refusals[illegal-purpose]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_escrow_lifecycle_early_refusals[uncommitted]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_escrow_lifecycle_early_refusals[no-grant]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_escrow_lifecycle_early_refusals[double-commit]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_escrow_lifecycle_early_refusals[double-release]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_ledger_rollback_is_always_refused_typed",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_blind_pairing_malformed_inputs_are_typed[two-A]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_blind_pairing_malformed_inputs_are_typed[two-arms]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_blind_pairing_malformed_inputs_are_typed[blank-nonce]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_blind_pairing_malformed_inputs_are_typed[whitespace-nonce]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_blind_pairing_malformed_inputs_are_typed[empty-list]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_blind_pairing_malformed_inputs_are_typed[string]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_blind_pairing_malformed_inputs_are_typed[unhashable-arm]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_blind_pairing_malformed_inputs_are_typed[dict-arm]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_blind_pairing_malformed_inputs_are_typed[int-arm]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_blind_pairing_malformed_inputs_are_typed[none-arm]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_blind_pairing_malformed_inputs_are_typed[extra-arm]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_blind_pairing_malformed_inputs_are_typed[inconsistent-case-join]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_blind_pairing_malformed_inputs_are_typed[int-case-join]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_blind_pairing_malformed_inputs_are_typed[non-dict]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_blind_pairing_block_size_must_be_three[b1]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_blind_pairing_block_size_must_be_three[b2]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_blind_pairing_block_size_must_be_three[b4]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_blind_pairing_block_size_must_be_three[b0]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_blind_pairing_valid_three_arm_blocks_pass",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_unauthorized_purposes_refused_typed[live-model]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_unauthorized_purposes_refused_typed[source-use]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_unauthorized_purposes_refused_typed[empty]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_unauthorized_purposes_refused_typed[none]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_authorized_purposes_accepted",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc5e_native_hostiles::test_escrow_commit_refuses_inactive_capsule_before_any_state_change",
+          "verdict": "PASS"
+        }
+      ]
+    },
+    {
+      "suite": "oc6_author_273",
+      "files": [
+        "test_oc6_author_controls.py"
+      ],
+      "exit": 0,
+      "tests": 273,
+      "PASS": 273,
+      "RED": 0,
+      "SKIP": 0,
+      "junit": "oc6_author_273.xml",
+      "log": "oc6_author_273.log",
+      "cases": [
+        {
+          "id": "test_oc6_author_controls::test_a1_normalization_equivalent_duplicate_alias_refused[fullwidth-context]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a1_normalization_equivalent_duplicate_alias_refused[cgj-context]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a1_normalization_equivalent_duplicate_alias_refused[accented-context]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a1_normalization_equivalent_duplicate_alias_refused[cgj-note]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a1_normalization_equivalent_duplicate_alias_refused[accented-note]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a1_normalization_equivalent_duplicate_alias_refused[accented-request-id]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a1_normalization_equivalent_duplicate_alias_refused[accented-response]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a1_normalization_equivalent_duplicate_alias_refused[fullwidth-menu]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a1_normalization_equivalent_duplicate_alias_refused[fullwidth-public-projection]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a1_normalization_equivalent_duplicate_alias_refused[double-context-alias]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a1_single_and_invalid_controls_behave_exactly[context-only]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a1_single_and_invalid_controls_behave_exactly[note-only]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a1_single_and_invalid_controls_behave_exactly[menu+request]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a1_single_and_invalid_controls_behave_exactly[response+rubric]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a1_single_and_invalid_controls_behave_exactly[all-six-single]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a1_single_and_invalid_controls_behave_exactly[two-distinct-fields]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a1_single_and_invalid_controls_behave_exactly[alias-value-nonstr]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a1_single_and_invalid_controls_behave_exactly[menu-alias-nonlist]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a1_single_and_invalid_controls_behave_exactly[response-alias-nonstr]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a1_single_and_invalid_controls_behave_exactly[alias-alone]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a1_duplicate_alias_value_is_never_a_second_admitted_value",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a1_multiplicity_is_not_discarded_for_the_canonical_pair",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a2_confusable_leak_token_spelling_refused[cyrillic-a]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a2_confusable_leak_token_spelling_refused[cyrillic-e]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a2_confusable_leak_token_spelling_refused[armenian-h]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a2_confusable_leak_token_spelling_refused[greek-o]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a2_confusable_leak_token_spelling_refused[cyrillic-s]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a2_confusable_leak_token_spelling_refused[cyrillic-e-mid]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a2_confusable_leak_token_spelling_refused[cyrillic-many]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a2_nfkc_visible_and_plain_spellings_still_flagged[upper]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a2_nfkc_visible_and_plain_spellings_still_flagged[plain]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a2_nfkc_visible_and_plain_spellings_still_flagged[fullwidth-a]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a2_nfkc_visible_and_plain_spellings_still_flagged[zwsp]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a2_nfkc_visible_and_plain_spellings_still_flagged[cgj]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a2_nfkc_visible_and_plain_spellings_still_flagged[expected]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a2_nfkc_visible_and_plain_spellings_still_flagged[hidden]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a2_legitimate_multilingual_and_confusable_non_tokens_admitted[digit-9]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a2_legitimate_multilingual_and_confusable_non_tokens_admitted[plain-word]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a2_legitimate_multilingual_and_confusable_non_tokens_admitted[sentence]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a2_legitimate_multilingual_and_confusable_non_tokens_admitted[accented-latin]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a2_legitimate_multilingual_and_confusable_non_tokens_admitted[cjk]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a2_legitimate_multilingual_and_confusable_non_tokens_admitted[cyrillic-word]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a2_legitimate_multilingual_and_confusable_non_tokens_admitted[greek-word]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a2_confusable_fold_is_bounded_and_enumerated",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a2_fold_never_feeds_the_field_allowlist",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a2_no_claim_of_universal_semantic_non_leakage",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_signature_object_is_typed[primary-object]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_signature_object_is_typed[primary-int]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_signature_object_is_typed[primary-dict]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_signature_object_is_typed[primary-list]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_signature_object_is_typed[primary-str]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_signature_object_is_typed[primary-bool]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_signature_object_is_typed[primary-bytes]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_signature_object_is_typed[primary-float]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_signature_object_is_typed[primary-tuple]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_signature_object_is_typed[primary-none]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_signature_object_is_typed[second-object]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_signature_object_is_typed[second-int]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_signature_object_is_typed[second-dict]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_signature_object_is_typed[second-list]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_signature_object_is_typed[second-str]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_signature_object_is_typed[second-bool]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_signature_object_is_typed[second-bytes]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_signature_object_is_typed[second-float]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_signature_object_is_typed[second-tuple]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_signature_object_is_typed[second-none]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_object_never_raises_attributeerror[object]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_object_never_raises_attributeerror[int]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_object_never_raises_attributeerror[dict]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_object_never_raises_attributeerror[list]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_object_never_raises_attributeerror[str]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_object_never_raises_attributeerror[bool]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_object_never_raises_attributeerror[bytes]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_object_never_raises_attributeerror[float]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_malformed_object_never_raises_attributeerror[tuple]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a3_none_is_still_the_only_typed_none_case",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a4_non_enum_role_is_typed_refusal[primary-upper-str]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a4_non_enum_role_is_typed_refusal[primary-lower-str]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a4_non_enum_role_is_typed_refusal[primary-empty]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a4_non_enum_role_is_typed_refusal[primary-none]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a4_non_enum_role_is_typed_refusal[primary-int]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a4_non_enum_role_is_typed_refusal[primary-value-str]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a4_non_enum_role_is_typed_refusal[second-upper-str]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a4_non_enum_role_is_typed_refusal[second-lower-str]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a4_non_enum_role_is_typed_refusal[second-empty]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a4_non_enum_role_is_typed_refusal[second-none]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a4_non_enum_role_is_typed_refusal[second-int]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a4_non_enum_role_is_typed_refusal[second-value-str]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a4_non_enum_role_never_raises_attributeerror",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a4_mock_signer_rejects_non_enum_role_typed",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a4_mock_verify_still_fails_closed_on_a_non_enum_role",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a5_malformed_holder_identity_is_typed[list]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a5_malformed_holder_identity_is_typed[dict]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a5_malformed_holder_identity_is_typed[set]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a5_malformed_holder_identity_is_typed[tuple]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a5_malformed_holder_identity_is_typed[int]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a5_malformed_holder_identity_is_typed[float]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a5_malformed_holder_identity_is_typed[bool]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a5_malformed_holder_identity_is_typed[bytes]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a5_malformed_holder_identity_is_typed[none]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a5_malformed_holder_identity_is_typed[empty]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a5_malformed_holder_identity_is_typed[blank]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a5_unhashable_holder_never_raises_typeerror[list]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a5_unhashable_holder_never_raises_typeerror[dict]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a5_unhashable_holder_never_raises_typeerror[set]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a5_authorized_holder_still_works_and_receipt_is_a_deepcopy_alias",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a5_holder_grant_authorization_is_still_typed",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[none-capsule_id]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[none-schema_version]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[none-scenario_frame]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[none-family_graph_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[none-content_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[none-contribution_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[none-public_projection_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[none-hidden_projection_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[none-lawful_set_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[none-coder_rubric_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[none-split_assignment_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[none-generation_history_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[none-rejected_alternatives_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[int-capsule_id]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[int-schema_version]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[int-scenario_frame]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[int-family_graph_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[int-content_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[int-contribution_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[int-public_projection_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[int-hidden_projection_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[int-lawful_set_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[int-coder_rubric_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[int-split_assignment_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[int-generation_history_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[int-rejected_alternatives_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[dict-capsule_id]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[dict-schema_version]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[dict-scenario_frame]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[dict-family_graph_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[dict-content_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[dict-contribution_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[dict-public_projection_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[dict-hidden_projection_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[dict-lawful_set_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[dict-coder_rubric_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[dict-split_assignment_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[dict-generation_history_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[dict-rejected_alternatives_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[list-capsule_id]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[list-schema_version]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[list-scenario_frame]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[list-family_graph_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[list-content_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[list-contribution_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[list-public_projection_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[list-hidden_projection_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[list-lawful_set_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[list-coder_rubric_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[list-split_assignment_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[list-generation_history_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[list-rejected_alternatives_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-capsule_id]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-schema_version]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-scenario_frame]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-family_graph_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-content_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-contribution_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-public_projection_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-hidden_projection_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-lawful_set_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-coder_rubric_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-split_assignment_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-generation_history_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-rejected_alternatives_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-capsule_id]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-schema_version]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-scenario_frame]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-family_graph_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-content_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-contribution_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-public_projection_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-hidden_projection_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-lawful_set_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-coder_rubric_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-split_assignment_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-generation_history_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-rejected_alternatives_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[float-capsule_id]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[float-schema_version]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[float-scenario_frame]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[float-family_graph_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[float-content_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[float-contribution_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[float-public_projection_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[float-hidden_projection_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[float-lawful_set_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[float-coder_rubric_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[float-split_assignment_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[float-generation_history_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[float-rejected_alternatives_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bool-capsule_id]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bool-schema_version]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bool-scenario_frame]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bool-family_graph_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bool-content_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bool-contribution_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bool-public_projection_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bool-hidden_projection_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bool-lawful_set_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bool-coder_rubric_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bool-split_assignment_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bool-generation_history_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_require_nonempty_strings[bool-rejected_alternatives_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_accept_valid_strings[capsule_id]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_accept_valid_strings[schema_version]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_accept_valid_strings[scenario_frame]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_accept_valid_strings[family_graph_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_accept_valid_strings[content_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_accept_valid_strings[contribution_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_accept_valid_strings[public_projection_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_accept_valid_strings[hidden_projection_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_accept_valid_strings[lawful_set_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_accept_valid_strings[coder_rubric_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_accept_valid_strings[split_assignment_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_accept_valid_strings[generation_history_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_identity_and_digest_fields_accept_valid_strings[rejected_alternatives_digest]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_version_requires_a_positive_integer[str]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_version_requires_a_positive_integer[none]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_version_requires_a_positive_integer[injection]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_version_requires_a_positive_integer[float]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_version_requires_a_positive_integer[bool]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_version_requires_a_positive_integer[list]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_version_requires_a_positive_integer[dict]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_version_zero_and_negative_are_refused",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_freeze_timestamp_requires_a_finite_nonnegative_number[none]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_freeze_timestamp_requires_a_finite_nonnegative_number[str]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_freeze_timestamp_requires_a_finite_nonnegative_number[dict]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_freeze_timestamp_requires_a_finite_nonnegative_number[list]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_freeze_timestamp_requires_a_finite_nonnegative_number[bool]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_freeze_timestamp_accepts_a_valid_number",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_lifecycle_flags_require_booleans[none-expired]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_lifecycle_flags_require_booleans[none-revoked]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_lifecycle_flags_require_booleans[zero-expired]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_lifecycle_flags_require_booleans[zero-revoked]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_lifecycle_flags_require_booleans[one-expired]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_lifecycle_flags_require_booleans[one-revoked]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_lifecycle_flags_require_booleans[str-expired]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_lifecycle_flags_require_booleans[str-revoked]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_lifecycle_flags_require_booleans[list-expired]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_lifecycle_flags_require_booleans[list-revoked]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_lifecycle_flags_require_booleans[dict-expired]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_lifecycle_flags_require_booleans[dict-revoked]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_invalid_declaration_leaves_no_state_and_no_ledger_entry",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_mixed_type_digest_dict_is_refused_before_any_commitment",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_semantic_fingerprint_requires_string_keys",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_all_eighteen_capsule_fields_still_bind_the_envelope",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_a6_valid_declaration_still_commits_and_unblinds",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_full_capsule_commitment_positive_still_holds",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_signature_context_and_nonce_binding_preserved[wrong-context]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_signature_context_and_nonce_binding_preserved[wrong-nonce]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_signature_context_and_nonce_binding_preserved[empty-nonce]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_signature_context_and_nonce_binding_preserved[blank-nonce]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_signature_payload_tampering_preserved[test-only]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_signature_payload_tampering_preserved[root]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_signature_payload_tampering_preserved[signer]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_signature_payload_tampering_preserved[content]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_signature_payload_tampering_preserved[context]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_signature_payload_tampering_preserved[nonce]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_signature_payload_tampering_preserved[signature-hash]",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_mock_verify_never_raises_and_fails_closed",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_generated_packets_still_pass_the_leakage_gate",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_three_arm_blind_pairing_preserved",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_purpose_discipline_preserved",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_append_only_escrow_preserved",
+          "verdict": "PASS"
+        },
+        {
+          "id": "test_oc6_author_controls::test_inactive_capsule_refused_before_any_state_change",
+          "verdict": "PASS"
+        }
+      ]
+    }
+  ],
+  "total": {
+    "tests": 622,
+    "PASS": 601,
+    "RED": 21,
+    "SKIP": 0
+  }
+}

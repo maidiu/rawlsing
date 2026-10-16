@@ -1,0 +1,405 @@
+$ /usr/local/bin/python3 -m pytest -p no:cacheprovider --junitxml /tmp/oc7-after/evidence/oc5e_native_159.xml -v --tb=short -rA test_oc5e_native_hostiles.py
+# cwd=/tmp/oc7-after/source
+# exit=1
+
+[OC7 IMPORT AUTHENTICATED] variant=after file=/private/tmp/oc7-after/source/custody_protocol.py
+[OC7 IMPORT AUTHENTICATED] sha256=ca85b844994e5ce6fd9e7a21c0f210d08b6d5e7519c63ac09d7dd8a9516fd90b git_blob=4c185c18dbee57603038e97886da8fc4aa834082 bytes=36648
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: /private/tmp/oc7-after/source
+collecting ... collected 159 items
+
+test_oc5e_native_hostiles.py::test_imported_module_is_the_pinned_oc4_blob FAILED [  0%]
+test_oc5e_native_hostiles.py::test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-context] PASSED [  1%]
+test_oc5e_native_hostiles.py::test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-context] PASSED [  1%]
+test_oc5e_native_hostiles.py::test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-context] PASSED [  2%]
+test_oc5e_native_hostiles.py::test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-note] PASSED [  3%]
+test_oc5e_native_hostiles.py::test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-menu] PASSED [  3%]
+test_oc5e_native_hostiles.py::test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-public-projection] PASSED [  4%]
+test_oc5e_native_hostiles.py::test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-note] PASSED [  5%]
+test_oc5e_native_hostiles.py::test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-request-id] PASSED [  5%]
+test_oc5e_native_hostiles.py::test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-response] PASSED [  6%]
+test_oc5e_native_hostiles.py::test_normalization_equivalent_allowed_field_alias_must_be_refused[double-context-alias] PASSED [  6%]
+test_oc5e_native_hostiles.py::test_alias_holes_are_observed_not_theorised FAILED [  7%]
+test_oc5e_native_hostiles.py::test_genuinely_other_or_invalid_packets_still_refused[alias-only-no-sibling] PASSED [  8%]
+test_oc5e_native_hostiles.py::test_genuinely_other_or_invalid_packets_still_refused[acute-i-context] PASSED [  8%]
+test_oc5e_native_hostiles.py::test_genuinely_other_or_invalid_packets_still_refused[underscore-differs] PASSED [  9%]
+test_oc5e_native_hostiles.py::test_genuinely_other_or_invalid_packets_still_refused[note-non-str] PASSED [ 10%]
+test_oc5e_native_hostiles.py::test_genuinely_other_or_invalid_packets_still_refused[menu-non-list] PASSED [ 10%]
+test_oc5e_native_hostiles.py::test_genuinely_other_or_invalid_packets_still_refused[context-non-str] PASSED [ 11%]
+test_oc5e_native_hostiles.py::test_genuinely_other_or_invalid_packets_still_refused[extra-public-key] PASSED [ 11%]
+test_oc5e_native_hostiles.py::test_genuinely_other_or_invalid_packets_still_refused[value-cgj] PASSED [ 12%]
+test_oc5e_native_hostiles.py::test_genuinely_other_or_invalid_packets_still_refused[value-zwsp] PASSED [ 13%]
+test_oc5e_native_hostiles.py::test_genuinely_other_or_invalid_packets_still_refused[value-fullwidth] PASSED [ 13%]
+test_oc5e_native_hostiles.py::test_alias_values_are_still_type_checked_at_top_level PASSED [ 14%]
+test_oc5e_native_hostiles.py::test_valid_generated_packets_still_pass PASSED [ 15%]
+test_oc5e_native_hostiles.py::test_confusable_leak_token_substitution_must_be_flagged[cyrillic-a] PASSED [ 15%]
+test_oc5e_native_hostiles.py::test_confusable_leak_token_substitution_must_be_flagged[cyrillic-e] PASSED [ 16%]
+test_oc5e_native_hostiles.py::test_confusable_leak_token_substitution_must_be_flagged[armenian-h] PASSED [ 16%]
+test_oc5e_native_hostiles.py::test_confusable_leak_token_substitution_must_be_flagged[greek-o] FAILED [ 17%]
+test_oc5e_native_hostiles.py::test_confusable_leak_token_substitution_must_be_flagged[cyrillic-s] PASSED [ 18%]
+test_oc5e_native_hostiles.py::test_confusable_leak_token_substitution_must_be_flagged[mixed-cyrillic] FAILED [ 18%]
+test_oc5e_native_hostiles.py::test_confusable_holes_are_observed_only_for_nfkc_invisible_scripts FAILED [ 19%]
+test_oc5e_native_hostiles.py::test_genuinely_different_confusable_string_is_correctly_admitted PASSED [ 20%]
+test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[primary-object] PASSED [ 20%]
+test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[primary-int] PASSED [ 21%]
+test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[primary-dict] PASSED [ 22%]
+test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[primary-list] PASSED [ 22%]
+test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[primary-str] PASSED [ 23%]
+test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[primary-bool] PASSED [ 23%]
+test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[primary-bytes] PASSED [ 24%]
+test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[primary-float] PASSED [ 25%]
+test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[primary-tuple] PASSED [ 25%]
+test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[second-object] PASSED [ 26%]
+test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[second-int] PASSED [ 27%]
+test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[second-dict] PASSED [ 27%]
+test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[second-list] PASSED [ 28%]
+test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[second-str] PASSED [ 28%]
+test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[second-bool] PASSED [ 29%]
+test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[second-bytes] PASSED [ 30%]
+test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[second-float] PASSED [ 30%]
+test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[second-tuple] PASSED [ 31%]
+test_oc5e_native_hostiles.py::test_none_is_the_only_typed_malformed_signature PASSED [ 32%]
+test_oc5e_native_hostiles.py::test_malformed_signature_holes_are_observed_as_attributeerror FAILED [ 32%]
+test_oc5e_native_hostiles.py::test_non_enum_role_string_must_fail_typed PASSED [ 33%]
+test_oc5e_native_hostiles.py::test_non_enum_role_string_hole_is_observed_as_attributeerror FAILED [ 33%]
+test_oc5e_native_hostiles.py::test_unblind_unhashable_holder_must_fail_typed[list] PASSED [ 34%]
+test_oc5e_native_hostiles.py::test_unblind_unhashable_holder_must_fail_typed[dict] PASSED [ 35%]
+test_oc5e_native_hostiles.py::test_unblind_unhashable_holder_must_fail_typed[set] PASSED [ 35%]
+test_oc5e_native_hostiles.py::test_unblind_unhashable_holder_hole_is_observed_as_typeerror[list] FAILED [ 36%]
+test_oc5e_native_hostiles.py::test_unblind_unhashable_holder_hole_is_observed_as_typeerror[dict] FAILED [ 37%]
+test_oc5e_native_hostiles.py::test_unblind_unhashable_holder_hole_is_observed_as_typeerror[set] FAILED [ 37%]
+test_oc5e_native_hostiles.py::test_unblind_scalar_holder_types_are_typed PASSED [ 38%]
+test_oc5e_native_hostiles.py::test_capsule_identity_field_types_must_be_validated[version-str] PASSED [ 38%]
+test_oc5e_native_hostiles.py::test_capsule_identity_field_types_must_be_validated[version-none] PASSED [ 39%]
+test_oc5e_native_hostiles.py::test_capsule_identity_field_types_must_be_validated[version-injection] PASSED [ 40%]
+test_oc5e_native_hostiles.py::test_capsule_identity_field_types_must_be_validated[freeze-none] PASSED [ 40%]
+test_oc5e_native_hostiles.py::test_capsule_identity_field_types_must_be_validated[freeze-dict] PASSED [ 41%]
+test_oc5e_native_hostiles.py::test_capsule_identity_field_types_must_be_validated[freeze-str] PASSED [ 42%]
+test_oc5e_native_hostiles.py::test_capsule_identity_field_types_must_be_validated[schema-none] PASSED [ 42%]
+test_oc5e_native_hostiles.py::test_capsule_identity_field_types_must_be_validated[content-none] PASSED [ 43%]
+test_oc5e_native_hostiles.py::test_capsule_identity_field_types_must_be_validated[lawful-none] PASSED [ 44%]
+test_oc5e_native_hostiles.py::test_capsule_identity_field_types_must_be_validated[rubric-none] PASSED [ 44%]
+test_oc5e_native_hostiles.py::test_capsule_identity_field_types_must_be_validated[split-none] PASSED [ 45%]
+test_oc5e_native_hostiles.py::test_capsule_identity_field_type_hole_is_observed FAILED [ 45%]
+test_oc5e_native_hostiles.py::test_mixed_type_capsule_digest_dict_must_fail_typed PASSED [ 46%]
+test_oc5e_native_hostiles.py::test_mixed_type_capsule_digest_dict_hole_is_observed_as_typeerror PASSED [ 47%]
+test_oc5e_native_hostiles.py::test_semantic_fingerprint_mixed_keys_must_fail_typed[mixed-int-str] PASSED [ 47%]
+test_oc5e_native_hostiles.py::test_semantic_fingerprint_mixed_keys_must_fail_typed[none-with-str] PASSED [ 48%]
+test_oc5e_native_hostiles.py::test_semantic_fingerprint_mixed_keys_must_fail_typed[tuple-key] PASSED [ 49%]
+test_oc5e_native_hostiles.py::test_semantic_fingerprint_hole_is_observed_as_typeerror[mixed-int-str] PASSED [ 49%]
+test_oc5e_native_hostiles.py::test_semantic_fingerprint_hole_is_observed_as_typeerror[none-with-str] PASSED [ 50%]
+test_oc5e_native_hostiles.py::test_semantic_fingerprint_hole_is_observed_as_typeerror[tuple-key] PASSED [ 50%]
+test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[capsule_id] PASSED [ 51%]
+test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[schema_version] PASSED [ 52%]
+test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[purpose] PASSED [ 52%]
+test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[scenario_frame] PASSED [ 53%]
+test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[family_graph_digest] PASSED [ 54%]
+test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[content_digest] PASSED [ 54%]
+test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[contribution_digest] PASSED [ 55%]
+test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[public_projection_digest] PASSED [ 55%]
+test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[hidden_projection_digest] PASSED [ 56%]
+test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[lawful_set_digest] PASSED [ 57%]
+test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[coder_rubric_digest] PASSED [ 57%]
+test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[split_assignment_digest] PASSED [ 58%]
+test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[generation_history_digest] PASSED [ 59%]
+test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[rejected_alternatives_digest] PASSED [ 59%]
+test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[freeze_timestamp] PASSED [ 60%]
+test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[version] PASSED [ 61%]
+test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[expired] PASSED [ 61%]
+test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[revoked] PASSED [ 62%]
+test_oc5e_native_hostiles.py::test_full_capsule_pair_positive_still_holds PASSED [ 62%]
+test_oc5e_native_hostiles.py::test_signature_context_and_nonce_binding[wrong-context] PASSED [ 63%]
+test_oc5e_native_hostiles.py::test_signature_context_and_nonce_binding[wrong-nonce] PASSED [ 64%]
+test_oc5e_native_hostiles.py::test_signature_context_and_nonce_binding[empty-nonce] PASSED [ 64%]
+test_oc5e_native_hostiles.py::test_signature_context_and_nonce_binding[blank-nonce] PASSED [ 65%]
+test_oc5e_native_hostiles.py::test_signature_payload_tampering_refused[test-only] PASSED [ 66%]
+test_oc5e_native_hostiles.py::test_signature_payload_tampering_refused[root] PASSED [ 66%]
+test_oc5e_native_hostiles.py::test_signature_payload_tampering_refused[signer] PASSED [ 67%]
+test_oc5e_native_hostiles.py::test_signature_payload_tampering_refused[content] PASSED [ 67%]
+test_oc5e_native_hostiles.py::test_signature_payload_tampering_refused[context] PASSED [ 68%]
+test_oc5e_native_hostiles.py::test_signature_payload_tampering_refused[nonce] PASSED [ 69%]
+test_oc5e_native_hostiles.py::test_signature_payload_tampering_refused[signature-hash] PASSED [ 69%]
+test_oc5e_native_hostiles.py::test_mock_verify_never_raises_and_fails_closed PASSED [ 70%]
+test_oc5e_native_hostiles.py::test_every_escrow_event_mutation_is_detected[unblind-id] PASSED [ 71%]
+test_oc5e_native_hostiles.py::test_every_escrow_event_mutation_is_detected[unblind-at] PASSED [ 71%]
+test_oc5e_native_hostiles.py::test_every_escrow_event_mutation_is_detected[unblind-holder] PASSED [ 72%]
+test_oc5e_native_hostiles.py::test_every_escrow_event_mutation_is_detected[unblind-lawful] PASSED [ 72%]
+test_oc5e_native_hostiles.py::test_every_escrow_event_mutation_is_detected[committed-swap] PASSED [ 73%]
+test_oc5e_native_hostiles.py::test_every_escrow_event_mutation_is_detected[committed-key] PASSED [ 74%]
+test_oc5e_native_hostiles.py::test_every_escrow_event_mutation_is_detected[exposure] PASSED [ 74%]
+test_oc5e_native_hostiles.py::test_every_escrow_event_mutation_is_detected[ledger-add] PASSED [ 75%]
+test_oc5e_native_hostiles.py::test_every_escrow_event_mutation_is_detected[ledger-drop] PASSED [ 76%]
+test_oc5e_native_hostiles.py::test_every_escrow_event_mutation_is_detected[ledger-seq] PASSED [ 76%]
+test_oc5e_native_hostiles.py::test_every_escrow_event_mutation_is_detected[seals] PASSED [ 77%]
+test_oc5e_native_hostiles.py::test_every_escrow_event_mutation_is_detected[proofs] PASSED [ 77%]
+test_oc5e_native_hostiles.py::test_holder_grant_registry_is_outside_the_event_seal PASSED [ 78%]
+test_oc5e_native_hostiles.py::test_unblind_receipt_alias_does_not_change_retained_integrity PASSED [ 79%]
+test_oc5e_native_hostiles.py::test_escrow_lifecycle_early_refusals[revoked] PASSED [ 79%]
+test_oc5e_native_hostiles.py::test_escrow_lifecycle_early_refusals[expired] PASSED [ 80%]
+test_oc5e_native_hostiles.py::test_escrow_lifecycle_early_refusals[illegal-purpose] PASSED [ 81%]
+test_oc5e_native_hostiles.py::test_escrow_lifecycle_early_refusals[uncommitted] PASSED [ 81%]
+test_oc5e_native_hostiles.py::test_escrow_lifecycle_early_refusals[no-grant] PASSED [ 82%]
+test_oc5e_native_hostiles.py::test_escrow_lifecycle_early_refusals[double-commit] PASSED [ 83%]
+test_oc5e_native_hostiles.py::test_escrow_lifecycle_early_refusals[double-release] PASSED [ 83%]
+test_oc5e_native_hostiles.py::test_ledger_rollback_is_always_refused_typed PASSED [ 84%]
+test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[two-A] PASSED [ 84%]
+test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[two-arms] PASSED [ 85%]
+test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[blank-nonce] PASSED [ 86%]
+test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[whitespace-nonce] PASSED [ 86%]
+test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[empty-list] PASSED [ 87%]
+test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[string] PASSED [ 88%]
+test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[unhashable-arm] PASSED [ 88%]
+test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[dict-arm] PASSED [ 89%]
+test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[int-arm] PASSED [ 89%]
+test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[none-arm] PASSED [ 90%]
+test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[extra-arm] PASSED [ 91%]
+test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[inconsistent-case-join] PASSED [ 91%]
+test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[int-case-join] PASSED [ 92%]
+test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[non-dict] PASSED [ 93%]
+test_oc5e_native_hostiles.py::test_blind_pairing_block_size_must_be_three[b1] PASSED [ 93%]
+test_oc5e_native_hostiles.py::test_blind_pairing_block_size_must_be_three[b2] PASSED [ 94%]
+test_oc5e_native_hostiles.py::test_blind_pairing_block_size_must_be_three[b4] PASSED [ 94%]
+test_oc5e_native_hostiles.py::test_blind_pairing_block_size_must_be_three[b0] PASSED [ 95%]
+test_oc5e_native_hostiles.py::test_blind_pairing_valid_three_arm_blocks_pass PASSED [ 96%]
+test_oc5e_native_hostiles.py::test_unauthorized_purposes_refused_typed[live-model] PASSED [ 96%]
+test_oc5e_native_hostiles.py::test_unauthorized_purposes_refused_typed[source-use] PASSED [ 97%]
+test_oc5e_native_hostiles.py::test_unauthorized_purposes_refused_typed[empty] PASSED [ 98%]
+test_oc5e_native_hostiles.py::test_unauthorized_purposes_refused_typed[none] PASSED [ 98%]
+test_oc5e_native_hostiles.py::test_authorized_purposes_accepted PASSED   [ 99%]
+test_oc5e_native_hostiles.py::test_escrow_commit_refuses_inactive_capsule_before_any_state_change PASSED [100%]
+
+=================================== FAILURES ===================================
+_________________ test_imported_module_is_the_pinned_oc4_blob __________________
+test_oc5e_native_hostiles.py:73: in test_imported_module_is_the_pinned_oc4_blob
+    assert witness_is_native()
+           ^^^^^^^^^^^^^^^^^^^
+test_oc5e_native_hostiles.py:62: in witness_is_native
+    assert blob == 'af2b7e943018077cb36808b5af1cd67704624bec', \
+E   AssertionError: imported module is not the pinned OC4 blob: 4c185c18dbee57603038e97886da8fc4aa834082
+E   assert '4c185c18dbee...a8fc4aa834082' == 'af2b7e943018...cd67704624bec'
+E     
+E     - af2b7e943018077cb36808b5af1cd67704624bec
+E     + 4c185c18dbee57603038e97886da8fc4aa834082
+_________________ test_alias_holes_are_observed_not_theorised __________________
+test_oc5e_native_hostiles.py:134: in test_alias_holes_are_observed_not_theorised
+    assert all(v == [] for v in observed.values()), \
+E   AssertionError: unexpectedly flagged: {'fullwidth-context': ['duplicate_normalized_field:ｃontext'], 'cgj-context': ['duplicate_normalized_field:con͏text'], 'accented-context': ['duplicate_normalized_field:CONTÉXT'], 'cgj-note': ['duplicate_normalized_field:n͏ote'], 'fullwidth-menu': ['duplicate_normalized_field:ｍenu'], 'fullwidth-public-projection': ['duplicate_normalized_field:ｐublic_projection'], 'accented-note': ['duplicate_normalized_field:NÓTE'], 'accented-request-id': ['duplicate_normalized_field:reqúest_id'], 'accented-response': ['duplicate_normalized_field:RESPONSË']}
+E   assert False
+E    +  where False = all(<generator object test_alias_holes_are_observed_not_theorised.<locals>.<genexpr> at 0x101ed02b0>)
+_______ test_confusable_leak_token_substitution_must_be_flagged[greek-o] _______
+test_oc5e_native_hostiles.py:201: in test_confusable_leak_token_substitution_must_be_flagged
+    with pytest.raises(LeakageError):
+E   Failed: DID NOT RAISE LeakageError
+___ test_confusable_leak_token_substitution_must_be_flagged[mixed-cyrillic] ____
+test_oc5e_native_hostiles.py:201: in test_confusable_leak_token_substitution_must_be_flagged
+    with pytest.raises(LeakageError):
+E   Failed: DID NOT RAISE LeakageError
+______ test_confusable_holes_are_observed_only_for_nfkc_invisible_scripts ______
+test_oc5e_native_hostiles.py:211: in test_confusable_holes_are_observed_only_for_nfkc_invisible_scripts
+    assert all(detect_leakage({'note': v}) == [] for v in invisible)
+E   assert False
+E    +  where False = all(<generator object test_confusable_holes_are_observed_only_for_nfkc_invisible_scripts.<locals>.<genexpr> at 0x101cfbca0>)
+________ test_malformed_signature_holes_are_observed_as_attributeerror _________
+test_oc5e_native_hostiles.py:262: in test_malformed_signature_holes_are_observed_as_attributeerror
+    require_second_signature(*args)
+custody_protocol.py:643: in require_second_signature
+    raise SignatureError("malformed primary signature: typed MockSignature required")
+E   custody_protocol.SignatureError: malformed primary signature: typed MockSignature required
+_________ test_non_enum_role_string_hole_is_observed_as_attributeerror _________
+test_oc5e_native_hostiles.py:279: in test_non_enum_role_string_hole_is_observed_as_attributeerror
+    require_second_signature(c, replace(a, role='CUSTODIAN'), b,
+custody_protocol.py:647: in require_second_signature
+    raise SignatureError("malformed primary signature role: typed Role enum required")
+E   custody_protocol.SignatureError: malformed primary signature role: typed Role enum required
+______ test_unblind_unhashable_holder_hole_is_observed_as_typeerror[list] ______
+test_oc5e_native_hostiles.py:304: in test_unblind_unhashable_holder_hole_is_observed_as_typeerror
+    escrow.unblind(c.capsule_id, holder)
+custody_protocol.py:507: in unblind
+    raise IdentityMismatchError("malformed fixture holder identity")
+E   custody_protocol.IdentityMismatchError: malformed fixture holder identity
+______ test_unblind_unhashable_holder_hole_is_observed_as_typeerror[dict] ______
+test_oc5e_native_hostiles.py:304: in test_unblind_unhashable_holder_hole_is_observed_as_typeerror
+    escrow.unblind(c.capsule_id, holder)
+custody_protocol.py:507: in unblind
+    raise IdentityMismatchError("malformed fixture holder identity")
+E   custody_protocol.IdentityMismatchError: malformed fixture holder identity
+______ test_unblind_unhashable_holder_hole_is_observed_as_typeerror[set] _______
+test_oc5e_native_hostiles.py:304: in test_unblind_unhashable_holder_hole_is_observed_as_typeerror
+    escrow.unblind(c.capsule_id, holder)
+custody_protocol.py:507: in unblind
+    raise IdentityMismatchError("malformed fixture holder identity")
+E   custody_protocol.IdentityMismatchError: malformed fixture holder identity
+______________ test_capsule_identity_field_type_hole_is_observed _______________
+test_oc5e_native_hostiles.py:345: in test_capsule_identity_field_type_hole_is_observed
+    escrow.commit(capsule)
+custody_protocol.py:484: in commit
+    validate_capsule_fields(capsule)
+custody_protocol.py:412: in validate_capsule_fields
+    raise TypeError("capsule version must be an integer")
+E   TypeError: capsule version must be an integer
+==================================== PASSES ====================================
+------- generated xml file: /tmp/oc7-after/evidence/oc5e_native_159.xml --------
+=========================== short test summary info ============================
+PASSED test_oc5e_native_hostiles.py::test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-context]
+PASSED test_oc5e_native_hostiles.py::test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-context]
+PASSED test_oc5e_native_hostiles.py::test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-context]
+PASSED test_oc5e_native_hostiles.py::test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-note]
+PASSED test_oc5e_native_hostiles.py::test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-menu]
+PASSED test_oc5e_native_hostiles.py::test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-public-projection]
+PASSED test_oc5e_native_hostiles.py::test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-note]
+PASSED test_oc5e_native_hostiles.py::test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-request-id]
+PASSED test_oc5e_native_hostiles.py::test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-response]
+PASSED test_oc5e_native_hostiles.py::test_normalization_equivalent_allowed_field_alias_must_be_refused[double-context-alias]
+PASSED test_oc5e_native_hostiles.py::test_genuinely_other_or_invalid_packets_still_refused[alias-only-no-sibling]
+PASSED test_oc5e_native_hostiles.py::test_genuinely_other_or_invalid_packets_still_refused[acute-i-context]
+PASSED test_oc5e_native_hostiles.py::test_genuinely_other_or_invalid_packets_still_refused[underscore-differs]
+PASSED test_oc5e_native_hostiles.py::test_genuinely_other_or_invalid_packets_still_refused[note-non-str]
+PASSED test_oc5e_native_hostiles.py::test_genuinely_other_or_invalid_packets_still_refused[menu-non-list]
+PASSED test_oc5e_native_hostiles.py::test_genuinely_other_or_invalid_packets_still_refused[context-non-str]
+PASSED test_oc5e_native_hostiles.py::test_genuinely_other_or_invalid_packets_still_refused[extra-public-key]
+PASSED test_oc5e_native_hostiles.py::test_genuinely_other_or_invalid_packets_still_refused[value-cgj]
+PASSED test_oc5e_native_hostiles.py::test_genuinely_other_or_invalid_packets_still_refused[value-zwsp]
+PASSED test_oc5e_native_hostiles.py::test_genuinely_other_or_invalid_packets_still_refused[value-fullwidth]
+PASSED test_oc5e_native_hostiles.py::test_alias_values_are_still_type_checked_at_top_level
+PASSED test_oc5e_native_hostiles.py::test_valid_generated_packets_still_pass
+PASSED test_oc5e_native_hostiles.py::test_confusable_leak_token_substitution_must_be_flagged[cyrillic-a]
+PASSED test_oc5e_native_hostiles.py::test_confusable_leak_token_substitution_must_be_flagged[cyrillic-e]
+PASSED test_oc5e_native_hostiles.py::test_confusable_leak_token_substitution_must_be_flagged[armenian-h]
+PASSED test_oc5e_native_hostiles.py::test_confusable_leak_token_substitution_must_be_flagged[cyrillic-s]
+PASSED test_oc5e_native_hostiles.py::test_genuinely_different_confusable_string_is_correctly_admitted
+PASSED test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[primary-object]
+PASSED test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[primary-int]
+PASSED test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[primary-dict]
+PASSED test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[primary-list]
+PASSED test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[primary-str]
+PASSED test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[primary-bool]
+PASSED test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[primary-bytes]
+PASSED test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[primary-float]
+PASSED test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[primary-tuple]
+PASSED test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[second-object]
+PASSED test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[second-int]
+PASSED test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[second-dict]
+PASSED test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[second-list]
+PASSED test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[second-str]
+PASSED test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[second-bool]
+PASSED test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[second-bytes]
+PASSED test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[second-float]
+PASSED test_oc5e_native_hostiles.py::test_malformed_signature_object_must_fail_typed[second-tuple]
+PASSED test_oc5e_native_hostiles.py::test_none_is_the_only_typed_malformed_signature
+PASSED test_oc5e_native_hostiles.py::test_non_enum_role_string_must_fail_typed
+PASSED test_oc5e_native_hostiles.py::test_unblind_unhashable_holder_must_fail_typed[list]
+PASSED test_oc5e_native_hostiles.py::test_unblind_unhashable_holder_must_fail_typed[dict]
+PASSED test_oc5e_native_hostiles.py::test_unblind_unhashable_holder_must_fail_typed[set]
+PASSED test_oc5e_native_hostiles.py::test_unblind_scalar_holder_types_are_typed
+PASSED test_oc5e_native_hostiles.py::test_capsule_identity_field_types_must_be_validated[version-str]
+PASSED test_oc5e_native_hostiles.py::test_capsule_identity_field_types_must_be_validated[version-none]
+PASSED test_oc5e_native_hostiles.py::test_capsule_identity_field_types_must_be_validated[version-injection]
+PASSED test_oc5e_native_hostiles.py::test_capsule_identity_field_types_must_be_validated[freeze-none]
+PASSED test_oc5e_native_hostiles.py::test_capsule_identity_field_types_must_be_validated[freeze-dict]
+PASSED test_oc5e_native_hostiles.py::test_capsule_identity_field_types_must_be_validated[freeze-str]
+PASSED test_oc5e_native_hostiles.py::test_capsule_identity_field_types_must_be_validated[schema-none]
+PASSED test_oc5e_native_hostiles.py::test_capsule_identity_field_types_must_be_validated[content-none]
+PASSED test_oc5e_native_hostiles.py::test_capsule_identity_field_types_must_be_validated[lawful-none]
+PASSED test_oc5e_native_hostiles.py::test_capsule_identity_field_types_must_be_validated[rubric-none]
+PASSED test_oc5e_native_hostiles.py::test_capsule_identity_field_types_must_be_validated[split-none]
+PASSED test_oc5e_native_hostiles.py::test_mixed_type_capsule_digest_dict_must_fail_typed
+PASSED test_oc5e_native_hostiles.py::test_mixed_type_capsule_digest_dict_hole_is_observed_as_typeerror
+PASSED test_oc5e_native_hostiles.py::test_semantic_fingerprint_mixed_keys_must_fail_typed[mixed-int-str]
+PASSED test_oc5e_native_hostiles.py::test_semantic_fingerprint_mixed_keys_must_fail_typed[none-with-str]
+PASSED test_oc5e_native_hostiles.py::test_semantic_fingerprint_mixed_keys_must_fail_typed[tuple-key]
+PASSED test_oc5e_native_hostiles.py::test_semantic_fingerprint_hole_is_observed_as_typeerror[mixed-int-str]
+PASSED test_oc5e_native_hostiles.py::test_semantic_fingerprint_hole_is_observed_as_typeerror[none-with-str]
+PASSED test_oc5e_native_hostiles.py::test_semantic_fingerprint_hole_is_observed_as_typeerror[tuple-key]
+PASSED test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[capsule_id]
+PASSED test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[schema_version]
+PASSED test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[purpose]
+PASSED test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[scenario_frame]
+PASSED test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[family_graph_digest]
+PASSED test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[content_digest]
+PASSED test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[contribution_digest]
+PASSED test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[public_projection_digest]
+PASSED test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[hidden_projection_digest]
+PASSED test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[lawful_set_digest]
+PASSED test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[coder_rubric_digest]
+PASSED test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[split_assignment_digest]
+PASSED test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[generation_history_digest]
+PASSED test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[rejected_alternatives_digest]
+PASSED test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[freeze_timestamp]
+PASSED test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[version]
+PASSED test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[expired]
+PASSED test_oc5e_native_hostiles.py::test_every_capsule_field_binds_the_envelope_commitment[revoked]
+PASSED test_oc5e_native_hostiles.py::test_full_capsule_pair_positive_still_holds
+PASSED test_oc5e_native_hostiles.py::test_signature_context_and_nonce_binding[wrong-context]
+PASSED test_oc5e_native_hostiles.py::test_signature_context_and_nonce_binding[wrong-nonce]
+PASSED test_oc5e_native_hostiles.py::test_signature_context_and_nonce_binding[empty-nonce]
+PASSED test_oc5e_native_hostiles.py::test_signature_context_and_nonce_binding[blank-nonce]
+PASSED test_oc5e_native_hostiles.py::test_signature_payload_tampering_refused[test-only]
+PASSED test_oc5e_native_hostiles.py::test_signature_payload_tampering_refused[root]
+PASSED test_oc5e_native_hostiles.py::test_signature_payload_tampering_refused[signer]
+PASSED test_oc5e_native_hostiles.py::test_signature_payload_tampering_refused[content]
+PASSED test_oc5e_native_hostiles.py::test_signature_payload_tampering_refused[context]
+PASSED test_oc5e_native_hostiles.py::test_signature_payload_tampering_refused[nonce]
+PASSED test_oc5e_native_hostiles.py::test_signature_payload_tampering_refused[signature-hash]
+PASSED test_oc5e_native_hostiles.py::test_mock_verify_never_raises_and_fails_closed
+PASSED test_oc5e_native_hostiles.py::test_every_escrow_event_mutation_is_detected[unblind-id]
+PASSED test_oc5e_native_hostiles.py::test_every_escrow_event_mutation_is_detected[unblind-at]
+PASSED test_oc5e_native_hostiles.py::test_every_escrow_event_mutation_is_detected[unblind-holder]
+PASSED test_oc5e_native_hostiles.py::test_every_escrow_event_mutation_is_detected[unblind-lawful]
+PASSED test_oc5e_native_hostiles.py::test_every_escrow_event_mutation_is_detected[committed-swap]
+PASSED test_oc5e_native_hostiles.py::test_every_escrow_event_mutation_is_detected[committed-key]
+PASSED test_oc5e_native_hostiles.py::test_every_escrow_event_mutation_is_detected[exposure]
+PASSED test_oc5e_native_hostiles.py::test_every_escrow_event_mutation_is_detected[ledger-add]
+PASSED test_oc5e_native_hostiles.py::test_every_escrow_event_mutation_is_detected[ledger-drop]
+PASSED test_oc5e_native_hostiles.py::test_every_escrow_event_mutation_is_detected[ledger-seq]
+PASSED test_oc5e_native_hostiles.py::test_every_escrow_event_mutation_is_detected[seals]
+PASSED test_oc5e_native_hostiles.py::test_every_escrow_event_mutation_is_detected[proofs]
+PASSED test_oc5e_native_hostiles.py::test_holder_grant_registry_is_outside_the_event_seal
+PASSED test_oc5e_native_hostiles.py::test_unblind_receipt_alias_does_not_change_retained_integrity
+PASSED test_oc5e_native_hostiles.py::test_escrow_lifecycle_early_refusals[revoked]
+PASSED test_oc5e_native_hostiles.py::test_escrow_lifecycle_early_refusals[expired]
+PASSED test_oc5e_native_hostiles.py::test_escrow_lifecycle_early_refusals[illegal-purpose]
+PASSED test_oc5e_native_hostiles.py::test_escrow_lifecycle_early_refusals[uncommitted]
+PASSED test_oc5e_native_hostiles.py::test_escrow_lifecycle_early_refusals[no-grant]
+PASSED test_oc5e_native_hostiles.py::test_escrow_lifecycle_early_refusals[double-commit]
+PASSED test_oc5e_native_hostiles.py::test_escrow_lifecycle_early_refusals[double-release]
+PASSED test_oc5e_native_hostiles.py::test_ledger_rollback_is_always_refused_typed
+PASSED test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[two-A]
+PASSED test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[two-arms]
+PASSED test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[blank-nonce]
+PASSED test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[whitespace-nonce]
+PASSED test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[empty-list]
+PASSED test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[string]
+PASSED test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[unhashable-arm]
+PASSED test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[dict-arm]
+PASSED test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[int-arm]
+PASSED test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[none-arm]
+PASSED test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[extra-arm]
+PASSED test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[inconsistent-case-join]
+PASSED test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[int-case-join]
+PASSED test_oc5e_native_hostiles.py::test_blind_pairing_malformed_inputs_are_typed[non-dict]
+PASSED test_oc5e_native_hostiles.py::test_blind_pairing_block_size_must_be_three[b1]
+PASSED test_oc5e_native_hostiles.py::test_blind_pairing_block_size_must_be_three[b2]
+PASSED test_oc5e_native_hostiles.py::test_blind_pairing_block_size_must_be_three[b4]
+PASSED test_oc5e_native_hostiles.py::test_blind_pairing_block_size_must_be_three[b0]
+PASSED test_oc5e_native_hostiles.py::test_blind_pairing_valid_three_arm_blocks_pass
+PASSED test_oc5e_native_hostiles.py::test_unauthorized_purposes_refused_typed[live-model]
+PASSED test_oc5e_native_hostiles.py::test_unauthorized_purposes_refused_typed[source-use]
+PASSED test_oc5e_native_hostiles.py::test_unauthorized_purposes_refused_typed[empty]
+PASSED test_oc5e_native_hostiles.py::test_unauthorized_purposes_refused_typed[none]
+PASSED test_oc5e_native_hostiles.py::test_authorized_purposes_accepted
+PASSED test_oc5e_native_hostiles.py::test_escrow_commit_refuses_inactive_capsule_before_any_state_change
+FAILED test_oc5e_native_hostiles.py::test_imported_module_is_the_pinned_oc4_blob
+FAILED test_oc5e_native_hostiles.py::test_alias_holes_are_observed_not_theorised
+FAILED test_oc5e_native_hostiles.py::test_confusable_leak_token_substitution_must_be_flagged[greek-o]
+FAILED test_oc5e_native_hostiles.py::test_confusable_leak_token_substitution_must_be_flagged[mixed-cyrillic]
+FAILED test_oc5e_native_hostiles.py::test_confusable_holes_are_observed_only_for_nfkc_invisible_scripts
+FAILED test_oc5e_native_hostiles.py::test_malformed_signature_holes_are_observed_as_attributeerror
+FAILED test_oc5e_native_hostiles.py::test_non_enum_role_string_hole_is_observed_as_attributeerror
+FAILED test_oc5e_native_hostiles.py::test_unblind_unhashable_holder_hole_is_observed_as_typeerror[list]
+FAILED test_oc5e_native_hostiles.py::test_unblind_unhashable_holder_hole_is_observed_as_typeerror[dict]
+FAILED test_oc5e_native_hostiles.py::test_unblind_unhashable_holder_hole_is_observed_as_typeerror[set]
+FAILED test_oc5e_native_hostiles.py::test_capsule_identity_field_type_hole_is_observed
+======================== 11 failed, 148 passed in 0.67s ========================
+
+--- STDERR ---

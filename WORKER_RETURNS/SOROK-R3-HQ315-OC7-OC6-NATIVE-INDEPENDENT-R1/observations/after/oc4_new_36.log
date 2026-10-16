@@ -1,0 +1,90 @@
+$ /usr/local/bin/python3 -m pytest -p no:cacheprovider --junitxml /tmp/oc7-after/evidence/oc4_new_36.xml -v --tb=short -rA test_oc4_repair_controls.py
+# cwd=/tmp/oc7-after/source
+# exit=0
+
+[OC7 IMPORT AUTHENTICATED] variant=after file=/private/tmp/oc7-after/source/custody_protocol.py
+[OC7 IMPORT AUTHENTICATED] sha256=ca85b844994e5ce6fd9e7a21c0f210d08b6d5e7519c63ac09d7dd8a9516fd90b git_blob=4c185c18dbee57603038e97886da8fc4aa834082 bytes=36648
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: /private/tmp/oc7-after/source
+collecting ... collected 36 items
+
+test_oc4_repair_controls.py::test_bounded_full_capsule_pair_positive PASSED [  2%]
+test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[capsule_id-other-id] PASSED [  5%]
+test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[purpose-PROSPECTIVE_DESIGN_REVIEW] PASSED [  8%]
+test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[lawful_set_digest-other-law] PASSED [ 11%]
+test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[freeze_timestamp-42.0] PASSED [ 13%]
+test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[version-2] PASSED [ 16%]
+test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[content_digest-other-content] PASSED [ 19%]
+test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[schema_version-NEW] PASSED [ 22%]
+test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[scenario_frame-other-frame] PASSED [ 25%]
+test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[family_graph_digest-different-family] PASSED [ 27%]
+test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[public_projection_digest-changed-visible] PASSED [ 30%]
+test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[hidden_projection_digest-changed-hidden] PASSED [ 33%]
+test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[contribution_digest-changed-contrib] PASSED [ 36%]
+test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[coder_rubric_digest-changed-rubric] PASSED [ 38%]
+test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[split_assignment_digest-changed-split] PASSED [ 41%]
+test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[generation_history_digest-changed-history] PASSED [ 44%]
+test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[rejected_alternatives_digest-changed-rejected] PASSED [ 47%]
+test_oc4_repair_controls.py::test_raw_content_signature_cannot_claim_envelope PASSED [ 50%]
+test_oc4_repair_controls.py::test_wrong_full_capsule_signer_nonce_rejected PASSED [ 52%]
+test_oc4_repair_controls.py::test_materialized_unblind_changes_invisible_before_patch_now_refused PASSED [ 55%]
+test_oc4_repair_controls.py::test_unblind_return_alias_does_not_change_retained_integrity PASSED [ 58%]
+test_oc4_repair_controls.py::test_no_blank_or_whitespace_nonce[] PASSED  [ 61%]
+test_oc4_repair_controls.py::test_no_blank_or_whitespace_nonce[ ] PASSED [ 63%]
+test_oc4_repair_controls.py::test_no_blank_or_whitespace_nonce[\t\n] PASSED [ 66%]
+test_oc4_repair_controls.py::test_invalid_arm_typed_exception[arm0] PASSED [ 69%]
+test_oc4_repair_controls.py::test_invalid_arm_typed_exception[arm1] PASSED [ 72%]
+test_oc4_repair_controls.py::test_invalid_arm_typed_exception[42] PASSED [ 75%]
+test_oc4_repair_controls.py::test_invalid_arm_typed_exception[None] PASSED [ 77%]
+test_oc4_repair_controls.py::test_malformed_or_unicode_leaking_visible_projection_refused[packet0] PASSED [ 80%]
+test_oc4_repair_controls.py::test_malformed_or_unicode_leaking_visible_projection_refused[packet1] PASSED [ 83%]
+test_oc4_repair_controls.py::test_malformed_or_unicode_leaking_visible_projection_refused[packet2] PASSED [ 86%]
+test_oc4_repair_controls.py::test_malformed_or_unicode_leaking_visible_projection_refused[packet3] PASSED [ 88%]
+test_oc4_repair_controls.py::test_malformed_or_unicode_leaking_visible_projection_refused[packet4] PASSED [ 91%]
+test_oc4_repair_controls.py::test_malformed_or_unicode_leaking_visible_projection_refused[packet5] PASSED [ 94%]
+test_oc4_repair_controls.py::test_malformed_or_unicode_leaking_visible_projection_refused[packet6] PASSED [ 97%]
+test_oc4_repair_controls.py::test_valid_generated_visible_and_coder_packets_stay_safe PASSED [100%]
+
+==================================== PASSES ====================================
+---------- generated xml file: /tmp/oc7-after/evidence/oc4_new_36.xml ----------
+=========================== short test summary info ============================
+PASSED test_oc4_repair_controls.py::test_bounded_full_capsule_pair_positive
+PASSED test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[capsule_id-other-id]
+PASSED test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[purpose-PROSPECTIVE_DESIGN_REVIEW]
+PASSED test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[lawful_set_digest-other-law]
+PASSED test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[freeze_timestamp-42.0]
+PASSED test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[version-2]
+PASSED test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[content_digest-other-content]
+PASSED test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[schema_version-NEW]
+PASSED test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[scenario_frame-other-frame]
+PASSED test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[family_graph_digest-different-family]
+PASSED test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[public_projection_digest-changed-visible]
+PASSED test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[hidden_projection_digest-changed-hidden]
+PASSED test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[contribution_digest-changed-contrib]
+PASSED test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[coder_rubric_digest-changed-rubric]
+PASSED test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[split_assignment_digest-changed-split]
+PASSED test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[generation_history_digest-changed-history]
+PASSED test_oc4_repair_controls.py::test_original_full_capsule_signatures_reject_field_replay[rejected_alternatives_digest-changed-rejected]
+PASSED test_oc4_repair_controls.py::test_raw_content_signature_cannot_claim_envelope
+PASSED test_oc4_repair_controls.py::test_wrong_full_capsule_signer_nonce_rejected
+PASSED test_oc4_repair_controls.py::test_materialized_unblind_changes_invisible_before_patch_now_refused
+PASSED test_oc4_repair_controls.py::test_unblind_return_alias_does_not_change_retained_integrity
+PASSED test_oc4_repair_controls.py::test_no_blank_or_whitespace_nonce[]
+PASSED test_oc4_repair_controls.py::test_no_blank_or_whitespace_nonce[ ]
+PASSED test_oc4_repair_controls.py::test_no_blank_or_whitespace_nonce[\t\n]
+PASSED test_oc4_repair_controls.py::test_invalid_arm_typed_exception[arm0]
+PASSED test_oc4_repair_controls.py::test_invalid_arm_typed_exception[arm1]
+PASSED test_oc4_repair_controls.py::test_invalid_arm_typed_exception[42]
+PASSED test_oc4_repair_controls.py::test_invalid_arm_typed_exception[None]
+PASSED test_oc4_repair_controls.py::test_malformed_or_unicode_leaking_visible_projection_refused[packet0]
+PASSED test_oc4_repair_controls.py::test_malformed_or_unicode_leaking_visible_projection_refused[packet1]
+PASSED test_oc4_repair_controls.py::test_malformed_or_unicode_leaking_visible_projection_refused[packet2]
+PASSED test_oc4_repair_controls.py::test_malformed_or_unicode_leaking_visible_projection_refused[packet3]
+PASSED test_oc4_repair_controls.py::test_malformed_or_unicode_leaking_visible_projection_refused[packet4]
+PASSED test_oc4_repair_controls.py::test_malformed_or_unicode_leaking_visible_projection_refused[packet5]
+PASSED test_oc4_repair_controls.py::test_malformed_or_unicode_leaking_visible_projection_refused[packet6]
+PASSED test_oc4_repair_controls.py::test_valid_generated_visible_and_coder_packets_stay_safe
+============================== 36 passed in 0.11s ==============================
+
+--- STDERR ---

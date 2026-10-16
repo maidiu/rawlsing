@@ -1,0 +1,273 @@
+{
+  "schema": "SOROK_OC7_FROZEN_EXPECTATION_MATRIX_R1",
+  "generated_at": "2026-10-16T15:56:52",
+  "independent_reproduction": {
+    "before_unchanged_349": {
+      "cases": 349,
+      "PASS": 283,
+      "RED": 66
+    },
+    "after_unchanged_349": {
+      "cases": 349,
+      "PASS": 328,
+      "RED": 21
+    },
+    "after_with_273_author_controls": {
+      "cases": 622,
+      "PASS": 601,
+      "RED": 21
+    }
+  },
+  "author_reported": {
+    "before": "283 PASS / 66 RED",
+    "after_349": "328 PASS / 21 RED",
+    "with_273": "601 PASS / 21 RED across 622"
+  },
+  "author_reported_reproduced_exactly": true,
+  "per_suite": [
+    {
+      "suite": "inherited_131",
+      "before_cases": 131,
+      "before_PASS": 121,
+      "before_RED": 10,
+      "after_cases": 131,
+      "after_PASS": 121,
+      "after_RED": 10
+    },
+    {
+      "suite": "oc4_new_36",
+      "before_cases": 36,
+      "before_PASS": 36,
+      "before_RED": 0,
+      "after_cases": 36,
+      "after_PASS": 36,
+      "after_RED": 0
+    },
+    {
+      "suite": "oc5_prior_23",
+      "before_cases": 23,
+      "before_PASS": 16,
+      "before_RED": 7,
+      "after_cases": 23,
+      "after_PASS": 23,
+      "after_RED": 0
+    },
+    {
+      "suite": "oc5e_native_159",
+      "before_cases": 159,
+      "before_PASS": 110,
+      "before_RED": 49,
+      "after_cases": 159,
+      "after_PASS": 148,
+      "after_RED": 11
+    },
+    {
+      "suite": "oc6_author_273",
+      "before_cases": 0,
+      "before_PASS": 0,
+      "before_RED": 0,
+      "after_cases": 273,
+      "after_PASS": 273,
+      "after_RED": 0
+    }
+  ],
+  "independent_adversarial": {
+    "v1_frozen_pre_execution": {
+      "cases": 274,
+      "PASS": 269,
+      "RED": 5,
+      "note": "ORIGINALLY FROZEN SUITE, PRESERVED UNMODIFIED. Suite blob 4ca9028d84a8093e9756db2f2b99737d183b100a, frozen at commit 4475403ea366b7637fb22f3875efaf1e43b4919f BEFORE first execution. Its 5 REDs were reviewer expectation errors, each adjudicated in 04_REVIEWER_SUITE_CORRECTION_LEDGER.json."
+    },
+    "v2_amended": {
+      "cases": 276,
+      "PASS": 276,
+      "RED": 0,
+      "note": "Amended suite. ONLY the 5 factually-wrong expectations changed. Against the UNREPAIRED OC4 blob this same suite yields 169 RED / 107 PASS, proving real discrimination."
+    },
+    "against_unrepaired_oc4_blob": {
+      "cases": 276,
+      "PASS": 107,
+      "RED": 169
+    }
+  },
+  "remaining_21_adjudication": [
+    {
+      "case": "test_h13_ledger_rollback_detected",
+      "classification": "HISTORICAL_ORIGINAL_CONTRACT_RED",
+      "reviewer_verdict": "UNRESOLVED_UPSTREAM_CONTRACT_CONFLICT__PRESERVED",
+      "before": "RED",
+      "before_reason": "custody_protocol.LedgerRollbackError: append-only: rollback requires a separate compensating event",
+      "after_reason": "custody_protocol.LedgerRollbackError: append-only: rollback requires a separate compensating event"
+    },
+    {
+      "case": "test_h15_missing_signature_in_capsule_refused",
+      "classification": "HISTORICAL_ORIGINAL_CONTRACT_RED",
+      "reviewer_verdict": "UNRESOLVED_UPSTREAM_CONTRACT_CONFLICT__PRESERVED",
+      "before": "RED",
+      "before_reason": "custody_protocol.SignatureError: real capsule argument required for fixture binding",
+      "after_reason": "custody_protocol.SignatureError: real capsule argument required for fixture binding"
+    },
+    {
+      "case": "test_signature_binds_content_and_rejects_alien_capsule",
+      "classification": "HISTORICAL_ORIGINAL_CONTRACT_RED",
+      "reviewer_verdict": "UNRESOLVED_UPSTREAM_CONTRACT_CONFLICT__PRESERVED",
+      "before": "RED",
+      "before_reason": "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched",
+      "after_reason": "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched"
+    },
+    {
+      "case": "test_B01_valid_countersignatures_bind_content",
+      "classification": "HISTORICAL_ORIGINAL_CONTRACT_RED",
+      "reviewer_verdict": "UNRESOLVED_UPSTREAM_CONTRACT_CONFLICT__PRESERVED",
+      "before": "RED",
+      "before_reason": "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched",
+      "after_reason": "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched"
+    },
+    {
+      "case": "test_Z03_declared_mock_roster_uses_public_derived_credentials",
+      "classification": "HISTORICAL_ORIGINAL_CONTRACT_RED",
+      "reviewer_verdict": "UNRESOLVED_UPSTREAM_CONTRACT_CONFLICT__PRESERVED",
+      "before": "RED",
+      "before_reason": "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched",
+      "after_reason": "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched"
+    },
+    {
+      "case": "test_alias_holes_are_observed_not_theorised",
+      "classification": "SELF_INVALIDATING_OC5E_WITNESS",
+      "reviewer_verdict": "SUPERSEDED_EXPECTATION__CLOSURE_IS_CORRECT",
+      "before": "PASS",
+      "before_reason": null,
+      "after_reason": "AssertionError: unexpectedly flagged: {'fullwidth-context': ['duplicate_normalized_field:\uff43ontext'], 'cgj-context': ['duplicate_normalized_field:con\u034ftext'], 'accented-context': ['duplicate_normalized_field:CONT\u00c9XT'], 'cgj-note': ['duplicate_normalized_field:n\u034fote'], 'fullwidth-menu': ['duplicate_norm"
+    },
+    {
+      "case": "test_capsule_identity_field_type_hole_is_observed",
+      "classification": "SELF_INVALIDATING_OC5E_WITNESS",
+      "reviewer_verdict": "SUPERSEDED_EXPECTATION__CLOSURE_IS_CORRECT",
+      "before": "PASS",
+      "before_reason": null,
+      "after_reason": "TypeError: capsule version must be an integer"
+    },
+    {
+      "case": "test_confusable_holes_are_observed_only_for_nfkc_invisible_scripts",
+      "classification": "SELF_INVALIDATING_OC5E_WITNESS",
+      "reviewer_verdict": "SUPERSEDED_EXPECTATION__CLOSURE_IS_CORRECT",
+      "before": "PASS",
+      "before_reason": null,
+      "after_reason": "assert False\n +  where False = all(<generator object test_confusable_holes_are_observed_only_for_nfkc_invisible_scripts.<locals>.<genexpr> at 0x101cfbca0>)"
+    },
+    {
+      "case": "test_confusable_leak_token_substitution_must_be_flagged[greek-o]",
+      "classification": "DISPUTED_MALFORMED_OC5E_INPUT",
+      "reviewer_verdict": "NOT_A_REMAINING_DEFECT__UPSTREAM_TEST_INPUT_LEXICALLY_INCOHERENT",
+      "before": "RED",
+      "before_reason": "Failed: DID NOT RAISE LeakageError",
+      "after_reason": "Failed: DID NOT RAISE LeakageError"
+    },
+    {
+      "case": "test_confusable_leak_token_substitution_must_be_flagged[mixed-cyrillic]",
+      "classification": "DISPUTED_MALFORMED_OC5E_INPUT",
+      "reviewer_verdict": "NOT_A_REMAINING_DEFECT__UPSTREAM_TEST_INPUT_LEXICALLY_INCOHERENT",
+      "before": "RED",
+      "before_reason": "Failed: DID NOT RAISE LeakageError",
+      "after_reason": "Failed: DID NOT RAISE LeakageError"
+    },
+    {
+      "case": "test_imported_module_is_the_pinned_oc4_blob",
+      "classification": "SELF_INVALIDATING_OC5E_WITNESS",
+      "reviewer_verdict": "SUPERSEDED_EXPECTATION__CLOSURE_IS_CORRECT",
+      "before": "PASS",
+      "before_reason": null,
+      "after_reason": "AssertionError: imported module is not the pinned OC4 blob: 4c185c18dbee57603038e97886da8fc4aa834082\nassert '4c185c18dbee...a8fc4aa834082' == 'af2b7e943018...cd67704624bec'\n  \n  - af2b7e943018077cb36808b5af1cd67704624bec\n  + 4c185c18dbee57603038e97886da8fc4aa834082"
+    },
+    {
+      "case": "test_malformed_signature_holes_are_observed_as_attributeerror",
+      "classification": "SELF_INVALIDATING_OC5E_WITNESS",
+      "reviewer_verdict": "SUPERSEDED_EXPECTATION__CLOSURE_IS_CORRECT",
+      "before": "PASS",
+      "before_reason": null,
+      "after_reason": "custody_protocol.SignatureError: malformed primary signature: typed MockSignature required"
+    },
+    {
+      "case": "test_non_enum_role_string_hole_is_observed_as_attributeerror",
+      "classification": "SELF_INVALIDATING_OC5E_WITNESS",
+      "reviewer_verdict": "SUPERSEDED_EXPECTATION__CLOSURE_IS_CORRECT",
+      "before": "PASS",
+      "before_reason": null,
+      "after_reason": "custody_protocol.SignatureError: malformed primary signature role: typed Role enum required"
+    },
+    {
+      "case": "test_unblind_unhashable_holder_hole_is_observed_as_typeerror[dict]",
+      "classification": "SELF_INVALIDATING_OC5E_WITNESS",
+      "reviewer_verdict": "SUPERSEDED_EXPECTATION__CLOSURE_IS_CORRECT",
+      "before": "PASS",
+      "before_reason": null,
+      "after_reason": "custody_protocol.IdentityMismatchError: malformed fixture holder identity"
+    },
+    {
+      "case": "test_unblind_unhashable_holder_hole_is_observed_as_typeerror[list]",
+      "classification": "SELF_INVALIDATING_OC5E_WITNESS",
+      "reviewer_verdict": "SUPERSEDED_EXPECTATION__CLOSURE_IS_CORRECT",
+      "before": "PASS",
+      "before_reason": null,
+      "after_reason": "custody_protocol.IdentityMismatchError: malformed fixture holder identity"
+    },
+    {
+      "case": "test_unblind_unhashable_holder_hole_is_observed_as_typeerror[set]",
+      "classification": "SELF_INVALIDATING_OC5E_WITNESS",
+      "reviewer_verdict": "SUPERSEDED_EXPECTATION__CLOSURE_IS_CORRECT",
+      "before": "PASS",
+      "before_reason": null,
+      "after_reason": "custody_protocol.IdentityMismatchError: malformed fixture holder identity"
+    },
+    {
+      "case": "test_A08_mismatched_holder_unblind",
+      "classification": "HISTORICAL_ORIGINAL_CONTRACT_RED",
+      "reviewer_verdict": "UNRESOLVED_UPSTREAM_CONTRACT_CONFLICT__PRESERVED",
+      "before": "RED",
+      "before_reason": "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched",
+      "after_reason": "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched"
+    },
+    {
+      "case": "test_A_capsule_unblind_permission[mod0-A01_revoked_unblind]",
+      "classification": "HISTORICAL_ORIGINAL_CONTRACT_RED",
+      "reviewer_verdict": "UNRESOLVED_UPSTREAM_CONTRACT_CONFLICT__PRESERVED",
+      "before": "RED",
+      "before_reason": "custody_protocol.RevocationError: cannot commit an inactive capsule",
+      "after_reason": "custody_protocol.RevocationError: cannot commit an inactive capsule"
+    },
+    {
+      "case": "test_A_capsule_unblind_permission[mod1-A02_expired_unblind]",
+      "classification": "HISTORICAL_ORIGINAL_CONTRACT_RED",
+      "reviewer_verdict": "UNRESOLVED_UPSTREAM_CONTRACT_CONFLICT__PRESERVED",
+      "before": "RED",
+      "before_reason": "custody_protocol.RevocationError: cannot commit an inactive capsule",
+      "after_reason": "custody_protocol.RevocationError: cannot commit an inactive capsule"
+    },
+    {
+      "case": "test_A_capsule_unblind_permission[mod2-A03_illegal_purpose_unblind]",
+      "classification": "HISTORICAL_ORIGINAL_CONTRACT_RED",
+      "reviewer_verdict": "UNRESOLVED_UPSTREAM_CONTRACT_CONFLICT__PRESERVED",
+      "before": "RED",
+      "before_reason": "custody_protocol.PurposeViolationError: unauthorized purpose: LIVE_MODEL_REQUEST",
+      "after_reason": "custody_protocol.PurposeViolationError: unauthorized purpose: LIVE_MODEL_REQUEST"
+    },
+    {
+      "case": "test_positive_full_role_separated_lifecycle",
+      "classification": "HISTORICAL_ORIGINAL_CONTRACT_RED",
+      "reviewer_verdict": "UNRESOLVED_UPSTREAM_CONTRACT_CONFLICT__PRESERVED",
+      "before": "RED",
+      "before_reason": "custody_protocol.SignatureError: signature does not bind capsule content",
+      "after_reason": "custody_protocol.SignatureError: signature does not bind capsule content"
+    }
+  ],
+  "classification_counts": {
+    "DISPUTED_MALFORMED_OC5E_INPUT": 2,
+    "HISTORICAL_ORIGINAL_CONTRACT_RED": 10,
+    "SELF_INVALIDATING_OC5E_WITNESS": 9
+  },
+  "verdict_counts": {
+    "NOT_A_REMAINING_DEFECT__UPSTREAM_TEST_INPUT_LEXICALLY_INCOHERENT": 2,
+    "SUPERSEDED_EXPECTATION__CLOSURE_IS_CORRECT": 9,
+    "UNRESOLVED_UPSTREAM_CONTRACT_CONFLICT__PRESERVED": 10
+  }
+}

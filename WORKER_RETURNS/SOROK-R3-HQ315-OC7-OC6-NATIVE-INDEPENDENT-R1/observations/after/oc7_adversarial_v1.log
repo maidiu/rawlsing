@@ -1,0 +1,40 @@
+
+[OC7 IMPORT AUTHENTICATED] variant=after-v1-frozen file=/private/tmp/oc7-after/source/custody_protocol.py
+[OC7 IMPORT AUTHENTICATED] sha256=ca85b844994e5ce6fd9e7a21c0f210d08b6d5e7519c63ac09d7dd8a9516fd90b git_blob=4c185c18dbee57603038e97886da8fc4aa834082 bytes=36648
+.......F.F.............................................................. [ 26%]
+........................................................................ [ 52%]
+........................................................................ [ 78%]
+...................................F.F...................F               [100%]
+=================================== FAILURES ===================================
+E   AssertionError: ['unapproved_field:note1']
+    assert False
+     +  where False = any(<generator object test_A1_alias_of_allowed_field_is_refused.<locals>.<genexpr> at 0x1090af140>)
+/private/tmp/oc7-after/source/test_oc7_independent_adversarial.py:78: AssertionError: ['unapproved_field:note1']
+E   AssertionError: []
+    assert [] == ['unapproved_...d:request_id']
+      
+      Right contains one more item: 'unapproved_field:request_id'
+      Use -v to get more diff
+/private/tmp/oc7-after/source/test_oc7_independent_adversarial.py:91: AssertionError: []
+E   AssertionError: assert ('excess_nesting' in [] or False)
+     +  where [] = <function detect_leakage at 0x108fda8e0>({'public_projection': {'context': 'c'}, 'menu': ['x']})
+     +    where <function detect_leakage at 0x108fda8e0> = CP.detect_leakage
+     +  and   False = any(<generator object test_G8_deep_nesting_is_refused.<locals>.<genexpr> at 0x1090aec00>)
+/private/tmp/oc7-after/source/test_oc7_independent_adversarial.py:540: AssertionError: assert ('excess_nesting' in [] or False)
+E   dataclasses.FrozenInstanceError: cannot assign to field 'scenario_frame'
+<string>:4: dataclasses.FrozenInstanceError: cannot assign to field 'scenario_frame'
+E   AssertionError: assert False is True
+     +  where False = <function roles_conflict at 0x108fb31a0>(<Role.CUSTODIAN: 'CUSTODIAN'>, <Role.SEMANTIC_ADJUDICATOR: 'SEMANTIC_ADJUDICATOR'>)
+     +    where <function roles_conflict at 0x108fb31a0> = CP.roles_conflict
+     +    and   <Role.CUSTODIAN: 'CUSTODIAN'> = <enum 'Role'>.CUSTODIAN
+     +      where <enum 'Role'> = CP.Role
+     +    and   <Role.SEMANTIC_ADJUDICATOR: 'SEMANTIC_ADJUDICATOR'> = <enum 'Role'>.SEMANTIC_ADJUDICATOR
+     +      where <enum 'Role'> = CP.Role
+/private/tmp/oc7-after/source/test_oc7_independent_adversarial.py:664: AssertionError: assert False is True
+=========================== short test summary info ============================
+FAILED test_oc7_independent_adversarial.py::test_A1_alias_of_allowed_field_is_refused[enclosed_alphanumeric]
+FAILED test_oc7_independent_adversarial.py::test_A1_alias_alone_without_canonical_is_still_unapproved
+FAILED test_oc7_independent_adversarial.py::test_G8_deep_nesting_is_refused
+FAILED test_oc7_independent_adversarial.py::test_G9_mutation_after_commit_is_detected
+FAILED test_oc7_independent_adversarial.py::test_G10_role_conflict_matrix_is_intact
+5 failed, 269 passed in 0.27s

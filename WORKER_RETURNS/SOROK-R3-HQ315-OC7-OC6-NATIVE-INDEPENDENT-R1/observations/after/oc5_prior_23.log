@@ -1,0 +1,64 @@
+$ /usr/local/bin/python3 -m pytest -p no:cacheprovider --junitxml /tmp/oc7-after/evidence/oc5_prior_23.xml -v --tb=short -rA test_oc5_prior_predictions.py
+# cwd=/tmp/oc7-after/source
+# exit=0
+
+[OC7 IMPORT AUTHENTICATED] variant=after file=/private/tmp/oc7-after/source/custody_protocol.py
+[OC7 IMPORT AUTHENTICATED] sha256=ca85b844994e5ce6fd9e7a21c0f210d08b6d5e7519c63ac09d7dd8a9516fd90b git_blob=4c185c18dbee57603038e97886da8fc4aa834082 bytes=36648
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: /private/tmp/oc7-after/source
+collecting ... collected 23 items
+
+test_oc5_prior_predictions.py::test_full_envelope_positive PASSED        [  4%]
+test_oc5_prior_predictions.py::test_full_envelope_replay_refused[capsule_id-other] PASSED [  8%]
+test_oc5_prior_predictions.py::test_full_envelope_replay_refused[purpose-PROSPECTIVE_DESIGN_REVIEW] PASSED [ 13%]
+test_oc5_prior_predictions.py::test_full_envelope_replay_refused[lawful_set_digest-other] PASSED [ 17%]
+test_oc5_prior_predictions.py::test_full_envelope_replay_refused[content_digest-other] PASSED [ 21%]
+test_oc5_prior_predictions.py::test_full_envelope_replay_refused[version-2] PASSED [ 26%]
+test_oc5_prior_predictions.py::test_full_envelope_replay_refused[schema_version-changed] PASSED [ 30%]
+test_oc5_prior_predictions.py::test_full_envelope_replay_refused[freeze_timestamp-1.0] PASSED [ 34%]
+test_oc5_prior_predictions.py::test_full_envelope_replay_refused[coder_rubric_digest-other] PASSED [ 39%]
+test_oc5_prior_predictions.py::test_full_envelope_replay_refused[split_assignment_digest-other] PASSED [ 43%]
+test_oc5_prior_predictions.py::test_full_envelope_replay_refused[hidden_projection_digest-other] PASSED [ 47%]
+test_oc5_prior_predictions.py::test_bare_digest_signatures_refused PASSED [ 52%]
+test_oc5_prior_predictions.py::test_malformed_signature_fails_typed[bad0] PASSED [ 56%]
+test_oc5_prior_predictions.py::test_malformed_signature_fails_typed[12] PASSED [ 60%]
+test_oc5_prior_predictions.py::test_malformed_signature_fails_typed[bad2] PASSED [ 65%]
+test_oc5_prior_predictions.py::test_duplicate_normalized_keys_refused[packet0] PASSED [ 69%]
+test_oc5_prior_predictions.py::test_duplicate_normalized_keys_refused[packet1] PASSED [ 73%]
+test_oc5_prior_predictions.py::test_duplicate_normalized_keys_refused[packet2] PASSED [ 78%]
+test_oc5_prior_predictions.py::test_duplicate_normalized_keys_refused[packet3] PASSED [ 82%]
+test_oc5_prior_predictions.py::test_benign_and_unicode_positive PASSED   [ 86%]
+test_oc5_prior_predictions.py::test_escrow_unblind_timestamp_and_holder_integrity PASSED [ 91%]
+test_oc5_prior_predictions.py::test_escrow_holder_revoked_before_release PASSED [ 95%]
+test_oc5_prior_predictions.py::test_strict_blind_pairing PASSED          [100%]
+
+==================================== PASSES ====================================
+--------- generated xml file: /tmp/oc7-after/evidence/oc5_prior_23.xml ---------
+=========================== short test summary info ============================
+PASSED test_oc5_prior_predictions.py::test_full_envelope_positive
+PASSED test_oc5_prior_predictions.py::test_full_envelope_replay_refused[capsule_id-other]
+PASSED test_oc5_prior_predictions.py::test_full_envelope_replay_refused[purpose-PROSPECTIVE_DESIGN_REVIEW]
+PASSED test_oc5_prior_predictions.py::test_full_envelope_replay_refused[lawful_set_digest-other]
+PASSED test_oc5_prior_predictions.py::test_full_envelope_replay_refused[content_digest-other]
+PASSED test_oc5_prior_predictions.py::test_full_envelope_replay_refused[version-2]
+PASSED test_oc5_prior_predictions.py::test_full_envelope_replay_refused[schema_version-changed]
+PASSED test_oc5_prior_predictions.py::test_full_envelope_replay_refused[freeze_timestamp-1.0]
+PASSED test_oc5_prior_predictions.py::test_full_envelope_replay_refused[coder_rubric_digest-other]
+PASSED test_oc5_prior_predictions.py::test_full_envelope_replay_refused[split_assignment_digest-other]
+PASSED test_oc5_prior_predictions.py::test_full_envelope_replay_refused[hidden_projection_digest-other]
+PASSED test_oc5_prior_predictions.py::test_bare_digest_signatures_refused
+PASSED test_oc5_prior_predictions.py::test_malformed_signature_fails_typed[bad0]
+PASSED test_oc5_prior_predictions.py::test_malformed_signature_fails_typed[12]
+PASSED test_oc5_prior_predictions.py::test_malformed_signature_fails_typed[bad2]
+PASSED test_oc5_prior_predictions.py::test_duplicate_normalized_keys_refused[packet0]
+PASSED test_oc5_prior_predictions.py::test_duplicate_normalized_keys_refused[packet1]
+PASSED test_oc5_prior_predictions.py::test_duplicate_normalized_keys_refused[packet2]
+PASSED test_oc5_prior_predictions.py::test_duplicate_normalized_keys_refused[packet3]
+PASSED test_oc5_prior_predictions.py::test_benign_and_unicode_positive
+PASSED test_oc5_prior_predictions.py::test_escrow_unblind_timestamp_and_holder_integrity
+PASSED test_oc5_prior_predictions.py::test_escrow_holder_revoked_before_release
+PASSED test_oc5_prior_predictions.py::test_strict_blind_pairing
+============================== 23 passed in 0.08s ==============================
+
+--- STDERR ---
