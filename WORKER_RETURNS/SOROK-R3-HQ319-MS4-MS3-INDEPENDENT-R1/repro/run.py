@@ -3,7 +3,7 @@ from pathlib import Path
 import sys, os, subprocess, json, hashlib, time, xml.etree.ElementTree as ET, shutil
 R=Path(__file__).resolve().parents[1]; S=R/'staging/ms3'; M2=S/'staging/ms2'; RT=M2/'staging/ms1/runtime'
 def blob(b):return hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()
-def suites():return {'original120':[RT/'candidate/can2_test_repair.py',RT/'test_ms1_serial.py'],'ms2_51':[M2/'repro/test_ms2.py'],'p3b':[M2/'repro/test_literal_p3b.py'],'author47':[S/'repro/test_author.py'],'selector12':[S/'repro/test_selector_extension_v2.py'],'hostile':[R/'repro/test_ms4.py']}
+def suites():return {'original120':[RT/'candidate/can2_test_repair.py',RT/'test_ms1_serial.py'],'ms2_51':[M2/'repro/test_ms2.py'],'p3b':[M2/'repro/test_literal_p3b.py'],'author47':[S/'repro/test_author.py'],'selector12':[S/'repro/test_selector_extension_v2.py'],'hostile':[R/'repro/test_ms4.py'],'followup':[R/'repro/test_ms4_followup.py']}
 if __name__=='__main__':
     phase=sys.argv[1]
     if sys.argv[-1]!='worker':
@@ -18,8 +18,8 @@ if __name__=='__main__':
         (R/'evidence'/phase/'execution.json').write_text(json.dumps(rows,indent=2)+'\n')
     else:
         court=sys.argv[2]
-        if court=='hostile':
-            frozen=json.loads((R/'03_REVIEWER_FREEZE.json').read_text())
+        if court in ('hostile','followup'):
+            frozen=json.loads((R/('03_REVIEWER_FREEZE.json' if court=='hostile' else '03B_FOLLOWUP_FREEZE.json')).read_text())
             for n,h in frozen['files'].items():assert hashlib.sha256((R/n).read_bytes()).hexdigest()==h
         o=R/'evidence'/phase/court;o.mkdir(parents=True,exist_ok=True);sys.path.insert(0,str(RT))
         import pytest
