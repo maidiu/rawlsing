@@ -1,0 +1,237 @@
+{
+  "passport_schema": "SOROK_WARM_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "SOROK-HQ318-C07I-INDEPENDENT-CUSTODY-COURT",
+  "epoch_id": "C07I-EPOCH-1",
+  "owner_session_alias": "HQ318-C07I-I2-REVIEWER",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "MBP-LOCAL-DOMINANT",
+  "conversation_or_account_affinity": "OPENCODE_STEP_5_PREVIEW_USER_SELECTED_PAIR",
+  "status": "LIVE_VERIFIED",
+  "generated_at": "2026-10-16T17:35:12",
+  "role": "fresh independent I2 experimental custody reviewer; NOT the C07P author, NOT the OC7 reviewer, NOT HQ, NOT an institutional escrow authority or signer",
+  "sealed_startup": {
+    "commit": "76649a99f4e8353bc6edfff0e1972c6068d28564",
+    "branch": "agent/reviewer-sorok-r3-hq318-c07i-c07p-independent-r1",
+    "verified_against_direct_remote_head": true
+  },
+  "independence": "a NEW isolated local worktree was created for this review; the C07P worktree was not reused and no filesystem or runtime continuity was assumed. The A->B experiment was re-executed with reviewer-authored tooling rather than the candidate's own worker.",
+  "last_live_probe_at": "2026-10-16T17:35:12",
+  "probe_command_and_result": "python3 -m pytest --version; git hash-object on staged sources; subprocess A/B/C with distinct PIDs; observed fsync support reported by the adapter",
+  "capabilities": {
+    "python": {
+      "observed": "3.11.3",
+      "status": "VERIFIED"
+    },
+    "pytest": {
+      "observed": "9.1.1",
+      "status": "VERIFIED"
+    },
+    "git": {
+      "observed": "git version 2.39.1",
+      "status": "VERIFIED"
+    },
+    "subprocess": {
+      "observed": "three real interpreters with distinct PIDs; SIGKILL observed as exit 137",
+      "status": "VERIFIED"
+    },
+    "filesystem_atomicity": {
+      "observed": "os.fsync(file)=SUPPORTED, os.fsync(dir)=SUPPORTED, os.replace atomic",
+      "status": "VERIFIED"
+    },
+    "power_loss_cut": {
+      "observed": null,
+      "status": "NOT_AVAILABLE__crash_point_post_rename_cannot_be_settled"
+    },
+    "node": {
+      "observed": null,
+      "status": "NOT_NEEDED_FOR_THIS_COMMISSION"
+    }
+  },
+  "git_object_store_alias": "RAWLSING-SINGLE-SHARED-STORE",
+  "worktree_alias": "C07I-WT (new isolated authorized local sparse worktree)",
+  "branch": "agent/reviewer-sorok-r3-hq318-c07i-c07p-independent-r1",
+  "materialized_source_refs": {
+    "pinned_oc6_custody_source": {
+      "git_blob_sha1": "4c185c18dbee57603038e97886da8fc4aa834082",
+      "sha256": "ca85b844994e5ce6fd9e7a21c0f210d08b6d5e7519c63ac09d7dd8a9516fd90b",
+      "commit": "c6cb15d7417595c359571e4525dd0f0fd6c59d1f",
+      "bytes": 36648,
+      "edited_by_this_review": false
+    },
+    "c07p_adapter_under_review": {
+      "git_blob_sha1": "def46aed3288117903b961e66dc0259c1fa44d6b",
+      "commit": "805d0a071db70bb37ec95df450b9429f46544fe9",
+      "edited_by_this_review": false,
+      "note": "mutated transiently for M-A/M-B/M-C then restored and re-verified"
+    },
+    "c07p_worker_under_review": {
+      "git_blob_sha1": "d0c5797afa6993d852f2e0c75efcbc2cdd491eca",
+      "commit": "805d0a071db70bb37ec95df450b9429f46544fe9",
+      "edited_by_this_review": false
+    }
+  },
+  "dependency_closure_status": "FULL",
+  "closure_objects_verified": 16,
+  "closure_failures": [],
+  "fixture_query_source_permission": "source-free synthetic fixtures only; NO original respondent source, NO protected holdout, NO real institutional roster",
+  "science_grade": "sourcefree prototype under independent review",
+  "covered_test_suites": [
+    {
+      "suite": "c07i_inherited_131",
+      "files": [
+        "test_custody_hostiles.py",
+        "test_positive_lifecycle.py",
+        "test_ocr1_independent_hostile.py",
+        "test_oc2_regressions.py",
+        "test_oc3_independent_hostile.py"
+      ],
+      "tests": 131,
+      "PASS": 121,
+      "RED": 10,
+      "errors": 0,
+      "skipped": 0,
+      "exit": 1
+    },
+    {
+      "suite": "c07i_oc4_new_36",
+      "files": [
+        "test_oc4_repair_controls.py"
+      ],
+      "tests": 36,
+      "PASS": 36,
+      "RED": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit": 0
+    },
+    {
+      "suite": "c07i_oc5_prior_23",
+      "files": [
+        "test_oc5_prior_predictions.py"
+      ],
+      "tests": 23,
+      "PASS": 23,
+      "RED": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit": 0
+    },
+    {
+      "suite": "c07i_oc5e_native_159",
+      "files": [
+        "test_oc5e_native_hostiles.py"
+      ],
+      "tests": 159,
+      "PASS": 148,
+      "RED": 11,
+      "errors": 0,
+      "skipped": 0,
+      "exit": 1
+    },
+    {
+      "suite": "c07i_oc6_author_273",
+      "files": [
+        "test_oc6_author_controls.py"
+      ],
+      "tests": 273,
+      "PASS": 273,
+      "RED": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit": 0
+    },
+    {
+      "suite": "c07i_oc7_v2_276",
+      "files": [
+        "test_oc7_v2.py"
+      ],
+      "tests": 276,
+      "PASS": 276,
+      "RED": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit": 0
+    },
+    {
+      "suite": "c07p_v2_unchanged",
+      "tests": 30,
+      "PASS": 30,
+      "RED": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "c07i_independent_v1",
+      "tests": 45,
+      "PASS": 42,
+      "RED": 2,
+      "xfail": 1,
+      "skipped": 0
+    },
+    {
+      "suite": "c07i_independent_v2",
+      "tests": 45,
+      "PASS": 45,
+      "RED": 0,
+      "skipped": 0
+    }
+  ],
+  "inherited_totals": {
+    "cases": 898,
+    "PASS": 877,
+    "RED": 21,
+    "skipped": 0
+  },
+  "retained_literal_reds": 21,
+  "mutation_controls": [
+    {
+      "id": "M-A",
+      "killed_by": "test_IH1_tampered_payload_is_refused"
+    },
+    {
+      "id": "M-B",
+      "killed_by": "test_IH9_capsule_substituted_with_chain_resealed_is_refused"
+    },
+    {
+      "id": "M-C",
+      "killed_by": "test_IC4_crash_after_dir_fsync_has_no_temp_left"
+    }
+  ],
+  "model_provider": "user-selected: Step 5 Preview in OpenCode",
+  "effort": "as configured by the owner; not inferred",
+  "observed_credits_or_usage": null,
+  "cash_known": "UNKNOWN",
+  "quota_known": "UNKNOWN",
+  "context_cache_reuse": "fresh separate conversation, independent of the C07P author session",
+  "retries": "one correction round on my OWN test suite; all REDs preserved and adjudicated in 04_REVIEWER_CORRECTION_LEDGER.json",
+  "independent_review_separation": "THIS RETURN IS THE INDEPENDENT REVIEW of C07P. The reviewer does not accept C07P and does not adopt its own work; any owner decision remains with the competent owner.",
+  "privacy_source_grant": "private repository access granted to the owner-selected editor/model pair only",
+  "assignments_completed": [
+    "HQ318 C07I independent cross-process custody court"
+  ],
+  "next_good_affinity_tags": [
+    "CUSTODY",
+    "CROSS_PROCESS",
+    "CRASH_CONSISTENCY",
+    "JOURNAL",
+    "THREAT_MODEL"
+  ],
+  "staged_state_preservation": "journals under /tmp are disposable scratch; the committed return tree is the durable artifact",
+  "retire_or_rebuild_reason": null,
+  "typed_holds_confirmed_open": [
+    "C07_DEPENDENCY_TS",
+    "C07_DEPENDENCY_REVOKE"
+  ],
+  "no_claims": [
+    "no production durability",
+    "no real power-loss durability (post-rename crash point NOT_SETTLED)",
+    "no external or third-party escrow",
+    "no independently protected log",
+    "no signer authority issued",
+    "no holder-authority issuance or revocation",
+    "no C07 pass on arbitrary crashes",
+    "no semantic adoption",
+    "no production/V3/N12/CURRENT/PRE-MAIN privileges",
+    "no adoption; owner decision remains with the competent owner"
+  ]
+}

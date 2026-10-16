@@ -1,0 +1,85 @@
+{
+  "schema": "SOROK_C07I_REVIEWER_CORRECTION_LEDGER_R1",
+  "generated_at": "2026-10-16T17:35:12",
+  "principle": "The reviewer preregistered IP1-IP10, IC1-IC5, IC-A/B/C, IH1-IH19 and IH-T1..T4 BEFORE execution at commit 536d90f88. The first execution produced 2 literal REDs plus one xfail whose logic was inverted. All are PRESERVED in observations/c07i_independent_v1.{xml,log}. Each was adjudicated individually. All were defects in the REVIEWER'S OWN TESTS, not in the C07P candidate and not in the pinned OC6 source. No pinned byte, no accepted court and no preregistered expectation was weakened.",
+  "v1": {
+    "blob_sha1": "a05adab50c15ee15b5372d406877d166ff26a9e3",
+    "result": "2 failed, 42 passed, 1 xfailed (45 cases)"
+  },
+  "v2": {
+    "blob_sha1": "a05adab50c15ee15b5372d406877d166ff26a9e3",
+    "result": "45 passed (45 cases)"
+  },
+  "corrections": [
+    {
+      "n": 1,
+      "case": "test_IH10_capsule_AND_recorded_commitment_both_rewritten",
+      "defect": "REVIEWER_LOGIC_INVERSION",
+      "reviewer_did": "called pytest.xfail() on the branch where the journal WAS accepted, while labelling that branch 'unexpectedly stronger'",
+      "observed": "the xfail fired, i.e. the forged capsule with a recomputed commitment was accepted - which is exactly the PREREGISTERED expectation for IH10",
+      "reasoning": "acceptance is the preregistered ceiling outcome and must PASS; only a refusal would be stronger-than-expected",
+      "correction": "replaced with an explicit assertion that acceptance is required, plus pytest.fail with a 'STRONGER THAN PREREGISTERED ... must be re-adjudicated' message if it were ever refused",
+      "strength": "stronger - a future refusal can no longer be silently absorbed"
+    },
+    {
+      "n": 2,
+      "case": "test_IH15_old_source_state_alias_restores_the_OLD_state_silently",
+      "defect": "REVIEWER_TEST_BUG__SNAPSHOT_ORDER",
+      "reviewer_did": "ran the 'continue' role against j.jsonl before j.jsonl existed, so the old and new journals were both 5 records",
+      "observed": "AssertionError: assert 5 > 5",
+      "correction": "build j.jsonl first, copy it to old.jsonl, then continue j.jsonl and assert the new journal is strictly longer",
+      "strength": "unchanged"
+    },
+    {
+      "n": 3,
+      "case": "test_IH_T3_reviewer_did_not_mutate_private_state_to_force_green",
+      "defect": "REVIEWER_TEST_BUG__SUBSTRING_SCAN_FALSE_POSITIVE",
+      "reviewer_did": "searched the adapter source for the substring 'pickle', which matched the adapter's own docstring 'Never pickles a live object'",
+      "observed": "AssertionError: adapter must not use 'pickle'",
+      "reasoning": "a substring scan cannot distinguish a real import from prose; the matched docstring actually documents the CORRECT behaviour",
+      "correction": "replaced with an AST analysis checking real imports (no pickle/dill/shelve), no __setattr__ call, and no subscript access to escrow internals or public escrow state",
+      "strength": "stronger - it proves the absence of real operations rather than the absence of a word"
+    }
+  ],
+  "not_done": [
+    "no pinned OC6 custody_protocol.py byte altered",
+    "no C07P adapter or worker byte altered (blobs re-verified after the mutation runs)",
+    "no accepted OC1..OC7 court edited, xfailed, skipped or suppressed",
+    "no preregistered expectation relaxed to accept weaker behaviour",
+    "no ledger/holder_roles/_event_proofs/_capsule_seals access to force any expectation green",
+    "no lexical or Unicode leakage gate widened"
+  ],
+  "discrimination_evidence": {
+    "note": "Blob-contrast discrimination is NOT the right control for this review: the C07P adapter is the same code under test and the pinned OC6 source is identical, so there is no 'older candidate' to contrast against. The correct controls are ADAPTER MUTATION and the reviewer's own independent A->B reconstruction.",
+    "reviewer_authored_A_to_B": "independently reproduced with repro/c07i_worker.py, distinct PIDs, pinned blob asserted in every process",
+    "mutants": [
+      {
+        "id": "M-A",
+        "change": "neuter per-record digest comparison",
+        "killed_by": "test_IH1_tampered_payload_is_refused",
+        "result": "1 failed, 44 passed"
+      },
+      {
+        "id": "M-B",
+        "change": "neuter capsule-commitment re-check on restore",
+        "killed_by": "test_IH9_capsule_substituted_with_chain_resealed_is_refused",
+        "result": "1 failed, 44 passed"
+      },
+      {
+        "id": "M-C",
+        "change": "replace os.replace with a non-atomic plain write",
+        "killed_by": "test_IC4_crash_after_dir_fsync_has_no_temp_left",
+        "result": "1 failed, 44 passed"
+      }
+    ],
+    "conclusion": "Each adapter defence is independently load-bearing and killed by exactly its intended test."
+  },
+  "ceiling_preserved": {
+    "IC-A": "self-consistent prefix rollback with all hashes recomputed: ACCEPTED, cap-B silently lost",
+    "IC-B": "verify_ledger_integrity() is True on the rolled-back state",
+    "IC-C": "truncating to a shorter prefix is equally invisible",
+    "IH-10_NEW_ROUTE": "capsule fields rewritten AND the recorded commitment recomputed AND the chain resealed: ACCEPTED, attacker's capsule materialised with integrity True",
+    "conclusion": "The unkeyed-rollback ceiling is PRESERVED, not repaired, and the reviewer additionally documented a distinct route to it."
+  },
+  "reviewer_divergence_note": "The sealed startup 76649a99f does NOT contain the C07P return tree; it branches from c0d8d84d which predates C07P. The candidate was therefore staged by pinned commit and authenticated blob, not checked out. Verified blobs at end of review: custody_protocol.py 4c185c18dbee57603038e97886da8fc4aa834082, c07_journal.py def46aed3288117903b961e66dc0259c1fa44d6b, c07_worker.py d0c5797afa6993d852f2e0c75efcbc2cdd491eca."
+}
