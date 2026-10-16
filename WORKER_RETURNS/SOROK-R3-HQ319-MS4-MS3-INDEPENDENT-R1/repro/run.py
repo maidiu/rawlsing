@@ -11,13 +11,17 @@ if __name__=='__main__':
         for court in sys.argv[2:]:
             o=R/'evidence'/phase/court; o.mkdir(parents=True,exist_ok=True)
             cmd=[sys.executable,str(Path(__file__).relative_to(R)),phase,court,'worker']; start=time.monotonic()
-            p=subprocess.run(cmd,cwd=R,env=dict(os.environ,PYTHONDONTWRITEBYTECODE='1',PYTEST_DISABLE_PLUGIN_AUTOLOAD='1'),capture_output=True,text=True)
+            p=subprocess.run(cmd,cwd=R,env=dict(os.environ,PYTHONDONTWRITEBYTECODE='1',PYTEST_DISABLE_PLUGIN_AUTOLOAD='1',MS4_PHASE=phase),capture_output=True,text=True)
             (o/'stdout.log').write_text(p.stdout+p.stderr)
             counts={k:sum(int(s.get(k,0)) for s in ET.parse(o/'junit.xml').getroot().iter('testsuite')) for k in ['tests','failures','errors','skipped']}
             rows.append(dict(court=court,command=cmd,exit=p.returncode,seconds=time.monotonic()-start,counts=counts));print(phase,court,p.returncode,counts,flush=True)
         (R/'evidence'/phase/'execution.json').write_text(json.dumps(rows,indent=2)+'\n')
     else:
-        court=sys.argv[2];o=R/'evidence'/phase/court;o.mkdir(parents=True,exist_ok=True);sys.path.insert(0,str(RT))
+        court=sys.argv[2]
+        if court=='hostile':
+            frozen=json.loads((R/'03_REVIEWER_FREEZE.json').read_text())
+            for n,h in frozen['files'].items():assert hashlib.sha256((R/n).read_bytes()).hexdigest()==h
+        o=R/'evidence'/phase/court;o.mkdir(parents=True,exist_ok=True);sys.path.insert(0,str(RT))
         import pytest
         args=[str(p.relative_to(R)) for p in suites()[court]]+['-vv','--tb=short','--noconftest','-p','no:cacheprovider','--import-mode=importlib','--rootdir=.', '--junitxml='+str((o/'junit.xml').relative_to(R))]
         code=pytest.main(args)

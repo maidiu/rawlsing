@@ -144,7 +144,9 @@ def test_valid_terminal_sequence_replay(content,access,effect,operation):
 
 @pytest.mark.parametrize('stage',['withdraw_after_real_apply','second_read_after_real_receipt','formation_with_pending','mediate_with_pending'])
 def test_transaction_rollback_preserves_real_mutations_and_pending(stage):
-    a=seed();applied(call(a,'mediate'));ctx=a['c'];r=a['r'];b=a['b'];e=a['e']
+    a=seed(None) if stage=='formation_with_pending' else seed()
+    if stage!='formation_with_pending':applied(call(a,'mediate'))
+    ctx=a['c'];r=a['r'];b=a['b'];e=a['e']
     # Real pending proposal stored by native formation API, not an invented sentinel.
     pending=N.adp016_form_causal_trace(actor_id=M.ACTOR,basis_event=e,trace_key='TRACE_FEEDBACK_WINDOW_EXPERIENCE',content_state='AVAILABLE_UNCERTAIN',owning_rule_id=b.rule_id,owning_rule_version=b.rule_version,owning_rule_hash=b.rule_content_hash,authority_id='WORKER_CANDIDATE_FIXTURE',authority_version='1',parent_state_hash=ctx.state_hash,context=ctx)
     assert digest(pending) in ctx._pending_memory
@@ -167,7 +169,10 @@ def test_transaction_rollback_preserves_real_mutations_and_pending(stage):
     if stage=='withdraw_after_real_apply':applied(retry)
     elif stage=='second_read_after_real_receipt':assert retry['decision_state']=='RESPONSE_EFFECTS_PRODUCED'
     elif stage=='mediate_with_pending':applied(retry)
-    else:assert retry[0] is None # genuine duplicate remains refused
+    else:
+        assert retry[0] is not None
+        frozen=snap(a);duplicate=M.form_and_commit_memory(r,ctx,e,b,'AVAILABLE_SOURCE_BOUND')
+        remember(duplicate=duplicate);assert duplicate[0] is None and snap(a)==frozen
 
 @pytest.mark.parametrize('content,expected',[('AVAILABLE_SOURCE_BOUND','REROUTE'),('AVAILABLE_UNCERTAIN',None)])
 def test_hypothetical_content_contrast_and_native_trace_firewall(content,expected):
