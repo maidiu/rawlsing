@@ -1,0 +1,109 @@
+{
+  "schema": "SOROK_C07P_TEST_CORRECTION_LEDGER_R1",
+  "generated_at": "2026-10-16T16:41:09",
+  "princile": "The C07P suite implements prereg expectations P1-P10, N1-N12, C1-C4, T1-T14 frozen at commit 82ba75680. Its first execution produced 6 literal REDs. Those 6 are PRESERVED in observations/c07p_suite_v1.{xml,log} and were NOT deleted, xfailed or suppressed. Each was adjudicated. All 6 were defects in MY TESTS, not in the adapter and not in the pinned OC6 custody source. Only those 6 were corrected, each to assert the preregistered behaviour more accurately. No pinned source byte, no accepted court, and no preregistered expectation was weakened.",
+  "v1": {
+    "suite": "tests/test_c07p_crossprocess.py",
+    "blob_sha1": "c4566a5dd804bdc7e788bf6e3bbe655218996c6e",
+    "sha256": "812774fcc0afaa21f35f0acd6f041798e71bf7d82d1ebf22b38264bb4bfecccb",
+    "result": "6 failed, 24 passed (30 cases)"
+  },
+  "v2": {
+    "suite": "tests/test_c07p_crossprocess_v2.py",
+    "blob_sha1": "c9077bb4cf8a7a75052db4b24c21c2b2fd38bba0",
+    "sha256": "af77b8c5a88fe3868b3138acc5e38a6b3902256f120404c675514e08c4ff7df2",
+    "result": "30 passed (30 cases)"
+  },
+  "corrections": [
+    {
+      "n": 1,
+      "cases": [
+        "test_P5_all_eighteen_capsule_fields_survive_restart",
+        "test_N13_all_eighteen_fields_are_bound_at_the_true_entrypoint"
+      ],
+      "defect": "MY_TEST_BUG__BOOL_IS_A_SUBCLASS_OF_INT",
+      "reviewer_did": "mutated each field by type branch with `isinstance(current,int)` tested before `isinstance(current,bool)`, so a False lifecycle flag became the integer 1",
+      "observed": "native validate_capsule_fields correctly raised TypeError on the now non-bool field, so the test errored before reaching its assertion",
+      "correction": "added a `perturb()` helper that tests bool FIRST, so every field is changed to another VALID value of its own declared type, which is what prereg P5/N13 actually require",
+      "strength": "unchanged or stronger \u2014 the assertion still requires every one of the 18 fields to change the commitment"
+    },
+    {
+      "n": 2,
+      "case": "test_N5_T6_forged_capsule_substitution_is_refused",
+      "defect": "MY_TEST_BUG__INCOMPLETE_RESEAL",
+      "reviewer_did": "re-sealed only the single tampered record, which broke the prev-chain of every later record",
+      "observed": "the journal was correctly refused earlier, by the chain check, with 'prev chain break'",
+      "correction": "added a `reseal()` helper that recomputes prev/seq/rec across the whole chain, so the per-record digest and the chain are both consistent and only the capsule-commitment check can catch the forgery",
+      "strength": "stronger \u2014 it isolates the deeper defence instead of accepting the shallower one"
+    },
+    {
+      "n": 3,
+      "case": "test_N6_T10_exposure_before_any_commit_is_refused",
+      "defect": "MY_TEST_BUG__SEQ_MISPLACEMENT",
+      "reviewer_did": "prepended a forged record built with seq=1 in front of a 6-record journal",
+      "observed": "the journal was correctly refused by the sequence check ('record 2: seq is 1, expected 2')",
+      "correction": "the journal now contains ONLY the forged EXPOSURE at seq 1 with prev=ZERO, so restore reaches the native escrow and raises IdentityMismatchError for the ghost capsule",
+      "strength": "stronger \u2014 it now exercises the intended native refusal rather than an incidental chain refusal"
+    },
+    {
+      "n": 4,
+      "case": "test_N9_T9_forged_purpose_is_refused",
+      "defect": "MY_TEST_BUG__ASSERTED_A_REFUSAL_THAT_WAS_NOT_DUE",
+      "reviewer_did": "asserted PurposeViolationError for a capsule whose purpose was SOURCEFREE_TEST_ONLY, which is legal",
+      "observed": "DID NOT RAISE \u2014 the module was correct",
+      "correction": "the legal-purpose commit is now asserted to SUCCEED, and only the purpose-mutated capsule is asserted to be refused",
+      "strength": "stronger \u2014 it now proves both the positive and the negative"
+    },
+    {
+      "n": 5,
+      "case": "test_N12_T5_whole_journal_rollback_is_a_demonstrated_ceiling",
+      "defect": "MY_TEST_BUG__FILTER_MATCHED_EVERY_RECORD",
+      "reviewer_did": "filtered the prefix by record kind, but that filter matched every kind present, so nothing was removed",
+      "observed": "assert ['cap-A','cap-B'] == ['cap-A'] \u2014 cap-B was still present because the rollback never happened",
+      "correction": "the prefix is now selected by ownership of cap-A (reading capsule_id from the nested capsule payload for COMMIT records) and re-sealed into a fully valid self-consistent journal, which is what a real rollback attacker would leave behind",
+      "strength": "stronger \u2014 the demonstrated ceiling is now a genuine, valid, self-consistent rollback rather than an unchanged file"
+    },
+    {
+      "n": 6,
+      "case": "test_N6 (dir creation)",
+      "defect": "MY_TEST_BUG__MISSING_DIRECTORY_CREATION",
+      "reviewer_did": "removed the phaseA call that implicitly created the tmp directory, then wrote into it",
+      "observed": "FileNotFoundError on the journal path",
+      "correction": "explicit jdir.mkdir(parents=True, exist_ok=True)",
+      "strength": "neutral"
+    }
+  ],
+  "not_done": [
+    "no pinned OC6 custody_protocol.py byte altered",
+    "no accepted OC6/OC7 court edited, xfailed, skipped or suppressed",
+    "no preregistered expectation relaxed to accept weaker behaviour",
+    "no lexical or Unicode leakage gate widened",
+    "no internal EscrowState dictionary mutated to forge restored authority"
+  ],
+  "discrimination_and_mutation_evidence": {
+    "note": "Unlike OC7, this suite does NOT discriminate the OC4 and OC6 custody blobs. C07P exercises the additive journal adapter plus the native public API, and both blobs expose that API, so OC4 scores 28/30 and OC6 30/30 (the two differences are the P9 provenance pin and a harness artefact). Claiming blob-contrast discrimination here would be false. The correct control for this suite is ADAPTER MUTATION, which was run instead.",
+    "oc4_unrepaired": "28 passed / 2 failed",
+    "oc6_repaired": "30 passed / 0 failed",
+    "mutants": [
+      {
+        "id": "MUTANT A",
+        "change": "neuter the per-record digest comparison in verify_chain",
+        "killed_by": "test_N1_T1_tampered_payload_is_refused",
+        "result": "1 failed, 29 passed"
+      },
+      {
+        "id": "MUTANT B",
+        "change": "neuter the capsule-commitment re-check on restore",
+        "killed_by": "test_N5_T6_forged_capsule_substitution_is_refused",
+        "result": "1 failed, 29 passed"
+      },
+      {
+        "id": "MUTANT C",
+        "change": "replace os.replace with a non-atomic plain write",
+        "killed_by": "test_C3_crash_after_dir_fsync_is_committed",
+        "result": "1 failed, 29 passed"
+      }
+    ],
+    "conclusion": "Each adapter defence is independently load-bearing and is killed by exactly the intended test. The suite is not trivially green."
+  }
+}

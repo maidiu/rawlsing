@@ -1,0 +1,27 @@
+..F...............FF..F..FF...                                           [100%]
+=================================== FAILURES ===================================
+E   TypeError: capsule field expired must be a boolean
+/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c07p-wt/WORKER_RETURNS/SOROK-R3-HQ317-C07P-CROSSPROCESS-CUSTODY-R1/repro/source/custody_protocol.py:424: TypeError: capsule field expired must be a boolean
+E   AssertionError: Regex pattern did not match.
+      Expected regex: 'forged capsule'
+      Actual message: "record 4: prev chain break (have 'fb067bd5c7e9', expected '2e10c6697879')"
+/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c07p-wt/WORKER_RETURNS/SOROK-R3-HQ317-C07P-CROSSPROCESS-CUSTODY-R1/tests/test_c07p_crossprocess.py:304: AssertionError: Regex pattern did not match.
+E   c07_journal.JournalError: record 2: seq is 1, expected 2
+/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c07p-wt/WORKER_RETURNS/SOROK-R3-HQ317-C07P-CROSSPROCESS-CUSTODY-R1/repro/c07_journal.py:89: c07_journal.JournalError: record 2: seq is 1, expected 2
+E   Failed: DID NOT RAISE PurposeViolationError
+/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c07p-wt/WORKER_RETURNS/SOROK-R3-HQ317-C07P-CROSSPROCESS-CUSTODY-R1/tests/test_c07p_crossprocess.py:340: Failed: DID NOT RAISE PurposeViolationError
+E   AssertionError: assert ['cap-A', 'cap-B'] == ['cap-A']
+      
+      Left contains one more item: 'cap-B'
+      Use -v to get more diff
+/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c07p-wt/WORKER_RETURNS/SOROK-R3-HQ317-C07P-CROSSPROCESS-CUSTODY-R1/tests/test_c07p_crossprocess.py:384: AssertionError: assert ['cap-A', 'cap-B'] == ['cap-A']
+E   dataclasses.FrozenInstanceError: cannot assign to field 'capsule_id'
+<string>:4: dataclasses.FrozenInstanceError: cannot assign to field 'capsule_id'
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-R3-HQ317-C07P-CROSSPROCESS-CUSTODY-R1/tests/test_c07p_crossprocess.py::test_P5_all_eighteen_capsule_fields_survive_restart
+FAILED WORKER_RETURNS/SOROK-R3-HQ317-C07P-CROSSPROCESS-CUSTODY-R1/tests/test_c07p_crossprocess.py::test_N5_T6_forged_capsule_substitution_is_refused
+FAILED WORKER_RETURNS/SOROK-R3-HQ317-C07P-CROSSPROCESS-CUSTODY-R1/tests/test_c07p_crossprocess.py::test_N6_T10_exposure_before_any_commit_is_refused
+FAILED WORKER_RETURNS/SOROK-R3-HQ317-C07P-CROSSPROCESS-CUSTODY-R1/tests/test_c07p_crossprocess.py::test_N9_T9_forged_purpose_is_refused
+FAILED WORKER_RETURNS/SOROK-R3-HQ317-C07P-CROSSPROCESS-CUSTODY-R1/tests/test_c07p_crossprocess.py::test_N12_T5_whole_journal_rollback_is_a_demonstrated_ceiling
+FAILED WORKER_RETURNS/SOROK-R3-HQ317-C07P-CROSSPROCESS-CUSTODY-R1/tests/test_c07p_crossprocess.py::test_N13_all_eighteen_fields_are_bound_at_the_true_entrypoint
+6 failed, 24 passed in 3.36s

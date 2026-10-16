@@ -1,0 +1,215 @@
+{
+  "passport_schema": "SOROK_WARM_ENVIRONMENT_PASSPORT_R1",
+  "environment_id": "SOROK-HQ317-C07P-CROSSPROCESS-CUSTODY",
+  "epoch_id": "C07P-EPOCH-1",
+  "owner_session_alias": "HQ317-C07P-EXPERIMENTER",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "MBP-LOCAL-DOMINANT",
+  "conversation_or_account_affinity": "OPENCODE_STEP_5_PREVIEW_USER_SELECTED_PAIR",
+  "status": "LIVE_VERIFIED",
+  "generated_at": "2026-10-16T16:42:14",
+  "role": "bounded source-free custody implementation experimenter; NOT HQ, NOT an external escrow institution, NOT the OC7 accepting reviewer, NOT a semantic issuer, NOT a production actor",
+  "sealed_startup": {
+    "commit": "64f32aab9c0e2edc35e6b9120aca09fa9a7d0aff",
+    "branch": "agent/rabochii-sorok-r3-hq317-c07p-crossprocess-custody-r1",
+    "verified_against_direct_remote_head": true
+  },
+  "isolation": "a NEW authorized isolated local worktree was created for this commission; the OC7 worktree was NOT reused and no filesystem or runtime state was assumed to continue from it",
+  "last_live_probe_at": "2026-10-16T16:42:14",
+  "probe_command_and_result": "python3 -m pytest --version; git hash-object of staged sources; subprocess runs of c07_worker.py with distinct PIDs; c07_journal.append_records reports observed fsync support",
+  "capabilities": {
+    "python": {
+      "observed": "3.11.3",
+      "status": "VERIFIED"
+    },
+    "pytest": {
+      "observed": "9.1.1",
+      "status": "VERIFIED"
+    },
+    "git": {
+      "observed": "git version 2.39.1",
+      "status": "VERIFIED"
+    },
+    "subprocess": {
+      "observed": "used for every process A/B and crash role; real SIGKILL observed as exit 137",
+      "status": "VERIFIED"
+    },
+    "filesystem_atomicity": {
+      "observed": "os.fsync(file)=SUPPORTED, os.fsync(dir)=SUPPORTED, os.replace atomic on same directory",
+      "status": "VERIFIED"
+    },
+    "power_loss_cut": {
+      "observed": null,
+      "status": "NOT_AVAILABLE__crash_point_2_cannot_be_settled"
+    },
+    "node": {
+      "observed": null,
+      "status": "NOT_NEEDED_FOR_THIS_COMMISSION"
+    }
+  },
+  "git_object_store_alias": "RAWLSING-SINGLE-SHARED-STORE",
+  "worktree_alias": "C07P-WT (new isolated authorized local sparse worktree)",
+  "branch": "agent/rabochii-sorok-r3-hq317-c07p-crossprocess-custody-r1",
+  "materialized_source_refs": {
+    "custody_source": {
+      "git_blob_sha1": "4c185c18dbee57603038e97886da8fc4aa834082",
+      "sha256": "ca85b844994e5ce6fd9e7a21c0f210d08b6d5e7519c63ac09d7dd8a9516fd90b",
+      "commit": "c6cb15d7417595c359571e4525dd0f0fd6c59d1f",
+      "repo_path": "WORKER_RETURNS/SOROK-R3-HQ313-OC6-NATIVE-INPUT-CONTRACT-REPAIR-R1/repro/custody_protocol.py",
+      "bytes": 36648,
+      "edited_by_this_experiment": false
+    },
+    "unrepaired_contrast": {
+      "git_blob_sha1": "af2b7e943018077cb36808b5af1cd67704624bec",
+      "sha256": "447e5bb738fc49c946a39ca438126e9c2a69d93025600f053662e56f846f9e3a",
+      "commit": "0caaec590f6a8bf6744f22dc9c948c5fe233bc94",
+      "edited_by_this_experiment": false
+    }
+  },
+  "dependency_closure_status": "FULL",
+  "closure_objects_verified": 12,
+  "closure_failures": [],
+  "fixture_query_source_permission": "source-free synthetic fixtures only; NO original respondent source, NO protected holdout, NO real institutional roster",
+  "science_grade": "sourcefree prototype",
+  "covered_test_suites": [
+    {
+      "suite": "preservation_inherited_131",
+      "files": [
+        "test_custody_hostiles.py",
+        "test_positive_lifecycle.py",
+        "test_ocr1_independent_hostile.py",
+        "test_oc2_regressions.py",
+        "test_oc3_independent_hostile.py"
+      ],
+      "tests": 131,
+      "failures": 10,
+      "errors": 0,
+      "skipped": 0,
+      "exit": 1,
+      "summary": "10 failed, 121 passed in 0.23s"
+    },
+    {
+      "suite": "preservation_oc4_new_36",
+      "files": [
+        "test_oc4_repair_controls.py"
+      ],
+      "tests": 36,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit": 0,
+      "summary": "36 passed in 0.09s"
+    },
+    {
+      "suite": "preservation_oc5_prior_23",
+      "files": [
+        "test_oc5_prior_predictions.py"
+      ],
+      "tests": 23,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit": 0,
+      "summary": "23 passed in 0.07s"
+    },
+    {
+      "suite": "preservation_oc5e_native_159",
+      "files": [
+        "test_oc5e_native_hostiles.py"
+      ],
+      "tests": 159,
+      "failures": 11,
+      "errors": 0,
+      "skipped": 0,
+      "exit": 1,
+      "summary": "11 failed, 148 passed in 0.26s"
+    },
+    {
+      "suite": "preservation_oc6_author_273",
+      "files": [
+        "test_oc6_author_controls.py"
+      ],
+      "tests": 273,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit": 0,
+      "summary": "273 passed in 0.40s"
+    },
+    {
+      "suite": "preservation_oc7_v2_276",
+      "files": [
+        "test_oc7_adversarial_v2.py"
+      ],
+      "tests": 276,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit": 0,
+      "summary": "276 passed in 0.35s"
+    },
+    {
+      "suite": "c07p_crossprocess_v1",
+      "tests": 30,
+      "failures": 6,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "c07p_crossprocess_v2",
+      "tests": 30,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "mutation_controls": [
+    {
+      "id": "MUTANT A",
+      "killed_by": "test_N1_T1_tampered_payload_is_refused"
+    },
+    {
+      "id": "MUTANT B",
+      "killed_by": "test_N5_T6_forged_capsule_substitution_is_refused"
+    },
+    {
+      "id": "MUTANT C",
+      "killed_by": "test_C3_crash_after_dir_fsync_is_committed"
+    }
+  ],
+  "model_provider": "user-selected: Step 5 Preview in OpenCode",
+  "effort": "as configured by the owner; not inferred",
+  "observed_credits_or_usage": null,
+  "cash_known": "UNKNOWN",
+  "quota_known": "UNKNOWN",
+  "context_cache_reuse": "fresh separate conversation, separate from OC7 and the OC6 author",
+  "retries": "one correction round on my OWN test suite; all 6 REDs preserved and adjudicated in 04_TEST_CORRECTION_LEDGER.json",
+  "independent_review_separation": "THIS IS AN EXPERIMENT, NOT AN ACCEPTANCE. A distinct future independent reviewer is mandatory before any adoption. The author does not accept this work.",
+  "privacy_source_grant": "private repository access granted to the owner-selected editor/model pair only",
+  "assignments_completed": [
+    "HQ317 C07P cross-process custody durability experiment"
+  ],
+  "next_good_affinity_tags": [
+    "CUSTODY",
+    "CROSS_PROCESS",
+    "CRASH_CONSISTENCY",
+    "JOURNAL",
+    "APPEND_ONLY"
+  ],
+  "staged_state_preservation": "the journal under /tmp is disposable scratch; the committed return tree is the durable artifact",
+  "retire_or_rebuild_reason": null,
+  "typed_holds_open": [
+    "C07_DEPENDENCY_TS",
+    "C07_DEPENDENCY_REVOKE"
+  ],
+  "no_claims": [
+    "no real third-party or institutional escrow",
+    "no cryptographically protected or externally anchored remote journal",
+    "no anti-tamper against an attacker who controls both state and digest",
+    "no production durability (crash point 2 NOT_SETTLED)",
+    "no real signer, protected holdout or original respondent data",
+    "no semantic adoption or lexical gate widening",
+    "no production/V3/N12/CURRENT/PRE-MAIN admission",
+    "no adoption; a distinct independent review is mandatory"
+  ]
+}
