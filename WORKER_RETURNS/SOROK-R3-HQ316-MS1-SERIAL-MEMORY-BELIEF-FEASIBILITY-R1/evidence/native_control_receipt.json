@@ -1,0 +1,21 @@
+{
+ "control": "PINNED_CAN2_repro_test_repair_AS_NATIVE_MODULE_EXECUTION_PROOF",
+ "purpose": "prove the pinned native ADP016/ADP017/CAN008 candidate modules actually execute in this environment before any new serial rule is written",
+ "command": "python3 -m pytest candidate/can2_test_repair.py -q",
+ "total": 89,
+ "passed": 87,
+ "failures": 2,
+ "errors": 0,
+ "skipped": 0,
+ "red_test_ids": [
+  "can2_test_repair::test_epistemic_operations_change_only_exact_record_and_permission_snapshot",
+  "can2_test_repair::test_law_17_negative_classes_keep_unknown_distinct_from_unauthorized"
+ ],
+ "red_disclosure": "Both REDs read runtime_root/law/ADP016.txt and ADP017.txt, which are CAN2's OWN transcribed law-map JSON artifacts. They were deliberately NOT restaged from my own re-derivation, because presenting my transcription under a CAN2 pin would falsify provenance. Neither RED is a serial-mediation claim; both concern fail-closed-state naming and epistemic snapshot shape.",
+ "attempted_but_not_run": {
+  "suite": "CAN2 inherited/repro/test_independent.py",
+  "status": "NOT_RUN_DEPENDENCY_MISSING",
+  "reason": "requires CAN2's full inherited prior runtime closure (retired candidate modules, retired registry, evidence fixtures) which is CAN2/M05 ancestry custody under separate M06 review, outside this commission. 21 passed / 61 failed before abandonment; NO scientific inference drawn from that partial run."
+ },
+ "science_grade": "SOURCEFREE_CANDIDATE_NATIVE_MODULES_EXECUTING_AT_PINNED_BLOBS"
+}

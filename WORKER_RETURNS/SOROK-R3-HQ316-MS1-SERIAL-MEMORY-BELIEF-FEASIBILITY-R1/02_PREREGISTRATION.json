@@ -1,0 +1,134 @@
+{
+  "schema": "SOROK_HQ316_MS1_PREREGISTRATION@1",
+  "status": "FROZEN_BEFORE_ANY_NEW_RULE_OR_TEST_CODE",
+  "role": "independent bounded source-free causal experimenter; NOT HQ; NOT semantic issuer; NOT M06; NOT M05 acceptance reviewer",
+  "grade": "test-only feasibility and causal identification; no accepted psychological/actor/model law",
+  "question": "Can a genuine serial ADP016 memory-content -> ADP017 private BELIEF/access -> later CAN008 response chain be constructed and causally identified at lawful sourcefree TEST_ONLY grain using actual accepted-owner native interfaces?",
+
+  "native_interface_facts_read_before_code": {
+    "F1": "adp016_form_causal_trace computes genuine source-linked content: per-feature source_feature_bindings with state=content_state; uncertainty_state in {CERTAIN,UNCERTAIN} derived from content_state (owner_transitions.py L118)",
+    "F2": "memory_id preimage = ['V3_MEMORY',authority_id,authority_version,actor_id,src,trace_key,memory_id_override,rule_id,rule_version,rule_hash]; content_state is ABSENT from the preimage (owner_transitions.py L117) => same memory ID may carry different verified content",
+    "F3": "adp017_apply_epistemic_effect requires stance_kind == grant['stance_kind'] and bind_claim hard-fails unless stance_kind=='BELIEF' (owner_transitions.py L160,L76) => only lawful stance is private BELIEF; K5 ceiling is native",
+    "F4": "memory_basis_refs are checked for EXISTENCE ONLY (`if any(m not in context.memories ...)`); the native epistemic path never reads memory content (owner_transitions.py L165) => no native memory-content->stance computation exists",
+    "F5": "claim_accessibility is a lawful caller parameter landing in real owner state (current_claim_accessibility) and selects first_person_permission: CLAIM_ACCESSIBLE->PERMIT_FIRST_PERSON_BELIEF, CLAIM_INACCESSIBLE->DENY_FIRST_PERSON_CLAIM, CLAIM_ACCESS_UNKNOWN->DEFER_MISSING_AUTHORITY (owner_transitions.py L168,L179-182; adopted_contract.py L283-297) => only native channel for a content-derived quantity",
+    "F6": "stance_operation in ADD/WITHDRAW/SUPERSEDE_EXACT_RECORD/NO_CHANGE; WITHDRAW with exact target_record_ref genuinely deletes the stance from owner state (owner_transitions.py L167,L171-174) => mediator withdrawal is a native admissible condition",
+    "F7": "accepted ADP017 pinned blob eece4f3f2f3f9288ab9bbc645dc81e20a99e1280: trace refs 'may condition a private update but never establish conscious acquisition or a knowledge grant' => conditioning a PRIVATE UPDATE on trace refs is contemplated by accepted text",
+    "F8": "native response_rule_apply(coupling,prestate,binding,requested_effect) takes the effect FROM THE CALLER; coupline_evaluate verifies only that memory/stance refs exist and match (can008_candidate_rule.py L202-222) => native CAN008 computes no response from epistemic state"
+  },
+  "consequence_of_F3_F4_F8": "A serial path is NOT already present in the accepted contract. It must be stipulated by a hypothetical TEST_ONLY mediator applied THROUGH the real native formation/application interfaces. That is the bounded object of this experiment and is not an accepted rule.",
+
+  "hypothetical_test_only_rules": {
+    "mediator": {
+      "id": "MS1_SERIAL_MEDIATOR@1.0.0-TEST_ONLY",
+      "status": "UNISSUED_SYNTHETIC_NO_ISSUER_NO_AUTHORITY_GRANT_NO_PRODUCTION_REGISTRY",
+      "reads": "real committed memory CONTENT from actual owner state (never a caller label)",
+      "verification_steps": ["memory.current_state_hash == memory_semantic_hash(memory)", "memory id present in ctx.memories", "formation transition present in ctx.memory_transitions", "objective_source_event_refs bound to a registry-admitted source event", "actor and time consistent"],
+      "content_sensitive_map": {
+        "uncertainty_state==CERTAIN": "claim_accessibility=CLAIM_ACCESSIBLE",
+        "uncertainty_state==UNCERTAIN": "claim_accessibility=CLAIM_ACCESS_UNKNOWN"
+      },
+      "applies_via": "REAL native adp017_apply_epistemic_effect(stance_kind='BELIEF', stance_operation='ADD', memory_basis_refs=[memory_id], actor_facing_basis_refs=[E1 ref])",
+      "note": "mediator decides ONLY the accessibility class; stance, claim identity, actor-facing basis, rule identity and time authority remain native-owned. No caller-chosen BELIEF outcome is possible because bind_claim forces BELIEF (F3)."
+    },
+    "consumer": {
+      "id": "MS1_SERIAL_CONSUMER@1.0.0-TEST_ONLY",
+      "status": "UNISSUED_SYNTHETIC_NO_ISSUER_NO_AUTHORITY_GRANT_NO_PRODUCTION_REGISTRY",
+      "reads": "epistemic owner state ONLY; never reads memory (structurally cannot: receives no memory argument)",
+      "verification_steps": ["actor/world/time verified", "ctx.verify()"],
+      "choice_map": {
+        "PERMIT_FIRST_PERSON_BELIEF": "REROUTE",
+        "DENY_FIRST_PERSON_CLAIM": "BLOCK",
+        "DEFER_MISSING_AUTHORITY": "typed nonpositive refusal, no productive effect",
+        "no_epistemic_state": "RESPONSE_INPUTS_VALID_EMPTY"
+      },
+      "applies_via": "REAL native coupline_evaluate -> response_rule_apply -> build_response_receipt, committed to a verified journal"
+    }
+  },
+
+  "competing_dags": {
+    "D1_SERIAL": "M_content -> B_access -> Y; belief/access state is the only channel from memory to the later response",
+    "D2_PARALLEL_DIRECT": "M -> Y while B arises independently from the E1 actor-facing event",
+    "D3_SHORTCUT_HISTORY_ONLY": "first-event and prior-response history drives both B and Y; memory_basis_refs is an inert label",
+    "exclusion_rules": "D1 supported only if P1-P4 all hold; D2 excluded only by P4; D3 excluded only by P1 and P5"
+  },
+
+  "intervention_matrix": {
+    "fixed_in_every_cell": ["E1 event id/hash/features/time/admission", "world cut", "actor", "direct actor-facing inputs (actor_facing_basis_refs)", "claim identity", "prior CAN008 response history", "rule identity/hash", "later E2 event id/hash/features/time"],
+    "C1": {"M": "AVAILABLE_SOURCE_BOUND(CERTAIN)", "G": "ACTIVE", "clamp": null, "purpose": "baseline"},
+    "C2": {"M": "AVAILABLE_UNCERTAIN(UNCERTAIN)", "G": "ACTIVE", "clamp": null, "purpose": "memory-content intervention"},
+    "C3": {"M": "AVAILABLE_SOURCE_BOUND(CERTAIN)", "G": "WITHDRAWN(native WITHDRAW)", "clamp": null, "purpose": "mediator cut, memory fixed"},
+    "C4": {"M": "AVAILABLE_UNCERTAIN(UNCERTAIN)", "G": "WITHDRAWN(native WITHDRAW)", "clamp": null, "purpose": "mediator cut under other content"},
+    "C5": {"M": "AVAILABLE_SOURCE_BOUND(CERTAIN)", "G": "INHIBITED(no belief formed)", "clamp": null, "purpose": "mediator absent, memory fixed"},
+    "C6": {"M": "AVAILABLE_UNCERTAIN(UNCERTAIN)", "G": "INHIBITED", "clamp": null, "purpose": "mediator absent, other content"},
+    "C7": {"M": "AVAILABLE_SOURCE_BOUND(CERTAIN)", "G": "ACTIVE", "clamp": "BELIEF+access clamped to C8 value", "purpose": "DECISIVE direct-path probe"},
+    "C8": {"M": "AVAILABLE_UNCERTAIN(UNCERTAIN)", "G": "ACTIVE", "clamp": "BELIEF+access clamped to C7 value", "purpose": "DECISIVE direct-path probe"},
+    "C9": {"M": "AVAILABLE_SOURCE_BOUND(CERTAIN)", "G": "ACTIVE", "clamp": null, "purpose": "history-only control: prior response history withheld"},
+    "C10": {"M": "AVAILABLE_SOURCE_BOUND(CERTAIN)", "G": "ACTIVE(ref decides without reading content)", "clamp": null, "purpose": "reference-only falsifier"}
+  },
+
+  "falsifiable_predictions": {
+    "P1": {"claim": "C1 != C2 in later response with all history and actor-facing inputs fixed", "falsified_if": "responses identical"},
+    "P2": {"claim": "C1 != C5 and C2 != C6 (mediator present vs absent)", "falsified_if": "response insensitive to presence of epistemic state"},
+    "P3": {"claim": "C1 != C3 and C2 != C4 (native withdrawal)", "falsified_if": "withdrawal changes nothing"},
+    "P4": {"claim": "DECISIVE: C7 = C8 (belief/access clamped across differing memory content)", "falsified_if": "responses differ => direct M->Y path exists, D2 survives, serial claim DEFEATED"},
+    "P5": {"claim": "C1 = C9 (withholding response history does not move the consumer's choice)", "falsified_if": "consumer secretly reads history"},
+    "P6": {"claim": "stance is private BELIEF only; PERMIT_FIRST_PERSON_KNOWLEDGE never occurs; no public standing", "falsified_if": "any KNOWLEDGE or public grant"},
+    "P7": {"claim": "causal trace never first-person claimable; hidden origin always blocked", "falsified_if": "any first-person origin claim on a trace"},
+    "P8": {"claim": "C10 != C2: reference-only mediator does NOT reproduce P1", "falsified_if": "reference-only reproduces the effect => mere label attachment"},
+    "P9": {"claim": "tampered memory content (hash mismatch) -> mediator refuses, no epistemic state, response unchanged", "falsified_if": "forged content still drives the response"},
+    "P10": {"claim": "every refused outcome leaves owner state byte-identical to its prestate", "falsified_if": "partial state survives a refusal"},
+    "P11": {"claim": "cross-actor, cross-claim, cross-time and unknown-memory basis are refused", "falsified_if": "a foreign basis is accepted"}
+  },
+
+  "global_falsifiers_any_one_defeats_serial_candidate": {
+    "F_A": "P4 fails => D2 (direct/parallel) not excluded",
+    "F_B": "P2 or P3 fails => epistemic mediator not on the causal path",
+    "F_C": "native ADP017 refuses every content-conditioned call => verdict becomes SERIAL_MECHANISM_FEASIBILITY_HOLD",
+    "F_D": "P8 fails => effect is reference attachment, not mediation",
+    "F_E": "P10 fails => transactional integrity broken, no result admissible"
+  },
+
+  "permitted_verdicts": [
+    "SOURCEFREE_SYNTHETIC_SERIAL_MEDIATION_CANDIDATE_REQUIRES_I2 (only if P1-P11 hold and no global falsifier fires)",
+    "SERIAL_MECHANISM_IDENTIFICATION_HOLD (observational equivalence / unissued rule / missing transition, with positive AND negative evidence)",
+    "SERIAL_MECHANISM_FEASIBILITY_HOLD (accepted contracts cannot support even the hypothetical mediator; F-C)"
+  ],
+
+  "explicit_non_claims": [
+    "no human psychological discovery or calibration",
+    "no operative V3 mediation",
+    "no accepted semantic law",
+    "no production issuer, registry entry or activation",
+    "no original respondent data",
+    "no external experimental model calls",
+    "no autonomous actor",
+    "no PRE-MAIN/CURRENT edit",
+    "no V3/N12 operation",
+    "no dependency on M05 being accepted (M05 is author-only under M06)",
+    "no generalization of a bounded sourcefree constructibility result to any real actor"
+  ],
+
+  "freeze_declaration": "Written and committed BEFORE any new mediator, consumer or test code. Predictions may be reported as falsified; they may not be edited after execution.",
+
+  "governance_read": {
+    "00_READ_ME_FIRST": "READ_IN_FULL",
+    "00B": "READ_IN_FULL",
+    "00C": "READ_SECTIONS_3A_3B_5A",
+    "00D": "READ_IN_FULL",
+    "HQ316_intake": "READ_IN_FULL"
+  },
+
+  "pinned_sources": {
+    "CAN008_R2_source_blob": "b80dd6925066510ecbbfec7b427bf9f688475663",
+    "ADP016_source_blob": "c6619a286e115d060ab4830889e7fc23762167a5",
+    "ADP017_source_blob": "eece4f3f2f3f9288ab9bbc645dc81e20a99e1280",
+    "EMPTY_production_positive_authority_guard": "e0528d65215cb431196570c38bac4eae94217a1b",
+    "native_executable_closure_commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7 (CAN2 authored)",
+    "native_closure_verified_blobs": "see evidence/native_source_ledger.json (9/9 verified, 0 mismatches)"
+  },
+
+  "sealed_startup": "8bb23745ef0e650cfaea241754e3bf73600ac738",
+  "hq316_parent": "8af50c539bd249d6aab76bea7cf81f61579906fa",
+  "branch": "agent/rabochii-sorok-r3-hq316-ms1-serial-memory-belief-feasibility-r1",
+  "write_terrain": "WORKER_RETURNS/SOROK-R3-HQ316-MS1-SERIAL-MEMORY-BELIEF-FEASIBILITY-R1/"
+}
