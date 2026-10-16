@@ -1,0 +1,29 @@
+{
+  "schema": "MS2_DIRECT_REMOTE_CONTENT_CUSTODY@1",
+  "verified_at_utc": "2026-10-16T20:40:20.437358+00:00",
+  "branch": "agent/reviewer-sorok-r3-hq317-ms2-ms1-serial-independent-r1",
+  "content_commit": "8e3dddc812b9912d70edd0f2489db19c82877820",
+  "direct_remote_sha": "8e3dddc812b9912d70edd0f2489db19c82877820",
+  "direct_output": "8e3dddc812b9912d70edd0f2489db19c82877820\trefs/heads/agent/reviewer-sorok-r3-hq317-ms2-ms1-serial-independent-r1",
+  "match": true,
+  "manifest_files_verified": 93,
+  "owned_changed_paths": 94,
+  "outside_owned_paths": [],
+  "worktree_clean_at_content_verification": true,
+  "reviewer_freeze_commit": "6a1e733cd92113b10ba85db4e93f13e9ef9861b5",
+  "original": "118 PASS/2 literal CAN2 law-map FAIL",
+  "independent": "43 PASS/8 scientific FAIL; original frozen oracle unchanged",
+  "original_prediction_literal": "P3b1FAIL; F_B FIRED; no top-grade repair",
+  "native_cells": "C1-C10 andC4b all eleven original native owner hashes/outcomes independently matched",
+  "native_sources": "9CAN2 blobs plus separate EMPTY guard verified; actual module files captured",
+  "verdict": "REVIEW_REVISE",
+  "adoption": "NO_ADOPTION",
+  "requirement_audit": "17_REQUIREMENT_AUDIT.json; 18 requirements inspected; final publication row completed by this direct content check and final outside-tree post-push verification",
+  "final_receipt_commit": "Receipt-only child; its exact SHA cannot be embedded recursively, so verify directly after push and report outside its own tree",
+  "final_checks": [
+    "git rev-parse HEAD",
+    "git ls-remote origin refs/heads/agent/reviewer-sorok-r3-hq317-ms2-ms1-serial-independent-r1",
+    "git status --porcelain",
+    "receipt-only child diff; frozen tests/manifest/source custody rechecked"
+  ]
+}
