@@ -1,0 +1,56 @@
+[
+  {
+    "court": "original120",
+    "command": [
+      "/usr/local/bin/python3",
+      "[MS3_RETURN]/repro/run_courts.py",
+      "after",
+      "original120",
+      "worker"
+    ],
+    "exit": 1,
+    "seconds": 6.312633308116347,
+    "counts": {
+      "tests": 120,
+      "failures": 2,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "court": "ms2_51",
+    "command": [
+      "/usr/local/bin/python3",
+      "[MS3_RETURN]/repro/run_courts.py",
+      "after",
+      "ms2_51",
+      "worker"
+    ],
+    "exit": 0,
+    "seconds": 8.624404593138024,
+    "counts": {
+      "tests": 51,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "court": "literal_p3b",
+    "command": [
+      "/usr/local/bin/python3",
+      "[MS3_RETURN]/repro/run_courts.py",
+      "after",
+      "literal_p3b",
+      "worker"
+    ],
+    "exit": 1,
+    "seconds": 2.074823781847954,
+    "counts": {
+      "tests": 1,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0
+    }
+  }
+]

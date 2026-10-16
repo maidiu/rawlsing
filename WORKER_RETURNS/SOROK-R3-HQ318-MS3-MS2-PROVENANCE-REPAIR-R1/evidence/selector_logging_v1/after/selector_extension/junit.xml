@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="12" skipped="0" tests="12" time="1.149" timestamp="2026-10-16T17:38:33.807678-04:00" hostname="[HOST]"><testcase classname="" name="test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[None-mediate]" time="0.069"><failure message="TypeError: Object of type CandidateRuleRegistration is not JSON serializable">WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/repro/test_selector_extension.py:20: in test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty
+    (o/(entry+'_'+type(selector).__name__+'_'+str(len(str(selector)))+'.json')).write_text(json.dumps(dict(selector=selector,entry=entry,before=before,response=out,after=after),indent=2)+'\n')
+                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py:238: in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:202: in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:432: in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:326: in _iterencode_list
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:439: in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:180: in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+E   TypeError: Object of type CandidateRuleRegistration is not JSON serializable</failure></testcase><testcase classname="" name="test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[None-consume]" time="0.063"><failure message="TypeError: Object of type CandidateRuleRegistration is not JSON serializable">WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/repro/test_selector_extension.py:20: in test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty
+    (o/(entry+'_'+type(selector).__name__+'_'+str(len(str(selector)))+'.json')).write_text(json.dumps(dict(selector=selector,entry=entry,before=before,response=out,after=after),indent=2)+'\n')
+                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py:238: in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:202: in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:432: in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:326: in _iterencode_list
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:439: in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:180: in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+E   TypeError: Object of type CandidateRuleRegistration is not JSON serializable</failure></testcase><testcase classname="" name="test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[empty-mediate]" time="0.064"><failure message="TypeError: Object of type CandidateRuleRegistration is not JSON serializable">WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/repro/test_selector_extension.py:20: in test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty
+    (o/(entry+'_'+type(selector).__name__+'_'+str(len(str(selector)))+'.json')).write_text(json.dumps(dict(selector=selector,entry=entry,before=before,response=out,after=after),indent=2)+'\n')
+                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py:238: in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:202: in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:432: in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:326: in _iterencode_list
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:439: in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:180: in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+E   TypeError: Object of type CandidateRuleRegistration is not JSON serializable</failure></testcase><testcase classname="" name="test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[empty-consume]" time="0.066"><failure message="TypeError: Object of type CandidateRuleRegistration is not JSON serializable">WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/repro/test_selector_extension.py:20: in test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty
+    (o/(entry+'_'+type(selector).__name__+'_'+str(len(str(selector)))+'.json')).write_text(json.dumps(dict(selector=selector,entry=entry,before=before,response=out,after=after),indent=2)+'\n')
+                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py:238: in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:202: in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:432: in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:326: in _iterencode_list
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:439: in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:180: in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+E   TypeError: Object of type CandidateRuleRegistration is not JSON serializable</failure></testcase><testcase classname="" name="test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[integer-mediate]" time="0.068"><failure message="TypeError: Object of type CandidateRuleRegistration is not JSON serializable">WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/repro/test_selector_extension.py:20: in test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty
+    (o/(entry+'_'+type(selector).__name__+'_'+str(len(str(selector)))+'.json')).write_text(json.dumps(dict(selector=selector,entry=entry,before=before,response=out,after=after),indent=2)+'\n')
+                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py:238: in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:202: in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:432: in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:326: in _iterencode_list
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:439: in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:180: in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+E   TypeError: Object of type CandidateRuleRegistration is not JSON serializable</failure></testcase><testcase classname="" name="test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[integer-consume]" time="0.063"><failure message="TypeError: Object of type CandidateRuleRegistration is not JSON serializable">WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/repro/test_selector_extension.py:20: in test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty
+    (o/(entry+'_'+type(selector).__name__+'_'+str(len(str(selector)))+'.json')).write_text(json.dumps(dict(selector=selector,entry=entry,before=before,response=out,after=after),indent=2)+'\n')
+                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py:238: in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:202: in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:432: in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:326: in _iterencode_list
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:439: in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:180: in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+E   TypeError: Object of type CandidateRuleRegistration is not JSON serializable</failure></testcase><testcase classname="" name="test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[list-mediate]" time="0.057"><failure message="TypeError: Object of type CandidateRuleRegistration is not JSON serializable">WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/repro/test_selector_extension.py:20: in test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty
+    (o/(entry+'_'+type(selector).__name__+'_'+str(len(str(selector)))+'.json')).write_text(json.dumps(dict(selector=selector,entry=entry,before=before,response=out,after=after),indent=2)+'\n')
+                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py:238: in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:202: in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:432: in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:326: in _iterencode_list
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:439: in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:180: in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+E   TypeError: Object of type CandidateRuleRegistration is not JSON serializable</failure></testcase><testcase classname="" name="test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[list-consume]" time="0.057"><failure message="TypeError: Object of type CandidateRuleRegistration is not JSON serializable">WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/repro/test_selector_extension.py:20: in test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty
+    (o/(entry+'_'+type(selector).__name__+'_'+str(len(str(selector)))+'.json')).write_text(json.dumps(dict(selector=selector,entry=entry,before=before,response=out,after=after),indent=2)+'\n')
+                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py:238: in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:202: in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:432: in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:326: in _iterencode_list
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:439: in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:180: in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+E   TypeError: Object of type CandidateRuleRegistration is not JSON serializable</failure></testcase><testcase classname="" name="test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[dict-mediate]" time="0.065"><failure message="TypeError: Object of type CandidateRuleRegistration is not JSON serializable">WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/repro/test_selector_extension.py:20: in test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty
+    (o/(entry+'_'+type(selector).__name__+'_'+str(len(str(selector)))+'.json')).write_text(json.dumps(dict(selector=selector,entry=entry,before=before,response=out,after=after),indent=2)+'\n')
+                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py:238: in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:202: in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:432: in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:326: in _iterencode_list
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:439: in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:180: in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+E   TypeError: Object of type CandidateRuleRegistration is not JSON serializable</failure></testcase><testcase classname="" name="test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[dict-consume]" time="0.062"><failure message="TypeError: Object of type CandidateRuleRegistration is not JSON serializable">WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/repro/test_selector_extension.py:20: in test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty
+    (o/(entry+'_'+type(selector).__name__+'_'+str(len(str(selector)))+'.json')).write_text(json.dumps(dict(selector=selector,entry=entry,before=before,response=out,after=after),indent=2)+'\n')
+                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py:238: in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:202: in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:432: in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:326: in _iterencode_list
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:439: in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:180: in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+E   TypeError: Object of type CandidateRuleRegistration is not JSON serializable</failure></testcase><testcase classname="" name="test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[foreign-mediate]" time="0.062"><failure message="TypeError: Object of type CandidateRuleRegistration is not JSON serializable">WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/repro/test_selector_extension.py:20: in test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty
+    (o/(entry+'_'+type(selector).__name__+'_'+str(len(str(selector)))+'.json')).write_text(json.dumps(dict(selector=selector,entry=entry,before=before,response=out,after=after),indent=2)+'\n')
+                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py:238: in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:202: in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:432: in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:326: in _iterencode_list
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:439: in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:180: in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+E   TypeError: Object of type CandidateRuleRegistration is not JSON serializable</failure></testcase><testcase classname="" name="test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[foreign-consume]" time="0.066"><failure message="TypeError: Object of type CandidateRuleRegistration is not JSON serializable">WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/repro/test_selector_extension.py:20: in test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty
+    (o/(entry+'_'+type(selector).__name__+'_'+str(len(str(selector)))+'.json')).write_text(json.dumps(dict(selector=selector,entry=entry,before=before,response=out,after=after),indent=2)+'\n')
+                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py:238: in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:202: in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:432: in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:326: in _iterencode_list
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:406: in _iterencode_dict
+    yield from chunks
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:439: in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:180: in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+E   TypeError: Object of type CandidateRuleRegistration is not JSON serializable</failure></testcase></testsuite></testsuites>

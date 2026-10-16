@@ -1,0 +1,373 @@
+{
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT@1",
+  "environment_id": "62a7b672-0b8b-456c-9e9e-ae273606bdd7",
+  "epoch_id": "73f90f14-d062-458c-8d08-630c1608493a",
+  "owner_session_alias": "MS3_AUTHOR_NOT_MS4",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "LOCAL_MS3_MANAGED_SPARSE",
+  "editor_harness": "Codex",
+  "conversation_or_account_affinity": "CONTINUING_CHAT_PREVIOUSLY_MS2_REVIEWER_NOW_MS3_AUTHOR",
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-16T21:42:14.627184+00:00",
+  "runtime_marker_digest": "8909c5d02fce28f96297bc0ae5dfeab9b636b0ec9dc4e313cd9615ca928fa246",
+  "probe_command_and_result": {
+    "python": "Python3.11.3 VERIFIED",
+    "pytest": "pytest9.1.1 VERIFIED",
+    "git": "git2.39.1 VERIFIED",
+    "shell": "zsh VERIFIED",
+    "filesystem": "OWN_RETURN_WRITES VERIFIED",
+    "remote": "InitialMS3 seal21c885ca and parent verified; publication custody16",
+    "node": "NOT_REQUIRED_NOT_PROBED"
+  },
+  "git_object_store_alias": "EXISTING_AUTHENTICATED_SHARED_GIT_STORE",
+  "worktree_alias": "NEW_ISOLATED_MS3_MANAGED_WORKTREE",
+  "branch": "agent/rabochii-sorok-r3-hq318-ms3-ms2-provenance-repair-r1",
+  "exact_checkout_base": "21c885ca1fcba532f71e45d1ba959d9943d33bf0",
+  "checkout_parent": "2b2fa4a555a61bfb855ca4fff462b42dbecca193",
+  "author_freeze_commit": "650a46593fd19be2642a025c1e03bbe09583d337",
+  "final_head_and_clean_status": "Directly verified after push outside its own tree; receipt16",
+  "initial_state": "CLEAN_AT_ASSIGNED_SEAL; own branch attached; new sparse checkout",
+  "current_state": "OWN_RETURN_ONLY; scientific tests complete; publication verification16",
+  "source_family": "MS1_TEST_ONLY_SERIAL_REPAIR_WITH_UNCHANGED_CAN2_NATIVE",
+  "materialized_source_refs": [
+    {
+      "module": "candidate",
+      "commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/__init__.py",
+      "blob_sha1": "0581aff4ac0ea45c07387e5340e219566ce7330d",
+      "source_sha256": "be2b6eff83a8a5af687456545477856ec438cee29f25481ff58636556f745083",
+      "module_file": "staging/ms2/staging/ms1/runtime/candidate/__init__.py",
+      "actual_import_verified": true
+    },
+    {
+      "module": "candidate.adopted_contract",
+      "commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/adopted_contract.py",
+      "blob_sha1": "259ff9da129f7d644f8ac9fd8f739ad6041a3edf",
+      "source_sha256": "eec78079b8adc82b28a608ec7dd3fbf3947a53a98447fcf3d4c82db98becf0ae",
+      "module_file": "staging/ms2/staging/ms1/runtime/candidate/adopted_contract.py",
+      "actual_import_verified": true
+    },
+    {
+      "module": "candidate.can008_candidate_rule",
+      "commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/can008_candidate_rule.py",
+      "blob_sha1": "61d933d98ffb39d553a0dbc670388fc2bd3e89d3",
+      "source_sha256": "c5a4b271346fe045e5a54522926795e7514ad3bacbbed04fbb60a2183348c27e",
+      "module_file": "staging/ms2/staging/ms1/runtime/candidate/can008_candidate_rule.py",
+      "actual_import_verified": true
+    },
+    {
+      "module": "candidate.candidate_registry_fixture",
+      "commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/candidate_registry_fixture.py",
+      "blob_sha1": "0d978f89fb3c5e836a52f25849240db360f97f8f",
+      "source_sha256": "1c2e2e0c4375a15b9f1bd55376a550834d001b7b7577cb2b8183caccbdfac768",
+      "module_file": "staging/ms2/staging/ms1/runtime/candidate/candidate_registry_fixture.py",
+      "actual_import_verified": true
+    },
+    {
+      "module": "candidate.owner_transitions",
+      "commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/owner_transitions.py",
+      "blob_sha1": "ac943d07459f68ba2e27baf05b442d9ecbddefd5",
+      "source_sha256": "fcdc073693f781607dd6a7ec25e5fa1a79ce3cccd5071005773b2ca7a8a5017d",
+      "module_file": "staging/ms2/staging/ms1/runtime/candidate/owner_transitions.py",
+      "actual_import_verified": true
+    },
+    {
+      "module": "candidate.positive_chain",
+      "commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/positive_chain.py",
+      "blob_sha1": "226cd42f81538f1b81ea7ea2e494776069142405",
+      "source_sha256": "0a288c5ffd1e92f0b29a2bf41ce99b50ebd05bf912c12d5efb18fd6fbc372657",
+      "module_file": "staging/ms2/staging/ms1/runtime/candidate/positive_chain.py",
+      "actual_import_verified": true
+    },
+    {
+      "module": "ms1_serial",
+      "commit": "96b568b0dcf592c2c9190bf94275f39388219d6c",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/candidate/ms1_serial.py",
+      "blob_sha1": "b5867cd1301441054ef25f9e1e2bf0a4745abdfd",
+      "source_sha256": "c1f10c8604f647ea7ae5a87365f44675f243fbc089f349f0d3fd080e7a696c07",
+      "module_file": "staging/ms2/staging/ms1/runtime/ms1_serial.py",
+      "actual_import_verified": true
+    },
+    {
+      "module": "ms3_native_custody",
+      "commit": "96b568b0dcf592c2c9190bf94275f39388219d6c",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/candidate/ms3_native_custody.py",
+      "blob_sha1": "d172fe04788fcc33032b71eb6d083c15dd03ff7e",
+      "source_sha256": "190f02822070b6ac79e609a7102173f4d91631af7b1fad30ee83b02da14d7469",
+      "module_file": "staging/ms2/staging/ms1/runtime/ms3_native_custody.py",
+      "actual_import_verified": true
+    },
+    {
+      "module": "rawlsing_next",
+      "commit": "d40cc32ecec8f681dcced6a482b6438a86080899",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ316-MS1-SERIAL-MEMORY-BELIEF-FEASIBILITY-R1/runtime/rawlsing_next/__init__.py",
+      "blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "module_file": "staging/ms2/staging/ms1/runtime/rawlsing_next/__init__.py",
+      "actual_import_verified": true
+    },
+    {
+      "module": "rawlsing_next.v3_psepf_zero_positive_guard",
+      "commit": "8bb23745ef0e650cfaea241754e3bf73600ac738",
+      "path": "rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "blob_sha1": "e0528d65215cb431196570c38bac4eae94217a1b",
+      "source_sha256": "12b2c49f664662cbfe993fc4817751ed9edfff3ce89c44cac489a00cb5e42177",
+      "module_file": "staging/ms2/staging/ms1/runtime/rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "actual_import_verified": true
+    }
+  ],
+  "candidate": [
+    {
+      "path": "candidate/ms1_serial.py",
+      "module_file": "staging/ms2/staging/ms1/runtime/ms1_serial.py",
+      "blob_sha1": "b5867cd1301441054ef25f9e1e2bf0a4745abdfd",
+      "sha256": "c1f10c8604f647ea7ae5a87365f44675f243fbc089f349f0d3fd080e7a696c07"
+    },
+    {
+      "path": "candidate/ms3_native_custody.py",
+      "module_file": "staging/ms2/staging/ms1/runtime/ms3_native_custody.py",
+      "blob_sha1": "d172fe04788fcc33032b71eb6d083c15dd03ff7e",
+      "sha256": "190f02822070b6ac79e609a7102173f4d91631af7b1fad30ee83b02da14d7469"
+    }
+  ],
+  "native_source_refs": "06_NATIVE_SOURCE_IDENTITIES.json:9CAN2 native files plus separate EMPTY guard1",
+  "dependency_closure_status": "BOUNDED_FULL_FOR_171_PLUS47_PLUS12_AND_RETAINED_P3B",
+  "fixture_query_source_permission": "USER_COMMISSIONED_SOURCEFREE_SYNTHETIC_ONLY",
+  "covered_test_suites": [
+    {
+      "phase": "before",
+      "receipt": "evidence/before/execution.json",
+      "observed": [
+        {
+          "court": "original120",
+          "command": [
+            "/usr/local/bin/python3",
+            "[MS3_RETURN]/repro/run_courts.py",
+            "before",
+            "original120",
+            "worker"
+          ],
+          "exit": 1,
+          "seconds": 11.668132204096764,
+          "counts": {
+            "tests": 120,
+            "failures": 2,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "court": "ms2_51",
+          "command": [
+            "/usr/local/bin/python3",
+            "[MS3_RETURN]/repro/run_courts.py",
+            "before",
+            "ms2_51",
+            "worker"
+          ],
+          "exit": 1,
+          "seconds": 4.711811763932928,
+          "counts": {
+            "tests": 51,
+            "failures": 8,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "court": "literal_p3b",
+          "command": [
+            "/usr/local/bin/python3",
+            "[MS3_RETURN]/repro/run_courts.py",
+            "before",
+            "literal_p3b",
+            "worker"
+          ],
+          "exit": 1,
+          "seconds": 0.6824336620047688,
+          "counts": {
+            "tests": 1,
+            "failures": 1,
+            "errors": 0,
+            "skipped": 0
+          }
+        }
+      ]
+    },
+    {
+      "phase": "after",
+      "receipt": "evidence/after/execution.json",
+      "observed": [
+        {
+          "court": "original120",
+          "command": [
+            "/usr/local/bin/python3",
+            "[MS3_RETURN]/repro/run_courts.py",
+            "after",
+            "original120",
+            "worker"
+          ],
+          "exit": 1,
+          "seconds": 5.0514738850761205,
+          "counts": {
+            "tests": 120,
+            "failures": 2,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "court": "ms2_51",
+          "command": [
+            "/usr/local/bin/python3",
+            "[MS3_RETURN]/repro/run_courts.py",
+            "after",
+            "ms2_51",
+            "worker"
+          ],
+          "exit": 0,
+          "seconds": 6.174171260790899,
+          "counts": {
+            "tests": 51,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "court": "literal_p3b",
+          "command": [
+            "/usr/local/bin/python3",
+            "[MS3_RETURN]/repro/run_courts.py",
+            "after",
+            "literal_p3b",
+            "worker"
+          ],
+          "exit": 1,
+          "seconds": 0.5627343780361116,
+          "counts": {
+            "tests": 1,
+            "failures": 1,
+            "errors": 0,
+            "skipped": 0
+          }
+        }
+      ]
+    },
+    {
+      "phase": "author",
+      "receipt": "evidence/author/execution.json",
+      "observed": [
+        {
+          "court": "author",
+          "command": [
+            "/usr/local/bin/python3",
+            "[MS3_RETURN]/repro/run_courts.py",
+            "author",
+            "author",
+            "worker"
+          ],
+          "exit": 0,
+          "seconds": 3.621648045955226,
+          "counts": {
+            "tests": 47,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        }
+      ]
+    },
+    {
+      "phase": "extension_before",
+      "receipt": "evidence/extension_before/execution.json",
+      "observed": [
+        {
+          "court": "selector_extension",
+          "command": [
+            "/usr/local/bin/python3",
+            "[MS3_RETURN]/repro/run_courts.py",
+            "extension_before",
+            "selector_extension",
+            "worker"
+          ],
+          "exit": 1,
+          "seconds": 1.2598533330019563,
+          "counts": {
+            "tests": 12,
+            "failures": 1,
+            "errors": 0,
+            "skipped": 0
+          }
+        }
+      ]
+    },
+    {
+      "phase": "extension_after",
+      "receipt": "evidence/extension_after/execution.json",
+      "observed": [
+        {
+          "court": "selector_extension",
+          "command": [
+            "/usr/local/bin/python3",
+            "[MS3_RETURN]/repro/run_courts.py",
+            "extension_after",
+            "selector_extension",
+            "worker"
+          ],
+          "exit": 0,
+          "seconds": 1.0084170759655535,
+          "counts": {
+            "tests": 12,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        }
+      ]
+    }
+  ],
+  "science_grade": "Candidate repair only; serial identificationHOLD; future independentMS4 required",
+  "selected_model": "GPT-6.1 High user-selected; no independent setting introspection",
+  "effort": "High user-selected",
+  "model_provider": "OpenAI via Codex",
+  "pricing_class": "UNKNOWN",
+  "observed_credits_usage": null,
+  "cash_known": false,
+  "quota_known": false,
+  "context_cache_reuse": "UNKNOWN",
+  "expected_reset_or_slot": null,
+  "paid_overflow_policy": "No new provider or experimental paid call",
+  "independent_review_separation": "MS3 author previously MS2 reviewer; distinct futureMS4 must accept; no self-adoption",
+  "privacy_source_grant": "Private Git fixture source only; no respondent or external-provider export",
+  "assignments_completed": [
+    "Exact171before/after",
+    "47prospectively frozen author controls",
+    "EightRED closure with full native state/atomicity receipts",
+    "OriginalP3b and2historicalRED preserved",
+    "Source/import/case custody audit",
+    "Supplemental12 selector cases with full prospective logging-correction and None-defect custody"
+  ],
+  "next_good_affinity_tags": [
+    "MS3_AUTHOR_FOLLOWUP",
+    "ADP016",
+    "ADP017",
+    "CAN008",
+    "NATIVE_CUSTODY"
+  ],
+  "staged_state_preservation": "Fresh source runtime and raw first-run outputs retained under ignored staging/; future sessions must re-probe marker/imports",
+  "retire_or_rebuild_reason": null,
+  "phase_model_assignment": "One authorized GPT-6.1High/Codex agent performs mechanics and nuanced bounded implementation; no helper/model/editor switch; future review belongs toHQ",
+  "active_worker_no_disturbance": "Prior M06/MS2 worktrees not modified",
+  "helpers": false,
+  "model_or_editor_switch": false,
+  "real_model_experiments": false,
+  "production": "EMPTY guard unchanged; no accepted issuer/adoption/V3 operation",
+  "candidate_source_commit": "96b568b0dcf592c2c9190bf94275f39388219d6c",
+  "supplemental_custody": "Expectations81ca89d3; logging-only correction52a5c470; v1logging failures retained; v2old11P/1RED -> final12P; final171/47 rerun"
+}

@@ -1,0 +1,107 @@
+{
+  "C2": {
+    "cell": "C2",
+    "content_state": "AVAILABLE_UNCERTAIN",
+    "mediator": "ACTIVE",
+    "mediator_mode": "CONTENT_SENSITIVE",
+    "tampered": false,
+    "e1_event_hash": "bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002",
+    "e2_event_hash": "a9b24e44618aeed5c2056d43e624b3c4efd8b0acdbdda977b61c0a52498f3dbc",
+    "rule_grain": "SOURCEFREE_SYNTHETIC_TEST_ONLY__UNISSUED__NOT_ACCEPTED__NOT_V3",
+    "mediator_id": "MS1_SERIAL_MEDIATOR@1.0.0-TEST_ONLY",
+    "consumer_id": "MS1_SERIAL_CONSUMER@1.0.0-TEST_ONLY",
+    "memory_id": "752391fcda301daec63b65356eae38e6c2b9e654eda9c6031124d088603eb787",
+    "memory_uncertainty_state": "UNCERTAIN",
+    "memory_current_state_hash": "4022e9581d052214455476312a8eab7e2dbdaab6275d7c4db4d515993448f791",
+    "memory_source_feature_bindings": [
+      "{\"feature\":\"shift_feedback_window_open\",\"source_event\":\"EV1_FEEDBACK_WINDOW_ENCOUNTER:bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002\",\"state\":\"AVAILABLE_UNCERTAIN\"}",
+      "{\"feature\":\"supervisor_solicits_comment\",\"source_event\":\"EV1_FEEDBACK_WINDOW_ENCOUNTER:bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002\",\"state\":\"AVAILABLE_UNCERTAIN\"}"
+    ],
+    "claim_id": "b9da423ad1d139ebfb7c7beae4c15a7d59f24468d56bade091c0ab8a345903b4",
+    "epistemic_decision_state": "APPLIED_EPISTEMIC_TRANSITION",
+    "mediator_read_uncertainty_state": "UNCERTAIN",
+    "stances_after_mediation": [
+      "d67086b1a4c9b71a0e3c1541b2778bd1c11794fa9e404f3e8afa65cf4827ce6e"
+    ],
+    "owner_state_hash_after_mediation": "c486c62d27ae4ac78f4ebff652f527a64c22aeb7e3fb194559c3a33ae4afbac6",
+    "response": {
+      "decision_state": "DEFER_MISSING_AUTHORITY",
+      "code": "DEFER_MISSING_AUTHORITY",
+      "status": "REFUSED",
+      "committed": false,
+      "detail": "no productive response licensed by owner state (permission=DEFER_MISSING_AUTHORITY)",
+      "production_owner_commit": false,
+      "stance_persisted": false,
+      "chosen_from_permission": "DEFER_MISSING_AUTHORITY",
+      "epistemic_state_absent": false,
+      "owner_state_hash_read": "c486c62d27ae4ac78f4ebff652f527a64c22aeb7e3fb194559c3a33ae4afbac6",
+      "consumer_rule_id": "MS1_SERIAL_CONSUMER@1.0.0-TEST_ONLY",
+      "is_unissued_synthetic": true
+    },
+    "response_effect_kind": null,
+    "response_decision_state": "DEFER_MISSING_AUTHORITY",
+    "response_permission_seen": "DEFER_MISSING_AUTHORITY",
+    "first_person_permission": "DEFER_MISSING_AUTHORITY",
+    "trace_first_person_check": {
+      "first_person_permission": "DENY_FIRST_PERSON_CLAIM",
+      "self_explanation_of_hidden_origin": "BLOCKED",
+      "analyst_only_causal_trace_actor_claimable": false,
+      "grade": "TEST_ONLY_CANDIDATE_PERMISSION; production owner HOLD"
+    }
+  },
+  "C4": {
+    "cell": "C4",
+    "content_state": "AVAILABLE_UNCERTAIN",
+    "mediator": "WITHDRAWN",
+    "mediator_mode": "CONTENT_SENSITIVE",
+    "tampered": false,
+    "e1_event_hash": "bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002",
+    "e2_event_hash": "a9b24e44618aeed5c2056d43e624b3c4efd8b0acdbdda977b61c0a52498f3dbc",
+    "rule_grain": "SOURCEFREE_SYNTHETIC_TEST_ONLY__UNISSUED__NOT_ACCEPTED__NOT_V3",
+    "mediator_id": "MS1_SERIAL_MEDIATOR@1.0.0-TEST_ONLY",
+    "consumer_id": "MS1_SERIAL_CONSUMER@1.0.0-TEST_ONLY",
+    "memory_id": "752391fcda301daec63b65356eae38e6c2b9e654eda9c6031124d088603eb787",
+    "memory_uncertainty_state": "UNCERTAIN",
+    "memory_current_state_hash": "4022e9581d052214455476312a8eab7e2dbdaab6275d7c4db4d515993448f791",
+    "memory_source_feature_bindings": [
+      "{\"feature\":\"shift_feedback_window_open\",\"source_event\":\"EV1_FEEDBACK_WINDOW_ENCOUNTER:bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002\",\"state\":\"AVAILABLE_UNCERTAIN\"}",
+      "{\"feature\":\"supervisor_solicits_comment\",\"source_event\":\"EV1_FEEDBACK_WINDOW_ENCOUNTER:bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002\",\"state\":\"AVAILABLE_UNCERTAIN\"}"
+    ],
+    "claim_id": "b9da423ad1d139ebfb7c7beae4c15a7d59f24468d56bade091c0ab8a345903b4",
+    "epistemic_decision_state": "APPLIED_EPISTEMIC_TRANSITION",
+    "mediator_read_uncertainty_state": "UNCERTAIN",
+    "withdrawal_decision_state": "APPLIED_EPISTEMIC_TRANSITION",
+    "withdrawn_effect_id": "d67086b1a4c9b71a0e3c1541b2778bd1c11794fa9e404f3e8afa65cf4827ce6e",
+    "withdrawal_accessibility": "CLAIM_ACCESS_UNKNOWN",
+    "accessibility_before_withdrawal": "CLAIM_ACCESS_UNKNOWN",
+    "stances_after_mediation": [],
+    "owner_state_hash_after_mediation": "70ff8ecbedb105df2af33943f94667183acb89aa6e1ea6c03fd107707484fbd7",
+    "response": {
+      "decision_state": "DEFER_MISSING_AUTHORITY",
+      "code": "DEFER_MISSING_AUTHORITY",
+      "status": "REFUSED",
+      "committed": false,
+      "detail": "no productive response licensed by owner state (permission=DEFER_MISSING_AUTHORITY)",
+      "production_owner_commit": false,
+      "stance_persisted": false,
+      "chosen_from_permission": "DEFER_MISSING_AUTHORITY",
+      "epistemic_state_absent": false,
+      "owner_state_hash_read": "70ff8ecbedb105df2af33943f94667183acb89aa6e1ea6c03fd107707484fbd7",
+      "consumer_rule_id": "MS1_SERIAL_CONSUMER@1.0.0-TEST_ONLY",
+      "is_unissued_synthetic": true
+    },
+    "response_effect_kind": null,
+    "response_decision_state": "DEFER_MISSING_AUTHORITY",
+    "response_permission_seen": "DEFER_MISSING_AUTHORITY",
+    "first_person_permission": "DEFER_MISSING_AUTHORITY",
+    "trace_first_person_check": {
+      "first_person_permission": "DENY_FIRST_PERSON_CLAIM",
+      "self_explanation_of_hidden_origin": "BLOCKED",
+      "analyst_only_causal_trace_actor_claimable": false,
+      "grade": "TEST_ONLY_CANDIDATE_PERMISSION; production owner HOLD"
+    }
+  },
+  "original_prediction": "C2 != C4",
+  "original_prediction_holds": false,
+  "F_B_fired": true
+}

@@ -1,0 +1,27 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: [MS3_RETURN]/staging/ms2
+collecting ... collected 12 items
+
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[None-mediate] <- ../../repro/test_selector_extension_v2.py PASSED [  8%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[None-consume] <- ../../repro/test_selector_extension_v2.py FAILED [ 16%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[empty-mediate] <- ../../repro/test_selector_extension_v2.py PASSED [ 25%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[empty-consume] <- ../../repro/test_selector_extension_v2.py PASSED [ 33%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[integer-mediate] <- ../../repro/test_selector_extension_v2.py PASSED [ 41%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[integer-consume] <- ../../repro/test_selector_extension_v2.py PASSED [ 50%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[list-mediate] <- ../../repro/test_selector_extension_v2.py PASSED [ 58%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[list-consume] <- ../../repro/test_selector_extension_v2.py PASSED [ 66%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[dict-mediate] <- ../../repro/test_selector_extension_v2.py PASSED [ 75%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[dict-consume] <- ../../repro/test_selector_extension_v2.py PASSED [ 83%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[foreign-mediate] <- ../../repro/test_selector_extension_v2.py PASSED [ 91%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[foreign-consume] <- ../../repro/test_selector_extension_v2.py PASSED [100%]
+
+=================================== FAILURES ===================================
+_ test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[None-consume] _
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/repro/test_selector_extension_v2.py:21: in test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty
+    assert out['decision_state'] not in ['APPLIED_EPISTEMIC_TRANSITION','RESPONSE_EFFECTS_PRODUCED','RESPONSE_INPUTS_VALID_EMPTY']
+E   AssertionError: assert 'RESPONSE_INPUTS_VALID_EMPTY' not in ['APPLIED_EPISTEMIC_TRANSITION', 'RESPONSE_EFFECTS_PRODUCED', 'RESPONSE_INPUTS_VALID_EMPTY']
+- generated xml file: [MS3_RETURN]/evidence/extension_before/selector_extension/junit.xml -
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[None-consume] - AssertionError: assert 'RESPONSE_INPUTS_VALID_EMPTY' not in ['APPLIED_EPISTEMIC_TRANSITION', 'RESPONSE_EFFECTS_PRODUCED', 'RESPONSE_INPUTS_VALID_EMPTY']
+========================= 1 failed, 11 passed in 0.92s =========================

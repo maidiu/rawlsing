@@ -1,0 +1,154 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: [MS3_RETURN]/staging/ms2
+collecting ... collected 120 items
+
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_positive_path_and_exact_replay_and_real_control PASSED [  0%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_all_first_event_transaction_boundaries_rollback[after_coupling] PASSED [  1%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_all_first_event_transaction_boundaries_rollback[after_trace_validation] PASSED [  2%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_all_first_event_transaction_boundaries_rollback[after_epistemic] PASSED [  3%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_all_first_event_transaction_boundaries_rollback[after_current_commit] PASSED [  4%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_all_first_event_transaction_boundaries_rollback[after_owner_journal] PASSED [  5%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_later_failure_retains_exact_first_committed_event PASSED [  5%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_invalid_sealed_event_never_admits_or_mutates[issuer_authority_id-FORGED] PASSED [  6%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_invalid_sealed_event_never_admits_or_mutates[issuer_authority_version-2] PASSED [  7%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_invalid_sealed_event_never_admits_or_mutates[actor_scope-OTHER] PASSED [  8%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_invalid_sealed_event_never_admits_or_mutates[effective_causal_time-2099-01-01T00:00:00Z] PASSED [  9%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_invalid_sealed_event_never_admits_or_mutates[world_as_of-1999] PASSED [ 10%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_invalid_sealed_event_never_admits_or_mutates[event_hash-] PASSED [ 10%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_invalid_sealed_event_never_admits_or_mutates[admission_state-PROPOSED] PASSED [ 11%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_invalid_sealed_event_never_admits_or_mutates[derived_from_future_partition-True] PASSED [ 12%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_invalid_sealed_event_never_admits_or_mutates[event_kind-STATIC_STATE_RECORD] PASSED [ 13%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_binding_mutation_enters_valid_event_path_and_refuses[rule_id] PASSED [ 14%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_binding_mutation_enters_valid_event_path_and_refuses[eligible_event_authority_signatures] PASSED [ 15%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_binding_mutation_enters_valid_event_path_and_refuses[actor_scope] PASSED [ 15%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_binding_mutation_enters_valid_event_path_and_refuses[receivability_semantics] PASSED [ 16%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_binding_mutation_enters_valid_event_path_and_refuses[eligible_conditioning_owner_signatures] PASSED [ 17%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_binding_mutation_enters_valid_event_path_and_refuses[conditioning_causal_use_roles] PASSED [ 18%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_binding_mutation_enters_valid_event_path_and_refuses[counterpart_scoping] PASSED [ 19%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_binding_mutation_enters_valid_event_path_and_refuses[modality_evidence_authorities] PASSED [ 20%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_binding_mutation_enters_valid_event_path_and_refuses[uptake_appraisal_semantics] PASSED [ 20%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_binding_mutation_enters_valid_event_path_and_refuses[recruitment_semantics] PASSED [ 21%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_binding_mutation_enters_valid_event_path_and_refuses[multiplicity_handling] PASSED [ 22%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_binding_mutation_enters_valid_event_path_and_refuses[co_determination_closure] PASSED [ 23%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_binding_mutation_enters_valid_event_path_and_refuses[prior_response_history_predicates] PASSED [ 24%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_binding_mutation_enters_valid_event_path_and_refuses[current_condition_effort_role] PASSED [ 25%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_binding_mutation_enters_valid_event_path_and_refuses[effect_kinds] PASSED [ 25%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_binding_mutation_enters_valid_event_path_and_refuses[target_validation] PASSED [ 26%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_binding_mutation_enters_valid_event_path_and_refuses[pff_current_consequence_projection] PASSED [ 27%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_binding_mutation_enters_valid_event_path_and_refuses[valid_empty_behavior] PASSED [ 28%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_binding_mutation_enters_valid_event_path_and_refuses[missing_deferred_ambiguous_behavior] PASSED [ 29%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_binding_mutation_enters_valid_event_path_and_refuses[quantitative_contract] PASSED [ 30%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_binding_mutation_enters_valid_event_path_and_refuses[adp020_binding] PASSED [ 30%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_binding_mutation_enters_valid_event_path_and_refuses[atomic_commit_behavior] PASSED [ 31%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_binding_mutation_enters_valid_event_path_and_refuses[provenance_replay_requirements] PASSED [ 32%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_rule_body_digest_and_registry_tamper_enforcement PASSED [ 33%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_complete_event_hash_detects_content_change_and_unknown_parent PASSED [ 34%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_parent_time_is_checked_without_caller_flag PASSED [ 35%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_history_integrity_and_aliases[content] PASSED [ 35%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_history_integrity_and_aliases[truncate] PASSED [ 36%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_history_integrity_and_aliases[reorder] PASSED [ 37%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_history_integrity_and_aliases[rehash] PASSED [ 38%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_history_integrity_and_aliases[alias] PASSED [ 39%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_memory_actual_commit_source_bindings_and_idempotence PASSED [ 40%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_memory_gate_refusals_are_neutral[parent] PASSED [ 40%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_memory_gate_refusals_are_neutral[actor] PASSED [ 41%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_memory_gate_refusals_are_neutral[feature] PASSED [ 42%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_memory_gate_refusals_are_neutral[authority] PASSED [ 43%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_memory_gate_refusals_are_neutral[prestate] PASSED [ 44%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_memory_gate_refusals_are_neutral[rule] PASSED [ 45%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_memory_gate_refusals_are_neutral[version] PASSED [ 45%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_memory_gate_refusals_are_neutral[rng] PASSED [ 46%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_memory_gate_refusals_are_neutral[missing] PASSED [ 47%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_memory_gate_refusals_are_neutral[noncausal] PASSED [ 48%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_memory_proposal_tampering_cannot_commit PASSED [ 49%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_no_context_is_deferred_and_no_unbound_proposal_applies PASSED [ 50%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_memory_collision_and_no_unauthorized_transition PASSED [ 50%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_epistemic_gates_with_real_canonical_positive_control[claim] PASSED [ 51%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_epistemic_gates_with_real_canonical_positive_control[basis] PASSED [ 52%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_epistemic_gates_with_real_canonical_positive_control[parent] PASSED [ 53%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_epistemic_gates_with_real_canonical_positive_control[rule] PASSED [ 54%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_epistemic_gates_with_real_canonical_positive_control[actor] PASSED [ 55%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_epistemic_gates_with_real_canonical_positive_control[time] PASSED [ 55%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_epistemic_gates_with_real_canonical_positive_control[prestate] PASSED [ 56%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_epistemic_gates_with_real_canonical_positive_control[knowledge] PASSED [ 57%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_canonical_claim_tampering_and_foreign_feature_emission_refuse PASSED [ 58%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_epistemic_operations_change_only_exact_record_and_permission_snapshot FAILED [ 59%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_k5_truth_cannot_create_or_edit_belief_or_public_standing PASSED [ 60%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_k3_permissions_do_not_promote_trace_or_unknown[CAUSAL_TRACE_MEMORY-NOT_APPLICABLE_CAUSAL_TRACE-RETAINED-DENY_FIRST_PERSON_CLAIM] PASSED [ 60%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_k3_permissions_do_not_promote_trace_or_unknown[EVENT_REFERENTIAL_MEMORY-INACCESSIBLE-RETAINED-DENY_FIRST_PERSON_CLAIM] PASSED [ 61%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_k3_permissions_do_not_promote_trace_or_unknown[EVENT_REFERENTIAL_MEMORY-ACCESS_UNKNOWN-RETENTION_UNKNOWN-DEFER_MISSING_AUTHORITY] PASSED [ 62%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_guard_empty_exact_before_and_after_every_positive_fixture PASSED [ 63%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_law_17_negative_classes_keep_unknown_distinct_from_unauthorized FAILED [ 64%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_partial_owner_journal_commit_refusal_rolls_back_all PASSED [ 65%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_post_commit_wrong_payload_with_valid_chain_hash_is_not_a_legal_history PASSED [ 65%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_source_and_memory_records_cannot_silently_mutate_candidate_state PASSED [ 66%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_withdraw_foreign_record_and_supersede_exact_record PASSED [ 67%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_first_person_permission_requires_exact_live_state_snapshot PASSED [ 68%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_owner_fixture_cannot_bypass_absent_registered_rule PASSED [ 69%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_duplicate_valid_event_and_borrowed_prestate_refuse PASSED [ 70%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_valid_memory_parent_prestate_and_rehydration_firewalls PASSED [ 70%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_actual_module_byte_change_invalidates_registered_body PASSED [ 71%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_state_ref_ablation_does_not_falsely_claim_memory_mediated_contrast PASSED [ 72%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_response_receipt_has_no_mutable_alias_to_working_response PASSED [ 73%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_returned_epistemic_transition_and_state_view_do_not_alias_live_store PASSED [ 74%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_control_native_modules_execute_and_owner_state_is_real PASSED [ 75%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_control_negative_native_refuses_unregistered_content_class PASSED [ 75%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_memory_content_varies_under_one_memory_id_with_fixed_exogenous_inputs PASSED [ 76%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_p1_memory_content_intervention_changes_later_response PASSED [ 77%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_p2a_mediator_present_versus_absent_changes_response PASSED [ 78%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_p2b_mediator_absent_is_observationally_distinct_under_unknown_access PASSED [ 79%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_p3a_native_withdrawal_changes_response_when_access_is_permitting PASSED [ 80%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_p3b_PREREGISTERED_PREDICTION_IS_FALSIFIED_and_is_reported_as_such PASSED [ 80%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_c4b_accessibility_channel_dominates_the_withdrawal_outcome PASSED [ 81%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_p4_DECISIVE_clamped_belief_yields_identical_response_despite_different_memory_content PASSED [ 82%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_p4b_consumer_cannot_read_memory_at_all_by_construction PASSED [ 83%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_p5_withholding_prior_response_history_does_not_move_the_consumer PASSED [ 84%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_p8_reference_only_mediator_does_not_reproduce_the_content_effect PASSED [ 85%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_p9_tampered_memory_content_is_refused_and_leaves_no_epistemic_state PASSED [ 85%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_p9b_forged_content_does_not_flip_an_uncertain_memory_into_a_permitted_one PASSED [ 86%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_p10_refused_outcome_leaves_owner_state_byte_identical_to_prestate PASSED [ 87%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_p10b_inhibited_mediator_writes_no_epistemic_state PASSED [ 88%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_p11a_unknown_memory_basis_is_refused PASSED [ 89%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_p11b_foreign_actor_is_refused PASSED [ 90%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_p11c_wrong_time_is_refused PASSED [ 90%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_p11d_unknown_claim_is_refused PASSED [ 91%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_p11e_knowledge_stance_is_refused_by_the_native_owner PASSED [ 92%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_p11f_foreign_target_record_withdrawal_is_refused PASSED [ 93%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_p6_stance_is_private_belief_only_and_no_public_standing PASSED [ 94%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_p6b_every_cell_permission_is_within_the_native_finite_enum PASSED [ 95%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_p7_causal_trace_is_never_first_person_claimable_k3_preserved PASSED [ 95%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_p7b_unknown_memory_access_defers_rather_than_denying PASSED [ 96%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_native_adp017_never_reads_memory_content PASSED [ 97%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_native_can008_response_effect_is_caller_supplied PASSED [ 98%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_our_rules_are_labelled_unissued_and_not_production PASSED [ 99%]
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/test_ms1_serial.py::test_deterministic_replay_of_the_whole_construct PASSED [100%]
+
+=================================== FAILURES ===================================
+__ test_epistemic_operations_change_only_exact_record_and_permission_snapshot __
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py:198: in test_epistemic_operations_change_only_exact_record_and_permission_snapshot
+    law=json.loads((RET/'runtime_root/law/ADP017.txt').read_text())
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1058: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1044: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '[MS3_RETURN]/staging/ms2/staging/ms1/runtime/runtime_root/law/ADP017.txt'
+_____ test_law_17_negative_classes_keep_unknown_distinct_from_unauthorized _____
+WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py:233: in test_law_17_negative_classes_keep_unknown_distinct_from_unauthorized
+    law=json.loads((RET/'runtime_root/law/ADP016.txt').read_text());rows={x['state']:x['behavior'] for x in law['fail_closed_states']}
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1058: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1044: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '[MS3_RETURN]/staging/ms2/staging/ms1/runtime/runtime_root/law/ADP016.txt'
+- generated xml file: [MS3_RETURN]/evidence/after/original120/junit.xml -
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_epistemic_operations_change_only_exact_record_and_permission_snapshot - FileNotFoundError: [Errno 2] No such file or directory: '[MS3_RETURN]/staging/ms2/staging/ms1/runtime/runtime_root/law/ADP017.txt'
+FAILED WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/staging/ms2/staging/ms1/runtime/candidate/can2_test_repair.py::test_law_17_negative_classes_keep_unknown_distinct_from_unauthorized - FileNotFoundError: [Errno 2] No such file or directory: '[MS3_RETURN]/staging/ms2/staging/ms1/runtime/runtime_root/law/ADP016.txt'
+======================== 2 failed, 118 passed in 4.62s =========================

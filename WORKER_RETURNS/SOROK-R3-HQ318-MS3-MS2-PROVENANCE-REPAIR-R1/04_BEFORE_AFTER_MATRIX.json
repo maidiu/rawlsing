@@ -1,0 +1,1150 @@
+{
+  "rows": [
+    {
+      "phase": "before",
+      "court": "original120",
+      "tests": 120,
+      "PASS": 118,
+      "FAIL": 2,
+      "ERROR": 0,
+      "SKIP": 0
+    },
+    {
+      "phase": "before",
+      "court": "ms2_51",
+      "tests": 51,
+      "PASS": 43,
+      "FAIL": 8,
+      "ERROR": 0,
+      "SKIP": 0
+    },
+    {
+      "phase": "before",
+      "court": "literal_p3b",
+      "tests": 1,
+      "PASS": 0,
+      "FAIL": 1,
+      "ERROR": 0,
+      "SKIP": 0
+    },
+    {
+      "phase": "after",
+      "court": "original120",
+      "tests": 120,
+      "PASS": 118,
+      "FAIL": 2,
+      "ERROR": 0,
+      "SKIP": 0
+    },
+    {
+      "phase": "after",
+      "court": "ms2_51",
+      "tests": 51,
+      "PASS": 51,
+      "FAIL": 0,
+      "ERROR": 0,
+      "SKIP": 0
+    },
+    {
+      "phase": "after",
+      "court": "literal_p3b",
+      "tests": 1,
+      "PASS": 0,
+      "FAIL": 1,
+      "ERROR": 0,
+      "SKIP": 0
+    },
+    {
+      "phase": "author",
+      "court": "author",
+      "tests": 47,
+      "PASS": 47,
+      "FAIL": 0,
+      "ERROR": 0,
+      "SKIP": 0
+    },
+    {
+      "phase": "extension_before",
+      "court": "selector_extension",
+      "tests": 12,
+      "PASS": 11,
+      "FAIL": 1,
+      "ERROR": 0,
+      "SKIP": 0
+    },
+    {
+      "phase": "extension_after",
+      "court": "selector_extension",
+      "tests": 12,
+      "PASS": 12,
+      "FAIL": 0,
+      "ERROR": 0,
+      "SKIP": 0
+    },
+    {
+      "phase": "selector_logging_v1/before",
+      "court": "selector_extension",
+      "tests": 12,
+      "PASS": 0,
+      "FAIL": 12,
+      "ERROR": 0,
+      "SKIP": 0
+    },
+    {
+      "phase": "selector_logging_v1/after",
+      "court": "selector_extension",
+      "tests": 12,
+      "PASS": 0,
+      "FAIL": 12,
+      "ERROR": 0,
+      "SKIP": 0
+    }
+  ],
+  "main171_before": {
+    "PASS": 161,
+    "FAIL": 10
+  },
+  "main171_after": {
+    "PASS": 169,
+    "FAIL": 2
+  },
+  "author47": {
+    "PASS": 47,
+    "FAIL": 0
+  },
+  "literal_P3b_separate": "1FAIL before and after",
+  "original171_cases": [
+    {
+      "court": "original120",
+      "name": "test_positive_path_and_exact_replay_and_real_control",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_all_first_event_transaction_boundaries_rollback[after_coupling]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_all_first_event_transaction_boundaries_rollback[after_trace_validation]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_all_first_event_transaction_boundaries_rollback[after_epistemic]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_all_first_event_transaction_boundaries_rollback[after_current_commit]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_all_first_event_transaction_boundaries_rollback[after_owner_journal]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_later_failure_retains_exact_first_committed_event",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_invalid_sealed_event_never_admits_or_mutates[issuer_authority_id-FORGED]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_invalid_sealed_event_never_admits_or_mutates[issuer_authority_version-2]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_invalid_sealed_event_never_admits_or_mutates[actor_scope-OTHER]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_invalid_sealed_event_never_admits_or_mutates[effective_causal_time-2099-01-01T00:00:00Z]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_invalid_sealed_event_never_admits_or_mutates[world_as_of-1999]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_invalid_sealed_event_never_admits_or_mutates[event_hash-]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_invalid_sealed_event_never_admits_or_mutates[admission_state-PROPOSED]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_invalid_sealed_event_never_admits_or_mutates[derived_from_future_partition-True]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_invalid_sealed_event_never_admits_or_mutates[event_kind-STATIC_STATE_RECORD]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_binding_mutation_enters_valid_event_path_and_refuses[rule_id]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_binding_mutation_enters_valid_event_path_and_refuses[eligible_event_authority_signatures]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_binding_mutation_enters_valid_event_path_and_refuses[actor_scope]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_binding_mutation_enters_valid_event_path_and_refuses[receivability_semantics]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_binding_mutation_enters_valid_event_path_and_refuses[eligible_conditioning_owner_signatures]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_binding_mutation_enters_valid_event_path_and_refuses[conditioning_causal_use_roles]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_binding_mutation_enters_valid_event_path_and_refuses[counterpart_scoping]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_binding_mutation_enters_valid_event_path_and_refuses[modality_evidence_authorities]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_binding_mutation_enters_valid_event_path_and_refuses[uptake_appraisal_semantics]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_binding_mutation_enters_valid_event_path_and_refuses[recruitment_semantics]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_binding_mutation_enters_valid_event_path_and_refuses[multiplicity_handling]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_binding_mutation_enters_valid_event_path_and_refuses[co_determination_closure]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_binding_mutation_enters_valid_event_path_and_refuses[prior_response_history_predicates]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_binding_mutation_enters_valid_event_path_and_refuses[current_condition_effort_role]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_binding_mutation_enters_valid_event_path_and_refuses[effect_kinds]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_binding_mutation_enters_valid_event_path_and_refuses[target_validation]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_binding_mutation_enters_valid_event_path_and_refuses[pff_current_consequence_projection]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_binding_mutation_enters_valid_event_path_and_refuses[valid_empty_behavior]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_binding_mutation_enters_valid_event_path_and_refuses[missing_deferred_ambiguous_behavior]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_binding_mutation_enters_valid_event_path_and_refuses[quantitative_contract]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_binding_mutation_enters_valid_event_path_and_refuses[adp020_binding]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_binding_mutation_enters_valid_event_path_and_refuses[atomic_commit_behavior]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_binding_mutation_enters_valid_event_path_and_refuses[provenance_replay_requirements]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_rule_body_digest_and_registry_tamper_enforcement",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_complete_event_hash_detects_content_change_and_unknown_parent",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_parent_time_is_checked_without_caller_flag",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_history_integrity_and_aliases[content]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_history_integrity_and_aliases[truncate]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_history_integrity_and_aliases[reorder]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_history_integrity_and_aliases[rehash]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_history_integrity_and_aliases[alias]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_memory_actual_commit_source_bindings_and_idempotence",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_memory_gate_refusals_are_neutral[parent]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_memory_gate_refusals_are_neutral[actor]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_memory_gate_refusals_are_neutral[feature]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_memory_gate_refusals_are_neutral[authority]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_memory_gate_refusals_are_neutral[prestate]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_memory_gate_refusals_are_neutral[rule]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_memory_gate_refusals_are_neutral[version]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_memory_gate_refusals_are_neutral[rng]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_memory_gate_refusals_are_neutral[missing]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_memory_gate_refusals_are_neutral[noncausal]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_memory_proposal_tampering_cannot_commit",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_no_context_is_deferred_and_no_unbound_proposal_applies",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_memory_collision_and_no_unauthorized_transition",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_epistemic_gates_with_real_canonical_positive_control[claim]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_epistemic_gates_with_real_canonical_positive_control[basis]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_epistemic_gates_with_real_canonical_positive_control[parent]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_epistemic_gates_with_real_canonical_positive_control[rule]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_epistemic_gates_with_real_canonical_positive_control[actor]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_epistemic_gates_with_real_canonical_positive_control[time]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_epistemic_gates_with_real_canonical_positive_control[prestate]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_epistemic_gates_with_real_canonical_positive_control[knowledge]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_canonical_claim_tampering_and_foreign_feature_emission_refuse",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_epistemic_operations_change_only_exact_record_and_permission_snapshot",
+      "before": "FAIL",
+      "after": "FAIL"
+    },
+    {
+      "court": "original120",
+      "name": "test_k5_truth_cannot_create_or_edit_belief_or_public_standing",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_k3_permissions_do_not_promote_trace_or_unknown[CAUSAL_TRACE_MEMORY-NOT_APPLICABLE_CAUSAL_TRACE-RETAINED-DENY_FIRST_PERSON_CLAIM]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_k3_permissions_do_not_promote_trace_or_unknown[EVENT_REFERENTIAL_MEMORY-INACCESSIBLE-RETAINED-DENY_FIRST_PERSON_CLAIM]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_k3_permissions_do_not_promote_trace_or_unknown[EVENT_REFERENTIAL_MEMORY-ACCESS_UNKNOWN-RETENTION_UNKNOWN-DEFER_MISSING_AUTHORITY]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_guard_empty_exact_before_and_after_every_positive_fixture",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_law_17_negative_classes_keep_unknown_distinct_from_unauthorized",
+      "before": "FAIL",
+      "after": "FAIL"
+    },
+    {
+      "court": "original120",
+      "name": "test_partial_owner_journal_commit_refusal_rolls_back_all",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_post_commit_wrong_payload_with_valid_chain_hash_is_not_a_legal_history",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_source_and_memory_records_cannot_silently_mutate_candidate_state",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_withdraw_foreign_record_and_supersede_exact_record",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_first_person_permission_requires_exact_live_state_snapshot",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_owner_fixture_cannot_bypass_absent_registered_rule",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_duplicate_valid_event_and_borrowed_prestate_refuse",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_valid_memory_parent_prestate_and_rehydration_firewalls",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_actual_module_byte_change_invalidates_registered_body",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_state_ref_ablation_does_not_falsely_claim_memory_mediated_contrast",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_response_receipt_has_no_mutable_alias_to_working_response",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_returned_epistemic_transition_and_state_view_do_not_alias_live_store",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_control_native_modules_execute_and_owner_state_is_real",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_control_negative_native_refuses_unregistered_content_class",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_memory_content_varies_under_one_memory_id_with_fixed_exogenous_inputs",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_p1_memory_content_intervention_changes_later_response",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_p2a_mediator_present_versus_absent_changes_response",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_p2b_mediator_absent_is_observationally_distinct_under_unknown_access",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_p3a_native_withdrawal_changes_response_when_access_is_permitting",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_p3b_PREREGISTERED_PREDICTION_IS_FALSIFIED_and_is_reported_as_such",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_c4b_accessibility_channel_dominates_the_withdrawal_outcome",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_p4_DECISIVE_clamped_belief_yields_identical_response_despite_different_memory_content",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_p4b_consumer_cannot_read_memory_at_all_by_construction",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_p5_withholding_prior_response_history_does_not_move_the_consumer",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_p8_reference_only_mediator_does_not_reproduce_the_content_effect",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_p9_tampered_memory_content_is_refused_and_leaves_no_epistemic_state",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_p9b_forged_content_does_not_flip_an_uncertain_memory_into_a_permitted_one",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_p10_refused_outcome_leaves_owner_state_byte_identical_to_prestate",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_p10b_inhibited_mediator_writes_no_epistemic_state",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_p11a_unknown_memory_basis_is_refused",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_p11b_foreign_actor_is_refused",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_p11c_wrong_time_is_refused",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_p11d_unknown_claim_is_refused",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_p11e_knowledge_stance_is_refused_by_the_native_owner",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_p11f_foreign_target_record_withdrawal_is_refused",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_p6_stance_is_private_belief_only_and_no_public_standing",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_p6b_every_cell_permission_is_within_the_native_finite_enum",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_p7_causal_trace_is_never_first_person_claimable_k3_preserved",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_p7b_unknown_memory_access_defers_rather_than_denying",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_native_adp017_never_reads_memory_content",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_native_can008_response_effect_is_caller_supplied",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_our_rules_are_labelled_unissued_and_not_production",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "original120",
+      "name": "test_deterministic_replay_of_the_whole_construct",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_reconstruct_actual_cells_without_author_run_cell[C1]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_reconstruct_actual_cells_without_author_run_cell[C2]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_reconstruct_actual_cells_without_author_run_cell[C3]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_reconstruct_actual_cells_without_author_run_cell[C4]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_reconstruct_actual_cells_without_author_run_cell[C4b]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_reconstruct_actual_cells_without_author_run_cell[C5]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_reconstruct_actual_cells_without_author_run_cell[C6]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_reconstruct_actual_cells_without_author_run_cell[C7]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_reconstruct_actual_cells_without_author_run_cell[C8]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_reconstruct_actual_cells_without_author_run_cell[C9]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_reconstruct_actual_cells_without_author_run_cell[C10]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_fixed_epistemic_channel_blocks_memory_content_effect_on_outcome_choice[False-CLAIM_ACCESSIBLE]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_fixed_epistemic_channel_blocks_memory_content_effect_on_outcome_choice[False-CLAIM_INACCESSIBLE]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_fixed_epistemic_channel_blocks_memory_content_effect_on_outcome_choice[False-CLAIM_ACCESS_UNKNOWN]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_fixed_epistemic_channel_blocks_memory_content_effect_on_outcome_choice[True-CLAIM_ACCESSIBLE]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_fixed_epistemic_channel_blocks_memory_content_effect_on_outcome_choice[True-CLAIM_INACCESSIBLE]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_fixed_epistemic_channel_blocks_memory_content_effect_on_outcome_choice[True-CLAIM_ACCESS_UNKNOWN]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_native_supersession_withdrawal_readdition_at_fixed_memory[CLAIM_ACCESSIBLE-AVAILABLE_SOURCE_BOUND]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_native_supersession_withdrawal_readdition_at_fixed_memory[CLAIM_ACCESSIBLE-AVAILABLE_UNCERTAIN]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_native_supersession_withdrawal_readdition_at_fixed_memory[CLAIM_INACCESSIBLE-AVAILABLE_SOURCE_BOUND]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_native_supersession_withdrawal_readdition_at_fixed_memory[CLAIM_INACCESSIBLE-AVAILABLE_UNCERTAIN]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_native_supersession_withdrawal_readdition_at_fixed_memory[CLAIM_ACCESS_UNKNOWN-AVAILABLE_SOURCE_BOUND]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_native_supersession_withdrawal_readdition_at_fixed_memory[CLAIM_ACCESS_UNKNOWN-AVAILABLE_UNCERTAIN]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_native_memory_reference_does_not_compute_content_to_accessibility[CLAIM_ACCESSIBLE]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_native_memory_reference_does_not_compute_content_to_accessibility[CLAIM_INACCESSIBLE]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_native_memory_reference_does_not_compute_content_to_accessibility[CLAIM_ACCESS_UNKNOWN]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_reference_only_pair_loses_the_content_contrast[False]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_reference_only_pair_loses_the_content_contrast[True]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_uncommitted_forged_memory_argument_refuses_without_owner_mutation[uncertainty_state]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_uncommitted_forged_memory_argument_refuses_without_owner_mutation[source_feature_bindings]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_uncommitted_forged_memory_argument_refuses_without_owner_mutation[memory_id]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_uncommitted_forged_memory_argument_refuses_without_owner_mutation[actor_id]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_rehashed_owner_memory_cannot_contradict_original_native_formation[uncertainty_only]",
+      "before": "FAIL",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_rehashed_owner_memory_cannot_contradict_original_native_formation[content_and_uncertainty]",
+      "before": "FAIL",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_rehashed_owner_memory_cannot_contradict_original_native_formation[formation_post_hash]",
+      "before": "FAIL",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_rehashed_owner_memory_cannot_contradict_original_native_formation[empty_source_refs]",
+      "before": "FAIL",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_stale_permission_cannot_override_native_terminal_state[WITHDRAW]",
+      "before": "FAIL",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_stale_permission_cannot_override_native_terminal_state[INACCESSIBLE]",
+      "before": "FAIL",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_stale_permission_cannot_override_native_terminal_state[UNKNOWN]",
+      "before": "FAIL",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_native_wrong_actor_time_claim_or_basis_refuses_atomically[actor]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_native_wrong_actor_time_claim_or_basis_refuses_atomically[time]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_native_wrong_actor_time_claim_or_basis_refuses_atomically[claim]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_native_wrong_actor_time_claim_or_basis_refuses_atomically[memory]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_native_wrong_actor_time_claim_or_basis_refuses_atomically[rule_hash]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_native_wrong_actor_time_claim_or_basis_refuses_atomically[basis]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_consumer_wrong_event_scope_refuses_atomically[actor]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_consumer_wrong_event_scope_refuses_atomically[world]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_consumer_wrong_event_scope_refuses_atomically[time]",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_unknown_consumer_claim_cannot_be_misreported_as_bound_absence",
+      "before": "FAIL",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_history_input_changes_provenance_but_not_choice_and_can3_comparator_stays_distinct",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "ms2_51",
+      "name": "test_causal_counterfactuals_preserve_original_falsification_and_authored_exclusion",
+      "before": "PASS",
+      "after": "PASS"
+    },
+    {
+      "court": "literal_p3b",
+      "name": "test_original_P3b_C2_must_differ_from_C4",
+      "before": "FAIL",
+      "after": "FAIL"
+    }
+  ]
+}
