@@ -49,17 +49,19 @@ class Cell:
   self.reg=CandidateRegistryFixture();need(old.register_default_rule(self.reg)['status']=='CANDIDATE_REGISTERED_IN_FIXTURE','OLD_RULE_UNBOUND')
   self.ctx=owner.FixtureOwnerState(self.reg);self.history=ChainEventLedger();self.journal=ChainEventLedger();self.reads=[]
   self.binding=old.build_default_binding();self.e1,self.e2=events();self.grant=source_hash();self.initial=self.ctx.state_hash
-  self.claim_id=None;self.first_receipt=None;self.formation=None;self.epistemic=None;self._claim_selection_binding_json=None
+  self.claim_id=None;self.first_receipt=None;self.formation=None;self.epistemic=None;self._claim_selection_binding_json=None;self._native_formation_inputs={}
  def checkpoint(self):
-  return deepcopy(dict(reg=self.reg.checkpoint(),ctx=self.ctx.checkpoint(),history=self.history.checkpoint(),journal=self.journal.checkpoint(),reads=self.reads,claim_id=self.claim_id,first_receipt=self.first_receipt,formation=self.formation,epistemic=self.epistemic,claim_selection_binding=self._claim_selection_binding_json))
+  return deepcopy(dict(reg=self.reg.checkpoint(),ctx=self.ctx.checkpoint(),history=self.history.checkpoint(),journal=self.journal.checkpoint(),reads=self.reads,claim_id=self.claim_id,first_receipt=self.first_receipt,formation=self.formation,epistemic=self.epistemic,claim_selection_binding=self._claim_selection_binding_json,native_formation_inputs=self._native_formation_inputs))
  def _restore_parts(self,s):
   self.reg.restore(s['reg']);self.ctx.restore(s['ctx']);self.history.restore(s['history']);self.journal.restore(s['journal'])
   for k in ('reads','claim_id','first_receipt','formation','epistemic'):setattr(self,k,deepcopy(s[k]))
   self._claim_selection_binding_json=deepcopy(s.get('claim_selection_binding'))
+  self._native_formation_inputs=deepcopy(s.get('native_formation_inputs',{}))
  def restore(self,s):
   before=self.checkpoint()
   try:
-   self._restore_parts(s);claim_provenance.validate_binding(self)
+   self._restore_parts(s);bound=claim_provenance.validate_binding(self)
+   if bound is not None:claim_provenance.validate_native_ancestry(self)
   except Exception as e:
    self._restore_parts(before)
    if isinstance(e,Refusal):raise
@@ -70,7 +72,11 @@ class Cell:
   need(where!=failure,'TEST_FAULT_'+where)
  def form(self,content='AVAILABLE_SOURCE_BOUND',**overrides):
   args=dict(actor_id=self.ctx.actor_id,basis_event=self.e1,trace_key='TRACE_FEEDBACK_WINDOW_EXPERIENCE',content_state=content,owning_rule_id=self.binding.rule_id,owning_rule_version=self.binding.rule_version,owning_rule_hash=self.binding.rule_content_hash,authority_id='WORKER_CANDIDATE_FIXTURE',authority_version='1',parent_state_hash=self.ctx.state_hash,context=self.ctx)
-  args.update(overrides);return owner.adp016_form_causal_trace(**args)
+  args.update(overrides);proposal=owner.adp016_form_causal_trace(**args)
+  if proposal.get('status')=='ADP016_FORMATION_VALIDATED_IN_FIXTURE':
+   witness=deepcopy({k:v for k,v in args.items() if k!='context'});witness['basis_event']=asdict(args['basis_event'])
+   self._native_formation_inputs[proposal['transition']['memory_transition_id']]=witness
+  return proposal
  def epi_args(self,access='CLAIM_ACCESSIBLE'):
   return dict(actor_id=self.ctx.actor_id,claim_ref=self.claim_id,stance_kind='BELIEF',stance_operation='ADD',causal_parent_refs=[self.e1.event_id],actor_facing_basis_refs=[self.e1.event_id+':'+self.e1.event_hash],memory_basis_refs=[],owning_rule_id=self.binding.rule_id,owning_rule_version=self.binding.rule_version,owning_rule_hash=self.binding.rule_content_hash,effective_causal_time=self.e1.effective_causal_time,context=self.ctx,pre_state_hash=self.ctx.state_hash,claim_accessibility=access)
  def prepare(self,memory='CERTAIN',epistemic='BELIEF',history='STORED',failure=None):

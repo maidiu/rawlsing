@@ -238,10 +238,10 @@
           "owning_rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
           "response_rule_id": "M01_PARALLEL_OWNER_READ",
           "response_rule_version": "1.0.0-TEST_ONLY",
-          "response_source_hash": "3731d10513ac112d2675cd24636c46fa94b1ff9540909742273fd3930ae2337c",
+          "response_source_hash": "e9eadaa65348859aa194105c36d052ac5b61f9084a3e216e332840991cebbbf8",
           "first_response_receipt_hash": "5d1aecef16daecbf13c3ef5424ff2c057b6d72f7d53c3874de5619206ff0e9ea"
         },
-        "first_event_entry_hash": "13b7c268bfa758f0b39355e15ef7230c51602104c00397d867497690cfe61cd1",
+        "first_event_entry_hash": "8ec94a1c0d9e53139731c03efdb9ecf3af239fee48787a15f1cd746655fda931",
         "first_owner_state_hash": "0072a674ea5da61f7556ea76a387a4fcd8de9fb2e17b7721c01c202e5ac0edfc"
       },
       "selected_claim_ref": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
@@ -254,6 +254,41 @@
           "effective_causal_time": "1998-10-03T16:00:00Z"
         }
       ],
+      "native_owner_ancestry": {
+        "schema": "M05_NATIVE_OWNER_ANCESTRY@1",
+        "rooted_in_first_journal": true,
+        "root_state_hash": "8cc61c5d9b64d375c2c59a69d695d6b4b65358d7864a5d2da4c595445c122440",
+        "first_event_entry_hash": "8ec94a1c0d9e53139731c03efdb9ecf3af239fee48787a15f1cd746655fda931",
+        "first_owner_state_hash": "0072a674ea5da61f7556ea76a387a4fcd8de9fb2e17b7721c01c202e5ac0edfc",
+        "current_owner_state_hash": "0072a674ea5da61f7556ea76a387a4fcd8de9fb2e17b7721c01c202e5ac0edfc",
+        "first_steps": [
+          {
+            "kind": "ADP016",
+            "pre_state_hash": "8cc61c5d9b64d375c2c59a69d695d6b4b65358d7864a5d2da4c595445c122440",
+            "post_state_hash": "db3d06ca5e091fef55a30fa0b8db6a04eff69d1e0bc2fd02e0e361bfef00a6f8",
+            "transition_id": "2b731911bb60f23c983b376ec972a499ed0e9115a3bffe4ae3829ba966fa48dd"
+          },
+          {
+            "kind": "CANONICAL_CLAIM_BIND",
+            "pre_state_hash": "db3d06ca5e091fef55a30fa0b8db6a04eff69d1e0bc2fd02e0e361bfef00a6f8",
+            "post_state_hash": "c16bc4003605f28395ae091761cac4892cf8e24de6563a6fa3a781df95f92301",
+            "claim_ref": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
+            "event_id": "M01_FEEDBACK",
+            "event_hash": "b5d89f7188007b480b89a877708d9bd62a7aac95a9aaf574f45ba4bc3275d2a5"
+          },
+          {
+            "kind": "ADP017",
+            "pre_state_hash": "c16bc4003605f28395ae091761cac4892cf8e24de6563a6fa3a781df95f92301",
+            "post_state_hash": "0072a674ea5da61f7556ea76a387a4fcd8de9fb2e17b7721c01c202e5ac0edfc",
+            "transition_id": "ef329d24907847150af4301af136b4bb8f41ac64a6532f67fa4f4021b440c5ad"
+          }
+        ],
+        "later_steps": [],
+        "terminal_transition_refs": {
+          "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356": "ef329d24907847150af4301af136b4bb8f41ac64a6532f67fa4f4021b440c5ad"
+        },
+        "authority": "ORIGINAL_SOURCEFREE_NATIVE_REPLAY; NOT_A_PRODUCTION_SIGNER"
+      },
       "disposition": "BOUND_CANONICAL_CLAIM_WITH_NATIVE_STATE",
       "production_authority": "NOT_ISSUED_TEST_ONLY"
     }

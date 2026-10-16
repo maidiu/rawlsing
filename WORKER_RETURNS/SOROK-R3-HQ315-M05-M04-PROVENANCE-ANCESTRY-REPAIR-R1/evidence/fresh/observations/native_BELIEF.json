@@ -244,10 +244,10 @@
             "owning_rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
             "response_rule_id": "M01_PARALLEL_OWNER_READ",
             "response_rule_version": "1.0.0-TEST_ONLY",
-            "response_source_hash": "3731d10513ac112d2675cd24636c46fa94b1ff9540909742273fd3930ae2337c",
+            "response_source_hash": "e9eadaa65348859aa194105c36d052ac5b61f9084a3e216e332840991cebbbf8",
             "first_response_receipt_hash": "5d1aecef16daecbf13c3ef5424ff2c057b6d72f7d53c3874de5619206ff0e9ea"
           },
-          "first_event_entry_hash": "5d01dd9d2b82d7685aa0871b1b447e134163466bf49f205c76d83307a3b03450",
+          "first_event_entry_hash": "22c56cee84c41c20e24a042e0454c57202589eebec58537560771323cfab5122",
           "first_owner_state_hash": "bddf2127626b1e320affad6927ebb5556c2ed3c43ca5b999637eb88f5511d60d"
         },
         "selected_claim_ref": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
@@ -260,6 +260,41 @@
             "effective_causal_time": "1998-10-03T16:00:00Z"
           }
         ],
+        "native_owner_ancestry": {
+          "schema": "M05_NATIVE_OWNER_ANCESTRY@1",
+          "rooted_in_first_journal": true,
+          "root_state_hash": "8cc61c5d9b64d375c2c59a69d695d6b4b65358d7864a5d2da4c595445c122440",
+          "first_event_entry_hash": "22c56cee84c41c20e24a042e0454c57202589eebec58537560771323cfab5122",
+          "first_owner_state_hash": "bddf2127626b1e320affad6927ebb5556c2ed3c43ca5b999637eb88f5511d60d",
+          "current_owner_state_hash": "bddf2127626b1e320affad6927ebb5556c2ed3c43ca5b999637eb88f5511d60d",
+          "first_steps": [
+            {
+              "kind": "ADP016",
+              "pre_state_hash": "8cc61c5d9b64d375c2c59a69d695d6b4b65358d7864a5d2da4c595445c122440",
+              "post_state_hash": "a081601854784cd4a1d8a109f6289ecc833fcfd545a601a5b8dcae9cdcf8b4a9",
+              "transition_id": "964410a241f0da58dce0c0a3eb105d783c30c829023df26d248018c23385ea7e"
+            },
+            {
+              "kind": "CANONICAL_CLAIM_BIND",
+              "pre_state_hash": "a081601854784cd4a1d8a109f6289ecc833fcfd545a601a5b8dcae9cdcf8b4a9",
+              "post_state_hash": "9967aedf2d4c069cb5ffc5bc338286e78f07f91403835dade220414a325345b5",
+              "claim_ref": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
+              "event_id": "M01_FEEDBACK",
+              "event_hash": "b5d89f7188007b480b89a877708d9bd62a7aac95a9aaf574f45ba4bc3275d2a5"
+            },
+            {
+              "kind": "ADP017",
+              "pre_state_hash": "9967aedf2d4c069cb5ffc5bc338286e78f07f91403835dade220414a325345b5",
+              "post_state_hash": "bddf2127626b1e320affad6927ebb5556c2ed3c43ca5b999637eb88f5511d60d",
+              "transition_id": "966e2c8b3e99242c9e7ed710f685d5a0696bf16929928d9a5c171ba53b2b40ac"
+            }
+          ],
+          "later_steps": [],
+          "terminal_transition_refs": {
+            "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356": "966e2c8b3e99242c9e7ed710f685d5a0696bf16929928d9a5c171ba53b2b40ac"
+          },
+          "authority": "ORIGINAL_SOURCEFREE_NATIVE_REPLAY; NOT_A_PRODUCTION_SIGNER"
+        },
         "disposition": "BOUND_CANONICAL_CLAIM_WITH_NATIVE_STATE",
         "production_authority": "NOT_ISSUED_TEST_ONLY"
       }
@@ -502,7 +537,7 @@
       "payload": {
         "rule_id": "M01_PARALLEL_OWNER_READ",
         "version": "1.0.0-TEST_ONLY",
-        "source_hash": "3731d10513ac112d2675cd24636c46fa94b1ff9540909742273fd3930ae2337c",
+        "source_hash": "e9eadaa65348859aa194105c36d052ac5b61f9084a3e216e332840991cebbbf8",
         "event": {
           "event_id": "M01_LATER_SHIFT_REQUEST",
           "event_hash": "dbea76c8f64b267277391a7e3bec1800eac08d0d2431aa6416ce2dcf021ee9c1",
@@ -762,10 +797,10 @@
                 "owning_rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
                 "response_rule_id": "M01_PARALLEL_OWNER_READ",
                 "response_rule_version": "1.0.0-TEST_ONLY",
-                "response_source_hash": "3731d10513ac112d2675cd24636c46fa94b1ff9540909742273fd3930ae2337c",
+                "response_source_hash": "e9eadaa65348859aa194105c36d052ac5b61f9084a3e216e332840991cebbbf8",
                 "first_response_receipt_hash": "5d1aecef16daecbf13c3ef5424ff2c057b6d72f7d53c3874de5619206ff0e9ea"
               },
-              "first_event_entry_hash": "5d01dd9d2b82d7685aa0871b1b447e134163466bf49f205c76d83307a3b03450",
+              "first_event_entry_hash": "22c56cee84c41c20e24a042e0454c57202589eebec58537560771323cfab5122",
               "first_owner_state_hash": "bddf2127626b1e320affad6927ebb5556c2ed3c43ca5b999637eb88f5511d60d"
             },
             "selected_claim_ref": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
@@ -778,6 +813,41 @@
                 "effective_causal_time": "1998-10-03T16:00:00Z"
               }
             ],
+            "native_owner_ancestry": {
+              "schema": "M05_NATIVE_OWNER_ANCESTRY@1",
+              "rooted_in_first_journal": true,
+              "root_state_hash": "8cc61c5d9b64d375c2c59a69d695d6b4b65358d7864a5d2da4c595445c122440",
+              "first_event_entry_hash": "22c56cee84c41c20e24a042e0454c57202589eebec58537560771323cfab5122",
+              "first_owner_state_hash": "bddf2127626b1e320affad6927ebb5556c2ed3c43ca5b999637eb88f5511d60d",
+              "current_owner_state_hash": "bddf2127626b1e320affad6927ebb5556c2ed3c43ca5b999637eb88f5511d60d",
+              "first_steps": [
+                {
+                  "kind": "ADP016",
+                  "pre_state_hash": "8cc61c5d9b64d375c2c59a69d695d6b4b65358d7864a5d2da4c595445c122440",
+                  "post_state_hash": "a081601854784cd4a1d8a109f6289ecc833fcfd545a601a5b8dcae9cdcf8b4a9",
+                  "transition_id": "964410a241f0da58dce0c0a3eb105d783c30c829023df26d248018c23385ea7e"
+                },
+                {
+                  "kind": "CANONICAL_CLAIM_BIND",
+                  "pre_state_hash": "a081601854784cd4a1d8a109f6289ecc833fcfd545a601a5b8dcae9cdcf8b4a9",
+                  "post_state_hash": "9967aedf2d4c069cb5ffc5bc338286e78f07f91403835dade220414a325345b5",
+                  "claim_ref": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
+                  "event_id": "M01_FEEDBACK",
+                  "event_hash": "b5d89f7188007b480b89a877708d9bd62a7aac95a9aaf574f45ba4bc3275d2a5"
+                },
+                {
+                  "kind": "ADP017",
+                  "pre_state_hash": "9967aedf2d4c069cb5ffc5bc338286e78f07f91403835dade220414a325345b5",
+                  "post_state_hash": "bddf2127626b1e320affad6927ebb5556c2ed3c43ca5b999637eb88f5511d60d",
+                  "transition_id": "966e2c8b3e99242c9e7ed710f685d5a0696bf16929928d9a5c171ba53b2b40ac"
+                }
+              ],
+              "later_steps": [],
+              "terminal_transition_refs": {
+                "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356": "966e2c8b3e99242c9e7ed710f685d5a0696bf16929928d9a5c171ba53b2b40ac"
+              },
+              "authority": "ORIGINAL_SOURCEFREE_NATIVE_REPLAY; NOT_A_PRODUCTION_SIGNER"
+            },
             "disposition": "BOUND_CANONICAL_CLAIM_WITH_NATIVE_STATE",
             "production_authority": "NOT_ISSUED_TEST_ONLY"
           }
@@ -1028,8 +1098,8 @@
         "M01_LATER_SHIFT_REQUEST",
         "M01_FEEDBACK"
       ],
-      "prev_entry_hash": "5d01dd9d2b82d7685aa0871b1b447e134163466bf49f205c76d83307a3b03450",
-      "entry_hash": "e3b400ced6b5c10d3454e11e7ae02a1bb3a5052c6ea300666905050755c686c8"
+      "prev_entry_hash": "22c56cee84c41c20e24a042e0454c57202589eebec58537560771323cfab5122",
+      "entry_hash": "2e5fa4a159ee701c2ad001bcdd6d26398fbc3717a9f944b98952e9a8afbca89b"
     },
     "state_hash": "bddf2127626b1e320affad6927ebb5556c2ed3c43ca5b999637eb88f5511d60d"
   }

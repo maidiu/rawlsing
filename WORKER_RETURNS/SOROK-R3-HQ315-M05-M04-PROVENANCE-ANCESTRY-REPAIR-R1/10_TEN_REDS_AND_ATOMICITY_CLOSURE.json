@@ -1,0 +1,62 @@
+[
+  {
+    "after": "PASS",
+    "before": "FAIL",
+    "case": "test_cross_cell_none_owner_cannot_erase_first_committed_belief[NONE]",
+    "source_family": "erase_owner_"
+  },
+  {
+    "after": "PASS",
+    "before": "FAIL",
+    "case": "test_cross_cell_none_owner_cannot_erase_first_committed_belief[CERTAIN]",
+    "source_family": "erase_owner_"
+  },
+  {
+    "after": "PASS",
+    "before": "FAIL",
+    "case": "test_cross_cell_none_owner_cannot_erase_first_committed_belief[UNCERTAIN]",
+    "source_family": "erase_owner_"
+  },
+  {
+    "after": "PASS",
+    "before": "FAIL",
+    "case": "test_cross_cell_none_owner_cannot_erase_first_committed_belief[UNAVAILABLE]",
+    "source_family": "erase_owner_"
+  },
+  {
+    "after": "PASS",
+    "before": "FAIL",
+    "case": "test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback[False-SUPERSEDE_EXACT_RECORD]",
+    "source_family": "resurrect_"
+  },
+  {
+    "after": "PASS",
+    "before": "FAIL",
+    "case": "test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback[False-WITHDRAW]",
+    "source_family": "resurrect_"
+  },
+  {
+    "after": "PASS",
+    "before": "FAIL",
+    "case": "test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback[True-SUPERSEDE_EXACT_RECORD]",
+    "source_family": "resurrect_"
+  },
+  {
+    "after": "PASS",
+    "before": "FAIL",
+    "case": "test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback[True-WITHDRAW]",
+    "source_family": "resurrect_"
+  },
+  {
+    "after": "PASS",
+    "before": "FAIL",
+    "case": "test_fully_rehashed_transition_requires_actual_prestate_ancestry[False]",
+    "source_family": "forged_ancestry_"
+  },
+  {
+    "after": "PASS",
+    "before": "FAIL",
+    "case": "test_fully_rehashed_transition_requires_actual_prestate_ancestry[True]",
+    "source_family": "forged_ancestry_"
+  }
+]

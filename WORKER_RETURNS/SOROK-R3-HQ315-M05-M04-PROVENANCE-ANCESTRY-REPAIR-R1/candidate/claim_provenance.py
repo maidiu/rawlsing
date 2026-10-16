@@ -245,6 +245,7 @@ def validate_consumption(c, at):
     try:
         binding = validate_binding(c)
         require(binding is not None, "CLAIM_SELECTION_NOT_COMMITTED")
+        native_ancestry = validate_native_ancestry(c)
         cut = parse_time(at)
         require(
             parse_time("1998-01-01T00:00:00Z")
@@ -357,6 +358,7 @@ def validate_consumption(c, at):
             response_as_of=at,
             canonical_claim_time=claim["temporal_scope"],
             actual_effect_provenance=proofs,
+            native_owner_ancestry=native_ancestry,
             disposition=disposition,
             production_authority="NOT_ISSUED_TEST_ONLY",
         )
@@ -364,3 +366,174 @@ def validate_consumption(c, at):
         raise
     except (ValueError, TypeError, KeyError, AttributeError):
         raise Refusal("CLAIM_CONSUMPTION_PROVENANCE_MALFORMED") from None
+
+
+# M05: reconstruction through original native owners, not digest self-attestation.
+def _native_event(c, event_id):
+    raw = c.reg.event(event_id)
+    require(raw is not None, 'CLAIM_ANCESTRY_EVENT_MISSING')
+    event = type(c.e1)(**raw)
+    require(c.reg.verify_event(event), 'CLAIM_ANCESTRY_EVENT_INTEGRITY')
+    return event
+
+
+def _copy_native(c, state):
+    ctx = owner.FixtureOwnerState(c.reg)
+    ctx.restore(dict(state=state, pending={}))
+    return ctx
+
+
+def _replay_owner(c, start, target):
+    """Reproduce an exact native store from a proven predecessor.
+
+    The original ADP017 receipt omits the accessibility argument but commits its
+    resulting snapshot hash. Enumerate only the three original API categories
+    and require byte-equivalent native receipts; never derive new semantics.
+    ADP016's noninvertible formation inputs are separately retained and replayed.
+    Neither witness is sufficient without original native validation/results.
+    """
+    import json
+    from copy import deepcopy
+    require(set(start) == set(target), 'CLAIM_ANCESTRY_STATE_SCHEMA')
+    for family in ('memories', 'memory_transitions', 'claims', 'emissions'):
+        require(all(k in target[family] and canon(v) == canon(target[family][k])
+                    for k, v in start[family].items()), 'CLAIM_ANCESTRY_PREFIX_' + family.upper())
+    n = len(start['epistemic_transitions'])
+    require(canon(target['epistemic_transitions'][:n]) == canon(start['epistemic_transitions']),
+            'CLAIM_ANCESTRY_TRANSITION_PREFIX')
+    require(len(target['epistemic_transitions']) >= n, 'CLAIM_ANCESTRY_TRUNCATED')
+    claims = tuple(sorted(set(target['claims']) - set(start['claims'])))
+    memories = tuple(sorted(set(target['memories']) - set(start['memories'])))
+    require(set(target['emissions']) == set(target['claims']), 'CLAIM_ANCESTRY_EMISSION_SET')
+    visited = set()
+
+    def walk(ctx, pending_claims, pending_memories):
+        key = ctx.state_hash
+        if key in visited:
+            return None
+        visited.add(key)
+        index = len(ctx.epistemic_transitions)
+        if not pending_claims and not pending_memories and index == len(target['epistemic_transitions']):
+            return [] if canon(ctx.data()) == canon(target) else None
+        candidates = []
+        if index < len(target['epistemic_transitions']):
+            transition = target['epistemic_transitions'][index]
+            if transition['pre_state_hash'] == ctx.state_hash:
+                effect = transition['effect']
+                for access in ('CLAIM_ACCESSIBLE', 'CLAIM_INACCESSIBLE', 'CLAIM_ACCESS_UNKNOWN'):
+                    nxt = _copy_native(c, ctx.data())
+                    args = {k: deepcopy(v) for k, v in effect.items() if k != 'effect_id'}
+                    args.update(context=nxt, pre_state_hash=ctx.state_hash,
+                                target_record_ref=transition['target_record_ref'], claim_accessibility=access)
+                    result = owner.adp017_apply_epistemic_effect(**args)
+                    if (result['decision_state'] == 'APPLIED_EPISTEMIC_TRANSITION'
+                            and canon(result['transition']) == canon(transition)):
+                        candidates.append((nxt, pending_claims, pending_memories,
+                            dict(kind='ADP017', pre_state_hash=ctx.state_hash, post_state_hash=nxt.state_hash,
+                                 transition_id=transition['transition_id'], native_result=result)))
+        for mid in pending_memories:
+            memory = target['memories'][mid]
+            transition = target['memory_transitions'].get(memory['last_transition_id'])
+            if transition is None or transition['pre_state_hash'] != ctx.state_hash:
+                continue
+            witness = c._native_formation_inputs.get(transition['memory_transition_id'])
+            if not isinstance(witness, dict):
+                continue
+            args = deepcopy(witness)
+            event = _native_event(c, args['basis_event']['event_id'])
+            if canon(args['basis_event']) != canon(asdict(event)):
+                continue
+            args['basis_event'] = event
+            nxt = _copy_native(c, ctx.data()); args['context'] = nxt
+            try:
+                proposal = owner.adp016_form_causal_trace(**args)
+                if (canon(proposal['memory']) != canon(memory)
+                        or canon(proposal['transition']) != canon(transition)):
+                    continue
+                result = nxt.commit_memory(proposal)
+            except owner.OwnerTransitionError:
+                continue
+            candidates.append((nxt, pending_claims, tuple(k for k in pending_memories if k != mid),
+                dict(kind='ADP016', pre_state_hash=ctx.state_hash, post_state_hash=nxt.state_hash,
+                     transition_id=transition['memory_transition_id'], native_proposal=proposal, native_result=result)))
+        for ref in pending_claims:
+            claim = target['claims'][ref]
+            emission = target['emissions'].get(ref)
+            if not isinstance(emission, dict):
+                continue
+            nxt = _copy_native(c, ctx.data())
+            try:
+                event = _native_event(c, emission['event_id'])
+                actual_ref = nxt.bind_claim(claim, event, stance_kind=emission['stance_kind'])
+                if actual_ref != ref or canon(nxt.emissions[ref]) != canon(emission):
+                    continue
+            except owner.OwnerTransitionError:
+                continue
+            candidates.append((nxt, tuple(k for k in pending_claims if k != ref), pending_memories,
+                dict(kind='CANONICAL_CLAIM_BIND', pre_state_hash=ctx.state_hash,
+                     post_state_hash=nxt.state_hash, claim_ref=ref, event_id=event.event_id, event_hash=event.event_hash)))
+        for nxt, pc, pm, proof in candidates:
+            suffix = walk(nxt, pc, pm)
+            if suffix is not None:
+                return [proof] + suffix
+        return None
+
+    result = walk(_copy_native(c, start), claims, memories)
+    require(result is not None, 'CLAIM_NATIVE_OWNER_TRAJECTORY_INVALID')
+    return result
+
+
+def validate_native_ancestry(c):
+    """Anchor in the actual first journal, then prove terminal complete state.
+
+    Replaying uses isolated original owner instances. Actual source owner,
+    registry, journals, permission records and read log are never mutated.
+    A valid complete checkpoint may replay; hybrid snapshots may not.
+    """
+    from cell import Refusal
+    try:
+        entries = c.journal.read_effects()
+        first = [e for e in entries if e['kind'] == 'FIRST_EVENT_COMPLETE']
+        require(len(first) == 1, 'CLAIM_ANCESTRY_FIRST_COMMIT_REQUIRED')
+        entry = first[0]; state = entry['payload']['state']
+        empty = owner.FixtureOwnerState(c.reg).data()
+        require(digest(empty) == c.initial, 'CLAIM_ANCESTRY_NATIVE_ROOT')
+        require(state['actor_id'] == c.ctx.actor_id, 'CLAIM_ANCESTRY_ACTOR')
+        basis = source_basis(c)
+        require(set(state['claims']) == {basis['canonical_claim_ref']}, 'CLAIM_ANCESTRY_FIRST_CLAIM_SET')
+        first_steps = _replay_owner(c, empty, state)
+        initial_rows = [e for e in entries[:entry['seq']] if e['kind'] in ('ADP016_COMMIT', 'ADP017_COMMIT')]
+        native_steps = [s for s in first_steps if s['kind'] in ('ADP016', 'ADP017')]
+        require(len(initial_rows) == len(native_steps), 'CLAIM_ANCESTRY_FIRST_JOURNAL_COVERAGE')
+        for row, step in zip(initial_rows, native_steps):
+            p = row['payload']
+            require(row['kind'] == step['kind'] + '_COMMIT'
+                    and row['effective_causal_time'] == c.e1.effective_causal_time
+                    and row['causal_parent_refs'] == [c.e1.event_id]
+                    and p['before'] == step['pre_state_hash'] and p['after'] == step['post_state_hash'],
+                    'CLAIM_ANCESTRY_FIRST_NATIVE_PRESTATE')
+            if step['kind'] == 'ADP016':
+                require(canon(p['proposal']) == canon(step['native_proposal'])
+                        and canon(p['commit']) == canon(step['native_result']), 'CLAIM_ANCESTRY_FIRST_MEMORY_RECEIPT')
+            else:
+                require(canon(p['result']) == canon(step['native_result']), 'CLAIM_ANCESTRY_FIRST_EPISTEMIC_RECEIPT')
+        current = c.ctx.data()
+        later_steps = _replay_owner(c, state, current)
+        terminal = {}
+        for t in current['epistemic_transitions']:
+            terminal[t['effect']['claim_ref']] = t['transition_id']
+        for ref, tid in terminal.items():
+            require(current['state_sets'][ref]['last_transition_ref'] == tid,
+                    'CLAIM_ANCESTRY_TERMINAL_TRANSITION')
+        def portable(steps):
+            return [{k: v for k, v in s.items() if k not in ('native_result', 'native_proposal')} for s in steps]
+        return dict(schema='M05_NATIVE_OWNER_ANCESTRY@1', rooted_in_first_journal=True,
+                    root_state_hash=digest(empty), first_event_entry_hash=entry['entry_hash'],
+                    first_owner_state_hash=digest(state), current_owner_state_hash=digest(current),
+                    first_steps=portable(first_steps), later_steps=portable(later_steps),
+                    terminal_transition_refs=terminal,
+                    authority='ORIGINAL_SOURCEFREE_NATIVE_REPLAY; NOT_A_PRODUCTION_SIGNER')
+    except Refusal:
+        raise
+    except (ValueError, TypeError, KeyError, AttributeError, IndexError, owner.OwnerTransitionError):
+        raise Refusal('CLAIM_NATIVE_OWNER_ANCESTRY_MALFORMED') from None

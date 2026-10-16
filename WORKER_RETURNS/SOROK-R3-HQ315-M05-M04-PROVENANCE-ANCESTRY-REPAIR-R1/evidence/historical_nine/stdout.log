@@ -91,7 +91,7 @@ WORKER_RETURNS/SOROK-R3-HQ315-M05-M04-PROVENANCE-ANCESTRY-REPAIR-R1/runtime/m02/
     assert all(x['validated'] and x['committed'] for x in response['target_owner_effect_requests']), 'Only unvalidated/uncommitted owner requests accompany reported target commit'
 E   AssertionError: Only unvalidated/uncommitted owner requests accompany reported target commit
 E   assert False
-E    +  where False = all(<generator object test_target_owner_validation_precedes_committed_effect.<locals>.<genexpr> at 0x10d1df780>)
+E    +  where False = all(<generator object test_target_owner_validation_precedes_committed_effect.<locals>.<genexpr> at 0x10d69a260>)
 - generated xml file: [RETURN]/runtime/m02/evidence/historical_nine/junit.xml -
 =========================== short test summary info ============================
 FAILED WORKER_RETURNS/SOROK-R3-HQ315-M05-M04-PROVENANCE-ANCESTRY-REPAIR-R1/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_C_target_owner_effect_is_request_not_seizure - KeyError: 'target_owner_effect_requests'
@@ -107,5 +107,5 @@ FAILED WORKER_RETURNS/SOROK-R3-HQ315-M05-M04-PROVENANCE-ANCESTRY-REPAIR-R1/runti
 FAILED WORKER_RETURNS/SOROK-R3-HQ315-M05-M04-PROVENANCE-ANCESTRY-REPAIR-R1/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_H_rehydration_forbidden - candidate.owner_transitions.OwnerTransitionError: UNAUTHORIZED_TRANSITION:exact candidate rule/authority required
 FAILED WORKER_RETURNS/SOROK-R3-HQ315-M05-M04-PROVENANCE-ANCESTRY-REPAIR-R1/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/repro/test_independent.py::test_target_owner_validation_precedes_committed_effect - AssertionError: Only unvalidated/uncommitted owner requests accompany reported target commit
 assert False
- +  where False = all(<generator object test_target_owner_validation_precedes_committed_effect.<locals>.<genexpr> at 0x10d1df780>)
-============================== 9 failed in 0.47s ===============================
+ +  where False = all(<generator object test_target_owner_validation_precedes_committed_effect.<locals>.<genexpr> at 0x10d69a260>)
+============================== 9 failed in 0.41s ===============================

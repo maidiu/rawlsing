@@ -740,7 +740,7 @@
               }
             },
             "state_hash": "0072a674ea5da61f7556ea76a387a4fcd8de9fb2e17b7721c01c202e5ac0edfc",
-            "source_rule": "3731d10513ac112d2675cd24636c46fa94b1ff9540909742273fd3930ae2337c",
+            "source_rule": "e9eadaa65348859aa194105c36d052ac5b61f9084a3e216e332840991cebbbf8",
             "claim_selection_basis": {
               "schema": "M03_CANONICAL_CLAIM_SELECTION@1",
               "canonical_claim_ref": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
@@ -772,7 +772,7 @@
               "owning_rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
               "response_rule_id": "M01_PARALLEL_OWNER_READ",
               "response_rule_version": "1.0.0-TEST_ONLY",
-              "response_source_hash": "3731d10513ac112d2675cd24636c46fa94b1ff9540909742273fd3930ae2337c",
+              "response_source_hash": "e9eadaa65348859aa194105c36d052ac5b61f9084a3e216e332840991cebbbf8",
               "first_response_receipt_hash": "5d1aecef16daecbf13c3ef5424ff2c057b6d72f7d53c3874de5619206ff0e9ea"
             }
           },
@@ -781,10 +781,10 @@
             "M01_FEEDBACK"
           ],
           "prev_entry_hash": "6d9d2b403aa0bf1b8f5d6c432d48ca9312464c99fee6a91740a942d4a8a00c6a",
-          "entry_hash": "13b7c268bfa758f0b39355e15ef7230c51602104c00397d867497690cfe61cd1"
+          "entry_hash": "8ec94a1c0d9e53139731c03efdb9ecf3af239fee48787a15f1cd746655fda931"
         }
       ],
-      "bed165e1e6ee3682c8178011249bab11c3147f87e726e89d0a7482417d3a1867"
+      "47170cc19befc4a24beb2438319fc0dc04c12a335d17f03b22b4705638301cc5"
     ],
     "reads": [],
     "claim_id": "UNRESOLVED",
@@ -1007,7 +1007,39 @@
       "grade": "TEST_ONLY_CANDIDATE_STATE",
       "public_ratification": "HOLD_NO_PUBLIC_STANDING_OWNER"
     },
-    "claim_selection_binding": "{\"basis\":{\"actor\":\"ACTOR_SYNTH_1\",\"canonical_claim_hash\":\"1b95a2243ac2bf234ec190ca5f9539dc124a45c68dd2987fb01811f8745572a3\",\"canonical_claim_ref\":\"3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356\",\"first_response_receipt_hash\":\"5d1aecef16daecbf13c3ef5424ff2c057b6d72f7d53c3874de5619206ff0e9ea\",\"owning_rule_hash\":\"34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a\",\"owning_rule_id\":\"CAND_R_CAN008_COUPLING_RESPONSE\",\"owning_rule_version\":\"2.0.0-candidate\",\"response_rule_id\":\"M01_PARALLEL_OWNER_READ\",\"response_rule_version\":\"1.0.0-TEST_ONLY\",\"response_source_hash\":\"3731d10513ac112d2675cd24636c46fa94b1ff9540909742273fd3930ae2337c\",\"schema\":\"M03_CANONICAL_CLAIM_SELECTION@1\",\"source_event\":{\"actor_scope\":\"ACTOR_SYNTH_1\",\"admission_state\":\"ADMITTED\",\"causal_parent_event_ids\":[],\"derived_from_future_partition\":false,\"effective_causal_time\":\"1998-10-03T16:00:00Z\",\"event_hash\":\"b5d89f7188007b480b89a877708d9bd62a7aac95a9aaf574f45ba4bc3275d2a5\",\"event_id\":\"M01_FEEDBACK\",\"event_kind\":\"EXTERNAL_RUNTIME_EVENT\",\"issuer_authority_id\":\"ISSUER_AUTH_WORLD_SCHED\",\"issuer_authority_version\":\"1\",\"public_features\":[\"shift_feedback_window_open\",\"supervisor_solicits_comment\"],\"reverse_chronology_flag\":false,\"world_as_of\":\"1998-10-03T16:00:00Z\",\"world_ref\":\"W_SYNTH_1998\"},\"world_as_of\":\"1998-10-03T16:00:00Z\",\"world_ref\":\"W_SYNTH_1998\"},\"first_event_entry_hash\":\"13b7c268bfa758f0b39355e15ef7230c51602104c00397d867497690cfe61cd1\",\"first_owner_state_hash\":\"0072a674ea5da61f7556ea76a387a4fcd8de9fb2e17b7721c01c202e5ac0edfc\",\"schema\":\"M03_CANONICAL_CLAIM_SELECTION@1\"}"
+    "claim_selection_binding": "{\"basis\":{\"actor\":\"ACTOR_SYNTH_1\",\"canonical_claim_hash\":\"1b95a2243ac2bf234ec190ca5f9539dc124a45c68dd2987fb01811f8745572a3\",\"canonical_claim_ref\":\"3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356\",\"first_response_receipt_hash\":\"5d1aecef16daecbf13c3ef5424ff2c057b6d72f7d53c3874de5619206ff0e9ea\",\"owning_rule_hash\":\"34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a\",\"owning_rule_id\":\"CAND_R_CAN008_COUPLING_RESPONSE\",\"owning_rule_version\":\"2.0.0-candidate\",\"response_rule_id\":\"M01_PARALLEL_OWNER_READ\",\"response_rule_version\":\"1.0.0-TEST_ONLY\",\"response_source_hash\":\"e9eadaa65348859aa194105c36d052ac5b61f9084a3e216e332840991cebbbf8\",\"schema\":\"M03_CANONICAL_CLAIM_SELECTION@1\",\"source_event\":{\"actor_scope\":\"ACTOR_SYNTH_1\",\"admission_state\":\"ADMITTED\",\"causal_parent_event_ids\":[],\"derived_from_future_partition\":false,\"effective_causal_time\":\"1998-10-03T16:00:00Z\",\"event_hash\":\"b5d89f7188007b480b89a877708d9bd62a7aac95a9aaf574f45ba4bc3275d2a5\",\"event_id\":\"M01_FEEDBACK\",\"event_kind\":\"EXTERNAL_RUNTIME_EVENT\",\"issuer_authority_id\":\"ISSUER_AUTH_WORLD_SCHED\",\"issuer_authority_version\":\"1\",\"public_features\":[\"shift_feedback_window_open\",\"supervisor_solicits_comment\"],\"reverse_chronology_flag\":false,\"world_as_of\":\"1998-10-03T16:00:00Z\",\"world_ref\":\"W_SYNTH_1998\"},\"world_as_of\":\"1998-10-03T16:00:00Z\",\"world_ref\":\"W_SYNTH_1998\"},\"first_event_entry_hash\":\"8ec94a1c0d9e53139731c03efdb9ecf3af239fee48787a15f1cd746655fda931\",\"first_owner_state_hash\":\"0072a674ea5da61f7556ea76a387a4fcd8de9fb2e17b7721c01c202e5ac0edfc\",\"schema\":\"M03_CANONICAL_CLAIM_SELECTION@1\"}",
+    "native_formation_inputs": {
+      "2b731911bb60f23c983b376ec972a499ed0e9115a3bffe4ae3829ba966fa48dd": {
+        "actor_id": "ACTOR_SYNTH_1",
+        "basis_event": {
+          "event_id": "M01_FEEDBACK",
+          "event_hash": "b5d89f7188007b480b89a877708d9bd62a7aac95a9aaf574f45ba4bc3275d2a5",
+          "issuer_authority_id": "ISSUER_AUTH_WORLD_SCHED",
+          "issuer_authority_version": "1",
+          "event_kind": "EXTERNAL_RUNTIME_EVENT",
+          "effective_causal_time": "1998-10-03T16:00:00Z",
+          "actor_scope": "ACTOR_SYNTH_1",
+          "world_ref": "W_SYNTH_1998",
+          "world_as_of": "1998-10-03T16:00:00Z",
+          "admission_state": "ADMITTED",
+          "public_features": [
+            "shift_feedback_window_open",
+            "supervisor_solicits_comment"
+          ],
+          "causal_parent_event_ids": [],
+          "derived_from_future_partition": false,
+          "reverse_chronology_flag": false
+        },
+        "trace_key": "TRACE_FEEDBACK_WINDOW_EXPERIENCE",
+        "content_state": "AVAILABLE_SOURCE_BOUND",
+        "owning_rule_id": "CAND_R_CAN008_COUPLING_RESPONSE",
+        "owning_rule_version": "2.0.0-candidate",
+        "owning_rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
+        "authority_id": "WORKER_CANDIDATE_FIXTURE",
+        "authority_version": "1",
+        "parent_state_hash": "8cc61c5d9b64d375c2c59a69d695d6b4b65358d7864a5d2da4c595445c122440"
+      }
+    }
   },
   "after": {
     "reg": [
@@ -1749,7 +1781,7 @@
               }
             },
             "state_hash": "0072a674ea5da61f7556ea76a387a4fcd8de9fb2e17b7721c01c202e5ac0edfc",
-            "source_rule": "3731d10513ac112d2675cd24636c46fa94b1ff9540909742273fd3930ae2337c",
+            "source_rule": "e9eadaa65348859aa194105c36d052ac5b61f9084a3e216e332840991cebbbf8",
             "claim_selection_basis": {
               "schema": "M03_CANONICAL_CLAIM_SELECTION@1",
               "canonical_claim_ref": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
@@ -1781,7 +1813,7 @@
               "owning_rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
               "response_rule_id": "M01_PARALLEL_OWNER_READ",
               "response_rule_version": "1.0.0-TEST_ONLY",
-              "response_source_hash": "3731d10513ac112d2675cd24636c46fa94b1ff9540909742273fd3930ae2337c",
+              "response_source_hash": "e9eadaa65348859aa194105c36d052ac5b61f9084a3e216e332840991cebbbf8",
               "first_response_receipt_hash": "5d1aecef16daecbf13c3ef5424ff2c057b6d72f7d53c3874de5619206ff0e9ea"
             }
           },
@@ -1790,10 +1822,10 @@
             "M01_FEEDBACK"
           ],
           "prev_entry_hash": "6d9d2b403aa0bf1b8f5d6c432d48ca9312464c99fee6a91740a942d4a8a00c6a",
-          "entry_hash": "13b7c268bfa758f0b39355e15ef7230c51602104c00397d867497690cfe61cd1"
+          "entry_hash": "8ec94a1c0d9e53139731c03efdb9ecf3af239fee48787a15f1cd746655fda931"
         }
       ],
-      "bed165e1e6ee3682c8178011249bab11c3147f87e726e89d0a7482417d3a1867"
+      "47170cc19befc4a24beb2438319fc0dc04c12a335d17f03b22b4705638301cc5"
     ],
     "reads": [],
     "claim_id": "UNRESOLVED",
@@ -2016,7 +2048,39 @@
       "grade": "TEST_ONLY_CANDIDATE_STATE",
       "public_ratification": "HOLD_NO_PUBLIC_STANDING_OWNER"
     },
-    "claim_selection_binding": "{\"basis\":{\"actor\":\"ACTOR_SYNTH_1\",\"canonical_claim_hash\":\"1b95a2243ac2bf234ec190ca5f9539dc124a45c68dd2987fb01811f8745572a3\",\"canonical_claim_ref\":\"3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356\",\"first_response_receipt_hash\":\"5d1aecef16daecbf13c3ef5424ff2c057b6d72f7d53c3874de5619206ff0e9ea\",\"owning_rule_hash\":\"34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a\",\"owning_rule_id\":\"CAND_R_CAN008_COUPLING_RESPONSE\",\"owning_rule_version\":\"2.0.0-candidate\",\"response_rule_id\":\"M01_PARALLEL_OWNER_READ\",\"response_rule_version\":\"1.0.0-TEST_ONLY\",\"response_source_hash\":\"3731d10513ac112d2675cd24636c46fa94b1ff9540909742273fd3930ae2337c\",\"schema\":\"M03_CANONICAL_CLAIM_SELECTION@1\",\"source_event\":{\"actor_scope\":\"ACTOR_SYNTH_1\",\"admission_state\":\"ADMITTED\",\"causal_parent_event_ids\":[],\"derived_from_future_partition\":false,\"effective_causal_time\":\"1998-10-03T16:00:00Z\",\"event_hash\":\"b5d89f7188007b480b89a877708d9bd62a7aac95a9aaf574f45ba4bc3275d2a5\",\"event_id\":\"M01_FEEDBACK\",\"event_kind\":\"EXTERNAL_RUNTIME_EVENT\",\"issuer_authority_id\":\"ISSUER_AUTH_WORLD_SCHED\",\"issuer_authority_version\":\"1\",\"public_features\":[\"shift_feedback_window_open\",\"supervisor_solicits_comment\"],\"reverse_chronology_flag\":false,\"world_as_of\":\"1998-10-03T16:00:00Z\",\"world_ref\":\"W_SYNTH_1998\"},\"world_as_of\":\"1998-10-03T16:00:00Z\",\"world_ref\":\"W_SYNTH_1998\"},\"first_event_entry_hash\":\"13b7c268bfa758f0b39355e15ef7230c51602104c00397d867497690cfe61cd1\",\"first_owner_state_hash\":\"0072a674ea5da61f7556ea76a387a4fcd8de9fb2e17b7721c01c202e5ac0edfc\",\"schema\":\"M03_CANONICAL_CLAIM_SELECTION@1\"}"
+    "claim_selection_binding": "{\"basis\":{\"actor\":\"ACTOR_SYNTH_1\",\"canonical_claim_hash\":\"1b95a2243ac2bf234ec190ca5f9539dc124a45c68dd2987fb01811f8745572a3\",\"canonical_claim_ref\":\"3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356\",\"first_response_receipt_hash\":\"5d1aecef16daecbf13c3ef5424ff2c057b6d72f7d53c3874de5619206ff0e9ea\",\"owning_rule_hash\":\"34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a\",\"owning_rule_id\":\"CAND_R_CAN008_COUPLING_RESPONSE\",\"owning_rule_version\":\"2.0.0-candidate\",\"response_rule_id\":\"M01_PARALLEL_OWNER_READ\",\"response_rule_version\":\"1.0.0-TEST_ONLY\",\"response_source_hash\":\"e9eadaa65348859aa194105c36d052ac5b61f9084a3e216e332840991cebbbf8\",\"schema\":\"M03_CANONICAL_CLAIM_SELECTION@1\",\"source_event\":{\"actor_scope\":\"ACTOR_SYNTH_1\",\"admission_state\":\"ADMITTED\",\"causal_parent_event_ids\":[],\"derived_from_future_partition\":false,\"effective_causal_time\":\"1998-10-03T16:00:00Z\",\"event_hash\":\"b5d89f7188007b480b89a877708d9bd62a7aac95a9aaf574f45ba4bc3275d2a5\",\"event_id\":\"M01_FEEDBACK\",\"event_kind\":\"EXTERNAL_RUNTIME_EVENT\",\"issuer_authority_id\":\"ISSUER_AUTH_WORLD_SCHED\",\"issuer_authority_version\":\"1\",\"public_features\":[\"shift_feedback_window_open\",\"supervisor_solicits_comment\"],\"reverse_chronology_flag\":false,\"world_as_of\":\"1998-10-03T16:00:00Z\",\"world_ref\":\"W_SYNTH_1998\"},\"world_as_of\":\"1998-10-03T16:00:00Z\",\"world_ref\":\"W_SYNTH_1998\"},\"first_event_entry_hash\":\"8ec94a1c0d9e53139731c03efdb9ecf3af239fee48787a15f1cd746655fda931\",\"first_owner_state_hash\":\"0072a674ea5da61f7556ea76a387a4fcd8de9fb2e17b7721c01c202e5ac0edfc\",\"schema\":\"M03_CANONICAL_CLAIM_SELECTION@1\"}",
+    "native_formation_inputs": {
+      "2b731911bb60f23c983b376ec972a499ed0e9115a3bffe4ae3829ba966fa48dd": {
+        "actor_id": "ACTOR_SYNTH_1",
+        "basis_event": {
+          "event_id": "M01_FEEDBACK",
+          "event_hash": "b5d89f7188007b480b89a877708d9bd62a7aac95a9aaf574f45ba4bc3275d2a5",
+          "issuer_authority_id": "ISSUER_AUTH_WORLD_SCHED",
+          "issuer_authority_version": "1",
+          "event_kind": "EXTERNAL_RUNTIME_EVENT",
+          "effective_causal_time": "1998-10-03T16:00:00Z",
+          "actor_scope": "ACTOR_SYNTH_1",
+          "world_ref": "W_SYNTH_1998",
+          "world_as_of": "1998-10-03T16:00:00Z",
+          "admission_state": "ADMITTED",
+          "public_features": [
+            "shift_feedback_window_open",
+            "supervisor_solicits_comment"
+          ],
+          "causal_parent_event_ids": [],
+          "derived_from_future_partition": false,
+          "reverse_chronology_flag": false
+        },
+        "trace_key": "TRACE_FEEDBACK_WINDOW_EXPERIENCE",
+        "content_state": "AVAILABLE_SOURCE_BOUND",
+        "owning_rule_id": "CAND_R_CAN008_COUPLING_RESPONSE",
+        "owning_rule_version": "2.0.0-candidate",
+        "owning_rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
+        "authority_id": "WORKER_CANDIDATE_FIXTURE",
+        "authority_version": "1",
+        "parent_state_hash": "8cc61c5d9b64d375c2c59a69d695d6b4b65358d7864a5d2da4c595445c122440"
+      }
+    }
   },
   "rollback_exact": true
 }

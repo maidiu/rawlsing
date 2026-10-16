@@ -1,0 +1,92 @@
+{
+  "candidate_only": true,
+  "historical": {
+    "failed": 9,
+    "separate": true,
+    "tests": 9
+  },
+  "new_author": {
+    "failed": 0,
+    "passed": 48,
+    "tests": 48
+  },
+  "original_main_after": {
+    "failed": 0,
+    "passed": 638,
+    "tests": 638
+  },
+  "original_main_before": {
+    "failed": 10,
+    "passed": 628,
+    "tests": 638
+  },
+  "required_independent_M06": "FUTURE_SEPARATE_COMMISSION; NOT_PERFORMED_BY_AUTHOR",
+  "requirements": [
+    {
+      "evidence": "00_RETURN.md; tracked diff from a03927a",
+      "requirement": "Exact startup, parent and assigned terrain",
+      "status": "COMPLETE"
+    },
+    {
+      "evidence": "evidence/before/; 04_LITERAL_638_BEFORE_AFTER.json",
+      "requirement": "Baseline587 PASS and M04 41 PASS/10 RED",
+      "status": "COMPLETE"
+    },
+    {
+      "evidence": "evidence/after/; original source preimages06/07",
+      "requirement": "All638 unchanged PASS after repair",
+      "status": "COMPLETE"
+    },
+    {
+      "evidence": "03_AUTHOR_FREEZE.json; review/test_m05_author.py; evidence/m05_author/",
+      "requirement": "Preregistered new48 PASS",
+      "status": "COMPLETE"
+    },
+    {
+      "evidence": "05_NEW_AUTHOR_48_AND_HISTORICAL_NINE.json; before/after historical JUnit",
+      "requirement": "Original nine historical REDs separate and unchanged",
+      "status": "COMPLETE"
+    },
+    {
+      "evidence": "candidate source; 09_FACTORIAL_NATIVE_ANCESTRY_AND_COMPARATOR.json; 10_TEN_REDS_AND_ATOMICITY_CLOSURE.json",
+      "requirement": "Actual native first-predecessor, full state descent and terminal permission",
+      "status": "COMPLETE"
+    },
+    {
+      "evidence": "Original638 and author48 JUnit/native observations",
+      "requirement": "Lawful add/supersede/withdraw/re-add and complete replay",
+      "status": "COMPLETE"
+    },
+    {
+      "evidence": "09_FACTORIAL_NATIVE_ANCESTRY_AND_COMPARATOR.json; original cases",
+      "requirement": "36-arm factorial, original CAN3 comparator, K3/K5 and time controls",
+      "status": "COMPLETE"
+    },
+    {
+      "evidence": "08_ACTUAL_IMPORT_AND_PATCH_AUDIT.json",
+      "requirement": "Byte-identical EMPTY production guard, unchanged accepted owners/laws",
+      "status": "COMPLETE"
+    },
+    {
+      "evidence": "00_RETURN.md; independent M06 explicitly required",
+      "requirement": "Causal ceiling and no self-acceptance",
+      "status": "COMPLETE"
+    },
+    {
+      "evidence": "candidate/M03_TO_M05.patch;06/07/08 and passport",
+      "requirement": "Source patch, actual installed modules and Git/SHA256 custody",
+      "status": "COMPLETE"
+    },
+    {
+      "evidence": "evidence/FREEZE_PORTABILITY_CUSTODY.json; metadata presentation receipts",
+      "requirement": "Portable evidence and truthful prospective freeze custody",
+      "status": "COMPLETE"
+    },
+    {
+      "evidence": "16_REMOTE_CONTENT_VERIFICATION.json plus final direct check after receipt-only commit",
+      "requirement": "Push and direct remote SHA",
+      "status": "REQUIRES_FINAL_DIRECT_REMOTE_VERIFICATION"
+    }
+  ],
+  "schema": "M05_COMPLETION_AUDIT@1"
+}

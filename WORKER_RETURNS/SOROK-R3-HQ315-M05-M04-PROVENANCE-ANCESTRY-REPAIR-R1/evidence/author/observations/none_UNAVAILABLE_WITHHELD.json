@@ -231,16 +231,43 @@
             "owning_rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
             "response_rule_id": "M01_PARALLEL_OWNER_READ",
             "response_rule_version": "1.0.0-TEST_ONLY",
-            "response_source_hash": "3731d10513ac112d2675cd24636c46fa94b1ff9540909742273fd3930ae2337c",
+            "response_source_hash": "e9eadaa65348859aa194105c36d052ac5b61f9084a3e216e332840991cebbbf8",
             "first_response_receipt_hash": "5d1aecef16daecbf13c3ef5424ff2c057b6d72f7d53c3874de5619206ff0e9ea"
           },
-          "first_event_entry_hash": "5b9e79044e63b64c1724596c7d385df20c8f1bad27fe41a9a6f0dd30a4806182",
+          "first_event_entry_hash": "32640794b03c44d21391c7b2c1e5ca2436e499ac6d3a41ed7a3b6e0131bfbc86",
           "first_owner_state_hash": "4078f3ef00fe17fc4161327e97e9b3f99a778e4589d10304e1a2dfba253a4f24"
         },
         "selected_claim_ref": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
         "response_as_of": "1998-11-20T09:00:00Z",
         "canonical_claim_time": "1998-10-03T16:00:00Z",
         "actual_effect_provenance": [],
+        "native_owner_ancestry": {
+          "schema": "M05_NATIVE_OWNER_ANCESTRY@1",
+          "rooted_in_first_journal": true,
+          "root_state_hash": "8cc61c5d9b64d375c2c59a69d695d6b4b65358d7864a5d2da4c595445c122440",
+          "first_event_entry_hash": "32640794b03c44d21391c7b2c1e5ca2436e499ac6d3a41ed7a3b6e0131bfbc86",
+          "first_owner_state_hash": "4078f3ef00fe17fc4161327e97e9b3f99a778e4589d10304e1a2dfba253a4f24",
+          "current_owner_state_hash": "4078f3ef00fe17fc4161327e97e9b3f99a778e4589d10304e1a2dfba253a4f24",
+          "first_steps": [
+            {
+              "kind": "ADP016",
+              "pre_state_hash": "8cc61c5d9b64d375c2c59a69d695d6b4b65358d7864a5d2da4c595445c122440",
+              "post_state_hash": "24b70f646f165e2a7193a10b23ef401251420a781f77a107712ff3a14c01baf6",
+              "transition_id": "fe4d841b4d4f98bd43ec9d45afdfd5602589a8106cc4a774949ea68e29ccd1a8"
+            },
+            {
+              "kind": "CANONICAL_CLAIM_BIND",
+              "pre_state_hash": "24b70f646f165e2a7193a10b23ef401251420a781f77a107712ff3a14c01baf6",
+              "post_state_hash": "4078f3ef00fe17fc4161327e97e9b3f99a778e4589d10304e1a2dfba253a4f24",
+              "claim_ref": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
+              "event_id": "M01_FEEDBACK",
+              "event_hash": "b5d89f7188007b480b89a877708d9bd62a7aac95a9aaf574f45ba4bc3275d2a5"
+            }
+          ],
+          "later_steps": [],
+          "terminal_transition_refs": {},
+          "authority": "ORIGINAL_SOURCEFREE_NATIVE_REPLAY; NOT_A_PRODUCTION_SIGNER"
+        },
         "disposition": "BOUND_CANONICAL_CLAIM_NO_APPLIED_STANCE",
         "production_authority": "NOT_ISSUED_TEST_ONLY"
       }
@@ -368,7 +395,7 @@
       "payload": {
         "rule_id": "M01_PARALLEL_OWNER_READ",
         "version": "1.0.0-TEST_ONLY",
-        "source_hash": "3731d10513ac112d2675cd24636c46fa94b1ff9540909742273fd3930ae2337c",
+        "source_hash": "e9eadaa65348859aa194105c36d052ac5b61f9084a3e216e332840991cebbbf8",
         "event": {
           "event_id": "M01_LATER_SHIFT_REQUEST",
           "event_hash": "dbea76c8f64b267277391a7e3bec1800eac08d0d2431aa6416ce2dcf021ee9c1",
@@ -527,16 +554,43 @@
                 "owning_rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
                 "response_rule_id": "M01_PARALLEL_OWNER_READ",
                 "response_rule_version": "1.0.0-TEST_ONLY",
-                "response_source_hash": "3731d10513ac112d2675cd24636c46fa94b1ff9540909742273fd3930ae2337c",
+                "response_source_hash": "e9eadaa65348859aa194105c36d052ac5b61f9084a3e216e332840991cebbbf8",
                 "first_response_receipt_hash": "5d1aecef16daecbf13c3ef5424ff2c057b6d72f7d53c3874de5619206ff0e9ea"
               },
-              "first_event_entry_hash": "5b9e79044e63b64c1724596c7d385df20c8f1bad27fe41a9a6f0dd30a4806182",
+              "first_event_entry_hash": "32640794b03c44d21391c7b2c1e5ca2436e499ac6d3a41ed7a3b6e0131bfbc86",
               "first_owner_state_hash": "4078f3ef00fe17fc4161327e97e9b3f99a778e4589d10304e1a2dfba253a4f24"
             },
             "selected_claim_ref": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
             "response_as_of": "1998-11-20T09:00:00Z",
             "canonical_claim_time": "1998-10-03T16:00:00Z",
             "actual_effect_provenance": [],
+            "native_owner_ancestry": {
+              "schema": "M05_NATIVE_OWNER_ANCESTRY@1",
+              "rooted_in_first_journal": true,
+              "root_state_hash": "8cc61c5d9b64d375c2c59a69d695d6b4b65358d7864a5d2da4c595445c122440",
+              "first_event_entry_hash": "32640794b03c44d21391c7b2c1e5ca2436e499ac6d3a41ed7a3b6e0131bfbc86",
+              "first_owner_state_hash": "4078f3ef00fe17fc4161327e97e9b3f99a778e4589d10304e1a2dfba253a4f24",
+              "current_owner_state_hash": "4078f3ef00fe17fc4161327e97e9b3f99a778e4589d10304e1a2dfba253a4f24",
+              "first_steps": [
+                {
+                  "kind": "ADP016",
+                  "pre_state_hash": "8cc61c5d9b64d375c2c59a69d695d6b4b65358d7864a5d2da4c595445c122440",
+                  "post_state_hash": "24b70f646f165e2a7193a10b23ef401251420a781f77a107712ff3a14c01baf6",
+                  "transition_id": "fe4d841b4d4f98bd43ec9d45afdfd5602589a8106cc4a774949ea68e29ccd1a8"
+                },
+                {
+                  "kind": "CANONICAL_CLAIM_BIND",
+                  "pre_state_hash": "24b70f646f165e2a7193a10b23ef401251420a781f77a107712ff3a14c01baf6",
+                  "post_state_hash": "4078f3ef00fe17fc4161327e97e9b3f99a778e4589d10304e1a2dfba253a4f24",
+                  "claim_ref": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
+                  "event_id": "M01_FEEDBACK",
+                  "event_hash": "b5d89f7188007b480b89a877708d9bd62a7aac95a9aaf574f45ba4bc3275d2a5"
+                }
+              ],
+              "later_steps": [],
+              "terminal_transition_refs": {},
+              "authority": "ORIGINAL_SOURCEFREE_NATIVE_REPLAY; NOT_A_PRODUCTION_SIGNER"
+            },
             "disposition": "BOUND_CANONICAL_CLAIM_NO_APPLIED_STANCE",
             "production_authority": "NOT_ISSUED_TEST_ONLY"
           }
@@ -672,8 +726,8 @@
         "M01_LATER_SHIFT_REQUEST",
         "M01_FEEDBACK"
       ],
-      "prev_entry_hash": "5b9e79044e63b64c1724596c7d385df20c8f1bad27fe41a9a6f0dd30a4806182",
-      "entry_hash": "e52d06dff79daf5b461e2a85aba320a39313eaa6ed99468295195d422274c69f"
+      "prev_entry_hash": "32640794b03c44d21391c7b2c1e5ca2436e499ac6d3a41ed7a3b6e0131bfbc86",
+      "entry_hash": "378b343339c52d124d6ebe685dcac75b897e4fa8ad3feb4f145913b56de882a5"
     },
     "state_hash": "4078f3ef00fe17fc4161327e97e9b3f99a778e4589d10304e1a2dfba253a4f24"
   }

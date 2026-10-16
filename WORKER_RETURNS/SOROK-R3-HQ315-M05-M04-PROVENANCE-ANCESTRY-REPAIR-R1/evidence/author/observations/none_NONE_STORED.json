@@ -130,16 +130,37 @@
             "owning_rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
             "response_rule_id": "M01_PARALLEL_OWNER_READ",
             "response_rule_version": "1.0.0-TEST_ONLY",
-            "response_source_hash": "3731d10513ac112d2675cd24636c46fa94b1ff9540909742273fd3930ae2337c",
+            "response_source_hash": "e9eadaa65348859aa194105c36d052ac5b61f9084a3e216e332840991cebbbf8",
             "first_response_receipt_hash": "5d1aecef16daecbf13c3ef5424ff2c057b6d72f7d53c3874de5619206ff0e9ea"
           },
-          "first_event_entry_hash": "d29c22eabd803a3b91d2212035e05dc46d78c36f8612c558ae7a46c8717876e7",
+          "first_event_entry_hash": "1f12738d19b3c82a66a3caba7580062117696118e39a856a971e239226a7cc5b",
           "first_owner_state_hash": "a2aafd1afa304845549e9055d16ae92fdbe0846dd466cb64e95e8471490b036a"
         },
         "selected_claim_ref": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
         "response_as_of": "1998-11-20T09:00:00Z",
         "canonical_claim_time": "1998-10-03T16:00:00Z",
         "actual_effect_provenance": [],
+        "native_owner_ancestry": {
+          "schema": "M05_NATIVE_OWNER_ANCESTRY@1",
+          "rooted_in_first_journal": true,
+          "root_state_hash": "8cc61c5d9b64d375c2c59a69d695d6b4b65358d7864a5d2da4c595445c122440",
+          "first_event_entry_hash": "1f12738d19b3c82a66a3caba7580062117696118e39a856a971e239226a7cc5b",
+          "first_owner_state_hash": "a2aafd1afa304845549e9055d16ae92fdbe0846dd466cb64e95e8471490b036a",
+          "current_owner_state_hash": "a2aafd1afa304845549e9055d16ae92fdbe0846dd466cb64e95e8471490b036a",
+          "first_steps": [
+            {
+              "kind": "CANONICAL_CLAIM_BIND",
+              "pre_state_hash": "8cc61c5d9b64d375c2c59a69d695d6b4b65358d7864a5d2da4c595445c122440",
+              "post_state_hash": "a2aafd1afa304845549e9055d16ae92fdbe0846dd466cb64e95e8471490b036a",
+              "claim_ref": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
+              "event_id": "M01_FEEDBACK",
+              "event_hash": "b5d89f7188007b480b89a877708d9bd62a7aac95a9aaf574f45ba4bc3275d2a5"
+            }
+          ],
+          "later_steps": [],
+          "terminal_transition_refs": {},
+          "authority": "ORIGINAL_SOURCEFREE_NATIVE_REPLAY; NOT_A_PRODUCTION_SIGNER"
+        },
         "disposition": "BOUND_CANONICAL_CLAIM_NO_APPLIED_STANCE",
         "production_authority": "NOT_ISSUED_TEST_ONLY"
       }
@@ -382,7 +403,7 @@
       "payload": {
         "rule_id": "M01_PARALLEL_OWNER_READ",
         "version": "1.0.0-TEST_ONLY",
-        "source_hash": "3731d10513ac112d2675cd24636c46fa94b1ff9540909742273fd3930ae2337c",
+        "source_hash": "e9eadaa65348859aa194105c36d052ac5b61f9084a3e216e332840991cebbbf8",
         "event": {
           "event_id": "M01_LATER_SHIFT_REQUEST",
           "event_hash": "dbea76c8f64b267277391a7e3bec1800eac08d0d2431aa6416ce2dcf021ee9c1",
@@ -488,16 +509,37 @@
                 "owning_rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
                 "response_rule_id": "M01_PARALLEL_OWNER_READ",
                 "response_rule_version": "1.0.0-TEST_ONLY",
-                "response_source_hash": "3731d10513ac112d2675cd24636c46fa94b1ff9540909742273fd3930ae2337c",
+                "response_source_hash": "e9eadaa65348859aa194105c36d052ac5b61f9084a3e216e332840991cebbbf8",
                 "first_response_receipt_hash": "5d1aecef16daecbf13c3ef5424ff2c057b6d72f7d53c3874de5619206ff0e9ea"
               },
-              "first_event_entry_hash": "d29c22eabd803a3b91d2212035e05dc46d78c36f8612c558ae7a46c8717876e7",
+              "first_event_entry_hash": "1f12738d19b3c82a66a3caba7580062117696118e39a856a971e239226a7cc5b",
               "first_owner_state_hash": "a2aafd1afa304845549e9055d16ae92fdbe0846dd466cb64e95e8471490b036a"
             },
             "selected_claim_ref": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
             "response_as_of": "1998-11-20T09:00:00Z",
             "canonical_claim_time": "1998-10-03T16:00:00Z",
             "actual_effect_provenance": [],
+            "native_owner_ancestry": {
+              "schema": "M05_NATIVE_OWNER_ANCESTRY@1",
+              "rooted_in_first_journal": true,
+              "root_state_hash": "8cc61c5d9b64d375c2c59a69d695d6b4b65358d7864a5d2da4c595445c122440",
+              "first_event_entry_hash": "1f12738d19b3c82a66a3caba7580062117696118e39a856a971e239226a7cc5b",
+              "first_owner_state_hash": "a2aafd1afa304845549e9055d16ae92fdbe0846dd466cb64e95e8471490b036a",
+              "current_owner_state_hash": "a2aafd1afa304845549e9055d16ae92fdbe0846dd466cb64e95e8471490b036a",
+              "first_steps": [
+                {
+                  "kind": "CANONICAL_CLAIM_BIND",
+                  "pre_state_hash": "8cc61c5d9b64d375c2c59a69d695d6b4b65358d7864a5d2da4c595445c122440",
+                  "post_state_hash": "a2aafd1afa304845549e9055d16ae92fdbe0846dd466cb64e95e8471490b036a",
+                  "claim_ref": "3101e859e85e5d96de01ab83bdf8a674176380c9dea19f0ceac303d060539356",
+                  "event_id": "M01_FEEDBACK",
+                  "event_hash": "b5d89f7188007b480b89a877708d9bd62a7aac95a9aaf574f45ba4bc3275d2a5"
+                }
+              ],
+              "later_steps": [],
+              "terminal_transition_refs": {},
+              "authority": "ORIGINAL_SOURCEFREE_NATIVE_REPLAY; NOT_A_PRODUCTION_SIGNER"
+            },
             "disposition": "BOUND_CANONICAL_CLAIM_NO_APPLIED_STANCE",
             "production_authority": "NOT_ISSUED_TEST_ONLY"
           }
@@ -748,8 +790,8 @@
         "M01_LATER_SHIFT_REQUEST",
         "M01_FEEDBACK"
       ],
-      "prev_entry_hash": "d29c22eabd803a3b91d2212035e05dc46d78c36f8612c558ae7a46c8717876e7",
-      "entry_hash": "104cf6b9a2fc55ff17e65ed4b62dae2cbf2ba6c2ced16c1faabad65f2ac87785"
+      "prev_entry_hash": "1f12738d19b3c82a66a3caba7580062117696118e39a856a971e239226a7cc5b",
+      "entry_hash": "e6c1f87870ab2bbe2844ed1293142bb0b7c3497fed7a611bf212954cf0cc13ad"
     },
     "state_hash": "a2aafd1afa304845549e9055d16ae92fdbe0846dd466cb64e95e8471490b036a"
   }
