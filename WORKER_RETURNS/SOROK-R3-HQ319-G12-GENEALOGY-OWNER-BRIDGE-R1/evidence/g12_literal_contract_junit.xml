@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="12" skipped="0" tests="12" time="0.222" timestamp="2026-10-16T18:30:09.464815-04:00" hostname="MacBook-Pro.lan"><testcase classname="test_g12_literal_contract" name="test_forward_validator_refuses_invalid_causal_history[forged_endpoint]" time="0.072"><failure message="AssertionError: forged_endpoint&#10;assert not True">obs = {'alien_probes': {'heldout_independence_pass': True, 'n_pass': 2, 'n_probes': 2, 'probes': [{'acted_from_actor_state_w...d_adversity_tag": "G12_FUTURE_CHILD_DESIRED_WOUND_SECRET", "world_id": "G12_WORLD"}}', 'sentinel_visible': True}}, ...}
+name = 'forged_endpoint'
+
+    @pytest.mark.parametrize('name',['forged_endpoint','missing_parent','future_endpoint_as_root_parent','duplicate_effective_index','route_antecedent_removed'])
+    def test_forward_validator_refuses_invalid_causal_history(obs,name):
+&gt;       assert not obs['attacks'][name]['lab']['endpoint_match'],name
+E       AssertionError: forged_endpoint
+E       assert not True
+
+test_g12_literal_contract.py:8: AssertionError</failure></testcase><testcase classname="test_g12_literal_contract" name="test_forward_validator_refuses_invalid_causal_history[missing_parent]" time="0.000"><failure message="AssertionError: missing_parent&#10;assert not True">obs = {'alien_probes': {'heldout_independence_pass': True, 'n_pass': 2, 'n_probes': 2, 'probes': [{'acted_from_actor_state_w...d_adversity_tag": "G12_FUTURE_CHILD_DESIRED_WOUND_SECRET", "world_id": "G12_WORLD"}}', 'sentinel_visible': True}}, ...}
+name = 'missing_parent'
+
+    @pytest.mark.parametrize('name',['forged_endpoint','missing_parent','future_endpoint_as_root_parent','duplicate_effective_index','route_antecedent_removed'])
+    def test_forward_validator_refuses_invalid_causal_history(obs,name):
+&gt;       assert not obs['attacks'][name]['lab']['endpoint_match'],name
+E       AssertionError: missing_parent
+E       assert not True
+
+test_g12_literal_contract.py:8: AssertionError</failure></testcase><testcase classname="test_g12_literal_contract" name="test_forward_validator_refuses_invalid_causal_history[future_endpoint_as_root_parent]" time="0.000"><failure message="AssertionError: future_endpoint_as_root_parent&#10;assert not True">obs = {'alien_probes': {'heldout_independence_pass': True, 'n_pass': 2, 'n_probes': 2, 'probes': [{'acted_from_actor_state_w...d_adversity_tag": "G12_FUTURE_CHILD_DESIRED_WOUND_SECRET", "world_id": "G12_WORLD"}}', 'sentinel_visible': True}}, ...}
+name = 'future_endpoint_as_root_parent'
+
+    @pytest.mark.parametrize('name',['forged_endpoint','missing_parent','future_endpoint_as_root_parent','duplicate_effective_index','route_antecedent_removed'])
+    def test_forward_validator_refuses_invalid_causal_history(obs,name):
+&gt;       assert not obs['attacks'][name]['lab']['endpoint_match'],name
+E       AssertionError: future_endpoint_as_root_parent
+E       assert not True
+
+test_g12_literal_contract.py:8: AssertionError</failure></testcase><testcase classname="test_g12_literal_contract" name="test_forward_validator_refuses_invalid_causal_history[duplicate_effective_index]" time="0.000"><failure message="AssertionError: duplicate_effective_index&#10;assert not True">obs = {'alien_probes': {'heldout_independence_pass': True, 'n_pass': 2, 'n_probes': 2, 'probes': [{'acted_from_actor_state_w...d_adversity_tag": "G12_FUTURE_CHILD_DESIRED_WOUND_SECRET", "world_id": "G12_WORLD"}}', 'sentinel_visible': True}}, ...}
+name = 'duplicate_effective_index'
+
+    @pytest.mark.parametrize('name',['forged_endpoint','missing_parent','future_endpoint_as_root_parent','duplicate_effective_index','route_antecedent_removed'])
+    def test_forward_validator_refuses_invalid_causal_history(obs,name):
+&gt;       assert not obs['attacks'][name]['lab']['endpoint_match'],name
+E       AssertionError: duplicate_effective_index
+E       assert not True
+
+test_g12_literal_contract.py:8: AssertionError</failure></testcase><testcase classname="test_g12_literal_contract" name="test_forward_validator_refuses_invalid_causal_history[route_antecedent_removed]" time="0.000"><failure message="AssertionError: route_antecedent_removed&#10;assert not True">obs = {'alien_probes': {'heldout_independence_pass': True, 'n_pass': 2, 'n_probes': 2, 'probes': [{'acted_from_actor_state_w...d_adversity_tag": "G12_FUTURE_CHILD_DESIRED_WOUND_SECRET", "world_id": "G12_WORLD"}}', 'sentinel_visible': True}}, ...}
+name = 'route_antecedent_removed'
+
+    @pytest.mark.parametrize('name',['forged_endpoint','missing_parent','future_endpoint_as_root_parent','duplicate_effective_index','route_antecedent_removed'])
+    def test_forward_validator_refuses_invalid_causal_history(obs,name):
+&gt;       assert not obs['attacks'][name]['lab']['endpoint_match'],name
+E       AssertionError: route_antecedent_removed
+E       assert not True
+
+test_g12_literal_contract.py:8: AssertionError</failure></testcase><testcase classname="test_g12_literal_contract" name="test_model_input_membrane_blocks_future_child_metadata[target]" time="0.000"><failure message="AssertionError: target&#10;assert not True">obs = {'alien_probes': {'heldout_independence_pass': True, 'n_pass': 2, 'n_probes': 2, 'probes': [{'acted_from_actor_state_w...d_adversity_tag": "G12_FUTURE_CHILD_DESIRED_WOUND_SECRET", "world_id": "G12_WORLD"}}', 'sentinel_visible': True}}, ...}
+path = 'target'
+
+    @pytest.mark.parametrize('path',['target','world','psyche'])
+    def test_model_input_membrane_blocks_future_child_metadata(obs,path):
+&gt;       assert not obs['embargo'][path]['sentinel_visible'],path
+E       AssertionError: target
+E       assert not True
+
+test_g12_literal_contract.py:11: AssertionError</failure></testcase><testcase classname="test_g12_literal_contract" name="test_model_input_membrane_blocks_future_child_metadata[world]" time="0.000"><failure message="AssertionError: world&#10;assert not True">obs = {'alien_probes': {'heldout_independence_pass': True, 'n_pass': 2, 'n_probes': 2, 'probes': [{'acted_from_actor_state_w...d_adversity_tag": "G12_FUTURE_CHILD_DESIRED_WOUND_SECRET", "world_id": "G12_WORLD"}}', 'sentinel_visible': True}}, ...}
+path = 'world'
+
+    @pytest.mark.parametrize('path',['target','world','psyche'])
+    def test_model_input_membrane_blocks_future_child_metadata(obs,path):
+&gt;       assert not obs['embargo'][path]['sentinel_visible'],path
+E       AssertionError: world
+E       assert not True
+
+test_g12_literal_contract.py:11: AssertionError</failure></testcase><testcase classname="test_g12_literal_contract" name="test_model_input_membrane_blocks_future_child_metadata[psyche]" time="0.000"><failure message="AssertionError: psyche&#10;assert not True">obs = {'alien_probes': {'heldout_independence_pass': True, 'n_pass': 2, 'n_probes': 2, 'probes': [{'acted_from_actor_state_w...d_adversity_tag": "G12_FUTURE_CHILD_DESIRED_WOUND_SECRET", "world_id": "G12_WORLD"}}', 'sentinel_visible': True}}, ...}
+path = 'psyche'
+
+    @pytest.mark.parametrize('path',['target','world','psyche'])
+    def test_model_input_membrane_blocks_future_child_metadata(obs,path):
+&gt;       assert not obs['embargo'][path]['sentinel_visible'],path
+E       AssertionError: psyche
+E       assert not True
+
+test_g12_literal_contract.py:11: AssertionError</failure></testcase><testcase classname="test_g12_literal_contract" name="test_stopping_law_requires_actual_antecedent_closure" time="0.000"><failure message="assert not True">obs = {'alien_probes': {'heldout_independence_pass': True, 'n_pass': 2, 'n_probes': 2, 'probes': [{'acted_from_actor_state_w...d_adversity_tag": "G12_FUTURE_CHILD_DESIRED_WOUND_SECRET", "world_id": "G12_WORLD"}}', 'sentinel_visible': True}}, ...}
+
+    def test_stopping_law_requires_actual_antecedent_closure(obs):
+&gt;       assert not obs['stopping_corrupt']['sufficient']
+E       assert not True
+
+test_g12_literal_contract.py:13: AssertionError</failure></testcase><testcase classname="test_g12_literal_contract" name="test_project_specific_heldout_probe_refuses_unrelated_project" time="0.000"><failure message="assert not True">obs = {'alien_probes': {'heldout_independence_pass': True, 'n_pass': 2, 'n_probes': 2, 'probes': [{'acted_from_actor_state_w...d_adversity_tag": "G12_FUTURE_CHILD_DESIRED_WOUND_SECRET", "world_id": "G12_WORLD"}}', 'sentinel_visible': True}}, ...}
+
+    def test_project_specific_heldout_probe_refuses_unrelated_project(obs):
+&gt;       assert not obs['alien_probes']['heldout_independence_pass']
+E       assert not True
+
+test_g12_literal_contract.py:15: AssertionError</failure></testcase><testcase classname="test_g12_literal_contract" name="test_same_candidate_id_changed_payload_changes_replay_identity" time="0.000"><failure message="AssertionError: assert 'sha256:9e3e10cc45bc0982d4554d0170249e6a30df91d28887b3455a81e889fb84407b' != 'sha256:9e3e10cc45bc0982d4554d0170249e6a30df91d28887b3455a81e889fb84407b'">obs = {'alien_probes': {'heldout_independence_pass': True, 'n_pass': 2, 'n_probes': 2, 'probes': [{'acted_from_actor_state_w...d_adversity_tag": "G12_FUTURE_CHILD_DESIRED_WOUND_SECRET", "world_id": "G12_WORLD"}}', 'sentinel_visible': True}}, ...}
+
+    def test_same_candidate_id_changed_payload_changes_replay_identity(obs):
+        a=obs['candidate_payload']['before'];b=obs['candidate_payload']['after']
+&gt;       assert a['candidate_set_hash']!=b['candidate_set_hash']
+E       AssertionError: assert 'sha256:9e3e10cc45bc0982d4554d0170249e6a30df91d28887b3455a81e889fb84407b' != 'sha256:9e3e10cc45bc0982d4554d0170249e6a30df91d28887b3455a81e889fb84407b'
+
+test_g12_literal_contract.py:18: AssertionError</failure></testcase><testcase classname="test_g12_literal_contract" name="test_lab_sampler_is_accepted_adp020_algorithm" time="0.000"><failure message="AssertionError: assert 'SHA256_CONCAT_MODULO' == 'ADP020_HMAC_...ELOW_V1@1.0.0'&#10;  &#10;  - ADP020_HMAC_SHA256_UNIFORM_BELOW_V1@1.0.0&#10;  + SHA256_CONCAT_MODULO">obs = {'alien_probes': {'heldout_independence_pass': True, 'n_pass': 2, 'n_probes': 2, 'probes': [{'acted_from_actor_state_w...d_adversity_tag": "G12_FUTURE_CHILD_DESIRED_WOUND_SECRET", "world_id": "G12_WORLD"}}', 'sentinel_visible': True}}, ...}
+
+    def test_lab_sampler_is_accepted_adp020_algorithm(obs):
+&gt;       assert obs['rng_algorithm']['actual']==obs['rng_algorithm']['required']
+E       AssertionError: assert 'SHA256_CONCAT_MODULO' == 'ADP020_HMAC_...ELOW_V1@1.0.0'
+E         
+E         - ADP020_HMAC_SHA256_UNIFORM_BELOW_V1@1.0.0
+E         + SHA256_CONCAT_MODULO
+
+test_g12_literal_contract.py:20: AssertionError</failure></testcase></testsuite></testsuites>

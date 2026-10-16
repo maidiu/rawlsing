@@ -1,0 +1,78 @@
+[
+  {
+    "suite": "sgi1",
+    "command": [
+      "python3",
+      "-m",
+      "pytest",
+      "-q",
+      "-s",
+      "-p",
+      "no:cacheprovider",
+      "test_original_sgi1.py",
+      "--junitxml=evidence/sgi1_junit.xml"
+    ],
+    "exit_status": 0,
+    "wall_seconds": 0.9761745480354875,
+    "stdout": "evidence/sgi1_stdout.txt",
+    "junit": "evidence/sgi1_junit.xml",
+    "stdout_sha256": "5faff72a8877ffabf283ec63ecac11c56e17c9a50120b31eebfa9e583c8f59e4"
+  },
+  {
+    "suite": "g11",
+    "command": [
+      "python3",
+      "-m",
+      "pytest",
+      "-q",
+      "-s",
+      "-p",
+      "no:cacheprovider",
+      "sources/g11/test_g11_solver.py",
+      "--junitxml=evidence/g11_junit.xml"
+    ],
+    "exit_status": 0,
+    "wall_seconds": 0.5053807849762961,
+    "stdout": "evidence/g11_stdout.txt",
+    "junit": "evidence/g11_junit.xml",
+    "stdout_sha256": "7b122b889c56682f87044e974d37cdd32404e6ffd499e7b4986cb45387afaf05"
+  },
+  {
+    "suite": "g12_controls",
+    "command": [
+      "python3",
+      "-m",
+      "pytest",
+      "-q",
+      "-s",
+      "-p",
+      "no:cacheprovider",
+      "test_g12_controls.py",
+      "--junitxml=evidence/g12_controls_junit.xml"
+    ],
+    "exit_status": 0,
+    "wall_seconds": 0.5828955549513921,
+    "stdout": "evidence/g12_controls_stdout.txt",
+    "junit": "evidence/g12_controls_junit.xml",
+    "stdout_sha256": "a1e853f273a4ef9558cacc91744ccad8c8631b5cdb3fc860c64f7c6c91ac8c38"
+  },
+  {
+    "suite": "g12_literal_contract",
+    "command": [
+      "python3",
+      "-m",
+      "pytest",
+      "-q",
+      "-s",
+      "-p",
+      "no:cacheprovider",
+      "test_g12_literal_contract.py",
+      "--junitxml=evidence/g12_literal_contract_junit.xml"
+    ],
+    "exit_status": 1,
+    "wall_seconds": 0.5864231920568272,
+    "stdout": "evidence/g12_literal_contract_stdout.txt",
+    "junit": "evidence/g12_literal_contract_junit.xml",
+    "stdout_sha256": "b566dbde35eb849dc5c2f53f3f3c6bbe27274d623f6ff53f291fdc19b6144f3c"
+  }
+]

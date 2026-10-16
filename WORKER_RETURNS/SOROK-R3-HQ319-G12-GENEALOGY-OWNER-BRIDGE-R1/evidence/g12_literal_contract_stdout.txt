@@ -1,0 +1,152 @@
+FFFFFFFFFFFF
+=================================== FAILURES ===================================
+____ test_forward_validator_refuses_invalid_causal_history[forged_endpoint] ____
+
+obs = {'alien_probes': {'heldout_independence_pass': True, 'n_pass': 2, 'n_probes': 2, 'probes': [{'acted_from_actor_state_w...d_adversity_tag": "G12_FUTURE_CHILD_DESIRED_WOUND_SECRET", "world_id": "G12_WORLD"}}', 'sentinel_visible': True}}, ...}
+name = 'forged_endpoint'
+
+    @pytest.mark.parametrize('name',['forged_endpoint','missing_parent','future_endpoint_as_root_parent','duplicate_effective_index','route_antecedent_removed'])
+    def test_forward_validator_refuses_invalid_causal_history(obs,name):
+>       assert not obs['attacks'][name]['lab']['endpoint_match'],name
+E       AssertionError: forged_endpoint
+E       assert not True
+
+test_g12_literal_contract.py:8: AssertionError
+____ test_forward_validator_refuses_invalid_causal_history[missing_parent] _____
+
+obs = {'alien_probes': {'heldout_independence_pass': True, 'n_pass': 2, 'n_probes': 2, 'probes': [{'acted_from_actor_state_w...d_adversity_tag": "G12_FUTURE_CHILD_DESIRED_WOUND_SECRET", "world_id": "G12_WORLD"}}', 'sentinel_visible': True}}, ...}
+name = 'missing_parent'
+
+    @pytest.mark.parametrize('name',['forged_endpoint','missing_parent','future_endpoint_as_root_parent','duplicate_effective_index','route_antecedent_removed'])
+    def test_forward_validator_refuses_invalid_causal_history(obs,name):
+>       assert not obs['attacks'][name]['lab']['endpoint_match'],name
+E       AssertionError: missing_parent
+E       assert not True
+
+test_g12_literal_contract.py:8: AssertionError
+_ test_forward_validator_refuses_invalid_causal_history[future_endpoint_as_root_parent] _
+
+obs = {'alien_probes': {'heldout_independence_pass': True, 'n_pass': 2, 'n_probes': 2, 'probes': [{'acted_from_actor_state_w...d_adversity_tag": "G12_FUTURE_CHILD_DESIRED_WOUND_SECRET", "world_id": "G12_WORLD"}}', 'sentinel_visible': True}}, ...}
+name = 'future_endpoint_as_root_parent'
+
+    @pytest.mark.parametrize('name',['forged_endpoint','missing_parent','future_endpoint_as_root_parent','duplicate_effective_index','route_antecedent_removed'])
+    def test_forward_validator_refuses_invalid_causal_history(obs,name):
+>       assert not obs['attacks'][name]['lab']['endpoint_match'],name
+E       AssertionError: future_endpoint_as_root_parent
+E       assert not True
+
+test_g12_literal_contract.py:8: AssertionError
+_ test_forward_validator_refuses_invalid_causal_history[duplicate_effective_index] _
+
+obs = {'alien_probes': {'heldout_independence_pass': True, 'n_pass': 2, 'n_probes': 2, 'probes': [{'acted_from_actor_state_w...d_adversity_tag": "G12_FUTURE_CHILD_DESIRED_WOUND_SECRET", "world_id": "G12_WORLD"}}', 'sentinel_visible': True}}, ...}
+name = 'duplicate_effective_index'
+
+    @pytest.mark.parametrize('name',['forged_endpoint','missing_parent','future_endpoint_as_root_parent','duplicate_effective_index','route_antecedent_removed'])
+    def test_forward_validator_refuses_invalid_causal_history(obs,name):
+>       assert not obs['attacks'][name]['lab']['endpoint_match'],name
+E       AssertionError: duplicate_effective_index
+E       assert not True
+
+test_g12_literal_contract.py:8: AssertionError
+_ test_forward_validator_refuses_invalid_causal_history[route_antecedent_removed] _
+
+obs = {'alien_probes': {'heldout_independence_pass': True, 'n_pass': 2, 'n_probes': 2, 'probes': [{'acted_from_actor_state_w...d_adversity_tag": "G12_FUTURE_CHILD_DESIRED_WOUND_SECRET", "world_id": "G12_WORLD"}}', 'sentinel_visible': True}}, ...}
+name = 'route_antecedent_removed'
+
+    @pytest.mark.parametrize('name',['forged_endpoint','missing_parent','future_endpoint_as_root_parent','duplicate_effective_index','route_antecedent_removed'])
+    def test_forward_validator_refuses_invalid_causal_history(obs,name):
+>       assert not obs['attacks'][name]['lab']['endpoint_match'],name
+E       AssertionError: route_antecedent_removed
+E       assert not True
+
+test_g12_literal_contract.py:8: AssertionError
+________ test_model_input_membrane_blocks_future_child_metadata[target] ________
+
+obs = {'alien_probes': {'heldout_independence_pass': True, 'n_pass': 2, 'n_probes': 2, 'probes': [{'acted_from_actor_state_w...d_adversity_tag": "G12_FUTURE_CHILD_DESIRED_WOUND_SECRET", "world_id": "G12_WORLD"}}', 'sentinel_visible': True}}, ...}
+path = 'target'
+
+    @pytest.mark.parametrize('path',['target','world','psyche'])
+    def test_model_input_membrane_blocks_future_child_metadata(obs,path):
+>       assert not obs['embargo'][path]['sentinel_visible'],path
+E       AssertionError: target
+E       assert not True
+
+test_g12_literal_contract.py:11: AssertionError
+________ test_model_input_membrane_blocks_future_child_metadata[world] _________
+
+obs = {'alien_probes': {'heldout_independence_pass': True, 'n_pass': 2, 'n_probes': 2, 'probes': [{'acted_from_actor_state_w...d_adversity_tag": "G12_FUTURE_CHILD_DESIRED_WOUND_SECRET", "world_id": "G12_WORLD"}}', 'sentinel_visible': True}}, ...}
+path = 'world'
+
+    @pytest.mark.parametrize('path',['target','world','psyche'])
+    def test_model_input_membrane_blocks_future_child_metadata(obs,path):
+>       assert not obs['embargo'][path]['sentinel_visible'],path
+E       AssertionError: world
+E       assert not True
+
+test_g12_literal_contract.py:11: AssertionError
+________ test_model_input_membrane_blocks_future_child_metadata[psyche] ________
+
+obs = {'alien_probes': {'heldout_independence_pass': True, 'n_pass': 2, 'n_probes': 2, 'probes': [{'acted_from_actor_state_w...d_adversity_tag": "G12_FUTURE_CHILD_DESIRED_WOUND_SECRET", "world_id": "G12_WORLD"}}', 'sentinel_visible': True}}, ...}
+path = 'psyche'
+
+    @pytest.mark.parametrize('path',['target','world','psyche'])
+    def test_model_input_membrane_blocks_future_child_metadata(obs,path):
+>       assert not obs['embargo'][path]['sentinel_visible'],path
+E       AssertionError: psyche
+E       assert not True
+
+test_g12_literal_contract.py:11: AssertionError
+_____________ test_stopping_law_requires_actual_antecedent_closure _____________
+
+obs = {'alien_probes': {'heldout_independence_pass': True, 'n_pass': 2, 'n_probes': 2, 'probes': [{'acted_from_actor_state_w...d_adversity_tag": "G12_FUTURE_CHILD_DESIRED_WOUND_SECRET", "world_id": "G12_WORLD"}}', 'sentinel_visible': True}}, ...}
+
+    def test_stopping_law_requires_actual_antecedent_closure(obs):
+>       assert not obs['stopping_corrupt']['sufficient']
+E       assert not True
+
+test_g12_literal_contract.py:13: AssertionError
+________ test_project_specific_heldout_probe_refuses_unrelated_project _________
+
+obs = {'alien_probes': {'heldout_independence_pass': True, 'n_pass': 2, 'n_probes': 2, 'probes': [{'acted_from_actor_state_w...d_adversity_tag": "G12_FUTURE_CHILD_DESIRED_WOUND_SECRET", "world_id": "G12_WORLD"}}', 'sentinel_visible': True}}, ...}
+
+    def test_project_specific_heldout_probe_refuses_unrelated_project(obs):
+>       assert not obs['alien_probes']['heldout_independence_pass']
+E       assert not True
+
+test_g12_literal_contract.py:15: AssertionError
+________ test_same_candidate_id_changed_payload_changes_replay_identity ________
+
+obs = {'alien_probes': {'heldout_independence_pass': True, 'n_pass': 2, 'n_probes': 2, 'probes': [{'acted_from_actor_state_w...d_adversity_tag": "G12_FUTURE_CHILD_DESIRED_WOUND_SECRET", "world_id": "G12_WORLD"}}', 'sentinel_visible': True}}, ...}
+
+    def test_same_candidate_id_changed_payload_changes_replay_identity(obs):
+        a=obs['candidate_payload']['before'];b=obs['candidate_payload']['after']
+>       assert a['candidate_set_hash']!=b['candidate_set_hash']
+E       AssertionError: assert 'sha256:9e3e10cc45bc0982d4554d0170249e6a30df91d28887b3455a81e889fb84407b' != 'sha256:9e3e10cc45bc0982d4554d0170249e6a30df91d28887b3455a81e889fb84407b'
+
+test_g12_literal_contract.py:18: AssertionError
+________________ test_lab_sampler_is_accepted_adp020_algorithm _________________
+
+obs = {'alien_probes': {'heldout_independence_pass': True, 'n_pass': 2, 'n_probes': 2, 'probes': [{'acted_from_actor_state_w...d_adversity_tag": "G12_FUTURE_CHILD_DESIRED_WOUND_SECRET", "world_id": "G12_WORLD"}}', 'sentinel_visible': True}}, ...}
+
+    def test_lab_sampler_is_accepted_adp020_algorithm(obs):
+>       assert obs['rng_algorithm']['actual']==obs['rng_algorithm']['required']
+E       AssertionError: assert 'SHA256_CONCAT_MODULO' == 'ADP020_HMAC_...ELOW_V1@1.0.0'
+E         
+E         - ADP020_HMAC_SHA256_UNIFORM_BELOW_V1@1.0.0
+E         + SHA256_CONCAT_MODULO
+
+test_g12_literal_contract.py:20: AssertionError
+=========================== short test summary info ============================
+FAILED test_g12_literal_contract.py::test_forward_validator_refuses_invalid_causal_history[forged_endpoint]
+FAILED test_g12_literal_contract.py::test_forward_validator_refuses_invalid_causal_history[missing_parent]
+FAILED test_g12_literal_contract.py::test_forward_validator_refuses_invalid_causal_history[future_endpoint_as_root_parent]
+FAILED test_g12_literal_contract.py::test_forward_validator_refuses_invalid_causal_history[duplicate_effective_index]
+FAILED test_g12_literal_contract.py::test_forward_validator_refuses_invalid_causal_history[route_antecedent_removed]
+FAILED test_g12_literal_contract.py::test_model_input_membrane_blocks_future_child_metadata[target]
+FAILED test_g12_literal_contract.py::test_model_input_membrane_blocks_future_child_metadata[world]
+FAILED test_g12_literal_contract.py::test_model_input_membrane_blocks_future_child_metadata[psyche]
+FAILED test_g12_literal_contract.py::test_stopping_law_requires_actual_antecedent_closure
+FAILED test_g12_literal_contract.py::test_project_specific_heldout_probe_refuses_unrelated_project
+FAILED test_g12_literal_contract.py::test_same_candidate_id_changed_payload_changes_replay_identity
+FAILED test_g12_literal_contract.py::test_lab_sampler_is_accepted_adp020_algorithm
+12 failed in 0.22s
