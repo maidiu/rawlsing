@@ -262,7 +262,7 @@ def consume(ctx, reg, binding, e2, claim_id, prior_history=()):
     before = None
     try:
         before = (ctx.checkpoint(), reg.checkpoint())
-        proof = custody.validate(ctx, reg, binding, fixed_e1(), claim_id, e2.effective_causal_time)
+        proof = custody.validate(ctx, reg, binding, fixed_e1(), claim_id, e2.effective_causal_time, require_selection=True)
         def apply_verified():
             """Choose the later response from real owner state, then apply native CAN008."""
             if not ctx.verify():
@@ -373,12 +373,12 @@ def mediate(*, ctx, reg, binding, e1, claim_id, memory, mode="CONTENT_SENSITIVE"
     try:
         before = (ctx.checkpoint(), reg.checkpoint())
         custody.need(e1 == fixed_e1(), "MS3_SOURCE_EVENT_BINDING")
-        custody.validate(ctx, reg, binding, e1, claim_id)
+        custody.validate(ctx, reg, binding, e1, claim_id, require_selection=True)
         result = _mediate_unchecked(ctx=ctx, reg=reg, binding=binding, e1=e1, claim_id=claim_id, memory=memory, mode=mode, tamper=tamper)
         if result.get("decision_state") != "APPLIED_EPISTEMIC_TRANSITION":
             ctx.restore(before[0]); reg.restore(before[1])
         else:
-            result["native_owner_provenance"] = custody.validate(ctx, reg, binding, e1, claim_id)
+            result["native_owner_provenance"] = custody.validate(ctx, reg, binding, e1, claim_id, require_selection=True)
         return result
     except Exception as exc:
         if before is not None:
@@ -392,7 +392,7 @@ def withdraw_mediator(*, ctx, reg, binding, e1, claim_id, memory, target_effect_
     try:
         before = (ctx.checkpoint(), reg.checkpoint())
         custody.need(e1 == fixed_e1(), "MS3_SOURCE_EVENT_BINDING")
-        custody.validate(ctx, reg, binding, e1, claim_id)
+        custody.validate(ctx, reg, binding, e1, claim_id, require_selection=True)
         bad = _verify_memory_provenance(ctx, reg, memory)
         if bad is not None:
             return refuse(bad)
@@ -400,7 +400,7 @@ def withdraw_mediator(*, ctx, reg, binding, e1, claim_id, memory, target_effect_
         if result.get("decision_state") != "APPLIED_EPISTEMIC_TRANSITION":
             ctx.restore(before[0]); reg.restore(before[1])
         else:
-            result["native_owner_provenance"] = custody.validate(ctx, reg, binding, e1, claim_id)
+            result["native_owner_provenance"] = custody.validate(ctx, reg, binding, e1, claim_id, require_selection=True)
         return result
     except Exception as exc:
         if before is not None:

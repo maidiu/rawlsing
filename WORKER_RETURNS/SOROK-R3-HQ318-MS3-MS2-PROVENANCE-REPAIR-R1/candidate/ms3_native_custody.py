@@ -11,6 +11,8 @@ import json
 from candidate import owner_transitions as owner, can008_candidate_rule as rule
 from candidate.candidate_registry_fixture import canon,digest,parse_time,validate_event
 
+_NO_SELECTION_REQUESTED = object()
+
 class NativeProofError(Exception):
     pass
 
@@ -31,7 +33,7 @@ def source_contract(ctx,reg,binding,e1):
 def selected(ctx,reg,binding,e1,ref,at=None):
     source_contract(ctx,reg,binding,e1)
     claim=owner.canonical_claim(e1.actor_scope,'FIXTURE_PRIVATE_FEEDBACK_APPRAISAL','RESPECTED',e1.effective_causal_time,e1.actor_scope,[e1.event_id])
-    need(ref==claim['claim_id'],'MS3_UNKNOWN_SELECTED_CLAIM')
+    need(type(ref) is str and ref==claim['claim_id'],'MS3_UNKNOWN_SELECTED_CLAIM')
     need(ctx.claims.get(ref)==claim and owner.verify_claim(claim),'MS3_CANONICAL_CLAIM_BINDING')
     expected=dict(event_id=e1.event_id,event_hash=e1.event_hash,rule_hash=binding.rule_content_hash,stance_kind='BELIEF',operations=['ADD','WITHDRAW','SUPERSEDE_EXACT_RECORD','NO_CHANGE'])
     need(ctx.emissions.get(ref)==expected,'MS3_CLAIM_SOURCE_EMISSION')
@@ -103,10 +105,10 @@ def reconstruct(ctx,reg,binding,e1):
     for ref,tid in terminal.items():need(target['state_sets'][ref]['last_transition_ref']==tid,'MS3_NATIVE_TERMINAL_MISMATCH')
     return dict(schema='MS3_SOURCEFREE_NATIVE_TRAJECTORY@1',root_state_hash=digest(root),current_owner_state_hash=ctx.state_hash,steps=steps,terminal_transition_refs=terminal,scope='FINITE_NATIVE_REEXECUTION; NOT_PROTECTED_EXTERNAL_ATTESTATION')
 
-def validate(ctx,reg,binding,e1,ref=None,at=None):
-    if ref is not None:selected(ctx,reg,binding,e1,ref,at)
+def validate(ctx,reg,binding,e1,ref=_NO_SELECTION_REQUESTED,at=None,*,require_selection=False):
+    if require_selection or ref is not _NO_SELECTION_REQUESTED:selected(ctx,reg,binding,e1,ref,at)
     proof=reconstruct(ctx,reg,binding,e1)
-    if ref is not None:
+    if require_selection or ref is not _NO_SELECTION_REQUESTED:
         snapshot=ctx.state_sets.get(ref);permission=ctx.permissions.get(ref)
         if snapshot is None:need(permission is None and not any(x['claim_ref']==ref for x in ctx.stances.values()),'MS3_BOUND_NONE_INVALID')
         else:
