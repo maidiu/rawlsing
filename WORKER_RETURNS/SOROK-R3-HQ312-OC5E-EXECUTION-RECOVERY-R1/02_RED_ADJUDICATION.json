@@ -1,0 +1,558 @@
+{
+  "verdict": "REVIEW_REVISE__NATIVE_EXECUTION_RECOVERED__49_NEW_NATIVE_HOSTILE_REDS__7_OF_7_OC5_PREDICTIONS_CONFIRMED_NATIVELY__NO_AUTHOR_REPAIR__TEST_ONLY_ONLY__NO_ADOPTION",
+  "source_under_review": {
+    "commit": "0caaec590f6a8bf6744f22dc9c948c5fe233bc94",
+    "git_blob_sha1": "af2b7e943018077cb36808b5af1cd67704624bec",
+    "sha256": "447e5bb738fc49c946a39ca438126e9c2a69d93025600f053662e56f846f9e3a"
+  },
+  "tallies": {
+    "inherited_131": {
+      "total": 131,
+      "passed": 121,
+      "red": 10,
+      "expected": "121 PASS / 10 RED",
+      "matches_expected": true
+    },
+    "oc4_new_36": {
+      "total": 36,
+      "passed": 36,
+      "red": 0,
+      "expected": "36 PASS",
+      "matches_expected": true
+    },
+    "oc5e_native_hostiles": {
+      "total": 159,
+      "passed": 110,
+      "red": 49,
+      "expected": "regression bank",
+      "matches_expected": null
+    },
+    "oc5_prior_predictions": {
+      "total": 23,
+      "passed": 16,
+      "red": 7,
+      "expected": "all predicted defects RED",
+      "matches_expected": true
+    },
+    "totals": {
+      "cases": 349,
+      "passed": 283,
+      "red": 66
+    }
+  },
+  "part_a_ten_historical_original_reds": [
+    {
+      "index": 1,
+      "case": "test_h13_ledger_rollback_detected",
+      "literal_reason": "custody_protocol.LedgerRollbackError: append-only: rollback requires a separate compensating event",
+      "classification": "six_procedural",
+      "adjudication": "not an implementation defect; superseded by or refused earlier than the authored expectation",
+      "canonical_capsule_signature_identity_weakened": false
+    },
+    {
+      "index": 2,
+      "case": "test_h15_missing_signature_in_capsule_refused",
+      "literal_reason": "custody_protocol.SignatureError: real capsule argument required for fixture binding",
+      "classification": "six_procedural",
+      "adjudication": "not an implementation defect; superseded by or refused earlier than the authored expectation",
+      "canonical_capsule_signature_identity_weakened": false
+    },
+    {
+      "index": 3,
+      "case": "test_positive_full_role_separated_lifecycle",
+      "literal_reason": "custody_protocol.SignatureError: signature does not bind capsule content",
+      "classification": "six_procedural",
+      "adjudication": "not an implementation defect; superseded by or refused earlier than the authored expectation",
+      "canonical_capsule_signature_identity_weakened": false
+    },
+    {
+      "index": 4,
+      "case": "test_A_capsule_unblind_permission[mod0-A01_revoked_unblind]",
+      "literal_reason": "custody_protocol.RevocationError: cannot commit an inactive capsule",
+      "classification": "six_early_refusal",
+      "adjudication": "not an implementation defect; superseded by or refused earlier than the authored expectation",
+      "canonical_capsule_signature_identity_weakened": false
+    },
+    {
+      "index": 5,
+      "case": "test_A_capsule_unblind_permission[mod1-A02_expired_unblind]",
+      "literal_reason": "custody_protocol.RevocationError: cannot commit an inactive capsule",
+      "classification": "six_early_refusal",
+      "adjudication": "not an implementation defect; superseded by or refused earlier than the authored expectation",
+      "canonical_capsule_signature_identity_weakened": false
+    },
+    {
+      "index": 6,
+      "case": "test_A_capsule_unblind_permission[mod2-A03_illegal_purpose_unblind]",
+      "literal_reason": "custody_protocol.PurposeViolationError: unauthorized purpose: LIVE_MODEL_REQUEST",
+      "classification": "six_early_refusal",
+      "adjudication": "not an implementation defect; superseded by or refused earlier than the authored expectation",
+      "canonical_capsule_signature_identity_weakened": false
+    },
+    {
+      "index": 7,
+      "case": "test_A08_mismatched_holder_unblind",
+      "literal_reason": "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched",
+      "classification": "four_content_only_signature",
+      "adjudication": "not an implementation defect; superseded by or refused earlier than the authored expectation",
+      "canonical_capsule_signature_identity_weakened": false
+    },
+    {
+      "index": 8,
+      "case": "test_signature_binds_content_and_rejects_alien_capsule",
+      "literal_reason": "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched",
+      "classification": "four_content_only_signature",
+      "adjudication": "not an implementation defect; superseded by or refused earlier than the authored expectation",
+      "canonical_capsule_signature_identity_weakened": false
+    },
+    {
+      "index": 9,
+      "case": "test_B01_valid_countersignatures_bind_content",
+      "literal_reason": "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched",
+      "classification": "four_content_only_signature",
+      "adjudication": "not an implementation defect; superseded by or refused earlier than the authored expectation",
+      "canonical_capsule_signature_identity_weakened": false
+    },
+    {
+      "index": 10,
+      "case": "test_Z03_declared_mock_roster_uses_public_derived_credentials",
+      "literal_reason": "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched",
+      "classification": "four_content_only_signature",
+      "adjudication": "not an implementation defect; superseded by or refused earlier than the authored expectation",
+      "canonical_capsule_signature_identity_weakened": false
+    }
+  ],
+  "part_b_oc5_predictions": [
+    {
+      "packet": "{\"public_projection\":{\"context\":\"safe\",\"\uff43ontext\":\"shadow\"}}",
+      "oc5_status": "predicted_unexecuted",
+      "native_result": "detect_leakage() == []",
+      "verdict": "CONFIRMED_RED"
+    },
+    {
+      "packet": "{\"public_projection\":{\"context\":\"safe\",\"con\\u034ftext\":\"shadow\"}}",
+      "oc5_status": "predicted_unexecuted",
+      "native_result": "detect_leakage() == []",
+      "verdict": "CONFIRMED_RED"
+    },
+    {
+      "packet": "{\"public_projection\":{\"context\":\"safe\",\"CONT\\u00c9XT\":\"shadow\"}}",
+      "oc5_status": "predicted_unexecuted",
+      "native_result": "detect_leakage() == []",
+      "verdict": "CONFIRMED_RED"
+    },
+    {
+      "packet": "{\"note\":\"charming\",\"n\\u034fote\":\"shadow\"}}",
+      "oc5_status": "predicted_unexecuted",
+      "native_result": "detect_leakage() == []",
+      "verdict": "CONFIRMED_RED"
+    },
+    {
+      "claim": "malformed primary signature raises typed SignatureError",
+      "oc5_status": "predicted_unexecuted",
+      "native_result": "AttributeError for every non-None malformed object; only None is typed",
+      "verdict": "CONFIRMED_RED"
+    },
+    {
+      "claim": "OC5 committed falsifier bank (23 cases)",
+      "oc5_status": "predicted_unexecuted",
+      "native_result": "7 FAIL / 16 PASS",
+      "verdict": "CONFIRMED_RED"
+    },
+    {
+      "claim": "value-level U+034F / U+200B / fullwidth splits",
+      "oc5_status": "excerpt_tested",
+      "native_result": "refused with ['answer_key']",
+      "verdict": "CONFIRMED_FIXED"
+    },
+    {
+      "claim": "positive single-context control",
+      "oc5_status": "excerpt_tested",
+      "native_result": "[]",
+      "verdict": "CONFIRMED_PASS"
+    }
+  ],
+  "part_c_new_native_reds": [
+    {
+      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-context]",
+      "family": "A1_normalization_equivalent_allowed_field_alias",
+      "observed": "Failed: DID NOT RAISE LeakageError"
+    },
+    {
+      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-context]",
+      "family": "A1_normalization_equivalent_allowed_field_alias",
+      "observed": "Failed: DID NOT RAISE LeakageError"
+    },
+    {
+      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-context]",
+      "family": "A1_normalization_equivalent_allowed_field_alias",
+      "observed": "Failed: DID NOT RAISE LeakageError"
+    },
+    {
+      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-note]",
+      "family": "A1_normalization_equivalent_allowed_field_alias",
+      "observed": "Failed: DID NOT RAISE LeakageError"
+    },
+    {
+      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-menu]",
+      "family": "A1_normalization_equivalent_allowed_field_alias",
+      "observed": "Failed: DID NOT RAISE LeakageError"
+    },
+    {
+      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-public-projection]",
+      "family": "A1_normalization_equivalent_allowed_field_alias",
+      "observed": "Failed: DID NOT RAISE LeakageError"
+    },
+    {
+      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-note]",
+      "family": "A1_normalization_equivalent_allowed_field_alias",
+      "observed": "Failed: DID NOT RAISE LeakageError"
+    },
+    {
+      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-request-id]",
+      "family": "A1_normalization_equivalent_allowed_field_alias",
+      "observed": "Failed: DID NOT RAISE LeakageError"
+    },
+    {
+      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-response]",
+      "family": "A1_normalization_equivalent_allowed_field_alias",
+      "observed": "Failed: DID NOT RAISE LeakageError"
+    },
+    {
+      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[double-context-alias]",
+      "family": "A1_normalization_equivalent_allowed_field_alias",
+      "observed": "Failed: DID NOT RAISE LeakageError"
+    },
+    {
+      "case": "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-a]",
+      "family": "A2_nfkc_invisible_confusable_leak_token",
+      "observed": "Failed: DID NOT RAISE LeakageError"
+    },
+    {
+      "case": "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-e]",
+      "family": "A2_nfkc_invisible_confusable_leak_token",
+      "observed": "Failed: DID NOT RAISE LeakageError"
+    },
+    {
+      "case": "test_confusable_leak_token_substitution_must_be_flagged[armenian-h]",
+      "family": "A2_nfkc_invisible_confusable_leak_token",
+      "observed": "Failed: DID NOT RAISE LeakageError"
+    },
+    {
+      "case": "test_confusable_leak_token_substitution_must_be_flagged[greek-o]",
+      "family": "A2_nfkc_invisible_confusable_leak_token",
+      "observed": "Failed: DID NOT RAISE LeakageError"
+    },
+    {
+      "case": "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-s]",
+      "family": "A2_nfkc_invisible_confusable_leak_token",
+      "observed": "Failed: DID NOT RAISE LeakageError"
+    },
+    {
+      "case": "test_confusable_leak_token_substitution_must_be_flagged[mixed-cyrillic]",
+      "family": "A2_nfkc_invisible_confusable_leak_token",
+      "observed": "Failed: DID NOT RAISE LeakageError"
+    },
+    {
+      "case": "test_malformed_signature_object_must_fail_typed[primary-object]",
+      "family": "A3_malformed_signature_object_untyped",
+      "observed": "AttributeError: 'object' object has no attribute 'signer_person_id'"
+    },
+    {
+      "case": "test_malformed_signature_object_must_fail_typed[primary-int]",
+      "family": "A3_malformed_signature_object_untyped",
+      "observed": "AttributeError: 'int' object has no attribute 'signer_person_id'"
+    },
+    {
+      "case": "test_malformed_signature_object_must_fail_typed[primary-dict]",
+      "family": "A3_malformed_signature_object_untyped",
+      "observed": "AttributeError: 'dict' object has no attribute 'signer_person_id'"
+    },
+    {
+      "case": "test_malformed_signature_object_must_fail_typed[primary-list]",
+      "family": "A3_malformed_signature_object_untyped",
+      "observed": "AttributeError: 'list' object has no attribute 'signer_person_id'"
+    },
+    {
+      "case": "test_malformed_signature_object_must_fail_typed[primary-str]",
+      "family": "A3_malformed_signature_object_untyped",
+      "observed": "AttributeError: 'str' object has no attribute 'signer_person_id'"
+    },
+    {
+      "case": "test_malformed_signature_object_must_fail_typed[primary-bool]",
+      "family": "A3_malformed_signature_object_untyped",
+      "observed": "AttributeError: 'bool' object has no attribute 'signer_person_id'"
+    },
+    {
+      "case": "test_malformed_signature_object_must_fail_typed[primary-bytes]",
+      "family": "A3_malformed_signature_object_untyped",
+      "observed": "AttributeError: 'bytes' object has no attribute 'signer_person_id'"
+    },
+    {
+      "case": "test_malformed_signature_object_must_fail_typed[primary-float]",
+      "family": "A3_malformed_signature_object_untyped",
+      "observed": "AttributeError: 'float' object has no attribute 'signer_person_id'"
+    },
+    {
+      "case": "test_malformed_signature_object_must_fail_typed[primary-tuple]",
+      "family": "A3_malformed_signature_object_untyped",
+      "observed": "AttributeError: 'tuple' object has no attribute 'signer_person_id'"
+    },
+    {
+      "case": "test_malformed_signature_object_must_fail_typed[second-object]",
+      "family": "A3_malformed_signature_object_untyped",
+      "observed": "AttributeError: 'object' object has no attribute 'signer_person_id'"
+    },
+    {
+      "case": "test_malformed_signature_object_must_fail_typed[second-int]",
+      "family": "A3_malformed_signature_object_untyped",
+      "observed": "AttributeError: 'int' object has no attribute 'signer_person_id'"
+    },
+    {
+      "case": "test_malformed_signature_object_must_fail_typed[second-dict]",
+      "family": "A3_malformed_signature_object_untyped",
+      "observed": "AttributeError: 'dict' object has no attribute 'signer_person_id'"
+    },
+    {
+      "case": "test_malformed_signature_object_must_fail_typed[second-list]",
+      "family": "A3_malformed_signature_object_untyped",
+      "observed": "AttributeError: 'list' object has no attribute 'signer_person_id'"
+    },
+    {
+      "case": "test_malformed_signature_object_must_fail_typed[second-str]",
+      "family": "A3_malformed_signature_object_untyped",
+      "observed": "AttributeError: 'str' object has no attribute 'signer_person_id'"
+    },
+    {
+      "case": "test_malformed_signature_object_must_fail_typed[second-bool]",
+      "family": "A3_malformed_signature_object_untyped",
+      "observed": "AttributeError: 'bool' object has no attribute 'signer_person_id'"
+    },
+    {
+      "case": "test_malformed_signature_object_must_fail_typed[second-bytes]",
+      "family": "A3_malformed_signature_object_untyped",
+      "observed": "AttributeError: 'bytes' object has no attribute 'signer_person_id'"
+    },
+    {
+      "case": "test_malformed_signature_object_must_fail_typed[second-float]",
+      "family": "A3_malformed_signature_object_untyped",
+      "observed": "AttributeError: 'float' object has no attribute 'signer_person_id'"
+    },
+    {
+      "case": "test_malformed_signature_object_must_fail_typed[second-tuple]",
+      "family": "A3_malformed_signature_object_untyped",
+      "observed": "AttributeError: 'tuple' object has no attribute 'signer_person_id'"
+    },
+    {
+      "case": "test_non_enum_role_string_must_fail_typed",
+      "family": "A4_non_enum_role_string_untyped",
+      "observed": "AttributeError: 'str' object has no attribute 'value'"
+    },
+    {
+      "case": "test_unblind_unhashable_holder_must_fail_typed[list]",
+      "family": "A5_unblind_unhashable_holder_untyped",
+      "observed": "TypeError: unhashable type: 'list'"
+    },
+    {
+      "case": "test_unblind_unhashable_holder_must_fail_typed[dict]",
+      "family": "A5_unblind_unhashable_holder_untyped",
+      "observed": "TypeError: unhashable type: 'dict'"
+    },
+    {
+      "case": "test_unblind_unhashable_holder_must_fail_typed[set]",
+      "family": "A5_unblind_unhashable_holder_untyped",
+      "observed": "TypeError: unhashable type: 'set'"
+    },
+    {
+      "case": "test_capsule_identity_field_types_must_be_validated[version-str]",
+      "family": "A6_capsule_identity_field_types_unvalidated",
+      "observed": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+    },
+    {
+      "case": "test_capsule_identity_field_types_must_be_validated[version-none]",
+      "family": "A6_capsule_identity_field_types_unvalidated",
+      "observed": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+    },
+    {
+      "case": "test_capsule_identity_field_types_must_be_validated[version-injection]",
+      "family": "A6_capsule_identity_field_types_unvalidated",
+      "observed": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+    },
+    {
+      "case": "test_capsule_identity_field_types_must_be_validated[freeze-none]",
+      "family": "A6_capsule_identity_field_types_unvalidated",
+      "observed": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+    },
+    {
+      "case": "test_capsule_identity_field_types_must_be_validated[freeze-dict]",
+      "family": "A6_capsule_identity_field_types_unvalidated",
+      "observed": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+    },
+    {
+      "case": "test_capsule_identity_field_types_must_be_validated[freeze-str]",
+      "family": "A6_capsule_identity_field_types_unvalidated",
+      "observed": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+    },
+    {
+      "case": "test_capsule_identity_field_types_must_be_validated[schema-none]",
+      "family": "A6_capsule_identity_field_types_unvalidated",
+      "observed": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+    },
+    {
+      "case": "test_capsule_identity_field_types_must_be_validated[content-none]",
+      "family": "A6_capsule_identity_field_types_unvalidated",
+      "observed": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+    },
+    {
+      "case": "test_capsule_identity_field_types_must_be_validated[lawful-none]",
+      "family": "A6_capsule_identity_field_types_unvalidated",
+      "observed": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+    },
+    {
+      "case": "test_capsule_identity_field_types_must_be_validated[rubric-none]",
+      "family": "A6_capsule_identity_field_types_unvalidated",
+      "observed": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+    },
+    {
+      "case": "test_capsule_identity_field_types_must_be_validated[split-none]",
+      "family": "A6_capsule_identity_field_types_unvalidated",
+      "observed": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+    }
+  ],
+  "new_red_family_counts": {
+    "A1_normalization_equivalent_allowed_field_alias": 10,
+    "A2_nfkc_invisible_confusable_leak_token": 6,
+    "A3_malformed_signature_object_untyped": 18,
+    "A4_non_enum_role_string_untyped": 1,
+    "A5_unblind_unhashable_holder_untyped": 3,
+    "A6_capsule_identity_field_types_unvalidated": 11
+  },
+  "new_red_total": 49,
+  "oc5e_controls_passing": [
+    "test_imported_module_is_the_pinned_oc4_blob",
+    "test_alias_holes_are_observed_not_theorised",
+    "test_genuinely_other_or_invalid_packets_still_refused[alias-only-no-sibling]",
+    "test_genuinely_other_or_invalid_packets_still_refused[acute-i-context]",
+    "test_genuinely_other_or_invalid_packets_still_refused[underscore-differs]",
+    "test_genuinely_other_or_invalid_packets_still_refused[note-non-str]",
+    "test_genuinely_other_or_invalid_packets_still_refused[menu-non-list]",
+    "test_genuinely_other_or_invalid_packets_still_refused[context-non-str]",
+    "test_genuinely_other_or_invalid_packets_still_refused[extra-public-key]",
+    "test_genuinely_other_or_invalid_packets_still_refused[value-cgj]",
+    "test_genuinely_other_or_invalid_packets_still_refused[value-zwsp]",
+    "test_genuinely_other_or_invalid_packets_still_refused[value-fullwidth]",
+    "test_alias_values_are_still_type_checked_at_top_level",
+    "test_valid_generated_packets_still_pass",
+    "test_confusable_holes_are_observed_only_for_nfkc_invisible_scripts",
+    "test_genuinely_different_confusable_string_is_correctly_admitted",
+    "test_none_is_the_only_typed_malformed_signature",
+    "test_malformed_signature_holes_are_observed_as_attributeerror",
+    "test_non_enum_role_string_hole_is_observed_as_attributeerror",
+    "test_unblind_unhashable_holder_hole_is_observed_as_typeerror[list]",
+    "test_unblind_unhashable_holder_hole_is_observed_as_typeerror[dict]",
+    "test_unblind_unhashable_holder_hole_is_observed_as_typeerror[set]",
+    "test_unblind_scalar_holder_types_are_typed",
+    "test_capsule_identity_field_type_hole_is_observed",
+    "test_mixed_type_capsule_digest_dict_must_fail_typed",
+    "test_mixed_type_capsule_digest_dict_hole_is_observed_as_typeerror",
+    "test_semantic_fingerprint_mixed_keys_must_fail_typed[mixed-int-str]",
+    "test_semantic_fingerprint_mixed_keys_must_fail_typed[none-with-str]",
+    "test_semantic_fingerprint_mixed_keys_must_fail_typed[tuple-key]",
+    "test_semantic_fingerprint_hole_is_observed_as_typeerror[mixed-int-str]",
+    "test_semantic_fingerprint_hole_is_observed_as_typeerror[none-with-str]",
+    "test_semantic_fingerprint_hole_is_observed_as_typeerror[tuple-key]",
+    "test_every_capsule_field_binds_the_envelope_commitment[capsule_id]",
+    "test_every_capsule_field_binds_the_envelope_commitment[schema_version]",
+    "test_every_capsule_field_binds_the_envelope_commitment[purpose]",
+    "test_every_capsule_field_binds_the_envelope_commitment[scenario_frame]",
+    "test_every_capsule_field_binds_the_envelope_commitment[family_graph_digest]",
+    "test_every_capsule_field_binds_the_envelope_commitment[content_digest]",
+    "test_every_capsule_field_binds_the_envelope_commitment[contribution_digest]",
+    "test_every_capsule_field_binds_the_envelope_commitment[public_projection_digest]",
+    "test_every_capsule_field_binds_the_envelope_commitment[hidden_projection_digest]",
+    "test_every_capsule_field_binds_the_envelope_commitment[lawful_set_digest]",
+    "test_every_capsule_field_binds_the_envelope_commitment[coder_rubric_digest]",
+    "test_every_capsule_field_binds_the_envelope_commitment[split_assignment_digest]",
+    "test_every_capsule_field_binds_the_envelope_commitment[generation_history_digest]",
+    "test_every_capsule_field_binds_the_envelope_commitment[rejected_alternatives_digest]",
+    "test_every_capsule_field_binds_the_envelope_commitment[freeze_timestamp]",
+    "test_every_capsule_field_binds_the_envelope_commitment[version]",
+    "test_every_capsule_field_binds_the_envelope_commitment[expired]",
+    "test_every_capsule_field_binds_the_envelope_commitment[revoked]",
+    "test_full_capsule_pair_positive_still_holds",
+    "test_signature_context_and_nonce_binding[wrong-context]",
+    "test_signature_context_and_nonce_binding[wrong-nonce]",
+    "test_signature_context_and_nonce_binding[empty-nonce]",
+    "test_signature_context_and_nonce_binding[blank-nonce]",
+    "test_signature_payload_tampering_refused[test-only]",
+    "test_signature_payload_tampering_refused[root]",
+    "test_signature_payload_tampering_refused[signer]",
+    "test_signature_payload_tampering_refused[content]",
+    "test_signature_payload_tampering_refused[context]",
+    "test_signature_payload_tampering_refused[nonce]",
+    "test_signature_payload_tampering_refused[signature-hash]",
+    "test_mock_verify_never_raises_and_fails_closed",
+    "test_every_escrow_event_mutation_is_detected[unblind-id]",
+    "test_every_escrow_event_mutation_is_detected[unblind-at]",
+    "test_every_escrow_event_mutation_is_detected[unblind-holder]",
+    "test_every_escrow_event_mutation_is_detected[unblind-lawful]",
+    "test_every_escrow_event_mutation_is_detected[committed-swap]",
+    "test_every_escrow_event_mutation_is_detected[committed-key]",
+    "test_every_escrow_event_mutation_is_detected[exposure]",
+    "test_every_escrow_event_mutation_is_detected[ledger-add]",
+    "test_every_escrow_event_mutation_is_detected[ledger-drop]",
+    "test_every_escrow_event_mutation_is_detected[ledger-seq]",
+    "test_every_escrow_event_mutation_is_detected[seals]",
+    "test_every_escrow_event_mutation_is_detected[proofs]",
+    "test_holder_grant_registry_is_outside_the_event_seal",
+    "test_unblind_receipt_alias_does_not_change_retained_integrity",
+    "test_escrow_lifecycle_early_refusals[revoked]",
+    "test_escrow_lifecycle_early_refusals[expired]",
+    "test_escrow_lifecycle_early_refusals[illegal-purpose]",
+    "test_escrow_lifecycle_early_refusals[uncommitted]",
+    "test_escrow_lifecycle_early_refusals[no-grant]",
+    "test_escrow_lifecycle_early_refusals[double-commit]",
+    "test_escrow_lifecycle_early_refusals[double-release]",
+    "test_ledger_rollback_is_always_refused_typed",
+    "test_blind_pairing_malformed_inputs_are_typed[two-A]",
+    "test_blind_pairing_malformed_inputs_are_typed[two-arms]",
+    "test_blind_pairing_malformed_inputs_are_typed[blank-nonce]",
+    "test_blind_pairing_malformed_inputs_are_typed[whitespace-nonce]",
+    "test_blind_pairing_malformed_inputs_are_typed[empty-list]",
+    "test_blind_pairing_malformed_inputs_are_typed[string]",
+    "test_blind_pairing_malformed_inputs_are_typed[unhashable-arm]",
+    "test_blind_pairing_malformed_inputs_are_typed[dict-arm]",
+    "test_blind_pairing_malformed_inputs_are_typed[int-arm]",
+    "test_blind_pairing_malformed_inputs_are_typed[none-arm]",
+    "test_blind_pairing_malformed_inputs_are_typed[extra-arm]",
+    "test_blind_pairing_malformed_inputs_are_typed[inconsistent-case-join]",
+    "test_blind_pairing_malformed_inputs_are_typed[int-case-join]",
+    "test_blind_pairing_malformed_inputs_are_typed[non-dict]",
+    "test_blind_pairing_block_size_must_be_three[b1]",
+    "test_blind_pairing_block_size_must_be_three[b2]",
+    "test_blind_pairing_block_size_must_be_three[b4]",
+    "test_blind_pairing_block_size_must_be_three[b0]",
+    "test_blind_pairing_valid_three_arm_blocks_pass",
+    "test_unauthorized_purposes_refused_typed[live-model]",
+    "test_unauthorized_purposes_refused_typed[source-use]",
+    "test_unauthorized_purposes_refused_typed[empty]",
+    "test_unauthorized_purposes_refused_typed[none]",
+    "test_authorized_purposes_accepted",
+    "test_escrow_commit_refuses_inactive_capsule_before_any_state_change"
+  ],
+  "holds": {
+    "test_only_scope": true,
+    "no_real_signer_institution": true,
+    "no_protected_holdout": true,
+    "no_durable_external_journal": true,
+    "no_independent_semantic_oracle": true,
+    "cross_process_c07": "NOT_REACHED absent API",
+    "no_external_model_calls": true,
+    "no_original_survey_data": true,
+    "no_v3": true,
+    "no_product_premain_current_edit": true,
+    "no_adoption": true,
+    "author_source_repaired": false,
+    "distinct_independent_court_required": true
+  }
+}

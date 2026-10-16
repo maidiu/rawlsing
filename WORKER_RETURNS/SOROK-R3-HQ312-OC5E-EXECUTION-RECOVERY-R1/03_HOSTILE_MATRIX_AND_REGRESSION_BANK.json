@@ -1,0 +1,162 @@
+{
+  "oc5e_hostile_matrix_and_regression_bank": {
+    "contract": "OC5E_NATIVE_HOSTILE_COURT@1",
+    "executed_against": {
+      "commit": "0caaec590f6a8bf6744f22dc9c948c5fe233bc94",
+      "module": "custody_protocol",
+      "git_blob_sha1": "af2b7e943018077cb36808b5af1cd67704624bec",
+      "sha256": "447e5bb738fc49c946a39ca438126e9c2a69d93025600f053662e56f846f9e3a",
+      "entrypoints_used": [
+        "detect_leakage", "assert_no_leakage", "require_second_signature",
+        "MockSigner.sign", "MockSigner.verify", "capsule_envelope_commitment",
+        "EscrowState.commit", "EscrowState.unblind", "EscrowState.release",
+        "EscrowState.record_exposure", "EscrowState.rollback_ledger",
+        "EscrowState.verify_ledger_integrity", "verify_blind_pairing",
+        "verify_purpose", "semantic_fingerprint", "detect_family_clone"
+      ],
+      "no_transcribed_excerpt": true,
+      "author_source_repaired": false
+    },
+
+    "families": {
+      "A1_normalization_equivalent_allowed_field_alias": {
+        "cases": 10,
+        "root_cause": "detect_leakage uses set(map(_normalized, value)) for the public-projection key set, which discards multiplicity, and scan()'s recursive allowlist checks only the normalized spelling, so a second normalization-equivalent alias of an allowed field is admitted alongside the legitimate key.",
+        "confirmed_spellings": [
+          {"alias": "ｃontext", "codepoints": ["U+FF43", "ontext"]},
+          {"alias": "con͏text", "codepoints": ["con", "U+034F", "text"]},
+          {"alias": "CONTÉXT", "codepoints": ["CONT", "U+00C9", "XT"]},
+          {"alias": "n͏ote", "codepoints": ["n", "U+034F", "ote"]},
+          {"alias": "ｐublic_projection", "codepoints": ["U+FF50", "ublic_projection"]},
+          {"alias": "ｍenu", "codepoints": ["U+FF4D", "enu"]},
+          {"alias": "NÓTE", "codepoints": ["N", "U+00D3", "TE"]},
+          {"alias": "requést_id", "codepoints": ["requ", "U+0301", "est_id"]},
+          {"alias": "RESPONSË", "codepoints": ["RESPONS", "U+00CB"]},
+          {"alias": "double context alias", "codepoints": ["context + U+FF43ontext + con\\u034ftext"]}
+        ],
+        "oc5_predicted": 4,
+        "oc5e_new": 6,
+        "required_fix_direction": "reject a public-projection key set whose normalized cardinality exceeds the raw cardinality, and admit at most one normalization-equivalent spelling per allowed field."
+      },
+      "A2_nfkc_invisible_confusable_leak_token": {
+        "cases": 6,
+        "root_cause": "value scanning is normalization-based, not confusable-based, so leak tokens written with NFKC-invisible homoglyphs are not matched by _LEAK_REGEX.",
+        "confirmed_spellings": ["\\u0430nswer_key", "\\u0435xpected_result",
+          "\\u0570idden_origin", "l\\u03bfwful_answers", "\\u0441ontrast_label",
+          "mixed-cyrillic"],
+        "narrowly_not_claimed": ["U+FF39 '9' (NFKC-invisible to letters and not a leak token)"],
+        "nfkc_visible_splits_are_caught": ["\\uff41nswer_key", "ans\\u200bwer_key", "ans\\u034fwer_key"],
+        "oc5_predicted": 0,
+        "oc5e_new": 6,
+        "required_fix_direction": "confusable-aware token matching, or an explicit declaration that NFKC-invisible homoglyph confusables are out of gate scope with a typed reasoning."
+      },
+      "A3_malformed_signature_object_untyped": {
+        "cases": 18,
+        "root_cause": "require_second_signature dereferences primary_sig.signer_person_id / second_sig.signer_person_id before any isinstance check.",
+        "malformed_objects": ["object()", "12", "{'signature_hash':'x'}", "[1]", "'str'",
+          "True", "b'bytes'", "3.5", "({},)"],
+        "positions": ["primary", "second"],
+        "observed": "AttributeError instead of SignatureError; only None is typed ('both signatures required')",
+        "oc5_predicted": 3,
+        "oc5e_new": 15,
+        "required_fix_direction": "isinstance(sig, MockSignature) guard before any attribute access."
+      },
+      "A4_non_enum_role_string_untyped": {
+        "cases": 1,
+        "root_cause": "require_second_signature re-derives MockSigner(sig.signer_person_id, sig.role).sign(...) and sig.role is used as a Role enum (.value) without validation.",
+        "observed": "AttributeError: 'str' object has no attribute 'value'",
+        "oc5_predicted": 0,
+        "oc5e_new": 1,
+        "required_fix_direction": "validate isinstance(sig.role, Role) before re-derivation."
+      },
+      "A5_unblind_unhashable_holder_untyped": {
+        "cases": 3,
+        "root_cause": "EscrowState.unblind passes holder_person_id straight into holder_roles.get(...).",
+        "malformed_holders": ["['list']", "{'dict': 1}", "set()"],
+        "observed": "TypeError: unhashable type; scalar holders are correctly typed",
+        "oc5_predicted": 0,
+        "oc5e_new": 3,
+        "required_fix_direction": "type-check holder identity before dict access."
+      },
+      "A6_capsule_identity_field_types_unvalidated": {
+        "cases": 11,
+        "root_cause": "commit and capsule_envelope_commitment perform no type validation of any capsule field; the commitment is computed through json.dumps(..., default=str), which silently coerces.",
+        "confirmed_fields": [
+          {"field": "version", "values": ["'2'", "null", "'1; DROP'"]},
+          {"field": "freeze_timestamp", "values": ["null", "{'a': 1}", "'now'"]},
+          {"field": "schema_version", "values": ["null"]},
+          {"field": "content_digest", "values": ["null"]},
+          {"field": "lawful_set_digest", "values": ["null", "{1:'a','b':2} -> untyped TypeError"]},
+          {"field": "coder_rubric_digest", "values": ["null"]},
+          {"field": "split_assignment_digest", "values": ["null"]}
+        ],
+        "oc5_predicted": 0,
+        "oc5e_new": 11,
+        "required_fix_direction": "validate identity/purpose/digest/version/freeze/coder/split field types at commit, before the commitment is derived."
+      }
+    },
+
+    "families_totals": {"A1": 10, "A2": 6, "A3": 18, "A4": 1, "A5": 3, "A6": 11, "total": 49},
+
+    "regression_bank": {
+      "purpose": "Each must_fail_typed / must_be_refused / must_be_flagged case is the exact regression bank for OC4's repair. They are RED now and must become PASS without weakening any control in the next section.",
+      "cases": [
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-context]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-context]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-context]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-note]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-menu]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-public-projection]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-note]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-request-id]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-response]",
+        "test_normalization_equivalent_allowed_field_alias_must_be_refused[double-context-alias]",
+        "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-a]",
+        "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-e]",
+        "test_confusable_leak_token_substitution_must_be_flagged[armenian-h]",
+        "test_confusable_leak_token_substitution_must_be_flagged[greek-o]",
+        "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-s]",
+        "test_confusable_leak_token_substitution_must_be_flagged[mixed-cyrillic]",
+        "test_malformed_signature_object_must_fail_typed[primary-*|second-*] (18)",
+        "test_non_enum_role_string_must_fail_typed",
+        "test_unblind_unhashable_holder_must_fail_typed[list|dict|set]",
+        "test_capsule_identity_field_types_must_be_validated[version-*|freeze-*|schema-none|content-none|lawful-none|rubric-none|split-none]",
+        "test_semantic_fingerprint_mixed_keys_must_fail_typed[*]",
+        "test_semantic_fingerprint_hole_is_observed_as_typeerror[*]"
+      ]
+    },
+
+    "controls_that_must_not_be_weakened": {
+      "alias_only_without_sibling_still_refused": ["accented CONTÉXT alone"],
+      "genuinely_other_normalization_still_refused": ["acute-i context",
+        "schemárubric -> unapproved_field:schemarubric", "extra public key"],
+      "alias_values_still_type_checked": ["invalid_scalar_value_type",
+        "invalid_menu_value_type"],
+      "nfkc_invisible_but_not_a_leak_token_admitted": ["U+FF39 '9'"],
+      "nfkc_visible_value_splits_caught": ["fullwidth a", "U+200B", "U+034F"],
+      "all_18_capsule_fields_bind_envelope": true,
+      "full_capsule_pair_positive_still_holds": true,
+      "signature_context_nonce_payload_binding": true,
+      "mock_verify_never_raises_and_fails_closed": true,
+      "all_12_escrow_event_mutations_detected": true,
+      "unblind_receipt_alias_does_not_change_integrity": true,
+      "all_14_blind_pairing_malformed_inputs_typed": true,
+      "4_bad_block_sizes_typed": true,
+      "purpose_discipline": true,
+      "ledger_rollback_always_typed_refused": true
+    },
+
+    "boundary_observation_not_a_red": {
+      "observation": "the holder-grant registry is a mutable precondition registry outside the event seal; substituting holder_roles['runner1'] is not detected by verify_ledger_integrity",
+      "boundary": "the substitute still fails unblind with IdentityMismatchError, and authorize_holder refuses a non-CUSTODIAN role with ConflictError",
+      "classification": "OBSERVATION_WITH_BOUNDARY"
+    },
+
+    "gate": {
+      "next_step": "author-side repair of A1-A6 followed by re-running this exact court",
+      "must_not": ["weaken any control", "xfail or skip a RED", "relax full-capsule commitment",
+                   "relax append-only escrow"],
+      "independent_review_required_before_adoption": true
+    }
+  }
+}

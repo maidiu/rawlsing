@@ -1,0 +1,42 @@
+# command: /usr/local/bin/python3 -m pytest -q test_custody_hostiles.py test_positive_lifecycle.py test_ocr1_independent_hostile.py test_oc2_regressions.py test_oc3_independent_hostile.py --tb=line -p no:cacheprovider --import-mode=importlib --junitxml=/Users/matthewsmith/Desktop/Rawlsing/WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/observations/inherited_131.xml
+# cwd: /private/tmp/oc5e-runtime/source
+# exit: 1
+# elapsed_s: 0.95
+
+..............F.F.....F........FFF....F................................. [ 54%]
+.........F...................F............................F              [100%]
+=================================== FAILURES ===================================
+E   custody_protocol.LedgerRollbackError: append-only: rollback requires a separate compensating event
+/private/tmp/oc5e-runtime/source/custody_protocol.py:489: custody_protocol.LedgerRollbackError: append-only: rollback requires a separate compensating event
+E   custody_protocol.SignatureError: real capsule argument required for fixture binding
+/private/tmp/oc5e-runtime/source/custody_protocol.py:578: custody_protocol.SignatureError: real capsule argument required for fixture binding
+E   custody_protocol.SignatureError: signature does not bind capsule content
+/private/tmp/oc5e-runtime/source/custody_protocol.py:583: custody_protocol.SignatureError: signature does not bind capsule content
+E   custody_protocol.RevocationError: cannot commit an inactive capsule
+/private/tmp/oc5e-runtime/source/custody_protocol.py:431: custody_protocol.RevocationError: cannot commit an inactive capsule
+E   custody_protocol.RevocationError: cannot commit an inactive capsule
+/private/tmp/oc5e-runtime/source/custody_protocol.py:431: custody_protocol.RevocationError: cannot commit an inactive capsule
+E   custody_protocol.PurposeViolationError: unauthorized purpose: LIVE_MODEL_REQUEST
+/private/tmp/oc5e-runtime/source/custody_protocol.py:314: custody_protocol.PurposeViolationError: unauthorized purpose: LIVE_MODEL_REQUEST
+E   custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched
+/private/tmp/oc5e-runtime/source/custody_protocol.py:587: custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched
+E   custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched
+/private/tmp/oc5e-runtime/source/custody_protocol.py:587: custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched
+E   custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched
+/private/tmp/oc5e-runtime/source/custody_protocol.py:587: custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched
+E   custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched
+/private/tmp/oc5e-runtime/source/custody_protocol.py:587: custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched
+=========================== short test summary info ============================
+FAILED test_custody_hostiles.py::test_h13_ledger_rollback_detected - custody_...
+FAILED test_custody_hostiles.py::test_h15_missing_signature_in_capsule_refused
+FAILED test_positive_lifecycle.py::test_positive_full_role_separated_lifecycle
+FAILED test_ocr1_independent_hostile.py::test_A_capsule_unblind_permission[mod0-A01_revoked_unblind]
+FAILED test_ocr1_independent_hostile.py::test_A_capsule_unblind_permission[mod1-A02_expired_unblind]
+FAILED test_ocr1_independent_hostile.py::test_A_capsule_unblind_permission[mod2-A03_illegal_purpose_unblind]
+FAILED test_ocr1_independent_hostile.py::test_A08_mismatched_holder_unblind
+FAILED test_oc2_regressions.py::test_signature_binds_content_and_rejects_alien_capsule
+FAILED test_oc3_independent_hostile.py::test_B01_valid_countersignatures_bind_content
+FAILED test_oc3_independent_hostile.py::test_Z03_declared_mock_roster_uses_public_derived_credentials
+10 failed, 121 passed in 0.28s
+
+

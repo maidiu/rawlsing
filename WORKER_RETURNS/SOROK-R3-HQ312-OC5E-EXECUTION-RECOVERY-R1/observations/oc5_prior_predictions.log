@@ -1,0 +1,32 @@
+# command: /usr/local/bin/python3 -m pytest -q test_oc5_prior_predictions.py --tb=line -p no:cacheprovider --import-mode=importlib --junitxml=/Users/matthewsmith/Desktop/Rawlsing/WORKER_RETURNS/SOROK-R3-HQ312-OC5E-EXECUTION-RECOVERY-R1/observations/oc5_prior_predictions.xml
+# cwd: /private/tmp/oc5e-runtime/source
+# exit: 1
+# elapsed_s: 0.3
+
+............FFFFFFF....                                                  [100%]
+=================================== FAILURES ===================================
+E   AttributeError: 'object' object has no attribute 'signer_person_id'
+/private/tmp/oc5e-runtime/source/custody_protocol.py:573: AttributeError: 'object' object has no attribute 'signer_person_id'
+E   AttributeError: 'int' object has no attribute 'signer_person_id'
+/private/tmp/oc5e-runtime/source/custody_protocol.py:573: AttributeError: 'int' object has no attribute 'signer_person_id'
+E   AttributeError: 'dict' object has no attribute 'signer_person_id'
+/private/tmp/oc5e-runtime/source/custody_protocol.py:573: AttributeError: 'dict' object has no attribute 'signer_person_id'
+E   Failed: DID NOT RAISE LeakageError
+/private/tmp/oc5e-runtime/source/test_oc5_prior_predictions.py:53: Failed: DID NOT RAISE LeakageError
+E   Failed: DID NOT RAISE LeakageError
+/private/tmp/oc5e-runtime/source/test_oc5_prior_predictions.py:53: Failed: DID NOT RAISE LeakageError
+E   Failed: DID NOT RAISE LeakageError
+/private/tmp/oc5e-runtime/source/test_oc5_prior_predictions.py:53: Failed: DID NOT RAISE LeakageError
+E   Failed: DID NOT RAISE LeakageError
+/private/tmp/oc5e-runtime/source/test_oc5_prior_predictions.py:53: Failed: DID NOT RAISE LeakageError
+=========================== short test summary info ============================
+FAILED test_oc5_prior_predictions.py::test_malformed_signature_fails_typed[bad0]
+FAILED test_oc5_prior_predictions.py::test_malformed_signature_fails_typed[12]
+FAILED test_oc5_prior_predictions.py::test_malformed_signature_fails_typed[bad2]
+FAILED test_oc5_prior_predictions.py::test_duplicate_normalized_keys_refused[packet0]
+FAILED test_oc5_prior_predictions.py::test_duplicate_normalized_keys_refused[packet1]
+FAILED test_oc5_prior_predictions.py::test_duplicate_normalized_keys_refused[packet2]
+FAILED test_oc5_prior_predictions.py::test_duplicate_normalized_keys_refused[packet3]
+7 failed, 16 passed in 0.07s
+
+
