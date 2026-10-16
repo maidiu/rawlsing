@@ -1,0 +1,224 @@
+{
+ "predictions": {
+  "P1": {
+   "claim": "C1 != C2 (memory content moves later response)",
+   "C1": [
+    "REROUTE",
+    "RESPONSE_EFFECTS_PRODUCED"
+   ],
+   "C2": [
+    null,
+    "DEFER_MISSING_AUTHORITY"
+   ],
+   "holds": true,
+   "note": "same memory id, same E1/E2/claim; content CERTAIN vs UNCERTAIN"
+  },
+  "P2a": {
+   "claim": "C1 != C5 (mediator present vs absent, CERTAIN)",
+   "C1": [
+    "REROUTE",
+    "RESPONSE_EFFECTS_PRODUCED"
+   ],
+   "C5": [
+    null,
+    "RESPONSE_INPUTS_VALID_EMPTY"
+   ],
+   "holds": true
+  },
+  "P2b": {
+   "claim": "C2 != C6 (mediator present vs absent, UNCERTAIN)",
+   "C2": [
+    null,
+    "DEFER_MISSING_AUTHORITY"
+   ],
+   "C6": [
+    null,
+    "RESPONSE_INPUTS_VALID_EMPTY"
+   ],
+   "holds": true,
+   "caveat": "differ only in typed decision state; BOTH nonproductive. WEAK arm."
+  },
+  "P3a": {
+   "claim": "C1 != C3 (native withdrawal, CERTAIN)",
+   "C1": [
+    "REROUTE",
+    "RESPONSE_EFFECTS_PRODUCED"
+   ],
+   "C3": [
+    "BLOCK",
+    "RESPONSE_EFFECTS_PRODUCED"
+   ],
+   "holds": true
+  },
+  "P3b": {
+   "claim": "C2 != C4 (native withdrawal, UNCERTAIN)",
+   "C2": [
+    null,
+    "DEFER_MISSING_AUTHORITY"
+   ],
+   "C4": [
+    null,
+    "DEFER_MISSING_AUTHORITY"
+   ],
+   "holds": false,
+   "status": "FALSIFIED",
+   "falsification_detail": "Both DEFER_MISSING_AUTHORITY with no effect, despite a REAL native WITHDRAW that deleted the stance record.",
+   "prereg_error": "P3b was MIS-SPECIFIED. Preregistered fact F5 already implied it: first_person_permission returns DEFER_MISSING_AUTHORITY for CLAIM_ACCESS_UNKNOWN regardless of stance presence. The preregistration failed to derive this. Correction recorded; prediction NOT edited."
+  },
+  "P4": {
+   "claim": "DECISIVE: C7 = C8 (belief/access clamped across differing memory content)",
+   "C7": [
+    "BLOCK",
+    "RESPONSE_EFFECTS_PRODUCED"
+   ],
+   "C8": [
+    "BLOCK",
+    "RESPONSE_EFFECTS_PRODUCED"
+   ],
+   "permissions": [
+    "DENY_FIRST_PERSON_CLAIM",
+    "DENY_FIRST_PERSON_CLAIM"
+   ],
+   "memory_uncertainty": [
+    "CERTAIN",
+    "UNCERTAIN"
+   ],
+   "holds": true,
+   "significance": "With the epistemic channel clamped identical, differing memory content does NOT move the response => no direct memory->response path observable through this consumer."
+  },
+  "P5": {
+   "claim": "C1 = C9 (withholding prior response history does not move the choice)",
+   "C1": [
+    "REROUTE",
+    "RESPONSE_EFFECTS_PRODUCED"
+   ],
+   "C9": [
+    "REROUTE",
+    "RESPONSE_EFFECTS_PRODUCED"
+   ],
+   "holds": true
+  },
+  "P6": {
+   "claim": "private BELIEF only; no KNOWLEDGE; no public standing",
+   "observed_permissions": [
+    "DEFER_MISSING_AUTHORITY",
+    "DENY_FIRST_PERSON_CLAIM",
+    "None",
+    "PERMIT_FIRST_PERSON_BELIEF"
+   ],
+   "holds": true,
+   "committed_anywhere": false,
+   "production_commit_anywhere": false
+  },
+  "P7": {
+   "claim": "causal trace never first-person claimable (K3)",
+   "observed": [
+    "DENY_FIRST_PERSON_CLAIM"
+   ],
+   "holds": true
+  },
+  "P8": {
+   "claim": "C10 != C2: reference-only mediator does NOT reproduce P1",
+   "C10": [
+    "REROUTE",
+    "RESPONSE_EFFECTS_PRODUCED"
+   ],
+   "C2": [
+    null,
+    "DEFER_MISSING_AUTHORITY"
+   ],
+   "holds": true
+  },
+  "P9": {
+   "claim": "tampered content refused; no epistemic state; response unchanged",
+   "TAMPER": [
+    null,
+    "RESPONSE_INPUTS_VALID_EMPTY"
+   ],
+   "C2": [
+    null,
+    "DEFER_MISSING_AUTHORITY"
+   ],
+   "holds": true
+  },
+  "P10": {
+   "claim": "refusals leave owner state byte-identical",
+   "holds": true,
+   "evidence": "test_p10_refused_outcome_leaves_owner_state_byte_identical_to_prestate"
+  },
+  "P11": {
+   "claim": "foreign/cross-actor/cross-claim/cross-time/unknown-memory basis refused",
+   "holds": true,
+   "evidence": "test_p11a..p11f"
+  }
+ },
+ "global_falsifiers": {
+  "F_A": {
+   "fires": false,
+   "statement": "P4 fails => D2 direct/parallel not excluded"
+  },
+  "F_B": {
+   "fires": true,
+   "fired_by": [
+    "P3b"
+   ],
+   "statement": "P2 or P3 fails => epistemic mediator not on the causal path"
+  },
+  "F_C": {
+   "fires": false,
+   "statement": "native ADP017 refuses every content-conditioned call => FEASIBILITY_HOLD; NOT fired"
+  },
+  "F_D": {
+   "fires": false,
+   "statement": "P8 fails => effect is reference attachment"
+  },
+  "F_E": {
+   "fires": false,
+   "statement": "P10 fails => transactional integrity broken"
+  }
+ },
+ "competing_dags": {
+  "D1_SERIAL": {
+   "prediction": "memory CONTENT -> belief/access -> response; belief/access is the only channel",
+   "supporting": [
+    "P1",
+    "P2a",
+    "P3a",
+    "P4",
+    "P5",
+    "P8"
+   ],
+   "contradicting": [
+    "P3b: mediator cut unobservable under CLAIM_ACCESS_UNKNOWN"
+   ],
+   "status": "SUPPORTED_IN_THE_CLAIM_ACCESSIBLE_ARM_ONLY__NOT_ESTABLISHED_IN_GENERAL",
+   "reasoning": "Changing only memory content (same memory id, same E1/E2/claim) flips the later response between REROUTE and a typed refusal, and the flip is carried entirely by the native accessibility/permission channel. Clamping that channel (P4) removes the effect; withholding response history (P5) does not; a reference-only mediator (P8) does not reproduce it. However the mediator-CUT contrast is unobservable whenever the cell accessibility is CLAIM_ACCESS_UNKNOWN, so the serial path is identified only where access is permitting."
+  },
+  "D2_PARALLEL_DIRECT": {
+   "prediction": "memory -> response directly; belief arises independently from E1",
+   "supporting": [],
+   "contradicting": [
+    "P4: clamped belief + differing content => identical response",
+    "P4b: consumer structurally cannot read memory content"
+   ],
+   "status": "NO_DIRECT_PATH_OBSERVED__BOUND_TO_THIS_CONSUMER",
+   "reasoning": "No direct memory->response path was observed. This is because the consumer was deliberately built without one; P4 tests THIS consumer and is not a proof that no such path could exist under a different rule."
+  },
+  "D3_SHORTCUT_HISTORY_ONLY": {
+   "prediction": "history drives both belief and response; memory ref inert",
+   "supporting": [],
+   "contradicting": [
+    "P1: content changes response under fixed history",
+    "P5: withholding history does not move the choice",
+    "P8: reference-only does not reproduce the effect"
+   ],
+   "status": "EXCLUDED_AT_THIS_GRAIN",
+   "reasoning": "Three independent contrasts separate memory content from event history and from mere reference presence."
+  }
+ },
+ "preregistered_top_verdict_gate": {
+  "all_predictions_hold": false,
+  "any_global_falsifier_fires": true,
+  "top_gate_satisfied": false
+ }
+}

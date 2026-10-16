@@ -1,0 +1,66 @@
+......................................................................F. [ 60%]
+....F...........................................                         [100%]
+=================================== FAILURES ===================================
+__ test_epistemic_operations_change_only_exact_record_and_permission_snapshot __
+
+    def test_epistemic_operations_change_only_exact_record_and_permission_snapshot():
+        ctx,args=epistemic_setup();out=o.adp017_apply_epistemic_effect(**args);eid=out['effect']['effect_id'];cid=args['claim_ref'];state=ctx.state_sets[cid]
+>       law=json.loads((RET/'runtime_root/law/ADP017.txt').read_text())
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+candidate/can2_test_repair.py:198: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1058: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/matthewsmith/Desktop/Rawlsing/HQ316-MS1-serial-mediation-wt/WORKER_RETURNS/SOROK-R3-HQ316-MS1-SERIAL-MEMORY-BELIEF-FEASIBILITY-R1/runtime/runtime_root/law/ADP017.txt')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing/HQ316-MS1-serial-mediation-wt/WORKER_RETURNS/SOROK-R3-HQ316-MS1-SERIAL-MEMORY-BELIEF-FEASIBILITY-R1/runtime/runtime_root/law/ADP017.txt'
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1044: FileNotFoundError
+_____ test_law_17_negative_classes_keep_unknown_distinct_from_unauthorized _____
+
+    def test_law_17_negative_classes_keep_unknown_distinct_from_unauthorized():
+>       law=json.loads((RET/'runtime_root/law/ADP016.txt').read_text());rows={x['state']:x['behavior'] for x in law['fail_closed_states']}
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+candidate/can2_test_repair.py:233: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1058: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/matthewsmith/Desktop/Rawlsing/HQ316-MS1-serial-mediation-wt/WORKER_RETURNS/SOROK-R3-HQ316-MS1-SERIAL-MEMORY-BELIEF-FEASIBILITY-R1/runtime/runtime_root/law/ADP016.txt')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing/HQ316-MS1-serial-mediation-wt/WORKER_RETURNS/SOROK-R3-HQ316-MS1-SERIAL-MEMORY-BELIEF-FEASIBILITY-R1/runtime/runtime_root/law/ADP016.txt'
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py:1044: FileNotFoundError
+=========================== short test summary info ============================
+FAILED candidate/can2_test_repair.py::test_epistemic_operations_change_only_exact_record_and_permission_snapshot
+FAILED candidate/can2_test_repair.py::test_law_17_negative_classes_keep_unknown_distinct_from_unauthorized
+2 failed, 118 passed in 2.17s

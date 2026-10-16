@@ -1,0 +1,180 @@
+{
+ "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_DELTA@1.0.0",
+ "environment_id": "ENV_MS1_LOCAL_OPAQUE_Q7D2",
+ "epoch_id": "EPOCH_HQ316_MS1_20261016_NEW_ISOLATED_SPARSE",
+ "owner_session_alias": "MS1_HQ316_SERIAL_MEDIATION",
+ "surface": "LOCAL_SHARED_STORE",
+ "machine_alias": "MACHINE_OPAQUE_DARWIN_X86_64_16C",
+ "conversation_or_account_affinity": "gh_cli_account_opaque_maidiu_repo_scope",
+ "status": "LIVE_VERIFIED",
+ "last_live_probe_at": "2026-10-16T15:40:00Z",
+ "harness_and_model": {
+  "USER_SELECTED_EDITOR_MODEL_PAIR": "OpenCode + Step 5 Preview",
+  "SINGLE_AGENT_FULL_DELIVERABLE": true,
+  "NO_AUTONOMOUS_MODEL_OR_HARNESS_SWITCH": true,
+  "POST_RETURN_INDEPENDENT_REVIEW_OWNER": "HQ",
+  "helper_agents_used": 0,
+  "model_switches": 0
+ },
+ "worktree_discipline": {
+  "literal_sparse_worktree": true,
+  "reused_existing_verified_git_object_store": true,
+  "git_object_store_alias": "STORE_PYAT_FIABC_IDLE_20261009",
+  "object_store_reuse_method": "single-ref git fetch of the MS1 branch tip plus the six pinned science commits into an EXISTING maidiu/rawlsing store; NO clone-per-worker, NO full history download",
+  "store_idle_evidence": "last .git mtime 2026-10-09, zero *.lock files, single worktree on an unrelated Pyat-lane branch (agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1)",
+  "worktree_alias": "MS1_HQ316_ISOLATED_SPARSE_WT",
+  "worktree_path_relative_note": "absolute host path not frozen into the commission; host-local only",
+  "sparse_checkout_mode": "cone",
+  "sparse_scope": "WORKER_RETURNS/SOROK-R3-HQ316-MS1-SERIAL-MEMORY-BELIEF-FEASIBILITY-R1/ plus top-level files",
+  "materialized_disk_size": "8.0K (only README.md + the return directory)",
+  "active_worker_no_disturbance": {
+   "OC7": "NOT TOUCHED - different branch, no fetch into its worktree, no model/account change",
+   "M06": "NOT TOUCHED",
+   "preexisting_pyat_worktree": "left untouched on its own branch; only object-store refs were added"
+  }
+ },
+ "branch": "agent/rabochii-sorok-r3-hq316-ms1-serial-memory-belief-feasibility-r1",
+ "exact_sealed_startup": "8bb23745ef0e650cfaea241754e3bf73600ac738",
+ "sealed_startup_verification": "direct remote branch HEAD == 8bb23745ef0e650cfaea241754e3bf73600ac738, checked before any write",
+ "hq316_parent": "8af50c539bd249d6aab76bea7cf81f61579906fa",
+ "parent_verified": true,
+ "runtime_marker_digest": "sha256:ms1_serial_harness_plus_verified_native_closure_plus_12cell_factorial",
+ "probe_command_and_result": {
+  "python3 --version": "Python 3.11.3",
+  "python3 -m pytest --version": "pytest 9.0.2",
+  "git --version": "git version 2.43.0",
+  "native_execution_control": "python3 -m pytest candidate/can2_test_repair.py -q -> 87 passed, 2 documented non-serial REDs",
+  "ms1_new_suite": "python3 -m pytest test_ms1_serial.py -q -> 31 passed",
+  "combined_final": "118 passed, 2 failed (the same 2 documented REDs)"
+ },
+ "capabilities": {
+  "python": "VERIFIED",
+  "pytest": "VERIFIED",
+  "git": "VERIFIED",
+  "authenticated_private_repo_read": "VERIFIED",
+  "git_worktree_add_sparse": "VERIFIED",
+  "model_api": "NOT_USED (0 calls)"
+ },
+ "observed_versions": {
+  "python": "3.11.3",
+  "pytest": "9.0.2",
+  "git": "2.43.0",
+  "platform": "macOS-13.2.1-x86_64"
+ },
+ "source_family": "RAWLSING_SOURCEFREE_CANDIDATE_NATIVE_ADP016_ADP017_CAN008",
+ "materialized_source_refs": {
+  "note": "exact commit, path, git blob SHA-1 and local staging path; blob SHA is not content SHA-256. Full ledger in evidence/native_source_ledger.json",
+  "closure_commit": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7 (CAN2 authored, NOT accepted law)",
+  "verified": "10/10 files, 0 mismatches",
+  "files": [
+   {
+    "path": "runtime/candidate/__init__.py",
+    "git_blob_sha1": "0581aff4ac0ea45c07387e5340e219566ce7330d",
+    "bytes": 74
+   },
+   {
+    "path": "runtime/candidate/adopted_contract.py",
+    "git_blob_sha1": "259ff9da129f7d644f8ac9fd8f739ad6041a3edf",
+    "bytes": 14937
+   },
+   {
+    "path": "runtime/candidate/can008_candidate_rule.py",
+    "git_blob_sha1": "61d933d98ffb39d553a0dbc670388fc2bd3e89d3",
+    "bytes": 16095
+   },
+   {
+    "path": "runtime/candidate/candidate_registry_fixture.py",
+    "git_blob_sha1": "0d978f89fb3c5e836a52f25849240db360f97f8f",
+    "bytes": 6879
+   },
+   {
+    "path": "runtime/candidate/owner_transitions.py",
+    "git_blob_sha1": "ac943d07459f68ba2e27baf05b442d9ecbddefd5",
+    "bytes": 21586
+   },
+   {
+    "path": "runtime/candidate/positive_chain.py",
+    "git_blob_sha1": "226cd42f81538f1b81ea7ea2e494776069142405",
+    "bytes": 14655
+   },
+   {
+    "path": "runtime/candidate/can2_test_repair.py",
+    "git_blob_sha1": "140f1fc3dc432a7bb517c759f5f7bbda7bc16a80",
+    "bytes": 25417,
+    "role": "CAN2 authored test/runner, control + reproduction only"
+   },
+   {
+    "path": "runtime/candidate/can2_run_repair.py",
+    "git_blob_sha1": "1fc08f24d0c922aa09839f6ec0e55fe23860d7b4",
+    "bytes": 1411,
+    "role": "CAN2 authored test/runner, control + reproduction only"
+   },
+   {
+    "path": "runtime/candidate/can2_run_suite.py",
+    "git_blob_sha1": "c64da1d45d14a5325f53fe62a6ca218bd42fef34",
+    "bytes": 27,
+    "role": "CAN2 authored test/runner, control + reproduction only"
+   }
+  ],
+  "commission_pins_confirmed": {
+   "EMPTY_production_positive_authority_guard": {
+    "git_blob_sha1": "e0528d65215cb431196570c38bac4eae94217a1b",
+    "path": "runtime/rawlsing_next/v3_psepf_zero_positive_guard.py",
+    "staged": "BYTE-EXACT AND UNMODIFIED",
+    "verified": true
+   },
+   "ADP016_authority_json_blob": "c6619a286e115d060ab4830889e7fc23762167a5 (authority manifest; read, not executed)",
+   "ADP017_authority_json_blob": "eece4f3f2f3f9288ab9bbc645dc81e20a99e1280 (authority manifest; read, not executed)",
+   "CAN008_R2_source_blob": "b80dd6925066510ecbbfec7b427bf9f688475663 (bound inside adopted_contract.PINS; the blob itself is NOT present at the sealed tree or any fetched commit - recorded as a pin reference, not as staged bytes)"
+  }
+ },
+ "dependency_closure_status": "BOUNDED",
+ "fixture_query_source_permission": "synthetic sourcefree fixtures only; no original respondent material; private-repo source read under the commission's authority",
+ "science_grade": "SOURCEFREE_SYNTHETIC_BOUNDED_CONSTRUCTIBILITY_AND_CONDITIONAL_CAUSAL_IDENTIFICATION__NOT_ACCEPTED_OWNER__NOT_V3__NOT_HUMAN_CALIBRATION",
+ "model_provider": null,
+ "effort_and_pricing_class": "NO_MODEL_CALLS from this worker; authoring surface is Step 5 Preview via the owner's OpenCode setup (user-reported free; no ongoing capacity assumed)",
+ "observed_credits_or_usage": null,
+ "cash_known": "UNKNOWN_nothing_billed",
+ "quota_known": "UNKNOWN",
+ "independent_review_separation": "THIS RETURN IS NOT AN ACCEPTANCE. A distinct independent I2 reviewer is required and has NOT run. This worker cannot accept its own result.",
+ "assignments_completed": [
+  "HQ316_MS1_SERIAL_MEMORY_BELIEF_FEASIBILITY"
+ ],
+ "next_good_affinity_tags": [
+  "SERIAL_MEDIATION",
+  "ADP016",
+  "ADP017",
+  "CAN008",
+  "CAUSAL_DAG",
+  "K3",
+  "K5",
+  "SOURCEFREE_CAUSAL_ID"
+ ],
+ "staged_state_preservation": "full closure re-runnable offline from this return; re-verify the 9 blob SHAs in evidence/native_source_ledger.json on resume",
+ "retire_or_rebuild_reason": null,
+ "verdict": "SERIAL_MECHANISM_IDENTIFICATION_HOLD",
+ "verdict_grounds": "constructibility demonstrated (F3 bounded sourcefree); serial identification achieved ONLY in the CLAIM_ACCESSIBLE arm; preregistered global falsifier F_B fired via mis-specified prediction P3b, so the preregistered top-verdict gate is NOT satisfied and the top candidate verdict is withheld",
+ "claims_done_vs_not_run": {
+  "DONE": [
+   "verified sealed startup == branch HEAD and HQ316 parent",
+   "read 00_READ_ME_FIRST, 00B, 00C 3A/3B/5A, 00D, HQ316 intake in full",
+   "created a REAL isolated sparse git worktree over an EXISTING verified object store",
+   "staged native closure 9/9 blob-verified; EMPTY production guard byte-exact unmodified",
+   "proved native modules execute (87/89 control, 2 documented REDs)",
+   "FROZEN preregistration committed BEFORE any new rule or test code",
+   "constructed and executed the serial chain through real native interfaces",
+   "12-cell factorial with per-cell real owner-state receipts",
+   "12/13 predictions held; P3b falsified and reported; F_B fired",
+   "competing-DAG adjudication with the decisive clamp pair",
+   "K3/K5/rollback/provenance invariants verified"
+  ],
+  "NOT_RUN": [
+   "OUT5 exact 14 (NOT_RUN_UNPUBLISHED; unrelated but preserved as an owner HOLD)",
+   "CAN2 inherited independent suite (NOT_RUN_DEPENDENCY_MISSING - CAN2/M05 ancestry custody under M06, outside this commission; 21 passed / 61 failed before abandonment, NO inference drawn)",
+   "any model/actor call (0)",
+   "any knowledge/public-standing path (native owner refuses; deliberately untouched)",
+   "any PRE-MAIN/CURRENT/production/V3 mutation",
+   "independent I2 acceptance (HQ's to commission after this return)"
+  ]
+ }
+}
