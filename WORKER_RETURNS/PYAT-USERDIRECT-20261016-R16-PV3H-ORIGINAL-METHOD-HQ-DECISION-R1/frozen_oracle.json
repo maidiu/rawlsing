@@ -1,0 +1,59 @@
+{
+  "schema": "PV3H_INDEPENDENT_PROSPECTIVE_ROW_ORACLE@1",
+  "frozen_before_new_execution": true,
+  "at_utc": "2026-10-16T18:52:24.405519+00:00",
+  "source_rows": [
+    {
+      "id": "R1",
+      "X": "1",
+      "Y": "1",
+      "Y_eligible": true
+    },
+    {
+      "id": "R2",
+      "X": "0",
+      "Y": "0",
+      "Y_eligible": true
+    },
+    {
+      "id": "R3",
+      "X": "1",
+      "Y": "1",
+      "Y_eligible": false
+    }
+  ],
+  "joint_XY": {
+    "BASELINE": {
+      "00": 1,
+      "01": 0,
+      "10": 0,
+      "11": 1
+    },
+    "R2_Y1": {
+      "00": 0,
+      "01": 1,
+      "10": 0,
+      "11": 1
+    },
+    "R1_Y0": {
+      "00": 1,
+      "01": 0,
+      "10": 1,
+      "11": 0
+    }
+  },
+  "A_only_interventions": [
+    "R2_Y1",
+    "R1_Y0"
+  ],
+  "B_unchanged": true,
+  "original_expected_root": "4d83bf57f8cd12c3492eb42f6d14094c53a6c33cc5e4178f1594ce6a469548f2",
+  "original_total": 8,
+  "runnable": 6,
+  "held": 2,
+  "raw_semantic_failure": "test_generic_native_labels_not_specialized_Q86",
+  "generic_issued": false,
+  "missing_prediction": "Native missing cannot become substantive0: preserve native typed negative or unresolved target support strictly below risk denominator",
+  "empty_risk_prediction": "Actual native I03 and specialized Field Forge ZERO_SUPPORT, no fabricated denominator",
+  "scope": "Independent row arithmetic and assertions; not an independent review agent or real E_pre issuer"
+}
