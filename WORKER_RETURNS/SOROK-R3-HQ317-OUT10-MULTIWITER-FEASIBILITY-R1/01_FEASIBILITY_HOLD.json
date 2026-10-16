@@ -1,0 +1,63 @@
+{
+ "schema": "SOROK_HQ317_OUT10_MULTIWITER_FEASIBILITY@1",
+ "branch": "agent/rabochii-sorok-r3-hq317-out10-multiwriter-feasibility-r1",
+ "sealed_startup": "c28bedf20716213a680387da34728c18f9e8c76a",
+ "out8_source": "0e05c7dab8334b96f2b2b79e935eeebb1c0f0d11",
+ "out9_acceptance": "fd58957fceca250e86ed3b1a5d06fa45ffc9ec85",
+ "environment_preflight": {
+  "deepseek_harness": "RUNNING (this session)",
+  "git": "/usr/local/bin/git",
+  "python": "3.11.3",
+  "pytest": "9.1.1",
+  "node": "v22.23.3",
+  "pnpm": "/Users/matthewsmith/Desktop/Rawlsing/deepseek-harness/node_modules/.bin/pnpm",
+  "pnpm_path_issue": "RESOLVED \u2014 pnpm resolves from the local node_modules bin",
+  "verdict": "GREEN_NO_HOLD_NEEDED"
+ },
+ "verdict": "MULTIWITER_FEASIBILITY_HOLD__PROTOTYPE_NOT_REACHABLE_FROM_ASSIGNED_BRANCH",
+ "blocking_evidence": {
+  "branch_tip": "c28bedf20716213a680387da34728c18f9e8c76a",
+  "out10_paths_at_tip": [
+   "WORKER_COMMISSIONS/SOROK-R3-HQ317-OUT10-MULTIWRITER-FEASIBILITY-R1/00_COMMISSION.md",
+   "SOROK_PRODUCT_CONTROL_ROOM/HQ314_OUT8_M03_RETURN_FANIN_OC6_PENDING_AND_TWO_INDEPENDENT_COURTS_R1.md",
+   "SOROK_PRODUCT_CONTROL_ROOM/HQ315_OUT9_OC6_M04_FANIN_OC7_M05_PARALLEL_R1.md"
+  ],
+  "journal_or_outbox_modules_in_tip_tree": 0,
+  "out8_commit_adds_python": false,
+  "out9_commit_adds_python": false,
+  "out9_commit_is": "remote-verification receipt only (06_REMOTE_VERIFICATION.json)",
+  "consequence": "the OUT8 journal prototype and OUT9 single-writer court that this court is commissioned to falsify are NOT present in the reachable tree; the two-writer stale-journal RED cannot be reproduced against them without pulling an unassigned branch"
+ },
+ "not_executed": [
+  "independently reproduce the retained two-writer stale-journal failure against the OUT8 prototype",
+  "two and three genuinely concurrent writers against the real prototype",
+  "lost committed events on the prototype",
+  "duplicate/stale event identities on the prototype",
+  "typed version conflicts and lawful retry",
+  "atomic cold recovery",
+  "revocation and ACK integrity across conflicting writes",
+  "crashes before and after journal publication",
+  "exactly-once and no-loss claims at tested scope",
+  "preregistered interleavings/commit invariants/typed conflicts/crash expectations",
+  "minimal source-free multiwriter candidate (interprocess lock or versioned CAS)"
+ ],
+ "preserved": [
+  "original source bytes untouched",
+  "original test assertions untouched",
+  "both historical REDs untouched (not reachable, hence not converted)"
+ ],
+ "no_rewrite_of_old_court": true,
+ "helper_agents": false,
+ "model_or_harness_switch": false,
+ "real_physical_movement": false,
+ "actual_client_perception": false,
+ "production_adp019_issuance": false,
+ "v3_operation": false,
+ "repro": {
+  "multiwriter_smoke.log": {
+   "sha256": "7853a9c2d51f6f2b78e0561ab729753723f9a97377c7aac3810a079c9eea28df",
+   "bytes": 381
+  }
+ },
+ "terminal": "SOROK_HQ317_OUT10_MULTIWITER_FEASIBILITY_HOLD__GITHUB_PUSHED"
+}
