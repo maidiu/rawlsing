@@ -1,0 +1,79 @@
+{
+ "per_module": {
+  "test_sr_28_falsifier_court": {
+   "n": 28,
+   "pass": 27,
+   "fail": 1,
+   "fails": [
+    "test_s27_material_move_needs_world_owner"
+   ]
+  },
+  "test_rsr_independent": {
+   "n": 17,
+   "pass": 17,
+   "fail": 0,
+   "fails": []
+  },
+  "test_rsr_cold_replay": {
+   "n": 2,
+   "pass": 2,
+   "fail": 0,
+   "fails": []
+  },
+  "test_cold_repair": {
+   "n": 9,
+   "pass": 9,
+   "fail": 0,
+   "fails": []
+  },
+  "test_rto_hostile": {
+   "n": 57,
+   "pass": 56,
+   "fail": 1,
+   "fails": [
+    "test_replay_manual_two_writers_can_lose_first_committed_event"
+   ]
+  },
+  "test_out2_cross": {
+   "n": 24,
+   "pass": 24,
+   "fail": 0,
+   "fails": []
+  },
+  "test_out3_independent_hostile": {
+   "n": 22,
+   "pass": 22,
+   "fail": 0,
+   "fails": []
+  },
+  "test_out4_independent_harness": {
+   "n": 29,
+   "pass": 29,
+   "fail": 0,
+   "fails": []
+  },
+  "test_out6_receipt_repair": {
+   "n": 18,
+   "pass": 18,
+   "fail": 0,
+   "fails": []
+  },
+  "test_out7_independent_hostile": {
+   "n": 21,
+   "pass": 21,
+   "fail": 0,
+   "fails": []
+  },
+  "test_out8_restored_state_repair": {
+   "n": 20,
+   "pass": 20,
+   "fail": 0,
+   "fails": []
+  }
+ },
+ "total": {
+  "cases": 247,
+  "pass": 245,
+  "fail": 2
+ }
+}

@@ -1,0 +1,97 @@
+{
+  "passport_schema": "SOROK_00D_ENVIRONMENT_PASSPORT_DELTA@1.0.0",
+  "environment_id": "ENV_OUT9_LOCAL_OPAQUE_8B3C",
+  "epoch_id": "EPOCH_OUT9_20261016_LOCAL_NEW_ISOLATED",
+  "owner_session_alias": "REVIEWER_HQ314_OUT9",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "MACHINE_OPAQUE_DARWIN_X86_64_16C",
+  "conversation_or_account_affinity": "gh_cli_account_opaque_maidiu_repo_scope",
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-16T06:30:00Z",
+  "runtime_marker_digest": "sha256:out9_candidate_closure_17py_pinned_verified_plus_new_court",
+  "probe_command_and_result": {
+    "python3 --version": "Python 3.11.3",
+    "python3 -m pytest --version": "pytest 9.0.2",
+    "git --version": "git version 2.43.0",
+    "pytest literal247": "247 tests: 245 pass, 2 fail (historical), exit 1 (0.34-4.6s)",
+    "pytest out9_hostile": "25 tests: 25 pass, exit 0",
+    "cold_crash_evidence.py": "BEFORE_RENAME byte-identical + validates; AFTER_COMMIT durable + validates; tampered recompute REFUSED"
+  },
+  "capabilities": {
+    "python": "VERIFIED",
+    "pytest": "VERIFIED",
+    "git": "VERIFIED",
+    "subprocess_real_child_processes": "VERIFIED (os._exit crash boundaries executed in real children)",
+    "authenticated_private_repo_read": "VERIFIED",
+    "node": "NOT_REQUIRED",
+    "model_api": "NOT_USED (0 calls)"
+  },
+  "observed_versions": {"python": "3.11.3", "pytest": "9.0.2", "git": "2.43.0", "platform": "macOS-13.2.1-x86_64"},
+  "git_object_store_alias": "NONE_LOCAL",
+  "git_object_store_note": "no pre-existing local Git store on this machine; isolated staging materialized minimally from authenticated blob reads with git-blob-SHA1 verification (00D-equivalent discipline; no clone-per-worker); this is recorded as a MISSING_WORKTREE resolved by minimal closure, not as a full checkout",
+  "worktree_alias": "EPHEMERAL_ISOLATED_STAGE_DIR",
+  "branch": "agent/reviewer-sorok-r3-hq314-out9-out8-independent-r1",
+  "exact_checkout_base": "f791d6881a465442ae6fc4a117b83e864ee8e426",
+  "checkout_base_note": "verified equal to direct remote branch HEAD at start; no mid-flight revision",
+  "checkout_head": "PENDING_PUSH_SEE_00_RETURN",
+  "clean_dirty_state": "WRITE_TERRAIN_ONLY_WORKER_RETURNS_SOROK_R3_HQ314_OUT9_OUT8_INDEPENDENT_R1",
+  "source_family": "RAWLSING_OUTBOX_PROTOTYPE_SOURCEFREE_CUSTODY_FIXTURES",
+  "materialized_source_refs": [
+    {"path": "candidate/outbox_prototype.py", "git_blob_sha1": "331840768ce0b5f6f73e5e93094ca0d217ddaebf", "role": "OUT8-final patched source (provenance: c7bb4169 -> OUT6 patch aa002cb6 -> OUT8 patch)", "verified": true},
+    {"path": "candidate/test_sr_28_falsifier_court.py", "git_blob_sha1": "a6263f8903f22da2b1cde3999d950328d19c9e21", "verified": true},
+    {"path": "candidate/test_rsr_independent.py", "git_blob_sha1": "044b9cb48c2e4e3d825e7a2cbb52bb412d1366d7", "verified": true},
+    {"path": "candidate/test_rsr_cold_replay.py", "git_blob_sha1": "ad132e7e852d3873597276b51afda86b8296f891", "verified": true},
+    {"path": "candidate/test_cold_repair.py", "git_blob_sha1": "7045ae4541c26a275ccb904d1cee6adb93609669", "verified": true},
+    {"path": "candidate/test_rto_hostile.py", "git_blob_sha1": "72f4602703928a90f4f4b820201153255ea917b1", "verified": true},
+    {"path": "candidate/test_out2_cross.py", "git_blob_sha1": "24ed528829db3895aa5d293aaa35fb1e0005e54b", "verified": true},
+    {"path": "candidate/test_out3_independent_hostile.py", "git_blob_sha1": "c1fce62879a98bfa69770dfc682cd1a2743ede1b", "verified": true},
+    {"path": "candidate/test_out4_independent_harness.py", "git_blob_sha1": "337b109885097e5eeb864dddd339c82597258511", "verified": true},
+    {"path": "candidate/test_out6_receipt_repair.py", "git_blob_sha1": "c1bbfdddf0cffe9a5988aaa11b13e5065dc01406", "verified": true},
+    {"path": "candidate/test_out7_independent_hostile.py", "git_blob_sha1": "0a2bc82cc79a100761868e88a88e30832fc8c5cc", "verified": true},
+    {"path": "candidate/test_out8_restored_state_repair.py", "git_blob_sha1": "d23e6cfc441de6fee11855966b16cc7ba6fd544a", "verified": true},
+    {"path": "candidate/out2_cold_driver.py", "git_blob_sha1": "22d1fe01888f6d48b4d15a93a9dfc5bb64c5c7d3", "verified": true},
+    {"path": "candidate/rsr_cold_replay.py", "git_blob_sha1": "0c8676aaa3ff6605f3fb7a987e29f88d26fafb03", "verified": true},
+    {"path": "candidate/rto_cold_driver.py", "git_blob_sha1": "6202bd40ed18b32e56fe1bb2ba9c07caf27eb517", "verified": true},
+    {"path": "candidate/cold_repair.py", "git_blob_sha1": "f62fabb4efb9c0adef54fd2315607761432e058b", "verified": true},
+    {"path": "candidate/test_out9_independent_hostile.py", "git_blob_sha1": null, "role": "NEW_OUT9_COURT (17th file; not pinned, authored by this reviewer)", "verified": true}
+  ],
+  "staging_verification": {"method": "git_blob_sha1_NUL_header + sha256 preimage + byte count", "pinned_files": 16, "mismatches": 0, "new_reviewer_files": 1, "receipt_file": "evidence/source_hash_ledger.json"},
+  "covered_test_suites": [
+    {"suite": "literal 247 (unchanged author suite)", "command": "python3 -m pytest -q <11 test modules> --junitxml=junit/literal247.xml", "result": "245 PASS / 2 preserved RED", "tests": 247, "junit": "junit/literal247.xml", "stdout": "logs/literal247_stdout.log"},
+    {"suite": "OUT9 new hostile court", "command": "python3 -m pytest -q test_out9_independent_hostile.py --junitxml=junit/out9_hostile_junit.xml", "result": "25 PASS", "tests": 25, "junit": "junit/out9_hostile_junit.xml", "stdout": "logs/out9_hostile_stdout.log"},
+    {"suite": "cold crash evidence", "command": "python3 cold_crash_evidence.py", "result": "before-rename atomic; after-commit durable; tamper refused", "receipt": "evidence/cold_crash_evidence.json"}
+  ],
+  "science_grade": "independent source-free reproduction + hostile court; no adoption; single-writer scope",
+  "model_provider": null,
+  "effort_and_pricing_class": "NO_MODEL_CALLS (Step 5 Preview via owner OpenCode setup; user-reported free; no ongoing capacity assumed)",
+  "observed_credits_or_usage": null,
+  "independent_review_separation": "THIS RETURN IS THE INDEPENDENT REVIEW; reviewer is not the OUT8/OUT6/OUT7 author",
+  "privacy_source_grant": "no private content exported; synthetic fixtures + pinned prototype closure only; no secrets/absolute paths in artifacts",
+  "quota_expense_observed_or_UNKNOWN": "UNKNOWN_cash; no billable operations; local CPU seconds only",
+  "assignments_completed": ["HQ314_OUT9_OUT8_INDEPENDENT_REVIEW"],
+  "next_good_affinity_tags": ["OUTBOX", "OCCURRENCE", "ADP019", "COLD_JOURNAL", "ACK_CUSTODY"],
+  "staged_state_preservation": "candidate closure self-contained in return terrain; re-runnable offline by replaying evidence/source_hash_ledger.json identities",
+  "retire_or_rebuild_reason": null,
+  "reusable_next_affinity": {
+    "warm": true,
+    "conditions": "re-verify the 16 pinned git blob SHAs on resume",
+    "missing_for_next_round": "real ADP019 admission producer, OUTP L1/L2 + A1/A2 owner decisions, OUT5 publication, multiwriter scope"
+  },
+  "claims_done_vs_not_run": {
+    "DONE": [
+      "verified sealed startup == branch HEAD",
+      "provenance reconstruction of the 247 closure from pinned ancestors",
+      "literal 247 executed: 245 PASS / 2 historical RED, exit 1",
+      "independent frozen expectations before new tests",
+      "25 new hostiles at real entrypoints incl. cold os._exit crash atomicity",
+      "source-hash ledger (16/16 pins verified)",
+      "OUTP + OUT5 + model/privacy HOLDs preserved"
+    ],
+    "NOT_RUN": [
+      "OUT5 exact 14 (NOT_RUN_UNPUBLISHED)",
+      "any model/actor call (0)",
+      "any multiwriter case (RED preserved as non-goal)",
+      "any adoption/production/V3 claim"
+    ]
+  }
+}

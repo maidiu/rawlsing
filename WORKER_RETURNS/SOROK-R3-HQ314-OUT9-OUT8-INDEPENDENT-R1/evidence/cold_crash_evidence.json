@@ -1,0 +1,32 @@
+{
+ "baseline": {
+  "aggregate_state": "ACKNOWLEDGED",
+  "event": "OCC-0001",
+  "journal_bytes": 1550,
+  "journal_sha256": "1751cbb76f4ce8839535dba70e9ba894ddba40d1f675a1152779b7d83fbf5999"
+ },
+ "cold_tampered_forgery": {
+  "code": "BAD_AGGREGATE_DELIVERY_COUNTS",
+  "refused": true
+ },
+ "crash_after_commit": {
+  "W_client_state": "DELIVERED_UNACKED",
+  "child_exit": 79,
+  "newest_committed_durable": true,
+  "recovered_validates": true,
+  "stderr_tail": [],
+  "viewer_W_present_in_recovered": true
+ },
+ "crash_before_rename": {
+  "child_exit": 79,
+  "partial_records_left": [
+   ".outbox-pending-q816ke5z"
+  ],
+  "prior_bytes_identical": true,
+  "recovered_aggregate_state": "ACKNOWLEDGED",
+  "recovered_validates": true,
+  "stderr_tail": []
+ },
+ "evidence_schema": "HQ314_OUT9_COLD_CRASH_EVIDENCE@1.0.0",
+ "method": "real child process; os._exit(79) inside Journal.commit; real files"
+}
