@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r14-e05s-court/WORKER_RETURNS/PYAT-USERDIRECT-20261016-R14-E05S-INDEPENDENT-SELECTED-WORLD-R1/repro/r14_cold.py", line 12, in <module>
+    a,q,s,acc,r=run();p=O/'trusted_fixture_state.pickle';p.write_bytes(pickle.dumps((a,q,s,acc,r)))
+                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: cannot pickle 'mappingproxy' object

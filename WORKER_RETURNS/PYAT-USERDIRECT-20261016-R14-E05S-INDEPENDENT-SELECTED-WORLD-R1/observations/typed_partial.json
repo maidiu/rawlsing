@@ -1,0 +1,450 @@
+{
+  "schema": "N9_SELECTED_WORLD_RECEIPT@2",
+  "contract": "R13_E05R_N9_SELECTED_WORLD_INTERFACE@2",
+  "grade": "NONINSTALLING_SOURCEFREE_ADAPTER_CANDIDATE",
+  "claim_ceiling": null,
+  "acceptance_hash": "bcd8e8a433f11a692a0f995939ee47013c45b148e8e7cc72ad906a0b33d73837",
+  "acceptance_state": "ACCEPTED_WITH_TYPED_PARTIAL",
+  "request_hash": "c800fd715f4c35ad4a0962d50dab236c6ddfb9f7ab412640ab8b90f47423c56a",
+  "snapshot_hash": "7e89a34adcdfbdfa8f7ad62e64f960998c22f4ba6a24471bbf421ff32eb6e8a6",
+  "catalog_hash": "e17875647e3410b40a0430c7d23b0b5bbea5c8a55ab8120d1579ac5abe7b8f36",
+  "selection": {
+    "mode": "AS_OF",
+    "valid_at": "2022-06-01",
+    "published_asof": "2022-06-01",
+    "purpose": "TEST_ONLY_CONTEXT"
+  },
+  "permission_roots": [
+    "TEST_ONLY_E04_SOURCE_ROOT"
+  ],
+  "publication_clocks": [
+    "2026-03-01"
+  ],
+  "effective_clocks": [],
+  "structural_readset": [
+    "training_access",
+    "training_fee",
+    "exit_cost",
+    "civil_open",
+    "civil_sanction"
+  ],
+  "structural_values": {
+    "training_access": {
+      "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+      "requested_ref": null
+    },
+    "training_fee": {
+      "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+      "requested_ref": null
+    },
+    "exit_cost": {
+      "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+      "requested_ref": null
+    },
+    "civil_open": {
+      "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+      "requested_ref": null
+    },
+    "civil_sanction": {
+      "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+      "requested_ref": null
+    }
+  },
+  "structural_value_refs": {
+    "training_access": [
+      null,
+      null
+    ],
+    "training_fee": [
+      null,
+      null
+    ],
+    "exit_cost": [
+      null,
+      null
+    ],
+    "civil_open": [
+      null,
+      null
+    ],
+    "civil_sanction": [
+      null,
+      null
+    ]
+  },
+  "empirical_target": "Y",
+  "empirical_condition_order": [
+    [
+      "A",
+      1
+    ],
+    [
+      "B",
+      1
+    ],
+    [
+      "C",
+      1
+    ]
+  ],
+  "empirical_state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+  "empirical_steps": [],
+  "empirical_native_time": null,
+  "native_field_readset": {
+    "roles": [
+      "GSS_RURAL_LIGHTING",
+      "NCA_NATIONAL_MOBILE_DATA"
+    ],
+    "refs": [
+      "TESTONLY_FIELD:83b0b3fdf1fa2a3e346c95211987b32fc5ff646d053a3577d1f695fd62507d45",
+      "TESTONLY_FIELD:d21dc005bdc40b56f0641dc75982880f74405f89691c55e532c87798f527b106"
+    ],
+    "dependency_readset": [
+      "TESTONLY_FIELD:83b0b3fdf1fa2a3e346c95211987b32fc5ff646d053a3577d1f695fd62507d45",
+      "TESTONLY_FIELD:d21dc005bdc40b56f0641dc75982880f74405f89691c55e532c87798f527b106"
+    ],
+    "successful_value_refset": [
+      "TESTONLY_FIELD:83b0b3fdf1fa2a3e346c95211987b32fc5ff646d053a3577d1f695fd62507d45"
+    ],
+    "values_read": [
+      {
+        "role": "GSS_RURAL_LIGHTING",
+        "fixture_ref": "TESTONLY_FIELD:83b0b3fdf1fa2a3e346c95211987b32fc5ff646d053a3577d1f695fd62507d45",
+        "source_family": "GH_GSS_PHC_2021",
+        "publisher": "Ghana Statistical Service",
+        "observation_period": "2021 PHC",
+        "publication_date": "2022-02-24",
+        "native_unit": "RURAL_OCCUPIED_HOUSEHOLD_MAIN_LIGHTING",
+        "native_geography": "GHANA_RURAL",
+        "native_measure": "ELECTRICITY_MAIN_LIGHTING_ALL_SUBTYPES",
+        "uncertainty": "CENSUS_NONSAMPLING_UNQUANTIFIED",
+        "values": {
+          "numerator": 2388192,
+          "denominator": 3288063,
+          "published_percent": 72.6,
+          "electricity_subtypes": {
+            "mains": 2288193,
+            "community_grid": 74490,
+            "generator": 3640,
+            "solar_inverter": 21512,
+            "wind": 357
+          }
+        }
+      }
+    ],
+    "refusals": [
+      {
+        "role": "NCA_NATIONAL_MOBILE_DATA",
+        "fixture_ref": "TESTONLY_FIELD:d21dc005bdc40b56f0641dc75982880f74405f89691c55e532c87798f527b106",
+        "reason": "NOT_PUBLISHED_AT_SELECTED_ASOF"
+      }
+    ],
+    "as_of": "2022-06-01",
+    "state": "PARTIAL_TEST_ONLY_NOT_POSITIVE"
+  },
+  "pooling": false,
+  "person_exposure": false,
+  "model_use": false,
+  "native_units": [
+    "RURAL_OCCUPIED_HOUSEHOLD_MAIN_LIGHTING"
+  ],
+  "source_families": [
+    "GH_GSS_PHC_2021"
+  ],
+  "operative_N9": false,
+  "operative_OC05": false,
+  "installed_OC05": {
+    "OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1": {
+      "policy_id": "OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1",
+      "current_applicability": "APPLICABLE_CURRENT",
+      "consumer_seam": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+      "reason": "current exact source-local empirical query/statistic seam"
+    },
+    "OC02_LEARNED_STRUCTURAL_ADMISSION_R1": {
+      "policy_id": "OC02_LEARNED_STRUCTURAL_ADMISSION_R1",
+      "current_applicability": "APPLICABLE_CURRENT",
+      "consumer_seam": "rawlsing_next.pre553_structural_admission",
+      "reason": "current P06/I04 structural-admission decision/refusal seam"
+    },
+    "OC03_SDTF_OBJECTIVE_CONSEQUENCE_R1": {
+      "policy_id": "OC03_SDTF_OBJECTIVE_CONSEQUENCE_R1",
+      "current_applicability": "NOT_YET_APPLICABLE",
+      "consumer_seam": null,
+      "reason": "P1-P5 remain CANDIDATE_NOT_CURRENT pending W2-D04 and later admission"
+    },
+    "OC04_OCCURRENCE_NONEVENT_WORLD_FACT_R1": {
+      "policy_id": "OC04_OCCURRENCE_NONEVENT_WORLD_FACT_R1",
+      "current_applicability": "NOT_YET_APPLICABLE",
+      "consumer_seam": null,
+      "reason": "generic non-event adapter is W2-D05; real world rooting is W2-D01"
+    },
+    "OC05_TERMINAL_OBJECTIVE_WORLD_RESOLUTION_R1": {
+      "policy_id": "OC05_TERMINAL_OBJECTIVE_WORLD_RESOLUTION_R1",
+      "current_applicability": "NOT_YET_APPLICABLE",
+      "consumer_seam": null,
+      "reason": "terminal objective-world root/resolver is not current; no universal terminal may be invented"
+    }
+  },
+  "issued_N5N6": false,
+  "issued_EE13": false,
+  "new_issuer": false,
+  "consumers": [
+    {
+      "consumer": "NONPARENT_OPTIONS",
+      "state": "PARTIAL_OPTIONS_OR_EMPIRICAL_SUPPORT",
+      "consumer_material": {
+        "consumer": "NONPARENT_OPTIONS",
+        "state": "PARTIAL_OPTIONS_OR_EMPIRICAL_SUPPORT",
+        "structural_routes": {
+          "training": {
+            "state": "UNAVAILABLE_AUTHORITY_OR_CLOCK",
+            "dependencies": [
+              "training_access",
+              "training_fee"
+            ],
+            "value_refs": [
+              null,
+              null
+            ]
+          },
+          "civil": {
+            "state": "UNAVAILABLE_AUTHORITY_OR_CLOCK",
+            "dependencies": [
+              "civil_open",
+              "civil_sanction"
+            ],
+            "value_refs": [
+              null,
+              null
+            ]
+          },
+          "exit_constraint": {
+            "state": "UNAVAILABLE_AUTHORITY_OR_CLOCK",
+            "dependencies": [
+              "exit_cost"
+            ],
+            "value_refs": [
+              null
+            ]
+          }
+        },
+        "empirical": {
+          "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+          "steps": [],
+          "dependencies": [
+            "empirical"
+          ],
+          "source_ref": {
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+            "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+          }
+        },
+        "source_balance_reads": [],
+        "route_probability": null,
+        "route_probability_reason": "NO_JOINT_EMPIRICAL_STRUCTURAL_ROUTE_MODEL",
+        "dependencies": [
+          "empirical",
+          "training_access",
+          "training_fee",
+          "exit_cost",
+          "civil_open",
+          "civil_sanction"
+        ],
+        "values_read": [
+          {
+            "consumer": "NONPARENT_OPTIONS",
+            "channel": "structural",
+            "scope": "training_access",
+            "source_ref": null,
+            "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+            "value_read": null,
+            "native_unit": null,
+            "snapshot_ref": "7e89a34adcdfbdfa8f7ad62e64f960998c22f4ba6a24471bbf421ff32eb6e8a6"
+          },
+          {
+            "consumer": "NONPARENT_OPTIONS",
+            "channel": "structural",
+            "scope": "training_fee",
+            "source_ref": null,
+            "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+            "value_read": null,
+            "native_unit": null,
+            "snapshot_ref": "7e89a34adcdfbdfa8f7ad62e64f960998c22f4ba6a24471bbf421ff32eb6e8a6"
+          },
+          {
+            "consumer": "NONPARENT_OPTIONS",
+            "channel": "structural",
+            "scope": "exit_cost",
+            "source_ref": null,
+            "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+            "value_read": null,
+            "native_unit": null,
+            "snapshot_ref": "7e89a34adcdfbdfa8f7ad62e64f960998c22f4ba6a24471bbf421ff32eb6e8a6"
+          },
+          {
+            "consumer": "NONPARENT_OPTIONS",
+            "channel": "structural",
+            "scope": "civil_open",
+            "source_ref": null,
+            "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+            "value_read": null,
+            "native_unit": null,
+            "snapshot_ref": "7e89a34adcdfbdfa8f7ad62e64f960998c22f4ba6a24471bbf421ff32eb6e8a6"
+          },
+          {
+            "consumer": "NONPARENT_OPTIONS",
+            "channel": "structural",
+            "scope": "civil_sanction",
+            "source_ref": null,
+            "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+            "value_read": null,
+            "native_unit": null,
+            "snapshot_ref": "7e89a34adcdfbdfa8f7ad62e64f960998c22f4ba6a24471bbf421ff32eb6e8a6"
+          },
+          {
+            "consumer": "NONPARENT_OPTIONS",
+            "channel": "empirical",
+            "scope": "empirical",
+            "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+            "value_read": null,
+            "snapshot_ref": "7e89a34adcdfbdfa8f7ad62e64f960998c22f4ba6a24471bbf421ff32eb6e8a6"
+          }
+        ],
+        "snapshot_ref": "7e89a34adcdfbdfa8f7ad62e64f960998c22f4ba6a24471bbf421ff32eb6e8a6",
+        "service_contract": "E04_GENERIC_SELECTED_WORLD_POSSIBILITY_SERVICE_CANDIDATE@1",
+        "grade": "TEST_ONLY_SOURCEFREE_CANDIDATE",
+        "operative_N9": false,
+        "operative_N10W": false,
+        "new_issuer": false,
+        "actor_executions": 0,
+        "model_calls": 0
+      }
+    },
+    {
+      "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+      "state": "PARTIAL_PROPOSALS_EVALUATED",
+      "consumer_material": {
+        "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+        "state": "PARTIAL_PROPOSALS_EVALUATED",
+        "scenarios": [
+          {
+            "scenario_id": "INDEPENDENT_TRAINING",
+            "route": "institutional",
+            "feasibility": "UNKNOWN_PREMISE",
+            "structural_value_refs": [
+              null
+            ],
+            "empirical_profiles": [],
+            "selection_weight": null,
+            "weight_reason": "NO_SCENARIO_SELECTION_MODEL_OR_ISSUER",
+            "dependencies": [
+              "training_access"
+            ]
+          },
+          {
+            "scenario_id": "INDEPENDENT_CIVIL",
+            "route": "civil",
+            "feasibility": "UNKNOWN_PREMISE",
+            "structural_value_refs": [
+              null,
+              null
+            ],
+            "empirical_profiles": [],
+            "selection_weight": null,
+            "weight_reason": "NO_SCENARIO_SELECTION_MODEL_OR_ISSUER",
+            "dependencies": [
+              "civil_open",
+              "civil_sanction"
+            ]
+          }
+        ],
+        "empirical": {
+          "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+          "steps": [],
+          "dependencies": [
+            "empirical"
+          ],
+          "source_ref": {
+            "kind": "EmpiricalUniverse@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+            "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+          }
+        },
+        "person_generation": false,
+        "actual_conception": false,
+        "relationships_generated": false,
+        "values_read": [
+          {
+            "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+            "channel": "empirical",
+            "scope": "empirical",
+            "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+            "value_read": null,
+            "snapshot_ref": "7e89a34adcdfbdfa8f7ad62e64f960998c22f4ba6a24471bbf421ff32eb6e8a6"
+          },
+          {
+            "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+            "channel": "structural",
+            "scope": "training_access",
+            "source_ref": null,
+            "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+            "value_read": null,
+            "native_unit": null,
+            "snapshot_ref": "7e89a34adcdfbdfa8f7ad62e64f960998c22f4ba6a24471bbf421ff32eb6e8a6"
+          },
+          {
+            "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+            "channel": "structural",
+            "scope": "civil_open",
+            "source_ref": null,
+            "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+            "value_read": null,
+            "native_unit": null,
+            "snapshot_ref": "7e89a34adcdfbdfa8f7ad62e64f960998c22f4ba6a24471bbf421ff32eb6e8a6"
+          },
+          {
+            "consumer": "CONCEPTION_SCENARIO_PROPOSALS",
+            "channel": "structural",
+            "scope": "civil_sanction",
+            "source_ref": null,
+            "state": "UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+            "value_read": null,
+            "native_unit": null,
+            "snapshot_ref": "7e89a34adcdfbdfa8f7ad62e64f960998c22f4ba6a24471bbf421ff32eb6e8a6"
+          }
+        ],
+        "dependencies": [
+          "civil_open",
+          "civil_sanction",
+          "empirical",
+          "training_access"
+        ],
+        "snapshot_ref": "7e89a34adcdfbdfa8f7ad62e64f960998c22f4ba6a24471bbf421ff32eb6e8a6",
+        "service_contract": "E04_GENERIC_SELECTED_WORLD_POSSIBILITY_SERVICE_CANDIDATE@1",
+        "grade": "TEST_ONLY_SOURCEFREE_CANDIDATE",
+        "operative_N9": false,
+        "operative_N10W": false,
+        "new_issuer": false,
+        "actor_executions": 0,
+        "model_calls": 0
+      }
+    }
+  ],
+  "inconsistencies": [
+    "NATIVE_FIELD_REFUSAL:NOT_PUBLISHED_AT_SELECTED_ASOF",
+    "EMPIRICAL_PUBLICATION_CLOCK_OUTSIDE_SELECTION",
+    "CONSUMER_TYPED_PARTIAL:NONPARENT_OPTIONS",
+    "CONSUMER_TYPED_PARTIAL:CONCEPTION_SCENARIO_PROPOSALS",
+    "EMPIRICAL_NOT_PRODUCTIVE:UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+    "NATIVE_FIELDSET_NOT_COMPLETE:PARTIAL_TEST_ONLY_NOT_POSITIVE",
+    "STRUCTURAL_FIELD_UNAVAILABLE:training_access:UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+    "STRUCTURAL_FIELD_UNAVAILABLE:training_fee:UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+    "STRUCTURAL_FIELD_UNAVAILABLE:exit_cost:UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+    "STRUCTURAL_FIELD_UNAVAILABLE:civil_open:UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK",
+    "STRUCTURAL_FIELD_UNAVAILABLE:civil_sanction:UNAVAILABLE_PUBLICATION_OR_EFFECTIVE_CLOCK"
+  ],
+  "state": "TYPED_PARTIAL_SELECTED_WORLD",
+  "receipt_hash": "6b25a84aa6f0ae2c582aa887c831c7d6ba28963369a03510f7e3f790e24def5d",
+  "receipt_payload_sha256": "9af013df5704c2a5fb4bb04fef72f5f3efd380bd8e54aa71409a9a3caccacbe4"
+}

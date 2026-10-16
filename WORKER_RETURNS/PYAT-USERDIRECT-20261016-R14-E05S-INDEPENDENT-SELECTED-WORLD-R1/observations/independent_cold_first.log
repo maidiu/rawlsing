@@ -1,0 +1,28 @@
+{
+  "mode": "first",
+  "pid": 75685,
+  "receipt_hashes": {
+    "CURRENT_TEST_CLOCK": "fcebad5502d053e83a7838fe56c715cabfe9ce7031bb33e05a1bdec6b526afbd",
+    "HISTORICAL_AS_OF": "43b66b75f278fc227b8e7c23ac21631d1d9ad6c84d21b66fb970eb6c2dfcb3c5",
+    "TYPED_PARTIAL_PRE_NCA_PUBLICATION": "6b25a84aa6f0ae2c582aa887c831c7d6ba28963369a03510f7e3f790e24def5d",
+    "FRESH_EMPIRICAL_SOURCE": "d46e6908ead34c9a96599a73147663ed7d91e23329151ba232f29a5ed0295fe7",
+    "WITHDRAWN_GSS_RURAL_LIGHTING": "78f92d6e14a90c7e4477cc522393b4ad84a37583c084067e86ea5c1a34863005",
+    "WITHDRAWN_NCA_NATIONAL_MOBILE_DATA": "c11610a71d6b1ca9c3b7d6de968bfa605c4ddabfe2bf09252202b871e7d246ab"
+  },
+  "old_and_fresh_grants": {
+    "old_snapshot_on_fresh_source": {
+      "refused": true,
+      "error": "UNREGISTERED_SELECTED_SNAPSHOT"
+    },
+    "reconstructed_fixture_after_local_revocation": {
+      "old_state": "TYPED_PARTIAL_SELECTED_WORLD",
+      "new_state": "SELECTED_WORLD_VALUES_SERVED",
+      "same_permission_roots": true,
+      "new_issuer": false,
+      "operative_OC05": false,
+      "interpretation": "Fresh fixture construction resets in-memory revocation. This is test-only reconstruction, not a durable authority renewal guarantee."
+    }
+  },
+  "replay_bit_identical": null
+}
+

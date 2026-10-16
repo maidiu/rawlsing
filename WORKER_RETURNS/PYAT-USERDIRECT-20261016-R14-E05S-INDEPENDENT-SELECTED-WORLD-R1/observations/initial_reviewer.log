@@ -1,0 +1,26 @@
+........................................................................ [ 72%]
+.............F..............                                             [100%]
+=================================== FAILURES ===================================
+______________ test_r14_detached_client_after_acceptance[budget] _______________
+
+mutation = 'budget'
+
+    @pytest.mark.parametrize('mutation',['person','dyad','probability','readset','source_ref','client_order','single','scenario_id','budget'])
+    def test_r14_detached_client_after_acceptance(mutation):
+     a,q,s,acc,_=run();cs=clients(a,s)
+     if mutation=='person':cs[0]['person']={'id':'FORGED'}
+     elif mutation=='dyad':cs[1]['dyad_probability']=0.5
+     elif mutation=='probability':cs[0]['route_probability']=0.5
+     elif mutation=='readset':cs[0]['dependencies']=[]
+     elif mutation=='source_ref':cs[1]['values_read'][0]['source_ref']={'kind':'FOREIGN'}
+     elif mutation=='client_order':cs.reverse()
+     elif mutation=='single':cs=cs[:1]
+     elif mutation=='scenario_id':cs[1]['scenarios'][1]['scenario_id']=cs[1]['scenarios'][0]['scenario_id']
+     else:cs[0]=consume(a.service,s,budget_tokens=0)['material']
+>    with pytest.raises(E.N9SelectedWorldRefusal):a.serve(q,acc,s,consumers=cs)
+E    Failed: DID NOT RAISE <class 'e05_n9_selected_world_adapter.N9SelectedWorldRefusal'>
+
+tests/test_r14_independent.py:69: Failed
+=========================== short test summary info ============================
+FAILED tests/test_r14_independent.py::test_r14_detached_client_after_acceptance[budget]
+1 failed, 99 passed in 327.28s (0:05:27)
