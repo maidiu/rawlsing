@@ -1,0 +1,7 @@
+# Supplemental selector type boundary
+
+Initial candidate79dba9afe30844c05fa840e7b36c0d5f27765e0c passed exact171 targets (169PASS/2historicalRED) and47 author controls on first run. Those source/results are preserved as repair_v1. Subsequent static source audit noticed helper `ref=None` overloaded the internal request to omit selector checking and a caller's explicit invalid selector. This supplemental court is frozen BEFORE any such probe or the sentinel fix. No original test, prediction or result is rewritten.
+
+Twelve cases: six explicit invalid selectors (`None`, empty string, integer, list, dict, foreign string) × public mediation/consumption. Each has an authentic applied BELIEF and must yield typed refusal, never APPLIED/productive/validEMPTY, with exact owner+registry preservation. All12 are expected PASS on the final candidate. Pre-fix unexpected results remain literal REDs. The original47 expectation source remains unchanged; these12 are additional author controls, not independent acceptance.
+
+Proposed implementation correction: use a private sentinel to distinguish “no selected-claim check requested by an internal formation validator” from any explicit public selector value, includingNone. Preserve genuine bound NONE, original P3b/F_B and all171 cases. After correction rerun171 and47, plus12; preserve the first candidate's evidence/source identity. No source repair beyond this selector distinction, native source change, model/helper switch or authority expansion.
