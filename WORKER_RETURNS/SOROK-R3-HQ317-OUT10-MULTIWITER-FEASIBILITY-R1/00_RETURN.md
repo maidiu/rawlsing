@@ -1,49 +1,62 @@
 # SOROK HQ317 OUT10 — Multiwriter outbox feasibility and falsification court
 
-**VERDICT:** `MULTIWITER_FEASIBILITY_HOLD__PROTOTYPE_NOT_REACHABLE_FROM_ASSIGNED_BRANCH`
+**VERDICT:** `MULTIWITER_FEASIBILITY_HOLD__OUT8_PACKAGE_IS_INCOMPLETE_AS_ARCHIVED__PROTOTYPE_MODULE_ABSENT`
 **TERMINAL:** `SOROK_HQ317_OUT10_MULTIWITER_FEASIBILITY_HOLD__GITHUB_PUSHED`
-**Branch:** `agent/rabochii-sorok-r3-hq317-out10-multiwriter-feasibility-r1` @ `c28bedf20716213a680387da34728c18f9e8c76a`
+**Branch:** `agent/rabochii-sorok-r3-hq317-out10-multiwriter-feasibility-r1`
 **Role:** bounded source-free multiwriter experimenter — **NOT** HQ or ADP019 issuer.
+**Supersedes** both of this worker's earlier returns on this branch (the first wrongly claimed the prototype was unreachable; the second corrected the branch question but had not yet opened the package).
 
 ## 1. Environment preflight — GREEN, no HOLD needed
-| requirement | resolution |
-|---|---|
-| DeepSeek-Harness | **running** (this session) |
-| Git | `/usr/local/bin/git` |
-| Python | **3.11.3** (`LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11`) |
-| pytest | **9.1.1** |
-| Node | **v22.23.3** |
-| pnpm | `/Users/matthewsmith/Desktop/Rawlsing/deepseek-harness/node_modules/.bin/pnpm` |
+DeepSeek-Harness **running** (this session) · Git `/usr/local/bin/git` · Python **3.11.3** · pytest **9.1.1** · Node **v22.23.3** · pnpm `/Users/matthewsmith/Desktop/Rawlsing/deepseek-harness/node_modules/.bin/pnpm`.
+**The previously reported pnpm PATH issue is RESOLVED** (pnpm resolves from the local `node_modules/.bin`). No editor/provider switch, no fabricated execution, no global installs.
 
-**The previously reported pnpm PATH issue is RESOLVED** — `pnpm` resolves from the local `node_modules/.bin`, so this is **not** an environment HOLD and I did not switch editors/providers, fabricate execution, or install global dependencies.
+## 2. The prototype IS reachable — and I opened it this time
+OUT8 `0e05c7dab8334b96f2b2b79e935eeebb1c0f0d11` is the tip of a real branch:
+`agent/rabochii-sorok-r3-hq313-out8-restored-ack-ghost-repair-r1`. Its return carries
+`WORKER_RETURNS/SOROK-R3-HQ313-OUT8-RESTORED-ACK-GHOST-REPAIR-R1/OUT8_REPRO_SOURCE_AND_TESTS.tar.xz`.
+I checked out that branch, extracted that archive to scratch (**not** into any worker's return terrain), and inventoried it.
 
-## 2. The blocking finding — the prototype is not in the reachable tree
+## 3. Why the court cannot proceed — the package is incomplete as archived
+The archive's own `04_REPRODUCE.md` states it contains:
 
-The commission asks me to falsify the **OUT8 journal prototype** (`0e05c7da`) that **OUT9** (`fd58957f`) accepted within single-writer scope. I searched the **complete branch-tip index** (`git ls-tree -r`, not the sparse checkout):
+> *"Archive includes **`stage/`** Python source, original unchanged tests, **`baseline/`** exact prior outbox source/test files, and **`evidence/`** JUnit+stdout."*
+
+**It does not.** The extracted archive contains **three files only**:
 
 ```
-journal/outbox/multiwriter modules in the tip tree: 0
+test_out8_restored_state_repair.py
+OUT8_EXACT_SOURCE.patch          (33 lines)
+04_REPRODUCE.md
 ```
 
-The branch tip contains only:
-- `WORKER_COMMISSIONS/SOROK-R3-HQ317-OUT10-MULTIWITER-FEASIBILITY-R1/00_COMMISSION.md` (the commission itself)
-- `SOROK_PRODUCT_CONTROL_ROOM/HQ314_OUT8_M03_RETURN_FANIN_OC6_PENDING_AND_TWO_INDEPENDENT_COURTS_R1.md`
-- `SOROK_PRODUCT_CONTROL_ROOM/HQ315_OUT9_OC6_M04_FANIN_OC7_M05_PARALLEL_R1.md`
+- **`stage/` is absent** — there is no runnable prototype tree.
+- **`baseline/` is absent** — the pre-repair outbox source the doc says to compare against is not present.
+- **`evidence/` is absent** — the "actual before+after JUnit and logs, hashes, and original source bytes" the doc claims are shipped are not shipped.
 
-and **neither `0e05c7da` (OUT8) nor `fd58957f` (OUT9) adds any Python at all** — OUT9's commit is a **remote-verification receipt** (`06_REMOTE_VERIFICATION.json`). No branch matching `out8|out7|outbox|journal` is present on the remote.
+The single module under test, **`outbox_prototype.py`, is not in the archive at all.** `OUT8_EXACT_SOURCE.patch` is a **33-line diff *against* `outbox_prototype.py`** (`--- a/outbox_prototype.py / +++ b/outbox_prototype.py`) — a repair hunk, **not** the prototype source. A diff cannot be applied to a file that does not exist.
 
-**Consequence:** the two-writer stale-journal failure this court is commissioned to reproduce **cannot be reproduced against a prototype that is not reachable**, and I will not simulate one and call it the OUT8 artifact. Per the commission's own instruction — *"If the existing prototype cannot support a safe multiwriter mechanism without unissued authority or an absent API, return a precise `MULTIWITER_FEASIBILITY_HOLD` with executable evidence"* — this is that HOLD, with the executable evidence above.
+Consequently the OUT8 test cannot even be **collected**:
+```
+python3.11 -m pytest test_out8_restored_state_repair.py -q
+  ->  ERROR test_out8_restored_state_repair.py
+      ModuleNotFoundError: No module named 'outbox_prototype'
+      exit 2, 1 error during collection
+```
 
-## 3. What I did execute (real processes, not simulated calls)
+**This is the precise `MULTIWITER_FEASIBILITY_HOLD` the commission authorises** — returned because the prototype *cannot be instantiated* from the reachable artefact, not because I declined to test it.
 
-To avoid returning a bare "not found", I ran a **genuine three-process concurrent unlocked-append experiment** against a real file journal, to establish the baseline failure *mode* the commission names. `repro/multiwriter_smoke.log` holds the raw JSON; results are in `01_FEASIBILITY_HOLD.json`.
+## 4. What I did NOT do — named, unclaimed
+Apply or reconstruct `outbox_prototype.py` (reconstruction would be invention, not reproduction) · preregister interleavings, commit invariants, typed conflicts and crash expectations · two and three genuinely concurrent writers against the real prototype · the retained **two-writer stale-journal failure** · lost committed events · duplicate/stale event identities · typed version conflicts and lawful retry · atomic cold recovery · revocation and ACK integrity across conflicting writes · crashes before and after journal publication · exactly-once and no-loss at the tested scope · any minimal source-free multiwriter candidate (interprocess journal lock or versioned compare-and-swap).
 
-This is **explicitly labelled a baseline smoke**, not the OUT8 prototype and **not** an OUT10 acceptance result. I make **no** exactly-once, no-loss, crash-recovery, revocation or ACK claim from it, and I do **not** use it to convert any historical RED.
+**No multiwriter candidate is offered**, because the experiment that would justify one could not be run. I did not fabricate a prototype, a JUnit result, or a concurrency receipt.
 
-## 4. NOT executed — named, unclaimed
-Reproducing the retained two-writer stale-journal failure against the OUT8 prototype · two and three genuinely concurrent writers against the real prototype · lost committed events · duplicate/stale event identities · typed version conflicts and lawful retry · atomic cold recovery · revocation and ACK integrity across conflicting writes · crashes before and after journal publication · exactly-once and no-loss at the tested scope · preregistered interleavings/commit invariants/typed conflicts/crash expectations · a minimal source-free multiwriter candidate (interprocess journal lock or versioned compare-and-swap).
+## 5. An honest note on my earlier smoke
+My earlier three-process unlocked-append smoke found **600/600 lines, 0 lost, 0 duplicates** — it **did not** reproduce the failure mode and is **not** evidence for or against the prototype. It concerned a file I wrote, not OUT8. A smoke that fails to break is not a safety proof.
 
-## 5. Preservation
-**Original source bytes untouched. Original test assertions untouched. Both historical REDs untouched** — and because the old court is not reachable, I have not rewritten it or converted the inherited two-writer RED into PASS. **No helper agents, no model/harness switch, no real physical movement, no actual client perception, no production ADP019 issuance, no V3 operation.**
+## 6. Preservation
+**No original source byte, original test assertion or historical RED was modified.** I did not rewrite the old court or convert the inherited two-writer RED into PASS — and I explicitly did **not** "fix" the missing module by writing one, which would have manufactured the very evidence the commission wants independently reproduced. No helper agents, no model/harness switch, no real physical movement, no actual client perception, no production ADP019 issuance, no V3 operation.
+
+## 7. Exact next step for the owner
+Re-archive OUT8 with the **`stage/`, `baseline/`** and **`evidence/`** trees its own `04_REPRODUCE.md` promises — above all **`outbox_prototype.py` itself**, the file `OUT8_EXACT_SOURCE.patch` patches. Then this court can preregister and run the real two- and three-process multiwriter falsification.
 
 **Terminal:** `SOROK_HQ317_OUT10_MULTIWITER_FEASIBILITY_HOLD__GITHUB_PUSHED`.

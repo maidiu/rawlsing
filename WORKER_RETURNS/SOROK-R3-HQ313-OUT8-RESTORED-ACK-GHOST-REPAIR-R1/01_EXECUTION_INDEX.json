@@ -1,0 +1,69 @@
+{
+  "schema": "SOROK_OUT8_EXECUTION_INDEX_R1",
+  "sealed_startup": "862b5c6b427e1fb5d1a6000f9faf1c8352987d20",
+  "source_pin": "aa002cb634e81cb980820c14220a1ab55bc5e015",
+  "new_source_blob": "331840768ce0b5f6f73e5e93094ca0d217ddaebf",
+  "new_test_blob": "d23e6cfc441de6fee11855966b16cc7ba6fd544a",
+  "source_reproducer_archive_git_blob": "f6f54252e3faff80cf1321937bf306446db76a77",
+  "before": {
+    "total": 227,
+    "pass": 221,
+    "fail": 6,
+    "skipped": 0,
+    "errors": 0,
+    "exit": 1
+  },
+  "after": {
+    "total": 247,
+    "pass": 245,
+    "fail": 2,
+    "skipped": 0,
+    "errors": 0,
+    "exit": 1
+  },
+  "frozen_suites": {
+    "original137": {
+      "pass": 135,
+      "fail": 2
+    },
+    "OUT3_22": {
+      "pass": 22,
+      "fail": 0
+    },
+    "OUT4_29": {
+      "pass": 29,
+      "fail": 0
+    },
+    "OUT6_18": {
+      "pass": 18,
+      "fail": 0
+    },
+    "OUT7_21": {
+      "before_pass": 17,
+      "before_fail": 4,
+      "after_pass": 21,
+      "after_fail": 0
+    },
+    "OUT8_new20": {
+      "pass": 20,
+      "fail": 0
+    }
+  },
+  "repaired": [
+    "OUT7 I08",
+    "OUT7 I09",
+    "OUT7 I13",
+    "OUT7 I14"
+  ],
+  "historical_reds": [
+    "test_s27_material_move_needs_world_owner",
+    "test_replay_manual_two_writers_can_lose_first_committed_event"
+  ],
+  "holds": [
+    "OUT5 exact unpublished fourteen NOT_RUN",
+    "OUTP L1/L2 fixture policy",
+    "OUTP A1/A2 ACK opportunity policy",
+    "independent I2 before adoption"
+  ],
+  "full_local_archive_sha256": "a60acea54cc9a38e7c6e9fa318048b5172df7eb4a0e4cd495328afd185e3c40c"
+}

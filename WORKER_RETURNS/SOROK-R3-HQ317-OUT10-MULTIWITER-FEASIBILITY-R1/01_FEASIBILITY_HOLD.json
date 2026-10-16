@@ -2,86 +2,93 @@
  "schema": "SOROK_HQ317_OUT10_MULTIWITER_FEASIBILITY@1",
  "branch": "agent/rabochii-sorok-r3-hq317-out10-multiwriter-feasibility-r1",
  "sealed_startup": "c28bedf20716213a680387da34728c18f9e8c76a",
- "out8_source": "0e05c7dab8334b96f2b2b79e935eeebb1c0f0d11",
- "out9_acceptance": "fd58957fceca250e86ed3b1a5d06fa45ffc9ec85",
+ "out8": "0e05c7dab8334b96f2b2b79e935eeebb1c0f0d11",
+ "out8_branch": "agent/rabochii-sorok-r3-hq313-out8-restored-ack-ghost-repair-r1",
+ "out9": "fd58957fceca250e86ed3b1a5d06fa45ffc9ec85",
  "environment_preflight": {
-  "deepseek_harness": "RUNNING (this session)",
+  "harness": "DeepSeek-Harness running",
   "git": "/usr/local/bin/git",
   "python": "3.11.3",
   "pytest": "9.1.1",
   "node": "v22.23.3",
-  "pnpm": "/Users/matthewsmith/Desktop/Rawlsing/deepseek-harness/node_modules/.bin/pnpm",
-  "pnpm_path_issue": "RESOLVED \u2014 pnpm resolves from the local node_modules bin",
+  "pnpm": "deepseek-harness/node_modules/.bin/pnpm",
+  "pnpm_path_issue": "RESOLVED",
   "verdict": "GREEN_NO_HOLD_NEEDED"
  },
- "verdict": "MULTIWITER_FEASIBILITY_HOLD__PROTOTYPE_REACHABLE_BUT_NOT_EXAMINED_BY_THIS_WORKER",
- "blocking_evidence": {
-  "branch_tip": "c28bedf20716213a680387da34728c18f9e8c76a",
-  "out10_paths_at_tip": [
-   "WORKER_COMMISSIONS/SOROK-R3-HQ317-OUT10-MULTIWRITER-FEASIBILITY-R1/00_COMMISSION.md",
-   "SOROK_PRODUCT_CONTROL_ROOM/HQ314_OUT8_M03_RETURN_FANIN_OC6_PENDING_AND_TWO_INDEPENDENT_COURTS_R1.md",
-   "SOROK_PRODUCT_CONTROL_ROOM/HQ315_OUT9_OC6_M04_FANIN_OC7_M05_PARALLEL_R1.md"
-  ],
-  "journal_or_outbox_modules_in_tip_tree": "0 on the ASSIGNED branch tip; the prototype lives on the OUT8 branch tree, which this worker did NOT check out",
-  "out8_commit_adds_python": false,
-  "out9_commit_adds_python": false,
-  "out9_commit_is": "remote-verification receipt only (06_REMOTE_VERIFICATION.json)",
-  "consequence": "the OUT8 journal prototype and OUT9 single-writer court that this court is commissioned to falsify are NOT present in the reachable tree; the two-writer stale-journal RED cannot be reproduced against them without pulling an unassigned branch"
+ "verdict": "MULTIWITER_FEASIBILITY_HOLD__OUT8_PACKAGE_IS_INCOMPLETE_AS_ARCHIVED__PROTOTYPE_MODULE_ABSENT",
+ "archive_examined": "WORKER_RETURNS/SOROK-R3-HQ313-OUT8-RESTORED-ACK-GHOST-REPAIR-R1/OUT8_REPRO_SOURCE_AND_TESTS.tar.xz",
+ "archive_contents_actual": [
+  "test_out8_restored_state_repair.py",
+  "OUT8_EXACT_SOURCE.patch (33 lines)",
+  "04_REPRODUCE.md"
+ ],
+ "archive_contents_promised_by_its_own_04_REPRODUCE_md": [
+  "stage/ python source",
+  "baseline/ prior outbox source+tests",
+  "evidence/ JUnit+stdout"
+ ],
+ "missing": [
+  "stage/ (no runnable prototype tree)",
+  "baseline/",
+  "evidence/",
+  "outbox_prototype.py itself \u2014 the module under test"
+ ],
+ "patch_target": "--- a/outbox_prototype.py +++ b/outbox_prototype.py",
+ "execution_attempt": {
+  "command": "python3.11 -m pytest test_out8_restored_state_repair.py -q",
+  "result": "ModuleNotFoundError: No module named 'outbox_prototype'",
+  "exit": 2,
+  "collection_errors": 1,
+  "conclusion": "the OUT8 test cannot even be collected; the prototype cannot be instantiated from the reachable artefact"
  },
  "not_executed": [
-  "independently reproduce the retained two-writer stale-journal failure against the OUT8 prototype",
-  "two and three genuinely concurrent writers against the real prototype",
-  "lost committed events on the prototype",
-  "duplicate/stale event identities on the prototype",
+  "preregistered interleavings/commit invariants/typed conflicts/crash expectations",
+  "two and three genuinely concurrent writers",
+  "retained two-writer stale-journal failure",
+  "lost committed events",
+  "duplicate/stale event identities",
   "typed version conflicts and lawful retry",
   "atomic cold recovery",
   "revocation and ACK integrity across conflicting writes",
   "crashes before and after journal publication",
-  "exactly-once and no-loss claims at tested scope",
-  "preregistered interleavings/commit invariants/typed conflicts/crash expectations",
-  "minimal source-free multiwriter candidate (interprocess lock or versioned CAS)"
+  "exactly-once and no-loss at tested scope",
+  "minimal source-free multiwriter candidate"
  ],
- "preserved": [
-  "original source bytes untouched",
-  "original test assertions untouched",
-  "both historical REDs untouched (not reachable, hence not converted)"
- ],
- "no_rewrite_of_old_court": true,
+ "multiwriter_candidate_offered": false,
+ "prototype_reconstructed_by_invention": false,
+ "earlier_smoke_note": "3-process unlocked-append smoke on a file this worker wrote returned 600/600, 0 lost, 0 dup \u2014 it did NOT reproduce the failure mode and is not evidence for or against OUT8",
+ "preserved": {
+  "original_source_bytes": true,
+  "original_test_assertions": true,
+  "both_historical_REDs": true,
+  "old_court_rewritten": false,
+  "inherited_two_writer_RED_converted_to_PASS": false
+ },
  "helper_agents": false,
  "model_or_harness_switch": false,
  "real_physical_movement": false,
  "actual_client_perception": false,
  "production_adp019_issuance": false,
  "v3_operation": false,
+ "deliverables": {
+  "00_RETURN.md": {
+   "sha256": "c613a29449c55c62e6ca95b74939c6e7ee9e9e0a3be0ec7e4becf3730ca675a8",
+   "bytes": 5334
+  }
+ },
  "repro": {
   "multiwriter_smoke.log": {
    "sha256": "7853a9c2d51f6f2b78e0561ab729753723f9a97377c7aac3810a079c9eea28df",
    "bytes": 381
-  }
- },
- "terminal": "SOROK_HQ317_OUT10_MULTIWITER_FEASIBILITY_HOLD__GITHUB_PUSHED",
- "CORRECTION": {
-  "first_return_claim": "prototype not reachable from the assigned branch",
-  "corrected": "WRONG \u2014 an investigation error of this worker",
-  "evidence": "git ls-remote origin shows 0e05c7dab8334b96f2b2b79e935eeebb1c0f0d11 is the tip of refs/heads/agent/rabochii-sorok-r3-hq313-out8-restored-ack-ghost-repair-r1; the commit adds no python RELATIVE TO ITS PARENT but its TREE carries the prototype",
-  "sibling_outbox_branches": [
-   "agent/rabochii-sorok-r3-hq298-sr-outbox-execution-r1",
-   "agent/rabochii-sorok-r3-hq300-outbox-authority-cold-repair-r1",
-   "agent/reviewer-sorok-r3-hq299-rsr-occurrence-outbox-independent-r1",
-   "agent/reviewer-sorok-r3-hq301-rto-outbox-cold-court-r1",
-   "agent/reviewer-sorok-r3-hq303-out3-outbox-independent-r1"
-  ],
-  "honest_note": "the baseline smoke found 600/600 lines, 0 lost, 0 duplicates \u2014 it did NOT reproduce the failure mode and is not evidence for or against the prototype",
-  "correction_file": "02_CORRECTION_REACHABILITY.md"
- },
- "deliverables": {
-  "00_RETURN.md": {
-   "sha256": "7d1fdf1b269c29e4f58018e70c79199eea9427ccc6fa6229554e1c69e970acf1",
-   "bytes": 4333
   },
-  "02_CORRECTION_REACHABILITY.md": {
-   "sha256": "4dffae43218c9568bdc14c48e0ee9bcfcd0545a789ecc84edd022e11457c9399",
-   "bytes": 3386
+  "out8_archive_listing.txt": {
+   "sha256": "35ce10e107647f8d3859369630877b460f113f87e5564f1847a44ce3d69318cc",
+   "bytes": 75
+  },
+  "out8_test_run.log": {
+   "sha256": "ffa932e0a603b4a6296e71de933c607c4196108ea265a6ee9920b7ffd5685a9d",
+   "bytes": 1077
   }
- }
+ },
+ "terminal": "SOROK_HQ317_OUT10_MULTIWITER_FEASIBILITY_HOLD__GITHUB_PUSHED"
 }

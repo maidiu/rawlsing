@@ -1,0 +1,16 @@
+
+==================================== ERRORS ====================================
+_____________ ERROR collecting test_out8_restored_state_repair.py ______________
+ImportError while importing test module '/private/tmp/out8src/test_out8_restored_state_repair.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test_out8_restored_state_repair.py:14: in <module>
+    from outbox_prototype import DeliveryState, Journal, _hash, durable_attempt_id, durable_delivery_id, make_prototype
+E   ModuleNotFoundError: No module named 'outbox_prototype'
+=========================== short test summary info ============================
+ERROR test_out8_restored_state_repair.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.18s
