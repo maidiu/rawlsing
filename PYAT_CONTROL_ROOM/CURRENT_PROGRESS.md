@@ -1,61 +1,44 @@
-# Pyat — current progress toward its finish lines
+# Pyat — owner-verified partial progress toward 35-wave PRE-V3 finish lines
 
-**INITIAL_DOCUMENTARY_BASELINE__OWNER_REFRESH_REQUIRED · revision 2.** Source verification: 2026-10-14T13:53:10.447Z. Last owner update: unknown. This initial projection does not claim that Pyat has performed the new mutual grok cycle.
+**R17 owner refresh, revision 3 — 16 October 2026.** STATUS: `PYAT_OWNER_R17_PARTIAL_VERIFIED__ORIGINAL_ESTATE_AND_OPERATIVE_SEAMS_UNFINISHED`. The prior revision2 14 October projection was an **INITIAL_DOCUMENTARY_BASELINE__OWNER_REFRESH_REQUIRED**, not evidence that workers stopped. This new report corrects exact local method and branch status from live GitHub returns; it does **not** certify each original 35-wave cell or update Sorok's own report.
 
-[Shared update/grok protocol](../CROSS_HQ_CONTROL_ROOM/HQ_GROK_AND_PROGRESS_PROTOCOL_R1.md) · [fixed Astra advisory](../CROSS_HQ_CONTROL_ROOM/ASTRA_R3_ADVISORY_INDEX_R1.md) · [Sorok current progress](../SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md) · [own machine-readable report](CURRENT_PROGRESS.json)
+**Controlling bounds:** Working HQ branch `agent/vozhd-pyat-r3-hq-accession-reconstruction-20261013-r1@7a82e24104260b259b73e3216dbaf7ae33d3e96b` (user-accepted working HQ with acknowledged residual grok challenges); local three-method decision [R17 HQ record](https://github.com/maidiu/rawlsing/blob/7a82e24104260b259b73e3216dbaf7ae33d3e96b/PYAT_CONTROL_ROOM/PYAT_R3_HQ_ACCESSION_20261013_R1/HQ_R17_THREE_LOCAL_SOURCEFREE_METHOD_DECISIONS_20261016.md). Canonical before report-only update `0d551d36ff19dc9806e0ad490ff33a1e4c25e381`; immutable sealed historical HQ_HANDOFF cut `2936ccaca35d8a0414869efdd2870f1ea244f1c2`. No code merge, source grant, OC05 installation, source survey run, semantic issuer or N12 wake follows from this status update.
 
-## Purpose and finish lines
+## Actual finish lines (do not conflate them)
 
-Complete the general all-35 source→empirical/learned→objective/temporal world→generic possibility machine, serving historically plausible V3 lives.
+1. **Local sourcefree product acceptance:** THREE bounded methods now independently proven and adopted by the user-accepted working HQ at their exact local method grain: standalone E04T current-grant empirical engine, E05R noninstalling selected-world @2, and PV3 specialized GT2 original-scope method. These do not mean public production availability.
+2. **Integration realization:** newly returned E06 physically executes E04T→E05R→two real sourcefree consumers, forty author tests, preserves current-grant loss/restoration and native Ghana distinct field readsets. **Distinct independent E06 composition court outstanding.** New GF1 physically produces generic native PAIR relation+named consumer from original I03/P01 sourcefree evidence, forty-four author tests; **distinct independent GF1 science review and competent semantic issuer outstanding**.
+3. **Original 35-wave estate occupancy:** NOT PROVED. WG0P4 original physical 25-operation frontier/cold/accepted-owner product remains unpushed at last direct remote read; WG0L has independent PhaseA 65 original hostile cases precommitted but not run against WG0P4. Source U/expected-set E_pre, licensed original SAV/DTA/operation rights, 35 waves/1890 requirements, 151↔101 obligations and F1–F8/AT01–AT35 acceptance remain open. Do not substitute a 58-row synthetic source, 8 GT2 ops or two Ghana fixtures for measured estate progress.
+4. **PRE-V3 terminal/actor boundary:** Real N9/OC05 installation_manifest remains NOT_YET_APPLICABLE / `consumer_seam=None`. EE13/EE14 and real N10W model-use, owner N11 complete acceptance, distinct N12 wake, V3→V2 physical life-generation/weld are not authorized by these returns. The end-product remains the historically plausible generated person, not the number of tests or refusal paths.
 
-1. Local productive components under exact authority
-2. Actual composed source→product→consumer and coherent N9/N10E/N10W
-3. All applicable all35 F1–F8/N11 evidence with no dropped expected work
-4. Explicit competent N12 wake/defer, followed by distinct weld/actor grants
+## Milestone snapshot (exact evidence in CURRENT_PROGRESS.json)
 
-Preserve trajectory identities: **N0, N1, N2, N3, N4, N5, N6, N7, N8E, N8S, N9, N10E, N10W, N11, N12**. Their individual current states/evidence are in the JSON; every row requires initial owner reconciliation. Advisory baseline: [joint program](https://github.com/maidiu/rawlsing/blob/3b2d9a1b644a9fa024ed1bd895b67be5c8789531/WORKER_RETURNS/ASTRA-R3-PREA0-PYAT-JOINT-MAXIMUM-DEPTH-WELD-R1/08_JOINT_PROGRAM.md). A planned node is not an implementation result.
+| Nodes | Scoped current state | Most important next positive edge |
+|---|---|---|
+| N0 / N1 / N4 | Specialized GT2 exact original **test-only** 6 value-bearing /2 HELD; full original U/E_pre and 35 frontier not issued | WG0P4 real native25 frontier repair → WG0L PhaseB and competent original source/E_pre rights |
+| N2 / N3 / N10E | E04T full native sourcefree accepted by E04U **494/494**, actual two consumer values and current query-grant withdrawal | Independently qualify composed native E06 and eventually bind real original population sources |
+| N5 / N6 / N7 | GSS occupied rural dwelling main-lighting 2,388,192/3,288,063 and NCA national active data subscriptions 23,414,527 remain separately scoped **sourcefree fixtures** | Distinct original publisher binary/edition/custody/licence and N5/N6 issuance; EE13 only when actually applicable |
+| N8E / N8S | Historical V553/EE12 temporal machinery exists, but no real original source-to-selected historical person-time product certified by these returns | T8F3 original native temporal source-claim return and separate N8E/N9 consumer value demonstration, not global Ghana-only wait |
+| N9 | E05R noninstalling selected world independently accepted by E05S **403/403**, E05A/E05H positive OFF preview | E06 integration independent court; competent OC05 real installer and source issuer, not a silent test-only install |
+| N10W | Sourcefree selected-world evidence previews with two exact clients; operative model/consumer use NOT issued | Bind real use-permissions/EE14 and intended persona-world consumer, not synthetic actor inference |
+| N11 | Original all35/1890/151↔101/F1–F8/AT01–AT35 **not executed and certified end-to-end** | Pre-result independent expected matrix and measured source→expected empirical→world→actual consumer gate |
+| N12 | Explicit wake/defer UNISSUED | After separately competent N11 acceptance, distinct N12 decision, Sorok/C0–C12 and V3/weld authority |
 
-## Verified read cut and actual known movement
+## Active or outstanding branch truth at source read
 
-Own working HQ: agent/vozhd-pyat-r3-hq-accession-reconstruction-20261013-r1 at **5abdc72336ad4e14b69fd07b2cf808a9124fc268**. Canonical before this documentary update: 7f29aec36d24f16da52d84f17c00f08db3a55434. Fixed completed advisory: 3b2d9a1b644a9fa024ed1bd895b67be5c8789531. Direct refs and selected records were inspected; no complete worker/source re-audit was performed.
+- **E06 returned** `agent/userdirect-pyat-20261016-r17-e06-e04e05-native-bridge-r1@f9c52113de38caececc450f0e54c980f64ed3981`, author40/40, integration review REQUIRED.
+- **GF1 returned** `agent/userdirect-pyat-20261016-r17-gf1-generic-native-pair-relation-r1@9f4a23cef1482e0a81afb1e7a65df90879931465`, author44/44, real named generic consumer, independent review and semantic issuer REQUIRED.
+- **WG0P4** `agent/userdirect-pyat-20261015-r9-wg0p4-frontier-fact-receipt-repair-r1@c1e88fb26f3ef757f13bad7cf901cd6529a368c8` still SEALED STARTUP on last direct ref, not proof worker isn't running locally; **WG0L Phase A** `@1f198cb397d1602d0450f8bac60610ebfcaf5b3a` separately banked awaiting candidate.
+- **SC0J** `@72406a71055854070f46703ce79d57c6403d3222`, **T8F3** `@8079f69778eb4a2e6f30b246e3ec445dc161ae15`, **D2P3** `@d6a184ed0f430cd008163c41756f032f7d79d292` at sealed starts as checked, no pushed completion inferred; no duplicate assignment without live worker/session preflight.
 
-- HQ296 records completed Astra documentary intake at the exact final pin, with no architecture/science adoption.
-- HQ296 still lists original U/E_pre and real source-to-work binding, issued objective/multifield N9, measured temporal N9, generic authorized progressive consumer use, and N11/N12 as concrete gaps.
-- Existing STATUS.json retains older program language; it is not by itself a fresh summary of HQ296.
+## Reciprocal Sorok grounding
 
-Active commissions: refresh from the existing working-HQ worker and dispatch ledgers; this bootstrap does not invent a complete live inventory.
+Sorok report was read at counterpart **revision2** on canonical `0d551d36ff19dc9806e0ad490ff33a1e4c25e381`; its working `agent/sorok-prea0-psyche-architecture-r1` direct live SHA `7b091166ac31c0b538093007808cbbbdaccf8d6f`. That revision2 report remains owner-refresh-required, NOT a stop notice or current Sorok scientific owner attestation. Pyat must provide actual sourcefree world/permission/clock/readset limits and request Sorok's concrete generic K9/K10/occurrence/causal/genealogy/persona consumer demands; actor seam cannot be inferred from either documentary baseline. **This update does not edit Sorok's MD/JSON**.
 
-The working tip now includes the reciprocal grounding directives. Progress evidence remains pinned to 2a353ed9e8422eee8f9935f47bd1238a1ccefedd; that documentary wiring is not a new productive/scientific result.
+## Next HQ-directed scientific priorities
 
-## Last recorded trajectory position
+**First:** independent actual E06 combined-owner/grant-lifecycle court and GF1 generic owner science court in parallel; keep local acceptances intact, no self-review. **Second (separately and without serial waiting):** WG0P4 original native full-frontier product and WG0L Phase B; original pre-result E_pre/U/O1–O6 issuance with no raw unapproved survey access. **Third:** qualified original empirical F6 cross-family synthesis/weighting and V553/EE12 source-native temporal historical selection with real consumers. **Fourth:** original N9/OC05 installation under competent source and rights gate, eventual all35 N11 empirical falsification and distinct N12/V3. Optimize qualified resource spend using Pyat 00D and actual runtime passports; don't assert quota or sessions from chat alone.
 
-| Scope | Last recorded state (HQ296/advisory cut) |
-|---|---|
-| N0/N4 | Original U/E_pre and actual real source→work→consumer gaps |
-| N2/N3/N10E | Existing generic capital; competent richer public use/release proof remains |
-| N5/N6/N7 | Issued objective fields and genuine two-field EE13/N9 consumer remain |
-| N8E/N8S | Actual qualified empirical temporal and separate objective temporal paths remain |
-| N9/N10W | Coherent current/historical/as-of snapshots and progressive generic use remain |
-| N11/N12 | Joined full-estate acceptance and explicit competent wake remain |
+**Full confidence grade:** exact sourcefree current native/consumer and original specialized GT2 method accepted. New joined E06 and generic GF1 only AUTHOR_POSITIVE. Original 35-wave/productive measured source estate, operative N9/N10W, actor/person/v3 remain UNATTESTED. All statuses are edge-local; a source right HOLD is not an argument to refuse unrelated valid sourcefree positive science.
 
-These are linked last-recorded assessments, not fresh owner certifications of every node. Verify later returns/adoptions before making current readiness claims. Sealed Pyat control pointer remains HQ280 at 2936ccaca35d8a0414869efdd2870f1ea244f1c2; semantic PRE-MAIN 1f47063c3205a45888b3c55e81e7485943ed1390. Later working evidence is separate.
-
-## Maturity, blockers and next actions
-
-Local-stage, integration, estate and operative-use maturity remain distinct. The seed links prior evidence and does not requalify it. Source/model/scientific/actor/weld rights are not supplied by this report. Owner must record exact current scientific, authority, implementation and custody gaps, positive endpoint evidence, last productive deltas and bounded next actions in the next paired refresh. No invented global readiness percentage.
-
-## Reciprocal dependencies and review
-
-Need from Sorok: Sorok exact generic C0 demands/K9-K10 and interface conflicts; Genealogy and occurrence/model authority court dispositions; separate simulated policy from measured frequency; Actual consumer effects and cross-HQ sync evidence.
-
-Supply to Sorok: Exact generic world/empirical possibility capability and residual authority; Source-native units, negatives, clocks, topology, permissions and actual service maturity.
-
-**Counterpart-review receipt pending:** report enclosing commit/revision, date, working cut, actual implications and issue disposition must be filled by Pyat. Open issue XHQ-BOOTSTRAP-01: reconcile own trajectory and the other's current report before relying on cross-HQ readiness. An older report is an affected decision's reconciliation gap, not permission to stall all unrelated work.
-
-## Evidence and maintenance
-
-- [Exact source 1](https://github.com/maidiu/rawlsing/blob/2a353ed9e8422eee8f9935f47bd1238a1ccefedd/PYAT_CONTROL_ROOM/PYAT_R3_HQ_ACCESSION_20261013_R1/HQ296_ASTRA_JOINT_WELD_ADVISORY_RETURN_INTAKE.json)
-- [Exact source 2](https://github.com/maidiu/rawlsing/blob/2a353ed9e8422eee8f9935f47bd1238a1ccefedd/PYAT_CONTROL_ROOM/PYAT_R3_HQ_ACCESSION_20261013_R1/CURRENTNESS_AND_WORKER_LEDGER.json)
-- [Exact source 3](https://github.com/maidiu/rawlsing/blob/2a353ed9e8422eee8f9935f47bd1238a1ccefedd/PYAT_CONTROL_ROOM/PYAT_R3_HQ_ACCESSION_20261013_R1/)
-
-Update MD and JSON atomically after each material result/decision/blocker, before dependent planning and at session handoff; verify at least daily while actively working. Record inactive/paused mode honestly. Follow the shared protocol for exact refs, issue escalation and narrow canonical publication. Existing detailed ledgers remain authoritative at their stated grains.
+See the [machine-readable revision3 report](CURRENT_PROGRESS.json), [Astra R3 advisory index](../CROSS_HQ_CONTROL_ROOM/ASTRA_R3_ADVISORY_INDEX_R1.md), [Sorok report](../SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md), and current [shared grok/progress law](../CROSS_HQ_CONTROL_ROOM/HQ_GROK_AND_PROGRESS_PROTOCOL_R1.md).
