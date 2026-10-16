@@ -1,0 +1,42 @@
+{
+  "continuation_version": "FORWARD_CONTINUATION@1.0-LAB",
+  "continuation_events": [
+    {
+      "event_id": "sha256:fe336647ae31b2e532b56a74b4f40aa058a207b3b02a975a5443e273ec92641f",
+      "kind": "PARENT_CONTINUATION",
+      "actor": "LAB_MOTHER_M0",
+      "payload": {
+        "project_change": "evening_certificate_completion_window",
+        "care_or_absence": "continuing_care_routine_for_household",
+        "causal_basis": "pre_boundary striving and enrollment events"
+      },
+      "effective_index": 1000
+    },
+    {
+      "event_id": "sha256:6aaaff08ca4cb806a8f3ea2e9e57e9500258ed7e55fc10815dffab05654f0f23",
+      "kind": "PARENT_CONTINUATION",
+      "actor": "G12_UNFORMED",
+      "payload": {
+        "project_change": "repair_bench_saving_and_cooperative_rotation_continues",
+        "care_or_absence": "periodic_presence_via_shared_route",
+        "causal_basis": "pre_boundary project and striving events"
+      },
+      "effective_index": 1001
+    },
+    {
+      "event_id": "sha256:ec7b2d3f299cd986349e3f15bf339d4d296a4d68e7f6a798900e422f445183f4",
+      "kind": "RELATION_CONTINUATION",
+      "actor": "PAIR",
+      "payload": {
+        "objective_relation_continues": true,
+        "household_membership": "NOT_AUTOMATICALLY_ESTABLISHED",
+        "note": "relationship continuation distinct from household admission"
+      },
+      "effective_index": 1002
+    }
+  ],
+  "both_parents_continue_independently": true,
+  "parent_project_change_registered_as_event": true,
+  "care_or_absence_registered_as_event": true,
+  "no_fixed_family_labels": true
+}

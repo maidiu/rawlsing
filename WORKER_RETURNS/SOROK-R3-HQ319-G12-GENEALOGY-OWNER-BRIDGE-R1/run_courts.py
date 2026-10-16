@@ -7,8 +7,15 @@ def main():
     suites=[('sgi1',['test_original_sgi1.py']),
             ('g11',['sources/g11/test_g11_solver.py']),
             ('g12_controls',['test_g12_controls.py']),
-            ('g12_literal_contract',['test_g12_literal_contract.py'])]
+            ('g12_literal_contract',['test_g12_literal_contract.py']),
+            ('g12_supplemental',['test_g12_supplemental.py'])]
+    requested=set(sys.argv[1:])
+    if requested:
+        assert requested <= {label for label,_ in suites}
+        prior=ROOT/'evidence/execution.json'
+        if prior.exists():rows=[r for r in json.loads(prior.read_text()) if r['suite'] not in requested]
     for label,paths in suites:
+        if requested and label not in requested:continue
         cmd=[sys.executable,'-m','pytest','-q','-s','-p','no:cacheprovider',*paths,'--junitxml=evidence/'+label+'_junit.xml']
         t=time.perf_counter()
         p=subprocess.run(cmd,cwd=ROOT,env=dict(os.environ,PYTHONDONTWRITEBYTECODE='1'),capture_output=True,text=True)

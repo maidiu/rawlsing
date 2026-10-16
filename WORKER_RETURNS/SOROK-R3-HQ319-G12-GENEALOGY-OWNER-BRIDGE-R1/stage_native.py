@@ -15,6 +15,13 @@ def main():
             assert hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()==blob
             d=ROOT/'sources'/alias/name;d.parent.mkdir(parents=True,exist_ok=True);d.write_bytes(b)
             rows.append(dict(commit=commit,path=path,git_blob_sha1=blob,sha256=hashlib.sha256(b).hexdigest(),staged_path=str(d.relative_to(ROOT))))
+    for name,blob in [('ADP016.json','c6619a286e115d060ab4830889e7fc23762167a5'),
+                      ('ADP017.json','eece4f3f2f3f9288ab9bbc645dc81e20a99e1280'),
+                      ('CAN008_R2.md','b80dd6925066510ecbbfec7b427bf9f688475663')]:
+        b=git('cat-file','blob',blob)
+        assert hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()==blob
+        d=ROOT/'sources/authority'/name;d.write_bytes(b)
+        rows.append(dict(commit=None,path=None,git_blob_sha1=blob,sha256=hashlib.sha256(b).hexdigest(),staged_path=str(d.relative_to(ROOT))))
     (ROOT/'native_source_manifest.json').write_text(json.dumps(rows,indent=2)+'\n')
     print('Verified native closure:',len(rows))
 if __name__=='__main__':main()

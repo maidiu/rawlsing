@@ -1,0 +1,43 @@
+{
+  "expected_actor": "G12_ACTUAL_SECOND_PARENT",
+  "relation": {
+    "relation_version": "RELATION_RECONCILIATION@1.0-LAB",
+    "status": "COMMITTED",
+    "relation_state": "NEW_RELATION_INITIALIZED_FROM_ENCOUNTER",
+    "objective_relation": {
+      "relation_id": "sha256:ff65433389730f9edbebbb23a3c75b7b88e93b0fc2647bae64d02f12211c67b8",
+      "participants": [
+        "LAB_MOTHER_M0",
+        "LAB_SECOND_PARENT_SELECTED"
+      ],
+      "relation_kind": "encounter_relationship_initialized",
+      "admission_basis": "ENCOUNTER_WITNESS_MIN_1",
+      "shared_event_refs": [
+        "sha256:fe809230a4a7f2d4adb19a0c6afaa80e84855cb1bc7f4b83aa89954b9ed22d97"
+      ],
+      "single_objective_record": true
+    },
+    "perceived_states": [
+      {
+        "perceiver": "LAB_MOTHER_M0",
+        "target": "LAB_SECOND_PARENT_SELECTED",
+        "perceived_state": "positive_regard_perceived",
+        "causal_basis": "shared_encounter_and_continuing_contact"
+      },
+      {
+        "perceiver": "LAB_SECOND_PARENT_SELECTED",
+        "target": "LAB_MOTHER_M0",
+        "perceived_state": "positive_regard_perceived",
+        "causal_basis": "shared_encounter_and_continuing_contact"
+      }
+    ],
+    "reciprocity_inferred": false,
+    "household_membership_auto": false,
+    "household_membership_requires_separate_admission": true,
+    "conception_is_not_relationship": true,
+    "identity_reuse_check": {
+      "known_counterpart_identity_ref_or_null": null,
+      "duplicate_actor_minted": false
+    }
+  }
+}

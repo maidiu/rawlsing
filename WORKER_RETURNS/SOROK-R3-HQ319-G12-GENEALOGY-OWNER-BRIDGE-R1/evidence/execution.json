@@ -74,5 +74,24 @@
     "stdout": "evidence/g12_literal_contract_stdout.txt",
     "junit": "evidence/g12_literal_contract_junit.xml",
     "stdout_sha256": "b566dbde35eb849dc5c2f53f3f3c6bbe27274d623f6ff53f291fdc19b6144f3c"
+  },
+  {
+    "suite": "g12_supplemental",
+    "command": [
+      "python3",
+      "-m",
+      "pytest",
+      "-q",
+      "-s",
+      "-p",
+      "no:cacheprovider",
+      "test_g12_supplemental.py",
+      "--junitxml=evidence/g12_supplemental_junit.xml"
+    ],
+    "exit_status": 1,
+    "wall_seconds": 0.7607969640521333,
+    "stdout": "evidence/g12_supplemental_stdout.txt",
+    "junit": "evidence/g12_supplemental_junit.xml",
+    "stdout_sha256": "954fe5cb045872ef3754a91a85c641d32bc43667bbfd1d49c2b02f6a3d501375"
   }
 ]

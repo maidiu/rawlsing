@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="5" skipped="0" tests="6" time="0.205" timestamp="2026-10-16T18:31:20.310748-04:00" hostname="MacBook-Pro.lan"><testcase classname="test_g12_supplemental" name="test_invalid_root_seed_is_refused" time="0.001"><failure message="Failed: DID NOT RAISE any of (&lt;class 'ValueError'&gt;, &lt;class 'TypeError'&gt;)">def test_invalid_root_seed_is_refused():
+        rng=ScopedRNG('short','v3.causal.adp015.conception_scenario_selection','G12_SCOPE')
+&gt;       with pytest.raises((ValueError,TypeError)):
+E       Failed: DID NOT RAISE any of (&lt;class 'ValueError'&gt;, &lt;class 'TypeError'&gt;)
+
+test_g12_supplemental.py:13: Failed</failure></testcase><testcase classname="test_g12_supplemental" name="test_mapping_rejects_entropy_outside_unbiased_range" time="0.034"><failure message="AssertionError: assert 1 == 2&#10; +  where 1 = len([('slot', 0, 0)])">def test_mapping_rejects_entropy_outside_unbiased_range():
+        rng=ScopedRNG('00'*32,'v3.causal.adp015.conception_scenario_selection','G12_SCOPE')
+        calls=[]
+        def raw(*args):
+            calls.append(args)
+            return 2**64-1 if len(calls)==1 else 1
+        rng._raw=raw
+        r=rng.draw(3,'slot','cset');write('entropy_rejection',dict(calls=len(calls),receipt=r.as_dict()))
+&gt;       assert len(calls)==2
+E       AssertionError: assert 1 == 2
+E        +  where 1 = len([('slot', 0, 0)])
+
+test_g12_supplemental.py:24: AssertionError</failure></testcase><testcase classname="test_g12_supplemental" name="test_no_relationship_admission_without_second_parent_or_witness" time="0.002"><failure message="AssertionError: assert 'COMMITTED' != 'COMMITTED'">def test_no_relationship_admission_without_second_parent_or_witness():
+        anchor=build_mother_checkpoint('G12_RELATION','M0').anchor_dict()
+        result=reconcile(anchor,[],{'candidate_kind':'PROVISIONAL_COUNTERPART'})
+        write('no_witness',result)
+&gt;       assert result['status']!='COMMITTED'
+E       AssertionError: assert 'COMMITTED' != 'COMMITTED'
+
+test_g12_supplemental.py:31: AssertionError</failure></testcase><testcase classname="test_g12_supplemental" name="test_objective_relation_binds_actual_second_parent_identity" time="0.002"><failure message="AssertionError: assert 'LAB_SECOND_PARENT_SELECTED' == 'G12_ACTUAL_SECOND_PARENT'&#10;  &#10;  - G12_ACTUAL_SECOND_PARENT&#10;  + LAB_SECOND_PARENT_SELECTED">def test_objective_relation_binds_actual_second_parent_identity():
+        anchor=build_mother_checkpoint('G12_RELATION','M0').anchor_dict()
+        events=DadHistoryBuilder('G12_ACTUAL_SECOND_PARENT','G12_SEED',endpoint()).build()
+        result=reconcile(anchor,events,{'candidate_kind':'PROVISIONAL_COUNTERPART'})
+        write('actor_identity',dict(expected_actor='G12_ACTUAL_SECOND_PARENT',relation=result))
+&gt;       assert result['objective_relation']['participants'][1]=='G12_ACTUAL_SECOND_PARENT'
+E       AssertionError: assert 'LAB_SECOND_PARENT_SELECTED' == 'G12_ACTUAL_SECOND_PARENT'
+E         
+E         - G12_ACTUAL_SECOND_PARENT
+E         + LAB_SECOND_PARENT_SELECTED
+
+test_g12_supplemental.py:38: AssertionError</failure></testcase><testcase classname="test_g12_supplemental" name="test_empty_parent_history_cannot_emit_paternal_world_continuation" time="0.002"><failure message="AssertionError: assert not [{'actor': 'G12_UNFORMED', 'effective_index': 1001, 'event_id': 'sha256:6aaaff08ca4cb806a8f3ea2e9e57e9500258ed7e55fc10815dffab05654f0f23', 'kind': 'PARENT_CONTINUATION', ...}]">def test_empty_parent_history_cannot_emit_paternal_world_continuation():
+        anchor=build_mother_checkpoint('G12_RELATION','M0').anchor_dict()
+        result=forward_continuation(anchor,[],{'objective_relation':{'participants':[anchor['actor_id'],'G12_UNFORMED']}})
+        write('empty_continuation',result)
+&gt;       assert not [e for e in result.get('continuation_events',[]) if e['actor']=='G12_UNFORMED']
+E       AssertionError: assert not [{'actor': 'G12_UNFORMED', 'effective_index': 1001, 'event_id': 'sha256:6aaaff08ca4cb806a8f3ea2e9e57e9500258ed7e55fc10815dffab05654f0f23', 'kind': 'PARENT_CONTINUATION', ...}]
+
+test_g12_supplemental.py:44: AssertionError</failure></testcase><testcase classname="test_g12_supplemental" name="test_explicit_asymmetry_and_no_automatic_household_control" time="0.002" /></testsuite></testsuites>
