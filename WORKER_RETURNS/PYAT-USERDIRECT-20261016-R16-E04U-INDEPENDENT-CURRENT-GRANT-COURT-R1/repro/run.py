@@ -4,7 +4,7 @@ R=pathlib.Path(__file__).resolve().parents[1];RT=R/'runtime_root';S=RT/'candidat
 (RT/'tmp').mkdir(exist_ok=True)
 mode=sys.argv[1];label=sys.argv[2] if len(sys.argv)>2 else mode
 native=['test_pre553_analytical_composition','test_pre553_analytical_composition_higher_order','test_pre553_empirical_possibility_provider','test_pre553_empirical_query','test_source_backed_positioned_subject_possibility','test_m4_v557_v558_publication_repository','test_m5_runtime_rsc_peer_prior','test_pre553_n9_n10w_progressive_candidate']
-targets={'author37':[RT/'candidate/repro/test_product.py'],'native231':[*(S/'rawlsing_next/tests'/(n+'.py') for n in native),S/'tests/test_hq297_n9c_two_field_reader.py'],'independent51':[R/'tests/test_full_native_independent.py'],'author_hostiles37':[R/'tests/test_cache_repair_hostiles.py'],'new_hostiles57':[R/'tests/test_e04s_hostiles.py'],'baseline4':[R/'tests/test_e04s_hostiles.py'],'lifecycle':[R/'tests/test_current_grant_lifecycle.py']}
+targets={'author37':[RT/'candidate/repro/test_product.py'],'native231':[*(S/'rawlsing_next/tests'/(n+'.py') for n in native),S/'tests/test_hq297_n9c_two_field_reader.py'],'independent51':[R/'tests/test_full_native_independent.py'],'author_hostiles37':[R/'tests/test_cache_repair_hostiles.py'],'new_hostiles57':[R/'tests/test_e04s_hostiles.py'],'baseline4':[R/'tests/test_e04s_hostiles.py'],'lifecycle':[R/'tests/test_current_grant_lifecycle.py'],'reviewer':[R/'tests/test_e04u_independent.py']}
 variant='e04r' if mode=='baseline4' else 'repaired'
 if mode in targets:
  args=['-vv','--tb=short','--assert=plain',*map(str,targets[mode]),'--import-mode=importlib','-p','no:cacheprovider','--rootdir='+str(R),'--confcutdir='+str(R),'--basetemp='+str(RT/'tmp'/label),'--junitxml='+str(O/(label+'.xml'))]
