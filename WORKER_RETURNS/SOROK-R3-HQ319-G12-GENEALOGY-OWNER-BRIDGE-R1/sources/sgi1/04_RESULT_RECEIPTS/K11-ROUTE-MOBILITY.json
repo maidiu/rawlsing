@@ -1,0 +1,72 @@
+{
+ "actual_evidence_refs": [
+  "ledger:sha256:f04f06d0eb5700c0ae591dc41da60f83555035c7a26feed0f2b65f40c854244e"
+ ],
+ "assertion_names_contract": [
+  "no_backdated_mother_mobility",
+  "permitted_route_expansion",
+  "source_uses_generic_not_parent_specific",
+  "invariant_unrelated_history"
+ ],
+ "assertion_results": {
+  "invariant_unrelated_history": true,
+  "no_backdated_mother_mobility": true,
+  "permitted_route_expansion": true,
+  "source_uses_generic_not_parent_specific": true
+ },
+ "authority_versions": {
+  "contract": "V3_CONCEPTION_CONDITIONED_RETROSPECTIVE_CONSTRUCTION_RULE@0.1-PROPOSAL",
+  "k11_contract": "SOROK_SG_K11_GENEALOGY_EXECUTION_CONTRACT@1.0.0",
+  "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+  "read_cuts": {
+   "astra_official": "3b2d9a1b644a9fa024ed1bd895b67be5c8789531",
+   "s_g_return": "aec8fecc1ae2e3438ff70c44ce5ce7845d1a4829",
+   "sorok_corrected": "bace7640777098732d425e9368cf28ada0e57aeb"
+  }
+ },
+ "case_id": "K11-ROUTE-MOBILITY",
+ "case_wall_seconds": 0.003796,
+ "cost_report": {
+  "actor_events": 19,
+  "causal_state_changes": 0,
+  "completion_tokens": 0,
+  "generic_queries": 6,
+  "history_attempts": 1,
+  "model_calls": 0,
+  "prompt_tokens": 0,
+  "rejected_candidates": 0,
+  "replay_ledger_bytes": 3611,
+  "replay_seconds": 1e-05,
+  "rng_draws": 1,
+  "total_tokens": 0,
+  "wall_seconds": 0.002432
+ },
+ "expected_status": "PASS_IF_AUTHORIZED_RUN",
+ "fixture_hash": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
+ "input_hashes": {
+  "mother_anchor": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af"
+ },
+ "intervention": {
+  "basis": "prospective reachable opportunity (not past mobility)",
+  "route_parameter": "ROUTE_MOBILITY"
+ },
+ "intervention_hash": "sha256:0bf0e9d1dc2a41b0a45245f0525ce6b93b58f3f20b524de590938f721af857b2",
+ "missing_authority": [],
+ "model_version_if_used": "gpt-4o-2024-08-06",
+ "n_assertions": 4,
+ "observed_state": {
+  "hard_court": {
+   "layer": "HARD_WORLD",
+   "mobility_or_opportunity_basis": "PROSPECTIVE_REACHABLE_OPPORTUNITY_IN_CHECKPOINT",
+   "note": "hard world court: route lawful and reachable without backdating mother history",
+   "route_id": "ROUTE_MOBILITY",
+   "status": "FEASIBLE"
+  },
+  "mobility_history_in_checkpoint": false,
+  "terminal": "COMMITTED"
+ },
+ "receipt_hash": "sha256:b89eb4be7d411f714445c3c141d68c907a79448d6938e9a2d44a181b7fc2670f",
+ "replay_result": {},
+ "source_use_scope": "SOURCE_FREE_SYNTHETIC_LAB_ONLY__NO_ORIGINAL_SURVEY__NO_REAL_PERSON__NO_PRODUCTION_CURRENTNESS",
+ "terminal_grade": "K11_CASE_PASS"
+}

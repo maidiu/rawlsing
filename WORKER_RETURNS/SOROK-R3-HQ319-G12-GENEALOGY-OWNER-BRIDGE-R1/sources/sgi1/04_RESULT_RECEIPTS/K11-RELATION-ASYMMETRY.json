@@ -1,0 +1,94 @@
+{
+ "actual_evidence_refs": [
+  "ledger:sha256:c0f0c6f6085109c45af54ab0a11112db393bfb981d0046f353e1752238c94765"
+ ],
+ "assertion_names_contract": [
+  "one_objective_relation_event",
+  "two_distinct_perspective_states_where_admitted",
+  "no_reciprocity_inference",
+  "zero_auto_household_membership",
+  "both_continuations_replay"
+ ],
+ "assertion_results": {
+  "both_continuations_replay": true,
+  "no_reciprocity_inference": true,
+  "one_objective_relation_event": true,
+  "two_distinct_perspective_states_where_admitted": true,
+  "zero_auto_household_membership": true
+ },
+ "authority_versions": {
+  "contract": "V3_CONCEPTION_CONDITIONED_RETROSPECTIVE_CONSTRUCTION_RULE@0.1-PROPOSAL",
+  "k11_contract": "SOROK_SG_K11_GENEALOGY_EXECUTION_CONTRACT@1.0.0",
+  "lab_rule": "PROVISIONAL_LAB_RULE__NOT_ADOPTED",
+  "read_cuts": {
+   "astra_official": "3b2d9a1b644a9fa024ed1bd895b67be5c8789531",
+   "s_g_return": "aec8fecc1ae2e3438ff70c44ce5ce7845d1a4829",
+   "sorok_corrected": "bace7640777098732d425e9368cf28ada0e57aeb"
+  }
+ },
+ "case_id": "K11-RELATION-ASYMMETRY",
+ "case_wall_seconds": 0.006341,
+ "cost_report": {
+  "actor_events": 19,
+  "causal_state_changes": 0,
+  "completion_tokens": 0,
+  "generic_queries": 6,
+  "history_attempts": 1,
+  "model_calls": 0,
+  "prompt_tokens": 0,
+  "rejected_candidates": 0,
+  "replay_ledger_bytes": 3619,
+  "replay_seconds": 1.1e-05,
+  "rng_draws": 1,
+  "total_tokens": 0,
+  "wall_seconds": 0.002602
+ },
+ "expected_status": "PASS_IF_AUTHORIZED_RUN",
+ "fixture_hash": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af",
+ "input_hashes": {
+  "mother_anchor": "sha256:4c10ea65b3ac1fb22b943e34f19f3557c194e3f768687fc8543471885fea26af"
+ },
+ "intervention": {
+  "dad_state": "UNKNOWN_OR_NONRECIPROCAL",
+  "mom_affectionate": true
+ },
+ "intervention_hash": "sha256:62426031079fc9c668f1ecafc1a0d3dcd47373cf4a87b6705cebc47735476f15",
+ "missing_authority": [],
+ "model_version_if_used": "gpt-4o-2024-08-06",
+ "n_assertions": 5,
+ "observed_state": {
+  "objective": {
+   "admission_basis": "ENCOUNTER_WITNESS_MIN_1",
+   "participants": [
+    "LAB_MOTHER_M0",
+    "LAB_SECOND_PARENT_SELECTED"
+   ],
+   "relation_id": "sha256:ff65433389730f9edbebbb23a3c75b7b88e93b0fc2647bae64d02f12211c67b8",
+   "relation_kind": "encounter_relationship_initialized",
+   "shared_event_refs": [
+    "sha256:fe809230a4a7f2d4adb19a0c6afaa80e84855cb1bc7f4b83aa89954b9ed22d97"
+   ],
+   "single_objective_record": true
+  },
+  "perceived": [
+   {
+    "causal_basis": "encounter_and_continuing_contact_experiences",
+    "perceived_state": "affectionate_bond_perceived",
+    "perceiver": "LAB_MOTHER_M0",
+    "target": "LAB_SECOND_PARENT_SELECTED"
+   },
+   {
+    "causal_basis": "TYPED_UNKNOWN_not_inferred",
+    "perceived_state": "UNKNOWN_OR_NONRECIPROCAL",
+    "perceiver": "LAB_SECOND_PARENT_SELECTED",
+    "target": "LAB_MOTHER_M0"
+   }
+  ]
+ },
+ "receipt_hash": "sha256:20b8d3c634200efde416860022675dba2908ee544d381c419eea17e7155f4a79",
+ "replay_result": {
+  "continuations_stable": true
+ },
+ "source_use_scope": "SOURCE_FREE_SYNTHETIC_LAB_ONLY__NO_ORIGINAL_SURVEY__NO_REAL_PERSON__NO_PRODUCTION_CURRENTNESS",
+ "terminal_grade": "K11_CASE_PASS"
+}
