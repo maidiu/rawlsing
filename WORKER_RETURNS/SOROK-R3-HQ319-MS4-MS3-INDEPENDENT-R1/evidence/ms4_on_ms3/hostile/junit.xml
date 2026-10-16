@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="10" skipped="0" tests="85" time="16.400" timestamp="2026-10-16T18:29:50.317391-04:00" hostname="LOCAL_REVIEW_HOST"><testcase classname="repro.test_ms4" name="test_formation_ancestry[posthash_relinked-mediate]" time="0.054" /><testcase classname="repro.test_ms4" name="test_formation_ancestry[posthash_relinked-consume]" time="0.144" /><testcase classname="repro.test_ms4" name="test_formation_ancestry[featurehash_relinked-mediate]" time="0.093" /><testcase classname="repro.test_ms4" name="test_formation_ancestry[featurehash_relinked-consume]" time="0.185" /><testcase classname="repro.test_ms4" name="test_formation_ancestry[predecessor_cycle-mediate]" time="0.058" /><testcase classname="repro.test_ms4" name="test_formation_ancestry[predecessor_cycle-consume]" time="0.189" /><testcase classname="repro.test_ms4" name="test_formation_ancestry[orphan_transition-mediate]" time="0.094" /><testcase classname="repro.test_ms4" name="test_formation_ancestry[orphan_transition-consume]" time="0.186" /><testcase classname="repro.test_ms4" name="test_formation_ancestry[duplicate_transition-mediate]" time="0.088" /><testcase classname="repro.test_ms4" name="test_formation_ancestry[duplicate_transition-consume]" time="0.242" /><testcase classname="repro.test_ms4" name="test_formation_ancestry[memory_without_formation-mediate]" time="0.067" /><testcase classname="repro.test_ms4" name="test_formation_ancestry[memory_without_formation-consume]" time="0.175" /><testcase classname="repro.test_ms4" name="test_formation_ancestry[content_pair_swap-mediate]" time="0.059" /><testcase classname="repro.test_ms4" name="test_formation_ancestry[content_pair_swap-consume]" time="0.185" /><testcase classname="repro.test_ms4" name="test_formation_ancestry[source_feature_permutation-mediate]" time="0.059" /><testcase classname="repro.test_ms4" name="test_formation_ancestry[source_feature_permutation-consume]" time="0.161" /><testcase classname="repro.test_ms4" name="test_formation_ancestry[foreign_actor_coherent-mediate]" time="0.080" /><testcase classname="repro.test_ms4" name="test_formation_ancestry[foreign_actor_coherent-consume]" time="0.164" /><testcase classname="repro.test_ms4" name="test_formation_ancestry[source_ref_swap-mediate]" time="0.074" /><testcase classname="repro.test_ms4" name="test_formation_ancestry[source_ref_swap-consume]" time="0.198" /><testcase classname="repro.test_ms4" name="test_terminal_permission_cannot_resurrect_prior_permit[CLAIM_INACCESSIBLE-WITHDRAW-mediate]" time="0.321" /><testcase classname="repro.test_ms4" name="test_terminal_permission_cannot_resurrect_prior_permit[CLAIM_INACCESSIBLE-WITHDRAW-consume]" time="0.246" /><testcase classname="repro.test_ms4" name="test_terminal_permission_cannot_resurrect_prior_permit[CLAIM_INACCESSIBLE-SUPERSEDE_EXACT_RECORD-mediate]" time="0.241" /><testcase classname="repro.test_ms4" name="test_terminal_permission_cannot_resurrect_prior_permit[CLAIM_INACCESSIBLE-SUPERSEDE_EXACT_RECORD-consume]" time="0.229" /><testcase classname="repro.test_ms4" name="test_terminal_permission_cannot_resurrect_prior_permit[CLAIM_ACCESS_UNKNOWN-WITHDRAW-mediate]" time="0.213" /><testcase classname="repro.test_ms4" name="test_terminal_permission_cannot_resurrect_prior_permit[CLAIM_ACCESS_UNKNOWN-WITHDRAW-consume]" time="0.227" /><testcase classname="repro.test_ms4" name="test_terminal_permission_cannot_resurrect_prior_permit[CLAIM_ACCESS_UNKNOWN-SUPERSEDE_EXACT_RECORD-mediate]" time="0.214" /><testcase classname="repro.test_ms4" name="test_terminal_permission_cannot_resurrect_prior_permit[CLAIM_ACCESS_UNKNOWN-SUPERSEDE_EXACT_RECORD-consume]" time="0.245" /><testcase classname="repro.test_ms4" name="test_claim_selector_does_not_become_genuine_none[OMITTED-mediate]" time="0.240" /><testcase classname="repro.test_ms4" name="test_claim_selector_does_not_become_genuine_none[OMITTED-consume]" time="0.205" /><testcase classname="repro.test_ms4" name="test_claim_selector_does_not_become_genuine_none[OMITTED-withdraw]" time="0.201" /><testcase classname="repro.test_ms4" name="test_claim_selector_does_not_become_genuine_none[None-mediate]" time="0.183" /><testcase classname="repro.test_ms4" name="test_claim_selector_does_not_become_genuine_none[None-consume]" time="0.133" /><testcase classname="repro.test_ms4" name="test_claim_selector_does_not_become_genuine_none[None-withdraw]" time="0.215" /><testcase classname="repro.test_ms4" name="test_claim_selector_does_not_become_genuine_none[-mediate]" time="0.216" /><testcase classname="repro.test_ms4" name="test_claim_selector_does_not_become_genuine_none[-consume]" time="0.282" /><testcase classname="repro.test_ms4" name="test_claim_selector_does_not_become_genuine_none[-withdraw]" time="0.503" /><testcase classname="repro.test_ms4" name="test_claim_selector_does_not_become_genuine_none[UNKNOWN-mediate]" time="0.249" /><testcase classname="repro.test_ms4" name="test_claim_selector_does_not_become_genuine_none[UNKNOWN-consume]" time="0.223" /><testcase classname="repro.test_ms4" name="test_claim_selector_does_not_become_genuine_none[UNKNOWN-withdraw]" time="0.280" /><testcase classname="repro.test_ms4" name="test_claim_selector_does_not_become_genuine_none[FOREIGN_BOUND-mediate]" time="0.257" /><testcase classname="repro.test_ms4" name="test_claim_selector_does_not_become_genuine_none[FOREIGN_BOUND-consume]" time="0.230" /><testcase classname="repro.test_ms4" name="test_claim_selector_does_not_become_genuine_none[FOREIGN_BOUND-withdraw]" time="0.240" /><testcase classname="repro.test_ms4" name="test_second_event_actor_world_time_and_source[actor_scope-OTHER]" time="0.240" /><testcase classname="repro.test_ms4" name="test_second_event_actor_world_time_and_source[world_ref-OTHER_WORLD]" time="0.359" /><testcase classname="repro.test_ms4" name="test_second_event_actor_world_time_and_source[world_as_of-1998-10-02T16:00:00Z]" time="0.227" /><testcase classname="repro.test_ms4" name="test_second_event_actor_world_time_and_source[effective_causal_time-1998-10-03T16:00:00Z]" time="0.185" /><testcase classname="repro.test_ms4" name="test_second_event_actor_world_time_and_source[effective_causal_time-1998-10-03T15:59:59Z]" time="0.288" /><testcase classname="repro.test_ms4" name="test_second_event_actor_world_time_and_source[effective_causal_time-NOT_A_TIME]" time="0.159" /><testcase classname="repro.test_ms4" name="test_second_event_actor_world_time_and_source[public_features-value6]" time="0.180"><failure message="AssertionError: assert 'RESPONSE_EFFECTS_PRODUCED' not in ('RESPONSE_EFFECTS_PRODUCED', 'RESPONSE_INPUTS_VALID_EMPTY', 'APPLIED_EPISTEMIC_TRANSITION')">repro/test_ms4.py:109: in test_second_event_actor_world_time_and_source
+    rejected(a,e2=e)
+repro/test_ms4.py:47: in rejected
+    assert out['decision_state'] not in ('RESPONSE_EFFECTS_PRODUCED','RESPONSE_INPUTS_VALID_EMPTY','APPLIED_EPISTEMIC_TRANSITION')
+E   AssertionError: assert 'RESPONSE_EFFECTS_PRODUCED' not in ('RESPONSE_EFFECTS_PRODUCED', 'RESPONSE_INPUTS_VALID_EMPTY', 'APPLIED_EPISTEMIC_TRANSITION')</failure></testcase><testcase classname="repro.test_ms4" name="test_second_event_actor_world_time_and_source[event_hash-0000000000000000000000000000000000000000000000000000000000000000]" time="0.180" /><testcase classname="repro.test_ms4" name="test_source_registry_and_claim_identity[source_removed-mediate]" time="0.037" /><testcase classname="repro.test_ms4" name="test_source_registry_and_claim_identity[source_removed-consume]" time="0.117" /><testcase classname="repro.test_ms4" name="test_source_registry_and_claim_identity[source_rehashed_other_world-mediate]" time="0.059" /><testcase classname="repro.test_ms4" name="test_source_registry_and_claim_identity[source_rehashed_other_world-consume]" time="0.146" /><testcase classname="repro.test_ms4" name="test_source_registry_and_claim_identity[claim_polarity-mediate]" time="0.083" /><testcase classname="repro.test_ms4" name="test_source_registry_and_claim_identity[claim_polarity-consume]" time="0.236" /><testcase classname="repro.test_ms4" name="test_source_registry_and_claim_identity[claim_time-mediate]" time="0.053" /><testcase classname="repro.test_ms4" name="test_source_registry_and_claim_identity[claim_time-consume]" time="0.150" /><testcase classname="repro.test_ms4" name="test_source_registry_and_claim_identity[emission_event-mediate]" time="0.038" /><testcase classname="repro.test_ms4" name="test_source_registry_and_claim_identity[emission_event-consume]" time="0.146" /><testcase classname="repro.test_ms4" name="test_genuine_bound_none_does_not_infer_nonknowledge[False-None]" time="0.048" /><testcase classname="repro.test_ms4" name="test_genuine_bound_none_does_not_infer_nonknowledge[False-AVAILABLE_SOURCE_BOUND]" time="0.085" /><testcase classname="repro.test_ms4" name="test_genuine_bound_none_does_not_infer_nonknowledge[False-AVAILABLE_UNCERTAIN]" time="0.073" /><testcase classname="repro.test_ms4" name="test_genuine_bound_none_does_not_infer_nonknowledge[True-None]" time="0.040" /><testcase classname="repro.test_ms4" name="test_genuine_bound_none_does_not_infer_nonknowledge[True-AVAILABLE_SOURCE_BOUND]" time="0.094" /><testcase classname="repro.test_ms4" name="test_genuine_bound_none_does_not_infer_nonknowledge[True-AVAILABLE_UNCERTAIN]" time="0.088" /><testcase classname="repro.test_ms4" name="test_valid_terminal_sequence_replay[WITHDRAW-CLAIM_ACCESSIBLE-REROUTE-AVAILABLE_SOURCE_BOUND]" time="0.298"><failure message="AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'REROUTE', 'daec08d1ab46318f2c35fb456a20c7b6220f08938ce902c0bc768ae618db5b8f')&#10;  &#10;  At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'&#10;  &#10;  Full diff:&#10;    (&#10;  -     'RESPONSE_EFFECTS_PRODUCED',&#10;  -     'REROUTE',&#10;  -     'daec08d1ab46318f2c35fb456a20c7b6220f08938ce902c0bc768ae618db5b8f',&#10;  +     'BLOCK_DUPLICATE_EVENT_IDENTITY',&#10;  +     None,&#10;  +     None,&#10;    )">repro/test_ms4.py:142: in test_valid_terminal_sequence_replay
+    assert (again['decision_state'],again.get('effect_kind'),again.get('receipt_hash'))==(o['decision_state'],o.get('effect_kind'),o.get('receipt_hash'))
+E   AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'REROUTE', 'daec08d1ab46318f2c35fb456a20c7b6220f08938ce902c0bc768ae618db5b8f')
+E     
+E     At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'
+E     
+E     Full diff:
+E       (
+E     -     'RESPONSE_EFFECTS_PRODUCED',
+E     -     'REROUTE',
+E     -     'daec08d1ab46318f2c35fb456a20c7b6220f08938ce902c0bc768ae618db5b8f',
+E     +     'BLOCK_DUPLICATE_EVENT_IDENTITY',
+E     +     None,
+E     +     None,
+E       )</failure></testcase><testcase classname="repro.test_ms4" name="test_valid_terminal_sequence_replay[WITHDRAW-CLAIM_ACCESSIBLE-REROUTE-AVAILABLE_UNCERTAIN]" time="0.259"><failure message="AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'REROUTE', 'ea1a289d4cdc11cd5ecb19464276a9446e3e4f6867c9f63123a4f0aa6b08bf7e')&#10;  &#10;  At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'&#10;  &#10;  Full diff:&#10;    (&#10;  -     'RESPONSE_EFFECTS_PRODUCED',&#10;  -     'REROUTE',&#10;  -     'ea1a289d4cdc11cd5ecb19464276a9446e3e4f6867c9f63123a4f0aa6b08bf7e',&#10;  +     'BLOCK_DUPLICATE_EVENT_IDENTITY',&#10;  +     None,&#10;  +     None,&#10;    )">repro/test_ms4.py:142: in test_valid_terminal_sequence_replay
+    assert (again['decision_state'],again.get('effect_kind'),again.get('receipt_hash'))==(o['decision_state'],o.get('effect_kind'),o.get('receipt_hash'))
+E   AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'REROUTE', 'ea1a289d4cdc11cd5ecb19464276a9446e3e4f6867c9f63123a4f0aa6b08bf7e')
+E     
+E     At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'
+E     
+E     Full diff:
+E       (
+E     -     'RESPONSE_EFFECTS_PRODUCED',
+E     -     'REROUTE',
+E     -     'ea1a289d4cdc11cd5ecb19464276a9446e3e4f6867c9f63123a4f0aa6b08bf7e',
+E     +     'BLOCK_DUPLICATE_EVENT_IDENTITY',
+E     +     None,
+E     +     None,
+E       )</failure></testcase><testcase classname="repro.test_ms4" name="test_valid_terminal_sequence_replay[WITHDRAW-CLAIM_INACCESSIBLE-BLOCK-AVAILABLE_SOURCE_BOUND]" time="0.204"><failure message="AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'BLOCK', '047288aa55e992f6df534ab3e5fd8f9cc5af2d5661d1f69884a2260beb7d1ed8')&#10;  &#10;  At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'&#10;  &#10;  Full diff:&#10;    (&#10;  -     'RESPONSE_EFFECTS_PRODUCED',&#10;  -     'BLOCK',&#10;  -     '047288aa55e992f6df534ab3e5fd8f9cc5af2d5661d1f69884a2260beb7d1ed8',&#10;  +     'BLOCK_DUPLICATE_EVENT_IDENTITY',&#10;  +     None,&#10;  +     None,&#10;    )">repro/test_ms4.py:142: in test_valid_terminal_sequence_replay
+    assert (again['decision_state'],again.get('effect_kind'),again.get('receipt_hash'))==(o['decision_state'],o.get('effect_kind'),o.get('receipt_hash'))
+E   AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'BLOCK', '047288aa55e992f6df534ab3e5fd8f9cc5af2d5661d1f69884a2260beb7d1ed8')
+E     
+E     At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'
+E     
+E     Full diff:
+E       (
+E     -     'RESPONSE_EFFECTS_PRODUCED',
+E     -     'BLOCK',
+E     -     '047288aa55e992f6df534ab3e5fd8f9cc5af2d5661d1f69884a2260beb7d1ed8',
+E     +     'BLOCK_DUPLICATE_EVENT_IDENTITY',
+E     +     None,
+E     +     None,
+E       )</failure></testcase><testcase classname="repro.test_ms4" name="test_valid_terminal_sequence_replay[WITHDRAW-CLAIM_INACCESSIBLE-BLOCK-AVAILABLE_UNCERTAIN]" time="0.209"><failure message="AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'BLOCK', '5143ae4e9b0c2216390bb95c317598b4645e1802e9502ae3703adfe4800e5ec9')&#10;  &#10;  At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'&#10;  &#10;  Full diff:&#10;    (&#10;  -     'RESPONSE_EFFECTS_PRODUCED',&#10;  -     'BLOCK',&#10;  -     '5143ae4e9b0c2216390bb95c317598b4645e1802e9502ae3703adfe4800e5ec9',&#10;  +     'BLOCK_DUPLICATE_EVENT_IDENTITY',&#10;  +     None,&#10;  +     None,&#10;    )">repro/test_ms4.py:142: in test_valid_terminal_sequence_replay
+    assert (again['decision_state'],again.get('effect_kind'),again.get('receipt_hash'))==(o['decision_state'],o.get('effect_kind'),o.get('receipt_hash'))
+E   AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'BLOCK', '5143ae4e9b0c2216390bb95c317598b4645e1802e9502ae3703adfe4800e5ec9')
+E     
+E     At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'
+E     
+E     Full diff:
+E       (
+E     -     'RESPONSE_EFFECTS_PRODUCED',
+E     -     'BLOCK',
+E     -     '5143ae4e9b0c2216390bb95c317598b4645e1802e9502ae3703adfe4800e5ec9',
+E     +     'BLOCK_DUPLICATE_EVENT_IDENTITY',
+E     +     None,
+E     +     None,
+E       )</failure></testcase><testcase classname="repro.test_ms4" name="test_valid_terminal_sequence_replay[WITHDRAW-CLAIM_ACCESS_UNKNOWN-None-AVAILABLE_SOURCE_BOUND]" time="0.185" /><testcase classname="repro.test_ms4" name="test_valid_terminal_sequence_replay[WITHDRAW-CLAIM_ACCESS_UNKNOWN-None-AVAILABLE_UNCERTAIN]" time="0.211" /><testcase classname="repro.test_ms4" name="test_valid_terminal_sequence_replay[SUPERSEDE_EXACT_RECORD-CLAIM_ACCESSIBLE-REROUTE-AVAILABLE_SOURCE_BOUND]" time="0.153"><failure message="AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'REROUTE', 'f9505a18ba14ab9bda38dfcb47aa34fb83673b34f6cb1a0d834b3ff1436185ed')&#10;  &#10;  At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'&#10;  &#10;  Full diff:&#10;    (&#10;  -     'RESPONSE_EFFECTS_PRODUCED',&#10;  -     'REROUTE',&#10;  -     'f9505a18ba14ab9bda38dfcb47aa34fb83673b34f6cb1a0d834b3ff1436185ed',&#10;  +     'BLOCK_DUPLICATE_EVENT_IDENTITY',&#10;  +     None,&#10;  +     None,&#10;    )">repro/test_ms4.py:142: in test_valid_terminal_sequence_replay
+    assert (again['decision_state'],again.get('effect_kind'),again.get('receipt_hash'))==(o['decision_state'],o.get('effect_kind'),o.get('receipt_hash'))
+E   AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'REROUTE', 'f9505a18ba14ab9bda38dfcb47aa34fb83673b34f6cb1a0d834b3ff1436185ed')
+E     
+E     At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'
+E     
+E     Full diff:
+E       (
+E     -     'RESPONSE_EFFECTS_PRODUCED',
+E     -     'REROUTE',
+E     -     'f9505a18ba14ab9bda38dfcb47aa34fb83673b34f6cb1a0d834b3ff1436185ed',
+E     +     'BLOCK_DUPLICATE_EVENT_IDENTITY',
+E     +     None,
+E     +     None,
+E       )</failure></testcase><testcase classname="repro.test_ms4" name="test_valid_terminal_sequence_replay[SUPERSEDE_EXACT_RECORD-CLAIM_ACCESSIBLE-REROUTE-AVAILABLE_UNCERTAIN]" time="0.206"><failure message="AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'REROUTE', 'f2fedd85cfbfcb36eb2a10bffedfc6e9a91a45dcff2a8132f8fc20e1a866c8c7')&#10;  &#10;  At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'&#10;  &#10;  Full diff:&#10;    (&#10;  -     'RESPONSE_EFFECTS_PRODUCED',&#10;  -     'REROUTE',&#10;  -     'f2fedd85cfbfcb36eb2a10bffedfc6e9a91a45dcff2a8132f8fc20e1a866c8c7',&#10;  +     'BLOCK_DUPLICATE_EVENT_IDENTITY',&#10;  +     None,&#10;  +     None,&#10;    )">repro/test_ms4.py:142: in test_valid_terminal_sequence_replay
+    assert (again['decision_state'],again.get('effect_kind'),again.get('receipt_hash'))==(o['decision_state'],o.get('effect_kind'),o.get('receipt_hash'))
+E   AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'REROUTE', 'f2fedd85cfbfcb36eb2a10bffedfc6e9a91a45dcff2a8132f8fc20e1a866c8c7')
+E     
+E     At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'
+E     
+E     Full diff:
+E       (
+E     -     'RESPONSE_EFFECTS_PRODUCED',
+E     -     'REROUTE',
+E     -     'f2fedd85cfbfcb36eb2a10bffedfc6e9a91a45dcff2a8132f8fc20e1a866c8c7',
+E     +     'BLOCK_DUPLICATE_EVENT_IDENTITY',
+E     +     None,
+E     +     None,
+E       )</failure></testcase><testcase classname="repro.test_ms4" name="test_valid_terminal_sequence_replay[SUPERSEDE_EXACT_RECORD-CLAIM_INACCESSIBLE-BLOCK-AVAILABLE_SOURCE_BOUND]" time="0.192"><failure message="AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'BLOCK', '4591ef9042219ccadaf0ec13a2483ee48a5d94509d90952bbb40f4c9469a76c5')&#10;  &#10;  At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'&#10;  &#10;  Full diff:&#10;    (&#10;  -     'RESPONSE_EFFECTS_PRODUCED',&#10;  -     'BLOCK',&#10;  -     '4591ef9042219ccadaf0ec13a2483ee48a5d94509d90952bbb40f4c9469a76c5',&#10;  +     'BLOCK_DUPLICATE_EVENT_IDENTITY',&#10;  +     None,&#10;  +     None,&#10;    )">repro/test_ms4.py:142: in test_valid_terminal_sequence_replay
+    assert (again['decision_state'],again.get('effect_kind'),again.get('receipt_hash'))==(o['decision_state'],o.get('effect_kind'),o.get('receipt_hash'))
+E   AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'BLOCK', '4591ef9042219ccadaf0ec13a2483ee48a5d94509d90952bbb40f4c9469a76c5')
+E     
+E     At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'
+E     
+E     Full diff:
+E       (
+E     -     'RESPONSE_EFFECTS_PRODUCED',
+E     -     'BLOCK',
+E     -     '4591ef9042219ccadaf0ec13a2483ee48a5d94509d90952bbb40f4c9469a76c5',
+E     +     'BLOCK_DUPLICATE_EVENT_IDENTITY',
+E     +     None,
+E     +     None,
+E       )</failure></testcase><testcase classname="repro.test_ms4" name="test_valid_terminal_sequence_replay[SUPERSEDE_EXACT_RECORD-CLAIM_INACCESSIBLE-BLOCK-AVAILABLE_UNCERTAIN]" time="0.191"><failure message="AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'BLOCK', '9e598b3e519abd41fd226b55d3f7c87cec73c30281fd736f067ccf4b67cdd7c0')&#10;  &#10;  At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'&#10;  &#10;  Full diff:&#10;    (&#10;  -     'RESPONSE_EFFECTS_PRODUCED',&#10;  -     'BLOCK',&#10;  -     '9e598b3e519abd41fd226b55d3f7c87cec73c30281fd736f067ccf4b67cdd7c0',&#10;  +     'BLOCK_DUPLICATE_EVENT_IDENTITY',&#10;  +     None,&#10;  +     None,&#10;    )">repro/test_ms4.py:142: in test_valid_terminal_sequence_replay
+    assert (again['decision_state'],again.get('effect_kind'),again.get('receipt_hash'))==(o['decision_state'],o.get('effect_kind'),o.get('receipt_hash'))
+E   AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'BLOCK', '9e598b3e519abd41fd226b55d3f7c87cec73c30281fd736f067ccf4b67cdd7c0')
+E     
+E     At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'
+E     
+E     Full diff:
+E       (
+E     -     'RESPONSE_EFFECTS_PRODUCED',
+E     -     'BLOCK',
+E     -     '9e598b3e519abd41fd226b55d3f7c87cec73c30281fd736f067ccf4b67cdd7c0',
+E     +     'BLOCK_DUPLICATE_EVENT_IDENTITY',
+E     +     None,
+E     +     None,
+E       )</failure></testcase><testcase classname="repro.test_ms4" name="test_valid_terminal_sequence_replay[SUPERSEDE_EXACT_RECORD-CLAIM_ACCESS_UNKNOWN-None-AVAILABLE_SOURCE_BOUND]" time="0.244" /><testcase classname="repro.test_ms4" name="test_valid_terminal_sequence_replay[SUPERSEDE_EXACT_RECORD-CLAIM_ACCESS_UNKNOWN-None-AVAILABLE_UNCERTAIN]" time="0.191" /><testcase classname="repro.test_ms4" name="test_transaction_rollback_preserves_real_mutations_and_pending[withdraw_after_real_apply]" time="0.430" /><testcase classname="repro.test_ms4" name="test_transaction_rollback_preserves_real_mutations_and_pending[second_read_after_real_receipt]" time="0.290"><failure message="assert ([])">repro/test_ms4.py:165: in test_transaction_rollback_preserves_real_mutations_and_pending
+    remember(before=before,real_native_results=calls,result=out,after=snap(a));assert calls and snap(a)==before
+                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   assert ([])</failure></testcase><testcase classname="repro.test_ms4" name="test_transaction_rollback_preserves_real_mutations_and_pending[formation_with_pending]" time="0.093" /><testcase classname="repro.test_ms4" name="test_transaction_rollback_preserves_real_mutations_and_pending[mediate_with_pending]" time="0.340" /><testcase classname="repro.test_ms4" name="test_hypothetical_content_contrast_and_native_trace_firewall[AVAILABLE_SOURCE_BOUND-REROUTE]" time="0.174" /><testcase classname="repro.test_ms4" name="test_hypothetical_content_contrast_and_native_trace_firewall[AVAILABLE_UNCERTAIN-None]" time="0.210" /></testsuite></testsuites>

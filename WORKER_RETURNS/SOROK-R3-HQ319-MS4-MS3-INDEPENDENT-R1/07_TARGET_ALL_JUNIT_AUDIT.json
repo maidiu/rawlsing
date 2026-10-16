@@ -1,0 +1,330 @@
+[
+  {
+    "commit": "48200cf0b8e9b69ce27bf0151cb43fde5133322f",
+    "path": "WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/evidence/after/literal_p3b/junit.xml",
+    "blob_sha1": "cca629386f9b68d2119c7e3531bc6b6689ccaae8",
+    "tests": 1,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0,
+    "red_cases": [
+      {
+        "name": "test_original_P3b_C2_must_differ_from_C4",
+        "failure": "AssertionError: Original prospective P3b is FALSIFIED: native UNKNOWN masks stance withdrawal\nassert ('DEFER_MISSING_AUTHORITY', None) != ('DEFER_MISSING_AUTHORITY', None)"
+      }
+    ]
+  },
+  {
+    "commit": "48200cf0b8e9b69ce27bf0151cb43fde5133322f",
+    "path": "WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/evidence/after/ms2_51/junit.xml",
+    "blob_sha1": "9de67f0c502d790a75f0de21d7f0411841637eea",
+    "tests": 51,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "red_cases": []
+  },
+  {
+    "commit": "48200cf0b8e9b69ce27bf0151cb43fde5133322f",
+    "path": "WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/evidence/after/original120/junit.xml",
+    "blob_sha1": "73cd405e32f1b20086f2d0d1f87509beccfa3b49",
+    "tests": 120,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 0,
+    "red_cases": [
+      {
+        "name": "test_epistemic_operations_change_only_exact_record_and_permission_snapshot",
+        "failure": "FileNotFoundError: [Errno 2] No such file or directory: '[MS3_RETURN]/staging/ms2/staging/ms1/runtime/runtime_root/law/ADP017.txt'"
+      },
+      {
+        "name": "test_law_17_negative_classes_keep_unknown_distinct_from_unauthorized",
+        "failure": "FileNotFoundError: [Errno 2] No such file or directory: '[MS3_RETURN]/staging/ms2/staging/ms1/runtime/runtime_root/law/ADP016.txt'"
+      }
+    ]
+  },
+  {
+    "commit": "48200cf0b8e9b69ce27bf0151cb43fde5133322f",
+    "path": "WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/evidence/author/author/junit.xml",
+    "blob_sha1": "0ad8df539d574dd97651ed5b6cfc16e7c45b398f",
+    "tests": 47,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "red_cases": []
+  },
+  {
+    "commit": "48200cf0b8e9b69ce27bf0151cb43fde5133322f",
+    "path": "WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/evidence/before/literal_p3b/junit.xml",
+    "blob_sha1": "c0c18604a1c07d311a8a0833a42c86674a1070c9",
+    "tests": 1,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0,
+    "red_cases": [
+      {
+        "name": "test_original_P3b_C2_must_differ_from_C4",
+        "failure": "AssertionError: Original prospective P3b is FALSIFIED: native UNKNOWN masks stance withdrawal\nassert ('DEFER_MISSING_AUTHORITY', None) != ('DEFER_MISSING_AUTHORITY', None)"
+      }
+    ]
+  },
+  {
+    "commit": "48200cf0b8e9b69ce27bf0151cb43fde5133322f",
+    "path": "WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/evidence/before/ms2_51/junit.xml",
+    "blob_sha1": "2e9f730de45fefad4d2fe25cd65b8800b6122510",
+    "tests": 51,
+    "failures": 8,
+    "errors": 0,
+    "skipped": 0,
+    "red_cases": [
+      {
+        "name": "test_rehashed_owner_memory_cannot_contradict_original_native_formation[uncertainty_only]",
+        "failure": "AssertionError: Contradictory original formation receipt accepted by mediator\nassert 'APPLIED_EPISTEMIC_TRANSITION' != 'APPLIED_EPISTEMIC_TRANSITION'"
+      },
+      {
+        "name": "test_rehashed_owner_memory_cannot_contradict_original_native_formation[content_and_uncertainty]",
+        "failure": "AssertionError: Contradictory original formation receipt accepted by mediator\nassert 'APPLIED_EPISTEMIC_TRANSITION' != 'APPLIED_EPISTEMIC_TRANSITION'"
+      },
+      {
+        "name": "test_rehashed_owner_memory_cannot_contradict_original_native_formation[formation_post_hash]",
+        "failure": "AssertionError: Contradictory original formation receipt accepted by mediator\nassert 'APPLIED_EPISTEMIC_TRANSITION' != 'APPLIED_EPISTEMIC_TRANSITION'"
+      },
+      {
+        "name": "test_rehashed_owner_memory_cannot_contradict_original_native_formation[empty_source_refs]",
+        "failure": "AssertionError: Contradictory original formation receipt accepted by mediator\nassert 'APPLIED_EPISTEMIC_TRANSITION' != 'APPLIED_EPISTEMIC_TRANSITION'"
+      },
+      {
+        "name": "test_stale_permission_cannot_override_native_terminal_state[WITHDRAW]",
+        "failure": "AssertionError: Retained native terminal state was overridden by a forged stale permit\nassert 'RESPONSE_EFFECTS_PRODUCED' != 'RESPONSE_EFFECTS_PRODUCED'"
+      },
+      {
+        "name": "test_stale_permission_cannot_override_native_terminal_state[INACCESSIBLE]",
+        "failure": "AssertionError: Retained native terminal state was overridden by a forged stale permit\nassert 'RESPONSE_EFFECTS_PRODUCED' != 'RESPONSE_EFFECTS_PRODUCED'"
+      },
+      {
+        "name": "test_stale_permission_cannot_override_native_terminal_state[UNKNOWN]",
+        "failure": "AssertionError: Retained native terminal state was overridden by a forged stale permit\nassert 'RESPONSE_EFFECTS_PRODUCED' != 'RESPONSE_EFFECTS_PRODUCED'"
+      },
+      {
+        "name": "test_unknown_consumer_claim_cannot_be_misreported_as_bound_absence",
+        "failure": "AssertionError: Unknown selector erased a real applied BELIEF into apparently valid emptiness\nassert 'RESPONSE_INPUTS_VALID_EMPTY' not in ('RESPONSE_INPUTS_VALID_EMPTY', 'RESPONSE_EFFECTS_PRODUCED')"
+      }
+    ]
+  },
+  {
+    "commit": "48200cf0b8e9b69ce27bf0151cb43fde5133322f",
+    "path": "WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/evidence/before/original120/junit.xml",
+    "blob_sha1": "d1245cbf9ddc668cf30b7558231b535ba38d2598",
+    "tests": 120,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 0,
+    "red_cases": [
+      {
+        "name": "test_epistemic_operations_change_only_exact_record_and_permission_snapshot",
+        "failure": "FileNotFoundError: [Errno 2] No such file or directory: '[MS3_RETURN]/staging/ms2/staging/ms1/runtime/runtime_root/law/ADP017.txt'"
+      },
+      {
+        "name": "test_law_17_negative_classes_keep_unknown_distinct_from_unauthorized",
+        "failure": "FileNotFoundError: [Errno 2] No such file or directory: '[MS3_RETURN]/staging/ms2/staging/ms1/runtime/runtime_root/law/ADP016.txt'"
+      }
+    ]
+  },
+  {
+    "commit": "48200cf0b8e9b69ce27bf0151cb43fde5133322f",
+    "path": "WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/evidence/extension_after/selector_extension/junit.xml",
+    "blob_sha1": "27c790b38308f2b63d1ef1f44b67ffaf7ea51da2",
+    "tests": 12,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "red_cases": []
+  },
+  {
+    "commit": "48200cf0b8e9b69ce27bf0151cb43fde5133322f",
+    "path": "WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/evidence/extension_before/selector_extension/junit.xml",
+    "blob_sha1": "1702de059beeb1173d69d31f347e9c0c1d3f9038",
+    "tests": 12,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0,
+    "red_cases": [
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[None-consume]",
+        "failure": "AssertionError: assert 'RESPONSE_INPUTS_VALID_EMPTY' not in ['APPLIED_EPISTEMIC_TRANSITION', 'RESPONSE_EFFECTS_PRODUCED', 'RESPONSE_INPUTS_VALID_EMPTY']"
+      }
+    ]
+  },
+  {
+    "commit": "48200cf0b8e9b69ce27bf0151cb43fde5133322f",
+    "path": "WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/evidence/repair_v1/after/literal_p3b/junit.xml",
+    "blob_sha1": "dc7cfdebc426e75101b8768a05e5029c0dfbd106",
+    "tests": 1,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0,
+    "red_cases": [
+      {
+        "name": "test_original_P3b_C2_must_differ_from_C4",
+        "failure": "AssertionError: Original prospective P3b is FALSIFIED: native UNKNOWN masks stance withdrawal\nassert ('DEFER_MISSING_AUTHORITY', None) != ('DEFER_MISSING_AUTHORITY', None)"
+      }
+    ]
+  },
+  {
+    "commit": "48200cf0b8e9b69ce27bf0151cb43fde5133322f",
+    "path": "WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/evidence/repair_v1/after/ms2_51/junit.xml",
+    "blob_sha1": "f6c6d1b45060730df2152b2df7795370f8b3eafc",
+    "tests": 51,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "red_cases": []
+  },
+  {
+    "commit": "48200cf0b8e9b69ce27bf0151cb43fde5133322f",
+    "path": "WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/evidence/repair_v1/after/original120/junit.xml",
+    "blob_sha1": "041770c35099334bb8b745ed93456daf9fad5ee7",
+    "tests": 120,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 0,
+    "red_cases": [
+      {
+        "name": "test_epistemic_operations_change_only_exact_record_and_permission_snapshot",
+        "failure": "FileNotFoundError: [Errno 2] No such file or directory: '[MS3_RETURN]/staging/ms2/staging/ms1/runtime/runtime_root/law/ADP017.txt'"
+      },
+      {
+        "name": "test_law_17_negative_classes_keep_unknown_distinct_from_unauthorized",
+        "failure": "FileNotFoundError: [Errno 2] No such file or directory: '[MS3_RETURN]/staging/ms2/staging/ms1/runtime/runtime_root/law/ADP016.txt'"
+      }
+    ]
+  },
+  {
+    "commit": "48200cf0b8e9b69ce27bf0151cb43fde5133322f",
+    "path": "WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/evidence/repair_v1/author/author/junit.xml",
+    "blob_sha1": "b10ab30ae61e927c07c8cb54df8115dd61fc25b1",
+    "tests": 47,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "red_cases": []
+  },
+  {
+    "commit": "48200cf0b8e9b69ce27bf0151cb43fde5133322f",
+    "path": "WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/evidence/selector_logging_v1/after/selector_extension/junit.xml",
+    "blob_sha1": "532ec5f5d0f20737d0b0964aee445ffebb0eea8a",
+    "tests": 12,
+    "failures": 12,
+    "errors": 0,
+    "skipped": 0,
+    "red_cases": [
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[None-mediate]",
+        "failure": "TypeError: Object of type CandidateRuleRegistration is not JSON serializable"
+      },
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[None-consume]",
+        "failure": "TypeError: Object of type CandidateRuleRegistration is not JSON serializable"
+      },
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[empty-mediate]",
+        "failure": "TypeError: Object of type CandidateRuleRegistration is not JSON serializable"
+      },
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[empty-consume]",
+        "failure": "TypeError: Object of type CandidateRuleRegistration is not JSON serializable"
+      },
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[integer-mediate]",
+        "failure": "TypeError: Object of type CandidateRuleRegistration is not JSON serializable"
+      },
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[integer-consume]",
+        "failure": "TypeError: Object of type CandidateRuleRegistration is not JSON serializable"
+      },
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[list-mediate]",
+        "failure": "TypeError: Object of type CandidateRuleRegistration is not JSON serializable"
+      },
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[list-consume]",
+        "failure": "TypeError: Object of type CandidateRuleRegistration is not JSON serializable"
+      },
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[dict-mediate]",
+        "failure": "TypeError: Object of type CandidateRuleRegistration is not JSON serializable"
+      },
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[dict-consume]",
+        "failure": "TypeError: Object of type CandidateRuleRegistration is not JSON serializable"
+      },
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[foreign-mediate]",
+        "failure": "TypeError: Object of type CandidateRuleRegistration is not JSON serializable"
+      },
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[foreign-consume]",
+        "failure": "TypeError: Object of type CandidateRuleRegistration is not JSON serializable"
+      }
+    ]
+  },
+  {
+    "commit": "48200cf0b8e9b69ce27bf0151cb43fde5133322f",
+    "path": "WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/evidence/selector_logging_v1/before/selector_extension/junit.xml",
+    "blob_sha1": "6e4c9d133852ca2b2b4a8a5201fd630317ec678c",
+    "tests": 12,
+    "failures": 12,
+    "errors": 0,
+    "skipped": 0,
+    "red_cases": [
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[None-mediate]",
+        "failure": "TypeError: Object of type CandidateRuleRegistration is not JSON serializable"
+      },
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[None-consume]",
+        "failure": "TypeError: Object of type CandidateRuleRegistration is not JSON serializable"
+      },
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[empty-mediate]",
+        "failure": "TypeError: Object of type CandidateRuleRegistration is not JSON serializable"
+      },
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[empty-consume]",
+        "failure": "TypeError: Object of type CandidateRuleRegistration is not JSON serializable"
+      },
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[integer-mediate]",
+        "failure": "TypeError: Object of type CandidateRuleRegistration is not JSON serializable"
+      },
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[integer-consume]",
+        "failure": "TypeError: Object of type CandidateRuleRegistration is not JSON serializable"
+      },
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[list-mediate]",
+        "failure": "TypeError: Object of type CandidateRuleRegistration is not JSON serializable"
+      },
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[list-consume]",
+        "failure": "TypeError: Object of type CandidateRuleRegistration is not JSON serializable"
+      },
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[dict-mediate]",
+        "failure": "TypeError: Object of type CandidateRuleRegistration is not JSON serializable"
+      },
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[dict-consume]",
+        "failure": "TypeError: Object of type CandidateRuleRegistration is not JSON serializable"
+      },
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[foreign-mediate]",
+        "failure": "TypeError: Object of type CandidateRuleRegistration is not JSON serializable"
+      },
+      {
+        "name": "test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[foreign-consume]",
+        "failure": "TypeError: Object of type CandidateRuleRegistration is not JSON serializable"
+      }
+    ]
+  }
+]

@@ -1,0 +1,28 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: ${MS4_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ319-MS4-MS3-INDEPENDENT-R1
+collecting ... collected 20 items
+
+repro/test_ms4_followup.py::test_full_owner_and_registry_checkpoint_replay[WITHDRAW-CLAIM_ACCESSIBLE-REROUTE-AVAILABLE_SOURCE_BOUND] PASSED [  5%]
+repro/test_ms4_followup.py::test_full_owner_and_registry_checkpoint_replay[WITHDRAW-CLAIM_ACCESSIBLE-REROUTE-AVAILABLE_UNCERTAIN] PASSED [ 10%]
+repro/test_ms4_followup.py::test_full_owner_and_registry_checkpoint_replay[WITHDRAW-CLAIM_INACCESSIBLE-BLOCK-AVAILABLE_SOURCE_BOUND] PASSED [ 15%]
+repro/test_ms4_followup.py::test_full_owner_and_registry_checkpoint_replay[WITHDRAW-CLAIM_INACCESSIBLE-BLOCK-AVAILABLE_UNCERTAIN] PASSED [ 20%]
+repro/test_ms4_followup.py::test_full_owner_and_registry_checkpoint_replay[WITHDRAW-CLAIM_ACCESS_UNKNOWN-None-AVAILABLE_SOURCE_BOUND] PASSED [ 25%]
+repro/test_ms4_followup.py::test_full_owner_and_registry_checkpoint_replay[WITHDRAW-CLAIM_ACCESS_UNKNOWN-None-AVAILABLE_UNCERTAIN] PASSED [ 30%]
+repro/test_ms4_followup.py::test_full_owner_and_registry_checkpoint_replay[SUPERSEDE_EXACT_RECORD-CLAIM_ACCESSIBLE-REROUTE-AVAILABLE_SOURCE_BOUND] PASSED [ 35%]
+repro/test_ms4_followup.py::test_full_owner_and_registry_checkpoint_replay[SUPERSEDE_EXACT_RECORD-CLAIM_ACCESSIBLE-REROUTE-AVAILABLE_UNCERTAIN] PASSED [ 40%]
+repro/test_ms4_followup.py::test_full_owner_and_registry_checkpoint_replay[SUPERSEDE_EXACT_RECORD-CLAIM_INACCESSIBLE-BLOCK-AVAILABLE_SOURCE_BOUND] PASSED [ 45%]
+repro/test_ms4_followup.py::test_full_owner_and_registry_checkpoint_replay[SUPERSEDE_EXACT_RECORD-CLAIM_INACCESSIBLE-BLOCK-AVAILABLE_UNCERTAIN] PASSED [ 50%]
+repro/test_ms4_followup.py::test_full_owner_and_registry_checkpoint_replay[SUPERSEDE_EXACT_RECORD-CLAIM_ACCESS_UNKNOWN-None-AVAILABLE_SOURCE_BOUND] PASSED [ 55%]
+repro/test_ms4_followup.py::test_full_owner_and_registry_checkpoint_replay[SUPERSEDE_EXACT_RECORD-CLAIM_ACCESS_UNKNOWN-None-AVAILABLE_UNCERTAIN] PASSED [ 60%]
+repro/test_ms4_followup.py::test_second_distinct_event_fault_after_native_receipt_rolls_back_and_retries[CLAIM_ACCESSIBLE] PASSED [ 65%]
+repro/test_ms4_followup.py::test_second_distinct_event_fault_after_native_receipt_rolls_back_and_retries[CLAIM_INACCESSIBLE] PASSED [ 70%]
+repro/test_ms4_followup.py::test_native_e2_public_feature_scope_is_receivability_not_exact_content[features0] PASSED [ 75%]
+repro/test_ms4_followup.py::test_native_e2_public_feature_scope_is_receivability_not_exact_content[features1] PASSED [ 80%]
+repro/test_ms4_followup.py::test_full_restored_native_withdrawal_is_terminal_without_readdition[CLAIM_ACCESSIBLE] PASSED [ 85%]
+repro/test_ms4_followup.py::test_full_restored_native_withdrawal_is_terminal_without_readdition[CLAIM_INACCESSIBLE] PASSED [ 90%]
+repro/test_ms4_followup.py::test_full_restored_native_withdrawal_is_terminal_without_readdition[CLAIM_ACCESS_UNKNOWN] PASSED [ 95%]
+repro/test_ms4_followup.py::test_unknown_live_or_future_selected_transition_cannot_default_to_empty PASSED [100%]
+
+- generated xml file: ${MS4_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ319-MS4-MS3-INDEPENDENT-R1/evidence/followup_on_ms3/followup/junit.xml -
+============================== 20 passed in 5.12s ==============================

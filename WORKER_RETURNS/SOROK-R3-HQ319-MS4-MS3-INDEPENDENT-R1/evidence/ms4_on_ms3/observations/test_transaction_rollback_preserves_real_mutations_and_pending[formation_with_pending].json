@@ -1,0 +1,310 @@
+{
+  "case": "repro/test_ms4.py::test_transaction_rollback_preserves_real_mutations_and_pending[formation_with_pending]",
+  "observations": [
+    {
+      "before": {
+        "owner": {
+          "state": {
+            "actor_id": "ACTOR_SYNTH_1",
+            "memories": {},
+            "memory_transitions": {},
+            "claims": {
+              "b9da423ad1d139ebfb7c7beae4c15a7d59f24468d56bade091c0ab8a345903b4": {
+                "claim_id": "b9da423ad1d139ebfb7c7beae4c15a7d59f24468d56bade091c0ab8a345903b4",
+                "claim_schema_version": "1",
+                "subject_ref": "ACTOR_SYNTH_1",
+                "predicate_ref": "FIXTURE_PRIVATE_FEEDBACK_APPRAISAL",
+                "object_or_value": "RESPECTED",
+                "polarity": "POSITIVE",
+                "temporal_scope": "1998-10-03T16:00:00Z",
+                "subject_scope": "ACTOR_SYNTH_1",
+                "referent_refs": [
+                  "EV1_FEEDBACK_WINDOW_ENCOUNTER"
+                ],
+                "canonical_content_hash": "fd985e1fc4a7e248d5a714fb8639cee459a37488f881e52124cc7bd517e5205c",
+                "integrity_state": "INTACT"
+              }
+            },
+            "emissions": {
+              "b9da423ad1d139ebfb7c7beae4c15a7d59f24468d56bade091c0ab8a345903b4": {
+                "event_id": "EV1_FEEDBACK_WINDOW_ENCOUNTER",
+                "event_hash": "bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002",
+                "rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
+                "stance_kind": "BELIEF",
+                "operations": [
+                  "ADD",
+                  "WITHDRAW",
+                  "SUPERSEDE_EXACT_RECORD",
+                  "NO_CHANGE"
+                ]
+              }
+            },
+            "stances": {},
+            "epistemic_transitions": [],
+            "state_sets": {},
+            "permissions": {}
+          },
+          "pending": {
+            "3f51e88f926d8ff3f31576c645e5287df773ef43047cc363d03c6398b27ea5a2": true
+          }
+        },
+        "registry": [
+          {
+            "CAND_R_CAN008_COUPLING_RESPONSE@2.0.0-candidate": "CandidateRuleRegistration(rule_id='CAND_R_CAN008_COUPLING_RESPONSE', rule_version='2.0.0-candidate', rule_content_hash='34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a', issuer_authority_id='ISSUER_AUTH_CANDIDATE_FIXTURE', issuer_authority_version='1', actor_scope='ACTOR_SYNTH_1', temporal_scope='T_1998_2000', effect_kinds=('BUFFER', 'AMPLIFY', 'DEFLECT', 'REROUTE', 'TRANSFORM', 'BLOCK'), target_owner_kind='CAN008_CURRENT', admission_state='CANDIDATE_ADMITTED_IN_FIXTURE', binding_digest='34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a')"
+          },
+          [
+            {
+              "status": "CANDIDATE_REGISTERED_IN_FIXTURE",
+              "rule_key": "CAND_R_CAN008_COUPLING_RESPONSE@2.0.0-candidate",
+              "fixture_id": "WORKER_CANDIDATE_REGISTRY_FIXTURE",
+              "fixture_grain": "SOURCEFREE_CANDIDATE_FIXTURE__NOT_ACCEPTED_AUTHORIZATION",
+              "production_registry_mutated": false
+            },
+            {
+              "kind": "EVENT_IDENTITY",
+              "event_id": "EV1_FEEDBACK_WINDOW_ENCOUNTER",
+              "event_hash": "bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002",
+              "issuer_authority_id": "ISSUER_AUTH_WORLD_SCHED",
+              "issuer_authority_version": "1",
+              "status": "EVENT_IDENTITY_ADMITTED_IN_FIXTURE"
+            }
+          ],
+          {
+            "EV1_FEEDBACK_WINDOW_ENCOUNTER": {
+              "event_id": "EV1_FEEDBACK_WINDOW_ENCOUNTER",
+              "event_hash": "bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002",
+              "issuer_authority_id": "ISSUER_AUTH_WORLD_SCHED",
+              "issuer_authority_version": "1",
+              "event_kind": "EXTERNAL_RUNTIME_EVENT",
+              "effective_causal_time": "1998-10-03T16:00:00Z",
+              "actor_scope": "ACTOR_SYNTH_1",
+              "world_ref": "W_SYNTH_1998",
+              "world_as_of": "1998-10-03T16:00:00Z",
+              "admission_state": "ADMITTED",
+              "public_features": [
+                "shift_feedback_window_open",
+                "supervisor_solicits_comment"
+              ],
+              "causal_parent_event_ids": [],
+              "derived_from_future_partition": false,
+              "reverse_chronology_flag": false
+            }
+          },
+          {},
+          "5a1ed5f9f3ae65c7ef3552e0f8d5e9a12a1e5c6337b623f6e3ceb30e252ecdd2"
+        ]
+      },
+      "real_native_results": [
+        {
+          "status": "ADP016_TRACE_COMMITTED_IN_FIXTURE",
+          "memory_id": "752391fcda301daec63b65356eae38e6c2b9e654eda9c6031124d088603eb787",
+          "state_hash": "5fd72c0bbcbc542052b36611190bd63afbd2f67e28ecd16b0da2aff74819a743",
+          "production_owner_commit": false
+        }
+      ],
+      "result": [
+        null,
+        {
+          "decision_state": "MS3_NATIVE_FORMATION_FAILURE",
+          "code": "MS3_NATIVE_FORMATION_FAILURE",
+          "status": "REFUSED",
+          "committed": false,
+          "detail": "",
+          "production_owner_commit": false,
+          "stance_persisted": false
+        }
+      ],
+      "after": {
+        "owner": {
+          "state": {
+            "actor_id": "ACTOR_SYNTH_1",
+            "memories": {},
+            "memory_transitions": {},
+            "claims": {
+              "b9da423ad1d139ebfb7c7beae4c15a7d59f24468d56bade091c0ab8a345903b4": {
+                "claim_id": "b9da423ad1d139ebfb7c7beae4c15a7d59f24468d56bade091c0ab8a345903b4",
+                "claim_schema_version": "1",
+                "subject_ref": "ACTOR_SYNTH_1",
+                "predicate_ref": "FIXTURE_PRIVATE_FEEDBACK_APPRAISAL",
+                "object_or_value": "RESPECTED",
+                "polarity": "POSITIVE",
+                "temporal_scope": "1998-10-03T16:00:00Z",
+                "subject_scope": "ACTOR_SYNTH_1",
+                "referent_refs": [
+                  "EV1_FEEDBACK_WINDOW_ENCOUNTER"
+                ],
+                "canonical_content_hash": "fd985e1fc4a7e248d5a714fb8639cee459a37488f881e52124cc7bd517e5205c",
+                "integrity_state": "INTACT"
+              }
+            },
+            "emissions": {
+              "b9da423ad1d139ebfb7c7beae4c15a7d59f24468d56bade091c0ab8a345903b4": {
+                "event_id": "EV1_FEEDBACK_WINDOW_ENCOUNTER",
+                "event_hash": "bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002",
+                "rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
+                "stance_kind": "BELIEF",
+                "operations": [
+                  "ADD",
+                  "WITHDRAW",
+                  "SUPERSEDE_EXACT_RECORD",
+                  "NO_CHANGE"
+                ]
+              }
+            },
+            "stances": {},
+            "epistemic_transitions": [],
+            "state_sets": {},
+            "permissions": {}
+          },
+          "pending": {
+            "3f51e88f926d8ff3f31576c645e5287df773ef43047cc363d03c6398b27ea5a2": true
+          }
+        },
+        "registry": [
+          {
+            "CAND_R_CAN008_COUPLING_RESPONSE@2.0.0-candidate": "CandidateRuleRegistration(rule_id='CAND_R_CAN008_COUPLING_RESPONSE', rule_version='2.0.0-candidate', rule_content_hash='34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a', issuer_authority_id='ISSUER_AUTH_CANDIDATE_FIXTURE', issuer_authority_version='1', actor_scope='ACTOR_SYNTH_1', temporal_scope='T_1998_2000', effect_kinds=('BUFFER', 'AMPLIFY', 'DEFLECT', 'REROUTE', 'TRANSFORM', 'BLOCK'), target_owner_kind='CAN008_CURRENT', admission_state='CANDIDATE_ADMITTED_IN_FIXTURE', binding_digest='34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a')"
+          },
+          [
+            {
+              "status": "CANDIDATE_REGISTERED_IN_FIXTURE",
+              "rule_key": "CAND_R_CAN008_COUPLING_RESPONSE@2.0.0-candidate",
+              "fixture_id": "WORKER_CANDIDATE_REGISTRY_FIXTURE",
+              "fixture_grain": "SOURCEFREE_CANDIDATE_FIXTURE__NOT_ACCEPTED_AUTHORIZATION",
+              "production_registry_mutated": false
+            },
+            {
+              "kind": "EVENT_IDENTITY",
+              "event_id": "EV1_FEEDBACK_WINDOW_ENCOUNTER",
+              "event_hash": "bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002",
+              "issuer_authority_id": "ISSUER_AUTH_WORLD_SCHED",
+              "issuer_authority_version": "1",
+              "status": "EVENT_IDENTITY_ADMITTED_IN_FIXTURE"
+            }
+          ],
+          {
+            "EV1_FEEDBACK_WINDOW_ENCOUNTER": {
+              "event_id": "EV1_FEEDBACK_WINDOW_ENCOUNTER",
+              "event_hash": "bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002",
+              "issuer_authority_id": "ISSUER_AUTH_WORLD_SCHED",
+              "issuer_authority_version": "1",
+              "event_kind": "EXTERNAL_RUNTIME_EVENT",
+              "effective_causal_time": "1998-10-03T16:00:00Z",
+              "actor_scope": "ACTOR_SYNTH_1",
+              "world_ref": "W_SYNTH_1998",
+              "world_as_of": "1998-10-03T16:00:00Z",
+              "admission_state": "ADMITTED",
+              "public_features": [
+                "shift_feedback_window_open",
+                "supervisor_solicits_comment"
+              ],
+              "causal_parent_event_ids": [],
+              "derived_from_future_partition": false,
+              "reverse_chronology_flag": false
+            }
+          },
+          {},
+          "5a1ed5f9f3ae65c7ef3552e0f8d5e9a12a1e5c6337b623f6e3ceb30e252ecdd2"
+        ]
+      }
+    },
+    {
+      "retry": [
+        {
+          "status": "ADP016_FORMATION_VALIDATED_IN_FIXTURE",
+          "memory": {
+            "memory_id": "752391fcda301daec63b65356eae38e6c2b9e654eda9c6031124d088603eb787",
+            "actor_id": "ACTOR_SYNTH_1",
+            "representation_kind": "CAUSAL_TRACE_MEMORY",
+            "formation_transition_id": "b3b0542f63e608cafce35327a2a0ba00e4d8777f3475b3f96b8e2a14c1d431b7",
+            "objective_source_event_refs": [
+              "EV1_FEEDBACK_WINDOW_ENCOUNTER:bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002"
+            ],
+            "source_feature_bindings": [
+              "{\"feature\":\"shift_feedback_window_open\",\"source_event\":\"EV1_FEEDBACK_WINDOW_ENCOUNTER:bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002\",\"state\":\"AVAILABLE_SOURCE_BOUND\"}",
+              "{\"feature\":\"supervisor_solicits_comment\",\"source_event\":\"EV1_FEEDBACK_WINDOW_ENCOUNTER:bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002\",\"state\":\"AVAILABLE_SOURCE_BOUND\"}"
+            ],
+            "retention_state": "RETAINED",
+            "memory_accessibility_state": "NOT_APPLICABLE_CAUSAL_TRACE",
+            "uncertainty_state": "CERTAIN",
+            "last_transition_id": "b3b0542f63e608cafce35327a2a0ba00e4d8777f3475b3f96b8e2a14c1d431b7",
+            "last_transition_effective_time": "1998-10-03T16:00:00Z",
+            "current_state_hash": "cd33820303d561b21ef5aa29509b94f24683260eb1f19a244bc47b8d474cd666",
+            "integrity_state": "INTACT"
+          },
+          "transition": {
+            "memory_transition_id": "b3b0542f63e608cafce35327a2a0ba00e4d8777f3475b3f96b8e2a14c1d431b7",
+            "memory_id": "752391fcda301daec63b65356eae38e6c2b9e654eda9c6031124d088603eb787",
+            "actor_id": "ACTOR_SYNTH_1",
+            "transition_kind": "FORMATION",
+            "effective_causal_time": "1998-10-03T16:00:00Z",
+            "authority_id": "WORKER_CANDIDATE_FIXTURE",
+            "authority_version": "1",
+            "authority_or_rule_hash": "34327f61afd18355201144b813ac0164540594fc17d7a0a3c0d9793810eb3a2a",
+            "memory_rule_id": "CAND_ADP016_TRACE_COMMIT",
+            "memory_rule_version": "2.0.0-candidate",
+            "memory_rule_hash": "a9b8c5b24407b0e03a99cd33d54a3f4725e28fb463fe41c7603a92e2010bd6e6",
+            "objective_source_event_refs": [
+              "EV1_FEEDBACK_WINDOW_ENCOUNTER:bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002"
+            ],
+            "causal_parent_event_refs": [
+              "EV1_FEEDBACK_WINDOW_ENCOUNTER"
+            ],
+            "cue_or_trigger_refs": [],
+            "pre_state_hash": "ef4fe527c00a2731db4ddb313c43ff65419ca73b04abf0ad6876323740449696",
+            "post_state_hash": "cd33820303d561b21ef5aa29509b94f24683260eb1f19a244bc47b8d474cd666",
+            "feature_state_before_hash": "736b663379d5d79494a48285efb5217b2c176fdd6b467f602175a57b2f67efaa",
+            "feature_state_after_hash": "3891c7c58257a4157c72584fc99150c22345e3a17558f697cf8fd998c92c65eb",
+            "decision_state": "FORMATION_VALIDATED_IN_FIXTURE",
+            "integrity_state": "INTACT"
+          },
+          "pre_state_hash": "ef4fe527c00a2731db4ddb313c43ff65419ca73b04abf0ad6876323740449696",
+          "exports_to_adp017_only": true,
+          "must_not_output": [
+            "actor_knows",
+            "actor_believes",
+            "may_claim_first_person",
+            "V2_may_render_as_fact"
+          ],
+          "first_person_origin_claimable": false,
+          "production_owner_commit": false,
+          "hold": "NO_ACCEPTED_DESTINATION_OWNER_AUTHORITY",
+          "committed": false
+        },
+        {
+          "memory_id": "752391fcda301daec63b65356eae38e6c2b9e654eda9c6031124d088603eb787",
+          "actor_id": "ACTOR_SYNTH_1",
+          "representation_kind": "CAUSAL_TRACE_MEMORY",
+          "formation_transition_id": "b3b0542f63e608cafce35327a2a0ba00e4d8777f3475b3f96b8e2a14c1d431b7",
+          "objective_source_event_refs": [
+            "EV1_FEEDBACK_WINDOW_ENCOUNTER:bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002"
+          ],
+          "source_feature_bindings": [
+            "{\"feature\":\"shift_feedback_window_open\",\"source_event\":\"EV1_FEEDBACK_WINDOW_ENCOUNTER:bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002\",\"state\":\"AVAILABLE_SOURCE_BOUND\"}",
+            "{\"feature\":\"supervisor_solicits_comment\",\"source_event\":\"EV1_FEEDBACK_WINDOW_ENCOUNTER:bded26ff9bc599e7c8e08c7f52c4b1c31e9a1b5050a1fe9ddf34a2adc7376002\",\"state\":\"AVAILABLE_SOURCE_BOUND\"}"
+          ],
+          "retention_state": "RETAINED",
+          "memory_accessibility_state": "NOT_APPLICABLE_CAUSAL_TRACE",
+          "uncertainty_state": "CERTAIN",
+          "last_transition_id": "b3b0542f63e608cafce35327a2a0ba00e4d8777f3475b3f96b8e2a14c1d431b7",
+          "last_transition_effective_time": "1998-10-03T16:00:00Z",
+          "current_state_hash": "cd33820303d561b21ef5aa29509b94f24683260eb1f19a244bc47b8d474cd666",
+          "integrity_state": "INTACT"
+        }
+      ]
+    },
+    {
+      "duplicate": [
+        null,
+        {
+          "decision_state": "MEMORY_ID_COLLISION",
+          "code": "MEMORY_ID_COLLISION",
+          "status": "REFUSED",
+          "committed": false,
+          "detail": "",
+          "production_owner_commit": false,
+          "stance_persisted": false
+        }
+      ]
+    }
+  ]
+}

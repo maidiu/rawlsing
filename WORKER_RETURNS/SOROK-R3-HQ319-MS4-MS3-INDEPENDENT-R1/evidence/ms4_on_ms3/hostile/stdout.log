@@ -1,0 +1,340 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: ${MS4_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ319-MS4-MS3-INDEPENDENT-R1
+collecting ... collected 85 items
+
+repro/test_ms4.py::test_formation_ancestry[posthash_relinked-mediate] PASSED [  1%]
+repro/test_ms4.py::test_formation_ancestry[posthash_relinked-consume] PASSED [  2%]
+repro/test_ms4.py::test_formation_ancestry[featurehash_relinked-mediate] PASSED [  3%]
+repro/test_ms4.py::test_formation_ancestry[featurehash_relinked-consume] PASSED [  4%]
+repro/test_ms4.py::test_formation_ancestry[predecessor_cycle-mediate] PASSED [  5%]
+repro/test_ms4.py::test_formation_ancestry[predecessor_cycle-consume] PASSED [  7%]
+repro/test_ms4.py::test_formation_ancestry[orphan_transition-mediate] PASSED [  8%]
+repro/test_ms4.py::test_formation_ancestry[orphan_transition-consume] PASSED [  9%]
+repro/test_ms4.py::test_formation_ancestry[duplicate_transition-mediate] PASSED [ 10%]
+repro/test_ms4.py::test_formation_ancestry[duplicate_transition-consume] PASSED [ 11%]
+repro/test_ms4.py::test_formation_ancestry[memory_without_formation-mediate] PASSED [ 12%]
+repro/test_ms4.py::test_formation_ancestry[memory_without_formation-consume] PASSED [ 14%]
+repro/test_ms4.py::test_formation_ancestry[content_pair_swap-mediate] PASSED [ 15%]
+repro/test_ms4.py::test_formation_ancestry[content_pair_swap-consume] PASSED [ 16%]
+repro/test_ms4.py::test_formation_ancestry[source_feature_permutation-mediate] PASSED [ 17%]
+repro/test_ms4.py::test_formation_ancestry[source_feature_permutation-consume] PASSED [ 18%]
+repro/test_ms4.py::test_formation_ancestry[foreign_actor_coherent-mediate] PASSED [ 20%]
+repro/test_ms4.py::test_formation_ancestry[foreign_actor_coherent-consume] PASSED [ 21%]
+repro/test_ms4.py::test_formation_ancestry[source_ref_swap-mediate] PASSED [ 22%]
+repro/test_ms4.py::test_formation_ancestry[source_ref_swap-consume] PASSED [ 23%]
+repro/test_ms4.py::test_terminal_permission_cannot_resurrect_prior_permit[CLAIM_INACCESSIBLE-WITHDRAW-mediate] PASSED [ 24%]
+repro/test_ms4.py::test_terminal_permission_cannot_resurrect_prior_permit[CLAIM_INACCESSIBLE-WITHDRAW-consume] PASSED [ 25%]
+repro/test_ms4.py::test_terminal_permission_cannot_resurrect_prior_permit[CLAIM_INACCESSIBLE-SUPERSEDE_EXACT_RECORD-mediate] PASSED [ 27%]
+repro/test_ms4.py::test_terminal_permission_cannot_resurrect_prior_permit[CLAIM_INACCESSIBLE-SUPERSEDE_EXACT_RECORD-consume] PASSED [ 28%]
+repro/test_ms4.py::test_terminal_permission_cannot_resurrect_prior_permit[CLAIM_ACCESS_UNKNOWN-WITHDRAW-mediate] PASSED [ 29%]
+repro/test_ms4.py::test_terminal_permission_cannot_resurrect_prior_permit[CLAIM_ACCESS_UNKNOWN-WITHDRAW-consume] PASSED [ 30%]
+repro/test_ms4.py::test_terminal_permission_cannot_resurrect_prior_permit[CLAIM_ACCESS_UNKNOWN-SUPERSEDE_EXACT_RECORD-mediate] PASSED [ 31%]
+repro/test_ms4.py::test_terminal_permission_cannot_resurrect_prior_permit[CLAIM_ACCESS_UNKNOWN-SUPERSEDE_EXACT_RECORD-consume] PASSED [ 32%]
+repro/test_ms4.py::test_claim_selector_does_not_become_genuine_none[OMITTED-mediate] PASSED [ 34%]
+repro/test_ms4.py::test_claim_selector_does_not_become_genuine_none[OMITTED-consume] PASSED [ 35%]
+repro/test_ms4.py::test_claim_selector_does_not_become_genuine_none[OMITTED-withdraw] PASSED [ 36%]
+repro/test_ms4.py::test_claim_selector_does_not_become_genuine_none[None-mediate] PASSED [ 37%]
+repro/test_ms4.py::test_claim_selector_does_not_become_genuine_none[None-consume] PASSED [ 38%]
+repro/test_ms4.py::test_claim_selector_does_not_become_genuine_none[None-withdraw] PASSED [ 40%]
+repro/test_ms4.py::test_claim_selector_does_not_become_genuine_none[-mediate] PASSED [ 41%]
+repro/test_ms4.py::test_claim_selector_does_not_become_genuine_none[-consume] PASSED [ 42%]
+repro/test_ms4.py::test_claim_selector_does_not_become_genuine_none[-withdraw] PASSED [ 43%]
+repro/test_ms4.py::test_claim_selector_does_not_become_genuine_none[UNKNOWN-mediate] PASSED [ 44%]
+repro/test_ms4.py::test_claim_selector_does_not_become_genuine_none[UNKNOWN-consume] PASSED [ 45%]
+repro/test_ms4.py::test_claim_selector_does_not_become_genuine_none[UNKNOWN-withdraw] PASSED [ 47%]
+repro/test_ms4.py::test_claim_selector_does_not_become_genuine_none[FOREIGN_BOUND-mediate] PASSED [ 48%]
+repro/test_ms4.py::test_claim_selector_does_not_become_genuine_none[FOREIGN_BOUND-consume] PASSED [ 49%]
+repro/test_ms4.py::test_claim_selector_does_not_become_genuine_none[FOREIGN_BOUND-withdraw] PASSED [ 50%]
+repro/test_ms4.py::test_second_event_actor_world_time_and_source[actor_scope-OTHER] PASSED [ 51%]
+repro/test_ms4.py::test_second_event_actor_world_time_and_source[world_ref-OTHER_WORLD] PASSED [ 52%]
+repro/test_ms4.py::test_second_event_actor_world_time_and_source[world_as_of-1998-10-02T16:00:00Z] PASSED [ 54%]
+repro/test_ms4.py::test_second_event_actor_world_time_and_source[effective_causal_time-1998-10-03T16:00:00Z] PASSED [ 55%]
+repro/test_ms4.py::test_second_event_actor_world_time_and_source[effective_causal_time-1998-10-03T15:59:59Z] PASSED [ 56%]
+repro/test_ms4.py::test_second_event_actor_world_time_and_source[effective_causal_time-NOT_A_TIME] PASSED [ 57%]
+repro/test_ms4.py::test_second_event_actor_world_time_and_source[public_features-value6] FAILED [ 58%]
+repro/test_ms4.py::test_second_event_actor_world_time_and_source[event_hash-0000000000000000000000000000000000000000000000000000000000000000] PASSED [ 60%]
+repro/test_ms4.py::test_source_registry_and_claim_identity[source_removed-mediate] PASSED [ 61%]
+repro/test_ms4.py::test_source_registry_and_claim_identity[source_removed-consume] PASSED [ 62%]
+repro/test_ms4.py::test_source_registry_and_claim_identity[source_rehashed_other_world-mediate] PASSED [ 63%]
+repro/test_ms4.py::test_source_registry_and_claim_identity[source_rehashed_other_world-consume] PASSED [ 64%]
+repro/test_ms4.py::test_source_registry_and_claim_identity[claim_polarity-mediate] PASSED [ 65%]
+repro/test_ms4.py::test_source_registry_and_claim_identity[claim_polarity-consume] PASSED [ 67%]
+repro/test_ms4.py::test_source_registry_and_claim_identity[claim_time-mediate] PASSED [ 68%]
+repro/test_ms4.py::test_source_registry_and_claim_identity[claim_time-consume] PASSED [ 69%]
+repro/test_ms4.py::test_source_registry_and_claim_identity[emission_event-mediate] PASSED [ 70%]
+repro/test_ms4.py::test_source_registry_and_claim_identity[emission_event-consume] PASSED [ 71%]
+repro/test_ms4.py::test_genuine_bound_none_does_not_infer_nonknowledge[False-None] PASSED [ 72%]
+repro/test_ms4.py::test_genuine_bound_none_does_not_infer_nonknowledge[False-AVAILABLE_SOURCE_BOUND] PASSED [ 74%]
+repro/test_ms4.py::test_genuine_bound_none_does_not_infer_nonknowledge[False-AVAILABLE_UNCERTAIN] PASSED [ 75%]
+repro/test_ms4.py::test_genuine_bound_none_does_not_infer_nonknowledge[True-None] PASSED [ 76%]
+repro/test_ms4.py::test_genuine_bound_none_does_not_infer_nonknowledge[True-AVAILABLE_SOURCE_BOUND] PASSED [ 77%]
+repro/test_ms4.py::test_genuine_bound_none_does_not_infer_nonknowledge[True-AVAILABLE_UNCERTAIN] PASSED [ 78%]
+repro/test_ms4.py::test_valid_terminal_sequence_replay[WITHDRAW-CLAIM_ACCESSIBLE-REROUTE-AVAILABLE_SOURCE_BOUND] FAILED [ 80%]
+repro/test_ms4.py::test_valid_terminal_sequence_replay[WITHDRAW-CLAIM_ACCESSIBLE-REROUTE-AVAILABLE_UNCERTAIN] FAILED [ 81%]
+repro/test_ms4.py::test_valid_terminal_sequence_replay[WITHDRAW-CLAIM_INACCESSIBLE-BLOCK-AVAILABLE_SOURCE_BOUND] FAILED [ 82%]
+repro/test_ms4.py::test_valid_terminal_sequence_replay[WITHDRAW-CLAIM_INACCESSIBLE-BLOCK-AVAILABLE_UNCERTAIN] FAILED [ 83%]
+repro/test_ms4.py::test_valid_terminal_sequence_replay[WITHDRAW-CLAIM_ACCESS_UNKNOWN-None-AVAILABLE_SOURCE_BOUND] PASSED [ 84%]
+repro/test_ms4.py::test_valid_terminal_sequence_replay[WITHDRAW-CLAIM_ACCESS_UNKNOWN-None-AVAILABLE_UNCERTAIN] PASSED [ 85%]
+repro/test_ms4.py::test_valid_terminal_sequence_replay[SUPERSEDE_EXACT_RECORD-CLAIM_ACCESSIBLE-REROUTE-AVAILABLE_SOURCE_BOUND] FAILED [ 87%]
+repro/test_ms4.py::test_valid_terminal_sequence_replay[SUPERSEDE_EXACT_RECORD-CLAIM_ACCESSIBLE-REROUTE-AVAILABLE_UNCERTAIN] FAILED [ 88%]
+repro/test_ms4.py::test_valid_terminal_sequence_replay[SUPERSEDE_EXACT_RECORD-CLAIM_INACCESSIBLE-BLOCK-AVAILABLE_SOURCE_BOUND] FAILED [ 89%]
+repro/test_ms4.py::test_valid_terminal_sequence_replay[SUPERSEDE_EXACT_RECORD-CLAIM_INACCESSIBLE-BLOCK-AVAILABLE_UNCERTAIN] FAILED [ 90%]
+repro/test_ms4.py::test_valid_terminal_sequence_replay[SUPERSEDE_EXACT_RECORD-CLAIM_ACCESS_UNKNOWN-None-AVAILABLE_SOURCE_BOUND] PASSED [ 91%]
+repro/test_ms4.py::test_valid_terminal_sequence_replay[SUPERSEDE_EXACT_RECORD-CLAIM_ACCESS_UNKNOWN-None-AVAILABLE_UNCERTAIN] PASSED [ 92%]
+repro/test_ms4.py::test_transaction_rollback_preserves_real_mutations_and_pending[withdraw_after_real_apply] PASSED [ 94%]
+repro/test_ms4.py::test_transaction_rollback_preserves_real_mutations_and_pending[second_read_after_real_receipt] FAILED [ 95%]
+repro/test_ms4.py::test_transaction_rollback_preserves_real_mutations_and_pending[formation_with_pending] PASSED [ 96%]
+repro/test_ms4.py::test_transaction_rollback_preserves_real_mutations_and_pending[mediate_with_pending] PASSED [ 97%]
+repro/test_ms4.py::test_hypothetical_content_contrast_and_native_trace_firewall[AVAILABLE_SOURCE_BOUND-REROUTE] PASSED [ 98%]
+repro/test_ms4.py::test_hypothetical_content_contrast_and_native_trace_firewall[AVAILABLE_UNCERTAIN-None] PASSED [100%]
+
+=================================== FAILURES ===================================
+____ test_second_event_actor_world_time_and_source[public_features-value6] _____
+repro/test_ms4.py:109: in test_second_event_actor_world_time_and_source
+    rejected(a,e2=e)
+repro/test_ms4.py:47: in rejected
+    assert out['decision_state'] not in ('RESPONSE_EFFECTS_PRODUCED','RESPONSE_INPUTS_VALID_EMPTY','APPLIED_EPISTEMIC_TRANSITION')
+E   AssertionError: assert 'RESPONSE_EFFECTS_PRODUCED' not in ('RESPONSE_EFFECTS_PRODUCED', 'RESPONSE_INPUTS_VALID_EMPTY', 'APPLIED_EPISTEMIC_TRANSITION')
+_ test_valid_terminal_sequence_replay[WITHDRAW-CLAIM_ACCESSIBLE-REROUTE-AVAILABLE_SOURCE_BOUND] _
+repro/test_ms4.py:142: in test_valid_terminal_sequence_replay
+    assert (again['decision_state'],again.get('effect_kind'),again.get('receipt_hash'))==(o['decision_state'],o.get('effect_kind'),o.get('receipt_hash'))
+E   AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'REROUTE', 'daec08d1ab46318f2c35fb456a20c7b6220f08938ce902c0bc768ae618db5b8f')
+E     
+E     At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'
+E     
+E     Full diff:
+E       (
+E     -     'RESPONSE_EFFECTS_PRODUCED',
+E     -     'REROUTE',
+E     -     'daec08d1ab46318f2c35fb456a20c7b6220f08938ce902c0bc768ae618db5b8f',
+E     +     'BLOCK_DUPLICATE_EVENT_IDENTITY',
+E     +     None,
+E     +     None,
+E       )
+_ test_valid_terminal_sequence_replay[WITHDRAW-CLAIM_ACCESSIBLE-REROUTE-AVAILABLE_UNCERTAIN] _
+repro/test_ms4.py:142: in test_valid_terminal_sequence_replay
+    assert (again['decision_state'],again.get('effect_kind'),again.get('receipt_hash'))==(o['decision_state'],o.get('effect_kind'),o.get('receipt_hash'))
+E   AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'REROUTE', 'ea1a289d4cdc11cd5ecb19464276a9446e3e4f6867c9f63123a4f0aa6b08bf7e')
+E     
+E     At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'
+E     
+E     Full diff:
+E       (
+E     -     'RESPONSE_EFFECTS_PRODUCED',
+E     -     'REROUTE',
+E     -     'ea1a289d4cdc11cd5ecb19464276a9446e3e4f6867c9f63123a4f0aa6b08bf7e',
+E     +     'BLOCK_DUPLICATE_EVENT_IDENTITY',
+E     +     None,
+E     +     None,
+E       )
+_ test_valid_terminal_sequence_replay[WITHDRAW-CLAIM_INACCESSIBLE-BLOCK-AVAILABLE_SOURCE_BOUND] _
+repro/test_ms4.py:142: in test_valid_terminal_sequence_replay
+    assert (again['decision_state'],again.get('effect_kind'),again.get('receipt_hash'))==(o['decision_state'],o.get('effect_kind'),o.get('receipt_hash'))
+E   AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'BLOCK', '047288aa55e992f6df534ab3e5fd8f9cc5af2d5661d1f69884a2260beb7d1ed8')
+E     
+E     At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'
+E     
+E     Full diff:
+E       (
+E     -     'RESPONSE_EFFECTS_PRODUCED',
+E     -     'BLOCK',
+E     -     '047288aa55e992f6df534ab3e5fd8f9cc5af2d5661d1f69884a2260beb7d1ed8',
+E     +     'BLOCK_DUPLICATE_EVENT_IDENTITY',
+E     +     None,
+E     +     None,
+E       )
+_ test_valid_terminal_sequence_replay[WITHDRAW-CLAIM_INACCESSIBLE-BLOCK-AVAILABLE_UNCERTAIN] _
+repro/test_ms4.py:142: in test_valid_terminal_sequence_replay
+    assert (again['decision_state'],again.get('effect_kind'),again.get('receipt_hash'))==(o['decision_state'],o.get('effect_kind'),o.get('receipt_hash'))
+E   AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'BLOCK', '5143ae4e9b0c2216390bb95c317598b4645e1802e9502ae3703adfe4800e5ec9')
+E     
+E     At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'
+E     
+E     Full diff:
+E       (
+E     -     'RESPONSE_EFFECTS_PRODUCED',
+E     -     'BLOCK',
+E     -     '5143ae4e9b0c2216390bb95c317598b4645e1802e9502ae3703adfe4800e5ec9',
+E     +     'BLOCK_DUPLICATE_EVENT_IDENTITY',
+E     +     None,
+E     +     None,
+E       )
+_ test_valid_terminal_sequence_replay[SUPERSEDE_EXACT_RECORD-CLAIM_ACCESSIBLE-REROUTE-AVAILABLE_SOURCE_BOUND] _
+repro/test_ms4.py:142: in test_valid_terminal_sequence_replay
+    assert (again['decision_state'],again.get('effect_kind'),again.get('receipt_hash'))==(o['decision_state'],o.get('effect_kind'),o.get('receipt_hash'))
+E   AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'REROUTE', 'f9505a18ba14ab9bda38dfcb47aa34fb83673b34f6cb1a0d834b3ff1436185ed')
+E     
+E     At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'
+E     
+E     Full diff:
+E       (
+E     -     'RESPONSE_EFFECTS_PRODUCED',
+E     -     'REROUTE',
+E     -     'f9505a18ba14ab9bda38dfcb47aa34fb83673b34f6cb1a0d834b3ff1436185ed',
+E     +     'BLOCK_DUPLICATE_EVENT_IDENTITY',
+E     +     None,
+E     +     None,
+E       )
+_ test_valid_terminal_sequence_replay[SUPERSEDE_EXACT_RECORD-CLAIM_ACCESSIBLE-REROUTE-AVAILABLE_UNCERTAIN] _
+repro/test_ms4.py:142: in test_valid_terminal_sequence_replay
+    assert (again['decision_state'],again.get('effect_kind'),again.get('receipt_hash'))==(o['decision_state'],o.get('effect_kind'),o.get('receipt_hash'))
+E   AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'REROUTE', 'f2fedd85cfbfcb36eb2a10bffedfc6e9a91a45dcff2a8132f8fc20e1a866c8c7')
+E     
+E     At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'
+E     
+E     Full diff:
+E       (
+E     -     'RESPONSE_EFFECTS_PRODUCED',
+E     -     'REROUTE',
+E     -     'f2fedd85cfbfcb36eb2a10bffedfc6e9a91a45dcff2a8132f8fc20e1a866c8c7',
+E     +     'BLOCK_DUPLICATE_EVENT_IDENTITY',
+E     +     None,
+E     +     None,
+E       )
+_ test_valid_terminal_sequence_replay[SUPERSEDE_EXACT_RECORD-CLAIM_INACCESSIBLE-BLOCK-AVAILABLE_SOURCE_BOUND] _
+repro/test_ms4.py:142: in test_valid_terminal_sequence_replay
+    assert (again['decision_state'],again.get('effect_kind'),again.get('receipt_hash'))==(o['decision_state'],o.get('effect_kind'),o.get('receipt_hash'))
+E   AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'BLOCK', '4591ef9042219ccadaf0ec13a2483ee48a5d94509d90952bbb40f4c9469a76c5')
+E     
+E     At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'
+E     
+E     Full diff:
+E       (
+E     -     'RESPONSE_EFFECTS_PRODUCED',
+E     -     'BLOCK',
+E     -     '4591ef9042219ccadaf0ec13a2483ee48a5d94509d90952bbb40f4c9469a76c5',
+E     +     'BLOCK_DUPLICATE_EVENT_IDENTITY',
+E     +     None,
+E     +     None,
+E       )
+_ test_valid_terminal_sequence_replay[SUPERSEDE_EXACT_RECORD-CLAIM_INACCESSIBLE-BLOCK-AVAILABLE_UNCERTAIN] _
+repro/test_ms4.py:142: in test_valid_terminal_sequence_replay
+    assert (again['decision_state'],again.get('effect_kind'),again.get('receipt_hash'))==(o['decision_state'],o.get('effect_kind'),o.get('receipt_hash'))
+E   AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'BLOCK', '9e598b3e519abd41fd226b55d3f7c87cec73c30281fd736f067ccf4b67cdd7c0')
+E     
+E     At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'
+E     
+E     Full diff:
+E       (
+E     -     'RESPONSE_EFFECTS_PRODUCED',
+E     -     'BLOCK',
+E     -     '9e598b3e519abd41fd226b55d3f7c87cec73c30281fd736f067ccf4b67cdd7c0',
+E     +     'BLOCK_DUPLICATE_EVENT_IDENTITY',
+E     +     None,
+E     +     None,
+E       )
+_ test_transaction_rollback_preserves_real_mutations_and_pending[second_read_after_real_receipt] _
+repro/test_ms4.py:165: in test_transaction_rollback_preserves_real_mutations_and_pending
+    remember(before=before,real_native_results=calls,result=out,after=snap(a));assert calls and snap(a)==before
+                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   assert ([])
+- generated xml file: ${MS4_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ319-MS4-MS3-INDEPENDENT-R1/evidence/ms4_on_ms3/hostile/junit.xml -
+=========================== short test summary info ============================
+FAILED repro/test_ms4.py::test_second_event_actor_world_time_and_source[public_features-value6] - AssertionError: assert 'RESPONSE_EFFECTS_PRODUCED' not in ('RESPONSE_EFFECTS_PRODUCED', 'RESPONSE_INPUTS_VALID_EMPTY', 'APPLIED_EPISTEMIC_TRANSITION')
+FAILED repro/test_ms4.py::test_valid_terminal_sequence_replay[WITHDRAW-CLAIM_ACCESSIBLE-REROUTE-AVAILABLE_SOURCE_BOUND] - AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'REROUTE', 'daec08d1ab46318f2c35fb456a20c7b6220f08938ce902c0bc768ae618db5b8f')
+  
+  At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'
+  
+  Full diff:
+    (
+  -     'RESPONSE_EFFECTS_PRODUCED',
+  -     'REROUTE',
+  -     'daec08d1ab46318f2c35fb456a20c7b6220f08938ce902c0bc768ae618db5b8f',
+  +     'BLOCK_DUPLICATE_EVENT_IDENTITY',
+  +     None,
+  +     None,
+    )
+FAILED repro/test_ms4.py::test_valid_terminal_sequence_replay[WITHDRAW-CLAIM_ACCESSIBLE-REROUTE-AVAILABLE_UNCERTAIN] - AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'REROUTE', 'ea1a289d4cdc11cd5ecb19464276a9446e3e4f6867c9f63123a4f0aa6b08bf7e')
+  
+  At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'
+  
+  Full diff:
+    (
+  -     'RESPONSE_EFFECTS_PRODUCED',
+  -     'REROUTE',
+  -     'ea1a289d4cdc11cd5ecb19464276a9446e3e4f6867c9f63123a4f0aa6b08bf7e',
+  +     'BLOCK_DUPLICATE_EVENT_IDENTITY',
+  +     None,
+  +     None,
+    )
+FAILED repro/test_ms4.py::test_valid_terminal_sequence_replay[WITHDRAW-CLAIM_INACCESSIBLE-BLOCK-AVAILABLE_SOURCE_BOUND] - AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'BLOCK', '047288aa55e992f6df534ab3e5fd8f9cc5af2d5661d1f69884a2260beb7d1ed8')
+  
+  At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'
+  
+  Full diff:
+    (
+  -     'RESPONSE_EFFECTS_PRODUCED',
+  -     'BLOCK',
+  -     '047288aa55e992f6df534ab3e5fd8f9cc5af2d5661d1f69884a2260beb7d1ed8',
+  +     'BLOCK_DUPLICATE_EVENT_IDENTITY',
+  +     None,
+  +     None,
+    )
+FAILED repro/test_ms4.py::test_valid_terminal_sequence_replay[WITHDRAW-CLAIM_INACCESSIBLE-BLOCK-AVAILABLE_UNCERTAIN] - AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'BLOCK', '5143ae4e9b0c2216390bb95c317598b4645e1802e9502ae3703adfe4800e5ec9')
+  
+  At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'
+  
+  Full diff:
+    (
+  -     'RESPONSE_EFFECTS_PRODUCED',
+  -     'BLOCK',
+  -     '5143ae4e9b0c2216390bb95c317598b4645e1802e9502ae3703adfe4800e5ec9',
+  +     'BLOCK_DUPLICATE_EVENT_IDENTITY',
+  +     None,
+  +     None,
+    )
+FAILED repro/test_ms4.py::test_valid_terminal_sequence_replay[SUPERSEDE_EXACT_RECORD-CLAIM_ACCESSIBLE-REROUTE-AVAILABLE_SOURCE_BOUND] - AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'REROUTE', 'f9505a18ba14ab9bda38dfcb47aa34fb83673b34f6cb1a0d834b3ff1436185ed')
+  
+  At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'
+  
+  Full diff:
+    (
+  -     'RESPONSE_EFFECTS_PRODUCED',
+  -     'REROUTE',
+  -     'f9505a18ba14ab9bda38dfcb47aa34fb83673b34f6cb1a0d834b3ff1436185ed',
+  +     'BLOCK_DUPLICATE_EVENT_IDENTITY',
+  +     None,
+  +     None,
+    )
+FAILED repro/test_ms4.py::test_valid_terminal_sequence_replay[SUPERSEDE_EXACT_RECORD-CLAIM_ACCESSIBLE-REROUTE-AVAILABLE_UNCERTAIN] - AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'REROUTE', 'f2fedd85cfbfcb36eb2a10bffedfc6e9a91a45dcff2a8132f8fc20e1a866c8c7')
+  
+  At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'
+  
+  Full diff:
+    (
+  -     'RESPONSE_EFFECTS_PRODUCED',
+  -     'REROUTE',
+  -     'f2fedd85cfbfcb36eb2a10bffedfc6e9a91a45dcff2a8132f8fc20e1a866c8c7',
+  +     'BLOCK_DUPLICATE_EVENT_IDENTITY',
+  +     None,
+  +     None,
+    )
+FAILED repro/test_ms4.py::test_valid_terminal_sequence_replay[SUPERSEDE_EXACT_RECORD-CLAIM_INACCESSIBLE-BLOCK-AVAILABLE_SOURCE_BOUND] - AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'BLOCK', '4591ef9042219ccadaf0ec13a2483ee48a5d94509d90952bbb40f4c9469a76c5')
+  
+  At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'
+  
+  Full diff:
+    (
+  -     'RESPONSE_EFFECTS_PRODUCED',
+  -     'BLOCK',
+  -     '4591ef9042219ccadaf0ec13a2483ee48a5d94509d90952bbb40f4c9469a76c5',
+  +     'BLOCK_DUPLICATE_EVENT_IDENTITY',
+  +     None,
+  +     None,
+    )
+FAILED repro/test_ms4.py::test_valid_terminal_sequence_replay[SUPERSEDE_EXACT_RECORD-CLAIM_INACCESSIBLE-BLOCK-AVAILABLE_UNCERTAIN] - AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'BLOCK', '9e598b3e519abd41fd226b55d3f7c87cec73c30281fd736f067ccf4b67cdd7c0')
+  
+  At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'
+  
+  Full diff:
+    (
+  -     'RESPONSE_EFFECTS_PRODUCED',
+  -     'BLOCK',
+  -     '9e598b3e519abd41fd226b55d3f7c87cec73c30281fd736f067ccf4b67cdd7c0',
+  +     'BLOCK_DUPLICATE_EVENT_IDENTITY',
+  +     None,
+  +     None,
+    )
+FAILED repro/test_ms4.py::test_transaction_rollback_preserves_real_mutations_and_pending[second_read_after_real_receipt] - assert ([])
+======================== 10 failed, 75 passed in 16.40s ========================

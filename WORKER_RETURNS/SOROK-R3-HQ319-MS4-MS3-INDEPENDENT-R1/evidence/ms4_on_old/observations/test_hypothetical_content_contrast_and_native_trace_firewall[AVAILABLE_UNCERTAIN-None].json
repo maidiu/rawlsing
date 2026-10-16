@@ -1,0 +1,27 @@
+{
+  "case": "repro/test_ms4.py::test_hypothetical_content_contrast_and_native_trace_firewall[AVAILABLE_UNCERTAIN-None]",
+  "observations": [
+    {
+      "result": {
+        "decision_state": "DEFER_MISSING_AUTHORITY",
+        "code": "DEFER_MISSING_AUTHORITY",
+        "status": "REFUSED",
+        "committed": false,
+        "detail": "no productive response licensed by owner state (permission=DEFER_MISSING_AUTHORITY)",
+        "production_owner_commit": false,
+        "stance_persisted": false,
+        "chosen_from_permission": "DEFER_MISSING_AUTHORITY",
+        "epistemic_state_absent": false,
+        "owner_state_hash_read": "c486c62d27ae4ac78f4ebff652f527a64c22aeb7e3fb194559c3a33ae4afbac6",
+        "consumer_rule_id": "MS1_SERIAL_CONSUMER@1.0.0-TEST_ONLY",
+        "is_unissued_synthetic": true
+      },
+      "trace_permission": {
+        "first_person_permission": "DENY_FIRST_PERSON_CLAIM",
+        "self_explanation_of_hidden_origin": "BLOCKED",
+        "analyst_only_causal_trace_actor_claimable": false,
+        "grade": "TEST_ONLY_CANDIDATE_PERMISSION; production owner HOLD"
+      }
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "original85": {
+    "PASS": 75,
+    "FAIL": 10,
+    "ERROR": 0,
+    "SKIP": 0
+  },
+  "reds": [
+    {
+      "classname": "repro.test_ms4",
+      "name": "test_second_event_actor_world_time_and_source[public_features-value6]",
+      "outcome": "FAIL",
+      "message": "AssertionError: assert 'RESPONSE_EFFECTS_PRODUCED' not in ('RESPONSE_EFFECTS_PRODUCED', 'RESPONSE_INPUTS_VALID_EMPTY', 'APPLIED_EPISTEMIC_TRANSITION')",
+      "classification": "PREDICTION_TOO_NARROW_NATIVE_E2_PUBLIC_FEATURE_SCOPE",
+      "original_outcome_retained": "FAIL",
+      "candidate_repair": false,
+      "followup_source": "repro/test_ms4_followup.py"
+    },
+    {
+      "classname": "repro.test_ms4",
+      "name": "test_valid_terminal_sequence_replay[WITHDRAW-CLAIM_ACCESSIBLE-REROUTE-AVAILABLE_SOURCE_BOUND]",
+      "outcome": "FAIL",
+      "message": "AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'REROUTE', 'daec08d1ab46318f2c35fb456a20c7b6220f08938ce902c0bc768ae618db5b8f')\n  \n  At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'\n  \n  Full diff:\n    (\n  -     'RESPONSE_EFFECTS_PRODUCED',\n  -     'REROUTE',\n  -     'daec08d1ab46318f2c35fb456a20c7b6220f08938ce902c0bc768ae618db5b8f',\n  +     'BLOCK_DUPLICATE_EVENT_IDENTITY',\n  +     None,\n  +     None,\n    )",
+      "classification": "PARTIAL_CHECKPOINT_REPLAY_INVALID_EXPECTATION",
+      "original_outcome_retained": "FAIL",
+      "candidate_repair": false,
+      "followup_source": "repro/test_ms4_followup.py"
+    },
+    {
+      "classname": "repro.test_ms4",
+      "name": "test_valid_terminal_sequence_replay[WITHDRAW-CLAIM_ACCESSIBLE-REROUTE-AVAILABLE_UNCERTAIN]",
+      "outcome": "FAIL",
+      "message": "AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'REROUTE', 'ea1a289d4cdc11cd5ecb19464276a9446e3e4f6867c9f63123a4f0aa6b08bf7e')\n  \n  At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'\n  \n  Full diff:\n    (\n  -     'RESPONSE_EFFECTS_PRODUCED',\n  -     'REROUTE',\n  -     'ea1a289d4cdc11cd5ecb19464276a9446e3e4f6867c9f63123a4f0aa6b08bf7e',\n  +     'BLOCK_DUPLICATE_EVENT_IDENTITY',\n  +     None,\n  +     None,\n    )",
+      "classification": "PARTIAL_CHECKPOINT_REPLAY_INVALID_EXPECTATION",
+      "original_outcome_retained": "FAIL",
+      "candidate_repair": false,
+      "followup_source": "repro/test_ms4_followup.py"
+    },
+    {
+      "classname": "repro.test_ms4",
+      "name": "test_valid_terminal_sequence_replay[WITHDRAW-CLAIM_INACCESSIBLE-BLOCK-AVAILABLE_SOURCE_BOUND]",
+      "outcome": "FAIL",
+      "message": "AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'BLOCK', '047288aa55e992f6df534ab3e5fd8f9cc5af2d5661d1f69884a2260beb7d1ed8')\n  \n  At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'\n  \n  Full diff:\n    (\n  -     'RESPONSE_EFFECTS_PRODUCED',\n  -     'BLOCK',\n  -     '047288aa55e992f6df534ab3e5fd8f9cc5af2d5661d1f69884a2260beb7d1ed8',\n  +     'BLOCK_DUPLICATE_EVENT_IDENTITY',\n  +     None,\n  +     None,\n    )",
+      "classification": "PARTIAL_CHECKPOINT_REPLAY_INVALID_EXPECTATION",
+      "original_outcome_retained": "FAIL",
+      "candidate_repair": false,
+      "followup_source": "repro/test_ms4_followup.py"
+    },
+    {
+      "classname": "repro.test_ms4",
+      "name": "test_valid_terminal_sequence_replay[WITHDRAW-CLAIM_INACCESSIBLE-BLOCK-AVAILABLE_UNCERTAIN]",
+      "outcome": "FAIL",
+      "message": "AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'BLOCK', '5143ae4e9b0c2216390bb95c317598b4645e1802e9502ae3703adfe4800e5ec9')\n  \n  At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'\n  \n  Full diff:\n    (\n  -     'RESPONSE_EFFECTS_PRODUCED',\n  -     'BLOCK',\n  -     '5143ae4e9b0c2216390bb95c317598b4645e1802e9502ae3703adfe4800e5ec9',\n  +     'BLOCK_DUPLICATE_EVENT_IDENTITY',\n  +     None,\n  +     None,\n    )",
+      "classification": "PARTIAL_CHECKPOINT_REPLAY_INVALID_EXPECTATION",
+      "original_outcome_retained": "FAIL",
+      "candidate_repair": false,
+      "followup_source": "repro/test_ms4_followup.py"
+    },
+    {
+      "classname": "repro.test_ms4",
+      "name": "test_valid_terminal_sequence_replay[SUPERSEDE_EXACT_RECORD-CLAIM_ACCESSIBLE-REROUTE-AVAILABLE_SOURCE_BOUND]",
+      "outcome": "FAIL",
+      "message": "AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'REROUTE', 'f9505a18ba14ab9bda38dfcb47aa34fb83673b34f6cb1a0d834b3ff1436185ed')\n  \n  At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'\n  \n  Full diff:\n    (\n  -     'RESPONSE_EFFECTS_PRODUCED',\n  -     'REROUTE',\n  -     'f9505a18ba14ab9bda38dfcb47aa34fb83673b34f6cb1a0d834b3ff1436185ed',\n  +     'BLOCK_DUPLICATE_EVENT_IDENTITY',\n  +     None,\n  +     None,\n    )",
+      "classification": "PARTIAL_CHECKPOINT_REPLAY_INVALID_EXPECTATION",
+      "original_outcome_retained": "FAIL",
+      "candidate_repair": false,
+      "followup_source": "repro/test_ms4_followup.py"
+    },
+    {
+      "classname": "repro.test_ms4",
+      "name": "test_valid_terminal_sequence_replay[SUPERSEDE_EXACT_RECORD-CLAIM_ACCESSIBLE-REROUTE-AVAILABLE_UNCERTAIN]",
+      "outcome": "FAIL",
+      "message": "AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'REROUTE', 'f2fedd85cfbfcb36eb2a10bffedfc6e9a91a45dcff2a8132f8fc20e1a866c8c7')\n  \n  At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'\n  \n  Full diff:\n    (\n  -     'RESPONSE_EFFECTS_PRODUCED',\n  -     'REROUTE',\n  -     'f2fedd85cfbfcb36eb2a10bffedfc6e9a91a45dcff2a8132f8fc20e1a866c8c7',\n  +     'BLOCK_DUPLICATE_EVENT_IDENTITY',\n  +     None,\n  +     None,\n    )",
+      "classification": "PARTIAL_CHECKPOINT_REPLAY_INVALID_EXPECTATION",
+      "original_outcome_retained": "FAIL",
+      "candidate_repair": false,
+      "followup_source": "repro/test_ms4_followup.py"
+    },
+    {
+      "classname": "repro.test_ms4",
+      "name": "test_valid_terminal_sequence_replay[SUPERSEDE_EXACT_RECORD-CLAIM_INACCESSIBLE-BLOCK-AVAILABLE_SOURCE_BOUND]",
+      "outcome": "FAIL",
+      "message": "AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'BLOCK', '4591ef9042219ccadaf0ec13a2483ee48a5d94509d90952bbb40f4c9469a76c5')\n  \n  At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'\n  \n  Full diff:\n    (\n  -     'RESPONSE_EFFECTS_PRODUCED',\n  -     'BLOCK',\n  -     '4591ef9042219ccadaf0ec13a2483ee48a5d94509d90952bbb40f4c9469a76c5',\n  +     'BLOCK_DUPLICATE_EVENT_IDENTITY',\n  +     None,\n  +     None,\n    )",
+      "classification": "PARTIAL_CHECKPOINT_REPLAY_INVALID_EXPECTATION",
+      "original_outcome_retained": "FAIL",
+      "candidate_repair": false,
+      "followup_source": "repro/test_ms4_followup.py"
+    },
+    {
+      "classname": "repro.test_ms4",
+      "name": "test_valid_terminal_sequence_replay[SUPERSEDE_EXACT_RECORD-CLAIM_INACCESSIBLE-BLOCK-AVAILABLE_UNCERTAIN]",
+      "outcome": "FAIL",
+      "message": "AssertionError: assert ('BLOCK_DUPLICATE_EVENT_IDENTITY', None, None) == ('RESPONSE_EFFECTS_PRODUCED', 'BLOCK', '9e598b3e519abd41fd226b55d3f7c87cec73c30281fd736f067ccf4b67cdd7c0')\n  \n  At index 0 diff: 'BLOCK_DUPLICATE_EVENT_IDENTITY' != 'RESPONSE_EFFECTS_PRODUCED'\n  \n  Full diff:\n    (\n  -     'RESPONSE_EFFECTS_PRODUCED',\n  -     'BLOCK',\n  -     '9e598b3e519abd41fd226b55d3f7c87cec73c30281fd736f067ccf4b67cdd7c0',\n  +     'BLOCK_DUPLICATE_EVENT_IDENTITY',\n  +     None,\n  +     None,\n    )",
+      "classification": "PARTIAL_CHECKPOINT_REPLAY_INVALID_EXPECTATION",
+      "original_outcome_retained": "FAIL",
+      "candidate_repair": false,
+      "followup_source": "repro/test_ms4_followup.py"
+    },
+    {
+      "classname": "repro.test_ms4",
+      "name": "test_transaction_rollback_preserves_real_mutations_and_pending[second_read_after_real_receipt]",
+      "outcome": "FAIL",
+      "message": "assert ([])",
+      "classification": "INJECTED_STAGE_NOT_REACHED_DUPLICATE_ADMISSION",
+      "original_outcome_retained": "FAIL",
+      "candidate_repair": false,
+      "followup_source": "repro/test_ms4_followup.py"
+    }
+  ],
+  "followup20": {
+    "PASS": 20,
+    "FAIL": 0,
+    "ERROR": 0,
+    "SKIP": 0
+  },
+  "no_original_oracle_changed": true,
+  "no_candidate_changed": true
+}

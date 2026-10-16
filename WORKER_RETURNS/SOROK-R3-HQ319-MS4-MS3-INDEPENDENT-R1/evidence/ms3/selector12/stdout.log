@@ -1,0 +1,20 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: ${MS4_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ319-MS4-MS3-INDEPENDENT-R1
+collecting ... collected 12 items
+
+staging/ms3/repro/test_selector_extension_v2.py::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[None-mediate] PASSED [  8%]
+staging/ms3/repro/test_selector_extension_v2.py::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[None-consume] PASSED [ 16%]
+staging/ms3/repro/test_selector_extension_v2.py::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[empty-mediate] PASSED [ 25%]
+staging/ms3/repro/test_selector_extension_v2.py::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[empty-consume] PASSED [ 33%]
+staging/ms3/repro/test_selector_extension_v2.py::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[integer-mediate] PASSED [ 41%]
+staging/ms3/repro/test_selector_extension_v2.py::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[integer-consume] PASSED [ 50%]
+staging/ms3/repro/test_selector_extension_v2.py::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[list-mediate] PASSED [ 58%]
+staging/ms3/repro/test_selector_extension_v2.py::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[list-consume] PASSED [ 66%]
+staging/ms3/repro/test_selector_extension_v2.py::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[dict-mediate] PASSED [ 75%]
+staging/ms3/repro/test_selector_extension_v2.py::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[dict-consume] PASSED [ 83%]
+staging/ms3/repro/test_selector_extension_v2.py::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[foreign-mediate] PASSED [ 91%]
+staging/ms3/repro/test_selector_extension_v2.py::test_explicit_invalid_selector_never_skips_binding_or_becomes_valid_empty[foreign-consume] PASSED [100%]
+
+- generated xml file: ${MS4_WORKTREE}/WORKER_RETURNS/SOROK-R3-HQ319-MS4-MS3-INDEPENDENT-R1/evidence/ms3/selector12/junit.xml -
+============================== 12 passed in 1.29s ==============================

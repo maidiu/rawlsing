@@ -1,0 +1,63 @@
+{
+  "imports": [
+    {
+      "module": "candidate",
+      "module_file": "staging/ms3/staging/ms2/staging/ms1/runtime/candidate/__init__.py",
+      "blob_sha1": "0581aff4ac0ea45c07387e5340e219566ce7330d",
+      "sha256": "be2b6eff83a8a5af687456545477856ec438cee29f25481ff58636556f745083"
+    },
+    {
+      "module": "candidate.adopted_contract",
+      "module_file": "staging/ms3/staging/ms2/staging/ms1/runtime/candidate/adopted_contract.py",
+      "blob_sha1": "259ff9da129f7d644f8ac9fd8f739ad6041a3edf",
+      "sha256": "eec78079b8adc82b28a608ec7dd3fbf3947a53a98447fcf3d4c82db98becf0ae"
+    },
+    {
+      "module": "candidate.can008_candidate_rule",
+      "module_file": "staging/ms3/staging/ms2/staging/ms1/runtime/candidate/can008_candidate_rule.py",
+      "blob_sha1": "61d933d98ffb39d553a0dbc670388fc2bd3e89d3",
+      "sha256": "c5a4b271346fe045e5a54522926795e7514ad3bacbbed04fbb60a2183348c27e"
+    },
+    {
+      "module": "candidate.candidate_registry_fixture",
+      "module_file": "staging/ms3/staging/ms2/staging/ms1/runtime/candidate/candidate_registry_fixture.py",
+      "blob_sha1": "0d978f89fb3c5e836a52f25849240db360f97f8f",
+      "sha256": "1c2e2e0c4375a15b9f1bd55376a550834d001b7b7577cb2b8183caccbdfac768"
+    },
+    {
+      "module": "candidate.owner_transitions",
+      "module_file": "staging/ms3/staging/ms2/staging/ms1/runtime/candidate/owner_transitions.py",
+      "blob_sha1": "ac943d07459f68ba2e27baf05b442d9ecbddefd5",
+      "sha256": "fcdc073693f781607dd6a7ec25e5fa1a79ce3cccd5071005773b2ca7a8a5017d"
+    },
+    {
+      "module": "candidate.positive_chain",
+      "module_file": "staging/ms3/staging/ms2/staging/ms1/runtime/candidate/positive_chain.py",
+      "blob_sha1": "226cd42f81538f1b81ea7ea2e494776069142405",
+      "sha256": "0a288c5ffd1e92f0b29a2bf41ce99b50ebd05bf912c12d5efb18fd6fbc372657"
+    },
+    {
+      "module": "ms1_serial",
+      "module_file": "staging/ms3/staging/ms2/staging/ms1/runtime/ms1_serial.py",
+      "blob_sha1": "b5867cd1301441054ef25f9e1e2bf0a4745abdfd",
+      "sha256": "c1f10c8604f647ea7ae5a87365f44675f243fbc089f349f0d3fd080e7a696c07"
+    },
+    {
+      "module": "ms3_native_custody",
+      "module_file": "staging/ms3/staging/ms2/staging/ms1/runtime/ms3_native_custody.py",
+      "blob_sha1": "d172fe04788fcc33032b71eb6d083c15dd03ff7e",
+      "sha256": "190f02822070b6ac79e609a7102173f4d91631af7b1fad30ee83b02da14d7469"
+    }
+  ],
+  "pytest_args": [
+    "repro/test_ms4_followup.py",
+    "-vv",
+    "--tb=short",
+    "--noconftest",
+    "-p",
+    "no:cacheprovider",
+    "--import-mode=importlib",
+    "--rootdir=.",
+    "--junitxml=evidence/followup_on_ms3/followup/junit.xml"
+  ]
+}
