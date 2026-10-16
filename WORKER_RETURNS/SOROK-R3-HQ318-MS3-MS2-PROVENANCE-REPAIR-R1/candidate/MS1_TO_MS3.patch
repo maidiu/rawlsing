@@ -1,0 +1,290 @@
+--- MS1/ms1_serial.py
++++ MS3/ms1_serial.py
+@@ -9,8 +9,8 @@
+   * MS1_SERIAL_MEDIATOR@1.0.0-TEST_ONLY   - reads real memory CONTENT, maps it to a
+     native ADP017 accessibility class, applies via the REAL native transition.
+   * MS1_SERIAL_CONSUMER@1.0.0-TEST_ONLY  - reads real EPISTEMIC owner state only
+-    (it receives no memory argument at all, so a direct memory->response path is
+-    structurally absent), and applies its choice through the REAL native CAN008
++    (it receives full ctx; its epistemic choice restriction is authored, not
++    type-enforced exclusion of every direct dependence), and applies its choice through the REAL native CAN008
+     coupline_evaluate / response_rule_apply / build_response_receipt.
+ 
+ Everything else imported here is pinned native candidate source, staged byte-exact
+@@ -19,6 +19,7 @@
+ from __future__ import annotations
+ 
+ import hashlib
++import ms3_native_custody as custody
+ import json
+ import sys
+ from copy import deepcopy
+@@ -101,7 +102,7 @@
+ # Stage 1: real native ADP016 formation + commit of memory with real content.
+ # ---------------------------------------------------------------------------
+ 
+-def form_and_commit_memory(reg, ctx, e1, binding, content_state):
++def _form_and_commit_memory_unchecked(reg, ctx, e1, binding, content_state):
+     """Real native ADP016 formation, then the real native owner commit.
+ 
+     Returns (proposal, memory_dict) or (None, refusal_dict).
+@@ -161,10 +162,14 @@
+             return "SOURCE_EVENT_NOT_ADMITTED"
+     if not memory.get("source_feature_bindings"):
+         return "MISSING_SOURCE_FEATURE_BINDINGS"
++    try:
++        custody.validate(ctx, reg, can8.build_default_binding(), fixed_e1())
++    except Exception as exc:
++        return str(exc) if isinstance(exc, custody.NativeProofError) else "MS3_NATIVE_MEMORY_INVALID"
+     return None
+ 
+ 
+-def mediate(*, ctx, reg, binding, e1, claim_id, memory,
++def _mediate_unchecked(*, ctx, reg, binding, e1, claim_id, memory,
+             mode="CONTENT_SENSITIVE", tamper=False):
+     """Apply the hypothetical mediator and the REAL native ADP017 transition.
+ 
+@@ -216,7 +221,7 @@
+     return result
+ 
+ 
+-def withdraw_mediator(*, ctx, reg, binding, e1, claim_id, memory, target_effect_id,
++def _withdraw_mediator_unchecked(*, ctx, reg, binding, e1, claim_id, memory, target_effect_id,
+                       claim_accessibility="CLAIM_ACCESSIBLE"):
+     """Lawful NATIVE mediator withdrawal: ADP017 WITHDRAW with an exact target.
+ 
+@@ -248,84 +253,159 @@
+ 
+ # ---------------------------------------------------------------------------
+ # HYPOTHETICAL RULE 2: MS1_SERIAL_CONSUMER@1.0.0-TEST_ONLY
+-# Reads REAL EPISTEMIC owner state. Receives NO memory argument, so it cannot see
+-# memory content even by accident.
++# Reads verified native epistemic state for choice. Full ctx remains available;
++# this dependency restriction is authored, not a type-level isolation guarantee.
+ # ---------------------------------------------------------------------------
+ 
+ def consume(ctx, reg, binding, e2, claim_id, prior_history=()):
+-    """Choose the later response from real owner state, then apply native CAN008."""
+-    if not ctx.verify():
+-        return refuse("BLOCKED_INTEGRITY_FAILURE", "owner state failed verification")
+-    if e2.actor_scope != ACTOR or (e2.world_ref, e2.world_as_of) != (WORLD, WORLD_AS_OF):
+-        return refuse("BLOCK_WRONG_ACTOR_SCOPE")
+-    if parse_time(e2.effective_causal_time) <= parse_time(T_E1):
+-        return refuse("BLOCK_REVERSE_CHRONOLOGY_CAUSAL_PARENT")
+-
+-    state_set = ctx.state_sets.get(claim_id)
+-    permission = ctx.permissions.get(claim_id)
+-
+-    # Real owner state is the ONLY epistemic input.
+-    if state_set is None or permission is None:
+-        chosen = None
+-        decision = "RESPONSE_INPUTS_VALID_EMPTY"
+-        permission_seen = None
+-        absent_epistemic_state = True
+-    else:
+-        absent_epistemic_state = False
+-        permission_seen = permission.get("permission")
+-        if permission.get("epistemic_state_hash") != state_set.get("current_state_hash"):
+-            return refuse("BLOCKED_INTEGRITY_FAILURE", "permission/epistemic snapshot mismatch")
+-        if state_set.get("actor_id") != ACTOR:
+-            return refuse("BLOCK_WRONG_ACTOR_SCOPE")
+-        decision = permission_seen
+-        chosen = PERMISSION_TO_EFFECT.get(permission_seen)
+-
+-    prestate = can8.OwnerPrestate(
+-        actor_id=ACTOR,
+-        adp016_memory_refs=tuple(sorted(ctx.memories)),
+-        adp017_claim_refs=tuple(sorted(ctx.stances)),
+-        prior_can008_response_count=len(prior_history),
+-        world_ref=WORLD, world_as_of=WORLD_AS_OF,
+-    )
+-    prestate._context = ctx
+-
+-    # Always evaluate the SAME E2 through the real native coupline, so event
+-    # admission is identical in every cell (P1 requires E2 fixed).
+-    coupling = can8.coupline_evaluate(e2, prestate, binding, reg)
+-    if coupling.get("decision_state") != "COUPLING_EVALUATED":
+-        return refuse(coupling.get("code", coupling.get("decision_state", "RESPONSE_REFUSED")))
+-
+-    if chosen is None:
+-        # No productive effect: native grammar forbids guessing under DEFER/empty.
+-        r = refuse(decision,
+-                   f"no productive response licensed by owner state "
+-                   f"(permission={permission_seen})")
+-        r["chosen_from_permission"] = permission_seen
+-        r["epistemic_state_absent"] = absent_epistemic_state
+-        r["owner_state_hash_read"] = ctx.state_hash
+-        r["consumer_rule_id"] = CONSUMER_ID
+-        r["is_unissued_synthetic"] = True
+-        r["committed"] = False
+-        r["production_owner_commit"] = False
+-        return r
+-
+-    response = can8.response_rule_apply(coupling, prestate, binding, chosen)
+-    if response.get("decision_state") != "RESPONSE_EFFECTS_PRODUCED":
+-        return refuse(response.get("decision_state", "RESPONSE_REFUSED"))
+-    receipt = can8.build_response_receipt(e2, prestate, binding, coupling, response)
+-    return dict(
+-        decision_state="RESPONSE_EFFECTS_PRODUCED",
+-        chosen_from_permission=permission_seen,
+-        effect_kind=chosen,
+-        receipt=receipt,
+-        receipt_hash=receipt["receipt_hash"],
+-        coupling=deepcopy(coupling),
+-        owner_state_hash_read=ctx.state_hash,
+-        consumer_rule_id=CONSUMER_ID,
+-        is_unissued_synthetic=True,
+-        committed=False,
+-        production_owner_commit=False,
+-    )
++    """Validate native input; construct an uncommitted response with atomic refusal."""
++    before = None
++    try:
++        before = (ctx.checkpoint(), reg.checkpoint())
++        proof = custody.validate(ctx, reg, binding, fixed_e1(), claim_id, e2.effective_causal_time)
++        def apply_verified():
++            """Choose the later response from real owner state, then apply native CAN008."""
++            if not ctx.verify():
++                return refuse("BLOCKED_INTEGRITY_FAILURE", "owner state failed verification")
++            if e2.actor_scope != ACTOR or (e2.world_ref, e2.world_as_of) != (WORLD, WORLD_AS_OF):
++                return refuse("BLOCK_WRONG_ACTOR_SCOPE")
++            if parse_time(e2.effective_causal_time) <= parse_time(T_E1):
++                return refuse("BLOCK_REVERSE_CHRONOLOGY_CAUSAL_PARENT")
++        
++            state_set = ctx.state_sets.get(claim_id)
++            permission = ctx.permissions.get(claim_id)
++        
++            # Real owner state is the ONLY epistemic input.
++            if state_set is None or permission is None:
++                chosen = None
++                decision = "RESPONSE_INPUTS_VALID_EMPTY"
++                permission_seen = None
++                absent_epistemic_state = True
++            else:
++                absent_epistemic_state = False
++                permission_seen = permission.get("permission")
++                if permission.get("epistemic_state_hash") != state_set.get("current_state_hash"):
++                    return refuse("BLOCKED_INTEGRITY_FAILURE", "permission/epistemic snapshot mismatch")
++                if state_set.get("actor_id") != ACTOR:
++                    return refuse("BLOCK_WRONG_ACTOR_SCOPE")
++                decision = permission_seen
++                chosen = PERMISSION_TO_EFFECT.get(permission_seen)
++        
++            prestate = can8.OwnerPrestate(
++                actor_id=ACTOR,
++                adp016_memory_refs=tuple(sorted(ctx.memories)),
++                adp017_claim_refs=tuple(sorted(ctx.stances)),
++                prior_can008_response_count=len(prior_history),
++                world_ref=WORLD, world_as_of=WORLD_AS_OF,
++            )
++            prestate._context = ctx
++        
++            # Always evaluate the SAME E2 through the real native coupline, so event
++            # admission is identical in every cell (P1 requires E2 fixed).
++            coupling = can8.coupline_evaluate(e2, prestate, binding, reg)
++            if coupling.get("decision_state") != "COUPLING_EVALUATED":
++                return refuse(coupling.get("code", coupling.get("decision_state", "RESPONSE_REFUSED")))
++        
++            if chosen is None:
++                # No productive effect: native grammar forbids guessing under DEFER/empty.
++                r = refuse(decision,
++                           f"no productive response licensed by owner state "
++                           f"(permission={permission_seen})")
++                r["chosen_from_permission"] = permission_seen
++                r["epistemic_state_absent"] = absent_epistemic_state
++                r["owner_state_hash_read"] = ctx.state_hash
++                r["consumer_rule_id"] = CONSUMER_ID
++                r["is_unissued_synthetic"] = True
++                r["committed"] = False
++                r["production_owner_commit"] = False
++                return r
++        
++            response = can8.response_rule_apply(coupling, prestate, binding, chosen)
++            if response.get("decision_state") != "RESPONSE_EFFECTS_PRODUCED":
++                return refuse(response.get("decision_state", "RESPONSE_REFUSED"))
++            receipt = can8.build_response_receipt(e2, prestate, binding, coupling, response)
++            return dict(
++                decision_state="RESPONSE_EFFECTS_PRODUCED",
++                chosen_from_permission=permission_seen,
++                effect_kind=chosen,
++                receipt=receipt,
++                receipt_hash=receipt["receipt_hash"],
++                coupling=deepcopy(coupling),
++                owner_state_hash_read=ctx.state_hash,
++                consumer_rule_id=CONSUMER_ID,
++                is_unissued_synthetic=True,
++                committed=False,
++                production_owner_commit=False,
++            )
++        result = apply_verified()
++        result["native_owner_provenance"] = proof
++        if result.get("decision_state") != "RESPONSE_EFFECTS_PRODUCED":
++            ctx.restore(before[0]); reg.restore(before[1])
++        return result
++    except Exception as exc:
++        if before is not None:
++            ctx.restore(before[0]); reg.restore(before[1])
++        return refuse(str(exc) if isinstance(exc, custody.NativeProofError) else "MS3_NATIVE_CONSUMPTION_FAILURE")
++
++
++def form_and_commit_memory(reg, ctx, e1, binding, content_state):
++    """Actual native formation/commit, with complete rollback on refusal/exception."""
++    before = None
++    try:
++        before = (ctx.checkpoint(), reg.checkpoint())
++        custody.need(e1 == fixed_e1(), "MS3_SOURCE_EVENT_BINDING")
++        custody.validate(ctx, reg, binding, fixed_e1())
++        result = _form_and_commit_memory_unchecked(reg, ctx, e1, binding, content_state)
++        if result[0] is None:
++            ctx.restore(before[0]); reg.restore(before[1])
++        else:
++            custody.validate(ctx, reg, binding, fixed_e1())
++        return result
++    except Exception as exc:
++        if before is not None:
++            ctx.restore(before[0]); reg.restore(before[1])
++        return None, refuse(str(exc) if isinstance(exc, custody.NativeProofError) else "MS3_NATIVE_FORMATION_FAILURE")
++
++
++def mediate(*, ctx, reg, binding, e1, claim_id, memory, mode="CONTENT_SENSITIVE", tamper=False):
++    """Apply the unissued map only to an exact reproducible native owner trajectory."""
++    before = None
++    try:
++        before = (ctx.checkpoint(), reg.checkpoint())
++        custody.need(e1 == fixed_e1(), "MS3_SOURCE_EVENT_BINDING")
++        custody.validate(ctx, reg, binding, e1, claim_id)
++        result = _mediate_unchecked(ctx=ctx, reg=reg, binding=binding, e1=e1, claim_id=claim_id, memory=memory, mode=mode, tamper=tamper)
++        if result.get("decision_state") != "APPLIED_EPISTEMIC_TRANSITION":
++            ctx.restore(before[0]); reg.restore(before[1])
++        else:
++            result["native_owner_provenance"] = custody.validate(ctx, reg, binding, e1, claim_id)
++        return result
++    except Exception as exc:
++        if before is not None:
++            ctx.restore(before[0]); reg.restore(before[1])
++        return refuse(str(exc) if isinstance(exc, custody.NativeProofError) else "MS3_NATIVE_MEDIATION_FAILURE")
++
++
++def withdraw_mediator(*, ctx, reg, binding, e1, claim_id, memory, target_effect_id, claim_accessibility="CLAIM_ACCESSIBLE"):
++    """Real exact-target native withdrawal, retaining UNKNOWN semantics and rollback."""
++    before = None
++    try:
++        before = (ctx.checkpoint(), reg.checkpoint())
++        custody.need(e1 == fixed_e1(), "MS3_SOURCE_EVENT_BINDING")
++        custody.validate(ctx, reg, binding, e1, claim_id)
++        bad = _verify_memory_provenance(ctx, reg, memory)
++        if bad is not None:
++            return refuse(bad)
++        result = _withdraw_mediator_unchecked(ctx=ctx, reg=reg, binding=binding, e1=e1, claim_id=claim_id, memory=memory, target_effect_id=target_effect_id, claim_accessibility=claim_accessibility)
++        if result.get("decision_state") != "APPLIED_EPISTEMIC_TRANSITION":
++            ctx.restore(before[0]); reg.restore(before[1])
++        else:
++            result["native_owner_provenance"] = custody.validate(ctx, reg, binding, e1, claim_id)
++        return result
++    except Exception as exc:
++        if before is not None:
++            ctx.restore(before[0]); reg.restore(before[1])
++        return refuse(str(exc) if isinstance(exc, custody.NativeProofError) else "MS3_NATIVE_WITHDRAWAL_FAILURE")
+ 
+ 
+ # ---------------------------------------------------------------------------
