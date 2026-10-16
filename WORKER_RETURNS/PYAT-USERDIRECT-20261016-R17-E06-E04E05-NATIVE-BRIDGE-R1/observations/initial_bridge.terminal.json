@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "python3",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_bridge.py",
+    "--import-mode=importlib",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=observations/bridge.xml"
+  ],
+  "cwd": "RETURN",
+  "exit": 1,
+  "seconds": 45.21748894092161,
+  "scope": "E06_NEW_INTEGRATION_CASES_ONLY__494_AND_403_NOT_RERUN"
+}

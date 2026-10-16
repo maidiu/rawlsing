@@ -1,0 +1,79 @@
+{
+  "schema": "E06_REQUIREMENT_EVIDENCE_AUDIT@1",
+  "status": "IMPLEMENTATION_DELIVERABLES_PROVED__INDEPENDENT_REVIEW_PENDING",
+  "requirements": [
+    {
+      "requirement": "Frozen independent expectations before execution",
+      "evidence": "01_FROZEN_E04T_E05R_BRIDGE_CONTRACT.json; 01_FREEZE_SHA256.txt; Git freeze 14f247b75def5388457a856ba6334cc32384a0b8",
+      "checks": "test_frozen_contract_precedes_candidate",
+      "status": "PROVED_AT_COMMISSIONED_CANDIDATE_GRAIN"
+    },
+    {
+      "requirement": "Exact accepted E04T plus E05R, no owner patch",
+      "evidence": "source_manifest.json; native_closure_compatibility.json; observations/provider_import_identity.json",
+      "checks": "test_actual_imports_frames_and_original_identity; test_every_imported_git_preimage_and_no_installation",
+      "status": "PROVED_AT_COMMISSIONED_CANDIDATE_GRAIN"
+    },
+    {
+      "requirement": "Actual C11/I03/N10E/C1/F8 and both clients",
+      "evidence": "02 products CURRENT; observations/native_imports_and_calls.json",
+      "checks": "test_actual_source_current_and_both_clients; test_actual_imports_frames_and_original_identity",
+      "status": "PROVED_AT_COMMISSIONED_CANDIDATE_GRAIN"
+    },
+    {
+      "requirement": "Forward/intervention/minority/reverse",
+      "evidence": "02 products CURRENT/Y_CHANGED/REVERSE/WEAK_NULL",
+      "checks": "test_actual_source_current_and_both_clients; test_Y_intervention_actual_producer_products; test_reverse_separate_authorized_role; test_weak_null_source_support",
+      "status": "PROVED_AT_COMMISSIONED_CANDIDATE_GRAIN"
+    },
+    {
+      "requirement": "Warm exact query grant loss, unrelated fields, restoration",
+      "evidence": "02 products QUERY_GRANT_LIFECYCLE",
+      "checks": "test_warm_query_grant_loss_and_exact_restoration; test_no_unauthorized_grant_reissue",
+      "status": "PROVED_AT_COMMISSIONED_CANDIDATE_GRAIN"
+    },
+    {
+      "requirement": "Current/historical clocks, no future native warmup",
+      "evidence": "02 products CURRENT/HISTORICAL/PRE_NCA_PUBLICATION",
+      "checks": "test_current_historical_exact_structural_effect; test_publication_denial_is_distinct; test_clock_denied_world_does_not_prewarm_future_empirical_evidence",
+      "status": "PROVED_AT_COMMISSIONED_CANDIDATE_GRAIN"
+    },
+    {
+      "requirement": "GSS/NCA units, selective revoke and ZERO_SUPPORT distinction",
+      "evidence": "02 products SELECTIVE_NATIVE_REVOCATION/SELECTIVE_NATIVE_EXPLICIT_WITHDRAWAL/ZERO_SUPPORT/OBSERVED_NATIVE_ZERO",
+      "checks": "test_selective_native_revoke; test_explicit_native_source_revoked_differs_from_rekey_and_publication; test_zero_support_is_actual_terminal; test_native_observed_zero_is_present_number",
+      "status": "PROVED_AT_COMMISSIONED_CANDIDATE_GRAIN"
+    },
+    {
+      "requirement": "Source/release/risk/permission and contaminated readsets refuse",
+      "evidence": "tests/test_bridge.py; observations/bridge.xml",
+      "checks": "test_exact_binding_substitution_refuses; test_same_ref_foreign_native_release_object_refuses; test_clock_and_partial_readset_contamination_refuse; test_e04t_owner_cache_guard_precedes_e05r_clear",
+      "status": "PROVED_AT_COMMISSIONED_CANDIDATE_GRAIN"
+    },
+    {
+      "requirement": "Separate-process replay with persisted current fixture grants",
+      "evidence": "observations/cold_restored_comparison.json; observations/cold_withdrawn_comparison.json; four cold process outputs and terminals",
+      "checks": "test_cold_persisted_current_grants; test_archival_not_new_process_acceptance",
+      "status": "PROVED_AT_COMMISSIONED_CANDIDATE_GRAIN"
+    },
+    {
+      "requirement": "Independent review and source/install/actor ceilings",
+      "evidence": "04_OWNER_INSTALLATION_AND_ISSUER_HOLDS.md; 00_RETURN.md",
+      "checks": "TEST_ONLY_SOURCEFREE_BRIDGE_CANDIDATE; no independent acceptance claimed",
+      "status": "PROVED_AT_COMMISSIONED_CANDIDATE_GRAIN"
+    }
+  ],
+  "final_tests": {
+    "tests": 40,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "freeze_commit": "14f247b75def5388457a856ba6334cc32384a0b8",
+  "source_objects": 402,
+  "original_C11_respondents": 58,
+  "original_C11_events": 232,
+  "actual_native_imports": 34,
+  "concrete_C1_evidence_into_F8": 111,
+  "independent_integration_review": false
+}

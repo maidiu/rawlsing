@@ -1,0 +1,51 @@
+........FFF......................                                        [100%]
+=================================== FAILURES ===================================
+_______________ test_selective_native_revoke[GSS_RURAL_LIGHTING] _______________
+
+data = {'executed_at_utc': '2026-10-16T20:36:07.688214+00:00', 'grade': 'TEST_ONLY_SOURCEFREE_BRIDGE_CANDIDATE', 'independent...time/rawlsing_next/m4_v557_v558_publication_repository.py', 'function': 'resolve_v558', 'line': 1361}, ...], ...}, ...}
+role = 'GSS_RURAL_LIGHTING'
+
+    @pytest.mark.parametrize('role',[GSS,NCA])
+    def test_selective_native_revoke(data,role):
+     x=data['products']['SELECTIVE_NATIVE_REVOCATION'][role];a=x['before']['selected_world_receipt'];b=x['after']['selected_world_receipt']
+     assert b['state']=='TYPED_PARTIAL_SELECTED_WORLD'
+     assert b['native_field_readset']['values_read']==[v for v in a['native_field_readset']['values_read'] if v['role']!=role]
+>    assert any(v['reason']=='SOURCE_REVOKED' for v in b['native_field_readset']['refusals'])
+E    assert False
+E     +  where False = any(<generator object test_selective_native_revoke.<locals>.<genexpr> at 0x1148bc2b0>)
+
+tests/test_bridge.py:77: AssertionError
+____________ test_selective_native_revoke[NCA_NATIONAL_MOBILE_DATA] ____________
+
+data = {'executed_at_utc': '2026-10-16T20:36:07.688214+00:00', 'grade': 'TEST_ONLY_SOURCEFREE_BRIDGE_CANDIDATE', 'independent...time/rawlsing_next/m4_v557_v558_publication_repository.py', 'function': 'resolve_v558', 'line': 1361}, ...], ...}, ...}
+role = 'NCA_NATIONAL_MOBILE_DATA'
+
+    @pytest.mark.parametrize('role',[GSS,NCA])
+    def test_selective_native_revoke(data,role):
+     x=data['products']['SELECTIVE_NATIVE_REVOCATION'][role];a=x['before']['selected_world_receipt'];b=x['after']['selected_world_receipt']
+     assert b['state']=='TYPED_PARTIAL_SELECTED_WORLD'
+     assert b['native_field_readset']['values_read']==[v for v in a['native_field_readset']['values_read'] if v['role']!=role]
+>    assert any(v['reason']=='SOURCE_REVOKED' for v in b['native_field_readset']['refusals'])
+E    assert False
+E     +  where False = any(<generator object test_selective_native_revoke.<locals>.<genexpr> at 0x1148bd700>)
+
+tests/test_bridge.py:77: AssertionError
+_____________________ test_publication_denial_is_distinct ______________________
+
+data = {'executed_at_utc': '2026-10-16T20:36:07.688214+00:00', 'grade': 'TEST_ONLY_SOURCEFREE_BRIDGE_CANDIDATE', 'independent...time/rawlsing_next/m4_v557_v558_publication_repository.py', 'function': 'resolve_v558', 'line': 1361}, ...], ...}, ...}
+
+    def test_publication_denial_is_distinct(data):
+     a=receipt(data,'PRE_NCA_PUBLICATION');assert any(x['reason']=='NOT_PUBLISHED_AT_SELECTED_ASOF' for x in a['native_field_readset']['refusals'])
+>    assert a['empirical_steps']==receipt(data,'CURRENT')['empirical_steps']
+E    AssertionError: assert [] == [{'authority_...tness'}, ...}]
+E      
+E      Right contains 3 more items, first extra item: {'authority_refs': [{'authority_content_hash': '7a46272303d7956bb9615ce69a2d5d366216f3c7884ae9e900503cc50231bec4', 'au...68b06679e', 'kind': 'C1_CONDITION_VALUE_BINDING_WITNESS@2', 'object_id': 'urn:test:e03:c7442995fc5a6361:witness'}, ...}
+E      Use -v to get more diff
+
+tests/test_bridge.py:82: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_bridge.py::test_selective_native_revoke[GSS_RURAL_LIGHTING]
+FAILED tests/test_bridge.py::test_selective_native_revoke[NCA_NATIONAL_MOBILE_DATA]
+FAILED tests/test_bridge.py::test_publication_denial_is_distinct - AssertionE...
+3 failed, 30 passed in 44.82s
+
