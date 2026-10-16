@@ -1,0 +1,145 @@
+{
+  "schema": "PYAT_R11_E04I_PREEXECUTION_INDEPENDENT_EXPECTATIONS@1",
+  "sealed": "ca500dbda08faa1f35fc21502c751e1d0c2d2b83",
+  "candidate": "9c96f201f3530d2dae321201e9a913bb7a61800f",
+  "frozen_before_candidate_python_execution": true,
+  "observed_sources_before_freeze": [
+    "E04I full commission",
+    "remote E04 tree/file identities only"
+  ],
+  "positive_numerical_oracle": {
+    "sourcefree_only": true,
+    "rows": 58,
+    "strata": 8,
+    "unconditional_P_Y_given_A": {
+      "numerator": 18,
+      "denominator": 32,
+      "rational": "9/16",
+      "decimal": 0.5625
+    },
+    "progressive_P_Y_given_A_B": {
+      "numerator": 10,
+      "denominator": 16,
+      "rational": "5/8",
+      "decimal": 0.625
+    },
+    "progressive_P_Y_given_A_B_C": {
+      "numerator": 6,
+      "denominator": 8,
+      "rational": "3/4",
+      "decimal": 0.75
+    },
+    "distinct_reverse_query_P_A_given_Y": {
+      "numerator": 18,
+      "denominator": 29,
+      "rational": "18/29",
+      "requires_separately_authenticated_reverse_scope": true
+    },
+    "intervention_Y0_to_Y1_in_all_relevant_progressive_strata": {
+      "step1": "19/32",
+      "step2": "11/16",
+      "step3": "7/8"
+    },
+    "native_asof_observed_years": "2026-2027 revised synthetic fixtures, check pinned source clock corrections",
+    "sample_data_not_original": true
+  },
+  "two_clients": [
+    "nonparent institution-option reader",
+    "conception-scenario evaluator"
+  ],
+  "required_positive_flow": [
+    "source-native 58-row predeclared synthetic observations and 8-stratum joint population",
+    "actual accepted C11/I03 and N10E/C1/F8/M4/M5 owner methods invoked and pinned",
+    "same selected world reference across both readers",
+    "ordered progressive conditioning has decreasing denominator 32 -> 16 -> 8 and numerator 18 -> 10 -> 6",
+    "two clients actually consume value-bearing outputs, null, weak and minority included; no templated text substitution"
+  ],
+  "independent_hostiles": [
+    {
+      "id": "H01",
+      "surface": "role reversal",
+      "mutation": "request P(A|Y) with authority P(Y|A)",
+      "expected": "REFUSE unless separately positive reverse scope; equal scalar numerator is not permission"
+    },
+    {
+      "id": "H02",
+      "surface": "joint support",
+      "mutation": "unsupported dyad/split-risk-set conditioned event",
+      "expected": "REFUSE/HOLD, not multiply unqualified marginals"
+    },
+    {
+      "id": "H03",
+      "surface": "digest and permission",
+      "mutation": "rekey source root/risk or self-rehash fabricated authority",
+      "expected": "REFUSE via independent issuer/reference, not merely hash consistency"
+    },
+    {
+      "id": "H04",
+      "surface": "native observation semantics",
+      "mutation": "change one original Y0 to Y1 among all relevant strata",
+      "expected": "19/32,11/16,7/8 exact; structural leaves unchanged"
+    },
+    {
+      "id": "H05",
+      "surface": "structural intervention",
+      "mutation": "change access fee, sanction, or institutional availability alone",
+      "expected": "empirical bytes/refs/counts unchanged; route accessibility changes"
+    },
+    {
+      "id": "H06",
+      "surface": "intervention composition",
+      "mutation": "apply independent empirical and structural interventions in either order",
+      "expected": "commute semantically for disjoint leaves; no fake probability product"
+    },
+    {
+      "id": "H07",
+      "surface": "stability",
+      "mutation": "unrelated structural field only",
+      "expected": "unrelated empirical facts and unaffected access paths stable"
+    },
+    {
+      "id": "H08",
+      "surface": "historical clocks",
+      "mutation": "2027 publication requested at earlier 2026 asof",
+      "expected": "not yet known, refuse source disclosure/new value read"
+    },
+    {
+      "id": "H09",
+      "surface": "revocation",
+      "mutation": "current permission withdrawn while old proof exists",
+      "expected": "old history preserved, new reader blocked; selective invalidation only affected channel"
+    },
+    {
+      "id": "H10",
+      "surface": "two consumers",
+      "mutation": "injected desired father/mother traits, child outcomes or selection weights",
+      "expected": "typed refusals; two actual distinct client paths and no generated persons"
+    },
+    {
+      "id": "H11",
+      "surface": "selected world",
+      "mutation": "replace same semantic fact with different source root/release",
+      "expected": "world ref/owner proof changes or typed refusal; no accepting unsupported self-rekey"
+    },
+    {
+      "id": "H12",
+      "surface": "current N9",
+      "mutation": "pass TEST_ONLY local selector as operative CURRENT N9/OC05",
+      "expected": "refuse claim; genuine N9 absent -> LOCAL_TEST_ONLY"
+    },
+    {
+      "id": "H13",
+      "surface": "positive no-drop",
+      "mutation": "minority/null/weak stratum supported by actual source",
+      "expected": "value-bearing evidence instead of generic HOLD"
+    },
+    {
+      "id": "H14",
+      "surface": "owner gate",
+      "mutation": "inspect import references, actual call traces and historical code identity",
+      "expected": "not treat interface stubs/author 408 calls as independently reproduced evidence"
+    }
+  ],
+  "strictness": "Full sourcefree positive acceptance requires real executable original pinned interfaces. If not importable, evaluate bounded local product through actual Python and report owner NOT_EXECUTED; do not invent 408 owner calls or 268 green tests.",
+  "authority_ceiling": "No original SAV/DTA, source/E/EE14/N9/N10W issuer, canonical CURRENT/OC05, generated actors, or V3"
+}
