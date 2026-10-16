@@ -1,0 +1,48 @@
+{
+  "schema": "SOROK_C07P_PREREG_FREEZE_R1",
+  "prereg_doc": "01_PREREGISTERED_PROTOCOL_R1.md",
+  "prereg_doc_sha256": "d5d7d2377130dbc49a3033f583a357045517797d35007eb461fe1f59055c74de",
+  "freeze_commit": "82ba75680f7cf296918c6236ef7c0e8df1756dde",
+  "frozen_before": "any adapter implementation or adversarial test existed",
+  "positives": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8",
+    "P9",
+    "P10"
+  ],
+  "negatives": [
+    "N1",
+    "N2",
+    "N3",
+    "N4",
+    "N5",
+    "N6",
+    "N7",
+    "N8",
+    "N9",
+    "N10",
+    "N11",
+    "N12"
+  ],
+  "crash_points": [
+    "0_before_temp",
+    "1_after_tmp_fsync_before_replace",
+    "2_after_replace_before_dir_fsync",
+    "3_after_dir_fsync"
+  ],
+  "crash_point_2_status": "PREREGISTERED_NOT_SETTLED__PROCESS_KILL_CANNOT_EXERCISE_POWER_LOSS",
+  "typed_holds_up_front": [
+    "C07_DEPENDENCY_TS",
+    "C07_DEPENDENCY_REVOKE"
+  ],
+  "verdict_options": [
+    "SOURCEFREE_C07_CROSSPROCESS_CANDIDATE_REQUIRES_I2",
+    "C07_EXECUTION_HOLD"
+  ]
+}

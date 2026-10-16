@@ -1,7 +1,7 @@
 # SOROK HQ317 C07P — preregistered protocol, threat model and expectation matrix
 
 **Status:** `FROZEN_BEFORE_ANY_ADAPTER_IMPLEMENTATION`.
-**Frozen at commit:** `TO_BE_FILLED_BY_FREEZE_COMMIT` (this file is committed before `c07_journal.py` or any
+**Frozen at commit:** `82ba75680f7cf296918c6236ef7c0e8df1756dde` (this file is committed before `c07_journal.py` or any
 adversarial test exists).
 **Author:** HQ317 C07P bounded source-free custody implementation experimenter.
 **Native source under adaptation, unmodified:** OC6 blob `4c185c18dbee57603038e97886da8fc4aa834082`.
