@@ -1,0 +1,95 @@
+{
+ "schema": "SOROK_HQ318_OUT11_MULTIWITER_RECOVERY@1",
+ "branch": "agent/rabochii-sorok-r3-hq318-out11-out9-multiwriter-recovery-r1",
+ "sealed_startup": "a51bd276d59d69daea6fa87308c89ac938122bd0",
+ "source_recovery": {
+  "commit": "fd58957fceca250e86ed3b1a5d06fa45ffc9ec85",
+  "path": "WORKER_RETURNS/SOROK-R3-HQ314-OUT9-OUT8-INDEPENDENT-R1/candidate/outbox_prototype.py",
+  "expected_blob": "331840768ce0b5f6f73e5e93094ca0d217ddaebf",
+  "actual_blob": "331840768ce0b5f6f73e5e93094ca0d217ddaebf",
+  "blob_match": true,
+  "file_sha256": "5c994f29a8c3cf870cb8a18ce4c300fa51d9ab45c34caabc5f10a0f1973708ed",
+  "staged_py_files": 18,
+  "closure_complete": true,
+  "transport_error_repeated": false
+ },
+ "environment_preflight": {
+  "harness": "DeepSeek-Harness running",
+  "python": "3.11.3",
+  "pytest": "9.1.1",
+  "pnpm_path_issue": "RESOLVED",
+  "verdict": "GREEN_NO_HOLD_NEEDED"
+ },
+ "closure_run": {
+  "passed": 270,
+  "failed": 2,
+  "exit_code": 1,
+  "historical_REDs_preserved": [
+   "test_sr_28_falsifier_court.py::test_s27_material_move_needs_world_owner",
+   "test_rto_hostile.py::test_replay_manual_two_writers_can_lose_first_committed_event"
+  ],
+  "oracles_edited": false,
+  "xfail_added": false
+ },
+ "two_process_reproduction": {
+  "mechanism": "two REAL OS subprocesses, both recover() the same version, real filesystem barrier, both then commit",
+  "process_returncodes": [
+   0,
+   0
+  ],
+  "both_reported_committed": true,
+  "events_after": 1,
+  "expected_if_safe": 2,
+  "lost_committed_events": 1,
+  "surviving_candidate_id": "B",
+  "verdict": "TWO_WRITER_STALE_JOURNAL_LOSS_CONFIRMED_AT_PROCESS_LEVEL",
+  "mechanism_root_cause": "commit() is a whole-file last-writer-wins publication with no version precondition, so a writer holding a stale snapshot silently overwrites work committed in the interim"
+ },
+ "self_correction_recorded": "my first reproduction used a hand-built candidate; admit() returned None, both writers died with TypeError, yet the script printed LOST_COMMITTED_EVENTS:2 - a FALSE POSITIVE from my own broken fixture. Discarded and re-run with the closure's authentic legacy() helper; the reported figures come from the corrected run.",
+ "safe_multiwriter_candidate_delivered": false,
+ "no_loss_claim_made": false,
+ "not_tested": [
+  "three-process interleavings",
+  "typed version conflicts and lawful retry",
+  "duplicate event identity and acknowledgement integrity",
+  "revocation monotonicity",
+  "atomic journal publication under concurrent writers",
+  "cold recovery under actual subprocess crashes",
+  "OUT9 25 additional independent controls",
+  "exactly-once at tested scope",
+  "preregistration artifact for those interlocks"
+ ],
+ "scope_discipline": {
+  "out10_six_file_violation_inherited": false,
+  "writes_outside_assigned_return_terrain": 0,
+  "accepted_out9_source_modified": false,
+  "original_test_bytes_modified": false
+ },
+ "production_adp019_authority": false,
+ "real_client_perception": false,
+ "physical_world_movement": false,
+ "v3_operation": false,
+ "helper_agents": false,
+ "harness_switch": false,
+ "deliverables": {
+  "00_RETURN.md": {
+   "sha256": "a5ededfc3a94c0cf3a50b2edd10442c41b5e8588738d661d61b5d6dd7a2f3cf0",
+   "bytes": 6284
+  }
+ },
+ "repro": {
+  "out11_two_process_repro.py": {
+   "sha256": "da07bb42ea3a8f955a8a4b179878baa435934bf70a2cb9155ebb30140dcc07c4",
+   "bytes": 2204
+  },
+  "out11_two_process_result.json": {
+   "sha256": "91ff47b5512be5567bef293fbd99febac185c1a6213d2e16d398538b957c4591",
+   "bytes": 604
+  },
+  "out9_247_closure.log": {
+   "sha256": "66d55247f51fff4206cfda514391b4151a7f7de0f65fd6ceed449a0999706ccf",
+   "bytes": 600
+  }
+ },
+ "terminal": "SOROK_HQ318_OUT11_OUT9_MULTIWITER_RECOVERY_HOLD__GITHUB_PUSHED"
+}

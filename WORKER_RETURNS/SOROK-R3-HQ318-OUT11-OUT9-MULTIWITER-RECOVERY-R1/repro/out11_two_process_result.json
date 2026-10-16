@@ -1,0 +1,21 @@
+{
+ "schema": "OUT11_TWO_PROCESS_REPRO@1",
+ "mechanism": "two REAL OS processes, both recover() the same journal version, synchronized barrier, then both commit",
+ "processes": [
+  {
+   "rc": 0,
+   "out": "{\"writer\": \"A\", \"committed\": true, \"occurrence_id\": \"OCC-0001\"}",
+   "err": ""
+  },
+  {
+   "rc": 0,
+   "out": "{\"writer\": \"B\", \"committed\": true, \"occurrence_id\": \"OCC-0001\"}",
+   "err": ""
+  }
+ ],
+ "events_after": 1,
+ "occurrence_1_candidate_id": "B",
+ "EXPECTED_IF_SAFE": 2,
+ "LOST_COMMITTED_EVENTS": 1,
+ "verdict": "TWO_WRITER_STALE_JOURNAL_LOSS_CONFIRMED_AT_PROCESS_LEVEL"
+}
