@@ -17,11 +17,13 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 RETURN = Path(__file__).resolve().parent.parent
-RESULTS = RETURN / 'observations'
 RUNTIME = Path(os.environ.get('PV2_RUNTIME_ROOT', '/tmp/oc6-runtime')).resolve()
 SOURCE = RUNTIME / 'source'
 PY = sys.executable
 LABEL = sys.argv[1] if len(sys.argv) > 1 else 'before'
+# Each phase owns its own subdirectory so the AFTER rerun can never overwrite
+# the preserved BEFORE JUnit/stdout evidence.
+RESULTS = RETURN / 'observations' / LABEL
 
 COURTS = [
     ('inherited_131', 'inherited_131.xml',

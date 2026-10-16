@@ -119,13 +119,21 @@ court is byte-identical in both phases; only the source under test differs.
 | `repro/run_court.py` | executes the court, writes per-case JUnit + matrices (phase `before`/`after`) |
 | `repro/adjudicate.py` | per-case before/after adjudication |
 | `repro/build_passport.py` | sanitized 00D passport + provenance |
+| `repro/reproduce.py` | one-shot end-to-end stage → before → repair → after → adjudicate → passport |
 | `tests/test_oc6_input_contract_controls.py` | 273 author controls |
 | `repro/custody_protocol.py` | the repaired candidate source |
 | `freezes/01_STAGED_SOURCE_MANIFEST.json` | per-object blob/SHA256 manifest |
-| `observations/*.xml`, `*.log` | original JUnit + stdout per court, both phases |
-| `observations/case_matrix_before.json`, `case_matrix_after.json` | full per-case matrices |
+| `observations/before/*.xml`, `*.log` | BEFORE-phase JUnit + stdout per court (unrepaired pinned blob) |
+| `observations/after/*.xml`, `*.log` | AFTER-phase JUnit + stdout per court (repaired staged blob) |
+| `observations/before/case_matrix_before.json`, `observations/after/case_matrix_after.json` | full per-case matrices, one per phase |
 | `observations/before_after_adjudication.json` | per-case adjudication |
 | `environment_passport_delta.json` | 00D passport, covers, provenance, HOLDs |
+
+**Evidence integrity.** Each phase writes into its own `observations/<phase>/`
+subdirectory, so the AFTER rerun cannot overwrite the preserved BEFORE JUnit and
+stdout. BEFORE evidence is recorded against the unrepaired pinned blob
+(`is_pinned_blob: true`); AFTER against the repaired staged blob. No test, log,
+matrix or reason string was edited by hand at any point.
 
 **Candidate only.** A distinct independent OC7 I2 review is required after this
 return; adoption remains with the competent owner. No real signer institution,

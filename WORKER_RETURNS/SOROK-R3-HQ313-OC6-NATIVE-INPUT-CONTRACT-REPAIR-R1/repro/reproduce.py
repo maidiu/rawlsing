@@ -49,15 +49,8 @@ def main() -> int:
         ['git', 'hash-object', str(RUNTIME / 'source' / 'custody_protocol.py')]
     ).decode().strip() == 'af2b7e943018077cb36808b5af1cd67704624bec'
     run('court before', [PY, str(REPRO / 'run_court.py'), 'before'], env=env)
-    # Preserve the BEFORE phase separately: adjudicate.py and build_passport.py
-    # compare the unrepaired pinned-blob run against the repaired run.
-    stash = Path('/tmp/oc6-before/observations')
-    if stash.exists():
-        import shutil
-        shutil.rmtree(Path('/tmp/oc6-before'))
-    stash.mkdir(parents=True, exist_ok=True)
-    for src in sorted((RETURN / 'observations').iterdir()):
-        (stash / src.name).write_bytes(src.read_bytes())
+    # Each phase writes into observations/<phase>/ so the AFTER rerun cannot
+    # overwrite the preserved BEFORE JUnit/stdout evidence.
 
     print('\n=== phase 2: apply A1-A6 repairs + AFTER ===')
     run('apply_repair', [PY, str(REPRO / 'apply_repair.py')], env=env)

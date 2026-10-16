@@ -1,13 +1,13 @@
 {
-  "phase": "before",
+  "phase": "after",
   "source_under_test": {
     "pinned_commit": "0caaec590f6a8bf6744f22dc9c948c5fe233bc94",
     "pinned_git_blob_sha1": "af2b7e943018077cb36808b5af1cd67704624bec",
     "pinned_sha256": "447e5bb738fc49c946a39ca438126e9c2a69d93025600f053662e56f846f9e3a",
     "imported_module_path": "/private/tmp/oc6-runtime/source/custody_protocol.py",
-    "staged_git_blob_sha1": "af2b7e943018077cb36808b5af1cd67704624bec",
-    "staged_sha256": "447e5bb738fc49c946a39ca438126e9c2a69d93025600f053662e56f846f9e3a",
-    "is_pinned_blob": true
+    "staged_git_blob_sha1": "4c185c18dbee57603038e97886da8fc4aa834082",
+    "staged_sha256": "ca85b844994e5ce6fd9e7a21c0f210d08b6d5e7519c63ac09d7dd8a9516fd90b",
+    "is_pinned_blob": false
   },
   "courts": [
     {
@@ -19,7 +19,7 @@
       "failed": 10,
       "errors": 0,
       "skipped": 0,
-      "seconds": 0.98
+      "seconds": 0.66
     },
     {
       "label": "oc4_new_36",
@@ -30,35 +30,46 @@
       "failed": 0,
       "errors": 0,
       "skipped": 0,
-      "seconds": 0.3
+      "seconds": 0.43
     },
     {
       "label": "oc5e_native_hostiles",
       "junit": "oc5e_native_hostiles.xml",
       "grade": "OC5E independently authored native hostiles",
       "tests": 159,
-      "passed": 110,
-      "failed": 49,
+      "passed": 148,
+      "failed": 11,
       "errors": 0,
       "skipped": 0,
-      "seconds": 0.53
+      "seconds": 0.68
     },
     {
       "label": "oc5_prior_predictions",
       "junit": "oc5_prior_predictions.xml",
       "grade": "OC5 disclosed prior predictions",
       "tests": 23,
-      "passed": 16,
-      "failed": 7,
+      "passed": 23,
+      "failed": 0,
       "errors": 0,
       "skipped": 0,
-      "seconds": 0.3
+      "seconds": 0.73
+    },
+    {
+      "label": "oc6_author_controls",
+      "junit": "oc6_author_controls.xml",
+      "grade": "OC6 author-side targeted controls (new)",
+      "tests": 273,
+      "passed": 273,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 1.15
     }
   ],
   "totals": {
-    "cases": 349,
-    "passed": 283,
-    "failed": 66,
+    "cases": 622,
+    "passed": 601,
+    "failed": 21,
     "errors": 0,
     "skipped": 0
   },
@@ -114,77 +125,17 @@
       "observed": "custody_protocol.SignatureError: full signed capsule envelope identity missing or mismatched"
     },
     {
-      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-context]",
-      "family": "A1_normalization_equivalent_allowed_field_alias",
-      "observed": "Failed: DID NOT RAISE LeakageError"
+      "case": "test_imported_module_is_the_pinned_oc4_blob",
+      "family": "other",
+      "observed": "AssertionError: imported module is not the pinned OC4 blob: 4c185c18dbee57603038e97886da8fc4aa834082\nassert '4c185c18dbee...a8fc4aa834082' == 'af2b7e943018...cd67704624bec'\n  \n  - af2b7e943018077cb368"
     },
     {
-      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-context]",
-      "family": "A1_normalization_equivalent_allowed_field_alias",
-      "observed": "Failed: DID NOT RAISE LeakageError"
-    },
-    {
-      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-context]",
-      "family": "A1_normalization_equivalent_allowed_field_alias",
-      "observed": "Failed: DID NOT RAISE LeakageError"
-    },
-    {
-      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-note]",
-      "family": "A1_normalization_equivalent_allowed_field_alias",
-      "observed": "Failed: DID NOT RAISE LeakageError"
-    },
-    {
-      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-menu]",
-      "family": "A1_normalization_equivalent_allowed_field_alias",
-      "observed": "Failed: DID NOT RAISE LeakageError"
-    },
-    {
-      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-public-projection]",
-      "family": "A1_normalization_equivalent_allowed_field_alias",
-      "observed": "Failed: DID NOT RAISE LeakageError"
-    },
-    {
-      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-note]",
-      "family": "A1_normalization_equivalent_allowed_field_alias",
-      "observed": "Failed: DID NOT RAISE LeakageError"
-    },
-    {
-      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-request-id]",
-      "family": "A1_normalization_equivalent_allowed_field_alias",
-      "observed": "Failed: DID NOT RAISE LeakageError"
-    },
-    {
-      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-response]",
-      "family": "A1_normalization_equivalent_allowed_field_alias",
-      "observed": "Failed: DID NOT RAISE LeakageError"
-    },
-    {
-      "case": "test_normalization_equivalent_allowed_field_alias_must_be_refused[double-context-alias]",
-      "family": "A1_normalization_equivalent_allowed_field_alias",
-      "observed": "Failed: DID NOT RAISE LeakageError"
-    },
-    {
-      "case": "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-a]",
-      "family": "A2_nfkc_invisible_confusable_leak_token",
-      "observed": "Failed: DID NOT RAISE LeakageError"
-    },
-    {
-      "case": "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-e]",
-      "family": "A2_nfkc_invisible_confusable_leak_token",
-      "observed": "Failed: DID NOT RAISE LeakageError"
-    },
-    {
-      "case": "test_confusable_leak_token_substitution_must_be_flagged[armenian-h]",
-      "family": "A2_nfkc_invisible_confusable_leak_token",
-      "observed": "Failed: DID NOT RAISE LeakageError"
+      "case": "test_alias_holes_are_observed_not_theorised",
+      "family": "other",
+      "observed": "AssertionError: unexpectedly flagged: {'fullwidth-context': ['duplicate_normalized_field:\uff43ontext'], 'cgj-context': ['duplicate_normalized_field:con\u034ftext'], 'accented-context': ['duplicate_normalized_f"
     },
     {
       "case": "test_confusable_leak_token_substitution_must_be_flagged[greek-o]",
-      "family": "A2_nfkc_invisible_confusable_leak_token",
-      "observed": "Failed: DID NOT RAISE LeakageError"
-    },
-    {
-      "case": "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-s]",
       "family": "A2_nfkc_invisible_confusable_leak_token",
       "observed": "Failed: DID NOT RAISE LeakageError"
     },
@@ -194,214 +145,46 @@
       "observed": "Failed: DID NOT RAISE LeakageError"
     },
     {
-      "case": "test_malformed_signature_object_must_fail_typed[primary-object]",
-      "family": "A3_malformed_signature_object_untyped",
-      "observed": "AttributeError: 'object' object has no attribute 'signer_person_id'"
+      "case": "test_confusable_holes_are_observed_only_for_nfkc_invisible_scripts",
+      "family": "other",
+      "observed": "assert False\n +  where False = all(<generator object test_confusable_holes_are_observed_only_for_nfkc_invisible_scripts.<locals>.<genexpr> at 0x1031bb220>)"
     },
     {
-      "case": "test_malformed_signature_object_must_fail_typed[primary-int]",
-      "family": "A3_malformed_signature_object_untyped",
-      "observed": "AttributeError: 'int' object has no attribute 'signer_person_id'"
+      "case": "test_malformed_signature_holes_are_observed_as_attributeerror",
+      "family": "other",
+      "observed": "custody_protocol.SignatureError: malformed primary signature: typed MockSignature required"
     },
     {
-      "case": "test_malformed_signature_object_must_fail_typed[primary-dict]",
-      "family": "A3_malformed_signature_object_untyped",
-      "observed": "AttributeError: 'dict' object has no attribute 'signer_person_id'"
-    },
-    {
-      "case": "test_malformed_signature_object_must_fail_typed[primary-list]",
-      "family": "A3_malformed_signature_object_untyped",
-      "observed": "AttributeError: 'list' object has no attribute 'signer_person_id'"
-    },
-    {
-      "case": "test_malformed_signature_object_must_fail_typed[primary-str]",
-      "family": "A3_malformed_signature_object_untyped",
-      "observed": "AttributeError: 'str' object has no attribute 'signer_person_id'"
-    },
-    {
-      "case": "test_malformed_signature_object_must_fail_typed[primary-bool]",
-      "family": "A3_malformed_signature_object_untyped",
-      "observed": "AttributeError: 'bool' object has no attribute 'signer_person_id'"
-    },
-    {
-      "case": "test_malformed_signature_object_must_fail_typed[primary-bytes]",
-      "family": "A3_malformed_signature_object_untyped",
-      "observed": "AttributeError: 'bytes' object has no attribute 'signer_person_id'"
-    },
-    {
-      "case": "test_malformed_signature_object_must_fail_typed[primary-float]",
-      "family": "A3_malformed_signature_object_untyped",
-      "observed": "AttributeError: 'float' object has no attribute 'signer_person_id'"
-    },
-    {
-      "case": "test_malformed_signature_object_must_fail_typed[primary-tuple]",
-      "family": "A3_malformed_signature_object_untyped",
-      "observed": "AttributeError: 'tuple' object has no attribute 'signer_person_id'"
-    },
-    {
-      "case": "test_malformed_signature_object_must_fail_typed[second-object]",
-      "family": "A3_malformed_signature_object_untyped",
-      "observed": "AttributeError: 'object' object has no attribute 'signer_person_id'"
-    },
-    {
-      "case": "test_malformed_signature_object_must_fail_typed[second-int]",
-      "family": "A3_malformed_signature_object_untyped",
-      "observed": "AttributeError: 'int' object has no attribute 'signer_person_id'"
-    },
-    {
-      "case": "test_malformed_signature_object_must_fail_typed[second-dict]",
-      "family": "A3_malformed_signature_object_untyped",
-      "observed": "AttributeError: 'dict' object has no attribute 'signer_person_id'"
-    },
-    {
-      "case": "test_malformed_signature_object_must_fail_typed[second-list]",
-      "family": "A3_malformed_signature_object_untyped",
-      "observed": "AttributeError: 'list' object has no attribute 'signer_person_id'"
-    },
-    {
-      "case": "test_malformed_signature_object_must_fail_typed[second-str]",
-      "family": "A3_malformed_signature_object_untyped",
-      "observed": "AttributeError: 'str' object has no attribute 'signer_person_id'"
-    },
-    {
-      "case": "test_malformed_signature_object_must_fail_typed[second-bool]",
-      "family": "A3_malformed_signature_object_untyped",
-      "observed": "AttributeError: 'bool' object has no attribute 'signer_person_id'"
-    },
-    {
-      "case": "test_malformed_signature_object_must_fail_typed[second-bytes]",
-      "family": "A3_malformed_signature_object_untyped",
-      "observed": "AttributeError: 'bytes' object has no attribute 'signer_person_id'"
-    },
-    {
-      "case": "test_malformed_signature_object_must_fail_typed[second-float]",
-      "family": "A3_malformed_signature_object_untyped",
-      "observed": "AttributeError: 'float' object has no attribute 'signer_person_id'"
-    },
-    {
-      "case": "test_malformed_signature_object_must_fail_typed[second-tuple]",
-      "family": "A3_malformed_signature_object_untyped",
-      "observed": "AttributeError: 'tuple' object has no attribute 'signer_person_id'"
-    },
-    {
-      "case": "test_non_enum_role_string_must_fail_typed",
+      "case": "test_non_enum_role_string_hole_is_observed_as_attributeerror",
       "family": "A4_non_enum_role_string_untyped",
-      "observed": "AttributeError: 'str' object has no attribute 'value'"
+      "observed": "custody_protocol.SignatureError: malformed primary signature role: typed Role enum required"
     },
     {
-      "case": "test_unblind_unhashable_holder_must_fail_typed[list]",
+      "case": "test_unblind_unhashable_holder_hole_is_observed_as_typeerror[list]",
       "family": "A5_unblind_unhashable_holder_untyped",
-      "observed": "TypeError: unhashable type: 'list'"
+      "observed": "custody_protocol.IdentityMismatchError: malformed fixture holder identity"
     },
     {
-      "case": "test_unblind_unhashable_holder_must_fail_typed[dict]",
+      "case": "test_unblind_unhashable_holder_hole_is_observed_as_typeerror[dict]",
       "family": "A5_unblind_unhashable_holder_untyped",
-      "observed": "TypeError: unhashable type: 'dict'"
+      "observed": "custody_protocol.IdentityMismatchError: malformed fixture holder identity"
     },
     {
-      "case": "test_unblind_unhashable_holder_must_fail_typed[set]",
+      "case": "test_unblind_unhashable_holder_hole_is_observed_as_typeerror[set]",
       "family": "A5_unblind_unhashable_holder_untyped",
-      "observed": "TypeError: unhashable type: 'set'"
+      "observed": "custody_protocol.IdentityMismatchError: malformed fixture holder identity"
     },
     {
-      "case": "test_capsule_identity_field_types_must_be_validated[version-str]",
-      "family": "A6_capsule_identity_field_types_unvalidated",
-      "observed": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
-    },
-    {
-      "case": "test_capsule_identity_field_types_must_be_validated[version-none]",
-      "family": "A6_capsule_identity_field_types_unvalidated",
-      "observed": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
-    },
-    {
-      "case": "test_capsule_identity_field_types_must_be_validated[version-injection]",
-      "family": "A6_capsule_identity_field_types_unvalidated",
-      "observed": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
-    },
-    {
-      "case": "test_capsule_identity_field_types_must_be_validated[freeze-none]",
-      "family": "A6_capsule_identity_field_types_unvalidated",
-      "observed": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
-    },
-    {
-      "case": "test_capsule_identity_field_types_must_be_validated[freeze-dict]",
-      "family": "A6_capsule_identity_field_types_unvalidated",
-      "observed": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
-    },
-    {
-      "case": "test_capsule_identity_field_types_must_be_validated[freeze-str]",
-      "family": "A6_capsule_identity_field_types_unvalidated",
-      "observed": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
-    },
-    {
-      "case": "test_capsule_identity_field_types_must_be_validated[schema-none]",
-      "family": "A6_capsule_identity_field_types_unvalidated",
-      "observed": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
-    },
-    {
-      "case": "test_capsule_identity_field_types_must_be_validated[content-none]",
-      "family": "A6_capsule_identity_field_types_unvalidated",
-      "observed": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
-    },
-    {
-      "case": "test_capsule_identity_field_types_must_be_validated[lawful-none]",
-      "family": "A6_capsule_identity_field_types_unvalidated",
-      "observed": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
-    },
-    {
-      "case": "test_capsule_identity_field_types_must_be_validated[rubric-none]",
-      "family": "A6_capsule_identity_field_types_unvalidated",
-      "observed": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
-    },
-    {
-      "case": "test_capsule_identity_field_types_must_be_validated[split-none]",
-      "family": "A6_capsule_identity_field_types_unvalidated",
-      "observed": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
-    },
-    {
-      "case": "test_malformed_signature_fails_typed[bad0]",
+      "case": "test_capsule_identity_field_type_hole_is_observed",
       "family": "other",
-      "observed": "AttributeError: 'object' object has no attribute 'signer_person_id'"
-    },
-    {
-      "case": "test_malformed_signature_fails_typed[12]",
-      "family": "other",
-      "observed": "AttributeError: 'int' object has no attribute 'signer_person_id'"
-    },
-    {
-      "case": "test_malformed_signature_fails_typed[bad2]",
-      "family": "other",
-      "observed": "AttributeError: 'dict' object has no attribute 'signer_person_id'"
-    },
-    {
-      "case": "test_duplicate_normalized_keys_refused[packet0]",
-      "family": "other",
-      "observed": "Failed: DID NOT RAISE LeakageError"
-    },
-    {
-      "case": "test_duplicate_normalized_keys_refused[packet1]",
-      "family": "other",
-      "observed": "Failed: DID NOT RAISE LeakageError"
-    },
-    {
-      "case": "test_duplicate_normalized_keys_refused[packet2]",
-      "family": "other",
-      "observed": "Failed: DID NOT RAISE LeakageError"
-    },
-    {
-      "case": "test_duplicate_normalized_keys_refused[packet3]",
-      "family": "other",
-      "observed": "Failed: DID NOT RAISE LeakageError"
+      "observed": "TypeError: capsule version must be an integer"
     }
   ],
   "red_family_counts": {
-    "A1_normalization_equivalent_allowed_field_alias": 10,
-    "A2_nfkc_invisible_confusable_leak_token": 6,
-    "A3_malformed_signature_object_untyped": 18,
+    "A2_nfkc_invisible_confusable_leak_token": 2,
     "A4_non_enum_role_string_untyped": 1,
     "A5_unblind_unhashable_holder_untyped": 3,
-    "A6_capsule_identity_field_types_unvalidated": 11,
-    "other": 17
+    "other": 15
   },
   "matrix": {
     "inherited_131": [
@@ -1581,86 +1364,86 @@
       {
         "name": "test_imported_module_is_the_pinned_oc4_blob",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "PASS",
+        "outcome": "FAIL",
         "type": null,
-        "reason": null
+        "reason": "AssertionError: imported module is not the pinned OC4 blob: 4c185c18dbee57603038e97886da8fc4aa834082\nassert '4c185c18dbee...a8fc4aa834082' == 'af2b7e943018...cd67704624bec'\n  \n  - af2b7e943018077cb368"
       },
       {
         "name": "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-context]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE LeakageError"
+        "reason": null
       },
       {
         "name": "test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-context]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE LeakageError"
+        "reason": null
       },
       {
         "name": "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-context]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE LeakageError"
+        "reason": null
       },
       {
         "name": "test_normalization_equivalent_allowed_field_alias_must_be_refused[cgj-note]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE LeakageError"
+        "reason": null
       },
       {
         "name": "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-menu]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE LeakageError"
+        "reason": null
       },
       {
         "name": "test_normalization_equivalent_allowed_field_alias_must_be_refused[fullwidth-public-projection]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE LeakageError"
+        "reason": null
       },
       {
         "name": "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-note]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE LeakageError"
+        "reason": null
       },
       {
         "name": "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-request-id]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE LeakageError"
+        "reason": null
       },
       {
         "name": "test_normalization_equivalent_allowed_field_alias_must_be_refused[accented-response]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE LeakageError"
+        "reason": null
       },
       {
         "name": "test_normalization_equivalent_allowed_field_alias_must_be_refused[double-context-alias]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE LeakageError"
+        "reason": null
       },
       {
         "name": "test_alias_holes_are_observed_not_theorised",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "PASS",
+        "outcome": "FAIL",
         "type": null,
-        "reason": null
+        "reason": "AssertionError: unexpectedly flagged: {'fullwidth-context': ['duplicate_normalized_field:\uff43ontext'], 'cgj-context': ['duplicate_normalized_field:con\u034ftext'], 'accented-context': ['duplicate_normalized_f"
       },
       {
         "name": "test_genuinely_other_or_invalid_packets_still_refused[alias-only-no-sibling]",
@@ -1749,23 +1532,23 @@
       {
         "name": "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-a]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE LeakageError"
+        "reason": null
       },
       {
         "name": "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-e]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE LeakageError"
+        "reason": null
       },
       {
         "name": "test_confusable_leak_token_substitution_must_be_flagged[armenian-h]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE LeakageError"
+        "reason": null
       },
       {
         "name": "test_confusable_leak_token_substitution_must_be_flagged[greek-o]",
@@ -1777,9 +1560,9 @@
       {
         "name": "test_confusable_leak_token_substitution_must_be_flagged[cyrillic-s]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE LeakageError"
+        "reason": null
       },
       {
         "name": "test_confusable_leak_token_substitution_must_be_flagged[mixed-cyrillic]",
@@ -1791,9 +1574,9 @@
       {
         "name": "test_confusable_holes_are_observed_only_for_nfkc_invisible_scripts",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "PASS",
+        "outcome": "FAIL",
         "type": null,
-        "reason": null
+        "reason": "assert False\n +  where False = all(<generator object test_confusable_holes_are_observed_only_for_nfkc_invisible_scripts.<locals>.<genexpr> at 0x1031bb220>)"
       },
       {
         "name": "test_genuinely_different_confusable_string_is_correctly_admitted",
@@ -1805,128 +1588,128 @@
       {
         "name": "test_malformed_signature_object_must_fail_typed[primary-object]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "AttributeError: 'object' object has no attribute 'signer_person_id'"
+        "reason": null
       },
       {
         "name": "test_malformed_signature_object_must_fail_typed[primary-int]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "AttributeError: 'int' object has no attribute 'signer_person_id'"
+        "reason": null
       },
       {
         "name": "test_malformed_signature_object_must_fail_typed[primary-dict]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "AttributeError: 'dict' object has no attribute 'signer_person_id'"
+        "reason": null
       },
       {
         "name": "test_malformed_signature_object_must_fail_typed[primary-list]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "AttributeError: 'list' object has no attribute 'signer_person_id'"
+        "reason": null
       },
       {
         "name": "test_malformed_signature_object_must_fail_typed[primary-str]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "AttributeError: 'str' object has no attribute 'signer_person_id'"
+        "reason": null
       },
       {
         "name": "test_malformed_signature_object_must_fail_typed[primary-bool]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "AttributeError: 'bool' object has no attribute 'signer_person_id'"
+        "reason": null
       },
       {
         "name": "test_malformed_signature_object_must_fail_typed[primary-bytes]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "AttributeError: 'bytes' object has no attribute 'signer_person_id'"
+        "reason": null
       },
       {
         "name": "test_malformed_signature_object_must_fail_typed[primary-float]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "AttributeError: 'float' object has no attribute 'signer_person_id'"
+        "reason": null
       },
       {
         "name": "test_malformed_signature_object_must_fail_typed[primary-tuple]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "AttributeError: 'tuple' object has no attribute 'signer_person_id'"
+        "reason": null
       },
       {
         "name": "test_malformed_signature_object_must_fail_typed[second-object]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "AttributeError: 'object' object has no attribute 'signer_person_id'"
+        "reason": null
       },
       {
         "name": "test_malformed_signature_object_must_fail_typed[second-int]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "AttributeError: 'int' object has no attribute 'signer_person_id'"
+        "reason": null
       },
       {
         "name": "test_malformed_signature_object_must_fail_typed[second-dict]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "AttributeError: 'dict' object has no attribute 'signer_person_id'"
+        "reason": null
       },
       {
         "name": "test_malformed_signature_object_must_fail_typed[second-list]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "AttributeError: 'list' object has no attribute 'signer_person_id'"
+        "reason": null
       },
       {
         "name": "test_malformed_signature_object_must_fail_typed[second-str]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "AttributeError: 'str' object has no attribute 'signer_person_id'"
+        "reason": null
       },
       {
         "name": "test_malformed_signature_object_must_fail_typed[second-bool]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "AttributeError: 'bool' object has no attribute 'signer_person_id'"
+        "reason": null
       },
       {
         "name": "test_malformed_signature_object_must_fail_typed[second-bytes]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "AttributeError: 'bytes' object has no attribute 'signer_person_id'"
+        "reason": null
       },
       {
         "name": "test_malformed_signature_object_must_fail_typed[second-float]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "AttributeError: 'float' object has no attribute 'signer_person_id'"
+        "reason": null
       },
       {
         "name": "test_malformed_signature_object_must_fail_typed[second-tuple]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "AttributeError: 'tuple' object has no attribute 'signer_person_id'"
+        "reason": null
       },
       {
         "name": "test_none_is_the_only_typed_malformed_signature",
@@ -1938,65 +1721,65 @@
       {
         "name": "test_malformed_signature_holes_are_observed_as_attributeerror",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "PASS",
+        "outcome": "FAIL",
         "type": null,
-        "reason": null
+        "reason": "custody_protocol.SignatureError: malformed primary signature: typed MockSignature required"
       },
       {
         "name": "test_non_enum_role_string_must_fail_typed",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "AttributeError: 'str' object has no attribute 'value'"
+        "reason": null
       },
       {
         "name": "test_non_enum_role_string_hole_is_observed_as_attributeerror",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "PASS",
+        "outcome": "FAIL",
         "type": null,
-        "reason": null
+        "reason": "custody_protocol.SignatureError: malformed primary signature role: typed Role enum required"
       },
       {
         "name": "test_unblind_unhashable_holder_must_fail_typed[list]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "TypeError: unhashable type: 'list'"
+        "reason": null
       },
       {
         "name": "test_unblind_unhashable_holder_must_fail_typed[dict]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "TypeError: unhashable type: 'dict'"
+        "reason": null
       },
       {
         "name": "test_unblind_unhashable_holder_must_fail_typed[set]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "TypeError: unhashable type: 'set'"
+        "reason": null
       },
       {
         "name": "test_unblind_unhashable_holder_hole_is_observed_as_typeerror[list]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "PASS",
+        "outcome": "FAIL",
         "type": null,
-        "reason": null
+        "reason": "custody_protocol.IdentityMismatchError: malformed fixture holder identity"
       },
       {
         "name": "test_unblind_unhashable_holder_hole_is_observed_as_typeerror[dict]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "PASS",
+        "outcome": "FAIL",
         "type": null,
-        "reason": null
+        "reason": "custody_protocol.IdentityMismatchError: malformed fixture holder identity"
       },
       {
         "name": "test_unblind_unhashable_holder_hole_is_observed_as_typeerror[set]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "PASS",
+        "outcome": "FAIL",
         "type": null,
-        "reason": null
+        "reason": "custody_protocol.IdentityMismatchError: malformed fixture holder identity"
       },
       {
         "name": "test_unblind_scalar_holder_types_are_typed",
@@ -2008,86 +1791,86 @@
       {
         "name": "test_capsule_identity_field_types_must_be_validated[version-str]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+        "reason": null
       },
       {
         "name": "test_capsule_identity_field_types_must_be_validated[version-none]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+        "reason": null
       },
       {
         "name": "test_capsule_identity_field_types_must_be_validated[version-injection]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+        "reason": null
       },
       {
         "name": "test_capsule_identity_field_types_must_be_validated[freeze-none]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+        "reason": null
       },
       {
         "name": "test_capsule_identity_field_types_must_be_validated[freeze-dict]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+        "reason": null
       },
       {
         "name": "test_capsule_identity_field_types_must_be_validated[freeze-str]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+        "reason": null
       },
       {
         "name": "test_capsule_identity_field_types_must_be_validated[schema-none]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+        "reason": null
       },
       {
         "name": "test_capsule_identity_field_types_must_be_validated[content-none]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+        "reason": null
       },
       {
         "name": "test_capsule_identity_field_types_must_be_validated[lawful-none]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+        "reason": null
       },
       {
         "name": "test_capsule_identity_field_types_must_be_validated[rubric-none]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+        "reason": null
       },
       {
         "name": "test_capsule_identity_field_types_must_be_validated[split-none]",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE any of (TypeError, ValueError)"
+        "reason": null
       },
       {
         "name": "test_capsule_identity_field_type_hole_is_observed",
         "cls": "test_oc5e_native_hostiles",
-        "outcome": "PASS",
+        "outcome": "FAIL",
         "type": null,
-        "reason": null
+        "reason": "TypeError: capsule version must be an integer"
       },
       {
         "name": "test_mixed_type_capsule_digest_dict_must_fail_typed",
@@ -2780,51 +2563,51 @@
       {
         "name": "test_malformed_signature_fails_typed[bad0]",
         "cls": "test_oc5_prior_predictions",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "AttributeError: 'object' object has no attribute 'signer_person_id'"
+        "reason": null
       },
       {
         "name": "test_malformed_signature_fails_typed[12]",
         "cls": "test_oc5_prior_predictions",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "AttributeError: 'int' object has no attribute 'signer_person_id'"
+        "reason": null
       },
       {
         "name": "test_malformed_signature_fails_typed[bad2]",
         "cls": "test_oc5_prior_predictions",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "AttributeError: 'dict' object has no attribute 'signer_person_id'"
+        "reason": null
       },
       {
         "name": "test_duplicate_normalized_keys_refused[packet0]",
         "cls": "test_oc5_prior_predictions",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE LeakageError"
+        "reason": null
       },
       {
         "name": "test_duplicate_normalized_keys_refused[packet1]",
         "cls": "test_oc5_prior_predictions",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE LeakageError"
+        "reason": null
       },
       {
         "name": "test_duplicate_normalized_keys_refused[packet2]",
         "cls": "test_oc5_prior_predictions",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE LeakageError"
+        "reason": null
       },
       {
         "name": "test_duplicate_normalized_keys_refused[packet3]",
         "cls": "test_oc5_prior_predictions",
-        "outcome": "FAIL",
+        "outcome": "PASS",
         "type": null,
-        "reason": "Failed: DID NOT RAISE LeakageError"
+        "reason": null
       },
       {
         "name": "test_benign_and_unicode_positive",
@@ -2850,6 +2633,1919 @@
       {
         "name": "test_strict_blind_pairing",
         "cls": "test_oc5_prior_predictions",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      }
+    ],
+    "oc6_author_controls": [
+      {
+        "name": "test_a1_normalization_equivalent_duplicate_alias_refused[fullwidth-context]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a1_normalization_equivalent_duplicate_alias_refused[cgj-context]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a1_normalization_equivalent_duplicate_alias_refused[accented-context]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a1_normalization_equivalent_duplicate_alias_refused[cgj-note]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a1_normalization_equivalent_duplicate_alias_refused[accented-note]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a1_normalization_equivalent_duplicate_alias_refused[accented-request-id]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a1_normalization_equivalent_duplicate_alias_refused[accented-response]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a1_normalization_equivalent_duplicate_alias_refused[fullwidth-menu]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a1_normalization_equivalent_duplicate_alias_refused[fullwidth-public-projection]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a1_normalization_equivalent_duplicate_alias_refused[double-context-alias]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a1_single_and_invalid_controls_behave_exactly[context-only]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a1_single_and_invalid_controls_behave_exactly[note-only]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a1_single_and_invalid_controls_behave_exactly[menu+request]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a1_single_and_invalid_controls_behave_exactly[response+rubric]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a1_single_and_invalid_controls_behave_exactly[all-six-single]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a1_single_and_invalid_controls_behave_exactly[two-distinct-fields]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a1_single_and_invalid_controls_behave_exactly[alias-value-nonstr]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a1_single_and_invalid_controls_behave_exactly[menu-alias-nonlist]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a1_single_and_invalid_controls_behave_exactly[response-alias-nonstr]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a1_single_and_invalid_controls_behave_exactly[alias-alone]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a1_duplicate_alias_value_is_never_a_second_admitted_value",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a1_multiplicity_is_not_discarded_for_the_canonical_pair",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a2_confusable_leak_token_spelling_refused[cyrillic-a]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a2_confusable_leak_token_spelling_refused[cyrillic-e]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a2_confusable_leak_token_spelling_refused[armenian-h]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a2_confusable_leak_token_spelling_refused[greek-o]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a2_confusable_leak_token_spelling_refused[cyrillic-s]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a2_confusable_leak_token_spelling_refused[cyrillic-e-mid]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a2_confusable_leak_token_spelling_refused[cyrillic-many]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a2_nfkc_visible_and_plain_spellings_still_flagged[upper]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a2_nfkc_visible_and_plain_spellings_still_flagged[plain]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a2_nfkc_visible_and_plain_spellings_still_flagged[fullwidth-a]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a2_nfkc_visible_and_plain_spellings_still_flagged[zwsp]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a2_nfkc_visible_and_plain_spellings_still_flagged[cgj]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a2_nfkc_visible_and_plain_spellings_still_flagged[expected]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a2_nfkc_visible_and_plain_spellings_still_flagged[hidden]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a2_legitimate_multilingual_and_confusable_non_tokens_admitted[digit-9]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a2_legitimate_multilingual_and_confusable_non_tokens_admitted[plain-word]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a2_legitimate_multilingual_and_confusable_non_tokens_admitted[sentence]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a2_legitimate_multilingual_and_confusable_non_tokens_admitted[accented-latin]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a2_legitimate_multilingual_and_confusable_non_tokens_admitted[cjk]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a2_legitimate_multilingual_and_confusable_non_tokens_admitted[cyrillic-word]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a2_legitimate_multilingual_and_confusable_non_tokens_admitted[greek-word]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a2_confusable_fold_is_bounded_and_enumerated",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a2_fold_never_feeds_the_field_allowlist",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a2_no_claim_of_universal_semantic_non_leakage",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_signature_object_is_typed[primary-object]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_signature_object_is_typed[primary-int]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_signature_object_is_typed[primary-dict]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_signature_object_is_typed[primary-list]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_signature_object_is_typed[primary-str]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_signature_object_is_typed[primary-bool]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_signature_object_is_typed[primary-bytes]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_signature_object_is_typed[primary-float]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_signature_object_is_typed[primary-tuple]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_signature_object_is_typed[primary-none]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_signature_object_is_typed[second-object]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_signature_object_is_typed[second-int]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_signature_object_is_typed[second-dict]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_signature_object_is_typed[second-list]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_signature_object_is_typed[second-str]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_signature_object_is_typed[second-bool]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_signature_object_is_typed[second-bytes]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_signature_object_is_typed[second-float]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_signature_object_is_typed[second-tuple]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_signature_object_is_typed[second-none]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_object_never_raises_attributeerror[object]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_object_never_raises_attributeerror[int]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_object_never_raises_attributeerror[dict]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_object_never_raises_attributeerror[list]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_object_never_raises_attributeerror[str]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_object_never_raises_attributeerror[bool]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_object_never_raises_attributeerror[bytes]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_object_never_raises_attributeerror[float]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_malformed_object_never_raises_attributeerror[tuple]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a3_none_is_still_the_only_typed_none_case",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a4_non_enum_role_is_typed_refusal[primary-upper-str]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a4_non_enum_role_is_typed_refusal[primary-lower-str]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a4_non_enum_role_is_typed_refusal[primary-empty]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a4_non_enum_role_is_typed_refusal[primary-none]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a4_non_enum_role_is_typed_refusal[primary-int]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a4_non_enum_role_is_typed_refusal[primary-value-str]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a4_non_enum_role_is_typed_refusal[second-upper-str]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a4_non_enum_role_is_typed_refusal[second-lower-str]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a4_non_enum_role_is_typed_refusal[second-empty]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a4_non_enum_role_is_typed_refusal[second-none]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a4_non_enum_role_is_typed_refusal[second-int]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a4_non_enum_role_is_typed_refusal[second-value-str]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a4_non_enum_role_never_raises_attributeerror",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a4_mock_signer_rejects_non_enum_role_typed",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a4_mock_verify_still_fails_closed_on_a_non_enum_role",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a5_malformed_holder_identity_is_typed[list]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a5_malformed_holder_identity_is_typed[dict]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a5_malformed_holder_identity_is_typed[set]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a5_malformed_holder_identity_is_typed[tuple]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a5_malformed_holder_identity_is_typed[int]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a5_malformed_holder_identity_is_typed[float]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a5_malformed_holder_identity_is_typed[bool]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a5_malformed_holder_identity_is_typed[bytes]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a5_malformed_holder_identity_is_typed[none]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a5_malformed_holder_identity_is_typed[empty]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a5_malformed_holder_identity_is_typed[blank]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a5_unhashable_holder_never_raises_typeerror[list]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a5_unhashable_holder_never_raises_typeerror[dict]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a5_unhashable_holder_never_raises_typeerror[set]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a5_authorized_holder_still_works_and_receipt_is_a_deepcopy_alias",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a5_holder_grant_authorization_is_still_typed",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[none-capsule_id]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[none-schema_version]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[none-scenario_frame]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[none-family_graph_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[none-content_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[none-contribution_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[none-public_projection_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[none-hidden_projection_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[none-lawful_set_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[none-coder_rubric_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[none-split_assignment_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[none-generation_history_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[none-rejected_alternatives_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[int-capsule_id]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[int-schema_version]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[int-scenario_frame]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[int-family_graph_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[int-content_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[int-contribution_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[int-public_projection_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[int-hidden_projection_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[int-lawful_set_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[int-coder_rubric_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[int-split_assignment_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[int-generation_history_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[int-rejected_alternatives_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[dict-capsule_id]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[dict-schema_version]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[dict-scenario_frame]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[dict-family_graph_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[dict-content_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[dict-contribution_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[dict-public_projection_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[dict-hidden_projection_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[dict-lawful_set_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[dict-coder_rubric_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[dict-split_assignment_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[dict-generation_history_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[dict-rejected_alternatives_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[list-capsule_id]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[list-schema_version]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[list-scenario_frame]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[list-family_graph_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[list-content_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[list-contribution_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[list-public_projection_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[list-hidden_projection_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[list-lawful_set_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[list-coder_rubric_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[list-split_assignment_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[list-generation_history_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[list-rejected_alternatives_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-capsule_id]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-schema_version]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-scenario_frame]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-family_graph_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-content_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-contribution_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-public_projection_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-hidden_projection_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-lawful_set_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-coder_rubric_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-split_assignment_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-generation_history_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[tuple-rejected_alternatives_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-capsule_id]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-schema_version]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-scenario_frame]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-family_graph_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-content_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-contribution_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-public_projection_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-hidden_projection_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-lawful_set_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-coder_rubric_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-split_assignment_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-generation_history_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bytes-rejected_alternatives_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[float-capsule_id]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[float-schema_version]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[float-scenario_frame]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[float-family_graph_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[float-content_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[float-contribution_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[float-public_projection_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[float-hidden_projection_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[float-lawful_set_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[float-coder_rubric_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[float-split_assignment_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[float-generation_history_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[float-rejected_alternatives_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bool-capsule_id]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bool-schema_version]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bool-scenario_frame]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bool-family_graph_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bool-content_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bool-contribution_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bool-public_projection_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bool-hidden_projection_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bool-lawful_set_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bool-coder_rubric_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bool-split_assignment_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bool-generation_history_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_require_nonempty_strings[bool-rejected_alternatives_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_accept_valid_strings[capsule_id]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_accept_valid_strings[schema_version]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_accept_valid_strings[scenario_frame]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_accept_valid_strings[family_graph_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_accept_valid_strings[content_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_accept_valid_strings[contribution_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_accept_valid_strings[public_projection_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_accept_valid_strings[hidden_projection_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_accept_valid_strings[lawful_set_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_accept_valid_strings[coder_rubric_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_accept_valid_strings[split_assignment_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_accept_valid_strings[generation_history_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_identity_and_digest_fields_accept_valid_strings[rejected_alternatives_digest]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_version_requires_a_positive_integer[str]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_version_requires_a_positive_integer[none]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_version_requires_a_positive_integer[injection]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_version_requires_a_positive_integer[float]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_version_requires_a_positive_integer[bool]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_version_requires_a_positive_integer[list]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_version_requires_a_positive_integer[dict]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_version_zero_and_negative_are_refused",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_freeze_timestamp_requires_a_finite_nonnegative_number[none]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_freeze_timestamp_requires_a_finite_nonnegative_number[str]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_freeze_timestamp_requires_a_finite_nonnegative_number[dict]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_freeze_timestamp_requires_a_finite_nonnegative_number[list]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_freeze_timestamp_requires_a_finite_nonnegative_number[bool]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_freeze_timestamp_accepts_a_valid_number",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_lifecycle_flags_require_booleans[none-expired]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_lifecycle_flags_require_booleans[none-revoked]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_lifecycle_flags_require_booleans[zero-expired]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_lifecycle_flags_require_booleans[zero-revoked]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_lifecycle_flags_require_booleans[one-expired]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_lifecycle_flags_require_booleans[one-revoked]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_lifecycle_flags_require_booleans[str-expired]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_lifecycle_flags_require_booleans[str-revoked]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_lifecycle_flags_require_booleans[list-expired]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_lifecycle_flags_require_booleans[list-revoked]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_lifecycle_flags_require_booleans[dict-expired]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_lifecycle_flags_require_booleans[dict-revoked]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_invalid_declaration_leaves_no_state_and_no_ledger_entry",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_mixed_type_digest_dict_is_refused_before_any_commitment",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_semantic_fingerprint_requires_string_keys",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_all_eighteen_capsule_fields_still_bind_the_envelope",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_a6_valid_declaration_still_commits_and_unblinds",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_full_capsule_commitment_positive_still_holds",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_signature_context_and_nonce_binding_preserved[wrong-context]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_signature_context_and_nonce_binding_preserved[wrong-nonce]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_signature_context_and_nonce_binding_preserved[empty-nonce]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_signature_context_and_nonce_binding_preserved[blank-nonce]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_signature_payload_tampering_preserved[test-only]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_signature_payload_tampering_preserved[root]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_signature_payload_tampering_preserved[signer]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_signature_payload_tampering_preserved[content]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_signature_payload_tampering_preserved[context]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_signature_payload_tampering_preserved[nonce]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_signature_payload_tampering_preserved[signature-hash]",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_mock_verify_never_raises_and_fails_closed",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_generated_packets_still_pass_the_leakage_gate",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_three_arm_blind_pairing_preserved",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_purpose_discipline_preserved",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_append_only_escrow_preserved",
+        "cls": "test_oc6_input_contract_controls",
+        "outcome": "PASS",
+        "type": null,
+        "reason": null
+      },
+      {
+        "name": "test_inactive_capsule_refused_before_any_state_change",
+        "cls": "test_oc6_input_contract_controls",
         "outcome": "PASS",
         "type": null,
         "reason": null

@@ -7,8 +7,8 @@ OUT = RET/'observations'
 def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def blob(p): return subprocess.check_output(['git','hash-object',str(p)]).decode().strip()
 
-before = json.loads((Path('/tmp/oc6-before/observations/case_matrix_before.json')).read_text())
-after = json.loads((OUT/'case_matrix_after.json').read_text())
+before = json.loads((OUT/'before/case_matrix_before.json').read_text())
+after = json.loads((OUT/'after/case_matrix_after.json').read_text())
 adj = json.loads((OUT/'before_after_adjudication.json').read_text())
 manifest = json.loads((RET/'freezes/01_STAGED_SOURCE_MANIFEST.json').read_text())
 for row in manifest:

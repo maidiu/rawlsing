@@ -7,8 +7,8 @@ import sys
 from pathlib import Path
 
 RETURN = Path(__file__).resolve().parent.parent
-BEFORE = Path('/tmp/oc6-before/observations')
-AFTER = RETURN / 'observations'
+BEFORE = RETURN / 'observations' / 'before'
+AFTER = RETURN / 'observations' / 'after'
 
 FAMILY = (
     ('normalization_equivalent', 'A1'),

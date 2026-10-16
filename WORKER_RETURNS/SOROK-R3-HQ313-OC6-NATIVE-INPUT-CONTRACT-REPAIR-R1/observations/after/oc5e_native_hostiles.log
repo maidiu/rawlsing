@@ -1,8 +1,8 @@
 # phase: after
-# command: /usr/local/bin/python3 -m pytest -q test_oc5e_native_hostiles.py --tb=line -p no:cacheprovider --import-mode=importlib --junitxml=/Users/matthewsmith/Desktop/Rawlsing/WORKER_RETURNS/SOROK-R3-HQ313-OC6-NATIVE-INPUT-CONTRACT-REPAIR-R1/observations/oc5e_native_hostiles.xml
+# command: /usr/local/bin/python3 -m pytest -q test_oc5e_native_hostiles.py --tb=line -p no:cacheprovider --import-mode=importlib --junitxml=/Users/matthewsmith/Desktop/Rawlsing/WORKER_RETURNS/SOROK-R3-HQ313-OC6-NATIVE-INPUT-CONTRACT-REPAIR-R1/observations/after/oc5e_native_hostiles.xml
 # cwd: /private/tmp/oc6-runtime/source
 # exit: 1
-# elapsed_s: 0.48
+# elapsed_s: 0.68
 
 F..........F...............F.FF....................F.F...FFF............ [ 45%]
 F....................................................................... [ 90%]
@@ -16,14 +16,14 @@ E   AssertionError: imported module is not the pinned OC4 blob: 4c185c18dbee5760
 /private/tmp/oc6-runtime/source/test_oc5e_native_hostiles.py:62: AssertionError: imported module is not the pinned OC4 blob: 4c185c18dbee57603038e97886da8fc4aa834082
 E   AssertionError: unexpectedly flagged: {'fullwidth-context': ['duplicate_normalized_field:ｃontext'], 'cgj-context': ['duplicate_normalized_field:con͏text'], 'accented-context': ['duplicate_normalized_field:CONTÉXT'], 'cgj-note': ['duplicate_normalized_field:n͏ote'], 'fullwidth-menu': ['duplicate_normalized_field:ｍenu'], 'fullwidth-public-projection': ['duplicate_normalized_field:ｐublic_projection'], 'accented-note': ['duplicate_normalized_field:NÓTE'], 'accented-request-id': ['duplicate_normalized_field:reqúest_id'], 'accented-response': ['duplicate_normalized_field:RESPONSË']}
     assert False
-     +  where False = all(<generator object test_alias_holes_are_observed_not_theorised.<locals>.<genexpr> at 0x109c38790>)
+     +  where False = all(<generator object test_alias_holes_are_observed_not_theorised.<locals>.<genexpr> at 0x1031eca00>)
 /private/tmp/oc6-runtime/source/test_oc5e_native_hostiles.py:134: AssertionError: unexpectedly flagged: {'fullwidth-context': ['duplicate_normalized_field:ｃontext'], 'cgj-context': ['duplicate_normalized_field:con͏text'], 'accented-context': ['duplicate_normalized_field:CONTÉXT'], 'cgj-note': ['duplicate_normalized_field:n͏ote'], 'fullwidth-menu': ['duplicate_normalized_field:ｍenu'], 'fullwidth-public-projection': ['duplicate_normalized_field:ｐublic_projection'], 'accented-note': ['duplicate_normalized_field:NÓTE'], 'accented-request-id': ['duplicate_normalized_field:reqúest_id'], 'accented-response': ['duplicate_normalized_field:RESPONSË']}
 E   Failed: DID NOT RAISE LeakageError
 /private/tmp/oc6-runtime/source/test_oc5e_native_hostiles.py:201: Failed: DID NOT RAISE LeakageError
 E   Failed: DID NOT RAISE LeakageError
 /private/tmp/oc6-runtime/source/test_oc5e_native_hostiles.py:201: Failed: DID NOT RAISE LeakageError
 E   assert False
-     +  where False = all(<generator object test_confusable_holes_are_observed_only_for_nfkc_invisible_scripts.<locals>.<genexpr> at 0x109c07220>)
+     +  where False = all(<generator object test_confusable_holes_are_observed_only_for_nfkc_invisible_scripts.<locals>.<genexpr> at 0x1031bb220>)
 /private/tmp/oc6-runtime/source/test_oc5e_native_hostiles.py:211: assert False
 E   custody_protocol.SignatureError: malformed primary signature: typed MockSignature required
 /private/tmp/oc6-runtime/source/custody_protocol.py:643: custody_protocol.SignatureError: malformed primary signature: typed MockSignature required
@@ -49,6 +49,6 @@ FAILED test_oc5e_native_hostiles.py::test_unblind_unhashable_holder_hole_is_obse
 FAILED test_oc5e_native_hostiles.py::test_unblind_unhashable_holder_hole_is_observed_as_typeerror[dict]
 FAILED test_oc5e_native_hostiles.py::test_unblind_unhashable_holder_hole_is_observed_as_typeerror[set]
 FAILED test_oc5e_native_hostiles.py::test_capsule_identity_field_type_hole_is_observed
-11 failed, 148 passed in 0.24s
+11 failed, 148 passed in 0.31s
 
 
