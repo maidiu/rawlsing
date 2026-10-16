@@ -1,0 +1,10 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________________ test_generic_native_labels_not_specialized_Q86 ________________
+runtime/court/frozen_pv2i/tests/test_independent.py:123: in test_generic_native_labels_not_specialized_Q86
+    assert role['CONDITIONER']['source_native_variable'] in ('X','Y') and role['TARGET']['source_native_variable'] in ('X','Y')
+                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError
+=========================== short test summary info ============================
+FAILED tests/raw_semantic_obligation.py::test_generic_native_labels_not_specialized_Q86
+1 failed in 0.43s

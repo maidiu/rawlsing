@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_pv3h.py",
+    "--tb=short",
+    "--noconftest",
+    "-p",
+    "no:cacheprovider",
+    "--import-mode=importlib",
+    "--junitxml=[RETURN]/evidence/prospective.xml"
+  ],
+  "exit": 1
+}

@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "[RETURN]/repro/run_proposal.py", line 13, in <module>
+    data=trace.data();proposal=build_proposal(api,fx['register'],report,data);receipt=build(owner,report,current,actual);verify(receipt)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "[RETURN]/repro/generic_proposal.py", line 38, in build_proposal
+    entries=[derive_entry(x,trace['I03'],current['current_decisions'][x['original_identity']['original']['respondent_namespace']]) for x in current['links']]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "[RETURN]/repro/generic_proposal.py", line 38, in <listcomp>
+    entries=[derive_entry(x,trace['I03'],current['current_decisions'][x['original_identity']['original']['respondent_namespace']]) for x in current['links']]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "[RETURN]/repro/generic_proposal.py", line 20, in derive_entry
+    require(op['semantic_roles']==['CONDITIONER','TARGET'] and len(op['condition_order'])==2 and len(set(op['condition_order']))==2,'ROLE_BINDING_MISSING')
+  File "[RETURN]/repro/generic_proposal.py", line 12, in require
+    if not ok:raise ProposalInputHold(why)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+generic_proposal.ProposalInputHold: ROLE_BINDING_MISSING

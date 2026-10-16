@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/raw_semantic_obligation.py",
+    "--tb=short",
+    "--noconftest",
+    "-p",
+    "no:cacheprovider",
+    "--import-mode=importlib",
+    "--junitxml=[RETURN]/evidence/raw_semantic.xml"
+  ],
+  "exit": 1
+}
