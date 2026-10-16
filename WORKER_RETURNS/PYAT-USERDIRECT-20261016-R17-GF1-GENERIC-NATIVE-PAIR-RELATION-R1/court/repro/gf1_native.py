@@ -37,11 +37,12 @@ from rawlsing_next.field_forge_conditional_support import (             # noqa: 
 
 from generic_native_pair_relation import (            # noqa: E402  (NEW, GF1 candidate)
     GENERIC_RELATION_OWNER,
-    GENERIC_PAIR_CONSUMER,
+    GENERIC_CONSUMER_ID,
     produce_generic_native_pair_relation,
     replay_generic_native_pair_relation,
     GenericNativePairRelation,
 )
+from gf1_pair_support_consumer import compute_pair_support_signature  # noqa: E402
 
 
 def profile_of(material: dict) -> dict:

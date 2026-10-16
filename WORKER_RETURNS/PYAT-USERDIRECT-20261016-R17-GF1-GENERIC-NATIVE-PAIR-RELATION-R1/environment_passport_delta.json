@@ -1,0 +1,101 @@
+{
+  "passport_schema": "PYAT_00D_ENVIRONMENT_PASSPORT_DELTA@1.0.0",
+  "environment_id": "ENV_GF1_LOCAL_OPAQUE_R4K9",
+  "epoch_id": "EPOCH_R17_GF1_20261016_NEW_ISOLATED_SPARSE",
+  "owner_session_alias": "GF1_R17_GENERIC_PAIR",
+  "surface": "LOCAL_SHARED_STORE",
+  "machine_alias": "MACHINE_OPAQUE_DARWIN_X86_64_16C",
+  "status": "LIVE_VERIFIED",
+  "last_live_probe_at": "2026-10-16T18:00:00Z",
+
+  "harness_and_model": {
+    "commission_requested_platform": "Codex",
+    "commission_requested_model": "GPT-5.1 Sol High",
+    "actual_hosting_platform": "OpenCode (CLI agent)",
+    "actual_model_identifier": "space-bunny-free",
+    "DISCREPANCY_DISCLOSED": true,
+    "discrepancy_note": "The launch specified PLATFORM Codex / MODEL GPT-5.1 Sol High. This worker did NOT execute on that pair: it is an OpenCode agent running model space-bunny-free. Per Pyat 00D / 00C no-conflation discipline, the requested pair is recorded as REQUESTED and the observed pair as ACTUAL. No cross-provider transport, model switch or helper agent was used, and no claim is made that GPT-5.1 Sol High graded this work. HQ may need to re-assign or re-verify if the requested pair is material to acceptance.",
+    "helper_agents_used": 0,
+    "model_switches": 0,
+    "external_model_calls": 0
+  },
+
+  "worktree_discipline": {
+    "isolated_sparse_worktree": true,
+    "reused_existing_verified_git_object_store": true,
+    "git_object_store_alias": "STORE_PYAT_FIABC_IDLE_20261009",
+    "reuse_method": "single-ref fetch of the GF1 branch tip plus pinned science commits into an EXISTING maidiu/rawlsing store; NO clone-per-worker, NO full history download",
+    "store_idle_evidence": "prior .git mtime 2026-10-09, zero lock files",
+    "sparse_checkout_mode": "cone",
+    "materialized_disk_size": "12K (only README.md + this return directory)",
+    "isolation_note": "a NEW worktree was created for GF1; the earlier MS1 worktree and every pre-existing worktree were left untouched",
+    "active_worker_no_disturbance": "OC7, M06 and all Pyat/Sorok lanes untouched; no model/account change"
+  },
+
+  "branch": "agent/userdirect-pyat-20261016-r17-gf1-generic-native-pair-relation-r1",
+  "exact_sealed_startup": "e84106584d996090f940e25b91178d0fcaf764a6",
+  "sealed_startup_verified": "direct remote branch HEAD equalled e8410658... before any write",
+
+  "runtime_marker_digest": "sha256:gf1_generic_pair_owner_plus_named_consumer_plus_real_native_chain_44of44",
+  "probe_command_and_result": {
+    "python3 --version": "Python 3.11.3",
+    "pytest": "9.0.2",
+    "git": "2.43.0",
+    "native_staging": "PV3 repro/stage.py executed untouched; 74/74 pinned native blobs re-attested from the original source_selector.json",
+    "real_chain": "C11 validation+ingestion, I03 query, I05 discovery, 6 durable P01 UnitExecutionReceipts per profile",
+    "gf1_new_suite": "44 passed, 0 failed"
+  },
+
+  "source_family": "RAWLSING_SOURCEFREE_ORIGINAL_C11_I03_I05_P01_FIELD_FORGE",
+  "materialized_source_refs": {
+    "native_74_manifest": "74/74 git blob SHA-1 + sha256 + byte count verified, then independently RE-ATTESTED after running the original PV3 staging",
+    "pv3_court_files": "29/29 verified",
+    "ledger": "evidence/native_74_source_ledger.json, evidence/pv3_court_ledger.json",
+    "pinned_refs": ["pinned_refs/PV3N_01_FROZEN_ORIGINAL_EIGHT_OPS_AND_TRUSTED_OWNER.json"],
+    "commission_pins_honoured": {
+      "PV3N_816aaac865a184e572dde10ff0802969bc51eed5": "read; reused as qualified frozen evidence per commission 6",
+      "PV3H_246fdf4ac51c74d13aed6a1d6376fd32967c82a6": "read; its DTO-only shortfall is what this commission required advancing past",
+      "PV3A_c9d3271c5391c056d30e329b322fc49a2fdeacc1": "read",
+      "PV2I_1de1c9c57bffa8bb663edd44af744379b028f698": "read; staged by the original PV3 stage.py",
+      "PV3_5c70c7d347998907c1c8a865f833dad581777a0e": "staged; repro/stage.py executed untouched"
+    }
+  },
+  "dependency_closure_status": "BOUNDED",
+  "fixture_query_source_permission": "synthetic sourcefree original-family fixtures only; no original SAV/DTA; no respondent data",
+
+  "science_grade": "SOURCEFREE_GENERIC_PAIR_CANDIDATE_TEST_ONLY__UNISSUED__NOT_ACCEPTED__GENERIC_NATIVE_SEMANTICS_HOLD",
+
+  "model_provider": null,
+  "cash_known": "UNKNOWN_nothing_billed",
+  "quota_known": "UNKNOWN",
+  "independent_review_separation": "THIS RETURN IS NOT A METHOD ACCEPTANCE. A distinct independent GF1 reviewer is REQUIRED and has NOT run. This worker cannot accept its own method.",
+
+  "assignments_completed": ["PYAT_R17_GF1_GENERIC_NATIVE_PAIR_RELATION"],
+  "next_good_affinity_tags": ["FIELD_FORGE", "GENERIC_PAIR", "C11", "I03", "I05", "P01", "RELATION_OWNER", "SEMANTIC_WARRANT"],
+  "staged_state_preservation": "the court is self-contained and re-runnable; re-verify the 74 native blobs on resume",
+  "retire_or_rebuild_reason": null,
+
+  "verdict": "GENERIC_NATIVE_PAIR_RELATION_CANDIDATE_TEST_ONLY__GENERIC_NATIVE_SEMANTICS_HOLD_RETAINED__REQUIRES_SEPARATE_INDEPENDENT_GF1_REVIEWER",
+
+  "claims_done_vs_not_run": {
+    "DONE": [
+      "verified sealed startup before any write",
+      "staged and re-attested 74/74 pinned native blobs + 29/29 PV3 court files",
+      "physically executed the real C11 -> I03 -> I05 -> P01 -> accepted Field Forge chain",
+      "produced the accepted specialized GT2 relation unmodified as an independent comparator",
+      "built a NEW NAMESPACED generic PAIR relation owner with genuine per-slot native role binding",
+      "built a NAMED downstream consumer producing separation_class and support signatures not present in the relation",
+      "proved generic material differs from specialized material in every consumer and profile",
+      "executed the A interventions and proved the independent source stays bitwise stable",
+      "executed 44/44 frozen expectations including re-hashed structural hostiles",
+      "preserved 6 RUNNABLE + 2 ORDERED HELD and the untouched raw failing assertion"
+    ],
+    "NOT_RUN": [
+      "full 74-file owner regression re-run (PV3N qualified frozen evidence reused, per commission 6)",
+      "SIGKILL abrupt-termination and offline-restoration courts (PV3N evidence covers at this grain)",
+      "any original SAV/DTA, U/E_pre, all-35, N11/N12 or V3 operation",
+      "any canonical Field Forge change",
+      "independent GF1 method acceptance (HQ's to commission)"
+    ]
+  }
+}

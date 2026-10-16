@@ -1,0 +1,1229 @@
+{
+ "schema": "R17_GF1_02_REAL_C11_I03_TO_GENERIC_RELATION_AND_CONSUMER@1",
+ "real_native_chain": [
+  "validate_c11_source_release",
+  "ingest_c11_source_release",
+  "execute_empirical_query",
+  "execute_exact_bounded_discovery",
+  "pre553_batch_runner.UnitExecutionReceipt",
+  "field_forge_conditional_support.produce_exact_conditional_support_profile (ACCEPTED comparator)"
+ ],
+ "new_candidate_chain": [
+  "generic_native_pair_relation.produce_generic_native_pair_relation",
+  "gf1_pair_support_consumer.compute_pair_support_signature"
+ ],
+ "native_74_reattested": 74,
+ "runs": {
+  "BASELINE": {
+   "cells": [
+    {
+     "profile": "BASELINE",
+     "work_key": "20136e61b5e197b3aadfe3dba75a18fd96b0190d4c11da21038f1f142dfe0830",
+     "independent_key": "PV2-ADULT-A-B",
+     "native_path": "QUERY",
+     "generic_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "generic_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+     "generic_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:62d6bedf5f69ad19be3899ddc98523cbbb9b6aaa840bdd598e68ed14adb3002d",
+     "generic_content_hash": "62d6bedf5f69ad19be3899ddc98523cbbb9b6aaa840bdd598e68ed14adb3002d",
+     "generic_roles": {
+      "CONDITIONER": "m01-Y",
+      "TARGET": "m01-X"
+     },
+     "operation_role_order": "FORWARD_NATIVE_ORDER",
+     "generic_cells": {
+      "00": 1,
+      "01": 0,
+      "10": 0,
+      "11": 1
+     },
+     "eligible_joint_risk": 2,
+     "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+     "separation_class": "EXACT_PAIR_SEPARATION",
+     "support_vectors": {
+      "0": {
+       "0": 1,
+       "1": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1
+      }
+     },
+     "zero_cell_semantics": {
+      "0": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      },
+      "1": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     },
+     "consumer_result_hash": "759717337d2f7a1f6f0a681e73f43d1544273ab8a90afbee939435eebb03ea13",
+     "accepted_owner": "FIELD_FORGE_ACTOR_INDEPENDENT_RELATION_OWNER",
+     "accepted_owner_object_id": "urn:rawlsing:field-forge:conditional-support:sha256:5c178013b6aa7cc843ecdc9d3bd92f705777332d39dcb755448f3bab9decc8b5",
+     "accepted_cells": {
+      "0": {
+       "denominator": 1,
+       "targets": {
+        "0": 1,
+        "1": 0
+       }
+      },
+      "1": {
+       "denominator": 1,
+       "targets": {
+        "0": 0,
+        "1": 1
+       }
+      }
+     },
+     "generic_differs_from_specialized": true,
+     "accepted_matches_declared": true
+    },
+    {
+     "profile": "BASELINE",
+     "work_key": "3b1ca98feb9c8b34be6f277743894405b1db69104d507d1a82a74c223e321142",
+     "independent_key": "PV2-ADULT-A-DISCOVERY",
+     "native_path": "DISCOVERY",
+     "generic_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "generic_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+     "generic_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:7ac463e859e66c0f7e92ffcbd964f88f8e55524beeadc587d4ecc7032bcc6903",
+     "generic_content_hash": "7ac463e859e66c0f7e92ffcbd964f88f8e55524beeadc587d4ecc7032bcc6903",
+     "generic_roles": {
+      "CONDITIONER": "m01-X",
+      "TARGET": "m01-Y"
+     },
+     "operation_role_order": "FORWARD_NATIVE_ORDER",
+     "generic_cells": {
+      "00": 0,
+      "01": 0,
+      "10": 0,
+      "11": 1
+     },
+     "eligible_joint_risk": 1,
+     "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+     "separation_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+     "support_vectors": {
+      "0": {
+       "0": 0,
+       "1": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1
+      }
+     },
+     "zero_cell_semantics": {
+      "0": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      },
+      "1": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     },
+     "consumer_result_hash": "9fc67dbccf8b4cbcede6f4407d433610c690aa2456f60077157882efcec6cd4b",
+     "accepted_owner": "FIELD_FORGE_ACTOR_INDEPENDENT_RELATION_OWNER",
+     "accepted_owner_object_id": "urn:rawlsing:field-forge:conditional-support:sha256:d34ebe9b5015e249d104dc07e28be26a4c19c839709ff573ba2f0676bde65140",
+     "accepted_cells": {
+      "0": {
+       "denominator": 0,
+       "targets": {
+        "0": 0,
+        "1": 0
+       }
+      },
+      "1": {
+       "denominator": 1,
+       "targets": {
+        "0": 0,
+        "1": 1
+       }
+      }
+     },
+     "generic_differs_from_specialized": true,
+     "accepted_matches_declared": true
+    },
+    {
+     "profile": "BASELINE",
+     "work_key": "9fb3f6c645377703bf08f538f318d44d4d886512545a726ca0493c9c9f826c8e",
+     "independent_key": "PV2-ADULT-A-PAIR",
+     "native_path": "QUERY",
+     "generic_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "generic_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+     "generic_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:74d3aaaca35aaacc4491c7e472ac38a6e69fcf0d51736b86b853ea48d10b2236",
+     "generic_content_hash": "74d3aaaca35aaacc4491c7e472ac38a6e69fcf0d51736b86b853ea48d10b2236",
+     "generic_roles": {
+      "CONDITIONER": "m01-X",
+      "TARGET": "m01-Y"
+     },
+     "operation_role_order": "FORWARD_NATIVE_ORDER",
+     "generic_cells": {
+      "00": 1,
+      "01": 0,
+      "10": 0,
+      "11": 1
+     },
+     "eligible_joint_risk": 2,
+     "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+     "separation_class": "EXACT_PAIR_SEPARATION",
+     "support_vectors": {
+      "0": {
+       "0": 1,
+       "1": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1
+      }
+     },
+     "zero_cell_semantics": {
+      "0": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      },
+      "1": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     },
+     "consumer_result_hash": "310ac76440e15ac489086f3ae2b7007ccd27729560fda3a56c4722f1be72e9d9",
+     "accepted_owner": "FIELD_FORGE_ACTOR_INDEPENDENT_RELATION_OWNER",
+     "accepted_owner_object_id": "urn:rawlsing:field-forge:conditional-support:sha256:97c33b27aa70d27aadffa53811feca378e2314f9f2a4c526d3373ade7bce79d3",
+     "accepted_cells": {
+      "0": {
+       "denominator": 1,
+       "targets": {
+        "0": 1,
+        "1": 0
+       }
+      },
+      "1": {
+       "denominator": 1,
+       "targets": {
+        "0": 0,
+        "1": 1
+       }
+      }
+     },
+     "generic_differs_from_specialized": true,
+     "accepted_matches_declared": true
+    },
+    {
+     "profile": "BASELINE",
+     "work_key": "481bb22e24b496251d44084ea40e0b95d266a33353502a5b41c38b41c009587c",
+     "independent_key": "PV2-ADULT-B-DISCOVERY",
+     "native_path": "DISCOVERY",
+     "generic_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "generic_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+     "generic_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:b4177c0cc64c823e4a97eaa98c370fedd767d3d4e219659ab3a4edd8e4a336dc",
+     "generic_content_hash": "b4177c0cc64c823e4a97eaa98c370fedd767d3d4e219659ab3a4edd8e4a336dc",
+     "generic_roles": {
+      "CONDITIONER": "m01-X",
+      "TARGET": "m01-Y"
+     },
+     "operation_role_order": "FORWARD_NATIVE_ORDER",
+     "generic_cells": {
+      "00": 0,
+      "01": 0,
+      "10": 0,
+      "11": 1
+     },
+     "eligible_joint_risk": 1,
+     "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+     "separation_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+     "support_vectors": {
+      "0": {
+       "0": 0,
+       "1": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1
+      }
+     },
+     "zero_cell_semantics": {
+      "0": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      },
+      "1": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     },
+     "consumer_result_hash": "7b231358e895f42331605e9fed22a19870ace170834eda709019d6a6b4ff994f",
+     "accepted_owner": "FIELD_FORGE_ACTOR_INDEPENDENT_RELATION_OWNER",
+     "accepted_owner_object_id": "urn:rawlsing:field-forge:conditional-support:sha256:8f2c41dfe4554fabd76c774655d1d13827daabf6224a9db17a7cf76db178c39f",
+     "accepted_cells": {
+      "0": {
+       "denominator": 0,
+       "targets": {
+        "0": 0,
+        "1": 0
+       }
+      },
+      "1": {
+       "denominator": 1,
+       "targets": {
+        "0": 0,
+        "1": 1
+       }
+      }
+     },
+     "generic_differs_from_specialized": true,
+     "accepted_matches_declared": true
+    },
+    {
+     "profile": "BASELINE",
+     "work_key": "d508b44c3db46c091534d9bcc71cfb00bb249e11900b6647a302b8ae71a29aa4",
+     "independent_key": "PV2-ADULT-B-B",
+     "native_path": "QUERY",
+     "generic_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "generic_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+     "generic_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:972ea8800f1d324ce964b1424979789ec8c6cbe9171712cc7206bf1dd073be76",
+     "generic_content_hash": "972ea8800f1d324ce964b1424979789ec8c6cbe9171712cc7206bf1dd073be76",
+     "generic_roles": {
+      "CONDITIONER": "m01-Y",
+      "TARGET": "m01-X"
+     },
+     "operation_role_order": "FORWARD_NATIVE_ORDER",
+     "generic_cells": {
+      "00": 1,
+      "01": 0,
+      "10": 0,
+      "11": 1
+     },
+     "eligible_joint_risk": 2,
+     "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+     "separation_class": "EXACT_PAIR_SEPARATION",
+     "support_vectors": {
+      "0": {
+       "0": 1,
+       "1": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1
+      }
+     },
+     "zero_cell_semantics": {
+      "0": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      },
+      "1": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     },
+     "consumer_result_hash": "7b9f7d72ecc1ee446c8bdb64425cf4b706cc28a9b81a49bfe110783c84b6e68d",
+     "accepted_owner": "FIELD_FORGE_ACTOR_INDEPENDENT_RELATION_OWNER",
+     "accepted_owner_object_id": "urn:rawlsing:field-forge:conditional-support:sha256:ff41fc272ff75ad1235bc6264829b189e44ea440c3461dcc747fc6d7c7c609b8",
+     "accepted_cells": {
+      "0": {
+       "denominator": 1,
+       "targets": {
+        "0": 1,
+        "1": 0
+       }
+      },
+      "1": {
+       "denominator": 1,
+       "targets": {
+        "0": 0,
+        "1": 1
+       }
+      }
+     },
+     "generic_differs_from_specialized": true,
+     "accepted_matches_declared": true
+    },
+    {
+     "profile": "BASELINE",
+     "work_key": "d673e586264356f14a19e4adf128dd3ac2b0be5dcaf4d14bbcf849ffd587e4da",
+     "independent_key": "PV2-ADULT-B-PAIR",
+     "native_path": "QUERY",
+     "generic_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "generic_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+     "generic_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:0f0fc4956cdcba3f7bbf8cee70b1f897a6361fce96a17732443ba230e55afbe2",
+     "generic_content_hash": "0f0fc4956cdcba3f7bbf8cee70b1f897a6361fce96a17732443ba230e55afbe2",
+     "generic_roles": {
+      "CONDITIONER": "m01-X",
+      "TARGET": "m01-Y"
+     },
+     "operation_role_order": "FORWARD_NATIVE_ORDER",
+     "generic_cells": {
+      "00": 1,
+      "01": 0,
+      "10": 0,
+      "11": 1
+     },
+     "eligible_joint_risk": 2,
+     "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+     "separation_class": "EXACT_PAIR_SEPARATION",
+     "support_vectors": {
+      "0": {
+       "0": 1,
+       "1": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1
+      }
+     },
+     "zero_cell_semantics": {
+      "0": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      },
+      "1": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     },
+     "consumer_result_hash": "b40e090c0f447008dfc871015b7cd7b99910c590f89e79d9c970bf3cdc64e87a",
+     "accepted_owner": "FIELD_FORGE_ACTOR_INDEPENDENT_RELATION_OWNER",
+     "accepted_owner_object_id": "urn:rawlsing:field-forge:conditional-support:sha256:9ecf7ffdc4b2a3c12203bfd26fcf7f57053c3eb7fc65a34bcc26d339a1f8f544",
+     "accepted_cells": {
+      "0": {
+       "denominator": 1,
+       "targets": {
+        "0": 1,
+        "1": 0
+       }
+      },
+      "1": {
+       "denominator": 1,
+       "targets": {
+        "0": 0,
+        "1": 1
+       }
+      }
+     },
+     "generic_differs_from_specialized": true,
+     "accepted_matches_declared": true
+    }
+   ],
+   "p01_units": 6,
+   "receipt_hashes": [
+    "925dd8c1be5a5ee4a66c84f74b6ff14aac423529db3a36a71041a501cca18f43",
+    "ff164a8e96b6eeed45d16af1c7b4d3544546b2d82d8826299d7c98e86dc34b93",
+    "a68cbd966f78a7af0d64e591ca7292f36bf12a26af7106f5791c1209ab017498",
+    "c577b7b3d6829f883c740b4f095a4c50d89945dd14f969d17ed2237e608c54bb",
+    "261f484b7c3ce52e0b5c42e6a57e548daad87d0b2d2d24c964b3ec92154689f9",
+    "124d9860aaec3999fcbc5616868e5e31591b2139b0b196add629d7daa8be10c7"
+   ]
+  },
+  "R2_Y1": {
+   "cells": [
+    {
+     "profile": "R2_Y1",
+     "work_key": "047ed34f06ac325c0a4e1635b186a0220a76ea13e163fb8b0f797381942445ad",
+     "independent_key": "<intervention-run-new-identity>",
+     "native_path": "QUERY",
+     "generic_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "generic_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+     "generic_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:505e29a5b31534c45d53c155a367c5151b1d982682a23356a193c5c8c0e563a4",
+     "generic_content_hash": "505e29a5b31534c45d53c155a367c5151b1d982682a23356a193c5c8c0e563a4",
+     "generic_roles": {
+      "CONDITIONER": "m01-Y",
+      "TARGET": "m01-X"
+     },
+     "operation_role_order": "FORWARD_NATIVE_ORDER",
+     "generic_cells": {
+      "00": 0,
+      "01": 0,
+      "10": 1,
+      "11": 1
+     },
+     "eligible_joint_risk": 2,
+     "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+     "separation_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+     "support_vectors": {
+      "0": {
+       "0": 0,
+       "1": 0
+      },
+      "1": {
+       "0": 1,
+       "1": 1
+      }
+     },
+     "zero_cell_semantics": {
+      "0": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      },
+      "1": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_POSITIVE"
+      }
+     },
+     "consumer_result_hash": "3f4cd0d5395fc1a16dbca19dfb640cb912a59fca097430e6be8afb276bc1536e",
+     "accepted_owner": "FIELD_FORGE_ACTOR_INDEPENDENT_RELATION_OWNER",
+     "accepted_owner_object_id": "urn:rawlsing:field-forge:conditional-support:sha256:82c434ebc086e69c8bebc2bbb6e399cd0eb64ecd0b551400f161c9b15613cf3a",
+     "accepted_cells": {
+      "0": {
+       "denominator": 0,
+       "targets": {
+        "0": 0,
+        "1": 0
+       }
+      },
+      "1": {
+       "denominator": 2,
+       "targets": {
+        "0": 1,
+        "1": 1
+       }
+      }
+     },
+     "generic_differs_from_specialized": true,
+     "accepted_matches_declared": true
+    },
+    {
+     "profile": "R2_Y1",
+     "work_key": "38f41ec47f4fbbcd57923a0eb1f9d048b57e175891104a955b6d4b5cc382cd2c",
+     "independent_key": "<intervention-run-new-identity>",
+     "native_path": "QUERY",
+     "generic_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "generic_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+     "generic_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:3132f24650123cf4670d96bc8c91d13591f9d36a8f13f90b669e52122f118763",
+     "generic_content_hash": "3132f24650123cf4670d96bc8c91d13591f9d36a8f13f90b669e52122f118763",
+     "generic_roles": {
+      "CONDITIONER": "m01-X",
+      "TARGET": "m01-Y"
+     },
+     "operation_role_order": "FORWARD_NATIVE_ORDER",
+     "generic_cells": {
+      "00": 0,
+      "01": 1,
+      "10": 0,
+      "11": 1
+     },
+     "eligible_joint_risk": 2,
+     "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+     "separation_class": "NO_PAIR_SEPARATION",
+     "support_vectors": {
+      "0": {
+       "0": 0,
+       "1": 1
+      },
+      "1": {
+       "0": 0,
+       "1": 1
+      }
+     },
+     "zero_cell_semantics": {
+      "0": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      },
+      "1": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     },
+     "consumer_result_hash": "dc165e6513323b44bcd13e4b83f60bc14c4f4febdb95e7baa62f1de9eaa56432",
+     "accepted_owner": "FIELD_FORGE_ACTOR_INDEPENDENT_RELATION_OWNER",
+     "accepted_owner_object_id": "urn:rawlsing:field-forge:conditional-support:sha256:1c54bc52113fe6bd0a2bdfcb65fd8db5918efe45bb6cac93401d9abdb7641cdd",
+     "accepted_cells": {
+      "0": {
+       "denominator": 1,
+       "targets": {
+        "0": 0,
+        "1": 1
+       }
+      },
+      "1": {
+       "denominator": 1,
+       "targets": {
+        "0": 0,
+        "1": 1
+       }
+      }
+     },
+     "generic_differs_from_specialized": true,
+     "accepted_matches_declared": true
+    },
+    {
+     "profile": "R2_Y1",
+     "work_key": "ed2502bda66b87d3afc4b4b92cf7d72c89b7eab97d3567bdeb8ba867d137ca24",
+     "independent_key": "<intervention-run-new-identity>",
+     "native_path": "DISCOVERY",
+     "generic_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "generic_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+     "generic_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:fc5adae7da828bc1dda1de616402de7c53e36feb0ad5a3ff4d9235fd61876637",
+     "generic_content_hash": "fc5adae7da828bc1dda1de616402de7c53e36feb0ad5a3ff4d9235fd61876637",
+     "generic_roles": {
+      "CONDITIONER": "m01-X",
+      "TARGET": "m01-Y"
+     },
+     "operation_role_order": "FORWARD_NATIVE_ORDER",
+     "generic_cells": {
+      "00": 0,
+      "01": 0,
+      "10": 0,
+      "11": 1
+     },
+     "eligible_joint_risk": 1,
+     "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+     "separation_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+     "support_vectors": {
+      "0": {
+       "0": 0,
+       "1": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1
+      }
+     },
+     "zero_cell_semantics": {
+      "0": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      },
+      "1": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     },
+     "consumer_result_hash": "2af929b0c78ac06c6c0924f1fd658441cd218a95b64ee87c7fe75cc1d782f5c9",
+     "accepted_owner": "FIELD_FORGE_ACTOR_INDEPENDENT_RELATION_OWNER",
+     "accepted_owner_object_id": "urn:rawlsing:field-forge:conditional-support:sha256:055d81ff00f2805e223969900dbfc28d59c1500eb43e632b952fdf8a7bcf1c27",
+     "accepted_cells": {
+      "0": {
+       "denominator": 0,
+       "targets": {
+        "0": 0,
+        "1": 0
+       }
+      },
+      "1": {
+       "denominator": 1,
+       "targets": {
+        "0": 0,
+        "1": 1
+       }
+      }
+     },
+     "generic_differs_from_specialized": true,
+     "accepted_matches_declared": true
+    },
+    {
+     "profile": "R2_Y1",
+     "work_key": "481bb22e24b496251d44084ea40e0b95d266a33353502a5b41c38b41c009587c",
+     "independent_key": "PV2-ADULT-B-DISCOVERY",
+     "native_path": "DISCOVERY",
+     "generic_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "generic_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+     "generic_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:b4177c0cc64c823e4a97eaa98c370fedd767d3d4e219659ab3a4edd8e4a336dc",
+     "generic_content_hash": "b4177c0cc64c823e4a97eaa98c370fedd767d3d4e219659ab3a4edd8e4a336dc",
+     "generic_roles": {
+      "CONDITIONER": "m01-X",
+      "TARGET": "m01-Y"
+     },
+     "operation_role_order": "FORWARD_NATIVE_ORDER",
+     "generic_cells": {
+      "00": 0,
+      "01": 0,
+      "10": 0,
+      "11": 1
+     },
+     "eligible_joint_risk": 1,
+     "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+     "separation_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+     "support_vectors": {
+      "0": {
+       "0": 0,
+       "1": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1
+      }
+     },
+     "zero_cell_semantics": {
+      "0": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      },
+      "1": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     },
+     "consumer_result_hash": "7b231358e895f42331605e9fed22a19870ace170834eda709019d6a6b4ff994f",
+     "accepted_owner": "FIELD_FORGE_ACTOR_INDEPENDENT_RELATION_OWNER",
+     "accepted_owner_object_id": "urn:rawlsing:field-forge:conditional-support:sha256:8f2c41dfe4554fabd76c774655d1d13827daabf6224a9db17a7cf76db178c39f",
+     "accepted_cells": {
+      "0": {
+       "denominator": 0,
+       "targets": {
+        "0": 0,
+        "1": 0
+       }
+      },
+      "1": {
+       "denominator": 1,
+       "targets": {
+        "0": 0,
+        "1": 1
+       }
+      }
+     },
+     "generic_differs_from_specialized": true,
+     "accepted_matches_declared": true
+    },
+    {
+     "profile": "R2_Y1",
+     "work_key": "d508b44c3db46c091534d9bcc71cfb00bb249e11900b6647a302b8ae71a29aa4",
+     "independent_key": "PV2-ADULT-B-B",
+     "native_path": "QUERY",
+     "generic_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "generic_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+     "generic_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:972ea8800f1d324ce964b1424979789ec8c6cbe9171712cc7206bf1dd073be76",
+     "generic_content_hash": "972ea8800f1d324ce964b1424979789ec8c6cbe9171712cc7206bf1dd073be76",
+     "generic_roles": {
+      "CONDITIONER": "m01-Y",
+      "TARGET": "m01-X"
+     },
+     "operation_role_order": "FORWARD_NATIVE_ORDER",
+     "generic_cells": {
+      "00": 1,
+      "01": 0,
+      "10": 0,
+      "11": 1
+     },
+     "eligible_joint_risk": 2,
+     "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+     "separation_class": "EXACT_PAIR_SEPARATION",
+     "support_vectors": {
+      "0": {
+       "0": 1,
+       "1": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1
+      }
+     },
+     "zero_cell_semantics": {
+      "0": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      },
+      "1": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     },
+     "consumer_result_hash": "7b9f7d72ecc1ee446c8bdb64425cf4b706cc28a9b81a49bfe110783c84b6e68d",
+     "accepted_owner": "FIELD_FORGE_ACTOR_INDEPENDENT_RELATION_OWNER",
+     "accepted_owner_object_id": "urn:rawlsing:field-forge:conditional-support:sha256:ff41fc272ff75ad1235bc6264829b189e44ea440c3461dcc747fc6d7c7c609b8",
+     "accepted_cells": {
+      "0": {
+       "denominator": 1,
+       "targets": {
+        "0": 1,
+        "1": 0
+       }
+      },
+      "1": {
+       "denominator": 1,
+       "targets": {
+        "0": 0,
+        "1": 1
+       }
+      }
+     },
+     "generic_differs_from_specialized": true,
+     "accepted_matches_declared": true
+    },
+    {
+     "profile": "R2_Y1",
+     "work_key": "d673e586264356f14a19e4adf128dd3ac2b0be5dcaf4d14bbcf849ffd587e4da",
+     "independent_key": "PV2-ADULT-B-PAIR",
+     "native_path": "QUERY",
+     "generic_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "generic_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+     "generic_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:0f0fc4956cdcba3f7bbf8cee70b1f897a6361fce96a17732443ba230e55afbe2",
+     "generic_content_hash": "0f0fc4956cdcba3f7bbf8cee70b1f897a6361fce96a17732443ba230e55afbe2",
+     "generic_roles": {
+      "CONDITIONER": "m01-X",
+      "TARGET": "m01-Y"
+     },
+     "operation_role_order": "FORWARD_NATIVE_ORDER",
+     "generic_cells": {
+      "00": 1,
+      "01": 0,
+      "10": 0,
+      "11": 1
+     },
+     "eligible_joint_risk": 2,
+     "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+     "separation_class": "EXACT_PAIR_SEPARATION",
+     "support_vectors": {
+      "0": {
+       "0": 1,
+       "1": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1
+      }
+     },
+     "zero_cell_semantics": {
+      "0": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      },
+      "1": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     },
+     "consumer_result_hash": "b40e090c0f447008dfc871015b7cd7b99910c590f89e79d9c970bf3cdc64e87a",
+     "accepted_owner": "FIELD_FORGE_ACTOR_INDEPENDENT_RELATION_OWNER",
+     "accepted_owner_object_id": "urn:rawlsing:field-forge:conditional-support:sha256:9ecf7ffdc4b2a3c12203bfd26fcf7f57053c3eb7fc65a34bcc26d339a1f8f544",
+     "accepted_cells": {
+      "0": {
+       "denominator": 1,
+       "targets": {
+        "0": 1,
+        "1": 0
+       }
+      },
+      "1": {
+       "denominator": 1,
+       "targets": {
+        "0": 0,
+        "1": 1
+       }
+      }
+     },
+     "generic_differs_from_specialized": true,
+     "accepted_matches_declared": true
+    }
+   ],
+   "p01_units": 6,
+   "receipt_hashes": [
+    "b43970d73fe37ff90660bf31928aace867af8aa7b97235ae3b454d68cd65429e",
+    "5d7430d5fe304def1d97858551aedf2e03ce8f9c2bc3902af81149c86925ddb0",
+    "0e9d73d05a0c86054d8275c859513f62bdf50ba3e77d8cfb0965a4524bc49676",
+    "c577b7b3d6829f883c740b4f095a4c50d89945dd14f969d17ed2237e608c54bb",
+    "261f484b7c3ce52e0b5c42e6a57e548daad87d0b2d2d24c964b3ec92154689f9",
+    "124d9860aaec3999fcbc5616868e5e31591b2139b0b196add629d7daa8be10c7"
+   ]
+  },
+  "R1_Y0": {
+   "cells": [
+    {
+     "profile": "R1_Y0",
+     "work_key": "34db4da415e028608dd3adf7c01f0286f6bf5106e31c7f8fb22220e0a6b74a05",
+     "independent_key": "<intervention-run-new-identity>",
+     "native_path": "QUERY",
+     "generic_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "generic_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+     "generic_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:6326bcfd677a08fdf28ac4a48656eb0568b4ebee6402fe8b67d563be0c4f37b5",
+     "generic_content_hash": "6326bcfd677a08fdf28ac4a48656eb0568b4ebee6402fe8b67d563be0c4f37b5",
+     "generic_roles": {
+      "CONDITIONER": "m01-X",
+      "TARGET": "m01-Y"
+     },
+     "operation_role_order": "FORWARD_NATIVE_ORDER",
+     "generic_cells": {
+      "00": 1,
+      "01": 0,
+      "10": 1,
+      "11": 0
+     },
+     "eligible_joint_risk": 2,
+     "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+     "separation_class": "NO_PAIR_SEPARATION",
+     "support_vectors": {
+      "0": {
+       "0": 1,
+       "1": 0
+      },
+      "1": {
+       "0": 1,
+       "1": 0
+      }
+     },
+     "zero_cell_semantics": {
+      "0": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      },
+      "1": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      }
+     },
+     "consumer_result_hash": "cde9aba4708ba98669d7dd74bd5d8bb8572a969b4c15334b94f9957cad4d6b1f",
+     "accepted_owner": "FIELD_FORGE_ACTOR_INDEPENDENT_RELATION_OWNER",
+     "accepted_owner_object_id": "urn:rawlsing:field-forge:conditional-support:sha256:af15f75e507c00e3b5697c3ace1178c385af0af534810d014c4c2f716f8b4926",
+     "accepted_cells": {
+      "0": {
+       "denominator": 1,
+       "targets": {
+        "0": 1,
+        "1": 0
+       }
+      },
+      "1": {
+       "denominator": 1,
+       "targets": {
+        "0": 1,
+        "1": 0
+       }
+      }
+     },
+     "generic_differs_from_specialized": true,
+     "accepted_matches_declared": true
+    },
+    {
+     "profile": "R1_Y0",
+     "work_key": "d0795cebaf40127c457f3c4a492fea76e9efa9b851065a9337226bbb0d88d8b7",
+     "independent_key": "<intervention-run-new-identity>",
+     "native_path": "QUERY",
+     "generic_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "generic_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+     "generic_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:4ca505050ce58b9facdf3885c1ada0662605f27d0b6e8f5f0d25c88b22ea629d",
+     "generic_content_hash": "4ca505050ce58b9facdf3885c1ada0662605f27d0b6e8f5f0d25c88b22ea629d",
+     "generic_roles": {
+      "CONDITIONER": "m01-Y",
+      "TARGET": "m01-X"
+     },
+     "operation_role_order": "FORWARD_NATIVE_ORDER",
+     "generic_cells": {
+      "00": 1,
+      "01": 1,
+      "10": 0,
+      "11": 0
+     },
+     "eligible_joint_risk": 2,
+     "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+     "separation_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+     "support_vectors": {
+      "0": {
+       "0": 1,
+       "1": 1
+      },
+      "1": {
+       "0": 0,
+       "1": 0
+      }
+     },
+     "zero_cell_semantics": {
+      "0": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_POSITIVE"
+      },
+      "1": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      }
+     },
+     "consumer_result_hash": "0defd377bcca6c12bc72503e009bb728e86ad9aa71203002387e701ed45fce29",
+     "accepted_owner": "FIELD_FORGE_ACTOR_INDEPENDENT_RELATION_OWNER",
+     "accepted_owner_object_id": "urn:rawlsing:field-forge:conditional-support:sha256:44943f1e8d8b757389dab45c590158c7ee549313ceee04497bca8ff1cd6c9443",
+     "accepted_cells": {
+      "0": {
+       "denominator": 2,
+       "targets": {
+        "0": 1,
+        "1": 1
+       }
+      },
+      "1": {
+       "denominator": 0,
+       "targets": {
+        "0": 0,
+        "1": 0
+       }
+      }
+     },
+     "generic_differs_from_specialized": true,
+     "accepted_matches_declared": true
+    },
+    {
+     "profile": "R1_Y0",
+     "work_key": "db1bb0bad4f0bc11a469ef92f3adf030f0e1b308e74e8eda0eea2dbaf2d185fd",
+     "independent_key": "<intervention-run-new-identity>",
+     "native_path": "DISCOVERY",
+     "generic_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "generic_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+     "generic_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:c1a63fdbf5efb2d905ec556c5690b22a2888c2ce687d47032451831b74a73fc9",
+     "generic_content_hash": "c1a63fdbf5efb2d905ec556c5690b22a2888c2ce687d47032451831b74a73fc9",
+     "generic_roles": {
+      "CONDITIONER": "m01-X",
+      "TARGET": "m01-Y"
+     },
+     "operation_role_order": "FORWARD_NATIVE_ORDER",
+     "generic_cells": {
+      "00": 0,
+      "01": 0,
+      "10": 1,
+      "11": 0
+     },
+     "eligible_joint_risk": 1,
+     "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+     "separation_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+     "support_vectors": {
+      "0": {
+       "0": 0,
+       "1": 0
+      },
+      "1": {
+       "0": 1,
+       "1": 0
+      }
+     },
+     "zero_cell_semantics": {
+      "0": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      },
+      "1": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      }
+     },
+     "consumer_result_hash": "9d6f4fec77055c02dbe777c168052d170f1686374f7fb49d41ada8bb8314f7f8",
+     "accepted_owner": "FIELD_FORGE_ACTOR_INDEPENDENT_RELATION_OWNER",
+     "accepted_owner_object_id": "urn:rawlsing:field-forge:conditional-support:sha256:894875dae595dd8e3fa02edce684bdd6b0769be2b8a02cf1896c6851da9e9829",
+     "accepted_cells": {
+      "0": {
+       "denominator": 0,
+       "targets": {
+        "0": 0,
+        "1": 0
+       }
+      },
+      "1": {
+       "denominator": 1,
+       "targets": {
+        "0": 1,
+        "1": 0
+       }
+      }
+     },
+     "generic_differs_from_specialized": true,
+     "accepted_matches_declared": true
+    },
+    {
+     "profile": "R1_Y0",
+     "work_key": "481bb22e24b496251d44084ea40e0b95d266a33353502a5b41c38b41c009587c",
+     "independent_key": "PV2-ADULT-B-DISCOVERY",
+     "native_path": "DISCOVERY",
+     "generic_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "generic_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+     "generic_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:b4177c0cc64c823e4a97eaa98c370fedd767d3d4e219659ab3a4edd8e4a336dc",
+     "generic_content_hash": "b4177c0cc64c823e4a97eaa98c370fedd767d3d4e219659ab3a4edd8e4a336dc",
+     "generic_roles": {
+      "CONDITIONER": "m01-X",
+      "TARGET": "m01-Y"
+     },
+     "operation_role_order": "FORWARD_NATIVE_ORDER",
+     "generic_cells": {
+      "00": 0,
+      "01": 0,
+      "10": 0,
+      "11": 1
+     },
+     "eligible_joint_risk": 1,
+     "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+     "separation_class": "UNDETERMINED_NO_ELIGIBLE_RISK",
+     "support_vectors": {
+      "0": {
+       "0": 0,
+       "1": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1
+      }
+     },
+     "zero_cell_semantics": {
+      "0": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      },
+      "1": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     },
+     "consumer_result_hash": "7b231358e895f42331605e9fed22a19870ace170834eda709019d6a6b4ff994f",
+     "accepted_owner": "FIELD_FORGE_ACTOR_INDEPENDENT_RELATION_OWNER",
+     "accepted_owner_object_id": "urn:rawlsing:field-forge:conditional-support:sha256:8f2c41dfe4554fabd76c774655d1d13827daabf6224a9db17a7cf76db178c39f",
+     "accepted_cells": {
+      "0": {
+       "denominator": 0,
+       "targets": {
+        "0": 0,
+        "1": 0
+       }
+      },
+      "1": {
+       "denominator": 1,
+       "targets": {
+        "0": 0,
+        "1": 1
+       }
+      }
+     },
+     "generic_differs_from_specialized": true,
+     "accepted_matches_declared": true
+    },
+    {
+     "profile": "R1_Y0",
+     "work_key": "d508b44c3db46c091534d9bcc71cfb00bb249e11900b6647a302b8ae71a29aa4",
+     "independent_key": "PV2-ADULT-B-B",
+     "native_path": "QUERY",
+     "generic_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "generic_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+     "generic_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:972ea8800f1d324ce964b1424979789ec8c6cbe9171712cc7206bf1dd073be76",
+     "generic_content_hash": "972ea8800f1d324ce964b1424979789ec8c6cbe9171712cc7206bf1dd073be76",
+     "generic_roles": {
+      "CONDITIONER": "m01-Y",
+      "TARGET": "m01-X"
+     },
+     "operation_role_order": "FORWARD_NATIVE_ORDER",
+     "generic_cells": {
+      "00": 1,
+      "01": 0,
+      "10": 0,
+      "11": 1
+     },
+     "eligible_joint_risk": 2,
+     "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+     "separation_class": "EXACT_PAIR_SEPARATION",
+     "support_vectors": {
+      "0": {
+       "0": 1,
+       "1": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1
+      }
+     },
+     "zero_cell_semantics": {
+      "0": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      },
+      "1": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     },
+     "consumer_result_hash": "7b9f7d72ecc1ee446c8bdb64425cf4b706cc28a9b81a49bfe110783c84b6e68d",
+     "accepted_owner": "FIELD_FORGE_ACTOR_INDEPENDENT_RELATION_OWNER",
+     "accepted_owner_object_id": "urn:rawlsing:field-forge:conditional-support:sha256:ff41fc272ff75ad1235bc6264829b189e44ea440c3461dcc747fc6d7c7c609b8",
+     "accepted_cells": {
+      "0": {
+       "denominator": 1,
+       "targets": {
+        "0": 1,
+        "1": 0
+       }
+      },
+      "1": {
+       "denominator": 1,
+       "targets": {
+        "0": 0,
+        "1": 1
+       }
+      }
+     },
+     "generic_differs_from_specialized": true,
+     "accepted_matches_declared": true
+    },
+    {
+     "profile": "R1_Y0",
+     "work_key": "d673e586264356f14a19e4adf128dd3ac2b0be5dcaf4d14bbcf849ffd587e4da",
+     "independent_key": "PV2-ADULT-B-PAIR",
+     "native_path": "QUERY",
+     "generic_owner": "GF1_GENERIC_PAIR_CANDIDATE_RELATION_OWNER_TEST_ONLY",
+     "generic_family": "GF1_GENERIC_NATIVE_PAIR_RELATION_TEST_ONLY@1.0.0",
+     "generic_object_id": "urn:rawlsing:gf1:generic-pair-relation:sha256:0f0fc4956cdcba3f7bbf8cee70b1f897a6361fce96a17732443ba230e55afbe2",
+     "generic_content_hash": "0f0fc4956cdcba3f7bbf8cee70b1f897a6361fce96a17732443ba230e55afbe2",
+     "generic_roles": {
+      "CONDITIONER": "m01-X",
+      "TARGET": "m01-Y"
+     },
+     "operation_role_order": "FORWARD_NATIVE_ORDER",
+     "generic_cells": {
+      "00": 1,
+      "01": 0,
+      "10": 0,
+      "11": 1
+     },
+     "eligible_joint_risk": 2,
+     "consumer_id": "GF1_PAIR_SUPPORT_SIGNATURE_CONSUMER_TEST_ONLY@1.0.0",
+     "separation_class": "EXACT_PAIR_SEPARATION",
+     "support_vectors": {
+      "0": {
+       "0": 1,
+       "1": 0
+      },
+      "1": {
+       "0": 0,
+       "1": 1
+      }
+     },
+     "zero_cell_semantics": {
+      "0": {
+       "0": "OBSERVED_POSITIVE",
+       "1": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+      },
+      "1": {
+       "0": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+       "1": "OBSERVED_POSITIVE"
+      }
+     },
+     "consumer_result_hash": "b40e090c0f447008dfc871015b7cd7b99910c590f89e79d9c970bf3cdc64e87a",
+     "accepted_owner": "FIELD_FORGE_ACTOR_INDEPENDENT_RELATION_OWNER",
+     "accepted_owner_object_id": "urn:rawlsing:field-forge:conditional-support:sha256:9ecf7ffdc4b2a3c12203bfd26fcf7f57053c3eb7fc65a34bcc26d339a1f8f544",
+     "accepted_cells": {
+      "0": {
+       "denominator": 1,
+       "targets": {
+        "0": 1,
+        "1": 0
+       }
+      },
+      "1": {
+       "denominator": 1,
+       "targets": {
+        "0": 0,
+        "1": 1
+       }
+      }
+     },
+     "generic_differs_from_specialized": true,
+     "accepted_matches_declared": true
+    }
+   ],
+   "p01_units": 6,
+   "receipt_hashes": [
+    "62b62f39addcdd6f586b5a0566d9e2838618ba2d31add5a3daf0825aed01ec36",
+    "60f3a417db1265e9faeeca57eb2c20ed5434db7ccb6996d95f19b836a84be373",
+    "e49fda34c10a08c63a8e5930c84c04c4e1a29bfe82d67baa380b03bd2fba5f36",
+    "c577b7b3d6829f883c740b4f095a4c50d89945dd14f969d17ed2237e608c54bb",
+    "261f484b7c3ce52e0b5c42e6a57e548daad87d0b2d2d24c964b3ec92154689f9",
+    "124d9860aaec3999fcbc5616868e5e31591b2139b0b196add629d7daa8be10c7"
+   ]
+  }
+ },
+ "generic_relation_is_distinct_from_specialized_everywhere": true,
+ "accepted_specialized_output_unchanged_everywhere": true
+}
