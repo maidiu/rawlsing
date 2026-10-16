@@ -1,0 +1,18 @@
+{
+  "schema": "PV3H_ORACLE_LOCATOR_CORRECTION@1",
+  "at_utc": "2026-10-16T18:56:49.501941+00:00",
+  "original_file": "tests/test_pv3h.py",
+  "original_sha256": "0624c4a0d6c9d71cb84a55c62c746854037775921130abab313f908248ddb4d0",
+  "original_outcome": "22 PASS / 2 raw FAIL (KeyError in test locator)",
+  "corrected_file": "tests/test_pv3h_v2.py",
+  "corrected_sha256": "fc6f6020ecc5b5721518e78778fc53c5f4bbd04f861bcd80c3694f1e21636138",
+  "exact_single_replacement": {
+    "before": "link['consumer_material']['condition_predicate_ref']",
+    "after": "next(f['projection']['semantic_fields']['condition_predicate_ref'] for f in d['trace']['I03'] if f['ref']==link['producer_result_ref'] and f['query_ref']==link['consumer_material']['producer_query_ref'])"
+  },
+  "scientific_expectation_changed": false,
+  "reason": "Original Field Forge material does not duplicate condition_predicate_ref; read it from actual native I03 fact matched by producer/query identity and compare to actual I05 winning predicate.",
+  "frozen_original_unchanged": true,
+  "raw_original_evidence": "evidence/prospective.xml",
+  "correction_not_claimed_blind_to_executed_outputs": true
+}
