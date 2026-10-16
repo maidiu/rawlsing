@@ -1,0 +1,29 @@
+# SOROK HQ313 OUT8 — Restored aggregate ACK and ghost-client repair
+
+**REPOSITORY:** maidiu/rawlsing (private).
+**ROLE:** Bounded sourcefree outbox repair author, NOT HQ, independent I2 acceptance reviewer, ADP019 issuer or human perception witness.
+**BRANCH:** agent/rabochii-sorok-r3-hq313-out8-restored-ack-ghost-repair-r1
+**HQ313 PARENT:** d86309f96d41f913c5ecad37dc49a59f48bfbc7a
+**EXACT SEALED STARTUP:** The new commission-creation commit SHA provided by HQ after publication; verify direct remote HEAD before any worker edits.
+**ALLOWED WRITES:** WORKER_RETURNS/SOROK-R3-HQ313-OUT8-RESTORED-ACK-GHOST-REPAIR-R1/ only.
+**STATUS:** COMMISSIONED_UNLAUNCHED; NO_ADOPTION.
+
+## Qualified single-editor route and governing reads
+
+**MODEL:** GPT-6 Medium. **EDITOR/HOST:** Browser/GitHub with actual sourcefree Python 3, pytest, subprocess/os._exit and safe binary Git-object staging. **PHASE:** deterministic repair, focused sourcefree regression execution. **HOST VERDICT:** BROWSER_NATIVE on a compact, previously executable outbox fixture, provided native source extraction verified; the GitHub connector does not automatically materialize source into Python. One model/editor/agent handles every part of the assignment through pushed remote verification, no helpers/model switches. Review is a separate subsequent HQ commission, NOT another model this worker hires. 00D cheapest-qualified/warm passport: check marker, Python/git/imports, reuse if actually warm; cash/quota UNKNOWN unless measured, not assumed free. On failure, return exact staging/runner HOLD and executed partial evidence.
+
+Read fully at HQ313 exact parent: Sorok 00_READ_ME_FIRST, 00B, 00C §§3A/3B/5A, 00D and HQ313_OUT7_OC5E_M02_RETURN_FANIN_AND_THREE_REPAIR_DISPATCH_R1.md. Pin OUT6 author `673233571b7d899c309dd26f9b9cd2508404c0b6` with imported repaired outbox module Git blob `aa002cb634e81cb980820c14220a1ab55bc5e015`; independent OUT7 review `d3d0836d922dcb88eaf0a0591e66551aa6fb9f0a` with full `00_RETURN.md`, `01_EXECUTION_INDEX.json`, `02_OWNER_ACTIONS.md`, new 21 tests/JUnit archive `OUT7_REMOTE_CORE_EVIDENCE.tar.xz` Git blob `4801d1918437a926e0e2e5a4836bf43fca528533`, SHA256 `0b4eb689965b04b17dad6c0a3eb2594e833571f30cfc581255da9a0299547a89`. Original frozen S01–S28 authority Git blob `782ba75ee94f24908100b1f3464e7035497d546c`. Original OUT3 `0ab31e4198299708e700840c1b68e0d94a2ced06` exact archive Git blob `a9c4ee7344526fa335605d76d08def2ac5dcba2a` SHA256 `fc876b665bd9af6328deec86aa66e93ec0eebf9048ca7a5a0d7d0630cd48bddd`; OUT4 `2afa3022e5551df71b739cf8689e832db85e1196`. OUTP policy-only `521edf0c8ef31f6248ed8d8b1fcc4fa5cd0dd687`.
+
+## One repair outcome, actual REDs
+
+**Independently reproduced baseline from OUT7:** original 137=135P/2 *historical* RED; exact OUT3 original22=22P; OUT4 29=29P; OUT6 18=18P; OUT7 NEW21=17P/4 NEW RED; combined **227 actual cases 221P/6RED**. Four fresh RED case IDs `I08,I09,I13,I14` collapse into TWO tested root classes:
+1. **Forged aggregate ACK during restore/cold recover:** when viewer's client state is DELIVERED_UNACKED with client ack_count=0, changing aggregate to ACKNOWLEDGED/ack_count=1 is currently accepted on restored snapshot and rehashed cold journal, bypassing live viewer-ACK congruence.
+2. **Impossible synthetic revoked/ghost client:** forged viewer B tombstoned in revoked_viewers with client receipt NOT_SENT, attempts=0 while B never authorized is currently accepted on restore/cold Journal.recover. Normal emit_to would never persist that supposedly historical zero-attempt receipt.
+
+**Implement strict in-scope structural reachability and state/client/aggregate receipt invariants, prevalidation and failure atomicity** for both restore and cold journal recovery. Do not declare a recomputable unkeyed journal hash proof of genuine external authorization history; enforce all state invariants candidate can actually know. ACK terminal immutability, legitimate failed retry, authorized other viewer, persistent revocation and proper viewer opportunity remain passing. Distinguish VALIDLY historical receipts for formerly authorized then revoked viewers from counterfeit impossible zero-attempt records, without blanket erasing legitimate history.
+
+Before editing, execute original exact 137+22+29+18+21 source unchanged, recording 221P/6RED if truly observed, then implement. After repair execute all **227 literal cases** and additional author-authored restore/ACK/tombstone permutations, cold process death before/after rename, unexpected counts, corrupted snapshots; preserve actual JUnit/stdout/errors and imported blob SHA. Original two REDs must remain (unissued S27 mug move; stale two-writer race, outside single-writer grant); do not modify, xfail or make them green.
+
+**POLICY OWNERS:** OUTP L1 fixture-only implicit legacy mode vs L2 explicit fixture tag, and A1 bound transport ACK vs A2 projection-opportunity ACK have NO adopted competent-owner choice. This repair enforces impossible aggregate/client states *regardless* of that normative choice. Hold policy claims, no new policy issuance. OUT5's unpublished local 14 cases are NOT runnable exact original source; do not claim them executed.
+
+**Return only your worker terrain**: real patched source, new controls, exact frozen test checksums, before/after per-case matrix, stdout/JUnit/exits, cold-kill receipts, asset SHA1/SHA256 and actual module paths, reviewed policy HOLDs, 00D passport, changed paths, pushed verified direct remote SHA. Verdict SOURCEFREE_REPAIR_CANDIDATE_ONLY or typed HOLD. No human perception, real ADP019 authority, multiwriter durable system, production/canonical/PRE-MAIN/CURRENT mutation, model calls, respondent data, V3/N12 or semantic adoption.
