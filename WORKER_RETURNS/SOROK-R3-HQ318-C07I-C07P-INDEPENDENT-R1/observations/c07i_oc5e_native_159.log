@@ -1,0 +1,22 @@
+$ pytest test_oc5e_native_hostiles.py
+# cwd=/tmp/c07i-stage
+# PYTHONPATH=/tmp/c07i-stage/source
+# exit=1
+
+F..........F...............F.FF....................F.F...FFF............ [ 45%]
+F....................................................................... [ 90%]
+...............                                                          [100%]
+=========================== short test summary info ============================
+FAILED test_oc5e_native_hostiles.py::test_imported_module_is_the_pinned_oc4_blob
+FAILED test_oc5e_native_hostiles.py::test_alias_holes_are_observed_not_theorised
+FAILED test_oc5e_native_hostiles.py::test_confusable_leak_token_substitution_must_be_flagged[greek-o]
+FAILED test_oc5e_native_hostiles.py::test_confusable_leak_token_substitution_must_be_flagged[mixed-cyrillic]
+FAILED test_oc5e_native_hostiles.py::test_confusable_holes_are_observed_only_for_nfkc_invisible_scripts
+FAILED test_oc5e_native_hostiles.py::test_malformed_signature_holes_are_observed_as_attributeerror
+FAILED test_oc5e_native_hostiles.py::test_non_enum_role_string_hole_is_observed_as_attributeerror
+FAILED test_oc5e_native_hostiles.py::test_unblind_unhashable_holder_hole_is_observed_as_typeerror[list]
+FAILED test_oc5e_native_hostiles.py::test_unblind_unhashable_holder_hole_is_observed_as_typeerror[dict]
+FAILED test_oc5e_native_hostiles.py::test_unblind_unhashable_holder_hole_is_observed_as_typeerror[set]
+FAILED test_oc5e_native_hostiles.py::test_capsule_identity_field_type_hole_is_observed
+11 failed, 148 passed in 0.33s
+
