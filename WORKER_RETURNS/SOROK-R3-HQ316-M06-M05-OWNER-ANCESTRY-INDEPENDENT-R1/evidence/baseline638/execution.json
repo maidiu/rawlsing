@@ -1,0 +1,73 @@
+[
+  {
+    "suite": "inherited413",
+    "command": [
+      "/usr/local/bin/python3",
+      "[M06_RETURN]/runtime/m05/runtime/m02/runtime/m01/repro/run.py"
+    ],
+    "exit": 0,
+    "seconds": 22.2635318657849,
+    "counts": {
+      "tests": 413,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "suite": "m02_100",
+    "command": [
+      "/usr/local/bin/python3",
+      "[M06_RETURN]/runtime/m05/runtime/m02/repro/run_independent.py"
+    ],
+    "exit": 0,
+    "seconds": 31.114358133869246,
+    "counts": {
+      "tests": 100,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "suite": "m03_74",
+    "command": [
+      "/usr/local/bin/python3",
+      "[M06_RETURN]/runtime/m05/repro/run_author.py"
+    ],
+    "exit": 0,
+    "seconds": 8.361836398020387,
+    "counts": {
+      "tests": 74,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "suite": "m04_51",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "[M06_RETURN]/runtime/m05/review/test_falsifiers.py",
+      "-vv",
+      "--tb=short",
+      "--import-mode=importlib",
+      "-p",
+      "no:cacheprovider",
+      "--rootdir=[M06_RETURN]/runtime/m05",
+      "--confcutdir=[M06_RETURN]/runtime/m05",
+      "--basetemp=[M06_RETURN]/runtime/m05/runtime/tmp/m04_after",
+      "--junitxml=[M06_RETURN]/runtime/m05/evidence/fresh/junit.xml"
+    ],
+    "exit": 0,
+    "seconds": 4.913320148829371,
+    "counts": {
+      "tests": 51,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  }
+]

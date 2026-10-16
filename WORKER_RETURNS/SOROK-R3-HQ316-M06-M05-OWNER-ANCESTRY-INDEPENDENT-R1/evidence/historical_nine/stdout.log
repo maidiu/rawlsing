@@ -1,0 +1,111 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: [RETURN]/runtime/m02
+collecting ... collected 9 items
+
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_C_target_owner_effect_is_request_not_seizure FAILED [ 11%]
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_D_K3_hidden_origin_content_not_first_person_readable FAILED [ 22%]
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_D_K3_causal_trace_not_recallable FAILED [ 33%]
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_D_K3_sole_memory_basis_failclosed FAILED [ 44%]
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_F_H6_duplicate_event FAILED [ 55%]
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_F_H8_invalid_trace FAILED [ 66%]
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_H_delete_memory_forbidden FAILED [ 77%]
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_H_rehydration_forbidden FAILED [ 88%]
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/repro/test_independent.py::test_target_owner_validation_precedes_committed_effect FAILED [100%]
+
+=================================== FAILURES ===================================
+______________ test_C_target_owner_effect_is_request_not_seizure _______________
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py:200: in test_C_target_owner_effect_is_request_not_seizure
+    reqs = resp["target_owner_effect_requests"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'target_owner_effect_requests'
+__________ test_D_K3_hidden_origin_content_not_first_person_readable ___________
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py:223: in test_D_K3_hidden_origin_content_not_first_person_readable
+    trace = adp016_form_causal_trace(
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py:104: in adp016_form_causal_trace
+    if not _rule_ok(owning_rule_id,owning_rule_version,owning_rule_hash) or (authority_id,authority_version)!=('WORKER_CANDIDATE_FIXTURE','1'):fail('UNAUTHORIZED_TRANSITION','exact candidate rule/authority required')
+                                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py:22: in fail
+    def fail(code,detail=''):raise OwnerTransitionError(code,detail)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   candidate.owner_transitions.OwnerTransitionError: UNAUTHORIZED_TRANSITION:exact candidate rule/authority required
+____________________ test_D_K3_causal_trace_not_recallable _____________________
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py:236: in test_D_K3_causal_trace_not_recallable
+    trace = adp016_form_causal_trace(
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py:104: in adp016_form_causal_trace
+    if not _rule_ok(owning_rule_id,owning_rule_version,owning_rule_hash) or (authority_id,authority_version)!=('WORKER_CANDIDATE_FIXTURE','1'):fail('UNAUTHORIZED_TRANSITION','exact candidate rule/authority required')
+                                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py:22: in fail
+    def fail(code,detail=''):raise OwnerTransitionError(code,detail)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   candidate.owner_transitions.OwnerTransitionError: UNAUTHORIZED_TRANSITION:exact candidate rule/authority required
+____________________ test_D_K3_sole_memory_basis_failclosed ____________________
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py:249: in test_D_K3_sole_memory_basis_failclosed
+    trace = adp016_form_causal_trace(
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py:104: in adp016_form_causal_trace
+    if not _rule_ok(owning_rule_id,owning_rule_version,owning_rule_hash) or (authority_id,authority_version)!=('WORKER_CANDIDATE_FIXTURE','1'):fail('UNAUTHORIZED_TRANSITION','exact candidate rule/authority required')
+                                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py:22: in fail
+    def fail(code,detail=''):raise OwnerTransitionError(code,detail)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   candidate.owner_transitions.OwnerTransitionError: UNAUTHORIZED_TRANSITION:exact candidate rule/authority required
+__________________________ test_F_H6_duplicate_event ___________________________
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py:386: in test_F_H6_duplicate_event
+    assert out["decision_state"] == "BLOCK_DUPLICATE_EVENT_IDENTITY"
+E   AssertionError: assert 'PARENT_EVENT_HASH_MISMATCH' == 'BLOCK_DUPLICATE_EVENT_IDENTITY'
+E     
+E     - BLOCK_DUPLICATE_EVENT_IDENTITY
+E     + PARENT_EVENT_HASH_MISMATCH
+___________________________ test_F_H8_invalid_trace ____________________________
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py:404: in test_F_H8_invalid_trace
+    trace = adp016_form_causal_trace(
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py:104: in adp016_form_causal_trace
+    if not _rule_ok(owning_rule_id,owning_rule_version,owning_rule_hash) or (authority_id,authority_version)!=('WORKER_CANDIDATE_FIXTURE','1'):fail('UNAUTHORIZED_TRANSITION','exact candidate rule/authority required')
+                                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py:22: in fail
+    def fail(code,detail=''):raise OwnerTransitionError(code,detail)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   candidate.owner_transitions.OwnerTransitionError: UNAUTHORIZED_TRANSITION:exact candidate rule/authority required
+________________________ test_H_delete_memory_forbidden ________________________
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py:507: in test_H_delete_memory_forbidden
+    trace = adp016_form_causal_trace(
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py:104: in adp016_form_causal_trace
+    if not _rule_ok(owning_rule_id,owning_rule_version,owning_rule_hash) or (authority_id,authority_version)!=('WORKER_CANDIDATE_FIXTURE','1'):fail('UNAUTHORIZED_TRANSITION','exact candidate rule/authority required')
+                                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py:22: in fail
+    def fail(code,detail=''):raise OwnerTransitionError(code,detail)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   candidate.owner_transitions.OwnerTransitionError: UNAUTHORIZED_TRANSITION:exact candidate rule/authority required
+_________________________ test_H_rehydration_forbidden _________________________
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py:520: in test_H_rehydration_forbidden
+    trace = adp016_form_causal_trace(
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py:104: in adp016_form_causal_trace
+    if not _rule_ok(owning_rule_id,owning_rule_version,owning_rule_hash) or (authority_id,authority_version)!=('WORKER_CANDIDATE_FIXTURE','1'):fail('UNAUTHORIZED_TRANSITION','exact candidate rule/authority required')
+                                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py:22: in fail
+    def fail(code,detail=''):raise OwnerTransitionError(code,detail)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   candidate.owner_transitions.OwnerTransitionError: UNAUTHORIZED_TRANSITION:exact candidate rule/authority required
+____________ test_target_owner_validation_precedes_committed_effect ____________
+runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/repro/test_independent.py:92: in test_target_owner_validation_precedes_committed_effect
+    assert all(x['validated'] and x['committed'] for x in response['target_owner_effect_requests']), 'Only unvalidated/uncommitted owner requests accompany reported target commit'
+E   AssertionError: Only unvalidated/uncommitted owner requests accompany reported target commit
+E   assert False
+E    +  where False = all(<generator object test_target_owner_validation_precedes_committed_effect.<locals>.<genexpr> at 0x106f5a190>)
+- generated xml file: [RETURN]/runtime/m02/evidence/historical_nine/junit.xml -
+=========================== short test summary info ============================
+FAILED runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_C_target_owner_effect_is_request_not_seizure - KeyError: 'target_owner_effect_requests'
+FAILED runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_D_K3_hidden_origin_content_not_first_person_readable - candidate.owner_transitions.OwnerTransitionError: UNAUTHORIZED_TRANSITION:exact candidate rule/authority required
+FAILED runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_D_K3_causal_trace_not_recallable - candidate.owner_transitions.OwnerTransitionError: UNAUTHORIZED_TRANSITION:exact candidate rule/authority required
+FAILED runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_D_K3_sole_memory_basis_failclosed - candidate.owner_transitions.OwnerTransitionError: UNAUTHORIZED_TRANSITION:exact candidate rule/authority required
+FAILED runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_F_H6_duplicate_event - AssertionError: assert 'PARENT_EVENT_HASH_MISMATCH' == 'BLOCK_DUPLICATE_EVENT_IDENTITY'
+  
+  - BLOCK_DUPLICATE_EVENT_IDENTITY
+  + PARENT_EVENT_HASH_MISMATCH
+FAILED runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_F_H8_invalid_trace - candidate.owner_transitions.OwnerTransitionError: UNAUTHORIZED_TRANSITION:exact candidate rule/authority required
+FAILED runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_H_delete_memory_forbidden - candidate.owner_transitions.OwnerTransitionError: UNAUTHORIZED_TRANSITION:exact candidate rule/authority required
+FAILED runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_H_rehydration_forbidden - candidate.owner_transitions.OwnerTransitionError: UNAUTHORIZED_TRANSITION:exact candidate rule/authority required
+FAILED runtime/m05/runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/repro/test_independent.py::test_target_owner_validation_precedes_committed_effect - AssertionError: Only unvalidated/uncommitted owner requests accompany reported target commit
+assert False
+ +  where False = all(<generator object test_target_owner_validation_precedes_committed_effect.<locals>.<genexpr> at 0x106f5a190>)
+============================== 9 failed in 0.92s ===============================
