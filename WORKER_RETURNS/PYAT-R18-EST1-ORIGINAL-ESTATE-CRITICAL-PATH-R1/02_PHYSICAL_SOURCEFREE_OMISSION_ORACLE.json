@@ -1,0 +1,95 @@
+{
+  "schema": "PYAT_R18_EST1_PHYSICAL_SOURCEFREE_OMISSION_ORACLE@1",
+  "initial_seal": "1ebd80e28b0084a1174a0199b9476f551c82210f",
+  "verdict": "SOURCEFREE_STD_LIB_ORACLE_POSITIVE_AND_HOSTILE_RUN__NATIVE_IMPORT_NOT_EXECUTED",
+  "suite": {
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "tool": "container isolated Python",
+    "command": "python -m pytest -q --junitxml=junit.xml test_est1_omission_oracle.py",
+    "exit": 0,
+    "passed": 14,
+    "failed": 0,
+    "skipped": 0,
+    "junit_sha256": "ba0e6853841b29128fa4112f1cbbfb8aafeda7fb35b730409233a60096b746c3"
+  },
+  "source_files": {
+    "oracle": "est1_omission_oracle.py",
+    "oracle_sha256": "a0430713a20802b585d202fda0da71465dc60a24a7d47d9fc823cf0f3617fdcc",
+    "test": "test_est1_omission_oracle.py",
+    "test_sha256": "017c558ecbfc8234f47404d828c618aec693f5848a047f0c096534bb3fff6194"
+  },
+  "capability": [
+    "frozen independent preimage sha256 check",
+    "immutable exact identity op/source/wave/release/route/reason comparison",
+    "omitted PRODUCED detected",
+    "omitted HELD accounting detected",
+    "same-cardinality swap detected",
+    "same-count HELD reclassification detected",
+    "duplicate reissue detected",
+    "forged original source-grant claim detected",
+    "edition/reason/source mutation detected",
+    "unverified native-owner receipt refuses positivity"
+  ],
+  "physical_sample": {
+    "test_only_expected": 4,
+    "produced": 2,
+    "held": 1,
+    "inadmissible": 1,
+    "local_fixture_grade": "MOCKED_SYNTHETIC_RECEIPT_ONLY",
+    "positive": "SOURCEFREE_TEST_ONLY_RECONCILED",
+    "hostile_omission": [
+      "OMITTED_ELIGIBLE_OPERATION"
+    ],
+    "hostile_same_cardinality": [
+      "OMITTED_ELIGIBLE_OPERATION",
+      "UNEXPECTED_OR_SUBSTITUTED_OPERATION"
+    ],
+    "hostile_grant": [
+      "FORGED_OR_UNAUTHORIZED_SOURCE_GRANT_CLAIM"
+    ]
+  },
+  "native_stage": {
+    "attempt": "timeout 12 git ls-remote https://github.com/maidiu/rawlsing.git HEAD",
+    "exit": 128,
+    "stderr": "fatal: unable to access 'https://github.com/maidiu/rawlsing.git/': Could not resolve host: github.com",
+    "full_native_import": false,
+    "full_native_owner_execution": false,
+    "accepted_I03_C11_Batch_calls": 0,
+    "reason": "Container GitHub network unavailable; connector read only, no tool bridge to native Python import tree. No fabricated runtime."
+  },
+  "WG0L_independent_oracle": {
+    "branch_sha": "1f198cb397d1602d0450f8bac60610ebfcaf5b3a",
+    "blob_sha": "4928e9761d43dcf1b97654ff3f2c3e58343d7599",
+    "expected25": 25,
+    "dispositions": {
+      "INADMISSIBLE": 6,
+      "HELD": 16,
+      "PRODUCED": 3
+    },
+    "original_65_tests_executed_by_EST1": false
+  },
+  "absence_truth": "No real original source E_pre issued here; source unavailable is UNKNOWN/issuer HOLD, never scientific inapplicability.",
+  "environment_passport": {
+    "environment_id": "EST1-container-isolated-sourcefree-r1",
+    "epoch_id": "20261016-est1-1",
+    "session_alias": "EST1-one-shot",
+    "surface": "ChatGPT isolated container + GitHub authenticated connector read and branch write",
+    "machine_alias": "UNKNOWN_CONTAINER",
+    "status": "LIVE_VERIFIED",
+    "python": "3.13.5",
+    "pytest": "9.0.2",
+    "git": "2.47.3",
+    "github_cli_remote_private": false,
+    "github_connector_private": true,
+    "can_write_local": true,
+    "original_source_rights": false,
+    "installed_import_closure": "PARTIAL_STANDALONE_ORACLE_ONLY",
+    "model_observed": "GPT-6 High",
+    "billed_cost": "UNKNOWN",
+    "test_startup": "AT_SEALED_SHA",
+    "source_grants": "NONE",
+    "claim_grade": "SOURCEFREE_TEST_ONLY"
+  },
+  "source_code_sha_law": "Git blobs at sealed HEAD cited in return00; locally executed source hashes are separate SHA256; no conflation."
+}
