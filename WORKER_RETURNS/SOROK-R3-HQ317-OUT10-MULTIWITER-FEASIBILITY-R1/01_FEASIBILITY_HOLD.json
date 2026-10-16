@@ -14,7 +14,7 @@
   "pnpm_path_issue": "RESOLVED \u2014 pnpm resolves from the local node_modules bin",
   "verdict": "GREEN_NO_HOLD_NEEDED"
  },
- "verdict": "MULTIWITER_FEASIBILITY_HOLD__PROTOTYPE_NOT_REACHABLE_FROM_ASSIGNED_BRANCH",
+ "verdict": "MULTIWITER_FEASIBILITY_HOLD__PROTOTYPE_REACHABLE_BUT_NOT_EXAMINED_BY_THIS_WORKER",
  "blocking_evidence": {
   "branch_tip": "c28bedf20716213a680387da34728c18f9e8c76a",
   "out10_paths_at_tip": [
@@ -22,7 +22,7 @@
    "SOROK_PRODUCT_CONTROL_ROOM/HQ314_OUT8_M03_RETURN_FANIN_OC6_PENDING_AND_TWO_INDEPENDENT_COURTS_R1.md",
    "SOROK_PRODUCT_CONTROL_ROOM/HQ315_OUT9_OC6_M04_FANIN_OC7_M05_PARALLEL_R1.md"
   ],
-  "journal_or_outbox_modules_in_tip_tree": 0,
+  "journal_or_outbox_modules_in_tip_tree": "0 on the ASSIGNED branch tip; the prototype lives on the OUT8 branch tree, which this worker did NOT check out",
   "out8_commit_adds_python": false,
   "out9_commit_adds_python": false,
   "out9_commit_is": "remote-verification receipt only (06_REMOTE_VERIFICATION.json)",
@@ -59,5 +59,29 @@
    "bytes": 381
   }
  },
- "terminal": "SOROK_HQ317_OUT10_MULTIWITER_FEASIBILITY_HOLD__GITHUB_PUSHED"
+ "terminal": "SOROK_HQ317_OUT10_MULTIWITER_FEASIBILITY_HOLD__GITHUB_PUSHED",
+ "CORRECTION": {
+  "first_return_claim": "prototype not reachable from the assigned branch",
+  "corrected": "WRONG \u2014 an investigation error of this worker",
+  "evidence": "git ls-remote origin shows 0e05c7dab8334b96f2b2b79e935eeebb1c0f0d11 is the tip of refs/heads/agent/rabochii-sorok-r3-hq313-out8-restored-ack-ghost-repair-r1; the commit adds no python RELATIVE TO ITS PARENT but its TREE carries the prototype",
+  "sibling_outbox_branches": [
+   "agent/rabochii-sorok-r3-hq298-sr-outbox-execution-r1",
+   "agent/rabochii-sorok-r3-hq300-outbox-authority-cold-repair-r1",
+   "agent/reviewer-sorok-r3-hq299-rsr-occurrence-outbox-independent-r1",
+   "agent/reviewer-sorok-r3-hq301-rto-outbox-cold-court-r1",
+   "agent/reviewer-sorok-r3-hq303-out3-outbox-independent-r1"
+  ],
+  "honest_note": "the baseline smoke found 600/600 lines, 0 lost, 0 duplicates \u2014 it did NOT reproduce the failure mode and is not evidence for or against the prototype",
+  "correction_file": "02_CORRECTION_REACHABILITY.md"
+ },
+ "deliverables": {
+  "00_RETURN.md": {
+   "sha256": "7d1fdf1b269c29e4f58018e70c79199eea9427ccc6fa6229554e1c69e970acf1",
+   "bytes": 4333
+  },
+  "02_CORRECTION_REACHABILITY.md": {
+   "sha256": "4dffae43218c9568bdc14c48e0ee9bcfcd0545a789ecc84edd022e11457c9399",
+   "bytes": 3386
+  }
+ }
 }
