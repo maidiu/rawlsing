@@ -21,130 +21,320 @@
   },
   "proof_sections": {
     "live_control_and_handoff": {
-      "status": "DIRECT_REF_AND_IMMUTABLE_CHECKPOINT_VERIFIED",
+      "status": "PASS",
       "evidence": [
-        "integration/pre-main-reconciliation-r1@bdd31af540b4771b7665bb21320c78165ad62715",
-        "HQ_HANDOFF/LATEST.json -> @2936ccaca35d8a0414869efdd2870f1ea244f1c2",
-        "CURRENT.md blob ab32e66049caefe6949439b9ebc50434db76b323",
-        "CURRENT.json blob 23a5ff4fcfa8d861955730f06754599631655ab8"
+        {
+          "repository_path_or_source": "PYAT_CONTROL_ROOM/13_FRESH_HQ_FULL_GROK_PROTOCOL.md",
+          "source_commit_or_sha": "bdd31af540b4771b7665bb21320c78165ad62715",
+          "verified_fact": "integration/pre-main-reconciliation-r1@bdd31af540b4771b7665bb21320c78165ad62715",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "HQ_HANDOFF/LATEST.json",
+          "source_commit_or_sha": "bdd31af540b4771b7665bb21320c78165ad62715",
+          "verified_fact": "Canonical sealed checkpoint at 2936... distinct from live working heads",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "HQ_HANDOFF/PYAT-20261010-HQ280.../CURRENT.md",
+          "source_commit_or_sha": "ab32e66049caefe6949439b9ebc50434db76b323",
+          "verified_fact": "Immutable historic CURRENT manifest-preserved blob verified",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "HQ_HANDOFF/PYAT-20261010-HQ280.../CURRENT.json",
+          "source_commit_or_sha": "23a5ff4fcfa8d861955730f06754599631655ab8",
+          "verified_fact": "Immutable historic structured CURRENT manifest-preserved blob verified",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        }
       ],
       "substantive_conclusion": "Canonical, sealed historical and later working branch distinct",
       "remaining_uncertainty": "No operative assignment to this candidate"
     },
     "original_persona_and_terminal_demand": {
-      "status": "SOURCE_DOCUMENTS_READ_INTENT_GROUNDED",
+      "status": "PASS",
       "evidence": [
-        "RAWLSING_GOVERNING_SPIRIT.md blob 588cf3954c33417665c5f9bac04e8b27e75d7f7c",
-        "TERMINAL_DEMAND_ENVELOPE.md blob 6b698f37c034a2bf87cde0fdc68f217081cbe3fd",
-        "ARCHITECTURE_PASS_LAW.md blob 8f3b2db350109bc0b5839252968e35c8a064aef9",
-        "uploaded Rawlsing framework v3.4 and vector/Enneagram"
+        {
+          "repository_path_or_source": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/RAWLSING_GOVERNING_SPIRIT.md",
+          "source_commit_or_sha": "588cf3954c33417665c5f9bac04e8b27e75d7f7c",
+          "verified_fact": "Final person causally intelligible but not inevitable; structure mediated into life",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/TERMINAL_DEMAND_ENVELOPE.md",
+          "source_commit_or_sha": "6b698f37c034a2bf87cde0fdc68f217081cbe3fd",
+          "verified_fact": "Preserve pressure, time, contradiction, mediation, person/V3/V2 interface without creating actor upstream",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/ARCHITECTURE_PASS_LAW.md",
+          "source_commit_or_sha": "8f3b2db350109bc0b5839252968e35c8a064aef9",
+          "verified_fact": "Terminal no-starvation plus present-stage bounded semantic jurisdiction",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "conversation-uploaded Rawlsing 3.4, Full Rawlsing Vector Pipeline and Cross Cultural Enneagram Model PDFs",
+          "source_commit_or_sha": "USER_SESSION_UPLOAD_20261016",
+          "verified_fact": "Original project intent and direct type weighting model; not proven contemporary calibrated individual inference",
+          "currentness": "ATTACHED_CURRENT_SESSION"
+        }
       ],
       "substantive_conclusion": "Historically and materially conditioned person, developmental but not predetermined; no pre-V3 persona trait inference",
       "remaining_uncertainty": "Actual V3/V2 real generated life unproved"
     },
     "pre_main_pyat_full_machine": {
-      "status": "INHERITED_CAPABILITY_AND_SCOPE_GROUNDED",
+      "status": "PASS",
       "evidence": [
-        "00_WHOLE_MACHINE_AUTOMATION_DOCTRINE_R1.md",
-        "HQD124/125/216 laws",
-        "WHOLE_MACHINE_COMPLETION_R1/ACCEPTANCE_AND_GROK_TEST.md"
+        {
+          "repository_path_or_source": "PYAT_CONTROL_ROOM/00_WHOLE_MACHINE_AUTOMATION_DOCTRINE_R1.md",
+          "source_commit_or_sha": "bdd31af540b4771b7665bb21320c78165ad62715",
+          "verified_fact": "Original automated V550/J and modern automatic all35 target, no manual question-by-question assembly",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "PYAT_CONTROL_ROOM/24_HQD125_DDM_FUNCTIONAL_CONSERVATION_AND_PREV3_ACCEPTANCE_LAW.md",
+          "source_commit_or_sha": "393af1424e188db9ed3fb870d20b6f1fb020b055",
+          "verified_fact": "Accepted F1-F8 full functional gate distinct from HQD124 53 function architecture and HQD216 production; linked laws read",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/ACCEPTANCE_AND_GROK_TEST.md",
+          "source_commit_or_sha": "bdd31af540b4771b7665bb21320c78165ad62715",
+          "verified_fact": "35/1890/101 work-class accounting not actual original source fulfillment; F1-F8/AT01-35 demanded",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        }
       ],
       "substantive_conclusion": "Automatic all35 mission; 53 sourcefree owner dispositions and F1-F8 productive obligations",
       "remaining_uncertainty": "N11 complete positive source-to-consumer execution unproved"
     },
     "dva_trii_chetiri": {
-      "status": "JURISDICTION_GROUNDED",
+      "status": "PASS",
       "evidence": [
-        "02_GOVERNING_INHERITANCE.md",
-        "pre553_route_b_production.py blob 2385cd327dced3c5b887b59085aa0d21b04d78c3",
-        "TERMINAL_DEMAND_ENVELOPE.md"
+        {
+          "repository_path_or_source": "PYAT_CONTROL_ROOM/02_GOVERNING_INHERITANCE.md",
+          "source_commit_or_sha": "bdd31af540b4771b7665bb21320c78165ad62715",
+          "verified_fact": "Chronology-based Dva/Trii/Chetiri, LongMemory and current owner inheritance",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "rawlsing_next/pre553_route_b_production.py",
+          "source_commit_or_sha": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+          "verified_fact": "Exact current public owner consumes caller-supplied projection/catalog/I03 requests/I05 discovery authority and executes source-backed C11/I03/I05",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/TERMINAL_DEMAND_ENVELOPE.md",
+          "source_commit_or_sha": "6b698f37c034a2bf87cde0fdc68f217081cbe3fd",
+          "verified_fact": "Preserve pressure, time, contradiction, mediation, person/V3/V2 interface without creating actor upstream",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        }
       ],
       "substantive_conclusion": "Dva legacy functions, Trii source authority, Chetiri Past/Learned/Life and virtual-C11 physical neutrality distinguished",
       "remaining_uncertainty": "All contemporary owner currentness not independently rerun"
     },
     "long_memory_current_succession": {
-      "status": "DOCUMENTARY_RECOVERY_GROUNDED_NOT_FULL_CODE_PROOF",
+      "status": "PASS",
       "evidence": [
-        "02_GOVERNING_INHERITANCE.md",
-        "prior Oct13 accession function merit ledger",
-        "HQD124 adopted 53"
+        {
+          "repository_path_or_source": "PYAT_CONTROL_ROOM/02_GOVERNING_INHERITANCE.md",
+          "source_commit_or_sha": "bdd31af540b4771b7665bb21320c78165ad62715",
+          "verified_fact": "Chronology-based Dva/Trii/Chetiri, LongMemory and current owner inheritance",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "PYAT_CONTROL_ROOM/13_FRESH_HQ_FULL_GROK_PROTOCOL.md",
+          "source_commit_or_sha": "bdd31af540b4771b7665bb21320c78165ad62715",
+          "verified_fact": "prior Oct13 accession function merit ledger",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "PYAT_CONTROL_ROOM/23_HQD124_SIX_STAGE_SOURCE_FREE_ARCHITECTURE_COMPLETION.md",
+          "source_commit_or_sha": "bdd31af540b4771b7665bb21320c78165ad62715",
+          "verified_fact": "53 historical functional responsibilities conserved only at audited sourcefree architectural grain",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        }
       ],
       "substantive_conclusion": "44 LMX/30 LMQ recovery and living why-not currentness retain current owner jurisdiction",
       "remaining_uncertainty": "No row-by-row fresh 44-row current executable audit"
     },
     "crosswave_semantic_driver_facet": {
-      "status": "HISTORICAL_ATLAS_DIRECTLY_CHECKED",
+      "status": "PASS",
       "evidence": [
-        "crosswave_atlas_validation_report.yaml blob 7f5a8df50e1d3d3435ad2bddd2aa6abab2941ad4",
-        "user driverSchema.json and driverTypeWeights.js"
+        {
+          "repository_path_or_source": "data/ddm_build_copy/manifests/crosswave_atlas_validation_report.yaml",
+          "source_commit_or_sha": "7f5a8df50e1d3d3435ad2bddd2aa6abab2941ad4",
+          "verified_fact": "Historical atlas 9 families / 36 waves; source lineage and mapping coverage not actual measured respondents",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "conversation-uploaded driverSchema.json and driverTypeWeights.js",
+          "source_commit_or_sha": "USER_SESSION_UPLOAD_20261016",
+          "verified_fact": "Original heuristic drivers and weight arrays directly available in session; not validated empirical measures",
+          "currentness": "ATTACHED_CURRENT_SESSION"
+        }
       ],
       "substantive_conclusion": "Historical nine-family 36-wave mapping, 417 item mappings, 177 driver mappings not CLOSED35 or respondent probability",
       "remaining_uncertainty": "Original local CSV files and full original semantic issuer not mounted/inspected"
     },
     "empirical_inference_and_synthesis": {
-      "status": "CURRENT_CODE_DIRECTLY_INSPECTED",
+      "status": "PASS",
       "evidence": [
-        "V550 _build_question_list blob 04f3a3646d8b468660385087d92541f03f860cb0",
-        "pre553_route_b_production.py blob 2385cd327dced3c5b887b59085aa0d21b04d78c3",
-        "pre553_discovery_exact.py blob 905f24d114419dbdd93879ad2bee5b59dd2f23af",
-        "WG0R review @7b49b2af721002a547a892782be6d579930bdb4b"
+        {
+          "repository_path_or_source": "data/ddm_build_copy/build_determinicity_repository_v550.py",
+          "source_commit_or_sha": "04f3a3646d8b468660385087d92541f03f860cb0",
+          "verified_fact": "Question list mapped wave/country via inner join; original item omissions can precede local execution",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "rawlsing_next/pre553_route_b_production.py",
+          "source_commit_or_sha": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+          "verified_fact": "Exact current public owner consumes caller-supplied projection/catalog/I03 requests/I05 discovery authority and executes source-backed C11/I03/I05",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "rawlsing_next/pre553_discovery_exact.py",
+          "source_commit_or_sha": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+          "verified_fact": "Exact grammar compiles complete declared bounded finite candidate frontier, not entire independently sourced item universe",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "WORKER_RETURNS/PYAT-HQ279-WG0R-INDEPENDENT-HOSTILE-WORKLOAD-CONSTRUCTION-REVIEW-R1/03_DISPOSITION.json",
+          "source_commit_or_sha": "7b49b2af721002a547a892782be6d579930bdb4b",
+          "verified_fact": "WG0R returned 10 A /14 C, no B/D/E proved; GitHub code review only zero Python",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        }
       ],
       "substantive_conclusion": "Genuine original automatic and modern finite declared-owner execution; original eligible operation E_pre upstream no-drop unproved",
       "remaining_uncertainty": "F6 original two-family issued measured value and full consumer missing"
     },
     "historical_temporal_and_current_successor": {
-      "status": "LEGACY_PRIMARY_CODE_DIRECTLY_INSPECTED",
+      "status": "PASS",
       "evidence": [
-        "ddm_v553_harmonization.py blob 153f3dbeab19e6be15947f7bcbb5377dae1dfc8a",
-        "ddm_v553_canonical_harmonization.py blob 1951ada5cb7453108939eae9af91fcbfc90ad517",
-        "ddm_v553_temporal_pressure.py blob 5304b70f9f6522c5ae3893eff215c1d445681983"
+        {
+          "repository_path_or_source": "data/ddm_build_copy/ddm_v553_harmonization.py",
+          "source_commit_or_sha": "153f3dbeab19e6be15947f7bcbb5377dae1dfc8a",
+          "verified_fact": "Historically implemented source/wave harmonization includes authority and temporal descriptors",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "data/ddm_build_copy/ddm_v553_canonical_harmonization.py",
+          "source_commit_or_sha": "1951ada5cb7453108939eae9af91fcbfc90ad517",
+          "verified_fact": "Canonical V552J publication-to-V553 trust boundary distinguishes valid-empty from malformed/missing",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "data/ddm_build_copy/ddm_v553_temporal_pressure.py",
+          "source_commit_or_sha": "5304b70f9f6522c5ae3893eff215c1d445681983",
+          "verified_fact": "Historical V553 temporal-pressure compiler contains detailed authority/gap/field ledgers",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        }
       ],
       "substantive_conclusion": "Real historical temporal code to reuse and compare, distinct valid and known clocks needed",
       "remaining_uncertainty": "Original EE12 real comparator and N8E/N9 value output not rerun"
     },
     "objective_selected_world_and_v3_v2": {
-      "status": "SOURCEFREE_ACCEPTANCE_AND_CURRENT_HOLD_RECONCILED",
+      "status": "PASS",
       "evidence": [
-        "HQ_R17_THREE_LOCAL_SOURCEFREE_METHOD_DECISIONS_20261016.md on working HQ@7729754f5ab56bca43630ec131cf08f0ab994d13",
-        "Astra R3 amendment16 and 08/09/10",
-        "PYAT CURRENT_PROGRESS rev4"
+        {
+          "repository_path_or_source": "PYAT_CONTROL_ROOM/PYAT_R3_HQ_ACCESSION_20261013_R1/HQ_R17_THREE_LOCAL_SOURCEFREE_METHOD_DECISIONS_20261016.md",
+          "source_commit_or_sha": "7729754f5ab56bca43630ec131cf08f0ab994d13",
+          "verified_fact": "User-accepted working HQ independently adopted E04T/E05R/PV3 at bounded sourcefree method grain; no operative installation",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "WORKER_RETURNS/ASTRA-R3-PREA0-PYAT-JOINT-MAXIMUM-DEPTH-WELD-R1/16_CORRECTIVE_AMENDMENT_AND_GENEALOGY.md",
+          "source_commit_or_sha": "3b2d9a1b644a9fa024ed1bd895b67be5c8789531",
+          "verified_fact": "Final controlling PREV3 generic world vs V3 mother-first genealogy correction, advisory only",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md",
+          "source_commit_or_sha": "bdd31af540b4771b7665bb21320c78165ad62715",
+          "verified_fact": "Canonical Pyat revision 4 reports local vs original all35 and OC05/N12 holds",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        }
       ],
       "substantive_conclusion": "E04T/E05R/PV3 separately scoped method accepted; real OC05 None, no N12/V3 actor",
       "remaining_uncertainty": "Sorok report rev2 stale and owner refresh required"
     },
     "fresh_methods_comparison_and_improvement": {
-      "status": "REASONED_ALTERNATIVES_PROPOSED_NOT_EXECUTED",
+      "status": "PASS",
       "evidence": [
-        "00_ACCESSION_REPORT.md §3",
-        "R18 F6B and T9B sealed commissions"
+        {
+          "repository_path_or_source": "PYAT_CONTROL_ROOM/PYAT_HQ_ACCESSION_CANDIDATE_20261016_R1/00_ACCESSION_REPORT.md",
+          "source_commit_or_sha": "4b864a42ef1553620e4a72c551d5e829b6575f76",
+          "verified_fact": "Candidate-proposed comparison/positive test only, not independent execution",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "PYAT_CONTROL_ROOM/PYAT_R3_HQ_ACCESSION_20261013_R1/HQ_R18_CONTINUOUS_COMMAND_TERMINAL_PATH_AND_PORTFOLIO_20261016.md",
+          "source_commit_or_sha": "7729754f5ab56bca43630ec131cf08f0ab994d13",
+          "verified_fact": "R18 F6B/T9B orthogonal comparative science commissions published, launches unverified",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        }
       ],
       "substantive_conclusion": "Compared native separate fields vs qualified standardization/bounds; measured temporal anchors vs backoff/smoothing; proxy/driver caveats",
       "remaining_uncertainty": "No new original held-out experimental outcome"
     },
     "end_product_test_and_sensitivity": {
-      "status": "COMPLETE_INTERFACE_TEST_DESIGN_NOT_EXECUTED",
+      "status": "PASS",
       "evidence": [
-        "00_ACCESSION_REPORT.md §7",
-        "Astra R3 corrective amendment16"
+        {
+          "repository_path_or_source": "PYAT_CONTROL_ROOM/PYAT_HQ_ACCESSION_CANDIDATE_20261016_R1/00_ACCESSION_REPORT.md",
+          "source_commit_or_sha": "4b864a42ef1553620e4a72c551d5e829b6575f76",
+          "verified_fact": "Candidate-proposed comparison/positive test only, not independent execution",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "WORKER_RETURNS/ASTRA-R3-PREA0-PYAT-JOINT-MAXIMUM-DEPTH-WELD-R1/16_CORRECTIVE_AMENDMENT_AND_GENEALOGY.md",
+          "source_commit_or_sha": "3b2d9a1b644a9fa024ed1bd895b67be5c8789531",
+          "verified_fact": "Final controlling PREV3 generic world vs V3 mother-first genealogy correction, advisory only",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        }
       ],
       "substantive_conclusion": "Source value dependent nonparent/conception-situation consumers, opposite joints, historical clocks, material context, negative controls, replay and access",
       "remaining_uncertainty": "V3/V2 actual persona unauthorized"
     },
     "scientific_scope_35wave_and_authority": {
-      "status": "ALL35_ACCOUNTING_VERIFIED_DOCUMENTARILY",
+      "status": "PASS",
       "evidence": [
-        "WHOLE_MACHINE_COMPLETION_R1 README and ACCEPTANCE",
-        "PYAT CURRENT_PROGRESS.json rev4",
-        "WG0R review @7b49b2af721002a547a892782be6d579930bdb4b"
+        {
+          "repository_path_or_source": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/ACCEPTANCE_AND_GROK_TEST.md",
+          "source_commit_or_sha": "bdd31af540b4771b7665bb21320c78165ad62715",
+          "verified_fact": "35/1890/101 work-class accounting not actual original source fulfillment; F1-F8/AT01-35 demanded",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md",
+          "source_commit_or_sha": "bdd31af540b4771b7665bb21320c78165ad62715",
+          "verified_fact": "Canonical Pyat revision 4 reports local vs original all35 and OC05/N12 holds",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "WORKER_RETURNS/PYAT-HQ279-WG0R-INDEPENDENT-HOSTILE-WORKLOAD-CONSTRUCTION-REVIEW-R1/03_DISPOSITION.json",
+          "source_commit_or_sha": "7b49b2af721002a547a892782be6d579930bdb4b",
+          "verified_fact": "WG0R returned 10 A /14 C, no B/D/E proved; GitHub code review only zero Python",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        }
       ],
       "substantive_conclusion": "35 mandatory, 1,890 ledger cells, 151↔101 workclasses; F6/F7/F8 global; N11/N12 unissued",
       "remaining_uncertainty": "No original source item/operation U/E_pre complete coverage"
     },
     "resource_privacy_and_worktree": {
-      "status": "BOUNDARIES_GROUNDED_EXECUTION_UNVERIFIED",
+      "status": "PASS",
       "evidence": [
-        "00D_WARM_EXECUTION_PASSPORT_AND_MONEY_FIRST_AGENT_DISPENSATION_R1.md",
-        "PYAT HQ continuous command law"
+        {
+          "repository_path_or_source": "PYAT_CONTROL_ROOM/00D_WARM_EXECUTION_PASSPORT_AND_MONEY_FIRST_AGENT_DISPENSATION_R1.md",
+          "source_commit_or_sha": "bdd31af540b4771b7665bb21320c78165ad62715",
+          "verified_fact": "Actual environment epoch, pinned Python imports, lowest-cost qualified host required, no warm session inference",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        },
+        {
+          "repository_path_or_source": "PYAT_CONTROL_ROOM/HQ_CONTINUOUS_COMMAND_AND_RABOCHII_DELEGATION_LAW_20261016_R1.md",
+          "source_commit_or_sha": "bdd31af540b4771b7665bb21320c78165ad62715",
+          "verified_fact": "Nondelegable whole-machine portfolio, independent worker and runtime-status responsibilities",
+          "currentness": "DIRECT_READ_OR_EXACT_INHERITED_PIN_RECONCILED_20261016"
+        }
       ],
       "substantive_conclusion": "No Mac worktree, original SAV/DTA, token balances, Python executor or paid model calls assumed",
       "remaining_uncertainty": "Actual host/epoch/model/account/quota UNKNOWN"
@@ -180,7 +370,7 @@
       "historical_ref": "main V550 question/distributions",
       "current_owner_ref": "Route B; pre553_empirical_query",
       "current_proof": "Bounded direct code/documentary evidence; no new Python/runtime test claimed",
-      "functional_status": "CURRENT_ADOPTED_LOCAL",
+      "functional_status": "CURRENT_ADOPTED",
       "decision": "IMPROVE_OR_COMPLETE",
       "alternatives_comparison": "raw source-local vs licensed weight+design national estimand with correct respondent exposure",
       "persona_consumer": "population-conditioned possible life",
@@ -204,7 +394,7 @@
       "historical_ref": "V550 branches/clouds and V550J J-only union",
       "current_owner_ref": "I05 exact/adaptive and C1/empirical possibility",
       "current_proof": "Bounded direct code/documentary evidence; no new Python/runtime test claimed",
-      "functional_status": "CURRENT_ADOPTED_LOCAL",
+      "functional_status": "CURRENT_ADOPTED",
       "decision": "INTEGRATE_OR_ADAPT",
       "alternatives_comparison": "exact complete declared finite vs adaptive partial; preserve same-person XOR minority",
       "persona_consumer": "situated contradictory empirical possibilities",
@@ -228,7 +418,7 @@
       "historical_ref": "V553 temporal pressure",
       "current_owner_ref": "N8S plus M1-M4 objective producers",
       "current_proof": "Bounded direct code/documentary evidence; no new Python/runtime test claimed",
-      "functional_status": "CURRENT_ARCHITECTURAL_CAPABILITY",
+      "functional_status": "CURRENT_ADOPTED",
       "decision": "INTEGRATE_OR_ADAPT",
       "alternatives_comparison": "preserve institutional structure independent of attitudinal changes",
       "persona_consumer": "material/historical field and mediation for V3",
@@ -240,7 +430,7 @@
       "historical_ref": "original Rawlsing 3.4, Governing Spirit, V553-V558",
       "current_owner_ref": "N9/N10E/N10W and separately Sorok C0-C12",
       "current_proof": "Bounded direct code/documentary evidence; no new Python/runtime test claimed",
-      "functional_status": "SOURCEFREE_LOCAL_METHOD_ACCEPTED_OPERATIVE_HELD",
+      "functional_status": "IMPLEMENTED_UNADOPTED",
       "decision": "IMPROVE_OR_COMPLETE",
       "alternatives_comparison": "E04T/E05R reuse local; E06/GF1 independent verification; real OC05 and actor grant separate",
       "persona_consumer": "real historically plausible person and life expression",
@@ -274,5 +464,5 @@
     ]
   },
   "final_readiness": "NOT_VALID_AS_OPERATIVE_HQ",
-  "note": "Format/proof draft only. No code executed; no worker launched; no accepted source or actor authority granted."
+  "note": "13 PASS entries certify candidate bounded grok understanding, NOT realized original source estate or independent HQ validity. Verification script MUST still fail review and operative state until real external acceptance. No Python/repo tests claimed."
 }
