@@ -1,0 +1,76 @@
+--- E04R/product/empirical.py
++++ E04T/product/empirical.py
+@@ -8,6 +8,9 @@
+ from rawlsing_next.pre553_analytical_composition import compose_positioned_subject_possibility
+ from rawlsing_next.source_backed_positioned_subject_possibility import evaluate_positioned_subject_possibility
+ from rawlsing_next import pre553_n9_n10w_progressive_candidate as e03
++from rawlsing_next import pre553_empirical_query as i03
++from rawlsing_next.pre553_empirical_authority import AuthorityRegistry,require_positive_authority
++from rawlsing_next.pre553_empirical_objects import AuthoritySnapshot
+ from rawlsing_next.tests import test_pre553_empirical_query as fx
+ from rawlsing_next.tests import c1_at08_at13_fixture as c1
+ CONTRACT='E04_GENERIC_PROGRESSIVE_PROVIDER_CANDIDATE@1'
+@@ -74,6 +77,47 @@
+         coordinates=self.world['source']['qrefs']
+         if permit is None or permit['target_ref']!=coordinates[target].as_dict() or len(conditions)>permit['max_conditioners'] or any(q not in permit['conditioner_refs'] or permit['conditioner_refs'][q]!=coordinates[q].as_dict() or v not in permit['allowed_values'] for q,v in conditions):raise ValueError('TARGET_CONDITION_ROLE_AUTHORITY_UNAVAILABLE')
+         return conditions
++    def _authorize_cached_use(self,target,conditions,accepted):
++        """Historical production does not authorize a new use of its projection.
++
++        Rebuild the exact native request and run pinned I03 authority validators
++        against the currently attached registry, never a retained registry. Source
++        authorities come from the immutable accepted C11 release, not a mutable
++        source inventory. No evidence, cells or historical receipts are rewritten.
++        """
++        w=self.world;s=w['source'];registry=w['registry']
++        if not isinstance(registry,AuthorityRegistry):
++            raise ValueError('CURRENT_NATIVE_AUTHORITY_REGISTRY_REQUIRED')
++        predicate=e03._joint_predicate(w,conditions)
++        query=e03._producer_query(w,predicate,target)
++        original=json.loads(accepted.native_owner_material)
++        if _sealed(query.as_dict())!=_sealed(original['query']):
++            raise ValueError('CURRENT_NATIVE_QUERY_OWNER_BINDING_MISMATCH')
++        # Current availability of every exact authority sealed into this source
++        # release is required. A same-label successor cannot substitute for it.
++        source_refs=[]
++        for obj in self._source_release.public_objects:
++            if isinstance(obj,AuthoritySnapshot):
++                current=registry.resolve_exact(obj.authority_ref).snapshot
++                require_positive_authority(current)
++                if _sealed(current.as_dict())!=_sealed(obj.as_dict()):
++                    raise ValueError('CURRENT_NATIVE_SOURCE_GRANT_CONTENT_MISMATCH')
++                source_refs.append(obj.authority_ref.as_dict())
++        i03._validate_public_object_authorities(query,registry)
++        i03._validate_public_object_authorities(predicate,registry)
++        i03._require_exact_i03_authority_fitness(
++            query=query,predicate=predicate,authority_registry=registry,
++            universe_refs=(s['universe'].ref,))
++        i03._parse_target_plan(query,registry)
++        current=registry.resolve_exact(w['qauth'].authority_ref).snapshot
++        if _sealed(current.as_dict())!=_sealed(original['query_authority_snapshot']):
++            raise ValueError('CURRENT_NATIVE_QUERY_GRANT_CONTENT_MISMATCH')
++        self.trace.append(dict(call='CURRENT_NATIVE_QUERY_GRANT_VALIDATED',
++            query_ref=query.ref.as_dict(),source_universe_ref=s['universe'].ref.as_dict(),
++            release_ref=s['release_ref'].as_dict(),risk_set_ref=canonicalize(query.risk_set_ref),
++            query_authority_refs=canonicalize(query.query_authority_refs),
++            source_authority_refs=source_refs,permission_root=w['permission_root']))
++
+     def step(self,target,conditions):
+         conditions=self._validate(target,conditions)
+         key=(target,conditions)
+@@ -89,6 +133,7 @@
+             # the untrusted mapping just compared. Full byte equality covers
+             # counts, minority cells, geometry, source/risk/ordered request,
+             # witnesses, fact/evidence refs, authority and F8 result state.
++            self._authorize_cached_use(target,conditions,accepted)
+             result=json.loads(accepted.projection)
+             self.trace.append(dict(call='PROVIDER_CACHE_READ',query=repr(key),evidence_ref=result['evidence_ref'],verified_native_owner=True))
+             return result
+@@ -115,6 +160,7 @@
+             facts=[f.as_dict() for f in composition.producer_result.facts],
+             evidence={f.name:getattr(evidence,f.name) for f in fields(evidence)},
+             F8=consumed.material(),query=query.as_dict(),
++            query_authority_snapshot=w['qauth'].as_dict(),
+             condition_witness_ref=witness.witness_ref.as_dict(),
+             request=[target,conditions],source_binding=self._binding)
+         self._accepted[key]=_AcceptedOwnerEntry(self._binding,key,_sealed(result),_sealed(owner_material))

@@ -1,0 +1,104 @@
+{
+  "schema": "E04U_INDEPENDENT_ORACLE@1",
+  "candidate": "79cb8244a5291218bde17142b93fc2419eade396",
+  "startup": "b90cccd45067364ff5f82d6dfa66db61e519ec25",
+  "source": {
+    "respondents": 58,
+    "C11_events": 232,
+    "strata": {
+      "111": [
+        6,
+        2
+      ],
+      "110": [
+        4,
+        4
+      ],
+      "101": [
+        5,
+        3
+      ],
+      "100": [
+        3,
+        5
+      ],
+      "011": [
+        4,
+        2
+      ],
+      "010": [
+        2,
+        4
+      ],
+      "001": [
+        3,
+        3
+      ],
+      "000": [
+        2,
+        6
+      ]
+    }
+  },
+  "forward": [
+    [
+      18,
+      32
+    ],
+    [
+      10,
+      16
+    ],
+    [
+      6,
+      8
+    ]
+  ],
+  "reverse": [
+    18,
+    29
+  ],
+  "changed_Y": [
+    [
+      19,
+      32
+    ],
+    [
+      11,
+      16
+    ],
+    [
+      7,
+      8
+    ]
+  ],
+  "zero_denominators": [
+    24,
+    8,
+    0
+  ],
+  "clients": [
+    "nonparent.consume",
+    "scenario.evaluate"
+  ],
+  "current_grant_law": "Every warm read requires exact native positive source and query grants in the presently attached AuthorityRegistry. Historical cached evidence and receipt hashes cannot authorize current use.",
+  "attacks": [
+    "query removal",
+    "empty registry",
+    "foreign issuer/edition",
+    "source grant removal and DENY",
+    "selective operation removal",
+    "exact restoration",
+    "nested aliased registry update",
+    "query target/role/order/value/risk rekey",
+    "current withdrawal on historical snapshot",
+    "deep denominator/minority/authority/ref cache corruption with recomputed hash",
+    "cold public cache injection",
+    "cache removal real owner recompute",
+    "source Y mutation",
+    "persisted cold withdrawn and restored grants"
+  ],
+  "expected_invalid_use": "Typed refusal/absence before empirical read or new receipt; archive unchanged",
+  "expected_valid_restore": "Both actual client products equal original, exact restored native grants only",
+  "ceiling": "SOURCEFREE_ONLY_NO_INSTALLATION_OR_ADOPTION"
+}
