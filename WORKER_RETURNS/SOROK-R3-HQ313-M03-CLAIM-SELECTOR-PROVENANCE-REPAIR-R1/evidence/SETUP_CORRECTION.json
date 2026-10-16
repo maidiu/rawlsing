@@ -1,0 +1,7 @@
+{
+  "status": "INFRASTRUCTURE_ONLY",
+  "cause": "Warm source reuse intentionally omitted prior evidence. Original M02 runner requires its evidence parent directory to exist.",
+  "correction": "Create the empty owned runtime/m02/evidence directory; no source, test or oracle changed.",
+  "initial_records": "evidence/initial_setup_failure",
+  "claim": "Initial commands produced no usable aggregate/JUnit here; baseline must rerun before candidate implementation."
+}

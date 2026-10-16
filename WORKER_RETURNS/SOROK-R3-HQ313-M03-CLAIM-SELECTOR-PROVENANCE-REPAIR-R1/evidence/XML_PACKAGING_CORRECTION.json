@@ -1,0 +1,7 @@
+{
+  "scope": "output harness only",
+  "cause": "The inherited M02 presentation wrapper substitutes angle-bracket path placeholders into raw XML. In this nested worktree this made a passing-suite JUnit copy nonparseable.",
+  "correction": "Run the exact original M01 four-suite runner directly, retain its literal tests, and sanitize own XML copies with square-bracket path placeholders.",
+  "preserved_initial_copy": "evidence/initial_xml_packaging_failure",
+  "source_oracle_change": false
+}

@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<RETURN>/runtime/m02/repro/run_original.py", line 42, in <module>
+    suites = list(ET.parse(xml).getroot().iter("testsuite"))
+                  ^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/xml/etree/ElementTree.py", line 1218, in parse
+    tree.parse(source, parser)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/xml/etree/ElementTree.py", line 580, in parse
+    self._root = parser._parse_whole(source)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+xml.etree.ElementTree.ParseError: not well-formed (invalid token): line 1, column 14177

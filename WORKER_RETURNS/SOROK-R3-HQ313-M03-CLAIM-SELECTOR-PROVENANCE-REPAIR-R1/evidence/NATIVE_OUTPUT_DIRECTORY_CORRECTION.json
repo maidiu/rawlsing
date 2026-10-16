@@ -1,0 +1,7 @@
+{
+  "initial_result": "412 PASS; 1 FileNotFoundError writing a CAN2 test observation",
+  "scope": "output directory setup, no candidate defect",
+  "cause": "Warm source reuse excluded evidence contents and therefore also omitted an empty evidence directory expected by an unchanged CAN2 control.",
+  "correction": "Recreate all existing warm evidence directory locations as empty directories without importing prior results. Exact source/test bytes unchanged.",
+  "preserved_record": "evidence/setup_missing_native_output"
+}
