@@ -1,0 +1,186 @@
+{
+  "frozen_at_utc": "2026-10-16T05:28:33.830786+00:00",
+  "basis": "Independent R14 preexecution numerical and boundary oracle; previous frozen numeric expectations preserved; candidate not imported",
+  "startup": "9906f94acbf262a0b7d65f5bfff3ab250b5d6765",
+  "candidate": "84485d32c0088995f8dc664dc0517b2d27f2563d",
+  "current": {
+    "valid_at": "2027-09-01",
+    "published_asof": "2027-09-01",
+    "training_access": false,
+    "exit_cost": 8
+  },
+  "historical": {
+    "valid_at": "2026-06-01",
+    "published_asof": "2026-03-01",
+    "training_access": true,
+    "exit_cost": 2
+  },
+  "empirical": [
+    [
+      18,
+      32
+    ],
+    [
+      10,
+      16
+    ],
+    [
+      6,
+      8
+    ]
+  ],
+  "empirical_Y0_to_1": [
+    [
+      19,
+      32
+    ],
+    [
+      11,
+      16
+    ],
+    [
+      7,
+      8
+    ]
+  ],
+  "native_fields": {
+    "GSS": {
+      "numerator": 2388192,
+      "denominator": 3288063,
+      "published_percent": "72.6",
+      "source": "GSS 2021 PHC",
+      "native_unit": "occupied dwelling",
+      "geography": "Ghana rural",
+      "published_at": "2022-02-24",
+      "poolable": false
+    },
+    "NCA": {
+      "active_subscriptions": 23414527,
+      "source": "NCA Q4 2021",
+      "native_unit": "active data subscription",
+      "geography": "Ghana national",
+      "window": "90 days",
+      "published_at": "2022-07-08",
+      "unique_persons": false,
+      "poolable": false
+    }
+  },
+  "pre_NCA_publication": {
+    "GSS": "available",
+    "NCA": "NOT_PUBLISHED_AT_SELECTED_ASOF",
+    "dependency_readset_count": 2,
+    "successful_refset_count": 1
+  },
+  "metamorphic": {
+    "null": "bit-identical",
+    "empirical": "both clients and all three empirical fractions change; structural and two native fields identical",
+    "structural": "only structural eligibility changes",
+    "GSS": "only GSS native dependency changes",
+    "NCA": "only NCA native dependency changes"
+  },
+  "authority_ceiling": {
+    "operative_OC05": false,
+    "N5N6": "UNISSUED",
+    "EE13": "UNISSUED",
+    "V3": false
+  },
+  "full_dependency_binding": "exact original refs plus source/release/issuer/permission/unit/geography/role/clock; freeze exact identities in supplement before execution after reading original registries",
+  "contract": "R13_E05R_N9_SELECTED_WORLD_INTERFACE@2",
+  "reverse": [
+    [
+      18,
+      29
+    ]
+  ],
+  "zero_support": [
+    24,
+    8,
+    0
+  ],
+  "expected_acceptance": "Exact entire request plus registered clock-consistent snapshot; no reuse across mutations",
+  "expected_receipt": "Exact native originals, typed partial on one-arm withdrawal or zero support, actual clients only when executed",
+  "cold": "Trusted fixture grant state persisted separately before independent subprocess reconstruction; no real issuer claim",
+  "native_registry": {
+    "source_commit": "9ab4a0192b7c951bb0b387637e6c74333246766c",
+    "original_registry": {
+      "schema": "PYAT_HQ297_N9C_SOURCEFREE_READER_TEST_INPUT@1",
+      "authority": "TEST_ONLY__NO_EXTERNAL_SOURCE_ISSUER_OR_EE13_OR_REAL_OC05",
+      "selected_world": "HISTORICAL_GHANA_2021__PUBLICATION_AWARE_2022_PLUS",
+      "fields": [
+        {
+          "fixture_only": true,
+          "issued": false,
+          "role": "GSS_RURAL_LIGHTING",
+          "family": "GH_GSS_PHC_2021",
+          "publisher": "Ghana Statistical Service",
+          "source_pdf_sha256": null,
+          "issuer_ref": null,
+          "permission": "TEST_ONLY_NO_EXTERNAL_USE_GRANT",
+          "status": "AVAILABLE_TEST_ONLY",
+          "publication_date": "2022-02-24",
+          "observation_period": "2021 PHC",
+          "native_unit": "RURAL_OCCUPIED_HOUSEHOLD_MAIN_LIGHTING",
+          "native_geography": "GHANA_RURAL",
+          "native_measure": "ELECTRICITY_MAIN_LIGHTING_ALL_SUBTYPES",
+          "uncertainty": "CENSUS_NONSAMPLING_UNQUANTIFIED",
+          "exclusions": [
+            "SECONDARY_HOUSING",
+            "VACANT_DWELLINGS"
+          ],
+          "values": {
+            "numerator": 2388192,
+            "denominator": 3288063,
+            "published_percent": 72.6,
+            "electricity_subtypes": {
+              "mains": 2288193,
+              "community_grid": 74490,
+              "generator": 3640,
+              "solar_inverter": 21512,
+              "wind": 357
+            }
+          }
+        },
+        {
+          "fixture_only": true,
+          "issued": false,
+          "role": "NCA_NATIONAL_MOBILE_DATA",
+          "family": "GH_NCA_LICENSEE_REPORTS_2021Q4",
+          "publisher": "National Communications Authority",
+          "source_pdf_sha256": null,
+          "issuer_ref": null,
+          "permission": "TEST_ONLY_NO_EXTERNAL_USE_GRANT",
+          "status": "AVAILABLE_TEST_ONLY",
+          "publication_date": "2022-07-08",
+          "observation_period": "2021-Q4 (90-day activity definition)",
+          "native_unit": "ACTIVE_MOBILE_DATA_SUBSCRIPTIONS_NOT_UNIQUE_PERSONS",
+          "native_geography": "GHANA_NATIONAL",
+          "native_measure": "ACTIVE_MOBILE_DATA_90_DAY_TRAFFIC",
+          "uncertainty": "LICENSEE_REPORTING_ERROR_UNQUANTIFIED",
+          "unique_persons": false,
+          "rural_split": null,
+          "values": {
+            "active_subscriptions": 23414527,
+            "prepaid": 23237338,
+            "postpaid": 177189
+          }
+        }
+      ],
+      "test_expected_positive_values": {
+        "GSS_RURAL_LIGHTING": {
+          "numerator": 2388192,
+          "denominator": 3288063,
+          "published_percent": 72.6
+        },
+        "NCA_NATIONAL_MOBILE_DATA": {
+          "active_subscriptions": 23414527
+        }
+      },
+      "raw_source_read": false,
+      "publisher_rights_issued": false,
+      "N5_N6_issued": false,
+      "EE13_issued": false,
+      "OC05_current": false
+    },
+    "method": "Exact original test-only records frozen before candidate import; refs verified by native suite, hashes are integrity not signer authority"
+  }
+}

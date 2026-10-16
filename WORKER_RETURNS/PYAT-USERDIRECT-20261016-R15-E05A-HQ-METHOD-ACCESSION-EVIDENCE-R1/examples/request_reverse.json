@@ -1,0 +1,32 @@
+{
+  "schema": "N9_SELECTED_WORLD_REQUEST@2",
+  "contract": "R13_E05R_N9_SELECTED_WORLD_INTERFACE@2",
+  "purpose": "TEST_ONLY_CONTEXT",
+  "structural_keys": [
+    "training_access",
+    "training_fee",
+    "exit_cost",
+    "civil_open",
+    "civil_sanction"
+  ],
+  "empirical_target": "A",
+  "empirical_conditions": [
+    [
+      "Y",
+      1
+    ]
+  ],
+  "native_field_roles": [
+    "GSS_RURAL_LIGHTING",
+    "NCA_NATIONAL_MOBILE_DATA"
+  ],
+  "clock": {
+    "mode": "TEST_CURRENT",
+    "valid_at": "2027-09-01",
+    "published_asof": "2027-09-01",
+    "test_now": "2027-09-01"
+  },
+  "requested_pooling": false,
+  "requested_person_exposure": false,
+  "requested_model_use": false
+}

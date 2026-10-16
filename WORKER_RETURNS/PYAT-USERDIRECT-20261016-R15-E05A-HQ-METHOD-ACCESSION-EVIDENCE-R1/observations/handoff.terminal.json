@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "python3",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_method_handoff.py",
+    "--import-mode=importlib",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=observations/handoff.xml"
+  ],
+  "cwd": "RETURN",
+  "exit": 0,
+  "seconds": 1.5596516249934211,
+  "sourcefree": true,
+  "scope": "FRESH_E05A_HANDOFF_ONLY__E05S_403_NOT_RERUN"
+}
