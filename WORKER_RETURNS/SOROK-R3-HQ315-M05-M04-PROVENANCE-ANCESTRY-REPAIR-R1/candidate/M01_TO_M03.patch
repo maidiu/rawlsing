@@ -1,0 +1,84 @@
+--- M01/repro/cell.py
++++ M03/candidate/cell.py
+@@ -8,6 +8,7 @@
+ from copy import deepcopy
+ from dataclasses import asdict
+ import hashlib,json
++import claim_provenance
+ from candidate import can008_candidate_rule as old,owner_transitions as owner
+ from candidate.positive_chain import ChainEventLedger,seal_event
+ from candidate.candidate_registry_fixture import CandidateRegistryFixture,digest,canon,parse_time
+@@ -36,7 +37,7 @@
+   formation_variants=MEMORY,epistemic_variants=ACCESS,
+   production='MECHANISM_IDENTIFICATION_HOLD_NO_OPERATIVE_OWNER_AUTHORITY',serial='MECHANISM_IDENTIFICATION_HOLD_NO_CONTENT_SENSITIVE_MEMORY_TO_BELIEF_RULE')
+ def source_hash():
+- return digest(dict(definition=definition(),implementation={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in [Path(__file__),Path(owner.__file__),Path(old.__file__),Path(bootstrap.__file__)]}))
++ return digest(dict(definition=definition(),implementation={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in [Path(__file__),Path(owner.__file__),Path(old.__file__),Path(bootstrap.__file__),Path(claim_provenance.__file__)]}))
+ def events():
+  common=dict(issuer_authority_version='1',event_kind='EXTERNAL_RUNTIME_EVENT',actor_scope='ACTOR_SYNTH_1',world_ref='W_SYNTH_1998',world_as_of='1998-10-03T16:00:00Z',admission_state='ADMITTED')
+  e1=seal_event(**common,event_id='M01_FEEDBACK',issuer_authority_id='ISSUER_AUTH_WORLD_SCHED',effective_causal_time='1998-10-03T16:00:00Z',public_features=('shift_feedback_window_open','supervisor_solicits_comment'))
+@@ -48,12 +49,21 @@
+   self.reg=CandidateRegistryFixture();need(old.register_default_rule(self.reg)['status']=='CANDIDATE_REGISTERED_IN_FIXTURE','OLD_RULE_UNBOUND')
+   self.ctx=owner.FixtureOwnerState(self.reg);self.history=ChainEventLedger();self.journal=ChainEventLedger();self.reads=[]
+   self.binding=old.build_default_binding();self.e1,self.e2=events();self.grant=source_hash();self.initial=self.ctx.state_hash
+-  self.claim_id=None;self.first_receipt=None;self.formation=None;self.epistemic=None
++  self.claim_id=None;self.first_receipt=None;self.formation=None;self.epistemic=None;self._claim_selection_binding_json=None
+  def checkpoint(self):
+-  return deepcopy(dict(reg=self.reg.checkpoint(),ctx=self.ctx.checkpoint(),history=self.history.checkpoint(),journal=self.journal.checkpoint(),reads=self.reads,claim_id=self.claim_id,first_receipt=self.first_receipt,formation=self.formation,epistemic=self.epistemic))
+- def restore(self,s):
++  return deepcopy(dict(reg=self.reg.checkpoint(),ctx=self.ctx.checkpoint(),history=self.history.checkpoint(),journal=self.journal.checkpoint(),reads=self.reads,claim_id=self.claim_id,first_receipt=self.first_receipt,formation=self.formation,epistemic=self.epistemic,claim_selection_binding=self._claim_selection_binding_json))
++ def _restore_parts(self,s):
+   self.reg.restore(s['reg']);self.ctx.restore(s['ctx']);self.history.restore(s['history']);self.journal.restore(s['journal'])
+   for k in ('reads','claim_id','first_receipt','formation','epistemic'):setattr(self,k,deepcopy(s[k]))
++  self._claim_selection_binding_json=deepcopy(s.get('claim_selection_binding'))
++ def restore(self,s):
++  before=self.checkpoint()
++  try:
++   self._restore_parts(s);claim_provenance.validate_binding(self)
++  except Exception as e:
++   self._restore_parts(before)
++   if isinstance(e,Refusal):raise
++   raise Refusal('CLAIM_CHECKPOINT_INVALID') from None
+  def verify_grant(self,rule_version=VERSION,authority='TEST_ONLY_M01_LOCAL_GRANT'):
+   need(rule_version==VERSION and authority==definition()['authority'] and self.grant==source_hash(),'UNAUTHORIZED_RULE_OR_SOURCE')
+  def fault(self,where,failure):
+@@ -83,15 +93,17 @@
+     before=self.ctx.state_hash;self.epistemic=owner.adp017_apply_epistemic_effect(**self.epi_args(ACCESS[epistemic]));need(self.epistemic['decision_state']=='APPLIED_EPISTEMIC_TRANSITION',self.epistemic['decision_state'])
+     self.journal.commit('ADP017_COMMIT',dict(before=before,after=self.ctx.state_hash,result=self.epistemic),self.e1.effective_causal_time,[self.e1.event_id])
+    self.fault('epistemic',failure)
+-   self.journal.commit('FIRST_EVENT_COMPLETE',dict(state=self.ctx.data(),state_hash=self.ctx.state_hash,source_rule=self.grant),self.e1.effective_causal_time,[self.e1.event_id]);self.fault('publish',failure)
++   self.journal.commit('FIRST_EVENT_COMPLETE',dict(state=self.ctx.data(),state_hash=self.ctx.state_hash,source_rule=self.grant,claim_selection_basis=claim_provenance.source_basis(self)),self.e1.effective_causal_time,[self.e1.event_id]);claim_provenance.bind_committed(self);self.fault('publish',failure)
+    return dict(status='FIRST_EVENT_COMMITTED',state_hash=self.ctx.state_hash,event=asdict(self.e1),history_mode=history)
+   except Exception:
+-   self.restore(s);raise
++   self._restore_parts(s);raise
+  def read_owner(self,expected_state,at):
+   need(self.ctx.verify() and self.ctx.state_hash==expected_state,'STALE_OR_CORRUPT_OWNER_STATE')
+   need(self.ctx.actor_id==definition()['actor'],'WRONG_ACTOR')
+   need(self.reg.verify_event(self.e1),'SOURCE_EVENT_UNBOUND')
+-  need(parse_time(at)>parse_time(self.e1.effective_causal_time),'STALE_CAUSAL_TIME')
++  try:need(parse_time(at)>parse_time(self.e1.effective_causal_time),'STALE_CAUSAL_TIME')
++  except (ValueError,TypeError,AttributeError):raise Refusal('CLAIM_RESPONSE_TIME_INVALID') from None
++  selection_provenance=claim_provenance.validate_consumption(self,at)
+   # Read through owner checkpoint, not caller references or receipt reconstruction.
+   state=self.ctx.checkpoint()['state'];memories=list(state['memories'].values())
+   need(len(memories)<=1,'UNSUPPORTED_MULTIPLICITY')
+@@ -122,7 +134,7 @@
+     need(access!='CLAIM_ACCESS_UNKNOWN','MECHANISM_IDENTIFICATION_HOLD_ACCESS_UNKNOWN')
+     if access=='CLAIM_INACCESSIBLE':need(permission['first_person_permission']=='DENY_FIRST_PERSON_CLAIM','EPISTEMIC_PERMISSION');ye='BLOCK'
+     else:need(permission['first_person_permission']=='PERMIT_FIRST_PERSON_BELIEF','EPISTEMIC_PERMISSION');ye='REROUTE'
+-  read=dict(actor=self.ctx.actor_id,at=at,state_hash=expected_state,actual_state=state,memory_first_person=memory_permission,private_permission=permission,streams=dict(memory=ym,epistemic=ye))
++  read=dict(actor=self.ctx.actor_id,at=at,state_hash=expected_state,actual_state=state,memory_first_person=memory_permission,private_permission=permission,streams=dict(memory=ym,epistemic=ye),claim_selection_provenance=selection_provenance)
+   self.reads.append(deepcopy(read));return read
+  def later(self,expected_state,*,history_access=True,event=None,rule_version=VERSION,authority='TEST_ONLY_M01_LOCAL_GRANT',failure=None):
+   self.verify_grant(rule_version,authority);s=self.checkpoint();e=event if event is not None else self.e2
+@@ -142,7 +154,7 @@
+    self.fault('later_emission',failure)
+    return dict(status='COMMITTED_TEST_ONLY',streams=read['streams'],read=read,history_stored=actual,history_delivered=delivered,receipt=out['entry'],state_hash=self.ctx.state_hash)
+   except Exception:
+-   self.restore(s);raise
++   self._restore_parts(s);raise
+  def export(self):
+   need(self.ctx.verify(),'STATE_INTEGRITY');self.journal.verify();self.history.verify()
+-  return deepcopy(dict(owner_state=self.ctx.data(),owner_hash=self.ctx.state_hash,events=self.reg._events,history=self.history.entries,journal=self.journal.entries,reads=self.reads,rule=definition(),rule_hash=self.grant,initial_owner_hash=self.initial))
++  return deepcopy(dict(owner_state=self.ctx.data(),owner_hash=self.ctx.state_hash,events=self.reg._events,history=self.history.entries,journal=self.journal.entries,reads=self.reads,rule=definition(),rule_hash=self.grant,initial_owner_hash=self.initial,claim_selection_binding=self._claim_selection_binding_json))

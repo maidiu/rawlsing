@@ -1,0 +1,73 @@
+[
+  {
+    "suite": "inherited413",
+    "command": [
+      "/usr/local/bin/python3",
+      "[RETURN]/runtime/m02/runtime/m01/repro/run.py"
+    ],
+    "exit": 0,
+    "seconds": 8.796364726033062,
+    "counts": {
+      "tests": 413,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "suite": "m02_100",
+    "command": [
+      "/usr/local/bin/python3",
+      "[RETURN]/runtime/m02/repro/run_independent.py"
+    ],
+    "exit": 0,
+    "seconds": 12.882950240047649,
+    "counts": {
+      "tests": 100,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "suite": "m03_74",
+    "command": [
+      "/usr/local/bin/python3",
+      "[RETURN]/repro/run_author.py"
+    ],
+    "exit": 0,
+    "seconds": 3.4832421529572457,
+    "counts": {
+      "tests": 74,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "suite": "m04_51",
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "[RETURN]/review/test_falsifiers.py",
+      "-vv",
+      "--tb=short",
+      "--import-mode=importlib",
+      "-p",
+      "no:cacheprovider",
+      "--rootdir=[RETURN]",
+      "--confcutdir=[RETURN]",
+      "--basetemp=[RETURN]/runtime/tmp/m04_before",
+      "--junitxml=[RETURN]/evidence/fresh/junit.xml"
+    ],
+    "exit": 1,
+    "seconds": 3.2687074919231236,
+    "counts": {
+      "tests": 51,
+      "failures": 10,
+      "errors": 0,
+      "skipped": 0
+    }
+  }
+]

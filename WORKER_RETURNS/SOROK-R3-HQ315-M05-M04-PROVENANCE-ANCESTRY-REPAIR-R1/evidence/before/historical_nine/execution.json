@@ -1,0 +1,62 @@
+{
+  "exact_original_cases": [
+    {
+      "suite": "candidate",
+      "name": "test_C_target_owner_effect_is_request_not_seizure"
+    },
+    {
+      "suite": "candidate",
+      "name": "test_D_K3_hidden_origin_content_not_first_person_readable"
+    },
+    {
+      "suite": "candidate",
+      "name": "test_D_K3_causal_trace_not_recallable"
+    },
+    {
+      "suite": "candidate",
+      "name": "test_D_K3_sole_memory_basis_failclosed"
+    },
+    {
+      "suite": "candidate",
+      "name": "test_F_H6_duplicate_event"
+    },
+    {
+      "suite": "candidate",
+      "name": "test_F_H8_invalid_trace"
+    },
+    {
+      "suite": "candidate",
+      "name": "test_H_delete_memory_forbidden"
+    },
+    {
+      "suite": "candidate",
+      "name": "test_H_rehydration_forbidden"
+    },
+    {
+      "suite": "rcp3",
+      "name": "test_target_owner_validation_precedes_committed_effect"
+    }
+  ],
+  "exit": 1,
+  "pytest_args": [
+    "-vv",
+    "--tb=short",
+    "--rootdir=<RETURN>",
+    "--confcutdir=<RETURN>",
+    "-p",
+    "no:cacheprovider",
+    "<RETURN>/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_C_target_owner_effect_is_request_not_seizure",
+    "<RETURN>/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_D_K3_hidden_origin_content_not_first_person_readable",
+    "<RETURN>/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_D_K3_causal_trace_not_recallable",
+    "<RETURN>/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_D_K3_sole_memory_basis_failclosed",
+    "<RETURN>/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_F_H6_duplicate_event",
+    "<RETURN>/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_F_H8_invalid_trace",
+    "<RETURN>/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_H_delete_memory_forbidden",
+    "<RETURN>/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/test_hq300_court.py::test_H_rehydration_forbidden",
+    "<RETURN>/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/repro/test_independent.py::test_target_owner_validation_precedes_committed_effect",
+    "--junitxml=<RETURN>/evidence/historical_nine/junit.xml"
+  ],
+  "original_test_bytes_changed": false,
+  "full_CAN3_585_rerun": false,
+  "guard_empty_and_unchanged": true
+}
