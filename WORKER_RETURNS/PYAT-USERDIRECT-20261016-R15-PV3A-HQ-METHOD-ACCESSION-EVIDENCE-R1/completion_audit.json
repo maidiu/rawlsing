@@ -1,7 +1,7 @@
 {
   "schema": "PV3A_COMPLETION_AUDIT@1",
   "at_utc": "2026-10-16T06:34:51.105057+00:00",
-  "status": "ACCESSION_EVIDENCE_COMPLETE_NOT_ADOPTED",
+  "status": "COMPLETE_ACCESSION_EVIDENCE_NOT_ADOPTED",
   "requirements": [
     {
       "id": "C1",
@@ -81,7 +81,7 @@
         "environment_passport_delta.json",
         "publication_receipt.json"
       ],
-      "outcome": "LOCAL_EXECUTION_PROVED; PUBLICATION_RECEIPT_AND_FINAL_REMOTE_READBACK_REQUIRED_BEFORE_GOAL_COMPLETE"
+      "outcome": "PROVED_EXECUTION_AND_DIRECT_REMOTE_EVIDENCE_PUBLICATION"
     }
   ],
   "new_tests": {
@@ -98,5 +98,7 @@
     "disposition": "GENERIC_NATIVE_SEMANTICS_HOLD"
   },
   "full_PV3N_court_rerun": false,
-  "remaining_required_work_before_final": "Push authorized return and verify exact final remote SHA; no real authority issuance is authorized or required for this evidence-preparation commission"
+  "remaining_required_work_before_final": null,
+  "published_evidence_sha": "6c19763a6ccbaf9a109fbe526a5ad3a82d84804d",
+  "final_metadata_sha": "Checked directly after this receipt commit and reported in final delivery"
 }
