@@ -1,0 +1,6 @@
+{
+  "issue": "Reviewer fixture attempted tuple.clear on detached AuthoritySnapshot.as_dict() output",
+  "correction": "Assign empty operation list in detached semantic mapping; no native code or original expectation changes",
+  "initial_results": "39 PASS / 2 reviewer setup failures",
+  "final_results": "Use final reviewer.xml only, never sum reruns"
+}

@@ -84,7 +84,7 @@ def test_native_order_and_minority_follow_independently_counted_rows(conditions)
 
 @pytest.mark.parametrize('name',NAMES)
 def test_detached_nested_grant_alias_cannot_mutate_attached_native_registry(name):
- s,ss,a,b=full();d=s.provider.world['qauth'].as_dict();d['semantic_fields']['governed_operations'].clear()
+ s,ss,a,b=full();d=s.provider.world['qauth'].as_dict();d['semantic_fields']['governed_operations']=[]
  assert client(s,ss,name)==(a if name=='nonparent' else b)
  s.provider.world['registry']=AuthorityRegistry((*s.provider.world['source']['authorities'],hydrate(d)))
  deny_fresh(s,ss,name)
