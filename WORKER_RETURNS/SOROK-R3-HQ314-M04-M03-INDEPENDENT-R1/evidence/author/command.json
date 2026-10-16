@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "[RETURN]/repro/test_author.py",
+    "-vv",
+    "--tb=short",
+    "--rootdir=[RETURN]",
+    "--confcutdir=[RETURN]",
+    "--import-mode=importlib",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=[RETURN]/runtime/tmp/author",
+    "--junitxml=[RETURN]/evidence/author/junit.xml"
+  ],
+  "exit": 0
+}

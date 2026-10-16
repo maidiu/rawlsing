@@ -1,0 +1,171 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: [RETURN]
+collecting ... collected 51 items
+
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_outer_selector_cannot_remove_existing_belief[None] PASSED [  1%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_outer_selector_cannot_remove_existing_belief[] PASSED [  3%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_outer_selector_cannot_remove_existing_belief[unknown-claim] PASSED [  5%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_outer_selector_cannot_remove_existing_belief[17] PASSED [  7%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_outer_selector_cannot_remove_existing_belief[value4] PASSED [  9%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_outer_selector_cannot_remove_existing_belief[value5] PASSED [ 11%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_foreign_canonical_claim_is_not_none[subject_scope] PASSED [ 13%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_foreign_canonical_claim_is_not_none[subject_ref] PASSED [ 15%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_foreign_canonical_claim_is_not_none[object_or_value] PASSED [ 17%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_foreign_canonical_claim_is_not_none[referent_refs] PASSED [ 19%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_cross_cell_none_owner_cannot_erase_first_committed_belief[NONE] FAILED [ 21%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_cross_cell_none_owner_cannot_erase_first_committed_belief[CERTAIN] FAILED [ 23%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_cross_cell_none_owner_cannot_erase_first_committed_belief[UNCERTAIN] FAILED [ 25%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_cross_cell_none_owner_cannot_erase_first_committed_belief[UNAVAILABLE] FAILED [ 27%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback[False-SUPERSEDE_EXACT_RECORD] FAILED [ 29%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback[False-WITHDRAW] FAILED [ 31%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback[True-SUPERSEDE_EXACT_RECORD] FAILED [ 33%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback[True-WITHDRAW] FAILED [ 35%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_fully_rehashed_transition_requires_actual_prestate_ancestry[False] FAILED [ 37%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_fully_rehashed_transition_requires_actual_prestate_ancestry[True] FAILED [ 39%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_invalid_or_out_of_scope_response_cut_refuses_without_read[not-a-time] PASSED [ 41%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_invalid_or_out_of_scope_response_cut_refuses_without_read[1998-11-20T09:00:00] PASSED [ 43%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_invalid_or_out_of_scope_response_cut_refuses_without_read[1998-10-03T15:59:59Z] PASSED [ 45%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_invalid_or_out_of_scope_response_cut_refuses_without_read[1998-10-03T16:00:00Z] PASSED [ 47%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_invalid_or_out_of_scope_response_cut_refuses_without_read[2001-01-01T00:00:00Z] PASSED [ 49%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_invalid_or_out_of_scope_response_cut_refuses_without_read[None] PASSED [ 50%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_invalid_or_out_of_scope_response_cut_refuses_without_read[at6] PASSED [ 52%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_invalid_or_out_of_scope_response_cut_refuses_without_read[1998-02-30T12:00:00Z] PASSED [ 54%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_equivalent_aware_time_cuts_preserve_valid_belief[1998-11-20T04:00:00-05:00] PASSED [ 56%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_equivalent_aware_time_cuts_preserve_valid_belief[1998-11-20T10:00:00+01:00] PASSED [ 58%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_equivalent_aware_time_cuts_preserve_valid_belief[1998-10-03T12:00:00.000001-04:00] PASSED [ 60%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_genuinely_later_admitted_response_cut_is_allowed[1999-06-01T10:00:00Z] PASSED [ 62%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_genuinely_later_admitted_response_cut_is_allowed[2000-12-31T23:59:59Z] PASSED [ 64%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_irrelevant_future_native_claim_preserves_bound_none PASSED [ 66%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_rehashed_first_receipt_source_substitution_refuses[actor_scope] PASSED [ 68%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_rehashed_first_receipt_source_substitution_refuses[world_ref] PASSED [ 70%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_rehashed_first_receipt_source_substitution_refuses[world_as_of] PASSED [ 72%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_rehashed_first_receipt_source_substitution_refuses[effective_causal_time] PASSED [ 74%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_failure_retry_restores_all_state_then_commits_once[later_admission] PASSED [ 76%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_failure_retry_restores_all_state_then_commits_once[later_read] PASSED [ 78%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_failure_retry_restores_all_state_then_commits_once[later_emission] PASSED [ 80%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_real_native_state_retains_none_permit_deny_defer_distinction[NONE] PASSED [ 82%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_real_native_state_retains_none_permit_deny_defer_distinction[BELIEF] PASSED [ 84%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_real_native_state_retains_none_permit_deny_defer_distinction[INACCESSIBLE] PASSED [ 86%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_real_native_state_retains_none_permit_deny_defer_distinction[UNKNOWN] PASSED [ 88%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_coherent_full_checkpoint_clone_is_lawful_replay PASSED [ 90%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_source_rule_version_or_authority_substitution_refuses[rule_version] PASSED [ 92%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_source_rule_version_or_authority_substitution_refuses[authority] PASSED [ 94%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_duplicate_source_event_conflict_does_not_mutate_registry PASSED [ 96%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_duplicate_effect_transition_is_not_validated_as_single_effect PASSED [ 98%]
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_native_no_change_preserves_current_stance_and_owner_hash PASSED [100%]
+
+=================================== FAILURES ===================================
+_____ test_cross_cell_none_owner_cannot_erase_first_committed_belief[NONE] _____
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:64: in test_cross_cell_none_owner_cannot_erase_first_committed_belief
+    restore_then_refuse(c,p,'erase_owner_'+m)
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:46: in restore_then_refuse
+    refuse_read(c,name,direct)
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:36: in refuse_read
+    assert code is not None,'unearned response accepted: '+str(observed and observed['streams'])
+E   AssertionError: unearned response accepted: {'memory': 'AMPLIFY', 'epistemic': 'AMPLIFY'}
+E   assert None is not None
+___ test_cross_cell_none_owner_cannot_erase_first_committed_belief[CERTAIN] ____
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:64: in test_cross_cell_none_owner_cannot_erase_first_committed_belief
+    restore_then_refuse(c,p,'erase_owner_'+m)
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:46: in restore_then_refuse
+    refuse_read(c,name,direct)
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:36: in refuse_read
+    assert code is not None,'unearned response accepted: '+str(observed and observed['streams'])
+E   AssertionError: unearned response accepted: {'memory': 'BUFFER', 'epistemic': 'AMPLIFY'}
+E   assert None is not None
+__ test_cross_cell_none_owner_cannot_erase_first_committed_belief[UNCERTAIN] ___
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:64: in test_cross_cell_none_owner_cannot_erase_first_committed_belief
+    restore_then_refuse(c,p,'erase_owner_'+m)
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:46: in restore_then_refuse
+    refuse_read(c,name,direct)
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:36: in refuse_read
+    assert code is not None,'unearned response accepted: '+str(observed and observed['streams'])
+E   AssertionError: unearned response accepted: {'memory': 'DEFLECT', 'epistemic': 'AMPLIFY'}
+E   assert None is not None
+_ test_cross_cell_none_owner_cannot_erase_first_committed_belief[UNAVAILABLE] __
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:64: in test_cross_cell_none_owner_cannot_erase_first_committed_belief
+    restore_then_refuse(c,p,'erase_owner_'+m)
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:46: in restore_then_refuse
+    refuse_read(c,name,direct)
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:36: in refuse_read
+    assert code is not None,'unearned response accepted: '+str(observed and observed['streams'])
+E   AssertionError: unearned response accepted: {'memory': 'AMPLIFY', 'epistemic': 'AMPLIFY'}
+E   assert None is not None
+_ test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback[False-SUPERSEDE_EXACT_RECORD] _
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:74: in test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback
+    restore_then_refuse(c,p,'resurrect_'+op+'_'+str(direct),direct)
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:46: in restore_then_refuse
+    refuse_read(c,name,direct)
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:36: in refuse_read
+    assert code is not None,'unearned response accepted: '+str(observed and observed['streams'])
+E   AssertionError: unearned response accepted: {'memory': 'BUFFER', 'epistemic': 'REROUTE'}
+E   assert None is not None
+_ test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback[False-WITHDRAW] _
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:74: in test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback
+    restore_then_refuse(c,p,'resurrect_'+op+'_'+str(direct),direct)
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:46: in restore_then_refuse
+    refuse_read(c,name,direct)
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:36: in refuse_read
+    assert code is not None,'unearned response accepted: '+str(observed and observed['streams'])
+E   AssertionError: unearned response accepted: {'memory': 'BUFFER', 'epistemic': 'REROUTE'}
+E   assert None is not None
+_ test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback[True-SUPERSEDE_EXACT_RECORD] _
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:74: in test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback
+    restore_then_refuse(c,p,'resurrect_'+op+'_'+str(direct),direct)
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:46: in restore_then_refuse
+    refuse_read(c,name,direct)
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:36: in refuse_read
+    assert code is not None,'unearned response accepted: '+str(observed and observed['streams'])
+E   AssertionError: unearned response accepted: {'memory': 'BUFFER', 'epistemic': 'REROUTE'}
+E   assert None is not None
+_ test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback[True-WITHDRAW] _
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:74: in test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback
+    restore_then_refuse(c,p,'resurrect_'+op+'_'+str(direct),direct)
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:46: in restore_then_refuse
+    refuse_read(c,name,direct)
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:36: in refuse_read
+    assert code is not None,'unearned response accepted: '+str(observed and observed['streams'])
+E   AssertionError: unearned response accepted: {'memory': 'BUFFER', 'epistemic': 'REROUTE'}
+E   assert None is not None
+___ test_fully_rehashed_transition_requires_actual_prestate_ancestry[False] ____
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:85: in test_fully_rehashed_transition_requires_actual_prestate_ancestry
+    restore_then_refuse(c,p,'forged_ancestry_'+str(direct),direct)
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:46: in restore_then_refuse
+    refuse_read(c,name,direct)
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:36: in refuse_read
+    assert code is not None,'unearned response accepted: '+str(observed and observed['streams'])
+E   AssertionError: unearned response accepted: {'memory': 'BUFFER', 'epistemic': 'REROUTE'}
+E   assert None is not None
+____ test_fully_rehashed_transition_requires_actual_prestate_ancestry[True] ____
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:85: in test_fully_rehashed_transition_requires_actual_prestate_ancestry
+    restore_then_refuse(c,p,'forged_ancestry_'+str(direct),direct)
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:46: in restore_then_refuse
+    refuse_read(c,name,direct)
+WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py:36: in refuse_read
+    assert code is not None,'unearned response accepted: '+str(observed and observed['streams'])
+E   AssertionError: unearned response accepted: {'memory': 'BUFFER', 'epistemic': 'REROUTE'}
+E   assert None is not None
+- generated xml file: [RETURN]/evidence/fresh/junit.xml -
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_cross_cell_none_owner_cannot_erase_first_committed_belief[NONE] - AssertionError: unearned response accepted: {'memory': 'AMPLIFY', 'epistemic': 'AMPLIFY'}
+assert None is not None
+FAILED WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_cross_cell_none_owner_cannot_erase_first_committed_belief[CERTAIN] - AssertionError: unearned response accepted: {'memory': 'BUFFER', 'epistemic': 'AMPLIFY'}
+assert None is not None
+FAILED WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_cross_cell_none_owner_cannot_erase_first_committed_belief[UNCERTAIN] - AssertionError: unearned response accepted: {'memory': 'DEFLECT', 'epistemic': 'AMPLIFY'}
+assert None is not None
+FAILED WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_cross_cell_none_owner_cannot_erase_first_committed_belief[UNAVAILABLE] - AssertionError: unearned response accepted: {'memory': 'AMPLIFY', 'epistemic': 'AMPLIFY'}
+assert None is not None
+FAILED WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback[False-SUPERSEDE_EXACT_RECORD] - AssertionError: unearned response accepted: {'memory': 'BUFFER', 'epistemic': 'REROUTE'}
+assert None is not None
+FAILED WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback[False-WITHDRAW] - AssertionError: unearned response accepted: {'memory': 'BUFFER', 'epistemic': 'REROUTE'}
+assert None is not None
+FAILED WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback[True-SUPERSEDE_EXACT_RECORD] - AssertionError: unearned response accepted: {'memory': 'BUFFER', 'epistemic': 'REROUTE'}
+assert None is not None
+FAILED WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_revoked_or_withdrawn_state_cannot_be_resurrected_by_partial_rollback[True-WITHDRAW] - AssertionError: unearned response accepted: {'memory': 'BUFFER', 'epistemic': 'REROUTE'}
+assert None is not None
+FAILED WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_fully_rehashed_transition_requires_actual_prestate_ancestry[False] - AssertionError: unearned response accepted: {'memory': 'BUFFER', 'epistemic': 'REROUTE'}
+assert None is not None
+FAILED WORKER_RETURNS/SOROK-R3-HQ314-M04-M03-INDEPENDENT-R1/review/test_falsifiers.py::test_fully_rehashed_transition_requires_actual_prestate_ancestry[True] - AssertionError: unearned response accepted: {'memory': 'BUFFER', 'epistemic': 'REROUTE'}
+assert None is not None
+======================== 10 failed, 41 passed in 2.88s =========================

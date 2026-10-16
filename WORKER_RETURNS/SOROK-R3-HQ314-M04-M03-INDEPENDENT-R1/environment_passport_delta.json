@@ -1,0 +1,173 @@
+{
+  "actual_paid_cash": null,
+  "assignments_completed": [
+    "M04 full bounded court, evidence, adjudication"
+  ],
+  "branch": "agent/reviewer-sorok-r3-hq314-m04-m03-independent-r1",
+  "capabilities": {
+    "filesystem": {
+      "sparse_checkout": "true",
+      "status": "VERIFIED"
+    },
+    "git": {
+      "status": "VERIFIED",
+      "version": "git version 2.39.1"
+    },
+    "node": {
+      "required": false,
+      "status": "UNKNOWN"
+    },
+    "pytest": {
+      "status": "VERIFIED",
+      "version": "9.1.1"
+    },
+    "python": {
+      "implementation": "CPython",
+      "status": "VERIFIED",
+      "version": "3.11.3"
+    },
+    "shell": {
+      "kind": "zsh",
+      "status": "VERIFIED"
+    }
+  },
+  "cash_known": false,
+  "clean_dirty_state": "RETURN_FILES_ONLY; checked against sealed startup",
+  "context_cache_reuse": "UNKNOWN",
+  "conversation_or_account_affinity": "FRESH_M04_ONLY",
+  "covered_test_suites": {
+    "I3_escalation_required": false,
+    "actual_law_collision": false,
+    "baseline": {
+      "inherited": 413,
+      "m02_fail": 2,
+      "m02_pass": 98
+    },
+    "blocker_families": 3,
+    "frozen_commit": "3b529996ddd05c3c84225d2054428ff943091aef",
+    "historical": {
+      "failed": 9,
+      "passed": 0,
+      "separate": true,
+      "tests": 9
+    },
+    "independent": {
+      "errors": 0,
+      "failed": 10,
+      "passed": 41,
+      "skipped": 0,
+      "tests": 51
+    },
+    "published": {
+      "errors": 0,
+      "failed": 0,
+      "passed": 587,
+      "skipped": 0,
+      "tests": 587
+    },
+    "verdict": "REVIEW_REVISE",
+    "write_scope_verified": true
+  },
+  "dependency_closure_status": "BOUNDED",
+  "economics_comparison": "Keep the explicitly selected single Codex GPT-6.1 High reviewer for substantive independent causal/provenance adjudication. Step 5 was reported FREE by dispatch, but independent scientific qualification, account limits and export grant are not verified here. No cheaper qualified whole-court route established; no current worker switch authorized.",
+  "editor_harness": "Codex",
+  "effort": "High (user commission)",
+  "environment_id": "a851d301-dbd0-4a0f-ac2d-b4de350eb33a",
+  "epoch_id": "6ac32c81-605a-465e-8dfc-b769dfbf2dad",
+  "estimated_total_evidence_cost": "UNKNOWN",
+  "exact_checkout_base": "2f4482ae23960037da4ebee84501916dc6e5b422",
+  "fixture_query_source_permission": "AUTHORIZED_SYNTHETIC_SOURCEFREE_ONLY",
+  "git_object_store_alias": "EXISTING_CANONICAL_SHARED_STORE",
+  "head_at_probe": "3b529996ddd05c3c84225d2054428ff943091aef",
+  "independence_limit": "This reviewer did not author a repair; a later repaired candidate must be independently recommissioned under HQ custody",
+  "independent_review_separation": "Fresh reviewer; no M01/M02/M03 authorship or conversations",
+  "last_live_probe_at": "2026-10-16T06:34:26.563429+00:00",
+  "machine_alias": "AUTHORIZED_LOCAL_HOST",
+  "materialized_source_refs": [
+    {
+      "actual_module_file": "runtime/m02/runtime/m01/repro/bootstrap.py",
+      "blob_sha1": "19b0376a064d4cb6fb2d11caba5ecfd23878c633",
+      "module": "bootstrap",
+      "sha256": "8cd0a4a1684b5e120e8f7ff4411d1a235ace1ed37aa5c9a067a2510d0cd46e78"
+    },
+    {
+      "actual_module_file": "runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/__init__.py",
+      "blob_sha1": "0581aff4ac0ea45c07387e5340e219566ce7330d",
+      "module": "candidate",
+      "sha256": "be2b6eff83a8a5af687456545477856ec438cee29f25481ff58636556f745083"
+    },
+    {
+      "actual_module_file": "runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/adopted_contract.py",
+      "blob_sha1": "259ff9da129f7d644f8ac9fd8f739ad6041a3edf",
+      "module": "candidate.adopted_contract",
+      "sha256": "eec78079b8adc82b28a608ec7dd3fbf3947a53a98447fcf3d4c82db98becf0ae"
+    },
+    {
+      "actual_module_file": "runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py",
+      "blob_sha1": "61d933d98ffb39d553a0dbc670388fc2bd3e89d3",
+      "module": "candidate.can008_candidate_rule",
+      "sha256": "c5a4b271346fe045e5a54522926795e7514ad3bacbbed04fbb60a2183348c27e"
+    },
+    {
+      "actual_module_file": "runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/candidate_registry_fixture.py",
+      "blob_sha1": "0d978f89fb3c5e836a52f25849240db360f97f8f",
+      "module": "candidate.candidate_registry_fixture",
+      "sha256": "1c2e2e0c4375a15b9f1bd55376a550834d001b7b7577cb2b8183caccbdfac768"
+    },
+    {
+      "actual_module_file": "runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/owner_transitions.py",
+      "blob_sha1": "ac943d07459f68ba2e27baf05b442d9ecbddefd5",
+      "module": "candidate.owner_transitions",
+      "sha256": "fcdc073693f781607dd6a7ec25e5fa1a79ce3cccd5071005773b2ca7a8a5017d"
+    },
+    {
+      "actual_module_file": "runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "blob_sha1": "226cd42f81538f1b81ea7ea2e494776069142405",
+      "module": "candidate.positive_chain",
+      "sha256": "0a288c5ffd1e92f0b29a2bf41ce99b50ebd05bf912c12d5efb18fd6fbc372657"
+    },
+    {
+      "actual_module_file": "runtime/m02/runtime/m01/repro/cell.py",
+      "blob_sha1": "3eb2d02aee8dc840e7cac1f99230d7c69adc2f58",
+      "module": "cell",
+      "sha256": "95a20dd86f5e7f4f6c683d00b373b1b5433c77dca9e4368383b570edb1e7313c"
+    },
+    {
+      "actual_module_file": "runtime/m02/runtime/m01/repro/claim_provenance.py",
+      "blob_sha1": "2434bda6f4b00e6ea5881291f5422227e8045e74",
+      "module": "claim_provenance",
+      "sha256": "a593c630b86c7a43d46818afb39ebcab1445c50be9e4ade59c0a8107115b432f"
+    },
+    {
+      "actual_module_file": "runtime/m02/runtime/m01/runtime/can3/runtime/author/runtime_root/court_repaired/runtime_root/source/rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "blob_sha1": "e0528d65215cb431196570c38bac4eae94217a1b",
+      "module": "rawlsing_next.v3_psepf_zero_positive_guard",
+      "sha256": "12b2c49f664662cbfe993fc4817751ed9edfff3ce89c44cac489a00cb5e42177"
+    }
+  ],
+  "model_provider": "OpenAI via Codex; user-selected configuration",
+  "model_runtime_identity_introspection": "UNKNOWN",
+  "nearest_expected_slot_reset": null,
+  "next_good_affinity_tags": [
+    "CAN008",
+    "ADP017",
+    "CHECKPOINT_PROVENANCE",
+    "I2_REVIEW"
+  ],
+  "observed_usage": null,
+  "owner_session_alias": "M04_FRESH_INDEPENDENT",
+  "passport_schema": "SOROK_ENVIRONMENT_PASSPORT_R1",
+  "pricing_class": "UNKNOWN",
+  "privacy_source_grant": "Private repository, local synthetic testing only; no external provider/model calls",
+  "probe_command_and_result": "review/audit_review.py verifies actual live imports, source grant, frozen tests, all case matrices and empty production registry",
+  "quota_known": false,
+  "retire_or_rebuild_reason": null,
+  "runtime_marker_digest": "7883ff7434b103946b078acfc55eed953f0a61046823e6b4e52b3d419c64bc4f",
+  "science_grade": "SOURCEFREE_PROTOTYPE_INDEPENDENT_REVIEW_REVISE",
+  "selected_model": "GPT-6.1 High (user commission)",
+  "source_family": "CAN008_ADP016_ADP017_SOURCEFREE",
+  "staged_state_preservation": "Warm exact local static source closure preserved; no claim that mutable owner process state survives",
+  "status": "LIVE_VERIFIED",
+  "surface": "LOCAL_SHARED_STORE",
+  "worktree_alias": "ISOLATED_M04"
+}
